@@ -3,8 +3,8 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon
-pkgver=29.4.1
-pkgrel=2
+pkgver=29.4.2
+pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="https://www.palemoon.org/"
@@ -18,9 +18,9 @@ optdepends=('libpulse: PulseAudio audio driver'
 # as of 29.4.1, upstream have switched to unsigned source archives instead of git
 source=("http://archive.palemoon.org/source/palemoon-${pkgver}-source.tar.xz"
         mozconfig.in)
-sha1sums=('e666ad085dbfd52558424ea9aa1cf0aa292c9388'
+sha1sums=('a8bccc80fea1381b3135c21c85c57a3b0dbcf696'
           '5fc8e164a8c1731ad2cce6270c9b0e9a5145194c')
-sha256sums=('9a83e7c86d6143811ae70a37d25ea69c9ea289abed2b97ff11e0217f91858700'
+sha256sums=('293aad9fc29b8123b8ecff70d75070615382f3acbb0cb5c879ccd1ceba2e43c0'
             'a8ded94beaef0dfa4a5d6b109c1a669967cb7d38d4fe70b3a4d7725ef4b47394')
 
 prepare() {
