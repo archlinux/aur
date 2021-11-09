@@ -2,13 +2,13 @@
 pkgname=yomichan-import-git
 _pkgname=yomichan-import
 pkgver=r251.35175a5
-pkgrel=2
+pkgrel=3
 pkgdesc="External dictionary importer for Yomichan."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/FooSoft/yomichan-import"
 license=('MIT')
 depends=('gtk3')
-makedepends=('go')
+makedepends=('go' 'git')
 source=(
   'yomichan-import::git+https://github.com/FooSoft/yomichan-import#branch=master'
   'yomichan.png::https://raw.githubusercontent.com/FooSoft/yomichan/98975d59231eeedeaa2b17998b56a3c21e5d647e/ext/images/icon128.png'
