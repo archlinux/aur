@@ -1,7 +1,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=minq_stopwatch-git
-pkgver=r2.7facabf757d0392021e9941c85765241a0e9471a
+pkgver=r3.dafa82bbab96551c5e9c64dd000cc0d941965d80
 pkgrel=1
 epoch=
 pkgdesc="A terminal based timer that remembers where you left off"
