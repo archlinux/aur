@@ -2,7 +2,7 @@
 
 pkgbase='pokete-git'
 pkgname='pokete-git'
-pkgver=0.5.1
+pkgver=0.6.0.r2.g5d65464
 pkgrel=1
 pkgdesc="A small terminal based game in the style of a very popular and old game from gamefreak."
 arch=(any)
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/$pkgbase"
-  ./gen-wiki.py
+  ./gen_wiki.py
 }
 
 package() {
