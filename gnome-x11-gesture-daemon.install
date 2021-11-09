@@ -1,6 +1,8 @@
 post_install() {
   echo ""
-  echo "User needs be in input group, afterwards reboot system"
-  echo "sudo usermod -aG input $USER"
+  echo "User needs be in 'input' group"
+  echo "Run: 'sudo usermod -aG input \$USER'"
+  echo "Afterwards reboot the system"
   echo ""
 }
+
