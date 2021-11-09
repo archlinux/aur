@@ -2,7 +2,7 @@
 
 pkgname=licensure
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A software license header and copyright mangement tool"
 arch=('x86_64')
 url="https://github.com/chasinglogic/licensure"
@@ -43,5 +43,5 @@ package() {
   install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
 
   # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc" README.md
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }

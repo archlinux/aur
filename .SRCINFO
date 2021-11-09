@@ -1,7 +1,7 @@
 pkgbase = licensure
 	pkgdesc = A software license header and copyright mangement tool
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chasinglogic/licensure
 	arch = x86_64
 	license = GPL3
