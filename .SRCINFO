@@ -1,0 +1,13 @@
+pkgbase = simple-usb-automount
+	pkgdesc = Really simple usb storage device auto mounter
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/antonilol/simple-usb-automount
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libnotify
+	source = simple-usb-automount::git+https://github.com/antonilol/simple-usb-automount
+	md5sums = SKIP
+
+pkgname = simple-usb-automount
