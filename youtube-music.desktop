@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YouTube Music
+Exec=youtube-music
+Terminal=false
+Type=Application
+Icon=youtube-music
+StartupWMClass=YouTube Music
+Comment=YouTube Music Desktop App - including custom plugins
+Categories=AudioVideo;

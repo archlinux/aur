@@ -1,19 +1,22 @@
 pkgbase = youtube-music
-	pkgdesc = YouTube Music Desktop App bundled with custom plugins like built-in ad blocker & downloader
-	pkgver = 1.6.4
-	pkgrel = 3
-	url = https://github.com/th-ch/youtube-music
+	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://th-ch.github.io/youtube-music
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	noextract = ${_pkgname}-${pkgver}.AppImage
-	options = !strip
-	source = https://github.com/th-ch/youtube-music/releases/download/v1.6.4/YouTube-Music-1.6.4.AppImage
-	source = https://raw.githubusercontent.com/th-ch/youtube-music/master/license
-	source = youtube-music-th-ch.desktop
-	sha512sums = d9b75e151e609bde9694c960f7b9ff40f1681d338b575d86948780a6f47a5a58183b5506e9e0c22b39594682d39fea1b40d969dfbe3a32ede11492b06c96bfcb
-	sha512sums = 49c9004d9a157e3ddc4e79b6a800f0ac320989967a86ce887e5f8658c263167d43afa510f5692da86608bda1b98418e4fa9b012d9920c501f11304226136e031
-	sha512sums = b75497141a66b4837b0277728d3ff50be4ae57f76d8d000b82abc3ffbed62df202255828fea8f48875892a24c9a442430e0858d2e8878e7e857710cafb4bee8c
+	makedepends = nvm
+	makedepends = yarn
+	depends = electron
+	depends = libsecret
+	optdepends = libnotify: desktop notifications
+	optdepends = libappindicator-gtk3: tray icon
+	source = youtube-music-1.14.0.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v1.14.0.tar.gz
+	source = youtube-music.sh
+	source = youtube-music.desktop
+	sha256sums = 6535926ec9e52435b1082287e4870e00945dee9322f6a376c4b61e5d28c4c22b
+	sha256sums = a1d30cedc17ede48b7d627a3797a0918b7bd3c9062e9ed83d61f153c001c1ef8
+	sha256sums = 07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79
 
 pkgname = youtube-music
-

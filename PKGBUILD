@@ -1,41 +1,62 @@
-# Maintainer: Harsh Barsaiyan <hbarsaiyan@gmail.com>
- 
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music
-_pkgname=YouTube-Music
-pkgver=1.6.4
-pkgrel=3
-epoch=
-pkgdesc="YouTube Music Desktop App bundled with custom plugins like built-in ad blocker & downloader"
+pkgver=1.14.0
+pkgrel=1
+_nodeversion=14
+pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
-url="https://github.com/th-ch/youtube-music"
+url="https://th-ch.github.io/youtube-music"
 license=('MIT')
-makedepends=('git')
-source=("https://github.com/th-ch/youtube-music/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-        "https://raw.githubusercontent.com/th-ch/youtube-music/master/license"
-        "youtube-music-th-ch.desktop")
-noextract=('${_pkgname}-${pkgver}.AppImage')
-options=(!strip)
-sha512sums=(
-            "d9b75e151e609bde9694c960f7b9ff40f1681d338b575d86948780a6f47a5a58183b5506e9e0c22b39594682d39fea1b40d969dfbe3a32ede11492b06c96bfcb"
-            "49c9004d9a157e3ddc4e79b6a800f0ac320989967a86ce887e5f8658c263167d43afa510f5692da86608bda1b98418e4fa9b012d9920c501f11304226136e031"
-            "b75497141a66b4837b0277728d3ff50be4ae57f76d8d000b82abc3ffbed62df202255828fea8f48875892a24c9a442430e0858d2e8878e7e857710cafb4bee8c"
-)
+depends=('electron' 'libsecret')
+makedepends=('git' 'nvm' 'yarn')
+optdepends=('libnotify: desktop notifications'
+            'libappindicator-gtk3: tray icon')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
+        "$pkgname.sh"
+        "$pkgname.desktop")
+sha256sums=('6535926ec9e52435b1082287e4870e00945dee9322f6a376c4b61e5d28c4c22b'
+            'a1d30cedc17ede48b7d627a3797a0918b7bd3c9062e9ed83d61f153c001c1ef8'
+            '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
-prepare(){
-	chmod +x $_pkgname-$pkgver.AppImage
-	./$_pkgname-$pkgver.AppImage --appimage-extract
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
- 
+
+prepare() {
+  # Use Node.js 14
+  _ensure_local_nvm
+  nvm install "$_nodeversion"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  electronDist=/usr/lib/electron
+  electronVer=$(sed s/^v// /usr/lib/electron/version)
+  _ensure_local_nvm
+  yarn config set cache-folder "$srcdir/yarn-cache"
+  yarn install
+  yarn run clean
+  npx electron-builder --linux dir \
+    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
+}
+
 package() {
-	# install license
-	install -Dm644 license "${pkgdir}/usr/share/licenses/${pkgname}/license"
- 
-	# install icon
-	install -Dm644 "${srcdir}/squashfs-root/youtube-music.png" "${pkgdir}/usr/share/pixmaps/youtube-music.png"
- 
-	# install appimage
-	install -Dm755 ${_pkgname}-${pkgver}.AppImage "${pkgdir}/usr/bin/youtube-music-th-ch"
- 
-	# install desktop entry
-	install -Dm755 youtube-music-th-ch.desktop "${pkgdir}/usr/share/applications/youtube-music-th-ch.desktop"
+  cd "$pkgname-$pkgver"
+  install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/$pkgname"
+  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 license -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  for icon_size in 16 24 32 48 64 128 256 512 1024; do
+    icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+    install -Dm644 assets/generated/icons/png/${icon_size}x${icon_size}.png \
+      $pkgdir$icons_dir/$pkgname.png
+  done
 }
