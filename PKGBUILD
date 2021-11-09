@@ -1,6 +1,6 @@
 # Maintainer: Cauê Baasch de Souza <cauebs@pm.me>
 pkgname=durt
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Command line tool for calculating the size of files and directories"
 provides=('durt')
@@ -9,7 +9,7 @@ url="https://github.com/cauebs/$pkgname"
 license=('GPL-3.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('473f5b87c4f4582c03241ce8db428af9906c31429f13de3cb20844018dfcc6846a50f4df670fd7458540331c151022e05d84f2056d8f5f6b3520ec56f7ece32a')
+sha512sums=('63edefc9e6f954013b61dd8b0cd79686272a9510a7aa6dae09c3287f7dc45e817bfeb490b7ebb4847e32282b6c1237e892bac27cbff28a8e3fced7c8d296f55a')
 
 build() {
     cd $pkgname-$pkgver
