@@ -466,8 +466,8 @@ _package-headers() {
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
+    $(declare -f "_package${_p#"$pkgbase"}")
+    _package${_p#"$pkgbase"}
   }"
 done
 
