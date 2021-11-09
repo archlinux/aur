@@ -2,7 +2,7 @@
 
 pkgbase=gowin-eda-edu
 pkgver=1.9.8
-pkgrel=2
+pkgrel=3
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)"
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
@@ -67,16 +67,22 @@ _package-programmer() {
   pkgdesc="Gowin EDA Programmer - ${_desc}"
   # depends=('fontconfig' 'freetype2')
   provides=("gowin-eda-programmer" "gowin-programmer")
+  options=('emptydirs')
 
   cd ${srcdir}/Programmer
 
-  _install 644 doc/
+#   _install 644 doc/
   _install 644 bin/PyQt5
   _install 644 bin/data
   _install 644 bin/ -maxdepth 1
 
   _install_exec programmer programmer_cli
 
+  # empty dir
+  install -dm755 ${pkgdir}/opt/${pkgname}/bin/data/output
+  install -dm755 ${pkgdir}/opt/${pkgname}/bin/data/lang
+  install -dm755 ${pkgdir}/opt/${pkgname}/bin/data/devices
+  
   # desktop entry
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
 

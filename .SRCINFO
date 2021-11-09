@@ -1,6 +1,6 @@
 pkgbase = gowin-eda-edu
 	pkgver = 1.9.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gowinsemi.com.cn/faq.aspx
 	arch = x86_64
 	license = unknown
@@ -22,3 +22,4 @@ pkgname = gowin-eda-edu-programmer
 	pkgdesc = Gowin EDA Programmer - Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)
 	provides = gowin-eda-programmer
 	provides = gowin-programmer
+	options = emptydirs
