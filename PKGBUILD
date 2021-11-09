@@ -4,13 +4,13 @@
 _pkgname=aiohttp
 pkgname=python-${_pkgname}-git
 pkgver=4.0.0a1.r857.gac0398a4
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP client/server for asyncio'
 url='https://aiohttp.readthedocs.io'
 arch=('x86_64')
 license=('Apache')
 depends=('python' 'python-chardet' 'python-multidict' 'python-async-timeout'
-         'python-yarl' 'python-attrs')
+         'python-yarl' 'python-attrs' 'python-aiosignal')
 makedepends=('cython' 'python-setuptools' 'python-pip' 'git' 'cmake' 'ts-node' 'npm')
 checkdepends=('python-pytest' 'python-pytest-runner' 'python-pytest-mock'
               'python-pytest-timeout' 'python-async_generator' 'python-brotli'

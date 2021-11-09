@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp-git
 	pkgdesc = HTTP client/server for asyncio
 	pkgver = 4.0.0a1.r857.gac0398a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aiohttp.readthedocs.io
 	arch = x86_64
 	license = Apache
@@ -31,6 +31,7 @@ pkgbase = python-aiohttp-git
 	depends = python-async-timeout
 	depends = python-yarl
 	depends = python-attrs
+	depends = python-aiosignal
 	optdepends = gunicorn: to deploy using Gunicorn
 	optdepends = python-aiodns: for fast DNS resolving
 	optdepends = python-cchardet: for faster encoding detection
