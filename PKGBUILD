@@ -8,6 +8,7 @@ pkgdesc='Python implementation of the Circuit Breaker pattern'
 arch=('x86_64')
 url="https://github.com/fabfuel/${_pyname}"
 license=('BSD')
+makedepends=('python-setuptools')
 depends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('8ea1249bb7cc5e89ec833fa68b21712a18aebe5480193d09b7f410668632cf6d')

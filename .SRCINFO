@@ -5,6 +5,7 @@ pkgbase = python-circuitbreaker
 	url = https://github.com/fabfuel/circuitbreaker
 	arch = x86_64
 	license = BSD
+	makedepends = python-setuptools
 	depends = python
 	source = python-circuitbreaker-1.2.0.tar.gz::https://github.com/fabfuel/circuitbreaker/archive/refs/tags/1.2.0.tar.gz
 	sha256sums = 8ea1249bb7cc5e89ec833fa68b21712a18aebe5480193d09b7f410668632cf6d
