@@ -1,6 +1,6 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=ugene-git
-pkgver=38.1.r392.g9a5418cdda
+pkgver=38.1.r431.gb644c7c177
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('x86_64')

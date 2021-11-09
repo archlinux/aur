@@ -1,6 +1,6 @@
 pkgbase = ugene-git
 	pkgdesc = A free cross-platform genome analysis suite.
-	pkgver = 38.1.r392.g9a5418cdda
+	pkgver = 38.1.r431.gb644c7c177
 	pkgrel = 1
 	url = http://ugene.unipro.ru/
 	arch = x86_64
