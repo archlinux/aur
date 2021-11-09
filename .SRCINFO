@@ -1,0 +1,12 @@
+pkgbase = dreadnought-git
+	pkgdesc = A lightweight, simple and configurable web server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fraco-oxza/dreadnought
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = dreadnought-git-0.1.0.tar.gz::https://github.com/fraco-oxza/dreadnought/archive/v0.1.0.tar.gz
+	sha256sums = f4f30479ede4fa624af9968f0f1b0e3c6420392bfb0d4b7f01e5d8f46066461a
+
+pkgname = dreadnought-git
