@@ -1,7 +1,7 @@
 pkgbase = sbkeys
 	pkgdesc = Simple script to generate Secure Boot keys
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electrickite/sbkeys
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = sbkeys
 	depends = util-linux
 	depends = openssl
 	depends = wget
+	optdepends = sbsigntools: For Microsoft signature database entries
 	source = sbkeys
 	sha256sums = 19e24a796889ba7af0eedbb163fb343491e8d935e4a1ae717465ecbaa98a6e0e
 
 pkgname = sbkeys
-
