@@ -1,6 +1,6 @@
 pkgbase = python-ofxparse
 	pkgdesc = Tools for working with the OFX (Open Financial Exchange) file format
-	pkgver = 0.20
+	pkgver = 0.21
 	pkgrel = 1
 	url = http://sites.google.com/site/ofxparse
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-ofxparse
 	makedepends = python-setuptools
 	depends = python-beautifulsoup4
 	depends = python-six
-	source = python-ofxparse-0.20.tar.gz::https://github.com/jseutter/ofxparse/archive/0.20.tar.gz
-	sha256sums = ec97c7289ded55d4aa1a8aaea71cb50d5998e311b43958dbbeb4a2db78a1ca58
+	source = python-ofxparse-0.21.tar.gz::https://github.com/jseutter/ofxparse/archive/0.21.tar.gz
+	sha256sums = 2c61c5ab65b432c548823de656167ba738c937565206e0768f4c437e850f4821
 
 pkgname = python-ofxparse
-
