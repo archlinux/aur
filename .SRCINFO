@@ -1,7 +1,7 @@
 pkgbase = btrfsmaintenance-git
 	pkgdesc = Btrfs maintenance scripts
 	pkgver = 0.5.r0.gbe42cb6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kdave/btrfsmaintenance
 	arch = any
 	license = GPL2
