@@ -4,7 +4,7 @@
 
 pkgname=wings3d
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='3D modeler using the winged edge data structure'
 arch=(x86_64)
 url='http://www.wings3d.com/' # https is not available
