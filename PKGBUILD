@@ -1,11 +1,11 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=litestream
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Streaming S3 replication for SQLite.'
 arch=('x86_64')
 url='https://github.com/benbjohnson/litestream'
-license=('GPL')
+license=('Apache')
 depends=('glibc')
 makedepends=('go')
 optdepends=('sqlite')
