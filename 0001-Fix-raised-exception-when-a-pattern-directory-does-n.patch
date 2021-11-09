@@ -1,0 +1,27 @@
+From 64ce115ff948387f318f8af4fda40b9add36a254 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Tue, 9 Nov 2021 16:10:34 +0100
+Subject: [PATCH 1/2] Fix raised exception when a pattern directory does not
+ exists.
+
+Signed-off-by: KokaKiwi <kokakiwi+git@kokakiwi.net>
+---
+ source/views/view_pattern_editor.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/source/views/view_pattern_editor.cpp b/source/views/view_pattern_editor.cpp
+index 2608679..475b337 100644
+--- a/source/views/view_pattern_editor.cpp
++++ b/source/views/view_pattern_editor.cpp
+@@ -191,6 +191,8 @@ namespace hex {
+                 this->m_possiblePatternFiles.clear();
+ 
+                 for (auto &imhexPath : hex::getPath(ImHexPath::Patterns)) {
++                    if (!fs::exists(imhexPath))
++                        continue;
+                     for (auto &entry: fs::recursive_directory_iterator(imhexPath)) {
+                         if (entry.is_regular_file() && entry.path().extension() == ".hexpat") {
+                             this->m_possiblePatternFiles.push_back(entry.path());
+-- 
+2.33.1
+
