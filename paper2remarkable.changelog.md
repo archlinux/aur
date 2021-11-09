@@ -1,3 +1,9 @@
+## Version 0.9.10
+
+* Bugfix for ACM provider
+* Fix/disable broken tests
+* Disable Taylor & Francis provider
+
 ## Version 0.9.9
 
 * Robustify ScienceDirect provider

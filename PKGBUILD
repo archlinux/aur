@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=paper2remarkable
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Easily download an academic paper and send it to a reMarkable."
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=('python-readabilipy: Improves output of web articles')
 changelog=$pkgname.changelog.md
 install=$pkgname.install
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("5087553c4fecee913bff0c9af802bb572097f11e0ef6f200984e705f62b0d5e5")
+sha256sums=("1bbf18246b04972f11417e817e6ca863764303191acac17cab0e9d02dc47ee7d")
 
 build() {
     cd "$pkgname-$pkgver/"
