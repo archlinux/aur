@@ -1,7 +1,7 @@
 # Maintainer: Tomas S. <me+aur at wereii.cz>
 
 pkgname=spacestation14-launcher-bin
-pkgver=0.20.3
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 url="https://spacestation14.io/"
@@ -9,14 +9,14 @@ license=('MIT')
 arch=(x86_64)
 options=(!strip staticlibs)
 # sources need to have unique filenames
-_source_name="SS14.launcher.v${pkgver}.zip" 
+_source_name="SS14.launcher.v${pkgver}.zip"
+optdepends=('fluidsynth: needed for in-game midi instruments')
 source=(
     "${_source_name}::https://github.com/space-wizards/SS14.Launcher/releases/download/v${pkgver}/SS14.Launcher_Linux.zip"
     "spacestation14.svg::https://spacestation14.io/images/main/icon.svg"
     "SS14.desktop")
 noextract=("${_source_name}")
-
-sha256sums=('113442eb221476adfeb11e6d6a51cde3d02ecb574744f18aea03f29ee40e92ea'
+sha256sums=('01d60a40b502b0b96f550e8991d63780f253af359b2596d105b63e2869dd8a14'
             'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5'
             SKIP)
 
