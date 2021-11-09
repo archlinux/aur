@@ -7,13 +7,13 @@
 # you can use this to bootstrap compilation.
 pkgname=ghc8.6-bin
 pkgver=8.6.5
-pkgrel=1
-pkgdesc='Binary version of legacy GHC 8.6 installed as ghc-8.6 (Sep/2018 - Apr/2019).'
+pkgrel=2
+pkgdesc='Legacy binary GHC 8.6 installed on /usr/bin/ghc-8.6 (Sep/2018 - Apr/2019).'
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
 depends=('gcc' 'gmp' 'libffi' 'perl')
-makedepends=('ghc' 'perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
+makedepends=('ghc' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
 checkdepends=('python2')
 install='ghc.install'
 options=('staticlibs')
