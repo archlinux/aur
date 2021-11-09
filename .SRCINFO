@@ -1,0 +1,18 @@
+pkgbase = python-pytango-git
+	pkgdesc = Python binding for Tango, a library dedicated to distributed control systems.
+	pkgver = v9.3.3.r79.gb78181d
+	pkgrel = 1
+	url = http://pytango.readthedocs.io/
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-six>=1.10
+	depends = python-numpy>=1.1
+	depends = python-setuptools
+	depends = python-gevent
+	depends = boost-libs
+	depends = tango
+	source = git+https://gitlab.com/tango-controls/pytango
+	sha256sums = SKIP
+
+pkgname = python-pytango-git
