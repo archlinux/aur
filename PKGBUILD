@@ -28,6 +28,12 @@ if [ -z ${no_makeflags_check+x} ]; then
   makeflags_check=y
 fi
 
+## '_O3' -  Enable -O3 optimization - this isn't generally worth much, especially in the face of
+##          -march=native (or -march=x86-64-v3) and clang ThinLTO; set _O3 to anything to enable
+if [ -n "${_O3+x}" ]; then
+  _O3=y
+fi
+
 ##
 ## Xanmod options:
 ##
@@ -250,6 +256,12 @@ prepare() {
     msg2 "Enabling Clang ThinLTO ..."
     scripts/config --disable LTO_CLANG_FULL \
                    --enable LTO_CLANG_THIN
+  fi
+
+  if [ "$_O3" = "y" ]; then
+    msg2 "Enabling -O3 optimizations ..."
+    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE \
+                   --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
   fi
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
