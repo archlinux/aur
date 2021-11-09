@@ -1,6 +1,6 @@
 pkgbase = octofetch-bin
 	pkgdesc = GitHub stats fetch tool
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/azur1s/octofetch
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = octofetch-bin
 	depends = openssl
 	provides = octofetch
 	conflicts = octofetch
-	source = LICENSE-0.3.2::https://github.com/azur1s/octofetch/raw/0.3.2/LICENSE
-	source = README-0.3.2::https://github.com/azur1s/octofetch/raw/0.3.2/README.md
+	source = LICENSE-0.3.3::https://github.com/azur1s/octofetch/raw/0.3.3/LICENSE
+	source = README-0.3.3::https://github.com/azur1s/octofetch/raw/0.3.3/README.md
 	sha256sums = 0b85b107bb5386b2b35372d2f64a8ccf5079149b239ade6bb3889753011a368c
-	sha256sums = 852d3f6b2f086d3e392d310773618863b24a8a7ab66391cf75b10cd6430559cb
-	source_x86_64 = octofetch-bin-0.3.2::https://github.com/azur1s/octofetch/releases/download/0.3.2/octofetch
-	sha256sums_x86_64 = 5462266f2be747819ab982c2755c81a05edf7c9e3c1dfb53725c17249231a400
+	sha256sums = cdc18e51a9f605601433939192748866a58cb0db5367ca687bfa038b8f4dbd8b
+	source_x86_64 = octofetch-bin-0.3.3::https://github.com/azur1s/octofetch/releases/download/0.3.3/octofetch
+	sha256sums_x86_64 = dba36c4578b86ce6413d075fb06d606a162a34941c5bd7b2d2542ca1ffbaf140
 
 pkgname = octofetch-bin
