@@ -2,7 +2,7 @@
 _pkgname=zfs-multi-mount
 pkgname=zfsmultimount-git
 pkgver=0.1.r7.d2c39d9
-pkgrel=1
+pkgrel=2
 pkgdesc="A mkinitcpio hook to use gbytedev's zfs-multi-mount script"
 arch=(any)
 url="https://github.com/gbytedev/zfs-multi-mount"
@@ -34,8 +34,8 @@ package() {
 	mkdir -p "$pkgdir"/usr/lib/initcpio/install
 	mkdir -p "$pkgdir"/usr/lib/initcpio/hooks
 	cp -rf * "$pkgdir"/opt/"$pkgname"
-	cp /opt/"$pkgname"/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-	cp /opt/"$pkgname"/zfs-multi-mount.sh "$pkgdir"/usr/bin/zfs-multi-mount
-	cp /opt/"$pkgname"/install.zfsmultimount "$pkgdir"/usr/lib/initcpio/install/zfsmultimount
-	cp /opt/"$pkgname"/hook.zfsmultimount "$pkgdir"/usr/lib/initcpio/hooks/zfsmultimount
+	cp "$pkgdir"/opt/"$pkgname"/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+	cp "$pkgdir"/opt/"$pkgname"/zfs-multi-mount.sh "$pkgdir"/usr/bin/zfs-multi-mount
+	cp "$pkgdir"/opt/"$pkgname"/install.zfsmultimount "$pkgdir"/usr/lib/initcpio/install/zfsmultimount
+	cp "$pkgdir"/opt/"$pkgname"/hook.zfsmultimount "$pkgdir"/usr/lib/initcpio/hooks/zfsmultimount
 }

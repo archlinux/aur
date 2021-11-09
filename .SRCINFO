@@ -1,7 +1,7 @@
 pkgbase = zfsmultimount-git
 	pkgdesc = A mkinitcpio hook to use gbytedev's zfs-multi-mount script
 	pkgver = 0.1.r7.d2c39d9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gbytedev/zfs-multi-mount
 	install = zfsmultimount-git.install
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = zfsmultimount-git
 	sha256sums = 97bae903540a2ef8fc08d6d5331f3c1fd2c96b9cab8586a4a72cf3f99f6df7ce
 
 pkgname = zfsmultimount-git
-
