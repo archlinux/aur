@@ -56,9 +56,10 @@ if [ -z ${use_tracers+x} ]; then
 fi
 
 ## Choose between GCC and CLANG config (default is GCC)
-if [ -z ${_compiler+x} ]; then
-  _compiler=gcc
-fi
+case "${_compiler,,}" in
+  "clang" | "gcc") _compiler=${_compiler,,} ;; # tolower, simplifes later checks
+                *) _compiler=gcc            ;; # default to GCC
+esac
 
 ## Compress modules with ZSTD (to save disk space)
 #if [ -z ${_compress_modules+x} ]; then
@@ -95,7 +96,8 @@ makedepends=(
   bc kmod libelf pahole cpio perl tar xz zstd
   "gcc>=11.0"
 )
-if [ "${_compiler}" = "clang" ]; then
+if [ "$_compiler" = "clang" ]; then
+  pkgver="${pkgver}+clang"
   makedepends+=(clang llvm lld python)
   _LLVM=1
 fi
@@ -244,9 +246,10 @@ prepare() {
   # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
   # enable LTO_CLANG_THIN
-  if [ "${_compiler}" = "clang" ]; then
-    scripts/config --disable LTO_CLANG_FULL
-    scripts/config --enable LTO_CLANG_THIN
+  if [ "$_compiler" = "clang" ]; then
+    msg2 "Enabling Clang ThinLTO ..."
+    scripts/config --disable LTO_CLANG_FULL \
+                   --enable LTO_CLANG_THIN
   fi
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -259,7 +262,7 @@ prepare() {
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
     msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
-    if [ "${_compiler}" = "gcc" ]; then
+    if [ "$_compiler" = "gcc" ]; then
       scripts/config --disable CONFIG_FUNCTION_TRACER \
                      --disable CONFIG_STACK_TRACER
     fi
