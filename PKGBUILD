@@ -1,7 +1,7 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic-prerelease-git
-pkgver=1.8.0.r0.g0b0e8b952
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (prerelease, git)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
@@ -10,7 +10,7 @@ depends=('openssl>=1.1.1')
 makedepends=('cmake>=3.16' 'dotnet-sdk>=3.1' 'git')
 provides=('msquic' 'libmsquic.so')
 conflicts=('msquic' 'libmsquic.so')
-source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=prerelease/1.8"
+source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=prerelease/1.9"
         'cmake_args.patch')
 sha512sums=('SKIP'
             '9d18293f34d1d83574cdcfb544bf6c0ff5f98f90ea33335bf0c7bfff9f4101b60d18c176e81f8249065b30e643be691ee2800c26727da97b6a56d79da8cd0d7f')
