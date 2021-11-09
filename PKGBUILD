@@ -1,7 +1,7 @@
 # Maintainer: Tomas S. <me+aur at wereii.cz>
 
 pkgname=spacestation14-launcher-bin
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 url="https://spacestation14.io/"
@@ -12,12 +12,11 @@ options=(!strip staticlibs)
 _source_name="SS14.launcher.v${pkgver}.zip" 
 source=(
     "${_source_name}::https://github.com/space-wizards/SS14.Launcher/releases/download/v${pkgver}/SS14.Launcher_Linux.zip"
-    "spacestation14.svg::https://spacestation14.io/images/main/icon.svg"
-    "desktop.patch")
+    "spacestation14.svg::https://spacestation14.io/images/main/icon.svg")
 noextract=("${_source_name}")
-sha256sums=('c547df0dc9e358583afeb77a0119a345ba13d983b57e7597f9d4a69326748e44'
-            'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5'
-            'SKIP')
+
+sha256sums=('d0e485485df999f289a8984536e226808561fac1818ce20797185d64fbf99a01'
+            'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5')
 
 
 prepare() {
@@ -26,8 +25,6 @@ prepare() {
     # it's important to run bsdtar outside of fakeroot
     # as it acts differently with ownership data as root
     bsdtar -x -f "${srcdir}/${_source_name}"
-
-    patch "${srcdir}/SS14/SS14.desktop" "${srcdir}/desktop.patch"
 }
 
 package() {
