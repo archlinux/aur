@@ -9,11 +9,11 @@ pkgver=1.55
 pkgrel=2
 pkgdesc='Optimized and extended zsh-syntax-highlighting'
 arch=('any')
-url='https://github.com/zdharma/fast-syntax-highlighting'
+url='https://github.com/zdharma-continuum/fast-syntax-highlighting'
 license=('BSD')
 depends=('zsh')
 makedepends=('git')
-source=("git+https://github.com/zdharma/${_gitname}.git#tag=v${pkgver}")
+source=("git+https://github.com/zdharma-continuum/${_gitname}.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 provides=("$pkgname")
 conflicts=(
