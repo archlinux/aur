@@ -1,7 +1,7 @@
 # Maintainer: midnightix <midnightix@protonmail.com>
 
 pkgname=clash-premium-tun
-pkgver=2021.09.15
+pkgver=2021.11.08
 pkgrel=1
 pkgdesc="A rule-based tunnel in Go for Linux with TUN"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
         "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-${pkgver}.gz"
         "config.yaml")
 sha256sums=('SKIP' 
-            'c180b2102888c11e5720e7d8c6c74fb30a710650b71bfff9202752152362b5e2'
+            'eddcc90f7d78c19c57c963e500dbb45c2fe0bcda2e5eca1f84e5b678603bc267'
             '1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
 
 prepare() {
