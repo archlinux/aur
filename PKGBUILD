@@ -9,6 +9,7 @@ url="http://pytango.readthedocs.io/"
 license=('GPL3')
 depends=('python' 'python-six>=1.10' 'python-numpy>=1.1' 'python-setuptools'
 	 'python-gevent' 'boost-libs' 'tango')
+conflicts=('python-pytango-git')
 source=("https://gitlab.com/tango-controls/pytango/-/archive/v${pkgver}/pytango-v${pkgver}.tar.gz")
 sha256sums=('5926e06fba42acd5c2376178fe87756ef42494ab3bc3e96f5289589ef2ff72fe')
 
