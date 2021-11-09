@@ -1,0 +1,13 @@
+pkgbase = vscode-eslint-language-server
+	pkgdesc = Language Server for ESLint, extracted from the official VSCode extension
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/Microsoft/vscode-eslint
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = vscode-eslint-language-server-2.2.2.tar.gz::https://github.com/Microsoft/vscode-eslint/archive/refs/tags/release/2.2.2.tar.gz
+	sha256sums = 54cfdfc1cd16679bd27458beaba1289f0558994863fb879c42fdacd09868b07f
+
+pkgname = vscode-eslint-language-server

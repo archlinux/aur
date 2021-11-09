@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/vscode-eslint-language-server-*.pkg.tar.*
+/vscode-eslint-language-server-*.tar.gz
