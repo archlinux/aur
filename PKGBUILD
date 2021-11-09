@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cargo-pgx
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Build PostgreSQL extensions with Rust"
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
   "https://raw.githubusercontent.com/zombodb/pgx/v$pkgver/LICENSE"
 )
-sha512sums=('a925722326156a1395e31eef3e7cca0b7d6b08cc428aabc3512d069ff30e439b7994f36c7cb9b2c71810a580ef50a81cbaf2f0599769384bd8f055d20265973c'
+sha512sums=('6de93c60f8a3cbc67f4cf19d22d7d267a7b5809bb83c08987c40d4d63c5873273f3ae5404bbc475e655f066af265330803f99928b4aac075e01004ec25670bcd'
             '1567db39266597101bec59f782c50ba28fad860e29626eed187980e671f1ade38a9b3a33ea56fbcf6bdc27c0960db0ddf7e6064e3c12c6fef1e1eb2f1721c535')
-b2sums=('1b81782e3ee72f5d8ee2adf74f20dd50fe3524c5f46a1dea2a5773ece3d0852466a253cd480ee985e275b2a6dacb21210555d8deafaf868a4b990c1c2aeec8ab'
+b2sums=('e2b688f31578beec66cf930d7dff9f71c4a2399f68ed1b58ca416c5505b0afeae15e9e32d5744c4cb82dc6b6203ac2275522e7e053a11bfd746f4cf160903f47'
         '2cab3447814cebb834e21e3db43ac2dd42bd0ca064d304120ecf5d4f831b90dcd7fe5f9ddc10983e5f362689258d5af0ee4abedfcbf87f52ff31fe697511f165')
 
 prepare() {
