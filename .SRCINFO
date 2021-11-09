@@ -1,6 +1,6 @@
 pkgbase = system76-power
 	pkgdesc = System76 Power Management
-	pkgver = 1.1.19
+	pkgver = 1.1.20
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-power
 	install = system76-power.install
@@ -13,10 +13,10 @@ pkgbase = system76-power
 	optdepends = system76-acpi-dkms: some systems might need this driver
 	optdepends = system76-dkms: some systems might need this driver
 	optdepends = system76-io-dkms: some systems might need this driver
-	source = https://github.com/pop-os/system76-power/archive/1.1.19.tar.gz
+	source = https://github.com/pop-os/system76-power/archive/1.1.20.tar.gz
 	source = use-mkinitcpio.patch
 	source = makefile.patch
-	sha256sums = eb369011f45dd0b8869f032d8b6aad56e290329f312a7ad602adf2a133baa709
+	sha256sums = 9b73112a86dba2b5ec3e88c01d64ad43c2e3575530ab6437f370e2a2d609d259
 	sha256sums = a6f45126461f22b47ac9671280e2cf2fbd52e389642d8dd865844bf2b7d43715
 	sha256sums = 61f8a26463527404b55bb7ee5dc18d909ad44bf56ac743ec8b081324c0def1e5
 

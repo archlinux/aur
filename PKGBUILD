@@ -1,7 +1,7 @@
 # Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
 pkgname=system76-power
-pkgver=1.1.19
+pkgver=1.1.20
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
 'use-mkinitcpio.patch'
 'makefile.patch'
 )
-sha256sums=('eb369011f45dd0b8869f032d8b6aad56e290329f312a7ad602adf2a133baa709'
+sha256sums=('9b73112a86dba2b5ec3e88c01d64ad43c2e3575530ab6437f370e2a2d609d259'
             'a6f45126461f22b47ac9671280e2cf2fbd52e389642d8dd865844bf2b7d43715'
             '61f8a26463527404b55bb7ee5dc18d909ad44bf56ac743ec8b081324c0def1e5')
 
