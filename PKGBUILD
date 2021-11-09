@@ -2,7 +2,7 @@
 # Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
 pkgname=gnome-gesture-improvements
 pkgver=r77.e3a93aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Touchpad gesture improvements for GNOME on Wayland/X11"
 arch=('any')
 url="https://github.com/harshadgavali/gnome-gesture-improvements"
@@ -24,7 +24,6 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   npm install
   npm run pack
-  make pack
 }
 
 package() {
