@@ -5,7 +5,7 @@
 
 # Maintainer: Francisco Carvajal <fraco_oxza@outlook.com>
 pkgname=dreadnought-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="A lightweight, simple and configurable web server "
