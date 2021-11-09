@@ -1,0 +1,7 @@
+/.vscode
+/src
+/pip-audit
+/pkg
+*.pkg.*
+*.tar.*
+*.zip
