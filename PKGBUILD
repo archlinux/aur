@@ -4,8 +4,8 @@
 
 _pkgname=libg15
 pkgname=$_pkgname-git
-pkgver=3.0.7.r4.g96abe69
-pkgrel=2
+pkgver=3.0.7.r5.c40b91b6
+pkgrel=3
 pkgdesc="Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers"
 arch=('x86_64')
 url="https://gitlab.com/menelkir/$_pkgname"
