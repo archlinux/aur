@@ -1,13 +1,14 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=7-zip-bin
 pkgver=21.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line file archiver with high compression ratio (official build)."
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://www.7-zip.org"
 license=('LGPL')
-provides=("${pkgname%-bin}" "p7zip")
-conflicts=("${pkgname%-bin}" "p7zip")
+provides=("${pkgname%-bin}" "7zip" "p7zip")
+conflicts=("${pkgname%-bin}" "7zip" "p7zip")
+replaces=('7zip-bin')
 source_x86_64=(https://www.7-zip.org/a/7z${pkgver//./}-linux-x64.tar.xz)
 source_i686=(https://www.7-zip.org/a/7z${pkgver//./}-linux-x86.tar.xz)
 source_aarch64=(https://www.7-zip.org/a/7z${pkgver//./}-linux-arm64.tar.xz)
