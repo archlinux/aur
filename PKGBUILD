@@ -6,19 +6,19 @@
 # you can use this to bootstrap compilation.
 pkgname=ghc8.4-bin
 pkgver=8.4.4
-pkgrel=1
-pkgdesc='Binary version of legacy GHC (8.4 series).  Originally released on March 2018.'
+pkgrel=2
+pkgdesc='Legacy binary GHC 8.4 installed as /usr/bin/ghc-8.4 (Mar/2018 - Oct/2018).'
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
 depends=('gcc' 'gmp' 'libffi' 'perl')
-makedepends=('ghc' 'perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
+makedepends=('ghc' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
 checkdepends=('python2')
 install='ghc.install'
 options=('staticlibs')
 provides=('ghc8.4')
 conflicts=('ghc8.4')
-source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-x86_64-deb8-linux.tar.xz")
+source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb8-linux.tar.xz")
 noextract=("ghc-${pkgver}-${CARCH}-deb8-linux.tar.xz")
 sha256sums=('4c2a8857f76b7f3e34ecba0b51015d5cb8b767fe5377a7ec477abde10705ab1a')
 
