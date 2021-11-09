@@ -2,7 +2,7 @@
 pkgname=msquic-git
 pkgver=1.9.0
 pkgrel=1
-pkgdesc="MsQuic is a Microsoft implementation of the IETF QUIC protocol."
+pkgdesc="Microsoft implementation of the IETF QUIC protocol (git)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
 license=('MIT')
