@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=Weblate
 pkgname=weblate
-pkgver=4.8
+pkgver=4.8.1
 pkgrel=1
 
 pkgdesc="Web based localization tool with tight version control integration"
@@ -69,7 +69,7 @@ source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgve
         'celery-weblate.service'
         'logrotate-celery')
 
-sha256sums=('c77b4f33ab44b2df963b6c307ec6d44fd42f6b54edb6a3cf4e3232d3b008f2f8'
+sha256sums=('0641509987a937a87bdc0cc8d33354359b30ced0ec3530f5ed820f5e8b6fc606'
             '115c69062ac231d71596ce6b7d4afd0c6ea9b934f50de062c58315b2ef007137'
             '094525f9bf6e40f96c58e089fc596319f557a4a20bd1b23f426352f94fa43dad'
             '065247e8a96f6db16c0d08b919e53cd5e04d71a2be94f2ff949dd726dee06394'
