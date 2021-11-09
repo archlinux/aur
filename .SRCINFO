@@ -1,5 +1,5 @@
 pkgbase = linux-phicomm-n1
-	pkgver = 5.14.8
+	pkgver = 5.15.1
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = linux-phicomm-n1
 	makedepends = dtc
 	depends = uboot-tools
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.xz
 	source = meson-gxl-s905d-phicomm-n1.dts
 	source = config
 	source = linux.preset
@@ -24,17 +24,17 @@ pkgbase = linux-phicomm-n1
 	source = 01-aegis-crypto-gcc10.patch
 	source = 02-revert-TEXT_OFFSET-deletion.patch
 	source = 03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.14.8.xz
-	md5sums = a082ef5748b813abca0649dab8be5f52
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz
+	md5sums = 071d49ff4e020d58c04f9f3f76d3b594
 	md5sums = 32254701dbf13f058008217a62d713bb
-	md5sums = 0b7ae692865da7c3b4f13eb7a8a33328
+	md5sums = baafd29211e1300fa5d578a1f559fa33
 	md5sums = 30130b4dcd8ad4364ddbfd56c3058d5e
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 0d0435888ecad675870ecda4045a9d45
 	md5sums = e25f537f53ffe2850318ed541f0b3460
-	md5sums = 39315864f2385223a445cf15b65d5962
+	md5sums = 614a77d2f4c92817ab4e5f989f9a76c9
 	md5sums = 7a18066683f3351b2bbd2653db783f80
-	md5sums = 767e2bd13b4f1497f7500877792cbff2
+	md5sums = be8741a89421be268c51393e62905636
 
 pkgname = linux-phicomm-n1
 	pkgdesc = The Linux kernel and modules - AArch64 kernel for Phicomm N1
@@ -44,7 +44,7 @@ pkgname = linux-phicomm-n1
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.14.8
+	provides = linux=5.15.1
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -52,5 +52,5 @@ pkgname = linux-phicomm-n1
 
 pkgname = linux-phicomm-n1-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for Phicomm N1
-	provides = linux-headers=5.14.8
+	provides = linux-headers=5.15.1
 	conflicts = linux-headers

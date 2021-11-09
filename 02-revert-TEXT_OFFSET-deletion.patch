@@ -285,19 +285,8 @@ index 3e7943fd1..c7f67da13 100644
 -- 
 2.25.1
 
-From 62b81a1ad22bc9d65777a60778cc9fcaa0b6ec11 Mon Sep 17 00:00:00 2001
-From: root <root@aws.starx.ink>
-Date: Sun, 20 Dec 2020 05:27:16 +0000
-Subject: [PATCH 10/10] revert TEXT_OFFSET deletion 10/10
-
----
- arch/arm64/Makefile | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/arch/arm64/Makefile b/arch/arm64/Makefile
-index 6a87d592b..60626981a 100644
---- a/arch/arm64/Makefile
-+++ b/arch/arm64/Makefile
+--- a/arch/arm64/Makefile	2021-10-11 14:50:33.546899743 +0800
++++ b/arch/arm64/Makefile	2021-10-11 14:46:25.646039006 +0800
 @@ -11,6 +11,7 @@
  # Copyright (C) 1995-2001 by Russell King
  
@@ -306,24 +295,14 @@ index 6a87d592b..60626981a 100644
  
  ifeq ($(CONFIG_RELOCATABLE), y)
  # Pass --no-apply-dynamic-relocs to restore pre-binutils-2.27 behaviour
-@@ -130,6 +131,9 @@ endif
+@@ -131,6 +132,10 @@
  # Default value
  head-y		:= arch/arm64/kernel/head.o
  
 +# The byte offset of the kernel image in RAM from the start of RAM.
 +TEXT_OFFSET := 0x01080000
++export TEXT_OFFSET
 +
  ifeq ($(CONFIG_KASAN_SW_TAGS), y)
  KASAN_SHADOW_SCALE_SHIFT := 4
- else
-@@ -140,5 +144,7 @@ KBUILD_CFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
- KBUILD_CPPFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
- KBUILD_AFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
- 
-+export	TEXT_OFFSET
-+
- libs-y		:= arch/arm64/lib/ $(libs-y)
- libs-$(CONFIG_EFI_STUB) += $(objtree)/drivers/firmware/efi/libstub/lib.a
--- 
-2.25.1
-
+ else ifeq ($(CONFIG_KASAN_GENERIC), y)
