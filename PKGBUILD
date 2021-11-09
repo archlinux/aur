@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss-git
 _name=${pkgname#python-}
-pkgver=0.1.9.r692.c7098ab
+pkgver=0.1.9.r702.f748de7
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
@@ -28,7 +28,8 @@ build() {
 }
 
 check() {
-	cd "${_name%-git}"/build/lib.*
+	cd "${_name%-git}"
+	cp build/lib.*/tpm2_pytss/_libtpm2_pytss.abi3.so tpm2_pytss
 	python -B -m pytest
 }
 
