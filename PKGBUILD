@@ -6,13 +6,13 @@
 # https://git.archlinux.org/svntogit/community.git/plain/trunk/PKGBUILD?h=packages/ghc&id=8dddaaf3736499eeaada061bb1af7ec60794078a
 pkgname=ghc8.2-bin
 pkgver=8.2.2
-pkgrel=1
-pkgdesc='Binary version of legacy GHC (8.2 series).  Originally released on July 2017.'
+pkgrel=2
+pkgdesc='Legacy binary GHC 8.2 installed as /usr/bin/ghc-8.2 (Jul/2017).'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
 depends=('gcc' 'gmp' 'libffi' 'perl')
-makedepends=('ghc' 'perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
+makedepends=('ghc' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
 checkdepends=('python2')
 install='ghc.install'
 options=('staticlibs')
