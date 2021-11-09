@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2021
-pkgver=2021.0.4
+pkgver=2021.1.0
 pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('java-runtime>=8' 'java-runtime<=15' 'sane')
 source=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb"
         "$pkgname.desktop")
-sha256sums=('be209ca2b32a95d621c68da5fdb3bef01e0f6254e8deb49473a926d3d751309a'
+sha256sums=('708db2265a0e4f5fbf09ee777a8f84d19810b6688e8d22704e3e940924095568'
             '6220630a14643d9052da65fb67bf8e841790e7c6e25e79dd4c297556d2c478b3')
 
 prepare() {
