@@ -1,7 +1,8 @@
-# Maintainer: Keno Goertz <keno@goertz-berlin.com>
+# Maintainer: Guillaume Boehm <guillaumeboehm@hotmail.fr>
 pkgname=lightdm-webkit2-theme-arch
-pkgver=3b15b50e
+pkgver=0.1
 pkgrel=1
+epoch=1
 pkgdesc="Minimal theme for lightdm-webkit2-greeter using humorous wallpapers about Arch Linux."
 arch=('any')
 url="https://gitlab.com/kenogo/lightdm-webkit2-theme-arch"
