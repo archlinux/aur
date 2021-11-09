@@ -1,0 +1,22 @@
+pkgbase = python-frozenlist
+	pkgdesc = A list-like structure which implements collections.abc.MutableSequence, and which can be made immutable.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://frozenlist.readthedocs.io
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-timeout
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/aio-libs/frozenlist/releases/download/v1.2.0/frozenlist-1.2.0.tar.gz
+	sha512sums = 9a0432d7874e66d71a36c8cb91852bf215aa21fee294f52517eba417a843e1f5e6b10e6a56c690472668c6f2045cf8c72a8c91f00aa0974bf0e37ca993308280
+
+pkgname = python-frozenlist
