@@ -1,7 +1,7 @@
-From e65265174ecfeba8077e60f5280fde62197fe9ba Mon Sep 17 00:00:00 2001
+From 7d0a277dfd1be4b5ebcd7228acd122934e296f51 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Tue, 9 Nov 2021 16:11:52 +0100
-Subject: [PATCH 2/2] Fix infinite loop on signal handling.
+Subject: [PATCH 3/3] Fix infinite loop on signal handling.
 
 Signed-off-by: KokaKiwi <kokakiwi+git@kokakiwi.net>
 ---
