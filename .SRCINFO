@@ -1,6 +1,6 @@
 pkgbase = spacestation14-launcher-bin
 	pkgdesc = Space Station 14 launcher
-	pkgver = 0.27.2
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://spacestation14.io/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = spacestation14-launcher-bin
 	optdepends = fluidsynth: needed for in-game midi instruments
 	options = !strip
 	options = staticlibs
-	source = SS14.launcher.v0.27.2.zip::https://github.com/space-wizards/SS14.Launcher/releases/download/v0.27.2/SS14.Launcher_Linux.zip
+	source = SS14.launcher.v0.28.0.zip::https://github.com/space-wizards/SS14.Launcher/releases/download/v0.28.0/SS14.Launcher_Linux.zip
 	source = spacestation14.svg::https://spacestation14.io/images/main/icon.svg
 	source = SS14.desktop
-	sha256sums = 2300143f788f7a6ae0e74ab2bbbb0907a0b94a617bf98f110b2c3db1521e1ba3
+	sha256sums = 0683309dfe9d5a760879390e6d9f588f5cae4eb940262905e52e46646bc85c9b
 	sha256sums = ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5
 	sha256sums = 7645b08e7ca3ac6460ceea8862793c63bc088c04b52b535bce07e5fd4327d4be
 
