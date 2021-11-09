@@ -12,6 +12,7 @@ pkgbase = python-pytango-git
 	depends = python-gevent
 	depends = boost-libs
 	depends = tango
+	provides = python-pytango
 	conflicts = python-pytango
 	source = git+https://gitlab.com/tango-controls/pytango
 	sha256sums = SKIP

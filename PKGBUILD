@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('python' 'python-six>=1.10' 'python-numpy>=1.1' 'python-setuptools'
 	 'python-gevent' 'boost-libs' 'tango')
 conflicts=('python-pytango')
+provides=('python-pytango')
 source=("git+https://gitlab.com/tango-controls/pytango")
 sha256sums=('SKIP')
 
