@@ -5,14 +5,14 @@
 #     Marcin Skory <armitage at q84fh dot net>
 #     with Contribution of Eric Forgeot < http://ifiction.free.fr >
 pkgname=gargoyle-git
-pkgver=2019.1.r212.g240bcee
+pkgver=2019.1.r429.g44e191e
 pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats (development version)"
 arch=('i686' 'x86_64' 'armv6h')
 url="https://github.com/garglk/garglk"
 license=('GPL')
 depends=('gtk3' 'sdl2_mixer' 'sdl2' 'libvorbis' 'freetype2')
-makedepends=('cmake' 'pkgconfig' 'desktop-file-utils' 'git')
+makedepends=('cmake' 'pkgconfig' 'desktop-file-utils' 'git' 'qt5-base')
 provides=('gargoyle-git')
 conflicts=('gargoyle-mod' 'gargoyle')
 replaces=('gargoyle-mod' 'gargoyle')
