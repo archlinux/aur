@@ -4,7 +4,7 @@
 
 pkgname=kisslinux-init
 pkgver=1.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Init framework of KISS Linux"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/kisslinux/init"
@@ -38,6 +38,7 @@ package() {
 	install -Dsm755 "bin/kpow" "$pkgdir/usr/bin/kpow"
 
 	install -Dm644 "etc/rc.conf" "$pkgdir/etc/rc.conf"
+	install -d "$pkgdir/etc/rc.d"
 
 	install -Dm755 "lib/init/rc.boot" "$pkgdir/usr/lib/init/rc.boot"
 	install -Dm755 "lib/init/rc.shutdown" "$pkgdir/usr/lib/init/rc.shutdown"
@@ -50,4 +51,5 @@ package() {
 	| while read -r file; do
 		install -Dm644 "$file" "$pkgdir/usr/lib/init/rc.d/$file"
 	done
+
 }
