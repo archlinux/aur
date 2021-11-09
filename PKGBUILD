@@ -2,17 +2,17 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.3.30
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
 url="https://ivpn.net"
 license=('GPL3')
-depends=('glibc' 'lsof' 'wireless_tools' 'openvpn' 'wireguard-tools')
+depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go')
 install="ivpn.install"
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('a5577a4d3eecf0f0d2e43b118b0da3b8f20c35a49b83f80c8046051446b08ff7')
+sha256sums=('613eae84c3b2fa07b3ec6f38f4ac7f32f940a26823afe668fff10792d911a802')
 
 build() {
   echo "*** build daemon***"
@@ -61,6 +61,10 @@ package() {
   install -Dm600 -g root -o root References/Linux/etc/servers.json "$pkgdir/opt/ivpn/etc/servers.json"
   install -Dm400 -g root -o root References/Linux/etc/ca.crt "$pkgdir/opt/ivpn/etc/ca.crt"
   install -Dm400 -g root -o root References/Linux/etc/ta.key "$pkgdir/opt/ivpn/etc/ta.key"
+
+  install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg-quick "$pkgdir/opt/ivpn/wireguard-tools/wg-quick"
+  install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg "$pkgdir/opt/ivpn/wireguard-tools/wg"
+  install -Dm755 -g root -o root References/Linux/_deps/obfs4proxy_inst/obfs4proxy "$pkgdir/opt/ivpn/obfsproxy/obfs4proxy"
 
   cd "$srcdir/desktop-app-${pkgver}/cli"
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
