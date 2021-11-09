@@ -1,7 +1,7 @@
 # Maintainer: Leon Schumacher <leonsch@protonmail.com>
 # vim: ft=sh:
 pkgname=runit-conversion
-pkgver=8
+pkgver=8.1
 pkgrel=1
 pkgdesc="Convert your system to use runit instead of systemd"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('kisslinux-init' 'runit')
 optdepends=('runit-services: many service definitions')
 conflicts=('systemd-sysvcompat')
 provides=('systemd-sysvcompat')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v8.tar.gz")
-sha256sums=('92449e629751a8a9f1828b4c1c3676531f88bb16f8310bcb5b2b147e4defe83a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('18cc81cd3e0c8283f4044731990373b0f800881c9160a50951c58301996a3d06')
 
 package() {
 	cd "$pkgname-$pkgver"

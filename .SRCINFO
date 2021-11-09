@@ -1,6 +1,6 @@
 pkgbase = runit-conversion
 	pkgdesc = Convert your system to use runit instead of systemd
-	pkgver = 8
+	pkgver = 8.1
 	pkgrel = 1
 	url = https://github.com/42LoCo42/runit-conversion
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = runit-conversion
 	optdepends = runit-services: many service definitions
 	provides = systemd-sysvcompat
 	conflicts = systemd-sysvcompat
-	source = runit-conversion-8.tar.gz::https://github.com/42LoCo42/runit-conversion/archive/refs/tags/v7.tar.gz
-	sha256sums = 67b0028399f340a60462bbda7192c1007d50973e0d56b0e7f48a4195175811b1
+	source = runit-conversion-8.1.tar.gz::https://github.com/42LoCo42/runit-conversion/archive/refs/tags/v8.1.tar.gz
+	sha256sums = 18cc81cd3e0c8283f4044731990373b0f800881c9160a50951c58301996a3d06
 
 pkgname = runit-conversion
