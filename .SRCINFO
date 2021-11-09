@@ -8,6 +8,7 @@ pkgbase = sxhkhm-git
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = sxhkd
 	depends = python
 	depends = bash
@@ -20,4 +21,3 @@ pkgbase = sxhkhm-git
 	md5sums = SKIP
 
 pkgname = sxhkhm-git
-
