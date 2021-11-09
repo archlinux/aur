@@ -1,0 +1,17 @@
+pkgbase = licensure
+	pkgdesc = A software license header and copyright mangement tool
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/chasinglogic/licensure
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	source = licensure-0.1.3.tar.gz::https://github.com/chasinglogic/licensure/archive/v0.1.3.tar.gz
+	source = Cargo.lock
+	sha512sums = b2daef0dabd562000f932ddbb1e54f840712e06fc9acdbf5fa64ce5d988f01dc0789c611b56d19ed6041933bdf51f9c09e48b99cc4b1b83ae956d77a6490c917
+	sha512sums = 9cc8b289406e3e0f2515c280732bdb08df865e312d500f3e5faa5ff8329887540792c532f952bbf065fcabb4d9f0513c86a63e5f5f1c056a8c05525787fa5da0
+	b2sums = 79217d914eb05959c2411e2db018b3e3379e4ad26c63d214ff754565da22c22415912c28978bd00727bea308701f23d349995c1f810915822d8da1f336256063
+	b2sums = 778bea5b826bb820d194e3ea2364911aaeac22f17831d2ea24a4237d1e764dcb64e8259673f662ca018bd48bdfb7b5c8248eb8436860e18848438b86da42774e
+
+pkgname = licensure
