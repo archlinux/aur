@@ -1,17 +1,17 @@
 pkgbase = spacestation14-launcher-bin
 	pkgdesc = Space Station 14 launcher
-	pkgver = 0.13.2
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://spacestation14.io/
 	arch = x86_64
 	license = MIT
-	noextract = SS14.launcher.v0.13.2.zip
+	noextract = SS14.launcher.v0.14.0.zip
 	options = !strip
 	options = staticlibs
-	source = SS14.launcher.v0.13.2.zip::https://github.com/space-wizards/SS14.Launcher/releases/download/v0.13.2/SS14.Launcher_Linux.zip
+	source = SS14.launcher.v0.14.0.zip::https://github.com/space-wizards/SS14.Launcher/releases/download/v0.14.0/SS14.Launcher_Linux.zip
 	source = spacestation14.svg::https://spacestation14.io/images/main/icon.svg
 	source = SS14.desktop
-	sha256sums = 551a313e8e1df1e98d76b1d7907925cad6163760f445ea9cc8589e9e3163bb65
+	sha256sums = f003c13a2b931b59039797868baf5ffde32321043f6445356cdf148063c010c5
 	sha256sums = ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5
 	sha256sums = SKIP
 
