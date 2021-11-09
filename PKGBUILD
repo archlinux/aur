@@ -1,13 +1,13 @@
 # Maintainer: sksat <sksat@sksat.net>
-# Unity for VRChat(2019.4.29f1)
+# Unity for VRChat(2019.4.31f1)
 # VRChat current Unity version information: https://docs.vrchat.com/docs/current-unity-version
-# UnityHub link: unityhub://2019.4.29f1/0eeae20b1d82
+# UnityHub link: unityhub://2019.4.31f1/bd5abf232a62
 
 _prefix=/opt/Unity
-_unityhub_id=0eeae20b1d82
+_unityhub_id=bd5abf232a62
 
 pkgname=unity-editor-vrchat
-pkgver=2019.4.29f1
+pkgver=2019.4.31f1
 pkgrel=1
 epoch=1
 pkgdesc="Allows building your Unity projects for VRChat"
@@ -41,9 +41,9 @@ source=("${pkgver}.tar.xz::https://download.unity3d.com/download_unity/${_unityh
         "${pkgname}-icon.png"
         "eula.txt")
 noextract=("${pkgver}-android.pkg")
-md5sums=("d8d19397849073a6e15a3be912ac3acb"
-         "b91bdc8972c6ec30b50e7eb62d59dc53"
-         "ffad9b886d2941bcfcf4ec12caf14c90"
+md5sums=("97182953df0d98670752d5d2e5b850a8"
+         "75dfe706be13cda0c2eeba5cc34d28f3"
+         "9254d801d74f618e3566f4894ec38f73"
          'a8fe2e41f06489dd09f651b08ec87125'
          'ee60f0d4d3c3fa9e0a52da085b1f3be6'
          '723f9e556821810682a6d1f4be540a74'
