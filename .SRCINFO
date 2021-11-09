@@ -1,0 +1,21 @@
+pkgbase = duckypad-profile-autoswitcher-git
+	pkgdesc = App allowing duckyPad to switch profiles automatically based on active window (git)
+	pkgver = r55.a5ff251
+	pkgrel = 1
+	url = https://github.com/dekuNukem/duckyPad-profile-autoswitcher
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = gendesk
+	depends = duckypad
+	depends = python-ewmh
+	depends = python-psutil
+	provides = duckypad-profile-autoswitcher
+	conflicts = duckypad-profile-autoswitcher
+	source = duckypad-profile-autoswitcher-git::git+https://github.com/dekuNukem/duckyPad-profile-autoswitcher
+	source = duckypad_autoswitcher.sh
+	sha256sums = SKIP
+	sha256sums = 58869235e7be8d049900285985d11775988150c950cd705715caf393e53463f7
+
+pkgname = duckypad-profile-autoswitcher-git
