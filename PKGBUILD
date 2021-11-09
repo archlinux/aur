@@ -2,8 +2,8 @@
 
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
-pkgver=91.0b7
-pkgrel=3
+pkgver=95.0b4
+pkgrel=1
 pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks icon- and .desktop-files."
 arch=("any")
 license=('custom: public domain')
