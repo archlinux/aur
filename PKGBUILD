@@ -3,34 +3,40 @@
 # Contributor: Viacheslav Chimishuk <voice@root.ua>
 
 pkgname=python-pysvn
-pkgver=1.9.15
-_pycxxver=7.1.5
+_name=${pkgname#python-}
+pkgver=1.9.16
 pkgrel=1
 pkgdesc="The Pythonic interface to Subversion"
 url="https://pysvn.sourceforge.io/"
-depends=('python>=3.1.3' 'subversion' 'apr')
-conflicts=('pysvn<=1.7.4-3')
+depends=('apr' 'python' 'subversion')
+makedepends=('python-pycxx' 'python-setuptools')
 arch=('i686' 'x86_64')
 license=('Apache')
 source=("https://downloads.sourceforge.net/project/pysvn/pysvn/V${pkgver}/pysvn-${pkgver}.tar.gz")
-sha256sums=('4a9ad698ab123c5946f4ea778e6cdecabc8985997bf77b8e128b809aa9bfba61')
+sha256sums=('20fbd5ab66d38997e691f088af2b8d74be1994206afb81026198fc5424a42e0e')
+
+prepare() {
+  cd "$_name-$pkgver"
+
+  # Remove bundled libs
+  rm -rf Import
+}
 
 build() {
-  cd "$srcdir/pysvn-$pkgver/Source"
-  python3 setup.py configure --norpath --verbose --pycxx-dir="../Import/pycxx-${_pycxxver}"
-  make
+  cd "$_name-$pkgver"
+
+  python setup.py build
 }
 
 check() {
-  cd "$srcdir/pysvn-$pkgver/Tests"
-  LC_ALL="en_US.UTF-8" make
+  cd "$_name-$pkgver/Tests"
+
+  make
 }
 
 package() {
-  _pyver=$(python -c 'import sys; print(sys.version_info.minor)')
-  cd "$srcdir/pysvn-$pkgver/Source"
-  install -Ddm755 "$pkgdir/usr/lib/python3.${_pyver}/site-packages/pysvn/"
-  install -Dm644 pysvn/__init__.py "$pkgdir/usr/lib/python3.${_pyver}/site-packages/pysvn/__init__.py"
-  install -Dm755 "pysvn/_pysvn_3_${_pyver}.so" "$pkgdir/usr/lib/python3.${_pyver}/site-packages/pysvn/_pysvn_3_${_pyver}.so"
+  cd "$_name-$pkgver"
+
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 # vim: set ts=2 sw=2 et:
