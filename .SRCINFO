@@ -1,7 +1,7 @@
 pkgbase = matrix-synapse-imap
-	pkgdesc = Allows Synapse to use IMAP to login users
+	pkgdesc = IMAP auth provider for Synapse
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bit/matrix-synapse-imap
 	arch = any
 	license = Apache

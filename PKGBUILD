@@ -1,8 +1,8 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=matrix-synapse-imap
 pkgver=0.0.5
-pkgrel=1
-pkgdesc="Allows Synapse to use IMAP to login users"
+pkgrel=2
+pkgdesc="IMAP auth provider for Synapse"
 arch=('any')
 url="https://github.com/bit/matrix-synapse-imap"
 license=('Apache')
