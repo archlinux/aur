@@ -3,7 +3,7 @@
 
 _name=jfrog
 pkgname=jfrog-cli
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -12,9 +12,9 @@ license=('Apache')
 depends=('glibc')
 conflicts=('jfrog-cli-go')
 replaces=('jfrog-cli-go')
-makedepends=('git' 'go')
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('cdb017d91a468292bca593651117c55934522e113808bac869e324b18b75af36ca3f6ec40081546df8995b049009dec5c17887f9ab2dc76ac43084a1f04f95af')
+sha512sums=('153523cadfc349aa199954b111b084060655167bd4658d3cbe345c2a1bf270cc28418ec7b43660a147dcb16c6a27fd472b514cf711c9e4ecddcdadc2fa91e9bc')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -31,4 +31,3 @@ package() {
   install -vDm 755 ${_name} -t "${pkgdir}/usr/bin/"
   install -vDm 644 {README,RELEASE}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
