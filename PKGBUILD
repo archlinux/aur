@@ -1,5 +1,4 @@
 
-# Maintainer: Your Name <youremail@domain.com>
 _pkgname=minq_xvideos
 pkgname="${_pkgname}-git"
 pkgver=r15.0af06f627bbb7cfbc90313b2df459841ec94b5f0
