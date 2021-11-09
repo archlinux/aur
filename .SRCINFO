@@ -1,6 +1,6 @@
 pkgbase = ffmpegfs-git
 	pkgdesc = FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV.
-	pkgver = 1.98.r95.da13eb1
+	pkgver = 2.7.r0.5d5097ea
 	pkgrel = 1
 	url = https://nschlia.github.io/ffmpegfs/
 	arch = x86_64
@@ -17,13 +17,14 @@ pkgbase = ffmpegfs-git
 	makedepends = xxd
 	depends = fuse
 	depends = ffmpeg
-	depends = sqlite3
-	depends = libdvdnav
+	depends = sqlite
 	depends = libbluray
+	depends = libdvdread
+	depends = libcue
+	depends = libchardet
 	provides = ffmpegfs
 	conflicts = ffmpegfs
 	source = git+https://github.com/nschlia/ffmpegfs.git
 	sha384sums = SKIP
 
 pkgname = ffmpegfs-git
-
