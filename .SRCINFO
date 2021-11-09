@@ -1,0 +1,17 @@
+pkgbase = python-polt-git
+	pkgdesc = Live plotting with Matplotlib
+	pkgver = 0.12.1.r13.ge8829ab
+	pkgrel = 1
+	url = https://gitlab.com/nobodyinperson/python3-polt
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-click
+	depends = python-xdgspec
+	provides = python-polt
+	source = python-polt::git+https://gitlab.com/nobodyinperson/python3-polt
+	md5sums = SKIP
+
+pkgname = python-polt-git
