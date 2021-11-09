@@ -1,15 +1,24 @@
-**A simple tool to open magnet links** using a remote
+**A simple tool to open torrents and magnet links** using a remote
 [Transmission](https://github.com/transmission/transmission) daemon. Includes
 a `.desktop` file for use with `xdg-open`. The remote server address is
 configurable on a system-wide and per-user basis.
 
-Requires that `transmission-remote` be available on the system. Includes
-PKGBUILD for installation on Arch. Under Arch, `transmission-remote` is found in
-the `transmission-cli` package.
+Requires that `transmission-remote` be available on the system. Desktop
+notifications require `notify-send`. Includes PKGBUILD for installation on Arch.
+Under Arch, `transmission-remote` is found in the `transmission-cli` package.
 
 # USAGE
 
-**`addmag LINK`** where `LINK` is a magnet link or path to a torrent file
+**`addmag LINK`** where `LINK` is a magnet link or torrent file
+
+# NOTIFICATIONS
+
+Specify the `-n` flag to generate desktop notifications, ie.:
+
+  `addmag -n LINK`
+
+A notification will be created on success or failure. Failure notifications will
+be marked critical.
 
 # CONFIGURATION
 
