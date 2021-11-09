@@ -1,0 +1,13 @@
+pkgbase = matrix-synapse-imap
+	pkgdesc = Allows Synapse to use IMAP to login users
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/bit/matrix-synapse-imap
+	arch = any
+	license = Apache
+	makedepends = python
+	depends = matrix-synapse
+	source = https://files.pythonhosted.org/packages/source/m/matrix-synapse-imap/matrix-synapse-imap-0.0.5.tar.gz
+	sha256sums = a6822bd1fdbae56859b202eaa6b3fe8c933ac0f830102d2e3154d64faf1774b0
+
+pkgname = matrix-synapse-imap
