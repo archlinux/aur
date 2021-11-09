@@ -13,7 +13,7 @@ pkgname=(
 pkgver=6.0.0.sdk100
 _runtimever=6.0.0
 _sdkver=6.0.100
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -80,7 +80,7 @@ package_dotnet-sdk-bin() {
   conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-6.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
-  cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
+  cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-bin
 }
 
