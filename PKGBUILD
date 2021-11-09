@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
 pkgname=gnome-gesture-improvements
 pkgver=r77.e3a93aa
 pkgrel=1
