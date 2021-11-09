@@ -1,0 +1,9 @@
+post_install() {
+  echo ""
+  echo "User needs be in input group:"
+  echo "sudo usermod -aG input $USER"
+  echo ""
+  echo "Enable the service and reboot:"
+  echo "systemctl enable gesture_improvements_gesture_daemon"
+  echo ""
+}
