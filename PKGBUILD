@@ -26,7 +26,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare(){
+prepare() {
   cd "$_pkgname"
 
   patch -Np1 < "$srcdir/abseil-fix.patch"
