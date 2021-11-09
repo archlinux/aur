@@ -5,14 +5,14 @@
 
 pkgname=webkit2gtk-unstable
 pkgver=2.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
 depends=(libxt libxslt enchant gst-plugins-base-libs libmanette libsecret libwebp
          openjpeg2 harfbuzz-icu gtk3 libnotify hyphen woff2 libwpe wpebackend-fdo
-         bubblewrap xdg-dbus-proxy)
+         bubblewrap xdg-dbus-proxy libavif libsoup3)
 makedepends=(gperf gobject-introspection ruby gtk-doc cmake python geoclue ninja)
 optdepends=('geoclue: Geolocation support'
             'gst-plugins-base: free media decoding'
@@ -29,26 +29,31 @@ provides=(webkit2gtk)
 options=('!emptydirs')
 
 build() {
-  cmake -Hwebkitgtk-$pkgver -Bbuild -GNinja \
+  cmake -S webkitgtk-$pkgver -B build -G Ninja \
     -DPORT=GTK \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DENABLE_GTKDOC=ON \
-    -DLIBEXEC_INSTALL_DIR=/usr/lib \
     -DLIB_INSTALL_DIR=/usr/lib \
-    -DUSE_SOUP2=ON \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DUSE_SOUP2=OFF \
+    -DENABLE_GTKDOC=OFF \
     -DUSE_AVIF=ON
-
   cmake --build build
 }
 
 check() {
+  cd webkitgtk-$pkgver
   : cmake --build build --target tests
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --build build --target install
+  depends+=(libwpe-1.0.so libWPEBackend-fdo-1.0.so)
+  provides+=(libjavascriptcoregtk-4.0.so libwebkit2gtk-4.0.so)
+
+  DESTDIR="$pkgdir" cmake --install build
+
+  rm -r "$pkgdir/usr/bin"
 
   cd webkitgtk-$pkgver
   find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
