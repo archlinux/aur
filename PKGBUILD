@@ -2,11 +2,11 @@
 
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
-pkgver=986.1312677
+pkgver=986.7d28747
 pkgrel=1
-pkgdesc="The break time reminder app with more restrictive menus"
+pkgdesc="The break reminder app with more restrictive menus"
 arch=('any')
-url="https://github.com/xeruf/stretchly"
+url="https://github.com/xeruf/${_pkgname}"
 license=('BSD')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron')
 makedepends=(git nvm jq python)
@@ -21,7 +21,8 @@ pkgver() {
 }
 
 _ensure_local_nvm() {
-    if type nvm >/dev/null; then
+    if type nvm >/dev/null 2>&1
+    then
         nvm deactivate
         nvm unload
     fi

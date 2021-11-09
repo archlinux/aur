@@ -1,6 +1,6 @@
 pkgbase = stretchly-xeruf-git
-	pkgdesc = The break time reminder app with more restrictive menus
-	pkgver = 986.1312677
+	pkgdesc = The break reminder app with more restrictive menus
+	pkgver = 986.7d28747
 	pkgrel = 1
 	url = https://github.com/xeruf/stretchly
 	arch = any
