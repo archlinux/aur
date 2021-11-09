@@ -1,0 +1,12 @@
+post_remove() {
+	# remove udev rules
+	
+	rm -rf /etc/udev/rules.d/70-huion.rules
+	rm -rf /etc/udev/rules.d/70-uinput-plugdev.rules
+	rm -rf /etc/udev/rules.d/70-xp-pen.rules
+
+	# remove xorg conf
+
+	rm -rf /usr/share/X11/xorg.conf.d/60-huion.conf
+	rm -rf /usr/share/X11/xorg.conf.d/60-xp-pen.conf
+}
