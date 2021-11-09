@@ -2,3 +2,4 @@ src/
 pkg/
 ghc-8.0.*-*-deb8-linux.tar.xz
 *.pkg.tar.xz
+*.pkg.tar.zst
