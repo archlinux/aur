@@ -1,6 +1,6 @@
 pkgbase = octofetch
 	pkgdesc = GitHub stats fetch tool
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/azur1s/octofetch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = octofetch
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = octofetch-0.3.2.tar.gz::https://github.com/azur1s/octofetch/archive/0.3.2.tar.gz
-	sha256sums = 57bc7a934079f1bab7d5347724259e11fac5dcbe66de7a2c29606db252a2a271
+	source = octofetch-0.3.3.tar.gz::https://github.com/azur1s/octofetch/archive/0.3.3.tar.gz
+	sha256sums = b6c972b21fdd7ce9588c0eca61b078f031c4e6c7762a455ab15042b26a46522a
 
 pkgname = octofetch

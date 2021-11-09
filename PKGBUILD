@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=octofetch
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="GitHub stats fetch tool"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('57bc7a934079f1bab7d5347724259e11fac5dcbe66de7a2c29606db252a2a271')
+sha256sums=('b6c972b21fdd7ce9588c0eca61b078f031c4e6c7762a455ab15042b26a46522a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
