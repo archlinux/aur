@@ -1,6 +1,6 @@
 pkgbase = kyocera_universal
 	pkgdesc = Kyocera Printing Package for many Kyocera printers (stripped of kdialog8).
-	pkgver = 8.0.0
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://www.kyocera.com/
 	install = kyodialog-bin.install
@@ -19,8 +19,7 @@ pkgbase = kyocera_universal
 	depends = python-reportlab
 	depends = python-setuptools
 	depends = zlib
-	source = https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/KyoceraLinuxPackages_20201222_tar_gz.download.gz
-	md5sums = 3b9819e9e1654cbd3ed837731d87039f
+	source = https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/KyoceraLinuxPackages_20210527_tar_gz.download.gz
+	md5sums = 5079cb91b5a62e51817740187d12cad4
 
 pkgname = kyocera_universal
-

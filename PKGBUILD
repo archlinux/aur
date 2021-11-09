@@ -1,19 +1,19 @@
 # Maintainer: Dominik Wetzel <dimonok@web.de>
 # Contributors: Julian Eckhardt <julian@eckhardt.fi>, Paulo Marcos <contato-myghi63@protonmail.com>
 pkgname=kyocera_universal
-pkgver=8.0.0
+pkgver=9.0.0
 pkgrel=1
-pkgdesc="Kyocera Printing Package for many Kyocera printers (stripped of kdialog8)."
+pkgdesc="Kyocera Printing Package for many Kyocera printers (stripped of kdialog9)."
 arch=('x86_64' 'i686')
 url="https://www.kyocera.com/"
 license=('other')
 depends=('cups-filters' 'dbus' 'gcc-libs' 'glibc' 'krb5' 'libcups' 'libgcrypt' 'python-reportlab' 'python-setuptools' 'zlib')
 makedepends=('unzip' 'wget')
 DLAGENTS=("https::/usr/bin/wget")
-toDwnld="KyoceraLinuxPackages_20201222_tar_gz.download.gz"
+toDwnld="KyoceraLinuxPackages_20210527_tar_gz.download.gz"
 source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${toDwnld}")
 install=kyodialog-bin.install
-md5sums=('3b9819e9e1654cbd3ed837731d87039f')
+md5sums=('5079cb91b5a62e51817740187d12cad4')
 
 if [ "$arch" == "x86_64" ]; then
   _arch="amd64"
@@ -41,7 +41,7 @@ package() {
   cd $srcdir
   rm -r usr/share/kyocera${major}/Python
   rm -r usr/share/applications
-  rm usr/share/kyocera${major}/appicon_G.png
+  rm usr/share/kyocera${major}/appicon_H.png
   rm usr/bin/kyodialog${major}
   install -D -m644 "usr/share/doc/kyodialog/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
   rm -r ${srcdir}/usr/share/doc

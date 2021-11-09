@@ -1,6 +1,6 @@
 pre_install() {
 
-	PHASE2_PPDS=/usr/share/cups/model/Kyocera/
+	PHASE2_PPDS=/usr/share/cups/model/kyocera/
 	PHASE3_PPDS=/usr/share/ppd/kyocera/
 
 
@@ -18,13 +18,13 @@ post_install() {
 
 	ALTERNATE_PPD_DIRECTORY=/usr/share/cups/model/kyocera
 	PRIMARY_PPD_DIRECTORY=/usr/share/ppd/kyocera/
-	INSTALLED_PPD_DIRECTORY=/usr/share/kyocera8/ppd8
+	INSTALLED_PPD_DIRECTORY=/usr/share/kyocera9/ppd9
 
 	mkdir -p $PRIMARY_PPD_DIRECTORY
 	cp -r $INSTALLED_PPD_DIRECTORY/* $PRIMARY_PPD_DIRECTORY
 
-	chmod 777 /usr/share/kyocera8
-	chmod 755 /usr/bin/kyoPPDWrite_G
+	chmod 777 /usr/share/kyocera9
+	chmod 755 /usr/bin/kyoPPDWrite_H
 
 	if [ ! -h $ALTERNATE_PPD_DIRECTORY ]; then
 	    ln -s $PRIMARY_PPD_DIRECTORY $ALTERNATE_PPD_DIRECTORY
@@ -51,10 +51,10 @@ post_upgrade() {
 post_remove() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 
-	KYOCERA_CONFIG="/usr/share/kyocera8"
+	KYOCERA_CONFIG="/usr/share/kyocera9"
 
 	uninstall_printers(){
-	    files=`grep -l "kyofilter_G\|kyofilter_ras_G\|kyofilter_pdf_G" /etc/cups/ppd/* 2>/dev/null`
+	    files=`grep -l "kyofilter_H\|kyofilter_ras_H\|kyofilter_pdf_H" /etc/cups/ppd/* 2>/dev/null`
 	    if [ ! -z "$files" ]; then
 	        for file in ${files}; do
 	            if matches $file .ppd; then
@@ -95,9 +95,9 @@ post_remove() {
 
 	uninstall_config_files(){
 	    #For each user, uninstall the config files in
-	    #/usr/share/kyocera8/<username> and ~/.cups/lpoptions
+	    #/usr/share/kyocera9/<username> and ~/.cups/lpoptions
 	    if [ -d $KYOCERA_CONFIG ]; then
-	        users=`ls $KYOCERA_CONFIG | grep -v 'ppd8\|appicon\|Python'`
+	        users=`ls $KYOCERA_CONFIG | grep -v 'ppd9\|appicon\|Python'`
 	        if [ ! -z "$users" ]; then
 	            for user in ${users}; do
 	                is_appicon=`matches $user appicon.png`
@@ -117,8 +117,8 @@ post_remove() {
 	    if [ -d /usr/share/ppd/kyocera ]; then
 	        rm -rf "/usr/share/ppd/kyocera"
 	    fi
-	    if [ -d /usr/share/kyocera8/Python ]; then
-	        rm -rf "/usr/share/kyocera8/Python"
+	    if [ -d /usr/share/kyocera9/Python ]; then
+	        rm -rf "/usr/share/kyocera9/Python"
 	    fi
 	}
 
