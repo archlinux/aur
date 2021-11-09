@@ -23,3 +23,6 @@ trap - EXIT
 
 sed -i -e "s/${sha256sums[0]}/$sum/g" PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
+
+git add .
+git commit -m "Upgrade to 2.21.5"
