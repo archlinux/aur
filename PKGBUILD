@@ -1,4 +1,7 @@
 # Maintainer: Kirill Pshenichnyi <pshcyrill@mail.ru>
+# Contributor: The Tango Controls community
+#              (https://tango-controls.org) <info@tango-controls.org>
+
 pkgname=python-pytango
 _pkgname=pytango
 pkgver=9.3.3
