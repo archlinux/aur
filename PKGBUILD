@@ -2,7 +2,7 @@
 pkgname=tcl-combobox
 pkgver=2.3
 pkgrel=1
-pkgdesc="A megawidget set based on [incr Tcl] and [incr Tk]"
+pkgdesc="A combobox megawidget for TK written in pure TCL"
 url="https://core.tcl-lang.org/jenglish/gutter/packages/combobox.html"
 arch=('x86_64' 'i686')
 license=('BSD')
