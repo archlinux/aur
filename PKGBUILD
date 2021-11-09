@@ -2,10 +2,10 @@
 pkgbase=python-sphinx-notfound-page
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7.1
+pkgver=0.8
 pkgrel=1
 pkgdesc="Sphinx extension to build a 404 page with absolute URLs"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://sphinx-notfound-page.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools'
@@ -15,9 +15,9 @@ makedepends=('python-setuptools'
              'python-sphinx-prompt'
              'python-sphinxemoji'
              'python-sphinx_rtd_theme')
-checkdepends=('python-pytest')
+#checkdepends=('python-pytest' 'python2-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4e13e48c449d80f929b7aaf62ec2b3db')
+md5sums=('2e1563e824b14391a065dae6dca39f91')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
@@ -39,12 +39,13 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
     msg "Checking Python3"
-#   python setup.py test
-    pytest || warning "Tests failed"
+    python setup.py test
+#   pytest #|| warning "Tests failed"
 
     msg "Checking Python2"
     cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py test
+#   pytest2
 }
 
 package_python2-sphinx-notfound-page() {
