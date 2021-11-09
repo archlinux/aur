@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xrock-git
-pkgver=v1.0.0.r11.g9ef9913
+pkgver=v1.0.2.r0.g478eb88
 pkgrel=1
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
@@ -20,7 +20,7 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname%-git}::git+https://hub.fastgit.org/xboot/xrock.git")
+source=("${pkgname%-git}::git+https://ghproxy.com/${url}.git")
 noextract=()
 sha256sums=('SKIP')
 #validpgpkeys=()
