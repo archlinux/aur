@@ -7,7 +7,7 @@
 pkgname=tilp
 pkgver=1.18
 pkgrel=1
-pkgdesc="TI graphing calculator link/transfer program"
+pkgdesc="TI graphing calculator link/transfer program - with Support for the XDG Base Directory Specification"
 arch=('i686' 'x86_64')
 url="http://lpg.ticalc.org/prj_tilp/"
 license=('GPL2')
