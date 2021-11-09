@@ -1,6 +1,6 @@
 pkgbase = repotool
 	pkgdesc = An arch linux repository management tool
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = https://github.com/coNQP/repotool
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = repotool
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-setuptools
-	source = repotool::git+https://github.com/coNQP/repotool.git#tag=1.4.7
+	source = repotool::git+https://github.com/coNQP/repotool.git#tag=1.4.8
 	sha256sums = SKIP
 
 pkgname = repotool
