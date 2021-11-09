@@ -1,9 +1,13 @@
 # Maintainer: Kirill Pshenichnyi <pshcyrill@mail.ru>
+# Contributor: The Tango Controls community (https://tango-controls.org)
+#                                           <info@tango-controls.org>
+
 pkgname=python-pytango-git
 _pkgname=pytango
 pkgver=v9.3.3.r79.gb78181d
 pkgrel=1
-pkgdesc="Python binding for Tango, a library dedicated to distributed control systems."
+pkgdesc="Python binding for Tango, a library dedicated to distributed \
+         control systems."
 arch=('any')
 url="http://pytango.readthedocs.io/"
 license=('GPL3')
