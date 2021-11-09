@@ -1,0 +1,15 @@
+pkgbase = synthv-studio
+	pkgdesc = Synthesizer V studio by Dreamtonics
+	pkgver = 1
+	pkgrel = 1
+	url = https://dreamtonics.com/synthesizerv
+	arch = x86_64
+	license = custom
+	provides = synthv-studio
+	conflicts = synthv-studio
+	source = https://resource.dreamtonics.com/download/Synthesizer%20V%20Studio%20Basic/latest/svstudio-basic-linux64-latest.zip
+	source = synthv-studio.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = synthv-studio
