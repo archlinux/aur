@@ -1,7 +1,7 @@
 
 _pkgname=minq_nhentai
 pkgname="${_pkgname}-git"
-pkgver=r15.0af06f627bbb7cfbc90313b2df459841ec94b5f0
+pkgver=r3.28dc642b2fe575d5b34ac86254dcf782493e3053
 pkgrel=1
 epoch=
 pkgdesc="Search for hentai in nhentai based on specified tags"
