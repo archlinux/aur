@@ -6,7 +6,7 @@
 # Maintainer: Francisco Carvajal <fraco_oxza@outlook.com>
 pkgname=dreadnought-git
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A lightweight, simple and configurable web server "
 arch=('x86_64')
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fraco-oxza/dreadnought/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=("f4f30479ede4fa624af9968f0f1b0e3c6420392bfb0d4b7f01e5d8f46066461a")
+sha256sums=("4f65a982d02ca9545135ba6469df0d116552223db3e454f44edb020a567216fb")
 
 prepare() {
     cd dreadnought-$pkgver
