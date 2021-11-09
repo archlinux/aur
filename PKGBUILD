@@ -153,7 +153,7 @@ prepare() {
 
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/$pkgname-$pkgver-1"
+  _ungoogled_repo="$srcdir/${pkgname%xdg*}$pkgver-1"
   _utils="${_ungoogled_repo}/utils"
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
   python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
@@ -217,7 +217,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/$pkgname-$pkgver-1"
+  _ungoogled_repo="$srcdir/${pkgname%xdg*}$pkgver-1"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # use fixed flags as system flags break build
