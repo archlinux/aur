@@ -1,8 +1,8 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 _pkgname=msquic
 pkgname=$_pkgname-prerelease
-pkgver=1.8.0
-pkgrel=4
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (prerelease)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
@@ -14,7 +14,7 @@ conflicts=('msquic' 'libmsquic.so')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/microsoft/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         'openssl-df92821.tar.gz::https://github.com/quictls/openssl/archive/df92821e310497f8664b30cff24da897996d3cce.tar.gz'
         'cmake_args.patch')
-sha512sums=('8d34612874c0454760c90d082932d4cde0c83c1b2829b5025e9550b2a47db7000ab34822dc1ae84d835d60f4d382381b14d2d0c70b8109447b756e20250776e2'
+sha512sums=('616a114f943de2fcc51ace2d67ebb4dceabff318cfb4381aa99307b1eecfb6095da1f635714ee03d1b1c6ed25c26bef63a3501d30d141808b3cce2ffb0d9720a'
             '4eb7596bb7b35c17b1d713dfe62e8a4f470d6c9d41eae14955f534aa4527ec3f14532155b8111d7b390ae82888207247c5b205ce5648aceeb59d959e88a7d870'
             '9d18293f34d1d83574cdcfb544bf6c0ff5f98f90ea33335bf0c7bfff9f4101b60d18c176e81f8249065b30e643be691ee2800c26727da97b6a56d79da8cd0d7f')
 noextract=('openssl-df92821.tar.gz')
