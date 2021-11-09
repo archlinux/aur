@@ -1,20 +1,20 @@
 pkgbase = addmag
-	pkgdesc = Opens magnet links using a remote Transmission daemon
-	pkgver = 0.1.1
-	pkgrel = 4
+	pkgdesc = Opens torrents and magnet links using a remote Transmission daemon
+	pkgver = 0.2.1
+	pkgrel = 2
 	url = https://github.com/aetherised/addmag
 	arch = any
 	license = MIT
 	depends = transmission-cli
 	depends = bash
+	depends = libnotify
 	source = addmag
 	source = addmag.desktop
 	source = LICENSE
 	source = README.md
-	md5sums = 14f98b59c71487c92b6b5d49cc2db79d
-	md5sums = 921ef9cd57fe1e0f6e8cb3cd7ce41029
+	md5sums = 9fd4986bc3d4cc0d4dc1e5913eb5b2de
+	md5sums = d29606b143c5d8c80d3d68664e6fc50a
 	md5sums = 648ebc0775a7579d1f66bbf4b2381b83
-	md5sums = 0398bc2eabdc6bf328ca160dfd2074ad
+	md5sums = 6b40219cffa0a70428eb925cb240bb73
 
 pkgname = addmag
-
