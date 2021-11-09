@@ -1,9 +1,0 @@
-post_install() {
-	echo ':: You must add this plugin to your init scripts for it to work.'
-	echo ':: Please check upstream documentation on how to invoke this plugin.'
-	post_remove
-}
-
-post_remove() {
-	echo ':: Remember to remove all associated "require" statements from your init scripts before you uninstall!'
-}
