@@ -18,7 +18,7 @@ install='ghc.install'
 options=('staticlibs')
 provides=('ghc8.4')
 conflicts=('ghc8.4')
-source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb8-linux.tar.xz")
+source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-x86_64-deb8-linux.tar.xz")
 noextract=("ghc-${pkgver}-${CARCH}-deb8-linux.tar.xz")
 sha256sums=('4c2a8857f76b7f3e34ecba0b51015d5cb8b767fe5377a7ec477abde10705ab1a')
 
