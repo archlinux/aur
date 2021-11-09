@@ -47,6 +47,10 @@ prepare() {
 	git checkout main
 	git pull --autostash
 	git checkout "origin/${_branch}"
+}
+
+build() {
+	cd "$pkgname" || exit 1
 	virtualenv ".venv" -p python3
 	source ".venv/bin/activate"
 	if command -v autobuild; then
@@ -57,11 +61,6 @@ prepare() {
 			pip3 uninstall --yes autobuild
 		fi
 	fi
-}
-
-build() {
-	cd "$pkgname" || exit 1
-
 	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
 	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON -DVIEWER_CHANNEL="Alchemy Test"
 
