@@ -1,6 +1,6 @@
 pkgbase = minq_xvideos-git
-	pkgdesc = Watch xvideos in your terminal! Undesirable videos can be blocked!
-	pkgver = r13.d983a5287e2bb755d0410ce54b3ca2e7160aab46
+	pkgdesc = Watch xvideos in your terminal! Undesirable videos can be blocked.
+	pkgver = r15.0af06f627bbb7cfbc90313b2df459841ec94b5f0
 	pkgrel = 1
 	url = https://github.com/kuche1/minq_xvideos.git
 	arch = x86_64
