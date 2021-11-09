@@ -1,0 +1,17 @@
+pkgbase = gnome-gesture-improvements
+	pkgdesc = Touchpad gesture improvements for GNOME on Wayland/X11
+	pkgver = r77.e3a93aa
+	pkgrel = 1
+	url = https://github.com/harshadgavali/gnome-gesture-improvements
+	install = gnome-gesture-improvements.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	makedepends = zip
+	depends = gnome-shell
+	optdepends = gnome-x11-gesture-daemon: Required for Xorg session
+	source = git+https://github.com/harshadgavali/gnome-gesture-improvements.git#commit=e3a93aae4d99eb633242264a54841d32069fd4b8
+	sha256sums = SKIP
+
+pkgname = gnome-gesture-improvements
