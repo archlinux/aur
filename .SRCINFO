@@ -1,6 +1,6 @@
 pkgbase = gnome-control-center-nocheese
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop - without Cheese dependency
-	pkgver = 41.0
+	pkgver = 41.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
@@ -50,9 +50,9 @@ pkgbase = gnome-control-center-nocheese
 	optdepends = system-config-printer: Printer settings
 	provides = gnome-control-center
 	conflicts = gnome-control-center
-	source = gnome-control-center-nocheese-41.0-1.tar.gz::https://gitlab.gnome.org/GNOME/gnome-control-center/-/archive/41.0/gnome-control-center-41.0.tar.gz
-	source = gnome-control-center-nocheese-41.0-1-gvc.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/7a621180b46421e356b33972e3446775a504139c/libgnome-volume-control-7a621180b46421e356b33972e3446775a504139c.tar.gz
-	sha256sums = 435f93577e277c4f1c7e375cf4ebb6bfec61554dad656a91c215f911329eb83e
-	sha256sums = 0bd8bb754ce3fb82b29c83e2186b2a84517be772acdba28d15eb928a44cadec3
+	source = gnome-control-center-nocheese-41.1-1.tar.gz::https://gitlab.gnome.org/GNOME/gnome-control-center/-/archive/41.1/gnome-control-center-41.1.tar.gz
+	source = gnome-control-center-nocheese-41.1-1-gvc.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/7a621180b46421e356b33972e3446775a504139c/libgnome-volume-control-7a621180b46421e356b33972e3446775a504139c.tar.gz
+	sha512sums = 81fbfd57b1777fa359ddda4c9e410501f8f6fec5c0a57d573b0a233fd551e24e5e52b8d2ab360ef1030b028643a095915a2416de30ee0d67b5687e5b97298d7a
+	sha512sums = 3b67988c20c0728458a1b74658d07cb1856d149c44a951f0fdeff03da792cd428ac85f1ff6434778c56602374a00f6a040fd215a8bc0d018b033066037a4750f
 
 pkgname = gnome-control-center-nocheese
