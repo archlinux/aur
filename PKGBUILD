@@ -2,7 +2,7 @@
 
 pkgname=clickrouter-git
 pkgver=2.0.1.r951.g593d10826
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast modular packet processing and analysis'
 depends=('glibc' 'libpcap')
 optdepends=()
@@ -29,6 +29,9 @@ prepare() {
     cd "$srcdir/$pkgname"
     FILES=$(grep -r 'gzcat' ./* | grep -v '^Binary' | cut -d ':' -f 1 | uniq)
     sed -i -e 's/\<gzcat\>/zcat/g' ${FILES}
+
+    # https://github.com/kohler/click/issues/493
+    sed -i -e '/linux_true/d' include/click/cxxprotect.h
 }
 
 build() {
