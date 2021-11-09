@@ -1,7 +1,7 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
 pkgver=0.56.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"

@@ -1,7 +1,7 @@
 pkgbase = portfolio
 	pkgdesc = Track your portfolio performance (finance)
 	pkgver = 0.56.0
-	pkgrel = 2
+	pkgrel = 1
 	url = http://buchen.github.io/portfolio/
 	arch = i686
 	arch = x86_64
