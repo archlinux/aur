@@ -11,6 +11,10 @@ pkgbase = jami-client-qt-git
 	depends = qt5-base
 	depends = libnm
 	depends = qrencode
+	depends = libnotify
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = qt5-webengine
 	provides = jami-client-qt
 	conflicts = jami-gnome-git
 	conflicts = jami-gnome
@@ -18,4 +22,3 @@ pkgbase = jami-client-qt-git
 	sha512sums = SKIP
 
 pkgname = jami-client-qt-git
-
