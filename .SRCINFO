@@ -1,0 +1,21 @@
+pkgbase = networkmanager-openvpn-xdg
+	pkgdesc = NetworkManager VPN plugin for OpenVPN - with Support for the XDG Base Directory Specification
+	pkgver = 1.8.16
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/NetworkManager
+	arch = x86_64
+	license = GPL
+	makedepends = libnma
+	makedepends = intltool
+	makedepends = python
+	makedepends = git
+	depends = libnm
+	depends = libsecret
+	depends = openvpn
+	optdepends = libnma: GUI support
+	source = git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=ac02405a34427c4f9e2392914af1a076e1c8744e
+	source = xdg-basedir.patch
+	sha256sums = SKIP
+	sha256sums = 25d1e22354f2ce30871654fa3bfebfe19dfe82432f0c4998ccd62b0c05727cba
+
+pkgname = networkmanager-openvpn-xdg

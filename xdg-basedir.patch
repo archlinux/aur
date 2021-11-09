@@ -1,0 +1,11 @@
+--- a/properties/import-export.c	2021-11-05 15:44:34.849854542 +0100
++++ b/properties/import-export.c    2021-11-05 15:46:45.569146375 +0100
+@@ -696,7 +696,7 @@
+ 	if (_nmovpn_test_temp_path)
+ 		return g_build_filename (_nmovpn_test_temp_path, f_filename, NULL);
+ 
++	return g_build_filename (g_get_home_dir (), ".local/share/cert/nm-openvpn", f_filename, NULL);
+-	return g_build_filename (g_get_home_dir (), ".cert/nm-openvpn", f_filename, NULL);
+ }
+ 
+ static gboolean
