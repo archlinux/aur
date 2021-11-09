@@ -1,6 +1,6 @@
 pkgbase = mysql
 	pkgdesc = Fast SQL database server, community edition
-	pkgver = 8.0.26
+	pkgver = 8.0.27
 	pkgrel = 1
 	url = https://www.mysql.com/products/community/
 	arch = x86_64
@@ -19,14 +19,14 @@ pkgbase = mysql
 	makedepends = libevent
 	makedepends = re2
 	makedepends = rapidjson
-	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.26.tar.gz
+	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.27.tar.gz
 	source = my-default.cnf
 	source = mysql-ld.so.conf
 	source = mysql.sysconfig
 	source = mysqld_service.patch
 	source = systemd-tmpfiles.patch
 	source = systemd-sysusers.conf
-	sha256sums = 209442c1001c37bcbc001845e1dc623d654cefb555b47b528742a53bf21c0b4d
+	sha256sums = 74b5bc6ff88fe225560174a24b7d5ff139f4c17271c43000dbcf3dcc9507b3f9
 	sha256sums = 6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328
 	sha256sums = e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f
 	sha256sums = 203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae
@@ -50,8 +50,8 @@ pkgname = mysql
 	depends = zstd
 	depends = bash
 	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format, mysql_setpermission, mysqldumpslow
-	provides = mariadb=8.0.26
-	provides = mysql=8.0.26
+	provides = mariadb=8.0.27
+	provides = mysql=8.0.27
 	conflicts = mariadb
 	options = emptydirs
 	backup = etc/mysql/my.cnf
@@ -63,9 +63,9 @@ pkgname = libmysqlclient
 	depends = libsasl
 	depends = zlib
 	depends = zstd
-	provides = libmariadbclient=8.0.26
-	provides = libmysqlclient=8.0.26
-	provides = mariadb-libs=8.0.26
+	provides = libmariadbclient=8.0.27
+	provides = libmysqlclient=8.0.27
+	provides = mariadb-libs=8.0.27
 	conflicts = libmariadbclient
 	conflicts = mariadb-libs
 
@@ -79,6 +79,6 @@ pkgname = mysql-clients
 	depends = lz4
 	depends = zstd
 	depends = bash
-	provides = mariadb-clients=8.0.26
-	provides = mysql-clients=8.0.26
+	provides = mariadb-clients=8.0.27
+	provides = mysql-clients=8.0.27
 	conflicts = mariadb-clients
