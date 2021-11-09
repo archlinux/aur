@@ -8,12 +8,12 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=ungoogled-chromium
+pkgname=ungoogled-chromium-xdg
 pkgver=95.0.4638.69
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
-pkgdesc="A lightweight approach to removing Google web service dependency"
+pkgdesc="A lightweight approach to removing Google web service dependency - with Support for the XDG Base Directory Specification"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
@@ -40,7 +40,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-93-ffmpeg-4.4.patch
         chromium-94-ffmpeg-roll.patch
         unexpire-accelerated-video-decode-flag.patch
-        use-oauth2-client-switches-as-default.patch)
+        use-oauth2-client-switches-as-default.patch
+        xdg-basedir.patch)
 sha256sums=('38a37d737c6c9a7198402ca614746b2dbb7abbb793bb2cb02dc796b62a22efe7'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'bc6373f2470a9e6d947a4deaee0612f730112f69552b933c54bb6e60b82dd6f1'
@@ -55,7 +56,8 @@ sha256sums=('38a37d737c6c9a7198402ca614746b2dbb7abbb793bb2cb02dc796b62a22efe7'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
             '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
+            'c332af43f4afb120c749319f3f2b1bcb38715ac5d9dbb376475702bd9ef95686')
 provides=('chromium')
 conflicts=('chromium')
 source=(${source[@]}
@@ -147,6 +149,8 @@ prepare() {
 
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
+
+  patch -Np1 -i ../xdg-basedir.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$pkgver-1"
