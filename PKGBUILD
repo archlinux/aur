@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('Apache')
 depends=('python' 'python-chardet' 'python-multidict' 'python-async-timeout'
          'python-yarl' 'python-attrs')
-makedepends=('cython' 'python-setuptools' 'git')
+makedepends=('cython' 'python-setuptools' 'python-pip' 'git' 'cmake' 'ts-node' 'npm')
 checkdepends=('python-pytest' 'python-pytest-runner' 'python-pytest-mock'
               'python-pytest-timeout' 'python-async_generator' 'python-brotli'
               'python-pytest-xdist' 'python-pytest-forked' 'python-pytest-cov'
@@ -22,10 +22,8 @@ optdepends=('gunicorn: to deploy using Gunicorn'
             'python-brotli: for Brotli transfer-encodings support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(${_pkgname}::"git+https://github.com/aio-libs/aiohttp"
-        git+https://github.com/nodejs/http-parser)
-sha512sums=('SKIP'
-            'SKIP')
+source=(${_pkgname}::"git+https://github.com/aio-libs/aiohttp")
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
@@ -35,13 +33,22 @@ pkgver() {
 prepare() {
   cd ${_pkgname}
   git submodule init
-  git config submodule."vendor/http-parser".url "${srcdir}/http-parser"
   git submodule update --recursive
   sed 's|.install-cython ||' -i Makefile
 }
 
 build() {
   cd ${_pkgname}
+  
+  pushd "vendor/llhttp"
+  npm install
+  make release
+  cmake -B build -S release \
+    -DBUILD_SHARED_LIBS=on \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make -C build
+  popd
+  
   make cythonize
   python setup.py build
 }
