@@ -3,7 +3,7 @@
 pkgname=fftw-amd
 pkgver=3.3.8.amd3.0.1
 pkgrel=1
-pkgdesc="A library for computing the discrete Fourier transform (DFT) - AMD Zen/Zen2 Optimized Version"
+pkgdesc="A library for computing the discrete Fourier transform (DFT) - AMD Ryzen/EPYC Optimized Version"
 arch=('x86_64')
 license=('GPL2')
 url="https://github.com/amd/amd-fftw/"
