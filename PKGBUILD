@@ -1,11 +1,11 @@
 # Maintainer: Johannes "jo" Erwerle <jo+myping@swagspace.org>
 pkgname=myping
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="ping many things at once and visualize the result"
 arch=("x86_64")
-url=""
+url="https://github.com/9er/myping"
 license=('MIT')
 groups=()
 depends=(glibc)

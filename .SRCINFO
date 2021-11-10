@@ -1,6 +1,8 @@
 pkgbase = myping
+	pkgdesc = ping many things at once and visualize the result
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/9er/myping
 	install = myping.install
 	arch = x86_64
 	license = MIT
