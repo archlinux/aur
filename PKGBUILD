@@ -1,22 +1,15 @@
 # Maintainer: Andreas Kurth <archlinux@akurth.net>
 pkgname='bender'
-pkgver=0.22.0
-pkgrel=3
+pkgver=0.23.1
+pkgrel=1
 pkgdesc="Dependency management tool for hardware design projects"
 arch=('x86_64')
 url="https://github.com/pulp-platform/${pkgname}"
 license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        0001-tests-iss5-Determine-name-of-default-branch.patch)
-sha512sums=('efbaba2e9f58c0ae6cc6747e3d3a2cca4b64c2f48e0a46036e3ce3677df73fc10f16ea90221530e0c732040f509d74233bfb46ff1379316f6ba134a545eb355e'
-            'ed7b0860391af36fd41c8603535c0cafaf42325b905eaed650a0743740aa8b050a174591c147343d68da71b9e73be1cbb7fcf7c52738027396d6dca33d979fcc')
-
-prepare() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    patch -Np1 -i ../0001-tests-iss5-Determine-name-of-default-branch.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('cff6a055d5404e4f9a92e92664054cb5836e43422eac319ef855db58b05ba5a7014b9d8a4249663ddd0ab801956cb88a9f9988ec1103cf2a272d6eb2d2e30603')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
