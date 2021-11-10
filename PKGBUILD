@@ -6,8 +6,8 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=8.2.3441
-pkgrel=2
+pkgver=8.2.3582
+pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
 arch=('x86_64')
@@ -25,19 +25,12 @@ conflicts=('vim' 'gvim' 'vim-minimal' 'vim-python3')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-python3' 'vim-plugin-runtime')
 replaces=('vim' 'vim-python3' 'vim-minimal' 'gvim')
 source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
-sha256sums=('3db6c3af32b741c2e618358bbf002cffe9db2ab8d21f9ea277110fce54fec4d2')
-sha512sums=('1d85fdb2d6b50f0b786a8436d091a084b9ca0bb43c3cfbdeaa329b231b82ea790589b7bae6bdb6e60b2c12c97cc4178ab8e61677e0c1070c805021cfdbc34d5f')
+sha256sums=('363a90e45eb93c73340a711223c7ce5e564432f9eb34624e1a545f4fd57dd49d')
+sha512sums=('f476f24390807b71a0e02729f1815b3743b6b42cdd28a414e9ceaf0aa3fd4cab91e3550a669b1c64b4cd83207515cfe2b4acf2358a6def60e216e101c979037e')
 
 _vimrun_ver=$(pacman -Q vim-runtime | awk '{print $2}')
 
 prepare() {
-  if [ "${_vimrun_ver%-*}" = "$pkgver" ]; then
-    echo "OK, vim-runtime ver matches $pkgver"
-  else
-    echo "ERROR, please update vim-runtime"
-    exit
-  fi
-  
   cd vim-${pkgver}/src
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -E 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' -i feature.h
