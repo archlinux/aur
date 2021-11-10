@@ -37,11 +37,11 @@ desktopname="topcoder-applet.desktop"
 
 package() {
   mkdir -p $pkgdir/usr/bin/topcoder
-  mkdir -p $pkgdir$HOME/.local/share/applications
+  mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir$HOME/.java/deployment/security
   cp $programname $pkgdir/usr/bin/topcoder/$programname
   cp $logoname $pkgdir/usr/bin/topcoder/$logoname
-  cp $desktopname $pkgdir/$HOME/.local/share/applications
+  cp $desktopname $pkgdir/usr/share/applications
   cp exception.sites $pkgdir$HOME/.java/deployment/security
 }
 
