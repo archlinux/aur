@@ -23,12 +23,12 @@ options=(!strip)
 
 prepare() {
   chmod +x ${_filename}
-  ./${_filename} --appimage-extract "${_pkgname}.desktop"
   ./${_filename} --appimage-extract "usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+  ./${_filename} --appimage-extract "${_pkgname}.desktop"
+  sed -ri "s|Exec=AppRun|Exec=/usr/bin/${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
 }
 
 package() {
-  sed -ri "s|Exec=AppRun|Exec=/usr/bin/${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" \
     -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
