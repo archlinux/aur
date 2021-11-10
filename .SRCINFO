@@ -1,20 +1,20 @@
 pkgbase = xf86-input-evdev-ahm
 	pkgdesc = X.org evdev input driver + at-home-modifier patch
 	pkgver = 2.10.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/at-home-modifier/at-home-modifier-evdev/wikis/home
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-XINPUT_VERSION=24.1
+	makedepends = X-ABI-XINPUT_VERSION=24.4
 	makedepends = xorgproto
 	depends = libsystemd
 	depends = mtdev
 	depends = libevdev
-	provides = xf86-input-evdev=2.10.6-1
-	conflicts = xorg-server<1.19.0
-	conflicts = X-ABI-XINPUT_VERSION<24.1
+	provides = xf86-input-evdev=2.10.6-3
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-XINPUT_VERSION<24
 	conflicts = X-ABI-XINPUT_VERSION>=25
 	conflicts = xf86-input-evdev
 	options = !makeflags
@@ -28,4 +28,3 @@ pkgbase = xf86-input-evdev-ahm
 	sha512sums = d484a5ad6d20269b6036016b3975e9e7e035d8191dea0c335ad791a9bf41cdab5804dce95be3980fdfc854705a55af50c9ac0d7b56e626b23ed76cd86039a288
 
 pkgname = xf86-input-evdev-ahm
-
