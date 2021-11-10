@@ -2,7 +2,7 @@
 
 pkgname=iridium-rpm
 pkgver=95.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
@@ -28,8 +28,8 @@ package() (
     # Why does /usr/bin/iridium point to /usr/lib64/chromium/chrome-wrapper?
     rm -f "${pkgdir}/usr/bin/iridium" "${pkgdir}/usr/bin/chromium" "${pkgdir}/usr/bin/chromium-browser"
     # Surely we only need iridium-browser, right?
-    ln -s "/usr/bin/iridium-browser" "${pkgdir}/usr/bin/iridium"
-    ln -s "/usr/bin/iridium-browser" "${pkgdir}/usr/bin/chromium"
-    ln -s "/usr/bin/iridium-browser" "${pkgdir}/usr/bin/chromium-browser"
+    ln -s "./iridium-browser" "${pkgdir}/usr/bin/iridium"
+    ln -s "./iridium-browser" "${pkgdir}/usr/bin/chromium"
+    ln -s "./iridium-browser" "${pkgdir}/usr/bin/chromium-browser"
 
 )
