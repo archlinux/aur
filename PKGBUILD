@@ -15,11 +15,11 @@ url='https://www.gnu.org/software/coreutils/'
 depends=('glibc' 'acl' 'attr')
 provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
 source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
-        "${pkgname}-${pkgver}-${pkgrel}.patch::https://github.com/jarun/advcpmv/blob/${_commit}/advcpmv-0.9-${pkgver}.patch")
+        "${pkgname}-${pkgver}-${pkgrel}.patch::https://raw.githubusercontent.com/jarun/advcpmv/${_commit}/advcpmv-0.9-${pkgver}.patch")
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce'
             'SKIP'
-            '3a37573238001e6faa4ce670551c365d4e4394579563baceccb374d25fd8a2be')
+            'SKIP')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
