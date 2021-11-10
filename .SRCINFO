@@ -1,15 +1,15 @@
 pkgbase = spoofax3-jvm-bin
 	pkgdesc = Spoofax 3 is a modular and incremental textual language workbench running on the JVM
-	pkgver = 0.16.2
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://www.spoofax.dev/spoofax-pie/develop/
 	arch = x86_64
 	license = EPL
 	depends = webkit2gtk
 	depends = unzip
-	source = spoofax3-jvm-bin-0.16.2.zip::https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/0.16.2/spoofax.lwb.eclipse.repository-0.16.2-spoofax3-linux-x86_64-jvm.zip
+	source = spoofax3-jvm-bin-0.16.3.zip::https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/0.16.3/spoofax.lwb.eclipse.repository-0.16.3-spoofax3-linux-x86_64-jvm.zip
 	source = spoofax3.desktop
-	sha256sums = dbb45f380f35e73191981c850f39e453e4310c261c53bf5e236887ecfc1b1c3b
+	sha256sums = c4f72fead7d516b9f7cb67b6bbc23aef1d3330316b46157146757dc8d41d1260
 	sha256sums = 9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e
 
 pkgname = spoofax3-jvm-bin
