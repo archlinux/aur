@@ -6,6 +6,18 @@
 ## Any user customization should be done in $PKGDIR/myconfig or $HOME/.config/linux-xanmod-rog/myconfig; if either
 ## of these scripts exists they'll be called during package build after this script ends
 
+## bake in s0ix debugging parameters
+scripts/config  --enable CONFIG_CMDLINE_BOOL \
+                --set-str CONFIG_CMDLINE "makepkgplaceholderyolo" \
+                --disable CMDLINE_OVERRIDE
+
+## HACK: forcibly fixup CONFIG_CMDLINE here as using scripts/config mangles escaped quotes
+sed -i 's#makepkgplaceholderyolo#pm_debug_messages amd_pmc.enable_stb=1 amd_pmc.dyndbg=\\"+p\\" acpi.dyndbg=\\"file drivers/acpi/x86/s2idle.c +p\\"#' .config
+
+# note the double escaped quotes above, sed strips one; the final result in .config needs to contain
+# single slash escaped quotes (eg: `CONFIG_CMDLINE="foo.dyndbg=\"+p\""`) to avoid dyndbg parse errors
+# at boot. this is impossible with the current kernel config script.
+
 ## XXX: As this kernel package is primarily targeted at ASUS laptops we default to schedutil so the machine properly clocks down
 
 scripts/config  --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE \

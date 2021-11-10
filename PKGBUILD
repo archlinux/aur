@@ -249,6 +249,7 @@ prepare() {
     sed -Ei "s/xanmod[0-9]+/${_localversion}/" localversion
   fi
 
+  msg2 "Applying kernel config..."
   # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
   # enable LTO_CLANG_THIN
@@ -310,7 +311,7 @@ prepare() {
   # Put the file "myconfig" at the package folder (this will take precedence) or "${XDG_CONFIG_HOME}/linux-xanmod-rog/myconfig"
   # If we detect partial file with scripts/config commands, we execute as a script
   # If not, it's a full config, will be replaced
-  for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod-rog/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod-rog/myconfig" ; do
+  for _myconfig in "${startdir}/myconfig" "${HOME}/.config/linux-xanmod-rog/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod-rog/myconfig" ; do
     # if file exists and size > 0 bytes
     if [ -s "${_myconfig}" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then
@@ -339,19 +340,8 @@ prepare() {
     fi
   fi
 
+  msg2 "Finalizing kernel config..."
   make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
-
-  ## bake in s0ix debugging parameters
-  scripts/config  --enable CONFIG_CMDLINE_BOOL \
-                  --set-str CONFIG_CMDLINE "makepkgplaceholderyolo" \
-                  --disable CMDLINE_OVERRIDE
-
-  ## HACK: forcibly fixup CONFIG_CMDLINE as scripts/config mangles quote escapes
-  sed -i 's#makepkgplaceholderyolo#pm_debug_messages amd_pmc.enable_stb=1 amd_pmc.dyndbg=\\"+p\\" acpi.dyndbg=\\"file drivers/acpi/x86/s2idle.c +p\\"#' .config
-
-# note the double escaped quotes above, sed strips one; the final result in .config needs to contain
-# single slash escaped quotes (eg: `CONFIG_CMDLINE="foo.dyndbg=\"+p\""`) to avoid dyndbg parse errors
-# at boot. this is impossible with the kernel config script.
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
