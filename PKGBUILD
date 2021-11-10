@@ -1,7 +1,4 @@
-# $Id: PKGBUILD 148992 2012-02-05 12:21:23Z andyrtr $
 # Maintainer: Andrew Bednoff <commandr at commandr.stream>
-# Contributor: Andreas Radke <andyrtr at archlinux.org>
-# Committer: Judd Vinet <jvinet at zeroflux.org>
 pkgname=gnupg1-extended
 pkgname_=gnupg
 pkgver=1.4.23
