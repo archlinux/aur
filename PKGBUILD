@@ -68,7 +68,7 @@ _subarch=
 
 pkgbase=linux-prjc
 pkgver=5.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
 arch=(x86_64)
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=ec0fdb89a93a4bd87a9dc0963a7ec0739328dd7d
+_arch_config_commit=a5d4b0c70bbcc3d123371478e9b4db3f39531d2f
 _prjc_version=5.15-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20210914
@@ -93,7 +93,7 @@ validpgpkeys=(
 )
 b2sums=('4285adfbd99fb853f70db73aed2ba68e146645495d8afc060c5ddae21aa67b3a92c09e76c69809693d4b3b7bfe9dc64efa4c7c43044d19fbd66898459a3f8958'
         'SKIP'
-        '1277f65a86b4086639739335bfc07e0805e8287486ce7d5d8cb8de92039891480010592dd8c88258c7e343cf423fac753a304b79ac7e339be3d05906b6bf9354'
+        '73556396163b4c0a06fed13decbf51ea40c8e93b5f41fa6ad786bf0158ee193667cc4b1b54d4a62397348b40653ae5f9b219b33e1f468e345f1f48aeeb452fe6'
         'ba2c15b074fac3cb01eddb1099b6292077aaf7af1de4721b365b8da40895c61388081ee164bbcde938fdcefe17eea292c56a175da0a23591ffc7a6c3680d86ae'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
         '289893ac223ce31a1fbd1497d15c1bd4071991d30ddb01098d4b13468f8d36a6b61bd9011f4294b4dab21ca97dcb51bef0738b7d5d5e62857e9b251895bad358')
