@@ -8,10 +8,10 @@
 # Beikeyun dts: https://github.com/unifreq/linux-5.14.y/blob/main/arch/arm64/boot/dts/rockchip/rk3328-beikeyun-*.dts
 
 pkgbase=linux-rk3328
-_srcname=linux-5.14
+_srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for RK3328"
-pkgver=5.14.14
+pkgver=5.15.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -38,7 +38,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('a082ef5748b813abca0649dab8be5f52'
+md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          'b712c1d1b1de3091acca6f4fd8bca831'
          'c20bb1340f334d6224a5da00ef38b642'
          '1300797c69bf7f6a26672011334c6a96'
@@ -46,15 +46,15 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          'ccb144e753dce358915ed615329d2067'
          'dcc8de3b63a31dc71a7c735032b1345d'
          '9b6fdc9b96013041189fc35bcc32e31d'
-         'a9527f30abbbde5c126e93e2bf57b034'
+         'c06786666d8433fb5339c7734bcd1509'
          '966cbe04ab5848bf6972411166adfee4'
          '7a18066683f3351b2bbd2653db783f80'
          '6dfa62f14b2a3390b1a4ca2e5cf5c9a2'
-         'ac6652b7c4006532606faa45d9d03c14'
+         '2bf52304216e7a6b12ecf1a046f15908'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '7b8dc63cfdb806b3c5953bf9b0615daa')
+         'be8741a89421be268c51393e62905636')
 
 prepare() {
   cd ${_srcname}
