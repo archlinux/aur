@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music-git
 pkgver=1.14.0.r0.gf40ed04
 pkgrel=1
