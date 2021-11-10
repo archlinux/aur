@@ -7,13 +7,14 @@ arch=('x86_64' 'i686')
 url='https://github.com/khanhas/spicetify-cli'
 license=('GPL')
 makedepends=('git' 'go')
+optdepends=('xdg-utils: Allows for opening directories in default file manager')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('e8a618956a51921b6ba3a6bd24696feb6bfc7cdcd6427670e24f03c22c1cd5db')
 
 build() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir"
-  go build -o spicetify
+  go build -ldflags="-X 'main.version=$pkgver'" -o spicetify
 }
 
 check() {
