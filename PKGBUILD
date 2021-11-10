@@ -2,40 +2,56 @@
 _target='compass-readonly'
 _edition=' Readonly'
 pkgname="mongodb-$_target"
-_pkgver='1.28.4'
+_pkgver='1.29.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-depends=('electron6-bin' 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs-lts-erbium' 'npm>=7.0.0' 'python' 'unzip')
+_electronpkg='electron13'
+depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
+makedepends=('git' 'nodejs' 'npm>=7.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
+	'browserslist.diff'
+
 )
-sha512sums=('c1903f8d89f1781173c7f23440a11c2d5998b657c2f808730c3030f85bdecc8c22638b2fec2bae20516cbf5790e1b0bdfdfe20e591c118842abd92a2359bb0ef'
-            '9c93c8aa513c9238e04bb860626d09f1e83643cbfd1b8cd66add35cd41e6a7172fedff42f9f9eeedb0e8a3d6b852e1671a8b5a1fa3066d7dd5a543052392946d')
+sha512sums=('0ccea3e2c7359e327fc42a2a2f39ff956f4cc76d58f6d2eb71514c911840c296568b30912e3ccee763490148ae6a5bd080c67185f6168a62a8f6643a101c7195'
+            '03b766834ce0c85abca10fe98ab4aa12a20d1110a4afb11b85c06e7e34ceec1163933be51d7a1881fd576d2cef01118319c856e9bcac92aaefb95084dc2a97f9'
+            'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
 
 _sourcedirectory="compass-$_pkgver"
-_homedirectory="$pkgname-$pkgver-$pkgrel-home"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
+	# Force the newest version of electron-to-chromium
+	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
+
 	# Loosen node version restriction
-	sed -E -i 's|("node": ").*"|\1'"$(node -v | sed 's/^v//')"'"|' 'packages/compass/package.json'
+	sed -E -i 's|"node": "\^14.|"node": ">=14.|' 'packages/compass/package.json' 'package-lock.json'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'packages/compass/package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
 
-	# Prepare dependencies
-	HOME="$srcdir/$_homedirectory" npm run bootstrap
+	# Run the first part of npm run bootstrap
+	npm install
 
 	# Apply hadron-build fixes
 	patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build.diff"
+
+	# Apply browserslist fixes
+	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
+		if grep -q '"version": "2' "$_folder/package.json"; then
+			patch -d "$_folder/" --forward -p1 < "$srcdir/browserslist.diff"
+		fi
+	done
+
+	# Run the second part of npm run bootstrap
+	npx lerna run bootstrap --stream
 }
 
 build() {
@@ -46,7 +62,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run package-compass "${_target%-beta}"
+	HADRON_DISTRIBUTION="${_target%-beta}" npm run package-compass
 }
 
 package() {
@@ -73,7 +89,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron6 '/usr/lib/$pkgname/app.asar' "\$@"
+NODE_ENV=production exec $_electronpkg '/usr/lib/$pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
@@ -89,7 +105,7 @@ StartupNotify=true
 Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
 EOF
 
-	install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/src/app/images/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
