@@ -2,7 +2,7 @@
 
 pkgname=python-zcatalog
 _pkgname=Products.ZCatalog
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="Zope's indexing and search solution"
 arch=(any)
@@ -11,7 +11,7 @@ license=('ZPL')
 makedepends=('python-setuptools')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zopefoundation/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('86e95ad0cc8f7601f47cb5bbab8bd3b9ee48b80083911750b900af3a7b2ac63c')
+sha256sums=('f786122d443fb58056eba8108a7edd7aa2fa45745c6ad1152aa2f8baff45e476')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
