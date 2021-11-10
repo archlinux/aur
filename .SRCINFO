@@ -1,0 +1,22 @@
+pkgbase = python-pip-audit
+	pkgdesc = A tool for scanning Python environments for known vulnerabilities
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/trailofbits/pip-audit
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pip-api
+	depends = python-packaging
+	depends = python-dataclasses
+	depends = python-progress
+	depends = python-resolvelib
+	depends = python-html5lib
+	depends = python-cachecontrol
+	depends = python-lockfile
+	conflicts = python-pip-audit-git
+	options = !strip
+	source = python-pip-audit-0.0.5.tar.gz::https://github.com/trailofbits/pip-audit/archive/refs/tags/v0.0.5.tar.gz
+	sha512sums = 018aa04901baee74399314faa3afeebd141be91d4bba7621f5c657281458ae5a7d90db60e3059d9bfec858dc0e4251b9c56321b8d22d2533edf9db1154180a03
+
+pkgname = python-pip-audit
