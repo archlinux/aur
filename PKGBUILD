@@ -21,7 +21,8 @@ depends=(gtk3 libxt mime-types dbus-glib
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
+             python-setuptools python-psutil python-zstandard git binutils lld dump_syms
+             wasi-sdk-git)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -72,6 +73,11 @@ ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 export CC='clang'
 export CXX='clang++'
+
+# wasi sdk
+ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
+export WASM_CC=/opt/wasi-sdk/bin/clang
+export WASM_CXX=/opt/wasi-sdk/bin/clang++
 
 # Branding
 ac_add_options --enable-update-channel=nightly

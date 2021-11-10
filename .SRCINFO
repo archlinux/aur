@@ -35,6 +35,7 @@ pkgbase = librewolf-hg
 	makedepends = binutils
 	makedepends = lld
 	makedepends = dump_syms
+	makedepends = wasi-sdk-git
 	depends = gtk3
 	depends = libxt
 	depends = mime-types
