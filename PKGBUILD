@@ -2,14 +2,14 @@
 
 pkgname=python-logging-helper
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides enhancements to built-in logging module"
 url="https://pypi.python.org/pypi/logging-helper"
 arch=('any')
 license=('MIT')
 depends=(
 	'python-better-exceptions>=0.1.6'
-	'python-logging-tree>=1.7'
+	'python-logging_tree>=1.7'
 	'python-future>=0.16.0')
 makedepends=('python-setuptools')
 checkdepends=('python-testfixtures')
