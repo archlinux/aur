@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 pkgname=mandown-md-viewer
 _pkgname=mandown
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="man-page inspired Markdown viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('ncurses' 'libxml2')
 install="${pkgname}.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('df92ca18315a7507ac93e2246d9ee2ad5363dcf4d266b57d5eb10b4123afa25c')
+sha256sums=('dc719e6a28a4585fe89458eb8c810140ed5175512b089b4815b3dda6a954ce3e')
 
 build() {
   cd "$_pkgname-$pkgver"
