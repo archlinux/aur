@@ -19,6 +19,8 @@ package() {
   flutter build linux --release
 
   install -Dm755 build/linux/x64/release/bundle/quickgui "$pkgdir/opt/$pkgname/quickgui"
+  install -Dm644 assets/resources/quickgui.desktop "${pkgdir}/usr/share/applications/quickgui.desktop"
+  install -Dm644 assets/resources/quickgui_512.png "${pkgdir}/usr/share/icons/quickgui_512.png"
 
   cp -R build/linux/x64/release/bundle/data "$pkgdir/opt/$pkgname"
   cp -R build/linux/x64/release/bundle/lib "$pkgdir/opt/$pkgname"
