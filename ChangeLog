@@ -1,0 +1,83 @@
+CHANGES
+=======
+
+v0.0.8
+------
+
+* fix: exception on import command
+* feat: adds PKGBUILD and zsh/bash completions
+* fix: removed more\_magic for docopt (non-ng) compatibility
+* feat: add issue template
+* feat: add changelog and authors
+
+v0.0.7
+------
+
+* feat: use pbr for package management
+* fix: correctly detect duplicated mods during sync
+* fix: mod pathing detection fix
+
+v0.0.6
+------
+
+* fix: update\_all\_mods hotfix
+* v0.0.6 release
+* fix: improve performance
+* fix: multiple fixes for mod folder management
+* fix: add missing operations to help string
+* feat: improve readme clarity
+
+v0.0.5
+------
+
+* feat: v0.0.5 release
+* feat: improved cli and code refactor
+
+v0.0.4
+------
+
+* feat: v0.0.4 release
+* feat: add migrate and version command
+* fix: remove debug print during collision detection
+* feat[readme]: add RMM\_WORKSHOP\_PATH info
+
+v0.0.3
+------
+
+* feat: bump for v0.0.3 release
+* feat: selects temp directory atomically
+* feat: support for steam rimworld and workshop
+
+v0.0.2
+------
+
+* feat: bump for 0.0.2 release
+* fix[core]: fixes multiple issues regarding cache
+* feat: patch release
+* fix: installation logic, ui hang, file performance
+* fix[readme]: install package name match pypi
+
+v0.0.1
+------
+
+* feat: increment version for first release
+* fix[doc]: fix incorrect install documentation
+* fix: corrects setuptools runtime deps
+* fix: list not printing table
+* fix: add deps to packaging
+* feat: add mod name and author to mod lists
+* feat: add variable arguments to sync commands
+* fix: update README
+* feat: check default RimWorld paths
+* feat[cli]: add query (local search)
+* feat[cli]: add mod removal
+* feat: ignore files that are not mod directories
+* feat: add setuptools packaging
+* feat: add README and requirements.txt
+* fix: style code
+* fix: require RMM\_MOD to be set
+* fix: validate interactive sync package selection
+* feat: add package cache seperation and mod list importing
+* feat: add interactive sync and search command
+* feat: add command line interface and usage
+* feat: add workshop mod download functionality
