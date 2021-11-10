@@ -12,6 +12,7 @@ url='https://github.com/garrettj403/SciencePlots'
 license=('MIT')
 depends=('python' 'python-matplotlib')
 makedepends=('python-setuptools')
+conflicts=('python-scienceplots')
 source=("git+$url")
 sha256sums=('SKIP')
 

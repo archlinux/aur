@@ -8,6 +8,7 @@ pkgbase = python-scienceplots-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-matplotlib
+	conflicts = python-scienceplots
 	source = git+https://github.com/garrettj403/SciencePlots
 	sha256sums = SKIP
 
