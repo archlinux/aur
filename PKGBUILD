@@ -28,6 +28,9 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     python setup.py install --root="$pkgdir" --optimize=1
+    
+    #Fix the strange /usr/etc
+    mv "$pkgdir/usr/etc" "$pkgdir/etc"
 }
 
 # vim:set ts=2 sw=2 et:
