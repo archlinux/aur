@@ -1,6 +1,6 @@
 pkgbase = lttoolbox
 	pkgdesc = Finite state compiler, processor and helper tools used by apertium
-	pkgver = 3.5.3
+	pkgver = 3.5.4
 	pkgrel = 1
 	url = https://wiki.apertium.org/wiki/Lttoolbox
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = lttoolbox
 	makedepends = make
 	depends = libxml2>=2.6.17
 	depends = gcc-libs
-	source = lttoolbox-3.5.3.tar.gz::https://github.com/apertium/lttoolbox/archive/refs/tags/v3.5.3.tar.gz
-	sha256sums = d9ea85b32ea5867326ede276f3b52936205f82c42f285bf7b7fe169522d2ff05
+	source = lttoolbox-3.5.4.tar.gz::https://github.com/apertium/lttoolbox/archive/refs/tags/v3.5.4.tar.gz
+	sha256sums = 8b4236e1a0b2095878b1860baf295b052bc71dee320991014ef1b8591259eb3e
 
 pkgname = lttoolbox
-
