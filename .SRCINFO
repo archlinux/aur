@@ -1,0 +1,14 @@
+pkgbase = php-codesniffer-woocommerce
+	pkgdesc = PHP CodeSniffer rules (sniffs) for WooCommerce.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/woocommerce/woocommerce-sniffs
+	arch = any
+	license = LGPL
+	depends = php-codesniffer
+	depends = php-codesniffer-wordpress
+	depends = php-codesniffer-phpcompatibilitywp
+	source = php-codesniffer-woocommerce-0.1.1.tar.gz::https://github.com/woocommerce/woocommerce-sniffs/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 6e055cafa8d8dd3be9489bda68bc9c103395392aecd52d36265d15b0111bce1a
+
+pkgname = php-codesniffer-woocommerce
