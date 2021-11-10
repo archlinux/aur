@@ -1,6 +1,6 @@
 pkgbase = awsvpnclient
 	pkgdesc = AWS VPN Client
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://aws.amazon.com/vpn/
 	install = awsvpnclient.install
@@ -11,9 +11,9 @@ pkgbase = awsvpnclient
 	depends = lsof
 	options = !strip
 	options = staticlibs
-	source = awsvpnclient-1.0.2.deb::https://d20adtppz83p9s.cloudfront.net/GTK/1.0.2/awsvpnclient_amd64.deb
+	source = awsvpnclient-1.0.3.deb::https://d20adtppz83p9s.cloudfront.net/GTK/1.0.3/awsvpnclient_amd64.deb
 	source = awsvpnclient.desktop.patch
-	sha512sums = 4d0dd6a83400d25245f07a31a76f11217738452a413c45fb36898b8de7284a8940bfbaec1bb918b767f74a1f30e3cdaec37befe0a6608b2b848936e35cd4642e
+	sha512sums = f9ba448324f04134b36259c0c0dc982d79e8d396bc673d663f8c724648d15b2f22f5ec9c2d45f64a5cb4e4f22de6e5a1683d3aab9253998741a9380c9c000d27
 	sha512sums = SKIP
 
 pkgname = awsvpnclient
