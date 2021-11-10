@@ -1,8 +1,9 @@
 pkgbase = alsa-lib-x205ta
 	pkgdesc = An alternative implementation of Linux sound support, with UCM files for the ASUS x205ta.
-	pkgver = 1.2.4
+	pkgver = 1.2.5.1
 	pkgrel = 1
 	url = https://www.alsa-project.org
+	install = alsa-lib.install
 	arch = x86_64
 	license = LGPL2.1
 	depends = glibc
@@ -10,14 +11,16 @@ pkgbase = alsa-lib-x205ta
 	depends = alsa-ucm-conf
 	provides = libasound.so
 	provides = libatopology.so
-	provides = alsa-lib=1.2.4
+	provides = alsa-lib=1.2.5.1
 	conflicts = alsa-lib
-	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.4.tar.bz2
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.5.1.tar.bz2
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.5.1.tar.bz2.sig
 	source = https://raw.githubusercontent.com/plbossart/UCM/c8b344ca650a62aa809242b0c9ba908eac963125/chtrt5645/chtrt5645.conf
-	source = https://raw.githubusercontent.com/plbossart/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf
-	sha256sums = f7554be1a56cdff468b58fc1c29b95b64864c590038dd309c7a978c7116908f7
-	sha256sums = 8d0ede122c8b881978af8a3cbae194129675fed59eda584931489e95b3d27f0b
-	sha256sums = f206ed6bdba1c0e0266953ef76b677fa825a3965ab4b0eb265fcd1a5c629f9d7
+	source = https://raw.githubusercontent.com/plbossart/UCM/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf
+	validpgpkeys = F04DF50737AC1A884C4B3D718380596DA6E59C91
+	sha512sums = 01998ffa449e925ff552c13aea47f9540903afdc533086067c78dcaba4d239c347180d3d28bb0000e6d19b7779c7249fcc77a30057930ca22d18ba55e163fa1c
+	sha512sums = SKIP
+	sha512sums = 9b65ff4fe9d10e40e4eb69398c53de6d5eb07ba1a5526813a07182008d67ea68e7245ce3db44fc1a69f70eeef928c9ede742c90785e1f90298c07c49db965ba0
+	sha512sums = 4bb154a791fa2df7f1a165eaa8a970df9790e8315c5e2f43c0482ea867413ccf31a5c40700698357b4972de20ca2f4d9a7276e2e4968f4bbafd36ce57574bd32
 
 pkgname = alsa-lib-x205ta
-
