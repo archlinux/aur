@@ -2,7 +2,7 @@
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 _projectname='spot'
 pkgname="$_projectname-client"
-pkgver='0.2.1'
+pkgver='0.2.2'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('org.freedesktop.secrets')
 makedepends=('cargo' 'meson>=0.50.0')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('11230a686a70e3719ddc29e3442efeafdb2e56f074e4c2f8c7595b9cd1e05f0c7874f046662cc5b36ba1adc8476814090c1232038be4a2d91e8dc75478b725ab')
+sha512sums=('997db5a651deb3290048a7283ee9f3b49387c51d6128a03ed3cf35b03df4db206d2502923df7ab45a0ef9fc45522c452edc74d4f16ccced8ca264a00e151887a')
 validpgpkeys=() # waiting for https://github.com/xou816/spot/issues/283
 
 _sourcedirectory="$_projectname-$pkgver"
