@@ -4,7 +4,7 @@
 pkgbase=cheese
 pkgname=(cheese libcheese)
 pkgver=41.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -59,7 +59,7 @@ package_cheese() {
 
   _pick libs usr/include
   _pick libs usr/lib/{girepository-1.0,libcheese*,pkgconfig}
-  _pick libs usr/share/{gir-1.0,gtk-doc}
+  _pick libs usr/share/{gir-1.0,glib-2.0/schemas,gtk-doc}
 }
 
 package_libcheese() {
