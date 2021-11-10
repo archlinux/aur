@@ -1,14 +1,13 @@
 pkgbase = pdf.tocgen
 	pkgdesc = Automatically generate table of contents for PDF documents.
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Krasjet/pdf.tocgen
 	arch = any
 	license = GPL3
 	depends = python-toml
 	depends = python-pymupdf
-	source = https://files.pythonhosted.org/packages/source/p/pdf.tocgen/pdf.tocgen-1.2.3.tar.gz
-	sha256sums = 1f67db98491006b3d6d800dc43bc6a496dfff11958027a0f1d0c840c8744e5ef
+	source = https://files.pythonhosted.org/packages/source/p/pdf.tocgen/pdf.tocgen-1.3.0.tar.gz
+	sha256sums = ad2cb189c2d23ccf522e46bacbdd022a37dd166deb445e6b4ee7cb12aa1cdc78
 
 pkgname = pdf.tocgen
-
