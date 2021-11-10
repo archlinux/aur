@@ -22,8 +22,8 @@ sha256sums=('SKIP'
             'faffcaa5b295f49fcedeed2c9ece5298949096be3062fd99a4bf1a6ac3ad1ea0'
             '6958eeec07557b92a28419eb1702331ee2f0a6fd17285e37dfb6130b9fa4cf6e'
             '691a84ca6543ac8d1cd19e915fee7dc967dae106e72200d58b682748265501fc')
-provides=('dbus')
-conflicts=('dbus')
+provides=('dbus' 'dbus-docs')
+conflicts=('dbus' 'dbus-docs')
 
 prepare() {
   cd "dbus-dbus-$pkgver"
