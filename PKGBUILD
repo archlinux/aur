@@ -10,7 +10,7 @@ changelog=ChangeLog.${pkgname}
 arch=('any')
 install=$pkgname.install
 
-source=(http://www.tipografiagandhi.com/common/zip/gandhi_sans_and_serif.zip)
+source=(http://34.233.129.205/common/zip/gandhi_sans_and_serif.zip)
 md5sums=('67c351573bb0a1c80cd05e91674db0ec')
 sha512sums=('4f740cb90c4daf38068910660a76e3a27f8578708a6be71efa528f2955340412cb911d6a6fc6f46bb3baee009bcc20a17f68507bc860630fd4b83d7007bdbc8e')
 
