@@ -1,31 +1,28 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=rocrand
-pkgver=4.3.1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Pseudo-random and quasi-random number generator on ROCm'
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocrand'
 license=('MIT')
-depends=('hip-rocclr')
+depends=('hip')
 makedepends=('cmake' 'git' 'gcc-fortran' 'python')
 optdepends=('gcc-fortran: Use Fortran wrapper'
             'python: Use Python wrapper')
 _git='https://github.com/ROCmSoftwarePlatform/rocRAND'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('b3d6ae0cdbbdfb56a73035690f8cb9e173fec1ccaaf9a4c5fdbe5e562e50c901')
+sha256sums=('fd391f81b9ea0b57808d93e8b72d86eec1b4c3529180dfb99ed6d3e2aa1285c2')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.3.x/docs/markdown/clang_options.md
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.5.x/docs/markdown/clang_options.md
 
-  # With version 3.21, HIP support was added to CMake that breaks the current scripts, see
-  # https://github.com/ROCmSoftwarePlatform/rocRAND/issues/198#issuecomment-893573440
   CXX=/opt/rocm/hip/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -Wno-dev -S "$_dirname" \
-        -D__skip_rocmclang=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DBUILD_TEST=OFF
   make

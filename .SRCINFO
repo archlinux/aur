@@ -1,6 +1,6 @@
 pkgbase = rocrand
 	pkgdesc = Pseudo-random and quasi-random number generator on ROCm
-	pkgver = 4.3.1
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocrand
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = rocrand
 	makedepends = git
 	makedepends = gcc-fortran
 	makedepends = python
-	depends = hip-rocclr
+	depends = hip
 	optdepends = gcc-fortran: Use Fortran wrapper
 	optdepends = python: Use Python wrapper
-	source = rocrand-4.3.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocRAND/archive/rocm-4.3.1.tar.gz
-	sha256sums = b3d6ae0cdbbdfb56a73035690f8cb9e173fec1ccaaf9a4c5fdbe5e562e50c901
+	source = rocrand-4.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocRAND/archive/rocm-4.5.0.tar.gz
+	sha256sums = fd391f81b9ea0b57808d93e8b72d86eec1b4c3529180dfb99ed6d3e2aa1285c2
 
 pkgname = rocrand
