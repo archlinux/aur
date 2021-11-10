@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-beta
 	pkgdesc = The official GUI for MongoDB - beta version
-	pkgver = 1.27.0.beta.10
-	pkgrel = 2
+	pkgver = 1.29.1.beta.0
+	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = i686
@@ -9,18 +9,20 @@ pkgbase = mongodb-compass-beta
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = git
-	makedepends = nodejs-lts-erbium
+	makedepends = nodejs
 	makedepends = npm>=7.0.0
 	makedepends = python
 	makedepends = unzip
-	depends = electron6-bin
+	depends = electron13
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
 	optdepends = org.freedesktop.secrets
-	source = mongodb-compass-beta-1.27.0.beta.10-2.tar.gz::https://github.com/mongodb-js/compass/archive/v1.27.0-beta.10.tar.gz
+	source = mongodb-compass-beta-1.29.1.beta.0-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.29.1-beta.0.tar.gz
 	source = hadron-build.diff
-	sha512sums = d8f312c61c23700235197156bc5f931a8b425a982064e010f09614b7451601655f11ca335b91786b52c0cbc7dce447ddda031b025c441436668d58fd9949d8b7
-	sha512sums = 9c93c8aa513c9238e04bb860626d09f1e83643cbfd1b8cd66add35cd41e6a7172fedff42f9f9eeedb0e8a3d6b852e1671a8b5a1fa3066d7dd5a543052392946d
+	source = browserslist.diff
+	sha512sums = 44482fae3de9ac2af758a384630419a937aef8f8f79abc553d381b4d51789a198b237edc353d5e6264f834ad238942148beee4e993fe3d857afbf4256ed4e3e0
+	sha512sums = 03b766834ce0c85abca10fe98ab4aa12a20d1110a4afb11b85c06e7e34ceec1163933be51d7a1881fd576d2cef01118319c856e9bcac92aaefb95084dc2a97f9
+	sha512sums = c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2
 
 pkgname = mongodb-compass-beta
