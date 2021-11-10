@@ -11,7 +11,7 @@ url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron13'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs' 'npm>=7.0.0' 'python' 'unzip')
+makedepends=('git' 'nodejs>=14.0.0' 'npm>=7.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
