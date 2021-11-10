@@ -7,7 +7,7 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
 pkgver=390.144
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -15,11 +15,13 @@ options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-390xx-utils.sysusers'
+        '30-nvidia-ignoreabi.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         kernel-5.14.patch
         kernel-4.16.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
+        '9fde74e26f7e249e9492cbae1c9932ef472625ccf14110130317872c41bb5149be6fe167c7bcccc51f6b1afbbd0b3c6afddd49fbc5f2278968a77d62b351d16f'
         '093d3f4779a904a9bbbc0d10e1c2b150665d6515bc9bba9fdaeb06c09be4f1029aa742058635f9309d4dca7f5e8e3fcdbe49f74ed6035075315ed3555b648404'
         '6aa23c223bf46c1fb792574489c169b0a2855c812bed10021d2bb2adedd8c8d82f5ce36402b10782a515457307ec6d434a1af7d1d9ae7c9765aab4a8f127f0f9'
         'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05')
@@ -122,6 +124,9 @@ package_nvidia-390xx-utils() {
     provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils' 'nvidia-390xx-libgl')
     replaces=('nvidia-390xx-libgl')
     install="${pkgname}.install"
+
+    # Exceedingly hacky workaround for Xorg 1.21 until Nvidia updates the driver
+    install -D -m644 30-nvidia-ignoreabi.conf "${pkgdir}/etc/X11/xorg.conf.d/30-nvidia-ignoreabi.conf"
 
     cd "${_pkg}"
 
