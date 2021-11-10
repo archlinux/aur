@@ -2,7 +2,7 @@
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.8.21
+pkgver=3.9.0
 pkgrel=1
 pkgdesc='A free, open-source and completely encrypted notes app'
 arch=('x86_64' 'i686')
@@ -18,8 +18,8 @@ source=("standard-notes.sh")
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::https://github.com/standardnotes/desktop/releases/download/v$pkgver/standard-notes-$pkgver-linux-x86_64.AppImage")
 source_i686=("$pkgname-$pkgver-i686.AppImage::https://github.com/standardnotes/desktop/releases/download/v$pkgver/standard-notes-$pkgver-linux-i386.AppImage")
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('3244c5933097e41c441a278262a449fc58d9f632d0234b5d2d5a827735efe25e')
-sha256sums_i686=('4c637309bd0d06b2d32c543b3589e417f50755b05f70ba062f9005c200eb0609')
+sha256sums_x86_64=('8c3227f5220b69bd6dcf81619fd3a3149e26974e616038eb675ac138370b8b8a')
+sha256sums_i686=('bd3ccba6782f9abe4d9081077d7f62fa474e823d73ed7b61287b52ba4142833c')
 
 prepare() {
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
@@ -33,11 +33,11 @@ package() {
 	chmod -R 755 squashfs-root/{usr,locales,resources,swiftshader}
 	cp -a --no-preserve=ownership squashfs-root/* "$pkgdir/opt/$pkgname/"
 
-	install -Dm 755 "standard-notes.sh" "$pkgdir/usr/bin/standard-notes"
+	install -D "standard-notes.sh" "$pkgdir/usr/bin/standard-notes"
 	install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 	install -d "$pkgdir/usr/share/applications/"
 
-	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/standard-notes|" "$pkgdir/opt/$pkgname/standard-notes.desktop"
+	sed -i -E '/Exec/c\Exec=env DESKTOPINTEGRATION=false /usr/bin/standard-notes' "$pkgdir/opt/$pkgname/standard-notes.desktop"
 	ln -s "/opt/$pkgname/standard-notes.desktop" "$pkgdir/usr/share/applications/"
 	ln -s "/opt/$pkgname/standard-notes.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 }
