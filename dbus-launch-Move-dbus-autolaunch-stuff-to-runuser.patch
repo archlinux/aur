@@ -1,0 +1,206 @@
+From f595065ab70c6c310f14610f8acc46a94ede7070 Mon Sep 17 00:00:00 2001
+From: Colin Walters <walters@verbum.org>
+Date: Fri, 27 Apr 2012 14:36:01 -0400
+Subject: [PATCH] dbus-launch: Move ~/.dbus autolaunch stuff to /run/user
+
+We shouldn't be polluting the user's home directory when we have a
+per-machine per-user directory available in XDG_RUNTIME_DIR.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=35887
+---
+ tools/dbus-launch-x11.c |  148 +++++++++++++++++++++++++++++++----------------
+ 1 files changed, 97 insertions(+), 51 deletions(-)
+
+diff --git a/tools/dbus-launch-x11.c b/tools/dbus-launch-x11.c
+index c7e3330..b50d43a 100644
+--- a/tools/dbus-launch-x11.c
++++ b/tools/dbus-launch-x11.c
+@@ -30,6 +30,8 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <limits.h>
++#include <stdarg.h>
+ #include <errno.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -87,16 +89,98 @@ get_homedir (void)
+   return home;
+ }
+ 
+-#define DBUS_DIR ".dbus"
+-#define DBUS_SESSION_BUS_DIR "session-bus"
++static char *
++wish_i_had_g_build_filename (const char *first,
++                             ...)
++{
++  const char *arg;
++  const char *next;
++  char *p;
++  char buf[PATH_MAX+1];
++  va_list args;
++
++  va_start (args, first);
++
++  p = &(buf[0]);
++
++  arg = first;
++  do
++    {
++      next = va_arg (args, const char *);
++      strcpy (p, arg);
++      p += strlen (arg);
++      if (next)
++        {
++          *p = '/';
++          p++;
++        }
++      arg = next;
++    }
++  while (arg != NULL);
++
++  va_end (args);
++
++  *p = '\0';
++
++  return strdup ((char*)buf);
++}
++
++static char *
++wish_i_had_g_strconcat (const char *first,
++                        ...)
++{
++  char *result;
++  const char *arg;
++  va_list args;
++
++  va_start (args, first);
++
++  result = strdup (first);
++
++  while ((arg = va_arg (args, const char *)) != NULL)
++    {
++      char *end = result + strlen (result);
++      result = realloc (result, strlen (result) + strlen (arg) + 1);
++      strcpy (end, arg);
++    }
++
++  va_end (args);
++  return result;
++}
++
++/* This used to live in ~/.dbus, but we don't want to put stuff
++ * in the user home directory for multiple reasons; see
++ * https://bugs.freedesktop.org/show_bug.cgi?id=35887
++ */
++static char *autolaunch_data_dir = NULL;
++static const char *
++get_autolaunch_data_dir (void)
++{
++  if (autolaunch_data_dir == NULL)
++    {
++      const char *datadir;
++      const char *home;
++      /* http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html */
++      datadir = getenv ("XDG_RUNTIME_DIR");
++
++      if (datadir)
++        autolaunch_data_dir = wish_i_had_g_build_filename (datadir, "dbus-autolaunch", NULL);
++      else
++        {
++          home = get_homedir ();
++          autolaunch_data_dir = wish_i_had_g_build_filename (home, ".dbus", "session-bus", NULL);
++        }
++    }
++  return autolaunch_data_dir;
++}
+ 
+ static char *
+ get_session_file (void)
+ {
+-  static const char prefix[] = "/" DBUS_DIR "/" DBUS_SESSION_BUS_DIR "/";
++  const char *autolaunch_data_dir;
+   const char *machine;
+-  const char *home;
+   char *display;
++  char *session_filename;
+   char *result;
+   char *p;
+ 
+@@ -149,23 +233,13 @@ get_session_file (void)
+         *p = '_';
+     }
+   
+-  home = get_homedir ();
+-  
+-  result = malloc (strlen (home) + strlen (prefix) + strlen (machine) +
+-                   strlen (display) + 2);
+-  if (result == NULL)
+-    {
+-      /* out of memory */
+-      free (display);
+-      return NULL;
+-    }
++  autolaunch_data_dir = get_autolaunch_data_dir ();
+ 
+-  strcpy (result, home);
+-  strcat (result, prefix);
+-  strcat (result, machine);
+-  strcat (result, "-");
+-  strcat (result, display);
+-  free (display);
++  session_filename = wish_i_had_g_strconcat (machine, "-", display, NULL);
++
++  result = wish_i_had_g_build_filename (autolaunch_data_dir, session_filename, NULL);
++
++  free (session_filename);
+ 
+   verbose ("session file: %s\n", result);
+   return result;
+@@ -174,41 +248,13 @@ get_session_file (void)
+ static void
+ ensure_session_directory (void)
+ {
+-  const char *home;
+-  char *dir;
+-  
+-  home = get_homedir ();
+-
+-  /* be sure we have space for / and nul */
+-  dir = malloc (strlen (home) + strlen (DBUS_DIR) + strlen (DBUS_SESSION_BUS_DIR) + 3);
+-  if (dir == NULL)
+-    {
+-      fprintf (stderr, "no memory\n");
+-      exit (1);
+-    }
+-  
+-  strcpy (dir, home);
+-  strcat (dir, "/");
+-  strcat (dir, DBUS_DIR);
+-
+-  if (mkdir (dir, 0700) < 0)
++  const char *autolaunch_dir = get_autolaunch_data_dir();
++  if (mkdir (autolaunch_dir, 0700) < 0)
+     {
+       /* only print a warning here, writing the session file itself will fail later */
+       if (errno != EEXIST)
+-        fprintf (stderr, "Unable to create %s\n", dir);
++        fprintf (stderr, "Unable to create %s\n", autolaunch_dir);
+     }
+-
+-  strcat (dir, "/");
+-  strcat (dir, DBUS_SESSION_BUS_DIR);
+-
+-  if (mkdir (dir, 0700) < 0)
+-    {
+-      /* only print a warning here, writing the session file itself will fail later */
+-      if (errno != EEXIST)
+-        fprintf (stderr, "Unable to create %s\n", dir);
+-    }
+-  
+-  free (dir);
+ }
+ 
+ static Display *
+-- 
+1.7.7.6

@@ -1,0 +1,13 @@
+diff --git i/dbus/dbus-internals.c w/dbus/dbus-internals.c
+index 267aef97..b1064e85 100644
+--- i/dbus/dbus-internals.c
++++ w/dbus/dbus-internals.c
+@@ -185,7 +185,7 @@ const char *_dbus_no_memory_message = "Not enough memory";
+ 
+ static dbus_bool_t warn_initted = FALSE;
+ static dbus_bool_t fatal_warnings = FALSE;
+-static dbus_bool_t fatal_warnings_on_check_failed = TRUE;
++static dbus_bool_t fatal_warnings_on_check_failed = FALSE;
+ 
+ static void
+ init_warnings(void)
