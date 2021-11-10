@@ -1,14 +1,14 @@
 pkgbase = ibus-theme-tools
 	pkgdesc = Generate the IBus GTK or GNOME Shell theme from existing themes.
-	pkgver = 4.1.3
-	pkgrel = 1
+	pkgver = 4.2.0
+	pkgrel = 0
 	epoch = 0
 	url = https://github.com/openSUSE/IBus-Theme-Tools
 	arch = any
 	license = GPL-3.0+
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/openSUSE/IBus-Theme-Tools/archive/463988b17c147d8df131391fc634ccfaba3fac4e/IBus-Theme-Tools-463988b17c147d8df131391fc634ccfaba3fac4e.tar.gz
+	source = https://github.com/openSUSE/IBus-Theme-Tools/archive/f98a61660b7ac5df0941a2bf26f53135713d7697/IBus-Theme-Tools-f98a61660b7ac5df0941a2bf26f53135713d7697.tar.gz
 	sha512sums = SKIP
 
 pkgname = ibus-theme-tools
