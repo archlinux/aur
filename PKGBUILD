@@ -2,7 +2,7 @@
 HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth-git
-pkgver=2.0.1.r1.ga005409
+pkgver=2.1.0.r0.gec36249
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -17,13 +17,13 @@ options=('!emptydirs')
 source=(
     "bismuth::git+${url}"
     'hide-tray-icon.patch'
-    'build.sh.patch'
+    'script-cmake.patch'
 )
 
 sha512sums=(
     'SKIP'
     '333a495c907652bfc583a6f365acac70077fb622817a390853524f2ec21debad00841b29b3ffd88271077287182814790496b4961c90412d71eae6d1a9d6e919'
-    '24f2b96f3384fa684acbdc417323957d0eae1f55f2df096992f14eac11c5b2799aa9990870ea27a3c22478b55554929cc3bb118c3790e5939afeeb00a670a72a'
+    'b1beed3c17d9b66c2cb887dd475177534d7519389a120cf2718f295daa78634a6459e28580d6a63f2519b3861391ad8e03615040af00bd2151db2cd08d194f32'
 )
 
 pkgver() {
@@ -34,14 +34,13 @@ pkgver() {
 build() {
     cd "${srcdir}/bismuth"
 
-    patch -p0 -N -i "${srcdir}/build.sh.patch"
+    patch -p0 -N -i "${srcdir}/script-cmake.patch"
 
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
         patch -p0 -N -i "${srcdir}/hide-tray-icon.patch"
     fi
 
-    npm i -P --production esbuild@'^0.12.26'
-
+    npm i --omit=dev -P esbuild@'^0.12.26'
     npm run build
 }
 
@@ -50,7 +49,5 @@ package() {
 
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/" && cp -r "./LICENSES/"* "$_"
 
-    install -dm755 "${pkgdir}/usr/share/kwin/scripts/bismuth/" && cp -r "./build/kwinscript/"* "$_"
-
-    DESTDIR="${pkgdir}" cmake --install "./build/kcm"
+    DESTDIR="${pkgdir}" cmake --install "build"
 }
