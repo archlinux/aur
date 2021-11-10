@@ -1,31 +1,18 @@
-From 98cd17aa324a031e2ee3d344582dfdafd1e4642f Mon Sep 17 00:00:00 2001
-From: Tiramisu Mokka <kofemann@gmail.com>
-Date: Fri, 19 Mar 2021 19:00:32 +0100
-Subject: [PATCH] fix compatibility with gnome40
-
----
- metadata.json | 5 ++---
- prefs.js      | 6 ++----
- 2 files changed, 4 insertions(+), 7 deletions(-)
-
 diff --git a/metadata.json b/metadata.json
-index e4c9691..8a07918 100644
+index e4c9691..c5d8a70 100644
 --- a/metadata.json
 +++ b/metadata.json
-@@ -3,11 +3,10 @@
+@@ -3,8 +3,8 @@
    "name": "TopIcons Plus",
    "gettext-domain": "TopIcons-Plus",
    "shell-version": [
 -    "3.34",
 -    "3.36"
-+    "40"
++    "40",
++    "41"
    ],
    "settings-schema": "org.gnome.shell.extensions.topicons",
    "url": "https://github.com/phocean/TopIcons-plus",
-   "uuid": "TopIcons@phocean.net",
--  "version": 27
-+  "version": 28
- }
 diff --git a/prefs.js b/prefs.js
 index bd372d2..f6b1277 100644
 --- a/prefs.js
@@ -49,6 +36,3 @@ index bd372d2..f6b1277 100644
  
 -     return widget;
  }
--- 
-2.31.1
-
