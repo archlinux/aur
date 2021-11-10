@@ -66,7 +66,7 @@ build() {
 package() {
     cd "${srcdir}"
 
-    local dest=$(install -dm755 "${pkgdir}/usr/src/ntfs3-${pkgver}" && echo "$_")
+    local dest=$(install -dm755 "${pkgdir}/usr/src/ntfs3-${_ver}" && echo "$_")
 
     cp -rt "${dest}" "ntfs3/"*
 
