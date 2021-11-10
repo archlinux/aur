@@ -1,10 +1,10 @@
 diff --git a/commands/release.js b/commands/release.js
-index 4405eaa1d..979269fdb 100644
+index 42de1d1a1..1ef8d08a0 100644
 --- a/commands/release.js
 +++ b/commands/release.js
-@@ -616,10 +616,7 @@ exports.run = (argv, done) => {
-     task('create module cache', createModuleCache),
-     task('create packaged styles', createPackagedStyles),
+@@ -465,10 +465,7 @@ exports.run = (argv, done) => {
+     task('install dependencies', installDependencies),
+     task('write license file', writeLicenseFile),
      task('remove development files', removeDevelopmentFiles),
 -    !noAsar && task('create application asar', createApplicationAsar),
 -    !skipInstaller && task('create branded installer', createBrandedInstaller),
@@ -12,9 +12,9 @@ index 4405eaa1d..979269fdb 100644
 -    task('store build configuration as json', writeConfigToJson)
 +    !noAsar && task('create application asar', createApplicationAsar)
    ].filter(Boolean));
- 
+
    return async.series(tasks, (_err) => {
-@@ -633,9 +630,5 @@ exports.run = (argv, done) => {
+@@ -482,9 +479,5 @@ exports.run = (argv, done) => {
  exports.handler = (argv) => {
    exports.run(argv, (_err, CONFIG) => {
      cli.abortIfError(_err);
@@ -25,7 +25,7 @@ index 4405eaa1d..979269fdb 100644
    });
  };
 diff --git a/lib/target.js b/lib/target.js
-index 062285659..668e2e57b 100644
+index 6ee5baebb..007ed52af 100644
 --- a/lib/target.js
 +++ b/lib/target.js
 @@ -4,8 +4,6 @@ const semver = require('semver');
@@ -36,8 +36,8 @@ index 062285659..668e2e57b 100644
 -  .default;
  const windowsInstallerVersion = require('./windows-installer-version');
  const debug = require('debug')('hadron-build:target');
- 
-@@ -183,8 +181,7 @@ class Target {
+
+@@ -206,8 +204,7 @@ class Target {
        platform: this.platform,
        arch: this.arch,
        electronVersion: this.electronVersion,
@@ -45,5 +45,5 @@ index 062285659..668e2e57b 100644
 -      afterExtract: [ffmpegAfterExtract]
 +      sign: null
      };
- 
+
      if (this.platform === 'win32') {
