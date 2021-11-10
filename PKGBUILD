@@ -1,7 +1,7 @@
 # Maintainer: Gavin D. Howard <yzena.tech@gmail.com>
 pkgname=bc-gh
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gavinhoward/bc"
@@ -19,7 +19,7 @@ CFLAGS="-flto -O3 $CFLAGS"
 
 build() {
 	cd "bc-$pkgver"
-	PREFIX=/usr ./configure.sh -GP -sbc.banner -sdc.tty_mode
+	PREFIX=/usr ./configure.sh -G -sbc.banner -sdc.tty_mode
 	make
 }
 
