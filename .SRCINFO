@@ -9,7 +9,7 @@ pkgbase = mongodb-compass-beta
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = git
-	makedepends = nodejs
+	makedepends = nodejs>=14.0.0
 	makedepends = npm>=7.0.0
 	makedepends = python
 	makedepends = unzip
