@@ -1,27 +1,35 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=python-timingsutil
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
-pkgdesc="A collection of timing utilities"
+pkgdesc="Collection of timing utilities"
 url="https://bitbucket.org/daycoder/timingsutil"
-arch=(any)
+arch=('any')
 license=('MIT')
-makedepends=('python-setuptools')
 depends=('python-logging-helper')
-source=("https://pypi.io/packages/source/t/timingsutil/timingsutil-${pkgver}.tar.gz")
-sha256sums=('6978c73bfeb81cedd2eab4be1600aab8f8b7f323597552523c2dfadd29f28367')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/timingsutil/timingsutil-$pkgver.tar.gz")
+sha256sums=('0a24db06da6270d2f883b7a87b5aae92bb655c34849f525ad1ee4a59dcdabd6d')
 
 prepare() {
-  cd "${srcdir}"/timingsutil-$pkgver
+	cd "timingsutil-$pkgver"
+	sed -i "/packages=/c\packages=['timingsutil']," setup.py
 }
 
 build() {
-  cd "${srcdir}"/timingsutil-$pkgver
-  python setup.py build
+	cd "timingsutil-$pkgver"
+	python setup.py build
+}
+
+check() {
+	cd "timingsutil-$pkgver"
+	python -m unittest timingsutil/unittests/*.py
 }
 
 package() {
-  cd "${srcdir}/timingsutil-$pkgver"
-  python setup.py install --root=${pkgdir} --optimize=1
+	cd "timingsutil-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
-
