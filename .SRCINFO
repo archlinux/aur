@@ -1,0 +1,14 @@
+pkgbase = okta-cli-bin
+	pkgdesc = The Okta CLI is the easiest way to get started with Okta!
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/okta/okta-cli
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	provides = okta-cli
+	conflicts = okta-cli
+	source = https://github.com/okta/okta-cli/releases/download/okta-cli-tools-0.8.0/okta-cli-linux-0.8.0-x86_64.zip
+	sha256sums = c076c472854677129c93028ab601b4968927519dd068d705b4d8c45cf21fc80e
+
+pkgname = okta-cli-bin
