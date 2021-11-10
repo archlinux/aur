@@ -1,0 +1,24 @@
+pkgbase = python-ip2geotools
+	pkgdesc = Simple tool for getting geolocation information on given IP address from various geolocation databases.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://pypi.org/project/ip2geotools
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-timeout
+	checkdepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = https://github.com/tomas-net/ip2geotools/archive/0.1.6.tar.gz
+	sha512sums = 3bbf33388409cce5b94cb79d28ac5d158796d27c6c23fc0609086299d94e41e5a396c4dc0f4b1f0e1becd3f8b887f09bf6b86b5f2651d2698ea6c48f1f7701ef
+
+pkgname = python-ip2geotools
