@@ -1,0 +1,14 @@
+pkgbase = cereal-is-a-soup
+	pkgdesc = Cereal is a soup!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Matr1x-101/cereal-is-a-soup
+	arch = any
+	license = custom
+	depends = bash
+	source = https://raw.githubusercontent.com/Matr1x-101/cereal-is-a-soup/main/cereal-is-a-soup.bash
+	source = https://raw.githubusercontent.com/Matr1x-101/cereal-is-a-soup/main/LICENSE
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = cereal-is-a-soup
