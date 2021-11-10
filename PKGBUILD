@@ -1,10 +1,10 @@
 _pkgname=glualint
 pkgname=${_pkgname}-bin
 pkgver=1.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for Garry's mod Lua."
 arch=('x86_64')
-depends=('libffi')
+depends=('libffi7')
 _githubrepo="https://github.com/FPtje/GLuaFixer"
 url=${_githubrepo}
 license=('LGPL2.1')
