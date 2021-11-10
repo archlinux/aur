@@ -2,7 +2,7 @@
 
 pkgname=iridium-rpm
 pkgver=95.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
@@ -24,12 +24,12 @@ package() (
     cp -r "${srcdir}/usr/share/." "${pkgdir}/usr/share/"
     cp -r "${srcdir}/usr/lib64/." "${pkgdir}/usr/lib/"
     cp -r "${srcdir}/usr/bin/." "${pkgdir}/usr/bin/"
-    cp -r "${srcdir}/etc/iridium-browser" "${pkgdir}/etc/iridium-browser"
+    cp -r "${srcdir}/etc/iridium-browser" "${pkgdir}/etc/"
     # Why does /usr/bin/iridium point to /usr/lib64/chromium/chrome-wrapper?
     rm -f "${pkgdir}/usr/bin/iridium" "${pkgdir}/usr/bin/chromium" "${pkgdir}/usr/bin/chromium-browser"
     # Surely we only need iridium-browser, right?
-    ln -s "./iridium-browser" "${pkgdir}/usr/bin/iridium"
-    ln -s "./iridium-browser" "${pkgdir}/usr/bin/chromium"
-    ln -s "./iridium-browser" "${pkgdir}/usr/bin/chromium-browser"
+    ln -s "${pkgdir}/usr/bin/iridium-browser" "${pkgdir}/usr/bin/iridium"
+    ln -s "${pkgdir}/usr/bin/iridium-browser" "${pkgdir}/usr/bin/chromium"
+    ln -s "${pkgdir}/usr/bin/iridium-browser" "${pkgdir}/usr/bin/chromium-browser"
 
 )
