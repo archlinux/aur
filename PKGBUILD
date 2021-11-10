@@ -38,6 +38,7 @@ build() {
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     bsdtar -xf "${srcdir}"/python-${pkgver}-embed-${target}.zip
     gendef python${_pybasever}.dll
+    sed -i "s|PyEval_InitThreads@0|PyEval_InitThreads|g" python${_pybasever}.def
     ${_arch}-dlltool --dllname python${_pybasever}.dll --def python${_pybasever}.def --output-lib libpython${_pybasever}.dll.a
     sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g" "${srcdir}"/wine-python.sh > ${_arch}-python${_pybasever}-bin
     popd
