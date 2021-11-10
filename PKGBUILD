@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libchdr
 pkgname=$_pkgname-git
-pkgver=r151.cdcb714
+pkgver=r153.5de1a59
 pkgrel=1
 pkgdesc="Standalone library for reading MAME's CHDv1-v5 formats"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -21,15 +21,13 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	# prefer makepkg.conf lto option
-	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	# only build shared library
-	sed -i '/(chdr-static/d' CMakeLists.txt
-	sed -i 's/chdr-static/chdr/' tests/CMakeLists.txt
+	sed -i '/(chdr-static/d;/tests/d' CMakeLists.txt
 }
 
 build() {
 	cmake -S $_pkgname -B build -G Ninja \
+		-DBUILD_LTO=OFF \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DWITH_SYSTEM_ZLIB=ON \
 		-Wno-dev
