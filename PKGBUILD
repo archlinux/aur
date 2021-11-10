@@ -1,10 +1,10 @@
 
 _pkgname=minq_xvideos
 pkgname="${_pkgname}-git"
-pkgver=r15.0af06f627bbb7cfbc90313b2df459841ec94b5f0
+pkgver=r17.709508d288055152f42e8197cf9d8ed2bffeb991
 pkgrel=1
 epoch=
-pkgdesc="Watch xvideos in your terminal! Undesirable videos can be blocked."
+pkgdesc="Explore xvideos in your terminal! Videos can be either played in the terminal or in any external video player. Undesirable videos can be blocked."
 arch=(x86_64 i686)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
@@ -12,7 +12,7 @@ groups=()
 depends=(python python-beautifulsoup4 viu mplayer yt-dlp)
 makedepends=(git)
 checkdepends=()
-optdepends=()
+optdepends=("vlc: an alternative video player")
 provides=("${_pkgname}")
 conflicts=()
 replaces=()
