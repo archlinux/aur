@@ -1,0 +1,7 @@
+--- share/kwin/scripts/bismuth/contents/ui/TrayItem.qml
++++ share/kwin/scripts/bismuth/contents/ui/TrayItem.qml
+@@ -9,3 +9,3 @@
+ 
+-    visible: true
++    visible: false
+     icon.name: "bismuth"
