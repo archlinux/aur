@@ -10,7 +10,7 @@ license=('custom:apple-restricted-font')
 source=('https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg'
         'license.awk'
         'version.awk')
-sha256sums=('ec0518e310797d2f9cb924c18e3e7b661359f4fb653d1ad4315758ebcdb5ff11'
+sha256sums=('76c415e9aee0524087cc6a042113db6b38f1a19f2e286f807aa29756461370a9'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
 makedepends=('texlive-bin' 'p7zip')
