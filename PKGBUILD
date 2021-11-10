@@ -9,8 +9,8 @@
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
 
 pkgname=lwks-beta
-lwksver=2021.3
-lwksbuild=128976
+lwksver=2022.1
+lwksbuild=131184
 pkgver=$lwksver.$lwksbuild
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -23,11 +23,11 @@ optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
 conflicts=('lightworks' 'lwks')
 source=(
-    "https://cdn.lwks.com/releases/beta/Lightworks-$lwksver-Beta-$lwksbuild.deb"
+    "https://lwks.s3.amazonaws.com/betas/public/lightworks/$lwksver%20Beta%20Revision%20$lwksbuild%20%285th%20Nov%29/Lightworks-$lwksver-Beta-$lwksbuild.deb"
     )
 
 sha512sums=(
-    '6ccb434f26a998a95514b390ebc46e981a83266711ec0e6e2f0efdd7cec83130ebf259e62454cf40d8a850aa1c8d608a9200e106e3f9b129a7689dfddf8bef60'
+    'a7e263677c216d6b0649d83dd9416d3e0a26195eafcc10a8fe2c31338cd01ceccd4b3f4c9b483f1faa9f7e84a4065fc85bccc662a84313369894a5121e2a44f5'
     )
 
 package() {
