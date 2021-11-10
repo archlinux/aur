@@ -1,8 +1,8 @@
 # Maintainer: Cookie Engineer <@cookiengineer>
 
 pkgname=hydroxide-git
-pkgver=r245.4c7fd88d57cd
-pkgrel=2
+pkgver=v0.2.20.r0.4c7fd88d57cd
+pkgrel=1
 pkgdesc="A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge"
 arch=('x86_64')
 makedepends=('git' 'go')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/hydroxide"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
