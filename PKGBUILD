@@ -2,7 +2,7 @@
 
 pkgname=iridium-rpm
 pkgver=95.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
@@ -12,9 +12,9 @@ conflicts=('iridium' 'chromium')
 depends=('ffmpeg' 'pipewire' 're2')
 options=('!emptydirs' '!strip')
 
-source=('https://downloads.iridiumbrowser.de/openSUSE_Tumbleweed/x86_64/iridium-browser-2021.10.95.1-1.4.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/openSUSE_Leap_15.3/x86_64/iridium-browser-2021.10.95.1-lp153.1.1.x86_64.rpm')
 
-sha256sums=('ca7eca725da5eba624b117c7db7b307b602767815d0381d39cd0dfbb6c65f0c3')
+sha256sums=('8b87d189313607ad26f9a2a44e98859016afae6c0da5ee76809aeca2d55478c3')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
@@ -25,12 +25,9 @@ package() (
     cp -r "${srcdir}/usr/lib64/." "${pkgdir}/usr/lib/"
     cp -r "${srcdir}/usr/bin/." "${pkgdir}/usr/bin/"
     cp -r "${srcdir}/etc/iridium-browser" "${pkgdir}/etc/"
-    # Why does /usr/bin/iridium point to /usr/lib64/chromium/chrome-wrapper?
-    rm -f "${pkgdir}/usr/bin/iridium" "${pkgdir}/usr/bin/chromium" "${pkgdir}/usr/bin/chromium-browser"
-    # Surely we only need iridium-browser, right?
-    ln -s "/usr/bin/iridium-browser" "${pkgdir}/usr/bin/iridium"
-    ln -s "/usr/bin/iridium-browser" "${pkgdir}/usr/bin/chromium"
-    ln -s "/usr/bin/iridium-browser" "${pkgdir}/usr/bin/chromium-browser"
-    # And it's gone. Alright then just give it back then.
-    cp "${srcdir}/usr/bin/iridium-browser" "${pkgdir}/usr/bin/iridium-browser"
+    ln -s "/usr/lib/libevent-2.1.so" "${pkgdir}/usr/lib/libevent-2.1.so.6"
+    ln -s "/usr/lib/libavcodec.so.58.134.100" "${pkgdir}/usr/lib/libavcodec.so.58.134"
+    ln -s "/usr/lib/libavformat.so.58.76.100" "${pkgdir}/usr/lib/libavformat.so.58.76"
+    ln -s "/usr/lib/libavutil.so.56.70.100" "${pkgdir}/usr/lib/libavutil.so.56.70"
+    ln -s "/usr/bin/iridium" "${pkgdir}/usr/bin/iridium-browser"
 )
