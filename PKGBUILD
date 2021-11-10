@@ -1,17 +1,17 @@
 # Maintainer: René Wagner <rwagner@rw-net.de>
 
 pkgname=cgmnlm
-pkgrel=2
-pkgver=1.0
+pkgrel=1
+pkgver=1.1
 pkgdesc="colorful gemini line mode client - fork of gmni"
 url="https://src.clttr.info/rwa/cgmnlm"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
-source=("${pkgname}::https://src.clttr.info/rwa/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://src.clttr.info/rwa/${pkgname}/archive/${pkgver}.tar.gz")
 conflicts=('gmni-git' 'cgmnlm-git')
 depends=('bearssl')
-makedepends=('git' 'scdoc')
-sha256sums=('fbfecea428ef4b938d5d76f48dc708847ae2b2c71c10507543d1ac4660b338d7')
+makedepends=('scdoc')
+sha256sums=('57c1937cfce2634a198618074487670b928df73f94323b4355ead2480acc542a')
 
 build() {
     cd "${srcdir}/${pkgname}"
