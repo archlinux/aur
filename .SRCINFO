@@ -1,12 +1,13 @@
 pkgbase = ros2-galactic
 	pkgdesc = A set of software libraries and tools for building robot applications
 	pkgver = 2021.07.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://docs.ros.org/en/galactic/
 	install = ros2-galactic.install
 	arch = any
 	license = Apache
 	depends = ros2-arch-deps
+	depends = ros2-pyqt5-sip-compat
 	depends = gmock
 	depends = sip4
 	source = ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210716

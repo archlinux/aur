@@ -2,18 +2,20 @@
 # Contributor: mjbogusz <mjbogusz+github@gmail.com>
 # Contributor: yuanyuyuan <az6980522@gmail.com>
 # Contributor: Rémy B. (github.com/KirrimK)
+# Contributor: Renato Caldas (github.com/rmsc)
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
 license=('Apache')
 depends=(
     'ros2-arch-deps'
+    'ros2-pyqt5-sip-compat'
     'gmock'
     'sip4'
 )
@@ -34,13 +36,6 @@ prepare() {
         printf "Locale must support UTF-8. See https://wiki.archlinux.org/index.php/locale
         or https://wiki.archlinux.org/index.php/locale ."
         exit 1
-    fi
-
-    # Create required symlinks (see https://wiki.archlinux.org/index.php/ROS)
-    if [ ! -d /usr/share/sip/PyQt5 ]; then
-        sudo mkdir -p /usr/share/sip
-        sudo ln -sf /usr/lib/python3.9/site-packages/PyQt5 /usr/share/sip/.
-        sudo ln -sf /usr/lib/python3.9/site-packages/PyQt5/bindings/* /usr/share/sip/PyQt5/.
     fi
 
     # Clone the repos
