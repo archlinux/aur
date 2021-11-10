@@ -4,8 +4,8 @@
 
 
 pkgname=alchemy-next-viewer-git
-pkgver=6.4.24.47628.7fe82739e7
-pkgrel=2
+pkgver=6.4.24.47635.8d27fc7296
+pkgrel=1
 _branch="${AL_GIT_BRANCH:=main}"
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - git version"
 arch=('x86_64')
