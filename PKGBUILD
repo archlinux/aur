@@ -21,7 +21,7 @@ makedepends=('java-environment>=16')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('c073c8113159e8127cee818fad32d5fbe943b1072459f5a914fd99906f19f179'
+sha256sums=('523faf241cb1ec149c9808f043cb9d3ec5725a9cc6f7631edcfd1acf5c075d68'
             'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba')
 
 install=$pkgname.install
@@ -57,5 +57,3 @@ package() {
       -e 's|com.github.reds.LogisimEvolution|logisim-evolution|' \
       -i "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
-sha256sums=('523faf241cb1ec149c9808f043cb9d3ec5725a9cc6f7631edcfd1acf5c075d68'
-            'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba')
