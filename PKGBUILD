@@ -4,6 +4,7 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 
+pkgbase=dbus-xdg
 pkgname=(dbus-xdg-elogind dbus-docs)
 pkgver=1.12.20
 pkgrel=1

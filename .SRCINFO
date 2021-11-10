@@ -1,4 +1,4 @@
-pkgbase = dbus-xdg-elogind
+pkgbase = dbus-xdg
 	pkgdesc = Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems)
 	pkgver = 1.12.20
 	pkgrel = 1
