@@ -17,6 +17,8 @@ package() {
   cd "$_pkgname-$pkgver"
 
   install -Dm755 quickgui "$pkgdir/opt/$_pkgname/quickgui"
+  install -Dm644 resources/quickgui.desktop "${pkgdir}/usr/share/applications/quickgui.desktop"
+  install -Dm644 resources/quickgui_512.png "${pkgdir}/usr/share/icons/quickgui_512.png"
 
   cp -R data "$pkgdir/opt/$_pkgname"
   cp -R lib "$pkgdir/opt/$_pkgname"
