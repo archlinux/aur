@@ -4,7 +4,7 @@
 # This means no matter what the package version says, it will always be the latest version because that's all steamcmd allows for retrieval of.
 
 pkgname=satisfactory-server
-pkgver=0.5.0.7.172183
+pkgver=0.5.0.8.172183
 pkgrel=1
 pkgdesc="Dedicated server for the Satisfactory PC game"
 arch=('x86_64')
