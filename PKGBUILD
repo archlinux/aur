@@ -1,3 +1,4 @@
+# Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 # Maintainer: Seppia <seppia@seppio.fish>
 # Maintainer: JustKidding <jk@vin.ovh>
  
@@ -13,7 +14,7 @@ pkgver=95.0.4638.69
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
-pkgdesc="A lightweight approach to removing Google web service dependency - with Support for the XDG Base Directory Specification"
+pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
