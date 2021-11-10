@@ -23,8 +23,8 @@ sha256sums=('d7796902c3239d29743d90a3f5c1cf8b817a07c76d1992776807e0f00262149e'
 noextract=("${_appimage}")
 
 prepare() {
-    chmod +x "${srcdir}/${_appimage}"
-    "${srcdir}"/"${_appimage}" --appimage-extract Slic3r.desktop
+    chmod +x ${srcdir}/${_appimage}
+    ${srcdir}/${_appimage} --appimage-extract Slic3r.desktop
     ${srcdir}/${_appimage} --appimage-extract resources/icons
 }
 
