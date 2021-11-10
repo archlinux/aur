@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=symbiyosys-nightly
-pkgver=5d19e46_20211109
+pkgver=5d19e46_20211110
 pkgrel=1
 epoch=1
 pkgdesc="Front-end for Yosys-based formal verification flows"
