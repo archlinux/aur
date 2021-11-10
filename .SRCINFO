@@ -1,0 +1,25 @@
+pkgbase = python-ryu-git
+	pkgdesc = Component-based Software-defined Networking Framework
+	pkgver = 4.34.r95.g537f35f4
+	pkgrel = 1
+	url = https://ryu-sdn.org
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	depends = python-eventlet
+	depends = python-msgpack
+	depends = python-netaddr
+	depends = python-oslo-config
+	depends = openvswitch
+	depends = python-packaging
+	depends = python-routes
+	depends = python-six
+	depends = python-tinyrpc
+	depends = python-webob
+	source = python-ryu-git::git+https://github.com/faucetsdn/ryu.git
+	sha256sums = SKIP
+
+pkgname = python-ryu-git
