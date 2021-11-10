@@ -4,7 +4,7 @@
 # Contributor: boscowitch <boscowitch@boscowitch.de>
 
 _pkgname=coreutils
-_commit=fd0fc50b1a67e1db7e9be48662c7eabe059aca45
+_commit=8e1c0d4f8a255091c59cf187a43a06cd264dc273
 pkgname=advcp
 pkgver=9.0
 pkgrel=1
@@ -19,7 +19,7 @@ source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce'
             'SKIP'
-            'SKIP')
+            '889b1b1d0dbcd2b99e05daf2d53feff9002720eb1232968eb3c60983f76c7b72')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"

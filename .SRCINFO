@@ -16,10 +16,10 @@ pkgbase = advcp
 	provides = mvg
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz.sig
-	source = advcp-9.0-1.patch::https://raw.githubusercontent.com/jarun/advcpmv/fd0fc50b1a67e1db7e9be48662c7eabe059aca45/advcpmv-0.9-9.0.patch
+	source = advcp-9.0-1.patch::https://raw.githubusercontent.com/jarun/advcpmv/8e1c0d4f8a255091c59cf187a43a06cd264dc273/advcpmv-0.9-9.0.patch
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
 	sha256sums = ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 889b1b1d0dbcd2b99e05daf2d53feff9002720eb1232968eb3c60983f76c7b72
 
 pkgname = advcp
