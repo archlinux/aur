@@ -1,0 +1,15 @@
+pkgbase = python-lttb-git
+	pkgdesc = Numpy implementation of Steinarsson’s Largest-Triangle-Three-Buckets algorithm
+	pkgver = v0.3.1.r3.g9463159
+	pkgrel = 1
+	url = https://github.com/sveinn-steinarsson/flot-downsample
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-numpy>=1.1
+	provides = python-lttb
+	conflicts = python-lttb
+	source = git+https://git.sr.ht/~javiljoen/lttb-numpy
+	sha256sums = SKIP
+
+pkgname = python-lttb-git
