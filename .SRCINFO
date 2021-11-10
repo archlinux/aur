@@ -1,7 +1,7 @@
 pkgbase = python-ip2location
 	pkgdesc = A Python Library to reads the geo location information by IP address.
 	pkgver = 8.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/IP2Location
 	arch = any
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = python-ip2location
 	checkdepends = python-pytest-timeout
 	makedepends = python-setuptools
 	depends = python
+	provides = python-IP2Location
+	conflicts = python-IP2Location
 	source = IP2Location-Python-8.6.4.tar.gz::https://github.com/chrislim2888/IP2Location-Python/archive/8.6.4.tar.gz
 	sha512sums = c423a3eeae2211c7175fa27411e3a0df543e6cd4c1b2a666e4e73173654a84fc9d6e73649e0b7af3f377af017df1ee697cee5a67b99a1e16eb381e34feb99580
 
