@@ -1,6 +1,6 @@
 pkgbase = rocblas
 	pkgdesc = Next generation BLAS implementation for ROCm platform
-	pkgver = 4.3.1
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://rocblas.readthedocs.io/en/latest
 	arch = x86_64
@@ -13,12 +13,11 @@ pkgbase = rocblas
 	makedepends = perl-file-which
 	makedepends = msgpack-c
 	makedepends = rocm-cmake
-	makedepends = llvm-amdgpu
 	makedepends = gcc-fortran
-	depends = hip-rocclr
+	depends = hip
 	depends = openmp
 	options = !strip
-	source = rocblas-4.3.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-4.3.1.tar.gz
-	sha256sums = ad3c09573cb2bcfdb12bfb5a05e85f9c95073993fd610981df24dda792727b4b
+	source = rocblas-4.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-4.5.0.tar.gz
+	sha256sums = 22d15a1389a10f1324f5e0ceac1a6ec0758a2801a18419a55e37e2bc63793eaf
 
 pkgname = rocblas
