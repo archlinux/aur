@@ -1,6 +1,6 @@
 pkgbase = fulcrum
 	pkgdesc = A fast & nimble SPV server for Bitcoin Cash
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://gitlab.com/FloweeTheHub/fulcrum
 	install = fulcrum.install
@@ -12,10 +12,11 @@ pkgbase = fulcrum
 	optdepends = jemalloc: reduce memory fragmentation
 	provides = fulcrum
 	backup = etc/fulcrum.conf
-	source = https://gitlab.com/FloweeTheHub/fulcrum/-/archive/v1.5.2/fulcrum-v1.5.2.tar.gz
+	source = https://gitlab.com/FloweeTheHub/fulcrum/-/archive/v1.5.3/fulcrum-v1.5.3.tar.gz
 	source = fulcrum.conf
-	sha256sums = 8a50c245232641f4eae11a2ad831556b1fb3963a7586bba5c098bc9c34aa536c
+	source = rocksdb-patch
+	sha256sums = 478e532695522ef5c1093faef713a30148b247c5d5639c6cd9f4ba266e0c6186
 	sha256sums = 8a559a825d0b7bcd1231669e387183f05794ae919bb1b7ef84a9d74e407ff598
+	sha256sums = 30766d317e91b76834816414b8b5322e795c0ae94b07814bf5660a02307ba36b
 
 pkgname = fulcrum
-

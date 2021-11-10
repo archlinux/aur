@@ -2,7 +2,7 @@
 
 pkgname=fulcrum
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 url='https://gitlab.com/FloweeTheHub/fulcrum'
 arch=('x86_64')
@@ -19,13 +19,16 @@ provides=("$pkgname")
 source=(
     "https://gitlab.com/FloweeTheHub/fulcrum/-/archive/v$pkgver/fulcrum-v$pkgver.tar.gz"
     "fulcrum.conf"
+    "rocksdb-patch"
 )
-sha256sums=('8a50c245232641f4eae11a2ad831556b1fb3963a7586bba5c098bc9c34aa536c'
+sha256sums=('478e532695522ef5c1093faef713a30148b247c5d5639c6cd9f4ba266e0c6186'
     '8a559a825d0b7bcd1231669e387183f05794ae919bb1b7ef84a9d74e407ff598'
+    '30766d317e91b76834816414b8b5322e795c0ae94b07814bf5660a02307ba36b'
 )
 
 prepare() {
   cd "fulcrum-v$pkgver"
+  patch -p1 < $srcdir/rocksdb-patch
   qmake -makefile CONFIG+=recheck CONFIG+=release Fulcrum.pro
 }
 

@@ -1,0 +1,47 @@
+commit d02eb3859fe3e1bfbdf82dc8e256830f105fe329
+Author: Axel Gembe <derago@gmail.com>
+Date:   Thu Oct 28 20:26:47 2021 +0700
+
+    Build: Reject system rocksdb if not compiled with RTTI
+    
+    This makes `config.tests/rocksdb` check if the library was compiled with
+    USE_RTTI=1 by creating an instance of an `AssociativeMergeOperator`
+    derived class. When rocksdb was compiled without RTTI this should
+    produce
+    
+    ```
+    undefined reference to `typeinfo for rocksdb::AssociativeMergeOperator'
+    ```
+    
+    when running `qmake` in `config.log` and use the static library instead.
+
+diff --git a/config.tests/rocksdb/main.cpp b/config.tests/rocksdb/main.cpp
+index 2a08cb3..1946727 100644
+--- a/config.tests/rocksdb/main.cpp
++++ b/config.tests/rocksdb/main.cpp
+@@ -1,6 +1,8 @@
+ #include <array>
+ #include <cstddef>
++#include <memory>
+ #include <rocksdb/version.h>
++#include <rocksdb/merge_operator.h>
+ 
+ constexpr int minimumVersion[] = {6, 6, 4};
+ constexpr int version[] = {ROCKSDB_MAJOR, ROCKSDB_MINOR, ROCKSDB_PATCH};
+@@ -19,7 +21,16 @@ constexpr bool compareVersion(const int *version1, const int *version2, const si
+ 
+ static_assert(compareVersion(version, minimumVersion, std::size(version)));
+ 
++// If this causes an "undefined reference to `typeinfo for rocksdb::AssociativeMergeOperator'" error
++// in config.log it means that the rocksdb version you are attempting to use is built without RTTI.
++class ConcatOperator : public rocksdb::AssociativeMergeOperator {
++public:
++    bool Merge(const rocksdb::Slice&, const rocksdb::Slice*, const rocksdb::Slice&, std::string*, rocksdb::Logger*) const override { return true; }
++    const char* Name() const override { return "ConcatOperator"; }
++};
++
+ int main()
+ {
++    auto op = std::make_unique<ConcatOperator>();
+     return 0;
+ }
