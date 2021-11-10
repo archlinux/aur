@@ -1,6 +1,6 @@
 pkgbase = rocalution
 	pkgdesc = Next generation library for iterative sparse solvers for ROCm platform
-	pkgver = 4.3.1
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://rocalution.readthedocs.io/en/master
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = rocalution
 	makedepends = cmake
 	makedepends = rocm-cmake
 	makedepends = git
-	depends = hip-rocclr
+	depends = hip
 	depends = rocsparse
 	depends = rocblas
 	depends = rocprim
 	depends = rocrand
 	depends = openmp
-	source = rocalution-4.3.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocALUTION/archive/rocm-4.3.1.tar.gz
-	sha256sums = d3a7b9290f99bdc7382d1d5259c3f5e0e66a43aef4d05b7c2cd78b0e4a5c59bc
+	source = rocalution-4.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocALUTION/archive/rocm-4.5.0.tar.gz
+	sha256sums = 191629fef002fd1a0793a6b4fe5a6b8c43ac49d3cd173ba64a91359f54659e5b
 
 pkgname = rocalution
