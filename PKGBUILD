@@ -5,7 +5,7 @@
 # Contributor: American_Jesus
 pkgname=palemoon-gtk3
 _pkgname=palemoon
-pkgver=29.4.1
+pkgver=29.4.2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
 source=("http://archive.palemoon.org/source/palemoon-${pkgver}-source.tar.xz"
         mozconfig.in)
-sha1sums=('e666ad085dbfd52558424ea9aa1cf0aa292c9388'
+sha1sums=('a8bccc80fea1381b3135c21c85c57a3b0dbcf696'
           'f3cc0b20fd66066b0cb936a5f3f54b1145da1bab')
 
 prepare() {

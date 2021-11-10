@@ -1,6 +1,6 @@
 pkgbase = palemoon-gtk3
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 29.4.1
+	pkgver = 29.4.2
 	pkgrel = 1
 	url = https://www.palemoon.org/
 	arch = i686
@@ -28,9 +28,9 @@ pkgbase = palemoon-gtk3
 	optdepends = ffmpeg: various video and audio support
 	provides = palemoon
 	conflicts = palemoon
-	source = http://archive.palemoon.org/source/palemoon-29.4.1-source.tar.xz
+	source = http://archive.palemoon.org/source/palemoon-29.4.2-source.tar.xz
 	source = mozconfig.in
-	sha1sums = e666ad085dbfd52558424ea9aa1cf0aa292c9388
+	sha1sums = a8bccc80fea1381b3135c21c85c57a3b0dbcf696
 	sha1sums = f3cc0b20fd66066b0cb936a5f3f54b1145da1bab
 
 pkgname = palemoon-gtk3
