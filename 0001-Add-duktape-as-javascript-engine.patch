@@ -1,7 +1,7 @@
 From 4f66a9549a393e4d74b93eb85301a04ea94bc750 Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Wed, 24 Jul 2019 15:55:17 +0800
-Subject: [PATCH 01/16] Add duktape as javascript engine.
+Subject: [PATCH 01/17] Add duktape as javascript engine.
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1515,7 +1515,7 @@ GitLab
 From d74aad8152a7c51999fffa9abe28e4306a052399 Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 13:15:17 +0800
-Subject: [PATCH 02/16] check netgroup.h header file
+Subject: [PATCH 02/17] check netgroup.h header file
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1545,7 +1545,7 @@ GitLab
 From 69c761506cbe458807e4ae2742c9e05bc60dad3d Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 10:59:03 +0800
-Subject: [PATCH 03/16] check return value
+Subject: [PATCH 03/17] check return value
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1576,7 +1576,7 @@ GitLab
 From f1536c4899934fd3c8243fda2d084a472fe57d2e Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 11:22:39 +0800
-Subject: [PATCH 04/16] check return value
+Subject: [PATCH 04/17] check return value
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1620,7 +1620,7 @@ GitLab
 From ca15eecf5dc7755947515c1bfc651fd8770aaf8f Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 13:17:16 +0800
-Subject: [PATCH 05/16] check return value
+Subject: [PATCH 05/17] check return value
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1663,7 +1663,7 @@ GitLab
 From 870348365cc0166e14f28e0d144ed552bba4d794 Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 13:18:13 +0800
-Subject: [PATCH 06/16] check return value
+Subject: [PATCH 06/17] check return value
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1691,7 +1691,7 @@ GitLab
 From 81c916ff08fdcee3c7340c4b2d4632086b89666c Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 11:23:04 +0800
-Subject: [PATCH 07/16] fix typecase
+Subject: [PATCH 07/17] fix typecase
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1754,7 +1754,7 @@ GitLab
 From acb956bf52f0a78bf7aaf925876f96e97a146995 Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 18:04:27 +0800
-Subject: [PATCH 08/16] typecase
+Subject: [PATCH 08/17] typecase
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1807,7 +1807,7 @@ GitLab
 From be060e4d48aceb09af34868b555b6c73c7afdabb Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 13:53:23 +0800
-Subject: [PATCH 09/16] some change
+Subject: [PATCH 09/17] some change
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1859,7 +1859,7 @@ GitLab
 From 2ffb62048a5ebedfe3bb053feb7385c7270ede28 Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 15:25:45 +0800
-Subject: [PATCH 10/16] some change
+Subject: [PATCH 10/17] some change
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1915,7 +1915,7 @@ GitLab
 From edb70ef69eed3275f5654510d135e680eb46c85d Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 15:25:35 +0800
-Subject: [PATCH 11/16] remove WATCHDOG_TIMEOUT define
+Subject: [PATCH 11/17] remove WATCHDOG_TIMEOUT define
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -1941,7 +1941,7 @@ GitLab
 From 906ae404f29f15ef8c529b999bf091b5d18ed7ac Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 12:46:40 +0800
-Subject: [PATCH 12/16] add meson build system support
+Subject: [PATCH 12/17] add meson build system support
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -2030,7 +2030,7 @@ GitLab
 From 1380b505c25be4aebe54b1b4223a570d64af83cc Mon Sep 17 00:00:00 2001
 From: Wu Xiaotian <yetist@gmail.com>
 Date: Sun, 22 Nov 2020 18:49:14 +0800
-Subject: [PATCH 13/16] fix run error
+Subject: [PATCH 13/17] fix run error
 
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
@@ -2061,7 +2061,7 @@ GitLab
 From 6856a704b70378948ef5f66e9b09555d97d4070b Mon Sep 17 00:00:00 2001
 From: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 Date: Fri, 10 Sep 2021 15:17:58 -0700
-Subject: [PATCH 14/16] Deduplicate code for "Add duktape as JS engine backend"
+Subject: [PATCH 14/17] Deduplicate code for "Add duktape as JS engine backend"
  effort/MR
 
 This leverages Wu Xiaotian (@yetist)'s original MR
@@ -4551,7 +4551,7 @@ GitLab
 From 4858128107be9c3ab11828ee8f35c5e26efd36ce Mon Sep 17 00:00:00 2001
 From: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 Date: Tue, 14 Sep 2021 14:38:15 -0700
-Subject: [PATCH 15/16] Gitlab CI: add duktape pkgconfig dependency
+Subject: [PATCH 15/17] Gitlab CI: add duktape pkgconfig dependency
 
 Make way for the CI to be able to build with duktape too
 
@@ -4576,10 +4576,10 @@ index 23cf0d6..942415d 100644
 GitLab
 
 
-From cd5d6da837fce95f8831a355dad88c83347c7337 Mon Sep 17 00:00:00 2001
+From ab6211465a1ac76f188bd0e08a4420cb66653c4a Mon Sep 17 00:00:00 2001
 From: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 Date: Mon, 20 Sep 2021 17:17:26 -0700
-Subject: [PATCH 16/16] duktape: implement runaway scripts killer timeout
+Subject: [PATCH 16/17] duktape: implement runaway scripts killer timeout
 
 This was missing on Duktape's JS backend proposal, now in. As
 discussed in
@@ -4623,13 +4623,14 @@ both JS backends.
 Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
 ---
  meson.build                                   |   1 +
- src/polkitbackend/meson.build                 |   1 +
+ src/polkitbackend/Makefile.am                 |   1 +
+ src/polkitbackend/meson.build                 |   2 +
  src/polkitbackend/polkitbackendcommon.h       |   2 +
- .../polkitbackendduktapeauthority.c           | 236 ++++++++++++++----
+ .../polkitbackendduktapeauthority.c           | 304 +++++++++++++++---
  .../polkitbackendjsauthority.cpp              |  10 +-
  .../etc/polkit-1/rules.d/10-testing.rules     |   6 +-
  .../test-polkitbackendjsauthority.c           |   2 +-
- 7 files changed, 209 insertions(+), 49 deletions(-)
+ 8 files changed, 279 insertions(+), 49 deletions(-)
 
 diff --git a/meson.build b/meson.build
 index 4e44723..46956e3 100644
@@ -4643,11 +4644,29 @@ index 4e44723..46956e3 100644
  elif js_engine == 'mozjs'
    js_dep = dependency('mozjs-78')
  endif
+diff --git a/src/polkitbackend/Makefile.am b/src/polkitbackend/Makefile.am
+index 6a8b4ae..1c0591c 100644
+--- a/src/polkitbackend/Makefile.am
++++ b/src/polkitbackend/Makefile.am
+@@ -17,6 +17,7 @@ AM_CPPFLAGS =                                                   \
+         -DPACKAGE_LIB_DIR=\""$(libdir)"\"                       \
+         -D_POSIX_PTHREAD_SEMANTICS                              \
+         -D_REENTRANT                                            \
++        -D_XOPEN_SOURCE=600                                     \
+         $(NULL)
+ 
+ noinst_LTLIBRARIES=libpolkit-backend-1.la
 diff --git a/src/polkitbackend/meson.build b/src/polkitbackend/meson.build
-index 9ec01b2..4dfea39 100644
+index 9ec01b2..129f9db 100644
 --- a/src/polkitbackend/meson.build
 +++ b/src/polkitbackend/meson.build
-@@ -34,6 +34,7 @@ c_flags = [
+@@ -29,11 +29,13 @@ c_flags = [
+   '-D_POLKIT_BACKEND_COMPILATION',
+   '-DPACKAGE_DATA_DIR="@0@"'.format(pk_prefix / pk_datadir),
+   '-DPACKAGE_SYSCONF_DIR="@0@"'.format(pk_prefix / pk_sysconfdir),
++  '-D_XOPEN_SOURCE=600',
+ ]
+ 
  if js_engine == 'duktape'
    sources += files('polkitbackendduktapeauthority.c')
    deps += libm_dep
@@ -4669,10 +4688,19 @@ index 6d0d267..dd700fc 100644
  extern "C" {
  #endif
 diff --git a/src/polkitbackend/polkitbackendduktapeauthority.c b/src/polkitbackend/polkitbackendduktapeauthority.c
-index a2b4420..80f1976 100644
+index a2b4420..c4701f9 100644
 --- a/src/polkitbackend/polkitbackendduktapeauthority.c
 +++ b/src/polkitbackend/polkitbackendduktapeauthority.c
-@@ -47,8 +47,20 @@ struct _PolkitBackendJsAuthorityPrivate
+@@ -21,6 +21,8 @@
+  * Author: David Zeuthen <davidz@redhat.com>
+  */
+ 
++#include <pthread.h>
++
+ #include "polkitbackendcommon.h"
+ 
+ #include "duktape.h"
+@@ -47,8 +49,20 @@ struct _PolkitBackendJsAuthorityPrivate
    GFileMonitor **dir_monitors; /* NULL-terminated array of GFileMonitor instances */
  
    duk_context *cx;
@@ -4693,7 +4721,7 @@ index a2b4420..80f1976 100644
  /* ---------------------------------------------------------------------------------------------------- */
  
  G_DEFINE_TYPE (PolkitBackendJsAuthority, polkit_backend_js_authority, POLKIT_BACKEND_TYPE_INTERACTIVE_AUTHORITY);
-@@ -67,6 +79,15 @@ static const duk_function_list_entry js_polkit_functions[] =
+@@ -67,6 +81,15 @@ static const duk_function_list_entry js_polkit_functions[] =
    { NULL, NULL, 0 },
  };
  
@@ -4709,7 +4737,7 @@ index a2b4420..80f1976 100644
  static void
  polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
  {
-@@ -78,7 +99,6 @@ polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
+@@ -78,7 +101,6 @@ polkit_backend_js_authority_init (PolkitBackendJsAuthority *authority)
  static void
  load_scripts (PolkitBackendJsAuthority  *authority)
  {
@@ -4717,7 +4745,7 @@ index a2b4420..80f1976 100644
    GList *files = NULL;
    GList *l;
    guint num_scripts = 0;
-@@ -123,36 +143,9 @@ load_scripts (PolkitBackendJsAuthority  *authority)
+@@ -123,36 +145,9 @@ load_scripts (PolkitBackendJsAuthority  *authority)
    for (l = files; l != NULL; l = l->next)
      {
        const gchar *filename = (gchar *)l->data;
@@ -4755,7 +4783,7 @@ index a2b4420..80f1976 100644
        num_scripts++;
      }
  
-@@ -232,7 +225,7 @@ polkit_backend_common_js_authority_constructed (GObject *object)
+@@ -232,7 +227,7 @@ polkit_backend_common_js_authority_constructed (GObject *object)
    PolkitBackendJsAuthority *authority = POLKIT_BACKEND_JS_AUTHORITY (object);
    duk_context *cx;
  
@@ -4764,7 +4792,7 @@ index a2b4420..80f1976 100644
    if (cx == NULL)
      goto fail;
  
-@@ -243,6 +236,9 @@ polkit_backend_common_js_authority_constructed (GObject *object)
+@@ -243,6 +238,9 @@ polkit_backend_common_js_authority_constructed (GObject *object)
    duk_put_function_list (cx, -1, js_polkit_functions);
    duk_put_prop_string (cx, -2, "polkit");
  
@@ -4774,7 +4802,7 @@ index a2b4420..80f1976 100644
    duk_eval_string (cx, init_js);
  
    if (authority->priv->rules_dirs == NULL)
-@@ -510,6 +506,167 @@ push_action_and_details (duk_context               *cx,
+@@ -510,6 +508,229 @@ push_action_and_details (duk_context               *cx,
  
  /* ---------------------------------------------------------------------------------------------------- */
  
@@ -4792,9 +4820,14 @@ index a2b4420..80f1976 100644
 +  RunawayKillerCtx *ctx = user_data;
 +  duk_context *cx = ctx->authority->priv->cx;
 +
-+  int oldtype;
++  int oldtype, pthread_err;
 +
-+  pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldtype);
++  if ((pthread_err = pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldtype))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (ctx->authority),
++                                  "Error setting thread cancel type: %s",
++                                  strerror(pthread_err));
++    goto err;
++  }
 +
 +#if (DUK_VERSION >= 20000)
 +  GFile *file = g_file_new_for_path(ctx->filename);
@@ -4803,7 +4836,7 @@ index a2b4420..80f1976 100644
 +
 +  if (!g_file_load_contents(file, NULL, &contents, &len, NULL, NULL)) {
 +    polkit_backend_authority_log(POLKIT_BACKEND_AUTHORITY(ctx->authority),
-+                                 "Error compiling script %s", ctx->filename);
++                                 "Error loading script %s", ctx->filename);
 +    g_object_unref(file);
 +    goto err;
 +  }
@@ -4837,7 +4870,12 @@ index a2b4420..80f1976 100644
 +err:
 +  ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE;
 +end:
-+  pthread_cond_signal(&ctx->cond);
++  if ((pthread_err = pthread_cond_signal(&ctx->cond))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (ctx->authority),
++                                  "Error signaling on condition variable: %s",
++                                  strerror(pthread_err));
++    ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE;
++  }
 +  return NULL;
 +}
 +
@@ -4846,9 +4884,14 @@ index a2b4420..80f1976 100644
 +{
 +  RunawayKillerCtx *ctx = user_data;
 +  duk_context *cx = ctx->authority->priv->cx;
-+  int oldtype;
++  int oldtype, pthread_err;
 +
-+  pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldtype);
++  if ((pthread_err = pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldtype))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (ctx->authority),
++                                  "Error setting thread cancel type: %s",
++                                  strerror(pthread_err));
++    goto err;
++  }
 +
 +  if (duk_pcall_prop (cx, 0, 2) != DUK_EXEC_SUCCESS)
 +    {
@@ -4864,85 +4907,132 @@ index a2b4420..80f1976 100644
 +err:
 +  ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE;
 +end:
-+  pthread_cond_signal(&ctx->cond);
++  if ((pthread_err = pthread_cond_signal(&ctx->cond))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (ctx->authority),
++                                  "Error signaling on condition variable: %s",
++                                  strerror(pthread_err));
++    ctx->ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE;
++  }
 +  return NULL;
 +}
 +
-+/* Blocking for at most for RUNAWAY_KILLER_TIMEOUT */
++static gboolean
++runaway_killer_common(PolkitBackendJsAuthority *authority, RunawayKillerCtx *ctx, void *js_context_cb (void *user_data))
++{
++  int pthread_err;
++  gboolean cancel = FALSE;
++  pthread_condattr_t attr;
++  struct timespec abs_time;
++
++  if ((pthread_err = pthread_condattr_init(&attr))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "Error initializing condition variable attributes: %s",
++                                  strerror(pthread_err));
++    return FALSE;
++  }
++  if ((pthread_err = pthread_condattr_setclock(&attr, CLOCK_MONOTONIC))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "Error setting condition variable attributes: %s",
++                                  strerror(pthread_err));
++    return FALSE;
++  }
++  /* Init again, with needed attr */
++  if ((pthread_err = pthread_cond_init(&ctx->cond, &attr))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "Error initializing condition variable: %s",
++                                  strerror(pthread_err));
++    return FALSE;
++  }
++  if ((pthread_err = pthread_mutex_lock(&ctx->mutex))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "Error locking mutex: %s",
++                                  strerror(pthread_err));
++    return FALSE;
++  }
++
++  if (clock_gettime(CLOCK_MONOTONIC_COARSE, &abs_time)) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "Error getting system's monotonic time: %s",
++                                  strerror(errno));
++    return FALSE;
++  }
++  abs_time.tv_sec += RUNAWAY_KILLER_TIMEOUT;
++
++  if ((pthread_err = pthread_create(&authority->priv->runaway_killer_thread, NULL,
++                                    js_context_cb, ctx))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "Error creating runaway JS killer thread: %s",
++                                  strerror(pthread_err));
++    return FALSE;
++  }
++
++  while (ctx->ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET) /* loop to treat spurious wakeups */
++    if (pthread_cond_timedwait(&ctx->cond, &ctx->mutex, &abs_time) == ETIMEDOUT) {
++      cancel = TRUE;
++
++      /* Log that we are terminating the script */
++      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority), "Terminating runaway script");
++
++      break;
++    }
++
++  if ((pthread_err = pthread_mutex_unlock(&ctx->mutex))) {
++    polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                  "Error unlocking mutex: %s",
++                                  strerror(pthread_err));
++    return FALSE;
++  }
++
++  if (cancel) {
++    if ((pthread_err = pthread_cancel (authority->priv->runaway_killer_thread))) {
++      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                    "Error cancelling runaway JS killer thread: %s",
++                                    strerror(pthread_err));
++      return FALSE;
++    }
++  }
++  if ((pthread_err = pthread_join (authority->priv->runaway_killer_thread, NULL))) {
++      polkit_backend_authority_log (POLKIT_BACKEND_AUTHORITY (authority),
++                                    "Error joining runaway JS killer thread: %s",
++                                    strerror(pthread_err));
++      return FALSE;
++    }
++
++  return ctx->ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS;
++}
++
++/* Blocking for at most RUNAWAY_KILLER_TIMEOUT */
 +static gboolean
 +execute_script_with_runaway_killer(PolkitBackendJsAuthority *authority,
 +                                   const gchar *filename)
 +{
-+  gint64 end_time;
-+  gboolean cancel = FALSE;
 +  RunawayKillerCtx ctx = {.authority = authority, .filename = filename,
 +                          .ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET,
 +                          .mutex = PTHREAD_MUTEX_INITIALIZER,
 +                          .cond = PTHREAD_COND_INITIALIZER};
-+  struct timespec abs_time;
 +
-+  pthread_mutex_lock(&ctx.mutex);
-+
-+  clock_gettime(CLOCK_REALTIME, &abs_time);
-+  abs_time.tv_sec += RUNAWAY_KILLER_TIMEOUT;
-+
-+  pthread_create(&authority->priv->runaway_killer_thread, NULL, runaway_killer_thread_execute_js, &ctx);
-+
-+  while (ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET) /* loop to treat spurious wakeups */
-+    if (pthread_cond_timedwait(&ctx.cond, &ctx.mutex, &abs_time) == ETIMEDOUT) {
-+      cancel = TRUE;
-+      break;
-+    }
-+
-+  pthread_mutex_unlock(&ctx.mutex);
-+
-+  if (cancel)
-+    pthread_cancel (authority->priv->runaway_killer_thread);
-+  pthread_join (authority->priv->runaway_killer_thread, NULL);
-+
-+  return ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS;
++  return runaway_killer_common(authority, &ctx, &runaway_killer_thread_execute_js);
 +}
 +
-+/* Calls already stacked function and args. Blocking for at most for
-+ * RUNAWAY_KILLER_TIMEOUT
++/* Calls already stacked function and args. Blocking for at most
++ * RUNAWAY_KILLER_TIMEOUT. If timeout is the case, ctx.ret will be
++ * RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET, thus returning FALSE.
 + */
 +static gboolean
 +call_js_function_with_runaway_killer(PolkitBackendJsAuthority *authority)
 +{
-+  gint64 end_time;
-+  gboolean cancel = FALSE;
 +  RunawayKillerCtx ctx = {.authority = authority,
 +                          .ret = RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET,
 +                          .mutex = PTHREAD_MUTEX_INITIALIZER,
 +                          .cond = PTHREAD_COND_INITIALIZER};
-+  struct timespec abs_time;
 +
-+  pthread_mutex_lock(&ctx.mutex);
-+
-+  clock_gettime(CLOCK_REALTIME, &abs_time);
-+  abs_time.tv_sec += RUNAWAY_KILLER_TIMEOUT;
-+
-+  pthread_create(&authority->priv->runaway_killer_thread, NULL, runaway_killer_thread_call_js, &ctx);
-+
-+  while (ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET) /* loop to treat spurious wakeups */
-+    if (pthread_cond_timedwait(&ctx.cond, &ctx.mutex, &abs_time) == ETIMEDOUT) {
-+      cancel = TRUE;
-+      break;
-+    }
-+
-+  pthread_mutex_unlock(&ctx.mutex);
-+
-+  if (cancel)
-+    pthread_cancel (authority->priv->runaway_killer_thread);
-+  pthread_join (authority->priv->runaway_killer_thread, NULL);
-+
-+  return ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_SUCCESS;
++  return runaway_killer_common(authority, &ctx, &runaway_killer_thread_call_js);
 +}
 +
  /* ---------------------------------------------------------------------------------------------------- */
  
  GList *
-@@ -557,13 +714,8 @@ polkit_backend_common_js_authority_get_admin_auth_identities (PolkitBackendInter
+@@ -557,13 +778,8 @@ polkit_backend_common_js_authority_get_admin_auth_identities (PolkitBackendInter
        goto out;
      }
  
@@ -4958,7 +5048,7 @@ index a2b4420..80f1976 100644
  
    ret_str = duk_require_string (cx, -1);
  
-@@ -643,15 +795,11 @@ polkit_backend_common_js_authority_check_authorization_sync (PolkitBackendIntera
+@@ -643,15 +859,15 @@ polkit_backend_common_js_authority_check_authorization_sync (PolkitBackendIntera
        goto out;
      }
  
@@ -4969,6 +5059,10 @@ index a2b4420..80f1976 100644
 -                                    duk_safe_to_string (cx, -1));
 -      goto out;
 -  }
++  // If any error is the js context happened (ctx.ret ==
++  // RUNAWAY_KILLER_THREAD_EXIT_STATUS_FAILURE) or it never properly returned
++  // (runaway scripts or ctx.ret == RUNAWAY_KILLER_THREAD_EXIT_STATUS_UNSET),
++  // unauthorize
 +  if (!call_js_function_with_runaway_killer (authority))
 +    goto out;
  
@@ -5038,6 +5132,35 @@ index f97e0e0..2103b17 100644
    },
  
    {
+-- 
+GitLab
+
+
+From 1cf03642a88ee5a08055f2549437f7d61373c66d Mon Sep 17 00:00:00 2001
+From: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+Date: Thu, 28 Oct 2021 10:04:53 -0700
+Subject: [PATCH 17/17] duktape: document runaway behavior
+
+Signed-off-by: Gustavo Lima Chaves <gustavo.chaves@microsoft.com>
+---
+ docs/man/polkit.xml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/docs/man/polkit.xml b/docs/man/polkit.xml
+index 99aa474..90715a5 100644
+--- a/docs/man/polkit.xml
++++ b/docs/man/polkit.xml
+@@ -639,7 +639,9 @@ polkit.Result = {
+         If user-provided code takes a long time to execute, an exception
+         will be thrown which normally results in the function being
+         terminated (the current limit is 15 seconds). This is used to
+-        catch runaway scripts.
++        catch runaway scripts. If the duktape JavaScript backend is
++        compiled in, instead of mozjs, no exception will be thrown—the
++        script will be killed right away (same timeout).
+       </para>
+ 
+       <para>
 -- 
 GitLab
 

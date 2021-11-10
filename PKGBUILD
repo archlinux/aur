@@ -4,7 +4,7 @@
 _pkgname=polkit
 pkgname=${_pkgname}-duktape
 pkgver=0.120
-pkgrel=2
+pkgrel=3
 pkgdesc="polkit with duktape as the javascript engine"
 arch=(x86_64)
 license=(LGPL)
@@ -19,7 +19,7 @@ _commit=92b910ce2273daf6a76038f6bd764fa6958d4e8e # tags/0.120
 source=("git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=$_commit"
         "0001-Add-duktape-as-javascript-engine.patch")
 sha256sums=('SKIP'
-            'a7f8925d074c3bc42b1e3bc09305d047014fc209724e4e9609a1275bf1f3c3a8')
+            'a064fe5738b15fe8ebeea2f9584e084d129403ab92e6d11032bd623ea59cbad7')
 
 pkgver() {
   cd $_pkgname
