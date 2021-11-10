@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-espnet-git
-pkgver=0.10.4a1
+pkgver=0.10.5a1
 pkgrel=1
 pkgdesc='End-to-End Speech Processing Toolkit Python Package'
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python>=3.7'
         'python-nltk'
         'python-regex'
         'python-inflect'
-        'python-jaconv' 
+        'python-jaconv'
         'python-pytorch-complex-git'
         'python-pytorch-wpe-git'
         'python-g2p-git'
@@ -26,7 +26,7 @@ depends=('python>=3.7'
         'python-sentencepiece-git'
         'python-wandb-git'
         'python-espnet-tts-frontend-git'
-        'python-ctc-segmentation-git' 
+        'python-ctc-segmentation-git'
         'python-humanfriendly'
         'python-jamo-git')
 optdepends=('sox: convert audio files'
