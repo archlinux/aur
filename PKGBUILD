@@ -2,14 +2,14 @@
 
 pkgname=grandorgue
 pkgver=3.4.1_1
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Pipe Organ Software - Binary package'
 arch=('x86_64')
 url='https://github.com/GrandOrgue/grandorgue'
 license=('GPL2')
 depends=(fftw wavpack wxgtk3 jack)
 replaces=(grandorgue-svn)
-conflicts=(grandorgue-git)
+conflicts=(grandorgue-git grandorgue-svn)
 source=("$url/releases/download/${pkgver//_/-}/grandorgue-${pkgver//_/-}.linux.$CARCH.tar.gz")
 md5sums=('9908cfc2c18b71a8f965bd7bdb4dd0c9')
 

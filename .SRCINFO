@@ -1,7 +1,7 @@
 pkgbase = grandorgue
 	pkgdesc = Virtual Pipe Organ Software - Binary package
 	pkgver = 3.4.1_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GrandOrgue/grandorgue
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = grandorgue
 	depends = wxgtk3
 	depends = jack
 	conflicts = grandorgue-git
+	conflicts = grandorgue-svn
 	replaces = grandorgue-svn
 	source = https://github.com/GrandOrgue/grandorgue/releases/download/3.4.1-1/grandorgue-3.4.1-1.linux.x86_64.tar.gz
 	md5sums = 9908cfc2c18b71a8f965bd7bdb4dd0c9
