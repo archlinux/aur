@@ -2,7 +2,7 @@
 
 _pkgname=xkblayout-remember
 pkgname="${_pkgname}-git"
-pkgver=r22.447f58b
+pkgver=r23.bf028b1
 pkgrel=1
 pkgdesc='Program to remember the keyboard layout for X11 windows.'
 url=https://github.com/soystemd/xkblayout-remember
