@@ -11,7 +11,7 @@ StandardOutput=journal
 Restart=on-failure
 Environment="LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH"
 EnvironmentFile=/etc/satisfactory/server.conf
-ExecStart=/opt/satisfactory-server/FactoryServer.sh -ServerQueryPort=${QUERYPORT} -BeaconPort=${BEACONPORT} -Port=${PORT}
+ExecStart=/opt/satisfactory-server/FactoryServer.sh -ServerQueryPort=${QUERYPORT} -BeaconPort=${BEACONPORT} -Port=${PORT} -multihome=0.0.0.0
 WorkingDirectory=/opt/satisfactory-server
 KillSignal=SIGINT
 NoNewPrivileges=true
