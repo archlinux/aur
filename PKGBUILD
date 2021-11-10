@@ -1,7 +1,7 @@
 # Maintainer: fsociety3765 <fsociety3765 at gmail dot com>
 
 pkgname=joplin-desktop-bin
-pkgver=2.5.10
+pkgver=2.5.12
 pkgrel=1
 pkgdesc='An open source note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS'
 arch=('x86_64')
@@ -16,7 +16,7 @@ install="$pkgname.install"
 source=("joplin-desktop.sh")
 sha256sums=('6b6c0c40685ded41316351d7ced34c33107d0401ee29729be1dadb3ba5e859da')
 source_x86_64=("Joplin-$pkgver.AppImage::https://github.com/laurent22/joplin/releases/download/v$pkgver/Joplin-$pkgver.AppImage")
-sha512sums_x86_64=('d3af30f43668cf951a6898d127ebc7c04a434774581d6ad6b831a421e5ab88356c57a83d1315ac1deb63d853e7b90dc14cbf3f842a1ebfc1f157ce0f1eabd967')
+sha512sums_x86_64=('152d8b69c6d1e5317b70e9d30d6b26e4fb28faed3709baddf9dc3c2b37f10ed45607b15544eb56164cae994992666db23c388e672bb683ebecf82d1cd21d4f3f')
 
 prepare() {
 	chmod +x "Joplin-$pkgver.AppImage"
