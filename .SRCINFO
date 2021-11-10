@@ -1,6 +1,6 @@
 pkgbase = regolith-de
 	pkgver = 1.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/regolith-linux/regolith-desktop
 	arch = x86_64
 	groups = regolith-de
@@ -122,7 +122,7 @@ pkgbase = regolith-de
 	sha256sums = SKIP
 	sha256sums = 734b6fdfbfc78cd9c41b1c32e59ef15671a0ef650719fdedfc47f50c5ec633ad
 	sha256sums = 705c95cdfd5847cd6c7fafe123cbdc6c3f404407118967797210189157c52e5c
-	sha256sums = 0e43a083e6c56aff8c188629fb6eb79150ef0c63fdb25157bc7731166d81eff5
+	sha256sums = 6d2a9e86cba59b87e8d3fac5db43d5cd396947d4570cb825f0491248366b50e9
 	sha256sums = 5f2b29ef8fb363a1121befa276d7e6251c8961b8819ac2d60a5ec2006f126c97
 
 pkgname = regolith-i3

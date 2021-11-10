@@ -28,7 +28,7 @@ pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -145,7 +145,7 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
 	    SKIP
 	    734b6fdfbfc78cd9c41b1c32e59ef15671a0ef650719fdedfc47f50c5ec633ad
 	    705c95cdfd5847cd6c7fafe123cbdc6c3f404407118967797210189157c52e5c
-	    0e43a083e6c56aff8c188629fb6eb79150ef0c63fdb25157bc7731166d81eff5
+	    6d2a9e86cba59b87e8d3fac5db43d5cd396947d4570cb825f0491248366b50e9
 	    5f2b29ef8fb363a1121befa276d7e6251c8961b8819ac2d60a5ec2006f126c97
 )
 
