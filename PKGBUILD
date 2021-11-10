@@ -3,25 +3,25 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=miopen-hip
-pkgver=4.3.1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (HIP backend)"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
 license=('MIT')
-depends=('rocblas' 'rocm-clang-ocl' 'hip-rocclr')
+depends=('rocblas' 'rocm-clang-ocl' 'hip')
 makedepends=('cmake' 'rocm-cmake' 'miopengemm')
 provides=('miopen')
 conflicts=('miopen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('1fb2fd8b24f984174ec5338a58b7964e128b74dafb101373a41c8ed33955251a')
+sha256sums=('be2f5ce962e15e62d427978422498c0ddf821b91fd40777a1ba915a2794d6fda')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
   cd "$_dirname"
 
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.3.x/docs/markdown/clang_options.md
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.5.x/docs/markdown/clang_options.md
   # -fPIC fixes linking errors with boost.
   export CXX=/opt/rocm/llvm/bin/clang++
   export CXXFLAGS="${CXXFLAGS} -fcf-protection=none -fPIC"
