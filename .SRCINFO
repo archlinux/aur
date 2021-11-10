@@ -1,0 +1,19 @@
+pkgbase = tdrop
+	pkgdesc = A WM-Independent dropdown window and terminal creator
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/noctuid/tdrop
+	arch = any
+	license = Simplified BSD
+	depends = bash
+	depends = xdotool
+	depends = xorg-xwininfo
+	depends = xorg-xprop
+	optdepends = tmux: session starting support
+	optdepends = tmuxinator: session starting support
+	optdepends = sxhkd: for a tdrop keybinding
+	optdepends = xorg-xrandr: multiple monitor resizing support
+	source = https://github.com/noctuid/tdrop/archive/refs/tags/0.4.0.zip
+	sha256sums = f0cef46ac37703a8fabd5df1133038912206f1319b7c9d70fe7e5ac7b0b9100d
+
+pkgname = tdrop
