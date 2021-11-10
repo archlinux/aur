@@ -2,7 +2,7 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
 pkgver="1.1.15"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -13,8 +13,8 @@ conflicts=('gdlauncher-beta' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlaun
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
-md5sums=('d4dc9fd5c8f1f900c29008001edba440'
-         '0ccba0e195278ab1de3fec6ea0445afa')
+md5sums=('20c4326767f5b54be5922c5d16b7e95a'
+         '68c75869fe0898c54699b9a5eb667d7b')
 
 prepare() {
     # Generate .desktop
