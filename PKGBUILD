@@ -2,7 +2,7 @@
 
 pkgbase=dataspell
 pkgname=(dataspell dataspell-jre)
-pkgver=213.4250.391
+pkgver=213.5352.7
 pkgrel=1
 pkgdesc='Python IDE for data scientists'
 arch=('x86_64' 'i686')
@@ -10,10 +10,10 @@ license=('custom:jetbrains')
 url='https://www.jetbrains.com/dataspell/'
 depends=('glib2' 'python')
 options=('!strip')
-source=("https://download.jetbrains.com/python/jetbrains-data-spell-${pkgver}.tar.gz"
+source=("https://download.jetbrains.com/python/data-spell-${pkgver}.tar.gz"
         jetbrains-dataspell.desktop
         LICENSE)
-b2sums=('e496ba3da4ad22ef08d3aec94dfd543a0b6c87215e079b4ff84c67f1d0df2c13dbe41d81054f59188c1fd54e9258c9ba4a35a5345b98fcc81184a04551bad70b'
+b2sums=('2c85441a6eb4efd5d1664fb1b61d4998bf80b7cb793dde44f1c8d13b466d1ed3cc16f05bfce090e67032d301915adeaeb4a449dda5842a06507423391083eebd'
         '6bd52dffc824f7ece9255b36321915e9d488ee910969f317e0e8c1e1aa7d58e4c2cb2588941670d84c4226c8133f7435f3fdc8d65fd8b2cab84a0022b1c7f5e9'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
@@ -28,7 +28,7 @@ package_dataspell() {
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  cp -a "${srcdir}"/jetbrains-ds-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/dataspell-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s /opt/${pkgbase}/bin/${pkgbase}.sh "${pkgdir}"/usr/bin/${pkgbase}
@@ -42,5 +42,5 @@ package_dataspell-jre() {
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 
   install -d -m 755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}"/jetbrains-ds-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/dataspell-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
 }
