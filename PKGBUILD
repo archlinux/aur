@@ -16,7 +16,7 @@ conflicts=('ntfs3')
 options=('!strip')
 
 source=(
-    "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/${_archive}"
+    "${_archive}::https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/${_archive}"
     Makefile.patch
     dkms.conf
     kernel-5.12-backport.patch
