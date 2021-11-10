@@ -4,7 +4,6 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 
-pkgbase=dbus
 pkgname=(dbus-xdg-elogind dbus-docs)
 pkgver=1.12.20
 pkgrel=1
@@ -26,7 +25,7 @@ provides=('dbus')
 conflicts=('dbus')
 
 prepare() {
-  cd "$pkgbase-$pkgbase-$pkgver"
+  cd "dbus-dbus-$pkgver"
   patch -Np 1 -i ../dbus-enable-elogind.patch
   # Allow us to enable checks without them being fatal
   patch -Np1 -i ../no-fatal-warnings.diff
@@ -36,7 +35,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgbase-$pkgbase-$pkgver"
+  cd "dbus-dbus-$pkgver"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -61,7 +60,7 @@ build() {
 }
 
 check() {
-  make -C "$pkgbase-$pkgbase-$pkgver" check
+  make -C "dbus-dbus-$pkgver" check
 }
 
 package_dbus-xdg-elogind() {
@@ -70,7 +69,7 @@ package_dbus-xdg-elogind() {
   conflicts=(libdbus)
   replaces=(libdbus)
 
-  DESTDIR="$pkgdir" make -C "$pkgbase-$pkgbase-$pkgver" install
+  DESTDIR="$pkgdir" make -C "dbus-dbus-$pkgver" install
 
   rm -r "$pkgdir"/{etc,var}
 
@@ -78,7 +77,7 @@ package_dbus-xdg-elogind() {
   echo 'u dbus 81 "System Message Bus"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "$pkgbase-$pkgbase-$pkgver"/COPYING
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "dbus-dbus-$pkgver"/COPYING
 
   # Split docs
   mv "$pkgdir/usr/share/doc" "$srcdir"
@@ -88,7 +87,7 @@ package_dbus-docs() {
   pkgdesc+=" (documentation)"
   depends=()
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "$pkgbase-$pkgbase-$pkgver"/COPYING
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "dbus-dbus-$pkgver"/COPYING
   mv doc "$pkgdir/usr/share"
 }
 
