@@ -79,7 +79,7 @@ _srcname=linux-${_major}
 _clr=${_major}.1-1089
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -162,9 +162,20 @@ prepare() {
                    --module-after SND_MIXER_OSS SND_PCM_OSS \
                    --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
                    --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
+                   # fix for FS#72645 FS#72658
+    scripts/config --undefine SYSFB_SIMPLEFB \
+                   --enable FB_VESA \
+                   --enable FB_EFI \
+                   --enable FB_MODE_HELPERS \
+                   --enable FB_TILEBLITTING
 
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+
+    # File systems
+    scripts/config --module NTFS3_FS \
+                   --enable NTFS3_LZX_XPRESS \
+                   --enable NTFS3_FS_POSIX_ACL
 
     # Security options
     scripts/config --enable SECURITY_SELINUX \
