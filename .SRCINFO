@@ -1,0 +1,14 @@
+pkgbase = python-scienceplots-git
+	pkgdesc = Matplotlib styles for scientific plotting.
+	pkgver = 1.0.9.r7.g41d5215
+	pkgrel = 1
+	url = https://github.com/garrettj403/SciencePlots
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matplotlib
+	source = git+https://github.com/garrettj403/SciencePlots
+	sha256sums = SKIP
+
+pkgname = python-scienceplots-git
