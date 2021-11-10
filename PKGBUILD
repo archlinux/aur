@@ -6,8 +6,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=40.5
-pkgrel=1.2
+pkgver=41.1
+pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -18,13 +18,13 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols)
-checkdepends=(xorg-server-xvfb pipewire-media-session)
-provides=(mutter libmutter-8.so)
+checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
+provides=(libmutter-9.so mutter)
 conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
 
-_commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605  # tags/40.5^0
+_commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
@@ -36,8 +36,8 @@ if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
 fi
 
 source=("$_mutter_src"
-        "rounded_corners_${pkgver}.patch"
-        "shell_blur_effect_${pkgver}.patch"
+        "rounded_corners.patch"
+        "shell_blur_effect.patch"
         "meta_clip_effect.c"
         "meta_clip_effect.h"
         "shader.h"
@@ -64,12 +64,11 @@ prepare() {
 
   cd $pkgname
   cp $srcdir/*.[ch] $srcdir/$pkgname/src
-  patch -p1 < $srcdir/rounded_corners_${pkgver}.patch
-  patch -p1 < $srcdir/shell_blur_effect_${pkgver}.patch
+  patch -p1 < $srcdir/rounded_corners.patch
+  patch -p1 < $srcdir/shell_blur_effect.patch
 }
 
 build() {
-  echo "skip" > /dev/null
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
   arch-meson $pkgname build \
@@ -97,8 +96,7 @@ _check() (
 )
 
 check() {
-  dbus-run-session xvfb-run \
-    -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+  dbus-run-session xvfb-run -s '-nolisten local' \
     bash -c "$(declare -f _check); _check"
 }
 
