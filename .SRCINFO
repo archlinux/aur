@@ -1,7 +1,7 @@
 pkgbase = yandex-cloud-bin
 	pkgdesc = Yandex.Cloud CLI
 	pkgver = 0.83.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cloud.yandex.ru/docs/cli/
 	arch = x86_64
 	provides = yandex-cloud
