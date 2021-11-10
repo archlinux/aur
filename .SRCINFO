@@ -41,6 +41,6 @@ pkgname = dbus-xdg-elogind
 	conflicts = libdbus
 	replaces = libdbus
 
-pkgname = dbus-docs
+pkgname = dbus-xdg-docs
 	pkgdesc = Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems) (documentation)
 	depends = 

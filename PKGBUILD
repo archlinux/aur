@@ -5,7 +5,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 
 pkgbase=dbus-xdg
-pkgname=(dbus-xdg-elogind dbus-docs)
+pkgname=(dbus-xdg-elogind dbus-xdg-docs)
 pkgver=1.12.20
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems)"
@@ -84,7 +84,7 @@ package_dbus-xdg-elogind() {
   mv "$pkgdir/usr/share/doc" "$srcdir"
 }
 
-package_dbus-docs() {
+package_dbus-xdg-docs() {
   pkgdesc+=" (documentation)"
   depends=()
 
