@@ -1,11 +1,10 @@
 pkgbase = cqfd
 	pkgdesc = Run commands with the same user and directory inside a docker container
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savoirfairelinux/cqfd
 	arch = any
 	license = GPL3
-	makedepends = make
 	optdepends = tar: create tar archives
 	optdepends = zip: create zip archives
 	source = cqfd-5.2.1.tar.gz::https://github.com/savoirfairelinux/cqfd/archive/v5.2.1.tar.gz

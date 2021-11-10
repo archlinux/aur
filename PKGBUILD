@@ -1,7 +1,7 @@
 # Maintainer: Edouard Denommee <edouard dot denommee at savoirfairelinux dot com >
 pkgname=cqfd
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run commands with the same user and directory inside a docker container"
 arch=('any')
 url="https://github.com/savoirfairelinux/cqfd"
@@ -10,7 +10,6 @@ optdepends=(
     'tar: create tar archives'
     'zip: create zip archives'
 )
-makedepends=('make')
 # checkdepends=(
 #     'make'
 #     'docker'
