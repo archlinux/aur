@@ -1,6 +1,6 @@
 pkgbase = scummvm-git
-	pkgdesc = A 'virtual machine' for several classic graphical point-and-click adventure games.
-	pkgver = r124006.fc7f51afb0d
+	pkgdesc = A 'virtual machine' for several classic graphical point-and-click adventure games. - git version
+	pkgver = r124485.c8bd7716ea3
 	pkgrel = 1
 	url = http://www.scummvm.org
 	install = scummvm.install

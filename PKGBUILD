@@ -3,7 +3,7 @@
 
 pkgname=scummvm-git
 _pkgname=scummvm
-pkgver=r124006.fc7f51afb0d
+pkgver=r124485.c8bd7716ea3
 pkgrel=1
 pkgdesc="A 'virtual machine' for several classic graphical point-and-click adventure games. - git version"
 arch=('x86_64')
@@ -28,7 +28,6 @@ build() {
   cd "${srcdir}/${_pkgname}"
 
   ./configure \
-    --enable-c++11 \
     --enable-release \
     --enable-all-engines \
     --prefix=/usr
