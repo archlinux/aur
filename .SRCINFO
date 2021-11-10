@@ -1,21 +1,19 @@
 pkgbase = iridium-rpm
 	pkgdesc = Iridium browser - rhel/centos build altered for arch
-	pkgver = 91.0
-	pkgrel = 4
+	pkgver = 95.0
+	pkgrel = 1
 	url = https://iridiumbrowser.de/
 	arch = x86_64
 	license = BSD
-	makedepends = patchelf
 	depends = ffmpeg
 	depends = pipewire
 	depends = re2
-	depends = harfbuzz-2.9.1
 	provides = iridium
 	conflicts = iridium
 	conflicts = chromium
 	options = !emptydirs
 	options = !strip
-	source = https://downloads.iridiumbrowser.de/openSUSE_Tumbleweed/x86_64/iridium-browser-2021.06.91-1.7.x86_64.rpm
-	sha256sums = 0517d502f1ce556a46c5384a05c97a86267f43a92f49121321c2fb1ef57315f5
+	source = https://downloads.iridiumbrowser.de/openSUSE_Tumbleweed/x86_64/iridium-browser-2021.10.95.1-1.4.x86_64.rpm
+	sha256sums = ca7eca725da5eba624b117c7db7b307b602767815d0381d39cd0dfbb6c65f0c3
 
 pkgname = iridium-rpm
