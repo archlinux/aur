@@ -24,7 +24,7 @@ build() {
 package() {
   install -dm0755 "$pkgdir/usr/bin"
 
-  install -m0755 "$srcdir/robotstxt-$_git_commit/bazel-bin/robots_main" "$pkgdir/usr/bin/robots_main"
+  install -m0755 "$srcdir/robotstxt-$_git_commit/bazel-bin/robots_main" "$pkgdir/usr/bin/robotstxt"
 }
 
 check() {
