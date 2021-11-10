@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/kaf-*-x86_64.pkg.tar.zst
+/kaf-*.tar.gz
