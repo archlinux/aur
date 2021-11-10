@@ -1,3 +1,3 @@
 #! /usr/bin/env -S awk -f
 
-/Version:.*/ { print $2 }
+/Version:.*/ { print $3 }
