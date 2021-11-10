@@ -1,0 +1,12 @@
+pkgbase = php-codesniffer-phpcompatibility
+	pkgdesc = PHP CodeSniffer rules (sniffs) that checks for PHP cross-version compatibility.
+	pkgver = 9.3.5
+	pkgrel = 1
+	url = https://github.com/PHPCompatibility/PHPCompatibility
+	arch = any
+	license = LGPL
+	depends = php-codesniffer
+	source = php-codesniffer-phpcompatibility-9.3.5.tar.gz::https://github.com/PHPCompatibility/PHPCompatibility/archive/refs/tags/9.3.5.tar.gz
+	sha256sums = 578c7f18e098b0a91df42273d28c68f36114b25161ee161a6d893cbfb7ad42e1
+
+pkgname = php-codesniffer-phpcompatibility
