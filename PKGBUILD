@@ -1,13 +1,13 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=quickgui
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Flutter frontend for quickget and quickemu"
 arch=(any)
 url="https://github.com/quickgui/quickgui"
 license=('unknown')
 depends=('quickemu')
-makedepends=('flutter')
+makedepends=('flutter' 'cmake' 'ninja' 'clang')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.xz"::"https://github.com/quickgui/quickgui/archive/refs/tags/v$pkgver.tar.gz")

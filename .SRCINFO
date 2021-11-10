@@ -1,11 +1,14 @@
 pkgbase = quickgui
 	pkgdesc = A Flutter frontend for quickget and quickemu
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quickgui/quickgui
 	arch = any
 	license = unknown
 	makedepends = flutter
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
 	depends = quickemu
 	provides = quickgui
 	conflicts = quickgui
