@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=sonobuoy
-pkgver=0.54.0
+pkgver=0.55.0
 pkgrel=1
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
   'kubectl: advances workflows')
 makedepends=('go' 'git')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('eb3cab29baa7d35abbbd3d5657e97d7f0c4e6440dc824384e459c719cf0bf007')
+sha256sums=('2f1db8498fbe7de614cbb7255c6680ce3cc57ddc520c74f6ecd651b9920e116d')
 
 build() {
   local _commit _defines
@@ -28,7 +28,7 @@ build() {
     "github.com/vmware-tanzu/sonobuoy/pkg/buildinfo.Version=v$pkgver"
     "github.com/vmware-tanzu/sonobuoy/pkg/buildinfo.GitSHA=$_commit"
   )
-  go build -o "$pkgname" -ldflags "-linkmode=external ${_defines[*]/#/-X=}"
+  go build -o "$pkgname" -ldflags "-linkmode=external ${_defines[*]/#/-X=}" main.go
 }
 
 check() {
