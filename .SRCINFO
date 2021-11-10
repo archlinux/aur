@@ -1,0 +1,17 @@
+pkgbase = python-cxxfilt-git
+	pkgdesc = Demangling C++ symbols in Python
+	pkgver = r15.7fccd25
+	pkgrel = 1
+	url = https://github.com/afq984/python-cxxfilt
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-six
+	depends = python
+	provides = python-cxxfilt
+	conflicts = python-cxxfilt
+	source = python-cxxfilt-git::git+https://github.com/afq984/python-cxxfilt
+	sha256sums = SKIP
+
+pkgname = python-cxxfilt-git
