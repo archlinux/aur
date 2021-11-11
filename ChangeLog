@@ -1,3 +1,9 @@
+=== Morgen 2.3.2
+Bug Fixes
+- Fixed a problem making it impossible to remove calendar accounts when the subscription is expired.
+- Fixed an issue causing the event details popup to appear out of the screen in some cases.
+- Fixed an issue preventing the correct display of error messages during the connection of a calendar account.
+
 === Morgen 2.3.1
 New Features
 - Morgen Time Zone Assistant. 
