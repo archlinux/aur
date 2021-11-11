@@ -2,7 +2,7 @@
 # Maintainer: Pika Kolendo <pikakolendo02[a]gmail.c0m>
 pkgname='vmfs6-tools'
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to access VMFS6 filesystems"
 arch=('x86_64')
 url="https://github.com/teward/vmfs6-tools"
@@ -27,5 +27,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
+	mv $pkgdir/usr/sbin $pkgdir/usr/bin
 }
