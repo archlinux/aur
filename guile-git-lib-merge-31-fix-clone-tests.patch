@@ -1,0 +1,39 @@
+From 04edea32ea9393b6b8fa77db5f568aaf773cdffd Mon Sep 17 00:00:00 2001
+From: Will Frew <will.frew1@gmail.com>
+Date: Sat, 2 Oct 2021 12:11:13 +0300
+Subject: [PATCH] Fixes git clone tests when running against openssh 8.8
+
+OpenSSH 8.8 turns off the hostkey algorithm 'ssh-rsa' by default.
+See: https://www.openssh.com/txt/release-8.8
+
+Unfortunately, libssh2 (and therefore libgit2) do not yet support the
+newer sha2-based ssh hostkey algorithms.
+See upstream issue: https://github.com/libssh2/libssh2/issues/536
+
+This explicitly re-enables ssh-rsa on the sshd that is spun up for
+testing to ensure that libgit2 can handshake with it again.
+---
+ tests/ssh.scm.in | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tests/ssh.scm.in b/tests/ssh.scm.in
+index e6621ca..0311681 100644
+--- a/tests/ssh.scm.in
++++ b/tests/ssh.scm.in
+@@ -61,6 +61,13 @@ AuthorizedKeysFile ~a
+ PidFile ~a
+ PermitUserEnvironment yes
+ 
++# libssh2 and therefore libgit2 do not yet support
++# sha2-based rsa algorithms.
++# See upstream issue:
++#   https://github.com/libssh2/libssh2/issues/536
++HostkeyAlgorithms +ssh-rsa
++PubkeyAcceptedAlgorithms +ssh-rsa
++
+ # Disable permission checks on auth files for the sake
+ # of isolated build environments.
+ StrictModes no~%"
+-- 
+GitLab
+
