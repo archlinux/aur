@@ -143,6 +143,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # 5.15: r8169 hwIDs for the G14?/G15
 
+        # cherry-picked iwlwifi patches from -next
+        "iwlwifi-next-patches-through-2020-11-08-5.15.3.patch"
+
         # ASUS ROG enablement
         "HID-asus-Reduce-object-size-by-consolidating-calls.patch"
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
@@ -185,6 +188,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             'f47a5a5e329e410a0ae7d46b450707d5575a4deda5b3b58281f5eca14938fb21'
+            'b12a5bb789e4c854617ca3c7405fcc3121457ddb6564c8f758edfe4633cf24bd'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
