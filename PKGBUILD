@@ -6,27 +6,12 @@ pkgname=(${pkgbase} python-${pkgbase})
 _tarver=2.8.0
 _tar="${_tarver}/${pkgbase}-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Build system, infrastructure and foundation classes"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
 license=('custom:GPL2 with runtime exception')
-makedepends=('cmake' 'openmpi' 'lapack' 'texlive-latexextra' 'biber' 'doxygen' 'graphviz' 'python-sphinx' 'python-setuptools' 'python-portalocker')
-optdepends=('vc: C++ Vectorization library'
-  'texlive-latexextra: Type setting system'
-  'doxygen: Generate the class documentation from C++ sources'
-  'graphviz: Graph visualization software'
-  'inkscape: Conversion routines for generate PNG images'
-  'bash-completion: for completion when using bash'
-  'openmpi: for mpi support'
-  'parmetis: Parallel Graph Partitioning and Fill-reducing Matrix Ordering'
-  'scotch: Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering'
-  'man-db: manual pages for dune'
-  'python-ufl: for dunepackaging.py'
-  'python-requests: for dunepackaging.py'
-  'python-pip: for dunepackaging.py'
-  'python-scipy: for dunepackaging.py'
-  'python-scikit-build: for dunepackaging.py')
+makedepends=('cmake' 'openmpi' 'lapack' 'texlive-latexextra' 'biber' 'doxygen' 'graphviz' 'python-sphinx' 'python-setuptools')
 source=(https://dune-project.org/download/${_tar}{,.asc})
 sha512sums=('81a9f2bd38aa158134ec7306d2b838d1330ce5410de78ca0b7f9d42e27af7324757a3c01fcffe948e58dc8f6fe9f78c33fd840d9ccc98a18f3565b5de35c2f59' 'SKIP')
 validpgpkeys=('ABE52C516431013C5874107C3F71FE0770D47FFB') # Markus Blatt (applied mathematician and DUNE core developer) <markus@dr-blatt.de>
@@ -42,7 +27,6 @@ build() {
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
@@ -62,6 +46,15 @@ build() {
 package_dune-common() {
   depends=('cmake' 'openmpi' 'python-docutils' 'git' 'lapack')
   provides=('dune-ctest' 'duneproject' 'dunecontrol' 'dunepackaging.py' 'dune-git-whitespace-hook' 'rmgenerated.py' 'setup-dunepy.py')
+  optdepends=('vc: C++ Vectorization library'
+    'texlive-latexextra: Type setting system'
+    'doxygen: Generate the class documentation from C++ sources'
+    'graphviz: Graph visualization software'
+    'inkscape: Conversion routines for generate PNG images'
+    'bash-completion: for completion when using bash'
+    'parmetis: Parallel Graph Partitioning and Fill-reducing Matrix Ordering'
+    'scotch: Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering'
+    'man-db: manual pages for dune')
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install sphinx_html
   install -d ${pkgdir}/usr/share/doc/${pkgbase}/buildsystem
   mv build-cmake/doc/buildsystem/html/* ${pkgdir}/usr/share/doc/${pkgbase}/buildsystem
@@ -72,8 +65,10 @@ package_dune-common() {
 }
 
 package_python-dune-common() {
-  depends=('dune-common>=2.8.0' 'python-portalocker' 'python-mpi4py' 'python-matplotlib')
+  depends=('dune-common>=2.8.0' 'python-portalocker' 'python-numpy' 'python-mpi4py')
   pkgdesc+=" (python bindings)"
+  optdepends=('python-matplotlib: for Matplotlib rendering'
+    'mayavi: for 3D plotting')
   cd "build-cmake/python"
   export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
