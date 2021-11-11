@@ -26,9 +26,9 @@ prepare()
 package()
 {
 	# Executable
-	install -dm755 "${pkgdir}/usr/local/bin/"
+	install -dm755 "${pkgdir}/usr/bin/"
 	cp -a "${srcdir}/yabsm/export/yabsm.fatpack.pl" \
-		"${pkgdir}/usr/local/bin/yabsm"
+		"${pkgdir}/usr/bin/yabsm"
 
 	# Config
 	install -dm755 "${pkgdir}/etc/"
