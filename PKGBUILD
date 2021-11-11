@@ -3,18 +3,13 @@
 
 pkgname=python-coveralls
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python integration with coveralls.io"
 url="https://github.com/thekevjames/coveralls-python"
 arch=('any')
 license=('MIT')
-depends=(
-	'python-coverage>=4.1'
-	'python-coverage<7.0'
-	'python-docopt>=0.6.1'
-	'python-requests>=1.0.0'
-	'python')
-optdepends=('python-yaml>=3.10')
+depends=('python-coverage' 'python-docopt' 'python-requests')
+optdepends=('python-yaml')
 makedepends=('python-setuptools')
 checkdepends=('git' 'python-mock' 'python-pytest' 'python-responses')
 changelog=CHANGELOG.md
