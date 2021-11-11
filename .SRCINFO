@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-lts
 	pkgdesc = NVIDIA drivers for linux-lts, 340xx legacy branch
 	pkgver = 340.108
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -11,12 +11,14 @@ pkgbase = nvidia-340xx-lts
 	conflicts = nvidia-lts
 	options = !strip
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/340.108/NVIDIA-Linux-x86_64-340.108-no-compat32.run
+	source = 20-nvidia.conf
 	source = 0000-fix-multi-core-build.patch
 	source = 0001-kernel-5.7.patch
 	source = 0002-kernel-5.8.patch
 	source = 0003-kernel-5.9.patch
 	source = 0004-kernel-5.10.patch
 	sha256sums = 995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77
+	sha256sums = 5b4cb7620abc1729a13c78a2fb33ccaeb7d92f42936d929885324c81f2b7c985
 	sha256sums = 82d14e9e6ec47c345d225d9f398238b7254cd5ae581c70e8521b9157ec747890
 	sha256sums = c8bda5fb238fbebc5bf6ae4b7646e48b30a96b9060ced20d93c53c14ac3161f6
 	sha256sums = 10b91c8dbc269ff1d8e3e8a1866926c309ff3912d191a05cd5724a3139776f32
@@ -25,12 +27,14 @@ pkgbase = nvidia-340xx-lts
 
 pkgname = nvidia-340xx-lts
 	pkgdesc = NVIDIA drivers for linux-lts, 340xx legacy branch.
+	install = nvidia-340xx-lts.install
 	depends = linux-lts>=4.19.72
 	depends = nvidia-340xx-utils=340.108
 	depends = libgl
 
 pkgname = nvidia-340xx-lts-dkms
 	pkgdesc = NVIDIA driver sources for linux-lts, 340xx legacy branch
+	install = nvidia-340xx-lts.install
 	depends = dkms
 	depends = nvidia-340xx-utils=340.108
 	depends = libgl
@@ -38,4 +42,3 @@ pkgname = nvidia-340xx-lts-dkms
 	provides = nvidia-340xx=340.108
 	conflicts = nvidia-lts
 	conflicts = nvidia-340xx
-
