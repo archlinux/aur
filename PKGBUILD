@@ -2,11 +2,11 @@
 
 pkgname=notcurses
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
 license=('Apache')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 # qrcodegen is currently shipped as a static archive on Arch, rather than a
 # dynamic library. Should the .so be shipped in the future, promote qrcodegen
 # from a makedepends to a true depends, and use that dynamic library.
