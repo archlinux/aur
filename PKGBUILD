@@ -2,19 +2,19 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=python-fmf
-pkgver=0.16.0
+pkgver=1.0.0
 pkgrel=1
 arch=('any')
 license=('GPL2')
 pkgdesc='Flexible Metadata Format'
 url='https://github.com/psss/fmf'
-depends=('python-pyaml' 'python-filelock')
+depends=('python-ruamel-yaml' 'python-filelock')
 makedepends=('python-setuptools' 'python-docutils')
 checkdepends=('python-pytest-runner' 'git')
 provides=('fmf')
 conflicts=('fmf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('74605b652b9763c87bef458941468be860f3b66b9a6bea9c0eaca19264398710')
+sha256sums=('a614293d6893cb36af73fc21cd90d691c96f5e659d7d350894f4eb29934b3724')
 
 build() {
 	cd "fmf-$pkgver"
