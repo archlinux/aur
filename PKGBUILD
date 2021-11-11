@@ -5,8 +5,15 @@ pkgrel=1
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 arch=("x86_64")
 license=("GPL3")
-depends=("electron")
-makedepends=("git" "npm")
+depends=(
+"electron"
+"tar"
+"unzip"
+"wine"
+"winetricks"
+"git"
+)
+makedepends=("npm")
 provides=("${pkgname}")
 source=(
 "git+https://notabug.org/nobody/an-anime-game-launcher.git"
