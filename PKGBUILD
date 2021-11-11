@@ -7,7 +7,7 @@ _pkgname=pytango
 pkgver=9.3.3
 pkgrel=1
 pkgdesc="Python binding for Tango, a library dedicated to distributed control systems."
-arch=('any')
+arch=('x86_64' 'arm')
 url="http://pytango.readthedocs.io/"
 license=('GPL3')
 depends=('python' 'python-six>=1.10' 'python-numpy>=1.1' 'python-setuptools'
