@@ -1,12 +1,12 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=insight-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk."
 url="https://sourceware.org/git/?p=insight.git"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('tcl' 'tk' 'gdb' 'incrtk' 'tcl-combobox' 'iwidgets')
+depends=('tcl' 'tk' 'gdb' 'tk-itk' 'tcl-combobox' 'iwidgets')
 optdepends=()
 makedepends=(gcc make)
 conflicts=()
