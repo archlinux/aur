@@ -1,6 +1,6 @@
 pkgbase = obs-ptz-controls
 	pkgdesc = Plugin for OBS Studio to add a PTZ Camera control dock
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/ptz-controls.1284/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = obs-ptz-controls
 	depends = obs-studio
 	depends = qt5-gamepad
 	depends = qt5-serialport
-	source = obs-ptz-0.10.1.tar.gz::https://github.com/glikely/obs-ptz/archive/v0.10.1.tar.gz
-	sha256sums = d36ffd044402661b320fdb0036719f8d764cdf28900cc48d4fbf5ffdc98b9bbe
+	source = obs-ptz-0.10.2.tar.gz::https://github.com/glikely/obs-ptz/archive/v0.10.2.tar.gz
+	sha256sums = d91a9bca9467ae28450bf54646eb982f539348a4d271d4e18ae12e912dec3ee3
 
 pkgname = obs-ptz-controls
