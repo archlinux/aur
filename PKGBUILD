@@ -3,10 +3,10 @@
 _pkgname=zap-desktop
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.7.2_beta
+pkgver=0.7.4_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
@@ -18,7 +18,7 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/LN-Zap/zap-des
                "https://raw.githubusercontent.com/LN-Zap/zap-desktop/v${_ver}/LICENSE"
               )
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums_x86_64=('03d87861cd2928fe07d25ae02edd42ee2aed9826e43540bc26d1212bb7c181fa'
+sha256sums_x86_64=('7bdd707f766cb6a29c5816ae7f414e31cd19157e5b56108503f6525ef14b916b'
                    'c7779cd186930fa9bd4d900b2243b3302f01cd593ac19098bbeb123c8ebf9d72')
 
 prepare() {
