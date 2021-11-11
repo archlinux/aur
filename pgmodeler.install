@@ -11,7 +11,8 @@ ALL_OFF="$(tput sgr0)"
 BOLD="$(tput bold)"
 BLUE="${BOLD}$(tput setaf 4)"
 YELLOW="${BOLD}$(tput setaf 3)"
-
+# workaround to prevent pgmodeler-cli from segfaulting
+export QT_QPA_PLATFORM=offscreen
 
 post_upgrade() {
   # reinstall the file association, in case something has changed
