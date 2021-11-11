@@ -2,21 +2,20 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=sourcegraph-cli
-pkgver=3.33.5
+pkgver=3.33.6
 pkgrel=1
-pkgdesc="A command line interface to Sourcegraph"
+pkgdesc="Command line interface to Sourcegraph"
 url="https://github.com/sourcegraph/src-cli"
 arch=("x86_64" "aarch64")
 license=("APACHE")
 depends=('glibc')
-makedepends=('go')
-checkdepends=('git')
+makedepends=('go' 'git')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e7811e874f3b48a003054a2ee6a1fde67ba394be110e21a63d45bd4ac7ef90ef')
+source=("$pkgname::git+$url#tag=$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-	cd "src-cli-$pkgver"
+	cd "$pkgname"
 	mkdir -p build
 }
 
@@ -27,17 +26,17 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	cd "src-cli-$pkgver"
+	cd "$pkgname"
 	go build -o build ./cmd/src
 }
 
 check() {
-	cd "src-cli-$pkgver"
+	cd "$pkgname"
 	go test ./...
 }
 
 package() {
-	cd "src-cli-$pkgver"
+	cd "$pkgname"
 	install -D build/src -t "$pkgdir/usr/bin/"
 	ln -s /usr/bin/src "$pkgdir/usr/bin/src-cli"
 	install -Dm 644 README.markdown -t "$pkgdir/usr/share/doc/$pkgname/"
