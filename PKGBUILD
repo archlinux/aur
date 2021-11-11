@@ -49,19 +49,12 @@ build() {
   # The unity build takes can take up to 2 GB of RAM per target, so if the
   # system does not have enough RAM to build everything at once we'll limit the
   # number of concurrent jobs
-  #
   # NOTE: The `LANG=C` is needed because apparently the `pt_BR.UTF-8` locale
   #       changes `Mem:` to `Mem.:`, so who knows what other locales might do
   total_memory=$(env LANG=C free --gibi --si | awk '/^Mem:/ { print $2 }')
-  if [ "$total_memory" -le 4 ]; then
-    echo -e "\n$total_memory gigabytes of RAM detected, limiting the number of build jobs to 1\n"
-    ninja -C build -j1
-  elif [ "$total_memory" -le 8 ]; then
-    echo -e "\n$total_memory gigabytes of RAM detected, limiting the number of build jobs to 3\n"
-    ninja -C build -j3
-  else
-    ninja -C build
-  fi
+  num_jobs=$((total_memory / 4))
+  echo -e "\n$total_memory gigabytes of RAM detected, limiting the number of build jobs to $num_jobs\n"
+  ninja -C build -j"$num_jobs"
 }
 
 package() {
