@@ -4,14 +4,14 @@
 
 pkgname=cloudflare-wrangler
 pkgver=1.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool for working with Cloudflare Workers'
 arch=('x86_64')
 url="https://github.com/cloudflare/wrangler"
 license=('Apache' 'MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cloudflare/wrangler/archive/v$pkgver.tar.gz")
-md5sums=('4ecf68640ae09b873730c058832d5263')
+md5sums=('ff8a0bd6b750694f3f1466f6595bccdd')
 
 build() {
   cd wrangler-$pkgver
