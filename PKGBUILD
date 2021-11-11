@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -52,7 +52,6 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio" "obs-linuxbrowser")
 source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
-        "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
         "FindLibpci.cmake" # https://github.com/carlocastoldi/obs-studio/blob/2936-fix/cmake/Modules/FindLibpci.cmake
@@ -62,7 +61,6 @@ source=(
 )
 sha256sums=(
         "SKIP"
-        "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
         "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
         "916f9fb3819c9d952140d65434e9dffc77b688dc1dc027b39226c33ee97be63f"
@@ -92,8 +90,8 @@ prepare() {
   ## obs-ffmpeg: Fix starting video packet offset in replay-buffer (https://github.com/obsproject/obs-studio/commit/2a0b9d851c878306a3d19465e597bd06f880b94e)
   git cherry-pick --no-commit 2a0b9d851c878306a3d19465e597bd06f880b94e
 
-  ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
-  patch -Np1 < "$srcdir/python_fix.patch"
+  ## UI: Link python when obs-scripting python is enabled (https://github.com/obsproject/obs-studio/commit/1017cd5430602f695713f191ef8f5fa9940baee6)
+  git cherry-pick --no-commit 1017cd5430602f695713f191ef8f5fa9940baee6
 
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
