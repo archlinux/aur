@@ -22,8 +22,8 @@ url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss-hg nspr-hg ttf-font libpulse
         libwebp libvpx libjpeg zlib icu libevent pipewire aom harfbuzz
         graphite dav1d)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             rust ccache autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
+makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb nasm
+             rust ccache autoconf2.13 clang llvm jack gtk2 nodejs cbindgen wasi-sdk-git
              python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
