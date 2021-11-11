@@ -1,7 +1,7 @@
 pkgbase = tcl-combobox
 	pkgdesc = A combobox megawidget for TK written in pure TCL
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://core.tcl-lang.org/jenglish/gutter/packages/combobox.html
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = tcl-combobox
 	makedepends = gcc
 	depends = tcl
 	depends = tk
-	depends = incrtk
+	depends = tk-itk
 	source = http://tcltk.co.kr/files/combobox-2.3.zip
 	md5sums = 36e76912017d54481ac9567ab4abada6
 

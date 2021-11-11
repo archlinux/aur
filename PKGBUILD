@@ -1,12 +1,12 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=tcl-combobox
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A combobox megawidget for TK written in pure TCL"
 url="https://core.tcl-lang.org/jenglish/gutter/packages/combobox.html"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('tcl' 'tk' 'incrtk')
+depends=('tcl' 'tk' 'tk-itk')
 optdepends=()
 makedepends=(make gcc)
 conflicts=()
