@@ -19,7 +19,7 @@ arch=('x86_64')
 url="http://www.mythtv.org"
 license=('GPL')
 
-makedepends=('dvdauthor' 'dvd+rw-tools' 'mesa-libgl'  "mythtv-git>=$t"
+makedepends=('git' 'dvdauthor' 'dvd+rw-tools' 'mesa-libgl'  "mythtv-git>=$t"
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size' 'perl-cgi'
              'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun'
              'python-pillow' 'python-pycurl' 'python-oauthlib' 'gdb' 'mariadb-libs' 'minizip'
