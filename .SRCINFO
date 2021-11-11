@@ -1,7 +1,7 @@
 pkgbase = jotta-cli
 	pkgdesc = Jottacloud command line client to back up/share your files to/on Jottacloud.
 	pkgver = 0.12.50392
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.jottacloud.com/jottacloud-command-line-tool
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = jotta-cli
 	sha256sums_x86_64 = 1ae5acacbb5e7d8460a5ae00525e6c20af3a79fcdfd57da6999bd98779ff736c
 	source_i686 = https://repo.jotta.us/archives/linux/x86/jotta-cli-0.12.50392_linux_x86.tar.gz
 	sha256sums_i686 = 84e7d196eb8ac2c7771ea1a8a66695bca037f950295aaae66b6e30be233d7f0f
-	source_armv7h = https://repo.jotta.us/archives/linux/armhf/jotta-cli-0.12.50392_linux_armhf.tar.gz.sha256sum
+	source_armv7h = https://repo.jotta.us/archives/linux/armhf/jotta-cli-0.12.50392_linux_armhf.tar.gz
 	sha256sums_armv7h = a997b80f02d3ea691fd495c003b39f7a5dc7ba279cac5fadf3274719bfcd47ce
 
 pkgname = jotta-cli

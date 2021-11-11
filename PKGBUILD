@@ -3,7 +3,7 @@
 
 pkgname=jotta-cli
 pkgver=0.12.50392
-pkgrel=1
+pkgrel=2
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 arch=('x86_64' 'i686' 'armv7h')
 license=('custom: (C) Jotta AS 2018-2019')
@@ -13,7 +13,7 @@ source=("jotta-cli.sysusers"
         "jotta-cli.tmpfiles")
 source_x86_64=("https://repo.jotta.us/archives/linux/amd64/jotta-cli-${pkgver}_linux_amd64.tar.gz")
 source_i686=("https://repo.jotta.us/archives/linux/x86/jotta-cli-${pkgver}_linux_x86.tar.gz")
-source_armv7h=("https://repo.jotta.us/archives/linux/armhf/jotta-cli-${pkgver}_linux_armhf.tar.gz.sha256sum")
+source_armv7h=("https://repo.jotta.us/archives/linux/armhf/jotta-cli-${pkgver}_linux_armhf.tar.gz")
 
 sha256sums=('236b77504910d1e9c2bec69bd73d49ce9e9ca21dfd26cf0c69a212fe370bbe2d'
             '2f686a82aafbb9b2168303907b2fe623fe4635ff314583dfb38ad747e0a0e450')
