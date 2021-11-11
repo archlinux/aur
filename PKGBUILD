@@ -7,7 +7,7 @@ _pkgvcs='-git'
 pkgname="${_pkgname}${_pkgvariant}${_pkgvcs}"
 epoch=0
 pkgver=3.18.0.295+r11447.20211106.71e1e70a4
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK+ based e-mail client. With patch to show 'protected headers' (currently only IETF draft, not enigmail flavour), without network manager dependency. Latest git checkout."
 arch=(
   'i686'
@@ -240,7 +240,7 @@ package() {
   msg2 "Installing extra tools ..."
   install -v -m755 -d "${pkgdir}"/usr/lib/claws-mail/tools
   find -type f -maxdepth 1 -not -name 'Makefile*' | while read _file; do
-    case "${_file}" in
+    case "$(basename "${_file}")" in
       *.pl|*.py|*.sh|tb2claws-mail|update-po|uudec|uuooffice)
         install -v -D -m755 "${_file}" "${pkgdir}/usr/lib/claws-mail/tools/${_file}"
       ;;
