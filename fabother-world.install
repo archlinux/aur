@@ -1,7 +1,6 @@
-
 post_install() {
   echo "You need the original 'Another World'/'Out of this World' data files to play."
-  echo "It searches for 'BANK*' and 'MEMLIST.BIN' in '~/.fabother-world/data'."
+  echo "It searches for the 'BANK*' and 'MEMLIST.BIN' files in '~/.config/fabother-world/data' (according to your $XDG_CONFIG_HOME)."
 }
 
 post_upgrade() {
