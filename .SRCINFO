@@ -1,0 +1,21 @@
+pkgbase = falco-git
+	pkgdesc = Cloud native runtime security
+	pkgver = 0.30.0.r0.gbb811332
+	pkgrel = 1
+	url = https://falco.org/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = c-ares
+	makedepends = jq
+	makedepends = grpc
+	makedepends = yaml-cpp
+	source = git+https://github.com/falcosecurity/falco.git
+	sha256sums = SKIP
+
+pkgname = falco-git
+
+pkgname = falco-dkms-git
+	depends = dkms
+	depends = linux-headers
