@@ -1,8 +1,8 @@
 # Maintainer: Anthony Wang <ta180m@gmail.com>
 
 pkgname=terasology
-_version=4.3.0
-_version_postfix=alpha19
+_version=5.1.1
+_version_postfix=alpha21
 pkgver=${_version}${_version_postfix}
 pkgrel=1
 epoch=1
@@ -20,7 +20,7 @@ source=(
 )
 sha512sums=('b575b3e3bd5200794a9752ad6f96a147fd5af0196b7e81d1afb4358f9c4da1b656e5ad326cdeabf1be687f1ae69031d609420fc1df2001ef71a131068f2ef835'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
-            '797c2330447e15c505e16b131e90db7a1ab4408ecf0569c419f51b3effed5fb203da3edad5195023685a0a4aafba336d589ac3b312eec2c0692776b673cb253d')
+            'f466a0675b0fc7a330dbce8ae80fc20749417c90ae89fc693c9e83a003b970a9f8b46239eb71c4318f59db37f1e8b57d9a36dfad4cd007987726342af3d6280e')
 
 package() {
     cd "$srcdir"
@@ -31,8 +31,8 @@ package() {
     rm "${srcdir}/${pkgname}" "${srcdir}/${pkgname}.desktop" "${srcdir}/TerasologyOmega${pkgver}.zip"
 
     #extract and install icons
-    unzip -u libs/engine-${_version}.jar "org/terasology/icons/*"
-    pushd org/terasology/icons
+    unzip -u libs/engine-${_version}.jar "org/terasology/engine/icons/*"
+    pushd org/terasology/engine/icons
     for icon in *
     do
         size=${icon##*_}        #gooey_sweet_XX.png -> XX.png
