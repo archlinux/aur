@@ -29,21 +29,10 @@ b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1
 create_links() {
     # create soname links
     find "$pkgdir" -type f -name '*.so*' ! -path '*xorg/*' -print0 | while read -d $'\0' _lib; do
-        _dirname="$(dirname "${_lib}")"
-        _original="$(basename "${_lib}")"
-        _soname="$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)"
-        _base="$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')"
-
-        pushd "${_dirname}" >/dev/null
-
-        if [[ -n "${_soname}" && ! -e "./${_soname}" ]]; then
-            ln -s $(basename "${_lib}") "./${_soname}"
-        fi
-        if [[ -n "${_base}" && ! -e "./${_base}" ]]; then
-            ln -s "./${_soname}" "./${_base}"
-        fi
-
-        popd >/dev/null
+        _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
+        _base=$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')
+        [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
+        [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
     done
 }
 
