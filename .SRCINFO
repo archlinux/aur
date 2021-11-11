@@ -1,19 +1,17 @@
 pkgbase = perl-catalyst-action-renderview
 	pkgdesc = Sensible default end action.
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Catalyst-Action-RenderView
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-http-request-ascgi
-	depends = perl-catalyst-runtime>=5.80030
-	depends = perl-data-visitor>=0.24
-	depends = perl-mro-compat
+	makedepends = perl-module-install
+	depends = perl-catalyst-runtime
+	depends = perl-data-visitor
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Action-RenderView-0.16.tar.gz
 	md5sums = ed0ce5d8e57fef806938bf904862a2cd
 	sha512sums = eae4fbad6a023a2364de254162e50fddd9fa17f28ba8a5c3fb0f34173d9e18c1189081d76e5d61519d1d398210a4f49b87c6eea11c85cc828f33da4940d5b288
 
 pkgname = perl-catalyst-action-renderview
-

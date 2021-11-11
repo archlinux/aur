@@ -1,15 +1,14 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-catalyst-action-renderview'
 pkgver='0.16'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Sensible default end action."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-catalyst-runtime>=5.80030' 'perl-data-visitor>=0.24' 'perl-mro-compat')
-makedepends=('perl-http-request-ascgi')
+depends=('perl-catalyst-runtime' 'perl-data-visitor')
+makedepends=('perl-module-install')
 url='http://search.cpan.org/dist/Catalyst-Action-RenderView'
 source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Action-RenderView-0.16.tar.gz')
 md5sums=('ed0ce5d8e57fef806938bf904862a2cd')
@@ -42,9 +41,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
