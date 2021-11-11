@@ -1,6 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=xtensor
-pkgver=0.23.10
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="C++ tensors with broadcasting and lazy computing"
 arch=('x86_64')
@@ -22,4 +22,4 @@ package() {
   cd ${pkgname}-${pkgver}
   make -C build DESTDIR="${pkgdir}" install
 }
-sha512sums=('032f2a042c3b4967d8513d7ae9f44112a78f34a82e711256dbb3781247ca7a9956b6e3ecd7de9dbf478ab86c23631ab3c6f0b31a10f9f695cf913bcaf057b224')
+sha512sums=('c0dba1c831466f11d7300fab1a137682c2ce9d68e12840a157ca94a6387c783351f9d0e49f63c1934aa1339d8f4f47a0a7aa8271f2bfdb5f3d5f16f895bb4274')
