@@ -1,6 +1,6 @@
 pkgbase = kibot-git
 	pkgdesc = Helps you to generate the fabrication and documentation files for your KiCad projects.
-	pkgver = 701.75ae78a
+	pkgver = 1047.3a3e88e
 	pkgrel = 1
 	url = https://github.com/INTI-CMNB/kibot
 	arch = i686
@@ -19,4 +19,3 @@ pkgbase = kibot-git
 	md5sums = SKIP
 
 pkgname = kibot-git
-

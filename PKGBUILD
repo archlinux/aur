@@ -2,7 +2,7 @@
 
 _pkgname=kibot
 pkgname=kibot-git
-pkgver=701.75ae78a
+pkgver=1047.3a3e88e
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Helps you to generate the fabrication and documentation files for your KiCad projects."
@@ -24,5 +24,5 @@ pkgver()
 
 package() {
   cd $_pkgname
-  python setup.py install --root="$pkgdir"
+  python setup.py install --no-compile --root="$pkgdir"
 }
