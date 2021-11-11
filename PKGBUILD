@@ -1,6 +1,6 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=dyalog-bin
-pkgver=18.0.39712
+pkgver=18.0.40684
 pkgrel=1
 pkgdesc='Dyalog APL interpreter'
 arch=('x86_64')
@@ -14,12 +14,14 @@ makedepends=(
   'tar'
 )
 source=(
-    "$pkgname-$pkgver.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=18.0/linux_64_18.0.39712_unicode.x86_64.deb"
+    "$pkgname-$pkgver.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=18.0/linux_64_${pkgver}_unicode.x86_64.deb"
 )
 
 sha256sums=(
-    "e2a0fcc2fbdf676226dd6e3a3eee6b0129499ab8f8650ff2d5d45125206061a7"
+    "5b609bb177b3e6e3d39cce66181d6d321b1508a883f19a261508b59e46492b0f"
 )
+
+options=('!strip')
 
 prepare() {
     ar x "$pkgname-$pkgver.deb"
