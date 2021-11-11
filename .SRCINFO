@@ -1,0 +1,19 @@
+pkgbase = falco-bin
+	pkgdesc = Cloud native runtime security
+	pkgver = 0.29.1
+	pkgrel = 1
+	url = https://falco.org/
+	arch = x86_64
+	license = Apache
+	source_x86_64 = https://download.falco.org/packages/bin/x86_64/falco-0.29.1-x86_64.tar.gz
+	sha256sums_x86_64 = 60a7189f7d1c583b45966ea50af98ef3c3126aab52437ed1f67ef3d351034b90
+
+pkgname = falco-bin
+	provides = falco
+	conflicts = falco
+
+pkgname = falco-bin-dkms
+	depends = dkms
+	depends = linux-headers
+	provides = falco-dkms
+	conflicts = falco-dkms
