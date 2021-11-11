@@ -24,10 +24,6 @@ prepare() {
   ./"${_image}" --appimage-extract
 }
 
-pkgver() {
-    curl -s https://www.linphone.org/releases/linux/app/ | grep -oPi 'Linphone-\K[\d\.]+(?=\.AppImage)' | tail -1
-}
-
 package() {
   install -Dm755 "${srcdir}/${_image}" "${pkgdir}/opt/appimages/linphone.AppImage"
   install -Dm755 "${srcdir}/linphone.sh" "${pkgdir}/usr/bin/linphone"
