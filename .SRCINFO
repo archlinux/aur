@@ -1,0 +1,15 @@
+pkgbase = python-pyrof-git
+	pkgdesc = Python wrappers for dynamic menus (rofi, fzf)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nesstero/pyrof
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-traitlets
+	depends = rofi
+	depends = fzf
+	source = python-pyrof-git::git+https://github.com/nesstero/pyrof.git
+	sha256sums = SKIP
+
+pkgname = python-pyrof-git
