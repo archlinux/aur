@@ -1,0 +1,20 @@
+pkgbase = vmfs6-tools
+	pkgdesc = Tools to access VMFS6 filesystems
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/teward/vmfs6-tools
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = fuse2
+	optdepends = pkgconf
+	optdepends = asciidoc
+	optdepends = libxslt
+	optdepends = docbook-xsl
+	optdepends = util-linux-libs: for libuuid.so
+	provides = vmfs6-tools
+	source = vmfs6-tools-0.1.0.tar.gz::https://github.com/teward/vmfs6-tools/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = e132c41e7f18294cfd391d49ce94115d782650a387974a2049fc3b50dc3e575e
+
+pkgname = vmfs6-tools
