@@ -2,7 +2,7 @@
 
 pkgname='python-zulip-term-git'
 _pkgname='zulip-terminal'
-pkgver=0.6.0.r284.b7434b57d7
+pkgver=0.6.0.r468.09a824d2cf
 pkgrel=1
 pkgdesc="An interactive terminal interface for Zulip"
 arch=('any')
@@ -16,7 +16,10 @@ depends=('python'
          'python-zulip-api'
          'python-typing_extensions'
          'python-dateutil'
-         'python-tzlocal')
+         'python-tzlocal'
+         'python-pygments'
+         'python-pytz'
+         'python-pyperclip')
 makedepends=('python-setuptools')
 provides=('python-zulip-term')
 conflicts=('python-zulip-term')
