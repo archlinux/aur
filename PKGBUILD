@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.132.0
+pkgver=1.134.1
 pkgrel=1
 epoch=1
 pkgdesc='TL (Legacy) is freeware launcher of Minecraft.'
@@ -30,7 +30,7 @@ _mojang='https://libraries.minecraft.net'
 
 _bootstrap_version='1.14.0'
 _bootstrap_checksum='fb56dc76a1b4d1e44065cc297ea7fcfca805f554e4e22298cb828ddd13c514eb'
-_launcher_checksum='bb378b7042be00142b36de334ceedce311cc741514494ec8bc53579878caa611'
+_launcher_checksum='0e46698007825148eb706b3109ac7ca971ece9433414c5be8658fcea61d0c2b8'
 
 source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
