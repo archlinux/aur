@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2030
+pkgver=1.7.2033
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -71,6 +71,12 @@ build() {
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE
   ninja
+}
+
+# For DEV9 netplay support
+post()
+{
+  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' ${pkgdir}
 }
 
 package() {
