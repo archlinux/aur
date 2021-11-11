@@ -1,6 +1,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Jason Chu <jason@archlinux.org>
 # Contributor: lightstream (AUR)
+# Contributor: scott32 (AUR)
 # Maintainer: Anton Bazhenov <anton.bazhenov at gmail>
 # Maintainer: SanskritFritz (gmail)
 
@@ -24,6 +25,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make install_root="${pkgdir}" install
+  make -j1 install_root="${pkgdir}" install
   install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
