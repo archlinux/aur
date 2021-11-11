@@ -1,7 +1,7 @@
 pkgbase = coin-or-bonmin
 	pkgdesc = Experimental open-source C++ code for solving general MINLP problems
 	pkgver = 1.8.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://projects.coin-or.org/Bonmin
 	arch = x86_64
 	groups = coin-or

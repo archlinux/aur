@@ -1,6 +1,6 @@
 pkgname=coin-or-bonmin
 pkgver=1.8.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental open-source C++ code for solving general MINLP problems"
 arch=('x86_64')
 url="https://projects.coin-or.org/Bonmin"
