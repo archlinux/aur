@@ -1,0 +1,18 @@
+pkgbase = an-anime-game-launcher
+	pkgdesc = An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function
+	pkgver = 210.8dca0bc
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	provides = an-anime-game-launcher
+	source = git+https://notabug.org/nobody/an-anime-game-launcher.git
+	source = an-anime-game-launcher.desktop
+	source = an-anime-game-launcher.sh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = an-anime-game-launcher
