@@ -6,7 +6,7 @@
 _pkgbase=nvidia-settings
 pkgbase=nvidia-470xx-settings
 pkgname=('nvidia-470xx-settings' 'libxnvctrl-470xx')
-pkgver=470.82.00
+pkgver=470.86
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -16,7 +16,7 @@ makedepends=('inetutils' 'jansson' 'gtk2' 'gtk3' 'libxv' 'libvdpau' 'nvidia-470x
 options=('staticlibs')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
-sha512sums=('ae4eb424560929fdf0c76d3be69531b6551a0786ec68f08a52fff9109881fc3ca714e5d1d6795a739d044fa29e75f067517bb37021ba2d8fa696774f4dd5ed63'
+sha512sums=('3b55134fb1bebd3d4c1f55e2ac514a26e617a377c79ca12f197d89d865846b0a3aba75d3b6d4b8857dd328eb2a24edda71dbeaf92ee488100b4eee18a03432c4'
             '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa')
 
 prepare() {
