@@ -1,0 +1,12 @@
+pkgbase = rzip
+	pkgdesc = rzip is a compression program, similar in functionality to gzip or bzip2, but able to take advantage long distance redundencies in files, which can sometimes allow rzip to produce much better compression ratios than other programs.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://rzip.samba.org/
+	arch = x86_64
+	license = GPL2
+	depends = bzip2
+	source = https://rzip.samba.org/ftp/rzip/rzip-2.1.tar.gz
+	sha256sums = 4bb96f4d58ccf16749ed3f836957ce97dbcff3e3ee5fd50266229a48f89815b7
+
+pkgname = rzip
