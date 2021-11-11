@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenStego
+Version=0.8.0
+Type=Application
+Comment=Hide secret data into innocuous files like images
+Keywords=Steganography;Utility
+Exec=openstego
+Icon=openstego
+Categories=Graphics
+Terminal=false

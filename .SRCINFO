@@ -1,19 +1,18 @@
 pkgbase = openstego
-	pkgdesc = Plugin based tool for steganography, with encrytion support.
-	pkgver = 0.7.3
+	pkgdesc = Steganography application that provides data hiding and watermarking functionality
+	pkgver = 0.8.0
 	pkgrel = 1
-	url = http://openstego.sourceforge.net
-	arch = i686
-	arch = x86_64
+	url = https://www.openstego.com
+	arch = any
 	license = GPL2
 	makedepends = unzip
-	depends = java-environment
+	depends = bash
 	depends = java-runtime
-	depends = x-server
-	source = https://github.com/syvaidya/openstego/releases/download/openstego-0.7.3/openstego-0.7.3.zip
-	source = openstego.sh
-	sha256sums = 78284dcabe5c74ab22916b872a7e897a67c64df7efe222e69ef5b62b53b18834
-	sha256sums = ca7876d874eef214d238d1b43809c1eb2bb5b327d7b5188198ecfc29a036061e
+	source = https://github.com/syvaidya/openstego/releases/download/openstego-0.8.0/openstego-0.8.0.zip
+	source = openstego.desktop
+	source = openstego.svg
+	sha256sums = 262610ced189d40765770946ee58cf9b8233a9e91813f9b63d252342cbf55e13
+	sha256sums = 0749d41ac197897b2604c6617a012194f5efa793aed036c1a797412038ccebcf
+	sha256sums = b3c5939cdc6c33472787a94bd6a944e458ad6bd91843da85b83345a90bb9ebb5
 
 pkgname = openstego
-
