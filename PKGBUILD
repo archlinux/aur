@@ -6,6 +6,7 @@ pkgver=0.29.1
 pkgrel=1
 pkgdesc="Cloud native runtime security"
 arch=(x86_64)
+license=(Apache)
 url="https://falco.org/"
 license=(Apache)
 source_x86_64=("https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz")
