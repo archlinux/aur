@@ -17,6 +17,9 @@ sha256sums=('81922ec6e86c06061dc009be3ec7c4bc8e8fd5ed3bb92231dabede8bbccaf723')
 build() {
   cd "${pkgname}-${pkgver}"
 
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
