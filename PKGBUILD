@@ -5,15 +5,17 @@ _pkgname='claws-mail'
 _pkgvariant='-gtk2-protectedheaders-nonm'
 _pkgvcs='-git'
 pkgname="${_pkgname}${_pkgvariant}${_pkgvcs}"
+epoch=0
 pkgver=3.18.0.295+r11447.20211106.71e1e70a4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ based e-mail client. With patch to show 'protected headers' (currently only IETF draft, not enigmail flavour), without network manager dependency. Latest git checkout."
 arch=(
   'i686'
   'x86_64'
 )
 license=('GPL3')
-url='https://www.claws-mail.org/'
+# url='https://www.claws-mail.org/'
+url=http://thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426
 depends=(
   'compface'
   'dbus-glib'
