@@ -1,5 +1,5 @@
 pkgname=sql-workbench
-pkgver=127
+pkgver=128
 pkgrel=1
 epoch=
 pkgdesc="SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool."
@@ -15,8 +15,8 @@ replaces=('sqlworkbench')
 source=("https://www.sql-workbench.eu/Workbench-Build${pkgver}.zip"
          'sqlworkbench.desktop')
 noextract=("Workbench-Build${pkgver}.zip")
-sha256sums=('da017f92bb344b846027d52223be6d88ffd283368495a0b26b6e1334a42ac955'
-            'aa782e6743bdf653fa9317cd7c86a03dba1c7d4ab6bd0d47e1c81192000f7de3')
+sha512sums=('7ff77201037e2917d94181d3446d8ac6c28b843a2b1751c05a2a876f8df533e3aaf69392768ab4411a32b2d9cbf6e0f49d9c0b888b26d1fd362ceae06a3cdefa'
+            '75ae69830b1d8c492c232600b36cda84e13e96cbc235c971af501496dc4874ffd05c28e28d53460d2239517dcbb9b51518a75705a7a0ecf70a89f5beaf8d96da')
 
 build() {
     unzip "Workbench-Build${pkgver}".zip
