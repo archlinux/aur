@@ -1,12 +1,12 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=iwidgets
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A megawidget set based on [incr Tcl] and [incr Tk]"
 url="https://sourceforge.net/projects/incrtcl/"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('tcl' 'tk' 'incrtk')
+depends=('tcl' 'tk' 'tk-itk')
 optdepends=()
 makedepends=(make gcc)
 conflicts=()

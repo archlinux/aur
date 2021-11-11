@@ -1,7 +1,7 @@
 pkgbase = iwidgets
 	pkgdesc = A megawidget set based on [incr Tcl] and [incr Tk]
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/incrtcl/
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = iwidgets
 	makedepends = gcc
 	depends = tcl
 	depends = tk
-	depends = itk
+	depends = tk-itk
 	source = https://sourceforge.net/projects/incrtcl/files/%5BIncr%20Widgets%5D/4.1.1/iwidgets-4.1.1.tar.gz
 	source = https://sourceforge.net/projects/incrtcl/files/%5Bincr%20Tcl_Tk%5D-4-source/itcl%204.1.1/itcl4.1.1.tar.gz
 	source = https://sourceforge.net/projects/incrtcl/files/%5Bincr%20Tcl_Tk%5D-4-source/itk%204.1.0/itk4.1.0.tar.gz
