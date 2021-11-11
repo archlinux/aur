@@ -8,6 +8,7 @@ pkgbase = userspace-tablet-driver-daemon
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = make
 	provides = userspace_tablet_driver_daemon
 	conflicts = userspace-tablet-driver-daemon-git
 	source = https://github.com/kurikaesu/userspace-tablet-driver-daemon/archive/refs/tags/v0.1.3.tar.gz
