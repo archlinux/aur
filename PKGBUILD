@@ -5,8 +5,8 @@
 
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
-pkgver=470.82.00
-pkgrel=2
+pkgver=470.86
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -17,7 +17,7 @@ source=('nvidia-drm-outputclass.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            'f4135efd748d8835e9719e6ef93a86c5646a4d771c63e31f0bdaa0cf6ddf25ce9356eca58c27addb988f4cbe88c9bdcc0536512a46915826261d8f4f4247ebd8')
+            'e541549967ee992b8e6812cb6a294307217e66c7380ec17ff143ddc637f6e3a5b6c807ba8e29bf4c3d6813d7589a41aa124e8a5709a484ecf7fedfe420598a06')
 
 
 create_links() {
@@ -108,7 +108,6 @@ package_nvidia-470xx-utils() {
                 'opencl-nvidia-470xx: OpenCL support')
     conflicts=('nvidia-libgl' 'nvidia-utils')
     provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils')
-    replaces=('nvidia-libgl')
     install="${pkgname}.install"
 
     cd "${_pkg}"
