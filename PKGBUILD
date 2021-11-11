@@ -3,7 +3,7 @@ pkgbase=python-pydata-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Bootstrap-based Sphinx theme from the PyData community"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-sphinx' 'python-beautifulsoup4' 'python-pytest-regressions')
 #'python-sphinx' 'python-sphinx-bootstrap-theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('89a4b5f28e2a150c4aa2e1f5f85d0b29')
+md5sums=('d13330b18df272bd9f46f42b033f1524')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -39,7 +39,7 @@ check() {
 }
 
 package_python-pydata-sphinx-theme() {
-    depends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils')
+    depends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils>0.17.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
