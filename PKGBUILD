@@ -4,12 +4,12 @@
 
 pkgname=speed-dreams-svn
 pkgver=r7269
-pkgrel=1
+pkgrel=2
 pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism."
 arch=('i686' 'x86_64')
 url="http://speed-dreams.sourceforge.net/"
 license=('GPL2')
-depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr' 'plib>=1.8.3' 'libjpeg' 'zlib' 'enet' 'openscenegraph')
+depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr' 'plib>=1.8.3' 'libjpeg' 'zlib' 'enet' 'openscenegraph' 'sdl2_mixer')
 makedepends=('cmake' 'svn')
 provides=("${pkgname%-svn}")
 conflicts=("${pkgname%-svn}" 'speed-dreams-git')
