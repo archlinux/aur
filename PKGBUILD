@@ -1,7 +1,7 @@
 # Maintainer: McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-git
-pkgver=25813.f4dd2d88c
+pkgver=26065.4bcbcbc58
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest GIT build)'
 arch=('i686' 'x86_64')
