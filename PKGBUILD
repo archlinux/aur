@@ -4,7 +4,7 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.54
+pkgver=2.1.55
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
