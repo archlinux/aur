@@ -6,8 +6,8 @@
 _pkgbasename=nvidia-470xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-470xx-utils' 'lib32-opencl-nvidia-470xx')
-pkgver=470.82.00
-pkgrel=2
+pkgver=470.86
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 #makedepends=('nvidia-libgl')  # To avoid conflict during installation in the build chroot
@@ -15,7 +15,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('f4135efd748d8835e9719e6ef93a86c5646a4d771c63e31f0bdaa0cf6ddf25ce9356eca58c27addb988f4cbe88c9bdcc0536512a46915826261d8f4f4247ebd8')
+sha512sums=('e541549967ee992b8e6812cb6a294307217e66c7380ec17ff143ddc637f6e3a5b6c807ba8e29bf4c3d6813d7589a41aa124e8a5709a484ecf7fedfe420598a06')
 
 create_links() {
     # create soname links
