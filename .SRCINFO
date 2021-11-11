@@ -1,5 +1,5 @@
 pkgbase = falco-bin
-	pkgdesc = Cloud native runtime security
+	pkgdesc = Cloud native runtime security. Binaries and Kernel modules. (Stable)
 	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://falco.org/
