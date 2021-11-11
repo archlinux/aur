@@ -1,4 +1,6 @@
 # Maintainer: -=De/\/=-
+# Author: T. Okubo
+# Contributor: T. Okubo
 pkgname=rusted-ruins
 pkgver=0.11.0
 pkgrel=1
