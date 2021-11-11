@@ -1,8 +1,8 @@
 # Maintainer: Giancarlo Grasso <gianniesoft at gmail dot com>
 
 pkgname=whatsdesk-git
-pkgver=0.3.5
-pkgrel=2
+pkgver=0.3.8
+pkgrel=1
 pkgdesc="unofficial client of whatsapp"
 arch=('x86_64')
 url="https://zerkc.gitlab.io/whatsdesk"
@@ -17,9 +17,9 @@ depends=('libxss'
 makedepends=('git'
              'nodejs'
              'npm')
-commit="582cdb4e501d308ed8063bbed112f4df840c2c62"
-source_x86_64=("https://gitlab.com/zerkc/whatsdesk/-/archive/master/whatsdesk-master.tar?commit=$commit")
-sha256sums_x86_64=('SKIP')
+commit="426b01b731995155ca73de7127f2a309b0f11124"
+source_x86_64=("whatsdesk-${pkgver}-${pkgrel}.tar::https://gitlab.com/zerkc/whatsdesk/-/archive/master/whatsdesk-master.tar?commit=$commit")
+sha256sums_x86_64=('94e4a61777631d0bea3a594a8a3aae37f2887337eec03a4bedc1ad8d347aa08a')
 
 build() {
     cd whatsdesk-master
