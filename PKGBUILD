@@ -4,7 +4,7 @@
 pkgbase=lx-music-desktop
 pkgname=('lx-music-desktop-bin')
 conflicts=('lx-music-desktop')
-pkgver=1.15.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="A music software based on Electron + Vue. 一个基于 Electron + Vue 开发的音乐软件。"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('Apache-2.0')
 # Then copy the `Depends On(依赖于)` field.
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 source=("https://ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/lx-music-desktop.v${pkgver}.x64.pacman")
-md5sums=('4ebbbd00deed134390532d6352dbc4ed')
+md5sums=('6b32d44ccd2c08cc3c5d32dd1ed3dad9')
 # copy .INSTALL script from lx-music-desktop.v${pkgver}.x64.pacman
 # E.g: tar xf lx-music-desktop.v1.2.0.x64.pacman .INSTALL && mv -fv .INSTALL lx-music-desktop.install
 install=lx-music-desktop.install
