@@ -1,43 +1,19 @@
 # Maintainer: Adrian Lew <adrian.lewtx at gmail dot com>
 pkgname=spicetify-theme-dribbblish-dynamic
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A mod of Dribbblish theme for Spicetify with support for light/dark modes and album art based colors."
 arch=('any')
 url="https://github.com/JulienMaille/dribbblish-dynamic-theme"
 license=('custom')
-groups=()
 depends=(spicetify-cli)
-makedepends=(unzip curl git)
-checkdepends=()
-optdepends=()
-provides=(spicetify-theme-dribbblish-dynamic)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=${pkgname}.install
-changelog=
-source=("$pkgname::git+https://github.com/JulienMaille/dribbblish-dynamic-theme.git#branch=main")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
-
-
-pkgver() {
-  cd "$pkgname"
-  git tag | tail -1
-}
-
-build() {
-  echo "Downloading latest release..."
-  curl  "https://github.com/JulienMaille/dribbblish-dynamic-theme/releases/download/${pkgver}/DribbblishDynamic_v${pkgver}.zip" --fail --location --progress-bar -O
-  unzip ./DribbblishDynamic_v${pkgver} -d ./DribbblishDynamic
-}
+install="${pkgname}.install"
+source=("https://github.com/JulienMaille/dribbblish-dynamic-theme/releases/download/${pkgver}/DribbblishDynamic_v${pkgver}.zip")
+md5sums=('1a68c271cdffc4b462d489ae1e2a221c')
 
 package() {
-  mkdir -p $pkgdir/usr/share/spicetify-cli/Themes/
-  mkdir -p $pkgdir/usr/share/spicetify-cli/Extensions/
-	cp -r "$srcdir/DribbblishDynamic" "$pkgdir/usr/share/spicetify-cli/Themes/"
-	cp "$srcdir/DribbblishDynamic/dribbblish-dynamic.js" "$pkgdir/usr/share/spicetify-cli/Extensions/"
+  mkdir -p "${pkgdir}/usr/share/spicetify-cli/Themes/"
+  mkdir -p "${pkgdir}/usr/share/spicetify-cli/Extensions/"
+	cp -r "${srcdir}" "{$pkgdir}/usr/share/spicetify-cli/Themes/"
+	cp "${srcdir}/dribbblish-dynamic.js" "${pkgdir}/usr/share/spicetify-cli/Extensions/"
 }
