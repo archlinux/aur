@@ -13,8 +13,8 @@ depends=("python-psutil"
          "python-yaml"
          "python-six")
 makedepends=('python-setuptools')
-source=("https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('304884b7f08e1e92e951c423144587cac93a3319e7d8fbbe552140e3a84239d9')
+source=("https://files.pythonhosted.org/packages/75/c7/147261ca82089f52f61ad6ddfe1a8a78704de196c4c9ba18902e9ddc6b88/ansible-runner-${pkgver}.tar.gz")
+sha256sums=('8f6be6e2e3150f5ca56e5352ded0e4db6422bbedbd731f3bc15de6c09fa44096')
 
 build() {
     cd ${pkgname}-${pkgver}
