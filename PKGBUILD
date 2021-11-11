@@ -1,36 +1,32 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
-_release_type=beta
+_release=beta
+_target=aur
 
 pkgname=makedeb-makepkg-beta
-pkgver=8.10.1
+pkgver=8.12.0
 pkgrel=1
-pkgdesc="Arch Linux build utility, modified for use with makedeb (beta release)"
+pkgdesc="ABS packaging utility"
 arch=(any)
-depends=('awk' 'libarchive' 'bzip2' 'coreutils' 'fakeroot' 'file' 'findutils' 'gettext' 'gnupg' 'grep' 'gzip' 'sed' 'ncurses' 'xz')
+depends=('awk' 'libarchive' 'bzip2' 'coreutils' 'fakeroot' 'file' 'findutils' 'gettext' 'gnupg' 'grep' 'gzip' 'sed' 'ncurses' 'xz' 'makedeb-makepkg-beta')
+makedepends=('asciidoctor' 'git' 'make' 'jq')
 conflicts=('makedeb-makepkg' 'makedeb-makepkg-alpha')
 license=('GPL2')
 url="https://github.com/makedeb/makepkg"
 
-source=("${url}/archive/refs/tags/v${pkgver}-${_release_type}.tar.gz")
+source=("makepkg::git+${url}/#tag=v${pkgver}-${pkgrel}-${_release}")
 sha256sums=('SKIP')
 
 prepare() {
-  # Remove prebuild commands, and set package version.
-  sed -i 's|.*# REMOVE AT PACKAGING||g' "makepkg-${pkgver}-${_release_type}/src/makepkg.sh"
-  sed -i "s|makepkg_version='git'|makepkg_version='${pkgver}-${pkgrel}'|" "makepkg-${pkgver}-${_release_type}/src/makepkg.sh"
-
-  # Set target OS
-  sed -i 's|target_os="[^"]*"|target_os="arch"|' "makepkg-${pkgver}-${_release_type}/src/makepkg.sh"
+	cd makepkg/
+	make prepare TARGET="${_target}"
 }
 
 package() {
-	cd "makepkg-${pkgver}-${_release_type}"
+	cd makepkg/
 
-	# Copy makepkg
-	install -Dm 555 "src/makepkg.sh" "${pkgdir}/usr/bin/makedeb-makepkg"
-
-	# Copy functions
-	mkdir -p "${pkgdir}/usr/share/"
-	cp -R "src/functions" "${pkgdir}/usr/share/makedeb-makepkg"
-	chmod 555 "${pkgdir}/usr/share/makedeb-makepkg"
+    if [[ "${_target}" == "local" || "${_target}" == "mpr" ]]; then
+        make package DESTDIR="${pkgdir}" PACMAN_BINARY=1
+    else
+	    make package DESTDIR="${pkgdir}"
+    fi
 }
