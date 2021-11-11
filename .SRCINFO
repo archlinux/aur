@@ -7,9 +7,9 @@ pkgbase = gnome-shell-extension-impatience-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell>=40
+	depends = gnome-shell>=1:40
+	depends = gnome-shell<1:41
 	source = git+https://github.com/gfxmonk/gnome-shell-impatience
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-impatience-git
-
