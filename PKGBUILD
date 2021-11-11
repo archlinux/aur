@@ -1,6 +1,6 @@
 # Maintainer: Zeta Gabriels <zetagabriels@gmail.com>
 pkgname=userspace-tablet-driver-daemon-git
-pkgver=0.1.2.r2.g6f8c9cd
+pkgver=0.1.2.r11.g6f2475f
 pkgrel=1
 epoch=
 pkgdesc="A userspace daemon for XP-Pen and Huion tablets."
@@ -9,7 +9,7 @@ url="https://github.com/kurikaesu/userspace-tablet-driver-daemon.git"
 license=('GPL3')
 groups=()
 depends=()
-makedepends=(git cmake)
+makedepends=(git cmake make)
 checkdepends=()
 optdepends=()
 provides=(userspace_tablet_driver_daemon)
