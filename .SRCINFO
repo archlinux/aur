@@ -1,0 +1,17 @@
+pkgbase = crawley-bin
+	pkgdesc = The unix-way web crawler
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/s0rg/crawley
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = crawley
+	conflicts = crawley
+	conflicts = crawley-git
+	source_x86_64 = crawley-bin-1.1.4-x86_64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.1.4/crawley_1.1.4_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a6f468289141a63060d1fb08c6784f50514c1d804b79f283e320afc7ba87ace0
+	source_aarch64 = crawley-bin-1.1.4-aarch64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.1.4/crawley_1.1.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = be0b71d656971d12140010a262de6b7b7ff9568e3921658bbb77f1936e3b84f6
+
+pkgname = crawley-bin
