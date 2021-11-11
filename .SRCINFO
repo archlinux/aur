@@ -1,0 +1,13 @@
+pkgbase = automattermostatus
+	pkgdesc = A mattermost custom status automation tool based on available wifi SSID
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://gitlab.com/matclab/automattermostatus
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	depends = gcc-libs
+	source = automattermostatus-v0.1.5.tar.gz::https://gitlab.com/matclab/automattermostatus/-/archive/v0.1.5/automattermostatus-v0.1.5.tar.gz
+	sha256sums = 60020748041bba1682c2ddfbaec70ec6fdc76332648c0a1183f098585d4819f7
+
+pkgname = automattermostatus
