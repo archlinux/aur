@@ -7,7 +7,6 @@ pkgdesc='A terminal-based cross-platform music player, audio engine, metadata in
 arch=('x86_64')
 url="https://github.com/clangen/${pkgname}"
 license=('BSD')
-conflicts=("${pkgname}-git")
 depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'boost-libs' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl' 'ffmpeg' 'taglib')
 makedepends=('cmake' 'boost')
 optdepends=('libopenmpt: OpenMPT support')
