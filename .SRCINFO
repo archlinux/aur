@@ -1,0 +1,15 @@
+pkgbase = yabsm-git
+	pkgdesc = Yet Another BTRFS Snapshot Manager
+	pkgver = r504.347b164
+	pkgrel = 1
+	url = https://github.com/NicholasBHubbard/yabsm
+	arch = x86_64
+	license = MIT
+	depends = perl>=5.16.3
+	depends = btrfs-progs
+	depends = openssh
+	provides = yabsm=r504.347b164
+	source = git+https://github.com/NicholasBHubbard/yabsm.git
+	sha256sums = SKIP
+
+pkgname = yabsm-git
