@@ -3,13 +3,13 @@
 
 pkgname=avogadroapp
 pkgver=1.95.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An advanced molecular editor"
 arch=('x86_64')
 url="https://two.avogadro.cc"
 license=('BSD')
-depends=('avogadrolibs' 'python-cclib' 'vtk' 'qt5-x11extras' 'pugixml' 'utf8cpp'
-         'fmt')
+depends=('avogadrolibs-qt5' 'python-cclib' 'vtk' 'qt5-x11extras' 'pugixml'
+         'utf8cpp' 'fmt')
 optdepends=('openbabel: Open Babel plugin actions')
 makedepends=('cmake' 'eigen')
 provides=('avogadro2')
