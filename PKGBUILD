@@ -6,7 +6,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.86
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -23,21 +23,10 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
 create_links() {
     # create soname links
     find "$pkgdir" -type f -name '*.so*' ! -path '*xorg/*' -print0 | while read -d $'\0' _lib; do
-        _dirname="$(dirname "${_lib}")"
-        _original="$(basename "${_lib}")"
-        _soname="$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)"
-        _base="$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')"
-
-        pushd "${_dirname}" >/dev/null
-
-        if [[ -n "${_soname}" && ! -e "./${_soname}" ]]; then
-            ln -s $(basename "${_lib}") "./${_soname}"
-        fi
-        if [[ -n "${_base}" && ! -e "./${_base}" ]]; then
-            ln -s "./${_soname}" "./${_base}"
-        fi
-
-        popd >/dev/null
+        _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
+        _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
+        [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
+        [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
     done
 }
 
