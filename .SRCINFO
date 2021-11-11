@@ -1,9 +1,10 @@
 pkgbase = mythplugins-git
 	pkgver = 31+fixes.20200413.4d092420
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mythtv.org
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = dvdauthor
 	makedepends = dvd+rw-tools
 	makedepends = mesa-libgl
@@ -86,4 +87,3 @@ pkgname = mythplugins-mythzoneminder-git
 	depends = zoneminder
 	conflicts = mythplugins-mythzoneminder
 	replaces = mythplugins-mythzoneminder
-
