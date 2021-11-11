@@ -3,7 +3,8 @@ pkgbase = python-lttb-git
 	pkgver = v0.3.1.r3.g9463159
 	pkgrel = 1
 	url = https://github.com/sveinn-steinarsson/flot-downsample
-	arch = any
+	arch = x86_64
+	arch = arm
 	license = MIT
 	depends = python
 	depends = python-numpy>=1.1

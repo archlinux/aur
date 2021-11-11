@@ -6,7 +6,7 @@ _pkgname=lttb-numpy
 pkgver=v0.3.1.r3.g9463159
 pkgrel=1
 pkgdesc="Numpy implementation of Steinarsson’s Largest-Triangle-Three-Buckets algorithm"
-arch=('any')
+arch=('x86_64' 'arm')
 url="https://github.com/sveinn-steinarsson/flot-downsample"
 license=('MIT')
 depends=('python' 'python-numpy>=1.1')
