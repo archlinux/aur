@@ -7,9 +7,7 @@
 pkgname=fonts-droid-fallback
 pkgver=fallback_6.0.1r16
 pkgrel=1.1
-pkgdesc="'No Tofu' font families with large Unicode coverage (hinted)
- Noto is a collection of font families, each visually harmonized across
- scripts."
+pkgdesc="handheld device font with extensive style and language support (fallback) This package provides DroidSans Fallback variants, Fallback and FallbackFull."
 arch=(any)
 url="http://ftp.de.debian.org/debian/pool/main/f/fonts-android/"
 license=('GPL')
