@@ -1,0 +1,15 @@
+pkgbase = python-qudida
+	pkgdesc = QUick and DIrty Domain Adaptation
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/arsenyinfo/qudida
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-opencv
+	depends = python-scikit-learn
+	depends = python-typing_extensions
+	source = python-qudida-0.0.4.tar.gz::https://github.com/arsenyinfo/qudida/archive/refs/tags/0.0.4.tar.gz
+	sha256sums = 3f6a7838c3578deec662e63a8cae4ef8d836f6b0d970714be347f868cdcbf232
+
+pkgname = python-qudida
