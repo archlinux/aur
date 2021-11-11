@@ -1,0 +1,16 @@
+pkgbase = evdevremapkeys-git
+	pkgdesc = A daemon to remap key events on linux input devices.
+	pkgver = r49.9b6f372
+	pkgrel = 1
+	url = https://github.com/philipl/evdevremapkeys
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-virtualenv
+	provides = evdevremapkeys
+	conflicts = evdevremapkeys
+	source = git+https://github.com/philipl/evdevremapkeys
+	md5sums = SKIP
+
+pkgname = evdevremapkeys-git
