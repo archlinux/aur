@@ -3,7 +3,7 @@
 # Maintainer: Clarence <xjh.azzbcc@gmail.com>
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
-pkgver=3.10.14
+pkgver=3.10.15
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ license=('custom')
 depends=('hicolor-icon-theme' 'jack' 'libpulse' 'qt5-base')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-sha256sums_i686=('360dd21b84b19b72227601705c544e905ddf37e7d31e1ffa8c89fc4539333eb4')
-sha256sums_x86_64=('0037a711f4374db88b609289f957b62ac137602b8a8ef249ff6115c79eb6279b')
+sha256sums_i686=('4b8b7f9e01e3428d0b9cda376609fc722fb2856400324a223f107fa343a4d383')
+sha256sums_x86_64=('38c4019bb9135548eaecdc363d9e307779ba2c1156674dabf77f73a48df6d58b')
 source_i686=("${_pkgname}-${pkgver}_i686.deb::https://www.ocenaudio.com/downloads/index.php/ocenaudio_debian32.deb?version=v${pkgver}")
 source_x86_64=("${_pkgname}-${pkgver}_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v${pkgver}")
 
