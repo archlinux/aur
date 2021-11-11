@@ -179,7 +179,7 @@ package_gccrs-libs-git() {
   rm -rf "$pkgdir"/usr/lib32/
 
   # Install Runtime Library Exception
-  install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
+  install -Dm644 "$srcdir/gccrs/COPYING.RUNTIME" \
     "$pkgdir/usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
 }
 
