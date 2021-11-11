@@ -1,12 +1,12 @@
 # Maintainer: creatorx <accelerate9 at gmail dot com>
 pkgname=megit
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Git GUI repository manager based on EGit Eclipse plugin"
 arch=('x86_64')
 url="https://github.com/eclipsesource/megit"
 license=('EPL2.0')
-depends=('java-runtime>=8')
+depends=('java-runtime>=11')
 provides=('megit')
 conflicts=('megit')
 options=('!strip')
