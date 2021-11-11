@@ -2,11 +2,11 @@
 
 pkgname=vim-themis
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim script testing framework"
 arch=('any')
 url="https://github.com/thinca/vim-themis"
-license=('Zlib')
+license=('zlib')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 checkdepends=('vim')
@@ -20,9 +20,11 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D bin/themis -t "$pkgdir/usr/bin/"
-	find doc ftdetect ftplugin indent macros syntax \
+	find autoload doc ftdetect ftplugin indent macros syntax \
 		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+	install -D bin/themis -t "$pkgdir/usr/share/vim/vimfiles/bin/"
+	install -d "$pkgdir/usr/bin/"
+	ln -s /usr/share/vim/vimfiles/bin/themis "$pkgdir/usr/bin/"
 	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
