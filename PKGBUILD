@@ -5,7 +5,7 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('78cf16f93500fa30c5f9469bde109b76')
+md5sums=('feeab9e6fac36800f916bfd2c1865ac0')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -133,7 +133,7 @@ build() {
 #}
 
 package_python-sunpy() {
-    depends=('python>=3.7' 'python-astropy>=4.2.0' 'python-parfive>=1.2.0')
+    depends=('python>=3.7' 'python-astropy>=4.2.1' 'python-parfive>=1.2.0')
     optdepends=('python-asdf>=2.6.0: asdf'
                 'python-dask>=2.0.0: dask'
                 'python-sqlalchemy>=1.3.4: database'
@@ -142,7 +142,7 @@ package_python-sunpy() {
                 'python-reproject: map'
                 'python-matplotlib>=3.2.0: map, timeseries, visualization'
                 'python-mpl-animators>=1.0.0: map, visualization'
-                'python-glymur>0.9.0: jpeg2000'
+                'python-glymur>0.9.5: jpeg2000'
                 'python-beautifulsoup4>=4.8.0: net'
                 'python-drms>=0.6.1: net'
                 'python-dateutil>=2.8.0: net'
