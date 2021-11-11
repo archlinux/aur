@@ -4,12 +4,22 @@ pkgbase = dyalog-bin
 	pkgrel = 1
 	url = https://www.dyalog.com/download-zone.htm
 	arch = x86_64
-	license = non-free
+	license = custom
 	makedepends = binutils
 	makedepends = tar
-	depends = ncurses5-compat-libs
+	depends = python
+	depends = libtool
+	depends = alsa-lib
+	depends = gtk2
+	depends = nss
+	depends = libxss
+	depends = nodejs
+	depends = unixodbc
+	depends = at-spi2-atk
 	options = !strip
 	source = dyalog-bin-18.0.40684.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=18.0/linux_64_18.0.40684_unicode.x86_64.deb
+	source = LICENSE.pdf::https://www.dyalog.com/uploads/documents/Developer_Software_Licence.pdf
 	sha256sums = 5b609bb177b3e6e3d39cce66181d6d321b1508a883f19a261508b59e46492b0f
+	sha256sums = 315f1953b0a735763a8866c3fd115defa2c51bf268b0a28fe643be5e3338fc4e
 
 pkgname = dyalog-bin

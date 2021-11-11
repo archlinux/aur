@@ -5,20 +5,30 @@ pkgrel=1
 pkgdesc='Dyalog APL interpreter'
 arch=('x86_64')
 url="https://www.dyalog.com/download-zone.htm"
-license=('non-free')
+license=('custom')
 depends=(
-  'ncurses5-compat-libs'
+    'python'
+    'libtool'
+    'alsa-lib'
+    'gtk2'
+    'nss'
+    'libxss'
+    'nodejs'
+    'unixodbc'
+    'at-spi2-atk'
 )
 makedepends=(
   'binutils'
   'tar'
 )
 source=(
-    "$pkgname-$pkgver.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=18.0/linux_64_${pkgver}_unicode.x86_64.deb"
+    "$pkgname-$pkgver.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=18.0/linux_64_${pkgver}_unicode.${CARCH}.deb"
+    "LICENSE.pdf::https://www.dyalog.com/uploads/documents/Developer_Software_Licence.pdf"
 )
 
 sha256sums=(
     "5b609bb177b3e6e3d39cce66181d6d321b1508a883f19a261508b59e46492b0f"
+    "315f1953b0a735763a8866c3fd115defa2c51bf268b0a28fe643be5e3338fc4e"
 )
 
 options=('!strip')
@@ -46,4 +56,7 @@ package() {
 
   # Launcher
   ln -s /usr/share/dyalog/dyalog $pkgdir/usr/bin/dyalog
+
+  # Licence
+  install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
 }
