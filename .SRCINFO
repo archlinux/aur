@@ -3,7 +3,8 @@ pkgbase = python-pytango-git
 	pkgver = v9.3.3.r79.gb78181d
 	pkgrel = 1
 	url = http://pytango.readthedocs.io/
-	arch = any
+	arch = x86_64
+	arch = arm
 	license = GPL3
 	depends = python
 	depends = python-six>=1.10
