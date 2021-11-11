@@ -2,3 +2,4 @@ fiddle/
 src/
 pkg/
 electron-fiddle-git*.pkg.*
+gitpush.sh
