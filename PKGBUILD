@@ -2,7 +2,7 @@
 
 pkgname=m17n-cu
 pkgver=4b70741
-pkgrel=1
+pkgrel=2
 pkgdesc='Church Slavic data for m17n database'
 arch=('any')
 url='https://github.com/typiconman/m17n-cu'
@@ -30,4 +30,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         '8f704e96e09efdb5ef604952d290c43d')
+         'f38db7908493cae9e08327b4e501f6ee')
