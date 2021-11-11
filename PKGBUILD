@@ -21,9 +21,6 @@ pkgver() {
 }
 
 build() {
-  # http://site.icu-project.org/download/61#TOC-Migration-Issues
-  CXXFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
-
   cmake -B build \
         -S "${pkgname}" \
         -DBINARY_NAME="${pkgname}" \
