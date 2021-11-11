@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Syncing dotfiles and more"
 arch=("any")
@@ -35,14 +35,18 @@ sha256sums=(
 noextract=()
 validpgpkeys=()
 
+prepare() {
+    rustup toolchain update stable
+}
+
 build() {
     cd "dt-$pkgver"
-    cargo build --bin=dt-cli --release --all-features --locked
+    cargo +stable build --bin=dt-cli --release --all-features --locked
 }
 
 check() {
     cd "dt-$pkgver"
-    cargo test --bin=dt-cli --lib=dt-core --release --all-features --locked
+    cargo +stable test --bin=dt-cli --lib=dt-core --release --all-features --locked
 }
 
 package() {
