@@ -19,5 +19,4 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cd /usr/share/quran-rofi
-python Quran.py
+python /usr/share/quran-rofi/Quran.py
