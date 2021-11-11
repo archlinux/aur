@@ -1,0 +1,21 @@
+pkgbase = tvtower-bin
+	pkgdesc = A remake of MadTV - by fans, for fans.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://www.tvtower.org/
+	arch = x86_64
+	license = custom
+	depends = freetype2
+	depends = libxcb
+	depends = harfbuzz
+	depends = brotli
+	depends = libxau
+	depends = libxdmcp
+	depends = graphite
+	depends = glib2
+	depends = pcre
+	provides = tvtower
+	source = tvtower-bin-0.7.0.zip::https://github.com/TVTower/TVTower/releases/download/v0.7/TVTower_v0.7.0_20210210.zip
+	sha256sums = 2f0df3c309412b185dc1e80fdd43858b9a2c097634f1e64198020eaf59c02f7a
+
+pkgname = tvtower-bin
