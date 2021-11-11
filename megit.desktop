@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=MeGit
+Comment=Functional Git GUI client based on EGit
+Exec=/opt/megit/megit %f
+Icon=/opt/megit/egit.png
+Terminal=false
+StartupNotify=true
+Categories=Application;Development;
+StartupWMClass=MeGit Git Client
