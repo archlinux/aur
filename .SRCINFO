@@ -1,0 +1,15 @@
+pkgbase = timezone-clock
+	pkgdesc = GTK app for comparing timezones
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ohwgiles/timezone-clock
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk4
+	options = strip
+	source = https://github.com/ohwgiles/timezone-clock/archive/refs/tags/0.1.tar.gz
+	md5sums = 898229fcf3e276a87d422cbea0c941b8
+
+pkgname = timezone-clock
