@@ -1,0 +1,11 @@
+pkgbase = stm32g0-headers-git
+	pkgdesc = Headers for STM32G0 devices
+	pkgver = r8.03cb8e9ec0cb
+	pkgrel = 1
+	url = https://github.com/STMicroelectronics
+	arch = any
+	license = apache
+	source = git://github.com/STMicroelectronics/STM32CubeG0.git
+	md5sums = SKIP
+
+pkgname = stm32g0-headers-git
