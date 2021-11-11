@@ -1,7 +1,7 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
 	pkgver = 1.19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
 	license = custom:X11
@@ -12,6 +12,8 @@ pkgbase = libinput-three-finger-drag
 	depends = systemd
 	depends = libevdev
 	depends = libwacom
+	depends = cmake
+	depends = wayland-protocols
 	optdepends = gtk3: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
