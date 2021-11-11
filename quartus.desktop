@@ -2,8 +2,8 @@
 Version=1.0
 Name=Quartus Prime Lite
 Comment=Quartus Prime Lite design software for Intel FPGAs
-Exec=_alteradir/quartus/bin/quartus --64bit
-Icon=_alteradir/quartus/adm/quartusii.png
+Exec=@_inteldir@/quartus/bin/quartus --64bit
+Icon=@_inteldir@/quartus/adm/quartusii.png
 Terminal=false
 Type=Application
 Categories=Development

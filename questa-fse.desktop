@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Questa-Intel FPGA Starter Edition
+Comment=Questa simulation software for Intel FPGAs
+Exec=@_inteldir@/questa_fse/bin/vsim -gui -l /dev/null
+Icon=@_inteldir@/questa_fse/questa.gif
+Terminal=false
+Type=Application
+Categories=Development
