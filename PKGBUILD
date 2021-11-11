@@ -3,9 +3,9 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.17.2
+pkgver=1.19.0
 pkgrel=1
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
@@ -15,7 +15,7 @@ makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!strip) #to speed up build
 
-_tools_commit=241f289270ce6b060adf6ff3308bf6934b3f3971
+_tools_commit=fd715cfe991481ea1ec563afc51e3f362df9b8cb
 source=(
   "theia-electron.sh"
   "https://gitlab.com/ccorn/theia-packaging-tools/-/raw/$_tools_commit/make-package-json.sh"
@@ -26,8 +26,8 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         '70c4d1f2a14f5fd81d13730f921f69ae'
-         '649efce73ff4a2a697d071cf83f20e5c'
+         '6220a5f1c141ab8c3e4e973d1fb616d9'
+         '356a19993256e4f2c5c75b58981dc249'
          '8a3461a9d1c50f6bfe60902d020bb797'
          'd387a0df41b11ba3d33360812bfbbe2c'
          '1dde0e422484895d3509f4ee9bb8d980'
@@ -46,8 +46,7 @@ build() {
   mv .yarnclean .yarnclean_
   HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache"
   HOME="$FAKEHOME" yarn build
-
-  #Enable yarn autoclean
+  # Enable yarn autoclean
   mv .yarnclean_ .yarnclean
   # Remove dev dependencies
   HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
@@ -71,5 +70,5 @@ package() {
   install -Dm644 theia.svg "$pkgdir"/usr/share/pixmaps/theia.svg
 
   # License
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

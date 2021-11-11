@@ -1,3 +1,9 @@
 {
-  "vscode-builtin-markdown-language-features": "vscode.markdown-language-features=1.39.2"
+  "vscode-builtin-node-debug" : "",
+  "vscode-builtin-node-debug2" : "",
+  "vscode-builtin-js-debug" : "ms-vscode.js-debug=1.50.0",
+  "vscode-builtin-markdown-language-features": "vscode.markdown-language-features=1.39.2",
+  "vscode-builtin-php": "vscode.php",
+  "vscode-builtin-php-language-features": "vscode.php-language-features",
+  "vscode-builtin-theme-solarized-light": "vscode.theme-solarized-light"
 }
