@@ -2,7 +2,7 @@
 
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_upstreamver='0.8.0'
+_upstreamver='0.8.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-tags'
 _repo='zulip/python-zulip-api'
@@ -19,19 +19,21 @@ depends=(
     'python'
     'python-requests'
     'python-pyopenssl'
-    'python-six')
+    'python-six'
+    'python-distro'
+    'python-click')
 optdepends=(
     'python-matrix-client-git: For zulip matrix bridge')
 makedepends=('cython' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a28a65ea1d1e0871050437f544925c431f16ab191dc4539fdc8447db24a45951')
+sha256sums=('59707f1072b105cba196e805043e33827e66ecb1649ffa6a9d7af78971e916d2')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/zulip"
     # Remove typing dependency check
     # - typing module is included in system python
     # - zulip-api does not see version of this module => crash
-    sed -i "/typing>=/d" setup.py
+    #sed -i "/typing>=/d" setup.py
 }
 
 build() {
