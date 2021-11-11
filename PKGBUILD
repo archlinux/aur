@@ -2,8 +2,8 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.8.21
-pkgrel=4
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
@@ -11,15 +11,13 @@ license=('GPL3')
 conflicts=('sn-bin')
 depends=('electron13')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
-_nodeversion=14.17.3
+_nodeversion=14.18.1
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=7bede7609fe685dbc9c3e0a6f5d11c1eaae07190"
-        "git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2"
+        "git://github.com/standardnotes/web.git#commit=716e1cf46518f8f3a6c4445e72d746722c16edec"
         'webpack.patch'
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'a0b2b5e95750b5c58fd65bbe7e9797b8560d1fa61b5d0164e160cdd74ecc883d'
             '8045c3baa6a3f5e0a20387913599eafb2d8c6e843745f38f34daea1ab44e73e7'
