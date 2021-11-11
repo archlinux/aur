@@ -26,16 +26,11 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  # Meson won't apply any new options or update wraps if they already exist, so
-  # if we're building from a dirty src/ directory we'll just nuke any cached
-  # files
-  if [[ -d build ]]; then
-    rm -rf build
-
-    # Can't use `git clean` here since the entire src/ directory will be
-    # gitignored
-    find ./subprojects -mindepth 1 -maxdepth 1 -type d -exec rm -rf '{}' ';'
-  fi
+  # Make sure all of our wraps are up to date because Meson won't update
+  # wrap subprojects that already exist
+  meson subprojects download
+  meson subprojects update
+  meson subprojects packagefiles --apply
 
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
