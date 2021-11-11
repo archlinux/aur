@@ -5,6 +5,7 @@ pkgbase = librewolf-hg
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf-nightly.install
 	arch = x86_64
+	arch = x86_64_v3
 	arch = aarch64
 	license = MPL
 	license = GPL
