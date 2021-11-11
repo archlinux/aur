@@ -1,6 +1,6 @@
 pkgbase = vorta-git
 	pkgdesc = A GUI for BorgBackup (git)
-	pkgver = r543.be6a39b
+	pkgver = r567.b2a08b9
 	pkgrel = 1
 	url = https://github.com/borgbase/vorta
 	arch = any
@@ -26,4 +26,3 @@ pkgbase = vorta-git
 	sha256sums = SKIP
 
 pkgname = vorta-git
-

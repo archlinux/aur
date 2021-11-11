@@ -2,7 +2,7 @@
 
 pkgname=vorta-git
 _pkgname=vorta
-pkgver=r543.be6a39b
+pkgver=r567.b2a08b9
 pkgrel=1
 pkgdesc="A GUI for BorgBackup (git)"
 arch=('any')
