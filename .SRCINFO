@@ -1,0 +1,17 @@
+pkgbase = pixivutil2-git
+	pkgdesc = A utility for the image hosting website Pixiv, once downloaded you can use the pixiv command to run it
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Nandaka/PixivUtil2
+	arch = any
+	license = BSD 2-Clause
+	makedepends = git
+	makedepends = python
+	makedepends = python-pip
+	provides = pixiv
+	source = git+https://github.com/Nandaka/PixivUtil2.git
+	source = pixiv
+	sha256sums = SKIP
+	sha256sums = 7306c2b7b160a098f79dec5f76389b1ab3e1de6b03c9d45f54ce57e1b916ccfa
+
+pkgname = pixivutil2-git
