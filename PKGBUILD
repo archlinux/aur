@@ -2,7 +2,7 @@
 
 pkgbase=viennarna
 pkgname=('viennarna' 'python-rna' 'python2-rna' 'perl-rna')
-pkgver=2.4.18
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ makedepends=( 'perl'
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
 
 options=('staticlibs' '!strip')
-sha256sums=('7caa723f5e5cd61a60aba60b24a64db39817a76244293754b00fe83a1dab609d')
+sha256sums=('b85544650ee316743173ec9b30497cc4c559f1bfb8f66d16c563f780afd8c0c5')
 
 prepare() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
@@ -107,14 +107,14 @@ package_viennarna() {
 package_python2-rna() {
   depends=('python2' viennarna="${pkgver}")
   cd "${srcdir}/ViennaRNA-${pkgver}"
-  cd interfaces/Python
+  cd interfaces/Python2
   make DESTDIR="${pkgdir}" install
 }
 
 package_python-rna() {
   depends=('python' viennarna="${pkgver}")
   cd "${srcdir}/ViennaRNA-${pkgver}"
-  cd interfaces/Python3
+  cd interfaces/Python
   make DESTDIR="${pkgdir}" install
 }
 
