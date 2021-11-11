@@ -1,6 +1,6 @@
 pkgbase = refind-btrfs
 	pkgdesc = Generate rEFInd manual boot stanzas from Btrfs snapshots
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/Venom1991/refind-btrfs
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = refind-btrfs
 	depends = refind
 	optdepends = python-pillow: custom generated boot stanza icon support
 	backup = etc/refind-btrfs.conf
-	source = https://github.com/Venom1991/refind-btrfs/archive/v0.4.1.tar.gz
-	sha256sums = 03d12eac6208a05c8318c2741383453e0ee06ebdd66d9a615201b27d4783bcd3
+	source = https://github.com/Venom1991/refind-btrfs/archive/v0.4.2.tar.gz
+	sha256sums = d16834abd34c06f221420f25f28df004a7774d1e528ccc3438b66a95a0d7a5e0
 
 pkgname = refind-btrfs
