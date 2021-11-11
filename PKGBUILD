@@ -1,62 +1,50 @@
 # Maintainer: Kris Nóva <kris@nivenly.com>
-pkgname="falco"
-pkgver="0.29.1"
+
+pkgbase=falco
+pkgname=(falco falco-dkms)
+pkgver=0.30.0
 pkgrel=1
-pkgdesc="Falco Runtime Security"
-arch=("x86_64")
-url="https://falcosecurity.org"
-license=("Apache2")
-groups=()
-depends=("linux-headers")
-makedepends=()
+pkgdesc="Cloud native runtime security"
+arch=(x86_64)
+url="https://falco.org/"
+license=(Apache)
+makedepends=(cmake git c-ares jq grpc yaml-cpp)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
-replaces=()
 backup=()
 options=()
-install=
-changelog=
-
-# EXAMPLE URL: https://download.falco.org/packages/bin/x86_64/falco-0.29.1-x86_64.tar.gz
-source=("https://download.falco.org/packages/bin/$arch/$pkgname-$pkgver-$arch.tar.gz")
-
-# Falco 0.29.1 SHA256
-# Note: This can be found by running "makepkg -g" in this directory.
-#       The AUR documentation suggests "makepkg -g >> PKGBUILD"
-sha256sums=('60a7189f7d1c583b45966ea50af98ef3c3126aab52437ed1f67ef3d351034b90')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('9d90a86752a700dad2d1ea888b2cd33cdc808621faa2b6300bb0463d404744fb')
 
 # Kris Nóva PGP Key
-validpgpkeys=('F5F9B56417B7F2CAC1DEC2E372BB115B4DDD8252')
+#validpgpkeys=('F5F9B56417B7F2CAC1DEC2E372BB115B4DDD8252')
 
 prepare() {
-    echo "Preparing Falco Build..."
-    echo "Falco Version: $pkgver"
+  cd "${pkgname}-${pkgver}"
+  [[ -d build ]] || mkdir build
 }
 
 build() {
-    echo "Compiling Kernel Module..."
-    cd $pkgname-$pkgver-$arch/usr/src/falco*
-    make
+  cd "${pkgname}-${pkgver}/build"
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  make
 }
 
-check() {
-    echo "check()"
+package_falco() {
+    install -d "${pkgdir}/etc/falco"
+    cp -rv falco-${pkgver}-${arch}/etc/falco/* "${pkgdir}/etc/falco"
+
+    install -d "${pkgdir}/usr/share/falco"
+    cp -rv falco-${pkgver}/usr/share/falco/* "${pkgdir}"/usr/share/falco
+
+  make DESTDIR="${pkgdir}" install
 }
 
-package() {
-    echo "Installing Default Configuration..."
-    sudo mkdir -p /etc/falco
-    sudo cp -rv $pkgname-$pkgver-$arch/etc/falco/* /etc/falco
-    sudo mkdir -p /usr/share/falco
-    sudo cp -rv $pkgname-$pkgver-$arch/usr/share/falco/* /usr/share/falco
-
-    echo "Intalling Binary [$arch]..."
-    # AUR Informs us that packages should NEVER be installed to /usr/local
-    sudo cp -rv $pkgname-$pkgver-$arch/usr/bin/* /usr/bin
-
-    echo "Installing Kernel Module..."
-    cd $pkgname-$pkgver-$arch/usr/src/falco*
-    sudo make install
+package_falco-dkms() {
+  depends=(dkms linux-headers)
+    install -d "${pkgdir}/usr/src/falco-${pkgver}"
+    cp -rv falco-${pkgver}-${arch}/usr/src/falco-${_commit}/* "${pkgdir}/usr/src/falco-${pkgver}"
 }
