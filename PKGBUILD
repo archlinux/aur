@@ -1,14 +1,15 @@
-# Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
+# Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 _pkgname=drop-down-terminal
 pkgname=gnome-shell-extension-$_pkgname
 pkgver=24.patch2
 _pkgver=24
-pkgrel=1
+pkgrel=2
 pkgdesc="Drop Down Terminal extension for the Gnome Shell"
 arch=('any')
 url="https://github.com/zzrough/gs-extensions-$_pkgname"
 license=('GPL3')
-depends=('gnome-shell')
+depends=('gnome-shell<1:41')
 install=$_pkgname.install
 source=($_pkgname-$pkgver.tar.gz::https://github.com/zzrough/gs-extensions-$_pkgname/archive/v$_pkgver.tar.gz
         https://patch-diff.githubusercontent.com/raw/zzrough/gs-extensions-drop-down-terminal/pull/245.diff)
