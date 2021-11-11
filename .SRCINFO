@@ -1,6 +1,6 @@
 pkgbase = xvi-git
-	pkgdesc = Hex editor
-	pkgver = b7f9d8a
+	pkgdesc = Hex editor with ncurses based user interface
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/artemsen/xvi
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = xvi-git
 	makedepends = cargo
 	makedepends = rust
 	makedepends = git
+	depends = ncurses
 	source = xvi::git+https://github.com/artemsen/xvi.git
 	md5sums = SKIP
 
 pkgname = xvi-git
-
