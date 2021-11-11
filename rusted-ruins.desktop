@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/usr/games/rusted-ruins
+Icon=/usr/share/pixmaps/rusted-ruins.png
+Name=Rusted Ruins
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Rusted Ruins - Extensible open world rogue like game with pixel art
+
