@@ -1,0 +1,16 @@
+pkgbase = m17n-cu-git
+	pkgdesc = Church Slavic data for m17n database
+	pkgver = r31.39dd115
+	pkgrel = 1
+	url = https://github.com/typiconman/m17n-cu
+	install = install
+	arch = any
+	license = GPL-3.0
+	depends = ibus-m17n
+	conflicts = m17n-cu
+	source = m17n-cu::git+https://github.com/typiconman/m17n-cu.git
+	source = http://www.ponomar.net/files/docen.pdf
+	md5sums = SKIP
+	md5sums = f38db7908493cae9e08327b4e501f6ee
+
+pkgname = m17n-cu-git
