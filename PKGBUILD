@@ -1,6 +1,6 @@
 pkgname=subtitleedit
-pkgver=3.6.2
-pkgrel=2
+pkgver=3.6.3
+pkgrel=1
 pkgdesc="A subtitle editor"
 arch=('any')
 url="http://www.nikse.dk/subtitleedit/"
@@ -19,7 +19,7 @@ source=(
     "subtitleedit.desktop"
 )
 sha256sums=(
-    'a337fcc34f7df3a1a4912b088cd9d2b3903edfb5a03996c4e731d17861e2f4c1'
+    '40afb3168e837e478aa17301aaccd98c458114c59856808266df78028c30c651'
     '7efc7a341ee949f5b3742741a1431c0af7ab14aa1d7f35a654f6ec2eb4fc9457'
     '2060b2b85e2c50152a266a3697efe7b9fbfe7c2af4cdf6a9c6af8a30a6169b52'
     '32977a0b82619f04e1ce904ac9c02ced410aa6cb563e86e90ce46225dc63adee'
