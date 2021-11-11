@@ -3,7 +3,7 @@
 pkgname=electron-fiddle-git
 _pkgname=fiddle
 pkgver=v0.26.0.r47.gc7fb8949
-pkgrel=1
+pkgrel=2
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64')
 url="https://electronjs.org/fiddle"
@@ -24,15 +24,19 @@ prepare() {
 	local dist="/usr/lib/electron"
 
 	cd "$srcdir/$_pkgname"
+	export HOME="$srcdir/.electron-gyp"
 	npm install --force --cache "$cache"
 }
 
 build() {
 	cd "$srcdir/$_pkgname"
+	export HOME="$srcdir/.electron-gyp"
 	npm run package
 }
 
 package() {
+	export HOME="$srcdir/.electron-gyp"
+
 	cd "$srcdir/$_pkgname/out/Electron Fiddle-linux-x64/resources"
 	install -Dm644 app.asar "$pkgdir/usr/lib/electron-fiddle/app.asar"
 
@@ -53,6 +57,7 @@ Exec=electron-fiddle %U
 Icon=electron-fiddle
 Type=Application
 StartupNotify=true
+MimeType=x-scheme-handler/electron-fiddle;
 Categories=GNOME;GTK;Utility;
 " > electron-fiddle.desktop
 	install -Dm755 electron-fiddle.desktop "$pkgdir/usr/share/applications/electron-fiddle.desktop"
