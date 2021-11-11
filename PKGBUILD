@@ -4,8 +4,8 @@
 
 _gemname=em-websocket
 pkgname=ruby-$_gemname
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='EventMachine based WebSocket server'
 arch=('any')
 url='https://github.com/igrigorik/em-websocket'
@@ -17,7 +17,7 @@ depends=('ruby'
 provides=("$pkgname=$pkgver")
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/igrigorik/em-websocket/archive/v${pkgver}.tar.gz)
-sha512sums=('46df705e2af93082884c7ca521df4f6cf33309c441eb3ba96be609b2cf280e3b72c689810d55279db6dbbc178ed843d64ccdaf9d4b39d52ddac7d84956065b06')
+sha512sums=('28d5cf042899319f50ff0d3b140d75fb281b7e0635118a63df243151c4f442dbabf7dbe15b26b44167d925ed00819b01eeeef110107e4058d8a534f84913b232')
 
 prepare() {
   cd ${_gemname}-${pkgver}
