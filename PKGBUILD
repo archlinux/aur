@@ -1,7 +1,5 @@
-# Contributor Andrew Gunnerson <andrewgunnerson@gmail.com>
-
 pkgname=mingw-w64-lz4
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Very fast lossless compression algorithm (mingw-w64)'
 arch=('any')
@@ -11,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/lz4/lz4/archive/v${pkgver}.tar.gz")
-sha256sums=('658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc')
+sha256sums=('030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -22,7 +20,7 @@ build() {
     ${_arch}-cmake \
         -DLIB_INSTALL_DIR=lib \
         -DBUILD_SHARED_LIBS=OFF \
-        ../contrib/cmake_unofficial
+        ../build/cmake
     make
     popd
 
@@ -30,7 +28,7 @@ build() {
     ${_arch}-cmake \
         -DLIB_INSTALL_DIR=lib \
         -DBUILD_SHARED_LIBS=ON \
-        ../contrib/cmake_unofficial
+        ../build/cmake
     make
     popd
   done
