@@ -1,7 +1,7 @@
 pkgname='chad-launcher-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Game library management'
 arch=('x86_64')
 url='https://notabug.org/johncena141/chad-launcher'
@@ -11,11 +11,11 @@ replaces=('chad_launcher-bin')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips udev)
 makedepends=()
 source=(
-    "$_pkgname::https://notabug.org/attachments/03faba78-026b-4641-997c-f036942bac60"
+    "$_pkgname::https://notabug.org/attachments/70a4d9bf-d72d-4ba9-ada9-825c5130eb97"
     "${_pkgname}.desktop::https://notabug.org/johncena141/${_pkgname}/raw/v${pkgver}/${_pkgname}.desktop"
     "${_pkgname}.svg::https://notabug.org/johncena141/${_pkgname}/raw/v${pkgver}/icon.svg"
 )
-md5sums=('d66ff5e11d378212b827e2ad83c7d30c'
+md5sums=('33b3351d31056e42b7fa5d9645775c69'
          '3982c2923488557d1bc82d8fc3391b4c'
          'eb5ae7c983884713edf7954c270085a2')
 
