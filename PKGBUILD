@@ -1,7 +1,7 @@
 # Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
 pkgname='otf-apple-sf-compact'
-pkgver=17.0d11e1
+pkgver=17.0d12e1
 pkgrel=1
 pkgdesc='Apples San Francisco typeface family. watchOS system font.'
 arch=('any')
@@ -11,7 +11,7 @@ _file='SF-Compact.dmg'
 source=("https://devimages-cdn.apple.com/design/resources/download/$_file"
         'license.awk'
         'version.awk')
-sha256sums=('d7010286113a0770a3e87be6bce7c53f6ebf047bca6f07550154fd6fc85ed2c2'
+sha256sums=('487647302a6a96b2c7ff77046c8727660e250d0625efae5b54edefd68d43ea18'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
 makedepends=('texlive-bin' 'p7zip')
@@ -20,7 +20,7 @@ prepare() {
     cd ${srcdir}
     # These are dmg images, xar and cpio archives.  Just use 7z.
     7z x -y "$_file"
-    7z x -y 'SanFranciscoCompact/San Francisco Compact.pkg'
+    7z x -y 'SFCompactFonts/SF Compact Fonts.pkg'
     7z x -y 'Payload~'
 
     otfinfo -i Library/Fonts/SF-Compact-Display-Regular.otf | \
