@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gnome-internet-radio-locator
-pkgver=12.0.3
+pkgver=12.0.5
 pkgrel=1
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad')
 makedepends=('intltool' 'itstool' 'python')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('f5124ea162f420918b818904232128f80281a10c2bdf56122bb57bb5eb3751a8')
+sha256sums=('8630fbf248104bf425566ea4998a5d823d635666f885380f51d2058691dbf589')
 
 build() {
   cd $pkgname-$pkgver
