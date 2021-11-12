@@ -2,7 +2,7 @@
 
 pkgname=openstarruler-git
 pkgver=r68.f07b3cd
-pkgrel=1
+pkgrel=2
 pkgdesc="Star Ruler 2 is a Massive scale 4X-RTS set in space. Control planets, manipulate politics, research technologies and command armies in your quest for galactic dominance."
 arch=('x86_64')
 url="http://starruler2.com/"
