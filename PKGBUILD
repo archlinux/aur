@@ -1,10 +1,10 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=daily-wallpaper-git
-pkgver=r100.42041bf
+pkgver=0.8.0.r9.gad7fb04
 pkgrel=1
-pkgdesc="Change wallpaper automatically with the Photo of The Day of your favorite source"
-arch=('x86_64')
+pkgdesc="Change wallpaper automatically with a 'Photo of the Day'"
+arch=('any')
 url="https://github.com/atareao/daily-wallpaper"
 license=('MIT')
 depends=('dbus-python' 'python-gobject' 'python-lxml' 'python-cssselect' 'python-requests' 'python-crontab' 'python-plumbum' 'gtk3' 'libnotify')
@@ -16,26 +16,23 @@ source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C $pkgname describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   cd $pkgname
 
-  install -dm755 "$pkgdir/usr"
-  cp -a bin      "$pkgdir/usr"
+  install -Dm755 bin/daily-wallpaper                   -t "$pkgdir/usr/bin"
+  install -Dm644 data/daily-wallpaper.{service,timer}  -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 data/daily-wallpaper.desktop          -t "$pkgdir/usr/share/applications"
+  install -Dm644 src/dailies/*                         -t "$pkgdir/usr/share/${pkgname%-git}/dailies"
+  install -Dm644 LICENSE                               -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
-  install -dm755 "$pkgdir/usr/share/daily-wallpaper"
-  cp -a src/*.py "$pkgdir/usr/share/daily-wallpaper"
-
-  install -dm755    "$pkgdir/usr/share/daily-wallpaper"
-  cp -a src/dailies "$pkgdir/usr/share/daily-wallpaper"
+  #install -Dm644 src/*.py src/dailies/*                -t "$pkgdir/usr/share/${pkgname%-git}"
+  install -dm755 "$pkgdir/usr/share/${pkgname%-git}"
+  cp -a src/*.py "$pkgdir/usr/share/${pkgname%-git}"
 
   install -dm755           "$pkgdir/usr/share/icons"
   cp -a data/icons/hicolor "$pkgdir/usr/share/icons"
-
-  install -dm755                     "$pkgdir/usr/share/applications"
-  cp -a data/daily-wallpaper.desktop "$pkgdir/usr/share/applications"
 }
 
