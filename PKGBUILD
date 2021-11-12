@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/mvdan/gofumpt"
 license=('custom')
 makedepends=('go')
-source=("${pkgname}::https://github.com/mvdan/gofumpt/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mvdan/gofumpt/archive/v${pkgver}.tar.gz")
 sha512sums=('4bd5376b1a72cf7510c883657e17e9d7e33049cce7956cc3c4a3e5d0428c25f3c659d50359bae725d1b66530471b1b41ca8698bc46d74c58683a6edb5cd71afe')
 
 build() {
