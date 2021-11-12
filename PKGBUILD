@@ -1,7 +1,7 @@
 # Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
 pkgname='otf-apple-sf-pro'
-pkgver=17.0d11e1
+pkgver=17.0d12e1
 pkgrel=1
 pkgdesc='Apples San Francisco typeface family. System font.'
 arch=('any')
@@ -11,7 +11,7 @@ _file='SF-Pro.dmg'
 source=("https://devimages-cdn.apple.com/design/resources/download/$_file"
         'license.awk'
         'version.awk')
-sha256sums=('436420c27c4d15ffb3ccb6d9fe0176baf1374d9a5aa66413518e1e9cc98c08e3'
+sha256sums=('f891774b2362fbaac4548120fcb96abb4c3fcfc82a05b6cbb4fddc0a5f4aaa3a'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
 makedepends=('texlive-bin' 'p7zip')
@@ -20,7 +20,7 @@ prepare() {
     cd ${srcdir}
     # These are dmg images, xar and cpio archives.  Just use 7z.
     7z x -y "$_file"
-    7z x -y 'SanFranciscoPro/San Francisco Pro.pkg'
+    7z x -y 'SFProFonts/SF Pro Fonts.pkg'
     7z x -y 'Payload~'
 
     otfinfo -i Library/Fonts/SF-Pro-Display-BoldItalic.otf | \
