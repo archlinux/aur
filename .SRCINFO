@@ -1,0 +1,19 @@
+pkgbase = python-hass-nabucasa
+	pkgdesc = Home Assistant cloud integration by Nabu Casa, Inc.
+	pkgver = 0.50.0
+	pkgrel = 1
+	url = https://github.com/NabuCasa/hass-nabucasa
+	arch = any
+	license = GPL-3.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-timeout
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	source = hass-nabucasa-0.50.0.tar.gz::https://github.com/NabuCasa/hass-nabucasa/archive/refs/tags/0.50.0.tar.gz
+	sha256sums = 82cd34aabf127c3f5097d7fb55f3f50b7c9e236fa3889e9e30998dc7b07a0aad
+
+pkgname = python-hass-nabucasa
