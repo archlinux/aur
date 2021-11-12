@@ -1,0 +1,20 @@
+pkgbase = wl-mirror-git
+	pkgdesc = a simple Wayland output mirror client (git version)
+	pkgver = 0.1.1.r0.g58ce184
+	pkgrel = 1
+	url = https://github.com/Ferdi265/wl-mirror
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = libglvnd
+	depends = wayland
+	source = git+https://github.com/Ferdi265/wl-mirror
+	source = git+https://gitlab.freedesktop.org/wayland/wayland-protocols
+	source = git+https://gitlab.freedesktop.org/wlroots/wlr-protocols
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wl-mirror-git
