@@ -1,7 +1,7 @@
 # Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
 pkgname='otf-apple-sf-arabic'
-pkgver=17.0d15e1
+pkgver=17.0d16e1
 pkgrel=1
 pkgdesc='Apples San Francisco typeface family. Arabic font.'
 arch=('any')
@@ -11,7 +11,7 @@ _file='SF-Arabic.dmg'
 source=("https://devimages-cdn.apple.com/design/resources/download/$_file"
         'license.awk'
         'version.awk')
-sha256sums=('0c8efa0dad0bf89e7acfb387193b9da3be8f58415462e1358b99712bfc6207aa'
+sha256sums=('be583464111a9f90507c9a525c70ea3d3a6f54a3ff6353029c30ccd8bde2a32a'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
 makedepends=('texlive-bin' 'p7zip')
