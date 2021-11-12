@@ -11,8 +11,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('536' '786' '923')
-_merge_requests_to_use=()
+# available MR: ('536' '786' '923' '1862')
+_merge_requests_to_use=('1862')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -20,7 +20,7 @@ _merge_requests_to_use=()
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=41.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -138,6 +138,13 @@ prepare() {
   # Status: 2
   # Comment: Unlock freezes, it hits me too.
   pick_mr '923'
+
+  # Title: Optimize box-shadow rendering (part 2) [property design]
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1862
+  # Type: 1
+  # Status: 1
+  # Comment: Part 1 was in !1904 (merged)
+  pick_mr '1862'
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
