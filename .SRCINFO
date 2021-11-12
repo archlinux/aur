@@ -1,6 +1,6 @@
 pkgbase = jigdo
 	pkgdesc = Distribute large images by sending and receiving the files that make them up
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://www.einval.com/~steve/software/jigdo/
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = jigdo
 	makedepends = docbook-utils
 	makedepends = docbook-sgml
 	makedepends = perl-sgmls
-	depends = db4.8
+	depends = db
 	depends = wget
-	source = https://www.einval.com/~steve/software/jigdo/download/jigdo-0.8.0.tar.xz
-	b2sums = 0d3ef3c50394174fb6d5c9b6f8e5cdbffe86d428b7c4c4552025678ffbdba88331aa58e4b6a7594e67866fcba6531fdcae20aa0feb1abd82f5264df585360567
+	source = https://www.einval.com/~steve/software/jigdo/download/jigdo-0.8.1.tar.xz
+	b2sums = 6619017716066d1ccea4812fcfd980be670979c086a42005fd585e78c761f2db2e4ede461ecedae8d60d04a60a348ce214fd64975b1712307972b56b1f899fae
 
 pkgname = jigdo
-

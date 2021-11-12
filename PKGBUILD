@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=jigdo
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Distribute large images by sending and receiving the files that make them up"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('db' 'wget')
 makedepends=('docbook-utils' 'docbook-sgml' 'perl-sgmls')
 source=("${url}download/jigdo-${pkgver}.tar.xz")
-b2sums=('0d3ef3c50394174fb6d5c9b6f8e5cdbffe86d428b7c4c4552025678ffbdba88331aa58e4b6a7594e67866fcba6531fdcae20aa0feb1abd82f5264df585360567')
+b2sums=('6619017716066d1ccea4812fcfd980be670979c086a42005fd585e78c761f2db2e4ede461ecedae8d60d04a60a348ce214fd64975b1712307972b56b1f899fae')
 
 prepare() {
   cd "$pkgname-$pkgver"
