@@ -11,7 +11,7 @@ _file='NY.dmg'
 source=("https://devimages-cdn.apple.com/design/resources/download/$_file"
         'license.awk'
         'version.awk')
-sha256sums=('a96ff20a8e143f1cff313ec05ed2b8d290a3b9ff6010ab0621932574c9f79402'
+sha256sums=('300c5091d478d1850397bcf43986eec22b9e3a807626e622908bb5d42aa202da'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
 makedepends=('texlive-bin' 'p7zip')
