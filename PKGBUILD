@@ -128,6 +128,12 @@ ac_add_options --with-ccache
 export CC='clang'
 export CXX='clang++'
 
+# Wasi SDK
+ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
+export WASI_CC=/opt/wasi-sdk/bin/clang
+export WASM_CC=/opt/wasi-sdk/bin/clang
+export WASM_CXX=/opt/wasi-sdk/bin/clang++
+
 # Branding
 ac_add_options --allow-addon-sideload
 ac_add_options --enable-update-channel=nightly
