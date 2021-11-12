@@ -1,4 +1,6 @@
 # Maintainer: Andrew Bednoff <commandr at commandr.stream>
+# Contributor: Xyne <xyne at archlinux.ca>
+# Committer: Xyne <xyne at archlinux.ca>
 pkgname=gnupg1-extended
 pkgname_=gnupg
 pkgver=1.4.23
@@ -27,6 +29,7 @@ build() {
         --exec-prefix=/usr/ \
         --libexecdir=/usr/lib/ \
         --enable-maintainer-mode \
+        # with enabled large secmem
         --enable-large-secmem \
         --enable-noexecstack
     make
