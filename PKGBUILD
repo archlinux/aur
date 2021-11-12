@@ -2,20 +2,32 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
 license=('GPL3')
-depends=('cron' 'dbus-python' 'dmidecode' 'gtk3' 'libappindicator-gtk3' 'libnotify'
-         'python-cairo' 'python-gobject' 'python-pillow' 'tlp' 'tlp-rdw' 'xorg-xdpyinfo')
+
+depends=( 'libnotify' 
+          'tlp' 
+          'tlp-rdw'
+	  'cron'
+	  'dbus-python'
+	  'dmidecode'
+	  'gtk3'
+	  'libayatana-appindicator'
+          'python-gobject'
+	  'python-pillow'
+	  'xorg-xdpyinfo')
+          
 optdepends=('nvidia-prime: for hybrid graphics switching'
             'slimbookamdcontroller: Synchronize battery mode with CPU TDP mode'
             'slimbookintelcontroller: Synchronize battery mode with CPU TDP mode')
+            
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('68c559877cbc352fcfb1abcf6d4d161f77c9d2efef3a578fc65fbc880da27d0a')
+sha256sums=('1f11e5ed1fefcfffd954a70281e44cec7077c93c8047b5160c14ffd0728aafd8')
 
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
@@ -29,12 +41,12 @@ package() {
   rm -rf "$pkgdir/usr/share/doc"
 
   # Install locales
-  cd "$pkgdir/usr/share/$pkgname/src/locale"
+  cd "$pkgdir/usr/share/$pkgname/src/translations"
   for lang in $(ls -d */); do
-    install -d "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
-    mv "$pkgdir/usr/share/$pkgname/src/locale/${lang}LC_MESSAGES"/*.mo \
-      "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
+    install -d "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
+    mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
+      "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
   done
-  rm -rf "$pkgdir/usr/share/$pkgname/src/locale"
-  rm "$pkgdir/usr/share/$pkgname/src/update_po.sh"
+  rm -rf "$pkgdir/usr/share/$pkgname/src/translations"
 }
+
