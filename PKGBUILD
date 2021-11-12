@@ -7,8 +7,9 @@ pkgdesc='Apples San Francisco typeface family. System font.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom:apple-restricted-font')
-_file='SF-Pro.dmg'
-source=("https://devimages-cdn.apple.com/design/resources/download/$_file"
+_dlfile='SF-Pro.dmg'
+_file="${pkgver}-${_dlfile}"
+source=("$_file::https://devimages-cdn.apple.com/design/resources/download/$_dlfile"
         'license.awk'
         'version.awk')
 sha256sums=('f891774b2362fbaac4548120fcb96abb4c3fcfc82a05b6cbb4fddc0a5f4aaa3a'
