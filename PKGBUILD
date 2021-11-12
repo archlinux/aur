@@ -12,7 +12,7 @@ url="http://xonotic.org"
 license=('GPL')
 depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm'
          'sdl2' 'gtk-update-icon-cache' 'desktop-file-utils')
-makedepends=('mesa' 'rsync' 'clang')
+makedepends=('mesa' 'rsync')
 conflicts=('xonotic' 'xonotic-data' 'xonotic-git')
 
 source=("rsync://beta.xonotic.org/autobuild-Xonotic/misc/tools/rsync-updater/update-to-autobuild.sh")
@@ -26,8 +26,6 @@ prepare() {
 build() {
 
 	# compile engine
-	# temporary workaround for https://gitlab.com/xonotic/darkplaces/-/issues/361
-	export CC=clang
 	make -C $srcdir/Xonotic/source/darkplaces CPUOPTIMIZATIONS="${CFLAGS}" DP_FS_BASEDIR=/usr/share/xonotic/ DP_LINK_TO_LIBJPEG=1 sdl-release
 	make -C $srcdir/Xonotic/source/darkplaces CPUOPTIMIZATIONS="${CFLAGS}" DP_FS_BASEDIR=/usr/share/xonotic/ DP_LINK_TO_LIBJPEG=1 sv-release
 

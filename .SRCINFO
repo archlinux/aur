@@ -8,7 +8,6 @@ pkgbase = xonotic-autobuild
 	license = GPL
 	makedepends = mesa
 	makedepends = rsync
-	makedepends = clang
 	depends = alsa-lib
 	depends = curl
 	depends = libmodplug
