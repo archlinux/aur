@@ -1,14 +1,14 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=insight-git
-pkgver=1
-pkgrel=2
+pkgver=bundled.tcl.r467.g3be6b22
+pkgrel=1
 pkgdesc="Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk."
 url="https://sourceware.org/git/?p=insight.git"
 arch=('x86_64' 'i686')
-license=('GPLv3')
+license=('GPL3')
 depends=('tcl' 'tk' 'gdb' 'tk-itk' 'tcl-combobox' 'iwidgets')
 optdepends=()
-makedepends=(gcc make)
+makedepends=(git)
 conflicts=()
 replaces=()
 backup=()
@@ -27,6 +27,11 @@ md5sums=('SKIP'
 	'67588c209da7505a07c44532f6e973ae'
 	'a657612d67bc37b53b874b07aaf68873'
 	'3f329bccc0724dd689143c45c583f876')
+
+pkgver() {
+  cd insight
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   git -C insight submodule update --init --recursive
