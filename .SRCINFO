@@ -1,6 +1,6 @@
 pkgbase = podbit
 	pkgdesc = Podboat Improved: A podcast client for your terminal
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/ethanv2/podbit
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = podbit
 	depends = mpv
 	depends = ncurses
 	optdepends = newsboat: enqueue podcasts from RSS
-	source = podbit-1.2.1.tgz::https://github.com/ethanv2/podbit/archive/v1.2.1.tar.gz
-	md5sums = 8c2e3df6cf928f273bb399c33d58f9d2
+	source = podbit-1.2.2.tgz::https://github.com/ethanv2/podbit/archive/v1.2.2.tar.gz
+	md5sums = d1700346a7188d0de88cd13a2edee593
 
 pkgname = podbit
