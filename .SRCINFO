@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher
 	pkgdesc = An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function
-	pkgver = 210.8dca0bc
+	pkgver = 214.51ef9ab
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = an-anime-game-launcher
 	depends = wine
 	depends = winetricks
 	depends = git
-	optdepends = vkbasalt: Required to use custom shaders (install this and reshade-shadders-git)
+	optdepends = vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)
 	optdepends = reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)
 	provides = an-anime-game-launcher
 	source = git+https://notabug.org/nobody/an-anime-game-launcher.git
