@@ -1,7 +1,7 @@
 pkgbase = superslicer
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 	pkgver = 2.3.57.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = superslicer
 	depends = cgal
 	depends = glew
 	depends = nlopt
+	depends = imath
 	depends = openvdb
 	depends = qhull>=2020.2-4
 	depends = wxgtk3-dev-314-opt
