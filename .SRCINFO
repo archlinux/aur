@@ -11,6 +11,7 @@ pkgbase = war1gus-git
 	depends = stratagus-git
 	depends = ffmpeg
 	depends = innoextract
+	depends = imagemagick
 	provides = war1gus-git
 	provides = war1gus
 	conflicts = war1gus
