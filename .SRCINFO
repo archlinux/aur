@@ -1,0 +1,14 @@
+pkgbase = vulscan-git
+	pkgdesc = A module which enhances nmap to a vulnerability scanner
+	pkgver = r77.425ee70
+	pkgrel = 1
+	url = https://www.computec.ch/projekte/vulscan/
+	arch = any
+	license = GPL
+	depends = nmap
+	provides = vulscan
+	conflicts = vulscan
+	source = vulscan::git+https://github.com/scipag/vulscan.git
+	md5sums = SKIP
+
+pkgname = vulscan-git
