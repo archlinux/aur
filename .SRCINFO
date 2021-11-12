@@ -1,0 +1,15 @@
+pkgbase = easyaur
+	pkgdesc = Easy-to-use wrapper useful for custom repositories
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/legendary-cookie/easyaur
+	arch = any
+	license = GPLv3
+	depends = asp
+	depends = git
+	depends = pacman
+	depends = bash
+	source = https://github.com/legendary-cookie/easyaur/archive/refs/tags/1.0.tar.gz
+	sha256sums = 8519201b0eee105280a9a71e41f02ea8a5712f7286142d1a7d7fc23d9a4db09d
+
+pkgname = easyaur
