@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.
-	pkgver = r1018.e9c8809
+	pkgver = r1023.3e55199
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = quickmedia-git
 	provides = qm
 	conflicts = quickmedia
 	conflicts = qm
-	source = quickmedia-git-r1018.e9c8809.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1018.e9c8809.tar.gz
-	sha512sums = a1bb02d88d4582e09428f7a84d385db3620e5219cfd058a590127d2e2f6679c2e306b373fd492e097ee03c47a1be587cb0d155f648f30f53b43fda8a29f25131
+	source = quickmedia-git-r1023.3e55199.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1023.3e55199.tar.gz
+	sha512sums = 848dbf19440e53ec451075ee0288e20eebce29dcda946e113f188f1804b1e97fbe1401586eb33ec0572a42086019d391d27c116ac60d546d30de0bb8580e2410
 
 pkgname = quickmedia-git
