@@ -2,16 +2,16 @@
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-icd-loader-git
-pkgver=1.2.153.r2.ga148cdd49
+pkgver=1.2.198.r5.g4f78f14c0
 pkgrel=1
 arch=(x86_64)
-pkgdesc='Vulkan Installable Client Driver (ICD) Loader'
-url="https://www.khronos.org/vulkan/"
+pkgdesc='Vulkan Installable Client Driver (ICD) Loader (git)'
+url=https://www.khronos.org/vulkan
 license=(custom)
-makedepends=(cmake python-lxml libx11 libxrandr wayland vulkan-headers git)
+makedepends=(cmake python-lxml libx11 libxrandr wayland vulkan-headers-git git)
 depends=(glibc)
 optdepends=('vulkan-driver: packaged vulkan driver') # vulkan-driver: vulkan-intel/vulkan-radeon/nvidia-utils/....
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" libvulkan.so)
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}"::git+https://github.com/KhronosGroup/Vulkan-Loader.git)
 sha256sums=('SKIP')
