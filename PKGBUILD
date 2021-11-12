@@ -1,8 +1,8 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=supercollider-flucoma
 pkgver=1.5.0
-pkgrel=2
-altver_=TB2-beta01
+pkgrel=3
+altver_=1.0.0-TB2.beta4
 pkgdesc="Fluid Corpus Manipulation plugins for Supercollider"
 arch=('x86_64')
 url="https://www.flucoma.org/"
@@ -11,8 +11,8 @@ groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
 conflicts=('supercollider-flucoma-git')
 optdepends=()
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/flucoma/flucoma-sc/releases/download/${altver_}/FluCoMa-SC-Unix-beta01.zip")
-md5sums=('074abe31fa0f1c6a4ed15342dfbb000d')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/flucoma/flucoma-sc/releases/download/${altver_}/FluCoMa-SC-Linux-beta4.zip")
+md5sums=('0ed29d35d4b83cd39fbd184d20c368fa')
 
 package() {
 
