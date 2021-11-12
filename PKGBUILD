@@ -2,6 +2,7 @@
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 # Co-maintainer: Saren Arterius <saren@wtako.net>
 # Co-maintainer: Sung Mingi <FiestaLake@protonmail.com>
+# Contributor: Joakim Soderlund <joakim.soderlund@gmail.com>
 
 # Official package:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -12,13 +13,13 @@
 ### MERGE REQUESTS SELECTION
 
 # Merge Requests List: ('579' '1441' '1241')
-_merge_requests_to_use=()
+_merge_requests_to_use=('1441')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
 pkgver=41.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -35,8 +36,10 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 _commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+        'mr1441.patch')
+sha256sums=('SKIP'
+            '592c03f4a492d39d760b174e487b3b2a58e9caef9b9ef886f5aa09abb94b69d3')
 
 pkgver() {
   cd $pkgname
@@ -124,7 +127,8 @@ prepare() {
   # Type: 1
   # Status: 3
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland
-  pick_mr '1441'
+  #          Thanks @JockeTF in AUR for a quick patch.
+  pick_mr '1441' '../mr1441.patch' 'patch'
 
 
   # Title: WIP: clutter/frame-clock: Allow update dispatch while presentation is pending
