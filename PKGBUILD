@@ -32,6 +32,10 @@ source=('git+https://github.com/electron/electron.git'
         'chromium-glibc-2.33.patch'
         'chromium-harfbuzz-3.0.0.patch'
         'skia-harfbuzz-3.0.0.patch'
+        'unbundle-fix-visibility-of-build-config-freetype.patch'
+        'gn-visibility-gmock.patch'
+        'gn-visibility-mojo.patch'
+        'gn-visibility-webrtc.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'unbundle-use-char16_t-as-UCHAR_TYPE.patch'
        )
@@ -47,6 +51,10 @@ sha256sums=('SKIP'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
             'c9ed1dbadaf4be6097e25bc5577b91751799befc2d0376b143e1bd10def5754e'
+            'd0b17162211dd49e3a58c16d1697e7d8c322dcfd3b7890f0c2f920b711f52293'
+            'b9934e01d8f39beafc8b63784fb86e6befe25ca83e9c43224c8374e5a025d8ef'
+            'cca2d224cf2e9d7cfb4f5729ca76b5b8a7100b1ca39892b41fb296adaced1bf7'
+            '574785a21168c3e9b7aa82630713ceb6ced12f699133db66b10fc84b7bb2c631'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
            )
@@ -144,6 +152,10 @@ prepare() {
   patch -Np1 -i ../chromium-glibc-2.33.patch
   patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
   patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
+  patch -Np1 -i ../unbundle-fix-visibility-of-build-config-freetype.patch
+  patch -Np1 -i ../gn-visibility-gmock.patch
+  patch -Np1 -i ../gn-visibility-mojo.patch
+  patch -Np1 -i ../gn-visibility-webrtc.patch
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
   patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch

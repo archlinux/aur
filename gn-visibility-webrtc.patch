@@ -1,0 +1,45 @@
+From 72c4d9fc95c336f61d7a8417b78f947a400ce792 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20=C5=9Aniatowski?= <tsniatowski@vewd.com>
+Date: Tue, 14 Sep 2021 10:33:37 +0000
+Subject: [PATCH] Relax googletest gn config visibility for webrtc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+An upcoming gn roll will start enforcing config visibility on
+public_configs and all_dependent_configs. Normally, configs with
+limited visibility have corresponding helper targets that push the
+configs using public_configs and are propagated with public_deps.
+However, webrtc prefers to avoid public_deps, and pushes the gtest
+config using all_dependent_configs. This requires direct visibility,
+so tweak gtest BUILD.gn to make things work.
+
+Bug: gn:252, 1249254
+Change-Id: Ic7be22f7bf129255fb0ac51f437cd6dd3989e3a3
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3158065
+Commit-Queue: Tomasz Śniatowski <tsniatowski@vewd.com>
+Reviewed-by: Victor Costan <pwnall@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#921126}
+---
+ third_party/googletest/BUILD.gn | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/third_party/googletest/BUILD.gn b/third_party/googletest/BUILD.gn
+index fe240ebe954b6..d2bde47d75eab 100644
+--- a/third_party/googletest/BUILD.gn
++++ b/third_party/googletest/BUILD.gn
+@@ -5,7 +5,13 @@
+ import("//build_overrides/build.gni")
+ 
+ config("gtest_config") {
+-  visibility = [ ":*" ]  # gmock also shares this config.
++  # webrtc wants to push this config without a public_dep chain
++  # TODO(crbug.com/1249254): figure out what to do with this
++  visibility = [
++    ":*",  # gmock also shares this config.
++    "//test:*",  # webrts standalone setup
++    "//third_party/webrtc/test:*",
++  ]
+ 
+   defines = [
+     # Chromium always links googletest statically, so no API qualifier is

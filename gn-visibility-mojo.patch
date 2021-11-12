@@ -1,0 +1,36 @@
+From 40f10bf0e683f6b499b5c3c7555111193db03abf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20=C5=9Aniatowski?= <tsniatowski@vewd.com>
+Date: Tue, 7 Sep 2021 20:13:53 +0000
+Subject: [PATCH] Fix config visibility violation in //mojo/public/cpp/bindings
+
+//third_party/blink/renderer:config has restricted visibility, current
+code works by accident because gn only enforces visibility on 'configs'.
+Fix by removing the direct config usage as it looks historical and not
+actually needed.
+
+This is one of a few fixes needed to roll gn past the upcoming
+enforcement change, landing in small parts because removing config
+usages feels a bit subtle.
+
+Bug: gn:252
+Change-Id: I2e0d2e314ef3714dd19b11b7ae29bdcf5074cfda
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3140593
+Commit-Queue: Ken Rockot <rockot@google.com>
+Reviewed-by: Ken Rockot <rockot@google.com>
+Cr-Commit-Position: refs/heads/main@{#918914}
+---
+ mojo/public/cpp/bindings/BUILD.gn | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/mojo/public/cpp/bindings/BUILD.gn b/mojo/public/cpp/bindings/BUILD.gn
+index 13ad53b3ed305..d90318de106e4 100644
+--- a/mojo/public/cpp/bindings/BUILD.gn
++++ b/mojo/public/cpp/bindings/BUILD.gn
+@@ -281,7 +281,5 @@ if (!is_ios) {
+       "//third_party/blink/renderer/platform:platform_export",
+       "//third_party/blink/renderer/platform/wtf",
+     ]
+-
+-    public_configs = [ "//third_party/blink/renderer:config" ]
+   }
+ }
