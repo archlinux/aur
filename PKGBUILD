@@ -3,7 +3,7 @@
 
 pkgname=nodenv-node-build
 pkgver=4.9.62
-pkgrel=2
+pkgrel=3
 pkgdesc='Install NodeJS versions'
 arch=('any')
 url='https://github.com/nodenv/node-build'
@@ -17,5 +17,7 @@ conflicts=("${pkgname}-git"
 
 package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "${srcdir}/node-build-${pkgver}"
   PREFIX="${pkgdir}/usr" ./install.sh
 }
