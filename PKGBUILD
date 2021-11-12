@@ -51,6 +51,10 @@ source=('git+https://github.com/electron/electron.git'
         'use-system-libraries-in-node.patch'
         'linux-sandbox-syscall-broker-use-struct-kernel_stat.patch'
         'linux-sandbox-fix-fstatat-crash.patch'
+        'unbundle-fix-visibility-of-build-config-freetype.patch'
+        'gn-visibility-gmock.patch'
+        'gn-visibility-mojo.patch'
+        'gn-visibility-webrtc.patch'
         'replace-blacklist-with-ignorelist.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'chromium-93-ffmpeg-4.4.patch'
@@ -67,6 +71,10 @@ sha256sums=('SKIP'
             '7cb11fb44aaf4d15f36caca3c0d1b082a723c30d43cd44db147248db5683a2a9'
             '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
             '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
+            'd0b17162211dd49e3a58c16d1697e7d8c322dcfd3b7890f0c2f920b711f52293'
+            'b9934e01d8f39beafc8b63784fb86e6befe25ca83e9c43224c8374e5a025d8ef'
+            'cca2d224cf2e9d7cfb4f5729ca76b5b8a7100b1ca39892b41fb296adaced1bf7'
+            '574785a21168c3e9b7aa82630713ceb6ced12f699133db66b10fc84b7bb2c631'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
@@ -174,6 +182,10 @@ prepare() {
   patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
   patch -Np1 -i ../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
   patch -Np1 -i ../linux-sandbox-fix-fstatat-crash.patch
+  patch -Np1 -i ../unbundle-fix-visibility-of-build-config-freetype.patch
+  patch -Np1 -i ../gn-visibility-gmock.patch
+  patch -Np1 -i ../gn-visibility-mojo.patch
+  patch -Np1 -i ../gn-visibility-webrtc.patch
   patch -Rp1 -i ../replace-blacklist-with-ignorelist.patch
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
