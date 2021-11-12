@@ -3,7 +3,7 @@
 pkgname=superslicer-prerelease
 pkgver=2.3.57.5
 _pkgtag=$pkgver
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
@@ -12,7 +12,7 @@ license=('AGPL3')
 options=(!emptydirs)
 depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-314-opt' 'boost-libs>=1.73.0' 'qhull>=2020.2-4')
 replaces=('slic3r++')
-makedepends=('cereal' 'cmake' 'ninja' 'eigen' 'libigl' 'openvdb' 'boost>=1.73.0' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+makedepends=('cereal' 'cmake' 'ninja' 'eigen' 'imath' 'libigl' 'openvdb' 'boost>=1.73.0' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-git')
