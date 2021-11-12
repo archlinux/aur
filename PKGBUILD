@@ -6,7 +6,7 @@
 _pkgname=syncthing-gtk
 pkgname=syncthing-gtk-python3
 pkgver=0.9.4.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='GTK3 based GUI and notification area icon for Syncthing. Python 3 port with Debian sources.'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
     'syncthing>=0.14.50' 'gtk3' 'libnotify'
     'python-bcrypt' 'python-cairo' 'python-dateutil' 'python-gobject'
 )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 source=(
     "git+${url}.git#tag=debian/0.9.4.4+ds+git20200927+d09a2ef-3"
     # $pkgname-$pkgver.tar.gz::https://github.com/syncthing/$pkgname/archive/v$pkgver.tar.gz

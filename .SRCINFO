@@ -1,12 +1,13 @@
 pkgbase = syncthing-gtk-python3
 	pkgdesc = GTK3 based GUI and notification area icon for Syncthing. Python 3 port with Debian sources.
 	pkgver = 0.9.4.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://salsa.debian.org/debian/syncthing-gtk
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = git
 	depends = syncthing>=0.14.50
 	depends = gtk3
 	depends = libnotify
@@ -22,4 +23,3 @@ pkgbase = syncthing-gtk-python3
 	sha256sums = 109d8c970045e60251fc64865f05322b23a0995ee6725be02905941cb3a1ae0d
 
 pkgname = syncthing-gtk-python3
-
