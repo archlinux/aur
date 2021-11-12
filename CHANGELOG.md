@@ -19,6 +19,12 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Removed
 
+## 3.33.7
+
+### Added
+
+- A `-client-only` flag has been added to `src version`. When set, only the local src-cli's version will be printed and no attempt is made to fetch the recommended version from the configured Sourcegraph server.
+
 ## 3.33.6
 
 ### Added

@@ -2,7 +2,7 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=sourcegraph-cli
-pkgver=3.33.6
+pkgver=3.33.7
 pkgrel=1
 pkgdesc="Command line interface to Sourcegraph"
 url="https://github.com/sourcegraph/src-cli"
