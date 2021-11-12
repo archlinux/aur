@@ -1,0 +1,15 @@
+pkgbase = evremap
+	pkgdesc = A keyboard input remapper for Linux/Wayland systems, written by @wez
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/wez/evremap
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = libevdev
+	source = git+https://github.com/wez/evremap.git
+	sha256sums = SKIP
+
+pkgname = evremap
