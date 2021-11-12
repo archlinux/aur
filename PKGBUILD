@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=alda
-pkgver=2.0.4
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
 	"$url"/archive/release-"$pkgver"/"$pkgname"-"$pkgver".tar.gz
 	alda-player
 )
-sha256sums=('948c0a3b00467e74759230fa589c6e59adbbe5ce86faad5ba86dcf2dc6e5e959'
+sha256sums=('1c6252b108d00d1213fe198c4c441fcc71e40e33cf6f8b71f753cc93897182c4'
             '4b47a09bc3d4b897b0549f223ba8fe41064f854e5f25bc092cafdee8cc80ef5e')
 
 build() {
