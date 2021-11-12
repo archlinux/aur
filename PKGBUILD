@@ -6,21 +6,19 @@ pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIden
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.4.0.r4597.59.517
+pkgver=2.13.0.r5255.60.517
 
-depends=('zlib' 'qt5-base' 'lua51' 'lua51-bitop' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
+depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
 
 source=(
 	'git+https://github.com/PathOfBuildingCommunity/PathOfBuilding'
-	'git+https://gitlab.com/bcareil/pobfrontend.git'
+	'git+https://gitlab.com/bcareil/pobfrontend.git#branch=luajit'
 	'git+https://github.com/Lua-cURL/Lua-cURLv3'
 	'https://github.com/Openarl/PathOfBuilding/files/1167199/PathOfBuilding-runtime-src.zip'
 	'PathOfBuilding.sh'
 	'lzip-linux.patch'
 	'PathOfBuilding-force-disable-devmode.patch'
-	'PathOfBuilding-lua51-bit.patch'
-	'PathOfBuilding-lua51-bom.patch'
 	'PathOfBuilding-logo.svg'
 	'PathOfBuilding-logo.png'
 	'PathOfBuildingCommunity.desktop'
@@ -33,8 +31,6 @@ sha256sums=(
 	'db9eec714bf9d1c52b1ccd7adc9e720519585becf7f9a1f18cca1888d3e1cc11'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'cd46475a1bc62240e03abb6b385b0c9b0b911ad828219fd31f98f7742807f935'
-    '5b98c9c8fc28def0c068958d1b61e3d1dd7fb21844bdb4c8fddedf91eb193896'
-	'48488682fb33acd513eebc8933435749f7626df87ced4bdf89ee803de83a317d'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
 	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'
 	'079eff1a5e74cb6d776723f7c3d36349e426edaa332a8177ff8f5e78af56cf64'
@@ -53,9 +49,7 @@ prepare() {
 	(cd "${srcdir}/PathOfBuilding-runtime-src/LZip" && patch -p1 <"${srcdir}/lzip-linux.patch")
 	# disable devmode
 	(cd "${srcdir}/PathOfBuilding" \
-		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch" \
-		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-lua51-bit.patch" \
-		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-lua51-bom.patch" \
+		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch"
 	)
 }
 
@@ -82,7 +76,7 @@ build() {
 			-lz
 		)
 	# build lcurl.so
-	(cd "${srcdir}/Lua-cURLv3" && make LUA_IMPL=lua51)
+	(cd "${srcdir}/Lua-cURLv3" && make LUA_IMPL=luajit)
 	# build pobfrontend
 	(cd "${srcdir}/pobfrontend" && meson -Dbuildtype=release build \
 		&& cd build && ninja && strip ./pobfrontend)
