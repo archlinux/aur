@@ -1,6 +1,6 @@
 pkgbase = alda-bin
-	pkgdesc = A music programming language for musicians. 🎶
-	pkgver = 2.0.5
+	pkgdesc = A music programming language for musicians.
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/alda-lang/alda
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = alda-bin
 	noextract = alda
 	noextract = alda-player
 	options = !strip
-	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.0.5/client/linux-amd64/alda
-	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.0.5/player/non-windows/alda-player
-	sha512sums = b3f16cd1eca537e836f20186b6ef76565e7faa24ad11750dee45a297f2025e84c30541443310c3d743dd0452864f3b11a201b6cd94f59ec8a35df5e4bc1a4327
-	sha512sums = 3001273140ed45bb9ee80558e014229c1ad5c069eea6d990cfe51a39e8108686d6ba5a6ccc1cabd70a1eb432b42b9d9ef9a75add711464e2c1bfe2f70cd85d38
+	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.0.6/client/linux-amd64/alda
+	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.0.6/player/non-windows/alda-player
+	sha512sums = 6c895ec60fd3044a2f710684f85aeace749fdda4aea0942128ffca24425009846c2cd034079e1824de479f6f0f80634b12e6a202f57b0ece9497997ad6bb2171
+	sha512sums = a46470e39108e0e97229da1f72895f8b8217dce70e042e432eaadf0cc51fce1055efafcde6d8447432d51c11279c44fbdb2efe642370116b647da824134c1768
 
 pkgname = alda-bin
