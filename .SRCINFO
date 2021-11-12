@@ -1,6 +1,6 @@
 pkgbase = chad-launcher-git
-	pkgdesc = GNU/LINUX GAMING UNLEASHED!
-	pkgver = r254.18e56ea
+	pkgdesc = Game library management
+	pkgver = r278.9c6f7bf
 	pkgrel = 1
 	url = https://notabug.org/johncena141/chad_launcher
 	arch = x86_64
@@ -18,7 +18,9 @@ pkgbase = chad-launcher-git
 	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = libvips
+	depends = udev
 	provides = chad-launcher
+	conflicts = chad-launcher
 	replaces = chad_launcher-git
 	source = git+https://notabug.org/johncena141/chad-launcher.git#branch=master
 	md5sums = SKIP
