@@ -9,44 +9,37 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.40.3
+pkgver=3.42.1
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
 license=(GPL)
-depends=('vte3>=0.64.0' gsettings-desktop-schemas)
-makedepends=(docbook-xsl libnautilus-extension gnome-shell yelp-tools)
+depends=('vte3>=0.66.0' gsettings-desktop-schemas)
+makedepends=(docbook-xsl libnautilus-extension gnome-shell yelp-tools meson)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 groups=(gnome)
 changelog=package.changelog
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
         transparency.patch)
-sha256sums=('cbe9aa3f948116fa3b521754fceb43173ab844cb0ac81145e05d0cab0f8b1a22'
-            '53a67c32525645b846e1a26c7a87977d51a12f2cb37282c7cabcdd7094e0cc20')
+sha256sums=('c319b1405501b8c7693e616f48eced41695d2e786148ca5f9e27bc7d98f4aeb1'
+            '8e7c72f0bad30d4a2ba98acd14aad956731ca0bc3521029fc2e1858a28ee108d')
 
 prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../transparency.patch
-  # autogen.sh not in tarball
-  autoreconf -fiv
 }
 
 build() {
-  cd $_pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib --disable-static --with-nautilus-extension
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson $_pkgname-$pkgver build
+  meson compile -C build
 }
 
 check() {
-  cd $_pkgname-$pkgver
-  make check
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }

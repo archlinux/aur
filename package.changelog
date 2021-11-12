@@ -1,3 +1,7 @@
+2021-11-12
+	upstream update: 3.40.3 -> 3.42.1
+	migration from autotools to meson
+
 2021-07-11
 	upstream update: 3.40.2 -> 3.40.3
 

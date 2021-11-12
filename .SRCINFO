@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-transparency
 	pkgdesc = The GNOME Terminal Emulator with background transparency
-	pkgver = 3.40.3
+	pkgver = 3.42.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	changelog = package.changelog
@@ -11,13 +11,14 @@ pkgbase = gnome-terminal-transparency
 	makedepends = libnautilus-extension
 	makedepends = gnome-shell
 	makedepends = yelp-tools
-	depends = vte3>=0.64.0
+	makedepends = meson
+	depends = vte3>=0.66.0
 	depends = gsettings-desktop-schemas
-	provides = gnome-terminal=3.40.3
+	provides = gnome-terminal=3.42.1
 	conflicts = gnome-terminal
-	source = https://download.gnome.org/sources/gnome-terminal/3.40/gnome-terminal-3.40.3.tar.xz
+	source = https://download.gnome.org/sources/gnome-terminal/3.42/gnome-terminal-3.42.1.tar.xz
 	source = transparency.patch
-	sha256sums = cbe9aa3f948116fa3b521754fceb43173ab844cb0ac81145e05d0cab0f8b1a22
-	sha256sums = 53a67c32525645b846e1a26c7a87977d51a12f2cb37282c7cabcdd7094e0cc20
+	sha256sums = c319b1405501b8c7693e616f48eced41695d2e786148ca5f9e27bc7d98f4aeb1
+	sha256sums = 8e7c72f0bad30d4a2ba98acd14aad956731ca0bc3521029fc2e1858a28ee108d
 
 pkgname = gnome-terminal-transparency
