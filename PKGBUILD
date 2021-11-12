@@ -3,7 +3,7 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
@@ -41,12 +41,12 @@ package() {
   rm -rf "$pkgdir/usr/share/doc"
 
   # Install locales
-  cd "$pkgdir/usr/share/$pkgname/src/translations"
-  for lang in $(ls -d */); do
-    install -d "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
-    mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
-      "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
-  done
-  rm -rf "$pkgdir/usr/share/$pkgname/src/translations"
+  # cd "$pkgdir/usr/share/$pkgname/src/translations"
+  # for lang in $(ls -d */); do
+  #   install -d "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
+  #   mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
+  #     "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
+  # done
+  # rm -rf "$pkgdir/usr/share/$pkgname/src/translations"
 }
 
