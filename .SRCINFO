@@ -1,13 +1,12 @@
 pkgbase = rocm-opencl-sdk
 	pkgdesc = Develop applications in OpenCL for the AMD platform
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
 	depends = rocm-core
 	depends = rocm-language-runtime
 	depends = rocm-opencl-runtime
 	depends = rocm-llvm
-	optdepends = hipify-clang: Translate CUDA code into HIP. Requires CUDA.
 
 pkgname = rocm-opencl-sdk

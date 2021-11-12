@@ -1,14 +1,13 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=rocm-opencl-sdk
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Develop applications in OpenCL for the AMD platform"
 arch=('x86_64')
 url="https://rocm-documentation.readthedocs.io/en/latest/"
 license=()
 depends=('rocm-core' 'rocm-language-runtime' 'rocm-opencl-runtime' 'rocm-llvm')
 makedepends=()
-optdepends=('hipify-clang: Translate CUDA code into HIP. Requires CUDA.')
 source=()
 sha256sums=()
 _magic_bit=56
