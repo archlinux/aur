@@ -2,7 +2,7 @@
 
 pkgname=retux
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ReTux is a libre open source action platformer loosely inspired by the Mario games, utilizing the art assets from the SuperTux project."
 arch=('x86_64')
 url="https://retux-game.github.io/"
@@ -13,15 +13,18 @@ conflicts=('retux' 'retux-bin')
 _name=${pkgname#python-}
 source=("https://github.com/retux-game/retux/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.zip"
         "${pkgname}.desktop"
-	"${pkgname}.sh")
+	"${pkgname}.sh"
+	"mapfix.diff")
 md5sums=('f090763e685197265879dc737bf564ae'
          '8e2937a7627804a6a079a9cce4dda3fa'
-         'a8273ca35254ba6394cbd5f2ff55c2e5')
+         'a8273ca35254ba6394cbd5f2ff55c2e5'
+	 '4c582269c0764eb6b5ead7358c4ab800')
 
 noextract=("${pkgname}-${pkgver}-src.zip")
 
 prepare() {
 	unzip ${srcdir}/${pkgname}-${pkgver}-src.zip
+	patch ${srcdir}/${pkgname}-${pkgver}-src/retux.py mapfix.diff
 	mv ${srcdir}/${pkgname}-${pkgver}-src ${srcdir}/${pkgname}
 }
 

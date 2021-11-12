@@ -1,0 +1,4 @@
+6407c6407
+<             m.start(transition="pixelate", transition_time=TRANSITION_TIME,
+---
+>             m.start(transition="dissolve", transition_time=TRANSITION_TIME,
