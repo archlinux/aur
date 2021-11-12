@@ -1,12 +1,12 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=rocm-language-runtime
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCr - ROCm runtime"
 arch=('x86_64')
 url="https://rocm-documentation.readthedocs.io/en/latest/"
 license=()
-depends=('hsakmt-roct' 'hsa-rocr' 'rocm-device-libs' 'comgr')
+depends=('rocm-core' 'hsakmt-roct' 'hsa-rocr' 'rocm-device-libs' 'comgr')
 makedepends=()
 source=()
 sha256sums=()

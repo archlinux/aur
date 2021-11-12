@@ -1,9 +1,10 @@
 pkgbase = rocm-language-runtime
 	pkgdesc = ROCr - ROCm runtime
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
+	depends = rocm-core
 	depends = hsakmt-roct
 	depends = hsa-rocr
 	depends = rocm-device-libs
