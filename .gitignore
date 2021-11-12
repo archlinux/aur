@@ -1,0 +1,4 @@
+*.pkg.tar*
+pkg/
+src/
+librem5-flash-image-git/

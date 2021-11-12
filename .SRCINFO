@@ -1,0 +1,22 @@
+pkgbase = librem5-flash-image-git
+	pkgdesc = Image flashing tool for Librem 5 devices and related devices
+	pkgver = v0.0.2.r94.gd825f0a
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/librem5-flash-image
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-coloredlogs
+	depends = python-python-jenkins
+	depends = python-requests
+	depends = python-tqdm
+	depends = python-yaml
+	depends = usbutils
+	depends = uuu
+	provides = librem5-flash-image
+	conflicts = librem5-flash-image
+	source = librem5-flash-image-git::git+https://source.puri.sm/Librem5/librem5-flash-image.git
+	sha256sums = SKIP
+
+pkgname = librem5-flash-image-git
