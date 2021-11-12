@@ -3,5 +3,5 @@ src/
 .AURINFO
 *.h2drumkit
 hydrogen-drumkits-flac-*.tar.xz
+hydrogen-drumkits-flac-*.tar.zst
 hydrogen-drumkits-flac-*.src.tar.gz
-
