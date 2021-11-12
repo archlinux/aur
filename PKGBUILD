@@ -1,5 +1,5 @@
 pkgname=brainworkshop-git
-pkgver=r210.a4b52df
+pkgver=r236.c9548bd
 pkgrel=1
 pkgdesc="Brain Workshop is a free open-source version of the Dual N-Back mental exercise"
 arch=('any')
@@ -14,7 +14,7 @@ source=("git+https://github.com/samcv/brainworkshop.git"
         brainworkshop.sh
         brainworkshop.desktop)
 sha256sums=('SKIP'
-            '13b70c017b98586e32e14b498bbe56e36ee067b4904030d1fcdd7f4a6779db29'
+            '213d8d5763f29da5f3ec65811e9c63052ca615cf770233957ed8bc9e3b43557c'
             '1e645c18ce0648f82285da25a5bbbad1e63e282bfe9d5c31329eb9d04c23f21c')
 
 pkgver() {
@@ -30,7 +30,7 @@ package() {
   #Data
   _datadir="${pkgdir}/usr/share/brainworkshop"
   install -d ${_datadir}
-  cp -a ${srcdir}/brainworkshop/{brainworkshop.pyw,res,data} ${_datadir}
+  cp -a ${srcdir}/brainworkshop/{brainworkshop.py,res,data} ${_datadir}
 
   #Docs
   _docdir=${pkgdir}/usr/share/doc/brainworkshop
