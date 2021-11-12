@@ -1,6 +1,6 @@
 # Maintainer: Yakumo Saki <yakumo at ziomatrix dot org>
 pkgname=zabbix-getter-bin
-pkgver=0.9.1
+pkgver=0.9.3
 pkgrel=1
 epoch=
 pkgdesc="Simple tool to get latest value from zabbix"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/yakumo-saki/zabbix-getter/releases/download/v${pkgver}/zabbix-getter_v${pkgver}_linux_amd64.tar.gz")
 noextract=()
-md5sums=("483e87356f1066459a3a002a5169b4a8")
+md5sums=("52d10b9b9688a55ca9694f932a0ccd3e")
 validpgpkeys=()
 # TO VERSION UP 
 # 1. Edit PKGBUILD(this file) pkgver and md5sums
