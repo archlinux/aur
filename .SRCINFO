@@ -1,17 +1,17 @@
 pkgbase = sprunge
 	pkgdesc = Upload data to sprunge.us via stdin
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kevr/sprunge
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = GPL2
 	depends = python
+	depends = python-requests
 	optdepends = xclip: default --clip-command
 	conflicts = sprunge-git
 	source = https://github.com/kevr/sprunge/archive/0.6.tar.gz
 	sha256sums = 64a0d2ce9697da413fbcedcd8bff94569a05b92c5941fecff0c7bd30e0961f3b
 
 pkgname = sprunge
-
