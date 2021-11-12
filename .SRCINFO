@@ -1,0 +1,14 @@
+pkgbase = geotortue4-bin
+	pkgdesc = Programmation LOGO
+	pkgver = 3.14.02.19
+	pkgrel = 1
+	url = http://geotortue.free.fr
+	arch = any
+	groups = math
+	license = GPLv3
+	depends = geotortue-bin
+	depends = jre8-openjdk
+	source = http://geotortue.free.fr/deploy/beta/geotortue-4.17.11.04-beta.jar
+	sha256sums = 3e09b6460fa3f60694afdfac06f2c677dfc9910f4e9bbfc934f555218084423a
+
+pkgname = geotortue4-bin
