@@ -1,6 +1,7 @@
 _repo="Paragon-Software-Group/linux-ntfs3"
 _ver="5.15"
 _base="8bb7eca972ad531c9b149c0a51ab43a417385813"
+_head="master"
 
 pkgname=ntfs3-dkms-git
 pkgver=5.15.r0.g8bb7eca
@@ -33,8 +34,8 @@ sha512sums=(
 
 pkgver() {
     local api="https://api.github.com/repos/${_repo}"
-    local rev=$(curl "${api}/compare/${_base}...master" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
-    local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "${api}/commits/master")
+    local rev=$(curl "${api}/compare/${_base}...${_head}" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
+    local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "${api}/commits/${_head}")
     echo "${_ver}.r${rev}.g${sha:0:7}"
 }
 
@@ -47,8 +48,8 @@ prepare() {
 
     cd "repo"
 
-    git sparse-checkout set "fs/ntfs3"
-    git checkout master
+    git sparse-checkout set "/fs/ntfs3"
+    git checkout "${_head}"
 
     ln -rs "fs/ntfs3" "${srcdir}/ntfs3"
 }
