@@ -1,8 +1,9 @@
 pkgbase = neovim-web-devicons-git
 	pkgdesc = A Lua fork of vim-devicons for Neovim
-	pkgver = r60.da717e1
-	pkgrel = 1
+	pkgver = r79.f936ff3
+	pkgrel = 2
 	url = https://github.com/kyazdani42/nvim-web-devicons
+	install = devicons.install
 	arch = any
 	groups = neovim-plugins
 	license = unknown
