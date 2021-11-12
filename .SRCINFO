@@ -1,0 +1,19 @@
+pkgbase = python-snitun
+	pkgdesc = End-to-End encryption with SNI proxy on top of a TCP multiplexer
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = https://pypi.org/project/snitun
+	arch = any
+	license = GPL-3.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-timeout
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-black
+	checkdepends = python-pip
+	checkdepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = snitun-0.30.0.tar.gz::https://github.com/NabuCasa/snitun/archive/refs/tags/0.30.0.tar.gz
+	sha256sums = 07104b10fada8aee37d94b664cef0beb70389bfe25e0da668674cf7678a8e2d1
+
+pkgname = python-snitun
