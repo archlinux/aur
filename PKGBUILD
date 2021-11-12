@@ -1,7 +1,7 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 pkgname=steampipe-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=2
 pkgdesc='Steampipe CLI'
 url='https://github.com/turbot/steampipe'
