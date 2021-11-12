@@ -1,6 +1,6 @@
 pkgname='lockbook'
 _pkgname="lockbook"
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
@@ -24,7 +24,7 @@ build(){
 }
 
 package_lockbook() {
-  cd $srcdir/lockbook/clients/cli
+  cd $srcdir/lockbook
   install -D -m755 "target/release/lockbook" "$pkgdir/usr/bin/lockbook"
 }
 
