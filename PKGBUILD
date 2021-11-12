@@ -17,6 +17,7 @@ makedepends=("npm")
 optdepends=(
 "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
 "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
+"mangohud: Required if you want to check FPS"
 )
 provides=("${pkgname}")
 source=(
@@ -26,8 +27,8 @@ source=(
 )
 md5sums=(
 'SKIP'
-'SKIP'
-'SKIP'
+'44b5730fe1a5cf22d7be6e3bf717ea0f'
+'8b875e8115a3b80f9964dc66ddf46a9a'
 )
 
 pkgver() {

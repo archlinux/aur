@@ -13,12 +13,13 @@ pkgbase = an-anime-game-launcher
 	depends = git
 	optdepends = vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)
 	optdepends = reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)
+	optdepends = mangohud: Required if you want to check FPS
 	provides = an-anime-game-launcher
 	source = git+https://notabug.org/nobody/an-anime-game-launcher.git
 	source = an-anime-game-launcher.desktop
 	source = an-anime-game-launcher.sh
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 44b5730fe1a5cf22d7be6e3bf717ea0f
+	md5sums = 8b875e8115a3b80f9964dc66ddf46a9a
 
 pkgname = an-anime-game-launcher
