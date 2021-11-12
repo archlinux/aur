@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=tiny-irc-client
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=2
 pkgdesc='Console IRC client written in Rust'
 arch=(i686 x86_64 aarch64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(libdbus openssl)
 makedepends=(cargo)
 source=("https://github.com/osa1/tiny/archive/v${pkgver}.tar.gz")
-md5sums=('e4a523edfa7735a51eded64eee5689de')
+md5sums=('cf95b03493548e629cadb3b8ae74a764')
 
 build() {
   cd "${srcdir}/tiny-${pkgver}"
