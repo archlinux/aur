@@ -2,7 +2,7 @@
 
 pkgname=hush-lightwalletd
 _name='lightwalletd'
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='HUSH Lightwallet daemon for running SDL servers'
 url='https://git.hush.is/hush/lightwalletd'
@@ -15,12 +15,13 @@ sha256sums=('SKIP')
 
 build() {
   cd "$_name"
-  ./build.sh
+  make build
 }
 
 package() {
   install -Dm755 "${srcdir}/$_name/lightwalletd" "${pkgdir}/opt/$pkgname/lightwalletd"
   install -Dm644 "${srcdir}/$_name/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/$_name/doc/man/lightwalletd.1" "${pkgdir}/usr/share/man/man1/lightwalletd.1"
 
   # links to /usr/bin
   install -d "${pkgdir}/usr/bin"
