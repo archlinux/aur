@@ -1,13 +1,14 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.57.1.r0.g1a483260c
-pkgrel=3
+pkgver=2.3.57.5.r1.gd19310228
+pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
+options=(!emptydirs)
 depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
 replaces=('slic3r++')
 makedepends=('boost>=1.73.0' 'git' 'cereal' 'cmake' 'eigen' 'libigl' 'ninja' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
@@ -58,7 +59,7 @@ build()
 		-DSLIC3R_BUILD_TESTS=OFF \
 		-DSLIC3R_ALPHA=ON \
 		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev-314/bin/wx-config \
-		-DCMAKE_CXX_FLAGS="-Wl,-rpath=/opt/wxgtk-dev-314/lib"
+		-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument -Wl,-rpath=/opt/wxgtk-dev-314/lib"
 
 	ninja
 }

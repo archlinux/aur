@@ -1,7 +1,7 @@
 pkgbase = superslicer-git
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.3.57.1.r0.g1a483260c
-	pkgrel = 3
+	pkgver = 2.3.57.5.r1.gd19310228
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64
@@ -22,10 +22,11 @@ pkgbase = superslicer-git
 	depends = qhull>=2020.2-4
 	depends = wxgtk3-dev-314-opt
 	optdepends = superslicer-profiles: Predefined printer profiles
-	provides = superslicer=1:2.3.57.1.r0.g1a483260c
+	provides = superslicer=1:2.3.57.5.r1.gd19310228
 	conflicts = superslicer
 	conflicts = superslicer-prerelease
 	replaces = slic3r++
+	options = !emptydirs
 	source = SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git
 	source = 0001-wxgtk3-is-broken-on-wayland.patch
 	source = https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch
