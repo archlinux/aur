@@ -1,6 +1,6 @@
 pkgname=webcord
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A Discord web-based client made with the Electron API."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
@@ -19,14 +19,14 @@ source=(
 )
 
 sha512sums=(
-    'e0cae32c6fd2dc35521b6521f22f73b1403a7c902fd738ee263d289bbff997b94f6d45b4e23edd8fcbb273ad53c89fa35d8d16bc969ee46acd24153da79d1aa0'
+    '203d8dfb848720c304238fabbc716ff7f21b07efa5d9f78e3fbfdfebb99f04098d5a459ea4e056a139dcfb1c499f349a2623da0417a4280b60cfbe96b577c056'
     'bb07c103ef15c2b12d610cfbdedc6b6ff9c3c8b3ec942a9f7cda461e9a906b49a268a9ce6a1fc0eb3783695fc8ecefac04aff4b8052bb17a19101cba340d40f0'
 )
 
 build() {
     cd "${srcdir}/${_srcname}"
 
-    npm i --only=prod
+    npm i --omit=dev
 
     tsc &>/dev/null | true
 }
