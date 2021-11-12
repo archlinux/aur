@@ -8,7 +8,7 @@ pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=20210412
+pkgver=20211018
 pkgrel=1
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
@@ -22,14 +22,15 @@ makedepends=('meson' 'sassc' 'inkscape')
 
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('d3064546301e013a1e5a8db735346d74c73f37cbf808b7afeee6f88c820cea58ba6458fa63e1213377cdd33c8347167242e6f8f1eacf85ce212f3b2508c0bb80'
+sha512sums=('da46efc0e38efb7f1d0cd9a5d2c4e8f00f3b8d408ec50c54d89ef67fc3bb5ea253b5fb890b0cb8e82cafebd44a599d0de2369272ed88da73dd979052b130bd55'
             'SKIP')
 validpgpkeys=('31743CDF250EF641E57503E5FAEDBC4FB5AA3B17')
 
 # Latest stable Arch package versions
-_cinnamonver=4.8
+_cinnamonver=5.0
 _gnomeshellver=40
 _gtk3ver=3.24
+_gtk4ver=4.4
 
 build() {
     cd ${_pkgname}-${pkgver}
@@ -38,7 +39,8 @@ build() {
       -Dgnome_shell_gresource=true \
       -Dcinnamon_version="${_cinnamonver}" \
       -Dgnome_shell_version="${_gnomeshellver}" \
-      -Dgtk3_version="${_gtk3ver}"
+      -Dgtk3_version="${_gtk3ver}" \
+      -Dgtk4_version="${_gtk4ver}"
     meson compile -C build
 
     meson --prefix=/usr build-solid \
@@ -46,7 +48,8 @@ build() {
       -Dgnome_shell_gresource=true \
       -Dcinnamon_version="${_cinnamonver}" \
       -Dgnome_shell_version="${_gnomeshellver}" \
-      -Dgtk3_version="${_gtk3ver}"
+      -Dgtk3_version="${_gtk3ver}" \
+      -Dgtk4_version="${_gtk4ver}"
     meson compile -C build-solid
 }
 
