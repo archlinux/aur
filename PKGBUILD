@@ -17,6 +17,8 @@ source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_
         "xdg-basedir.patch")
 sha256sums=('SKIP'
             '25d1e22354f2ce30871654fa3bfebfe19dfe82432f0c4998ccd62b0c05727cba')
+provides=('networkmanager-openvpn')
+conflicts=('networkmanager-openvpn')
 
 pkgver() {
   cd NetworkManager-openvpn

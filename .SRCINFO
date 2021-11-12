@@ -13,6 +13,8 @@ pkgbase = networkmanager-openvpn-xdg
 	depends = libsecret
 	depends = openvpn
 	optdepends = libnma: GUI support
+	provides = networkmanager-openvpn
+	conflicts = networkmanager-openvpn
 	source = git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=ac02405a34427c4f9e2392914af1a076e1c8744e
 	source = xdg-basedir.patch
 	sha256sums = SKIP
