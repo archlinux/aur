@@ -1,6 +1,6 @@
 # Maintainer: Alexander Susha <isushik94@gmail.com>
 pkgname=xtensor-blas
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('xtensor>=0.19.0' 'blas' 'lapack')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantStack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('43d8d51d69ed151eccca17495c41964f82ad58ac718b2a8b0850a37a991e975b7fee24da1cdfc2adc4c97a3c2da0677306ab3191031069a230f28fc677a278cb')
+sha512sums=('0733f4d079c1f715cca92bbddd4f02170406f00e980135c3614de7e7515f3d58e69678538dd6cfc3273663487f9ac481bf94fe3f81df775843cff3ffe819fc52')
 
 build() {
   cd "${pkgname}-${pkgver}"
