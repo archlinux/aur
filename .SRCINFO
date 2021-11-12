@@ -1,0 +1,14 @@
+pkgbase = vim-stabs
+	pkgdesc = A vim plugin to use tabs for indentation and spaces for alignment
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/Thyrum/vim-stabs
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPLv3
+	depends = vim
+	source = vim-stabs-1.2.tar.gz::https://github.com/Thyrum/vim-stabs/archive/refs/tags/v1.2.tar.gz
+	sha256sums = 417b0b108465ce5b9095151d3fdde31758a5ddfd50d3899c25420ad9ac4b1cc0
+
+pkgname = vim-stabs
