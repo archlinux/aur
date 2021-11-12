@@ -3,12 +3,12 @@
 _pkgname=pycognito
 pkgname=python-pycognito
 pkgver=2021.03.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for using AWS Cognito.'
 url='https://pypi.org/project/pycognito'
 arch=('any')
 license=('Apache')
-depends=('python-boto3' 'python-jose' 'python-six' 'python-requests')
+depends=('python-boto3' 'python-envs' 'python-jose' 'python-six' 'python-requests')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-runner' 'python-pytest-mock' 'python-pytest-timeout'
               'python-wheel' 'python-pip' 'python-mock')

@@ -1,7 +1,7 @@
 pkgbase = python-pycognito
 	pkgdesc = Python library for using AWS Cognito.
 	pkgver = 2021.03.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pycognito
 	arch = any
 	license = Apache
@@ -14,6 +14,7 @@ pkgbase = python-pycognito
 	checkdepends = python-mock
 	makedepends = python-setuptools
 	depends = python-boto3
+	depends = python-envs
 	depends = python-jose
 	depends = python-six
 	depends = python-requests
