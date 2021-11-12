@@ -1,7 +1,7 @@
 # Maintainer: Adrian Lew <adrian.lewtx at gmail dot com>
 pkgname=spicetify-theme-dribbblish-dynamic
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod of Dribbblish theme for Spicetify with support for light/dark modes and album art based colors."
 arch=('any')
 url="https://github.com/JulienMaille/dribbblish-dynamic-theme"
