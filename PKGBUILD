@@ -1,9 +1,9 @@
 # Maintainer: Alexander Bus <busfromrus@gmail.com>
 
 pkgname=szsol-git
-pkgver=r44.f73e8b7
+pkgver=r52.c5965d8
 pkgrel=1
-pkgdesc="ncurses clone of Shenzhen Solitaire card game"
+pkgdesc="ncurses clone of Shenzhen Solitaire, ПАСЬЯНС and Kabufuda Solitaire"
 arch=('any')
 url="https://github.com/usrshare/szsol"
 license=('MIT')
@@ -24,5 +24,6 @@ build() {
 package() {
   install -Dm755 "$srcdir/szsol/szsol" "$pkgdir/usr/bin/szsol"
   install -Dm755 "$srcdir/szsol/exasol" "$pkgdir/usr/bin/exasol"
+  install -Dm755 "$srcdir/szsol/kabusol" "$pkgdir/usr/bin/kabusol"
   install -Dm644 $srcdir/szsol/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
