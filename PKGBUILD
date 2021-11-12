@@ -6,7 +6,7 @@
 pkgname=python-blivet
 pkgver=3.3.3
 _tag="blivet-${pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc='A DBus service and python module for management of the system storage configuration'
 arch=('any')
 license=('LGPL2.1')
@@ -15,6 +15,7 @@ depends=('python'
          'python-pyparted'
          'python-pyudev'
          'python-gobject'
+         'python-selinux'
          'libblockdev'
          'parted'
          'lsof'
