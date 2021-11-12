@@ -13,7 +13,6 @@ pkgbase = makedeb-alpha
 	depends = binutils
 	depends = lsb-release
 	depends = dpkg
-	depends = makedeb-makepkg-alpha
 	conflicts = makedeb
 	conflicts = makedeb-beta
 	conflicts = makedeb-makepkg-alpha
