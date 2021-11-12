@@ -1,14 +1,15 @@
 pkgname='chad-launcher-git'
 _pkgname=${pkgname%-git}
-pkgver=r254.18e56ea
+pkgver=r278.9c6f7bf
 pkgrel=1
-pkgdesc='GNU/LINUX GAMING UNLEASHED!'
+pkgdesc='Game library management'
 arch=('x86_64')
 url='https://notabug.org/johncena141/chad_launcher'
 license=('GPL3')
-depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips)
+depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips udev)
 makedepends=(cargo npm git squashfs-tools patchelf)
 provides=('chad-launcher')
+conflicts=('chad-launcher')
 replaces=(chad_launcher-git)
 source=("git+https://notabug.org/johncena141/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
