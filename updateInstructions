@@ -1,0 +1,14 @@
+# Updating extension for Gnome $version with tag $tag
+# Update metadata.json on extension project
+vi metadata.json
+# Deploy and logout to test
+cp metadata.json /usr/share/gnome-shell/extensions/tray-icons@nicovell3/metadata.json
+# Upload changes
+git commit -m "Update to version ${version}"
+git tag v${tag}
+git push origin --tags
+
+# Update pkgver in aur project
+vi PKGBUILD
+# Run update script
+bash updateScript.sh "Update for Gnome $version"
