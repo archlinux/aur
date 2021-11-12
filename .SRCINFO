@@ -1,6 +1,6 @@
 pkgbase = makedeb-makepkg-beta
 	pkgdesc = ABS packaging utility
-	pkgver = 8.12.0
+	pkgver = 8.12.1
 	pkgrel = 1
 	url = https://github.com/makedeb/makepkg
 	arch = any
@@ -23,10 +23,9 @@ pkgbase = makedeb-makepkg-beta
 	depends = sed
 	depends = ncurses
 	depends = xz
-	depends = makedeb-makepkg-beta
 	conflicts = makedeb-makepkg
 	conflicts = makedeb-makepkg-alpha
-	source = makepkg::git+https://github.com/makedeb/makepkg/#tag=v8.12.0-1-beta
+	source = makepkg::git+https://github.com/makedeb/makepkg/#tag=v8.12.1-1-beta
 	sha256sums = SKIP
 
 pkgname = makedeb-makepkg-beta
