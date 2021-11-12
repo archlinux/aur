@@ -6,12 +6,12 @@ pkgname=(${pkgbase} python-${pkgbase})
 _tarver=2.8.0
 _tar="${_tarver}/${pkgbase}-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=3
+pkgrel=4
 pkgdesc="Build system, infrastructure and foundation classes"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
 license=('custom:GPL2 with runtime exception')
-makedepends=('cmake' 'openmpi' 'lapack' 'texlive-latexextra' 'biber' 'doxygen' 'graphviz' 'python-sphinx' 'python-setuptools')
+makedepends=(cmake python-mpi4py python-numpy texlive-latexextra biber doxygen graphviz python-sphinx python-setuptools python-portalocker)
 source=(https://dune-project.org/download/${_tar}{,.asc})
 sha512sums=('81a9f2bd38aa158134ec7306d2b838d1330ce5410de78ca0b7f9d42e27af7324757a3c01fcffe948e58dc8f6fe9f78c33fd840d9ccc98a18f3565b5de35c2f59' 'SKIP')
 validpgpkeys=('ABE52C516431013C5874107C3F71FE0770D47FFB') # Markus Blatt (applied mathematician and DUNE core developer) <markus@dr-blatt.de>
@@ -19,6 +19,15 @@ validpgpkeys=('ABE52C516431013C5874107C3F71FE0770D47FFB') # Markus Blatt (applie
 prepare() {
   # https://salsa.debian.org/science-team/dune-common/-/blob/master/debian/patches/skip-dirs-starting-with-dot.patch
   sed -i 's/^        $(find -H "$dir" -name $CONTROL | $GREP -v '\''dune-\[-_a-zA-Z\]\/dune-\[-a-zA-Z_\]\*-\[0-9\]\\{1,\\}.\[0-9\]\\{1,\\}\/'\'')/        $(find -H "$dir" -name '\''.?\*'\'' -prune -o -name $CONTROL -print | $GREP -v '\''dune-\[-_a-zA-Z\]\/dune-\[-a-zA-Z_\]\*-\[0-9\]\\{1,\\}.\[0-9\]\\{1,\\}\/'\'')/' ${pkgbase}-${_tarver}/lib/dunemodules.lib
+  # Not necessary to compile for build
+  # https://github.com/dune-project/dune-common/blob/master/doc/comm/CMakeLists.txt
+  sed -i 's/^add_executable(poosc08 "poosc08.cc")/#add_executable(poosc08 "poosc08.cc")/' ${pkgbase}-${_tarver}/doc/comm/CMakeLists.txt
+  sed -i 's/^target_link_libraries(poosc08 PUBLIC "dunecommon")/#target_link_libraries(poosc08 PUBLIC "dunecommon")/' ${pkgbase}-${_tarver}/doc/comm/CMakeLists.txt
+  sed -i 's/^add_executable(poosc08_test "poosc08_test.cc")/#add_executable(poosc08_test "poosc08_test.cc")/' ${pkgbase}-${_tarver}/doc/comm/CMakeLists.txt
+  sed -i 's/^target_link_libraries(poosc08_test PUBLIC "dunecommon")/#target_link_libraries(poosc08_test PUBLIC "dunecommon")/' ${pkgbase}-${_tarver}/doc/comm/CMakeLists.txt
+  sed -i 's/^add_executable(indexset "indexset.cc")/#add_executable(indexset "indexset.cc")/' ${pkgbase}-${_tarver}/doc/comm/CMakeLists.txt
+  sed -i 's/^target_link_libraries(indexset PUBLIC "dunecommon")/#target_link_libraries(indexset PUBLIC "dunecommon")/' ${pkgbase}-${_tarver}/doc/comm/CMakeLists.txt
+  sed -i 's/^add_dune_mpi_flags("poosc08;poosc08_test;indexset")/#add_dune_mpi_flags("poosc08;poosc08_test;indexset")/' ${pkgbase}-${_tarver}/doc/comm/CMakeLists.txt
 }
 
 build() {
