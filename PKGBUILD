@@ -3,7 +3,7 @@ pkgname=cuda-11.1
 pkgver=11.1.1
 _driverver=455.32.00
 _reqdriverver=455.32
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA's GPU programming toolkit"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
@@ -16,13 +16,9 @@ optdepends=('gdb: for cuda-gdb'
 options=(!strip staticlibs)
 install=cuda.install
 source=(http://developer.download.nvidia.com/compute/cuda/${pkgver}/local_installers/cuda_${pkgver}_${_driverver}_linux.run
-        cuda.sh
-        cuda.conf
         cuda-findgllib_mk.diff
         *.pc)
 sha512sums=('3da629e6f63548d06050a77d6ad2dbf314db33b2bf4e7d1659f039b3d9ad2ad3f87a6e506ec54db9ca2d21ac7b5ec576748082684bbab3b6642c03d2793d73a9'
-            'b5ae81da66726ff8ca76c4fb18afc38b25055fda967dc456a39facc327751aa80f8d2b8d4e3e483d1e183399893fc404f67eba4f88c02baf366d71eb30324759'
-            'd63a1991d45393f7cf423bf70e56b08483f33cff766a806c6e06c321b52cb590a50f8149d96dfe42b81a602bd97c44324d1bfe71c93c4699ec3b8a9b172e00f9'
             '41d6b6cad934f135eafde610d1cbd862033977fd4416a4b6abaa47709a70bab7fcf6f8377c21329084fb9db13f2a8c8c20e93c15292d7d4a6448d70a33b23f1b'
             '7d4faa928b53e15e733131f23e59bde3ed7bb1c4ab2c6bd883d57386a4d503ac290431b6cd3dbb39aff29f8ea456e75e11ab6e7b373ddc6ebf6e4ee2dcb72ff6'
             '620f229646f25c1d1d0c70cb7ffd5c1a11ff266e449c6decf3f1c2015ca8fb4aa5f50b23d5f2f1859d23eff1da0201771e77f3f96e4b2de4684a3237f4c4b49c'
