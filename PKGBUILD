@@ -5,7 +5,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Easy-to-use wrapper useful for custom repositories"
 url="https://github.com/legendary-cookie/easyaur"
-license=('GPLv3')
+license=('GPL')
 source=(
     "https://github.com/legendary-cookie/easyaur/archive/refs/tags/$pkgver.tar.gz"
 )
