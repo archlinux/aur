@@ -1,32 +1,26 @@
-# Submitter: Guenther Starnberger <gst@sysfrog.org>
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Guenther Starnberger <gst@sysfrog.org>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=globalplatform
-pkgver=6.0.0
-pkgrel=2
+pkgver=7.1.0
+_commit=3832300cc5ade0439c2757ead1cf04e0e946e903
+pkgrel=1
 pkgdesc="GlobalPlatform libraries"
 license=('GPL3')
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/globalplatform/"
+url="https://github.com/kaoh/globalplatform"
 depends=('glibc' 'pcsclite' 'openssl')
-source=(http://downloads.sourceforge.net/globalplatform/globalplatform-${pkgver}.tar.gz)
-options=('!libtool')
-md5sums=('881e12663923952fcc94f5eeae47bcd2')
-
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc
-
-  msg "Patching Makefiles"
-  sed -i 's/gnu-ldl/gnu/g' Makefile src/Makefile
-}
+source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
+md5sums=('da5b1e46ac40221406e51ddf8f82ef4e')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd globalplatform-$_commit/globalplatform
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd globalplatform-$_commit/globalplatform
   make DESTDIR=$pkgdir install
 }

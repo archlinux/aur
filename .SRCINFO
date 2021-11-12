@@ -1,17 +1,15 @@
 pkgbase = globalplatform
 	pkgdesc = GlobalPlatform libraries
-	pkgver = 6.0.0
-	pkgrel = 2
-	url = http://sourceforge.net/projects/globalplatform/
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://github.com/kaoh/globalplatform
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = glibc
 	depends = pcsclite
 	depends = openssl
-	options = !libtool
-	source = http://downloads.sourceforge.net/globalplatform/globalplatform-6.0.0.tar.gz
-	md5sums = 881e12663923952fcc94f5eeae47bcd2
+	source = https://github.com/kaoh/globalplatform/archive/3832300cc5ade0439c2757ead1cf04e0e946e903.zip
+	md5sums = da5b1e46ac40221406e51ddf8f82ef4e
 
 pkgname = globalplatform
-
