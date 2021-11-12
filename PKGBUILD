@@ -1,7 +1,7 @@
 # Maintainer: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=src-cli-bin
-pkgver=3.33.6
+pkgver=3.33.7
 pkgrel=1
 pkgdesc="A command line interface to Sourcegraph"
 url="https://github.com/sourcegraph/src-cli"
@@ -11,8 +11,8 @@ license=("APACHE")
 source_x86_64=("https://github.com/sourcegraph/src-cli/releases/download/${pkgver}/src-cli_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/sourcegraph/src-cli/releases/download/${pkgver}/src-cli_${pkgver}_linux_aarch64.tar.gz")
 
-sha256sums_x86_64=("9c633603d098159f5fb0257bff98a9ad5249cd073c779f430643f98e22101ce2")
-sha256sums_aarch64=("462ae955646b640f67c741ca7e5a5439728b89da67b37b212235909a5f294988")
+sha256sums_x86_64=("904beff23bea81eb243f36ae01f8383093598378a5a45678a5cd2c9ef5171d81")
+sha256sums_aarch64=("4a0f18c6aa5018d7181483c8e9f8da9f649c92dd44773ce87b18d5ee8f04a3c2")
 
 package() {
   install -Dm755 "${srcdir}/src" "${pkgdir}/usr/bin/src"
