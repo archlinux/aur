@@ -55,5 +55,5 @@ package() {
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
 
   # install desktop file
-  install -Dm644 "${srcdir}/palemoon-source/palemoon/branding/official/palemoon.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/palemoon-source/palemoon/branding/official/palemoon.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
