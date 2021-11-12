@@ -1,8 +1,8 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=prusa-slicer-git
-pkgver=2.4.0.beta1.r65.gaff9e1f7e
-pkgrel=2
+pkgver=2.4.0.beta1.r149.ge70fc7f0d
+pkgrel=3
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
@@ -62,7 +62,9 @@ build() {
         -DSLIC3R_STATIC=OFF \
         -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB
 
-    ninja
+    # This is a trick to workaround RAM issues that kill GCC
+    ninja -k0
+    ninja -j2
 }
 
 check() {
