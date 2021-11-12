@@ -9271,7 +9271,7 @@ CONFIG_USB4=m
 #
 # Android
 #
-# CONFIG_ANDROID is not set
+CONFIG_ANDROID=y
 # end of Android
 
 CONFIG_LIBNVDIMM=y
@@ -10621,3 +10621,13 @@ CONFIG_ARCH_USE_MEMTEST=y
 # CONFIG_HYPERV_TESTING is not set
 # end of Kernel Testing and Coverage
 # end of Kernel hacking
+
+# Start of Waydroid Stuffs
+#https://yanqiyu.info/2021/10/25/waydroid-fedora/
+CONFIG_ASHMEM=y
+# CONFIG_ANDROID=y is set already above.
+CONFIG_ANDROID_BINDER_IPC=y
+CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
+# CONFIG_STAGING=y is already set above.
+CONFIG_ANDROID_BINDERFS=n
+CONFIG_ANDROID_BINDER_IPC_SELFTEST=n
