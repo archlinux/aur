@@ -1,6 +1,6 @@
 pkgbase = passff-host-librewolf-git
 	pkgdesc = Host app for the WebExtension PassFF. Ported to LibreWolf.
-	pkgver = 1.2.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/passff/passff-host
 	arch = any
