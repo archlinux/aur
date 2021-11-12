@@ -32,7 +32,7 @@ build() {
 package() {
     cd "$srcdir/OpenStarRuler"
     install -m 0644 -Dt "$pkgdir/usr/share/pixmaps/" sr2.png
-    install -m 0644 -Dt "$pkgdir/usr/share/applications/" starruler2.destop
+    install -m 0644 -Dt "$pkgdir/usr/share/applications/" starruler2.desktop
     install -m 0755 -Dt "$pkgdir/opt/starruler2/" StarRuler2.sh
     cp --preserve=mode -drt "$pkgdir/opt/starruler2/" bin
     cd "$srcdir/OpenStarRuler-Data"
