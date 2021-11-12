@@ -1,0 +1,12 @@
+pkgbase = kuroko
+	pkgdesc = Dynamic, bytecode-compiled programming language and a dialect of Python
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://kuroko-lang.github.io
+	arch = x86_64
+	license = custom:MIT
+	depends = glibc
+	source = kuroko-1.1.2.tar.gz::https://github.com/kuroko-lang/kuroko/archive/refs/tags/v1.1.2.tar.gz
+	b2sums = 0c1371afd74c1bdedb275d7ca3698243d040b8945bba9f2bddd96212bda54fe6039862eeb73c0c79dd6d02a21dfb874ec4dd944287de5bf00ae0b7a244647809
+
+pkgname = kuroko
