@@ -1,8 +1,6 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
-_pkgname=prusa-slicer
-
-pkgname=${_pkgname}-git
+pkgname=prusa-slicer-git
 pkgver=2.4.0.beta1.r65.gaff9e1f7e
 pkgrel=2
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
@@ -39,8 +37,7 @@ sha256sums=(
 conflicts=('prusa-slicer')
 
 pkgver() {
-    cd "${srcdir}/PrusaSlicer"
-    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version_//'
+    git -C "${srcdir}/PrusaSlicer" describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version_//'
 }
 
 prepare() {
@@ -74,8 +71,7 @@ check() {
 }
 
 package () {
-    cd "${srcdir}/PrusaSlicer/build"
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}/PrusaSlicer/build" install
 
     # Patch desktop files
     for i in PrusaGcodeviewer PrusaSlicer; do
