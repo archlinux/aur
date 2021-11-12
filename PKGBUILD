@@ -5,7 +5,7 @@
 # Contributor: American_Jesus
 pkgname=palemoon-gtk3
 _pkgname=palemoon
-pkgver=29.4.2
+pkgver=29.4.2.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -19,9 +19,9 @@ makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm'
              'libpulse' 'gcc10')
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
-source=("http://archive.palemoon.org/source/palemoon-${pkgver}-source.tar.xz"
+source=("http://archive.palemoon.org/source/palemoon-${pkgver}.source.tar.xz"
         mozconfig.in)
-sha1sums=('a8bccc80fea1381b3135c21c85c57a3b0dbcf696'
+sha1sums=('bb2d00d5c525f06c56e8209f8eb3beb19d214582'
           'f3cc0b20fd66066b0cb936a5f3f54b1145da1bab')
 
 prepare() {
@@ -32,6 +32,7 @@ build() {
   export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
   export MOZCONFIG="${srcdir}/mozconfig"
   export CPPFLAGS="${CPPFLAGS} -O2 -Wno-format-overflow"
+  cd palemoon-source
   ./mach build
 }
 
@@ -54,5 +55,5 @@ package() {
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
 
   # install desktop file
-  install -Dm644 "${srcdir}/palemoon/branding/official/palemoon.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${srcdir}/palemoon-source/palemoon/branding/official/palemoon.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
