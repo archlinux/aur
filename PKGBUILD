@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=R19.mod.3.2.9.g26b84b2
+pkgver=R19.mod.5.beta.9.g9f95d65
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('x86_64')
@@ -11,7 +11,9 @@ license=('CCPL'
          'MIT'
          'LGPL'
          )
-depends=('qt5-websockets')
+depends=('qt5-websockets'
+         'vapoursynth'
+         )
 makedepends=('git'
              'qt5-tools'
              )
