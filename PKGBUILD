@@ -14,6 +14,10 @@ depends=(
 "git"
 )
 makedepends=("npm")
+optdepends=(
+"vkbasalt: Required to use custom shaders (install this and reshade-shadders-git)"
+"reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
+)
 provides=("${pkgname}")
 source=(
 "git+https://notabug.org/nobody/an-anime-game-launcher.git"
