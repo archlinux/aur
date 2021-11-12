@@ -13,11 +13,11 @@ arch=('x86_64')
 url='https://www.boost.org/'
 license=('custom')
 makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' )
-source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/${_pkgname}_${_boostver}.tar.bz2
+source=(https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/${_pkgname}_${_boostver}.tar.bz2
     https://github.com/boostorg/python/commit/660487c43fde76f3e64f1cb2e644500da92fe582.patch)
 #source=(https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${_boostver}.tar.bz2)
 sha256sums=('9807a5d16566c57fd74fb522764e0b134a8bbe6b6e8967b83afefd30dcd3be81'
-            '42ea8872facb32bf20f9aa5c6c39bca5d3addb3d9080ccc01f10fbf26a139e5b')
+            '00d66b49b548aa6254ec8dc5b6b859ab3ff9ca7c0cf0ceba72401f71a572bffd')
 
 prepare() {
     cd ${_pkgname}_${_boostver}/libs/python
