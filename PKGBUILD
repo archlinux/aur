@@ -92,4 +92,5 @@ package() {
         install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
         install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
         install -Dm755 dots -t "${pkgdir}/usr/bin/"
+        install -Dm755 dots-scripts -t "${pkgdir}/usr/bin/"
 }
