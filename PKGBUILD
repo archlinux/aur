@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-idle-culler
 pkgdesc="JupyterHub service to cull and shut down idle users and notebook servers"
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 url="https://github.com/jupyterhub/jupyterhub-idle-culler"
 arch=('any')
