@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.12.4
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
          'python-pyaml>=5.1'
          'python-ply>=3.10' 'python-pip' 'python-setuptools' 'python-wheel'
          'python-pyelftools>=0.24' 'python-pyserial' 'python-pykwalify'
-	 'python-pillow' 'python-anytree' 'python-intelhex' 'python-packaging' 
+	 'python-pillow' 'python-anytree' 'python-intelhex' 'python-packaging'
 	 'python-progress' 'python-pyserial' 'python-cbor' 'python-psutil'
 	 'python-pytest' 'python-colorama'
          'python-coverage' 'gcovr'
@@ -27,7 +27,7 @@ depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
          'doxygen' 'dfu-util' 'dtc' 'cmake>=3.8.2')
 optdepends=('pyocd: programming and debugging ARM MCUs')
 makedepends=('patchelf')
-_installer=zephyr-sdk-${pkgver}-x86_64-linux-setup.run
+_installer=zephyr-sdk-${pkgver}-linux-x86_64-setup.run
 source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/${_installer}"
         "zephyrrc"
 )
@@ -160,5 +160,5 @@ package ()
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
 
-sha256sums=('5382df7c47b63b4a259004270f27211d20de1a612c25fde5c97af6864383879c'
+sha256sums=('682c6ad29f736ff7af0d029b03277f2a08617edb37903f74996f12ad08fe6b91'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
