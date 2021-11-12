@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2021.11.1
+pkgver=2021.11.2
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('660a508f2241573a386170693c93b4e4df62d551be227557bf5a55c14734ae26'
+sha256sums=('a3479dbd04ef646a925fe55ae8d6f506e09711d1e79d3b0a82a85d9dc075dbff'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
@@ -60,6 +60,8 @@ prepare() {
   _electron_dist=/usr/lib/electron13
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
+  sed 's#git+ssh://git@github.com#git+https://github.com#g' -i package-lock.json
+
 
   npm install
   # npm audit fix
