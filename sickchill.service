@@ -8,7 +8,7 @@ User=sickchill
 Group=sickchill
 
 Type=simple
-ExecStart=/opt/sickchill/app/bin/SickChill.py --quiet --nolaunch --datadir=/opt/sickchill/data
+ExecStart=/opt/sickchill/app/bin/SickChill --quiet --nolaunch --datadir=/opt/sickchill/data
 
 [Install]
 WantedBy=multi-user.target

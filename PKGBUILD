@@ -5,7 +5,7 @@
 #      That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=2021.7.23.1.r0
+pkgver=2021.11.10.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -21,7 +21,7 @@ install=$pkgname.install
 source=('sickchill.service'
         'sickchill.sysusers'
         'sickchill.tmpfiles')
-sha256sums=('ca6a73f7c2019ddda2b338eb63be560bf1a5d6ae5ceab969dc032c05b6d2d7b5'
+sha256sums=('a7bb9f2406721f9d5eb66dab954bfc54f6bfe74fa6efd646e1006903e3e42bc8'
             '1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850'
             '2069f15e18fc7dd0f0f25b623f2067fc9028b1ca4122021a62364aa39914f88f')
 
@@ -40,7 +40,7 @@ build() {
       --default-timeout=60 --disable-pip-version-check --no-warn-script-location --progress-bar=off \
       sickchill
 
-  sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill.py
+  sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill
 }
 
 package() {
