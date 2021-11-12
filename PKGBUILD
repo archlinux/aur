@@ -83,8 +83,8 @@ package() {
   ln -s /usr/bin/g++ "${_target_dir}/bin/g++"
 
   # Install profile and ld.so.config files
-  install -Dm755 "${srcdir}/cuda.sh" "${pkgdir}/etc/profile.d/cuda-11.1.sh"
-  install -Dm644 "${srcdir}/cuda.conf" "${pkgdir}/etc/ld.so.conf.d/cuda-11.1.conf"
+  # install -Dm755 "${srcdir}/cuda.sh" "${pkgdir}/etc/profile.d/cuda-11.1.sh"
+  # install -Dm644 "${srcdir}/cuda.conf" "${pkgdir}/etc/ld.so.conf.d/cuda-11.1.conf"
 
   # Install pkgconfig files
   mkdir -p "$pkgdir"/usr/lib/pkgconfig
