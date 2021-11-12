@@ -5,16 +5,17 @@
 
 _gemname="sprockets-rails"
 pkgname="ruby-${_gemname}"
-pkgver=3.2.2
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc='Sprockets Rails integration'
 arch=('any')
 url='https://github.com/rails/sprockets-rails'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activesupport' 'ruby-sprockets')
+checkdepends=('ruby-bundler' 'ruby-rails' 'ruby-rake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rails/sprockets-rails/archive/v${pkgver}.tar.gz")
-sha512sums=('048f48930325316ac28d721a2c33ba60767dfec9456b0705e90363a1c81c8876ec6f99d65ce533d5a0704e1f67a33fcac5cd675aec5cc3c3f1cd896d518865a9')
+sha512sums=('f6bc9920f19ac76e383a36ed550f06b16a4de628a8df15c6e70f005fe60c0050a01002c9334359adfb182b449a8baaec35733c846240258702a430f14dcdefe2')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
@@ -29,12 +30,11 @@ build() {
   gem build "${_gemname}.gemspec"
 }
 
-# test have been disabled for now: https://github.com/rails/sprockets-rails/issues/473
-#check() {
-#  cd "${_gemname}-${pkgver}"
-#
-#  rake test
-#}
+check() {
+  cd "${_gemname}-${pkgver}"
+
+  rake test
+}
 
 package() {
   cd "${_gemname}-${pkgver}"
