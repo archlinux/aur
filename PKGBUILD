@@ -1,13 +1,13 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=r5828.eae9b8c6
+pkgver=r5850.ed4a14f0
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('i686' 'x86_64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('freetype2' 'sdl2' 'libpng' 'openal' 'alsa-lib')
-makedepends=('git' 'cmake>=3.15' 'ffmpeg')
+makedepends=('git' 'cmake>=3.15')
 optdepends=('86box-roms-git: ROM files')
 source=("${pkgname}::git+https://github.com/86Box/86Box.git" '86Box.desktop')
 sha256sums=('SKIP' 'a7a62cfd0ab1088406879a15245d1a9c9ef1e6d69d72e9d63ed3da14b8d298ac')
@@ -26,7 +26,5 @@ build() {
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
     install -Dm644 86Box.desktop -t "$pkgdir/usr/share/applications"
-    mkdir -m755 "$pkgdir/usr/share/pixmaps"
-    ffmpeg -i "$srcdir/$pkgname/src/win/icons/86Box-green.ico" "$pkgdir/usr/share/pixmaps/86Box.png"
-    chmod 644 "$pkgdir/usr/share/pixmaps/86Box.png"
+    install -Dm644 "$srcdir/$pkgname/src/win/assets/86Box-green.png" "$pkgdir/usr/share/pixmaps/86Box.png"
 }
