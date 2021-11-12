@@ -1,0 +1,16 @@
+pkgbase = hcli
+	pkgdesc = Habitica CLI; A Command Line Interface for Habitica
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/case-prudolicce/hcli
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = fzf
+	depends = curl
+	depends = jq
+	depends = bc
+	source = hcli::git://github.com/case-prudolicce/hcli
+	md5sums = SKIP
+
+pkgname = hcli
