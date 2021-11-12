@@ -7,8 +7,9 @@ pkgdesc='Apples San Francisco typeface family. watchOS system font.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom:apple-restricted-font')
-_file='SF-Compact.dmg'
-source=("https://devimages-cdn.apple.com/design/resources/download/$_file"
+_dlfile='SF-Compact.dmg'
+_file=${pkgver}-${_dlfile}
+source=("$_file::https://devimages-cdn.apple.com/design/resources/download/$_dlfile"
         'license.awk'
         'version.awk')
 sha256sums=('487647302a6a96b2c7ff77046c8727660e250d0625efae5b54edefd68d43ea18'
