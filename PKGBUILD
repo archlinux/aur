@@ -5,7 +5,7 @@ pkgname=android-google-apis-x86-64-system-image-29
 _apilevel=29
 _arch=x86_64
 pkgver=r12
-pkgrel=1
+pkgrel=2
 pkgdesc="Android with Google APIs ${_arch} Atom System Image, API-${_apilevel}"
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
@@ -13,7 +13,7 @@ license=('custom')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/${_arch}-${_apilevel}_${pkgver}.zip"
+source=("http://dl.google.com/android/repository/sys-img/google_apis/${_arch}-${_apilevel}_${pkgver}.zip"
         "package.xml")
 sha256sums=('c0068e6dfd2833ca8a9704242bfe6087cee153373fa576b63461b3eecd27666f'
             '08409401c76ab9eb67fdfd60070adddae417eabcf8a708df704adb0a3bef62b3')

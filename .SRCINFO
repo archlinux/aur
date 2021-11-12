@@ -1,14 +1,14 @@
 pkgbase = android-google-apis-x86-64-system-image-29
 	pkgdesc = Android with Google APIs x86_64 Atom System Image, API-29
 	pkgver = r12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom
 	provides = android-google-apis-x86-64-system-image-29
 	conflicts = android-google-apis-x86-64-system-image-29
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/x86_64-29_r12.zip
+	source = http://dl.google.com/android/repository/sys-img/google_apis/x86_64-29_r12.zip
 	source = package.xml
 	sha256sums = c0068e6dfd2833ca8a9704242bfe6087cee153373fa576b63461b3eecd27666f
 	sha256sums = 08409401c76ab9eb67fdfd60070adddae417eabcf8a708df704adb0a3bef62b3
