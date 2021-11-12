@@ -1,31 +1,37 @@
+# Maintainer: Viachaslau Khalikin <khalikin@yandex.by>
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
-pkgname=libretro-opera-git
-pkgver=425.8ce580e
+_pkgbase=libretro-opera
+pkgname=${_pkgbase}-git
+pkgver=r456.d8aa7ce
 pkgrel=1
 pkgdesc="libretro implementation of 4DO/libfreedo (3DO)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/opera-libretro"
 license=('GPL3')
 groups=('libretro')
-depends=('zlib' 'glibc' 'libretro-core-info')
-makedepends=('git')
-
-_libname=opera_libretro
-_gitname=opera-libretro
-source=("git+https://github.com/libretro/${_gitname}.git")
+depends=(
+  glibc
+  libretro-core-info
+)
+makedepends=(
+  git
+)
+source=("$_pkgbase::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${_pkgbase}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitname}"
-  make
+  make -C "${_pkgbase}"
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  install -Dm 644 "${_pkgbase}"/opera_libretro.so -t "${pkgdir}"/usr/lib/libretro/
 }
+
+# vim:set ft=sh ts=2 sw=2 et:
+
