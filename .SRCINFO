@@ -1,0 +1,15 @@
+pkgbase = baracle-git
+	pkgdesc = Let's make a text editor like in the 70's
+	pkgver = r14.f4253c7
+	pkgrel = 1
+	url = https://github.com/Mirko-r/baracle
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = gcc
+	provides = baracle
+	conflicts = baracle
+	source = git+https://github.com/Mirko-r/baracle.git
+	sha512sums = SKIP
+
+pkgname = baracle-git
