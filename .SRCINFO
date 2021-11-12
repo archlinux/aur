@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-inter
 	pkgdesc = Inter Font, patched with the Nerd Fonts Patcher
 	pkgver = 3.19_2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsms/inter/
 	arch = any
 	license = custom:OFL
@@ -10,6 +10,7 @@ pkgbase = nerd-fonts-inter
 	makedepends = python
 	makedepends = fontforge
 	makedepends = subversion
+	makedepends = parallel
 	source = https://github.com/rsms/inter/releases/download/v3.19/Inter-3.19.zip
 	source = font-patcher-2.1.0::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.1.0/font-patcher
 	source = allow-glyphdir.diff
