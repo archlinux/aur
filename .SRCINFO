@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-sf-mono
 	pkgdesc = Monospaced variant of San Francisco. Sourced directly from Apple, patched with the Nerd Fonts Patcher
 	pkgver = 2.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
@@ -10,6 +10,7 @@ pkgbase = nerd-fonts-sf-mono
 	makedepends = python
 	makedepends = fontforge
 	makedepends = subversion
+	makedepends = parallel
 	provides = nerd-fonts-sf-mono
 	conflicts = nerd-fonts-sf-mono
 	source = SF-Mono-8.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg
