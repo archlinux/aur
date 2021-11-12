@@ -1,18 +1,16 @@
 # Maintainer: Carson Rueter <roachh at proton mail dot com>
 # Co-Maintainer: George Sofianos
-# Contributor: Christopher Snowhill <kode54 at gmail dot com>
-# Contributor: ipha <ipha00 at gmail dot com>
-# Contributor: johnnybash <georgpfahler at wachenzell dot org>
-# Contributor: grmat <grmat at sub dot red>
 
-prefix='amdgpu-pro-'
-postfix='-ubuntu-20.04'
-major='21.30'
-minor='1290604'
-amdver='2.4.106'
-shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
-shared2="opt/amdgpu/lib/x86_64-linux-gnu"
-tarname="${prefix}${major}-${minor}${postfix}"
+# Release notes https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-40-1'
+major='21.40.1'
+minor='1337803'
+amdgpu_repo='https://repo.radeon.com/amdgpu/21.40.1/ubuntu'
+rocm_repo='https://repo.radeon.com/rocm/apt/4.5.1'
+rocm_opencl='opt/rocm-4.5.1/opencl/lib'
+rocm_lib='opt/rocm-4.5.1/lib'
+hip_dir='opt/rocm-4.5.1/hip/lib/'
+amdgpu="opt/amdgpu/lib/x86_64-linux-gnu"
+amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
@@ -22,82 +20,79 @@ arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
-depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl')
+depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl' 'ncurses5-compat-libs')
 conflicts=('rocm-opencl-runtime')
 provides=('opencl-driver')
 optdepends=('clinfo')
 
-DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-30 -N %u'
+source=(
+"https://repo.radeon.com/amdgpu/21.40.1/ubuntu/pool/main/libd/libdrm-amdgpu/libdrm-amdgpu-amdgpu1_2.4.107.40501-1337803_amd64.deb"
+"https://repo.radeon.com/amdgpu/21.40.1/ubuntu/pool/proprietary/c/clinfo-amdgpu-pro/clinfo-amdgpu-pro_21.40.1-1337803_amd64.deb"
+"https://repo.radeon.com/amdgpu/21.40.1/ubuntu/pool/proprietary/o/ocl-icd-amdgpu-pro/ocl-icd-libopencl1-amdgpu-pro_21.40.1-1337803_amd64.deb"
+"https://repo.radeon.com/amdgpu/21.40.1/ubuntu/pool/proprietary/o/opencl-legacy-amdgpu-pro/opencl-legacy-amdgpu-pro-icd_21.40.1-1337803_amd64.deb"
+"https://repo.radeon.com/rocm/apt/4.5.1/pool/main/c/comgr/comgr_2.1.0.40501-84_amd64.deb"
+"https://repo.radeon.com/rocm/apt/4.5.1/pool/main/h/hip-runtime-amd/hip-runtime-amd_4.4.21432.40501-84_amd64.deb"
+"https://repo.radeon.com/rocm/apt/4.5.1/pool/main/h/hsa-rocr/hsa-rocr_1.4.0.40501-84_amd64.deb"
+"https://repo.radeon.com/rocm/apt/4.5.1/pool/main/h/hsakmt-roct-dev/hsakmt-roct-dev_20210902.7.5.40501-84_amd64.deb"
+"https://repo.radeon.com/rocm/apt/4.5.1/pool/main/r/rocm-opencl/rocm-opencl_2.0.0.40501-84_amd64.deb"
+)
 
-source=("https://drivers.amd.com/drivers/linux/$tarname.tar.xz")
-sha256sums=('5840aac63a3658b3f790c59e57226062e7e4bc74f3c066a3e7bc9e3065e24382')
+sha256sums=(
+'01ef82f12be4b853e0aab08fa9fc4b26bfca25a583c820b6c6d790c5e1102660'
+'1c67035a1f5865f099d8aac44b2e20b7ebed2bb0e6db03f94acc5d37f68a6ed5'
+'815a44c3cad30bff7355a4dcddecd3fe24ef02243866d21dec5cd4bebc734956'
+'881da19cc97fdc13226a9da5817a73e320fd50df84cd680be1e162924bdd58fa'
+'0440aa35f2dcadb047cfc31a866669c1b653a168d28156ca1fc138af11c9c280'
+'ed47ae915c981a51918f080e4e1555b25c2aa069ff79428935455460f7b05f4f'
+'110072723e3a7207e9093a1b33c0e3f462a2bf15c3d154ffb75b21c6e460daba'
+'1d36b905378947062a43c16570b60f3e4575c03bd17c2d64c50a5cee849c8f3e'
+'114964ead7f7de9b745d37440ca40bb968d14db8075eaf4a5dbfd517799c907b'
+)
 
 package() {
-	mkdir -p "${srcdir}/opencl"
-	cd "${srcdir}/opencl"
 
-	# roc*
-	ar x "${srcdir}/$tarname/opencl-rocr-amdgpu-pro_${major}-${minor}_amd64.deb"
+	ar x "${srcdir}/libdrm-amdgpu-amdgpu1_2.4.107.40501-1337803_amd64.deb"
 	tar xJf data.tar.xz
-	ar x "${srcdir}/$tarname/rocm-device-libs-amdgpu-pro_1.0.0-${minor}_amd64.deb"
+	ar x "${srcdir}/opencl-legacy-amdgpu-pro-icd_21.40.1-1337803_amd64.deb"
 	tar xJf data.tar.xz
-	ar x "${srcdir}/$tarname/hsa-runtime-rocr-amdgpu_1.3.0-${minor}_amd64.deb"
-	tar xJf data.tar.xz
-	ar x "${srcdir}/$tarname/hsakmt-roct-amdgpu_1.0.9-${minor}_amd64.deb"
-	tar xJf data.tar.xz
-	ar x "${srcdir}/$tarname/hip-rocr-amdgpu-pro_${major}-${minor}_amd64.deb"
-	tar xJf data.tar.xz
+	ar x "${srcdir}/comgr_2.1.0.40501-84_amd64.deb"
+	tar zfx data.tar.gz
+	ar x "${srcdir}/hip-runtime-amd_4.4.21432.40501-84_amd64.deb"
+	tar zfx data.tar.gz
+	ar x "${srcdir}/hsa-rocr_1.4.0.40501-84_amd64.deb"
+	tar zfx data.tar.gz
+	ar x "${srcdir}/hsakmt-roct-dev_20210902.7.5.40501-84_amd64.deb"
+	tar zfx data.tar.gz
+	ar x "${srcdir}/rocm-opencl_2.0.0.40501-84_amd64.deb"
+	tar zfx data.tar.gz
 
-	# comgr
-	ar x "${srcdir}/$tarname/comgr-amdgpu-pro_2.1.0-${minor}_amd64.deb"
-	tar xJf data.tar.xz
-
-	# orca
-	ar x "${srcdir}/$tarname/opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
-	tar xJf data.tar.xz
-
-	cd ${shared}
-	sed -i "s|libdrm_amdgpu|libdrm_amdgpo|g" libamdocl-orca64.so
-
-	mkdir -p "${srcdir}/libdrm"
-	cd "${srcdir}/libdrm"
-	ar x "${srcdir}/$tarname/libdrm-amdgpu-amdgpu1_${amdver}-${minor}_amd64.deb"
-	tar xJf data.tar.xz
-	cd ${shared2}
+	
+	cd ${amdgpu}
 	rm "libdrm_amdgpu.so.1"
 	mv "libdrm_amdgpu.so.1.0.0" "libdrm_amdgpo.so.1.0.0"
 	ln -s "libdrm_amdgpo.so.1.0.0" "libdrm_amdgpo.so.1"
 
-	mv "${srcdir}/opencl/etc" "${pkgdir}/"
+
 	mkdir -p ${pkgdir}/usr/lib
-	# roc*
-	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
-	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.2.1.0" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.2.21303-" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4" "${pkgdir}/usr/lib"	
-	mv "${srcdir}/opencl/${shared}/libhsa-runtime64.so.1.3.0" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libhsa-runtime64.so.1" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared2}/libhsakmt.so.1.0.6" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared2}/libhsakmt.so.1" "${pkgdir}/usr/lib"
-	
-	# comgr
-	cd ${srcdir}/opencl/${shared}	
-	ln -s "libamd_comgr.so.2.0.0" "libamd_comgr.so"
-	mv "${srcdir}/opencl/${shared}/libamd_comgr.so" "${pkgdir}/usr/lib/"
-	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.2" "${pkgdir}/usr/lib/libamd_comgr.so"
+	mv "${srcdir}/${rocm_opencl}/libamdocl64.so" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/${hip_dir}/libamdhip64.so.4.4.40501" "${pkgdir}/usr/lib"
+	mv "${srcdir}/${hip_dir}/libamdhip64.so" "${pkgdir}/usr/lib"
+	mv "${srcdir}/${hip_dir}/libamdhip64.so.4" "${pkgdir}/usr/lib"	
 
-	# orca
-	mv "${srcdir}/opencl/${shared}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"	
-	mv "${srcdir}/libdrm/${shared2}/libdrm_amdgpo.so.1.0.0" "${pkgdir}/usr/lib/"
-	mv "${srcdir}/libdrm/${shared2}/libdrm_amdgpo.so.1" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/${rocm_lib}/libhsa-runtime64.so.1.4.40501" "${pkgdir}/usr/lib"
+	mv "${srcdir}/${rocm_lib}/libhsa-runtime64.so" "${pkgdir}/usr/lib"
+	mv "${srcdir}/${rocm_lib}/libhsa-runtime64.so.1" "${pkgdir}/usr/lib"
 
-	mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
-	cd "${pkgdir}/opt/amdgpu/share/libdrm"
-	ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
+	mv "${srcdir}/${rocm_lib}/libamd_comgr.so.2.1.40501" "${pkgdir}/usr/lib"	
+	mv "${srcdir}/${rocm_lib}/libamd_comgr.so" "${pkgdir}/usr/lib/"	
+	mv "${srcdir}/${rocm_lib}/libamd_comgr.so.2" "${pkgdir}/usr/lib/libamd_comgr.so"	
 
-	mv "${srcdir}/opencl/opt/amdgpu-pro" "${pkgdir}/opt"
+	# legacy
+	mv "${srcdir}/${amdgpu_pro}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/${amdgpu}/libdrm_amdgpo.so.1.0.0" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/${amdgpu}/libdrm_amdgpo.so.1" "${pkgdir}/usr/lib/"
 
-	rm -r "${srcdir}/opencl"
-	rm -r "${srcdir}/libdrm"
+	mkdir -p ${pkgdir}/etc/OpenCL/vendors	
+	echo libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+	echo libamdocl-orca64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl-orca64.icd"
 }
