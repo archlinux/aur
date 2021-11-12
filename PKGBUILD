@@ -2,7 +2,7 @@
 
 pkgname=openstarruler-git
 pkgver=r68.f07b3cd
-pkgrel=2
+pkgrel=3
 pkgdesc="Star Ruler 2 is a Massive scale 4X-RTS set in space. Control planets, manipulate politics, research technologies and command armies in your quest for galactic dominance."
 arch=('x86_64')
 url="http://starruler2.com/"
@@ -30,9 +30,9 @@ build() {
 }
 
 package() {
+    install -m 0644 -Dt "$pkgdir/usr/share/applications/" starruler2.desktop
     cd "$srcdir/OpenStarRuler"
     install -m 0644 -Dt "$pkgdir/usr/share/pixmaps/" sr2.png
-    install -m 0644 -Dt "$pkgdir/usr/share/applications/" starruler2.desktop
     install -m 0755 -Dt "$pkgdir/opt/starruler2/" StarRuler2.sh
     cp --preserve=mode -drt "$pkgdir/opt/starruler2/" bin
     cd "$srcdir/OpenStarRuler-Data"
