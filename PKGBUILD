@@ -10,8 +10,8 @@ makedepends=(mingw-w64-configure mingw-w64-readline mingw-w64-bzip2 mingw-w64-zl
 depends=(mingw-w64-crt)
 options=(staticlibs !strip !buildflags)
 optdepends=(mingw-w64-readline mingw-w64-bzip2 mingw-w64-zlib)
-source=("https://ftp.pcre.org/pub/pcre/pcre-$pkgver.tar.bz2"{,.sig})
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
+source=("http://downloads.sourceforge.net/sourceforge/pcre/pcre-$pkgver.tar.bz2"{,.sig})
 sha512sums=('91bff52eed4a2dfc3f3bfdc9c672b88e7e2ffcf3c4b121540af8a4ae8c1ce05178430aa6b8000658b9bb7b4252239357250890e20ceb84b79cdfcde05154061a'
             'SKIP')
 
