@@ -5,7 +5,7 @@ pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
 pkgver=21.1.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -20,16 +20,22 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
 source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.xz{,.sig}
         xvfb-run # with updates from FC master
         xvfb-run.1
+        0001_revert_dpi_calculation.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('FD0004A26EADFE43A4C3F249C6F7AE200374452D') # Povilas Kanapickas <povilas@radix.lt>
 sha512sums=('8608ed9c1537c95e8a3adea5e3e372a3c5eb841f8e27c84283093f22fb1909e16a800006510da684b13f8f237f33b8a4be3e2537f5f9ab9af4c5ad12770eef0d'
             'SKIP'
             '4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
+            '28021ef9879d5313096c3e7e79a71a2e15be366652845acf32239d5c011c60aa5938c63c23b04bb0dee56df7b3762b7ca8d51d5925898c67c2ba83ec468fe782'
             '81be7b0ecd9de850f0c740762d37c7489f12b34eb6adb19b3d3077f66d66e48e1206eff4bd29e50f5640509390a08fa138a4664b60d90878d4d17cb1f6919baf')
 
 prepare() {
   cd "xorg-server-${pkgver}"
+  # revert dpi calculation that leads to unwanted miscalculation results
+  # https://gitlab.freedesktop.org/xorg/xserver/-/issues/1241
+  # https://bugs.archlinux.org/task/72661
+  patch -Rp1 -i ../0001_revert_dpi_calculation.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
