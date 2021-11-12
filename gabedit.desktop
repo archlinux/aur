@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=gabedit
-Comment=A graphical user interface to computational chemistry packages
-Exec=gabedit
-Icon=/usr/share/pixmaps/gabedit.png
-Terminal=false
