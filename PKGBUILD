@@ -1,10 +1,9 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l >
-# Contributor: Timo Wilken <timo.21.wilken+aur@gmail.com>
 
 pkgname=openstarruler-git
 pkgver=r68.f07b3cd
 pkgrel=1
-pkgdesc="Massive scale 4X-RTS set in space. Control planets, manipulate politics, research technologies and command armies in your quest for galactic dominance."
+pkgdesc="Star Ruler 2 is a Massive scale 4X-RTS set in space. Control planets, manipulate politics, research technologies and command armies in your quest for galactic dominance."
 arch=('x86_64')
 url="http://starruler2.com/"
 license=('MIT')
