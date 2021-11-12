@@ -16,12 +16,15 @@ makedepends=(
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
+  "gn-visibility-webrtc.patch"
 )
-sha512sums=('159c8d37e8cfb5bb0e55d3d1329295dab585164b84b8c514ea80f0f68ce0b491f4c40a186a2bc108baae2341cf320dee78c654c0a038d5aeb17b5a19c7f043d9')
+sha512sums=('159c8d37e8cfb5bb0e55d3d1329295dab585164b84b8c514ea80f0f68ce0b491f4c40a186a2bc108baae2341cf320dee78c654c0a038d5aeb17b5a19c7f043d9'
+            'a0d2b31b870a53af6c68ef1f66c6e6bdeb63ca4bf49120c389dfbd41f98818c387295b0b9330d5e446ebdb46e20a7eb69ab2007eb5c5efdeb16e83e7e01b2e3b')
 
-#prepare() {
-  #cd "$srcdir/chromium-$pkgver"
-#}
+prepare() {
+  cd "$srcdir/chromium-$pkgver"
+  patch -Np1 -i ../gn-visibility-webrtc.patch
+}
 
 build() {
   cd "$srcdir/chromium-$pkgver"
