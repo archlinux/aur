@@ -2,7 +2,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r644.91ad4276
+pkgver=r648.61dc0ebb
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
 
 build(){
   cd "$srcdir/bsc"
-  make GHC="ghc -dynamic" GHCJOBS=2 GHCRTSFLAGS='+RTS -M5G -A128m -RTS' install-src
+  make GHC="ghc -dynamic" GHCJOBS=4 GHCRTSFLAGS='+RTS -M5G -A128m -RTS' install-src
   make install-doc
 }
 

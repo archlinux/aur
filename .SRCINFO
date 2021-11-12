@@ -1,7 +1,7 @@
 pkgbase = bluespec-git
 	pkgdesc = Bluespec Compiler (BSC)
-	pkgver = r644.91ad4276
-	pkgrel = 264
+	pkgver = r648.61dc0ebb
+	pkgrel = 267
 	url = https://github.com/B-Lang-org/bsc
 	arch = x86_64
 	license = BSD
