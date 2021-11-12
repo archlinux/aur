@@ -13,7 +13,7 @@ depends=('libdbusmenu-gtk2' 'libpng12' 'openssl-1.0' 'wxgtk2')
 #https://bugs.archlinux.org/task/65042
 source_x86_64=("filecloudsync_${pkgver}_linux_amd64.zip::http://patch.codelathe.com/tonido/live/installer/x86-linux/filecloudsync_linux_amd64.zip" 'FileCloud.desktop' 'LICENSE')
 
-sha256sums_x86_64=('0829a4e9689153b877dfd8f7a3aa37645971cdde07ec1bdca669049f6b5ed4e0'
+sha256sums_x86_64=('f0549a6a34a94cabc1ee3d5664c4af624027f6dc4b8a9f6868e60eb3e1b4ff2f'
                    '90db80ec4ca61283e5ed09a300df55a3aa87be7b7fbf53a6ee0be8d71cfa8d75'
                    'a397573d54734349929b3572875577073c3aeab6d9e4d6dbae4400a6954a61ed')
 install=${pkgname}.install
