@@ -1,7 +1,7 @@
 pkgbase = evremap
 	pkgdesc = A keyboard input remapper for Linux/Wayland systems, written by @wez
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wez/evremap
 	arch = x86_64
 	license = MIT

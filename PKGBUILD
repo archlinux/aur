@@ -2,7 +2,7 @@
 
 pkgname="evremap"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard input remapper for Linux/Wayland systems, written by @wez"
 arch=("x86_64")
 url="https://github.com/wez/evremap"
@@ -20,5 +20,5 @@ build() {
 package() {
     install -D -m755 "$srcdir/evremap/target/release/$pkgname" "$pkgdir/usr/bin/evremap"
     install -D -m644 "$srcdir/evremap/evremap.service" "$pkgdir/usr/lib/systemd/system/evremap.service"
-    echo "Edit evremap according to your needs, see https://wiki.archlinux.org/title/Systemd#Editing_provided_units"
+    echo "Edit evremap.service according to your needs, see https://wiki.archlinux.org/title/Systemd#Editing_provided_units"
 }
