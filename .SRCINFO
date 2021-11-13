@@ -1,0 +1,26 @@
+pkgbase = android-ndk-21
+	pkgdesc = Android C/C++ developer kit
+	pkgver = r21.e
+	pkgrel = 1
+	url = https://developer.android.com/ndk/
+	install = android-ndk-21.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	depends = glibc
+	optdepends = ncurses5-compat-libs: for using gdb
+	optdepends = python2: various helper scripts
+	optdepends = python: various helper scripts
+	replaces = android-ndk64
+	options = !strip
+	options = staticlibs
+	backup = etc/profile.d/android-ndk-21.sh
+	source = android-ndk-21.sh
+	sha1sums = 2479a8d74428eb651ad2b9772ad655d7a90af410
+	sha256sums = 2068618bc3e99149310f544be5d639ae183dc767d5a7157a07d8e024417b6017
+	source_x86_64 = https://dl.google.com/android/repository/android-ndk-21-r21e-linux-x86_64.zip
+	sha1sums_x86_64 = c3ebc83c96a4d7f539bd72c241b2be9dcd29bda9
+	sha256sums_x86_64 = ad7ce5467e18d40050dc51b8e7affc3e635c85bd8c59be62de32352328ed467e
+
+pkgname = android-ndk-21
