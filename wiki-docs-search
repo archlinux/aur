@@ -7,6 +7,7 @@
 
 # Known bugs: does not de-encode encoded names (if an arch wiki page contains unicode)
 # I don't know what they are encoded in so I don't know how to fix it yet
+# If you search for HTML or common stuff (like the phrase AUR) you will get garbage results
 
 language=${language:-"en"}
 tmp=${tmp:-"/tmp/.wiki-docs-search.${USER}.tmp"}
