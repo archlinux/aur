@@ -3,13 +3,13 @@
 # Contributor: Christian Pfeiffer <cpfeiffer at live dot de>
 pkgname=superlu_dist
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed memory, MPI based SuperLU"
 arch=('x86_64')
 url="https://github.com/xiaoyeli/${pkgname}"
 license=('custom')
-depends=('lapack' 'parmetis' 'openblas') # 'combblas'
-makedepends=('cmake' 'gcc-fortran')      # 'ninja'
+depends=('lapack' 'parmetis')       # 'openblas' 'combblas'
+makedepends=('cmake' 'gcc-fortran') # 'ninja'
 source=(${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('b5e4c6a99a0f71bb81170f6f90e6300d584ada608dd31d43f8bb3aa5ad6e4ba00f75043bbe14899d6f8bdb597552ef6eeb3cc1db20e06798421de71d810b32ee')
 options=('staticlibs')
