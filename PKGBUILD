@@ -5,7 +5,7 @@
 # Contributor: shild <shildv@gmail.com>
 
 pkgname=xmonad-git
-pkgver=v0.15.r161.gbe1d226
+pkgver=v0.17.0.r14.g7f6d758
 pkgrel=1
 pkgdesc="Lightweight X11 tiled window manager written in Haskell"
 arch=('x86_64')
@@ -33,7 +33,7 @@ options=('staticlibs')
 
 pkgver() {
   cd "${pkgname/-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
