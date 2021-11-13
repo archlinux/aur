@@ -1,0 +1,15 @@
+pkgbase = python-pygismeteo
+	pkgdesc = Wrapper for Gismeteo.ru
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/monosans/pygismeteo
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/pygismeteo/pygismeteo-1.1.0.tar.gz
+	sha256sums = 1c837c93119c9edc1b239fe50675944c06506ffd4fd464f4bf543540eba17db3
+
+pkgname = python-pygismeteo
