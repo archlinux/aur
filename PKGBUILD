@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=boxedwine-git
-pkgver=21.0.1.r29.gcdbd2ae4
+pkgver=21.0.1.r31.g68d9f034
 pkgrel=1
 pkgdesc="An emulator that runs 16-bit and 32-bit Windows applications"
 arch=('x86_64')
@@ -21,15 +21,12 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd $srcdir/Boxedwine
-  chmod +x project/linux/build.sh
-}
-
-
 build() {
-  cd $srcdir/Boxedwine/project/linux
-  ./build.sh
+  cd $srcdir/Boxedwine
+
+  pushd project/linux
+  sh build.sh
+  popd
 }
 
 package() {
