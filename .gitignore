@@ -1,0 +1,4 @@
+powershell*.pkg.*
+powershell*.deb
+pkg
+src
