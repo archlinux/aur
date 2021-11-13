@@ -1,0 +1,14 @@
+pkgbase = apdtool
+	pkgdesc = CUI Tool for APD/ADW file
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://azsky2.html.xdomain.jp/soft/apdtool.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libpng
+	depends = zlib
+	source = https://gitlab.com/azelpg/apdtool/-/archive/v1.1.1/apdtool-v1.1.1.tar.gz
+	sha256sums = bd16746cd9044e954b94888a228510efd0e8c7e2fa65d562bcdeb3d4d1a4aaec
+
+pkgname = apdtool
