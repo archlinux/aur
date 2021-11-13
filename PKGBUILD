@@ -1,9 +1,9 @@
-# Maintainer: KillerBean <killerbean at gmail.com>
+# Maintainer: KillerBean <killerbean8 at gmail.com>
 # Contributor: Samuel Kogler <firstname.lastname at gmail.com>
 
 _gui=true
 _gitname=simc
-pkgver=r46177.a0a4ad4986
+pkgver=r48171.fcd4bef3be
 pkgrel=1
 pkgname=simulationcraft-git
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
@@ -18,7 +18,7 @@ source=('git+https://github.com/simulationcraft/simc.git'
         '01_qt_datalocation.patch'
         'SimulationCraft.desktop')
 sha256sums=('SKIP'
-            'dbdbcb0efaa340e5631feec8dc0532bd4a89df505ad60a845c027e1706eb3e03'
+            'f172c4ddcbc36b53083f4417a839fa4f9ac99f4c7590121796912bc0f781f669'
             '12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9')
 pkgver() {
     cd "${srcdir}/${_gitname}/"
