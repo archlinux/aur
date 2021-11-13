@@ -6,7 +6,7 @@ _pkgname=${pkgname%-*}
 pkgver=7.25.0
 pkgrel=1
 pkgdesc="Desktop SSH Client"
-url="https://www.termius.com/"
+url="https://termius.com/"
 arch=('x86_64')
 license=('custom')
 conflicts=('termius')
@@ -25,7 +25,7 @@ _mirror='https://deb.termius.com'
 # TERMS_OF_USE is a copy-paste of https://termius.com/terms-of-use from browser
 source=(
 	"pkgs.gz::$_mirror/dists/squeeze/main/binary-amd64/Packages.gz"
-        "$pkgname.deb::https://www.termius.com/download/linux/Termius.deb"
+        "$pkgname.deb::https://termius.com/download/linux/Termius.deb"
         "TERMS_OF_USE"
 )
 sha512sums=(
