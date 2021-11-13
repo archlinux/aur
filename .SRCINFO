@@ -1,0 +1,13 @@
+pkgbase = efi-mkuki
+	pkgdesc = EFI Unified Kernel Image Maker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jirutka/efi-mkuki/#readme
+	arch = any
+	license = MIT
+	depends = binutils
+	optdepends = systemd: Default EFI stub files
+	source = efi-mkuki-0.1.0.tar.gz::https://github.com/jirutka/efi-mkuki/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = cf8b9653412af39adc44dd5b9875fcd45ad677ff0fae80c4b3f8644920ba9305
+
+pkgname = efi-mkuki
