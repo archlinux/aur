@@ -1,13 +1,13 @@
 pkgbase = 7-zip
 	pkgdesc = File archiver with a high compression ratio
-	pkgver = 21.03
-	pkgrel = 4
+	pkgver = 21.04
+	pkgrel = 1
 	url = https://www.7-zip.org
 	arch = x86_64
 	license = LGPL
 	makedepends = uasm
 	conflicts = p7zip
-	source = https://7-zip.org/a/7z2103-src.7z
+	source = https://7-zip.org/a/7z2104-src.7z
 	sha256sums = 94a0c543092d50ca88b999c35027715181fcc9be40526ff363df6e38345222b3
 
 pkgname = 7-zip
