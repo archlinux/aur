@@ -6,7 +6,7 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=v0.5.3.1.r675.g35ae3e65
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -49,7 +49,16 @@ build() {
         /p:VersionPrefix="$PREFIX"                  \
         /p:DebugType=None /p:DebugSymbols=false
 
-    ./generate-rules.sh
+    dotnet build          OpenTabletDriver.Tools.udev \
+        --configuration   Release                   \
+        --framework       net5.0                    \
+        --runtime         linux-x64                 \
+        --output          "./$_pkgname/out-udev"    \
+        /p:SuppressNETCoreSdkPreviewMessage=true
+
+    dotnet "./$_pkgname/out-udev/$_pkgname.Tools.udev.dll" \
+        "$srcdir/$_pkgname/$_pkgname.Configurations/Configurations" \
+        "bin/99-$_lpkgname.rules" > /dev/null
 }
 
 package() {
