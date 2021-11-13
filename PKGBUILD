@@ -5,8 +5,8 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.5.3.1.r524.g17d1cad6
-pkgrel=3
+pkgver=v0.5.3.1.r675.g35ae3e65
+pkgrel=4
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -44,51 +44,12 @@ build() {
     PREFIX=$(git describe --long --tags | sed 's/-.*//;s/v//')
     SUFFIX=$(git describe --long --tags | sed 's/^[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
 
-    dotnet publish        OpenTabletDriver.Daemon   \
-        --configuration   Release                   \
-        --framework       net5                      \
-        --runtime         linux-x64                 \
-        --self-contained  false                     \
-        --output          "./$_pkgname/out"         \
+    ./build.sh linux-x64 \
+        --version-suffix "$SUFFIX"                 \
         /p:VersionPrefix="$PREFIX"                  \
-        /p:SuppressNETCoreSdkPreviewMessage=true    \
-        /p:PublishTrimmed=false                     \
         /p:DebugType=None /p:DebugSymbols=false
 
-    dotnet publish        OpenTabletDriver.Console  \
-        --configuration   Release                   \
-        --framework       net5                      \
-        --runtime         linux-x64                 \
-        --self-contained  false                     \
-        --output          "./$_pkgname/out"         \
-        --version-suffix  "$SUFFIX"                 \
-        /p:VersionPrefix="$PREFIX"                  \
-        /p:SuppressNETCoreSdkPreviewMessage=true    \
-        /p:PublishTrimmed=false                     \
-        /p:DebugType=None /p:DebugSymbols=false
-
-    dotnet publish        OpenTabletDriver.UX.Gtk   \
-        --configuration   Release                   \
-        --framework       net5                      \
-        --runtime         linux-x64                 \
-        --self-contained  false                     \
-        --output          "./$_pkgname/out"         \
-        --version-suffix  "$SUFFIX"                 \
-        /p:VersionPrefix="$PREFIX"                  \
-        /p:SuppressNETCoreSdkPreviewMessage=true    \
-        /p:PublishTrimmed=false                     \
-        /p:DebugType=None /p:DebugSymbols=false
-
-    dotnet build          OpenTabletDriver.Tools.udev \
-        --configuration   Release                   \
-        --framework       net5.0                    \
-        --runtime         linux-x64                 \
-        --output          "./$_pkgname/out-udev"    \
-        /p:SuppressNETCoreSdkPreviewMessage=true
-
-    dotnet "./$_pkgname/out-udev/$_pkgname.Tools.udev.dll" \
-        "$srcdir/$_pkgname/$_pkgname.Configurations/Configurations" \
-        "90-$_lpkgname.rules" > /dev/null
+    ./generate-rules.sh
 }
 
 package() {
@@ -96,7 +57,7 @@ package() {
 
     install -do root "$pkgdir/usr/share/$_pkgname"
 
-    cd "$srcdir/$_pkgname/$_pkgname/out"
+    cd "$srcdir/$_pkgname/bin"
     for binary in *.dll *.json; do
         install -Dm 755 -o root "$binary" -t "$pkgdir/usr/share/$_pkgname"
     done
@@ -104,7 +65,7 @@ package() {
 
     sed -i "s/OTD_VERSION/$pkgver/" "$_pkgname.desktop"
 
-    install -Dm 644 -o root "$srcdir/$_pkgname/90-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
+    install -Dm 644 -o root "$srcdir/$_pkgname/bin/99-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
     install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
 
     install -Dm 755 -o root "$_spkgname" -t "$pkgdir/usr/bin"
