@@ -1,13 +1,16 @@
 pkgbase = ipinfo-cli
-	pkgdesc = ipinfo allowing you to lookup IP deltails, ASN, IP geolocation
-	pkgver = 2.2.0
+	pkgdesc = Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data)
+	pkgver = 2.4.0
 	pkgrel = 1
-	url = https://github.com/ipinfo/cli
-	arch = any
-	license = APACHE20
+	url = https://ipinfo.io
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = Apache
 	makedepends = go
 	depends = glibc
-	source = ipinfo-cli-2.2.0-cli.tar.gz::https://github.com/ipinfo/cli/archive/ipinfo-2.2.0.tar.gz
-	sha256sums = 14ff13cd52d1344c7b683de19eb8cbaa53852d7c20d11dfffc0dd28b66b4cd35
+	source = ipinfo-cli-2.4.0.tar.gz::https://github.com/ipinfo/cli/archive/ipinfo-2.4.0.tar.gz
+	sha256sums = cb5a5d7d330d30ae951e871f5451fb7133fae418bd3df3b49d900f9d7978cf07
 
 pkgname = ipinfo-cli
