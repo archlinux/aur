@@ -1,10 +1,11 @@
 pkgbase = python-cyclonedx-lib
 	pkgdesc = Library for producing CycloneDX SBOM (Software Bill of Materials) files
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CycloneDX/cyclonedx-python-lib
 	arch = any
 	license = Apache
+	makedepends = python-dephell
 	depends = python-packageurl
 	depends = python-requirements-parser
 	depends = python-setuptools
