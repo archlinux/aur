@@ -1,15 +1,15 @@
 # Maintainer: ml <>
 pkgname=ionosctl
-pkgver=5.0.1
+pkgver=5.0.10
 pkgrel=1
 pkgdesc='IONOS Cloud CLI'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/ionos-cloud/ionosctl'
-license=('custom:UNKNOWN')
+license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e00eeac1c2bc41d8bf426b6e9f1ee6a9ef43d4c4bf74c82fa36f6a8b8bd725ad')
+sha256sums=('0fcfde23ee92e79477a984236eb3c42773585254163791d30ff662478d2a191d')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -19,15 +19,16 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
-  IFS=. read -r major minor patch <<<"$pkgver"
+  local -a _ver
+  IFS=. read -ra _ver  <<<"$pkgver"
   go build -o "$pkgname" -ldflags "-linkmode=external \
-    -X github.com/ionos-cloud/ionosctl/commands.Major=$major
-    -X github.com/ionos-cloud/ionosctl/commands.Minor=$minor
-    -X github.com/ionos-cloud/ionosctl/commands.Patch=$patch"
+    -X github.com/ionos-cloud/ionosctl/commands.Major=${_ver[0]}
+    -X github.com/ionos-cloud/ionosctl/commands.Minor=${_ver[1]}
+    -X github.com/ionos-cloud/ionosctl/commands.Patch=${_ver[2]}
+    -X github.com/ionos-cloud/ionosctl/commands.Label=release" main.go
 
-  # @TODO powershell completions. path?
-  for shell in bash zsh fish; do
-    ./"$pkgname" completion "$shell" >completion."$shell"
+  for i in bash zsh fish; do
+    ./"$pkgname" completion "$i" >completion."$i"
   done
 }
 
@@ -38,10 +39,10 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-  install -Dm644 completion.fish "$pkgdir/usr/share/fish/completions/$pkgname.fish"
-  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  cp -a docs -T "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
+  install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
+  install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
+  install -Dm644 completion.fish "$pkgdir"/usr/share/fish/completions/"$pkgname".fish
+  install -dm755 "$pkgdir"/usr/share/doc/"$pkgname"
+  cp -a docs -T "$pkgdir"/usr/share/doc/"$pkgname"
 }
