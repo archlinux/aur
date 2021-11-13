@@ -3,7 +3,7 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=0.4.15_SR9
+pkgver=0.4.15_SR10
 _realver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
@@ -15,7 +15,7 @@ source=(
         "simulide.desktop"
         "changelog.txt")
 
-sha256sums=('2da9f1b1e2fb3f644e523e049fd82aba26a71828c0cf51694a309600afc45ebd'
+sha256sums=('571512a3ba008311a7150b2c8835ca0f6690bcde2b2866b5cc9a215734355a20'
             SKIP
             SKIP)
 
