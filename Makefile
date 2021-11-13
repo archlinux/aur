@@ -1,10 +1,19 @@
 .PHONY: container
 
+DOCKER_CMD = docker run --rm -v $(shell pwd):/home/build/src
+IMG = protonutils-build
+
 container:
 	docker build . -t protonutils-build
 
 build: container
-	docker run -v $(shell pwd):/home/build/src protonutils-build
+	$(DOCKER_CMD) $(IMG)
 
 hash: container
-	docker run -v $(shell pwd):/home/build/src protonutils-build makepkg -g
+	$(DOCKER_CMD) $(IMG) makepkg -g
+
+shell: container
+	$(DOCKER_CMD) -it $(IMG) /bin/bash
+
+root_shell: container
+	$(DOCKER_CMD) -it --user root $(IMG) /bin/bash
