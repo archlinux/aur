@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc="Enigma2 channel and satellite list editor."
 url="https://dyefremov.github.io/DemonEditor/"
 license=('MIT')
-depends=('python>=3.5.2' 'gtk3>=3.16' 'python-gobject')
+depends=('python>=3.6' 'gtk3>=3.22' 'python-gobject' 'python-requests')
+optdepends=('python-pillow' 'python-chardet')
 arch=('any')
 source=(
 	"https://github.com/DYefremov/$_pkgname/releases/download/$pkgver-b$pkgrel/$_pkgname-$pkgver-Beta.deb"

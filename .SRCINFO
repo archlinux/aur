@@ -5,9 +5,12 @@ pkgbase = demoneditor-bin
 	url = https://dyefremov.github.io/DemonEditor/
 	arch = any
 	license = MIT
-	depends = python>=3.5.2
-	depends = gtk3>=3.16
+	depends = python>=3.6
+	depends = gtk3>=3.22
 	depends = python-gobject
+	depends = python-requests
+	optdepends = python-pillow
+	optdepends = python-chardet
 	source = https://github.com/DYefremov/DemonEditor/releases/download/2.0.0-b1/DemonEditor-2.0.0-Beta.deb
 	source = https://raw.githubusercontent.com/DYefremov/DemonEditor/master/LICENSE
 	sha256sums = 7585e5feb9ded251e7ab2f628de4853ebb2adca2095f65e53002701de3ceda28
