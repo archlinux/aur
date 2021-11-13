@@ -17,7 +17,7 @@ provides=('chatterino')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage')
 install=$pkgname.install
 source=("git://github.com/SevenTV/chatterino7"
-        "git://github.com/Chatterino/libcommuni"
+        "git://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
         "git://github.com/jiakuan/qBreakpad"
         "git://github.com/mohabouje/WinToast"
         "git://github.com/pajlada/settings"
