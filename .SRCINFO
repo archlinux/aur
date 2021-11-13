@@ -1,0 +1,13 @@
+pkgbase = python2-pytz
+	pkgdesc = Cross platform time zone library for Python2
+	pkgver = 2021.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pytz
+	arch = any
+	license = MIT
+	depends = python2
+	source = https://pypi.io/packages/source/p/pytz/pytz-2021.3.tar.gz
+	validpgpkeys = C7ECC365AB6F255E1EB9BA1701FA998FBAC6374A
+	sha512sums = c45099f319592976b7715d9973496a2c7438a1b958ef8b90a1ad1fb97e7035624fe6191796727d4b7edf3236271bea4d864e25d1d92431e8cf767ac798448882
+
+pkgname = python2-pytz
