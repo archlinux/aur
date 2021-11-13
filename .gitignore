@@ -1,12 +1,15 @@
+# Xanmod-ROG .gitignore
 src-cache
-release*/
-builds
-src/
-pkg/
+release*
+clang*
+build*
+src
+pkg
+*/
 *log
 *.pkg.tar.*
 *.sig
+myconfig
 config.last
 oldconfig*
 *build.sh
-myconfig
