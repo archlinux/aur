@@ -14,7 +14,7 @@ license=('MIT')
 groups=('vim-plugins')
 makedepends=('git')
 install='vimdoc.install'
-source=("git://github.com/Yggdroot/indentLine.git")
+source=("git+https://github.com/Yggdroot/indentLine.git")
 md5sums=('SKIP')
 
 package() {
