@@ -19,7 +19,8 @@ pkgname="${pkgbase}"
 # The download link changes with every version, try to keep changes in one place
 #_pkgver='5.10';  _dl='8/0100007658/13'
 #_pkgver='5.20';  _dl='8/0100007658/18';_suffix='05'
-_pkgver='5.30';  _dl='8/0100007658/20';_suffix='12'
+#_pkgver='5.30';  _dl='8/0100007658/20';_suffix='12'
+_pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
 #https://gdlp01.c-wss.com/gds/8/0100007658/20/linux-UFRII-drv-v530-uken-12.tar.gz
 pkgver="${_pkgver}"
 pkgrel='1'
@@ -30,10 +31,9 @@ url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i
 license=('GPL2' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
 depends=('gcc-libs' 'libxml2' 'libglade')
-depends+=('libjpeg6-turbo') # libjpeg.so dlopen by usr/lib/libcanonufr2r.so.1.0.0
-depends+=('libjbig-shared') # libjbig.so dlopen by usr/bin/cnjbigufr2
 optdepends=(
   'libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices'
+  'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
   'gtk2: for cnsetuputil2'
 )
 makedepends=('jbigkit' 'gzip' 'gtk2')
@@ -44,9 +44,9 @@ options=('!emptydirs' '!strip' '!libtool')
 source=(
   "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-${_suffix}.tar.gz"
 )
-md5sums=('965e60cffa5f3e7872a344c9adbeca5b')
-sha256sums=('a13dd88c183facb5d42d4ab65d8e2f9ec6548ac502485bb066bcb83088b7c9ae')
-sha512sums=('61f060a742c9e6cc7439f26fac63fbac33c96722ec80c604eca40716255920a65eab4cd6f592deee627a8c803776df2c0b8c3dbce9727e53862fa7551a172ebe')
+md5sums=('79d4f933795528dc217c344d5aff079d')
+sha256sums=('51cab752fad9bcd5379320c7d0d092b90e67c30b336c1776bfe4ea74b03c2634')
+sha512sums=('c488fbaee081b3cd601282e737af0ce1d141a9ae940daa2335ef4da833cdb9fbdda3cc378f4e49b26700b36911dc7b142ef0665e1cacef505f91a666736e62dc')
 
 #PKGEXT='.pkg.tar.gz'
 
