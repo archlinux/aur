@@ -12,7 +12,6 @@ url="https://www.tango-controls.org/"
 license=('GPL3')
 depends=('tango-idl' 'omniorb' 'zeromq' 'doxygen' 'cmake>=3.7')
 conflicts=('tango')
-provides=('tango')
 source=("https://gitlab.com/tango-controls/cppTango/-/archive/9.3.4/cppTango-9.3.4.tar.gz")
 sha256sums=('50828ae9f523c8b2eeb546b38138b0d0882fcd3050e952d93a66a594ed178e72')
 _dir="${_pkgname}-${pkgver}"
