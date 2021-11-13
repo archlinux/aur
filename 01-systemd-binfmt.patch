@@ -1,0 +1,29 @@
+diff --new-file --unified --recursive --text binfmtc-0.17/binfmtc.conf binfmtc-0.17.patch/binfmtc.conf
+--- binfmtc-0.17/binfmtc.conf	1970-01-01 01:00:00.000000000 +0100
++++ binfmtc-0.17.patch/binfmtc.conf	2021-11-12 21:43:14.943367985 +0100
+@@ -0,0 +1,5 @@
++:ccompile:M::/*BINFMTC\x3a::@bindir@/binfmtc-interpreter:
++:cxxcompile:M::/*BINFMTCXX\x3a::@bindir@/binfmtcxx-interpreter:
++:asmassembly:M::/*BINFMTASMCPP\x3a::@bindir@/binfmtasm-interpreter:
++:fcompile:M::c\x20BINFMTF\x3a::@bindir@/binfmtf-interpreter:
++:f95compile:M::\x21\x20BINFMTF95\x3a::@bindir@/binfmtf95-interpreter:
+diff --new-file --unified --recursive --text binfmtc-0.17/Makefile.am binfmtc-0.17.patch/Makefile.am
+--- binfmtc-0.17/Makefile.am	2011-09-21 03:22:08.000000000 +0200
++++ binfmtc-0.17.patch/Makefile.am	2021-11-12 21:50:28.848739469 +0100
+@@ -59,13 +59,11 @@
+ 
+ install-exec-local:
+ 	-mkdir -p ${DESTDIR}${sbindir}
+-	sed -e "s,[@]bindir[@],@bindir@,g" < ${srcdir}/binfmtc-unreg.sh > ${DESTDIR}${sbindir}/binfmtc-unreg.sh
+-	sed -e "s,[@]bindir[@],@bindir@,g" < ${srcdir}/binfmtc-init.sh > ${DESTDIR}${sbindir}/binfmtc-init.sh
+-	chmod 755 ${DESTDIR}${sbindir}/binfmtc-unreg.sh
+-	chmod 755 ${DESTDIR}${sbindir}/binfmtc-init.sh
++	-mkdir -p ${DESTDIR}@prefix@/lib/binfmt.d
++	sed -e "s,[@]bindir[@],@bindir@,g" < ${srcdir}/binfmtc.conf > ${DESTDIR}@prefix@/lib/binfmt.d/binfmtc.conf
+ 
+ uninstall-local:
+-	rm -f ${DESTDIR}${sbindir}/binfmtc-unreg.sh ${DESTDIR}${sbindir}/binfmtc-init.sh
++	rm -f ${DESTDIR}@prefix@/lib/binfmt.d/binfmtc.conf
+ 
+ # Make debian pristine-source
+ ../@PACKAGE@_@VERSION@.orig.tar.gz: 

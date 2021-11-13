@@ -1,0 +1,18 @@
+pkgbase = binfmtc
+	pkgdesc = Execute C/C++ and Fortran Programs like scripts.
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://www.netfort.gr.jp/~dancer/software/binfmtc.html.en
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = gcc
+	depends = systemd
+	source = https://www.netfort.gr.jp/~dancer/software/downloads/binfmtc-0.17.tar.gz
+	source = 01-systemd-binfmt.patch
+	source = 02-remove-outdated.patch
+	sha256sums = c76ba4a9b05d6d9fe9b831c33ef11b3cb0bf8ccdada4f97de95bb0f6149553eb
+	sha256sums = eb1b203138ea364d90b9c3178b112f575402d921097e6a943bfb7dad6a38f3dd
+	sha256sums = 5503ef878184ac4a1e0a4752817ff457804b886ec7a2029fd01625ca9207e134
+
+pkgname = binfmtc
