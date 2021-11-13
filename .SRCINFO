@@ -1,7 +1,7 @@
 pkgbase = android-ndk-21
 	pkgdesc = Android C/C++ developer kit
 	pkgver = r21.e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.android.com/ndk/
 	install = android-ndk-21.install
 	arch = x86_64
