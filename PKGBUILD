@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio-arm-nordic"
-pkgver=5.50d
+pkgver=5.60
 pkgrel=1
 pkgdesc="Segger Embedded Studio for ARM, Nordic version"
 arch=('x86_64' 'i686')
@@ -17,8 +17,8 @@ options=(!strip)
 source_x86_64=("Setup_EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x64.tar.gz::https://dl.segger.com/files/embedded-studio/EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x64.tar.gz")
 source_i686=("Setup_EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x86.tar.gz::https://dl.segger.com/files/embedded-studio/EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x86.tar.gz")
 	
-sha256sums_x86_64=('a6c3525121368e9084dd683f235e8afda5dd788165ba09dcdb869806bbb47f27')
-sha256sums_i686=('e4689efbe66b3589db3a1adde283fe2fbd68ea6c4701ffac334fca5187944c38')
+sha256sums_x86_64=('daeb45b28493aa8910be0d716f94bb19cd97f52f8cdc8dfd534a2c47cb60203d')
+sha256sums_i686=('0006f99b8cdbcfe5884569b75a52140b43471138ce181446b0ccb9ff6ecd4185')
 
 prepare(){
         # Change src path name
