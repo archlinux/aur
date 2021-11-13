@@ -33,8 +33,6 @@ SystemCallErrorNumber=EPERM
 ReadOnlyPaths=/etc/go-livepeer
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 ReadWritePaths=/var/cache/livepeer /var/lib/livepeer
 
 [Install]
