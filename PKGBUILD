@@ -6,7 +6,7 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=v0.5.3.1.r675.g35ae3e65
-pkgrel=8
+pkgrel=9
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -22,18 +22,29 @@ source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
         "$_spkgname-gui"
         "$_lpkgname.service"
         "$_pkgname.desktop"
-        "notes.install")
+        "notes.install"
+        "otd-use-dotnet60.patch")
 
 sha256sums=('SKIP'
             '8a09d29e683aefcbf54e5fe891d5688f959d9399804f9c151f0e8f6e6a1ede1a'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            'f1f88e4a57b4caf503192a773fdbb88531b51499bfb9b350421d7e92795736fd')
+            'f1f88e4a57b4caf503192a773fdbb88531b51499bfb9b350421d7e92795736fd'
+            '3e15e50a68d092ab768d3f75d9cf17004fa1f4bb214a65cf554878d7d3051ca0')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+    if [ -f "$srcdir"/*.patch ]; then
+        for i in "$srcdir"/*.patch; do
+            patch -Np1 -i "$i" || true
+        done
+    fi
 }
 
 build() {
@@ -53,16 +64,7 @@ build() {
         /p:VersionPrefix="$PREFIX"                  \
         $EXTRA_OPTIONS
 
-    dotnet build          OpenTabletDriver.Tools.udev   \
-        --configuration   Release                       \
-        --framework       net5.0                        \
-        --runtime         linux-x64                     \
-        --output          "./$_pkgname/out-udev"        \
-        /p:SuppressNETCoreSdkPreviewMessage=true
-
-    dotnet "./$_pkgname/out-udev/$_pkgname.Tools.udev.dll"          \
-        "$srcdir/$_pkgname/$_pkgname.Configurations/Configurations" \
-        "bin/99-$_lpkgname.rules" > /dev/null
+    ./generate-rules.sh
 }
 
 package() {
