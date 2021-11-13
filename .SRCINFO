@@ -1,16 +1,16 @@
 pkgbase = hypre
-	pkgdesc = A library for solving large, sparse linear systems on massively parallel computers
-	pkgver = 2.18.2
+	pkgdesc = Parallel solvers for sparse linear systems featuring multigrid methods
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://github.com/hypre-space/hypre
 	arch = x86_64
-	license = lgpl
+	license = APACHE
+	license = MIT
+	license = LGPL2
 	makedepends = gcc-fortran
 	depends = superlu
 	depends = superlu_dist
-	depends = openmpi
-	source = https://github.com/hypre-space/hypre/archive/v2.18.2.tar.gz
-	sha512sums = 7b343a5c8530d7f5e31cad6c940c2f154b2b954566d4fe8525d690fec41db23936a46fb642a994791de32984e696c624804fb1fde1f0c9ce026f1a6e46b9c0f4
+	source = hypre-2.23.0::https://github.com/hypre-space/hypre/archive/v2.23.0.tar.gz
+	sha512sums = bed8426d093e2290ab443f49deffad96a64e1b3844a4236bc59af19523b16ea8bf2318db21e42ab2b8a4dd529246ba1d9a4eb0cb3bd943633569d03e6311f67f
 
 pkgname = hypre
-
