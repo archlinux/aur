@@ -1,4 +1,4 @@
-# Maintainer: MischievousTomat <mischievoustomato at protonmail dot com>
+# Maintainer: MischiefTomato <mischievoustomato at protonmail dot com>
 # Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -38,8 +38,8 @@ if [ -z ${_compress_modules+x} ]; then
 fi
 
 pkgbase=linux-cpu-optimized
-_major=5.14
-_minor=16
+_major=5.15
+_minor=2
 pkgver=${_major}.${_minor}
 _branch=5.x
 pkgrel=1
@@ -57,7 +57,7 @@ _srcname="linux-${pkgver}-cpu-optimized${pkgrel}"
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.${_minor}.tar."{xz,sign}
   config         # the main kernel config file
-  "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8-5.14.patch"
+  "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.15+.patch"
   choose-gcc-optimization.sh
 )
 validpgpkeys=(
@@ -75,10 +75,10 @@ validpgpkeys=(
     #source+=("${_patch}::https://raw.gigthubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 #done
 
-sha256sums=('c30dcbb1f884b94c80eab001339a6df5de46651f976460cdd213b6e2858ebc00'
+sha256sums=('5634033a4981be42d3259f50d5371a2cdc9ace5d9860da67a2879630533ab175'
             'SKIP'
-            'a6b2eb4fb84b1d374e726bd18685e6e98e2a61c058933d5204f051d7ec23c260'
-            '2f99d9e37f372925e054115bfead4723a328ffbdb7bf958753aab2ac48dc5673'
+            'ce28a3ed16128922f2f9a3dc5d7beb82939c4ff024583e43bba410d9122af90c'
+            '14baea3bc9ffbe41737cfce6f0c5e6b536021571de7b5c7a9e39b31b94b23668'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
