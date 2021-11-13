@@ -2,13 +2,13 @@
 
 pkgname=freetube-git
 _pkgname=FreeTube
-pkgver=0.13.1.beta.r493.g859411ac
-pkgrel=3
+pkgver=0.13.1.beta.r647.g2ce9337b
+pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
 license=('AGPL3')
-depends=('gtk3' 'nss' 'electron13')
+depends=('gtk3' 'nss' 'electron')
 makedepends=('git' 'npm' 'nodejs' 'yarn')
 provides=('freetube')
 conflicts=('freetube')
