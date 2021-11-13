@@ -8,7 +8,7 @@ pkgver='1.0.1'
 pkgrel='1'
 pkgdesc='File format determination library'
 arch=('any')
-url="https://github.com/floyernick/${pkgname}-py"
+url="https://github.com/floyernick/${_name}-py"
 makedepends=('python' 'python-setuptools'
 	     'python2' 'python2-setuptools')
 license=('MIT')
