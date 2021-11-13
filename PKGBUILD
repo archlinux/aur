@@ -6,7 +6,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -77,9 +77,9 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.14.15
+pkgver=5.15.2
 pkgrel=1
-_major=5.14
+_major=5.15
 _gcc_more_v=20210914
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 _jobs=$(nproc)
@@ -93,23 +93,18 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # thankfully xanmod keeps the hrtimer patches up to date
-_commit=e2d48df5def86f498766b22e836a9c2f1bcb3809
-_xan=linux-5.14.y-xanmod
+_commit=8ba6612318090567422d49ccc79bc7bbe5484cfc
+_xan=linux-5.15.y-xanmod
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
         config         # the main kernel config file
         "more-uarches-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
         "xanmod-patches-from-ck-${_commit}.tar.gz::https://github.com/xanmod/linux-patches/archive/${_commit}.tar.gz"
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
-        0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
-        0004-ALSA-pcm-Check-mmap-capability-of-runtime-dma-buffer.patch
-        0005-ALSA-pci-rme-Set-up-buffer-type-properly.patch
-        0006-ALSA-pci-cs46xx-Fix-set-up-buffer-type-properly.patch
-        "0007-UKSM.patch::${_patches_url}/uksm-patches-v2/0001-UKSM-for-${_major}.patch"
-        "0008-bbr2.patch::${_patches_url}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
-        "0009-lru.patch::${_patches_url}/lru-patches-v4/0001-lru-patches.patch"
-        "0010-block.patch::${_patches_url}/block-patches-v2/0001-block-patches.patch"
-        "0011-bfq.patch::${_patches_url}/bfq-patches-v2/0001-bfq-patches.patch"
+        "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
+        "0003-bbr2.patch::${_patches_url}/bbr2-patches/0001-bbr2-${_major}-introduce-BBRv2.patch"
+        "0004-lru.patch::${_patches_url}/lru-patches-pf-v3/0001-lru-patches.patch"
+        "0005-block.patch::${_patches_url}/block-patches-v2/0001-block-patches.patch"
+        "0006-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
 )
 
 validpgpkeys=(
@@ -117,22 +112,17 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 
-b2sums=('68d89bba3c35062e4ba93b4304d238541ced462d839ca4f49641f457f542d27fd11ae4ffe9f5474a5701a26b89858b16c7e667823dddd6945180acc2ef44070d'
+b2sums=('e1247057fc57e2f071ff150b5e0651db054a1e15a258ebd198921f7ef0c1e441f0a36c46024298175a8a9a0bb7cc0b6d505d7a77a053c1ce88a720ebea424d89'
         'SKIP'
-        '0c1a2b78a73af299cbdc99ff8c2bd365ee855528a576e017f4c0c9efec2a064c2815e263d4675b553cb5f464275f7ddd8d172b84decd006e07ea8c33c2975ac1'
+        '655ac674007f8ad8fc824d9446144a9c53c9a7841814a0696d6dec7c9bcd857e6ae255f2eba0eaabf1caad5c0cc46a25fe051565095c118e2ba82ce46dfa9d6e'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
-        'bd20774ee2c9856601af2c89a3af95c6abc812b71253368090e9c252edcce452f416bfeed54ced0886d401b5a9e1cb72c16ea5f04a72d8ded596c0d083f80e42'
-        '99706dd57b5620066bdfcb46ccd07de489dea59d5eeda10932f11abe7a43a6a354e7759638d75bc14e115a252eea6ab0a68163c23e45989d6bae820c4d772691'
-        '45f51985ca1450fcd8669db715ae7ee105f6f8331acf56d747d1dd93b420a6e6fb8159e4d5e3575ab1a55ace6df42185b97f9bb1476e7ab43b9aadd3e924b715'
-        'c5fd318fc4d2aef30f9ebf4b724e2aa26966384db8762eaff82137dc6161d0148798e8181207d0f8ba52f94ca1853bc7817efdf3cbbf996c5cc1a3da1868cef7'
-        'a9f502ad881fb115a90ee3133feab8f5ab0927a415df4f5140e4d61f45a69bb53e0c7af20b35078f75fd3898c3cd1056f4a0c0ff372b5e10e1d52c9d5afd3473'
-        '1877429274d65accf2e8684078d052a9b44b0ef9f7b5fae13a679877f6a3b8b4749fcfd4223648907cf53e0e89cf229abefaf1e40494d6a8866a7258ad6c5800'
-        'f0337c83077501734e40663a3bb2e0da31ba1921960e40c3c6040a9265a63707f7fd524fc9e3eb3e1b23f6c5f9cd883348b6fdf7bc085b3e30565a8669006f19'
-        '8f6d6263f0e517b6e7a1809fc57e01cc4b13dd261f778041026ec510f48257d4f525c3cb0b0935e291293960c9191282f5765ca0af3d948838e8f865c7deafcc'
-        'e263f1cf228d5a2c26340f37fa1b4a6d6c643b1a22378f37c96b68f5ec10372d65e2bf96716aec0722b18d76ca752b9debf82f621896e03917c977d8db2a4b21'
-        '29ef7be0f224ba79f1cd69cd61e21142fbf29b5717e9a1cf41a01f35def29c4e02bf138a06c09eab5b066dd54865c29acc219405572184ab213a41a72dbbef81'
-        'eb3be1df457271e5d32b93ee6f03f9f49901a15b4edac0db637ebc4c5dac90730a32783b71877e7f86181cae67e7445308763c58540e7ac91b201b6b44922076'
-        'fdb2c0b59e34b85a5859cbd3a8de707170cd235b91a092d338b91a7d4ada3da17a43b63f76b71b5c148ca3d97bb0534f339f9d4045156e1a0d0a9dce9047cd7e')
+        'cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e'
+        'c9d2fb487b12040f17a9a8eaefca776c2a2a1c37fb0fb6337630ff896f82f25c0303e1f26f0fa98e4f3e6eb143947d84a48a286678aa2977163711e291a90115'
+        '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260'
+        'e83b6ae58a6906f97e1ada7369b6dad8ccfb0264537b128e6815d2f47493b20b682c6852621fba75f5a23e92d7c0590bffb7dd7f0960bd33b23434477dde7079'
+        '17e0d30d644da4476875b13729544d083b6b706e892650b3c8ada89a99d385825250d0244fdf81adde076218c563bb3bdb3dc93e5e47c1ed167e41bf0005c648'
+        'defd550aa7b67834fdf2fce402e3ce260bdaa8a2778d31d6c9d2674e43d0ee5fc609df156752fb7482c7453d34725e6edca9764a183f5011a198f8dc10fc6459'
+        'ebf6cefe955d1d42231a569679eb1b300792a2824ff47cb65d5b75145bbe5a6ef31dc4e95cc05bd85fd4dc24c4dbd7c114ef6758ab316fe1c57a28f46811f92b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -198,7 +188,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   msg2 "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
