@@ -1,6 +1,6 @@
 pkgbase = superlu_dist
-	pkgdesc = Set of subroutines to solve a sparse linear system (MPI parallel version)
-	pkgver = 6.2.0
+	pkgdesc = Distributed memory, MPI based SuperLU
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://github.com/xiaoyeli/superlu_dist
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = superlu_dist
 	makedepends = gcc-fortran
 	depends = lapack
 	depends = parmetis
-	depends = combblas
+	depends = openblas
 	options = staticlibs
-	source = https://github.com/xiaoyeli/superlu_dist/archive/v6.2.0.tar.gz
-	sha512sums = ed60abc68bec718e20c53f902708bd38462db6e816cf50d87d89b45f48210c21c94dedf174af42f51c7aa8060203454d2a5f0788efed7e30d4d7c91254dbec8f
+	source = superlu_dist-7.1.1::https://github.com/xiaoyeli/superlu_dist/archive/v7.1.1.tar.gz
+	sha512sums = b5e4c6a99a0f71bb81170f6f90e6300d584ada608dd31d43f8bb3aa5ad6e4ba00f75043bbe14899d6f8bdb597552ef6eeb3cc1db20e06798421de71d810b32ee
 
 pkgname = superlu_dist
-
