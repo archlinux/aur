@@ -1,45 +1,58 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Mopi <mopi@dotslashplay.it>
 
-pkgname=play.it-git
-pkgver=2.11.3.r77.gefb6330b
+pkgbase=play.it-git
+pkgname=(play.it-git play.it-games-git)
+pkgver=r3072.bbf6b17e
 pkgrel=1
-pkgdesc="Easy way to install games on Linux - git version"
 arch=('any')
 url="https://wiki.dotslashplay.it"
 license=('BSD')
-depends=('bash')
 makedepends=('pandoc')
-provides=('play.it')
-conflicts=('play.it')
-optdepends=(
-  'imagemagick: to convert images between formats'
-  'libarchive: to extract various archive formats'
-  'icoutils: to manipulate Windows icon files'
-  'innoextract: to extract some Windows installers'
-  'unzip: to extract some archives'
-)
-source=(play.it::"git+https://forge.dotslashplay.it/play.it/scripts.git")
-sha1sums=('SKIP')
+source=('git+https://forge.dotslashplay.it/play.it/scripts.git'
+        'git+https://forge.dotslashplay.it/play.it/games.git')
+sha1sums=('SKIP' 'SKIP')
 
 pkgver() {
-  cd play.it
+  cd scripts
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd play.it
-  sed -i '/DEFAULT_OPTION_PREFIX/s,=.*,=/usr,' play.it-2/src/99_init.sh
+  cd scripts
+  sed -i '/^\s\+DEFAULT_OPTION_ARCHITECTURE=/s,=.*,=auto,' play.it-2/src/99_init.sh
 }
 
 build() {
-  cd play.it
+  cd scripts
   make
 }
 
-package() {
-  cd play.it
-  make DESTDIR="$pkgdir"/ prefix=/usr bindir=/usr/bin datadir=/usr/share install
+package_play.it-git() {
+  pkgdesc="Easy way to install games on Linux - git version"
+  depends=('bash')
+  optdepends=(
+    'imagemagick: to convert images between formats'
+    'libarchive: to extract various archive formats'
+    'icoutils: to manipulate Windows icon files'
+    'innoextract: to extract some Windows installers'
+    'unzip: to extract some archives'
+  )
+  provides=('play.it')
+  conflicts=('play.it')
+
+  cd scripts
+  make DESTDIR="$pkgdir"/ prefix=/usr bindir=/usr/bin datadir=/usr/share install-library install-wrapper install-manpage
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_play.it-games-git() {
+  pkgdesc="Easy way to install games on Linux, game scripts - git version"
+  depends=('play.it-git')
+  provides=('play.it-games')
+  conflicts=('play.it-games')
+
+  cd games
+  make DESTDIR="$pkgdir"/ prefix=/usr bindir=/usr/bin datadir=/usr/share install
 }
 
