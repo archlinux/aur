@@ -7,6 +7,7 @@ pkgbase = blogc
 	arch = x86_64
 	arch = pentium4
 	arch = i486
+	arch = aarch64
 	license = BSD
 	depends = glibc
 	options = !emptydirs
