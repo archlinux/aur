@@ -63,11 +63,11 @@ _makenconfig=
 
 pkgbase=linux-xanmod-tt
 _major=5.15
-pkgver=${_major}.1
+pkgver=${_major}.2
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
-pkgdesc='Linux Xanmod. Branch with Task Type CPU Sched'
+pkgdesc='Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
@@ -99,7 +99,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '9d6e61d72f8283b4b834f944eec87cfe4cdbaa517b375f978b492716d70e70e9'
+            'fb0d5b56cbaad398c94f1d7504874daa063de04275c628c5e308a03aff48b7cd'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
