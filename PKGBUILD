@@ -14,7 +14,6 @@ package() {
     cd pyorg
     mkdir "$pkgdir/usr"
     mkdir "$pkgdir/usr/bin"
-    rm -R "$pkgdir/usr/bin/pyorg"
     cp ./pyorg "$pkgdir/usr/bin/"
     chmod +x "$pkgdir/usr/bin/pyorg"
 }
