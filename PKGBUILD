@@ -1,7 +1,7 @@
-# Maintainer: OctopusET
-pkgbase=python-norminette
-pkgname=norminette-git
-pkgver=r480.2184517
+# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot com>
+
+pkgname=python-norminette
+pkgver=r531.921b5e2
 pkgrel=1
 pkgdesc="Open source norminette"
 arch=('any')
@@ -17,6 +17,7 @@ pkgver() {
   cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 build() {
     cd "$srcdir/$pkgname"
     python setup.py build
