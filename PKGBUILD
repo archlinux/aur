@@ -90,10 +90,10 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.15.1-xanmod1
+xanmod=5.15.2-xanmod1
 pkgver=${xanmod//-/.}
 #pkgver=5.15.1.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -177,7 +177,7 @@ validpgpkeys=(
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'dda0cf1f76115f4dcc419bc24ef42beea1d8e6b012d07c8e8b183124aaaa3474'
+            'cdb4d9b6a1cfc9e58fc7717f3e6bd60374d5d4435fa7aaa1859779c692d0e34d'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
