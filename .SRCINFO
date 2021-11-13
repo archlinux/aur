@@ -1,0 +1,10 @@
+pkgbase = arch-wiki-docs-search
+	pkgdesc = A script to search the offline version of the arch wiki
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = custom:DWTFYW
+	depends = arch-wiki-docs
+	noextract = wiki-search
+
+pkgname = arch-wiki-docs-search

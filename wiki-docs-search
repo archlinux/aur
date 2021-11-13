@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# fogobogo> keenerd: we want edit + submit for wiki-search-html
+
+# Written by keenerd for the arch-wiki-lite package
+# Mostly rewritten by magnus@iastate.edu for use with only the arch-wiki-docs package
+
+# Known bugs: does not de-encode encoded names (if an arch wiki page contains unicode)
+# I don't know what they are encoded in so I don't know how to fix it yet
+
+language=${language:-"en"}
+tmp=${tmp:-"/tmp/.wiki-docs-search.${USER}.tmp"}
+num_hits=${num_hits:-15}
+html_path="/usr/share/doc/arch-wiki/html"
+
+save_search() {  # mostly for scripting wiki-search-html
+	query="$*"
+	if [[ "$#" > "1" ]]; then
+		query="$(echo "$*" | sed 's/^/\\\(/; s/$/\\\)/; s/ /\\\|/g')"
+	fi
+	regex_search "$query" > $tmp
+}
+pretty_print() {
+	path_prefix="$html_path/$language/"
+	path_prefix_length=${#path_prefix}
+	pretty_name=${1:$path_prefix_length}
+	pretty_name=${pretty_name/.html/}
+	pretty_name=${pretty_name//_/ }
+	printf "| %-5s | $pretty_name\n" $2
+}
+show_hits() {
+	i=0
+	while read line; do
+		pretty_print $line $i
+		i="$((i+1))"
+	done <$tmp
+}
+regex_search()  {  # regex -> paths
+	# this stupid thing is 50 times faster than grep -ic
+	#query=$(tr 'A-Z' 'a-z' <<< "$1")
+	#zcat "$wikiball" | tr 'A-Z' 'a-z' | sed 's/@@[bw]//g' | grep "$query" | cut -d: -f1 | uniq -c | sort -nr | sed 's/^ *[0-9]* //'
+
+	# While keenerd must have had a rare moment of genius there, I think grep is probably fast enough and we don't want to download the wikiball
+	query=$(tr 'A-Z' 'a-z' <<< "$1")
+	grep -icR "$query" "$html_path/$language"     |
+		sed 's/\(.*\):/\1\t/'                 | # replace the last : (from grep -c) to a tabstop since some of the wiki pages have colons in their names
+		awk -F '	' '{print $2 " " $1}' | # Reverse the order so sort can sort the hits
+		sort -r -g                            | # Sort the hits
+		head -n $num_hits                     | # Trim the number of hits
+		awk '{print $2}'
+}
+usage() {
+	printf 'Usage: wiki-docs-search [-h] [q] search query terms\n\nA script to browse the arch-wiki-docs package more easily, inspired from the one in arch-wiki-lite\n\n\t-q\tDo not prompt interactively or produce output; only create a /tmp/.wiki-search file\n\t-h\tShow this help and exit\n'
+}
+
+#Process arguments
+OPTIND=1
+while getopts "hq" opt; do
+	case "$opt" in
+	q)  quiet="t" ;;
+	h)
+		usage
+		exit 0
+		;;
+	esac
+done
+shift $((OPTIND-1))
+
+if [[ -z "$@" ]]; then
+	usage
+	exit 1
+fi
+
+if [[ ! -d "$html_path" ]]; then
+	echo 'Please run `pacman -S arch-wiki-docs` to be able to browse the arch wiki offline'
+	exit 1
+fi
+
+if [[ -z "$wiki_browser" ]]; then
+	which xdg-open &> /dev/null && wiki_browser="xdg-open"
+fi
+
+if [[ -z "$wiki_browser" ]]; then
+	echo 'Install xdg-utils or export the $wiki_browser variable first'
+	exit 1
+fi
+
+case "$1" in
+	[0-9]*)
+		if [ ! -f "$tmp" ]; then
+			echo "Error: no previous query"
+			exit 1
+		fi
+		to_open=$(($1 + 1))
+		file_to_open=`sed "${to_open}"'q;d' $tmp`
+		$wiki_browser $file_to_open
+		;;
+	*)
+		save_search $@
+		[[ -z "$quiet" ]] || exit 0
+		show_hits
+		printf 'Enter a selection: '
+		read selection
+		to_open=$(($selection + 1))
+		file_to_open=`sed "${to_open}"'q;d' $tmp`
+		echo $file_to_open
+		$wiki_browser $file_to_open
+		;;
+esac
