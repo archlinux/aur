@@ -1,8 +1,8 @@
-# Maintainer: Samuel Forestier <dev+archey@samuel.domains>
+# Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname=mounch
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple rofi based launcher based on yaml config"
 arch=('any')
 url="https://github.com/chmouel/${pkgname}"
