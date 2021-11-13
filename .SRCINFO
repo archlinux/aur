@@ -8,6 +8,7 @@ pkgbase = minq_simple_https_file_hoster-git
 	license = GPL
 	makedepends = git
 	depends = python
+	depends = python-pyopenssl
 	provides = minq_simple_https_file_hoster
 	source = git+https://github.com/kuche1/minq_simple_https_file_hoster.git
 	md5sums = SKIP
