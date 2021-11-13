@@ -4,7 +4,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=10.0.2.r306.c51183f1a
+pkgver=10.0.4.r684.0e3da48af
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64')
