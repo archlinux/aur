@@ -1,7 +1,7 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=ODA File Converter
-Exec=oda-file-converter
+Comment=ODA SDK® for .dwg files 22.10.0.0, Open Design Alliance Inc.
+Exec=/usr/bin/oda-file-converter
 Icon=oda-file-converter
 Terminal=false
 Type=Application

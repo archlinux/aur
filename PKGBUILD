@@ -1,7 +1,8 @@
-# Maintainer: Zanny <lordzanny@gmail.com>
+# Maintainer: Daniele Basso <daniele05 dot bass at gmail dot com>
+# Contributor: Zanny <lordzanny@gmail.com>
 
 pkgname=oda-file-converter
-pkgver=21.11.0.0
+pkgver=22.10.0.0
 pkgrel=1
 pkgdesc="Converts files between the .dwg and .dxf file formats"
 arch=('x86_64')
@@ -10,12 +11,12 @@ license=('custom')
 conflicts=('teigha-file-converter')
 replaces=('teigha-file-converter')
 depends=('qt5-base' 'hicolor-icon-theme')
-source=('https://download.opendesign.com/guestfiles/Demo/ODAFileConverter_QT5_lnxX64_7.2dll_21.11.deb'
+source=('https://download.opendesign.com/guestfiles/Demo/ODAFileConverter_QT5_lnxX64_7.2dll_22.10.deb'
         'oda-file-converter'
         'oda-file-converter.desktop')
-sha256sums=('10027a3ab18efd04ca75aa699ff550eca3bdfe6f7084460d3c00001bffb50070'
+sha256sums=('75303bc144d5d5bfa91961c2e2e3a12f9c4cebb2627efa49467f7a7beaba69dc'
             '717f27caf6be52ffa1de45022e1c7534827731a2b59d908d02b5970fc904081d'
-            '808bfc11b6c062ca9cccedf3a0231715826eef19d8b0664216999fc9a9792827')
+            '3c09891beeb4e1b07f547897f25b74a28ecb47fbf90d5c5c299ea316b44fc69d')
 _ogname='ODAFileConverter'
 
 package() {
