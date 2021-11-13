@@ -20,8 +20,8 @@ _modulename='ax99100'
 
 set -u
 pkgname="asix-${_modulename,,}"
-pkgver='1.6.0'
-pkgrel='2'
+pkgver='1.7.0'; _dl='1162'
+pkgrel='1'
 pkgdesc='kernel module driver for Asix serial RS-232 port'
 arch=('i686' 'x86_64')
 url='https://www.asix.com.tw/'
@@ -30,13 +30,13 @@ makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 #backup=("etc/modprobe.d/${_modulename}.conf")
 install="${pkgname}-install.sh"
 _srcdir="AX99100_SP_PP_SPI_Linux_Driver_v${pkgver}_Source"
-source=("${_srcdir}.tar.bz2::https://www.asix.com.tw/en/support/download/file/529")
+source=("${_srcdir}.tar.bz2::https://www.asix.com.tw/en/support/download/file/${_dl}")
 source+=('0000-ax99100_sp.c-ch.patch')
 source+=('0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch')
-md5sums=('ccfce62fb5d3d1680514cddae9a5a361'
+md5sums=('f8cee4f0e231750613066e4acf9c1fcb'
          'e992800dddd65a174ac531448e3f1498'
          'ab3d71682ad549eb51ae8a13aa90efc5')
-sha256sums=('2eab40bb6bc660481099cab832a52e7e0a4044dfa55a686546b1a4bc2c40bdc1'
+sha256sums=('e561c874f5d3c7cd1e8ddea6bb1dfcbb55e4d73014e2ff6bebf3b2fddbb7baab'
             '158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36'
             '86b91328ed6b596aaa441aea448e6f7fb833a447483b44e869cfbf8286810e54')
 
@@ -73,7 +73,7 @@ prepare() {
   sed -e 's:\r$::g' -i $(grep -l $'\r$' *)
 
   # diff -pNau5 ax99100_sp.c{.orig,} > '0000-ax99100_sp.c-ch.patch'
-  patch -Nup0 -i "${srcdir}/0000-ax99100_sp.c-ch.patch"
+  #patch -Nup0 -i "${srcdir}/0000-ax99100_sp.c-ch.patch"
 
   # diff -pNau5 ax99100_sp.c{.orig,} > '0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch'
   patch -Nup0 -i "${srcdir}/0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch"
