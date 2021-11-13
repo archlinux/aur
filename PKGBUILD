@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.13.19.arch1.r1016502.6c5219caf0cc
-_srcver_tag=v5.13.19.arch1
+pkgver=v5.15.2.arch1.r1045906.3ab5422fc015
+_srcver_tag=v5.15.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -96,14 +96,14 @@ _repo_url_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-5.8-5.14.patch"
+_kernel_patch_name="more-uarches-for-kernel-5.15+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
     "${_reponame}::git+${_repo_url}#branch=master"
     "${_reponame_arch}::git+${_repo_url_arch}"
-    arch_patches.patch
+    #arch_patches.patch
     "${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
@@ -115,10 +115,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '8b0cec5f9d5f73a13f186e11ffcac5ec9dc66c5e58d690bcda999ee81d61a3643b779560d6cc31c0bb9559b82bc3cc4fb4ac9994da88726ad12df787683c7dad'
             'SKIP'
             'SKIP'
-            'adf131b610ec73c8acad604108451b43dc62cec9b2a8bd0503d65fd3e18e342b24b81d408d018e62746573f043685f3e79ca07a120e1dd610027d15d7b8e1df1')
+            '0f0affb2399b4ecc6ece082b46b92521ec7e7c7312710c49af54e8c9646e14fd4e47856495f9e492e45074c0563a94a1b7844b2ecc13f305551d916b8dd4a69a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -132,21 +131,22 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    #msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    #git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
-    #git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
-    #git merge --no-edit --no-commit FETCH_HEAD
-
-    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
-    git fetch upstream_stable ${_srcver_tag//.arch*/}
+    msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
+    git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
+    git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
 
-    PatchesArray=(
+    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
+    #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
+    #git fetch upstream_stable ${_srcver_tag//.arch*/}
+    #git merge --no-edit --no-commit FETCH_HEAD
+
+    FullPatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
+        #arch_patches.patch
     )
 
-    for MyPatch in "${PatchesArray[@]}"
+    for MyPatch in "${FullPatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
