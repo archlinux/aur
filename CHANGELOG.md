@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.6.5](#1-6-5)
 * [1.6.4](#1-6-4)
 * [1.6.3](#1-6-3)
 * [1.6.2](#1-6-2)
@@ -12,6 +13,27 @@
 * [1.5.0](#1-5-0)
 * [1.4.2](#1-4-2)
 * [1.4.1](#1-4-1)
+
+
+## 1.6.5
+
+### Added
+
+* `--dpi-aware=no|yes|auto` command line option.
+* Multi-page view (https://codeberg.org/dnkl/fuzzel/issues/42).
+
+
+### Removed
+
+* Misleading error message about a non-existing cache file
+  (https://codeberg.org/dnkl/fuzzel/issues/59).
+
+
+### Fixed
+
+* Window quickly resized when launched
+  (https://codeberg.org/dnkl/fuzzel/issues/21).
+* Layer surface being committed before configure event has been ack:ed.
 
 
 ## 1.6.4

@@ -6,7 +6,7 @@ SVG_BACKEND=librsvg  # none|librsvg|nanosvg (librsvg force-enables cairo, nanosv
 
 pkgname=fuzzel
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Application launcher for wlroots based Wayland compositors"
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/${pkgname}
