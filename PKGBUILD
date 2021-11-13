@@ -74,12 +74,8 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.14
-_minor=15
-_srcname=linux-${_major}
-
 pkgbase=linux-mini
-pkgver=${_major}.${_minor}
+pkgver=5.15.2
 pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
@@ -94,9 +90,8 @@ makedepends=(
 options=('!strip')
 _gcc_more_v='20210914'
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  "https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver:0:4}.tar".{xz,sign}
+  "https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/patch-${pkgver}.xz"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   config         # the main kernel config file
 )
@@ -105,11 +100,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
+sha512sums=('d25ad40b5bcd6a4c6042fd0fd84e196e7a58024734c3e9a484fd0d5d54a0c1d87db8a3c784eff55e43b6f021709dc685eb0efa18d2aec327e4f88a79f405705a'
             'SKIP'
-            '980f6c10adfb866ec6060fc28a1adc4b2d766ccdf9062a3c6bf618eb16d752d3'
-            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611'
-            'f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060')
+            '5f0123bdc7c9875e7b3f02a89496a8a1e0808d77dc58fb725e250d93d69510a1ef6462cfb38cb38e78e20ca34fd7446f58327cad5e67fc68ec36d15777048edf'
+            'b41b3a71e2ba4813844f763d6de4c2122f61dbeebefbb4c185ea1cdea0882d80dcddcf6b660185f064fcae953aa232950a7c4383b05790e30dd5658c55a14093'
+            '0f0affb2399b4ecc6ece082b46b92521ec7e7c7312710c49af54e8c9646e14fd4e47856495f9e492e45074c0563a94a1b7844b2ecc13f305551d916b8dd4a69a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -120,7 +115,7 @@ prepare() {
   if [[ ! -f "$srcdir/patch-${pkgver}" ]]; then
     xz -dc "$SRCDEST/patch-${pkgver}.xz" > "patch-${pkgver}"
   fi
-  cd $_srcname
+  cd linux-${pkgver:0:4}
 
   ### Add upstream patches
         echo "Add upstream patches"
@@ -260,8 +255,8 @@ prepare() {
 }
 
 build() {
-  cd $_srcname
-  make bzImage modules
+  cd linux-${pkgver:0:4}
+  make all
 }
 
 _package() {
@@ -273,7 +268,7 @@ _package() {
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  cd $_srcname
+  cd linux-${pkgver:0:4}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -296,7 +291,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=('pahole')
 
-  cd $_srcname
+  cd linux-${pkgver:0:4}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
