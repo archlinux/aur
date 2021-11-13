@@ -1,6 +1,6 @@
 pkgname=android-ndk-21
 pkgver=r21.e
-pkgrel=1
+pkgrel=2
 pkgdesc='Android C/C++ developer kit'
 arch=('x86_64')
 url='https://developer.android.com/ndk/'
@@ -16,7 +16,7 @@ optdepends=(
   'python: various helper scripts'
 )
 source=("$pkgname.sh")
-source_x86_64=("https://dl.google.com/android/repository/${pkgname/-r21/}-${pkgver/./}-linux-x86_64.zip")
+source_x86_64=("https://dl.google.com/android/repository/${pkgname/-21/}-${pkgver/./}-linux-x86_64.zip")
 # SHA1 sums is kept to follow upstream releases https://github.com/android-ndk/ndk/issues/673
 sha1sums=('2479a8d74428eb651ad2b9772ad655d7a90af410')
 sha1sums_x86_64=('c3ebc83c96a4d7f539bd72c241b2be9dcd29bda9')
