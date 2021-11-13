@@ -1,8 +1,9 @@
 pkgbase = git-extras
 	pkgdesc = GIT utilities -- repo summary, commit counting, repl, changelog population and more
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tj/git-extras
+	install = git-extras.install
 	arch = any
 	license = MIT
 	depends = git
