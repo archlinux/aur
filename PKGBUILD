@@ -1,107 +1,122 @@
-# Contributor: Ben Ward <benjamin.ward@bathspa.org>
-# Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
-# Maintainer: Philipp A. <flying-sheep@web.de>
+# Maintainer: Artem Klevtsov <a.a.klevtso@gmail.com>
+# Maintainer: Stephen Martin <hwkiller@gmail.com>
+# Contributor: Conor Anderson <conor@conr.ca>
+
 pkgname=rstudio-desktop
-pkgver=1.3.1093
-_clangver=3.6.1
-pkgrel=2
-pkgdesc="Open source and enterprise-ready professional software for the R community"
-arch=(i686 x86_64)
-url="http://www.rstudio.com/"
-license=(AGPL)
-# TODO: what to remove? extra-x86_64-build says
-# - it doesn’t need mathjax, clang, qt5-{sensors,svg,xmlpatterns}
-# - and qt5-{base,declarative,location}, pango, shared-mime-info are auto-included
-depends=(
-	'r>=3.0.1' 'boost-libs>=1.63'
-	pango shared-mime-info mathjax clang
-	'qt5-base>=5.12.5' qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns
-)
-optdepends=(pandoc)
-# java-environment=8 prevents:
-#    [ERROR] Hint: Check that your module inherits 'com.google.gwt.core.Core'
-#    either directly or indirectly (most often by inheriting module 'com.google.gwt.user.User')
-makedepends=('cmake>=3.4.3' 'boost>=1.69' 'java-environment=8' 'patchelf>=0.9' apache-ant openssl pam r-testthat)
-conflicts=(rstudio-desktop-bin rstudio-desktop-git rstudio-desktop-preview-bin)
-source=(
-	"rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
-	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
-	'https://gist.githubusercontent.com/trap000d/22b11a58c064046478967e60b3394214/raw/8bd457515431ec8c139e8f07fd86b0d2cb420d5d/rstudio-aee4453_libboost175.diff'
-)
-noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
-sha256sums=('6ea169a0d59f0c3eba408d74a2590f7bf9f1e6f911b266a02f6266bf4975cec9'
-            '4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
-            '77e3e1cfec3c3ffebc9151f62b80db2840db022c84359c7bf17e92c288ab4973')
+#2021.09.1+372
+_vermajor="2021"
+_verminor="09"
+_verpatch="1"
+_versuffix="+372"
+_gitcommit=e1c360e
+_gitname=rstudio-rstudio-${_gitcommit}
+pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
+_srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
+_gwtver=2.8.2
+_ginver=2.1.2
+_nodever=14.17.5
+pkgrel=1
+pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
+arch=('i686' 'x86_64')
+url="https://www.rstudio.com/products/rstudio/"
+license=('AGPL3')
+depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp)
+makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
+optdepends=('git: for git support'
+            'subversion: for subversion support'
+            'openssh-askpass: for a git ssh access')
+provides=('rstudio-desktop')
+conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rstudio-desktop-git')
+source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}${_versuffix}.tar.gz"
+        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
+        "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
+        "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
+        "qt.conf"
+        "cran_multithread.patch"
+        "node_version.patch::https://github.com/rstudio/rstudio/commit/8188a86b226b45ae7ff35d5afa4ee5b3fa84fd76.patch")
 
-_pkgname=rstudio
+sha256sums=('acd45115066e3755b74d275f2d44e321f82c42cf8f68ead8390fea75c1965203'
+            'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
+            '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
+            'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
+            '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
+            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
+            '1d1782bce69d699b5c2b8fa6fd380893aff244efcc595e22b42f805b45e5057b')
 
-_check_version() {
-	local varname=$1
-	local real=$2
-	local path=$3
-	msg2 "Checking if $varname in file “$path” is “$real”"
-	
-	local test=$(grep -P "$varname=[\\d.]+" "$path" | cut -d= -f2)
-	if [[ "$test" != "$real" ]]; then
-		msg2 "Check failed: $varname is $test" >&2
-		exit 1
-	fi
+noextract=("gin-${_ginver}.zip")
+
+prepare() {
+    cd ${srcdir}/${_srcname}
+    local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
+    sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
+    git apply -v ${srcdir}/cran_multithread.patch
+    git apply -v ${srcdir}/node_version.patch
+
+    msg "Extracting dependencies..."
+    cd "${srcdir}/${_srcname}/src/gwt"
+    install -d lib/gin/${_ginver} lib/gwt/${_gwtver}
+    unzip -qo "${srcdir}/gin-${_ginver}.zip" -d lib/gin/${_ginver}
+    cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
+
+    cd "${srcdir}/${_srcname}/dependencies/common"
+    _pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
+    install -d pandoc/${_pandocver}
+ 
+    ln -sfT /usr/share/myspell/dicts dictionaries
+    ln -sfT /usr/share/mathjax2 mathjax-27
+    ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
+    ln -sfT /usr/bin/pandoc-citeproc pandoc/${_pandocver}/pandoc-citeproc
+
+    # Nodejs
+    install -d node/${_nodever}
+    cp -r "${srcdir}/node-v${_nodever}-linux-x64/"* node/${_nodever}
+    cd "${srcdir}/${_srcname}/src/gwt/panmirror/src/editor"
+    yarn config set ignore-engines true
+    yarn install
+
+    # Fix links for src/cpp/session/CMakeLists.txt
+    cd "${srcdir}/${_srcname}/dependencies"
+    ln -sfT common/dictionaries dictionaries
+    ln -sfT common/mathjax-27 mathjax-27
+    ln -sfT common/pandoc pandoc
 }
 
 build() {
-	if [[ $(archlinux-java get) != 'java-8'* ]]; then
-		echo 'You need to have Java 8 active when building this package.' >&2
-		echo 'Please execute `sudo archlinux-java set java-8-openjdk`' >&2
-		exit 1
-	fi
-	cd "$srcdir/$_pkgname-$_pkgname-"*
-	
-	(
-		cd 'dependencies/common'
-		install -d dictionaries libclang/{3.5,builtin-headers}
-		
-		unzip -qfod 'dictionaries' "$srcdir/core-dictionaries.zip"
-		
-		ln -sfT '/usr/share/mathjax'                mathjax-27
-		ln -sfT '/usr/bin'                          pandoc
-		ln -sfT '/usr/lib/libclang.so'              libclang/3.5/libclang.so
-		ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
-		
-		#TODO: https://github.com/rstudio/rsconnect.git
-		#TODO: https://github.com/rstudio/rmarkdown.git
-		bash 'install-packages'
-	)
-	
-	# The previous comparison doesn’t seem to work with Boost_VERSION being 1.71.0
-	sed -i 's/Boost_VERSION LESS 106900/Boost_VERSION VERSION_LESS 1.69.0/g' src/cpp/CMakeLists.txt
-	patch -p1 <'../rstudio-aee4453_libboost175.diff'
-	
-	# Prevent java error: “Could not lock User prefs. Lock file access denied.”
-	# Because gwt desperately needs to add a “firstLaunch” entry there…
-	export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$srcdir"
-	
-	# Set information for Cmake and build
-	local shortver="${pkgver%.*}"
-	export RSTUDIO_VERSION_MAJOR="${pkgver%%.*}"
-	export RSTUDIO_VERSION_MINOR="${shortver#*.}"
-	export RSTUDIO_VERSION_PATCH="${pkgver##*.}"
-	export GIT_COMMIT="${PWD##*-}"
-	export BUILD_ID="local"
-	export PACKAGE_OS="Arch Linux"
-	cmake -DRSTUDIO_TARGET=Desktop \
-		-Wno-dev \
-		-DRSTUDIO_USE_SYSTEM_BOOST=Yes \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
-		-DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio
+    msg "Downloading and installing R packages..."
+    bash "${srcdir}/${_srcname}"/dependencies/common/install-packages
+
+    export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
+    export RSTUDIO_VERSION_MAJOR=${_vermajor}
+    export RSTUDIO_VERSION_MINOR=${_verminor}
+    export RSTUDIO_VERSION_PATCH=${_verpatch}
+    export RSTUDIO_VERSION_SUFFIX=${_versuffix}
+    export GIT_COMMIT=${_gitcommit}
+    export PACKAGE_OS=$(uname -om)
+    
+    cmake -S "${srcdir}/${_srcname}" -B build \
+          -DRSTUDIO_TARGET=Desktop \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
+          -DRSTUDIO_USE_SYSTEM_BOOST=yes \
+          -DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
+          -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
+          -DBoost_NO_BOOST_CMAKE=ON \
+          -DRSTUDIO_USE_SYSTEM_SOCI=yes \
+          -DRSTUDIO_BUNDLE_QT=FALSE
+#   make -C build
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$_pkgname-"*
-	
-	make DESTDIR="$pkgdir/" install
-	
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	install -d "$pkgdir/usr/bin"
-	ln -sfT ../lib/rstudio/bin/rstudio "$pkgdir/usr/bin/rstudio"
+    # Install the program
+    make -C build DESTDIR="${pkgdir}" install
+
+    # Install the license
+    install -Dm 644 "${srcdir}/${_srcname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+
+    # Symlink main binary
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/rstudio/bin/rstudio" "${pkgdir}/usr/bin/rstudio"
+
+    # BUGFIX: qt5-webengine isn't init'ing properly. Likely an Rstudio bug.
+    install -Dm 644 "${srcdir}/qt.conf" "${pkgdir}/usr/lib/qt/libexec/qt.conf"
 }

@@ -6,7 +6,6 @@
 /gin-*.zip
 /gwt-*.zip
 /core-dictionaries.zip
-/*.patch
 /*.diff
 
 /pkg-cache/
