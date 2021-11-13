@@ -2,8 +2,8 @@
 # Contributor Tavian Barnes <tavianator@tavianator.com>
 # Contributor jhorcl
 pkgname=mozillavpn
-pkgver=2.5.0
-_debian_series=hirsute2
+pkgver=2.6.0
+_debian_series=impish1
 pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('i686' 'x86_64')
@@ -33,19 +33,12 @@ makedepends=('qt5-tools' 'go' 'flex' 'python-yaml')
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=(
     "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
-    "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}-${_debian_series}.debian.tar.xz"
-    "libgo.patch")
-sha256sums=('2549774bd742e08cdbe2177fe43f2ce514f2dd102b1c6f68e587ce1fdbc7a71a'
-            '7a76fc487168bfde3b31361f380ca93feb59517e8f31c8153fa7fb67cfe37719'
-            '3c5b7047481922a1b5c6673ae78750d1af8e9dbde85632804356c829dadfa301')
+    "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}-${_debian_series}.debian.tar.xz")
+sha256sums=('17dd9ef06a266325d2ecaf830548a002de4f5ba32ad43ebc4df6e0daa5914a3f'
+            'e124de5757d5118d26b3b40c400b586943fc0ad8cdfe45713fc01e389c4d89e6')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    
-    # https://github.com/mozilla-mobile/mozilla-vpn-client/pull/1490
-    # https://github.com/mozilla-mobile/mozilla-vpn-client/issues/1814
-    patch -Np1 -i "${srcdir}/libgo.patch" src/src.pro
-    
     qmake PREFIX=/usr CONFIG+=production
     python scripts/importLanguages.py
     make
