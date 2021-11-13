@@ -1,5 +1,5 @@
 pkgbase = code-insiders
-	pkgdesc = Editor for building and debugging modern web and cloud applications (insider version)
+	pkgdesc = Editor for building and debugging modern web and cloud applications (insiders version)
 	pkgver = 1_63_0_1636353036
 	pkgrel = 1
 	url = https://code.visualstudio.com/
