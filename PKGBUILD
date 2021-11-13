@@ -2,7 +2,7 @@
 
 pkgname=mounch
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple rofi based launcher based on yaml config"
 arch=('any')
 url="https://github.com/chmouel/${pkgname}"
@@ -23,9 +23,8 @@ package() {
 	# Configuration file.
 	install -D -m0644 ${pkgname}.yaml "${pkgdir}/usr/share/doc/${pkgname}/config.example.yaml"
 
-
     # Rofi theme
-	install -D -m0644 rofi/${pkgname}.rasi "${pkgdir}/usr/share/rofi/themes/${pkgname}/${pkgname}.rasi"
+	install -D -m0644 rofi/${pkgname}.rasi "${pkgdir}/usr/share/rofi/themes/${pkgname}.rasi"
 
 
 	# Helpers
