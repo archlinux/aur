@@ -1,8 +1,8 @@
 _npmnamespace=@simon04
 _npmname=npm2arch
 pkgname=nodejs-npm2arch
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Convert NPM package to a PKGBUILD for ArchLinux"
 arch=(any)
 url="https://github.com/simon04/npm2arch"
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmnamespace/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('1c200b71fe6dc68d63cebf0749ee7c34f1f91d9b')
+sha1sums=('4504704732a79b7fb0a77425488b2ed7d99ad44e')
 
 package() {
   cd $srcdir
