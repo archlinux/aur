@@ -1,5 +1,5 @@
 pkgname=("icalingua-git" "icalingua-electron-git")
-pkgver=2.3.2_66_g390b427
+pkgver=2.3.2_70_gcf35cbb
 pkgrel=1
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
@@ -21,7 +21,6 @@ pkgver(){
 }
 prepare(){
     cd "${srcdir}/Icalingua/icalingua"
-    sed -i "919s/temp/Number(temp)/" "src/main/adapters/oicqAdapter.ts"
     yarn install
 }
 build(){
