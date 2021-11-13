@@ -1,0 +1,19 @@
+pkgbase = minq_simple_https_file_hoster-git
+	pkgdesc = Host files easily
+	pkgver = r17.709508d288055152f42e8197cf9d8ed2bffeb991
+	pkgrel = 1
+	url = https://github.com/kuche1/minq_simple_https_file_hoster.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	depends = viu
+	depends = mplayer
+	depends = yt-dlp
+	provides = minq_simple_https_file_hoster
+	source = git+https://github.com/kuche1/minq_simple_https_file_hoster.git
+	md5sums = SKIP
+
+pkgname = minq_simple_https_file_hoster-git
