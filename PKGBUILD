@@ -1,7 +1,7 @@
 pkgname=hyperx-cloud-flight-git
 pkgver=0.1.3.0.gfac59f3
 pkgrel=1
-pkgdesc='HyperX Cloud Flight Battery and Mute Monitoring (GIT version'
+pkgdesc='HyperX Cloud Flight Battery and Mute Monitoring (GIT version)'
 arch=('x86_64')
 url='https://github.com/kondinskis/hyperx-cloud-flight'
 license=('MIT')
