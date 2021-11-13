@@ -9,7 +9,7 @@
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
 _pkgver=4.1
-pkgver=${_pkgver}beta2
+pkgver=${_pkgver}beta3
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -22,8 +22,8 @@ depends=('gtk3' 'lib32-libx11' 'lib32-libxkbcommon' 'libxkbcommon-x11' 'xcb-util
 optdepends=('alsa-lib' 'jack' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
-source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/?id=457&os=installer_linux")
-b2sums=('a7bfcb9d1b39314dccf9b7f3460371e9cc95a601df14544093b4bb87e960202e3e10c8532c3943e7b0f0d32d4c4baaf93008a8997ecdb03b9bb1325a4134dcda')
+source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/?id=458&os=installer_linux")
+b2sums=('9b45aa299d8031fa8d76e4f39c1e3d4bb5f312e3432b9441b1375aaa030f2a4f0373f2b9ef441a2f675e5f3f9985d28ec8435ba0c4fa4a1b687781f854d63586')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
