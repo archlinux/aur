@@ -19,6 +19,10 @@ md5sums=('4935cb4c53a656b0ff68a2500ab04c61'
          '3982c2923488557d1bc82d8fc3391b4c'
          'eb5ae7c983884713edf7954c270085a2')
 
+prepare() {
+    cd $srcdir
+    mv $_pkgname-$pkgver ${_pkgname%-$pkgver}
+}
 package() {
     cd $srcdir
     install -Dm0755 -t "$pkgdir/usr/bin/" "${_pkgname%-$pkgver}"
