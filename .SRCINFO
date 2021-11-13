@@ -1,0 +1,12 @@
+pkgbase = graalpython-jdk17-bin
+	pkgdesc = GraalVM-based, high-performance implementation of the Python language (early development), Java 17 version
+	pkgver = 21.3.0
+	pkgrel = 1
+	url = https://github.com/graalvm/graalpython
+	arch = x86_64
+	license = custom
+	depends = jdk17-graalvm-bin
+	source = https://github.com/graalvm/graalpython/releases/download/vm-21.3.0/python-installable-svm-java17-linux-amd64-21.3.0.jar
+	sha256sums = f7ac29b64374b80ae634cec8855ce8de4a54c5c86facae88779e7cc01f0b1780
+
+pkgname = graalpython-jdk17-bin
