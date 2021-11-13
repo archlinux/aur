@@ -3,7 +3,7 @@
 _pkgname=electronplayer
 pkgname=$_pkgname
 pkgver=2.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="An Electron-based web video player, supporting multiple services"
 arch=(x86_64)
 url="https://github.com/oscartbeaumont/ElectronPlayer"
@@ -13,20 +13,14 @@ makedepends=("yarn" "npm" "git")
 optdepends=("libpulse: For pulseaudio support")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${_pkgname}::git+https://github.com/oscartbeaumont/ElectronPlayer.git#tag=v${pkgver}"
-        "${_pkgname}.desktop"
-	"json.patch")
-sha512sums=('SKIP'
-            '280a252895e641f4bd009b4acf7f9f42959f0b9d51424ea71bf564600533de3867a652efd9d982643c34907bb5e57fa677e6c73315cb69a2f12dfd52e6f09f03'
-	    'SKIP')
+source=("${_pkgname}::git+https://github.com/oscartbeaumont/ElectronPlayer.git"
+        "${_pkgname}.desktop")
 
+sha512sums=('SKIP'
+            '280a252895e641f4bd009b4acf7f9f42959f0b9d51424ea71bf564600533de3867a652efd9d982643c34907bb5e57fa677e6c73315cb69a2f12dfd52e6f09f03')
 
 prepare() {
     cd "$srcdir/$_pkgname"
-
-    patch -Np1 -i "$srcdir"/json.patch
-    cp "package.linux.json" "package.json"
-#    patch -Np1 -i json.patch
     yarn --cache-folder "${srcdir}/yarn-cache" 
 }
 
