@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=VIDE
+GenericName=Source Engine Toolkit
+Comment=Valve Interactive Development Environment
+Icon=/usr/share/pixmaps/multi_manager_icon_48.png
+Categories=Development;
+Terminal=false
+StartupNotify=false
+Exec=/usr/bin/VIDE %f
+MimeType=application/x-bsp;application/x-gcf;application/x-ncf;application/x-pcf;application/x-vpk;image/x-vtf;text/x-fgd;text/x-vbsp;text/x-vmt;
