@@ -1,6 +1,6 @@
 # Maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=focalboard-bin
-pkgver=v0.9.2
+pkgver=v0.10.0
 pkgrel=1
 epoch=
 pkgdesc="A self-hosted alternative to Trello, Notion, and Asana."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mattermost/focalboard/releases/download/${pkgver}/focalboard-linux.tar.gz")
 noextract=()
-md5sums=('75a933c176cfeda8b642aef4c7f3b18c')
+sha256sums=('6d6422ccddd55dda40690acd2b70b5b82afef0a3d132c89f0804fb4ab3ffae2d')
 validpgpkeys=()
 
 package() {
