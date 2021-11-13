@@ -1,0 +1,14 @@
+pkgbase = efi-mkkeys
+	pkgdesc = Script to easily generate self-signed UEFI keys for Secure Boot
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jirutka/efi-mkkeys/#readme
+	arch = any
+	license = MIT
+	depends = bash
+	depends = openssl
+	depends = efitools
+	source = efi-mkkeys-0.1.0.tar.gz::https://github.com/jirutka/efi-mkkeys/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ec008bea3935ebf2c439d430c37851de7346589e1b2edaed03771ef590e98f42
+
+pkgname = efi-mkkeys
