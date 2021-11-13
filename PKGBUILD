@@ -4,7 +4,7 @@
 # Contributor: Guillaume Raffin ("theelectronwill") <theelectronwill@gmail.com>
 
 pkgname=mill
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('bash' 'java-environment')
 makedepends=('mill')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lihaoyi/mill/archive/$pkgver.tar.gz")
-sha512sums=('329476a4942c1c38088e52a73670e9d57964b666ae9a205cae142d5e9c8812bdfb90a1e4288dfeefa8804d70b5636343820d7d7695493c9bfbf667096912ed68')
+sha512sums=('ed15e10e092c51c45c554b3b341307782ec6e6086573cfd33638d9088b5f5d3abc4c57cee2da213f99be4113600fcd95d9caba6f10d8bbd09d9ea93011ed6229')
 
 prepare() {
   cd mill-$pkgver
