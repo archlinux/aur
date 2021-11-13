@@ -1,14 +1,14 @@
 # Maintainer: Viachaslau Khalikin <khalikin@yandex.by>
 
 pkgname=icecat-ublock-origin
-pkgver=1.37.2
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
 url=https://github.com/gorhill/uBlock
 license=('GPL3')
 groups=('icecat-addons')
-makedepends=('git' 'python' 'strip-nondeterminism' 'zip')
+makedepends=('git' 'npm' 'python' 'strip-nondeterminism' 'zip')
 source=("git+$url.git#commit=$pkgver?signed"
         "git+https://github.com/uBlockOrigin/uAssets.git")
 b2sums=('SKIP'
@@ -19,6 +19,11 @@ build() {
   cd uBlock
   ./tools/make-firefox.sh all
   strip-nondeterminism -t zip dist/build/uBlock0.firefox.xpi
+}
+
+check() {
+  cd uBlock
+  make test
 }
 
 package() {
