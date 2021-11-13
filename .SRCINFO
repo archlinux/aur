@@ -4,6 +4,7 @@ pkgbase = teensy-loader
 	pkgrel = 4
 	url = https://www.pjrc.com/teensy/loader.html
 	arch = x86_64
+	depends = gtk2
 	depends = libpng12
 	depends = libusb
 	source = teensy-loader-1.52.tar.gz::https://www.pjrc.com/teensy/teensy_linux64.tar.gz
@@ -12,4 +13,3 @@ pkgbase = teensy-loader
 	sha256sums = 17f56b63603271e2cdae291fed347b66dfbdfd089b2847cf0b4383c877ffacfb
 
 pkgname = teensy-loader
-

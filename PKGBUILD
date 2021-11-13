@@ -19,7 +19,7 @@ sha256sums=(
 )
 
 package() {
-	install -D -m755 teensy "${pkgdir}/usr/local/bin/teensy-loader"
-	install -D -m644 00-teensy.rules "${pkgdir}/etc/udev/rules.d/00-teensy.rules"
+    install -D -m755 teensy "${pkgdir}/usr/local/bin/teensy-loader"
+    install -D -m644 00-teensy.rules "${pkgdir}/etc/udev/rules.d/00-teensy.rules"
 }
 
