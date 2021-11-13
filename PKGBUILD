@@ -110,6 +110,7 @@ ac_add_options --disable-updater
 ac_add_options --disable-verify-mar
 ac_add_options --disable-profiling
 ac_add_options --disable-dmd
+ac_add_options --disable-elf-hack
 
 # Enable wanted features
 ac_add_options --enable-rust-simd
