@@ -29,6 +29,9 @@ build() {
   cd $pkgname/build/tarball
   ./tarball-automake.sh
 
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
   cd ../..
   ./configure --prefix=/usr
   make
