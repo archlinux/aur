@@ -21,6 +21,9 @@ pkgver() {
 }
 
 build() {
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
   cd $pkgname
   ./autogen.sh
   ./configure --prefix=/usr
