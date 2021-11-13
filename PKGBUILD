@@ -14,14 +14,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/danoon2/Boxedwine/archive/r
 sha256sums=('d8b9402658f71225913f0b8de1ecfcda8de3848b08cf3d0741fff80aa2ce8235'
             'c9686d8694796b110bfa2876684ef1a42e657fd12781c7180e893328c5b7d79c')
 
-prepare() {
-  cd Boxedwine-$pkgver
-  chmod +x project/linux/build.sh
-}
-
 build() {
-  cd Boxedwine-$pkgver/project/linux
-  ./build.sh
+  cd Boxedwine-$pkgver
+
+  pushd project/linux
+  sh build.sh
+  popd
 }
 
 package() {
