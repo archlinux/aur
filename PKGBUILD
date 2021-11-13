@@ -1,4 +1,4 @@
-# Maintainer: Ta180m <ta180m@gmail.com>
+# Maintainer: Anthony Wang <ta180m at protonmail dot com>
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor3-git
