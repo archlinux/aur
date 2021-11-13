@@ -5,14 +5,14 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=0.5.3.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
 license=('LGPL3')
-depends=('dotnet-runtime>=5.0' 'dotnet-host>=5.0' 'gtk3' 'libevdev')
+depends=('dotnet-runtime-5.0' 'dotnet-host>=5.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
-makedepends=('git' 'dotnet-sdk>=5.0')
+makedepends=('git' 'dotnet-sdk-5.0')
 install="notes.install"
 source=("OpenTabletDriver-$pkgver.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/v$pkgver.tar.gz"
         'git+https://github.com/OpenTabletDriver/OpenTabletDriver-udev'
