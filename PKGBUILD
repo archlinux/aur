@@ -2,7 +2,7 @@
 
 pkgname=azpainterb
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="PixelArt/Paint/Retouch Software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/soft/azpainterb.html"
@@ -12,13 +12,13 @@ source=("https://gitlab.com/azelpg/azpainterb/-/archive/v${pkgver}/${pkgname}-v$
 sha256sums=('5cdcbc2cfb9ec2e3e005e7770ba6d87a8cab224744d4c2314f430a92b6696466')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-v${pkgver}"
 	./configure --prefix=/usr
 	make ${MAKEOPTS}
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-v${pkgver}"
 	# HACK Original Makefile tries to update mimeinfo.cache and icon-theme.cache.
 	# These files should be updated after installation.
 	sed -i '/\@\$(update_cache)/d' Makefile

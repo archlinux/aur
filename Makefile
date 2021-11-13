@@ -12,4 +12,5 @@ updpkgsums:
 	updpkgsums
 
 clean:
-	rm azpainterb-*.tar.xz azpainterb-*.pkg.tar
+	rm -rf ./src
+	rm ./azpainterb-*.tar.* ./azpainterb-*.pkg.tar.*

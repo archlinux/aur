@@ -1,7 +1,7 @@
 pkgbase = azpainterb
 	pkgdesc = PixelArt/Paint/Retouch Software
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://azsky2.html.xdomain.jp/soft/azpainterb.html
 	arch = i686
 	arch = x86_64
