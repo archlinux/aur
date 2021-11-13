@@ -12,6 +12,6 @@ source=("https://github.com/ZaViBiS/multithreaded-file-upload/releases/download/
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
-  cp "${srcdir}/linux_x86_64_ofile" "${pkgdir}/usr/bin/ofile"
+  mv "${srcdir}/linux_x86_64_ofile" "${pkgdir}/usr/bin/ofile"
   chmod +x "${pkgdir}/usr/bin/ofile"
 }
