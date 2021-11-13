@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.14.15.arch1
+pkgver=5.15.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -90,16 +90,20 @@ _repo_url="https://github.com/archlinux/linux.git"
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-5.8-5.14.patch"
+_kernel_patch_name="more-uarches-for-kernel-5.15+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
+
+PatchesArray=(
+    0009-prjc_v5.15-r0.patch
+    0005-glitched-pds.patch
+)
 
 source=(
     "${_reponame}::git+${_repo_url}?signed#tag=$_srcver_tag"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
-    0009-prjc_v5.14-r3.patch
-    0005-glitched-pds.patch
+    ${PatchesArray[@]}
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -109,8 +113,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '591e6c8243b749dc549777464830ed8acd90fd83b649604687bf8fced069c18eb0498743e549c25544cd8a9b54039582c3bd4f5bfc319746b8dfa2da9f58e0cf'
-            '9719b022a1798a7909cd7160917816c40310eb42fa4144f7b122dd57950c1088f2ab6fb9202f30591d7b793c6634a7b97e77af2e192043b95ae44751451af7cc'
+            'dd277719735f06c09ac4f54b1dafef12a03478012662d0711766a49987576784ed7dd574d8947012d927a16b688dc08711658c7a196c195754442e4356752e11'
+            '5da7ac4a3e9ea8e9e1d37403d688369e5ffdc2340bd60eabf36368a4e134713ae1011f728ea79f44ff5d2ab2827adf69e5d05db3431b73e8027238f5ea68a49f'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -125,13 +129,12 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    PatchesArray=(
+    FullPatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
-        0009-prjc_v5.14-r3.patch
-        0005-glitched-pds.patch
+        ${PatchesArray[@]}
     )
 
-    for MyPatch in "${PatchesArray[@]}"
+    for MyPatch in "${FullPatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
