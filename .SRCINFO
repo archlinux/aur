@@ -1,0 +1,16 @@
+pkgbase = dyalog-jupyter-git
+	pkgdesc = Jupyter kernel for Dyalog APL
+	pkgver = r143.7039739
+	pkgrel = 1
+	url = https://github.com/Dyalog/dyalog-jupyter-kernel
+	arch = any
+	license = MIT
+	makedepends = sed
+	depends = python
+	depends = jupyter
+	provides = dyalog-jupyter
+	conflicts = dyalog-jupyter
+	source = git+https://github.com/Dyalog/dyalog-jupyter-kernel.git
+	sha256sums = SKIP
+
+pkgname = dyalog-jupyter-git
