@@ -11,6 +11,5 @@ USER build
 WORKDIR src
 CMD \
     makepkg --printsrcinfo > .SRCINFO && \
-    makepkg -f
-
-# rm -rf src pkg protonutils-*.tar.gz
+    makepkg -f && \
+    rm -rf src pkg protonutils-*.tar.gz
