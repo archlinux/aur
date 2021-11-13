@@ -125,7 +125,7 @@ pkgname = pipewire-full-zeroconf-git
 	depends = libpipewire-0.3.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
-	depends = libcrypto.so
+	depends = openssl
 	provides = pipewire-zeroconf
 	conflicts = pipewire-zeroconf
 

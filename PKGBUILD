@@ -204,7 +204,7 @@ package_pipewire-full-v4l2-git() {
 package_pipewire-full-zeroconf-git() {
   pkgdesc+=" - Zeroconf support"
   depends=(pipewire-full-git libpipewire-$_ver.so
-           libavahi-{client,common}.so libcrypto.so)
+           libavahi-{client,common}.so openssl)
   provides=(pipewire-zeroconf)
   conflicts=(pipewire-zeroconf)
 
