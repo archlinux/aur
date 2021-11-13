@@ -1,13 +1,13 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.2.11.r223.b739157
+pkgver=0.5.0.r434.5e21dc8
 pkgrel=1
 pkgdesc="Terminal Music Player written in Rust"
 arch=('x86_64')
 url="https://github.com/tramhao/termusic"
 license=('GPL3' 'MIT')
-depends=('mpv')    # 'libmpv.so'
+depends=('gst-libav' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gstreamer' 'mpv')    # 'libmpv.so'
 makedepends=('cargo' 'git')
 optdepends=('youtube-dl: download files')
 provides=("${pkgname%-git}")
@@ -29,7 +29,7 @@ build() {
 #}
 
 package() {
-  install -Dm644 $pkgname/LICENSE_MIT -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
   install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm644 $pkgname/LICENSE_MIT             -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
 
