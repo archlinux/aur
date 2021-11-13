@@ -8,6 +8,7 @@ pkgbase = netns-helper-git
 	makedepends = git
 	makedepends = libxslt
 	makedepends = docbook-xsl
+	makedepends = docbook5-xml
 	depends = systemd
 	depends = iproute2
 	provides = netns-helper

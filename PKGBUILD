@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('systemd' 'iproute2')
 arch=('any')
 optdepends=()
-makedepends=('git' 'libxslt' 'docbook-xsl')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'docbook5-xml')
 sha256sums=('SKIP')
 source=("git+https://gitlab.com/patlefort/${_pkgname}")
 options=('!strip')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	mkdir -p "build/man" && cd "build/man"
-	xsltproc 'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl' "${srcdir}/${_pkgname}/man/manual.xml"
+	xsltproc 'http://docbook.sourceforge.net/release/xsl-ns/current/manpages/docbook.xsl' "${srcdir}/${_pkgname}/man/manual.xml"
 }
 
 package() {
