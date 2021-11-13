@@ -16,7 +16,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.39.r1.g651f0dec
+pkgver=0.3.40.r16.gc03d1029
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -26,7 +26,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
-             avahi
+             avahi openssl
              gst-plugins-base-libs
              jack2
              vulkan-headers vulkan-icd-loader
@@ -117,6 +117,8 @@ package_pipewire-full-git() {
   _pick v4l2 usr/bin/pw-v4l2 usr/lib/pipewire-$_ver/v4l2
 
   _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-zeroconf-discover.so
+  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-raop-discover.so
+  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-raop-sink.so
 
   _pick gst usr/lib/gstreamer-1.0
 
@@ -156,7 +158,7 @@ package_pipewire-full-alsa-git() {
 package_pipewire-full-jack-git() {
   pkgdesc+=" - JACK support"
   license+=(GPL2)
-  depends=(bash pipewire-session-manager pipewire-full-git
+  depends=(pipewire-session-manager pipewire-full-git
            libpipewire-$_ver.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
@@ -202,7 +204,7 @@ package_pipewire-full-v4l2-git() {
 package_pipewire-full-zeroconf-git() {
   pkgdesc+=" - Zeroconf support"
   depends=(pipewire-full-git libpipewire-$_ver.so
-           libavahi-{client,common}.so)
+           libavahi-{client,common}.so libcrypto.so)
   provides=(pipewire-zeroconf)
   conflicts=(pipewire-zeroconf)
 

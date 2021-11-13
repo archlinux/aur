@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.39.r1.g651f0dec
+	pkgver = 0.3.40.r16.gc03d1029
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = pipewire-full-git
 	makedepends = libfreeaptx
 	makedepends = libfdk-aac
 	makedepends = avahi
+	makedepends = openssl
 	makedepends = gst-plugins-base-libs
 	makedepends = jack2
 	makedepends = vulkan-headers
@@ -63,7 +64,7 @@ pkgname = pipewire-full-git
 	optdepends = gst-plugin-pipewire-full-git: GStreamer support
 	optdepends = ofono: ofono Bluetooth HFP support
 	optdepends = hsphfpd: hsphfpd Bluetooth HSP/HFP support
-	provides = pipewire=0.3.39.r1.g651f0dec
+	provides = pipewire=0.3.40.r16.gc03d1029
 	provides = alsa-card-profiles
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
@@ -88,7 +89,6 @@ pkgname = pipewire-full-jack-git
 	pkgdesc = Low-latency audio/video router and processor - JACK support
 	license = MIT
 	license = GPL2
-	depends = bash
 	depends = pipewire-session-manager
 	depends = pipewire-full-git
 	depends = libpipewire-0.3.so
@@ -125,6 +125,7 @@ pkgname = pipewire-full-zeroconf-git
 	depends = libpipewire-0.3.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
+	depends = libcrypto.so
 	provides = pipewire-zeroconf
 	conflicts = pipewire-zeroconf
 
