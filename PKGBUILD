@@ -1,7 +1,9 @@
 # Contributer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributer: Guillaume ALAUX <guillaume@archlinux.org>
+# Contributer: Github user RikudouPatrickstar
 
 # This PKGBUILD is directly modified from community/java11-openjdk
+# Methods to build JBR with JCEF support is from https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/blob/master/.github/workflows/jbr-linux-x64.yml
 
 # TODO add test, see about packaging jtreg and using it here
 # TODO see about building with OpenJDK10
@@ -15,29 +17,32 @@
 
 pkgbase=java11-jetbrains-imfix
 _pkgbase=java11-jetbrains
-pkgname=('jre11-jetbrains-headless-imfix' 'jre11-jetbrains-imfix' 'jdk11-jetbrains-imfix')
+pkgname=('jre11-jetbrains-imfix' 'jdk11-jetbrains-imfix')
 _majorver=11
-_ver=11.0.11
-_hgver=11_0_11
-_updatever=9
-_jbver1=1504
-_jbver2=5
+_ver=11.0.13
+_hgver=11_0_13
+_updatever=8
+_jbver1=1751
+_jbver2=19
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
-_hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
+_hg_tag=jbr${_hgver}b${_jbver1}.${_jbver2}
+_jcef_commit=e6e5235
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 license=('custom')
-makedepends=('java-environment>=10' 'java-environment<12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
+makedepends=('java-environment>=11' 'java-environment<12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash')
-source=(https://github.com/JetBrains/JetBrainsRuntime/archive/${_hg_tag}.tar.gz
+             'libnet' 'bash' 'ant' 'git' 'rsync')
+source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
+        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         https://github.com/prehonor/myJetBrainsRuntime/raw/master/idea.patch
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('df5c8a73ee2050fac0e882868b86ac65de1e842c276bc66cffa10acba286ea8b'
+sha256sums=('SKIP'
+            'SKIP'
             'ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4'
             '915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6'
             '3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07'
@@ -49,17 +54,25 @@ case "${CARCH}" in
 esac
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-jetbrains
-_jdkdir=JetBrainsRuntime-${_hg_tag}
+_jdkdir=JetBrainsRuntime
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-normal-server-release/images
 
-_nonheadless=(lib/libawt_xawt.{so,debuginfo}
-              lib/libjawt.{so,debuginfo}
-              lib/libjsound.{so,debuginfo}
-              lib/libsplashscreen.{so,debuginfo})
-
 build() {
-  cd ${_jdkdir}
 
+  # build jcef
+  cd $srcdir/jcef
+  sed -i "s/4.46/5.4/g" tools/buildtools/download_from_google_storage.py
+  mkdir jcef_build && cd jcef_build
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  make
+  cd ../jb/tools/linux
+  JDK_11=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 11 | head -n 1) ./build.sh all
+
+  # build jbr
+  cd $srcdir/${_jdkdir}
+
+  # Include jcef
+  git apply -p0 < jb/project/tools/patches/add_jcef_module.patch
   # Fix im cursor follow
   patch -Np1 -i ${srcdir}/idea.patch
 
@@ -108,7 +121,8 @@ build() {
     --with-jvm-features=zgc \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors \
-    ${NUM_PROC_OPT}
+    ${NUM_PROC_OPT} \
+    --with-import-modules=$srcdir/jcef/out/linux64/modular-sdk
     #--disable-javac-server
 
   make images legacy-jre-image
@@ -123,12 +137,16 @@ check() {
   # make -k check
 }
 
-package_jre11-jetbrains-headless-imfix() {
-  pkgdesc="JetBrains Java ${_majorver} headless runtime environment (With patch that allows the IME window follow the cursor)"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2')
-  optdepends=('java-rhino: for some JavaScript support')
-  provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-jetbrains=${_majorver}" "jre${_majorver}-jetbrains-headless=${pkgver}-${pkgrel}")
-  _pkgname="jre11-jetbrains-headless"
+package_jre11-jetbrains-imfix() {
+  pkgdesc="JetBrains Java ${_majorver} full runtime environment (With patch that allows the IME window follow the cursor)"
+  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2' 'giflib')
+  optdepends=('java-rhino: for some JavaScript support'
+              'alsa-lib: for basic sound support'
+              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
+              'gtk3: for the Gtk+ 3 look and feel - desktop usage')
+  provides=("java-runtime=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre${_majorver}-jetbrains=${pkgver}-${pkgrel}")
+  conflicts=("jre11-jetbrains")
+  _pkgname="jre11-jetbrains"
   backup=(etc/${_pkgbase}/logging.propertopenjdkies
           etc/${_pkgbase}/management/jmxremote.access
           etc/${_pkgbase}/management/jmxremote.password.template
@@ -143,7 +161,7 @@ package_jre11-jetbrains-headless-imfix() {
           etc/${_pkgbase}/security/policy/unlimited/default_US_export.policy
           etc/${_pkgbase}/security/policy/unlimited/default_local.policy
           etc/${_pkgbase}/sound.properties)
-  install=install_jre-jetbrains-headless.sh
+  install=install_jre-jetbrains.sh
 
   cd ${_imgdir}/jre
 
@@ -152,9 +170,8 @@ package_jre11-jetbrains-headless-imfix() {
   cp -a bin lib \
     "${pkgdir}${_jvmdir}"
 
-  for f in "${_nonheadless[@]}"; do
-    rm "${pkgdir}${_jvmdir}/${f}"
-  done
+  # Include jcef libs
+  rsync -av $srcdir/jcef/jcef_build/native/Release/ ${pkgdir}${_jvmdir}/lib --exclude="modular-sdk"
 
   cp ../jdk/release "${pkgdir}${_jvmdir}"
   cp ../jdk/lib/modules "${pkgdir}${_jvmdir}/lib"
@@ -179,30 +196,6 @@ package_jre11-jetbrains-headless-imfix() {
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
-}
-
-package_jre11-jetbrains-imfix() {
-  pkgdesc="JetBrains Java ${_majorver} full runtime environment (With patch that allows the IME window follow the cursor)"
-  depends=("jre${_majorver}-jetbrains-headless=${pkgver}-${pkgrel}" 'giflib')
-  optdepends=('alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
-              'gtk3: for the Gtk+ 3 look and feel - desktop usage')
-  provides=("java-runtime=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre${_majorver}-jetbrains=${pkgver}-${pkgrel}")
-  conflicts=("jre11-jetbrains")
-  _pkgname="jre11-jetbrains"
-  install=install_jre-jetbrains.sh
-
-  cd ${_imgdir}/jre
-
-  install -dm 755 "${pkgdir}${_jvmdir}"
-
-  for f in "${_nonheadless[@]}"; do
-    install -Dm 644 ${f} "${pkgdir}${_jvmdir}/${f}"
-  done
-
-  # Licenses
-  install -dm 755 "${pkgdir}/usr/share/licenses"
-  ln -s ${_pkgbase} "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 package_jdk11-jetbrains-imfix() {

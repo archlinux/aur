@@ -24,12 +24,25 @@ post_install() {
       ;;
   esac
 
-  echo "when you use a non-reparenting window manager,"
-  echo "set _JAVA_AWT_WM_NONREPARENTING=1 in /etc/profile.d/jre.sh"
+  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
+    /usr/bin/update-ca-trust
+  fi
 }
 
 post_upgrade() {
   if [ -z "$(fix_default)" ]; then
     /usr/bin/archlinux-java set ${THIS_JRE}
+  fi
+
+  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
+    /usr/bin/update-ca-trust
+  fi
+}
+
+pre_remove() {
+  default=$(fix_default)
+  if [ "x${default}" = "x${THIS_JRE}" ]; then
+    /usr/bin/archlinux-java unset
+    echo "No Java environment is set as default anymore"
   fi
 }
