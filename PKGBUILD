@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt
 pkgver=5.15.2.19.realtime1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            '0a2ed6459080810c5f99975b2c4ea3d9a384f21589f01ebbeffb0f781e26f76db5d95313bf527736a1bb379b7b612baf3a4a0de864a152407f853debadb7438b')
+            '0085ed12b81470961e65c674f6ef7ec577320d42ea74f9a43b723213e4aacf99561659ca10a7499be0c0db25d185251cc2f8df2ec856e53c4a7e5679e320ecae')
 b2sums=('SKIP'
-        '045a4c45531e67b423e8af2546d40c787386cc41a81986f003709d648288072a23b5e2a8d1c455640730cc412e4fcffe7c860caeb7093dab84693550344751d3')
+        '35a7a35f22f0bc24c73302175d49849ba102370062bc2c3e27aacaf3ceadecb879e06471d068d0075e0766dfc88fb504f513a8abeae3d6df4019244b7204f0c4')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
