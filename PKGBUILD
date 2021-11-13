@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=2.4.0.r53.g765f969d
-pkgrel=2
+pkgver=2.4.0.r87.ga7063e1d
+pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
-depends=("python-"{pycryptodome,isodate,pycountry,requests,pysocks,websocket-client} 'rtmpdump')
+depends=("python-"{pycryptodome,isodate,pycountry,requests,pysocks,websocket-client})
 checkdepends=("python-"{freezegun,pytest,requests-mock})
 makedepends=("python-"{recommonmark,setuptools,sphinx} 'git')
 optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+')
