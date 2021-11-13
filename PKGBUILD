@@ -11,7 +11,7 @@ _microarchitecture=98
 ## Major kernel version
 _major=5.15
 ## Minor kernel version
-_minor=1
+_minor=2
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -39,11 +39,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('32fdcd33c8ac571b9a7a297f33860f6171327961f2a2ea6bd54bf82275b614c8'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+sha256sums=('5634033a4981be42d3259f50d5371a2cdc9ace5d9860da67a2879630533ab175'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -69,8 +69,8 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync-waitvcompat.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex_waitv.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
   msg2 "Apply GCC Optimization Patch..."
@@ -86,6 +86,15 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
+  ### Set performance as default governor
+  msg2 "Setting performance governor..."
+  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+
   ### Set tickrate to 1000HZ
   msg2 "Setting tick rate to 1k..."
   scripts/config --disable CONFIG_HZ_300
@@ -100,10 +109,6 @@ prepare() {
   ### Enable Futex 2 (Fsync 2) Support
   msg2 "Enable Futex2 support..."
   scripts/config --enable CONFIG_FUTEX2
-
-  ### Enable Esync Support
-  msg2 "Enable winesync support..."
-  scripts/config --enable CONFIG_WINESYNC
   
   ### Enable Full Tickless Timer
   msg2 "Enabling Full Tickless..."
@@ -121,15 +126,6 @@ prepare() {
   scripts/config --enable CONFIG_PREEMPT_COUNT
   scripts/config --enable CONFIG_PREEMPTION
   scripts/config --enable CONFIG_PREEMPT_DYNAMIC
-  
-  ### Enable Anbox Andriod Emulation
-  msg2 "Enable Anbox..."
-  scripts/config --enable CONFIG_ASHMEM
-  scripts/config --enable CONFIG_ANDROID_BINDER_IPC_SELFTEST
-  scripts/config --enable CONFIG_ANDROID
-  scripts/config --enable CONFIG_ANDROID_BINDER_IPC
-  scripts/config --enable CONFIG_ANDROID_BINDERFS
-  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
   
   ### Disable Kernel Debugging
   msg2 "Disable Kernel Debugging For Smaller Builds"
@@ -157,7 +153,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make -j$(nproc) all
+  make all
 }
 
 _package() {
