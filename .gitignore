@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+vim-terminus/
+pkg/
+src/
+

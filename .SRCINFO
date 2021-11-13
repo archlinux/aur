@@ -1,0 +1,14 @@
+pkgbase = vim-terminus-git
+	pkgdesc = Enhanced terminal integration for Vim
+	pkgver = 81
+	pkgrel = 1
+	url = https://github.com/wincent/terminus.git
+	arch = any
+	license = GPL
+	depends = vim-plugin-runtime
+	provides = vim-terminus
+	conflicts = vim-terminus
+	source = vim-terminus::git+https://github.com/wincent/terminus.git
+	md5sums = SKIP
+
+pkgname = vim-terminus-git
