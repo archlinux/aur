@@ -1,0 +1,24 @@
+pkgbase = python-lava
+	pkgdesc = A software framework for developing neuro-inspired applications and mapping them to neuromorphic hardware
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/lava-nc/lava/
+	arch = any
+	license = custom:BSD-3
+	license = LGPL2.1
+	makedepends = python-pybuilder
+	makedepends = python-sphinx
+	makedepends = flake8
+	makedepends = bandit
+	makedepends = python-sphinx-tabs
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-coverage
+	depends = python-pip
+	depends = python-wheel
+	depends = python-pytest
+	depends = python-numpy
+	depends = python-matplotlib
+	source = python-lava-0.1.1.tar.gz::https://github.com/lava-nc/lava/archive/v0.1.1.tar.gz
+	sha512sums = 36c2873efa8a3676490899a037d94c4f19d5e96c900416b1903eafd9e7e9bce59ff3b79232395e768e08c401e1b34e7026703f48c7c8a1da31388d4fcdeda4e5
+
+pkgname = python-lava
