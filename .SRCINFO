@@ -1,6 +1,6 @@
 pkgbase = caja-rename
 	pkgdesc = Batch renaming extension for Caja
-	pkgver = 21.7.18
+	pkgver = 21.11.13
 	pkgrel = 1
 	url = https://tari.in/www/software/caja-rename
 	install = caja-rename.install
@@ -15,8 +15,8 @@ pkgbase = caja-rename
 	depends = gobject-introspection
 	depends = gtk3
 	options = !emptydirs
-	source = https://github.com/tari01/caja-rename/archive/21.7.18.tar.gz
-	md5sums = 22ccb4af566afc9ab71323b74067a68e
+	source = https://github.com/tari01/caja-rename/archive/21.11.13.tar.gz
+	md5sums = 573a80e35c9e719d20303deeed20b0f2
 
 pkgname = caja-rename
 
