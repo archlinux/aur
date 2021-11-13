@@ -1,3 +1,5 @@
+.PHONY: container
+
 container:
 	docker build . -t protonutils-build
 
