@@ -1,8 +1,8 @@
 # Maintainer: Konstantin Köhring <konstantin.koehring@gmail.com>
 
 pkgname=budgie-bluetooth-battery-applet
-pkgver=0.1
-pkgrel=2
+pkgver=r6.5265923
+pkgrel=1
 pkgdesc="Show the Battery percentage of a connected bluetooth device"
 arch=('i686' 'x86_64')
 url='https://github.com/GaLaXy102/budgie-bluetooth-battery-applet'
@@ -12,6 +12,11 @@ install=budgie-bluetooth-battery-applet.install
 
 source=("git+${url}" "budgie-bluetooth-battery-applet.install")
 sha256sums=('SKIP' '867a3c59354ca6a79eee539cf15cc88e01937e513609624a673e40f68264b667')
+
+pkgver() {
+    cd "${srcdir}/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   _plugin_dir="${pkgdir}/usr/lib/budgie-desktop/plugins/budgie-bluetooth-battery-applet"
