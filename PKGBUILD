@@ -2,7 +2,7 @@
 
 pkgname=clean-chroot-manager
 pkgver=2.221
-pkgrel=2
+pkgrel=3
 pkgdesc='Wrapper for managing clean chroot builds with local repo therein.'
 arch=('any')
 url='https://github.com/graysky2/clean-chroot-manager'
@@ -11,7 +11,7 @@ depends=('devtools>=20190821-1' 'rsync' 'libarchive>=3.3.3' 'pacman>=5.2')
 conflicts=('clean_chroot_manager')
 replaces=('clean_chroot_manager')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v$pkgver.tar.gz")
-b2sums=('409bc9901515a93b8f37d94719e42c4bb8b848a891c82b83c3da6b8bfb92c1f72821e941392828d99448e4f6fcfc64eb2a46b4db31815f81fd75f472b7f40396')
+b2sums=('f6257e37ecbde50569c6263f7135a78cb7dc6d9a19a5320a6c568e5f23600725d9cf7072973879ed192d876477b15018a1bdaf9fb97dc8376b232456581caa72')
 install=ccm.install
 
 build() {
