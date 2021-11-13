@@ -2,7 +2,7 @@
 
 pkgname=clean-chroot-manager
 pkgver=2.221
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper for managing clean chroot builds with local repo therein.'
 arch=('any')
 url='https://github.com/graysky2/clean-chroot-manager'
