@@ -1,0 +1,18 @@
+pkgbase = time-to-matrix-git
+	pkgdesc = A time-like command that will send end of an arbitrary command output and some other info (like exit status) to matrix room.
+	pkgver = v1.3.0.r1.g4fd623b
+	pkgrel = 1
+	url = https://gitlab.com/etke.cc/ttm.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = time-to-matrix
+	conflicts = time-to-matrix
+	noextract = time-to-matrix-git
+	options = !emptydirs
+	source = time-to-matrix-git::git+https://gitlab.com/etke.cc/ttm.git
+	sha256sums = SKIP
+
+pkgname = time-to-matrix-git
