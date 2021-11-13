@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=next-prayer
-pkgver=1.0.1.r7.43f4105
+pkgver=1.0.1.r7.f97dbe3
 pkgrel=1
 pkgdesc="Islamic prayers reminder for status bars."
 arch=('x86_64')
