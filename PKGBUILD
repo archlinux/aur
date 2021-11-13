@@ -1,18 +1,19 @@
-# Maintainer: Yiyao Yu <yuydevel at protonmail dot com>
+# Maintainer: Anthony Wang <ta180m at protonmail dot com>
+# Contibutor: Yiyao Yu <yuydevel at protonmail dot com>
 # Contributor: Benjamin Maisonnas <ben at wainei dot net>
 # Author: Ondrej Čerman
 
 _pkgname=zenpower3
 pkgname=zenpower3-dkms
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs'
 arch=('x86_64' 'i686')
 url='https://github.com/Ta180m/zenpower3'
 license=('GPL2')
 depends=('dkms')
-provides=('zenpower')
-conflicts=('zenpower')
+provides=('zenpower3')
+conflicts=('zenpower3')
 install=$_pkgname.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Ta180m/$_pkgname/archive/v$pkgver.tar.gz"
         "$_pkgname.conf")
