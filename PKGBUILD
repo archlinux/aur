@@ -13,7 +13,7 @@ makedepends=('cmake' 'git')
 depends=('libmpdclient')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git+https://github.com/ambientsound/pms.git#branch=0.42.x)
+source=("$pkgname::git+https://github.com/ambientsound/pms.git#branch=0.42.x")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,6 +21,9 @@ pkgver() {
 }
 
 build() {
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
   cmake -B build -S $pkgname -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
   make -C build
 }
