@@ -6,9 +6,9 @@ pkgver=17
 pkgrel=1
 pkgdesc="Adwaita icon theme with blue folder icons"
 arch=(any)
-url="https://github.com/realmazharhussain/adwaita-blue-icon-theme"
+url="https://github.com/realmazharhussain/$_pkgname"
 license=('GPL')
-source=("$_pkgname"::"git+https://github.com/realmazharhussain/${_pkgname}.git")
+source=("$_pkgname"::"git+$url")
 md5sums=('SKIP')
 depends=(adwaita-icon-theme)
 provides=("${_pkgname}=${_pkgver}")
