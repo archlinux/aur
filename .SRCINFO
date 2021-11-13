@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = 6.20_GE_1
+	pkgver = 6.21_GE_1
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
@@ -27,14 +27,14 @@ pkgbase = proton-ge-custom-bin
 	optdepends = xboxdrv: gamepad driver service
 	optdepends = python-cef: generic splash dialog support
 	provides = proton
-	provides = proton-ge-custom=6.20.GE_1
+	provides = proton-ge-custom=6.21.GE_1
 	conflicts = proton-ge-custom-stable-bin
 	conflicts = proton-ge-custom
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = proton-ge-custom-6.20-GE-1_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.20-GE-1/Proton-6.20-GE-1.tar.gz
+	source = proton-ge-custom-6.21-GE-1_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.21-GE-1/Proton-6.21-GE-1.tar.gz
 	source = supplementary.tar.zst
-	sha512sums = 4700277ba1ba5e4c377e6bc01a64d101bb2d265067a897477b4355dc59aad26b8bdb9ea3136db3611af2dce3853eb2f1489a3356786ef0bb9377cb547227d72e
+	sha512sums = df00907475c4cfed8e23c4d9c3f716b478ea3b20b6bd4d222e5308ae657f9b61939b906c5ec5f3aac7d048334850078ec0bb9dab1bfd1a8bb6b66fd05ff95673
 	sha512sums = 9925a9972a9bed9b9e71c2aa169db03eeb72307336c3ed004434397deb379b55eb13b249ca9c0b28f48dd5ea728a1ad32685b84e2dcab881ba428c2acb7bc58d
 
 pkgname = proton-ge-custom-bin
