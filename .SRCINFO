@@ -1,7 +1,7 @@
 pkgbase = teensy-loader
 	pkgdesc = The Teensy Loader program communicates with your Teensy board when the HalfKay bootloader is running, so you can download new programs and run them
 	pkgver = 1.52
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.pjrc.com/teensy/loader.html
 	arch = x86_64
 	depends = libpng12
