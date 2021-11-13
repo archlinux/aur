@@ -1,8 +1,9 @@
-# Maintainer:
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: atemu
+
 pkgname=yup-git
-pkgver=1.1.7.r0.g4368489
+pkgver=1.1.7.r3.g2efd810
 pkgrel=1
 pkgdesc="Ncurses based AUR Helper with improved searching and sorting"
 arch=('x86_64' 'aarch64')
