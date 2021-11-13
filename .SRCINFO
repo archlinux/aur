@@ -24,7 +24,7 @@ pkgbase = chatterino2-7tv-git
 	conflicts = chatterino2-appimage
 	conflicts = chatterino2-nightly-appimage
 	source = git://github.com/SevenTV/chatterino7
-	source = git://github.com/Chatterino/libcommuni
+	source = git://github.com/Chatterino/libcommuni#branch=chatterino-cmake
 	source = git://github.com/jiakuan/qBreakpad
 	source = git://github.com/mohabouje/WinToast
 	source = git://github.com/pajlada/settings
