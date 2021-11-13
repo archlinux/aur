@@ -4,7 +4,7 @@
 
 pkgname=python-bluetooth-battery
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A python script to get battery level from Bluetooth headsets"
 arch=(any)
 url="https://pypi.org/project/bluetooth-battery"
@@ -19,4 +19,6 @@ package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
   mkdir -p $pkgdir/"$sitepackages"
   cp -r $srcdir/bluetooth-battery/* $pkgdir/"$sitepackages"
+  mkdir -p $pkgdir/usr/local/bin/
+  cp $srcdir/bluetooth-battery/bin/bluetooth_battery $pkgdir/usr/local/bin/bluetooth_battery
 }
