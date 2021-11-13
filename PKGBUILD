@@ -1,8 +1,8 @@
-# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Maintainer: Alex Tharp <alex@toastercup.io>
 
 pkgname=coolvlviewer
-pkgver=1.28.2.39
-_pkgver=128239
+pkgver=1.28.2.46
+_pkgver=128246
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer'; built from source)"
 url="http://sldev.free.fr"
@@ -27,45 +27,41 @@ install=coolvlviewer.install
 source=("http://sldev.free.fr/sources/CoolVLViewer-src-${_pkgver}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('21e4c9a49ae61474016421f0e76f1dc9'
-         '7a70defd1c6381bab1af7456b14daca4'
-         'fd78de1f6c1333a5120ece89873515e0')
+sha1sums=('3799cdc2d04f04ab72919417afe489317aa72724'
+          '76de75412aad003b680bcb58ae54e51096642b0e'
+          '3ef1284a00a4437e4c34f809311ee0672604ef04')
 
 build() {
-
-cd $srcdir/linden
-./linux-build.sh
+	cd $srcdir/linden
+	./linux-build.sh
 }
 
-package(){
-# Install Desktop File
-install -D -m644 $srcdir/coolvlviewer.desktop \
-	$pkgdir/usr/share/applications/coolvlviewer.desktop
- 
-# Install Icon File
-
-#$srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/
-
-install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/cvlv_icon.png \
-	$pkgdir/usr/share/pixmaps/clvl_icon.png
-
-# Install Launcher
-install -D -m755 $srcdir/coolvlviewer.launcher \
-	$pkgdir/usr/bin/coolvlviewer
-    
-# Install License
-install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/licenses.txt \
-	$pkgdir/usr/share/licenses/$pkgname/LISENSE
-    
-# Move Data to Destination Directory
-mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/ $srcdir/coolvlviewer
-install -d $pkgdir/opt/
-mv coolvlviewer/ $pkgdir/opt/
-    
-# Change Permissions of files to root:games
-chown -R root:games $pkgdir/opt/coolvlviewer
-chmod -R g+rw $pkgdir/opt/coolvlviewer
-
-# Make Binary Group-Executable
-chmod g+x $pkgdir/opt/coolvlviewer/cool_vl_viewer
+package() {
+	# Install Desktop File
+	install -D -m644 $srcdir/coolvlviewer.desktop \
+		$pkgdir/usr/share/applications/coolvlviewer.desktop
+	
+	# Install Icon File
+	install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/cvlv_icon.png \
+		$pkgdir/usr/share/pixmaps/clvl_icon.png
+	
+	# Install Launcher
+	install -D -m755 $srcdir/coolvlviewer.launcher \
+		$pkgdir/usr/bin/coolvlviewer
+	
+	# Install License
+	install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/licenses.txt \
+		$pkgdir/usr/share/licenses/$pkgname/LISENSE
+	
+	# Move Data to Destination Directory
+	mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/ $srcdir/coolvlviewer
+	install -d $pkgdir/opt/
+	mv coolvlviewer/ $pkgdir/opt/
+	
+	# Change Permissions of files to root:games
+	chown -R root:games $pkgdir/opt/coolvlviewer
+	chmod -R g+rw $pkgdir/opt/coolvlviewer
+	
+	# Make Binary Group-Executable
+	chmod g+x $pkgdir/opt/coolvlviewer/cool_vl_viewer
 }
