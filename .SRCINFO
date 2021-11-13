@@ -1,11 +1,11 @@
 pkgbase = ofile
 	pkgdesc = Multi-threaded file download
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/ZaViBiS/multithreaded-file-upload
 	arch = x86_64
 	license = MIT
-	source = https://github.com/ZaViBiS/multithreaded-file-upload/releases/download/0.3/linux_x86_64_ofile
-	md5sums = 0da57cb4972a7f985347e175564a204c
+	source = https://github.com/ZaViBiS/multithreaded-file-upload/releases/download/0.4/linux_x86_64_ofile
+	md5sums = 63bb5ea9ca8eeb076255f71b92b42a4a
 
 pkgname = ofile
