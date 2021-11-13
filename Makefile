@@ -7,7 +7,7 @@ integrity:
 
 generate:
 	@sed -i -r "s/pkgver=.*/pkgver=$$VER/g" PKGBUILD
-	@sed -i -r "s/md5sums=.*/md5sums=(\\'$$MD5\\')/g" PKGBUILD
+	@sed -i -r "s/sha256sums=.*/sha256sums=(\\'$$SHA256\\')/g" PKGBUILD
 
 .ONESHELL:
 specificrelease:
@@ -18,5 +18,5 @@ specificrelease:
 .ONESHELL:
 latestrelease:
 	@export VER=$(shell curl -sL https://api.github.com/repos/google/go-containerregistry/releases/latest | jq -r ".name" | cut -c 2-)
-	@export MD5=$(shell curl -sL https://api.github.com/repos/google/go-containerregistry/releases/latest | jq -r ".assets[] | select(.name | contains(\"checksums.txt\")) | .browser_download_url" | wget -q -i - -O - | grep Linux_x86_64 | cut -d' ' -f1)
+	@export SHA256=$(shell curl -sL https://api.github.com/repos/google/go-containerregistry/releases/latest | jq -r ".assets[] | select(.name | contains(\"checksums.txt\")) | .browser_download_url" | wget -q -i - -O - | grep Linux_x86_64 | cut -d' ' -f1)
 	@make generate srcinfo
