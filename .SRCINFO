@@ -1,7 +1,7 @@
 pkgbase = opentabletdriver
 	pkgdesc = A cross-platform open source tablet driver
 	pkgver = 0.5.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/OpenTabletDriver/OpenTabletDriver
 	install = notes.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = opentabletdriver
 	optdepends = libxrandr: x11 display querying support
 	optdepends = libx11
 	source = OpenTabletDriver-0.5.3.3.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/v0.5.3.3.tar.gz
-	source = git+https://github.com/OpenTabletDriver/OpenTabletDriver-udev
+	source = git+https://github.com/OpenTabletDriver/OpenTabletDriver-udev#commit=f4c859ea3286a8
 	source = otd
 	source = otd-gui
 	source = opentabletdriver.service
