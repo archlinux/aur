@@ -12,6 +12,7 @@ pkgbase = tango-database
 	depends = mariadb-clients
 	depends = mariadb-libs
 	depends = cmake>=2.8.9
+	conflicts = tango
 	conflicts = tango-database-git
 	source = https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Release-5.16/TangoDatabase-Database-Release-5.16.tar.gz
 	sha256sums = f1585422800a22c7919261425f28992b865152a3756e0d0bcdddc6f0eaa7fc01

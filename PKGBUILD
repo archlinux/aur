@@ -11,7 +11,7 @@ arch=('x86_64' 'arm')
 url="https://www.tango-controls.org/"
 license=('GPL3')
 depends=('tango-cpp' 'mariadb' 'mariadb-clients' 'mariadb-libs' 'cmake>=2.8.9' )
-conflicts=('tango-database-git')
+conflicts=('tango' 'tango-database-git')
 install=tango-database.install
 source=("https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Release-${pkgver}/TangoDatabase-Database-Release-${pkgver}.tar.gz")
 sha256sums=('f1585422800a22c7919261425f28992b865152a3756e0d0bcdddc6f0eaa7fc01')
