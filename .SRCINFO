@@ -1,0 +1,24 @@
+pkgbase = archarm-mobile-fde-installer-git
+	pkgdesc = Script to setup Full-Ddisk-Encryption on Arch Linux ARM for PinePhone and PineTab
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dreemurrs-embedded/archarm-mobile-fde-installer
+	arch = any
+	license = custom:none
+	depends = parted
+	depends = cryptsetup
+	depends = sudo
+	depends = wget
+	depends = tar
+	depends = squashfs-tools
+	depends = e2fsprogs
+	depends = f2fs-tools
+	depends = util-linux
+	depends = zstd
+	depends = curl
+	optdepends = gnupg: config import/export support
+	provides = archarm-mobile-fde-installer=1.0.0
+	source = git+https://github.com/dreemurrs-embedded/archarm-mobile-fde-installer.git
+	sha256sums = SKIP
+
+pkgname = archarm-mobile-fde-installer-git
