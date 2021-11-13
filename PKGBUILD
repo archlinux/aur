@@ -2,14 +2,14 @@
 
 pkgname=streamlink-git
 pkgver=2.4.0.r87.ga7063e1d
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
 depends=("python-"{pycryptodome,isodate,pycountry,requests,pysocks,websocket-client})
 checkdepends=("python-"{freezegun,pytest,requests-mock})
-makedepends=("python-"{recommonmark,setuptools,sphinx} 'git')
+makedepends=("python-"{recommonmark,setuptools,sphinx,shtab} 'git')
 optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -21,22 +21,26 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-*}"
+  sed -i 's/websocket-client>=1.2.1,<2.0/websocket-client/g' setup.py
+}
+
 build() {
   cd "${pkgname%-*}"
   export STREAMLINK_USE_PYCOUNTRY="true"
   python setup.py build
-  python setup.py build_sphinx -b man
+  PYTHONPATH=$PWD/src/ make -C docs/ man
+  PYTHONPATH=$PWD/build/lib/ bash script/build-shell-completions.sh
 }
 
 check() {
   cd "${pkgname%-*}"
-  PYTHONPATH="./build/lib:$PYTHONPATH" python -m pytest
+  TZ=UTC PYTHONPATH="$PWD/build/lib:$PYTHONPATH" python -m pytest
 }
 
 package() {
   cd "${pkgname%-*}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 build/sphinx/man/streamlink.1 \
-    "$pkgdir/usr/share/man/man1/streamlink.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
