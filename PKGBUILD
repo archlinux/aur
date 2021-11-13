@@ -3,18 +3,18 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-cospend
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Shared budget manager Nextcloud app"
 arch=('any')
 url="https://github.com/eneiluj/cospend-nc"
 license=('AGPL3')
-depends=('nextcloud>=20.0.0')
+depends=('nextcloud>=22' 'nextcloud<25')
 # node-sass (dependency) can't be built with node16, see https://github.com/nodejs/node/issues/38367
 makedepends=('npm' 'nodejs<16' 'rsync')
 options=('!strip')
 source=("cospend-nc-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('49707025355348c8dd7728c6fefca13ac60face8af7848ef77c8f0b58d281c0814cf4d2f3de686cc508158f69da5052eb05f77b9a884f566588161bdabd849bb')
+sha512sums=('5cb8d16f5af85303c33f03ab1f9bcaf5d6fc3390588ad107db7d16e6577c104672d883009c3a8281fdcb63d9d03e47d730ac35ee685212f906f1a16bde2484c6')
 _releasename=cospend-nc
 _appname=cospend
 
