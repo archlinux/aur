@@ -3,7 +3,7 @@
 
 pkgname=wem
 pkgver=0.8.6
-pkgrel=3
+pkgrel=1
 pkgdesc='Wine Environment Manager: A CLI tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
 url='https://git.sr.ht/~hristoast/wem'
