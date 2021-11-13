@@ -1,6 +1,6 @@
 pkgbase = kicad-nightly-bin
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 202111120948+73f40b11ee
+	pkgver = 202111130948+43c85771eb
 	pkgrel = 1
 	url = http://kicad-pcb.org/
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = kicad-nightly-bin
 	provides = kicad-nightly
 	conflicts = kicad-nightly
 	options = !strip
-	source = https://launchpad.net/~kicad/+archive/ubuntu/kicad-dev-nightly/+files/kicad-nightly_202111120948+73f40b11ee~143~ubuntu21.04.1_amd64.deb
+	source = https://launchpad.net/~kicad/+archive/ubuntu/kicad-dev-nightly/+files/kicad-nightly_202111130948+43c85771eb~143~ubuntu21.04.1_amd64.deb
 	source = kicad-nightly.env
-	sha256sums = 042b39c87d9a7f94fde1bbbf67d0daddf9f198b54549a8989c1b47a99c365f90
+	sha256sums = 9cbf0299bf57558d6504139dda8b77f94857fdd1a05ed662f39835d604a69abf
 	sha256sums = fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18
 
 pkgname = kicad-nightly-bin
