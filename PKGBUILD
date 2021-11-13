@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r460.0c7a415
+pkgver=r473.dff3ca5
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
@@ -12,6 +12,8 @@ makedepends=(
   "git"
   "cmake"
   "pciutils"
+  "vulkan-headers"
+  "vulkan-icd-loader"
   "libxrandr" # Depends on libX11, which headers are also needed
   "dconf"     # Depends on glib2, which headers are also needed
   "wayland"
@@ -20,6 +22,7 @@ makedepends=(
 )
 optdepends=(
   "pciutils: GPU output"
+  "vulkan-icd-loader: GPU fallback"
   "libx11: Basic resolution output"
   "libxrandr: Multi monitor and refresh rate support for resolution output"
   "wayland: Native wayland support for resolution output"
