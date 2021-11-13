@@ -4,7 +4,7 @@
 pkgname=code-insiders
 pkgver=1_63_0_1636353036
 pkgrel=1
-pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
+pkgdesc="Editor for building and debugging modern web and cloud applications (insider version)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
 license=('custom: commercial')
