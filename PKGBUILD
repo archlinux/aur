@@ -1,24 +1,24 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
-# Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
+# Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.14.2.21.realtime1
+pkgver=5.15.2.19.realtime1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
-license=('GPL2')
-makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'pahole'
-'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
+license=(GPL2)
+makedepends=(bc cpio git graphviz imagemagick kmod libelf pahole perl
+python-sphinx python-sphinx_rtd_theme tar xmlto)
 options=('!strip')
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"
   config
 )
 sha512sums=('SKIP'
-            'f6e45d1e373792718adeeb50e4e0f6295a17ce24ccba247f0580e887192e7bfcdd8e6d8ca427d37ec9b782bde8b5e26d44fd7af358148e627b735bfb3045fdf8')
+            '0a2ed6459080810c5f99975b2c4ea3d9a384f21589f01ebbeffb0f781e26f76db5d95313bf527736a1bb379b7b612baf3a4a0de864a152407f853debadb7438b')
 b2sums=('SKIP'
-        'f8382505751f0196c672d76a78c91959a8bb96a20a00431b46ac45ab1f48faf1287ac126c403e30486ab74c299d77fd1531bd24dd46089cc021f040e368ba07a')
+        '045a4c45531e67b423e8af2546d40c787386cc41a81986f003709d648288072a23b5e2a8d1c455640730cc412e4fcffe7c860caeb7093dab84693550344751d3')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
@@ -117,13 +117,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
