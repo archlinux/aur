@@ -12,6 +12,7 @@ provides=(python-cadquery)
 conflicts=(python-cadquery)
 depends=(
 python
+python-multimethod
 python-ocp
 python-ezdxf
 python-typing_extensions

@@ -9,6 +9,7 @@ pkgbase = python-cadquery-git
 	checkdepends = python-nptyping
 	checkdepends = ipython
 	depends = python
+	depends = python-multimethod
 	depends = python-ocp
 	depends = python-ezdxf
 	depends = python-typing_extensions
