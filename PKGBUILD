@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g3-kpe
-pkgver=2.6
+pkgver=2.7
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -13,11 +13,11 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python-setuptools'
              'nodejs' 'python-psutil' 'binutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=22307ab353f68d777ea1ce0881a7fdc55a06a26b
+_filesrev=d09d16bec8400e5d6bc33f6f6520391df18cde1a
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
-_commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
-#"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
+_commit=78bd31b84483c4cda5f6eaa981b03f2b0c6ed9ea
+#"git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
+source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-g3.desktop::$_filesurl/waterfox-g3.desktop"
         "distribution.ini::$_filesurl/distribution.ini"
         "vendor.js::$_filesurl/vendor.js"
@@ -29,6 +29,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
         "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
         "remoting-name.patch::$_filesurl/patches/remoting-name.patch"
+        "rust_1.56_p1.patch::$_filesurl/patches/rust_1.56_p1.patch"
+        "rust_1.56_p2.patch::$_filesurl/patches/rust_1.56_p2.patch"
         )
 sha256sums=('SKIP'
             '6e86d11bd147e6ea29118c6f5e4d1cd7376ffb61feca25979d6996731b6b663d'
@@ -41,7 +43,9 @@ sha256sums=('SKIP'
             '25846888b48208606ff88c04dc8b9cb5b1a9c433adfd2d72ce13b6b9edc73a87'
             '71386c2e269bd021c3b8c86b457101bdb730f76db3f2bbb91bf617109564a09c'
             '809c7dea066cb2ba70fb1c16c1b3dcd69c7e7715f354daf2f1c67af757e6d47b'
-            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761')
+            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761'
+            '081afa8b115dc7208316ed04846ae726ace68b999d55f2429cb3a9f9828585a1'
+            'e046c9b17c0b662be898030dacf01d38feb6ab875775999d6c52fc245759299d')
 
 prepare() {
 
@@ -54,6 +58,8 @@ prepare() {
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
   patch -Np1 -i ../remoting-name.patch
+  patch -Np1 -i ../rust_1.56_p1.patch
+  patch -Np1 -i ../rust_1.56_p2.patch
 
   cat >../mozconfig <<END
 export CC=clang
@@ -63,7 +69,7 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 export LLVM_PROFDATA=llvm-profdata
 
-ac_add_options --enable-optimize="-O2 -march=nocona -mtune=nocona -w"
+ac_add_options --enable-optimize
 ac_add_options --target=x86_64-pc-linux-gnu
 
 ac_add_options --enable-alsa
@@ -90,6 +96,7 @@ ac_add_options --with-system-nss
 # Disable unwanted features
 ac_add_options --disable-crashreporter
 ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
 ac_add_options --disable-updater
 ac_add_options --disable-verify-mar
 ac_add_options --disable-profiling
