@@ -6,7 +6,7 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=v0.5.3.1.r675.g35ae3e65
-pkgrel=7
+pkgrel=8
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -70,6 +70,7 @@ package() {
 
     install -do root "$pkgdir/usr/share/$_pkgname"
 
+    shopt -s nullglob
     cd "$srcdir/$_pkgname/bin"
     for binary in *.dll *.json *.pdb; do
         install -Dm 755 -o root "$binary" -t "$pkgdir/usr/share/$_pkgname"
