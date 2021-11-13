@@ -1,6 +1,6 @@
 # Maintainer: igo95862 <https://github.com/igo95862/cfs-zen-tweaks>
 pkgname=cfs-zen-tweaks
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Script tweak CFS for desktop interactivity"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('gawk' 'bash' 'systemd')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}"::"https://github.com/igo95862/cfs-zen-tweaks/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('d72f5df3cd16a224ab88b2356765e528ee050ac70260261282cdef45d6d7c906514c6f01a63e1d785e341c9971d39f115e772f6df0484f369c0d04d8d43324c1')
+sha512sums=('9f54e64689bb68bc35a043ba70fc56efb6552cd4287f0242c4d3c2267dae46a2bce99f59140348944b58691c3c748c0c67ad7f6a72bb82face40760f59a8d3cf')
 
 build() {
 	cmake -B build -S "${pkgname}-${pkgver}" \
