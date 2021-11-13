@@ -3,7 +3,7 @@
 
 pkgname=monitoring-plugins
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications"
 arch=('x86_64')
 url="https://www.monitoring-plugins.org"
