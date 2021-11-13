@@ -4,7 +4,7 @@
 
 pkgname=python-bluetooth-battery
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A python script to get battery level from Bluetooth headsets"
 arch=(any)
 url="https://pypi.org/project/bluetooth-battery"
@@ -13,7 +13,7 @@ depends=('python-pybluez')
 makedepends=("python" "python-pip")
 
 build() {
-  pip install --no-deps --target="bluetooth-battery" bluetooth-battery==1.3.2
+  PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring pip install --no-deps --target="bluetooth-battery" bluetooth-battery==1.3.2
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
