@@ -53,6 +53,11 @@ if [ -z ${_compiler+x} ]; then
   _compiler=gcc
 fi
 
+# Compress modules with ZSTD (to save disk space)
+if [ -z ${_compress_modules+x} ]; then
+  _compress_modules=n
+fi
+
 ## Setting some security options
 use_selinux=n
 use_tomoyo=n
@@ -76,20 +81,21 @@ _makenconfig=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-xanmod-cacule-uksm-cjktty
-_major=5.14
-pkgver=${_major}.15
+pkgbase=linux-xanmod-tt-uksm-cjktty
+replaces=("linux-xanmod-cacule-uksm-cjktty")
+_major=5.15
+pkgver=${_major}.2
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
-pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
+pkgdesc='Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri'
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 _jobs=$(nproc)
 url="http://www.xanmod.org/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf cpio perl tar xz
+  bc cpio kmod libelf perl tar xz
 )
 
 if [ "${_compiler}" = "clang" ]; then
@@ -101,11 +107,11 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-tt/patch-${pkgver}-xanmod${xanmod}-tt.xz"
         choose-gcc-optimization.sh
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
-        "0002-UKSM.patch::${_patches_url}/uksm-patches-v2/0001-UKSM-for-${_major}.patch"
-        "0003-zstd.patch::${_patches_url}/zstd-patches-v2/0001-zstd-patches.patch"
+        "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
+        "0003-zstd.patch::${_patches_url}/zstd-patches/0001-zstd-patches.patch"
         )
 
 validpgpkeys=(
@@ -114,18 +120,20 @@ validpgpkeys=(
 )
 
 # Archlinux patches
-_commits=""
-for _patch in $_commits; do
-    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
+_patches=()
+for _patch in ${_patches[@]}; do
+    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-b2sums=('0047f5aaa3940dff97f4055ef544faafbbb5282128e6afe21d2f47d8dc8c395806a17016febfa050117d16f59e74b882cb8b9c5011d68f119c230d0a4d120524'
+b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
         'SKIP'
-        'ae033905dedde6d42ae41477c7fd870e4b9e45fee7b34f6b0469d2d567bcac35d0b50687caa2d1cfafe2861ef4bcdcbe06f5f5ee9f0104de9d217cdd876a6ad5'
+        '5a49e9ab2b6576347fa7189ab9d3fe393a73eb835aa71e38d50add299d1cb8587b9dfa6194b4f228ea70f82f9ae8e3e031dbf1151c777f1c16f18fb2d6edab61'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
-        '21d13b890e7b80c924e18ae11f675d69a80adffbe75e37bebd003024e7299c582346b0df60b67c709eba9678bcf6dda7da852c9cf18d43804ddd8ee9388b9ea5'
-        '8f6d6263f0e517b6e7a1809fc57e01cc4b13dd261f778041026ec510f48257d4f525c3cb0b0935e291293960c9191282f5765ca0af3d948838e8f865c7deafcc'
-        '90b8306ff5b0207fe2c7bf068a03da36ba3f38d68b7ea5ae227000f3d44ef9093541655fe32412686ae23a3c75f795e0b0a4fb24976867ac3c93e4de53145d48')
+        '2b765bd1aad8086a94ec9285e4d789eacdff05fcc71013286384a51de6f6cc153cecffd4430cfc08daae4692583577b5eb07f971eb00bcd1ca796063865c20f7'
+        '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260'
+        'af67842113cb345e731b12d4709ddc127a73001e8f49f9391f4351904de82825f13e1895be092048329c46af44504e824ace4a4fa4a9af200d247eba1a12f2d2')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -136,7 +144,7 @@ prepare() {
   cd linux-${_major}
 
   msg2 "Apply Xanmod patch"
-  xz -d < ../patch-${pkgver}-xanmod${xanmod}-cacule.xz | patch -Np1
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-tt
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -156,6 +164,14 @@ prepare() {
   # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
 
+  # enable LTO_CLANG_THIN
+  if [ "${_compiler}" = "clang" ]; then
+    msg2 "Enable LTO_CLANG_THIN"
+    scripts/config --disable LTO_CLANG_FULL
+    scripts/config --enable LTO_CLANG_THIN
+    _LLVM=1
+  fi
+
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
 
@@ -166,13 +182,20 @@ prepare() {
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
     msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
-    scripts/config --disable CONFIG_FUNCTION_TRACER \
-                   --disable CONFIG_STACK_TRACER
+    if [ "${_compiler}" = "gcc" ]; then
+      scripts/config --disable CONFIG_FUNCTION_TRACER \
+                     --disable CONFIG_STACK_TRACER
+    fi
   fi
 
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
+  fi
+
+  # Compress modules by default (following Arch's kernel)
+  if [ "$_compress_modules" = "y" ]; then
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
   
   if [ "$use_selinux" = "n" ]; then
