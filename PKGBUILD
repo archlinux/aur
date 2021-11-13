@@ -1,17 +1,17 @@
 # Maintainer: Konstantin Köhring <konstantin.koehring@gmail.com>
 
 pkgname=budgie-bluetooth-battery-applet
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.1
+pkgrel=2
 pkgdesc="Show the Battery percentage of a connected bluetooth device"
 arch=('i686' 'x86_64')
 url='https://github.com/GaLaXy102/budgie-bluetooth-battery-applet'
 license=('GPL3')
-depends=('budgie-desktop' 'python' 'python-gobject' 'python-pybluez')
+depends=('budgie-desktop' 'python-gobject' 'python-bluetooth-battery')
 install=budgie-bluetooth-battery-applet.install
 
 source=("git+${url}" "budgie-bluetooth-battery-applet.install")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' '867a3c59354ca6a79eee539cf15cc88e01937e513609624a673e40f68264b667')
 
 package() {
   _plugin_dir="${pkgdir}/usr/lib/budgie-desktop/plugins/budgie-bluetooth-battery-applet"
@@ -19,10 +19,6 @@ package() {
   install -d "${_plugin_dir}"
   install -D -m644 "${_srcdir}/BudgieBluetoothBatteryApplet.plugin" "${_plugin_dir}/"
   install -D -m644 "${_srcdir}/budgie_bluetooth_battery_applet.py" "${_plugin_dir}/"
-
-  install -d "${_plugin_dir}/bluetooth_battery"
-  install -D -m644 "${_srcdir}/bluetooth_battery/__init__.py" "${_plugin_dir}/bluetooth_battery/"
-  install -D -m644 "${_srcdir}/bluetooth_battery/bluetooth_battery.py" "${_plugin_dir}/bluetooth_battery/"
 
   _pixmaps_dir="${pkgdir}/usr/share/pixmaps"
   install -d "${_pixmaps_dir}"

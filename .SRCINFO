@@ -1,19 +1,18 @@
 pkgbase = budgie-bluetooth-battery-applet
 	pkgdesc = Show the Battery percentage of a connected bluetooth device
-	pkgver = 0.0.1
-	pkgrel = 1
+	pkgver = 0.1
+	pkgrel = 2
 	url = https://github.com/GaLaXy102/budgie-bluetooth-battery-applet
 	install = budgie-bluetooth-battery-applet.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = budgie-desktop
-	depends = python
 	depends = python-gobject
-	depends = python-pybluez
+	depends = python-bluetooth-battery
 	source = git+https://github.com/GaLaXy102/budgie-bluetooth-battery-applet
 	source = budgie-bluetooth-battery-applet.install
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 867a3c59354ca6a79eee539cf15cc88e01937e513609624a673e40f68264b667
 
 pkgname = budgie-bluetooth-battery-applet
