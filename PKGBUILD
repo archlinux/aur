@@ -13,7 +13,7 @@ pkgname=(pipewire-common-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.39.r1.g651f0dec
+pkgver=0.3.40.r16.gc03d1029
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -23,7 +23,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
-             avahi
+             avahi openssl
              gst-plugins-base-libs
              )
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
@@ -111,6 +111,8 @@ package_pipewire-common-git() {
   _pick v4l2 usr/bin/pw-v4l2 usr/lib/pipewire-$_ver/v4l2
 
   _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-zeroconf-discover.so
+  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-raop-discover.so
+  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-raop-sink.so
 
   _pick gst usr/lib/gstreamer-1.0
 }
@@ -144,7 +146,7 @@ package_pipewire-common-alsa-git() {
 package_pipewire-common-jack-git() {
   pkgdesc+=" - JACK support"
   license+=(GPL2)
-  depends=(bash pipewire-session-manager pipewire-common-git
+  depends=(pipewire-session-manager pipewire-common-git
            libpipewire-$_ver.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
@@ -190,7 +192,7 @@ package_pipewire-common-v4l2-git() {
 package_pipewire-common-zeroconf-git() {
   pkgdesc+=" - Zeroconf support"
   depends=(pipewire-common-git libpipewire-$_ver.so
-           libavahi-{client,common}.so)
+           libavahi-{client,common}.so libcrypto.so)
   provides=(pipewire-zeroconf)
   conflicts=(pipewire-zeroconf)
 
