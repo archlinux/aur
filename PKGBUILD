@@ -6,10 +6,11 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver='4.4'
+pkgver='4.5'
 pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
+arch+=('aarch64') # yjun naumovitch
 url='https://libreswan.org/'
 license=('GPL' 'MPL')
 depends=('systemd' 'unbound' 'nss' 'libcap-ng' 'curl')
@@ -27,9 +28,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('aa2b40d74aa6b88faf147a957de4663e'
+md5sums=('29c39e1ae62245d6995603b7e5368113'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('5f3f0a20d7097f20108bc93ba1255a778d8ffb8692d05f86383978c03c394976'
+sha256sums=('0703f51bdc6674d4ba66adb50854df9e0731bfa78a8983ebc2aa3adc55dd90a3'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -53,18 +54,21 @@ pkgver() {
 }
 fi
 
+# https://git.centos.org/rpms/libreswan/blob/c8s/f/SPECS/libreswan.spec
 _bargs=(
-  USE_XAUTH=true
-  USE_LIBCAP_NG=true
-  USE_LEAK_DETECTIVE=false
-  USE_LABELED_IPSEC=false
-  USE_DNSSEC=false
-  INC_USRLOCAL='/usr' # required by 3.32 for /usr/share/doc
-  PREFIX='/usr'
+  FINALLIBEXECDIR='/usr/lib/ipsec'
   #INC_MANDIR='/usr/share/man'
   FINALMANDIR='/usr/share/man'
   FINALSBINDIR='/usr/bin'
-  FINALLIBEXECDIR='/usr/lib/ipsec'
+  #INC_USRLOCAL='/usr' # required by 3.32 for /usr/share/doc
+  PREFIX='/usr'
+  USE_DNSSEC=false
+  USE_LABELED_IPSEC=false
+  USE_LIBCAP_NG=true
+  USE_DH2=true # insecure modp1024
+
+  USE_LEAK_DETECTIVE=false
+  USE_XAUTH=true
 )
 
 prepare() {
@@ -77,14 +81,6 @@ build() {
   set -u
   cd "${_srcdir}"
 
-  local _nproc="$(nproc)"
-  if [ "${_nproc}" -gt 8 ]; then
-    _nproc=8
-  fi
-  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
-    MAKEFLAGS+=" -j${_nproc}"
-  fi
-
   # Disable new warning introduced with GCC 6 (-Wunused-const-variable=)
   local _cf=(
     #-Wno-error=sign-compare
@@ -93,7 +89,7 @@ build() {
     #-Wno-error=maybe-uninitialized
     #-Wno-error=pointer-compare
     #-Wno-error=format-truncation
-    -DNSS_PKCS11_2_0_COMPAT=1 # nss 3.52 https://github.com/libreswan/libreswan/issues/342
+    #-DNSS_PKCS11_2_0_COMPAT=1 # nss 3.52 https://github.com/libreswan/libreswan/issues/342
   )
 
   CFLAGS="${CFLAGS} ${_cf[*]}" \
