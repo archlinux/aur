@@ -1,6 +1,6 @@
 pkgbase = mu
 	pkgdesc = Maildir indexer/searcher and Emacs client (mu4e)
-	pkgver = 1.6.9
+	pkgver = 1.6.10
 	pkgrel = 1
 	url = http://www.djcbsoftware.nl/code/mu
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mu
 	depends = xapian-core
 	optdepends = guile: guile support
 	optdepends = emacs: mu4e support
-	source = mu-1.6.9.tar.gz::https://github.com/djcb/mu/archive/1.6.9.tar.gz
-	md5sums = 2e3bae3b2b39ff5452f600410281bf18
+	source = mu-1.6.10.tar.gz::https://github.com/djcb/mu/archive/1.6.10.tar.gz
+	md5sums = 441c13a5ac2ecd14546de4c1286d511f
 
 pkgname = mu
