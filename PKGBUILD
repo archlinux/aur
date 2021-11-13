@@ -2,13 +2,14 @@
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=21.11.2
+pkgver=21.11.4
 pkgrel=1
 pkgdesc="A digital audio workstation (DAW) with a powerful pattern-based workflow"
 license=('GPL')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://stargateaudio.github.io/"
 depends=(
+    'alsa-lib'
     'fftw'
     'libsndfile'
     'portaudio'
@@ -19,28 +20,34 @@ depends=(
     'python-numpy'
     'python-psutil'
     'python-yaml'
+    'python-pymarshal'
+    'python-wavefile'
     'python-pyqt5'
     'rubberband'
+    'sbsms'
 )
 makedepends=(
     'cython'
     'jq'
-    'python-pip'
+    'libsbsms'
 )
 optdepends=(
     'lame'
     'ffmpeg'
     'vorbis-tools'
+    'python-pyqt6: qt6 support'
+    'qt6-svg: qt6 support'
 )
 source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${pkgver}.tar.gz")
-sha256sums=('ce196e5a6095707d33df8c4c5bba9cdf8713c061195350730d3ab70270ccc45f')
+sha256sums=('1474d5991f818978f0216bf1e05cc9644a541cbd4a9ee80381e471c89e6bb60b')
 
 build() {
   cd stargate-release-${pkgver}/src
-  make
+  # for non-x86 architectures
+  PLAT_FLAGS="${CFLAGS}" make distro
 }
 
 package() {
   cd stargate-release-${pkgver}/src
-  PREFIX=${pkgdir}/usr make install
+  PREFIX=${pkgdir}/usr make install_distro
 }
