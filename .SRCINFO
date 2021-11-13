@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-multi-monitors-add-on-git
 	pkgdesc = Adds panels and thumbnails for additional monitors.
 	pkgver = 23.r0.g0cec99d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/spin83/multi-monitors-add-on
 	arch = any
 	license = GPL2
@@ -10,8 +10,8 @@ pkgbase = gnome-shell-extension-multi-monitors-add-on-git
 	provides = gnome-shell-extension-multi-monitors-add-on
 	conflicts = gnome-shell-extension-multi-monitors-add-on
 	source = git+https://github.com/spin83/multi-monitors-add-on.git
-	source = https://github.com/spin83/multi-monitors-add-on/pull/159.patch
+	source = https://github.com/spin83/multi-monitors-add-on/pull/163.patch
 	sha256sums = SKIP
-	sha256sums = 13019cce907dd59f531ab56d4425139f41752590e2e9fd79b571a75ec3c1657e
+	sha256sums = e157f4ed3afec752c5ccd623efbc3ddb9e8971ab20606adb8f1e0133da7bbdbe
 
 pkgname = gnome-shell-extension-multi-monitors-add-on-git

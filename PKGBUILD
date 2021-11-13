@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
 _pkgname=multi-monitors-add-on
 pkgver=23.r0.g0cec99d
-pkgrel=3
+pkgrel=4
 pkgdesc="Adds panels and thumbnails for additional monitors."
 arch=('any')
 url="https://github.com/spin83/multi-monitors-add-on"
@@ -14,9 +14,9 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/spin83/multi-monitors-add-on.git'
-        'https://github.com/spin83/multi-monitors-add-on/pull/159.patch')
+        'https://github.com/spin83/multi-monitors-add-on/pull/163.patch')
 sha256sums=('SKIP'
-            '13019cce907dd59f531ab56d4425139f41752590e2e9fd79b571a75ec3c1657e')
+            'e157f4ed3afec752c5ccd623efbc3ddb9e8971ab20606adb8f1e0133da7bbdbe')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -26,8 +26,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  # Partial support for GNOME 40
-  patch -Np1 -i $srcdir/159.patch
+  # Added Partial Support for Gnome 41
+  patch -Np1 -i $srcdir/163.patch
 }
 
 package() {
