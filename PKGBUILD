@@ -4,14 +4,14 @@
 
 pkgname=theia-electron
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
 depends=('nodejs-lts-erbium' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
-             'yarn' 'make' 'gcc' 'pkgconf' 'python2' 'node-gyp')
+             'yarn' 'make' 'gcc' 'pkgconf' 'python' 'node-gyp')
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!strip) #to speed up build
 
