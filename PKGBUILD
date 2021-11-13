@@ -5,7 +5,7 @@
 pkgname=simulide
 pkgver=0.4.15_SR10
 _realver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
 arch=("x86_64")
 url="https://www.simulide.com/"
@@ -15,7 +15,7 @@ source=(
         "simulide.desktop"
         "changelog.txt")
 
-sha256sums=('571512a3ba008311a7150b2c8835ca0f6690bcde2b2866b5cc9a215734355a20'
+sha256sums=('b108d804d4720daa5d3eb60e1d99b0cce57973cf8ba59546e7d389250f5eab8d'
             SKIP
             SKIP)
 
@@ -44,7 +44,7 @@ makedepends=(
 build() {
   cd "${srcdir}/simulide_${_realver}_Sources/build_XX"
   qmake
-  make
+  make -j`nproc`
 }
 
 package() {
