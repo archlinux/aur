@@ -1,6 +1,6 @@
 pkgbase = xmonad-contrib-git
 	pkgdesc = Add-ons for xmonad
-	pkgver = v0.16.r574.g8c72f77c
+	pkgver = v0.17.0.r32.g6cb2796f
 	pkgrel = 1
 	url = http://xmonad.org/
 	arch = x86_64
