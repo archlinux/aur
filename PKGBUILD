@@ -1,12 +1,14 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=wl-mirror-git
-pkgver=0.3.0.r0.g693b56a
-pkgrel=1
+pkgver=0.3.1.r0.geff2509
+pkgrel=2
 pkgdesc="a simple Wayland output mirror client (git version)"
 url="https://github.com/Ferdi265/wl-mirror"
 arch=('i686' 'x86_64')
 license=('GPL3')
+provides=("wl-mirror=${pkgver%%.r*}")
+conflicts=('wl-mirror')
 depends=('libglvnd' 'wayland')
 makedepends=('git' 'cmake')
 source=(
