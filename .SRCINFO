@@ -1,7 +1,7 @@
 pkgbase = simulide
 	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)
-	pkgver = 0.4.15_SR7
-	pkgrel = 2
+	pkgver = 0.4.15_SR9
+	pkgrel = 1
 	url = https://www.simulide.com/
 	changelog = changelog.txt
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = simulide
 	depends = libelf>=0.181
 	optdepends = gpsim: needed for PIC simulation
 	optdepends = simavr: needed for AVR simulation
-	source = https://launchpad.net/simulide/0.4.15/0.4.15-stable/+download/simulide_0.4.15-SR7_Sources.zip
+	source = https://launchpad.net/simulide/0.4.15/0.4.15-stable/+download/simulide_0.4.15-SR9_Sources.zip
 	source = simulide.desktop
 	source = changelog.txt
-	md5sums = 4ea0d28b7570965a549c6c28f69d875c
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = 2da9f1b1e2fb3f644e523e049fd82aba26a71828c0cf51694a309600afc45ebd
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = simulide

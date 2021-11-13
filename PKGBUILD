@@ -3,9 +3,9 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=0.4.15_SR7
+pkgver=0.4.15_SR9
 _realver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
 arch=("x86_64")
 url="https://www.simulide.com/"
@@ -15,10 +15,9 @@ source=(
         "simulide.desktop"
         "changelog.txt")
 
-md5sums=('4ea0d28b7570965a549c6c28f69d875c'
-         'SKIP'
-         'SKIP')
-
+sha256sums=('2da9f1b1e2fb3f644e523e049fd82aba26a71828c0cf51694a309600afc45ebd'
+            SKIP
+            SKIP)
 
 changelog="changelog.txt"
 depends=(
