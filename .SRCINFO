@@ -1,6 +1,6 @@
 pkgbase = python-humanfriendly
 	pkgdesc = Human friendly input/output in Python
-	pkgver = 9.2
+	pkgver = 10.0
 	pkgrel = 1
 	url = https://github.com/xolox/python-humanfriendly
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-humanfriendly
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
-	source = https://github.com/xolox/python-humanfriendly/archive/9.2.tar.gz
-	sha256sums = 63b6ae2ca33e7e8f5c3ae80b2a86d4bdf4d80e113afe02f4f1bd38031144f649
+	source = https://github.com/xolox/python-humanfriendly/archive/10.0.tar.gz
+	sha256sums = a7f6ee6aa93933ffdf716a44163a8b1d17e8c95b3badb25efa37d562b2b93393
 
 pkgname = python-humanfriendly
