@@ -3,10 +3,10 @@
 
 
 # Things that need to be updated on new build
-pkgver=1.21.3
+pkgver=1.22.1
 # cri-o releases package their tarballs using the commit sha of the tag
-commit_sha=ff0b7feb8e12509076b4b0e338b6334ce466b293
-sha256sums_x86_64=(96759067cc21b98c176f425ae621e3cd12d15d2527a7bdb3c2921aaec7eaa940)
+commit_sha=861ff3a5c6ab4220b821b8a64063de01230fc484
+sha256sums_x86_64=(fb2fae26fe0e790a14b6cdcfcd5a66ae2fd6c2cfa68194931a7418ced5df1341)
 pkgrel=1
 
 # Things that will stay the same
@@ -22,7 +22,7 @@ conflicts=(crio crio-bin crio-git cri-o cri-o-git)
 
 # Using source and source_x86_64 is just a dumb hack so I can put the single sha hash up above
 source=("https://raw.githubusercontent.com/cri-o/cri-o/580db0719d68b3ff3bb30f60397c3892be383eb5/LICENSE")
-source_x86_64=("https://storage.googleapis.com/k8s-conform-cri-o/artifacts/cri-o.amd64.${commit_sha}.tar.gz")
+source_x86_64=("https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.${commit_sha}.tar.gz")
 sha256sums=(b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1)
 
 backup=("etc/crio/crio.conf"
