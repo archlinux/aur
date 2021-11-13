@@ -2,7 +2,7 @@
 
 pkgname=waterfox-g3-kpe
 pkgver=2.7
-pkgrel=0
+pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
 license=('MPL')
@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python-setuptools'
              'nodejs' 'python-psutil' 'binutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=d09d16bec8400e5d6bc33f6f6520391df18cde1a
+_filesrev=b0f1edf7fb5512950f7098ff152985f9977cc830
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
 _commit=78bd31b84483c4cda5f6eaa981b03f2b0c6ed9ea
 #"git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
@@ -31,6 +31,9 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "remoting-name.patch::$_filesurl/patches/remoting-name.patch"
         "rust_1.56_p1.patch::$_filesurl/patches/rust_1.56_p1.patch"
         "rust_1.56_p2.patch::$_filesurl/patches/rust_1.56_p2.patch"
+        "icecat-glibc-dynstack.patch::$_filesurl/patches/icecat-glibc-dynstack.patch"
+        "mozilla-1715254_glibc_2.34.patch::$_filesurl/patches/mozilla-1715254_glibc_2.34.patch"
+        "mozilla-1707096.patch::$_filesurl/patches/mozilla-1707096.patch"
         )
 sha256sums=('SKIP'
             '6e86d11bd147e6ea29118c6f5e4d1cd7376ffb61feca25979d6996731b6b663d'
@@ -45,7 +48,10 @@ sha256sums=('SKIP'
             '809c7dea066cb2ba70fb1c16c1b3dcd69c7e7715f354daf2f1c67af757e6d47b'
             'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761'
             '081afa8b115dc7208316ed04846ae726ace68b999d55f2429cb3a9f9828585a1'
-            'e046c9b17c0b662be898030dacf01d38feb6ab875775999d6c52fc245759299d')
+            'e046c9b17c0b662be898030dacf01d38feb6ab875775999d6c52fc245759299d'
+            'ed78168ec6a2f9a5d278c613383067faf0fabf77dda909c732095f261188f6d0'
+            '121fb82cc614bc3f9d10bdadd026d8099fcd9455510c565d58fae00d37fca043'
+            'f8742d4b468391f44178f480a8f711961137e11470046157bb39549de5602854')
 
 prepare() {
 
@@ -60,6 +66,9 @@ prepare() {
   patch -Np1 -i ../remoting-name.patch
   patch -Np1 -i ../rust_1.56_p1.patch
   patch -Np1 -i ../rust_1.56_p2.patch
+  patch -Np1 -i ../icecat-glibc-dynstack.patch
+  patch -Np1 -i ../mozilla-1715254_glibc_2.34.patch
+  patch -Np1 -i ../mozilla-1707096.patch
 
   cat >../mozconfig <<END
 export CC=clang
