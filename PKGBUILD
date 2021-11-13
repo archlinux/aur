@@ -45,18 +45,18 @@ build() {
     SUFFIX=$(git describe --long --tags | sed 's/^[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
 
     ./build.sh linux-x64 \
-        --version-suffix "$SUFFIX"                 \
+        --version-suffix "$SUFFIX"                  \
         /p:VersionPrefix="$PREFIX"                  \
         /p:DebugType=None /p:DebugSymbols=false
 
-    dotnet build          OpenTabletDriver.Tools.udev \
-        --configuration   Release                   \
-        --framework       net5.0                    \
-        --runtime         linux-x64                 \
-        --output          "./$_pkgname/out-udev"    \
+    dotnet build          OpenTabletDriver.Tools.udev   \
+        --configuration   Release                       \
+        --framework       net5.0                        \
+        --runtime         linux-x64                     \
+        --output          "./$_pkgname/out-udev"        \
         /p:SuppressNETCoreSdkPreviewMessage=true
 
-    dotnet "./$_pkgname/out-udev/$_pkgname.Tools.udev.dll" \
+    dotnet "./$_pkgname/out-udev/$_pkgname.Tools.udev.dll"          \
         "$srcdir/$_pkgname/$_pkgname.Configurations/Configurations" \
         "bin/99-$_lpkgname.rules" > /dev/null
 }
