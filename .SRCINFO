@@ -1,0 +1,24 @@
+pkgbase = python-pybuilder
+	pkgdesc = An extensible, easy to use continuous build tool for Python
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://pybuilder.github.io
+	arch = any
+	license = Apache
+	makedepends = python-cram
+	makedepends = flake8
+	makedepends = python-sphinx
+	makedepends = python-pdoc
+	makedepends = python-coverage
+	makedepends = python-pytddmon
+	makedepends = python-unittest-xml-reporting
+	depends = python-pip
+	depends = python-pypandoc
+	depends = python-tailer
+	depends = python-tblib
+	depends = python-twine
+	depends = python-wheel
+	source = python-pybuilder-0.13.3.tar.gz::https://github.com/pybuilder/pybuilder/archive/v0.13.3.tar.gz
+	sha512sums = 0a6d9470b9ebe70e7a4bdc860fbf9eeaeb8e7ae2bf1157467ef560a051a74165bc5668d3c370c6da08514e72d559c4376177f23a433947252ac7e47dec0cdac9
+
+pkgname = python-pybuilder
