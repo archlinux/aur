@@ -1,37 +1,51 @@
-#Maintainer: Bruna Bazaluk M. V. <bazaluk at riseup dot net>
-pkgname=kworkflow-git
-_gitname=kworkflow
-_lpkg="${_gitname,,}"
-pkgver=0.7
-pkgrel=2
-pkgdesc="Scripts that help setting up infra for kernel development."
+# Maintainer: Isabella Basso do Amaral <isabbasso at riseup dot net>
+
+_pkgname=kworkflow
+_lpkg="${_pkgname,,}"
+pkgname="${_pkgname}-git"
+_basepkgver=0.5.0
+pkgver=0.5.8206878
+pkgrel=3
+pkgdesc='CLI tool for kernel development'
 arch=('x86_64')
-url="https://github.com/rodrigosiqueira/kworkflow"
-source=("git+https://github.com/rodrigosiqueira/kworkflow.git")
+url='https://github.com/kworkflow/kworkflow'
+source=("git+https://github.com/kworkflow/kworkflow")
 license=('GPL2')
-depends=("libguestfs"
-		 "qemu"
-		 "ansible"
-		 "git"
-		)
+depends=(bc qemu bash git tar libpulse python-virtualenv
+	 bzip2 lzip lzop zstd xz
+	 perl-authen-sasl perl-io-socket-ssl)
+optdepends=('pipewire-pulse: PipeWire backend'
+	    'pulseaudio: PulseAudio backend'
+	    'dunst: Desktop notifications support'
+	    'graphviz: Pomodoro graphs support'
+	    'librsvg: Pomodoro graphs support'
+	    'imagemagick: Pomodoro graphs support'
+	    'python-sphinx: Build docs'
+	    'python-pip: Build docs'
+	    'python-docutils: Build docs')
 provides=("${_lpkg}")
 conflicts=("${_lpkg}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
+#install=kw.install
+
+pkgver() {
+  cd "$_pkgname"
+  echo "${_basepkgver}_$(git describe --always)"
+}
+
 prepare() {
-  cd "$_gitname"
-  git checkout master
+  cd "$_pkgname"
+  git checkout unstable
   git pull
 }
-build() {
-  cd "$_gitname"
-  chmod +x setup.sh
-  ./setup.sh -i
-}
+
+#build() {
+#  pip install sphinx-book-theme
+#  ./setup.sh --docs
+#}
+
 package() {
-  cd "$_gitname"
-  mkdir -p "$pkgdir$HOME/.kworkflow"
-  cp -r * "$pkgdir$HOME/.kworkflow/"
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "$HOME/.kw/kw" "$pkgdir/usr/bin/kworkflow"
+  cd "$_pkgname"
+  chmod +x setup.sh
+  ./setup.sh --skip-checks -i
 }
-install="kw.install"
