@@ -1,8 +1,7 @@
-# Maintainer: GordonGR <ntheo1979@gmail.com>
-# Co-Maintainer: Alex Tharp <toastercup@gmail.com>
+# Maintainer: Alex Tharp <alex@toastercup.io>
 
 pkgname=coolvlviewer-bin
-pkgver=1.28.2.45
+pkgver=1.28.2.46
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
 url="http://sldev.free.fr"
@@ -24,47 +23,45 @@ arch=('x86_64')
 conflicts=('coolvlviewer' 'coolvlviewer-experimental' 'coolvlviewer-experimental-bin')
 install=coolvlviewer.install
 source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
-
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('a08fd30cd8713c8980065d3761819800'
-         '7a70defd1c6381bab1af7456b14daca4'
-         'fd78de1f6c1333a5120ece89873515e0')
+sha1sums=('e253e1e1c8cf85f4ed69f77400487681cd879c21'
+          '76de75412aad003b680bcb58ae54e51096642b0e'
+          '3ef1284a00a4437e4c34f809311ee0672604ef04')
 
 build() {
-cd $srcdir
-# Run the installer
-chmod +x CoolVLViewer-${pkgver}-Linux-x86_64-Setup
-./CoolVLViewer-${pkgver}-Linux-x86_64-Setup --mode silent --destination $srcdir/coolvlviewer/
+	cd $srcdir
+	chmod +x CoolVLViewer-${pkgver}-Linux-x86_64-Setup
 
+	# Run the installer
+	./CoolVLViewer-${pkgver}-Linux-x86_64-Setup --mode silent --destination $srcdir/coolvlviewer/
 }
 
-package(){
-# Install Desktop File
-install -D -m644 $srcdir/coolvlviewer.desktop \
-	$pkgdir/usr/share/applications/coolvlviewer.desktop
+package() {
+	# Install Desktop File
+	install -D -m644 $srcdir/coolvlviewer.desktop \
+		$pkgdir/usr/share/applications/coolvlviewer.desktop
 
-# Install Icon File
-install -D -m755 $srcdir/coolvlviewer/cvlv_icon.png \
-	$pkgdir/usr/share/pixmaps/clvl_icon.png
+	# Install Icon File
+	install -D -m755 $srcdir/coolvlviewer/cvlv_icon.png \
+		$pkgdir/usr/share/pixmaps/clvl_icon.png
 
-# Install Launcher
-install -D -m755 $srcdir/coolvlviewer.launcher \
-	$pkgdir/usr/bin/coolvlviewer
+	# Install Launcher
+	install -D -m755 $srcdir/coolvlviewer.launcher \
+		$pkgdir/usr/bin/coolvlviewer
 
-# Install License
-install -D -m644 $srcdir/coolvlviewer/licenses.txt \
-	$pkgdir/usr/share/licenses/$pkgname/LISENSE
+	# Install License
+	install -D -m644 $srcdir/coolvlviewer/licenses.txt \
+		$pkgdir/usr/share/licenses/$pkgname/LISENSE
 
-# Move Data to Destination Directory
-install -d $pkgdir/opt/
-mv coolvlviewer/ $pkgdir/opt/
+	# Move Data to Destination Directory
+	install -d $pkgdir/opt/
+	mv coolvlviewer/ $pkgdir/opt/
 
-# Change Permissions of files to root:games
-chown -R root:games $pkgdir/opt/coolvlviewer
-chmod -R g+rw $pkgdir/opt/coolvlviewer
-
-# Make Binary Group-Executable
-chmod g+x $pkgdir/opt/coolvlviewer/cool_vl_viewer
-
+	# Change Permissions of files to root:games
+	chown -R root:games $pkgdir/opt/coolvlviewer
+	chmod -R g+rw $pkgdir/opt/coolvlviewer
+	
+	# Make Binary Group-Executable
+	chmod g+x $pkgdir/opt/coolvlviewer/cool_vl_viewer
 }
