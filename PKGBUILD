@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=mrcode
-pkgver=1.61.2+21293
+pkgver=1.62.2+21317
 pkgrel=1
 pkgdesc="A custom build of VSCodium / VSCode (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
