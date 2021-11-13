@@ -3,7 +3,7 @@
 pkgname=daily-wallpaper-git
 pkgver=0.8.0.r9.gad7fb04
 pkgrel=1
-pkgdesc="Change wallpaper automatically with a 'Photo of the Day'"
+pkgdesc="Change wallpaper automatically with a photo of the day"
 arch=('any')
 url="https://github.com/atareao/daily-wallpaper"
 license=('MIT')

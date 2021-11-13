@@ -1,5 +1,5 @@
 pkgbase = daily-wallpaper-git
-	pkgdesc = Change wallpaper automatically with a 'Photo of the Day'
+	pkgdesc = Change wallpaper automatically with a photo of the day
 	pkgver = 0.8.0.r9.gad7fb04
 	pkgrel = 1
 	url = https://github.com/atareao/daily-wallpaper
