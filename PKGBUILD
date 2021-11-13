@@ -13,9 +13,7 @@ license=('BSD')
 depends=('gcc-libs')
 options=('staticlibs' '!libtool')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8')
-#source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${pkgver}.tar.bz2{,.sig})
 source=(http://ftp.cs.stanford.edu/pub/exim/pcre/pcre-${pkgver}.tar.bz2)
-#source=(https://ftp.pcre.org/pub/pcre/pcre-${pkgver}.tar.bz2)
 sha256sums=('4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8')
 
 build() {
