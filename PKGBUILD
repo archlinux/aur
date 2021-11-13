@@ -3,8 +3,8 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.14.16.zen1
-pkgrel=1
+pkgver=5.15.2.zen1
+pkgrel=2
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -20,7 +20,7 @@ _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel#tag=$_srctag"
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config" # the main kernel config file
-  "git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.14"
+  "git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.15"
 )
 sha256sums=('SKIP'
             'a366da315c60a7df13894372eba01c5bcc3eced0eff96edfb1b1b2f45a41243a'
@@ -42,19 +42,9 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
   
-  
-  #patch -Np1 < ../0002-asus-wmi-Add-dgpu-disable-method.patch
-  #rm ../0002-asus-wmi-Add-dgpu-disable-method.patch
-  #patch -Np1 <../0003-asus-wmi-Add-egpu-enable-method.patch
-  #rm ../0003-asus-wmi-Add-egpu-enable-method.patch
-  #patch -Np1 <../0001-asus-wmi-Add-panel-overdrive-functionality.patch
-  #rm ../0001-asus-wmi-Add-panel-overdrive-functionality.patch
-  #patch -Np1 <../0001-asus-wmi-Add-support-for-platform_profile.patch
-  #rm ../0001-asus-wmi-Add-support-for-platform_profile.patch
-  #patch -Np1 <../0999-v2-platform-x86-amd-pmc-Export-Idlemask-values-based-on-the-APU.patch
-  #rm ../0999-v2-platform-x86-amd-pmc-Export-Idlemask-values-based-on-the-APU.patch
   cd $srcdir
 
+  local src
   for src in $(cat kernel.spec | grep "ApplyOptionalPatch 0" | sed -e 's/ApplyOptionalPatch //g'); do
     cd $_srcname
     echo "Applying patch $src..."
