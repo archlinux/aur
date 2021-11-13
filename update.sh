@@ -3,13 +3,13 @@
 set -eo pipefail
 
 s_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-cd $s_dir/arch-package
 
+l_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
+
+cd $s_dir/arch-package
 git checkout -q packages/linux
 git pull -q
 c_ver=`grep ^pkgver= repos/core-x86_64/PKGBUILD | cut -d= -f2`
-git checkout -q bnx2x-2.5g
-l_ver=`grep ^pkgver= repos/core-x86_64/PKGBUILD | cut -d= -f2`
 
 if [[ $c_ver < $l_ver || $c_ver == $l_ver ]] ; then
     exit
@@ -17,18 +17,16 @@ fi
 
 echo "New version available: $c_ver (last build is $l_ver)"
 
-sed -i -e "s/^pkgbase=.*/pkgbase=linux/" -e "s/^pkgver=.*/pkgver=$c_ver/" repos/core-x86_64/PKGBUILD
-git add repos/core-x86_64/PKGBUILD
-git commit -q -m "Prepare for $c_ver merge"
-git merge --no-edit -q packages/linux
-sed -i -e "s/^pkgbase=.*/pkgbase=linux-bnx2x-2.5g/" repos/core-x86_64/PKGBUILD
-git add repos/core-x86_64/PKGBUILD
-git commit -q -m "$c_ver release"
-
-cp -f repos/core-x86_64/PKGBUILD ..
-cp -f repos/core-x86_64/config ..
-
+cp repos/core-x86_64/{config,PKGBUILD} ..
 cd ..
+
+sed -i -e "s/^pkgbase=.*/pkgbase=linux-bnx2x-2.5g/" PKGBUILD
+sed -i -e '/^makedepends=/{N;n;d}' PKGBUILD
+sed -i -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' PKGBUILD
+sed -i -e "/^sha256sums=/{s/$/\\n            'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'/}" PKGBUILD
+sed -i -e "/^  make htmldocs/d" PKGBUILD
+sed -i -e '/^_package-docs() {/,/^}/d' PKGBUILD
+sed -i -e '/^pkgname=/s/ "$pkgbase-docs"//' PKGBUILD
 
 echo "Building package"
 time (makepkg --skippgpcheck -CcL) # > /dev/null)
