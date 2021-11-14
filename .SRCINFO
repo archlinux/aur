@@ -1,6 +1,6 @@
 pkgbase = icingaweb2-module-incubator
 	pkgdesc = Bleeding edge libraries useful for Icinga Web 2 modules
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = http://www.icinga.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = icingaweb2-module-incubator
 	depends = icingaweb2
 	depends = icingaweb2-module-ipl
 	depends = icingaweb2-module-reactbundle
-	source = https://github.com/Icinga/icingaweb2-module-incubator/archive/v0.9.0.tar.gz
-	sha256sums = b6b11ff51a69752a8311bb18bb8f2c9229d41a7e40a3b939ed4b0c1bb7fa10d2
+	source = https://github.com/Icinga/icingaweb2-module-incubator/archive/v0.10.0.tar.gz
+	sha256sums = 19a928bbf77940658a01e50e8f04921d13cc4848b990e50d19f3584e22d98378
 
 pkgname = icingaweb2-module-incubator
