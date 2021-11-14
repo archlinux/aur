@@ -1,8 +1,8 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=2.4.0.r87.ga7063e1d
-pkgrel=2
+pkgver=2.4.0.r91.gaabd6af7
+pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
@@ -23,12 +23,11 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-*}"
-  sed -i 's/websocket-client>=1.2.1,<2.0/websocket-client/g' setup.py
+  sed -i 's/websocket-client >=1.2.1,<2.0/websocket-client/g' setup.cfg
 }
 
 build() {
   cd "${pkgname%-*}"
-  export STREAMLINK_USE_PYCOUNTRY="true"
   python setup.py build
   PYTHONPATH=$PWD/src/ make -C docs/ man
   PYTHONPATH=$PWD/build/lib/ bash script/build-shell-completions.sh
