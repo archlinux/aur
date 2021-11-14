@@ -1,9 +1,15 @@
-/pkg/
-/src/
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
 
-#### built package
-/*.pkg.tar*
+pkg/
+src/
 
-#### downloaded binary
-/scalafmt-*.musl
-
+/scalafmt*.musl
