@@ -9,10 +9,10 @@ pkgbase = hacktv-git
 	makedepends = git
 	depends = hackrf
 	depends = ffmpeg
+	depends = soapysdr
 	provides = hacktv
 	conflicts = hacktv
 	source = git://github.com/fsphil/hacktv
 	md5sums = SKIP
 
 pkgname = hacktv-git
-
