@@ -1,6 +1,6 @@
 pkgbase = openfx-gmic-git
 	pkgdesc = OpenFX wrapper for the G'MIC framework
-	pkgver = Natron.2.4.0.r0.g626699d
+	pkgver = Natron.2.4.1.r0.gad1b6cb
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-gmic
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = openfx-gmic-git
 	sha512sums = SKIP
 
 pkgname = openfx-gmic-git
-

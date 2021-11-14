@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=openfx-gmic-git
-pkgver=Natron.2.4.0.r0.g626699d
+pkgver=Natron.2.4.1.r0.gad1b6cb
 pkgrel=1
 arch=('x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
@@ -19,6 +19,11 @@ source=("${_pkgname}::git+${url}"
         "openfx::git+${_url}/openfx")
 sha512sums=('SKIP'
             'SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd ${_pkgname}
@@ -41,10 +46,8 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -Dm644 COPYING \
-                 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 Licence_CeCILL-C_V1-en.txt \
-                 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 Licence_CeCILL_V2-en.txt \
-                 "${pkgdir}/usr/share/licenses/${pkgname}/"
+  for license_file in COPYING Licence_CeCILL-C_V1-en.txt Licence_CeCILL_V2-en.txt; do
+      install -Dm644 $license_file \
+                    "${pkgdir}/usr/share/licenses/${pkgname}/"
+  done
 }
