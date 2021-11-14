@@ -2,7 +2,7 @@
 # Contributor : George Eleftheriou <eleftg>
  
 pkgname=rtl-entropy-git
-pkgver=0.1.2.r80.9f1768c
+pkgver=0.1.2.r99.cf52a3b
 pkgrel=1
 pkgdesc="An entropy generator using SDR peripherals, including rtl-sdr and BladeRF"
 url="https://github.com/pwarren/rtl-entropy"
@@ -10,6 +10,8 @@ license=('GPL3')
 depends=('openssl' 'rtl-sdr')
 makedepends=('git' 'cmake' 'pkgconfig')
 arch=('x86_64')
+provides=("rtl-entropy=${pkgver}")
+conflicts=("rtl-entropy")
 source=("master::git+https://github.com/pwarren/rtl-entropy")
 sha512sums=('SKIP')
 
