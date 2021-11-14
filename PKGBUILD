@@ -2,10 +2,8 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_supportext_commit=bde8d6a2b119ca35e9229d8af18cda2f57114a20
-
 pkgname=openfx-misc
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
@@ -22,15 +20,15 @@ _url=${url%/${pkgname}}
 
 source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz"
-        "openfx-supportext-${_openfx_supportext_commit}.tar.gz::${_url}/openfx-supportext/archive/${_openfx_supportext_commit}.tar.gz")
-sha512sums=('81d87f116e18ba15c9609ac18177fe38f338433f95fe22e6e0557671ecddbf89accf4685d8fbe7106350714d22aa157ac78441f15a8dee795bcae54da4e7ab55'
-            '0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096'
-            'SKIP')
+        "openfx-supportext-${_natron_ver}.tar.gz::${_url}/openfx-supportext/archive/${_natron_ver}.tar.gz")
+sha512sums=('34a050e9cd9fd9c7206d364b841d251a8879a4b75b3dcec8c9eb4ec3bc45d157415b76299a8229401e4e31571ec215c59a8f49c393ab8fc13c2decf679c873cd'
+            '0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5'
+            'a8125170a3d3e9a4ee659be104063ff40781f5bf6e6c37e8d7ff7ff9500a4134e40c70bfa98a5013d93b8bd4bc163ca8505f460d00b81a77554b2307ebeb1072')
 
 prepare() {
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
       -C   "${_pkgname}/openfx/"
-  tar -xzf "openfx-supportext-${_openfx_supportext_commit}.tar.gz" --strip 1 \
+  tar -xzf "openfx-supportext-${_natron_ver}.tar.gz" --strip 1 \
       -C   "${_pkgname}/SupportExt/"
 }
 
