@@ -6,9 +6,10 @@
 
 _pkgname=instantclient-tools
 pkgname=oracle-${_pkgname}
-pkgver=21.3.0.0.0
-_urlver=213000
-_unzippath=instantclient_21_3
+pkgver=21.4.0.0.0
+_pkgver_vendor_suffix=dbru
+_urlver=214000
+_unzippath=instantclient_21_4
 pkgrel=1
 pkgdesc="Data Pump, SQL*Loader and Workload Replay Client for Oracle Instant Client"
 arch=('x86_64')
@@ -18,33 +19,9 @@ depends=(oracle-instantclient-basic=$pkgver)
 replaces=('instantclient-sqlplus')
 options=(!strip)
 
-# Fail if retrieval is attempted of any of the manual:// URLs
-DLAGENTS+=('manual::/usr/bin/false');
-
-# These are the only files we want to include in the source package
-source=(LICENSE
-        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
-md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'fda28b93b7f4316f10b8fe0d41fea3b5')
-sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '2ea79a36ee58ed6322d494397f38bb3e150d85b5def2f849e70cfbaaae5b0ec7')
-
-plain "If you run into any problems downloading the files, get the .zip version from"
-plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
-plain ""
-plain "  https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html"
-plain ""
-plain "Alternatively, unofficial prebuilt Arch packages are available by adding the"
-plain "following lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
-plain ""
-plain "  [oracle]"
-plain "  SigLevel = Optional TrustAll"
-plain '  Server = http://linux.shikadi.net/arch/$repo/$arch/'
-plain ""
-plain "Then run 'pacman -Sys oracle' to see available packages."
-plain ""
-plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016.html"
-plain ""
+source=("https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}${_pkgver_vendor_suffix}.zip")
+md5sums=('3c9bf19aa26d0c09d6e06960af5862de')
+sha256sums=('78301d9d9ffd50c4bc0a57174b77be320890271a2bb0cdce601c85b18f761b0f')
 
 package() {
 	cd "$srcdir/${_unzippath}/"

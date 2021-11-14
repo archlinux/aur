@@ -1,18 +1,15 @@
 pkgbase = oracle-instantclient-tools
 	pkgdesc = Data Pump, SQL*Loader and Workload Replay Client for Oracle Instant Client
-	pkgver = 21.3.0.0.0
+	pkgver = 21.4.0.0.0
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/database/features/instant-client/
 	arch = x86_64
 	license = custom:OTN
-	depends = oracle-instantclient-basic=21.3.0.0.0
+	depends = oracle-instantclient-basic=21.4.0.0.0
 	replaces = instantclient-sqlplus
 	options = !strip
-	source = LICENSE
-	source = https://download.oracle.com/otn_software/linux/instantclient/213000/instantclient-tools-linux.x64-21.3.0.0.0.zip
-	md5sums = 2d62e22e4f2d7e6d220fafde0f692a7d
-	md5sums = fda28b93b7f4316f10b8fe0d41fea3b5
-	sha256sums = f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2
-	sha256sums = 2ea79a36ee58ed6322d494397f38bb3e150d85b5def2f849e70cfbaaae5b0ec7
+	source = https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-tools-linux.x64-21.4.0.0.0dbru.zip
+	md5sums = 3c9bf19aa26d0c09d6e06960af5862de
+	sha256sums = 78301d9d9ffd50c4bc0a57174b77be320890271a2bb0cdce601c85b18f761b0f
 
 pkgname = oracle-instantclient-tools
