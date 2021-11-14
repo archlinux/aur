@@ -74,8 +74,7 @@ package_linux5.15.2.zen1-1-zen-bin() {
               'linux-firmware: firmware images needed for some devices')
   provides=(VHBA-MODULE
             VIRTUALBOX-GUEST-MODULES
-            WIREGUARD-MODULE
-            "${_pkgname}")
+            WIREGUARD-MODULE)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
@@ -85,7 +84,6 @@ package_linux5.15.2.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
-  provides=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
@@ -94,7 +92,6 @@ package_linux5.15.2.zen1-1-zen-headers-bin() {
 package_linux5.15.2.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
-  provides=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}

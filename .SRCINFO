@@ -39,16 +39,13 @@ pkgname = linux5.15.2.zen1-1-zen-bin
 	provides = VHBA-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = linux-zen
 	conflicts = linux-zen
 
 pkgname = linux5.15.2.zen1-1-zen-headers-bin
 	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 5.15.2-zen1-1-zen
 	depends = pahole
-	provides = linux-zen-headers
 	conflicts = linux-zen-headers
 
 pkgname = linux5.15.2.zen1-1-zen-docs-bin
 	pkgdesc = Documentation for the Linux ZEN kernel 5.15.2-zen1-1-zen
-	provides = linux-zen-docs
 	conflicts = linux-zen-docs
