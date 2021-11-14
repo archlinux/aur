@@ -3,7 +3,7 @@
 pkgname=perl-image-base-x11-protocol
 _lastauthor=K/KR/KRYDE
 _pkgname=Image-Base-X11-Protocol
-pkgver=13
+pkgver=15
 pkgrel=1
 pkgdesc="Draw into an X11::Protocol"
 arch=('any')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-x11-protocol-other' 'perl-image-base')
 url="http://search.cpan.org/dist/${_pkgname}/"
 source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('9ceff8fe077e1bb1e12cff9e7804722d2f7dfa725ccb374139e463130b2ff82b')
+sha256sums=('424042484b6911e730e536a0666922dca3495a4c5e3704fdded65b66163f6b5e')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
