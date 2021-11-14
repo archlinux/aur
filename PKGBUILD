@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=openfx-gmic
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
@@ -17,8 +17,8 @@ _url=${url%/${pkgname}}
 
 source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz")
-sha512sums=('e2328cf4d0c8bb4442433b9e3c4f21cddaaaf64de88ba1c16b64dbcfd40ba4d21a25a0d6c9a0d4b4e543c5c2c116a5802799c0da5a07f5ccf585176399839c9f'
-            '0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096')
+sha512sums=('1e182858e36db278d94b1ebc16855d88bca8f2fa91cb1d5050d73f834086a896b84f218cf56d7b7f1daa8577e8816454ed42b4661d5acce17fd88346e228a501'
+            '0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5')
 
 prepare() {
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
@@ -39,10 +39,8 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -Dm644 COPYING \
-                 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 Licence_CeCILL-C_V1-en.txt \
-                 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 Licence_CeCILL_V2-en.txt \
-                 "${pkgdir}/usr/share/licenses/${pkgname}/"
+  for license_file in COPYING Licence_CeCILL-C_V1-en.txt Licence_CeCILL_V2-en.txt; do
+      install -Dm644 $license_file \
+                    "${pkgdir}/usr/share/licenses/${pkgname}/"
+  done
 }
