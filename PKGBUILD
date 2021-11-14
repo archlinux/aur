@@ -1,8 +1,9 @@
-# Maintainer: Christian Neukirchen <chneukirchen@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 pkgname=xcolorsel
 pkgver=1.1a
-_debver=17
-pkgrel=2
+_debver=18
+pkgrel=3
 pkgdesc="display and grab colors in X"
 arch=(i686 x86_64)
 url="http://packages.debian.org/stable/x11/xcolorsel"
@@ -13,7 +14,7 @@ source=(http://ftp.de.debian.org/debian/pool/main/x/xcolorsel/xcolorsel_$pkgver.
         http://ftp.de.debian.org/debian/pool/main/x/xcolorsel/xcolorsel_$pkgver-$_debver.diff.gz
         'rgb.txt::http://cvsweb.xfree86.org/cvsweb/*checkout*/xc/programs/rgb/rgb.txt?rev=HEAD&content-type=text/plain')
 md5sums=('6833bdf1c49d21e7681dc9df0829da0e'
-         'cae579a5bc36697d2fa768a129581923'
+         'eeb0f54f4a0a693cbc09737721000c9a'
          '26273ff2170258797478318c30a40b9b')
 
 build() {
