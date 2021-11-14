@@ -1,6 +1,6 @@
 # Maintainer Fallen-Angle <fallen-angle@qq.com>
 
-pkgname=electerm
+pkgname=electerm-deb
 pkgver=1.17.15
 pkgrel=1
 pkgdesc="Terminal/ssh/sftp client"
