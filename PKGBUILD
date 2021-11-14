@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=gnome-pie-git
-pkgver=v0.7.2.r2.02e26da
+pkgver=0.7.3.r0.g0140a40
 pkgrel=1
 pkgdesc="Circular application launcher for GNOME"
 arch=('i686' 'x86_64')
@@ -11,25 +11,29 @@ depends=('libarchive' 'libgee' 'libwnck3' 'gnome-menus')
 makedepends=('cmake' 'git' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("gnome-pie::git+https://github.com/Simmesimme/gnome-pie")
+source=("git+https://github.com/Simmesimme/gnome-pie")
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname%-git}"
   ./resources/locale/compile-po.sh
   [[ -d build ]] || mkdir build
-  cd build
+}
+
+build() {
+  cd "${srcdir}/${pkgname%-git}/build"
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}/build"
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 sha256sums=('SKIP')
