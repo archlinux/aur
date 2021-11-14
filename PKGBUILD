@@ -154,7 +154,7 @@ _package-headers() {
   # Fix for DKMS because clang doesn't like this
   # and to disable LTO
   for f in Makefile kernel/Makefile; do
-    sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern|-Wno-initializer-overrides|-Wno-gnu|-Wno-format-invalid-specifier|-flto(=[a-z]+)?)$/d' $f
+    sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern|-Wno-initializer-overrides|-Wno-gnu|-mretpoline-external-thunk|-ftrivial-auto-var-init=zero|-Wno-format-invalid-specifier|-enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang|-flto(=[a-z]+)?)$/d' $f
     sed -i -re 's/-flto(=([a-z]+)?)//g' $f
   done
   echo -e "\nKBUILD_CFLAGS += -Wno-error -Wno-unused-variable -Wno-incompatible-pointer-types" >> Makefile
