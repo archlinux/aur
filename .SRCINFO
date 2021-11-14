@@ -1,13 +1,13 @@
 pkgbase = defi-app-bin
 	pkgdesc = DefiChain Wallet AppImage
-	pkgver = v2.7.0
+	pkgver = v2.7.1
 	pkgrel = 1
 	url = https://github.com/DeFiCh/app
 	arch = x86_64
 	license = MIT
 	provides = defi-app
 	conflicts = defi-app
-	source = DeFi-Wallet-2.7.0.AppImage::https://github.com/DeFiCh/app/releases/download/v2.7.0/DeFi-Wallet-2.7.0.AppImage
-	sha256sums = 7ee66a56a52e997ffe7f90c4e1cf131782ddf69b6b7d3aa230a431189211e8f6
+	source = DeFi-Wallet-2.7.1.AppImage::https://github.com/DeFiCh/app/releases/download/v2.7.1/DeFi-Wallet-2.7.1.AppImage
+	sha256sums = 8e8aa422e8beb3663ef6be28f5e27d5d29d620a6a48890b89a13be40bc774a98
 
 pkgname = defi-app-bin
