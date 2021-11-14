@@ -1,0 +1,18 @@
+pkgbase = fmnl
+	pkgdesc = Formats newlines of input with a given string
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mztikk/fmnl
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = fmnl
+	conflicts = fmnl
+	source = fmnl::git+https://github.com/mztikk/fmnl.git#branch=master
+
+pkgname = fmnl-git
