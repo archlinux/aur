@@ -24,7 +24,7 @@ build() {
   export GOPATH="$srcdir/build"
   export PATH=$GOPATH/bin:$PATH
   cd $srcdir/${_pkgname}-${pkgver}
-  GOFLAGS='-mod=vendor' ./build.sh
+  GOFLAGS='-modcacherw' ./build.sh
 }
 
 package() {
