@@ -2,8 +2,8 @@
 # Contributor:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=abyss
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
 arch=("i686" "x86_64")
 url="https://github.com/bcgsc/abyss"
@@ -16,7 +16,7 @@ optdepends=(
   'zsh: to report time and memory usage'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bcgsc/abyss/archive/$pkgver.tar.gz")
-sha512sums=('c7fb8b0a1a1346d138a0a64d2a2886b7c081ed628011b614e8ff14d1cbf4a992a8acb1cc668640c0c6a9c22802e4b0cb839f136b8e1f12fe76dae3248cec1777')
+sha512sums=('6240872cc79e40fcb83ad4aac2ad08c8e763b9b13a12430e3883e269553ebf96239732cd5bea6dd43fbd9c0f5756ec5d0d393d932dac49f359ebb6fa20594457')
 
 build() {
   cd "${pkgname}-${pkgver}"
