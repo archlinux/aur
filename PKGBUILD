@@ -9,8 +9,8 @@ pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
 license=('Unlicense')
-depends=('daemonize' 'dotnet-runtime>=5.0' 'dotnet-host>=5.0')
-makedepends=('dotnet-sdk>=5.0' 'git')
+depends=('daemonize' 'dotnet-runtime-5.0-bin' 'dotnet-host')
+makedepends=('dotnet-sdk-5.0-bin' 'git')
 provides=('genie-systemd')
 conflicts=('genie-systemd')
 options=(!strip)
