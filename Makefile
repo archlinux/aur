@@ -1,10 +1,8 @@
 .PHONY: all check release
 
 all:
-	makepkg -sd
-
-check:
-	namcap PKGBUILD
+	makepkg -f
 
 release:
+	namcap PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO

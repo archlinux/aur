@@ -1,6 +1,6 @@
 pkgbase = rescached-git
 	pkgdesc = Resolver/DNS cache daemon
-	pkgver = 4.0.0.r0.g004ca8b
+	pkgver = 4.0.0.r6.g33b6afc
 	pkgrel = 1
 	url = https://github.com/shuLhan/rescached-go
 	install = rescached.install
@@ -9,7 +9,7 @@ pkgbase = rescached-git
 	arch = armv7h
 	license = custom:BSD
 	makedepends = git
-	makedepends = go>=1.14
+	makedepends = go>=1.16
 	depends = bash
 	provides = rescached
 	backup = etc/rescached/rescached.cfg
@@ -19,4 +19,3 @@ pkgbase = rescached-git
 	sha1sums = SKIP
 
 pkgname = rescached-git
-
