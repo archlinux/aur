@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=xtruss
-pkgver=20210911.854c36a
+pkgver=20211025.c25bf48
 pkgrel=1
 pkgdesc="X11 protocol tracer, akin to strace"
 arch=(x86_64)
 url="https://www.chiark.greenend.org.uk/~sgtatham/xtruss/"
 license=(MIT)
 source=("https://www.chiark.greenend.org.uk/~sgtatham/xtruss/xtruss-$pkgver.tar.gz")
-sha256sums=('94609812c613477201048e10757d185fe2e9e08f42949249e4ea713bce843f04')
+sha256sums=('8a4b8a1ed5c49f65152c4eb697ba83f6a73d65493a8e202a8f9aeedfabe07479')
 makedepends=(cmake)
 
 build() {
