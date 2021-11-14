@@ -1,7 +1,7 @@
 # Maintainer: nalquas <nalquas.dev@gmail.com>
 
 pkgname=tvtower-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A remake of MadTV - by fans, for fans."
 arch=('x86_64')
@@ -9,10 +9,12 @@ url="https://www.tvtower.org/"
 license=('custom')
 depends=('freetype2' 'libxcb' 'harfbuzz' 'brotli' 'libxau' 'libxdmcp' 'graphite' 'glib2' 'pcre')
 provides=('tvtower')
-source=("$pkgname-$pkgver.zip::https://github.com/TVTower/TVTower/releases/download/v0.7/TVTower_v0.7.0_20210210.zip")
-sha256sums=('2f0df3c309412b185dc1e80fdd43858b9a2c097634f1e64198020eaf59c02f7a')
+source=("$pkgname-$pkgver.zip::https://github.com/TVTower/TVTower/releases/download/v0.7.1/TVTower_v0.7.1_2021-11-14.zip")
+sha256sums=('fb83227e90ab063ef652be4c1ec04c1fae9e6842a39a393092b5239d6e2ab603')
 
 package() {
+	cd TVTower_v0.7.1_2021-11-14
+	
 	# First, install the liense
 	install -Dm644 LICENCE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	
@@ -51,7 +53,6 @@ Name=TVTower
 Comment=A remake of MadTV - by fans, for fans.
 Exec=/usr/bin/tvtower
 Icon=/usr/share/tvtower/tvtower.png
-Terminal=false
 Type=Application
 Categories=Game;""" >> TVTower.desktop
 	install -Dm644 TVTower.desktop "$pkgdir/usr/share/applications/TVTower.desktop"
