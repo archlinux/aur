@@ -1,31 +1,33 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Kostas Kardaras <kostas.kardaras at gmail dot com>
 
 pkgname=gnome-shell-extension-radio-git
-pkgver=12.r4.gfca7356
+pkgver=r361.bd11de7
 pkgrel=1
-pkgdesc="Gnome shell extension for listening to internet radio streams."
-arch=(any)
+pkgdesc="Gnome shell extension for listening to internet radio streams"
+arch=('any')
 url="https://github.com/hslbck/gnome-shell-extension-radio"
-license=('GPL')
-depends=('gnome-shell>=3.18' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav')
+license=('GPL-3.0')
+depends=('gnome-shell')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-install=gnome-shell-extension.install
-source=("${pkgname%-git}::git+https://github.com/hslbck/gnome-shell-extension-radio.git")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${srcdir}/${pkgname}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"	
-	make
+	cd "${srcdir}/${pkgname}"
+
+	sh build.sh
+  bsdtar -xf radio@hslbck.gmail.com.shell-extension.zip -C radio@hslbck.gmail.com
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	cd "${srcdir}/${pkgname}"
+
+	install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions"
+	cp -a "radio@hslbck.gmail.com" "${pkgdir}/usr/share/gnome-shell/extensions"
 }
