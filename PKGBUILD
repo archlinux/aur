@@ -1,8 +1,8 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=silentdragon
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='HUSH desktop full node GUI wallet that supports z-addresses'
 url='http://git.hush.is/hush/SilentDragon'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('qtcreator' 'rust' 'wget')
 source=("$url/archive/v$pkgver.tar.gz"
         'silentdragon.png'
         'silentdragon.desktop')
-sha256sums=('7f2280d69b64cff73d362da194c529ccc6ca233113c0105604c8c9e1609dcbf5'
+sha256sums=('91f5c4052f239d933f20f40d280c3859932f21e28c1881abe10d9116c4592ee9'
             'c3c7acc348f662f6b57594a300f1151a95c8369ea140c220d211fa362126d915'
             'c6928cae0d7518877fd05610a8e7ec9c143c36f05cc93babdc23ce01c8aa6435')
 
