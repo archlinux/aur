@@ -1,14 +1,14 @@
-FROM archlinux:latest
+FROM archlinux:base-devel
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 
 RUN groupadd -g ${GROUP_ID} build && useradd -m -u ${USER_ID} -g build build
 WORKDIR /home/build
-RUN pacman -Sy --noconfirm fakeroot binutils go make
+RUN pacman -Sy --noconfirm go
 USER build
 WORKDIR src
 CMD \
-    makepkg --printsrcinfo > .SRCINFO && \
     makepkg -f && \
+    makepkg --printsrcinfo > .SRCINFO && \
     rm -rf src pkg protonutils-*.tar.gz

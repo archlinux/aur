@@ -1,13 +1,13 @@
 pkgbase = protonutils
 	pkgdesc = CLI tool that provides different utilities to make using the Proton compatibility tool more easily
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/nning/protonutils
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = make
-	source = protonutils-1.2.1.tar.gz::https://github.com/nning/protonutils/archive/v1.2.1.tar.gz
-	sha256sums = 4e05fe556541d22c5f61dacc5344d5732fb9bc80866be38c1c0d572a6e6a6c2e
+	depends = glibc
+	source = protonutils-1.2.2.tar.gz::https://github.com/nning/protonutils/archive/v1.2.2.tar.gz
+	sha256sums = 516702108778006646107e1143a726df2281386cd4b07d815883b827349ab143
 
 pkgname = protonutils
