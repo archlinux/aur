@@ -12,6 +12,7 @@ pkgbase = ntfs3-dkms-git
 	provides = ntfs3-dkms=5.15
 	conflicts = ntfs3
 	options = !strip
+	options = !emptydirs
 	source = Makefile.patch
 	source = dkms.conf
 	source = kernel-5.12-backport.patch

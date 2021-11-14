@@ -14,14 +14,14 @@ license=('GPL2')
 depends=('dkms')
 provides=('NTFS3-MODULE' "ntfs3=${_ver}" "ntfs3-dkms=${_ver}")
 conflicts=('ntfs3')
-options=('!strip')
+options=('!strip' '!emptydirs')
 
 source=(
-    Makefile.patch
-    dkms.conf
-    kernel-5.12-backport.patch
-    kernel-5.14-backport.patch
-    kernel-5.15-backport.patch
+    "Makefile.patch"
+    "dkms.conf"
+    "kernel-5.12-backport.patch"
+    "kernel-5.14-backport.patch"
+    "kernel-5.15-backport.patch"
 )
 
 sha512sums=(
