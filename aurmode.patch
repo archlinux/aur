@@ -1,0 +1,10 @@
+--- orig.sh	2021-11-14 15:05:36.945372068 +0100
++++ install.sh	2021-11-14 15:05:45.939042230 +0100
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-AURMODE="NO"
++AURMODE="YES"
+ 
+ if [[ -z "$(which zsh)" ]]; then
+ 	echo "You have to install zsh first!"
