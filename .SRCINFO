@@ -1,6 +1,6 @@
 pkgbase = openfx-io
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-io
 	arch = x86_64
@@ -9,16 +9,15 @@ pkgbase = openfx-io
 	depends = openimageio
 	depends = libseexpr2
 	conflicts = openfx-io-git
-	source = openfx-io-Natron-2.4.0.tar.gz::https://github.com/NatronGitHub/openfx-io/archive/refs/tags/Natron-2.4.0.tar.gz
-	source = openfx-Natron-2.4.0.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.0.tar.gz
-	source = openfx-supportext-bde8d6a2b119ca35e9229d8af18cda2f57114a20.tar.gz::https://github.com/NatronGitHub/openfx-supportext/archive/bde8d6a2b119ca35e9229d8af18cda2f57114a20.tar.gz
-	source = SequenceParsing-ab247c293c12066bd31cc1caabeedeac9c387e49.tar.gz::https://github.com/NatronGitHub/SequenceParsing/archive/ab247c293c12066bd31cc1caabeedeac9c387e49.tar.gz
-	source = tinydir-3aae9224376b5e1a23fd824f19d9501162620b53.tar.gz::https://github.com/NatronGitHub/tinydir/archive/3aae9224376b5e1a23fd824f19d9501162620b53.tar.gz
-	sha512sums = 5c51eb2ee3c4210dc07546e7424ed6e038a5c0f0d2c4a65b3b9a8f70caab1d07a13de410bc3c2cb95b58b45159ae98671e41db843b0a6ff88e36df7d80a6a22c
-	sha512sums = 0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096
-	sha512sums = SKIP
+	source = openfx-io-Natron-2.4.1.tar.gz::https://github.com/NatronGitHub/openfx-io/archive/refs/tags/Natron-2.4.1.tar.gz
+	source = openfx-Natron-2.4.1.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.1.tar.gz
+	source = openfx-supportext-Natron-2.4.1.tar.gz::https://github.com/NatronGitHub/openfx-supportext/archive/Natron-2.4.1.tar.gz
+	source = SequenceParsing-103c528347ebb2dd0ff5d79b5cee24bbcf938ce0.tar.gz::https://github.com/NatronGitHub/SequenceParsing/archive/103c528347ebb2dd0ff5d79b5cee24bbcf938ce0.tar.gz
+	source = tinydir-64fb1d4376d7580aa1013fdbacddbbeba67bb085.tar.gz::https://github.com/NatronGitHub/tinydir/archive/64fb1d4376d7580aa1013fdbacddbbeba67bb085.tar.gz
+	sha512sums = 564ef1d0f6b9ddb052eda862e68f10212fe3700d4d5c7e6d6907837fc6341ea925ef74bc1b48060e0528c4cc0ef534fb780e113bcfc823ef9af54e34250d54a4
+	sha512sums = 0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5
+	sha512sums = a8125170a3d3e9a4ee659be104063ff40781f5bf6e6c37e8d7ff7ff9500a4134e40c70bfa98a5013d93b8bd4bc163ca8505f460d00b81a77554b2307ebeb1072
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = openfx-io
-
