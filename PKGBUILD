@@ -5,7 +5,7 @@
 
 # Maintainer: HackMe <hackme.any@protonmail.com>
 pkgname='qwinos-qtile-dracula'
-pkgver=1.0.r6.42d7d7c
+pkgver=1.0
 pkgrel=1
 pkgdesc="This is automate install of QWinOS(Arch Window Manager) Qtile-Dracula theme"
 arch=(x86_64)
@@ -36,5 +36,5 @@ build() {
 }
 
 package() {
-  cd "Q-Script"
+  cd "Qtile-Dracula"
 }
