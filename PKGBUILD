@@ -14,3 +14,4 @@ package() {
     cd $srcdir
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }
+sha256sums=('SKIP')
