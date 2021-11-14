@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=6.3-20211106
+_srctag=6.3-20211111
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.4.1
-_dxvkver=1.9.2
+_asyncver=a9de5a9fc12d12a2cd50e3aeffae01e6f51ddbd4
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
@@ -124,7 +124,7 @@ source=(
     vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    https://raw.githubusercontent.com/Sporif/dxvk-async/${_dxvkver}/dxvk-async.patch
+    https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
@@ -340,9 +340,9 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'a70c865e590058fa6fc3aa47425646405bdda27f78b9aa6d2030d2d2a8efadbb'
-            '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
+            'ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463'
             'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'ef93b93fca2288dedc7e0d17ef2b5770349b295c6aaaa97a876e599af35375b7'
+            'b92f05c506a78ad5e7d7557397b294fcaf5cfe1470fcb890717d443cbb049d4f'
             '12a587972a101a6d0c279a3820135277097c5f3e9f5990c5741d5fb1626dc770'
             'cfe984e2b3d65b01e2875e51b8ef8b8d6f1268dd09a88d5611655f24b46cff8d')

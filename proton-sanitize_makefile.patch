@@ -171,18 +171,9 @@ index 36ec054..91d8cf0 100644
  endif
  endef
 diff --git a/make/rules-cmake.mk b/make/rules-cmake.mk
-index 4c61951..3a31610 100644
+index 4c61951..3f3a62b 100644
 --- a/make/rules-cmake.mk
 +++ b/make/rules-cmake.mk
-@@ -15,7 +15,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/CMakeLists.txt
- 	cmake "$$($(2)_SRC)" \
- 	    -DCMAKE_INSTALL_PREFIX="$$($(2)_DST$(3))" \
- 	    -DCMAKE_INSTALL_LIBDIR="lib$(subst 32,,$(3))" \
--	    -DCMAKE_BUILD_TYPE=plain \
-+	    -DCMAKE_BUILD_TYPE=Release \
- 	    $$($(2)_CMAKE_ARGS) \
- 	    $$($(2)_CMAKE_ARGS$(3))
- 
 @@ -24,9 +24,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/CMakeLists.txt
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
@@ -228,7 +219,7 @@ index 083655b..28d7785 100644
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
 diff --git a/make/rules-meson.mk b/make/rules-meson.mk
-index 7b982fa..8e08128 100644
+index 7b982fa..a4fde46 100644
 --- a/make/rules-meson.mk
 +++ b/make/rules-meson.mk
 @@ -11,7 +11,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
@@ -240,15 +231,6 @@ index 7b982fa..8e08128 100644
  	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
  	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
  	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
-@@ -21,7 +21,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
- 	meson "$$($(2)_OBJ$(3))" "$$($(2)_SRC)" \
- 	      --prefix="$$($(2)_DST$(3))" \
- 	      --libdir="lib$(subst 32,,$(3))" \
--	      --buildtype=plain \
-+	      --buildtype=release \
- 	      $$($(2)_MESON_ARGS) \
- 	      $$($(2)_MESON_ARGS$(3)) \
- 	      $$(MESON_STRIP_ARG)
 @@ -31,7 +31,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
