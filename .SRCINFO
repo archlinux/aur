@@ -23,8 +23,6 @@ pkgbase = libpamac-nosnap
 	depends = pacman>=6.0
 	depends = pacman<6.1
 	depends = flatpak
-	depends = snapd
-	depends = snapd-glib
 	depends = archlinux-appstream-data-pamac
 	conflicts = libpamac-aur
 	conflicts = libpamac-flatpak
