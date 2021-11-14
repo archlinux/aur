@@ -1,0 +1,19 @@
+pkgbase = cr-bin
+	pkgdesc = cr is a tool designed to help GitHub repos self-host their own chart repos by adding Helm chart artifacts to GitHub Releases
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/helm/chart-releaser
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	license = APACHE
+	provides = cr
+	provides = chart-releaser
+	source_x86_64 = https://github.com/helm/chart-releaser/releases/download/v1.3.0/chart-releaser_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = baed2315a9bb799efb71d512c5198a2a3b8dcd139d7f22f878777cffcd649a37
+	source_aarch64 = https://github.com/helm/chart-releaser/releases/download/v1.3.0/chart-releaser_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0a07381443192f8745e72baa75ed1aee1ec11add881b5210e04b69b1b50c1be0
+	source_armv6h = https://github.com/helm/chart-releaser/releases/download/v1.3.0/chart-releaser_1.3.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 10b36d4b8a500f607520ede735e9653ad204ed8bb32d299a26de62fca3c2828d
+
+pkgname = cr-bin
