@@ -1,0 +1,15 @@
+pkgbase = ddosify-git
+	pkgdesc = High-performance load testing tool
+	pkgver = r266.7658c83
+	pkgrel = 1
+	url = https://github.com/ddosify/ddosify
+	arch = any
+	license = AGPL3
+	makedepends = go
+	makedepends = git
+	provides = ddosify
+	conflicts = ddosify
+	source = git+https://github.com/ddosify/ddosify.git
+	sha256sums = SKIP
+
+pkgname = ddosify-git
