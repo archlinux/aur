@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Netflix
+Comment=Netflix nativefier
+Exec=/opt/netflix-nativefier/Netflix
+Icon=/opt/netflix-nativefier/resources/app/icon.png
+Terminal=false
+Categories=AudioVideo;Video;TV;
