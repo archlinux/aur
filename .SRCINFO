@@ -1,0 +1,19 @@
+pkgbase = gnuradio-scopy-git
+	pkgdesc = Scopy IIO blocks for GNU Radio
+	pkgver = r9.ee184f7
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/analogdevicesinc/gr-scopy
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = gnuradio38
+	depends = gnuradio38-companion
+	provides = gnuradio-scopy
+	conflicts = gnuradio-scopy
+	source = git+https://github.com/analogdevicesinc/gr-scopy.git
+	md5sums = SKIP
+
+pkgname = gnuradio-scopy-git
