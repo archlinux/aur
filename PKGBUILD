@@ -1,17 +1,18 @@
-# Maintainer: jtts
+# Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
+# Contributor: jtts
 # From hunspell-sv-se:
 # Contributor: Oscar Carlsson <oscar.carlsson (at) gmail.com>
 
 pkgname=hyphen-sv
 pkgver=20130107
 _pkgver=1.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Swedish hyphenation"
-arch=('i686' 'x86_64')
-url="http://hunspell.sourceforge.net/"
+arch=('any')
+url="https://extensions.libreoffice.org/en/extensions/show/swedish-hyphenation"
 license=('MPL' 'LGPL3')
 depends=('hyphen')
-source=("https://extensions.libreoffice.org/extensions/swedish-hyphenation/$_pkgver/@@download/file/hyph_sv.oxt")
+source=("https://extensions.libreoffice.org/assets/downloads/z/hyph-sv.oxt")
 sha256sums=('3542045cc924a21d8b690a569e397b5d3108895e21eae6b09c7c0683d3867a6a')
 
 package() {

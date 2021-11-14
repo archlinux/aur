@@ -1,15 +1,13 @@
 pkgbase = hyphen-sv
 	pkgdesc = Swedish hyphenation
 	pkgver = 20130107
-	pkgrel = 3
-	url = http://hunspell.sourceforge.net/
-	arch = i686
-	arch = x86_64
+	pkgrel = 4
+	url = https://extensions.libreoffice.org/en/extensions/show/swedish-hyphenation
+	arch = any
 	license = MPL
 	license = LGPL3
 	depends = hyphen
-	source = https://extensions.libreoffice.org/extensions/swedish-hyphenation/1.11/@@download/file/hyph_sv.oxt
+	source = https://extensions.libreoffice.org/assets/downloads/z/hyph-sv.oxt
 	sha256sums = 3542045cc924a21d8b690a569e397b5d3108895e21eae6b09c7c0683d3867a6a
 
 pkgname = hyphen-sv
-
