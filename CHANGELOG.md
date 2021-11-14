@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.10.0](#1-10-0)
 * [1.9.2](#1-9-2)
 * [1.9.1](#1-9-1)
 * [1.9.0](#1-9-0)
@@ -31,12 +32,84 @@
 * [1.2.0](#1-2-0)
 
 
+## 1.10.0
+
+### Added
+
+* `notify-focus-inhibit` boolean option, which can be used to control
+  whether desktop notifications should be inhibited when the terminal
+  has keyboard focus
+* `[colors].scrollback-indicator` color-pair option, which specifies
+  foreground and background colors for the scrollback indicator.
+* `[key-bindings].noop` action. Key combinations assigned to this
+  action will not be sent to the application
+  (https://codeberg.org/dnkl/foot/issues/765).
+* Color schemes are now installed to `${datadir}/foot/themes`.
+* `[csd].border-width` and `[csd].border-color`, allowing you to
+  configure the width and color of the CSD border.
+* Support for `XTMODKEYS` with `Pp=4` and `Pv=2` (_modifyOtherKeys=2_).
+* `[colors].dim0-7` options, allowing you to configure custom “dim”
+  colors (https://codeberg.org/dnkl/foot/issues/776).
+
+
+### Changed
+
+* `[tweak].grapheme-shaping` is now enabled by default when both foot
+  itself, and fcft has been compiled with support for it.
+* Default value of `[tweak].grapheme-width-method` changed from
+  `double-width` to `wcswidth`.
+* INSTALL.md: `--override tweak.grapheme-shaping=no` added to PGO
+  command line.
+* Foot now terminates if there are no available seats - for example,
+  due to the compositor not implementing a recent enough version of
+  the `wl_seat` interface (https://codeberg.org/dnkl/foot/issues/779).
+* Boolean options in `foot.ini` are now limited to
+  “yes|true|on|1|no|false|off|0”, Previously, anything that did not
+  match “yes|true|on”, or a number greater than 0, was treated as
+  “false”.
+* `[scrollback].multiplier` is no longer applied when the alternate
+  screen is in use (https://codeberg.org/dnkl/foot/issues/787).
+
+
+### Removed
+
+* The bundled PKGBUILD.
+* Deprecated `bell` option (replaced with `[bell]` section in 1.8.0).
+* Deprecated `url-launch`, `jump-label-letters` and `osc8-underline`
+  options (moved to a dedicated `[url]` section in 1.8.0)
+
+
+### Fixed
+
+* ‘Sticky’ modifiers in input handling; when determining modifier
+  state, foot was looking at **depressed** modifiers, not
+  **effective** modifiers, like it should.
+* Fix crashes after enabling CSD at runtime when `csd.size` is 0.
+* Convert `\r` to `\n` when reading clipboard data
+  (https://codeberg.org/dnkl/foot/issues/752).
+* Clipboard occasionally ceasing to work, until window has been
+  re-focused (https://codeberg.org/dnkl/foot/issues/753).
+* Don’t propagate window title updates to the Wayland compositor
+  unless the new title is different from the old title.
+
+
+### Contributors
+
+* armin
+* Craig Barnes
+* Daniel Martí
+* feeptr
+* Mitja Horvat
+* Ronan Pigott
+* Stanislav Ochotnický
+
+
 ## 1.9.2
 
 ### Changed
 
 * PGO helper scripts no longer set `LC_CTYPE=en_US.UTF-8`. But, note
-  that “full” PGO builds still **require** an UTF-8 locale; you need
+  that “full” PGO builds still **require** a UTF-8 locale; you need
   to set one manually in your build script
   (https://codeberg.org/dnkl/foot/issues/728).
 

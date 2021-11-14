@@ -31,8 +31,8 @@ PGO=auto
 
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
 pkgname=foot
-pkgver=1.9.2  # Don’t forget to update CHANGELOG.md
-pkgrel=2
+pkgver=1.10.0  # Don’t forget to update CHANGELOG.md
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -45,7 +45,7 @@ optdepends=("foot-terminfo: alternative to ncurses' terminfo, with additional no
             "xdg-utils: URI launching"
             "bash-completion: bash completions for foot itself")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('5859d8d7293da4c7c52f45a9756fc7989edc364057e8b86b4e1fbea7bc2b4009')
+sha256sums=('ef052354145f8ce2e3a965e171c750ccc653c2a2b9ce98adefa99948286188f7')
 
 build() {
   cd foot
