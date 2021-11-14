@@ -1,6 +1,6 @@
 # Maintainer: Tom Hesse <heyhoman at mailbox dot org>
 pkgname=4scanner
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Command line tool to download images from multiple imageboards"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.0.0' 'python-requests>=2.20.0')
 makedepends=('python-setuptools')
 install=4scanner.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/pboardman/4scanner/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('dc7470615353b137a0af4732b995428c5e794e4b85aeb70f84ba76e2f86224b1')
+sha256sums=('d2ff0cee5b7e27f02542de590a8377a3c86e5b4696deaaab81980e7bf919c049')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

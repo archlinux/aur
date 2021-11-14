@@ -1,6 +1,6 @@
 pkgbase = 4scanner
 	pkgdesc = Command line tool to download images from multiple imageboards
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/pboardman/4scanner/
 	install = 4scanner.install
@@ -9,7 +9,7 @@ pkgbase = 4scanner
 	makedepends = python-setuptools
 	depends = python>=3.0.0
 	depends = python-requests>=2.20.0
-	source = 4scanner-1.6.2.tar.gz::https://github.com/pboardman/4scanner/archive/refs/tags/1.6.2.tar.gz
+	source = 4scanner-1.6.3.tar.gz::https://github.com/pboardman/4scanner/archive/refs/tags/1.6.3.tar.gz
 	sha256sums = dc7470615353b137a0af4732b995428c5e794e4b85aeb70f84ba76e2f86224b1
 
 pkgname = 4scanner
