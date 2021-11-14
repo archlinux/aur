@@ -119,5 +119,6 @@ scripts/config --disable CONFIG_FW_LOADER_USER_HELPER
 scripts/config --enable CONFIG_SCHED_AUTOGROUP_DEFAULT_ENABLED
 
 # enable multigen LRU by default
-#scripts/config --enable CONFIG_LRU_GEN_ENABLED       # TODO: Not yet supported on 5.15
+scripts/config  --enable CONFIG_LRU_GEN \
+                --enable CONFIG_LRU_GEN_ENABLED
 
