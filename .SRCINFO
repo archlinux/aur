@@ -1,22 +1,22 @@
 pkgbase = gdm-plymouth-nox
 	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
-	pkgver = 41.0
+	pkgver = 41.0+r15+g23ebe6171
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL
 	checkdepends = check
+	makedepends = yelp-tools
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = docbook-xsl
-	makedepends = yelp-tools
 	makedepends = meson
 	depends = plymouth
 	depends = gnome-shell
 	depends = gnome-session
 	depends = upower
 	depends = systemd
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=536491641156ba88beab2c881278b09e52df6813
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=23ebe617119506a0614f1bd2c76cd9bcf7e8fb7c
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 	source = 0002-pam-arch-Drop-pam_faillock-counting-from-fingerprint.patch
 	source = default.pa
