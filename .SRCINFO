@@ -1,0 +1,27 @@
+pkgbase = scopy-git
+	pkgdesc = A software oscilloscope and signal analysis toolset
+	pkgver = v0.11.r1292.g3460cd84
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/analogdevicesinc/scopy
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = qt5-base
+	depends = gnuradio38
+	depends = gnuradio38-companion
+	depends = gnuradio-iio-patched-3.8
+	depends = gnuradio-scopy-git
+	depends = gnuradio-m2k-git
+	depends = libsigrokdecode
+	depends = libtinyiiod-git
+	provides = scopy
+	conflicts = scopy
+	source = git+https://github.com/analogdevicesinc/scopy.git
+	source = git+https://github.com/analogdevicesinc/iio-emu.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = scopy-git
