@@ -32,27 +32,27 @@ build() {
 
     npm i --omit=dev
 
-    tsc &>/dev/null | true
+    tsc | true
 }
 
 package() {
     cd "${srcdir}"
 
-    local bin="./${pkgname}"
+    local bin="${pkgname}"
     echo "#!/bin/sh" >"${bin}"
     echo "electron \"/usr/lib/${pkgname}/\" \$@" >>"${bin}"
-    install -Dm755 -t "${pkgdir}/usr/bin/" "${bin}"
+    install -Dm755 -t "${pkgdir}/usr/bin" "${bin}"
 
-    install -Dm644 "./app.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "app.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     cd "${_srcname}"
 
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "./LICENSE"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
 
     local lib="${pkgdir}/usr/lib/${pkgname}"
 
-    install -Dm644 -t "${lib}/" "./package.json"
-    cp -rt "${lib}/" "./sources/" "./node_modules/"
+    install -Dm644 -t "${lib}" "package.json"
+    cp -rt "${lib}" "sources" "node_modules"
 
     rm -r \
         "${lib}/sources/app/.build" \
