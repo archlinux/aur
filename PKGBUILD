@@ -2,19 +2,18 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_lodepng_commit=7fdcc96a5e5864eee72911c3ca79b1d9f0d12292
-_openfx_supportext_commit=bde8d6a2b119ca35e9229d8af18cda2f57114a20
-_SequenceParsing_commit=ab247c293c12066bd31cc1caabeedeac9c387e49
-_tinydir_commit=3aae9224376b5e1a23fd824f19d9501162620b53
+_lodepng_commit=8c6a9e30576f07bf470ad6f09458a2dcd7a6a84a
+_SequenceParsing_commit=103c528347ebb2dd0ff5d79b5cee24bbcf938ce0
+_tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=openfx-arena
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=('GPL')
-depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio1' 'poppler-glib' 'sox')
+depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio1' 'poppler-glib' 'sox' 'zstd')
 makedepends=('jbigkit' 'openmp' 'pango')
 conflicts=("${pkgname}-git")
 
@@ -25,14 +24,14 @@ _url=${url%/${pkgname}}
 source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-io-${_natron_ver}.tar.gz::${_url}/openfx-io/archive/refs/tags/${_natron_ver}.tar.gz"
+        "openfx-supportext-${_natron_ver}.tar.gz::${_url}/openfx-supportext/archive/${_natron_ver}.tar.gz"
         "lodepng-${_lodepng_commit}.tar.gz::https://github.com/lvandeve/lodepng/archive/${_lodepng_commit}.tar.gz"
-        "openfx-supportext-${_openfx_supportext_commit}.tar.gz::${_url}/openfx-supportext/archive/${_openfx_supportext_commit}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
         "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('9bcf2d95bbf5cb462431805fd9ba0f3ce0d1b4cd0897133ae09d3686c6c7bfbc55020567faf839cdf0f77d39722bc2df43a944975fdf27e39a8cb55acb24a1a7'
-            '0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096'
-            '5c51eb2ee3c4210dc07546e7424ed6e038a5c0f0d2c4a65b3b9a8f70caab1d07a13de410bc3c2cb95b58b45159ae98671e41db843b0a6ff88e36df7d80a6a22c'
-            'SKIP'
+sha512sums=('bf6095cc409470a1f7a18dd0865e4ebc324f09a58d25bdb5d2ecccc2c81ed6ccf029d7781f9af97446f252752eb24d1769cfc2b8892cb526b15523a08642d699'
+            '0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5'
+            '564ef1d0f6b9ddb052eda862e68f10212fe3700d4d5c7e6d6907837fc6341ea925ef74bc1b48060e0528c4cc0ef534fb780e113bcfc823ef9af54e34250d54a4'
+            'a8125170a3d3e9a4ee659be104063ff40781f5bf6e6c37e8d7ff7ff9500a4134e40c70bfa98a5013d93b8bd4bc163ca8505f460d00b81a77554b2307ebeb1072'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -42,20 +41,29 @@ prepare() {
       -C   "${_pkgname}/lodepng/"
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
       -C   "${_pkgname}/OpenFX/"
-  tar -xzf "openfx-supportext-${_openfx_supportext_commit}.tar.gz" --strip 1 \
+  tar -xzf "openfx-supportext-${_natron_ver}.tar.gz" --strip 1 \
       -C   "${_pkgname}/SupportExt/"
 
   tar -xzf "openfx-io-${_natron_ver}.tar.gz" --strip 1 \
       -C   "${_pkgname}/OpenFX-IO/"
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
       -C   "${_pkgname}/OpenFX-IO/openfx/"
-  tar -xzf "openfx-supportext-${_openfx_supportext_commit}.tar.gz" --strip 1 \
+  tar -xzf "openfx-supportext-${_natron_ver}.tar.gz" --strip 1 \
       -C   "${_pkgname}/OpenFX-IO/SupportExt/"
 
   tar -xzf "SequenceParsing-${_SequenceParsing_commit}.tar.gz" --strip 1 \
       -C   "${_pkgname}/OpenFX-IO/IOSupport/SequenceParsing/"
   tar -xzf "tinydir-${_tinydir_commit}.tar.gz" --strip 1 \
       -C   "${_pkgname}/OpenFX-IO/IOSupport/SequenceParsing/tinydir"
+
+# Change OpenColorIO library references to the version of "opencolorio1" package
+  find "${_pkgname}/OpenFX-IO/IOSupport/" -name GenericOCIO.* \
+        -exec sed -i 's/include <OpenColorIO/include <OpenColorIO1/' {} \;
+
+# Solve a problem in the linking of the "Extra" plugins,
+# caused by a misconfiguration of pkgconfig in the "libzip" package
+  sed -i '/ZIP_LINKFLAGS/ s|\$.*libs.*|-lbz2 -llzma -lzstd -lgnutls -lnettle -lz|' \
+          "${_pkgname}/Makefile.master"
 }
 
 build() {
