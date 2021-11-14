@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Brouwer <jonathantbrouwer@gmail.com>
 
 pkgname=spoofax3-jvm-bin
-pkgver=0.16.4
+pkgver=0.16.5
 pkgrel=1
 pkgdesc="Spoofax 3 is a modular and incremental textual language workbench running on the JVM"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('EPL')
 depends=(webkit2gtk unzip)
 source=("$pkgname-$pkgver.zip::https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/$pkgver/spoofax.lwb.eclipse.repository-$pkgver-spoofax3-linux-x86_64-jvm.zip"
         "spoofax3.desktop")
-sha256sums=('07651734077e8a03405d4d30385916b91e97af1c9f9146865768031706c917ba'
+sha256sums=('945242986e4edb51768eddf6020c63934c6528029223a6cc933df0ed7a1822fb'
             '9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e')
 
 build() {
