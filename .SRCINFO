@@ -1,0 +1,20 @@
+pkgbase = libinih-git
+	pkgdesc = Simple .INI file parser in C, good for embedded systems
+	pkgver = r53.r7.g4f251f0
+	pkgrel = 1
+	url = https://github.com/benhoyt/inih
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	provides = libinih
+	provides = libinih.so
+	provides = libINIReader.so
+	conflicts = libinih
+	options = staticlibs
+	source = git+https://github.com/benhoyt/inih.git
+	sha256sums = SKIP
+
+pkgname = libinih-git
