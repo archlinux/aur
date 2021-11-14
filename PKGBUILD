@@ -2,7 +2,7 @@
 pkgname=popuradns
 _pkgname='PopuraDNS'
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple DNS server with decentralized domain names support"
 makedepends=('go')
 arch=('i686' 'x86_64')
