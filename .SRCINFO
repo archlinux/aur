@@ -1,0 +1,19 @@
+pkgbase = shiny-mirrors
+	pkgdesc = (ARCH BUILD) A replacement for Manjaro's pacman-mirrors and Arch's reflector, rewritten in Rust! A tool to find the best mirrors for you!
+	pkgver = r131.97c65f64
+	pkgrel = 1
+	url = https://gitlab.com/Arisa_Snowbell/shiny-mirrors
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo-nightly
+	makedepends = git
+	makedepends = pandoc
+	depends = gcc-libs
+	backup = etc/shiny-mirrors.conf
+	source = git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=97c65f64e80f4fefb27c31d5007ed63677d1f6a1?signed
+	validpgpkeys = E2C998FA1F7B651E45B20CDC56AA2C2801F619D7
+	validpgpkeys = 93F4694364C3E688BA33E3E41CBE6B7A2B054E06
+	sha256sums = SKIP
+
+pkgname = shiny-mirrors
