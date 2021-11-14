@@ -1,0 +1,11 @@
+pkgbase = remlist
+	pkgdesc = A lightweight command-line reminder utility
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = remlist-0.1.tar.gz
+	sha256sums = 41e9e62cc24d7b08321ac0e35fc819deccbba266779f138ad14ac66190af1dda
+
+pkgname = remlist
