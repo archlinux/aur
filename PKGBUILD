@@ -12,8 +12,8 @@ source=("https://github.com/JulienMaille/dribbblish-dynamic-theme/releases/downl
 md5sums=('1a68c271cdffc4b462d489ae1e2a221c')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/spicetify-cli/Themes/"
+  mkdir -p "${pkgdir}/usr/share/spicetify-cli/Themes/DribbblishDynamic"
   mkdir -p "${pkgdir}/usr/share/spicetify-cli/Extensions/"
-	cp -r "${srcdir}" "${pkgdir}/usr/share/spicetify-cli/Themes/"
+	cp -r -T "${srcdir}" "${pkgdir}/usr/share/spicetify-cli/Themes/DribbblishDynamic"
 	cp "${srcdir}/dribbblish-dynamic.js" "${pkgdir}/usr/share/spicetify-cli/Extensions/"
 }
