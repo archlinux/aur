@@ -1,0 +1,132 @@
+diff --new-file --unified --recursive --text binfmtc-0.17/binfmtasm-interpreter.1 binfmtc-0.17.patch/binfmtasm-interpreter.1
+--- binfmtc-0.17/binfmtasm-interpreter.1	2011-09-21 03:24:32.000000000 +0200
++++ binfmtc-0.17.patch/binfmtasm-interpreter.1	2021-11-14 11:38:50.394059216 +0100
+@@ -24,7 +24,9 @@
+ at the beginning of the file.
+ 
+ That line also is used to specify the additional command-line options
+-for the assmebler.
++for the assmebler.  If "%s" is included, this will be replaced with the
++filename, so you can add options after the file, e.g. linker
++options. If "%s" is not found, the filename is the last argument.
+ 
+ .SH "ENVIRONMENT"
+ .TP
+diff --new-file --unified --recursive --text binfmtc-0.17/binfmtc-interpreter.1 binfmtc-0.17.patch/binfmtc-interpreter.1
+--- binfmtc-0.17/binfmtc-interpreter.1	2011-09-21 03:24:36.000000000 +0200
++++ binfmtc-0.17.patch/binfmtc-interpreter.1	2021-11-14 11:38:08.770794351 +0100
+@@ -24,7 +24,9 @@
+ at the beginning of the file.
+ 
+ That line also is used to specify the additional command-line options
+-for C compiler.
++for C compiler. If "%s" is included, this will be replaced with the
++filename, so you can add options after the file, e.g. linker
++options. If "%s" is not found, the filename is the last argument.
+ 
+ .SH "ENVIRONMENT"
+ .TP
+diff --new-file --unified --recursive --text binfmtc-0.17/binfmtc-interpreter.c binfmtc-0.17.patch/binfmtc-interpreter.c
+--- binfmtc-0.17/binfmtc-interpreter.c	2008-08-30 20:56:10.000000000 +0200
++++ binfmtc-0.17.patch/binfmtc-interpreter.c	2021-11-14 11:35:32.974607532 +0100
+@@ -38,6 +38,7 @@
+   char* path_delimiter;
+   char* tempfilename = NULL; 
+   char* s = NULL;
++  char* tmpcommandline = NULL;
+   char* gcccommandline = NULL;
+   size_t size;
+   FILE* f;
+@@ -99,14 +100,27 @@
+ 	s[i]=0;
+     }
+ 
+-  asprintf (&gcccommandline,
+-	    "%s -o %s %s %s %s \"%s\"",
++  asprintf (&tmpcommandline,
++	    "%s -o %s %s %s %s",
+ 	    compiler_name(),
+ 	    tempfilename,
+ 	    gcc_x,
+-	    s+BINFMTC_MAGIC_LEN,
+-	    default_options(),
+-	    basename(sourcename));
++            default_options(),
++	    s+BINFMTC_MAGIC_LEN);
++
++  if(strstr(tmpcommandline, "%s"))
++    {
++      asprintf(&gcccommandline,
++               tmpcommandline,
++               basename(sourcename));
++    }
++  else
++    {
++      asprintf(&gcccommandline,
++               "%s \"%s\"",
++               tmpcommandline,
++               basename(sourcename));
++    }
+ 
+   if (BINFMTC_DEBUG)
+     fprintf(stderr, "binfmtc: Execute command-line: %s\n", gcccommandline);
+diff --new-file --unified --recursive --text binfmtc-0.17/binfmtcxx-interpreter.1 binfmtc-0.17.patch/binfmtcxx-interpreter.1
+--- binfmtc-0.17/binfmtcxx-interpreter.1	2011-09-21 03:24:40.000000000 +0200
++++ binfmtc-0.17.patch/binfmtcxx-interpreter.1	2021-11-14 11:38:31.820753671 +0100
+@@ -24,7 +24,9 @@
+ at the beginning of the file.
+ 
+ That line also is used to specify the additional command-line options
+-for C++ compiler.
++for C++ compiler. If "%s" is included, this will be replaced with the
++filename, so you can add options after the file, e.g. linker
++options. If "%s" is not found, the filename is the last argument.
+ 
+ .SH "ENVIRONMENT"
+ .TP
+diff --new-file --unified --recursive --text binfmtc-0.17/binfmtf95-interpreter.1 binfmtc-0.17.patch/binfmtf95-interpreter.1
+--- binfmtc-0.17/binfmtf95-interpreter.1	2011-09-21 03:24:48.000000000 +0200
++++ binfmtc-0.17.patch/binfmtf95-interpreter.1	2021-11-14 11:40:20.493982386 +0100
+@@ -24,7 +24,9 @@
+ at the beginning of the file.
+ 
+ That line also is used to specify the additional command-line options
+-for Fortran compiler.
++for Fortran compiler. If "%s" is included, this will be replaced with the
++filename, so you can add options after the file, e.g. linker
++options. If "%s" is not found, the filename is the last argument.
+ 
+ .SH "ENVIRONMENT"
+ .TP
+diff --new-file --unified --recursive --text binfmtc-0.17/binfmtf-interpreter.1 binfmtc-0.17.patch/binfmtf-interpreter.1
+--- binfmtc-0.17/binfmtf-interpreter.1	2011-09-21 03:24:44.000000000 +0200
++++ binfmtc-0.17.patch/binfmtf-interpreter.1	2021-11-14 11:40:25.117314183 +0100
+@@ -24,7 +24,9 @@
+ at the beginning of the file.
+ 
+ That line also is used to specify the additional command-line options
+-for Fortran compiler.
++for Fortran compiler. If "%s" is included, this will be replaced with the
++filename, so you can add options after the file, e.g. linker
++options. If "%s" is not found, the filename is the last argument.
+ 
+ .SH "ENVIRONMENT"
+ .TP
+diff --new-file --unified --recursive --text binfmtc-0.17/realcsh.c binfmtc-0.17.patch/realcsh.c
+--- binfmtc-0.17/realcsh.c	2008-08-30 20:56:10.000000000 +0200
++++ binfmtc-0.17.patch/realcsh.c	2021-11-14 11:35:32.974607532 +0100
+@@ -1,4 +1,4 @@
+-/*BINFMTC: -lreadline -I/usr/include/readline
++/*BINFMTC: "%s" -lreadline -I/usr/include/readline
+ exit 1
+ 
+  *  binfmt_misc C Interpreter
+diff --new-file --unified --recursive --text binfmtc-0.17/realcxxsh.cc binfmtc-0.17.patch/realcxxsh.cc
+--- binfmtc-0.17/realcxxsh.cc	2008-08-30 20:56:10.000000000 +0200
++++ binfmtc-0.17.patch/realcxxsh.cc	2021-11-14 11:35:32.974607532 +0100
+@@ -1,4 +1,4 @@
+-/*BINFMTCXX: -lreadline -I/usr/include/readline
++/*BINFMTCXX: "%s" -lreadline -I/usr/include/readline
+ exit 1
+ 
+  *  binfmt_misc C++ Interpreter
