@@ -12,7 +12,6 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url="https://gitlab.com/etke.cc/ttm.git"
 options=('!emptydirs')
-depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}"::"git+${url}")
 noextract=(${source[@]%%::*})
