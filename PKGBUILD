@@ -3,7 +3,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc-git
-pkgver=Natron.2.4.0.r0.gf4c99c31
+pkgver=Natron.2.4.1.r0.g73ee8412
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
@@ -24,6 +24,11 @@ source=("${_pkgname}::git+${url}"
 sha512sums=('SKIP'
             'SKIP'
             'SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd ${_pkgname}
