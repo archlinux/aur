@@ -6,11 +6,11 @@
 _google_breakpad_commit=9474c3f7f9939391f281d46c42bfe20cc0f0abd9
 _google_mock_commit=17945db42c0b42496b2f3c6530307979f2e2a5ce
 _google_test_commit=50d6fc317c843a2e40dbf08c2efd3f068801ae6d
-_SequenceParsing_commit=ab247c293c12066bd31cc1caabeedeac9c387e49
-_tinydir_commit=3aae9224376b5e1a23fd824f19d9501162620b53
+_SequenceParsing_commit=103c528347ebb2dd0ff5d79b5cee24bbcf938ce0
+_tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=natron-compositor
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
@@ -38,8 +38,8 @@ source=("${_pkgname}.tar.gz::${_url}/${_pkgname%-*}/archive/refs/tags/v${pkgver}
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
         "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz"
         "config.pri")
-sha512sums=('36c731748cc4020a32e17e99bd0ac71fb8b5879ed1e2491b55f05ee1d7cae34c2f0a01dc7a8db8e6a894a5bb1c0989525a71566314ec7895aaa78fb2eeb32459'
-            '0a01ea18970a06eb58b03e16f9027a84f37e53581387a0fbd208be16e2fa71f3e0d314307934348e3a7a0c3bc699c36535fd044f18e89a937e9bfca239037096'
+sha512sums=('e0cb8a28a90b66201e5ab098561fbdfe131e49aa2034e08a928639eaab84d6e9b1ca60e7a987f89f2365d13d31516911ae696df6813f759f8d288ded95413dc0'
+            '0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5'
             '1e2c20a2ccc597aec8c69352f2b0533f75afcceda427247346b64752ce0de82631ab89f47ff182c326e12d3fce2efda8ee846d6768cb8cfcb27e3da6e2399e78'
             'SKIP'
             'SKIP'
