@@ -1,6 +1,6 @@
 {
   "language" : "scala",
-  "display_name" : "Scala",
+  "display_name" : "Scala ${SCALA_VERSION} (almond ${ALMOND_VERSION})",
   "argv" : [
     "java",
     "-jar",
