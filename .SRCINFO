@@ -1,6 +1,6 @@
 pkgbase = cwtch
 	pkgdesc = UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://cwtch.im/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cwtch
 	depends = libcwtch-go
 	conflicts = cwtch-bin
 	conflicts = cwtch-git
-	source = cwtch-ui-v1.4.1.tar.gz::https://git.openprivacy.ca/cwtch.im/cwtch-ui/archive/v1.4.1.tar.gz
-	sha512sums = f976657b4d8267bef5ae57f8734c58f0e5cb9e402cef6ffc7a61a71974d0ff83b3c21517b00d6b15e8bcc0c64cd5411cd5d65a1c6ea2ae5aa47f8aa6d690176e
+	source = cwtch-ui-v1.4.2.tar.gz::https://git.openprivacy.ca/cwtch.im/cwtch-ui/archive/v1.4.2.tar.gz
+	sha512sums = 4db62a4f6dc5fe066148c269b18ec0708c841583f891de6e234d5ba321e90699606984cad7cd3bb4365c6b76fa16ab9e399ec71f912d922ced8aeaa75ac1664c
 
 pkgname = cwtch
