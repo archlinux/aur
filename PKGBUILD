@@ -3,7 +3,7 @@
 pkgname='time-to-matrix-git'
 _pkgname='time-to-matrix'
 _exename='ttm'
-pkgver=v1.3.0.r1.g4fd623b
+pkgver=v1.3.0.r7.gf51acb9
 pkgrel=1
 pkgdesc="A time-like command that will send end of an arbitrary command output and some other info (like exit status) to matrix room."
 arch=('x86_64')
@@ -25,11 +25,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make build
 }
 

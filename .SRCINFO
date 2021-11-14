@@ -1,6 +1,6 @@
 pkgbase = time-to-matrix-git
 	pkgdesc = A time-like command that will send end of an arbitrary command output and some other info (like exit status) to matrix room.
-	pkgver = v1.3.0.r1.g4fd623b
+	pkgver = v1.3.0.r7.gf51acb9
 	pkgrel = 1
 	url = https://gitlab.com/etke.cc/ttm.git
 	arch = x86_64
