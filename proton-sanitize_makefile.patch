@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index d978a99..9502e3c 100644
+index d978a99..3bd983d 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -9,6 +9,15 @@ index d978a99..9502e3c 100644
 -	export CCACHE_DISABLE := 1
  	DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
+ 
+@@ -121,7 +120,7 @@ container-build:
+ all32 $(MAKECMDGOALS32): container-build
+ all64 $(MAKECMDGOALS64): container-build
+ else
+-J = $(patsubst -j%,%,$(filter -j%,$(MAKEFLAGS)))
++J = $(patsubst -j%,%,$(SUBJOBS))
+ endif
+ 
  
 @@ -171,7 +170,8 @@ else
  endif
@@ -142,18 +151,9 @@ index 5369fb4..21db917 100644
  endif
  endef
 diff --git a/make/rules-cmake.mk b/make/rules-cmake.mk
-index 4c61951..3a31610 100644
+index 4c61951..3f3a62b 100644
 --- a/make/rules-cmake.mk
 +++ b/make/rules-cmake.mk
-@@ -15,7 +15,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/CMakeLists.txt
- 	cmake "$$($(2)_SRC)" \
- 	    -DCMAKE_INSTALL_PREFIX="$$($(2)_DST$(3))" \
- 	    -DCMAKE_INSTALL_LIBDIR="lib$(subst 32,,$(3))" \
--	    -DCMAKE_BUILD_TYPE=plain \
-+	    -DCMAKE_BUILD_TYPE=Release \
- 	    $$($(2)_CMAKE_ARGS) \
- 	    $$($(2)_CMAKE_ARGS$(3))
- 
 @@ -24,9 +24,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/CMakeLists.txt
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
@@ -195,7 +195,7 @@ index 916df8b..044f705 100644
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
 diff --git a/make/rules-meson.mk b/make/rules-meson.mk
-index 7b982fa..8e08128 100644
+index 7b982fa..a4fde46 100644
 --- a/make/rules-meson.mk
 +++ b/make/rules-meson.mk
 @@ -11,7 +11,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
@@ -207,15 +207,6 @@ index 7b982fa..8e08128 100644
  	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
  	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
  	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
-@@ -21,7 +21,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
- 	meson "$$($(2)_OBJ$(3))" "$$($(2)_SRC)" \
- 	      --prefix="$$($(2)_DST$(3))" \
- 	      --libdir="lib$(subst 32,,$(3))" \
--	      --buildtype=plain \
-+	      --buildtype=release \
- 	      $$($(2)_MESON_ARGS) \
- 	      $$($(2)_MESON_ARGS$(3)) \
- 	      $$(MESON_STRIP_ARG)
 @@ -31,7 +31,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2

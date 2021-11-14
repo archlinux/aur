@@ -282,7 +282,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
     export WINEFSYNC=0
-    export DISPLAY=""
+    export DISPLAY=
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }
@@ -347,7 +347,7 @@ sha256sums=('SKIP'
             '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
             'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '8399d0684a9c732bf405a37f1f3cc779435f2c68a8d042382e9e0538576ab854'
+            '2310147ad56cca7ea47bfc1d36a645fae1ffaf34a4a677509935336af4eb0d3e'
             '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '958f8e69bc789cc8fbe58cb6c9fc62f065692c3c165f20b0c21133ce94bad736')
