@@ -73,7 +73,8 @@ package_linux5.15.2.arch1-1-bin() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES
-            WIREGUARD-MODULE)
+            WIREGUARD-MODULE
+            "${_pkgname}")
   replaces=(virtualbox-guest-modules-arch
             wireguard-arch)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
@@ -85,6 +86,7 @@ package_linux5.15.2.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
+  provides=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
@@ -93,6 +95,7 @@ package_linux5.15.2.arch1-1-headers-bin() {
 package_linux5.15.2.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
+  provides=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
