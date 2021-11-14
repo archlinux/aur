@@ -38,16 +38,13 @@ pkgname = linux5.10.79-1-lts-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = linux-lts
 	conflicts = linux-lts
 	replaces = wireguard-lts
 
 pkgname = linux5.10.79-1-lts-headers-bin
 	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.79-1-lts
-	provides = linux-lts-headers
 	conflicts = linux-lts-headers
 
 pkgname = linux5.10.79-1-lts-docs-bin
 	pkgdesc = Documentation for the LTS Linux kernel 5.10.79-1-lts
-	provides = linux-lts-docs
 	conflicts = linux-lts-docs
