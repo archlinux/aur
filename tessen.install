@@ -1,0 +1,4 @@
+post_install() {
+  printf "%s\n" "tessen needs either 'bemenu', 'rofi-lbonn-wayland-git', or 'wofi' to work."
+  printf "%s\n" "Please install at least one of the packages mentioned above."
+}
