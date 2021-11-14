@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/fcitx/fcitx5-qt'
 license=('LGPL')
 depends=('rstudio-desktop-bin' 'fcitx5-qt')
-source=("https://github.com/francistw/fcitx5-rstudio/raw/main/libfcitx5platforminputcontextplugin.so")
+source=("https://github.com/francistw/rstudio-fcitx5/raw/main/libfcitx5platforminputcontextplugin.so")
 sha256sums=(8073ba7e2ab48749d26fed4540b9e98b682f92daf9d49bb0c30d3857bffb72d3)
 
 package() {
