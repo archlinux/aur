@@ -1,6 +1,6 @@
 pkgbase = peazip-qt5-bin
 	pkgdesc = File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
-	pkgver = 8.2.0
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://peazip.github.io/peazip-linux.html
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = peazip-qt5-bin
 	provides = peazip
 	conflicts = peazip
 	options = !strip
-	source = peazip-qt5-bin-8.2.0.tar.gz::https://github.com/peazip/PeaZip/releases/download/8.2.0/peazip_portable-8.2.0.LINUX.Qt5.x86_64.tar.gz
-	sha256sums = f8e673960be5270f4763d7613646882b061f0188ade23df7953d3c5466232e21
+	source = peazip-qt5-bin-8.3.0.tar.gz::https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip_portable-8.3.0.LINUX.Qt5.x86_64.tar.gz
+	sha256sums = fedc6ae0fb326671db1493e8930f9a2054f1a0e89167cd009aa5bd6e7cd8ee45
 
 pkgname = peazip-qt5-bin

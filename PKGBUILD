@@ -7,7 +7,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt5-bin
-pkgver=8.2.0
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility"
 arch=('x86_64')
@@ -18,37 +18,29 @@ conflicts=('peazip')
 depends=('qt5pas')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.Qt5.x86_64.tar.gz")
-sha256sums=('f8e673960be5270f4763d7613646882b061f0188ade23df7953d3c5466232e21')
+sha256sums=('fedc6ae0fb326671db1493e8930f9a2054f1a0e89167cd009aa5bd6e7cd8ee45')
 
 package() {
     local opt_dir="/opt/peazip-qt5-bin"
-    local freedesktop_dir="${opt_dir}/res/batch/freedesktop_integration"
+    local freedesktop_dir="${opt_dir}/res/share/batch/freedesktop_integration"
 
-    install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/peazip"
 
     mv peazip_portable-${pkgver}.LINUX.Qt5.x86_64 "${pkgdir}/${opt_dir}"
 
     ln -s "${opt_dir}/peazip" "${pkgdir}/usr/bin"
 
-    install -Dm644 "${pkgdir}/${opt_dir}/copying.txt" -t "${pkgdir}/usr/share/licenses/peazip"
+    cp -r "${pkgdir}${opt_dir}"/res/share/copying/* -t "${pkgdir}/usr/share/licenses/peazip"
 
-    install -Dm644 "${pkgdir}/${opt_dir}/peazip_help.pdf" -t "${pkgdir}/usr/share/doc/peazip"
+    install -Dm644 "${pkgdir}${opt_dir}/res/share/peazip_help.pdf" -t "${pkgdir}/usr/share/doc/peazip"
 
-    for file in "${pkgdir}/${freedesktop_dir}/"*.desktop; do
-        install -Dm644 "$file" -t "${pkgdir}/usr/share/applications"
-    done
+    install -Dm644 "${pkgdir}${freedesktop_dir}/"*.desktop -t "${pkgdir}/usr/share/applications"
 
-    for file in "${pkgdir}/${freedesktop_dir}/"peazip{,_alt}.png; do
-        install -Dm644 "$file" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    done
+    install -Dm644 "${pkgdir}${freedesktop_dir}/"peazip{,_alt}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 
-    for file in "${pkgdir}/${freedesktop_dir}/"peazip_{7z,rar,zip}.png; do
-        install -Dm644 "$file" -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
-    done
+    install -Dm644 "${pkgdir}${freedesktop_dir}/"peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
 
-    for file in "${pkgdir}/${freedesktop_dir}/"peazip_{add,extract}.png; do
-        install -Dm644 "$file" -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
-    done
+    install -Dm644 "${pkgdir}${freedesktop_dir}/"peazip_{add,extract}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
 
-    sed -i 's/^same/appdata/' "${pkgdir}/${opt_dir}/res/altconf.txt"
+    rm "${pkgdir}${opt_dir}/res/portable"
 }
