@@ -8,7 +8,6 @@ pkgbase = odin-git
 	makedepends = git
 	makedepends = clang
 	makedepends = llvm
-	makedepends = lld
 	depends = glibc
 	depends = ncurses
 	provides = odin

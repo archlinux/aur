@@ -11,7 +11,7 @@ arch=(x86_64)
 url="https://github.com/odin-lang/odin"
 license=(BSD)
 depends=(glibc ncurses)
-makedepends=(git clang llvm lld)
+makedepends=(git clang llvm)
 provides=(odin)
 conflicts=(odin)
 
@@ -29,6 +29,7 @@ pkgver() {
 build() {
     cd "${_pkgname}"
     patch --forward --strip=1 --input="${srcdir}/0001-update-odin-to-use-llvm-12.patch"
+    sed -i "s/linux\/libraylib.a/system:raylib/g" "vendor/raylib/raylib.odin"
     make release
 }
 
