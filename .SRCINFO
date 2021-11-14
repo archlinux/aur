@@ -1,6 +1,6 @@
 pkgbase = wayfire-git
 	pkgdesc = 3D wayland compositor
-	pkgver = 0.7.2.r20211018.27f8b42
+	pkgver = 0.7.2.r20211113.1122110
 	pkgrel = 1
 	url = https://github.com/ammen99/wayfire
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = wayfire-git
 	depends = libinput
 	provides = wayfire
 	conflicts = wayfire
-	source = git+https://github.com/WayfireWM/wayfire
+	source = git+https://github.com/marcusbritanicus/wayfire.git#commit=11221100b7a33aec828c37a399e0b9fda2704aa8
 	sha256sums = SKIP
 
 pkgname = wayfire-git
