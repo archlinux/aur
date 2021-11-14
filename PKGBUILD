@@ -6,9 +6,10 @@
 
 _pkgname=instantclient-jdbc
 pkgname=oracle-${_pkgname}
-pkgver=21.3.0.0.0
-_urlver=213000
-_unzippath=instantclient_21_3
+pkgver=21.4.0.0.0
+_pkgver_vendor_suffix=dbru
+_urlver=214000
+_unzippath=instantclient_21_4
 pkgrel=1
 pkgdesc="Additional support for XA, Internationalization, and RowSet operations under JDBC"
 arch=('x86_64')
@@ -18,33 +19,13 @@ depends=(oracle-instantclient-basic=$pkgver)
 replaces=('instantclient-jdbc')
 options=(!strip)
 
-# Fail if retrieval is attempted of any of the manual:// URLs
-DLAGENTS+=('manual::/usr/bin/false');
-
 # These are the only files we want to include in the source package
 source=(LICENSE
-        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
+        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}${_pkgver_vendor_suffix}.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'd91c5c1b2011007734f8a27393b5f40f')
+         '9a6d9d21ad3cdbd017c8d8dda17d0ecf')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '9e453b311d77520463fc207842e759424c7554087c03cd5f50b45eaf6a98e1fc')
-
-plain "If you run into any problems downloading the files, get the .zip version from"
-plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
-plain ""
-plain "  https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html"
-plain ""
-plain "Alternatively, unofficial prebuilt Arch packages are available by adding the"
-plain "following lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
-plain ""
-plain "  [oracle]"
-plain "  SigLevel = Optional TrustAll"
-plain '  Server = http://linux.shikadi.net/arch/$repo/$arch/'
-plain ""
-plain "Then run 'pacman -Sys oracle' to see available packages."
-plain ""
-plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016.html"
-plain ""
+            '99008768b8335807c960eb9cf62f04e592bc910eb34022f3aa2c1a0a2643ae88')
 
 package() {
 	local basedir="$srcdir/${_unzippath}"
