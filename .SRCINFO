@@ -1,7 +1,7 @@
 pkgbase = arbie-git
 	pkgdesc = Automatic Robust Backup, an archiving and synchronization tool.
-	pkgver = v1.0.1.r0.g6f49e02
-	pkgrel = 5
+	pkgver = v1.1.r5.g3fe90f2
+	pkgrel = 1
 	url = https://github.com/danisztls/arbie
 	install = arbie.install
 	arch = any

@@ -1,17 +1,24 @@
 # based on https://github.com/archlinux/svntogit-community/tree/packages/profile-sync-daemon/trunk 
 # shellcheck disable=SC2016 # don't wish them to expand
 
-users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n/ /g')
+# users=($(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba'))
+mapfile -t users < <(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba')
+
+# pre_install() {
+# }
+
+# post_install() {
+# }
 
 pre_upgrade() {
-    # stop system service now since it will be removed upon updating
-    if systemctl is-active arbie.service &>/dev/null; then
-        systemctl stop arbie.service &>/dev/null
-    fi
+  # stop system service now since it will be removed upon updating
+  if systemctl is-active arbie.service &>/dev/null; then
+    systemctl stop arbie.service &>/dev/null
+  fi
 }
 
 post_upgrade() {
-    _daemon_refresh
+  _daemon_refresh
 }
 
 pre_remove() {
@@ -21,6 +28,9 @@ pre_remove() {
     fi
   done
 }
+
+# post_remove() {
+# }
 
 _daemon_refresh() {
   for user in "${users[@]}"; do

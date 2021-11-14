@@ -3,8 +3,8 @@
 _gitbranch=main
 _gitauthor=danisztls
 pkgname=arbie-git
-pkgver=v1.0.1.r0.g6f49e02
-pkgrel=5
+pkgver=v1.1.r5.g3fe90f2
+pkgrel=1
 pkgdesc="Automatic Robust Backup, an archiving and synchronization tool."
 arch=('any')
 license=('MIT')
