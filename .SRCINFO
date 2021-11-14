@@ -1,7 +1,7 @@
 pkgbase = yearsfx
 	pkgdesc = Appends years in range to input
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mztikk/yearsfx
 	arch = i686
 	arch = x86_64
