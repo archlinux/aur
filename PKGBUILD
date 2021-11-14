@@ -4,13 +4,13 @@ _gitbranch=main
 _gitauthor=danisztls
 pkgname=arbie-git
 pkgver=v1.0.1.r0.g6f49e02
-pkgrel=4
+pkgrel=5
 pkgdesc="Automatic Robust Backup, an archiving and synchronization tool."
 arch=('any')
 license=('MIT')
 url="https://github.com/${_gitauthor}/${pkgname%-git}"
 source=("git://github.com/${_gitauthor}/${pkgname%-git}#branch=${_gitbranch}")
-#install="arbie.install"
+install=arbie.install
 sha512sums=('SKIP')
 depends=('bash' 'borg' 'gocryptfs' 'rclone' 'rsync' 'systemd' 'git')
 optdepends=('pass: standard password manager' 'gopass: improved password manager')

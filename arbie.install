@@ -1,7 +1,7 @@
 # based on https://github.com/archlinux/svntogit-community/tree/packages/profile-sync-daemon/trunk 
 # shellcheck disable=SC2016 # don't wish them to expand
 
-users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n//g')
+users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n/ /g')
 
 pre_upgrade() {
     # stop system service now since it will be removed upon updating
@@ -15,7 +15,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  for user in $users; do
+  for user in "${users[@]}"; do
     if _daemon_user_check "$user"; then
       _daemon_user_stop "$user"
     fi
@@ -23,8 +23,8 @@ pre_remove() {
 }
 
 _daemon_refresh() {
-  for i in $users; do
-    su "$i" -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
+  for user in "${users[@]}"; do
+    su "$user" -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
   done
 }
 
