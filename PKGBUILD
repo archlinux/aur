@@ -1,7 +1,7 @@
 
 # Maintaner: Dummerle
 pkgname=rare
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A GUI for legendary, an open source replacement for Epic Games Launcher"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=("git" "python-setuptools" "gendesk")
 checkdepends=()
 optdepends=("wine-staging: Run windows games")
 provides=()
-conflicts=()
+conflicts=(legendary)
 eplaces=()
 backup=()
 options=()
