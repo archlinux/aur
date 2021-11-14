@@ -1,6 +1,8 @@
 --- src/kwinscript/CMakeLists.txt
 +++ src/kwinscript/CMakeLists.txt
-@@ -38,3 +38,2 @@
+@@ -40,5 +40,2 @@
    "--platform=neutral"
--  DEPENDS LintViaTSC
+-  DEPENDS
+-  LintViaTSC
+-  ${TYPESCRIPT_SOURCES}
    COMMENT "🎁 Bundling using esbuild..."
