@@ -13,7 +13,7 @@ depends=('java-environment')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=("https://github.com/apertium/${pkgname}/releases/download/v${pkgver}/${pkgname}.jar"
-	"https://wiki.apertium.org/images/apertium.png"
+		"https://wiki.apertium.org/images/apertium.png"
 )
 sha256sums=('27ef7542e0b0f19db7ea46a0a25737ace9c12c29f9c5155e0f2330b4404d216a'
             'ea747ef59b3f8f0cf9b578887b4c48b8b9b16206b7adee1a49d1eee56b16abea')
@@ -38,8 +38,8 @@ package() {
 	install -d ${pkgdir}/usr/share/{apertium,applications,pixmaps,}
 	install -m 644 apertium-caffeine.jar "${pkgdir}/usr/share/apertium/"
 	install -m 644 *.desktop "${pkgdir}/usr/share/applications/"
-	install -m 644 Apertium_box.png "${pkgdir}/usr/share/pixmaps/apertium-caffeine.png"
+	install -m 644 apertium.png "${pkgdir}/usr/share/pixmaps/apertium-caffeine.png"
 	install -m 755 ${pkgname} "${pkgdir}/usr/bin/"
 }
 
-# vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
+# vim:set ts=4 sw=4 et syn=sh ft=sh:
