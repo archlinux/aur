@@ -1,4 +1,5 @@
-# Maintainer: Sumit Sahrawat <archlinux at sums dot rs>
+# Maintainer: Nicholas Wang <me at nicho1as dot wang>
+# Contributor: Sumit Sahrawat <archlinux at sums dot rs>
 # Contributor: Yusuf Aktepe <yusuf@yusufaktepe.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
@@ -8,7 +9,7 @@
 
 pkgname=surf
 pkgver=2.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'
@@ -25,8 +26,9 @@ source=("https://dl.suckless.org/surf/surf-${pkgver}.tar.gz")
 sha256sums=('72e582920ba25a646203e93c2d2331d87f03037a28894d6c7e99af00ee043257')
 
 prepare() {
-    if [[ -f config.h ]]; then
-        cp config.h "${pkgname}-${pkgver}/config.h"
+    if [[ -f ../config.h ]]; then
+	echo "Found custom config.h in $(readlink -f ../), copying..."
+        cp -v ../config.h "${pkgname}-${pkgver}/config.h"
     fi
 }
 
