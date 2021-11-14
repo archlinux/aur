@@ -1,6 +1,6 @@
 pkgbase = gdm-plymouth
 	pkgdesc = Display manager and login screen with plymouth support
-	pkgver = 41.0
+	pkgver = 41.0+r15+g23ebe6171
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gdm-plymouth
 	depends = xorg-server
 	depends = xorg-xhost
 	depends = libxdmcp
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=536491641156ba88beab2c881278b09e52df6813
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=23ebe617119506a0614f1bd2c76cd9bcf7e8fb7c
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 	source = 0002-pam-arch-Drop-pam_faillock-counting-from-fingerprint.patch
 	source = default.pa
