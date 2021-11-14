@@ -1,5 +1,5 @@
 pkgname=icalingua
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
@@ -28,6 +28,6 @@ package() {
 sha256sums=('84c8585e8c18504ed83b0d199831b55b9f8f0eb0a5aa4cb9e3dc01b4a17d0e38'
             '43da1c99b7a6aee974c20da3bcf925b660dff4ba44a447c86066c84c8bc95fbd'
             'e56bfefdb9eb5365075e9b267d0aa33d6412ace99f4f21560c77ab1f1c5b501e')
-sha256sums_aarch64=('ab9a05c64976c5e1527598cd4ac7adb32a5a1c0ae05e264a2cb1b405a491686c')
-sha256sums_x86_64=('b9c252410e4fb2d93768cb40f8e5648210ed8d880995f53244660c0b2a7e2519')
-sha256sums_i686=('d8854163790bb2370402c9ffd2d14f885fb1c51664c57ec2be83f3d5127d5e6b')
+sha256sums_aarch64=('c7a5e083d5e05f81c507044198be44ae4a7e7ff38c91b03852b69d42fa8c8108')
+sha256sums_x86_64=('2f7742db23cefeced8c7a300a68aa5e6e14baa0eb6a2f3c1616b4b1c85028006')
+sha256sums_i686=('f9422ed586f6e813126280c8f79e79a264829585124fe505ad9e95f120dbe1ca')

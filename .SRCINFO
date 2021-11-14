@@ -1,6 +1,6 @@
 pkgbase = icalingua
 	pkgdesc = A Linux client for QQ and more
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/Icalingua/Icalingua
 	arch = aarch64
@@ -21,11 +21,11 @@ pkgbase = icalingua
 	sha256sums = 84c8585e8c18504ed83b0d199831b55b9f8f0eb0a5aa4cb9e3dc01b4a17d0e38
 	sha256sums = 43da1c99b7a6aee974c20da3bcf925b660dff4ba44a447c86066c84c8bc95fbd
 	sha256sums = e56bfefdb9eb5365075e9b267d0aa33d6412ace99f4f21560c77ab1f1c5b501e
-	source_aarch64 = app-aarch64-2.4.1.asar::https://github.com/Icalingua/Icalingua/releases/download/v2.4.1/app-arm64.asar
-	sha256sums_aarch64 = ab9a05c64976c5e1527598cd4ac7adb32a5a1c0ae05e264a2cb1b405a491686c
-	source_x86_64 = app-x86_64-2.4.1.asar::https://github.com/Icalingua/Icalingua/releases/download/v2.4.1/app-x86_64.asar
-	sha256sums_x86_64 = b9c252410e4fb2d93768cb40f8e5648210ed8d880995f53244660c0b2a7e2519
-	source_i686 = app-i686-2.4.1.asar::https://github.com/Icalingua/Icalingua/releases/download/v2.4.1/app-ia32.asar
-	sha256sums_i686 = d8854163790bb2370402c9ffd2d14f885fb1c51664c57ec2be83f3d5127d5e6b
+	source_aarch64 = app-aarch64-2.4.2.asar::https://github.com/Icalingua/Icalingua/releases/download/v2.4.2/app-arm64.asar
+	sha256sums_aarch64 = c7a5e083d5e05f81c507044198be44ae4a7e7ff38c91b03852b69d42fa8c8108
+	source_x86_64 = app-x86_64-2.4.2.asar::https://github.com/Icalingua/Icalingua/releases/download/v2.4.2/app-x86_64.asar
+	sha256sums_x86_64 = 2f7742db23cefeced8c7a300a68aa5e6e14baa0eb6a2f3c1616b4b1c85028006
+	source_i686 = app-i686-2.4.2.asar::https://github.com/Icalingua/Icalingua/releases/download/v2.4.2/app-ia32.asar
+	sha256sums_i686 = f9422ed586f6e813126280c8f79e79a264829585124fe505ad9e95f120dbe1ca
 
 pkgname = icalingua
