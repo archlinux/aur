@@ -32,3 +32,36 @@ pkgbase = fabric-server
 
 pkgname = fabric-server
 
+pkgbase = fabric-server
+	pkgdesc = Minecraft Fabric server unit files, script and jar
+	pkgver = 1.17.1_0.9.0
+	pkgrel = 1
+	url = https://fabricmc.net
+	install = fabric-server.install
+	arch = any
+	license = Apache
+	depends = java-runtime-headless>=16
+	depends = screen
+	depends = sudo
+	depends = bash
+	depends = awk
+	depends = sed
+	optdepends = tar: needed in order to create world backups
+	optdepends = netcat: required in order to suspend an idle server
+	provides = fabric-server=1.17.1_0.9.0
+	noextract = fabric-1.17.1-0.9.0.jar
+	backup = etc/conf.d/fabric
+	source = fabricd-backup.service
+	source = fabricd-backup.timer
+	source = fabricd.service
+	source = fabricd.conf
+	source = fabricd.sh
+	source = fabric-installer-0.9.0.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.9.0/fabric-installer-0.9.0.jar
+	sha512sums = 38642e2cbd218221a93996b86cdb1bf1b1d3c78a377ea22b32c597ce5e4a2e6cb2b4541179d9b4dff6e4c463e60f4bdee101538c58bf455aeb85c73838b6ed2c
+	sha512sums = 755d3f532913f999c3abde1eae8a713f5bee8e758314fdeef0a70f81d4411b91b4c88d30824cdf5b0f8f5dae76ceffc10d2b1e5db6161a1daf02a50399b718d3
+	sha512sums = 78e688805d448be6a0d05cc4aa7bf728c5b662a1f8c335e5a1bab3a5af42de186585761d2b52cf77c97b474780b410fd8f8539052532235285242f71d295abfc
+	sha512sums = 9f25102cfd345d8364debc62e622126a67fd69f3945a7aa28e46c1fb9cb36698e2f389c066fccb183f5e6bb8714e7f87091114d1752fe85bda746bef2697da8b
+	sha512sums = 63179dc31b3460f57fab2ab8661c9257b3bd8f966224782e9940751f39998532efedc14129cfe536f18b5f2b4578894940ea32b68f4eb75c325e58a1ea04df77
+	sha512sums = 80b5e7c571676e3489185df140d638bd8d12eebfcddedccd2dc469f6ee0522a0992354ac3411b2356a93d6b2f10ec706209d862d85ae84a02faf8e8761f6846b
+
+pkgname = fabric-server
