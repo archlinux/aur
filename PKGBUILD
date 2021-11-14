@@ -2,12 +2,31 @@
 
 pkgname=python-pip-audit
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/trailofbits/pip-audit'
 license=('Apache')
-depends=('python-pip-api' 'python-packaging' 'python-dataclasses' 'python-progress' 'python-resolvelib' 'python-html5lib' 'python-cachecontrol' 'python-lockfile' 'python-cyclonedx-lib')
+depends=(
+  # Upstream requires pip-api >= 0.0.23 but Arch’s Community
+  # repository is on 0.0.18, which causes an error message that
+  # says “failed to list installed distributions.”
+  # Once community/python-pip-api catches up to version 0.0.23,
+  # remove the `>=0.0.23` part from the following line.
+  'python-pip-api>=0.0.23'
+  'python-packaging'
+  'python-dataclasses'
+  'python-progress'
+  # Upstream requires resolvelib >=0.8.0, but extra/python-resolvelib
+  # is at 0.5.5 (possibly for compatibility with extra/python-pip
+  # 20.3.4). The 0.5.5 version appears to work just fine, so let’s
+  # ignore the mismatch.
+  'python-resolvelib'
+  'python-html5lib'
+  'python-cachecontrol'
+  'python-lockfile'
+  'python-cyclonedx-lib'
+)
 makedepends=('python-setuptools')
 conflicts=('python-pip-audit-git')
 options=('!strip')
