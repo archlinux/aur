@@ -21,7 +21,7 @@ post_install() {
 	echo "Use the fabricd script under /usr/bin/${_fabric_name}d to start, stop or backup the server."
 	echo "Adjust the configuration file under /etc/conf.d/${_fabric_name} to your liking."
 	echo "Make sure to change the SERVER_START_CMD variable if you want to use a JVM other than OpenJDK 8."
-	echo "Please note that you need Java 8 in order to run Fabric."
+	echo "Please note that you need Java 16 (or newer) in order to run Fabric."
 	echo "For the server to start you have to accept the EULA in ${_server_root}/eula.txt!"
 	echo "The EULA file is generated after the first server start."
 }
