@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.20-GE-1
+_srctag=6.21-GE-1
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.4.1
+_monover=7.0.0
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
@@ -278,7 +278,7 @@ build() {
 
     export WINEESYNC=0
     export WINEFSYNC=0
-    export DISPLAY=""
+    export DISPLAY=
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }
@@ -344,8 +344,8 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            'a70c865e590058fa6fc3aa47425646405bdda27f78b9aa6d2030d2d2a8efadbb'
+            '2a047893f047b4f0f5b480f1947b7dda546cee3fec080beb105bf5759c563cd3'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '253ddfdf066fd182395c80c6be462f5970ed3017a9fba00f2e75d0f2b99ea1a9'
+            '94e698b644458df40c6164d0ca41a5ec2f54e5833dc20da6143690b818c3f30a'
             '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
