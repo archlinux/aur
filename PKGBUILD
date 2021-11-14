@@ -19,7 +19,7 @@ pkgver() {
   cd xtruss
   printf '%s.%s' \
     $(git show --no-patch --format=%cs HEAD | tr -d -) \
-    $(git rev-parse HEAD | head -c7)
+    $(git rev-parse --short=7 HEAD)
 }
 
 build() {
