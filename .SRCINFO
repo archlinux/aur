@@ -13,3 +13,18 @@ pkgbase = easyaur
 	sha256sums = 8dec772204ea40b8dfb71de47afdb5690e81a7643dcefb3aae018d32bf6cc45d
 
 pkgname = easyaur
+pkgbase = easyaur
+	pkgdesc = Easy-to-use wrapper useful for building packages and managing custom repositories
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/legendary-cookie/easyaur
+	arch = any
+	license = GPL
+	depends = asp
+	depends = git
+	depends = pacman
+	depends = bash
+	source = https://github.com/legendary-cookie/easyaur/archive/refs/tags/1.2.tar.gz
+	sha256sums = 5e9cbc859baef28f2f9cdc1c65b6c7284cc8800f53de8b7541db136aac6c76b3
+
+pkgname = easyaur
