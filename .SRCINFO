@@ -1,6 +1,6 @@
 pkgbase = octave-audio
 	pkgdesc = Audio recording, processing and playing tools.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://octave.sourceforge.io/audio/index.html
 	install = octave-audio.install
@@ -9,9 +9,8 @@ pkgbase = octave-audio
 	license = GPL
 	depends = octave>=4.0.0
 	depends = rtmidi
-	noextract = audio-2.0.2.tar.gz
-	source = https://downloads.sourceforge.net/octave/audio-2.0.2.tar.gz
-	sha256sums = b361c3989199b84995660e71d586c062e838ec09ef545d36bb6911df2adf9ea2
+	noextract = audio-2.0.3.tar.gz
+	source = https://downloads.sourceforge.net/octave/audio-2.0.3.tar.gz
+	sha256sums = 1968580486dd73f8b2b8f545aaa03c0ace338ad77064d4f3b75977588fbb6190
 
 pkgname = octave-audio
-
