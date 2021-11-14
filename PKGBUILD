@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.20.0.r1934.g9f2dd4a363
+pkgver=0.20.0.r2110.g414f4d706e
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -111,7 +111,7 @@ check() {
   cd FreeCAD
   unset PATH_TO_FREECAD_LIBDIR
   cd build_dir
-  bin/FreeCADCmd --console --run-test 0
+  LD_LIBRARY_PATH=lib bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
