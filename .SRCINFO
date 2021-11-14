@@ -1,7 +1,7 @@
 pkgbase = peazip-qt5
 	pkgdesc = Free file archiver utility, open, extract RAR TAR ZIP archives
 	pkgver = 8.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://peazip.org
 	arch = i686
 	arch = x86_64

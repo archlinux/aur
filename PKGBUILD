@@ -5,7 +5,7 @@
 
 pkgname='peazip-qt5'
 pkgver=8.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free file archiver utility, open, extract RAR TAR ZIP archives'
 license=('GPL3')
 url='http://peazip.org'
@@ -32,9 +32,10 @@ package() {
   install -Dm755 "$srcdir/PeaZip-$pkgver/peazip-sources/peazip" "$pkgdir/opt/peazip/peazip"
   install -Dm755 "$srcdir/PeaZip-$pkgver/peazip-sources/pea" "$_pkgres/pea"
   cd "$srcdir/PeaZip-$pkgver/peazip-sources/res/batch/freedesktop_integration"
-  for _file in *.png; do
-    install -Dm644 "$_file" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_file"
-  done
+
+  install -Dm644 peazip{,_alt}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
+  install -Dm644 peazip_{add,extract}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
   for _file in *.desktop; do
     install -Dm644 "$_file" "$pkgdir/usr/share/applications/$_file"
   done
