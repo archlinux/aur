@@ -1,0 +1,19 @@
+pkgbase = popuradns
+	pkgdesc = A simple DNS server with decentralized domain names support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/popura-network/PopuraDNS
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	provides = coredns
+	conflicts = coredns
+	source = PopuraDNS-0.1.0.tar.gz::https://github.com/popura-network/PopuraDNS/archive/refs/tags/v0.1.0.tar.gz
+	source = coredns.service
+	source = coredns-sysusers.conf
+	sha256sums = 52aa97b35b88bffebf42052139d90d2bad6615b646c01f99e41a09e10cfc021d
+	sha256sums = bbacde21632be9d7a9a758103775c768f9688372539b1b342ccf5c5db6746b4f
+	sha256sums = 536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7
+
+pkgname = popuradns
