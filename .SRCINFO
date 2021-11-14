@@ -1,0 +1,18 @@
+pkgbase = libtinyiio-git
+	pkgdesc = Tiny IIO Daemon Library
+	pkgver = r87.f8e81c6
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/analogdevicesinc/libtimyiiod
+	arch = x86_64
+	license = GPL2
+	makedepends = swig
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	provides = libtinyiiod
+	conflicts = libtinyiiod
+	source = git+https://github.com/analogdevicesinc/libtinyiiod.git
+	md5sums = SKIP
+
+pkgname = libtinyiio-git
