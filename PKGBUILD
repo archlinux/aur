@@ -1,47 +1,49 @@
 # Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=openfpgaloader-git
-pkgver=0.1.r.12.gdcf4468
-pkgrel=3
+pkgver=nightly.r.0.g7ed432c
+pkgrel=1
 pkgdesc="Universal utility for programming FPGA"
 arch=('i686' 'x86_64')
 url="https://github.com/trabucayre/openFPGALoader"
-license=('AGPL3')
-depends=('libftdi')
-optdepends=('libudev.so: (e)udev support (used to open a device via /dev/[device node])')
-makedepends=('git' 'cmake')
+license=('APACHE')
+depends=('libftdi' 'libftdi-compat' 'libhidapi-libusb.so' 'libudev.so')
+makedepends=('cmake' 'libusb' 'systemd' 'git')
 provides=('openfpgaloader')
 conflicts=('openfpgaloader')
-source=("$pkgname::git+https://github.com/trabucayre/openFPGALoader")
+source=("$pkgname-$pkgver::git+https://github.com/trabucayre/openFPGALoader")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed -r 's/.//;s/([^-]*-g)/r.\1/;s/-/./g'
+  cd "$pkgname-$pkgver"
+  git describe --long --tags | sed -r 's/\.//;s/([^-]*-g)/r\.\1/;s/-/./g'
+}
+
+prepare() {
+  sed -i 's|MODE="664", GROUP="plugdev"|MODE="666"|g' "$pkgname-$pkgver"/99-openfpgaloader.rules
 }
 
 build() {
-  cd "$pkgname"
-  mkdir -p build && cd build
-  if pacman -Qi libudev.so;
-  then
-    cmake ../
-  else
-    echo 'Disabling udev support...'
-    cmake ../ -DENABLE_UDEV=OFF
-  fi
-  cmake --build .
+  mkdir -p "$pkgname-$pkgver"/build
+  cd "$pkgname-$pkgver"/build
+
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
+
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DENABLE_UDEV=True \
+    -DENABLE_CMSISDAP=True
+
+  make
 }
 
 package() {
-  cd "$pkgname"
-  mkdir -p $pkgdir/usr/bin/
-  mkdir -p $pkgdir/usr/share/openFPGALoader/
-  cp build/openFPGALoader $pkgdir/usr/bin/openfpgaloader
-  cp test_sfl.svf $pkgdir/usr/share/openFPGALoader/test_sfl.svf
-  cp spiOverJtag/spiOverJtag_xc7a35.bit $pkgdir/usr/share/openFPGALoader/spiOverJtag_xc7a35.bit
-  if pacman -Qi libudev.so;
-  then
-    install -Dm664 '99-openfpgaloader.rules' '${pkgdir}/usr/lib/udev/rules.d/99-openfpgaloader.rules'
-  fi
+  cd "$pkgname-$pkgver"/build
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm 644 ../99-openfpgaloader.rules "$pkgdir"/usr/lib/udev/rules.d/99-openfpgaloader.rules
 }

@@ -1,19 +1,22 @@
 pkgbase = openfpgaloader-git
 	pkgdesc = Universal utility for programming FPGA
-	pkgver = 0.1.r.12.gdcf4468
-	pkgrel = 3
+	pkgver = nightly.r.0.g7ed432c
+	pkgrel = 1
 	url = https://github.com/trabucayre/openFPGALoader
 	arch = i686
 	arch = x86_64
-	license = AGPL3
-	makedepends = git
+	license = APACHE
 	makedepends = cmake
+	makedepends = libusb
+	makedepends = systemd
+	makedepends = git
 	depends = libftdi
-	optdepends = libudev.so: (e)udev support (used to open a device via /dev/[device node])
+	depends = libftdi-compat
+	depends = libhidapi-libusb.so
+	depends = libudev.so
 	provides = openfpgaloader
 	conflicts = openfpgaloader
-	source = openfpgaloader-git::git+https://github.com/trabucayre/openFPGALoader
+	source = openfpgaloader-git-nightly.r.0.g7ed432c::git+https://github.com/trabucayre/openFPGALoader
 	md5sums = SKIP
 
 pkgname = openfpgaloader-git
-
