@@ -51,7 +51,7 @@ def update():
         KERN_DEPENDS=arr("depends", kern_info['depends']),
         KERN_CONFLICTS=arr("conflicts", kern_info['conflicts'] + ['"${_pkgname}"']),
         KERN_OPTDEPENDS=arr("optdepends", kern_info['optdepends']),
-        KERN_PROVIDES=arr("provides", kern_info['provides']),
+        KERN_PROVIDES=arr("provides", kern_info['provides'] + ['"${_pkgname}"']),
         KERN_REPLACES=arr("replaces", kern_info['replaces']),
         HEADERS_PKGDESC=headers_info['pkgdesc'],
         HEADERS_DEPENDS=arr("depends", headers_info['depends']),
@@ -59,7 +59,9 @@ def update():
             "conflicts", headers_info['conflicts'] + ['"${_pkgname}-headers"']
         ),
         HEADERS_OPTDEPENDS=arr("optdepends", headers_info['optdepends']),
-        HEADERS_PROVIDES=arr("provides", headers_info['provides']),
+        HEADERS_PROVIDES=arr(
+            "provides", headers_info['provides'] + ['"${_pkgname}-headers"']
+        ),
         HEADERS_REPLACES=arr("replaces", headers_info['replaces']),
         DOCS_PKGDESC=docs_info['pkgdesc'],
         DOCS_DEPENDS=arr("depends", docs_info['depends']),
@@ -67,7 +69,7 @@ def update():
             "conflicts", docs_info['conflicts'] + ['"${_pkgname}-docs"']
         ),
         DOCS_OPTDEPENDS=arr("optdepends", docs_info['optdepends']),
-        DOCS_PROVIDES=arr("provides", docs_info['provides']),
+        DOCS_PROVIDES=arr("provides", docs_info['provides'] + ['"${_pkgname}-docs"']),
         DOCS_REPLACES=arr("replaces", docs_info['replaces']),
     )
 

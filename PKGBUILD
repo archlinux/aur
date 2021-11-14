@@ -71,7 +71,8 @@ package_linux5.10.79-1-lts-bin() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES
-            WIREGUARD-MODULE)
+            WIREGUARD-MODULE
+            "${_pkgname}")
   replaces=(wireguard-lts)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
@@ -81,6 +82,7 @@ package_linux5.10.79-1-lts-bin() {
 package_linux5.10.79-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
+  provides=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
@@ -89,6 +91,7 @@ package_linux5.10.79-1-lts-headers-bin() {
 package_linux5.10.79-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
+  provides=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
