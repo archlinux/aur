@@ -2,8 +2,8 @@
 
 pkgname=perl-anyevent-snmp
 _cpanname='AnyEvent-SNMP'
-pkgver=6.0
-pkgrel=3
+pkgver=6.02
+pkgrel=1
 pkgdesc="Adaptor to integrate Net::SNMP into AnyEvent"
 arch=('any')
 url='http://search.cpan.org/perldoc?AnyEvent::SNMP'
@@ -11,7 +11,7 @@ license=('PerlArtistic')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/${_cpanname}-${pkgver}.tar.gz")
 depends=('perl-net-snmp' 'perl-anyevent')
-md5sums=('1112752d9df30da320116788372c64e3')
+md5sums=('98591a15d3870e37a8f8ba10ed6cc6ea')
 
 build() {
 	cd "$srcdir/${_cpanname}-$pkgver"
