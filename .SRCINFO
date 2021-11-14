@@ -1,6 +1,6 @@
 pkgbase = gnome-pie-git
 	pkgdesc = Circular application launcher for GNOME
-	pkgver = v0.7.2.r2.02e26da
+	pkgver = 0.7.3.r0.g0140a40
 	pkgrel = 1
 	url = https://simmesimme.github.io/gnome-pie.html
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = gnome-pie-git
 	depends = gnome-menus
 	provides = gnome-pie
 	conflicts = gnome-pie
-	source = gnome-pie::git+https://github.com/Simmesimme/gnome-pie
+	source = git+https://github.com/Simmesimme/gnome-pie
 	sha256sums = SKIP
 
 pkgname = gnome-pie-git
-
