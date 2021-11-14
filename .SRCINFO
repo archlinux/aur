@@ -1,7 +1,7 @@
 pkgbase = k0sctl-bin
 	pkgdesc = A bootstrapping and management tool for k0s clusters.
 	pkgver = 0.11.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/k0sproject/k0sctl
 	arch = x86_64
 	license = Apache
