@@ -10,6 +10,7 @@ pkgbase = renoise-demo
 	depends = gcc-libs
 	optdepends = jack: For JACK audio support
 	conflicts = renoise
+	conflicts = renoise3-demo
 	options = !strip
 	source = https://files.renoise.com/demo/Renoise_3_3_2_Demo_Linux.tar.gz
 	sha512sums = 87d1af9abbb593299120f894c3db746daedccb466e1ce6673e4eab84695ddaea3d9881e0e453aafff781e15284b350a383af393f55ee773e0af277f3b2cee19d

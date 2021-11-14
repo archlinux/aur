@@ -18,7 +18,7 @@ license=("custom:renoise")
 depends=("alsa-lib" "libx11" "gcc-libs")
 optdepends=("jack: For JACK audio support")
 options=("!strip")
-conflicts=("renoise")
+conflicts=("renoise" "renoise3-demo")
 
 source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux.tar.gz")
 sha512sums=("87d1af9abbb593299120f894c3db746daedccb466e1ce6673e4eab84695ddaea3d9881e0e453aafff781e15284b350a383af393f55ee773e0af277f3b2cee19d")
