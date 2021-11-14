@@ -2,7 +2,7 @@
 pkgname=shiny-mirrors
 pkgver=r131.97c65f64
 pkgrel=1
-pkgdesc="(ARCH BUILD) A replacement for Manjaro's pacman-mirrors and Arch's reflector, rewritten in Rust! A tool to find the best mirrors for you!"
+pkgdesc="A replacement for reflector, rewritten in Rust! A tool to find the best mirrors for you!"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Arisa_Snowbell/shiny-mirrors"
 license=('GPL3')
