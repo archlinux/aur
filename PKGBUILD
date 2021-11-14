@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=wasi-compiler-rt
-pkgver=12.0.1
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='WASI LLVM compiler runtime'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'ninja' 'llvm' 'clang' 'lld')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/compiler-rt-${pkgver}.src.tar.xz"{,.sig}
         WASI.cmake
         wasi-toolchain.cmake)
-b2sums=('ea8c8c3867bae96329bb3efebe41b4433369140e9aa7bd6811925fa5e62722d46611df9fa9bc9d7dcd464b8eb4a6d3999b48c932acd8b73426b8e7a5ea54ff51'
+b2sums=('5f170a9e7e03af2f2bc321c3d9c30f64a7c74c76f13cea4ab15aff0b7a585d36a354850151f7b70df77bae7602fe2ab2b9a86a8b8be56eab875ee0e94146d194'
         'SKIP'
         'c829d807c257921fddb8c4d3752ad2291a2beb116d414dd31e34b7f6b01599d8c4807db87ef9930456ed8c9f30e8648e77028fa0b903c3a5ea840514f6022cf4'
         '74c63bb838bc2e6d7980370fb3d47f8fd2f1dd8b6dc82302c7cc0b80e0fb1e8e21c1c62d6de0b78e478fc22611a5867e52b1ef7a566796fe831fffd98b17c940')
@@ -46,11 +46,11 @@ build() {
     -DCMAKE_C_FLAGS="-fno-exceptions --sysroot=/usr/share/wasi-sysroot" \
     -DCMAKE_INSTALL_PREFIX=/usr/lib/clang/${pkgver}/ \
     compiler-rt-${pkgver}.src/lib/builtins
-  ninja -v -C build
+  cmake --build build -v
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -v -C build install
+  DESTDIR="${pkgdir}" cmake --install build -v
 
   install -Dm644 compiler-rt-${pkgver}.src/LICENSE.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
