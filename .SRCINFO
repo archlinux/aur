@@ -1,6 +1,6 @@
 pkgbase = python-pincer-git
 	pkgdesc = The snappy asynchronous discord api wrapper API wrapper written with aiohttp & websockets.
-	pkgver = 0.9.3.r477.g6849a6a
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/Pincer-org/Pincer
 	arch = any

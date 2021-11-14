@@ -1,7 +1,7 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 
 pkgname=python-pincer-git
-pkgver=0.9.3.r477.g6849a6a
+pkgver=latest
 pkgrel=1
 pkgdesc="The snappy asynchronous discord api wrapper API wrapper written with aiohttp & websockets."
 arch=(any)
