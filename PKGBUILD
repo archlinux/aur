@@ -3,22 +3,31 @@
 
 pkgname=qt5-websockets
 _qtver=5.15.2
-pkgver=${_qtver/-/}
+pkgver=5.15.2+kde+r4
 pkgrel=1
+_commit=e7883bc64440b1ff4666272ac6eb710ee4bc221b
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides WebSocket communication compliant with RFC 6455'
 depends=('qt5-base')
-makedepends=('qt5-declarative')
+makedepends=('qt5-declarative' 'git')
 optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a0b42d85dd34ff6e2d23400e02f83d8b85bcd80e60efd1521d12d9625d4a233f')
+_pkgfqn=qtwebsockets
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
 
 prepare() {
   mkdir -p build
+
+  cd $_pkgfqn
+  git revert -n 767afe93c3f104716a68ff563d4a4e4ee0a62d3d # Revert version bump
 }
 
 build() {
