@@ -4,7 +4,7 @@
 # Contributor: liberodark
 
 pkgname=natron-compositor-git
-pkgver=v2.4.0.r6.g4007f810d
+pkgver=2.5.0.alpha.1.r15.g240306877
 pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
@@ -41,6 +41,11 @@ sha512sums=('SKIP'
             'SKIP'
             '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
 
+pkgver() {
+  cd ${_pkgname}
+  git describe --long --tags| sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
 prepare() {
   mv -f OpenColorIO-Configs config.pri ${_pkgname}
 
@@ -59,7 +64,7 @@ prepare() {
 }
 
 build() {
-  cd "${_pkgname}"
+  cd ${_pkgname}
 
   [[ -d build ]] && rm -r build; mkdir build; cd build
 
@@ -77,7 +82,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}/build"
+  cd ${_pkgname}/build
   make INSTALL_ROOT="${pkgdir}" install
   
   install -d "${pkgdir}/usr/share/Natron/Plugins/"

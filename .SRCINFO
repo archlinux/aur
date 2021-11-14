@@ -1,6 +1,6 @@
 pkgbase = natron-compositor-git
 	pkgdesc = Open source compositing software
-	pkgver = v2.4.0.r6.g4007f810d
+	pkgver = 2.5.0.alpha.1.r15.g240306877
 	pkgrel = 1
 	url = https://natrongithub.github.io/
 	arch = x86_64
@@ -37,4 +37,3 @@ pkgbase = natron-compositor-git
 	sha512sums = 48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a
 
 pkgname = natron-compositor-git
-
