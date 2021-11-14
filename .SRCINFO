@@ -1,6 +1,6 @@
 pkgbase = xfsprogs-git
 	pkgdesc = Utilities for managing the XFS filesystem
-	pkgver = 5.13.0.r0.gb4203330
+	pkgver = 5.13.0.r68.g2ee43772
 	pkgrel = 1
 	url = https://xfs.org
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = xfsprogs-git
 	depends = device-mapper
 	depends = icu
 	depends = libinih
+	depends = liburcu
 	depends = libutil-linux
 	depends = readline
 	depends = sh

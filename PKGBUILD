@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xfsprogs-git
-pkgver=5.13.0.r0.gb4203330
+pkgver=5.13.0.r68.g2ee43772
 pkgrel=1
 pkgdesc="Utilities for managing the XFS filesystem"
 arch=('i686' 'x86_64')
 url="https://xfs.org"
 license=('GPL2' 'LGPL')
-depends=('glibc' 'device-mapper' 'icu' 'libinih' 'libutil-linux' 'readline' 'sh')
+depends=('glibc' 'device-mapper' 'icu' 'libinih' 'liburcu' 'libutil-linux' 'readline' 'sh')
 makedepends=('git')
 optdepends=('python: for xfs_scrub_all script'
             'smtp-forwarder: for xfs_scrub_fail script')
