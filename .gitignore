@@ -1,0 +1,5 @@
+*.zstd
+*.tar.gz
+src/
+pkg/
+libm2k/

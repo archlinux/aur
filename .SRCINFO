@@ -1,0 +1,19 @@
+pkgbase = libm2k-git
+	pkgdesc = A C++ library (bindings for Python and C#) for interfacing with the ADALM2000
+	pkgver = v0.5.0.r4.g90c5b6a
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/analogdevicesinc/libm2k
+	arch = x86_64
+	license = LGPL
+	makedepends = swig
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = python
+	provides = libm2k
+	conflicts = libm2k
+	source = git+https://github.com/analogdevicesinc/libm2k.git
+	md5sums = SKIP
+
+pkgname = libm2k-git
