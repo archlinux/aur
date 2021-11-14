@@ -2,42 +2,40 @@
 # Contributor: LTSmash <lord.ltsmash@gmail.com>
 # Contributor: Zauber Exonar <zauberexonar at gmail>
 # Maintainer: GordonGR <ntheo1979@gmail.com>
-
 pkgname=opensimulator-osgrid
-pkgver=20210827.v0.9.2.b363d1f
-_realpkgver=08272021.v0.9.2.b363d1f
+pkgver=20211014.v0.9.2.60c9975
+_realpkgver=10142021.v0.9.2.60c9975
 pkgrel=1
 pkgdesc="OSGrid's distribution of OpenSimulator, preconfigured to connect with OSGrid"
 arch=('i686' 'x86_64')
-url="http://www.osgrid.org"
+url="https://www.osgrid.org"
 license=('BSD')
 depends=('mono' 'sqlite')
 makedepends=('unzip')
-install=$pkgname.install
-backup=('opt/opensimulator-osgrid/bin/OpenSim.ini'
-		'opt/opensimulator-osgrid/bin/config-include/GridCommon.ini')
-source=("http://danbanner.onikenkon.com/osgrid/osgrid-opensim-${_realpkgver}.zip" \
-        "osgrid.sh")
-md5sums=('00b8a23bf87300801fbfdd507d26d378'
-         '8ad5aab5c434aef00d12b08343a5da5a')
+install=${pkgname}.install
+backup=("opt/${pkgname}/bin/OpenSim.ini"
+  "opt/${pkgname}/bin/config-include/GridCommon.ini")
+source=("https://danbanner.onikenkon.com/osgrid/osgrid-opensim-${_realpkgver}.zip"
+  "osgrid.sh")
+sha512sums=('1cf6ecbcde89adc56b3a9c48810d8d145a68f0c952a9cd8085011b5a3ba2aebb9997d19ae41a477697357da078ff22f2f3089860ac44771faf3bb108b1caf534'
+  'fcf960e3b93959813e44bab5b3d1c569d5f560537391dfa021f0be6be4e5cbdcbf242f7f5ebec96b17d81e84312bbe1a3c3cf8b2e74d6ecf610749d639c6b9e5')
 
 package() {
-cd $srcdir/bin
-
-#copying Mono.Posix.dll so that OpenSimulator can use sockets, and by extension MySQL
-cp /usr/lib/mono/4.5/Mono.Posix.dll Mono.Posix.dll
-# install
-install -d $pkgdir/opt/$pkgname/bin
-cp -r ./* $pkgdir/opt/$pkgname/bin/
-# set permissions
-find $pkgdir/opt/$pkgname/bin -type d -exec chmod 755 {} +
-find $pkgdir/opt/$pkgname/bin -type f -exec chmod 644 {} +
-find $pkgdir/opt/$pkgname/bin -name "*.exe" -exec chmod 755 {} +
-find $pkgdir/opt/$pkgname/bin -name "*.ini" -exec chmod 666 {} +
-find $pkgdir/opt/$pkgname/bin -name "*.xml" -exec chmod 666 {} +
-chmod 777 $pkgdir/opt/$pkgname/bin/{,*/}
-chmod 755 $pkgdir/opt/$pkgname/bin/opensim.sh
-# chmod 666 "$pkgdir"/opt/$pkgname/bin/OpenSim.log
-# install launch script
-install -m755 -D ../osgrid.sh $pkgdir/usr/bin/osgrid
+  cd bin
+  #copying Mono.Posix.dll so that OpenSimulator can use sockets, and by extension MySQL
+  cp /usr/lib/mono/4.5/Mono.Posix.dll Mono.Posix.dll
+  # install
+  install -d ${pkgdir}/opt/${pkgname}/bin
+  cp -r ./* ${pkgdir}/opt/${pkgname}/bin/
+  # set permissions
+  find ${pkgdir}/opt/${pkgname}/bin -type d -exec chmod 755 {} +
+  find ${pkgdir}/opt/${pkgname}/bin -type f -exec chmod 644 {} +
+  find ${pkgdir}/opt/${pkgname}/bin -name "*.exe" -exec chmod 755 {} +
+  find ${pkgdir}/opt/${pkgname}/bin -name "*.ini" -exec chmod 666 {} +
+  find ${pkgdir}/opt/${pkgname}/bin -name "*.xml" -exec chmod 666 {} +
+  chmod 777 ${pkgdir}/opt/${pkgname}/bin/{,*/}
+  chmod 755 ${pkgdir}/opt/${pkgname}/bin/opensim.sh
+  # chmod 666 "${pkgdir}"/opt/${pkgname}/bin/OpenSim.log
+  # install launch script
+  install -m755 -D ../osgrid.sh ${pkgdir}/usr/bin/osgrid
 }
