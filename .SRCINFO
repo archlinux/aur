@@ -1,0 +1,14 @@
+pkgbase = qwinos-qtile-dracula
+	pkgdesc = This is automate install of QWinOS(Arch Window Manager) Qtile-Dracula theme
+	pkgver = 1.0.r6.42d7d7c
+	pkgrel = 1
+	url = https://github.com/QWinOS/Qtile-Dracula.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = sh
+	provides = QWinOS
+	source = git+https://github.com/QWinOS/Qtile-Dracula.git
+	md5sums = SKIP
+
+pkgname = qwinos-qtile-dracula
