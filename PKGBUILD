@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-git
-pkgver=1.0.0+724.r0.gd129b76
+pkgver=1.0.0+738.r2.g8d106c7
 pkgrel=1
 pkgdesc="A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart"
 license=('GPL')
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=('RPMLauncher::git+https://github.com/RPMTW/RPMLauncher')
+source=('RPMLauncher::git+https://github.com/RPMTW/RPMLauncher#branch=develop')
 md5sums=('SKIP')
 pkgver(){
   cd "RPMLauncher"
