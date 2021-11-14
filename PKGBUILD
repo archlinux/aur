@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.20.0.r2110.g414f4d706e
+pkgver=0.20.0.r2115.g03dd79c155
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -30,7 +30,6 @@ qt5-xmlpatterns
 shared-mime-info
 xerces-c
 vtk
-#vtk9-java
 )
 makedepends=(
 boost
@@ -83,11 +82,14 @@ build() {
   cmake -Wno-dev -G Ninja -B build_dir -S . \
     -D BUILD_ENABLE_CXX_STD=C++17 \
     -D BUILD_FEM=ON \
+    -D BUILD_FEM_NETGEN=OFF \
     -D BUILD_MESH=ON \
+    -D BUILD_FLAT_MESH=ON \
     -D BUILD_MESH_PART=ON \
     -D BUILD_SHIP=ON \
     -D BUILD_ASSEMBLY=OFF \
     -D BUILD_COMPLETE=ON \
+    -D BUILD_JTREADER=ON \
     -D BUILD_PLOT=ON \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
