@@ -1,9 +1,9 @@
 # Contributor: Zeph <zeph33@gmail.com>
-# Maintainer: Librewish <librewish@gmail.com>
+# Maintainer: LSUtigers3131
 # https://gitlab.manjaro.org/packages/extra/pamac
 
 pkgname=pamac-all
-pkgver=10.2.2
+pkgver=10.3.0
 pkgrel=2
 _pkgfixver=$pkgver
 
@@ -19,7 +19,7 @@ provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('bbd5e6590a9760e6ff828c32704e3b81c8f800b3a9d22d9b2f6fa94c7794806d')
+sha256sums=('aa9f2760cf6a08df658067e5c61f62aecb01db3fd32efd8b3a9c268ecad40fdc')
 
 prepare() {
   cd "$srcdir/pamac-v$pkgver"
