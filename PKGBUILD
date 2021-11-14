@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=quick-lookup
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GTK dictionary application powered by Wiktionary"
 arch=('any')
 url="https://github.com/johnfactotum/quick-lookup"
 license=('GPL3')
-depends=('gjs' 'webkit2gtk-5.0')
+depends=('gjs' 'gtk4' 'libadwaita' 'webkit2gtk-5.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('0732444db4abed0c7a24caf4bd385876a57a4d98682775483c0f835521aed046')
 

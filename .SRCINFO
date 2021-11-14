@@ -1,11 +1,13 @@
 pkgbase = quick-lookup
 	pkgdesc = Simple GTK dictionary application powered by Wiktionary
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johnfactotum/quick-lookup
 	arch = any
 	license = GPL3
 	depends = gjs
+	depends = gtk4
+	depends = libadwaita
 	depends = webkit2gtk-5.0
 	source = quick-lookup-2.0.0.tar.gz::https://github.com/johnfactotum/quick-lookup/archive/2.0.0.tar.gz
 	sha256sums = 0732444db4abed0c7a24caf4bd385876a57a4d98682775483c0f835521aed046
