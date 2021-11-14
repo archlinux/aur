@@ -1,6 +1,6 @@
 # Maintainer: OrkenWhite <orkenwhite@disroot.org>
 pkgname=ytfe
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="YouTube frontend"
 arch=('x86_64' 'i686')
@@ -9,11 +9,11 @@ license=('custom')
 depends=('gtk2')
 makedepends=('xz')
 source=('http://oscomp.hu/depot/ytfe.png' 'http://oscomp.hu/depot/edl-preloader.lua.xz' 'ytfe.desktop' 'LICENSE')
-source_x86_64=('http://oscomp.hu/depot/ytfe_linux_x86_64.xz')
-source_i686=('http://oscomp.hu/depot/ytfe_linux_i686.xz')
+source_x86_64=("http://oscomp.hu/depot/ytfe_direct/$pkgver/ytfe_linux_x86_64.xz")
+source_i686=("http://oscomp.hu/depot/ytfe_direct/$pkgver/ytfe_linux_i686.xz")
 sha256sums=( '29220d99cb0e33675e2d349a023eea0877a3befefc61b19f4d901db29f7d1698' '1538efd4ad69915c36a12e48b2fb67606983d8dd38811726640952d6a3c03149' '44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae' 'bf8e1295602992c618eacbc43a36c201293c8a159f49dd42a724c72f5e8a5267')
-sha256sums_x86_64=('facab78a9c05dfcdc44aeeb94c44114763b65dfef9cb2fecb62741fbff61df2c')
-sha256sums_i686=('6aeba9c40ceeb29cbaa7bbff7b28642a1c7def7658ec61b3a11aa8d99a1fe71a')
+sha256sums_x86_64=('b407a1340ee3f118d9474a0c3696e0abd9b4472324b0af7f92c0347aa2eeea40')
+sha256sums_i686=('da0d44157350f870133c9799d8a89e1e7be4b3ae116f1f12cca20d55464b0947')
 optdepends=('youtube-dl: default downloader' 
 	'mpv: default player'
 	'vlc: compatible video player')
