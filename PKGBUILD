@@ -2,7 +2,7 @@
 
 pkgname=protonutils
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool that provides different utilities to make using the Proton compatibility tool more easily"
 arch=(x86_64)
 url="https://github.com/nning/protonutils"
@@ -27,7 +27,7 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
-  make clean build_pie VERSION=$pkgver
+  make clean build_pie VERSION=v$pkgver
 
   ./cmd/$pkgname/$pkgname -m man1
 
