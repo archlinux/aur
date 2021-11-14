@@ -5,8 +5,11 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
+_wine_commit=be0684dad50ffbc93b3ded4fbfebf1d1e4690589
+_stag_commit=a9aa06c58eea77c66417b48669a00d7b32b70c99
+
 pkgname=wine-ge-custom
-_srctag=6.20-GE-1
+_srctag=6.21-GE-1
 pkgver=${_srctag//-/.}
 pkgrel=1
 
@@ -15,8 +18,8 @@ _winever=$pkgver
 _pkgbasever=${pkgver/rc/-rc}
 
 source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
-        wine::git+https://github.com/wine-mirror/wine.git#tag=wine-${_srctag%%-*}
-        wine-staging::git+https://github.com/wine-staging/wine-staging.git#tag=v${_srctag%%-*}
+        wine::git+https://github.com/wine-mirror/wine.git#commit=${_wine_commit}
+        wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=${_stag_commit}
         wine-more_8x5_res.patch
         wine-wmclass.patch
         wine-isolate_home.patch
