@@ -1,0 +1,13 @@
+pkgbase = brother-dcpj562dw-lpr-bin
+	pkgdesc = LPR driver for Brother DCP-J562DW printer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcpj562dw_eu_as
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = http://download.brother.com/welcome/dlf102103/dcpj562dwlpr-1.0.0-0.i386.deb
+	md5sums = 5535ce38aebec454b9ece0e79bd7b4ad
+
+pkgname = brother-dcpj562dw-lpr-bin
