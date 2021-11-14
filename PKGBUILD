@@ -3,8 +3,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io-git
-pkgver=Natron.2.4.0.r0.g47c236e
-_pkgname="${pkgname}-Natron-${pkgver}"
+pkgver=Natron.2.4.1.r1.g7714dd5
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
@@ -28,6 +27,11 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP')
 
+pkgver() {
+  cd ${_pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd ${_pkgname}
   git submodule init
@@ -40,6 +44,11 @@ prepare() {
   git submodule init
   git config submodule.tinydir.url ${srcdir}/tinydir
   git submodule update
+  cd ../..
+
+  # Change OpenColorIO library references to the version of "opencolorio1" package
+  find IOSupport/ -name GenericOCIO.* \
+        -exec sed -i 's/include <OpenColorIO/include <OpenColorIO1/' {} \;
 }
 
 build() {
