@@ -1,6 +1,6 @@
 pkgbase = cling-git
 	pkgdesc = Interactive C++ interpreter built on the top of LLVM and Clang libraries.
-	pkgver = r4585.21249652
+	pkgver = r4767.517d7e4b
 	pkgrel = 1
 	url = https://root.cern.ch/cling
 	arch = i686
@@ -24,4 +24,3 @@ pkgname = cling-git
 pkgname = cling-jupyter-git
 	depends = cling-git
 	depends = jupyter
-

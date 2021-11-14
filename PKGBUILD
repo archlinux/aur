@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=(cling-git cling-jupyter-git)
-pkgver=r4585.21249652
+pkgver=r4767.517d7e4b
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
