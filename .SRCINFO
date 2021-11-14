@@ -1,0 +1,12 @@
+pkgbase = mhwd-nvidia-470xx
+	pkgdesc = mhwd-nvidia-470xx PCI ID database
+	pkgver = 470.86
+	pkgrel = 1
+	url = https://garudalinux.org/
+	arch = any
+	license = GPL2
+	makedepends = nvidia-470xx-dkms
+	source = mhwd-nvidia
+	b2sums = 8141f8b95c403788092c83f067538170734b2a8c6e1f0e5df11677dc15693558f99278680b7d89f8eab0b8cd19b21476b438bcecf303074946d07ad3e43703c8
+
+pkgname = mhwd-nvidia-470xx
