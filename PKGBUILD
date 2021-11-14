@@ -1,7 +1,7 @@
 # Maintainer: Ryan Schroeder <me at rk1024 dot net>
 
 pkgname='empress'
-pkgver='1.4.0'
+pkgver='1.4.1'
 pkgrel=1
 pkgdesc='A D-Bus MPRIS daemon for controlling media players.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'cargo')
 provides=('empress')
 conflicts=('empress')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('671243918c809101725541980d656630a816fcc5fdfd796462738d63ecad6f27')
+sha256sums=('17a66c89341e82ab0d2fd4d5cc9c47cb6df0467238737aab4285e596c3a6bfd0')
 
 prepare() {
   cd "$pkgname-$pkgver"
