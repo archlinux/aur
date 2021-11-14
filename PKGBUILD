@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Personal ZSH configuration"
 url="https://github.com/legendary-cookie/legendary-zsh"
 license=('GPL')
+install=legendary.install
 source=(
     "https://github.com/legendary-cookie/$pkgname/archive/refs/tags/$pkgver.tar.gz"
     "aurmode.patch"
@@ -17,8 +18,17 @@ depends=(
 	zsh git
 )
 
+prepare() {
+	patch $srcdir/$pkgname-$pkgver/install.sh $srcdir/aurmode.patch
+}
+
 package() {
-  cp -r "$srcdir/$pkgname-$pkgver/" "$pkdir/usr/share/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  for f in $(find .)
+  do
+  	cp -r $f "$pkgdir/usr/share/$pkgname/$f"
+  done
 }
 
 #vim: syntax=sh
