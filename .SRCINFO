@@ -1,6 +1,6 @@
 pkgbase = openfx-arena-git
 	pkgdesc = Extra OpenFX plugins for Natron
-	pkgver = Natron.2.4.0.r0.ge9ab79a
+	pkgver = Natron.2.4.1.r0.g2d37552
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-arena
 	arch = x86_64
@@ -34,4 +34,3 @@ pkgbase = openfx-arena-git
 	sha512sums = SKIP
 
 pkgname = openfx-arena-git
-

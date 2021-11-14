@@ -3,7 +3,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena-git
-pkgver=Natron.2.4.0.r0.ge9ab79a
+pkgver=Natron.2.4.1.r0.g2d37552
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
@@ -32,6 +32,11 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP')
 
+pkgver() {
+  cd ${_pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd ${_pkgname}
   git submodule init
@@ -52,6 +57,16 @@ prepare() {
   git submodule init
   git config submodule.tinydir.url ${srcdir}/tinydir
   git submodule update
+  cd ../../../
+
+# Change OpenColorIO library references to the version of "opencolorio1" package
+  find OpenFX-IO/IOSupport/ -name GenericOCIO.* \
+        -exec sed -i 's/include <OpenColorIO/include <OpenColorIO1/' {} \;
+
+# Solve a problem in the linking of the "Extra" plugins,
+# caused by a misconfiguration of pkgconfig in the "libzip" package
+  sed -i '/ZIP_LINKFLAGS/ s|\$.*libs.*|-lbz2 -llzma -lzstd -lgnutls -lnettle -lz|' \
+          Makefile.master
 }
 
 build() {
