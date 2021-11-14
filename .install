@@ -1,0 +1,3 @@
+post_install() {
+	echo "To install and setup legendary-zsh, run /usr/share/legendary-zsh/install.sh"
+}
