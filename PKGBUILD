@@ -3,7 +3,7 @@
 
 _pkgname='natron'
 pkgname="${_pkgname}-bin"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Node-graph video compositor'
 arch=('x86_64')
@@ -14,10 +14,10 @@ depends=('glu' 'hicolor-icon-theme')
 makedepends=('gendesk' 'imagemagick')
 options=('!strip')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}-compositor" "${_pkgname}-compositor-git")
+conflicts=("${_pkgname}")
 noextract=("${_pkgname}-${pkgver}.tar.xz")
-source=("${_pkgname}-${pkgver}.tar.xz::${_url_source}/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-Linux-64-no-installer.tar.xz")
-sha512sums=('416b166caf0d41131116adab3db4f0b5b5a2d5a5c79f5ffdaa6b8f0f54fef7ad79b34a70a0cae24271827340627298f113e3a8897f40d2f9fbef7a5d8e4c6a5b')
+source=("${_pkgname}-${pkgver}.tar.xz::${_url_source}/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-Linux-x86_64-no-installer.tar.xz")
+sha512sums=('409fe45572aafddc319b4b3bc20399c1178aca790004ed6d46e9c7baaf6100438863ac908ba5aabe7c3f38454eff7b3712811dd8ac24414e2491239ad6d79058')
 
 prepare() {
   gendesk -f -n \
