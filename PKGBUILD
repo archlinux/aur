@@ -31,8 +31,8 @@ PGO=auto
 
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=foot-git
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 conflicts=('foot')
 provides=('foot')
 arch=('x86_64' 'aarch64')
