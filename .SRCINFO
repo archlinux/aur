@@ -1,6 +1,6 @@
 pkgbase = easyaur
 	pkgdesc = Easy-to-use wrapper useful for building packages and managing custom repositories
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/legendary-cookie/easyaur
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = easyaur
 	depends = git
 	depends = pacman
 	depends = bash
-	source = https://github.com/legendary-cookie/easyaur/archive/refs/tags/1.2.tar.gz
-	sha256sums = 5e9cbc859baef28f2f9cdc1c65b6c7284cc8800f53de8b7541db136aac6c76b3
+	source = https://github.com/legendary-cookie/easyaur/archive/refs/tags/1.3.tar.gz
+	sha256sums = 7983b9e9c671a3e81f08b1547b8d6a026e08c7de75f3f8f846eb5e661d153b20
 
 pkgname = easyaur
