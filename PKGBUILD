@@ -10,6 +10,8 @@ arch=('x86_64')
 url='https://alpinelinux.org/'
 license=('GPL2')
 install="${pkgname}.install"
+provides=('qemu-arm-static')
+conflicts=('qemu-arm-static')
 source=("https://alpine.global.ssl.fastly.net/alpine/edge/community/x86_64/qemu-aarch64-${_pkgver}.apk"
         "https://alpine.global.ssl.fastly.net/alpine/edge/community/x86_64/qemu-arm-${_pkgver}.apk"
         "https://alpine.global.ssl.fastly.net/alpine/edge/community/x86_64/qemu-armeb-${_pkgver}.apk"
