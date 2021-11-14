@@ -2,14 +2,15 @@
 pkgbase=yearsfx
 pkgname=yearsfx-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Appends years in range to input"
 url="https://github.com/mztikk/yearsfx"
+source=('yearsfx::git+https://github.com/mztikk/yearsfx.git#branch=master')
 license=('MIT')
 
 package() {
     cd $srcdir
-    cargo install --no-track --all-features --root "$pkgdir/usr/" --path ../
+    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }

@@ -1,7 +1,7 @@
 pkgbase = yearsfx
 	pkgdesc = Appends years in range to input
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mztikk/yearsfx
 	arch = i686
 	arch = x86_64
@@ -10,5 +10,6 @@ pkgbase = yearsfx
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	source = yearsfx::git+https://github.com/mztikk/yearsfx.git#branch=master
 
 pkgname = yearsfx-git
