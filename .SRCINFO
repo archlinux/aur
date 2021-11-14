@@ -1,7 +1,7 @@
 pkgbase = ghcup-hs-bin
 	pkgdesc = an installer for the general purpose language Haskell
 	pkgver = 0.1.17.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.haskell.org/haskell/ghcup-hs
 	install = ghcup-hs-bin.install
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = ghcup-hs-bin
 	optdepends = wget
 	optdepends = ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5
 	conflicts = ghcup-git
-	source_x86_64 = ghcup-0.1.17.4-x86_64::https://downloads.haskell.org/~ghcup/0.1.17.4/x86_64-linux-ghcup-0.1.17.4
+	source_x86_64 = ghcup-0.1.17.4-3-x86_64::https://downloads.haskell.org/~ghcup/0.1.17.4/x86_64-linux-ghcup-0.1.17.4
 	sha256sums_x86_64 = a737cdf850d4874659050968b42745229f44b32cb40f7f3ad90b3820bb969582
-	source_aarch64 = ghcup-0.1.17.4-aarch64::https://downloads.haskell.org/~ghcup/0.1.17.4/aarch64-linux-ghcup-0.1.17.4
+	source_aarch64 = ghcup-0.1.17.4-3-aarch64::https://downloads.haskell.org/~ghcup/0.1.17.4/aarch64-linux-ghcup-0.1.17.4
 	sha256sums_aarch64 = 5a3075337e638245d182d9d27030cddbd3cb5e3ab8e3e88cd3ae412d2974c4a2
-	source_armv7h = ghcup-0.1.17.4-armv7h::https://downloads.haskell.org/~ghcup/0.1.17.4/armv7-linux-ghcup-0.1.17.4
+	source_armv7h = ghcup-0.1.17.4-3-armv7h::https://downloads.haskell.org/~ghcup/0.1.17.4/armv7-linux-ghcup-0.1.17.4
 	sha256sums_armv7h = 1ae599a96daf8de717b80a0bf8e7575b533b4baadb5f5720e478146b58e90a2a
-	source_i686 = ghcup-0.1.17.4-i686::https://downloads.haskell.org/~ghcup/0.1.17.4/i386-linux-ghcup-0.1.17.4
+	source_i686 = ghcup-0.1.17.4-3-i686::https://downloads.haskell.org/~ghcup/0.1.17.4/i386-linux-ghcup-0.1.17.4
 	sha256sums_i686 = 889357956397a4f77eb320e39fc1c628c7c51bd7934095bc87792959ecd0e62d
 
 pkgname = ghcup-hs-bin
