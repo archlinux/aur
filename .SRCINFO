@@ -1,6 +1,6 @@
 pkgbase = baracle-git
 	pkgdesc = Let's make a text editor like in the 70's
-	pkgver = r14.f4253c7
+	pkgver = r24.9d1b9a1
 	pkgrel = 1
 	url = https://github.com/Mirko-r/baracle
 	arch = x86_64
