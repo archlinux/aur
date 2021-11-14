@@ -1,6 +1,6 @@
 pkgbase = electerm-deb
 	pkgdesc = Terminal/ssh/sftp client
-	pkgver = 1.17.15
+	pkgver = 1.17.16
 	pkgrel = 1
 	url = https://github.com/electerm/electerm
 	arch = x86_64
