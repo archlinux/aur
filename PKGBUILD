@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=3.1.0.20710.31713138f
+pkgver=3.1.0.20711.857cd86de
 pkgrel=1
 epoch=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
@@ -19,10 +19,11 @@ provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
 source=("git+https://gitlab.gnome.org/World/AbiWord.git"
 	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword' 
-	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword')
+	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword' null.patch)
 sha256sums=('SKIP'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
-            '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be')
+            '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be'
+            'e1527f5300e177549c64311d84ef76d0a63275b83ee7150213b38a63b5065063')
 
 pkgver() {
   cd AbiWord
@@ -40,6 +41,7 @@ prepare() {
   
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
+  git apply "$srcdir"/null.patch 
 }
 
 build() {

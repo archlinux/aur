@@ -1,0 +1,22 @@
+diff --git a/plugins/command/xp/AbiCommand.cpp b/plugins/command/xp/AbiCommand.cpp
+index c22061b87..4c7217582 100644
+--- a/plugins/command/xp/AbiCommand.cpp
++++ b/plugins/command/xp/AbiCommand.cpp
+@@ -204,7 +204,7 @@ AbiCommand::AbiCommand (void) :
+ 	m_sErrorFile ("")
+ {
+ 	m_pApp = XAP_App::getApp ();
+-	m_pApp->getGraphicsFactory()->registerAsDefault(GRID_CAIRO_nullptr,true);
++	m_pApp->getGraphicsFactory()->registerAsDefault(GRID_CAIRO_NULL,true);
+     m_pApp->setNoGUI(true); 
+ 
+ }
+@@ -224,7 +224,7 @@ AbiCommand::AbiCommand (bool bAbiCollab) :
+ 	m_sErrorFile ("")
+ {
+ 	m_pApp = XAP_App::getApp ();
+-	m_pApp->getGraphicsFactory()->registerAsDefault(GRID_CAIRO_nullptr,true);
++	m_pApp->getGraphicsFactory()->registerAsDefault(GRID_CAIRO_NULL,true);
+     m_pApp->setDisableDoubleBuffering(true); 
+ }
+ 
