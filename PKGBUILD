@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-bin
-pkgver=1.0.0+745
+pkgver=1.0.0+746
 pkgrel=1
 pkgdesc="A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart"
 license=('GPL')
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=("$pkgname-$pkgver=1.0.0+745
+source=("$pkgname-$pkgver=1.0.0+746
 md5sums=('SKIP')
 package(){
   mkdir -p $pkgdir/opt/RPMLauncher
