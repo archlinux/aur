@@ -2,7 +2,7 @@
 
 _pkgname='keira3'
 pkgname="${_pkgname}"
-pkgver=3.2.0
+pkgver=3.3.0
 _pkgver="${pkgver}"
 gitname="v${_pkgver}"
 pkgrel=1
@@ -14,7 +14,7 @@ provides=(${_pkgname})
 source=(
     https://github.com/azerothcore/Keira3/releases/download/${gitname}/Keira-${_pkgver}.LINUX.deb.zip
 )
-sha512sums=('1fcfe5363f8dc1792c8e3215aff2cabaed7b8d16d1243b3f0222d6242f96966aa7d9bb6f7da90d20358cbf8e7d099e0867ab51f854ada63f7762283920ff548e')
+sha512sums=('744b72571388281b69750deacda8d8a8807205e1d593a79d605f7338503671ca1ca5f8f07d2570debecd3768dd9afe4f987701084fa54bfa346ed96ce76e3f59')
 package() {
 	ar xv Keira-${_pkgver}.LINUX.deb
 	tar xf data.tar.xz -C "${pkgdir}"
