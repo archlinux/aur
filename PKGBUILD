@@ -1,8 +1,8 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
+# Maintainer: LSUtigers3131 
 
 pkgname=libpamac-full
 _pkgname=libpamac
-pkgver=11.1.0
+pkgver=11.2.0
 pkgrel=1
 epoch=1
 pkgdesc="Library for Pamac package manager based on libalpm - flatpak and snap support enabled"
@@ -14,7 +14,7 @@ makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 
 options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac' 'libpamac-full-dev')
 source=(https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('545818a2935efcdbccc1545551918eb847219efc6388d2eff03dac8d5489f2e1')
+sha256sums=('8f05c025934756f77a1a8f00e3ae5abb710fda078876f8e44e0b300fd49d1347')
 
 build() {
   cd $_pkgname-$pkgver
