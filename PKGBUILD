@@ -2,7 +2,7 @@
 
 pkgname=ddosify
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance load testing tool"
 arch=('any')
 url="https://github.com/ddosify/ddosify"
