@@ -3,16 +3,22 @@
 # Contributor: Pablo Olmos de Aguilera C. pablo+aur at odac dot co
 # Contributor: Kim Silkebækken <kim.silkebaekken+aur@gmail.com>
 
-pkgbase=python-powerline-git
-pkgname=('python2-powerline-git' 'python-powerline-git')
+pkgname=python-powerline-git
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.8.1+17+gf401ee31
-pkgrel=2
+pkgver=2.8.2+4+g82c1373b
+pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('git' 'python2-setuptools' 'python-setuptools' 'python-sphinx')
+depends=('python>=3.2')
+conflicts=('powerline2' 'powerline' 'python2-powerline-git' 'otf-powerline-symbols-git')
+makedepends=('git' 'python-setuptools' 'python-sphinx')
+optdepends=('python-psutil: improved system information'
+			'python-pygit2: improved git support'
+			'python-hglib: improved mercurial support'
+			'zsh: better shell prompt'
+			'vim: vim compiled with Python support')
 install='powerline.install'
 source=('powerline::git+https://github.com/powerline/powerline.git#branch=develop')
 sha256sums=('SKIP')
@@ -30,12 +36,15 @@ build() {
 	make man SPHINXBUILD=sphinx-build
 }
 
-package_generic() {
+package_python-powerline-git() {
+	cd powerline
+	python setup.py install --root="$pkgdir" --optimize=1
+
 	# Fonts
 	install -dm755 "$pkgdir/etc/fonts/conf.d"
 	install -Dm644 "font/PowerlineSymbols.otf" "$pkgdir/usr/share/fonts/OTF/PowerlineSymbols.otf"
-	install -Dm644 "font/10-powerline-symbols.conf" "$pkgdir/etc/fonts/conf.avail/10-powerline-symbols.conf"
-	ln -s "../conf.avail/10-powerline-symbols.conf" "$pkgdir/etc/fonts/conf.d/10-powerline-symbols.conf"
+	install -Dm644 "font/10-powerline-symbols.conf" "$pkgdir/usr/share/fontconfig/conf.default/10-powerline-symbols.conf"
+	ln -s "/usr/share/fontconfig/conf.default/10-powerline-symbols.conf" "$pkgdir/etc/fonts/conf.d/10-powerline-symbols.conf"
 
 	# Vim Plugin
 	install -Dm644 "powerline/bindings/vim/plugin/powerline.vim" "$pkgdir/usr/share/vim/vimfiles/plugin/powerline.vim"
@@ -67,40 +76,6 @@ package_generic() {
 	# Manpages
 	install -dm755 "$pkgdir/usr/share/man/man1/"
 	install -Dm644 "docs/_build/man/"* "$pkgdir/usr/share/man/man1/"
-}
-
-package_python2-powerline-git() {
-	depends=('python2>=2.6')
-	optdepends=('python2-psutil: improved system information'
-	            'python2-pygit2: improved git support'
-	            'python2-hglib: improved mercurial support'
-	            'zsh: better shell prompt'
-	            'vim: vim compiled with Python support')
-	conflicts=('powerline2' 'powerline'
-	           'python-powerline-git'
-	           'otf-powerline-symbols-git')
-
-	cd powerline
-	python2 setup.py install --root="$pkgdir" --optimize=1
-
-	package_generic
-}
-
-package_python-powerline-git() {
-	depends=('python>=3.2')
-	optdepends=('python-psutil: improved system information'
-	            'python-pygit2: improved git support'
-	            'python-hglib: improved mercurial support'
-	            'zsh: better shell prompt'
-	            'vim: vim compiled with Python support')
-	conflicts=('powerline2' 'powerline'
-	           'python2-powerline-git'
-	           'otf-powerline-symbols-git')
-
-	cd powerline
-	python setup.py install --root="$pkgdir" --optimize=1
-
-	package_generic
 }
 
 # vim: sw=4 noet
