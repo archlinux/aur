@@ -7,9 +7,10 @@
 
 _pkgname=instantclient-basic
 pkgname=oracle-${_pkgname}
-pkgver=21.3.0.0.0
-_urlver=213000
-_unzippath=instantclient_21_3
+pkgver=21.4.0.0.0
+_pkgver_vendor_suffix=dbru
+_urlver=214000
+_unzippath=instantclient_21_4
 pkgrel=1
 pkgdesc="Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)"
 arch=('x86_64')
@@ -19,36 +20,16 @@ depends=('gcc-libs' 'libaio')
 replaces=('instantclient-basic' 'instantclient-basiclite')
 options=(!strip)
 
-# Fail if retrieval is attempted of any of the manual:// URLs
-DLAGENTS+=('manual::/usr/bin/false');
-
 # These are the only files we want to include in the source package
 source=(LICENSE
         oracle.sh
-        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
+        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}${_pkgver_vendor_suffix}.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
          '784005aa31cb56bb2303179d98fccd8e'
-         '2d112ee5020f7b88f50dd7b0d14afcda')
+         'df282bc0dd10065205d1871ed465ad70')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
             '36b5ab97950f1667403dd9b59c3cad25d8f9e457702feaece835d1bff7c971c9'
-            '8576e75d0088ecc01e4bacd48507ca8bb445f441a2cc4eb326e92d3294d6efa5')
-
-plain "If you run into any problems downloading the files, get the .zip version from"
-plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
-plain ""
-plain "  https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html"
-plain ""
-plain "Alternatively, unofficial prebuilt Arch packages are available by adding the"
-plain "following lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
-plain ""
-plain "  [oracle]"
-plain "  SigLevel = Optional TrustAll"
-plain '  Server = http://linux.shikadi.net/arch/$repo/$arch/'
-plain ""
-plain "Then run 'pacman -Sys oracle' to see available packages."
-plain ""
-plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016.html"
-plain ""
+            '58714313680f67334ca36a684a4f4a7344842ffe224192f5781b9f07f0750009')
 
 package() {
 	cd "$srcdir/${_unzippath}/"
