@@ -1,11 +1,11 @@
-# Maintainer: Parham <parham at tuta dot io>
-
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Parham <parham at tuta dot io>
 pkgname=icu4j
-pkgver=68.2
+pkgver=70.1
 pkgrel=1
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
-url="http://site.icu-project.org/"
+url="https://icu.unicode.org"
 license=('custom:icu')
 depends=('java-environment>=7')
 _ghurl="https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}"
@@ -23,19 +23,19 @@ noextract=("${pkgname}-${pkgver//./_}.jar"
            "${pkgname}-charset-${pkgver//./_}-src.jar"
            "${pkgname}-localespi-${pkgver//./_}.jar"
            "${pkgname}-localespi-${pkgver//./_}-src.jar")
-sha256sums=('9bd7bf869a44ba8aeb0cddd7e6616e88cd4795ba5bfce2230447cb0e185a646c'
-            '994b357616ddaf5ab9aa493caf1d213401071eb6d865bc2ad49e943c544d6884'
-            'b02680befb4cabca9ab3637025496362f312da8a215097f749d7e432ea0889b4'
-            'de161cbface844b66e0577e794332af2fbca65a7cb1e4c286da145598decdc51'
-            'ea5e9c413ba8ed36583d661f9a6a66819952eccdb1898ef122aefe9d837fbc4c'
-            '07d1b869732c44d564048bddebb4a632b87aa3ed999c328971bef915982f3f6d'
-            'fdc6668d5ee97a45903e65d5d87c799dc2864b40ad1b3242f485f27f230776ec'
-            'SKIP')
+sha256sums=('2b4d8d4e098e86aa5f905ec81c46751d218b16afd3f7fc02b64f80dd20fffa20'
+            '72afed415f6ffb5fa2e0eeec884d5b81afd83a135044d71408b0debe2e60e621'
+            '4b8d6b2926db8a8a5a8756ef9dd866589fef316d536a4d602643c01d625b294b'
+            'a2d52b2f42eb74c539a07d6dbeb9a41c80c0fb96def700d668517f905c56a0b4'
+            '5e5352f5615b0f876956ed9e43639a15ddec3fcc709c6a2a799ed2790e07f3d3'
+            '36d7e221d84855fe45de059a12efdcde42e03aafbd726302406b021814faaf4f'
+            '683770060b534b69d2300b4f0c667ffe5c45b3603a8d9412bf4a8cd8cf2f5de2'
+            '18bf5eda90eb349f4be819607ced843ad39b76c22df0ba4c2ca0b2faf5ab47a2')
 
 package() {
-    install -d ${pkgdir}/usr/share/{doc,java,licenses}/${pkgname}
-    cp ./icu4j*.jar "${pkgdir}/usr/share/java/${pkgname}/"
-    cp -a ./{com,*.{html,css,js}} "${pkgdir}/usr/share/doc/${pkgname}/"
-    cp "./${pkgname}-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -d ${pkgdir}/usr/share/{doc,java,licenses}/${pkgname}
+	cp ./icu4j*.jar "${pkgdir}/usr/share/java/${pkgname}/"
+	cp -a ./{com,*.{html,css,js}} "${pkgdir}/usr/share/doc/${pkgname}/"
+	cp "./${pkgname}-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-# vim:set ts=4 sw=4 et:
+# vim:set ts=4 sw=4:
