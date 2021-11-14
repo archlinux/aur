@@ -2,7 +2,7 @@
 pkgname=popuradns
 _pkgname='PopuraDNS'
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple DNS server with decentralized domain names support"
 makedepends=('go')
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/popura-network/PopuraDN
         coredns.service
         coredns-sysusers.conf
 )
+backup=('etc/coredns/Corefile')
 
 sha256sums=('52aa97b35b88bffebf42052139d90d2bad6615b646c01f99e41a09e10cfc021d'
             'bbacde21632be9d7a9a758103775c768f9688372539b1b342ccf5c5db6746b4f'
@@ -23,7 +24,7 @@ build() {
   export GOPATH="$srcdir/build"
   export PATH=$GOPATH/bin:$PATH
   cd $srcdir/${_pkgname}-${pkgver}
-  ./build.sh
+  GOFLAGS='-mod=vendor' ./build.sh
 }
 
 package() {
@@ -32,4 +33,5 @@ package() {
   install -Dm644 "$srcdir/coredns-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/coredns.conf"
   install -d "${pkgdir}/etc/coredns"
   install -Dm644 "$srcdir/${_pkgname}-${pkgver}/Corefile" "${pkgdir}/etc/coredns/Corefile"
+  install -Dm644 "$srcdir/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
