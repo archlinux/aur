@@ -1,4 +1,5 @@
-# Maintainer: Jack Random <jack (at) random.to>
+# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Contributor: Jack Random <jack (at) random.to>
 
 # Original contributors (renoise-demo):
 # Samæ <eeva.samæ@marvid.fr>
@@ -8,11 +9,11 @@
 # hm_b <holger@music-nerds.net>
 
 pkgname="renoise3-demo"
-pkgver="3.3.1"
+pkgver="3.3.2"
 pkgrel="1"
 pkgdesc="A music composition program"
 arch=("x86_64")
-url="http://www.renoise.com"
+url="https://www.renoise.com"
 license=("custom:renoise")
 depends=("alsa-lib" "libx11" "gcc-libs")
 optdepends=("jack: For JACK audio support")
@@ -20,7 +21,7 @@ options=("!strip")
 conflicts=("renoise")
 
 source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux.tar.gz")
-sha256sums=("00869a6832c47733b47f5a631e2d31562fb5852dd0f4263e3aa2b7a2278b6a15")
+sha512sums=("87d1af9abbb593299120f894c3db746daedccb466e1ce6673e4eab84695ddaea3d9881e0e453aafff781e15284b350a383af393f55ee773e0af277f3b2cee19d")
 
 package() {
     cd "$srcdir/Renoise_${pkgver//./_}_Demo_Linux"
