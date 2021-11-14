@@ -1,4 +1,4 @@
-pkgbase = libtinyiio-git
+pkgbase = libtinyiiod-git
 	pkgdesc = Tiny IIO Daemon Library
 	pkgver = r87.f8e81c6
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = libtinyiio-git
 	source = git+https://github.com/analogdevicesinc/libtinyiiod.git
 	md5sums = SKIP
 
-pkgname = libtinyiio-git
+pkgname = libtinyiiod-git

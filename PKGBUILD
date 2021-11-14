@@ -1,6 +1,6 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
-pkgname=libtinyiio-git
+pkgname=libtinyiiod-git
 pkgver=r87.f8e81c6
 pkgrel=1
 epoch=0
