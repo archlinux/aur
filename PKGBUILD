@@ -1,5 +1,5 @@
 pkgname=googleplay
-pkgver=1.3.0
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Download APK from Google Play or send API requests"
 url="https://github.com/89z/googleplay"
@@ -8,8 +8,8 @@ license=('OSL')
 depends=()
 makedepends=("go")
 #optdepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/89z/googleplay/archive/refs/tags/v1.3.0.tar.gz")
-md5sums=('139196fec73b6e0916a387a0b0469a60')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/89z/googleplay/archive/refs/tags/v$pkgver.tar.gz")
+md5sums=('de6741772c90089dbbefc4ec5862428f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
