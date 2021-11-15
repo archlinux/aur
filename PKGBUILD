@@ -4,10 +4,10 @@
 
 pkgname=perl-digest-crc
 _realname=Digest-CRC
-pkgver=0.22
-pkgrel=2
+pkgver=0.23
+pkgrel=1
 # Fix archive name
-_revision=.2
+_revision=
 pkgdesc="Generic interface to CRC algorithms"
 arch=('i686' 'x86_64')
 license=('custom:Public Domain')
@@ -49,3 +49,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha512sums=('b92e40bf717882b0e694c6552a88f13ac92a569e4484eedfdfc57b7fe867e29a81e228d00c29e9e4ba120cb9e0ca4d10db12cad5af185893ebcd89b1be87d2c1'
+            '9931cc165ead33233e5ca71b7cf388c882dfeb5b0f21fd891113139579106574860141a23303970b17fc3da2d7390e6b2b2ff438acf599db4a0b7ff05d85822f')
