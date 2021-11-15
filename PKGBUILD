@@ -10,7 +10,7 @@ url="https://metacpan.org/release/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
-source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
+source=(https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
 md5sums=('d3aa9eebbbb2c751d5b3441616d8eb56')
 
 build() {
