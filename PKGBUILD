@@ -1,4 +1,4 @@
-# Maintainer: Unknown Packager
+# Maintainer: Tully Foote <tfoote@osrfoundation.org>
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
