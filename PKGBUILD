@@ -3,11 +3,11 @@
 # Contributor: ValHue <vhuelamo@gmail.com>
 #
 pkgname="wp-desktop"
-pkgver="6.15.0"
+pkgver="7.2.0"
 pkgrel="1"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
-_url="https://github.com/Automattic/wp-calypso"
+_url="https://github.com/Automattic/wp-desktop"
 arch=('x86_64')
 license=('GPL2')
 depends=('alsa-lib' 'gcc-libs' 'gtk3' 'libgpg-error' 'libsecret' 'libxss' 'libxkbfile' 'libxtst' 'nss')
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'gcc-libs' 'gtk3' 'libgpg-error' 'libsecret' 'libxss' 'libxk
 _pkgsource="wordpress.com-linux-x64-${pkgver}.tar.gz"
 source=("${_pkgsource}::${_url}/releases/download/v${pkgver}/${_pkgsource}")
 
-sha256sums=('8404ff2c860bb2ad90b43ebd507dd03249bee8303c9cd4599c0c77154935c2f6')
+sha256sums=('5852cfb6a5144c10497c76667b9500a86875bcee5b9a28f75cd5cec4718d621c')
 
 _wpcom_desktop="[Desktop Entry]
 Version=1.0
@@ -43,7 +43,7 @@ package() {
     install -D -m644 *.desktop "${pkgdir}/usr/share/applications/wpcom.desktop"
 
     cd "${pkgdir}/opt/WordPress.com/"
-    install -D -m644 ./resources/app/public_desktop/app-logo.png "${pkgdir}/usr/share/pixmaps/wpcom.png"
+    install -D -m644 ./resources/app/dist/public_desktop/app-logo.png "${pkgdir}/usr/share/pixmaps/wpcom.png"
     install -D -m644 LICENSE.electron.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
