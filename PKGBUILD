@@ -6,8 +6,9 @@
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
-pkgver=6.3.20210616
-_pkgver='6.3-20210616'
+epoch=1
+pkgver=6.3.8.rc4
+_pkgver='6.3-8-rc4'
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
@@ -56,7 +57,7 @@ makedepends=('autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'samba'		    'opencl-headers'
-    'vulkan-headers'
+    'vulkan-headers' 'autoconf'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
@@ -83,7 +84,7 @@ optdepends=(
 )
 options=('staticlibs')
 install="$pkgname.install"
-source=("https://github.com/ValveSoftware/wine/archive/experimental-wine-${_pkgver}.tar.gz"
+source=("https://github.com/ValveSoftware/wine/archive/proton-wine-${_pkgver}.tar.gz"
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 
@@ -104,7 +105,7 @@ fi
 
 
 prepare() {
-    cd "wine-experimental-wine-${_pkgver}/"
+    cd "wine-proton-wine-${_pkgver}/"
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
@@ -123,21 +124,26 @@ build() {
     
     # build wine 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
+    cd "wine-proton-wine-${_pkgver}"
+    autoreconf -f
+    ./tools/make_requests
+    cd ..
+
     if [ "$CARCH" = 'x86_64' ] 
     then
         msg2 'Building Wine-64...'
-
+        
         mkdir "$pkgname"-64-build
         cd    "$pkgname"-64-build
         
-         ../"wine-experimental-wine-${_pkgver}"/configure \
+         ../"wine-proton-wine-${_pkgver}"/configure \
                           --prefix='/usr' \
                           --libdir='/usr/lib' \
                           --with-x \
                           --with-gstreamer \
                           --enable-win64 \
 			  --disable-tests
-        make -j2
+        make
         
         local _wine32opts=(
                     '--libdir=/usr/lib32'
@@ -152,13 +158,13 @@ build() {
     
     cd "${srcdir}/${pkgname}"-32-build
     
-     ../"wine-experimental-wine-${_pkgver}"/configure \
+     ../"wine-proton-wine-${_pkgver}"/configure \
                       --prefix='/usr' \
                       --with-x \
                       --with-gstreamer \
 		      --disable-tests \
                       ${_wine32opts[@]}
-    make -j2
+    make
 }
 
 package() {
@@ -197,11 +203,11 @@ package() {
     install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 
     #wine list.h
-    for file in ${srcdir}/wine-experimental-wine-${_pkgver}/include/wine/*.h; do
+    for file in ${srcdir}/wine-proton-wine-${_pkgver}/include/wine/*.h; do
         cp -n $file "${pkgdir}/usr/include/wine/"
     done
 }
 
-sha256sums=('05b2eddaeb09465f0df0c977979543a28c562fbd6a39e7ccb5354a4d074309e1'
+sha256sums=('396d1052ec9cd089d7dd18a6f938aa2d1eabac4df9ef4176becc8fdb3ae14b98'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
