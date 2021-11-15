@@ -1,9 +1,9 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 
 pkgname=zram-s6
-pkgdesc="Activate zram using openrc"
+pkgdesc="Activate zram using skarnet's s6"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 groups=('s6-galaxy')
 provides=('init-zram')

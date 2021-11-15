@@ -1,7 +1,7 @@
 pkgbase = zram-s6
-	pkgdesc = Activate zram using openrc
+	pkgdesc = Activate zram using skarnet's s6
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/zram-s6
 	arch = any
 	groups = s6-galaxy
