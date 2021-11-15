@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://opencolorio.org"
 license=('BSD')
 depends=('lcms2' 'tinyxml' 'yaml-cpp')
-makedepends=('boost' 'cmake')
+makedepends=('boost' 'cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v$pkgver.tar.gz"
         8d48ee8da42de2d878db7b42586db8b3c67f83e1.patch
         make-coinstallable.patch)
