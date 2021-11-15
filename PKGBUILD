@@ -10,7 +10,7 @@ url='https://github.com/six-ddc/hss'
 license=('GPL')
 depends=(readline)
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    "${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
     # https://github.com/six-ddc/hss/pull/13
     "cppflags.patch::https://github.com/six-ddc/hss/commit/70b8e897a750856e1aa2d747f29fb94d085dfe26.patch"
 )
