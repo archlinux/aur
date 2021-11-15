@@ -4,7 +4,7 @@ _gemname='capybara'
 pkgname="ruby-${_gemname}"
 pkgver=3.35.3
 pkgrel=1
-pkgdesc="An integration testing tool for rack based web applications. It simulates how a user would interact with a website."
+pkgdesc="An integration testing tool for rack based web applications. It simulates how a user would interact with a website"
 arch=('any')
 url='https://github.com/teamcapybara/capybara'
 license=('MIT')
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby')
 depends=('ruby-addressable' 'ruby-mini_mime' 'ruby-nokogiri' 'ruby-rack' 'ruby-rack-test' 'ruby-regexp_parser' 'ruby-xpath')
 makedepends=('ruby-rake' 'ruby-rspec')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('7777f3a45b59b16be79ffa32e46d8bb39c7e63f52c878e09df392573e53a6476f1423c02f258a43158cc0ea8eaf3b0f4ddbd1f60abcdc29cc8f88e172edab427')
 
 prepare() {
