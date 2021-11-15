@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=scopy-git
-pkgver=v0.11.r1292.g3460cd84
+pkgver=v1.3.0.rc2.r59.g3460cd84
 pkgrel=1
 epoch=0
 pkgdesc='A software oscilloscope and signal analysis toolset'
@@ -34,7 +34,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd scopy
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
