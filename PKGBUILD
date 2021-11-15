@@ -10,7 +10,7 @@ url='https://github.com/rtomayko/rack-cache'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-rack')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('f850facb28f302db819b6d67fd86e0dd18ae8f5d132044582bbcd6792b287c7d4a29219a47e708b5047fb373b5857632597d9743b4ba530b1258d29924ca4cf9')
 
 prepare() {

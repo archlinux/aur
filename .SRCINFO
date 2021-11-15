@@ -8,8 +8,7 @@ pkgbase = ruby-rack-cache
 	depends = ruby
 	depends = ruby-rack
 	options = !emptydirs
-	source = ruby-rack-cache-1.12.1.tar.gz::https://github.com/rtomayko/rack-cache/archive/v1.12.1.tar.gz
+	source = https://github.com/rtomayko/rack-cache/archive/v1.12.1/ruby-rack-cache-1.12.1.tar.gz
 	sha512sums = f850facb28f302db819b6d67fd86e0dd18ae8f5d132044582bbcd6792b287c7d4a29219a47e708b5047fb373b5857632597d9743b4ba530b1258d29924ca4cf9
 
 pkgname = ruby-rack-cache
-
