@@ -2,10 +2,10 @@
 
 pkgname=dameplus
 pkgver=1.0.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="A checkers game"
 arch=(any)
-url="https://github.com/hastinbe/i3-volume"
+url="https://sourceforge.net/projects/dameplus/"
 license=('GPL')
 depends=(java-runtime)
 source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}/${pkgname}-${pkgver}_linux.tar.gz/download")
@@ -15,7 +15,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i '/^ARCH.*/s#.*#ARCH=amd64\n\ncd /usr/share/java/dameplus#' start.sh
   cd "${srcdir}"
-  gendesk -f -n --pkgname dameplus --pkgdesc "${pkgdesc}" --exec "dameplus" --categories "Games"
+  gendesk -f -n --pkgname dameplus --pkgdesc "${pkgdesc}" --exec "dameplus" --categories "Game;BoardGame"
   unzip -o "${srcdir}/${pkgname}-${pkgver}/dameplus.jar" textures/logo.png
 }
 
