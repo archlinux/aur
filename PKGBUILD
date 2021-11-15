@@ -1,17 +1,15 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=backdrop-randomizer
-pkgver=2.35
+pkgver=2.36
 pkgrel=1
 pkgdesc="Randomly cycles through wallpapers without repeating them until all have been displayed once"
 arch=(any)
 url='https://github.com/graysky2/backdrop-randomizer'
 license=(MIT)
-depends=(xfdesktop)
-optdepends=('systemd: or optional scheduling of timed backdrop change'
-'cron: for optional scheduling of timed backdrop change')
+depends=(xfdesktop xorg-xset)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('a09f2931b22fd2256f6113b151c8aca900436731ea8c99762e9792ff9d9fca8862450ba51af50b2356b1f5ddba2e139a12ebe8e8b45e5190745bce2f78d8d6d4')
+b2sums=('298b768e6498bfecf6c0ee0101ab4285684facc1996842caab021470361d27a20f66f808e0fd4371e4549e1da4d74ca5b6a170064bc6c80c85614422fda6c747')
 
 build() {
 	cd "$pkgname-$pkgver"

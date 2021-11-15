@@ -1,15 +1,13 @@
 pkgbase = backdrop-randomizer
 	pkgdesc = Randomly cycles through wallpapers without repeating them until all have been displayed once
-	pkgver = 2.35
+	pkgver = 2.36
 	pkgrel = 1
 	url = https://github.com/graysky2/backdrop-randomizer
 	arch = any
 	license = MIT
 	depends = xfdesktop
-	optdepends = systemd: or optional scheduling of timed backdrop change
-	optdepends = cron: for optional scheduling of timed backdrop change
-	source = backdrop-randomizer-2.35.tar.gz::https://github.com/graysky2/backdrop-randomizer/archive/v2.35.tar.gz
-	b2sums = a09f2931b22fd2256f6113b151c8aca900436731ea8c99762e9792ff9d9fca8862450ba51af50b2356b1f5ddba2e139a12ebe8e8b45e5190745bce2f78d8d6d4
+	depends = xorg-xset
+	source = backdrop-randomizer-2.36.tar.gz::https://github.com/graysky2/backdrop-randomizer/archive/v2.36.tar.gz
+	b2sums = 298b768e6498bfecf6c0ee0101ab4285684facc1996842caab021470361d27a20f66f808e0fd4371e4549e1da4d74ca5b6a170064bc6c80c85614422fda6c747
 
 pkgname = backdrop-randomizer
-
