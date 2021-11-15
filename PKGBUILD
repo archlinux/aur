@@ -2,7 +2,7 @@
 pkgname=popuradns
 _pkgname='PopuraDNS'
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple DNS server with decentralized domain names support"
 makedepends=('go')
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ sha256sums=('52aa97b35b88bffebf42052139d90d2bad6615b646c01f99e41a09e10cfc021d'
 
 build() {
   export GOPATH="$srcdir/build"
-  export PATH=$GOPATH/bin:$PATH
-  cd $srcdir/${_pkgname}-${pkgver}
+  export PATH="$GOPATH/bin:$PATH"
+  cd "$srcdir/${_pkgname}-${pkgver}" || exit 1
   GOFLAGS='-modcacherw' ./build.sh
 }
 
