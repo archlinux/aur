@@ -3,7 +3,7 @@
 pkgname=tunneler2-git
 _pkgname=tunneler2
 pkgver=r46.040474e
-pkgrel=1
+pkgrel=2
 pkgdesc="Online-multiplayer game inspired by a DOS classic"
 url="https://github.com/thinkrad/tunneler"
 depends=(python2-pygame)
@@ -22,8 +22,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   rm -r doc/.svn data/.svn
-  gendesk -f -n --pkgname "${_pkgname}_Server" --pkgdesc "${pkgdesc}" --exec "python2 /usr/share/tunneler2/Server.py" --categories "Games"
-  gendesk -f -n --pkgname "${_pkgname}_Client" --pkgdesc "${pkgdesc}" --exec "python2 /usr/share/tunneler2/Client.py" --categories "Games"
+  gendesk -f -n --pkgname "${_pkgname}_Server" --pkgdesc "${pkgdesc}" --exec "python2 /usr/share/tunneler2/Server.py" --categories "Game;ActionGame"
+  gendesk -f -n --pkgname "${_pkgname}_Client" --pkgdesc "${pkgdesc}" --exec "python2 /usr/share/tunneler2/Client.py" --categories "Game;ActionGame"
 }
 
 
