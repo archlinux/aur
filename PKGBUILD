@@ -6,16 +6,16 @@
 # The difference between this PKGBUILD and the one from `emacs-git` is that:
 # - this one builds emacs from flatwhatson's `pgtk-nativecomp` branch, which
 #   contains an up-to-date merge of masm11 and fejfighter's pgtk work with
-#   the feature/native-comp branch from the official emacs repo
-# - the pure-GTK3 rendering backend is enabled
-# - the xwidgets webkit2gtk support is enabled
-# - the native Elisp compiler is enabled
-# - built-in packages are native compiled by default.
+#   the feature/native-comp branch from the official emacs repo.
+# - the pure-GTK3 rendering backend is enabled.
+# - the xwidgets webkit2gtk support is enabled.
 # - link-time optimization is enabled by default.
-# Pre-compiling all built-in elisp modules takes *hours* on fast systems. You
-# can set FAST_BOOT="YES" to pre-compile the bare minimum, then you'll need to
-# manage native-compilation later (eg. with comp-deferred-compilation).
+# - enalbe JIT and AOT compilation of emacs-lisp, which
+#   means built-in packages and your own packages are 
+#   native compiled by default.
 ################################################################################
+
+
 
 ################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
@@ -30,7 +30,7 @@
 ################################################################################
 
 ################################################################################
-# Assign "YES" to the variable you want enabled; empty or other value
+# Assign "YES" to the variable you want enabled; empty or any other value
 # for NO.
 #
 # Where you read experimental, replace with foobar.
@@ -38,12 +38,29 @@
 #
 ################################################################################
 CHECK=            # Run tests. May fail, this is developement after all.
+
 CLANG=            # Use clang.
-LTO="YES"         # Enable link-time optimization. Not that experimental anymore.
-                  # Seems fixed in GCC, so I've reenabled binutils support, please
-		              # report any bug, to make it use clang by default again.
+
+GOLD=             # Use the gold linker.
+
+LTO="YES"         # Enable link-time optimization. Read emacs's INSTALL before
+                  # attempting to use it with clang.
+
+JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
+                  # This compiles only performance critical elisp files.
+                  #
+                  # To compile all elisp on demand, add
+                  #    (setq comp-deferred-compilation t)
+                  # to your .emacs file.
+
+AOT="YES"         # Precompile all included elisp. It takes a long time.
+                  # You still need to enable on-demand compilation
+                  # for your own packages.
+
 CLI=              # CLI only binary.
+
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
+               
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
                   # Read https://wiki.archlinux.org/index.php/X_resources
@@ -52,61 +69,62 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # for some tips on using outline fonts with
                   # Xft, if you choose no toolkit or Lucid.
                   #
+               
 GTK2=             # GTK2 support. Why would you?
-M17N=             # Enable m17n international table input support.
-                  # You are far better off using harfbuzz+freetype2
-                  # But this gives independence if you need it.
-                  # In fact, right now harfbuzz is hardwired, I have to
-                  # be convinced it should be refactored.
-CAIRO="YES"       # GOOD NEWS! No longer experimental and fully supported.
-                  # This is now, along with harfbuzz, the prefered font
-                  # and text shaping engine.
-                  # If using GTK+, you'll get printing for free.
-XWIDGETS="YES"         # Use GTK+ widgets pulled from webkit2gtk. Usable.
+               
+NOCAIRO=          # Disable here. 
+               
+XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
+               
 DOCS_HTML=        # Generate and install html documentation.
+               
 DOCS_PDF=         # Generate and install pdf documentation.
+               
 MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
-                  # ImageMagick, like flash, is a bug ridden pest that 
-		              # won't die;  yet it is useful if you know what you 
-		              # are doing.
-                  # -->>If you just *believe* you need it, you don't.<<--
+                  # ImageMagick, like flash, won't die... 
+                  # -->>If you just *believe* you need ImageMagick, you don't.<<--
+               
 NOGZ="YES"        # Don't compress .el files.
-FAST_BOOT=        # Only native-compile the bare minimum. Intended for use with
-                  # deferred compilation to native-compile on-demand at runtime.
-PROFILING=        # Enable gprof profiling support.
 ################################################################################
 
 ################################################################################
-pkgname="emacs-native-comp-git-enhanced"
-pkgver=28.0.50.148556
-pkgrel=2
+if [[ $CLI == "YES" ]] ; then
+  pkgname="emacs-native-comp-git-enhanced-nox"
+else
+  pkgname="emacs-native-comp-git-enhanced"
+fi
+pkgver=28.0.60.151288
+pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
-arch=('x86_64' )
+arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
-license=('GPL3' )
-depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' 'libgccjit')
+license=('GPL3')
+depends_nox=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'gpm')
+depends=("${depends_nox[@]}" 'm17n-lib' 'libotf' 'harfbuzz')
 makedepends=('git')
-provides=('emacs' 'emacs-seq')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
-replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
-## use emacs's savannah repo if you have network issues
+provides=('emasc-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+conflicts=('emacs-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+replaces=('emacs-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+# Use flatwhatson's branch
+# Use emacs's savannah repo (pgtk branch) if you have network issues
 source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
-## source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
-md5sums=('SKIP')
+#source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
+options=(!strip)
+install=emacs-git.install
+b2sums=('SKIP')
 ################################################################################
 
 ################################################################################
 
-CFLAGS+=" -g"
-CXXFLAGS+=" -g"
-
-if [[ $LTO == "YES" ]]; then
-  CFLAGS+=" -flto"
-  CXXFLAGS+=" -flto"
-  if [[ $CLANG != "YES" ]]; then
-    CFLAGS+=" -fuse-linker-plugin"
-    CXXFLAGS+=" -fuse-linker-plugin"
-  fi
+if [[ $GOLD == "YES" && ! $CLANG == "YES" ]]; then
+  export LD=/usr/bin/ld.gold
+  export CFLAGS+=" -fuse-ld=gold";
+  export CXXFLAGS+=" -fuse-ld=gold";
+elif [[ $GOLD == "YES" && $CLANG == "YES" ]]; then
+  echo "";
+  echo "Clang rather uses its own linker.";
+  echo "";
+  exit 1;
 fi
 
 if [[ $CLANG == "YES" ]]; then
@@ -119,38 +137,51 @@ if [[ $CLANG == "YES" ]]; then
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
   makedepends+=( 'clang' 'lld' 'llvm') ;
-else
-  export LD="/usr/bin/ld.gold"
-  export CFLAGS+=" -fuse-ld=gold"
-  export CXXFLAGS+=" -fuse-ld=gold"
 fi
 
-if [[ $NOTKIT == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
+if [[ $LTO == "YES" ]]; then
+  if [[ $CLANG != "YES" ]]; then
+  CFLAGS+=" -flto -fuse-linker-plugin"
+  CXXFLAGS+=" -flto -fuse-linker-plugin"
+else
+  CFLAGS+=" -flto"
+  CXXFLAGS+=" -flto"
+  fi
+fi
+
+if [[ $JIT == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'libgccjit' );
+  else
+    depends+=( 'libgccjit' );
+  fi
+fi
+
+if [[ $CLI == "YES" ]]; then
+  depends=("${depends_nox[@]}");
+elif [[ $NOTKIT == "YES" ]]; then
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' );
+  makedepends+=( 'xorgproto' );
 elif [[ $LUCID == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'xorgproto' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' );
   makedepends+=( 'xorgproto' );
 elif [[ $GTK2 == "YES" ]]; then
-  depends+=( 'gtk2' );
+  depends+=( 'gtk2' 'lcms2' );
   makedepends+=( 'xorgproto' );
 else
   depends+=( 'gtk3' );
   makedepends+=( 'xorgproto' );
 fi
 
-if [[ $M17N == "YES" ]]; then
-  depends+=( 'm17n-lib' );
-fi
-
 if [[ $MAGICK == "YES" ]]; then
   depends+=( 'imagemagick'  'libjpeg-turbo' 'giflib' );
-elif [[ ! $NOX == "YES" ]]; then
+elif [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
-else
+elif [[ $CLI == "YES" ]]; then
   depends+=();
 fi
 
-if [[ $CAIRO == "YES" ]]; then
+if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] ; then
   depends+=( 'cairo' );
 fi
 
@@ -214,7 +245,7 @@ build() {
 # Good luck!
    --without-gconf
    --without-gsettings
-   --with-native-compilation
+# Pure gtk, which will enable wayland support.
    --with-pgtk
   )
 
@@ -230,12 +261,12 @@ if [[ $LTO == "YES" ]]; then
   _conf+=( '--enable-link-time-optimization' );
 fi
 
-if [[ $PROFILING == "YES" ]]; then
-  _conf+=( '--enable-profiling' );
+if [[ $JIT == "YES" ]]; then
+  _conf+=( '--with-native-compilation' );
 fi
 
 if [[ $CLI == "YES" ]]; then
-  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' );
+  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' '--without-jpeg' '--without-gif' '--without-tiff' '--without-png' );
 elif [[ $NOTKIT == "YES" ]]; then
   _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
@@ -246,16 +277,14 @@ else
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 fi
 
-if [[ ! $M17N == "YES" ]]; then
-  _conf+=( '--without-m17n-flt' );
-fi
-
 if [[ $MAGICK == "YES" ]]; then
   _conf+=( '--with-imagemagick');
+else
+  _conf+=();
 fi
 
-if [[ $CAIRO == "YES" ]]; then
-  _conf+=( '--with-cairo' );
+if [[ $NOCAIRO == "YES" || $CLI == "YES" ]]; then
+  _conf+=( '--without-cairo' );
 fi
 
 if [[ $XWIDGETS == "YES" ]]; then
@@ -265,6 +294,9 @@ fi
 if [[ $NOGZ == "YES" ]]; then
   _conf+=( '--without-compress-install' );
 fi
+
+# ctags/etags may be provided by other packages, e.g, universal-ctags
+_conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 
 ################################################################################
 
@@ -279,18 +311,17 @@ fi
   #
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
-
-  # Use all the thread in your CPU for compilation
-  if [[ $FAST_BOOT == "YES" ]]; then
-    make -j$(nproc) NATIVE_FAST_BOOT=1
+  #
+  if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
+    make NATIVE_FULL_AOT=1
   else
-    make -j$(nproc)
+    make
   fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
-  cd "$srcdir/emacs-git/lisp"
-  make autoloads
-  cd ../
+  #cd "$srcdir/emacs-git/lisp"
+  #make autoloads
+  #cd ../
 
   # Optional documentation formats.
   if [[ $DOCS_HTML == "YES" ]]; then
@@ -311,23 +342,17 @@ package() {
   if [[ $DOCS_HTML == "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
   if [[ $DOCS_PDF == "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
 
-  # remove conflict with ctags package
-  mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
-
-  if [[ $NOGZ == "YES" ]]; then
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1};
-  else
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
-  fi
-
   # fix user/root permissions on usr/share files
-  find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
+  # MOVED to install script
+  # find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
 
   # fix permssions on /var/games
   mkdir -p "$pkgdir"/var/games/emacs
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
-  chown -R root:games "$pkgdir"/var/games
+  # MOVED to install script
+  # chown -R root:games "$pkgdir"/var/games
+
 }
 
 ################################################################################
