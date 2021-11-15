@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=6.0
-pkgrel=1
+pkgver=6.1
+pkgrel=2
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
 depends=('dialog' 'expac' 'pacman-contrib')
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   'libnotify: desktop notifications'
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
-md5sums=('66a8b957c2a56fd6f1d90de8d5bbf6cc')
+sha256sums=('a4a06a4300181499bec37b1dbcad0365f09da0fa78aaf23915ac9d82f47a7d04')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
