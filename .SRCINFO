@@ -1,7 +1,7 @@
 pkgbase = foot
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = foot
 	depends = ncurses
 	depends = fcft
 	optdepends = foot-terminfo: alternative to ncurses' terminfo, with additional non-standard capabilities
+	optdepends = foot-themes: color schemes
 	optdepends = libnotify: desktop notifications
 	optdepends = xdg-utils: URI launching
 	optdepends = bash-completion: bash completions for foot itself
@@ -29,3 +30,9 @@ pkgbase = foot
 	sha256sums = ef052354145f8ce2e3a965e171c750ccc653c2a2b9ce98adefa99948286188f7
 
 pkgname = foot
+
+pkgname = foot-themes
+	pkgdesc = Color schemes for the foot terminal emulator
+	arch = any
+	depends = foot
+	optdepends = 

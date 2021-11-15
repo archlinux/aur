@@ -30,9 +30,9 @@
 PGO=auto
 
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
-pkgname=foot
+pkgname=(foot foot-themes)
 pkgver=1.10.0  # Don’t forget to update CHANGELOG.md
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -41,6 +41,7 @@ depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'ncurses' 
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
 optdepends=("foot-terminfo: alternative to ncurses' terminfo, with additional non-standard capabilities"
+            "foot-themes: color schemes"
             "libnotify: desktop notifications"
             "xdg-utils: URI launching"
             "bash-completion: bash completions for foot itself")
@@ -49,7 +50,12 @@ sha256sums=('ef052354145f8ce2e3a965e171c750ccc653c2a2b9ce98adefa99948286188f7')
 
 build() {
   cd foot
-  ./pgo/pgo.sh ${PGO} . build --prefix=/usr --wrap-mode=nodownload -Dterminfo=disabled
+  ./pgo/pgo.sh \
+    ${PGO} \
+    . build \
+    --prefix=/usr \
+    --wrap-mode=nodownload \
+    -Dterminfo=disabled
 }
 
 check() {
@@ -57,8 +63,21 @@ check() {
   ninja -C build test
 }
 
-package() {
+package_foot() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Themes packaged separately
+  rm -rf "${pkgdir}/usr/share/foot/themes"
+}
+
+package_foot-themes() {
+  pkgdesc="Color schemes for the foot terminal emulator"
+  depends=(foot)
+  optdepends=()
+  arch=(any)
+  cd foot
+  install -d "${pkgdir}/usr/share/foot/themes"
+  install -m 644 themes/* "${pkgdir}/usr/share/foot/themes/"
 }
