@@ -5,14 +5,15 @@
 
 pkgname=gnudatalanguage
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
-url="https://github.com/gnudatalanguage/gdl"
+url="https://gnudatalanguage.github.io/"
 license=("GPL")
 depends=("eccodes" "eigen" "fftw" "glpk" "graphicsmagick" "gsl" "hdf4"
          "libgeotiff" "plplot" "python-numpy" "shapelib" "udunits" "wxgtk2")
 makedepends=("cmake")
+optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
         "gdl.profile")
 sha512sums=("9d15f114d26d03c34dce6177a5d5115e81c128ec21752c01d171f8427e6cb21b9d0b69a44e29891b5e8fc2bd4d0b89d1a8dcd189f362a13c6e59182528b5842d"
