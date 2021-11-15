@@ -2,7 +2,7 @@
 
 pkgname=metricbeat-oss-bin
 _pkgbase=${pkgname%%-oss-bin}
-pkgver=7.6.2
+pkgver=7.15.2
 pkgrel=1
 pkgdesc='Metrics collection and shipping beats component (precompiled)'
 arch=('i686' 'x86_64')
@@ -23,8 +23,8 @@ sha256sums=('1399976457d5c848a5274fa739ade7bdd187b035b5885dc77691051c3b5da718'
 
 source_i686=("https://artifacts.elastic.co/downloads/beats/$_pkgbase/$_pkgbase-oss-$pkgver-linux-x86.tar.gz")
 source_x86_64=("https://artifacts.elastic.co/downloads/beats/$_pkgbase/$_pkgbase-oss-$pkgver-linux-x86_64.tar.gz")
-sha256sums_i686=('286cd62684a4c24ae18ac37c0365874669494813d8ff09489e5a5210f66ff780')
-sha256sums_x86_64=('cdf938cea6a058b4c5dd4129e185e21c77f35d5170e77ce6c0aa2d89c10856d6')
+sha512sums_i686=('085898645b9fcf1691cc36e5bae63b2c79c39758c837e006d0edc8e591e90120ac50ff4d3819a6f155e59eb1e95e0a373465885e1420e3776bd12511be827818')
+sha512sums_x86_64=('203dfc3004280b05df0e6acb4a72d6f2bc6315088c6404106a15ca50390ad500d994254d76ba36e8382ce710c98cb23bf0681848268e26c716ff4aee1dd580a0')
 
 package() {
     if [[ $CARCH == 'i686' ]] ; then
