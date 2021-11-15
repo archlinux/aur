@@ -47,9 +47,8 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.34.0_16_gec16769c2d
+pkgver=0.34.0_40_gb66120a75d
 pkgrel=1
-_waf_version=2.0.20
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
@@ -58,17 +57,19 @@ _undetected_depends=('hicolor-icon-theme')
 depends=('ffmpeg' "${_undetected_depends[@]}")
 optdepends=('yt-dlp: for video-sharing websites playback (preferred over youtube-dl)'
             'youtube-dl: for video-sharing websites playback')
-makedepends=('git' 'python-docutils' 'pacman-contrib' 'vulkan-headers')
+makedepends=('git'
+             'meson'
+             'python-docutils' # for rst2man, to generate manpage
+             'pacman-contrib' # for pactree, used in find-deps.py
+             'vulkan-headers')
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
 install=mpv.install
 source=('git+https://github.com/mpv-player/mpv'
-        'find-deps.py'
-        "https://waf.io/waf-${_waf_version}")
+        'find-deps.py')
 sha256sums=('SKIP'
-            '1ba780ede4a28b68ae5b7ab839958ff91ed01d3c6c1d24cce8a5dd24492f8d2b'
-            'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f')
+            '1ba780ede4a28b68ae5b7ab839958ff91ed01d3c6c1d24cce8a5dd24492f8d2b')
 
 _opt_extra_flags=()
 
@@ -76,38 +77,38 @@ for feature in "${_opt_features[@]}"; do
   case "$feature" in
     dvd)
       depends+=('libdvdnav')
-      _opt_extra_flags+=('--enable-dvdnav')
+      _opt_extra_flags+=('-Ddvdnav=enabled')
       ;;
     cd)
       depends+=('libcdio-paranoia')
-      _opt_extra_flags+=('--enable-cdda')
+      _opt_extra_flags+=('-Dcdda=enabled')
       ;;
     lua)
       depends+=('lua52')
-      _opt_extra_flags+=('--enable-lua' '--lua=lua52')
+      _opt_extra_flags+=('-Dlua=enabled' '-Dlua=lua52')
       ;;
     luajit)
       depends+=('luajit')
-      _opt_extra_flags+=('--enable-lua' '--lua=luajit')
+      _opt_extra_flags+=('-Dlua=enabled' '-Dlua=luajit')
       ;;
     javascript)
       depends+=('mujs')
-      _opt_extra_flags+=('--enable-javascript')
+      _opt_extra_flags+=('-Djavascript=enabled')
       ;;
     x11)
       depends+=('libxinerama' 'libxrandr' 'libxss')
-      _opt_extra_flags+=('--enable-x11')
+      _opt_extra_flags+=('-Dx11=enabled')
       ;;
     wayland)
       depends+=('wayland' 'libxkbcommon')
-      _opt_extra_flags+=('--enable-wayland')
+      _opt_extra_flags+=('-Dwayland=enabled')
       ;;
     sdl2|openal|uchardet|rubberband)
       depends+=("$feature")
-      _opt_extra_flags+=("--enable-$feature")
+      _opt_extra_flags+=("-D${feature}=enabled")
       ;;
     dvbin)
-      _opt_extra_flags+=("--enable-$feature")
+      _opt_extra_flags+=("-D${feature}=enabled")
       ;;
     *)
       echo "ERROR: Unknown feature option: $feature" >&2
@@ -120,26 +121,29 @@ pkgver() {
   ./version.sh | sed s/-/_/g
 }
 
-prepare() {
-  cd "$srcdir/$_gitname"
-  install -m755 "${srcdir}/waf-${_waf_version}" waf
-  ./bootstrap.py --no-download
-}
-
 build() {
   cd "$srcdir/$_gitname"
 
-  ./waf configure --prefix=/usr \
-        --confdir=/etc/mpv \
-        --enable-libmpv-shared \
+  # Removing build dir, if present, ensures features omitted from the configure
+  # command get their default values, and cleans up after waf if it was
+  # previously used (which can cause the build to fail otherwise).
+  # Downside is wasted recompilation.
+  rm -rf build
+
+  meson setup build \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --buildtype=plain \
+        --wrap-mode=nodownload \
+        -Dlibmpv=true \
         "${_opt_extra_flags[@]}"
 
-  ./waf build
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  ./waf install --destdir="$pkgdir"
+  meson install -C build --no-rebuild --destdir="$pkgdir"
 
   # Update dependencies automatically based on dynamic libraries
   _detected_depends=($(python3 "$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
