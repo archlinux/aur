@@ -1,0 +1,187 @@
+Description: fix -Wformat-security warnings
+Author: Ilya Barygin <randomaction@ubuntu.com>
+Last-Update: 2011-12-04
+Index: open-invaders/src/ending.cc
+===================================================================
+--- open-invaders.orig/src/ending.cc
++++ open-invaders/src/ending.cc
+@@ -215,7 +215,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,40,(lines*22)+40,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,40,(lines*22)+40,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -232,7 +232,7 @@ void game_ending()
+ 		{
+ 			for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 			{
+-				textprintf_ex(screen,gamefont,80,((lines-19)*22)+120,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++				textprintf_ex(screen,gamefont,80,((lines-19)*22)+120,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 				delay_with_duh_poll(20,endsongplayer);
+ 			}
+ 		}
+@@ -248,7 +248,7 @@ void game_ending()
+ 			
+ 			for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 			{
+-				textprintf_ex(screen,gamefont,80,texty,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++				textprintf_ex(screen,gamefont,80,texty,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 				delay_with_duh_poll(20,endsongplayer);
+ 			}
+ 			
+@@ -263,7 +263,7 @@ void game_ending()
+ 			
+ 			for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 			{
+-				textprintf_ex(screen,gamefont,80,texty,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++				textprintf_ex(screen,gamefont,80,texty,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 				delay_with_duh_poll(20,endsongplayer);
+ 			}
+ 			
+@@ -275,7 +275,7 @@ void game_ending()
+ 	
+ 	for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 	{
+-		textprintf_ex(screen,gamefont,80,378,makecol16(255,255,255),0,endinglines[23].substr(0,individualchars).c_str());
++		textprintf_ex(screen,gamefont,80,378,makecol16(255,255,255),0,"%s",endinglines[23].substr(0,individualchars).c_str());
+ 		delay_with_duh_poll(20,endsongplayer);
+ 	}
+ 	
+@@ -287,7 +287,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,80,420,makecol16(255,255,255),0,endinglines[24].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,80,420,makecol16(255,255,255),0,"%s",endinglines[24].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -302,7 +302,7 @@ void game_ending()
+ 	
+ 	for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 	{
+-		textprintf_ex(screen,gamefont,340,250,makecol16(255,255,255),0,endinglines[25].substr(0,individualchars).c_str());
++		textprintf_ex(screen,gamefont,340,250,makecol16(255,255,255),0,"%s",endinglines[25].substr(0,individualchars).c_str());
+ 		delay_with_duh_poll(20,endsongplayer);
+ 	}
+ 	
+@@ -316,7 +316,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,80,((lines-19)*22)+120,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,80,((lines-19)*22)+120,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -331,7 +331,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,160,((lines-19)*22)+50,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,160,((lines-19)*22)+50,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+@@ -347,7 +347,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,80,((lines-19)*22)+120,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,80,((lines-19)*22)+120,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -362,7 +362,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,80,((lines-20)*22)+120,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,80,((lines-20)*22)+120,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -377,7 +377,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,230,((lines-24)*22)+10,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,230,((lines-24)*22)+10,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -392,7 +392,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,400,((lines-26)*22)+120,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,400,((lines-26)*22)+120,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -407,7 +407,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,400,((lines-27)*22)+120,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,400,((lines-27)*22)+120,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -422,7 +422,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,350,((lines-37)*22)+120,makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,350,((lines-37)*22)+120,makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -437,7 +437,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,40,((lines-38)*22),makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,40,((lines-38)*22),makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -452,7 +452,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,70,((lines-41)*22),makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,70,((lines-41)*22),makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}
+@@ -465,7 +465,7 @@ void game_ending()
+ 		
+ 	for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 	{
+-		textprintf_ex(screen,gamefont,155,200,makecol16(255,255,255),0,endinglines[53].substr(0,individualchars).c_str());
++		textprintf_ex(screen,gamefont,155,200,makecol16(255,255,255),0,"%s",endinglines[53].substr(0,individualchars).c_str());
+ 		delay_with_duh_poll(20,endsongplayer);
+ 	}
+ 	
+@@ -477,7 +477,7 @@ void game_ending()
+ 		
+ 	for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 	{
+-		textprintf_ex(screen,gamefont,210,330,makecol16(255,255,255),0,endinglines[54].substr(0,individualchars).c_str());
++		textprintf_ex(screen,gamefont,210,330,makecol16(255,255,255),0,"%s",endinglines[54].substr(0,individualchars).c_str());
+ 		delay_with_duh_poll(20,endsongplayer);
+ 	}
+ 	
+@@ -491,7 +491,7 @@ void game_ending()
+ 		
+ 		for(int individualchars=0; individualchars<textlength+1; individualchars++)
+ 		{
+-			textprintf_ex(screen,gamefont,195,((lines-47)*22),makecol16(255,255,255),0,endinglines[lines].substr(0,individualchars).c_str());
++			textprintf_ex(screen,gamefont,195,((lines-47)*22),makecol16(255,255,255),0,"%s",endinglines[lines].substr(0,individualchars).c_str());
+ 			delay_with_duh_poll(20,endsongplayer);
+ 		}
+ 	}

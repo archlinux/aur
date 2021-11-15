@@ -1,0 +1,14 @@
+diff --color -aur src.orig/open-invaders-0.3/src/Makefile.in src/open-invaders-0.3/src/Makefile.in
+--- src.orig/open-invaders-0.3/src/Makefile.in	2021-10-17 12:42:45.692368809 +0200
++++ src/open-invaders-0.3/src/Makefile.in	2021-10-17 13:18:23.234100539 +0200
+@@ -230,8 +230,8 @@
+ 	../headers/unlock.h        
+ 
+ open_invaders_LDFLAGS = \
+-	-laldmd  \
+-	-ldumbd  \
++	-laldmb  \
++	-ldumb  \
+ 	`allegro-config  \
+ 	--libs`
+ 

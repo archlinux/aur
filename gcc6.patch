@@ -1,0 +1,48 @@
+From: Markus Koschany <apo@debian.org>
+Date: Tue, 27 Sep 2016 21:23:50 +0200
+Subject: gcc6
+
+Fix FTBFS with GCC-6.
+
+Debian-Bug: https://bugs.debian.org/811654
+Forwarded: no
+---
+ src/init.cc | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/init.cc b/src/init.cc
+index 29d24f5..2519012 100644
+--- a/src/init.cc
++++ b/src/init.cc
+@@ -349,7 +349,12 @@ void load_config()
+ 	
+ 	do
+ 	{
+-		success_check=configfile >> string_to_compare;
++		if(configfile >> string_to_compare) {
++			success_check=true;
++		}
++		else {
++			success_check=false;
++		}
+ 		if(success_check)
+ 		{
+ 			position_of_equals=string_to_compare.find("=");
+@@ -635,7 +640,7 @@ BITMAP *oi_load_graphic(std::string filename, std::string defsymbol)
+ 	if(!loaded_graphic)
+ 	{
+ 		cout << "Fatal error: Could not load file " << filename << "\n";
+-		return false;
++		return nullptr;
+ 	}
+ 	
+ 	return loaded_graphic;
+@@ -661,7 +666,7 @@ SAMPLE *oi_load_sfx(std::string filename, std::string defsymbol)
+ 	if(!loaded_sound)
+ 	{
+ 		cout << "Fatal error: Could not load file " << filename << "\n";
+-		return false;
++		return nullptr;
+ 	}
+ 	
+ 	return loaded_sound;

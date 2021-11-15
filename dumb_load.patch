@@ -1,0 +1,67 @@
+diff --color -aur src.orig/open-invaders-0.3/src/ending.cc src/open-invaders-0.3/src/ending.cc
+--- src.orig/open-invaders-0.3/src/ending.cc	2021-10-17 12:29:58.876355029 +0200
++++ src/open-invaders-0.3/src/ending.cc	2021-10-17 12:30:48.586755358 +0200
+@@ -185,12 +185,12 @@
+ 	
+ 	// Load and start ending song
+ 	
+-	endingsong=dumb_load_mod_quick("./data/endsong.mod");
++	endingsong=dumb_load_mod_quick("./data/endsong.mod", 0);
+ 	
+ 	#ifdef ALLEGRO_LINUX
+ 	if(!endingsong)
+ 	{
+-		endingsong=dumb_load_mod_quick(ENDING_SONG);
++		endingsong=dumb_load_mod_quick(ENDING_SONG, 0);
+ 	}
+ 	#endif
+ 		
+diff --color -aur src.orig/open-invaders-0.3/src/init.cc src/open-invaders-0.3/src/init.cc
+--- src.orig/open-invaders-0.3/src/init.cc	2021-10-17 12:29:58.876355029 +0200
++++ src/open-invaders-0.3/src/init.cc	2021-10-17 12:30:41.006694457 +0200
+@@ -134,7 +134,7 @@
+ 	gameisover=oi_load_sfx("gameisover.wav",GAME_IS_OVER_SOUND);
+ 	
+ 	cout << "Loading in-game song...\n";
+-	gamesong=dumb_load_mod_quick("./data/gamesong.mod");
++	gamesong=dumb_load_mod_quick("./data/gamesong.mod", 0);
+ 		
+ 	gamefont=load_bitmap_font("./data/arcade_font.pcx",0,0);
+ 	
+@@ -157,7 +157,7 @@
+ 	
+ 	if(!gamesong)
+ 	{
+-		gamesong=dumb_load_mod_quick(GAME_SONG);
++		gamesong=dumb_load_mod_quick(GAME_SONG, 0);
+ 	}
+ 
+ 	if(!gamesong)
+diff --color -aur src.orig/open-invaders-0.3/src/intro.cc src/open-invaders-0.3/src/intro.cc
+--- src.orig/open-invaders-0.3/src/intro.cc	2021-10-17 12:29:58.876355029 +0200
++++ src/open-invaders-0.3/src/intro.cc	2021-10-17 12:31:07.943577324 +0200
+@@ -212,20 +212,20 @@
+ 			
+ 	float percentage=0;
+ 	
+-	titlesong=dumb_load_mod_quick("./data/titlesong.mod");
+-	hiscoresong=dumb_load_mod_quick("./data/hiscore.mod");
++	titlesong=dumb_load_mod_quick("./data/titlesong.mod", 0);
++	hiscoresong=dumb_load_mod_quick("./data/hiscore.mod", 0);
+ 	big_hiscore_font=load_font("./data/arcade_font_big.pcx",NULL,NULL);
+ 	gamefont_trans=load_font("./data/arcade_font.pcx",NULL,NULL);	
+ 	
+ #ifdef ALLEGRO_LINUX
+ 	if(!titlesong)
+ 	{
+-		titlesong=dumb_load_mod_quick(TITLE_SONG);
++		titlesong=dumb_load_mod_quick(TITLE_SONG, 0);
+ 	}
+ 
+ 	if(!hiscoresong)
+ 	{
+-		hiscoresong=dumb_load_mod_quick(HISCORE_SONG);
++		hiscoresong=dumb_load_mod_quick(HISCORE_SONG, 0);
+ 	}
+ 	
+ 	if(!big_hiscore_font)
