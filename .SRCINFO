@@ -1,14 +1,14 @@
 pkgbase = libindi-eqmod
 	pkgdesc = 3rd party drivers for INDI: EQMod
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = libindi=1.9.2
-	source = https://github.com/indilib/indi-3rdparty/archive/v1.9.2.tar.gz
-	sha256sums = d582fa25a3b2b53f2a91be7881689951a616cbe8c87c71a392f714a0870cc473
+	depends = libindi=1.9.3
+	source = https://github.com/indilib/indi-3rdparty/archive/v1.9.3.tar.gz
+	sha256sums = 4e71a8106fcdf6248486b18f04f4013332b0722b4942b90fbf01770d8037d3dc
 
 pkgname = libindi-eqmod
