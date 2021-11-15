@@ -1,10 +1,10 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Maintainer: Daniele Basso <daniele05 dot bass at gmail dot com>
+# Contributor: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=river-bin
-_pkgname=${pkgname%-*}
+_pkgname=river
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/riverwm/river'
