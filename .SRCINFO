@@ -1,13 +1,14 @@
 pkgbase = hypnotix
 	pkgdesc = An IPTV streaming application
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
 	license = GPL3
 	depends = dconf
 	depends = hicolor-icon-theme
 	depends = python-cairo
+	depends = python-gobject
 	depends = python-imdbpy
 	depends = python-requests
 	depends = python-setproctitle
