@@ -1,15 +1,15 @@
 pkgbase = nodejs-commitlint
 	pkgdesc = Lint your commit messages
-	pkgver = 7.2.1
+	pkgver = 14.1.0
 	pkgrel = 1
-	url = https://github.com/marionebl/commitlint#readme
+	url = https://commitlint.js.org
 	arch = any
 	license = MIT
+	makedepends = jq
+	makedepends = npm
 	depends = nodejs
-	depends = npm
-	noextract = commitlint-7.2.1.tgz
-	source = https://registry.npmjs.org/commitlint/-/commitlint-7.2.1.tgz
-	sha1sums = c1d50a26bf2324b60a0f67507b20dc0a74976a8c
+	noextract = commitlint-14.1.0.tgz
+	source = https://registry.npmjs.org/commitlint/-/commitlint-14.1.0.tgz
+	sha256sums = 98379dbb8ea73aa3d5c6e64a2a223c3b0cf97e2f8f2598eec80a6b093a1edafd
 
 pkgname = nodejs-commitlint
-
