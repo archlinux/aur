@@ -7,12 +7,12 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.42.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
-arch=('i686'
-      'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
+arch=('i686'
+      'x86_64')
 depends=('vte3-notification>=0.66.0'
          'gsettings-desktop-schemas')
 makedepends=('git'
@@ -35,8 +35,7 @@ _fcommit='6ce4c343f37e66397e42a4c1bfded7e083fd1bea'
 _fpatchfile100='gnome-terminal-cntr-ntfy-autottl-ts.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 
-source=(
-	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
+source=("https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	"${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
@@ -47,11 +46,12 @@ sha256sums=('c319b1405501b8c7693e616f48eced41695d2e786148ca5f9e27bc7d98f4aeb1'
 prepare () {
     cd "${_pkgname}-${pkgver}"
 
+    # Apply patches
     patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
 }
 
 build() {
-    arch-meson gnome-terminal-${pkgver} build \
+    arch-meson build gnome-terminal-${pkgver} \
         -D b_lto=false \
         -D docs=true \
         -Dnautilus_extension=true \
@@ -60,8 +60,8 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" meson install -C build
+    meson install -C build --destdir "$pkgdir"
 
-    install -Dm644 "../${_fgsoverridefile}-${_fcommit}" \
+    install -Dm644 "$srcdir/${_fgsoverridefile}-${_fcommit}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${_fgsoverridefile}"
 }
