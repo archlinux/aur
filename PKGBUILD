@@ -16,7 +16,6 @@ depends=(
   'zlib'
   'xz'
   'libpng'
-  'png++'
   'libjpeg'
   'libraw'
   'fftw'
@@ -26,7 +25,7 @@ depends=(
   'qcustomplot'
   'libxcb'
 )
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'png++')
 
 source=("https://github.com/spillerrec/Overmix/archive/refs/tags/v${_pkgver}.tar.gz")
 sha256sums=('759e1b32d2c95e0b5ff6b3b938034d25ac54dea65a84deffd88d533056378b25')
