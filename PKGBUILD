@@ -2,7 +2,7 @@
 
 pkgname=mesa-d3d12
 pkgdesc="Mesa with D3D12 Gallium backend"
-pkgver=21.2.4
+pkgver=21.2.5
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -47,9 +47,13 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
+        swr-llvm13-patch1.patch
+        swr-llvm13-patch2.patch
         LICENSE)
-sha512sums=('245915260b1366beed15d4790e09d050352614daaea2ed052128d54f26dda202d7abf125b9fa5098ef77604b18977b0ce4209df51746d123871ebf8708f7425d'
+sha512sums=('aaa1ebaa1e18eea76c3784c9a65942c3e417c1079d7bf75dcede574999dc459fb4d68d041cf2f767afb9cbfa834a985e0a4edd5a56b0fc90f8fdc506359aa5da'
             'SKIP'
+            '073ea2bb4778b3151717b26e0ec737abb4916ea340c7193a7382c2e2197534e93e95622d530e2f731ae156fd6ca1fc86f315f6ecae0baaeab88846773fb98bba'
+            'b59f18f4bc69b872e97b5f33a53b9c2398143bc1d0a1b42787ca2a0c204fc11b2837ca40f6f773a0b1bd49756754f9d755ac14d4eb10df6269570477ba8484fc'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
@@ -57,6 +61,15 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
               'A5CC9FEC93F2F837CB044912336909B6B25FADFA'  # Juan A. Suarez Romero <jasuarez@igalia.com>
               '71C4B75620BC75708B4BDB254C95FAAB3EB073EC'  # Dylan Baker <dylan@pnwbakers.com>
               '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
+
+prepare() {
+  cd mesa-$pkgver
+
+  # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/11568
+  patch -Np1 -i ../swr-llvm13-patch1.patch
+  # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13267
+  patch -Np1 -i ../swr-llvm13-patch2.patch
+}
 
 build() {
   arch-meson mesa-$pkgver build \
