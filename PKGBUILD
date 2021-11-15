@@ -226,17 +226,18 @@ package() {
   local toplevel_files=(
     chrome_100_percent.pak
     chrome_200_percent.pak
+    chrome_crashpad_handler
+    chromedriver
     resources.pak
     v8_context_snapshot.bin
 
     # ANGLE
     libEGL.so
     libGLESv2.so
+
+    # SwiftShader ICD
     libvk_swiftshader.so
     vk_swiftshader_icd.json
-
-    chromedriver
-    chrome_crashpad_handler
   )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
