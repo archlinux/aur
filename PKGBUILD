@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-whiteboard-integration
-pkgver=0.0.12
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Modern collaborative whiteboard"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('nextcloud')
 options=('!strip')
 source=("https://github.com/nextcloud/integration_whiteboard/releases/download/v$pkgver/integration_whiteboard-$pkgver.tar.gz")
-sha256sums=('e5f8e095e8a4262784a6dd478048dfc135c98a8ac8c2c816c82d9a96914a5cc9')
+sha256sums=('c25edd018b9d6625ad5259c6b8957efbfb0cdf9035d4b260586e3f8151f6f4ba')
 
 package() {
 	install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
