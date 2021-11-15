@@ -1,6 +1,6 @@
 pkgbase = perl-rrd-editor
 	pkgdesc = Portable, standalone (no need for RRDs.pm) tool to create and edit RRD files
-	pkgver = 0.18
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://metacpan.org/release/RRD-Editor
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = perl-rrd-editor
 	license = PerlArtistic
 	depends = perl>=5.10.0
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/D/DO/DOUGLEITH/RRD-Editor-0.18.tar.gz
-	md5sums = 48c7cf8567f72316bde7df655d9fd473
+	source = https://cpan.perl.org/modules/by-authors/id/M/MB/MBASUNOV/RRD-Editor-0.21.tar.gz
+	sha256sums = 761f9268771c4684544a2065e63d2b124a87448ca932853b538bfccc6dea4c6b
 
 pkgname = perl-rrd-editor
-
