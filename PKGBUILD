@@ -1,7 +1,7 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 pkgname=picomc
-pkgver=0.4.3
-pkgrel=3
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="A tiny CLI Minecraft launcher"
 arch=('any')
 url="https://github.com/sammko/picomc"
@@ -16,7 +16,7 @@ depends=("python>=3.9"
 makedepends=("python-setuptools")
 optdepends=("java-runtime: Launching Minecraft")
 source=("https://github.com/sammko/picomc/releases/download/v$pkgver/picomc-$pkgver.tar.gz"{,.asc})
-md5sums=('c2a5049e398381d75b389c9b200d53d8'
+md5sums=('c4ba10607b25b89cfa76dfac03a9a307'
          'SKIP')
 validpgpkeys=('5CC6046D1F113312CF996854E1A7EE6F87DBE672') # Samuel Čavoj <samuel@cavoj.net>
 

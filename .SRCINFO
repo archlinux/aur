@@ -1,7 +1,7 @@
 pkgbase = picomc
 	pkgdesc = A tiny CLI Minecraft launcher
-	pkgver = 0.4.3
-	pkgrel = 3
+	pkgver = 0.4.4
+	pkgrel = 1
 	url = https://github.com/sammko/picomc
 	arch = any
 	license = MIT
@@ -14,10 +14,10 @@ pkgbase = picomc
 	depends = python-tqdm
 	depends = python-coloredlogs
 	optdepends = java-runtime: Launching Minecraft
-	source = https://github.com/sammko/picomc/releases/download/v0.4.3/picomc-0.4.3.tar.gz
-	source = https://github.com/sammko/picomc/releases/download/v0.4.3/picomc-0.4.3.tar.gz.asc
+	source = https://github.com/sammko/picomc/releases/download/v0.4.4/picomc-0.4.4.tar.gz
+	source = https://github.com/sammko/picomc/releases/download/v0.4.4/picomc-0.4.4.tar.gz.asc
 	validpgpkeys = 5CC6046D1F113312CF996854E1A7EE6F87DBE672
-	md5sums = c2a5049e398381d75b389c9b200d53d8
+	md5sums = c4ba10607b25b89cfa76dfac03a9a307
 	md5sums = SKIP
 
 pkgname = picomc
