@@ -13,8 +13,7 @@ pkgbase = perl-servicenow-soap
 	depends = perl-soap-lite
 	depends = perl-xml-simple
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/G/GF/GFLEWIS/ServiceNow-SOAP-0.16.tar.gz
+	source = https://cpan.metacpan.org/authors/id/G/GF/GFLEWIS/ServiceNow-SOAP-0.16.tar.gz
 	sha256sums = c2a35ddfe7ab4fd64d9553c53e6a1b5559b2fe8cd6aa54b30ccf44a1165c7949
 
 pkgname = perl-servicenow-soap
-

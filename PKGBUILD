@@ -17,7 +17,7 @@ depends=(
   'perl-xml-simple'
   )
 options=(!emptydirs)
-source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
+source=(https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
 sha256sums=('c2a35ddfe7ab4fd64d9553c53e6a1b5559b2fe8cd6aa54b30ccf44a1165c7949')
 
 build() {
