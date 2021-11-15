@@ -11,7 +11,7 @@ license=('BDS-3-CLAUSE')
 options=(!emptydirs)
 depends=('ruby' 'ruby-nio4r' 'ruby-sd_notify')
 makedepends=('git' 'ruby-bundler' 'ruby-minitest' 'ruby-minitest-proveit' 'ruby-minitest-retry' 'ruby-minitest-stub-const' 'ruby-rack' 'ruby-rake' 'ruby-rake-compiler' 'ruby-rdoc')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puma/puma/archive/v${pkgver}/${_gemname}-v${pkgver}.tar.gz")
+source=("https://github.com/puma/puma/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('8ec1a351badd68ce6559eb99592e3f4d836ca49406749a6c2cd9162c443eadf3b4cf24ceb6c92e0e27057217f6487ff9923888ff4a1590f8cf9061d06ec16e52')
 
 prepare() {
