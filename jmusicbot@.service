@@ -1,0 +1,67 @@
+# JMusicBot minimally-privileged systemd instantiated service
+#
+# Example: The instance name is "my-channel", e.g. the service instance
+# is "jmusicbot@my\x2dchannel.service":
+#  - The service will run as user "jmusicbot-my-channel"
+#  - Working directory: "/srv/jmusicbot-my-channel"
+#  - Configuration:     "/srv/jmusicbot-my-channel/config.txt"
+#  - State:             "/srv/jmusicbot-my-channel/serversettings.json"
+#  - Playlists dir:     "/srv/jmusicbot-my-channel/Playlists"
+#
+# Setup steps for the "my-channel" service instance, as root, in bash:
+#  - Create new user "jmusicbot-my-channel" with home directory:
+#    # useradd --home-dir /srv/jmusicbot-my-channel --create-home --shell /usr/bin/nologin jmusicbot-my-channel
+#  - Start interactive bash shell as the new user:
+#    # sudo --user=jmusicbot-my-channel --shell /bin/bash
+#  - Go to the new users's home directory:
+#    $ cd
+#  - Copy the reference configuration file to the new user's home
+#    directory:
+#    $ cp /usr/share/jmusicbot/reference.conf config.txt
+#  - Edit configuration file to your liking:
+#    $ nano config.txt
+#  - Return to the root shell:
+#    $ exit
+#  - Start service instance:
+#    # systemctl start "jmusicbot@$(systemd-escape "my-channel").service"
+
+[Unit]
+Description=JMusicBot instance "%I"
+Requires=network.target local-fs.target
+After=network.target local-fs.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=exec
+User=jmusicbot-%I
+ExecStart=/usr/bin/java -Dnogui=true -jar /usr/bin/JMusicBot.jar
+WorkingDirectory=/srv/jmusicbot-%I
+Restart=always
+RestartSec=5
+
+# Security and hardening options copied from
+# https://gist.github.com/ageis/f5595e59b1cddb1513d1b425a323db04
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+DevicePolicy=closed
+# Deny write access to the entire file system
+ProtectSystem=strict
+# Selectively allow write access for required paths
+ReadWritePaths=/srv/jmusicbot-%I
+# Do not allow any access whatsoever to /home, /root and /run/user
+ProtectHome=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+# Only AF_INET and AF_INET6
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+# This service uses Java, which uses a virtual machine, and this option
+# is not compatible with virtual machines
+#MemoryDenyWriteExecute=yes
+LockPersonality=yes
