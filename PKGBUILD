@@ -1,6 +1,6 @@
 pkgname=tribal-trouble-git
-pkgver=20190420
-pkgrel=2
+pkgver=20200126
+pkgrel=1
 pkgdesc='Real-time strategy game that pits natives of tropical islands against invading Vikings'
 arch=(x86_64)
 url="https://github.com/team-penguin/tribaltrouble"
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-  gendesk -f -n --pkgname tribaltrouble --pkgdesc "${pkgdesc}" --exec "tribaltrouble" --categories "Games"
+  gendesk -f -n --pkgname tribaltrouble --pkgdesc "${pkgdesc}" --exec "tribaltrouble" --categories "Game;StrategyGame"
 }
 
 
