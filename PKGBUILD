@@ -40,6 +40,6 @@ package() {
   chmod 644 "$pkgjson"
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  mv "$pkgdir/usr/lib/node_modules/$_npmname/license.md" \
+  mv "$pkgdir/usr/lib/node_modules/$_npmname/license" \
     "$pkgdir/usr/share/licenses/$pkgname"
 }
