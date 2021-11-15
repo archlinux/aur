@@ -11,7 +11,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activeresource')
 makedepends=('ruby-bundler' 'ruby-rake')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('0eb5976a819cfb59b0809820ce48c9ec9ce796a64ecfb63e62b1bc8f5242c0e024b4145fe8c5e1812a6d0009631fe777c695043548c805361c39cdb8017c43c6')
 
 prepare() {

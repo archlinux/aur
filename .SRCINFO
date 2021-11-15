@@ -10,7 +10,7 @@ pkgbase = ruby-activeresource-response
 	depends = ruby
 	depends = ruby-activeresource
 	options = !emptydirs
-	source = ruby-activeresource-response-1.4.0.tar.gz::https://github.com/Fivell/activeresource-response/archive/v1.4.0.tar.gz
+	source = https://github.com/Fivell/activeresource-response/archive/v1.4.0/ruby-activeresource-response-1.4.0.tar.gz
 	sha512sums = 0eb5976a819cfb59b0809820ce48c9ec9ce796a64ecfb63e62b1bc8f5242c0e024b4145fe8c5e1812a6d0009631fe777c695043548c805361c39cdb8017c43c6
 
 pkgname = ruby-activeresource-response
