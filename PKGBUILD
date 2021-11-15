@@ -4,14 +4,14 @@ _gemname='squire'
 pkgname="ruby-${_gemname}"
 pkgver=1.3.7
 pkgrel=1
-pkgdesc="Squire handles your configuration by common config DSL."
+pkgdesc="Squire handles your configuration by common config DSL"
 arch=('any')
 url='https://github.com/smolnar/squire'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activesupport')
 makedepends=('ruby-bundler' 'ruby-rake')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('b3851b9936c918eea43553b4c257c7fb87885a9ae1af97561cc38833ed784de8d7226bcabea9791836b2dce3e2541fd5391e7e7f9a253164d849b479c8a2b3c5')
 
 prepare() {
