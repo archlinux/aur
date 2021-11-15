@@ -1,0 +1,5 @@
+#!/usr/bin/execlineb -P
+
+fdmove -c 2 1
+foreground { swapoff /dev/zram0 }
+rmmod zram

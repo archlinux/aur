@@ -1,0 +1,23 @@
+pkgbase = zram-s6
+	pkgdesc = Activate zram using openrc
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/zram-s6
+	arch = any
+	groups = s6-galaxy
+	license = GPL2
+	depends = s6-base
+	provides = init-zram
+	conflicts = init-zram
+	source = up
+	source = down
+	source = type
+	source = zram.conf
+	source = dependencies
+	md5sums = 68efba65bf6726047ce6387e3a20d863
+	md5sums = 99b762d9f10dba97223c614698c7a362
+	md5sums = 85bceea1fb94d4166f24496dc40a35e6
+	md5sums = 89743c52e3b1960cba82d822d742dfcd
+	md5sums = 061880f66eb1b0e2fda2bb6788385640
+
+pkgname = zram-s6
