@@ -8,8 +8,7 @@ pkgbase = perl-kwalify
 	license = PerlArtistic
 	depends = perl>=5.10.0
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/S/SR/SREZIC/Kwalify-1.23.tar.gz
+	source = https://cpan.perl.org/modules/by-authors/id/S/SR/SREZIC/Kwalify-1.23.tar.gz
 	md5sums = 32a9791b25295e2590c316c64fd9d891
 
 pkgname = perl-kwalify
-
