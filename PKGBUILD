@@ -1,5 +1,5 @@
 pkgname=coreboot-utils
-pkgver=4.14
+pkgver=4.15
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -11,7 +11,7 @@ provides=(ectool)
 conflicts=("coreboot-utils-git")
 makedepends=()
 source=("coreboot.${pkgver}.tar.gz::https://coreboot.org/releases/coreboot-${pkgver}.tar.xz")
-sha256sums=('d907379b727561d7ddd1d80b2fabaa373db00c9805719116f591cbc948173c6e')
+sha256sums=('20e6aaa6dd0eaec7753441c799711d1b4630e3ca709536386f2242ac2c8a1ec5')
 
 build() {
   cd coreboot-${pkgver}/util
