@@ -1,0 +1,13 @@
+pkgbase = omglol-profiler
+	pkgdesc = A profile designer for omg.lol
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/themes-omgdotlol/designer-app
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = electron
+	source = designer-app::git://github.com/themes-omgdotlol/designer-app.git
+	md5sums = SKIP
+
+pkgname = omglol-profiler
