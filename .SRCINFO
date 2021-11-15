@@ -13,7 +13,7 @@ pkgbase = ruby-bootsnap
 	depends = ruby
 	depends = ruby-msgpack
 	options = !emptydirs
-	source = ruby-bootsnap-1.9.1.tar.gz::https://github.com/Shopify/bootsnap/archive/v1.9.1.tar.gz
+	source = https://github.com/Shopify/bootsnap/archive/v1.9.1/ruby-bootsnap-1.9.1.tar.gz
 	sha512sums = c1efd824cb7437295355435a964c1f24f3f77f065d21a5c749e562f2758579933ff0e9aee8b30f98f30fbcaaf5ae25dffe73167ce5d82ebf6ab03b9370637c67
 
 pkgname = ruby-bootsnap

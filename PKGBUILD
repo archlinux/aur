@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-msgpack')
 makedepends=('ruby-bundler' 'ruby-rake-compiler' 'ruby-rake')
 checkdepends=('ruby-minitest' 'ruby-mocha')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('c1efd824cb7437295355435a964c1f24f3f77f065d21a5c749e562f2758579933ff0e9aee8b30f98f30fbcaaf5ae25dffe73167ce5d82ebf6ab03b9370637c67')
 
 prepare() {
