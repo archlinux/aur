@@ -3,7 +3,7 @@
 pkgname=liero-git
 _pkgname=liero
 pkgver=r281.2d0dc4d
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time version of Worms"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  gendesk -f -n --pkgname Liero --pkgdesc "${pkgdesc}" --exec "liero" --categories "Games"
+  gendesk -f -n --pkgname Liero --pkgdesc "${pkgdesc}" --exec "liero" --categories "Game;Shooter;ActionGame"
 }
 
 build() {
