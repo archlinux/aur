@@ -17,6 +17,7 @@ gnuradio-scopy-git
 gnuradio-m2k-git
 libsigrokdecode
 libtinyiiod-git
+qwt61-multiaxes-svn
 )
 makedepends=(
 cmake
@@ -53,7 +54,7 @@ build() {
     -D gnuradio-scopy_DIR='/usr/lib/cmake/scopy' \
     -D gnuradio-m2k_DIR='/usr/lib/cmake/m2k'
 
-  cmake --build build_dir --
+  cmake --build build_dir
 }
 
 check() {

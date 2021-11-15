@@ -17,6 +17,7 @@ pkgbase = scopy-git
 	depends = gnuradio-m2k-git
 	depends = libsigrokdecode
 	depends = libtinyiiod-git
+	depends = qwt61-multiaxes-svn
 	provides = scopy
 	conflicts = scopy
 	source = git+https://github.com/analogdevicesinc/scopy.git
