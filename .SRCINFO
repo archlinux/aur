@@ -1,7 +1,7 @@
 pkgbase = shortwave-bin-hack
 	pkgdesc = Find and listen to internet radio stations. This pkg uses the flatpak version and intercepts libc functions to make it work
 	pkgver = 1570577
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/World/Shortwave/
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = shortwave-bin-hack
 	depends = libadwaita
 	depends = libsoup
 	provides = shortwave
+	conflicts = shortwave
 	source = https://gitlab.gnome.org/World/Shortwave/-/jobs/1570577/artifacts/download?file_type=archive
 	source = fix_flatpak.rs
 	source = shortwave
