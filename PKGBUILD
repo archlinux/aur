@@ -11,7 +11,7 @@ makedepends=('flutter' 'cmake' 'ninja' 'clang')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.xz"::"https://github.com/quickgui/quickgui/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('7d40a2cfeb0039d7fd682ee970d8f0ba')
+sha256sums=('e9a34a10f67f800a9641b449571d6226b98344f8ad9c42c3a75cb54facc1c0a9')
 
 package() {
   cd "$pkgname-$pkgver"
