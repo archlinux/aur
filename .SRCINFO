@@ -1,7 +1,7 @@
 pkgbase = perl-sql-statement
 	pkgdesc = SQL parsing and processing engine
-	pkgver = 1.412
-	pkgrel = 2
+	pkgver = 1.414
+	pkgrel = 1
 	url = https://metacpan.org/release/SQL-Statement
 	arch = any
 	license = GPL
@@ -10,8 +10,7 @@ pkgbase = perl-sql-statement
 	depends = perl-clone>=0.30
 	depends = perl-params-util>=1.00
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/R/RE/REHSACK/SQL-Statement-1.412.tar.gz
-	sha256sums = 65c870883379c11b53f19ead10aaac241ccc86a90bbab77f6376fe750720e5c8
+	source = https://cpan.metacpan.org/authors/id/R/RE/REHSACK/SQL-Statement-1.414.tar.gz
+	sha256sums = dde8bdcfa6a136eedda06519ba0f3efaec085c39db0df9c472dc0ec6cd781a49
 
 pkgname = perl-sql-statement
-
