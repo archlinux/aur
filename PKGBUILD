@@ -6,10 +6,10 @@
 _gemname='railties'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=1
-pkgdesc='Tools for creating, working with, and running Rails applications.'
+pkgrel=2
+pkgdesc='Tools for creating, working with, and running Rails applications'
 arch=('any')
-url='http://www.rubyonrails.org'
+url='https://rubyonrails.org'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activesupport' 'ruby-method_source' 'ruby-rake' 'ruby-thor')

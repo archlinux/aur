@@ -1,8 +1,8 @@
 pkgbase = ruby-railties
-	pkgdesc = Tools for creating, working with, and running Rails applications.
+	pkgdesc = Tools for creating, working with, and running Rails applications
 	pkgver = 6.1.4.1
-	pkgrel = 1
-	url = http://www.rubyonrails.org
+	pkgrel = 2
+	url = https://rubyonrails.org
 	arch = any
 	license = MIT
 	depends = ruby
