@@ -1,7 +1,7 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio-bin
 _pkgname=FamiStudio
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -24,10 +24,10 @@ source=("https://github.com/BleuBleu/FamiStudio/releases/download/$pkgver/$_pkgn
     "famistudio.desktop" "FamiStudio.svg")
 noextract=()
 
-md5sums=('75a9aaba9f30b90075638fb0f8489df8'
+md5sums=('fb6c3a0e684f2f80890cc8df24761667'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('e6047de4a48a543c2423a9ca3fb4b5f09fe775ee6201190f60d8ef901e30f909'
+sha256sums=('64975e32fdbacbc20b115389ff04b255b2f2a67bfceaed15bf7e9fc22af6f91b'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
@@ -43,6 +43,6 @@ package() {
         "$pkgdir/usr/share/famistudio"
     mkdir -p $pkgdir/usr/share/licenses/${pkgname}/
     cp LICENSE $pkgdir/usr/share/licenses/${pkgname}/
-    echo -e "#!/bin/sh\n\nmono /usr/share/famistudio/FamiStudio.exe" > $pkgdir/usr/bin/famistudio
+    echo -e "#\!/bin/sh\n\nmono /usr/share/famistudio/FamiStudio.exe \$*" > $pkgdir/usr/bin/famistudio
     chmod +x $pkgdir/usr/bin/famistudio
 }
