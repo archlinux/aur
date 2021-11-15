@@ -1,6 +1,6 @@
 pkgbase = quickgui-bin
 	pkgdesc = A Flutter frontend for quickget and quickemu
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/quickgui/quickgui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = quickgui-bin
 	depends = quickemu
 	provides = quickgui
 	conflicts = quickgui
-	source = quickgui-1.1.4.tar.xz::https://github.com/quickgui/quickgui/releases/download/v1.1.4/quickgui-1.1.4.tar.xz
-	sha256sums = 5801440d81a01c817435fb894890ac161a5531148c27cc26000789e28057347d
+	source = quickgui-1.1.5.tar.xz::https://github.com/quickgui/quickgui/releases/download/v1.1.5/quickgui-1.1.5.tar.xz
+	sha256sums = 5ac207aad1558f34bc0bff4f71cc437f503957242fd560c69b7382cb32825be0
 
 pkgname = quickgui-bin
