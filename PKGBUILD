@@ -6,7 +6,7 @@
 _gemname='actionpack'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server'
 arch=('any')
 url='https://rubyonrails.org'
@@ -16,7 +16,7 @@ depends=('ruby' 'ruby-actionview' 'ruby-activesupport' 'ruby-rack' 'ruby-rack-te
 makedepends=('ruby-activemodel' 'ruby-rake')
 checkdepends=('ruby-capybara' 'ruby-rack-cache' 'ruby-railties' 'ruby-rexml' 'ruby-selenium-webdriver')
 source=(
-    "rails-${pkgver}.tar.gz::https://github.com/rails/rails/archive/v${pkgver}.tar.gz"
+    "https://github.com/rails/rails/archive/v${pkgver}/rails-${pkgver}.tar.gz"
     'fix_tests.patch'
 )
 sha512sums=('411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520'
