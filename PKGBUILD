@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-erubis' 'ruby-haml' 'ruby-nokogiri' 'ruby-ruby_parser')
 makedepends=('ruby-bundler' 'ruby-rake')
 checkdepends=('ruby-minitest')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/haml/html2haml/archive/v${pkgver}.tar.gz")
+source=("https://github.com/haml/html2haml/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('ff5d1fbd3c1c3b769d67da8d8dc34a545041e47f3b443867b91bd504c28dae59a343a2db7ef0d88c2dd3cded468c6ed6b1b157436acbbcc3c8bc0934035c4d68')
 
 prepare() {
