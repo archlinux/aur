@@ -1,0 +1,23 @@
+pkgbase = gerbil-scheme
+	pkgdesc = Gerbil is an opinionated dialect of Scheme designed for systems programming, with a state of the art macro and module system on top of the Gambit runtime.
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://github.com/vyzo/gerbil
+	arch = x86_64
+	arch = i686
+	license = LGPLv2.1
+	license = Apache 2.0
+	depends = openssl
+	depends = zlib
+	depends = sqlite
+	depends = gambit-c>=4.9.3
+	optdepends = libxml
+	optdepends = libyaml
+	optdepends = mysql
+	optdepends = lmdb
+	optdepends = leveldb
+	conflicts = gerbil-scheme-git
+	source = gerbil-scheme-0.16-1.tar.gz::https://github.com/vyzo/gerbil/archive/refs/tags/v0.16.tar.gz
+	sha512sums = 46782b4b71a3b437501b825f2f164e53b285d3a4cdba8f04485edaaa589d8500535c06a47a1464fc537ab7546413dde37c8d6a16a5e076a99ccf255905ed105d
+
+pkgname = gerbil-scheme
