@@ -1,6 +1,6 @@
 pkgbase = swayfloatingswitcher-git
 	pkgdesc = A simple Alt+Tab switcher for floating windows
-	pkgver = 0.1.r6.1e792be
+	pkgver = 0.2.r6.1e792be
 	pkgrel = 1
 	url = https://github.com/ErikReider/SwayFloatingSwitcher
 	arch = x86_64
