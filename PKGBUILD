@@ -13,7 +13,7 @@ depends=('ruby')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rake-compiler')
 checkdepends=('ruby-minitest' 'ruby-pry')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    "${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
     "remove-unwanted-dependencies.patch"
 )
 sha512sums=('9f00697e2c953d7b8da09fa6da442c34dd3713b823b5dd0074e6998662d361d88a37ca4c530d9cbfeab8605dfb0eb7f95422c66f2c5f1d90080dd7aefc302952'
