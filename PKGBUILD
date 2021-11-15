@@ -3,7 +3,7 @@
 pkgname=ntfsprogs-ntfs3
 _pkgname=ntfs-3g_ntfsprogs
 pkgver=2021.8.22
-pkgrel=2
+pkgrel=3
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://www.tuxera.com/community/open-source-ntfs-3g/'
 arch=('x86_64')
@@ -47,7 +47,7 @@ package() {
 # ===============================================
 # (c) DLCB 2/11-2021
 
-  exec mount -tntfs3 "$@"' >  "${pkgdir}"/usr/bin/mount.ntfs
+mount -tntfs3 "$@"' >  "${pkgdir}"/usr/bin/mount.ntfs
  
 }
 
