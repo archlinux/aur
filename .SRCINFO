@@ -1,6 +1,6 @@
 pkgbase = nwg-panel
 	pkgdesc = GTK3-based panel for sway window manager
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-panel
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = nwg-panel
 	depends = pamixer
 	depends = playerctl
 	optdepends = wlr-randr: for non-sway Wayland WMs support
-	source = nwg-panel-0.4.3.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.4.3.tar.gz
-	md5sums = 14be64e65a8d5cb6cca97174956e1ba6
+	source = nwg-panel-0.5.0.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.5.0.tar.gz
+	md5sums = c1c841564af96e0c7dce13127184f9cb
 
 pkgname = nwg-panel
