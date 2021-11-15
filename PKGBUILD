@@ -5,10 +5,10 @@
 _gemname='actionview'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=2
-pkgdesc='Simple, battle-tested conventions and helpers for building web pages.'
+pkgrel=3
+pkgdesc='Simple, battle-tested conventions and helpers for building web pages'
 arch=('any')
-url='http://www.rubyonrails.org'
+url='https://rubyonrails.org'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activesupport' 'ruby-builder' 'ruby-erubi' 'ruby-rails-dom-testing' 'ruby-rails-html-sanitizer')
