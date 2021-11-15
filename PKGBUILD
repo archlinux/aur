@@ -7,12 +7,13 @@ _pkgver_images_system_arm="17.1-20211020"
 _pkgver_images_vendor="17.1-20211021"
 pkgname=waydroid-image-gapps
 pkgver="${_pkgver_images_system//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system (Android image, GAPPS)."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('Apache')
 url='https://github.com/waydroid'
 depends=('waydroid')
+provides=('waydroid-image')
 source_i686=(https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86/lineage-$_pkgver_images_system-GAPPS-waydroid_x86-system.zip
   https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86/lineage-$_pkgver_images_vendor-MAINLINE-waydroid_x86-vendor.zip)
 source_x86_64=(https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/lineage-$_pkgver_images_system-GAPPS-waydroid_x86_64-system.zip
