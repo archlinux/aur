@@ -3,23 +3,23 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="multisystem"
-pkgver="1.0455"
+pkgver="1.0459"
 pkgrel="1"
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
 arch=('i686' 'x86_64')
 license=('GPL3')
 if pacman -Qq vim-runtime >/dev/null 2>&1; then
-    depends=('vim' 'cdrkit' 'cryptsetup' 'dosfstools' 'gksu' 'grub' 'gtkdialog' 'gvfs' 'hdparm' 'imagemagick' 'lsb-release' 'lsof' 'mtools' 'parted' 'qemu' 'rsync' 'squashfs-tools' 'sudo' 'syslinux' 'unzip' 'wmctrl' 'xdotool' 'xterm' 'zenity');
+    depends=('vim' 'cdrkit' 'cryptsetup' 'dosfstools' 'gksu-git' 'grub' 'gtkdialog' 'gvfs' 'hdparm' 'imagemagick' 'lsb-release' 'lsof' 'mtools' 'parted' 'qemu' 'rsync' 'squashfs-tools' 'sudo' 'syslinux' 'unzip' 'wmctrl' 'xdotool' 'xterm' 'zenity');
 else
-    depends=('xxd' 'cdrkit' 'cryptsetup' 'dosfstools' 'gksu' 'grub' 'gtkdialog' 'gvfs' 'hdparm' 'imagemagick' 'lsb-release' 'lsof' 'mtools' 'parted' 'qemu' 'rsync' 'squashfs-tools' 'sudo' 'syslinux' 'unzip' 'wmctrl' 'xdotool' 'xterm' 'zenity');
+    depends=('xxd' 'cdrkit' 'cryptsetup' 'dosfstools' 'gksu-git' 'grub' 'gtkdialog' 'gvfs' 'hdparm' 'imagemagick' 'lsb-release' 'lsof' 'mtools' 'parted' 'qemu' 'rsync' 'squashfs-tools' 'sudo' 'syslinux' 'unzip' 'wmctrl' 'xdotool' 'xterm' 'zenity');
 fi
 optdepends=('fatresize: The FAT16/FAT32 non-destructive resizer.')
 source=("${pkgname}-${pkgver}.tar.bz2::http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "Packages::http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages"
 )
-sha256sums=('3da6ab4bd92fd5681afc9315e9641ff5caf605d16d2b1c7eb7860ff99192d1f5'
-            '3555da216a6abb1e579707e934316e29f3ffd607b947c454f6e7d1ac7746179c')
+sha256sums=('c2a7b085ee11945cb4918f1ae14960d5ad7de38dfb847ed3f1244da9764ad5fd'
+            'afd17929120102ff0acfd20a677fff37c7d786552afb2b1afa76275d31514317')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh

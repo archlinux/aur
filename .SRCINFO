@@ -1,6 +1,6 @@
 pkgbase = multisystem
 	pkgdesc = A GUI tool to create a usb system that can boot multiple distro's
-	pkgver = 1.0455
+	pkgver = 1.0459
 	pkgrel = 1
 	url = http://liveusb.info/dotclear/index.php
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = multisystem
 	depends = cdrkit
 	depends = cryptsetup
 	depends = dosfstools
-	depends = gksu
+	depends = gksu-git
 	depends = grub
 	depends = gtkdialog
 	depends = gvfs
@@ -31,10 +31,9 @@ pkgbase = multisystem
 	depends = xterm
 	depends = zenity
 	optdepends = fatresize: The FAT16/FAT32 non-destructive resizer.
-	source = multisystem-1.0455.tar.bz2::http://liveusb.info/multisystem/multisystem.tar.bz2
+	source = multisystem-1.0459.tar.bz2::http://liveusb.info/multisystem/multisystem.tar.bz2
 	source = Packages::http://liveusb.info/multisystem/depot/dists/all/main/binary-i386/Packages
-	sha256sums = 3da6ab4bd92fd5681afc9315e9641ff5caf605d16d2b1c7eb7860ff99192d1f5
-	sha256sums = 3555da216a6abb1e579707e934316e29f3ffd607b947c454f6e7d1ac7746179c
+	sha256sums = c2a7b085ee11945cb4918f1ae14960d5ad7de38dfb847ed3f1244da9764ad5fd
+	sha256sums = afd17929120102ff0acfd20a677fff37c7d786552afb2b1afa76275d31514317
 
 pkgname = multisystem
-
