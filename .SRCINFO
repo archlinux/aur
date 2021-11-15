@@ -1,8 +1,8 @@
 pkgbase = ruby-activerecord
-	pkgdesc = Object-relational mapper framework (part of Rails).
+	pkgdesc = Object-relational mapper framework (part of Rails)
 	pkgver = 6.1.4.1
-	pkgrel = 1
-	url = http://www.rubyonrails.org
+	pkgrel = 2
+	url = https://rubyonrails.org
 	arch = any
 	license = MIT
 	makedepends = ruby-rake

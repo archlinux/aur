@@ -6,10 +6,10 @@
 _gemname='activerecord'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=1
-pkgdesc='Object-relational mapper framework (part of Rails).'
+pkgrel=2
+pkgdesc='Object-relational mapper framework (part of Rails)'
 arch=('any')
-url='http://www.rubyonrails.org'
+url='https://rubyonrails.org'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activemodel' 'ruby-activesupport')
