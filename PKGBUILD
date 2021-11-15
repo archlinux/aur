@@ -1,6 +1,6 @@
 # Maintainer: Lukas Werling <lukas@lwrl.de>
 pkgname=txr
-pkgver=238
+pkgver=272
 pkgrel=1
 pkgdesc="A data munging language."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ source=(
 	"http://www.kylheku.com/cgit/txr/snapshot/txr-${pkgver}.tar.bz2"
 	"ftdetect.vim"
 )
-sha256sums=('3c2a4f5079243e1ae50967dbb136996366f5a0151d0e7fa7520a816226cb4bfe'
+sha256sums=('86e9bdc590c4882ae365e3425f920bbb23440c5395023990bc0f534fee92b0f5'
             'b884b3d595bcc45514d4a200ad11017d54506bcb9952497c5feaa2cf87871113')
 
 build() {
@@ -24,7 +24,7 @@ build() {
 check() {
 	cd "$pkgname-$pkgver"
 	# Tests have to run sequentially.
-	make -j1 tests.clean tests
+	make -j1 tests
 }
 
 package() {
