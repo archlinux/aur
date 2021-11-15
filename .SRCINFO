@@ -1,16 +1,15 @@
 pkgbase = prometheus-dnsmasq-exporter-git
 	pkgdesc = Prometheus exporter allowing you to monitor/alert on the number of DHCP leases and various DNS statistics
-	pkgver = 0.2.0.r1.gd5b74a1
-	pkgrel = 2
+	pkgver = 0.2.0.r11.g6d9ae78
+	pkgrel = 1
 	url = https://github.com/google/dnsmasq_exporter
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = git
 	makedepends = go
 	depends = glibc
 	depends = prometheus
-	source = prometheus-dnsmasq-exporter-git::git://github.com/google/dnsmasq_exporter.git
+	source = prometheus-dnsmasq-exporter-git::git+https://github.com/google/dnsmasq_exporter.git
 	sha256sums = SKIP
 
 pkgname = prometheus-dnsmasq-exporter-git
-
