@@ -2,12 +2,12 @@
 
 pkgname=siggo
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal gui for signal-cli, written in Go.'
 arch=('x86_64')
 url='https://github.com/derricw/siggo'
 license=('GPL3')
-depends=('libmatthew-unix-java' 'signal-cli')
+depends=('libmatthew-unix-java' 'signal-cli' 'glibc')
 makedepends=('go')
 source=("https://github.com/derricw/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 b2sums=('1333f1b81e12cfc9de14b64646dbe7cec2849054d287c87998d9bcc92c66cb489018e83d1f15e7174519323d01d34f72484a59b7b931e1d7951e00f1c1430b50')
