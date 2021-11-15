@@ -1,0 +1,18 @@
+pkgbase = qwt61-multiaxes-svn
+	pkgdesc = Qt Widgets for Technical Applications -- mutiaxes branch
+	pkgver = 6.1.r3381
+	pkgrel = 1
+	url = https://qwt.sourceforge.io/
+	arch = x86_64
+	license = custom:qwt
+	makedepends = qt5-tools
+	makedepends = subversion
+	depends = qt5-base
+	depends = qt5-svg
+	optdepends = qt5-tools: For Designer plugin
+	provides = qwt
+	conflicts = qwt
+	source = svn+https://svn.code.sf.net/p/qwt/code/branches/qwt-6.1-multiaxes
+	sha512sums = SKIP
+
+pkgname = qwt61-multiaxes-svn
