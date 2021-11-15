@@ -1,6 +1,6 @@
 pkgbase = wget-git
 	pkgdesc = A network utility to retrieve files from the Web
-	pkgver = 1.21.r2.g5a7f2f7e
+	pkgver = 1.21.2.r4.g65e6d5b3
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	install = wget.install
@@ -14,6 +14,8 @@ pkgbase = wget-git
 	makedepends = git
 	makedepends = perl
 	makedepends = rsync
+	makedepends = gperf
+	makedepends = autoconf-archive
 	depends = libutil-linux
 	depends = gnutls
 	depends = libidn
@@ -29,4 +31,3 @@ pkgbase = wget-git
 	md5sums = SKIP
 
 pkgname = wget-git
-
