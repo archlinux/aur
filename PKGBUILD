@@ -4,14 +4,14 @@ _gemname='cancancan'
 pkgname="ruby-${_gemname}"
 pkgver=3.3.0
 pkgrel=1
-pkgdesc="Simple authorization solution for Rails. All permissions are stored in a single location."
+pkgdesc="Simple authorization solution for Rails. All permissions are stored in a single location"
 arch=('any')
 url='https://github.com/CanCanCommunity/cancancan'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' )
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('bce29caa606ba46cc51397fe52b5b949d45dbafaeccf4e60662f17c36f2307a88be935fc1d7df2b9b72f66e5cfdcab04fae971d75333f2c0cf4d7b8e67a96f11')
 
 prepare() {
