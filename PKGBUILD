@@ -10,7 +10,7 @@ url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
-source=(http://cpan.perl.org/modules/by-authors/id/J/JG/$_author/$_perlmod-$pkgver.tar.gz)
+source=(https://cpan.perl.org/modules/by-authors/id/J/JG/$_author/$_perlmod-$pkgver.tar.gz)
 md5sums=('56dbe4aebd74937096acc963ef5c3872')
 
 build() {
