@@ -2,7 +2,7 @@
 
 _gitname=wget
 pkgname=$_gitname-git
-pkgver=1.21.r2.g5a7f2f7e
+pkgver=1.21.2.r4.g65e6d5b3
 pkgrel=1
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('libutil-linux' 'gnutls' 'libidn' 'libpsl' 'gpgme')
 optdepends=("ca-certificates: HTTPS Downloads")
 checkdepends=('perl' 'perl-http-daemon' 'perl-io-socket-ssl' 'python')
-makedepends=('git' 'perl' 'rsync')
+makedepends=('git' 'perl' 'rsync' 'gperf' 'autoconf-archive')
 provides=('wget')
 conflicts=('wget')
 backup=('etc/wgetrc')
@@ -25,7 +25,11 @@ build() {
   git submodule init
   git config submodule.gnulib.url "$srcdir/gnulib"
   git submodule update gnulib
-  ./bootstrap
+  if command -v wget 2>&1 >/dev/null; then
+    ./bootstrap
+  else
+    ./bootstrap --skip-po
+  fi
   autoreconf -fi
   ./configure --prefix=/usr --without-included-regex --enable-nls --enable-dependency-tracking --with-ssl=openssl --sysconfdir=/etc --with-metalink
   make
