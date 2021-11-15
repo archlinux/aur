@@ -1,5 +1,4 @@
 # Maintainer: Christian Visintin <christian dot visintin at gmail dot com>
-# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tuifeed
 pkgver=0.1.0

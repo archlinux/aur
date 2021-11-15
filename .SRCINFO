@@ -10,4 +10,4 @@ pkgbase = tuifeed
 	source = https://github.com/veeso/tuifeed/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = 6cda55ebc817d42ff495e66a5fb5d096fd129459fc78d6efb780ac6c418ab60c
 
-pkgname = termscp
+pkgname = tuifeed
