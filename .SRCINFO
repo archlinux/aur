@@ -1,6 +1,6 @@
 pkgbase = ruby-sprockets-rails
 	pkgdesc = Sprockets Rails integration
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/rails/sprockets-rails
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ruby-sprockets-rails
 	depends = ruby-activesupport
 	depends = ruby-sprockets
 	options = !emptydirs
-	source = ruby-sprockets-rails-3.3.0.tar.gz::https://github.com/rails/sprockets-rails/archive/v3.3.0.tar.gz
-	sha512sums = f6bc9920f19ac76e383a36ed550f06b16a4de628a8df15c6e70f005fe60c0050a01002c9334359adfb182b449a8baaec35733c846240258702a430f14dcdefe2
+	source = ruby-sprockets-rails-3.4.0.tar.gz::https://github.com/rails/sprockets-rails/archive/v3.4.0.tar.gz
+	sha512sums = 38ebadc351b807382be05e6e070f572a32b96a9b19572fff46eac3cf89574aa27c1ca1ae4419b626e3024cc79684423380e051c69d86dbec73284c50c1d1729c
 
 pkgname = ruby-sprockets-rails
