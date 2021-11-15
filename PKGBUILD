@@ -12,7 +12,7 @@ license=('GPL3')
 options=(!emptydirs)
 depends=('inetutils' 'ruby' 'ruby-activerecord' 'ruby-bcrypt' 'ruby-bigdecimal' 'ruby-charlock_holmes' 'ruby-gpgme' 'ruby-mail' 'ruby-mail-gpg' 'ruby-rake' 'ruby-sinatra' 'ruby-sinatra-contrib' 'ruby-sqlite3' 'ruby-thin' 'ruby-thor')
 checkdepends=('procps-ng' 'ruby-bundler' 'ruby-database_cleaner' 'ruby-factory_bot' 'ruby-hirb' 'ruby-rack-test' 'ruby-rspec')
-source=("${pkgname}-${pkgver}.tar.gz::https://0xacab.org/schleuder/schleuder/-/archive/schleuder-${pkgver}/schleuder-schleuder-${pkgver}.tar.gz"
+source=("https://0xacab.org/schleuder/schleuder/-/archive/schleuder-${pkgver}/schleuder-schleuder-${pkgver}.tar.gz"
         "sysuser_schleuder.conf"
         "tmpfile_schleuder.conf"
         # these patches are planned to be included in the next major release in schleuder
