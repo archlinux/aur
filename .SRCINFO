@@ -8,6 +8,7 @@ pkgbase = fkill
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs>=14
+	noextract = fkill-cli-7.0.0.tgz
 	source = https://registry.npmjs.org/fkill-cli/-/fkill-cli-7.0.0.tgz
 	sha256sums = b51723eb89338cdd1b510598a01f6acbce12349b5ba70af68643eea6d88bc044
 

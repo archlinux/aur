@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs>=14')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-#noextract=("$_npmname-$pkgver.tgz")
+noextract=("$_npmname-$pkgver.tgz")
 sha256sums=('b51723eb89338cdd1b510598a01f6acbce12349b5ba70af68643eea6d88bc044')
 
 package() {
@@ -39,5 +39,7 @@ package() {
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
 
-  install -Dm644 "$srcdir/package/license" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  mv "$pkgdir/usr/lib/node_modules/$_npmname/license.md" \
+    "$pkgdir/usr/share/licenses/$pkgname"
 }
