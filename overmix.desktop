@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Overmix
+Comment=Automatic anime screenshot stitching in high quality
+Exec=Overmix
+Terminal=False
+Categories=Graphics;2DGraphics;

@@ -1,7 +1,7 @@
 pkgbase = overmix
 	pkgdesc = Automatic anime screenshot stitching in high quality
 	pkgver = 0.4.0alpha3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/spillerrec/Overmix
 	arch = x86_64
 	license = GPL3
@@ -23,6 +23,8 @@ pkgbase = overmix
 	depends = qcustomplot
 	depends = libxcb
 	source = https://github.com/spillerrec/Overmix/archive/refs/tags/v0.4.0-alpha3.tar.gz
+	source = overmix.desktop
 	sha256sums = 759e1b32d2c95e0b5ff6b3b938034d25ac54dea65a84deffd88d533056378b25
+	sha256sums = e9e71bf5523fb4acfd7e01d0db90f42626ed9cd7fb20f57efa8fe40a69639627
 
 pkgname = overmix
