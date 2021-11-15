@@ -11,7 +11,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby')
 makedepends=('mariadb-clients' 'ruby-rake' 'ruby-rake-compiler')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('d704f192b233b78c8ccdc3978dab796ef667ad92f651255daa99ab0f886e8f816094583ff7c091681d42caf9cd3e14b17cc37f8b574ee5a6851adfd65d5bbf87')
 
 prepare() {
