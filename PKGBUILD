@@ -2,8 +2,8 @@
 
 _npmname=http-server
 pkgname=nodejs-$_npmname
-pkgver=0.12.3
-pkgrel=2
+pkgver=14.0.0
+pkgrel=1
 pkgdesc="A simple zero-configuration command-line http server"
 arch=('any')
 url="https://github.com/nodeapps/http-server"
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('ba0471d0ecc425886616cb35c4faf279140a0d37')
+sha1sums=('bd214952a60b93ce8ca9bbe8ba181faf7f9821b0')
 
 package() {
   cd "$srcdir"

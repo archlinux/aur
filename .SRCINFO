@@ -1,15 +1,14 @@
 pkgbase = nodejs-http-server
 	pkgdesc = A simple zero-configuration command-line http server
-	pkgver = 0.12.3
-	pkgrel = 2
+	pkgver = 14.0.0
+	pkgrel = 1
 	url = https://github.com/nodeapps/http-server
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = http-server-0.12.3.tgz
-	source = http://registry.npmjs.org/http-server/-/http-server-0.12.3.tgz
-	sha1sums = ba0471d0ecc425886616cb35c4faf279140a0d37
+	noextract = http-server-14.0.0.tgz
+	source = http://registry.npmjs.org/http-server/-/http-server-14.0.0.tgz
+	sha1sums = bd214952a60b93ce8ca9bbe8ba181faf7f9821b0
 
 pkgname = nodejs-http-server
-
