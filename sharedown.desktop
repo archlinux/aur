@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Sharedown
+Comment=Electron application to download Sharepoint videos, especially meant for students.
+Icon=/usr/share/sharedown/icon.png
+TryExec=sharedown
+Exec=sharedown
+Categories=Utility; AudioVideo;
+Keywords=Sharepoint;Sharedown;Microsoft;
+Terminal=false
+Hidden=false
