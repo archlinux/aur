@@ -2,31 +2,31 @@
 
 pkgname=procpath
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A process tree analysis workbench"
 arch=(any)
 url="https://heptapod.host/saajns/procpath"
 license=(LGPL3)
 makedepends=(mercurial python-setuptools)
 depends=(python python-jsonpyth python-pygal)
-source=("${pkgname}-${pkgver}::hg+${url}#revision=4e8ba95a83be")
+source=("${pkgname}::hg+${url}#revision=4e8ba95a83be")
 sha512sums=('SKIP')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   python setup.py build
 }
 
 # tests are disabled for now due to https://heptapod.host/saajns/procpath/-/issues/21
 #check() {
-#  cd "${pkgname}-${pkgver}"
+#  cd "${pkgname}"
 #
-#  python3 -m unittest
+#  python -m unittest
 #}
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
