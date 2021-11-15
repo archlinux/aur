@@ -9,8 +9,7 @@ pkgbase = perl-template-simple
 	depends = perl>=5.10.0
 	depends = perl-file-slurp
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/U/UR/URI/Template-Simple-0.06.tar.gz
+	source = https://cpan.metacpan.org/authors/id/U/UR/URI/Template-Simple-0.06.tar.gz
 	md5sums = d7ae8a05666b68d5b00cb4da7f25c774
 
 pkgname = perl-template-simple
-

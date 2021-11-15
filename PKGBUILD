@@ -13,7 +13,7 @@ depends=(
   'perl-file-slurp'
   )
 options=(!emptydirs)
-source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
+source=(https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
 md5sums=('d7ae8a05666b68d5b00cb4da7f25c774')
 
 build() {
