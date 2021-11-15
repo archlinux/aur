@@ -10,11 +10,11 @@ license=('MIT')
 url='https://github.com/microsoft/mimalloc'
 conflicts=('mimalloc-git')
 depends=('glibc')
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 provides=('mimalloc')
 options=('staticlibs')
-source=("${pkgname}_${pkgver}::git+https://github.com/microsoft/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/microsoft/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5af497f360879bf9d07a5146961d275a25f4177fbe21ee6c437db604422acd60')
 
 build() {
   cp -r "${pkgname}_${pkgver}" "${pkgname}-secure_${pkgver}"
