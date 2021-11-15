@@ -33,6 +33,7 @@ pkgbase = rstudio-desktop-git
 	depends = mathjax2
 	depends = pandoc
 	depends = yaml-cpp
+	depends = quarto-cli-bin
 	optdepends = git: for git support
 	optdepends = subversion: for subversion support
 	optdepends = openssh-askpass: for a git ssh access
