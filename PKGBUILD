@@ -2,7 +2,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libindi-gpsnmea
-pkgver=1.9.1
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="3rd party drivers for INDI: GPS NMEA"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 depends=(libindi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=('5918c3cf7f907201d6cf159ea7cbadf618fda197ba35dff3c0d4b37f2d67f695')
+sha256sums=("4e71a8106fcdf6248486b18f04f4013332b0722b4942b90fbf01770d8037d3dc")
 
 prepare() {
   mkdir -p build
