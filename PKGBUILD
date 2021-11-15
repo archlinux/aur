@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=py-spy-bin
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc="Sampling profiler for Python programs"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -18,10 +18,10 @@ noextract=("$pkgname-$pkgver-x86_64.zip"
            "$pkgname-$pkgver-armv7h.zip"
            "$pkgname-$pkgver-aarch64.zip")
 sha256sums=('80bbb8731db59cd835f59fcd06f127953804bb511c8487fd265d96c7c702cd00')
-sha256sums_x86_64=('baa6b2f7f5b6ec2c9192eb0046b953969a153ce784f6c4bd96a8a69f4ebeca40')
-sha256sums_i686=('a38cc9c6f209c289478fa3c65ce9a8efe64b9f9c3dadadd475be8f28441d0e90')
-sha256sums_armv7h=('50c9c27194d5393a70a7e5ae21c19c8f0e481adac64d8c21bb06d50980ea4739')
-sha256sums_aarch64=('48431c8a4ebf1f7806582462c0e67cb9cf2457c1a5e63ab6e1b335fcf560597f')
+sha256sums_x86_64=('6f7ba3ae9f6a61ca2e10367427ee8d39d46880b09a78a90e6899b02601187c8d')
+sha256sums_i686=('3b80db1630f5ca1314b72e7f739c00329bc44a8fd06f44a2d708267c248fce2f')
+sha256sums_armv7h=('e35a4720859dfd86238df5ac17d63d1f08901d40953ff5eac0bda5afdf744b22')
+sha256sums_aarch64=('3fbd42d211fe5c4cdf650b194940c1f053fe30b5fbba09e933432535a13867a5')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver-$CARCH"
