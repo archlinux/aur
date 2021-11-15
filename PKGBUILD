@@ -14,7 +14,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activesupport' 'ruby-sprockets')
 checkdepends=('ruby-bundler' 'ruby-rails' 'ruby-rake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rails/sprockets-rails/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('38ebadc351b807382be05e6e070f572a32b96a9b19572fff46eac3cf89574aa27c1ca1ae4419b626e3024cc79684423380e051c69d86dbec73284c50c1d1729c')
 
 prepare() {

@@ -13,7 +13,7 @@ pkgbase = ruby-sprockets-rails
 	depends = ruby-activesupport
 	depends = ruby-sprockets
 	options = !emptydirs
-	source = ruby-sprockets-rails-3.4.0.tar.gz::https://github.com/rails/sprockets-rails/archive/v3.4.0.tar.gz
+	source = https://github.com/rails/sprockets-rails/archive/v3.4.0/ruby-sprockets-rails-3.4.0.tar.gz
 	sha512sums = 38ebadc351b807382be05e6e070f572a32b96a9b19572fff46eac3cf89574aa27c1ca1ae4419b626e3024cc79684423380e051c69d86dbec73284c50c1d1729c
 
 pkgname = ruby-sprockets-rails
