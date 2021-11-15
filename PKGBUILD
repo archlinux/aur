@@ -6,7 +6,7 @@
 pkgname=github-desktop
 pkgver=2.9.4
 _gitname="release-$pkgver-linux1"
-pkgrel=3
+pkgrel=4
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
@@ -14,11 +14,11 @@ license=(MIT)
 depends=(curl
          gconf
          git
-         gnome-keyring
          libsecret
          libxss
          nspr
          nss
+         org.freedesktop.secrets
          unzip)
 optdepends=('github-cli: CLI interface for GitHub'
             'hub: CLI interface for GitHub')
