@@ -67,8 +67,8 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.15.1
-pkgrel=2
+pkgver=5.15.2
+pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
 arch=(x86_64)
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=a5d4b0c70bbcc3d123371478e9b4db3f39531d2f
+_arch_config_commit=1c8c4431fdd285d81aaca35b6e129d28462de5d6
 _prjc_version=5.15-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20210914
@@ -85,18 +85,18 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/6bdb2fe9154c05d2dfbd28e132db5539700a7cff.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/c94404d8c8685575f88db928d27cbde4592ef087.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('4285adfbd99fb853f70db73aed2ba68e146645495d8afc060c5ddae21aa67b3a92c09e76c69809693d4b3b7bfe9dc64efa4c7c43044d19fbd66898459a3f8958'
+b2sums=('e1247057fc57e2f071ff150b5e0651db054a1e15a258ebd198921f7ef0c1e441f0a36c46024298175a8a9a0bb7cc0b6d505d7a77a053c1ce88a720ebea424d89'
         'SKIP'
-        '73556396163b4c0a06fed13decbf51ea40c8e93b5f41fa6ad786bf0158ee193667cc4b1b54d4a62397348b40653ae5f9b219b33e1f468e345f1f48aeeb452fe6'
+        '13e22007dfd81dcfcd9a159881ddc5f92a600d6ed5f581c0826c5e2b2823b6a7ba0628e09960b8146d3a9bb669ee5ba7b119bd7ecb6cad06a76e6511bf533a44'
         'ba2c15b074fac3cb01eddb1099b6292077aaf7af1de4721b365b8da40895c61388081ee164bbcde938fdcefe17eea292c56a175da0a23591ffc7a6c3680d86ae'
         'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
-        '289893ac223ce31a1fbd1497d15c1bd4071991d30ddb01098d4b13468f8d36a6b61bd9011f4294b4dab21ca97dcb51bef0738b7d5d5e62857e9b251895bad358')
+        'bd38c6b27b291afb784d6b3f6b1a9fb25fb349b2d2f3a761259eca43ea94c146edc4d44c45f6309c8a0979bb8c0640c7abf2c7a2ca049a6120390b5ff1c239cc')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
