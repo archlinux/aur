@@ -5,11 +5,13 @@ pkgbase = ruby-rails-html-sanitizer
 	url = https://github.com/rails/rails-html-sanitizer
 	arch = any
 	license = MIT
+	makedepends = ruby-bundler
+	makedepends = ruby-minitest
+	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-loofah
 	options = !emptydirs
-	source = ruby-rails-html-sanitizer-1.3.0.tar.gz::https://github.com/rails/rails-html-sanitizer/archive/v1.3.0.tar.gz
+	source = https://github.com/rails/rails-html-sanitizer/archive/v1.3.0/ruby-rails-html-sanitizer-1.3.0.tar.gz
 	sha512sums = 0eca146048df7de2fdc739cc4c389037c2cb4da420a7d25368de15db065b6211c3e30cc62d515133ed1def3f190f4fd938a255c67fcaf3fa22e9b4bc054274e5
 
 pkgname = ruby-rails-html-sanitizer
-
