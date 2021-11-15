@@ -3,7 +3,7 @@
 pkgname=tunneler-git
 _pkgname=tunneler
 pkgver=r2.cd75602
-pkgrel=1
+pkgrel=2
 pkgdesc="port of an old DOS game written using SDL"
 url="https://github.com/jose1711/tunneler"
 depends=('sdl')
@@ -15,7 +15,7 @@ source=("${pkgname}"::'git+https://github.com/jose1711/tunneler.git')
 md5sums=('SKIP')
 
 prepare() {
-  gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "tunneler" --categories "Games"
+  gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "tunneler" --categories "Game;ActionGame"
 }
 
 pkgver() {
