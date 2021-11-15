@@ -3,7 +3,7 @@
 pkgname=ntfsprogs-ntfs3
 _pkgname=ntfs-3g_ntfsprogs
 pkgver=2021.8.22
-pkgrel=1
+pkgrel=2
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://www.tuxera.com/community/open-source-ntfs-3g/'
 arch=('x86_64')
@@ -29,18 +29,25 @@ build() {
     --mandir=/usr/share/man \
     --disable-ldconfig \
     --disable-static \
-    --with-fuse=external \
     --enable-xattr-mappings \
     --enable-posix-acls \
     --enable-extras \
-    --enable-crypto \
+    --disable-ntfs-3g
 
   make ntfsprogs
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" rootbindir=/usr/bin rootsbindir=/usr/bin rootlibdir=/usr/lib install
+  make ntfsprogs DESTDIR="${pkgdir}" rootbindir=/usr/bin rootsbindir=/usr/bin rootlibdir=/usr/lib install
   rm "${pkgdir}"/usr/share/man/man8/ntfsfallocate.8 # uninstalled binary
+  echo '#! /bin/sh
+
+# mount.ntfs : catch {,-tauto,-tntfs} NTFS mounts
+# ===============================================
+# (c) DLCB 2/11-2021
+
+  exec mount -tntfs3 "$@"' >  "${pkgdir}"/usr/bin/mount.ntfs
+ 
 }
 
