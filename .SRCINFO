@@ -10,7 +10,7 @@ pkgbase = ruby-activerecord
 	depends = ruby-activemodel
 	depends = ruby-activesupport
 	options = !emptydirs
-	source = rails-6.1.4.1.tar.gz::https://github.com/rails/rails/archive/v6.1.4.1.tar.gz
+	source = https://github.com/rails/rails/archive/v6.1.4.1/rails-6.1.4.1.tar.gz
 	sha512sums = 411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520
 
 pkgname = ruby-activerecord
