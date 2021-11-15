@@ -2,7 +2,7 @@ pkgbase = icaclient
 	pkgdesc = Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)
 	pkgver = 21.11.0.20
 	pkgrel = 1
-	url = https://www.citrix.com/downloads/workspace-app/linux/
+	url = https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html
 	install = citrix-client.install
 	arch = x86_64
 	arch = i686
@@ -41,11 +41,11 @@ pkgbase = icaclient
 	sha256sums = 1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064
 	sha256sums = a3da4a2cdc6f8ef7f3f26fe3344f7e6b6ee5cbe1cded77aadd616adc7771adb8
 	sha256sums = a5b03c48f359cdb3667ca0721c6b4091b97300605d5c9ca959ce072580483c81
-	source_x86_64 = icaclient-x64-21.11.0.20.tar.gz::https://downloads.citrix.com/20098/linuxx64-21.11.0.20.tar.gz?__gda__=exp=1636568269~acl=/*~hmac=dff2a92aa5ecfd550a786f9402e87a8cc59fa8553e88b60f1adebe9b918a273b
+	source_x86_64 = icaclient-x64-21.11.0.20.tar.gz::https://downloads.citrix.com/20098/linuxx64-21.11.0.20.tar.gz?__gda__=exp=1636987262~acl=/*~hmac=823088e05c8f151bd422852961f779b72bc91ca2a91ea7c3b750272d0df80851
 	sha256sums_x86_64 = 1ef35b14ba281ecf5ef029998d04076b8a15da8ae5e0a36d96eb70684bbd2595
-	source_i686 = icaclient-x86-21.11.0.20.tar.gz::https://downloads.citrix.com/20098/linuxx86-21.11.0.20.tar.gz?__gda__=exp=1636568269~acl=/*~hmac=dff2a92aa5ecfd550a786f9402e87a8cc59fa8553e88b60f1adebe9b918a273b
+	source_i686 = icaclient-x86-21.11.0.20.tar.gz::https://downloads.citrix.com/20098/linuxx86-21.11.0.20.tar.gz?__gda__=exp=1636987262~acl=/*~hmac=823088e05c8f151bd422852961f779b72bc91ca2a91ea7c3b750272d0df80851
 	sha256sums_i686 = 32273bcadfcc239a17e56f7e628aab7f86a0ec507031ad6b58a115fe51946521
-	source_armv7h = icaclient-armhf-21.11.0.20.tar.gz::https://downloads.citrix.com/20098/linuxarmhf-21.11.0.20.tar.gz?__gda__=exp=1636568269~acl=/*~hmac=dff2a92aa5ecfd550a786f9402e87a8cc59fa8553e88b60f1adebe9b918a273b
+	source_armv7h = icaclient-armhf-21.11.0.20.tar.gz::https://downloads.citrix.com/20098/linuxarmhf-21.11.0.20.tar.gz?__gda__=exp=1636987262~acl=/*~hmac=823088e05c8f151bd422852961f779b72bc91ca2a91ea7c3b750272d0df80851
 	sha256sums_armv7h = c7442fbb7a01dd69cf449d367a8f32cf89589beed05896b90abda9ea4d3dd019
 
 pkgname = icaclient
