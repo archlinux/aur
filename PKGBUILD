@@ -2,7 +2,7 @@
 # Co-Maintainer: Bert Peters <bert@bertptrs.nl>
 
 pkgname=python-plotly
-pkgver=5.3.1
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="An open-source, interactive graphing library"
 url="https://github.com/plotly/plotly.py"
@@ -26,7 +26,7 @@ npm)
 license=('MIT')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
-sha256sums=('ae70c1f33f080292df57dbba2257168eeb6cd4f6e73355f7a445a5e897d391a1')
+sha256sums=('686e144fae7f62fc70aa4cbe53d123de6928aab069a58787b39249902c1e9a18')
 
 build() {
   cd plotly.py-${pkgver}/packages/python/plotly
