@@ -1,7 +1,7 @@
 pkgbase = homebridge-config-ui-x
 	pkgdesc = Web-based management tool for Homebridge
-	pkgver = 4.41.1
-	pkgrel = 3
+	pkgver = 4.41.2
+	pkgrel = 1
 	url = https://github.com/oznu/homebridge-config-ui-x
 	install = homebridge-config-ui-x.install
 	arch = any
@@ -10,14 +10,17 @@ pkgbase = homebridge-config-ui-x
 	depends = npm
 	options = !emptydirs
 	options = !strip
-	source = homebridge-config-ui-x-4.41.1.tar.gz::https://github.com/oznu/homebridge-config-ui-x/archive/4.41.1.tar.gz
+	source = homebridge-config-ui-x-4.41.2.tar.gz::https://github.com/oznu/homebridge-config-ui-x/archive/4.41.2.tar.gz
 	source = systemd.service
 	source = tmpfiles.conf
 	source = sysusers.conf
-	b2sums = 30e27e383e08af0fa1c6525531143280c0c54e081378001abde17bcf038874c7c6a2654b2c37b82fbe85cb75ccdd6ed42890eaef0c940ac4547aec8c75348e25
+	sha512sums = 8f2431de0d63ad89d01813b44338e7165da8456b6bc909044d578bd80e991bbc867a3e1fa4f32aeb5943470b05abd345afb7880da9085ee3129b6d2f7c8d4ee4
+	sha512sums = 6a758eeea0cee8e262e9209226b3c4ff5e8982f8d3671bfb18287656eca71309694f3f9f11317ce80696991640fa277771ec21536546ea46d2565f64e08fff44
+	sha512sums = 68e756b0b6b78a53b1198bf630821abe470293c53ebd74d5a42acd589b41940920cfc949853695270f4b5de7c6e7e1b3d42d408694eec8551782a4ef163baeb1
+	sha512sums = a1722316d9c2e2130a3a7c808fc6570e0176863b72f0a8c511bd8a5a5a5a3c9064f22c25479ca43c856facdcc67d8c161feeefc1225e543471c73b693a493313
+	b2sums = 723f411f6fe219b24d8a5fb7a7aaa9fabc2913555b8676481ddc95b0672f279a22dcf2ca4e8798f0bb92cd285c9bfd91a892dd2c621ffaae5ede9e159b5b6274
 	b2sums = a0861270612dfe3ee33fab9fda23ab351625a76bfc006d44f39387c8b4fd7b67b7937d8c6dc94dbb584fe6e3fa657fd8754d3c823f2a2dd3d93f210d6b5d8102
 	b2sums = c60e965907e85b4a6dac12b60419b5446085794bdbdba0221c41e7557ff520c3688ff79b1219e17ac982d585f2cf616140717b44f8ad2a5e5a72fd360617be65
 	b2sums = 17039410c1e7aa8efd781a6a9acd31084a632998f0ea57f0df40fa028d12527b24bec71fdf28691b8e23fbfdef10c9b327875477ee113ffa9ad022d84a35552e
 
 pkgname = homebridge-config-ui-x
-
