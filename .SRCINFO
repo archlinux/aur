@@ -1,6 +1,6 @@
 pkgbase = apalache-bin
 	pkgdesc = A symbolic model checker for TLA+
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://apalache.informal.systems/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = apalache-bin
 	depends = coreutils
 	depends = util-linux
 	provides = apalache
-	source = https://github.com/informalsystems/apalache/releases/download/v0.17.2/apalache-v0.17.2.tgz
+	source = https://github.com/informalsystems/apalache/releases/download/v0.17.3/apalache-v0.17.3.tgz
 	source = sys-install.patch
-	sha256sums = cd34ee7919bce3cd8df4557c5682eb9bfbc5090642ca5c25db889cb9a63721fa
+	sha256sums = 08ce7a31cf5e8be65de44cbcb6a2e2386573547407b836a22fb07ab5e9e946ae
 	sha256sums = 825557bfdd2928787480e7d21e3b8397e48080fddc3fa6656d4b910db6c58c01
 
 pkgname = apalache-bin
