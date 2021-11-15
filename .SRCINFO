@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-anbox
 	pkgdesc = Linux Mainline
-	pkgver = 5.15
+	pkgver = 5.16rc1
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = linux-mainline-anbox
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-mainline-anbox::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.15
+	source = linux-mainline-anbox::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.16-rc1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 9a98011c557e139a4fdad65f39254d258aaea276c90d62b87562c5ac049fd9c3
+	sha256sums = d4ca1f9ebce6cb980e498ced7b6f64c0964951b204b6c030a45b8bbbc821b0cc
 
 pkgname = linux-mainline-anbox
 	pkgdesc = The Linux Mainline kernel and modules with ashmem and binder enabled
