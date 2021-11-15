@@ -1,6 +1,6 @@
 pkgbase = regolith-de
 	pkgver = 1.6
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/regolith-linux/regolith-desktop
 	arch = x86_64
 	groups = regolith-de
