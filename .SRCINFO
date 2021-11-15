@@ -1,10 +1,13 @@
 pkgbase = ruby-activemodel
-	pkgdesc = A toolkit for building modeling frameworks (part of Rails).
+	pkgdesc = A toolkit for building modeling frameworks (part of Rails)
 	pkgver = 6.1.4.1
-	pkgrel = 1
-	url = http://www.rubyonrails.org
+	pkgrel = 2
+	url = https://rubyonrails.org
 	arch = any
 	license = MIT
+	checkdepends = ruby-bcrypt
+	checkdepends = ruby-builder
+	checkdepends = ruby-rails
 	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-activesupport

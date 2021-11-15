@@ -6,15 +6,15 @@
 _gemname='activemodel'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=1
-pkgdesc='A toolkit for building modeling frameworks (part of Rails).'
+pkgrel=2
+pkgdesc='A toolkit for building modeling frameworks (part of Rails)'
 arch=('any')
-url='http://www.rubyonrails.org'
+url='https://rubyonrails.org'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activesupport')
 makedepends=('ruby-rake')
-#checkdepends=('ruby-bcrypt' 'ruby-builder' 'ruby-rails')
+checkdepends=('ruby-bcrypt' 'ruby-builder' 'ruby-rails')
 source=("rails-${pkgver}.tar.gz::https://github.com/rails/rails/archive/v${pkgver}.tar.gz")
 sha512sums=('411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520')
 
@@ -31,12 +31,11 @@ build() {
   gem build "${_gemname}.gemspec"
 }
 
-# disable check() as ruby-rails is not up-to-date
-#check() {
-#  cd "rails-${pkgver}/${_gemname}"
-#
-#  rake test
-#}
+check() {
+  cd "rails-${pkgver}/${_gemname}"
+
+  rake test
+}
 
 package() {
   cd "rails-${pkgver}/${_gemname}"
