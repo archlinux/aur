@@ -4,7 +4,7 @@ LAST_VERSION_SOURCE_URL=`curl https://mirror.wazo.io/desktop/wazo-desktop-latest
 echo "  => $LAST_VERSION_SOURCE_URL"
 
 echo "Extract version number"
-[[ "fsdfds1.12.6fsfd" =~ [0-9]+\.[0-9]+\.[0-9]+ ]] && LAST_VERSION_NUMBER=${BASH_REMATCH[0]}
+[[ "$LAST_VERSION_SOURCE_URL" =~ [0-9]+\.[0-9]+\.[0-9]+ ]] && LAST_VERSION_NUMBER=${BASH_REMATCH[0]}
 echo "  => $LAST_VERSION_NUMBER"
 
 echo "Update pkgver in PKGBUILD"
