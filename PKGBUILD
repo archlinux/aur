@@ -1,7 +1,7 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio
 _pkgname=FamiStudio
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -24,10 +24,10 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/${pkgver}.tar.gz"
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('1f482a406a95a1ff0f214673588fe3c7'
+md5sums=('e0c1d8fbe5bd352c6cecdcd5602767ec'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('c53062ff62d69ceae1acd37c18f991bacc7c8a2f63fa67c01a08353dd8239922'
+sha256sums=('cfa0b04427d09a8d35ac732b81316a1264cefedf5100d1c79083c52f956b1758'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
@@ -79,7 +79,7 @@ package() {
     ln -s /usr/lib/libopenal.so $pkgdir/usr/share/${pkgname}/libopenal32.so
     ln -s /usr/lib/librtmidi.so $pkgdir/usr/share/${pkgname}/librtmidi.so
 
-    echo -e "#!/bin/sh\n\nmono /usr/share/${pkgname}/${_pkgname}.exe" \
+    echo -e "#\!/bin/sh\n\nmono /usr/share/${pkgname}/${_pkgname}.exe \$*" \
         > $pkgdir/usr/bin/${pkgname}
     chmod +x $pkgdir/usr/bin/${pkgname}
 }
