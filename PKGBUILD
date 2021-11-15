@@ -3,7 +3,7 @@
 pkgbase=sweet-kde-git
 pkgname=(sweet-kde-git kvantum-theme-sweet-git)
 _pkgname=sweet
-pkgver=r157.93b2375
+pkgver=r212.ab6a7d3
 pkgrel=1
 pkgdesc="A very sweet theme"
 arch=(any)
@@ -31,14 +31,12 @@ package_sweet-kde-git() {
 
     install -d "$pkgdir"/usr/share
     
-    # Temporary: https://github.com/EliverLara/Sweet/issues/78
+    # Workaround: https://github.com/EliverLara/Sweet/issues/78
     mkdir -p aurorae/themes
     mv aurorae/Sweet-Dark aurorae/themes/Sweet-Dark
     mv aurorae/Sweet-Dark-transparent aurorae/themes/Sweet-Dark-transparent
     rm aurorae/.shade.svg
     mv colorschemes color-schemes
-    mkdir -p Kvantum
-    mv kvantum Kvantum/Sweet
     mkdir -p plasma/look-and-feel
     mv look-and-feel plasma/look-and-feel/com.github.eliverlara.sweet
     mv sddm sddm-Sweet
@@ -60,6 +58,9 @@ package_kvantum-theme-sweet-git() {
     cd $_pkgname/kde
 
     install -d "$pkgdir"/usr/share
+
+    # Workaround: https://github.com/EliverLara/Sweet/issues/181
+    mv kvantum Kvantum
 
     cp -r Kvantum "$pkgdir"/usr/share
 }

@@ -1,6 +1,6 @@
 pkgbase = sweet-kde-git
 	pkgdesc = A very sweet theme
-	pkgver = r157.93b2375
+	pkgver = r212.ab6a7d3
 	pkgrel = 1
 	url = https://github.com/EliverLara/sweet
 	arch = any
@@ -21,4 +21,3 @@ pkgname = kvantum-theme-sweet-git
 	pkgdesc = Sweet theme for KDE Plasma 5
 	depends = kvantum-qt5
 	provides = kvantum-theme-sweet
-
