@@ -4,14 +4,14 @@ _gemname='database_cleaner-core'
 pkgname="ruby-${_gemname}"
 pkgver=2.0.1
 pkgrel=2
-pkgdesc='Strategies for cleaning databases. Can be used to ensure a clean slate for testing.'
+pkgdesc='Strategies for cleaning databases. Can be used to ensure a clean slate for testing'
 arch=('any')
 url='https://github.com/DatabaseCleaner/database_cleaner'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('b41d5388c74ccaf9e72f9e6ab6b7cc6ead2706409236b38419d7ef3935b90766e04ad2bfef0ee58a07c0b9051452cab314545cd023853985aac46efaf0922eaa')
 
 prepare() {
