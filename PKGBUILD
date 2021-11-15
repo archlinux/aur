@@ -76,7 +76,7 @@ _use_current=
 
 pkgbase=linux-mini
 pkgver=5.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel and modules with minimal configuration'
 
 url="https://www.kernel.org/"
@@ -88,7 +88,7 @@ makedepends=(
   'git'
 )
 options=('!strip')
-_gcc_more_v='20210914'
+_gcc_more_v='20211114'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver:0:4}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/patch-${pkgver}.xz"
@@ -100,11 +100,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha512sums=('d25ad40b5bcd6a4c6042fd0fd84e196e7a58024734c3e9a484fd0d5d54a0c1d87db8a3c784eff55e43b6f021709dc685eb0efa18d2aec327e4f88a79f405705a'
-            'SKIP'
-            '5f0123bdc7c9875e7b3f02a89496a8a1e0808d77dc58fb725e250d93d69510a1ef6462cfb38cb38e78e20ca34fd7446f58327cad5e67fc68ec36d15777048edf'
-            'b41b3a71e2ba4813844f763d6de4c2122f61dbeebefbb4c185ea1cdea0882d80dcddcf6b660185f064fcae953aa232950a7c4383b05790e30dd5658c55a14093'
-            '0f0affb2399b4ecc6ece082b46b92521ec7e7c7312710c49af54e8c9646e14fd4e47856495f9e492e45074c0563a94a1b7844b2ecc13f305551d916b8dd4a69a')
+b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
+        'SKIP'
+        '769ef83b6613d865b420d048c25ac1df4c2f88f7ae580b373f874d312720bad877e561756943c9833535a94e5621922bba24cb1b804a1540f2e67cfa23f1a1aa'
+        '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
+        '13e22007dfd81dcfcd9a159881ddc5f92a600d6ed5f581c0826c5e2b2823b6a7ba0628e09960b8146d3a9bb669ee5ba7b119bd7ecb6cad06a76e6511bf533a44')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -172,9 +172,20 @@ prepare() {
                        --module-after SND_MIXER_OSS SND_PCM_OSS \
                        --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
                        --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
+                       # fix for FS#72645 FS#72658
+        scripts/config --undefine SYSFB_SIMPLEFB \
+                       --enable FB_VESA \
+                       --enable FB_EFI \
+                       --enable FB_MODE_HELPERS \
+                       --enable FB_TILEBLITTING
 
         # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
         scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+
+        # File systems
+        scripts/config --module NTFS3_FS \
+                       --enable NTFS3_LZX_XPRESS \
+                       --enable NTFS3_FS_POSIX_ACL
 
         # Security options
         scripts/config --enable SECURITY_SELINUX \
@@ -197,7 +208,7 @@ prepare() {
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         echo "Patching to enable GCC optimization for other uarchs..."
-        patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
+        patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
         fi
 
 		### Get kernel version
