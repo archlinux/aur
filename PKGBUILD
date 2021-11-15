@@ -17,9 +17,9 @@ source=("${pkgname}_${pkgver}.tar.gz::https://github.com/microsoft/${pkgname}/ar
 sha256sums=('5af497f360879bf9d07a5146961d275a25f4177fbe21ee6c437db604422acd60')
 
 build() {
-  cp -r "${pkgname}_${pkgver}" "${pkgname}-secure_${pkgver}"
+  cp -r "${pkgname}-${pkgver}" "${pkgname}-secure_${pkgver}"
 
-  cd "${pkgname}_${pkgver}"
+  cd "${pkgname}-${pkgver}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}_${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
 
   cd "../${pkgname}-secure_${pkgver}"
