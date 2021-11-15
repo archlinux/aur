@@ -7,6 +7,7 @@ Type=simple
 User=soju
 Restart=always
 ExecStart=/usr/bin/soju --config /etc/soju/config
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
