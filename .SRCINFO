@@ -1,0 +1,26 @@
+pkgbase = cpuminer-gr-avx2-git
+	pkgdesc = Optimised Version of GR miner for RTM - git version
+	pkgver = 1.2.4.1.r0.gd2e391d
+	pkgrel = 1
+	url = https://github.com/WyvernTKC/cpuminer-gr-avx2
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = automake
+	depends = curl
+	depends = jansson
+	depends = gmp
+	depends = openssl
+	depends = zlib
+	depends = numactl
+	provides = cpuminer
+	provides = cpuminer-multi
+	provides = cpuminer-opt
+	provides = cpuminer-gr
+	conflicts = cpuminer
+	conflicts = cpuminer-multi
+	conflicts = cpuminer-opt
+	source = git+https://github.com/WyvernTKC/cpuminer-gr-avx2
+	md5sums = SKIP
+
+pkgname = cpuminer-gr-avx2-git
