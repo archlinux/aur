@@ -11,7 +11,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activemodel' 'ruby-activemodel-serializers-xml' 'ruby-activesupport')
 makedepends=('ruby-bundler' 'ruby-rake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rails/activeresource/archive/v${pkgver}.tar.gz")
+source=("https://github.com/rails/activeresource/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('12cf375f0ec563a06400484341363ce9e8b3a55ca5ed06d6de3ca3b8f1083f0c1073b2c7deec2eb551061a9425d3531d8abf2c05d18f94d187e214b356d43dc7')
 
 prepare() {
