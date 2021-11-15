@@ -3,7 +3,7 @@
 
 pkgname=boolector
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Boolector is an efficient SMT solver for the quantifier-free theory of bit-vectors in combination with the quantifier-free extensional theory of arrays."
 arch=('i686' 'x86_64')
 url="http://boolector.github.io/"
@@ -39,7 +39,7 @@ package() {
   find . -name "*.h" -exec install -D -m644 {} "$pkgdir/usr/include/boolector/{}" \;
 
   cd "$srcdir/boolector-3.2.2"
-  find . -name "*.so" -exec install -m755 {} "$pkgdir/usr/lib/" \;
+  find . -name "*boolector*.so" -exec install -m755 {} "$pkgdir/usr/lib/" \;
 
   cd "$srcdir/boolector-3.2.2/build/bin"
   find . -name "b*"  -exec install -D -m755 {} "$pkgdir/usr/bin/{}" \;
