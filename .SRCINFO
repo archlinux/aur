@@ -15,7 +15,7 @@ pkgbase = linux-ck
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.2.tar.sign
 	source = config
-	source = more-uarches-20210914.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210914.tar.gz
+	source = more-uarches-20211114.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20211114.tar.gz
 	source = xanmod-patches-from-ck-8ba6612318090567422d49ccc79bc7bbe5484cfc.tar.gz::https://github.com/xanmod/linux-patches/archive/8ba6612318090567422d49ccc79bc7bbe5484cfc.tar.gz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -23,7 +23,7 @@ pkgbase = linux-ck
 	b2sums = e1247057fc57e2f071ff150b5e0651db054a1e15a258ebd198921f7ef0c1e441f0a36c46024298175a8a9a0bb7cc0b6d505d7a77a053c1ce88a720ebea424d89
 	b2sums = SKIP
 	b2sums = 13e22007dfd81dcfcd9a159881ddc5f92a600d6ed5f581c0826c5e2b2823b6a7ba0628e09960b8146d3a9bb669ee5ba7b119bd7ecb6cad06a76e6511bf533a44
-	b2sums = d1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211
+	b2sums = 534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d
 	b2sums = cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e
 	b2sums = c9d2fb487b12040f17a9a8eaefca776c2a2a1c37fb0fb6337630ff896f82f25c0303e1f26f0fa98e4f3e6eb143947d84a48a286678aa2977163711e291a90115
 
