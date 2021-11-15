@@ -12,14 +12,14 @@ _gemname='ruby_parser'
 pkgname="ruby-${_gemname}"
 pkgver=3.18.0
 pkgrel=2
-pkgdesc='Ruby parser written in pure ruby.'
+pkgdesc='Ruby parser written in pure ruby'
 arch=('any')
 url='https://github.com/seattlerb/ruby_parser'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-sexp_processor')
 makedepends=('ruby-hoe' 'ruby-minitest' 'ruby-oedipus_lex' 'ruby-racc' 'ruby-rake' 'unifdef')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('ccf0119e419cc5c507d238a6e372f7493478924afa96ce65566b6b22c4f4e7bedcc2a5767213abb0ab9ad9d4d57d5bbbdd493a2e97afc6778d9cdc7490926525')
 
 prepare() {
