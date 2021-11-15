@@ -6,10 +6,10 @@
 _gemname='actionpack'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=2
-pkgdesc='Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server.'
+pkgrel=3
+pkgdesc='Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server'
 arch=('any')
-url='http://www.rubyonrails.org'
+url='https://rubyonrails.org'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionview' 'ruby-activesupport' 'ruby-rack' 'ruby-rack-test' 'ruby-rails-dom-testing' 'ruby-rails-html-sanitizer')
