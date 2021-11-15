@@ -7,7 +7,7 @@ pkgbase = stern
 	license = apache
 	makedepends = go
 	depends = glibc
-	source = stern-1.20.1.tar.gz::https://github.com/stern/stern/archive/v1.20.1.tar.gz
+	source = https://github.com/stern/stern/archive/v1.20.1/stern-1.20.1.tar.gz
 	sha512sums = 42faae6f575425a6d79d49f1894fc950ffe4fe4823520cd67d6d819bbabbe7e8a02334c8058819f64e18f943898396c6ec266b9ff347c5ca91ef41914d0c846a
 
 pkgname = stern

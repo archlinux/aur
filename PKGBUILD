@@ -9,7 +9,7 @@ url="https://github.com/stern/stern"
 license=('apache')
 depends=('glibc')
 makedepends=('go')
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('42faae6f575425a6d79d49f1894fc950ffe4fe4823520cd67d6d819bbabbe7e8a02334c8058819f64e18f943898396c6ec266b9ff347c5ca91ef41914d0c846a')
 
 build() {
