@@ -3,10 +3,10 @@
 _gemname='activeresource'
 pkgname="ruby-${_gemname}"
 pkgver=5.1.1
-pkgrel=1
-pkgdesc='REST on Rails. Wrap your RESTful web app with Ruby classes and work with them like Active Record models.'
+pkgrel=2
+pkgdesc='REST on Rails. Wrap your RESTful web app with Ruby classes and work with them like Active Record models'
 arch=('any')
-url='http://www.rubyonrails.org'
+url='https://rubyonrails.org'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activemodel' 'ruby-activemodel-serializers-xml' 'ruby-activesupport')

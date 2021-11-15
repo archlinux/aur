@@ -1,8 +1,8 @@
 pkgbase = ruby-activeresource
-	pkgdesc = REST on Rails. Wrap your RESTful web app with Ruby classes and work with them like Active Record models.
+	pkgdesc = REST on Rails. Wrap your RESTful web app with Ruby classes and work with them like Active Record models
 	pkgver = 5.1.1
-	pkgrel = 1
-	url = http://www.rubyonrails.org
+	pkgrel = 2
+	url = https://rubyonrails.org
 	arch = any
 	license = MIT
 	makedepends = ruby-bundler
