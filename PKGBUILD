@@ -2,7 +2,7 @@
 
 pkgname=raptoreum-bin
 _pkgname=raptoreum
-pkgver=1.3.15.99
+pkgver=1.2.15.2
 pkgrel=1
 pkgdesc="The Raptoreum Wallet"
 arch=("any")
@@ -14,10 +14,11 @@ source=(
     "https://github.com/Raptor3um/raptoreum/releases/download/$pkgver/$_filename.tar.gz"
 )
 sha512sums=(
-    "eff203af40a3b3079748fcb40c44e00cedded6d10670e23bd9a7bf7355e903e5329409fe8267d1d9e1d0796874f36b3cd6a7deec4cf230e722ef772c471a86bd"
+    "46f99826e2eac3069b439349e3a1d394895fe5e964f939f84a5b59965434b7dc6426a733b661df57516dbd5bd91b4dc9f33768880836ad28ddfb54f76db4a83b"
 )
 
 package() {
     install -d ${pkgdir}/usr/bin
-    mv ${srcdir}/${_filename}/* ${pkgdir}/usr/bin
+    rm ${srcdir}/$_filename.tar.gz
+    mv ${srcdir}/* ${pkgdir}/usr/bin
 }
