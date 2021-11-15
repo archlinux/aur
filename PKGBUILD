@@ -4,14 +4,14 @@ _gemname='simple_form'
 pkgname="ruby-${_gemname}"
 pkgver=5.1.0
 pkgrel=1
-pkgdesc="Forms made easy!"
+pkgdesc="Forms made easy"
 arch=('any')
 url='https://github.com/heartcombo/simple_form'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activemodel')
 makedepends=('ruby-bundler' 'ruby-rake')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('78c15d22bd1092cf76bea1e7e82253338016c0e4d62212b8bfa9cc34734d5ee520956299abf1ffe2bccadf30b3c2e79d1028d45668918a26f932830231500fde')
 
 prepare() {
