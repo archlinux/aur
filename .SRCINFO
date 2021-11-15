@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher
 	pkgdesc = An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function
-	pkgver = 214.51ef9ab
+	pkgver = 222.8463025
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
