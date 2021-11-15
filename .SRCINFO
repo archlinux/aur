@@ -1,18 +1,18 @@
 pkgbase = qgnomeplatform
 	pkgdesc = QPlatformTheme for a better Qt application inclusion in GNOME
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/FedoraQt/QGnomePlatform
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
-	depends = gtk3
-	depends = qt5-wayland
-	depends = qt6-wayland
-	depends = adwaita-qt6>=1.4.1
-	depends = adwaita-qt>=1.4.1
-	source = qgnomeplatform-0.8.1.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/0.8.1.tar.gz
-	sha256sums = dceac30a9e6246220badcc736c7b806ec3e0171bbcad1fa830d115fb6d59705c
+	makedepends = gtk3
+	makedepends = qt5-wayland
+	makedepends = qt6-wayland
+	makedepends = adwaita-qt6>=1.4.1
+	makedepends = adwaita-qt>=1.4.1
+	source = qgnomeplatform-0.8.2.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/0.8.2.tar.gz
+	sha256sums = 5851671ca9186976738489f54e8084140b5548b3f99e47def9d562c4ad33d44d
 
 pkgname = qgnomeplatform
 	pkgdesc = QPlatformTheme for a better Qt5 application inclusion in GNOME
