@@ -8,13 +8,13 @@ pkgbase = nvhpc
 	makedepends = bash
 	depends = numactl
 	depends = java-runtime
-	depends = env-modules
+	optdepends = env-modules
 	conflicts = pgi-compilers
 	replaces = pgi-compilers
 	options = !strip
 	source = https://developer.download.nvidia.com/hpc-sdk/21.9/nvhpc_2021_219_Linux_x86_64_cuda_11.4.tar.gz
 	source = nvhpc.sh
 	sha256sums = 9203e9620dbd5699d92615d58df9adcffd19c6d25794d8b297b7b3723d16c9c1
-	sha256sums = b5e5524d1a4536a0f7583f727b4645158e21de4bca429af410d176c034f12601
+	sha256sums = b8fc3fa1cffcc27e343e230301041c3605a93489df4c39f85a7bd7d0fa7a700a
 
 pkgname = nvhpc
