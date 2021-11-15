@@ -11,7 +11,7 @@ depends=('quickemu')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.tar.xz"::"https://github.com/quickgui/quickgui/releases/download/v$pkgver/quickgui-$pkgver.tar.xz")
-md5sums=('56a63078d5864f00732b64ae735f85a7')
+sha256sums=('5801440d81a01c817435fb894890ac161a5531148c27cc26000789e28057347d')
 
 package() {
   cd "$_pkgname-$pkgver"
