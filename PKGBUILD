@@ -1,8 +1,10 @@
+# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
+
 _pkgname=meshlab
 pkgname="${_pkgname}"-appimage
 pkgver=2021.10
-pkgrel=1
-pkgdesc="Open-source mesh processing tool"
+pkgrel=2
+pkgdesc="Open source system for processing and editing 3D triangular meshes. Appimage package"
 arch=('x86_64')
 url="https://www.meshlab.net"
 license=('GPL3')
