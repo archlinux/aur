@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-nokogiri')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
 checkdepends=('ruby-pry')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+    "${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     remove_yard_dependency.patch
 )
 sha512sums=('432fd92c66aefa1ef13f276dffbd6d196e0a38f1d3337a9aaf8356f25d61884616fb140bc74b425466634648533dc221c5b369810bc344a9d48968bd51d6af31'
