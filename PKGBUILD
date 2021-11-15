@@ -4,7 +4,7 @@
 
 pkgname=openlierox
 pkgver=0.58_rc5
-pkgrel=4
+pkgrel=5
 pkgdesc="An extremely addictive realtime worms shoot-em-up backed by an active gamers community"
 arch=(i686 x86_64)
 license=("GPL")
@@ -20,7 +20,7 @@ md5sums=('9899f4c7e11eb02abe5bebfbdef80dcb'
 
 prepare() {
   cd $srcdir/OpenLieroX
-  gendesk -f -n --pkgname OpenLieroX --pkgdesc "${pkgdesc}" --exec "openlierox" --categories "Games"
+  gendesk -f -n --pkgname OpenLieroX --pkgdesc "${pkgdesc}" --exec "openlierox" --categories "Game;Shooter;ActionGame"
 }
 
 build() {
