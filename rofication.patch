@@ -13,6 +13,7 @@
  ROFICATION_VERSION = '1.2.2'
 +ROFICATION_THEME = user_config_dir(appname)
 \ No newline at end of file
+
 --- a/rofication/_gui.py	2021-11-04 06:37:39.743263711 -0400
 +++ b/rofication/_gui.py	2021-11-04 06:35:12.916912359 -0400
 @@ -2,6 +2,8 @@
@@ -24,7 +25,6 @@
  from datetime import datetime
  
  from gi.repository import GLib
- 
 @@ -10,8 +12,10 @@
  
  HTML_TAGS_PATTERN = re.compile(r'<[^>]*?>')
