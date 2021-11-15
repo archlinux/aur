@@ -7,6 +7,14 @@ echo "Extract version number"
 [[ "$LAST_VERSION_SOURCE_URL" =~ [0-9]+\.[0-9]+\.[0-9]+ ]] && LAST_VERSION_NUMBER=${BASH_REMATCH[0]}
 echo "  => $LAST_VERSION_NUMBER"
 
+echo "Get current version number"
+CURRENT_VERSION_NUMBER=`grep -oP "pkgver=([0-9]+\.[0-9]+\.[0-9]+)" ./PKGBUILD | cut -d = -f2`
+echo "  => $CURRENT_VERSION_NUMBER"
+if [[ "$LAST_VERSION_NUMBER" == "$CURRENT_VERSION_NUMBER" ]]; then
+    echo "No new version detected. Do nothing."
+    exit 1
+fi
+
 echo "Update pkgver in PKGBUILD"
 sed -i 's/pkgver=.*/pkgver='"$LAST_VERSION_NUMBER"'/' PKGBUILD
 
