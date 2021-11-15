@@ -1,7 +1,7 @@
 pkgbase = litestream
 	pkgdesc = Streaming S3 replication for SQLite.
 	pkgver = 0.3.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/benbjohnson/litestream
 	arch = x86_64
 	license = Apache
@@ -11,8 +11,10 @@ pkgbase = litestream
 	source = https://github.com/benbjohnson/litestream/archive/v0.3.6.tar.gz
 	source = litestream.sysusers
 	source = litestream.tmpfiles
+	source = litestream@.service
 	sha256sums = 42323c31af2f70891854709dcd56ce7c970ebdb42d563da1bc81d8abc47f434a
 	sha256sums = ff01a182a9138602692b9b55e01888bdf7a8c19f0f1c7be60bb165bd343dc7bf
 	sha256sums = 15775e0ad1842ace5683e2eb13b0d829a5d3df09e42c89fbc4daf82eef1897b4
+	sha256sums = 75aed3927a406fb7ac7b265c5fa44fbfed677be0078ca4e356158a071d9db69b
 
 pkgname = litestream

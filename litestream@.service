@@ -1,0 +1,12 @@
+[Unit]
+Description=Litestream %I
+
+[Service]
+User=litestream
+Group=litestream
+SupplementaryGroups=%i
+Restart=always
+ExecStart=/usr/bin/litestream replicate -config /etc/litestream/%i.yml
+
+[Install]
+WantedBy=multi-user.target
