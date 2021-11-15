@@ -12,7 +12,7 @@ pkgbase = ruby-activemodel-serializers-xml
 	depends = ruby-activesupport
 	depends = ruby-builder
 	options = !emptydirs
-	source = ruby-activemodel-serializers-xml-1.0.2.tar.gz::https://github.com/rails/activemodel-serializers-xml/archive/v1.0.2.tar.gz
+	source = https://github.com/rails/activemodel-serializers-xml/archive/v1.0.2/ruby-activemodel-serializers-xml-1.0.2.tar.gz
 	sha512sums = 888db4822f9ed4fd17ba93f2e03e4edc204bc14f62e3622949140a3497f56ad7cd7d49cd7f38fbf557098ceed9f2f1334093fd8493ccc82e56be15f6bf138af9
 
 pkgname = ruby-activemodel-serializers-xml

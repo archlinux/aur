@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-activemodel' 'ruby-activesupport' 'ruby-builder')
 makedepends=('ruby-bundler' 'ruby-rake')
 #checkdepends=('ruby-capybara' 'ruby-rack-cache' 'ruby-railties' 'ruby-rexml' 'ruby-selenium-webdriver')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('888db4822f9ed4fd17ba93f2e03e4edc204bc14f62e3622949140a3497f56ad7cd7d49cd7f38fbf557098ceed9f2f1334093fd8493ccc82e56be15f6bf138af9')
 
 prepare() {
