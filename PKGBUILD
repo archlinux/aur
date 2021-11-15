@@ -4,7 +4,7 @@ _pkgname=netns-helper
 pkgname=netns-helper-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=r44.755de37
+pkgver=r46.d9381ec
 pkgrel=1
 pkgdesc='Helper systemd services to create network namespaces for other programs and services.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -33,13 +33,8 @@ build() {
 package() {
 	cd "${_pkgname}"
 	
-	install -dm755 "${pkgdir}/etc/netns-helper/ns"
-	install -dm755 "${pkgdir}/usr/lib/systemd/system"
-	install -Dm644 'systemd/system'/* -t "${pkgdir}/usr/lib/systemd/system"
-	install -dm755 "${pkgdir}/usr/lib/netns-helper"
-	install -Dm755 'scripts/netns-helperctl' -t "${pkgdir}/usr/lib/netns-helper/"
-	install -Dm755 'scripts/netns-dhclient-script-wrapper' -t "${pkgdir}/usr/lib/netns-helper/"
-	install -Dm755 'scripts/netns-helper' -t "${pkgdir}/usr/bin/"
+	DESTDIR="${pkgdir}" PREFIX=/usr ./install.sh
+	
 	install -Dm644 "${srcdir}/build/man/"* -t "${pkgdir}/usr/share/man/man1"
 	install -Dm644 'license.txt' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
