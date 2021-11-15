@@ -55,6 +55,7 @@ sha512sums=('df00907475c4cfed8e23c4d9c3f716b478ea3b20b6bd4d222e5308ae657f9b61939
 build() {
 ## setup paths
 sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
+sed -i -r 's|"Proton-.*"|"Proton-GE"|' ${srcdir}/Proton-${_pkgver}/compatibilitytool.vdf
 }
 
 package() {
