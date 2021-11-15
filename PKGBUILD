@@ -4,14 +4,14 @@ _gemname=factory_bot
 pkgname=ruby-$_gemname
 pkgver=6.1.0
 pkgrel=1
-pkgdesc='Provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures.'
+pkgdesc='Provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures'
 arch=(any)
 url="https://github.com/thoughtbot/${_gemname}"
 license=(MIT)
 options=(!emptydirs)
 depends=(ruby ruby-activesupport)
 makedepends=(ruby-rake)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('bbb0e6316bdc44a483afba3a8a2e49732900fc5ac93222329514abcebab898f01a2258c77fd16466afcb7ffb5f454bf2b594bd5724aed703e30051cbeea1d243')
 
 prepare() {
