@@ -1,0 +1,141 @@
+diff --color -uwr a/src/packet-sapdiag.c b/src/packet-sapdiag.c
+--- a/src/packet-sapdiag.c	2021-11-15 14:44:46.919384377 -0500
++++ b/src/packet-sapdiag.c	2021-11-15 14:45:13.521326805 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ #include <epan/expert.h>
+diff --color -uwr a/src/packet-sapenqueue.c b/src/packet-sapenqueue.c
+--- a/src/packet-sapenqueue.c	2021-11-15 14:44:46.926051530 -0500
++++ b/src/packet-sapenqueue.c	2021-11-15 14:45:41.673382391 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ #include <epan/expert.h>
+diff --color -uwr a/src/packet-saphdb.c b/src/packet-saphdb.c
+--- a/src/packet-saphdb.c	2021-11-15 14:44:46.926051530 -0500
++++ b/src/packet-saphdb.c	2021-11-15 14:45:40.063264824 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ #include <epan/expert.h>
+diff --color -uwr a/src/packet-sapigs.c b/src/packet-sapigs.c
+--- a/src/packet-sapigs.c	2021-11-15 14:44:46.926051530 -0500
++++ b/src/packet-sapigs.c	2021-11-15 14:45:38.263133384 -0500
+@@ -21,8 +21,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <inttypes.h>
+ #include <stdlib.h>
+
+diff --color -uwr a/src/packet-sapms.c b/src/packet-sapms.c
+--- a/src/packet-sapms.c	2021-11-15 14:44:46.929385107 -0500
++++ b/src/packet-sapms.c	2021-11-15 14:45:36.192982227 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ #include <epan/expert.h>
+diff --color -uwr a/src/packet-sapprotocol.c b/src/packet-sapprotocol.c
+--- a/src/packet-sapprotocol.c	2021-11-15 14:44:46.929385107 -0500
++++ b/src/packet-sapprotocol.c	2021-11-15 14:45:50.033992865 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ #include <epan/expert.h>
+diff --color -uwr a/src/packet-saprfc.c b/src/packet-saprfc.c
+--- a/src/packet-saprfc.c	2021-11-15 14:44:46.929385107 -0500
++++ b/src/packet-saprfc.c	2021-11-15 14:45:56.504465335 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ #include <epan/expert.h>
+diff --color -uwr a/src/packet-saprouter.c b/src/packet-saprouter.c
+--- a/src/packet-saprouter.c	2021-11-15 14:44:46.929385107 -0500
++++ b/src/packet-saprouter.c	2021-11-15 14:46:01.664842131 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <stdlib.h>
+
+ #include <epan/packet.h>
+diff --color -uwr a/src/packet-sapsnc.c b/src/packet-sapsnc.c
+--- a/src/packet-sapsnc.c	2021-11-15 14:44:46.936052261 -0500
++++ b/src/packet-sapsnc.c	2021-11-15 14:46:07.318588291 -0500
+@@ -19,8 +19,6 @@
+ # ==============
+ */
+
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/expert.h>
+
+diff --color -uwr a/tools/make-plugin-reg.py b/tools/make-plugin-reg.py
+--- a/tools/make-plugin-reg.py	2021-11-15 14:41:01.532927169 -0500
++++ b/tools/make-plugin-reg.py	2021-11-15 15:06:41.652054264 -0500
+@@ -102,14 +102,16 @@
+ reg_code += preamble
+
+ reg_code += """
+-#include "config.h"
+-
+ #include <gmodule.h>
+
++#include "ws_version.h"
++
+ /* plugins are DLLs */
+ #define WS_BUILD_DLL
+ #include "ws_symbol_export.h"
+
++#define HAVE_PLUGINS
++
+ """
+
+ if registertype == "plugin":
+@@ -130,8 +132,8 @@
+
+ reg_code += """
+ WS_DLL_PUBLIC_DEF const gchar plugin_version[] = PLUGIN_VERSION;
+-WS_DLL_PUBLIC_DEF const int plugin_want_major = VERSION_MAJOR;
+-WS_DLL_PUBLIC_DEF const int plugin_want_minor = VERSION_MINOR;
++WS_DLL_PUBLIC_DEF const int plugin_want_major = WIRESHARK_VERSION_MAJOR;
++WS_DLL_PUBLIC_DEF const int plugin_want_minor = WIRESHARK_VERSION_MINOR;
+
+ WS_DLL_PUBLIC void plugin_register(void);
+

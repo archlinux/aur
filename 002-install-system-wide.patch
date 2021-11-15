@@ -1,0 +1,12 @@
+diff --color -uwr a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-11-15 14:57:24.304688910 -0500
++++ b/CMakeLists.txt	2021-11-15 14:59:18.609702356 -0500
+@@ -30,7 +30,7 @@
+   MESSAGE(STATUS "Wireshark 3.4 libraries found in ${Wireshark_LIB_DIR}, performing a stand-alone plug-in build.")
+
+   if(NOT CMAKE_INSTALL_LIBDIR )
+-    set(CMAKE_INSTALL_LIBDIR ~/.local/lib/wireshark/plugins/${Wireshark_VERSION_MAJOR}.${Wireshark_VERSION_MINOR}/epan)
++    set(CMAKE_INSTALL_LIBDIR ${Wireshark_PLUGIN_INSTALL_DIR}/epan)
+   endif(NOT CMAKE_INSTALL_LIBDIR )
+   MESSAGE(STATUS "Plug-in will be installed in: ${CMAKE_INSTALL_LIBDIR}")
+
