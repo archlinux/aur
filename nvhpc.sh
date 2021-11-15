@@ -1,3 +1,6 @@
+if command -v module 2>&1 >/dev/null; then
+  module use /opt/nvidia/modulefiles
+else
 export nvhome=/opt/nvidia
 export target=Linux_x86_64
 export version=21.5
@@ -34,4 +37,5 @@ export CPATH=$nvcommdir/nvshmem/include:$CPATH
 
 export MANPATH=$nvcompdir/man:$MANPATH
 
-export OPAL_PREFIX=$nvcommdir/mpi 
+export OPAL_PREFIX=$nvcommdir/mpi
+fi

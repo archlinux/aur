@@ -1,31 +1,32 @@
 # Maintainer:  Rohit Goswami <rohit.goswami@aol.com>
 # Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
+# Contributor: Sebastian Ehlert <awvwgk at disroot dot org>
 
 pkgname=nvhpc
 _REL_YEAR=2021
-_CUDA_VER=11.3
-pkgver=21.5
+_CUDA_VER=11.4
+pkgver=21.9
 pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://developer.nvidia.com/hpc-sdk"
 license=('custom')
-depends=('numactl' 'java-runtime')
+depends=('numactl' 'java-runtime' 'env-modules')
 makedepends=('bash')
 replaces=('pgi-compilers')
 conflicts=('pgi-compilers')
 _pkgname="${pkgname}_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
         "nvhpc.sh")
-sha256sums=('c624cdd662099fbde5ca904272ad614ef190577b4bbbf8921e49968f1de6502d'
-            '1144ba292de786d78c3a7c23ee4ff8fa4994c735627c2e7561d610bb9ecfc2fa')
+sha256sums=('9203e9620dbd5699d92615d58df9adcffd19c6d25794d8b297b7b3723d16c9c1'
+            'b5e5524d1a4536a0f7583f727b4645158e21de4bca429af410d176c034f12601')
 options=(!strip)
 
 package() {
   cd "$srcdir/$_pkgname"
-  export NVHPC_SILENT=true
-  export NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia"
+  NVHPC_SILENT=true \
+  NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia" \
   bash ./install
 
   # Remove references to $pkgdir from module files
