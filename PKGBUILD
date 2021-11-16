@@ -1,7 +1,7 @@
 pkgname=rtl8723bu-git-dkms
 _pkgname=rtl8723bu
 pkgver=255
-pkgrel=2
+pkgrel=1
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/lwfinger/rtl8723bu"
 provides=('rtl8723bu-git-dkms')
@@ -28,8 +28,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    rm -rf .git/
-    rm -f *.tar.gz
 }
 
 package() {
@@ -45,10 +43,10 @@ package() {
         -i "${install_dir}/dkms.conf"
     cd "${srcdir}/${_pkgname}"
     for d in $(find . -type d); do
-	install -dm755 "${install_dir}/$d"
+        install -dm755 "${install_dir}/$d"
     done
     for f in $(find . -type f); do
-	install -m644 "$f" "${install_dir}/$f"
+        install -m644 "$f" "${install_dir}/$f"
     done
     sed -i 's/EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/#EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/g' ${install_dir}/Makefile
 }
