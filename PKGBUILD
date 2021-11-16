@@ -4,14 +4,14 @@ pkgname=sunamu
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way!"
-url="https://github.com/AryToNeX/Sunamu"
+url="https://github.com/NyaomiDEV/Sunamu"
 license=("MPL-2.0")
 arch=("x86_64" "i686" "armv7h" "aarch64")
 conflicts=(sunamu-git sunamu-bin)
 makedepends=("git" "npm" "yarn" "node-gyp")
 depends=("electron")
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/AryToNeX/Sunamu/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NyaomiDEV/Sunamu/archive/v$pkgver.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
 sha256sums=("9d19a0caaacbd909641add9fb3e0740e4d57811fb42f81ef7c05e389f630a353"
