@@ -1,0 +1,9 @@
+post_install() {
+	cat <<EOF
+
+Nix is installed but is not configured.
+
+To access Nix's daemon socket, users must be a member of the group 'nix-users'.
+
+EOF
+}
