@@ -1,6 +1,6 @@
 pkgbase = metview
 	pkgdesc = ECMWF interactive meteorological application
-	pkgver = 5.12.1
+	pkgver = 5.13.1
 	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/METV/Metview
 	arch = i686
@@ -12,18 +12,17 @@ pkgbase = metview
 	makedepends = rpcsvc-proto
 	makedepends = gcc-fortran
 	depends = cgal
-	depends = lapack
-	depends = magics++>=4.5.0
-	depends = qt5-svg
-	depends = qt5-xmlpatterns
+	depends = magics++>=4.9.0
+	depends = qt6-5compat
+	depends = qt6-svg
 	depends = snappy
-	source = https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-5.12.1-Source.tar.gz
+	source = https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-5.13.1-Source.tar.gz
 	source = rpc.patch
 	source = blas.patch
 	source = gfortran.patch
 	source = string.patch
 	source = format_security.patch
-	sha256sums = 3999bc2ca908943077752e8229ab46ddc4815583e35c877098c6a38433014de6
+	sha256sums = bbf3f6df727ea1ba2a5e22540f62ab0d4c95e2a9b09106370bd2a2f0e5226f76
 	sha256sums = abd2f612ca08e9d2a7c288ab0d5512777411f9e6c6077e9b1ac62d4a444345a2
 	sha256sums = c80aed03a542364af5ff177a49e04052d017f992f9139300249be31466170096
 	sha256sums = a86a2a0c8c7a52c38f2c37d2366d0ff22beabf81723f8c6f9696a1743221c3f0
