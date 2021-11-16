@@ -2,7 +2,7 @@
 
 pkgname=faubox
 pkgver=16.3.100
-pkgrel=1
+pkgrel=2
 pkgdesc="FAU file synchronization client"
 arch=('any')
 url="https://www.intern.fau.de/personal-und-arbeitsleben/arbeitsmittel-und-instrumente/faubox-cloudspeicher-fuer-alle-fau-angehoerigen"
@@ -18,7 +18,8 @@ sha512sums=('8983893a7d470544633c0815a0f097f5c0ac2ceadf52a37e6fd308118692e228a45
 
 
 prepare() {
-    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "FAUbox" --categories "Network"
+    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "FAUbox" \
+            --categories "Network;FileTransfer"
 }
 
 package() {
