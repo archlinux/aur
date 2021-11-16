@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-git
-pkgver=r19743.5b2fa8dd4
+pkgver=r19935.720970c4c
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-mainline-git' 'yuzu-canary-git')
 depends=('desktop-file-utils'
+         'fmt'
          'glslang'
          'libfdk-aac'
          'libxkbcommon-x11'
-         'libzip'
          'lz4'
          'mbedtls'
          'openssl'
@@ -32,7 +32,6 @@ depends=('desktop-file-utils'
 makedepends=('boost'
              'catch2'
              'cmake'
-             'fmt'
              'ffmpeg'
              'git'
              'ninja'
