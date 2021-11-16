@@ -2,7 +2,7 @@
 
 pkgname=kmcaster
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="On-screen display (OSD) for keyboard and mouse events"
 arch=('any')
 url="https://github.com/DaveJarvis/kmcaster"
@@ -14,7 +14,7 @@ source=("${pkgname}_${pkgver}.jar"::"https://github.com/DaveJarvis/kmcaster/rele
 noextract=("${pkgname}_$pkgver.jar")
 
 prepare() {
-  gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec "kmcaster" --categories "Utility"
+  gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec "kmcaster" --categories "Utility;Accessibility;Java"
 }
 
 package() {

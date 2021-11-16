@@ -1,7 +1,7 @@
 pkgbase = kmcaster
 	pkgdesc = On-screen display (OSD) for keyboard and mouse events
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DaveJarvis/kmcaster
 	arch = any
 	license = GPL
