@@ -1,7 +1,7 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
-pkgver=1.29.13.00
+pkgver=1.29.14.00
 pkgrel=1
 pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
@@ -12,11 +12,12 @@ makedepends=('gendesk' 'imagemagick')
 optdepends=(
   'bash-completion: tab completion support'
   'ccache: for Wine native host support'
+  'nlohmann-json: for Wine native host support'
 )
 source_i686=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable.zip")
 source_x86_64=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-x64.zip")
-sha256sums_i686=('cbeff94a20f77abb5b7c4508963615147fd8de9202af63e50e8bd54457b80e71')
-sha256sums_x86_64=('01d8eb764aa174f2baad996155dab6a4e188ca84bc42ed9f05044ca7905933f9')
+sha256sums_i686=('4c0cc91e65ac0262ab3484c60b8390bc892c68d1caf28fd172d689e32004582b')
+sha256sums_x86_64=('a12f635719067377182c50797ebe3c01a04902d1009a8b1fb906deb985a0dd47')
 
 prepare(){
   convert "$srcdir/OpenMPT-$pkgver/mpt.ico" "$srcdir/icon.png"
