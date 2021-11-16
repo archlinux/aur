@@ -2,7 +2,7 @@
 
 pkgname=screenstudio
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming software that lets you record your desktop in a full HD video files"
 arch=('i686' 'x86_64')
 depends=('beansbinding' 'java-runtime')
@@ -16,7 +16,7 @@ sha256sums=('42ba99dd3be99828b25efd9663519d3abf2f218835b1784086edcba38e950651'
 
 prepare() {
   cd "${srcdir}"
-  gendesk -f -n --pkgname "ScreenStudio" --exec "screenstudio" --pkgdesc "ScreenStudio for Linux" --categories 'Video;AudioVideo'
+  gendesk -f -n --pkgname "ScreenStudio" --exec "screenstudio" --pkgdesc "ScreenStudio for Linux" --categories 'Video;AudioVideo;Recorder'
 }
 
 build() {

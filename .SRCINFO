@@ -1,7 +1,7 @@
 pkgbase = screenstudio
 	pkgdesc = Streaming software that lets you record your desktop in a full HD video files
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://screenstudio.crombz.com/
 	arch = i686
 	arch = x86_64
