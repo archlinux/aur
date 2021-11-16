@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=bytehound
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A memory profiler for Linux"
 arch=('x86_64')
@@ -10,13 +10,14 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rustup' 'yarn' 'node-gyp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('3f29bc27c082eab503a2c36566a4da56dde9bbcd61df365f8632e7d5b3d9151f419a2f80bea74df4c409910e2f725a85a6fa56c39b43810ffe7510bebc3d6372')
+sha512sums=('7b424ec01be958998f326ef09741ad3d1c5e01089891f22ded5b8d1c46dbded40adf57e7b45285b8f8fb1c13bfc92d0ee97cc2254cf37349fe020d2056e12aa9')
+b2sums=('3b8b41fdefa6144acd2256c29b82fc6c8418edf5bdc235d27fea04bec666dcdbbd3d21c54e5d391a21cc0eea5fd49542d8d9e583e55d2e17f2f87f92f1d2869b')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   # setup toolchain with a pinned nightly version
-  echo "nightly-2021-08-19" > rust-toolchain
+  echo "nightly-2021-11-16" > rust-toolchain
 
   # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
