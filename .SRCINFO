@@ -1,6 +1,6 @@
 pkgbase = nextcloud20
 	pkgdesc = A cloud server to store your files centrally on a hardware controlled by you
-	pkgver = 20.0.13
+	pkgver = 20.0.14
 	pkgrel = 1
 	url = https://nextcloud.com
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = nextcloud20
 	options = !strip
 	backup = etc/webapps/nextcloud/apache.example.conf
 	backup = etc/webapps/nextcloud/config/config.php
-	source = https://download.nextcloud.com/server/releases/nextcloud-20.0.13.tar.bz2
+	source = https://download.nextcloud.com/server/releases/nextcloud-20.0.14.tar.bz2
 	source = apache.example.conf
 	source = nextcloud.hook
-	sha256sums = e9bd524c072309c84ead253f12b6840392db570d8503d6f3427544af5428b196
+	sha256sums = 09652c459c99e0b77dbd91603151715c6cd09e4f4abbdecb64f495581af09367
 	sha256sums = 30a8ad62b0dc9523ca7f0387b1f0483d196c1e011ec7e3a5b98e7d33c721d4bf
 	sha256sums = b8794c6b357c762f6d4e6f099d8073bd465d6cd87d6d07341568d9509720e6e8
 
