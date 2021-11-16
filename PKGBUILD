@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('tidy' 'nodejs' 'qt5-multimedia' 'flameshot' 'qt5-declarative' 'libxtst')
 makedepends=('git' 'xcb-util' 'qt5-base' 'qt5-x11extras' 'qt5-multimedia')
 
-optdepends=('libxtst')
+# optdepends=('libxtst')
 conflicts=('cutetranslation')
 replaces=()
 backup=()
@@ -39,6 +39,6 @@ package() {
   cp ./build/CuteTranslation ./template
   install -Dm644 ./template/CuteTranslation.svg ${pkgdir}/usr/share/icons/CuteTranslation.svg
   install -Dm644 $srcdir/cutetranslation.desktop $pkgdir/usr/share/applications/cutetranslation.desktop
-  install -D ./template/* -t ${pkgdir}/opt/CuteTranslationq
+  install -D ./template/* -t ${pkgdir}/opt/CuteTranslation
 }
 

@@ -16,7 +16,6 @@ pkgbase = cutetranslation-flameshot
 	depends = flameshot
 	depends = qt5-declarative
 	depends = libxtst
-	optdepends = libxtst
 	conflicts = cutetranslation
 	source = https://github.com/jiangzc/CuteTranslation/archive/v0.5.0.tar.gz
 	source = cutetranslation.desktop
