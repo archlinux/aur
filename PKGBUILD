@@ -27,5 +27,5 @@ package() {
 	ln -s "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -dm644 "$pkgdir/usr/share/applications"
-	printf "[Desktop Entry]\nVersion=$pkgver\nName=Slippi Launcher\nComment=Super Smash Bros. Melee rollback netcode\nPath=/usr/bin\nExec=slippi-launcher\nIcon=slippi-launcher\nType=Application\nCategories=Game\nKeywords=slippi;melee;rollback\n" > "$pkgdir/usr/share/applications/$pkgname.desktop"
+	printf "[Desktop Entry]\nVersion=$pkgver\nName=Slippi Launcher\nComment=The way to play Slippi Online and watch replays.\nPath=/usr/bin\nExec=slippi-launcher\nIcon=slippi-launcher\nType=Application\nCategories=Game\nKeywords=slippi;melee;rollback\n" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
