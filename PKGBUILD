@@ -10,6 +10,8 @@ license=('MIT')
 
 depends=('fltk' 'yaml-cpp' 'libxpm' 'curl' 'tinyxml2' 'boost-libs')
 optdepends=('gpsbabel')
+provides=('florb')
+conflicts=('florb')
 makedepends=('omake' 'gendesk' 'git' 'gpsd')
 md5sums=('SKIP'
          '949001a25d72c44013f9c708c138690d')
@@ -26,12 +28,13 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname}/src"
   sed -i '/^#include/s%Fl/%FL/%' dlg_ui_ex.cpp dlg_settings_ex.cpp
+  sed -i '/^CXXFLAGS = -std=/s/^CXXFLAGS = /CXXFLAGS = -fPIC /' OMakefile
   # patch -p0 -i "${srcdir}/gpsdclient.patch"
 }
 
 build() {
   cd $srcdir/$pkgname/src
-  gendesk -f -n --pkgname florb --exec florb --pkgdesc "$pkgdesc" --categories 'Utility'
+  gendesk -f -n --pkgname florb --exec florb --pkgdesc "$pkgdesc" --categories 'Utility;Maps'
   omake
 }
 
