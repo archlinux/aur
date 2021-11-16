@@ -1,7 +1,7 @@
 pkgbase = python-bronzebeard
 	pkgdesc = Minimal ecosystem for bare-metal assembly RISC-V development
-	pkgver = 0.1.10
-	pkgrel = 3
+	pkgver = 0.1.15
+	pkgrel = 1
 	url = https://github.com/theandrew168/bronzebeard
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-bronzebeard
 	depends = python
 	depends = python-pyusb
 	depends = python-pyserial
-	source = https://files.pythonhosted.org/packages/source/b/bronzebeard/bronzebeard-0.1.10.tar.gz
-	sha256sums = e6cdaf2841f3f223e7de5530ceaf2602694fe3d9bf6ecdf975803e30a589c059
+	source = https://files.pythonhosted.org/packages/source/b/bronzebeard/bronzebeard-0.1.15.tar.gz
+	sha256sums = 00fee5113cb33530741c72c2ed4b29c79e9954c42cf6de7f511eb468ae7441e3
 
 pkgname = python-bronzebeard
 	depends = python
