@@ -2,7 +2,7 @@
 
 _pkgname=aws-google-auth
 pkgname="python-$_pkgname"
-pkgver=0.0.36
+pkgver=0.0.37
 pkgrel=1
 pkgdesc="Provides AWS STS credentials based on Google Apps SAML SSO auth"
 arch=('any')
