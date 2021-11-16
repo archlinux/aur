@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.71.git.354.gbf21a342
+pkgver=2.71.r413.g815f0b45
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -24,17 +24,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags|sed s+git+.git+|tr - .
+  git describe --tags|sed s+git.+.r+|tr - .
 }
 
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
-  export CXXFLAGS+=" -I${pkgname%-git}"
-  ./configure --disable-gc \
-	      --disable-gl \
+  ./configure --enable-gc=system \
 	      --prefix=/usr \
-	      --enable-offscreen \
 	      --enable-texlive-build
   make all
 }
