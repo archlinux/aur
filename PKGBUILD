@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=python-dhall
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Python bindings for dhall, a functional configuration language"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ license=('Apache' 'MIT')
 depends=('python' 'openssl')
 makedepends=('python-pip' 'cargo' 'maturin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/s-zeng/dhall-python/archive/v${pkgver}.tar.gz")
-sha256sums=('5b33e301a9c520bd7fd723f04e36d7d2eede9f626bd92899a412931b6bfdcd0d')
-b2sums=('711474c05aa2deadd301db2aa927411fe0c2694fe7d54da73d65b1a42f0a6ecaab8bda711f4be1ba6d07a4ef1e4f18095df68af24cb219981f72441efb42c3db')
+sha256sums=('42bd60183c7ebe24db5c6b6a3764b332c8cc0ef3495eb496a2d153e7dff6194a')
+b2sums=('4b5336e2f9e15ddd08c839bfac93c9bf6a02912c947b3edbed23861b4346764a2e37208ce1a976b3322bb9fb63e1bfbc0a2e3ed2703776b858ef351fa3874449')
 
 build() {
   cd "dhall-python-${pkgver}"
