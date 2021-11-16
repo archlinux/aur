@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=1.2.25
+pkgver=1.2.29
 pkgrel=1
 pkgdesc="Financial data interface library"
 arch=('any')
@@ -30,7 +30,7 @@ depends=(
 makedepends=('python-setuptools')
 changelog=changelog.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jindaxiang/akshare/archive/v$pkgver.tar.gz")
-sha256sums=('0279da0b4325aed6a6e042b3184b76ab36c49da2d6211f40a17e4fa3604cfe79')
+sha256sums=('778c6f4b36301c63130b9c5bf9a541b453435fbf591781e1b8edcba230ff1704')
 
 prepare() {
 	cd "akshare-$pkgver"
