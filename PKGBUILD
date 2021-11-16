@@ -25,6 +25,9 @@
 #  
 #  4. Test the modified PKGBUILD file with all of the following commands
 #       ```sh
+#       # remove the possible builds
+#       rm -f flameshot-git-r*.zst
+#
 #       # read this for more info about namcap: https://wiki.archlinux.org/title/Namcap
 #       namcap -i PKGBUILD
 #       
