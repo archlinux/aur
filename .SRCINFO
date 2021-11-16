@@ -1,6 +1,6 @@
 pkgbase = checkersland
 	pkgdesc = Сheckers program for playing with computer or people via the Internet
-	pkgver = 20190607
+	pkgver = 20211112
 	pkgrel = 1
 	url = http://checkersland.com/
 	install = checkersland.install
@@ -11,9 +11,8 @@ pkgbase = checkersland
 	source = http://checkersland.com/download/checkersland.jar
 	source = checkersland
 	source = checkersland.png
-	md5sums = 312ef7e667519732dcca5163cf308766
+	md5sums = 2c4b5d9519e5ec4910c40b08a58376ba
 	md5sums = 2c37881e0f34ed66bb4bf862116787c6
 	md5sums = 904461219a50a4fe6631dfe55731c2d9
 
 pkgname = checkersland
-

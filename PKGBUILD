@@ -1,5 +1,7 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
+
 pkgname=checkersland
-pkgver=20190607
+pkgver=20211112
 pkgrel=1
 pkgdesc='Сheckers program for playing with computer or people via the Internet'
 arch=(x86_64)
@@ -11,12 +13,12 @@ source=(http://checkersland.com/download/checkersland.jar
         checkersland
         checkersland.png)
 install=checkersland.install
-md5sums=('312ef7e667519732dcca5163cf308766'
+md5sums=('2c4b5d9519e5ec4910c40b08a58376ba'
          '2c37881e0f34ed66bb4bf862116787c6'
          '904461219a50a4fe6631dfe55731c2d9')
 
 prepare() {
-  gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec "checkersland" --categories "Games"
+  gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec "checkersland" --categories "Game;BoardGame"
 }
 
 package() {
