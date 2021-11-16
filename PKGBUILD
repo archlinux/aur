@@ -22,7 +22,7 @@
 ## guide when making this one.
 
 pkgname=matlab-support
-pkgver=9.9.0
+pkgver=9.11.0
 pkgrel=1
 pkgdesc='Provides dependencies desktop file and common fixes for MATLAB.'
 arch=('x86_64')
@@ -104,7 +104,7 @@ sha512sums=('ba72458379c89b22a27d1d7e357cefae4437fa28caac47b26ccd4f5b01b8cbc2c00
             msg2 'Creating desktop file'
             gendesk -f -n --pkgname 'matlab' \
                 --pkgdesc 'A high-level language for numerical computation and visualization.' \
-                --categories 'Development;Education;science;Mathematics;IDE' \
+                --categories 'Development;Education;Science;Mathematics;IDE' \
                 --exec 'env env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6:/usr/lib/libgio-2.0.so:/usr/lib/libglib-2.0.so:/usr/lib/libgmodule-2.0.so:/usr/lib/libgobject-2.0.so:/usr/lib/libgthread-2.0.so matlab -desktop' \
                 --mimetypes 'text/x-matlab' \
                 "${srcdir}/matlab.desktop" >/dev/null 
