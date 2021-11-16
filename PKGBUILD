@@ -4,7 +4,7 @@
 pkgname=thunderbird-beta
 _pkgname=thunderbird
 _pkgver=95.0
-_beta=1
+_beta=3
 pkgver="${_pkgver}b${_beta}"
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — Beta version'
@@ -37,8 +37,10 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         vendor-prefs.js
         distribution.ini
         mozconfig.cfg)
-validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
-
+validpgpkeys=(
+  14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
+  4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
+)
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
@@ -108,9 +110,9 @@ END
     "$pkgdir/usr/lib/${_pkgname}/thunderbird-bin"
 }
 
-sha256sums=('5a3316e3ec90476f590cfbb7a8a79dffef3f874ccddf3fc0c123fc5b7bfc57ce'
+sha256sums=('9b41dadef956109efcf5edf927aa36dea4442979f3422420b041d6cf2a412705'
             'SKIP'
             '71251951e99d33c1bc56d8e1729270cb1c0bd026a86cd840b8ac9ac54a68d846'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
             'bc3aae2cc00dc9806f54606f98d967366a2ba7223f6a3ad1c658a653ebff5569'
-            '627d9a9619c145bf1198f08b894e8fc682451788bfdf693e14732d17111b8d81')
+            'e6fedf8e74382af05b419b1efca1380f503f5a000320f46717386aa401820a5e')
