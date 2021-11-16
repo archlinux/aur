@@ -1,18 +1,18 @@
 pkgbase = gitahead
 	pkgdesc = Understand your Git history!
 	pkgver = 2.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gitahead.com/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = git
 	makedepends = qt5-tools
 	makedepends = qt5-translations
 	depends = desktop-file-utils
-	depends = qt5-base
 	depends = git
+	depends = org.freedesktop.secrets
+	depends = qt5-base
 	source = git+https://github.com/gitahead/gitahead#tag=v2.6.3
 	source = gitahead.desktop
 	source = gitahead.patch
@@ -21,4 +21,3 @@ pkgbase = gitahead
 	sha256sums = 096e8f3700d7d74884e81eae3282fa1b4fad1cfa7a179ff03f1a7d89867538a0
 
 pkgname = gitahead
-
