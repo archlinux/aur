@@ -151,19 +151,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
         # mediatek mt7921 bt/wifi patches
-        "mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
         "mt76-mt7921-Add-mt7922-support.patch"
-        #"1-1-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
         "1-2-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
         "2-2-mt76-mt7921-send-EAPOL-frames-at-lowest-rate.patch"
         "mt76-mt7921-enable-VO-tx-aggregation.patch"
-        "mt76-mt7921-fix-dma-hang-in-rmmod.patch"
-        "mt76-mt7921-fix-firmware-usage-of-RA-info-using-legacy-rates.patch"
-        "mt76-mt7921-fix-the-inconsistent-state-between-bind-and-unbind.patch"
-        "mt76-mt7921-report-HE-MU-radiotap.patch"
-        "v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
         "1-2-mt76-mt7921-robustify-hardware-initialization-flow.patch"
-        "2-2-mt76-mt7921-fix-retrying-release-semaphore-without-end.patch"
         "1-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-Foxconn.patch"
         "2-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-IMC-Network.patch"
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip.patch"
@@ -191,18 +183,11 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'b12a5bb789e4c854617ca3c7405fcc3121457ddb6564c8f758edfe4633cf24bd'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
-            '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
             '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
             '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
-            'e7e37c7c433c58e2f5a79e2a7724823bef1dccaa01e857584397b4e3c837d991'
-            'f075ac354acfd65dff4db49dc9798747cb9b7a3dd9839987bc46495bdbbd22dc'
-            '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
-            '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
-            'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
             'c368cc4eefff20b7ae904eec686b7e72b46ff02b32c8a4fbd6bd4039f087e7ba'
-            '1a8639167a1ee1b66f580c0c6f8304e6ef359a68cfa3eb869d9200a9f0234098'
             '236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9'
             'cc2aa580d69801aa1afb0d72ecf094fe13c797363d3d5928c868d3a389910b7b'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
