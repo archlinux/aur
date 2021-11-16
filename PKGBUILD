@@ -2,15 +2,15 @@
 
 pkgbase=duckdb
 pkgname=('duckdb' 'python-duckdb')
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A high-performance analytical database system"
 arch=('x86_64')
 url="https://duckdb.org"
 license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('git' 'cmake' 'python-setuptools' 'pybind11' 'python-numpy' 'python-pandas' 'libutf8proc' 'python-pip' 'python-wheel' 'python-setuptools-scm')
-_commit='46a0fc50aa00ac019aee2157cf3382b85993f728'
+_commit='88aa81c6b1b851c538145e6431ea766a6e0ef435'
 source=("$pkgbase::git+https://github.com/duckdb/duckdb.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -36,7 +36,6 @@ prepare() {
     -DBUILD_PARQUET_EXTENSION=1 \
     -DBUILD_BENCHMARKS=1 \
     -DBUILD_REST=1 \
-    -DBUILD_TPCE=1 \
     -DAMALGAMATION_BUILD=1
 }
 
@@ -49,6 +48,9 @@ build() {
 package_duckdb() {
   conflicts=('duckdb-git')
   DESTDIR="$pkgdir" cmake --install build
+
+  # rest server
+  install -vDm755 -t "$pkgdir/usr/bin" build/tools/rest/duckdb_rest_server
 
   # sqlite wrapper
   install -vDm755 -t "$pkgdir/usr/lib" build/tools/sqlite3_api_wrapper/libsqlite3_api_wrapper.so
