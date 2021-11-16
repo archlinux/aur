@@ -22,16 +22,8 @@ backup=()
 options=()
 install=
 changelog=
-source=(
-    "https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz"
-    "https://github.com/blurgyy/dt/releases/download/v${pkgver}/LICENSE-APACHE"
-    "https://github.com/blurgyy/dt/releases/download/v${pkgver}/LICENSE-MIT"
-)
-sha256sums=(
-    "95d45d1c81ccfe6787482e2b716fff0b2af4a2664261a0057a5c1559fda1acef"
-    "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
-    "1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322"
-)
+source=("https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("95d45d1c81ccfe6787482e2b716fff0b2af4a2664261a0057a5c1559fda1acef")
 noextract=()
 validpgpkeys=()
 
