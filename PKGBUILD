@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Schniz/fnm"
 license=('GPL3')
 provides=('fnm')
-conflicts=('fnm-git')
+conflicts=('fnm-git' 'fnm')
 source=("$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/$_pkgname-linux.zip")
 md5sums=('d65268a1e910ed810b249b3fdac01ee8')
 
