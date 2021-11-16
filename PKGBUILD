@@ -9,17 +9,28 @@
 #
 
 pkgname=thunderbird-localized-beta-bin
-pkgver=95.0b1
+_pkgname=thunderbird-beta
+pkgver=95.0b3
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — localized beta version'
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
-         nss hunspell sqlite ttf-font icu)
-optdepends=('hunspell: Spell checking'
-            'hyphen: Hyphenation'
-            'libcanberra: Sound support')
+depends=(
+  glibc gtk3 libgdk-3.so libgtk-3.so mime-types dbus libdbus-1.so dbus-glib
+  alsa-lib nss hunspell sqlite ttf-font libvpx libvpx.so zlib bzip2 libbz2.so
+  botan libwebp libwebp.so libwebpdemux.so libevent libjpeg-turbo libffi
+  libffi.so nspr gcc-libs libx11 libxrender libxfixes libxext libxcomposite
+  libxdamage pango libpango-1.0.so cairo gdk-pixbuf2 icu libicui18n.so
+  libicuuc.so freetype2 libfreetype.so fontconfig libfontconfig.so glib2
+  libglib-2.0.so pixman libpixman-1.so gnupg
+)
+optdepends=(
+  'hyphen: Hyphenation'
+  'libcanberra: Sound support'
+  'libotr: OTR support for active one-to-one chats'
+  'libnotify: Notification integration'
+)
 provides=("thunderbird=$pkgver" "thunderbird-beta=$pkgver")
 conflicts=("thunderbird-beta" "thunderbird-beta-bin")
 install=$pkgname.install
@@ -31,7 +42,7 @@ _archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_arch64}" || echo -n "${_a
 
 _localemoz() {
   #
-  # Checking if a `tor-browser` package exists for current locale; a different language can be
+  # Checking if a `thunderbird` package exists for current locale; a different language can be
   # chosen by giving a `THUNDERBIRD_PKGLANG` environment variable to `makepkg`, for instance:
   #
   # THUNDERBIRD_PKGLANG='en-US' makepkg
@@ -73,9 +84,9 @@ source=("${pkgname}.desktop")
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
 sha256sums=('4890cc98cc21f3f2dbf4134627217b11167c73954a549fbe7ca0bbc8ca79b2d4')
-sha256sums_i686=($(_dist_checksum "${_arch32}")
+sha256sums_i686=("$(_dist_checksum "${_arch32}")"
                  'SKIP')
-sha256sums_x86_64=($(_dist_checksum "${_arch64}")
+sha256sums_x86_64=("$(_dist_checksum "${_arch64}")"
                    'SKIP')
 
 prepare() {
@@ -99,13 +110,6 @@ prepare() {
     echo -e "\n        ${_COL_LIGHTGREY_}THUNDERBIRD_PKGLANG='en-US' makepkg${_COL_DEFAULT_}\n"
   fi
 
-  # we search and replace using sed with / as delimiter below so don't allow slashes in these vars.
-  # makepkg already enforces that there're no slashes in ${pkgname}, so we don't check that again here.
-  if [[ ${pkgver} = */* || ${_language} = */* || ${pkgdesc} = */* ]]; then
-    error '${pkgver}, ${_language} and ${pkgdesc} for this package are not allowed to contain /' >&2
-    return 1
-  fi
-
 }
 
 package() {
@@ -117,20 +121,18 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Install
-  cp -r thunderbird/ "$pkgdir"/opt/thunderbird-beta
+  cp -r thunderbird/ "${pkgdir}/opt/${_pkgname}"
 
   # Launchers
-  ln -s /opt/thunderbird-beta/thunderbird "$pkgdir"/usr/bin/thunderbird-beta
+  ln -s "/opt/${_pkgname}/thunderbird" "${pkgdir}/usr/bin/${_pkgname}"
   # breaks application as of 68.0b1
-  # ln -sf thunderbird "$pkgdir"/opt/thunderbird-beta/thunderbird-bin
+  # ln -sf thunderbird "$pkgdir/opt/${_pkgname}/thunderbird-bin"
 
-  _vendorjs="$pkgdir/opt/thunderbird-beta/defaults/preferences/vendor.js"
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
+  # vendor.js
+  _vendorjs="$pkgdir/opt/${_pkgname}/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "${_vendorjs}" <<END
 // Use LANG environment variable to choose locale
-pref("intl.locale.requested", "");
-
-// Use system-provided dictionaries
-pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+pref("intl.locale.matchOS", true);
 
 // Disable default mailer checking.
 pref("mail.shell.checkDefaultMail", false);
@@ -140,37 +142,20 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
-  _distini="$pkgdir/opt/thunderbird-beta/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
-[Global]
-id=archlinux
-version=1.0
-about=Mozilla Thunderbird for Arch Linux
+  # Desktop
+  install -m644 "${pkgname}.desktop" "${pkgdir}"/usr/share/applications/
 
-[Preferences]
-app.distributor=archlinux
-app.distributor.channel=$pkgname
-END
-
-  for i in 16 22 24 32 48 64 128 256; do
-    install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
-    ln -s /opt/thunderbird-beta/chrome/icons/default/default$i.png \
-          "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-beta.png
+  # Icons
+  for i in 16 22 24 32 48 256; do
+    install -d "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/
+    ln -s "/opt/${_pkgname}/chrome/icons/default/default$i.png" \
+          "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
   done
-  
-  install -Dm644 $srcdir/$pkgname.desktop \
-    "$pkgdir/usr/share/applications"
 
   # Use system-provided dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir"/opt/thunderbird-beta/dictionaries
-  ln -Ts /usr/share/hyphen "$pkgdir"/opt/thunderbird-beta/hyphenation
-
-  # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
-#!/bin/sh
-exec /opt/thunderbird-beta/thunderbird "\$@"
-END
+  ln -Ts /usr/share/hunspell "${pkgdir}/opt/${_pkgname}/dictionaries"
+  ln -Ts /usr/share/hyphen "${pkgdir}/opt/${_pkgname}/hyphenation"
 
   # Use system certificates
-  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/thunderbird-beta/libnssckbi.so
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
 }
