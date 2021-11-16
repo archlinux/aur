@@ -2,7 +2,7 @@
 
 pkgname=yabridge
 pkgver=3.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
@@ -29,8 +29,10 @@ build() {
   # Make sure all of our wraps are up to date because Meson won't update
   # wrap subprojects that already exist
   meson subprojects download
-  meson subprojects update
-  meson subprojects packagefiles --apply
+  # XXX: These two commands will just error out for wrap-file wraps. Any file
+  #      based wraps are manually versioned anyways so that should be fine.
+  meson subprojects update --types git
+  meson subprojects packagefiles --apply  --types git
 
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
