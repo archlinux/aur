@@ -1,7 +1,7 @@
 # Maintainer: CamuseCao camusecao@gmail.com
 pkgname=cutetranslation-flameshot
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="flameshot 截图版的 Linux 系统上基于 X11 的一款取词翻译软件,帮助用户翻译多种语言的文字。"
 arch=('x86_64')
 url="https://github.com/jiangzc/CuteTranslation"
