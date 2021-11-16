@@ -4,7 +4,7 @@
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r175.gfcd1b89
+pkgver=0.5.r189.g1502032
 pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
@@ -41,6 +41,7 @@ package() {
   install -m 0644 LICENSE.md "${pkgdir}/usr/lib/${_pkgname}/"
   install -m 0644 README.md "${pkgdir}/usr/lib/${_pkgname}/"
   install -m 0644 run.py "${pkgdir}/usr/lib/${_pkgname}/"
+  install -m 0644 compressed-archive-download.png "${pkgdir}/usr/lib/${_pkgname}/"
 
   install -dm 0755 "${pkgdir}/usr/share/licenses/${_pkgname}"
   install -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/"
