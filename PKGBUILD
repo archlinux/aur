@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://rancherdesktop.io/"
 license=('Apache')
 depends=('qemu')
+provides=('docker' 'helm' 'kim' 'kubectl' 'nerdctl')
 makedepends=('npm' 'nvm' 'unzip')
 
 source=(
@@ -46,10 +47,17 @@ build() {
 
 package() {
     cd ${pkgname}
+
     install -d ${pkgdir}/opt/${_pkgname}
     cp -dr dist/linux-unpacked/* ${pkgdir}/opt/${_pkgname}/
+
     install -Dm644 dist/linux-unpacked/resources/resources/linux/${_pkgname}.desktop -t "${pkgdir}/usr/share/applications"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
     install -d ${pkgdir}/usr/bin
     ln -sf  /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+
+    for i in $(ls ${pkgdir}/opt/${_pkgname}/resources/resources/linux/bin/); do
+        ln -sf  /opt/${_pkgname}/resources/resources/linux/bin/${i} ${pkgdir}/usr/bin/${i}
+    done
 }

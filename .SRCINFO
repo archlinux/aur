@@ -9,6 +9,11 @@ pkgbase = rancher-desktop-git
 	makedepends = nvm
 	makedepends = unzip
 	depends = qemu
+	provides = docker
+	provides = helm
+	provides = kim
+	provides = kubectl
+	provides = nerdctl
 	source = rancher-desktop-git::git://github.com/rancher-sandbox/rancher-desktop.git
 	sha512sums = SKIP
 
