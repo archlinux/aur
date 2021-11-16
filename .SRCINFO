@@ -1,0 +1,20 @@
+pkgbase = libskk-git
+	pkgdesc = GObject-based library to deal with Japanese kana-to-kanji conversion method
+	pkgver = r408.5f5e5c2
+	pkgrel = 1
+	url = https://github.com/ueno/libskk
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = libgee
+	depends = libxkbcommon
+	depends = json-glib
+	provides = libskk
+	conflicts = libskk
+	source = libskk::git+https://github.com/ueno/libskk.git
+	sha512sums = SKIP
+
+pkgname = libskk-git
