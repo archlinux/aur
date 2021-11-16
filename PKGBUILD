@@ -1,13 +1,13 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=phan
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Static analyzer for PHP that prefers to minimize false-positives."
 url="https://github.com/phan/phan/wiki"
 arch=("any")
 license=("MIT")
-depends=("php>=7.2.0" "php-ast>=1.0.10")
+depends=("php>=7.2.0" "php-ast>=1.0.14")
 source=(
 	"${pkgname}-${pkgver}.phar::https://github.com/phan/phan/releases/download/${pkgver}/phan.phar"
 	"${pkgname}-${pkgver}.phar.asc::https://github.com/phan/phan/releases/download/${pkgver}/phan.phar.asc"
