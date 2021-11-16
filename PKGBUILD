@@ -1,9 +1,9 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-tre-git
 pkgver=r130.9c049c8
-pkgrel=1
-pkgdesc=""
-url="https://github.com/labmlai/labml"
+pkgrel=2
+pkgdesc="Python module for TRE"
+url="https://github.com/ahomansikka/tre/tree/master"
 arch=('any')
 provides=('python-tre')
 depends=('python' 'tre')
