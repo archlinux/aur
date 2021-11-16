@@ -4,7 +4,7 @@
 
 pkgname=goatattack
 pkgver=0.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=('i686' 'x86_64')
 url="http://www.goatattack.net/"
@@ -17,14 +17,15 @@ md5sums=('SKIP')
 prepare() {
 	cd "$srcdir/$pkgname"
 	# generate .desktop-file
-	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Goat Attack" --exec "$pkgname" --categories "Game"
+	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Goat Attack" --exec "$pkgname" --categories "Game;ActionGame"
 
-	autoreconf -i
-	./configure --prefix=/usr --enable-map-editor
+	autoupdate -f
+	autoreconf -if
 }
 
 build() {
 	cd "$srcdir/$pkgname"
+	./configure --prefix=/usr --enable-map-editor
 	make
 }
 

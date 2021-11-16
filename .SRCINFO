@@ -1,7 +1,7 @@
 pkgbase = goatattack
 	pkgdesc = A fast-paced multiplayer pixel art shooter game.
 	pkgver = 0.4.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.goatattack.net/
 	arch = i686
 	arch = x86_64
