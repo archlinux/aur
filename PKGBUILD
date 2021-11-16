@@ -6,7 +6,7 @@
 
 pkgname=home-assistant-git
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2021.9.7_r491_gfc4bb40a63
+pkgver=2021.11.4_r526_g9256a033a6
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -17,6 +17,7 @@ depends=(
   python-aiohttp-cors
   python-astral
   python-async-timeout
+  python-atomicwrites
   python-attrs
   python-awesomeversion
   python-bcrypt
