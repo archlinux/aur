@@ -12,7 +12,7 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
-pkgver=91.3.0
+pkgver=91.3.1
 pkgrel=5
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
