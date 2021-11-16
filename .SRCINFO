@@ -1,13 +1,15 @@
 pkgbase = boost-tool-wave-git
-	pkgdesc = The Wave Driver Executable
+	pkgdesc = Boost The Wave Driver Executable
 	pkgver = 2.0
 	pkgrel = 1
-	url = https://www.boost.org/doc/libs/1_76_0/libs/wave/
-	arch = any
+	url = https://www.boost.org/doc/libs/1_77_0/libs/wave/
+	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = boost
+	depends = boost-libs
 	source = git+https://github.com/boostorg/wave.git
+	source = https://www.boost.org/LICENSE_1_0.txt
 	md5sums = SKIP
+	md5sums = e4224ccaecb14d942c71d31bef20d78c
 
 pkgname = boost-tool-wave-git
