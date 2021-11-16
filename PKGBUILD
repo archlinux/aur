@@ -3,7 +3,7 @@
 pkgname=tunneltanks-git
 _pkgname=tunneltanks
 pkgver=r74.44cf228
-pkgrel=3
+pkgrel=4
 pkgdesc="SDL remake of the early 90's tank game Tunneler"
 url="https://github.com/raydog/tunneltanks"
 depends=('sdl')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "tunneltanks" --categories "Games"
+  gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "tunneltanks" --categories "Game;ActionGame"
   sed -i 's/SDLK_SLASH/SDLK_RCTRL/' src/gamelib/SDL/control.c
 }
 
