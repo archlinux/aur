@@ -1,0 +1,9 @@
+[Unit]
+Description=Croodle daily deletion of outdated polls timer
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=3600
+
+[Install]
+WantedBy=timers.target

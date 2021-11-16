@@ -1,0 +1,26 @@
+pkgbase = croodle-git
+	pkgdesc = a web application to schedule a date or to do a poll on a general topics
+	pkgver = r1191.fb5981e
+	pkgrel = 1
+	url = https://github.com/jelhan/croodle
+	arch = any
+	license = MIT
+	makedepends = composer
+	makedepends = git
+	makedepends = nodejs-lts-fermium
+	makedepends = yarn
+	depends = php
+	source = git+https://github.com/jelhan/croodle.git
+	source = croodle.conf
+	source = croodle.sysusers
+	source = croodle.tmpfiles
+	source = croodle-cron.service
+	source = croodle-cron.timer
+	sha256sums = SKIP
+	sha256sums = 083d590dbb293dad54a5d0347acf564ebcd709369d398bcfbf70e82b848daef1
+	sha256sums = 1996262b7849b79a7f2c330651613c96a40dfec3ccf51f7d5eb8564d25e22627
+	sha256sums = 88a0ca17ad5a90b927e4275fb2245e569ecbde7e059033529cafdcc66b9b2a14
+	sha256sums = 1b67171535fcb21d0dcc9738f6e47d32c735b49313ae3a9d967fb65befbe4e2e
+	sha256sums = 0e2520a6f3bfa7283a5ccb91bb6cbaade1333efdd82b9256bc61be36020fe0e3
+
+pkgname = croodle-git

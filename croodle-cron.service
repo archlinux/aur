@@ -1,0 +1,8 @@
+[Unit]
+Description=Croodle daily deletion of outdated polls
+
+[Service]
+User=croodle
+Group=croodle
+WorkingDirectory=/var/lib/croodle
+ExecStart=/usr/bin/php -f /usr/share/webapps/croodle/api/cron.php
