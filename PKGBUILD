@@ -1,7 +1,7 @@
 # Maintainer: Mike
 pkgname=qzdl-desktop
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc=".desktop files for qzdl"
 arch=('x86_64' 'i686')
 url="http://zdl.vectec.net"
