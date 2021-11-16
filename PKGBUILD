@@ -1,8 +1,8 @@
 # Maintainer: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=microshift-bin
-pkgver=4.7.0_0.microshift_2021_08_31_224727
-pkgrel=2
+pkgver=4.8.0_0.microshift_2021_11_11_151353
+pkgrel=1
 pkgdesc="A small form factor OpenShift/Kubernetes optimized for edge computing"
 url="https://github.com/redhat-et/microshift"
 arch=("x86_64" "aarch64")
@@ -29,8 +29,8 @@ sha256sums=(
 #  ""
 #  ""
 )
-sha256sums_x86_64=("6b51a25a20a66c1c21ce59ca53d41dbe4b467621a1f7a85d6343943723ba71dc")
-sha256sums_aarch64=("57db74c418e5b74e2bea3c3700256a020e2c80eaff692ec5ca841a0b7c65247c")
+sha256sums_x86_64=("059b1ccf408ffaa4ffcd403c52b806da0df23bea47a00bd4e599541583a53e98")
+sha256sums_aarch64=("37655bd6659f3bd62e5989c11360f56120ebd5f08b6baa2db98afa73a4d687fd")
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/microshift"
