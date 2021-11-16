@@ -1,6 +1,6 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=canokey-usbip-git
-pkgver=r900.037a846
+pkgver=r974.2b7186a
 pkgrel=1
 pkgdesc="A virtual canokey based on USB/IP"
 arch=('x86_64')
@@ -37,6 +37,6 @@ build() {
 
 package() {
 	cd "$srcdir/canokey-core/build"
-	make DESTDIR="$pkgdir/" install
+	# make DESTDIR="$pkgdir/" install
 	install -Dm755 "$srcdir/canokey-core/build/canokey-usbip" -t "$pkgdir/usr/bin/"
 }
