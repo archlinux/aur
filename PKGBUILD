@@ -3,7 +3,7 @@
 pkgname=bdf-tewi-git
 _gitname=tewi-font
 pkgver=0.313.a975d38
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitmap font'
 arch=('any')
 url="https://github.com/lucy/tewi-font"
