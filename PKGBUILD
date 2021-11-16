@@ -1,7 +1,7 @@
-# Maintainer: amadejpapez
+# Maintainer: <contact@amadejpapez.com>
 
 pkgname='gau'
-pkgver=1.2.0
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fb363fab0d63fc3a46b4a42bcbf71bc817995b9f14523c0f4fce8ba9c0d89ffa')
+sha256sums=('1728c341b147388fa8e60784c4b3895391be25f1e2e1b1cbb734329be7603693')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
@@ -24,15 +24,13 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}/cmd/gau"
   go build -v -o "${pkgname}" .
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dvm755 "${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dvm755 "cmd/gau/gau" -t "${pkgdir}/usr/bin"
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
