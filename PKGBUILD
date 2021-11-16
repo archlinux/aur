@@ -2,10 +2,10 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname=electron
-_major=15
+_major=16
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-bin"
-_pkgver=${_major}.3.0
+_pkgver=${_major}.0.0
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies – binary version"
@@ -41,14 +41,14 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('6f1d3f27a1765fdb83676c9f84d81e46f0a3d95bd4f957e7b6826a96c385b9a4'
-                   '7cb9c6c9c61848f7d82aaac47ca97bb78c6061e73b176fd3a323652c07335087')
-sha256sums_i686=('b7ef0376b89580c373f0f9b42d36811f1d5f36294ae54570c931afc3f7de2949'
-                 '289ef7d53c440a576839a4ee092284009235d740404ea07e6bf82f33254ae8df')
-sha256sums_armv7h=('4892fbe25fb700a98c8722d4b80b35ba3d5d43032d489935768c0e9808872cf4'
-                   'dfe2851ef94c17eb905cd8cf00b585be072e20a79a02c0c42585a0f51b8cdb20')
-sha256sums_aarch64=('1775d45265f106f6c4c1e2760efaf685a9b05de5dea50763e4ca5278afe76a88'
-                    'e0bb8d663dfbe8b65b9e38d4af992a919adc639acfb8748d95ca5b9bbcd7a83c')
+sha256sums_x86_64=('64dcdec79508a1d7df9032be5cb0dff996a5223ef86a86c67dad77e9ad43769e'
+                   'a5c5c0547c989207ab63e0b06b46a04b545e4cc74e6fc8f94d7beda0c0bcb0b2')
+sha256sums_i686=('42338b352e01f75121be849665d4d680326e6fff20b5fec7d6c0fe5115c39449'
+                 'e93e5eaaf33e4c30d2ba613b67858ada311a6e28b5fd42893499b50ef97b3695')
+sha256sums_armv7h=('447e9629eb98fbb03a544016256e30a40c6f9644615ee520fecc7f66dbcbbf82'
+                   'a3bec9664a17d3f8adc072f88d105601b5d25a42e339c73c26c3b59a0ab0f44a')
+sha256sums_aarch64=('84b7d9fbb5f1ee6376fa570f611aa23d3d98d103cd9cb51799e6f44e19461313'
+                    'f4dc4ba8ce14f2e64943838c85654766522c46bb8e02914d3fdf1894b6e5b2fa')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
