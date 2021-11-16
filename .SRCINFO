@@ -10,6 +10,7 @@ pkgbase = fcitx5-paste-primary-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = fcitx5
+	optdepends = wl-clipboard: for Wayland support
 	source = git+https://github.com/lilydjwg/fcitx5-paste-primary.git
 	md5sums = SKIP
 
