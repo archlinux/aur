@@ -90,7 +90,7 @@ build() {
 
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  make -j$(nproc --ignore 1)
 }
 
 package() {
