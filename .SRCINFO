@@ -11,6 +11,7 @@ pkgbase = translatelocally-git
 	makedepends = gcc-libs
 	makedepends = make
 	makedepends = binutils
+	makedepends = intel-mkl-static
 	depends = qt5-base
 	depends = qt5-svg
 	depends = pcre2
