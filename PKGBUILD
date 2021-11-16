@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://games.os.vc'
 license=('GPLv3')
 
-source=('https://games.os.vc/pygames/pyxenon-0.1/pyxenon.tar.gz'
-        'pyxenon.desktop')
+source=("https://games.os.vc/pygames/${pkgname}-${pkgver}.${pkgrel}.tar.gz"
+        "pyxenon.desktop")
 
 package() {
     cd ${srcdir}
