@@ -4,7 +4,7 @@
 
 _pkgname=mutter
 pkgname=$_pkgname-x11-scaling
-pkgver=40.5
+pkgver=41.1
 pkgrel=1
 pkgdesc="A window manager for GNOME (with X11 fractional scaling patch)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -15,16 +15,16 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile wayland-protocols)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server)
-checkdepends=(xorg-server-xvfb pipewire-media-session)
+checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
 conflicts=($_pkgname)
-provides=($_pkgname libmutter-8.so)
+provides=($_pkgname libmutter-9.so)
 groups=(gnome)
-install=mutter.install
-_commit=2b2b3ab8502a5bcc2436e169279d2421f6f1a605  # tags/40.5^0
+_commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        https://salsa.debian.org/gnome-team/mutter/-/raw/91d9bdafd5d624fe1f40f4be48663014830eee78/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch)
+        #https://salsa.debian.org/gnome-team/mutter/-/raw/91d9bdafd5d624fe1f40f4be48663014830eee78/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch)
+        https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/bf134596c22abbb6dc70adb7844e6d391ea4cd80/x11-Add-support-for-fractional-scaling-using-Randr.patch)
 sha256sums=('SKIP'
-            '19de314590e3311563b11da3305d8e9c8ba1f859fe65db668ccd0457250a9ca5')
+            '34463f4b17921fae3e75d7e1d862e4c170209eff35b2fc9fad376b8e14f3efb6')
 
 pkgver() {
   cd $_pkgname
@@ -34,7 +34,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  # Add scaling support using randr under x11 (Marco Trevisan)
+  # Add scaling support using randr under x11 (Marco Trevisan and Georg Wagner)
   patch -p1 -i ../x11-Add-support-for-fractional-scaling-using-Randr.patch
 }
 
@@ -66,8 +66,7 @@ _check() (
 )
 
 check() {
-  dbus-run-session xvfb-run \
-    -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+  dbus-run-session xvfb-run -s '-nolisten local' \
     bash -c "$(declare -f _check); _check"
 }
 
