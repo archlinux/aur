@@ -2,7 +2,7 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A neovim plugin to independently run snippets of code'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc-libs')
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ed0165ebd57f4a29117312f0f287f62d6ae3e0a73fada43370e490e666fe7fb9')
+sha256sums=('e8b0c4e71a3ac5c7c4c1ea5d2e568bfa0e34a10573e6ad93b21bf2fdb33cde12')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
@@ -36,14 +36,14 @@ package_sniprun() {
 	replaces=('sniprun-legacy')
 
 	cd "$pkgbase-$pkgver"
-	install -Dm 755 target/release/sniprun -t "$pkgdir/usr/bin/"
+	install -D target/release/sniprun -t "$pkgdir/usr/bin/"
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 package_neovim-sniprun()	{
 	arch=('any')
-	depends=('neovim>=0.5.0' "sniprun=$pkgver")
+	depends=('neovim' "sniprun=$pkgver")
 	replaces=('neovim-sniprun-legacy')
 	optdepends=(
 		'bash: Bash snippets support'
