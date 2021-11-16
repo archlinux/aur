@@ -1,0 +1,15 @@
+pkgbase = qzdl-desktop
+	pkgdesc = .desktop files for qzdl
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://zdl.vectec.net
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = qzdl
+	source = qzdl.desktop
+	source = qzdl.xpm
+	sha256sums = 8cd98b6e40edf9f876fe1052677d1821adc75e31042b00c2d36ed544fdc40aa3
+	sha256sums = 7971cb7b0ea05b5e5b223f12b32a64ba2e5a0f38248b4aa9b9bca0fe921766d6
+
+pkgname = qzdl-desktop

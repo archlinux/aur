@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=qzdl
+Exec=qzdl
+Comment=ZDoom Launcher
+Terminal=false
+Icon=qzdl
+Type=Application
+Categories=Games;
