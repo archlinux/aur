@@ -1,0 +1,5 @@
+pkg
+src
+lead-git
+*.tar.xz
+*.tar.zst
