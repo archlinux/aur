@@ -1,7 +1,7 @@
 pkgbase = jetuml
 	pkgdesc = A desktop application for fast UML diagramming
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prmr/JetUML
 	changelog = CHANGELOG
 	arch = any

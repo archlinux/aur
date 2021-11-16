@@ -1,6 +1,6 @@
 # Maintainer: Bent Hillerkus <benthillerkus+aur@gmail.com>
 
-pkgrel=1
+pkgrel=2
 pkgver=3.3
 
 pkgname=jetuml
@@ -40,7 +40,7 @@ prepare() {
         --genericname "UML Diagrammer" \
         --comment "Create a new UML diagram" \
         --exec "/usr/bin/$pkgname" \
-        --categories "Development;FlowChart;2DGraphics;ComputerScience,Java" \
+        --categories "Development;FlowChart;2DGraphics;ComputerScience;Java" \
         --mimetypes "application/jet"
 }
 
