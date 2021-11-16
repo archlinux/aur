@@ -1,4 +1,4 @@
-# Maintainer: ZhangHua <zhanghua.00 at qq dotcom>
+# Maintainer: ZhangHua <zhanghuadedn at gmail dot com>
 # Maintainer: Clansty <i at gao4 dot pw>
 pkgname=("icalingua-git" "icalingua-electron-git")
 pkgver=2.3.2_70_gcf35cbb
