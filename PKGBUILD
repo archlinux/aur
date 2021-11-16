@@ -1,8 +1,8 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=ookla-speedtest-bin
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Speedtest CLI by Ookla"
 depends=("ca-certificates")
 conflicts=("speedtest-cli")
@@ -18,12 +18,12 @@ source_arm=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-arm
 source_armv6h=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-arm-linux.tgz")
 source_armv7h=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-armhf-linux.tgz")
 
-sha256sums_x86_64=('5fe2028f0d4427e4f4231d9f9cf70e6691bb890a70636d75232fe4d970633168')
-sha256sums_i686=('828362e559e53d80b3579df032fe756a0993cf33934416fa72e9d69c8025321b')
-sha256sums_aarch64=('073684dc3490508ca01b04c5855e04cfd797fed33f6ea6a6edc26dfbc6f6aa9e')
-sha256sums_arm=('0fa7b3237d0fe4fa15bc1e7cb27ccac63b02a2679b71c2879d59dd75d3c9235d')
-sha256sums_armv6h=('0fa7b3237d0fe4fa15bc1e7cb27ccac63b02a2679b71c2879d59dd75d3c9235d')
-sha256sums_armv7h=('04b54991cfb9492ea8b2a3500340e7eeb78065a00ad25a032be7763f1415decb')
+sha256sums_x86_64=('fcd58df06eaeaa89237214a735c0b7154d6a0ec3a3b78261da40a765ce41f47f')
+sha256sums_i686=('07da43e0d006fe374f0bfb63e7fc4894e18ae4bfb1d0243ac4b105ca7294a6ee')
+sha256sums_aarch64=('9323ab0a10b74bc927e00acee48ca5148b2d4bf377a57c41571e19588eb4d285')
+sha256sums_arm=('b3b59ec2c6e1f5162ca526ea1e74014b695552feb3e902d07fc0e431d729ed25')
+sha256sums_armv6h=('b3b59ec2c6e1f5162ca526ea1e74014b695552feb3e902d07fc0e431d729ed25')
+sha256sums_armv7h=('568db87c76a1a04de292dc8f2bf282e7a1172cfea4a58c684daca1bc1046580c')
 
 package() {
   install -Dm755 "${srcdir}/speedtest" "${pkgdir}/usr/bin/speedtest"
