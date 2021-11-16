@@ -1,7 +1,7 @@
 pkgname=rtl8723bu-git-dkms
 _pkgname=rtl8723bu
 pkgver=255
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/lwfinger/rtl8723bu"
 provides=('rtl8723bu-git-dkms')
@@ -28,6 +28,8 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
+    rm -rf .git/
+    rm -f *.tar.gz
 }
 
 package() {
