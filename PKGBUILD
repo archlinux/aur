@@ -1,18 +1,17 @@
-# Maintainer: wickdchromosome <capsule.edu [at] gmail [dot] com>
+# Maintainer: Isabella Basso do Amaral <isabbasso at riseup dot com>
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
-
 pkgname=lucidor
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="A program for reading and handling EPUB e-books and OPDS catalogs"
 arch=('i686' 'x86_64')
 url="https://lucidor.org/lucidor/"
 license=('GPL3')
-depends=('xulrunner' 'desktop-file-utils')
+depends=('palemoon-bin' 'desktop-file-utils')
 install=$pkgname.install
 source=(${pkgname}_${pkgver}.tar.gz::"http://lucidor.org/get.php?id=${pkgname}_${pkgver}.tar.gz")
-md5sums=('b5cd1d6b39fa8fb8c83c51ff53acba36')
+sha256sums=('0e23617e1db5a1e5d1a491badf9cc0eab972bee3b2ea2418816c79dabe20a4be')
 
 build()
 {
