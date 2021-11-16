@@ -1,0 +1,13 @@
+pkgbase = pyxenon
+	pkgdesc = Pyxenon - xenon like game preview written in python
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://games.os.vc
+	arch = x86_64
+	license = GPLv3
+	source = https://games.os.vc/pygames/pyxenon-0.1/pyxenon.tar.gz
+	source = pyxenon.desktop
+	sha256sums = 23b53a662e5d68bd54e0336518b74d5d5d0ddad0cc7d5d2656e77717ac1dad7f
+	sha256sums = 6124c10735be364fa02c5dbcd33d1647e3a65119f7241151d3eba389033b9b21
+
+pkgname = pyxenon
