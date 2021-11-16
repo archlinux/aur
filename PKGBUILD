@@ -6,6 +6,7 @@ pkgname=tango-database
 _pkgname=TangoDatabase
 pkgver=5.16
 pkgrel=1
+groups=('tango-controls')
 pkgdesc="TANGO distributed control system - database server"
 arch=('x86_64' 'arm')
 url="https://www.tango-controls.org/"

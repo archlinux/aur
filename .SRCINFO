@@ -6,6 +6,7 @@ pkgbase = tango-database
 	install = tango-database.install
 	arch = x86_64
 	arch = arm
+	groups = tango-controls
 	license = GPL3
 	depends = tango-cpp
 	depends = mariadb
