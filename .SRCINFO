@@ -1,6 +1,6 @@
 pkgbase = hydrapaper-git
 	pkgdesc = Wallpaper manager with multi monitor support
-	pkgver = 3.2.0.r0.gab5a473
+	pkgver = 3.2.0.r1.g593f694
 	pkgrel = 1
 	url = https://hydrapaper.gabmus.org
 	arch = any
