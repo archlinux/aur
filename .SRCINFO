@@ -1,16 +1,18 @@
 pkgbase = sdl12-compat-git
 	pkgdesc = An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes.
-	pkgver = r360.f7e60cd
+	pkgver = r474.16305a1
 	pkgrel = 1
 	url = https://github.com/libsdl-org/sdl12-compat
 	arch = x86_64
-	license = ZLIB
-	license = MIT
+	license = custom
+	makedepends = sdl2
+	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
+	depends = sdl-compat_image
 	depends = sdl2
-	provides = sdl=1.2
+	depends = glibc
+	provides = sdl
 	conflicts = sdl
 	source = git+https://github.com/libsdl-org/sdl12-compat.git
 	sha256sums = SKIP
