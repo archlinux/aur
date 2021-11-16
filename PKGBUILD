@@ -2,7 +2,7 @@
 # Author: -=De/\/=-
 pkgname=pyxenon
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pyxenon - xenon like game preview written in python"
 arch=('x86_64')
 url='https://games.os.vc'
@@ -24,5 +24,5 @@ package() {
     cp -r sounds ${pkgdir}/usr/local/games/pyxenon/
     
 }
-sha256sums=('23b53a662e5d68bd54e0336518b74d5d5d0ddad0cc7d5d2656e77717ac1dad7f'
+sha256sums=('b3c15db3530d1779ab18306c9d35580a17420dfecd0e26c61dfe34d9a33e770e'
             '6124c10735be364fa02c5dbcd33d1647e3a65119f7241151d3eba389033b9b21')
