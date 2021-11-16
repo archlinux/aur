@@ -1,0 +1,27 @@
+pkgbase = vim-awesome-git
+	pkgdesc = A CLI for searching, viewing, and installing the vim plugins described at vimawesome.com
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/chuck-flowers/vim-awesome-cli
+	arch = any
+	license = GPL
+	makedepends = coreutils
+	makedepends = gzip
+	makedepends = make
+	makedepends = pandoc
+	makedepends = sudo
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = findutils
+	depends = git
+	depends = jq
+	depends = sed
+	depends = util-linux
+	optdepends = xdg-utils: Opening vimawesome.com pages in the browser
+	provides = vim-awesome
+	conflicts = vim-awesome
+	source = git+https://github.com/chuck-flowers/vim-awesome-cli
+	md5sums = SKIP
+
+pkgname = vim-awesome-git
