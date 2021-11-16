@@ -10,7 +10,7 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron13
-pkgver=1.61.0
+pkgver=1.62.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -29,7 +29,7 @@ source=("$pkgname::git+$url.git#tag=$pkgver"
 sha512sums=('SKIP'
             '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
             '84c4f14bfa79210721f18b46e2d672f3816638b526721475445ad437b373a7574d96b808e5a16eb1026ea60d5b50e30aa5eef7f69d4bd64019291ee195b2ec89'
-            'e2dcb9153734103508992b6a8ae29b543040d7f4f50381fd811feacde3691016a886b378a96b98c8ac0963ed5b916fa4d14ba87ccfedd81108bf66173d1a6d97')
+            '2796e4fe6f743f2c8a475e602ea686bdbe693d81309b19a5aad0c409b9b10353a59586da219aa12b649f11d3c4f029cab006212a7db4e3996aa9044b74c8c3ec')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -101,20 +101,10 @@ build() {
 
   yarn install --arch=$_vscode_arch
 
-  # The default memory limit may be too low for current versions of node
-  # to successfully build vscode. Change it if this number still doesn't
-  # work for your system.
-  mem_limit="--max_old_space_size=6144"
-
-  if ! /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-$_vscode_arch-min
-  then
-      echo
-      echo "*** NOTE: If the build failed due to running out of file handles (EMFILE),"
-      echo "*** you will need to raise your max open file limit."
-      echo "*** You can check this for more information on how to increase this limit:"
-      echo "***    https://ro-che.info/articles/2017-03-26-increase-open-files-limit"
-      exit 1
-  fi
+  gulp compile-build
+  gulp compile-extension-media
+  gulp compile-extensions-build
+  gulp vscode-linux-$_vscode_arch-min
 }
 
 package() {
