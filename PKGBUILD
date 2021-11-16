@@ -10,20 +10,20 @@ arch=(i686 x86_64)
 url="https://sayonara-player.com/"
 license=(GPL3)
 depends=(qt5-base taglib gst-plugins-base gst-plugins-good)
-makedepends=(cmake qt5-tools qt5-svg gst-plugins-bad)
+makedepends=(git cmake qt5-tools qt5-svg gst-plugins-bad)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
-source=("https://sayonara-player.com/files/source/${_pkgver}/sayonara-player-${_pkgver}.tar.gz")
-sha512sums=('9abdd0c41d6987738ec8001cd8d9b84f6184822958e60057488e688f06bde420f34b308ab083764b119eb96245e3bdfc627b101aa4b015ab73bdaef295c1afe6')
+source=("git+https://gitlab.com/luciocarreras/sayonara-player.git#tag=${_pkgver}")
+sha512sums=('SKIP')
 
 prepare() {
- cd "${srcdir}/${pkgname}-${_pkgver}"
+ cd "${srcdir}/${pkgname}"
   [[ -d build ]] || mkdir build
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -32,11 +32,11 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${_pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   make test
 }
  
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   make DESTDIR="$pkgdir/" install
 }

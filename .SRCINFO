@@ -6,6 +6,7 @@ pkgbase = sayonara-player
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
 	makedepends = qt5-svg
@@ -17,7 +18,7 @@ pkgbase = sayonara-player
 	optdepends = gst-libav: additional codecs
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
-	source = https://sayonara-player.com/files/source/1.7.0-stable3/sayonara-player-1.7.0-stable3.tar.gz
-	sha512sums = 9abdd0c41d6987738ec8001cd8d9b84f6184822958e60057488e688f06bde420f34b308ab083764b119eb96245e3bdfc627b101aa4b015ab73bdaef295c1afe6
+	source = git+https://gitlab.com/luciocarreras/sayonara-player.git#tag=1.7.0-stable3
+	sha512sums = SKIP
 
 pkgname = sayonara-player
