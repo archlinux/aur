@@ -6,9 +6,10 @@
 # from: snap beta
 # what: whatpulse
 _snap=iHVATX2faqAJciG5YGNM241W8fE8UvsF
+_rev_amd64=11 # snap:revision
 
 pkgname=whatpulse
-pkgver=3.6.11
+pkgver=3.6
 pkgrel=1
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
@@ -32,7 +33,7 @@ source=(
 	'assets.zip::https://whatpulse.org/images/assets/whatpulse-assets-all.zip'
 	LICENSE
 )
-source_x86_64=("${pkgname%*-bin}-$pkgver.sfs::https://api.snapcraft.io/api/v1/snaps/download/${_snap}_${pkgver##*.}.snap")
+source_x86_64=("${pkgname%*-bin}-$pkgver.sfs::https://api.snapcraft.io/api/v1/snaps/download/${_snap}_${_rev_amd64}.snap")
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
             'bbbc3e1e63e8300f247897c24487ecad6f313c1972417604bf8d991ca4408b03'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
