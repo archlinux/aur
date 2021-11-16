@@ -1,12 +1,11 @@
 pkgbase = greitukas
 	pkgdesc = A daemon that runs as a tcp server and allows to change max, min, current frequency and select governor for each or all cpus.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://sourceforge.net/projects/greitukas
 	arch = any
 	license = GPL
-	source = http://downloads.sourceforge.net/greitukas/1.4/greitukas-1.4-src.tar.7z
-	md5sums = 119a10d64ed1c3da2bc1f62804a4758b
+	source = http://downloads.sourceforge.net/greitukas/1.5/greitukas-1.5-src.tar.7z
+	md5sums = 6e5e4f1c93b8f9d8ab5d32d0937c2c08
 
 pkgname = greitukas
-
