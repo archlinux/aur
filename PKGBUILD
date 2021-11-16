@@ -6,7 +6,7 @@
 
 _pkgbasename=libgit2
 pkgname=lib32-libgit2
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=1
 pkgdesc='A linkable library for Git'
@@ -17,17 +17,17 @@ makedepends=('cmake' 'libssh2' 'python')
 provides=('libgit2.so')
 license=('GPL2')
 source=("$_pkgbasename-$pkgver.tar.gz::https://github.com/libgit2/libgit2/archive/v${pkgver}.tar.gz"
-        "$_pkgbasename-0.99.0-remove_http-parse_incompatible_tests.patch")
-sha512sums=('347bb68900181b44fa58a0417506c91383adb965607fce049a5b4c57ac9cc286e0a140d164c339b50fb6cd6951f47757c2917a2df44ba004bfaa4fb643946bb8'
-            'e73072424c9c1870eaaf93b3451295ef7333b59f6cb8a6897dd690b69a20aaeb70f00d15a692c1d9e0745d5ef16bbbb912fbd570d8bc83ca0b7d57f32025bf94')
-b2sums=('2a1c1f71d2a2e06448c78eb46028fdcfd59682dccf2365851c4bd059cdd78842320f9a5ba7345e761611a5b4eba634faf2e26cc669097da0ba2e1c832c23059f'
-        'cdca2012f772afea99436faa02f80697dc9042a6eb5ae14f8ee8ba9e100a65b936cdfaf84ec0361543c70859375c823a25cfee52b0face40b8dea2ec2cf1de59')
+        "remove_http-parse_incompatible_tests.patch")
+sha512sums=('428188de153fdf8ff5bf78949f4a3a89fba57b87a8b641f92fed501df6a8cfdb72e0ffe0bf61a98adf210a2867134eb4421ea4b8d8219331aabc3daddd92f5fc'
+            '6347086440fd9b5e0e73c88e049e253f2c159477de7cc2d02cb7f0907c80626fb301eceb72e803c259bc281440cfbc092e0a97ffdd825fd758545790cf5cd90b')
+b2sums=('b612e3a30b4675431879792132adee22cce57986b4f307507b896d823329f7e37514d9008e008075c395a4eca26aaf6ed6eb3943cf97370a0b04086240a5e1fc'
+        '1ce817b82772bc088279a8f347298c775742df5a0e9e0b8459e391ed49d1330e75a6ec7ee641bf5f32e9ed352672ad0ad6fae400f6f695bd6a68211bf2694089')
 
 prepare() {
   cd "$_pkgbasename-$pkgver"
   # removing tests that are only compatible with the (modified) vendored
   # version of http-parser, but not with upstream http-parser
-  patch -Np1 -i "../${_pkgbasename}-0.99.0-remove_http-parse_incompatible_tests.patch"
+  patch -Np1 -i "../remove_http-parse_incompatible_tests.patch"
 }
 
 
