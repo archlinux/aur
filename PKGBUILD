@@ -4,7 +4,7 @@
 
 pkgname=mpd-sima
 _pyname=MPD_sima
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python>=3.2' 'python-musicpd>=0.4.1' 'python-requests>=2.4.0')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz" "service")
-sha256sums=('90014db79ba8ea2c65d5dbc7abf0057fe7237bb165b3bec9f4938b0d83723e05'
+sha256sums=('e3d12fd6663adeb8a965fcf2e350be597ea861803fbeffa6d875ae50eeb8d8d0'
             '864b997cbf53864120aba183f2642ad6a632a0bcde3c4701779cc9a25cc0f448')
 
 prepare() {
