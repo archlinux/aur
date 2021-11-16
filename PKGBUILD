@@ -12,7 +12,7 @@ optdepends=(pulseaudio)
 _url="https://github.com/project-slippi/$pkgname/releases"
 _package="Slippi-Launcher-$pkgver-$arch.AppImage"
 source=("$_package::$_url/download/v$pkgver/$_package")
-md5sums=('c9e4c9d565dd7a98323777e6ae2af68a')
+md5sums=('c4a82375f24513cbc1e9b4fbb72a6ca8')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
