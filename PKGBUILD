@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=93.0
+pkgver=94.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=50beb7700dd95dc4b58b25e1bd9d5c5c7b2a25ba
+_patchrev=f41e1b2623e162339286610070c059afe5106c25
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -90,25 +90,19 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         build-disable-elfhack.patch
         # patches from gentoo:
         # https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-89-patches-01.tar.xz
-        0021-Make-PGO-use-toolchain.patch
+        0020-Make-PGO-use-toolchain.patch
         # Fix MOZILLA#1516803
         # https://bugzilla.mozilla.org/show_bug.cgi?id=1516803
-        0023-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
+        0022-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
         # PGO/LTO GCC patches
-        0025-Fix-building-with-PGO-when-using-GCC.patch
-        0028-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-        0029-Make-elfhack-use-toolchain.patch
+        0024-Fix-building-with-PGO-when-using-GCC.patch
+        0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+        0028-Make-elfhack-use-toolchain.patch
         # end
         # Fix CSD when globalmenu is active #8
         fix_csd_window_buttons.patch
         # Workaround #14
         fix-wayland-build.patch
-        # MOZILLA#1725828
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1725828
-        0033-bmo-1725828-Preload-dependencies-for-the-Widevine-CD.patch
-        # MOZILLA#1730397
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1730397
-        0034-bmo-1730397-Update-packed_simd-to-a-version-that-sup.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -173,24 +167,17 @@ prepare() {
   patch -Np1 -i "$srcdir"/fix-wayland-build.patch
 
 
-  # shorter living bugfixes, likely fixed in the next release
-  # MOZILLA#1725828
-  patch -Np1 -i "$srcdir"/0033-bmo-1725828-Preload-dependencies-for-the-Widevine-CD.patch
-  # MOZILLA#1730397
-  patch -Np1 -i "$srcdir"/0034-bmo-1730397-Update-packed_simd-to-a-version-that-sup.patch
-
-
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
     # sandbox needs to be built with --param lto-partitions=1 when
     # GCC LTO is enabled
-    patch -Np1 -i "$srcdir"/0023-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
+    patch -Np1 -i "$srcdir"/0022-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
 
     # PGO/LTO GCC patches
-    patch -Np1 -i "$srcdir"/0021-Make-PGO-use-toolchain.patch
-    patch -Np1 -i "$srcdir"/0025-Fix-building-with-PGO-when-using-GCC.patch
-    patch -Np1 -i "$srcdir"/0028-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-    patch -Np1 -i "$srcdir"/0029-Make-elfhack-use-toolchain.patch
+    patch -Np1 -i "$srcdir"/0020-Make-PGO-use-toolchain.patch
+    patch -Np1 -i "$srcdir"/0024-Fix-building-with-PGO-when-using-GCC.patch
+    patch -Np1 -i "$srcdir"/0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+    patch -Np1 -i "$srcdir"/0028-Make-elfhack-use-toolchain.patch
 
     # add missing rule for pgo builds
     patch -Np1 -i "$srcdir"/add_missing_pgo_rule.patch
@@ -294,24 +281,22 @@ md5sums=('SKIP'
          '4c23d9c0a691d70919beb1dafbbecbd3'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'b386ac38ffb7e545b9473e516455a25f'
-         '43c65f6513fbc28aaa8238ad3bdb4e26'
-         '36a422712ca00b5d42cbed41b2ec943c'
+         '1d5e9215530ef6778299b67dc6dba65e'
+         'b4906a478eaee31383db763b16285cce'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         '9ad2dc49bf1cf74f70df2917d673c888'
+         '4efeed2b6084e16b4946379c54ddf9c8'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
-         '33f9a50bb1c0152c8f73afad90caf673'
-         '10039de04111c320b075d1db592658b7'
-         '32749b8718999bcba34a508189046b5c'
+         '350c258cdaeef99b4638c5181fda3ad2'
+         '9e518b30cf2ff9afd0423c79d12ae7b2'
+         '4fa2216039664edad586b230b05fbd0a'
          'e7994b3b78b780ebe610ba3d87247e40'
          '00abc3976f028f8fe07111b9e687b574'
          'c7b492df4fbf42ffe8aea4c0afb89921'
-         '04d226e7e748141d447ea28535890631'
-         'c2ccbfca8c29fb6d960206af335c1d8e'
-         '5898cf09e6abd4c0e8b526a61b2d63b3'
-         'd928ecb61da7628d4e7981ebf7e4c879'
-         '5cf84ebbd3c787b56198c32a91b4df16'
+         '316d71d9cec400890db2ee8c362e672f'
+         'c6c0e47c9b517e5146a8925f442b811b'
+         '943b9fe2ba474f7809a41622744f97f9'
+         '31f950a94966287bfa6ccf03030781cc'
+         'a59f137deca1da83de10a122984457d7'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
-         '2cf74781f6b742d6b7e6f7251f49311a'
-         'f1bf067ed6b8a4ae82a8a448fe422ece'
-         'a50a5fcda823771277efd20cabfdb8ff')
+         '2cf74781f6b742d6b7e6f7251f49311a')

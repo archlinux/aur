@@ -1,7 +1,7 @@
-From 76549ac67ab84e5a2ddeca467ae315de3128cf4e Mon Sep 17 00:00:00 2001
+From 0539ac3b5a6574e8ba3a27b62681c0a49d89edcb Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Wed, 15 Apr 2020 00:27:25 +0200
-Subject: [PATCH 23/37] bmo#1516803: force one LTO partition for sandbox when
+Subject: [PATCH 22/34] bmo#1516803: force one LTO partition for sandbox when
  using GCC
 
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
@@ -10,9 +10,7 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/security/sandbox/linux/moz.build b/security/sandbox/linux/moz.build
-index 31d2e24118..88d9a2dc6f 100644
---- a/security/sandbox/linux/moz.build
-+++ b/security/sandbox/linux/moz.build
+index 81c89bd947..a5b76067a7 100644
 @@ -114,9 +114,10 @@
  # gcc lto likes to put the top level asm in syscall.cc in a different partition
  # from the function using it which breaks the build.  Work around that by
@@ -22,12 +20,11 @@ index 31d2e24118..88d9a2dc6f 100644
 -        LDFLAGS += ["--param lto-partitions=1"]
 +if CONFIG["CC_TYPE"] != "clang" and CONFIG["MOZ_LTO_LDFLAGS"] is not None:
 +    for f in CONFIG["MOZ_LTO_LDFLAGS"]:
-+        if f.startswith("-flto"):
++       if f.startswith("-flto"):
 +            LDFLAGS += ["--param", "lto-partitions=1"]
  
  DEFINES["NS_NO_XPCOM"] = True
  DisableStlWrapping()
-
 -- 
-2.31.1
+2.33.1
 

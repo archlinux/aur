@@ -1,4 +1,4 @@
-From 4fa01b19e05ade439a2b7b600d55f3ae88e8ede9 Mon Sep 17 00:00:00 2001
+From 34a104c3cc36d9a4297a51d7b1cf7195c8c28a1d Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 19:36:02 +0200
 Subject: [PATCH 06/34] bmo#1559213: Support system av1
@@ -15,10 +15,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  4 files changed, 34 insertions(+), 4 deletions(-)
 
 diff --git a/config/external/moz.build b/config/external/moz.build
-index 0ca007a425..5baf34432c 100644
+index 6a2ed9e4a2..697bb9d0bf 100644
 --- a/config/external/moz.build
 +++ b/config/external/moz.build
-@@ -51,8 +51,9 @@ if not CONFIG["MOZ_SYSTEM_LIBVPX"]:
+@@ -46,8 +46,9 @@ if not CONFIG["MOZ_SYSTEM_LIBVPX"]:
      external_dirs += ["media/libvpx"]
  
  if CONFIG["MOZ_AV1"]:
@@ -31,10 +31,10 @@ index 0ca007a425..5baf34432c 100644
  if not CONFIG["MOZ_SYSTEM_PNG"]:
      external_dirs += ["media/libpng"]
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index e97a65307f..ca0e6a0ad8 100644
+index 4e3aef0f24..14bd336df4 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1299,6 +1299,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
+@@ -1300,6 +1300,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
          'proxy.h',
      ]
  
@@ -66,7 +66,7 @@ index 16ca8a9cbc..b349dcbe6d 100644
  if CONFIG["MOZ_OMX"]:
      EXPORTS += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index ed1244266c..b5fd725a46 100644
+index d98e748bb9..1e704a4765 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -544,14 +544,29 @@ def av1(value):
@@ -110,5 +110,5 @@ index ed1244266c..b5fd725a46 100644
  # JXL Image Codec Support
  # ==============================================================
 -- 
-2.33.0
+2.33.1
 

@@ -1,4 +1,4 @@
-From 1a2fe72403851b69e4e6dd04abc618ffab38fb2f Mon Sep 17 00:00:00 2001
+From 5d03cddd1c0d8eb7acef44ff7272176d33e6be51 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 19:34:44 +0200
 Subject: [PATCH 05/34] bmo#847568: Support system graphite2
@@ -20,10 +20,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  create mode 100644 gfx/graphite2/geckoextra/moz.build
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index a2977231ee..e97a65307f 100644
+index 7178ada497..4e3aef0f24 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1242,6 +1242,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
+@@ -1243,6 +1243,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
  	'harfbuzz/hb.h',
      ]
  
@@ -118,10 +118,10 @@ index 8222b72333..16a2b401db 100644
      "thebes",
      "ipc",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index e1cbefb604..4e5d693394 100644
+index 4bb25233e7..a2dd99ceb4 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -288,7 +288,10 @@ if CONFIG["MOZ_WAYLAND"]:
+@@ -285,7 +285,10 @@ if CONFIG["MOZ_WAYLAND"]:
  
  LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
@@ -134,10 +134,10 @@ index e1cbefb604..4e5d693394 100644
  if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
      CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 diff --git a/old-configure.in b/old-configure.in
-index 78c358a3b1..2a9b8ad1d7 100644
+index 1707e98471..95098e4638 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -2205,6 +2205,27 @@ if test "$USE_FC_FREETYPE"; then
+@@ -2204,6 +2204,27 @@ if test "$USE_FC_FREETYPE"; then
      fi
  fi
  
@@ -166,10 +166,10 @@ index 78c358a3b1..2a9b8ad1d7 100644
  dnl Check if we need the 32-bit Linux SSE2 error dialog
  dnl ========================================================
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index 4b7194e9e2..077f3f2556 100644
+index dd6901ba9a..be73ac4bee 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -242,6 +242,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -260,6 +260,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -180,7 +180,7 @@ index 4b7194e9e2..077f3f2556 100644
      OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 39944c4aa1..ed1244266c 100644
+index fb1c48abc3..d98e748bb9 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -460,6 +460,19 @@ add_old_configure_assignment(
@@ -204,5 +204,5 @@ index 39944c4aa1..ed1244266c 100644
  # ==============================================================
  option('--with-system-harfbuzz', help="Use system harfbuzz (located with pkgconfig)")
 -- 
-2.33.0
+2.33.1
 

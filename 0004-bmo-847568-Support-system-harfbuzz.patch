@@ -1,4 +1,4 @@
-From 4057cc754b266a29b97ca5735439f22780e3897c Mon Sep 17 00:00:00 2001
+From 6371b00577970f715fec174eacb32c74a6946f68 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 19:32:39 +0200
 Subject: [PATCH 04/34] bmo#847568: Support system harfbuzz
@@ -21,10 +21,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  10 files changed, 40 insertions(+), 1 deletion(-)
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 9018d3e580..a2977231ee 100644
+index e060fd2dcc..7178ada497 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1235,6 +1235,13 @@ if CONFIG['OS_TARGET'] == 'Android':
+@@ -1236,6 +1236,13 @@ if CONFIG['OS_TARGET'] == 'Android':
          'vr/gvr/capi/include/gvr.h',
      ]
  
@@ -39,10 +39,10 @@ index 9018d3e580..a2977231ee 100644
      system_headers += [
          'jack/jack.h',
 diff --git a/dom/base/moz.build b/dom/base/moz.build
-index fa75996f78..56652f41de 100644
+index 145f20810f..49453e0d56 100644
 --- a/dom/base/moz.build
 +++ b/dom/base/moz.build
-@@ -559,6 +559,9 @@ FINAL_LIBRARY = "xul"
+@@ -562,6 +562,9 @@ FINAL_LIBRARY = "xul"
  if CONFIG["MOZ_X11"]:
      CXXFLAGS += CONFIG["TK_CFLAGS"]
  
@@ -103,10 +103,10 @@ index 4ff948f567..6e920ff27f 100755
      LOCAL_INCLUDES += [
          "/gfx/cairo/cairo/src",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index 04692dbf30..e1cbefb604 100644
+index 3f483d180e..4bb25233e7 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -290,6 +290,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
+@@ -287,6 +287,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
  DEFINES["GRAPHITE2_STATIC"] = True
  
@@ -117,7 +117,7 @@ index 04692dbf30..e1cbefb604 100644
      # Suppress warnings from Skia header files.
      SOURCES["gfxPlatform.cpp"].flags += ["-Wno-implicit-fallthrough"]
 diff --git a/intl/unicharutil/util/moz.build b/intl/unicharutil/util/moz.build
-index 897bfad92a..5a83cdb2c1 100644
+index 301eb9a854..7cece5e06c 100644
 --- a/intl/unicharutil/util/moz.build
 +++ b/intl/unicharutil/util/moz.build
 @@ -25,6 +25,9 @@ UNIFIED_SOURCES += [
@@ -127,11 +127,11 @@ index 897bfad92a..5a83cdb2c1 100644
 +if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
 +    CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 +
+ include("/ipc/chromium/chromium-config.mozbuild")
+ 
  GeneratedFile(
-     "BaseChars.h",
-     script="base_chars.py",
 diff --git a/netwerk/dns/moz.build b/netwerk/dns/moz.build
-index 1498dd2ceb..026798bf71 100644
+index 8de4f64777..18ddb4e0b2 100644
 --- a/netwerk/dns/moz.build
 +++ b/netwerk/dns/moz.build
 @@ -106,6 +106,9 @@ LOCAL_INCLUDES += [
@@ -145,10 +145,10 @@ index 1498dd2ceb..026798bf71 100644
  
  if CONFIG["CC_TYPE"] in ("clang", "gcc"):
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index 5e2d8cb4cd..4b7194e9e2 100644
+index 2c3f86948e..dd6901ba9a 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -242,6 +242,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -260,6 +260,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -159,7 +159,7 @@ index 5e2d8cb4cd..4b7194e9e2 100644
      OS_LIBS += CONFIG["MOZ_JPEG_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 8bad820dce..39944c4aa1 100644
+index f63780b892..fb1c48abc3 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -460,6 +460,15 @@ add_old_configure_assignment(
@@ -179,5 +179,5 @@ index 8bad820dce..39944c4aa1 100644
  # ==============================================================
  @depends(toolkit)
 -- 
-2.33.0
+2.33.1
 

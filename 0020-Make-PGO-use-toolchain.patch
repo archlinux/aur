@@ -1,7 +1,7 @@
-From bf3c53a3dd028dffc6c1d61fd2969825f0d5928f Mon Sep 17 00:00:00 2001
+From bb0d0a304ff3b88ab43209cca723a1fa03904aad Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 20:13:34 +0200
-Subject: [PATCH 21/35] Make PGO use toolchain
+Subject: [PATCH 20/34] Make PGO use toolchain
 
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 9 insertions(+)
 
 diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
-index 3927dd907b..cb4819b230 100644
+index 9ca9c97fce..9f86fe0940 100644
 --- a/build/unix/mozconfig.unix
 +++ b/build/unix/mozconfig.unix
 @@ -4,6 +4,15 @@ if [ -n "$FORCE_GCC" ]; then
@@ -29,5 +29,5 @@ index 3927dd907b..cb4819b230 100644
      # package.
      mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$PATH"
 -- 
-2.32.0
+2.33.1
 
