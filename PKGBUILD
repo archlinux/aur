@@ -3,7 +3,7 @@
 
 _npmname=wildduck
 pkgname=nodejs-wildduck
-pkgver=1.36.0
+pkgver=1.36.2
 pkgrel=1
 pkgdesc='Opinionated email server'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('369319cce7446ed0eb942ee8e99ac288eae1edd12cb83eaef53d95b9d34e36cf')
+sha256sums=('f1d532f018b1819541a6311f4f35c37a894ee02ab95a59ff05a0cabfa504f772')
 
 package() {
     cd "$srcdir"
