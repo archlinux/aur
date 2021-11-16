@@ -1,7 +1,8 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Jose Riha <jose 1711 gmail com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mixo
-pkgver=0.19.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Connect your DJ software, sync your library to all your devices, listen to your sets on your phone, and backup your library to the cloud"
 arch=('x86_64')
@@ -12,7 +13,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://www.mixo.tech/download/beta/MIXO-${pkgver}.AppImage"
         'LICENSE')
-sha256sums=('2ea4c21b5d62014a51602f6dc869b4efdd118ebcab931ab9c14122a2602bd145'
+sha256sums=('964b4965b51318c95f092fad58eece5164d1b98ae5d54aa93a710913299f3b32'
             '3ef95533dcac842af147bc12911270438deb91b7ea616adcdc28ffd38ebe46b8')
 
 package() {
@@ -24,7 +25,7 @@ package() {
           --name "MIXO" \
           --comment "$pkgdesc" \
           --exec "${pkgname}" \
-          --categories 'Network;Audio;Application' \
+          --categories 'Network;Audio;AudioVideo;Application' \
           --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
