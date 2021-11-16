@@ -12,7 +12,7 @@ pkgdesc="A style to bend Qt applications to look like they belong into GNOME She
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedoraQt/adwaita-qt"
 license=('GPL')
-makedepends=('cmake' 'git' 'qt5-x11extras' 'qt6-base' 'sassc')
+makedepends=('cmake' 'git' 'qt5-x11extras' 'qt6-base')
 _commit=a503e7ecce9e50e4917ab9707592b3cd3e40c248
 source=("git+https://github.com/FedoraQt/adwaita-qt.git#commit=$_commit")
 sha256sums=('SKIP')

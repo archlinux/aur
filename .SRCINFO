@@ -10,7 +10,6 @@ pkgbase = adwaita-qt
 	makedepends = git
 	makedepends = qt5-x11extras
 	makedepends = qt6-base
-	makedepends = sassc
 	source = git+https://github.com/FedoraQt/adwaita-qt.git#commit=a503e7ecce9e50e4917ab9707592b3cd3e40c248
 	sha256sums = SKIP
 
