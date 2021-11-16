@@ -4,27 +4,30 @@
 # Maintainer: Rami Chowdhury <rami.chowdhury@gmail.com>
 pkgname=gerbil-scheme
 pkgver=0.16
-pkgrel=3
-pkgdesc="Gerbil is an opinionated dialect of Scheme designed for systems programming, with a state of the art macro and module system on top of the Gambit runtime."
+pkgrel=4
+pkgdesc="Opinionated dialect of Scheme designed for systems programming, on the Gambit runtime."
 arch=(x86_64 i686)
 url="https://github.com/vyzo/gerbil"
 license=('LGPLv2.1' 'Apache 2.0')
-groups=()
 depends=('openssl' 'zlib' 'sqlite' 'gambit-c>=4.9.3')
 # makedepends=('git')
-optdepends=('libxml' 'libyaml' 'mysql' 'lmdb' 'leveldb')
+optdepends=('libxml2: XML / HTML support'
+            'libyaml: YAML serialization support'
+            'mysql: additional SQL database support'
+            'lmdb: key/value store support'
+            'leveldb: key/value store support')
 conflicts=('gerbil-scheme-git')
-install=
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('46782b4b71a3b437501b825f2f164e53b285d3a4cdba8f04485edaaa589d8500535c06a47a1464fc537ab7546413dde37c8d6a16a5e076a99ccf255905ed105d')
-
-noextract=()
-#generate with 'makepkg -g'
-
-TARGET_DIR="/opt/gerbil-scheme"
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "install.patch")
+sha512sums=('46782b4b71a3b437501b825f2f164e53b285d3a4cdba8f04485edaaa589d8500535c06a47a1464fc537ab7546413dde37c8d6a16a5e076a99ccf255905ed105d'
+            '79ad0046390b40748830dfd96d48162dcd3658503c208fecad33aee4b2f6f2430856d425a042c30a110b515135eab2105ae254548b762347d1d1efbd8c106cc9')
 
 pkg_installed() {
     pacman -Qq $1 >/dev/null 2>&1
+}
+
+prepare() {
+    cd "gerbil-$pkgver"
+    patch --fuzz=3 --strip=2 < "${srcdir}/install.patch"
 }
 
 build() {
@@ -35,7 +38,7 @@ build() {
     export GERBIL_GSC=gambitc
 
     cd "$srcdir/gerbil-$pkgver/src"
-    msg "Looking for optional dependencies..."
+    echo "Looking for optional dependencies..."
 
     _enabled_features=""
     if pkg_installed libxml2; then
@@ -54,26 +57,28 @@ build() {
         _enabled_features+=" --enable-leveldb"
     fi
 
-    msg "Configuring..."
+    echo "Configuring..."
     ./configure \
-        --prefix="${pkgdir}${TARGET_DIR}" \
+        --prefix="${pkgdir}/opt/gerbil-scheme" \
         $_enabled_features
 
-    msg "Building..."
+    echo "Building..."
     ./build.sh
 }
 
 package() {
-    msg "Installing..."
+    echo "Installing..."
+
     cd "$srcdir/gerbil-$pkgver/src"
-    mkdir -p "${pkgdir}/${TARGET_DIR}"
+    mkdir -p "${pkgdir}/opt/gerbil-scheme"
     ./install
 
     mkdir -p ${pkgdir}/etc/profile.d/
     cat <<EOF >${pkgdir}/etc/profile.d/gerbil-scheme.sh
 #!/bin/bash
-export GERBIL_HOME=${TARGET_DIR}
-export GERBIL_GSC=gambitc
-export PATH=${TARGET_DIR}/bin:$PATH
+export GERBIL_GSC=/usr/bin/gambitc
+export GERBIL_HOME=/opt/gerbil-scheme
+export PATH=/opt/gerbil-scheme/bin:$PATH
 EOF
+    chmod +x ${pkgdir}/etc/profile.d/gerbil-scheme.sh
 }
