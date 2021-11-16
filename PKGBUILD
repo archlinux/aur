@@ -1,8 +1,8 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 pkgname=slippi-launcher
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
-pkgdesc="The Slippi Launcher acts as a one stop shop for everything Slippi related. It handles updating Slippi Dolphin, playing Slippi Online, launching and analyzing replays, and more."
+pkgdesc="The way to play Slippi Online and watch replays."
 arch=('x86_64')
 url="https://slippi.gg/"
 license=('GPL3')
