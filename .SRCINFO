@@ -1,0 +1,20 @@
+pkgbase = neetdraw-git
+	pkgdesc = Terminal drawing application with multiplayer support
+	pkgver = r72.e08c63f
+	pkgrel = 1
+	url = https://git.janouch.name/p/neetdraw
+	arch = i686
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	depends = libev
+	depends = ncurses
+	provides = neetdraw
+	conflicts = neetdraw
+	options = zipman
+	source = git+https://git.janouch.name/p/neetdraw
+	md5sums = SKIP
+
+pkgname = neetdraw-git
