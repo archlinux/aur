@@ -1,7 +1,7 @@
 pkgbase = libchan
 	pkgdesc = Pure C implementation of Go channels.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tylertreat/chan
 	arch = any
 	license = Apache License 2.0

@@ -3,7 +3,7 @@
 pkgname=libchan
 pkgver=0.0.4
 _commit=b6cae887fdfce1f32eb52466ac3aac860c955d8e
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure C implementation of Go channels."
 arch=('any')
 url="https://github.com/tylertreat/chan"
