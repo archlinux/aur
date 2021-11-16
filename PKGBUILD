@@ -1,6 +1,6 @@
 # Maintainer: Arisa Snowbell <goddess@chizuru.space>
 pkgname=shiny-mirrors
-pkgver=r131.97c65f64
+pkgver=r139.9529c701
 pkgrel=1
 pkgdesc="A replacement for reflector, rewritten in Rust! A tool to find the best mirrors for you!"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo-nightly' 'git' 'pandoc')
 backup=("etc/$pkgname.conf")
-_commit=97c65f64e80f4fefb27c31d5007ed63677d1f6a1
+_commit=9529c70118cf6613ea2962e278155da6b717fd9c
 source=("git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('E2C998FA1F7B651E45B20CDC56AA2C2801F619D7' '93F4694364C3E688BA33E3E41CBE6B7A2B054E06')
@@ -45,5 +45,7 @@ package() {
     "$pkgdir/usr/share/fish/completions/"
   install -Dm644 "$pkgname/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "conf/$pkgname.conf" -t "$pkgdir/etc/" # Config for Manjaro build, but at runtime it will be overwritten
+  install -Dm644 "$pkgname/systemd/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 "$pkgname/systemd/$pkgname.timer" "$pkgdir/usr/lib/systemd/system/$pkgname.timer"
 }
 
