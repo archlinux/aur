@@ -2,7 +2,7 @@
 # from: git
 
 pkgname=transmission-trackers-git
-pkgver=r29.fca828a
+pkgver=r35.e6cb5f8
 pkgrel=1
 pkgdesc="Automatically add trackers from a list to all torrents in Transmission"
 arch=('any')
