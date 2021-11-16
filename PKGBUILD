@@ -40,6 +40,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   chmod -c 644 "${pkgname}/man/"*
   chmod -c 644 "${pkgname}.egg-info/"*
+  chmod -c 644 "${pkgname}/ddw/"*
 }
 
 build() {
