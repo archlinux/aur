@@ -2,7 +2,7 @@
 
 pkgname=lessmsi
 pkgver=1.6.91
-pkgrel=1
+pkgrel=2
 pkgdesc='An utility to view and extract the contents of an MSI file'
 arch=('i686' 'x86_64')
 url='http://lessmsi.activescott.com'
@@ -17,7 +17,7 @@ sha1sums=('ba24332cfc8bb3d1eff54fb1b153e89c3a88576b'
 
 prepare() {
   cd $srcdir
-  gendesk -f -n --pkgname "$pkgname" --exec "lessmsi-gui" --pkgdesc "$pkgdesc" --categories 'Utility'
+  gendesk -f -n --pkgname "$pkgname" --exec "lessmsi-gui" --pkgdesc "$pkgdesc" --categories 'Utility;FileTools'
 }
 
 build() {
