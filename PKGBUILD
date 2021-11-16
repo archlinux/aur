@@ -44,7 +44,7 @@ build() {
     if pkg_installed libyaml; then
         _enabled_features+=" --enable-libyaml"
     fi
-    if pkg_installed mysql || pkg_installed mariadb; then
+    if pkg_installed mysql; then
         _enabled_features+=" --enable-mysql"
     fi
     if pkg_installed lmdb; then
