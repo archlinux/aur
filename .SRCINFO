@@ -1,14 +1,14 @@
 pkgbase = nodejs-docco
 	pkgdesc = Literate Programming can be Quick and Dirty.
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/jashkenas/docco
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = docco-0.8.1.tgz
-	source = https://registry.npmjs.org/docco/-/docco-0.8.1.tgz
-	sha256sums = f887106ec47a2068fbc2ec21cbbfa20d62edb7cbfb98220d08f95e58830634a5
+	noextract = docco-0.9.1.tgz
+	source = https://registry.npmjs.org/docco/-/docco-0.9.1.tgz
+	sha256sums = d4a976409c97f6d23519b0d38af6aa99e4c240f02e4b0a52ad030b0037693153
 
 pkgname = nodejs-docco

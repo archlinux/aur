@@ -6,8 +6,8 @@
 
 _npmname=docco
 pkgname=nodejs-docco
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Literate Programming can be Quick and Dirty."
 arch=(any)
 url="https://github.com/jashkenas/docco"
@@ -16,7 +16,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('f887106ec47a2068fbc2ec21cbbfa20d62edb7cbfb98220d08f95e58830634a5')
+sha256sums=('d4a976409c97f6d23519b0d38af6aa99e4c240f02e4b0a52ad030b0037693153')
 
 package() {
     cd "$srcdir"
