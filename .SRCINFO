@@ -9,6 +9,7 @@ pkgbase = bdf-tewi-git
 	makedepends = git
 	makedepends = python
 	makedepends = make
+	makedepends = xorg-bdftopcf
 	depends = xorg-fonts-encodings
 	depends = xorg-mkfontdir
 	depends = xorg-mkfontscale
@@ -16,4 +17,3 @@ pkgbase = bdf-tewi-git
 	sha256sums = SKIP
 
 pkgname = bdf-tewi-git
-
