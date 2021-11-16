@@ -1,4 +1,5 @@
-# Maintainer: Tom Vincent <https://tlvince.com/contact>
+# Creator: Tom Vincent <https://tlvince.com/contact>
+# Maintainer: Mesmer <https://aur.archlinux.org/account/mesmer>
 
 _pkgname=aws-google-auth
 pkgname="python-$_pkgname"
