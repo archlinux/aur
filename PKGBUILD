@@ -1,18 +1,18 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem-git
-pkgver=4.4.2.r20191024
+pkgver=4.10.r20211113
 epoch=2
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
-makedepends=('git' 'texlive-core' 'gcc-fortran' 'unzip')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack' 'arpack' 'parmetis' 'cblas' 'blis' 'mumps')
+makedepends=('git' 'texlive-core' 'gcc-fortran' 'unzip' 'openmpi' 'gsl')
 provides=('freefem' 'freefem++')
 conflicts=('freefem' 'freefem++')
-source=('FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop')
+source=('FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git')
 md5sums=('SKIP')
 options=('!makeflags')
 
@@ -27,10 +27,11 @@ prepare() {
   ./configure CXXFLAGS=" --std=c++11" \
 	      --prefix=/usr \
 	      --sysconfdir=/etc \
-	      --enable-download \
+	      --disable-download \
+	      --disable-superlu \
 	      --enable-optim \
-	      --disable-mumps \
-	      --disable-hpddm
+	      --with-petsc_complex=/opt/petsc/linux-c-opt/lib/petsc/conf/petscvariables \
+	      --with-petsc_complex=/opt/petsc/linux-c-opt/lib/petsc/conf/petscvariables
 }
 
 build() {

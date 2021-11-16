@@ -1,6 +1,6 @@
 pkgbase = freefem-git
 	pkgdesc = A PDE oriented language using the finite element method from git
-	pkgver = 4.4.2.r20191024
+	pkgver = 4.10.r20211113
 	pkgrel = 1
 	epoch = 2
 	url = https://freefem.org/index.html
@@ -10,6 +10,8 @@ pkgbase = freefem-git
 	makedepends = texlive-core
 	makedepends = gcc-fortran
 	makedepends = unzip
+	makedepends = openmpi
+	makedepends = gsl
 	depends = fftw
 	depends = freeglut
 	depends = glu
@@ -17,17 +19,18 @@ pkgbase = freefem-git
 	depends = hdf5
 	depends = gsl
 	depends = openmpi
-	depends = openblas-lapack
+	depends = lapack
 	depends = arpack
 	depends = parmetis
-	depends = python
+	depends = cblas
+	depends = blis
+	depends = mumps
 	provides = freefem
 	provides = freefem++
 	conflicts = freefem
 	conflicts = freefem++
 	options = !makeflags
-	source = FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop
+	source = FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git
 	md5sums = SKIP
 
 pkgname = freefem-git
-
