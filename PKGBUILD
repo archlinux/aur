@@ -2,7 +2,7 @@
 # Previous maintainer: Swift Geek <swiftgeek@gmail.com>
 
 pkgname=earlyoom-git
-pkgver=1.6.2.r35.g788fe49
+pkgver=1.6.2.r36.g7c17ac2
 pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('i686' 'x86_64')
@@ -10,13 +10,21 @@ url="https://github.com/rfjakob/earlyoom"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'pandoc')
-#checkdepends=('go')
+checkdepends=('cppcheck' 'go')
+optdepends=('systembus-notify: desktop notifications')
 provides=('earlyoom')
 conflicts=('earlyoom')
 backup=("etc/default/earlyoom")
 source=("git+https://github.com/rfjakob/earlyoom.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "earlyoom"
+
+  sed '/^DynamicUser=/a SupplementaryGroups=proc' -i "earlyoom.service.in"
+  sed 's;^EARLYOOM_ARGS="(.*)";EARLYOOM_ARGS="\1 -n --avoid '\''(^|/)(init|systemd|Xorg|sshd)$'\''";' -ri "earlyoom.default"
+}
 
 pkgver() {
   cd "earlyoom"
@@ -27,13 +35,14 @@ pkgver() {
 build() {
   cd "earlyoom"
 
-  make
+  make \
+    PREFIX="/usr"
 }
 
 check() {
   cd "earlyoom"
 
-  #make test
+  make test
 }
 
 package() {
