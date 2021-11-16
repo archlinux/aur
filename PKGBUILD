@@ -1,13 +1,13 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 pkgname=ryujinx-git
 pkgver=r1842.d92fff541
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
 license=('MIT')
-depends=('dotnet-runtime')
-makedepends=('git' 'dotnet-sdk>=5')
+depends=('dotnet-runtime-5.0-bin')
+makedepends=('git' 'dotnet-sdk-5.0-bin')
 provides=(Ryujinx)
 install=ryujinx.install
 source=(
@@ -18,7 +18,7 @@ source=(
 md5sums=(
 	'SKIP'
 	'2a3637d0d4e7678473a9bd87f6acc8aa'
-	'5bc1b579cccd891aadc7a73d3eab3791'
+	'b13915480a74358d5f89aed1ebfc5223'
 	'30138087aab7dcec30bdc4739617f000')
 options=(!strip)
 
