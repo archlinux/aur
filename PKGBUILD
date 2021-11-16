@@ -35,6 +35,7 @@ prepare() {
   cd $_pkgname
 
   # Add scaling support using randr under x11 (Marco Trevisan and Georg Wagner)
+  git revert -n ef0f7084
   patch -p1 -i ../x11-Add-support-for-fractional-scaling-using-Randr.patch
 }
 
