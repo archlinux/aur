@@ -1,6 +1,6 @@
 pkgbase = meld-git
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.21.0.216.g6e00779e
+	pkgver = 3.21.0.218.g631ef272
 	pkgrel = 1
 	url = http://meldmerge.org/
 	license = GPL
