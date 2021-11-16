@@ -1,10 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_binver=1.5.31
-
 pkgname=kotlin-native-bin
-pkgver=1.5.31
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="An LLVM based backend for the Kotlin compiler and native implementation of the Kotlin standard library"
 arch=('x86_64')
 url="https://kotlinlang.org/"
@@ -15,28 +13,24 @@ options=('staticlibs' 'libtool' '!strip')
 # > While the output of the compiler does not have any dependencies or virtual
 # > machine requirements, the compiler itself requires
 # > [Java 1.8 or higher runtime](https://jdk.java.net/11/).
-# 2. For 'ncurses5-compat-libs':
-# https://youtrack.jetbrains.com/issue/KT-42693
-# via https://github.com/JetBrains/kotlin-native/issues/2674
-# This dependency should be removed in 1.6.0 release.
-depends=('java-environment>=8' 'ncurses5-compat-libs')
+depends=('java-environment>=8')
 optdepends=(
   'lldb: for konan-lldb'
 )
 provides=('kotlin-native')
 conflicts=('kotlin-native' 'kotlin-native-git')
 source=(
-  "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-x86_64-${_binver}.tar.gz"
+  "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-x86_64-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '636b7e9e54eefa3fa1d284677a8ec2271d0f98b024a8a60127ef20a3badaae03'
+  '0b947685d3e0d5c380f5671265890ddb609adffa6c944729e79e2dbb2fc7c674'
 )
 
 package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib"
 
-  cp -r "kotlin-native-linux-x86_64-${_binver}" "${pkgdir}/usr/lib/kotlin-native"
+  cp -r "kotlin-native-linux-x86_64-${pkgver}" "${pkgdir}/usr/lib/kotlin-native"
   # Fix permissions for some files, e.g. /usr/lib/kotlin-native/klib/common/stdlib/ir/ir_tables/*.knt
   chmod -R +r "${pkgdir}/usr/lib/kotlin-native"
 
