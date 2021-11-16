@@ -1,14 +1,14 @@
 # Maintainer: Marcel Robitaille mail@marcelrobitaille.me
 pkgname=lead-git
-pkgver=r23.958fdca
-pkgrel=5
+pkgver=r38.8c2557e
+pkgrel=1
 pkgdesc="lead provides hot-corners for your desktop, notably for openbox, awesome, i3 and other window managers."
 arch=("i686" "x86_64")
-url="https://github.com/mlde/lead"
+url="https://github.com/MageJohn/lead"
 license=('MIT')
 depends=('qt5-base')
 makedepends=('git' 'clang' 'gcc' 'make' 'libqtxdg')
-source=('lead-git::git+https://github.com/mlde/lead.git')
+source=('lead-git::git+https://github.com/MageJohn/lead.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,4 +25,3 @@ package() {
 	cd "$srcdir/${pkgname}"
 	cp -r data/* "$pkgdir"
 }
-
