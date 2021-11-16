@@ -1,7 +1,7 @@
 pkgbase = libskk-git
-	pkgdesc = GObject-based library to deal with Japanese kana-to-kanji conversion method
+	pkgdesc = GObject-based library to deal with Japanese kana-to-kanji conversion method (git)
 	pkgver = r408.5f5e5c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ueno/libskk
 	arch = x86_64
 	license = GPL3

@@ -1,12 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: eagletmt <eagletmt@gmail.com>
-# Contributor: kusanaginoturugi <kusanaginoturugi@gmail.com>
-
+# Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 pkgname=libskk-git
 _pkgname=${pkgname%-git}
 pkgver=r408.5f5e5c2
-pkgrel=1
-pkgdesc='GObject-based library to deal with Japanese kana-to-kanji conversion method'
+pkgrel=2
+pkgdesc='GObject-based library to deal with Japanese kana-to-kanji conversion method (git)'
 arch=('x86_64')
 url='https://github.com/ueno/libskk'
 license=('GPL3')
