@@ -4,7 +4,7 @@
 _pkgname=spacy
 pkgname=python-${_pkgname}
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=(x86_64 aarch64)
 url='https://spacy.io/'
@@ -13,6 +13,7 @@ depends=(
 	python-catalogue
 	python-cymem
 	python-jinja
+	python-langcodes
 	python-murmurhash
 	python-numpy
 	python-pathlib

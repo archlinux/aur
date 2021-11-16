@@ -1,7 +1,7 @@
 pkgbase = python-spacy
 	pkgdesc = Free open-source library for Natural Language Processing in Python
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spacy.io/
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = python-spacy
 	depends = python-catalogue
 	depends = python-cymem
 	depends = python-jinja
+	depends = python-langcodes
 	depends = python-murmurhash
 	depends = python-numpy
 	depends = python-pathlib
