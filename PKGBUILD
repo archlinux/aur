@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-fpdf2
 _name=${pkgname#python-}
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc='Simple PDF generation for Python'
 arch=(any)
@@ -11,7 +11,7 @@ conflicts=('python-fpdf')
 depends=('python' 'python-pillow')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e20a318ec214ef9620ec90a3eb6a5c6ac5acf7bacf4ee495699de9cb7d0d12d7')
+sha256sums=('1ac7fd9461b167b9c0a63212f2e438428bb7db50dfb248ea27c070a13b03ee68')
 
 build() {
     cd "$_name-$pkgver"
