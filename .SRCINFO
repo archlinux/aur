@@ -1,7 +1,7 @@
 pkgbase = nagstamon
 	pkgdesc = Nagios status monitor for the desktop
-	pkgver = 3.6.0
-	pkgrel = 2
+	pkgver = 3.8.0
+	pkgrel = 1
 	url = https://nagstamon.ifw-dresden.de/
 	arch = any
 	license = GPL
@@ -16,9 +16,9 @@ pkgbase = nagstamon
 	depends = python-lxml
 	depends = python-dbus
 	depends = python-dateutil
-	source = https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.6.0.tar.gz
-	md5sums = 067b64da1562bed077d43d875cd20b61
-	sha256sums = 5ec74c50367ba75af417e04c8192b6f598a1db9e55e2db52a8dc540ac707d904
+	depends = python-pysocks
+	source = https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v3.8.0.tar.gz
+	md5sums = 441222f6aee98eac4a37f5ba6384c8dc
+	sha256sums = e8e32479061d36ccaf34b4d5440f998ec73c0983b5290e00e523b34caebe70ed
 
 pkgname = nagstamon
-
