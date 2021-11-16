@@ -6,6 +6,7 @@ pkgname=tango-cpp
 _pkgname=cppTango
 pkgver=9.3.4
 pkgrel=1
+groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
 arch=('x86_64' 'arm')
 url="https://www.tango-controls.org/"

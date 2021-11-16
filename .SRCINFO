@@ -5,6 +5,7 @@ pkgbase = tango-cpp
 	url = https://www.tango-controls.org/
 	arch = x86_64
 	arch = arm
+	groups = tango-controls
 	license = GPL3
 	depends = tango-idl
 	depends = omniorb
