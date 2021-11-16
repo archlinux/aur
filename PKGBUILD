@@ -2,7 +2,7 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.12.0
+pkgver=5.13.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
@@ -18,7 +18,7 @@ replaces=('linode-cli-dev')
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-cli}/${pkgname}/archive/${pkgver}.tar.gz"
 	no-python2.patch)
-sha256sums=('85adb6c19529f3d4deafe79f6c62ca00cb00324cb95a49b890b9099ea44245f9'
+sha256sums=('94ebfe1d917658264069e319eab8918a1504e2f100c5b8f3bb832d4ecbb36335'
             '7a3f1e454ffac21db74ad1e1b8575f4246566fb25966b89a2e30fa8215dd8c13')
 
 prepare() {
