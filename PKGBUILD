@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hdf5
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
 url="http://www.hdfgroup.org/HDF5/"
@@ -34,6 +34,7 @@ build() {
     ${_arch}-cmake \
       -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
       -DHDF5_BUILD_CPP_LIB=ON \
+      -DHDF5_BUILD_FORTRAN=ON \
       -DBUILD_TESTING=OFF \
       -DHDF5_BUILD_TOOLS=OFF \
       -DHDF5_BUILD_EXAMPLES=OFF \
