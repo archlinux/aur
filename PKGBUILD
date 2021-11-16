@@ -4,25 +4,25 @@
 # created by cantabile <cantabile dot desu at gmail dot com>
 
 pkgname=xkb-qwerty-fr
-pkgver=0.5
-pkgrel=4
-pkgdesc="French qwerty keymap - provides a keymap for French users of qwerty keyboards. All French characters are directly accessible with AltGr and smartly mapped."
+pkgver=0.6
+pkgrel=1
+pkgdesc="Keyboard layout based on the QWERTY layout with extra symbols and diacritics so that typing both in French and English is easy and fast. It is also easy to learn!"
 arch=('any')
-url="http://marin.jb.free.fr/qwerty-fr/"
+url="https://qwerty-fr.org/"
 license=('GPL2')
 depends=('xkeyboard-config' 'perl')
 install=${pkgname}.install
-source=("http://marin.jb.free.fr/qwerty-fr/${pkgname}_${pkgver}_all.deb"
+source=("https://github.com/qwerty-fr/qwerty-fr/releases/download/v${pkgver}/qwerty-fr_${pkgver}_linux.deb"
         "xkb-qwerty-fr.hook")
-md5sums=('cefc7f02f2a23633d1160c32caa6c132'
+md5sums=('24aa11a33d6fed8930603ecf6593fd8a'
          'a48aeeed95e5309eb22399ec4455bfd3')
-sha256sums=('03fc6b72b62fb6661e5671bc3e500934ed9aa457159141ef02d989616276ef64'
+sha256sums=('81d265a6780aa203ea1bcd2653099b828b33711a3bbe9ed3fac644e6e77f7f22'
             '093d2b1d27f77ac5d0cff9a6057ceff18ddc73901a9636ba6533a8e40a63e3cc')
 
 build() {
   cd "$srcdir"
-  bsdtar xf data.tar.gz
-  bsdtar xf control.tar.gz
+  bsdtar xf data.tar.xz
+  bsdtar xf control.tar.xz
 }
 
 package() {

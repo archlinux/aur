@@ -1,10 +1,10 @@
 post_install() {
-    echo "==> Installing qwerty-fr keyboard layout"
+    echo "==> Installing new qwerty-fr keyboard layout"
     /usr/share/libalpm/scripts/xkb-qwerty-fr.install triggered
 }
 
 pre_remove() {
-    echo "==> Removing qwerty-fr keyboard layout"
+    echo "==> Removing curent qwerty-fr keyboard layout"
     /usr/share/libalpm/scripts/xkb-qwerty-fr.uninstall triggered
 }
 
