@@ -28,11 +28,10 @@ build() {
 
   # Make sure all of our wraps are up to date because Meson won't update
   # wrap subprojects that already exist
-  meson subprojects download
   # XXX: These two commands will just error out for wrap-file wraps. Any file
   #      based wraps are manually versioned anyways so that should be fine.
-  meson subprojects update --types git
-  meson subprojects packagefiles --apply  --types git
+  meson subprojects update --types git | true
+  meson subprojects packagefiles --apply --types git | true
 
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
