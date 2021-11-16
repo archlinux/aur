@@ -1,6 +1,6 @@
 # Maintainer: stan754 <stan@omg.lol>
 pkgname=omglol-profiler
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A profile designer for omg.lol'
 url="https://github.com/themes-omgdotlol/designer-app"
