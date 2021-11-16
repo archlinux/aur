@@ -1,0 +1,14 @@
+pkgbase = python-tre-git
+	pkgver = r130.9c049c8
+	pkgrel = 1
+	url = https://github.com/labmlai/labml
+	arch = any
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = tre
+	provides = python-tre
+	source = git+https://github.com/ahomansikka/tre.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-tre-git
