@@ -1,0 +1,9 @@
+[Unit]
+Description=ZWave-JS Server Daemon "%i" instance
+Before=home-assistant.service
+
+[Service]
+ExecStart=/usr/bin/zwave-server /dev/%I
+
+[Install]
+WantedBy=multi-user.target

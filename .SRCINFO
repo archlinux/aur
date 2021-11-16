@@ -1,0 +1,17 @@
+pkgbase = zwave-js-server
+	pkgdesc = Websocket server wrapper around Home Assistant's Z-Wave JS.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/zwave-js/zwave-js-server
+	arch = any
+	license = unknown
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	noextract = server-1.11.0.tgz
+	source = https://registry.npmjs.org/@zwave-js/server/-/server-1.11.0.tgz
+	source = zwave-js-server@.service
+	sha256sums = cd23b90f9d1afe4e31efc798cb6f1e5df9acec627a197d907b2b9853b022930f
+	sha256sums = fe06a8ecc75ee009dfeb6b99402f0cee434f6ead2ef21773024928d8132e3df2
+
+pkgname = zwave-js-server
