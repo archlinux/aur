@@ -1,14 +1,13 @@
 pkgbase = i3-gnome-flashback
 	pkgdesc = Starts i3 inside a GNOME-Flashback session.
-	pkgver = 3.36.1
+	pkgver = 40.1
 	pkgrel = 1
 	url = https://github.com/deuill/i3-gnome-flashback
 	arch = any
 	license = MIT
 	depends = i3-wm
 	depends = gnome-flashback
-	source = i3-gnome-flashback-3.36.1.tar.gz::https://github.com/deuill/i3-gnome-flashback/archive/3.36.1.tar.gz
-	sha1sums = af4c8993405c4044d965913ec548ede4322cd892
+	source = i3-gnome-flashback-40.1.tar.gz::https://github.com/deuill/i3-gnome-flashback/archive/40.1.tar.gz
+	sha1sums = de752b307c2eef998ca3d91c41685c87f4c912df
 
 pkgname = i3-gnome-flashback
-
