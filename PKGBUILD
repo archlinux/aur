@@ -1,6 +1,6 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 pkgname=an-anime-game-launcher
-pkgver=224.013c3dc
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 arch=("x86_64")
@@ -31,13 +31,9 @@ md5sums=(
 '8b875e8115a3b80f9964dc66ddf46a9a'
 )
 
-pkgver() {
-    cd "$srcdir/an-anime-game-launcher"
-    echo "$(git rev-list HEAD --count).$(git rev-parse --short HEAD)"
-}
-
 build() {
 	cd "$srcdir/an-anime-game-launcher"
+	git checkout tags/1.5.4
 
     electronDist=/usr/lib/electron
     electronVer=$(electron --version | tail -c +2)
