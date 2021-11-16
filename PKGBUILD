@@ -13,7 +13,7 @@ depends=('python-beautifulsoup4' 'python-boto3' 'python-filelock'
 'python-tabulate' 'python-tzlocal' 'python-keyrings-alt' 'python-configparser')
 optdepends=('python-u2flib-host: U2F support')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/cevoaustralia/$_pkgname/archive/$pkgver.tar.gz")
-sha512sums=('999f792ae023ba623e3c678ead295e59abf8064db4084ed652460f4b9963809bdb954bf391ec99d546df78e4c5f1cbf189c54b123cfd65d941e1f2109f47a92e')
+sha512sums=('d128857ab1b6eaec28c69b488c8efd52a036a36c23dc2f8f12e8269d2ce891a3024b58f581e1867341495f079d9b7fb9a48ee91c47284639b2917079a8f4747a')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
