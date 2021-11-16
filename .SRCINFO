@@ -1,0 +1,16 @@
+pkgbase = nodebrain
+	pkgdesc = A Rule Engine for State and Event Monitoring
+	pkgver = 0.9.04
+	pkgrel = 1
+	url = http://www.nodebrain.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom:NodeBrain
+	depends = openssl-1.0
+	source = nodebrain-0.9.04.tar.gz::https://sourceforge.net/projects/nodebrain/files/nb/0.9.x%20Columbo/nodebrain-0.9.04.tar.gz/download
+	source = nbhash.patch
+	sha1sums = 0334b966860ffac8b2580270c10a03713e9ec93f
+	sha1sums = 6cb45c3d2766796ef3ed1596b124171c3314168f
+
+pkgname = nodebrain
