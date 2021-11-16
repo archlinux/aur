@@ -2,7 +2,7 @@
 # Contributor: DanManN <dnahimov@gmail.com>
 
 pkgname=python-spacy-git
-pkgver=3.0.6.r128.gf9946154d
+pkgver=3.2.0.r15.g86fa37e8b
 pkgrel=1
 pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=(x86_64 aarch64)
@@ -12,6 +12,7 @@ depends=(
 	python-catalogue
 	python-cymem
 	python-jinja
+	python-langcodes
 	python-murmurhash
 	python-numpy
 	python-pathlib
