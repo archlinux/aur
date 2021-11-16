@@ -5,7 +5,7 @@
 pkgname=python-taichi
 _name=${pkgname#python-}
 _py=cp39
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc='Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs'
 url='https://github.com/taichi-dev/taichi'
@@ -31,7 +31,7 @@ optdepends=(
   'cuda')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-$_py-manylinux1_x86_64.whl")
-b2sums=('443b508362405305b570094f2fbd83f69ffd4c730d726f2bb2b548998ef0084ce2db905e76f14685e833094a9d0270dc17d42b376d4295a07c9084e98b2dd1ac')
+b2sums=('d4cf6d23d3136cb258b3713b9bc797139d1616a7390133f2b4c64f0212ef2f1d22bde94e4ec708c2719a72ee4b95bf7b3586889e10dc8772ab9bc75e8478fb43')
 
 package() {
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --no-deps ${_name//-/_}-$pkgver-$_py-$_py-manylinux1_x86_64.whl
