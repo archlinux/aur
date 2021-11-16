@@ -1,6 +1,6 @@
 pkgbase = nagstamon-git
 	pkgdesc = Nagios status monitor for the desktop
-	pkgver = 3.7.20210408.r2190.a2dd499
+	pkgver = 3.8.0.r2325.20c03b77
 	pkgrel = 1
 	url = https://nagstamon.ifw-dresden.de/
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = nagstamon-git
 	depends = python-lxml
 	depends = python-dbus
 	depends = python-dateutil
+	depends = python-pysocks
 	provides = nagstamon
 	conflicts = nagstamon
 	source = repo::git+https://github.com/HenriWahl/Nagstamon.git
 	md5sums = SKIP
 
 pkgname = nagstamon-git
-
