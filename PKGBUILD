@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=('sdl12-compat-git' 'lib32-sdl12-compat-git')
-pkgbase=sdl12-compat-git
+pkgbase=sdl12-compat
 _pkgbase=sdl12-compat
 pkgver=r474.16305a1
 pkgrel=1
