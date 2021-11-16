@@ -29,16 +29,10 @@ pkg_installed() {
 
 build() {
     export GERBIL_BUILD_CORES=$(nproc)
-
     # The compile process expects `gsc` to be the Gambit compiler,
     # but the Arch package doesn't install that binary (it belongs
-    # to Ghostscript). So hack around it
-    msg "Creating hacky gerbil-bin..."
-    if [ ! -d /tmp/gerbil-bin ]; then
-        mkdir -p /tmp/gerbil-bin
-        ln -s /usr/bin/gambitc /tmp/gerbil-bin/gsc
-    fi
-    export PATH=/tmp/gerbil-bin:$PATH
+    # to Ghostscript).
+    export GERBIL_GSC=gambitc
 
     cd "$srcdir/gerbil-$pkgver/src"
     msg "Looking for optional dependencies..."
@@ -64,15 +58,9 @@ build() {
     ./configure \
         --prefix="${pkgdir}${TARGET_DIR}" \
         $_enabled_features
-    # --with-gambit=/usr/bin/gambitc
 
     msg "Building..."
     ./build.sh
-
-    msg "Cleaning up gerbil-bin..."
-    if [ -d /tmp/gerbil-bin ]; then
-        rm -rf /tmp/gerbil-bin
-    fi
 }
 
 package() {
@@ -85,7 +73,7 @@ package() {
     cat <<EOF >${pkgdir}/etc/profile.d/gerbil-scheme.sh
 #!/bin/bash
 export GERBIL_HOME=${TARGET_DIR}
-export GERBIL_GSC=/usr/bin/gambitc
+export GERBIL_GSC=gambitc
 export PATH=${TARGET_DIR}/bin:$PATH
 EOF
 }
