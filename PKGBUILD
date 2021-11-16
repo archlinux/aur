@@ -33,7 +33,7 @@ md5sums=(
 
 build() {
 	cd "$srcdir/an-anime-game-launcher"
-	git checkout tags/1.5.4
+	git checkout tags/${pkgver}
 
     electronDist=/usr/lib/electron
     electronVer=$(electron --version | tail -c +2)
