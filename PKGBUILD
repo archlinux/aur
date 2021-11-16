@@ -5,6 +5,7 @@
 pkgname=tango-idl
 pkgver=5.1.0
 pkgrel=1
+groups=('tango-controls')
 pkgdesc="This is the Tango CORBA IDL file."
 arch=('any')
 url="https://www.tango-controls.org/"
