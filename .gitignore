@@ -1,3 +1,4 @@
 # Ignore downloaded sources
 *.jar
 *.tar.xz
+*.tar.lrz
