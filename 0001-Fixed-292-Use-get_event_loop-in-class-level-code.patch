@@ -1,0 +1,27 @@
+From dfe87b2633d111f4f67c2cdb29a8c1ebe2eb8dae Mon Sep 17 00:00:00 2001
+From: Andrew Godwin <andrew@aeracode.org>
+Date: Wed, 18 Aug 2021 08:19:53 -0600
+Subject: [PATCH] Fixed #292: Use get_event_loop in class-level code
+
+---
+ asgiref/sync.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/asgiref/sync.py b/asgiref/sync.py
+index 8e555cf..7254737 100644
+--- a/asgiref/sync.py
++++ b/asgiref/sync.py
+@@ -328,7 +328,9 @@ class SyncToAsync:
+ 
+     # If they've set ASGI_THREADS, update the default asyncio executor for now
+     if "ASGI_THREADS" in os.environ:
+-        loop = get_running_loop()
++        # We use get_event_loop here - not get_running_loop - as this will
++        # be run at import time, and we want to update the main thread's loop.
++        loop = asyncio.get_event_loop()
+         loop.set_default_executor(
+             ThreadPoolExecutor(max_workers=int(os.environ["ASGI_THREADS"]))
+         )
+-- 
+2.34.0
+

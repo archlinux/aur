@@ -1,7 +1,7 @@
 pkgbase = python-asgiref_patch
 	pkgdesc = Reference ASGI adapters and channel layers
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/django/asgiref
 	arch = any
 	license = BSD
@@ -13,7 +13,9 @@ pkgbase = python-asgiref_patch
 	conflicts = python-asgiref
 	source = https://pypi.io/packages/source/a/asgiref/asgiref-3.4.1.tar.gz
 	source = bug_stateless_server_django_channels.patch
+	source = 0001-Fixed-292-Use-get_event_loop-in-class-level-code.patch
 	sha256sums = 4ef1ab46b484e3c706329cedeff284a5d40824200638503f5768edb6de7d58e9
 	sha256sums = 32b3c65b39f16a392af41321a9e123591768628b55e73e295697217e81094853
+	sha256sums = ba48f47d815e1982d8f59c6d3f4bffeb9d939242d42ddebecd39943e35e3e1db
 
 pkgname = python-asgiref_patch
