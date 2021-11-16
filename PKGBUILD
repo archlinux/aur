@@ -2,8 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python39
-pkgver=3.9.8
-pkgrel=2
+pkgver=3.9.9
+pkgrel=1
 _pybasever=3.9
 _pymajver=3
 pkgdesc="Major release 3.9 of the Python high-level programming language"
@@ -18,7 +18,7 @@ source=(
     mpdecimal-2.5.1.patch
 )
 sha256sums=(
-    '675ce09bf23c09836bf1969b744b1ea4c1a18c32788626632525f08444ebad5c'
+    '06828c04a573c073a4e51c4292a27c1be4ae26621c3edc7cf9318418ce3b6d27'
     '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c'
 )
 validpgpkeys=(
