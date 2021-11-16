@@ -2,7 +2,7 @@
 
 pkgname=jackmix-git
 _pkgname=jackmix
-pkgver=r367.3a0c868
+pkgver=r370.fbe4885
 pkgrel=1
 pkgdesc="Matrix-mixer for JACK"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  gendesk -f -n --pkgname "$_pkgname" --exec "$_pkgname" --pkgdesc "$pkgdesc" --categories 'Audio;Mixer'
+  gendesk -f -n --pkgname "$_pkgname" --exec "$_pkgname" --pkgdesc "$pkgdesc" --categories 'Audio;AudioVideo;Mixer'
   patch -p2 -i "$srcdir/silence_deprec_errors.patch"
 }
 

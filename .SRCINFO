@@ -1,6 +1,6 @@
 pkgbase = jackmix-git
 	pkgdesc = Matrix-mixer for JACK
-	pkgver = r367.3a0c868
+	pkgver = r370.fbe4885
 	pkgrel = 1
 	url = https://github.com/kampfschlaefer/jackmix
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = jackmix-git
 	md5sums = 0ed19b1747391585c597d73cc06f30b1
 
 pkgname = jackmix-git
-
