@@ -1,3 +1,4 @@
+# Contributer Clansty <i@gao4.pw>
 pkgname=("icalingua-git" "icalingua-electron-git")
 pkgver=2.3.2_70_gcf35cbb
 pkgrel=1
