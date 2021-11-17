@@ -5,10 +5,10 @@ pkgver="0.8.2"
 pkgrel="1"
 pkgdesc="Ayatana system bluetooth indicator"
 arch=("i686" "x86_64" "pentium4")
-url="https://github.com/AyatanaIndicators"
+url="https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth"
 license=("GPL3")
-makedepends=("cmake" "cmake-extras" "intltool" "glib2" "systemd" "vala")
-depends=("libayatana-indicator" "bluez" "blueman")
+makedepends=("cmake-extras" "intltool" "glib2" "systemd" "vala" )
+depends=("bluez" "blueman" "libayatana-common>=0.9.5")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("81b4c12397aa4e220189a01ef5e256a1")
 options=("!emptydirs")
@@ -18,7 +18,7 @@ build()
     cd ${pkgname}-${pkgver}
     mkdir build
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib
+    cmake ..
     make
 }
 

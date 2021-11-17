@@ -2,23 +2,21 @@ pkgbase = ayatana-indicator-bluetooth
 	pkgdesc = Ayatana system bluetooth indicator
 	pkgver = 0.8.2
 	pkgrel = 1
-	url = https://github.com/AyatanaIndicators
+	url = https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth
 	arch = i686
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
-	makedepends = cmake
 	makedepends = cmake-extras
 	makedepends = intltool
 	makedepends = glib2
 	makedepends = systemd
 	makedepends = vala
-	depends = libayatana-indicator
 	depends = bluez
 	depends = blueman
+	depends = libayatana-common>=0.9.5
 	options = !emptydirs
 	source = https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/archive/0.8.2.tar.gz
 	md5sums = 81b4c12397aa4e220189a01ef5e256a1
 
 pkgname = ayatana-indicator-bluetooth
-
