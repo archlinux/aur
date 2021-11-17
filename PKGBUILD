@@ -3,13 +3,13 @@
 
 pkgname=tomighty
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop timer for Pomodoro Technique users'
 arch=('any')
 url='https://tomighty.github.io/'
 license=('Apache')
 depends=('bash' 'java-runtime')
-makedepends=('imagemagick' 'maven' 'git')
+makedepends=('imagemagick' 'maven' 'git' 'java-environment')
 source=("git+https://github.com/tomighty/tomighty.git#commit=e4064d110b11ddd5a7fb8d457f635813da212af2"
         pomxml.patch
         tomighty.sh

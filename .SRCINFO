@@ -1,13 +1,14 @@
 pkgbase = tomighty
 	pkgdesc = Desktop timer for Pomodoro Technique users
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tomighty.github.io/
 	arch = any
 	license = Apache
 	makedepends = imagemagick
 	makedepends = maven
 	makedepends = git
+	makedepends = java-environment
 	depends = bash
 	depends = java-runtime
 	source = git+https://github.com/tomighty/tomighty.git#commit=e4064d110b11ddd5a7fb8d457f635813da212af2
@@ -22,4 +23,3 @@ pkgbase = tomighty
 	b2sums = c97f7f44f6023031b0e98216ee7a806c481fe11b27aab362c6e60f54745e2c4c4fb5c0e0a8c5530d3ea4080e377c26ed2585b67bef2eeac2bd6aa51cc198c906
 
 pkgname = tomighty
-
