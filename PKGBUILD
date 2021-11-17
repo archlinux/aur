@@ -3,12 +3,12 @@
 
 pkgname=ttf-droid-monovar
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A monospacedfont created by Ascender Corporation with dotted and slashed zeros."
 url="http://www.cosmix.org/software/"
 license=('apache')
-source=('http://www.cosmix.org/software/files/DroidSansMonoSlashed.zip'
-'http://www.cosmix.org/software/files/DroidSansMonoDotted.zip')
+source=('https://www.cosmix.org/software/files/DroidSansMonoSlashed.zip'
+'https://www.cosmix.org/software/files/DroidSansMonoDotted.zip')
 arch=('any')
 md5sums=('4df780cb87f2931233123117feac5e2c'
          '76a1c759e328ac15fd0d33ee9a4b3723')
