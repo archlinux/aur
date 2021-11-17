@@ -24,7 +24,7 @@ md5sums=(
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 depends=('ncurses')
