@@ -1,0 +1,14 @@
+pkgbase = timetracking
+	pkgdesc = Simple command line time tracking application
+	pkgver = 1.5.20
+	pkgrel = 1
+	url = https://github.com/hardliner66/timetracking/
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	depends = gcc-libs
+	source = timetracking-1.5.20.tar.gz::https://github.com/hardliner66/timetracking//archive/v1.5.20.tar.gz
+	sha512sums = 188088efacaf9c16eca06bbcefa8a3ff83dee7c98c42dda7e801ab70e111bebaffb8ce1633b4d3bebd0d094d6ed0df5fc0a18c0650af14ab5c4883743f09bf19
+	b2sums = e64075c8de68a4b2a3a3764e2cbf40cbb9331691a0f03a6ed285ab29acfdb3d0f9bcc1396b4ff4a2ea811ba26c22248e187a5020c515dfd9522fe07edb17c2c9
+
+pkgname = timetracking
