@@ -2,8 +2,8 @@
 
 _pkgname=goplay2
 pkgname=${_pkgname}-git
-pkgver=r62.dcbcdf3
-pkgrel=4
+pkgver=r63.4c938e0
+pkgrel=1
 pkgdesc='goplay2 airplay2 server'
 arch=(x86_64)
 url='https://github.com/openairplay/goplay2'
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  go build -o output-binary .
+  go build -o goplay2 .
 }
 
 package() {
