@@ -1,0 +1,8 @@
+post_install() {
+    ln -s /usr/bin/spwn-bin/spwn /usr/bin/spwn
+}
+
+post_remove() {
+    unlink /usr/bin/spwn
+    rm -r /usr/bin/spwn-bin
+}
