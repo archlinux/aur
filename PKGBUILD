@@ -1,7 +1,7 @@
 # Maintainer: ipochto <ipochto@gmail.com>
 
 pkgname=war1gus-git
-pkgver=3.1.3.r814.5181b59
+pkgver=3.1.3.r817.592656a_20211117
 pkgrel=1
 pkgdesc="Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (development version)"
 arch=("i686" "x86_64")
@@ -19,7 +19,7 @@ conflicts=('war1gus')
 pkgver() {
 	cd "$srcdir/${pkgname}"
 	dev_cycle=3.1.3
-	printf "%s.r%s.%s" "${dev_cycle}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s_%s" "${dev_cycle}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" "$(date +%Y%m%d)"
 }
 
 build() {
