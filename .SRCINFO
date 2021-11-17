@@ -1,4 +1,4 @@
-pkgbase = pygmy-go
+pkgbase = pygmy-go-bin
 	pkgdesc = Amazee.io's local docker development tool
 	pkgver = 0.8.0
 	pkgrel = 5
