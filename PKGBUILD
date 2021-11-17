@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=emsdk
-pkgver=2.0.13
+pkgver=2.0.34
 pkgrel=1
 pkgdesc='The Emscripten SDK'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'cmake')
 source=("https://github.com/emscripten-core/emsdk/archive/${pkgver}.tar.gz"
         'emsdk.sh')
-sha256sums=('1bacabdfa07e8565f269e99bcdfa13bf832d6fa64a784a40114deaca45572542'
+sha256sums=('a96ddf34de8de779c78be2785df04ae63c9a557da9e83e85332cda3d01bca250'
             'd58940585324e582621a8ac5e28e913beee14a0b8e307f5413a6b0dcd6d2a139')
 
 package()
@@ -20,7 +20,7 @@ package()
     cd "$srcdir/emsdk-${pkgver}"
 
     install --mode 755 --directory "$pkgdir/usr/lib/$pkgname"
-    for file in emsdk emsdk.py emsdk_manifest.json emscripten-releases-tags.txt emsdk_env.*; do
+    for file in emsdk emsdk.py emsdk_manifest.json emscripten-releases-tags.json emsdk_env.*; do
         install --mode 755 "$file" "$pkgdir/usr/lib/$pkgname"
     done
 }
