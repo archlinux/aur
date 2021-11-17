@@ -2,7 +2,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
-pkgname=wget
+pkgname=wget-xdg
 pkgver=1.21.2
 pkgrel=1
 pkgdesc='Network utility to retrieve files from the Web - but moving ~/.wget-hsts to $XDG_CACHE_HOME/wget/hsts'
@@ -20,6 +20,8 @@ sha256sums=('1727a330a86acacb3e57615ce268f5f29978bf7adec4abe6a30d370207bc91b3'
 b2sums=(
 '9141b27f2db587bbd34cb97ecf4a6179e564817067b45c8168390cf1548c1a18f71723247d82b11f2edf3981a9b9f0d2097afe5d56397e033b0a86adae9482b1'
 '0da265b080a193805605bb8705e69e43a07aef062205ae9cf3558ac5e1199b67275f406337153018af4ec1631ef066cdd6eebbd5ba8029b3855e8c71c5953b2e')
+provides=('wget')
+conflicts=('wget')
 
 prepare() {
   cd ${pkgname}-${pkgver}
