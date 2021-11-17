@@ -5,26 +5,25 @@ pkgver="0.7.901"
 pkgrel="1"
 pkgdesc="Ayatana Indicator Keyboard Applet"
 arch=("i686" "x86_64" "pentium4")
-url="https://github.com/AyatanaIndicators"
+url="https://github.com/AyatanaIndicators/ayatana-indicator-keyboard"
 license=("GPL3")
-depends=("libayatana-indicator" "systemd" "glib2" "libxklavier")
-makedepends=("intltool" "cmake" "cmake-extras" "glib2" "libx11" "libxklavier")
+makedepends=("intltool" "cmake-extras" "systemd" "glib2" "libx11")
+depends=("libayatana-common>=0.9.5" "libxklavier" "hicolor-icon-theme")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("b9441813d05a07ea13115487b646a21e")
-options=("!emptydirs")
 
 build()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}
     mkdir build
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib
+    cmake ..
     make
 }
 
 package()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}/build
+    cd ${pkgname}-${pkgver}/build
     make DESTDIR="${pkgdir}" install
 }
 
