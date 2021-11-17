@@ -1,14 +1,14 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=hexgrep
 pkgver=2013.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='versatile grep-like binary stream and file search tool'
 arch=(i686 x86_64)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/hexgrep"
+url="https://xyne.mirrorrepo.com/projects/hexgrep"
 source=(
-  http://xyne.archlinux.ca/projects/hexgrep/src/hexgrep-2013.9.6.tar.xz
-  http://xyne.archlinux.ca/projects/hexgrep/src/hexgrep-2013.9.6.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/hexgrep/src/hexgrep-2013.9.6.tar.xz
+  https://xyne.mirrorrepo.com/projects/hexgrep/src/hexgrep-2013.9.6.tar.xz.sig
 )
 sha512sums=(
   d6a6e2062176fd32404e27318cb1dd463579d2112e26feef487e6ffbfd8baf11d39b44a940ea11256819b99b411c3e191e76c4e3cac482340c71b4a9078ddd61
