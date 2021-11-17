@@ -1,16 +1,16 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-nist
 pkgver=2013.10
-pkgrel=9
+pkgrel=10
 pkgdesc='Modules for accessing and working with data from the National Institute of Standards and Technology (NIST).'
 arch=(any)
 license=(GPL)
-url="https://xyne.archlinux.ca/projects/python3-nist"
-depends=(python-xdg python3 python3-scinum)
+url="https://xyne.mirrorrepo.com/projects/python3-nist"
+depends=(python-pyxdg python3 python3-scinum)
 optdepends=('python3-tabulator: support for command-line query scripts')
 source=(
-  https://xyne.archlinux.ca/projects/python3-nist/src/python3-nist-2013.10.tar.xz
-  https://xyne.archlinux.ca/projects/python3-nist/src/python3-nist-2013.10.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/python3-nist/src/python3-nist-2013.10.tar.xz
+  https://xyne.mirrorrepo.com/projects/python3-nist/src/python3-nist-2013.10.tar.xz.sig
 )
 sha512sums=(
   8de4d744ae5643882f654509d9db525957e2a9d332d2b46895b0b1a13a61a7cc63060782dd5c903c94af4a2a52c16cb05d5b94d5a7f93f45fba82d1c9edaa015
