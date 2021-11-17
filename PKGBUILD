@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/libayatana-indicator"
 license=("LGPL2.1" "LGPL3")
 makedepends=("cmake-extras" "gobject-introspection" "vala")
-depends=("gtk3" "glib2" "ayatana-ido")
+depends=("gtk3" "glib2" "ayatana-ido>=0.9.0")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("5b61141bbd42ba5a161e59adcaafc9d8")
 conflicts=("${pkgname}-gtk3")
@@ -19,7 +19,7 @@ build()
     cd ${pkgname}-${pkgver}
     mkdir build
     cd build
-    cmake .. -DENABLE_LOADER=OFF
+    cmake ..
     make
 }
 

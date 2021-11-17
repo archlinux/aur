@@ -13,11 +13,10 @@ pkgbase = libayatana-indicator
 	makedepends = vala
 	depends = gtk3
 	depends = glib2
-	depends = ayatana-ido
+	depends = ayatana-ido>=0.9.0
 	conflicts = libayatana-indicator-gtk3
 	replaces = libayatana-indicator-gtk3
 	source = https://github.com/AyatanaIndicators/libayatana-indicator/archive/0.8.4.tar.gz
 	md5sums = 5b61141bbd42ba5a161e59adcaafc9d8
 
 pkgname = libayatana-indicator
-
