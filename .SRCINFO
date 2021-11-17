@@ -1,13 +1,10 @@
 pkgbase = ttf-droid-simple
 	pkgdesc = General-purpose fonts released by Google as part of Android
 	pkgver = 2012.10.17
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.droidfonts.com/
 	arch = any
 	license = Apache
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	provides = ttf-font
 	provides = ttf-droid
 	conflicts = ttf-droid
@@ -21,4 +18,3 @@ pkgbase = ttf-droid-simple
 	sha256sums = 42da7d1ac6d7055971c8b1bb98a83e893fbed621534b04247a5f6ed89ca14d44
 
 pkgname = ttf-droid-simple
-

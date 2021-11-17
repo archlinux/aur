@@ -1,15 +1,14 @@
-# Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
+# Contributor:   M.Reynolds <blackboxnetworkproject@gmail.com>
 # Contributor:  Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor:  Urs Wolfer <uwolfer @ fwo.ch>
 
 pkgname=ttf-droid-simple
 pkgver=2012.10.17
-pkgrel=5
+pkgrel=6
 pkgdesc="General-purpose fonts released by Google as part of Android"
 arch=('any')
 license=('Apache')
 url='http://www.droidfonts.com/'
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 provides=('ttf-font' 'ttf-droid')
 conflicts=('ttf-droid')
 source=('https://sources.archlinux.org/other/community/ttf-droid/ttf-droid-20121017.tar.xz'
