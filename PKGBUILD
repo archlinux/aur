@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=alatools
 pkgver=2018.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools for the Arch Linux Archive.'
 arch=(any)
 license=(GPL)
-url="https://xyne.archlinux.ca/projects/alatools"
-depends=(python-xdg python3)
+url="https://xyne.mirrorrepo.com/projects/alatools"
+depends=(python-pyxdg python3)
 source=(
-  https://xyne.archlinux.ca/projects/alatools/src/alatools-2018.12.tar.xz
-  https://xyne.archlinux.ca/projects/alatools/src/alatools-2018.12.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/alatools/src/alatools-2018.12.tar.xz
+  https://xyne.mirrorrepo.com/projects/alatools/src/alatools-2018.12.tar.xz.sig
 )
 sha512sums=(
   568e8bab8e788a278f0c8504ac6f1de22600050e40ea6c92746eb143f39f8eb5eaee9eb20191a42fa87ba20adfbc63de2b405293090b28701b3db96bef76d0d9
