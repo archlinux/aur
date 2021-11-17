@@ -2,7 +2,7 @@
 
 pkgname=ltools
 _binname=lt
-pkgver=v0.0.1
+pkgver=v0.0.1.r0.gb4bccf4
 pkgrel=1
 pkgdesc='LTools'
 arch=('x86_64' 'aarch64')
@@ -21,11 +21,11 @@ pkgver() {
 build() {
   cd $pkgname
 
-#   cargo build --release
+  cargo build --release
 }
 
 package() {
   cd $pkgname
 
-#   install -Dm 755 "target/release/$_binname" "$pkgdir/usr/bin/$_binname"
+  install -Dm 755 "target/release/$_binname" "$pkgdir/usr/bin/$_binname"
 }

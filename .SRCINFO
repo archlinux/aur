@@ -1,6 +1,6 @@
 pkgbase = ltools
 	pkgdesc = LTools
-	pkgver = v0.0.1
+	pkgver = v0.0.1.r0.gb4bccf4
 	pkgrel = 1
 	url = https://github.com/lucemans/ltools
 	arch = x86_64
