@@ -2,21 +2,18 @@ pkgbase = ayatana-indicator-notifications
 	pkgdesc = Ayatana Indicator for viewing recent notifications
 	pkgver = 0.8.90
 	pkgrel = 1
-	url = https://github.com/AyatanaIndicators
+	url = https://github.com/AyatanaIndicators/ayatana-indicator-notifications
 	arch = i686
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
 	makedepends = intltool
-	makedepends = cmake
 	makedepends = cmake-extras
 	makedepends = glib2
-	depends = libayatana-indicator
-	depends = glib2
-	depends = systemd
-	options = !emptydirs
+	makedepends = systemd
+	depends = hicolor-icon-theme
+	depends = dconf
 	source = https://github.com/AyatanaIndicators/ayatana-indicator-notifications/archive/0.8.90.tar.gz
 	md5sums = c1197b1e1b8e10a9648937012b3b2812
 
 pkgname = ayatana-indicator-notifications
-
