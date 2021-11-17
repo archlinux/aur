@@ -7,7 +7,7 @@
 
 pkgname=gitahead
 pkgver=2.6.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Understand your Git history!'
 url='https://www.gitahead.com/'
 arch=(x86_64)
@@ -17,7 +17,6 @@ depends=(desktop-file-utils
          org.freedesktop.secrets
          qt5-base)
 makedepends=(cmake
-             ninja
              qt5-tools
              qt5-translations)
 source=("git+https://github.com/$pkgname/$pkgname#tag=v$pkgver"
@@ -34,23 +33,21 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"
 	cmake \
-		-G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_PREFIX_PATH=/usr/lib \
-		-C build
-		gitahead
-	ninja -C build
+		-B build \
+		-S "$pkgname"
+	cmake --build build
 }
 
 package() {
 	cd "$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
-	ninja -C build package
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "../$pkgname.desktop"
+	cmake --build ../build --target package
 	mkdir -p "$pkgdir/usr/"{share,bin}
-	cp -r "$srcdir/build/_CPack_Packages/Linux/STGZ/GitAhead-$pkgver" "$pkgdir/usr/share/gitahead"
+	cp -r "../build/_CPack_Packages/Linux/STGZ/GitAhead-$pkgver" "$pkgdir/usr/share/gitahead"
 	rm -rf "$pkgdir/usr/share/gitahead/"*.so.*
 	ln -s "/usr/share/gitahead/GitAhead" "$pkgdir/usr/bin/gitahead"
 	cd "$pkgdir/usr/share"

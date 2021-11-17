@@ -1,12 +1,11 @@
 pkgbase = gitahead
 	pkgdesc = Understand your Git history!
 	pkgver = 2.6.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gitahead.com/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = qt5-tools
 	makedepends = qt5-translations
 	depends = desktop-file-utils
