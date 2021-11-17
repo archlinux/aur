@@ -1,6 +1,6 @@
-pkgbase = yggdrasil-sr
-	pkgdesc = Yggdrasil Screenreader -- Make Linux Accessible!
-	pkgver = 0.1b
+pkgbase = odilia
+	pkgdesc = Odilia Screenreader -- Make Linux Accessible!
+	pkgver = 0.1c
 	pkgrel = 1
 	url = https://yggdrasil-sr.github.io/
 	arch = x86_64
@@ -8,6 +8,6 @@ pkgbase = yggdrasil-sr
 	license = GPL3
 	depends = clang
 	depends = rustup
-	provides = yggdrasil-sr
+	provides = odilia
 
-pkgname = yggdrasil-sr
+pkgname = odilia
