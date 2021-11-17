@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-ibus-tweaker-git
 	pkgdesc = Tweaker of ibus in gnome-shell for orientation, theme, font and input mode auto-switch.
-	pkgver = 20211102+b93b58d
+	pkgver = 20211112+b13f3d5
 	pkgrel = 1
 	url = https://github.com/tuberry/ibus-tweaker
 	arch = any
