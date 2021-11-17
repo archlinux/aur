@@ -1,5 +1,5 @@
 pkgname=bricscad-fr_fr
-pkgver=21.2.07
+pkgver=22.1.04
 pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=(python-requests python-beautifulsoup4)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=7137
+_version=7159
 
 # To download you must be logged in. The official website has no permanent link.
 DLAGENTS=("https::/usr/bin/python $PWD/dlagent.py %u %o $_os $_version")
@@ -18,15 +18,7 @@ DLAGENTS=("https::/usr/bin/python $PWD/dlagent.py %u %o $_os $_version")
 source=(
     dlagent.py
     "BricsCAD-V${pkgver}-1-${_lang}.${arch}.rpm::${url}"
-    "gtk3-1:3.24.30-2-x86_64.pkg.tar.zst::https://archive.archlinux.org/packages/g/gtk3/gtk3-1%3A3.24.30-2-x86_64.pkg.tar.zst"
 )
-
-noextract=('gtk3-1:3.24.30-2-x86_64.pkg.tar.zst')
-
-prepare() {
-    mkdir -p gtk3
-    tar xf './gtk3-1:3.24.30-2-x86_64.pkg.tar.zst' -C gtk3
-}
 
 package() {
     cp -dr --no-preserve=ownership ./usr "${pkgdir}"/
@@ -34,8 +26,6 @@ package() {
     cp -dr --no-preserve=ownership ./var "${pkgdir}"/
     # Allow creation of licence file for anyone
     chmod 757 "${pkgdir}"/var/bricsys
-    # patch for "symbol lookup error: /usr/lib/libtracker-sparql-3.0.so.0: undefined symbol: sqlite3_expanded_sql" error
-    cp -a --no-preserve=ownership gtk3/usr/lib/libgtk-3.so* "${pkgdir}"/opt/bricsys/bricscad/v21/
 }
 
 post_install() {
@@ -69,5 +59,4 @@ post_remove() {
     if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 }
 md5sums=('6327d08422ca88ee89393e82727b2a6e'
-         '6605c56b8be8cd908f07920b297d7ea9'
-         'c1c55da4102090d790205b36ab213f94')
+         '9b2226a0c1eafc9c644d0828249b9fb3')
