@@ -1,20 +1,23 @@
 pkgbase = rancher-desktop-git
 	pkgdesc = Kubernetes and container management on the desktop
-	pkgver = v0.6.0.r255.g43ba875
+	pkgver = 0.6.0.r255.g43ba875
 	pkgrel = 1
 	url = https://rancherdesktop.io/
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = unzip
 	depends = qemu
+	provides = rancher-desktop
 	provides = docker
 	provides = helm
 	provides = kim
 	provides = kubectl
 	provides = nerdctl
-	source = rancher-desktop-git::git://github.com/rancher-sandbox/rancher-desktop.git
-	sha512sums = SKIP
+	conflicts = rancher-desktop
+	source = rancher-desktop-git::git+https://github.com/rancher-sandbox/rancher-desktop.git#branch=main
+	md5sums = SKIP
 
 pkgname = rancher-desktop-git

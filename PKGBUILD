@@ -1,20 +1,19 @@
 # Maintainer: Parker Johansen <johansen.parker@gmail.com>
-_pkgname=rancher-desktop pkgname=${_pkgname}-git pkgver=v0.6.0.r255.g43ba875
+_pkgname=rancher-desktop
+pkgname=${_pkgname}-git
+pkgver=0.6.0.r255.g43ba875
 pkgrel=1
 pkgdesc="Kubernetes and container management on the desktop"
 arch=('x86_64')
 url="https://rancherdesktop.io/"
 license=('Apache')
 depends=('qemu')
-provides=('docker' 'helm' 'kim' 'kubectl' 'nerdctl')
-makedepends=('npm' 'nvm' 'unzip')
+provides=('rancher-desktop' 'docker' 'helm' 'kim' 'kubectl' 'nerdctl')
+makedepends=('git' 'npm' 'nvm' 'unzip')
+conflicts=('rancher-desktop')
 
-source=(
-    "${pkgname}::git://github.com/rancher-sandbox/rancher-desktop.git"
-)
-sha512sums=(
-    'SKIP'
-)
+source=("${pkgname}::git+https://github.com/rancher-sandbox/rancher-desktop.git#branch=main")
+md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -56,8 +55,4 @@ package() {
 
     install -d ${pkgdir}/usr/bin
     ln -sf  /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-
-    for i in $(ls ${pkgdir}/opt/${_pkgname}/resources/resources/linux/bin/); do
-        ln -sf  /opt/${_pkgname}/resources/resources/linux/bin/${i} ${pkgdir}/usr/bin/${i}
-    done
 }
