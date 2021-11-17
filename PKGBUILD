@@ -5,32 +5,26 @@ pkgver="0.8.2"
 pkgrel="1"
 pkgdesc="Ayatana Indicator that collects messages that need a response"
 arch=("i686" "x86_64" "pentium4")
-url="https://github.com/AyatanaIndicators"
+url="https://github.com/AyatanaIndicators/ayatana-indicator-messages"
 license=("GPL3")
-depends=("libayatana-indicator" "glib2" "accountsservice" "hicolor-icon-theme" "dconf")
-makedepends=("libayatana-indicator" "gobject-introspection" "gtk-doc" "intltool" "accountsservice" "mate-common" "vala")
+makedepends=("cmake-extras" "glib2" "gobject-introspection" "gtk-doc" "intltool" "vala" "systemd")
+depends=("accountsservice" "hicolor-icon-theme" "dconf")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("1c43e8cfe56ad4732984938c3fdd14d7")
-options=("!emptydirs")
 provides=("indicator-messages")
 conflicts=("indicator-messages")
-
-prepare()
-{
-    cd ${pkgname}-${pkgver}
-    NOCONFIGURE=1 ./autogen.sh
-}
 
 build()
 {
     cd ${pkgname}-${pkgver}
-    ./configure --prefix=/usr --libexecdir=/usr/lib --enable-gtk-doc --disable-tests --disable-static
+    mkdir build
+    cd build
+    cmake ..
     make
 }
 
 package()
 {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}/build
     make DESTDIR="${pkgdir}" install
-    find ${pkgdir}/usr/lib -name *.la -delete
 }
