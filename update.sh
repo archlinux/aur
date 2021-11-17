@@ -10,15 +10,11 @@ rm -rf pkg src || true
 
 [[ -n "$GITHUB_TOKEN" ]] && GITHUB_AUTH="Authorization: ${GITHUB_TOKEN}" || GITHUB_AUTH=""
 
-http https://api.github.com/repos/gruntwork-io/cloud-nuke/releases/latest \
-  "Accept: application/vnd.github.v3+json" ${GITHUB_AUTH} |
-  jq -r '.assets[] | select(.name | test("^(SHA256SUMS|cloud-nuke.*_linux_(amd64|386))$")) | .browser_download_url' |
-  xargs -n 1 -P 3 wget
-
 LATEST_RELEASE_INFO=$(http https://api.github.com/repos/gruntwork-io/cloud-nuke/releases/latest \
   "Accept: application/vnd.github.v3+json" ${GITHUB_AUTH})
 
-# @TODO: Parse .browser_download_url to get individual download links
+jq -r '.assets[] | select(.name | test("^(SHA256SUMS|cloud-nuke.*_linux_(amd64|386))$")) | .browser_download_url' <<< "$LATEST_RELEASE_INFO" |
+  xargs -n 1 -P 3 wget
 
 sha256sum --ignore-missing --status -c SHA256SUMS
 
