@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=facadefs
 pkgver=2012.12.24.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A FUSE-based filesystem sandbox.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/facadefs"
+url="https://xyne.mirrorrepo.com/projects/facadefs"
 depends=(python2 python2-fuse)
 source=(
-  http://xyne.archlinux.ca/projects/facadefs/src/facadefs-2012.12.24.1.tar.xz
-  http://xyne.archlinux.ca/projects/facadefs/src/facadefs-2012.12.24.1.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/facadefs/src/facadefs-2012.12.24.1.tar.xz
+  https://xyne.mirrorrepo.com/projects/facadefs/src/facadefs-2012.12.24.1.tar.xz.sig
 )
 sha512sums=(
   f9c1b3288b3173d5c853af98935f5856dedfba96e1c4ff301e9f77e75ce44956bd95463dfbc34f528f45ad5ac2013c80673119e38a2b653bcf6a6bd2f9ae354a
