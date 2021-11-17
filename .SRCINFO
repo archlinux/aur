@@ -1,15 +1,15 @@
 pkgbase = python3-cactus
 	pkgdesc = Interface modules for CACTUS (CADD Group Chemoinformatics Tools and User Services).
 	pkgver = 2017
-	pkgrel = 7
-	url = https://xyne.archlinux.ca/projects/python3-cactus
+	pkgrel = 8
+	url = https://xyne.mirrorrepo.com/projects/python3-cactus
 	arch = any
 	license = GPL
 	depends = python-openbabel
 	depends = python3
 	depends = python3-memoizedb
-	source = https://xyne.archlinux.ca/projects/python3-cactus/src/python3-cactus-2017.tar.xz
-	source = https://xyne.archlinux.ca/projects/python3-cactus/src/python3-cactus-2017.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/python3-cactus/src/python3-cactus-2017.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/python3-cactus/src/python3-cactus-2017.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 868d09656b8b80aa833a5b4b590cb8a1
 	md5sums = 5b420b486671511817b46bd0a30c312a
@@ -17,4 +17,3 @@ pkgbase = python3-cactus
 	sha512sums = 316089036b7b7ac71146767464bb2b0a73ee4123bc8a111c58cd6bb22ca7fb962688c2e4e1e9ba9237264059b8f8148957edb6edbd6b6410ef8f0eaa08ce2249
 
 pkgname = python3-cactus
-
