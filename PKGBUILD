@@ -3,16 +3,16 @@
 _base=npx
 pkgname=python-${_base}
 pkgdesc="Some useful extensions for NumPy"
-pkgver=0.0.20
-pkgrel=2
+pkgver=0.0.22
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-numpy)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('bfe5ac86151e498c7578bd8f629977a548b6d497e0355c173f4963dba404ea2d56cc846a2358a0324d89790252982101de913dae51a41ccb8e2dd3417c93478b')
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('93c1c77ab9e0ecc6edd1cea3ca9f0fdca7308c7cdeeded0a9f3b0dad8c83f3829310ed1074448f1b3941ab70584243337f22a092f0d05a095a4d6d821699a0f0')
 
 build() {
   cd "${_base}-${pkgver}"
