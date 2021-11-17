@@ -1,16 +1,16 @@
 pkgbase = pystopwatch
 	pkgdesc = A stopwatch written in Python with a clock and two countdown functions that can minimize to the tray.
 	pkgver = 2019
-	pkgrel = 1
-	url = https://xyne.archlinux.ca/projects/pystopwatch
+	pkgrel = 2
+	url = https://xyne.mirrorrepo.com/projects/pystopwatch
 	arch = any
 	license = GPL
 	depends = gtk2
 	depends = librsvg
 	depends = pygtk
 	depends = python2
-	source = https://xyne.archlinux.ca/projects/pystopwatch/src/pystopwatch-2019.tar.xz
-	source = https://xyne.archlinux.ca/projects/pystopwatch/src/pystopwatch-2019.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/pystopwatch/src/pystopwatch-2019.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/pystopwatch/src/pystopwatch-2019.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 636cb26bcb89cd1344d9dbbed47a77fb
 	md5sums = 750e12365a2bb0c58b15b90707fe688e
@@ -18,4 +18,3 @@ pkgbase = pystopwatch
 	sha512sums = 6c25a08ef5b59de8c37a344f6cea16f741687544b60dff65f8181acf6d47b252c355ec39d79c97b413d0a271fcf68d387ef468c15d6efae339e194940b92af00
 
 pkgname = pystopwatch
-
