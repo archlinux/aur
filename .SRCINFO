@@ -1,6 +1,6 @@
 pkgbase = wl-mirror
 	pkgdesc = a simple Wayland output mirror client
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Ferdi265/wl-mirror
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = wl-mirror
 	makedepends = cmake
 	depends = libglvnd
 	depends = wayland
-	source = https://github.com/Ferdi265/wl-mirror/releases/download/v0.3.1/wl-mirror-0.3.1.tar.gz
-	sha256sums = 6817ededadd4f135c3f5806cc477d57dc48a117405ebcd780d4d08a775f92228
+	source = https://github.com/Ferdi265/wl-mirror/releases/download/v0.4.0/wl-mirror-0.4.0.tar.gz
+	sha256sums = 14697da18f42711577c19af37a479f40f9b1afc0508aff19085ea07cd70d5937
 
 pkgname = wl-mirror
