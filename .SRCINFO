@@ -1,0 +1,18 @@
+pkgbase = bux-mariadb-client
+	pkgdesc = Loose-coupled throw-on-error C++20 wrapper classes and utilities of mysql/mariadb Connector/C API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/buck-yeh/bux-mariadb-client.git
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	makedepends = binutils
+	makedepends = fakeroot
+	makedepends = gawk
+	depends = bux
+	depends = fmt
+
+pkgname = bux-mariadb-client
