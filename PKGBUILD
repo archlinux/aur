@@ -1,6 +1,6 @@
 # Maintainer: fubarhouse
 pkgname=pygmy-go
-provides=(pygmy-go)
+provides=(pygmy-go-bin)
 pkgver=0.8.0
 pkgrel=5
 pkgdesc="Amazee.io's local docker development tool"
