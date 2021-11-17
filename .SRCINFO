@@ -1,13 +1,13 @@
 pkgbase = python3-tabulator
 	pkgdesc = A table formatter class with support for a variety of outputs.
 	pkgver = 2015
-	pkgrel = 8
-	url = https://xyne.archlinux.ca/projects/python3-tabulator
+	pkgrel = 9
+	url = https://xyne.mirrorrepo.com/projects/python3-tabulator
 	arch = any
 	license = GPL
 	depends = python3
-	source = https://xyne.archlinux.ca/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz
-	source = https://xyne.archlinux.ca/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 6e8087b3bd41d45b26da0e29a953fd2a
 	md5sums = 0762ba4a266e5f7663ab8d4aea25600d
@@ -15,4 +15,3 @@ pkgbase = python3-tabulator
 	sha512sums = 359c4f6b930b46e749e3ce908e7ccd606da9717c8add61f4f6340dd34487c6a15e02bed728e040bf90bd4b3a72fe452d9b60b4d6970a23924e6929130dc68641
 
 pkgname = python3-tabulator
-
