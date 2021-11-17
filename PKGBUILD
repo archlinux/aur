@@ -3,8 +3,8 @@
 _proj=fluiddyn
 _name=fluiddyn
 pkgname=python-${_name}
-pkgver=0.3.4.post0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
 url="https://${_name}.readthedocs.io"
@@ -23,7 +23,7 @@ provides=(python-${_name})
 conflicts=(python2-${_name}-hg)
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b1a40ca5631860be6da0f305d49252932e9b29bf792735ccdfe25653830c4a1a')
+sha256sums=('1d662ce373e6303aaf0c3c2f0dd3e6ff8c485befef5a63e892dc60f7cc0743ad')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
