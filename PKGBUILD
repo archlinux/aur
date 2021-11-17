@@ -18,7 +18,7 @@ md5sums=('SKIP')
 prepare() {
 	icotool -x -o $srcdir/vpaint.png $srcdir/$pkgname/src/Gui/images/VPaint.ico
 	gendesk -f \
-					--categories "Graphics" \
+					--categories "Graphics;2DGraphics;VectorGraphics" \
 					--comment "Start VPaint" \
 					--custom "Icon=/usr/share/pixmaps/vpaint.png" \
 					--exec vpaint \
