@@ -1,5 +1,5 @@
 pkgbase = gittyup-git
-	pkgdesc = Graphical Git client
+	pkgdesc = Graphical Git client (GitAhead fork)
 	pkgver = r533.73bf3db
 	pkgrel = 1
 	url = https://github.com/Murmele/Gittyup

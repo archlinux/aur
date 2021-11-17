@@ -6,7 +6,7 @@
 pkgname=gittyup-git
 pkgver=r533.73bf3db
 pkgrel=1
-pkgdesc="Graphical Git client"
+pkgdesc="Graphical Git client (GitAhead fork)"
 url="https://github.com/Murmele/Gittyup"
 arch=(x86_64)
 license=(MIT)
