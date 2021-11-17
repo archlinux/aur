@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=makedep
 pkgver=2014.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Convert Pacman optional dependencies to real dependencies.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/makedep"
-depends=('pacman<6.0' pyalpm python3)
+url="https://xyne.mirrorrepo.com/projects/makedep"
+depends=(pacman pyalpm python3)
 source=(
-  http://xyne.archlinux.ca/projects/makedep/src/makedep-2014.8.tar.xz
-  http://xyne.archlinux.ca/projects/makedep/src/makedep-2014.8.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/makedep/src/makedep-2014.8.tar.xz
+  https://xyne.mirrorrepo.com/projects/makedep/src/makedep-2014.8.tar.xz.sig
 )
 sha512sums=(
   e79b5452ce40cc01fdb1c41d902867a3ccf8542fba001218ddca3463d750c741ee40552b6196bccdd3d22084203221ed6e82d5b1bdf83fa231c913c208b7a380
