@@ -2,7 +2,7 @@
 pkgname=qzdl-desktop
 pkgver=1.0.0
 pkgrel=2
-pkgdesc=".desktop files for qzdl"
+pkgdesc=".desktop file for qzdl"
 arch=('x86_64' 'i686')
 url="http://zdl.vectec.net"
 license=('GPL')
