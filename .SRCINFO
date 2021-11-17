@@ -1,12 +1,19 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = chez-scheme-racket-git
+	pkgdesc = Racket's fork of chez scheme with support for aach64.
+	pkgver = 9.5
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/racket/ChezScheme
+	arch = i686
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	arch = armv6h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = libx11
+	makedepends = xorgproto
+	depends = ncurses
+	provides = chez-scheme
+	conflicts = petite-chez-scheme
+	replaces = petite-chez-scheme
 
-pkgname = yarxi
-
+pkgname = chez-scheme-racket-git
