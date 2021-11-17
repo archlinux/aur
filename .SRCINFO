@@ -1,0 +1,24 @@
+pkgbase = nextpnr-xilinx-git
+	pkgdesc = nextpnr portable FPGA place and route tool - for Xilinx
+	pkgver = cd8b15d_20211117
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/gatecat/nextpnr-xilinx
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gawk
+	makedepends = eigen
+	makedepends = boost
+	depends = python
+	depends = boost-libs
+	conflicts = nextpnr-git
+	options = !strip
+	source = nextpnr::git+https://github.com/gatecat/nextpnr-xilinx.git
+	sha256sums = SKIP
+
+pkgname = nextpnr-xilinx-git
