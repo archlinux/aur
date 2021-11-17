@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=obfilebrowser
 pkgver=2017
-pkgrel=7
+pkgrel=8
 pkgdesc='An Openbox pipe menu application and file browser.'
 arch=(any)
 license=(GPL)
-url="https://xyne.archlinux.ca/projects/obfilebrowser"
-depends=(mimeo python-xdg python3)
+url="https://xyne.mirrorrepo.com/projects/obfilebrowser"
+depends=(mimeo python-pyxdg python3)
 source=(
-  https://xyne.archlinux.ca/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz
-  https://xyne.archlinux.ca/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz
+  https://xyne.mirrorrepo.com/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz.sig
 )
 sha512sums=(
   2f08798791849e2cc2fb4866649fac6a0429775ba7eeec7120ea18b6f6107a86a4cb5591729906198e02fd66234e1f732bb957f9772d231b44dd5fc9d0477479

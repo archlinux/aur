@@ -1,15 +1,15 @@
 pkgbase = obfilebrowser
 	pkgdesc = An Openbox pipe menu application and file browser.
 	pkgver = 2017
-	pkgrel = 7
-	url = https://xyne.archlinux.ca/projects/obfilebrowser
+	pkgrel = 8
+	url = https://xyne.mirrorrepo.com/projects/obfilebrowser
 	arch = any
 	license = GPL
 	depends = mimeo
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = python3
-	source = https://xyne.archlinux.ca/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz
-	source = https://xyne.archlinux.ca/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 0e2a4b71ace5f7a03563d7566cfc7d75
 	md5sums = 16c33d0c4990029652bbe0760f1d4c16
@@ -17,4 +17,3 @@ pkgbase = obfilebrowser
 	sha512sums = aa16d960090f333857f54db992c438b9dd7b3d674a9eeb14e461fce9d298cec798ad91c5dcc46e507aa5b5a4403e2fddc6be9e9872db662037c249d4a7951855
 
 pkgname = obfilebrowser
-
