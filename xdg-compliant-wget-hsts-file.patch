@@ -1,0 +1,179 @@
+From b27917936c64ac9036509b3a67516738e924c9ea Mon Sep 17 00:00:00 2001
+From: Noah Vogt <noah@noahvogt.com>
+Date: Wed, 17 Nov 2021 23:32:37 +0100
+Subject: [PATCH] xdg compliant wget hsts file
+
+---
+ src/hsts.c |  4 ++--
+ src/main.c | 29 ++++++++++++++++++++++++-----
+ src/path.c | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/path.h |  5 +++++
+ 4 files changed, 85 insertions(+), 7 deletions(-)
+ create mode 100644 src/path.c
+ create mode 100644 src/path.h
+
+diff --git a/src/hsts.c b/src/hsts.c
+index 9aa97b4..2562327 100644
+--- a/src/hsts.c
++++ b/src/hsts.c
+@@ -630,7 +630,7 @@ get_hsts_store_filename (void)
+ 
+   if (opt.homedir)
+     {
+-      filename = ajoin_dir_file (opt.homedir, ".wget-hsts-test");
++      filename = ajoin_dir_file (get_hsts_file_dir(), HSTS_TEST_FILE);
+       fp = fopen (filename, "w");
+       if (fp)
+         fclose (fp);
+@@ -796,7 +796,7 @@ test_hsts_read_database (void)
+ 
+   if (opt.homedir)
+     {
+-      file = ajoin_dir_file (opt.homedir, ".wget-hsts-testing");
++      file = ajoin_dir_file (get_hsts_file_dir(), HSTS_TESTING_FILE);
+       fp = fopen (file, "w");
+       if (fp)
+         {
+diff --git a/src/main.c b/src/main.c
+index 0f7b6b1..39082bc 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -31,6 +31,8 @@ as that of the covered work.  */
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <sys/types.h>
++#include <sys/stat.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <signal.h>
+@@ -63,6 +65,7 @@ as that of the covered work.  */
+ #include <getopt.h>
+ #include <getpass.h>
+ #include <quote.h>
++#include "path.c"
+ 
+ #ifdef TESTING
+ /* Rename the main function so we can have a main() in fuzzing code
+@@ -178,8 +181,21 @@ get_hsts_database (void)
+ 
+   if (opt.homedir)
+     {
+-      char *dir = ajoin_dir_file(opt.homedir, ".wget-hsts");
+-      return dir;
++      char* dir = get_hsts_file_dir();
++      char* path = ajoin_dir_file(get_hsts_file_dir(), HSTS_FILE);
++      struct stat st = {0};
++
++      /* make directory for hsts file if it does not exist */
++      if (stat(dir, &st) == -1)
++        {
++        int mkdir_sucess = mkdir(dir, 0700);
++        if (!(stat(dir, &st) == 0 && S_ISDIR(st.st_mode)))
++          {
++          printf("Error: Could not create hsts file\n");
++          exit (WGET_EXIT_GENERIC_ERROR);
++        }
++      }
++      return path;
+     }
+ 
+   return NULL;
+@@ -206,7 +222,8 @@ load_hsts (void)
+       else
+         logprintf (LOG_NOTQUIET, "ERROR: could not open HSTS store. HSTS will be disabled.\n");
+ 
+-      xfree (filename);
++      /* TODO: get free() call working again */
++      // xfree (filename);
+     }
+ }
+ 
+@@ -224,9 +241,11 @@ save_hsts (void)
+         }
+ 
+       hsts_store_close (hsts_store);
+-      xfree (hsts_store);
++      /* TODO: get free() call working again */
++      // xfree (hsts_store);
+ 
+-      xfree (filename);
++      /* TODO: get free() call working again */
++      // xfree (filename);
+     }
+ }
+ #endif
+diff --git a/src/path.c b/src/path.c
+new file mode 100644
+index 0000000..51cc3f0
+--- /dev/null
++++ b/src/path.c
+@@ -0,0 +1,54 @@
++#include "wget.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <limits.h>
++#include <string.h>
++
++#include "path.h"
++#include "exits.h"
++
++char*
++get_hsts_file_dir (void)
++{
++  char *home_dir;
++  char *default_xdg_dir = "/" DEDAULT_XDG_CACHE_DIR;
++  char *hsts_file_base_dir = "/" HSTS_FILE_DIR;
++  char* user_xdg_dir;
++  static char hsts_file_dir[_POSIX_PATH_MAX] = "";
++  const char *slash = "/";
++  char *check_multiple;
++
++  if (!(home_dir = getenv("HOME")))
++  {
++    printf("Error: Could not access home directory\n");
++    exit (WGET_EXIT_GENERIC_ERROR);
++  }
++
++  /* prevent the function from runnning multiple times by returning right away
++   * when a a "/" character is found in the hsts_file_dir variable
++   */
++  check_multiple = hsts_file_dir;
++  while (*check_multiple)
++  {
++    if (strchr(slash, *check_multiple))
++    {
++      return hsts_file_dir;
++    }
++    check_multiple++;
++  }
++
++  if ((user_xdg_dir = getenv("XDG_CACHE_HOME")))
++  {
++    strcat(hsts_file_dir, user_xdg_dir);
++  } else
++    {
++  strcat(hsts_file_dir, home_dir);
++      strcat(hsts_file_dir, default_xdg_dir);
++    }
++
++  strcat(hsts_file_dir, hsts_file_base_dir);
++
++  return hsts_file_dir;
++}
+diff --git a/src/path.h b/src/path.h
+new file mode 100644
+index 0000000..c9b1f7b
+--- /dev/null
++++ b/src/path.h
+@@ -0,0 +1,5 @@
++#define HSTS_FILE_DIR "wget"
++#define HSTS_FILE "hsts"
++#define HSTS_TEST_FILE "hsts-test"
++#define HSTS_TESTING_FILE "hsts-testing"
++#define DEDAULT_XDG_CACHE_DIR ".cache"
+-- 
+2.34.0
+
