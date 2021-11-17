@@ -1,8 +1,8 @@
 pkgbase = autochown
 	pkgdesc = Monitor multiple directories using glob patterns and automatically adjust file ownership and permissions.
 	pkgver = 2020
-	pkgrel = 1
-	url = https://xyne.archlinux.ca/projects/autochown
+	pkgrel = 2
+	url = https://xyne.mirrorrepo.com/projects/autochown
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -15,8 +15,8 @@ pkgbase = autochown
 	makedepends = cmake
 	makedepends = rabbit_tree
 	backup = etc/autochownd.conf
-	source = https://xyne.archlinux.ca/projects/autochown/src/autochown-2020.tar.xz
-	source = https://xyne.archlinux.ca/projects/autochown/src/autochown-2020.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/autochown/src/autochown-2020.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/autochown/src/autochown-2020.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 4511eacc6bdf562bc9ed4977c9aceaa8
 	md5sums = dca269ea8441112d57518c26ea8ee27b
@@ -24,4 +24,3 @@ pkgbase = autochown
 	sha512sums = f131b5b9a775d55eb4a639435c7d9ce1106e24a59a05fb75216d8d6c7d1e4626cbb38400837b87c119b3d3094075bf529aed8756a9068773eb34ac5c788add1e
 
 pkgname = autochown
-

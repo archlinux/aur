@@ -1,16 +1,16 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=autochown
 pkgver=2020
-pkgrel=1
+pkgrel=2
 pkgdesc='Monitor multiple directories using glob patterns and automatically adjust file ownership and permissions.'
 arch=(i686 x86_64 armv6h armv6l armv7h armv7l armv8h armv8l)
 license=(GPL)
-url="https://xyne.archlinux.ca/projects/autochown"
+url="https://xyne.mirrorrepo.com/projects/autochown"
 makedepends=(cmake rabbit_tree)
 backup=(etc/autochownd.conf)
 source=(
-  https://xyne.archlinux.ca/projects/autochown/src/autochown-2020.tar.xz
-  https://xyne.archlinux.ca/projects/autochown/src/autochown-2020.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/autochown/src/autochown-2020.tar.xz
+  https://xyne.mirrorrepo.com/projects/autochown/src/autochown-2020.tar.xz.sig
 )
 sha512sums=(
   c9d0efcac6ba1511456e7587b519a9183082a7844a38e2b1604f82eeeda0e23be00ae354cd758bdc9e04dfceb23066dd11be1c4564224149bae739ca9f26c6a1
