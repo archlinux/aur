@@ -3,7 +3,7 @@
 _base=npx
 pkgname=python-${_base}
 pkgdesc="Some useful extensions for NumPy"
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -12,7 +12,7 @@ depends=(python-numpy)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('93c1c77ab9e0ecc6edd1cea3ca9f0fdca7308c7cdeeded0a9f3b0dad8c83f3829310ed1074448f1b3941ab70584243337f22a092f0d05a095a4d6d821699a0f0')
+sha512sums=('8df31bbca17ea6e4d697cc92cba8e92b070396161593febb6a140c96c1e186fbee2990451d79064a30b62c4e963f4ab1295305a81589a5c71d3cb337b9ccbbbb')
 
 build() {
   cd "${_base}-${pkgver}"
