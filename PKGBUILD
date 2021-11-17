@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r845.2447cca
+pkgver=r941.df18928
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -23,7 +23,7 @@ conflicts=("${pkgname%-git}")
 backup=('etc/klipper/moonraker.conf')
 source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.conf' 'moonraker.service' 'tmpfiles.conf' 'moonraker-klipper.cfg')
 sha256sums=('SKIP'
-            'c98047840f074f7269e8fd8e8476566f9a0d4c43359b3bac81a03d2c7972b83d'
+            '18c55a7a9360ea3f0f9d041b83a435688f62d715821ebb4f62ebfc153af239ae'
             '079711d571f950a5dc7dc3b48d59e3f13947db92a22753936e2e2f5c828fbee6'
             '7b908a1c3e0b56523d27db5283e2f546f93051fe855cc949635fafa37ba2f416'
             'caa868a447ab94bd3e5f86cdf70e5deeb17b233077d94a424a682dfe49349a96')
