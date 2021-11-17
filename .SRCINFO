@@ -1,0 +1,16 @@
+pkgbase = pgquarrel-git
+	pkgdesc = A program that compares PostgreSQL database schemas (DDL)
+	pkgver = 0.7.0.r33.gd4bfeb6
+	pkgrel = 1
+	url = https://github.com/eulerto/pgquarrel
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = cmake
+	makedepends = postgresql-libs
+	provides = pgquarrel
+	conflicts = pgquarrel
+	source = pgquarrel::git+https://github.com/eulerto/pgquarrel.git
+	sha256sums = SKIP
+
+pkgname = pgquarrel-git
