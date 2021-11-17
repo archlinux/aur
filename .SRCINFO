@@ -1,12 +1,12 @@
 pkgbase = python3-aur
 	pkgdesc = AUR-related modules and helper utilities (aurploader, aurquery, aurtomatic).
 	pkgver = 2020.12.15
-	pkgrel = 3
-	url = https://xyne.archlinux.ca/projects/python3-aur
+	pkgrel = 4
+	url = https://xyne.mirrorrepo.com/projects/python3-aur
 	arch = any
 	license = GPL
 	depends = pyalpm
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = python3
 	depends = python3-xcgf
 	depends = python3-xcpf
@@ -15,8 +15,8 @@ pkgbase = python3-aur
 	provides = aurploader
 	conflicts = aurploader
 	replaces = aurploader
-	source = https://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2020.12.15.tar.xz
-	source = https://xyne.archlinux.ca/projects/python3-aur/src/python3-aur-2020.12.15.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/python3-aur/src/python3-aur-2020.12.15.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/python3-aur/src/python3-aur-2020.12.15.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = bf033724fee5dcfc13634cbd3aa833f3
 	md5sums = 24d339085b082c49a6078d7483a13c9d
@@ -24,4 +24,3 @@ pkgbase = python3-aur
 	sha512sums = 2676a6b1ba8a383cade9065ba1c5d82ab445fe1bb1e0dcd7e103967a65f7d39fee9a8b101a7e2ee7b89e38f97dad3bca6e88784539e3717ffd15dc5935f40d33
 
 pkgname = python3-aur
-
