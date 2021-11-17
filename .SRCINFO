@@ -1,0 +1,21 @@
+pkgbase = nvlax-git
+	pkgdesc = Future-proof NvENC & NvFBC patcher
+	pkgver = r11.b3699ad
+	pkgrel = 1
+	url = https://github.com/illnyang/nvlax
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = nvidia-utils
+	provides = nvlax
+	provides = nvlax-git
+	conflicts = nvlax
+	source = nvlax::git+https://github.com/illnyang/nvlax.git
+	source = nvlax-upgrade.hook
+	source = nvlax-install.hook
+	sha256sums = SKIP
+	sha256sums = 09c135c0a372f0b0020fea2665301249e73d32919d9b83d37718d402897ba5f7
+	sha256sums = 5d7eae6a93cd66b602a723f615d1c768f131dbb1e14432783f2a452a87e4501e
+
+pkgname = nvlax-git

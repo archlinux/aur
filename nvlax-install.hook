@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = nvlax
+Target = nvlax-git
+
+[Action]
+Description = Applying nvlax
+When = PostTransaction
+Exec = /bin/sh -c 'nvlax_encode -i /usr/lib/libnvidia-encode.so -o /usr/lib/libnvidia-encode.so; nvlax_fbc -i /usr/lib/libnvidia-fbc.so -o /usr/lib/libnvidia-fbc.so'
+NeedsTargets
