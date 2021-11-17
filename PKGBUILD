@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß - For email contact info see email of respective AUR commits
 pkgname=veloren-nightly-bin
 _pkgver=0.11.0
-pkgver="$_pkgver"
+pkgver=0.11.0.20211116
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
