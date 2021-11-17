@@ -1,18 +1,18 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pacserve
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily share Pacman packages between computers. A replacement for PkgD.'
 arch=(any)
 license=(GPL)
-url="https://xyne.archlinux.ca/projects/pacserve"
+url="https://xyne.mirrorrepo.com/projects/pacserve"
 depends=(pyalpm python3-threaded_servers)
 optdepends=('avahi: Avahi support' 'python-dbus: Avahi support' 'python-gobject: Avahi support')
 conflicts=(pacredir)
 backup=(etc/pacserve/pacserve-ports.conf etc/pacserve/pacserve.service.conf)
 source=(
-  https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2021.tar.xz
-  https://xyne.archlinux.ca/projects/pacserve/src/pacserve-2021.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/pacserve/src/pacserve-2021.tar.xz
+  https://xyne.mirrorrepo.com/projects/pacserve/src/pacserve-2021.tar.xz.sig
 )
 sha512sums=(
   4bf731c362602dde700caff4db85999ca5a50a46c7a7271e9732c197f3318f0baa6239b349b0d2ace0b0fd91b3c09dc29700f31cd23a1bff51458b9aaad8d1d8
