@@ -1,0 +1,14 @@
+pkgbase = ltools
+	pkgdesc = LTools
+	pkgver = v0.0.1
+	pkgrel = 1
+	url = https://github.com/lucemans/ltools
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/lucemans/ltools.git
+	sha512sums = SKIP
+
+pkgname = ltools
