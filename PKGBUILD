@@ -1,20 +1,18 @@
 # Maintainer: Grigory Vasilyev <echo "h0tc0d3(-*A*-)g-m*a-i-l(-d#t-)c#m" | sed -e 's/-//ig;s/*//ig;s/(A)/@/i;s/#/o/ig;s/(dot)/./i'>
 
-validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
-
 pkgname=verible
-pkgver=0.0r1282.gd49303d
+pkgver=0.0r1748.gd98e3b86
 pkgrel=1
 pkgdesc="SystemVerilog(Verilog) Parser, Style-Linter, and Formatter from Google"
 arch=('x86_64')
-url='https://github.com/google/verible'
+url='https://github.com/chipsalliance/verible'
 license=('Apache 2.0')
 depends=('bash')
 makedepends=('bazel' 'git')
 provides=('verible')
 conflicts=('verible-git')
-_gittag="v0.0-1282-gd49303d"
-source=("verible::git+https://github.com/google/verible.git#tag=${_gittag}")
+_gittag="v0.0-1748-gd98e3b86"
+source=("verible::git+https://github.com/chipsalliance/verible.git#tag=${_gittag}")
 sha512sums=('SKIP')
 
 pkgver() {
