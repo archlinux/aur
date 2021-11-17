@@ -3,7 +3,7 @@
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 url='https://rancherdesktop.io/'
@@ -24,7 +24,7 @@ build() {
         convert -resize "${size}" "${icon}" "share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
 
-  sed -i "s|Exec=rancher-desktop|Exec=opt/${pkgname}/rancher-desktop|g" packaging/linux/rancher-desktop.desktop
+  sed -i "s|Exec=rancher-desktop|Exec=/opt/${pkgname}/rancher-desktop|g" packaging/linux/rancher-desktop.desktop
 
   # Remove Flatpak and appimage as they are not needed
   rm packaging/linux/appimage.yml
