@@ -1,16 +1,16 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=bacpac
 pkgver=2014
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman-independent portable package downloader with dependency resolution.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/bacpac"
+url="https://xyne.mirrorrepo.com/projects/bacpac"
 depends=(python3)
 optdepends=('pyalpm: support for generating JSON provider databases')
 source=(
-  http://xyne.archlinux.ca/projects/bacpac/src/bacpac-2014.tar.xz
-  http://xyne.archlinux.ca/projects/bacpac/src/bacpac-2014.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/bacpac/src/bacpac-2014.tar.xz
+  https://xyne.mirrorrepo.com/projects/bacpac/src/bacpac-2014.tar.xz.sig
 )
 sha512sums=(
   4910e4506c5a7474517ce18b15edb796ce6e9e7958895d5ec25bfbd1330ad3620d0d97e121cdb571482124e558e5ff52852ccecfd611c28916fccd9644bffc9b
