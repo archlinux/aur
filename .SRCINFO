@@ -1,13 +1,13 @@
 pkgbase = kontur-plugin
 	pkgdesc = Kontur.Plugin is an extension for web browsers that allows users to perform cryptographic operations in SKB Kontur services.
 	pkgver = 4.0.4.202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://help.kontur.ru/plugin/
 	arch = x86_64
 	license = proprietary
 	depends = gtk3
 	depends = cryptopro-csp-k1
-	source = https://help.kontur.ru/plugin/beta/dist/kontur.plugin_amd64.deb
-	sha512sums = 25355f4b0da5cd25c1fb00cf973c3765e1973fd86d0a7dcc92c864b5660932cf257126fdc5ef05b65b9c4828abcfd73b720c8b368fd634a200417f3f9e881502
+	source = https://help.kontur.ru/plugin/dist/kontur.plugin_amd64.deb
+	sha256sums = f24a12551b00b63af4f267ff6b94f761a711509c49cfa187022356cdc76d61d8
 
 pkgname = kontur-plugin
