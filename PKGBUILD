@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.8.2.r386.g35b36e24
+pkgver=0.8.2.r786.gc40fbf42
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64" "aarch64")
@@ -12,7 +12,7 @@ license=("GPL3")
 
 depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "qtkeychain-qt5" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugin-qmlgl" "libnice" "libolm" "spdlog" "curl" "libevent")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json")
-
+optdepends=("qt-jdenticon")
 provides=("nheko")
 conflicts=("nheko")
 
@@ -33,8 +33,6 @@ build() {
 
     rm -f cmake/FindOlm.cmake
 
-    # build with more cores than the default
-    export CMAKE_BUILD_PARALLEL_LEVEL=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
     cmake -H. -Bbuild -DHUNTER_ENABLED=OFF -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_MTXCLIENT=ON -DUSE_BUNDLED_COEURL=ON -DUSE_BUNDLED_LMDBXX=ON -DCMAKE_INSTALL_PREFIX=.deps/usr -DCMAKE_BUILD_TYPE=Release
     cmake --build build --config Release
 }
