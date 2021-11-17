@@ -1,0 +1,45 @@
+# Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
+pkgname=bcml-git
+_name=BCML
+pkgver=r1037.a57a1a2
+pkgrel=1
+pkgdesc="Breath of the Wild Cross-Platform Mod Loader: A mod merger and manager for BOTW"
+arch=('any')
+url="https://github.com/NiceneNerd/BCML"
+license=('GPL3')
+depends=('qt5-webkit' 'python>=3.7')
+makedepends=('git' 'npm' 'nodejs>=14.0.0' 'mkdocs' 'mkdocs-material' 'python-setuptools' 'gendesk')
+optdepends=('cemu')
+source=('git+https://github.com/NiceneNerd/BCML' "${_name}.png::https://i.imgur.com/OiqKPx0.png")
+sha256sums=('SKIP'
+            'f20788bc2187b7b5d40d8b63a97b9cacdd986f8d0d77c6c456561e7fbd68179a')
+
+pkgver() {
+  cd "${srcdir}/${_name}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+prepare() {
+	gendesk --pkgname "${_name}" --pkgdesc "${pkgdesc}" --exec "bcml"
+}
+
+build() {
+	cd "${srcdir}/${_name}/bcml/assets"
+	npm install --cache "${srcdir}/npm-cache"
+	npm run build
+
+	cd "${srcdir}/${_name}"
+	mkdocs build -d bcml/assets/help
+	
+	python setup.py build
+}
+
+package() {
+	cd "${srcdir}/${_name}"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 "${srcdir}/${_name}.desktop" "$pkgdir/usr/share/applications/${_name}.desktop"
+	install -Dm644 "${srcdir}/${_name}.png" "$pkgdir/usr/share/pixmaps/${_name}.png"
+}
