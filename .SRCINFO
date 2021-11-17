@@ -1,5 +1,5 @@
 pkgbase = qzdl-desktop
-	pkgdesc = .desktop files for qzdl
+	pkgdesc = .desktop file for qzdl
 	pkgver = 1.0.0
 	pkgrel = 2
 	url = http://zdl.vectec.net
