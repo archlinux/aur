@@ -1,0 +1,11 @@
+pkgbase = synapse-bt
+	pkgdesc = A flexible and fast BitTorrent daemon.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = ISC
+	makedepends = cargo
+	source = synapse-1.0.tar.gz::https://github.com/Luminarys/synapse/archive/refs/tags/1.0.tar.gz
+	sha256sums = e14573bc36e6b54c4091dc7b790775a7ffa3f433ee098984a0be6a4007c0da1f
+
+pkgname = synapse-bt
