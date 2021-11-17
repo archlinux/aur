@@ -18,7 +18,7 @@ arch=('i686'
       'aarch64')
 
 source=(
-    "git+https://github.com/racket/ChezScheme.git"
+    "source::git+https://github.com/racket/ChezScheme.git"
 )
 
 md5sums=(
@@ -26,14 +26,15 @@ md5sums=(
 )
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 depends=('ncurses')
 makedepends=('git' 'libx11' 'xorgproto')
 
 prepare() {
+    git clone --depth=1 https://github.com/racket/ChezScheme.git
     cd "$_pkgname"
     git submodule init
     git submodule update
