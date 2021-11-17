@@ -1,6 +1,6 @@
 pkgbase = azure-storage-explorer
 	pkgdesc = Storage Explorer allows you to view and interact with your Azure Storage resources.
-	pkgver = 1.21.2
+	pkgver = 1.21.3
 	pkgrel = 1
 	url = https://github.com/microsoft/AzureStorageExplorer
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = azure-storage-explorer
 	depends = libsecret
 	depends = dotnet-runtime-3.1
 	provides = azure-storage-explorer
-	source = azure-storage-explorer-1.21.2.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.21.2/Linux_StorageExplorer-x64.tar.gz
+	source = azure-storage-explorer-1.21.3.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.21.3/Linux_StorageExplorer-x64.tar.gz
 	source = https://raw.githubusercontent.com/microsoft/AzureStorageExplorer/master/LICENSE
 	source = StorageExplorer.desktop
-	sha256sums = 8b29f640ec7d8a55cae7b42c941aa6ab9318bd506ddf56c5f44d5148268abcd0
+	sha256sums = 1fd18cc0fb57b4c0eae11d59b04ddc7261fa7dba112d2d3064ae63ebf8b7129b
 	sha256sums = 9bbc1ea9fe5c96df01b311a2ac864d5b18fc87b9948bfd14770e4b44db755ee9
 	sha256sums = ed90ef85054cd2860d6c0e123a0db52a81014a6433e02952a57926ab115b7717
 
