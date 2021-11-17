@@ -19,7 +19,7 @@ _veryear=2021
 _verrelease=3
 _verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
@@ -48,7 +48,7 @@ package() {
     sed -i "s/_pkgver/${pkgver}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     install -dm755 -p "${pkgdir}/usr/bin/"
-    ln -s "${pkgdir}/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
+    ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
 }
 
 # vim:set ts=4 sw=4 et:
