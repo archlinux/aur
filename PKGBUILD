@@ -7,31 +7,25 @@ pkgdesc="Ayatana Application Indicators (Shared Library)"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/libayatana-appindicator"
 license=("LGPL2.1" "LGPL3")
-makedepends=("gtk3" "glib2" "libayatana-indicator" "libdbusmenu-gtk3" "dbus-glib" "mate-common" "gobject-introspection")
-depends=("libdbusmenu-gtk3" "libayatana-indicator")
-optdepends=("vala" "mono" "gtk-sharp-3")
+makedepends=("glib2" "gtk3" "gobject-introspection" "vala" "mono" "gtk-sharp-3")
+depends=("libdbusmenu-gtk3" "libayatana-indicator>=0.9.0")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("fd6705ad2793dced95056036ecd73b7f")
 conflicts=("${pkgname}-gtk3")
 replaces=("${pkgname}-gtk3")
 
-prepare()
-{
-    cd ${pkgname}-${pkgver}
-    NOCONFIGURE=1 ./autogen.sh
-}
-
 build()
 {
-    export CSC="/usr/bin/mcs"
     cd ${pkgname}-${pkgver}
-    ./configure --prefix=/usr --enable-introspection --enable-gtk-doc=no --disable-tests --disable-mono-test --with-gtk=3
+    mkdir build
+    cd build
+    cmake .. -DENABLE_GTKDOC=ON
     make
 }
 
 package()
 {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}/build
     make DESTDIR="${pkgdir}" install
 }
 

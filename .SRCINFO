@@ -8,22 +8,17 @@ pkgbase = libayatana-appindicator
 	arch = pentium4
 	license = LGPL2.1
 	license = LGPL3
-	makedepends = gtk3
 	makedepends = glib2
-	makedepends = libayatana-indicator
-	makedepends = libdbusmenu-gtk3
-	makedepends = dbus-glib
-	makedepends = mate-common
+	makedepends = gtk3
 	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = mono
+	makedepends = gtk-sharp-3
 	depends = libdbusmenu-gtk3
-	depends = libayatana-indicator
-	optdepends = vala
-	optdepends = mono
-	optdepends = gtk-sharp-3
+	depends = libayatana-indicator>=0.9.0
 	conflicts = libayatana-appindicator-gtk3
 	replaces = libayatana-appindicator-gtk3
 	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.5.tar.gz
 	md5sums = fd6705ad2793dced95056036ecd73b7f
 
 pkgname = libayatana-appindicator
-
