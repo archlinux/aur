@@ -18,7 +18,7 @@ md5sums=('f714e2bd6569e08e16f89e22cfbcb2dd')
 prepare() {
 	icotool -x -o $srcdir/vpaint.png $srcdir/$pkgname-$pkgver/src/Gui/images/VPaint.ico
 	gendesk -f --pkgname "$pkgname" --pkgdesc "Vector graphics editor" --name="VPaint" \
-            --comment "Start VPaint" --exec "$pkgname" --categories "Graphics"         \
+            --comment "Start VPaint" --exec "$pkgname" --categories "Graphics;2DGraphics;VectorGraphics" \
             --custom "Icon=/usr/share/pixmaps/vpaint.png"
 }
 
