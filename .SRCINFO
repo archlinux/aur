@@ -1,8 +1,8 @@
 pkgbase = svgtools
 	pkgdesc = Tools for working with SVG files and JessyInk presentations.
 	pkgver = 2020.7.27
-	pkgrel = 2
-	url = https://xyne.archlinux.ca/projects/svgtools
+	pkgrel = 3
+	url = https://xyne.mirrorrepo.com/projects/svgtools
 	arch = any
 	license = GPL
 	depends = python3
@@ -10,8 +10,8 @@ pkgbase = svgtools
 	optdepends = parallel: GNU Parallel support for ji2pdf
 	optdepends = phantomjs: required for jessy_to_slides
 	optdepends = poppler: required for ji2pdf
-	source = https://xyne.archlinux.ca/projects/svgtools/src/svgtools-2020.7.27.tar.xz
-	source = https://xyne.archlinux.ca/projects/svgtools/src/svgtools-2020.7.27.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/svgtools/src/svgtools-2020.7.27.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/svgtools/src/svgtools-2020.7.27.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 31b374ab378d81224fc60e6d5ecb3a99
 	md5sums = 0ca56c4b2b0f001dff2a70b13dae7ac9
@@ -19,4 +19,3 @@ pkgbase = svgtools
 	sha512sums = 3cf135d4c94a3ca982631e6f0fc37c8b3b3b3e0ba02fe1be9565f50ba25bd505c7750e572eda9045828de0028391cb71ea776cfd368a4b49f079caac6d8a5252
 
 pkgname = svgtools
-
