@@ -2,31 +2,20 @@ pkgbase = ayatana-indicator-datetime
 	pkgdesc = Ayatana Indicator providing clock and calendar
 	pkgver = 0.8.3
 	pkgrel = 1
-	url = https://github.com/AyatanaIndicators
+	url = https://github.com/AyatanaIndicators/ayatana-indicator-datetime
 	arch = i686
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
-	makedepends = libayatana-indicator
-	makedepends = cmake
 	makedepends = cmake-extras
-	makedepends = dbus
+	makedepends = ayatana-indicator-messages>=0.9.0
 	makedepends = intltool
 	makedepends = glib2
-	makedepends = libnotify
-	makedepends = gstreamer
 	makedepends = libical
-	makedepends = evolution-data-server
-	makedepends = gsettings-desktop-schemas
-	makedepends = properties-cpp
-	depends = libayatana-indicator
-	depends = glib2
+	depends = libayatana-common>=0.9.5
 	depends = evolution-data-server
 	depends = libaccounts-glib
-	optdepends = geoclue
-	options = !emptydirs
 	source = https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/0.8.3.tar.gz
 	md5sums = cc87b99eaa7be3dd134e3070613ef942
 
 pkgname = ayatana-indicator-datetime
-
