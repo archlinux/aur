@@ -5,9 +5,9 @@ proxy for Ground Control Station."
 url='https://wiki.ros.org/mavros'
 
 pkgname='ros-noetic-mavros'
-pkgver='1.9.0'
+pkgver='1.10.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(
@@ -55,24 +55,20 @@ depends=(
 
 _dir="mavros-release-upstream-${pkgver}/mavros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/${pkgver}.tar.gz")
-sha256sums=('ef8b837d83d887c6997b8d1175b7b834deba2bd49206e70b5ad098c17475c27f')
+sha256sums=('88111fbe2ecfcd2158cbba9181150a7394ee1905a7e78799bdaea8f32585426c')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-  # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
-
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake -Wno-dev -B build -S ${_dir} \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
-  make
+  make -sC build
 }
 
 package() {
