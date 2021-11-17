@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pacman2aria2
 pkgver=2012
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert pacman download URL lists to reflector-augmented aria2c input lists. Includes powerpill-light.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/pacman2aria2"
-depends=(python3 aria2 'reflector>=2011.04.04')
+url="https://xyne.mirrorrepo.com/projects/pacman2aria2"
+depends=(aria2 python3 'reflector>=2011.04.04')
 source=(
-  http://xyne.archlinux.ca/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz
-  http://xyne.archlinux.ca/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz
+  https://xyne.mirrorrepo.com/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz.sig
 )
 sha512sums=(
   f04f753db891bd5745fb30f6bd832a811c135f658718944d609108f0d972b7809d5b90c9fcd6a0e16fee8a47f6ad8c2594bde85eb3186fe510fdf638a85b36cb
