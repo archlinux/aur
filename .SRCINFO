@@ -1,0 +1,16 @@
+pkgbase = vim-tex-seven-git
+	pkgdesc = Vim plugin for LaTeX documents
+	pkgver = r133.001d01a
+	pkgrel = 1
+	url = https://github.com/notnotrandom/vim-tex-seven
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	makedepends = git
+	depends = vim-runtime>=7.0
+	provides = vim-tex-seven
+	source = git+https://github.com/notnotrandom/vim-tex-seven.git
+	sha256sums = SKIP
+
+pkgname = vim-tex-seven-git
