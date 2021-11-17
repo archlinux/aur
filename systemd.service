@@ -1,0 +1,14 @@
+[Unit]
+Description=Drone Runner (Exec)
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=drone-runner-exec
+Group=drone-runner-exec
+WorkingDirectory=/var/lib/drone-runner-exec
+ReadWritePaths=/var/lib/drone-runner-exec
+ExecStart=/usr/bin/drone-runner-exec
+
+[Install]
+WantedBy=multi-user.target
