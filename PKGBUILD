@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.803
+pkgver=mainline.0.812
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
 	'xbyak>=5.995.r3'
 	'zstd>=1.5'
 )
-checkdepends=('catch2>=2.13')
+checkdepends=('catch2>=2.13.7')
 source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	"gamedb-$(date -I).json::https://api.yuzu-emu.org/gamedb/"
@@ -53,7 +53,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'7e7b050263b6ecf353aee02127bfe882d7af3102f5bfd24f6068b775a5703753c247aaf68d00defafcfeaffdd3d48f9393f9b3d628279db3fc78788f134725da'
+	'3d79487dd476733d91cef575d14b0b47cb206c0eae637b6fe20cf1959ac962cb1943d8bac0f4d13e045585ba92f15365e328890f078770c1b6d3ca5ddac545fc'
 	'5f1cf15e9486e50fe9416919bf34d9b78e5f02cab96216cef77f365855e4c09eaa74118de89c29f6b7899fa43f07e0f70ef8fb21e47808ef347212ea9ee4ed39'
 	'0c9b84444e4c938a04b1f60907fc816cbe8eb8d598a9a4b7e490750d339fac7a48de1b682bc5b00b6c2333b5f4e39b1738287b9168844094e3817703635aad9c'
 	'3e0faf4c5ef6a836001af09b90ebb7f9a0e3b9dc42c1a312815f4ad9c4dc1ed79672539cecdbaf7ce01f2297a76dc3f17579f058c5515d8f328fc286705192b6'
