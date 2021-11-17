@@ -5,7 +5,7 @@
 pkgbase='python-pyglm'
 pkgname=('python-pyglm')
 _module='PyGLM'
-pkgver='2.5.4'
+pkgver='2.5.5'
 pkgrel=1
 pkgdesc="OpenGL Mathematics library for Python"
 url="https://github.com/Zuzu-Typ/PyGLM"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 license=('ZLIB')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('96f71e99283d17568cb3f4926ecaa1560dafeaa4254cc826da74da6f2907cd62')
+sha256sums=('66f09f1808801d9bb4bee778c48d1e313bd1e548a112dde4d368b23ced9b9ff0')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
