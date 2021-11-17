@@ -1,7 +1,7 @@
 # Maintainer: rfvgyhn
 
 pkgname=proton-usage
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lists Steam applications that have specified a Steam Play compatibility tool"
 arch=("x86_64")
@@ -11,7 +11,8 @@ provides=("proton-usage")
 conflicts=("proton-usage")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d7981c4fc2f4e2ec56adcd3aeb50616e1ee796435f178524567f3fa8a26730ac')
+changelog=CHANGELOG.md
+sha256sums=('22587528b1c541834d9747270676d43a977355829f2c93f74c13016ed7321c14')
 
 prepare() {
   cd "$pkgname-$pkgver"
