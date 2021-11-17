@@ -1,6 +1,6 @@
 pkgbase = libdart
 	pkgdesc = Dynamic Animation and Robotics Toolkit
-	pkgver = 6.11.1
+	pkgver = 6.12.1
 	pkgrel = 1
 	url = https://dartsim.github.io
 	arch = i686
@@ -28,9 +28,7 @@ pkgbase = libdart
 	depends = pagmo
 	optdepends = pagmo: pagmo optimizer support
 	provides = dartsim
-	source = libdart-6.11.1.tar.gz::https://github.com/dartsim/dart/archive/v6.11.1.tar.gz
-	source = bracket.patch
-	sha256sums = 1a59b9d8f55433ad111089431826cd8abbec71f61c72a8558b655d92164f8de4
-	sha256sums = a6608b7f86aa412ed2e2395010fdb6fb47d34efbdb37b767427c8f02cb8eca65
+	source = libdart-6.12.1.tar.gz::https://github.com/dartsim/dart/archive/v6.12.1.tar.gz
+	sha256sums = e0d47bbc191903b93474da00bbd1042cefdc85f5ead3e9a9282b5f4187d53304
 
 pkgname = libdart
