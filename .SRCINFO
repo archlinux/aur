@@ -1,0 +1,18 @@
+pkgbase = gccdiag
+	pkgdesc = Utility to get GCC diagnostics for a file, with flags from compilation database.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/andrejr/gccdiag
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = taywee-args
+	depends = boost-libs
+	provides = gccdiag
+	conflicts = gccdiag-git
+	source = https://gitlab.com/api/v4/projects/28532726/packages/generic/gccdiag/0.2.1/gccdiag-0.2.1.tar.gz
+	sha256sums = f597d37670ee68181466f615e6ddb69ca5d9dc24af2932b3c5de22985f8602cb
+
+pkgname = gccdiag
