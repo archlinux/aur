@@ -1,7 +1,7 @@
 # Maintainer: rustemb <rustemb@systemli.org>
 pkgname=profetch
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="System Information Fetcher Written in GNU/Prolog "
 arch=(any)
 url="https://github.com/RustemB/profetch"
@@ -14,7 +14,7 @@ md5sums=('04a956f878c0bc052e93a2d6d360651c')
 
 build() {
     cd "$pkgname-$pkgver"
-    make
+    make build
 }
 
 package() {

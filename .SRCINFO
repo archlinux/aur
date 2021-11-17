@@ -1,7 +1,7 @@
 pkgbase = profetch
 	pkgdesc = System Information Fetcher Written in GNU/Prolog
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RustemB/profetch
 	arch = any
 	license = GPL3
