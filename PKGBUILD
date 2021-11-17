@@ -10,7 +10,7 @@
 
 pkgname=nimf
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='a lightweight, fast and extensible input method framework'
 arch=(x86_64)
@@ -21,7 +21,8 @@ depends=(gtk3
          libxkbcommon
          libxklavier
          qt5-base
-         wayland)
+         wayland
+         wayland-protocols)
 makedepends=(anthy
              gtk-doc
              gtk2
@@ -32,7 +33,7 @@ makedepends=(anthy
              m17n-lib
              # meson
              librsvg)
-optdepends=('brise: Rime schema repository'
+optdepends=(#'brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
 _archive="$pkgname-$pkgver"
 source=("$pkgname-$pkgver.tar.bz2::$url/releases/download/$pkgver/$pkgname-master.tar.bz2")
