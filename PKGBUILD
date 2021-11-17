@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-indicator-session"
 license=("GPL2" "GPL3")
 makedepends=("cmake-extras" "intltool")
-depends=("glib2" "systemd" "dconf" "libayatana-common" "hicolor-icon-theme")
+depends=("glib2" "systemd" "dconf" "libayatana-common>=0.9.5" "hicolor-icon-theme")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("5db63ea29448c382c42e86444043da0e")
 
