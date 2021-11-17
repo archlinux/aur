@@ -1,7 +1,7 @@
 pkgbase = litterbox
 	pkgdesc = TLS-only IRC logger storing events in SQLite database
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.causal.agency/litterbox/
 	arch = x86_64
 	license = GPL3
@@ -11,4 +11,3 @@ pkgbase = litterbox
 	md5sums = 6971643f5e23a0b6e7d14189fe99080f
 
 pkgname = litterbox
-
