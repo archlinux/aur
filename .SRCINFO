@@ -9,7 +9,7 @@ pkgbase = ayatana-indicator-application
 	license = GPL3
 	makedepends = cmake-extras
 	makedepends = glib2
-	makedepends = libayatana-indicator
+	makedepends = libayatana-indicator>=0.9.0
 	makedepends = gtk3
 	makedepends = libdbusmenu-gtk3
 	makedepends = systemd
@@ -21,4 +21,3 @@ pkgbase = ayatana-indicator-application
 	md5sums = aeba0273e91f814fb808e0c963bbac71
 
 pkgname = ayatana-indicator-application
-

@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-indicator-application"
 license=("GPL3")
 depends=("libayatana-appindicator" "dbus-glib")
-makedepends=("cmake-extras" "glib2" "libayatana-indicator" "gtk3" "libdbusmenu-gtk3" "systemd" "intltool")
+makedepends=("cmake-extras" "glib2" "libayatana-indicator>=0.9.0" "gtk3" "libdbusmenu-gtk3" "systemd" "intltool")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("aeba0273e91f814fb808e0c963bbac71")
 options=("!emptydirs")
