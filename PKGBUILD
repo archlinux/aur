@@ -17,9 +17,7 @@ arch=('i686'
       'armv6h'
       'aarch64')
 
-source=(
-    "source::git+https://github.com/racket/ChezScheme.git"
-)
+source=()
 
 md5sums=(
     'SKIP'
