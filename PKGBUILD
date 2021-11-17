@@ -3,7 +3,7 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.5.r117.g828c345d
+pkgver=0.5.r123.g1809d106
 pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 url="https://wiki.gnome.org/Apps/GTG"
@@ -26,13 +26,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-
-  # https://github.com/getting-things-gnome/gtg/issues/720
-  sed -i 's/    build_always_stale: true//g' GTG/plugins/meson.build
 }
 
 build() {
