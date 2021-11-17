@@ -1,0 +1,9 @@
+pkgbase = apple-superdrive-udev
+	pkgdesc = udev rule that allows the Apple USB SuperDrive to function
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = sg3_utils
+
+pkgname = apple-superdrive-udev
+
