@@ -1,13 +1,13 @@
 pkgbase = python3-colorsysplus
 	pkgdesc = An extension of the standard colorsys module with support for CMYK, terminal colors, ANSI and more.
 	pkgver = 2021.1
-	pkgrel = 1
-	url = https://xyne.archlinux.ca/projects/python3-colorsysplus
+	pkgrel = 2
+	url = https://xyne.mirrorrepo.com/projects/python3-colorsysplus
 	arch = any
 	license = GPL
 	depends = python3
-	source = https://xyne.archlinux.ca/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz
-	source = https://xyne.archlinux.ca/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = be424dc1f3e1d8663fb0d6c433bb512a
 	md5sums = af59f9a47785c46bfe47a3617735fb1e
@@ -15,4 +15,3 @@ pkgbase = python3-colorsysplus
 	sha512sums = 6e66c981d2d9540d83768f5cb4f84fff16d6ba3a73a9bcf455b13c6d966537e1e22ea37b82fae6df62c0fac41326357ef1e4dac4653ad6e03a2ceca8ae581dc6
 
 pkgname = python3-colorsysplus
-
