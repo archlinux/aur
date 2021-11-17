@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=serman
 pkgver=2014.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Dialog-based systemd service management.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/serman"
-depends=(python3 dialog)
+url="https://xyne.mirrorrepo.com/projects/serman"
+depends=(dialog python3)
 source=(
-  http://xyne.archlinux.ca/projects/serman/src/serman-2014.7.tar.xz
-  http://xyne.archlinux.ca/projects/serman/src/serman-2014.7.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/serman/src/serman-2014.7.tar.xz
+  https://xyne.mirrorrepo.com/projects/serman/src/serman-2014.7.tar.xz.sig
 )
 sha512sums=(
   6dffaf460ad34379739cc9659e7fc8048c640c9b673e7e5143b6a792d27cb54cf39162e7fb6ea5e7915c24eb8fcee52252a90390659f91b5a14047976a7f4817
