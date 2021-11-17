@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=('otf-rasa' 'ttf-rasa')
 pkgbase=rasa-font
-pkgver=2.003
+pkgver=2.004
 pkgrel=1
 pkgdesc='Serif font for continuous reading on the web (Gujarati included)'
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/rosettatype/yrsa-rasa"
 license=('OFL')
 groups=('yrsa-rasa-fonts')
 source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/Rasa-fonts-v$pkgver.zip")
-sha256sums=('47b1e063bd271cc7eadec5e9ea5cb628a1c08a32355a88d32a9642a05bb5aaa7')
+sha256sums=('8c8fe9f7c4a0ba9fdf177e80c8e138605bbdf4cc0ea3102fe8039c345433d4c8')
 
 _package() {
 	cd "Rasa-fonts-v$pkgver"

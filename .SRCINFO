@@ -1,12 +1,12 @@
 pkgbase = rasa-font
 	pkgdesc = Serif font for continuous reading on the web (Gujarati included)
-	pkgver = 2.003
+	pkgver = 2.004
 	pkgrel = 1
 	url = https://github.com/rosettatype/yrsa-rasa
 	arch = any
 	groups = yrsa-rasa-fonts
 	license = OFL
-	source = rasa-font-2.003.zip::https://github.com/rosettatype/yrsa-rasa/releases/download/v2.003/Rasa-fonts-v2.003.zip
+	source = rasa-font-2.004.zip::https://github.com/rosettatype/yrsa-rasa/releases/download/v2.004/Rasa-fonts-v2.004.zip
 	sha256sums = 47b1e063bd271cc7eadec5e9ea5cb628a1c08a32355a88d32a9642a05bb5aaa7
 
 pkgname = otf-rasa
