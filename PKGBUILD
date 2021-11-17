@@ -5,7 +5,7 @@
 pkgname=openboard-git
 _fragment="#branch=master"
 pkgver=1.6.1.r6.gdd19e752
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive whiteboard software for schools and universities (development version current master)"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -25,7 +25,7 @@ source+=(30fps.patch)
 sha256sums=('SKIP'
             '00688af02006bddeab797f624e5cbae66a5c02f4e14315d87d3f198f74797c17'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
-            '8c0b28ebd6cade0a551b695af9c04a2c45052f2d955357825b3be97bf00d5be7'
+            '0a9d037336dab3dbd99652b71934a94cd1e9801650fe5e72f4dd1de1718dd4c1'
             'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14'
             '205062adbbd48d6622341e316e14a5496f73696385a3ed5cda7a89d3e7d2861d')
 
