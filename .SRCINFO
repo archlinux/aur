@@ -1,12 +1,12 @@
 pkgbase = cargo-brief
 	pkgdesc = Display a brief summary of cargo dependencies.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sanpii/cargo-brief
 	arch = x86_64
 	license = MIT
 	depends = cargo
-	source = 0.1.0.tar.gz::https://crates.io/api/v1/crates/cargo-brief/0.1.0/download
+	source = 0.2.0.tar.gz::https://crates.io/api/v1/crates/cargo-brief/0.2.0/download
+	sha256sums = 47bd62ecd5f9f550daa2bd13e40197b477b569ed46605bf08d4396aa67ea4321
 
 pkgname = cargo-brief
-

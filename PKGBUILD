@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-brief
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Display a brief summary of cargo dependencies."
 url="https://github.com/sanpii/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("MIT")
 depends=("cargo")
 source=("$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('1d8850f4018f3be245474b0197f627262dfdce69c1c012ca76abf2364599cc6e')
+sha256sums=('47bd62ecd5f9f550daa2bd13e40197b477b569ed46605bf08d4396aa67ea4321')
 
 build()
 {
