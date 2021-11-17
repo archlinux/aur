@@ -3,7 +3,7 @@
 # Contributor: Vincent Bernardoff <vb at luminar dot eu dot org>
 
 pkgname=clingo
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('i686' 'x86_64' 'pentium4')
@@ -14,10 +14,6 @@ makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
 conflicts=('clasp')
 source=("git+https://github.com/potassco/clingo#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-prepare() {
-  sed '/#include <xlocale.h>/d' -i "${srcdir}"/clingo/clasp/libpotassco/src/string_convert.cpp
-}
 
 build() {
   mkdir -p ${srcdir}/build
