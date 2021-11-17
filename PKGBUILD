@@ -4,7 +4,7 @@
 
 o_pkgname=kwallet
 pkgname=kwallet-secrets
-pkgver=5.87.0
+pkgver=5.88.0
 pkgrel=1
 pkgdesc='Secure and unified container for user passwords. Patched for org.freedesktop.secrets support'
 arch=(x86_64)
@@ -17,15 +17,15 @@ provides=(org.freedesktop.secrets kwallet)
 conflicts=(kwallet)
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$o_pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/frameworks/kwallet/-/commit/00607e805fd5b79a5551670836a217e90ff400ee.patch)
-sha256sums=('59f13a6c9e0933e3e54c62a77717aa182be573f890a09e34369043e3208f58a8'
+        https://invent.kde.org/frameworks/kwallet/-/merge_requests/11.patch)
+sha256sums=('4ea69018f85f44472e77a76a6f5af180e60702f7e72a8e34f792d55729e255b8'
             'SKIP'
-            '13913f7ddc4e2cdf061db81c115c2eee8fa4edac13448b58f3455f3538307ece')
+            '1961e04942c948d8e70436c1401d8239e182582f67cbcc1e062d229ecbcbb282')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 prepare() {
     cd "$o_pkgname-$pkgver"
-    patch -Np1 -i "${srcdir}/00607e805fd5b79a5551670836a217e90ff400ee.patch"
+    patch -Np1 -i "${srcdir}/11.patch"
 }
 
 build() {
