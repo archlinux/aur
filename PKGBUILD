@@ -3,7 +3,7 @@
 
 pkgname=fofix
 pkgver=3.123
-pkgrel=1
+pkgrel=2
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire"
 url="https://fofix.org"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
   'python2-pygame'
   'python2-opengl'
   'python2-numpy'
-  'python2-imaging'
+  'python2-pillow'
   'python2-pysqlite'
   'libffi'
 )
