@@ -5,21 +5,19 @@ pkgver="0.8.2"
 pkgrel="1"
 pkgdesc="Ayatana system sound indicator"
 arch=("i686" "x86_64" "pentium4")
-url="https://github.com/AyatanaIndicators"
+url="https://github.com/AyatanaIndicators/ayatana-indicator-sound"
 license=("GPL3")
-depends=("pulseaudio" "libayatana-indicator" "glib2" "accountsservice" "dconf" "libnotify" "libgee")
-makedepends=("cmake" "cmake-extras" "dbus" "accountsservice" "mate-common" "gsettings-desktop-schemas" "intltool" "vala" "glib2" "libpulse" "libnotify" "libgee" "libxml2" "pulseaudio" "qt5-base" "qt5-declarative" "systemd" "gobject-introspection")
-optdepends=("pavucontrol" "mate-media")
+makedepends=("cmake-extras" "intltool" "vala" "systemd" "glib2" "libxml2" "gobject-introspection")
+depends=("accountsservice" "libpulse" "libgee" "libnotify" "libayatana-common>=0.9.5")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("4aa0f1b859eedabd014b305b52c31458")
-options=("!emptydirs")
 
 build()
 {
     cd ${pkgname}-${pkgver}
     mkdir build
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_LOCALSTATEDIR=/var -Denable_tests=OFF
+    cmake ..
     make
 }
 
