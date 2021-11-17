@@ -1,0 +1,18 @@
+pkgbase = signal-rs-git
+	pkgdesc = A Rust-based Signal app with a QML/Kirigami frontend.
+	pkgver = r76.fe8c162
+	pkgrel = 1
+	url = https://sr.ht/~nicohman/signal-rs/
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo-nightly
+	makedepends = qt5-webengine
+	makedepends = kirigami2
+	depends = qt5-webengine
+	provides = signal-rs
+	source = git+https://git.sr.ht/~nicohman/signal-rs
+	sha256sums = SKIP
+
+pkgname = signal-rs-git
