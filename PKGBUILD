@@ -6,7 +6,7 @@ pkgname=(
   'sqlboiler-psql'
   # TODO: add mysql split package
 )
-pkgver=4.7.1
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="Generate a Go ORM tailored to your database schema"
 arch=('x86_64')
@@ -15,8 +15,8 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('84064a3c5fa30a2d2837fd8734598ab7645a54a0fac07de8b468f421ba7c40879228777c06faf8700f62f92cc462b308a0d911a9850033fb60fba511e553087a')
-b2sums=('55be4e4d20a939a95cc1266698881d103a96305de87506b0cff1296ebc046bf068c86ad9e803dd0094677ca56a0de8f1143fc4fdd33d8e2b6da5661803be0d1d')
+sha512sums=('8a90bd1ae5bc352cc1606f17bc92f05b5355173b7b5744da30edc55bd951c025f27d96d36683ffb76f69ed2fea77e0921ed591304319fb1f67786c2bdf353f81')
+b2sums=('f8c3f8664e330ff80eee79443056be7b7ed06c23dfa2f40612c21c5b0ebb9566664838aa432fb66e9662a93ccd83bcafd545a888eec9ca2b7172c7a21a63a4eb')
 
 prepare() {
   cd "$pkgbase-$pkgver"
