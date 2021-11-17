@@ -9,7 +9,7 @@ clean:
 
 build:
 	makepkg
-	mksrcinfo
+	makepkg --printsrcinfo > .SRCINFO
 
 release: commit push
 
