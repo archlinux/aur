@@ -1,16 +1,16 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=ecryptfs-simple
 pkgver=2017
-pkgrel=2
+pkgrel=3
 pkgdesc='A very simple utility for working with eCryptfs.'
 arch=(i686 x86_64)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/ecryptfs-simple"
+url="https://xyne.mirrorrepo.com/projects/ecryptfs-simple"
 depends=(ecryptfs-utils util-linux)
 makedepends=(cmake)
 source=(
-  http://xyne.archlinux.ca/projects/ecryptfs-simple/src/ecryptfs-simple-2017.tar.xz
-  http://xyne.archlinux.ca/projects/ecryptfs-simple/src/ecryptfs-simple-2017.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/ecryptfs-simple/src/ecryptfs-simple-2017.tar.xz
+  https://xyne.mirrorrepo.com/projects/ecryptfs-simple/src/ecryptfs-simple-2017.tar.xz.sig
 )
 sha512sums=(
   2144a09227c28e1dc66eafb747f73c85f22a9da8a45bf6bf92af0b670ae8148387f4ef0fc25b9bdd385fd47ffb76169adb69556cec967b84cc37c1e092495ef2
