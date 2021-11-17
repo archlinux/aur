@@ -52,26 +52,28 @@ _override_max_perf=
 
 pkgname=nvidia-tweaks
 pkgdesc="A collection of tweaks and improvements to the NVIDIA driver"
-pkgver=470
+pkgver=495
 pkgrel=1
 license=('custom')
 url='https://www.nvidia.com/'
 depends=('NVIDIA-MODULE' 'nvidia-utils')
 arch=('any')
-source=('nvidia-tweaks.hook'
+source=('nvidia.conf'
+        'nvidia-tweaks.hook'
         'nvidia-patch.install'
         'nvidia-patch.remove'
         '60-nvidia.rules'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch-fbc.sh'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh')
-sha256sums=('a69ab5f55ce0ccc15edc434b5ab625b3303ba3bd77f64a065668f985d9167cc0'
+sha256sums=('038b1170ac750b0dbcd59f2758e8fa12bc807e87b39c079c0396e33d0f83b37f'
+            'a69ab5f55ce0ccc15edc434b5ab625b3303ba3bd77f64a065668f985d9167cc0'
             '81464bfeda86b9683a6f739a1cec1a2fe37717af5480671be70fe43f51fba420'
             'b4bde9eecd90fc9498a8d47c7bb7edfe877ae64ea9e7069c405710a76c749144'
             'c8fd71e3885b18c88c800cc9693112846d1889a008ae7dc6cbc9bb6fadd67ec6'
             'SKIP'
             'SKIP')
 
-package() {
+prepare() {
     registrydwords='EnableBrightnessControl=1'
     if [ ! -z $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
         echo "You have selected the powermizer scheme: $_powermizer_scheme"
@@ -101,22 +103,25 @@ package() {
         fi
     fi
 
-    install -D -m644 <(printf '%s\n%s\n' "options nvidia NVreg_EnablePCIeGen3=1 NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_EnableStreamMemOPs=1 NVreg_RegistryDwords=${registrydwords}" "options nvidia_drm modeset=1") \
-        "${pkgdir}/usr/lib/modprobe.d/90-${pkgname}.conf"
-    install -D -m644 nvidia-tweaks.hook -t "${pkgdir}/usr/share/libalpm/hooks"
-    install -D -m755 patch.sh "${pkgdir}/usr/bin/nvidia-patch-nvenc"
-    install -D -m755 patch-fbc.sh "${pkgdir}/usr/bin/nvidia-patch-fbc"
+    sed -i "s/__REGISTRYDWORDS/\"${registrydwords}\"/" "${srcdir}/nvidia.conf"
+}
 
-    if [[ ! -z $_nvidia_patch ]]; then
-      install -D -m644 nvidia-patch.install "${pkgdir}/usr/share/libalpm/hooks/nvidia-patch-install.hook"
-      install -D -m644 nvidia-patch.remove "${pkgdir}/usr/share/libalpm/hooks/nvidia-patch-remove.hook"
+package() {
+    install -Dm644 nvidia.conf "${pkgdir}/usr/lib/modprobe.d/90-${pkgname}.conf"
+    install -Dm644 nvidia-tweaks.hook -t "${pkgdir}/usr/share/libalpm/hooks"
+    install -Dm755 patch.sh "${pkgdir}/usr/bin/nvidia-patch-nvenc"
+    install -Dm755 patch-fbc.sh "${pkgdir}/usr/bin/nvidia-patch-fbc"
+
+    if [ ! -z $_nvidia_patch ]; then
+      install -Dm644 nvidia-patch.install "${pkgdir}/usr/share/libalpm/hooks/nvidia-patch-install.hook"
+      install -Dm644 nvidia-patch.remove "${pkgdir}/usr/share/libalpm/hooks/nvidia-patch-remove.hook"
     fi
 
     # Potentially fixes the loading of the nvidia-uvm module
-    install -D -m644 <(printf '%s' 'nvidia-uvm') \
+    install -Dm644 <(printf '%s' 'nvidia-uvm') \
         "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 
     # udev rules for node presence and runtime PM
     # Fixes https://github.com/HansKristian-Work/vkd3d-proton/issues/711
-    install -D -m644 60-nvidia.rules "${pkgdir}/usr/lib/udev/rules.d/71-nvidia.rules"
+    install -Dm644 60-nvidia.rules "${pkgdir}/usr/lib/udev/rules.d/71-nvidia.rules"
 }
