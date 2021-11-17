@@ -10,10 +10,10 @@ provides=('spwn')
 conflicts=('spwn')
 source=('https://github.com/Deltara3/spwn-bin-aur/releases/download/v0.7/spwn-bin.tar.gz')
 sha256sums=('5c56458474f86af6e513877f54ae84cab350cc97540bbf3995305c1bc1108757')
-install=spwn-bin.install
 
 package() {
 	install -Dm755 spwn ${pkgdir}/usr/bin/spwn-bin/spwn
 	cp -r libraries/ ${pkgdir}/usr/bin/spwn-bin/libraries/
 	chmod -R 755 ${pkgdir}/usr/bin/spwn-bin/libraries/
+    ln -s /usr/bin/spwn-bin/spwn /usr/bin/spwn
 }
