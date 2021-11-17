@@ -3,12 +3,12 @@
 pkgname=apple-music-electron
 _pkgname=Apple-Music-Electron
 pkgver=2.5.0
-pkgrel=1
-pkgdesc="Electron wrapper for Apple Music based on Electron 14.0.0. Built from the tar.gz archive made on releases. "
-arch=("aarch64" "armv7h" "i686" "x86_64")
-url="https://github.com/Apple-Music-Electron/${_pkgname}"
+pkgrel=2
+pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Builds from most recently release on GitHub."
+arch=("armv7h" "i686" "x86_64")
+url="https://github.com/Apple-Music-Electron/${_pkgname}.git"
 license=("MIT")
-depends=('libxss')
+depends=()
 makedepends=('yarn' 'git' 'npm')
 provides=(pkgname)
 conflicts=("${pkgname}-git")
@@ -25,9 +25,7 @@ build() {
     yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
 
     echo "Building : Install Build Dependencies | [Build] | Done"
-    if [[ ${CARCH} == "aarch64" ]]; then
-        yarn electron-builder build --arm64 --linux dir
-    elif [[ ${CARCH} == "armv7h" ]]; then
+    if [[ ${CARCH} == "armv7h" ]]; then
         yarn electron-builder build --armv7l --linux dir
     elif [[ ${CARCH} == "i686" ]]; then
         yarn electron-builder build --ia32 --linux dir
