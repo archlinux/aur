@@ -1,7 +1,7 @@
 pkgbase = fluent-decoration-git
 	pkgdesc = Fluent-ish window decoration theme for KWin.
 	pkgver = r22.3251803
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SuNNjek/fluent-decoration
 	arch = x86_64
 	license = GPL
