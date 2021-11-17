@@ -1,6 +1,6 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 pkgname=alibuild
-pkgver=1.9.1
+pkgver=1.9.4
 pkgrel=1
 pkgdesc='A simple build tool for ALICE software at CERN'
 arch=(i686 x86_64)
@@ -11,14 +11,15 @@ license=(GPL3)
 # In theory, gzip is optional if we have pigz, but that's complicated for a PKGBUILD.
 depends=(coreutils util-linux bash tar gzip git python python-requests python-yaml python-distro)
 optdepends=('pigz: alternative, faster gzip implementation'
-            'rsync: support for rsync remote stores'
+            'rsync: support for rsync:// remote stores'
             'docker: for building inside Docker containers'
-            's3cmd: support for remote stores on S3'
-            'curl: support for remote stores on S3'
-            'findutils: support for remote stores on S3'
-            'awk: support for remote stores on S3')
+            's3cmd: support for s3:// remote stores'
+            'curl: support for s3:// remote stores'
+            'findutils: support for s3:// remote stores'
+            'awk: support for s3:// remote stores'
+            'python-boto3: support for b3:// remote stores')
 source=("https://github.com/alisw/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('225199266120ca690e4711fb81149a0581be9cac8a15a81c5ab3f2b3f5dcb571')
+sha256sums=('cd321dc361d3086818cb1087566cee3aade2a1e503df68935bb60dd8e193ded0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
