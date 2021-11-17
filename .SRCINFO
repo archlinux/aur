@@ -1,0 +1,17 @@
+pkgbase = binocle-git
+	pkgdesc = A graphical tool to visualize binary data (git)
+	pkgver = 0.2.0.r4.g845890a
+	pkgrel = 1
+	url = https://github.com/sharkdp/binocle
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	provides = binocle
+	conflicts = binocle
+	source = git+https://github.com/sharkdp/binocle
+	sha256sums = SKIP
+
+pkgname = binocle-git
