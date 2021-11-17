@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=('otf-yrsa' 'ttf-yrsa')
 pkgbase=yrsa-font
-pkgver=2.003
+pkgver=2.004
 pkgrel=1
 pkgdesc='Serif font for continuous reading on the web'
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/rosettatype/yrsa-rasa"
 license=('OFL')
 groups=('yrsa-rasa-fonts')
 source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/Yrsa-fonts-v$pkgver.zip")
-sha256sums=('778f3fd7fc774b2da3bd0960fff47dfa5d71038073300076ffafedbc1dd2ad2f')
+sha256sums=('79ea96d675dd84583e989dda1f403ed029816c2cb4f8c3ed08fe9fbff883d2f1')
 
 _package() {
 	cd "Yrsa-fonts-v$pkgver"
