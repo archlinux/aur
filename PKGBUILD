@@ -8,7 +8,7 @@
 
 pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
-pkgver=12.0.0_r188792.gf874a13ca38
+pkgver=12.0.0_r189756.g2c2148d8c14
 _majorver=${pkgver%%.*}
 _isl_link=https://mirrors.slackware.com/slackware/slackware64-current/source/l/isl
 _isl=$(curl -s "$_isl_link/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/\.mirrorlist.*//')
@@ -17,7 +17,7 @@ pkgdesc='The GNU Compiler Collection'
 arch=($CARCH)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-makedepends=(git binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git libxcrypt)
+makedepends=(git binutils libmpc gcc-ada doxygen python git libxcrypt)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
@@ -143,6 +143,7 @@ package_gcc-libs-git() {
   options+=(!strip)
   provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so libgphobos.so
             libubsan.so libasan.so libtsan.so liblsan.so)
+  conflicts=(gcc-libs)
   replaces=(gcc-multilib-git libgphobos-git)
 
   cd gcc-build/$CHOST
