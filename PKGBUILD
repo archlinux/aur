@@ -7,7 +7,7 @@
 
 pkgname='warfork-bin'
 pkgver=2021.08.03
-pkgrel=1
+pkgrel=2
 _relver=7085995
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine (official binary)'
 url='https://www.warfork.com/'
@@ -36,12 +36,12 @@ prepare() {
 
 package() {
 
-  install -Dm755 fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/wf_server.x86_64 "${pkgdir}/opt/warfork/wf_server.x86_64"
-  install -Dm755 fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/wftv_server.x86_64 "${pkgdir}/opt/warfork/wftv_server.x86_64"
-  install -Dm755 fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/warfork.x86_64 "${pkgdir}/opt/warfork/warfork.x86_64"
-  install -Dm755 fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/warfork.x86_64 "${pkgdir}/opt/warfork/warfork"
+  install -Dm755 fvi/fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/wf_server.x86_64 "${pkgdir}/opt/warfork/wf_server.x86_64"
+  install -Dm755 fvi/fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/wftv_server.x86_64 "${pkgdir}/opt/warfork/wftv_server.x86_64"
+  install -Dm755 fvi/fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/warfork.x86_64 "${pkgdir}/opt/warfork/warfork.x86_64"
+  install -Dm755 fvi/fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/warfork.x86_64 "${pkgdir}/opt/warfork/warfork"
 
-  cp -a fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/{basewf,libs} "${pkgdir}/opt/warfork/"
+  cp -a fvi/fvi-launcher/applications/warfork/Warfork.app/Contents/Resources/{basewf,libs} "${pkgdir}/opt/warfork/"
 
   find "${pkgdir}/opt/warfork"/{basewf,libs} -type d | xargs chmod 755
   find "${pkgdir}/opt/warfork"/{basewf,libs} -type f | xargs chmod 644

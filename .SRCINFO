@@ -1,7 +1,7 @@
 pkgbase = warfork-bin
 	pkgdesc = Free online multiplayer competitive FPS based on the Qfusion engine (official binary)
 	pkgver = 2021.08.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.warfork.com/
 	arch = x86_64
 	license = GPL2
