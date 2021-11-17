@@ -1,5 +1,5 @@
 pkgname=opensaml
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Shibboleth Project's SAML 2 implementation in C++"
 url="https://wiki.shibboleth.net/confluence/display/OpenSAML/Home"
@@ -17,7 +17,7 @@ makedepends=(
 )
 source=("https://shibboleth.net/downloads/c++-opensaml/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://shibboleth.net/downloads/c++-opensaml/$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('cd3716a91b9affe72ee5c3116990081f44c7e6b08e3a766c2a8811727475efbe'
+sha256sums=('a54ffb2a5831902678909c14aa48b40d35e03e8852fd85aba646c9f5b5e32ac5'
             'SKIP')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 

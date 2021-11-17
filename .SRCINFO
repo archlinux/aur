@@ -1,6 +1,6 @@
 pkgbase = opensaml
 	pkgdesc = Shibboleth Project's SAML 2 implementation in C++
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://wiki.shibboleth.net/confluence/display/OpenSAML/Home
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = opensaml
 	depends = xerces-c
 	depends = xml-security-c
 	depends = xmltooling
-	source = https://shibboleth.net/downloads/c++-opensaml/3.2.0/opensaml-3.2.0.tar.gz
-	source = https://shibboleth.net/downloads/c++-opensaml/3.2.0/opensaml-3.2.0.tar.gz.asc
+	source = https://shibboleth.net/downloads/c++-opensaml/3.2.1/opensaml-3.2.1.tar.gz
+	source = https://shibboleth.net/downloads/c++-opensaml/3.2.1/opensaml-3.2.1.tar.gz.asc
 	validpgpkeys = DCAA15007BED9DE690CD9523378B845402277962
-	sha256sums = cd3716a91b9affe72ee5c3116990081f44c7e6b08e3a766c2a8811727475efbe
+	sha256sums = a54ffb2a5831902678909c14aa48b40d35e03e8852fd85aba646c9f5b5e32ac5
 	sha256sums = SKIP
 
 pkgname = opensaml
