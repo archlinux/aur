@@ -1,16 +1,16 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=quickserve
 pkgver=2018
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple HTTP server for quickly sharing files.'
 arch=(any)
 license=(GPL)
-url="https://xyne.archlinux.ca/projects/quickserve"
+url="https://xyne.mirrorrepo.com/projects/quickserve"
 depends=(python3-threaded_servers)
 optdepends=('avahi: Avahi support' 'python-dbus: Avahi support' 'python-gobject: Avahi support')
 source=(
-  https://xyne.archlinux.ca/projects/quickserve/src/quickserve-2018.tar.xz
-  https://xyne.archlinux.ca/projects/quickserve/src/quickserve-2018.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/quickserve/src/quickserve-2018.tar.xz
+  https://xyne.mirrorrepo.com/projects/quickserve/src/quickserve-2018.tar.xz.sig
 )
 sha512sums=(
   8475377db2cca19509e5b34033f1c819b238c4bf984870e6abf1eeb63fadc4259f68d19fce23debb91c657a9efc3b531e9adf92858f7b4efd16bd2176b704448
