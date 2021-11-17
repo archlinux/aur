@@ -1,15 +1,15 @@
 pkgbase = bauerbill
 	pkgdesc = Extension of Powerpill with AUR and ABS support.
 	pkgver = 2020
-	pkgrel = 2
-	url = https://xyne.archlinux.ca/projects/bauerbill
+	pkgrel = 3
+	url = https://xyne.mirrorrepo.com/projects/bauerbill
 	arch = any
 	license = GPL
 	depends = pacman>=5.2.0
 	depends = pbget
 	depends = pm2ml
 	depends = powerpill
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = python3
 	depends = python3-aur
 	depends = python3-colorsysplus
@@ -17,8 +17,8 @@ pkgbase = bauerbill
 	depends = python3-xcgf
 	depends = python3-xcpf
 	backup = etc/bauerbill/bauerbill.json
-	source = https://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2020.tar.xz
-	source = https://xyne.archlinux.ca/projects/bauerbill/src/bauerbill-2020.tar.xz.sig
+	source = https://xyne.mirrorrepo.com/projects/bauerbill/src/bauerbill-2020.tar.xz
+	source = https://xyne.mirrorrepo.com/projects/bauerbill/src/bauerbill-2020.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 45bdf1af372a3a52d5afb6d293a57320
 	md5sums = c4a802f4295792db7b5a19b9a73b77e5
@@ -26,4 +26,3 @@ pkgbase = bauerbill
 	sha512sums = 2e150190fc568342936d7ecbc4b2115dbd183803cc67a6059950e407493539cc40e5e749906d26aa4cefe412d739df5a07b5d15da42692c42a0d1c574bfcf9f1
 
 pkgname = bauerbill
-
