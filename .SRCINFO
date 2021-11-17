@@ -1,6 +1,6 @@
 pkgbase = autodock-vina
 	pkgdesc = A tool for drug discovery, molecular docking and virtual screening
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/ccsb-scripps/AutoDock-Vina
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = autodock-vina
 	license = Apache 2.0
 	makedepends = boost
 	depends = boost-libs
-	source = autodock-vina-1.2.2.tar.gz::https://github.com/ccsb-scripps/AutoDock-Vina/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = b9c28df478f90d64dbbb5f4a53972bddffffb017b7bb58581a1a0034fff1b400
+	source = autodock-vina-1.2.3.tar.gz::https://github.com/ccsb-scripps/AutoDock-Vina/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 22f85b2e770b6acc363429153b9551f56e0a0d88d25f747a40d2f55a263608e0
 
 pkgname = autodock-vina
