@@ -1,15 +1,15 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=fehbg-mgr
 pkgver=2013.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Save and restore named fehbg states.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/fehbg-mgr"
+url="https://xyne.mirrorrepo.com/projects/fehbg-mgr"
 depends=(bash-statemgr)
 source=(
-  http://xyne.archlinux.ca/projects/fehbg-mgr/src/fehbg-mgr-2013.7.10.tar.xz
-  http://xyne.archlinux.ca/projects/fehbg-mgr/src/fehbg-mgr-2013.7.10.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/fehbg-mgr/src/fehbg-mgr-2013.7.10.tar.xz
+  https://xyne.mirrorrepo.com/projects/fehbg-mgr/src/fehbg-mgr-2013.7.10.tar.xz.sig
 )
 sha512sums=(
   3e3a298707c952ce0274b63b0e7551818d8ef4c1e1c624f03d9f78dbb41477c424aa8185ff2dcc3ff5f4253a5f426d533af586876a182bbdb799d315dc720c18
