@@ -1,16 +1,16 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=tiv
 pkgver=2015
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple image viewer that displays images directly in the terminal.'
 arch=(any)
 license=(GPL)
-url="http://xyne.archlinux.ca/projects/tiv"
+url="https://xyne.mirrorrepo.com/projects/tiv"
 depends=(imagemagick perl)
 optdepends=('jp2a: ascii character output')
 source=(
-  http://xyne.archlinux.ca/projects/tiv/src/tiv-2015.tar.xz
-  http://xyne.archlinux.ca/projects/tiv/src/tiv-2015.tar.xz.sig
+  https://xyne.mirrorrepo.com/projects/tiv/src/tiv-2015.tar.xz
+  https://xyne.mirrorrepo.com/projects/tiv/src/tiv-2015.tar.xz.sig
 )
 sha512sums=(
   58efc74fb20221c1b69dc0589bbbd827bbdf900300284221a32a71b0cf39971d37b427edf94eb23a533c9ada9cf72fc58e72e45bef420195e181eda27dafa7c6
