@@ -1,0 +1,9 @@
+# Emacs backups
+*~
+.\#*
+
+# packaging files
+/gnu-c-manual-*.pkg*
+/gnu-c-manual-*.tar.gz
+/pkg/
+/src/
