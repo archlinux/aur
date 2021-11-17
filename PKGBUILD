@@ -20,7 +20,6 @@ arch=('i686'
 source=()
 
 md5sums=(
-    'SKIP'
 )
 
 pkgver() {
