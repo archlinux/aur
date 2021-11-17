@@ -1,4 +1,4 @@
-# Maintainer slbtty <shenlebantongying@gmail.com>
+# Maintainer shenlebantongying <shenlebantongying@gmail.com>
 
 _pkgname=ChezScheme
 pkgname=chez-scheme-racket-git
@@ -17,11 +17,11 @@ arch=('i686'
       'armv6h'
       'aarch64')
 
-_source=(
+source=(
     "git+https://github.com/racket/ChezScheme.git"
 )
 
-_md5sums=(
+md5sums=(
     'SKIP'
 )
 
