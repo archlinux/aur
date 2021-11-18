@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_3.2.0.2224.8a19d7e3
+pkgver=1.2_4.1.0.3490.696ba0c2
 pkgrel=1
 pkgdesc='nDPI as netfilter extension.'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  git checkout flow_info-3.2
+  git checkout flow_info-4
   ./autogen.sh
   cd "src/lib"
   make ndpi_network_list.c.inc
