@@ -1,7 +1,7 @@
 # Maintainer: Dylan Whichard <dylan@whichard.com>
 _name=stripe
 pkgname=python-stripe
-pkgver=2.55.2
+pkgver=2.63.0
 pkgrel=1
 pkgdesc='Stripe python bindings'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.4')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e32c68194a47522a10945eb893218e5cb5ee65e3a3c2c4df7efca117a6bf1902')
+sha256sums=('816c935e31d82737a9e4362c662e8702bdf9000ea1bd36882cd4cbd23eb81ae1')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
