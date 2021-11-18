@@ -1,6 +1,6 @@
 pkgbase = distribyted-bin
 	pkgdesc = Torrent client with on-demand file downloading as a filesystem
-	pkgver = 0.7.0.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/distribyted/distribyted
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = distribyted-bin
 	depends = gcc-libs
 	provides = distribyted
 	conflicts = distribyted
-	source = https://github.com/distribyted/distribyted/releases/download/v0.7.0.1/distribyted-v0.7.0.1-linux-amd64
-	sha256sums = edd6485275ac70b8ef8e3b91c2918e28c35310c3a4e0befd44d47a091626e6ff
+	source = https://github.com/distribyted/distribyted/releases/download/v0.7.1/distribyted-v0.7.1-linux-amd64
+	sha256sums = ff73f4dc2f7831e9bcb26f0de9c812a35c4a45e3707f96d81775d6cb8066ce17
 
 pkgname = distribyted-bin
