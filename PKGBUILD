@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-colorsysplus
 pkgver=2021.1
 pkgrel=2
 pkgdesc='An extension of the standard colorsys module with support for CMYK, terminal colors, ANSI and more.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python3-colorsysplus"
+url="https://xyne.dev/projects/python3-colorsysplus"
 depends=(python3)
 source=(
-  https://xyne.mirrorrepo.com/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz
-  https://xyne.mirrorrepo.com/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz.sig
+  https://xyne.dev/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz
+  https://xyne.dev/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz.sig
 )
 sha512sums=(
   d9e46701c79c85f0c83101db049ce39b0de21f99807dae5616ca525b272a05bca628cf6290a9d9899446f73b7cd13c2c75c212e9a819bf4db09dd71f283f46d2
