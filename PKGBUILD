@@ -1,5 +1,6 @@
+# Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+
 pkgname=jd-gui
 pkgver=1.6.6
 pkgrel=1
@@ -15,12 +16,16 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/java-decompiler/jd-gui/archive/v$pkgver.tar.gz"
   "jd-gui"
   "jd-gui.desktop"
-  "build-no-nebula.ospackage.patch"
+  "gradle-7-build.patch"
 )
+b2sums=('8615221af81682a8f6f8143ef6b639842964a402fa6a703379d02aef993960891ed2fc1e49b7ac71ae9f556068c48a8cf75e67cf40ba82853239bd80a7b0720f'
+        'df30247b24a2b1b65f2f9d7a9577e847349edb1e6f67fd5021bf1ce0cc4d6741d1df52b026a0dd2365c1e3138daad700dd495d362253b2f9259d0cc4556ddcae'
+        '351842e021620df3febf7cb5e6e6a97afd2d32b994ed6bf243020bc155acea64ee1751c4f10cf4bc9f1704114648aafcd5eccf3a3dc17d4c01e7aa18960c1dc5'
+        '9c56f2bd3ac89c6a5acb70b3a37a4b24277cf0a4487ed9fcf95c3833e5b8bae87f61da6a147e12f4ffbb3dae371d68803a97d09b088c7f807ffc1157d47a15b8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < "$srcdir/build-no-nebula.ospackage.patch"
+  patch -p1 < "$srcdir/gradle-7-build.patch"
 }
 
 build() {
@@ -37,7 +42,4 @@ package() {
   install -Dm644  "$srcdir/$pkgname-$pkgver/src/linux/resources/jd_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
-sha512sums=('325491638a66ccffa51dd989a1f09711c47da8e356d05141d35368b3a9acdb8e6dfdc2a5f422c91c4c6d5f50d214901c64d8c23e625dfd9278b0555ce1aa9214'
-            'd073054480e06c9f124605bdbc5cee775e067115592f46bbcea2650d363b81f453b8e1a5e818a685eff7ba166631ebc79d14dc72e2d1dfae102f4cdf05188933'
-            '9ddb8521c1791f5d3251f012e30b7d6aaa48b509e02af628f3b8a90fb6ba176de3f79fbfbec316c86c1594ac142ca4d85bcffff7ea8f0fba6f926ea78cd1f81d'
-            '2b16e4672ad094d780146849424240a5fabdec06e19e46424a402a70b9deae4ca44ffcbc38f3264122010e72f4869d4009b92a862cedc547f9fbe5e4cd6b2b7e')
+# vim:set ts=2 sw=2 et:
