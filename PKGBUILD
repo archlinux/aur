@@ -1,17 +1,17 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=ottools
 pkgver=2013.3
 pkgrel=2
 pkgdesc='Tools for encrypting files with one-time pads.'
 arch=(i686 x86_64)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/ottools"
+url="https://xyne.dev/projects/ottools"
 replaces=(otsplit)
 conflicts=(otsplit)
 provides=(otsplit)
 source=(
-  https://xyne.mirrorrepo.com/projects/ottools/src/ottools-2013.3.tar.xz
-  https://xyne.mirrorrepo.com/projects/ottools/src/ottools-2013.3.tar.xz.sig
+  https://xyne.dev/projects/ottools/src/ottools-2013.3.tar.xz
+  https://xyne.dev/projects/ottools/src/ottools-2013.3.tar.xz.sig
 )
 sha512sums=(
   cdbce6f96072ed6bca9aaceb7198bb4a455be9e72e657cbe6965b23890178a0f32059fba22d3975a9ec52db44fab2feb134fef6326189118c04773ae366c6ab0
