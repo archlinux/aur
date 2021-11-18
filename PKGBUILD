@@ -1,7 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer since 18.11.2021:  Aleksey Nikiforov <a at nikif dot net>
 
 pkgname=toxiproxy-cli-bin
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=2
 pkgdesc='A TCP proxy to simulate network and system conditions for chaos and resiliency testing (CLI client)'
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('MIT')
 provides=('toxiproxy-cli')
 source=("${pkgname}-${pkgver}::https://github.com/Shopify/toxiproxy/releases/download/v${pkgver}/toxiproxy-cli-linux-amd64"
         'LICENSE::https://github.com/Shopify/toxiproxy/raw/master/LICENSE')
-sha256sums=('451abcd548b83e5a73f2ac3b2c822874b29ff9ad3536c65e86d26b64b4283a4d'
+sha256sums=('94fb38333d8ab7092df09e58390c4cc20d0bdfd3d9d445ad5fbc6142a9fa41cd'
             'c305a1ef46fe6a38b357a943945191184df3cdef9ed833e171c5d811d560ad8f')
 
 package() {
