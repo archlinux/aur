@@ -1,0 +1,22 @@
+pkgbase = koishipro-bin
+	pkgdesc = KoishiPro 是一个 YGOPro 的衍生项目。KoishiPro 比 YGOPro 具有更多的扩展功能和游戏体验。
+	pkgver = Desire
+	pkgrel = 1
+	url = https://koishi.pro/
+	arch = any
+	license = GPL2
+	makedepends = libarchive
+	depends = mono
+	provides = koishipro-bin
+	conflicts = koishipro-bin
+	conflicts = koishipro
+	conflicts = koishipro-bin-git
+	conflicts = ygopro
+	conflicts = ygopro-bin
+	noextract = KoishiPro-master-linux-zh-CN.tar.gz
+	options = !strip
+	backup = opt/koishipro/system.conf
+	source = https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz
+	sha256sums = 3334bf21d0a981ee4eceb94c8cf9a8385db09ac649ca2a06cf9c62cedd482976
+
+pkgname = koishipro-bin
