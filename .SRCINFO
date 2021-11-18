@@ -1,0 +1,17 @@
+pkgbase = kloncentaur-git
+	pkgdesc = A digital emulation of the Klon Centaur guitar pedal.
+	pkgver = v1.4.0.r4.gf3bb633
+	pkgrel = 1
+	url = https://github.com/jatinchowdhury18/KlonCentaur
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = gtk2
+	depends = webkit2gtk
+	depends = freetype2
+	source = kloncentaur-git::git+https://github.com/jatinchowdhury18/KlonCentaur.git
+	sha256sums = SKIP
+
+pkgname = kloncentaur-git
