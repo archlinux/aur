@@ -1,14 +1,13 @@
 pkgbase = pacom
 	pkgdesc = Pacom: the Pacman companion
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/kriansa/pacom
 	arch = any
 	license = Apache
 	depends = jq
 	depends = curl
-	source = https://github.com/kriansa/pacom/archive/v1.0.4.tar.gz
-	sha256sums = 86ee5988d493fc666435ab669785c1a0dcb045f2e0f3bc8fd5153447db917d3d
+	source = https://github.com/kriansa/pacom/archive/v1.0.5.tar.gz
+	sha256sums = f5732ed777e3e8a3f94404f4a94576f55bc6d70e60bc6d36a0dbc9a4582a3595
 
 pkgname = pacom
-
