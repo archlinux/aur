@@ -7,7 +7,7 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2021.5
+pkgver=2021.6
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
@@ -27,8 +27,8 @@ sha256sums=('SKIP'
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
-             )
               # David Lönnhager (code signing) <david.l@mullvad.net>
+              )
 
 prepare() {
   cd "$srcdir/mullvadvpn-app"
