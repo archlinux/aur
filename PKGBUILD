@@ -3,8 +3,8 @@
 
 pkgname=pcloudcc-git
 _pkgname=${pkgname%-*}
-pkgver=r1464.2ecb7c9
-pkgrel=4
+pkgver=r1470.331003a
+pkgrel=1
 pkgdesc="A simple linux console client for pCloud cloud storage."
 provides=("pcloudcc")
 conflicts=("pcloudcc")
