@@ -4,7 +4,8 @@ pkgbase = 0ad-boongui
 	pkgrel = 1
 	url = https://github.com/LangLangBart/boonGUI
 	arch = any
-	license = GPL2
+	license = MIT,
+	license = CCPL
 	makedepends = unzip
 	noextract = attachment.php?id=58107&key=24460c0ed73c061552e2f5af99777e5b
 	source = https://wildfiregames.com/forum/applications/core/interface/file/attachment.php?id=58107&key=24460c0ed73c061552e2f5af99777e5b
