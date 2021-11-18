@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 # Contributor: neverix <nev at ateverix dot io>
 # Contributor: Stepan Shabalin <stomperhomp at gmail dot com>
