@@ -2,7 +2,7 @@
 
 pkgname=runelite-launcher-appimage
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source Old School RuneScape client. (AppImage Launcher)'
 arch=('x86_64')
 license=('BSD')
