@@ -3,7 +3,7 @@
 pkgname=duckypad-profile-autoswitcher-git
 _pkgname=duckyPad-profile-autoswitcher
 _sname=duckyPad-autoswitcher
-pkgver=r55.a5ff251
+pkgver=r56.5c4688c
 pkgrel=1
 pkgdesc="App allowing duckyPad to switch profiles automatically based on active window (git)"
 arch=('any')
@@ -13,7 +13,8 @@ provides=('duckypad-profile-autoswitcher')
 conflicts=('duckypad-profile-autoswitcher')
 depends=('duckypad' 'python-ewmh' 'python-psutil')
 makedepends=('git' 'imagemagick' 'gendesk')
-source=("$pkgname"::"git+https://github.com/dekuNukem/${_pkgname}" duckypad_autoswitcher.sh)
+#source=("$pkgname"::"git+https://github.com/dekuNukem/${_pkgname}" duckypad_autoswitcher.sh)
+source=("$pkgname"::"git+https://github.com/jose1711/${_pkgname}#branch=linux_impr" duckypad_autoswitcher.sh)
 sha256sums=('SKIP'
             '58869235e7be8d049900285985d11775988150c950cd705715caf393e53463f7')
 
@@ -37,7 +38,6 @@ package() {
   done
   install -Dm755 "${srcdir}/duckypad_autoswitcher.sh" "${pkgdir}/usr/bin/${_sname}"
 
-  ls *desktop
   install -Dm644 "duckyPad autoswitcher.desktop" "${pkgdir}/usr/share/applications/duckyPad autoswitcher.desktop"
   install -Dm644 "${_sname}.png" "${pkgdir}/usr/share/pixmaps/${_sname}.png"
 
