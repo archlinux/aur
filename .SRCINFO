@@ -1,0 +1,16 @@
+pkgbase = raspberrypi-devicetree-git
+	pkgdesc = Downstream devicetrees and overlays for Raspberry Pi
+	pkgver = 20211029
+	pkgrel = 1
+	url = https://github.com/raspberrypi/firmware
+	arch = any
+	license = GPL2
+	provides = raspberrypi-devicetree
+	conflicts = uboot-raspberrypi
+	conflicts = linux-raspberrypi
+	conflicts = linux-raspberrypi4
+	options = !strip
+	source = https://github.com/raspberrypi/firmware/archive/e2bab29767e51c683a312df20014e3277275b8a6.tar.gz
+	md5sums = 2f3059f26d5572126051430c8ba8198a
+
+pkgname = raspberrypi-devicetree-git
