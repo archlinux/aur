@@ -1,0 +1,25 @@
+pkgbase = mesh-agent
+	pkgdesc = The MeshCentral Agent is the software that runs on remote devices and connects to the MeshCentral server to allow for remote device management
+	pkgver = 0.9.16
+	pkgrel = 1
+	url = https://www.meshcentral.com/
+	install = mesh-agent.install
+	arch = x86_64
+	license = Apache
+	makedepends = nasm
+	makedepends = libx11
+	makedepends = libxtst
+	makedepends = libxext
+	depends = glibc
+	options = !buildflags
+	backup = etc/meshagent.msh
+	source = https://github.com/Ylianst/MeshAgent/archive/refs/tags/MeshCentral_v0.9.16.tar.gz
+	source = https://deac-fra.dl.sourceforge.net/project/libjpeg-turbo/1.4.2/libjpeg-turbo-1.4.2.tar.gz
+	source = meshagent.msh
+	source = mesh-agent.service
+	sha512sums = 64b8fd064b6cbe139b1c6c99761c3cc968d8ef364ea1888e3f5f6e48c59cf8725f871cc4cdbe5b3577caea2d19a7791d7e3eff90247680fec0bb872df9a3fa0c
+	sha512sums = 9bd27c917c29125c425469eb0fdf99b802f25095f187fb416bd7c05e4af95a32404bbb0d06b77343d35d3461029500decf3481337b2eade9e57b58dea69719ee
+	sha512sums = 01c4ea28c283abe5aa85677ea1bfc2ba643a29de138fe499f4637b1e118546743a4105d5375424af0f60daa5cb6b876126e7c8c94b25e7a334f6a944d795e266
+	sha512sums = a435f4fbd1f26c44324884a33e86d36c2bb0fc2e5988cfcdcfaa3a8813ba297d685b514fa6368cdd6a4d18b0f62468121ec4ad00ba6f5819c773fb7579167ffe
+
+pkgname = mesh-agent

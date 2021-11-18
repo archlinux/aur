@@ -1,0 +1,76 @@
+mesh-agent_reload_if_enabled() {
+    systemctl is-enabled mesh-agent.service &> /dev/null
+    if [ $? -eq 0 ]; then
+        echo 'Service mesh-agent is enabled - reloading'
+        systemctl daemon-reload
+        systemctl restart mesh-agent.service
+    else
+        echo 'Service mesh-agent is not enabled -  do nothing...'
+    fi
+}
+
+copy_var_from_msh() {
+    FROM=$1
+    TO=$2
+    VARNAME=$3
+
+    VAR=$(cat ${FROM} | tr -d '\r' | grep -E "${VARNAME}=.+" )
+    if [ ! -z ${VAR} ]
+    then
+        echo "Copying \"${VAR}\" from ${FROM} to ${TO}"
+        ESCAPED_REPLACE=$(printf '%s\n' "${VAR}" | sed -e 's/[\/&]/\\&/g')
+        sed -Ei "s/${VARNAME}=.+/${ESCAPED_REPLACE}/" "${TO}"
+    fi
+}
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+	mesh-agent_reload_if_enabled
+	if [ -e /etc/meshagent.msh.pacsave ]
+	then
+	    copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh MeshName
+        copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh MeshID
+        copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh ServerID
+        copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh Meshserver
+	fi
+	echo "mesh-agent.service not yet enabled. Remember to edit /etc/meshagent.sh and enable mesh-agent.service"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	mesh-agent_reload_if_enabled
+
+	# TODO: Handle changes to dist /etc/meshagent.msh causing   /etc/meshagent.msh.pacnew to be created.
+
+    systemctl is-enabled mesh-agent.service &> /dev/null
+    if [ ! $? -eq 0 ]; then
+        echo "mesh-agent.service not yet enabled. Remember to edit /etc/meshagent.sh and enable mesh-agent.service"
+    fi
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	    echo 'Disabling mesh-agent service...'
+        systemctl is-enabled mesh-agent.service &> /dev/null
+        if [ $? -eq 0 ]; then
+            systemctl disable mesh-agent.service &> /dev/null
+        fi
+        systemctl daemon-reload
+}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
