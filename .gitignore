@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except these files
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!cmdline.txt
+!config.txt

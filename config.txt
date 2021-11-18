@@ -1,0 +1,5 @@
+arm_64bit=1
+kernel=Image
+initramfs initramfs-linux.img followkernel
+
+dtoverlay=upstream

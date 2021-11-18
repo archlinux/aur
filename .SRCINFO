@@ -1,0 +1,19 @@
+pkgbase = raspberrypi-aarch64-directboot
+	pkgdesc = Boot linux-aarch64 on a Raspberry Pi without U-Boot
+	pkgver = 1
+	pkgrel = 1
+	arch = aarch64
+	license = GPL2
+	depends = raspberrypi-bootloader
+	depends = raspberrypi-devicetree
+	depends = linux-aarch64
+	conflicts = uboot-raspberrypi
+	options = !strip
+	backup = boot/config.txt
+	backup = boot/cmdline.txt
+	source = config.txt
+	source = cmdline.txt
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = raspberrypi-aarch64-directboot
