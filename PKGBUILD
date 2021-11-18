@@ -2,6 +2,7 @@
 # Contributor: 3ED <krzysztof1987 (at) gmail /dot/ com>
 # Contributor:Xemertix <arch88(at)katamail(dot)com>
 # Contributor: dimaqq@gmail.com
+# Contributor: arch(at)konzertheld(dot)de
 
 pkgname=ddccontrol-db-git
 _pkgname=ddccontrol-db

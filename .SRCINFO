@@ -8,6 +8,7 @@ pkgbase = ddccontrol-db-git
 	makedepends = git
 	makedepends = intltool
 	makedepends = automake
+	makedepends = m4
 	provides = ddccontrol-db
 	conflicts = ddccontrol-db
 	source = ddccontrol-db::git+https://github.com/ddccontrol/ddccontrol-db.git
