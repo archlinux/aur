@@ -1,0 +1,11 @@
+pkgbase = bzip
+	pkgdesc = A high-quality data compression program
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://sourceware.org/bzip2/
+	arch = x86_64
+	license = GPL
+	source = https://sourceware.org/pub/bzip2/bzip-0.21.tar.gz
+	sha512sums = dcaffbab9ff8bf8246c77a597f928d4aa05ea294b3a527626a36ba2c57bd1ec99b423feaf0ee6b3861be4ee3cbab83ed6f6bcfdd0f52e85fae293ff9e66e9a91
+
+pkgname = bzip
