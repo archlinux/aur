@@ -34,7 +34,7 @@ license=('custom')
 makedepends=('java-environment>=11' 'java-environment<12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'ant' 'git' 'rsync')
+             'libnet' 'bash' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-api2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
         git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         https://github.com/prehonor/myJetBrainsRuntime/raw/master/idea.patch
