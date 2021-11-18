@@ -11,7 +11,7 @@ depends=('curl' 'openssl-1.0')
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
-makedepends=('dotnet-sdk>=5.0.0')
+makedepends=('dotnet-sdk>=6.0.0')
 options=('!strip' 'staticlibs')
 
 source=(

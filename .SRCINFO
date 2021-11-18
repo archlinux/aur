@@ -7,7 +7,7 @@ pkgbase = jackett
 	arch = aarch64
 	arch = armv7h
 	license = GPL
-	makedepends = dotnet-sdk>=5.0.0
+	makedepends = dotnet-sdk>=6.0.0
 	depends = curl
 	depends = openssl-1.0
 	optdepends = flaresolverr: A proxy server to bypass Cloudflare protection
