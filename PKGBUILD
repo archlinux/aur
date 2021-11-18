@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=alsaequal-mgr
 pkgver=2013.7.10
 pkgrel=2
 pkgdesc='Save and restore named alsaequal states.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/alsaequal-mgr"
+url="https://xyne.dev/projects/alsaequal-mgr"
 depends=(alsaequal bash-statemgr)
 source=(
-  https://xyne.mirrorrepo.com/projects/alsaequal-mgr/src/alsaequal-mgr-2013.7.10.tar.xz
-  https://xyne.mirrorrepo.com/projects/alsaequal-mgr/src/alsaequal-mgr-2013.7.10.tar.xz.sig
+  https://xyne.dev/projects/alsaequal-mgr/src/alsaequal-mgr-2013.7.10.tar.xz
+  https://xyne.dev/projects/alsaequal-mgr/src/alsaequal-mgr-2013.7.10.tar.xz.sig
 )
 sha512sums=(
   b87035598dda0049ffd21e41ae84dc2f5ea54f8e8b109bb535b1489e9bbf44072e67c24af25135f1537156f08e18f238c2c6dfb13dac88e46ce17a61d5abba72
