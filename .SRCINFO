@@ -1,0 +1,12 @@
+pkgbase = python-interpolation
+	pkgdesc = Optimized interpolation routines in Python / numba
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://files.pythonhosted.org/packages/1b/19/884e31db7f9904678e7575a6ded13d5870a7eae7452f5ccee44fc9f14968/interpolation-2.2.1.tar.gz
+	arch = any
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/1b/19/884e31db7f9904678e7575a6ded13d5870a7eae7452f5ccee44fc9f14968/interpolation-2.2.1.tar.gz
+	md5sums = 6e6f0aec155ee2720d2da2b925e982b8
+
+pkgname = python-interpolation
