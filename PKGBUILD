@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=cups-client-mgr
 pkgver=2013
 pkgrel=2
 pkgdesc='Save and restore CUPS client states.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/cups-client-mgr"
+url="https://xyne.dev/projects/cups-client-mgr"
 depends=(bash-statemgr)
 source=(
-  https://xyne.mirrorrepo.com/projects/cups-client-mgr/src/cups-client-mgr-2013.tar.xz
-  https://xyne.mirrorrepo.com/projects/cups-client-mgr/src/cups-client-mgr-2013.tar.xz.sig
+  https://xyne.dev/projects/cups-client-mgr/src/cups-client-mgr-2013.tar.xz
+  https://xyne.dev/projects/cups-client-mgr/src/cups-client-mgr-2013.tar.xz.sig
 )
 sha512sums=(
   d90de376a27bce254f2130d92f334fa8f983e315f62d06e86d936c9579c6b776ac980d2ae75a310c244bcd9660732a1c272b2b577db30fbd4286b8b0c1fa8e9a
