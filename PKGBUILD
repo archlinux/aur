@@ -5,7 +5,7 @@
 
 _pkgname=zenpower3
 pkgname=zenpower3-dkms-git
-pkgver=56.5ed3765
+pkgver=57.aba5677
 pkgrel=1
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs'
 arch=('x86_64' 'i686')
@@ -32,9 +32,9 @@ prepare() {
 }
 
 package() {
-  install -Dm644 "$srcdir/$_pkgname/dkms.conf" "$pkgdir/usr/src/$_pkgname/dkms.conf"
-  install -Dm644 "$srcdir/$_pkgname/Makefile" "$pkgdir/usr/src/$_pkgname/Makefile"
-  install -Dm644 "$srcdir/$_pkgname/zenpower.c" "$pkgdir/usr/src/$_pkgname/zenpower.c"
+  install -Dm644 "$srcdir/$_pkgname/dkms.conf" "$pkgdir/usr/src/$_pkgname-$pkgver/dkms.conf"
+  install -Dm644 "$srcdir/$_pkgname/Makefile" "$pkgdir/usr/src/$_pkgname-$pkgver/Makefile"
+  install -Dm644 "$srcdir/$_pkgname/zenpower.c" "$pkgdir/usr/src/$_pkgname-$pkgver/zenpower.c"
 
   install -Dm644 "$srcdir/$_pkgname.conf" "$pkgdir/usr/lib/modprobe.d/$_pkgname.conf"
 }
