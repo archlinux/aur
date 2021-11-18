@@ -1,16 +1,16 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python2-xynehttpserver
 pkgver=2012.12.24.2
 pkgrel=5
 pkgdesc='Python BaseHTTPServer classes extended with authentication, SSL, and threading.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python2-xynehttpserver"
+url="https://xyne.dev/projects/python2-xynehttpserver"
 depends=(python2)
 conflicts=(python-xynehttpserver)
 source=(
-  https://xyne.mirrorrepo.com/projects/python2-xynehttpserver/src/python2-xynehttpserver-2012.12.24.2.tar.xz
-  https://xyne.mirrorrepo.com/projects/python2-xynehttpserver/src/python2-xynehttpserver-2012.12.24.2.tar.xz.sig
+  https://xyne.dev/projects/python2-xynehttpserver/src/python2-xynehttpserver-2012.12.24.2.tar.xz
+  https://xyne.dev/projects/python2-xynehttpserver/src/python2-xynehttpserver-2012.12.24.2.tar.xz.sig
 )
 sha512sums=(
   5e3bc9d4ea24174ebddc55bd6c22df7c9af4ba7128db6d3bc0aa0338288ad411e2bb91997643393d021b6a46dd3543b7b8388bd779ff21eb29db1b5672985a74
