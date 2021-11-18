@@ -1,7 +1,7 @@
 # Maintainer: Gunnar Bretthauer <taijian@posteo.de>
 # Contributor: Kalle Lindqvist <kalle.lindqvist@mykolab.com>
 pkgname=gnome-shell-extension-sound-output-device-chooser
-pkgver=40.39
+pkgver=41.39
 _pkgver=39
 pkgrel=1
 pkgdesc="Sound Input & Output Device Chooser."
@@ -12,7 +12,7 @@ conflicts=('gnome-shell-extension-sound-output-device-chooser-git')
 depends=('gnome-shell')
 optdepends=('python: for new profile identification')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kgshank/gse-sound-output-device-chooser/archive/${_pkgver}.tar.gz")
-md5sums=('d6689a977735282aeb378621754ce82f')
+sha2sums=('d6689a977735282aeb378621754ce82f')
 
 package() {
     _uuid="sound-output-device-chooser@kgshank.net"
@@ -22,3 +22,4 @@ package() {
     install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
     cp -r "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
+sha256sums=('c56af4ce7ff706762e5b3d71918e76661d2afc7434926269efc65fac20c1674f')
