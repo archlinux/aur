@@ -41,7 +41,6 @@ pkgbase = firefox-wayland-hg
 	depends = libwebp
 	depends = libjpeg
 	depends = zlib
-	depends = icu
 	depends = libevent
 	depends = libpipewire02
 	optdepends = networkmanager: Location detection via available WiFi networks
