@@ -316,7 +316,7 @@ index 1839059..24acf01 100644
 +  fi
 +  sed "s/^/$submenu_indentation/" << EOF
  	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} rw ${args}
- EOF
+EOF
    if test -n "${initrd}" -o -n "${initrd_extra}" ; then
      # TRANSLATORS: ramdisk isn't identifier. Should be translated.
 -    message="$(gettext_printf "Loading initial ramdisk ...")"
