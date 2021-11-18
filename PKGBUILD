@@ -16,7 +16,6 @@ depends=(
   python-cryptography
   python-dnspython
   python-jsonrpclib-pelix
-  python-matplotlib
   python-protobuf
   python-pyaes
   python-pycryptodomex
@@ -27,6 +26,7 @@ depends=(
   python-websocket-client
   zbar
 )
+makedepends=(python-setuptools)
 source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
 b2sums=(

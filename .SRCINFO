@@ -5,6 +5,7 @@ pkgbase = electrum-ltc
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = libsecp256k1
 	depends = python-aiohttp
 	depends = python-aiohttp-socks
@@ -15,7 +16,6 @@ pkgbase = electrum-ltc
 	depends = python-cryptography
 	depends = python-dnspython
 	depends = python-jsonrpclib-pelix
-	depends = python-matplotlib
 	depends = python-protobuf
 	depends = python-pyaes
 	depends = python-pycryptodomex
@@ -32,4 +32,3 @@ pkgbase = electrum-ltc
 	b2sums = SKIP
 
 pkgname = electrum-ltc
-
