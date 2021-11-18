@@ -1,6 +1,6 @@
 pkgbase = imgbrd-grabber-git
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
-	pkgver = v7.6.2.r92.d6fb4bd7
+	pkgver = v7.6.2.r128.46db5730
 	pkgrel = 1
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = imgbrd-grabber-git
 	provides = imgbrd-grabber
 	conflicts = imgbrd-grabber
 	source = git+https://github.com/Bionus/imgbrd-grabber.git#branch=develop
-	source = variableToString-instantiation-grabber.patch
+	source = Grabber.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 
