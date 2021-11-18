@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pychrom
 pkgver=2012
 pkgrel=4
 pkgdesc='An enhanced yet simple pyGTK color selection and conversion tool that can minimize to the tray.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/pychrom"
+url="https://xyne.dev/projects/pychrom"
 depends=(gtk2 pygtk python2)
 source=(
-  https://xyne.mirrorrepo.com/projects/pychrom/src/pychrom-2012.tar.xz
-  https://xyne.mirrorrepo.com/projects/pychrom/src/pychrom-2012.tar.xz.sig
+  https://xyne.dev/projects/pychrom/src/pychrom-2012.tar.xz
+  https://xyne.dev/projects/pychrom/src/pychrom-2012.tar.xz.sig
 )
 sha512sums=(
   d055aa34f62cbb00367bde2dd22f5016ad571e4c70c7fca597bb253a93197ef7facbdebf7cd1e2f099761207080694625645f88086b584b6b56c58cd10eaf651
