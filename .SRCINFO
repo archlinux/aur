@@ -8,6 +8,7 @@ pkgbase = libayatana-appindicator
 	arch = pentium4
 	license = LGPL2.1
 	license = LGPL3
+	makedepends = cmake-extras
 	makedepends = glib2
 	makedepends = gtk3
 	makedepends = gobject-introspection
