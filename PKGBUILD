@@ -1,8 +1,8 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=bcml-git
 _name=BCML
-pkgver=r1037.a57a1a2
-pkgrel=2
+pkgver=r1039.3c09365
+pkgrel=3
 pkgdesc="Breath of the Wild Cross-Platform Mod Loader: A mod merger and manager for BOTW"
 arch=('any')
 url="https://github.com/NiceneNerd/BCML"
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-	gendesk --pkgname "${_name}" --pkgdesc "${pkgdesc}" --exec "bcml"
+	gendesk --pkgname "${_name}" --pkgdesc "${pkgdesc}" --exec "bcml %u" --mimetypes "x-schema-handler/bcml"
 }
 
 build() {
