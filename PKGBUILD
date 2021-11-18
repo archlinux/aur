@@ -9,10 +9,12 @@ license=('GPL3')
 depends=('python' 'python-gobject' 'libappindicator-gtk3' 'python-evdev' 'fuse')
 source=("https://github.com/OzymandiasTheGreat/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.AppImage")
 sha256sums=('4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa')
-
+options=(!strip)
 
 package() {
-  install -Dm ${pkgname}-${pkgver}.AppImage ${pkgdir}/usr/bin/emoji-keyboard
+  chmod a+x ${pkgname}-${pkgver}.AppImage
+  mkdir -p ${pkgdir}/usr/bin
+  cp -L ${pkgname}-${pkgver}.AppImage ${pkgdir}/usr/bin/emoji-keyboard
 }
 
 
