@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-application"
-pkgver="0.8.0"
+pkgver="0.8.90"
 pkgrel="1"
 pkgdesc="Ayatana Application Indicators"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("libayatana-appindicator" "dbus-glib")
 makedepends=("cmake-extras" "glib2" "libayatana-indicator>=0.9.0" "gtk3" "libdbusmenu-gtk3" "systemd" "intltool")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("aeba0273e91f814fb808e0c963bbac71")
+md5sums=("af979333547d9a81793b09ab6cf1465e")
 options=("!emptydirs")
 
 build()
