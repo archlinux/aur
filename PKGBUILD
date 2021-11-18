@@ -13,7 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 options=()
-source=('git+https://github.com/WayfireEM/wayfire')
+source=('git+https://github.com/WayfireWM/wayfire')
 sha256sums=('SKIP')
 
 pkgver() {
