@@ -2,7 +2,7 @@
 
 pkgname=shortwave-bin-hack
 pkgver=1570577
-pkgrel=3
+pkgrel=4
 pkgdesc="Find and listen to internet radio stations.
 This pkg uses the flatpak version and intercepts libc functions to make it work"
 arch=(any)
@@ -13,8 +13,8 @@ conflicts=("shortwave")
 makedepends=(cargo ostree)
 depends=('gst-plugins-bad' 'libadwaita' 'libsoup')
 source=("$url-/jobs/$pkgver/artifacts/download?file_type=archive" "fix_flatpak.rs" "shortwave")
-sha256sums=('889a9c1da5eb508996e7593d0bcb7f21365ec1db56420b671bf2c53d1693ebdc'
-            'f51670378a964043ad835ee0c6fba088056c111762831e320fbfe5093a307aae'
+sha256sums=('fefe532b4896b7d03ed0b2d2bab3aa429af19944ef4fb105490b8a0345cafbd9'
+            'c9f1bc05e916ab429ffa2b18cca2f63e7cad4ce2a5dfa9c99d19c6db3d4fb4de'
             'bdd3140b737646d38e801d7cfa2092e47126b968e32ffe32250c9046ddc76a6a')
 
 prepare() {
