@@ -1,16 +1,15 @@
 pkgbase = python-galpy
 	pkgdesc = Galactic Dynamics in python
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = http://galpy.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = gsl
-	source = https://files.pythonhosted.org/packages/source/g/galpy/galpy-1.7.0.tar.gz
-	md5sums = e57fa62ff8cd6356e522d06eae9aafd9
+	source = https://files.pythonhosted.org/packages/source/g/galpy/galpy-1.7.1.tar.gz
+	md5sums = e6d96f823fd19180c88fc782e9b68cd9
 
 pkgname = python-galpy
 	depends = python-scipy
@@ -18,22 +17,11 @@ pkgname = python-galpy
 	depends = python-future
 	depends = python-six
 	depends = python-pytest
+	depends = python-setuptools
 	optdepends = python-galpy-doc: Documentation for galpy
 	optdepends = gsl>=1.14: For some advanced features
 	optdepends = python-astropy: For Quantity support
 	optdepends = python-astroquery: For the Orbit.from_name initialization method
 	optdepends = python-numexpr: For or plotting arbitrary expressions of Orbit quantities
+	optdepends = python-jax: For use of constant-anisotropy DFs in galpy.df.constantbetadf
 	optdepends = python-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential
-
-pkgname = python2-galpy
-	depends = python2-scipy
-	depends = python2-matplotlib
-	depends = python2-future
-	depends = python2-six
-	depends = python2-pytest
-	optdepends = python-galpy-doc: Documentation for galpy
-	optdepends = gsl>=1.14: For some advanced features
-	optdepends = python2-astropy: For Quantity support
-	optdepends = python2-astroquery: For the Orbit.from_name initialization method
-	optdepends = python2-numexpr: For or plotting arbitrary expressions of Orbit quantities
-	optdepends = python2-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential

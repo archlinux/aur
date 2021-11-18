@@ -1,35 +1,27 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-galpy
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python2-${_pyname}")
+pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="http://galpy.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'gsl')
+makedepends=('python-setuptools' 'gsl')
 #checkdepends=('python-pytest'
-##             'python2-pytest'
 #              'python-matplotlib'
-##             'python2-matplotlib'
 #              'python-future'
 #              'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e57fa62ff8cd6356e522d06eae9aafd9')
+md5sums=('e6d96f823fd19180c88fc782e9b68cd9')
 
 prepare() {
-    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
-    msg "Building Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py build
-
-    msg "Building Python3"
     cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build
 
@@ -39,35 +31,19 @@ build() {
 
 #check() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
-##   python setup.py test
-#    pytest "build/lib.linux-${CARCH}-${_pyver}"
 #
-##   cd ${srcdir}/${_pyname}-${pkgver}-py2
-##   python2 setup.py test
+##   pytest "build/lib.linux-${CARCH}-${_pyver}"
+#    python setup.py test
 #}
 
-package_python2-galpy() {
-    depends=('python2-scipy' 'python2-matplotlib' 'python2-future' 'python2-six' 'python2-pytest')
-    optdepends=('python-galpy-doc: Documentation for galpy'
-                'gsl>=1.14: For some advanced features'
-                'python2-astropy: For Quantity support'
-                'python2-astroquery: For the Orbit.from_name initialization method'
-                'python2-numexpr: For or plotting arbitrary expressions of Orbit quantities'
-                'python2-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential')
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 README* -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-}
-
 package_python-galpy() {
-    depends=('python-scipy' 'python-matplotlib' 'python-future' 'python-six' 'python-pytest')
+    depends=('python-scipy' 'python-matplotlib' 'python-future' 'python-six' 'python-pytest' 'python-setuptools')
     optdepends=('python-galpy-doc: Documentation for galpy'
                 'gsl>=1.14: For some advanced features'
                 'python-astropy: For Quantity support'
                 'python-astroquery: For the Orbit.from_name initialization method'
                 'python-numexpr: For or plotting arbitrary expressions of Orbit quantities'
+                'python-jax: For use of constant-anisotropy DFs in galpy.df.constantbetadf'
                 'python-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential')
     cd ${srcdir}/${_pyname}-${pkgver}
 
