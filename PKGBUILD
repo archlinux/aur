@@ -9,7 +9,7 @@ arch=(any)
 license=(Apache)
 depends=(jq curl)
 source=("https://github.com/kriansa/pacom/archive/v${pkgver}.tar.gz")
-sha256sums=(f5732ed777e3e8a3f94404f4a94576f55bc6d70e60bc6d36a0dbc9a4582a3595)
+sha256sums=(065d8434f808d7b1c4f66ef91f86ea35da91c48db35931bdf19e725ffae1180b)
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
