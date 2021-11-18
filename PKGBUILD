@@ -1,8 +1,9 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 _pkgname=blitzloop
 pkgname="$_pkgname-git"
-pkgver=r238.8c6a581
+pkgver=r297.6991439
 pkgrel=1
 pkgdesc='Open source karaoke software'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -11,8 +12,7 @@ license=('GPL')
 depends=('python-opengl' 'python-pympv' 'python-paste' 'python-numpy'
          'python-freetype-py' 'python-bottle' 'python-pillow'
          'python-configargparse' 'python-jaconv')
-optdepends=('python-ffms: for blitzloop-record'
-            'jack: for microphone feedback')
+optdepends=('jack: for microphone feedback')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git' 'cython' 'jack')
@@ -32,5 +32,6 @@ build() {
 package() {
   cd $_pkgname
   python setup.py install --root="$pkgdir/" --optimize=1
-  rm "$pkgdir"/usr/lib/python3.7/site-packages/blitzloop/_audio.c
+  install -d $pkgdir/usr/share/doc/blitzloop
+  install -Dm644 docs/*md docs/*conf $pkgdir/usr/share/doc/blitzloop
 }
