@@ -1,3 +1,19 @@
+=== Morgen 2.3.3
+Improvements
+- Avoid the flickering of the attendee autocompletion widget while typing.
+- Improved the loading time of the scheduling links, that was definitely too long.
+- Now the event widget does not move around like crazy while you are changing the time of the event.
+- Allow selecting and copying the error message in case of a crash.
+- Use Command/CTRL+H to hide and Command/CTRL+M to minimize.
+
+Bug Fixes
+- Fixed the positioning of the event widget appearing out of the screen on the Day view.
+- Fixed a crash occurring when creating a tag without a name.
+- Fixed the visual occlusion for the tag editing tooltip.
+- Fixed an issue making it impossible to remove the event description of an event in Exchange.
+- Fixed an issue preventing the Quick Join button to appear with many all-day events.
+- Fixed time zone helper showing out of the screen on the Day view.
+
 === Morgen 2.3.2
 Bug Fixes
 - Fixed a problem making it impossible to remove calendar accounts when the subscription is expired.
