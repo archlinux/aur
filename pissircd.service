@@ -1,0 +1,12 @@
+[Unit]
+Description=IRC daemon
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+User=ircd
+PIDFile=/run/pissircd/ircd.pid
+ExecStart=/usr/bin/pissircd
+
+[Install]
+WantedBy=multi-user.target
