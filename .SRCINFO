@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 94.0.1
+	pkgver = 94.0.2
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -43,13 +43,13 @@ pkgbase = firefox-appmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=94.0.1
+	provides = firefox=94.0.2
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/94.0.1/source/firefox-94.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/94.0.1/source/firefox-94.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/94.0.2/source/firefox-94.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/94.0.2/source/firefox-94.0.2.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = 0002-Bug-1735905-Upgrade-cubeb-pulse-to-fix-a-race-condit.patch
 	source = firefox.desktop
@@ -58,7 +58,7 @@ pkgbase = firefox-appmenu
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 6c09ef337a83a413d5929557043e127598c5c1e02ece3044370e55a3e2eeef70
+	sha256sums = 8d2169122892161e26fe4cc45d61781513181dee1f1981be42427f88092c8d06
 	sha256sums = SKIP
 	sha256sums = 51cca2cab0fa9798f96b81ed24c238b2a7c98524f589ec500224bac9797b66fb
 	sha256sums = 744d3956ba60c63fed81903700a4cf66c13d2898944e4e86ac0d3b1e3f222fff
