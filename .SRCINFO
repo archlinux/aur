@@ -1,0 +1,19 @@
+pkgbase = stereokit-git
+	pkgdesc = An easy-to-use open source library for building XR apps with C#/C++ and OpenXR!
+	pkgver = r1824.26f40519
+	pkgrel = 1
+	url = https://stereokit.net/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7l
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = openxr>=1.0.18
+	depends = fontconfig
+	depends = glew
+	provides = stereokit
+	source = git+https://github.com/maluoi/StereoKit.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = stereokit-git
