@@ -30,7 +30,7 @@ build() {
         --libexecdir=/usr/lib/ \
         --enable-maintainer-mode \
         --enable-noexecstack \
-        --enable-large-secmem \
+        --enable-large-secmem
     make
 
 # Further options to prevent DNS leaks when working with TOR
