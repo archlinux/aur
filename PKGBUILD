@@ -2,12 +2,12 @@
 pkgname=bcml-git
 _name=BCML
 pkgver=r1039.3c09365
-pkgrel=3
+pkgrel=4
 pkgdesc="Breath of the Wild Cross-Platform Mod Loader: A mod merger and manager for BOTW"
 arch=('any')
 url="https://github.com/NiceneNerd/BCML"
 license=('GPL3')
-depends=('python-pyqt5-webengine' 'python>=3.7')
+depends=('p7zip' 'python-pyqt5-webengine' 'python>=3.7')
 makedepends=('git' 'npm' 'nodejs>=14.0.0' 'mkdocs' 'mkdocs-material' 'python-setuptools' 'gendesk')
 optdepends=('cemu')
 source=('git+https://github.com/NiceneNerd/BCML' "${_name}.png::https://i.imgur.com/OiqKPx0.png")
