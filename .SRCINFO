@@ -1,7 +1,7 @@
 pkgbase = wine-winscard
 	pkgdesc = A compatibility layer for running Windows programs (with IDRASSI's winscard patch)
 	pkgver = 6.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
