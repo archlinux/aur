@@ -1,0 +1,24 @@
+pkgbase = sdl_bgi
+	pkgdesc = Port of the old Borland Graphics Interface (graphics.h), originally written for DOS, written using SDL2
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://libxbgi.sourceforge.net/
+	arch = any
+	license = ZLib
+	checkdepends = desktop-file-utils
+	checkdepends = lib32-glib2
+	makedepends = gettext
+	makedepends = gtk-doc
+	makedepends = shared-mime-info
+	makedepends = python
+	makedepends = lib32-libelf
+	makedepends = git
+	makedepends = util-linux
+	makedepends = meson
+	makedepends = lib32-dbus
+	depends = sdl2
+	provides = libSDL_bgi.so
+	source = https://sourceforge.net/projects/libxbgi/files/SDL_bgi-2.5.0.tar.gz
+	sha256sums = 4c936461a52b18db8300489f1ab4c6ac5f06e190f6c30d82f7df111a28efde84
+
+pkgname = sdl_bgi
