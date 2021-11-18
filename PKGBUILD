@@ -21,7 +21,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2148042ca60f00d53ea18c7cd6b919fbba00c0b3cfcb0a308e192571d4a02121')
+            '9fb6a78bc04c481417d9ad93d1841c1522b1e67d89fa58a4b76f4d14ef6236f1')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -37,7 +37,7 @@ prepare() {
   git config submodule.'htmlmin'.url "${srcdir}/${pkgname}-htmlmin"
   git submodule update
 
-  # git apply "${srcdir}/${pkgname}.patch"
+  git apply "${srcdir}/${pkgname}.patch"
 }
 
 build() {
