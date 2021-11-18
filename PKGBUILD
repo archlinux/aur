@@ -3,12 +3,12 @@
 
 pkgname=hypnotix-git
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An IPTV streaming application"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
-depends=(dconf hicolor-icon-theme python-cairo python-gobject python-imdbpy python-requests python-setproctitle mpv xapp)
+depends=(dconf hicolor-icon-theme python-cairo python-gobject python-imdbpy python-requests python-setproctitle python-unidecode mpv xapp)
 optdepends=('youtube-dl: YouTube channel support')
 makedepends=(git)
 provides=(hypnotix)
