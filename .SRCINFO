@@ -1,7 +1,7 @@
 pkgbase = kks
 	pkgdesc = Handy Kakoune companion
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kkga/kks
 	arch = x86_64
 	arch = arm
