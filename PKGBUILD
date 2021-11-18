@@ -2,7 +2,7 @@
 
 pkgname=harbour-amazfish-git
 pkgver=r849.34365e4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
 arch=(x86_64 aarch64)
@@ -18,12 +18,13 @@ depends=(
 	'qt5-connectivity'
 	'qtmpris'
 	'nemo-qml-plugin-dbus'
+	'kirigami2'
 )
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=('harbour-amazfish')
-conflicts=('harbour-amazfish-git' 'harbour-amazfish')
+provides=('amazfish')
+conflicts=('amazfish' 'harbour-amazfish-git' 'harbour-amazfish')
 replaces=()
 backup=()
 options=()
