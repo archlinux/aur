@@ -2,14 +2,14 @@ pkgbase = pacman2aria2
 	pkgdesc = Convert pacman download URL lists to reflector-augmented aria2c input lists. Includes powerpill-light.
 	pkgver = 2012
 	pkgrel = 3
-	url = https://xyne.mirrorrepo.com/projects/pacman2aria2
+	url = https://xyne.dev/projects/pacman2aria2
 	arch = any
 	license = GPL
 	depends = aria2
 	depends = python3
 	depends = reflector>=2011.04.04
-	source = https://xyne.mirrorrepo.com/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz
-	source = https://xyne.mirrorrepo.com/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz.sig
+	source = https://xyne.dev/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz
+	source = https://xyne.dev/projects/pacman2aria2/src/pacman2aria2-2012.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
 	md5sums = 5b6afbebf4d1aec1e570c1c02540c162
 	md5sums = cbf7101fed7012421a5e558b48004177
