@@ -14,12 +14,12 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=213.5744.18
+_buildver=213.5744.125
 _veryear=2021
 _verrelease=3
 _verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
