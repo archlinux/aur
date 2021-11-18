@@ -1,18 +1,18 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=arch32-light
 pkgver=2015
 pkgrel=2
 pkgdesc='Lightweight 32-bit chroot intended for 64-bit systems.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/arch32-light"
+url="https://xyne.dev/projects/arch32-light"
 depends=(diffutils 'pacman-mirrorlist>=20100621' 'pacman>=3.4.0')
 optdepends=('initscripts: for initscripts daemon support' 'xorg-xhost: for host xorg support')
 conflicts=(arch32)
 backup=(etc/arch32.conf etc/arch32d.conf)
 source=(
-  https://xyne.mirrorrepo.com/projects/arch32-light/src/arch32-light-2015.tar.xz
-  https://xyne.mirrorrepo.com/projects/arch32-light/src/arch32-light-2015.tar.xz.sig
+  https://xyne.dev/projects/arch32-light/src/arch32-light-2015.tar.xz
+  https://xyne.dev/projects/arch32-light/src/arch32-light-2015.tar.xz.sig
 )
 sha512sums=(
   bd1873763b4d74853f9d2a0167df1bf3a1376a1fcfd23b96c62eb3cb5f558c7dcf60a80e7bc58d04601b2e39099a8a01d4f475fce709b4fcf64acfdadfbb93ba
