@@ -1,3 +1,4 @@
+# Maintainer: Gadzhi Kharkharov <x at kkga dot me>
 pkgname=kks
 pkgver=0.3.6
 pkgrel=1
