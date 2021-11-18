@@ -42,7 +42,7 @@ package_sniprun() {
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-package_neovim-sniprun()	{
+package_neovim-sniprun() {
 	arch=('any')
 	depends=('neovim' "sniprun=$pkgver")
 	replaces=('neovim-sniprun-legacy')
