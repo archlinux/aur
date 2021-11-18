@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-notifications"
-pkgver="0.8.90"
+pkgver="0.9.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator for viewing recent notifications"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("intltool" "cmake-extras" "glib2" "systemd")
 depends=("hicolor-icon-theme" "dconf")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("c1197b1e1b8e10a9648937012b3b2812")
+md5sums=("866186bc29a7aaa329fed031794e1a83")
 
 build()
 {
