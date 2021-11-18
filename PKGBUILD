@@ -1,14 +1,14 @@
 # Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
 _pkgname=docs-gl
 pkgname="${_pkgname}-git"
-pkgver=r278.c4d7fbf
+pkgver=r312.6b3a87b
 pkgrel=1
 pkgdesc="An improved version of the official OpenGL documentation"
 arch=(any)
 url="https://docs.gl/"
 license=('custom')
 depends=()
-makedepends=('git' 'python2')
+makedepends=('git' 'python')
 options=(!strip)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -37,12 +37,12 @@ prepare() {
   git config submodule.'htmlmin'.url "${srcdir}/${pkgname}-htmlmin"
   git submodule update
 
-  git apply "${srcdir}/${pkgname}.patch"
+  # git apply "${srcdir}/${pkgname}.patch"
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
-  python2 compile.py --local-assets
+  python compile.py --local-assets
 }
 
 package() {
