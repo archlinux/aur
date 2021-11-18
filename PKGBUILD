@@ -79,6 +79,8 @@ _use_auto_optimization=y
 ## Apply Kernel Optimization selecting
 _use_optimization_select=
 
+### Enable DAMON
+_damon=
 
 ### Selecting the ZSTD compression level
 # ATTENTION - one of two predefined values should be selected!
@@ -106,13 +108,6 @@ _zstd_module_level='normal'
 # Leave it unselected.
 _fork_brute=
 
-### Enable SPECULATIVE_PAGE
-# ATTENTION - one of three predefined values should be selected!
-# 'full' - enable full SPECULATIVE_PAGE
-# 'basic' - enable basic SPECULATIVE_PAGE
-# 'none' - disable SPECULATIVE_PAGE
-_speculative_page='none'
-
 ## Enable it for compiling with LLVM and THINLTO
 _use_llvm_lto=
 
@@ -129,7 +124,7 @@ else
   pkgbase=linux-cachyos-bmq
 fi
 _major=5.15
-_minor=2
+_minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 arch=(x86_64 x86_64_v3)
@@ -150,8 +145,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
   "config"
   "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
   "${_patchsource}/0001-prjc-patches.patch"
+  "${_patchsource}/0001-prjc-fix.patch"
   "${_patchsource}/0001-misc.patch"
-  "${_patchsource}/0001-winesync.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/AMD/0001-amd64-patches.patch"
   "${_patchsource}/0001-bbr2.patch"
@@ -162,23 +157,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
   "${_patchsource}/0001-btrfs-patches.patch"
   #  "${_patchsource}/0001-ck-hrtimer.patch"
   "${_patchsource}/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/0001-futex.patch"
+  "${_patchsource}/0001-futex-wait.v-fsync-winesync.patch"
   "${_patchsource}/0001-hwmon-patches.patch"
   "${_patchsource}/0001-ksmbd-patches.patch"
-  #  "${_patchsource}/0001-sched.patch"
-  "${_patchsource}/0001-string.patch"
-  "${_patchsource}/0001-lru-patches.patch"
+  "${_patchsource}/0001-mm-lru.patch"
+  "${_patchsource}/0001-pf-patches.patch"
+  "${_patchsource}/0001-sched-fix.patch"
+  "${_patchsource}/0001-damon.patch"
   "${_patchsource}/0001-lqx-patches.patch"
   "${_patchsource}/0001-lrng-patches.patch"
-  #  "${_patchsource}/0001-speculative-patches.patch"
-  #  "${_patchsource}/0001-bitmap-patches.patch"
   "${_patchsource}/0001-security-patches.patch"
-  "${_patchsource}/0001-xfs-backport.patch"
   "${_patchsource}/0001-v4l2loopback.patch"
   "${_patchsource}/0001-zen-patches.patch"
   "${_patchsource}/0001-zstd-patches.patch"
   "${_patchsource}/0001-zstd-upstream-patches.patch"
-"auto-cpu-optimization.sh")
+  "auto-cpu-optimization.sh"
+)
+
 
 if [ -n "$_use_cfi" ]; then
   source+=("${_patchsource}/0001-cfi.patch")
@@ -340,14 +335,7 @@ prepare() {
 
   ### Enable protect mappings under memory pressure
   if [ -n "$_mm_protect" ]; then
-    echo "Enabling protect file mappings under memory pressure..."
-    scripts/config --enable CONFIG_UNEVICTABLE_FILE
-    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-    echo "Enabling protect anonymous mappings under memory pressure..."
-    scripts/config --enable CONFIG_UNEVICTABLE_ANON
-    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+    scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 524288
   fi
 
   ### Enable multigenerational LRU
@@ -361,29 +349,17 @@ prepare() {
     scripts/config --disable CONFIG_LRU_GEN_STATS
   fi
 
-  ### Enable SPECULATIVE_PAGE
-  if [ "$_speculative_page" = "full" ]; then
-    echo "Enabling full SPECULATIVE_PAGE..."
-    scripts/config --enable CONFIG_ARCH_SUPPORTS_SPECULATIVE_PAGE_FAULT
-    scripts/config --enable CONFIG_SPECULATIVE_PAGE_FAULT
-    scripts/config --enable CONFIG_SPECULATIVE_PAGE_FAULT_STATS
-  elif [ "$_speculative_page" = "basic" ]; then
-    echo "Enabling basic SPECULATIVE_PAGE..."
-    scripts/config --enable CONFIG_ARCH_SUPPORTS_SPECULATIVE_PAGE_FAULT
-    scripts/config --enable CONFIG_SPECULATIVE_PAGE_FAULT
-    scripts/config --disable CONFIG_SPECULATIVE_PAGE_FAULT_STATS
-  elif [ "$_speculative_page" = "none" ]; then
-    echo "Disabling SPECULATIVE_PAGE..."
-    scripts/config --disable CONFIG_SPECULATIVE_PAGE_FAULT
-  else
-    if [ -n "$_speculative_page" ]; then
-      error "The value $_speculative_page is invalid. Choose the correct one again."
-    else
-      error "The value is empty. Choose the correct one again."
-    fi
-    error "Selecting SPECULATIVE_PAGE failed!"
-    exit
+
+  ### Enable DAMON
+  if [ -n "$_damon" ]; then
+    echo "Enabling DAMON..."
+    scripts/config --enable CONFIG_DAMON
+    scripts/config --enable CONFIG_DAMON_VADDR
+    scripts/config --enable CONFIG_DAMON_DBGFS
+    scripts/config --enable CONFIG_DAMON_PADDR
+    scripts/config --enable CONFIG_DAMON_RECLAIM
   fi
+
 
   ### Enable Linux Random Number Generator
   if [ -n "$_lrng_enable" ]; then
@@ -665,34 +641,35 @@ _package-headers() {
 
 }
 
-sha512sums=('3ddeb15d9be260ab757c28ba3c23e9ebbcb23a61dcddaa6c5b54e3556cf720b11e182afa5d3747f981c5cd2777d4642a2854fce0e83441fc9a1948d1c5e5eae8'
-            'fa3d91078411a15124196e7e5379f4d11d1f0f6abfdc92f95214205875fd62e6949bde32885b38c38324f09d7f881e3719df06dd755f3154c4f15031563b4d17'
+sha512sums=('3724428553dbba44064e044f960c1dd002427eca79ddc4dd5feb829cdc76394d3bdc99bcf8d67a89cd406dcc6c5f613cc629797bebbf281fdd3ef00aa0724839'
+            '8fa265d0382a52d5464823cc61c9459db84b5b76bb4b0979c44bc9e744addabed0a3a55ef65baaf09989b296bb3e8c6995d4b11eaaa1a1010e86058cfa363c5b'
             'aac8c0a1d2d9dfe37c98e5b83093394fae1f112569ddb8c23228f0e39a42f058ec8b2bb4cfb5303dae32a501cf1d0c918c0f5139a4a896962c7a223a9a52586b'
             '20e088d422f9dc9dd57a3f34533e1cf83a2f85eb89c4278ad82bd775c7073167c2232673fe90f7ac1f8c47beafd8346c76c14277b6738b7384e73eea6bd57685'
-            'd3874e7d222a7e2f44bbf9db6b2cb2ae2f70b95186b929ac754d18bee117d8f1215ae59d044ecb789add897fc54616d4aa06ead9270e6e2b559741c1be240bbf'
-            '893b0ea64e68758d97f3a29251803eca56673fbb8c0209df2cf93cabee431e22b7600cbeb996dd43c6d0b38d73e2af8395e8c2d2829deb59701de7e6770218df'
+            '79864ba79555f575ebbfd7ad95c29a7ff656466cf05aea3c3ce7e561b5f0f9a8fa4ebc5e748073edd8a549080cc75128b5aaceafcd9871cfff0a9bb633553589'
+            'efee170b8ae29d38a54fa9941815b51242683c6cea4e6026aea2e1ce0a3fe02fbe3e31188a284f7ec965198e609b21ab9f1d8a69847cebfa89cb570142384ab2'
             'd75dd4a086f947f63786147d5965fee87b65096b7669b90a4cf719e31df1e8f6b67d42d40f3453b1e1da59e4bc27f32aa76a92b997423118d4efd07b34f30853'
             'd800ad18b40f71a8509acca4d74d8ea9b4d24558665e40a558345403cbcb8a29096baf686158e55baf3d0a4a41a605033c09b162d00a810aa50d8d50785e4bc1'
             'd549caac984a68ff95c928ffb2055b1ed09f1b0bb0beeded731c4a9f391bf0923c50c1cdefa145cc116121e4746bb35f0b9d32814bad8da142f48b1ead293ab1'
-            '4ca16f0078ffb52736b545c85ef3ba8759b6e3375e7658af6a19aa64930371676b644dfb654991cd53a884d96f9ab907826945240471e84bbeeb393f28d82246'
-            'fe8e24e5df032af4fbb49039cedcd4642158f9529de84b7b3579a879b7bc7d6a69c38bcfbcbce6df81fad0e4eec6153fedfb4edfcc5312b874f9821a3cd8d1e8'
+            'f8e20fe34b058e8e554f653424ced37fefd004489689e6047def11cd463b594241432dd425b082d73a2646fe91531be9083a481b47cc784930991f78d9214529'
+            '0339084577de212c4ef02b46d8d836c0211aacae7503ace23b6098af90e9ca1e9ca9e6fa8e3132051ac0a68b032b89b60078bd5a0d7ca3ad617b91a61acbd3b5'
             '421e3eaa6a29846d33dfdadf2bd933fae1ec30ee6e83af3148aab40831498e1e4427d62c56f37a23ebbb93d88d184ef177476a448c6d3503459eba5bb6321d38'
             '7fb6eda30c9542afb26ed63427a07cc01a73e3e1e24e66050fb116242c1bf59b144e72edc67f17f2b61ca65592aad90b01232b57434b9b853e2764a3bcabe2ae'
-            'eaa4cd53119a4afa94cfb4e0c2d8c555e8b85e72c3996713f1af583d2f66b5471dffe12e58624cb97fe2d88d6b3c6e112e906d5e052c199233ed433d47c24e79'
-            '1ec4da718b1beb6aa5c0dd5a4440508302066e413cb5bf36ceba43c66785c354d2fc20e75869aa5ec50971e7e720bbe2b3adba3bb678bc875dc0a1dc109d7759'
-            'e9c6f0bf754d13622086575d329dfb3dcb32e1a1449a1f1417e2d60c218970c29b623d5e9dcc51f14dbbe3416c829b07561ae037bd14282d66252913c4697bec'
-            '8887f2b8104fc9b1adf51e45dcc7df7ec217146c2fb11da0df377b26e259dea5fdef8fd254b7659e4af5c6628ccfeba641afc97cd81890a57797cf16fe6734e2'
-            'b796dfe45d3cae71d69ea62cd6d19b83d06a8f6cdc902c73aeced696187db5aeb5a8b584e68c3cb85c7a287550eb540b0d85217a23e05dc5227bd0f5b56f281f'
-            'ed2e61717b37570c7f058915b8ee2f6515ec3b22884be4646f3bcf2d5b48f17b57be93cfc63970f6988fc70e6e236b574b30c5ce09f54a56b601827cc1793299'
-            '1136c22936df24fa7e8e991eab508db83df5bbecee4d0e7a1b15c3d122c7e8ed4cd936076ae0177abeedc78496813a552d530f661869c031f6bfb708c0f469ad'
+            'ad7a972a35e28114a0af66f37aaba9ae7023cd6f22ba8aa8ff9864cb7748095659b74cebe25df5c6beb0185ff42945ad594145eba5e160251f75c71ba39fde2e'
+            '233b0467c2f8b6e5c3df30d45630554656dc76e524ad7975bbc95d68a051d1490b6f4f5e661a96c7800d5cb6102d648c737e662f302d3dbf9a2d0ce3853bc0fc'
+            '48b6b0d070240a0f9ac4d95b679fd80e006979c0239c3f56101f626cbddd38abbd572ff8ca2106f5a331c41664b1d3ae275ca43e0cb166a3b0bf768238259b03'
+            '4eaac49aad911fc5b3e0990abcacd4fbdbd78dbacf11e6d3d7704b95578ab927475e70f2148232bb7ac5f53c81a02987af83e16ecfeddd43f55c9d731bb7870e'
+            '89fef46a7d006d09e442e3df78ca76fc283c481a62fbf706fa5a47b9aee6fc32db75c06e1381cddb1989aa325993e8e0f4564a17f534095742c4cc4adf7a057f'
+            '7adb4076e60bdf884c16e491e1dc9730baa1fadbabdc0a89773986973b42943a3b1666c5ee047373d72581e8d98686044c4bf0dca7ad03ca120ff2e9a560c9d4'
+            'dc817e85e43483ab4d0b76460407832905c5460d67a805a26817ba5804dae738d0a9e554b2808e7f085b209ff42b0df62e94914bf019189ae25c52d96bfffbce'
+            'd0ac0247ac5993fdb9c2f9c371bbbcf2c8d95dc5d0bd2651b9c396b7a09c799ff055430ff200d4e60859724d54709604532143a8f65f2a1e5dba134c6623edf6'
+            'd3e7250b23997c8cb13ce02a1dac8758705f271d2bcedae82501a253d290d8693ca47ff995365f7e6ef0cdacc36f96b12030d7e0a216f8ce7d4f132e938d4af6'
             '7b7e857b5c72a5cad8be73bb0065268abc71b08df4cbc487a6a8468a6bedfa923a258c95fa97ea44c3c54ed89b52d15c7a74bde4d0171cd86d2a5921a96c15a8'
             'b501454a225cc3882c6ccc61e6029e6a20efee5179668819d3055afa059ecaa4307c1b57f9780c224e91bf2f50192a93cf7003b9dbb7296a9d604e52604eaea4'
             'f8edc60ca3fcfb123d08fc2a3ba8b5dcd504e20e61500ba00268ce4486cfd9432e42192cdd35cd2d63db6fe02fcf8139886b80e0e10cb7b81f7f92ccf539483c'
-            'e38e46893ccd68576525ab76726a0cffd3ae2d7c7b2961518a9b41c79eac254c1ceff649dd265c846cde8b383f3b9f0e625ba5b394bbc3a8f6a52745d7b4ffd8'
             'a1279dcb47ff3d43811c5dfca84a5b4edd6be87f012fa4e2c1a1f0c379e707bee67f23e6dd186be97f78cf1f45f781619db0382fc6aa0d5c42208ad77b95373e'
             'c60019fa4f598031c24845d80814c56cb9585765fa9536e12b3c2f975f721a67808c2bc14830a12af0aea69da122d5a0874b64119f2409d636800ee83eb09ce5'
             'ed7578ef6ba2f1bd17535a03e7750a1ae6e2d4cd7dbcfcd68484f12c6c9273467544dfadf86034d866d35eed152d37c6f576f069e301b69ddfc6b16613ad5a81'
-            'a3ae7415ad73d856b4b79de751443f0eb0c6b2be3fccbd33a7b8aa3d94b8f6328c7a70822e0aadb59b19cf52eed7bb67af99c1715db6e08540613b878a7853ba'
+            '7558ced203351af42a7c10b644b53d0b2b5ea0dc505754aa4f627a82842857db2f45d0e5a9f3f1a37ad8cbe64b3568dad4aeb113908766bfbb96eb19b9e56512'
             'a54c01ba42e7d5f9433dacaa21f656d8aefdb6a5228fbca2b8e55b26eb02b35327ae3fd98a26a708452b8559e7f4acb32b6e685e26edc64497d1b7d10c5d86e1')
 
 pkgname=("$pkgbase" "$pkgbase-headers")
