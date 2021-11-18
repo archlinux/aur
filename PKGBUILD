@@ -1,7 +1,7 @@
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
 
 pkgname=wargus
-pkgver=2.4.3
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ license=('GPL')
 depends=( "stratagus=$pkgver" 'ffmpeg2theora' 'cdparanoia' 'timidity++' 'gtk2' 'tolua++' )
 makedepends=('cmake')
 source=("https://github.com/Wargus/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('86220e0fbb081c0831db8f92361d20a1')
+md5sums=('1dcf2b4b45c56223cf7538dba174cd92')
 install=wargus.install
 
 prepare()
@@ -20,7 +20,6 @@ prepare()
 build() {
   cd build
   cmake "$srcdir"/"$pkgname-$pkgver" \
-        -DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
         -DGAMEDIR=/usr/bin
   make 
