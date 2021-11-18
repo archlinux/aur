@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pacnew_scripts
 pkgver=2012.12
 pkgrel=3
 pkgdesc='A collection of scripts to help merge changes in .pacnew files.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/pacnew_scripts"
+url="https://xyne.dev/projects/pacnew_scripts"
 depends=(perl)
 source=(
-  https://xyne.mirrorrepo.com/projects/pacnew_scripts/src/pacnew_scripts-2012.12.tar.xz
-  https://xyne.mirrorrepo.com/projects/pacnew_scripts/src/pacnew_scripts-2012.12.tar.xz.sig
+  https://xyne.dev/projects/pacnew_scripts/src/pacnew_scripts-2012.12.tar.xz
+  https://xyne.dev/projects/pacnew_scripts/src/pacnew_scripts-2012.12.tar.xz.sig
 )
 sha512sums=(
   5bc4b63ded01da212297343a023c5fd00264246e0cfaa48b9529a8dbac7f54e354248b3d7c8cd6be08a02161a220cd6287a3e94e3385c16edf2b3326623266f1
