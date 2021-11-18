@@ -1,3 +1,8 @@
+2021-11-18 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Update the Qt5 patch to compile with Qt 5.15
+
 2019-08-27 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :

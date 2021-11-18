@@ -1,7 +1,7 @@
 pkgbase = tutka
 	pkgdesc = A free tracker style MIDI sequencer for GNU/Linux.
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nongnu.org/tutka/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = tutka
 	source = http://download.savannah.gnu.org/releases/tutka/tutka-1.1.3.tar.xz
 	source = qt5.patch
 	md5sums = f97f0cdb6cca471319695a8b268b9128
-	md5sums = 0ed9b8122b966f923ebd636f11dd8b37
+	md5sums = ea6a9a6e311be6c31e61a209123d6c77
 
 pkgname = tutka
-
