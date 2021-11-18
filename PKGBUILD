@@ -1,5 +1,5 @@
 # Maintainer: Dominic Giebert <dominic.giebert@gmail.com>
-# Contributor: TuxSpirit <johansen.parker@gmail.com>
+# Contributor: auroq <johansen.parker@gmail.com>
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
