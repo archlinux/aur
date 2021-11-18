@@ -1,5 +1,5 @@
 # Maintainer: Anthony Wang <ta180m at protonmail dot com>
-# Contibutor: Yiyao Yu <yuydevel at protonmail dot com>
+# Contributor: Yiyao Yu <yuydevel at protonmail dot com>
 # Contributor: Benjamin Maisonnas <ben at wainei dot net>
 # Author: Ondrej Čerman
 
