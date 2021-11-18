@@ -12,9 +12,7 @@ sha256sums=('4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa')
 
 
 package() {
-  chmod a+x ${pkgname}-${pkgver}.AppImage
-  mkdir -p $pkgdir/usr/bin
-  cp -L ${pkgname}-${pkgver}.AppImage $pkgdir/usr/bin/emoji-keyboard
+  install -Dm ${pkgname}-${pkgver}.AppImage ${pkgdir}/usr/bin/emoji-keyboard
 }
 
 
