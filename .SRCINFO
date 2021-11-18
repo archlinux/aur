@@ -1,0 +1,15 @@
+pkgbase = nancy
+	pkgdesc = Checks for vulnerabilities in Golang dependencies
+	pkgver = 1.0.28
+	pkgrel = 1
+	url = https://github.com/sonatype-nexus-community/nancy
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = nancy-1.0.28.tar.gz::https://github.com/sonatype-nexus-community/nancy/archive/v1.0.28.tar.gz
+	sha256sums = 34522beb36a5f9250f2a7149baeca2452a0cd4defe629a996e3b3eeacbf6d6d9
+
+pkgname = nancy
