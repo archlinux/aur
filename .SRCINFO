@@ -1,7 +1,7 @@
 pkgbase = arma3-unix-launcher-bin
 	pkgdesc = Launcher for ArmA 3 on Linux and Mac OS X (with Steamworks SDK)
-	pkgver = 303.86c5998
-	pkgrel = 2
+	pkgver = 305.b97c56b
+	pkgrel = 1
 	url = https://github.com/muttleyxd/arma3-unix-launcher
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = arma3-unix-launcher-bin
 	depends = spdlog
 	provides = arma3-unix-launcher
 	conflicts = arma3-unix-launcher
-	source = https://github.com/muttleyxd/arma3-unix-launcher/releases/download/commit-303/arma3-unix-launcher-303.86c5998-1-archlinux-x86_64.pkg.tar.zst
-	sha256sums = 08b63a68c2aac9eddff0f6ad15ee6f9b09fe7bcca5f69fe224e311ba5519bc22
+	source = https://github.com/muttleyxd/arma3-unix-launcher/releases/download/commit-305/arma3-unix-launcher-305.b97c56b-1-archlinux-x86_64.pkg.tar.zst
+	sha256sums = 96c1bb73be64a68f2a2787f6b4db748ab5274f73c7e4e1ce6c1865f9f52668ce
 
 pkgname = arma3-unix-launcher-bin
