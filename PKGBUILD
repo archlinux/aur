@@ -1,44 +1,34 @@
+# Merged with official ABS libkgapi PKGBUILD by João, 2021/11/18 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+
 pkgname=libkgapi-git
-pkgver=r687.
+pkgver=5.19.40_r1319.g7c286d7
 pkgrel=1
-pkgdesc='A KDE-based library for accessing various Google services via 
-their public API'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/extragear/libs/libkgapi'
-license=('GPL' 'LGPL' 'FDL')
-depends=('kcontacts-git' 'kcalcore-git')
-makedepends=('extra-cmake-modules' 'git')
-conflicts=('libkgapi''libkgapi-frameworks-git')
-provides=('libkgapi')
-source=('libkgapi::git+git://anongit.kde.org/libkgapi')
-md5sums=('SKIP')
+pkgdesc='A KDE-based library for accessing various Google services via their public API'
+url='https://www.kde.org/'
+arch=($CARCH)
+license=(GPL LGPL FDL)
+depends=(kcalendarcore-git kcontacts-git kwallet-git)
+makedepends=(git extra-cmake-modules-git qt5-tools)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kdepim-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/libkgapi"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse 
---short HEAD)"
-}
-
-prepare() {
-  if [[ -d "${srcdir}/build" ]]; then
-      msg "Cleaning the previous build directory..."
-      rm -rf "${srcdir}/build"
-  fi
-  mkdir "${srcdir}/build"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(RELEASE_SERVICE_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver=${_ver:-"$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"}
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/build"
-  cmake  "${srcdir}/libkgapi" -DCMAKE_BUILD_TYPE=Release \
-                -DCMAKE_INSTALL_PREFIX=/usr \
-		-DLIB_INSTALL_DIR=lib \
-    		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    		-DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
