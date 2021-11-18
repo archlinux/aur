@@ -1,16 +1,16 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pkg_scripts
 pkgver=2020
 pkgrel=2
 pkgdesc='A collection of pacman and package-related utilities.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/pkg_scripts"
+url="https://xyne.dev/projects/pkg_scripts"
 depends=(pyalpm python3 python3-xcpf)
 optdepends=('python3-colorsysplus: colorized output in some scripts')
 source=(
-  https://xyne.mirrorrepo.com/projects/pkg_scripts/src/pkg_scripts-2020.tar.xz
-  https://xyne.mirrorrepo.com/projects/pkg_scripts/src/pkg_scripts-2020.tar.xz.sig
+  https://xyne.dev/projects/pkg_scripts/src/pkg_scripts-2020.tar.xz
+  https://xyne.dev/projects/pkg_scripts/src/pkg_scripts-2020.tar.xz.sig
 )
 sha512sums=(
   062a61924139ac8adc87f344333611ac6eea379a51704b0e20fcbb64d54f949162ef3642f4c981adabf902d9009d46d12b292db96e823a6e89fe7aed8cd3998b
