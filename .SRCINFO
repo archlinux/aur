@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-nlohmann-json
 	pkgdesc = Header-only JSON library for Modern C++ (mingw-w64)
-	pkgver = 3.9.1
+	pkgver = 3.10.4
 	pkgrel = 1
 	url = https://github.com/nlohmann/json
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-nlohmann-json
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/nlohmann/json/archive/v3.9.1.tar.gz
-	sha256sums = 4cf0df69731494668bdd6460ed8cb269b68de9c19ad8c27abc24cd72605b2d5b
+	source = https://github.com/nlohmann/json/archive/v3.10.4.tar.gz
+	sha256sums = 1155fd1a83049767360e9a120c43c578145db3204d2b309eba49fbbedd0f4ed3
 
 pkgname = mingw-w64-nlohmann-json
-
