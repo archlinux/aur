@@ -2,7 +2,7 @@
 
 pkgname=phoc-embedded-wlroots
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
 url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=(GPL3)
@@ -19,6 +19,7 @@ makedepends=(
 	libhandy
 	meson
 	vala
+	wayland-protocols
 )
 checkdepends=(xorg-server-xvfb)
 provides=(phoc)
