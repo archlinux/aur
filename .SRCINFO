@@ -1,6 +1,6 @@
 pkgbase = apache-flink
 	pkgdesc = A framework and distributed processing engine for stateful computations over unbounded and bounded data streams (with Scala)
-	pkgver = 1.13.1_2.12
+	pkgver = 1.14.0_2.12
 	pkgrel = 1
 	url = http://flink.apache.org
 	install = apache-flink.install
@@ -20,7 +20,7 @@ pkgbase = apache-flink
 	backup = etc/apache-flink/masters
 	backup = etc/apache-flink/slaves
 	backup = etc/apache-flink/zoo.cfg
-	source = apache-flink-1.13.1_2.12.tgz::https://archive.apache.org/dist/flink/flink-1.13.1/flink-1.13.1-bin-scala_2.12.tgz
+	source = apache-flink-1.14.0_2.12.tgz::https://archive.apache.org/dist/flink/flink-1.14.0/flink-1.14.0-bin-scala_2.12.tgz
 	source = apache-flink-jobmanager.service
 	source = apache-flink-taskmanager@.service
 	sha256sums = e644c2479afd94a7460d541f727849a2bef844e97a6133c614c3cb9a68a29438
