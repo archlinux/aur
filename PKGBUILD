@@ -1,6 +1,6 @@
 
 pkgname=gwyddion
-pkgver=2.59
+pkgver=2.60
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="http://gwyddion.net/"
@@ -19,17 +19,11 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'libwebp: WebP format support for the image export'
             'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files'
-#            'openexr: import and export of OpenEXR HDR images'
+            'openexr: import and export of OpenEXR HDR images'
             'hdf5: import of Ergo data files')
-source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz gwyddion-2.58-disable-openexr.patch)
-sha256sums=('00f30e25e66dff3a7c26f5e084a6799501512963bfe13543391a24f2a0201019'
-            '5096afc6030ef2c39635ce33dec2af1c25b62865710a1aa91006d11ac1607bc4')
+source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
+sha256sums=('dfc3c86ab7653b30eb54a5af57802242579c4d89b061e82dcd1c9aef5dc0bbf6')
 
-prepare() {
-   cd $pkgname-$pkgver
-
-  patch -Np2 -i "${srcdir}/gwyddion-2.58-disable-openexr.patch"
-}
 
 build() {
   cd $pkgname-$pkgver
