@@ -19,6 +19,12 @@ pkgbase = gnupg1
 	depends = libusb-compat
 	depends = curl>=7.16.2
 	depends = readline>=6.0.00
+	depends = pinentry
+	provides = gnupg1=1.4.23
+	conflicts = gnupg1
+	conflicts = gnupg1-extended
+	replaces = gnupg1
+	replaces = gnupg1-extended
 	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-1.4.23.tar.bz2
 	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-1.4.23.tar.bz2.sig
 	validpgpkeys = D8692123C4065DEA5E0F3AB5249B39D24F25E3B6
@@ -29,4 +35,3 @@ pkgbase = gnupg1
 	sha1sums = SKIP
 
 pkgname = gnupg1
-
