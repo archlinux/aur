@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pbget
 pkgver=2021.7
 pkgrel=2
 pkgdesc='Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/pbget"
+url="https://xyne.dev/projects/pbget"
 depends=(git pm2ml python3 python3-aur python3-xcgf python3-xcpf)
 source=(
-  https://xyne.mirrorrepo.com/projects/pbget/src/pbget-2021.7.tar.xz
-  https://xyne.mirrorrepo.com/projects/pbget/src/pbget-2021.7.tar.xz.sig
+  https://xyne.dev/projects/pbget/src/pbget-2021.7.tar.xz
+  https://xyne.dev/projects/pbget/src/pbget-2021.7.tar.xz.sig
 )
 sha512sums=(
   4b723393589ddb9291e02a3e4b3482d4c91c748dd2366839d9126239b433fd37a637752616c17feab222e583a8479c9946af004fbda62d44eb602c9f41657b53
