@@ -36,7 +36,7 @@ post_install() {
 	    copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh MeshName
         copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh MeshID
         copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh ServerID
-        copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh Meshserver
+        copy_var_from_msh /etc/meshagent.msh.pacsave /etc/meshagent.msh MeshServer
 	fi
 	echo "mesh-agent.service not yet enabled. Remember to edit /etc/meshagent.sh and enable mesh-agent.service"
 }
