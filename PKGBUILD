@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pystopwatch
 pkgver=2019
 pkgrel=2
 pkgdesc='A stopwatch written in Python with a clock and two countdown functions that can minimize to the tray.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/pystopwatch"
+url="https://xyne.dev/projects/pystopwatch"
 depends=(gtk2 librsvg pygtk python2)
 source=(
-  https://xyne.mirrorrepo.com/projects/pystopwatch/src/pystopwatch-2019.tar.xz
-  https://xyne.mirrorrepo.com/projects/pystopwatch/src/pystopwatch-2019.tar.xz.sig
+  https://xyne.dev/projects/pystopwatch/src/pystopwatch-2019.tar.xz
+  https://xyne.dev/projects/pystopwatch/src/pystopwatch-2019.tar.xz.sig
 )
 sha512sums=(
   bfe88dd238c08b3b36f3789994e8cd30787e8cc1ee17bc8005828a2f5816b6d6c26b721899dcc5da8e867147bbc6acb5f3d86c623b6e9bd9ef23df2a41a1c52c
