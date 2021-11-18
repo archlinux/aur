@@ -1,5 +1,5 @@
 pkgname=passphraseme-git
-pkgrel=4
+pkgrel=5
 pkgver=0.1.4
 pkgdesc="A quick and simple cryptographically secure script to generate high entropy passphrases using EFF's wordlists"
 url="https://github.com/micahflee/passphraseme"
@@ -10,7 +10,7 @@ depends=('python')
 source=("git+https://github.com/micahflee/passphraseme.git")
 sha1sums=('SKIP')
 pkgver() {
-    cd "$pkgname"
+    cd "passphraseme"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
