@@ -2,7 +2,7 @@
 
 pkgname=hotspot
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
 url="https://github.com/KDAB/hotspot"
@@ -20,11 +20,11 @@ build() {
             -DRUSTC_DEMANGLE_INCLUDE_DIR=/usr/include \
             -DRUSTC_DEMANGLE_LIBRARY=/usr/lib/librustc_demangle.so \
             -DBUILD_TESTING=off
-    make
+    cmake --build .
 }
 
 package() {
     cd "${pkgname}-v${pkgver}"
-    make DESTDIR="${pkgdir}/" install
+    DESTDIR="${pkgdir}/" cmake --install .
     desktop-file-install hotspot.desktop --dir="${pkgdir}/usr/share/applications/"
 }
