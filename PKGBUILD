@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.26.4
+pkgver=0.26.5
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
@@ -40,7 +40,7 @@ source=("${url}/archive/v${pkgver}.zip"
         "crontab_calls.patch"
         "systemd_calls.patch"
         "LICENSE")
-sha256sums=('07c394498f4808a80ac8cb2530df2f9baddf9ff298ebbcb938ad0353f25278cd'
+sha256sums=('29e19c047563392f84dbe61b004307c01dc5bcbd6a5cba6aed30b4a84bdef411'
             '5b3e99b6be28f8c68e024d9127992bcd49c758566a6ecaa15f9788a411eab0f0'
             '88fae4d0578b9badaa91d1d4771952b4c7560ba2f56f4eda990034078a44431e'
             'c600fefea1c93e9f94192741adc679fb0a05674775d3677954f10db4e09205c6'
@@ -80,8 +80,6 @@ package() {
 
   # Install executable and license
   install -Dm755 "${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Move all files in place
