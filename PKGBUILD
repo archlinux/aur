@@ -2,12 +2,12 @@
 
 pkgname=caatinga-git
 pkgver=1.1.1.r2.g4821af9
-pkgrel=2
+pkgrel=3
 pkgdesc="A command line backup program written in Python - Git Version"
 arch=('any')
 url="https://github.com/headmastersquall/caatinga"
 license=('GPL3')
-makedepends=('git' 'python2-setuptools')
+makedepends=('git' 'python-setuptools')
 conflicts=('caatinga')
 provides=('caatinga')
 source=('git+https://github.com/headmastersquall/caatinga')
@@ -20,7 +20,7 @@ pkgver() {
 
 package() {
   cd "${pkgname%-git}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  python3 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
