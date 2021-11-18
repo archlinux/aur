@@ -1,13 +1,13 @@
 pkgbase = tidy-viewer
 	pkgdesc = CLI csv pretty printer that uses column styling
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/alexhallam/tv
 	arch = x86_64
 	arch = aarch64
 	license = Unlicense
 	makedepends = cargo
-	source = tv-1.4.2.tar.gz::https://github.com/alexhallam/tv/archive/1.4.2.tar.gz
-	sha256sums = b6f3edf58314b2f69a40d63a032684b1b30406eb03ab1926493b83e92da08884
+	source = tv-1.4.3.tar.gz::https://github.com/alexhallam/tv/archive/1.4.3.tar.gz
+	sha256sums = e308eb088d059d18119dc757c98487d9cabc2f4b97035a8dc9f8253717aa9fe9
 
 pkgname = tidy-viewer
