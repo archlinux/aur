@@ -1,6 +1,6 @@
 pkgbase = firefox-chrome-manager-git
 	pkgdesc = Firefox userChrome.css Installer
-	pkgver = r10.0b36c49
+	pkgver = r11.1481abf
 	pkgrel = 1
 	url = https://github.com/quininer/firefox-chrome-manager
 	arch = x86_64

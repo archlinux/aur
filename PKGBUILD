@@ -2,7 +2,7 @@
 
 _pkgname=firefox-chrome-manager
 pkgname=$_pkgname-git
-pkgver=r10.0b36c49
+pkgver=r11.1481abf
 pkgrel=1
 pkgdesc="Firefox userChrome.css Installer"
 url="https://github.com/quininer/firefox-chrome-manager"
