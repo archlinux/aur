@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=obtheme
 pkgver=2013.2.20.2
 pkgrel=5
 pkgdesc='A GUI theme editor for Openbox.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/obtheme"
+url="https://xyne.dev/projects/obtheme"
 depends=(gtk2 pygtk python2 python2-fuse)
 source=(
-  https://xyne.mirrorrepo.com/projects/obtheme/src/obtheme-2013.2.20.2.tar.xz
-  https://xyne.mirrorrepo.com/projects/obtheme/src/obtheme-2013.2.20.2.tar.xz.sig
+  https://xyne.dev/projects/obtheme/src/obtheme-2013.2.20.2.tar.xz
+  https://xyne.dev/projects/obtheme/src/obtheme-2013.2.20.2.tar.xz.sig
 )
 sha512sums=(
   5e7d1d187c0d5f3e6851b3a09be9aeed3b2708277940abd19efba4a501bf3ab20e0307f51e4b63e33ba07d301abf41607cec7074b3e478c9c5e6b065b3773f77
