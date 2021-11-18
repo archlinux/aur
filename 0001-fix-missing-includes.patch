@@ -1,0 +1,52 @@
+diff --git a/src/libs/auth/include/auth/IPasswordService.hpp b/src/libs/auth/include/auth/IPasswordService.hpp
+index 69278fc..2d751c7 100644
+--- a/src/libs/auth/include/auth/IPasswordService.hpp
++++ b/src/libs/auth/include/auth/IPasswordService.hpp
+@@ -20,7 +20,7 @@
+ #pragma once
+ 
+ #include <string_view>
+-
++#include <optional>
+ #include <Wt/WDateTime.h>
+ #include <Wt/Dbo/ptr.h>
+ 
+diff --git a/src/libs/scrobbling/impl/listenbrainz/SendQueue.hpp b/src/libs/scrobbling/impl/listenbrainz/SendQueue.hpp
+index 9878d5d..72dddab 100644
+--- a/src/libs/scrobbling/impl/listenbrainz/SendQueue.hpp
++++ b/src/libs/scrobbling/impl/listenbrainz/SendQueue.hpp
+@@ -24,7 +24,7 @@
+ #include <boost/asio/io_context.hpp>
+ #include <boost/asio/io_context_strand.hpp>
+ #include <boost/asio/steady_timer.hpp>
+-
++#include <optional>
+ #include <Wt/Http/Client.h>
+ 
+ namespace Scrobbling::ListenBrainz
+diff --git a/src/libs/utils/include/utils/EnumSet.hpp b/src/libs/utils/include/utils/EnumSet.hpp
+index 38d42c6..68bce06 100644
+--- a/src/libs/utils/include/utils/EnumSet.hpp
++++ b/src/libs/utils/include/utils/EnumSet.hpp
+@@ -18,7 +18,7 @@
+  */
+ 
+ #pragma once
+-
++#include <limits>
+ #include <cassert>
+ #include <type_traits>
+ 
+diff --git a/src/lms/ui/Auth.hpp b/src/lms/ui/Auth.hpp
+index 5fda238..20e04a7 100644
+--- a/src/lms/ui/Auth.hpp
++++ b/src/lms/ui/Auth.hpp
+@@ -20,7 +20,7 @@
+ #pragma once
+ 
+ #include <Wt/WTemplateFormView.h>
+-
++#include <optional>
+ #include "database/Types.hpp"
+ 
+ namespace UserInterface {
