@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-proj
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Cartographic Projections library (mingw-w64)"
 depends=('mingw-w64-crt' 'mingw-w64-sqlite' 'mingw-w64-libtiff' 'mingw-w64-curl')

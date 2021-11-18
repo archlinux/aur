@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-proj
 	pkgdesc = Cartographic Projections library (mingw-w64)
 	pkgver = 8.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proj.org/
 	arch = any
 	license = MIT
