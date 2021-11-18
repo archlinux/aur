@@ -1,0 +1,20 @@
+pkgbase = stereokit-egl
+	pkgdesc = An easy-to-use open source library for building XR apps with C#/C++ and OpenXR!
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://stereokit.net/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7l
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = openxr>=1.0.18
+	depends = fontconfig
+	depends = libegl
+	depends = libgl
+	provides = stereokit
+	source = stereokit-egl-0.3.4.tar.gz::https://github.com/maluoi/StereoKit/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = stereokit-egl
