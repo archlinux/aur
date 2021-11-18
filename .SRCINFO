@@ -1,8 +1,8 @@
 pkgbase = tclxml
 	pkgdesc = XML support for the Tcl scripting language
-	pkgver = 3.2
-	pkgrel = 2
-	url = http://tclxml.sourceforge.net
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/flightaware/TclXML
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
@@ -10,8 +10,7 @@ pkgbase = tclxml
 	depends = bash
 	optdepends = tcl: technically not needed, but you want it if you want this package
 	optdepends = tcllib: technically not needed, but you want it if you want this package
-	source = http://downloads.sourceforge.net/sourceforge/tclxml/tclxml-3.2.tar.gz
-	md5sums = 9d1605246c899eff7db591bca3c23200
+	source = https://github.com/flightaware/TclXML/archive/refs/tags/v3.3.1.tar.gz
+	md5sums = fb8106c41efcb5053389007851d2a237
 
 pkgname = tclxml
-
