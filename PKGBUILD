@@ -2,26 +2,25 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-google-cloud-storage
-pkgver=1.42.3
+pkgver=1.43.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=('any')
 url='https://github.com/googleapis/python-storage'
 license=('Apache')
 depends=(
-	'python>=3.6'
-	'python-google-api-core>=1.29.0'
-	'python-google-auth>=1.25'
-	'python-google-cloud-core>=1.6.0'
-	'python-google-resumable-media>=1.3.0'
+	'python-google-api-core'
+	'python-google-auth'
+	'python-google-cloud-core'
+	'python-google-resumable-media'
 	'python-protobuf'
-	'python-requests>=2.18.0'
+	'python-requests'
 	'python-six')
 makedepends=('python-setuptools' 'python-sphinx' 'python-recommonmark')
 # checkdepends=('python-pytest-runner' 'python-mock' 'python-google-test-utils')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/python-storage/archive/v$pkgver.tar.gz")
-sha256sums=('c9381af1fb2f26c62bd9233121b59bbd083683d6834e8586069ef66ae7a99fb2')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f6168b8b19fcb5914930bfa90532069d2b76408393c0770f5e6916dadabaea8f')
 
 build() {
 	cd "python-storage-$pkgver"
