@@ -1,16 +1,15 @@
 pkgbase = python-galpy-doc
 	pkgdesc = Documentation for galpy
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://www.galpy.org
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	makedepends = python-galpy=1.7.0
+	makedepends = python-galpy=1.7.1
 	makedepends = python-sphinx
 	makedepends = python-future
 	makedepends = gsl
-	source = https://github.com/jobovy/galpy/archive/v1.7.0.tar.gz
-	md5sums = 4e6206d4beeb55c4b2bc70bc0031020f
+	source = https://github.com/jobovy/galpy/archive/v1.7.1.tar.gz
+	md5sums = 06b9430c168e9439cfb55ad440c2d605
 
 pkgname = python-galpy-doc
