@@ -1,14 +1,14 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=locale-en_xx
 pkgver=2017
 pkgrel=2
 pkgdesc='A mixed international English locale with ISO and POSIX formats for cosmopolitan coders.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/locale-en_xx"
+url="https://xyne.dev/projects/locale-en_xx"
 source=(
-  https://xyne.mirrorrepo.com/projects/locale-en_xx/src/locale-en_xx-2017.tar.xz
-  https://xyne.mirrorrepo.com/projects/locale-en_xx/src/locale-en_xx-2017.tar.xz.sig
+  https://xyne.dev/projects/locale-en_xx/src/locale-en_xx-2017.tar.xz
+  https://xyne.dev/projects/locale-en_xx/src/locale-en_xx-2017.tar.xz.sig
 )
 sha512sums=(
   51d75f351a1be278f457883306de8d18781827a82ad000d0ad0e324fc88c9eaaf0f7d395ee33bdc43a61d47b2318077b0385cf5fbeda3c467b4055d6adb2fd6d
