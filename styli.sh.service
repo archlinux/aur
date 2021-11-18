@@ -3,6 +3,7 @@ Description=Styli.sh - Switch Wallpaper
 
 [Service]
 ExecStart=/bin/sh -c '/usr/bin/styli.sh $STYLISH_FLAGS'
+Restart=on-failure
 
 [Install]
 WantedBy=default.target

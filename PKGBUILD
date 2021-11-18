@@ -1,7 +1,7 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 pkgname=styli.sh-git
 pkgver=r101.232f23c
-pkgrel=2
+pkgrel=3
 pkgdesc="wallpaper switching made easy"
 arch=(any)
 url="https://github.com/thevinter/styli.sh"
@@ -20,7 +20,7 @@ source=("${pkgname%-git}::git+$url"
         "${pkgname%-git}.timer")
 noextract=()
 sha256sums=('SKIP'
-            '22465fcb9402a8eaa3f104fc0f7a9461725c4c20657b4b1af248f0d4cd9a41c3'
+            '609cb72db3888cceb6472b06783bffbb9e3d18ab23cb75ca0ee93371b88d067d'
             'd8576d3b5d4dab9e29586eaedd6e32aeaa08472ba283e6f4aa9dffd85d102abd')
 
 pkgver() {
