@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 _electronversion=11
 _nodeversion=15
@@ -13,7 +13,7 @@ makedepends=('git' 'nvm' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('2c56fb6f33acc32d402338878830dc619a23b420016300f88f600899b195cfa9'
+sha256sums=('c5c7aca59cc84a3dd1a42c3cc2e574d30c02db1ac360805c4fef04b51d6b6c3e'
             '5d4a885c7a4cf6330df5b00b39f51da85af38c715ed72233286bd296f2bb2c57'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
