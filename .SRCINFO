@@ -3,6 +3,7 @@ pkgbase = ddstats-rust-git
 	pkgrel = 1
 	arch = x86_64
 	makedepends = cargo-nightly
+	makedepends = libcap
 	source = ddstats-rust::git+https://github.com/lsaa/ddstats-rust
 	sha256sums = SKIP
 	b2sums = SKIP
