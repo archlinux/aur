@@ -1,7 +1,8 @@
 # Maintainer: Yurii <yu.hrysh@posteo.net>
+# Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=open-hexagon-git
-pkgver=2.0.6.r7.g41d48c9b
+pkgver=2.0.6.r213.g11a61da3
 pkgrel=1
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
@@ -91,5 +92,5 @@ package() {
 	# Executables
 	install -Dm755 "${srcdir}/open-hexagon" -t "${pkgdir}/usr/bin"
 	install -Dm644 "${srcdir}/open-hexagon.desktop" -t "${pkgdir}/usr/share/applications"
-	install -Dm644 "${srcdir}/${_reponame}/art/icon.png" "${pkgdir}/usr/share/pixmaps/open-hexagon.png"
+	install -Dm644 "${srcdir}/${_reponame}/_RELEASE/Assets/icon.png" "${pkgdir}/usr/share/pixmaps/open-hexagon.png"
 }
