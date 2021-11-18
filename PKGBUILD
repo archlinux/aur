@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 pkgname=wayfire-git
-pkgver=0.7.2.r20211113.1122110
+pkgver=0.7.2.r20211118.0fc949e
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 options=()
-source=('git+https://github.com/marcusbritanicus/wayfire.git#commit=11221100b7a33aec828c37a399e0b9fda2704aa8')
+source=('git+https://github.com/WayfireEM/wayfire')
 sha256sums=('SKIP')
 
 pkgver() {
