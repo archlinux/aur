@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux-mariadb-client
-pkgver=1.0.0
+pkgver=1.0.1
 #pkgver=main
 pkgrel=1
 epoch=
