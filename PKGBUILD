@@ -1,16 +1,16 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=mimeo
 pkgver=2021.2
 pkgrel=4
 pkgdesc='Open files by MIME-type or file name using regular expressions.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/mimeo"
+url="https://xyne.dev/projects/mimeo"
 depends=(file python-pyxdg python3)
 optdepends=('shared-mime-info: for recognizing more MIME-types')
 source=(
-  https://xyne.mirrorrepo.com/projects/mimeo/src/mimeo-2021.2.tar.xz
-  https://xyne.mirrorrepo.com/projects/mimeo/src/mimeo-2021.2.tar.xz.sig
+  https://xyne.dev/projects/mimeo/src/mimeo-2021.2.tar.xz
+  https://xyne.dev/projects/mimeo/src/mimeo-2021.2.tar.xz.sig
 )
 sha512sums=(
   03675101349874d6c0dc05fa076a650bfe2b923b7c0ac37f7661b0913e595f26713522c0f6a070af21f33bdb6e88fea82fea29b97cabe2e3cb8b8ea3502e3458
