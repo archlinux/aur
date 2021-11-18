@@ -1,6 +1,6 @@
 pkgbase = gittyup-git
 	pkgdesc = Graphical Git client (GitAhead fork)
-	pkgver = r533.73bf3db
+	pkgver = r534.4313005
 	pkgrel = 1
 	url = https://github.com/Murmele/Gittyup
 	arch = x86_64
@@ -20,7 +20,6 @@ pkgbase = gittyup-git
 	optdepends = git-lfs: git-lfs support
 	provides = gittyup
 	conflicts = gittyup
-	conflicts = gitahead
 	source = gittyup::git+https://github.com/Murmele/Gittyup.git
 	source = git+https://github.com/stinb/libgit2.git
 	source = git+https://github.com/git/git.git
@@ -32,6 +31,6 @@ pkgbase = gittyup-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 537674eec14d36761691e7ab803ceed47107c60f34cfe556f708284ebda9a96f
+	sha256sums = a07943687afee5f3664219373b60ae54eaa207414646181df107893407119462
 
 pkgname = gittyup-git

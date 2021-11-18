@@ -1,11 +1,10 @@
 [Desktop Entry]
-Name= Gittyup
+Name=Gittyup
 Comment=Graphical git client
-Exec=gittyup
-Icon=gitahead
+Exec=/usr/bin/gittyup
+Icon=gittyup
 Terminal=false
 Type=Application
 StartupNotify=true
 Categories=GNOME;GTK;Development;Documentation;
 MimeType=text/plain;
-Name[it_IT]=gittyup.desktop
