@@ -2,7 +2,7 @@
 # Contributor: Mikaela Szekely <qyriad@gmail.com>
 
 pkgname=cargo-update
-pkgver=7.0.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="A cargo subcommand for checking and applying updates to installed executables"
 arch=( 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/nabijaczleweli/cargo-update"
 license=('MIT')
 makedepends=('cargo' 'libssh2' 'openssl')
 source=("https://github.com/nabijaczleweli/cargo-update/archive/v${pkgver}.tar.gz")
-sha256sums=('3336408952ddd43c75bcce9b55b4540a0249cfd521372ee809b29549701aa034')
+sha256sums=('feadb2a5b67c58ca3b29deb280c51ae25bc80f4a4619d62a9a4c5772ddf79e43')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
