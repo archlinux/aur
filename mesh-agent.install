@@ -65,6 +65,7 @@ pre_remove() {
 	    echo 'Disabling mesh-agent service...'
         systemctl is-enabled mesh-agent.service &> /dev/null
         if [ $? -eq 0 ]; then
+            systemctl stop mesh-agent.service &> /dev/null
             systemctl disable mesh-agent.service &> /dev/null
         fi
         systemctl daemon-reload
