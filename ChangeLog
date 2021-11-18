@@ -1,132 +1,77 @@
-=== Morgen 2.3.3
-Improvements
-- Avoid the flickering of the attendee autocompletion widget while typing.
-- Improved the loading time of the scheduling links, that was definitely too long.
-- Now the event widget does not move around like crazy while you are changing the time of the event.
-- Allow selecting and copying the error message in case of a crash.
-- Use Command/CTRL+H to hide and Command/CTRL+M to minimize.
 
-Bug Fixes
-- Fixed the positioning of the event widget appearing out of the screen on the Day view.
-- Fixed a crash occurring when creating a tag without a name.
-- Fixed the visual occlusion for the tag editing tooltip.
-- Fixed an issue making it impossible to remove the event description of an event in Exchange.
-- Fixed an issue preventing the Quick Join button to appear with many all-day events.
-- Fixed time zone helper showing out of the screen on the Day view.
+=== Morgen 2.1.6
 
-=== Morgen 2.3.2
-Bug Fixes
-- Fixed a problem making it impossible to remove calendar accounts when the subscription is expired.
-- Fixed an issue causing the event details popup to appear out of the screen in some cases.
-- Fixed an issue preventing the correct display of error messages during the connection of a calendar account.
+* Bug Fixes
+- Fixed an issue where certain CalDAV accounts could not be connected
+- Fixed a bug causing recurring events to be displayed on the wrong day in some timezones
+- Fixed a problem causing the event detail widget to become unresponsive in some edge cases
+- Fixed an issue causing the wrong organizer to be set when importing external invitations into Google Calendar; now, Morgen also disallows importing multiple times the same event
+- Fixed the colored calendar indicator in the Save button to show the correct calendar color
+- Fixed an issue preventing switching recurrent events to a different calendar
 
-=== Morgen 2.3.1
-New Features
-- Morgen Time Zone Assistant. 
+* Improvements
+- Added a loading indicator in the event detail widget to indicate that an event is being updated
+- Prevent entering the alpha channel when defining custom calendar colors, because this is not supported
+- Event colors in dark mode have been slightly adjusted to be less strong
+- Add throttle on the refresh calendars operation, to avoid lag on the calendar view when coming into focus
+- Restore the previous status of the sidebar when the app is launched
+- Ensure that existing events cannot be imported as duplicates
 
-Improvements
-- Events marked as "not busy" are now displayed with different color shade to visually set them apart from busy events.
-- On Linux, the date-time picker gets format directly from the language and locale settings of the system. This makes the widget more consistent with what you see on web apps running in the browser.
-- We improved the way local-only events look like. If you are offline or your connection is unstable, Morgen allows you to continue editing your events. These events, however, are not synchronized with the calendar provider until you are back online, and this release makes this case more apparent.
+=== Morgen 2.1.7
+* Bug Fixes
+- Fixed a memory leak causing memory usage to grow over time; this should also fix performance degradation over time
+- Fixed an issue where certain CalDAV accounts could not be connected because of a failed service discovery (was actually not fixed in 2.1.6)
+- Fixed an issue causing some recurrence rules not to be updated correctly
+- Fixed an issue where tasks could not be dropped to the all-day section
+- Fixed an issue causing the first occurrence of an event series not to be displayed in some timezones
+- Fixed an issue causing some events to overlap entirely in the Month view
 
-Bug Fixes
-- Fixed a problem causing duplicate events sometimes appearing in the calendar.
-- Fixed the connection to some CalDAV services, using non-standard connection ports.
-
-
-=== Morgen 2.3.0
-New Features
-- Zapier integration
-
-Improvements
--Starting from this release, Morgen persists the latest calendar view settings and restores them when you restart the app. For example, if you normally work on the monthly view, you will start from the same monthly view after a restart. Similarly, if you prefer not to see weekends, you will not need to toggle them off every time anymore.
-
-Bug Fixes
-- Fixed the calendar widget not appearing when editing the end date of a recurrence
-- Fixed parsing of some events, which was causing the end date to be wrong (and in the wrong timezone)
-- Fixed notifications with CalDAV calendars, that were not delivered reliably
-- Fixed a minor style issue with the notes fields in the Scheduler sidebar tab
+⭐ Improvements
+- The major new feature landed in 2.1.7 is Account Synchronization.
+- Morgen now clears outdated notifications
+- Morgen does not send notifications for events that belong to an inactive calendar anymore
+- The Morgen icon is used for task switcher on Linux as well
 
 
-=== Morgen 2.2.6
-Improvements
-- Often an event timezone differs from the current local timezone. We have improved the event detail widget to show both the event original time and the time in the local timezone. Moreover, when the start and end timezones are different (long flights are a common example), Morgen now shows both. 
+=== Morgen 2.1.8
+Ouch! We have been reported a crash occurring when trying to edit calendar shortcuts. Morgen 2.1.8 fixes this issue. Since we were at it, we also fixed a problem causing an error when editing some events created with Fastmail.
 
-Bug Fixes
-- It is now possible to select and copy text from the Notes field of an event that is not editable.
-- Fixed an issue causing some yearly events to be displayed every month.
-- Fixed an issue preventing the correct update of a weekly event series when the weekday is changed.
 
-=== Morgen 2.2.5
-New
-- You can now define the auto-refresh interval for calendar subscriptions (iCalendar feeds). If you are working with a highly dynamic calendar, you might want to use a refresh interval of 5, 15, or 60 minutes. Instead, if you know that the calendar does not change often, or if it contains a large number of events, you can set the refresh interval to 1 day to save resources.
+=== Morgen 2.1.9
+* Bug Fixes
+- Fixed an issue causing huge output logs on some systems
+- Fixed a problem delivering notifications and event alerts
+- Fixed an issue preventing the compaction of the database, which could become very large
+- One-off events from a recurrent series are now correctly displayed# 
 
-Improvements
-- We made the parsing of calendar feeds more robust, even for misformatted data.
-- We now show a visual warning when a Scheduling link is not fully synchronized with our servers, to make sure you know when a Scheduling link is ready to be shared.
-- We now use semicolons to separate attendees when communicating with your default mail client. This improves general compatibility.
+=== Morgen 2.1.10
+* Bug Fixes
+- Fixed an issue preventing events to be fetched on some CalDAV accounts (Hostgator)
+- The timezone of new events is now by default the timezone chosen in the Settings, rather than the system timezone
+- Fixed the symlink on Linux using the DEB installer
+- Fixed an issue causing sometimes an error when trying to RSVPs to single occurrences of a Google event series
+- Fixed an issue forcing you to click twice to create an event after closing the event panel with escape
+- Fixed an issue causing the wrong parsing of some videoconferencing links in the quick join buttons
+- Fixed a problem making it impossible to copy text from the description of a read-only event
 
-Bug Fixes
-- Fixed the misalignment of the time labels in weekly and daily views, visible when the resolution was set high.
-- Fixed a problem with editing the available time slots of Permanent Scheduling Links. The available slots were only visible when editing recent links. Now, they are visible for all links.
-- Fixed the Czech and Japanese locale.
-- Fixed an issue causing non-native notifications on Linux not to be displayed (yes, was actually not entirely fixed in the previous release)
+* Improvements
+- The style of the title bar on Windows has been adjusted to be more consistent with other platforms and avoid a white bar on black theme
+- Organizer and attendees are now retained when importing an event into a Caldav provider
+- Availability Sharing functionality now adds the timezone abbreviation next to the time
+- Prevent the use of some shortcuts when the Availability Sharing mode is enabled or when a dialog is open
+- Sanitize attendee email before trying to create a Google Calendar event to avoid errors hard to understand
 
-=== Morgen 2.2.4
-Improvements
-- When you create a scheduling link, you can now set the limit for booking events in the future up to 12 weeks and there are more options for the minimum notice.
-- While searching, it is now possible to use the keyboard tab to switch between Past and Future tabs faster.
-- We increased the area where you can grab the window and drag it around. Before it was hard to find the right locations where this was working.
-- The shortcut C now creates a new event on the visible day/week, rather than jumping to Today.
-- Google introduced an additional step to authenticate: now we provide better guidance on this process.
 
-Bug Fixes
-- Fixed an issue making it impossible to edit start/end times for an event in some cases.
-- Fixed an issue causing non-native notifications on Linux not to be displayed.
-- Fixed a layout issue with timed events expanded to become longer than 24h
+=== Morgen 2.1.11
+Improvements & Fixes
+- Fixed an issue when parsing Exchange events that caused some daily events to be displayed on a wrong day
+- Fixed a problem with the recognition of recurrence rules for Exchange events
+- Fixed a crash when opening the event details widget of some recurring all-day events
+- Certain Google event updates resulted in an “Invalid start time” error message when an event was moved to the day section. This is now solved.
+- Allow for long requests when pulling events on CalDAV accounts
+- Fixed an issue that prevented updating the recurrence rule of an event series in some cases
+- After closing Morgen on Windows, there was a problem that prevented it from being reopened. Fixed now.
 
-=== Morgen 2.2.3
-Improvements
-- Several performance improvements were added. Most notably, the contacts and location autocompletion now run much smoother.
-- Authentication with Google and Microsoft are now working more reliably
-- General updates for security and performance
-
-Bug Fixes
-- Fixed an issue that could cause the local database to grow disproportionally with some calendar subscriptions
-- Fixed a problem preventing Search to find all the relevant events
-- Some events were not updated when moved from being all-day events to timed events: this is now solved
-- Fixed an issue causing some all-day events to be displayed over two days, instead of one
-
-=== Morgen 2.2.2
-Ouch! While improving the stability of Google accounts already connected to Morgen, we have broken the possibility to connect additional Google accounts! This release is only about fixing this issue. Apologies to all affected users 🙏
-
-=== Morgen 2.2.1
-Improvements
-- The current time indicator is now updated immediately when the timezone is changed
-- The "first day of the week" is now a setting decoupled from the Regional date/time format. For example, you can now set Monday as the first day of the week, while keeping the English (United States) as the region
-- Morgen now notifies when an update is ready to install by displaying a badge next to the profile icon on Windows and Mac
-- The shortcuts Alt+A and Alt+S now behave like toggles, making it easier to turn on/off the task and the scheduler sidebar
-- You can now use CTRL+S or CTRL+Enter (resp. Cmd+S or Cmd+Enter on Mac) to save events being edited without touching the mouse
-- We reduced the throttle for manual calendar refresh and now Morgen shows a feedback message when CTRL+R is pressed while sync is already in progress
-
-Bug Fixes
-- Fixed the connection to Facebook Events calendar feed
-- Avoid mixed-language availability text (at the moment, English is enforced)
-- Fixed an issue making it impossible to update a single occurrence of an event series when some events in the series had been previously deleted
-- Minor improvements to the style of tasks in the calendar
-- Cancelled meetings from Exchange and Office 365 are not displayed anymore, consistently with other providers
-
-=== Morgen 2.2.0
-With Morgen 2.2, we are excited to announce a new tool to help you schedule your meetings. Now you can create One-on-One and Permanent Scheduling Links right in your calendar 🥳. Forget about Calendly, Morgen has you covered for most of the scheduling scenarios!
-
-Here is how it works:
-
-1. Select a few options for your next meeting. Optionally, add the name and email address of your invitee to make the booking page feel more personal.
-2. Copy and send the link generated by Morgen. Depending on the scenario, you might want to share the link by email, Slack, Teams, or put it on your webpage.
-3. Your invitee visualizes a page displaying your real-time availability and picks a slot. Morgen checks your calendars to ensure no double booking.
-4. Done, your meeting is scheduled. Reuse your personal scheduling link every time you need it.
-
-Visit https://morgen.so/scheduling to learn more about Morgen Scheduling Links. 
 
 === Morgen 2.1.12
 Improvements
@@ -147,79 +92,134 @@ Bug Fixes
 - Fixed a bug that prevented saving task changes after selecting a due date when clicking away
 - In some cases, the tags in the event widget were not correctly recognized. This is now fixed as well.
 
-=== Morgen 2.1.11
-Improvements & Fixes
-- Fixed an issue when parsing Exchange events that caused some daily events to be displayed on a wrong day
-- Fixed a problem with the recognition of recurrence rules for Exchange events
-- Fixed a crash when opening the event details widget of some recurring all-day events
-- Certain Google event updates resulted in an “Invalid start time” error message when an event was moved to the day section. This is now solved.
-- Allow for long requests when pulling events on CalDAV accounts
-- Fixed an issue that prevented updating the recurrence rule of an event series in some cases
-- After closing Morgen on Windows, there was a problem that prevented it from being reopened. Fixed now.
+=== Morgen 2.2.0
+With Morgen 2.2, we are excited to announce a new tool to help you schedule your meetings. Now you can create One-on-One and Permanent Scheduling Links right in your calendar 🥳. Forget about Calendly, Morgen has you covered for most of the scheduling scenarios!
+
+Here is how it works:
+
+1. Select a few options for your next meeting. Optionally, add the name and email address of your invitee to make the booking page feel more personal.
+2. Copy and send the link generated by Morgen. Depending on the scenario, you might want to share the link by email, Slack, Teams, or put it on your webpage.
+3. Your invitee visualizes a page displaying your real-time availability and picks a slot. Morgen checks your calendars to ensure no double booking.
+4. Done, your meeting is scheduled. Reuse your personal scheduling link every time you need it.
+
+Visit https://morgen.so/scheduling to learn more about Morgen Scheduling Links. 
+
+=== Morgen 2.2.1
+Improvements
+- The current time indicator is now updated immediately when the timezone is changed
+- The "first day of the week" is now a setting decoupled from the Regional date/time format. For example, you can now set Monday as the first day of the week, while keeping the English (United States) as the region
+- Morgen now notifies when an update is ready to install by displaying a badge next to the profile icon on Windows and Mac
+- The shortcuts Alt+A and Alt+S now behave like toggles, making it easier to turn on/off the task and the scheduler sidebar
+- You can now use CTRL+S or CTRL+Enter (resp. Cmd+S or Cmd+Enter on Mac) to save events being edited without touching the mouse
+- We reduced the throttle for manual calendar refresh and now Morgen shows a feedback message when CTRL+R is pressed while sync is already in progress
+
+Bug Fixes
+- Fixed the connection to Facebook Events calendar feed
+- Avoid mixed-language availability text (at the moment, English is enforced)
+- Fixed an issue making it impossible to update a single occurrence of an event series when some events in the series had been previously deleted
+- Minor improvements to the style of tasks in the calendar
+- Cancelled meetings from Exchange and Office 365 are not displayed anymore, consistently with other providers
 
 
-=== Morgen 2.1.10
-* Bug Fixes
-- Fixed an issue preventing events to be fetched on some CalDAV accounts (Hostgator)
-- The timezone of new events is now by default the timezone chosen in the Settings, rather than the system timezone
-- Fixed the symlink on Linux using the DEB installer
-- Fixed an issue causing sometimes an error when trying to RSVPs to single occurrences of a Google event series
-- Fixed an issue forcing you to click twice to create an event after closing the event panel with escape
-- Fixed an issue causing the wrong parsing of some videoconferencing links in the quick join buttons
-- Fixed a problem making it impossible to copy text from the description of a read-only event
+=== Morgen 2.2.2
+Ouch! While improving the stability of Google accounts already connected to Morgen, we have broken the possibility to connect additional Google accounts! This release is only about fixing this issue. Apologies to all affected users 🙏
 
-* Improvements
-- The style of the title bar on Windows has been adjusted to be more consistent with other platforms and avoid a white bar on black theme
-- Organizer and attendees are now retained when importing an event into a Caldav provider
-- Availability Sharing functionality now adds the timezone abbreviation next to the time
-- Prevent the use of some shortcuts when the Availability Sharing mode is enabled or when a dialog is open
-- Sanitize attendee email before trying to create a Google Calendar event to avoid errors hard to understand
+=== Morgen 2.2.3
+Improvements
+- Several performance improvements were added. Most notably, the contacts and location autocompletion now run much smoother.
+- Authentication with Google and Microsoft are now working more reliably
+- General updates for security and performance
+
+Bug Fixes
+- Fixed an issue that could cause the local database to grow disproportionally with some calendar subscriptions
+- Fixed a problem preventing Search to find all the relevant events
+- Some events were not updated when moved from being all-day events to timed events: this is now solved
+- Fixed an issue causing some all-day events to be displayed over two days, instead of one
+
+=== Morgen 2.2.4
+Improvements
+- When you create a scheduling link, you can now set the limit for booking events in the future up to 12 weeks and there are more options for the minimum notice.
+- While searching, it is now possible to use the keyboard tab to switch between Past and Future tabs faster.
+- We increased the area where you can grab the window and drag it around. Before it was hard to find the right locations where this was working.
+- The shortcut C now creates a new event on the visible day/week, rather than jumping to Today.
+- Google introduced an additional step to authenticate: now we provide better guidance on this process.
+
+Bug Fixes
+- Fixed an issue making it impossible to edit start/end times for an event in some cases.
+- Fixed an issue causing non-native notifications on Linux not to be displayed.
+- Fixed a layout issue with timed events expanded to become longer than 24h
+
+=== Morgen 2.2.5
+New
+- You can now define the auto-refresh interval for calendar subscriptions (iCalendar feeds). If you are working with a highly dynamic calendar, you might want to use a refresh interval of 5, 15, or 60 minutes. Instead, if you know that the calendar does not change often, or if it contains a large number of events, you can set the refresh interval to 1 day to save resources.
+
+Improvements
+- We made the parsing of calendar feeds more robust, even for misformatted data.
+- We now show a visual warning when a Scheduling link is not fully synchronized with our servers, to make sure you know when a Scheduling link is ready to be shared.
+- We now use semicolons to separate attendees when communicating with your default mail client. This improves general compatibility.
+
+Bug Fixes
+- Fixed the misalignment of the time labels in weekly and daily views, visible when the resolution was set high.
+- Fixed a problem with editing the available time slots of Permanent Scheduling Links. The available slots were only visible when editing recent links. Now, they are visible for all links.
+- Fixed the Czech and Japanese locale.
+- Fixed an issue causing non-native notifications on Linux not to be displayed (yes, was actually not entirely fixed in the previous release)
+
+=== Morgen 2.2.6
+Improvements
+- Often an event timezone differs from the current local timezone. We have improved the event detail widget to show both the event original time and the time in the local timezone. Moreover, when the start and end timezones are different (long flights are a common example), Morgen now shows both. 
+
+Bug Fixes
+- It is now possible to select and copy text from the Notes field of an event that is not editable.
+- Fixed an issue causing some yearly events to be displayed every month.
+- Fixed an issue preventing the correct update of a weekly event series when the weekday is changed.
 
 
-=== Morgen 2.1.9
-* Bug Fixes
-- Fixed an issue causing huge output logs on some systems
-- Fixed a problem delivering notifications and event alerts
-- Fixed an issue preventing the compaction of the database, which could become very large
-- One-off events from a recurrent series are now correctly displayed# 
+=== Morgen 2.3.0
+New Features
+- Zapier integration
+
+Improvements
+-Starting from this release, Morgen persists the latest calendar view settings and restores them when you restart the app. For example, if you normally work on the monthly view, you will start from the same monthly view after a restart. Similarly, if you prefer not to see weekends, you will not need to toggle them off every time anymore.
+
+Bug Fixes
+- Fixed the calendar widget not appearing when editing the end date of a recurrence
+- Fixed parsing of some events, which was causing the end date to be wrong (and in the wrong timezone)
+- Fixed notifications with CalDAV calendars, that were not delivered reliably
+- Fixed a minor style issue with the notes fields in the Scheduler sidebar tab
+
+=== Morgen 2.3.1
+New Features
+- Morgen Time Zone Assistant. 
+
+Improvements
+- Events marked as "not busy" are now displayed with different color shade to visually set them apart from busy events.
+- On Linux, the date-time picker gets format directly from the language and locale settings of the system. This makes the widget more consistent with what you see on web apps running in the browser.
+- We improved the way local-only events look like. If you are offline or your connection is unstable, Morgen allows you to continue editing your events. These events, however, are not synchronized with the calendar provider until you are back online, and this release makes this case more apparent.
+
+Bug Fixes
+- Fixed a problem causing duplicate events sometimes appearing in the calendar.
+- Fixed the connection to some CalDAV services, using non-standard connection ports.
+
+=== Morgen 2.3.2
+Bug Fixes
+- Fixed a problem making it impossible to remove calendar accounts when the subscription is expired.
+- Fixed an issue causing the event details popup to appear out of the screen in some cases.
+- Fixed an issue preventing the correct display of error messages during the connection of a calendar account.
+
+=== Morgen 2.3.3
+Improvements
+- Avoid the flickering of the attendee autocompletion widget while typing.
+- Improved the loading time of the scheduling links, that was definitely too long.
+- Now the event widget does not move around like crazy while you are changing the time of the event.
+- Allow selecting and copying the error message in case of a crash.
+- Use Command/CTRL+H to hide and Command/CTRL+M to minimize.
+
+Bug Fixes
+- Fixed the positioning of the event widget appearing out of the screen on the Day view.
+- Fixed a crash occurring when creating a tag without a name.
+- Fixed the visual occlusion for the tag editing tooltip.
+- Fixed an issue making it impossible to remove the event description of an event in Exchange.
+- Fixed an issue preventing the Quick Join button to appear with many all-day events.
+- Fixed time zone helper showing out of the screen on the Day view.
 
 
-=== Morgen 2.1.8
-Ouch! We have been reported a crash occurring when trying to edit calendar shortcuts. Morgen 2.1.8 fixes this issue. Since we were at it, we also fixed a problem causing an error when editing some events created with Fastmail.
-
-
-=== Morgen 2.1.7
-* Bug Fixes
-- Fixed a memory leak causing memory usage to grow over time; this should also fix performance degradation over time
-- Fixed an issue where certain CalDAV accounts could not be connected because of a failed service discovery (was actually not fixed in 2.1.6)
-- Fixed an issue causing some recurrence rules not to be updated correctly
-- Fixed an issue where tasks could not be dropped to the all-day section
-- Fixed an issue causing the first occurrence of an event series not to be displayed in some timezones
-- Fixed an issue causing some events to overlap entirely in the Month view
-
-⭐ Improvements
-- The major new feature landed in 2.1.7 is Account Synchronization.
-- Morgen now clears outdated notifications
-- Morgen does not send notifications for events that belong to an inactive calendar anymore
-- The Morgen icon is used for task switcher on Linux as well
-
-
-
-
-=== Morgen 2.1.6
-
-* Bug Fixes
-- Fixed an issue where certain CalDAV accounts could not be connected
-- Fixed a bug causing recurring events to be displayed on the wrong day in some timezones
-- Fixed a problem causing the event detail widget to become unresponsive in some edge cases
-- Fixed an issue causing the wrong organizer to be set when importing external invitations into Google Calendar; now, Morgen also disallows importing multiple times the same event
-- Fixed the colored calendar indicator in the Save button to show the correct calendar color
-- Fixed an issue preventing switching recurrent events to a different calendar
-
-* Improvements
-- Added a loading indicator in the event detail widget to indicate that an event is being updated
-- Prevent entering the alpha channel when defining custom calendar colors, because this is not supported
-- Event colors in dark mode have been slightly adjusted to be less strong
-- Add throttle on the refresh calendars operation, to avoid lag on the calendar view when coming into focus
-- Restore the previous status of the sidebar when the app is launched
-- Ensure that existing events cannot be imported as duplicates
