@@ -1,6 +1,6 @@
 pkgbase = python-dbg
 	pkgdesc = Python 3 debug symbols.
-	pkgver = 3.8.6
+	pkgver = 3.9.7
 	pkgrel = 1
 	epoch = 0
 	url = http://www.python.org/
@@ -21,6 +21,7 @@ pkgbase = python-dbg
 	provides = python
 	options = !debug
 	options = !strip
+	source = https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tar.xz
+	sha256sums = f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57
 
 pkgname = python-dbg
-

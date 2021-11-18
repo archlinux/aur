@@ -1,7 +1,8 @@
-# Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
+# Maintainer: Kevin Morris <kevr@0cost.org>
+# Previous Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-dbg
-pkgver=3.8.6
+pkgver=3.9.7
 pkgrel=1
 epoch=0
 pkgdesc="Python 3 debug symbols."
@@ -19,7 +20,7 @@ backup=()
 options=(!debug !strip)
 
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
-md5sums=('69e73c49eeb1a853cefd26d18c9d069d')
+sha256sums=('f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57')
 
 prepare() {
     cd Python-${pkgver}
@@ -49,7 +50,6 @@ build() {
                 --with-pydebug \
                 --with-system-expat \
                 --with-system-ffi \
-                --with-system-libmpdec \
                 --with-threads \
                 --with-valgrind \
                 --without-ensurepip
