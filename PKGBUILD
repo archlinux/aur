@@ -16,6 +16,11 @@ source=("popura::git+https://github.com/popura-network/Popura.git"
 sha512sums=('SKIP'
 	'b78d1f5efeeba184588ba7bdb2249d976aec160daa59742e032983da1aedad062d15c7c97cba3eba69412a0f7904ee123d98b58f859892d71188c25624295c32')
 
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
 	cd "${srcdir}/${_pkgname}"
 	PKGNAME="${pkgname}" PKGVER="${pkgver}" \
