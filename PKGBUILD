@@ -2,7 +2,7 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 
 pkgname=hotspot-git
-pkgver=v1.3.0.r104.gb95679b
+pkgver=v1.3.0.r152.g1906fb4
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
@@ -30,11 +30,11 @@ build() {
     cd "${pkgname%-git}"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr \
             -DBUILD_TESTING=off
-    make
+    cmake --build .
 }
 
 package() {
     cd "${pkgname%-git}"
-    make DESTDIR="${pkgdir}/" install
+    DESTDIR="${pkgdir}/" cmake --install .
     desktop-file-install hotspot.desktop --dir="${pkgdir}/usr/share/applications/"
 }

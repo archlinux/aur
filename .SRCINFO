@@ -1,6 +1,6 @@
 pkgbase = hotspot-git
 	pkgdesc = The Linux perf GUI for performance analysis
-	pkgver = v1.3.0.r104.gb95679b
+	pkgver = v1.3.0.r152.g1906fb4
 	pkgrel = 1
 	url = https://github.com/KDAB/hotspot
 	arch = any
