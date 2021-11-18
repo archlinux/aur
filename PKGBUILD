@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=idemptables
 pkgver=2012
 pkgrel=3
 pkgdesc='Idempotent iptables wrapper for appending and deleting rules.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/idemptables"
+url="https://xyne.dev/projects/idemptables"
 depends=(iptables)
 source=(
-  https://xyne.mirrorrepo.com/projects/idemptables/src/idemptables-2012.tar.xz
-  https://xyne.mirrorrepo.com/projects/idemptables/src/idemptables-2012.tar.xz.sig
+  https://xyne.dev/projects/idemptables/src/idemptables-2012.tar.xz
+  https://xyne.dev/projects/idemptables/src/idemptables-2012.tar.xz.sig
 )
 sha512sums=(
   c8512b30ed528ac81d45ff4eabe6098371ee6f40f9a85ff0d716e9a051912d170a7d1b1fde04b1b1074fbe082a5380bff6d0071ea4b33d18d98063617ee37457
