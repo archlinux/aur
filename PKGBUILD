@@ -5,11 +5,11 @@ pkgver=0.7.0
 # UI version found at: internal/ui/VERSION
 # tar -O -xf boundary-$pkgver.tar.gz boundary-$pkgver/internal/ui/VERSION | head -n 1 | cut -d ' ' -f 1
 _uiver='8193aac84562b1883465724d67bd43cd763edd7e'
-pkgrel=1
+pkgrel=2
 pkgdesc="Enables identity-based access management for dynamic infrastructure"
 arch=('x86_64')
 url="https://www.boundaryproject.io/"
-license=('GPL')
+license=('MPL2')
 depends=('glibc')
 makedepends=(
   # boundary

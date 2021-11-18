@@ -1,10 +1,10 @@
 pkgbase = boundary
 	pkgdesc = Enables identity-based access management for dynamic infrastructure
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.boundaryproject.io/
 	arch = x86_64
-	license = GPL
+	license = MPL2
 	makedepends = git
 	makedepends = go
 	makedepends = nodejs-lts-fermium
