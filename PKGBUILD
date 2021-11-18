@@ -3,10 +3,11 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.14.16.arch1
+pkgver=5.15.2.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
+_linux_tkg_commit="ba636511f4862466b11ea69264cab70b7ccb3459"
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -21,9 +22,9 @@ source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
-  'https://raw.githubusercontent.com/Frogging-Family/linux-tkg/67c26a6228341deb4a85484e50971897dc93d841/linux-tkg-patches/5.14/0007-v5.14-fsync.patch'
-  'https://raw.githubusercontent.com/Frogging-Family/linux-tkg/67c26a6228341deb4a85484e50971897dc93d841/linux-tkg-patches/5.14/0007-v5.14-futex2_interface.patch'
-  'https://raw.githubusercontent.com/Frogging-Family/linux-tkg/67c26a6228341deb4a85484e50971897dc93d841/linux-tkg-patches/5.14/0007-v5.14-winesync.patch'
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-fsync1_via_futex_waitv.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-winesync.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -32,12 +33,12 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '29f1d67f358a610e9fe821e27c5a093a192a38c57b1c9d531476da636234de79'
+            'd75d9ebddf7b9146a15b17ce2a46933333c3584a4cd39175328e44e5bb0b59af'
             # -- covolunablu-gaming patches --
             'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d'
-            'aa67e81a27d9062e463594acb91eca6dd13388f23cbe53ca56298f9dba61cc10'
-            'efe5e21706fdf64559ead866c85a5d88c5c3f743d814410df3810ca61cc5b966'
-            '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
+            'c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97'
+            '63a2ddf7ca9d3922f4eac3ac66bc37ffb10ad8b18b3e596832d3faa66b93dfa6'
+            'a71ea523f0a7bcd24e2ad144ff12160aa03dc3f0c64daceac8dc1aae523d4491'
 )
 
 export KBUILD_BUILD_HOST=covolunablu
@@ -76,7 +77,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and Valve futex2 patches."
+  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and Valve futex2 patches. Thanks to linux-tkg for the futex patches."
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
