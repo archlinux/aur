@@ -1,12 +1,12 @@
 pkgbase = docs-gl-git
 	pkgdesc = An improved version of the official OpenGL documentation
-	pkgver = r278.c4d7fbf
+	pkgver = r312.6b3a87b
 	pkgrel = 1
 	url = https://docs.gl/
 	arch = any
 	license = custom
 	makedepends = git
-	makedepends = python2
+	makedepends = python
 	provides = docs-gl
 	conflicts = docs-gl
 	options = !strip
@@ -22,4 +22,3 @@ pkgbase = docs-gl-git
 	sha256sums = 2148042ca60f00d53ea18c7cd6b919fbba00c0b3cfcb0a308e192571d4a02121
 
 pkgname = docs-gl-git
-
