@@ -2,16 +2,16 @@
 
 _name=anndata
 pkgname=python-$_name
-pkgver=0.7.5
+pkgver=0.7.8
 pkgrel=1
 pkgdesc='A data structure for rectangular numeric data and sample/variable annotations.'
 arch=(any)
 url="https://github.com/theislab/$_name"
 license=(BSD)
-depends=(python-pandas python-scipy python-h5py python-natsort)
+depends=(python-pandas python-scipy python-h5py python-natsort python-packaging python-xlrd)
 _wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('4f7d47e731cdf4ddc37a635f7532893a10510112e5bf6c4a68802438fdc9e0ab')
+sha256sums=('cc098d46662230f91e421c707590337c3e16459c494f28d80b8ff5baae54e539')
 noextract=("$_wheel")
 
 package() {
