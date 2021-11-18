@@ -4,7 +4,7 @@ url='https://wiki.ros.org/perception_pcl'
 pkgname='ros-noetic-pcl-ros'
 pkgver='1.7.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -62,6 +62,7 @@ build() {
           -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
           -DPYTHON_EXECUTABLE=/usr/bin/python \
           -DCMAKE_CXX_STANDARD=17 \
+          -DCMAKE_PREFIX_PATH=/opt/ros/noetic \
           -DSETUPTOOLS_DEB_LAYOUT=OFF
     make
 }
