@@ -1,14 +1,14 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=lsgrp
 pkgver=2013.2
 pkgrel=3
 pkgdesc='A simple command-line utility to list all members of a group.'
 arch=(i686 x86_64)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/lsgrp"
+url="https://xyne.dev/projects/lsgrp"
 source=(
-  https://xyne.mirrorrepo.com/projects/lsgrp/src/lsgrp-2013.2.tar.xz
-  https://xyne.mirrorrepo.com/projects/lsgrp/src/lsgrp-2013.2.tar.xz.sig
+  https://xyne.dev/projects/lsgrp/src/lsgrp-2013.2.tar.xz
+  https://xyne.dev/projects/lsgrp/src/lsgrp-2013.2.tar.xz.sig
 )
 sha512sums=(
   6c2236fe1d290c0fc616cb912a2c461eb3b3ad4b8a423cb955d993da11a235b9e9a8e0bbcdb5981b203106ad3548afe927856446e66c3f5fafa4a98f35a554af
