@@ -2,7 +2,7 @@
 pkgname=windscribe
 pkgver=2.3.11_beta
 pkgrel=1
-pkgdesc="A port of Windscribe's desktop client"
+pkgdesc="A port of Windscribe's GUI desktop client"
 arch=('x86_64')
 url="https://github.com/Windscribe/desktop-v2"
 license=('GPL-2.0')
