@@ -1,6 +1,6 @@
 # Maintainer: Andrew Bednoff <commandr at commandr.stream>
 # Maintainer: Xyne <xyne at archlinux.ca>
-pkgname=gnupg1-extended
+pkgname=gnupg1
 pkgname_=gnupg
 pkgver=1.4.23
 pkgrel=1
