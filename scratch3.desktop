@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=Scratch 3
+GenericName=Scratch Desktop
+Comment=Create stories, games, and animations
+Comment[de]=Erstelle Geschichten, Spiele und Animationen
+Comment[es]=Crea historias, juegos y animaciones
+Comment[fr]=Créer des histoires, des jeux et des animations
+Comment[gr]=Δημιουργήστε ιστορίες, παιχνίδια, και κινούμενα σχέδια
+Comment[hu]=Alkoss történeteket, játékokat és animációkat
+Comment[it]=Crea storie, giochi e animazioni
+Comment[ru]=Создавай истории, игры и мультфильмы
+Comment[sv]=Skapa berättelser, spel, och animationer
+Comment[sr]=Стварај приче, игре и анимације
+Exec=scratch3 %f
+Terminal=false
+Type=Application
+StartupNotify=false
+Icon=scratch3
+Categories=Development;Education
+MimeType=application/x-scratch-project;application/x-scratch2-project;application/x-scratch3-project;
