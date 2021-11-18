@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-aria2jsonrpc
 pkgver=2019
 pkgrel=3
 pkgdesc='A wrapper class around Aria2'"'"'s JSON RPC interface.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python3-aria2jsonrpc"
+url="https://xyne.dev/projects/python3-aria2jsonrpc"
 depends=(python3)
 source=(
-  https://xyne.mirrorrepo.com/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2019.tar.xz
-  https://xyne.mirrorrepo.com/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2019.tar.xz.sig
+  https://xyne.dev/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2019.tar.xz
+  https://xyne.dev/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2019.tar.xz.sig
 )
 sha512sums=(
   9ddf101b0b643aa034a23774cfaaab8901c81acd1a013917ad26c564a992db0f38549047092c2e219f1f959abf71caeb5940ee84deb9f3ecc3173466d3e136a5
