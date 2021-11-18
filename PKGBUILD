@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-currencyconverter
 pkgver=2017
 pkgrel=8
 pkgdesc='Module and command-line tool for currency conversion and rate retrieval.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python3-currencyconverter"
+url="https://xyne.dev/projects/python3-currencyconverter"
 depends=(python-pyxdg python3 python3-memoizedb)
 source=(
-  https://xyne.mirrorrepo.com/projects/python3-currencyconverter/src/python3-currencyconverter-2017.tar.xz
-  https://xyne.mirrorrepo.com/projects/python3-currencyconverter/src/python3-currencyconverter-2017.tar.xz.sig
+  https://xyne.dev/projects/python3-currencyconverter/src/python3-currencyconverter-2017.tar.xz
+  https://xyne.dev/projects/python3-currencyconverter/src/python3-currencyconverter-2017.tar.xz.sig
 )
 sha512sums=(
   e79e921d174f6c7fba72c8a0c7f086e39dccb37a4b9eab760f62d1a0fd878d4960768169106a84153155f28c540afff776d66b688f16f696a9a594adb1abaa73
