@@ -1,6 +1,6 @@
 # Maintainer: ltoenning <dev@ltoenning.de>
 pkgname=ripes-git
-pkgver=2.1.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA"
 arch=('x86_64')
@@ -11,9 +11,9 @@ makedepends=('cmake' 'git')
 
 
 source=("${pkgname}-${pkgver}::git+https://github.com/mortbopet/Ripes.git"
-'git+https://github.com/mortbopet/VSRTL.git'
+'VSRTL::git+https://github.com/mortbopet/VSRTL.git'
 'ELFIO::git+https://github.com/serge1/ELFIO.git'
-'git+https://github.com/pbhogan/Signals.git'
+'Signals::git+https://github.com/pbhogan/Signals.git'
 'better-enums::git+https://github.com/mortbopet/better-enums.git'
 'cereal::git+https://github.com/USCiLab/cereal.git'
 )
@@ -25,22 +25,32 @@ sha256sums=('SKIP'
 'SKIP')
 
 prepare(){
-    cp -r $srcdir/VSRTL/* $srcdir/${pkgname}-${pkgver}/external/VSRTL
-    cp -r $srcdir/ELFIO/* $srcdir/${pkgname}-${pkgver}/external/ELFIO
+    mkdir -p $srcdir/${pkgname}-${pkgver}/build
+    cd $srcdir/${pkgname}-${pkgver}
 
-    cp -r $srcdir/better-enums/* $srcdir/${pkgname}-${pkgver}/external/VSRTL/external/better-enums
-    cp -r $srcdir/cereal/* $srcdir/${pkgname}-${pkgver}/external/VSRTL/external/cereal
-    cp -r $srcdir/Signals/* $srcdir/${pkgname}-${pkgver}/external/VSRTL/external/Signals
+    # Configure git submodules
+    git submodule init
+    git config submodule.external/ELFIO.url "$srcdir/ELFIO"
+    git config submodule.external/VSRTL.url "$srcdir/VSRTL"
+    git submodule update
+
+    # Configure git submodules of submodules
+    cd $srcdir/${pkgname}-${pkgver}/external/VSRTL
+    git submodule init
+    git config submodule.external/better-enums.url "$srcdir/better-enums"
+    git config submodule.external/cereal.url "$srcdir/cereal"
+    git config submodule.external/Signals.url "$srcdir/Signals"
+    git submodule update
 }
 
 build(){
-    cd $srcdir/${pkgname}-${pkgver}
-    cmake -DCMAKE_BUILD_TYPE=Release
+    cd $srcdir/${pkgname}-${pkgver}/build
+    cmake -DCMAKE_BUILD_TYPE=Release ..
     make -j $(nproc)
 }
 
 package(){
     sed -i 's/Exec=Ripes/Exec=ripes/g' "$srcdir/${pkgname}-${pkgver}/appdir/usr/share/applications/Ripes.desktop"
-    install -Dm 755 "$srcdir/${pkgname}-${pkgver}/Ripes" "$pkgdir/usr/bin/ripes"
+    install -Dm 755 "$srcdir/${pkgname}-${pkgver}/build/Ripes" "$pkgdir/usr/bin/ripes"
     install -Dm 644 "$srcdir/${pkgname}-${pkgver}/appdir/usr/share/applications/Ripes.desktop" "${pkgdir}/usr/share/applications/Ripes.desktop"
 }
