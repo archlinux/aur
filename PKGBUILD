@@ -1,14 +1,14 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=maown
 pkgver=2021
 pkgrel=1
 pkgdesc='Monitor a shared directory and automatically adjust file ownership and permissions.'
 arch=(i686 x86_64)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/maown"
+url="https://xyne.dev/projects/maown"
 source=(
-  https://xyne.mirrorrepo.com/projects/maown/src/maown-2021.tar.xz
-  https://xyne.mirrorrepo.com/projects/maown/src/maown-2021.tar.xz.sig
+  https://xyne.dev/projects/maown/src/maown-2021.tar.xz
+  https://xyne.dev/projects/maown/src/maown-2021.tar.xz.sig
 )
 sha512sums=(
   3402be9c0bcd113cc2bf4b46941c6a0e6b9688d8480421021b5231736ed03b02800011fad14e3576543b9671856d50f88b23fe7699b702d40446786575beb93a
