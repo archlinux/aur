@@ -2,7 +2,7 @@
 # Contributor: ftsell <aur@finn-thorben.me>
 pkgname=pop-shell-shortcuts-git
 pkgver=r30.52cc83f
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Application for displaying and demoing Pop Shell shortcuts"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/shell-shortcuts"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
