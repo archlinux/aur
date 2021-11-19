@@ -1,0 +1,13 @@
+pkgbase = python-ratelimit
+	pkgdesc = API rate limit decorator
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/tomasbasham/ratelimit
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/r/ratelimit/ratelimit-2.2.1.tar.gz
+	sha256sums = af8a9b64b821529aca09ebaf6d8d279100d766f19e90b5059ac6a718ca6dee42
+
+pkgname = python-ratelimit
