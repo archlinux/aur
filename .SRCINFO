@@ -5,10 +5,12 @@ pkgbase = fslint
 	url = http://www.pixelbeat.org/fslint/
 	arch = any
 	license = GPL
-	depends = python2
-	optdepends = pygtk: GUI
 	source = fslint-2.46.tar.gz::https://github.com/pixelb/fslint/archive/2.46.tar.gz
 	sha256sums = 5b7403bde841cbca2cb4906ff56482a0476c5860b3486d88c675f4d6a26be0b1
 
 pkgname = fslint
+	depends = python2
 
+pkgname = fslint-gui
+	depends = python2
+	depends = pygtk
