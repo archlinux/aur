@@ -1,0 +1,14 @@
+pkgbase = python-rstb
+	pkgdesc = Utilities to modify Breath of the Wild's Resource Size Table (RSTB)
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/zeldamods/rstb
+	arch = any
+	license = GPL2
+	makedepends = python-pip
+	depends = python
+	depends = python-oead
+	source = https://github.com/zeldamods/rstb/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = 8b0bb7990dde79189e9c6cafb6d9b94b4fd31dac862660ccde5ab78a8eba8ffc
+
+pkgname = python-rstb
