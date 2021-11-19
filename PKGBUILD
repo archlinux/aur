@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-tabulator
 pkgver=2015
 pkgrel=9
 pkgdesc='A table formatter class with support for a variety of outputs.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python3-tabulator"
+url="https://xyne.dev/projects/python3-tabulator"
 depends=(python3)
 source=(
-  https://xyne.mirrorrepo.com/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz
-  https://xyne.mirrorrepo.com/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz.sig
+  https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz
+  https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz.sig
 )
 sha512sums=(
   6905872b85a4e5acaf0243d58995cd028e75c20ca0f0db2061c3c42c423be51b328f1bc9596e32e2eaa6942ad7d0f46fa787c6809aeca2b7466291a9b4f00669
