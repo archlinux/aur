@@ -1,11 +1,9 @@
 pkgbase = feedbackd
 	pkgdesc = A daemon to provide haptic feedback on events
-	pkgver = 0.0.0+git20210426
+	pkgver = 0.0.0+git20211018
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/feedbackd
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	arch = aarch64
 	license = GPL3
 	makedepends = gobject-introspection
@@ -15,8 +13,7 @@ pkgbase = feedbackd
 	depends = gsound
 	depends = json-glib
 	depends = libgudev
-	source = https://source.puri.sm/Librem5/feedbackd/-/archive/v0.0.0+git20210426/feedbackd-v0.0.0+git20210426.tar.gz
-	sha256sums = 3e9ec7d521ff0dcbfff15708678650068ac744fad93e21959484226cd882916d
+	source = https://source.puri.sm/Librem5/feedbackd/-/archive/v0.0.0+git20211018/feedbackd-v0.0.0+git20211018.tar.gz
+	sha256sums = 52e075f4020ad2b69c38cc732942d06c84b68105058da9a86e8861d5df2dc647
 
 pkgname = feedbackd
-
