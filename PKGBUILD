@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron12
-pkgver=12.2.2
-_commit=9183507c6f4f04f8def2ac5fc6cf4e46cbea6031
+pkgver=12.2.3
+_commit=8492c10291d852071bb599fcf59d57eb2566afd8
 _chromiumver=89.0.4389.128
 _gcc_patchset=7
 pkgrel=1
@@ -10,8 +10,8 @@ pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
 license=('MIT' 'custom')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip'
-         'nss' 're2' 'snappy')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
+         'snappy')
 makedepends=('clang' 'git' 'gn-m87' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
              'npm' 'pciutils' 'pipewire' 'python2' 'wget' 'yarn')
