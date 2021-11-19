@@ -74,6 +74,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
   sed -i 's/FALSE/false/g' ElmerGUI/Application/vtkpost/matc.cpp
+  git revert --no-commit fb4f920711516254ae10c4edda576a2805787210
   git apply -v "${srcdir}"/{arpack,FindMMG,print_target_properties,vtk9{.cmake,.1}}.patch
 }
 
