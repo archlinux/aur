@@ -1,7 +1,7 @@
 # Maintainer GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=flcluster
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="W1HKJ's program for accessing dxcluster nodes(Ham Radio)"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('libxft' 'hamlib' 'fltk' 'libjpeg' 'portaudio' 'flxmlrpc' 'libpng'
 optdepends=('fldigi: Intergrate with fldigi')
 
 source=("http://www.w1hkj.com/files/flcluster/flcluster-${pkgver}.tar.gz")
-sha256sums=('da55e3986eb525164ccc505a2e3e63bebc682f6e5b7aea04eba8e3b88dfc5b0f')
+sha256sums=('3df2d10b7886b72b857e972a319c6af4f476ba5e60ad200b4de46978395bc161')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -27,6 +27,6 @@ check() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
