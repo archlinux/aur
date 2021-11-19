@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=svn-export
 pkgver=2013.1.30
 pkgrel=3
 pkgdesc='An svn export emulator with support for incremental exports.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/svn-export"
+url="https://xyne.dev/projects/svn-export"
 depends=(python3 subversion)
 source=(
-  https://xyne.mirrorrepo.com/projects/svn-export/src/svn-export-2013.1.30.tar.xz
-  https://xyne.mirrorrepo.com/projects/svn-export/src/svn-export-2013.1.30.tar.xz.sig
+  https://xyne.dev/projects/svn-export/src/svn-export-2013.1.30.tar.xz
+  https://xyne.dev/projects/svn-export/src/svn-export-2013.1.30.tar.xz.sig
 )
 sha512sums=(
   c1ff3781fa3200528699203c8fa01c6b84655e95ef75163ebbaab21bf5918021eaddf8a12ddeac469633e74d77be47a399f73198624f6188e1a266d6737af37c
