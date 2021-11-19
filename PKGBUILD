@@ -2,7 +2,7 @@
 
 pkgname=rate-mirrors
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool"
 url="https://github.com/westandskif/rate-mirrors"
 license=('custom')
@@ -15,6 +15,8 @@ sha512sums=('a9a4480aafb2600b5648ff0da861a483e56107f303cd6de0fc4dd1279b883f0f373
 build() {
   cd "$pkgname-$pkgver"
 
+  export RUSTUP_TOOLCHAIN=nightly
+  export CARGO_TARGET_DIR=target
   cargo build --release --locked
 }
 
