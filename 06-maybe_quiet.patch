@@ -12,7 +12,7 @@ index 9e8f991..d2c4ce8 100644
  /* We don't need those.  */
  #define MINILZO_CFG_SKIP_LZO_PTR 1
 diff --git a/configure.ac b/configure.ac
-index 22663ba..d02fe6b 100644
+index 7517fc4..d3ca0a1 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1904,6 +1904,17 @@ fi
@@ -291,7 +291,7 @@ index c2943c6..338f5a5 100644
        if (auto_boot)
  	grub_menu_execute_with_fallback (menu, e, autobooted,
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 1839059..24acf01 100644
+index 2cb9d31..4f3de25 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -20,6 +20,7 @@ set -e
@@ -315,7 +315,7 @@ index 1839059..24acf01 100644
 +EOF
 +  fi
 +  sed "s/^/$submenu_indentation/" << EOF
- 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} rw ${args}
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
  EOF
    if test -n "${initrd}" -o -n "${initrd_extra}" ; then
      # TRANSLATORS: ramdisk isn't identifier. Should be translated.
@@ -323,7 +323,7 @@ index 1839059..24acf01 100644
 -    printf '	%s\n' "echo	'$(echo "$message" | grub_quote)'" | sed "s/^/$submenu_indentation/"
 +    if [ x"$quiet_boot" = x0 ] || [ x"$type" != xsimple ]; then
 +      message="$(gettext_printf "Loading initial ramdisk ...")"
-+      printf '	%s\n' "echo	'$(echo "$message" | grub_quote)'" | sed "s/^/$submenu_indentation/"
++      printf ' %s\n' "echo     '$(echo "$message" | grub_quote)'" | sed "s/^/$submenu_indentation/"
 +    fi
      printf '	%s ' 'initrd' | sed "s/^/$submenu_indentation/"
      for i in ${initrd_extra} ${initrd}; do

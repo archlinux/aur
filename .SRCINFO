@@ -1,7 +1,7 @@
 pkgbase = grub-silent
 	pkgdesc = GNU GRand Unified Bootloader (2) [without welcome and kernel messages]
 	pkgver = 2.06
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = grub-silent
 	sha256sums = 6fa180674094f9e1723f736d458f1fe0b5740ea7cf5db5064139defc17ce0e94
 	sha256sums = 39d7843dfe1e10ead912a81be370813b8621794a7967b3cc5e4d4188b5bf7264
 	sha256sums = c4cb3aa5ed535c7f3a3f784a779ea0a02bfed0ac54f202387a18de04dda8297f
-	sha256sums = e629558809413a0bfe7ebf64e6618397bb100b9b3605141475aefe3d0cfa9b1e
+	sha256sums = 3487dd73a09af71a26bc85d93cc18105f2da89ec051de60c869ba5f7524bb7bb
 	sha256sums = 7769a65321d1611217d6af47c1c3fe91ce2f97adcfd58c4e0d2e0bb06b39100e
 	sha256sums = 4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2
 
