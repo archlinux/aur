@@ -1,27 +1,21 @@
 pkgbase = leanote
-	pkgdesc = Knowledge, Blog, Sharing, Cooperation.
-	pkgver = 2.6.2
+	pkgdesc = Note-taking app
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://leanote.com/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = electron
-	makedepends = gulp
-	makedepends = libarchive
 	depends = electron
 	depends = gconf
 	provides = leanote
-	conflicts = leanote
-	noextract = leanote-2.6.2.zip
 	source = leanote.desktop
 	source = leanote
 	sha256sums = 8dab30fe0835432e44b5a3a1d46aebde8716a2a47ba4031cbe2a01560987aa83
 	sha256sums = 57155a0e423bc98f0e83acb35f03ace06b3de54bdc64b2373128671c801727b1
-	source_i686 = leanote-2.6.2.zip::https://sourceforge.net/projects/leanote-desktop-app/files/2.6.2/leanote-desktop-linux-ia32-v2.6.2.zip/download
-	sha256sums_i686 = 642fd90f2107a2e70b08a730e68bd7f0b2a8bb4d37dd5ea07bd9772cbf15a538
-	source_x86_64 = leanote-2.6.2.zip::https://sourceforge.net/projects/leanote-desktop-app/files/2.6.2/leanote-desktop-linux-x64-v2.6.2.zip/download
-	sha256sums_x86_64 = b3a3317a953d4b1052532db32d521bcbf642b4e8ee2265fa807f65ac876233c7
+	source_i686 = leanote-2.7.0.zip::https://github.com/leanote/desktop-app/releases/download/v2.7.0/leanote-desktop-linux-ia32-v2.7.0.zip
+	sha256sums_i686 = 236c7b16e7e8367cb8c956c0fd15f033873acc2e3e915611bb36902a4eb1740d
+	source_x86_64 = leanote-2.7.0.zip::https://github.com/leanote/desktop-app/releases/download/v2.7.0/leanote-desktop-linux-x64-v2.7.0.zip
+	sha256sums_x86_64 = fe9821230b07e0e826e06ccab389b45c440051fb7a50a6626dd5deead244d984
 
 pkgname = leanote
-
