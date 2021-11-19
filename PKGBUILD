@@ -124,6 +124,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"Linux-5.15.3-rc4.patch"
 
         # amd-pstate v3 included in Xanmod
+        "revert-amd-pstate-v3.patch"
+        "squashed-amd-pstate-v4-for-5.15.patch"
 
         # multigenerational lru v5
         "squashed-mm-multigenerational-lru-v5-for-5.15.y.patch"
@@ -180,6 +182,8 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
             '074f5dd036079f81fcc4a239b6d159528fa22a57e06d5658f8b5c4970de65c26'
+            '12d78853f582ccf8027dbd2cbc27b0fcde106202958c6be31054815bae7752ae'
+            '8592fc434cc7d52b0fefe478de19d0af3d7e06406d8d09bd1bc85e6805738e68'
             '7675116fc7da55cfb9c6ceaaf120c5ebd285a13b1f1641ca810dd05516c88e0b'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
