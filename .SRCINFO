@@ -1,0 +1,15 @@
+pkgbase = ttf-bqn386-git
+	pkgdesc = An APL and BQN font extending on APL386.
+	pkgver = r11.af94380
+	pkgrel = 1
+	url = https://dzaima.github.io/BQN386/
+	arch = any
+	makedepends = git
+	provides = ttf-bqn386
+	conflicts = ttf-bqn386
+	noextract = BQN386.sfdir
+	noextract = README.md
+	source = ttf-bqn386::git+https://github.com/dzaima/BQN386.git
+	md5sums = SKIP
+
+pkgname = ttf-bqn386-git
