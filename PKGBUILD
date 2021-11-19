@@ -7,7 +7,25 @@ pkgdesc="Breath of the Wild Cross-Platform Mod Loader: A mod merger and manager 
 arch=('any')
 url="https://github.com/NiceneNerd/BCML"
 license=('GPL3')
-depends=('p7zip' 'python-pyqt5-webengine' 'python>=3.7')
+depends=(
+		'python>=3.7'
+		'p7zip'
+		'python-numpy'
+		'python-aamp'
+		'python-byml'
+		'python-botw-utils'
+		'python-botw_havok'
+		'python-oead'
+		'python-pycrosskit'
+		'python-clr_loader'
+		'python-pythonnet'
+		'python-pyqtwebengine'
+		'python-pywebview'
+		'python-pyaml'
+		'python-requests'
+		'python-rstb'
+		'python-xxhash'
+)
 makedepends=('git' 'npm' 'nodejs>=14.0.0' 'mkdocs' 'mkdocs-material' 'python-setuptools' 'gendesk')
 optdepends=('cemu')
 source=('git+https://github.com/NiceneNerd/BCML' "${_name}.png::https://i.imgur.com/OiqKPx0.png")
@@ -15,11 +33,11 @@ sha256sums=('SKIP'
             'f20788bc2187b7b5d40d8b63a97b9cacdd986f8d0d77c6c456561e7fbd68179a')
 
 pkgver() {
-  cd "${srcdir}/${_name}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "${srcdir}/${_name}"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
