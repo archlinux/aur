@@ -1,6 +1,6 @@
 pkgname=sac-core-legacy
 pkgver=10.0.37
-pkgrel=2
+pkgrel=3
 pkgdesc="SafeNet Authentication Client (version 10.0 for old Alladin eToken support)"
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
@@ -33,6 +33,9 @@ package() {
   install -dm755 "$pkgdir"/usr/lib/pkcs11
   ln -s sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/libeTPkcs11.so
   ln -s ../sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
+
+  # ...and a symlink that ldconfig insists on creating for it
+  ln -s libeTPkcs11.so "$pkgdir"/usr/lib/libeToken.so.10
 
   # "Card reader" driver for PCSC
   install -dm755 "$pkgdir"/usr/lib/pcsc/drivers
