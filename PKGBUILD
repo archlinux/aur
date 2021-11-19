@@ -7,7 +7,7 @@ pkgdesc="Library for recent Nintendo EAD formats in first-party games"
 arch=('any')
 url="https://github.com/zeldamods/oead"
 license=('GPL2')
-depends=('python>=3.7')
+depends=('python')
 makedepends=('python-setuptools' 'cmake' 'git')
 source=("git+https://github.com/zeldamods/oead#tag=v${pkgver}")
 sha256sums=('SKIP')
