@@ -12,6 +12,7 @@ if (( DISABLE_TRILINOS ))
 fi
 _CMAKE_FLAGS+=(
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
         -DELMER_INSTALL_LIB_DIR=/usr/lib \
         -DWITH_CONTRIB=ON \
         -DWITH_ELMERGUI=ON \
@@ -36,7 +37,7 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r423.gb943299d
+pkgver=9.0.r694.ge2946a83
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -82,13 +83,15 @@ build() {
   export FFLAGS+=" -fallow-argument-mismatch"
   cmake -S "${srcdir}"/$_pkgname -B build \
         "${_CMAKE_FLAGS[@]}"
-  make -C build all
+  cmake --build build -- all
 }
 
 check() {
   cd "$srcdir/build"
   export PATH=$PATH:$PWD/fem/src
-  ctest $(grep -oP -- "-j\s*[0-9]+" <<< "${MAKEFLAGS}") || true
+  jobs=$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")
+  ((jobs*=4))
+  ctest -j "${jobs}" || true
 }
 
 package() {
