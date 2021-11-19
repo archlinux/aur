@@ -2,9 +2,9 @@
 # based on nrf5x-sniffer by GI_Jack
 
 pkgname=nrf-sniffer-ble
-pkgdesc="nRF Sniffer for Bluetooth LE - firmware and Wireshark plugin"
+pkgdesc="nRF Sniffer for Bluetooth LE - firmware, SnifferAPI and Wireshark plugin"
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://www.nordicsemi.com/Products/Development-tools/nRF-Sniffer-for-Bluetooth-LE"
 depends=('python' 'python-pyserial' 'wireshark-cli' )
