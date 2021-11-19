@@ -1,14 +1,14 @@
 pkgbase = stylelint-scss
 	pkgdesc = A collection of SCSS specific linting rules for stylelint
-	pkgver = 3.21.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/kristerkari/stylelint-scss
 	arch = any
 	license = MIT
 	makedepends = npm
 	optdepends = stylelint: peer dependency
-	noextract = stylelint-scss-3.21.0.tgz
-	source = https://registry.npmjs.org/stylelint-scss/-/stylelint-scss-3.21.0.tgz
-	sha256sums = 956175a96a26747114aa5e0e5f2d8327d2a9e6e18823d8042bf793b7d94a61e8
+	noextract = stylelint-scss-4.0.0.tgz
+	source = https://registry.npmjs.org/stylelint-scss/-/stylelint-scss-4.0.0.tgz
+	sha256sums = c0e0bf093eb8702832a09e167ea67173f0a6e179ec1ee9658913989253acea47
 
 pkgname = stylelint-scss
