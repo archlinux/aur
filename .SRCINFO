@@ -11,7 +11,6 @@ pkgbase = imposm
 	source = imposm-0.11.1.tar.gz::https://github.com/omniscale/imposm3/archive/v0.11.1.tar.gz
 	source = https://patch-diff.githubusercontent.com/raw/omniscale/imposm3/pull/258.patch
 	sha256sums = 14045272aa0157dc5fde1cfe885fecc2703f3bf33506603f2922cdf28310ebf0
-	sha256sums = 4f32c2112eb12a5d29b938470afaba8552a0dfdf086372e7246e81c17308df84
+	sha256sums = 9b00003ce1a1085737a96bd36e510a98351dda46ed40a1be9ab154b3ebb21b01
 
 pkgname = imposm
-
