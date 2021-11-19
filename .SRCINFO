@@ -1,13 +1,12 @@
 pkgbase = sac-core-legacy
 	pkgdesc = SafeNet Authentication Client (version 10.0 for old Alladin eToken support)
 	pkgver = 10.0.37
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management
 	install = sac-core-legacy.install
 	arch = x86_64
 	license = custom
 	depends = pcsclite
-	conflicts = sac-core
 	source = https://installer.id.ee/media/etoken/older%20versions/SAC_10_0_Post_GA_Linux.zip
 	source = eToken.conf
 	sha256sums = 4f99737e100d3fb3c00dc65f27adce2ee60d0c207ca8ef92e51b49767f7d5e1d
