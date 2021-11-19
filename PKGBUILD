@@ -93,6 +93,9 @@ prepare() {
   # Debian patch to enable global menubar
   patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
+  # Custom link in about dialogue
+  patch -Np1 -i ${_patches_dir}/librewolf/about-dialog.patch
+
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
