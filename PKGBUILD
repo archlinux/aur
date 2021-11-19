@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=audio-sharing-git
-pkgver=0.1.1.r3.g6117012
+pkgver=0.1.2.r8.gd470e61
 pkgrel=1
 pkgdesc='Share your computer audio'
 url='https://gitlab.gnome.org/World/AudioSharing'
