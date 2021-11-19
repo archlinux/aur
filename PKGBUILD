@@ -2,7 +2,7 @@
 
 pkgname=pissircd-git
 pkgver=r9061.193da4738
-pkgrel=4
+pkgrel=5
 pkgdesc="PissIRCd is an open source IRC server based on UnrealIRCd with Pissnet tweaks."
 arch=('x86_64')
 url="https://github.com/pissnet/pissircd"
@@ -10,6 +10,7 @@ license=('GPL2')
 conflicts=('pissircd')
 provides=('pissircd')
 depends=('openssl' 'curl' 'c-ares' 'tre' 'pcre2' 'libnsl' 'argon2')
+makedepends=('git')
 backup=('etc/pissircd/unrealircd.conf')
 install=pissircd.install
 source=("git+https://github.com/pissnet/pissircd.git"
