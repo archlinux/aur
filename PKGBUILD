@@ -3,7 +3,8 @@
 _pkgbase=linux-elbin  # for mkinitcpio hook
 pkgname=linux-el-bin
 _basever=4.18.0
-_rhver=305.17.1
+_rhver=348.2.1
+_rocky_ver="8.5"
 pkgver=$_rhver.kabi.$_basever
 epoch=8
 pkgrel=1
@@ -20,7 +21,7 @@ optdepends=(
 makedepends=(xz cpio)
 options=('!strip')
 backup=("etc/mkinitcpio.d/$_pkgbase.preset")
-install=linux-el.install
+install=linux-elbin.install
 
 # corresponding packages (rhel -> archlinux)
 #   kernel               -> N/A (meta package)
@@ -33,20 +34,19 @@ install=linux-el.install
 #   kernel-tools         -> N/A (misc userland utils)
 
 _rocky_mirror="https://download.rockylinux.org/pub/rocky"
-_rocky_ver="8.4"
-_rpmver=$_basever-$_rhver.el8_4
+_rpmver=$_basever-$_rhver.el${_rocky_ver/\./_}
 source=(
-	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-core-$_rpmver.x86_64.rpm"
-	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-modules-$_rpmver.x86_64.rpm"
-	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-devel-$_rpmver.x86_64.rpm"
-	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-doc-$_rpmver.noarch.rpm"
+	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/k/kernel-core-$_rpmver.x86_64.rpm"
+	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/k/kernel-modules-$_rpmver.x86_64.rpm"
+	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/k/kernel-devel-$_rpmver.x86_64.rpm"
+	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/k/kernel-doc-$_rpmver.noarch.rpm"
 	"$_pkgbase.preset"
 )
 noextract=(kernel-doc-$_rpmver.noarch.rpm)  # bsdtar cannot extract it
-sha256sums=('1880467dc2416dc9711e43349545a3fdddbc48b10f3a03e78893633b0f057fc9'
-            '8c82b122b6043fa66afd5ce56a3af909fd52bcfcfc88a82143b4f2f889da7ae1'
-            'd34365d9919ea7c168a9db926d19ce4aaafeda3907b2ebf9e2d19118aaab4da7'
-            '4b3a0650899df54b569c5f7043f7b41ddefb74254386f57047db6bc0c9d43e70'
+sha256sums=('3f2c4faf764d82864d763cbc6f531da6c78c9cbd8fc59b13ad593996b9af1adf'
+            '01a740219f201039a5445fae4204f1832e3829f607c13513bfb05a353078969e'
+            '940f797a9800edd353a33e1c557960dec80ef68c53cd844e72f90e8e76aec254'
+            '0d7df8d65059ce7456629b6dfa003f2a43e204e9121b85f6d146bd2fc7386f0a'
             'dcb7f4f352395287152bb6a3469171d9199b1e000bab9f244e17db893cff70d9')
 
 _rpm2cpio() {
