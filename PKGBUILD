@@ -23,7 +23,7 @@ makedepends_i686=('nasm')
 optdepends=('blood-demo')
 provides=('nblood')
 conflicts=('nblood')
-source=('NBlood::git+https://github.com/nukeykt/NBlood.git'
+source=('git+https://github.com/nukeykt/NBlood.git'
         'nblood.desktop')
 sha256sums=('SKIP'
             '58807697e95e071a6354f87e8e2fdae9f32af0e08dad1a510a0089845df42184')
