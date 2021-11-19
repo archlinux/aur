@@ -1,47 +1,40 @@
-# Maintainer: Emmanuel Gil Peyrot <emmanuel.peyrot@collabora.com>
+# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
+# Contributor: Emmanuel Gil Peyrot <emmanuel.peyrot@collabora.com>
 
-pkgname=wayland-protocols-git
-pkgver=1.7.119.c438cbe
+_pkgname=wayland-protocols
+pkgname="${_pkgname}-git"
+pkgver=1.23.r7.ge5d63e9
 pkgrel=1
 pkgdesc='Wayland protocols that add functionalities not available in the core protocol'
 arch=('any')
-url='http://cgit.freedesktop.org/wayland/wayland-protocols'
+url='https://wayland.freedesktop.org/'
 license=('MIT')
-makedepends=('git' 'wayland')
-conflicts=('wayland-protocols')
-provides=('wayland-protocols')
+makedepends=('git' 'wayland' 'meson' 'ninja')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 
-source=('git://anongit.freedesktop.org/wayland/wayland-protocols')
+source=("git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git")
 sha1sums=('SKIP')
 
 pkgver() {
-    cd wayland-protocols
-
-    for i in major_version minor_version; do
-        local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-    done
-
-    echo "$_major_version.$_minor_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    mkdir -p wayland-protocols/build
+    mkdir -p "${_pkgname}/build"
 }
 
 build() {
-    cd wayland-protocols/build
-    ../autogen.sh --prefix=/usr
-    make
+    meson build "${_pkgname}" --buildtype=release --prefix=/usr
+    ninja -C build
 }
 
 check() {
-    cd wayland-protocols/build
-    rm -rf stable unstable test-suite.log
-    make test-suite.log
+    ninja -C build test
 }
 
 package() {
-    cd wayland-protocols/build
-    make DESTDIR="$pkgdir" install
-    install -Dm644 ../COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
+    DESTDIR="$pkgdir" ninja -C build install
+    install -Dt "$pkgdir/usr/share/licenses/${_pkgname}" -m 644 "$_pkgname/COPYING"
 }
