@@ -5,7 +5,7 @@ pkgname=python-httpx-socks
 _name="${pkgname#python-}"
 
 epoch=1
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 
 pkgdesc='HTTP/SOCKS-proxy transports for httpx'
@@ -14,11 +14,11 @@ url="https://pypi.org/project/$_name"
 license=('Apache')
 
 makedepends=('python-setuptools')
-depends=('python' 'python-python_socks' 'python-httpcore<0.14' 'python-httpx<0.21')
+depends=('python' 'python-python_socks' 'python-httpcore>=0.14' 'python-httpx>=0.21')
 optdepends=('python-async-timeout' 'python-trio' 'python-curio')
 
 source=("$_name-$pkgver.tgz::https://github.com/romis2012/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a7ebc1d7ec6bfab79829d35119f1da9285fc6d3ee39e3bc8991f53a13af1b90a')
+sha256sums=('7aaca8cdc8ba8227a481055f5023339039585fb6869b8ad0c933694d0499eb7c')
 
 
 build() {
