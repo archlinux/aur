@@ -2,7 +2,7 @@
 
 pkgbase=apollo-rover
 pkgname=(apollo-rover apollo-rover-fed2)
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'zlib')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ab7de6aa9b221a29360c16ebb855b43d29cd79a6111c3b89e77f0d4f29a2002c')
+sha256sums=('f8bf221bed765447b809c85f1c3dffaf6b241362f745a80906f8e98869e11edd')
 
 prepare() {
 	cd "rover-$pkgver"
