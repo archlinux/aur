@@ -1,0 +1,29 @@
+diff --git a/gedit_plugin/meson.build b/gedit_plugin/meson.build
+index fec30b5..a178c88 100644
+--- a/gedit_plugin/meson.build
++++ b/gedit_plugin/meson.build
+@@ -3,6 +3,7 @@ project('autovala_gedit',['c','vala'])
+ ATHOME = (get_option('ATHOME') != '')
+ 
+ add_global_arguments('-DGETTEXT_PACKAGE="autovala_gedit"',language: 'c')
++add_project_arguments('--pkg=Tepl-6', language: 'vala')
+ 
+ find_program ('g-ir-compiler')
+ gtksourceview_3_0_dep = dependency('gtksourceview-3.0')
+diff --git a/gedit_plugin/src/gedit_plugin.vala b/gedit_plugin/src/gedit_plugin.vala
+index 641345e..c0edb99 100644
+--- a/gedit_plugin/src/gedit_plugin.vala
++++ b/gedit_plugin/src/gedit_plugin.vala
+@@ -148,10 +148,9 @@ namespace autovalagedit {
+ 				this.window.set_active_tab(tab);
+ 			}
+ 			if (tab != null) {
+-				var document = tab.get_document();
+-				document.goto_line(line);
+ 				var view = tab.get_view();
+-				view.scroll_to_cursor();
++				(view as Tepl.View)?.goto_line(line);
++				(view as Tepl.View)?.scroll_to_cursor();
+ 			}
+ 		}
+ 

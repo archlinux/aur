@@ -9,25 +9,25 @@ pkgname=(
 	gedit-autovala
 )
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that automatically generates CMake and Meson configuration files for your Vala project"
 arch=('x86_64')
 url="https://gitlab.com/rastersoft/autovala"
 license=('GPL3')
 groups=('vala')
-makedepends=('vala'
-             'cmake'
-             'libgee'
-             'gtk3'
-             'pandoc'
-             'bash-completion'
-             'gobject-introspection')
-source=("git+https://gitlab.com/rastersoft/autovala#tag=$pkgver" gedit40.patch)
+makedepends=('git' 'meson' 'vala'
+             'libgee' 'gedit' 'gtk3'
+             'vte3' 'gtksourceview4' 'libpeas'
+             'pandoc' 'gobject-introspection')
+source=("git+https://gitlab.com/rastersoft/autovala#tag=$pkgver" gedit40.patch tepl.patch)
 sha256sums=('SKIP'
-            'SKIP')
+            'b69b316bca2799007a95714d2585b499e22ebcaebe348b4eafd9c2e637bac1d2'
+            '146773efe896ecc5db8fa644e4be8cd6708832aa3467c44570edb3973726e794')
 
 prepare() {
 	patch -d autovala -p1 < gedit40.patch
+	! grep 'goto_line' /usr/share/vala/vapi/gedit.vapi \
+	&& patch -d autovala -p1 < tepl.patch
 	rm -rf build build-gedit
 }
 
@@ -46,7 +46,7 @@ build() {
 }
 
 package_autovala() {
-  depends=('make'
+  depends=('make' 'vte3' 'libgee'
            'bash-completion')
   DESTDIR="$pkgdir" meson install -C build
   mv "$pkgdir/usr"{,/share}/appdata
@@ -54,8 +54,7 @@ package_autovala() {
 }
 
 package_gedit-autovala() {
-  depends=(autovala gedit vte3
-           libgee gtksourceview4 libpeas)
+  depends=(autovala gedit)
   DESTDIR="$pkgdir" meson install -C build-gedit
   mv "$pkgdir"/usr/lib/gedit/plugins/autovala/libautovalagedit.so{.1.0.0,}
   
