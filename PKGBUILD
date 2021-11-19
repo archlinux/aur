@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=nostalgia-git
-pkgver=0.6.r3.gce88525
+pkgver=0.8.r0.g7a9fd74
 pkgrel=1
 pkgdesc='Set historic GNOME wallpapers'
 arch=(x86_64 aarch64)
@@ -9,7 +9,10 @@ url='https://gitlab.gnome.org/bertob/nostalgia'
 license=(GPL3)
 provides=(nostalgia)
 conflicts=(nostalgia)
-depends=(libhandy)
+depends=(
+	libhandy
+	libportal
+)
 makedepends=(
 	git
 	gobject-introspection
