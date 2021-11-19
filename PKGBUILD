@@ -1,11 +1,11 @@
 # Maintainer: ZhangHua <zhanghuadedn at gmail dot com>
 # Maintainer: Clansty <i at gao4 dot pw>
 pkgname=("icalingua-git" "icalingua-electron-git")
-pkgver=2.3.2_70_gcf35cbb
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
-depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
+depends=('ffmpeg' 'libappindicator-gtk3')
 makedepends=('yarn' 'git')
 optdepends=('mongodb-bin: Provides storage'
             'redis: Provides storage')
@@ -53,6 +53,7 @@ package_icalingua-git(){
 package_icalingua-electron-git(){
     conflicts=("icalingua")
     provides=("icalingua-electron" "electron-qq")
+    depends+=('electron13')
     pkgdesc='A Linux client for QQ and more with system electron'
     case ${CARCH} in
         "x86_64")
@@ -68,12 +69,8 @@ package_icalingua-electron-git(){
     mkdir -p "${pkgdir}/usr/bin"
     cd "${srcdir}/Icalingua/icalingua/build/linux${_arch}unpacked"
     install -Dm644 "resources/app.asar" "${pkgdir}/usr/share/icalingua/app.asar"
-    cat>"${pkgdir}/usr/bin/icalingua"<<EOF
-#!/usr/bin/env bash
-electron /usr/share/icalingua/app.asar $@
-EOF
-    chmod +x "${pkgdir}/usr/bin/icalingua"
     cd "${srcdir}/Icalingua/pkgres"
     install -Dm644 512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/icalingua.png"
     install -Dm644 icalingua.desktop "${pkgdir}/usr/share/applications/icalingua.desktop"
+    install -Dm755 icalingua "${pkgdir}/usr/bin/icalingua"
 }

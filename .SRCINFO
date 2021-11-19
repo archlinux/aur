@@ -1,6 +1,6 @@
 pkgbase = icalingua-git
 	pkgdesc = A Linux client for QQ and more
-	pkgver = 2.3.2_70_gcf35cbb
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/Icalingua/Icalingua
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = icalingua-git
 	makedepends = yarn
 	makedepends = git
 	depends = ffmpeg
-	depends = electron
 	depends = libappindicator-gtk3
 	optdepends = mongodb-bin: Provides storage
 	optdepends = redis: Provides storage
@@ -27,6 +26,9 @@ pkgname = icalingua-git
 
 pkgname = icalingua-electron-git
 	pkgdesc = A Linux client for QQ and more with system electron
+	depends = ffmpeg
+	depends = libappindicator-gtk3
+	depends = electron13
 	provides = icalingua-electron
 	provides = electron-qq
 	conflicts = icalingua
