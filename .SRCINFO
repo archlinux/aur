@@ -9,6 +9,6 @@ pkgbase = python-clr_loader
 	depends = python
 	depends = python-cffi
 	source = https://files.pythonhosted.org/packages/source/c/clr_loader/clr_loader-0.1.6.tar.gz
-	sha256sums = SKIP
+	sha256sums = 61a9057916c7491c08a3dc1cf227d4458d7a799db7b37db40ebdf1acb565cbfe
 
 pkgname = python-clr_loader

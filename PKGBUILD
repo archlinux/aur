@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-cffi')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name}-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('61a9057916c7491c08a3dc1cf227d4458d7a799db7b37db40ebdf1acb565cbfe')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
