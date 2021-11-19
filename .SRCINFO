@@ -1,0 +1,16 @@
+pkgbase = python-byml
+	pkgdesc = A simple Nintendo BYML or BYAML v2/v3 parser and writer
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/leoetlino/aamp
+	arch = any
+	license = GPL2
+	makedepends = python-pip
+	depends = python
+	depends = python-pyaml
+	depends = python-sortedcontainers
+	depends = python-oead
+	source = https://files.pythonhosted.org/packages/py3/b/byml/byml-2.4.2-py3-none-any.whl
+	sha256sums = 9cc6d99bd0a025d6b62297043a8c3e6579a0a8f5112aa5ee56ccf5e5f2f64355
+
+pkgname = python-byml
