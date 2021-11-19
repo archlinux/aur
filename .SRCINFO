@@ -1,6 +1,6 @@
 pkgbase = imgp-git
 	pkgdesc = Resize or rotate JPEG and PNG images.
-	pkgver = r257.96269dd
+	pkgver = r262.9d570e3
 	pkgrel = 1
 	url = https://github.com/jarun/imgp
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = imgp-git
 	sha256sums = SKIP
 
 pkgname = imgp-git
-
