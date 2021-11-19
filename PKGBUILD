@@ -2,7 +2,7 @@
 
 pkgname=lsi-lsa
 pkgver=007.019.006.000
-pkgrel=1
+pkgrel=2
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
@@ -67,6 +67,10 @@ package() {
     ln -s libldap-2.4.so.2.11.7 libldap-2.4.so
     ln -s libldap-2.4.so.2.11.7 libldap.so.2
     ln -s libldap-2.4.so.2.11.7 libldap.so
+    install -Dm755 "${srcdir}/usr/lib/liblber-2.4.so.2.11.7" .
+    ln -s liblber-2.4.so.2.11.7 liblber-2.4.so.2
+    ln -s liblber-2.4.so.2.11.7 liblber.so.2
+    ln -s liblber-2.4.so.2.11.7 liblber.so
   )
 
   # Remove insecure RPATH

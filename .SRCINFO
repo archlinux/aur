@@ -1,7 +1,7 @@
 pkgbase = lsi-lsa
 	pkgdesc = LSI Storage Authority Software Suite
 	pkgver = 007.019.006.000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.broadcom.com/products/storage
 	install = lsi-lsa.install
 	arch = x86_64
