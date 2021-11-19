@@ -1,27 +1,31 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
-
-pkgname=python-outdated
-_module='outdated'
-pkgver=0.2.0
-pkgrel=2
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Jose Riha <jose1711 gmail com>
+_base=outdated
+pkgname=python-${_base}
 pkgdesc="Check if a version of a PyPI package is outdated"
-url="https://github.com/alexmojaki/outdated"
-depends=('python')
-makedepends=('python-setuptools')
-license=('MIT')
+pkgver=0.2.1
+pkgrel=1
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
-        "LICENSE")
-sha256sums=('bcb145e0e372ba467e998c327d3d1ba72a134b0d5a729749729df6c6244ce643'
-            'dfe14f8798c400cbcc85bb4536a686c6fcf3086b3446c3f7c7054a2bcd73ca6a')
+url="https://github.com/alexmojaki/${_base}"
+license=(MIT)
+depends=(python-requests python-littleutils)
+makedepends=(python-setuptools git)
+source=("${_base}::git+${url}.git?#tag=v${pkgver}")
+sha512sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+  cd "${_base}"
+  python -c "from setuptools import setup; setup();" build
+}
+
+check() {
+  cd "${_base}"
+  python tests.py
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_base}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
