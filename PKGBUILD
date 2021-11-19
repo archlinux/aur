@@ -1,5 +1,6 @@
 # Maintainer: Nick Econopouly <wry at mm dot st>
-pkgname=jami-client-qt-git
+pkgname=jami-qt-git
+replaces=('jami-client-qt-git')
 pkgver=r701.0a7aaa5
 pkgrel=1
 pkgdesc="A free and private communication platform (QT client)"

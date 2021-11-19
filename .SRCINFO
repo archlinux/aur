@@ -1,4 +1,4 @@
-pkgbase = jami-client-qt-git
+pkgbase = jami-qt-git
 	pkgdesc = A free and private communication platform (QT client)
 	pkgver = r701.0a7aaa5
 	pkgrel = 1
@@ -19,7 +19,8 @@ pkgbase = jami-client-qt-git
 	conflicts = jami-gnome-git
 	conflicts = jami-gnome
 	conflicts = jami-qt
+	replaces = jami-client-qt-git
 	source = git+https://git.jami.net/savoirfairelinux/jami-client-qt.git
 	sha512sums = SKIP
 
-pkgname = jami-client-qt-git
+pkgname = jami-qt-git
