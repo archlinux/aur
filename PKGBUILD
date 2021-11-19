@@ -4,15 +4,15 @@
 
 pkgname=powershell
 _binaryname=pwsh
-_pkgver=7.1.5
+_pkgver=7.2.0
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=5.0.9')
+makedepends=('git' 'cmake' 'dotnet-sdk>=6.0.0')
 depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
 source=($pkgname::"git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver"
         'powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git'
@@ -80,7 +80,7 @@ check() {
 
 package() {
   mkdir -pv "$pkgdir/opt/microsoft/$pkgname/$_pkgnum"
-  cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/net5.0/linux-x64/"
+  cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/net6.0/linux-x64/"
 
   cp -ar ./ "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/"
 
