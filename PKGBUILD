@@ -3,7 +3,7 @@
 # Contributor: Yuval Adam <yuv dot adm at gmail dot com> PGP-Key: CC2115C12D99D2F0
 
 pkgname=micronucleus
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="ATTiny usb bootloader with a strong emphasis on bootloader compactness"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,13 +15,13 @@ conflicts=('micronucleus-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/micronucleus/micronucleus/archive/v${pkgver}.tar.gz"
 	"49-micronucleus.rules")
 options=('!makeflags')
-sha256sums=('85ea30826be83973ccac058902fe622a110d53c3dea0f6dd317ca1025d3a8af3'
+sha256sums=('586d7bb1c064fe93dc5fc5b5ae0651641cd7fa8272b06cfd11feb6a0b2a06b9c'
             '532d0c38faa9294c29ff280a60fd4e3d5fe4d680338d189091acf2818641c6ab')
-
+            
 prepare() {
   cd "${pkgname}-${pkgver}/commandline"
   echo "	Removing static compile"
-  sed -i 's/USBLIBS= -static $(shell libusb-config --libs)/USBLIBS= $(shell libusb-config --libs)/' Makefile
+  sed -i 's# -static##g' "${srcdir}/${pkgname}-${pkgver}/commandline/Makefile"
 }            
 
 build() {
