@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=tex2png
 pkgver=2014.12.28
 pkgrel=3
 pkgdesc='Convert TeX and LaTeX to PNG images.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/tex2png"
+url="https://xyne.dev/projects/tex2png"
 depends=(texlive-bin texlive-latexextra)
 source=(
-  https://xyne.mirrorrepo.com/projects/tex2png/src/tex2png-2014.12.28.tar.xz
-  https://xyne.mirrorrepo.com/projects/tex2png/src/tex2png-2014.12.28.tar.xz.sig
+  https://xyne.dev/projects/tex2png/src/tex2png-2014.12.28.tar.xz
+  https://xyne.dev/projects/tex2png/src/tex2png-2014.12.28.tar.xz.sig
 )
 sha512sums=(
   80c823dd1dc214ec75a13b6771a3a8c20be492c33c33c15a6afcce018fa7481114a9bf90dc093a92f2492975d3fdd57ba308dc556f08060fdd2748d206f399af
