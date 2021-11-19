@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-control
 	pkgdesc = Control PulseAudio from the polybar status bar
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/marioortizmanero/polybar-pulseaudio-control
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pulseaudio-control
 	depends = bash
 	depends = libpulse
 	depends = pulseaudio
-	source = https://github.com/marioortizmanero/polybar-pulseaudio-control/archive/v2.2.4.tar.gz
-	md5sums = 41cd4556d62623a8dace5d20c2ac906e
+	source = https://github.com/marioortizmanero/polybar-pulseaudio-control/archive/v2.2.5.tar.gz
+	md5sums = a4820594a0e77a4d222171dd56d764bb
 
 pkgname = pulseaudio-control
