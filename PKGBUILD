@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=213.5744.3
+pkgver=213.5744.124
 _pkgname=RubyMine
 _pkgver=2021.3
 pkgrel=1
@@ -16,12 +16,12 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('661a740c94a7f5a9575a065a8c18c96b027228b0d094065e49b9c38a7867e76c'
+sha256sums=('be7404233ac2030fd74dc54d6de77b2eef49634ce820e6dc11a80aac3b08f62c'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
 
   rm Install-Linux-tar.txt
   rm help/ReferenceCardForMac.pdf
@@ -37,7 +37,7 @@ package_rubymine-eap() {
   install -d ${pkgdir}/{opt,usr/share}
 
   # Pre-packaged program files
-  cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+  cp --recursive "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/opt/${pkgname}"
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   # Desktop file
@@ -48,7 +48,7 @@ package_rubymine-eap() {
 
   # License
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
+  find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
     install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
   # Java config
@@ -61,5 +61,5 @@ package_rubymine-eap-jre() {
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
+  cp -a "${srcdir}/${_pkgname}-${_pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
