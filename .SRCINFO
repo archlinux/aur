@@ -1,0 +1,14 @@
+pkgbase = python-aamp
+	pkgdesc = Nintendo parameter archive (AAMP) library
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/leoetlino/aamp
+	arch = any
+	license = GPL2
+	makedepends = python-pip
+	depends = python
+	depends = python-pyaml
+	source = https://files.pythonhosted.org/packages/py3/a/aamp/aamp-1.4.1-py3-none-any.whl
+	sha256sums = SKIP
+
+pkgname = python-aamp
