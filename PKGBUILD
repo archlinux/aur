@@ -1,7 +1,7 @@
 # Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=fishnet
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Distributed Stockfish analysis for lichess.org'
 arch=($CARCH)
