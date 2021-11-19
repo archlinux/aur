@@ -9,21 +9,32 @@ pkgrel=3
 arch=('any')
 url="https://github.com/matplotlib/${_base}"
 license=(MIT)
-depends=(python-matplotlib python-colorspacious)
+depends=(python-matplotlib python-colorspacious pyside2)
 makedepends=(python-setuptools)
-checkdepends=(python-pyqt5 python-scipy)
+# checkdepends=(python-pytest python-scipy)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('aa352f12c243f9940297dc2799e1ad1e649f8bfc0c3a5bb772f351ec0d3c380619382da847e090c1191840036a3f06ccf552658c59ce2296f576e5213884e334')
+
+prepare() {
+  # https://github.com/matplotlib/viscm/issues/55
+  sed -i 's/^from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas4/#from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas4/' "${_base}-${pkgver}/${_base}/gui.py"
+  sed -i 's/^from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas5/#from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas5/' "${_base}-${pkgver}/${_base}/gui.py"
+  sed -i '21 a try:' "${_base}-${pkgver}/${_base}/gui.py"
+  sed -i '22 a \ \ \ \ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas5' "${_base}-${pkgver}/${_base}/gui.py"
+  sed -i '23 a except Exception:' "${_base}-${pkgver}/${_base}/gui.py"
+  sed -i '24 a \ \ \ \ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas4' "${_base}-${pkgver}/${_base}/gui.py"
+  sed -i 's/^from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas/from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas/' "${_base}-${pkgver}/tests.py"
+}
 
 build() {
   cd "${_base}-${pkgver}"
   python setup.py build
 }
 
-check() {
-  cd "${_base}-${pkgver}"
-  python tests.py
-}
+# check() {
+#   cd "${_base}-${pkgver}"
+#   py.test tests.py -vv # -k 'not editor_loads_native'
+# }
 
 package() {
   cd "${_base}-${pkgver}"
