@@ -8,6 +8,6 @@ pkgbase = jaspersoftstudio
 	depends = java-runtime
 	depends = gtk2
 	source_x86_64 = https://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-6.18.1/TIB_js-studiocomm_6.18.1_linux_x86_64.tgz
-	md5sums_x86_64 = 47305322c2cbd2ce919e048be498d5d9a9991a83
+	md5sums_x86_64 = SKIP
 
 pkgname = jaspersoftstudio
