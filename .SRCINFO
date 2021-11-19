@@ -1,6 +1,6 @@
 pkgbase = jami-client-qt-git
 	pkgdesc = A free and private communication platform (QT client)
-	pkgver = r683.3dd206e
+	pkgver = r701.0a7aaa5
 	pkgrel = 1
 	url = https://git.jami.net/savoirfairelinux/jami-client-qt
 	arch = x86_64
@@ -15,9 +15,10 @@ pkgbase = jami-client-qt-git
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = qt5-webengine
-	provides = jami-client-qt
+	provides = jami-qt
 	conflicts = jami-gnome-git
 	conflicts = jami-gnome
+	conflicts = jami-qt
 	source = git+https://git.jami.net/savoirfairelinux/jami-client-qt.git
 	sha512sums = SKIP
 
