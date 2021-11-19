@@ -1,16 +1,16 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=xac
 pkgver=2018
 pkgrel=3
 pkgdesc='A markdown- and Pandoc-based content management system (CMS).'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/xac"
+url="https://xyne.dev/projects/xac"
 depends=(pandoc python3)
 optdepends=('graphviz: plugin support' 'openbabel: plugin support' 'source-highlight: plugin support' 'tex2png: plugin support')
 source=(
-  https://xyne.mirrorrepo.com/projects/xac/src/xac-2018.tar.xz
-  https://xyne.mirrorrepo.com/projects/xac/src/xac-2018.tar.xz.sig
+  https://xyne.dev/projects/xac/src/xac-2018.tar.xz
+  https://xyne.dev/projects/xac/src/xac-2018.tar.xz.sig
 )
 sha512sums=(
   a066ac4426cf7e54d97dd32858e69d72740ac496c74683105961ae106883a490e676caa8138664e2099e3c811820f9c84722c9f22a0e66a9d5a1abfc62d60b34
