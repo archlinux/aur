@@ -2,9 +2,9 @@
 pkgname=bcml-git
 _name=BCML
 pkgver=r1039.3c09365
-pkgrel=4
+pkgrel=5
 pkgdesc="Breath of the Wild Cross-Platform Mod Loader: A mod merger and manager for BOTW"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/NiceneNerd/BCML"
 license=('GPL3')
 depends=(
