@@ -1,0 +1,15 @@
+pkgbase = python-botw-utils
+	pkgdesc = Library containing various utilities for modding The Legend of Zelda: Breath of the Wild
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/NiceneNerd/botw-utils
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-xxhash
+	depends = python-oead
+	source = https://files.pythonhosted.org/packages/source/b/botw-utils/botw-utils-0.2.3.tar.gz
+	sha256sums = c393aadbe2a7607083f85e4db697ad652da9c91265432c31f3ba9bf8ea5b5f20
+
+pkgname = python-botw-utils
