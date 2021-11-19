@@ -10,7 +10,7 @@
 
 pkgname=python37
 pkgver=3.7.12
-pkgrel=2
+pkgrel=3
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
