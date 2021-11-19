@@ -1,16 +1,16 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-threaded_servers
 pkgver=2021.11
 pkgrel=2
 pkgdesc='Threaded server modules (ThreadedHTTPSServer, ThreadedMulticastServer, Quickserve, Pacserve).'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python3-threaded_servers"
+url="https://xyne.dev/projects/python3-threaded_servers"
 depends=(python3)
 optdepends=('avahi: Avahi support' 'pyalpm: required for the Pacserve module' 'python-dbus: Avahi support' 'python-gobject: Avahi support')
 source=(
-  https://xyne.mirrorrepo.com/projects/python3-threaded_servers/src/python3-threaded_servers-2021.11.tar.xz
-  https://xyne.mirrorrepo.com/projects/python3-threaded_servers/src/python3-threaded_servers-2021.11.tar.xz.sig
+  https://xyne.dev/projects/python3-threaded_servers/src/python3-threaded_servers-2021.11.tar.xz
+  https://xyne.dev/projects/python3-threaded_servers/src/python3-threaded_servers-2021.11.tar.xz.sig
 )
 sha512sums=(
   70040b3e46a89acfef33a4bf07be4e116a4429ee75f572e839f8c8d6b016f6b9263ae143c4cb8945d83bbd38558be5d7981985b1b4db06e6fa121d2baf3c1c3a
