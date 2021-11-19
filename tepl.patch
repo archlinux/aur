@@ -1,5 +1,5 @@
 diff --git a/gedit_plugin/meson.build b/gedit_plugin/meson.build
-index fec30b5..a178c88 100644
+index 883668d..596adbb 100644
 --- a/gedit_plugin/meson.build
 +++ b/gedit_plugin/meson.build
 @@ -3,6 +3,7 @@ project('autovala_gedit',['c','vala'])
@@ -8,8 +8,8 @@ index fec30b5..a178c88 100644
  add_global_arguments('-DGETTEXT_PACKAGE="autovala_gedit"',language: 'c')
 +add_project_arguments('--pkg=Tepl-6', language: 'vala')
  
- find_program ('g-ir-compiler')
- gtksourceview_3_0_dep = dependency('gtksourceview-3.0')
+ add_project_arguments('--girdir=../build/src/autovalaLib', language: 'vala')
+ add_project_arguments('--vapidir=../build/src/autovalaLib', language: 'vala')
 diff --git a/gedit_plugin/src/gedit_plugin.vala b/gedit_plugin/src/gedit_plugin.vala
 index 641345e..c0edb99 100644
 --- a/gedit_plugin/src/gedit_plugin.vala

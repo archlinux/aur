@@ -9,7 +9,7 @@ pkgname=(
 	gedit-autovala
 )
 pkgver=1.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A program that automatically generates CMake and Meson configuration files for your Vala project"
 arch=('x86_64')
 url="https://gitlab.com/rastersoft/autovala"
@@ -19,30 +19,34 @@ makedepends=('git' 'meson' 'vala'
              'libgee' 'gedit' 'gtk3'
              'vte3' 'gtksourceview4' 'libpeas'
              'pandoc' 'gobject-introspection')
-source=("git+https://gitlab.com/rastersoft/autovala#tag=$pkgver" gedit40.patch tepl.patch)
+source=("git+https://gitlab.com/rastersoft/autovala#tag=$pkgver" gedit40.patch tepl.patch local.patch)
 sha256sums=('SKIP'
-            'b69b316bca2799007a95714d2585b499e22ebcaebe348b4eafd9c2e637bac1d2'
-            '146773efe896ecc5db8fa644e4be8cd6708832aa3467c44570edb3973726e794')
+            'c72f55685649d184da17ef47a3ecbcf9a77906e0ae7b831ca116bf06db4764b3'
+            '66eba692513fb12283fef312ef39c3acb3d7705f7129addd7023ad936b0e3f0b'
+            '5b40b72a328c45ff66af92bbbdf2918cdcc9c8bdd9077ba169badfa743589b66')
 
 prepare() {
-	patch -d autovala -p1 < gedit40.patch
-	! grep 'goto_line' /usr/share/vala/vapi/gedit.vapi \
-	&& patch -d autovala -p1 < tepl.patch
-	rm -rf build build-gedit
+  patch -d autovala -p1 < gedit40.patch
+  patch -d autovala -p1 < local.patch
+
+  ! grep 'goto_line' /usr/share/vala/vapi/gedit.vapi && \
+  patch -d autovala -p1 < tepl.patch
+
+  rm -rf build build-gedit
 }
 
 build() {
   arch-meson autovala build
-  meson compile -C build
+  ninja -C build
+
   for each in build/meson-uninstalled/*-uninstalled.pc;do
     cp "$each" ${each%-*}.pc
   done
+
   arch-meson autovala/gedit_plugin \
     build-gedit \
     --pkg-config-path build/meson-uninstalled
-  echo $LDFLAGS
-  VALAFLAGS="$(echo "--"{vapidir,girdir}"=$PWD/build/src/"{autovalaLib,autovalaPlugin})" \
-    meson compile -C build-gedit
+  ninja -C build-gedit
 }
 
 package_autovala() {
@@ -57,7 +61,7 @@ package_gedit-autovala() {
   depends=(autovala gedit)
   DESTDIR="$pkgdir" meson install -C build-gedit
   mv "$pkgdir"/usr/lib/gedit/plugins/autovala/libautovalagedit.so{.1.0.0,}
-  
+
   rm -rf \
     "$pkgdir"/usr/lib/pkgconfig \
     "$pkgdir"/usr/lib/gedit/plugins/autovala/libautovalagedit.so.* \

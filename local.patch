@@ -1,0 +1,16 @@
+diff --git a/gedit_plugin/meson.build b/gedit_plugin/meson.build
+index 4027a4b..4fb60dc 100644
+--- a/gedit_plugin/meson.build
++++ b/gedit_plugin/meson.build
+@@ -4,6 +4,11 @@ ATHOME = (get_option('ATHOME') != '')
+ 
+ add_global_arguments('-DGETTEXT_PACKAGE="autovala_gedit"',language: 'c')
+ 
++add_project_arguments('--girdir=../build/src/autovalaLib', language: 'vala')
++add_project_arguments('--vapidir=../build/src/autovalaLib', language: 'vala')
++add_project_arguments('--girdir=../build/src/autovalaPlugin', language: 'vala')
++add_project_arguments('--vapidir=../build/src/autovalaPlugin', language: 'vala')
++
+ find_program ('g-ir-compiler')
+ gtksourceview_4_dep = dependency('gtksourceview-4')
+ AutoVala_dep = dependency('AutoVala')

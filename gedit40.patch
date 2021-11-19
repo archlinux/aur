@@ -11,27 +11,6 @@ index fec30b5..4027a4b 100644
  AutoVala_dep = dependency('AutoVala')
  AutovalaPlugin_dep = dependency('AutovalaPlugin')
  atk_dep = dependency('atk')
-diff --git a/gedit_plugin/src/autovalagedit.deps b/gedit_plugin/src/autovalagedit.deps
-index 5208d0a..19e82de 100644
---- a/gedit_plugin/src/autovalagedit.deps
-+++ b/gedit_plugin/src/autovalagedit.deps
-@@ -1,5 +1,5 @@
- gtk+-3.0
--gtksourceview-3.0
-+gtksourceview-4
- AutoVala
- AutovalaPlugin
- atk
-diff --git a/gedit_plugin/src/autovalagedit.pc b/gedit_plugin/src/autovalagedit.pc
-index 057eced..1f93ead 100644
---- a/gedit_plugin/src/autovalagedit.pc
-+++ b/gedit_plugin/src/autovalagedit.pc
-@@ -7,4 +7,4 @@ Description: autovalagedit
- Version: 1.0.0
- Libs: -L@DOLLAR@{libdir} -lautovalagedit
- Cflags: -I@DOLLAR@{includedir}
--Requires: gtksourceview-3.0 AutoVala AutovalaPlugin atk cairo gdk-3.0 gdk-pixbuf-2.0 gedit gee-0.8 gio-2.0 glib-2.0 gobject-2.0 gobject-introspection-1.0 libpeas-1.0 libxml-2.0 pango pangocairo vte-2.91 x11
-+Requires: gtksourceview-4 AutoVala AutovalaPlugin atk cairo gdk-3.0 gdk-pixbuf-2.0 gedit gee-0.8 gio-2.0 glib-2.0 gobject-2.0 gobject-introspection-1.0 libpeas-1.0 libxml-2.0 pango pangocairo vte-2.91 x11
 diff --git a/gedit_plugin/src/meson.build b/gedit_plugin/src/meson.build
 index 3976c52..9878629 100644
 --- a/gedit_plugin/src/meson.build
