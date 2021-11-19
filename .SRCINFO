@@ -11,7 +11,7 @@ pkgbase = hydrapaper-git
 	makedepends = meson
 	makedepends = pandoc
 	depends = gtk4
-	depends = libadwaita>=1.0.0.alpha.4
+	depends = libadwaita
 	depends = dbus-python
 	depends = python-gobject
 	depends = python-pillow
