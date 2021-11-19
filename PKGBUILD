@@ -4,10 +4,10 @@ pkgver=c0cb868
 pkgrel=1
 pkgdesc="Event device viewing/cloning utility"
 url="https://github.com/Blub/netevent"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=()
-makedepends=('python-docutils')
+makedepends=('python-docutils' 'git')
 source=("git+https://github.com/Blub/netevent.git")
 sha256sums=('SKIP')
 
