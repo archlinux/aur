@@ -1,0 +1,25 @@
+pkgbase = libldap24
+	pkgdesc = Lightweight Directory Access Protocol (LDAP) client libraries
+	pkgver = 2.4.59
+	pkgrel = 1
+	url = https://www.openldap.org/
+	arch = x86_64
+	license = custom
+	makedepends = libtool
+	makedepends = libsasl
+	makedepends = e2fsprogs
+	makedepends = util-linux
+	makedepends = chrpath
+	makedepends = unixodbc
+	makedepends = libsodium
+	depends = libsasl
+	depends = e2fsprogs
+	options = !makeflags
+	options = emptydirs
+	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.59.tgz
+	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.59.tgz.asc
+	validpgpkeys = 3CE269B5398BC8B785645E987F67D5FD1CE1CBCE
+	sha256sums = 99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34
+	sha256sums = SKIP
+
+pkgname = libldap24
