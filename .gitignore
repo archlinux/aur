@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except these files
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!nrf_sniffer_ble.sh
+!nrf-sniffer-ble.install
