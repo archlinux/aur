@@ -1,7 +1,7 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.7.2
-_pkgver=10.07.p02
+pkgver=10.7.3
+_pkgver=10.07.p03
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=3.8'
@@ -36,7 +36,7 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://cern.ch/geant4-data/releases/${pkgname}.${_pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('ee4ae9f103546e92aa3762b253fd1d95d1f2792299951d59c94e7b673eb86b32'
+sha256sums=('de430e933c2255061210dcac8124f4becbba9340f041c64c91d06a6a0fb1949c'
             '0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058')
 
 ## Remove this if you want to keep an even smaller package
@@ -62,7 +62,7 @@ build() {
       -DGEANT4_USE_RAYTRACER_X11=ON \
       -DGEANT4_USE_XM=ON \
       -DGEANT4_USE_SYSTEM_ZLIB=ON \
-      -DGEANT4_BUILD_CXXSTD=14 \
+      -DGEANT4_BUILD_CXXSTD=17 \
       -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
       -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
       ../${pkgname}.${_pkgver}
@@ -73,52 +73,23 @@ build() {
 
 package() {
 
-  #Since the basic package does not include the data files, their
-  #configuration should be removed from the configuration file. Data
-  #files are also available on the AUR and the environment variables
-  #are set automatically for you from the packages.
-
-  msg "Removing 'wrongly' set environment variables"
-
-  # Last revisited: 10.7
-  # also in .install file.
-  variables=(
-      "G4ABLADATA" \
-          "G4ENSDFSTATEDATA" \
-          "G4INCLDATA" \
-          "G4LEDATA" \
-          "G4LEVELGAMMADATA" \
-          "G4NEUTRONHPDATA" \
-          "G4PARTICLEXSDATA" \
-          "G4PIIDATA" \
-          "G4RADIOACTIVEDATA" \
-          "G4REALSURFACEDATA" \
-          "G4SAIDXSDATA" \
-          )
-
-  for _varname in ${variables[*]}
-  do
-    sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4.sh
-    sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4.csh
-
-    # disencouraged in-source compilation option
-    sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4make.sh
-    sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4make.csh
-  done
+  # normally the geant4.[c]sh is meant to configure the
+  # LD_LIBRARY_PATH, PATH and the "G4DATASETS". Let's not source that
+  # script since
+  #
+  # - LD_LIBRARY_PATH can be set using ldconf
+  # - PATH is not really needed
+  # - the "G4DATASETS" are not installed by default in this package
 
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 
-  # create a shell script to be initialized along with the terminals for out-of-source compilation
-  echo 'pushd /usr/bin &> /dev/null && source geant4.sh  && popd &> /dev/null' > ${srcdir}/geant4_profile.sh
-  echo 'pushd /usr/bin >& /dev/null && source geant4.csh && popd >& /dev/null' > ${srcdir}/geant4_profile.csh
-  install -d ${pkgdir}/etc/profile.d
-  install -m755 ${srcdir}/geant4_profile.sh  ${pkgdir}/etc/profile.d/geant4_profile.sh
-  install -m755 ${srcdir}/geant4_profile.csh ${pkgdir}/etc/profile.d/geant4_profile.csh
-
-  # install explicitly disencouraged in-source compilation option
-  install -m755 ${srcdir}/build/InstallTreeFiles/geant4make.sh  ${pkgdir}/usr/bin/geant4make.sh
-  install -m755 ${srcdir}/build/InstallTreeFiles/geant4make.csh ${pkgdir}/usr/bin/geant4cmake.sh
+  ##
+  ## This is not needed as ldconfig automatically includes /usr/lib
+  ##
+  # use a file that pacman can track instead of adding directly to ld.so.conf
+  # install -d "${pkgdir}/etc/ld.so.conf.d"
+  # echo '/usr/lib' > "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
 }
 
 # All this is just a comment
