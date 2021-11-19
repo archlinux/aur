@@ -1,5 +1,5 @@
 pkgbase = rider-eap
-	pkgdesc = A cross-platform C# IDE by JetBrains.
+	pkgdesc = A cross-platform .NET IDE by JetBrains.
 	pkgver = 213.5744.78
 	pkgrel = 1
 	epoch = 1
