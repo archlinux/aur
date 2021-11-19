@@ -19,7 +19,7 @@ _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice-${_lang}-bin
 pkgver=4.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Russian language pack for OpenOffice.org"
 arch=('i686' 'x86_64')
 url="http://www.openoffice.org/"
