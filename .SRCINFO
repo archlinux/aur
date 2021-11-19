@@ -1,0 +1,12 @@
+pkgbase = tracy-bin
+	pkgdesc = Basecalling, alignment, assembly and deconvolution of Sanger Chromatogram trace files
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/gear-genomics/tracy
+	arch = x86_64
+	license = BSDv3
+	provides = tracy
+	source = https://github.com/gear-genomics/tracy/releases/download/v0.6.1/tracy_v0.6.1_linux_x86_64bit
+	sha256sums = SKIP
+
+pkgname = tracy-bin
