@@ -1,0 +1,44 @@
+diff --git a/cmake/Modules/FindMMG.cmake b/cmake/Modules/FindMMG.cmake
+index f84dccef..0c03fba5 100644
+--- a/cmake/Modules/FindMMG.cmake
++++ b/cmake/Modules/FindMMG.cmake
+@@ -19,6 +19,13 @@ IF(MMG_LIBRARY AND MMG_INCLUDE_DIR)
+    RETURN()
+ ENDIF()
+ 
++# Try mmgConfig.cmake for mmg>=5.5.0
++FIND_PACKAGE(mmg)
++IF(mmg_FOUND)
++   SET(MMG_FOUND TRUE)
++  RETURN()
++ENDIF()
++
+ SET(MMG_FOUND FALSE)
+ SET(MMGINCLUDE
+   "${MMGROOT}/include"
+diff --git a/elmerice/Solvers/MeshAdaptation_2D/CMakeLists.txt b/elmerice/Solvers/MeshAdaptation_2D/CMakeLists.txt
+index 47e3de4a..a9633078 100644
+--- a/elmerice/Solvers/MeshAdaptation_2D/CMakeLists.txt
++++ b/elmerice/Solvers/MeshAdaptation_2D/CMakeLists.txt
+@@ -41,7 +41,7 @@ ENDIF()
+ 
+ IF(MMG_FOUND)
+   INCLUDE_DIRECTORIES(${MMG_INCLUDE_DIR})
+-  TARGET_LINK_LIBRARIES(ElmerIce_MeshAdapt2D ${MMG_LIBRARY} elmersolver)
++  TARGET_LINK_LIBRARIES(ElmerIce_MeshAdapt2D Mmg::libmmg2d_so elmersolver)
+ ELSE()
+   TARGET_LINK_LIBRARIES(ElmerIce_MeshAdapt2D elmersolver)
+ ENDIF()
+diff --git a/fem/src/CMakeLists.txt b/fem/src/CMakeLists.txt
+index 54b3fc88..16708c05 100644
+--- a/fem/src/CMakeLists.txt
++++ b/fem/src/CMakeLists.txt
+@@ -148,7 +148,7 @@ SET_TARGET_PROPERTIES(elmersolver
+ #a local copy just for ElmerSolver and libelmersolver
+ SET(ELMERSOLVER_RPATH_STRING_MOD "${ELMERSOLVER_RPATH_STRING}")
+ IF(HAVE_MMG)
+-  TARGET_LINK_LIBRARIES(elmersolver ${MMG_LIBRARY})
++  TARGET_LINK_LIBRARIES(elmersolver Mmg::libmmg3d_so)
+   SET(ELMERSOLVER_RPATH_STRING_MOD "${ELMERSOLVER_RPATH_STRING_MOD}:${MMG_LIBDIR}")
+   SET(ELMERLIB_RPATH_STRING "${ELMERLIB_RPATH_STRING}:${MMG_LIBDIR}")
+   #TODO - add to RPath
