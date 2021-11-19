@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: slomomojo <slomomojo@gmail.com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=wings3d
 pkgver=2.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='3D modeler using the winged edge data structure'
 arch=(x86_64)
 url='http://www.wings3d.com/' # https is not available
@@ -15,7 +15,7 @@ optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
         wings.sh)
 b2sums=('a7b8273788f26cdaaecfd90a14687703960855d3b72a034d8c78ed58d1e08008ecf1a17dee839471c4ac719efcb723de912db3163b8ce0adb3000eeba9235233'
-        '99865e6e7489dd5f1f76e6a1a9c2c2a02e32b50dff34c54e40f08720f39abe46dc659ad13af8f7c888a7f6c45f30c5f235855fe2f277a1bdd1782a41a1c9e3c9')
+        '2d9af245044293479786177c9169035b258c299fda67ee94eaf0f82fe509797553e843e87bf0ea7814b6a4ccbcca7d1e32f345e5eb1e536aaae06033030e86fd')
 
 prepare() {
   gendesk -f -n \
