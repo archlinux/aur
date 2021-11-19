@@ -1,6 +1,6 @@
 pkgname=podman-remote
 pkgver=3.4.2
-pkgrel=18
+pkgrel=19
 conflicts=('podman')
 provides=('podman')
 pkgdesc='Remote client for managing podman containers.'
@@ -32,12 +32,7 @@ build() {
 }
 
 package() {
-  depends=(cni-plugins conmon containers-common crun fuse-overlayfs iptables
-  libdevmapper.so libgpgme.so libseccomp.so slirp4netns)
-  optdepends=('apparmor: for AppArmor support'
-              'btrfs-progs: support btrfs backend devices'
-              'catatonit: --init flag support'
-              'podman-docker: for Docker-compatible CLI')
+  optdepends=('podman-docker: for Docker-compatible CLI')
 
   cd $srcdir/podman
 
