@@ -1,8 +1,8 @@
 # Maintainer: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=kmcaster
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="On-screen display (OSD) for keyboard and mouse events"
 arch=('any')
 url="https://github.com/DaveJarvis/kmcaster"
@@ -22,5 +22,5 @@ package() {
   install -Dm755 kmcaster.sh "$pkgdir/usr/bin/kmcaster"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
-md5sums=('feb59f5e21a0085f3fcd1e30e09c3cd1'
+md5sums=('c3204fe1c0a4bdc43eb8969e88401c53'
          'c89ecb10db8a6c447a956e5f4872a8bf')
