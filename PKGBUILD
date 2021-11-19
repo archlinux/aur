@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-xynexdg
 pkgver=2012.12.24.1
 pkgrel=12
 pkgdesc='Implementation of various freedesktop.org standards, for internal use in Xyne'"'"'s modules.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python3-xynexdg"
+url="https://xyne.dev/projects/python3-xynexdg"
 depends=(python3)
 source=(
-  https://xyne.mirrorrepo.com/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz
-  https://xyne.mirrorrepo.com/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz.sig
+  https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz
+  https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz.sig
 )
 sha512sums=(
   6653de168af4252d1be8e67b6daaa1c0ba91bb6de080f106392d298bfa702e72aa3d78b68bd833a0f6d825d8b21f9df009a00102289d5a0cccc996857c36509c
