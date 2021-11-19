@@ -8,13 +8,24 @@ arch=('x86_64')
 url="https://www.spoofax.dev/spoofax-pie/develop/"
 license=('EPL')
 depends=(webkit2gtk unzip)
-source=("$pkgname-$pkgver.zip::https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/$pkgver/spoofax.lwb.eclipse.repository-$pkgver-spoofax3-linux-x86_64-jvm.zip"
+makedepends=(git)
+source=('git+https://github.com/metaborg/spoofax-pie'
         "spoofax3.desktop")
-sha256sums=('f70ed0a868f964d125ec2911fa4f96dda93c82c2c2fc4bdf34be9c8986a5e092'
+sha256sums=('SKIP'
             '9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e')
 
+pkgver() {
+	cd "spoofax-pie"
+    git describe --tags | cut -d- -f2
+}
+
 build() {
-	chmod +x "$srcdir/Spoofax3/jvm/bin/java"
+    cd "$srcdir"
+    if not [ -e "$pkgname-$pkgver.zip" ]; then
+        curl "https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/$pkgver/spoofax.lwb.eclipse.repository-$pkgver-spoofax3-linux-x86_64-jvm.zip" --output "$pkgname-$pkgver.zip"
+        unzip "$pkgname-$pkgver.zip"
+    fi
+    chmod +x "$srcdir/Spoofax3/jvm/bin/java"
 }
 
 package() {

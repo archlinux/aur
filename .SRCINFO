@@ -5,11 +5,12 @@ pkgbase = spoofax3-jvm-bin
 	url = https://www.spoofax.dev/spoofax-pie/develop/
 	arch = x86_64
 	license = EPL
+	makedepends = git
 	depends = webkit2gtk
 	depends = unzip
-	source = spoofax3-jvm-bin-0.16.11.zip::https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/0.16.11/spoofax.lwb.eclipse.repository-0.16.11-spoofax3-linux-x86_64-jvm.zip
+	source = git+https://github.com/metaborg/spoofax-pie
 	source = spoofax3.desktop
-	sha256sums = f70ed0a868f964d125ec2911fa4f96dda93c82c2c2fc4bdf34be9c8986a5e092
+	sha256sums = SKIP
 	sha256sums = 9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e
 
 pkgname = spoofax3-jvm-bin
