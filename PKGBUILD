@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=rmdupes
 pkgver=2020.12
 pkgrel=2
 pkgdesc='Command-line tool to find and remove duplicate files.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/rmdupes"
+url="https://xyne.dev/projects/rmdupes"
 depends=(python3)
 source=(
-  https://xyne.mirrorrepo.com/projects/rmdupes/src/rmdupes-2020.12.tar.xz
-  https://xyne.mirrorrepo.com/projects/rmdupes/src/rmdupes-2020.12.tar.xz.sig
+  https://xyne.dev/projects/rmdupes/src/rmdupes-2020.12.tar.xz
+  https://xyne.dev/projects/rmdupes/src/rmdupes-2020.12.tar.xz.sig
 )
 sha512sums=(
   08c8a67f3be0d759427744184dee7ab231960280f39ef883c0f62c01021a0feff4cc9f1d9a1e4707e0ea6d314d72551a0e45b86c8b1239325379f6f7c56caaaf
