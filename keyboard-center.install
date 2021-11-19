@@ -1,0 +1,30 @@
+post_install() {
+    python3 -m compileall /usr/lib/keyboard-center
+    
+    # force load uinput kernel module
+    modprobe uinput
+    
+    # force reload udev rules
+    udevadm control --reload-rules
+    udevadm trigger
+}
+
+post_upgrade() {
+    udevadm control --reload-rules
+}
+
+pre_remove() {
+    find /usr/lib/keyboard-center -type f -iname \*.pyc -delete
+    find /usr/lib/keyboard-center -type d -iname __pycache__ -delete
+}
+
+post_remove() {
+    udevadm control --reload-rules
+    
+    echo "IMPORTANT: in order to stop the background service ##########"
+    echo 'please run "systemctl --user stop keyboard-center.service"'
+    echo "and"
+    echo 'systemctl --user disable keyboard-center.service" as NON ROOT'
+    echo "##############################################################"
+    sleep 3
+}
