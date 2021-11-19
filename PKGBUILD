@@ -1,9 +1,9 @@
 # Maintainer: Thomas Andres <thomas at andres dot in>
 pkgname=openhantek6022-git
 _gitname=OpenHantek6022
-pkgver=3.0.2.rc1
-pkgrel=2
-pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL."
+pkgver=933.e7f7a5d
+pkgrel=1
+pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL. (Compiled form git main branch)"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenHantek/OpenHantek6022"
 license=('GPL3')
@@ -15,14 +15,6 @@ source=("$_gitname::git+https://github.com/OpenHantek/OpenHantek6022.git")
 md5sums=('SKIP')
 
 prepare() {
-    gendesk -f -n \
-        --pkgname "$_gitname" \
-        --pkgdesc "$pkgdesc" \
-        --name "OpenHantek6022" \
-        --exec /usr/bin/OpenHantek \
-        --icon "$_gitname" \
-        --categories "Development;Science"
-
     cd $_gitname
     # change the udev directory to match arch defaults
     sed -i 's/\/lib\/udev\/rules.d\//\/usr\/lib\/udev\/rules.d\//g' CMakeLists.txt
@@ -30,12 +22,12 @@ prepare() {
 
 pkgver() {
     cd $_gitname
-    git describe --tags $(git rev-list --tags --max-count=1) | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    echo "$(git rev-list --all --count).$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd $_gitname
-    git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) -q
+    #git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) -q
     [[ ! -d build ]] && mkdir -p build
     cd build
     cmake \
@@ -47,10 +39,5 @@ build() {
 package() {
     cd $_gitname/build
     make DESTDIR=$pkgdir install
-    
-    cd $srcdir
-    install -Dm644 "$_gitname.desktop" "$pkgdir/usr/share/applications/$_gitname.desktop"
-    
-    cd $_gitname/openhantek/res/images
-    install -Dm644 OpenHantek.svg "$pkgdir/usr/share/pixmaps/$_gitname.svg"
 }
+
