@@ -1,11 +1,17 @@
-6,13c6
-< #_JCONSOLE="-Dcom.sun.management.jmxremote"
-< 
-< # https://www.willuhn.de/bugzilla/show_bug.cgi?id=774
-< # https://www.willuhn.de/bugzilla/show_bug.cgi?id=798
-< 
-< link=$(readlink -f "$0")
-< dir=$(dirname "$link")
-< cd "$dir" 
----
-> cd /opt/jameica
+diff --git a/jameica.sh b/jameica.sh
+index b389bfc..7104e21 100755
+--- a/jameica.sh
++++ b/jameica.sh
+@@ -3,11 +3,7 @@
+ # Linux Start-Script fuer regulaeren Standalone-Betrieb.
+ # Jameica wird hierbei mit GUI gestartet.
+ 
+-#_JCONSOLE="-Dcom.sun.management.jmxremote"
+-
+-link=$(readlink -f "$0")
+-dir=$(dirname "$link")
+-cd "$dir" 
++cd /opt/jameica
+ 
+ _JLP=""
+ 
