@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=tundra2-git
-pkgver=2.15.r4.g3860de8
+pkgver=2.16.3.r0.g39c8633
 pkgrel=1
 pkgdesc="A code build system that tries to be accurate and fast for incremental builds"
 arch=('x86_64')
