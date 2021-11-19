@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=unibrow
 pkgver=2012.12
 pkgrel=4
 pkgdesc='A unicode character browser that sits in the tray.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/unibrow"
+url="https://xyne.dev/projects/unibrow"
 depends=(gtk2 pygtk python2)
 source=(
-  https://xyne.mirrorrepo.com/projects/unibrow/src/unibrow-2012.12.tar.xz
-  https://xyne.mirrorrepo.com/projects/unibrow/src/unibrow-2012.12.tar.xz.sig
+  https://xyne.dev/projects/unibrow/src/unibrow-2012.12.tar.xz
+  https://xyne.dev/projects/unibrow/src/unibrow-2012.12.tar.xz.sig
 )
 sha512sums=(
   a818157d6f31a312f7ef6de32b830fbc634552becccc77cff89f71566465f6538436aae6b6951ca9ae68d69a104fafe37893c204c1a7919baad6ee13e9634cc0
