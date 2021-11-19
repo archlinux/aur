@@ -54,12 +54,14 @@ source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
         "$_pkgname.desktop"
         "arpack.patch"
         "print_target_properties.patch"
+        "vtk9.cmake.patch"
         "FindMMG.patch")
 
 sha256sums=('SKIP'
             'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
             '04e73a99d7e8d501a2c7c5211a83257137a30a8b1b5c2f7c7ff6304e0e0a6da9'
             '97dae953c0c43bcd265dd141cec8b22912c3ae6808ed60782b84dde90468ebbd'
+            'd4cf395c1fe689b9f2802c1b5d53bec6553342ed018245446b229a1a14a6fd38'
             '89b0e79ca1ad8952839d0578cdbce86ea4dad46e3c68aa1ce5b8b83bcff94e57')
 
 pkgver() {
@@ -70,7 +72,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
   sed -i 's/FALSE/false/g' ElmerGUI/Application/vtkpost/matc.cpp
-  git apply -v "${srcdir}"/{arpack,FindMMG,print_target_properties}.patch
+  git apply -v "${srcdir}"/{arpack,FindMMG,print_target_properties,vtk9.cmake}.patch
 }
 
 build() {
