@@ -1,0 +1,13 @@
+pkgbase = python-pycrosskit
+	pkgdesc = Cross Platform Toolkit for Windows and Linux in order to make variables and shortcuts easy
+	pkgver = 1.0.4.1
+	pkgrel = 1
+	url = https://github.com/jiri-otoupal/pycrosskit
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pycrosskit/pycrosskit-1.0.4.1.tar.gz
+	sha256sums = 99273ed6f22aa8a42eca0820d94fec1d335e36a45e8898f4d9ff765d13fda7de
+
+pkgname = python-pycrosskit
