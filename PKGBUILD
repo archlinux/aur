@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.9.7
-pkgrel=3
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -23,7 +23,7 @@ source=("https://github.com/oxen-io/lokinet/releases/download/v$pkgver/lokinet-v
         'lokinet.pkla'
         'lokinet.rules')
 noextract=('zeromq-4.3.3.tar.gz')
-sha256sums=('5471bd00d9d22de98be191c57745e37f4a72f50b42abf73acd9b61fa4f3006c4'
+sha256sums=('c129b942022634899f21706378bba0a3cf79f1f44d22f707267407a57206f190'
             'SKIP'
             '9d9285db37ae942ed0780c016da87060497877af45094ff9e1a1ca736e3875a2'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
