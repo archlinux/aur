@@ -4,8 +4,8 @@
 
 pkgname=crackmapexec
 _pkgname=CrackMapExec
-pkgver=5.1.1dev
-_pkgver=5.1.1.dev0
+pkgver=5.1.7dev
+_pkgver=5.1.6.dev0
 pkgrel=4
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
@@ -26,11 +26,12 @@ depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
 	 'python-soupsieve' 'python-termcolor' 'python-terminaltables'
 	 'python-tqdm' 'python-urllib3' 'python-wcwidth' 'python-werkzeug'
 	 'python-winacl' 'python-winsspi' 'python-xmltodict' 'python-zope-event'
-	 'python-zope-interface' 'python-pywerview' 'python-gevent' 'python-neo4j')
+	 'python-zope-interface' 'python-pywerview' 'python-gevent' 'python-neo4j'
+	 'python-aioconsole')
 
 makedepends=('python-setuptools' 'python-poetry')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('6db9630b3b01278089976186cff4a8303b72fbf034e2ac46a4e8cf91d7057348cdf44f093c525509971de94bf79c66d73f4d76b46537a96791b2edc63b940aa5')
+sha512sums=('3b4be83d30d58908f0828adb3b64aea608eb40ca21a9f9d3f69289f4be976ba9933990de6db46801ec3318ce93879af9ae30ed4bd3bcbbe0cbec748c82af4f11')
 
 prepare() {
   cd $_pkgname-$pkgver
