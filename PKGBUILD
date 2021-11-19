@@ -3,16 +3,16 @@
 
 pkgname=perl-gnome2-vte
 _cpanname=Gnome2-Vte
-pkgver=0.11
-pkgrel=6
-pkgdesc="Perl interface to the Virtual Terminal Emulation library "
+pkgver=0.12
+pkgrel=1
+pkgdesc="Perl interface to the Virtual Terminal Emulation library"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://search.cpan.org/~TSCH/${_cpanname}"
+url="https://metacpan.org/pod/Gnome2::Vte"
 license=('GPL' 'PerlArtistic')
 depends=('perl-extutils-pkgconfig>=1.03' 'gtk2-perl>=1.00' 'glib-perl>=1.01' 'perl-extutils-depends>=0.20' 'vte-legacy')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/X/XA/XAOC/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('1cb5cdfcd41873e55e923e72e64d922c')
+md5sums=('c1b1bc9845e7285dd015f3aa4b7e6a7a')
 
 build() {
   cd $srcdir/${_cpanname}-${pkgver}
