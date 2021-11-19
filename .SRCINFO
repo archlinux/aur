@@ -1,6 +1,6 @@
 pkgbase = midifile-git
 	pkgdesc = C++ classes for reading/writing Standard MIDI Files
-	pkgver = 256.97405c8
+	pkgver = 287.de6aa0c
 	pkgrel = 1
 	url = http://midifile.sapp.org
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = midifile-git
 	sha256sums = SKIP
 
 pkgname = midifile-git
-

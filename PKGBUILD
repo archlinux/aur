@@ -6,7 +6,7 @@
 _reponame=midifile
 pkgname=midifile-git
 _name=${pkgname%-git}
-pkgver=256.97405c8
+pkgver=287.de6aa0c
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ classes for reading/writing Standard MIDI Files'
@@ -48,8 +48,8 @@ package() {
   mkdir -p "${pkgdir}/usr/"{lib,bin,include/midifile}
 
   pushd build
-  # prevent conflict with sndio
-  for conflicting_file in midicat; do
+  # prevent conflict with pvoc
+  for conflicting_file in stretch; do
     mv $conflicting_file $conflicting_file-$_name
   done
   find \( -iname '*.so' \)                                      -exec cp --target-directory="${pkgdir}/usr/lib" {} \;
