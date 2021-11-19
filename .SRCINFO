@@ -1,13 +1,13 @@
 pkgbase = phyml
 	pkgdesc = Builds phylogenies from DNA or protein sequences using a maximum likelihood approach
-	pkgver = 3.3.20211021
+	pkgver = 3.3.20211118
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/stephaneguindon/phyml
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = phyml-3.3.20211021.tar.gz::https://github.com/stephaneguindon/phyml/archive/v3.3.20211021.tar.gz
-	sha256sums = 8dd6519ccbf73ce67e57bc7681f6dffdbbc63e78e15aae79394f3ec362d42c2d
+	source = phyml-3.3.20211118.tar.gz::https://github.com/stephaneguindon/phyml/archive/v3.3.20211118.tar.gz
+	sha256sums = 6348e8c0b73f424a7e3315116c34fe864162235565ce2f5cf81b1a0d499ba177
 
 pkgname = phyml
