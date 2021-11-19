@@ -1,30 +1,29 @@
-# Maintainer: Peter Kaplan <aur@pkap.de>
+# Maintainer: Peter Kaplan <peter@pkap.de>
 pkgname=lswt
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="List Wayland toplevels"
 arch=('x86_64')
 url="https://git.sr.ht/~leon_plickat/lswt"
 license=('GPL3')
-makedepends=('git')
 provides=("lswt")
-source=("$pkgname-$pkgver::git+https://git.sr.ht/~leon_plickat/lswt#tag=v$pkgver"
-    "makefile.patch"
-)
-sha256sums=('SKIP'
-            '876801b43378774ed96d5c9354ee829b426ea360bd1286912507ae7f810aa705')
+source=("https://git.sr.ht/~leon_plickat/lswt/archive/v1.0.1.tar.gz"
+        "makefile.patch")
+sha256sums=('0303f81d46c53e1932b007b95351d21ad6d7c0cdeed6a837ae122f34d0b53be7'
+            '0c7277485520d40e54099ee9d91336ad13dbf0809cbffe81a337de7f58aad032')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    git apply ../makefile.patch
+    cd "$pkgname-v$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/makefile.patch"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-v$pkgver"
     make DESTDIR="$pkgdir" PREFIX="/usr"
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make install DESTDIR="$pkgdir" PREFIX="/usr"
+    cd "$pkgname-v$pkgver"
+    make DESTDIR="$pkgdir" PREFIX="/usr" install 
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
