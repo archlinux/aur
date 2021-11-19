@@ -91,8 +91,8 @@ _makenconfig=
 
 pkgbase=linux-xanmod-rog
 xanmod=5.15.3-xanmod1
-pkgver=${xanmod//-/.}
-#pkgver=5.15.3.prexan0
+#pkgver=${xanmod//-/.}
+pkgver=5.15.4.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -121,8 +121,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # incremental kernel.org patch ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
-        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.2-3.xz"
-        #"Linux-5.15.3-rc4.patch"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.3-4.xz"
+        #"Linux-5.15.4-rc1.patch"
 
         # amd-pstate v3 included in Xanmod
         "revert-amd-pstate-v3.patch"
@@ -187,6 +187,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '09e1cd0e200d0661978afb581fe42fd18058fa96cf99f98481b3cc5bb3061494'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
+            '78d8462cf8e3ec4036eeadf2081d367cae272bdb7f173c12852676a745aee9db'
             '12d78853f582ccf8027dbd2cbc27b0fcde106202958c6be31054815bae7752ae'
             '8592fc434cc7d52b0fefe478de19d0af3d7e06406d8d09bd1bc85e6805738e68'
             'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
