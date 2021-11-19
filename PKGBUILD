@@ -1,11 +1,11 @@
 pkgname=rtile-git
 pkgver=dbb531b
-pkgrel=2
+pkgrel=3
 pkgdesc="Ruby script for manual tiling and window placement."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/xhsdf/rtile"
 license=('GPL')
-depends=('ruby' 'xorg-xprop' 'wmctrl' 'xorg-xrandr' 'pxdo')
+depends=('ruby' 'ruby-rexml' 'xorg-xprop' 'wmctrl' 'xorg-xrandr' 'pxdo')
 makedepends=('git')
 conflicts=('rtile')
 provides=('rtile')

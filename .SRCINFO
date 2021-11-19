@@ -1,7 +1,7 @@
 pkgbase = rtile-git
 	pkgdesc = Ruby script for manual tiling and window placement.
 	pkgver = dbb531b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xhsdf/rtile
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rtile-git
 	license = GPL
 	makedepends = git
 	depends = ruby
+	depends = ruby-rexml
 	depends = xorg-xprop
 	depends = wmctrl
 	depends = xorg-xrandr
@@ -19,4 +20,3 @@ pkgbase = rtile-git
 	md5sums = SKIP
 
 pkgname = rtile-git
-
