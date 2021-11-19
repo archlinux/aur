@@ -1,8 +1,8 @@
 # Maintainer: sim
 pkgname=ttf-jasonhandwriting
-_commit='c1aab398c3e65ce753b7fd755e3a0dce1df4fe3a'
+_commit='ff215fffafe4bf9a1b5fe264be94a78e902b42a4'
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='An open source Traditional Chinese (Taiwan) fonts created by Jason(Yu Ching Sung)'
 arch=('any')
 url='https://github.com/jasonhandwriting/JasonHandwriting'
@@ -12,12 +12,14 @@ source=("JasonHandwriting1.ttf::https://github.com/jasonhandwriting/JasonHandwri
         "JasonHandwriting3.ttf::https://github.com/jasonhandwriting/JasonHandwriting/raw/${_commit}/JasonHandwriting3.ttf"
         "JasonHandwriting4.ttf::https://github.com/jasonhandwriting/JasonHandwriting/raw/${_commit}/JasonHandwriting4.ttf"
         "JasonHandwriting5.ttf::https://github.com/jasonhandwriting/JasonHandwriting/raw/${_commit}/JasonHandwriting5.ttf"
+	"JasonHandwriting5p.ttf::https://github.com/jasonhandwriting/JasonHandwriting/raw/${_commit}/JasonHandwriting5p.ttf"
 	"README.md::https://github.com/jasonhandwriting/JasonHandwriting/raw/${_commit}/README.md")
 sha256sums=('de76a15b1e2c1a7050d061485e28195f5b682d45e37499cf730c2b8554c44cf3'
             'b67dce349d32e92e4ee7befeb0339d04ca69551bb523e60cfb5ea8f5fbd5d669'
             'f5353c04dbd9f9f4faf1741465aa88ddae55a55455af874971d754b8c1f7cd76'
             '1db91107a80c78e6d04b6d78f86a4b8946f083cb0b41ff5864009c4e1698ee4b'
-	    '295a1411d0f9d44f9f417c00f49948396f57f7e9bb39c3b8076aebd23236b240'
+	    'db40208f2985350b027312e2a7b551b5a2aaa0441d26efa052c08863c56008ea'
+	    'e95a94857938655a00e684586eb891459389ebf263c5529be2b9e11e211017ab'
             'cb20f35d0babdffc639b0f27d2fe1f0918158607688be92639fa7195b1a34782'
 )
 
@@ -27,7 +29,8 @@ package() {
   install -m 644 JasonHandwriting2.ttf "${pkgdir}/usr/share/fonts/JasonHandwriting/JasonHandwriting2.ttf"
   install -m 644 JasonHandwriting3.ttf "${pkgdir}/usr/share/fonts/JasonHandwriting/JasonHandwriting3.ttf"
   install -m 644 JasonHandwriting4.ttf "${pkgdir}/usr/share/fonts/JasonHandwriting/JasonHandwriting4.ttf"
-  install -m 644 JasonHandwriting4.ttf "${pkgdir}/usr/share/fonts/JasonHandwriting/JasonHandwriting5.ttf"
+  install -m 644 JasonHandwriting5.ttf "${pkgdir}/usr/share/fonts/JasonHandwriting/JasonHandwriting5.ttf"
+  install -m 644 JasonHandwriting5p.ttf "${pkgdir}/usr/share/fonts/JasonHandwriting/JasonHandwriting5p.ttf"
   sed -n '/JasonHandwriting/,/License./p' README.md > LICENSE
   sed -i 1,1d LICENSE
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
