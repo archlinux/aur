@@ -31,7 +31,7 @@ package() {
 
   # Legacy name for the eToken PKCS#11 module
   install -dm755 "$pkgdir"/usr/lib/pkcs11
-  ln -s sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/libeTPkcs11.so
+  ln -s ../sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
 
   # "Card reader" driver for PCSC
   install -dm755 "$pkgdir"/usr/lib/pcsc/drivers
