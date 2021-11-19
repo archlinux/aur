@@ -1,0 +1,13 @@
+pkgbase = ammonite-scala2.12
+	pkgdesc = ammonite with scala 2.12
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/com-lihaoyi/Ammonite
+	arch = x86_64
+	groups = ammonite-scala
+	license = MIT
+	noextract = amm-212
+	source = amm-212::https://github.com/com-lihaoyi/Ammonite/releases/download/2.4.1/2.12-2.4.1
+	md5sums = e001eeea6fdb38f08c36d9990fea3d42
+
+pkgname = ammonite-scala2.12
