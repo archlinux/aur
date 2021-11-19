@@ -1,12 +1,12 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.13.0.r17.g9f53ae0
+pkgver=0.14.0.r31.g46b4f0f
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 url='https://gitlab.gnome.org/World/Phosh/phosh'
 license=('GPL3')
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 armv7h)
 depends=(
 	callaudiod
 	feedbackd
@@ -18,6 +18,7 @@ makedepends=(
 	git
 	meson
 	vala
+	wayland-protocols
 )
 provides=(phosh)
 conflicts=(phosh)
