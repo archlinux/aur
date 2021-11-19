@@ -1,0 +1,8 @@
+pkgbase = ttf-apple-kid
+	pkgdesc = EarthBound Text Box Font
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+
+pkgname = ttf-apple-kid
+
