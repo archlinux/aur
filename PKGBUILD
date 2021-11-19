@@ -5,9 +5,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fzf-git
-pkgver=0.27.1
+pkgver=0.28.0.r2.g205f885
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Command-line fuzzy finder"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('ncurses')
