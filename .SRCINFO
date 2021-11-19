@@ -1,0 +1,23 @@
+pkgbase = linux-studio-bin
+	pkgdesc = Segger Linux Studio is an all-in-one solution for application development on Linux.
+	pkgver = 5.30
+	pkgrel = 1
+	url = https://www.segger.com/products/development-tools/linux-studio/
+	arch = x86_64
+	arch = i686
+	license = Commercial
+	depends = jlink-software-and-documentation
+	optdepends = embedded-studio-arm: Segger Embedded Studio for ARM
+	optdepends = embedded-studio-arm-nordic: Segger Embedded Studio for ARM, Nordic version
+	optdepends = embedded-studio-risc-v: Segger Embedded Studio for RISC-V
+	optdepends = ozone: Segger Ozone JLink debugger for Linux
+	optdepends = jlink-systemview: Segger SystemView for Linux
+	optdepends = jlink-systemview-target-src: Segger SystemView target src for Linux
+	optdepends = pylink: Python interface for the SEGGER J-Link
+	options = !strip
+	source_x86_64 = Setup_LinuxStudio_v530_x64.tar.gz::https://www.segger.com/downloads/linux-studio/Setup_LinuxStudio_v530_x64.tar.gz
+	sha256sums_x86_64 = 4af7446a418212869e9ef854347cdbd9b4c31694819252b149a84571ebdbe266
+	source_i686 = Setup_LinuxStudio_v530_x86.tar.gz::https://www.segger.com/downloads/linux-studio/Setup_LinuxStudio_v530_x86.tar.gz
+	sha256sums_i686 = c252f89f0718def93c817d93734a301f4207794f344c5771ade203cefe315ad5
+
+pkgname = linux-studio-bin
