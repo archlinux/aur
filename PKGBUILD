@@ -1,16 +1,16 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=timedatectl-restorer
 pkgver=2013.7.12
 pkgrel=2
 pkgdesc='Restore system time across reboots when the internal clock is dead.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/timedatectl-restorer"
+url="https://xyne.dev/projects/timedatectl-restorer"
 depends=(python3)
 optdepends=('systemd: service support')
 source=(
-  https://xyne.mirrorrepo.com/projects/timedatectl-restorer/src/timedatectl-restorer-2013.7.12.tar.xz
-  https://xyne.mirrorrepo.com/projects/timedatectl-restorer/src/timedatectl-restorer-2013.7.12.tar.xz.sig
+  https://xyne.dev/projects/timedatectl-restorer/src/timedatectl-restorer-2013.7.12.tar.xz
+  https://xyne.dev/projects/timedatectl-restorer/src/timedatectl-restorer-2013.7.12.tar.xz.sig
 )
 sha512sums=(
   12fa49609b53911b59eb0a800b251737f7cf4fe1863477b6d653e16b56583a66541b8448b031927172ab390f87e54e0bf1ccd8f4f59ca5ad7d9004d01a40db4d
