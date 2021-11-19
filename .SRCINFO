@@ -1,0 +1,14 @@
+pkgbase = python-clr_loader
+	pkgdesc = Generic pure Python loader for .NET runtimes
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/pythonnet/clr-loader
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cffi
+	source = https://files.pythonhosted.org/packages/source/c/clr_loader/clr_loader-0.1.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-clr_loader
