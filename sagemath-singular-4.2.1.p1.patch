@@ -1,0 +1,266 @@
+diff --git a/src/sage/libs/singular/decl.pxd b/src/sage/libs/singular/decl.pxd
+index 806937ff6e..68741d7588 100644
+--- a/src/sage/libs/singular/decl.pxd
++++ b/src/sage/libs/singular/decl.pxd
+@@ -747,21 +747,21 @@ cdef extern from "singular/Singular/libsingular.h":
+ 
+     # general number constructor
+ 
+-    number *n_Init(int n, ring *r)
++    number *n_Init(int n, n_Procs_s *cf)
+ 
+     # general number destructor
+ 
+-    void n_Delete(number **n, ring *r)
++    void n_Delete(number **n, n_Procs_s *cf)
+ 
+     # Copy this number
+-    number *n_Copy(number *n, ring* r)
++    number *n_Copy(number *n, n_Procs_s *cf)
+ 
+     # Invert this number
+     int n_IsUnit(number *n, const n_Procs_s *cf)
+     number *n_Invers(number *n, const n_Procs_s *cf)
+ 
+     # Characteristic of coefficient domain
+-    int n_GetChar(const ring* r)
++    int n_GetChar(const n_Procs_s *cf)
+ 
+     # rational number from int
+ 
+diff --git a/src/sage/libs/singular/polynomial.pyx b/src/sage/libs/singular/polynomial.pyx
+index 7687de8f2d..027e0b574a 100644
+--- a/src/sage/libs/singular/polynomial.pyx
++++ b/src/sage/libs/singular/polynomial.pyx
+@@ -130,7 +130,7 @@ cdef int singular_polynomial_rmul(poly **ret, poly *p, RingElement n, ring *r):
+         rChangeCurrRing(r)
+     cdef number *_n = sa2si(n, r)
+     ret[0] = pp_Mult_nn(p, _n, r)
+-    n_Delete(&_n, r)
++    n_Delete(&_n, r.cf)
+     return 0
+ 
+ cdef int singular_polynomial_call(poly **ret, poly *p, ring *r, list args, poly *(*get_element)(object)):
+@@ -275,7 +275,7 @@ cdef int singular_polynomial_cmp(poly *p, poly *q, ring *r):
+             h = r.cf.cfSub(p_GetCoeff(p, r),p_GetCoeff(q, r),r.cf)
+             # compare coeffs
+             ret = -1+r.cf.cfIsZero(h,r.cf)+2*r.cf.cfGreaterZero(h, r.cf) # -1: <, 0:==, 1: >
+-            n_Delete(&h, r)
++            n_Delete(&h, r.cf)
+         p = pNext(p)
+         q = pNext(q)
+ 
+@@ -346,7 +346,7 @@ cdef int singular_polynomial_div_coeff(poly** ret, poly *p, poly *q, ring *r) ex
+     cdef number *n = p_GetCoeff(q, r)
+     n = r.cf.cfInvers(n,r.cf)
+     ret[0] = pp_Mult_nn(p, n, r)
+-    n_Delete(&n, r)
++    n_Delete(&n, r.cf)
+     sig_off()
+     return 0
+ 
+diff --git a/src/sage/libs/singular/singular.pyx b/src/sage/libs/singular/singular.pyx
+index ce93c3b8cb..c4eba5fe59 100644
+--- a/src/sage/libs/singular/singular.pyx
++++ b/src/sage/libs/singular/singular.pyx
+@@ -669,7 +669,7 @@ cdef object si2sa(number *n, ring *_ring, object base):
+ cdef number *sa2si(Element elem, ring * _ring):
+     cdef int i = 0
+     if isinstance(elem._parent, FiniteField_prime_modn):
+-        return n_Init(int(elem),_ring)
++        return n_Init(int(elem),_ring.cf)
+ 
+     elif isinstance(elem._parent, RationalField):
+         return sa2si_QQ(elem, _ring)
+@@ -690,7 +690,7 @@ cdef number *sa2si(Element elem, ring * _ring):
+         return sa2si_NF(elem, _ring)
+     elif isinstance(elem._parent, IntegerModRing_generic):
+         if _ring.cf.type == n_unknown:
+-            return n_Init(int(elem),_ring)
++            return n_Init(int(elem),_ring.cf)
+         return sa2si_ZZmod(elem, _ring)
+     else:
+         raise ValueError("cannot convert to SINGULAR number")
+diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx
+index 6f884ea2c1..dcbc2a52a8 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx
+@@ -329,7 +329,7 @@ def interred_libsingular(I):
+                 n = r.cf.cfInvers(n,r.cf)
+             result.m[j] = pp_Mult_nn(p, n, r)
+             p_Delete(&p,r)
+-            n_Delete(&n,r)
++            n_Delete(&n,r.cf)
+ 
+     id_Delete(&i,r)
+ 
+diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+index 2c69227760..4ab9a36f78 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+@@ -1652,7 +1652,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
+             else:
+                 raise ArithmeticError("Cannot divide these coefficients.")
+         else:
+-            p_SetCoeff0(res, n_Init(1, r), r)
++            p_SetCoeff0(res, n_Init(1, r.cf), r)
+         return new_MP(self, res)
+ 
+     def monomial_divides(self, MPolynomial_libsingular a, MPolynomial_libsingular b):
+@@ -1805,7 +1805,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
+                     if r is not currRing:
+                         rChangeCurrRing(r)
+                     flt = pMDivide(f._poly, h._poly)
+-                    p_SetCoeff(flt, n_Init(1, r), r)
++                    p_SetCoeff(flt, n_Init(1, r.cf), r)
+                     return (new_MP(self, flt), h)
+         return (self._zero_element, self._zero_element)
+ 
+@@ -2885,7 +2885,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+                     flag = 1
+             if flag == 0:
+                 newptemp = p_LmInit(p,r)
+-                p_SetCoeff(newptemp,n_Copy(p_GetCoeff(p,r),r),r)
++                p_SetCoeff(newptemp,n_Copy(p_GetCoeff(p,r),r.cf),r)
+                 for i from 0<=i<gens:
+                     if exps[i] != -1:
+                         p_SetExp(newptemp,i+1,0,r)
+@@ -3187,7 +3187,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             t = pNext(p)
+             p.next = NULL
+             coeff = si2sa(p_GetCoeff(p, _ring), _ring, base)
+-            p_SetCoeff(p, n_Init(1,_ring), _ring)
++            p_SetCoeff(p, n_Init(1,_ring.cf), _ring)
+             p_Setm(p, _ring)
+             yield (coeff, new_MP(parent, p))
+             p = t
+@@ -3716,7 +3716,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         while p:
+             t = pNext(p)
+             p.next = NULL
+-            p_SetCoeff(p, n_Init(1,_ring), _ring)
++            p_SetCoeff(p, n_Init(1,_ring.cf), _ring)
+             p_Setm(p, _ring)
+             l.append( new_MP(parent,p) )
+             p = t
+@@ -3993,7 +3993,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         if self._poly == NULL:
+             return self._parent._zero_element
+         _p = p_Head(self._poly, _ring)
+-        p_SetCoeff(_p, n_Init(1,_ring), _ring)
++        p_SetCoeff(_p, n_Init(1,_ring.cf), _ring)
+         p_Setm(_p,_ring)
+         return new_MP(self._parent, _p)
+ 
+@@ -4142,7 +4142,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         elif p_IsOne(_right._poly, r):
+             return self
+ 
+-        if n_GetChar(r) > 1<<29:
++        if n_GetChar(r.cf) > 1<<29:
+             raise NotImplementedError("Division of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+ 
+         if r.cf.type != n_unknown:
+@@ -4153,7 +4153,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+                 while p:
+                     if p_DivisibleBy(_right._poly, p, r):
+                         temp = p_MDivide(p, _right._poly, r)
+-                        p_SetCoeff0(temp, n_Copy(p_GetCoeff(p, r), r), r)
++                        p_SetCoeff0(temp, n_Copy(p_GetCoeff(p, r), r.cf), r)
+                         quo = p_Add_q(quo, temp, r)
+                     p = pNext(p)
+                 return new_MP(parent, quo)
+@@ -4458,7 +4458,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             except Exception:
+                 raise NotImplementedError("Factorization of multivariate polynomials over %s is not implemented."%self._parent._base)
+ 
+-        if n_GetChar(_ring) > 1<<29:
++        if n_GetChar(_ring.cf) > 1<<29:
+             raise NotImplementedError("Factorization of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+ 
+         # I make a temporary copy of the poly in self because singclap_factorize appears to modify it's parameter
+@@ -4842,7 +4842,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             if _ring.cf.type == n_Znm or _ring.cf.type == n_Zn or _ring.cf.type == n_Z2m :
+                 raise NotImplementedError("GCD over rings not implemented.")
+ 
+-        if n_GetChar(_ring) > 1<<29:
++        if n_GetChar(_ring.cf) > 1<<29:
+             raise NotImplementedError("GCD of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+ 
+         cdef int count = singular_polynomial_length_bounded(self._poly,20) \
+@@ -4915,7 +4915,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         else:
+             _g = <MPolynomial_libsingular>g
+ 
+-        if n_GetChar(_ring) > 1<<29:
++        if n_GetChar(_ring.cf) > 1<<29:
+             raise NotImplementedError("LCM of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+ 
+         cdef int count = singular_polynomial_length_bounded(self._poly,20) \
+@@ -4995,7 +4995,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             py_rem = self - right*py_quo
+             return py_quo, py_rem
+ 
+-        if n_GetChar(r) > 1<<29:
++        if n_GetChar(r.cf) > 1<<29:
+             raise NotImplementedError("Division of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+ 
+         cdef int count = singular_polynomial_length_bounded(self._poly,15)
+@@ -5450,7 +5450,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             raise TypeError("second parameter needs to be an element of self.parent() or None")
+ 
+ 
+-        if n_GetChar(_ring) > 1<<29:
++        if n_GetChar(_ring.cf) > 1<<29:
+             raise NotImplementedError("Resultants of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+ 
+         if is_IntegerRing(self._parent._base):
+diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
+index 349871f508..540bc5cd29 100644
+--- a/src/sage/rings/polynomial/plural.pyx
++++ b/src/sage/rings/polynomial/plural.pyx
+@@ -1063,7 +1063,7 @@ cdef class NCPolynomialRing_plural(Ring):
+             else:
+                 raise ArithmeticError("Cannot divide these coefficients.")
+         else:
+-            p_SetCoeff0(res, n_Init(1, r), r)
++            p_SetCoeff0(res, n_Init(1, r.cf), r)
+         return new_NCP(self, res)
+ 
+     def monomial_divides(self, NCPolynomial_plural a, NCPolynomial_plural b):
+@@ -1251,7 +1251,7 @@ cdef class NCPolynomialRing_plural(Ring):
+                 h = <NCPolynomial_plural>g
+                 if p_LmDivisibleBy(h._poly, m, r):
+                     flt = pMDivide(f._poly, h._poly)
+-                    p_SetCoeff(flt, n_Init(1, r), r)
++                    p_SetCoeff(flt, n_Init(1, r.cf), r)
+                     return (new_NCP(self,flt), h)
+         return (self._zero_element, self._zero_element)
+ 
+@@ -2112,7 +2112,7 @@ cdef class NCPolynomial_plural(RingElement):
+                     flag = 1
+             if flag == 0:
+                 newptemp = p_LmInit(p,r)
+-                p_SetCoeff(newptemp,n_Copy(p_GetCoeff(p,r),r),r)
++                p_SetCoeff(newptemp,n_Copy(p_GetCoeff(p,r),r.cf),r)
+                 for i from 0<=i<gens:
+                     if exps[i] != -1:
+                         p_SetExp(newptemp,i+1,0,r)
+@@ -2545,7 +2545,7 @@ cdef class NCPolynomial_plural(RingElement):
+         while p:
+             t = pNext(p)
+             p.next = NULL
+-            p_SetCoeff(p, n_Init(1,_ring), _ring)
++            p_SetCoeff(p, n_Init(1,_ring.cf), _ring)
+             p_Setm(p, _ring)
+             l.append( new_NCP(parent,p) )
+             p = t
+@@ -2650,7 +2650,7 @@ cdef class NCPolynomial_plural(RingElement):
+         if self._poly == NULL:
+             return (<NCPolynomialRing_plural>self._parent)._zero_element
+         _p = p_Head(self._poly, _ring)
+-        p_SetCoeff(_p, n_Init(1,_ring), _ring)
++        p_SetCoeff(_p, n_Init(1,_ring.cf), _ring)
+         p_Setm(_p,_ring)
+         return new_NCP((<NCPolynomialRing_plural>self._parent), _p)
+ 

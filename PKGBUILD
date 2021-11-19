@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.5.beta5.r0.gf716a0b366
+pkgver=9.5.beta7.r0.gcc60cfebc4
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -43,13 +43,15 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         latte-count.patch
         test-optional.patch
         sagemath-lrcalc2.patch
-        sagemath-lcalc2.patch)
+        sagemath-lcalc2.patch
+        sagemath-singular-4.2.1.p1.patch)
 sha256sums=('SKIP'
             'b2308f25c5e6ad330342fc365056d7aebfbba09b833e3be6fb6283061709b6a0'
             '2f310081357996b7d3bf813e63d07c0fc04d6724adbfbd1beeb554e9476e2e4c'
-            '079276c593d0f122b97144f80de8b1746a5735d0e82ebb194d471513771743a4'
+            'd1310321bf07491658e83087a6ddb0011738fa17a1dc3275d6d5c6907eaf3df8'
             'b7ebdba8612b1219011642c9bd4b377a23f402876a7d3dac90679a2bb34bbf98'
-            '791b3f2c6e5529b09c3abf2f9703b6cf754d633a7a4177645b70b72ea014135a')
+            '791b3f2c6e5529b09c3abf2f9703b6cf754d633a7a4177645b70b72ea014135a'
+            'e3cdfe730d0b0f422fe837e465ecde3419b16de50bef3dd2b674f275f528ed97')
 
 pkgver() {
   cd sage
@@ -64,6 +66,8 @@ prepare(){
   patch -p1 -i ../sagemath-lrcalc2.patch
 # Port to lcalc 2 https://trac.sagemath.org/ticket/32037
   patch -p1 -i ../sagemath-lcalc2.patch
+# Fix build with singular 4.2.1.p1
+  patch -p1 -i ../sagemath-singular-4.2.1.p1.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
