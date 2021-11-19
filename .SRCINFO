@@ -1,0 +1,16 @@
+pkgbase = python-botw_havok
+	pkgdesc = A library for manipulating Breath of the Wild Havok packfiles
+	pkgver = 0.3.18
+	pkgrel = 1
+	url = https://github.com/krenyy/botw_havok
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	depends = python-colorama
+	depends = python-numpy
+	depends = python-oead
+	source = https://files.pythonhosted.org/packages/py3/b/botw_havok/botw_havok-0.3.18-py3-none-any.whl
+	sha256sums = 8752198d047d5a743e2b3b748af62701f1fbcb8d8dcbef4e5941bd67bcad6487
+
+pkgname = python-botw_havok
