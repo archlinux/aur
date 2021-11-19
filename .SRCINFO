@@ -8,7 +8,7 @@ pkgbase = 0ad-boongui
 	license = CCPL
 	makedepends = unzip
 	noextract = boongui.pyromod
-	source = https://github.com/LangLangBart/boonGUI/releases/download/v2.0.0/boongui.pyromod
-	sha256sums = f46c9ecb96ea555a45512cbd470b69849284d1afc7937a2c7cd25ee4622711b4
+	source = https://github.com/LangLangBart/boonGUI/releases/latest/download/boongui.pyromod
+	sha256sums = SKIP
 
 pkgname = 0ad-boongui
