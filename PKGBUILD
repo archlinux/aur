@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=rabbit_tree
 pkgver=2016.11.13
 pkgrel=2
 pkgdesc='Radix bit tries for implementing associative arrays and sets in C.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/rabbit_tree"
+url="https://xyne.dev/projects/rabbit_tree"
 makedepends=(cmake doxygen graphviz)
 source=(
-  https://xyne.mirrorrepo.com/projects/rabbit_tree/src/rabbit_tree-2016.11.13.tar.xz
-  https://xyne.mirrorrepo.com/projects/rabbit_tree/src/rabbit_tree-2016.11.13.tar.xz.sig
+  https://xyne.dev/projects/rabbit_tree/src/rabbit_tree-2016.11.13.tar.xz
+  https://xyne.dev/projects/rabbit_tree/src/rabbit_tree-2016.11.13.tar.xz.sig
 )
 sha512sums=(
   b405ebd2c22103d96fe3d6d09bdbe35d8c178fa53a49bc4b2141ab7d09afd3634fd5b1b41f3e97e37fa9ed7ab2c546e025a0bec0d522053e0efb979d19e85c95
