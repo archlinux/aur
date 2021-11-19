@@ -1,6 +1,6 @@
 pkgbase = rmm-git
 	pkgdesc = RimWorld Mod Manager
-	pkgver = 0.0.7.r4.g2ed8a48
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/Spoons/rmm.git
 	changelog = ChangeLog
