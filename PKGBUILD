@@ -2,7 +2,7 @@
 
 pkgname=phoc-embedded-wlroots
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
 url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=(GPL3)
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=(xorg-server-xvfb)
 provides=(phoc)
-conflicts=(phoc)
+conflicts=(phoc wlroots)
 source=(
 	"git+${url}.git#tag=v${pkgver}"
 	"git+https://source.puri.sm/Librem5/wlroots.git"
@@ -51,8 +51,4 @@ check() {
 
 package() {
 	DESTDIR="${pkgdir}" meson install -C build
-	
-	rm -rf "${pkgdir}/usr/include/"
-	rm -rf "${pkgdir}/usr/lib/pkgconfig/"
-
 }
