@@ -1,16 +1,16 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=svgtools
 pkgver=2020.7.27
 pkgrel=3
 pkgdesc='Tools for working with SVG files and JessyInk presentations.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/svgtools"
+url="https://xyne.dev/projects/svgtools"
 depends=(python3)
 optdepends=('inkscape: required for ji2pdf and jessy_to_slides' 'parallel: GNU Parallel support for ji2pdf' 'phantomjs: required for jessy_to_slides' 'poppler: required for ji2pdf')
 source=(
-  https://xyne.mirrorrepo.com/projects/svgtools/src/svgtools-2020.7.27.tar.xz
-  https://xyne.mirrorrepo.com/projects/svgtools/src/svgtools-2020.7.27.tar.xz.sig
+  https://xyne.dev/projects/svgtools/src/svgtools-2020.7.27.tar.xz
+  https://xyne.dev/projects/svgtools/src/svgtools-2020.7.27.tar.xz.sig
 )
 sha512sums=(
   e9eb3626e730619d01daac3d2bcce9256ddf6d98ad80f063f1ffcbdefb789b6f0c2530147048fef99abc5cf56008f2e225d76b6fd9250046f546ec9b20ab3f87
