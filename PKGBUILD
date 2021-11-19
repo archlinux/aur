@@ -18,6 +18,7 @@ makedepends=(
 	git
 	meson
 	vala
+	wayland-protocols
 )
 # checkdepends=(xorg-server-xvfb)
 source=(

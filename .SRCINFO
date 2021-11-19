@@ -11,6 +11,7 @@ pkgbase = phosh
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
+	makedepends = wayland-protocols
 	depends = callaudiod
 	depends = feedbackd
 	depends = libhandy
