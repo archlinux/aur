@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=5.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -25,7 +25,6 @@ depends=(bluedevil
          plasma-nm
          plasma-workspace-wallpapers
          plasma-pa
-         plasma-sdk
          plasma-systemmonitor
          plasma-thunderbolt
          plasma-vault
@@ -38,4 +37,5 @@ depends=(bluedevil
          discover
          xdg-desktop-portal-kde
 )
-optdepends=('breeze-grub: Breeze theme for GRUB')
+optdepends=('breeze-grub: Breeze theme for GRUB'
+            'plasma-sdk: Development tools')
