@@ -1,0 +1,16 @@
+pkgbase = nspirefs-fuse-git
+	pkgdesc = Fuse filesystem for TI-Nspire calculators
+	pkgver = 4.5da7201
+	pkgrel = 1
+	url = https://github.com/antonilol/nspirefs-fuse
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = fuse
+	depends = nodejs
+	depends = nspire-tools-git
+	source = nspirefs-fuse::git+https://github.com/antonilol/nspirefs-fuse
+	md5sums = SKIP
+
+pkgname = nspirefs-fuse-git
