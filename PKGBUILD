@@ -1,7 +1,7 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 # Contributor: SuchBlue
 pkgname=salad
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 epoch=
 pkgdesc="Allows gamers to mine crypto in their downtime."
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(unzip wget sed tar yarn)
 optdepends=()
 source=("https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/${pkgver}.zip")
-md5sums=('c65d065fddcf602cc747e298d462adca')
+md5sums=('61586a0104b8df41ad725bd61e135616')
 
 prepare() {
 	cd "salad-applications-${pkgver}/packages/desktop-app"
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "salad-applications-${pkgver}/packages/desktop-app"	
-	yarn install --force
+	yarn install
 	yarn run lint
 	yarn run build-app
 	yarn run build-installer
