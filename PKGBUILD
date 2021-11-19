@@ -10,7 +10,7 @@ _mpi=openmpi
 pkgname=${_pkg}-opt
 #-${_mpi}
 pkgver=5.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallel Visualization application using VTK (${_mpi} version): installed to /opt/"
 arch=(x86_64)
 provides=("${_pkg}")
@@ -30,7 +30,7 @@ source=(${url}/files/v${pkgver:0:3}/ParaView-v${pkgver/R/-R}.tar.xz
         paraview.sh)
 sha256sums=('0d486cb6fbf55e428845c9650486f87466efcb3155e40489182a7ea85dfd4c8d'
             'c400753e386601008a2ed0269a58be76f06cc3c084f2dd48e87f6f04e8eca77f'
-            '862e79bdf72f5c3ec55d3373fc34d0e5da33b1597c54c4586bdf84641d0cc291')
+            'ed1d597139473f24441e5c10038e988d64ab1d904e0c5ecaf24069734989bff4')
 
 prepare() {
     cd ParaView-v${pkgver/R/-R}
