@@ -23,6 +23,7 @@ prepare() {
 
     cd "${srcdir}/usr/bin"
     sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' *
+    [[ "$CARCH" = "aarch64" ]] && sed -i '2a LD_PRELOAD=/usr/lib/libfreetype.so' *
 
     cd "${srcdir}/usr/share/icons/hicolor"
     for _file in ./*; do
