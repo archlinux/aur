@@ -1,0 +1,18 @@
+pkgbase = cbqn-git
+	pkgdesc = A BQN implementation in C.
+	pkgver = r686.2baa9ac
+	pkgrel = 1
+	url = https://github.com/dzaima/CBQN
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	depends = glibc
+	optdepends = rlwrap: Better REPL
+	provides = cbqn
+	conflicts = cbqn
+	source = cbqn::git+https://github.com/dzaima/CBQN.git
+	md5sums = SKIP
+
+pkgname = cbqn-git
