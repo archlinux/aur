@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Usenti
+Comment=Paletted bitmap editor for GBA and NDS development
+Exec=usenti
+Icon=usenti
+Terminal=false
+StartupNotify=false
+Categories=Wine;Graphics;Development;

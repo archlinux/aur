@@ -1,0 +1,19 @@
+pkgbase = usenti
+	pkgdesc = Paletted bitmap editor for GBA and NDS development
+	pkgver = 1.7.10
+	pkgrel = 1
+	url = https://www.coranac.com/projects/usenti/
+	arch = x86_64 i686
+	makedepends = p7zip
+	depends = wine winetricks
+	source = https://www.coranac.com/files/usenti/usenti-1.7.10.zip
+	source = usenti
+	source = usenti.desktop
+	source = usenti.png
+	md5sums = 44e3497aff83af18db38f61d87611b94
+	md5sums = 2ff2616c6bb2870c86c669d809ef8d5b
+    md5sums = 051a7f917278b2a9a2a8c56472425054
+    md5sums = b2734ff60cb14379c53c900c696c5d78
+
+pkgname = usenti
+
