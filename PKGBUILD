@@ -3,8 +3,8 @@
 
 pkgname=sudo-git
 _pkgname=sudo
-pkgrel=2
-pkgver=SUDO_1_9_0.r543.g5fc6b8c17
+pkgrel=1
+pkgver=1.9.8p2.r11299.g7baee707b
 pkgdesc="Give certain users the ability to run some commands as root - git version"
 arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
@@ -25,8 +25,9 @@ sha256sums=('SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  _ver="$(grep -m1 "^#.*for sudo*" configure | sed 's/.*sudo //;s/.$//' | tr - .)"
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -76,7 +77,7 @@ package() {
 
   install -Dm644 "$srcdir/sudo.pam" "$pkgdir/etc/pam.d/sudo"
 
-  install -Dm644 doc/LICENSE "$pkgdir/usr/share/licenses/sudo/LICENSE"
+  install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/sudo/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = sudo-git
 	pkgdesc = Give certain users the ability to run some commands as root - git version
-	pkgver = SUDO_1_9_0.r543.g5fc6b8c17
-	pkgrel = 2
+	pkgver = 1.9.8p2.r11299.g7baee707b
+	pkgrel = 1
 	url = https://www.sudo.ws/sudo/
 	install = sudo.install
 	arch = x86_64
@@ -25,4 +25,3 @@ pkgbase = sudo-git
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 
 pkgname = sudo-git
-
