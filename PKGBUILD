@@ -1,7 +1,7 @@
 # Maintainer: Lena Fuhrimann
 
 pkgname=nancy-bin
-pkgver=1.0.28
+pkgver=1.0.29
 pkgrel=1
 pkgdesc="A tool to check for vulnerabilities in your Golang dependencies"
 arch=(x86_64 i686)
@@ -11,8 +11,8 @@ provides=(nancy)
 _src="${url}/releases/download/v${pkgver}/nancy"
 source_x86_64=("${_src}-v${pkgver}-linux-amd64.tar.gz")
 source_i686=("${_src}-v${pkgver}-linux-386.tar.gz")
-sha256sums_x86_64=('66dd186572980333a9fca1bc9722547696d15a5187706c3a8e399994f9a18bac')
-sha256sums_i686=('c865e90985c2110a5f4aea884c10f685d57da880bd5e6492397772f9dde28ff8')
+sha256sums_x86_64=('6f8dec1437157f5c366ad3975c759689923a447293324921a990da6204afd313')
+sha256sums_i686=('4b4e3c9576920cf0a32a435b401645d1fb7d06217c5d626d35a4df398e5e2267')
 
 package() {
 	local x86_64=amd64 i686=386
