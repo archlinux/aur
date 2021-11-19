@@ -14,6 +14,7 @@ pkgbase = libff7tk-git
 	makedepends = git
 	makedepends = doxygen
 	depends = qt6-base
+	depends = qt6-tools
 	depends = qt6-declarative
 	depends = qt6-5compat
 	depends = zlib
