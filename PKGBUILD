@@ -2,16 +2,16 @@
 
 pkgname=perl-gtk2-sourceview2
 _cpanname=Gtk2-SourceView2
-pkgver=0.10
-pkgrel=4
+pkgver=0.12
+pkgrel=1
 pkgdesc="Perl interface to the GtkSourceView library"
 arch=('any')
-url="http://search.cpan.org/~POTYL/${_cpanname}"
+url="https://metacpan.org/pod/Gtk2::SourceView2"
 license=('GPL')
 depends=('gtksourceview2' 'pango-perl' 'gtk2-perl' 'perl-extutils-depends' 'perl-extutils-pkgconfig')
 options=('!emptydirs')
-source=(http://cpan.metacpan.org/authors/id/P/PO/POTYL/${_cpanname}-${pkgver}.tar.gz) 
-md5sums=('87e81e182fe013bb445f211e5e407029')
+source=(http://cpan.metacpan.org/authors/id/X/XA/XAOC/${_cpanname}-${pkgver}.tar.gz) 
+md5sums=('7a3c49414ace5463978f6f458a241808')
 
 build() {
   cd $srcdir/${_cpanname}-${pkgver}

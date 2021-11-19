@@ -1,8 +1,8 @@
 pkgbase = perl-gtk2-sourceview2
 	pkgdesc = Perl interface to the GtkSourceView library
-	pkgver = 0.10
-	pkgrel = 4
-	url = http://search.cpan.org/~POTYL/Gtk2-SourceView2
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://metacpan.org/pod/Gtk2::SourceView2
 	arch = any
 	license = GPL
 	depends = gtksourceview2
@@ -11,8 +11,7 @@ pkgbase = perl-gtk2-sourceview2
 	depends = perl-extutils-depends
 	depends = perl-extutils-pkgconfig
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk2-SourceView2-0.10.tar.gz
-	md5sums = 87e81e182fe013bb445f211e5e407029
+	source = http://cpan.metacpan.org/authors/id/X/XA/XAOC/Gtk2-SourceView2-0.12.tar.gz
+	md5sums = 7a3c49414ace5463978f6f458a241808
 
 pkgname = perl-gtk2-sourceview2
-
