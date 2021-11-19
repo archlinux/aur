@@ -1,8 +1,9 @@
 # Maintainer: btstream<btstream@hotmail.com>
 pkgname=betterbird-bin
 _pkgname=betterbird
-pkgver=91.3.0_bb18
-pkgrel=1
+pkgver=91.3.2_bb20
+_build=build2
+pkgrel=2
 pkgdesc="Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -10,7 +11,7 @@ license=('MPL2')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
-    "https://www.betterbird.eu/downloads/${_pkgname}-${pkgver//_/-}.en-US.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/${_pkgname}-${pkgver//_/-}-${_build}.en-US.linux-x86_64.tar.bz2"
     "betterbird.desktop"
 )
 
@@ -30,5 +31,5 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('5afd22b9045b13b3c95a784eeca99ec79bb5088993e4de7307e685610c23ff90'
+sha256sums=('12e5dbebcb2c6eaa46acacd1777ecb262d1f7259470eafe7a37dc3c437c20bf5'
             'c613467d1c0826d663b406b6fe37e44127eb8c0cae23748aa8ca43a16dd32cbf')
