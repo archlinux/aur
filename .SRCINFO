@@ -21,7 +21,9 @@ pkgbase = opencascade-rc
 	conflicts = opencascade-git
 	source = opencascade-rc-7.6.0.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_6_0;sf=tgz
 	source = opencascade.sh
+	source = opencascade-cmake.patch
 	sha256sums = e7f989d52348c3b3acb7eb4ee001bb5c2eed5250cdcceaa6ae97edc294f2cabd
 	sha256sums = 9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb
+	sha256sums = 4782d4d93cbd7f5489d23a855a1d31801bd61383d7cf9dc0e613fae34541cfde
 
 pkgname = opencascade-rc

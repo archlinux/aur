@@ -36,13 +36,20 @@ rapidjson
 source=(
 "${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
 opencascade.sh
+opencascade-cmake.patch
+#"fix-freecad-build.patch::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=patch;h=5e7632824302761b84cfceb5bfb2241d906d0eb4"
 )
 sha256sums=('e7f989d52348c3b3acb7eb4ee001bb5c2eed5250cdcceaa6ae97edc294f2cabd'
-            '9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb')
+            '9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb'
+            'b3a2583fd21576d454952894f92a2a9e710015051403a3759b4a2ccbfc78a048')
 
 prepare() {
   cd occt-${_pkgver}
 
+  #patch -p1 -i ../fix-freecad-build.patch # Fix build of FreeCAD
+
+  patch -p1 -i ../opencascade-cmake.patch
+  
   #curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
 
   #curl https://raw.githubusercontent.com/archlinux/svntogit-community/packages/opencascade/trunk/vtk9.patch | patch -p1
@@ -117,7 +124,7 @@ package() {
   # remove the pollution from bin
   rm -rf "${pkgdir}/usr/bin/"*.sh
   
-  install -m644 -Dt "${pkgdir}/etc/profile.d" opencascade.sh
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE_LGPL_21.txt
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" OCCT_LGPL_EXCEPTION.txt
+  install -m644 -Dt "${pkgdir}"/etc/profile.d ${srcdir}/opencascade.sh
+  install -m644 -Dt "${pkgdir}"/usr/share/licenses/${pkgname} LICENSE_LGPL_21.txt
+  install -m644 -Dt "${pkgdir}"/usr/share/licenses/${pkgname} OCCT_LGPL_EXCEPTION.txt
 }
