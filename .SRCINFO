@@ -1,7 +1,7 @@
 pkgbase = zoom-libkime
 	pkgdesc = Kime library for zoom multilingual input.
 	pkgver = 2.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Riey/kime
 	arch = x86_64
 	license = GPL3
