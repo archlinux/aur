@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=xrandr-mgr
 pkgver=2013.7
 pkgrel=2
 pkgdesc='Save and restore named xrandr states.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/xrandr-mgr"
+url="https://xyne.dev/projects/xrandr-mgr"
 depends=(arandr bash-statemgr)
 source=(
-  https://xyne.mirrorrepo.com/projects/xrandr-mgr/src/xrandr-mgr-2013.7.tar.xz
-  https://xyne.mirrorrepo.com/projects/xrandr-mgr/src/xrandr-mgr-2013.7.tar.xz.sig
+  https://xyne.dev/projects/xrandr-mgr/src/xrandr-mgr-2013.7.tar.xz
+  https://xyne.dev/projects/xrandr-mgr/src/xrandr-mgr-2013.7.tar.xz.sig
 )
 sha512sums=(
   58006516b51912f36bb21822963c429285c7d07a5da2b1d7e169b552cfb109f069fa89f7532701341d9ca3234b6e0e8c01cae94a062148fcec6bbdf627ebe9f4
