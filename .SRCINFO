@@ -8,7 +8,6 @@ pkgbase = wings3d
 	makedepends = gendesk
 	depends = erlang
 	depends = erlang-cl
-	depends = erlang-sdl
 	optdepends = povray: render scenes with POV-Ray
 	source = https://downloads.sourceforge.net/project/wings/wings/2.2.7/wings-2.2.7.tar.bz2
 	source = wings.sh
