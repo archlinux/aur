@@ -27,4 +27,5 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -Dm755 BQN "${pkgdir}/usr/bin/bqn"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
