@@ -1,7 +1,7 @@
 pkgbase = zigbee2mqtt
 	pkgdesc = A Zigbee to MQTT bridge
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zigbee2mqtt.io
 	install = zigbee2mqtt.install
 	arch = x86_64
@@ -11,8 +11,9 @@ pkgbase = zigbee2mqtt
 	arch = aarch64
 	license = GPL3
 	makedepends = typescript
+	makedepends = npm
 	depends = nodejs>=10.0
-	depends = npm
+	depends = nodejs<17
 	optdepends = cc-tool: To flash Texas Instruments CC2531 debugger
 	optdepends = mosquitto: MQTT broker
 	provides = zigbee2mqtt
@@ -24,7 +25,7 @@ pkgbase = zigbee2mqtt
 	source = zigbee2mqtt.sysusers
 	source = zigbee2mqtt.tmpfiles
 	sha256sums = 5081ab1e81c0b68b980c7762e1508d989b13b1e88dc15845fa2593b52f7c16c2
-	sha256sums = ba2fe8f428b3db56fdee622b3db0d9265e34275218cfbae9866be2000fde9df4
+	sha256sums = 3e065dd87c9ae7573165721a60d56756952bd8199b411a508dd343f64c755c7a
 	sha256sums = 3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b
 	sha256sums = 8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6
 
