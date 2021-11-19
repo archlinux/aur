@@ -4,12 +4,12 @@ _base=outdated
 pkgname=python-${_base}
 pkgdesc="Check if a version of a PyPI package is outdated"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/alexmojaki/${_base}"
 license=(MIT)
 depends=(python-requests python-littleutils)
-makedepends=(python-setuptools git)
+makedepends=(python-pip git)
 source=("${_base}::git+${url}.git?#tag=v${pkgver}")
 sha512sums=('SKIP')
 
