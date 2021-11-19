@@ -1,0 +1,11 @@
+*.tar
+*.gz
+*.zip
+*.zst
+*.log
+/pkg/
+/src/
+LICENSE*
+
+# Author: Blurgy <gy@blurgy.xyz>
+# Date:   Nov 19 2021, 23:29 [CST]
