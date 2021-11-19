@@ -2,7 +2,7 @@
 # Maintainer: Clansty <i at gao4 dot pw>
 pkgname=("icalingua-git" "icalingua-electron-git")
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
 depends=('ffmpeg' 'libappindicator-gtk3')
@@ -68,7 +68,7 @@ package_icalingua-electron-git(){
     mkdir -p "${pkgdir}/usr/share/icalingua"
     mkdir -p "${pkgdir}/usr/bin"
     cd "${srcdir}/Icalingua/icalingua/build/linux${_arch}unpacked"
-    install -Dm644 "resources/app.asar" "${pkgdir}/usr/share/icalingua/app.asar"
+    install -Dm644 "resources/app.asar" "${pkgdir}/usr/share/icalingua/icalingua.asar"
     cd "${srcdir}/Icalingua/pkgres"
     install -Dm644 512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/icalingua.png"
     install -Dm644 icalingua.desktop "${pkgdir}/usr/share/applications/icalingua.desktop"
