@@ -23,9 +23,9 @@ pkgver() {
 
 package() {
   cd "${srcdir}"
-  unzip "${_modname}.pyromod" "ARTWORK_and _LICENSE.txt"
+  unzip -o "${_modname}.pyromod" "ARTWORK_and _LICENSE.txt"
   install -Dm644 "ARTWORK_and _LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"  
   install -Dm644 "${_modname}.pyromod" -t "${pkgdir}/usr/share/0ad/data/mods/${_modname}"
   cd "${pkgdir}/usr/share/0ad/data/mods/${_modname}"
-  unzip "${_modname}.pyromod" "mod.json"
+  unzip -o "${_modname}.pyromod" "mod.json"
 }
