@@ -1,9 +1,8 @@
 pkgbase = autovala
 	pkgdesc = A program that automatically generates CMake and Meson configuration files for your Vala project
-	pkgver = 1.15.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://gitlab.com/rastersoft/autovala
-	install = autovala.install
 	arch = x86_64
 	groups = vala
 	license = GPL3
@@ -14,12 +13,19 @@ pkgbase = autovala
 	makedepends = pandoc
 	makedepends = bash-completion
 	makedepends = gobject-introspection
-	depends = make
-	depends = vte3
-	depends = libgee
-	depends = bash-completion
-	source = autovala-1.15.1.tar.gz::https://gitlab.com/rastersoft/autovala/-/archive/1.15.1/autovala-1.15.1.tar.gz
-	sha256sums = af77e46d7ac50eb34e63ab5477a1f94f696f05fae41b21282961819820051f4b
+	source = git+https://gitlab.com/rastersoft/autovala#tag=1.16.0
+	source = gedit40.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = autovala
+	depends = make
+	depends = bash-completion
 
+pkgname = gedit-autovala
+	depends = autovala
+	depends = gedit
+	depends = vte3
+	depends = libgee
+	depends = gtksourceview4
+	depends = libpeas

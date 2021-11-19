@@ -1,0 +1,95 @@
+diff --git a/gedit_plugin/meson.build b/gedit_plugin/meson.build
+index fec30b5..4027a4b 100644
+--- a/gedit_plugin/meson.build
++++ b/gedit_plugin/meson.build
+@@ -5,7 +5,7 @@ ATHOME = (get_option('ATHOME') != '')
+ add_global_arguments('-DGETTEXT_PACKAGE="autovala_gedit"',language: 'c')
+ 
+ find_program ('g-ir-compiler')
+-gtksourceview_3_0_dep = dependency('gtksourceview-3.0')
++gtksourceview_4_dep = dependency('gtksourceview-4')
+ AutoVala_dep = dependency('AutoVala')
+ AutovalaPlugin_dep = dependency('AutovalaPlugin')
+ atk_dep = dependency('atk')
+diff --git a/gedit_plugin/src/autovalagedit.deps b/gedit_plugin/src/autovalagedit.deps
+index 5208d0a..19e82de 100644
+--- a/gedit_plugin/src/autovalagedit.deps
++++ b/gedit_plugin/src/autovalagedit.deps
+@@ -1,5 +1,5 @@
+ gtk+-3.0
+-gtksourceview-3.0
++gtksourceview-4
+ AutoVala
+ AutovalaPlugin
+ atk
+diff --git a/gedit_plugin/src/autovalagedit.pc b/gedit_plugin/src/autovalagedit.pc
+index 057eced..1f93ead 100644
+--- a/gedit_plugin/src/autovalagedit.pc
++++ b/gedit_plugin/src/autovalagedit.pc
+@@ -7,4 +7,4 @@ Description: autovalagedit
+ Version: 1.0.0
+ Libs: -L@DOLLAR@{libdir} -lautovalagedit
+ Cflags: -I@DOLLAR@{includedir}
+-Requires: gtksourceview-3.0 AutoVala AutovalaPlugin atk cairo gdk-3.0 gdk-pixbuf-2.0 gedit gee-0.8 gio-2.0 glib-2.0 gobject-2.0 gobject-introspection-1.0 libpeas-1.0 libxml-2.0 pango pangocairo vte-2.91 x11
++Requires: gtksourceview-4 AutoVala AutovalaPlugin atk cairo gdk-3.0 gdk-pixbuf-2.0 gedit gee-0.8 gio-2.0 glib-2.0 gobject-2.0 gobject-introspection-1.0 libpeas-1.0 libxml-2.0 pango pangocairo vte-2.91 x11
+diff --git a/gedit_plugin/src/meson.build b/gedit_plugin/src/meson.build
+index 3976c52..9878629 100644
+--- a/gedit_plugin/src/meson.build
++++ b/gedit_plugin/src/meson.build
+@@ -12,7 +12,7 @@ cfgfile_1 = configure_file(
+ 	output: 'Config.vala',
+ 	configuration: cfg_gedit_plugin)
+ 
+-gedit_plugin_deps = [gtksourceview_3_0_dep]
++gedit_plugin_deps = [gtksourceview_4_dep]
+ gedit_plugin_deps += [AutoVala_dep]
+ gedit_plugin_deps += [AutovalaPlugin_dep]
+ gedit_plugin_deps += [atk_dep]
+diff --git a/src/autovalaLib/configuration.vala b/src/autovalaLib/configuration.vala
+index f577241..aec5495 100644
+--- a/src/autovalaLib/configuration.vala
++++ b/src/autovalaLib/configuration.vala
+@@ -398,7 +398,7 @@ namespace AutoVala {
+ 		}
+ 
+ 		private bool check_version(string version) {
+-			return Regex.match_simple("^[0-9]+.[0-9]+(.[0-9]+)?$", version);
++			return GLib.Regex.match_simple("^[0-9]+.[0-9]+(.[0-9]+)?$", version);
+ 		}
+ 
+ 		/**
+diff --git a/src/autovalaLib/elementValaBinary.vala b/src/autovalaLib/elementValaBinary.vala
+index 97250fe..8d85d11 100644
+--- a/src/autovalaLib/elementValaBinary.vala
++++ b/src/autovalaLib/elementValaBinary.vala
+@@ -314,7 +314,7 @@ namespace AutoVala {
+ 				this.regexClasses   = new GLib.Regex("^[ \t]*(public )?(private )?[ \t]*class[ ]+");
+ 				this.regexDefines   = new GLib.Regex("^VALA_[0-9]+_[0-9]+$");
+ 			} catch (GLib.Error e) {
+-				ElementBase.globalData.addError(_("Can't generate the Regexps"));
++				ElementBase.globalData.addError(_("Can't generate the GLib.Regexps"));
+ 			}
+ 		}
+ 
+@@ -822,7 +822,7 @@ namespace AutoVala {
+ 		}
+ 
+ 		private bool checkVersion(string version) {
+-			return Regex.match_simple("^[0-9]+.[0-9]+(.[0-9]+)?$", version);
++			return GLib.Regex.match_simple("^[0-9]+.[0-9]+(.[0-9]+)?$", version);
+ 		}
+ 
+ 		private bool setVersion(string version, bool automatic, int lineNumber) {
+diff --git a/src/autovalaLib/genVapis.vala b/src/autovalaLib/genVapis.vala
+index 7f941ea..56b161c 100644
+--- a/src/autovalaLib/genVapis.vala
++++ b/src/autovalaLib/genVapis.vala
+@@ -185,7 +185,7 @@ namespace AutoVala {
+ 			element.filenames.add(file);
+ 			newfile = file;
+ 			// if the filename has a version number, remove it
+-			if (Regex.match_simple("-[0-9]+(.[0-9]+)?$", file)) {
++			if (GLib.Regex.match_simple("-[0-9]+(.[0-9]+)?$", file)) {
+ 				var pos = file.last_index_of("-");
+ 				newfile = file.substring(0, pos);
+ 				// if there is no version number inside, use the one in the filename
