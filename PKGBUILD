@@ -1,12 +1,12 @@
 # Maintainer: sardo <sardonimous@hotmail.com>
 # Parts copied from x3270 package by tuftedocelot <tuftedocelot@fastmail.fm>
 pkgname=x3270-git
-pkgver=4.1alpha7.r2733
-pkgrel=2
+pkgver=4.2pre1.r2775
+pkgrel=1
 pkgdesc="IBM 3270 terminal emulator for the X Window System"
 arch=('x86_64')
 url="http://x3270.bgp.nu/"
-license=('BSD')
+license=('custom' 'MIT')
 depends=('libxaw' 'openssl' 'bash')
 makedepends=('imake' 'openssl' 'libx11' 'libxaw' 'libxt' 'xbitmaps' 'xorg-bdftopcf')
 provides=("x3270")
@@ -30,7 +30,7 @@ pkgver() {
 build() {
    sed -e 's/<[^>]*>//g' -e 's/\\n/\n/g' $pkgname.license | sed -e 's/\[edit\]//g' -e 's/\\\"/\"/g' -e '/^License for.*$/,$!d' | head --lines -2 > ${pkgname}/LICENSE
    cd "${pkgname}" 
-   ./configure --enable-x3270 --prefix=/usr --sysconfdir=/etc --with-fontdir=/usr/share/fonts/3270
+   ./configure --prefix=/usr --sysconfdir=/etc --with-fontdir=/usr/share/fonts/3270
    make || return 1
  }
 package() {

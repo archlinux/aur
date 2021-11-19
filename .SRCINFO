@@ -1,11 +1,12 @@
 pkgbase = x3270-git
 	pkgdesc = IBM 3270 terminal emulator for the X Window System
-	pkgver = 4.1alpha7.r2733
-	pkgrel = 2
+	pkgver = 4.2pre1.r2775
+	pkgrel = 1
 	url = http://x3270.bgp.nu/
 	install = x3270.install
 	arch = x86_64
-	license = BSD
+	license = custom
+	license = MIT
 	makedepends = imake
 	makedepends = openssl
 	makedepends = libx11
@@ -31,4 +32,3 @@ pkgbase = x3270-git
 	sha256sums = 17850aa5153b728844af4f251d56301281678a701fe32e52f521b45f2dbac9c3
 
 pkgname = x3270-git
-
