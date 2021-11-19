@@ -26,7 +26,7 @@
 #    # systemctl start "jmusicbot@$(systemd-escape "my-channel").service"
 
 [Unit]
-Description=JMusicBot instance "%I"
+Description=JMusicBot at /srv/jmusicbot-%I
 Requires=network.target local-fs.target
 After=network.target local-fs.target
 

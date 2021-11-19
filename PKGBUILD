@@ -4,7 +4,7 @@ _appname='jmusicbot'
 pkgname="$_appname"
 _pkgverUpstream="0.3.6"
 pkgver="${_pkgverUpstream//-/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform Discord music bot with a clean interface"
 arch=('any')
 url='https://github.com/jagrosh/MusicBot'
@@ -13,10 +13,18 @@ depends=('java-runtime-headless>=11')
 makedepends=('java-environment>=11' 'maven' 'libxslt')
 source=("JMusicBot-${_pkgverUpstream}.tar.gz::https://github.com/jagrosh/MusicBot/archive/refs/tags/${_pkgverUpstream}.tar.gz"
         "fix-pom.xslt"
-        "jmusicbot@.service")
+        "jmusicbot@.service"
+        "jmusicbot.service")
 sha384sums=('84f26730f6dbda43780e329a85fe826f84c9ce42f431ceafb02a55f53cf2613b4b5a4a630904ab95a6131bcc96b4aeff'
             'b14dcf390d40f51d40b2aee4e8c44722837ad7a9850ecfd48174c74e8ed50709b6a64a817c301a2186e6386c26de0440'
-            '12ca3d4af2f117fee113034cca66558aa2cec47865245f58b1a4e71ae2cebd24783e14f644292e9344b290c1962448a8')
+            '0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88'
+            'b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75')
+
+# Build parameters
+# Uncomment and edit to build with a specific Java Development Kit
+#export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+# Uncomment and edit to use a specific Maven installation
+#export MVN_HOME="/opt/maven"
 
 build() {
     local buildDir="${srcdir}/MusicBot-${_pkgverUpstream}"
@@ -89,4 +97,10 @@ package() {
     cd "${pkgdir}/usr/lib/systemd/system"
     cp --target-directory . "${srcdir}/jmusicbot@.service"
     chmod u=rwx,go=rx "jmusicbot@.service"
+
+    # Place the systemd user service
+    mkdir --parents "${pkgdir}/usr/lib/systemd/user"
+    cd "${pkgdir}/usr/lib/systemd/user"
+    cp --target-directory . "${srcdir}/jmusicbot.service"
+    chmod u=rwx,go=rx "jmusicbot.service"
 }
