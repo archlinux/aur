@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-scinum
 pkgver=2012.12
 pkgrel=12
 pkgdesc='A collection of scientific number classes for arbitrary precision, standard and custom units, and uncertainty for measured values.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/python3-scinum"
+url="https://xyne.dev/projects/python3-scinum"
 depends=(python3)
 source=(
-  https://xyne.mirrorrepo.com/projects/python3-scinum/src/python3-scinum-2012.12.tar.xz
-  https://xyne.mirrorrepo.com/projects/python3-scinum/src/python3-scinum-2012.12.tar.xz.sig
+  https://xyne.dev/projects/python3-scinum/src/python3-scinum-2012.12.tar.xz
+  https://xyne.dev/projects/python3-scinum/src/python3-scinum-2012.12.tar.xz.sig
 )
 sha512sums=(
   6b85f5ad66ffbfa5f3c10d246b15428bc14962647465a16ee44db7838f1e25f298ed3bdbd2d6538c3f29e5d6f2457327cd79334b10a35408dddbe3a1ab770adc
