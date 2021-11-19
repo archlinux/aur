@@ -1,6 +1,6 @@
 pkgbase = xlsxio
 	pkgdesc = C library for reading and writing .xlsx files
-	pkgver = 0.2.21
+	pkgver = 0.2.29
 	pkgrel = 1
 	url = https://github.com/brechtsanders/xlsxio
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = xlsxio
 	depends = expat
 	depends = minizip
 	provides = xlsxio
-	source = https://github.com/brechtsanders/xlsxio/releases/download/0.2.21/xlsxio-0.2.21.tar.xz
-	sha256sums = 0cc9b339bbacdb9b140b2a88be8f2e15d57394808a42aad29d6bf74cab2fd506
+	source = https://github.com/brechtsanders/xlsxio/releases/download/0.2.29/xlsxio-0.2.29.tar.xz
+	sha256sums = d193c74251cf1ca3b0407acbf861a52012fd265ee2206d2679f6d569f4aff893
 
 pkgname = xlsxio
-
