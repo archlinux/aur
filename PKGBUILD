@@ -1,7 +1,7 @@
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 
 pkgname=vscode-langservers-extracted
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Language servers extracted from VSCode."
 url="https://github.com/hrsh7th/vscode-langservers-extracted"
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('4352a88c53f88240be2b478300be67562b80fa73c527060dde444462312c6ee3')
+sha256sums=('cbe6e3a821875a94ba7185454f897cdd1be5f931faad99625a067cc0615f33ed')
 
 prepare() {
   tar xf "${pkgname}-${pkgver}.tgz" package/LICENSE
