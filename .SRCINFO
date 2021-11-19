@@ -1,6 +1,6 @@
 pkgbase = mvnd
 	pkgdesc = Maven Deamon, which aims at providing faster Maven builds using techniques known from Gradle and Takari.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/mvndaemon/mvnd
 	install = .install
@@ -9,7 +9,7 @@ pkgbase = mvnd
 	depends = java-environment>=7
 	depends = bash
 	depends = maven
-	source = mvnd-0.6.0.zip::https://github.com/mvndaemon/mvnd/releases/download/0.6.0/mvnd-0.6.0-linux-amd64.zip
-	sha256sums = d01e7d7ed9799c83b3a56c7c17d153e161bd0d91e26550584fdfc1ef7e985575
+	source = mvnd-0.7.0.zip::https://github.com/mvndaemon/mvnd/releases/download/0.7.0/mvnd-0.7.0-linux-amd64.zip
+	sha256sums = 77d9c3232f4c2bcd2c3ad1fa527ed6dca7a07f6c41da084f56698c086c830a4d
 
 pkgname = mvnd
