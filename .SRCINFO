@@ -1,0 +1,15 @@
+pkgbase = coeurl
+	pkgdesc = A simple async wrapper around CURL for C++
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://nheko.im/nheko-reborn/coeurl
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	depends = curl
+	depends = libevent
+	depends = spdlog
+	source = https://nheko.im/nheko-reborn/coeurl/-/archive/v0.1.0/coeurl-v0.1.0.tar.gz
+	sha256sums = 2861453317c6da359a00083e39d899dfe0fc71becadd726ef845a5fba57d3f64
+
+pkgname = coeurl
