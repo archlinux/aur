@@ -15,6 +15,7 @@ sha256sums=('31f757feb281521ce1fc7d414423b662b964a526739538385580c1d14dd840f3')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
+  echo "${pkgver}" > VERSION
   python setup.py build
 }
 
