@@ -1,7 +1,7 @@
 pkgbase = lsi-msm
 	pkgdesc = LSI Logic MegaRAID Storage Manager and SNMP providers
 	pkgver = 17.05.02.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.broadcom.com/products/storage
 	arch = x86_64
 	license = custom:LSI
@@ -14,7 +14,7 @@ pkgbase = lsi-msm
 	source = ld.so.lsi-msm.conf
 	source = ld.so.lsi-msm-snmp.conf
 	source = https://docs.broadcom.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf
-	source = MegaRAID_SAS_SW_UserGd.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/51530-00_RevP_MegaRAID_SAS_SW_UserGd.zip
+	source = MegaRAID_SAS_Software_User_Guide-rev2.8.pdf::https://docs.broadcom.com/docs/pub-005110
 	source = 17.05.02.01_Linux-x64_MSM.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/17.05.02.01_MSM_Linux-x64.zip
 	sha256sums = aff9c7ed8e55eb3441911183db1b0912cf74f24ce3027b3aebe3560db69d3a1d
 	sha256sums = 605adcb662fb457609e81fb8916da7e88541e81dd0c112a8bb569d84df189bff
@@ -23,7 +23,7 @@ pkgbase = lsi-msm
 	sha256sums = 9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95
 	sha256sums = 9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95
 	sha256sums = 9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3
-	sha256sums = bb25efb9894cc16961d0a982d1ccc51f4bfa173d3049af2a4277aa38dbb95110
+	sha256sums = 43295d6aacfbaed1b5c1bfa177f1909faa24425eac1dd25c56941c14f5cd0ab2
 	sha256sums = 8f9e7c1a9468cfb95159e27d4df0978faf7e0e1303bf0ae6999a897d33a21414
 
 pkgname = lsi-msm
@@ -61,4 +61,3 @@ pkgname = lsi-msm-snmp
 	backup = etc/lsi_mrdsnmp/LSI_StorSNMP.ini
 	backup = etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf
 	backup = etc/lsi_mrdsnmp/sas-ir/sas_ir_TrapDestination.conf
-

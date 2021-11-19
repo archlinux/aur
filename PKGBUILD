@@ -6,7 +6,7 @@ pkgname=('lsi-msm'
          )
 _pkgver=17.05.02-01
 pkgver="${_pkgver//-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="LSI Logic MegaRAID Storage Manager and SNMP providers"
 arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
@@ -19,7 +19,7 @@ source=('msm_profile.sh'
         'ld.so.lsi-msm.conf'
         'ld.so.lsi-msm-snmp.conf'
         'https://docs.broadcom.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf'
-        'MegaRAID_SAS_SW_UserGd.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/51530-00_RevP_MegaRAID_SAS_SW_UserGd.zip'
+        'MegaRAID_SAS_Software_User_Guide-rev2.8.pdf::https://docs.broadcom.com/docs/pub-005110'
         "${pkgver}_Linux-x64_MSM.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_MSM_Linux-x64.zip"
         )
 sha256sums=('aff9c7ed8e55eb3441911183db1b0912cf74f24ce3027b3aebe3560db69d3a1d'
@@ -29,7 +29,7 @@ sha256sums=('aff9c7ed8e55eb3441911183db1b0912cf74f24ce3027b3aebe3560db69d3a1d'
             '9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95'
             '9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95'
             '9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3'
-            'bb25efb9894cc16961d0a982d1ccc51f4bfa173d3049af2a4277aa38dbb95110'
+            '43295d6aacfbaed1b5c1bfa177f1909faa24425eac1dd25c56941c14f5cd0ab2'
             '8f9e7c1a9468cfb95159e27d4df0978faf7e0e1303bf0ae6999a897d33a21414'
             )
 options=('!strip')
@@ -187,7 +187,7 @@ package_lsi-msm() {
   install -Dm644 "${srcdir}/SLA_AdvancedSoftware.pdf" "usr/share/licenses/${pkgname}/SLA_AdvancedSoftware.pdf"
 
   # Install the manual
-  install -Dm644 "${srcdir}/51530-00_RevP_MegaRAID_SAS_SW_UserGd.pdf" usr/share/doc/lsi-msm/MegaRAID_SAS_SW_UserGd.pdf
+  install -Dm644 "${srcdir}/MegaRAID_SAS_Software_User_Guide-rev2.8.pdf" usr/share/doc/lsi-msm/MegaRAID_SAS_Software_User_Guide-rev2.8.pdf
 
   # Create soname links
   _create_links
