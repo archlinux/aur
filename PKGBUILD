@@ -11,7 +11,7 @@ url="http://community.jaspersoft.com/project/jaspersoft-studio"
 license=('Eclipse')
 depends=('java-runtime' 'gtk2')
 source_x86_64=("https://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-${pkgver}/TIB_js-studiocomm_${pkgver}_linux_x86_64.tgz")
-md5sums_x86_64=('466cafa1cd78a13731229a0dc1bbeada')
+md5sums_x86_64=('47305322c2cbd2ce919e048be498d5d9a9991a83')
 
 package() {
 install -d -m 0755 ${pkgdir}/opt/${pkgname}
