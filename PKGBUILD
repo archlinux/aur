@@ -14,7 +14,7 @@ optdepends=(
   'nvidia-settings: optional backend for nVidia temperature sensors.'
 )
 conflicts=('gnome-shell-extensions-git')
-source=("${pkgname}.tar.gz::${url}/archive/EGO-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/EGO-${pkgver}.tar.gz")
 sha512sums=('a83e1f58881cb7816e39519302ab13499625d7bd85f45317b24f1706bf421fefafcf68812cafab86f7d7ee11a772f18a51bf4b58570325159e555144c956e3f3')
 
 package() {
