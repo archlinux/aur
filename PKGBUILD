@@ -2,7 +2,7 @@
 
 
 pkgname=enum4linux
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A tool for enumerating information from Windows and Samba systems."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/CiscoCXSecurity/enum4linux"
 license=('GPL')
 depends=('perl' 'smbclient' 'polenum' 'openldap')
 source=("https://github.com/CiscoCXSecurity/enum4linux/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('be0540529e91839ef3f136e8af188f4a8ef64ba8ff1edb636a759ac70e35c25c80aa7bca276dee3519337772b799fcb21c19feada1e9f81b39952f2f86d8d4ae')
+sha512sums=('acb454130e171eb5b9b5f9ff4bff823a4caefb8d052b092b0f84b2020314c1f1a4385342b6be091b2f84f2f0ea67b9fdfed23952bdb66014ad1acf6438b51d9d')
 
 prepare() {
   cd "$pkgname-$pkgver"
