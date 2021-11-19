@@ -3,7 +3,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=r12715.b90417ed
+pkgver=r12717.7f3aba24
 pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd NBlood
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
