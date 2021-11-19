@@ -22,7 +22,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.3.32
+pkgver=7.3.33
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -33,7 +33,7 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
-sha256sums=('94effa250b80f031e77fbd98b6950c441157a2a8f9e076ee68e02f5b0b7a3fd9'
+sha256sums=('166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc'
             'SKIP'
             '62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
