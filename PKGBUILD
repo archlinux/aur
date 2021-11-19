@@ -1,7 +1,7 @@
 # Maintainer: Mirko Rovere <04mirko@libero.it>
 
 pkgname="baracle-git"
-pkgver=r24.9d1b9a1
+pkgver=r29.d8e47fd
 pkgrel=1
 pkgdesc="Let's make a text editor like in the 70's"
 arch=("x86_64")
