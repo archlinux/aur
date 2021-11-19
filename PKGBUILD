@@ -1,11 +1,11 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=callaudiod-git
-pkgver=0.1.0.r0.g007b341
+pkgver=0.1.1.r0.gc9550e1
 pkgrel=1
-pkgdesc="Call audio routing daemon"
-arch=(i686 x86_64 armv7h aarch64)
-url="https://gitlab.com/mobian1/callaudiod"
+pkgdesc='Call audio routing daemon'
+arch=(x86_64 aarch64)
+url='https://gitlab.com/mobian1/callaudiod'
 license=(GPL3)
 depends=(alsa-lib glib2 libpulse)
 makedepends=(git meson)
