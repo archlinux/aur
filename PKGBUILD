@@ -5,7 +5,7 @@ pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.15
 _minor=2
-_clr=1096
+_clr=1098
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=35300
+_clear_version=35310
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=5615bec283063db0f2f6d52d02c9b471e08c8c1d4dc0e13afa29c75d914cf303
-_config_hash_clear_version=35300
+_config_hash=a2c78702d67538bfab2fbc6536d14b8c6551a3b94ad6b1dcddbc33f05cbdce37
+_config_hash_clear_version=35310
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('162875273c666c911206a3e6dfe1c178f956fdebd2b4bf68d3b83396953c4ae891a7ba2761279c08965b538de2ba5bc1440d8db3693b66ce11286601808d15d0'
-        'af9ba55f1ddb6821cd2c5917c92c7fb578fe185c71f1c5eee7139274c0ef121ce02067757e5bd3684b87ce1dd2e134d83be1a32e0c73ae6b93aaf3c6586d3141'
-        '8b320333179c8786b1a0469e0bc9f67054a55fba76bdfcc4d529180eac3ac251e01a8b0af9a439b4acd625fedbc8ce4ba44b3b947fb2efb02b5c6491c9402b06')
+b2sums=('eeb6db327d393c223ccb3e8f95bbd6bbc34f3afdbdf8543d2ce5d8f54fc71e21c04ae365942686c0169992eb728398e236b6040f86460a53ca2f70af8703c8d6'
+        '80c115f497701f0d86c9d0fa6aba9f87a0ae88536d3568aad118c0a6aa1a749f7374740505f79da7c0e1b949cc0c66eb691f0fa937fa1a0c18b6408742fbcff1'
+        'b1bda358cc0ca660d0cd0566b0b935066c404cc1381528ebab6797ac2b5caafb3b67235804ebea46b4af37005eeab1f184fc2e6216633fe18bd59219716f1dff')
