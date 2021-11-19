@@ -1,0 +1,86 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5b8d2abc..5f0dc7d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,6 +90,8 @@ endif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ 
+ SET(CMAKE_MODULE_PATH "${CMAKE_ROOT}/Modules;${PROJECT_SOURCE_DIR}/cmake/Modules")
+ 
++include(print_target_properties)
++
+ SET(CMAKE_Fortran_MODULE_DIRECTORY
+   ${PROJECT_BINARY_DIR}/fmodules CACHE PATH "Directory for Fortran modules")
+ 
+@@ -373,6 +375,12 @@ FIND_PACKAGE(MMG)
+ IF(MMG_FOUND)
+ 
+   SET(HAVE_MMG TRUE CACHE BOOL "Has Mmg tools for Elmer/Ice Mesh adaptation" )
++
++  print_target_properties(Mmg::libmmg2d_so)
++  print_target_properties(Mmg::libmmg3d_so)
++
++  get_target_property(MMG_LIBRARY Mmg::libmmg3d_so LOCATION)
++  get_target_property(MMG_INCLUDE_DIR Mmg::libmmg3d_so INTERFACE_INCLUDE_DIRECTORIES)
+   GET_FILENAME_COMPONENT(MMG_LIBDIR ${MMG_LIBRARY} DIRECTORY)
+ 
+   MARK_AS_ADVANCED(HAVE_MMG)
+diff --git a/cmake/Modules/print_target_properties.cmake b/cmake/Modules/print_target_properties.cmake
+new file mode 100644
+index 00000000..71c1715b
+--- /dev/null
++++ b/cmake/Modules/print_target_properties.cmake
+@@ -0,0 +1,54 @@
++## https://stackoverflow.com/questions/32183975/how-to-print-all-the-properties-of-a-target-in-cmake/56738858#56738858
++## https://stackoverflow.com/a/56738858/3743145
++# vim: set sw=2 ts=2 et:
++
++cmake_policy(SET CMP0057 NEW)
++
++## Get all properties that cmake supports
++execute_process(COMMAND cmake --help-property-list OUTPUT_VARIABLE CMAKE_PROPERTY_LIST)
++## Convert command output into a CMake list
++STRING(REGEX REPLACE ";" "\\\\;" CMAKE_PROPERTY_LIST "${CMAKE_PROPERTY_LIST}")
++STRING(REGEX REPLACE "\n" ";" CMAKE_PROPERTY_LIST "${CMAKE_PROPERTY_LIST}")
++
++list(REMOVE_DUPLICATES CMAKE_PROPERTY_LIST)
++
++function(print_target_properties)
++  if(CMAKE_BUILD_TYPE)
++    string(TOUPPER ${CMAKE_BUILD_TYPE} CONFIG)
++  endif()
++
++  set(targets_to_check ${ARGV})
++  set(targets_to_print)
++  while(targets_to_check)
++    list(POP_FRONT targets_to_check tgt)
++    if(NOT TARGET ${tgt})
++      message("There is no target: ${tgt}")
++      continue()
++    endif()
++    if(tgt IN_LIST targets_to_print)
++      message("Already visited target: ${tgt}")
++      continue()
++    endif()
++    list(APPEND targets_to_print ${tgt})
++    get_target_property(links ${tgt} INTERFACE_LINK_LIBRARIES)
++    get_target_property(links_release ${tgt} INTERFACE_LINK_LIBRARIES_RELEASE)
++    if(links)
++      list(APPEND targets_to_check ${links})
++    endif()
++    if(links_release)
++      list(APPEND targets_to_check ${links_release})
++    endif()
++    list(REMOVE_DUPLICATES targets_to_check)
++  endwhile()
++
++  foreach(tgt ${targets_to_print})
++    foreach (prop ${CMAKE_PROPERTY_LIST})
++      string(REPLACE "<CONFIG>" "${CONFIG}" prop ${prop})
++      get_target_property(propval ${tgt} ${prop})
++      if(propval)
++        message ("${tgt} ${prop} = ${propval}")
++      endif()
++    endforeach()
++  endforeach()
++endfunction()
++
