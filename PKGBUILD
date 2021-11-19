@@ -1,6 +1,6 @@
 # Maintainer: Rain Clark <rain AT melonbread DOT dev>
 
-pkgname=xcloud-dekstop-appimage
+pkgname=xcloud-desktop-appimage
 pkgver=1.0.9
 pkgrel=1
 pkgdesc="An unoffical desktop app for the XCloud web beta"
