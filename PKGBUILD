@@ -3,7 +3,7 @@
 _gitname=nvlax
 pkgname=$_gitname-git
 pkgver=r11.b3699ad
-pkgrel=1
+pkgrel=2
 pkgdesc='Future-proof NvENC & NvFBC patcher'
 arch=('x86_64')
 url='https://github.com/illnyang/nvlax'
@@ -12,6 +12,7 @@ depends=('nvidia-utils')
 makedepends=('cmake' 'git')
 provides=('nvlax' 'nvlax-git')
 conflicts=('nvlax')
+options=(!ccache)
 source=("$_gitname"::"git+https://github.com/illnyang/$_gitname.git"
         'nvlax-upgrade.hook'
         'nvlax-install.hook')
@@ -20,7 +21,7 @@ sha256sums=('SKIP'
             '5d7eae6a93cd66b602a723f615d1c768f131dbb1e14432783f2a452a87e4501e')
 
 pkgver() {	
-  cd "$_gitname"
+  cd $_gitname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

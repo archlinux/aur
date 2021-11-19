@@ -1,7 +1,7 @@
 pkgbase = nvlax-git
 	pkgdesc = Future-proof NvENC & NvFBC patcher
 	pkgver = r11.b3699ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illnyang/nvlax
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = nvlax-git
 	provides = nvlax
 	provides = nvlax-git
 	conflicts = nvlax
+	options = !ccache
 	source = nvlax::git+https://github.com/illnyang/nvlax.git
 	source = nvlax-upgrade.hook
 	source = nvlax-install.hook
