@@ -2,7 +2,7 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=flamp
-pkgver=2.2.05
+pkgver=2.2.07
 pkgrel=2
 pkgdesc="A program for the Amateur Multicast Protocol"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 groups=('w1hkj')
 depends=('fldigi')
 source=(http://downloads.sourceforge.net/project/fldigi/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('64b2c13d4053571b471fc2a840dfb0175a6135fd154811a1c1ebb806e19be1a7')
+sha256sums=('807995746f11cdb3e9f2866ae544fc2d6d6b735fa57a2bcdd2f4bf8a28975a51')
 
 build() {
     cd $pkgname-$pkgver
