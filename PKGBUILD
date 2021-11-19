@@ -1,7 +1,7 @@
 # Maintainer: Daurnimator <daurnimator@archlinux.org>
 # Maintainer: Vincent BESANCON (bigbrozer) <besancon.vincent@gmail.com>
 pkgname=azure-storage-fuse
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A virtual file system adapter for Azure Blob storage"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('boost-libs'
 makedepends=('boost'
              'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse-$pkgver.tar.gz")
-sha256sums=('4e58970c8ae32afe825c6c3dae70f0a27f2bd6cc3804f43b5b239f61ab68bc7a')
+sha256sums=('252d0562c0403bc85cfd9f98fb66211180cf961b09f6f180752ea07c6694b10f')
 
 build() {
   cd "$pkgname-blobfuse-$pkgver"
