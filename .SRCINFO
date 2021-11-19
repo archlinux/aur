@@ -1,0 +1,17 @@
+pkgbase = xcloud-dekstop-appimage
+	pkgdesc = An unoffical desktop app for the XCloud web beta
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/AAGaming00/xcloud-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = p7zip
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = fuse
+	noextract = $_pkgname
+	options = !strip
+	source = https://github.com/AAGaming00/xcloud-desktop/releases/download/v1.0.9/XCloud-1.0.9.AppImage
+	sha256sums = bcc0d44f6923e157fa0ae0dffaafe6356733053bd0ae3e50194ae1aca7088c45
+
+pkgname = xcloud-dekstop-appimage
