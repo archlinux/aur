@@ -1,8 +1,12 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index d978a99..3bd983d 100644
+index d978a99..d010e36 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
-@@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
+@@ -59,11 +59,9 @@ include $(SRC)/make/rules-cargo.mk
+ # If CC is coming from make's defaults or nowhere, use our own default.  Otherwise respect environment.
+ CCACHE_ENV := $(patsubst %,-e %,$(shell env|cut -d= -f1|grep '^CCACHE_'))
+ ifeq ($(ENABLE_CCACHE),1)
+-	CCACHE_BIN := ccache
  	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
  	DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR)$(CONTAINER_MOUNT_OPTS) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
@@ -10,7 +14,7 @@ index d978a99..3bd983d 100644
  	DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
  
-@@ -121,7 +120,7 @@ container-build:
+@@ -121,7 +119,7 @@ container-build:
  all32 $(MAKECMDGOALS32): container-build
  all64 $(MAKECMDGOALS64): container-build
  else
@@ -19,7 +23,7 @@ index d978a99..3bd983d 100644
  endif
  
  
-@@ -171,7 +170,8 @@ else
+@@ -171,7 +169,8 @@ else
  endif
  
  CROSSLDFLAGS   += -Wl,--file-alignment,4096
@@ -29,7 +33,7 @@ index d978a99..3bd983d 100644
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
  COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
-@@ -354,8 +354,8 @@ ALL_TARGETS += dist
+@@ -354,8 +353,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
  dist_prefix: wine gst_good
@@ -40,7 +44,7 @@ index d978a99..3bd983d 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -411,6 +411,9 @@ endif # ifeq ($(CONTAINER),)
+@@ -411,6 +410,9 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
@@ -50,7 +54,7 @@ index d978a99..3bd983d 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -423,6 +426,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -423,6 +425,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -58,7 +62,7 @@ index d978a99..3bd983d 100644
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -439,6 +443,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -439,6 +442,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -68,7 +72,7 @@ index d978a99..3bd983d 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -477,6 +484,7 @@ GST_BASE_MESON_ARGS := \
+@@ -477,6 +483,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
@@ -76,7 +80,7 @@ index d978a99..3bd983d 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -538,6 +546,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -538,6 +545,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
@@ -84,7 +88,7 @@ index d978a99..3bd983d 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -658,8 +667,14 @@ WINE_SOURCE_ARGS = \
+@@ -658,10 +666,20 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -93,13 +97,39 @@ index d978a99..3bd983d 100644
 +  --with-faudio \
    --with-mingw \
    --without-xpresent \
++  --without-ldap \
 +  --without-vkd3d \
 +  --without-oss \
 +  --disable-win16 \
    --disable-tests
  
++WINE_CFLAGS= -fno-builtin-sin -fno-builtin-sinf -fno-builtin-cos -fno-builtin-cosf
++WINE_CXXFLAGS= -fno-builtin-sin -fno-builtin-sinf -fno-builtin-cos -fno-builtin-cosf
++
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -778,7 +793,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+ 
+ WINE_DEPENDS = gst_orc gstreamer gst_base faudio jxrlib
+@@ -729,6 +747,9 @@ DXVK_MESON_ARGS64 = \
+     --bindir=$(DXVK_DST64)/lib64/wine/dxvk \
+     --cross-file=$(DXVK_OBJ64)/build-win64.txt
+ 
++DXVK_CPPFLAGS= -msse -msse2
++DXVK_LDFLAGS= -static -static-libgcc -static-libstdc++
++
+ $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
+ $(eval $(call rules-meson,dxvk,32))
+ $(eval $(call rules-meson,dxvk,64))
+@@ -755,6 +776,9 @@ DXVK_NVAPI_MESON_ARGS64 = \
+     --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi \
+     --cross-file=$(DXVK_NVAPI_OBJ64)/build-win64.txt
+ 
++DXVK_NVAPI_CPPFLAGS= -msse -msse2
++DXVK_NVAPI_LDFLAGS= -static -static-libgcc -static-libstdc++
++
+ $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
+ $(eval $(call rules-meson,dxvk-nvapi,32))
+ $(eval $(call rules-meson,dxvk-nvapi,64))
+@@ -778,7 +802,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -108,21 +138,33 @@ index d978a99..3bd983d 100644
  VKD3D_PROTON_MESON_ARGS32 = \
      --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton \
      --cross-file=$(VKD3D_PROTON_OBJ32)/build-win32.txt
+@@ -786,6 +810,9 @@ VKD3D_PROTON_MESON_ARGS64 = \
+     --bindir=$(VKD3D_PROTON_DST64)/lib64/wine/vkd3d-proton \
+     --cross-file=$(VKD3D_PROTON_OBJ64)/build-win64.txt
+ 
++VKD3D_PROTON_CPPFLAGS= -msse -msse2
++VKD3D_PROTON_LDFLAGS= -static -static-libgcc -static-libstdc++
++
+ $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
+ $(eval $(call rules-meson,vkd3d-proton,32))
+ $(eval $(call rules-meson,vkd3d-proton,64))
 diff --git a/make/rules-autoconf.mk b/make/rules-autoconf.mk
-index 80eee67..ed255e1 100644
+index 80eee67..12a360a 100644
 --- a/make/rules-autoconf.mk
 +++ b/make/rules-autoconf.mk
-@@ -16,8 +16,8 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
+@@ -16,9 +16,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
  	    --prefix="$$($(2)_DST$(3))" \
  	    --libdir="$$($(2)_DST$(3))/lib$(subst 32,,$(3))" \
  	    $$($(2)_ENV$(3)) \
 -	    CROSSCFLAGS="$$(COMMON_FLAGS)" \
 -	    CROSSCXXFLAGS="$$(COMMON_FLAGS) -std=c++17" \
-+	    CROSSCFLAGS="$$(COMMON_FLAGS) -fno-builtin-sin -fno-builtin-sinf -fno-builtin-cos -fno-builtin-cosf" \
-+	    CROSSCXXFLAGS="$$(COMMON_FLAGS) -fno-builtin-sin -fno-builtin-sinf -fno-builtin-cos -fno-builtin-cosf -std=c++17" \
- 	    CROSSLDFLAGS="$$(CROSSLDFLAGS)" \
+-	    CROSSLDFLAGS="$$(CROSSLDFLAGS)" \
++	    CROSSCFLAGS="$$($(2)_CFLAGS) $$(COMMON_FLAGS)" \
++	    CROSSCXXFLAGS="$$($(2)_CXXFLAGS) $$(COMMON_FLAGS) -std=c++17" \
++	    CROSSLDFLAGS="$$($(2)_LDFLAGS) $$(CROSSLDFLAGS)" \
  	    $$($(2)_CONFIGURE_ARGS) \
  	    $$($(2)_CONFIGURE_ARGS$(3))
+ 
 @@ -27,9 +27,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
@@ -136,7 +178,7 @@ index 80eee67..ed255e1 100644
  endif
  endef
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
-index 5369fb4..21db917 100644
+index 5369fb4..91d8cf0 100644
 --- a/make/rules-cargo.mk
 +++ b/make/rules-cargo.mk
 @@ -14,7 +14,9 @@ $(OBJ)/.$(1)-configure$(3):
@@ -146,7 +188,7 @@ index 5369fb4..21db917 100644
 -	cargo build --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
 +	cargo update --offline --verbose
 +	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
-+	cargo build --locked --offline --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
++	cargo build -j$$(SUBJOBS) --locked --offline --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
  	touch $$@
  endif
  endef
@@ -167,7 +209,7 @@ index 4c61951..3f3a62b 100644
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index 916df8b..044f705 100644
+index 916df8b..2a61c5e 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
 @@ -109,17 +109,18 @@ CONTAINERGOALS := $(CONTAINERGOALS) $(filter $(1),$(MAKECMDGOALS))
@@ -175,14 +217,14 @@ index 916df8b..044f705 100644
  $(2)_ENV$(3) = \
      CARGO_HOME=$$(OBJ)/.cargo \
 -    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="$$(ARCH$(3))-linux-gnu-gcc" \
-+    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="gcc" \
++    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="$$(ARCH$(3))-pc-linux-gnu-gcc" \
 +    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_RUSTFLAGS="$$(RUSTFLAGS)" \
      CCACHE_BASEDIR="$$(CCACHE_BASEDIR)" \
      STRIP="$$(STRIP)" \
 -    CC="$$(CCACHE_BIN) $$(ARCH$(3))-linux-gnu-gcc" \
 -    CXX="$$(CCACHE_BIN) $$(ARCH$(3))-linux-gnu-g++" \
-+    CC="$$(CCACHE_BIN) gcc -m$(3)" \
-+    CXX="$$(CCACHE_BIN) g++ -m$(3)" \
++    CC="$$(CCACHE_BIN) $$(ARCH$(3))-pc-linux-gnu-gcc" \
++    CXX="$$(CCACHE_BIN) $$(ARCH$(3))-pc-linux-gnu-g++" \
      LD="$$(ARCH$(3))-linux-gnu-ld" \
 -    PKG_CONFIG="$$(ARCH$(3))-linux-gnu-pkg-config" \
 +    PKG_CONFIG="$$(ARCH$(3))-pc-linux-gnu-pkg-config" \
@@ -195,18 +237,22 @@ index 916df8b..044f705 100644
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
 diff --git a/make/rules-meson.mk b/make/rules-meson.mk
-index 7b982fa..a4fde46 100644
+index 7b982fa..1b224fe 100644
 --- a/make/rules-meson.mk
 +++ b/make/rules-meson.mk
-@@ -11,7 +11,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
- 	@echo ":: configuring $(3)bit $(1)..." >&2
+@@ -12,9 +12,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  	rm -rf "$$($(2)_OBJ$(3))/meson-private/coredata.dat"
  
--	grep -s -v -e c_args -e cpp_args -e link_args "$$($(2)_SRC)/build-win$(3).txt" | \
-+	grep -s -v -e c_args -e cpp_args "$$($(2)_SRC)/build-win$(3).txt" | \
- 	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
- 	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
- 	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
+ 	grep -s -v -e c_args -e cpp_args -e link_args "$$($(2)_SRC)/build-win$(3).txt" | \
+-	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
+-	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
+-	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
++	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$($(2)_CPPFLAGS) $$(COMMON_FLAGS))]:" \
++	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$($(2)_CPPFLAGS) $$(COMMON_FLAGS))]:" \
++	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$($(2)_LDFLAGS) $$(CROSSLDFLAGS))]:" \
+ 	  > "$$($(2)_OBJ$(3))/build-win$(3).txt"
+ 
+ 	env $$($(2)_ENV$(3)) \
 @@ -31,7 +31,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2

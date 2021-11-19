@@ -9,13 +9,13 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.3.0
-_dxvkver=1.9.2
-pkgrel=2
+_asyncver=1.9.2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
 arch=(x86_64 x86_64_v3)
-options=(!staticlibs !lto)
+options=(!staticlibs !lto emptydirs)
 license=('custom')
 
 depends=(
@@ -127,7 +127,7 @@ source=(
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    https://raw.githubusercontent.com/Sporif/dxvk-async/${_dxvkver}/dxvk-async.patch
+    https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
@@ -140,6 +140,28 @@ noextract=(
     wine-mono-${_monover}-x86.tar.xz
 )
 
+_make_wrappers () {
+    local _i686=(i686 "-m32" "-melf_i386")
+    local _x86_64=(x86_64 "" "")
+    local _opts=(_i686 _x86_64)
+    declare -n _opt
+    for _opt in "${_opts[@]}"; do
+        for l in ar as ranlib nm; do
+            ln -s /usr/bin/$l wrappers/${_opt[0]}-pc-linux-gnu-$l
+        done
+        for t in gcc g++; do
+            install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-$t <<EOF
+#!/usr/bin/bash
+$(which ccache 2> /dev/null) /usr/bin/$t ${_opt[1]} "\$@"
+EOF
+        done
+        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-ld <<EOF
+#!/usr/bin/bash
+/usr/bin/ld ${_opt[2]} "\$@"
+EOF
+    done
+}
+
 prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
@@ -149,6 +171,10 @@ prepare() {
     pip install --no-cache-dir meson==0.59.3
     pip install --no-cache-dir afdko
     pip install --no-cache-dir pefile
+
+    # Provide wrappers to compiler tools
+    rm -rf wrappers && mkdir wrappers
+    _make_wrappers
 
     [ ! -d gecko ] && mkdir gecko
     mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
@@ -225,10 +251,19 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+
+    # Remove repos from srcdir to save space
+    for submodule in "${_submodules[@]}"; do
+        rm -rf "$srcdir"/"${submodule%::*}"
+    done
+    rm -rf "$srcdir"/dxil-spirv
+    rm -rf "$srcdir"/Vulkan-Headers
+    rm -rf "$srcdir"/SPIRV-Headers
 }
 
 build() {
     source build_venv/bin/activate
+    export PATH="$(pwd)/wrappers:$PATH"
 
     cd build
     ROOTLESS_CONTAINER="" \
@@ -347,7 +382,7 @@ sha256sums=('SKIP'
             '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
             'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '2310147ad56cca7ea47bfc1d36a645fae1ffaf34a4a677509935336af4eb0d3e'
+            '20e2a6883d4848ff3d4c59a543e0f20f0b6c3d16d0294272bec2536252f855c8'
             '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '958f8e69bc789cc8fbe58cb6c9fc62f065692c3c165f20b0c21133ce94bad736')
