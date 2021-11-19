@@ -9,6 +9,6 @@ pkgbase = python-aamp
 	depends = python
 	depends = python-pyaml
 	source = https://files.pythonhosted.org/packages/py3/a/aamp/aamp-1.4.1-py3-none-any.whl
-	sha256sums = SKIP
+	sha256sums = c83c47ebf68585d7ebdafd48a0fc7e6771d9a1dd0d219c3e3f8c92865901e755
 
 pkgname = python-aamp
