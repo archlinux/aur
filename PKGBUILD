@@ -33,9 +33,7 @@ package() {
   install -dm755 "$pkgdir"/usr/lib/pkcs11
   ln -s sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/libeTPkcs11.so
   ln -s ../sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
-
-  # ...and a symlink that ldconfig insists on creating for it
-  ln -s libeTPkcs11.so "$pkgdir"/usr/lib/libeToken.so.10
+  ldconfig -N -r "$pkgdir"
 
   # "Card reader" driver for PCSC
   install -dm755 "$pkgdir"/usr/lib/pcsc/drivers
