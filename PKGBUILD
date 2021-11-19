@@ -2,7 +2,7 @@
 
 pkgname=eidklient
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -27,7 +27,7 @@ pkgver() {
 
 package() {
         depends=("glibc" "pcsclite" "ccid" )
+        optdepends=('disig-web-signer: online certificates update support')
 
 	ar p ${srcdir}/Aplikacia_pre_eID_${upstream_arch}_debian.deb data.tar.xz | tar -xJ -C "${pkgdir}"
-	
 }
