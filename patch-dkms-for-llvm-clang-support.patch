@@ -1,0 +1,25 @@
+--- a/dkms	2021-11-16 05:26:18.292805661 -0800
++++ b/dkms	2021-11-16 05:26:23.014733213 -0800
+@@ -571,6 +571,22 @@
+         make_command="${MAKE[$index]}"
+     done
+ 
++    ## https://github.com/dell/dkms/issues/124#issuecomment-960709722
++
++    # overkill LLVM tools specification:
++    clangopts=( "CC=clang" "LD=ld.lld" "AR=llvm-ar" "NM=llvm-nm" \
++                "RANLIB=llvm-ranlib" "STRIP=llvm-strip" "OBJCOPY=llvm-objcopy" \
++                "OBJDUMP=llvm-objdump" "READOBJ=llvm-readobj LLVM=1 LLVM_IAS=1")
++
++    if [[ -e $kernel_source_dir/vmlinux ]]; then
++      if readelf -p .comment $kernel_source_dir/vmlinux | grep -q clang; then
++        make_command="${clangopts[@]} ${make_command}"
++        #echo -n " (using llvm tools from $(which clang))" >&2
++      fi
++    fi
++
++    # see also: https://git.io/JXzyo
++
+     # Use the generic make and make clean commands if not specified
+     [[ ! $make_command ]] && make_command="make -C $kernel_source_dir M=$dkms_tree/$module/$module_version/build"
+     [[ ! $clean ]] && clean="make -C $kernel_source_dir M=$dkms_tree/$module/$module_version/build clean"

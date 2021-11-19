@@ -128,6 +128,9 @@ See the project commit log for full version history and changes.
       DKMS modules fail to build you'll want to re-build your kernel package to update your kernel headers, modules
       should build successfully after.
 
+      See the included [patch-dkms-for-llvm-clang-support.patch](patch-dkms-for-llvm-clang-support.patch) if you'd like
+      to add support for Clang to DKMS on your machine.
+
   - Building with `-O3` compiler optimization is supported, though the performance gain over `-O2 -march=native` or 
       Clang ThinLTO is slim.
 
