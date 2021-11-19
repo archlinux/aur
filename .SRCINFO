@@ -1,16 +1,16 @@
 pkgbase = python-cykhash
 	pkgdesc = cython wrapper for khash-sets/maps, efficient implementation of isin and unique
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/realead/cykhash/
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = cython
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cykhash/cykhash-1.0.2.tar.gz
-	source = python-cykhash-1.0.2_LICENSE::https://raw.githubusercontent.com/realead/cykhash/v1.0.2/LICENSE
-	sha256sums = 2ed17bffaccce3564407f41fce96ed79cc00a72427b3957674ea89148c1844e1
+	source = https://files.pythonhosted.org/packages/source/c/cykhash/cykhash-2.0.0.tar.gz
+	source = python-cykhash-2.0.0_LICENSE::https://raw.githubusercontent.com/realead/cykhash/v2.0.0/LICENSE
+	sha256sums = ab2e7b3a701291f71df626d8fe597a50b097c1b33e25b4c37681415639d270fd
 	sha256sums = 57198bc2af5d7f35e74bcd390539d43229a966f4307dfd1eea1c63ccb1c56d54
 
 pkgname = python-cykhash
