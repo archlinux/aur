@@ -28,15 +28,17 @@ sha256sums=('SKIP'
 
 prepare() {
 	patch -d autovala -p1 < gedit40.patch
+	rm -rf build build-gedit
 }
+
 build() {
-  arch-meson autovala build --reconfigure
+  arch-meson autovala build
   meson compile -C build
   for each in build/meson-uninstalled/*-uninstalled.pc;do
-    mv "$each" ${each%-*}.pc
+    cp "$each" ${each%-*}.pc
   done
   arch-meson autovala/gedit_plugin \
-    build-gedit --reconfigure \
+    build-gedit \
     --pkg-config-path build/meson-uninstalled
   echo $LDFLAGS
   VALAFLAGS="$(echo "--"{vapidir,girdir}"=$PWD/build/src/"{autovalaLib,autovalaPlugin})" \
