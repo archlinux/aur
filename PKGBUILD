@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=synclinks
 pkgver=2017.8
 pkgrel=2
 pkgdesc='A tool that synchronizes hierarchies of symlinks.'
 arch=(i686 x86_64)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/synclinks"
+url="https://xyne.dev/projects/synclinks"
 depends=(glibc)
 source=(
-  https://xyne.mirrorrepo.com/projects/synclinks/src/synclinks-2017.8.tar.xz
-  https://xyne.mirrorrepo.com/projects/synclinks/src/synclinks-2017.8.tar.xz.sig
+  https://xyne.dev/projects/synclinks/src/synclinks-2017.8.tar.xz
+  https://xyne.dev/projects/synclinks/src/synclinks-2017.8.tar.xz.sig
 )
 sha512sums=(
   59c99832ab2c9e3c789cc267c7a81cd97379d3813b43a1fc99db35dc8eb5eb24a83ebda03741a79a9313643ea72342d6583d922e9a56e9ba742b38d04555c494
