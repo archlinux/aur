@@ -1,15 +1,15 @@
-#Maintainer: Xyne <ac xunilhcra enyx, backwards>
+#Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=quixand
 pkgver=2020
 pkgrel=2
 pkgdesc='A tool for creating single-use unrecoverable encrypted sandboxes.'
 arch=(any)
 license=(GPL)
-url="https://xyne.mirrorrepo.com/projects/quixand"
+url="https://xyne.dev/projects/quixand"
 depends=(encfs)
 source=(
-  https://xyne.mirrorrepo.com/projects/quixand/src/quixand-2020.tar.xz
-  https://xyne.mirrorrepo.com/projects/quixand/src/quixand-2020.tar.xz.sig
+  https://xyne.dev/projects/quixand/src/quixand-2020.tar.xz
+  https://xyne.dev/projects/quixand/src/quixand-2020.tar.xz.sig
 )
 sha512sums=(
   15b3d14337f994843db35b6f3a85d670a6df4819e31df18cc4f5e9ec7981b01628a059a7bc16145b0807fa61b8c04a1a98090fff7cc580bd5af5d6ab9bd27901
