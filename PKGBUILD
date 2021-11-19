@@ -92,7 +92,8 @@ _makenconfig=
 pkgbase=linux-xanmod-rog
 xanmod=5.15.3-xanmod1
 pkgver=${xanmod//-/.}
-#pkgver=5.15.3.xanpre0     # NOTE: start 4th position with 'xan...', we parse for this pattern later
+#pkgver=5.15.3.prexan0
+#  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -240,8 +241,8 @@ prepare() {
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Monkey patch: rewrite Xanmod release to $_localversion (eg: xanpre0) if we're applying a point release on top of Xanmod
-  if [[ ${xanmod%-xanmod?} != "${pkgver%%\.xan*}" ]]; then
-    msg2 "(Monkey)ing with kernel, rewriting localversion xanmod to $_localversion ..."
+  if [[ ${xanmod%-xanmod?} != "$_localversion" ]]; then
+    msg2 "(Monkey)ing with kernel, rewriting localversion ${xanmod%-xanmod?} to $_localversion ..."
     sed -Ei "s/xanmod[0-9]+/${_localversion}/" localversion
   fi
 
