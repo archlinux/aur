@@ -3,7 +3,7 @@
 # Contributor: Maxime Poulin <maxpoulin64@gmail.com>
 _pkgname=thelounge
 pkgname=thelounge-beta
-_pkgver=4.3.0-rc.1
+_pkgver=4.3.0-rc.2
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
@@ -23,7 +23,7 @@ source=(
     'tmpfiles.d'
 )
 noextract=("$_pkgname-$_pkgver.tgz")
-sha256sums=('a73da86bdb19ee4a43a277e608a54d61ddd380a4085429eea2e614772ad62d26'
+sha256sums=('ffcf7c16d2a85a3deb03113304b4fc015eee648eb5fe766e864b0aa65f142704'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
