@@ -5,6 +5,7 @@ pkgdesc="SafeNet Authentication Client (version 10.0 for old Alladin eToken supp
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
 depends=(pcsclite)
+conflicts=(sac-core) # due to libeToken.so.10
 license=(custom)
 source=('https://installer.id.ee/media/etoken/older%20versions/SAC_10_0_Post_GA_Linux.zip'
         eToken.conf)
@@ -33,6 +34,7 @@ package() {
   install -dm755 "$pkgdir"/usr/lib/pkcs11
   ln -s sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/libeTPkcs11.so
   ln -s ../sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
+  # Note that ldconfig still insists on linking it to libeToken.so.10
   ldconfig -N -r "$pkgdir"
 
   # "Card reader" driver for PCSC

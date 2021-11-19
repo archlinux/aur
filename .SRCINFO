@@ -7,6 +7,7 @@ pkgbase = sac-core-legacy
 	arch = x86_64
 	license = custom
 	depends = pcsclite
+	conflicts = sac-core
 	source = https://installer.id.ee/media/etoken/older%20versions/SAC_10_0_Post_GA_Linux.zip
 	source = eToken.conf
 	sha256sums = 4f99737e100d3fb3c00dc65f27adce2ee60d0c207ca8ef92e51b49767f7d5e1d
