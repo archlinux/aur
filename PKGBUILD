@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-datetime"
-pkgver="0.8.3"
+pkgver="0.9.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator providing clock and calendar"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("cmake-extras" "ayatana-indicator-messages>=0.9.0" "intltool" "glib2" "libical")
 depends=("libayatana-common>=0.9.5" "evolution-data-server" "libaccounts-glib")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("cc87b99eaa7be3dd134e3070613ef942")
+md5sums=("b967640e73f0d7ff458e1e2cfeb1f81e")
 
 build()
 {
