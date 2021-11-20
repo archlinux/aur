@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=ttf-bqn386-git
-pkgver=r11.af94380
+pkgver=r12.0f89cae
 pkgrel=1
 pkgdesc='An APL and BQN font extending on APL386.'
 arch=('any')
@@ -10,7 +10,6 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/dzaima/BQN386.git")
-noextract=('BQN386.sfdir' 'README.md')
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,4 +21,5 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -Dm644 'BQN386.ttf' -t "${pkgdir}/usr/share/fonts/TTF"
   install -Dm644 'index.html' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
