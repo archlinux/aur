@@ -1,6 +1,6 @@
 pkgbase = cfs-zen-tweaks
 	pkgdesc = Script tweak CFS for desktop interactivity
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/igo95862/cfs-zen-tweaks
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = cfs-zen-tweaks
 	depends = gawk
 	depends = bash
 	depends = systemd
-	source = cfs-zen-tweaks-1.1.1::https://github.com/igo95862/cfs-zen-tweaks/archive/refs/tags/1.1.1.tar.gz
-	sha512sums = 8a7deb3598a8453a69779ae11b948bab11da31c3549a94a7a3856f7c4f6ea94abf16899012205b4250cf43503f1371a556bc0404d5ce4042b55c159c65aa274c
+	source = cfs-zen-tweaks-1.2.0::https://github.com/igo95862/cfs-zen-tweaks/archive/refs/tags/1.2.0.tar.gz
+	sha512sums = 260ff8769c97939950381f8584e67f2628516d79e4424a0e97dabce14c1b3983cf649e5829cba625cccc24dc6532246b0466d628780462f87646fa4c1d6037ca
 
 pkgname = cfs-zen-tweaks
