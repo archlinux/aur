@@ -1,11 +1,12 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
-pkgname=mingw-w64-xalan-c-icu
-provides=('mingw-w64-xalan-c')
-conflicts=('mingw-w64-xalan-c')
+_pkgname=xalan-c
+pkgname=mingw-w64-${_pkgname}-icu
+provides=("mingw-w64-${_pkgname}")
+conflicts=("mingw-w64-${_pkgname}")
 pkgver=1.12.0
-pkgrel=7
 _filever='1_12_0'
+pkgrel=8
 pkgdesc='A XSLT processor for transforming XML documents (ICU) (mingw-w64)'
 arch=('any')
 url='https://xalan.apache.org/'
@@ -21,22 +22,24 @@ sha256sums=(
 	'bffe4d394b877d7a36c08efd7563ce9ccde3621ae3851dc9c00ce065cd360050'
 	'ed5a03ffecb0476aa02e90aba99f12d843bfd90748481d7b1ffc6d524bf4d952')
 
+_srcdir="${_pkgname}-Xalan-C_${_filever}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -Dtranscoder=icu -Ddoxygen=OFF )
 
 prepare() {
-	cd "xalan-c-Xalan-C_${_filever}"
-	patch -uNp1 < '../fix-cross-compile.patch'
-	patch -uNp1 < '../36.patch'
+	cd "${_srcdir}"
+	patch -uNp1 -i '../fix-cross-compile.patch'
+	patch -uNp1 -i '../36.patch'
+  sed -i 's/if(WIN32)/if(0)/' 'src/xalanc/CMakeLists.txt'
 }
 
 build() {
-	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -Dtranscoder=icu -Ddoxygen=OFF )
-	
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF \
+      -DCMAKE_FIND_NO_INSTALL_PREFIX=ON -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
 }
