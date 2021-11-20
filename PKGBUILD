@@ -2,7 +2,7 @@
 
 pkgname=apple-music-electron
 _pkgname=Apple-Music-Electron
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=2
 pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Builds from most recently release on GitHub."
 arch=("armv7h" "i686" "x86_64")
