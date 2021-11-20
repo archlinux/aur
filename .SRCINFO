@@ -1,0 +1,11 @@
+pkgbase = txt
+	pkgdesc = A shitty text editor written in C99
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ItzAfroBoy/txt.git
+	arch = any
+	license = GPL3
+	source = git+https://github.com/ItzAfroBoy/txt.git
+	md5sums = SKIP
+
+pkgname = txt
