@@ -1,10 +1,11 @@
 pkgbase = qogir-gtk-theme
 	pkgdesc = Qogir is a flat Design theme for GTK
 	pkgver = 2021.11.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Qogir-theme
 	arch = any
 	license = GPL3
+	makedepends = grep
 	depends = gtk3
 	depends = gtk-engine-murrine
 	depends = gtk-engines
