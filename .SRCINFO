@@ -1,7 +1,7 @@
 pkgbase = dpscreenocr
 	pkgdesc = Program to recognize text on screen
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://danpla.github.io/dpscreenocr
 	install = dpscreenocr.install
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = dpscreenocr
 	sha256sums = 497e79f05c48ffe5781d2cf524c811ab4f8008842191d1d4b85f87fc4a186ce5
 
 pkgname = dpscreenocr
-
