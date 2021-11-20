@@ -2,7 +2,7 @@
 
 pkgname=polydock
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A shiny and hackable application dock"
 arch=('any')
 url="https://github.com/folke/polydock"
@@ -22,11 +22,11 @@ build () {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	sed -i -e 's/me=.*//' -e 's/dist=.*/dist=\/usr\/share\/polydock\/bin/' bin/polydock.sh
+	sed -i -e 's/me=.*//' -e 's/dist=.*/dist=\/usr\/share\/$pkgname\/bin/' bin/polydock.sh
 	mv dist/bin/polydock dist/bin/polydock.js
 	install -Dm644 dist/config/settings.ini "$pkgdir/usr/share/$pkgname/config/settings.ini"
 	install -Dm644 dist/config/themes/default.css "$pkgdir/usr/share/$pkgname/config/themes/default.css"
 	install -Dm755 dist/bin/polydock.js "$pkgdir/usr/share/$pkgname/bin/polydock.js"
 	install -Dm755 bin/polydock.sh "$pkgdir/usr/share/$pkgname/bin/polydock.sh"
-	install -Dm755 bin/polydock.sh "$pkgdir/usr/bin/polydock"
+	install -Dm755 bin/polydock.sh "$pkgdir/usr/bin/$pkgname"
 }
