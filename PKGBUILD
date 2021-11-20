@@ -1,22 +1,22 @@
-# Maintainer: José San Juan <josesj@gmail.com>
+# Maintainer: Médéric Boquien <mboquien@free.fr>
+# Original contributor: José San Juan <josesj@gmail.com>
 pkgname=qfitsview
-pkgver=4.0
-pkgrel=2
+pkgver=4.1
+pkgrel=1
 pkgdesc="FITS file viewer based on DPUSER"
 url="http://www.mpe.mpg.de/~ott/QFitsView/index.html"
 license=("GPL2+")
 arch=("x86_64")
-source=("http://www.mpe.mpg.de/~ott/QFitsView/download/QFitsView_4.0"
+source=("http://www.mpe.mpg.de/~ott/QFitsView/download/QFitsView_${pkgver}"
         'qfitsview.png'
         'QFitsView.desktop'
 )
-md5sums=("cb62ba59c96563303d63c97442485a74"
-        'SKIP'
-        'SKIP'
-)
+sha512sums=('70f9196eff8d89a98822e2d47cd569cb83a9baecfda881b28deb77c3001da43f6acc301dddf27b46eee08f0b9d22a76cd571f1dc1e56da92ccb03b506af2bf19'
+            '8c3a6d73865234d49574e4a60ffb35f30be1e2f1c6f56d5f3c48ec3489720a333a3ef133eb1043f48ef1760033d17abcce61849c0d82deff8ba0c27fc6a1bd6b'
+            '4f712a90e5923bb24ad30a868e96100f58089b19da4893e1f9c1a5003f01e32797c220c80c7269dcafc13d109d43b44f5047b95fb25a58e3bf46d54714961de1')
 
 package() {
-  install -Dm755 QFitsView_4.0 "$pkgdir/usr/bin/QFitsView"
+  install -Dm755 "QFitsView_${pkgver}" "$pkgdir/usr/bin/QFitsView"
   install -Dm644 QFitsView.desktop "$pkgdir/usr/share/applications/QFitsView.desktop"
   install -Dm644 qfitsview.png "$pkgdir/usr/share/pixmaps/qfitsview.png"
 }
