@@ -1,12 +1,13 @@
 pkgbase = rtl-gopow-git
 	pkgdesc = Render tables from rtl_power to a nice heat map
 	pkgver = 0.0.5.r0.gf799efc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dhogborg/rtl-gopow
 	arch = x86_64
 	license = unknown
 	makedepends = go
 	makedepends = git
+	makedepends = go-bindata
 	provides = rtl-gopow
 	conflicts = rtl-gopow
 	source = rtl-gopow-git::git+https://github.com/dhogborg/rtl-gopow

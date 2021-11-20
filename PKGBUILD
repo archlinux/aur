@@ -2,12 +2,12 @@ pkgname=rtl-gopow-git
 _pkgname=${pkgname%-git}
 _binary=gopow
 pkgver=0.0.5.r0.gf799efc
-pkgrel=1
+pkgrel=2
 pkgdesc='Render tables from rtl_power to a nice heat map'
 arch=(x86_64)
 url='https://github.com/dhogborg/rtl-gopow'
 license=(unknown)
-makedepends=("go" "git")
+makedepends=("go" "git" "go-bindata")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}::git+${url}")
@@ -16,6 +16,11 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' 
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    go-bindata -pkg resources -o internal/resources/resources.go resources/...
 }
 
 build() {
