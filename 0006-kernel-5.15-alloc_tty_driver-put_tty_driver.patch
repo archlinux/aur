@@ -1,0 +1,41 @@
+--- nslink.c.orig	2021-11-20 15:13:52.248938958 -0500
++++ nslink.c	2021-11-20 15:15:42.252800968 -0500
+@@ -5634,11 +5634,11 @@ int register_tty_driver(tBoxPortCount *u
+ 
+         numBoxes = bp.boxCount;
+ 
+         // Set up the tty driver structure and then register this
+         // driver with the tty layer.
+-        nslink_driver = alloc_tty_driver((MAX_NRP_TOTAL_PORTS - 1));
++        nslink_driver = tty_alloc_driver((MAX_NRP_TOTAL_PORTS - 1),0);
+ 
+         nslink_driver->magic = TTY_DRIVER_MAGIC;
+         nslink_driver->driver_name = "NS-Link";
+         nslink_driver->name = "ttySI";
+         nslink_driver->num = bp.portCount;
+@@ -5661,11 +5661,11 @@ int register_tty_driver(tBoxPortCount *u
+         nslink_driver->owner = THIS_MODULE;
+         tty_set_operations(nslink_driver, &nslink_ops);
+         retval = tty_register_driver(nslink_driver);
+         if (retval < 0) {
+                 printk(KERN_INFO "Couldn't install tty NS-Link driver (error %d)\n", -retval);
+-                put_tty_driver(nslink_driver);
++                tty_driver_kref_put(nslink_driver);
+                 return retval;
+         }
+         driver_registered = 1;
+         printk(KERN_INFO "NS-Link driver is major %d\n", nslink_driver->major);
+         return 0;
+@@ -5737,11 +5737,11 @@ static void nrp_cleanup_module(void)
+         for (i = 0; i < numBoxes; i++)
+                 free_si_box(i);
+ 
+         if (driver_registered) {
+                 tty_unregister_driver(nslink_driver);
+-                put_tty_driver(nslink_driver);
++                tty_driver_kref_put(nslink_driver);
+         }
+ 
+ 	printk(KERN_INFO "nslink: finished driver module shutdown\n");
+         return;
+ }
