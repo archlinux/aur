@@ -2,6 +2,7 @@ post_install() {
   if systemctl -q is-active runsunloginclient.service ;then
     systemctl daemon-reload
     systemctl restart runsunloginclient.service
+    echo "restart runsunloginclient.service."
   fi
 
   ECHOLEN=$(echo -e|awk '{print length($0)}')

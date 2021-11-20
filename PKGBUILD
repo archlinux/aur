@@ -4,7 +4,7 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 pkgver=11.0.0.36662
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
@@ -17,8 +17,8 @@ source=("https://down.oray.com/${_pkgname}/linux/${pkgname}-${pkgver}-amd64.deb"
         'LICENSE')
 install="${pkgname}.install"
 sha256sums=('825e05405dcdd31e87a91a0bfa961c6e954f953d6ead667715924b4703e41ef0'
-            '58942243be93d1e743fc42d9670e75a4f33f121faa3d6f2d44c95d73d1ead00c'
-            'b3da0bda5ab0d4badb2cf7723dac95a9c5f5efb89f3d3f192d78728b064d0720')
+            '7f36a60d84741d817a0d0804bd39c8c7d7058144a6934b2abf0841446f4a56de'
+            'SKIP')
 
 build() {
   mkdir -p build
@@ -75,8 +75,11 @@ package() {
           "${pkgdir}/opt/${_pkgname}/bin/${pkgname}"
   sed -i "s#/usr/local/sunlogin/res/icon/%s.ico\x0#/opt/sunlogin/res/icon/%s.ico\x0\x0\x0\x0\x0\x0\x0#g" \
           "${pkgdir}/opt/${_pkgname}/bin/${pkgname}"
-  sed -i "s#/usr/local/sunlogin\x0#/opt/sunlogin\x0\x0\x0\x0\x0\x0\x0#g" \
-          "${pkgdir}/opt/${_pkgname}/bin/oray_rundaemon"
+
+  # replace /usr/local with /opt
+  # prefix 0x48b8, suffix 0x4889, char count(?) 0x45d0
+  sed -i "s#\x48\xB8/usr/loc\x48\x89\x45\xD0\x48\xB8al#\x48\xB8///////o\x48\x89\x45\xD0\x48\xB8pt#g" \
+         "${pkgdir}/opt/${_pkgname}/bin/oray_rundaemon"
 }
 # vim: ts=2 sw=2 et: 
 
