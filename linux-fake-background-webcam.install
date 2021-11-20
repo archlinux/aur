@@ -1,0 +1,10 @@
+post_install() {
+  cat <<'EOL'
+run: 
+  systemctl start linux-fake-background-webcam@0.service
+EOL
+}
+
+post_upgrade() {
+  post_install
+}

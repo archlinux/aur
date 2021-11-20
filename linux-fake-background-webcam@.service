@@ -1,0 +1,20 @@
+[Unit]
+Description=Fake Background Webcam /dev/video%i -> /dev/video2%i
+Requires=dbus.socket
+
+[Service]
+Type=simple
+User=root
+Environment="IMAGE_FOLDER=/var/lib/linux-fake-background-webcam/default"
+ExecStartPre=modprobe v4l2loopback video_nr=2%i \
+  card_label="Fake background %i" 
+  exclusive_caps=1
+ExecStart=/usr/bin/linux-fake-background-webcam \
+  -c /etc/linux-fake-background-webcam/config.ini \
+  --webcam-path /dev/video%i \
+  --v4l2loopback-path /dev/video2%i
+ExecReload=/bin/kill -s INT $MAINPID
+ExecStopPost=-modprobe -r v4l2loopback
+
+[Install]
+WantedBy=default.target
