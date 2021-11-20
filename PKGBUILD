@@ -3,7 +3,7 @@
 _pkgname=libssh2
 pkgname=mingw-w64-${_pkgname}
 pkgver=1.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts (mingw-w64)"
 arch=(any)
 url="http://www.libssh2.org"
@@ -52,7 +52,8 @@ package() {
 		
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
     rm -rf "$pkgdir"/usr/${_arch}/share
-    mv -f "$pkgdir"/usr/${_arch}/lib/liblibssh2.dll.a "$pkgdir"/usr/${_arch}/lib/libssh2.dll.a 
+    mv -f "$pkgdir"/usr/${_arch}/lib/{liblibssh2,libssh2}.dll.a
+    sed -i 's/liblibssh2.dll.a/libssh2.dll.a/g' "$pkgdir/usr/${_arch}/lib/cmake/libssh2/Libssh2Config-release.cmake"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 	done

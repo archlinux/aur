@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libssh2
 	pkgdesc = A library implementing the SSH2 protocol as defined by Internet Drafts (mingw-w64)
 	pkgver = 1.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.libssh2.org
 	arch = any
 	license = BSD
