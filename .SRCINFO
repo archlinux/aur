@@ -1,0 +1,24 @@
+pkgbase = yeetgif-bin
+	pkgdesc = GIF effects tool for creating emotes
+	pkgver = 1.23.6
+	pkgrel = 1
+	url = https://github.com/sgreben/yeetgif
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	optdepends = gifsicle: 'optimize' command support
+	provides = yeetgif
+	conflicts = yeetgif
+	source = LICENSE-1.23.6::https://github.com/sgreben/yeetgif/raw/1.23.6/LICENSE
+	source = README-1.23.6.md::https://github.com/sgreben/yeetgif/raw/1.23.6/README.md
+	sha256sums = ff4d38ad7fbb91656babeb3432f3067e346f7324eaa4561ed074dc699878c535
+	sha256sums = 9d32da4fbc6f0ed6f48a81ee8ac8a9c0162a95162d8f4775f89e3d1f7a7268e1
+	source_x86_64 = yeetgif-bin-1.23.6-x86_64.tar.gz::https://github.com/sgreben/yeetgif/releases/download/1.23.6/gif_1.23.6_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0b4e81b3f97199e15ecca5b47e7d3c6cf604a392c7126dd25b319f5c176c03be
+	source_i686 = yeetgif-bin-1.23.6-i686.tar.gz::https://github.com/sgreben/yeetgif/releases/download/1.23.6/gif_1.23.6_linux_x86_32.tar.gz
+	sha256sums_i686 = f69383468bb13145fc99969d20f9a388ec05427a5016418ae52e5fdaa727da0f
+	source_aarch64 = yeetgif-bin-1.23.6-aarch64.tar.gz::https://github.com/sgreben/yeetgif/releases/download/1.23.6/gif_1.23.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = d904986955a5d2c4b84a4443f3d114b7ba949daa569a2617f050ac143c4dedaa
+
+pkgname = yeetgif-bin
