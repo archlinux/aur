@@ -1,0 +1,16 @@
+pkgbase = python-hxss-responsibility
+	pkgdesc = Simple implementation of chain of responsibilities pattern
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/hxss-python/hxss.responsibility
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = curl
+	makedepends = jq
+	makedepends = findutils
+	depends = python
+	depends = python-dbus-next
+
+pkgname = python-hxss-responsibility
+
