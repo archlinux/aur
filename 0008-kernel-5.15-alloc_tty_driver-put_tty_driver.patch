@@ -1,0 +1,81 @@
+diff -pNaru5 driver/2.6.27.orig/dgrp_tty.c driver/2.6.27/dgrp_tty.c
+--- driver/2.6.27.orig/dgrp_tty.c	2021-11-20 14:56:04.993491404 -0500
++++ driver/2.6.27/dgrp_tty.c	2021-11-20 14:57:49.520506448 -0500
+@@ -4105,11 +4105,11 @@ dgrp_tty_uninit(struct nd_struct *nd)
+ 
+ 		if (nd->nd_serial_ttdriver->ttys) {
+ 			kfree(nd->nd_serial_ttdriver->ttys);
+ 			nd->nd_serial_ttdriver->ttys = NULL;
+ 		}
+-		put_tty_driver(nd->nd_serial_ttdriver);
++		tty_driver_kref_put(nd->nd_serial_ttdriver);
+ 		nd->nd_ttdriver_flags &= ~SERIAL_TTDRV_REG;
+ 	}
+ 
+ 	if (nd->nd_ttdriver_flags & CALLOUT_TTDRV_REG) {
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0)
+@@ -4121,11 +4121,11 @@ dgrp_tty_uninit(struct nd_struct *nd)
+ 
+ 		if (nd->nd_callout_ttdriver->ttys) {
+ 			kfree(nd->nd_callout_ttdriver->ttys);
+ 			nd->nd_callout_ttdriver->ttys = NULL;
+ 		}
+-		put_tty_driver(nd->nd_callout_ttdriver);
++		tty_driver_kref_put(nd->nd_callout_ttdriver);
+ 		nd->nd_ttdriver_flags &= ~CALLOUT_TTDRV_REG;
+ 	}
+ 
+ 	if (nd->nd_ttdriver_flags & XPRINT_TTDRV_REG) {
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0)
+@@ -4137,11 +4137,11 @@ dgrp_tty_uninit(struct nd_struct *nd)
+ 
+ 		if (nd->nd_xprint_ttdriver->ttys) {
+ 			kfree(nd->nd_xprint_ttdriver->ttys);
+ 			nd->nd_xprint_ttdriver->ttys = NULL;
+ 		}
+-		put_tty_driver(nd->nd_xprint_ttdriver);
++		tty_driver_kref_put(nd->nd_xprint_ttdriver);
+ 		nd->nd_ttdriver_flags &= ~XPRINT_TTDRV_REG;
+ 	}
+ 
+ 	dbg_tty_trace(UNINIT, ("tty uninit: done\n"));
+ }
+@@ -4163,11 +4163,11 @@ dgrp_tty_init(struct nd_struct *nd)
+ 
+ 	/*
+ 	 *  Initialize the TTDRIVER structures.
+ 	 */
+ 
+-	nd->nd_serial_ttdriver = alloc_tty_driver(CHAN_MAX);
++	nd->nd_serial_ttdriver = tty_alloc_driver(CHAN_MAX,0);
+ 	sprintf(nd->nd_serial_name,  "tty_dgrp_%s_", id);
+ 
+ 	nd->nd_serial_ttdriver->owner        = THIS_MODULE;
+ 	nd->nd_serial_ttdriver->name         = nd->nd_serial_name;
+ 	nd->nd_serial_ttdriver->name_base    = 0;
+@@ -4227,11 +4227,11 @@ dgrp_tty_init(struct nd_struct *nd)
+ 			}
+ 		}
+ 		nd->nd_ttdriver_flags |= SERIAL_TTDRV_REG;
+ 	}
+ 
+-	nd->nd_callout_ttdriver = alloc_tty_driver(CHAN_MAX);
++	nd->nd_callout_ttdriver = tty_alloc_driver(CHAN_MAX,0);
+ 	sprintf(nd->nd_callout_name, "cu_dgrp_%s_",  id);
+ 
+ 	nd->nd_callout_ttdriver->owner        = THIS_MODULE;
+ 	nd->nd_callout_ttdriver->name         = nd->nd_callout_name;
+ 	nd->nd_callout_ttdriver->name_base    = 0;
+@@ -4268,11 +4268,11 @@ dgrp_tty_init(struct nd_struct *nd)
+ 			nd->nd_ttdriver_flags |= CALLOUT_TTDRV_REG;
+ 		}
+ 	}
+ 
+ 
+-	nd->nd_xprint_ttdriver = alloc_tty_driver(CHAN_MAX);
++	nd->nd_xprint_ttdriver = tty_alloc_driver(CHAN_MAX,0);
+ 	sprintf(nd->nd_xprint_name,  "pr_dgrp_%s_", id);
+ 
+ 	nd->nd_xprint_ttdriver->owner         = THIS_MODULE;
+ 	nd->nd_xprint_ttdriver->name          = nd->nd_xprint_name;
+ 	nd->nd_xprint_ttdriver->name_base     = 0;
