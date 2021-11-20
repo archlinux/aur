@@ -1,0 +1,15 @@
+pkgbase = mixbus7
+	pkgdesc = Harrison Mixbus - Digital Audio Workstation
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = http://harrisonconsoles.com/site/mixbus.html
+	arch = x86_64
+	license = EULA, GPLv2
+	depends = libcurl-gnutls
+	depends = glibc
+	depends = xorg-server
+	provides = mixbus
+	conflicts = mixbus
+	replaces = mixbus
+
+pkgname = mixbus7
