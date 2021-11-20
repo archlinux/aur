@@ -1,6 +1,6 @@
 pkgbase = gedit-plugin-markdown_preview
 	pkgdesc = A gedit plugin previewing markdown (.md) documents
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/maoschanz/gedit-plugin-markdown_preview
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = gedit-plugin-markdown_preview
 	optdepends = pandoc: export and stylesheet support
 	optdepends = texlive-bin: export to PDF with pandoc
 	optdepends = texlive-core: export to PDF with pandoc
-	source = gedit-plugin-markdown_preview-1.0.tar.gz::https://github.com/maoschanz/gedit-plugin-markdown_preview/archive/refs/tags/1.0.tar.gz
-	sha256sums = 46eb4252628c2df8ba375b49f7b10b4a4b880d9213c2d1979796565e03ddc24d
+	source = gedit-plugin-markdown_preview-2.0.tar.gz::https://github.com/maoschanz/gedit-plugin-markdown_preview/archive/refs/tags/2.0.tar.gz
+	sha256sums = 2fa757bb87d8b63fc206e307f6b963c9a2013d487f33fe7f564c9f0f2bc53a07
 
 pkgname = gedit-plugin-markdown_preview
