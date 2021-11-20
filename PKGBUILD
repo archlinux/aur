@@ -1,6 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
-pkgname=mingw-w64-opencolorio
+_pkgname=opencolorio
+pkgname=mingw-w64-${_pkgname}
 pkgver=2.1.0
 pkgrel=1
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
@@ -15,10 +16,11 @@ depends=(
 	'mingw-w64-freeglut'
 	'mingw-w64-glew'
 	'mingw-w64-imath')
+checkdepends=('mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 _repo='OpenColorIO'
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz"
+	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
 	'81fc7853a490031632a69c73716bc6ac271b395e2ba0e2587af9995c2b0efb5f'
