@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino
-pkgver=2021.4.1
+pkgver=2021.4.2
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=('intel-openvino')
 conflicts=('intel-openvino')
 replaces=('intel-openvino')
 # supported firmwares: VPU_SUPPORTED_FIRMWARES in inference-engine/cmake/vpu_dependencies.cmake
-_firmware_ver=1736 # FIRMWARE_PACKAGE_VERSION in inference-engine/cmake/vpu_dependencies.cmake
+_firmware_ver=1875 # FIRMWARE_PACKAGE_VERSION in inference-engine/cmake/vpu_dependencies.cmake
 _gnaver=03.00.00.1377 # GNA_VERSION (GNA2) in inference-engine/cmake/dependencies.cmake
 _tbbver=2020_20200415 # inference-engine/cmake/dependencies.cmake
 _tbbbind_ver=2_4_static_lin_v2 # inference-engine/cmake/dependencies.cmake
@@ -60,8 +60,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '28ed086ac52b964d9a1f5a54c017237d2d03ea39013e7910df678b176b9ce0c3'
-            'c2268e700eb597329376cbe830eeb6504203d765a1bde4da917242ca535a7ab3'
+            'e65fcc1c6b0f3e9d814e53022c212ec0a2b83197a9df38badb298fb85ccf3acf'
+            'b11368fec2036d96fb703d2a40b171184fefe89f27e74a988ef1ca34260a2bc5'
             'd45fb48994d8c2803a16e88e29ae48851066325b97c1c6c4a5bf4f4573d55c65'
             '95b2f3b0b70c7376a0c7de351a355c2c514b42c4966e77e3e34271a599501008'
             '6dc926258c6cd3cba0f5c2cc672fd2ad599a1650fe95ab11122e8f361a726cb6'
