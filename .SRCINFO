@@ -1,6 +1,6 @@
 pkgbase = userspace-tablet-driver-daemon-git
 	pkgdesc = A userspace daemon for XP-Pen and Huion tablets.
-	pkgver = r118.6f2475f
+	pkgver = r1.33e18ab
 	pkgrel = 1
 	url = https://github.com/kurikaesu/userspace-tablet-driver-daemon.git
 	install = ustdd.install
@@ -10,7 +10,8 @@ pkgbase = userspace-tablet-driver-daemon-git
 	makedepends = cmake
 	makedepends = make
 	provides = userspace_tablet_driver_daemon
-	source = ustdd::git+https://github.com/kurikaesu/userspace-tablet-driver-daemon.git
+	conflicts = userpace-tablet-driver-daemon
+	source = git+https://github.com/kurikaesu/userspace-tablet-driver-daemon.git
 	sha256sums = SKIP
 
 pkgname = userspace-tablet-driver-daemon-git
