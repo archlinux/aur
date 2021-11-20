@@ -1,7 +1,7 @@
 # Maintainer: alyrow
 
 pkgname=hyperlap2d-git
-pkgver=v0.0.7.r75.gd08e8d6
+pkgver=v0.0.7.r77.g8553f7e
 pkgrel=1
 pkgdesc="A powerful, platform-independent, visual editor for complex 2D worlds and scenes."
 arch=('x86_64')
