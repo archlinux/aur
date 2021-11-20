@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=stow-cm
 pkgver=nightly
-pkgrel=1
+pkgrel=2
 pkgdesc="config manager (simple impl of gun-stow)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/stow"
@@ -15,11 +15,6 @@ sha512sums=('SKIP')
 build() {
   cd "stow-$pkgver"
   cargo build --release --target x86_64-unknown-linux-musl
-}
-
-check() {
-  # cd "stow-$pkgver"
-  # cargo test --release
 }
 
 package() {
