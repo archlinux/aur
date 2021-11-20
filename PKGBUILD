@@ -1,6 +1,6 @@
 pkgname=hellbeast-vst
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hellish Brutal Amp Sim (VST Plugin)"
 arch=('x86_64')
 url="https://audioassault.mx/collections/plugins/products/hellbeast"
@@ -14,6 +14,7 @@ prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/Hellbeast+v2+Installs.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
+	find $srcdir -name ".DS_Store" -delete
 }
 
 package() {

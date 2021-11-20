@@ -1,7 +1,7 @@
 pkgbase = hellbeast-vst
 	pkgdesc = Hellish Brutal Amp Sim (VST Plugin)
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/collections/plugins/products/hellbeast
 	arch = x86_64
 	groups = pro-audio
