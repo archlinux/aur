@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=drizzlepac
 pkgname=python-${_pyname}-doc
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Documentation for DrizzlePac"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
         'fix_changelog_title-3.3.0.patch'
         'fix_changelog_indent.patch')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-md5sums=('d75d47674b39894b6387de7671e8a9bc'
+md5sums=('9a1c3dfafbbdd477fedfb5f9747ced44'
          'cc5c4f5b71429895ac093c39e66af232'
          'd466b6dc479df8144ce13dacf5081d44')
 
