@@ -1,4 +1,4 @@
-# Maintainer: Kyle Yasuda <ksyasuda@umich.edu>
+# Maintainer: Kyle Yasuda <ksyasuda at umich dot edu>
 pkgname=aniwrapper-git
 _pkgname=aniwrapper
 pkgver=r89.737d066
