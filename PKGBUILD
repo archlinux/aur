@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=ookla-speedtest-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Speedtest CLI by Ookla"
 depends=("ca-certificates")
@@ -11,19 +11,19 @@ options=(!strip)
 url="https://www.speedtest.net/apps/cli"
 license=("custom:Ookla EULA")
 
-source_x86_64=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-x86_64-linux.tgz")
-source_i686=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-i386-linux.tgz")
-source_aarch64=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-aarch64-linux.tgz")
-source_arm=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-arm-linux.tgz")
-source_armv6h=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-arm-linux.tgz")
-source_armv7h=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-armhf-linux.tgz")
+source_x86_64=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-linux-x86_64.tgz")
+source_i686=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-linux-i386.tgz")
+source_aarch64=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-linux-aarch64.tgz")
+source_arm=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-linux-armel.tgz")
+source_armv6h=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-linux-armel.tgz")
+source_armv7h=("https://install.speedtest.net/app/cli/ookla-speedtest-${pkgver}-linux-armhf.tgz")
 
-sha256sums_x86_64=('fcd58df06eaeaa89237214a735c0b7154d6a0ec3a3b78261da40a765ce41f47f')
-sha256sums_i686=('07da43e0d006fe374f0bfb63e7fc4894e18ae4bfb1d0243ac4b105ca7294a6ee')
-sha256sums_aarch64=('9323ab0a10b74bc927e00acee48ca5148b2d4bf377a57c41571e19588eb4d285')
-sha256sums_arm=('b3b59ec2c6e1f5162ca526ea1e74014b695552feb3e902d07fc0e431d729ed25')
-sha256sums_armv6h=('b3b59ec2c6e1f5162ca526ea1e74014b695552feb3e902d07fc0e431d729ed25')
-sha256sums_armv7h=('568db87c76a1a04de292dc8f2bf282e7a1172cfea4a58c684daca1bc1046580c')
+sha256sums_x86_64=('970477fdfee4d741e75f088faf648f9b51c7be04313fb88ffb5de07eb1a3040c')
+sha256sums_i686=('2854018a9319ff73d19212c497bb3c329dd53aae2fd28a1b5f94ede619c1d976')
+sha256sums_aarch64=('276a40873fe1c3ca24a21580c2fc64aa92ed358ffc6db6071a13d03a8d431fd9')
+sha256sums_arm=('87cd7e1790576a2cb2b3e5f5412f7dded553996487d49c991435e7544c10055b')
+sha256sums_armv6h=('87cd7e1790576a2cb2b3e5f5412f7dded553996487d49c991435e7544c10055b')
+sha256sums_armv7h=('78cf629619043535640a0a6de7a1c7b6f8d837768baee13e296655e3d830c3da')
 
 package() {
   install -Dm755 "${srcdir}/speedtest" "${pkgdir}/usr/bin/speedtest"
