@@ -1,0 +1,345 @@
+= Qprompt Changelog
+
+== qprompt-0.16.3 (2021-11-19)
+=== Changed
+  - Changed `Menu.main()` menu behavior to not return quit result as this can cause issues with nested menus.
+
+=== Removed
+  - Removed `returns=none` option to `show_menu()` as it may cause confusion if used with looping menus.
+
+== qprompt-0.16.2 (2021-11-19)
+=== Added
+  - Added `returns=none` option to `show_menu()`.
+
+== qprompt-0.16.1 (2021-02-18)
+=== Added
+  - Added `Menu.get()` method.
+
+== qprompt-0.16.0 (2020-04-21)
+=== Added
+  - When using `Menu.main()` can now pass in `-d` as an argument to run the default menu entry.
+
+=== Fixed
+  - Fixed exception thrown when using `Menu.main(loop=False)` and an invalid argument is supplied.
+
+== qprompt-0.15.6 (2020-02-13)
+=== Highlights
+  - Reverting to old package structure, there was an issue with the new structure.
+
+== qprompt-0.15.5 (2020-02-13)
+=== Highlights
+  - Attempting to restructure package to include tests.
+
+== qprompt-0.15.4 (2020-01-09)
+=== Highlights
+  - Added LICENSE to distribution.
+
+== qprompt-0.15.3 (2019-08-17)
+=== Fixed
+  - Attempt to fix Pylint errors related to using `default` and similar long keyword arguments.
+
+== qprompt-0.15.2 (2018-12-22)
+=== Fixed
+  - Minor correction to automatic menu entries descriptions from functions, e.g. `my_cool_thing` will now correctly show up as `My Cool Thing`.
+
+== qprompt-0.15.1 (2018-12-22)
+=== Fixed
+  - Fixed nested main menu auto behavior.
+
+== qprompt-0.15.0 (2018-12-22)
+=== Changed
+  - Can now pass functions directly to `Menu()`, e.g. `Menu(func1, func2, func3)`.
+
+== qprompt-0.14.2 (2018-12-21)
+=== Fixed
+  - Fixed incorrect placement of menu note.
+
+== qprompt-0.14.1 (2018-11-26)
+=== Fixed
+  - Fixed `pip install qprompt` issue related to missing `requirements.txt` file; thanks to BartlomiejBartnicki for reporting; fixed using https://caremad.io/posts/2013/07/setup-vs-requirement/[method described in this article].
+
+== qprompt-0.14.0 (2018-11-25)
+=== Added
+  - Added fzf menu search functionality; uses the excellent https://github.com/dahlia/iterfzf[iterfzf library by dahlia].
+
+== qprompt-0.13.1 (2018-11-09)
+=== Added
+  - Added `ECHORETURN` flag.
+
+== qprompt-0.13.0 (2018-11-09)
+=== Highlights
+  - Updated CHANGELOG format.
+
+=== Added
+  - Added `SILENT` flag.
+  - Added `info()`.
+
+=== Changed
+  - Print-like functions now return string that is printed which is useful for simple logging tasks, effects `echo()`, `alert()`, `info()`, `warn()`, `error()`, `hrule()`.
+  - Can now pass a function to `wrap()`.
+
+== qprompt-0.12.2 (2018-11-05)
+=== Highlights
+  - Minor bug fix.
+
+=== Fixed
+  - Fixed issue with `title()` only setting the first letter of the window title under Python3.
+
+== qprompt-0.12.1 (2018-08-22)
+=== Highlights
+  - Added convenience class.
+
+=== Changed
+  - Added `Wrap` context manager class.
+
+== qprompt-0.12.0 (2018-08-08)
+=== Highlights
+  - Updates to `Menu` auto run functionality.
+
+=== Changed
+  - When running automatically from `Menu.main()` the full menu is not shown and the auto input is shown.
+
+== qprompt-0.11.1 (2018-08-07)
+=== Highlights
+  - `Menu` bug fix.
+  - Minor `Menu` convenience update.
+
+=== Changed
+  - Can now initialize `Menu()` with any number of entries that can be passed to `Menu.add()`.
+
+=== Fixed
+  - Fixed `Menu.main(loop=True, returns="func")` infinite loop.
+
+== qprompt-0.11.0 (2018-07-28)
+=== Highlights
+  - Various `Menu` updates.
+
+=== Changed
+  - No longer throw a EOFError when passing in CLI arguments to `Menu.main()` that are not terminated with `quit`.
+  - Menus can now return function result using `returns=func`.
+  - When `Menu.main(loop=True, returns=func)`, the last non-quit result will be returned.
+
+== qprompt-0.10.0 (2018-06-15)
+=== Highlights
+  - Minor convenience update and bug fix.
+
+=== Changed
+  - Can now specify a optional default for `show_menu()`.
+
+=== Fixed
+  - Fixed incorrect `kwargs` behavior in `show_menu()`.
+
+== qprompt-0.9.8 (2018-04-06)
+=== Highlights
+  - Minor bug fix.
+
+=== Fixed
+  - Fixed incorrect behavior of `show_limit()`.
+
+== qprompt-0.9.7 (2018-02-14)
+=== Highlights
+  - Minor bug fix.
+
+=== Fixed
+  - Fixed error when passing `pause=True` to `fatal()`.
+
+== qprompt-0.9.6 (2017-12-03)
+=== Highlights
+  - Added new `fatal()` function.
+  - Minor updates for consistency of short/long keywords.
+
+== qprompt-0.9.5 (2017-09-19)
+=== Highlights
+  - Minor update to help messages.
+
+== qprompt-0.9.4 (2017-09-16)
+=== Highlights
+  - Various minor convenience updates and bug fixes.
+
+=== Changed
+  - For `ask` functions, can now use full keyword names like `message` instead of `msg`. Supported keywords are `message`, `default`, `valid`, `blank`, `show`, `help`.
+  - Functions/lambdas representation are no longer shown in `?` help message.
+  - Added ability to supply additional `help` message.
+
+=== Fixed
+  - Default values are no longer accumulated in help messages.
+  - Can now use blank string along with valid inputs.
+
+== qprompt-0.9.3 (2017-07-22)
+=== Highlights
+  - Bug fix and minor feature update.
+
+=== Changed
+  - Can now return any part of of a `MenuEntry` from `show_menu()`.
+
+=== Fixed
+  - Added missing return statement for `Menu.main`.
+
+== qprompt-0.9.2 (2017-06-02)
+=== Highlights
+  - No functional changes, just documentation and minor style updates.
+
+== qprompt-0.9.1 (2017-04-30)
+=== Highlights
+  - Minor convenience update.
+
+=== Changed
+  - Added optional `note` text to `Menu`.
+  - The `note` text will automatically be set when using `Menu.main` to show if menu will loop or not.
+
+== qprompt-0.9.0 (2017-03-11)
+=== Highlights
+  - New helper functions and classes.
+  - Minor logic updates.
+
+=== Changed
+  - Added `StdinSetup` and `StdinAuto` helper classes along with `stdin_setup` and `stdin_auto` globals.
+  - Added `main()` method to `Menu` to handle standard main logic.
+  - Added `clear()` and `setinput()` functions.
+  - The `blk` parameter for all `ask` functions will now automatically be set false if `vld` is supplied.
+  - Scripts can now automatically use `sys.argv` as input using either `Menu.main()` or `StdinAuto`.
+
+== qprompt-0.8.2 (2017-01-29)
+=== Highlights
+  - Python3 related bug fix.
+
+=== Fixed
+  - Fixed Python3 `TypeError` exception thrown when `dft` keyword argument was set in an `ask` function; thanks to Andreas Urke for discovering.
+
+== qprompt-0.8.1 (2017-01-21)
+=== Highlights
+  - Added convenience function.
+
+=== Changed
+  - Added `wrap()`.
+
+== qprompt-0.8.0 (2016-08-05)
+=== Highlights
+  - Minor functionality update.
+
+=== Changed
+  - Changed `enum_menu()` to return menu instead of show menu.
+
+== qprompt-0.7.0 (2016-07-16)
+=== Highlights
+  - Added convenience function.
+
+=== Changed
+  - Added `ask_captcha()` function.
+
+== qprompt-0.6.0 (2016-05-18)
+=== Highlights
+  - Various convenience and consistency updates.
+
+=== Changed
+  - Added `hrule()` function.
+  - Added `run()` method to `Menu`.
+  - Can now pass functions into `vld` parameter of `ask` functions.
+  - When using `status()` as function, must pass `func` args (`fargs`) as list and kwargs (`fkrgs`) as dictionary.
+
+== qprompt-0.5.0 (2016-05-01)
+=== Highlights
+  - Added API documentation.
+  - Added Travis CI support.
+  - Various minor convenience updates.
+
+=== Changed
+  - Added `enum()` method to `Menu`.
+  - Added `show_limit()` and `limit` parameter to `show_menu()`.
+  - Added `start` parameter to `enum_menu()`.
+
+== qprompt-0.4.1 (2016-04-14)
+=== Highlights
+  - Major bug fix.
+  - Minor convenience update.
+
+=== Changed
+  - Added ability to pass default `show_menu()` keyword arguments during `Menu()` initialization.
+
+=== Fixed
+  - Fixed issue with `Menu()` entries over multiple menus.
+
+== qprompt-0.4.0 (2016-03-29)
+=== Highlights
+  - Added convenience function.
+  - Changed argument order for `status()` when used as function.
+
+=== Changed
+  - Added `echo()`, essentially a portable replacement for `print()`.
+  - When used as function, first argument to `status()` is message and second is function.
+
+=== Fixed
+  - Fixed potential bug with Python 2.x and print statement.
+
+== qprompt-0.3.0 (2016-02-27)
+=== Highlights
+  - New convenience function for showing status of an action.
+
+=== Changed
+  - Added `status()`.
+  - Display functions (`alert()`, `warn()`, `error()`) now accept keyword args
+    associated with Python 3 `print()`
+
+== qprompt-0.2.0 (2016-02-21)
+=== Highlights
+  - Ported to Python 3; maintains Python 2.7 compatibility.
+
+=== Changed
+  - Added `warn()` and `error()`.
+
+== qprompt-0.1.11 (2015-12-10)
+=== Highlights
+  - Added convenience function.
+
+=== Changed
+  - Added `title()` function to allow naming the console window; only works on Windows.
+
+== qprompt-0.1.10 (2015-11-16)
+=== Highlights
+  - Minor bug fix.
+
+=== Fixed
+  - Fixed 0 as default value in `ask_int(dft=0)`.
+
+== qprompt-0.1.9 (2015-10-19)
+=== Highlights
+  - Minor changes for PyPI distribution.
+
+== qprompt-0.1.5 (2015-10-18)
+=== Highlights
+  - Renamed QCHAR and ICHAR to QSTR and ISTR.
+  - Added compact option to menus.
+  - Renamed menu `footer` to `msg`.
+
+== qprompt-0.1.4 (2015-08-02)
+=== Highlights
+  - Minor non-functional updates.
+
+=== Changed
+  - Added QCHAR and ICHAR to allow for minor customizations.
+
+== qprompt-0.1.3 (2015-07-26)
+=== Highlights
+  - Minor functional update.
+
+=== Changed
+  - Function `ask_yesno()` now accepts boolean defaults.
+
+== qprompt-0.1.2 (2015-07-18)
+=== Highlights
+  - Minor improvements to string prompt.
+  - New helper functions.
+
+=== Changed
+  - Function `ask_str()` optionally accepts blank input.
+  - Added `pause()` function.
+  - Added `alert()` function.
+
+== qprompt-0.1.1 (2015-07-14)
+=== Changed
+  - Function `ask_yesno()` no longer defaults to "no".
+  - Minor update to `ask()` valid input sanitization.
+
+== qprompt-0.1.0 (2015-07-12)
+=== Highlights
+  - First release.
