@@ -76,8 +76,8 @@ options=('!strip')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 
-source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
+source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
