@@ -1,23 +1,23 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-tabulator
-pkgver=2015
-pkgrel=9
+pkgver=2021
+pkgrel=1
 pkgdesc='A table formatter class with support for a variety of outputs.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-tabulator"
 depends=(python3)
 source=(
-  https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz
-  https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2015.tar.xz.sig
+  https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2021.tar.xz
+  https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2021.tar.xz.sig
 )
 sha512sums=(
-  6905872b85a4e5acaf0243d58995cd028e75c20ca0f0db2061c3c42c423be51b328f1bc9596e32e2eaa6942ad7d0f46fa787c6809aeca2b7466291a9b4f00669
-  359c4f6b930b46e749e3ce908e7ccd606da9717c8add61f4f6340dd34487c6a15e02bed728e040bf90bd4b3a72fe452d9b60b4d6970a23924e6929130dc68641
+  a9b42a4ca76ff91fad7429c5a51a6a86cc6186bdcc422a7208ec3ea20b693e9565aaa6b61c3d932b904be0db378d682bd99b72eb8262e2dee15b156ab73b6a75
+  c6b6a99ccee40cdffbf7fb45a7582dc54767dcd751833f15afb9dcad7180b64408d2c65933db2402b2644dab29c44fd4fb0fa11b56d6ab7f9cfb6371e40345ca
 )
 md5sums=(
-  6e8087b3bd41d45b26da0e29a953fd2a
-  0762ba4a266e5f7663ab8d4aea25600d
+  d201583c52303e8a0e999097b2fe8dce
+  c8531d84e47ff5b3b8580c701158e691
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
