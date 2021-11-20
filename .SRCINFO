@@ -1,7 +1,7 @@
 pkgbase = telegraf-bin
 	pkgdesc = An open source agent for collecting metrics and data on the system; Binary release
 	pkgver = 1.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/influxdata/telegraf
 	install = telegraf.install
 	arch = i686
