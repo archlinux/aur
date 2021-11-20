@@ -2,8 +2,8 @@
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 pkgname=devlauncher-git
-pkgver=0.6.13.r35.ga8458e36
-pkgrel=2
+pkgver=0.6.13.r82.gc2c56a2f
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/MultiMC/Launcher"
@@ -27,7 +27,7 @@ source=("git+https://github.com/MultiMC/Launcher"
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '3dec42c6398e446c36262c1314ec687f667087a14531d1e62530712c1161987ddf1cc6dc3009833e610de4cee5e2525fedd4c82f959df0987df6113b206328ac'
+            'fa3f92864af250a691a659159e6e750d9eac342763379e31626bbc2f5b4f51be42bda98bf8a018ece237228ee5a9fda5c41dcd2fce6307a1e8906ce4d7c29b20'
             '6ab7bfce06f7ed785186f5c27c91244df9d1d2e6dcd0d43720273e9673785c89dc7bd80ccd8650856614a0c3866fdd3763b0bba00c0bcf7212edaaada88a0440'
             '0005a23628afbecb40591e9ef0fd2fc63367ca1be71a874de6791fb19ae112b5907e19975b40b770122e9e34cc3297b14d2a9d72c42f3fbfac221e41cbc67890')
 
