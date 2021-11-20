@@ -1,7 +1,7 @@
 _gitname=xwinwrap
 pkgname="${_gitname}"-baitinq-git
 pkgdesc="Fork of XwinWrap with some added settings (-r)"
-pkgver=r6.401b5a5
+pkgver=0
 pkgrel=1
 arch=('x86_64')
 makedepends=('git')
@@ -10,12 +10,13 @@ provides=('xwinwrap')
 conflicts=('xwinwrap')
 license=(custom)
 url="https://github.com/Baitinq/xwinwrap"
-source=("git+${url}#branch=master")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}" || return 1
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '0.r%s.%s' \
+             "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

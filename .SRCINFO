@@ -11,7 +11,7 @@ pkgbase = xwinwrap-baitinq-git
 	depends = libxrender
 	provides = xwinwrap
 	conflicts = xwinwrap
-	source = git+https://github.com/Baitinq/xwinwrap#branch=master
+	source = git+https://github.com/Baitinq/xwinwrap.git
 	sha256sums = SKIP
 
 pkgname = xwinwrap-baitinq-git
