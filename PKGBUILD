@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ checkdepends=('python-pytest-remotedata'
               'python-crds')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('c64ede548c342166dbad3f1e38b5e178'
+md5sums=('c8d3650b41ace7340689d378750730b0'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 prepare() {
