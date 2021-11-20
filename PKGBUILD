@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=20.10.10
+pkgver=20.10.11
 
 # must use commit sha as currently not tagged with 20.10+ versions
 _packaging_version=1c1cb918d8cf84f321bab7cb9739c221fe4f3ed7
@@ -31,9 +31,9 @@ source=(
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/udev/80-docker.rules"
   "docker.sysusers"
 )
-sha256sums=('1719446f99cd56e87d0c67019996af4ea859f11891bfd89de2252d6c916ccaaa'
-            '683448bf77e625d198feaec3b28cec2d07e51f310e1172149bdd0558a97c21cf'
-            'e1cae55d914bcf8f082628155239a54a5bbe32d5b3ba66998b635e03c44e0e1d'
+sha256sums=('dd6ff72df1edfd61ae55feaa4aadb88634161f0aa06dbaaf291d1be594099ff3'
+            '595f3bcd61aaa01ece8f967e4f6c5cd1fe05c3de9736bf595b0a7c99ba7b9eaf'
+            '2ad2cbebdba0a2e0bac17cdb71a81e317686f31d3f17c6bc13292a9ce322b544'
             '52f38cd1508d2002525ba81f86adc9c34515e7c03c5e08f7e179d560cd1ad344'
             'caf98bf39fb8621fb955476567a38b8a6b35bab2dccd8a29a16da23d4bb99450'
             'ed2ebb93d4bb3a30b5ad214d2ea5d467e714928d4fbf077e2a77dce758c0fa60'
