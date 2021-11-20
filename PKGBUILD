@@ -1,12 +1,13 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgname=xcursor-simp1e
+pkgbase=xcursor-simp1e
+pkgname=(xcursor-simp1e{,-breeze{,-snow},-dark,-solarized})
 pkgdesc='An aesthetic cursor theme'
-pkgver=0.0.20210719
-pkgrel=2
+pkgver=0.0.20211003
+pkgrel=1
 url=https://gitlab.com/zoli111/simp1e/
-_commit=995f50da41786263c89f10ddb72416a61462c973
+_commit=6a9e969b0239a58fc96af787c4986c273eb6d0eb
 arch=(any)
-makedepends=(git inkscape python-pillow xorg-xcursorgen)
+makedepends=(git librsvg python-pillow xorg-xcursorgen)
 depends=()
 license=(GPL3)
 source=("${pkgname}::git+${url}#commit=${_commit}"
@@ -25,7 +26,23 @@ build () {
 	./build.sh
 }
 
-package () {
+_package () {
 	install -dm755 "${pkgdir}/usr/share/icons"
-	cp -a "${pkgbase}/built_themes/Simp1e" "${pkgdir}/usr/share/icons"
+	cp -a "${pkgbase}/built_themes/$1" "${pkgdir}/usr/share/icons"
+}
+
+package_xcursor-simp1e () {
+	_package Simp1e
+}
+package_xcursor-simp1e-dark () {
+	_package Simp1e-dark
+}
+package_xcursor-simp1e-breeze () {
+	_package Simp1e-breeze
+}
+package_xcursor-simp1e-breeze-snow () {
+	_package Simp1e-breeze-snow
+}
+package_xcursor-simp1e-solarized () {
+	_package Simp1e-solarized
 }

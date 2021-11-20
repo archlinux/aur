@@ -1,17 +1,25 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
-	pkgver = 0.0.20210719
-	pkgrel = 2
+	pkgver = 0.0.20211003
+	pkgrel = 1
 	url = https://gitlab.com/zoli111/simp1e/
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = inkscape
+	makedepends = librsvg
 	makedepends = python-pillow
 	makedepends = xorg-xcursorgen
-	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/#commit=995f50da41786263c89f10ddb72416a61462c973
+	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/#commit=6a9e969b0239a58fc96af787c4986c273eb6d0eb
 	source = builder_script::git+https://github.com/mxre/cursor
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = xcursor-simp1e
+
+pkgname = xcursor-simp1e-breeze
+
+pkgname = xcursor-simp1e-breeze-snow
+
+pkgname = xcursor-simp1e-dark
+
+pkgname = xcursor-simp1e-solarized
