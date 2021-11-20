@@ -1,0 +1,22 @@
+pkgbase = qt5-wayland-nvidia-gbm-fix
+	pkgdesc = Provides APIs for Wayland (including the Qt fix for Nvidia GBM support)
+	pkgver = 5.15.2+kde+r36
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = vulkan-headers
+	makedepends = git
+	depends = qt5-declarative
+	depends = libxcomposite
+	provides = qt5-wayland
+	conflicts = qt5-wayland
+	source = git+https://invent.kde.org/adrienfaveraux/qtwayland#commit=0c8eccb28758707ce681fde8878eacb61ca01d78
+	sha256sums = SKIP
+
+pkgname = qt5-wayland-nvidia-gbm-fix
