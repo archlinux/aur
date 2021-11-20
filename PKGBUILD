@@ -9,11 +9,12 @@ url="https://github.com/gabime/${_pkgname}/"
 license=('MIT')
 depends=('mingw-w64-fmt')
 makedepends=('mingw-w64-cmake')
+checkdepends=('mingw-w64-wine')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=(
-	"$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
 	'6fff9215f5cb81760be4cc16d033526d1080427d236e86d70bb02994f85e3d38'
@@ -33,11 +34,11 @@ prepare() {
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_TESTING=OFF -DSPDLOG_BUILD_TESTS=OFF \
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=OFF \
 			-DSPDLOG_BUILD_TESTS_HO=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_TESTS_HO=OFF
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_TESTS_HO=OFF
 		cmake --build "build-${_arch}"
 	done
 }
@@ -45,7 +46,7 @@ build() {
 check() {
 	for _arch in ${_architectures}; do
 		# Only compile-time tests enabled.
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_TESTS_HO=ON
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_TESTS_HO=ON
 		cmake --build "build-${_arch}"
 		cp "build-${_arch}/libspdlog.dll" "build-${_arch}/tests/"
 		cmake --build "build-${_arch}" --target test
