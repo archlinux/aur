@@ -1,9 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Isabella Basso do Amaral <isabbasso at riseup dot net>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgbase=imagemagick-fftw
 pkgname=(imagemagick-fftw)
-pkgver=7.1.0.2
+pkgver=7.1.0.14
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 url='https://www.imagemagick.org/'
@@ -16,8 +16,8 @@ _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://imagemagick.org/download/$_tarname.tar.xz{,.asc}
         arch-fonts.diff)
-sha256sums=('039006f616bb326598e7b910932694e2a3ca925586560e1b8d153a7048f52980'
-            'SKIP'
+sha256sums=('3e59228f791188883fa056544a811979aa4d9df3b51cb135914e28bb56124c10'
+            '3befdc9ad6d661a6b198673ac0907d18b5f460de56ddcd15e77de910cbedc41e'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
 
