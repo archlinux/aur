@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
@@ -24,6 +24,8 @@ package() {
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  python -O -m compileall "${pkgdir}${site_packages}/"
 
   install -d "$pkgdir/usr/share/pixmaps/"
   ln -s "$site_packages/$pkgname/resources/$pkgname-256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
