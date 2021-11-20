@@ -1,23 +1,23 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-gpg_batch_sign
-pkgver=2021.11.12
-pkgrel=2
+pkgver=2021.11.20
+pkgrel=1
 pkgdesc='A module and stand-alone script for batch-signing files with GPG.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-gpg_batch_sign"
 depends=(python3)
 source=(
-  https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2021.11.12.tar.xz
-  https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2021.11.12.tar.xz.sig
+  https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2021.11.20.tar.xz
+  https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2021.11.20.tar.xz.sig
 )
 sha512sums=(
-  2c5c56c28c0be18e29916c5ac4045ae3d0e08f5f4e6a2b0d335d04db3f174cac48897a4934aabad72caafac60c90a566740610ddfeff91e9d00f9473517b22f0
-  9b14c86f4d3a9f36f581b88cff1f32007e2272adaf746042ccca93de98b58970adf5781099c2f8083ada1506afebc1b35e5e57cf9a0f18f5e1f89ca1e7e35af4
+  336133cd07c332cb3cb3c0f6fae63b1905455ea27c5c2d892b54ca2068f10769b889879e34e1db6473940590040ac5984ce41d5b77b38a1707d470a37780bdfd
+  a5d65233b762b20f4e231b7ec7331be0ed8702560ed01760b7f340336a249eefd5ec0265fc2dbfe9701bbb7a9cc5a43484c2abd7289d622c45f435538c9da526
 )
 md5sums=(
-  a9dc1666048ad1dfc94dcba9ddb6cdf1
-  3f7724c2a08248f8021042851bcac5dd
+  3e6972122f14ef911e0e5203a4f0bef6
+  487f41c47c5de1be64f4a34e4ef308d4
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
