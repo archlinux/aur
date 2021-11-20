@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder-git
-pkgver=0.2.1.r5.g46f340e
+pkgver=0.2.1.r42.gae8c81c
 pkgrel=1
 pkgdesc='Scan and Generate QR Codes'
 url='https://gitlab.gnome.org/World/decoder'
@@ -14,6 +14,7 @@ depends=(
 )
 makedepends=(
 	cargo
+	clang
 	git
 	meson
 )
