@@ -5,7 +5,7 @@
 
 pkgname=mutter-dynamic-buffering
 pkgver=41.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -22,8 +22,11 @@ conflicts=(mutter)
 groups=(gnome)
 _commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+        'backports.patch'
         'mr1441.patch')
+
 sha256sums=('SKIP'
+            '650e2d88bad9226be7cde62974b3a39a99d63156d0fe61df6bc54887481a1b51'
             '592c03f4a492d39d760b174e487b3b2a58e9caef9b9ef886f5aa09abb94b69d3')
 
 pkgver() {
@@ -34,6 +37,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch -p1 < "$srcdir/mr1441.patch"
+  patch -p1 < "$srcdir/backports.patch"
 }
 
 build() {
