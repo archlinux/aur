@@ -1,7 +1,7 @@
 pkgbase = keeprofi
 	pkgdesc = Fast rofi drun menu for keepass database
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://gitlab.com/hxss-linux/keeprofi
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = keeprofi
 	depends = python-pynput
 	depends = python-pykeepass
 	depends = python-keyring
+	depends = python-hxss-responsibility
 	depends = rofi
 	depends = xclip
 	depends = desktop-notify
