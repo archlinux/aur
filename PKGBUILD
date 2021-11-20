@@ -3,7 +3,7 @@
 _pkgname=libraw
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.20.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)'
 url='https://www.libraw.org/'
 license=('LGPL')
@@ -49,9 +49,13 @@ package() {
 	for _arch in ${_architectures}; do
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		rm -rf "$pkgdir"/usr/${_arch}/static/share
+		install -dm755 "$pkgdir/usr/${_arch}/static/lib/cmake/libraw"
+		mv -f "$pkgdir/usr/${_arch}/static/lib/cmake"/*.cmake "$pkgdir/usr/${_arch}/static/lib/cmake/libraw"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
 		
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
+		install -dm755 "$pkgdir/usr/${_arch}/lib/cmake/libraw"
+		mv -f "$pkgdir/usr/${_arch}/lib/cmake"/*.cmake "$pkgdir/usr/${_arch}/lib/cmake/libraw"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 	done
