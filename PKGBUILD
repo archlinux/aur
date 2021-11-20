@@ -1,32 +1,25 @@
-# Maintainer: robiot
+# Maintainer: robiot <me@robiot.dev>
 
 pkgname=rustcat
 _binname=rcat
-pkgver=v2.0.0.r0.g7a7e074
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A Modern Port Listener & Reverse Shell.'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url='https://github.com/robiot/rustcat'
 license=('MIT')
 makedepends=('cargo' 'git')
 sha512sums=('SKIP')
-source=("git+https://github.com/robiot/$pkgname.git")
-
-pkgver() {
-  cd $pkgname
-
-  echo $(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-}
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
 
   cargo build --release
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
 
   install -Dm 755 "target/release/$_binname" "$pkgdir/usr/bin/$_binname"
 }
-
