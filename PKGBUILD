@@ -1,23 +1,23 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=obfilebrowser
-pkgver=2017
-pkgrel=8
+pkgver=2021
+pkgrel=1
 pkgdesc='An Openbox pipe menu application and file browser.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/obfilebrowser"
 depends=(mimeo python-pyxdg python3)
 source=(
-  https://xyne.dev/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz
-  https://xyne.dev/projects/obfilebrowser/src/obfilebrowser-2017.tar.xz.sig
+  https://xyne.dev/projects/obfilebrowser/src/obfilebrowser-2021.tar.xz
+  https://xyne.dev/projects/obfilebrowser/src/obfilebrowser-2021.tar.xz.sig
 )
 sha512sums=(
-  2f08798791849e2cc2fb4866649fac6a0429775ba7eeec7120ea18b6f6107a86a4cb5591729906198e02fd66234e1f732bb957f9772d231b44dd5fc9d0477479
-  aa16d960090f333857f54db992c438b9dd7b3d674a9eeb14e461fce9d298cec798ad91c5dcc46e507aa5b5a4403e2fddc6be9e9872db662037c249d4a7951855
+  329b11a5c39eda834b4e4577ab5dfcc7a5a7c255d3f2ccce1ea3e8c280d8b507082b0496061d449e483ee113097a38bd8159383f7c58ab38966a85357bd28910
+  ed8bf81f55c82f6c3f7eea7afc66ae77da4eb1651eb5bae5a77f0e6fb2705e7451b20e819275165a2acd02682dc7a7f0b111c44b3c3823264868ac8a455a20d5
 )
 md5sums=(
-  0e2a4b71ace5f7a03563d7566cfc7d75
-  16c33d0c4990029652bbe0760f1d4c16
+  86f955d0df1859ccf0a50eb0e9f56369
+  0dd1c673728cfaaf8b09587702f0f037
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
