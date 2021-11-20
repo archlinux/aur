@@ -41,27 +41,30 @@ sha256sums_armv6h=('8e85204a7648a11b8d993aee277ecd43ab0fd6cb4541b7d16dfbb332b2b2
 sha256sums_armv7h=(${sha256sums_armv6h})
 
 package() {
-  mkdir -p ${pkgdir}/opt/ums
-  mkdir ${pkgdir}/opt/ums/database
-  mkdir -p ${pkgdir}/usr/bin
-  chmod -R 755 ${srcdir}/ums-$pkgver/plugins ${srcdir}/ums-$pkgver/documentation
-  cp -r ${srcdir}/ums-$pkgver/* ${pkgdir}/opt/ums/
-  touch ${pkgdir}/opt/ums/UMS.conf
-  touch ${pkgdir}/opt/ums/debug.log
-  chgrp users ${pkgdir}/opt/ums/UMS.conf \
-              ${pkgdir}/opt/ums/WEB.conf \
-              ${pkgdir}/opt/ums/debug.log \
-              ${pkgdir}/opt/ums/database
+  mkdir -p "${pkgdir}/opt/ums"
+  mkdir "${pkgdir}/opt/ums/database"
+  mkdir -p "${pkgdir}/usr/bin"
+  chmod -R 755 "${srcdir}/ums-$pkgver/plugins" "${srcdir}/ums-$pkgver/documentation"
+  cp -r "${srcdir}/ums-$pkgver"/* "${pkgdir}/opt/ums/"
+  touch "${pkgdir}/opt/ums/UMS.conf"
+  touch "${pkgdir}/opt/ums/debug.log"
+  chgrp users "${pkgdir}/opt/ums/UMS.conf" \
+              "${pkgdir}/opt/ums/WEB.conf" \
+              "${pkgdir}/opt/ums/debug.log" \
+              "${pkgdir}/opt/ums/database"
 
-  chmod g+w ${pkgdir}/opt/ums/UMS.conf \
-            ${pkgdir}/opt/ums/WEB.conf \
-            ${pkgdir}/opt/ums/debug.log \
-            ${pkgdir}/opt/ums/database 
+  chmod g+w "${pkgdir}/opt/ums/UMS.conf" \
+            "${pkgdir}/opt/ums/WEB.conf" \
+            "${pkgdir}/opt/ums/debug.log" \
+            "${pkgdir}/opt/ums/database"
 
-  unzip -q -u ${srcdir}/ums-$pkgver/ums.jar -d ums_jar
-  install -d -m 755 ${pkgdir}/usr/share/pixmaps
-  install -D -m 644 ${srcdir}/ums_jar/resources/images/logo.png ${pkgdir}/usr/share/pixmaps/ums.png
-  install -D -m 644 ${srcdir}/ums.desktop ${pkgdir}/usr/share/applications/ums.desktop
-  install -D -m 644 ${srcdir}/ums.service ${pkgdir}/usr/lib/systemd/system/ums@.service
-  install -D -m 644 ${srcdir}/ums.timer ${pkgdir}/usr/lib/systemd/system/ums@.timer
+  unzip -q -u "${srcdir}/ums-$pkgver/ums.jar" -d ums_jar
+  install -d -m 755 "${pkgdir}/usr/share/pixmaps"
+  install -D -m 644 "${srcdir}/ums_jar/resources/images/logo.png" "${pkgdir}/usr/share/pixmaps/ums.png"
+  install -D -m 644 "${srcdir}/ums.desktop" "${pkgdir}/usr/share/applications/ums.desktop"
+  install -D -m 644 "${srcdir}/ums.service" "${pkgdir}/usr/lib/systemd/system/ums@.service"
+  install -D -m 644 "${srcdir}/ums.timer" "${pkgdir}/usr/lib/systemd/system/ums@.timer"
+
+  install -d -m 755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/UMS.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
