@@ -1,25 +1,18 @@
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Benjamin Sick
 pkgname=gmt-coast
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The full resolution coastline dataset for the Generic Mapping Tools."
 arch=('any')
-url="http://gmt.soest.hawaii.edu/"
+url="https://www.generic-mapping-tools.org/"
 license=('LGPL')
-depends=()
-makedepends=()
-provides=()
-source=(ftp://ftp.soest.hawaii.edu/gshhg/gshhg-gmt-${pkgver}.tar.gz)
-md5sums=('8ee2653f9daf84d49fefbf990bbfa1e7')
-
-build() {
-  echo "Nothing to build."
-}
+source=("https://github.com/GenericMappingTools/gshhg-gmt/releases/download/${pkgver}/gshhg-gmt-${pkgver}.tar.gz")
+sha256sums=('9bb1a956fca0718c083bef842e625797535a00ce81f175df08b042c2a92cfe7f')
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/gmt/coast
-  install -m 644 $startdir/src/gshhg-gmt-${pkgver}/binned* \
-    ${pkgdir}/usr/share/gmt/coast
+	mkdir -p ${pkgdir}/usr/share/gmt/coast
+	install -m 644 gshhg-gmt-${pkgver}/*.nc \
+		${pkgdir}/usr/share/gmt/coast/
 }
-
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4:
