@@ -1,23 +1,23 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-xynexdg
-pkgver=2012.12.24.1
-pkgrel=12
+pkgver=2021
+pkgrel=1
 pkgdesc='Implementation of various freedesktop.org standards, for internal use in Xyne'"'"'s modules.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-xynexdg"
 depends=(python3)
 source=(
-  https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz
-  https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2012.12.24.1.tar.xz.sig
+  https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2021.tar.xz
+  https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2021.tar.xz.sig
 )
 sha512sums=(
-  6653de168af4252d1be8e67b6daaa1c0ba91bb6de080f106392d298bfa702e72aa3d78b68bd833a0f6d825d8b21f9df009a00102289d5a0cccc996857c36509c
-  7e8cc7a8441d2e1102ff29569b7227153dd9d1c20d40b34eb15e0c200e2163b61d0d9ea7c4e8931376a31e4d114ba01627c377fe15fb57e0010cd2ab1451cc6a
+  68362460ef36164b3e17d294269ecea51ff5a477a1e4f0d6c8eaca29a1bacdb5d2ee733ca0a68c0159774c4354eb968bbcc3a1b2be62b4b7eafd60c09802de67
+  3410d3db7522f9a5d465ee399c635f1fe02348d0249b957b703ccac9e057b15f04f21c0f2d575ab891f40d41a1fdc5529e7713e4aa0cdac512a04ccf878dd189
 )
 md5sums=(
-  a6ddefdec93966a105ad4f02440ca32f
-  d42588a485c7853efdf2305966883f98
+  10784cb444bcf29db1a29e386eb67ef0
+  b7d1c655aa82759529e8540c375a7d12
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
