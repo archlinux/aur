@@ -10,7 +10,7 @@ pkgbase = mingw-w64-gtest
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = mingw-w64-gtest-1.11.0.tar.gz::https://github.com/google/googletest/archive/release-1.11.0.tar.gz
+	source = gtest-1.11.0.tar.gz::https://github.com/google/googletest/archive/release-1.11.0.tar.gz
 	sha512sums = 6fcc7827e4c4d95e3ae643dd65e6c4fc0e3d04e1778b84f6e06e390410fe3d18026c131d828d949d2f20dde6327d30ecee24dcd3ef919e21c91e010d149f3a28
 
 pkgname = mingw-w64-gtest

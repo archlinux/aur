@@ -5,7 +5,8 @@
 # Contributor: Louis R. Marascio <lrm@fitnr.com>
 # Contributor: Cody Maloney <cmaloney@theoreticalchaos.com>
 
-pkgname=mingw-w64-gtest
+_pkgname=gtest
+pkgname=mingw-w64-${_pkgname}
 pkgver=1.11.0
 pkgrel=1
 pkgdesc='Google Test - C++ testing utility based on the xUnit framework (like JUnit) (mingw-w64)'
@@ -15,7 +16,7 @@ license=('custom:BSD3')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=(!buildflags staticlibs !strip)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz")
 sha512sums=('6fcc7827e4c4d95e3ae643dd65e6c4fc0e3d04e1778b84f6e06e390410fe3d18026c131d828d949d2f20dde6327d30ecee24dcd3ef919e21c91e010d149f3a28')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
