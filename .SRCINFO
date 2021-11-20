@@ -1,0 +1,21 @@
+pkgbase = hyperlap2d-bin
+	pkgdesc = A powerful, platform-independent, visual editor for complex 2D worlds and scenes.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://hyperlap2d.rednblack.games/
+	arch = x86_64
+	license = GPL3
+	makedepends = binutils
+	makedepends = tar
+	depends = libxtst
+	depends = libxrender
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = libnet
+	depends = java-runtime
+	provides = hyperlap2d
+	conflicts = hyperlap2d-git
+	source = hyperlap2d-bin-0.0.7.deb::https://github.com/rednblackgames/HyperLap2D/releases/download/v0.0.7/hyperlap2d_0.0.7-1_amd64.deb
+	sha512sums = ce411bdb42beafcf9cc597403c438bb451513eb29b366036d4212addc4201ee54ad001f173e0838737c4fb0e4e6692336e4fc8914c500c88e05a86303848610e
+
+pkgname = hyperlap2d-bin
