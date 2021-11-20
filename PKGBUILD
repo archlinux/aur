@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-nist
-pkgver=2013.10
-pkgrel=10
+pkgver=2021
+pkgrel=1
 pkgdesc='Modules for accessing and working with data from the National Institute of Standards and Technology (NIST).'
 arch=(any)
 license=(GPL)
@@ -9,16 +9,16 @@ url="https://xyne.dev/projects/python3-nist"
 depends=(python-pyxdg python3 python3-scinum)
 optdepends=('python3-tabulator: support for command-line query scripts')
 source=(
-  https://xyne.dev/projects/python3-nist/src/python3-nist-2013.10.tar.xz
-  https://xyne.dev/projects/python3-nist/src/python3-nist-2013.10.tar.xz.sig
+  https://xyne.dev/projects/python3-nist/src/python3-nist-2021.tar.xz
+  https://xyne.dev/projects/python3-nist/src/python3-nist-2021.tar.xz.sig
 )
 sha512sums=(
-  8de4d744ae5643882f654509d9db525957e2a9d332d2b46895b0b1a13a61a7cc63060782dd5c903c94af4a2a52c16cb05d5b94d5a7f93f45fba82d1c9edaa015
-  9dd0477190a4e687599b5d381a366c4f79fd0664f4379976602d4fa7a9e887fdd913fcb92b8f6c677cd9d11d639a1a92a249837f80a36ec57fe1a75bc061f25e
+  fc242f538979e50ed41e03b440eb9016cf8ad80aa0efde190593a838ad97b44b9d5fd0c333418b221c9b63a5a6dcf9c3c4d69f43f7c04707014500d49220e2b9
+  9c0a153557cad454945385803269c68439f6345fa855dc1175ba615e0dd6ac63bff3f2a17821d56208698e5c3360957f6fbf854bf43dc0a2312c147ce14960c3
 )
 md5sums=(
-  819894d46ba3cdcbc07315771d1454a4
-  94dad0587262b45efec2b170fe1bc920
+  df0937f9e05241eb86b629f89d4be920
+  79ab9a544792882c13f832c1d268b9d6
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
