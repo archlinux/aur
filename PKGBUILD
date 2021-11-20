@@ -1,7 +1,7 @@
 # Maintainer: Firegem <mrfiregem [at] protonail [dot] ch>
 pkgname=cbqn-git
 pkgver=r686.2baa9ac
-pkgrel=2
+pkgrel=3
 pkgdesc="A BQN implementation in C."
 arch=('x86_64')
 url="https://github.com/dzaima/CBQN"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc')
 optdepends=('rlwrap: Better REPL'
             'ttf-bqn386: BQN and APL compatible font')
-makedepends=('git' 'make' 'clang')
+makedepends=('git' 'clang')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git"
