@@ -1,5 +1,5 @@
-pkgbase = linux-tt
-	pkgdesc = Linux TT scheduler Kernel by CachyOS and with some other patches and other improvements
+pkgbase = linux-cacule-rdb
+	pkgdesc = Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements
 	pkgver = 5.15.3
 	pkgrel = 4
 	url = https://github.com/CachyOS/linux-cachyos
@@ -20,9 +20,8 @@ pkgbase = linux-tt
 	makedepends = xz
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.3.tar.xz
+	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE/v5.15/cacule-5.15-full.patch
 	source = config
-	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15/TT/0001-tt-r2.patch
-	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15/0001-prjc.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15/arch-patches-v2/0001-arch-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15/AMD/0001-amd64-patches.patch
@@ -50,9 +49,8 @@ pkgbase = linux-tt
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15/0001-xfs-backport.patch
 	source = auto-cpu-optimization.sh
 	sha512sums = 3724428553dbba44064e044f960c1dd002427eca79ddc4dd5feb829cdc76394d3bdc99bcf8d67a89cd406dcc6c5f613cc629797bebbf281fdd3ef00aa0724839
+	sha512sums = 4240fc839755694536d6010c30442b465ba88310292da8f682d03d5b34225681d2aabd6f5816c892a019d2088a1654d11a5df7fb5eea1afd86e23c68164bbb2e
 	sha512sums = c6cd33a7fa0a0d7a7f9919e897f55871b2809ec628671bb3528e30b7aedc6127c69dca949d7b5334ec88a495d625f89f3bc67bc03fd9798c9a7bca324e4fce65
-	sha512sums = e007330831c66469092a6408d5d93af4f8b3f0af0476d4fef48b0eb543e5fa956dcab3497ac0785dab8a3e6d6b30a631cdd7f40252dfa9ef3610816885c04dfe
-	sha512sums = e7348aaf11b96273e3ab2fbc0336e10c5ca2fef21ddf1186c58ef15324acc70f7e7c491a0c76c63668427e9a495098b5735fae29ccd93783ed6694d8e17564cd
 	sha512sums = 3f6655f89088638280658cebcb695152d920100257aae8daa8d82f3f22ff054e6274cdb4350862a6ba41c85e65306c3b9ecb5f39b385a08826ba15142891b3be
 	sha512sums = d75dd4a086f947f63786147d5965fee87b65096b7669b90a4cf719e31df1e8f6b67d42d40f3453b1e1da59e4bc27f32aa76a92b997423118d4efd07b34f30853
 	sha512sums = d800ad18b40f71a8509acca4d74d8ea9b4d24558665e40a558345403cbcb8a29096baf686158e55baf3d0a4a41a605033c09b162d00a810aa50d8d50785e4bc1
@@ -80,8 +78,8 @@ pkgbase = linux-tt
 	sha512sums = 5cbeec49c835796993808f79f60fda571254d98f5e65eadc040f96e9a9eff7f6989679993187eb49708e392cd063f79327894198fff6847a50983263c1a4ca7f
 	sha512sums = a54c01ba42e7d5f9433dacaa21f656d8aefdb6a5228fbca2b8e55b26eb02b35327ae3fd98a26a708452b8559e7f4acb32b6e685e26edc64497d1b7d10c5d86e1
 
-pkgname = linux-tt
-	pkgdesc = The Linux TT scheduler Kernel by CachyOS and with some other patches and other improvements kernel and modules
+pkgname = linux-cacule-rdb
+	pkgdesc = The Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -91,7 +89,7 @@ pkgname = linux-tt
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux-tt-headers
-	pkgdesc = Headers and scripts for building modules for the Linux TT scheduler Kernel by CachyOS and with some other patches and other improvements
-	depends = linux-tt=5.15.3
+pkgname = linux-cacule-rdb-headers
+	pkgdesc = Headers and scripts for building modules for the Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements
+	depends = linux-cacule-rdb=5.15.3
 	depends = pahole

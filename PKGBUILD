@@ -4,6 +4,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
+# Selecting CacULE or CacULE-RDB scheduler, default:cacule
+#_cpusched='cacule'
+_cpusched='rdb'
+
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
@@ -53,8 +57,8 @@ _winesync=y
 
 ### Running with a 2000 HZ, 1000HZ, 750Hz or  500HZ tick rate
 _2k_HZ_ticks=
-_1k_HZ_ticks=y
-_750_HZ_ticks=
+_1k_HZ_ticks=
+_750_HZ_ticks=y
 _600_HZ_ticks=
 _500_HZ_ticks=
 
@@ -119,17 +123,21 @@ _use_cfi=
 #_use_pgo=
 
 
-if [ -n "$_use_llvm_lto" ]; then
-  pkgbase=linux-tt-lto
-else
-  pkgbase=linux-tt
+if [ "$_cpusched" = "cacule" ]  && [ -n "$_use_llvm_lto" ]; then
+  pkgbase=linux-cacule-lto
+elif  [ "$_cpusched" = "rdb" ] && [ -n "$_use_llvm_lto" ]; then
+  pkgbase=linux-cacule-rdb-lto
+elif [ "$_cpusched" = "cacule" ]; then
+  pkgbase=linux-cacule
+elif [ "$_cpusched" = "rdb" ]; then
+  pkgbase=linux-cacule-rdb
 fi
 _major=5.15
 _minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux TT scheduler Kernel by CachyOS and with some other patches and other improvements'
+pkgdesc='Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements'
 _srcname=linux-${pkgver}
 pkgrel=4
 arch=('x86_64' 'x86_64_v3')
@@ -141,11 +149,11 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 if [ -n "$_use_llvm_lto" ]; then
   makedepends+=(clang llvm lld python)
 fi
+_caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+  "${_caculepatches}/v5.15/cacule-5.15-full.patch"
   "config"
-  "${_patchsource}/TT/0001-tt-r2.patch"
-  "${_patchsource}/0001-prjc.patch"
   "${_patchsource}/arch-patches-v2/0001-arch-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/AMD/0001-amd64-patches.patch"
@@ -337,7 +345,15 @@ prepare() {
   if [ -n "$_mm_protect" ]; then
     scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 524288
   fi
-
+  ### Enable DAMON
+  if [ -n "$_damon" ]; then
+    echo "Enabling DAMON..."
+    scripts/config --enable CONFIG_DAMON
+    scripts/config --enable CONFIG_DAMON_VADDR
+    scripts/config --enable CONFIG_DAMON_DBGFS
+    scripts/config --enable CONFIG_DAMON_PADDR
+    scripts/config --enable CONFIG_DAMON_RECLAIM
+  fi
   ### Enable multigenerational LRU
   if [ -n "$_lru_enable" ]; then
     echo "Enabling multigenerational LRU..."
@@ -347,16 +363,6 @@ prepare() {
     scripts/config --set-val CONFIG_TIERS_PER_GEN 4
     scripts/config --enable CONFIG_LRU_GEN_ENABLED
     scripts/config --disable CONFIG_LRU_GEN_STATS
-  fi
-
-  ### Enable DAMON
-  if [ -n "$_damon" ]; then
-    echo "Enabling DAMON..."
-    scripts/config --enable CONFIG_DAMON
-    scripts/config --enable CONFIG_DAMON_VADDR
-    scripts/config --enable CONFIG_DAMON_DBGFS
-    scripts/config --enable CONFIG_DAMON_PADDR
-    scripts/config --enable CONFIG_DAMON_RECLAIM
   fi
 
   ### Enable Linux Random Number Generator
@@ -450,6 +456,19 @@ prepare() {
     exit
   fi
 
+  if [ "$_cpusched" = "cacule" ]; then
+    echo "Selecting CacULE scheduler..."
+    scripts/config --enable CONFIG_CACULE_SCHED
+    scripts/config --disable CONFIG_CACULE_RDB
+  fi
+
+  if [ "$_cpusched" = "rdb" ]; then
+    echo "Enabling CacULE-RDB scheduler..."
+    scripts/config --enable CONFIG_CACULE_SCHED
+    scripts/config --enable CONFIG_CACULE_RDB
+    scripts/config --set-val CONFIG_RDB_INTERVAL 19
+  fi
+
   echo "Disabling TCP_CONG_CUBIC..."
   scripts/config --module CONFIG_TCP_CONG_CUBIC
   scripts/config --disable CONFIG_DEFAULT_CUBIC
@@ -457,9 +476,9 @@ prepare() {
   scripts/config --enable CONFIG_TCP_CONG_BBR2
   scripts/config --enable CONFIG_DEFAULT_BBR2
   scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
-  echo "Enable TT CPU scheduler..."
-  scripts/config --enable CONFIG_TT_SCHED
-  scripts/config --enable CONFIG_TT_ACCOUNTING_STATS
+  echo "Enabling FULLCONENAT..."
+  scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
+  scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
   echo "Setting performance governor..."
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
@@ -475,6 +494,12 @@ prepare() {
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
   scripts/config --enable CONFIG_ANDROID_BINDERFS
   scripts/config --enable CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
+  echo "Enable NTFS"
+  scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
+  scripts/config --enable CONFIG_NTFS3_FS
+  scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
+  scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
+  scripts/config --enable CONFIG_NLS_DEFAULT
 
 
   ### Optionally load needed modules for the make localmodconfig
@@ -631,9 +656,8 @@ _package-headers() {
 }
 
 sha512sums=('3724428553dbba44064e044f960c1dd002427eca79ddc4dd5feb829cdc76394d3bdc99bcf8d67a89cd406dcc6c5f613cc629797bebbf281fdd3ef00aa0724839'
+            '4240fc839755694536d6010c30442b465ba88310292da8f682d03d5b34225681d2aabd6f5816c892a019d2088a1654d11a5df7fb5eea1afd86e23c68164bbb2e'
             'c6cd33a7fa0a0d7a7f9919e897f55871b2809ec628671bb3528e30b7aedc6127c69dca949d7b5334ec88a495d625f89f3bc67bc03fd9798c9a7bca324e4fce65'
-            'e007330831c66469092a6408d5d93af4f8b3f0af0476d4fef48b0eb543e5fa956dcab3497ac0785dab8a3e6d6b30a631cdd7f40252dfa9ef3610816885c04dfe'
-            'e7348aaf11b96273e3ab2fbc0336e10c5ca2fef21ddf1186c58ef15324acc70f7e7c491a0c76c63668427e9a495098b5735fae29ccd93783ed6694d8e17564cd'
             '3f6655f89088638280658cebcb695152d920100257aae8daa8d82f3f22ff054e6274cdb4350862a6ba41c85e65306c3b9ecb5f39b385a08826ba15142891b3be'
             'd75dd4a086f947f63786147d5965fee87b65096b7669b90a4cf719e31df1e8f6b67d42d40f3453b1e1da59e4bc27f32aa76a92b997423118d4efd07b34f30853'
             'd800ad18b40f71a8509acca4d74d8ea9b4d24558665e40a558345403cbcb8a29096baf686158e55baf3d0a4a41a605033c09b162d00a810aa50d8d50785e4bc1'
