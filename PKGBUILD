@@ -2,7 +2,7 @@
 
 pkgname=wind-bin
 _pkgname=wind
-pkgver=21.5.0.3
+pkgver=21.5.2.2
 pkgrel=1
 pkgdesc="Wind financial terminal, 万得金融终端"
 arch=("x86_64")
@@ -14,7 +14,7 @@ install=wind-bin.install
 source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_${pkgver}_amd64.deb")
 
 
-sha512sums=('38f03e37b39b721d56fb7ee705a9441e9a7427497bf21b3f892bd40988e4ba2df093110d0a4594782074579bf23d036362d90b276475a4a77259e8616dec9a7c')
+sha512sums=('cd062e107dd6703a9024cb66a3c199c9b5f481f8425c5c0b63f30d9499cf1155badfd0cb00472e4b3ffdd9095ebc34961edbbf28245521f329d441614e2ded8b')
 
 prepare(){
     cd ${srcdir}
@@ -36,7 +36,7 @@ package(){
     echo '''#!/bin/bash
 export LD_LIBRARY_PATH=/opt/wind/lib:/opt/wind/lib/3rd:/opt/wind/wbrowser:$LD_LIBRARY_PATH
 cd /opt/wind/bin
-LD_PRELOAD=./libjemalloc.so  ./wmain
+./wmain
 
 ''' >"$pkgdir"/opt/wind/wind
     
