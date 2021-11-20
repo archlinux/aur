@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gedit-plugin-markdown_preview-git
-pkgver=r122.ad13861
-pkgrel=2
+pkgver=r150.c00830e
+pkgrel=1
 pkgdesc="A gedit plugin previewing markdown (.md) documents"
 arch=('any')
 url="https://github.com/maoschanz/gedit-plugin-markdown_preview"
@@ -16,22 +16,22 @@ optdepends=('pymdown-extensions: extra Python Markdown extensions'
             'texlive-core: export to PDF with pandoc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/maoschanz/gedit-plugin-markdown_preview.git')
+source=('git+https://github.com/maoschanz/gedit-plugin-markdown_preview.git#branch=release-2.0')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm644 org.gnome.gedit.plugins.markdown_preview.gschema.xml -t \
-		"$pkgdir/usr/share/glib-2.0/schemas"
-	install -Dm644 markdown_preview.plugin -t "$pkgdir/usr/lib/gedit/plugins"
-	cp -r markdown_preview "$pkgdir/usr/lib/gedit/plugins"
-	install -Dm644 example.css -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
+  install -Dm644 org.gnome.gedit.plugins.markdown_preview.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas"
+  install -Dm644 markdown_preview.plugin -t "$pkgdir/usr/lib/gedit/plugins"
+  cp -r markdown_preview "$pkgdir/usr/lib/gedit/plugins"
+  install -Dm644 example.css -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-	rm "$pkgdir/usr/lib/gedit/plugins/markdown_preview/locale/gedit-plugin-markdown-preview.pot"
-	rm "$pkgdir"/usr/lib/gedit/plugins/markdown_preview/locale/{fr,nl}/LC_MESSAGES/*.po
+  rm "$pkgdir/usr/lib/gedit/plugins/markdown_preview/locale/gedit-plugin-markdown-preview.pot"
+  rm "$pkgdir"/usr/lib/gedit/plugins/markdown_preview/locale/{fr,nl}/LC_MESSAGES/*.po
 }
