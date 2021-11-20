@@ -2,7 +2,7 @@
 
 pkgname='zwcad-bin'
 _pkgname='zwcad'
-pkgver=22.0.2.4
+pkgver=22.1.2.3
 _year=20${pkgver:0:2}
 pkgrel=1
 epoch=1
@@ -12,10 +12,10 @@ license=('unknown')
 url="https://www.zwcad.com"
 provides=("zwcad")
 options=('!strip')
-source_x86_64=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/zwcad_${pkgver}_zh-cn_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/zwcad_${pkgver}_zh-cn_arm64.deb")
-sha512sums_x86_64=('a78335be694f9a2efd82319356e8e480fd10ee90dd032ad266318697505e54cf88ce1acdd4f71dd0ba7d1b6a26971a164344d90c4b711fbde03e6127e708995a')
-sha512sums_aarch64=('aeb74a0426497ae8ce176f7c239b9163bb5d997cecffe19b7093bcfde902e471c42c3b79b933ff85eff42c1b9e162ba304ee0d052fc41d3ec336f1c87733cde1')
+source_x86_64=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/zwcad_${pkgver:0:2}_zh-cn_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/zwcad_${pkgver:0:2}_zh-cn_arm64.deb")
+sha512sums_x86_64=('0a0393e94804a4537e314cc6d04a1e6e3da60c193071bb8fdf9bac220a77e6682c4faafe69de6ccb40a7a8e1c97ac174ff2bb4e99732f42ab53e4c650a97900c')
+sha512sums_aarch64=('22a56b93504178d2fe13fecfb37b368747c24cc64174231aff3735257434da95e3dd0e8aaa895301a7da9d751d4ca7a38ab14acd66ec1c6aabbfb28498b723fa')
 
 prepare(){
     cd $srcdir
