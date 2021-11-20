@@ -29,5 +29,5 @@ package() {
   install -Dm755 spinnr.sh ${pkgdir}/usr/share/spinnr/spinnr.sh
   install -Dm644 spinnrd.service ${pkgdir}/usr/lib/systemd/system/spinnrd.service
   echo "==> Ensure to start/enable the spinnrd.service!"
-  echo "==> Additionally, add /usr/share/spinnr/spinnr.sh to your desktop's auto-start applications!"
+  echo "==> Additionally, add '/usr/share/spinnr/spinnr.sh /run/spinnrd/spinnrd.spin' to your desktop's auto-start applications!"
 }
