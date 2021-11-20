@@ -11,7 +11,7 @@ epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
 arch=(x86_64 x86_64_v3)
-options=(!staticlibs !lto)
+options=(!staticlibs !lto emptydirs)
 license=('custom')
 
 depends=(
@@ -142,6 +142,28 @@ noextract=(
     wine-mono-${_monover}-x86.tar.xz
 )
 
+_make_wrappers () {
+    local _i686=(i686 "-m32" "-melf_i386")
+    local _x86_64=(x86_64 "" "")
+    local _opts=(_i686 _x86_64)
+    declare -n _opt
+    for _opt in "${_opts[@]}"; do
+        for l in ar as ranlib nm; do
+            ln -s /usr/bin/$l wrappers/${_opt[0]}-pc-linux-gnu-$l
+        done
+        for t in gcc g++; do
+            install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-$t <<EOF
+#!/usr/bin/bash
+$(which ccache 2> /dev/null) /usr/bin/$t ${_opt[1]} "\$@"
+EOF
+        done
+        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-ld <<EOF
+#!/usr/bin/bash
+/usr/bin/ld ${_opt[2]} "\$@"
+EOF
+    done
+}
+
 prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
@@ -151,6 +173,10 @@ prepare() {
     pip install --no-cache-dir meson==0.59.3
     pip install --no-cache-dir afdko
     pip install --no-cache-dir pefile
+
+    # Provide wrappers to compiler tools
+    rm -rf wrappers && mkdir wrappers
+    _make_wrappers
 
     [ ! -d gecko ] && mkdir gecko
     mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
@@ -215,6 +241,10 @@ prepare() {
     ./patches/protonprep.sh
 
     pushd wine
+        # From Arch Wine
+        sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+        # Fix openldap 2.5+ detection
+        sed 's/-lldap_r/-lldap/' -i configure
         # Adds more 16:10 resolutions for use with FSR
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
@@ -222,10 +252,19 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+
+    # Remove repos from srcdir to save space
+    for submodule in "${_submodules[@]}"; do
+        rm -rf "$srcdir"/"${submodule%::*}"
+    done
+    rm -rf "$srcdir"/dxil-spirv
+    rm -rf "$srcdir"/Vulkan-Headers
+    rm -rf "$srcdir"/SPIRV-Headers
 }
 
 build() {
     source build_venv/bin/activate
+    export PATH="$(pwd)/wrappers:$PATH"
 
     cd build
     ROOTLESS_CONTAINER="" \
