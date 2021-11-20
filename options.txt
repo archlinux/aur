@@ -2,4 +2,4 @@
 # Location: /etc/qogir-gtk-theme/options.txt
 
 # Specify options below this line (-d is ignored)
-# ex. --gdm --theme standard --image --logo arch
+# ex. --theme all --tweaks image square round --logo arch
