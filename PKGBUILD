@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=stow-cm
 pkgver=nightly
-pkgrel=5
+pkgrel=6
 pkgdesc="config manager (simple impl of gun-stow)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/stow"
@@ -14,11 +14,11 @@ sha512sums=('SKIP')
 
 build() {
   cd "stow-$pkgver"
-  cargo build --release --target x86_64-unknown-linux-musl
+  cargo build --release
 }
 
 package() {
   cd "stow-$pkgver"
-  install -Dm755 "target/x86_64-unknown-linux-musl/release/stow" "$pkgdir/usr/bin/stow"
+  install -Dm755 "target/release/stow" "$pkgdir/usr/bin/stow"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
