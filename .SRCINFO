@@ -1,0 +1,19 @@
+pkgbase = fs2_open-appimage
+	pkgdesc = An enhancement of the FreeSpace 2 engine, AppImage version
+	pkgver = 21.4.0
+	pkgrel = 1
+	url = https://github.com/scp-fs2open/fs2open.github.com
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = fs2_open-data
+	conflicts = fs2_open
+	conflicts = fs2_open-git
+	options = !strip
+	source = https://github.com/scp-fs2open/fs2open.github.com/releases/download/release_21_4_0/fs2_open_21_4_0-builds-Linux.tar.gz
+	source = https://raw.githubusercontent.com/scp-fs2open/fs2open.github.com/release_21_4_0/Unlicense.md
+	sha256sums = 3f856e0b852613b41890db83f4392580aaa3f5e32dffc33b508da4e0fd9c7e0f
+	sha256sums = c8a0ed607299ef766627afa6091d2908b50ed4b9dc1b691b0058e6ba4b1b9a79
+
+pkgname = fs2_open-appimage
