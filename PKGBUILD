@@ -3,7 +3,7 @@
 
 _gemname=rubocop-rspec
 pkgname=ruby-${_gemname}
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Code style checking for RSpec files"
 arch=(any)
@@ -15,7 +15,7 @@ url=https://github.com/rubocop/rubocop-rspec
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/rubocop-rspec/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('17aea198b1ec4e9daf1619ec1298b598de29948fd3269cae89187043d256408e')
+sha256sums=('5740b3ffe6b45ed682d61043b09acc3814d44798c622318ce0c7708313a77eb1')
 
 prepare() {
   cd $_gemname-$pkgver
