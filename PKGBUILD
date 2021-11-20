@@ -4,7 +4,7 @@
 
 pkgname=libfprint-tod-git
 _pkgdirname=libfprint
-pkgver=1.90.2+tod1
+pkgver=1.94.1+tod1
 pkgrel=1
 pkgdesc="Library for fingerprint readers - TOD version"
 arch=(x86_64)
@@ -29,10 +29,6 @@ pkgver() {
 build() {
   arch-meson $_pkgdirname build
   ninja -C build
-}
-
-check() {
-  meson test -C build --print-errorlogs
 }
 
 package() {
