@@ -1,17 +1,18 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Hanspeter Portner <ventosus at airpost dot net>
 
-pkgname=linuxptp-git
-pkgver=1.6.r16.gd825b1d
+_pkgname=linuxptp
+pkgname=${_pkgname}-git
+pkgver=3.1.r116.g24220e8
 pkgrel=1
 pkgdesc='An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.'
 arch=('i686' 'x86_64')
 url='http://linuxptp.sourceforge.net/'
 license=('GPL')
 depends=('glibc')
-makedepends=()
-provides=('linuxptp')
-conflicts=('linuxptp')
+makedepends=('git')
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+http://git.code.sf.net/p/linuxptp/code")
 md5sums=('SKIP')
 

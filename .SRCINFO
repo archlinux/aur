@@ -1,16 +1,16 @@
 pkgbase = linuxptp-git
 	pkgdesc = An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.
-	pkgver = 1.6.r16.gd825b1d
+	pkgver = 3.1.r116.g24220e8
 	pkgrel = 1
 	url = http://linuxptp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = glibc
-	provides = linuxptp
+	provides = linuxptp=3.1-1
 	conflicts = linuxptp
 	source = linuxptp-git::git+http://git.code.sf.net/p/linuxptp/code
 	md5sums = SKIP
 
 pkgname = linuxptp-git
-
