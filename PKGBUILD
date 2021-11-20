@@ -7,7 +7,7 @@ _srcname=linux-5.15
 _major=5.15
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=2
+_minor=3
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,17 +30,25 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch
+  0005-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
+  0006-drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch
+  0007-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('d6af9db85840e07d22fe1e5430ecd916b0eba91bfd5ea3b8f82c090fe632fcc26f1188e749785a451c9da0d0d4ffdc7fff17949e546a05b4187a6615c3d3acb5'
+b2sums=('50162f3ed36160ec1cf8616fcf29cc84922a5bc2679ad5426a514e5855d9d9d8183ad68c8f62f910cf9d949d4618e61e481a6ed044e1aa0f8ca343925b3adbf7'
         'SKIP'
-        'e1247057fc57e2f071ff150b5e0651db054a1e15a258ebd198921f7ef0c1e441f0a36c46024298175a8a9a0bb7cc0b6d505d7a77a053c1ce88a720ebea424d89'
+        '93379b68cfe85a979a7a39179e2bf622702d5e4f7a1d5a5bace1e8d11583d77966bce5b0e61f047fcb40c6c2be401e7725b3aa01e602c6ef4ac045a24ebcc2cd'
         'SKIP'
         '13e22007dfd81dcfcd9a159881ddc5f92a600d6ed5f581c0826c5e2b2823b6a7ba0628e09960b8146d3a9bb669ee5ba7b119bd7ecb6cad06a76e6511bf533a44'
-        '16b879918a0f18dc7fb0de80e915facfbf3a4d06d9cdce5d734e19d31d2770f797afbc3942ad837a69dc4394161a8c042269ae27d8ec9d7c0385ecd183e935c6')
+        '90e2c56062fc6ab9f914d82ed3b5ff3cc9fef2293ffdedb51ab2776441b1d2ff46b69af8e6c97c80346449123f309fe4bcdeac2fe95a5f8e201f41b9d29943f3'
+        '812f8ff0b7cdd21e6b1b9337b789619a992bd3053d3c47533d76ec4e84d5ca4c340252415cf4cc616ac4cf9887849c541d1e8e370fddcb7c5705532a6c8b1e78'
+        '60699efcb88f8643dda1dad5a104c7b2780f8233c82d89bc1916c14fd808febdff4536b84e32d790137455d922d18d86d8d56c7671955b26c068a8f0272ed1a6'
+        '47fe5e2eb9e2ceeabad141d2c631d22527f7068d81d673e0bdee2a7070986b3d1d75001a953a0e3501eb9b623c66700464af73153ad6f998f20587e58fc7820b'
+        '7ac6e6886d578a46d22c089ccd4b99eca3515263c4f1aa92a2f85a1836c72b096560145ad4ee1c94c2c1c2b747afd299fc6b9c73d9076c364401d80413f69fe4')
 
 
 export KBUILD_BUILD_HOST=archlinux
