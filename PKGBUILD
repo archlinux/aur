@@ -1,18 +1,19 @@
-# Maintainer: tildearrow <tildearrow@protonmail.com>
+# Maintainer: tildearrow <me@tildearrow.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-lowlatency
-pkgver=5.20.5
+pkgver=5.23.3
 pkgrel=1
-pkgdesc='the compositor, with added stutter/latency reductions'
+pkgdesc='the compositor, with X11 unredirection and some other things'
 arch=(x86_64)
 url='https://github.com/tildearrow/kwin-lowlatency'
 license=(LGPL)
-depends=(kscreenlocker xcb-util-cursor plasma-framework kcmutils kwayland-server breeze qt5-sensors qt5-script pipewire libqaccessibilityclient)
-makedepends=(git extra-cmake-modules qt5-tools kdoctools)
-optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
+depends=(kscreenlocker xcb-util-cursor plasma-framework kcmutils kwayland-server breeze
+         pipewire-media-session libqaccessibilityclient lcms2)
+makedepends=(git extra-cmake-modules qt5-tools kdoctools krunner)
+optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 provides=(kwin)
 conflicts=(kwin)
 groups=(plasma)
