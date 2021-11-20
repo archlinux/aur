@@ -19,6 +19,6 @@ build() {
 
 package() {
   cd "stow-$pkgver"
-  install -Dm755 "target/x86_64-unknown-linux-musl/stow" "$pkgdir/usr/bin/stow"
+  install -Dm755 "target/x86_64-unknown-linux-musl/release/stow" "$pkgdir/usr/bin/stow"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
