@@ -1,11 +1,11 @@
 #!/usr/bin/bash
-export LD_LIBRARY_PATH=.
+export MALLOC_CHECK_=0
 pwd=/opt/lsi/LSIStorageAuthority
 
 start() {
   cd "${pwd}/bin"
   if pgrep -x "LSA" > /dev/null; then
-    killall -15 LSA
+    killall -9 LSA
   fi
   ./LSA -start
 }
@@ -14,7 +14,7 @@ stop() {
   cd "${pwd}/bin"
   ./slp_deregister
   if pgrep -x "LSA" > /dev/null; then
-    killall -15 LSA
+    killall -9 LSA
   fi
 }
 

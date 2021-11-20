@@ -2,7 +2,7 @@
 
 pkgname=lsi-lsa
 pkgver=007.019.006.000
-pkgrel=2
+pkgrel=3
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
@@ -10,8 +10,9 @@ license=('custom:LSI')
 depends=('openslp'
          'lsi-openpegasus'
          'curl'
+         'perl'
          )
-makedepends=('chrpath')
+makedepends=('patchelf')
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
 source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf::https://docs.broadcom.com/doc/pub-005092'
         'LSI_Storage_Authority_Software_User_Guide_rev2.2.pdf::https://docs.broadcom.com/doc/DB15-001161'
@@ -23,7 +24,7 @@ source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf::https:
 sha256sums=('5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
             'edb87a322a06afb7c78058132f648123325fc633db2df4d062a127f5ed9f465a'
             '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
-            '977ff4069d4ae02b60a58e708ae5bb5c8fa10f9a331e527b518006e8e5eb03ea'
+            '1df03403bc1d780797f0eba59d85b1941a1c77f911d9e7d5d5ae4f288e52663a'
             'd0cfca9e144b12b8c5886f7d975546fe7e1ca13573f62d80f721363397e3b5dd'
             '8589d6d7ba2c2890961ac5a28b664bc4a066cc00b19f22ee0af792f0d9ed182c'
             )
@@ -61,20 +62,22 @@ package() {
          opt/lsi/LSIStorageAuthority/bin/libcurl*
 
   # LSA needs ldap 2.4x
-  (cd opt/lsi/LSIStorageAuthority/bin
-    install -Dm755 "${srcdir}/usr/lib/libldap-2.4.so.2.11.7" .
-    ln -s libldap-2.4.so.2.11.7 libldap-2.4.so.2
-    ln -s libldap-2.4.so.2.11.7 libldap-2.4.so
-    ln -s libldap-2.4.so.2.11.7 libldap.so.2
-    ln -s libldap-2.4.so.2.11.7 libldap.so
-    install -Dm755 "${srcdir}/usr/lib/liblber-2.4.so.2.11.7" .
-    ln -s liblber-2.4.so.2.11.7 liblber-2.4.so.2
-    ln -s liblber-2.4.so.2.11.7 liblber.so.2
-    ln -s liblber-2.4.so.2.11.7 liblber.so
-  )
+  install -Dm755 "${srcdir}/usr/lib/libldap-2.4.so.2.11.7" opt/lsi/LSIStorageAuthority/bin/libldap-2.4.so.2
+  install -Dm755 "${srcdir}/usr/lib/libldap_r-2.4.so.2.11.7" opt/lsi/LSIStorageAuthority/bin/libldap_r-2.4.so.2
+  install -Dm755 "${srcdir}/usr/lib/liblber-2.4.so.2.11.7" opt/lsi/LSIStorageAuthority/bin/liblber-2.4.so.2
 
-  # Remove insecure RPATH
-  chrpath -d opt/lsi/LSIStorageAuthority/bin/slp_deregister
+  # Set RPATH
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/bin/libpluginmanager.so
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/bin/libhttpcgi.so
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/bin/libutility.so
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/bin/libldap-2.4.so.2
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/bin/slp_deregister
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/bin/LSA
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/plugins/libcacheinit.so
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/plugins/libgateway.so
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/plugins/librepository.so
+  patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/plugins/libserverdiscovery.so
+  patchelf --set-rpath "/opt/lsi/LSIStorageAuthority/bin:/opt/lsi/LSIStorageAuthority/plugins" opt/lsi/LSIStorageAuthority/plugins/libmonitor.so
 
   # Install Service
   install -Dm644 "${srcdir}/lsi_lsa.service" usr/lib/systemd/system/lsi_lsa.service
