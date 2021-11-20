@@ -1,0 +1,17 @@
+pkgbase = luna-icon-theme-git
+	pkgdesc = Icon pack based on marwaita and papirus icons.
+	pkgver = 1.7.r0.g0e93e0e9
+	pkgrel = 1
+	url = https://github.com/darkomarko42/Luna-Icons
+	arch = any
+	license = GPLv3
+	makedepends = git
+	provides = luna-icon-theme
+	provides = luna-icon-theme-git
+	conflicts = luna-icon-theme
+	conflicts = luna-icon-theme-git
+	options = !strip
+	source = luna-icon-theme::git+https://github.com/darkomarko42/Luna-Icons
+	sha256sums = SKIP
+
+pkgname = luna-icon-theme-git
