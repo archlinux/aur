@@ -3,16 +3,16 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
 url="https://docs.sunpy.org/projects/ndcube"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sunpy-sphinx-theme' 'python-gwcs' 'python-matplotlib' 'python-mpl-animators' 'python-pytest-doctestplus' 'graphviz')
+makedepends=('python-setuptools-scm' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sunpy-sphinx-theme' 'python-gwcs' 'python-matplotlib' 'python-mpl-animators' 'python-pytest-doctestplus' 'graphviz' 'subversion')
 checkdepends=('python-pytest' 'python-reproject' 'python-sunpy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('74c36758d2b54f582405617c56a5702a')
+md5sums=('7b457d2e3c49d7e8395ee52b27ce67a1')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -21,6 +21,7 @@ build() {
     msg "Building Docs"
 #   cd ${srcdir}/${_pyname}-${pkgver}/docs
 #   PYTHONPATH="../build/lib" make html
+    svn export https://github.com/sunpy/ndcube/trunk/changelog
     python setup.py build_sphinx
 }
 
@@ -32,8 +33,8 @@ check() {
 
 package_python-ndcube() {
     depends=('python>=3.7' 'python-gwcs>=0.15')
-    optdepends=('python-matplotlib>=3: plotting'
-                'python-mpl-animators: plotting'
+    optdepends=('python-matplotlib>=3.2: plotting'
+                'python-mpl-animators>=1.0: plotting'
                 'python-reproject: reproject'
                 'python-ndcube-doc: Documentation for ndcube')
     cd ${srcdir}/${_pyname}-${pkgver}
