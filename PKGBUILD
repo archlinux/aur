@@ -41,7 +41,6 @@ fi
 if [[ "${_disable_budgie}" = false ]]; then
     _opts+=(-Dbudgie=enabled)
     pkgname+=('vala-panel-appmenu-budgie')
-    makedepends+=('budgie-desktop')
     # msg "Budgie applet enabled"
 fi
 
@@ -51,7 +50,7 @@ fi
 _pkgbase="vala-panel-appmenu"
 pkgbase="${_pkgbase}"
 pkgver="0.7.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -61,6 +60,7 @@ source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git#tag=${pkgver}
 sha256sums=('SKIP')
 
 build() {
+    sed -i 's/nb //' "${srcdir}/vala-panel-appmenu/po/LINGUAS"
     meson "${_opts[@]}" build "${srcdir}/${_pkgbase}"
     meson compile -C build
 }

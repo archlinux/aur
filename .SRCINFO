@@ -1,7 +1,7 @@
 pkgbase = vala-panel-appmenu
 	pkgdesc = AppMenu (Global Menu) plugin
 	pkgver = 0.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = vala-panel-appmenu
 	makedepends = xfce4-panel>=4.11.2
 	makedepends = xfconf
 	makedepends = vala-panel>=0.4.50
-	makedepends = budgie-desktop
 	source = git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git#tag=0.7.6
 	sha256sums = SKIP
 
@@ -89,4 +88,3 @@ pkgname = vala-panel-appmenu-budgie
 	optdepends = appmenu-qt4: for qt4 menus
 	optdepends = appmenu-qt5: for qt5 menus
 	conflicts = vala-panel-appmenu-budgie-git
-
