@@ -1,0 +1,19 @@
+pkgbase = polydock
+	pkgdesc = A shiny and hackable application dock
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/folke/polydock
+	arch = any
+	license = Apache-2.0
+	makedepends = pnpm
+	makedepends = npm
+	depends = gtk3
+	depends = gjs
+	depends = libwnck3
+	depends = gdk-pixbuf2
+	provides = polydock
+	conflicts = polydock
+	source = https://github.com/folke/polydock/archive/refs/tags/2.1.0.tar.gz
+	sha512sums = 36b7f23908bba7cd99b13f76bb48bfcd33971845f5636fab6239839a69cd511e0804402e672b4e9ea17339ef3eec381e73f192412dff30dfdc2377e55c76b4b0
+
+pkgname = polydock
