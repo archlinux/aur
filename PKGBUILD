@@ -2,11 +2,13 @@
 
 pkgname=scratch-desktop
 pkgver=3.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create and share your own interactive stories, games, music and art"
 url="https://scratch.mit.edu"
 arch=('x86_64')
 license=('GPL')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
+         'libxslt' 'minizip' 'nss' 're2' 'snappy')
 makedepends=('electron11')
 source=('https://downloads.scratch.mit.edu/desktop/Scratch%203.26.0%20Setup.exe'
         'https://scratch.mit.edu/images/download/icon.png'
