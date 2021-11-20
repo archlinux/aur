@@ -2,10 +2,15 @@
 # Previous Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-dbg
-pkgver=3.9.7
-pkgrel=1
+_major=3
+_minor=9
+_patch=7
+_pybasever=${_major}
+_pyminorver=${_pybasever}.${_minor}
+pkgver=${_pyminorver}.${_patch}
+pkgrel=2
 epoch=0
-pkgdesc="Python 3 debug symbols."
+pkgdesc="Python 3 interpreter (debug)."
 arch=('i686' 'x86_64')
 url='http://www.python.org/'
 license=('custom')
@@ -13,7 +18,7 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('gcc' 'make' 'm4' 'autoconf' 'valgrind')
 checkdepends=()
 optdepends=()
-provides=('python')
+provides=()
 conflicts=()
 replaces=()
 backup=()
@@ -39,7 +44,7 @@ build() {
     cd Python-${pkgver}
 
     # Disable bundled pip & setuptools
-    ./configure --prefix=/usr \
+    ./configure --prefix=/opt/${pkgname} \
                 --enable-ipv6 \
                 --enable-loadable-sqlite-extensions \
                 --enable-optimizations \
@@ -52,7 +57,7 @@ build() {
                 --with-system-ffi \
                 --with-threads \
                 --with-valgrind \
-                --without-ensurepip
+                --with-ensurepip
 
 
     # Obtain next free server number for xvfb-run; this even works in a chroot environment.
@@ -73,17 +78,53 @@ package() {
     make DESTDIR="${pkgdir}" EXTRA_CFLAGS="$CFLAGS" install
     find . -iname '*.so' -exec objcopy --only-keep-debug '{}' '{}.debug' \;
 
-    # Why are these not done by default...
-    ln -s python3               "${pkgdir}"/usr/bin/python
-    ln -s python3-config        "${pkgdir}"/usr/bin/python-config
-    ln -s idle3                 "${pkgdir}"/usr/bin/idle
-    ln -s pydoc3                "${pkgdir}"/usr/bin/pydoc
-    ln -s python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python.1
+    LIBPATH=/opt/${pkgname}/lib
+    BINPATH=/opt/${pkgname}/bin
+    MANPATH=/opt/${pkgname}/share/man/man1
+    TOOLPATH=/opt/${pkgname}/lib/python${_pybasever}/Tools
+
+    # Prepare package symlink directories.
+    mkdir -p "${pkgdir}"/usr/{bin,lib}
+    mkdir -p "${pkgdir}"/usr/share/man/man1
+    mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    mkdir -p "${pkgdir}"/"${TOOLPATH}"/{i18n,scripts}
+
+    # Link /usr/lib/libpythonX.Xd.so for python-dbg.
+    ln -s ${LIBPATH}/libpython${_pyminorver}d.so.1.0 "${pkgdir}"/usr/lib/
+    ln -s ${LIBPATH}/libpython${_pyminorver}d.so     "${pkgdir}"/usr/lib/
+
+    # Link pip.
+    ln -s ${BINPATH}/pip${_pybasever}            "${pkgdir}"/usr/bin/pip${_pybasever}-dbg
+    ln -s ${BINPATH}/pip${_pyminorver}           "${pkgdir}"/usr/bin/pip${_pyminorver}-dbg
+
+    # Link pythonX.Xd executable.
+    ln -s ${BINPATH}/python${_pyminorver}d        "${pkgdir}"/usr/bin/python${_pyminorver}d
+    ln -s ${BINPATH}/python${_pyminorver}d-config "${pkgdir}"/usr/bin/python${_pyminorver}d-config
+
+    # Link python-dbg executables.
+    ln -s ${BINPATH}/python${_pybasever}         "${pkgdir}"/usr/bin/python-dbg
+    ln -s ${BINPATH}/python${_pybasever}-config  "${pkgdir}"/usr/bin/python-config-dbg
+    ln -s ${BINPATH}/python${_pybasever}         "${pkgdir}"/usr/bin/python${_pybasever}-dbg
+    ln -s ${BINPATH}/python${_pybasever}-config  "${pkgdir}"/usr/bin/python${_pybasever}-config-dbg
+    ln -s ${BINPATH}/python${_pyminorver}        "${pkgdir}"/usr/bin/python${_pyminorver}-dbg
+    ln -s ${BINPATH}/python${_pyminorver}-config "${pkgdir}"/usr/bin/python${_pyminorver}-config-dbg
+
+    # Link idle.
+    ln -s ${BINPATH}/idle${_pybasever}           "${pkgdir}"/usr/bin/idle${_pybasever}-dbg
+    ln -s ${BINPATH}/idle${_pyminorver}          "${pkgdir}"/usr/bin/idle${_pyminorver}-dbg
+
+    # Link pydoc.
+    ln -s ${BINPATH}/pydoc${_pybasever}          "${pkgdir}"/usr/bin/pydoc${_pybasever}-dbg
+    ln -s ${BINPATH}/pydoc${_pyminorver}         "${pkgdir}"/usr/bin/pydoc${_pyminorver}-dbg
+
+    # Link python[3(?!\.9)]-dbg manpages.
+    ln -s ${MANPATH}/python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python-dbg.1
+    ln -s ${MANPATH}/python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python${_pybasever}-dbg.1
+    ln -s ${MANPATH}/python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python${_pyminorver}-dbg.1
 
     # some useful "stuff" FS#46146
-    install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
-    install -m755 Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}"/usr/lib/python${_pybasever}/Tools/i18n/
-    install -m755 Tools/scripts/{README,*py} "${pkgdir}"/usr/lib/python${_pybasever}/Tools/scripts/
+    install -m755 Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}"/"${TOOLPATH}"/i18n/
+    install -m755 Tools/scripts/{README,*py} "${pkgdir}"/"${TOOLPATH}"/scripts/
 
     # License
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
