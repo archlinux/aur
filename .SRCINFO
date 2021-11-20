@@ -1,0 +1,11 @@
+pkgbase = kops21-bin
+	pkgdesc = Kubernetes Operations 1.21 version (kOps) - Production Grade K8s Installation, Upgrades, and Management
+	pkgver = v1.21.4
+	pkgrel = 1
+	url = https://github.com/kubernetes/kops
+	arch = x86_64
+	license = apache
+	source_x86_64 = kops21-bin-v1.21.4::https://github.com/kubernetes/kops/releases/download/v1.21.4/kops-linux-amd64
+	sha256sums_x86_64 = fbd4c1120da45304cf872449d6a39327186a60697c3ca4037172c7d5d28821d1
+
+pkgname = kops21-bin
