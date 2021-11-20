@@ -1,7 +1,7 @@
 pkgbase = keeprofi
-	pkgdesc = Access to keepass database using rofi drun menu
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgdesc = Fast rofi drun menu for keepass database
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://gitlab.com/hxss-linux/keeprofi
 	arch = any
 	license = MIT

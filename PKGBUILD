@@ -2,9 +2,9 @@
 
 pipname=keeprofi
 pkgname=$pipname
-pkgver=1.1.1
-pkgrel=2
-pkgdesc="Access to keepass database using rofi drun menu"
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Fast rofi drun menu for keepass database"
 arch=(any)
 url="https://gitlab.com/hxss-linux/keeprofi"
 license=(MIT)
