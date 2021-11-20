@@ -2,7 +2,7 @@
 
 pkgbase=naml
 pkgname=(naml)
-pkgver=v0.4.0
+pkgver=v0.4.1
 pkgrel=1
 pkgdesc="Not Another Markup Language [NAML]"
 arch=(x86_64)
@@ -21,6 +21,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd $pkgname
+	git checkout tags/$pkgver -b $pkgver
 	GO111MODULE=on
 	go mod vendor
 	go mod download
