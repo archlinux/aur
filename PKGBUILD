@@ -14,7 +14,7 @@ prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/Duality Bass Studio 1.2.51 Installer.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
-	find $srcdir -name ".DS_Store" -delete
+	find $srcdir -name *.DS_Store -delete
 }
 
 package() {
