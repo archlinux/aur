@@ -1,0 +1,18 @@
+pkgbase = spinnrd-git
+	pkgdesc = A daemon to turn accelerometer data into xrandr orientations for auto-screen rotation
+	pkgver = 1.1.0.r43.b2a48cc
+	pkgrel = 1
+	url = https://github.com/rantingpirate/spinnrd.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = rust
+	makedepends = git
+	depends = xorg-xrandr
+	depends = inotify-tools
+	depends = iio-sensor-proxy
+	provides = spinnrd
+	source = spinnrd-git::git+https://github.com/rantingpirate/spinnrd.git
+	md5sums = SKIP
+
+pkgname = spinnrd-git
