@@ -2,7 +2,7 @@
 
 _gemname=hashie
 pkgname=ruby-$_gemname
-pkgver=4.1.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="a collection of classes and mixins that make Ruby hashes more powerful"
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=(ruby-rake ruby-rspec ruby-rspec-pending_for)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://github.com/hashie/hashie/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('4c67b8f6b347d83bdcad76dea208798e4152c3c067f40581f745216c71998982')
+sha256sums=('f16d5394d732678d6287a334aeb41e88bb12fe78c22c4b749ffcb0570014f59a')
 
 prepare() {
   cd $_gemname-$pkgver
