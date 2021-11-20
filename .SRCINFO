@@ -1,0 +1,16 @@
+pkgbase = yeetgif
+	pkgdesc = GIF effects tool for creating emotes
+	pkgver = 1.23.6
+	pkgrel = 1
+	url = https://github.com/sgreben/yeetgif
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = gifsicle: 'optimize' command support
+	source = yeetgif-1.23.6.tar.gz::https://github.com/sgreben/yeetgif/archive/5d2067b.tar.gz
+	sha256sums = 7e661cdf7398f8b0017c8cc8758e65a378edb7502bef081d45055fd7510f0017
+
+pkgname = yeetgif
