@@ -1,23 +1,23 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=cronwhip
-pkgver=2015
-pkgrel=8
+pkgver=2021
+pkgrel=2
 pkgdesc='Run missed cronjobs.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/cronwhip"
 depends=(python3 sysvinit-tools)
 source=(
-  https://xyne.dev/projects/cronwhip/src/cronwhip-2015.tar.xz
-  https://xyne.dev/projects/cronwhip/src/cronwhip-2015.tar.xz.sig
+  https://xyne.dev/projects/cronwhip/src/cronwhip-2021.tar.xz
+  https://xyne.dev/projects/cronwhip/src/cronwhip-2021.tar.xz.sig
 )
 sha512sums=(
-  b6650373d47207e7bee854aa05141b99b593b8575c4291ff5a9aaca0d9225589303ebcd7096bf7e8d608d1a809bfa822ea30671d68eaf9aa8b89a8824ec3884f
-  0c96508197a05ca3ea2052e4e6d0947a7e9421d29a414ac90dcd693acad49ff26638bd2d7e0d7cfcf85a297f03abb8994c399a8a88d9f6d6faa972316c7fdb94
+  1d3982bdb59530df449c4edab175543c10760beca13f60c3a74272d07968d71accbffebd7f2e554915985bd6549a10cb3ed4767f5a1b9c5f310d47ebbede0ce5
+  2f1b1b699aa9b3042e2e3341137f019a2d667940c49cbfe6187ee4cbcd4562e117c67db08acc7b6aa1ecb589f8299063cc4afe1cfda070548d6f96ce0a546ff4
 )
 md5sums=(
-  d6b36c5f541e20ed64f05d0adaffae3b
-  9b2c7b452259b9b6adfd1aa45c097ff3
+  3bf8cf17a8c09a599432ced474cb9b29
+  eaf616bed116dd91994d7d21233e8ba3
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
