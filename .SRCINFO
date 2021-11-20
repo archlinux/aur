@@ -1,0 +1,13 @@
+pkgbase = amd-disable-c6
+	pkgdesc = Disable AMD C6 state on boot to prevent Ryzen freezes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/joakimkistowski/amd-disable-c6.git
+	arch = any
+	license = MIT
+	source = git+https://github.com/joakimkistowski/amd-disable-c6.git
+	source = amd-disable-c6.patch
+	md5sums = SKIP
+	md5sums = 43e8b85a0c58e85e36d752211e73055f
+
+pkgname = amd-disable-c6

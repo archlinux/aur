@@ -1,0 +1,11 @@
+--- amd-disable-c6.service.original	2021-11-20 17:19:31.321967854 +0800
++++ amd-disable-c6.service	2021-11-20 17:19:41.385300926 +0800
+@@ -6,7 +6,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/sbin/amd-disable-c6 --disable_c6_retry
++ExecStart=/usr/bin/amd-disable-c6 --disable_c6_retry
+ 
+ [Install]
+ Alias=amd-disable-c6
