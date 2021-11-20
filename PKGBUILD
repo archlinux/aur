@@ -1,11 +1,11 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=ttf-bqn386-git
 pkgver=r12.0f89cae
-pkgrel=1
+pkgrel=2
 pkgdesc='An APL and BQN font extending on APL386.'
 arch=('any')
 url='https://dzaima.github.io/BQN386/'
-license=()
+license=('custom')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
