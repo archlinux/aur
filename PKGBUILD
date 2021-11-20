@@ -1,9 +1,10 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
-pkgname=mingw-w64-ncurses
-pkgver=6.2
-pkgrel=3
+_pkgname=ncurses
+pkgname=mingw-w64-${_pkgname}
+pkgver=6.3
+pkgrel=1
 pkgdesc="System V Release 4.0 curses emulation library (mingw-w64)"
 arch=('any')
 url="https://www.gnu.org/software/ncurses/"
@@ -12,7 +13,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 depends=('mingw-w64-crt' 'mingw-w64-regex' 'mingw-w64-libiconv')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("ncurses-${pkgver}.tar.gz"::"https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${pkgver}.tar.gz")
-sha256sums=('30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d')
+sha256sums=('97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,7 +24,9 @@ build() {
     LIBS="$(${_arch}-pkg-config --libs regex) -liconv" ${_arch}-configure \
       --without-ada \
       --with-cxx \
-      --without-shared \
+      --with-cxx-shared \
+      --with-shared \
+      --with-normal \
       --without-pthread \
       --enable-pc-files \
       --disable-rpath \
@@ -38,7 +41,11 @@ build() {
       --enable-sp-funcs \
       --enable-term-driver \
       --enable-interop \
-      --enable-widec
+      --enable-widec \
+      --without-manpages \
+      --without-tests \
+      --without-debug \
+      --program-prefix=
     make
     popd
   done
@@ -48,8 +55,11 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/ncurses-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    cp -R ${pkgdir}/usr/${_arch}/include/ncursesw ${pkgdir}/usr/${_arch}/include/ncurses
-    cp ${pkgdir}/usr/${_arch}/lib/libncursesw.a ${pkgdir}/usr/${_arch}/lib/libncurses.a
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    [[ -d "${pkgdir}/usr/lib" ]] && rm -rf "${pkgdir}/usr/lib"
+    #cp -R ${pkgdir}/usr/${_arch}/include/ncursesw ${pkgdir}/usr/${_arch}/include/ncurses
+    #cp ${pkgdir}/usr/${_arch}/lib/libncursesw.a ${pkgdir}/usr/${_arch}/lib/libncurses.a
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+		find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
 }
