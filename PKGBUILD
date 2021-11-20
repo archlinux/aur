@@ -1,4 +1,5 @@
-# Maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer: Cody P Schafer <archlinux@codyps.com>
+# Comaintainer: John Eivind Helset <jehelset@gmail.com>
 
 pkgname=debugedit
 pkgver=4.14.2
