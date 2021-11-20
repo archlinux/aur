@@ -1,3 +1,5 @@
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+
 _pkgname=libxslt
 pkgname=mingw-w64-${_pkgname}
 pkgver=1.1.34
@@ -44,4 +46,3 @@ package() {
 		find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
 	done
 }
-
