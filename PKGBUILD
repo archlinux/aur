@@ -2,7 +2,7 @@
 pkgname=otf-solbera-dnd-5e
 _gitname=solbera-dnd-fonts
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 license=('Custom: CC-BY-SA-4.0')
 pkgdesc='A collection of unrestricted DND5e-compatible typefaces'
 arch=('any')
@@ -18,7 +18,7 @@ provides=(
 conflicts=("${pkgname}-git")
 url="https://github.com/jonathonf/${_gitname}"
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-b2sums=('3ba1899ff9ac9d4774d331b4e221498f7bf89b0e1795decaeacf7c64020051f8ce9c78374c994aa14489a8ab6ca55fef07a197c56837674d1c1a87d3dddb3624')
+b2sums=('2433dcec567c264b0c808416e45e36c6636addf7c38c37d645e043940ee27120659e1a33582efb72cd4136344779c1d8aaddc342c2d95d19783f6ebe3f741b09')
 _fontnames=(
 	'Bookinsanity'
 	'Dungeon Drop Case'
