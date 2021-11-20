@@ -1,6 +1,6 @@
 pkgbase = powerpill
 	pkgdesc = Pacman wrapper for faster downloads.
-	pkgver = 2021
+	pkgver = 2021.11
 	pkgrel = 1
 	url = https://xyne.dev/projects/powerpill
 	arch = any
@@ -15,12 +15,12 @@ pkgbase = powerpill
 	optdepends = reflector: Reflector and Rsync support
 	optdepends = rsync: Rsync download support
 	backup = etc/powerpill/powerpill.json
-	source = https://xyne.dev/projects/powerpill/src/powerpill-2021.tar.xz
-	source = https://xyne.dev/projects/powerpill/src/powerpill-2021.tar.xz.sig
+	source = https://xyne.dev/projects/powerpill/src/powerpill-2021.11.tar.xz
+	source = https://xyne.dev/projects/powerpill/src/powerpill-2021.11.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = e0980f8a88b40bac68b25d6d0e5ebe2d
-	md5sums = 0606c6fd16b6e2dadbf11dd14d082fe9
-	sha512sums = bf6f3773fc48ee4b717b6318a5f102cba0bb9c434aa105452afaf6f66e4b41acc35c80d5c045e8c4d146baef5c27a2c9d4b7ab524fb525f514a63d02f7ca51c4
-	sha512sums = d8def4d9678b8c74ded8f8b1de1dd471022f5240f48940a038b9f0fc7d7c3ddb4d6b5f1675afa3b8607bb615df2d7d7598568d41f0352eb1aec7191334f07321
+	md5sums = e54ef66cf3d6ef1a2c00e2e98014e1f9
+	md5sums = d70ecabc6e87d4b5879a5477ed3fa5f6
+	sha512sums = a4a1067a020056bd258d8a00c60a3fcd8ea3aa745c52a6f5e29f76f7a6d5e93d4a4c612139a8b746aa5ebbd9307c977edd95ca882e9054537757142ea550bf5c
+	sha512sums = 68948534846746b2b26d3b6cdcc58d38903a5a0e66c20dfd8c489985f462cafff74c2f04f222727228f4c335b9f1e4864bf05b4d93090c6538cc3b9782e0b71b
 
 pkgname = powerpill
