@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Icon=/usr/share/caj2pdf-qt/icon.png
+Exec=/usr/share/caj2pdf-qt/caj2pdf
+Name=CAJ2PDF Qt
+Comment=CAJ 转 PDF 转换器
