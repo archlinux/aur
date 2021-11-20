@@ -7,8 +7,8 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=8.2.0
-pkgrel=2
+pkgver=8.3.0
+pkgrel=1
 pkgdesc="PeaZip file manager and archiver (Qt5)"
 arch=('x86_64')
 url='https://peazip.github.io'
@@ -24,37 +24,42 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.x86_64.rpm")
-sha256sums=('d4b6e56eb7f12f8e7338e0ebeb749a9f61d9c1ca28577bde6a91f5190a0df020')
+sha256sums=('d67bd88040d70f350360aff156e049143f091997f5afe0294eac70fb19cbca18')
+changelog=changelog.txt
 
-package() {
-  # preparing /usr/**/* files for installation
-  mkdir "${pkgdir}/usr"
-  cp -aR usr/bin/ "${pkgdir}/usr"
-  cp -aR usr/share/ "${pkgdir}/usr"
+prepare() {
+  rm -r usr/lib/.build-id
+  rm usr/lib/libQt5Pas.so.1
+  rm usr/lib/peazip/libQt5Pas.so.1
+  # 7z.sfx is a Windows executable
+  rm usr/lib/peazip/res/bin/7z/7z.sfx
 
-  # preparing /opt/peazip/* files for installation
-  local peazipDest="${pkgdir}/opt/peazip"
-  mkdir -p "${peazipDest}"
-  install -m 644 opt/peazip/*.txt "${peazipDest}" # copying *.txt files and removing executable flag from them
-  cp opt/peazip/*.pdf "${peazipDest}/"
-  cp opt/peazip/peazip "${peazipDest}/"
-  
-  # preparing /opt/peazip/res/**/* files for installation
-  mkdir "${peazipDest}/res"
-  cd opt/peazip/res
-  install pea rnd "${peazipDest}/res"
-  install -m 644 altconf.txt "${peazipDest}/res" # copying altconf.txt and removing executable flag from it
-  for resSubDir in */; do # looping through all directories in "res" except "batch"
-    if [ "${resSubDir}" = "batch/" ]; then continue; fi
-    cp -aR ${resSubDir} "${peazipDest}/res"
-    if [ -f "${peazipDest}/res/${resSubDir}note.txt" ]; then
-      chmod 644 "${peazipDest}/res/${resSubDir}note.txt" # removing executable flag from note.txt
+  local sharedUsr=usr/share
+  local sharedPeaZip="${sharedUsr}/peazip"
+  rm "${sharedPeaZip}/readme/readme_Windows.txt"
+  rm "${sharedPeaZip}/batch/"*.bat
+  rm -r "${sharedPeaZip}/batch/SendTo"
+  rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror"
+
+  # setting correct permissions
+  chmod 755 usr && chmod 755 usr/bin
+  chmod 755 usr/lib && chmod 755 usr/lib/peazip
+  chmod 755 usr/lib/peazip/res && chmod -R 755 usr/lib/peazip/res/bin
+  chmod -x usr/lib/peazip/res/bin/7z/*.so
+  chmod -x usr/lib/peazip/res/bin/7z/Codecs/*.so
+  chmod 755 "${sharedUsr}"
+  for subDir in "${sharedUsr}"/*; do chmod 755 "${subDir}"; done
+  chmod 755 "${sharedUsr}/doc/peazip"
+  for subDir in "${sharedPeaZip}"/*; do
+    if [ -d "${subDir}" ]; then
+      chmod 755 $(find "${subDir}" -type d)
     fi
   done
+}
 
-  # let's take care of "batch"
-  mkdir "${peazipDest}/res/batch"
-  cp batch/*.sh "${peazipDest}/res/batch"
-  cp -aR batch/freedesktop_integration "${peazipDest}/res/batch"
-  cd -
+package() {
+  mkdir "${pkgdir}/usr"
+  cp -aR usr/bin/ "${pkgdir}/usr"
+  cp -aR usr/lib/ "${pkgdir}/usr"
+  cp -aR usr/share/ "${pkgdir}/usr"
 }

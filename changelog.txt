@@ -1,0 +1,34 @@
+* Wed Nov 17 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-1
+  PeaZip 8.3.0 adds Deflate and Deflate64 options for .7z format, improves theming,
+  command line usage, management of preferred checksum/hash algorithms list and
+  management of temporary work files.
+  The release is focused on improving the support for Linux, and to make easier to
+  port or package the application in environments, mandating a precise filesystem
+  hierarchy structure, separating architecture-dependent binary resources from other
+  types of resources, packaged with the application.
+  Full list of changes and fixes is available at https://peazip.github.io/changelog.html
+
+* Sat Sep 18 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.2.0-2
+  - Removed unnecessary Windows-related files.
+  - Corrected file permissions.
+
+* Sat Sep 18 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.2.0-1
+  PeaZip 8.2.0 is focused on improving the use from command line and scripts, and
+  introduces the (peazip)/res/batch folder, which contains sample scripts and system
+  integration files for both Linux and Windows (the SendTo and freedesktop_integration
+  folders are moved there).
+  The archive manager is now capable of optionally displaying compression/encryption
+  method and modified, created, accessed timestamps for each item in the archive, and
+  displaying the number of items, contained in each folder.
+  It is now possible to choose to keep extracted files even in the case errors occurred
+  during the extraction; working with spanned files was improved.
+  "Smart extraction" is now available as a default action to take at program's startup,
+  alongside "Open", "Open as archive", "Extract (full)", "Extract here".
+  This release also improves the user experience on Linux systems by improving the
+  automatic configuration of applications for the "open with" actions and by displaying
+  more system paths in the file manager.
+  The application is now installed in /opt/peazip.
+  The backend was updated to Brotli 1.0.9 (Linux).
+  A total of 225 file extensions can now be managed by PeaZip, with addition of .apkm,
+  .apks and .aab Android package formats, and of Lzip .lz (supported on Linux versions
+  only).
