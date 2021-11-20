@@ -1,0 +1,14 @@
+pkgbase = cork.kak-git
+	pkgdesc = A fast git-based plugin manager for Kakoune
+	pkgver = r23.e496568
+	pkgrel = 1
+	url = https://github.com/topisani/cork.kak
+	arch = x86_64
+	license = UNLICENSE
+	depends = bash
+	provides = cork.kak
+	conflicts = cork.kak
+	source = git+https://github.com/topisani/cork.kak
+	sha256sums = SKIP
+
+pkgname = cork.kak-git
