@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.16.3
+pkgver=1.16.4
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
@@ -36,9 +36,6 @@ build() {
   -DBUILD_OUT_OF_TREE=ON \
   -DLIBOBS_FRONTEND_INCLUDE_DIR='/usr/include/obs/' \
   -DLIBOBS_FRONTEND_API_LIB='/usr/lib/libobs-frontend-api.so'
-  #\
-  #-DPROCPS_INCLUDE_DIR='/usr/include/proc/' \
-  #-DPROCPS_LIBRARY='/usr/lib/libprocps.so'
 
   make -C build
 }
