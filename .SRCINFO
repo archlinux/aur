@@ -1,7 +1,7 @@
 pkgbase = circadian
 	pkgdesc = Linux auto-suspend/wake power management daemon
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrmekon/circadian
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,8 @@ pkgbase = circadian
 	optdepends = procps-ng: for monitoring tty input, uptime or processes
 	optdepends = net-tools: for monitoring ssh or smb
 	source = circadian-0.6.0.tar.gz::https://github.com/mrmekon/circadian/archive/refs/tags/0.6.0.tar.gz
+	source = w_arg.patch
 	sha512sums = 4c17d36f99dd39eace33d08b236df9ed1c4d19a5599b9b561fb000067ea829164053e056188b3f9f188ebaa9727ad784907e04f9226c137a1424e041d68364c9
+	sha512sums = 1a1a4be28692f606ed9f82d71218c498365fa12dfd63b61ad1412c293172b27f579567a42cd5e884604c01e02d8e12a5dedcb20bab483c3b5eca2e24d8044b82
 
 pkgname = circadian
