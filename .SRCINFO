@@ -1,14 +1,14 @@
 pkgbase = f3d
 	pkgdesc = A fast and minimalist 3D viewer
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://gitlab.kitware.com/f3d/f3d
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	depends = vtk9
-	source = https://gitlab.kitware.com/f3d/f3d/-/archive/v1.1.0/f3d-v1.1.0.tar.gz
-	sha256sums = 93aa9759efcc4e77beac4568280aaeaca21bfb233d3c9f60262207ca595bde79
+	makedepends = openmp
+	depends = vtk
+	source = https://github.com/f3d-app/f3d/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 68bdbe3a90f2cd553d5e090a95d3c847e2a2f06abbe225ffecd47d3d29978b0a
 
 pkgname = f3d
-
