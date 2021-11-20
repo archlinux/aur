@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=4.0b2.r27.gc9b8a00e7
+pkgver=4.0b2.r37.g82fcf9521
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -9,7 +9,7 @@ url='https://github.com/processing/processing4'
 license=(GPL LGPL)
 provides=('processing' 'processing4')
 conflicts=('processing')
-depends=( 'jdk-openjdk' 'java11-openjfx')
+depends=( 'jdk-openjdk' 'java-openjfx')
 makedepends=('ant' 'gendesk' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
@@ -24,12 +24,12 @@ source=('https://download.processing.org/reference.zip'
 sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             '500d00811031c0445416b6112972aa1f7a377092dd3b8565d79ead3fdfc62451'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '1b4b61a1f0b771e5a80fc592b252c690594b8d88dafa1baa9b778aeafa88a362'
+            '24b8a3e18b6e3a0de9422e4dbde46cceb91385f7ad6bdc89ec0a9614e082c977'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
             '0ef5266575db0fe6bde436e5a3205ca848440b3006bccb4c20fe8d7b98951ee9'
             'dc733c1cb5a41cb06ef0f9ea01d701fd9ac7713b5817b4fe79d7076a505a7c44'
-            'aa77c001eb5de9e211bb38d06c17483d81450fa0667748c44fba6d04fa329732'
-            '7d5dc98c1c96ae817de604e203f8e77d53625a660a84729eb8f83ad36e150b9f')
+            'd2877ad894f76594675534026ee91581f6357a3892afe2fd0efcf86de746c7cb'
+            '15119264b6ae7b154f033261ba93535c2d1b5e2b9d849f3999dd7881cc9e49cb')
 
 pkgver() {
   cd "$srcdir/$pkgname"
