@@ -117,7 +117,7 @@ package() {
     ln -s ${BINPATH}/pydoc${_pybasever}          "${pkgdir}"/usr/bin/pydoc${_pybasever}-dbg
     ln -s ${BINPATH}/pydoc${_pyminorver}         "${pkgdir}"/usr/bin/pydoc${_pyminorver}-dbg
 
-    # Link python[3(?!\.9)]-dbg manpages.
+    # Link manpages.
     ln -s ${MANPATH}/python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python-dbg.1
     ln -s ${MANPATH}/python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python${_pybasever}-dbg.1
     ln -s ${MANPATH}/python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python${_pyminorver}-dbg.1
