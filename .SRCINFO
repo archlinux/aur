@@ -6,7 +6,7 @@ pkgbase = icu67-bin
 	arch = x86_64
 	license = custom:icu
 	depends = bash
-	source = https://github.com/topik0/icu-binaries/releases/download/v67/icu67-67.1-1-x86_64.pkg.tar.zst
-	sha512sums = e20ff5731be37ebc1bd8a78788e171f9df6f1dee1cc3b454d28d24bbd23c430c5b18663b3a3d21ff7d8b57c4939839fe9c4d4dd1b0bc7cb9f2bf9849f424dcba
+	source = https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-Fedora31-x64.tgz
+	sha512sums = a60a1ecd6c942d69181442559d32afdf44b852490dbf3833e5b9dcd340754a26edaafbe08432a86ff9ff6372e4b14e631471178d48d4108b9e90be0564564ade
 
 pkgname = icu67-bin
