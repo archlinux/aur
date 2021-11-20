@@ -1,6 +1,6 @@
 pkgname=duality-bass-studio-vst
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Duality Bass Studio Bass Amplifier (VST Plugin)"
 arch=('x86_64')
 url="https://audio-assault.com/duality.php"
@@ -14,6 +14,7 @@ prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/Duality Bass Studio 1.2.51 Installer.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
+	find $srcdir -name ".DS_Store" -delete
 }
 
 package() {
