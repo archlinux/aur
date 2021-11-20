@@ -1,0 +1,15 @@
+pkgbase = mixbus32c7
+	pkgdesc = Harrison Mixbus - Digital Audio Workstation (32C Version)
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = http://harrisonconsoles.com/site/{mixbus32c7/7/}.html
+	arch = x86_64
+	license = EULA, GPLv2
+	depends = libcurl-gnutls
+	depends = glibc
+	depends = xorg-server
+	provides = mixbus32c
+	conflicts = mixbus32c
+	replaces = mixbus32c
+
+pkgname = mixbus32c7
