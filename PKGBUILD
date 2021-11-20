@@ -59,7 +59,9 @@ build() {
     #export servernum=99
     #while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
 
-    LC_CTYPE=en_US.UTF-8 make EXTRA_CFLAGS="$CFLAGS" -j4
+    # To configure the number of cpu threads used for compilation,
+    # replace `$(nproc)` with a specific number.
+    LC_CTYPE=en_US.UTF-8 make EXTRA_CFLAGS="$CFLAGS" -j$(nproc)
 }
 
 package() {
