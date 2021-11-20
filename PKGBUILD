@@ -3,13 +3,14 @@
 pipname=keeprofi
 pkgname=$pipname
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast rofi drun menu for keepass database"
 arch=(any)
 url="https://gitlab.com/hxss-linux/keeprofi"
 license=(MIT)
 depends=(
 	'python-pyxdg'
+	'python-yaml'
 	'python-xerox'
 	'python-pynput'
 	'python-pykeepass'
