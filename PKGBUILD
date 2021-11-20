@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"
 arch=(
@@ -43,7 +43,7 @@ conflicts=(crema)
 pkgver() {
     cd "$srcdir/$_pkgname"
     ( set -o pipefail
-        git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
