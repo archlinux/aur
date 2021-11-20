@@ -8,9 +8,9 @@ url="https://github.com/someoneonsmile/stow"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
-conflicts=('gnu-stow')
+conflicts=('stow')
 source=("stow-$pkgver.tar.gz::https://github.com/someoneonsmile/stow/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('23f28b617fa9a0c3ac6d44c686751ff2c2d9ee43275725249f03dbb0cfcb0b8ba50fa93369b9f645239b3e42b406c80f335372ba2246f3ac821fc9074d168007')
+sha512sums=('SKIP')
 
 build() {
   cd "stow-$pkgver"
