@@ -1,43 +1,38 @@
 # Maintainer: Michael Migliore <mcmigliore+aur@gmail.com>
 
-pkgname=f3d-git
-pkgver=0.1.ed9b979
-pkgrel=3
+_name=f3d
+pkgname=$_name-git
+pkgver=v1.1.0.r123.ga52bde8
+pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
-url="https://gitlab.kitware.com/f3d/f3d"
+url="https://github.com/$_name-app/$_name"
 license=('BSD')
-depends=('vtk-raytracing-git')
-makedepends=('cmake')
+depends=('vtk')
+makedepends=('git' 'cmake' 'openmp')
 provides=('f3d')
-
-prepare() {
-    cd "${srcdir}"
-    git clone ${url}.git f3d 2> /dev/null || git -C f3d pull
-}
+conflicts=('f3d')
+source=("git+https://github.com/$_name-app/$_name.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/f3d"
-    echo "0.1.$(git rev-parse --short HEAD)"
+    cd "$_name"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/f3d"
-    mkdir -p build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DBUILD_TESTING=OFF \
-          -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
-          ..
-    make
+  cd "$srcdir/$_name"
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTING=OFF \
+        -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
+        ..
+  make
 }
 
 package() {
-    cd "$srcdir/f3d/build"
-    make DESTDIR="${pkgdir}" install
-
-    install -dv "${pkgdir}"/usr/share/licenses/f3d
-    mv "${pkgdir}"/usr/share/doc/f3d/LICENSE "${pkgdir}"/usr/share/licenses/f3d
-
-    install -dv "${pkgdir}"/usr/share/doc/f3d
+  cd "$srcdir/$_name/build"
+  make DESTDIR="$pkgdir" install
 }
