@@ -1,11 +1,11 @@
 pkgname=('mingw-w64-llvm')
 pkgver=13.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-depends=('mingw-w64-zlib' 'mingw-w64-z3' 'mingw-w64-libxml2')
+depends=('mingw-w64-zlib' 'mingw-w64-z3' 'mingw-w64-libxml2' 'mingw-w64-libffi')
 makedepends=('mingw-w64-cmake' "llvm>=${pkgver%%.*}" 'python')
 options=('!strip' '!buildflags' 'staticlibs')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
@@ -27,6 +27,8 @@ build() {
       -DLLVM_INCLUDE_DOCS=OFF \
       -DLLVM_INCLUDE_TOOLS=OFF \
       -DLLVM_INCLUDE_EXAMPLES=OFF \
+      -DLLVM_ENABLE_RTTI=ON \
+      -DLLVM_ENABLE_FFI=ON \
       -DLLVM_INCLUDE_TESTS=OFF \
       -DLLVM_INCLUDE_BENCHMARKS=OFF \
       -DLLVM_ENABLE_ASSERTIONS=OFF \

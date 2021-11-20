@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
 	pkgver = 13.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://llvm.org/
 	arch = any
 	license = custom:Apache 2.0 with LLVM Exception
@@ -11,6 +11,7 @@ pkgbase = mingw-w64-llvm
 	depends = mingw-w64-zlib
 	depends = mingw-w64-z3
 	depends = mingw-w64-libxml2
+	depends = mingw-w64-libffi
 	options = !strip
 	options = !buildflags
 	options = staticlibs
