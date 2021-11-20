@@ -1,6 +1,6 @@
 pkgname=air-impulse-loader-vst
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AIR Impulse Response Loader (VST Plugin)"
 arch=('x86_64')
 url="https://audio-assault.com/air.php"
@@ -14,6 +14,7 @@ prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/aIR Impulse Loader 1.0.3a.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
+	find $srcdir -name ".DS_Store" -delete
 }
 
 package() {
