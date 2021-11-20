@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-aer-gpu
 	pkgdesc = A high performance simulator for quantum circuits that includes noise models
-	pkgver = 0.7.3
+	pkgver = 0.9.1
 	pkgrel = 4
 	url = https://github.com/Qiskit/qiskit-aer
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = python-qiskit-aer-gpu
 	makedepends = python-scikit-build
 	provides = python-qiskit-aer
 	conflicts = python-qiskit-aer
-	source = https://files.pythonhosted.org/packages/e5/b5/870edc00e407e488ccb3bcba95c561302feb75b4e3457de273e59e44f9c4/qiskit_aer_gpu-0.7.3-cp39-cp39-manylinux2010_x86_64.whl
-	sha256sums = 518129d5c11698f4394e30e66e9aebda2e953a510aa70d804c34626ab594aa49
+	source = https://files.pythonhosted.org/packages/ae/a0/a07d1b6390fa1aa6907c026fcc3a08cf93c106dec7864407301e5a40da13/qiskit_aer_gpu-0.9.1-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+	sha256sums = 1419ccf6f7db1a53a30dff04ecd77dabe2d87788d64f2011ed2425d347768b83
 
 pkgname = python-qiskit-aer-gpu
-
