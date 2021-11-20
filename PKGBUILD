@@ -1,4 +1,5 @@
-# Maintainer: quellen <lodgerz@gmail.com>
+# Maintainer: Anthony Wang <ta180m@pm.me>
+# Contributor: quellen <lodgerz@gmail.com>
 # Contributor: Daniel Menelkir <menelkir@itroll.org>
 
 pkgname=libretro-vice-git
