@@ -13,7 +13,7 @@ makedepends=('mingw-w64-cmake')
 checkdepends=('mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_pkgname}/archive/v${pkgver}.tar.gz"
+	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
 	'6f70a624d1321319d8269a911c4032f24950cde52e76f46e9ecbebfcb762f28c'
