@@ -1,6 +1,6 @@
 pkgbase = adwaita-blue-icon-theme-git
 	pkgdesc = Adwaita icon theme with blue folder icons
-	pkgver = 17
+	pkgver = 18
 	pkgrel = 1
 	url = https://github.com/realmazharhussain/adwaita-blue-icon-theme
 	arch = any

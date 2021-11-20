@@ -2,7 +2,7 @@
 pkgname=adwaita-blue-icon-theme-git
 _pkgname=${pkgname%-git}
 _pkgver=1.0.1
-pkgver=17
+pkgver=18
 pkgrel=1
 pkgdesc="Adwaita icon theme with blue folder icons"
 arch=(any)
