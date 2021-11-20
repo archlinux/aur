@@ -2,11 +2,11 @@
 pkgname=ytdownloader
 wsp=YtDownloader
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GKT3 frontend for youtube-dl with focus on best audio and video. Uses ffmpeg for joining audio & video"
 url="https://github.com/kanehekili/YoutubeDownloader"
 license=('GPL2' 'MIT')
-depends=('ffmpeg' 'youtube-dl')
+depends=('python' 'python-gobject' 'ffmpeg' 'youtube-dl')
 arch=('x86_64')
 source=(https://github.com/kanehekili/YoutubeDownloader/releases/download/1.3.3/YtDownloader1.3.3.tar)
 md5sums=(d98c7c16fbb4686adb12ee0a41d319bf)
