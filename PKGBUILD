@@ -1,7 +1,8 @@
 # Maintainer: zpyg <pu.mb@outlook.com>
 pkgname=zinit-git
-pkgver=v3.1.r485.g9ea1c9b
-pkgrel=3
+provides=("zinit")
+pkgver=v3.7.r209.g8f4e3bbf
+pkgrel=1
 pkgdesc='A flexible and fast Zsh plugin manager.'
 arch=('x86_64')
 url='https://github.com/zdharma-continuum/zinit'
