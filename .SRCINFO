@@ -1,5 +1,5 @@
 pkgbase = java-openjfx-bin
-	pkgdesc = Java OpenJFX 17.0.0.1 client application platform (Gluon build).
+	pkgdesc = Java OpenJFX 17.0.1 client application platform (Gluon build).
 	pkgver = 17
 	pkgrel = 1
 	url = https://openjfx.io/
@@ -13,11 +13,11 @@ pkgbase = java-openjfx-bin
 	depends = webkit2gtk
 	provides = java-openjfx=17
 	conflicts = java17-openjfx
-	source = https://download2.gluonhq.com/openjfx/17.0.0.1/openjfx-17.0.0.1_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/17.0.0.1/openjfx-17.0.0.1_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/17.0.0.1/openjfx-17.0.0.1-javadoc.zip
-	sha256sums = d03f61535fe05c3e648ccf457f96289ed0e094bb119423bc612e80e11ad20502
-	sha256sums = 7763a658f838b8107904af5743a943cc3febb8e74df2875374962b784977880a
-	sha256sums = b569b3b4e6c7110264784ffb440938da4cb3064460961eed4c4dd6fc1b76648f
+	source = https://download2.gluonhq.com/openjfx/17.0.1/openjfx-17.0.1_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/17.0.1/openjfx-17.0.1_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/17.0.1/openjfx-17.0.1-javadoc.zip
+	sha256sums = bb901fa4cfc5d1a2ded2d03c0d4782d47dec6a6a4dc344f48e6f2096b1008569
+	sha256sums = 28662b6fcdaedaaf23ee6dbef2d632bf2a53e30aaa9231f27e00e6ceb10238a0
+	sha256sums = fa5a8b1ed8e87cdd5b0d50ac06c347f519744ce55ba943d5ace5fdc0d50b843d
 
 pkgname = java-openjfx-bin
