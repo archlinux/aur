@@ -1,7 +1,7 @@
 pkgbase = lst
 	pkgdesc = A shitty file manager written in C99
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ItzAfroBoy/lst.git
 	arch = any
 	license = GPL3

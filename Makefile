@@ -7,7 +7,7 @@ lst: lst.c
 	@$(CC) $^ -o $@ $(CFLAGS)
 
 install:
-	@sudo cp lst $(BIN)
+	@sudo cp lst $(BIN)/lst
 
 purge: clean
 	@sudo rm $(BIN)/lst
