@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
