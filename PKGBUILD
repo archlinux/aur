@@ -2,7 +2,7 @@
 # Ex-Maintainer: Dennis Oehme <oehme@gardenofconcepts.com>
 
 pkgname=kops-bin
-pkgver=v1.21.2
+pkgver=v1.22.2
 _build=${pkgver}
 pkgrel=1
 pkgdesc='Kubernetes Operations (kOps) - Production Grade K8s Installation, Upgrades, and Management'
@@ -12,7 +12,7 @@ license=('apache')
 conflicts=()
 
 source_x86_64=("$pkgname-$pkgver::https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-amd64")
-sha256sums_x86_64=('f6e3eeed2d8c95604b884d1a6e0ebec1614b9799d462cb7d04c35e62e8b6735f')
+sha256sums_x86_64=('10551f01b21406682f9347d36203d2ed9bc9c4cab541dfe43181dbef0cc1946a')
 
 package() {
     install -d ${pkgdir}/usr/bin
