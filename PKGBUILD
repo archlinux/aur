@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=hapi
-pkgver=2020
-pkgrel=3
+pkgver=2021
+pkgrel=2
 pkgdesc='Python library, command-line tools and server for annotating Mandarin Chinese with phonetics (pinyin, zhuyin, etc.) and colors by tone.'
 arch=(any)
 license=(GPL)
@@ -9,16 +9,16 @@ url="https://xyne.dev/projects/hapi"
 depends=(python-lxml python3 python3-colorsysplus wget)
 optdepends=('aria2: required for downloading audio files')
 source=(
-  https://xyne.dev/projects/hapi/src/hapi-2020.tar.xz
-  https://xyne.dev/projects/hapi/src/hapi-2020.tar.xz.sig
+  https://xyne.dev/projects/hapi/src/hapi-2021.tar.xz
+  https://xyne.dev/projects/hapi/src/hapi-2021.tar.xz.sig
 )
 sha512sums=(
-  81a0467b938abc444ab12510cf5227ef48f05b53615098fdd7a20090be9a639f7c654aec11553a0eb99500373727012630ee5ebe8a0ba87c864f2f56806c8b42
-  cdd1a40fafffb0e64f44be83a4b5adfed975821fd587bd2f6a14f9c852b4d530e02342dcc82c14a41f96339ded6af88a02198d5d7d0e5548a62f2cfe3f18f21a
+  4b91208394ab91217b99e1f88a5e58a198d33ae06ea5a08c50e9d0aa4449c644469b759ee8cbc31e7c603cffc39997b8c5d703b94c629b2bfd7cacba4e2a0ff2
+  2276d02d8e6503e8a8da86e870c35b3ff3f2f055571dcba8edcc7671ef52b3cd768365671dab63fca928cf46aa999938fe1ca2e0f7516b9802d1bd2dcde03414
 )
 md5sums=(
-  a446a66488ef8a9cb4fa476af5a11f4d
-  1ba0b2e36d5a5b98b7422fb9b00a3da6
+  d427437faed46cf6c39aa8432b52f29f
+  56e93167c1fa2769910ce36bf05bc645
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
