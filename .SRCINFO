@@ -1,0 +1,17 @@
+pkgbase = xwinwrap-baitinq-git
+	pkgdesc = Fork of XwinWrap with some added settings (-r)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Baitinq/xwinwrap
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	provides = xwinwrap
+	conflicts = xwinwrap
+	source = git+https://github.com/Baitinq/xwinwrap#branch=master
+	sha256sums = SKIP
+
+pkgname = xwinwrap-baitinq-git
