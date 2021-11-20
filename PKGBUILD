@@ -24,9 +24,9 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	sed -i -e 's/me=.*//' -e 's/dist=.*/dist=\/usr\/share\/polydock\/bin/' bin/polydock.sh
 	mv dist/bin/polydock dist/bin/polydock.js
-	install -Dm644 dist/config/settings.ini $pkgdir/usr/share/polydock/config/settings.ini
-	install -Dm644 dist/config/themes/default.css $pkgdir/usr/share/polydock/config/themes/default.css
-	install -Dm755 dist/bin/polydock.js $pkgdir/usr/share/polydock/bin/polydock.js
-	install -Dm755 bin/polydock.sh $pkgdir/usr/share/polydock/bin/polydock.sh
-	install -Dm755 bin/polydock.sh $pkgdir/usr/bin/polydock
+	install -Dm644 dist/config/settings.ini "$pkgdir/usr/share/$pkgname/config/settings.ini"
+	install -Dm644 dist/config/themes/default.css "$pkgdir/usr/share/$pkgname/config/themes/default.css"
+	install -Dm755 dist/bin/polydock.js "$pkgdir/usr/share/$pkgname/bin/polydock.js"
+	install -Dm755 bin/polydock.sh "$pkgdir/usr/share/$pkgname/bin/polydock.sh"
+	install -Dm755 bin/polydock.sh "$pkgdir/usr/bin/polydock"
 }
