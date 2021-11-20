@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=stow-cm
 pkgver=nightly
-pkgrel=2
+pkgrel=3
 pkgdesc="config manager (simple impl of gun-stow)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/stow"

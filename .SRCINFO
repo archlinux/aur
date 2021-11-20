@@ -1,7 +1,7 @@
 pkgbase = stow-cm
 	pkgdesc = config manager (simple impl of gun-stow)
 	pkgver = nightly
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/someoneonsmile/stow
 	arch = x86_64
 	license = GPL3
