@@ -3,3 +3,5 @@ pkg
 *.tar.gz
 *.zst
 clasp
+cando
+seqan-clasp

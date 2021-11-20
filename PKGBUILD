@@ -3,15 +3,15 @@ _srcname=clasp
 _qlver=2021-02-13
 pkgname=clasp-cl
 pkgname=clasp-cl-git
-pkgver=0.4.2.r4453.gee36ba131
+pkgver=0.4.2.r4924.gfb017d54b
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
 url="https://github.com/clasp-developers/clasp"
 license=('LGPL')
 options+=(!strip)
-depends=('boost' 'expat' 'gmp' 'libbsd' 'libedit'
-         'libelf' 'libffi' 'llvm13' 'netcdf' 'ncurses' 'zlib')
+depends=('boost' 'expat' 'gmp' 'libbsd' 'libedit' 'clang'
+         'libelf' 'libffi' 'llvm' 'netcdf' 'ncurses' 'zlib')
 makedepends=('git' 'python' 'sbcl')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl' 'cando')
 source=('git://github.com/clasp-developers/clasp.git'
@@ -24,7 +24,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             '8efec9d46f0008c9f2fab387837f5a02d60ebb9f4a83106142ae954bc322b99bd48f9e91e2107dda188d679e27ddb5f48e444adfa98e6c15cf454923dfccadd5'
-            '1924197ff79d93f4683f3a818f1b5f7f9f26c107dbe6b6ea74a810608e38570bba50852fc0636753bedfee1e0dff2abbfe2394c721014de7d66350ca14aacdec'
+            '1f991c23462def8d502c10e2a2b42cee531f0c43c57c6929c00b78bde947c1f8612a4ffd989fce1e394331dac71626326d90acae0d9019a2a86f16a592ca0e51'
             '1624ca5ba9502afbcfe8c603590c884c3081162a94f86eded74ec8f1e2a1a2ca03694e2bef4190473b6c34230a478b2e95a87b5c458ff60028ca9b740cc173cd')
 
 pkgver() {
@@ -42,6 +42,7 @@ build() {
   cd "$_srcname/"
   cp ../wscript.config .
   sed -i s/\"--link-static\",//g wscript
+  sed -i "s/# CLANG_LIBRARIES = \[ 'clang-cpp' \]/CLANG_LIBRARIES = \[ 'clang-cpp' \]/g" wscript
   sed -i s/stlib/lib/g extensions/cando/wscript
   sed -i s/STLIB/LIB/g extensions/cando/wscript
   ./waf configure --enable-jupyter
