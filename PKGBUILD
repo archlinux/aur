@@ -2,7 +2,7 @@
 # Contributor: Daniel Menelkir <menelkir@itroll.org>
 
 pkgname=libretro-vice-git
-pkgver=20803.a16b0b83d
+pkgver=20942.81e9837fe
 pkgrel=1
 pkgdesc="A port of the Commodore 8bit Emulator to libretro (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -23,15 +23,25 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
+  make clean EMUTYPE=x128
   make EMUTYPE=x128
+  make clean EMUTYPE=x64
   make EMUTYPE=x64
+  make clean EMUTYPE=x64dtv
   make EMUTYPE=x64dtv
+  make clean EMUTYPE=x64sc
   make EMUTYPE=x64sc
+  make clean EMUTYPE=xcbm2
   make EMUTYPE=xcbm2
+  make clean EMUTYPE=xcbm5x0
   make EMUTYPE=xcbm5x0
+  make clean EMUTYPE=xpet
   make EMUTYPE=xpet
+  make clean EMUTYPE=xplus4
   make EMUTYPE=xplus4
+  make clean EMUTYPE=xscpu64
   make EMUTYPE=xscpu64
+  make clean EMUTYPE=xvic
   make EMUTYPE=xvic
 }
 
