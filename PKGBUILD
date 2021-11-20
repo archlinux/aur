@@ -1,7 +1,7 @@
-# Maintainer: Mike Cuche <cuche@gmx.com>
+# Maintainer: Mike Cuche <cuche@mailbox.org>
 pkgname=dsda-doom
-pkgver=0.21.3
-pkgrel=2
+pkgver=0.22.1
+pkgrel=1
 pkgdesc="Fork of PrBoom+ with extra tooling for demo recording and playback, with a focus on speedrunning"
 arch=('x86_64')
 url="https://github.com/kraflab/dsda-doom"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('fluidsynth' 'glu' 'libmad' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'dumb')  # temporarily removed 'portmidi'
 makedepends=('cmake' 'imagemagick')
 source=("https://github.com/kraflab/dsda-doom/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('77819c6b4045d281cfdce8c6d5ca558d7b3161121c20aea4cdacdcdd5804b0df')
+sha256sums=('6a5de45a786b34a478f06ec5121a5117f35506d8fb75c99494be323c0e116daa')
 
 build() {
 	cd "${srcdir}/dsda-doom-${pkgver}/prboom2"  
