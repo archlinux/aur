@@ -1,0 +1,12 @@
+pkgbase = icu67-bin
+	pkgdesc = International Components for Unicode library (binary release)
+	pkgver = 67.1
+	pkgrel = 1
+	url = https://github.com/unicode-org/icu
+	arch = x86_64
+	license = custom:icu
+	depends = bash
+	source = https://github.com/topik0/icu-binaries/releases/download/v67/icu67-67.1-1-x86_64.pkg.tar.zst
+	sha512sums = e20ff5731be37ebc1bd8a78788e171f9df6f1dee1cc3b454d28d24bbd23c430c5b18663b3a3d21ff7d8b57c4939839fe9c4d4dd1b0bc7cb9f2bf9849f424dcba
+
+pkgname = icu67-bin
