@@ -13,7 +13,6 @@ depends=( 'jdk-openjdk' 'java-openjfx')
 makedepends=('ant' 'gendesk' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
-        disable_native_dialogs.patch
         disable_update_check.patch
         fix_theme_engine.patch
         no_ffmpeg_download.patch
@@ -22,7 +21,6 @@ source=('https://download.processing.org/reference.zip'
         use_system_jdk.patch
         use_system_libraries.patch)
 sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
-            '500d00811031c0445416b6112972aa1f7a377092dd3b8565d79ead3fdfc62451'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '24b8a3e18b6e3a0de9422e4dbde46cceb91385f7ad6bdc89ec0a9614e082c977'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
@@ -64,9 +62,6 @@ prepare() {
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
-
-  # Disable native dialogs in default preferences
-  patch $pkgname/build/shared/lib/defaults.txt < disable_native_dialogs.patch
 }
 
 build() {
