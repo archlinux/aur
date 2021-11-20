@@ -15,9 +15,9 @@ pkgbase = apple-music-electron
 	optdepends = otf-san-francisco: Use of SF Font for certain themes
 	provides = pkgname
 	conflicts = apple-music-electron-git
-	source = Apple-Music-Electron-3.0.0.tar.gz::https://github.com/Apple-Music-Electron/Apple-Music-Electron.git/archive/v3.0.0.tar.gz
+	source = Apple-Music-Electron-3.0.0.tar.gz::https://github.com/Apple-Music-Electron/Apple-Music-Electron/archive/v3.0.0.tar.gz
 	source = Apple-Music-Electron.desktop
-	sha256sums = 78d57a349b7d97fed9cd487d0ae2d8468a66a7fcaacfddaaa21b9c107ab02a96
+	sha256sums = 5a379e9f29a69ac3509003fce5e43332d7409d7abbeec3553d1d30784303a778
 	sha256sums = 88ad7411fc3bbebc0c117170e82e2d2033ae2e736f447e10849c5e111caa3135
 
 pkgname = apple-music-electron
