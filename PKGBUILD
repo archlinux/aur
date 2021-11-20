@@ -2,12 +2,14 @@
 
 pkgname=youku
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YouKu Video client"
 url="http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md"
 arch=('x86_64')
 license=('GPL')
 makedepends=('electron9')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
+         'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
 source=('https://mirrors.163.com/ubuntukylin/pool/partner/youku-app_1.0.0_amd64.deb'
         'youku.desktop'
 )
