@@ -1,7 +1,7 @@
 pkgbase = klank-vst
 	pkgdesc = Bass Preamp (VST Plugin)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/collections/plugins/products/klank
 	arch = x86_64
 	groups = pro-audio

@@ -1,6 +1,6 @@
 pkgname=klank-vst
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bass Preamp (VST Plugin)"
 arch=('x86_64')
 url="https://audioassault.mx/collections/plugins/products/klank"
@@ -14,6 +14,7 @@ prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/KLANKInstallers.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
+	find $srcdir -name ".DS_Store" -delete
 }
 
 package() {
