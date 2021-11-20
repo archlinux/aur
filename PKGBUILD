@@ -1,6 +1,6 @@
 pkgname=sigma-vst
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern High Gain Amp Simulator (VST Plugin)"
 arch=('x86_64')
 url="https://audioassault.mx/products/sigma"
@@ -14,6 +14,7 @@ prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/Sigma+v2+Installers+Feb-27-2021.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
+	find $srcdir -name ".DS_Store" -delete
 }
 
 package() {
