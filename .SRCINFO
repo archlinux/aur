@@ -1,0 +1,13 @@
+pkgbase = wwrap
+	pkgdesc = Wrap unicode text not to exceed a specified column width.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kuredoro/wwrap
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	source = wwrap-1.0.0.tar.gz::https://github.com/kuredoro/wwrap/archive/cli1.0.0.tar.gz
+	sha256sums = c5a975b9c78b4cc27472e0b6bc33212a69889e9ff4972799dc46a9e840388da8
+
+pkgname = wwrap
