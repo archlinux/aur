@@ -14,12 +14,12 @@ sha512sums=('SKIP')
 
 build() {
   cd "stow-$pkgver"
-  cargo build --release
+  cargo build --release --target x86_64-unknown-linux-musl
 }
 
 check() {
-  cd "stow-$pkgver"
-  cargo test --release
+  # cd "stow-$pkgver"
+  # cargo test --release
 }
 
 package() {
