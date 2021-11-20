@@ -1,0 +1,44 @@
+diff -pNaru5 perle-serial-3.9.2.orig-0006/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
+--- perle-serial-3.9.2.orig-0006/pserial/perle-serial.c	2021-11-20 16:06:52.656295643 -0500
++++ perle-serial-3.9.2/pserial/perle-serial.c	2021-11-20 16:08:20.147780960 -0500
+@@ -4986,12 +4986,12 @@ static int __init ps_init(void)
+ 	{
+ 		panic("Couldn't register Perle's serial driver\n");
+ 	}
+ 
+ #else	// At least 2.5.0 kernel.
+-	serial_driver = alloc_tty_driver(NR_PORTS);
+-	if (!serial_driver){
++	serial_driver = tty_alloc_driver(NR_PORTS,0);
++	if (IS_ERR(serial_driver)){
+ 		printk(KERN_ERR "Couldn't allocate Perle serial driver\n");
+ 		return -ENOMEM;
+ 	}
+ 	serial_driver->owner = THIS_MODULE;
+ 	serial_driver->driver_name = "perle-serial";
+@@ -5006,11 +5006,11 @@ static int __init ps_init(void)
+ 	serial_driver->flags = TTY_DRIVER_REAL_RAW ;
+ 	
+ 	tty_set_operations(serial_driver, &ps_ops);
+ 	if( (rc = tty_register_driver(serial_driver)) < 0 )
+ 	{
+-		put_tty_driver(serial_driver);
++		tty_driver_kref_put(serial_driver);
+ 		printk(KERN_ERR "Couldn't register Perle serial driver\n");
+ 		return rc;
+ 	}
+ 
+ #endif
+@@ -5226,11 +5226,11 @@ static void __exit ps_fini(void)
+ #if LINUX_VERSION_CODE <  KERNEL_VERSION(2,5,0)
+ 	remove_bh( PERLE_SERIAL_BH );
+ 	tty_unregister_driver(&serial_driver);
+ #else
+ 	tty_unregister_driver(serial_driver);
+-	put_tty_driver(serial_driver);
++	tty_driver_kref_put(serial_driver);
+ #endif
+ 	for (i = 0; i < NR_PORTS; i++) {
+ 		if ((info = ps_table[i].info)) {
+ //			if (info->state->XRflatreg) // This code causes oops. Remove for now plus all other Sleep calls.
+ //				ps_resetSLEEP(info);			/* reset sleep mode for Exar uarts */

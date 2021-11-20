@@ -79,7 +79,7 @@ pkgname='perle-serial'
 #_pkgver='3.9.0-14'
 _pkgver='3.9.2-4'
 pkgver="${_pkgver//-/_}"
-pkgrel='3'
+pkgrel='4'
 pkgdesc='kernel module driver for Perle UltraPort SI Express PCI-RAS modem SPEED LE multi I/O serial parallel RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='https://www.perle.com/downloads/mp_speedle.shtml'
@@ -97,6 +97,7 @@ source=(
   '0003-kernel-5.12-tty-low_latency.patch'
   '0004-tty_unregister_driver-void.patch'
   '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
+  '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
 )
 md5sums=('85e9617af62fcab55c684fa8e4b26987'
          '52f87acfeb5f5820a74ad6aa74d18acf'
@@ -104,14 +105,16 @@ md5sums=('85e9617af62fcab55c684fa8e4b26987'
          'f97869736f93fb70b9f034106697c0a2'
          'd85366f7566046dbd580850fbfa640e0'
          '7d7c57fc3a46599aebede7f940c5c5a8'
-         '47a81ca7f524a3e86abb72ae872bac74')
+         '47a81ca7f524a3e86abb72ae872bac74'
+         '128ee03b62d13384a249f6f6244d0214')
 sha256sums=('d9d61a941ecfd2ff41d5450557eb9071d934497dbd10229e97c8f88b48cb9a58'
             '691e0d8d348ab9f19f0398ff79e0d4780d5110e3dd11acf3261e3f73b2983ea1'
             '31e0d244d22b16d2c0b783e38bac2d96a53cbe0ce14f2fe11142a8691ce952aa'
             '8dcb2c32d641cef471fe45db1e122492a82b3439c55be8c530758d519eeae289'
             '3e2b44baf4d8e29ce5e084485f0882a8f06a1d1b045a93ffa5cdd2f8112d1bfa'
             '7c0c4af907e68a2641beffd20bf487b47cf58ca79dea45276b5046fe81f436bc'
-            '0c942db9e9a5f41873cc2ba6edae3372da672e8f82ea5c1266a2c905d4373319')
+            '0c942db9e9a5f41873cc2ba6edae3372da672e8f82ea5c1266a2c905d4373319'
+            '4c9e99b780353f270b96e57cd25e4ebf8e3058fa44105422ada42eb87cf798b2')
 
 _opt_SERIAL=1    # This is for bug testing dkms only. All cards have serial ports so this should always be enabled.
 
@@ -207,6 +210,13 @@ prepare() {
   #cp -pr "${srcdir}/${_srcdir}"{,.orig-0005}; false
   #diff -pNaru5 perle-serial-3.9.2{.orig-0005,} > '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
   patch -Nup1 -i "${srcdir}/0005-kernel-5.14-unsigned-tty-flow-tty.patch"
+
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0006}; false
+  #diff -pNaru5 perle-serial-3.9.2{.orig-0006,} > '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  patch -Nup1 -i "${srcdir}/0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
   set +u
 }
 
