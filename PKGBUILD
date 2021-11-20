@@ -400,6 +400,10 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
+  # add resolve_btfids for building out-of-tree modules wth CONFIG_DEBUG_INFO_BTF selected
+  [[ -x tools/bpf/resolve_btfids/resolve_btfids ]] &&
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
