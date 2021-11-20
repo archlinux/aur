@@ -1,42 +1,39 @@
-From 453ac7e441998d9fbd48e56506bdd6f697f85736 Mon Sep 17 00:00:00 2001
+From 62f3bba24251ed9351a6f90413f196b52d4475fe Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Thu, 4 Nov 2021 20:03:10 -0700
-Subject: [PATCH] v5.15 s0ix patch 2021-11-04
+Date: Fri, 19 Nov 2021 16:46:04 -0800
+Subject: [PATCH] v5.15 s0ix patch 2021-11-19
 
 Squashed commit of the following:
 
-commit 6bdd54fa7d0770fcfdde3a969876ed54673cfdd5
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Tue Sep 28 11:00:40 2021 -0500
+commit ba41527a12621cb4e7124ce4afcf6aa4f991a769
+Author: Alex Deucher <alexander.deucher@amd.com>
+Date:   Thu Nov 18 14:54:53 2021 -0500
 
-    platform/x86: amd-pmc: explicitly check for GFXOFF mask (!SEE NOTES!)
+    drm/amdgpu/gfx9: switch to golden tsc registers for renoir+
 
-    NOTE: This patch needs manual merging due to prior changes, see
-    "platform/x86: amd-pmc: Fix compilation when CONFIG_DEBUGFS is disabled"
-    https://git.kernel.org/pdx86/platform-drivers-x86/c/40635cd32f0d83573a558dc30e9ba3469e769249
-    and "platform/x86: amd-pmc: Add support for AMD Smart Trace Buffer"
+    Renoir and newer gfx9 APUs have new TSC register that is
+    not part of the gfxoff tile, so it can be read without
+    needing to disable gfx off.
 
-    (This patch is for testing only and should not be upstreamed in
-    this state)
+    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-    Explicitly check the value of GFXOFF before setting OS_HINT.  If
-    it's not valid, continue retrying to read it - for up to 2 seconds.
+commit 8e2d97445c1620f1b9cd5283b9cb654afa3e4b91
+Author: Alex Deucher <alexander.deucher@amd.com>
+Date:   Thu Nov 18 14:54:52 2021 -0500
 
-    If it's still not valid, abort the suspend routine.
+    drm/amdgpu/gfx10: add wraparound gpu counter check for APUs as well
 
-    Possible outcomes:
-    * If this makes all failed suspends "go away" 100% success -> there is
-      a timing problem remaining in amdgpu as it pertains to when GFXOFF is
-      set relative to when AMD_PMC sends OS_HINT
+    Apply the same check we do for dGPUs for APUs as well.
 
-      There should be a message "gfxoff not asserted retrying"
-    * If the suspend entry fails now with "gfxoff not asserted after 2000000us"
-      -> GFXOFF is also a symptom and not the root cause of failed s0i3 entry
+    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-    Change-Id: Ic3a1ed188abad21f94c8dd82c2eeed43117b1dbe
+commit 462c4b0a294a94d38c3ea9e32f09eafe42777616
+Author: Julian Sikorski <belegdol+github@gmail.com>
+Date:   Fri Nov 19 17:52:36 2021 +0100
 
-commit 4ccffecb1210fd7b38e1b584b35d00d52fe685dc
+    GFXOFF check patch by Lijo Lazar
+
+commit 8baca2bf29ff89df4d7310caa156f49b85eac9c4
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Oct 28 17:09:35 2021 +0530
 
@@ -54,7 +51,7 @@ Date:   Thu Oct 28 17:09:35 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit c76c8b2d6497dcc828fbb5ca1c1a24b456feab52
+commit 1aa4adac827e28d33352e47988c3d3311bfeab85
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Oct 28 17:09:34 2021 +0530
 
@@ -65,7 +62,7 @@ Date:   Thu Oct 28 17:09:34 2021 +0530
 
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit eb36880e53d06c51941c8760e951e455d2b4dc92
+commit 0e7044e4961c1c735e16f9c8033637cdcef839b3
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Oct 28 17:09:33 2021 +0530
 
@@ -76,7 +73,7 @@ Date:   Thu Oct 28 17:09:33 2021 +0530
 
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit d7245e84b1abd655c34276c34b46e22786e196b0
+commit 989a04253b89ace8343625e79b9a6682b615f922
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Sun Oct 31 20:48:53 2021 -0500
 
@@ -95,7 +92,7 @@ Date:   Sun Oct 31 20:48:53 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit e63e24d5c814734ea52e21d85054ee98fa56fa0f
+commit 926f0d2773e3d42a0863c05c3700e0665251db87
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Oct 29 15:40:16 2021 -0500
 
@@ -111,7 +108,7 @@ Date:   Fri Oct 29 15:40:16 2021 -0500
     Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 8f1609f26f32b629304f8fee5ff359c58e5eade0
+commit e284369442c61048b06e31ece7282b032de09c29
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Nov 2 16:32:56 2021 +0100
 
@@ -127,7 +124,7 @@ Date:   Tue Nov 2 16:32:56 2021 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Acked-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 4016da45040d2625a8cf822bc02091ca16d36409
+commit 7d269824781acfca610b81e3747833423a4b314a
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:43 2021 -0500
 
@@ -138,7 +135,7 @@ Date:   Tue Oct 26 12:14:43 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit eac1b32f6cce4a8b416029fbaa0b9218353583fd
+commit f62a21feb82e82bbdda66ac7b0ce04dab4b43e0b
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:42 2021 -0500
 
@@ -150,7 +147,7 @@ Date:   Tue Oct 26 12:14:42 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 6c12d3aba8789b49bc4b82d76e905e4d1a84bbb9
+commit c01d560f2b53e1519676b8c412802e1ce4ed6b02
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:41 2021 -0500
 
@@ -164,7 +161,7 @@ Date:   Tue Oct 26 12:14:41 2021 -0500
     Fixes: 59348401ebed ("platform/x86: amd-pmc: Add special handling for timer based S0i3 wakeup")
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 6ac4a98e4ca2b1dcb72e49de93211acb9f399f1e
+commit 0f8c1535f8317ef99ec51f11c00584a85bdf49fd
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:46 2021 -0500
 
@@ -187,7 +184,7 @@ Date:   Wed Oct 20 11:29:46 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit b7f215dee5b17eb26ff39c09fcf5dcc3b55c5570
+commit 13232abac47845187d59e20409f888899f0b36d3
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:45 2021 -0500
 
@@ -201,24 +198,7 @@ Date:   Wed Oct 20 11:29:45 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit c738c0930b1e8edc8a0f3425de9342cea0b7bfc0
-Author: Scott B <arglebargle@arglebargle.dev>
-Date:   Thu Oct 14 02:22:21 2021 -0700
-
-    TEST: Replaces "don't wait to signal GFXOFF"
-
-    replacement for 4df3adab896f843afe5bca5960fbca6ff2cc407e per lijo lazar
-    see: https://gitlab.freedesktop.org/drm/amd/-/issues/1710#note_1102805
-
-commit 326ad78248530c566707ec74241d7f64d70199d1
-Author: Scott B <arglebargle@arglebargle.dev>
-Date:   Thu Oct 14 02:16:16 2021 -0700
-
-    Revert "drm/amdgpu: During s0ix don't wait to signal GFXOFF"
-
-    This reverts commit 4df3adab896f843afe5bca5960fbca6ff2cc407e.
-
-commit bacdd913c9f333f1075bf8b8e26ca0fca0ba93a2
+commit 6d42af9d4af7b3e53c8d8c853effbcc84623b414
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -237,7 +217,7 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit c93d488a712caa8c08b11802bf02305f2a157199
+commit 26f5620d051d1c3d9824da3df5ad6f7865154d56
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -250,7 +230,7 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 
-commit d2b71a18d8ae450d26d2a475dc5bda28da09919e
+commit 9b45888587b66d06c38c47958e7e503d0a367ad6
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -262,7 +242,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit d9eb018a52af1451a72389b76326f5246a67c543
+commit 65e81196616f652d9b202f7af689129c1feb1212
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -277,7 +257,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 4851b6540bd2fbae04435179be8f3ba2e46174f1
+commit 8bc5014976796c839be445928f13c9338dd49add
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -290,7 +270,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 053bd7d9cf67f78c37559ff3f63292065b788df9
+commit e47fa03b6683ef26e4fe6a74432920d0f71b2795
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -309,7 +289,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 5ba1eb1a6352b5c835b8a876f0e924c561be7c3e
+commit b10ad23222811cf6fd409228990eaa651f54e1b8
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -324,15 +304,16 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
     BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1708
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 ---
- drivers/acpi/processor_idle.c                 |   3 +-
- drivers/acpi/x86/s2idle.c                     |   6 +
- drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c       |  14 +-
- .../gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c   |   2 +
- drivers/pinctrl/pinctrl-amd.c                 |  29 +-
- drivers/platform/x86/Kconfig                  |   2 +-
- drivers/platform/x86/amd-pmc.c                | 322 ++++++++++++++++--
- include/linux/acpi.h                          |   9 +
- 8 files changed, 351 insertions(+), 36 deletions(-)
+ drivers/acpi/processor_idle.c             |   3 +-
+ drivers/acpi/x86/s2idle.c                 |   6 +
+ drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c    |  15 +-
+ drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c     |  49 +++-
+ drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   5 +-
+ drivers/pinctrl/pinctrl-amd.c             |  29 ++-
+ drivers/platform/x86/Kconfig              |   2 +-
+ drivers/platform/x86/amd-pmc.c            | 301 ++++++++++++++++++++--
+ include/linux/acpi.h                      |   9 +
+ 9 files changed, 380 insertions(+), 39 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index f37fba9e5ba0..9d378dc9e928 100644
@@ -365,58 +346,117 @@ index 1c48358b43ba..0b65d4623214 100644
  		if (adev->power.state < lpi_constraints_table[i].min_dstate)
  			acpi_handle_info(handle,
  				"LPI: Constraint not met; min power state:%s current power state:%s\n",
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
-index 1916ec84dd71..e7f06bd0f0cd 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
-@@ -31,8 +31,6 @@
- /* delay 0.1 second to enable gfx off feature */
- #define GFX_OFF_DELAY_ENABLE         msecs_to_jiffies(100)
+diff --git a/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c b/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c
+index 16dbe593cba2..970d59a21005 100644
+--- a/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c
+@@ -7729,8 +7729,19 @@ static uint64_t gfx_v10_0_get_gpu_clock_counter(struct amdgpu_device *adev)
+ 	switch (adev->asic_type) {
+ 	case CHIP_VANGOGH:
+ 	case CHIP_YELLOW_CARP:
+-		clock = (uint64_t)RREG32_SOC15(SMUIO, 0, mmGOLDEN_TSC_COUNT_LOWER_Vangogh) |
+-			((uint64_t)RREG32_SOC15(SMUIO, 0, mmGOLDEN_TSC_COUNT_UPPER_Vangogh) << 32ULL);
++		preempt_disable();
++		clock_hi = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_UPPER_Vangogh);
++		clock_lo = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_LOWER_Vangogh);
++		hi_check = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_UPPER_Vangogh);
++		/* The SMUIO TSC clock frequency is 100MHz, which sets 32-bit carry over
++		 * roughly every 42 seconds.
++		 */
++		if (hi_check != clock_hi) {
++			clock_lo = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_LOWER_Vangogh);
++			clock_hi = hi_check;
++		}
++		preempt_enable();
++		clock = clock_lo | (clock_hi << 32ULL);
+ 		break;
+ 	default:
+ 		preempt_disable();
+diff --git a/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c b/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c
+index 025184a556ee..3fee7ea7f05e 100644
+--- a/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c
+@@ -140,6 +140,11 @@ MODULE_FIRMWARE("amdgpu/aldebaran_rlc.bin");
+ #define mmTCP_CHAN_STEER_5_ARCT								0x0b0c
+ #define mmTCP_CHAN_STEER_5_ARCT_BASE_IDX							0
  
--#define GFX_OFF_NO_DELAY 0
--
- /*
-  * GPU GFX IP block helpers function.
-  */
-@@ -560,8 +558,6 @@ int amdgpu_gfx_enable_kcq(struct amdgpu_device *adev)
++#define mmGOLDEN_TSC_COUNT_UPPER_Renoir                0x0025
++#define mmGOLDEN_TSC_COUNT_UPPER_Renoir_BASE_IDX       1
++#define mmGOLDEN_TSC_COUNT_LOWER_Renoir                0x0026
++#define mmGOLDEN_TSC_COUNT_LOWER_Renoir_BASE_IDX       1
++
+ enum ta_ras_gfx_subblock {
+ 	/*CPC*/
+ 	TA_RAS_BLOCK__GFX_CPC_INDEX_START = 0,
+@@ -4228,19 +4233,39 @@ static uint64_t gfx_v9_0_kiq_read_clock(struct amdgpu_device *adev)
  
- void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
+ static uint64_t gfx_v9_0_get_gpu_clock_counter(struct amdgpu_device *adev)
  {
--	unsigned long delay = GFX_OFF_DELAY_ENABLE;
+-	uint64_t clock;
 -
- 	if (!(adev->pm.pp_feature & PP_GFXOFF_MASK))
- 		return;
- 
-@@ -577,14 +573,8 @@ void amdgpu_gfx_off_ctrl(struct amdgpu_device *adev, bool enable)
- 
- 		adev->gfx.gfx_off_req_count--;
- 
--		if (adev->gfx.gfx_off_req_count == 0 &&
--		    !adev->gfx.gfx_off_state) {
--			/* If going to s2idle, no need to wait */
--			if (adev->in_s0ix)
--				delay = GFX_OFF_NO_DELAY;
--			schedule_delayed_work(&adev->gfx.gfx_off_delay_work,
--					      delay);
--		}
-+		if (adev->gfx.gfx_off_req_count == 0 && !adev->gfx.gfx_off_state)
-+			schedule_delayed_work(&adev->gfx.gfx_off_delay_work, GFX_OFF_DELAY_ENABLE);
- 	} else {
- 		if (adev->gfx.gfx_off_req_count == 0) {
- 			cancel_delayed_work_sync(&adev->gfx.gfx_off_delay_work);
-diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c b/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
-index 145f13b8c977..25d9e5b22cd3 100644
---- a/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
-+++ b/drivers/gpu/drm/amd/pm/swsmu/smu12/renoir_ppt.c
-@@ -1378,6 +1378,8 @@ static ssize_t renoir_get_gpu_metrics(struct smu_context *smu,
- 
- static int renoir_gfx_state_change_set(struct smu_context *smu, uint32_t state)
- {
-+	if (state == sGpuChangeState_D3Entry)
-+		smu_v12_0_gfx_off_control(smu, true);
- 
- 	return 0;
+-	amdgpu_gfx_off_ctrl(adev, false);
+-	mutex_lock(&adev->gfx.gpu_clock_mutex);
+-	if (adev->asic_type == CHIP_VEGA10 && amdgpu_sriov_runtime(adev)) {
+-		clock = gfx_v9_0_kiq_read_clock(adev);
+-	} else {
+-		WREG32_SOC15(GC, 0, mmRLC_CAPTURE_GPU_CLOCK_COUNT, 1);
+-		clock = (uint64_t)RREG32_SOC15(GC, 0, mmRLC_GPU_CLOCK_COUNT_LSB) |
+-			((uint64_t)RREG32_SOC15(GC, 0, mmRLC_GPU_CLOCK_COUNT_MSB) << 32ULL);
++	uint64_t clock, clock_lo, clock_hi, hi_check;
++	
++	switch (adev->asic_type) {
++	case CHIP_RENOIR:
++		preempt_disable();
++		clock_hi = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_UPPER_Renoir);
++		clock_lo = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_LOWER_Renoir);
++		hi_check = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_UPPER_Renoir);
++		/* The SMUIO TSC clock frequency is 100MHz, which sets 32-bit carry over
++		 * roughly every 42 seconds.
++		 */
++		if (hi_check != clock_hi) {
++			clock_lo = RREG32_SOC15_NO_KIQ(SMUIO, 0, mmGOLDEN_TSC_COUNT_LOWER_Renoir);
++			clock_hi = hi_check;
++		}
++		preempt_enable();
++		clock = clock_lo | (clock_hi << 32ULL);
++		break;
++	default:
++		amdgpu_gfx_off_ctrl(adev, false);
++		mutex_lock(&adev->gfx.gpu_clock_mutex);
++		if (adev->asic_type == CHIP_VEGA10 && amdgpu_sriov_runtime(adev)) {
++			clock = gfx_v9_0_kiq_read_clock(adev);
++		} else {
++			WREG32_SOC15(GC, 0, mmRLC_CAPTURE_GPU_CLOCK_COUNT, 1);
++			clock = (uint64_t)RREG32_SOC15(GC, 0, mmRLC_GPU_CLOCK_COUNT_LSB) |
++				((uint64_t)RREG32_SOC15(GC, 0, mmRLC_GPU_CLOCK_COUNT_MSB) << 32ULL);
++		}
++		mutex_unlock(&adev->gfx.gpu_clock_mutex);
++		amdgpu_gfx_off_ctrl(adev, true);
++		break;
++		((uint64_t)RREG32_SOC15(GC, 0, mmRLC_GPU_CLOCK_COUNT_MSB) << 32ULL);
+ 	}
+-	mutex_unlock(&adev->gfx.gpu_clock_mutex);
+-	amdgpu_gfx_off_ctrl(adev, true);
+ 	return clock;
  }
+ 
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
+index 04863a797115..8c54041e6c6b 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
+@@ -277,8 +277,11 @@ static int smu_dpm_set_power_gate(void *handle,
+ 	struct smu_context *smu = handle;
+ 	int ret = 0;
+ 
+-	if (!smu->pm_enabled || !smu->adev->pm.dpm_enabled)
++	if (!smu->pm_enabled || !smu->adev->pm.dpm_enabled) {
++		WARN(true, "SMU uninitialized but power %s requested for %u!\n",
++		     gate ? "gate" : "ungate", block_type);
+ 		return -EOPNOTSUPP;
++	}
+ 
+ 	switch (block_type) {
+ 	/*
 diff --git a/drivers/pinctrl/pinctrl-amd.c b/drivers/pinctrl/pinctrl-amd.c
 index bae9d429b813..ecab9064a845 100644
 --- a/drivers/pinctrl/pinctrl-amd.c
@@ -514,7 +554,7 @@ index e21ea3d23e6f..4cc2782635ec 100644
  	  The driver provides support for AMD Power Management Controller
  	  primarily responsible for S2Idle transactions that are driven from
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index fc95620101e8..2c1bebf972c1 100644
+index fc95620101e8..5d1ff04152de 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -17,9 +17,11 @@
@@ -546,18 +586,15 @@ index fc95620101e8..2c1bebf972c1 100644
  /* Base address of SMU for mapping physical address to virtual address */
  #define AMD_PMC_SMU_INDEX_ADDRESS	0xB8
  #define AMD_PMC_SMU_INDEX_DATA		0xBC
-@@ -76,6 +88,10 @@
+@@ -76,6 +88,7 @@
  #define SOC_SUBSYSTEM_IP_MAX	12
  #define DELAY_MIN_US		2000
  #define DELAY_MAX_US		3000
 +#define FIFO_SIZE		4096
-+
-+#define GFX_IDLE_MASK		0x00000080
-+
  enum amd_pmc_def {
  	MSG_TEST = 0x01,
  	MSG_OS_HINT_PCO,
-@@ -110,15 +126,26 @@ struct amd_pmc_dev {
+@@ -110,15 +123,26 @@ struct amd_pmc_dev {
  	u32 base_addr;
  	u32 cpu_id;
  	u32 active_ips;
@@ -585,7 +622,7 @@ index fc95620101e8..2c1bebf972c1 100644
  
  static inline u32 amd_pmc_reg_read(struct amd_pmc_dev *dev, int reg_offset)
  {
-@@ -133,7 +160,7 @@ static inline void amd_pmc_reg_write(struct amd_pmc_dev *dev, int reg_offset, u3
+@@ -133,7 +157,7 @@ static inline void amd_pmc_reg_write(struct amd_pmc_dev *dev, int reg_offset, u3
  struct smu_metrics {
  	u32 table_version;
  	u32 hint_count;
@@ -594,7 +631,7 @@ index fc95620101e8..2c1bebf972c1 100644
  	u32 timein_s0i2;
  	u64 timeentering_s0i3_lastcapture;
  	u64 timeentering_s0i3_totaltime;
-@@ -147,6 +174,99 @@ struct smu_metrics {
+@@ -147,6 +171,97 @@ struct smu_metrics {
  	u64 timecondition_notmet_totaltime[SOC_SUBSYSTEM_IP_MAX];
  } __packed;
  
@@ -665,7 +702,7 @@ index fc95620101e8..2c1bebf972c1 100644
 +};
 +
 +static int amd_pmc_idlemask_read(struct amd_pmc_dev *pdev, struct device *dev,
-+				 struct seq_file *s, u32 *val_out)
++				 struct seq_file *s)
 +{
 +	u32 val;
 +
@@ -679,8 +716,6 @@ index fc95620101e8..2c1bebf972c1 100644
 +	default:
 +		return -EINVAL;
 +	}
-+	if (val_out)
-+		*val_out = val;
 +
 +	if (dev)
 +		dev_dbg(pdev->dev, "SMU idlemask s0i3: 0x%x\n", val);
@@ -694,7 +729,7 @@ index fc95620101e8..2c1bebf972c1 100644
  #ifdef CONFIG_DEBUG_FS
  static int smu_fw_info_show(struct seq_file *s, void *unused)
  {
-@@ -162,9 +282,12 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
+@@ -162,9 +277,12 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
  	seq_puts(s, "\n=== SMU Statistics ===\n");
  	seq_printf(s, "Table Version: %d\n", table.table_version);
  	seq_printf(s, "Hint Count: %d\n", table.hint_count);
@@ -708,7 +743,7 @@ index fc95620101e8..2c1bebf972c1 100644
  
  	seq_puts(s, "\n=== Active time (in us) ===\n");
  	for (idx = 0 ; idx < SOC_SUBSYSTEM_IP_MAX ; idx++) {
-@@ -201,6 +324,23 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
+@@ -201,6 +319,23 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
  }
  DEFINE_SHOW_ATTRIBUTE(s0ix_stats);
  
@@ -718,7 +753,7 @@ index fc95620101e8..2c1bebf972c1 100644
 +	int rc;
 +
 +	if (dev->major > 56 || (dev->major >= 55 && dev->minor >= 37)) {
-+		rc = amd_pmc_idlemask_read(dev, NULL, s, NULL);
++		rc = amd_pmc_idlemask_read(dev, NULL, s);
 +		if (rc)
 +			return rc;
 +	} else {
@@ -732,7 +767,7 @@ index fc95620101e8..2c1bebf972c1 100644
  static void amd_pmc_dbgfs_unregister(struct amd_pmc_dev *dev)
  {
  	debugfs_remove_recursive(dev->dbgfs_dir);
-@@ -213,6 +353,12 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+@@ -213,6 +348,12 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
  			    &smu_fw_info_fops);
  	debugfs_create_file("s0ix_stats", 0644, dev->dbgfs_dir, dev,
  			    &s0ix_stats_fops);
@@ -745,7 +780,7 @@ index fc95620101e8..2c1bebf972c1 100644
  }
  #else
  static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
-@@ -264,7 +410,7 @@ static void amd_pmc_dump_registers(struct amd_pmc_dev *dev)
+@@ -264,7 +405,7 @@ static void amd_pmc_dump_registers(struct amd_pmc_dev *dev)
  	dev_dbg(dev->dev, "AMD_PMC_REGISTER_MESSAGE:%x\n", value);
  }
  
@@ -754,7 +789,7 @@ index fc95620101e8..2c1bebf972c1 100644
  {
  	int rc;
  	u32 val;
-@@ -283,7 +429,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
+@@ -283,7 +424,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
  	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_RESPONSE, 0);
  
  	/* Write argument into response register */
@@ -763,7 +798,7 @@ index fc95620101e8..2c1bebf972c1 100644
  
  	/* Write message ID to message ID register */
  	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_MESSAGE, msg);
-@@ -339,21 +485,95 @@ static int amd_pmc_get_os_hint(struct amd_pmc_dev *dev)
+@@ -339,21 +480,79 @@ static int amd_pmc_get_os_hint(struct amd_pmc_dev *dev)
  	return -EINVAL;
  }
  
@@ -816,7 +851,6 @@ index fc95620101e8..2c1bebf972c1 100644
  {
  	struct amd_pmc_dev *pdev = dev_get_drvdata(dev);
  	int rc;
-+	u32 val = 0;
  	u8 msg;
 +	u32 arg = 1;
  
@@ -832,22 +866,7 @@ index fc95620101e8..2c1bebf972c1 100644
 +	}
 +
 +	/* Dump the IdleMask before we send hint to SMU */
-+	amd_pmc_idlemask_read(pdev, dev, NULL, &val);
-+	if (!(val & GFX_IDLE_MASK)) {
-+		uint32_t i;
-+		dev_err(pdev->dev, "gfxoff not asserted, retrying\n");
-+		for (i = 0; i < PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX; i++) {
-+			udelay(PMC_MSG_DELAY_MIN_US);
-+			amd_pmc_idlemask_read(pdev, dev, NULL, &val);
-+			if (val & GFX_IDLE_MASK)
-+				break;
-+		}
-+		if (!(val & GFX_IDLE_MASK)) {
-+			dev_err(pdev->dev, "gfxoff not asserted after %dus\n",
-+				PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX);
-+			return -EBUSY;
-+		}
-+	}
++	amd_pmc_idlemask_read(pdev, dev, NULL);
  	msg = amd_pmc_get_os_hint(pdev);
 -	rc = amd_pmc_send_cmd(pdev, 1, NULL, msg, 0);
 +	rc = amd_pmc_send_cmd(pdev, arg, NULL, msg, 0);
@@ -860,7 +879,7 @@ index fc95620101e8..2c1bebf972c1 100644
  	return rc;
  }
  
-@@ -363,14 +583,21 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+@@ -363,14 +562,21 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
  	int rc;
  	u8 msg;
  
@@ -876,7 +895,7 @@ index fc95620101e8..2c1bebf972c1 100644
 +	amd_pmc_send_cmd(pdev, 0, NULL, SMU_MSG_LOG_DUMP_DATA, 0);
 +
 +	/* Dump the IdleMask to see the blockers */
-+	amd_pmc_idlemask_read(pdev, dev, NULL, NULL);
++	amd_pmc_idlemask_read(pdev, dev, NULL);
 +
 +	/* Write data incremented by 1 to distinguish in stb_read */
 +	if (enable_stb)
@@ -885,7 +904,7 @@ index fc95620101e8..2c1bebf972c1 100644
  	return 0;
  }
  
-@@ -387,6 +614,57 @@ static const struct pci_device_id pmc_pci_ids[] = {
+@@ -387,6 +593,57 @@ static const struct pci_device_id pmc_pci_ids[] = {
  	{ }
  };
  
@@ -943,7 +962,7 @@ index fc95620101e8..2c1bebf972c1 100644
  static int amd_pmc_probe(struct platform_device *pdev)
  {
  	struct amd_pmc_dev *dev = &pmc;
-@@ -400,22 +678,23 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -400,22 +657,23 @@ static int amd_pmc_probe(struct platform_device *pdev)
  
  	rdev = pci_get_domain_bus_and_slot(0, 0, PCI_DEVFN(0, 0));
  	if (!rdev || !pci_match_id(pmc_pci_ids, rdev)) {
@@ -973,7 +992,7 @@ index fc95620101e8..2c1bebf972c1 100644
  	}
  
  	base_addr_lo = val & AMD_PMC_BASE_ADDR_HI_MASK;
-@@ -423,14 +702,14 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -423,14 +681,14 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	err = pci_write_config_dword(rdev, AMD_PMC_SMU_INDEX_ADDRESS, AMD_PMC_BASE_ADDR_HI);
  	if (err) {
  		dev_err(dev->dev, "error writing to 0x%x\n", AMD_PMC_SMU_INDEX_ADDRESS);
@@ -992,7 +1011,7 @@ index fc95620101e8..2c1bebf972c1 100644
  	}
  
  	base_addr_hi = val & AMD_PMC_BASE_ADDR_LO_MASK;
-@@ -457,9 +736,14 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -457,9 +715,14 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	if (err)
  		dev_err(dev->dev, "SMU debugging info not supported on this platform\n");
  
@@ -1028,5 +1047,5 @@ index 974d497a897d..6224b1e32681 100644
  
  #ifdef CONFIG_ACPI_HOTPLUG_IOAPIC
 -- 
-2.33.1
+2.34.0
 

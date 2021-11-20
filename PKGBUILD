@@ -169,7 +169,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip-MT7921.patch"
 
         # squashed s0ix enablement
-        "9001-v5.15-s0ix-patch-2021-11-04.patch"
+        "9001-v5.15-s0ix-patch-2021-11-19.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -201,7 +201,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
             '7dbfdd120bc155cad1879579cb9dd1185eb5e37078c8c93fef604a275a163812'
             '1444af2e125080934c67b6adb4561fd354a72ce47d3de393b24f53832ee492ac'
-            '03a01e5caa9aa79c9f3643668f4b1e5d52ea2aeed191b8a5e3c869bca07f8c82')
+            'b628dbd723b837ee89d0832174b762da61415d276e827646b9bad3e770be2898')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-"$pkgbase"}
