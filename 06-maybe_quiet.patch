@@ -315,7 +315,7 @@ index 2cb9d31..4f3de25 100644
 +EOF
 +  fi
 +  sed "s/^/$submenu_indentation/" << EOF
- 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} rw ${args}
  EOF
    if test -n "${initrd}" -o -n "${initrd_extra}" ; then
      # TRANSLATORS: ramdisk isn't identifier. Should be translated.
