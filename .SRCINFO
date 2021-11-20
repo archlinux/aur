@@ -1,17 +1,17 @@
 pkgbase = python3-colorsysplus
 	pkgdesc = An extension of the standard colorsys module with support for CMYK, terminal colors, ANSI and more.
-	pkgver = 2021.1
-	pkgrel = 2
+	pkgver = 2021.11
+	pkgrel = 1
 	url = https://xyne.dev/projects/python3-colorsysplus
 	arch = any
 	license = GPL
 	depends = python3
-	source = https://xyne.dev/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz
-	source = https://xyne.dev/projects/python3-colorsysplus/src/python3-colorsysplus-2021.1.tar.xz.sig
+	source = https://xyne.dev/projects/python3-colorsysplus/src/python3-colorsysplus-2021.11.tar.xz
+	source = https://xyne.dev/projects/python3-colorsysplus/src/python3-colorsysplus-2021.11.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = be424dc1f3e1d8663fb0d6c433bb512a
-	md5sums = af59f9a47785c46bfe47a3617735fb1e
-	sha512sums = d9e46701c79c85f0c83101db049ce39b0de21f99807dae5616ca525b272a05bca628cf6290a9d9899446f73b7cd13c2c75c212e9a819bf4db09dd71f283f46d2
-	sha512sums = 6e66c981d2d9540d83768f5cb4f84fff16d6ba3a73a9bcf455b13c6d966537e1e22ea37b82fae6df62c0fac41326357ef1e4dac4653ad6e03a2ceca8ae581dc6
+	md5sums = 006826210d2b7f6576af746a99b17219
+	md5sums = 0f18bddc4f2729c8353afa3d6572f22f
+	sha512sums = a9dd5a8bff1d164a6c4eba8a4352a9808789273b801e76983ace37306c55496bc598d3b5fe77f43b8bc8e14caf73029aabd64aea6d33330e2bc7e2843a4badc2
+	sha512sums = 9b8147882fbeeb5ef5960d2cf10de299f21841ce80b6d70648752a540b616af9959b5aa3908be9c970c2abeba593bc6ff6f9af2cf482d15c65859cf3f6d94728
 
 pkgname = python3-colorsysplus
