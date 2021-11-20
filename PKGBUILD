@@ -1,7 +1,7 @@
 # Maintainer: Pavel Dvorak <dvorapa~seznam~cz>
 
 pkgname=python-mwparserfromhell
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Python package that provides an easy-to-use and outrageously powerful parser for MediaWiki wikicode."
 arch=(any)
@@ -9,7 +9,7 @@ url=https://github.com/earwig/mwparserfromhell
 license=(MIT)
 makedepends=(python python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/m/mwparserfromhell/mwparserfromhell-$pkgver.tar.gz")
-sha256sums=(d3f74c0101f81ff73c61985b67f2e7048a30dc5f6a578ea1544e69133988d874)
+sha256sums=(1ad779f1bc0808d280ec1026c9de74f424de535568e21debd12830b5b0fa097e)
 
 build() {
   cd "$srcdir/mwparserfromhell-$pkgver"
