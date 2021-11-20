@@ -1,0 +1,43 @@
+--- npreal2.c.orig	2021-11-20 15:06:06.053095280 -0500
++++ npreal2.c	2021-11-20 15:08:15.950519353 -0500
+@@ -550,11 +550,11 @@ static void __exit npreal2_module_exit(v
+ 		npvar_proc_root = NULL;
+ 	}
+ 
+ 	DBGPRINT(MX_DEBUG_INFO, "Unloading module npreal ...\n");
+ 	tty_unregister_driver(DRV_VAR);
+-	put_tty_driver(DRV_VAR);
++	tty_driver_kref_put(DRV_VAR);
+ 
+ 	DBGPRINT(MX_DEBUG_INFO, "Done.\n");
+ 
+ }
+ #endif
+@@ -643,12 +643,12 @@ npreal_init(void)
+ 	int	ret1, ret2;
+ #if (LINUX_VERSION_CODE >= VERSION_CODE(3,7,0))
+ 	int i;
+ #endif
+ 
+-	npvar_sdriver = alloc_tty_driver(NPREAL_PORTS+1);
+-	if (!npvar_sdriver)
++	npvar_sdriver = tty_alloc_driver(NPREAL_PORTS+1,0);
++	if (IS_ERR(npvar_sdriver))
+ 		return -ENOMEM;
+ 	printk("MOXA Async/NPort server family Real TTY driver ttymajor %d calloutmajor %d verbose %d (%s)\n", ttymajor, calloutmajor, verbose, NPREAL_VERSION);
+ 
+ 	/* Initialize the tty_driver structure */
+ 	DRV_VAR_P(name) = "ttyr";
+@@ -693,11 +693,11 @@ npreal_init(void)
+ 		DBGPRINT(MX_DEBUG_ERROR, "Couldn't install MOXA Async/NPort server family driver !\n");
+ 	}
+ 
+ 	if (ret1 || ret2)
+ 	{
+-		put_tty_driver(DRV_VAR);
++		tty_driver_kref_put(DRV_VAR);
+ 		return -1;
+ 	}
+ 
+ 	/* Initialize the net node structure */
+ 	memset(&npreal_net_fops,0,sizeof(npreal_net_fops));
