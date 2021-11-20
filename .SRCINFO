@@ -1,0 +1,13 @@
+pkgbase = naml
+	pkgdesc = Not Another Markup Language [NAML]
+	pkgver = v0.4.0
+	pkgrel = 1
+	url = https://github.com/kris-nova/naml
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = make
+	source = git+https://github.com/kris-nova/naml.git
+	sha256sums = SKIP
+
+pkgname = naml
