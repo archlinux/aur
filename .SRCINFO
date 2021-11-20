@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-ptex
+	pkgdesc = Per-Face Texture Mapping for Production Rendering (mingw-w64)
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://ptex.us/
+	arch = any
+	license = BSD
+	checkdepends = mingw-w64-wine
+	checkdepends = dos2unix
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = ptex-2.4.1.tar.gz::https://github.com/wdas/ptex/archive/v2.4.1.tar.gz
+	sha256sums = 664253b84121251fee2961977fe7cf336b71cd846dc235cd0f4e54a0c566084e
+
+pkgname = mingw-w64-ptex
