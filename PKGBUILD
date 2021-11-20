@@ -1,7 +1,7 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 pkgname=terser
-pkgver=5.9.0
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='JavaScript parser, mangler and compressor toolkit for ES6+'
 arch=('any')
@@ -13,15 +13,11 @@ provides=('nodejs-terser')
 conflicts=('nodejs-terser')
 replaces=('nodejs-terser')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('2ca0d9c4731b6ebd3b86ed1a7b735f685f98636ee5a067ae9e27e83246069619')
+sha256sums=('70ff0922f1aa057c5fe51fd8d8d9a99c893bb64c199e6d93ba5e5990af2e83ec')
 
 package() {
-  # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2021-03-08
+  # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2021-09-30
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
-
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/cli/issues/1103 for details.
-  find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
