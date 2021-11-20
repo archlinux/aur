@@ -2,7 +2,7 @@
 
 pkgname=kpt-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.0_beta.8
+pkgver=1.0.0_beta.9
 _pkgver="${pkgver/_/-}"
 pkgrel=1
 pkgdesc='Git-native tool for packaging, customizing, validating, and applying Kubernetes resources'
@@ -23,7 +23,7 @@ conflicts=(
 	"$_pkgname-git"
 )
 source=("$_pkgname-$_pkgver::https://github.com/googlecontainertools/$_pkgname/releases/download/v$_pkgver/${_pkgname}_${_goos}_${_goarch}")
-b2sums=(b5585c79f1516353367ea46de77bca13a49bf52b48e622ceec648f6a79c27edafc56ef57e82b53c293fd686428dfbbea83b370f9ccedd95bb46a4cd50b17f444)
+b2sums=(0d4fe7173aeb35fde2d022f5b14d227f7042725cb5fb19697ba8cf21bb491776fb26c321fc2ff30987beca6f41f11a2e62d088085fdabf21a0193fea1f21da4d)
 
 package() {
 	install -Dm 755 "$_pkgname-$_pkgver" "$pkgdir/usr/bin/$_pkgname"
