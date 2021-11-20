@@ -1,7 +1,7 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-dtw-python-git
-pkgver=1.1.10.r231
-pkgrel=2
+pkgver=1.1.10
+pkgrel=1
 pkgdesc="Python port of R's Comprehensive Dynamic Time Warp algorithm package"
 arch=('any')
 url='https://github.com/DynamicTimeWarping/dtw-python'
@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
