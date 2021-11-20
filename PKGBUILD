@@ -21,6 +21,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd $pkgname
+	GO111MODULE=on
 	go mod vendor
 	go mod download
 	make
