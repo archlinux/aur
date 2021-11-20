@@ -1,0 +1,6 @@
+* text=auto
+
+PKGBUILD text eol=lf
+*.sh text eol=lf
+.SRCINFO text eol=lf
+changelog.txt text eol=lf

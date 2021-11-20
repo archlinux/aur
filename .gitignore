@@ -1,0 +1,6 @@
+pkg
+src
+*.rpm
+*.pkg.tar.*
+.fuse_*
+.idea
