@@ -1,15 +1,15 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@gmail.com>
 pkgname=mango
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="A tool for making backups of Arch packages and their dependencies"
 arch=('any')
 url="https://gitlab.com/Taro94/mango"
 license=('GPL')
 depends=('tar')
-makedepends=('dotnet-sdk>=3.1.0')
+makedepends=('dotnet-sdk-3.1')
 source=("https://gitlab.com/Taro94/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('d6740ad0750ca41835110aa456287bff')
+md5sums=('36316dc3528243b4212a7a9ae826cd67')
 options=(!strip)
 
 package() {
