@@ -1,8 +1,8 @@
 # Maintainer: SeeLook <seelook@gmail.com>
 pkgname=metronomek
-pkgver=0.5.0
-_pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+_pkgver=0.5.1
+pkgrel=1
 pkgdesc="Metronome that works and sounds similar to mechanical devices but with all goods of computer program."
 arch=('x86_64' 'i686')
 url="https://metronomek.sourceforge.io/"
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('cmake' 'qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2')
 source=("https://sourceforge.net/projects/metronomek/files/Metronomek-$_pkgver/metronomek-$_pkgver-source.tar.bz2")
-sha256sums=('3cb1754ee1f7377e946f64bf920b21b9ba93c3dea4a7845d70b5b6de70638a6a')
+sha256sums=('65df968435b340df26923bc90255be8193791ba03b39a63f21e8da021aefcb12')
 
 build() {
   cd "$srcdir/metronomek-$_pkgver-source"
