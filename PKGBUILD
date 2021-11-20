@@ -2,8 +2,8 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=7.0_r513.bfda272
-pkgrel=2
+pkgver=7.211120_r529.967822e
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -41,16 +41,16 @@ sha1sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "%s.r%s.%s" \
-		"$(grep 'PROGVERS=' stl | head -n1 | cut -d\" -f2 | sed 's/^v//' | sed 's/-/_/g')" \
+		"$(grep 'PROGVERS=' "${pkgname%-git}" | head -n1 | cut -d\" -f2 | sed 's/^v//' | sed 's/-/_/g')" \
 		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 stl -t "$pkgdir/usr/bin"
+	install -Dm755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
 
-  install -d "$pkgdir/usr/share/stl"
-  cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/stl"
+  install -d "$pkgdir/usr/share/${pkgname%-git}"
+  cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/${pkgname%-git}"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
   install -Dm644 "misc/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
