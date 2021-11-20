@@ -1,7 +1,7 @@
 # Maintainer: Vasil Bakalov <jens300304@gmail.com>
 pkgname=danser
 url="https://github.com/Wieku/danser-go"
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go."
 arch=('any')
@@ -10,7 +10,7 @@ source=(
     "https://github.com/Wieku/danser-go/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
-    'b1c0e82df3c26683b98ba4f3f60db9ad52a619b9ed6d78b1ce00f30904f8512e'
+    '5c2a49dd417142f985215b0d8df3d414d93ec18a785df5c5cfb472056375d5ac'
 )
 depends=(
     'libyuv'
