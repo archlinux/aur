@@ -1,6 +1,6 @@
 pkgbase = icon-library-git
 	pkgdesc = Find the right symbolic icon to use on your GNOME application
-	pkgver = 0.0.8.r73.g58d0a7f
+	pkgver = 0.0.8.r80.g5d20f7b
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/icon-library
 	arch = x86_64
