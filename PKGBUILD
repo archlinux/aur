@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=box86
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 optdepends=('gl4es: OpenGL 2 for GLES 2 devices')
 makedepends=('git' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ptitSeb/box86/archive/v${pkgver}.tar.gz")
-sha256sums=('24984dcdef8bbd164da6b2f727087f2df5dd54b568749b16efe3f51a0ce08838')
+sha256sums=('e15667eb34207c382cbc1906222c6b0a66f79c3afe7e37fd67f4960e1f98b4b7')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -25,6 +25,14 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}/build
   make DESTDIR=${pkgdir} install
-  install -Dm644 ../docs/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  # Install documentation
+  install -d "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -R ../docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
+
+  find "${pkgdir}"/usr/share/doc/${pkgname} -type f -exec chmod 0644 {} \;
+  find "${pkgdir}"/usr/share/doc/${pkgname} -type d -exec chmod 0755 {} \;
 }
 
