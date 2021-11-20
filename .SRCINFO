@@ -1,6 +1,6 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others
-	pkgver = 4.3.4
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/dbgate/dbgate
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = dbgate-bin
 	depends = gtk3
 	provides = dbgate
 	conflicts = dbgate
-	source = dbgate-bin-4.3.4.deb::https://github.com/dbgate/dbgate/releases/download/v4.3.4/dbgate-4.3.4-linux_amd64.deb
-	source = dbgate-bin-4.3.4-LICENSE::https://raw.githubusercontent.com/dbgate/dbgate/v4.3.4/LICENSE
-	b2sums = dda7386b3804c9d6392739472df981281ad2c079e2c6797879519a98c76bc73195ce49eefd466030781d5123250e1d4063530316bad7e3484a216fd24d0e038c
+	source = dbgate-bin-4.4.0.deb::https://github.com/dbgate/dbgate/releases/download/v4.4.0/dbgate-4.4.0-linux_amd64.deb
+	source = dbgate-bin-4.4.0-LICENSE::https://raw.githubusercontent.com/dbgate/dbgate/v4.4.0/LICENSE
+	b2sums = b7531350b4be4f8c351275e8a7f2f1c32bf4c1b3db16e457e5e1330d0e5316b6d0bcad88f3f3571c99dad6ad508bea1cc8e66c5e82bb63df810cf6c4da59dac6
 	b2sums = 9cc4e2813f0978862b0960aa0c8d5b0bc75ae299f10b793ae152202f2e6f43127381c9153c6f51ca1bc83ab633d198dac5d817105a8e7b43e1aad401e0b6eb2f
 
 pkgname = dbgate-bin
