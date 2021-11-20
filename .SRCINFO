@@ -7,9 +7,9 @@ pkgbase = smart-wallpaper-git
 	license = GPL
 	makedepends = git
 	depends = redshift
-	depends = feh
+	depends = imagemagick
+	depends = xwinwrap
 	optdepends = gifsicle: support for animated backgrounds (.gif)
-	optdepends = xwinwrap: support for compositors
 	optdepends = mpv: support for videos
 	provides = smart-wallpaper
 	source = git://github.com/Baitinq/smart-wallpaper.git
@@ -18,4 +18,3 @@ pkgbase = smart-wallpaper-git
 	sha256sums = SKIP
 
 pkgname = smart-wallpaper-git
-
