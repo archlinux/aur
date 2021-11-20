@@ -8,6 +8,8 @@ pkgdesc='Fetches torrents from BitTorrent network'
 arch=('x86_64' 'i686')
 url='https://github.com/fanpei91/torsniff'
 license=('MIT')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source=(
 	"LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
 	"README-$pkgver::$url/raw/v$pkgver/README.md")
