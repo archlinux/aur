@@ -1,0 +1,87 @@
+diff -pNaru5 trueport-6.10.0.orig/ptyx/ptymod.c trueport-6.10.0/ptyx/ptymod.c
+--- trueport-6.10.0.orig/ptyx/ptymod.c	2021-11-20 15:21:35.364409568 -0500
++++ trueport-6.10.0/ptyx/ptymod.c	2021-11-20 15:24:01.845050085 -0500
+@@ -284,28 +284,28 @@ static int __init ptyx_init(void)
+ 		printk("ptyx module input paramater max_installed_ports=%d is invalid \n", max_installed_ports);
+ 		retval = -EINVAL;
+ 		goto init_out;
+ 	}
+ 	
+-	ptyx_master_driver = alloc_tty_driver(max_installed_ports);
+-	if (!ptyx_master_driver)
++	ptyx_master_driver = tty_alloc_driver(max_installed_ports,0);
++	if (IS_ERR(ptyx_master_driver))
+ 	{
+ 		printk("Couldn't allocate ptyx master driver \n");
+ 		retval = -ENOMEM;
+ 		goto init_out;
+ 	}
+ 	
+-	ptyx_slave_driver = alloc_tty_driver(max_installed_ports);
+-	if (!ptyx_slave_driver)
++	ptyx_slave_driver = tty_alloc_driver(max_installed_ports,0);
++	if (IS_ERR(ptyx_slave_driver))
+ 	{
+ 		printk("Couldn't allocate ptyx slave driver \n");
+ 		retval = -ENOMEM;
+ 		goto init_out;
+ 	}
+ 
+-	ptyx_control_driver = alloc_tty_driver(max_installed_ports);
+-	if (!ptyx_control_driver)
++	ptyx_control_driver = tty_alloc_driver(max_installed_ports,0);
++	if (IS_ERR(ptyx_control_driver))
+ 	{
+ 		printk("Couldn't allocate ptyx ctrl status driver \n");
+ 		retval = -ENOMEM;
+ 		goto init_out;
+ 	}
+@@ -401,24 +401,24 @@ static int __init ptyx_init(void)
+ 	ptyx_control_driver->driver_state = pty_state_table;		// global pointer ot private data
+ 	tty_set_operations(ptyx_control_driver, &ptyx_ops_control);
+ 
+ 	if ( (retval = tty_register_driver(ptyx_control_driver)) < 0 )
+ 	{
+- 		put_tty_driver(ptyx_control_driver);
++ 		tty_driver_kref_put(ptyx_control_driver);
+ 		printk("Couldn't register ptyx control status driver, retval=%d3 \n", retval);
+ 	}
+ 
+ 	if ( (retval = tty_register_driver(ptyx_slave_driver)) < 0 )
+ 	{
+-		put_tty_driver(ptyx_slave_driver);
++		tty_driver_kref_put(ptyx_slave_driver);
+ 		printk("Couldn't register ptyx slave driver, retval=%d \n", retval);
+ 		goto init_out;
+ 	}
+ 
+ 	if ( (retval = tty_register_driver(ptyx_master_driver)) < 0 )
+ 	{
+- 		put_tty_driver(ptyx_slave_driver);
++ 		tty_driver_kref_put(ptyx_slave_driver);
+ 		printk("Couldn't register ptyx master driver, retval=%d \n", retval);
+ 	}
+ 
+ init_out:
+  
+@@ -430,17 +430,17 @@ static void __exit ptyx_finish(void)
+ 	int i;
+ 	
+ 	ptyx_print(PTYX_DEBUG_MISC, ("ptyx_finish(): unregistering driver \n"));
+ 
+ 	tty_unregister_driver(ptyx_master_driver);
+-	put_tty_driver(ptyx_master_driver);
++	tty_driver_kref_put(ptyx_master_driver);
+ 
+ 	tty_unregister_driver(ptyx_slave_driver);
+-	put_tty_driver(ptyx_slave_driver);
++	tty_driver_kref_put(ptyx_slave_driver);
+ 
+ 	tty_unregister_driver(ptyx_control_driver);
+-	put_tty_driver(ptyx_control_driver);
++	tty_driver_kref_put(ptyx_control_driver);
+ 	
+ 	if (pty_state_table)
+ 	{
+ 	 	for (i = 0; i < max_installed_ports; i++)
+ 		{

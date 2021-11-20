@@ -97,7 +97,7 @@ _dlver='6.10.0-1'
 pkgver="${_dlver//-/.}"
 #_dlver='6.8.0-2' # only use this with a version change patch set
 _srcdir="${pkgname}-${_dlver%%-*}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
 _pkgdescshort='Perle TruePort driver for Ethernet serial servers'
 arch=('i686' 'x86_64')
@@ -124,17 +124,20 @@ source=(
   '0000-tty_unregister_driver-void.patch'
   '0001-kernel-5.13-dropped-tty_check_change.patch'
   '0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
+  '0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
 )
 md5sums=('5a529676de30706133255ba4e8dae5b0'
          '56444e2f404aa2e6a2c9e8e2bd919fcf'
          'fb798f306553cb253b30ff5af5ba2f40'
          'a103f2791c03733b1fd75493864fb464'
-         '5206e863cf6340c05325d86935d4b40c')
+         '5206e863cf6340c05325d86935d4b40c'
+         'f464a0217b85a76657bcb7aa022f9a95')
 sha256sums=('c21340a7523593da3e229b79cfbcf9e656772b2039e972dbca3947d138d55ffa'
             '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639'
             '5f806246751d3a91c59bd97273221d1066006bafc7ed598c3d93f9b7bdae65a1'
             '88181bc7a0a5fa5a1320cbed20e02e1329b03b4c9800fc691990754b9a9aac18'
-            'ee64f971753fb4fd8a488e32e8fe3de9c468a00a1d1b995329bcfe87c93cedf7')
+            'ee64f971753fb4fd8a488e32e8fe3de9c468a00a1d1b995329bcfe87c93cedf7'
+            '04025f2dc6fe868e890853e355d1d31fff6d3c463ad89db1cedda5f3843078a3')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -167,6 +170,12 @@ prepare() {
   #cd ..; cp -pr trueport-6.10.0{,.orig}; false
   # diff -pNaru5 trueport-6.10.0{.orig,} > '0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
   patch -Nup1 -i "${srcdir}/0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
+
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
+  #cd ..; cp -pr trueport-6.10.0{,.orig}; false
+  # diff -pNaru5 trueport-6.10.0{.orig,} > '0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  patch -Nup1 -i "${srcdir}/0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
 
   # insert parameters and make install script non interactive.
   set +u; msg2 'Checking SSL with rpm_build'; set -u
