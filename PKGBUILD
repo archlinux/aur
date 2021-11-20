@@ -1,6 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
-pkgname=mingw-w64-libraw
+_pkgname=libraw
+pkgname=mingw-w64-${_pkgname}
 pkgver=0.20.0
 pkgrel=4
 pkgdesc='A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)'
@@ -22,24 +23,24 @@ sha256sums=(
 	'SKIP'
 )
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/LibRaw/LibRaw/archive/${pkgver}.tar.gz"
+	"$_pkgname-$pkgver.tar.gz::https://github.com/LibRaw/LibRaw/archive/${pkgver}.tar.gz"
 	'git+https://github.com/LibRaw/LibRaw-cmake'
 )
 
+_srcdir="LibRaw-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DENABLE_EXAMPLES=OFF )
 
 prepare() {
-	mv -f 'LibRaw-cmake'/* "LibRaw-${pkgver}/" || true
+	mv -f 'LibRaw-cmake'/* "${_srcdir}/" || true
 }
 
 build() {
-	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DENABLE_EXAMPLES=OFF )
-	
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "LibRaw-${pkgver}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "LibRaw-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
 }
