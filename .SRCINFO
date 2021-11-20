@@ -1,8 +1,8 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
-	pkgver = 5.15.2.19.realtime1
-	pkgrel = 2
-	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v5.15.2.19.realtime1
+	pkgver = 5.15.3.21.realtime1
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v5.15.3.21.realtime1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -19,15 +19,15 @@ pkgbase = linux-rt
 	makedepends = tar
 	makedepends = xmlto
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v5.15.2.19.realtime1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v5.15.3.21.realtime1?signed
 	source = config
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 64254695FFF0AA4466CC19E67B96E8162A8CF5D1
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
-	sha512sums = 0085ed12b81470961e65c674f6ef7ec577320d42ea74f9a43b723213e4aacf99561659ca10a7499be0c0db25d185251cc2f8df2ec856e53c4a7e5679e320ecae
+	sha512sums = fce39c87c33bd398667221eee3d830072d66e567b4c40ab04a4689cda1438e28cd9c904383cb1a9623a2e7eeb64650c116ceca9ee79701be74045f1179bd45a5
 	b2sums = SKIP
-	b2sums = 35a7a35f22f0bc24c73302175d49849ba102370062bc2c3e27aacaf3ceadecb879e06471d068d0075e0766dfc88fb504f513a8abeae3d6df4019244b7204f0c4
+	b2sums = 0a1b279ab4bad8afff9d3c3df67b73c08db9cfac1bb5ceff756f3da2d959ce0dc54f15feea4fcf38eb15efd3c2546015e8a020246e28f6a77d5bc2695b352cfc
 
 pkgname = linux-rt
 	pkgdesc = The Linux RT kernel and modules
