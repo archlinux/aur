@@ -25,5 +25,8 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    install -D -m 755 target/release/$_pkgname "${pkgdir}/usr/bin/$_pkgname"
+    install -D -m 755 target/release/xvi "${pkgdir}/usr/bin/xvi"
+    mkdir -p "${pkgdir}/usr/share/man/man1" "${pkgdir}/usr/share/man/man5"
+    gzip -c extra/xvi.1 > "${pkgdir}/usr/share/man/man1/xvi.1.gz"
+    gzip -c extra/xvirc.5 > "${pkgdir}/usr/share/man/man5/xvirc.5.gz"
 }
