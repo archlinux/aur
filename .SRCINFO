@@ -10,7 +10,5 @@ pkgbase = windscribe
 	depends = iptables
 	depends = curl
 	depends = icu67-bin
-	source = https://github.com/topik0/windscribe-desktop-v2-aur/releases/download/v2.3.11_beta/windscribe_2.3.11_beta_amd64.deb
-	sha512sums = 88e22c070dc5e35ea5fbea0d988dd2b501942193434efe462357363976e404ef3348aad2a2cd8609d8b42dd87a72166d75b2876369d3f1e320eeac4e2974faab
 
 pkgname = windscribe
