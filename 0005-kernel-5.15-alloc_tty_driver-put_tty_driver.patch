@@ -1,0 +1,44 @@
+diff -pNau5 driver.orig/serial_core.c driver/serial_core.c
+--- driver.orig/serial_core.c	2021-11-20 14:39:55.463888272 -0500
++++ driver/serial_core.c	2021-11-20 14:44:50.918026914 -0500
+@@ -2518,12 +2518,12 @@ int cti_uart_register_driver(struct uart
+ 	 */
+ 	drv->state = kzalloc(sizeof(struct uart_state) * drv->nr, GFP_KERNEL);
+ 	if (!drv->state)
+ 		goto out;
+ 
+-	normal = alloc_tty_driver(drv->nr);
+-	if (!normal)
++	normal = tty_alloc_driver(drv->nr,0);
++	if (IS_ERR(normal))
+ 		goto out_kfree;
+ 
+ 	drv->tty_driver = normal;
+ 
+ 	normal->driver_name	= drv->driver_name;
+@@ -2559,11 +2559,11 @@ int cti_uart_register_driver(struct uart
+ 	if (retval >= 0)
+ 		return retval;
+ 
+ 	for (i = 0; i < drv->nr; i++)
+ 		tty_port_destroy(&drv->state[i].port);
+-	put_tty_driver(normal);
++	tty_driver_kref_put(normal);
+ out_kfree:
+ 	kfree(drv->state);
+ out:
+ 	return -ENOMEM;
+ }
+@@ -2581,11 +2581,11 @@ void cti_uart_unregister_driver(struct u
+ {
+ 	struct tty_driver *p = drv->tty_driver;
+ 	unsigned int i;
+ 
+ 	tty_unregister_driver(p);
+-	put_tty_driver(p);
++	tty_driver_kref_put(p);
+ 	for (i = 0; i < drv->nr; i++)
+ 		tty_port_destroy(&drv->state[i].port);
+ 	kfree(drv->state);
+ 	drv->state = NULL;
+ 	drv->tty_driver = NULL;

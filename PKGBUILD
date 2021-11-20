@@ -15,7 +15,7 @@ _opt_DKMS=1            # This can be toggled between installs
 set -u
 pkgname='connecttech-cti-serial'
 pkgver='1.45'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='http://connecttech.com/product/pci-express-bluestorm-express/'
@@ -33,16 +33,19 @@ source=(
   '0002-kernel-5.10-async-initialized.patch'
   '0003-kernel-5.12-tty-low_latency.patch'
   '0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
+  '0005-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
 )
 _srcdir='.'
 md5sums=('ba01c0ad48061ff97429d1438739e211'
          '97cd518024af079d1188398af69ca6cb'
          'b8a139a882c8aa550f33cd34d2412c45'
-         'd6cf91270e603716a90ea4120a928f9f')
+         'd6cf91270e603716a90ea4120a928f9f'
+         'e9181275b574a74c6a180129203b3dbf')
 sha256sums=('111efcbcd2ebad89db1692b11a0779cb806ff35de27b39a6427191cf96a233ab'
             '3f1c0aec4f287803b0c571ce0258bf16163fed920170fb6eac2ec717f704e3e5'
             '4b5a12f5122252ccee5aec97c392f2b718284ed0d4b70ee8b506f64fb89eced7'
-            '3b7b66ac199025183fe1b6e7ddb14524b88251ff6f7f739fbc3973dd4f5039d5')
+            '3b7b66ac199025183fe1b6e7ddb14524b88251ff6f7f739fbc3973dd4f5039d5'
+            '34e3d2061b794ce52fdeed91c09561e03c424572185a65714e1fcff8878ddf9a')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -112,6 +115,12 @@ prepare() {
   #rm -f driver/*.orig; cp -pr 'driver' 'driver.orig'; false
   #diff -pNau5 'driver'{.orig,} > '0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
   patch -Nbup0 -i "${srcdir}/0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
+
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
+  #rm -f driver/*.orig; cp -pr 'driver' 'driver.orig'; false
+  #diff -pNau5 'driver'{.orig,} > '0005-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  patch -Nbup0 -i "${srcdir}/0005-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
 
   pushd 'driver' > /dev/null
   # Fix permissions
