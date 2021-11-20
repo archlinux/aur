@@ -18,7 +18,8 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/${_pkgname%-VCS}"
+    cd "$srcdir/${_pkgname%-VCS}"
+    chmod +x setup.sh && ./setup.sh
     install -Dm755 ./ani-cli "$pkgdir/usr/bin/ani-cli"
     install -Dm755 ./aniwrapper "$pkgdir/usr/bin/aniwrapper"
 }
