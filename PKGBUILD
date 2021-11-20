@@ -5,13 +5,13 @@
 pkgname=ethminer-cuda
 _pkgname=ethminer
 pkgver=0.19.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Ethereum miner with OpenCL, CUDA and stratum support."
 arch=('x86_64')
 url="https://github.com/ethereum-mining/ethminer"
-license=('MIT')
+license=('GPL3')
 depends=('mesa' 'pth' 'cuda')
-makedepends=('cmake' 'python' 'git')
+makedepends=('gcc10' 'cmake' 'python' 'git')
 provides=('ethminer')
 conflicts=('ethminer' 'ethminer-git')
 source=("git+${url}.git#tag=v${pkgver}")

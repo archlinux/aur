@@ -1,10 +1,11 @@
 pkgbase = ethminer-cuda
 	pkgdesc = Ethereum miner with OpenCL, CUDA and stratum support.
 	pkgver = 0.19.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/ethereum-mining/ethminer
 	arch = x86_64
-	license = MIT
+	license = GPL3
+	makedepends = gcc10
 	makedepends = cmake
 	makedepends = python
 	makedepends = git
@@ -18,4 +19,3 @@ pkgbase = ethminer-cuda
 	sha256sums = SKIP
 
 pkgname = ethminer-cuda
-
