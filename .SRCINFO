@@ -1,0 +1,14 @@
+pkgbase = elfshaker
+	pkgdesc = A low-footprint, high-performance version control system fine-tuned for binaries
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/elfshaker/elfshaker
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	depends = gcc-libs
+	source = elfshaker-0.9.0.tar.gz::https://github.com/elfshaker/elfshaker/archive/v0.9.0.tar.gz
+	sha512sums = ccf1a8a2c40fa7a1972a2786ab3d72adc838d14bc385f265a0559b3c649124db06d8bdcaea57f039890b57b8d184510580bac8e294da2cc16e8731e2a8d67b93
+	b2sums = 33fa3c31d06dd663d5f8703d708f073aead97ed590bcea2e75748caa0c105e581a7f8ae43decd99dbb718f52e80e86ae332e5d11d59d72aaac9c3ad658dee944
+
+pkgname = elfshaker
