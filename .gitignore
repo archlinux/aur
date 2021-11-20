@@ -6,7 +6,7 @@
 /pkg/
 /src/
 
-/dt-cli
+/dt-cli*
 /LICENSE*
 
 # Author: Blurgy <gy@blurgy.xyz>
