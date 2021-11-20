@@ -1,7 +1,7 @@
 pkgbase = box64
 	pkgdesc = Linux Userspace x86_64 Emulator with a twist
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/ptitSeb/box64
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = box64
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	source = box64-0.1.4.tar.gz::https://github.com/ptitSeb/box64/archive/v0.1.4.tar.gz
-	sha256sums = 9b1428d2c5d542633f530b1ef24277fef5c4bc8fd00686c9b445f0a7664c16c7
+	source = box64-0.1.6.tar.gz::https://github.com/ptitSeb/box64/archive/v0.1.6.tar.gz
+	sha256sums = c77d4d0a0b480584c644c3929aff388db42a6d4ec13d922df4253463e752bb98
 
 pkgname = box64
