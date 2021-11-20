@@ -1,0 +1,15 @@
+pkgbase = libipuz-git
+	pkgdesc = Library for parsing .ipuz puzzle files
+	pkgver = r173.f2b6fff
+	pkgrel = 1
+	url = https://gitlab.gnome.org/jrb/libipuz
+	arch = x86_64
+	license = LGPL
+	makedepends = meson
+	makedepends = git
+	provides = libipuz
+	conflicts = libipuz
+	source = git+https://gitlab.gnome.org/jrb/libipuz.git
+	md5sums = SKIP
+
+pkgname = libipuz-git
