@@ -1,3 +1,6 @@
+* Sun Nov 21 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-2
+  - Dropped KDE 4 support from the package (https://archlinux.org/news/dropping-plasma-4).
+
 * Wed Nov 17 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-1
   PeaZip 8.3.0 adds Deflate and Deflate64 options for .7z format, improves theming,
   command line usage, management of preferred checksum/hash algorithms list and

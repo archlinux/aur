@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Svyatski <vsvyatski@yandex.ru>
+# Previous Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 # Contributor: EatMyVenom <eat.my.venomm@gmail.com>
-# Contributor: Dimitris Kiziridis <ragouel@outlook.com>
 # Contributor: Uncle Hunto <unclehunto@yahoo.com>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
@@ -8,8 +8,8 @@
 
 pkgname=peazip-qt-bin
 pkgver=8.3.0
-pkgrel=1
-pkgdesc="PeaZip file manager and archiver (Qt5)"
+pkgrel=2
+pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
 url='https://peazip.github.io'
 license=('LGPL3')
@@ -23,11 +23,16 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
             'upx: Extendable, high-performance executable packer for several executable formats')
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
-source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.x86_64.rpm")
+source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
 sha256sums=('d67bd88040d70f350360aff156e049143f091997f5afe0294eac70fb19cbca18')
 changelog=changelog.txt
 
 prepare() {
+  # Senior Giorgio Tani should definitely reconsider the way he builds his Linux packages: he adds a lot of
+  # unnecessary Windows-related files to them. Additionally, he sets wrong permissions on folders: the majority
+  # of them are set to 777, whereas it should be 755. So here I'm removing Windows files and setting the
+  # appropriate permissions before packaging.
+
   rm -r usr/lib/.build-id
   rm usr/lib/libQt5Pas.so.1
   rm usr/lib/peazip/libQt5Pas.so.1
@@ -36,10 +41,14 @@ prepare() {
 
   local sharedUsr=usr/share
   local sharedPeaZip="${sharedUsr}/peazip"
+  # Windows related stuff
   rm "${sharedPeaZip}/readme/readme_Windows.txt"
   rm "${sharedPeaZip}/batch/"*.bat
   rm -r "${sharedPeaZip}/batch/SendTo"
+  # KDE 3? You must be kidding.
   rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror"
+  # KDE 4 is not supported on Arch since 2015-12-12 (https://archlinux.org/news/dropping-plasma-4/)
+  rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin"
 
   # setting correct permissions
   chmod 755 usr && chmod 755 usr/bin
