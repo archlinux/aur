@@ -1,37 +1,35 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Alex Smith <azphreal19@protonmail.com
 
 pkgname=koel
-pkgver=3.7.2
-pkgrel=4
+pkgver=5.1.8
+pkgrel=1
 pkgdesc="A personal music streaming server that works."
 arch=('any')
-url="http://koel.phanan.net/"
+url="https://koel.dev/"
 license=('MIT')
-depends=('php' 'python3')
-makedepends=('php-composer' 'nodejs-lts-carbon' 'yarn')
-optdepends=('php-pgsql: to use the PostGreSQL database backend'
-            'php-sqlsrv: to use the Microsoft SQL database backend'
-            'mariadb: to use the MySQL database backend'
-            'postgresql: to use the PostGreSQL database backend')
-
+depends=('php' 'python3' 'mysql' 'openssl')
+makedepends=('composer' 'nodejs-lts-fermium')
 backup=('usr/share/webapps/koel/.env')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phanan/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('b3ae40db2839f9b411716428203f595ca685ea2d87599c0704fb271446126c998a96cecb21d864d0269f41f23e9b16c0202f95647eee82ecc7d8c16fe49874ed')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('b12b359beba8cde455f3da1213a24bb6f35ad6f7d11983c29f1fdced8c18af3afd08fcfdf2b600a2f7c85bb6085b62db5edda8f9ab1777595cfdcf41d6c5bca9')
 
 prepare() {
-	sed -i 's|FFMPEG_PATH=/usr/local/bin/ffmpeg|FFMPEG_PATH=/usr/bin/ffmepg|g' "${srcdir}/${pkgname}-${pkgver}/.env"
+  cp "${srcdir}/${pkgname}-${pkgver}"/.env{.example,}
+  sed -i 's|FFMPEG_PATH=/usr/local/bin/ffmpeg|FFMPEG_PATH=/usr/bin/ffmepg|g' "${srcdir}/${pkgname}-${pkgver}/.env.example"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	COMPOSER_CACHE_DIR="${srcdir/composer}" composer install
-	yarn install
+  cd "$pkgname-$pkgver"
+
+  composer update
+  php -d 'extension=exif' /usr/bin/composer install
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/share/webapps"
-	cp -r "${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/webapps"
+  cp -r "${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
 }
+# vim:set ts=2 sw=2 et:
