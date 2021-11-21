@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=("$pkgname-$pkgver=1.0.0+767
+source=("$pkgname-$pkgver.zip::https://github.com/RPMTW/RPMLauncher/releases/download/$pkgver/RPMLauncher-Linux.zip")
 md5sums=('SKIP')
 package(){
   mkdir -p $pkgdir/opt/RPMLauncher
