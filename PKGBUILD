@@ -1,7 +1,7 @@
 # Maintainer: n0vember <n0vember at half-9 dot net>
 _pkgname=envconsul
 pkgname=${_pkgname}-git
-_pkgver=0.9.1
+_pkgver=0.12.1
 pkgver=v${_pkgver}
 pkgrel=3
 pkgdesc="Launch a subprocess with environment variables using data from @hashicorp Consul and Vault."
