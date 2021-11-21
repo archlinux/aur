@@ -15,7 +15,7 @@ source=(
 	"$pkgname.tar.gz::https://github.com/solokeys/solo2-cli/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    "083014e217779f190e49e4839ae99781c1559690a3ee5d96cbdcb1489e663049"
+    "2596b50a04f59645630fdca1bf3a95dd8e8475c47a5d4ed61c885d5421e330b5"
 )
 
 build() {
