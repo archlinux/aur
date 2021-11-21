@@ -4,22 +4,22 @@
 
 _name=libcap
 pkgname=lib32-libcap
-pkgver=2.60
+pkgver=2.61
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
-arch=('x86_64')
+arch=(x86_64)
 url="https://sites.google.com/site/fullycapable/"
-license=('GPL2')
-depends=("libcap=${pkgver}" 'lib32-glibc' 'lib32-pam')
-makedepends=('linux-api-headers')
-provides=('libcap.so' 'libpsx.so')
+license=(GPL2)
+depends=("libcap=${pkgver}" lib32-glibc lib32-pam)
+makedepends=(linux-api-headers)
+provides=(libcap.so libpsx.so)
 source=("https://kernel.org/pub/linux/libs/security/linux-privs/${_name}2/${_name}-$pkgver.tar."{xz,sign}
 )
-sha512sums=('f2ff0d81df7251c05decda706ccc6463ce58df6a3c542fe479328dce5416f77aa5c6a09a1ab05a1d1a3638e6dae5c0e546aaa4824843a570700a8927fb7f73e6'
+sha512sums=('40096bf511d1c45e36f5d7f24e49c709528f3f01fcadd47b6ac40a7e8d5f1705b29b4cc56356b030639f67d0641b9f4e7c19449c3c7f4f77a4070c35745b465c'
             'SKIP')
-b2sums=('858b5133a5cb2f3b30dab569a6c9f2097034318c90419fa2372e0b28c891160f5e84b54b302b2d98664df8f7c44df78eb3cb4e47b328cecd4c27e7ab223045ae'
+b2sums=('50874d3510ab2476aaceb775314d98744736aacd7364a23827756caa160c101e8bc890b7c33b5e19df8b30bb6b3b1c2be323e4b6a963f97e9ee557e86b4f13a0'
         'SKIP')
-validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
+validpgpkeys=(38A644698C69787344E954CE29EE848AE2CCF3F4) # Andrew G. Morgan <morgan@kernel.org>
 
 prepare() {
   mv "${_name}-$pkgver" "$pkgname-$pkgver"
@@ -41,5 +41,6 @@ package() {
 
   # docs
   install -vDm 644 {CHANGELOG,README} -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  rm -r "${pkgdir}/usr/"{include,share/man,bin}
+  # remove files provided by libcap
+  rm -rv "${pkgdir}/usr/"{include,share/man,bin}
 }
