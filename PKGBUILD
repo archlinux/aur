@@ -8,15 +8,15 @@
 
 
 ## Helpful internal stuff
-_commit=5e7fdb7551b1928d09eaf2114f19601458bc6c31
-_mozcver=2.26.4538.102
-_utdicver=20211031
+_commit=3dc692847d53e209ef9010791c3ab5ac06fd979b
+_mozcver=2.26.4556.102
+_utdicver=20211121
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
 depends=('qt5-base')
@@ -24,20 +24,22 @@ makedepends=('bazel' 'git' 'pkgconf' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/37/37037/mozcdic-ut-${_utdicver}.tar.bz2")
+        "https://osdn.net/downloads/users/37/37157/mozcdic-ut-${_utdicver}.tar.bz2")
 sha256sums=('SKIP'
-            '2a0ab279d21a07e343bea656999ff1b7b9a3e20f79002a5478db61cb6012da09')
+            'f7850791df8d295f2df70fd50b7dee5c38f203a315de0dca80fd45adc0d430ec')
 
 prepare() {
     cd ${pkgname}-git
 
     git submodule update --init --recursive
 
+    cd src
+
     # Fix the Qt5 include path
-    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' src/config.bzl
+    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
 
     # Add the UT dictionary
-    cat ${srcdir}/mozcdic-ut-${_utdicver}/mozcdic-ut-${_utdicver}.txt >> src/data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-${_utdicver}/mozcdic-ut-${_utdicver}.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
