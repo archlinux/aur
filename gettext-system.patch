@@ -1,0 +1,12 @@
+diff --unified --recursive --text --color -x .git signal-rs/Cargo.toml signal-rs.new/Cargo.toml
+--- signal-rs/Cargo.toml	2021-11-21 13:32:25.047926028 +0100
++++ signal-rs.new/Cargo.toml	2021-11-21 13:41:02.502492233 +0100
+@@ -6,7 +6,7 @@
+ build = "src/build.rs"
+ [dependencies]
+ qmetaobject = { version = "0.2.0", features = ["webengine"]} 
+-gettext-rs = "0.4"
++gettext-rs = { version = "0.4", features = ["gettext-system"]}
+ cstr = "0.1.0"
+ cpp = "0.5"
+ url = "2.1.0"

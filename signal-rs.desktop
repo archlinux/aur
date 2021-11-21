@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/signal-rs %F
+Name=SignalRs
+Icon=signal-desktop
+Terminal=false
