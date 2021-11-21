@@ -1773,8 +1773,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc fcitx-mozc-git/
 +FCITX_ADDON_FACTORY(fcitx::MozcEngineFactory)
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h
 --- google-mozc-git/src/unix/fcitx5/mozc_engine.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h	2021-10-30 22:18:56.061963060 +0300
-@@ -0,0 +1,151 @@
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h	2021-11-21 21:30:16.661573336 +0200
+@@ -0,0 +1,154 @@
 +/*
 + * Copyright (C) 2017~2017 by CSSlayer
 + * wengxt@gmail.com
@@ -1841,6 +1841,9 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/
 +                    mozc::commands::HIRAGANA};
 +    OptionWithAnnotation<ExpandMode, ExpandModeI18NAnnotation> expandMode{
 +        this, "ExpandMode", _("Expand Usage"), ExpandMode::OnFocus};
++    Option<bool> preeditCursorPositionAtBeginning{
++        this, "PreeditCursorPositionAtBeginning",
++        _("Fix embedded preedit cursor at the beginning of the preedit"), true};
 +    Option<Key> expand{this, "ExpandKey", _("Hotkey to expand usage"),
 +                       Key("Control+Alt+H")};
 +
@@ -2513,8 +2516,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.h fcitx-mozc-git/
 +#endif  // MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.cc fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_state.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc	2021-10-30 22:18:56.061963060 +0300
-@@ -0,0 +1,409 @@
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,413 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
 +//
@@ -2868,7 +2871,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.cc fcitx-mozc-git/src/unix/
 +    aux += "]";
 +  }
 +  if (ic_->capabilityFlags().test(CapabilityFlag::Preedit)) {
-+    ic_->inputPanel().setClientPreedit(preedit_);
++    Text preedit = preedit_;
++    if (*engine_->config().preeditCursorPositionAtBeginning) {
++      preedit.setCursor(0);
++    }
++    ic_->inputPanel().setClientPreedit(preedit);
 +    if (!aux_.empty()) {
 +      ic_->inputPanel().setAuxUp(Text(aux));
 +    }
@@ -3118,8 +3125,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.x
 +</component>
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx5/po/ca.po
 --- google-mozc-git/src/unix/fcitx5/po/ca.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ca.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,115 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ca.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3131,7 +3138,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 +"Language-Team: Catalan (https://www.transifex.com/fcitx/teams/12005/ca/)\n"
@@ -3141,11 +3148,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr ""
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr ""
 +
@@ -3157,11 +3164,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Composition Mode"
 +msgstr ""
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "Eina de configuració"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "Eina de diccionari"
 +
@@ -3171,6 +3178,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
++msgstr ""
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
 +msgstr ""
 +
 +#. Full width ASCII letter A.
@@ -3201,7 +3212,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Hotkey"
 +msgstr ""
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr ""
 +
@@ -3228,7 +3239,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press %s to show usages."
 +msgstr ""
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr ""
 +
@@ -3237,8 +3248,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx5/po/da.po
 --- google-mozc-git/src/unix/fcitx5/po/da.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/da.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,115 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/da.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3250,7 +3261,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: scootergrisen, 2020\n"
 +"Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -3260,11 +3271,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr "Om Mozc"
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr "Tilføj ord"
 +
@@ -3276,11 +3287,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Composition Mode"
 +msgstr "Kompositionstilstand"
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "Konfigurationsværktøj"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "Ordbogsværktøj"
 +
@@ -3291,6 +3302,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
 +msgstr "Udvid anvendelse"
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
++msgstr ""
 +
 +#. Full width ASCII letter A.
 +#: mozc_engine.h:53 mozc_engine.cc:82
@@ -3320,7 +3335,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Hotkey"
 +msgstr "Hottast"
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr "Hottast til at udvide anvendelse"
 +
@@ -3347,7 +3362,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press %s to show usages."
 +msgstr "Tryk på %s for at vise anvendelser."
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr "Tryk på Escape for at gå tilbage"
 +
@@ -3356,8 +3371,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgstr "Værktøj"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx5/po/de.po
 --- google-mozc-git/src/unix/fcitx5/po/de.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/de.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,115 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/de.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3369,7 +3384,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 +"Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -3379,11 +3394,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr ""
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr ""
 +
@@ -3395,11 +3410,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Composition Mode"
 +msgstr ""
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "Konfigurationswerkzeug"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "Wörterbuchwerkzeug"
 +
@@ -3411,6 +3426,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Expand Usage"
 +msgstr ""
 +
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
++msgstr ""
++
 +#. Full width ASCII letter A.
 +#: mozc_engine.h:53 mozc_engine.cc:82
 +msgid "Full ASCII"
@@ -3439,7 +3458,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Hotkey"
 +msgstr ""
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr ""
 +
@@ -3466,7 +3485,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press %s to show usages."
 +msgstr ""
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr ""
 +
@@ -3475,8 +3494,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot
 --- google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,111 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,115 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3485,7 +3504,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 +"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 +"Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3494,11 +3513,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +"Content-Type: text/plain; charset=utf-8\n"
 +"Content-Transfer-Encoding: 8bit\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr ""
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr ""
 +
@@ -3510,11 +3529,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgid "Composition Mode"
 +msgstr ""
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr ""
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr ""
 +
@@ -3524,6 +3543,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
++msgstr ""
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
 +msgstr ""
 +
 +#. Full width ASCII letter A.
@@ -3554,7 +3577,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgid "Hotkey"
 +msgstr ""
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr ""
 +
@@ -3581,7 +3604,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgid "Press %s to show usages."
 +msgstr ""
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr ""
 +
@@ -3590,22 +3613,22 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx5/po/he.po
 --- google-mozc-git/src/unix/fcitx5/po/he.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/he.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,116 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/he.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
 +#
 +# Translators:
-+# Omeritzics Games <omeritzicschwartz@gmail.com>, 2021
++# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
 +#
 +msgid ""
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
-+"Last-Translator: Omeritzics Games <omeritzicschwartz@gmail.com>, 2021\n"
++"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
 +"Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
 +"Language: he\n"
 +"MIME-Version: 1.0\n"
@@ -3614,11 +3637,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
 +"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr "על אודות Mozc"
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr "הוספת מילה"
 +
@@ -3630,11 +3653,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Composition Mode"
 +msgstr ""
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr ""
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr ""
 +
@@ -3644,6 +3667,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
++msgstr ""
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
 +msgstr ""
 +
 +#. Full width ASCII letter A.
@@ -3674,7 +3701,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Hotkey"
 +msgstr ""
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr ""
 +
@@ -3701,7 +3728,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press %s to show usages."
 +msgstr ""
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr ""
 +
@@ -3710,8 +3737,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx5/po/ja.po
 --- google-mozc-git/src/unix/fcitx5/po/ja.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ja.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,116 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ja.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3724,7 +3751,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-25 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 20:24+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
 +"Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -3734,11 +3761,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr "Mozc について"
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr "単語を追加"
 +
@@ -3750,11 +3777,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Composition Mode"
 +msgstr "文字種"
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "設定ツール"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "辞書ツール"
 +
@@ -3765,6 +3792,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
 +msgstr "用例を表示"
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
++msgstr "プリエディット先頭の埋め込みプリエディットカーソルを修正する"
 +
 +#. Full width ASCII letter A.
 +#: mozc_engine.h:53 mozc_engine.cc:82
@@ -3794,7 +3825,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Hotkey"
 +msgstr "ホットキー"
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr "用例を表示するホットキー"
 +
@@ -3821,7 +3852,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press %s to show usages."
 +msgstr "%s で用例表示"
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr "Esc キーを押して戻る"
 +
@@ -3830,8 +3861,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgstr "ツール"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx5/po/ko.po
 --- google-mozc-git/src/unix/fcitx5/po/ko.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,117 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,121 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3845,7 +3876,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2021\n"
 +"Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -3855,11 +3886,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr "Mozc 정보"
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr "단어 추가"
 +
@@ -3871,11 +3902,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Composition Mode"
 +msgstr "조합 모드"
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "환경설정 도구"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "사전 도구"
 +
@@ -3885,6 +3916,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
++msgstr ""
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
 +msgstr ""
 +
 +#. Full width ASCII letter A.
@@ -3915,7 +3950,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Hotkey"
 +msgstr "단축키"
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr ""
 +
@@ -3942,7 +3977,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press %s to show usages."
 +msgstr "%s 키를 눌러 사용법을 표시합니다."
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr "돌아가려면 Esc 키를 누르십시오."
 +
@@ -3951,8 +3986,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgstr "도구"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/LINGUAS fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS
 --- google-mozc-git/src/unix/fcitx5/po/LINGUAS	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS	2021-08-22 10:50:49.569551580 +0300
-@@ -0,0 +1,10 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,11 @@
 +
 +ca
 +da
@@ -3961,12 +3996,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/LINGUAS fcitx-mozc-git/src/unix/fci
 +ja
 +ko
 +ru
++tr
 +zh_CN
 +zh_TW
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx5/po/ru.po
 --- google-mozc-git/src/unix/fcitx5/po/ru.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ru.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,117 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ru.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,121 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3978,7 +4014,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 +"Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -3990,11 +4026,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 +"%100>=11 && n%100<=14)? 2 : 3);\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr ""
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr ""
 +
@@ -4006,11 +4042,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Composition Mode"
 +msgstr ""
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "Инструмент настройки"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "Инструмент словаря"
 +
@@ -4020,6 +4056,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
++msgstr ""
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
 +msgstr ""
 +
 +#. Full width ASCII letter A.
@@ -4050,7 +4090,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Hotkey"
 +msgstr ""
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr ""
 +
@@ -4077,7 +4117,130 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press %s to show usages."
 +msgstr ""
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
++msgid "Press Escape to go back"
++msgstr ""
++
++#: mozc_engine.cc:159 mozc_engine.cc:160
++msgid "Tool"
++msgstr ""
+diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx5/po/tr.po
+--- google-mozc-git/src/unix/fcitx5/po/tr.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/tr.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,119 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the fcitx5-mozc package.
++#
++# Translators:
++# abc Def <hdogan1974@gmail.com>, 2021
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx5-mozc\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
++"PO-Revision-Date: 2017-11-23 05:28+0000\n"
++"Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
++"Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
++"Language: tr\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=2; plural=(n > 1);\n"
++
++#: mozc_engine.h:79 mozc_engine.cc:196
++msgid "About Mozc"
++msgstr "Mozc Hakkında"
++
++#: mozc_engine.h:77 mozc_engine.cc:189
++msgid "Add Word"
++msgstr "Kelime Ekle"
++
++#: mozc_engine.h:48
++msgid "Always"
++msgstr ""
++
++#: mozc_engine.cc:96
++msgid "Composition Mode"
++msgstr ""
++
++#: mozc_engine.h:73 mozc_engine.cc:173
++msgid "Configuration Tool"
++msgstr ""
++
++#: mozc_engine.h:75 mozc_engine.cc:181
++msgid "Dictionary Tool"
++msgstr ""
++
++#: mozc_engine.h:51 mozc_engine.cc:52
++msgid "Direct"
++msgstr ""
++
++#: mozc_engine.h:66
++msgid "Expand Usage"
++msgstr ""
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
++msgstr ""
++
++#. Full width ASCII letter A.
++#: mozc_engine.h:53 mozc_engine.cc:82
++msgid "Full ASCII"
++msgstr ""
++
++#. Katakana letter A.
++#: mozc_engine.h:52 mozc_engine.cc:66
++msgid "Full Katakana"
++msgstr ""
++
++#: mozc_engine.h:52 mozc_engine.cc:74
++msgid "Half ASCII"
++msgstr ""
++
++#. Half width Katakana letter A.
++#: mozc_engine.h:53 mozc_engine.cc:89
++msgid "Half Katakana"
++msgstr ""
++
++#. Hiragana letter A in UTF-8.
++#: mozc_engine.h:51 mozc_engine.cc:59
++msgid "Hiragana"
++msgstr ""
++
++#: mozc_engine.h:49
++msgid "Hotkey"
++msgstr ""
++
++#: mozc_engine.h:70
++msgid "Hotkey to expand usage"
++msgstr ""
++
++#: mozc_engine.h:63
++msgid "Initial Mode"
++msgstr ""
++
++#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:8
++msgid "Japanese input method based on Mozc"
++msgstr ""
++
++#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
++msgid "Mozc for Fcitx 5"
++msgstr ""
++
++#: mozc_engine.h:48
++msgid "On Focus"
++msgstr ""
++
++#. We don't have a good library option for this, just do the simple
++#. replace. absl's runtime parsed format string is too copmlex.
++#: mozc_response_parser.cc:174
++#, c-format
++msgid "Press %s to show usages."
++msgstr ""
++
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr ""
 +
@@ -4086,8 +4249,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po
 --- google-mozc-git/src/unix/fcitx5/po/zh_CN.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,116 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -4099,7 +4262,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-26 07:27+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 +"Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -4110,11 +4273,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr "关于 Mozc"
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr "添加词组"
 +
@@ -4126,11 +4289,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgid "Composition Mode"
 +msgstr "编辑模式"
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "配置工具"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "词典工具"
 +
@@ -4141,6 +4304,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
 +msgstr "展开用法"
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
++msgstr ""
 +
 +#. Full width ASCII letter A.
 +#: mozc_engine.h:53 mozc_engine.cc:82
@@ -4170,7 +4337,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgid "Hotkey"
 +msgstr "快捷键"
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr "展开用法的快捷键"
 +
@@ -4197,7 +4364,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgid "Press %s to show usages."
 +msgstr "按下 %s 显示用法。"
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr "按 Escape 返回"
 +
@@ -4206,8 +4373,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgstr "工具"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po
 --- google-mozc-git/src/unix/fcitx5/po/zh_TW.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po	2021-10-30 22:18:56.062963074 +0300
-@@ -0,0 +1,117 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po	2021-11-21 21:30:16.662573350 +0200
+@@ -0,0 +1,121 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -4220,7 +4387,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-10-24 20:24+0000\n"
++"POT-Creation-Date: 2021-11-20 15:07+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: bruh, 2020\n"
 +"Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -4231,11 +4398,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:76 mozc_engine.cc:196
++#: mozc_engine.h:79 mozc_engine.cc:196
 +msgid "About Mozc"
 +msgstr "關於 Mozc"
 +
-+#: mozc_engine.h:74 mozc_engine.cc:189
++#: mozc_engine.h:77 mozc_engine.cc:189
 +msgid "Add Word"
 +msgstr "添加單詞"
 +
@@ -4247,11 +4414,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgid "Composition Mode"
 +msgstr "編輯模式"
 +
-+#: mozc_engine.h:70 mozc_engine.cc:173
++#: mozc_engine.h:73 mozc_engine.cc:173
 +msgid "Configuration Tool"
 +msgstr "設定工具"
 +
-+#: mozc_engine.h:72 mozc_engine.cc:181
++#: mozc_engine.h:75 mozc_engine.cc:181
 +msgid "Dictionary Tool"
 +msgstr "字典工具"
 +
@@ -4261,6 +4428,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +
 +#: mozc_engine.h:66
 +msgid "Expand Usage"
++msgstr ""
++
++#: mozc_engine.h:69
++msgid "Fix embedded preedit cursor at the beginning of the preedit"
 +msgstr ""
 +
 +#. Full width ASCII letter A.
@@ -4291,7 +4462,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgid "Hotkey"
 +msgstr ""
 +
-+#: mozc_engine.h:67
++#: mozc_engine.h:70
 +msgid "Hotkey to expand usage"
 +msgstr ""
 +
@@ -4318,7 +4489,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgid "Press %s to show usages."
 +msgstr ""
 +
-+#: mozc_state.cc:403
++#: mozc_state.cc:407
 +msgid "Press Escape to go back"
 +msgstr "按下 Escape 返回"
 +
