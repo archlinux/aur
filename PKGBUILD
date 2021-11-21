@@ -19,7 +19,6 @@ gl2ps
 ffmpeg
 freeimage
 intel-tbb
-#openvr
 )
 
 makedepends=(
@@ -52,19 +51,8 @@ prepare() {
   
   #curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
 
-  #curl https://raw.githubusercontent.com/archlinux/svntogit-community/packages/opencascade/trunk/vtk9.patch | patch -p1
-
-  # https://tracker.dev.opencascade.org/view.php?id=32264
-  #curl -L 'http://git.dev.opencascade.org/gitweb/?p=occt.git;a=patch;h=refs/heads/CR32264' | patch -p1
-  
   # fix for None type build
   sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
-
-  # fix for trying to write into the system during build
-  #sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
-
-  # fix for https://tracker.dev.opencascade.org/view.php?id=32328
-  #sed 's,#include <TopoDS_Shape.hxx>,#include <TopoDS_Edge.hxx>\n#include <TopoDS_Shape.hxx>,g' -i src/ShapeUpgrade/ShapeUpgrade_UnifySameDomain.hxx
 }
 
 build() {
