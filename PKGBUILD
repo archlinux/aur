@@ -8,7 +8,7 @@ pkgdesc='A digital emulation of the Klon Centaur guitar pedal.'
 arch=('x86_64')
 url='https://github.com/jatinchowdhury18/KlonCentaur'
 license=('BSD')
-depends=('curl' 'gtk2' 'webkit2gtk' 'freetype2')
+depends=('curl' 'lv2' 'gtk2' 'webkit2gtk' 'freetype2' 'alsa-lib')
 makedepends=('cmake' 'git')
 source=("$pkgname::git+$url.git")
 
@@ -29,7 +29,7 @@ build() {
 package() {
     cd $srcdir
     install -Dm755 $pkgname/build/ChowCentaur/ChowCentaur_artefacts/Standalone/ChowCentaur "$pkgdir"/usr/local/bin/chowcentaur
-    install -dm755 "$pkgdir"/usr/lib/{LV2,VST3}
+    install -dm755 "$pkgdir"/usr/lib/{LV2/chowcentaur,VST3/chowcentaur}
     install -m644 $pkgname/build/ChowCentaur/ChowCentaur_artefacts/LV2/ChowCentaur.lv2/*.* "$pkgdir"/usr/lib/LV2/
     install -m644 $pkgname/build/ChowCentaur/ChowCentaur_artefacts/VST3/ChowCentaur.vst3/Contents/x86_64-linux/ChowCentaur.so "$pkgdir"/usr/lib/VST3/ChowCentaur.so
     install -d "$pkgdir"/usr/share/pixmaps/
