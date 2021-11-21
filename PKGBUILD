@@ -1,32 +1,40 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=git-ignore
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Quickly and easily list and fetch .gitignore templates from gitignore.io"
 arch=('x86_64')
 url="https://github.com/sondr3/git-ignore"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-validpgpkeys=('9CBF84633C7DDB10')
-sha256sums=('4cc4476b77418dae96f43a7ae80cf58dd5e740bc83d3f6004c6c035df7ad61e3')
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('7BCDD2AFEDB1B62C2B6E999EAC00E2AC485EF38D')
+
+prepare() {
+	cd "$pkgname"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	cargo build --release --locked --all-features --target-dir=target
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd "$pkgname"
+	cargo build --release --frozen --all-features
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	cargo test --release --locked --all-features --target-dir=target
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$pkgname"
+	cargo test --release --frozen --all-features
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+	cd "$pkgname"
+	install -D "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dm 644 "target/assets/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
