@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r76950.dcf9b7d53f
+pkgver=r77119.f998e31db1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -35,6 +35,7 @@ prepare() {
   sed -i "/MFTranscodeContainerType_MPEG4/d" VTK/IO/Movie/vtkMP4Writer.cxx
   # We have a patched libharu
   sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
+  sed -i "18i#undef STRICT" VTK/ThirdParty/libproj/vtk_libproj.h.in && cat VTK/ThirdParty/libproj/vtk_libproj.h.in
 }
 
 build() {
