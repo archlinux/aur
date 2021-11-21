@@ -11,6 +11,7 @@ pkgbase = userspace-tablet-driver-daemon-git
 	makedepends = make
 	provides = userspace_tablet_driver_daemon
 	conflicts = userpace-tablet-driver-daemon
+	source = git+https://github.com/kurikaesu/userspace-tablet-driver-daemon.git
 	sha256sums = SKIP
 
 pkgname = userspace-tablet-driver-daemon-git
