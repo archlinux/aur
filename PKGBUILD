@@ -15,7 +15,8 @@ optdepends=('kimageformats: support for more image formats'
             # 'qt5-apng-plugin: apng support'
             'qtraw-git: RAW support'
             # 'qt5-jpegxl-image-plugin: JPEG-XL support'
-            # 'qt5-avif-image-plugin-git: AVIF support')
+            # 'qt5-avif-image-plugin-git: AVIF support'
+            )
 provides=("qimgv")
 conflicts=("qimgv")
 source=(git+"${url}".git)

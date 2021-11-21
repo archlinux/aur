@@ -22,7 +22,6 @@ pkgbase = qimgv-qt6-kde-git
 	depends = opencv
 	optdepends = kimageformats: support for more image formats
 	optdepends = qtraw-git: RAW support
-	optdepends = qt-avif-image-plugin-git: AVIF support
 	provides = qimgv
 	conflicts = qimgv
 	source = git+https://github.com/easymodo/qimgv.git
