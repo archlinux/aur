@@ -2,13 +2,12 @@
 
 pkgname=7-zip
 pkgver=21.04
-pkgrel=1
+pkgrel=2
 pkgdesc="File archiver with a high compression ratio"
 url="https://www.7-zip.org"
 license=(LGPL)
 arch=(x86_64)
 makedepends=(uasm)
-conflicts=(p7zip)
 source=(https://7-zip.org/a/7z2104-src.7z)
 sha256sums=('5e6b84c8824025033465b82b5b4da5436ae9e0a1430632d72916937d8f9508e8')
 
@@ -26,7 +25,6 @@ build() {
 
 package() {
 	install -Dt "${pkgdir}"/usr/bin -m0755 CPP/7zip/Bundles/Alone2/b/g_x64/7zz
-	ln -sf 7zz "${pkgdir}"/usr/bin/7z
 	install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m0644 DOC/{copying,License,unRarLicense}.txt
 	install -Dt "${pkgdir}"/usr/share/doc/${pkgname} -m0644 DOC/{7zC,7zFormat,lzma,Methods,readme,src-history}.txt
 }
