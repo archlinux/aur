@@ -7,7 +7,7 @@
 
 pkgname=mutter-rounded
 pkgver=41.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -28,11 +28,11 @@ _commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
-_setting_src="mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/8f8e3f8d39f31e602c2d09884a6c5dd1/main.js"
+_settings_src="https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/2b934d0b3194f0b2adb9a5392e512c76/mutter-settings.tar"
 
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
   _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
-  _setting_src="mutter_setting::https://gitee.com/lluo/mutter-rounded-setting/attach_files/865566/download/main.js"
+  _settings_src="https://gitee.com/lluo/mutter-rounded-setting/attach_files/886389/download/mutter-settings.tar"
 fi
 
 source=("$_mutter_src"
@@ -43,7 +43,7 @@ source=("$_mutter_src"
         "shader.h"
         "$_shell_blur_h_src"
         "$_shell_blur_c_src"
-        "$_setting_src")
+        "$_settings_src")
 sha256sums=('SKIP'
             '0c2fc381c7529d012d3d8a4368941db7b60ce6128005008b5ddfb4da16dc2b83'
             '895f35f5e8a458c71b4312061cf7d2b0108a3c6df4b0324ab342c5a3576ee09a'
@@ -52,7 +52,7 @@ sha256sums=('SKIP'
             'a02e991156dc3b4418899b73a2e65187a43990851fb235ea128ed7650c839a3b'
             '8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b'
             'd58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a'
-            'c0eff82301060044d231f0b674025e5a00d1152e515e08d16fd18363da5187e5')
+            '750d602fbfc08ed810d49c3ff90800ea3c243a16f74feaff995b209d00721867')
 
 pkgver() {
   cd $pkgname
@@ -60,7 +60,8 @@ pkgver() {
 }
 
 prepare() {
-  sed -i '1i\#!/usr/bin/gjs' mutter_setting
+  sed -i '1i\#!/usr/bin/gjs' $srcdir/dist/mutter_settings.js
+  mv dist/mutter_settings.js mutter_settings
 
   cd $pkgname
   cp $srcdir/*.[ch] $srcdir/$pkgname/src
@@ -102,5 +103,17 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install mutter_setting $pkgdir/usr/bin/
+  install mutter_settings $pkgdir/usr/bin/
+
+  _uuid=pickawindow@lluo.gitlab.com
+  _schemas=org.gnome.shell.extensions.pickawindow.gschema.xml
+  
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  cp -r $_uuid/* "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+
+  install -d "$pkgdir/usr/share/glib-2.0/schemas/"
+  ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/$_schemas" \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+
+  install mutter_settings $pkgdir/usr/bin/
 }

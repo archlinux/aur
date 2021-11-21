@@ -1,7 +1,7 @@
 pkgbase = mutter-rounded
 	pkgdesc = A window manager for GNOME, with rounded corners patch
 	pkgver = 41.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	install = mutter.install
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = mutter-rounded
 	source = shader.h
 	source = https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.h
 	source = https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.c
-	source = mutter_setting::https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/8f8e3f8d39f31e602c2d09884a6c5dd1/main.js
+	source = https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/2b934d0b3194f0b2adb9a5392e512c76/mutter-settings.tar
 	sha256sums = SKIP
 	sha256sums = 0c2fc381c7529d012d3d8a4368941db7b60ce6128005008b5ddfb4da16dc2b83
 	sha256sums = 895f35f5e8a458c71b4312061cf7d2b0108a3c6df4b0324ab342c5a3576ee09a
@@ -53,6 +53,6 @@ pkgbase = mutter-rounded
 	sha256sums = a02e991156dc3b4418899b73a2e65187a43990851fb235ea128ed7650c839a3b
 	sha256sums = 8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b
 	sha256sums = d58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a
-	sha256sums = c0eff82301060044d231f0b674025e5a00d1152e515e08d16fd18363da5187e5
+	sha256sums = 750d602fbfc08ed810d49c3ff90800ea3c243a16f74feaff995b209d00721867
 
 pkgname = mutter-rounded
