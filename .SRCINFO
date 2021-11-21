@@ -1,0 +1,23 @@
+pkgbase = ansible-ara
+	pkgdesc = ARA Records Ansible and makes it easier to understand and troubleshoot.
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://github.com/ansible-community/ara
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python-cliff
+	depends = python-pbr
+	depends = python-requests
+	optdepends = python-django
+	optdepends = python-django-rest-framework
+	optdepends = python-django-cors-headers
+	optdepends = python-django-filter
+	optdepends = python-tzlocal
+	optdepends = python-whitenoise
+	optdepends = python-pygments
+	optdepends = python-psycopg2
+	source = https://files.pythonhosted.org/packages/f2/7f/ea50ae0975f4adbc7f02a520ea30b831e3c3cc1b48cab82a5f9386cec0b3/ara-1.5.7.tar.gz
+	sha256sums = 4a6883dad5e0d119a754271338948cb1119c2c5b36d48b162d610e348eccb502
+
+pkgname = ansible-ara
