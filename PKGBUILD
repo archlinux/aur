@@ -9,7 +9,11 @@ url="https://www.monicahq.com/"
 license=("AGPL3")
 arch=("any")
 depends=("php>=7.4")
-optdepends=("php-redis: cache, session and queue drivers")
+optdepends=(
+    "mariadb: use local MariaDB database"
+    "nginx: supported application server"
+    "php-redis: cache, session and queue drivers"
+)
 # PGP key is commented out because it isn't clear right now who actually signs these releases
 source=(
     "https://github.com/monicahq/monica/releases/download/v${pkgver}/monica-v${pkgver}.tar.bz2"
