@@ -1,12 +1,11 @@
 pkgbase = kubent-bin
 	pkgdesc = Easily check your kubernetes cluster for use of deprecated APIs
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/doitintl/kube-no-trouble
 	arch = x86_64
 	license = MIT
-	source = https://github.com/doitintl/kube-no-trouble/releases/download/0.4.0/kubent-0.4.0-linux-amd64.tar.gz
-	md5sums = e17916deae2744c34dcff33d551a9091
+	source = https://github.com/doitintl/kube-no-trouble/releases/download/0.5.1/kubent-0.5.1-linux-amd64.tar.gz
+	md5sums = 3b0f87769ecd63b0ad6135fa841b52b2
 
 pkgname = kubent-bin
-
