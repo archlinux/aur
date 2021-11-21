@@ -1,0 +1,48 @@
+--- driver/mxusbserial/mxbus.c.orig	2017-10-16 22:19:05.000000000 -0400
++++ driver/mxusbserial/mxbus.c	2021-11-21 01:04:42.111372571 -0500
+@@ -95,11 +95,15 @@ static int usb_serial_device_probe (stru
+ #endif
+ exit:
+ 	return retval;
+ }
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0))
+ static int usb_serial_device_remove (struct device *dev)
++#else
++static void usb_serial_device_remove (struct device *dev)
++#endif
+ {
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(2,6,14)) 	    
+ 	struct usb_serial_driver *driver;
+ #else
+ 	struct usb_serial_device_type *driver;
+@@ -108,11 +112,15 @@ static int usb_serial_device_remove (str
+ 	int retval = 0;
+ 	int minor;
+ 
+ 	port = to_usb_serial_port(dev);
+ 	if (!port) {
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0))
+ 		return -ENODEV;
++#else
++		return;
++#endif
+ 	}
+ 
+ 	driver = port->serial->type;
+ 	if (driver->port_remove) {
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(2,6,14)) 	    
+@@ -139,11 +147,13 @@ exit:
+ 		 driver->description, minor);
+ #else
+ 	dev_info(dev, "%s converter now disconnected from ttyMXUSB%d\n",
+ 		 driver->name, minor);
+ #endif
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0))
+ 	return retval;
++#endif
+ }
+ 
+ struct bus_type mx_usb_serial_bus_type = {
+ 	.name =		"mxusbserial",
+ 	.match =	usb_serial_device_match,

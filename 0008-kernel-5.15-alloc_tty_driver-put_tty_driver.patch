@@ -1,0 +1,42 @@
+--- driver/mxusbserial/mxusb-serial.c.orig	2021-11-21 01:10:31.632601395 -0500
++++ driver/mxusbserial/mxusb-serial.c	2021-11-21 01:11:48.575138551 -0500
+@@ -1682,12 +1682,12 @@ struct tty_driver *mx_usbserial_tty_driv
+ int usb_serial_init(void)
+ {
+ 	int i;
+ 	int result;
+ 
+-	mx_usbserial_tty_driver = alloc_tty_driver(SERIAL_TTY_MINORS);
+-	if (!mx_usbserial_tty_driver)
++	mx_usbserial_tty_driver = tty_alloc_driver(SERIAL_TTY_MINORS,0);
++	if (IS_ERR(mx_usbserial_tty_driver))
+ 		return -ENOMEM;
+ 
+ 	/* Initialize our global data */
+ 	for (i = 0; i < SERIAL_TTY_MINORS; ++i) {
+ 		serial_table[i] = NULL;
+@@ -1739,22 +1739,22 @@ exit_tty:
+ exit_reg_driver:
+ 	bus_unregister(&mx_usb_serial_bus_type);
+ 
+ exit_bus:
+ 	err ("%s - returning with error %d", __FUNCTION__, result);
+-	put_tty_driver(mx_usbserial_tty_driver);
++	tty_driver_kref_put(mx_usbserial_tty_driver);
+ 	return result;
+ }
+ 
+ 
+ void usb_serial_exit(void)
+ {
+ 	//mx_usbserial_console_exit();
+ 
+ 	usb_deregister(&usb_serial_driver);
+ 	tty_unregister_driver(mx_usbserial_tty_driver);
+-	put_tty_driver(mx_usbserial_tty_driver);
++	tty_driver_kref_put(mx_usbserial_tty_driver);
+ 	bus_unregister(&mx_usb_serial_bus_type);
+ }
+ 
+ 
+ module_init(usb_serial_init);
