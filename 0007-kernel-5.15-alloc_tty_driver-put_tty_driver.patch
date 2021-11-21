@@ -1,0 +1,55 @@
+diff -pNaru5 driver/2.6.27.orig/dgnc_tty.c driver/2.6.27/dgnc_tty.c
+--- driver/2.6.27.orig/dgnc_tty.c	2021-11-21 00:49:57.469474751 -0500
++++ driver/2.6.27/dgnc_tty.c	2021-11-21 00:52:04.633840884 -0500
+@@ -246,11 +246,11 @@ int dgnc_tty_register(struct board_t *br
+ {
+ 	int rc = 0;
+ 
+ 	DPR_INIT(("tty_register start\n"));
+ 
+-	brd->SerialDriver = alloc_tty_driver(brd->maxports);
++	brd->SerialDriver = tty_alloc_driver(brd->maxports,0);
+ 
+ 	brd->SerialDriver->owner = THIS_MODULE;
+ 	snprintf(brd->SerialName, MAXTTYNAMELEN, "tty_dgnc_%d_", brd->boardnum);
+ 
+ 	brd->SerialDriver->name = brd->SerialName;
+@@ -291,11 +291,11 @@ int dgnc_tty_register(struct board_t *br
+ 	/*
+ 	 * If we're doing transparent print, we have to do all of the above
+ 	 * again, seperately so we don't get the LD confused about what major
+ 	 * we are when we get into the dgnc_tty_open() routine.
+ 	 */
+-	brd->PrintDriver = alloc_tty_driver(brd->maxports);
++	brd->PrintDriver = tty_alloc_driver(brd->maxports,0);
+ 
+ 	brd->PrintDriver->owner = THIS_MODULE;
+ 	snprintf(brd->PrintName, MAXTTYNAMELEN, "pr_dgnc_%d_", brd->boardnum);
+ 
+ 	brd->PrintDriver->name = brd->PrintName;
+@@ -503,11 +503,11 @@ void dgnc_tty_uninit(struct board_t *brd
+ 		tty_unregister_driver(brd->SerialDriver);
+ 		if (brd->SerialDriver->ttys) {
+ 			kfree(brd->SerialDriver->ttys);
+ 			brd->SerialDriver->ttys = NULL;
+ 		}
+-		put_tty_driver(brd->SerialDriver);
++		tty_driver_kref_put(brd->SerialDriver);
+ 		brd->dgnc_Major_Serial_Registered = FALSE;
+ 	}
+ 
+ 	if (brd->dgnc_Major_TransparentPrint_Registered) {
+ 		dgnc_BoardsByMajor[brd->PrintDriver->major] = NULL;
+@@ -519,11 +519,11 @@ void dgnc_tty_uninit(struct board_t *brd
+ 		tty_unregister_driver(brd->PrintDriver);
+ 		if (brd->PrintDriver->ttys) {
+ 			kfree(brd->PrintDriver->ttys);
+ 			brd->PrintDriver->ttys = NULL;
+ 		}
+-		put_tty_driver(brd->PrintDriver);
++		tty_driver_kref_put(brd->PrintDriver);
+ 		brd->dgnc_Major_TransparentPrint_Registered = FALSE;
+ 	}
+ }
+ 
+ 

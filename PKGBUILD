@@ -6,6 +6,8 @@
 # Digi bug: change literal "dgnc" to DRVSTR or PROCSTR
 # Digi bug: viewing /proc/dgnc/0/[0-9]/sniff hangs terminal
 
+# Stopped working after kernel version 5.14.0: /dev/ttyn1a: No such device or address
+
 _opt_DKMS=1              # This can be toggled between installs
 _opt_defaultmode="0660"  # default: 0600
 _opt_defaultgroup="uucp" # default: root
@@ -17,12 +19,12 @@ pkgname='digi-dgnc'
 #_pkgver='1.3-28'; _dl='40002369_G.tgz'
 _pkgver='1.3-29'; _dl='40002369_H.src.rpm'
 pkgver="${_pkgver//-/.}"
-pkgrel='5'
+pkgrel='6'
 pkgdesc='tty driver for Digi Neo and legacy ClassicBoard PCI PCIe RS-232 serial port'
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
 license=('GPL')
-options=('!strip')
+options=('!strip' '!buildflags')
 install="${pkgname}-install.sh"
 _srcdir="${pkgname##*-}-${pkgver%.*}"
 source=(
@@ -34,6 +36,7 @@ source=(
   '0004-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
   '0005-kernel-5.13-dropped-tty_check_change.patch'
   '0006-kernel-5.14-task_struct.state-unsigned-tty.patch'
+  '0007-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
 )
 md5sums=('6171349852f6d02228d6e30c79b7a434'
          'a171e9ea1a4ff8340c3c58b303632edf'
@@ -42,7 +45,8 @@ md5sums=('6171349852f6d02228d6e30c79b7a434'
          '394d24a150676d8123300d6715b81fb8'
          '44b0a7b0ab4dbe661b822fcba9423121'
          '10ba960da22684d2da89872df1d822cc'
-         '89de6a694ecf827a3358bcd8aea03a6a')
+         '89de6a694ecf827a3358bcd8aea03a6a'
+         '58d75d8f86830d09ba8754d4e03a6a9d')
 sha256sums=('e121a31569e3e1f156caeed70742971ec32fef598429ef647bde98f56aa048f5'
             '625bb794d31690b45ad7469f811e7422dac938cf8e9b777aba4d97b60b3c6eae'
             '88d5a8589dca55ca98089dfa4570aa1fbde1095957d0788ad710a27b348c2f4f'
@@ -50,7 +54,8 @@ sha256sums=('e121a31569e3e1f156caeed70742971ec32fef598429ef647bde98f56aa048f5'
             '3496e90914e1fa2f209dd85c336e7b1c0b784dbbf67cc45e0f0f55f0b1ef5a0e'
             'f215451df4a01f0875a53425b6d8452c344f19b61b59b821f8c949b1b276c022'
             '13257318895327e7438f7f357c5dc7d67310ec0468802df083815414d4743805'
-            'dcedb22e0f3fb0c8197630b38217f86c5468d065ab2d67708c16c17351d6944e')
+            'dcedb22e0f3fb0c8197630b38217f86c5468d065ab2d67708c16c17351d6944e'
+            '0693e13442749c40a338320cca72dd8aad23678ea7cae035e6bab01a40640c44')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -117,6 +122,12 @@ prepare() {
   #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0006-kernel-5.14-task_struct.state-unsigned-tty.patch'
   patch -Nbup0 -i "${srcdir}/0006-kernel-5.14-task_struct.state-unsigned-tty.patch"
+
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
+  #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0007-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  patch -Nbup0 -i "${srcdir}/0007-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
 
   # Version check
   local _ver
@@ -212,8 +223,10 @@ build() {
   set -u
   cd "${_srcdir}"
   _configure
+  set +u; msg2 'Build config'; set -u
   #CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=2/}" \ 
   make -C 'config' -j1
+  set +u; msg2 'Build'; set -u
   make -j1
   set +u
 }
