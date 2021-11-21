@@ -6,7 +6,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -77,12 +77,9 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 _major=5.15
-_gcc_more_v=20210914
-_patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
-_jobs=$(nproc)
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -91,20 +88,30 @@ makedepends=(
 )
 options=('!strip')
 
+_gcc_more_v=20211114
+_patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
+_jobs=$(nproc)
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # thankfully xanmod keeps the hrtimer patches up to date
 _commit=8ba6612318090567422d49ccc79bc7bbe5484cfc
 _xan=linux-5.15.y-xanmod
+
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
         config         # the main kernel config file
-        "more-uarches-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
-        "xanmod-patches-from-ck-${_commit}.tar.gz::https://github.com/xanmod/linux-patches/archive/${_commit}.tar.gz"
+        "more-uarches-${_gcc_more_v}.tar.gz::https://hub.fastgit.org/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
+        "xanmod-patches-from-ck-${_commit}.tar.gz::https://hub.fastgit.org/xanmod/linux-patches/archive/${_commit}.tar.gz"
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
-        "0003-bbr2.patch::${_patches_url}/bbr2-patches/0001-bbr2-${_major}-introduce-BBRv2.patch"
-        "0004-lru.patch::${_patches_url}/lru-patches-pf-v3/0001-lru-patches.patch"
-        "0005-block.patch::${_patches_url}/block-patches-v2/0001-block-patches.patch"
-        "0006-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
+        0002-staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch
+        0003-PCI-MSI-Deal-with-devices-lying-about-their-MSI-mask.patch
+        0004-PCI-Add-MSI-masking-quirk-for-Nvidia-ION-AHCI.patch
+        0005-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
+        0006-drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch
+        0007-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
+        "0008-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
+        "0009-bbr2.patch::${_patches_url}/bbr2-patches/0001-bbr2-${_major}-introduce-BBRv2.patch"
+        "0010-lru.patch::${_patches_url}/lru-patches-pf-v3/0001-lru-patches.patch"
+        "0011-block.patch::${_patches_url}/block-patches-v2/0001-block-patches.patch"
+        "0012-btrfs.patch::${_patches_url}/btrfs-patches-v5/0001-btrfs-patches.patch"
 )
 
 validpgpkeys=(
@@ -112,17 +119,23 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 
-b2sums=('e1247057fc57e2f071ff150b5e0651db054a1e15a258ebd198921f7ef0c1e441f0a36c46024298175a8a9a0bb7cc0b6d505d7a77a053c1ce88a720ebea424d89'
+b2sums=('93379b68cfe85a979a7a39179e2bf622702d5e4f7a1d5a5bace1e8d11583d77966bce5b0e61f047fcb40c6c2be401e7725b3aa01e602c6ef4ac045a24ebcc2cd'
         'SKIP'
         '655ac674007f8ad8fc824d9446144a9c53c9a7841814a0696d6dec7c9bcd857e6ae255f2eba0eaabf1caad5c0cc46a25fe051565095c118e2ba82ce46dfa9d6e'
-        'd1c083f96f645679c5214e05f906b47f17ac6a8b3dd2faeb219e3ceda3a008e3fe47c4a79b0345978cec5c5e28da9b20727970cf5c788d52c3782dc5b36aa211'
+        '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
         'cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e'
-        'c9d2fb487b12040f17a9a8eaefca776c2a2a1c37fb0fb6337630ff896f82f25c0303e1f26f0fa98e4f3e6eb143947d84a48a286678aa2977163711e291a90115'
+        '90e2c56062fc6ab9f914d82ed3b5ff3cc9fef2293ffdedb51ab2776441b1d2ff46b69af8e6c97c80346449123f309fe4bcdeac2fe95a5f8e201f41b9d29943f3'
+        '812f8ff0b7cdd21e6b1b9337b789619a992bd3053d3c47533d76ec4e84d5ca4c340252415cf4cc616ac4cf9887849c541d1e8e370fddcb7c5705532a6c8b1e78'
+        'fbf9d53f53ef32aff185a28f0dfdf9d8953452d7a25f138bfafef78fd9129b89c1d7498576bb357be896684757040fc287c637d0d2e74ab87761212aceedb5ac'
+        '1e2344e669268216a9b6097f199e8ba2301c37e5b9db16fb8310e35674a6fcec72b7211717d1fe864a85d7e898e21b3402310018ab5ee9d97d3512599bff3b3b'
+        '60699efcb88f8643dda1dad5a104c7b2780f8233c82d89bc1916c14fd808febdff4536b84e32d790137455d922d18d86d8d56c7671955b26c068a8f0272ed1a6'
+        '47fe5e2eb9e2ceeabad141d2c631d22527f7068d81d673e0bdee2a7070986b3d1d75001a953a0e3501eb9b623c66700464af73153ad6f998f20587e58fc7820b'
+        '7ac6e6886d578a46d22c089ccd4b99eca3515263c4f1aa92a2f85a1836c72b096560145ad4ee1c94c2c1c2b747afd299fc6b9c73d9076c364401d80413f69fe4'
         '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260'
         'e83b6ae58a6906f97e1ada7369b6dad8ccfb0264537b128e6815d2f47493b20b682c6852621fba75f5a23e92d7c0590bffb7dd7f0960bd33b23434477dde7079'
         '17e0d30d644da4476875b13729544d083b6b706e892650b3c8ada89a99d385825250d0244fdf81adde076218c563bb3bdb3dc93e5e47c1ed167e41bf0005c648'
         'defd550aa7b67834fdf2fce402e3ce260bdaa8a2778d31d6c9d2674e43d0ee5fc609df156752fb7482c7453d34725e6edca9764a183f5011a198f8dc10fc6459'
-        'ebf6cefe955d1d42231a569679eb1b300792a2824ff47cb65d5b75145bbe5a6ef31dc4e95cc05bd85fd4dc24c4dbd7c114ef6758ab316fe1c57a28f46811f92b')
+        '038c7dcacb9758290bcdf143259e9a319ec2583d0f2d075f672400552a52f9e6d7ae6b76bc361fd52cc7bcfd3f5558c9a3d6604521e4827d64c21719975deb92')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
