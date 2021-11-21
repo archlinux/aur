@@ -1,0 +1,15 @@
+pkgbase = dstp-git
+	pkgdesc = Run common networking tests against your site
+	pkgver = r85.f331945
+	pkgrel = 1
+	url = https://github.com/ycd/dstp
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = dstp
+	conflicts = dstp
+	source = git+https://github.com/ycd/dstp.git
+	sha256sums = SKIP
+
+pkgname = dstp-git
