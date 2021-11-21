@@ -3,12 +3,12 @@
 
 pkgname=prusa-slicer-gtk2
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (built with GTK2)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
-depends=(boost-libs curl glew intel-tbb nlopt wxgtk2 qhull openvdb cgal)
+depends=(boost-libs curl glew intel-tbb nlopt wxgtk2 qhull openvdb cgal imath)
 makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
 replaces=(slic3r-prusa3d)
 conflicts=('prusa-slicer')
