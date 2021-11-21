@@ -1,13 +1,13 @@
 # Maintainer: J. Nathanael Philipp <nathanael@philipp.land>
 pkgname=psync
-pkgver=0.2.13
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Python wrapper for rsync"
 arch=("any")
 url="https://github.com/jnphilipp/psync"
 license=("GPL3+")
 makedepends=("git" "help2man")
-depends=("python-lxml" "rsync")
+depends=("python" "python-lxml" "rsync")
 optdepends=("python-notify2: Desktop notifications")
 source=("git://github.com/jnphilipp/psync.git")
 md5sums=(SKIP)
