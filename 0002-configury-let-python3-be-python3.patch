@@ -1,0 +1,103 @@
+From 6803c3b91f423c0aa2b4fbc1e5081ac7fb216e2f Mon Sep 17 00:00:00 2001
+From: "Frank Ch. Eigler" <fche@redhat.com>
+Date: Fri, 19 Nov 2021 22:22:45 -0500
+Subject: [PATCH 2/2] configury: let python3 be python3
+
+Our baroque heuristics for identifying python2/3 under their various
+historical aliases is showing its age.  On some modern distros,
+/usr/bin/python is to be positively NOT used.  Fixing configure.ac
+$PYTHON3 search to only look for python3, and not even consider
+$PYTHON_UNKNOWN.  At some point we'll want to simplify further, and
+get rid of python2 remnants.
+
+Signed-off-by: Christian Pellegrin <chri@evolware.org>
+---
+ configure    | 45 +--------------------------------------------
+ configure.ac |  8 ++------
+ 2 files changed, 3 insertions(+), 50 deletions(-)
+
+diff --git a/configure b/configure
+index 6d0d53992..962323156 100755
+--- a/configure
++++ b/configure
+@@ -9350,49 +9350,7 @@ fi
+ as_fn_append ac_configure_args " python='$PYTHON' pyexecdir='$pyexecdir'"
+ 
+ # Now let's try to find python version 3.
+-if test "x$PYTHON_UNKNOWN" != "xno" -a "x$ac_cv_python_unknown_version" = "x3"; then
+-   # Extract the first word of "python", so it can be a program name with args.
+-set dummy python; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_path_PYTHON3+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  case $PYTHON3 in
+-  [\\/]* | ?:[\\/]*)
+-  ac_cv_path_PYTHON3="$PYTHON3" # Let the user override the test with a path.
+-  ;;
+-  *)
+-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_path_PYTHON3="$as_dir/$ac_word$ac_exec_ext"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-  ;;
+-esac
+-fi
+-PYTHON3=$ac_cv_path_PYTHON3
+-if test -n "$PYTHON3"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PYTHON3" >&5
+-$as_echo "$PYTHON3" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-
+-else
+-   for ac_prog in python3 python3.7 python3.6 python3.5 python3.4 python3.3 python3.2 python3.1 python3.0
++for ac_prog in python3 python3.7 python3.6 python3.5 python3.4 python3.3 python3.2 python3.1 python3.0
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+ set dummy $ac_prog; ac_word=$2
+@@ -9438,7 +9396,6 @@ fi
+ done
+ test -n "$PYTHON3" || PYTHON3=":"
+ 
+-fi
+ python3_basename=$(basename "$PYTHON3")
+ 
+ cat >>confdefs.h <<_ACEOF
+diff --git a/configure.ac b/configure.ac
+index b0a823604..d1b124763 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,12 +88,8 @@ fi
+ AS_VAR_APPEND([ac_configure_args], [" python='$PYTHON' pyexecdir='$pyexecdir'"])
+ 
+ # Now let's try to find python version 3.
+-if test "x$PYTHON_UNKNOWN" != "xno" -a "x$ac_cv_python_unknown_version" = "x3"; then
+-   AC_PATH_PROG([PYTHON3], [python])
+-else
+-   AC_PATH_PROGS([PYTHON3],
+-		 [python3 python3.7 python3.6 python3.5 python3.4 python3.3 python3.2 python3.1 python3.0], [:])
+-fi
++AC_PATH_PROGS([PYTHON3],
++              	 [python3 python3.7 python3.6 python3.5 python3.4 python3.3 python3.2 python3.1 python3.0], [:])
+ python3_basename=$(basename "$PYTHON3")
+ AC_DEFINE_UNQUOTED([PYTHON3_BASENAME], "${python3_basename}",
+ 		   [Base name of the python3 interpreter binary.])
+-- 
+2.34.0
+
