@@ -1,6 +1,6 @@
 pkgbase = gamehub-epic-git
 	pkgdesc = Games manager, downloader, library that supports GOG, Steam, Epic, itch.io and Humble Bundle
-	pkgver = 0.16.0.934c717
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://tkashkin.github.io/projects/gamehub/
 	arch = i686
@@ -28,8 +28,6 @@ pkgbase = gamehub-epic-git
 	options = !strip
 	options = debug
 	source = git+https://github.com/Lucki/GameHub.git#branch=epic
-	source = 0001-New-Steam-libraryfolders-format.patch
 	sha256sums = SKIP
-	sha256sums = 2a73ea08c0d1cce0887c040d4c784a9a806cc4344e8881b818243aee7bd432d0
 
 pkgname = gamehub-epic-git
