@@ -6,7 +6,7 @@
 _bundle_pandoc=false
 
 pkgname=zettlr
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -17,23 +17,23 @@ makedepends=(git yarn)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-_csl_locale_commit=0cc3885f6100e26ac6c6d103efa6f3d7195fd21b # Oct 17, 2021
-_csl_style_commit=3a6a0a7bc1410075c606e51cab45877cc76f1f69
-_pandoc_binary_ver=2.14.2 # check scripts/get-pandoc.sh for update
+_csl_locale_commit=d5ee85de8e74d4109509014758b6f496a968ff03 # Oct 20, 2021
+_csl_style_commit=ccb71844fdafb2b7a48cccb364f4b4c03d3cdce6  # Sep 19, 2021
+_pandoc_binary_ver=2.16.1 # check scripts/get-pandoc.sh for update
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
         '0001-Do-not-download-pandoc.patch'
         # citation style
         "locales-${pkgver}-${pkgrel}.zip::https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         "chicago-author-date-${pkgver}-${pkgrel}.csl::https://github.com/citation-style-language/styles/raw/${_csl_style_commit}/chicago-author-date.csl")
-sha256sums=('143c73c6b92a2e2b67ba99825b06453da36bb6bede4040c2bdec6d47187641ae'
+sha256sums=('e3c7b3e12b43c3749ec7ad8b33ed453fcabbf03e9741f817ba093e91fd87a1f5'
             'a0fe981dade0ce52be190d8e8a2fd7f6c05c32c7d44d96c63f6f494460d483ef'
-            '9b3e987aefb10da8b2baadd06e751e978ea23dc7b6297802cbda0ec6806744e2'
+            '6e6d0ff9e0d62d25606475752a6db8ee6143f735d5c95400b8f55bff523de182'
             '1455e57b314fd13ba155f4ab93f061e3e6393c13cd0f16380adb9d73614f7930')
 if ${_bundle_pandoc} ; then
     # pandoc binary source
     source+=("https://github.com/jgm/pandoc/releases/download/${_pandoc_binary_ver}/pandoc-${_pandoc_binary_ver}-linux-amd64.tar.gz")
-    sha256sums+=('1a0548b15255b1c11722f3d4e12fc7a652edf8c9a329a8458f1e765517aec1be')
+    sha256sums+=('3fe3d42179af289d4f5452b9317d2bc9cd139a4f33a37f68d70e128f1d415aa4')
 fi
 
 prepare() {
