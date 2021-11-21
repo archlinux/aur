@@ -48,12 +48,12 @@ check() {
 }
 
 package() {
-  for _arch in ${_architectures}; do
+	for _arch in ${_architectures}; do
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
 		
-    DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
-  done
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
+		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+	done
 }
