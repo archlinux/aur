@@ -1,0 +1,11 @@
+pkgbase = scanapi
+	pkgdesc = Automated Testing and Documentation for your REST API
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://scanapi.dev/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = scanapi
