@@ -119,17 +119,16 @@ See the project commit log for full version history and changes.
     * `_microarchitecture=98 makepkg ...` Intel -march=native
     * `_microarchitecture=99 makepkg ...` AMD -march=native 
 
-  - Building using Clang ThinLTO is well tested and stable but may not be compatible with some DKMS modules, and you'll
-      need to patch your `/usr/bin/dkms` script for it to work with LLVM/clang at all. See [further discussion of this
-      issue here][3] at the DKMS issue tracker.
+  - Building using Clang ThinLTO is well tested and stable but may not be compatible with some DKMS modules. Users of
+      older versions of DKMS (pre 3.0.2) will need to patch their DKMS script to build modules for LLVM built kernels.
 
       You'll want to be careful to build both your kernel and any DKMS modules using the same major version of Clang and
       lld or you may encounter module build errors. If you've recently updated your LLVM tools (Clang, lld, etc) and
       DKMS modules fail to build you'll want to re-build your kernel package to update your kernel headers, modules
       should build successfully after.
 
-      See the included [patch-dkms-for-llvm-clang-support.patch](patch-dkms-for-llvm-clang-support.patch) if you'd like
-      to add support for Clang to DKMS on your machine.
+      See the included [patch-dkms-for-llvm-clang-support.patch](patch-dkms-for-llvm-clang-support.patch) if your
+      version of DKMS doesn't support LLVM builds.
 
   - Building with `-O3` compiler optimization is supported, though the performance gain over `-O2 -march=native` or 
       Clang ThinLTO is slim.
