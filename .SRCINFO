@@ -1,0 +1,18 @@
+pkgbase = nerd-fonts-inconsolatalgc
+	pkgdesc = Patched font Inconsolata LGC from the nerd-fonts library
+	pkgver = 2.1.0
+	pkgrel = 2
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	groups = nerd-fonts
+	license = MIT
+	depends = fontconfig
+	provides = nerd-fonts-inconsolatalgc
+	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/inconsolatalgc.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
+	sha512sums = 6937dcb94a1778e23d633bd135e3a86f98e7a6c0b4b6192eaf7e19cdcc439ecf9772701fb6a9bd5dd65c45e9e716428f88a9075255edb3001ce43705f84a377a
+	sha512sums = 95712651fb58ad5f5ee1b796b1891e5cb6c62532699c08d3cd9255df46c10336faa170b4ec5a920be44d2cba68ab7726907c800e4a9b0060483437569cfe6fd3
+
+pkgname = nerd-fonts-inconsolatalgc
