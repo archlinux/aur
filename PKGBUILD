@@ -2,7 +2,7 @@
 # Contributor: Péter Tombor <aur at tmbpeter dot com>
 pkgname=fabric-installer
 pkgver=0.9.0
-pkgrel=3
+pkgrel=1
 pkgdesc='installer for the Minecraft mod loader Fabric'
 arch=('any')
 url='https://fabricmc.net'
