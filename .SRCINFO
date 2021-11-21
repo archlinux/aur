@@ -1,7 +1,7 @@
 pkgbase = project-plus-netplay
 	pkgdesc = A Mod of Super Smash Bros. Brawl with Netplay.
 	pkgver = 2.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projectplusgame.com/
 	arch = x86_64
 	license = GPL
@@ -32,6 +32,7 @@ pkgbase = project-plus-netplay
 	depends = lzo
 	depends = mbedtls
 	depends = miniupnpc
+	depends = official-gamecube-controller-adapter-rules
 	depends = pango
 	depends = sfml
 	depends = systemd-libs
