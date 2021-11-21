@@ -1,6 +1,6 @@
 pkgbase = gnome-next-meeting-applet
 	pkgdesc = An applet to show your next meetings in Gnome or others
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/chmouel/gnome-next-meeting-applet
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = gnome-next-meeting-applet
 	depends = gnome-shell-extension-appindicator
 	depends = evolution-data-server
 	depends = gnome-online-accounts
-	source = https://github.com/chmouel/gnome-next-meeting-applet/archive/refs/tags/1.5.1.tar.gz
-	sha256sums = 65a51c25242e62da8addeda128daeb5cfcb63aa11ed919c551b6b1db114fc9f2
+	source = https://github.com/chmouel/gnome-next-meeting-applet/archive/refs/tags/1.5.2.tar.gz
+	sha256sums = fd10ad662e2f937e67b7e6827f16521ab6f8e2318ce1fd1d478dd50a9fe9a91a
 
 pkgname = gnome-next-meeting-applet
