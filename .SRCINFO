@@ -1,7 +1,7 @@
 pkgbase = solo2-cli
 	pkgdesc = Solo 2 CLI
 	pkgver = 0.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/solokeys/solo2-cli
 	arch = x86_64
 	license = Apache

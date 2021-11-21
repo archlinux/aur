@@ -2,7 +2,7 @@
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli
 pkgver=0.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
 url="https://github.com/solokeys/solo2-cli"
@@ -19,6 +19,7 @@ sha256sums=(
 )
 
 prepare() {
+  cd "${pkgname}-${pkgver}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
