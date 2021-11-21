@@ -1,0 +1,11 @@
+pkgbase = nerd-fonts-fontconfig
+	pkgdesc = Fontconfig for Nerd Fonts Symbols
+	pkgver = 1.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ttf-nerd-fonts-symbols
+	source = 75-symbol-nerd-fonts.conf
+	sha256sums = 9d5057b1d18282967dd36cb427a35d75022352d17cda083f4b87a71b0f14eba2
+
+pkgname = nerd-fonts-fontconfig
