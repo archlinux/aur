@@ -2,11 +2,11 @@
 
 pkgname=miniplayer-git
 _pkgname=miniplayer
-pkgver=r54.b711231
+pkgver=1.5.0.r0.g15f21d4
 pkgrel=1
 pkgdesc='A curses based mpd client with basic functionality and album art written for the Kitty terminal.'
 url='https://github.com/guardkenzie/miniplayer'
-depends=('python' 'python-mpd2' 'python-pillow' 'python-ffmpeg' 'python-pixcat' 'ueberzug')
+depends=('python' 'python-mpd2' 'python-pillow' 'python-ffmpeg' 'python-pixcat' 'ueberzug' 'python-colorthief')
 makedepends=('git' 'python-setuptools')
 provides=("miniplayer")
 conflicts=("miniplayer")
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
