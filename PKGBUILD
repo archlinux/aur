@@ -16,7 +16,8 @@ optdepends=("frcli" "lncli" "lnd" "loop" "pool")
 provides=("${__pkgname}d")
 
 developer=""
-#developer=-guggero
+# developer=-roasbeef
+# developer=-guggero
 source=(
 ${_pkgname}-${_arch}-v${_pkgver}.tar.gz::"${url}/releases/download/v${_pkgver}/${_pkgname}-${_arch}-v${_pkgver}.tar.gz"
 manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest${developer}-v${_pkgver}.txt.sig"
