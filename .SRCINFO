@@ -1,12 +1,17 @@
 pkgbase = solo2-cli-git
 	pkgdesc = Command line interface to SoloKeys Solo 2 devices
-	pkgver = r18.221f4d1
+	pkgver = r43.a3547c1
 	pkgrel = 1
 	url = https://github.com/solokeys/solo2-cli
 	arch = any
 	license = MIT
-	depends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = systemd
+	depends = systemd-libs
+	depends = ccid
 	provides = solo2-cli
+	conflicts = solo2-cli
 	source = git+https://github.com/solokeys/solo2-cli.git#branch=main
 	sha256sums = SKIP
 
