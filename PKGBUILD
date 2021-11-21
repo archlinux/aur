@@ -1,7 +1,7 @@
 # Maintainer: turret. <turret@duck.com>
 pkgname=liborca-git
 pkgver=r2197.e12ebbe5
-pkgrel=1
+pkgrel=2
 pkgdesc="orca discord bot framework"
 arch=(x86_64)
 url="https://github.com/cee-studio/orca"
@@ -31,5 +31,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make PREFIX="$pkgdir/" install
+        mkdir -p "$pkgdir/usr/local/"
+	make PREFIX="$pkgdir/usr/local/" install
 }
