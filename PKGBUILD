@@ -1,7 +1,7 @@
 # Maintainer: Olivier Michaelis <michaelis.olivier [at] gmail [dot] com>
 
 pkgname=kubent-bin
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Easily check your kubernetes cluster for use of deprecated APIs"
 arch=('x86_64')
