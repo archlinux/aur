@@ -13,7 +13,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=97.0.4692.8
+pkgver=98.0.4710.4
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
