@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=solo2-cli-git
-pkgver=r43.a3547c1
+pkgver=r51.5f7b9e3
 pkgrel=1
 pkgdesc="Command line interface to SoloKeys Solo 2 devices"
 url="https://github.com/solokeys/solo2-cli"
