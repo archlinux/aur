@@ -8,6 +8,6 @@ pkgbase = purple-hue
 	makedepends = cargo
 	provides = purple-hue
 	source = purple-hue-0.1.4.tar.gz::https://github.com/mike-zorn/purple-hue/archive/tags/v0.1.4.tar.gz
-	sha512sums = 7986f0a877318866d7995583151457386ab4fc907b97cfe5fb3ead80b5eb8b05a052d14970535f3a338515c92fd808958acf4819324efaf3f77cfe12bf89bc51
+	sha512sums = 5b073aa7d646b94e97bb62c72990ea48920b5b377abac09d45595cb929aefcecb427cdb1b54b8f0dde0db120910b335b804d430c27001b5bfc45a3bdb1288e1b
 
 pkgname = purple-hue
