@@ -95,7 +95,7 @@ pkgname='sunix-snx'
 #pkgver='2.0.4_2'; _dl='2016/20160706173626'
 #pkgver='2.0.4_3'; _dl='2017/20171122180114'
 pkgver='2.0.5_0'; _dl='2021/20210407180737'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
 url='http://www.sunix.com/'
@@ -118,15 +118,18 @@ source=(
   '0001-kernel-4.7-async-initialized.patch'
   '0002-kernel-5.12-tty-low_latency.patch'
   '0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
+  '0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
 )
 md5sums=('effaa874994bde6047afe2ea3e023cf6'
          '71564d580faaf72ab3518c298883742e'
          'e3604145fb2b1678da395a600e4cf1ed'
-         'a16e94419d504663c50d3d7522b0c019')
+         'a16e94419d504663c50d3d7522b0c019'
+         '43db33db258f67122c58c3868d688d13')
 sha256sums=('bfc5e68c0ef21266a11db62e3cd0bc3a523207afcf2bb989f2437caf86086d35'
             '4ea9275ca8122543c25f17112d4c374dc39de32e3d9d1d0aa5488bacd514750d'
             'ab0ef161b7c7053299b18ab9b697047d37142e9e88d53d40ac087f64522a55dd'
-            '12a9d8f11c60cef0e70d0d5cba684146beb32eef76e7519728e2e4453f671251')
+            '12a9d8f11c60cef0e70d0d5cba684146beb32eef76e7519728e2e4453f671251'
+            'fce8e15188f58fcfbea2720672709ea1e8d9e4703155c1222cf31ababd61807f')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -206,6 +209,12 @@ prepare() {
   #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
   #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
   patch -Nup1 -i "${srcdir}/0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
+
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
+  #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  patch -Nup1 -i "${srcdir}/0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
 
   # Kernel 3,4,5 all use the same makefile. Trim out everything but Kernel 4
   mv driver/Makefile{,.Arch}

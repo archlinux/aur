@@ -1,0 +1,49 @@
+diff -pNaru5 snx_V2.0.5.0.orig-0000/driver/snx_serial.c snx_V2.0.5.0/driver/snx_serial.c
+--- snx_V2.0.5.0.orig-0000/driver/snx_serial.c	2021-11-21 02:14:11.988063777 -0500
++++ snx_V2.0.5.0/driver/snx_serial.c	2021-11-21 02:15:27.978342167 -0500
+@@ -4344,17 +4344,17 @@ extern int sunix_ser_register_driver(str
+ 
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 7, 0))
+ 	normal = tty_alloc_driver(SNX_SER_TOTAL_MAX + 1, TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
+ #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0))
+-	normal = alloc_tty_driver(drv->nr);
++	normal = tty_alloc_driver(drv->nr,0);
+ #else
+ 	normal = &drv->tty_driver;
+ #endif
+ 
+ 
+-	if (!normal) {
++	if (IS_ERR(normal)) {
+ 		printk("SNX Error: Allocate tty driver fail !\n\n");
+ 		goto out;
+ 	}
+ 
+ 
+@@ -4445,11 +4445,11 @@ extern int sunix_ser_register_driver(str
+ #endif
+ 
+ out:
+ 	if (ret < 0) {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0))
+-		put_tty_driver(normal);
++		tty_driver_kref_put(normal);
+ #endif
+ 		kfree(drv->state);
+ 	}
+ 
+ 	return (ret);
+@@ -4470,11 +4470,11 @@ extern void sunix_ser_unregister_driver(
+ 	if (!normal) {
+ 		return;
+ 	}
+ 
+ 	tty_unregister_driver(normal);
+-	put_tty_driver(normal);
++	tty_driver_kref_put(normal);
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
+ 
+ 	for (i = 0; i < drv->nr; i++) {
+ 		struct snx_ser_state *state = drv->state + i;
