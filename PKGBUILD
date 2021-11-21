@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='46b47253f7974ba0a0e5ba7bc66786f2'
-_referid='7421f21592e34ea3ab84b448ab51a666'
+_downloadid='05e306bd033143f4980d9cddff68065d'
+_referid='8117e283c9434517ab20fe8cb4c9e224'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -61,7 +61,7 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=17.4.1
+pkgver=17.4.2
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -77,13 +77,13 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('70d7d96cda89dd706988953db5ed3fbdb49414c5170ed1a4aaf0f4ffe1aa52e0')
+	sha256sums=('58335ba63ad3b8069a123f900cf92904522bc11612115aa22eb64c0dbd3e4df8')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('12c69a12952249f221dd4e8fa35d843bb667df47b2de4adcaad42d58ae8416bb')
+	sha256sums=('30090ba8010efab9a7cee0ad81732d19bf591c4b0cf03a85c7fc7e7b8769abe4')
 	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
@@ -171,7 +171,7 @@ package()
 #	ln -s "/tmp/${_pkgname}/GPUCache" "${pkgdir}/opt/${_pkgname}/GPUCache"
 
 	echo -e "\033[1m==> Installing Application icons...\033[0m"
-	# Obviously not working without root rights.
+	# Obviously not working without root privileges.
 #	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 "${pkgdir}/opt/${_pkgname}/graphics/DV_Resolve.png" DaVinci-Resolve 2>&1 >> /dev/null
 #	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 "${pkgdir}/opt/${_pkgname}/graphics/DV_ResolveProj.png" DaVinci-ResolveProj 2>&1 >> /dev/null
 #	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 --context mimetypes "${pkgdir}/opt/${_pkgname}/graphics/DV_ResolveProj.png" application-x-resolveproj 2>&1  >> /dev/null

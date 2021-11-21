@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 17.4.1
+	pkgver = 17.4.2
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
@@ -27,7 +27,7 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_17.4.1_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v17.4.1/DaVinci_Resolve_17.4.1_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=fB7b5ul5uT0v7vsW5og8/2+qJDmxSalq2gD/OjpGZ84B4cdrErTWCgpetQH1nrc3pPzyh8FhpFRynxcpQTLejFBm/jzNT5uVvuNgar5Ml9h/NFRNghl5hW1xynNCuvUQl0HtvKcaZsTYMcaAiFluZZrXNsKkEgl0fMFY5kNbguFBtECh6Ucfz+8qfI7TszZXhubGrm1Nc2lZbKyCWbtxZpDjAhMlPKQTqIZDXsHyINe7EwWegDzaKIjb9x43tyimMKipk9pIAJoyA8PmZlXiYE/NOiLNeHR/Ekl9t2UXoiuNBvzq8Td260FIAxFXsHNZqtiYL+KgJVHfJpJ+cXLQrQ==&Expires=1636195936
-	sha256sums = 12c69a12952249f221dd4e8fa35d843bb667df47b2de4adcaad42d58ae8416bb
+	source = DaVinci_Resolve_17.4.2_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v17.4.2-1/DaVinci_Resolve_17.4.2_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=hDwlCBFtZVRg8EwwPHDtrw3SarDt5TbZm308qt9RFV8O2eO45XlqR2z5KDMMd+QH2QHTxD1mv01T+rrbVJQksJ6jUjHqKPlRQtEzwfS0FO759/4OpOUDisacFgZtvU31C7GZzm34GvuTvSNp4NiBgpjNUpn25b7j528xLPzBG33w1DbjvD15/+9wGWyTG2/mOkd57TUY8g6WDzB9MdAkTtNBEo7S3g5UfefY6SnLkN7Uanv01kSV40fNzVpCj5G3MoSURe2McQpZDp07yjXqV8bWrceyO1Dbk/HEl++LMIWqGMP6j5J5jRa0b6E0YJL8EOEMWWkJsAAYlK4/Y+dxlg==&Expires=1637523210
+	sha256sums = 30090ba8010efab9a7cee0ad81732d19bf591c4b0cf03a85c7fc7e7b8769abe4
 
 pkgname = davinci-resolve
