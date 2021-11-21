@@ -1,0 +1,13 @@
+pkgbase = dstp
+	pkgdesc = Run common networking tests against your site
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ycd/dstp
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = dstp-0.3.1-1.tar.gz::https://github.com/ycd/dstp/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = ae7b71301ad755012e7e9d3996b341a8f25741509399ec9bb58cc27fa8e0e076
+
+pkgname = dstp
