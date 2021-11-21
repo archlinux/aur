@@ -1,6 +1,6 @@
 pkgbase = gnome-x11-gesture-daemon
 	pkgdesc = GNOME gesture improvements daemon
-	pkgver = 0.2.0+1+g38529d4
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/harshadgavali/gnome-x11-gesture-daemon
 	install = gnome-x11-gesture-daemon.install

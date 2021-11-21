@@ -2,7 +2,7 @@
 # Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
 pkgname=gnome-x11-gesture-daemon
 _name=gesture_improvements_gesture_daemon
-pkgver=0.2.0+1+g38529d4
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="GNOME gesture improvements daemon"
 arch=('x86_64')
