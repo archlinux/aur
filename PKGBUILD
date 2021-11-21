@@ -2,12 +2,13 @@
 _pkgname=Nagstamon
 pkgname=nagstamon
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks')
 arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
 license=('GPL')
+makedepends=('python-setuptools')
 source=(
         "https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v$pkgver.tar.gz"
 )
@@ -31,5 +32,5 @@ package() {
   sed -i setup.py -e "s/get_distro()/('arch', '', 'Arch Linux')/"
   python setup.py install --prefix=/usr --root="$pkgdir"
   mv $pkgdir/usr/bin/nagstamon.py $pkgdir/usr/bin/nagstamon
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
-

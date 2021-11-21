@@ -1,10 +1,11 @@
 pkgbase = nagstamon
 	pkgdesc = Nagios status monitor for the desktop
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nagstamon.ifw-dresden.de/
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python-pyqt5
 	depends = qt5-multimedia
 	depends = qt5-svg
