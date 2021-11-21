@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=VTFEdit
-Comment=Half-Life package browser
+Name=GCFScape
+Comment=GCF archive browser
 Type=Application
 Version=1.8.6
 Exec=gcfscape %f
