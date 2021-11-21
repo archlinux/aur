@@ -1,7 +1,7 @@
 pkgbase = slippi-launcher
 	pkgdesc = The way to play Slippi Online and watch replays.
 	pkgver = 2.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://slippi.gg/
 	arch = x86_64
 	license = GPL3
@@ -29,6 +29,7 @@ pkgbase = slippi-launcher
 	depends = lzo
 	depends = mbedtls
 	depends = miniupnpc
+	depends = official-gamecube-controller-adapter-rules
 	depends = pugixml
 	depends = qt5-base
 	depends = sfml
