@@ -1,5 +1,5 @@
 pkgname=cnijfilter2
-pkgver=6.10
+pkgver=6.20
 pkgrel=1
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
@@ -8,10 +8,9 @@ license=('GPL' 'custom:canon')
 depends=('cups' 'libxml2' 'ghostscript')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
-source=("https://gdlp01.c-wss.com/gds/1/0100010921/01/$pkgname-source-$pkgver-1.tar.gz")
-md5sums=('207715a8b1fd0f727670a87ac46ce46d')
-
-[[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
+conflicts=('cnijfilter' 'cnijfilter-mg3600')
+source=("https://gdlp01.c-wss.com/gds/7/0100011057/01/$pkgname-source-$pkgver-1.tar.gz")
+md5sums=('b191a33b924d5a9afe8027b9688cb62a')
 
 prepare() {
 	cd "$pkgname-source-$pkgver-1"
@@ -24,14 +23,14 @@ build() {
 	pushd cmdtocanonij2
 	./autogen.sh --prefix=/usr \
 		     --datadir=/usr/share \
-		     LDFLAGS="-L../../com/libs_bin$_arch"
+		     LDFLAGS="-L../../com/libs_bin_$CARCH"
 	make
 	popd
 
 	pushd cmdtocanonij3
 	./autogen.sh --prefix=/usr \
 		--datadir=/usr/share \
-		LDFLAGS="-L../../com/libs_bin$_arch"
+		LDFLAGS="-L../../com/libs_bin_$CARCH"
 	make
 	popd
 
@@ -46,7 +45,7 @@ build() {
 		     --enable-libpath=/usr/lib/bjlib2 \
 		     --enable-progpath=/usr/bin \
 		     --datadir=/usr/share \
-		     LDFLAGS="-L../../com/libs_bin$_arch"
+		     LDFLAGS="-L../../com/libs_bin_$CARCH"
 	make #CFLAGS="${CFLAGS} -fcommon"
 	popd
 
@@ -109,7 +108,7 @@ package() {
 	cd "$pkgname-source-$pkgver-1"
 
 	install -m644 com/ini/cnnet.ini "$pkgdir/usr/lib/bjlib2"
-	install -sm755 com/libs_bin$_arch/*.so.* "$pkgdir/usr/lib"
+	install -sm755 com/libs_bin_$CARCH/*.so.* "$pkgdir/usr/lib"
 	install -Dm644 doc/LICENSE-cnijfilter-${pkgver}EN.txt \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
