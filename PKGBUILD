@@ -2,7 +2,7 @@
 # Helpful url: https://prowlarr.servarr.com/v1/update/develop?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="prowlarr-nightly"
-pkgver=0.1.4.1118
+pkgver=0.1.4.1120
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -28,9 +28,9 @@ sha512sums=('53b19cabb99b436867f8a95d94a5c4bdd924207c22c7b9f3df153c672ee87a69c87
             '9159ceda0955f2ebc495dd470c9d6234d8534a120ab81fa58fefae94a8ecfdc8fe883fb1287bc10429e7b4f35ac59d36232d716c161a242a4bfcdff768f1b9a2'
             '6ebd6f268e5aa7446e3c77540f5c95b3237959892e8800f5f380a0f979c71ec0d6f7664c1a58f7d10a255bc21a19bad0fef8609b02b4d5e15f340e66364017d2'
             '473f38f922c1c24987bc77bb687739e3de0eed5c567407c690e0e9ac1604479bbe4f606ccb804067dbe97a100a748b4c2e05a11e30835d42e67ec65177a4f42a')
-sha512sums_x86_64=('842f14e57c5ab78a464d1072e19b311b8eccc27421254ef1d1cca925cfa6c472aaa6dbe4a98b50a67de2c7ad8e89cea9bff22df1deef308681b8c710dda92a55')
-sha512sums_aarch64=('cac06b8ce848edfe8612e4d70bc5582c8aab8bd0cf2dbadb7752c9ffdd4221e12bb81fcca15085740f01be9ae6d9f6c5722da24e6f28de5236f7852d8437dc18')
-sha512sums_armv7h=('393f1452fe882078505dd6f93af5a3fee79fa71ea7fad63b4ef6503d240cd76bc0670c10b2f9fb38f3b0b97438fc296b373f9379587cbc7930273cb362adefbc')
+sha512sums_x86_64=('58a510c2b12ad0bd2c7a454f4c65cebb81abc03f4240440be6ce87edfe43466c4730d445ccdcb7ca3f8f8837ae7ffbda25b42a5ebb979b3fbbf58f9c22e228b4')
+sha512sums_aarch64=('6ce492b7bc2f29585dedaafea72a9084943015e4811e50e58ece27647d206f97a19c7f566dbfe1b3b70150fad21fa798bbb4dd2e81511e042ea6acc65028dfd4')
+sha512sums_armv7h=('e4bbe7e6d770ef3d76f7ced2bb18ea5c05bd88e50d67634ae3ed91c29ed2b494ef86702f105b9e15b7d3c2c88b81f29ae94bbc3be2a4dc638f67ce2adf845a95')
 
 
 package() {
