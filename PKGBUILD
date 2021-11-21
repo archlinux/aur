@@ -2,7 +2,7 @@
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
 url="https://github.com/solokeys/solo2-cli"
@@ -12,19 +12,26 @@ depends=(systemd-libs ccid)
 # note we do not need Arch `hidapi` package here, it's a git submodule of Rust hidapi
 makedepends=(cargo git systemd)
 source=(
-	"$pkgname.tar.gz::https://github.com/solokeys/solo2-cli/archive/refs/tags/v${pkgver}.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/solokeys/solo2-cli/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
     "2596b50a04f59645630fdca1bf3a95dd8e8475c47a5d4ed61c885d5421e330b5"
 )
 
+prepare() {
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --frozen --all-features
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
   # make sure shared libs work
   target/release/solo2 --version
   cargo test --release --all-features
