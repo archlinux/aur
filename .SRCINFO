@@ -1,11 +1,11 @@
 pkgbase = aliyunpan-cli-bin
 	pkgdesc = Aliyunpan CLI
 	pkgver = 2.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wxy1343/aliyunpan
 	arch = any
 	license = GPL-3.0
-	makedepends = pyinstaller
+	makedepends = python-pip
 	provides = aliyunpan
 	provides = aliyunpan-cli
 	conflicts = aliyunpan

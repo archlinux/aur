@@ -3,12 +3,12 @@
 _pkgname=aliyunpan
 pkgname=${_pkgname}-cli-bin
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Aliyunpan CLI"
 arch=('any')
 url="https://github.com/wxy1343/aliyunpan"
 license=("GPL-3.0")
-makedepends=('pyinstaller')
+makedepends=('python-pip')
 provides=("aliyunpan" "aliyunpan-cli")
 conflicts=("aliyunpan" "aliyunpan-cli")
 source=(${_pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -22,6 +22,9 @@ prepare() {
   cd "${_pkgname}-${pkgver}"
   mv -vTf "${srcdir}"/dlnap-master dlnap
   patch -Np1 -i "${srcdir}/0001-upgrade-requirements.patch"
+  pip install -r requirements.txt
+  pip install pyinstaller
+  export PATH=${HOME}/.local/bin:${PATH}
 }
 
 build() {
