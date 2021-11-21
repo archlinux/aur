@@ -1,4 +1,5 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
+# Helpful suggestions by Foxboron
 pkgname=solo2-cli
 pkgver=0.0.7
 pkgrel=1
@@ -10,7 +11,6 @@ license=(Apache MIT)
 depends=(systemd-libs ccid)
 # note we do not need Arch `hidapi` package here, it's a git submodule of Rust hidapi
 makedepends=(cargo git systemd)
-conflicts=(solo2-cli-git)
 source=(
 	"$pkgname.tar.gz::https://github.com/solokeys/solo2-cli/archive/refs/tags/v${pkgver}.tar.gz"
 )
@@ -20,14 +20,14 @@ sha256sums=(
 
 build() {
   cd "${pkgname}-${pkgver}"
-  cargo build --release --frozen
+  cargo build --release --frozen --all-features
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
   # make sure shared libs work
   target/release/solo2 --version
-  cargo test --release
+  cargo test --release --all-features
 }
 
 package() {
@@ -36,9 +36,9 @@ package() {
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgnamefull/LICENSE-MIT"
 
   # completions
-  install -Dm644 target/release/_solo2 -t $pkgdir/usr/share/zsh/site-functions
-  install -Dm644 target/release/solo2.bash $pkgdir/usr/share/bash-completion/completions/solo2
+  install -Dm644 target/release/_solo2 -t "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm644 target/release/solo2.bash "$pkgdir/usr/share/bash-completion/completions/solo2"
 
   # udev rule
-  install -Dm644 70-solo2.rules -t $pkgdir/usr/lib/udev/rules.d
+  install -Dm644 70-solo2.rules -t "$pkgdir/usr/lib/udev/rules.d"
 }
