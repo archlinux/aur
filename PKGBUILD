@@ -3,7 +3,7 @@
 # Contributer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=java-openjfx-ea-bin
 _majorver=18
-_buildver=5
+_buildver=7
 pkgver=${_majorver}rc${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
@@ -16,9 +16,13 @@ conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
-sha256sums=('f0abe670ed2ae1df95997d30784d11a11fd2eaec42ee41ef661f3497773f7a43'
-            'c6023525c47caa5803e9c19a996c6c6ce98c516030bbe68280f2dc2ae8b9b51b'
-            '4b44b89df2d71155ed93f8043ef0b5ea0dbe218bad3653c3231889b2c226ed8d')
+sha256sums=('d7ad3e3db6fc977e0f6f3f928cc00ad26b7b333499bf7f2d2372741708d7fe94'
+            'ff7adfb9534b77a15b73a989865b42742f9735d6f0a104288a4276c943d441f3'
+            'f516286f2e3e8a94f315fa83ac5de54dfb2e0a58e55c93a776bac6caf289a20a')
+sha512sums=('591da3b0662f37940595c0e68c332462a84996bcc2f6c3c2873661cab34c921b8775d6e48be995a317519012e8a8dbdb4353bcbed5dc6184ce47e38abf37e409'
+            'ce1c607ffe6f86ce26ebf503d39f5d587af1984c57be0636f1e93bb92c2af0b316460be424e8d521c26c1b3c8845d955e819d666edafbf17ed2c2e07bd66f623'
+            '945a3b733e3d7a6e558314118c53a72961fe226b82893bbf9f0407bd2baad5e68995d070b502758c7432d25816fa9ec951062596cea747f62ca4c151c633dba6')
+
 
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk"
 
