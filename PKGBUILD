@@ -2,7 +2,7 @@
 # Maintainer (core/linux): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-x32
-pkgver=5.15.2.arch1
+pkgver=5.15.3.arch1
 pkgrel=1
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,7 +27,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '0eecdc29b3bde4bccda282c4c04ef114250fedddcf3dbf07a3cc201dce35838f'
+            'e2d8d59ee965f5fabcb9dd15b70074798e168ccdbd75a9540390c281279f113d'
             'ef2be62540e48cc1d2343c619b9c8b7791db5e2f966e1a0bb8c86f5c7de74562')
 
 export KBUILD_BUILD_HOST=archlinux
