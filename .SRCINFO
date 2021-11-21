@@ -1,0 +1,14 @@
+pkgbase = beyond-the-tesseract
+	pkgdesc = A text adventure game about math.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://ifdb.org/viewgame?id=0u4eqnk37mohejhu
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	source = https://ifarchive.org/if-archive/games/source/tess.tar.gz
+	sha256sums = adec4a1db623e01268afef7a977cdd6eb2aa47f4faac3af21fff94c3567ad48a
+
+pkgname = beyond-the-tesseract
