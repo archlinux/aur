@@ -8,9 +8,11 @@ pkgbase = kloncentaur-git
 	makedepends = cmake
 	makedepends = git
 	depends = curl
+	depends = lv2
 	depends = gtk2
 	depends = webkit2gtk
 	depends = freetype2
+	depends = alsa-lib
 	source = kloncentaur-git::git+https://github.com/jatinchowdhury18/KlonCentaur.git
 	sha256sums = SKIP
 
