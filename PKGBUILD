@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-binstall-git
-pkgver=0.4.1.r5.g8b4e779
+pkgver=0.5.0.r0.g912dc56
 pkgrel=1
 pkgdesc="Binary installation for Rust projects (git)"
 arch=('x86_64')
@@ -12,10 +12,8 @@ depends=('zlib' 'openssl' 'xz' 'bzip2')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}"
-        "$pkgname-tests.patch::$url/commit/4b38814f8051e4c2f45fe465c8dfbfc338e4375a.patch")
-sha256sums=('SKIP'
-            '6343be5f8f5d3a8264d2b02787b2107a395c5f6222cd8f06b08e9f81e2d2732c')
+source=("git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -25,7 +23,6 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   cargo fetch --locked
-  patch -Np1 < "../$pkgname-tests.patch"
 }
 
 build() {
