@@ -1,6 +1,6 @@
 pkgbase = microshift-bin
 	pkgdesc = A small form factor OpenShift/Kubernetes optimized for edge computing
-	pkgver = 4.8.0_0.microshift_2021_11_11_151353
+	pkgver = 4.8.0_0.microshift_2021_11_19_115908
 	pkgrel = 1
 	url = https://github.com/redhat-et/microshift
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = microshift-bin
 	conflicts = microshift
 	backup = etc/cni/net.d/100-crio-bridge.conf
 	backup = usr/lib/systemd/system/microshift.service
-	source = https://raw.githubusercontent.com/redhat-et/microshift/4.8.0-0.microshift-2021-11-11-151353/LICENSE
+	source = https://raw.githubusercontent.com/redhat-et/microshift/4.8.0-0.microshift-2021-11-19-115908/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = microshift-bin-4.8.0_0.microshift_2021_11_11_151353::https://github.com/redhat-et/microshift/releases/download/4.8.0-0.microshift-2021-11-11-151353/microshift-linux-amd64
-	sha256sums_x86_64 = 059b1ccf408ffaa4ffcd403c52b806da0df23bea47a00bd4e599541583a53e98
-	source_aarch64 = microshift-bin-4.8.0_0.microshift_2021_11_11_151353::https://github.com/redhat-et/microshift/releases/download/4.8.0-0.microshift-2021-11-11-151353/microshift-linux-arm64
-	sha256sums_aarch64 = 37655bd6659f3bd62e5989c11360f56120ebd5f08b6baa2db98afa73a4d687fd
+	source_x86_64 = microshift-bin-4.8.0_0.microshift_2021_11_19_115908::https://github.com/redhat-et/microshift/releases/download/4.8.0-0.microshift-2021-11-19-115908/microshift-linux-amd64
+	sha256sums_x86_64 = e65e8ecb08c5d9dc85d7145d3e528d6d4b925433a51a5ab04c5b844a3924ff7f
+	source_aarch64 = microshift-bin-4.8.0_0.microshift_2021_11_19_115908::https://github.com/redhat-et/microshift/releases/download/4.8.0-0.microshift-2021-11-19-115908/microshift-linux-arm64
+	sha256sums_aarch64 = 45b8c429184eb7c83cd7166a6747d9746d2472e17091633aee6b0a6f624961d2
 
 pkgname = microshift-bin
