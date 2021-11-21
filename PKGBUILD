@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-ctc-segmentation-git
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Determine and align utterance segments within audio files using CTC'
 arch=('any')
