@@ -1,0 +1,16 @@
+pkgbase = liborca-git
+	pkgdesc = orca discord bot framework
+	pkgver = r2197.e12ebbe5
+	pkgrel = 1
+	url = https://github.com/cee-studio/orca
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = curl
+	depends = openssl
+	provides = liborca
+	conflicts = liborca
+	source = liborca::git+https://github.com/cee-studio/orca
+	md5sums = SKIP
+
+pkgname = liborca-git
