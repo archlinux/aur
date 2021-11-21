@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=caj2pdf-qt
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CAJ 转 PDF 转换器（GUI 版本）'
 arch=('x86_64')
 url='https://caj2pdf-qt.sainnhe.dev'
@@ -22,8 +22,8 @@ build() {
 }
 
 package() {
-  install -Dm 544 "${srcdir}/dev.sainnhe.caj2pdf-qt.desktop" "${pkgdir}/usr/share/applications/dev.sainnhe.caj2pdf-qt.desktop"
-  install -Dm 544 "${srcdir}/${pkgname}/icons/convert.png" "${pkgdir}/usr/share/${pkgname}/icon.png"
+  install -Dm 644 "${srcdir}/dev.sainnhe.caj2pdf-qt.desktop" "${pkgdir}/usr/share/applications/dev.sainnhe.caj2pdf-qt.desktop"
+  install -Dm 644 "${srcdir}/${pkgname}/icons/convert.png" "${pkgdir}/usr/share/${pkgname}/icon.png"
   install -Dm 755 "${srcdir}/${pkgname}/build/caj2pdf" "${pkgdir}/usr/share/${pkgname}/caj2pdf"
   install -Dm 755 "${srcdir}/${pkgname}/build/external/caj2pdf" "${pkgdir}/usr/share/${pkgname}/external/caj2pdf"
   install -Dm 755 "${srcdir}/${pkgname}/build/external/mutool" "${pkgdir}/usr/share/${pkgname}/external/mutool"
