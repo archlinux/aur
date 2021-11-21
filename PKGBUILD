@@ -1,3 +1,4 @@
+# Maintainer: Emanuel Couto <unit73e@gmail.com>
 pkgname=cnijfilter2
 pkgver=6.20
 pkgrel=1
