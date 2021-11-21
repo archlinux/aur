@@ -1,16 +1,15 @@
 pkgbase = i4oled
 	pkgdesc = Utility to set and render OLED icons on Wacom Intuos4 family tablets.
 	pkgver = 1.3
-	pkgrel = 1
-	url = https://github.com/PrzemoF/i4oled
+	pkgrel = 2
+	url = https://gitlab.com/PrzemoF/i4oled
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = pango>=1.29.0
 	depends = cairo>=1.10.0
 	depends = libpng
-	source = https://github.com/PrzemoF/i4oled/archive/v1.3.tar.gz
-	md5sums = 3477a07133fe7d0f7b629b0b1a8d7cdc
+	source = git+https://gitlab.com/PrzemoF/i4oled.git#tag=v1.3
+	sha256sums = SKIP
 
 pkgname = i4oled
-
