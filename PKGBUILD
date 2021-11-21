@@ -3,7 +3,7 @@
 _pkgbase=mangohud
 pkgbase=$_pkgbase-git
 pkgname=('mangohud-git' 'lib32-mangohud-git' 'mangohud-common-git')
-pkgver=0.6.5.r13.gb20d249
+pkgver=0.6.6.1.r9.g23ed317
 pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('git' 'dbus' 'meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libg
              'vulkan-headers' 'vulkan-icd-loader'  'lib32-vulkan-icd-loader'
              'libxnvctrl')
 replaces=('vulkan-mesa-layer-mango' 'lib32-vulkan-mesa-layer-mango')
-source=("$_pkgbase::git+$url#branch=develop")
+source=("$_pkgbase::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -38,7 +38,7 @@ build() {
 
 package_mangohud-git() {
     pkgdesc='A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more'
-    depends=('gcc-libs' 'mangohud-common-git')
+    depends=('gcc-libs' 'dbus' 'mangohud-common-git')
     conflicts=('mangohud')
     provides=("mangohud=$pkgver")
     optdepends=('bash: mangohud helper script'
@@ -50,7 +50,7 @@ package_mangohud-git() {
 
 package_lib32-mangohud-git() {
     pkgdesc='A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)'
-    depends=('lib32-gcc-libs' 'mangohud-git' 'mangohud-common-git')
+    depends=('lib32-gcc-libs' 'lib32-dbus' 'mangohud-common-git')
     conflicts=('lib32-mangohud')
     provides=("lib32-mangohud=$pkgver")
     optdepends=('lib32-libxnvctrl: support for older NVIDIA GPUs')
@@ -68,6 +68,5 @@ package_mangohud-common-git() {
     DESTDIR="$pkgdir" ninja -C build64 install
     rm -r "$pkgdir/usr/lib" "$pkgdir/usr/share/vulkan"
 
-    install -Dm664 "$_pkgbase/bin/MangoHud.conf" "$pkgdir/usr/share/doc/mangohud/MangoHud.conf"
     install -Dm664 "$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
