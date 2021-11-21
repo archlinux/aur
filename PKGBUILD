@@ -3,7 +3,7 @@ _base=colour-science
 pkgname=python-${_base}
 pkgdesc="Colour Science for Python"
 pkgver=0.3.16
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.${_base}.org"
 license=('custom:BSD-3-clause')
@@ -21,7 +21,7 @@ build() {
 check() {
   cd "${_base//-science/}-${pkgver}"
   python setup.py install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not nan_matrix_colour_correction_Cheung2004 and not nan_matrix_colour_correction_Finlayson2015 and not nan_matrix_colour_correction_Vandermonde and not nan_colour_correction_Cheung2004 and not nan_colour_correction_Finlayson2015 and not nan_colour_correction_Vandermonde and not read_image_Imageio and not write_image_Imageio and not read_image and not write_image' --ignore=${_base//-science/}/graph/tests ${_base//-science/}
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not nan_matrix_colour_correction_Cheung2004 and not nan_matrix_colour_correction_Finlayson2015 and not nan_matrix_colour_correction_Vandermonde and not nan_colour_correction_Cheung2004 and not nan_colour_correction_Finlayson2015 and not nan_colour_correction_Vandermonde and not read_image_Imageio and not write_image_Imageio and not read_image and not write_image and not plot_multi_functions' --ignore=${_base//-science/}/graph/tests ${_base//-science/}
 }
 
 package() {
