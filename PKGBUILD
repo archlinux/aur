@@ -2,7 +2,7 @@
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli-bin
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
 url="https://github.com/solokeys/solo2-cli"
@@ -33,7 +33,7 @@ package() {
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgnamefull/LICENSE-MIT"
 
   # completions
-  install -Dm644 solo2.zsh -t "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm644 solo2.zsh "$pkgdir/usr/share/zsh/site-functions/_solo2"
   install -Dm644 solo2.bash "$pkgdir/usr/share/bash-completion/completions/solo2"
 
   # udev rule
