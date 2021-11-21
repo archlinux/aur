@@ -6,7 +6,7 @@
 
 pkgname=xtrace
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="trace communication between X client and server"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -36,5 +36,6 @@ package() {
   # Rename executable to x11trace since glibc owns xtrace
   mv "$pkgdir/usr/bin/xtrace" "$pkgdir/usr/bin/x11trace"
   # Rename man page to x11trace since glibc owns xtrace
+  sed -i s/xtrace/x11trace/g "$pkgdir/usr/share/man/man1/xtrace.1"
   mv "$pkgdir/usr/share/man/man1/xtrace.1" "$pkgdir/usr/share/man/man1/x11trace.1"
 }
