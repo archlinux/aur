@@ -2,8 +2,8 @@
 # Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
 pkgname=gnome-x11-gesture-daemon
 _name=gesture_improvements_gesture_daemon
-pkgver=0.1.3+1+ga132f8d
-pkgrel=2
+pkgver=0.2.0+1+g38529d4
+pkgrel=1
 pkgdesc="GNOME gesture improvements daemon"
 arch=('x86_64')
 url="https://github.com/harshadgavali/gnome-x11-gesture-daemon"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libinput')
 makedepends=('cargo' 'git' 'setconf')
 install="$pkgname.install"
-_commit=a132f8d5da845ec2dc2048d0f569524537f1bc45
+_commit=38529d479ef086d7cd9005529061e96114bca4a9
 source=("git+https://github.com/harshadgavali/gnome-x11-gesture-daemon.git#commit=$_commit")
 sha256sums=('SKIP')
 
