@@ -149,6 +149,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # 5.15: r8169 hwIDs for the G14?/G15
 
+        # Arch: misc fixes
+        "staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch"
+        "PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
+        "drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch"
+        "iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
+
         # cherry-picked iwlwifi patches from -next
         "iwlwifi-next-patches-through-2020-11-08-5.15.3.patch"
 
@@ -188,6 +194,10 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
+            'ce50ee3c64f6865234f6ec79fcbd87704494b0fbb7d3cc124f97244c731f9e61'
+            '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
+            '2651439720a03a83ce127d58fadb15f7f64f092c7f8224dcb63f5b34e5b7ffa1'
+            '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
             'b12a5bb789e4c854617ca3c7405fcc3121457ddb6564c8f758edfe4633cf24bd'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
