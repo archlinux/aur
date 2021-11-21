@@ -1,7 +1,7 @@
 pkgbase = lib32-mozjpeg-git
 	pkgdesc = Improved JPEG encoder (32-bit)
-	pkgver = 4.0.3.r197.g512a7c3a
-	pkgrel = 2
+	pkgver = 4.0.3.r198.g5552483d
+	pkgrel = 3
 	url = https://github.com/mozilla/mozjpeg
 	arch = x86_64
 	license = BSD
@@ -20,7 +20,7 @@ pkgbase = lib32-mozjpeg-git
 	conflicts = lib32-libjpeg
 	conflicts = lib32-mozjpeg
 	conflicts = lib32-libjpeg-turbo
-	source = git+https://github.com/mozilla/mozjpeg.git
+	source = git+https://github.com/mozilla/mozjpeg
 	sha512sums = SKIP
 
 pkgname = lib32-mozjpeg-git
