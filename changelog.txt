@@ -1,3 +1,6 @@
+* Sun Nov 21 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-5
+  - Dropped KDE 4 support from the package (https://archlinux.org/news/dropping-plasma-4).
+
 * Sun Nov 21 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-4
   - Installable update, finally. The fix is borrowed from the peazip-qt-bin package.
 

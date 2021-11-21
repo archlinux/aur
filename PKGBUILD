@@ -8,7 +8,7 @@
 
 pkgname=peazip-gtk2-bin
 pkgver=8.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='PeaZip file manager and archiver (GTK 2)'
 arch=('x86_64')
 url='https://peazip.github.io'
@@ -28,6 +28,11 @@ sha256sums=('9b962a64b61d7421a49884d25166ab4e56a038daee583c70b74151ea8924c307')
 changelog=changelog.txt
 
 prepare() {
+  # Senior Giorgio Tani should definitely reconsider the way he builds his Linux packages: he adds a lot of
+  # unnecessary Windows-related files to them. Additionally, he sets wrong permissions on folders: the majority
+  # of them are set to 777, whereas it should be 755. So here I'm removing Windows files and setting the
+  # appropriate permissions before packaging.
+
   rm -r usr/lib/.build-id
   # 7z.sfx is a Windows executable
   rm usr/lib/peazip/res/bin/7z/7z.sfx
@@ -40,6 +45,8 @@ prepare() {
   rm -r "${sharedPeaZip}/batch/SendTo"
   # KDE 3? You must be kidding.
   rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror"
+  # KDE 4 is not supported on Arch since 2015-12-12 (https://archlinux.org/news/dropping-plasma-4/)
+  rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin"
 
   # setting correct permissions
   chmod 755 usr && chmod 755 usr/bin
