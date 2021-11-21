@@ -9,7 +9,8 @@ license=('GPL3')
 groups=('base-devel')
 depends=('cmake' 'qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'libpulse' 'flac')
 makedepends=('cmake' 'git')
-source=("git+git://github.com/janbar/noson-app.git#tag=4.4.10")
+source=("git+https://github.com/janbar/noson-app.git#tag=4.4.10")
+
 sha1sums=('SKIP')
 
 pkgver() {
