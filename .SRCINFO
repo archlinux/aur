@@ -1,15 +1,14 @@
 pkgbase = python2-py-cpuinfo
 	pkgdesc = Get CPU info with pure Python 2 & 3
-	pkgver = 7.0.0
-	pkgrel = 3
+	pkgver = 8.0.0
+	pkgrel = 1
 	url = https://github.com/workhorsy/py-cpuinfo
 	arch = any
 	license = MIT
 	checkdepends = python2-pytest-runner
 	makedepends = python2-setuptools
 	depends = python2
-	source = python2-py-cpuinfo-7.0.0.tar.gz::https://github.com/workhorsy/py-cpuinfo/archive/v7.0.0.tar.gz
-	sha512sums = 7046ee705d05c8b577db554b4bc82cc5a588f7263ce36194792eeaeba56a3466180d88187aad74792759f02ebcd32497e38354b3274f5453c1076ae23f9bedd0
+	source = python2-py-cpuinfo-8.0.0.tar.gz::https://github.com/workhorsy/py-cpuinfo/archive/refs/tags/v8.0.0.tar.gz
+	sha512sums = a882516a062815782ebc2ad1edb8813ef566877444a6577d6a752b6e0bfce832010181ae20633d5338bdda3399c50fb670c650983b7ffa3064ff76c5cfb0f8d8
 
 pkgname = python2-py-cpuinfo
-
