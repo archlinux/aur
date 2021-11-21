@@ -1,7 +1,7 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname=otr-verwaltung3p-dev
-pkgver=1.0.0b8.post4
+pkgver=1.0.0b8.post5
 pkgrel=11
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
@@ -21,7 +21,7 @@ provides=('otr-verwaltung3p')
 _pkgname='otr-verwaltung3p'
 
 source=("https://github.com/EinApfelBaum/otr-verwaltung3p/archive/${pkgver}.tar.gz")
-sha256sums=('6b49bc08a0e1a2891589e5ed91627aac9aaed79bb33725b21345ecb03c4deca9')
+sha256sums=('7fd2f3ef75a3672480d7bf70af446c7be0bf9401a29f9fb6d00041f39b17e054')
 options=('!strip')
 
 #prepare() {
