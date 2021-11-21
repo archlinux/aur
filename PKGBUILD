@@ -5,7 +5,7 @@
 # Contributor: Shivam Mehta <sm.cse at gmail dot com>
 
 pkgname=quick-lint-js
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Find bugs in JavaScript programs"
 arch=(aarch64 arm armv6h armv7h i686 pentium4 x86_64)
@@ -17,7 +17,7 @@ checkdepends=(icu)
 provides=()
 conflicts=(quick-lint-js)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quick-lint/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('32748f0595815693452fa255d9e5ed6de001cacf2833bc939c89f6883d747cb2f323d4daa5a4d9904b170f6c198810bf4c5482a9841700f8e7d6c322e583209f')
+sha512sums=('8f36a62093045859c69f6f02a1a196c55fcd2ba9742488f4b527b7dfb7e10003dca36f6137bf9edbb1c35ad0483bdde8f706645bf10335df9dc691e05c4b5b79')
 
 build() {
   cd "${pkgname}-${pkgver}"
