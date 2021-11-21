@@ -1,0 +1,20 @@
+pkgbase = aliyunpan-cli-bin
+	pkgdesc = Aliyunpan CLI
+	pkgver = 2.10.2
+	pkgrel = 1
+	url = https://github.com/wxy1343/aliyunpan
+	arch = any
+	license = GPL-3.0
+	makedepends = pyinstaller
+	provides = aliyunpan
+	provides = aliyunpan-cli
+	conflicts = aliyunpan
+	conflicts = aliyunpan-cli
+	source = aliyunpan-2.10.2.tar.gz::https://github.com/wxy1343/aliyunpan/archive/refs/tags/v2.10.2.tar.gz
+	source = dlnap-master.tar::https://github.com/cherezov/dlnap/archive/master.tar.gz
+	source = 0001-upgrade-requirements.patch
+	sha256sums = d29db6437bb8b1467d6c31df2aeffc17da857fc260f7cde20a0ebb695bc75b0f
+	sha256sums = SKIP
+	sha256sums = 716c9542077062d32c59e27f44ddbdb232b9e3774124647d7c67dbcd150f6fd7
+
+pkgname = aliyunpan-cli-bin
