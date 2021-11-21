@@ -71,6 +71,6 @@ package() {
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		rm -rf "$pkgdir"/usr/${_arch}/share
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 	done
 }
