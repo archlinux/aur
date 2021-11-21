@@ -1,50 +1,51 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
-pkgname=mozjpeg-git
-pkgver=20190328
-pkgrel=1
-pkgdesc="A fork of libjpeg-turbo with jpgcrush built in."
-url="https://github.com/mozilla/mozjpeg/"
-license=("GPL")
-arch=('i686' 'x86_64')
-makedepends=('git' 'nasm' 'cmake')
-depends=()
-source=('git+https://github.com/mozilla/mozjpeg.git')
-md5sums=('SKIP')
-_gitname=mozjpeg
+# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 
-provides=('libjpeg=8.0.2' 'turbojpeg' 'libjpeg-turbo')
-conflicts=('libjpeg-turbo')
+pkgname=mozjpeg-git
+pkgver=4.0.3.r198.g5552483d
+pkgrel=1
+pkgdesc='Improved JPEG encoder'
+url='https://github.com/mozilla/mozjpeg'
+arch=('x86_64')
+license=('BSD')
+depends=('glibc' 'libpng')
+makedepends=('git' 'cmake' 'nasm' 'java-environment>11')
+optdepends=('java-runtime>11: for TurboJPEG Java wrapper')
+provides=('libjpeg' 'libjpeg.so' 'libturbojpeg.so' 'libjpeg-turbo' 'mozjpeg')
+conflicts=('libjpeg' 'mozjpeg' 'libjpeg-turbo')
+source=("git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
-    git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+	cd mozjpeg
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build()
-{
-    cd "$_gitname"
-    #autoreconf -fiv
-    mkdir -p build
-    cd build
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr/ \
-        -DCMAKE_INSTALL_MANDIR=/usr/share/man \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DWITH_JPEG8=1
-    make
+build() {
+	cd mozjpeg
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+	      -DCMAKE_BUILD_TYPE=None \
+	      -DWITH_JAVA=ON \
+	      -DWITH_JPEG8=ON \
+	      -DENABLE_SHARED=1 \
+	      -DENABLE_STATIC=0 \
+	      -W no-dev \
+	      -B build \
+	      -S .
+	make -C build
 }
-
-# takes forever
-#check()
-#{
-#    cd "$_gitname"
-#    make test
-#}
 
 package() {
-    cd "$_gitname/build"
-    make DESTDIR="$pkgdir" docdir="/usr/share/doc/$pkgname" install
-    # license?
-    cd ..
-    install -m644 jpegint.h "$pkgdir/usr/include"
+	cd mozjpeg
+	make DESTDIR="${pkgdir}" \
+	     docdir='/usr/share/doc/mozjpeg' \
+	     exampledir='/usr/share/doc/mozjpeg' \
+	     install -C build
+	
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
+	# header required by some dependants
+	# https://bugs.archlinux.org/task/24787
+	install -m 644 jpegint.h "${pkgdir}/usr/include"
 }
-
