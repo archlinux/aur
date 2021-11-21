@@ -60,6 +60,6 @@ package() {
 		install -dm755 "$pkgdir/usr/${_arch}/lib/cmake"
 		mv -f "$pkgdir/usr/${_arch}/cmake" "$pkgdir/usr/${_arch}/lib/cmake/OpenColorIO1"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 	done
 }
