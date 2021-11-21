@@ -1,12 +1,12 @@
 # Maintainer: <user11681 at gmail dot com>
 pkgname=circle
 pkgver=build_142
-pkgrel=1
+pkgrel=2
 pkgdesc='compiler for the programming language Circle'
 arch=('any')
 url='https://circle-lang.org'
 license=('custom')
-depends=('gcc>=9.0.0' 'binutils')
+depends=('gcc>=10.2')
 source=("https://www.circle-lang.org/linux/${pkgver}.tgz")
 sha256sums=('fda3c2ea0f9bfb02e9627f1cb401e6f67a85a778c5ca26bd543101d51f274711')
 
