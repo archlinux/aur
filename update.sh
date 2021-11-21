@@ -3,10 +3,11 @@
 set -eo pipefail
 
 s_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd $s_dir
 
 l_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
 
-cd $s_dir/arch-package
+cd arch-package
 git checkout -q packages/linux
 git pull -q
 c_ver=`grep ^pkgver= repos/core-x86_64/PKGBUILD | cut -d= -f2`
@@ -29,7 +30,7 @@ sed -i -e '/^_package-docs() {/,/^}/d' PKGBUILD
 sed -i -e '/^pkgname=/s/ "$pkgbase-docs"//' PKGBUILD
 
 echo "Building package"
-time (makepkg --skippgpcheck -CcL) # > /dev/null)
+time (makepkg --skippgpcheck -CcL)
 
 for p in *.pkg.tar.zst; do
     mv $p repo
