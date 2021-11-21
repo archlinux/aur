@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=openrocket-git
-pkgver=r2955.f67ea41c
-pkgrel=2
+pkgver=r2977.459d4ab4
+pkgrel=1
 pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom"
 arch=('any')
 url=https://github.com/openrocket/openrocket
@@ -29,4 +29,5 @@ build() {
 package() {
   cd openrocket
   install -Dm644 swing/build/jar/OpenRocket.jar $pkgdir/usr/share/java/openrocket/openrocket.jar
+  install -Dm755 openrocket.sh $pkgdir/usr/bin/openrocket
 }
