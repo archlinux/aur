@@ -1,6 +1,6 @@
 pkgbase = rtw89-dkms-git
 	pkgdesc = Driver for Realtek 8852AE, an 802.11ax device
-	pkgver = r122.f658a40
+	pkgver = r129.248a921
 	pkgrel = 1
 	url = https://github.com/lwfinger/rtw89
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = rtw89-dkms-git
 	makedepends = git
 	makedepends = xz
 	depends = dkms
+	depends = linux-headers
 	provides = rtw89
 	conflicts = rtw89
 	source = rtw89::git+https://github.com/lwfinger/rtw89.git#branch=v7
