@@ -1,6 +1,6 @@
 pkgbase = solo2-cli-git
 	pkgdesc = Command line interface to SoloKeys Solo 2 devices
-	pkgver = r43.a3547c1
+	pkgver = r51.5f7b9e3
 	pkgrel = 1
 	url = https://github.com/solokeys/solo2-cli
 	arch = any
