@@ -1,0 +1,15 @@
+post_install() {
+    chmod 0644 /usr/lib/systemd/system/jottad.service
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    chmod 0644 /usr/lib/systemd/system/jottad.service
+    is_active=$(systemctl is-active jottad)
+    if [ $is_active == "active" ]; then
+        systemctl --system daemon-reload
+        echo "jottad is already active - restarting jottad daemon..."
+        systemctl restart jottad
+    fi
+}
