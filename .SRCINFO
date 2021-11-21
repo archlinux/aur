@@ -1,0 +1,14 @@
+pkgbase = techmino-client
+	pkgdesc = Techmino:方块研究所
+	pkgver = 0.16.5
+	pkgrel = 1
+	url = http://game.techmino.org
+	arch = x86_64
+	license = unknown
+	depends = fuse
+	depends = xorg-xrandr
+	options = !strip
+	source = https://d.flaribbit.workers.dev/Techmino.AppImage
+	sha256sums = edc2fa31b034676a924d457b1a1fcd50dd60e8daf2aa0088585a15a36edf0a84
+
+pkgname = techmino-client
