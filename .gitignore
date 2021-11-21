@@ -1,5 +1,6 @@
-/pkg/
+/.vscode
 /src/
+/pkg/
 *.pkg.tar.*
 *.tar.bz2
 *.tar.bz2.asc
