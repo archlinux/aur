@@ -14,9 +14,10 @@ license=('APACHE')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'git')
 depends=('mingw-w64-crt' 'mingw-w64-xerces-c-icu' 'mingw-w64-icu')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://github.com/apache/xalan-c/archive/Xalan-C_${_filever}.tar.gz"
-        'fix-cross-compile.patch'
-				'https://github.com/apache/xalan-c/pull/36.patch')
+source=(
+	"https://github.com/apache/xalan-c/archive/Xalan-C_${_filever}.tar.gz"
+	'fix-cross-compile.patch'
+	'https://github.com/apache/xalan-c/pull/36.patch')
 sha256sums=(
 	'f3d4f23af7f7914259f2f5dbd9cc1450d3ebe0b8c8163fd50fcac4a39c63fccd'
 	'bffe4d394b877d7a36c08efd7563ce9ccde3621ae3851dc9c00ce065cd360050'
@@ -30,13 +31,13 @@ prepare() {
 	cd "${_srcdir}"
 	patch -uNp1 -i '../fix-cross-compile.patch'
 	patch -uNp1 -i '../36.patch'
-  sed -i 's/if(WIN32)/if(0)/' 'src/xalanc/CMakeLists.txt'
+	sed -i 's/if(WIN32)/if(0)/' 'src/xalanc/CMakeLists.txt'
 }
 
 build() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF \
-      -DCMAKE_FIND_NO_INSTALL_PREFIX=ON -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+			-DCMAKE_FIND_NO_INSTALL_PREFIX=ON -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
