@@ -1,0 +1,29 @@
+diff --git a/framework/test/base.py b/framework/test/base.py
+index 69e8178ae..6a7c81f25 100644
+--- a/framework/test/base.py
++++ b/framework/test/base.py
+@@ -381,6 +381,10 @@ class ValgrindMixin(object):
+     @Test.command.getter
+     def command(self):
+         command = super(ValgrindMixin, self).command
++
++        if 'PIGLIT_EMULATOR' in os.environ:
++            command = [os.environ['PIGLIT_EMULATOR']] + command
++
+         if OPTIONS.valgrind:
+             return ['valgrind', '--quiet', '--error-exitcode=1',
+                     '--tool=memcheck'] + command
+diff --git a/framework/wflinfo.py b/framework/wflinfo.py
+index eaaa57d4d..7c43eaae7 100644
+--- a/framework/wflinfo.py
++++ b/framework/wflinfo.py
+@@ -106,6 +106,9 @@ class WflInfo(object):
+                 else:
+                     bin = 'wflinfo'
+ 
++                if 'PIGLIT_WFLINFO_EXECUTABLE' in os.environ:
++                    bin = os.environ['PIGLIT_WFLINFO_EXECUTABLE']
++
+                 cmd = [bin, '--platform', platform] + opts
+ 
+                 # setup execution environment where we extend the PATH env var
