@@ -1,0 +1,60 @@
+FROM: https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=linux-5.10.y&id=c85c6fadbef0a3eab41540ea628fa8fe8928c820
+Try: Fix sched_fork() access an invalid sched_task_group
+
+--- patch-5.10-ck1	2021-11-21 15:28:49.188267764 +0800
++++ patch-5.10.80-ck1	2021-11-21 15:57:02.448246461 +0800
+@@ -3455,7 +3455,7 @@
+ index 000000000000..9478e2d473b7
+ --- /dev/null
+ +++ b/kernel/sched/MuQSS.c
+-@@ -0,0 +1,7866 @@
++@@ -0,0 +1,7868 @@
+ +// SPDX-License-Identifier: GPL-2.0
+ +/*
+ + *  kernel/sched/MuQSS.c, was kernel/sched.c
+@@ -5714,8 +5714,6 @@
+ + */
+ +int sched_fork(unsigned long __maybe_unused clone_flags, struct task_struct *p)
+ +{
+-+	unsigned long flags;
+-+
+ +#ifdef CONFIG_PREEMPT_NOTIFIERS
+ +	INIT_HLIST_HEAD(&p->preempt_notifiers);
+ +#endif
+@@ -5772,14 +5770,6 @@
+ +		p->sched_reset_on_fork = 0;
+ +	}
+ +
+-+	/*
+-+	 * Silence PROVE_RCU.
+-+	 */
+-+	raw_spin_lock_irqsave(&p->pi_lock, flags);
+-+	rseq_migrate(p);
+-+	set_task_cpu(p, smp_processor_id());
+-+	raw_spin_unlock_irqrestore(&p->pi_lock, flags);
+-+
+ +#ifdef CONFIG_SCHED_INFO
+ +	if (unlikely(sched_info_on()))
+ +		memset(&p->sched_info, 0, sizeof(p->sched_info));
+@@ -5789,8 +5779,20 @@
+ +	return 0;
+ +}
+ +
+-+void sched_post_fork(struct task_struct *p)
+++void sched_post_fork(struct task_struct *p, struct kernel_clone_args *kargs)
+ +{
+++	unsigned long flags;
+++	/*
+++	 * Silence PROVE_RCU.
+++	 */
+++	raw_spin_lock_irqsave(&p->pi_lock, flags);
+++	rseq_migrate(p);
+++	/*
+++	 * We're setting the CPU for the first time, we don't migrate,
+++	 * so use set_task_cpu().
+++	 */
+++	set_task_cpu(p, smp_processor_id());
+++	raw_spin_unlock_irqrestore(&p->pi_lock, flags);
+ +}
+ +
+ +#ifdef CONFIG_SCHEDSTATS

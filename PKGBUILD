@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.10 Greg Kroah-Hartman & Sasha Levin 2020-12-13 Dec, 2022
 _LLL_VER=5.10
-_LLL_SUBVER=78
+_LLL_SUBVER=80
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -33,7 +33,10 @@ _NUMA_disable=y
 # https://wiki.archlinux.org/index.php/Linux-ck
 _CK_VER=1
 _CK_PATCH_SRC="http://ck.kolivas.org/patches/5.0/${_LLL_VER}/${_LLL_VER}-ck${_CK_VER}/patch-${_LLL_VER}-ck${_CK_VER}.xz"
-_CK_PATCH_PATCH=()
+_CK_PATCH_PATCH=(
+    #'ck1-patch-for-5.10.80+.patch'
+    'ck2-patch-for-5.10.80+.patch' # test
+)
 
 # Ultra Kernel Samepage Merging
 _UKSM_VER=0.1.2.6
@@ -87,8 +90,9 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            'a59807e826837177d203adc31b93554fa800ceaa74995c4d8fd89163649c8e1f'
+            '1a97b028bcb6422d81a2c7439b24282a4c3c4d1006d0624301ee632057cbd3d0'
             '64909f07b404b138945d5d6fd19bf3c62d10adce9f592524d91a3359331a6ace'
+            'fae2b688262050d7780b65af1512ed7b62b0cf13838bc448864398f0945d93e1'
             '24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183'
             '078837287607800f948e0e26e6a8ba874d856fd37e0063e8975bb562268546c4'
             'f4d2c31065975e07c37b56b70452be8583a7ab2e5041bfdb93bcd7dfc3f5d0eb')

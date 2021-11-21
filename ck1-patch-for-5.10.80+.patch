@@ -1,0 +1,11 @@
+--- patch-5.10-ck1	2021-11-21 15:28:49.188267764 +0800
++++ patch-5.10.80-ck1	2021-11-21 15:57:02.448246461 +0800
+@@ -5789,7 +5789,7 @@
+ +	return 0;
+ +}
+ +
+-+void sched_post_fork(struct task_struct *p)
+++void sched_post_fork(struct task_struct *p, struct kernel_clone_args *kargs)
+ +{
+ +}
+ +
