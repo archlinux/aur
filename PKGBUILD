@@ -1,8 +1,8 @@
 # Maintainer: Robbert van der Helm <mail@robbertvanderhelm.nl>
 
 pkgname=yabridge
-pkgver=3.6.0
-pkgrel=4
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
@@ -12,16 +12,8 @@ optdepends=('yabridgectl: utility for setting up and managing yabridge')
 makedepends=('git' 'meson' 'ninja')
 options=('!strip')
 install=yabridge.install
-source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz"
-        "wine-6.20-hotfix.patch::https://github.com/robbert-vdh/yabridge/commit/5be149cb525a638f7fc3adf84918c8239ee50ecf.patch")
-sha256sums=('6da519d47477ac8e2ab297eb6bc1513cd33dc736660a3b9a9449e14efdf2b3a2'
-            '4d32132d7305b70ac8e62530c8440b8c720875e4ff6e2a5e1171092d01d6225a')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  patch --strip=1 --input="$srcdir/wine-6.20-hotfix.patch"
-}
+source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
+sha256sums=('8ba302e68636cce8ede171f3b6497050814edefcd1d2591ce629e0f109ebc396')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
