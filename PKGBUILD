@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-binstall-bin
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Binary installation for Rust projects"
 arch=('x86_64')
 url="https://github.com/ryankurte/cargo-binstall"
@@ -13,8 +13,8 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/${pkgname%-bin}-x86_64-unknown-linux-gnu.tgz"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('bd7ea694076c920935af3688977b6a37cbf28dae1500c7e1f532c99f1f6da7436b59a3117f6b3f8b85cbda89a9692cd50c9cebcc3d01819756dd6e8c80becb68'
-                   'cb2379f3670630457ea7978a0db4a0a752ee20a2cac35e2d8848a5f3fb98153fbbf8ede8013bab9a4f463b1ebf8267a76dfb9b035abd0cc930604899f27117b3')
+sha512sums_x86_64=('b4bddc88390681f36c95d2182d05a35d5154a9d477be7c01abd2fcb53be932cbabb75f0b00a1a524f030dd11d27d5c8fdcf0962b23eb75cb54d12896d96591d0'
+                   '5f9180906043d461128f22b519b566f3ab636e7b5b0e3655a76c1742c6613fb94b45ab9dfaae535358a27a991bf333601224921a26b294a5fd576440f2ebb64c')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
