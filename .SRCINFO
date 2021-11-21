@@ -10,7 +10,6 @@ pkgbase = extract-xiso-git
 	makedepends = git
 	provides = extract-xiso
 	conflicts = extract-xiso
-	conflicts = extract-xiso-somski
 	source = git+https://github.com/XboxDev/extract-xiso.git
 	sha256sums = SKIP
 
