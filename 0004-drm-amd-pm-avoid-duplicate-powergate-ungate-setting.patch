@@ -1,7 +1,7 @@
-From 8414110f6b3801058a55b505539da7f7d7acd1fb Mon Sep 17 00:00:00 2001
+From 4e023bf774e59df151f0b056179ab46f5d60423e Mon Sep 17 00:00:00 2001
 From: Evan Quan <evan.quan@amd.com>
 Date: Mon, 15 Nov 2021 10:51:37 +0800
-Subject: [PATCH 6/8] drm/amd/pm: avoid duplicate powergate/ungate setting
+Subject: [PATCH 4/8] drm/amd/pm: avoid duplicate powergate/ungate setting
 
 Just bail out if the target IP block is already in the desired
 powergate/ungate state. This can avoid some duplicate settings
