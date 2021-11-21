@@ -7,10 +7,10 @@
 
 pkgname=unzip-iconv
 pkgver=6.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Unpacks .zip archives such as those made by PKZIP. With iconv patch for -O / -I goodness."
-arch=('i686' 'x86_64')
-url='http://www.info-zip.org/UnZip.html'
+arch=('x86_64')
+url='http://infozip.sourceforge.net/UnZip.html'
 license=('custom::Info-ZIP')
 depends=('bzip2'
          'bash')
@@ -51,10 +51,10 @@ sha256sums=('036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
             '9252584a0a5fb288f424adf8ab430c40989b11259ec327b82b1a0cde31b29e69'
             '7c20c2889a17fd81c674b482c16e00159d64c6e5df357224461f4eb3a4e51c3d'
             '31a312410454738f994dc881c32b020b6051cfdf769bcc69f9f680428ea508fe'
-            '035f179c634149158645bd54aa4bef270e7422af14e9693431e19a9219dbbeaa'
-            'ac5e55017484f62381c86e81b462ddbf1cb09bd3282289cfe4df804788e14d20'
-            '666a2f8cf805105c283aca5cd15089c97365d89d3d2561fe8057c9c2b99d12f7'
-            '55a4f15716cdeb55275365a9d7446cf64150116ac6c8dd03ce6dd84466694f3d'
+            '7e682f3120df9888afc3581db23e1039fa81582da5def2871097c7a66fec0da5'
+            '547be7926c0d9350b6bf4b43dc6404d8dd0d5a8601e5aaab6691b21c2cc81b0d'
+            '3dc2aefeb58823a5b1bf3a28f9c459dc07aef7395c2864e968e4f83d98971699'
+            '7934a7123a4acc1d971c60e7ee609af1d18dd01827cf27bdc63004e263c5c742'
             )
 
 prepare() {
