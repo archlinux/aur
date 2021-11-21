@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brandon <staticrealm@gmail.com>
 
 pkgname=brother-mfcl8900cdw-lpr-bin
-pkgver=1.0.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="LPR driver for Brother MFC-L8900CDW printer"
 arch=("i686" "x86_64")
