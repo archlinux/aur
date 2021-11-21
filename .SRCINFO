@@ -1,0 +1,7 @@
+pkgbase = official-gamecube-controller-adapter-rules
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://wiki.dolphin-emu.org/index.php?title=How_to_use_the_Official_GameCube_Controller_Adapter_for_Wii_U_in_Dolphin
+	arch = any
+
+pkgname = official-gamecube-controller-adapter-rules
