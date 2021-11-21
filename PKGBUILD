@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=5.4.0
+pkgver=5.4.3
 pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
@@ -37,9 +37,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/f66aaf2b212bf980564e1a5f11711dec/parallel-launcher-5.4.0.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/9209e61841d6f550ca270706e40dc017/parallel-launcher-5.4.3.tar.gz')
 noextract=()
-sha256sums=('5b4c3df013312399c5de75f555bee62e6fe83be2b54e34f02293c91ecc421d1d')
+sha256sums=('01e651fe1843802ef039b25b93e9110e824da47298e8860b67eb0c4701c3c415')
 validpgpkeys=()
 
 build() {
@@ -60,4 +60,7 @@ package() {
 	install -D lang/parallel-launcher.fr_ca.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.fr_ca.qm
 	install -D lang/parallel-launcher.fr.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.fr.qm
 	install -D lang/parallel-launcher.de.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.de.qm
+	install -D sdl-linux/x64/libSDL2-2.0.so $pkgdir/usr/share/parallel-launcher/lib/libSDL2-2.0.so
+	ln -s -f /usr/share/parallel-launcher/lib/libSDL2-2.0.so $pkgdir/usr/share/parallel-launcher/lib/libSDL2.so
+	ln -s -f /usr/share/parallel-launcher/lib/libSDL2-2.0.so $pkgdir/usr/share/parallel-launcher/lib/libSDL2-2.0.so.0
 }
