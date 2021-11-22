@@ -31,8 +31,8 @@ PGO=auto
 
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
 pkgname=(foot foot-themes)
-pkgver=1.10.0  # Don’t forget to update CHANGELOG.md
-pkgrel=3
+pkgver=1.10.1  # Don’t forget to update CHANGELOG.md
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -45,15 +45,8 @@ optdepends=("foot-terminfo: alternative to ncurses' terminfo, with additional no
             "libnotify: desktop notifications"
             "xdg-utils: URI launching"
             "bash-completion: bash completions for foot itself")
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz
-        0001-config-letter-spacing-add-missing-return.patch)
-sha256sums=('ef052354145f8ce2e3a965e171c750ccc653c2a2b9ce98adefa99948286188f7'
-            '7a25060611b289bd4baaf1f7b8fc4084b9c2c34dbd295b7043dd40e0557f7b49')
-
-prepare() {
-  cd foot
-  patch -Np1 -i "${srcdir}/0001-config-letter-spacing-add-missing-return.patch"
-}
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha256sums=('40aaf4ba96aa0cc977b7c3916b79fd5455cefea76c5c07cad43ff7aaf06fc1bd')
 
 build() {
   cd foot
@@ -62,7 +55,8 @@ build() {
     . build \
     --prefix=/usr \
     --wrap-mode=nodownload \
-    -Dterminfo=disabled
+    -Dterminfo=disabled \
+    -Dthemes=false
 }
 
 check() {
@@ -74,9 +68,6 @@ package_foot() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Themes packaged separately
-  rm -rf "${pkgdir}/usr/share/foot/themes"
 }
 
 package_foot-themes() {

@@ -1,7 +1,7 @@
 pkgbase = foot
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.10.1
+	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -26,10 +26,8 @@ pkgbase = foot
 	optdepends = libnotify: desktop notifications
 	optdepends = xdg-utils: URI launching
 	optdepends = bash-completion: bash completions for foot itself
-	source = foot-1.10.0.tar.gz::https://codeberg.org/dnkl/foot/archive/1.10.0.tar.gz
-	source = 0001-config-letter-spacing-add-missing-return.patch
-	sha256sums = ef052354145f8ce2e3a965e171c750ccc653c2a2b9ce98adefa99948286188f7
-	sha256sums = 7a25060611b289bd4baaf1f7b8fc4084b9c2c34dbd295b7043dd40e0557f7b49
+	source = foot-1.10.1.tar.gz::https://codeberg.org/dnkl/foot/archive/1.10.1.tar.gz
+	sha256sums = 40aaf4ba96aa0cc977b7c3916b79fd5455cefea76c5c07cad43ff7aaf06fc1bd
 
 pkgname = foot
 

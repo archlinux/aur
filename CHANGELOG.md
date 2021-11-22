@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.10.1](#1-10-1)
 * [1.10.0](#1-10-0)
 * [1.9.2](#1-9-2)
 * [1.9.1](#1-9-1)
@@ -30,6 +31,35 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.10.1
+
+### Added
+
+* `-Dthemes=false|true` meson command line option. When disabled,
+  example theme files are **not** installed.
+* XDG desktop file for footclient.
+
+
+### Fixed
+
+* Regression: `letter-spacing` resulting in a “not a valid option”
+  error (https://codeberg.org/dnkl/foot/issues/795).
+* Regression: bad section name in configuration error messages.
+* Regression: `pipe-*` key bindings not being parsed correctly,
+  resulting in invalid error messages
+  (https://codeberg.org/dnkl/foot/issues/809).
+* OSC-8 data not being cleared when cell is overwritten
+  (https://codeberg.org/dnkl/foot/issues/804).
+
+
+### Contributors
+
+* Arnavion
+* Craig Barnes
+* Soc Virnyl Silab Estela
+* Xiretza
 
 
 ## 1.10.0
