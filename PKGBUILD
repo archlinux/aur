@@ -3,14 +3,18 @@
 # Contributor: Daniel Griffiths <ghost1227 at archlinux dot us>
 
 pkgname=rolo
-pkgver=014
+pkgver=019
 pkgrel=1
 pkgdesc="Tracks contacts with vCards and displays them with a text-based menu."
 arch=('i686' 'x86_64')
 url="https://github.com/libvc/rolo"
 license=('GPL')
 depends=('ncurses' 'libvc' 'libunac')
-source=(rolo-014.tar.gz::https://github.com/libvc/rolo/archive/v014.tar.gz)
+
+source=(
+rolo-${pkgver}.tar.gz::https://github.com/libvc/rolo/archive/v${pkgver}.tar.gz
+rolo-${pkgver}.tar.gz.sig::https://github.com/libvc/rolo/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig
+)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -25,4 +29,9 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('d5db41f0633996f6f36bc5997d06d79705d36e35a6c876d2f6eeaef55aac0e16')
+validpgpkeys=('3F464391498FE874BDB5D98F2124AA1983785C90')
+
+sha256sums=(
+    'c88a02087dd5820a32fb85c9573d97cb73dfd6136509784ac79f62726284dac7'
+    'a43a69035046a3c160c03b2a237692ce39c1a06fdb87b795cff0d6156d686206'
+)

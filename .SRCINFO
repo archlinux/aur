@@ -1,6 +1,6 @@
 pkgbase = rolo
 	pkgdesc = Tracks contacts with vCards and displays them with a text-based menu.
-	pkgver = 014
+	pkgver = 019
 	pkgrel = 1
 	url = https://github.com/libvc/rolo
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = rolo
 	depends = ncurses
 	depends = libvc
 	depends = libunac
-	source = rolo-014.tar.gz::https://github.com/libvc/rolo/archive/v014.tar.gz
-	sha256sums = d5db41f0633996f6f36bc5997d06d79705d36e35a6c876d2f6eeaef55aac0e16
+	source = rolo-019.tar.gz::https://github.com/libvc/rolo/archive/v019.tar.gz
+	source = rolo-019.tar.gz.sig::https://github.com/libvc/rolo/releases/download/v019/v019.tar.gz.sig
+	validpgpkeys = 3F464391498FE874BDB5D98F2124AA1983785C90
+	sha256sums = c88a02087dd5820a32fb85c9573d97cb73dfd6136509784ac79f62726284dac7
+	sha256sums = a43a69035046a3c160c03b2a237692ce39c1a06fdb87b795cff0d6156d686206
 
 pkgname = rolo
-
