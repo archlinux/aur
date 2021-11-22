@@ -12,6 +12,7 @@ arch=('any')
 url="https://github.com/${_repo}"
 license=('GPL2')
 depends=('dkms')
+makedepends=('git')
 provides=('NTFS3-MODULE' "ntfs3=${_ver}" "ntfs3-dkms=${_ver}")
 conflicts=('ntfs3')
 options=('!strip' '!emptydirs')
