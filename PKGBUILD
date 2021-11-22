@@ -2,7 +2,7 @@
 
 pkgname=tmplgen
 pkgver="0.1.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic text template generator"
 arch=("x86_64")
 url="https://git.sr.ht/~rycwo/tmplgen"
@@ -18,6 +18,8 @@ build() {
 
 package() {
 	cd "$srcdir""/tmplgen-""$pkgver"
+	mkdir -p "$pkgdir""/usr/bin"
 	install -m775 tmplgen "$pkgdir""/usr/bin/tmplgen"
+	mkdir -p "$pkgdir""/usr/share/licenses/tmplgen"
 	install -m644 LICENSE "$pkgdir""/usr/share/licenses/tmplgen/LICENSE"
 }
