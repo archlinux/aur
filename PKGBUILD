@@ -9,94 +9,96 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=mpd-light-pulse-ffmpeg
-pkgver=0.22.11
-_majorver=0.22
+_pkgname=mpd
+pkgver=0.23.4
 pkgrel=1
-pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, modplug, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
+pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=('GPL2')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('alsa-lib' 'flac' 'libogg' 'ffmpeg' 'libpulse' 'libcdio-paranoia' 'audiofile' 'libmad' 'curl' 'faad2' 'sqlite'
-         'libmms' 'libid3tag' 'libmpdclient' 'icu' 'libupnp' 'libvorbis'
-         'libnfs' 'libsamplerate' 'libsoxr' 'liburing')
-# So files
-#depends+=('libFLAC.so' 'libasound.so' 'libaudiofile.so' 'libcurl.so'
-#          'libfaad.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so'
-#          'libmpdclient.so' 'libogg.so' 'libsamplerate.so'
-#          'libvorbis.so' 'libupnp.so' 'liburing.so' 'libixml.so')
-makedepends=('boost' 'meson' 'python-sphinx')
-provides=("mpd=$pkgver")
+arch=('x86_64')
+depends=('gcc-libs' 'glibc' 'libcdio-paranoia' 'libmad' 'sqlite'
+         'libmms' 'libnfs' 'libsoxr' 'zlib')
+makedepends=('alsa-lib' 'audiofile' 'boost' 'curl' 'faad2' 'ffmpeg' 'flac' 'fmt'
+             'icu' 'libid3tag' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate'
+             'libupnp' 'liburing' 'libvorbis' 'meson' 'python-sphinx')
+provides=("mpd=${pkgver}")
 conflicts=('mpd')
 replaces=('mpd')
-source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
-        'mpd.tmpfile'
-        'mpd.conf')
-sha512sums=('c53d386d42c2360502aad5e7574ae5ff76a20df037696989f9e1700f9cffb88afdd329cce758067356c59308d0cbcf3ba3ccf6f013e2fcec54ddf08bd0212b43'
-            '3608f8b0418aa5527917c35308aeca80357c3cf1834cceeade2eaab7fa736117c0b3143cf225478441ffc533b45ff1e8c5579a2e1aa432a4db5ca4cef2dd04e1'
-            '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1')
-backup=('etc/mpd.conf')
-install=mpd.install
+source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+        "${_pkgname}.conf"
+        "${_pkgname}.sysusers"
+        "${_pkgname}.tmpfiles")
+sha512sums=('fb476b108a7be842663683fe6ca6737cffad73c0f09874f9d052121d188d16f69b144e993d1691f2edfac713db24aa3c28302b399f4720b29c09c909860c0938'
+            'SKIP'
+            '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
+            '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
+            'db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d')
+validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@blarg.de>
+backup=("etc/${_pkgname}.conf")
 
 prepare() {
-	cd "mpd-${pkgver}"
-
-	rm -rf build-my
+  cd "${_pkgname}-${pkgver}"
+  sed -e '/\[Service\]/a User=mpd' \
+      -i "systemd/system/mpd.service.in"
 }
 
 build() {
-	cd "mpd-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
-	_opts=('-Ddocumentation=enabled'
-	       '-Dchromaprint=disabled' # appears not to be used for anything
-	       '-Dsidplay=disabled' # unclear why but disabled in the past
-	       '-Dadplug=disabled' # not in an official repo
-	       '-Dsndio=disabled' # interferes with detection of alsa devices
-	       '-Dshine=disabled' # not in an official repo
-	       '-Dtremor=disabled' # not in an official repo
-	       '-Dao=disabled'
-	       '-Djack=disabled'
-	       '-Dmodplug=disabled'
-	       '-Dshout=disabled'
-	       '-Dsidplay=disabled'
-	       '-Dsoundcloud=disabled'
+
+  _opts=('-Ddocumentation=enabled'
+         '-Dadplug=disabled' # not in an official repo
+         '-Dsndio=disabled' # interferes with detection of alsa devices
+         '-Dshine=disabled' # not in an official repo
+         '-Dtremor=disabled' # not in an official repo
+         '-D b_ndebug=true' # see https://bugs.archlinux.org/task/72455
+         '-Dpipewire=disabled'
+         '-Dopenmpt=disabled'
+         '-Dchromaprint=disabled'
+         '-Dao=disabled'
+         '-Djack=disabled'
+         '-Dmodplug=disabled'
+         '-Dshout=disabled'
+         '-Dsidplay=disabled'
+         '-Dsoundcloud=disabled'
          '-Dwavpack=disabled'
-	       '-Dzzip=disabled'
-	       '-Dzeroconf=disabled'
-	       '-Dsmbclient=disabled'
-	       '-Dqobuz=disabled'
-	       '-Diso9660=disabled'
-	       '-Dfluidsynth=disabled'
-	       '-Dmikmod=disabled'
-	       '-Dmpcdec=disabled'
-	       '-Dmpg123=disabled'
-	       '-Dopus=disabled'
-	       '-Dwildmidi=disabled'
-	       '-Dlame=disabled'
-	       '-Dtwolame=disabled'
-	       '-Dopenal=disabled'
-	       '-Dyajl=disabled'
+         '-Dzzip=disabled'
+         '-Dzeroconf=disabled'
+         '-Dsmbclient=disabled'
+         '-Dqobuz=disabled'
+         '-Diso9660=disabled'
+         '-Dfluidsynth=disabled'
+         '-Dmikmod=disabled'
+         '-Dmpcdec=disabled'
+         '-Dmpg123=disabled'
+         '-Dopus=disabled'
+         '-Dwildmidi=disabled'
+         '-Dlame=disabled'
+         '-Dtwolame=disabled'
+         '-Dopenal=disabled'
+         '-Dyajl=disabled'
          '-Dgme=disabled'
-	)
-	arch-meson --auto-features auto build-my ${_opts[@]}
-	ninja -C build-my
+  )
+  arch-meson ${_opts[@]} build
+  ninja -C build
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  ninja -C build test
 }
 
 package() {
-	cd "mpd-${pkgver}"
-
-	DESTDIR="${pkgdir}" ninja -C build-my install
-	install -Dm644 doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
-
-	install -Dm644 ../mpd.conf "${pkgdir}"/etc/mpd.conf
-	install -Dm644 ../mpd.tmpfile "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
-	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd{,/playlists}
-
-	# Now service file installs only when libsystemd package was found
-	if [ -e "${pkgdir}"/usr/lib/systemd/system/mpd.service ]; then
-		sed \
-			-e '/\[Service\]/a User=mpd' \
-			-e '/WantedBy=/c WantedBy=default.target' \
-			-i "${pkgdir}"/usr/lib/systemd/system/mpd.service
-	fi
+  depends+=('libFLAC.so' 'libasound.so' 'libaudiofile.so' 'libavcodec.so' 'libavformat.so'
+            'libcurl.so' 'libfaad.so' 'libfmt.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so'
+            'libmpdclient.so' 'libogg.so' 'libsamplerate.so'
+            'libvorbis.so' 'libupnp.so' 'liburing.so' 'libixml.so')
+  cd "${_pkgname}-${pkgver}"
+	DESTDIR="${pkgdir}" ninja -C build install
+  install -vDm 644 "doc/${_pkgname}conf.example" \
+    -t "${pkgdir}/usr/share/doc/${_pkgname}/"
+  install -vDm 644 "../${_pkgname}.conf" -t "${pkgdir}/etc/"
+  install -vDm 644 "../${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  install -vDm 644 "../${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 }
 # vim: ts=2 sw=2 et:
