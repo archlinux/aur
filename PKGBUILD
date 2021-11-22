@@ -3,9 +3,9 @@
 # Contributor: tsipizic
 
 pkgname=python-yeelight
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
-_commit=2644e00147bab61923eec91c722781dc95a56ebf
+_commit=40c09bd4
 pkgdesc='Python library for controlling YeeLight RGB bulbs'
 arch=('any')
 url='https://gitlab.com/stavros/python-yeelight'
@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd "$pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 docs/build/man/yeelight.1 -t "$pkgdir/usr/share/man/man1/"
