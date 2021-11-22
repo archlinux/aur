@@ -3,12 +3,12 @@
 pkgname=ntfsprogs-ntfs3
 _pkgname=ntfs-3g_ntfsprogs
 pkgver=2021.8.22
-pkgrel=4
+pkgrel=5
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://www.tuxera.com/community/open-source-ntfs-3g/'
 arch=('x86_64')
 license=('GPL2')
-depends=('util-linux' 'fuse2')
+depends=('util-linux')
 source=("https://tuxera.com/opensource/${_pkgname}-${pkgver}.tgz")
 sha256sums=('55b883aa05d94b2ec746ef3966cb41e66bed6db99f22ddd41d1b8b94bb202efb')
 
