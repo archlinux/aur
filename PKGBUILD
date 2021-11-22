@@ -2,26 +2,30 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=python-pydna
-pkgver=4.0.2
+pkgver=4.0.5
 pkgrel=1
 pkgdesc='Data structures for double-stranded DNA & simulation of homologous recombination'
 arch=('any')
 url='https://github.com/bjornfjohansson/pydna'
 license=('BSD')
 depends=(
-	'python-appdirs>=1.4.3'
-	'python-biopython>=1.79'
-	'python-networkx>=2.5.0'
-	'python-prettytable>=0.7.2'
-	'python-pyparsing>=2.4.7'
-	'python-requests>=2.23.0')
+	'python-appdirs'
+	'python-biopython'
+	'python-networkx'
+	'python-prettytable'
+	'python-pyparsing'
+	'python-requests')
 optdepends=(
 	'python-matplotlib: gel simulation'
 	'python-mpldatacursor: gel simulation'
 	'python-numpy: gel simulation'
 	'python-pint: gel simulation'
 	'python-scipy: gel simulation')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-pytest-runner')
+makedepends=(
+	'git'
+	'python-setuptools'
+	'python-setuptools-scm'
+	'python-pytest-runner')
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=$pkgver")
 sha256sums=('SKIP')
