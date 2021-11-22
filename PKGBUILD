@@ -2,7 +2,7 @@
 
 pkgname=cavif-git
 pkgver=1.3.1.win.r13.gb0a2d76
-pkgrel=1
+pkgrel=2
 pkgdesc="AVIF image creator in pure Rust"
 arch=('i686' 'x86_64')
 url="https://lib.rs/crates/cavif"
@@ -11,7 +11,6 @@ depends=('gcc-libs')
 makedepends=('git' 'nasm' 'rust')
 provides=('cavif')
 conflicts=('cavif')
-options=('staticlibs')
 source=("git+https://github.com/kornelski/cavif-rs.git")
 sha256sums=('SKIP')
 
