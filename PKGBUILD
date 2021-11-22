@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=sniffer
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Modern alternative network traffic sniffer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libpcap')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('383cc1ebb43132801546a7e613d9b2db592143d100d335bd641457f3a05b079b')
+sha256sums=('9c52bfdd59e6f7b27f29ff5e4efe40829fd6d2f21229dd91c46eceb11a991c66')
 
 prepare() {
 	cd "$pkgname-$pkgver"
