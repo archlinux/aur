@@ -11,7 +11,8 @@ arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("custom:SSPLv1" "Apache")
 depends=("curl")
-optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
+optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities."
+			"mongosh: An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.")
 provides=("mongodb=$pkgver")
 conflicts=("mongodb" "mongodb-shell-bin")
 backup=("etc/mongodb.conf")

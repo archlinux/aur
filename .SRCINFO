@@ -9,6 +9,7 @@ pkgbase = mongodb-bin
 	license = Apache
 	depends = curl
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
+	optdepends = mongosh: An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.
 	provides = mongodb=5.0.4
 	conflicts = mongodb
 	conflicts = mongodb-shell-bin
