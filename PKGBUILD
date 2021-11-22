@@ -11,7 +11,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=5.15
 ## Minor kernel version
-_minor=3
+_minor=4
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -39,7 +39,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('a9f3dae18387b5a315bda66004cd10777a7dc5da11517214e4fd016fd5fc05e6'
+sha256sums=('549d0fb75e65f6158e6f4becc648f249d386843da0e1211460bde8b1ea99cbca'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -154,7 +154,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
+  make -j$(nproc) all
 }
 
 _package() {
