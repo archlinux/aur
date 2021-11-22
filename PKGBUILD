@@ -3,8 +3,8 @@
 
 pkgname=sweet-gtk-theme
 _pkgname=Sweet
-pkgver=2.0.r23.5b53ee2
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=('any')
 url='https://github.com/EliverLara/Sweet'
@@ -12,7 +12,7 @@ license=('GPL3')
 conflicts=('sweet-theme')
 replaces=('sweet-theme')
 makedepends=('git')
-_commit=5b53ee233aae437938ab414ae5dcaa79170179be
+_commit=123dd8b452c7f7becbb48cb44365053c99c72c5f
 source=(git+$url.git#commit=$_commit)
 md5sums=('SKIP')
 
