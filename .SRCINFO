@@ -1,0 +1,11 @@
+pkgbase = bbg
+	pkgdesc = A static blog generator built with electron
+	pkgver = 20211022
+	pkgrel = 1
+	url = https://github.com/baiyang-lzy/bbg
+	arch = any
+	license = GPL
+	source = bbg.7z::https://download.fastgit.org/baiyang-lzy/bbg/releases/download/20211022/bbg_linux_20211022.7z
+	sha256sums = d88add9b6682730a650c35f6d228653d8778db506ac2943f760a92fb10d81070
+
+pkgname = bbg
