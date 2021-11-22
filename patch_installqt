@@ -1,0 +1,11 @@
+--- /home/daniel/Documents/desktop-v2/tools/deps/install_qt.py	2021-11-21 17:29:26.534768570 -0600
++++ install_qt.py	2021-11-19 23:40:32.000000000 -0600
+@@ -84,7 +84,7 @@
+   configure_cmd.append("-I{}/include".format(openssl_root))
+   configure_cmd.extend(["-prefix", installpath])
+   if utl.GetCurrentOS() == "linux":
+-      configure_cmd.append("-no-opengl")
++      #configure_cmd.append("-no-opengl")
+       configure_cmd.append("-qt-libpng")
+   if QT_SKIP_MODULES:
+     configure_cmd.extend(x for t in zip(["-skip"] * len(QT_SKIP_MODULES), QT_SKIP_MODULES) for x in t)
