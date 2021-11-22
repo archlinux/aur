@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gtk4
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
 url='https://www.gtk.org'
@@ -63,7 +63,6 @@ build() {
       -Dmedia-ffmpeg=disabled \
       -Dmedia-gstreamer=enabled \
       -Dprint-cups=disabled \
-      -Df16c=disabled \
       -Dgtk_doc=false \
       -Dman-pages=false \
       -Dintrospection=disabled

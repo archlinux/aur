@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gtk4
 	pkgdesc = GObject-based multi-platform GUI toolkit (mingw-w64)
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gtk.org
 	install = mingw-w64-gtk4.install
 	arch = any
