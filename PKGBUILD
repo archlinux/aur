@@ -2,7 +2,7 @@
 
 pkgname=ethminer-etchash-git
 pkgver=r14327.52ff22e7d
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum Classic miner with OpenCL, CUDA and stratum support"
 arch=('x86_64')
 url="https://github.com/etclabscore/ethminer"
@@ -41,6 +41,5 @@ build () {
 
 package() {
 	cd "$srcdir/${pkgname%-git}/build"
-	make INSTALL_ROOT=$pkgdir install
+	make DESTDIR=$pkgdir install
 }
-
