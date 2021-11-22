@@ -1,0 +1,20 @@
+pkgbase = lelivrescolaire
+	pkgdesc = Lelivrescolaire.fr Éditions : application innovante pour consulter vos manuels scolaires de la 6e à la Terminale !
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = lelivrescolaire.fr
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = libnss_nis
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = python-atspi
+	depends = libappindicator-gtk3
+	depends = libsecret
+	source = https://ci.lls.fr/build/latest/linux/Lelivrescolaire.fr.deb
+	md5sums = SKIP
+
+pkgname = lelivrescolaire
