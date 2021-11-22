@@ -1,5 +1,5 @@
 #!/hint/bash -e
-# Maintainer: Adrien Smith <adrien[at]bouldersmiths[dot]com>
+# Maintainer: Adrien Smith <adrien@panissupraomnia.dev>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
 # Contributor: gueek <cyttam[at]gmail[dot]com>
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="https://www.jonof.id.au/kenutils"
 license=('custom')
 depends=('glibc')
-source=("https://www.jonof.id.au/files/kenutils/pngout-20200115-linux.tar.gz"
+source=("https://www.jonof.id.au/files/kenutils/pngout-$pkgver-linux.tar.gz"
         'pngout.completion'
         'LICENSE')
 sha512sums=('68b5878ca21ffba331e5a2a0e4f4ef54e3f2c2b82e38593761c9bb944518f450ce214203b95521965d5c81a904d8805d4c177f48e9bba0c3fd5833b265158b1c'
