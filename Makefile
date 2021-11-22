@@ -11,7 +11,7 @@ srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src chatterino7/ chatterino2-*.pkg.tar.{xz,zst} \
+	rm -rf pkg src dankerino/ chatterino2-*.pkg.tar.{xz,zst} \
 		libcommuni \
 		humanize \
 		qBreakpad \
