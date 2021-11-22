@@ -26,8 +26,7 @@ CLANG=            # Use clang.
 
 GOLD=             # Use the gold linker.
 
-LTO="YES"         # Enable link-time optimization. Read emacs's INSTALL before
-                  # attempting to use it with clang.
+LTO=              # Enable link-time optimization. Still experimental.
 
 JIT=              # Enable native just-in-time compilation. libgccjit is in AUR.
                   # This compiles only performance critical elisp files.
@@ -76,7 +75,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=29.0.50.151057
+pkgver=29.0.50.152009
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -119,16 +118,6 @@ if [[ $CLANG == "YES" ]]; then
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
   makedepends+=( 'clang' 'lld' 'llvm') ;
-fi
-
-if [[ $LTO == "YES" ]]; then
-  if [[ $CLANG != "YES" ]]; then
-  CFLAGS+=" -flto -fuse-linker-plugin"
-  CXXFLAGS+=" -flto -fuse-linker-plugin"
-else
-  CFLAGS+=" -flto"
-  CXXFLAGS+=" -flto"
-  fi
 fi
 
 if [[ $JIT == "YES" ]]; then
