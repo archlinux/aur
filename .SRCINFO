@@ -16,7 +16,7 @@ pkgbase = mfgtools-git
 	provides = mfgtool
 	conflicts = mfgtools
 	options = !strip
-	source = mfgtools::git+https://hub.fastgit.org/NXPmicro/mfgtools.git
+	source = mfgtools::git+https://ghproxy.com/https://github.com/NXPmicro/mfgtools.git
 	sha256sums = SKIP
 
 pkgname = mfgtools-git
