@@ -2,7 +2,7 @@
 
 _pkgname=timeago
 pkgname=python-${_pkgname}
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Very simple python library, used to format datetime with \`***time ago\` statement."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 provides=()
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/hustcc/timeago/${pkgver}/LICENSE")
-sha256sums=('4308d0123a21c778e0ac66fb68e09c15ab6a006e152f8840902575b48aac373d'
+sha256sums=('cfce420d82892af6b2439d0f69eeb3e876bbeddab6670c3c88ebf7676407bf4c'
             'e2a15cd0b56cfffbb99e27caeb87afe58ff78097d9c3bd3aea2a251145479912')
 
 build() {
