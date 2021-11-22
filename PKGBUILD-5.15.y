@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
 _LLL_VER=5.15
-_LLL_SUBVER=3
+_LLL_SUBVER=4
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -28,14 +28,17 @@ fi
 # see, https://bugs.archlinux.org/task/31187
 _NUMA_disable=y
 
-# Add ck patch set
 # http://ck.kolivas.org/patches/5.0/
-# https://wiki.archlinux.org/index.php/Linux-ck
-# https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
-# xanmod ck-hrtimer
-_ck_commit=8ba6612318090567422d49ccc79bc7bbe5484cfc
-_CK_PATCH_SRC="ck-hrtimer-$_ck_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_ck_commit.tar.gz"
-_CK_PATCH_PATCH=()
+# EOL: https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
+# xanmod:
+#   ck-hrtimer
+#   Graysky uarches
+#   intel partial Clear Linux patchset
+#   lib_zstd
+#   lrng framework
+_Xan_COMMIT=84e17c462ae855a6d9f9569db2487b427e3a7e66
+_Xan_PATCH_SRC="xanmod-$_Xan_COMMIT.tar.gz::https://github.com/xanmod/linux-patches/archive/$_Xan_COMMIT.tar.gz"
+_Xan_PATCH_PATCH=()
 
 # Ultra Kernel Samepage Merging
 # https://github.com/dolohow/uksm
@@ -53,7 +56,7 @@ _CJKTTY_COMMIT=88b6f29be93285221a10ea7d2737f97793754ee4
 _CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v5.x/cjktty-${_LLL_VER}.patch"
 _CJKTTY_PATCH_PATCH=()
 
-_PATHSET_DESC="ck-hrtimer uksm-${_UKSM_VER} and cjktty"
+_PATHSET_DESC="some xanmod patchsets, uksm-${_UKSM_VER} and cjktty"
 
 pkgbase=linux-shmilee
 pkgname=("${pkgbase}" "${pkgbase}-headers")
@@ -75,8 +78,8 @@ source=(
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.sign"
-        ${_CK_PATCH_SRC}
-        ${_CK_PATCH_PATCH[@]}
+        ${_Xan_PATCH_SRC}
+        ${_Xan_PATCH_PATCH[@]}
         ${_UKSM_PATCH_SRC}
         ${_UKSM_PATCH_PATCH[@]}
         ${_CJKTTY_PATCH_SRC}
@@ -90,8 +93,8 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '3eac9835eb12f011c1bf15fe4bc933fab7a4d67b7a09d20a638ed162b6b17466'
-            '2f9ee9dbe95595c91286853c0bee80a562d68eaefbc1b168eb8d5e58fa47cf9b'
+            'c33801f2d4ae027b5cb6ba49ff7daacc1ac25243cefcc0a4e6e358f5d36dca5b'
+            '4f49c13241ad455a77593b927c40704029354f405e56dd0a0bb014b71391524c'
             'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c'
             '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
             'f4d2c31065975e07c37b56b70452be8583a7ab2e5041bfdb93bcd7dfc3f5d0eb')
@@ -126,31 +129,42 @@ prepare() {
     fi
     patch -Np1 -i "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
   fi
-
-  ## fix naming schema in EXTRAVERSION of ck patch set
-  #sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../patch-${_LLL_VER}-ck${_CK_VER}"
-  ## Patch source with ck patch set
-  #msg2 "Patching source with ck${_CK_VER} including BFS MuQSS"
-  #cp "../patch-${_LLL_VER}-ck${_CK_VER}" "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  #for p in ${_CK_PATCH_PATCH[@]}; do
-  #  patch -Ni ../$p "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  #done
-  #patch -Np1 -i "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-
-  # >>> ck hrtimer patch set, recommends 1000 Hz tick
-  scripts/config --enable CONFIG_HZ_1000
-  msg2 "Patching with ck hrtimer patches..."
-  for p in ${_CK_PATCH_PATCH[@]}; do
-    patch -Ni ../$p -d ../linux-patches-"$_ck_commit"/"linux-${_LLL_VER}.y-xanmod"/ck-hrtimer/
-  done
-  for i in ../linux-patches-"$_ck_commit"/"linux-${_LLL_VER}.y-xanmod"/ck-hrtimer/0*.patch; do
-    patch -Np1 -i $i
-  done
-
   # Bisect debug result
   if [ "$_Bisect_debug" != "on" ]; then
     :
   fi
+
+  msg2 "Patching source with some third-party patchsets in xanmod"
+  _Xan_patch_dir=../linux-patches-"$_Xan_COMMIT"/"linux-${_LLL_VER}.y-xanmod"
+  for p in ${_Xan_PATCH_PATCH[@]}; do
+    patch -Ni ../$p -d $_Xan_patch_dir/
+  done
+  # >>> ck hrtimer patch set, recommends 1000 Hz tick
+  scripts/config --enable CONFIG_HZ_1000
+  msg2 "Patching with xanmod: CK's high-resolution kernel timers (hrtimer) patchsets ..."
+  for i in $_Xan_patch_dir/ck-hrtimer/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: Graysky's additional CPU optimizations patchsets ..."
+  for i in $_Xan_patch_dir/graysky/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: intel partial Clear Linux patchsets ..."
+  for i in $_Xan_patch_dir/intel/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: ZSTD library for bug fixes and r/w performance patchsets..."
+  for i in $_Xan_patch_dir/lib_zstd/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: Linux Random Number Generator (LRNG) framework patchsets..."
+  for i in $_Xan_patch_dir/lrng/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: BFQ patchsets..."
+  for i in $_Xan_patch_dir/xanmod/0*bfq*.patch; do
+    patch -Np1 -i $i
+  done
 
   msg2 "Patching source with uksm ${_UKSM_VER} patches"
   cp "../0001-UKSM-for-${_LLL_VER}.patch" "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
@@ -209,7 +223,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ${_PATHSET_DESC} patchsets"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ${_PATHSET_DESC} patchsets"
   depends=('coreutils' 'kmod' 'mkinitcpio')
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
