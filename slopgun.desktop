@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Slopgun
+Comment=Copy part of your screen to the clipboard
+Keywords=snapshot;capture;screenshot;
+Exec=slopgun
+Terminal=false
+Type=Application
+Icon=org.gnome.Screenshot
+Categories=Utility;
+Actions=screen-shot;window-shot;
