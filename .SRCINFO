@@ -1,14 +1,17 @@
 pkgbase = note-ocaml
 	pkgdesc = Simple Note Taking CLI
-	pkgver = 0.5.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/kevinschoon/note
 	arch = x86_64
 	license = AGPL3
 	makedepends = ocaml>=4.10.0
 	makedepends = opam>=2.0.0
-	source = note-ocaml-0.5.6.tar.gz::https://github.com/kevinschoon/note/archive/0.5.6/0.5.6.tar.gz
-	md5sums = 87b41c6d119eb0a160ee5fa016c42b6e
+	makedepends = dune>=2.9.0
+	makedepends = m4
+	makedepends = scdoc
+	makedepends = make
+	source = note-ocaml-0.6.1.tar.gz::https://github.com/kevinschoon/note/archive/0.6.1/0.6.1.tar.gz
+	md5sums = cf7edc854b85cf349cbc59bde876dd9d
 
 pkgname = note-ocaml
-
