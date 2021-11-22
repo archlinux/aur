@@ -1,5 +1,5 @@
 # Maintainer: Topik topik@topik.tech
-pkgname=windscribe-bin
+pkgname=windscribe
 pkgver=2.3.11_beta
 pkgrel=1
 pkgdesc="A port of Windscribe's GUI desktop client (binary release)"
@@ -8,6 +8,7 @@ url="https://github.com/Windscribe/desktop-v2"
 license=('GPL2')
 depends=('bash' 'iptables' 'curl' 'icu67')
 conflicts=('windscribe-git')
+provides=('windscribe')
 install=${pkgname}.install
 # I had to comment these out because I had unofficial binaries as a source (there aren't any official binaries available yet), and that's apparently not allowed on the AUR (sorry, didn't know)
 # You can uncomment the lines below and download the PKGBUILD to get a working installation
