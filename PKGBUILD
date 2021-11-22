@@ -1,8 +1,8 @@
-# Maintainer: Ryan Chan <ryan at rycwo dot xyz>
+# Maintainer: Ryan Chan <rycwo at posteo dot net>
 
 pkgname="lemons"
 pkgver="0.6.0"
-pkgrel=0
+pkgrel=2
 pkgdesc="Output script for lemonbar"
 arch=("any")
 url="https://git.sr.ht/~rycwo/lemons"
