@@ -2,7 +2,7 @@
 pkgname=catfish-python2
 pkgname_link=catfish
 pkgbase=catfish-python2
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Catfish-python2 is a GTK+ search utility written in python2"
 url="https://github.com/Mordillo98/catfish-python2"

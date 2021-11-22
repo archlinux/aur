@@ -1,13 +1,13 @@
 pkgbase = catfish-python2
 	pkgdesc = Catfish-python2 is a GTK+ search utility written in python2
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/Mordillo98/catfish-python2
 	arch = any
 	license = GPL
 	makedepends = pygtk
 	makedepends = dbus-python
-	makedepends = python2-xdg
+	makedepends = python-pyxdg
 	makedepends = python2
 	makedepends = gnome-icon-theme
 	provides = catfish-python2
@@ -16,4 +16,3 @@ pkgbase = catfish-python2
 	md5sums = 541032a1513a8b0ab8c21fcdf9feb3f2
 
 pkgname = catfish-python2
-
