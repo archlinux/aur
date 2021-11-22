@@ -1,8 +1,8 @@
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=non-euclidean-git
-pkgver=r31.8bbf723
-pkgrel=3
+pkgver=r34.4831ce9
+pkgrel=1
 pkgdesc='Tiny Non-Euclidean engine'
 arch=($CARCH)
 url='https://github.com/Srinivasa314/NonEuclidean'
@@ -32,5 +32,4 @@ package() {
 
   install -d "$pkgdir/usr/bin/"
   ln -s /opt/NonEuclidean/non-euclidean "$pkgdir/usr/bin/non-euclidean"
-  chmod +x "$pkgdir/usr/bin/non-euclidean"
 }
