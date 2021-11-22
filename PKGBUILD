@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=qemu-guest-kernel
-pkgver=5.10.80
+pkgver=5.15.4
 pkgrel=1
 pkgdesc="Linux kernels for QEMU/KVM guests (direct kernel boot)"
 url="https://github.com/guest-kernel/qemu"
@@ -28,9 +28,9 @@ validpgpkeys=(
 	"AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings
 )
 sha256sums=('SKIP'
-            '050c5d02668544d3b07fbd65a5cddb00fe203d07a95b7f924f9de191e55e151f'
-            '910b7965db9777794b923ba36c83b682593c55775a7cc0a91fe28c2b7a43ade1'
-            '145a82106497e007df1b17612f2215c2ae0edd8918762a636aad48e7c83cf20f')
+            '9a917bb710be091e5b1d05185f009b6eb67b4b668389da185e56909da2b10d06'
+            '0ccbd0d29149c3752303aea276eea713cd1cb0687ea0239bdbaa20732b31e868'
+            'c40d2fd202aea75c78a4b39c365ccc687bf0f5a4df3bf2ee31fd4e162ef635d3')
 
 prepare() {
 	cd "$srcdir/$_srcname"
