@@ -3,8 +3,8 @@
 # PRs/Issues: https://github.com/bbrks/aur-portainer-bin
 
 pkgname=portainer-bin
-pkgver=2.9.2
-pkgrel=2
+pkgver=2.9.3
+pkgrel=1
 epoch=
 pkgdesc="A lightweight docker management UI"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
@@ -28,11 +28,11 @@ source_armv7h=("${url}/releases/download/${pkgver}/portainer-${pkgver}-linux-arm
 sha256sums=('08603677ac3c01235fcd740892bfae9277bd163b908f62b22e6e7edfdb61976c'
             '8cb50d80f1463cef0a907b7f26ec6387b792182959f51f8cd19dcb6f955b886e'
             '82f7fca2af76e52147397c3b7b07091b72c1be7c82da6bc47e53001306759635'
-            'fd1f22916b98a5adefa7ee6713a6afa448f8fe3f45657d99fb2825fd9331aba3')
-sha256sums_armv6h=('6938812a4535bd4c6959eecd272a9d5ad316c938d2bfb7051ac7c33af5f7c965')
-sha256sums_armv7h=('6938812a4535bd4c6959eecd272a9d5ad316c938d2bfb7051ac7c33af5f7c965')
-sha256sums_aarch64=('7960be82ac0a2d1651777a2f6bddde7f676f5d2cfc2c07e5b46cc6707e2a3b2b')
-sha256sums_x86_64=('4e2654bbdd0f472f4cc134da02fe150cdcd91fe789c735a3db830f656d86c20c')
+            '5b1247dcd060d654d0d2f6d61a43136eff98fc0b6176879f07dad2200e0da474')
+sha256sums_armv6h=('a4982f235d88eee5650775dcc32a43062c2153391e791e1270cb9cfe3f080a7a')
+sha256sums_armv7h=('a4982f235d88eee5650775dcc32a43062c2153391e791e1270cb9cfe3f080a7a')
+sha256sums_aarch64=('b7f27d20468c8ee6a80cd001b81498b72588bc301ca911fafd3d269f71acb39e')
+sha256sums_x86_64=('57a49dbaad7efb0c8cd2c78bfcd353e6dc10c18e04f08ba890f421c415ba8abc')
 
 package() {
   install -Dm644 "${srcdir}/portainer-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
