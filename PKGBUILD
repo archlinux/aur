@@ -5,7 +5,7 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=4.14.0
+pkgver=4.14.1
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('discord-rpc-api: discord integration'
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('33ac930ee890e47a2c709bfe8b46749e301a332edfe0343410342c366729af7f')
+sha256sums=('45d2c66de706cfafd55b2f64278e4c4b0181616da111c9355dc58b94fbfbbda0')
 
 
 build() {
