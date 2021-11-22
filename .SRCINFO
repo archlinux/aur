@@ -1,6 +1,6 @@
 pkgbase = fwupd-git
 	pkgdesc = Simple daemon to allow session software to update firmware
-	pkgver = 1.6.2.r81.g566f8e27c
+	pkgver = 1.7.2.r4.gc92f35239
 	pkgrel = 1
 	url = https://github.com/fwupd/fwupd
 	arch = i686
