@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
 	pkgver = 94.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -58,7 +58,7 @@ pkgbase = firefox-appmenu
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 8d2169122892161e26fe4cc45d61781513181dee1f1981be42427f88092c8d06
+	sha256sums = 899ba1c806549034793d7e8ca53f4c845d783c810338f314f3d653d39649e575
 	sha256sums = SKIP
 	sha256sums = 51cca2cab0fa9798f96b81ed24c238b2a7c98524f589ec500224bac9797b66fb
 	sha256sums = 744d3956ba60c63fed81903700a4cf66c13d2898944e4e86ac0d3b1e3f222fff
