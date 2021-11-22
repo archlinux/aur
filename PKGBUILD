@@ -29,8 +29,8 @@ sha256sums=('SKIP'
             '58807697e95e071a6354f87e8e2fdae9f32af0e08dad1a510a0089845df42184')
 
 pkgver() {
-    cd NBlood
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd $srcdir/NBlood
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
