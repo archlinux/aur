@@ -1,17 +1,18 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: drarig29 <corentingirard.dev@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Denis Meiswinkel <denis.meiswinkel@gmail.com>
 # Contributor: Balló György <ballogyor+arch@gmail.com>
 
 pkgname=dee
 pkgver=1.2.7
-pkgrel=11
+pkgrel=12
 pkgdesc="Model to synchronize multiple instances over DBus"
 arch=("x86_64")
 url="https://launchpad.net/dee"
 license=("LGPL")
 depends=("glib2" "icu")
-makedepends=("gobject-introspection" "python" "vala")
+makedepends=("gobject-introspection" "python" "vala0.52")
 source=("https://launchpad.net/${pkgname}/1.0/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
          dee-1.2.7-gcc6-fixes.patch
          dee-1.2.7-deprecated-g_type_class_add_private.patch
