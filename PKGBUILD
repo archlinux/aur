@@ -5,7 +5,7 @@
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname="closure-compiler"
-pkgver="v20211006"
+pkgver="v20211107"
 pkgrel="1"
 pkgdesc="A JavaScript checker and optimizer"
 url="https://github.com/google/closure-compiler"
@@ -23,7 +23,7 @@ source=(
 noextract=("$pkgname-$pkgver.jar")
 
 sha256sums=(
-    "c3bfa9effd2dc7d34b4983cc7c614dbe951daf18f965b2cb72de7a277b4cb8fa"
+    "733f00f0a1651c9d5409d9162e6f94f0a3e61463628925d3d6ef66be60ec14a6"
     "SKIP"
     "SKIP"
     "3935fadb64cfff482029143a270ba8f952436bd6a6ab0e26151fe0785ce6265d"
