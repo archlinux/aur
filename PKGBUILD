@@ -1,5 +1,5 @@
 pkgname=webcord
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A Discord web-based client made with the Electron API."
 arch=('any')
@@ -20,17 +20,21 @@ source=(
 )
 
 sha512sums=(
-    'ac5bc8a852219b222310bac7a57e332779848f68a3f17623ca105d9ba5afec0407d8b0432b3c6fbcf58cbc8a8527f124420431f15f9aba13c450a529ea716127'
+    '1e80b09ba72b7c69a2f023fbc6c87afae0f2ad81c726b12f1d77d7ba87e9da34c4af9ab49e9bae1cef60f9ea7c479a0092e12ab0d8698c7ebcffc21085bcf46d'
     'bb07c103ef15c2b12d610cfbdedc6b6ff9c3c8b3ec942a9f7cda461e9a906b49a268a9ce6a1fc0eb3783695fc8ecefac04aff4b8052bb17a19101cba340d40f0'
-    '34f0d399cb384d2f132b71b62e2a0620b4b753d8ae76a2f4b3ae022bf59850d77ca54bfebe1b0e229769179e2818f7746aa5f1c39b49b7afa535a3bbcf4f8e00'
+    '454f3d005e77d7f146ff13b8f5c0af8ce9480529b6b9f4ce8541e6e141a8c8a79b700bdf95337e52b8aa7fd7fd3478d16fb274f4d46bf3bb70467d77e909dcdc'
 )
 
-build() {
+prepare() {
     cd "${srcdir}/${_srcname}"
 
     patch -p0 -N -i "${srcdir}/disable-updates-check.patch"
 
     npm i --omit=dev
+}
+
+build() {
+    cd "${srcdir}/${_srcname}"
 
     tsc | true
 }
