@@ -1,21 +1,16 @@
 pkgbase = ykdl
 	pkgdesc = a video downloader focus on China mainland video sites.
-	pkgver = 1.6.3
-	pkgrel = 3
-	url = https://github.com/zhangn1985/ykdl
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/SeaHOH/ykdl
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-m3u8
-	depends = python-pycryptodome
-	depends = python-urllib3
-	depends = python-iso8601
-	optdepends = nodejs: JavaScript runtime for DouyuTV
-	optdepends = gjs: JavaScript runtime for DouyuTV
-	optdepends = cjs: JavaScript runtime for DouyuTV
-	source = ykdl-1.6.3.src.tar.gz::https://github.com/zhangn1985/ykdl/archive/v1.6.3.tar.gz
-	sha256sums = 9fea4248d00bb706dd6cd1371b4b51b27c789fe4daf52008df83f26fc0d304bf
+	optdepends = python-colorama: Color output
+	optdepends = python-urllib3: Support http range
+	source = ykdl-1.7.2.src.tar.gz::https://github.com/SeaHOH/ykdl/archive/v1.7.2.tar.gz
+	sha256sums = 47d2f8cda2fbbc305ef64c0413c973d60d6276e085584a8f642072e0926f3366
 
 pkgname = ykdl
-
