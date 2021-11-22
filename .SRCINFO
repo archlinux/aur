@@ -1,6 +1,6 @@
 pkgbase = python-pyfr
 	pkgdesc = Framework for solving advection-diffusion type problems on streaming architectures
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://github.com/pyfr/pyfr
 	arch = x86_64
@@ -8,24 +8,24 @@ pkgbase = python-pyfr
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python>=3.8
-	depends = python-appdirs>=1.4.0
-	depends = python-gimmik>=2.0
-	depends = python-h5py-openmpi>=2.6
-	depends = python-numpy>=1.20
-	depends = python-pytools>=2016.2.1
-	depends = python-mako>=1.0.0
-	depends = python-mpi4py>=3.0
-	optdepends = metis>=5.0: needed for running PyFR in parallel
-	optdepends = scotch>=6.0: needed for running PyFR in parallel
+	depends = python-appdirs
+	depends = python-gimmik
+	depends = python-h5py-openmpi
+	depends = python-numpy
+	depends = python-pytools
+	depends = python-mako
+	depends = python-mpi4py
+	optdepends = metis: needed for running PyFR in parallel
+	optdepends = scotch: needed for running PyFR in parallel
 	optdepends = python-pymic: needed for Xeon Phi MIC backend
-	optdepends = python-pycuda>=2015.1: needed for CUDA backend
-	optdepends = cuda>=4.2: needed for CUDA backend
+	optdepends = python-pycuda: needed for CUDA backend
+	optdepends = cuda: needed for CUDA backend
 	optdepends = python-pyopencl: needed for OpenCL backend
 	optdepends = clblas: needed for OpenCL backend
 	optdepends = cblas: needed for OpenMP backend
 	optdepends = openblas: alternative blas for OpenMP backend
-	optdepends = cgns>=3.3: for importing CGNS meshes
-	source = python-pyfr::git+https://github.com/pyfr/pyfr#commit=fb710d27b9627a27d4b3946246548414a9d18e4a?signed
+	optdepends = cgns: for importing CGNS meshes
+	source = python-pyfr::git+https://github.com/pyfr/pyfr#commit=b556bf7?signed
 	source = 001-remove-tests.patch
 	validpgpkeys = AEEA6F51A3521732B684C1049E70614148A0FA1F
 	sha256sums = SKIP

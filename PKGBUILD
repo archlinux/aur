@@ -3,8 +3,8 @@
 # Contributor: Masoud <mpoloton@gmail.com>
 
 pkgname=python-pyfr
-pkgver=1.12.2
-_commit=fb710d27b9627a27d4b3946246548414a9d18e4a
+pkgver=1.12.3
+_commit=b556bf7
 pkgrel=1
 pkgdesc="Framework for solving advection-diffusion type problems on streaming architectures"
 arch=('x86_64')
@@ -12,24 +12,24 @@ url='https://github.com/pyfr/pyfr'
 license=('BSD')
 depends=(
 	'python>=3.8'
-	'python-appdirs>=1.4.0'
-	'python-gimmik>=2.0'
-	'python-h5py-openmpi>=2.6'
-	'python-numpy>=1.20'
-	'python-pytools>=2016.2.1'
-	'python-mako>=1.0.0'
-	'python-mpi4py>=3.0')
+	'python-appdirs'
+	'python-gimmik'
+	'python-h5py-openmpi'
+	'python-numpy'
+	'python-pytools'
+	'python-mako'
+	'python-mpi4py')
 optdepends=(
-	'metis>=5.0: needed for running PyFR in parallel'
-	'scotch>=6.0: needed for running PyFR in parallel'
+	'metis: needed for running PyFR in parallel'
+	'scotch: needed for running PyFR in parallel'
 	'python-pymic: needed for Xeon Phi MIC backend'
-	'python-pycuda>=2015.1: needed for CUDA backend'
-	'cuda>=4.2: needed for CUDA backend'
+	'python-pycuda: needed for CUDA backend'
+	'cuda: needed for CUDA backend'
 	'python-pyopencl: needed for OpenCL backend'
 	'clblas: needed for OpenCL backend'
 	'cblas: needed for OpenMP backend'
 	'openblas: alternative blas for OpenMP backend'
-	'cgns>=3.3: for importing CGNS meshes')
+	'cgns: for importing CGNS meshes')
 makedepends=('git' 'python-setuptools')
 source=("$pkgname::git+$url#commit=$_commit?signed"
         '001-remove-tests.patch')
@@ -53,6 +53,6 @@ build() {
 
 package() {
 	cd "$pkgname"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
