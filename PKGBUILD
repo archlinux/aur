@@ -1,13 +1,13 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=man-pages-ldp-ja
-pkgver=3.79
-pkgrel=2
+pkgver=2460a0b
+pkgrel=1
 pkgdesc="Japanese man pages that is distributed by Linux Documentation Project"
 arch=('any')
 url="http://osdn.jp/projects/linuxjm/"
 license=('GPL3' 'custom')
-source=('git+http://scm.osdn.jp/gitroot/linuxjm/LDP_man-pages.git')
-md5sums=('SKIP')
+source=('https://scm.osdn.net/gitroot/linuxjm/LDP_man-pages.git')
+md5sums=('7beaf49b8d5c6036802945169e680d30')
 
 package() {
   install -D -m644 $srcdir/LDP_man-pages/dist/README "${pkgdir}/usr/share/licenses/${pkgname}/README"
