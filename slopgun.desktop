@@ -5,6 +5,6 @@ Keywords=snapshot;capture;screenshot;
 Exec=slopgun
 Terminal=false
 Type=Application
-Icon=org.gnome.Screenshot
+Icon=slopgun
 Categories=Utility;
 Actions=screen-shot;window-shot;
