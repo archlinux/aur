@@ -1,11 +1,11 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Submitter: Spyhawk
+# Credit: Spyhawk
 
 _pkgname=libzypp
 pkgname="${_pkgname}-git"
-pkgver=17.25.0.r8.ga46695f85
+pkgver=17.28.8.r7.gd33716e06
 pkgrel=1
-pkgdesc='Library for package, patch, pattern and product management'
+pkgdesc='ZYpp Package Management library'
 arch=('x86_64')
 url="https://github.com/openSUSE/${_pkgname}"
 license=('GPL')
@@ -29,6 +29,7 @@ makedepends=(
   'gnupg'
   'graphviz'
   'ninja'
+  'protobuf'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -61,10 +62,6 @@ build() {
     -D DISABLE_MEDIABACKEND_TESTS=ON \
 
   cmake --build build
-}
-
-check() {
-  cmake --test build
 }
 
 package() {

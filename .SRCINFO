@@ -1,6 +1,6 @@
 pkgbase = libzypp-git
-	pkgdesc = Library for package, patch, pattern and product management
-	pkgver = 17.25.0.r8.ga46695f85
+	pkgdesc = ZYpp Package Management library
+	pkgver = 17.28.8.r7.gd33716e06
 	pkgrel = 1
 	url = https://github.com/openSUSE/libzypp
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = libzypp-git
 	makedepends = gnupg
 	makedepends = graphviz
 	makedepends = ninja
+	makedepends = protobuf
 	depends = boost-libs
 	depends = gpgme
 	depends = libproxy
@@ -28,4 +29,3 @@ pkgbase = libzypp-git
 	sha256sums = SKIP
 
 pkgname = libzypp-git
-
