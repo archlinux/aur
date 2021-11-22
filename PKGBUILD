@@ -4,15 +4,15 @@
 pkgname=piaware-git
 _gitname=piaware
 pkgver=6.1.r2.g7c9a8d2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
 
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/flightaware/piaware"
 license=('BSD')
 
-depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tcltls>=1.7.12' 'python' 'tcllauncher')
+depends=('dump1090-fa-git>=6.1' 'tcl' 'tcllib' 'tclx' 'tk' 'tcltls>=1.7.12' 'python' 'tcllauncher')
 makedepends=('git' 'autoconf' 'tcl' 'python' 'tcllauncher')
 optdepends=('mlat-client: M-LAT support' 'net-tools')
 
