@@ -1,5 +1,7 @@
 [Desktop Entry]
 Name=Tutanota Desktop
+GenericName=Mail Client
+Keywords=Email;E-mail
 Exec=/opt/tutanota-desktop/tutanota-desktop
 Terminal=false
 Type=Application
