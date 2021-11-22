@@ -1,7 +1,7 @@
 pkgbase = mugshot
 	pkgdesc = Program to update personal user details
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluesabre/mugshot
 	arch = any
 	license = GPLv3
@@ -9,7 +9,6 @@ pkgbase = mugshot
 	makedepends = intltool
 	depends = gtk3
 	depends = python-pexpect
-	depends = python-dbus
 	depends = python-cairo
 	depends = python-gobject
 	depends = accountsservice
@@ -21,4 +20,3 @@ pkgbase = mugshot
 	sha256sums = afab48b119091b70d66689931fe1bec95c761a9da16d3ad070f37c6fb54286f8
 
 pkgname = mugshot
-

@@ -3,12 +3,12 @@
 
 pkgname=mugshot
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to update personal user details"
 arch=('any')
 url="https://github.com/bluesabre/mugshot"
 license=('GPLv3')
-depends=('gtk3' 'python-pexpect' 'python-dbus' 'python-cairo' 'python-gobject' 'accountsservice')
+depends=('gtk3' 'python-pexpect' 'python-cairo' 'python-gobject' 'accountsservice')
 makedepends=('python-distutils-extra' 'intltool')
 optdepends=('cheese: webcam support'
             'pidgin: update buddy icon'
