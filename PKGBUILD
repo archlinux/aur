@@ -6,10 +6,10 @@
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.3.12.1.r0.g6ab340e
-_pandoc_type=commit
+_pandoc_type=version
 _pandoc_ver=2.16.2
-_pandoc_commit=4857cd176946fe6b3df1966963855d84f434831d
-pkgrel=2
+_pandoc_commit=03c1bffab6a87e24cc5074f3c521d3694207f6ea
+pkgrel=3
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL2")
