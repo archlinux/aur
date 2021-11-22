@@ -10,7 +10,7 @@
 
 pkgname=python37
 pkgver=3.7.12
-pkgrel=3
+pkgrel=4
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -28,12 +28,14 @@ source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         dont-make-libpython-readonly.patch
         0002-smaller-pgo-test-suite.patch
         0003-enable-building-with-libmpdec.patch
+        0004-mpdecimal-2.5.1.patch
         )
 sha512sums=('e1a5942908c1d1469c0ab129fb4287d4ba6eb2a030e88fd71c043fe187a1bc86c00878dab29147199617a361a0c60d9e720fe3bc58bc7bc4cc8ec4bb50c7ea2a'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
             '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1'
-            '991540591e2e024d02f2a6f85a98b43ee0e270d223c66572f2d700b32d89c8afa4faa61d45d41998e108c7b1633da20f7f43b37b2d846364431ebdab921dff17')
+            '991540591e2e024d02f2a6f85a98b43ee0e270d223c66572f2d700b32d89c8afa4faa61d45d41998e108c7b1633da20f7f43b37b2d846364431ebdab921dff17'
+            '58f683cbfdc6aa84c03d068c1bc2f1d8d2c17ba4f7b632c14ab1d529d8332e767354266c3815e239427497fff1a42ec2a37739ea312d24cb76a69dcf1c98c0ad')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
 prepare() {
@@ -47,6 +49,10 @@ prepare() {
 
   # Backport https://bugs.python.org/issue41302 to 3.7
   patch -p1 -i ../0003-enable-building-with-libmpdec.patch
+
+  # From Python38 AUR,
+  # https://bugs.python.org/issue41369
+  patch -p1 -i ../0004-mpdecimal-2.5.1.patch
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
