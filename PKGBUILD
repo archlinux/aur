@@ -1,11 +1,11 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git
-pkgver=r105.92a5a32
+pkgver=r107.992c195
 pkgrel=1
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
-url="https://github.com/emersion/kanshi"
+url="https://git.sr.ht/~emersion/kanshi"
 license=('MIT')
 groups=()
 depends=('wayland' 'libvarlink')
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 source=(
-    'kanshi::git+https://github.com/emersion/kanshi.git'
+    'kanshi::git+https://git.sr.ht/~emersion/kanshi'
     'kanshi.service'
 )
 noextract=()
