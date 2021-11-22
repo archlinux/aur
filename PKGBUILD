@@ -1,36 +1,36 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor:	Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=1.2.33
+pkgver=1.2.37
 pkgrel=1
 pkgdesc="Financial data interface library"
 arch=('any')
 url='https://www.akshare.xyz'
 license=('MIT')
 depends=(
-	'python-beautifulsoup4>=4.9.1'
-	'python-lxml>=4.2.1'
-	'python-matplotlib>=3.1.1'
-	'python-numpy>=1.17.2'
-	'python-pandas>=0.25'
-	'python-requests>=2.22.0'
-	'python-urllib3>=1.25.8'
-	'python-pillow>=6.2.1'
-	'python-pinyin>=0.35.0'
-	'python-websocket-client>=0.56.0'
-	'python-html5lib>=1.0.1'
-	'python-tqdm>=4.43.0'
-	'python-xlrd>=1.2.0'
-	'python-openpyxl>=3.0.3'
-	'python-jsonpath-ng>=0.82'
-	'python-tabulate>=0.8.6'
-	'python-decorator>=4.4.2'
-	'python-pyminiracer>=0.6.0')
+	'python-beautifulsoup4'
+	'python-lxml'
+	'python-matplotlib'
+	'python-numpy'
+	'python-pandas'
+	'python-requests'
+	'python-urllib3'
+	'python-pillow'
+	'python-pinyin'
+	'python-websocket-client'
+	'python-html5lib'
+	'python-tqdm'
+	'python-xlrd'
+	'python-openpyxl'
+	'python-jsonpath-ng'
+	'python-tabulate'
+	'python-decorator'
+	'python-pyminiracer')
 makedepends=('python-setuptools')
 changelog=changelog.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jindaxiang/akshare/archive/v$pkgver.tar.gz")
-sha256sums=('b29484872782cc4455736cb6f28918b158dba921637ed43e7ef2461449c60189')
+sha256sums=('d1248e13efdc0f0e027240499e84e3fa2313e4036eaf2a01a8a917f5139bcd40')
 
 prepare() {
 	cd "akshare-$pkgver"

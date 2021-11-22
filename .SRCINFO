@@ -1,31 +1,31 @@
 pkgbase = python-akshare
 	pkgdesc = Financial data interface library
-	pkgver = 1.2.33
+	pkgver = 1.2.37
 	pkgrel = 1
 	url = https://www.akshare.xyz
 	changelog = changelog.md
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-beautifulsoup4>=4.9.1
-	depends = python-lxml>=4.2.1
-	depends = python-matplotlib>=3.1.1
-	depends = python-numpy>=1.17.2
-	depends = python-pandas>=0.25
-	depends = python-requests>=2.22.0
-	depends = python-urllib3>=1.25.8
-	depends = python-pillow>=6.2.1
-	depends = python-pinyin>=0.35.0
-	depends = python-websocket-client>=0.56.0
-	depends = python-html5lib>=1.0.1
-	depends = python-tqdm>=4.43.0
-	depends = python-xlrd>=1.2.0
-	depends = python-openpyxl>=3.0.3
-	depends = python-jsonpath-ng>=0.82
-	depends = python-tabulate>=0.8.6
-	depends = python-decorator>=4.4.2
-	depends = python-pyminiracer>=0.6.0
-	source = python-akshare-1.2.33.tar.gz::https://github.com/jindaxiang/akshare/archive/v1.2.33.tar.gz
-	sha256sums = b29484872782cc4455736cb6f28918b158dba921637ed43e7ef2461449c60189
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-requests
+	depends = python-urllib3
+	depends = python-pillow
+	depends = python-pinyin
+	depends = python-websocket-client
+	depends = python-html5lib
+	depends = python-tqdm
+	depends = python-xlrd
+	depends = python-openpyxl
+	depends = python-jsonpath-ng
+	depends = python-tabulate
+	depends = python-decorator
+	depends = python-pyminiracer
+	source = python-akshare-1.2.37.tar.gz::https://github.com/jindaxiang/akshare/archive/v1.2.37.tar.gz
+	sha256sums = d1248e13efdc0f0e027240499e84e3fa2313e4036eaf2a01a8a917f5139bcd40
 
 pkgname = python-akshare
