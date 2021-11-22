@@ -1,10 +1,11 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: drarig29 <corentingirard.dev@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Timm Preetz <timm@preetz.us>
 
-pkgname=vala0.44
-pkgver=0.44.11
+pkgname=vala0.52
+pkgver=0.52.7
 pkgrel=1
 pkgdesc="Compiler for the GObject type system"
 url="https://wiki.gnome.org/Projects/Vala"
@@ -15,8 +16,8 @@ makedepends=(libxslt vala git help2man autoconf-archive)
 checkdepends=(dbus libx11 gobject-introspection)
 provides=(vala valadoc libvala-${pkgver%.*}.so libvaladoc-${pkgver%.*}.so)
 conflicts=(vala valadoc)
-source=("https://download.gnome.org/sources/vala/0.44/vala-${pkgver}.tar.xz")
-sha256sums=('5af4f487b434f8580c01666c60c8660ba186989fdd891670cc64269cea6e571b')
+source=("https://download.gnome.org/sources/vala/0.52/vala-${pkgver}.tar.xz")
+sha256sums=('0bb5a9b4f6d175499ec0a58024adc035aa5170080f533c28d9c358d1a32c536a')
 
 build() {
   cd "vala-$pkgver"
