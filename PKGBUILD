@@ -3,7 +3,7 @@
 pkgbase='pyazo-cli'
 pkgname=('pyazo-cli')
 _module='pyazo_cli'
-pkgver='0.2.1'
+pkgver='0.3.1'
 pkgrel=1
 pkgdesc="Pyazo screenshot hosting command line interface"
 url="https://github.com/pyazo-screenshot/cli"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('2891ab1ac28d9360016a53b8c8c3538ff6d134589621191358543e6b0bf4e44e')
+sha256sums=('86c8590bd49103ddbab5e42c3f741cf1bb38ddf637afbfc9c0eb8812b5f7bdcb')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
