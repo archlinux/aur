@@ -1,10 +1,13 @@
-eval $(cat PKGBUILD| grep -P '^_pkgname=')
 cd "$(dirname "$0")"
+
+eval $(cat PKGBUILD| grep -P '^_pkgname=')
+eval $(cat PKGBUILD| grep -P '^pkgrel=')
+
 ver="$(curl https://releases.mozilla.org/pub/${_pkgname}/releases/ | sed -rn 's/([^0-9]*)([0-9]*\.[0-9]*?(\.[0-9]*)).*/\2/p' | sort -V | tail -n1)"
 #ver=91.0
 sed -r "s/(pkgver=)(.*)/\1$ver/" -i PKGBUILD
+
 makepkg --printsrcinfo > .SRCINFO
-eval $(cat PKGBUILD| grep pkgrel=)
 ver_msg="autohook $ver"
 git commit -am "$ver_msg"
 git push
