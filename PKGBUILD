@@ -1,11 +1,11 @@
 #!/hint/bash -e
-# Maintainer: Adrien Smith <adrien at bouldersmiths dot com>
+# Maintainer: Adrien Smith <adrien@panissupraomnia.dev>
 # Contributor: Martin Poljak <martin at poljak dot cz>
 # Contributor: Dan Schaper <dschaper at ganymeade dot com>
 
 pkgname=mlat-client-git
-pkgver=0.2.10.r0.g59e3d57
-pkgrel=3
+pkgver=0.2.11.r0.g5dc5bda
+pkgrel=1
 pkgdesc="Mode S multilateration client by Mutability"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mutability/mlat-client"

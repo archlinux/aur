@@ -1,3 +1,11 @@
+mlat-client (0.2.11) stable; urgency=medium
+
+  * Do a sanity check on reported radarcape positions
+  * Adjust UDP datagram size to follow reported route MTU
+  * Make setup.py use env to find python3 interpreter (PR #17)
+
+ -- Oliver Jowett <oliver.jowett@flightaware.com>  Mon, 30 Dec 2019 22:14:59 +0800
+
 mlat-client (0.2.10) stable; urgency=medium
 
   * Fix handling of special (synthetic mlat / zero) message timestamps
