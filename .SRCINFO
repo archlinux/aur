@@ -1,0 +1,14 @@
+pkgbase = python-godirect
+	pkgdesc = Library to interface with GoDirect devices via USB and BLE
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/godirect
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-hidapi
+	depends = python-bleak
+	source = https://files.pythonhosted.org/packages/source/g/godirect/godirect-1.1.2.tar.gz
+	sha256sums = 6f91ab46944857fdb93e9d1444bb6f1b77b8e0d122f551f686a43573dbe9299e
+
+pkgname = python-godirect
