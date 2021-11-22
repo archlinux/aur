@@ -2,7 +2,7 @@
 
 pkgname="lemons"
 pkgver="0.6.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="Output script for lemonbar"
 arch=("any")
 url="https://git.sr.ht/~rycwo/lemons"
