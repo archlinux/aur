@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=homebridge
-pkgver=1.3.6
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="HomeKit support for the impatient"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('npm')
 optdepends=('homebridge-config-ui-x: for web-based management tool')
 options=('!emptydirs' '!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('bf3ce219e1e7ddec2381862451fa391a809ba07a5d2d9bef6e48889f39344347328d11f146fb43e2ab095e7770f77fc79ee6779f342c581ea886ebbc8f51e42b')
-b2sums=('5cf4e63f8a0bd52692eb5048d1e617d1bc3004823224aa9a858ee36062dc6700261782aa64143a33f4ef67afe3ada57f0701bdcc09c587f11b875f45f3b284bf')
+sha512sums=('e209e9dde92c6ff539c3d56568acf5f4ed63b63abe15452f5d67c36db7240839f0c8bea36b71c601c855f535356aff52db0f9cd586959ce7ce7a7388185d8581')
+b2sums=('9fe9019739c5e31113ed818129ab4559ee2871278088c18b6432440e832ae936f5ad1bc6cb6f792865e9a0db8a5b0be965dc71129138f0f00972eea44db8bb97')
 
 build() {
   cd "$pkgname-$pkgver"
