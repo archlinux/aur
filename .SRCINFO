@@ -1,6 +1,6 @@
 pkgbase = typescript-language-server-bin
 	pkgdesc = Language server implementation for JavaScript / TypeScript
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/typescript-language-server
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = typescript-language-server-bin
 	depends = nodejs
 	depends = npm
 	depends = typescript
-	noextract = typescript-language-server-0.7.1.tgz
-	source = https://registry.npmjs.org/typescript-language-server/-/typescript-language-server-0.7.1.tgz
-	sha1sums = bf0b1a97551e4e385b3f97668ce09b5751d27122
+	noextract = typescript-language-server-0.8.0.tgz
+	source = https://registry.npmjs.org/typescript-language-server/-/typescript-language-server-0.8.0.tgz
+	sha1sums = bdb5b2f1d0ba8b97cbcfb29fa52b83cc56945995
 
 pkgname = typescript-language-server-bin
