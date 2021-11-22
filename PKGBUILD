@@ -4,8 +4,8 @@
 
 _pkgname=pstoedit
 pkgname=$_pkgname-emf
-pkgver=3.77
-pkgrel=2
+pkgver=3.78
+pkgrel=1
 pkgdesc="Translates PostScript and PDF graphics into other vector formats, with EMF support"
 arch=('i686' 'x86_64')
 url="http://www.pstoedit.net/"
@@ -16,7 +16,7 @@ options=('!makeflags')
 conflicts=("$_pkgname")
 provides=("$_pkgname=$pkgver")
 source=("${pkgname}-${pkgver}.tar.gz::http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-${pkgver}.tar.gz")
-sha256sums=('9a6c6b02ea91e9f836448ccc5a614caa514a9ba17e94f1d6c0babc72a4395b09')
+sha256sums=('8cc28e34bc7f88d913780f8074e813dd5aaa0ac2056a6b36d4bf004a0e90d801')
 
 build() {
   cd ${_pkgname}-$pkgver
