@@ -4,19 +4,19 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=98
+_microarchitecture=0
 
 ## --- PKGBUILD
 
 ## Major kernel version
 _major=5.10
 ## Minor kernel version
-_minor=77
+_minor=81
 
 pkgbase=linux-multimedia-lts
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Multimedia Optimized (LTS)'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -39,11 +39,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('d3b64edfc1dd7212e62ed733aeeb73d64ffd6d9658d322d44cddf1b41d5b8fc3'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+sha256sums=('a2e1686132c4598c0adfdf52acbf1ab4bb327b2398badef346a0eff849da5adb'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -129,15 +129,6 @@ prepare() {
   scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
   scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
   scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-
-  ### Enable Anbox Andriod Emulation
-  msg2 "Enable Anbox..."
-  scripts/config --enable CONFIG_ASHMEM
-  scripts/config --enable CONFIG_ANDROID_BINDER_IPC_SELFTEST
-  scripts/config --enable CONFIG_ANDROID
-  scripts/config --enable CONFIG_ANDROID_BINDER_IPC
-  scripts/config --enable CONFIG_ANDROID_BINDERFS
-  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
 
   ### Disable Kernel Debugging
   msg2 "Disable Kernel Debugging..."
