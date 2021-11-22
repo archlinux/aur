@@ -7,3 +7,4 @@ Icon=/usr/share/caj2pdf-qt/icon.png
 Exec=/usr/share/caj2pdf-qt/caj2pdf
 Name=CAJ2PDF Qt
 Comment=CAJ 转 PDF 转换器
+Categories=Utility;
