@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+export WINEDEBUG=-all
+
+RO_DATADIR="/usr/share/mental-omega"
+RW_DATADIR="$HOME/.MentalOmega"
+TOP_NODE="/tmp/MentalOmega.unionfs"
+
+mkdir -p $RW_DATADIR $TOP_NODE
+unionfs -o use_ino,nonempty,uid=$UID -ocow "$RW_DATADIR"=RW:"$RO_DATADIR"=RO "$TOP_NODE"
+
+function finish {
+  echo "Cleaning up"
+  sleep 3s
+  umount $TOP_NODE
+}
+trap finish EXIT
+
+export WINEPREFIX="$TOP_NODE/wine"
+export WINEARCH=win32
+wine "$TOP_NODE/MentalOmega335SC/Resources/clientxna.exe"

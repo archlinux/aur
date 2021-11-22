@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Game
+Exec=/usr/bin/mental-omega
+Icon=mental-omega
+Name=Mental Omega
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
