@@ -2,7 +2,7 @@
 # Contributor: Jason Wood <jwood@startmail.com>
 
 pkgname=headlines
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="GTK4 Reddit client"
 arch=('x86_64')
@@ -22,12 +22,13 @@ depends=(
 	'gst-libav'
 	'youtube-dl'
 	'websocketpp'
-	'libadwaita-git'
-	'xdg-utils')
+	'libadwaita'
+	'xdg-utils'
+	'libsecret')
 makedepends=('cmake' 'boost')
 replaces=('gtkeddit')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/Headlines-$pkgver.tar.bz2")
-sha256sums=('7c808a3d45c513d276cbb512ba220af431f9cc18e41774a7191cd129e4e2360f')
+sha256sums=('af5d9232149716169ec97b648f07dae97fc75bdab631b1f5e8f8de592912ad3b')
 
 build() {
 	cmake \
