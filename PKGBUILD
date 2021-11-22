@@ -52,8 +52,6 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # Xft, if you choose no toolkit or Lucid.
                   #
                
-GTK2=             # GTK2 support. Why would you?
-               
 NOCAIRO=          # Disable here. 
                
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
@@ -76,7 +74,7 @@ else
 pkgname="emacs-git"
 fi
 pkgver=29.0.50.152009
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -136,9 +134,6 @@ elif [[ $NOTKIT == "YES" ]]; then
 elif [[ $LUCID == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' );
   makedepends+=( 'xorgproto' );
-elif [[ $GTK2 == "YES" ]]; then
-  depends+=( 'gtk2' 'lcms2' );
-  makedepends+=( 'xorgproto' );
 else
   depends+=( 'gtk3' );
   makedepends+=( 'xorgproto' );
@@ -157,10 +152,10 @@ if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] ; then
 fi
 
 if [[ $XWIDGETS == "YES" ]]; then
-  if [[ $GTK2 == "YES" ]] || [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
+  if [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
     echo "";
     echo "";
-    echo "Xwidgets support *requires* gtk+3!!!";
+    echo "Xwidgets support **requires** GTK+3!!!";
     echo "";
     echo "";
     exit 1;
@@ -240,8 +235,6 @@ elif [[ $NOTKIT == "YES" ]]; then
   _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
-elif [[ $GTK2 == "YES" ]]; then
-  _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
 else
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 fi
