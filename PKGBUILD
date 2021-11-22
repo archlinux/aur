@@ -3,7 +3,7 @@
 
 pkgname=sweet-gtk-theme-dark
 _pkgname=Sweet-Dark
-pkgver=2.0.r42.21ea24f
+pkgver=3.0
 pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 conflicts=('sweet-theme-dark' 'sweet-gtk-theme-dark')
 replaces=('sweet-theme-dark')
 makedepends=('git')
-_commit=21ea24fd7b8fd2a6eaefe548ee540037f7693f09
+_commit=123dd8b452c7f7becbb48cb44365053c99c72c5f
 source=(git+$url.git#commit=$_commit)
 md5sums=('SKIP')
 
