@@ -1,0 +1,11 @@
+pkgbase = graph-bars-font
+	pkgdesc = OTF font with vertical bars for one-line ASCII spectrum analyzers, graphs, etc
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/and3rson/graph-bars-font
+	arch = any
+	license = MIT
+	source = https://github.com/and3rson/graph-bars-font/raw/master/Bars-regular.otf
+	md5sums = 7b24e73bb6a63796ab006c60da57efbb
+
+pkgname = graph-bars-font
