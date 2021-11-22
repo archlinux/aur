@@ -1,7 +1,7 @@
 pkgbase = slopgun
 	pkgdesc = Provide a simple script to use `slop` and `shotgun` together to save screenshots
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = slop
