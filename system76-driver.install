@@ -67,4 +67,7 @@ pre_remove() {
 
 post_remove() {
   /usr/bin/systemctl daemon-reload >/dev/null 2>&1
+
+  # Remove leftover file if present
+  rm /etc/xprofile || true
 }
