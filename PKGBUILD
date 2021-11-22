@@ -8,7 +8,7 @@
 pkgname=mpdscribble-git
 _pkgname=mpdscribble
 pkgver=0.23.r60.gd62d214
-pkgrel=1
+pkgrel=2
 pkgdesc='MPD client which submits track info to {Libre,Last}.fm - master branch'
 url='https://github.com/MusicPlayerDaemon/mpdscribble'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,6 @@ provides=("mpdscribble")
 conflicts=("mpdscribble")
 install=$_pkgname.install
 source=("${_pkgname}::git+${url}.git")
-validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
 sha256sums=('SKIP')
 
 prepare() {
