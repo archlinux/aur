@@ -1,0 +1,26 @@
+pkgbase = rum-bin
+	pkgdesc = Game library management
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://notabug.org/johncena141/rum
+	arch = x86_64
+	license = GPL3
+	depends = webkit2gtk
+	depends = curl
+	depends = wget
+	depends = openssl
+	depends = appmenu-gtk-module
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libvips
+	depends = udev
+	provides = rum
+	replaces = chad-launcher-bin
+	source = rum-0.6.0::https://notabug.org/attachments/fc19d811-cb81-4d18-bf11-5195cbb895b4
+	source = rum.desktop::https://notabug.org/johncena141/rum/raw/v0.6.0/rum.desktop
+	source = rum.svg::https://notabug.org/johncena141/rum/raw/v0.6.0/icon.svg
+	md5sums = dffb62677f8a8780dec099fd7884471b
+	md5sums = cf6b34f87f20f6d7cb9385c2024e359a
+	md5sums = 2026d2262f6f8c02881dcb53c6363064
+
+pkgname = rum-bin
