@@ -1,6 +1,6 @@
 pkgbase = radarr-nightly
 	pkgdesc = Movie download automation for usenet and torrents.
-	pkgver = 4.0.0.5515
+	pkgver = 4.0.0.5519
 	pkgrel = 1
 	url = https://github.com/Radarr/Radarr
 	arch = x86_64
@@ -31,11 +31,11 @@ pkgbase = radarr-nightly
 	sha512sums = 2ef38a061f4438349f7dafe209328fe9de5f44712f16435805e2622050be45a3fffd1838d9fccef2d6aa7603cf05b01280df6fed957b66d2d67ceaeeedcd5f6f
 	sha512sums = c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e
 	sha512sums = 591b6356c9f9cbf05738e13c808ab8cb8f31215315d9af7e7137fb12956aeb2ef424622d83094699ee2bc30d407cf34262371ab23066eb487038e731c25775bc
-	source_x86_64 = Radarr.nightly.4.0.0.5515.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=4.0.0.5515&os=linux&runtime=netcore&arch=x64
-	sha512sums_x86_64 = 5d008d4802d83daa15ad1ce0788add68c5379850ff42e4183c326247e06c1df0cdb436e2a2f452b2826dabf9ff9448b763b8f6a4ed1ca2a173fd3137bdaeaf2b
-	source_aarch64 = Radarr.nightly.4.0.0.5515.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=4.0.0.5515&os=linux&runtime=netcore&arch=arm64
-	sha512sums_aarch64 = fc7e03ebf6b0bd3a33c58d81f0624954dc37c0d7b7022f1690a2f25d82939d87ba021a595c25d1b0bf63857c44288d61131f56330fccdddd7a7e7973a726545f
-	source_armv7h = Radarr.nightly.4.0.0.5515.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=4.0.0.5515&os=linux&runtime=netcore&arch=arm
-	sha512sums_armv7h = de30fa754eeac508af34170cf79f47e8ba5353033fc18e41a97174ca1bb73289fa8dee2a211440875a78e6a5058fc1a54e9d21e6c3f7137b46de1dca4d6fdfbf
+	source_x86_64 = Radarr.nightly.4.0.0.5519.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=4.0.0.5519&os=linux&runtime=netcore&arch=x64
+	sha512sums_x86_64 = 8625e8d4c1fceb779ff2bf851da4cc80a446438e14025c547c565639bdff0c0bf586c807ab05ba4d42d8676eea05dd40b14347805682f8226afb9818f17b8315
+	source_aarch64 = Radarr.nightly.4.0.0.5519.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=4.0.0.5519&os=linux&runtime=netcore&arch=arm64
+	sha512sums_aarch64 = e80ac6dde9eccf2ed1c2c22b2d4d847c0b5a54adcd965b0ad71b6cd3fecc559a13aa3e089bb75dfc93c0652af80a3430959bb2e08894a822d58c7ff8c080fd73
+	source_armv7h = Radarr.nightly.4.0.0.5519.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=4.0.0.5519&os=linux&runtime=netcore&arch=arm
+	sha512sums_armv7h = 785658275ba7609248e9dd6863766d5247ed78059c61b3ecfb88bfa7b418c016ff765930eeb27c4fa6233f0937afe63051e346a16c73b45796a4d889cfad5f4f
 
 pkgname = radarr-nightly
