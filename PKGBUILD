@@ -73,8 +73,8 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=29.0.50.152009
-pkgrel=2
+pkgver=29.0.50.152013
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -82,9 +82,9 @@ license=('GPL3')
 depends_nox=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'gpm')
 depends=("${depends_nox[@]}" 'm17n-lib' 'libotf' 'harfbuzz')
 makedepends=('git')
-provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 #source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
 source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
