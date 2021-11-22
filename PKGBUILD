@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy
 pkgver=4.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.github.io"
@@ -36,6 +36,7 @@ package() {
   cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-  install -Dm644 "appimage/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "appimage/$pkgname.png" -t "$pkgdir/usr/share/pixmaps"
+  install -Dm644 "appimage/$pkgname.appdata.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "appimage/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "appimage/$pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
 }
