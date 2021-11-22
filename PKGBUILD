@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=6.10.r0.g649385e7d47
+pkgver=6.22.r0.g986254d6c17
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -102,6 +102,9 @@ prepare() {
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
+    
+    # fix openldap 2.5+ detection
+    sed 's/-lldap_r/-lldap/' -i wine/configure
 }
 
 pkgver() {
