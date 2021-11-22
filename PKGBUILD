@@ -31,12 +31,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  bazel build :${pkgname%-git}.par
+  bazel build -c opt :${pkgname%-git}.par
 }
 
 check() {
   cd "${srcdir}/${pkgname}"
-  bazel test :all
+  bazel test -c opt :all
 }
 
 package() {
