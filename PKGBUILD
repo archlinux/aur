@@ -2,7 +2,7 @@
 
 _pkgname=zypper
 pkgname=${_pkgname}-git
-pkgver=1.14.41.18.g2d3baa94
+pkgver=1.14.50.9.g7d1549bf
 pkgrel=1
 pkgdesc="World's most powerful command line package manager"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
   'libzypp'
   'perl'
   'procps'
+  'protobuf'
 )
 makedepends=(
   'asciidoc'
@@ -33,10 +34,8 @@ conflicts=(
 source=(
   "${pkgname}::git+https://github.com/openSUSE/${_pkgname}.git"
   'make-ZyppCommon-cmake-module-includable.patch')
-sha256sums=(
-  'SKIP'
-  'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7'
-)
+sha256sums=('SKIP'
+            'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7')
 
 pkgver() {
   cd "${pkgname}"
@@ -59,10 +58,6 @@ build() {
   -D ZYPP_PREFIX=/usr \
 
   cmake --build build
-}
-
-check() {
-  ARGS="-V" cmake --test build
 }
 
 package() {

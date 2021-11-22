@@ -1,6 +1,6 @@
 pkgbase = zypper-git
 	pkgdesc = World's most powerful command line package manager
-	pkgver = 1.14.41.18.g2d3baa94
+	pkgver = 1.14.50.9.g7d1549bf
 	pkgrel = 1
 	url = https://github.com/openSUSE/zypper
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = zypper-git
 	depends = libzypp
 	depends = perl
 	depends = procps
+	depends = protobuf
 	provides = zypper
 	provides = apt
 	conflicts = zypper
@@ -25,4 +26,3 @@ pkgbase = zypper-git
 	sha256sums = f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7
 
 pkgname = zypper-git
-
