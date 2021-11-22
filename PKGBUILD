@@ -1,6 +1,6 @@
 # Maintainer: Magnus Anderson <magnus@iastate.edu>
 pkgname=doasedit
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Allow doas users to edit root-owned files by running an unpriviledged editor"
 arch=('any')
