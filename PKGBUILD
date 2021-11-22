@@ -1,4 +1,4 @@
-# Maintainer: David Wells <dr wells at vt dot edu>
+# Maintainer: David Wells <drwells.aur at fastmail dot com>
 
 pkgname=nanoflann
 pkgver=1.3.2
