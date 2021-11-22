@@ -1,0 +1,24 @@
+pkgbase = fastiv-git
+	pkgdesc = Fast image viewer
+	pkgver = r128.dd2a95b
+	pkgrel = 1
+	url = https://git.janouch.name/p/fastiv
+	arch = i686
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = meson
+	makedepends = pkg-config
+	makedepends = git
+	depends = gtk3
+	depends = pixman
+	depends = libjpeg-turbo
+	optdepends = libraw
+	optdepends = librsvg
+	optdepends = gdk-pixbuf2
+	optdepends = libxcursor
+	provides = fastiv
+	conflicts = fastiv
+	source = git+https://git.janouch.name/p/fastiv.git
+	md5sums = SKIP
+
+pkgname = fastiv-git
