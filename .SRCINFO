@@ -1,0 +1,23 @@
+pkgbase = libretro-dosbox-core
+	pkgdesc = A DOSBox core for use in RetroArch and other libretro frontends
+	pkgver = 4784.f5e1796c
+	pkgrel = 1
+	url = https://github.com/realnc/dosbox-core
+	arch = x86_64
+	arch = aarch64
+	groups = libretro
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = meson
+	depends = libretro-core-info
+	depends = alsa-lib
+	depends = libsndfile
+	depends = sdl
+	depends = sdl_net
+	options = !buildflags
+	source = git+https://github.com/realnc/dosbox-core.git
+	sha256sums = SKIP
+
+pkgname = libretro-dosbox-core
