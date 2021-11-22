@@ -2,8 +2,8 @@
 
 _pkgname=libsolv
 pkgname="${_pkgname}-git"
-pkgver=0.7.15.r0.g1b6c40ba
-pkgrel=2
+pkgver=0.7.20.r15.g0a5690d2
+pkgrel=1
 pkgdesc='Library for solving packages and reading repositories'
 arch=('x86_64')
 url="https://github.com/openSUSE/${_pkgname}"
@@ -82,10 +82,6 @@ build() {
     -DWITH_LIBXML2=OFF \
 
   cmake --build build
-}
-
-check() {
-  ARGS="-V" cmake --test build
 }
 
 package() {

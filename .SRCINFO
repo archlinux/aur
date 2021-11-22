@@ -1,7 +1,7 @@
 pkgbase = libsolv-git
 	pkgdesc = Library for solving packages and reading repositories
-	pkgver = 0.7.15.r0.g1b6c40ba
-	pkgrel = 2
+	pkgver = 0.7.20.r15.g0a5690d2
+	pkgrel = 1
 	url = https://github.com/openSUSE/libsolv
 	arch = x86_64
 	license = BSD
@@ -23,4 +23,3 @@ pkgbase = libsolv-git
 	sha256sums = SKIP
 
 pkgname = libsolv-git
-
