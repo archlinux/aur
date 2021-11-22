@@ -1,7 +1,7 @@
 pkgbase = tmplgen
 	pkgdesc = Basic text template generator
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://git.sr.ht/~rycwo/tmplgen
 	arch = x86_64
 	license = custom:WTFPL

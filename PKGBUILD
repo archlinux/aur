@@ -2,7 +2,7 @@
 
 pkgname=tmplgen
 pkgver="0.1.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="Basic text template generator"
 arch=("x86_64")
 url="https://git.sr.ht/~rycwo/tmplgen"
