@@ -151,7 +151,6 @@ sha256sums=(6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996
 
 
 
-PKGEXT=".pkg.tar"
 
 # extracts a debian package
 # $1: deb file to extract
