@@ -1,0 +1,18 @@
+pkgbase = python2-dateutil
+	pkgdesc = Provides powerful extensions to the standard datetime module
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = https://github.com/dateutil/dateutil
+	arch = any
+	license = BSD
+	license = Apache
+	makedepends = python2-setuptools-scm
+	makedepends = python2-six
+	makedepends = git
+	depends = python2
+	depends = python2-six
+	source = git+https://github.com/dateutil/dateutil.git#commit=6b035517571e63b6a63a493740c5506ec1e5da44?signed
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = SKIP
+
+pkgname = python2-dateutil
