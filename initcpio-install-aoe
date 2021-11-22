@@ -1,0 +1,21 @@
+#!/bin/bash
+
+build() {
+    add_module aoe
+    
+    add_udev_rule '65-aoe.rules'
+
+    add_binary "/usr/bin/aoe-discover" "/bin/aoe-discover"
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook loads the necessary modules for a AoE device.
+Detection will take place at runtime. To minimize the modules
+in the image, add the autodetect hook too.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

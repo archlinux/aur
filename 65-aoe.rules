@@ -1,0 +1,7 @@
+KERNEL!="etherd/*", GOTO "aoe_end"
+
+SUBSYSTEM!="block", GOTO "aoe_end"
+
+IMPORT{builtin}="blkid"
+
+LABEL="aoe_end"

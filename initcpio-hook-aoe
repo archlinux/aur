@@ -1,0 +1,19 @@
+# vim: set ft=sh:
+run_hook() {
+    for i in $(ls /sys/class/net); do
+        echo Bringing up interface $i for AoE
+        ifconfig $i up
+    done
+
+    # Make sure udev has processed all events from adding the NIC
+    # modules before loading aoe
+    udevadm settle --timeout=30
+    echo Loading AoE module
+    modprobe aoe
+    # Wait until aoe device files have been generated.
+    udevadm settle --timeout=30
+    echo Issuing AoE discover
+    aoe-discover
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

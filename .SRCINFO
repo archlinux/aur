@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-aoe-utils
+	pkgdesc = tools for AoE root support in mkinitcpio
+	pkgver = 20211122
+	pkgrel = 1
+	arch = x86_64
+	license = MIT-0
+	source = 65-aoe.rules
+	source = initcpio-install-aoe
+	source = initcpio-hook-aoe
+	md5sums = 12a2d8f0c052d5d4744721880b524d1d
+	md5sums = 20f5f0aaf311f74999c521d4f81f9558
+	md5sums = c230c653f86a4d86fea3bdb1e847ccb7
+
+pkgname = mkinitcpio-aoe-utils
