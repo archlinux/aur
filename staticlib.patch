@@ -170,7 +170,7 @@ diff -ruN AviSynthPlus-3.6.1/plugins/VDubFilter/CMakeLists.txt patched/plugins/V
 +  set_target_properties(${ProjectName}Static PROPERTIES "OUTPUT_NAME" ${PluginName})
 +
 +  # Library dependencies
-+  target_link_libraries(${ProjectName}Static "user32")
++  target_link_libraries(${ProjectName}Static "user32" "ssp")
 +  
 +  # Include directories
 +  target_include_directories(${ProjectName}Static PRIVATE ${AvsCore_SOURCE_DIR})

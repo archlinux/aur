@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-avisynthplus
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='An improved version of the AviSynth frameserver (mingw-w64)'
 arch=('x86_64')
@@ -10,13 +10,15 @@ url='https://avs-plus.net/'
 license=('GPL')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
+#optdepends=('mingw-w64-devil: for ImageSeq plugin')
+#makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-devil' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-wine')
-source=("avisynthplus-${pkgver}.tar.gz"::"https://github.com/AviSynth/AviSynthPlus/archive/v${pkgver}.tar.gz"
-	"mingw.patch"
-	"staticlib.patch")
-sha256sums=('a157648c0535013ec4895b8f03640d74ada43b93ac3d07b91087177f93278a30'
-            'a354b983354c02e42bc7b95fe17dbad99104c74a3ee7e31255069f3919abbb62'
-            'f2e83d6da6e6114455688d33287588889890c08a00fc85559c90c52213ba0535')
+source=("https://github.com/AviSynth/AviSynthPlus/archive/v${pkgver}/avisynthplus-${pkgver}.tar.gz"
+        "mingw.patch"
+        "staticlib.patch")
+sha256sums=('8906d9e46dc90a194413d69b710e3106c0aafddc0c5c62004885d0c3beb79862'
+            'eb5fd290367a4714707ff5c219c0fb6838378c838f7b76ce19ace64d2e1eb460'
+            'a0838ef2cf66b89e8588703dfb1cd33c281dbc73a2d7af260668b958a3a5e304')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
