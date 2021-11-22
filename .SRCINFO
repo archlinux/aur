@@ -1,6 +1,6 @@
 pkgbase = libzypp
 	pkgdesc = ZYpp Package Management library
-	pkgver = 17.27.0
+	pkgver = 17.28.8
 	pkgrel = 1
 	url = https://github.com/openSUSE/libzypp
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = libzypp
 	makedepends = gnupg
 	makedepends = graphviz
 	makedepends = ninja
+	makedepends = protobuf
 	depends = boost-libs
 	depends = gpgme
 	depends = libproxy
@@ -23,7 +24,7 @@ pkgbase = libzypp
 	depends = libsystemd
 	depends = libxml2
 	depends = yaml-cpp
-	source = libzypp-17.27.0::https://github.com/openSUSE/libzypp/archive/17.27.0.tar.gz
-	sha256sums = 1d14db0bb99ad423de6484152526038b7b70f01b83247df445c174fe0d5eeeab
+	source = libzypp-17.28.8::https://github.com/openSUSE/libzypp/archive/17.28.8.tar.gz
+	sha256sums = 1b9a1d3f5d0a8042161181330f47838e13210ac0a862ad3ea19b7e8ae783ae38
 
 pkgname = libzypp
