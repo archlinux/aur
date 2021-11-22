@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-etoile-super
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 11.0.1
+	pkgver = 11.1.0
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v11.0.1/super-ttc-iosevka-etoile-11.0.1.zip
-	source = ttc-iosevka-etoile-super-11.0.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v11.0.1/LICENSE.md
-	sha256sums = 13a6231cb02760f7e72e422e72946df588c11172290b5ea890a29db432b1b55f
+	source = https://github.com/be5invis/Iosevka/releases/download/v11.1.0/super-ttc-iosevka-etoile-11.1.0.zip
+	source = ttc-iosevka-etoile-super-11.1.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v11.1.0/LICENSE.md
+	sha256sums = 9f3d2c7b443e74c4a42f83ef2198cba999fb8a3cc43a7435706521691d7c1507
 	sha256sums = 72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80
 
 pkgname = ttc-iosevka-etoile-super
