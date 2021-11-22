@@ -7,7 +7,7 @@
 pkgname=('qgnomeplatform' 'qgnomeplatform-qt6')
 pkgbase=qgnomeplatform
 _pkgname=QGnomePlatform
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="QPlatformTheme for a better Qt application inclusion in GNOME"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="https://github.com/FedoraQt/QGnomePlatform"
 license=('LGPL2.1')
 makedepends=('cmake' 'gtk3' 'qt5-wayland' 'qt6-wayland' 'adwaita-qt6>=1.4.1' 'adwaita-qt>=1.4.1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/$pkgver.tar.gz")
-sha256sums=('5851671ca9186976738489f54e8084140b5548b3f99e47def9d562c4ad33d44d')
+sha256sums=('d80aa10723805bf67234b8d30a89bce2aee801c5a3c3752b6399b4f921d8bebf')
 
 build() {
 	cd "$srcdir"
