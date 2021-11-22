@@ -2,7 +2,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='https://wiki.ros.org/rviz'
 
 pkgname='ros-noetic-rviz'
-pkgver='1.14.10'
+pkgver='1.14.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD, Creative Commons')
@@ -64,32 +64,24 @@ depends=(
 
 _dir="rviz-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rviz/archive/${pkgver}.tar.gz")
-sha256sums=('37b79f66c6c9eab3fc20747e60a4124b329db3e9314c483481afe82f0fa49b4a')
-
-prepare(){
-    sed -i '11s/14/17/' ./${_dir}/CMakeLists.txt
-}
+sha256sums=('3ef5d401a4ebacee9274cc25bafb267656fe2ee08d983b6d3672cceddeac0427')
 
 build() {
     # Use ROS environment variables.
     source /usr/share/ros-build-tools/clear-ros-env.sh
     [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-    # Create the build directory.
-    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-    cd ${srcdir}/build
-
     # Build the project.
-    cmake ${srcdir}/${_dir} \
+    cmake -B build -S ${_dir} \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
 
-    make
+    make -sC build
 }
 
 package() {
-    cd "${srcdir}/build"
+    cd build
     make DESTDIR="${pkgdir}/" install
 }
