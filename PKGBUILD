@@ -1,4 +1,5 @@
-# Maintainer: Adrien Smith <adrien at bouldersmiths.com>
+#!/hint/bash -e
+# Maintainer: Adrien Smith <adrien@panissupraomnia.dev>
 # Contributor: Alif <alive4ever at live dot com>
 
 pkgname=tmux-bash-completion-git

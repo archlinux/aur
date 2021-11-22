@@ -14,4 +14,3 @@ pkgbase = tmux-bash-completion-git
 	md5sums = SKIP
 
 pkgname = tmux-bash-completion-git
-
