@@ -1,19 +1,18 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Daniel Ehlers <danielehlers@mindeye.net>
 
 _basename=alsa-plugins
 pkgname=(alsa-plugins-git pulseaudio-alsa-git)
-pkgver=1.2.5.r27.g873d962
+pkgver=1.2.5.r29.gda157e9
 pkgrel=1
 epoch=1
 pkgdesc="Additional ALSA plugins"
 arch=(x86_64)
 url="https://www.alsa-project.org"
 license=(LGPL2.1)
-provides=('alsa-plugins=1.2.5')
-conflicts=(alsa-plugins)
 makedepends=(alsa-lib dbus jack libavtp libpulse libsamplerate speexdsp ffmpeg)
 source=(git+https://github.com/alsa-project/alsa-plugins.git
         pulse-sysdefault.diff)
@@ -51,6 +50,8 @@ build() {
 }
 
 package_alsa-plugins-git() {
+  provides=('alsa-plugins=1.2.5')
+  conflicts=(alsa-plugins)
   depends=(glibc libasound.so)
   optdepends=('dbus: for maemo plugin'
               'jack: for pcm_jack plugin'
@@ -75,6 +76,8 @@ package_alsa-plugins-git() {
 }
 
 package_pulseaudio-alsa-git() {
+  provides=('pulseaudio-alsa')
+  conflicts=(pulseaudio-alsa)
   pkgdesc="ALSA Configuration for PulseAudio"
   depends=('alsa-plugins>=1.2.2-2' pulseaudio)
 

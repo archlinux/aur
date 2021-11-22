@@ -1,6 +1,6 @@
 pkgbase = alsa-plugins-git
 	pkgdesc = Additional ALSA plugins
-	pkgver = 1.2.5.r27.g873d962
+	pkgver = 1.2.5.r29.gda157e9
 	pkgrel = 1
 	epoch = 1
 	url = https://www.alsa-project.org
@@ -14,8 +14,6 @@ pkgbase = alsa-plugins-git
 	makedepends = libsamplerate
 	makedepends = speexdsp
 	makedepends = ffmpeg
-	provides = alsa-plugins=1.2.5
-	conflicts = alsa-plugins
 	source = git+https://github.com/alsa-project/alsa-plugins.git
 	source = pulse-sysdefault.diff
 	sha512sums = SKIP
@@ -33,8 +31,12 @@ pkgname = alsa-plugins-git
 	optdepends = libpulse: for conf_pulse, ctl_pulse and pcm_pulse plugins
 	optdepends = speexdsp: for pcm_speex and rate_speexrate plugins
 	optdepends = ffmpeg: for pcm_a52 plugin
+	provides = alsa-plugins=1.2.5
+	conflicts = alsa-plugins
 
 pkgname = pulseaudio-alsa-git
 	pkgdesc = ALSA Configuration for PulseAudio
 	depends = alsa-plugins>=1.2.2-2
 	depends = pulseaudio
+	provides = pulseaudio-alsa
+	conflicts = pulseaudio-alsa
