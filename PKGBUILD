@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=bit-babbler
-pkgver=0.8
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc='Read entropy from BitBabbler hardware RNG devices'
 arch=('i686' 'x86_64')
 url='http://www.bitbabbler.org'
@@ -12,7 +12,7 @@ optdepends=('munin: monitoring support')
 source=("${url}/downloads/${pkgname}_${pkgver}.tar.gz"
         "${url}/downloads/${pkgname}_${pkgver}.tar.gz.asc")
 install="${pkgname}.install"
-sha256sums=('ef360a921b54979cfe4bd842b48e411eb0340dc323b7b2d99078ef28e7de0c09'
+sha256sums=('d85eb56288f71587313f25066342784e2c8eb70cc2a1945772bd0fe596b4c0c0'
             'SKIP')
 validpgpkeys=('8EAF735424339DDDFE835628125831AE66E70556') # BitBabbler Support <support@bitbabbler.org>
 
@@ -27,7 +27,4 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make install DESTDIR="${pkgdir}"
-  mv "${pkgdir}"/lib "${pkgdir}"/usr/lib
-  install -Dm644 debian/bit-babbler-sysctl.conf "${pkgdir}"/etc/sysctl.d/bit-babbler-sysctl.conf
-  install -Dm644 debian/bit-babbler.udev "${pkgdir}"/usr/lib/udev/rules.d/60-bit-babbler.rules
 }
