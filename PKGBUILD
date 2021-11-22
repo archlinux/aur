@@ -2,13 +2,13 @@
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=dialect
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://apps.gnome.org/app/com.github.gi_lom.dialect"
 license=('GPL3')
-depends=('gst-python' 'gtk3' 'libhandy' 'python-gobject' 'python-googletrans'
-         'python-gtts' 'python-httpx' )
+depends=('gst-python' 'gtk3' 'libhandy' 'python-gobject' 'python-googletrans<4.0.0rc1'
+         'python-gtts' 'python-httpx>=0.17.1')
 makedepends=('git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
 conflicts=('gnabel')
