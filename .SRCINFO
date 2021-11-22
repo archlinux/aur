@@ -1,0 +1,22 @@
+pkgbase = rtlsdr-scanner-py3
+	pkgdesc = Python frequency scanning GUI for the OsmoSDR rtl-sdr library
+	pkgver = 1014.07d377b
+	pkgrel = 1
+	url = https://github.com/EarToEarOak/RTLSDR-Scanner
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = rtl-sdr
+	depends = python
+	depends = python-pyrtlsdr-git
+	depends = wxpython
+	depends = python-pyserial
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-matplotlib
+	optdepends = python-visvis: better and faster real-time plotting
+	source = rtlsdr-scanner-py3::git+https://github.com/EarToEarOak/RTLSDR-Scanner#commit=07d377b037696a75a74b057b58b78a32c6050d48
+	sha512sums = SKIP
+
+pkgname = rtlsdr-scanner-py3
