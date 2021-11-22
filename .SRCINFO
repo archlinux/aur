@@ -11,9 +11,10 @@ pkgbase = scannerextract
 	source = scannerextract-0.2.601::https://iweb.dl.sourceforge.net/project/scannedimageextractor/Version-0.2.601/SIE-0.2.601.tar.bz2
 	source = remove-q-foreachcontainer.patch
 	source = opencv4-compatibility.diff
+	source = buttons.patch
 	sha256sums = f2473afef1e0cf972a60eec323fc323739aa9e0e8bb14dab639a787cec007dd8
 	sha256sums = 9e0ebc65810700e0f52225c883035166b18ff7ab0bb51c8b400180e1d7dc7029
 	sha256sums = 3aa982455592b9147d89e07b755c299b2b9c672120e9ea375129f39af5ea9773
+	sha256sums = 0061e5a68e1512883157af72d80eca5a2127b8033adcf70ffc6b0574c9ab9b29
 
 pkgname = scannerextract
-

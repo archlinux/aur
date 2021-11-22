@@ -1,0 +1,20 @@
+--- src/scannerExtract-0.2.601/scannerExtract/mainwindow.cpp	2021-11-22 02:06:21.791498551 +0100
++++ button/scannerExtract-0.2.601/scannerExtract/mainwindow.cpp	2021-11-22 02:06:35.971556424 +0100
+@@ -774,7 +774,7 @@
+     {
+         QObject* item = i.next();
+         QRadioButton* b = dynamic_cast<QRadioButton*>( item );
+-        if (b > 0 && b->isChecked()) {
++        if (b->isChecked()) {
+             b->setAutoExclusive(false);
+             b->setChecked(false);
+             b->setAutoExclusive(true);
+@@ -788,7 +788,7 @@
+     while (i.hasNext())
+     {
+         QRadioButton* b = dynamic_cast<QRadioButton*>( i.next());
+-        if (b > 0 && b->isChecked()) {
++        if (b->isChecked()) {
+             b->setAutoExclusive(false);
+             b->setChecked(false);
+             b->setAutoExclusive(true);
