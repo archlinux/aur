@@ -1,0 +1,20 @@
+pkgbase = sameboy-dx-git
+	pkgdesc = A Qt-based interface of SameBoy, a free Game Boy and Game Boy Color emulator (git build)
+	pkgver = 0.1.0.r265.caf23e8+r1667.02f55d12
+	pkgrel = 1
+	url = https://github.com/SnowyMouse/sameboy-dx
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = python
+	depends = qt6-base
+	provides = sameboy-dx
+	conflicts = sameboy-dx
+	source = git+https://github.com/SnowyMouse/sameboy-dx.git
+	source = git+https://github.com/LIJI32/SameBoy.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sameboy-dx-git
