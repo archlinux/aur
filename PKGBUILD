@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=94.0
-pkgrel=1
+pkgver=94.0.2
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -26,19 +26,19 @@ backup=('usr/lib/librewolf/librewolf.cfg'
 options=(!emptydirs !makeflags !strip)
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='3.0'
+_settings_tag='3.2'
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}"
-        "0001-Use-remoting-name-for-GDK-application-names.patch::${_arch_git}/0001-Use-remoting-name-for-GDK-application-names.patch")
+        "0002-Bug-1735905-Upgrade-cubeb-pulse-to-fix-a-race-condit.patch::${_arch_git}/0002-Bug-1735905-Upgrade-cubeb-pulse-to-fix-a-race-condit.patch")
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('b7bb8c5fcc74a74e9d2b55d1e9415b891305fe86520fb854cec25024d7e5de67'
+sha256sums=('899ba1c806549034793d7e8ca53f4c845d783c810338f314f3d653d39649e575'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP'
-            '51cca2cab0fa9798f96b81ed24c238b2a7c98524f589ec500224bac9797b66fb')
+            '744d3956ba60c63fed81903700a4cf66c13d2898944e4e86ac0d3b1e3f222fff')
 sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
@@ -71,7 +71,7 @@ ac_add_options --with-distribution-id=io.gitlab.${pkgname}-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+# export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -120,9 +120,15 @@ ac_add_options --enable-optimize
 END
 fi
 
-  # upstream Arch fix
+  # upstream Arch fixes
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-  patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
+  # patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # https://bugzilla.opensuse.org/show_bug.cgi?id=1192067
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1735905
+  patch -Np1 -i ../0002-Bug-1735905-Upgrade-cubeb-pulse-to-fix-a-race-condit.patch
+
+  # LibreWolf
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
