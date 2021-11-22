@@ -1,10 +1,11 @@
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=markdownlint-cli
-_npmver=0.29.0
+_npmver=0.30.0
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
-pkgrel=2
+pkgrel=1
 pkgdesc="MarkdownLint Command Line Interface"
 arch=('any')
 url="https://github.com/igorshubovych/markdownlint-cli"
@@ -36,4 +37,4 @@ package() {
   # Install license
   install -Dm644 "${srcdir}"/package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('4845d1513d6b8bdb1757cc502bcf2f8c60209b3d97f6bc441b6b5774364c963cd6f1efbe2cd4cef73cc1052b71dc9416ad30e81933c736b72eadbba2c85f7b83')
+sha512sums=('3621bc884463c2c459b49008c8b3037582f63b76c9567ddf531cc397ee88bfad7f618cfd1fd3738247bfbf4fdc5bd1df1af8191e16df235f4b14ca7a81b29dcb')
