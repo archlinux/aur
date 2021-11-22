@@ -90,9 +90,9 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.15.3-xanmod1
-#pkgver=${xanmod//-/.}
-pkgver=5.15.4.prexan0
+xanmod=5.15.4-xanmod1
+pkgver=${xanmod//-/.}
+#pkgver=5.15.4.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -121,7 +121,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.3-4.xz"
+        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.3-4.xz"
         #"Linux-5.15.4-rc1.patch"
 
         # Arch: misc hotfixes
@@ -130,10 +130,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch"
         "iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
 
-        # amd-pstate v3 included in Xanmod
-        "revert-amd-pstate-v3.patch"
-        "squashed-amd-pstate-v4-for-5.15.patch"
-
+        # amd-pstate v4 included in Xanmod
         # multigenerational lru v5 included in Xanmod
         # 5.17 TCP Optimizations included in Xanmod
 
@@ -184,16 +181,13 @@ validpgpkeys=(
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '09e1cd0e200d0661978afb581fe42fd18058fa96cf99f98481b3cc5bb3061494'
+            'de79c72c7ae45d81b603d112cea8c74ae050185e81708ea1fa36d4c6fdc40a77'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            '78d8462cf8e3ec4036eeadf2081d367cae272bdb7f173c12852676a745aee9db'
             'ce50ee3c64f6865234f6ec79fcbd87704494b0fbb7d3cc124f97244c731f9e61'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
             '2651439720a03a83ce127d58fadb15f7f64f092c7f8224dcb63f5b34e5b7ffa1'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
-            '12d78853f582ccf8027dbd2cbc27b0fcde106202958c6be31054815bae7752ae'
-            '8592fc434cc7d52b0fefe478de19d0af3d7e06406d8d09bd1bc85e6805738e68'
             'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
