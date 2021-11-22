@@ -1,7 +1,7 @@
 pkgbase = qmk-git
 	pkgdesc = CLI tool for customizing supported mechanical keyboards.
-	pkgver = 1.0.0.r0.g710dc3e
-	pkgrel = 5
+	pkgver = 1.0.0.r2.gbb1a9e4
+	pkgrel = 1
 	url = https://github.com/qmk/qmk_cli
 	arch = any
 	license = MIT
@@ -37,6 +37,6 @@ pkgbase = qmk-git
 	source = git+https://github.com/qmk/qmk_cli.git
 	source = 50-qmk.rules_master::https://raw.githubusercontent.com/qmk/qmk_firmware/master/util/udev/50-qmk.rules
 	sha256sums = SKIP
-	sha256sums = 8fede515a21d808ac25844db77e13f517e035121471001fc7b7f84273d48c4b1
+	sha256sums = 4692f4f31fabfe28b0c4fd05edaec941487dc9cc6bfd62c34958a5e72ff9404f
 
 pkgname = qmk-git
