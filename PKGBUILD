@@ -44,6 +44,9 @@ prepare() {
   patch -p1 -i ../vtk9.patch
   #curl https://raw.githubusercontent.com/archlinux/svntogit-community/packages/opencascade/trunk/vtk9.patch | patch -p1
 
+  # fix for trying to write into the system during build
+  sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
+
   # fix for None type build
   sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
 }
@@ -53,11 +56,14 @@ build() {
   # prevents the build from trying to write into the system
   export DESTDIR="${srcdir}/garbage"
   rm -rf "${DESTDIR}"
+
+  _install_prefix="/opt/opencascade-cadquery/usr"
+  #_install_prefix="/usr"
   
   cmake -B build_dir -S . -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=None \
-    -D CMAKE_INSTALL_PREFIX="/opt/opencascade-cadquery" \
-    -D INSTALL_DIR_CMAKE="/opt/opencascade-cadquery/lib/cmake/opencascade" \
+    -D CMAKE_INSTALL_PREFIX="${_install_prefix}" \
+    -D INSTALL_DIR_CMAKE="${_install_prefix}/lib/cmake/opencascade" \
     -D INSTALL_TEST_CASES=OFF \
     -D BUILD_WITH_DEBUG=OFF \
     -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
