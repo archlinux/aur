@@ -2,12 +2,13 @@
 
 pkgname=k9copy
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A small utility to copy DVD"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/k9copy-reloaded/"
+url="http://sourceforge.net/projects/k9copy-reloaded/"              
 license=('GPL')
-depends=('kdesu' 'hicolor-icon-theme' 'kio' 'libmpeg2' 'xine-lib' 'dvd+rw-tools' 'dvdauthor' 'libdvdnav' 'kdelibs4support')
+depends=('kdesu' 'hicolor-icon-theme' 'kio' 'libmpeg2' 'xine-lib' 'dvd+rw-tools'
+         'dvdauthor' 'libdvdnav' 'kdelibs4support' 'phonon-qt5')
 optdepends=('libdvdcss: for decoding encrypted DVDs')
 makedepends=('cmake' 'extra-cmake-modules' 'kdoctools')
 provides=('k9copy-reloaded')
