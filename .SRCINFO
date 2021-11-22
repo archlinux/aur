@@ -1,11 +1,15 @@
 pkgbase = debugedit
 	pkgdesc = Tool to mangle source locations in .debug files
-	pkgver = 4.14.2
+	pkgver = 5.0
 	pkgrel = 1
-	url = http://www.rpm.org/
+	url = https://sourceware.org/debugedit/
 	arch = x86_64
-	license = GPL
-	depends = rpm-org
+	license = LGPL2.1
+	makedepends = autoconf
+	makedepends = make
+	depends = libelf
+	depends = glibc
+	source = https://sourceware.org/ftp/debugedit/5.0/debugedit-5.0.tar.xz
+	sha512sums = 7e7f529eafe41b53f0b5bfc58282fdbfa0dfa93ed7908b70e81942d6d2b6f80fc9c6bff2ed9674fd98947e5750b615f4c8b222544989e2900c5f8ff5ae0efb92
 
 pkgname = debugedit
-
