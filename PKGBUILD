@@ -7,13 +7,14 @@
 
 pkgname=namcap-git
 pkgver=3.2.10.r6.ge68dc85
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pacman package analyzer"
 arch=('any')
 url="https://gitlab.archlinux.org/pacman/namcap"
 license=('GPL')
 depends=('pyalpm' 'licenses' 'binutils' 'python-pyelftools')
 makedepends=('git' 'python-setuptools')
+checkdepends=('systemd')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
