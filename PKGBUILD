@@ -1,37 +1,35 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
-# Keep an eye on https://github.com/archlinux/svntogit-community/commits/packages/mpv/trunk for changes
+# Contributor: Christian Hesse <mail@eworm.de>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Eivind Uggedal <eivind@uggedal.com>
 
 _pkgname=mpv
 pkgname=${_pkgname}-light-pulse
-pkgver=0.33.0
+epoch=1
+_tag='79b4060a573e83ae42d51d995bca1ccf80690997' # git rev-parse v${pkgver}
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Free, open source, and cross-platform media player – with selection of features (pulse, dvd and cd support)."
 arch=(i686 x86_64)
+# We link against libraries that are licensed GPLv3 explicitly, so our
+# package is GPLv3 only as well. (Is this still correct?)
+license=('GPL3')
 url="https://mpv.io"
-license=(GPL)
 depends=(libcdio-paranoia libdvdnav ffmpeg libxkbcommon libxrandr libxss lua52 uchardet libxinerama vulkan-icd-loader shaderc libplacebo libpulse)
 makedepends=(git python-docutils wayland-protocols wayland vulkan-headers waf)
-optdepends=('youtube-dl: for video-sharing websites playback')
+optdepends=('yt-dlp: for video-sharing websites playback'
+            'youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_tag='d5ae9f70ea1f21c1d3794df5345a6a9366188660' # git rev-parse v${pkgver}
-source=(git+https://github.com/mpv-player/mpv.git#tag=${_tag})
+provides=('libmpv.so')
+validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
+source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed")
 sha256sums=(SKIP)
-
-prepare() {
-	cd ${_pkgname}
-
-  # vo_gpu: placebo: update for upstream API changes
-  git cherry-pick -n 7c4465cefb27d4e0d07535d368febdf77b579566
-}
 
 build() {
   cd ${_pkgname}
 
   waf configure --prefix=/usr \
     --confdir=/etc/mpv \
-    --lua=52arch \
     --enable-cdda \
     --enable-dvdnav \
     --enable-libmpv-shared \
@@ -42,6 +40,7 @@ build() {
     --disable-jack \
     --disable-opensles \
     --disable-xv \
+    --disable-build-date \
     --disable-caca
 
   waf build
@@ -52,5 +51,10 @@ package() {
 
   waf install --destdir="${pkgdir}"
 
-  install -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}"/usr/share/doc/mpv
+  install -m0644 DOCS/{encoding.rst,tech-overview.txt} \
+    "$pkgdir"/usr/share/doc/mpv
+
+  install -m0644 TOOLS/lua/* \
+    -D -t "$pkgdir"/usr/share/mpv/scripts
 }
+# vim:set ts=2 sw=2 et:
