@@ -2,7 +2,7 @@
 pkgname=ytdownloader
 wsp=YtDownloader
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GKT3 frontend for yt-dlp (the active branch of youtube-dl) with focus on best audio and video. Uses ffmpeg for joining audio & video"
 url="https://github.com/kanehekili/YoutubeDownloader"
 license=('GPL2' 'MIT')
@@ -18,7 +18,6 @@ package(){
   mkdir -p "${pkgdir}/usr/bin"
   rm $srcdir/$wsp/install.sh
   rm $srcdir/$wsp/uninstall.sh
-  rm $srcdir/$wsp/installYoutube-dl.sh
   cp $srcdir/$wsp/YtGui.desktop $pkgdir/usr/share/applications
   cp -r $srcdir/$wsp/* $pkgdir/opt/$pkgname
   if !  test -f "/usr/local/bin/yt-dlp"; then
