@@ -8,6 +8,7 @@ pkgbase = webcord
 	makedepends = npm>=7
 	makedepends = typescript>=4.3.4
 	makedepends = typescript<5
+	makedepends = git
 	depends = electron>=15.1.0
 	depends = electron<16
 	provides = webcord=2.1.2

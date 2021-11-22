@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
 license=('MIT')
 depends=('electron>=15.1.0' 'electron<16')
-makedepends=('npm>=7' 'typescript>=4.3.4' 'typescript<5')
+makedepends=('npm>=7' 'typescript>=4.3.4' 'typescript<5' 'git')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 options=('!strip' '!emptydirs')
