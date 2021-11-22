@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tasker-permissions-git
-pkgver=0.1.0.r1.g8aef028
-pkgrel=2
+pkgver=0.1.0.r3.gc36e36c
+pkgrel=1
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
@@ -26,22 +26,23 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   electronDist=/usr/lib/electron
   electronVer=$(sed s/^v// /usr/lib/electron/version)
-  npm install --cache "$srcdir/npm-cache"
+  export npm_config_cache="$srcdir/npm_cache"
+  npm install
   ./node_modules/.bin/electron-builder build --dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -d "$pkgdir/usr/lib/${pkgname%-git}"
-  cp -r dist/linux-unpacked/resources "$pkgdir/usr/lib/${pkgname%-git}"
+  install -d "$pkgdir/usr/lib/${pkgname%-git}/"
+  cp -r dist/linux-unpacked/resources/ "$pkgdir/usr/lib/${pkgname%-git}/"
 
   # Use system ADB
-  install -d "$pkgdir/usr/lib/${pkgname%-git}/bin/linux"
-  ln -s /usr/bin/adb "$pkgdir/usr/lib/${pkgname%-git}/bin/linux"
+  install -d "$pkgdir/usr/lib/${pkgname%-git}/bin/linux/"
+  ln -s /usr/bin/adb "$pkgdir/usr/lib/${pkgname%-git}/bin/linux/"
 
   install -Dm644 adbpermissions.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
 }
