@@ -1,130 +1,76 @@
 diff -rudp thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-editor.c thunar-4.16.10/plugins/thunar-uca/thunar-uca-editor.c
---- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-editor.c	2021-10-16 13:53:35.000000000 -0400
-+++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-editor.c	2021-10-16 16:52:44.000000000 -0400
-@@ -69,12 +69,16 @@ struct _ThunarUcaEditor
+--- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-editor.c	2021-11-22 15:28:58.000000000 +0000
++++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-editor.c	2021-11-22 16:49:05.000000000 +0000
+@@ -69,6 +69,7 @@ struct _ThunarUcaEditor
    GtkWidget   *shortcut_button;
    GtkWidget   *sn_button;
    GtkWidget   *patterns_entry;
-+  GtkWidget   *upper_button;
-+  GtkWidget   *lower_button;
++  GtkWidget   *range_entry;
    GtkWidget   *directories_button;
    GtkWidget   *audio_files_button;
    GtkWidget   *image_files_button;
-   GtkWidget   *text_files_button;
-   GtkWidget   *video_files_button;
-   GtkWidget   *other_files_button;
-+  GtkAdjustment *upper_adjustment;
-+  GtkAdjustment *lower_adjustment;
- 
-   gchar           *accel_path;
-   GdkModifierType  accel_mods;
-@@ -116,6 +120,8 @@ thunar_uca_editor_class_init (ThunarUcaE
+@@ -116,6 +117,7 @@ thunar_uca_editor_class_init (ThunarUcaE
    gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, shortcut_button);
    gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, sn_button);
    gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, patterns_entry);
-+  gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, upper_button);
-+  gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, lower_button);
++  gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, range_entry);
    gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, directories_button);
    gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, audio_files_button);
    gtk_widget_class_bind_template_child (widget_class, ThunarUcaEditor, image_files_button);
-@@ -570,6 +576,8 @@ thunar_uca_editor_load (ThunarUcaEditor
+@@ -570,6 +572,7 @@ thunar_uca_editor_load (ThunarUcaEditor
    ThunarUcaTypes types;
    gchar         *description;
    gchar         *patterns;
-+  gchar         *upper;
-+  gchar         *lower;
++  gchar         *range;
    gchar         *command;
    gchar         *icon_name;
    gchar         *name;
-@@ -585,6 +593,8 @@ thunar_uca_editor_load (ThunarUcaEditor
-   /* determine the current values from the model */
+@@ -586,6 +589,7 @@ thunar_uca_editor_load (ThunarUcaEditor
    gtk_tree_model_get (GTK_TREE_MODEL (uca_model), iter,
                        THUNAR_UCA_MODEL_COLUMN_DESCRIPTION, &description,
-+                      THUNAR_UCA_MODEL_COLUMN_UPPER, &upper,
-+                      THUNAR_UCA_MODEL_COLUMN_LOWER, &lower,
                        THUNAR_UCA_MODEL_COLUMN_PATTERNS, &patterns,
++                      THUNAR_UCA_MODEL_COLUMN_RANGE, &range,
                        THUNAR_UCA_MODEL_COLUMN_COMMAND, &command,
                        THUNAR_UCA_MODEL_COLUMN_TYPES, &types,
-@@ -614,11 +624,15 @@ thunar_uca_editor_load (ThunarUcaEditor
+                       THUNAR_UCA_MODEL_COLUMN_ICON_NAME, &icon_name,
+@@ -614,11 +618,13 @@ thunar_uca_editor_load (ThunarUcaEditor
    gtk_entry_set_text (GTK_ENTRY (uca_editor->patterns_entry), (patterns != NULL) ? patterns : "");
    gtk_entry_set_text (GTK_ENTRY (uca_editor->command_entry), (command != NULL) ? command : "");
    gtk_entry_set_text (GTK_ENTRY (uca_editor->name_entry), (name != NULL) ? name : "");
-+  gtk_spin_button_set_value (GTK_SPIN_BUTTON (uca_editor->upper_button), (upper != NULL) ? g_strtod (upper, NULL) : -1.0);
-+  gtk_spin_button_set_value (GTK_SPIN_BUTTON (uca_editor->lower_button), (lower != NULL) ? g_strtod (lower, NULL) : -1.0);
++  gtk_entry_set_text (GTK_ENTRY (uca_editor->range_entry), (range != NULL) ? range : "");
    gtk_button_set_label (GTK_BUTTON (uca_editor->shortcut_button), (accel_label != NULL) ? accel_label : _("None"));
    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (uca_editor->sn_button), startup_notify);
  
    /* cleanup */
    g_free (description);
-+  g_free (upper);
-+  g_free (lower);
++  g_free (range);
    g_free (patterns);
    g_free (command);
    g_free (icon_name);
-@@ -644,12 +658,17 @@ thunar_uca_editor_save (ThunarUcaEditor
-                         GtkTreeIter     *iter)
- {
-   gchar         *unique_id;
-+  gchar         *upper_string;
-+  gchar         *lower_string;
-   GtkAccelKey    key;
- 
-   g_return_if_fail (THUNAR_UCA_IS_EDITOR (uca_editor));
-   g_return_if_fail (THUNAR_UCA_IS_MODEL (uca_model));
-   g_return_if_fail (iter != NULL);
- 
-+  upper_string = g_strdup_printf ("%d", gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (uca_editor->upper_button)));
-+  lower_string = g_strdup_printf ("%d", gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (uca_editor->lower_button)));
-+
-   gtk_tree_model_get (GTK_TREE_MODEL (uca_model), iter,
-                       THUNAR_UCA_MODEL_COLUMN_UNIQUE_ID, &unique_id,
-                       -1);
-@@ -666,6 +685,8 @@ thunar_uca_editor_save (ThunarUcaEditor
+@@ -666,6 +672,7 @@ thunar_uca_editor_save (ThunarUcaEditor
                             gtk_entry_get_text (GTK_ENTRY (uca_editor->command_entry)),
                             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (uca_editor->sn_button)),
                             gtk_entry_get_text (GTK_ENTRY (uca_editor->patterns_entry)),
-+                           upper_string,
-+                           lower_string,
++                           gtk_entry_get_text (GTK_ENTRY (uca_editor->range_entry)),
                             thunar_uca_editor_get_types (uca_editor),
                             uca_editor->accel_key,
                             uca_editor->accel_mods);
 diff -rudp thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-editor.ui thunar-4.16.10/plugins/thunar-uca/thunar-uca-editor.ui
---- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-editor.ui	2021-10-16 13:53:35.000000000 -0400
-+++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-editor.ui	2021-10-16 16:58:17.000000000 -0400
-@@ -17,6 +17,20 @@
-     <child>
-       <placeholder/>
-     </child>
-+    <object class="GtkAdjustment" id="upper_adjustment">
-+      <property name="lower">-1</property>
-+      <property name="upper">9999</property>
-+      <property name="value">-1</property>
-+      <property name="step_increment">1</property>
-+      <property name="page_increment">1</property>
-+    </object>
-+    <object class="GtkAdjustment" id="lower_adjustment">
-+      <property name="lower">-1</property>
-+      <property name="upper">9999</property>
-+      <property name="value">-1</property>
-+      <property name="step_increment">1</property>
-+      <property name="page_increment">1</property>
-+    </object>
-     <child internal-child="vbox">
-       <object class="GtkBox" id="vbox">
-         <property name="can_focus">False</property>
-@@ -593,6 +607,68 @@
+--- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-editor.ui	2021-11-22 15:28:58.000000000 +0000
++++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-editor.ui	2021-11-22 18:08:09.000000000 +0000
+@@ -593,6 +593,37 @@
                    </packing>
                  </child>
                  <child>
 +                  <object class="GtkLabel" id="label98">
 +                    <property name="visible">True</property>
 +                    <property name="can_focus">False</property>
-+                    <property name="label" translatable="no">_Upper (max) number of files:</property>
++                    <property name="label" translatable="no">_Range (min-max):</property>
 +                    <property name="use_underline">True</property>
-+                    <property name="mnemonic_widget">upper_button</property>
++                    <property name="mnemonic_widget">range_entry</property>
 +                    <property name="xalign">0</property>
 +                    <accessibility>
-+                      <relation type="label-for" target="upper_button"/>
++                      <relation type="label-for" target="range_entry"/>
 +                    </accessibility>
 +                  </object>
 +                  <packing>
@@ -133,334 +79,272 @@ diff -rudp thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-editor.ui thunar-4.
 +                  </packing>
 +                </child>
 +                <child>
-+                  <object class="GtkSpinButton" id="upper_button">
++                  <object class="GtkEntry" id="range_entry">
 +                    <property name="visible">True</property>
 +                    <property name="can_focus">True</property>
++                    <property name="tooltip_text" translatable="yes">If the command should operate on say two or three files, enter the numerical range 2-3. If there are no limits, this string should be anything without the - delimiter.</property>
 +                    <property name="hexpand">True</property>
-+                    <property name="adjustment">upper_adjustment</property>
-+                    <property name="climb-rate">1.0</property>
-+                    <property name="digits">0</property>
++                    <property name="activates_default">True</property>
++                    <property name="text" translatable="yes">*</property>
 +                  </object>
 +                  <packing>
 +                    <property name="left_attach">1</property>
 +                    <property name="top_attach">1</property>
-+                  </packing>
-+                </child>
-+                <child>
-+                  <object class="GtkLabel" id="label99">
-+                    <property name="visible">True</property>
-+                    <property name="can_focus">False</property>
-+                    <property name="label" translatable="no">_Lower (min) number of files:</property>
-+                    <property name="use_underline">True</property>
-+                    <property name="mnemonic_widget">lower_button</property>
-+                    <property name="xalign">0</property>
-+                    <accessibility>
-+                      <relation type="label-for" target="lower_button"/>
-+                    </accessibility>
-+                  </object>
-+                  <packing>
-+                    <property name="left_attach">0</property>
-+                    <property name="top_attach">2</property>
-+                  </packing>
-+                </child>
-+                <child>
-+                  <object class="GtkSpinButton" id="lower_button">
-+                    <property name="visible">True</property>
-+                    <property name="can_focus">True</property>
-+                    <property name="hexpand">True</property>
-+                    <property name="adjustment">lower_adjustment</property>
-+                    <property name="climb-rate">1.0</property>
-+                    <property name="digits">0</property>
-+                  </object>
-+                  <packing>
-+                    <property name="left_attach">1</property>
-+                    <property name="top_attach">2</property>
 +                  </packing>
 +                </child>
 +                <child>
                    <object class="GtkLabel" id="label17">
                      <property name="visible">True</property>
                      <property name="can_focus">False</property>
-@@ -602,7 +678,7 @@
+@@ -602,7 +633,7 @@
                    </object>
                    <packing>
                      <property name="left_attach">0</property>
 -                    <property name="top_attach">1</property>
-+                    <property name="top_attach">3</property>
++                    <property name="top_attach">2</property>
                      <property name="width">2</property>
                    </packing>
                  </child>
-@@ -702,7 +778,7 @@
+@@ -702,7 +733,7 @@
                    </object>
                    <packing>
                      <property name="left_attach">0</property>
 -                    <property name="top_attach">2</property>
-+                    <property name="top_attach">4</property>
++                    <property name="top_attach">3</property>
                      <property name="width">2</property>
                    </packing>
                  </child>
-@@ -745,7 +821,7 @@
+@@ -745,7 +776,7 @@
                    </object>
                    <packing>
                      <property name="left_attach">0</property>
 -                    <property name="top_attach">4</property>
-+                    <property name="top_attach">6</property>
-                     <property name="width">2</property>
-                   </packing>
-                 </child>
-@@ -763,7 +839,7 @@
-                   </object>
-                   <packing>
-                     <property name="left_attach">0</property>
--                    <property name="top_attach">3</property>
 +                    <property name="top_attach">5</property>
                      <property name="width">2</property>
                    </packing>
                  </child>
+@@ -763,7 +794,7 @@
+                   </object>
+                   <packing>
+                     <property name="left_attach">0</property>
+-                    <property name="top_attach">3</property>
++                    <property name="top_attach">4</property>
+                     <property name="width">2</property>
+                   </packing>
+                 </child>
 diff -rudp thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-model.c thunar-4.16.10/plugins/thunar-uca/thunar-uca-model.c
---- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-model.c	2021-10-16 13:53:35.000000000 -0400
-+++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-model.c	2021-10-16 16:52:24.000000000 -0400
-@@ -79,6 +79,8 @@ typedef enum
+--- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-model.c	2021-11-22 15:28:58.000000000 +0000
++++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-model.c	2021-11-22 17:39:34.000000000 +0000
+@@ -79,6 +79,7 @@ typedef enum
    PARSER_COMMAND,
    PARSER_STARTUP_NOTIFY,
    PARSER_PATTERNS,
-+  PARSER_UPPER,
-+  PARSER_LOWER,
++  PARSER_RANGE,
    PARSER_DESCRIPTION,
    PARSER_DIRECTORIES,
    PARSER_AUDIO_FILES,
-@@ -168,6 +170,8 @@ struct _ThunarUcaModelItem
+@@ -168,6 +169,7 @@ struct _ThunarUcaModelItem
    gchar         *command;
    guint          startup_notify : 1;
    gchar        **patterns;
-+  gchar         *upper;
-+  gchar         *lower;
++  gchar         *range;
    ThunarUcaTypes types;
  
    /* derived attributes */
-@@ -189,6 +193,8 @@ typedef struct
+@@ -189,6 +191,7 @@ typedef struct
    GString        *command;
    GString        *patterns;
    GString        *description;
-+  GString        *upper;
-+  GString        *lower;
++  GString        *range;
    gboolean        startup_notify;
    gboolean        description_use;
    guint           description_match;
-@@ -333,6 +339,12 @@ thunar_uca_model_get_column_type (GtkTre
+@@ -333,6 +336,9 @@ thunar_uca_model_get_column_type (GtkTre
      case THUNAR_UCA_MODEL_COLUMN_PATTERNS:
        return G_TYPE_STRING;
  
-+    case THUNAR_UCA_MODEL_COLUMN_UPPER:
-+      return G_TYPE_STRING;
-+
-+    case THUNAR_UCA_MODEL_COLUMN_LOWER:
++    case THUNAR_UCA_MODEL_COLUMN_RANGE:
 +      return G_TYPE_STRING;
 +
      case THUNAR_UCA_MODEL_COLUMN_TYPES:
        return G_TYPE_UINT;
  
-@@ -442,6 +454,14 @@ thunar_uca_model_get_value (GtkTreeModel
+@@ -442,6 +448,10 @@ thunar_uca_model_get_value (GtkTreeModel
        g_value_take_string (value, str);
        break;
  
-+    case THUNAR_UCA_MODEL_COLUMN_UPPER:
-+      g_value_set_static_string (value, item->upper);
-+      break;
-+
-+    case THUNAR_UCA_MODEL_COLUMN_LOWER:
-+      g_value_set_static_string (value, item->lower);
++    case THUNAR_UCA_MODEL_COLUMN_RANGE:
++      g_value_set_static_string (value, item->range);
 +      break;
 +
      case THUNAR_UCA_MODEL_COLUMN_TYPES:
        g_value_set_uint (value, item->types);
        break;
-@@ -574,6 +594,8 @@ thunar_uca_model_load_from_file (ThunarU
+@@ -574,6 +584,7 @@ thunar_uca_model_load_from_file (ThunarU
    parser.icon_name = g_string_new (NULL);
    parser.command = g_string_new (NULL);
    parser.patterns = g_string_new (NULL);
-+  parser.upper = g_string_new (NULL);
-+  parser.lower = g_string_new (NULL);
++  parser.range = g_string_new (NULL);
    parser.description = g_string_new (NULL);
    parser.startup_notify = FALSE;
    parser.unique_id_generated = FALSE;
-@@ -588,6 +610,8 @@ thunar_uca_model_load_from_file (ThunarU
+@@ -588,6 +599,7 @@ thunar_uca_model_load_from_file (ThunarU
    g_markup_parse_context_free (context);
    g_string_free (parser.description, TRUE);
    g_string_free (parser.patterns, TRUE);
-+  g_string_free (parser.upper, TRUE);
-+  g_string_free (parser.lower, TRUE);
++  g_string_free (parser.range, TRUE);
    g_string_free (parser.command, TRUE);
    g_string_free (parser.icon_name, TRUE);
    g_string_free (parser.unique_id, TRUE);
-@@ -611,6 +635,8 @@ thunar_uca_model_item_reset (ThunarUcaMo
+@@ -611,6 +623,7 @@ thunar_uca_model_item_reset (ThunarUcaMo
  {
    /* release the previous values... */
    g_strfreev (item->patterns);
-+  g_free (item->upper);
-+  g_free (item->lower);
++  g_free (item->range);
    g_free (item->description);
    g_free (item->command);
    g_free (item->name);
-@@ -668,6 +694,8 @@ start_element_handler (GMarkupParseConte
+@@ -668,6 +681,7 @@ start_element_handler (GMarkupParseConte
            g_string_truncate (parser->unique_id, 0);
            g_string_truncate (parser->command, 0);
            g_string_truncate (parser->patterns, 0);
-+          g_string_truncate (parser->upper, 0);
-+          g_string_truncate (parser->lower, 0);
++          g_string_truncate (parser->range, 0);
            g_string_truncate (parser->description, 0);
            xfce_stack_push (parser->stack, PARSER_ACTION);
          }
-@@ -725,6 +753,16 @@ start_element_handler (GMarkupParseConte
+@@ -725,6 +739,11 @@ start_element_handler (GMarkupParseConte
            g_string_truncate (parser->patterns, 0);
            xfce_stack_push (parser->stack, PARSER_PATTERNS);
          }
-+      else if (strcmp (element_name, "upper") == 0)
++      else if (strcmp (element_name, "range") == 0)
 +        {
-+          g_string_truncate (parser->upper, 0);
-+          xfce_stack_push (parser->stack, PARSER_UPPER);
-+        }
-+      else if (strcmp (element_name, "lower") == 0)
-+        {
-+          g_string_truncate (parser->lower, 0);
-+          xfce_stack_push (parser->stack, PARSER_LOWER);
++          g_string_truncate (parser->range, 0);
++          xfce_stack_push (parser->stack, PARSER_RANGE);
 +        }
        else if (strcmp (element_name, "description") == 0)
          {
            for (n = 0; attribute_names[n] != NULL; ++n)
-@@ -833,6 +871,8 @@ end_element_handler (GMarkupParseContext
+@@ -833,6 +852,7 @@ end_element_handler (GMarkupParseContext
                                     parser->command->str,
                                     parser->startup_notify,
                                     parser->patterns->str,
-+                                   parser->upper->str,
-+                                   parser->lower->str,
++                                   parser->range->str,
                                     parser->types,
                                     0, 0);
  
-@@ -869,6 +909,16 @@ end_element_handler (GMarkupParseContext
+@@ -869,6 +889,11 @@ end_element_handler (GMarkupParseContext
          goto unknown_element;
        break;
  
-+    case PARSER_UPPER:
-+      if (strcmp (element_name, "upper") != 0)
-+        goto unknown_element;
-+      break;
-+
-+    case PARSER_LOWER:
-+      if (strcmp (element_name, "lower") != 0)
++    case PARSER_RANGE:
++      if (strcmp (element_name, "range") != 0)
 +        goto unknown_element;
 +      break;
 +
      case PARSER_DESCRIPTION:
        if (strcmp (element_name, "description") != 0)
          goto unknown_element;
-@@ -959,6 +1009,14 @@ text_handler (GMarkupParseContext *conte
+@@ -959,6 +984,10 @@ text_handler (GMarkupParseContext *conte
        g_string_append_len (parser->patterns, text, text_len);
        break;
  
-+    case PARSER_UPPER:
-+      g_string_append_len (parser->upper, text, text_len);
-+      break;
-+
-+    case PARSER_LOWER:
-+      g_string_append_len (parser->lower, text, text_len);
++    case PARSER_RANGE:
++      g_string_append_len (parser->range, text, text_len);
 +      break;
 +
      case PARSER_DESCRIPTION:
        if (parser->description_use)
          g_string_append_len (parser->description, text, text_len);
-@@ -1087,6 +1145,7 @@ thunar_uca_model_match (ThunarUcaModel *
+@@ -1087,6 +1116,8 @@ thunar_uca_model_match (ThunarUcaModel *
    GList              *lp;
    gint                n_files;
    gint                i, m, n;
 +  gint                upper, lower;
++  gchar             **limits;
    gchar              *path_test;
  
    g_return_val_if_fail (THUNAR_UCA_IS_MODEL (uca_model), NULL);
-@@ -1131,7 +1190,15 @@ thunar_uca_model_match (ThunarUcaModel *
+@@ -1131,7 +1162,20 @@ thunar_uca_model_match (ThunarUcaModel *
      {
        /* check if we can just ignore this item */
        item = (ThunarUcaModelItem *) lp->data;
 -      if (!item->multiple_selection && n_files > 1)
-+      upper = g_strtod (item->upper, NULL);
-+      lower = g_strtod (item->lower, NULL);
-+
-+      if (upper == -1)
-+        upper = n_files;
-+      if (lower == -1)
-+        lower = n_files;
++      upper = n_files;
++      lower = n_files;
++      limits = item->range == NULL ? g_strsplit ("*", "-", 2) : g_strsplit (item->range, "-", 2);
++      if (limits[0] != NULL)
++        {
++          if (limits[1] != NULL)
++            {
++              lower = g_strtod (limits[0], NULL);
++              upper = g_strtod (limits[1], NULL);
++            }
++        }
++      g_strfreev(limits);
 +
 +      if (((!item->multiple_selection) && (n_files > 1)) || (n_files > upper) || (n_files < lower))
          continue;
  
        /* match the specified files */
-@@ -1321,6 +1388,8 @@ thunar_uca_model_update (ThunarUcaModel
+@@ -1321,6 +1365,7 @@ thunar_uca_model_update (ThunarUcaModel
                           const gchar    *command,
                           gboolean        startup_notify,
                           const gchar    *patterns,
-+                         const gchar    *upper,
-+                         const gchar    *lower,
++                         const gchar    *range,
                           ThunarUcaTypes  types,
                           guint           accel_key,
                           GdkModifierType accel_mods)
-@@ -1344,6 +1413,10 @@ thunar_uca_model_update (ThunarUcaModel
+@@ -1344,6 +1389,8 @@ thunar_uca_model_update (ThunarUcaModel
      item->icon_name = g_strdup (icon);
    if (G_LIKELY (command != NULL && *command != '\0'))
      item->command = g_strdup (command);
-+  if (G_LIKELY (upper != NULL && *upper != '\0'))
-+    item->upper = g_strdup (upper);
-+  if (G_LIKELY (lower != NULL && *lower != '\0'))
-+    item->lower = g_strdup (lower);
++  if (G_LIKELY (range != NULL && *range != '\0'))
++    item->range = g_strdup (range);
    if (G_LIKELY (description != NULL && *description != '\0'))
      item->description = g_strdup (description);
    item->types = types;
-@@ -1452,12 +1525,16 @@ thunar_uca_model_save (ThunarUcaModel *u
+@@ -1452,12 +1499,14 @@ thunar_uca_model_save (ThunarUcaModel *u
                                           "\t<unique-id>%s</unique-id>\n"
                                           "\t<command>%s</command>\n"
                                           "\t<description>%s</description>\n"
-+                                         "\t<upper>%s</upper>\n"
-+                                         "\t<lower>%s</lower>\n"
++                                         "\t<range>%s</range>\n"
                                           "\t<patterns>%s</patterns>\n",
                                           (item->icon_name != NULL) ? item->icon_name : "",
                                           (item->name != NULL) ? item->name : "",
                                           (item->unique_id != NULL) ? item->unique_id : "",
                                           (item->command != NULL) ? item->command : "",
                                           (item->description != NULL) ? item->description : "",
-+                                         (item->upper != NULL) ? item->upper : "",
-+                                         (item->lower != NULL) ? item->lower : "",
++                                         (item->range != NULL) ? item->range : "",
                                           patterns);
        fprintf (fp, "%s", escaped);
        g_free (patterns);
 diff -rudp thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-model.h thunar-4.16.10/plugins/thunar-uca/thunar-uca-model.h
---- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-model.h	2021-10-16 13:53:35.000000000 -0400
-+++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-model.h	2021-10-16 16:52:24.000000000 -0400
-@@ -44,6 +44,8 @@ typedef enum
-   THUNAR_UCA_MODEL_COLUMN_UNIQUE_ID,
+--- thunar-4.16.10.orig/plugins/thunar-uca/thunar-uca-model.h	2021-11-22 15:28:58.000000000 +0000
++++ thunar-4.16.10/plugins/thunar-uca/thunar-uca-model.h	2021-11-22 17:13:19.000000000 +0000
+@@ -45,6 +45,7 @@ typedef enum
    THUNAR_UCA_MODEL_COLUMN_COMMAND,
    THUNAR_UCA_MODEL_COLUMN_STARTUP_NOTIFY,
-+  THUNAR_UCA_MODEL_COLUMN_UPPER,
-+  THUNAR_UCA_MODEL_COLUMN_LOWER,
    THUNAR_UCA_MODEL_COLUMN_PATTERNS,
++  THUNAR_UCA_MODEL_COLUMN_RANGE,
    THUNAR_UCA_MODEL_COLUMN_TYPES,
    THUNAR_UCA_MODEL_COLUMN_STOCK_LABEL,
-@@ -96,6 +98,8 @@ void            thunar_uca_model_update
+   THUNAR_UCA_MODEL_N_COLUMNS,
+@@ -96,6 +97,7 @@ void            thunar_uca_model_update
                                                   const gchar            *command,
                                                   gboolean                startup_notify,
                                                   const gchar            *patterns,
-+                                                 const gchar            *upper,
-+                                                 const gchar            *lower,
++                                                 const gchar            *range,
                                                   ThunarUcaTypes          types,
                                                   guint                   accel_key,
                                                   GdkModifierType         accel_mods);
 diff -rudp thunar-4.16.10.orig/plugins/thunar-uca/uca.xml.in thunar-4.16.10/plugins/thunar-uca/uca.xml.in
---- thunar-4.16.10.orig/plugins/thunar-uca/uca.xml.in	2021-10-16 13:53:35.000000000 -0400
-+++ thunar-4.16.10/plugins/thunar-uca/uca.xml.in	2021-10-16 16:52:24.000000000 -0400
-@@ -38,11 +38,25 @@
+--- thunar-4.16.10.orig/plugins/thunar-uca/uca.xml.in	2021-11-22 15:28:58.000000000 +0000
++++ thunar-4.16.10/plugins/thunar-uca/uca.xml.in	2021-11-22 17:14:52.000000000 +0000
+@@ -38,11 +38,23 @@
    <action>
      <icon>utilities-terminal</icon>
      <patterns>*</patterns>
-+    <lower>-1</lower>
-+    <upper>-1</upper>
++    <range>*</range>
      <_name>Open Terminal Here</_name>
      <command>exo-open --working-directory %f --launch TerminalEmulator</command>
      <_description>Example for a custom action</_description>
@@ -471,8 +355,7 @@ diff -rudp thunar-4.16.10.orig/plugins/thunar-uca/uca.xml.in thunar-4.16.10/plug
 +  <action>
 +    <icon>preferences-desktop-wallpaper</icon>
 +    <patterns>*</patterns>
-+    <lower>0</lower>
-+    <upper>1</upper>
++    <range>0-1</range>
 +    <_name>Set as wallpaper</_name>
 +    <command>xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path --create -t string -s \"%f\"</command>
 +    <_description>Implementing the entire wallpaper plugin with just a bit of XML</_description>

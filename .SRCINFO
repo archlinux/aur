@@ -1,7 +1,7 @@
 pkgbase = thunar-extended
 	pkgdesc = Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions
 	pkgver = 4.16.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://thunar.xfce.org
 	arch = i686
 	arch = x86_64
@@ -36,10 +36,10 @@ pkgbase = thunar-extended
 	source = uca_num_files.patch
 	source = preview.patch
 	source = split_pane.patch
-	md5sums = 6099a1d47de5b6d416883fd16cdd3a5a
-	md5sums = 48ca4400bb38440b1cc404877b9e2cb6
-	md5sums = 5182272e5db77880f66dbf4995aa3c07
-	md5sums = 5bc65e0243a922ed47fc547a2e7200be
-	md5sums = 86dae66607ef08442e2893201243ac54
+	sha256sums = f105c8f5abc50c411f6218f913561ae3a485826bd0cd09503a4772d015899c92
+	sha256sums = 84cb384722f32f37bd2e7f2c96c47ebbe7955cb8007260fe1a9efe26d235d478
+	sha256sums = dff7a12776b488613eec99e70acfb700550d72534ecc8a26157af4da1b35d84d
+	sha256sums = 8d11bfc3a51d6ab0f5e9853b31d10d7e1af2e1c8b075ee140c64471e1df9ca68
+	sha256sums = 1e287aa82392bcabd747ab3b5e0c66815b3cfc22e3227cf8439a18f8f200e5ed
 
 pkgname = thunar-extended
