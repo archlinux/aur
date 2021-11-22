@@ -1,7 +1,8 @@
 #!/hint/bash -e
-# Maintainer: Adrien Smith <adrien at bouldersmiths dot com>
+# Maintainer: Adrien Smith <adrien@panissupraomnia.dev>
 # Contributor: Martin Poljak <martin at poljak dot cz>
 # Contributor: Dan Schaper <dschaper at ganymeade dot com>
+
 pkgname=tcllauncher
 pkgver=1.10
 pkgrel=1
