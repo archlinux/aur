@@ -2,8 +2,8 @@
 
 pkgname=newsboat-og
 pkgver=2.13.1
-pkgrel=1
-pkgdesc="An RSS/Atom feed reader for text terminals"
+pkgrel=2
+pkgdesc="An RSS/Atom feed reader for text terminals (old gen)"
 arch=('x86_64' 'i486' 'i686' 'pentium4')
 url="https://newsboat.org/"
 license=('MIT')
