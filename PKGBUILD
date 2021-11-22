@@ -2,7 +2,7 @@
 
 pkgname=starlark-rust
 _pkgname=starlark
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Rust implementation of the Starlark language"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('gcc-libs')
 makedepends=('rustup')
 provides=('starlark')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebookexperimental/starlark-rust/archive/v$pkgver.tar.gz")
-sha512sums=('769fc64864764693b6388a2cfffd61353e3df2903293fd4713736f02fcecff18dcd3908ee5b8d36a6d0194698a056f081d853b620739fc2caeb1aa455ae5ffa1')
-b2sums=('66b64be38e8fbfa5c278d262a6c9ad68b1c12feff322eea85e2cffd3aba3ee438684c60834cc36a532ecf1b608ea2c65df3259d6b45215c083060c926e5d698b')
+sha512sums=('2d1a2e21175728ece8b03fb653b3998d886a2c3cfbb27ca72238bcf8aeab649cba188854ab3d94b8222fe349be06722178dc352d456ef1c9ca5b0f3bc2df7707')
+b2sums=('19dd602bca3df0fba75de53dc59371286f94f2a7bbaa2b591673e56bb13ddd2979fbc3be89694ab84ef283f1e62246a5d2bdcd848cb430b7fa79b7cedb6b0f96')
 
 prepare() {
   cd "$pkgname-$pkgver"
