@@ -1,7 +1,7 @@
 pkgname=libcamera-git
 _pkgname=libcamera
 pkgver=r3240.f2a18172
-pkgrel=2
+pkgrel=3
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
 arch=('x86_64' 'i686' 'aarch64' )
 url='http://libcamera.org/'
@@ -10,7 +10,6 @@ makedepends=(
     "gcc"
     "git"
     "gnutls"
-    "gtest"
     "lttng-ust"
     "meson"
     "openssl"
@@ -43,12 +42,19 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    arch-meson build \
-        -D werror=false \
-        -D documentation=disabled \
-        -D tracing=disabled \
-	-D android_platform=cros
-    ninja -C build
+
+    meson setup build \
+        --prefix        /usr \
+        --buildtype     plain \
+        -D              werror=false \
+        -D              documentation=disabled \
+        -D              tracing=disabled
+    meson compile -C build
+}
+
+check() {
+    cd "$_pkgname"
+    ninja -C build test
 }
 
 package() {
