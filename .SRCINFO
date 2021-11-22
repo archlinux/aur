@@ -9,6 +9,7 @@ pkgbase = sameboy-dx-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = python
+	makedepends = rgbds
 	depends = qt6-base
 	provides = sameboy-dx
 	conflicts = sameboy-dx
