@@ -5,23 +5,20 @@
 # Contributor: Laurie Clark-Michalek <bluepeppers (at) archlinux (dot) us>
 
 pkgname=blockattack
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Open source Tetris Attack clone"
 arch=('i686' 'x86_64')
 url="https://blockattack.net"
 license=('GPL')
 depends=('boost-libs' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'physfs' 'hicolor-icon-theme')
-makedepends=('cmake' 'boost' 'utf8cpp' 'zip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz"
-        "utf8cpp.patch")
-sha256sums=('0967966e04e11c45dc0fe24b3caa583e591b4c7b39511d69805320ea22a21990'
-            'a3e6591e597d715d50037e9f15b9a4e5ce80cebe1e54e1eaaa95ca6c8d1858ec')
+makedepends=('cmake' 'boost' 'zip')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz")
+sha256sums=('e132790d72d54eb40112dfb43d39191b2bf88a9572e34b25a5d2d70419f2f592')
 
 prepare() {
   cd $pkgname-game-$pkgver
   ./packdata.sh
-  patch -p1 -i ../utf8cpp.patch
   mkdir -p ../build
 }
 
