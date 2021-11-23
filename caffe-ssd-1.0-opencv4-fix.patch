@@ -1,0 +1,58 @@
+diff --color --unified --recursive --text caffe-ssd-1.0.orig/include/caffe/common.hpp caffe-ssd-1.0.new/include/caffe/common.hpp
+--- caffe-ssd-1.0.orig/include/caffe/common.hpp	2018-01-02 20:07:58.000000000 +0100
++++ caffe-ssd-1.0.new/include/caffe/common.hpp	2021-11-21 17:01:19.980866883 +0100
+@@ -69,6 +69,16 @@
+ // is executed we will see a fatal log.
+ #define NOT_IMPLEMENTED LOG(FATAL) << "Not Implemented Yet"
+ 
++// Supporting OpenCV4
++#if (CV_MAJOR_VERSION == 4)
++#define CV_LOAD_IMAGE_COLOR cv::IMREAD_COLOR
++#define CV_LOAD_IMAGE_GRAYSCALE cv::IMREAD_GRAYSCALE
++#define CV_CAP_PROP_FRAME_COUNT cv::CAP_PROP_FRAME_COUNT
++#define CV_CAP_PROP_POS_FRAMES cv::CAP_PROP_POS_FRAMES
++#define CV_FILLED cv::FILLED
++#define CV_FOURCC cv::VideoWriter::fourcc
++#endif
++
+ // See PR #1236
+ namespace cv { class Mat; }
+ 
+diff --color --unified --recursive --text caffe-ssd-1.0.orig/Makefile caffe-ssd-1.0.new/Makefile
+--- caffe-ssd-1.0.orig/Makefile	2021-11-21 16:59:16.379709144 +0100
++++ caffe-ssd-1.0.new/Makefile	2021-11-21 17:01:19.980866883 +0100
+@@ -404,7 +404,7 @@
+ CXXFLAGS += -MMD -MP
+ 
+ # Complete build flags.
+-COMMON_FLAGS += $(foreach includedir,$(INCLUDE_DIRS),-isystem $(includedir))
++COMMON_FLAGS += $(foreach includedir,$(INCLUDE_DIRS),-I $(includedir))
+ CXXFLAGS += -pthread -fPIC $(COMMON_FLAGS) $(WARNINGS)
+ NVCCFLAGS += -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
+ # mex may invoke an older gcc that is too liberal with -Wuninitalized
+diff --color --unified --recursive --text caffe-ssd-1.0.orig/src/caffe/util/im_transforms.cpp caffe-ssd-1.0.new/src/caffe/util/im_transforms.cpp
+--- caffe-ssd-1.0.orig/src/caffe/util/im_transforms.cpp	2018-01-02 20:07:58.000000000 +0100
++++ caffe-ssd-1.0.new/src/caffe/util/im_transforms.cpp	2021-11-21 17:05:01.293051919 +0100
+@@ -1,7 +1,7 @@
+ #ifdef USE_OPENCV
+ #include <opencv2/highgui/highgui.hpp>
+ 
+-#if CV_VERSION_MAJOR == 3
++#if CV_VERSION_MAJOR == 3 || CV_VERSION_MAJOR == 4
+ #include <opencv2/imgcodecs/imgcodecs.hpp>
+ #define CV_GRAY2BGR cv::COLOR_GRAY2BGR
+ #define CV_BGR2GRAY cv::COLOR_BGR2GRAY
+@@ -12,6 +12,13 @@
+ #define CV_THRESH_BINARY_INV cv::THRESH_BINARY_INV
+ #define CV_THRESH_OTSU cv::THRESH_OTSU
+ #endif
++
++#if CV_VERSION_MAJOR == 4
++#define CV_BGR2HSV cv::COLOR_BGR2HSV
++#define CV_HSV2BGR cv::COLOR_HSV2BGR
++#define CV_BGR2Lab cv::COLOR_BGR2Lab
++#endif
++
+ #endif  // USE_OPENCV
+ 
+ #include <algorithm>

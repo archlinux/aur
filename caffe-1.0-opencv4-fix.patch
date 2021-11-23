@@ -21,7 +21,7 @@ index b7660e852d6..95f3443adab 100644
  
 -	ifeq ($(OPENCV_VERSION), 3)
 +	ifeq ($(OPENCV_VERSION), $(filter $(OPENCV_VERSION), 3 4))
- 		LIBRARIES += opencv_imgcodecs
+ 		LIBRARIES += opencv_imgcodecs opencv_videoio
  	endif
 +	ifeq ($(OPENCV_VERSION), 4)
 +		ifeq ($(USE_PKG_CONFIG), 1)
