@@ -3,7 +3,7 @@
 
 _pyname=ufoLib2
 pkgname=python-${_pyname,,}
-pkgver=0.11.2
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='A library to deal with UFO font sources'
 arch=(any)
@@ -14,11 +14,17 @@ _pydeps=(attrs
          fs) # for fonttools[ufo]
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-setuptools-scm)
+makedepends=(python-dephell
+             python-setuptools-scm)
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
-source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('062a949296238574baf2ed35dd342eea58c4889b619dde266b55a242d4d1a3d5')
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
+sha256sums=('f00d107da1c4f514d5475bc12618d74b260530e588c9f0d810fb46189f26e9a8')
+
+prepare() {
+	cd "$_archive"
+	dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
 	cd "$_archive"
