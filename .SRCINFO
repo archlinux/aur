@@ -1,0 +1,14 @@
+pkgbase = libscry
+	pkgdesc = A Magic: The Gathering library
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/EmperorPenguin18/libscry/
+	arch = x86_64
+	license = GPL3
+	depends = curl
+	depends = sqlite
+	depends = rapidjson
+	source = libscry-0.2.tar.gz::https://github.com/EmperorPenguin18/libscry/archive/refs/tags/0.2.tar.gz
+	sha256sums = 3c35bee0e7383f704f2ff59ae100a708c0c36772d0b1b375c481587a6cea3622
+
+pkgname = libscry
