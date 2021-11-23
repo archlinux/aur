@@ -119,48 +119,45 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "choose-gcc-optimization.sh"
         "sphinx-workaround.patch"
 
-        # incremental kernel.org patch ahead of official Xanmod release
+        # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.3-4.xz"
         #"Linux-5.15.4-rc1.patch"
 
-        # amd-pstate v3 included in Xanmod
-        "revert-amd-pstate-v3.patch"
-        "squashed-amd-pstate-v4-for-5.15.patch"
-
-        # zstd 1.4.10 included in Xanmod
-        "zstd-udpate-fixes.patch"
-
-        # multigenerational lru v5 included in Xanmod
-
-        # 5.15: k10temp support for Zen3 APUs
-
-        # 5.16: don't drop shared caches on C3 state transitions
-        "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"
-
-        # -- patch from Chromium developers; more accurately report battery state changes
-        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
-
-        # 5.16 spectre defaults
-        "x86-change-default-to-spec_store_bypass_disable-prct.patch"
-
-        # -- squelch overzealous 802.11 regdomain not set warnings
-        "cfg80211-dont-WARN-if-a-self-managed-device.patch"
-
-        # 5.15: r8169 hwIDs for the G14?/G15
-
-        # Arch: misc fixes
+        # Arch: misc hotfixes
         "staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch"
         "PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
         "drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch"
         "iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
 
-        # cherry-picked iwlwifi patches from -next
-        "iwlwifi-next-patches-through-2020-11-08-5.15.3.patch"
+        # amd-pstate v3 included in Xanmod
+        "revert-amd-pstate-v3.patch"
+        "squashed-amd-pstate-v4-for-5.15.patch"
 
-        # ASUS ROG enablement
+        # multigenerational lru v5 included in Xanmod
+        # 5.17 TCP Optimizations included in Xanmod
+
+        # 5.16: zstd 1.4.10 update stack size regression fixes
+        "zstd-udpate-fixes.patch"
+
+        # 5.16: don't drop shared caches on C3 state transitions
+        "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"
+
+        # 5.16 spectre defaults
+        "x86-change-default-to-spec_store_bypass_disable-prct.patch"
+
+        # -- patch from Chromium developers; more accurately report battery state changes
+        "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
+
+        # -- squelch overzealous 802.11 regdomain not set warnings
+        "cfg80211-dont-WARN-if-a-self-managed-device.patch"
+
+        # ASUS ROG patches
         "HID-asus-Reduce-object-size-by-consolidating-calls.patch"
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
+
+        # cherry-picked iwlwifi patches
+        "iwlwifi-next-patches-through-2020-11-08-5.15.3.patch"
 
         # mediatek mt7921 bt/wifi patches
         "mt76-mt7921-Add-mt7922-support.patch"
@@ -188,20 +185,20 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
             '78d8462cf8e3ec4036eeadf2081d367cae272bdb7f173c12852676a745aee9db'
-            '12d78853f582ccf8027dbd2cbc27b0fcde106202958c6be31054815bae7752ae'
-            '8592fc434cc7d52b0fefe478de19d0af3d7e06406d8d09bd1bc85e6805738e68'
-            'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
-            '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
-            'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
-            'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
-            '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             'ce50ee3c64f6865234f6ec79fcbd87704494b0fbb7d3cc124f97244c731f9e61'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
             '2651439720a03a83ce127d58fadb15f7f64f092c7f8224dcb63f5b34e5b7ffa1'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
-            'b12a5bb789e4c854617ca3c7405fcc3121457ddb6564c8f758edfe4633cf24bd'
+            '12d78853f582ccf8027dbd2cbc27b0fcde106202958c6be31054815bae7752ae'
+            '8592fc434cc7d52b0fefe478de19d0af3d7e06406d8d09bd1bc85e6805738e68'
+            'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
+            '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
+            'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
+            'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
+            '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
+            'b12a5bb789e4c854617ca3c7405fcc3121457ddb6564c8f758edfe4633cf24bd'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
             '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
