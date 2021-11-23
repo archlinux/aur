@@ -15,7 +15,7 @@ pkgname=('nginx-unitd'
          'nginx-unit-nodejs'
          'nginx-unit-go')
 _shortname='unit'
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Lightweight, dynamic, open-source server for diverse web applications."
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ url="https://unit.nginx.org/"
 license=('Apache')
 source=("https://unit.nginx.org/download/unit-$pkgver.tar.gz"
         'unit.service')
-sha256sums=('474b369f20e36cff1735762fddf3ebe31701aa970e3827cd15814684ffff6351'
+sha256sums=('c04a40ab82ec0d5585a9997a484317d89e95044089d72ebccaedd2860debf6fc'
             '8c9b2f732d6e50aa747aa7703303e5fff69f5abc6f5fc1741b774b422e029606')
 makedepends=('php-embed' 'python' 'python2' 'go' 'ruby' 'perl' 'npm')
 
