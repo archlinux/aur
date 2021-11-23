@@ -1,16 +1,16 @@
 # Maintainer: Oystein Sture <oysstu (at) gmail (dot) com>
 # Contributor: 
 pkgname=python-tensorflow-probability
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Probabilistic reasoning and statistical analysis in TensorFlow"
 url="https://github.com/tensorflow/probability"
 arch=('any')
 license=('APACHE')
-depends=('python' 'python-tensorflow' 'python-numpy' 'python-six' 'python-decorator' 'python-cloudpickle' 'python-gast03' 'python-dm-tree')
+depends=('python' 'python-tensorflow' 'python-numpy' 'python-six' 'python-decorator' 'python-cloudpickle' 'python-gast03' 'python-dm-tree' 'absl-py')
 makedepends=('python-setuptools' 'bazel')
 source=("https://github.com/tensorflow/probability/archive/v${pkgver}.tar.gz")
-sha256sums=('559fd6cef44bbc622ad26b9fb1b56c2caadd15bd748a7d73aa8b0e1681bf870f')
+sha256sums=('0cfe69fd2169cd756ed5dc37a80eed2be2576b9553712303b323619b64ed9a11')
             
 build() {
   # Force OpenJDK-11
