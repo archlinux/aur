@@ -1,7 +1,7 @@
 pkgbase = libptytty
 	pkgdesc = OS independent and secure pty/tty and utmp/wtmp/lastlog handling
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://software.schmorp.de/pkg/libptytty.html
 	arch = i686
 	arch = x86_64
