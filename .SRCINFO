@@ -1,6 +1,6 @@
 pkgbase = r-terra
 	pkgdesc = Spatial Data Analysis
-	pkgver = 1.4.11
+	pkgver = 1.4.20
 	pkgrel = 2
 	url = https://cran.r-project.org/package=terra
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = r-terra
 	optdepends = r-sf
 	optdepends = r-deldir
 	optdepends = r-raster
-	source = https://cran.r-project.org/src/contrib/terra_1.4-11.tar.gz
-	md5sums = ddfa881cfb9aa6072778a15fde0c8d30
+	source = https://cran.r-project.org/src/contrib/terra_1.4-20.tar.gz
+	md5sums = 42f3fa16810d28716aa5ab90be274c3f
 
 pkgname = r-terra
