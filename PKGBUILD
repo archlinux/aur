@@ -3,7 +3,7 @@
 pkgname=yabridge-git
 _pkgname=yabridge
 pkgver=3.7.0.r0.g75c64e6b
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
@@ -65,5 +65,5 @@ package() {
   install yabridge-{host,group}-32.exe{,.so} "$pkgdir/usr/bin"
 
   install -dm755 "$pkgdir/usr/lib"
-  install libyabridge-{vst2,vst3}.so "$pkgdir/usr/bin"
+  install libyabridge-{vst2,vst3}.so "$pkgdir/usr/lib"
 }
