@@ -9,6 +9,6 @@ pkgbase = bililive-recorder-bin
 	depends = zlib
 	provides = bililive-recorder
 	source = bililive-recorder-bin-1.3.10.zip::https://github.com/Bililive/BililiveRecorder/releases/download/v1.3.10/BililiveRecorder-CLI-linux-x64.zip
-	sha256sums = a1a0d44b3366d0536bd5bb14078f9f6a6d100b72ff4bf4f8d5593b8058c8123e
+	sha256sums = 80c2bcb00b2939e20e382cefa421631bb043007f0328069e81a08a972308393b
 
 pkgname = bililive-recorder-bin
