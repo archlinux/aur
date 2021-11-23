@@ -1,0 +1,23 @@
+pkgbase = gridwars-git
+	pkgdesc = Grid Wars 2: A clone of Geometry Wars
+	pkgver = r14.7249699
+	pkgrel = 1
+	url = http://gridwars.marune.de/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libglvnd
+	depends = libxdmcp
+	depends = libxxf86vm
+	depends = libxau
+	depends = libxft
+	depends = libx11
+	depends = glu
+	source = https://github.com/bmx-ng/bmx-ng/releases/download/v0.129.3.45.linux.x64/BlitzMax_linux_x64_0.129.3.45.tar.xz
+	source = git+https://github.com/trap000d/GridWars.git
+	source = gridwars.desktop
+	sha256sums = 635108f2b93d654934ae2baf15698082e2f21f070d6872da8e42bb9d4e331447
+	sha256sums = SKIP
+	sha256sums = 2ad4d272c2d4696b27eb3f8c5bff3b9d0c540703680124796c147cbf11eabb8e
+
+pkgname = gridwars-git
