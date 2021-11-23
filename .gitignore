@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/bibclean-*.pkg.tar.zst
+/bibclean-*.tar.xz
