@@ -1,14 +1,14 @@
 # Maintainer: gmes78 <joaquim dot monteiro at protonmail dot com>
 
 pkgname=python-aiohttp-socks-git
-pkgver=v0.5.5.r0.g69bf922
-pkgrel=2
+pkgver=v0.7.0.r0.g6936737
+pkgrel=1
 pkgdesc="Proxy connector for aiohttp. Supports SOCKS4(a), SOCKS5, HTTP (tunneling) as well as proxy chains. (Git version)"
 arch=(any)
 url="https://github.com/romis2012/aiohttp-socks"
 license=("Apache")
 
-depends=("python" "python-aiohttp" "python-python_socks")
+depends=("python" "python-aiohttp" "python-python-socks")
 makedepends=("git" "python-setuptools")
 provides=("python-aiohttp-socks")
 conflicts=("python-aiohttp-socks")
