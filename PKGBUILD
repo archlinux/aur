@@ -6,7 +6,7 @@
 #   curl https://keybase.io/threema/pgp_keys.asc | gpg --import
 #   gpg --lsign E7ADD9914E260E8B35DFB50665FDE935573ACDA6
 pkgname=threema-web
-pkgver=2.3.17
+pkgver=2.3.18
 pkgrel=1
 pkgdesc="The Threema Web client, packaged to run locally on port 4242"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
     "launch.py"
 )
 sha256sums=(
-    '3d4ebaf0240ad298690871ab9bdf5ce3f09892c3644f48db003ab6451ee30441'
+    'd9d77c28ddf527d7596c778943715e2fce9f83481cc778516e14531b14ddb88b'
     'SKIP'
     '1fbf9c4af5548138f75b00d2bd3de462c658db0c14e9897d09b79f8aa235db9e'
     '0968289ce31f750834b8f495951e1a29a2971d38e9d4d20213bb2a1f174a2fb1'
