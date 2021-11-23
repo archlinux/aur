@@ -1,6 +1,6 @@
 #!/bin/env sh
 
-echo ":: Launching Cannonball OutRun Engine"
+echo ":: Launching CannonBall OutRun Engine"
 
 if [ ! -f ~/.cannonball/roms ]; then
   mkdir -p ~/.cannonball/roms

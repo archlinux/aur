@@ -17,6 +17,6 @@ pkgbase = cannonball
 	source = cannonball.sh
 	sha256sums = e2cf8e21619b183a9fd835ae34ce65fb3d014c2fea37723fc8ba05681ed317ce
 	sha256sums = 04d0c0e9252bccfef97bb59c9e89376461f9b52845570b2ebc14610ce74cf1ff
-	sha256sums = 582b6dd0ec05ba132ac0084002d6181ce80c7bc550ed57057d884e312009c196
+	sha256sums = 787fdfef544e41f5c358afb1a8d31bf22d0ff48631467b590f046dbcd9fc45af
 
 pkgname = cannonball
