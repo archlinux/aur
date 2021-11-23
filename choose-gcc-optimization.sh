@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 . /usr/share/makepkg/util/message.sh
-colorize
+[[ -t 1 ]] && colorize
 
 Detect_CPU=$(gcc -c -Q -march=native --help=target | grep march | awk '{print $2}' | head -1)
 
