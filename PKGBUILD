@@ -1,4 +1,4 @@
-# Maintainer: Ben Westover <kwestover.kw@gmail.com>
+# Maintainer: Topik <topik@topik.tech>
 
 pkgname='google-messages'
 pkgver=1.3.0
