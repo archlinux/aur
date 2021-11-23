@@ -1,14 +1,13 @@
 pkgbase = bibclean
-	pkgdesc = BibTeX bibliography file prettyprinter and syntax checker
-	pkgver = 2.17
-	pkgrel = 2
-	url = http://ftp.math.utah.edu/pub//bibclean/
-	arch = i686
-	arch = x86_64
-	license = GPL3
-	makedepends = gcc
-	source = http://ftp.math.utah.edu/pub//bibclean/bibclean-2.17.tar.gz
-	md5sums = 797d7791bcefad1ef36445ecb138a92e
+	pkgdesc = BibTeX and Scribe bibliography prettyprinter and syntax checker
+	pkgver = 3.06
+	pkgrel = 1
+	url = https://ftp.math.utah.edu/pub/bibclean/
+	arch = any
+	license = GPL
+	source = https://ftp.math.utah.edu/pub/bibclean/bibclean-3.06.tar.xz
+	source = mandir.patch
+	sha256sums = 6574f9b8042ba8fa05eae5416b3738a35c38d129f48e733e25878ecfbaaade43
+	sha256sums = a31e1f8f9c627e80b4912148743d2d3caaadefac87ed3ac0468b91bc45359cc9
 
 pkgname = bibclean
-
