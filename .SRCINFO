@@ -2,6 +2,7 @@ pkgbase = rget
 	pkgdesc = Wget alternative
 	pkgver = 1.1.1
 	pkgrel = 1
+	url = https://github.com/legendary-cookie/rustutils
 	arch = x86_64
 	license = GPL
 	makedepends = rustup

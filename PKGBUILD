@@ -7,6 +7,7 @@ pkgdesc="Wget alternative"
 arch=(x86_64)
 license=('GPL')
 makedepends=('rustup')
+url=https://github.com/legendary-cookie/rustutils
 source=("https://github.com/legendary-cookie/rustutils/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
 
 prepare() {
