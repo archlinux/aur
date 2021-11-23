@@ -5,11 +5,11 @@ pkgver=20211022
 pkgrel=2
 epoch=
 pkgdesc="A static blog generator built with electron"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/baiyang-lzy/bbg"
 license=('GPL')
 groups=()
-depends=()
+depends=('nss' 'gtk3')
 checkdepends=()
 optdepends=()
 provides=()
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 package(){
 	mkdir -p ${pkgdir}/usr/bin
-	ln -sf ${srcdir}/bbg-linux-x64/bbg ${pkgdir}/usr/bin/bbg
+	install -Dm 644 ${srcdir}/bbg-linux-x64/bbg ${pkgdir}/usr/bin/bbg
 	install -Dm 644 ${srcdir}/bbg.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 	install -Dm 644 ${srcdir}/bbg-linux-x64/resources/app/icons/icon.png ${pkgdir}/usr/share/icons/${pkgname}.png
 }
