@@ -1,11 +1,10 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
-	pkgver = 5.10.0
+	pkgver = 5.13.3
 	pkgrel = 0.1
 	url = https://pagure.io/pagure
 	arch = any
 	license = GPL2
-	checkdepends = python-tox
 	makedepends = python-setuptools
 	depends = git
 	depends = gitolite
@@ -43,18 +42,18 @@ pkgbase = pagure
 	depends = python-wtforms
 	depends = redis
 	optdepends = clamav: Scan uploaded attachments
-	source = https://releases.pagure.org/pagure/pagure-5.10.0.tar.gz
-	sha256sums = 2a2b60e85e35f19a4260aa049aa7508059604de40a07acc1bdb7a421e882542c
+	source = https://releases.pagure.org/pagure/pagure-5.13.3.tar.gz
+	sha256sums = f684d8193d4c4cf637b465c80cbfece6eb2b1646df3ec4f993adf75ea78d5a1a
 
 pkgname = pagure
-	depends = pagure-database=5.10.0
+	depends = pagure-database=5.13.3
 	optdepends = pagure-apache: Apache host configuration files
 	backup = etc/pagure/alembic.ini
 	backup = etc/pagure/pagure.cfg
 
 pkgname = pagure-apache
 	pkgdesc = A git-centered forge based on python using pygit2 (Apache host configuration)
-	depends = pagure=5.10.0
+	depends = pagure=5.13.3
 	depends = apache
 	depends = mod_wsgi
 	backup = etc/httpd/conf/extra/pagure.conf
@@ -62,7 +61,7 @@ pkgname = pagure-apache
 pkgname = pagure-mariadb
 	pkgdesc = A git-centered forge based on python using pygit2 (MariaDB database configuration)
 	install = pagure-mariadb.install
-	depends = pagure=5.10.0
+	depends = pagure=5.13.3
 	depends = mariadb
 	depends = python-mysqlclient
 	provides = pagure-database
@@ -73,7 +72,7 @@ pkgname = pagure-mariadb
 pkgname = pagure-postgresql
 	pkgdesc = A git-centered forge based on python using pygit2 (PostgreSQL database configuration)
 	install = pagure-postgresql.install
-	depends = pagure=5.10.0
+	depends = pagure=5.13.3
 	depends = postgresql
 	depends = python-psycopg2
 	provides = pagure-database
@@ -84,10 +83,9 @@ pkgname = pagure-postgresql
 pkgname = pagure-sqlite
 	pkgdesc = A git-centered forge based on python using pygit2 (SQLite database configuration)
 	install = pagure-sqlite.install
-	depends = pagure=5.10.0
+	depends = pagure=5.13.3
 	depends = sqlite
 	provides = pagure-database
 	conflicts = pagure-mariadb
 	conflicts = pagure-postgresql
 	backup = etc/pagure/pagure_database.cfg
-
