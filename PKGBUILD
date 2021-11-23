@@ -5,7 +5,7 @@ _pkgname="openutau"
 
 pkgname="${_pkgname}"
 pkgver=0.0.517
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source UTAU successor"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
@@ -30,7 +30,7 @@ package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     # Desktop file
-    install -Dm644 "${srcdir}/${_pkgname}.desktop"\
+    install -Dm644 "${_pkgname}.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
