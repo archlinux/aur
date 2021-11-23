@@ -1,7 +1,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse-lts
-pkgver=21.3.9.83
+pkgver=21.8.10.19
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. LTS version'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('tzdata' 'libcap')
 provides=(clickhouse)
 conflicts=(clickhouse)
 noextract=(
-  clickhouse-common-static_${pkgver}_amd64.deb
   clickhouse-client_${pkgver}_all.deb
+  clickhouse-common-static_${pkgver}_amd64.deb
   clickhouse-server_${pkgver}_all.deb
 )
 source=(
@@ -21,9 +21,9 @@ source=(
   https://repo.clickhouse.tech/deb/lts/main/clickhouse-server_${pkgver}_all.deb
 )
 sha256sums=(
-  9a44566e8238028c5bad71190796667a09de6aac38d58eced095c6762afd7cc3
-  5b1afd18fcddd681255797e46dd17520d137d77d21d0543ef9bc588487a3fc0e
-  63137b9c6e094f7548dc3221b739d06df11d9c7ae3da59773c61cfb7063cdecb
+  7b74066ffca07dde45d03ba896038bfed360abd2ae8bd8f71e221fa42833862f
+  3057dc0899678d55dc1815e6faf5f2de1bb23ed21bf68a4183659bd68f5549e7
+  a1b27f0266a542058a71adf8a52a16f4230cc2e8831d118d471a4f2e39336a95
 )
 install=$pkgname.install
 backup=(
