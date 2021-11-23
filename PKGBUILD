@@ -1,28 +1,38 @@
+# Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=flopoco
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 
 pkgdesc="A generator of arithmetic cores (Floating-Point Cores, but not only) for FPGAs (but not only)"
 arch=('any')
-url="http://flopoco.gforge.inria.fr/"
+url="https://flopoco.gitlabpages.inria.fr/flopoco/"
 license=('custom')
 
 depends=('mpfr' 'mpfi' 'sollya' 'gsl' 'fplll' 'libxml2')
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'git')
 
-source=(https://gforge.inria.fr/frs/download.php/file/37213/flopoco-4.1.2.tgz)
-md5sums=('425013cf0063284c27e5038bfff51efb')
+source=('git+https://gitlab.inria.fr/flopoco/flopoco.git#branch=version4')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/flopoco"
+
+	# Flopoco version, from file VERSION
+	_distver=`cat VERSION`
+
+	echo $_distver
+}
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "${srcdir}/flopoco"
 	cmake -DCMAKE_INSTALL_PREFIX=/usr
 	make
 	./flopoco BuildAutocomplete
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "${srcdir}/flopoco"
 
 	install -D ./flopoco         $pkgdir/usr/bin/flopoco
 	install -D ./bin2fp          $pkgdir/usr/bin/flopoco_bin2fp
