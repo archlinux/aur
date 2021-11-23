@@ -2,7 +2,7 @@
 pkgname=bbg
 _pkgname=BBG
 pkgver=20211022
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A static blog generator built with electron"
 arch=("x86_64")
