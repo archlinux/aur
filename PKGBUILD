@@ -2,8 +2,8 @@
 # Maintainer: Grey Christoforo <firstname@lastname.net>
 #
 pkgname=linux-wsl
-_tag=linux-msft-wsl-5.10.60.1
-pkgver=5.10.60.1
+pkgver=5.10.74.3
+_tag=linux-msft-wsl-${pkgver}
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/microsoft/WSL2-Linux-Kernel"
@@ -15,8 +15,8 @@ makedepends=(
 )
 options=('!strip')
 
-source=(https://github.com/microsoft/WSL2-Linux-Kernel/archive/${_tag}.tar.gz)
-sha256sums=('64d6db83e0903cb42e459c1a6c26424605a1998c2fcd6a51fe8298cf8bdca762')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/WSL2-Linux-Kernel/archive/${_tag}.tar.gz)
+sha256sums=('286230c34cccc15c3197b04a19f4e6f3653af6401f9873aa340c85e416b56df4')
 
 _src_prefix="WSL2-Linux-Kernel-"
 export KBUILD_BUILD_HOST=archlinux

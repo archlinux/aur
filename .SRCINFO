@@ -1,6 +1,6 @@
 pkgbase = linux-wsl
 	pkgdesc = Microsoft's Windows Subsystem for Linux 2 (WSL2) kernel
-	pkgver = 5.10.60.1
+	pkgver = 5.10.74.3
 	pkgrel = 1
 	url = https://github.com/microsoft/WSL2-Linux-Kernel
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linux-wsl
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = https://github.com/microsoft/WSL2-Linux-Kernel/archive/linux-msft-wsl-5.10.60.1.tar.gz
-	sha256sums = 64d6db83e0903cb42e459c1a6c26424605a1998c2fcd6a51fe8298cf8bdca762
+	source = linux-wsl-5.10.74.3.tar.gz::https://github.com/microsoft/WSL2-Linux-Kernel/archive/linux-msft-wsl-5.10.74.3.tar.gz
+	sha256sums = 286230c34cccc15c3197b04a19f4e6f3653af6401f9873aa340c85e416b56df4
 
 pkgname = linux-wsl
