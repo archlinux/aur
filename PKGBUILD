@@ -16,7 +16,7 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
-         libpipewire02)
+         libvpx libjpeg zlib libevent libpipewire02)
 makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard lld dump_syms
@@ -109,6 +109,10 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-libevent
+ac_add_options --with-system-zlib
+ac_add_options --with-system-jpeg
 
 # Features
 ac_add_options --enable-pulseaudio
