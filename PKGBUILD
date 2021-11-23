@@ -2,7 +2,7 @@
 
 pkgname=cutefish-settings-git
 _pkgname=cutefish-settings
-pkgver=0.5.r7.g94df280
+pkgver=0.5.r44.gebb19ee
 pkgrel=1
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
