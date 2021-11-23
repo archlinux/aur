@@ -1,27 +1,24 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: uint2048_t
 
 pkgname=cannonball
-pkgver=0.3
+pkgver=0.34
 pkgrel=1
-pkgdesc='Enhanced OutRun Engine'
+pkgdesc='CannonBall: The Enhanced OutRun Engine'
 arch=('i686' 'x86_64')
-url="http://reassembler.blogspot.de/"
+url="https://reassembler.blogspot.com"
 license=('custom')
-depends=('sdl' 'gcc-libs' 'bash')
+depends=('sdl' 'gcc-libs' 'sh')
 makedepends=('cmake' 'boost')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::"https://github.com/djyt/cannonball/archive/v$pkgver.tar.gz"
-        "$pkgname-fixes.patch"
-        "$pkgname.sh")
-sha256sums=('572b983b5490f1131d502e573d59e87ff841d5baa608b40482c198686818a476'
-            '6e8c5788b00c2c89b9e61729cac47bd47d577c72109bdac2b255af29df1c525e'
-            '3400daeb32033967e2e6a8202ab38943786f8b9d61b662e77d4caaeb47d89277')
+       "$pkgname.desktop"
+       "$pkgname.sh")
+sha256sums=('e2cf8e21619b183a9fd835ae34ce65fb3d014c2fea37723fc8ba05681ed317ce'
+            '3ebe54dc6840439dcf4ed4fdc561e0bcb2f6089d57dc8559a0d9cead8b4e0639'
+            '582b6dd0ec05ba132ac0084002d6181ce80c7bc550ed57057d884e312009c196')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  # fix for new boost api, also a missing include
-  patch -Np1 < ../$pkgname-fixes.patch
 
   rm -rf build
   mkdir build
@@ -30,19 +27,25 @@ prepare() {
 build() {
   cd $pkgname-$pkgver/build
 
-  cmake ../cmake -DTARGET=debian -DCMAKE_SKIP_BUILD_RPATH=TRUE
+  cmake ../cmake -Wno-dev -DTARGET=linux.cmake -B .
   make
 }
 
 package() {
   cd $pkgname-$pkgver
 
-  # launcher + binary
+  # xdg desktop, launcher, binary
+  install -Dm755 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
   install -Dm755 build/$pkgname "$pkgdir"/usr/lib/$pkgname/$pkgname
-  # config
+  
+  # configuration file
   install -Dm644 build/config.xml "$pkgdir"/usr/share/$pkgname/config.xml
+  
   # doc + license
   install -Dm644 roms/roms.txt "$pkgdir"/usr/share/doc/$pkgname/roms.txt
   install -Dm644 docs/license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
+
+  # icon
+  install -Dm644 res/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
 }
