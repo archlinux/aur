@@ -10,6 +10,11 @@ depends=('python-magic' 'xapp' 'python-xapp')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('52882b32bd4572ef3504f8204cf319080a7e48036297ea3690ae7dd5c8699b1f')
 
+build()
+{
+    sed -i "s/__DEB_VERSION__/${pkgver}/" "$srcdir"/"$pkgname"-"$pkgver"/usr/lib/bulky/bulky.py
+}
+
 package()
 {   
 
