@@ -17,7 +17,7 @@ optdepends=('dnsmasq: DHCP server for Network Access Point'
 makedepends=('cython' 'git' 'intltool' 'libtool')
 conflicts=('blueman' 'blueman-bzr')
 provides=('blueman')
-source=("${pkgname}"::"git+https://github.com/blueman-project/${_pkgname}.git")
+source=("${pkgname}"::"git+https://github.com/blueman-project/${_pkgname}.git#branch=main")
 sha1sums=('SKIP')
 install=${pkgname}.install
 

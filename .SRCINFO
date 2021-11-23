@@ -27,7 +27,7 @@ pkgbase = blueman-git
 	provides = blueman
 	conflicts = blueman
 	conflicts = blueman-bzr
-	source = blueman-git::git+https://github.com/blueman-project/blueman.git
+	source = blueman-git::git+https://github.com/blueman-project/blueman.git#branch=main
 	sha1sums = SKIP
 
 pkgname = blueman-git
