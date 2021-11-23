@@ -1,0 +1,52 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -77,29 +77,24 @@ pixbufloader: libpixbufloader-flif$(LIBE
+ 
+ install: flif libflif$(LIBEXT) install-libflif$(LIBEXT)
+ 	install -d $(PREFIX)/bin $(PREFIX)/share/man/man1
+-	install -m 755 flif $(PREFIX)/bin
+-	strip -x $(PREFIX)/bin/flif
++	install -m 755 -D flif -t $(PREFIX)/bin
+ 	install -m 644 ../doc/flif.1 $(PREFIX)/share/man/man1
+-	install -m 755 ../tools/gif2flif $(PREFIX)/bin
+-	install -m 755 ../tools/apng2flif $(PREFIX)/bin
++	install -m 755 -D ../tools/gif2flif -t $(PREFIX)/bin
++	install -m 755 -D ../tools/apng2flif -t $(PREFIX)/bin
+ 
+ install-viewflif:
+-	install -m 755 viewflif $(PREFIX)/bin
+-	strip -x $(PREFIX)/bin/viewflif
++	install -m 755 -D viewflif -t $(PREFIX)/bin
+ 
+ install-libflif$(LIBEXT): libflif$(LIBEXT)
+ 	install -d $(PREFIX)/lib
+ 	install -m 755 libflif$(LIBEXT) libflif$(LIBEXTV) $(PREFIX)/lib
+-	strip -x $(PREFIX)/lib/libflif$(LIBEXT) \
+-	  $(PREFIX)/lib/libflif$(LIBEXTV)
+ 
+ # There is no prefix here because gdk-pixbuf will not search /usr/local for loadrs
+ # while it sucks, it's the truth
+ install-libpixbufloader-flif$(LIBEXT): libpixbufloader-flif$(LIBEXT) install-libflif$(LIBEXT)
+-	install -c -d /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders
+-	install -c -m 755 -s libpixbufloader-flif$(LIBEXT) /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/
+-	gdk-pixbuf-query-loaders --update-cache
+-	xdg-mime install --novendor flif-mime.xml
++	install -c -d $(PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders
++	install -c -m 755 -s libpixbufloader-flif$(LIBEXT) $(PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders/
++	install -m 644 -D flif-mime.xml -t $(PREFIX)/share/mime/packages
+ 
+ install-pixbufloader: install-libpixbufloader-flif$(LIBEXT)
+ 
+@@ -108,11 +103,8 @@ install-dev:
+ 	install -m 644 library/*.h $(PREFIX)/include
+ 
+ install-decoder: decoder
+-	install -m 755 dflif $(PREFIX)/bin
+-	strip -x $(PREFIX)/bin/dflif
++	install -m 755 -D dflif -t $(PREFIX)/bin
+ 	install -m 755 libflif_dec$(LIBEXT) libflif_dec$(LIBEXTV) $(PREFIX)/lib
+-	strip -x $(PREFIX)/lib/libflif_dec$(LIBEXT) \
+-	  $(PREFIX)/lib/libflif_dec$(LIBEXTV)
+ 
+ magic:
+ 	if ! grep -q FLIF /etc/magic; then cat ../doc/flif.magic >> /etc/magic; fi
