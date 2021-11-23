@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenUtau
+StartupWMClass=openutau
+Comment=Open source UTAU successor
+GenericName=Utau
+Exec=/usr/bin/openutau
+Type=Application
+Categories=Music;
+Path=/usr/bin
+Path=/usr/bin
