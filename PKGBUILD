@@ -2,7 +2,10 @@ pkgname=orchis-theme-bin
 pkgver=2021.10.27
 pkgrel=1
 options=(!strip)
-arch=(x86_64)
+arch=('any')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+makedepends=('wget' 'curl')
 
 src_file=$pkgname-$pkgver.tar.xz
 
