@@ -2,7 +2,7 @@ pkgbase='python-jupyter-server-proxy'
 pkgname=('python-jupyter-server-proxy')
 _module='jupyter-server-proxy'
 pkgver='3.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter server extension to supervise and proxy web services"
 url="https://github.com/jupyterhub/jupyter-server-proxy"
 depends=('python')
@@ -21,4 +21,5 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    mv ${pkgdir}/usr/etc $pkgdir
 }

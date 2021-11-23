@@ -1,7 +1,7 @@
 pkgbase = python-jupyter-server-proxy
 	pkgdesc = Jupyter server extension to supervise and proxy web services
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyterhub/jupyter-server-proxy
 	arch = any
 	license = unknown
