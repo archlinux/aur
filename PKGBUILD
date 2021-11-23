@@ -4,7 +4,7 @@
 # This means no matter what the package version says, it will always be the latest version because that's all steamcmd allows for retrieval of.
 
 pkgname=satisfactory-server
-pkgver=0.5.0.8.172183
+pkgver=0.5.0.14.173618
 pkgrel=1
 pkgdesc="Dedicated server for the Satisfactory PC game"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha512sums=('67f6d25d6a27734518cf63da07ee7a6c7fa7b38f888a909bc973ea132147c3785db
             'a0087275ca9bb704323ecddd3b9f4bc295174b961bf34651ac5758fa6e76994ef08983783e541483786107581d8118647ea4bdf939871d5c13bdaafa8e64663f'
             '817f66ec1dcc0ea3215fc3da3d9b5fe9b34dbf7cbdbfbf33622aa254ebcc78ba8d358def21b3ef5c88b4f5b87a1341a6741ddc74ebe15081bf73a279d3bc447f')
 prepare() {
-    steamcmd +login anonymous +force_install_dir "$srcdir/$pkgname" +app_update 1690800 validate +quit
+    steamcmd +force_install_dir "$srcdir/$pkgname" +login anonymous +app_update 1690800 validate +quit
 }
 
 package() {
