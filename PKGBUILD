@@ -5,7 +5,7 @@ _pkgname="openutau"
 
 pkgname="${_pkgname}"
 pkgver=0.0.517
-pkgrel=6
+pkgrel=5
 pkgdesc="Open source UTAU successor"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
@@ -30,5 +30,5 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
