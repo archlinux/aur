@@ -1,33 +1,28 @@
 pkgbase = python-gammapy
 	pkgdesc = A Python package for gamma-ray astronomy
-	pkgver = 0.18.2
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://gammapy.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest-remotedata
 	checkdepends = python-pytest-astropy-header
-	checkdepends = python-healpy
-	checkdepends = python-reproject
+	checkdepends = python-scipy
 	checkdepends = python-regions
-	checkdepends = python-iminuit
-	checkdepends = python-sherpa
-	checkdepends = jupyter-nbformat
-	checkdepends = python-sphinx
-	checkdepends = python-yaml
 	checkdepends = python-click
 	checkdepends = python-pydantic
 	makedepends = cython
 	makedepends = python-setuptools-scm
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.18.2.tar.gz
-	md5sums = 64a6d77c1fb87bdfb21478ba13f72632
+	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.19.tar.gz
+	md5sums = 1bf2b6bc0d28fb2b5fd27259316f2148
 
 pkgname = python-gammapy
-	depends = python>=3.6
+	depends = python>=3.7
 	depends = python-yaml>=5.1
-	depends = python-astropy>=4.0
-	depends = python-regions>=0.4
+	depends = python-astropy>=4.1
+	depends = python-regions>=0.5
 	depends = python-click>=7.0
 	depends = python-pydantic>=1.0
 	optdepends = python-iminuit: For fitting by optimization
@@ -39,4 +34,3 @@ pkgname = python-gammapy
 	optdepends = python-naima: For SED modeling
 	optdepends = python-sherpa: For modelling and fitting
 	optdepends = python-parfive: For example data and tutorial notebook download
-
