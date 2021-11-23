@@ -1,0 +1,18 @@
+pkgbase = chowmatrix-git
+	pkgdesc = CHOW Matrix is a delay effect, made up of an infinitely growable tree of delay lines, each with individual controls for feedback, panning, distortion, and more.
+	pkgver = v1.2.0.r36.g045fd75
+	pkgrel = 1
+	url = https://github.com/Chowdhury-DSP/ChowMatrix
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = gtk2
+	depends = webkit2gtk
+	depends = freetype2
+	depends = alsa-lib
+	source = chowmatrix-git::git+https://github.com/Chowdhury-DSP/ChowMatrix.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = chowmatrix-git
