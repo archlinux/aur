@@ -19,9 +19,21 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Removed
 
+## 3.34.1
+
+### Added
+
+- For internal use only: Allow exec mode to read step cache files from the current working directory.
+
+### Fixed
+
+- For internal use only: Fix an off-by-one error in the JSON log UI.
+
 ## 3.34.0
 
-No changes; this is a re-release of 3.33.8 to align with the release of Sourcegraph 3.34.
+### Added
+
+- Bare repositories can now be served with `src serve-git`. Thanks to [Andreas Rammhold](https://github.com/andir) for the contribution! [#639](https://github.com/sourcegraph/src-cli/pull/639)
 
 ## 3.33.8
 
