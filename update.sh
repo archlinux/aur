@@ -30,7 +30,7 @@ sed -i -e '/^_package-docs() {/,/^}/d' PKGBUILD
 sed -i -e '/^pkgname=/s/ "$pkgbase-docs"//' PKGBUILD
 
 echo "Building package"
-time (makepkg --skippgpcheck -CcL)
+time (makepkg --skippgpcheck -CcL >/dev/null)
 
 for p in *.pkg.tar.zst; do
     mv $p repo
