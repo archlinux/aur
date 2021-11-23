@@ -2,7 +2,7 @@
 
 pkgname=cutefish-qt-plugins-git
 _pkgname=cutefish-qt-plugins
-pkgver=0.5.r0.g3e80e6f
+pkgver=0.5.r1.gb60cdd4
 pkgrel=1
 pkgdesc="Unify Qt application style of CutefishOS"
 arch=('x86_64')
