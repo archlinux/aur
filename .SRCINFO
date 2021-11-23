@@ -1,0 +1,14 @@
+pkgbase = python-jupyter-server-proxy
+	pkgdesc = Jupyter server extension to supervise and proxy web services
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/jupyterhub/jupyter-server-proxy
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/j/jupyter-server-proxy/jupyter-server-proxy-3.1.0.tar.gz
+	sha256sums = 30d57976090980f4380cb0a80e8e829dfd74d0a19edb64329239def9feefcde4
+
+pkgname = python-jupyter-server-proxy
+	depends = python
