@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.7.2.r4.gc92f35239
+pkgver=1.7.2.r11.g6e651269b
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -38,7 +38,6 @@ backup=(
 )
 source=("${pkgname}::git+https://github.com/fwupd/fwupd.git")
 sha512sums=('SKIP')
-BUILDENV+=('!check')  # temporary measure for https://github.com/fwupd/fwupd/issues/4014
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
