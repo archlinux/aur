@@ -5,8 +5,6 @@ mkdir -p ~/.local/share/lunarvim
 ln -s /usr/share/lunarvim ~/.local/share/lunarvim/lvim
 
 echo -e "\033[1;32m==> Installing dependencies of NodeJS & Rust...\033[0m"
-npm install -g neovim
-npm install -g tree-sitter-cli
 yarn global add neovim
 yarn global add tree-sitter-cli
 cargo install fd-find
@@ -32,7 +30,8 @@ ln -s /usr/share/lunarvim/prebuild/nvim-treesitter/parser-info/* \
 echo -e "\033[1;32m==> Generate the new ftplugin template files..\033[0m"
 lvim --headless +LvimUpdate +q
 
-echo
+echo -e "\033[1;32m===============================================\033[0m"
 echo "lunarvim runtime is inited for $(whoami)"
 echo "clean up by:"
 echo "    rm -rf ~/.config/lvim ~/.local/share/lunarvim"
+echo -e "\033[1;32m===============================================\033[0m"
