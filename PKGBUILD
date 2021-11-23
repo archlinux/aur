@@ -4,8 +4,8 @@
 
 pkgname=linux-usermode-nokmod
 _kernelname=-user
-_major=5.14
-_minor=15
+_major=5.15
+_minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -19,9 +19,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.sign"
         'config')
 
-sha256sums=('74f39a0c69e9d7c94d290515645396725e3ce3667b85baf4b3c3f6f303c7a406'
+sha256sums=('549d0fb75e65f6158e6f4becc648f249d386843da0e1211460bde8b1ea99cbca'
             'SKIP'
-            '5114673d1e8293a49d5870d29f257f9f853913c9f959f389798556b9215a81d7')
+            'b8081bd08abd333b5a41077ccef43c201f565c4bb6fa705392a05f49a6d21bd0')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
