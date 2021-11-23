@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-miscfilters-obsolete-git
+	pkgdesc = Plugin for Vapoursynth: miscfilters-obsolete (GIT version)
+	pkgver = R2.3.gd87e01b
+	pkgrel = 1
+	url = https://github.com/vapoursynth/vs-miscfilters-obsolete
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	depends = fftw
+	provides = vapoursynth-plugin-miscfilters-obsolete
+	source = miscfilters-obsolete::git+https://github.com/vapoursynth/vs-miscfilters-obsolete
+	sha256sums = SKIP
+
+pkgname = vapoursynth-miscfilters-obsolete-git
