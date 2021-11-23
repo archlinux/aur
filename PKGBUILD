@@ -1,13 +1,13 @@
 # Maintainer: Victor <victor@xirion.net>
 pkgname=krew
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Krew is the package manager for kubectl plugins'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://krew.sigs.k8s.io/'
 license=('Apache')
 provides=('krew')
-conflicts=('kew-bin')
+conflicts=('krew-bin')
 depends=('kubectl' 'git')
 makedepends=('go')
 install=kubectl-krew.install
