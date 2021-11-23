@@ -1,19 +1,12 @@
 pkgbase = lst
 	pkgdesc = A shitty file manager written in C99
 	pkgver = 1.0.0
-	pkgrel = 3
-	url = https://github.com/ItzAfroBoy/lst.git
+	pkgrel = 4
+	url = https://github.com/ItzAfroBoy/lst
 	arch = any
 	license = GPL3
-	source = lst.c
-	source = lst.h
-	source = Makefile
-	source = LICENSE
-	source = README.md
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	depends = txt
+	source = lst-1.0.0.tar.gz::https://github.com/ItzAfroBoy/lst/archive/refs/tags/1.0.0.tar.gz
+	md5sums = bd566d85601795e8ea8447f5952c0bd8
 
 pkgname = lst
