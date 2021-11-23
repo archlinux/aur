@@ -12,7 +12,7 @@
 
 --- a/xattr.c
 +++ b/xattr.c
-@@ -530,11 +530,8 @@
+@@ -532,11 +532,8 @@
  /*
   * ntfs_get_acl - inode_operations::get_acl
   */
