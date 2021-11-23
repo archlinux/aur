@@ -4,7 +4,7 @@
 pkgname=claws-mail-gtk2
 _pkgname=claws-mail
 pkgver=3.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ based e-mail client."
 arch=('x86_64' 'i686')
 license=('GPL3')

@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2
 	pkgdesc = A GTK+ based e-mail client.
 	pkgver = 3.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.claws-mail.org
 	arch = x86_64
 	arch = i686
