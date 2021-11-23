@@ -1,7 +1,7 @@
-pkgbase = keyboard-configurator
+pkgbase = keyboard-configurator-git
 	pkgdesc = Configures keymap and backlight of System76 keyboards.
 	pkgver = 1.1.0
-	pkgrel = 5
+	pkgrel = 3
 	url = https://github.com/pop-os/keyboard-configurator
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = keyboard-configurator
 	depends = gtk3
 	depends = hidapi
 	depends = xz
-	source = keyboard-configurator::git+https://github.com/pop-os/keyboard-configurator
+	source = keyboard-configurator-git::git+https://github.com/pop-os/keyboard-configurator
 	sha256sums = SKIP
 
-pkgname = keyboard-configurator
+pkgname = keyboard-configurator-git

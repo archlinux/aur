@@ -1,5 +1,5 @@
 # Maintainer: Aaron Honeycutt <aaron at system76 dot com>
-pkgname=keyboard-configurator
+pkgname=keyboard-configurator-git
 pkgver=1.1.0
 pkgrel=3
 pkgdesc="Configures keymap and backlight of System76 keyboards."
