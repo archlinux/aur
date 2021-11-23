@@ -6,7 +6,7 @@ _pkgname=bahn-regio-entfernungsrechner
 pkgname="${_pkgname}"
 epoch=1
 pkgver=3.2d_20210104
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculates tariff-kilometres for subscription tickets for DB regio. Upstream name: Entfernungsrechner für Fahrvergünstigungen."
 arch=(
   'i686'
@@ -31,6 +31,7 @@ provides=(
 )
 
 conflicts=(
+  "${_pkgname}-bin"
   "${_pkgname}-latest"
 )
 
