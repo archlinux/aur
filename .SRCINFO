@@ -1,0 +1,16 @@
+pkgbase = python2-fmm
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/cyang-kth/fmm
+	arch = x86_64
+	makedepends = cmake
+	makedepends = python2
+	makedepends = boost
+	makedepends = swig
+	depends = boost-libs
+	depends = python-gdal
+	depends = gdal
+	source = https://github.com/cyang-kth/fmm/archive/refs/tags/v0.1.1.tar.gz
+	md5sums = 5c2837a5cdf56214920c14d320fd2fe9
+
+pkgname = python2-fmm

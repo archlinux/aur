@@ -1,0 +1,24 @@
+diff --color -ruN CMakeLists.txt CMakeLists.txt
+--- CMakeLists.txt	2020-12-04 09:54:37.000000000 -0300
++++ CMakeLists.txt	2021-11-23 12:05:32.629366903 -0300
+@@ -27,7 +27,7 @@
+ 
+ set(CMAKE_BUILD_TYPE "Release")
+ set(CMAKE_CXX_FLAGS "-O3 -DSPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE")
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 14)
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/build")
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+diff --color -ruN python/CMakeLists.txt python/CMakeLists.txt
+--- python/CMakeLists.txt	2020-12-04 09:54:37.000000000 -0300
++++ python/CMakeLists.txt	2021-11-23 12:04:51.516284134 -0300
+@@ -18,7 +18,7 @@
+ endif()
+ 
+ execute_process(
+-  COMMAND python -c "from distutils.sysconfig import get_python_lib;print get_python_lib()"
++  COMMAND python2 -c "from distutils.sysconfig import get_python_lib;print get_python_lib()"
+   OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
+ message(STATUS "Python packages ${PYTHON_SITE_PACKAGES}")
+ 
