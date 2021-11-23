@@ -3,7 +3,7 @@
 pkgname=yabridge-bin
 _pkgname=yabridge
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux (includes yabridgectl)"
 epoch=
 arch=('x86_64')
@@ -26,7 +26,7 @@ package() {
   install yabridge-{host,group}-32.exe{,.so} "$pkgdir/usr/bin"
 
   install -dm755 "$pkgdir/usr/lib"
-  install libyabridge-{vst2,vst3}.so "$pkgdir/usr/bin"
+  install libyabridge-{vst2,vst3}.so "$pkgdir/usr/lib"
 
   install yabridgectl "$pkgdir/usr/bin"
 }
