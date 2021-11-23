@@ -39,6 +39,7 @@ pkgbase = firefox-wayland-hg
 	depends = libpulse
 	depends = xorg-server-xwayland
 	depends = libvpx
+	depends = libwebp
 	depends = libjpeg
 	depends = zlib
 	depends = libevent
