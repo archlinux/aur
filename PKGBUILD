@@ -2,19 +2,19 @@
 pkgname=stillalive
 pkgver=1
 gitver=n${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Log into GLaDOS to see the "still alive" message in realtime!'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('GPL3')
 depends=(
     'mplayer'
-    'youtube-dl'
+    'yt-dlp'
     'bash'
 )
 provides=('stillalive.sh')
 source=("stillalive.sh")
-sha256sums=('ea98b0e4554f4ddc384845db60c53332b95b3f87ddd678236138b99f400c7e41')
+sha256sums=('993001c8f621593d959a0c3e324ff8daaf9b3f57b89422f9477037fdd80da54f')
 
 prepare() {
 	echo "GLaDOS booting up ..."

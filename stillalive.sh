@@ -164,7 +164,7 @@ echo '           .-;+$XXHHHHHX$+;-.            '
 #Prereqs & Preparation
 echo -e "${BYELLOW}DEBUG: Checkin needed binaries...${NOCOLOR}"
 which mplayer || exit 2
-which youtube-dl || exit 2
+which yt-dlp || exit 2
 echo -e "${BGREEN}DEBUG: You have all the binaries you need!...${NOCOLOR}"
 
 if ! [ -f /var/cache/stillalive/Portal_-_Still_Alive.mp3 ]; then
