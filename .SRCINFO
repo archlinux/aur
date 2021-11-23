@@ -1,0 +1,23 @@
+pkgbase = gittyup
+	pkgdesc = Graphical Git client (GitAhead fork)
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/Murmele/Gittyup
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = qt5-translations
+	depends = cmark
+	depends = libgit2
+	depends = libssh2
+	depends = org.freedesktop.secrets
+	depends = qt5-base
+	source = Gittyup-gittyup_v1.0.0.tar.gz::https://github.com/Murmele/Gittyup/archive/refs/tags/gittyup_v1.0.0.tar.gz
+	source = gittyup.desktop
+	sha256sums = 63b1b68a5f1968202b423a577cc8777d52c08076abb9325a975f4b251d6734c9
+	sha256sums = fb900e4d101c19a5b3e1dc4c7619780e1d38fd78d0b9d951e794fbf36eebf21a
+
+pkgname = gittyup

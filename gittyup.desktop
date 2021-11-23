@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gittyup
+Comment=Graphical Git client (GitAhead fork)
+Exec=gittyup
+Icon=gittyup
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Development;Documentation;
+MimeType=text/plain;
