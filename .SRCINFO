@@ -1,6 +1,6 @@
 pkgbase = oomd
 	pkgdesc = A userspace out-of-memory killer.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/facebookincubator/oomd
 	install = oomd.install
@@ -15,8 +15,7 @@ pkgbase = oomd
 	provides = oomd
 	conflicts = oomd-git
 	backup = etc/oomd/oomd.json
-	source = oomd-0.4.0.tar.gz::https://github.com/facebookincubator/oomd/archive/v0.4.0.tar.gz
-	sha512sums = 6bf5668eedd093666abf290ec8a864e4028deb29605a35da31d8ba9eb4ae18322ec0bb214e683d5c5a8c2e1fdf17d3f81645ca0ff9a07316a172e2a7765de046
+	source = oomd-0.5.0.tar.gz::https://github.com/facebookincubator/oomd/archive/v0.5.0.tar.gz
+	sha512sums = 1841245c56c9de359b8b9d5e03325430e5b1300b6210f94d810ba3857506658ba9162460baf5ae683a797b534215baa30cefca6daa207d257e30b7c5bd1ac33d
 
 pkgname = oomd
-
