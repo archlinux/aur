@@ -1,7 +1,7 @@
 pkgbase = mpv-libunity-git
 	pkgdesc = MPV progress bar on your panel/dock using libunity specification. (GIT version)
-	pkgver = r6.ef1c45c
-	pkgrel = 2
+	pkgver = r8.e111b49
+	pkgrel = 1
 	url = https://github.com/mrlotfi/mpv-libunity
 	install = mpv-libunity-git.install
 	arch = x86_64
