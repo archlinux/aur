@@ -22,5 +22,5 @@ build() {
 
 package() {
   cd "$srcdir/$_yabridge-$pkgver/tools/yabridgectl"
-  install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
 }
