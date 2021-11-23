@@ -22,7 +22,7 @@ provides=('fake-background-webcam')
 conflicts=('fake-background-webcam')
 arch=('x86_64')
 url="https://github.com/fangfufu/Linux-Fake-Background-Webcam"
-license=("GPL")
+license=("GPL3")
 makedepends=('git')
 source=("${pkgname%-git}::git+${url}.git"
   "${pkgname%-git}@.service"
