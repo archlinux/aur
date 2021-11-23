@@ -110,7 +110,7 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
-ac_add_options --with-system-libwebp
+ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
