@@ -1,6 +1,6 @@
 pkgbase = byond
 	pkgdesc = Game server based on the 'Byond' language [Build your own net dream].
-	pkgver = 514.1569
+	pkgver = 514.1570
 	pkgrel = 1
 	url = https://secure.byond.com/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = byond
 	depends = libstdc++5
 	depends = ncurses
 	depends = gcc-libs
-	source = https://secure.byond.com/games/download/build/514/514.1569_byond_linux.zip
-	md5sums = 022fa4a8230651332dae63a3528eca9a
+	source = https://secure.byond.com/games/download/build/514/514.1570_byond_linux.zip
+	md5sums = f34a0328f9c361d84c3fb6b9b8e553e0
 
 pkgname = byond
