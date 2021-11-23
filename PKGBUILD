@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=megapixels
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='GTK4 camera application that knows how to deal with the media request api'
 url='https://gitlab.com/postmarketOS/megapixels'
@@ -10,7 +10,7 @@ arch=(x86_64 aarch64)
 depends=(gtk4 zbar)
 makedepends=(meson)
 source=("${url}/-/archive/${pkgver}/megapixels-${pkgver}.tar.gz")
-sha256sums=('5b501f8b7971a56b59889b10c3ab613781c92173655a2fdfc656a96c032fd341')
+sha256sums=('cffa2ad504d3e1d693495da9854241af8db32f393f217c3fb67e4294f5e7c00a')
 
 build() {
 	arch-meson ${pkgname}-${pkgver} build
