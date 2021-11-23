@@ -1,0 +1,14 @@
+pkgbase = fnlfmt-git
+	pkgdesc = Format your Fennel!
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://git.sr.ht/~technomancy/fnlfmt
+	arch = any
+	license = GPL3
+	makedepends = lua
+	makedepends = make
+	depends = lua
+	source = git+https://git.sr.ht/~technomancy/fnlfmt
+	sha256sums = SKIP
+
+pkgname = fnlfmt-git
