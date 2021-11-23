@@ -2,7 +2,7 @@
 
 pkgname=k8s-ldap-auth
 pkgdesc="Kubernetes webhook token authentication plugin implementation using ldap."
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/vbouchaud/k8s-ldap-auth"
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-    "3ad203d70ac8ed1be0b5806a527d708da084807b5fc8d496c07d7bb9c99c0298"
+    "2517c85e6c6e0aebd0062e3e5391511f7b50d6d4237796426e2f1ffb17a7b94d"
 )
 
 build() {
