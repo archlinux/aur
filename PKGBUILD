@@ -1,7 +1,7 @@
 # Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
 _pkgname=remoteplaywhatever
 pkgname=${_pkgname}-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('wxgtk-common' 'wxgtk3')
 source=(
   ${pkgname}-${pkgver}.deb::https://github.com/m4dEngi/${_pkgname}/releases/download/${pkgver}-alpha/${_pkgname}-${pkgver}-Linux.deb
 )
-sha512sums=('26a75d5753f75ab4195157a7dd79bd18d2db9da899c43a10dc3f7e5ba857b191580f7525d2c7b1f9daf7eebc123c347d7b73e64b0b6049727c44cc944207527f')
+sha512sums=('9d3a72e289f6f8e7d51cee04d018b01e47e0b25193dcddf0e81c9d20053b88ba6885f2439c9da00b3889b2eaecc3220c5f7d3bd86e947d46d2ea72c0de4e6958')
 
 prepare() {
   cd "$srcdir"
