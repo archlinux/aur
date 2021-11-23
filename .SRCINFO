@@ -1,0 +1,14 @@
+pkgbase = python-simpervisor
+	pkgdesc = Simple async process supervisor
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/yuvipanda/simpervisor
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/simpervisor/simpervisor-0.4.tar.gz
+	sha256sums = cec79e13cdbd6edb04a5c98c1ff8d4bd9713e706c069226909a1ef0e89d393c5
+
+pkgname = python-simpervisor
+	depends = python
