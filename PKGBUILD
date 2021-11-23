@@ -1,5 +1,4 @@
-# Maintainer: Nick Cao <nickcao@nichi.co>
-# Previous Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
+# Maintainer: Topik <topik@topik.tech>
 
 pkgname=oomd
 pkgver=0.4.0
