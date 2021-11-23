@@ -21,11 +21,12 @@ sha256sums=('46a68052157bd30c4aeb5b0eb84154582408eb099377716e3690518dec048384')
 package() {
   cd "$srcdir/$_pkgname"
 
-  install -dm755 "${pkgdir}"/usr/bin
-  install yabridge-{host,group}{,-32}.exe{,.so} "${pkgdir}"/usr/bin
+  install -dm755 "$pkgdir/usr/bin"
+  install yabridge-{host,group}.exe{,.so} "$pkgdir/usr/bin"
+  install yabridge-{host,group}-32.exe{,.so} "$pkgdir/usr/bin"
 
-  install -dm755 "${pkgdir}"/usr/lib
-  install libyabridge-{vst2,vst3}.so "${pkgdir}"/usr/lib
+  install -dm755 "$pkgdir/usr/lib"
+  install libyabridge-{vst2,vst3}.so "$pkgdir/usr/bin"
 
-  install yabridgectl "${pkgdir}"/usr/bin
+  install yabridgectl "$pkgdir/usr/bin"
 }
