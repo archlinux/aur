@@ -1,6 +1,6 @@
 pkgbase = blueman-git
 	pkgdesc = A GTK+ Bluetooth Manager (BlueZ 5) - git
-	pkgver = 2.2.1.r1.g08bbd44a
+	pkgver = 2.2.1.r27.g4238d43f
 	pkgrel = 1
 	url = https://github.com/blueman-project/blueman
 	install = blueman-git.install
