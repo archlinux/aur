@@ -2,12 +2,12 @@
 
 pkgname=gridwars-git
 pkgver=r14.7249699
-pkgrel=1
+pkgrel=2
 pkgdesc="Grid Wars 2: A clone of Geometry Wars"
 _bmver="0.129.3.45"
 _srcname="GridWars"
 arch=('x86_64')
-url="http://gridwars.marune.de/"
+url="https://github.com/mmatyas/GridWars"
 license=('GPL')
 depends=('libglvnd' 'libxdmcp' 'libxxf86vm' 'libxau' 'libxft' 'libx11' 'glu')
 makedepends=('git')

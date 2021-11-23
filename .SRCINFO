@@ -1,8 +1,8 @@
 pkgbase = gridwars-git
 	pkgdesc = Grid Wars 2: A clone of Geometry Wars
 	pkgver = r14.7249699
-	pkgrel = 1
-	url = http://gridwars.marune.de/
+	pkgrel = 2
+	url = https://github.com/mmatyas/GridWars
 	arch = x86_64
 	license = GPL
 	makedepends = git
