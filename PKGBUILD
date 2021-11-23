@@ -2,7 +2,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -28,7 +28,7 @@ conflicts=(
     'urxvt-perls-git'
 )
 source=(
-    http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
+    http://dist.schmorp.de/rxvt-unicode/Attic/$_pkgname-$pkgver.tar.bz2
     'urxvt.desktop'
     'urxvtc.desktop'
     'urxvt-tabbed.desktop'
