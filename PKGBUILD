@@ -14,7 +14,7 @@ source=($pkgname-$pkgver.tar.gz::"https://github.com/djyt/cannonball/archive/v$p
        "$pkgname.desktop"
        "$pkgname.sh")
 sha256sums=('e2cf8e21619b183a9fd835ae34ce65fb3d014c2fea37723fc8ba05681ed317ce'
-            '3ebe54dc6840439dcf4ed4fdc561e0bcb2f6089d57dc8559a0d9cead8b4e0639'
+            '04d0c0e9252bccfef97bb59c9e89376461f9b52845570b2ebc14610ce74cf1ff'
             '582b6dd0ec05ba132ac0084002d6181ce80c7bc550ed57057d884e312009c196')
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver/build
 
-  cmake ../cmake -Wno-dev -DTARGET=linux.cmake -B .
+  cmake ../cmake -Wno-dev -DTARGET=linux.cmake -DOpenGL_GL_PREFERENCE=GLVND -B .
   make
 }
 

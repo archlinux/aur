@@ -2,10 +2,9 @@
 [Desktop Entry]
 Type=Application
 Version=0.34
-Name=Cannonball
+Name=CannonBall
 GenericName=Enhanced OutRun Engine
 Icon=cannonball
 Exec=cannonball
 Terminal=false
-Categories=Game;ArcadeGame;
-X-Desktop-File-Install-Version=0.26
+Categories=Game;ArcadeGame;Emulator
