@@ -1,0 +1,7 @@
+pkgbase = orchis-theme-bin
+	pkgver = 2021.10.27
+	pkgrel = 2
+	arch = x86_64
+	options = !strip
+
+pkgname = orchis-theme-bin
