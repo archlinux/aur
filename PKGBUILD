@@ -2,7 +2,7 @@
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
 pkgname=thelounge
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
@@ -27,7 +27,15 @@ sha256sums=('2e956eea3d18dc0f0ce508685c25843012fe353528853f1608d4b9997aa5913e'
 package() {
     export NODE_ENV=production
 
-    npm install -g --user root --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz" --cache "${srcdir}/npm-cache"
+    npm install -g --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz" --cache "${srcdir}/npm-cache"
+
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "${pkgdir}"
 
     echo /etc/thelounge > "$pkgdir/usr/lib/node_modules/$pkgname/.thelounge_home"
 
@@ -41,8 +49,4 @@ package() {
     # setting up system user
     install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/thelounge.conf"
     install -Dm644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/thelounge.conf"
-
-    # Non-deterministic race in npm gives 777 permissions to random directories.
-    # See https://github.com/npm/npm/issues/9359 for details.
-    find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }

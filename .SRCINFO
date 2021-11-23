@@ -1,7 +1,7 @@
 pkgbase = thelounge
 	pkgdesc = Modern self-hosted web IRC client
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thelounge.chat/
 	arch = any
 	license = MIT
