@@ -4,7 +4,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-yoga9
-pkgver=5.14.15.arch1
+pkgver=5.15.4.arch1
 pkgrel=1
 pkgdesc='Linux for Lenovo Yoga9'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -21,7 +21,6 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
-  'sw_lid.patch'      # the patch for the lid switch
   '0001-ucsi.patch'   # Patch for UCSI fix (1/7)
   '0002-ucsi.patch'   # Patch for UCSI fix (2/7)
   '0003-ucsi.patch'   # Patch for UCSI fix (3/7)
@@ -37,8 +36,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060' # config
-            '0219bfd9264d0f8d8bc837da1f385984ba84e3152c008b8781f8ca740be24a0b' # sw_lid.ptach
+            'e2d8d59ee965f5fabcb9dd15b70074798e168ccdbd75a9540390c281279f113d' # config
             'debca80bf2c2019d99559a69c60d3a073988b7dd848b83294e6e06f7a3028bf1' # 0001-ucsi.patch
             '5c43de1d1c6e83b930f730a3001d46478ec8559fed092857b24330ae0f25fed7' # 0002-ucsi.patch
             '0ed3a757cb4501d92dfcb46b51fe46ee96276d936d5a4fe844a7c1fc10c237b0' # 0003-ucsi.patch
