@@ -5,7 +5,7 @@
 
 pkgbase=linux-yoga9
 pkgver=5.15.4.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux for Lenovo Yoga9'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
@@ -28,6 +28,7 @@ source=(
   '0005-ucsi.patch'   # Patch for UCSI fix (5/7)
   '0006-ucsi.patch'   # Patch for UCSI fix (6/7)
   '0007-ucsi.patch'   # Patch for UCSI fix (7/7)
+  'drm-intel.patch'   # Patch for DRM Intel from https://gitlab.freedesktop.org/drm/intel/-/issues/4530
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -44,6 +45,7 @@ sha256sums=('SKIP'
             'c1f454e0141d6e85166e3cece392730347fe8634347735a27467a35c75eecc8d' # 0005-ucsi.patch
             '1c3b545ca3cb880f3e8735c68e81b6865d8efc2f71bfb3ad8d5490b56fb6667b' # 0006-ucsi.patch
             '164f537f87235bf6d66621de34348a5ea0f1d87a47e45bf761d3fb75267fd4f4' # 0007-ucsi.patch
+            'fe0d99140fa0f544cba50c3509996e07cb6d6571987c7984a5b66899c0f58d57' # drm-intel.patch
             )
 
 export KBUILD_BUILD_HOST=archlinux
