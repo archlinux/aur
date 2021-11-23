@@ -4,17 +4,22 @@
 # PKGBUILD reference: https://wiki.archlinux.org/index.php/PKGBUILD
 
 pkgname=bash-it-git
-pkgver=r2382.b973bb1
+pkgver=r3521.447c89aa
 pkgrel=1
 pkgdesc='A community Bash framework'
 arch=('any')
 url='https://github.com/Bash-it/bash-it'
 license=('custom:undecided')
 depends=('bash' 'coreutils' 'curl' 'p7zip')
-makedepends=('git')
+makedepends=(
+  'git'
+  'make'
+  'python-sphinx'
+  'python-sphinxemoji'
+  'python-sphinx_rtd_theme'
+)
 optdepends=(
   'autojump: plugin'
-  'base-devel: `makefile` completion'
   'docker: plugin'
   'git: theme integration, multiple alias/completion/plugin modules'
   'hub: completion, plugin'
@@ -53,12 +58,18 @@ pkgver() {
     "$(git -C "${pkgname}" rev-parse --short HEAD)"
 }
 
+build() {
+  cd "${srcdir}/${pkgname}/docs"
+  make man
+}
+
 package() {
   # All upstream-provided files go into the /usr hierarchy
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/man/man1"
 
   cp --preserve=mode -t \
     "${pkgdir}/usr/share/licenses/${pkgname}" \
@@ -66,8 +77,11 @@ package() {
 
   cp -r --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}" \
     "${srcdir}/${pkgname}"/{bash_it,install,uninstall}.sh \
-    "${srcdir}/${pkgname}"/{aliases,completion,custom,lib} \
-    "${srcdir}/${pkgname}"/{plugins,scripts,themes}
+    "${srcdir}/${pkgname}"/{aliases,completion,custom,hooks} \
+    "${srcdir}/${pkgname}"/{lib,plugins,scripts,themes,vendor}
+
+  cp -r --preserve=mode -t "${pkgdir}/usr/share/man/man1" \
+    "${srcdir}/${pkgname}/docs/_build/man/bash-it.1"
 
   # Copy warning shim to `lib/custom.bash`
   cp --preserve=mode \
@@ -88,10 +102,10 @@ package() {
   done
 
   cp --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    "${srcdir}/${pkgname}"/*.md
+    "${srcdir}/${pkgname}"/docs/*.md
 
   # This is where things get a little tricky.
-  # 
+  #
   # Bash-it requires a particular structure where
   # both user-customizable and upstream-provided scripts
   # share the same directories.
@@ -141,8 +155,8 @@ package() {
   # Create symlinks to remaining files
   ln -fs \
     "/usr/lib/${pkgname}"/{bash_it,install,uninstall}.sh \
-    "/usr/lib/${pkgname}"/{lib,scripts,themes} \
+    "/usr/lib/${pkgname}"/{hooks,lib,scripts,themes,vendor} \
     "/usr/share/${pkgname}"/{.editorconfig,template} \
-    "/usr/share/doc/${pkgname}"/{CONTRIBUTING,DEVELOPMENT,README}.md \
+    "/usr/share/doc/${pkgname}"/README.md \
     "${_factorydir}/"
 }
