@@ -1,7 +1,11 @@
 pkgbase = tela-icon-theme-bin
 	pkgver = 2021.11.04
 	pkgrel = 2
-	arch = x86_64
+	arch = any
+	makedepends = wget
+	makedepends = curl
+	provides = tela-icon-theme
+	conflicts = tela-icon-theme
 	options = !strip
 
 pkgname = tela-icon-theme-bin
