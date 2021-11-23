@@ -1,13 +1,13 @@
 pkgbase = papilio-designlab
 	pkgdesc = It is an IDE specially designed to get you up and running quickly with Soft Processors on the Papilio FPGA boards
 	pkgver = 1.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://forum.gadgetfactory.net/index.php?/files/file/236-papilio-designlab-ide/
 	install = papilio-designlab.install
 	arch = x86_64
 	arch = i686
 	license = custom
-	depends = java-runtime
+	depends = java-runtime=8
 	options = !strip
 	options = staticlibs
 	source = designlab
@@ -24,4 +24,3 @@ pkgbase = papilio-designlab
 	md5sums_i686 = abf1d56ca2957e459455fb861ab3d9d6
 
 pkgname = papilio-designlab
-
