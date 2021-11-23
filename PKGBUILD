@@ -1,4 +1,5 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Danilo <aur ät dbrgn döt ch>
+# Submitter: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
@@ -9,8 +10,14 @@ pkgdesc="The Transifex command-line tool to download and upload translations fro
 arch=('any')
 url="http://pypi.python.org/pypi/transifex-client"
 license=('GPL2')
-depends=('python-distribute' 'python-urllib3' 'python-six' 'python-requests'
-         'python-slugify' 'python-gitpython')
+depends=(
+  'python-distribute'
+  'python-urllib3'
+  'python-six'
+  'python-requests'
+  'python-slugify'
+  'python-gitpython'
+)
 source=("https://pypi.io/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('b0aa25ebb9516983c56bb060f4a35ad6b0eb3684fd0ed51de3c358f23a8ad62c')
 
@@ -28,3 +35,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root=${pkgdir} --optimize=1
 }
+
+# vim:set ts=2 sw=2 et:
