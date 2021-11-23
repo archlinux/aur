@@ -4,7 +4,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=subsurface
-pkgver=5.0.3
+pkgver=5.0.5
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://github.com/subsurface/subsurface'
@@ -31,8 +31,10 @@ makedepends=(
 	'libusb'
 	'qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('79049d2bb31ec6ebf4580a51bf249a97f57c2a1e340804fabeb7a453e14d18594d8938b7eab349fb0bdb194caf6c207315edcd1128085591d6a7d05d0bbcd20b')
-b2sums=('a3fc4be21e5055db68d6969781a8592bd461f8aa02130c9c29276d8046dac272616e8f19e298eeb24911f338bdce03e06eb0ea1d7b0cabb3948f30f8c28e51da')
+sha512sums=('c486d04f3e566391f9adb3651867b6cc5fa6c5723aa02af2a3eea60219d83908096345b7be8d08270d19403096b7497acb34e7d76680b2a6c090cd11c4146c40')
+b2sums=('f654fc8e39bb75549652b8e76c041fcff2f2e53e6e2f14d8052a0b4413b631434145130945d9e9870da018856ca2735d4a3bef6e1dc35a8409f14994333600c0')
+
+PURGE_TARGETS=(*.debug)
 
 # qt5-webkit still used for: printing, manual
 
@@ -40,6 +42,7 @@ build() {
 	cmake \
 		-B build \
 		-S "$pkgname-$pkgver" \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBDIVECOMPUTER_INCLUDE_DIR=/usr/include/libdivecomputer \
 		-Wno-dev
