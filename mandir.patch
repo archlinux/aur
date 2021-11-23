@@ -1,0 +1,11 @@
+--- bibclean/Makefile.in	2021-03-11 22:50:33.000000000 +0100
++++ bibclean/Makefile.in	2021-11-23 00:00:00.000000000 +0100
+@@ -120,7 +120,7 @@
+ VPATH           = @srcdir@
+ 
+ ### Where to install the manual pages.
+-mandir          = ${prefix}/man/man1
++mandir          = ${prefix}/share/man/man1
+ ### Extension (not including `.') for the installed manual page filenames.
+ manext          = 1
+ 

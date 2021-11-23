@@ -1,32 +1,47 @@
-# Maintainer: Gil Forsyth <gilforsyth@gmail.com>
-# Contributor: Jason Ford <jeford93@gmail.com>
+# Maintainer: Hendrikto <hendrik.to@gmail.com>
 
-pkgname=bibclean
-pkgver=2.17
-pkgrel=2
-pkgdesc="BibTeX bibliography file prettyprinter and syntax checker"
-license=(GPL3)
-arch=('i686' 'x86_64')
-url="http://ftp.math.utah.edu/pub//bibclean/"
-source=(http://ftp.math.utah.edu/pub//$pkgname/$pkgname-$pkgver.tar.gz)
-makedepends=('gcc')
-md5sums=('797d7791bcefad1ef36445ecb138a92e')
+pkgname='bibclean'
+pkgver='3.06'
+pkgrel=1
+pkgdesc='BibTeX and Scribe bibliography prettyprinter and syntax checker'
+arch=('any')
+url='https://ftp.math.utah.edu/pub/bibclean/'
+license=('GPL') # version 2 or later
+source=(
+	"https://ftp.math.utah.edu/pub/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+	'mandir.patch'
+)
+sha256sums=(
+	'6574f9b8042ba8fa05eae5416b3738a35c38d129f48e733e25878ecfbaaade43'
+	'a31e1f8f9c627e80b4912148743d2d3caaadefac87ed3ac0468b91bc45359cc9'
+)
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  sed -i 's/man\/man1/share\/man\/man1/' Makefile.in
+	cd "${pkgname}-${pkgver}"
+
+	patch -p1 --input="${srcdir}/mandir.patch"
 }
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --mandir=/usr/share/man
-  make all
+	cd "${pkgname}-${pkgver}"
+
+	./configure --mandir='/usr/share/man' --prefix='/usr'
+	make bibclean
+}
+
+check() {
+	cd "${pkgname}-${pkgver}"
+
+	make check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -d "${pkgdir}/usr/bin"
+	cd "${pkgname}-${pkgver}"
 
-  install -d "${pkgdir}/usr/share/man/man1"
-  make prefix=$pkgdir/usr install
+	make DESTDIR="${pkgdir}/" prefix='/usr' install-{bibclean,man}
+
+	# remove duplicates (e.g. bibclean-$pkgver)
+	rm $(find "${pkgdir}" -name "*-${pkgver}*")
 }
+
+# former Maintainer: Gil Forsyth <gilforsyth@gmail.com>
