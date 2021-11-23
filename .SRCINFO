@@ -1,14 +1,14 @@
 pkgbase = python-httpx-socks
 	pkgdesc = HTTP/SOCKS-proxy transports for httpx
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://pypi.org/project/httpx-socks
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	depends = python-python_socks
+	depends = python-python-socks
 	depends = python-httpcore<0.14
 	depends = python-httpx<0.21
 	optdepends = python-async-timeout
