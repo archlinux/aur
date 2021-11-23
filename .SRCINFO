@@ -1,0 +1,11 @@
+pkgbase = ibgateway
+	pkgdesc = IntereactiveBrokers Gateway
+	pkgver = 10.11.2f
+	pkgrel = 1
+	url = https://www.interactivebrokers.com/en/?f=%2Fen%2Ftrading%2Fibgateway-latest.php
+	arch = x86_64
+	license = custom
+	source = https://download2.interactivebrokers.com/installers/ibgateway/latest-standalone/ibgateway-latest-standalone-linux-x64.sh
+	sha512sums = 2c408f47f5a3ab1ad9beb695d514e9ea67eabc1dbc423862111d13adb147e50fd1b953e4681a874cf355cc8c8405bd298138d6263e2dae55a7516bfe1e6b723b
+
+pkgname = ibgateway
