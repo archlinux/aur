@@ -1,0 +1,6 @@
+pkg/
+src/
+miepython-*.tar.gz
+python-miepython-*.tar.gz
+python-miepython-*.tar.zst
+*.log
