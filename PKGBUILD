@@ -2,7 +2,7 @@
 
 pkgname=cutefish-filemanager-git
 _pkgname=cutefish-filemanager
-pkgver=0.5.r4.g48934e1
+pkgver=0.5.r16.gcfb270a
 pkgrel=1
 pkgdesc="Cutefish File Manager, simple to use, beautiful, and retain the classic PC interactive design"
 arch=('x86_64')
