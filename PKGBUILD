@@ -1,51 +1,48 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif-git
-pkgver=0.3.r96.g74ea92b
-pkgrel=3
+pkgver=0.4.r0.g0074d6f
+pkgrel=1
 pkgdesc='Free Lossless Image Format (git version)'
 arch=('x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
-license=('LGPL3' 'Apache')
-depends=('gcc-libs' 'libpng' 'sdl2' 'gdk-pixbuf2' 'glib2')
-makedepends=('git')
+license=('LGPL3' 'Apache' 'custom: CC0 1.0 Universal')
+depends=('libpng')
 optdepends=(
     # official repositories:
+        'gdk-pixbuf2: for gdk-pixbuf loader'
         'imagemagick: for gif2flif tool'
+        'sdl2: for viewflif tool'
     # AUR:
         'apng-utils: for apng2flif tool'
 )
+makedepends=('git' 'gdk-pixbuf2' 'sdl2')
 provides=('flif')
 conflicts=('flif')
 source=('git+https://github.com/FLIF-hub/FLIF.git'
-        'flif-git-fix-makefile-target-install-pixbufloader.patch'
-        'flif-git-remove-apt-get-references-from-tools.patch')
+        'LICENSE-CC0-1.0-Universal'
+        '010-flif-remove-apt-get-references.patch'
+        '020-flif-fix-install.patch'
+        '030-flif-use-arch-flags.patch')
 sha256sums=('SKIP'
-            '4d166a2f462b6d250202f6adf3b7280871fe98bc5385a851135d2473785d5399'
-            'c516d92d4724e319af79bb1ac5d3dde81dac359fd4a02af1ee71239a49d58710')
+            '9b99bfef33dc330e756e48d28be6c8470ac4fc5c2802bdb20dc9f4929a169abc'
+            '4ee963275d0559b470f5869fe6effb76f11517dc98334d12a4d0f150ecd95b65'
+            '7b72dec66d1bbb04597c37ac1715378609efc5076af8d3fffe296b3561ab334d'
+            'b7118224eedf510b215ba71e5c67744aa6616ac1baa854e09705e859772aff24')
 
 prepare() {
-    cd FLIF
-    
-    # fix Makefile target install-pixbufloader
-    patch -Np1 -i "${srcdir}/flif-git-fix-makefile-target-install-pixbufloader.patch"
-    
-    # remove apt-get references from installed tools
-    patch -Np1 -i "${srcdir}/flif-git-remove-apt-get-references-from-tools.patch"
+    patch -d FLIF -Np1 -i "${srcdir}/010-flif-remove-apt-get-references.patch"
+    patch -d FLIF -Np1 -i "${srcdir}/020-flif-fix-install.patch"
+    patch -d FLIF -Np1 -i "${srcdir}/030-flif-use-arch-flags.patch"
 }
 
 pkgver() {
-    cd FLIF
-    
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C FLIF describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd FLIF/src
-    
-    make all decoder viewflif pixbufloader test-interface
+    make -C FLIF/src all decoder viewflif pixbufloader test-interface
     
 }
 
@@ -66,11 +63,6 @@ check() {
 }
 
 package() {
-    cd FLIF/src
-    
-    make PREFIX="${pkgdir}/usr" install{,-dev}
-    make PREFIX="${pkgdir}/usr" install{-decoder,-viewflif,-pixbufloader}
-    
-    # mime type for pixbuf loader
-    install -D -m644 flif-mime.xml -t "${pkgdir}/usr/share/mime/packages"
+    make -C FLIF/src PREFIX="${pkgdir}/usr" install{,-dev,-decoder,-viewflif,-pixbufloader}
+    install -D -m644 LICENSE-CC0-1.0-Universal -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
