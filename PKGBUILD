@@ -5,16 +5,16 @@
 pkgname=wapiti
 
 pkgver=3.0.8
-pkgrel=1
+pkgrel=2
 
-pkgdesc='A comprehensive web app vulnerability scanner written in Python'
+pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
 url="https://$pkgname.sourceforge.net"
 license=('GPL')
 
 makedepends=('python-setuptools' 'python-pip')
 depends=('python-requests' 'python-beautifulsoup4' 'python-lxml' 'python-yaswfp' 'python-browser-cookie3'
-         'python-mako' 'python-python_socks' 'python-tld' 'python-httpx' 'python-httpx-socks'
+         'python-mako' 'python-python-socks' 'python-tld' 'python-httpx' 'python-httpx-socks'
          'python-aiocache' 'python-sqlalchemy')
 optdepends=('python-requests-kerberos: Kerberos authentication'
             'python-requests-ntlm: NTLM authentication')
