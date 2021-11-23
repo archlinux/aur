@@ -1,6 +1,7 @@
 pkgname=tela-icon-theme-bin
 pkgver=2021.11.04
-pkgrel=1
+pkgrel=2
+options=(!strip)
 arch=(x86_64)
 
 src_file=$pkgname-$pkgver.tar.xz
