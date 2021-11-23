@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=94.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -163,7 +163,6 @@ export OBJCOPY='/usr/bin/llvm-objcopy'
 export RANLIB=llvm-ranlib
 export STRIP=llvm-strip
 
-
 # Branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${pkgname}
@@ -173,10 +172,8 @@ ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 
-#export STRIP_FLAGS="--strip-debug --strip-unneeded"
-
 # System libraries
-#ac_add_options --disable-libproxy
+ac_add_options --disable-libproxy
 ac_add_options --enable-system-pixman
 ac_add_options --with-system-av1
 ac_add_options --with-system-ffi
@@ -185,7 +182,7 @@ ac_add_options --with-system-harfbuzz
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libevent
-#ac_add_options --with-system-libvpx
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-webp
@@ -193,20 +190,9 @@ ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --disable-crashreporter
-#ac_add_options --disable-debug
-#ac_add_options --disable-debug-js-modules
-#ac_add_options --disable-debug-symbols
 ac_add_options --disable-gpsd
-#ac_add_options --disable-ipdl-tests
-#ac_add_options --disable-necko-wifi
-#ac_add_options --disable-rust-tests
-#ac_add_options --disable-synth-speechd
 ac_add_options --disable-tests
-#ac_add_options --disable-trace-logging
 ac_add_options --disable-updater
-#ac_add_options --disable-warnings-as-errors
-#ac_add_options --disable-webspeech
-#ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
