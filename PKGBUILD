@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-mm
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="OCaml multimedia library"
 arch=('i686' 'x86_64')
@@ -29,4 +29,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('5a5c788fb95dae7fbb6519aabf72b863da5899fdca2fd5878f99474ce9b790af')
+sha256sums=('aca2fdfe0e3d8f0224d96b1bd14eebc47384db305ca3d6f420186f37ac6194b2')
