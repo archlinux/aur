@@ -1,26 +1,20 @@
-# Maintainer: Fox Kiester <noct[at]openmailbox[dot]org>
+# Maintainer: A.T.W.A. <arch.atwa@gmail.com>
+# Contributor: Fox Kiester <noct[at]openmailbox[dot]org>
 
 pkgname=tdrop
 pkgver=0.4.0
-pkgrel=1
-
-pkgdesc="A WM-Independent dropdown window and terminal creator"
+pkgrel=2
+pkgdesc="Glorified WM-independent dropdown creator"
 arch=('any')
 url="https://github.com/noctuid/tdrop"
-license=('Simplified BSD')
-
-depends=('bash' 'xdotool' 'xorg-xwininfo' 'xorg-xprop')
+license=('BSD')
+depends=('coreutils' 'gawk' 'grep' 'procps-ng' 'xdotool' 'xorg-xprop' 'xorg-xwininfo')
 optdepends=('tmux: session starting support'
-            'tmuxinator: session starting support'
-            'sxhkd: for a tdrop keybinding'
             'xorg-xrandr: multiple monitor resizing support')
-
-source=("https://github.com/noctuid/tdrop/archive/refs/tags/$pkgver.zip")
-sha256sums=('f0cef46ac37703a8fabd5df1133038912206f1319b7c9d70fe7e5ac7b0b9100d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/noctuid/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('ef4c644ad6c2c350b2e0f97ae2712e9871e13a6baef9065bcc1d8125eb073bb1')
 
 package() {
-    make -C "$pkgname-$pkgver" \
-        PREFIX=/usr \
-        DESTDIR="$pkgdir" \
-        install
+    cd "${pkgname}-${pkgver}"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
