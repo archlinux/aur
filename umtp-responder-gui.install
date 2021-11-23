@@ -1,0 +1,7 @@
+post_install() {
+  systemctl enable alarm-usb-gadget.service
+}
+
+post_remove() {
+  systemctl disable alarm-usb-gadget.service
+}
