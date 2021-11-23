@@ -1,0 +1,37 @@
+From 51bc61cd428d8497220999682832842ce366ecc7 Mon Sep 17 00:00:00 2001
+From: Connor Behan <connor.behan@gmail.com>
+Date: Tue, 23 Nov 2021 16:25:43 +0000
+Subject: [PATCH] Find LAPACK more easily
+
+---
+ cmake/external_projects/ElMath/OpenBLAS.cmake | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/external_projects/ElMath/OpenBLAS.cmake b/cmake/external_projects/ElMath/OpenBLAS.cmake
+index 1e74ef9d5..fe5d0a831 100644
+--- a/cmake/external_projects/ElMath/OpenBLAS.cmake
++++ b/cmake/external_projects/ElMath/OpenBLAS.cmake
+@@ -19,8 +19,9 @@ endif()
+ if(NOT EL_FORCE_OPENBLAS_BUILD)
+   message(STATUS "Searching for previously installed OpenBLAS+LAPACK")
+   find_library(OpenBLAS NAMES openblas${OPENBLAS_SUFFIX} PATHS ${MATH_PATHS})
+-  if(OpenBLAS)
+-    set(CMAKE_REQUIRED_LIBRARIES ${OpenBLAS})
++  find_library(Lapack NAMES lapack${OPENBLAS_SUFFIX} PATHS ${MATH_PATHS})
++  if(OpenBLAS AND Lapack)
++    set(CMAKE_REQUIRED_LIBRARIES ${OpenBLAS} ${Lapack})
+     El_check_function_exists(dgemm${OPENBLAS_SUFFIX}   EL_HAVE_DGEMM_OPENBLAS)
+     El_check_function_exists(dgemm${OPENBLAS_SUFFIX}_  EL_HAVE_DGEMM_POST_OPENBLAS)
+     El_check_function_exists(dsytrd${OPENBLAS_SUFFIX}  EL_HAVE_DSYTRD_OPENBLAS)
+@@ -57,7 +58,7 @@ if(NOT EL_FORCE_OPENBLAS_BUILD)
+ endif()
+ 
+ if(EL_HAVE_OPENBLAS_BLAS AND EL_HAVE_OPENBLAS_LAPACK)
+-  set(OPENBLAS_LIBS ${OpenBLAS})
++  set(OPENBLAS_LIBS ${OpenBLAS} ${Lapack})
+   set(OPENBLAS_LIBS_AT_CONFIG ${OPENBLAS_LIBS})
+   set(EL_HAVE_OPENBLAS TRUE)
+   set(EL_BUILT_OPENBLAS FALSE) 
+-- 
+2.34.0
+
