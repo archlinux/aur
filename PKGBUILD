@@ -1,18 +1,18 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gcap
-pkgver=2020.1.3
+pkgver=2021.1.3
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains'
 arch=('any')
-url='https://receita.economia.gov.br/orientacao/tributaria/pagamentos-e-parcelamentos/pagamento-do-imposto-de-renda-de-pessoa-fisica/ganho-de-capital/programa-de-apuracao-de-ganhos-de-capital-moeda-nacional/'
+url='https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital'
 license=('unknown')
 depends=('sh' 'java-runtime' 'hicolor-icon-theme')
 makedepends=('icoutils')
 source=("http://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/gcap/GCAP${pkgver%%.*}v${pkgver#*.}.zip"
         'gcap.desktop'
         'gcap.sh')
-sha256sums=('f1d83e8c1062c23d961bc99887e3deae7198af936bf04fff8b008edc66b3ba7a'
+sha256sums=('cd0f6e3d51583cce5b4c4fb3b1a9931dfaa29fde5ef0848efd56d43e4cdeff5f'
             '24df966f1dbf8c348b487a1724891271a92b6e795b981fdf0c5b430325722af7'
             '2c50b3d5df01139ce2c41b5be2ee6d34f29313de131defdf8db600d6b58b9129')
 
@@ -21,7 +21,7 @@ prepare() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/share/doc/gcap"
+    install -d -m755 "${pkgdir}/usr/share/doc/gcap"
     install -D -m755 gcap.sh "${pkgdir}/usr/bin/gcap"
     install -D -m644 gcap.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m644 "GCAP${pkgver%%.*}/GCAP.jar" "${pkgdir}/usr/share/java/gcap/gcap.jar"
