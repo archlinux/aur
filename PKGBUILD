@@ -5,7 +5,7 @@ _pkgname="openutau"
 
 pkgname="${_pkgname}"
 pkgver=0.0.517
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source UTAU successor"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
@@ -32,6 +32,11 @@ package() {
     # Desktop file
     install -Dm644 "${srcdir}/${_pkgname}.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    # Icon images
+    install -dm755 "${pkgdir}/usr/share/"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
