@@ -3,7 +3,7 @@
 
 _modname=boongui
 pkgname=0ad-${_modname}
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="User interface mod for the RTS game 0 A.D."
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}"
-  unzip -o "${_modname}.pyromod" "ARTWORK_and _LICENSE.txt"
+  unzip -o "${_modname}.pyromod" "ARTWORK_and_LICENSE.txt"
   install -Dm644 "ARTWORK_and_LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"  
   install -Dm644 "${_modname}.pyromod" -t "${pkgdir}/usr/share/0ad/data/mods/${_modname}"
   cd "${pkgdir}/usr/share/0ad/data/mods/${_modname}"
