@@ -1,12 +1,13 @@
 pkgname=reveal-md
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
 url='https://webpro.github.io/reveal-md/'
 license=('MIT')
 depends=(nodejs)
 makedepends=(yarn git)
+options=('!strip')
 source=(git+https://github.com/webpro/$pkgname.git#tag=$pkgver)
 sha256sums=('SKIP')
 
@@ -44,13 +45,14 @@ build() {
 }
 
 package() {
-    local _destdir="/usr/lib/node_modules/$pkgname"
+    local _destdir="/usr/lib/$pkgname"
 
     install -dm755 $pkgdir/$_destdir
     cp -a $srcdir/$pkgname/* $pkgdir/$_destdir/
 
     install -dm755 $pkgdir/usr/bin
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
+#!/bin/env sh
 NODE_ENV=production node $_destdir/bin/$pkgname.js
 END
 }
