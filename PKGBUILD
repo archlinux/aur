@@ -2,7 +2,7 @@
 
 pkgname=bililive-recorder-bin
 _pkgname=bililive-recorder
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc='B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制'
 arch=('x86_64')
