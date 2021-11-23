@@ -73,7 +73,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=29.0.50.152013
+pkgver=29.0.50.152025
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -305,15 +305,13 @@ package() {
   if [[ $DOCS_PDF == "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
 
   # fix user/root permissions on usr/share files
-  # MOVED to install script
-  # find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
+  find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
 
   # fix permssions on /var/games
   mkdir -p "$pkgdir"/var/games/emacs
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
-  # MOVED to install script
-  # chown -R root:games "$pkgdir"/var/games
+  chown -R root:games "$pkgdir"/var/games
 
 }
 
