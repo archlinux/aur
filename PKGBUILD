@@ -2,7 +2,7 @@
 # Maintainer: Jonas Bucher <j.bucher.mn at gmail>
 
 pkgname=newm-git
-pkgver=0.1
+pkgver=0.1.r27.g33aea1f.a6d799f
 pkgrel=1
 license=('MIT')
 pkgdesc="Wayland compositor"
@@ -55,7 +55,10 @@ conflicts=('newm')
 
 pkgver() {
     cd $srcdir/newm
-    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    newm_v=$(git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    cd $srcdir/pywm
+    pywm_v=$(git rev-parse --short HEAD)
+    echo "$newm_v.$pywm_v"
 }
 prepare() {
     cd $srcdir/pywm
