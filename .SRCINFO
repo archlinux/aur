@@ -1,7 +1,7 @@
 pkgbase = megasync-nopdfium
 	pkgdesc = Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)
 	pkgver = 4.5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meganz/MEGAsync
 	arch = i686
 	arch = x86_64
@@ -14,18 +14,21 @@ pkgbase = megasync-nopdfium
 	depends = c-ares
 	depends = crypto++
 	depends = libsodium
+	depends = hicolor-icon-theme
 	depends = libuv
-	depends = libmediainfo
-	depends = libraw
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-x11extras
-	depends = ffmpeg3.4
+	depends = libmediainfo
+	depends = libraw
+	depends = ffmpeg
 	provides = megasync=4.5.3.0
 	conflicts = megasync
 	source = git+https://github.com/meganz/MEGAsync.git#tag=v4.5.3.0_Win
 	source = meganz-sdk::git+https://github.com/meganz/sdk.git
+	source = ffmpeg.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 7457fb9af5ddda96608fd9c7420b19e9e92febb8722a0d4d4ddb8b5b788b0d16
 
 pkgname = megasync-nopdfium

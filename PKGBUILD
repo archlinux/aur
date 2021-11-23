@@ -11,26 +11,30 @@
 
 pkgname=megasync-nopdfium
 pkgver=4.5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
 provides=(megasync=$pkgver)
 conflicts=(megasync)
 url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
-depends=('c-ares' 'crypto++' 'libsodium' 'libuv'
-         'libmediainfo' 'libraw' 'qt5-base' 'qt5-svg' 'qt5-x11extras' 'ffmpeg3.4')
+depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
+         'qt5-base' 'qt5-svg' 'qt5-x11extras' 'libmediainfo' 'libraw'
+         'ffmpeg')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Win"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
-        "meganz-sdk::git+https://github.com/meganz/sdk.git")
+        "meganz-sdk::git+https://github.com/meganz/sdk.git"
+        "ffmpeg.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '7457fb9af5ddda96608fd9c7420b19e9e92febb8722a0d4d4ddb8b5b788b0d16')
 
 prepare() {
     cd "MEGAsync"
     git config submodule.src/MEGASync/mega.url "../meganz-sdk"
     git submodule update --init
+    git apply -v "$srcdir/ffmpeg.patch"
 
     cd "src/MEGASync"
     sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
@@ -40,11 +44,6 @@ prepare() {
 build() {
     # build sdk
     cd "MEGAsync/src/MEGASync/mega"
-
-    export PKG_CONFIG_PATH="/usr/lib/ffmpeg3.4/pkgconfig"
-    export CFLAGS+=" -I/usr/include/ffmpeg3.4"
-    export CXXFLAGS+=" -I/usr/include/ffmpeg3.4"
-    export LDFLAGS+=" -L/usr/lib/ffmpeg3.4"
 
     ./autogen.sh
     ./configure \
@@ -71,8 +70,6 @@ build() {
     # build megasync
     cd "../.."
     qmake-qt5 \
-        "LIBS += -L/usr/lib/ffmpeg3.4" \
-        "INCLUDEPATH += /usr/include/ffmpeg3.4" \
         "CONFIG += FULLREQUIREMENTS" \
         MEGA.pro
     lrelease-qt5 MEGASync/MEGASync.pro
@@ -84,7 +81,7 @@ package () {
     install -Dm 644 LICENCE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENCE"
     install -Dm 644 installer/terms.txt "${pkgdir}/usr/share/licenses/$pkgname/terms.txt"
     install -Dm 644 src/MEGASync/mega/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/SDK-LICENCE"
-    
+
     cd "src"
     install -dm 755 "${pkgdir}/usr/bin"
     make INSTALL_ROOT="${pkgdir}" TARGET="${pkgdir}/usr/bin/megasync" install
