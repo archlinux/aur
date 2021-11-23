@@ -3,8 +3,8 @@
 
 _pyname=weasyprint
 pkgname=python-$_pyname
-pkgver=53.0
-pkgrel=2
+pkgver=53.3
+pkgrel=1
 pkgdesc='Convert web documents (HTML, CSS, SVG, ...) to PDF'
 arch=(any)
 url=https://weasyprint.org
@@ -34,7 +34,7 @@ checkdepends=("${_pycheckdeps[@]/#/python-}")
 provides=("$_pyname=$pkgver")
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('21ea1626e15ae4070f3eb4ffc90e5fd65bf17650f912affa911f829fb7c0e112')
+sha256sums=('eab32acf81d14b6626e5e180c7f03b925ece915a69b314ce3061a0f3ec6bf9da')
 
 prepare() {
 	cd "$_archive"
