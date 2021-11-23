@@ -60,10 +60,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgname/build"
 
-  install -dm755 "${pkgdir}"/usr/bin
-  install yabridge-{host,group}.exe{,.so} "${pkgdir}"/usr/bin
-  install yabridge-{host,group}-32.exe{,.so} "${pkgdir}"/usr/bin
+  install -dm755 "$pkgdir/usr/bin"
+  install yabridge-{host,group}.exe{,.so} "$pkgdir/usr/bin"
+  install yabridge-{host,group}-32.exe{,.so} "$pkgdir/usr/bin"
 
-  install -dm755 "${pkgdir}"/usr/lib
-  install libyabridge-{vst2,vst3}.so "${pkgdir}"/usr/lib
+  install -dm755 "$pkgdir/usr/lib"
+  install libyabridge-{vst2,vst3}.so "$pkgdir/usr/bin"
 }
