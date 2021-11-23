@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Gowin EDA Programmer
+Encoding=UTF-8
+Exec=/opt/gowin-eda-programmer/bin/programmer
+Icon=gowin-eda-edu-programmer
+Name=Gowin EDA Programmer
+Type=Application
