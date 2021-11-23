@@ -1,6 +1,6 @@
 pkgbase = linvst-bin
 	pkgdesc = Linux Windows vst wrapper/bridge
-	pkgver = 4.5
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = linvst-bin
 	depends = gtk3
 	optdepends = jack
 	conflicts = linvst
-	source = https://github.com/osxmidi/LinVst/releases/download/4.5/LinVst-4.5-Manjaro.zip
-	md5sums = 61288fcee325f2a04be8c1f5311b985c
+	source = https://github.com/osxmidi/LinVst/releases/download/4.5/LinVst-4.5.2-Manjaro.zip
+	md5sums = 0e3867adee61612e3cb67c7fa3ad1088
 
 pkgname = linvst-bin
-
