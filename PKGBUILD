@@ -2,7 +2,7 @@
 # Contributor: Andreas Gerlach <andigerlach76@gmail.com>
 pkgname=ijavascript
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript kernel for Jupyter"
 arch=(any)
 url="https://github.com/n-riesco/ijavascript"
@@ -14,7 +14,7 @@ makedepends=('npm' 'patchelf')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz
         kernel.json)
 sha256sums=('01e52b0706fc12b62a099adddd773b71dfd8b329155489eadb50322ce1d3386c'
-            '8b81b89b41548b732733bc65bf3919a346ad9c037bb668ce94369971fb96e4c8')
+            '91635eaf9956544d30b59f4c0503583510c132640553df73a1fcfe31fc858171')
 
 _npmdir="/usr/lib/node_modules/ijavascript"
 _kerneldir="/usr/share/jupyter/kernels/javascript"

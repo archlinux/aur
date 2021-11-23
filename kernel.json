@@ -5,6 +5,6 @@
     "{connection_file}",
     "--protocol=5.1"
   ],
-  "display_name": "Javascript (Node.js)",
+  "display_name": "JavaScript (Node.js)",
   "language": "javascript"
 }
