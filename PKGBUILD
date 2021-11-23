@@ -1,11 +1,8 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
-_svt_hevc_ver='33ca9aa8a2a2d28022d3fc03704e99ce01828376'
-_svt_vp9_ver='abd5c59c06d686eae57ef4e6f899c601f791d055'
-
 pkgname=ffmpeg-full
-pkgver=4.4
+pkgver=4.4.1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
@@ -42,6 +39,8 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg')
 conflicts=('ffmpeg')
+_svt_hevc_ver='33ca9aa8a2a2d28022d3fc03704e99ce01828376'
+_svt_vp9_ver='abd5c59c06d686eae57ef4e6f899c601f791d055'
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '010-ffmpeg-fix-vmaf-model-path.patch'
         '015-ffmpeg-cuda11-fix.patch'
@@ -49,10 +48,10 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
-sha256sums=('06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909'
+sha256sums=('eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02'
             'SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            'e096996903d4e19348fabe9c61923678cbadf57299cd03809c9e06065d6ffbe2'
+            'a8a528ab87cef55f18b694d6bae09fb99581efd8d1738a4efdd76443d907d7ab'
             '740dc9838aa47daa9f9b107178e53e384344f4c6f90865bd7e3af189257da544'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
             'b7d722dfce20b73e9d5c73d55ffe041bbdc92a3c4a5c5d766b6b3040671b4052'
