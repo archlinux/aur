@@ -2,11 +2,11 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-no-axrgb-assert-git
-pkgver=0.14.0.r328.g8e225261
+pkgver=0.14.0.r330.g0855cdac
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='wlroots-git, with argb/xrgb8888 assert removed to make nvidia driver work'
-url=https://github.com/swaywm/wlroots
+url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
 provides=("libwlroots.so" "wlroots" "wlroots-git" "wlroots=${pkgver%%.r*}")
 conflicts=(wlroots wlroots-git)
