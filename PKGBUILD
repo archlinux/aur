@@ -1,35 +1,57 @@
 pkgname=reveal-md
-pkgver=5.1.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
-url='http://webpro.github.io/reveal-md/'
+url='https://webpro.github.io/reveal-md/'
 license=('MIT')
-depends=('nodejs')
-makedepends=('yarn')
-options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/webpro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e46afc31246b722012d7a7ca4b974463098e85faa1b09c850a80882fbb22effd')
+depends=(nodejs)
+makedepends=(yarn git)
+source=(git+https://github.com/webpro/$pkgname.git#tag=$pkgver)
+sha256sums=('SKIP')
 
-build() {
-    cd $srcdir/$pkgname-$pkgver
-    yarn install --prod --cache-dir=$srcdir/cache --link-dir=$srcdir/link --ignore-optional
-    yarn autoclean --init
-    yarn autoclean --force --non-interactive
-    find . -type f -depth \( -iname 'license' -o -iname 'readme*' \) -execdir rm -rfv {} \;
-    find . -type d -name ".bin" -exec rm -rfv {} +
-    rm -rf .yarnclean
-    rm -rf *lock*
+prepare() {
+    cd $srcdir/$pkgname
+    sed 's,"puppeteer": "1.19.0","puppeteer-core": "latest",' -i package.json
+}
+
+build() {    
+    cd $srcdir/$pkgname
+    rm -rf package-lock.json
+    yarn install \
+        --cache-folder $srcdir/cache \
+        --link-folder $srcdir/link
+
+    # Aggressively remove binary and addins in node_modules
+    yarn autoclean -I
+    yarn autoclean -F
+    find . -name "\.bin" -exec rm -rfv {} +
+    find . -name "\.git*" -exec rm -rfv {} +
+    find . -name "\.eslintrc*" -exec rm -rfv {} +
+    find . -name "\.editorconfig" -exec rm -rfv {} +
+    find . -name "\.npm*" -exec rm -rfv {} +
+    find . -name "\.yarn*" -exec rm -rfv {} +
+    find . -name "\.travis.yml" -exec rm -rfv {} +
+    find . -name "\.tonic_example.js" -exec rm -rfv {} +
+    find . -name "\.prettierrc.js" -exec rm -rfv {} +
+    find . -name "\.coveralls.yml" -exec rm -rfv {} +
+    find . -name "\.js*" -exec rm -rfv {} +
+    find . -name "\.babelrc.js" -exec rm -rfv {} +
+    find . -name "\.vscode" -exec rm -rfv {} +
+    find . -name "\.DS_Store" -exec rm -rfv {} +
+    find . -name "yarn.lock" -exec rm -rfv {} +
+
 }
 
 package() {
-    local _npmdir="$pkgdir/usr/lib/$pkgname/"
-    install -dm755 $_npmdir
-    cd $_npmdir
-    cp -r --no-preserve=ownership --preserve=mode $srcdir/$pkgname-$pkgver/* ./
+    local _destdir="/usr/lib/node_modules/$pkgname"
+
+    install -dm755 $pkgdir/$_destdir
+    cp -a $srcdir/$pkgname/* $pkgdir/$_destdir/
+
+    install -dm755 $pkgdir/usr/bin
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
-#!/bin/env sh
-node /usr/lib/$pkgname/bin/$pkgname.js "\$@"
+NODE_ENV=production node $_destdir/bin/$pkgname.js
 END
 }
 
