@@ -1,8 +1,8 @@
 # Maintainer: Simon Zack <simonzack@gmail.com>
 # Contributor: Andreas Gerlach <andigerlach76@gmail.com>
 pkgname=ijavascript
-pkgver=5.2.0
-pkgrel=5
+pkgver=5.2.1
+pkgrel=1
 pkgdesc="JavaScript kernel for Jupyter"
 arch=(any)
 url="https://github.com/n-riesco/ijavascript"
@@ -13,7 +13,7 @@ optdepends=('jupyterlab: JupyterLab support'
 makedepends=('npm' 'patchelf')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz
         kernel.json)
-sha256sums=('f2b2799f3af99ec33e8f4386087462744b55270fa127dda7bc3b6649a2a591c0'
+sha256sums=('01e52b0706fc12b62a099adddd773b71dfd8b329155489eadb50322ce1d3386c'
             '8b81b89b41548b732733bc65bf3919a346ad9c037bb668ce94369971fb96e4c8')
 
 _npmdir="/usr/lib/node_modules/ijavascript"

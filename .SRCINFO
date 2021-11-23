@@ -1,7 +1,7 @@
 pkgbase = ijavascript
 	pkgdesc = JavaScript kernel for Jupyter
-	pkgver = 5.2.0
-	pkgrel = 5
+	pkgver = 5.2.1
+	pkgrel = 1
 	url = https://github.com/n-riesco/ijavascript
 	arch = any
 	license = BSD-3-Clause
@@ -11,9 +11,9 @@ pkgbase = ijavascript
 	depends = jupyter
 	optdepends = jupyterlab: JupyterLab support
 	optdepends = jupyter-notebook: Jupyter Notebook support
-	source = https://registry.npmjs.org/ijavascript/-/ijavascript-5.2.0.tgz
+	source = https://registry.npmjs.org/ijavascript/-/ijavascript-5.2.1.tgz
 	source = kernel.json
-	sha256sums = f2b2799f3af99ec33e8f4386087462744b55270fa127dda7bc3b6649a2a591c0
+	sha256sums = 01e52b0706fc12b62a099adddd773b71dfd8b329155489eadb50322ce1d3386c
 	sha256sums = 8b81b89b41548b732733bc65bf3919a346ad9c037bb668ce94369971fb96e4c8
 
 pkgname = ijavascript
