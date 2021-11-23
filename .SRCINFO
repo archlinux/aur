@@ -1,5 +1,5 @@
 pkgbase = apple-music-electron-bin
-	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Builds from most recent release on GitHub.
+	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Binary Release that builds from most recent release on GitHub.
 	pkgver = 3.0.0
 	pkgrel = 2
 	url = https://github.com/Apple-Music-Electron/Apple-Music-Electron.git
@@ -20,7 +20,7 @@ pkgbase = apple-music-electron-bin
 	options = !emptydirs
 	source = https://github.com/Apple-Music-Electron/Apple-Music-Electron/releases/download/v3.0.0/apple-music-electron_3.0.0_amd64.deb
 	source = apple-music-electron.install
-	sha256sums = 29763ac35ed1969cd43ea3ef7474c68a9deadfeb788defafde198adb25434a74
+	sha256sums = 5eb8497256995158b0e539d464122d81d281a195b3eaf941fcef4fc94e70b501
 	sha256sums = b82a3d4ec0cac09d76346db489faa1a526f3e8e5c2d4d2c56c91416fc9c45f88
 
 pkgname = apple-music-electron-bin
