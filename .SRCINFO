@@ -1,6 +1,6 @@
 pkgbase = cutefish-launcher-git
 	pkgdesc = CutefishOS's full-screen application launcher
-	pkgver = 0.5.r3.g689e3c5
+	pkgver = 0.5.r6.g27d59ea
 	pkgrel = 1
 	url = https://github.com/cutefishos/launcher
 	arch = x86_64

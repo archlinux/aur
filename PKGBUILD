@@ -2,7 +2,7 @@
 
 pkgname=cutefish-launcher-git
 _pkgname=cutefish-launcher
-pkgver=0.5.r3.g689e3c5
+pkgver=0.5.r6.g27d59ea
 pkgrel=1
 pkgdesc="CutefishOS's full-screen application launcher"
 arch=('x86_64')
