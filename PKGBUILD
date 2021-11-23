@@ -1,6 +1,6 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=ulist
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A mailing list service that keeps it simple."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=('sqlite')
 source=("$url/archive/v$pkgver.tar.gz")
 validpgpkeys=('F433936B030F7FB97F4084E4C7C21DFFE932EF9D')
-sha256sums=('7204410a4d0b55eb896d707aba8109fcdbd2dfe1b1b4e1a7f09e104e88da8f99')
+sha256sums=('dd44af7e01a5cde01948de5991a5b66d101456cb1a5efa929bfe532330259434')
 
 prepare(){
   cd "$pkgname-$pkgver"
