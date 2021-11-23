@@ -1,0 +1,28 @@
+pkgbase = bahn-regio-entfernungsrechner-bin
+	pkgdesc = Calculates fare kilometres for subscription tickets for DB regio. Upstream name: 'Entfernungsrechner für Fahrvergünstigungen.'
+	pkgver = 3.2d_20210104
+	pkgrel = 1
+	epoch = 0
+	url = https://www.evg-online.org/deine-vorteile/services/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = wine
+	provides = bahn-regio-entfernungsrechner=3.2d_20210104
+	provides = bahn-regio-entfernungsrechner-doc=3.2d_20210104
+	conflicts = bahn-regio-entfernungsrechner
+	conflicts = bahn-regio-entfernungsrechner-latest
+	replaces = bahn-regio-entfernungsrechner-latest<=3d_20180202
+	replaces = bahn-regio-entfernungsrechner<=1:3.2d_20210104
+	noextract = entfernungsrechner.zip
+	options = emptydirs
+	source = entfernungsrechner.zip::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/210104_Entfernungsrechner.zip
+	source = entfernungsrechner.sh
+	source = Entfernungsrechner_Benutzerhandbuch.pdf::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/handbuch_entfernungsrechner-data.pdf
+	source = license-dummy.txt
+	sha256sums = 3a22d238e1f5f0847f73ea5ffa85d8ccfc8a753b79279cc0e7a81a37f794eed4
+	sha256sums = 8347288b3a402c8075e5ccc24d23f3ae123ebebedd4116ed5e2352cf1a7b24ac
+	sha256sums = f3a566dec531484b4d3b864c958cff554e006362921d971704817f8fd60e814b
+	sha256sums = b90a755ef3db2a12766725c1f5e0d31bebb08a700d240b4304624768c38ed9eb
+
+pkgname = bahn-regio-entfernungsrechner-bin
