@@ -1,8 +1,8 @@
 
 post_install() {
-  echo "You need the 'Out Run (Rev B)' Rom set data files. Put them under"
-  echo "'~/.cannonball/roms'. The launcher script will also place a config"
-  echo "file there, if not already existing."
+  echo ":: To use Cannonball you will need the ROM files from Rev. B of OutRun."
+  echo ":: Copy the files to '~/.cannonball/roms' and optionally edit the"
+  echo ":: '~/.cannonball/config.xml'"
 }
 
 post_upgrade() {
@@ -10,5 +10,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  echo "You may remove leftover config and data files from '~/.cannonball'."
+  echo ":: Cannonball game data located in ~/.cannonball/"
 }
