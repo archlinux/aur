@@ -1,7 +1,7 @@
 # Maintainer: zneix <zneix@zneix.eu>
 
 pkgname=x11-emoji-picker-git
-pkgver=0.7.2.r4.g2135e79
+pkgver=0.8.2.r4.g7fd438b
 pkgrel=1
 pkgdesc='Linux XServer emoji picker written in C++.'
 arch=('x86_64' 'armv7h')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/x11-emoji-picker"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude nightly-build | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
