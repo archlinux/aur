@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=YesPlayMusic
+Exec=/opt/YesPlayMusic/yesplaymusic %U
+Terminal=false
+Type=Application
+Icon=yesplaymusic
+StartupWMClass=YesPlayMusic
+Comment=A third party music player for Netease Music
+Comment[zh_CN]=第三方网易云音乐播放器
+Categories=Music;AudioVideo;Player;
