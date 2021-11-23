@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.45.0.r0.g95813ff43c
+pkgver=1.47.1.r4.gfcb9441791
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
