@@ -1,0 +1,9 @@
+# path:   /home/klassiker/.local/share/repos/libptytty/.gitignore
+# author: klassiker [mrdotx]
+# github: https://aur.archlinux.org/packages/libptytty
+# date:   2021-11-23T01:04:23+0100
+
+/pkg/
+/src/
+libptytty-*.gz
+*.pkg.tar*

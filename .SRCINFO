@@ -1,0 +1,13 @@
+pkgbase = libptytty
+	pkgdesc = OS independent and secure pty/tty and utmp/wtmp/lastlog handling
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://software.schmorp.de/pkg/libptytty.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	source = http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz
+	sha1sums = ed0605e23615559139ed8526e1bfaebaf9a95c43
+
+pkgname = libptytty
