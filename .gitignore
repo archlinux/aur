@@ -1,1 +1,5 @@
+/.vscode
 /bash-it-git
+/src
+/pkg
+*.tar.*
