@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=0.34
+Name=Cannonball
+GenericName=Enhanced OutRun Engine
+Icon=scania-truck-driving-simulator
+Exec=cannonball
+Terminal=false
+Categories=Game;ArcadeGame;
+X-Desktop-File-Install-Version=0.26

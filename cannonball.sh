@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/env sh
 
-echo "Cannonball launcher"
+echo ":: Launching Cannonball OutRun Engine"
 
-mkdir -p ~/.cannonball/roms
+if [ ! -f ~/.cannonball/roms ]; then
+  mkdir -p ~/.cannonball/roms
+fi
 
 # config
 if [ ! -f ~/.cannonball/config.xml ]; then
