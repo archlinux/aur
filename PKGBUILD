@@ -15,7 +15,7 @@ source=($pkgname-$pkgver.tar.gz::"https://github.com/djyt/cannonball/archive/v$p
        "$pkgname.sh")
 sha256sums=('e2cf8e21619b183a9fd835ae34ce65fb3d014c2fea37723fc8ba05681ed317ce'
             '04d0c0e9252bccfef97bb59c9e89376461f9b52845570b2ebc14610ce74cf1ff'
-            '787fdfef544e41f5c358afb1a8d31bf22d0ff48631467b590f046dbcd9fc45af')
+	    '81f2a1a4e473c87272ce9321dfc616614760dc4c7a0d367d167413e3a71ec8b9')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -37,6 +37,10 @@ package() {
   install -Dm644 res/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
   install -Dm755 build/$pkgname "$pkgdir"/usr/lib/$pkgname/$pkgname
+
+  # widescreen tilemap data
+  install -d "$pkgdir"/usr/share/${pkgname%-*}/res
+  install -m644 res/*.bin "$pkgdir"/usr/share/${pkgname%-*}/res
   
   # configuration file
   install -Dm644 build/config.xml "$pkgdir"/usr/share/$pkgname/config.xml
