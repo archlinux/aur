@@ -169,7 +169,7 @@ echo -e "${BGREEN}DEBUG: You have all the binaries you need!...${NOCOLOR}"
 
 if ! [ -f /var/cache/stillalive/Portal_-_Still_Alive.mp3 ]; then
 	echo -e "${BYELLOW}DEBUG: Caching music in local folder...${NOCOLOR}"
-	youtube-dl --extract-audio --audio-format mp3 --restrict-filenames -o "/var/cache/stillalive/%(title)s.%(ext)s" https://www.youtube.com/watch?v=Y6ljFaKRTrI
+	yt-dlp --extract-audio --audio-format mp3 --restrict-filenames -o "/var/cache/stillalive/%(title)s.%(ext)s" https://www.youtube.com/watch?v=Y6ljFaKRTrI
 else
 	echo -e "${BGREEN}DEBUG: Coolio: music is already cached!${NOCOLOR}"
 fi

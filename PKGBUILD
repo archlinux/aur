@@ -14,7 +14,7 @@ depends=(
 )
 provides=('stillalive.sh')
 source=("stillalive.sh")
-sha256sums=('993001c8f621593d959a0c3e324ff8daaf9b3f57b89422f9477037fdd80da54f')
+sha256sums=('57bf2c77373b473456ab5eb87dfdc1cc861b3897808473cdb5050916692dbc3a')
 
 prepare() {
 	echo "GLaDOS booting up ..."
