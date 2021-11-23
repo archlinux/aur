@@ -3,8 +3,8 @@
 
 pkgname=caj2pdf-git
 epoch=1
-pkgver=r151.651cc90
-pkgrel=2
+pkgver=r159.2cb5f46
+pkgrel=1
 provides=('caj2pdf')
 conflicts=('caj2pdf')
 pkgdesc='Convert CAJ (China Academic Journals) files to PDF.'
@@ -23,7 +23,7 @@ source=(
     "lib.patch"
 )
 sha256sums=('SKIP'
-            '014de06dac78c439e811745825f7caefc7b776239f875fcd8653e554aa161483'
+            '862fe43245941b3f06c6ffc34b6981881cb072967668f1e0542400fe9a2db9e3'
             '77332e30219430f96420826c37742d2bc6f2fe9cbe0627fed24aa073daead37c')
 
 pkgver() {
