@@ -8,7 +8,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-smbclient
-pkgver=0.22.9
+pkgver=0.23.4
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music (with buggy smbclient plugin enabled, don't complain upstream!)"
 url="https://www.musicpd.org/"
@@ -19,10 +19,10 @@ depends=('bzip2' 'chromaprint' 'gcc-libs' 'glibc' 'lame' 'libcdio'
 'libmpcdec' 'libnfs' 'libshout' 'libsidplayfp' 'libsoxr' 'openal' 'opus'
 'smbclient' 'sqlite' 'wavpack' 'wildmidi' 'zlib' 'zziplib')
 makedepends=('alsa-lib' 'audiofile' 'avahi' 'boost' 'curl' 'dbus' 'expat'
-'faad2' 'ffmpeg' 'flac' 'fluidsynth' 'icu' 'jack' 'libao' 'libid3tag'
-'libmikmod' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate' 'libsndfile'
-'libupnp' 'liburing' 'libvorbis' 'meson' 'mpg123' 'python-sphinx'
-'systemd-libs' 'twolame' 'yajl')
+'faad2' 'ffmpeg' 'flac' 'fluidsynth' 'fmt' 'icu' 'jack' 'libao' 'libid3tag'
+'libmikmod' 'libmpdclient' 'libogg' 'libopenmpt' 'libpulse' 'libsamplerate'
+'libsndfile' 'libupnp' 'liburing' 'libvorbis' 'meson' 'mpg123' 'pipewire'
+'python-sphinx' 'systemd-libs' 'twolame' 'yajl')
 provides=('mpd')
 conflicts=('mpd')
 backup=("etc/${_pkgname}.conf")
@@ -30,12 +30,12 @@ source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-$
         "${_pkgname}.conf"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha512sums=('744e20e9a2b5df0f0c01b33809aa87cb159385b69868df5418302b091e6c5265dd70de13f383efcd71f76ae059c73969667212e55ee96e13d89ca0da5c2d4ae2'
+sha512sums=('fb476b108a7be842663683fe6ca6737cffad73c0f09874f9d052121d188d16f69b144e993d1691f2edfac713db24aa3c28302b399f4720b29c09c909860c0938'
             'SKIP'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
             '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
             'db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d')
-b2sums=('c0c3a87ea83941e7ab85b4338db40daeff0c7fe665d4e0b27eebdf7cb06302d2b7a7573724d06d06d45a62583304f095ec4f67a21467748de665067e10a2514c'
+b2sums=('34ea3f0065edcb26e57350a9cdfc79e8705674a4811b06ff4dfa0a93a1c92bcfae7c9e6ae208210289a1f11fac079aa53ad34a3b317fd5dbe4c6d522883b6623'
         'SKIP'
         '0969a3c477b6a3f34b44e067e515d7f306414dd14e0163584417b9d071e3cc825898219f7ff66ead7905b15429b8411304052d3b2b14a72e560bfabf9bf0adcf'
         '4ab6e415284c77802a39d0913d701fe55e56f3c22b19557661fbef77e456b5e1d151da4202695282b956602e716a7afdb994aa2fc17368b9a0d0d051d47a3afb'
@@ -78,11 +78,12 @@ check() {
 }
 
 package() {
-  depends+=('libbz2.so' 'libFLAC.so' 'libao.so' 'libasound.so' 'libaudiofile.so'
-  'libavahi-client.so' 'libavahi-common.so' 'libavcodec.so' 'libavformat.so'
-  'libavutil.so' 'libcurl.so' 'libdbus-1.so' 'libexpat.so' 'libfaad.so'
-  'libfluidsynth.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so' 'libjack.so'
-  'libmikmod.so' 'libmpdclient.so' 'libmpg123.so' 'libogg.so' 'libpulse.so'
+  depends+=('libbz2.so' 'libFLAC.so' 'libao.so' 'libasound.so'
+  'libaudiofile.so' 'libavahi-client.so' 'libavahi-common.so' 'libavcodec.so'
+  'libavformat.so' 'libavutil.so' 'libcurl.so' 'libdbus-1.so' 'libexpat.so'
+  'libfaad.so' 'libfluidsynth.so' 'libfmt.so' 'libicui18n.so' 'libicuuc.so'
+  'libid3tag.so' 'libjack.so' 'libmikmod.so' 'libmpdclient.so' 'libmpg123.so'
+  'libogg.so' 'libopenmpt.so' 'libpipewire-0.3.so' 'libpulse.so'
   'libsamplerate.so' 'libsndfile.so' 'libsystemd.so' 'libtwolame.so'
   'libupnp.so' 'liburing.so' 'libvorbis.so' 'libvorbisenc.so' 'libyajl.so'
   'libavfilter.so' 'libchromaprint.so' 'libixml.so')
