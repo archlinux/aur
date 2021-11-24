@@ -1,6 +1,6 @@
 pkgbase = python-astroscrappy-git
 	pkgdesc = Speedy Cosmic Ray Annihilation Package in Python
-	pkgver = 1.1.0.r0.g0473412
+	pkgver = 1.1.0.r6.g2dfdc15
 	pkgrel = 1
 	url = https://astroscrappy.readthedocs.io
 	arch = i686

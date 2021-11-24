@@ -2,7 +2,7 @@
 pkgbase=python-astroscrappy-git
 _gitname=astroscrappy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=1.1.0.r0.g0473412
+pkgver=1.1.0.r6.g2dfdc15
 pkgrel=1
 pkgdesc="Speedy Cosmic Ray Annihilation Package in Python"
 arch=('i686' 'x86_64')
