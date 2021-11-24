@@ -1,29 +1,30 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=statmake
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Dump, merge and compile Visual TrueType data in UFO3 with FontTools'
-arch=('any')
+arch=(any)
 url="https://github.com/daltonmaag/$pkgname"
-license=('MIT')
-_py_deps=('attrs'
-          'cattrs'
-          'fonttools'
-          'fs') # optdepends of fonttools required for [ufo]
-depends=('python'
+license=(MIT)
+_py_deps=(attrs
+          cattrs
+          fonttools
+          fs) # optdepends of fonttools required for [ufo]
+depends=(python
          "${_py_deps[@]/#/python-}")
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('465de5c91f03a6acd58a4e3daa44175a3c5d4c7de6c577da3858ad65ebcde21f')
+makedepends=(python-setuptools)
+_archive="$pkgname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
+sha256sums=('11db7ebbfab9d7f7d6b8bd35794230591862a99bbdf0bc56035a146e4217ec48')
 
 build() {
-    cd "$pkgname-$pkgver"
-    python setup.py build
+	cd "$_archive"
+	python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
