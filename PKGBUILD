@@ -1,6 +1,6 @@
 # Maintainer: Mek101 <mek101-dev.inv@slmail.me>
 pkgname=duperemove-service
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A configurable systemd service to deduplicate the filesystem"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('duperemove>=0.11', 'systemd>=213.0')
 makedepends=('shellcheck')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=("fb96de2cef7c6c84d7e8dbaf977928ae5a82a95c7410f45bce2058e2155885d0")
+sha256sums=("07dce4ec6cd81fcc88d3508f60d454e2489deb8fba6e80742410725048b4ae65")
 
 package() {
 	cd "$pkgname/"
