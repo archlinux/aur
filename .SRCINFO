@@ -1,0 +1,16 @@
+pkgbase = ignition
+	pkgdesc = First boot installer and configuration tool
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://coreos.github.io/ignition/
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	source = https://github.com/coreos/ignition/archive/refs/tags/v2.12.0.tar.gz
+	sha256sums = 4477546bbf9c9149deef5ac080bf425c3713093bb2f0292a3df5f8d811e91dda
+
+pkgname = ignition
+	depends = dracut
+
+pkgname = ignition-validate
+	pkgdesc = Configuration validation tool for Ignition
