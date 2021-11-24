@@ -84,7 +84,7 @@ _package() {
   depends=('coreutils' 'kmod' 'initramfs')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
-    'linux-nitrous-headers: to build DKMS modules against this kernel'
+    "linux-nitrous-headers=${pkgver}-${pkgrel}: to build DKMS modules against this kernel"
     'linux-firmware: Additional firmware blobs'
   )
   provides=(WIREGUARD-MODULE NTFS3-MODULE)
