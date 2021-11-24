@@ -1,0 +1,14 @@
+pkgbase = minetest-farlands-reloaded
+	pkgdesc = a game
+	pkgver = 2021.11.13
+	pkgrel = 1
+	url = https://content.minetest.net/packages/wsor4035/farlands_reloaded/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	noextract = farlands_reloaded-2021.11.13.zip
+	options = !strip
+	source = farlands_reloaded-2021.11.13.zip::https://content.minetest.net/packages/wsor4035/farlands_reloaded/releases/9750/download/
+	sha256sums = c33810e283afd5ed515f62197aca6904460ec27dce1edce3fc3eb3e4a3afa4ac
+
+pkgname = minetest-farlands-reloaded
