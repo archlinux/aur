@@ -1,7 +1,7 @@
 pkgbase = bear
 	pkgdesc = tool to generate compilation database for clang tooling
-	pkgver = 3.0.16
-	pkgrel = 2
+	pkgver = 3.0.17
+	pkgrel = 1
 	url = https://github.com/rizsotto/Bear
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = bear
 	depends = nlohmann-json
 	provides = bear
 	conflicts = bear
-	conflicts = interception-tools
-	source = Bear-3.0.16.tar.gz::https://github.com/rizsotto/Bear/archive/3.0.16.tar.gz
-	sha256sums = 877ee5e89e8445f74df95f2f3896597f04b86a4e5d0dbbca07ac71027dcb362d
+	source = Bear-3.0.17.tar.gz::https://github.com/rizsotto/Bear/archive/3.0.17.tar.gz
+	sha256sums = 107f94e045d930e88f5f5b4b484c8df1bf4834722943525765c271e0b5b34b78
 
 pkgname = bear
