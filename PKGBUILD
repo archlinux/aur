@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=hck
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A sharp cut(1) clone'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(
 	'cmake'
 )
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('cd6b690d83d7fd375bf7f4a9dd70e06aa2daf7c4daddfa0e9cfeeb009a1c77f278c52249c96b030910ef80e9d652ffc75bbe62467d025faf749f0c500ab741d3')
+b2sums=('f18da61f49fb21d4071d6d96160df9f81a98aa7045543dbc7f1f056d0e7f00cdd4a8de2a4073e387f1ab40fa8e80a4754bcb589e5b713cac9d1d95a7e4a6bba8')
 
 build() {
 	cd "$pkgname-$pkgver"
