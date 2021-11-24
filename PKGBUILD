@@ -1,6 +1,6 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 pkgname=an-anime-game-launcher
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 arch=("x86_64")
@@ -13,7 +13,10 @@ depends=(
 "winetricks"
 "git"
 )
-makedepends=("npm")
+makedepends=(
+"nodejs-lts-gallium"
+"npm"
+)
 optdepends=(
 "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
 "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
