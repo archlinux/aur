@@ -1,6 +1,6 @@
 # Maintainer: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint-bin
-pkgver=20210408
+pkgver=20210609
 pkgrel=1
 pkgdesc="Una herramienta para aprender las bases de la programación en Español"
 arch=('x86_64')

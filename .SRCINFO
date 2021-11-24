@@ -1,6 +1,6 @@
 pkgbase = pseint-bin
 	pkgdesc = Una herramienta para aprender las bases de la programación en Español
-	pkgver = 20210408
+	pkgver = 20210609
 	pkgrel = 1
 	url = http://pseint.sourceforge.net
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = pseint-bin
 	depends = libpng12
 	depends = glu
 	conflicts = pseint
-	source = https://razaoinfo.dl.sourceforge.net/project/pseint/20210408/pseint-l64-20210408.tgz
+	source = https://razaoinfo.dl.sourceforge.net/project/pseint/20210609/pseint-l64-20210609.tgz
 	md5sums = e6ec09a10a51583a513976ece85ae917
 
 pkgname = pseint-bin
-
