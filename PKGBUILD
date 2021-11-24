@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=hurl-rs
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('curl' 'libxml2')
 makedepends=('cargo' 'python')
 source=("$url"/archive/"$pkgver"/hurl-"$pkgver".tar.gz)
-sha512sums=('dab97c8e30285fd4b1f76157cc6e832aa7508ca62d89f584991328916571ccd32c25cd2aa1ac56610a57f21b0ec6d03a947a17a156192af16067cbab98d9ae6b')
+sha512sums=('7609550afbd6ebb57f9c1ac1bc0de9ac74042d346a6d9c7e0a82879da03d917f4adc0037980f70a90585a15286bb7db8a3d321f96130345b7b129e2869ba3925')
 
 build() {
   cd hurl-"$pkgver"
