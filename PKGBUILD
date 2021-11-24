@@ -1,29 +1,31 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
-
-_pkgname='oneshot'
-pkgname="${_pkgname}-bin"
-pkgver=1.3.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+pkgname=oneshot-bin
+pkgver=1.5.1
 pkgrel=1
-pkgdesc='Easily transfer files to and from your terminal and any browser'
+pkgdesc="First-come-first-serve single-fire HTTP/HTTPS server"
+url="https://github.com/raphaelreyna/${pkgname/-bin/}"
 arch=('x86_64' 'armv7h' 'aarch64')
-url='https://github.com/raphaelreyna/oneshot'
-license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+license=(MIT)
+conflicts=("${pkgname/-bin/}")
+provides=("${pkgname/-bin/}")
+source_x86_64=("${pkgname/-bin/}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}.linux-x86_64.tar.gz")
+source_armv7h=("${pkgname/-bin/}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}.linux-arm.tar.gz")
+source_aarch64=("${pkgname/-bin/}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}.linux-arm64.tar.gz")
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-x86_64.tar.gz")
-source_armv7h=("${_pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-arm.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-arm64.tar.gz")
-
-sha256sums_x86_64=('dfe8ca4b99aa6bcfcb635a178710573f94c61311725e789b87485d6ed07cdfcc')
-sha256sums_armv7h=('0052080354c0c830d7ed37a5a1837954f0770ae94b46e8daee8208a4f29a8cf3')
-sha256sums_aarch64=('80d8a391906ca764654b64c74fb100db2b5fa9f6db3f9fa361b89a36d0a578b0')
+sha512sums_x86_64=('f4f3c1f00574fd3eff685b3cd756aaff8466a1f0b6b5d3ed6aee08fc1aa690b63909114c654db4f17c5f379ec9255f189d3dd06d700ed8b3aecb1b69332d295b')
+sha512sums_armv7h=('c0f9fb5f2a27a14918675c64ab61fd255228ed08854a61f4a5497bc6f80c8ec6435dbbb2ef6e9b1a267ed3263a7cbbe6c6d7eebb30b24ea5494ec97163fe1319')
+sha512sums_aarch64=('2772ff22ad4ec2ddef06c7d433f68e0f31db6c05eda532f98404bc54e1ae0573465ff5009f56b997f5df945a70d85d6fe169c5cb5ed6affb121d6722164b907b')
 
 package() {
-  install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dvm644 "${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-}
+  cd "${srcdir}/"
 
-# vim: ts=2 sw=2 et:
+  install -Dvm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin"
+
+  install -Dvm644 "${pkgname/-bin/}.1" -t "${pkgdir}/usr/share/man/man1"
+
+  install -Dvm644 icon/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname/-bin/}.svg"
+
+  install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname/-bin/}"
+  install -Dvm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname/-bin/}"
+}
