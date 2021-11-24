@@ -1,6 +1,6 @@
 pkgbase = python-nbgrader-git
 	pkgdesc = A system for assigning and grading notebooks
-	pkgver = r2892.3aa5af2a
+	pkgver = r3017.1ae2886e
 	pkgrel = 1
 	url = https://github.com/jupyter/nbgrader
 	arch = any
@@ -29,4 +29,3 @@ pkgbase = python-nbgrader-git
 	md5sums = SKIP
 
 pkgname = python-nbgrader-git
-
