@@ -1,5 +1,5 @@
 pkgbase = pomerium-bin
-	pkgdesc = An identity-aware access proxy
+	pkgdesc = Identity-aware access proxy
 	pkgver = 0.15.7
 	pkgrel = 1
 	url = https://www.pomerium.io
@@ -24,7 +24,7 @@ pkgbase = pomerium-bin
 	sha256sums_aarch64 = 380f6df9f925fc56c21a64cdfc7fe2a3a5c460c2aa056631f25414d74c94e88b
 
 pkgname = pomerium-bin
-	pkgdesc = An identity-aware access proxy -- server component
+	pkgdesc = Identity-aware access proxy -- server component
 	arch = x86_64
 	arch = aarch64
 	optdepends = pomerium-cli: CLI component for interacting with server
@@ -33,6 +33,6 @@ pkgname = pomerium-bin
 	backup = etc/pomerium/config.yaml
 
 pkgname = pomerium-cli-bin
-	pkgdesc = An identity-aware access proxy -- CLI component
+	pkgdesc = Identity-aware access proxy -- CLI component
 	provides = pomerium-cli
 	conflicts = pomerium-cli
