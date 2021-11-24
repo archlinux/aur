@@ -52,4 +52,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   chmod 644 "${pkgdir}"/{etc/apt-move.conf,usr/share/man/man8/apt-move.8}
+
+  install -Dm644 README "${pkgdir}/usr/share/doc/apt-move/README"
 }
