@@ -1,0 +1,15 @@
+pkgbase = find-unicode-git
+	pkgdesc = Find unicode characters from the comfort of your shell
+	pkgver = 0.4.0.r34.gb3b9d72
+	pkgrel = 1
+	url = https://github.com/pierrechevalier83/find_unicode
+	arch = x86_64
+	makedepends = git
+	makedepends = rust
+	provides = fu
+	conflicts = fu
+	source = fu::git+https://github.com/pierrechevalier83/find_unicode
+	md5sums = SKIP
+
+pkgname = find-unicode-git
+
