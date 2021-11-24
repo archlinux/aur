@@ -1,0 +1,14 @@
+pkgbase = yalc
+	pkgdesc = Better workflow than npm/yarn link for package authors.
+	pkgver = 1.0.0.pre.53
+	pkgrel = 1
+	url = https://github.com/wclr/yalc
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = yalc-1.0.0-pre.53.tgz
+	source = https://registry.npmjs.org/yalc/-/yalc-1.0.0-pre.53.tgz
+	sha256sums = 78a97cd2051cae8ff9bc1fa76210b66b38e12aaeed46784ea052364558aa58f2
+
+pkgname = yalc
