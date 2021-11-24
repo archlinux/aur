@@ -18,7 +18,7 @@ sha256sums=('aab3eb6a60f319c95d7e1abe6ddbd81fdd4a7ec03161d3c59209c82e09e4fd60')
 build() {
     cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-    cp -f /usr/share/autoconf/build-aux/{config.guess,/config.sub} .
+    cp -f /usr/share/autoconf/build-aux/{config.guess,config.sub} .
     autoreconf -vfi
 
     ./configure \
