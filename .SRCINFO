@@ -9,6 +9,6 @@ pkgbase = pseint-bin
 	depends = glu
 	conflicts = pseint
 	source = https://razaoinfo.dl.sourceforge.net/project/pseint/20210609/pseint-l64-20210609.tgz
-	md5sums = e6ec09a10a51583a513976ece85ae917
+	sha256sums = a5df4e147c529e3da509b30dee02791642c32cb3b5bbbc6cd3cd7594f10cb9f4
 
 pkgname = pseint-bin
