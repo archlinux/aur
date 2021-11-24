@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
 # Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 # Contributor: Mitch Bigelow <ipha00 at gmail dot com>
 
 pkgname=ncnn
-pkgver=20210720
+pkgver=20211122
 pkgrel=1
 pkgdesc='High-performance neural network inference framework optimized for the mobile platform'
 url='https://github.com/Tencent/ncnn'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('BSD')
 depends=()
 makedepends=(
@@ -22,7 +22,7 @@ makedepends=(
 )
 conflicts=('ncnn-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tencent/ncnn/archive/$pkgver.tar.gz")
-b2sums=('f3ce1cf53f6b821e66794f2c14fa92454a842b83f8be54a5300da4fc399cd3444df8c630ab999fe4d085c0466c207954851a4fbe266c9088b48f579f6fe2cf6a')
+b2sums=('5bffad938c0a5048256c3a05659601ab7e8c24cd61d1c634dc2620e56adc887b0747d8e8959a34049297ebf14bc881f9f49af4b506ca9d97556337071408c3b1')
 
 prepare() {
     cd "$srcdir/ncnn-$pkgver" || exit
