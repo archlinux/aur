@@ -1,47 +1,44 @@
-# Maintainer: Michael Seiwald <michael@mseiwald.at>
+# Maintainer: Jacek Szafarkiewicz <szafar at linux dot pl>
+# Contributor: Michael Seiwald <michael@mseiwald.at>
+
 pkgname=nfs4-acl-tools
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="commandline ACL utilities for the Linux NFSv4 client"
 arch=('i686' 'x86_64')
-url="http://www.citi.umich.edu/projects/nfsv4/linux/nfs4-acl-tools/"
+url="http://linux-nfs.org"
 license=('custom')
-groups=()
+
 depends=('attr')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(http://www.citi.umich.edu/projects/nfsv4/linux/nfs4-acl-tools/$pkgname-$pkgver.tar.gz)
-noextract=()
-md5sums=('ece4d5599c3b8470990ee1adbe22e047')
+makedepends=('autoconf' 'automake')
+
+source=("$pkgname-$pkgver.tar.gz::https://git.linux-nfs.org/?p=bfields/$pkgname.git;a=snapshot;h=refs/tags/$pkgname-$pkgver;sf=tgz")
+sha256sums=('aab3eb6a60f319c95d7e1abe6ddbd81fdd4a7ec03161d3c59209c82e09e4fd60')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgname-$pkgver"
+
+    cp -f /usr/share/autoconf/build-aux//config.guess /usr/share/autoconf/build-aux//config.sub .
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  sed -i 's/attr_xattr_h/sys_xattr_h/' configure
-  for f in configure libnfs4acl/nfs4_acl_for_path.c libnfs4acl/nfs4_set_acl.c nfs4_setfacl/nfs4_setfacl.c; do
-    sed -i 's/attr\/xattr.h/sys\/xattr.h/' $f
-  done
+    autoreconf -vfi
 
-  sed -i '35 a #include <attr/attributes.h>' libnfs4acl/nfs4_set_acl.c
-  sed -i '37 a #include <attr/attributes.h>' libnfs4acl/nfs4_acl_for_path.c
+    ./configure \
+        --prefix=/usr \
+        CFLAGS="$CFLAGS" \
+        LDFLAGS="$LDFLAGS"
 
-
-  ./configure --prefix=/usr
-  make
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+    make DESTDIR="$pkgdir" install
+    install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
 
 # vim:set ts=2 sw=2 et:
