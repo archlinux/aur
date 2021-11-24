@@ -1,0 +1,15 @@
+pkgbase = kss
+	pkgdesc = Kubernetes pod status on steroid
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/chmouel/kss
+	arch = any
+	groups = utils
+	license = Apache
+	depends = python>=3.6
+	depends = kubectl
+	depends = fzf
+	source = kss_0.0.2-1.tar.gz::https://github.com/chmouel/kss/archive/refs/tags/0.0.2.tar.gz
+	sha512sums = 6d64a264b66f429bdc0d0aa6bd453a5a58e49e627f30766fe0661b038322ac0d7bb3174c0237ca1ca4b302afa23f6b2f3af67721d9277c11267c55cb545f6a17
+
+pkgname = kss
