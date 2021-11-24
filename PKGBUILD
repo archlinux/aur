@@ -2,13 +2,13 @@
 
 _pkgname=sline
 pkgname="${_pkgname}-git"
-pkgver=r15.b78cfbf
+pkgver=r86.378862e
 pkgrel=1
 pkgdesc='Simple line-editing and command history library.'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~arivigo/${_pkgname}"
 license=('MIT')
-#depends=('glibc')
+depends=('glibc')
 source=("git+https://git.sr.ht/~arivigo/${_pkgname}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
@@ -18,9 +18,14 @@ pkgver() {
  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "${_pkgname}"
+  sed -i "s/LDFLAGS.*$/&,-z,now/" config.mk
+}
+
 build() {
 	cd "${_pkgname}"
-	make LDFLAGS="-Wl,-z,now"
+	make
 }
 
 package() {
