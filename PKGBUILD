@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2075
+pkgver=1.7.2077
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -14,6 +14,8 @@ license=(
   LGPL2.1
   LGPL3
 )
+
+install=dev9.install
 
 depends=(
   libaio
@@ -41,7 +43,8 @@ git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git)
 sha256sums=(SKIP)
 
-pkgver() {
+pkgver()
+{
   cd pcsx2
   git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
@@ -58,7 +61,8 @@ prepare()
 
 }
 
-build() {
+build()
+{
   mkdir -p build
   cd build
 
@@ -74,18 +78,8 @@ build() {
   ninja -j$(nproc)
 }
 
-# For DEV9 netplay support
-post_install()
+package()
 {
-  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' ${pkgdir}
-}
-
-post_upgrade()
-{
-  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' ${pkgdir}
-}
-
-package() {
     DESTDIR="${pkgdir}" cmake --install build
 }
 
