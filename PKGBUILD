@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-rtmp
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -18,7 +18,7 @@ source=(
     http://nginx.org/download/nginx-$_nginxver.tar.gz.asc
     $_modname-$pkgver.tar.gz::https://github.com/arut/$_modname/archive/v$pkgver.tar.gz
 )
-sha256sums=('14774aae0d151da350417efc4afda5cce5035056e71894836797e1f6e2d1175a'
+sha256sums=('SKIP'
             'SKIP'
             '07f19b7bffec5e357bb8820c63e5281debd45f5a2e6d46b1636d9202c3e09d78')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
