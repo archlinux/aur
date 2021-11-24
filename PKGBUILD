@@ -5,7 +5,7 @@
 pkgname=stegify-git
 pkgdesc="Tool for LSB steganography written in Go (git)"
 pkgver=1.2.r2.g62518ca
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/DimitarPetrov/stegify"
 license=('MIT')
@@ -26,7 +26,8 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go get -d ./...
+  go mod init github.com/DimitarPetrov/stegify
+  go get github.com/DimitarPetrov/stegify/steg
   go build -o "${pkgname%-git}" .
 }
 
