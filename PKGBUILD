@@ -1,10 +1,10 @@
 pkgname=sac-core-legacy
 pkgver=10.0.37
-pkgrel=4
+pkgrel=5
 pkgdesc="SafeNet Authentication Client (version 10.0 for old Alladin eToken support)"
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
-depends=(pcsclite)
+depends=(openssl-1.0 pcsclite)
 license=(custom)
 source=('https://installer.id.ee/media/etoken/older%20versions/SAC_10_0_Post_GA_Linux.zip'
         eToken.conf)
@@ -28,6 +28,13 @@ package() {
     ln -s $f "$pkgdir"/usr/lib/sac-10.0/${f%.*.*}
     ln -s $f "$pkgdir"/usr/lib/sac-10.0/${f%.*.*.*}
   done
+
+  # The module loads "libcrypto.so" via dlopen() and expects the OpenSSL 1.0
+  # ABI. If it finds a newer version it'll segfault when importing keys.
+  # Fortunately, it looks here before /usr/lib.
+  ln -s ../libcrypto.so.1.0.0 "$pkgdir"/usr/lib/sac-10.0/libcrypto.so
+  ln -s ../libcrypto.so.1.0.0 "$pkgdir"/usr/lib/sac-10.0/libcrypto.so.1
+  ln -s ../libcrypto.so.1.0.0 "$pkgdir"/usr/lib/sac-10.0/libcrypto.so.1.0.0
 
   # Legacy name for the eToken PKCS#11 module
   install -dm755 "$pkgdir"/usr/lib/pkcs11
