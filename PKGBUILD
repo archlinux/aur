@@ -42,7 +42,7 @@ check() {
 }
 
 package_python-astroscrappy-git() {
-    depends=('python>=3.6' 'python-astropy' 'cython>=0.21')
+    depends=('python>=3.7' 'python-astropy' 'cython>=0.21')
     optdepends=('python-astroscrappy-doc: Documentation for Astro-SCRAPPY')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")

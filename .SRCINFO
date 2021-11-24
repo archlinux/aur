@@ -18,7 +18,7 @@ pkgbase = python-astroscrappy-git
 	md5sums = SKIP
 
 pkgname = python-astroscrappy-git
-	depends = python>=3.6
+	depends = python>=3.7
 	depends = python-astropy
 	depends = cython>=0.21
 	optdepends = python-astroscrappy-doc: Documentation for Astro-SCRAPPY
