@@ -1,6 +1,6 @@
 pkgbase = deadbeef-dr-meter-git
 	pkgdesc = Dynamic Range meter plugin for the DeaDBeeF audio player
-	pkgver = r324.c5e36ac
+	pkgver = r327.2c1e86e
 	pkgrel = 1
 	url = https://github.com/dakeryas/deadbeef-dr-meter
 	arch = i686
