@@ -1,15 +1,14 @@
 pkgbase = nuflux
 	pkgdesc = A library for calculating atmospheric neutrino fluxes
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/icecube/nuflux
 	arch = x86_64
-	license = unknown
+	license = LGPL3
 	makedepends = meson
 	depends = boost
 	depends = photospline
-	source = https://github.com/icecube/nuflux/archive/refs/tags/v2.0.2.tar.gz
-	sha256sums = 3c9d319a1c24c7327c5e30856d9b66e97c829f6dc07c86f9ff5178e6f4505208
+	source = https://github.com/icecube/nuflux/archive/refs/tags/v2.0.3.tar.gz
+	sha256sums = b7a3c88107c73b81bf021acd5e6e69f9646811cc041b1dc14fffbdffcd736981
 
 pkgname = nuflux
-
