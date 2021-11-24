@@ -1,11 +1,11 @@
 post_install() {
   echo "Note: You may need to restart 'pcscd.service' for it to recognize tokens."
   echo ""
-  echo "Note: The PKCS#11 library is no longer directly in /usr/lib, due to file"
-  echo "      conflicts with the newer sac-core. Instead, it can be found at:"
+  echo "Note: The PKCS#11 library has been removed from /usr/lib (due to file"
+  echo "      conflicts with the newer sac-core) as well as /usr/lib/pkcs11"
+  echo "      (due to it loading the wrong OpenSSL version and crashing)."
   echo ""
-  echo "      - /usr/lib/pkcs11/libeTPkcs11.so"
-  echo "      - /usr/lib/sac-10.0/libeToken.so"
+  echo "      Instead, it MUST be loaded via \"/usr/lib/sac-10.0/libeToken.so\"."
   echo ""
   echo "      Please update your program configuration."
 }

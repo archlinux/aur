@@ -1,6 +1,6 @@
 pkgname=sac-core-legacy
 pkgver=10.0.37
-pkgrel=5
+pkgrel=6
 pkgdesc="SafeNet Authentication Client (version 10.0 for old Alladin eToken support)"
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
@@ -35,10 +35,6 @@ package() {
   ln -s ../libcrypto.so.1.0.0 "$pkgdir"/usr/lib/sac-10.0/libcrypto.so
   ln -s ../libcrypto.so.1.0.0 "$pkgdir"/usr/lib/sac-10.0/libcrypto.so.1
   ln -s ../libcrypto.so.1.0.0 "$pkgdir"/usr/lib/sac-10.0/libcrypto.so.1.0.0
-
-  # Legacy name for the eToken PKCS#11 module
-  install -dm755 "$pkgdir"/usr/lib/pkcs11
-  ln -s ../sac-10.0/libeToken.so.10.0.37 "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
 
   # "Card reader" driver for PCSC
   install -dm755 "$pkgdir"/usr/lib/pcsc/drivers
