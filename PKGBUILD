@@ -1,6 +1,7 @@
 # Maintainer: MoetaYuko <loli at yuko.moe>
 
 pkgname=systemd-oomd-defaults
+_commit='8117c94f49e01aede06986f36a7d0986328fd469'
 pkgver=249.7
 pkgrel=1
 pkgdesc="Configuration files for systemd-oomd"
@@ -9,7 +10,7 @@ arch=('any')
 license=('LGPL2.1')
 depends=('systemd')
 makedepends=('git')
-source=(git+https://src.fedoraproject.org/rpms/systemd.git#branch=f35)
+source=(git+https://src.fedoraproject.org/rpms/systemd.git#commit=${_commit})
 md5sums=('SKIP')
 
 package() {

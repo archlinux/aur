@@ -7,7 +7,7 @@ pkgbase = systemd-oomd-defaults
 	license = LGPL2.1
 	makedepends = git
 	depends = systemd
-	source = git+https://src.fedoraproject.org/rpms/systemd.git#branch=f35
+	source = git+https://src.fedoraproject.org/rpms/systemd.git#commit=8117c94f49e01aede06986f36a7d0986328fd469
 	md5sums = SKIP
 
 pkgname = systemd-oomd-defaults
