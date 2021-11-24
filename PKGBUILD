@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog
-pkgver=0.10.0
+pkgver=0.12.0
 pkgrel=1
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
@@ -16,16 +16,17 @@ license=(custom:MIT)
 source=("https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz"
         "https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-md5sums=(1b0407b6163a3a01afdfc0fb454a7570 SKIP)
-sha1sums=(911816c00a2b08f4cfd388b1d2e176835c9b4e9e SKIP)
-sha256sums=(2c72369c636ca4684370adad1344071b23c9ee2c851eb7d738fa2e1d7092031f SKIP)
+md5sums=(30d6f68914af0ba5c32ac14df504215a SKIP)
+sha1sums=(de367b33fb45a1bca9e443ca5c1d6cae3833d759 SKIP)
+sha256sums=(aad413a8aaf15d400d70f9c909a28b92b138f7b0c0d825978de8788d0d75208a SKIP)
 
 build () {
 	cmake -H"${pkgname}-${pkgver}" -Bbuild \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DCOG_PLATFORM_FDO=ON \
+		-DUSE_SOUP2=OFF \
+		-DCOG_PLATFORM_WL=ON \
 		-DCOG_PLATFORM_DRM=ON \
 		-DCOG_PLATFORM_X11=ON \
 		-DCOG_PLATFORM_GTK4=ON \
