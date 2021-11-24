@@ -2,7 +2,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.9.0
+pkgver=3.9.4
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,6 @@ prepare() {
   git checkout v$pkgver
   git submodule init
   git config submodule.web.url $srcdir/web
-  git config submodule.extensions-manager.url $srcdir/extensions-manager
   git submodule update
 
   cp .env.sample .env
@@ -53,9 +52,9 @@ prepare() {
   fi
   yarn --cwd ./web install
   if [[ $CARCH == 'aarch64' ]]; then
-    cd web
+    pushd web
     npm rebuild
-    cd ${srcdir}/${_pkgname}
+    popd
   fi
   yarn --cwd ./web run bundle:desktop
   if [[ $CARCH == 'aarch64' ]]; then
