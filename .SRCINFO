@@ -1,14 +1,14 @@
 pkgbase = minetest-mesecons-lab
 	pkgdesc = Mesecons laboratory and tutorials
-	pkgver = 2021.11.12
+	pkgver = 2021.11.24
 	pkgrel = 1
 	url = https://content.minetest.net/packages/BuckarooBanzay/mesecons_lab/
 	arch = any
 	license = MIT
 	depends = minetest-common
-	noextract = mesecons_lab-2021.11.12.zip
+	noextract = mesecons_lab-2021.11.24.zip
 	options = !strip
-	source = mesecons_lab-2021.11.12.zip::https://content.minetest.net/packages/BuckarooBanzay/mesecons_lab/releases/9654/download/
-	sha256sums = 03e2d384a231191df8f5c9121b507792c99e1521a457e75aa50f1853625ad588
+	source = mesecons_lab-2021.11.24.zip::https://content.minetest.net/packages/BuckarooBanzay/mesecons_lab/releases/9749/download/
+	sha256sums = 1a0d6d89342021d27ccb55132b572a362b459162da7bd0d2768ad51650385c33
 
 pkgname = minetest-mesecons-lab
