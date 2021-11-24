@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=exatorrent
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Self-hostable, easy-to-use, lightweight, and feature-rich torrent client written in Go"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/varbhat/exatorrent"
 depends=('gcc-libs')
 makedepends=('go' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e0f16e62a5a763f638f7d7e8c3a6df0fb7caa342dfdb4f4d7c0a16f1d6542108')
+sha256sums=('a0e36d32d3c1aa24ad4c1ef767860f1e42e106c38bc2fc6fdaf19630544fec0b')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
