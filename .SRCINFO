@@ -1,12 +1,13 @@
 pkgbase = sblg
 	pkgdesc = simple off-line blog utility
 	pkgver = 0.5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kristaps.bsd.lv/sblg
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = custom:ISC
 	depends = expat
 	source = https://kristaps.bsd.lv/sblg/snapshots/sblg-0.5.11.tar.gz
