@@ -3,12 +3,12 @@
 pkgname="stsw-link007"
 _pkgname="STLinkUpgrade"
 pkgver=2.38.27
-pkgrel=3
+pkgrel=4
 _stlink_upgrade_ver=3.3.6
 pkgdesc="The firmware upgrade application for ST-LINK, ST-LINK/V2, ST-LINK/V2-1, and STLINK-V3 boards through the USB port"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stsw-link007.html"
-license=('SLA0048')
+license=('custom:SLA0048')
 # depends comments
 #
 ## java-runtime>=7 :
@@ -31,7 +31,7 @@ source=("https://st.com/content/ccc/resource/technical/software/firmware/group1/
 sha256sums=('bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
             'ccf814ca4b768285e611c809be147be2b0df10d39ceedfafa7f901a56bd4fcd3'
             'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
-            '2ceecf9925b8f55418fe75068976125d8b45cf24aecd7e87b8b05d03e4a4c50b')
+            'SKIP')
 
 package() {
 
