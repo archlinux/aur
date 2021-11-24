@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=git-gone
 pkgver=0.3.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Prune stale local Git branches'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/git-gone"
