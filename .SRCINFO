@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-git
 	pkgdesc = The official GUI for MongoDB - git version
-	pkgver = r13998.ge51701dd8
+	pkgver = r14047.g8fd35b90a
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -10,7 +10,7 @@ pkgbase = mongodb-compass-git
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = git
-	makedepends = nodejs>=14.0.0
+	makedepends = nodejs-lts-gallium
 	makedepends = npm>=7.0.0
 	makedepends = python
 	makedepends = unzip
