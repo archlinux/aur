@@ -1,15 +1,15 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=asciidoctor-web-pdf
-pkgver=v1.0.0_alpha.12
+pkgver=v1.0.0_alpha.14
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=('any')
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
 license=('MIT')
 provides=(${pkgname})
-conflicts=(${pkgname}  ${pkgname}-git asciidoctor-pdf)
+conflicts=(${pkgname}  ${pkgname}-git)
 #replaces=(${pkgname})
 depends=('npm' 'poppler' 'ghostscript')
 makedepends=()
@@ -17,7 +17,7 @@ backup=()
 options=('!strip')
 #install=${pkgname}.install
 source=("${pkgname}-${_pkgver}.tar.gz::https://ghproxy.com/${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('31c017336eaea33169e941889d83c23e49c1700997a10b34ebd5ff423cebff11')
+sha256sums=('20914817964e927f13cb7feb36318aba18b160083515e21c58dcbcde16762520')
 noextract=("${pkgname}-${_pkgver}.tar.gz")
 
 package() {
