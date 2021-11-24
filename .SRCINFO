@@ -1,14 +1,13 @@
 pkgbase = apt-file
 	pkgdesc = APT package searching utility
-	pkgver = 2021.4.0
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://packages.debian.org
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = perl-aptpkg
-	backup = etc/apt/apt-file.conf
-	source = git+https://salsa.debian.org/apt-team/apt-file.git
-	sha256sums = SKIP
+	backup = etc/apt/apt.conf.d/50apt-file.conf
+	source = http://deb.debian.org/debian/pool/main/a/apt-file/apt-file_3.2.2.tar.xz
+	sha256sums = bacbfb038dca6d2f0b740dcd05064d0b81fd0f086ce2eb59c5157d13ef064edf
 
 pkgname = apt-file
