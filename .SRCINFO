@@ -1,0 +1,18 @@
+pkgbase = python-kaldilm-git
+	pkgdesc = Python wrapper for arpa2fst from the kaldi speech toolkit.
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://github.com/csukuangfj/kaldilm
+	arch = any
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = cython
+	provides = python-kaldilm
+	conflicts = python-kaldilm
+	source = python-kaldilm-git::git+https://github.com/csukuangfj/kaldilm
+	md5sums = SKIP
+
+pkgname = python-kaldilm-git
