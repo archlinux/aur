@@ -1,7 +1,7 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 pkgname=project-plus-netplay
 pkgver=2.29
-pkgrel=2
+pkgrel=3
 pkgdesc="A Mod of Super Smash Bros. Brawl with Netplay."
 arch=('x86_64')
 url="https://projectplusgame.com/"
@@ -37,9 +37,6 @@ package() {
 	touch "/$pkgdir/$HOME/Documents/Project+ Netplay/Games/Place Brawl ISO here"
 	cp -R "Launcher" "$pkgdir/$HOME/Documents/Project+ Netplay"
 	chown -R "$USER" "$pkgdir/$HOME/Documents/Project+ Netplay"
-	install -d "$pkgdir/$HOME/.config/FasterPPlus"
-	printf "[General]\nShowLag = False\nShowFrameCount = False\nISOPaths = 2\nRecursiveISOPaths = False\nNANDRootPath = \nDumpPath = \nWirelessMac = \nWiiSDCardPath = $HOME/.local/share/FasterPPlus/Wii/sd.raw\nISOPath0 = $HOME/Documents/Project+ Netplay/Games\nISOPath1 = $HOME/Documents/Project+ Netplay/Launcher" > "$pkgdir/$HOME/.config/FasterPPlus/Dolphin.ini"
-	chown -R "$USER" "$pkgdir/$HOME/.config/FasterPPlus"
 	install -D "ProjectPlusSd$pkgver.raw" "$pkgdir/$HOME/.local/share/FasterPPlus/Wii/sd.raw"
 	chown -R "$USER" "$pkgdir/$HOME/.local/share/FasterPPlus"
 }
