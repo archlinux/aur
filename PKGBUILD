@@ -1,26 +1,36 @@
-# Maintainer: Christian Duerr <contact@christianduerr.com>
-pkgname=rum-git
-pkgver=0.1.0.r14.g3c3733c
+pkgname='rum-git'
+_pkgname=${pkgname%-git}
+pkgver=r312.49c274b
 pkgrel=1
-pkgdesc='Rust Userstyle Manager'
-arch=('i686' 'x86_64')
-url='https://github.com/chrisduerr/rum'
+pkgdesc='Game library management - master branch'
+arch=('x86_64')
+url='https://notabug.org/johncena141/rum'
 license=('GPL3')
-makedepends=('cargo' 'git')
-source=("git+$url")
-sha256sums=('SKIP')
+depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips udev)
+makedepends=(cargo npm git squashfs-tools patchelf)
+provides=('rum')
+conflicts=('rum')
+replaces=('chad-launcher-git')
+source=("git+https://notabug.org/johncena141/${_pkgname}.git#branch=master")
+md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-*}"
-	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${pkgname%-*}"
-	cargo build --release
+    cd "$srcdir/$_pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    npm install
+    npm run build
+    npm run tauri build
 }
 
 package() {
-	cd "${pkgname%-*}"
-	install -Dm755 target/release/rum "$pkgdir/usr/bin/rum"
+    cd "$srcdir/$_pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "src-tauri/target/release/rum"
+    install -Dm644 ./rum.desktop "$pkgdir/usr/share/applications/rum.desktop"
+    install -Dm644 ./icon.svg "$pkgdir/usr/share/pixmaps/rum.svg"
 }
+
