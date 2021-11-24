@@ -1,7 +1,7 @@
 pkgbase = stegify
 	pkgdesc = Tool for LSB steganography written in Go
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DimitarPetrov/stegify
 	arch = x86_64
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = stegify
 	sha512sums = a2b0ff8dbe6d6f06d4239446b25fe149df15ea3d995cd2dad48130834c25faaffb1142f72e45bc50ad6d5e38cc48fb9f5652ec7dd6d796f67f33cdef13ada661
 
 pkgname = stegify
-
