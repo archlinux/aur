@@ -1,0 +1,12 @@
+pkgbase = python-reorder-python-imports-isort-wrapper
+	pkgdesc = Wrapper for `reorder-python-imports` to emulate isort --diff for \ vscode python plugin and coc-pyright
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python-reorder-python-imports
+	source = isort-rpi
+	sha256sums = 7be3f2734f989607894d03697a79e7f212313ae70fd18b06d3abe77a4e1f8b6c
+
+pkgname = python-reorder-python-imports-isort-wrapper
