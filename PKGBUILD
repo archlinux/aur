@@ -1,3 +1,4 @@
+
 # Maintainer: András Czigány <andras dot czigany dot 13 at gmail dot com>
 
 # Based on the 'eea' AUR package by:
@@ -7,13 +8,13 @@ _pkgname=eea
 pkgname="${_pkgname}7-dkms"
 _pkgver_major=7
 pkgver=7.1.9.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux (DKMS)'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
 license=('proprietary')
 depends=(
-  'dkms'
+  'dkms>=3.0.2'
   'perl'
   'libelf'
   'systemd-libs'
@@ -36,7 +37,7 @@ source=("${_bundle_url}/${_bundle_file}"
 )
 
 sha256sums=('59e6ad38eb3809997e2d5eb91a0195a3c321656f5e8e8c64e61a02a9ac8c922e'
-            '0ff7dd79c8811afbc95b121f322bbec4839d7ce7334e5825fa447e3f3ad129e7'
+            '53df6d50f98792053da2580df7828a06eef34dd066de684a333dd7569b481f93'
             '20539f7116bf44defc2df0f244d8c02722b06b97fe6be8a049c4ecafce2d744c'
             'fb0ce96e2586ff6d41e2d707c8738d3ecc14a5b1072bd8973c7a11af647c2f4d')
 
