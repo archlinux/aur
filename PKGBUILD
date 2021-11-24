@@ -4,7 +4,7 @@
 # Contributor: Sergey Mamonov <mrqwer88@gmail.com>
 pkgname=maldet
 pkgver=1.6.4
-pkgrel=5
+pkgrel=6
 pkgdesc="linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=('GPL2')
