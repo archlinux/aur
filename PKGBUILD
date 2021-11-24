@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=6.8.0
+pkgver=6.8.1
 pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
@@ -70,7 +70,7 @@ package() {
     install -Dm644 input.txt -t "$pkgdir/opt/$pkgname"
     cp -r  assets templates theme t_modules lib "$pkgdir/opt/$pkgname"
  
-    for t in de es fr_FR id ja_JP nb_NO pt pt_BR pt_PT ru sv zh_CN; do
+    for t in de es fr_FR hu id ja_JP nb_NO pt pt_BR pt_PT ru sv zh_CN; do
         install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "$pkgdir/usr/share/locale/${t}/LC_MESSAGES"
     done
  
@@ -81,4 +81,4 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('69f27dd9b972b386b96796dafaeffd90')
+md5sums=('cda300b768ae13f6b3db4b05c0768047')
