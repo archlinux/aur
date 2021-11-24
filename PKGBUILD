@@ -9,14 +9,14 @@ NJOBS=$(nproc)
 #CUDA=1
 
 pkgname=fsl
-pkgver=6.0.5
+pkgver=6.0.5.1
 pkgrel=5
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
 license=('custom')
-depends=('gd' 'libxml2' 'libxml++2.6' 'gsl' 'libpng' 'nlopt' 'newmat' 'tcl' 'tk' 'zlib' 'python' 'glu' 'boost-libs' 'vtk' 'sqlite' 'fslpy>=3.7.0' 'bc' 'openblas')
-makedepends=('boost' 'fftw')
+depends=('gd' 'libxml2' 'libxml++2.6' 'gsl' 'libpng' 'nlopt' 'newmat' 'tcl' 'tk' 'zlib' 'python' 'glu' 'boost-libs' 'vtk' 'sqlite' 'fslpy>=3.7.0' 'bc' 'openblas' 'fmt' 'pugixml' 'tbb')
+makedepends=('boost' 'fftw' 'inetutils')
 optdepends=('cuda-9.1')
 source=("https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
         "https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
@@ -24,15 +24,17 @@ source=("https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
 	"fsl_sub"
 	"001-use_distribution_environment.patch"
 	"002-fix_fsl_exec_empty_errorCode.patch"
-	"003-fix_missing_LIB_PROB.patch")
+	"003-fix_missing_LIB_PROB.patch"
+	"004-fix_mist_discard.patch")
 
-sha256sums=('df12b0b1161a26470ddf04e4c5d5d81580a04493890226207667ed8fd2b4b83f'
-	    'e68e1efeb45750f876f350442f56c4830d211e9fb16daa5ad134bb8e1ef1ae18'
+sha256sums=('d8ab2ebc87d3e33ce1097dde18d8a55f62d4a27b45efc4f68adccfb6e8e1425c'
+	    '12aadb3bf48b1f0624aebc83f7e4b9fa46fb513b816b8ca29b0dee96570405fc'
 	    '08eba697dfd9f9e9d102ab2a73b506f48a9c946a55a14393ed9743c3a0387bc5'
 	    '2516982d151ab9e450a9ac6d5a6fc87099a7acc067514d80422c69950e618170'
 	    '906ac7de8068e5a5487b083844b50b6afd7562866088a4175fd88030182affdd'
 	    '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a'
-	    'adea0372f42026e72e385f1bec19ecc8cffa46de1f617271f14c9345c6b83c04')
+	    'adea0372f42026e72e385f1bec19ecc8cffa46de1f617271f14c9345c6b83c04'
+	    '1ea3ef517e9692ea8e95076c5eb0b759637672df41ace9619b50c2c9fa8216c2')
 
 prepare() {
 	cd "${srcdir}"
@@ -48,6 +50,8 @@ prepare() {
 	patch -Np1 -i "${srcdir}"/002-fix_fsl_exec_empty_errorCode.patch
 	# I'm not sure why -L${LIB_PROB} is missing in some Makefiles 
 	patch -Np1 -i "${srcdir}"/003-fix_missing_LIB_PROB.patch
+	# Recent glibc related upgrade (?) broke compilation of mist's shape.cpp due to binding unbindable types
+	patch -Np1 -i "${srcdir}"/004-fix_mist_discard.patch
 
 	# Insert makepkg build flags into configuration
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
