@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kępka (wojciech@wkepka.dev) 
 pkgname=helix-git
 pkgver=0
-pkgrel=2
+pkgrel=3
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
 arch=(x86_64)
@@ -12,7 +12,7 @@ source=("git+https://github.com/helix-editor/helix.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
