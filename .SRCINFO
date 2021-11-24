@@ -1,6 +1,6 @@
 pkgbase = libpdfium-nojs
 	pkgdesc = Open-source PDF rendering engine.
-	pkgver = 4638.r2.839d18189f
+	pkgver = 4664.r1.4888f07873
 	pkgrel = 1
 	url = https://pdfium.googlesource.com/pdfium/
 	arch = x86_64
@@ -18,7 +18,9 @@ pkgbase = libpdfium-nojs
 	conflicts = libpdfium-bin
 	source = git+https://pdfium.googlesource.com/pdfium
 	source = git+https://chromium.googlesource.com/chromium/src/build.git
+	source = git+https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
 	source = libpdfium.pc
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = feb270967925a0844b1b9a9e15288eb3
