@@ -1,7 +1,7 @@
 pkgbase = oneshot-bin
 	pkgdesc = First-come-first-serve single-fire HTTP/HTTPS server
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raphaelreyna/oneshot
 	arch = x86_64
 	arch = armv7h

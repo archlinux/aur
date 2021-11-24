@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=oneshot-bin
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="First-come-first-serve single-fire HTTP/HTTPS server"
 url="https://github.com/raphaelreyna/${pkgname/-bin/}"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -19,13 +19,8 @@ sha512sums_aarch64=('2772ff22ad4ec2ddef06c7d433f68e0f31db6c05eda532f98404bc54e1a
 
 package() {
   cd "${srcdir}/"
-
   install -Dvm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin"
-
   install -Dvm644 "${pkgname/-bin/}.1" -t "${pkgdir}/usr/share/man/man1"
-
-  install -Dvm644 icon/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname/-bin/}.svg"
-
   install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname/-bin/}"
   install -Dvm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname/-bin/}"
 }
