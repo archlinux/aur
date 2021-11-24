@@ -2,7 +2,7 @@
 
 pkgname=cpr
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ requests library by whoshuu'
 arch=('i686' 'x86_64')
 url="https://github.com/whoshuu/cpr"
@@ -29,5 +29,5 @@ package() {
 	cp -r lib/libcpr* "$pkgdir/usr/lib"
 
 	mkdir -p "$pkgdir/usr/include"
-	cp -r include/cpr "$pkgdir/usr/include"
+	cp -r include/cpr cpr_generated_includes/cpr "$pkgdir/usr/include"
 }
