@@ -4,7 +4,7 @@ pkgname=yabridgectl-git
 _pkgname=yabridgectl
 _yabridge=yabridge
 pkgver=3.6.0.r25.gaa35be3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Optional utility to help set up and manage yabridge"
 epoch=
 arch=('x86_64')
@@ -28,5 +28,5 @@ build() {
 
 package() {
   cd "$srcdir/$_yabridge/tools/yabridgectl"
-  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
 }
