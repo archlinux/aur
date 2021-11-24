@@ -1,0 +1,12 @@
+pkgbase = jfdocs-text
+	pkgdesc = Text Documents of Linux JF (Japanese FAQ) Project
+	pkgver = 20150504
+	pkgrel = 1
+	url = https://linuxjf.osdn.jp/
+	arch = any
+	license = custom
+	makedepends = curl
+	source = https://linuxjf.osdn.jp/JFdocs/JFtxt.tar.bz2
+	md5sums = 70e149f56ae7f369b68bc6f2ffc2240f
+
+pkgname = jfdocs-text
