@@ -30,7 +30,7 @@ source=("${pkgname%-git}::git+${url}.git"
   'config.ini')
 
 sha256sums=('SKIP'
-            '4f8e1b45a14380b9bf03c0d2a09abe63b7be32d74ddc2b61fb07cdc61eb97fec'
+            'bdbea733daf3a655a50bb86d6d5b4499a0596a81d7da0a5394ea838c36cd3907'
             'f939f02c49ac042a5b66dc9a938ceb854598d30df447d4bab217e8321ed4423e'
             '35428ba429d598839c1b7d157c0619a6b99ef1fb52ac35d510ed292d17095c43')
 

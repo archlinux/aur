@@ -7,7 +7,7 @@ Type=simple
 User=root
 Environment="IMAGE_FOLDER=/var/lib/linux-fake-background-webcam/default"
 ExecStartPre=modprobe v4l2loopback video_nr=2%i \
-  card_label="Fake background %i" 
+  card_label="Fake background %i" \
   exclusive_caps=1
 ExecStart=/usr/bin/linux-fake-background-webcam \
   -c /etc/linux-fake-background-webcam/config.ini \
