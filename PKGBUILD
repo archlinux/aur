@@ -1,15 +1,14 @@
-# Maintainer:  Zachary Lund <admin@computerquip.com>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Maintainer: Zachary Lund <admin@computerquip.com>
 
 pkgname=llnextgen
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The spirtual successor of Jacobs and Grune's parser generator."
 arch=('i686' 'x86_64')
-url="os.ghalkes.nl/LLnextgen/download.html"
+url=https://os.ghalkes.nl/LLnextgen/download.html
 license=('GPL3')
-makedepends=()
-depends=()
-conflicts=()
+depends=(glibc)
 source=("http://os.ghalkes.nl/LLnextgen/releases/LLnextgen-$pkgver.tgz")
 md5sums=('f3733cca58f862d41b8fb3d9e20b8426')
 
