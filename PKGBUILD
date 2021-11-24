@@ -12,7 +12,7 @@ source=(
     "$pkgname-$pkgver.gz::https://github.com/symfony/cli/releases/download/v${pkgver}/symfony_linux_amd64.gz"
     'eula.txt'
 )
-sha256sums=('ffd8ec765dfd4ce92e3420781bba2b247e2a4784a976ded54ec0b58de9722ecd'
+sha256sums=('3b2425f33da11dd5d9d0029e9b032052c75db362ba88bd80b9dfdff56fc67847'
             '46711d74e64aa4a26ae257063b795c432113b56fb80d1a69ffaa7b0b079dcf11')
 
 package() {
