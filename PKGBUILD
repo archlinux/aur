@@ -74,6 +74,7 @@ _package() {
   )
   __kernelname=linux-nitrous-fire
   backup=("etc/mkinitcpio.d/linux-nitrous-fire.preset")
+  provides=(NTFS3-MODULE)
   install=${pkgbase}.install
 
   cd "${_srcname}"
