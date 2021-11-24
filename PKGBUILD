@@ -4,7 +4,7 @@
 
 _pkgname=archlinux-appstream-data
 pkgname=archlinux-appstream-data-pamac
-pkgver=20211018
+pkgver=20211122
 pkgrel=1
 epoch=1
 pkgdesc="Arch Linux application database for AppStream-based software centers (Fixed for pamac-aur and pamac-all packages)"
@@ -24,22 +24,22 @@ for _repo in core extra community multilib; do
           $_repo-icons-128x128-$pkgver.tar.gz::https://sources.archlinux.org/other/packages/$_pkgname/$pkgver/$_repo/icons-128x128.tar.gz)
  noextract+=($_repo.xml.gz-$pkgver $_repo-icons-{48x48,64x64,128x128}-$pkgver.tar.gz)
 done
-sha256sums=('b6f86b99824c6c84762ceb92e99f4f85f2cc27e556b61fdb0ec3b24b0fa6b4c2'
+sha256sums=('403b48c3f01f3cbff82971716f535b7ac5d628ac4c237bc171f609881ac8eff3'
             '7989bb311baa38ef545250282aa065d23281c46dfb8faabe4c653487bdbded5c'
-            'f4afa3a40b2c7e4fc748ad51754c6c00fd3d90f6a8460a662e7f628b835a4b6d'
+            '03495a52bebd2f4d671e72b0f4397ce5d82dda74775e03c31d9ca369cdcf16dd'
             '7989bb311baa38ef545250282aa065d23281c46dfb8faabe4c653487bdbded5c'
-            'c41a3dc6789dc22287ab50eca9007a3bc0acaebda34bba0e99abcfb24867a019'
-            '58fd661b9527196e01e9e48fef87d93e5c0293365794e5996065c1b02751f284'
-            '6a485207013368c2a9ff6dba439d0f108a53c3c96fb7cc96be3f20f77eec5cad'
-            '47fef2cd539a270d29192d4e18159367ef5c1358d6f8eec6a5f54a3275107565'
-            '0b8c0950062b22dd9820f5d257d2a0425d6046f4f9d4b4ab0863f3ef501bf03c'
-            '8e25f73eae905801b6e092f7df8e97342c20e946dd1d1b308b6c1b0ebd75306f'
-            'e35d2267dc1c46bb3e3107d2f2f3d4f80814119df5aaedc4fbbea3936d97e43e'
-            'eccaa7eea07da98e1bdbce1807fbd699b2ada0a4c02933a2595bacd6c3c2198b'
-            'c713668bc545c0b00a75c1ac4d982abd0e9cc1a95d73c141f6053fcc4f069387'
-            'c3417a8e3ac40593d72abb655cadd2145c3cf8b6e8a3ffbc2eff5c564ddca793'
-            '33958a200b4a3a7ad5748cd773e9d9728208f6e5bb3d9beae5994d9c9faf8b6a'
-            'ed937b6627c5a8d0f24a64c3c5751e5e8d9a3042eb62139d6bb5ee77f25cca07')
+            '7314181a1c06b0dc8d9048f4704272855f78af33781ca23def848b77b2e4254d'
+            'f28cdfff01f386b4b4aba6d9ad3a0fc042b5625993c752ddffd06349554610ad'
+            'aafae2dc257d018c9dcbce3db935421736056047f712be61be9a8ccb185782d0'
+            'd159fde53badc784adb3b02458afec41307eca1032ac2e1a522814cc0a57c969'
+            'de80d7d9c9fe705d59d986d26cbc3368e841386f9eacdf73281b5654541b0a26'
+            '9d089a8a9f2a7e3424766fc1f4d37ea7f9f5414e7b232bf8c19a47e2a20e58df'
+            'e3ddedfbbb3311eb08654aa177c73eec6aae71a1322dcb25c0f1361e50fff410'
+            'c7e35088e60a7b3ac8bf904a88564065808a6eba5e7488aedaaa5e908966669a'
+            '6b44eb95c334eb41f97343331345142744f4fa3a82217a64c67fa371d913b5e9'
+            '889eeb6a666c92a216b6ef9559e4dc6cd54b397f89d874abfceae487de394c66'
+            'f1ad7bb2f561d0a71e4453251d81410a02ea5a461feef7bcf82c389437b11c83'
+            'aeebd212f035503e18bd4e4523da9a1ffe443156f6bce3751c20ff2872c1eda8')
 
 package() {
   mkdir -p "${pkgdir}"/usr/share/app-info/{icons/archlinux-arch-{core,extra,community,multilib}/{48x48,64x64,128x128},xmls}
@@ -48,7 +48,7 @@ package() {
    tar -xzf $_repo-icons-64x64-$pkgver.tar.gz -C "$pkgdir"/usr/share/app-info/icons/archlinux-arch-$_repo/64x64
    tar -xzf $_repo-icons-128x128-$pkgver.tar.gz -C "$pkgdir"/usr/share/app-info/icons/archlinux-arch-$_repo/128x128
    install -m644 $_repo-$pkgver.xml.gz "$pkgdir"/usr/share/app-info/xmls/$_repo.xml.gz
-   zcat "${srcdir}/${_repo}-${pkgver}.xml.gz" | sed 's|<em>||g;s|<\/em>||g;' | gzip > "${pkgdir}/usr/share/app-info/xmls/${_repo}.xml.gz"
+   zcat "${srcdir}/${_repo}-${pkgver}.xml.gz" | sed 's|<em>||g;s|<\/em>||g;' | sed 's|<code>||g;s|<\/code>||g;'| gzip > "${pkgdir}/usr/share/app-info/xmls/${_repo}.xml.gz"
     done
 }
 
