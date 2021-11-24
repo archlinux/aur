@@ -4,7 +4,7 @@
 # Contributor: Sergey Mamonov <mrqwer88@gmail.com>
 pkgname=maldet
 pkgver=1.6.4
-pkgrel=6
+pkgrel=7
 pkgdesc="linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=('GPL2')
@@ -12,7 +12,7 @@ arch=('any')
 depends=('perl')
 depends_x86_64=('lib32-glibc')
 source=("https://github.com/rfxn/linux-malware-detect/archive/${pkgver}.tar.gz")
-        
+backup=("etc/maldet/maldet.conf")
 md5sums=('75560119b94f558da88d5f8cc8710354')
 
 ## TODO upstream setup tries to overwrite clamav's rfxn.* and lmd.user.* files
@@ -32,7 +32,7 @@ package(){
     mkdir -p "$pkgdir/usr/lib/systemd/system/"
     sed "s|/usr/local/maldetect/maldet|/usr/bin/maldet|" "$dest/service/maldet.service" \
       | sed "s|--monitor /usr/local/maldetect/monitor_paths|--monitor /etc/maldet/monitor_paths|" \
-      | sed "s|^PIDFile=.*|PIDFile=/run/maldet.pid|" \
+      | sed "s|^PIDFile=.*|PIDFile=/var/lib/maldet/tmp/inotifywait.pid|" \
       | sed "s|^EnvironmentFile=.*|EnvironmentFile=/etc/maldet/maldet.conf|" \
       > "$pkgdir/usr/lib/systemd/system/maldet.service"
     rm -r "$dest/service"
