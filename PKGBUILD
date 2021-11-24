@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=10.r0.g4d64fc8
+pkgver=11.r1.gf7d518e
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -11,9 +11,7 @@ url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python')
 makedepends=('python-setuptools'
-             'git'
-             # pandoc is optional-ish – if missing, the package still builds
-             'pandoc')
+             'git')
 optdepends=('dnf: build Fedora or Mageia images'
             'debootstrap: build Debian or Ubuntu images'
             'debian-archive-keyring: build Debian images'
@@ -58,12 +56,6 @@ build() {
     cd 'mkosi'
 
     python setup.py build
-
-    # try to build the manpage but tolerate “command not found” (but not other errors)
-    pandoc -s -f markdown -t man mkosi.md -o mkosi.1 || error=$?
-    if ((error != 0 && error != 127)); then
-        return $error
-    fi
 }
 
 package() {
@@ -71,7 +63,5 @@ package() {
 
   python setup.py install --skip-build --optimize=1 --root="$pkgdir"
 
-  # as in build(), try to install the manpage but tolerate “file not found”
-  # (but in this case there’s no specific error code to check)
-  install -Dm 644 mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
+  install -Dm 644 man/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
 }

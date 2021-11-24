@@ -1,13 +1,12 @@
 pkgbase = mkosi-git
 	pkgdesc = Build Legacy-Free OS Images
-	pkgver = 10.r0.g4d64fc8
+	pkgver = 11.r1.gf7d518e
 	pkgrel = 1
 	url = https://github.com/systemd/mkosi
 	arch = any
 	license = LGPL2.1
 	makedepends = python-setuptools
 	makedepends = git
-	makedepends = pandoc
 	depends = python
 	optdepends = dnf: build Fedora or Mageia images
 	optdepends = debootstrap: build Debian or Ubuntu images
