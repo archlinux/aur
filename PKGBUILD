@@ -1,39 +1,34 @@
-# Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=xdrawchem
 pkgver=1.10.2
-pkgrel=1
-pkgdesc='XDrawChem is a two-dimensional molecule drawing program for Unix operating systems. It is similar in functionality to other molecule drawing programs such as ChemDraw (TM, CambridgeSoft).'
+pkgrel=2
+pkgdesc='A two-dimensional molecule drawing program'
 url='http://www.woodsidelabs.com/chemistry/xdrawchem.php'
 license=("GPL")
 arch=('x86_64')
 depends=('openbabel')
-optdepends=()
-makedepends=()
+source=($pkgname-$pkgver.tar.gz::"https://github.com/bryanherger/$pkgname/archive/$pkgver-1.tar.gz"
+        "obabel3.patch")
+sha256sums=('009b525e570cd79b3e59880877871e258071fecdef6c397d7533f3920faa9a7e'
+            '0bbeea4a28a43641a11c7a54d925c9b31f1301d5d836aae2d0e95a42cb53cd0a')
 options=('!libtool')
-source=(https://github.com/bryanherger/${pkgname}/archive/${pkgver}-1.tar.gz)
-sha1sums=('4ff8dbaa71b875470d8ca40a0f1af57746fcc644')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver-1"
+  patch -p1 < "$srcdir/obabel3.patch"
+}
 
 build() {
-  msg2 "Building"
-  cd ${srcdir}/${pkgname}-${pkgver}-1/xdrawchem-qt5
-  qmake PREFIX="/usr/"
+  cd "$srcdir/$pkgname-$pkgver-1/xdrawchem-qt5"
+  qmake PREFIX='/usr' INCLUDEPATH='/usr/include/openbabel3'
   make 
 }
 
 package() {
-  msg2 "Making executables"
-  cd ${srcdir}/${pkgname}-${pkgver}-1/xdrawchem-qt5
-  #bin
-  install -D -m 0755 bin/xdrawchem ${pkgdir}/usr/bin/xdrawchem
-  #shared
-  mkdir -p  ${pkgdir}/usr/share/xdrawchem
-  chmod 0755 ${pkgdir}/usr/share/xdrawchem
-  cp ring/* ${pkgdir}/usr/share/xdrawchem
-  #doc
-  mkdir -p ${pkgdir}/usr/share/xdrawchem/doc
-  chmod 0755 ${pkgdir}/usr/share/xdrawchem/doc
-  cp doc/* ${pkgdir}/usr/share/xdrawchem/doc
-
-  #make DESTDIR=${pkgdir} install # DESTDIR does not work
+  cd "$srcdir/$pkgname-$pkgver-1/xdrawchem-qt5"
+  install -Dm755 bin/xdrawchem "$pkgdir/usr/bin/xdrawchem"
+  install -Dm755 ring/* -t "$pkgdir/usr/share/xdrawchem"
+  install -Dm755 doc/* -t "$pkgdir/usr/share/xdrawchem/doc"
 }
