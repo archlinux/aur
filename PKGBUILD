@@ -21,5 +21,5 @@ build () {
 package () {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 scrycli -t "$pkgdir/usr/bin"
-  install -Dm644 $startdir/scrycli.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 scrycli.1 -t "$pkgdir/usr/share/man/man1"
 }
