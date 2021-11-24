@@ -1,13 +1,13 @@
 # Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname=modmanager-git
-pkgver=r189.4688a28
+pkgver=r424.363f8e0
 pkgrel=1
 pkgdesc="A Qt-based mod manager for minecraft."
 arch=(x86_64)
 url="https://github.com/kaniol-lck/modmanager"
 license=('GPL')
 groups=()
-depends=(qt5-base)
+depends=(qt5-base aria2 quazip)
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
