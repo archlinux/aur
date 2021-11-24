@@ -1,25 +1,26 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
-
-pkgname="python-reorder-python-imports"
-_pkgname="reorder_python_imports"
+# Maintainer: Andrej Radović <r.andrej@gmail.com>
+pkgname=python-reorder-python-imports
+_name=${pkgname#python-}
+_name=${_name//-/_}
 pkgver=2.6.0
-pkgrel=1
-pkgdesc="Automatically reorder python imports."
-arch=('any')
-url="https://github.com/asottile/${_pkgname}"
+pkgrel=2
+pkgdesc="Automatically reorder Python imports."
+url="https://github.com/asottile/reorder_python_imports"
+depends=('python' 'python-aspy-refactor-imports')
+makedepends=('python-setuptools')
 license=('MIT')
-depends=('python-aspy-refactor-imports')
-source=("https://github.com/asottile/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('a9f7ed384bcd5ee0c8077a5dde03149e')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$name/$_name-$pkgver.tar.gz")
+sha256sums=('f4dc03142bdb57625e64299aea80e9055ce0f8b719f8f19c217a487c9fa9379e')
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    python setup.py build
+	cd "$srcdir/$_name-$pkgver"
+	python setup.py build
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+	cd "$srcdir/$_name-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1
 
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
