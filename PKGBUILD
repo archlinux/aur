@@ -1,6 +1,9 @@
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: G. Schlisio <x-git@dukun.de>
+# Contributor: Matt Harrison <matt@hallme.com>
 pkgname=maldet
-pkgver=1.6
-pkgrel=3
+pkgver=1.6.4
+pkgrel=1
 pkgdesc="linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=('GPL2')
@@ -9,7 +12,7 @@ depends=('perl')
 depends_x86_64=('lib32-glibc')
 source=("https://github.com/rfxn/linux-malware-detect/archive/${pkgver}.tar.gz")
         
-md5sums=('4e8e15879bd965a8eaef9241be7d8b54')
+md5sums=('75560119b94f558da88d5f8cc8710354')
 
 ## TODO upstream setup tries to overwrite clamav's rfxn.* and lmd.user.* files
 #  seems to run with root-privs, so check for overwrites anywhere (best in a VM)
@@ -33,7 +36,7 @@ package(){
     rm -r "$dest/service"
 
     mkdir -p "$pkgdir/var/lib/maldet"
-    mkdir -p "$pkgdir/var/lib/maldet/"{quarantine,sess,sigs,clean,tmp,pub}
+    mkdir -p "$pkgdir/var/lib/maldet/"{internals,quarantine,sess,sigs,clean,tmp,pub}
     mkdir -p "$pkgdir/var/log/maldet"
     mkdir -p "$pkgdir/etc/maldet"
     mv "$dest/conf.maldet" "$pkgdir/etc/maldet/maldet.conf"
