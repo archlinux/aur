@@ -7,11 +7,12 @@
 pkgbase=vte3-notification
 pkgname=(${pkgbase} vte-notification-common)
 pkgver=0.66.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
-arch=(i686 x86_64)
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=(LGPL)
+arch=(i686
+      x86_64)
 depends=(fribidi
          gnutls
          gtk3
@@ -35,7 +36,7 @@ _fcommit='77371af24cd2f8e911ec522cf38764f58f8925ec'
 _vtetag=${pkgver}
 
 source=(
-    "git+https://git.gnome.org/browse/vte#tag=$_vtetag"
+    "git+https://gitlab.gnome.org/GNOME/vte#tag=$_vtetag"
     "${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
 )
 
@@ -43,26 +44,27 @@ sha256sums=('SKIP'
             'b732fbf452de5abd5d78e9126a87d87686ccb473dbabf34ef794b0a955c0f892')
 
 prepare () {
-    cd "vte"
+    cd $srcdir/vte
 
+    # Apply patches
     patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
 }
 
 build() {
-    arch-meson vte build \
+    arch-meson build vte \
         -D b_lto=false \
         -D docs=true
     meson compile -C build
 }
 
 _pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
+    local p="$1" f d; shift
+    for f; do
+        d="$srcdir/$p/${f#$pkgdir/}"
+        mkdir -p "$(dirname "$d")"
+        mv "$f" "$d"
+        rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+    done
 }
 
 package_vte3-notification(){
