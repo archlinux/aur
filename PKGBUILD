@@ -87,7 +87,7 @@ _package() {
     'linux-nitrous-headers: to build DKMS modules against this kernel'
     'linux-firmware: Additional firmware blobs'
   )
-  provides=(WIREGUARD-MODULE)
+  provides=(WIREGUARD-MODULE NTFS3-MODULE)
   __kernelname=linux-nitrous
   backup=("etc/mkinitcpio.d/linux-nitrous.preset")
   install=${pkgbase}.install
