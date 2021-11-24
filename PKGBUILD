@@ -9,7 +9,7 @@ arch=("armv7h" "i686" "x86_64")
 url="https://github.com/Apple-Music-Electron/${_pkgname}.git"
 license=("MIT")
 depends=('libxss')
-makedepends=('yarn' 'git' 'yarn')
+makedepends=('yarn' 'git' 'npm')
 optdepends=('libnotify: Playback notifications'
             'otf-san-francisco: Use of SF Font for certain themes')
 provides=("${pkgname%-git}")
