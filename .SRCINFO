@@ -1,0 +1,27 @@
+pkgbase = python-lhotse-git
+	pkgdesc = Speech and audio data preparation toolkit.
+	pkgver = 1.0.0.dev0+git.a6c3936.clean
+	pkgrel = 1
+	url = https://github.com/lhotse-speech/lhotse
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-audioread
+	depends = python-soundfile
+	depends = python-click
+	depends = python-cytoolz
+	depends = python-h5py
+	depends = python-intervaltree
+	depends = python-lilcom-git
+	depends = python-packaging
+	depends = python-pyaml
+	depends = python-tqdm
+	depends = python-torchaudio
+	provides = python-lhotse
+	conflicts = python-lhotse
+	source = python-lhotse-git::git+https://github.com/lhotse-speech/lhotse
+	md5sums = SKIP
+
+pkgname = python-lhotse-git
