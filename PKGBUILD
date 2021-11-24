@@ -2,7 +2,7 @@
 pkgname=linux-fake-background-webcam-git
 _pkgname="${pkgname%-git}"
 pkgver=r247.80f04cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual background-replacing camera"
 depends=('v4l2loopback-dkms'
   'python'

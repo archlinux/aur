@@ -1,7 +1,7 @@
 pkgbase = linux-fake-background-webcam-git
 	pkgdesc = Virtual background-replacing camera
 	pkgver = r247.80f04cf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fangfufu/Linux-Fake-Background-Webcam
 	install = linux-fake-background-webcam.install
 	arch = x86_64
