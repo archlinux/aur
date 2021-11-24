@@ -1,5 +1,5 @@
 # For DEV9 netplay support
-post_remove()
+post_install()
 {
   setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/PCSX2
 }
