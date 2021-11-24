@@ -1,9 +1,10 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: G. Schlisio <x-git@dukun.de>
 # Contributor: Matt Harrison <matt@hallme.com>
+# Contributor: Sergey Mamonov <mrqwer88@gmail.com>
 pkgname=maldet
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=('GPL2')
@@ -31,7 +32,8 @@ package(){
     mkdir -p "$pkgdir/usr/lib/systemd/system/"
     sed "s|/usr/local/maldetect/maldet|/usr/bin/maldet|" "$dest/service/maldet.service" \
       | sed "s|--monitor /usr/local/maldetect/monitor_paths|--monitor /etc/maldet/monitor_paths|" \
-      | sed "s|^PIDFile=.*|PIDFILE=/var/run/maldet.pid|" \
+      | sed "s|^PIDFile=.*|PIDFile=/var/run/maldet.pid|" \
+      | sed "s|^EnvironmentFile=.*|PIDFile=/etc/maldet/maldet.conf|" \
       > "$pkgdir/usr/lib/systemd/system/maldet.service"
     rm -r "$dest/service"
 
