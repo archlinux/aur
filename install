@@ -1,14 +1,14 @@
 post_install() {
   cat <<EOF
 
-Note that the browser Ghostery Dawn is still in Beta.
+Hint: If you firejail installed, you can also launch it as "firejail ghostery".
+If you want to always use firejail, you can define a symbolic link:
 
-Launch command: /usr/bin/ghostery
+$ sudo ln -s /usr/bin/firejail /usr/local/bin/ghostery
 
-To use the builtin ad-free search (Ghostery Glow), a subscription is needed.
-If you want to try it out, you can get one for free by signing up for the beta:
+Now, running "ghostery" will have the same effect as:
 
-  https://www.ghostery.com/products/ghostery-browser/
+$ /usr/bin/firejail /usr/bin/ghostery
 
 EOF
 }
