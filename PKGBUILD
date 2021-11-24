@@ -2,7 +2,7 @@
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser for your pinned tabs"
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
@@ -12,11 +12,20 @@ makedepends=('git' 'meson')
 #checkdepends=('appstream-glib')
 conflicts=('gigagram' "$pkgname-web")
 replaces=("$pkgname-web")
-source=("$pkgname::git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver"
+        'git+https://github.com/sonnyp/troll.git')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+  cd "$srcdir/Tangram"
+  git submodule init
+  git config submodule.src/troll.url "$srcdir/troll"
+  git submodule update
+}
 
 build() {
-  arch-meson "$pkgname" build
+  arch-meson Tangram build
   meson compile -C build
 }
 
