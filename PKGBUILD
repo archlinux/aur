@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=caj2pdf-qt
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='CAJ 转 PDF 转换器（GUI 版本）'
 arch=('x86_64')
 url='https://caj2pdf-qt.sainnhe.dev'
@@ -10,7 +10,7 @@ depends=('qt6-base' 'qt6-5compat')
 makedepends=('git' 'python' 'cmake')
 provides=('caj2pdf-qt')
 conflicts=('caj2pdf-qt')
-source=("${pkgname}::git+https://github.com/sainnhe/caj2pdf-qt.git#tag=v0.1.1"
+source=("${pkgname}::git+https://github.com/sainnhe/caj2pdf-qt.git#tag=v${pkgver}"
         'dev.sainnhe.caj2pdf-qt.desktop')
 md5sums=('SKIP'
          '3068f1cbf4fb1d8c04a9f8afb3fb7d54')
