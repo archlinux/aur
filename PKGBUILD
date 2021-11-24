@@ -24,7 +24,8 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver-bsd"
   patch -p0 < ../hdf5.patch
   patch -p0 < "$srcdir/skip-test.patch"
-  sed -i 's@rocket_silo.lo@rocket_silo.lo ../src/libsiloh5.la@' tests/Makefile.in
+  sed -i 's@rocket_silo.lo@rocket_silo.lo ../src/libsiloh5.la@' \
+    tests/Makefile.in
 }
 
 build() {
