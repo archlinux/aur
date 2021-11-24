@@ -1,9 +1,9 @@
 # Maintainer:  Oğuzhan Eroğlu <rohanrhu2@gmail.com>
 
 pkgname=gdb-frontend-bin
-pkgver=0.9.5.beta
-_pkgver=0.9.5-beta
-pkgrel=1
+pkgver=0.9.6.beta
+_pkgver=0.9.6-beta
+pkgrel=2
 pkgdesc="An easy, flexible and extensionable GUI debugger"
 arch=('x86_64')
 url='https://oguzhaneroglu.com/projects/gdb-frontend'
