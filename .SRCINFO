@@ -1,14 +1,13 @@
 pkgbase = php-sw-frosh-plugin-uploader
 	pkgdesc = Tool for uploading new plugin releases to Shopware Store
-	pkgver = 0.3.18
+	pkgver = 0.3.19
 	pkgrel = 1
 	url = https://github.com/FriendsOfShopware/FroshPluginUploader
 	arch = any
 	license = MIT
 	depends = php>=7.4.0
-	source = frosh-plugin-upload-0.3.18.phar::https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/0.3.18/frosh-plugin-upload.phar
-	source = LICENSE-0.3.18::https://raw.githubusercontent.com/FriendsOfShopware/FroshPluginUploader/0.3.18/LICENSE
-	sha256sums = b83d9f233bb8b62928cd065113a8f0d4828fe623cfe9148156b1dd78e07b3fa2
-	sha256sums = 9648e2fef7056bf270b185946a47c0284e1ccae640282fb4339b5822e47e8391
+	source = frosh-plugin-upload-0.3.19.phar::https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/0.3.19/frosh-plugin-upload.phar
+	sha256sums = 14e16f6b6f419caa5bc2f014ad88652ff09d5f0123086a2f90c638890a55e073
+	sha256sums = __LICENSE_SHA_SUM__
 
 pkgname = php-sw-frosh-plugin-uploader
