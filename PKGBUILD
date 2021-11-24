@@ -1,7 +1,7 @@
 # Maintainer: Hemish <hemish04082005@gmail.com>
 pkgname=backman
 
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 
 pkgdesc="Backman is a random/fixed background image setter for major GTK desktops, X11, sway and other wlroots based wayland compositors"
@@ -15,7 +15,7 @@ depends=(
 		"hsetroot"
         "bash"
 		)
-makedepends=("git")
+makedepends=()
 optdepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/loadofearth/backman/archive/refs/tags/0.2.tar.gz")
+source=("https://github.com/loadofearth/backman/archive/refs/tags/0.3.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
