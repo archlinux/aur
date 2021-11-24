@@ -1,0 +1,12 @@
+pkgbase = jfdocs-sgml
+	pkgdesc = SGML Documents of Linux JF (Japanese FAQ) Project
+	pkgver = 20150504
+	pkgrel = 1
+	url = https://linuxjf.osdn.jp/
+	arch = any
+	license = custom
+	makedepends = curl
+	source = https://linuxjf.osdn.jp/JFdocs/JFsgml.tar.bz2
+	md5sums = 41744e437f9bfccef9f8849e1497b855
+
+pkgname = jfdocs-sgml
