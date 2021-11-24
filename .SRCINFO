@@ -1,7 +1,7 @@
 pkgbase = thunderbird-appmenu
 	pkgdesc = Thunderbird from extra with appmenu patch
 	pkgver = 91.3.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.mozilla.org/thunderbird/
 	arch = x86_64
 	license = MPL
