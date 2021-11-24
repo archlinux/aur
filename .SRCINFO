@@ -1,0 +1,17 @@
+pkgbase = python-lilcom-git
+	pkgdesc = Lossy compression of floating-point NumPy arrays into byte strings.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/danpovey/lilcom
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-numpy
+	provides = python-lilcom
+	conflicts = python-lilcom
+	source = python-lilcom-git::git+https://github.com/danpovey/lilcom
+	md5sums = SKIP
+
+pkgname = python-lilcom-git
