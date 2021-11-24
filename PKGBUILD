@@ -3,7 +3,7 @@
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
 
 pkgname=cockpit-navigator
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='A Featureful File Browser for Cockpit.'
 url="https://github.com/45Drives/cockpit-navigator"
@@ -12,10 +12,8 @@ license=('GPL')
 depends=('cockpit' 'python' 'rsync' 'zip')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
     "$url/releases/download/v$pkgver/LICENSE")
-b2sums=(
-    'a9516bc0ba8a1513b4284b189890b841860fcafc5a55ff1675033dfc46462d8eeec08ebcbe6c8077a4dcc161791c63e76b4c47e2543a323dfab0c6b5a204c528'
-    '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd'
-)
+b2sums=('79714a54b75e95a243a58071cd3456cc3ef07f48f7752907d290c2e1f033425588df4c2a7a0afd2b42faf1b01aaf96b9e0f06b5049e1607aeceacbaf80406702'
+        '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver" || exit
