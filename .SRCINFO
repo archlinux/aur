@@ -1,6 +1,6 @@
 pkgbase = blobdrop-git
 	pkgdesc = Drag and drop files directly out of the terminal
-	pkgver = r28.0557852
+	pkgver = 0.1.r0.gc946386
 	pkgrel = 1
 	url = https://github.com/vimpostor/blobdrop
 	arch = i686
