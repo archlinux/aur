@@ -5,7 +5,7 @@
 
 pkgname=kwin-lowlatency
 pkgver=5.23.3
-pkgrel=3
+pkgrel=4
 pkgdesc='the compositor, with X11 unredirection and some other things'
 arch=(x86_64)
 url='https://github.com/tildearrow/kwin-lowlatency'
