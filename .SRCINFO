@@ -1,7 +1,7 @@
 pkgbase = jfdocs-html
 	pkgdesc = HTML Documents of Linux JF (Japanese FAQ) Project
 	pkgver = 20150504
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linuxjf.osdn.jp/
 	arch = any
 	license = custom

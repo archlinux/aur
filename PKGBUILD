@@ -1,7 +1,7 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=jfdocs-html
 pkgver=20150504
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML Documents of Linux JF (Japanese FAQ) Project"
 arch=("any")
 url="https://linuxjf.osdn.jp/"
@@ -15,7 +15,7 @@ package() {
   install -d "${_destdir}"
   curl -Ls "${url}/copyright.html" -o "${_destdir}/copyright.html"
 
-  _destdir=${pkgdir}/usr/share/docs/JFdocs/html
+  _destdir=${pkgdir}/usr/share/doc/jfdocs/html
   install -d "${_destdir}"
   cp -r ${srcdir}/JFdocs/. ${_destdir}/.
 }
