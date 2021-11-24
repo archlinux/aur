@@ -1,16 +1,18 @@
 [Unit]
-Description=RtlSdr mode S decoder
+Description=dump1090 ADS-B receiver (FlightAware customization)
 Wants=network-online.target
 After=syslog.target network-online.target lighttpd.service
 
 [Service]
-Restart=always
+Restart=on-failure
 RestartSec=30
 RuntimeDirectory=dump1090
+RuntimeDirectoryMode=0755
 #PermissionsStartOnly=true
-#ExecStartPre=-/usr/bin/mkdir /var/run/dump1090
-#ExecStartPre=/usr/bin/chown -R nobody:nobody /var/run/dump1090/
-ExecStart=/usr/bin/dump1090 --quiet --net --gain -10 --write-json /var/run/dump1090
+ExecStart=/usr/bin/dump1090 --quiet --net --gain -10 --adaptive-range --write-json /var/run/dump1090
+RestartPreventExitStatus=64
+Nice=-5
+
 
 [Install]
 Alias=dump1090-fa.service
