@@ -1,9 +1,9 @@
 # Maintainer: x70b1
 
 pkgname=pam_exec-ssh
-pkgver=r15.89bb70d
-pkgrel=4
-pkgdesc="Unlock SSH keys on login using PAM"
+pkgver=r16.a1320c3
+pkgrel=2
+pkgdesc="Unlock SSH keys on login using PAM."
 arch=(any)
 url="https://github.com/x70b1/pam_exec-ssh"
 license=("The Unlicense")
