@@ -4,22 +4,22 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=etherpad-lite
-pkgver=1.8.14
+pkgver=1.8.15
 pkgrel=1
 epoch=1
+arch=(x86_64)
 pkgdesc="Lightweight fork of etherpad based on javascript"
-arch=('x86_64')
 url="https://etherpad.org"
-license=('Apache')
-depends=('coffeescript' 'nodejs')
-makedepends=('npm')
+license=(Apache)
+depends=(coffeescript nodejs)
+makedepends=(npm libsecret)
 optdepends=('sqlite: to use sqlite as databse'
             'mariadb: to use mariadb as database'
             'postgresql: to use postgresql as database'
             'abiword: advanced import/export of pads'
             'libreoffice: advanced import/export of pads'
             'tidy: improve quality of exported pads')
-conflicts=('etherpad-lite-git')
+conflicts=(etherpad-lite-git)
 backup=("etc/${pkgname}/settings.json"
         "etc/${pkgname}/credentials.json"
         "etc/${pkgname}/APIKEY.txt"
@@ -28,11 +28,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archiv
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('814c667f76737d0d01050269e4442cfd7076bfcb0a32161fee91e6865744069d114a2cd9fe082691c51607cdc66c7047f078cfcb0e9e9db71684b16887f8ed4e'
+sha512sums=('5ad0763ad2dc5281511d191312d8d60c64791e28ea8db96a5c65f7629cae28ad084336e3ab32fcdcb98937a068784f681d10425edb94b998a69b74677e713f9e'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             'f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447'
             'db3f27c2bed7cc84910154da8851daf32ea248aeaca5026c9c4cf138841b921498a0c39d4f9b635d6686d13ac498399e4657563867d87d406ff6b8b6d9dd0d28')
-b2sums=('9c781965e6b181faf52976d5d91a57ba3de09bcb43cdaa023bb362e3b21ead425a93a65aebf6bb023a1a2ae0252ff6ac046685ff6d47afdf8303f83c77ffff25'
+b2sums=('f049151ce073cdf3759acf9bd03f5e85e8cb46d2981de848d731e1435d25966e469ed8ce792f9d79709f8b3b5ebaa59feb1620226219fcd449ce1ad7a3792d6b'
         'cb519b7d749982d899037445be36dc54754c523ee7aaa3f7d005b4cea4dd74c1596535b17bfdd6910923e4f723ee02c625d579966a601b84ca1b1eeb82fe932e'
         '88f0f7b9bbc64b853e3169cc9627b64c4b5aaef7238553ed110f82ebd40e1f8b0078d17a69adee6a37f6d59f6eb0871fc209a1fb6e4b71b7ac5239071db2eec7'
         '12c3be8037959b0613adc82a5632845a79c966a6c9ccbadffd103c30c5cb951c0d31e2cc8f2cfce5ebcaba847baf168584cd6dac4a76c0d14b0d534f1c82219b')
@@ -83,6 +83,8 @@ build() {
 }
 
 package() {
+  depends+=(libsecret-1.so)
+
   cd "${pkgname}-${pkgver}"
   # removing unneeded files and directories
   find src -type f \
