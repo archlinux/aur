@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r13998.ge51701dd8'
+pkgver='r14047.g8fd35b90a'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -12,7 +12,8 @@ url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron13'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs>=14.0.0' 'npm>=7.0.0' 'python' 'unzip')
+# We're depending on node v16 until https://github.com/nodejs/node-gyp/issues/2534 is fixed
+makedepends=('git' 'nodejs-lts-gallium' 'npm>=7.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
