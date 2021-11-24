@@ -69,7 +69,7 @@ _package() {
   depends=('coreutils' 'kmod' 'initramfs')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
-    'linux-nitrous-fire-headers: to build DKMS modules against this kernel'
+    "linux-nitrous-fire-headers=${pkgver}-${pkgrel}: to build DKMS modules against this kernel"
     'linux-firmware: Additional firmware blobs'
   )
   __kernelname=linux-nitrous-fire
