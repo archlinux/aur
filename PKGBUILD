@@ -1,13 +1,13 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 pkgname=ytcc-git
-pkgver=r419.094790f
+pkgver=r432.0d894e1
 pkgrel=1
 pkgdesc="Command line tool to keep track of playlists"
 arch=('any')
 url="https://github.com/woefe/ytcc"
 license=('GPL3')
-depends=('python-click' 'youtube-dl' 'python-wcwidth')
-optdepends=('mpv' 'fzf' 'yt-dlp')
+depends=('python-click' 'yt-dlp' 'python-wcwidth')
+optdepends=('mpv' 'fzf' 'youtube-dl')
 conflicts=('ytcc')
 provides=('ytcc')
 makedepends=('git' 'python-setuptools')
