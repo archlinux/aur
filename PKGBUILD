@@ -49,7 +49,7 @@ package(){
       | sed 's|^cnffile="conf.maldet"|cnffile="maldet.conf"|' \
       | sed 's|^varlibpath="\$inspath"|varlibpath="/var/lib/maldet"|' \
       | sed 's|^tmpdir="\$inspath/tmp"|tmpdir="$varlibpath/tmp"|' \
-      | sed 's|^inotify_log="\$inspath/logs/inotify_log"|inotify_log="/var/log/maldet/inotify_log"|' \
+      | sed 's|^inotify_log="\$inspath/logs/inotify_log"|inotify_log="$logdir/inotify_log"|' \
       > "$pkgdir/etc/maldet/internals.conf"
     mv "$dest"/ignore_{inotify,paths,file_ext,sigs} "$pkgdir/etc/maldet/" 
     mv "$dest/monitor_paths" "$pkgdir/etc/maldet/" 
