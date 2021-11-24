@@ -4,7 +4,7 @@
 pkgname=dump1090-fa-git
 _gitname=dump1090
 pkgver=6.1.r0.g752a7aea
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -44,6 +44,6 @@ package() {
   install -D -m755 "${srcdir}/${_gitname}/faup1090" "${pkgdir}/usr/lib/piaware/helpers/faup1090"
   install -d -m755 "${pkgdir}/usr/share/dump1090/html"
   install -D -m644 dump1090.service "${pkgdir}/usr/lib/systemd/system/dump1090.service"
-  cp -r "${srcdir}"/"${_gitname}"/public_html/* "${pkgdir}/usr/share/dump1090/html"
+  cp -r "${srcdir}"/"${_gitname}"/public_html_merged/* "${pkgdir}/usr/share/dump1090/html"
   install -D -m644 "${srcdir}"/lighttpd.conf "${pkgdir}/usr/share/dump1090/lighttpd.conf"
 }
