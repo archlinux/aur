@@ -14,7 +14,7 @@ arch=('aarch64' 'i686' 'x86_64')
 # Generic Stuff for cargo packages
 url='https://github.com/Lukas1818/mstickereditor'
 depends=('gcc-libs' 'rlottie' 'libwebp')
-makedepends=('cargo')
+makedepends=('cargo' 'clang' 'lld')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
