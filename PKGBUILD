@@ -46,7 +46,7 @@ prepare() {
 
 build() {
 	cd "$srcdir"
-        g++ -Ofast -pthread ./solitty/src/*.cpp -lncursesw -o solitty-bin
+        g++ -O2 -pthread ./solitty/src/*.cpp -lncursesw -o solitty-bin
 }
 
 package() {
