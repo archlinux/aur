@@ -1,18 +1,16 @@
 pkgbase = infnoise
 	pkgdesc = Infinite Noise TRNG
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
-	url = https://github.com/waywardgeek/infnoise
+	url = https://github.com/leetronics/infnoise
 	arch = x86_64
-	license = custom
-	depends = libftdi-compat
-	source = https://13-37.org/files/infnoise-0.3.1.tar.gz
-	source = https://13-37.org/files/infnoise-0.3.1.tar.gz.sig
-	source = https://github.com/13-37-org/infnoise/raw/0.3.1/LICENSE
-	validpgpkeys = 71AE099B262DC0B493E6EE71975DC25C4E730A3C
-	sha512sums = 794328ef02c98a3d0a1fc1fab49eeef9474f5cfab9d0a760c6d456ffaae91a24ece5157bebdead7b18091d9827e4359be66b473e11fa3259bf91203ab93eac30
+	license = custom:CC0 1.0 Universal
+	makedepends = git
+	makedepends = sed
+	depends = libftdi
+	source = infnoise-0.3.2::git+https://github.com/leetronics/infnoise#commit=e80ddd7?signed
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha512sums = SKIP
-	sha512sums = 3e20c74803825a27f7d4208f711d5b5f48bbdcd9487b59e0922fcbfd3b17f3f37440ae3bc024e3183401e4918765e59de8a5896f5a8be8236e4b769c65443cbb
 
 pkgname = infnoise
 	pkgdesc = Infinite Noise TRNG driver
@@ -24,4 +22,3 @@ pkgname = libinfnoise
 pkgname = infnoise-tools
 	pkgdesc = Infinite Noise TRNG tools
 	depends = glibc
-
