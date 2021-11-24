@@ -2,19 +2,19 @@
 
 pkgname=easyeda-router
 pkgver=0.8.11
-pkgrel=2
+pkgrel=3
 pkgdesc="LCEDA/EasyEDA local auto router server for Linux."
 arch=('x86_64')
 url="https://docs.easyeda.com/en/PCB/Route/index.html#Local-Auto-Router"
 #url="https://docs.easyeda.com/cn/PCB/Route/index.html#%E6%9C%AC%E5%9C%B0%E8%87%AA%E5%8A%A8%E5%B8%83%E7%BA%BF"
 license=('unknown')
 depends=('jre8-openjdk-headless')
-source=(${pkgname}-${pkgver}.zip::"https://image.easyeda.com/files/EasyEDA-Router-v${pkgver}.zip")
-# source=(${pkgname}-${pkgver}.zip::"https://image.lceda.cn/files/EasyEDA-Router-latest.zip")
+source=(${pkgname}-${pkgver}.zip::"https://image.easyeda.com/files/easyeda-router-linux-x64-v${pkgver}.zip")
+# source=(${pkgname}-${pkgver}.zip::"https://image.lceda.cn/files/easyeda-router-linux-x64-v${pkgver}.zip")
 source+=("${pkgname}.sh"
          "${pkgname}.service")
 sha256sums=('c7d5e36f60e9ff47a2775cdd922151173012d45f44bc843afeed80d1fb0a7616'
-            '1868c56d03b0ccd07d30b8e3756bf7550209092d2050c322c63860b9c8bf7ba5'
+            '0b08eca8fc84a2b5ec3fc34c0cbcd37fd22cd9d2687214e298c82486bd7b9c0a'
             '35e5e4a2b5b6ba80ce9d8f807e3ddcabe1020fe77600a4de6b72f74f8a4c0a53')
 
 _install() {
