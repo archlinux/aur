@@ -1,12 +1,11 @@
 # Maintainer: Takashi Inoue <inoue(at)pitan.org>
 pkgname=mackerel-agent-git
-pkgver=0.39.3
+pkgver=0.72.4
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"
 arch=('i686' 'x86_64')
 url="https://github.com/mackerelio/mackerel-agent"
 license=('Apache')
-depends=('')
 conflicts=('mackerel-agent')
 makedepends=('go' 'git')
 backup=('etc/mackerel-agent/mackerel-agent.conf')
@@ -22,13 +21,10 @@ build() {
   cd "$srcdir/$pkgname"
 
   export GOPATH="$srcdir/go"
+  export PATH="${PATH}:${GOPATH}/bin"
   mkdir "$GOPATH"
-  go get -d github.com/mackerelio/mackerel-agent
-  go build -o build/mackerel-agent \
-    -ldflags="\
-      -X github.com/mackerelio/mackerel-agent/version.GITCOMMIT=`git rev-parse --short HEAD` \
-      -X github.com/mackerelio/mackerel-agent/version.VERSION=`git describe --tags --abbrev=0 | sed 's/^v//' | sed 's/\+.*$$//'` " \
-    github.com/mackerelio/mackerel-agent
+  make clean
+  make build
 }
 
 check() {
