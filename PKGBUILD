@@ -4,7 +4,7 @@
 # Contributor: Sergey Mamonov <mrqwer88@gmail.com>
 pkgname=maldet
 pkgver=1.6.4
-pkgrel=4
+pkgrel=5
 pkgdesc="linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=('GPL2')
@@ -49,6 +49,7 @@ package(){
       | sed 's|^cnffile="conf.maldet"|cnffile="maldet.conf"|' \
       | sed 's|^varlibpath="\$inspath"|varlibpath="/var/lib/maldet"|' \
       | sed 's|^tmpdir="\$inspath/tmp"|tmpdir="$varlibpath/tmp"|' \
+      | sed 's|^inotify_log="\$inspath/logs/inotify_log"|inotify_log="/var/log/maldet/inotify_log"|' \
       > "$pkgdir/etc/maldet/internals.conf"
     mv "$dest"/ignore_{inotify,paths,file_ext,sigs} "$pkgdir/etc/maldet/" 
     mv "$dest/monitor_paths" "$pkgdir/etc/maldet/" 
