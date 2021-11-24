@@ -1,0 +1,1557 @@
+diff --git a/cmake/modules/FindTBB.cmake b/cmake/modules/FindTBB.cmake
+index c6bdec985..14667b928 100644
+--- a/cmake/modules/FindTBB.cmake
++++ b/cmake/modules/FindTBB.cmake
+@@ -1,332 +1,495 @@
+-# The MIT License (MIT)
++# - Find ThreadingBuildingBlocks include dirs and libraries
++# Use this module by invoking find_package with the form:
++#  find_package(TBB
++#    [REQUIRED]             # Fail with error if TBB is not found
++#    )                      #
++# Once done, this will define
+ #
+-# Copyright (c) 2015 Justus Calvin
+-# 
+-# Permission is hereby granted, free of charge, to any person obtaining a copy
+-# of this software and associated documentation files (the "Software"), to deal
+-# in the Software without restriction, including without limitation the rights
+-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-# copies of the Software, and to permit persons to whom the Software is
+-# furnished to do so, subject to the following conditions:
+-# 
+-# The above copyright notice and this permission notice shall be included in all
+-# copies or substantial portions of the Software.
+-# 
+-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+-# SOFTWARE.
+-
++#  TBB_FOUND - system has TBB
++#  TBB_INCLUDE_DIRS - the TBB include directories
++#  TBB_LIBRARIES - TBB libraries to be lined, doesn't include malloc or
++#                  malloc proxy
++#  TBB::tbb - imported target for the TBB library
+ #
+-# FindTBB
+-# -------
++#  TBB_VERSION_MAJOR - Major Product Version Number
++#  TBB_VERSION_MINOR - Minor Product Version Number
++#  TBB_INTERFACE_VERSION - Engineering Focused Version Number
++#  TBB_COMPATIBLE_INTERFACE_VERSION - The oldest major interface version
++#                                     still supported. This uses the engineering
++#                                     focused interface version numbers.
+ #
+-# Find TBB include directories and libraries.
++#  TBB_MALLOC_FOUND - system has TBB malloc library
++#  TBB_MALLOC_INCLUDE_DIRS - the TBB malloc include directories
++#  TBB_MALLOC_LIBRARIES - The TBB malloc libraries to be lined
++#  TBB::malloc - imported target for the TBB malloc library
+ #
+-# Usage:
++#  TBB_MALLOC_PROXY_FOUND - system has TBB malloc proxy library
++#  TBB_MALLOC_PROXY_INCLUDE_DIRS = the TBB malloc proxy include directories
++#  TBB_MALLOC_PROXY_LIBRARIES - The TBB malloc proxy libraries to be lined
++#  TBB::malloc_proxy - imported target for the TBB malloc proxy library
+ #
+-#  find_package(TBB [major[.minor]] [EXACT]
+-#               [QUIET] [REQUIRED]
+-#               [[COMPONENTS] [components...]]
+-#               [OPTIONAL_COMPONENTS components...]) 
+ #
+-# where the allowed components are tbbmalloc and tbb_preview. Users may modify 
+-# the behavior of this module with the following variables:
++# This module reads hints about search locations from variables:
++#  ENV TBB_ARCH_PLATFORM - for eg. set it to "mic" for Xeon Phi builds
++#  ENV TBB_ROOT or just TBB_ROOT - root directory of tbb installation
++#  ENV TBB_BUILD_PREFIX - specifies the build prefix for user built tbb
++#                         libraries. Should be specified with ENV TBB_ROOT
++#                         and optionally...
++#  ENV TBB_BUILD_DIR - if build directory is different than ${TBB_ROOT}/build
+ #
+-# * TBB_ROOT_DIR          - The base directory the of TBB installation.
+-# * TBB_INCLUDE_DIR       - The directory that contains the TBB headers files.
+-# * TBB_LIBRARY           - The directory that contains the TBB library files.
+-# * TBB_<library>_LIBRARY - The path of the TBB the corresponding TBB library. 
+-#                           These libraries, if specified, override the 
+-#                           corresponding library search results, where <library>
+-#                           may be tbb, tbb_debug, tbbmalloc, tbbmalloc_debug,
+-#                           tbb_preview, or tbb_preview_debug.
+-# * TBB_USE_DEBUG_BUILD   - The debug version of tbb libraries, if present, will
+-#                           be used instead of the release version.
+-# * TBB_STATIC            - Static linking of libraries with a _static suffix.
+-#                           For example, on Windows a tbb_static.lib will be searched for
+-#                           instead of tbb.lib.
+ #
+-# Users may modify the behavior of this module with the following environment
+-# variables:
++# Modified by Robert Maynard from the original OGRE source
+ #
+-# * TBB_INSTALL_DIR 
+-# * TBBROOT
+-# * LIBRARY_PATH
++#-------------------------------------------------------------------
++# This file is part of the CMake build system for OGRE
++#     (Object-oriented Graphics Rendering Engine)
++# For the latest info, see http://www.ogre3d.org/
+ #
+-# This module will set the following variables:
++# The contents of this file are placed in the public domain. Feel
++# free to make use of it in any way you like.
++#-------------------------------------------------------------------
+ #
+-# * TBB_FOUND             - Set to false, or undefined, if we haven’t found, or
+-#                           don’t want to use TBB.
+-# * TBB_<component>_FOUND - If False, optional <component> part of TBB sytem is
+-#                           not available.
+-# * TBB_VERSION           - The full version string
+-# * TBB_VERSION_MAJOR     - The major version
+-# * TBB_VERSION_MINOR     - The minor version
+-# * TBB_INTERFACE_VERSION - The interface version number defined in 
+-#                           tbb/tbb_stddef.h.
+-# * TBB_<library>_LIBRARY_RELEASE - The path of the TBB release version of 
+-#                           <library>, where <library> may be tbb, tbb_debug,
+-#                           tbbmalloc, tbbmalloc_debug, tbb_preview, or 
+-#                           tbb_preview_debug.
+-# * TBB_<library>_LIBRARY_DEGUG - The path of the TBB release version of 
+-#                           <library>, where <library> may be tbb, tbb_debug,
+-#                           tbbmalloc, tbbmalloc_debug, tbb_preview, or 
+-#                           tbb_preview_debug.
++# =========================================================================
++# Taken from Copyright.txt in the root of the VTK source tree as per
++# instructions to substitute the full license in place of the summary
++# reference when distributing outside of VTK
++# =========================================================================
+ #
+-# The following varibles should be used to build and link with TBB:
++#  Program:   Visualization Toolkit
++#  Module:    Copyright.txt
+ #
+-# * TBB_INCLUDE_DIRS        - The include directory for TBB.
+-# * TBB_LIBRARIES           - The libraries to link against to use TBB.
+-# * TBB_LIBRARIES_RELEASE   - The release libraries to link against to use TBB.
+-# * TBB_LIBRARIES_DEBUG     - The debug libraries to link against to use TBB.
+-# * TBB_DEFINITIONS         - Definitions to use when compiling code that uses
+-#                             TBB.
+-# * TBB_DEFINITIONS_RELEASE - Definitions to use when compiling release code that
+-#                             uses TBB.
+-# * TBB_DEFINITIONS_DEBUG   - Definitions to use when compiling debug code that
+-#                             uses TBB.
++# Copyright (c) 1993-2015 Ken Martin, Will Schroeder, Bill Lorensen
++# All rights reserved.
+ #
+-# This module will also create the "tbb" target that may be used when building
+-# executables and libraries.
+-
+-unset(TBB_FOUND CACHE)
+-unset(TBB_INCLUDE_DIRS CACHE)
+-unset(TBB_LIBRARIES)
+-unset(TBB_LIBRARIES_DEBUG)
+-unset(TBB_LIBRARIES_RELEASE)
+-
+-include(FindPackageHandleStandardArgs)
+-
+-find_package(Threads QUIET REQUIRED)
+-
+-if(NOT TBB_FOUND)
+-
+-  ##################################
+-  # Check the build type
+-  ##################################
+-  
+-  if(NOT DEFINED TBB_USE_DEBUG_BUILD)
+-    if(CMAKE_BUILD_TYPE MATCHES "(Debug|DEBUG|debug)")
+-      set(TBB_BUILD_TYPE DEBUG)
+-    else()
+-      set(TBB_BUILD_TYPE RELEASE)
+-    endif()
+-  elseif(TBB_USE_DEBUG_BUILD)
+-    set(TBB_BUILD_TYPE DEBUG)
+-  else()
+-    set(TBB_BUILD_TYPE RELEASE)
+-  endif()
+-  
+-  ##################################
+-  # Set the TBB search directories
+-  ##################################
+-  
+-  # Define search paths based on user input and environment variables
+-  set(TBB_SEARCH_DIR ${TBB_ROOT_DIR} $ENV{TBB_INSTALL_DIR} $ENV{TBBROOT})
+-  
+-  # Define the search directories based on the current platform
+-  if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+-    set(TBB_DEFAULT_SEARCH_DIR "C:/Program Files/Intel/TBB"
+-                               "C:/Program Files (x86)/Intel/TBB")
+-
+-    # Set the target architecture
+-    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+-      set(TBB_ARCHITECTURE "intel64")
+-    else()
+-      set(TBB_ARCHITECTURE "ia32")
+-    endif()
+-
+-    # Set the TBB search library path search suffix based on the version of VC
+-    if(WINDOWS_STORE)
+-      set(TBB_LIB_PATH_SUFFIX "lib/${TBB_ARCHITECTURE}/vc11_ui")
+-    elseif(MSVC14)
+-      set(TBB_LIB_PATH_SUFFIX "lib/${TBB_ARCHITECTURE}/vc14")
+-    elseif(MSVC12)
+-      set(TBB_LIB_PATH_SUFFIX "lib/${TBB_ARCHITECTURE}/vc12")
+-    elseif(MSVC11)
+-      set(TBB_LIB_PATH_SUFFIX "lib/${TBB_ARCHITECTURE}/vc11")
+-    elseif(MSVC10)
+-      set(TBB_LIB_PATH_SUFFIX "lib/${TBB_ARCHITECTURE}/vc10")
+-    endif()
+-
+-    # Add the library path search suffix for the VC independent version of TBB
+-    list(APPEND TBB_LIB_PATH_SUFFIX "lib/${TBB_ARCHITECTURE}/vc_mt")
+-
+-  elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+-    # OS X
+-    set(TBB_DEFAULT_SEARCH_DIR "/opt/intel/tbb")
+-    
+-    # TODO: Check to see which C++ library is being used by the compiler.
+-    if(NOT ${CMAKE_SYSTEM_VERSION} VERSION_LESS 13.0)
+-      # The default C++ library on OS X 10.9 and later is libc++
+-      set(TBB_LIB_PATH_SUFFIX "lib/libc++" "lib")
+-    else()
+-      set(TBB_LIB_PATH_SUFFIX "lib")
+-    endif()
+-  elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+-    # Linux
+-    set(TBB_DEFAULT_SEARCH_DIR "/opt/intel/tbb")
+-    
+-    # TODO: Check compiler version to see the suffix should be <arch>/gcc4.1 or
+-    #       <arch>/gcc4.1. For now, assume that the compiler is more recent than
+-    #       gcc 4.4.x or later.
+-    if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+-      set(TBB_LIB_PATH_SUFFIX "lib/intel64/gcc4.4")
+-    elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$")
+-      set(TBB_LIB_PATH_SUFFIX "lib/ia32/gcc4.4")
+-    endif()
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions are met:
++#
++# * Redistributions of source code must retain the above copyright notice,
++#   this list of conditions and the following disclaimer.
++#
++# * Redistributions in binary form must reproduce the above copyright notice,
++#   this list of conditions and the following disclaimer in the documentation
++#   and/or other materials provided with the distribution.
++#
++# * Neither name of Ken Martin, Will Schroeder, or Bill Lorensen nor the names
++#   of any contributors may be used to endorse or promote products derived
++#   from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS''
++# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++# ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE LIABLE FOR
++# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
++# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#
++# =========================================================================*/
++
++#=============================================================================
++#  FindTBB helper functions and macros
++#
++
++# Use TBBConfig.cmake if possible.
++
++set(_tbb_find_quiet)
++if (TBB_FIND_QUIETLY)
++  set(_tbb_find_quiet QUIET)
++endif ()
++set(_tbb_find_components)
++set(_tbb_find_optional_components)
++foreach (_tbb_find_component IN LISTS TBB_FIND_COMPONENTS)
++  if (TBB_FIND_REQUIRED_${_tbb_find_component})
++    list(APPEND _tbb_find_components "${_tbb_find_component}")
++  else ()
++    list(APPEND _tbb_find_optional_components "${_tbb_find_component}")
++  endif ()
++endforeach ()
++unset(_tbb_find_component)
++find_package(TBB CONFIG ${_tbb_find_quiet}
++  COMPONENTS ${_tbb_find_components}
++  OPTIONAL_COMPONENTS ${_tbb_find_optional_components})
++unset(_tbb_find_quiet)
++unset(_tbb_find_components)
++unset(_tbb_find_optional_components)
++if (TBB_FOUND)
++  return ()
++endif ()
++
++#====================================================
++# Fix the library path in case it is a linker script
++#====================================================
++function(tbb_extract_real_library library real_library)
++  if(NOT UNIX OR NOT EXISTS ${library})
++    set(${real_library} "${library}" PARENT_SCOPE)
++    return()
+   endif()
+-  
+-  ##################################
+-  # Find the TBB include dir
+-  ##################################
+-  
+-  find_path(TBB_INCLUDE_DIRS tbb/tbb.h
+-      HINTS ${TBB_INCLUDE_DIR} ${TBB_SEARCH_DIR}
+-      PATHS ${TBB_DEFAULT_SEARCH_DIR}
+-      PATH_SUFFIXES include)
+-
+-  ##################################
+-  # Set version strings
+-  ##################################
+-
+-  if(TBB_INCLUDE_DIRS)
+-    file(READ "${TBB_INCLUDE_DIRS}/tbb/tbb_stddef.h" _tbb_version_file)
+-    string(REGEX REPLACE ".*#define TBB_VERSION_MAJOR ([0-9]+).*" "\\1"
+-        TBB_VERSION_MAJOR "${_tbb_version_file}")
+-    string(REGEX REPLACE ".*#define TBB_VERSION_MINOR ([0-9]+).*" "\\1"
+-        TBB_VERSION_MINOR "${_tbb_version_file}")
+-    string(REGEX REPLACE ".*#define TBB_INTERFACE_VERSION ([0-9]+).*" "\\1"
+-        TBB_INTERFACE_VERSION "${_tbb_version_file}")
+-    set(TBB_VERSION "${TBB_VERSION_MAJOR}.${TBB_VERSION_MINOR}")
++
++  #Read in the first 4 bytes and see if they are the ELF magic number
++  set(_elf_magic "7f454c46")
++  file(READ ${library} _hex_data OFFSET 0 LIMIT 4 HEX)
++  if(_hex_data STREQUAL _elf_magic)
++    #we have opened a elf binary so this is what
++    #we should link to
++    set(${real_library} "${library}" PARENT_SCOPE)
++    return()
+   endif()
+ 
+-  ##################################
+-  # Find TBB components
+-  ##################################
++  file(READ ${library} _data OFFSET 0 LIMIT 1024)
++  if("${_data}" MATCHES "INPUT \\(([^(]+)\\)")
++    #extract out the .so name from REGEX MATCH command
++    set(_proper_so_name "${CMAKE_MATCH_1}")
+ 
+-  if(TBB_VERSION VERSION_LESS 4.3)
+-    set(TBB_SEARCH_COMPOMPONENTS tbb_preview tbbmalloc tbb)
++    #construct path to the real .so which is presumed to be in the same directory
++    #as the input file
++    get_filename_component(_so_dir "${library}" DIRECTORY)
++    set(${real_library} "${_so_dir}/${_proper_so_name}" PARENT_SCOPE)
+   else()
+-    set(TBB_SEARCH_COMPOMPONENTS tbb_preview tbbmalloc_proxy tbbmalloc tbb)
++    #unable to determine what this library is so just hope everything works
++    #and pass it unmodified.
++    set(${real_library} "${library}" PARENT_SCOPE)
+   endif()
++endfunction()
++
++#===============================================
++# Do the final processing for the package find.
++#===============================================
++macro(findpkg_finish PREFIX TARGET_NAME)
++  if (${PREFIX}_INCLUDE_DIR AND ${PREFIX}_LIBRARY)
++    set(${PREFIX}_FOUND TRUE)
++    set (${PREFIX}_INCLUDE_DIRS ${${PREFIX}_INCLUDE_DIR})
++    set (${PREFIX}_LIBRARIES ${${PREFIX}_LIBRARY})
++  else ()
++    if (${PREFIX}_FIND_REQUIRED AND NOT ${PREFIX}_FIND_QUIETLY)
++      message(FATAL_ERROR "Required library ${PREFIX} not found.")
++    endif ()
++  endif ()
+ 
+-  if(TBB_STATIC)
+-    set(TBB_STATIC_SUFFIX "_static")
+-  endif()
++  if (NOT TARGET "TBB::${TARGET_NAME}")
++    if (${PREFIX}_LIBRARY_RELEASE)
++      tbb_extract_real_library(${${PREFIX}_LIBRARY_RELEASE} real_release)
++    endif ()
++    if (${PREFIX}_LIBRARY_DEBUG)
++      tbb_extract_real_library(${${PREFIX}_LIBRARY_DEBUG} real_debug)
++    endif ()
++    add_library(TBB::${TARGET_NAME} UNKNOWN IMPORTED)
++    set_target_properties(TBB::${TARGET_NAME} PROPERTIES
++      INTERFACE_INCLUDE_DIRECTORIES "${${PREFIX}_INCLUDE_DIR}")
++    if (${PREFIX}_LIBRARY_DEBUG AND ${PREFIX}_LIBRARY_RELEASE)
++      set_target_properties(TBB::${TARGET_NAME} PROPERTIES
++        IMPORTED_LOCATION "${real_release}"
++        IMPORTED_LOCATION_DEBUG "${real_debug}"
++        IMPORTED_LOCATION_RELEASE "${real_release}")
++    elseif (${PREFIX}_LIBRARY_RELEASE)
++      set_target_properties(TBB::${TARGET_NAME} PROPERTIES
++        IMPORTED_LOCATION "${real_release}")
++    elseif (${PREFIX}_LIBRARY_DEBUG)
++      set_target_properties(TBB::${TARGET_NAME} PROPERTIES
++        IMPORTED_LOCATION "${real_debug}")
++    endif ()
++  endif ()
+ 
+-  # Find each component
+-  foreach(_comp ${TBB_SEARCH_COMPOMPONENTS})
+-    if(";${TBB_FIND_COMPONENTS};tbb;" MATCHES ";${_comp};")
+-
+-      unset(TBB_${_comp}_LIBRARY_DEBUG CACHE)
+-      unset(TBB_${_comp}_LIBRARY_RELEASE CACHE)
+-
+-      # Search for the libraries
+-      find_library(TBB_${_comp}_LIBRARY_RELEASE ${_comp}${TBB_STATIC_SUFFIX}
+-          HINTS ${TBB_LIBRARY} ${TBB_SEARCH_DIR}
+-          PATHS ${TBB_DEFAULT_SEARCH_DIR} ENV LIBRARY_PATH
+-          PATH_SUFFIXES ${TBB_LIB_PATH_SUFFIX})
+-
+-      find_library(TBB_${_comp}_LIBRARY_DEBUG ${_comp}${TBB_STATIC_SUFFIX}_debug
+-          HINTS ${TBB_LIBRARY} ${TBB_SEARCH_DIR}
+-          PATHS ${TBB_DEFAULT_SEARCH_DIR} ENV LIBRARY_PATH
+-          PATH_SUFFIXES ${TBB_LIB_PATH_SUFFIX})
+-
+-      if(TBB_${_comp}_LIBRARY_DEBUG)
+-        list(APPEND TBB_LIBRARIES_DEBUG "${TBB_${_comp}_LIBRARY_DEBUG}")
+-      endif()
+-      if(TBB_${_comp}_LIBRARY_RELEASE)
+-        list(APPEND TBB_LIBRARIES_RELEASE "${TBB_${_comp}_LIBRARY_RELEASE}")
+-      endif()
+-      if(TBB_${_comp}_LIBRARY_${TBB_BUILD_TYPE} AND NOT TBB_${_comp}_LIBRARY)
+-        set(TBB_${_comp}_LIBRARY "${TBB_${_comp}_LIBRARY_${TBB_BUILD_TYPE}}")
+-      endif()
+-
+-      if(TBB_${_comp}_LIBRARY AND EXISTS "${TBB_${_comp}_LIBRARY}")
+-        set(TBB_${_comp}_FOUND TRUE)
+-      else()
+-        set(TBB_${_comp}_FOUND FALSE)
+-      endif()
+-
+-      # Mark internal variables as advanced
+-      mark_as_advanced(TBB_${_comp}_LIBRARY_RELEASE)
+-      mark_as_advanced(TBB_${_comp}_LIBRARY_DEBUG)
+-      mark_as_advanced(TBB_${_comp}_LIBRARY)
+-
+-    endif()
++  #mark the following variables as internal variables
++  mark_as_advanced(${PREFIX}_INCLUDE_DIR
++                   ${PREFIX}_LIBRARY
++                   ${PREFIX}_LIBRARY_DEBUG
++                   ${PREFIX}_LIBRARY_RELEASE)
++endmacro()
++
++#===============================================
++# Generate debug names from given release names
++#===============================================
++macro(get_debug_names PREFIX)
++  foreach(i ${${PREFIX}})
++    set(${PREFIX}_DEBUG ${${PREFIX}_DEBUG} ${i}d ${i}D ${i}_d ${i}_D ${i}_debug ${i})
+   endforeach()
++endmacro()
++
++#===============================================
++# See if we have env vars to help us find tbb
++#===============================================
++macro(getenv_path VAR)
++   set(ENV_${VAR} $ENV{${VAR}})
++   # replace won't work if var is blank
++   if (ENV_${VAR})
++     string( REGEX REPLACE "\\\\" "/" ENV_${VAR} ${ENV_${VAR}} )
++   endif ()
++endmacro()
++
++#===============================================
++# Couple a set of release AND debug libraries
++#===============================================
++macro(make_library_set PREFIX)
++  if (${PREFIX}_RELEASE AND ${PREFIX}_DEBUG)
++    set(${PREFIX} optimized ${${PREFIX}_RELEASE} debug ${${PREFIX}_DEBUG})
++  elseif (${PREFIX}_RELEASE)
++    set(${PREFIX} ${${PREFIX}_RELEASE})
++  elseif (${PREFIX}_DEBUG)
++    set(${PREFIX} ${${PREFIX}_DEBUG})
++  endif ()
++endmacro()
++
++#===============================================
++# Ensure that the release & debug libraries found are from the same installation.
++#===============================================
++macro(find_tbb_library_verifying_release_debug_locations PREFIX)
++  find_library(${PREFIX}_RELEASE
++    NAMES ${${PREFIX}_NAMES}
++    HINTS ${TBB_LIB_SEARCH_PATH})
++  if (${PREFIX}_RELEASE)
++    # To avoid finding a mismatched set of release & debug libraries from
++    # different installations if the first found does not have debug libraries
++    # by forcing the search for debug to only occur within the detected release
++    # library directory (if found).  Although this would break detection if the
++    # release & debug libraries were shipped in different directories, this is
++    # not the case in the official TBB releases for any platform.
++    get_filename_component(
++      FOUND_RELEASE_LIB_DIR "${${PREFIX}_RELEASE}" DIRECTORY)
++    find_library(${PREFIX}_DEBUG
++      NAMES ${${PREFIX}_NAMES_DEBUG}
++      HINTS ${FOUND_RELEASE_LIB_DIR}
++      NO_DEFAULT_PATH)
++  else()
++    find_library(${PREFIX}_DEBUG
++      NAMES ${${PREFIX}_NAMES_DEBUG}
++      HINTS ${TBB_LIB_SEARCH_PATH})
++  endif()
++endmacro()
+ 
+-  ##################################
+-  # Set compile flags and libraries
+-  ##################################
++#=============================================================================
++#  Now to actually find TBB
++#
+ 
+-  set(TBB_DEFINITIONS_RELEASE "")
+-  set(TBB_DEFINITIONS_DEBUG "TBB_USE_DEBUG=1")
+-    
+-  if(TBB_LIBRARIES_${TBB_BUILD_TYPE})
+-    set(TBB_LIBRARIES "${TBB_LIBRARIES_${TBB_BUILD_TYPE}}")
+-  endif()
+-  
+-  if(NOT MSVC AND NOT TBB_LIBRARIES)
+-    set(TBB_LIBRARIES ${TBB_LIBRARIES_RELEASE})
+-  endif()
++# Get path, convert backslashes as ${ENV_${var}}
++getenv_path(TBB_ROOT)
+ 
+-  set(TBB_DEFINITIONS "")
+-  if (MSVC AND TBB_STATIC)
+-    set(TBB_DEFINITIONS __TBB_NO_IMPLICIT_LINKAGE)
++# initialize search paths
++set(TBB_PREFIX_PATH ${TBB_ROOT} ${ENV_TBB_ROOT})
++set(TBB_INC_SEARCH_PATH "")
++set(TBB_LIB_SEARCH_PATH "")
++
++
++# If user built from sources
++set(TBB_BUILD_PREFIX $ENV{TBB_BUILD_PREFIX})
++if (TBB_BUILD_PREFIX AND ENV_TBB_ROOT)
++  getenv_path(TBB_BUILD_DIR)
++  if (NOT ENV_TBB_BUILD_DIR)
++    set(ENV_TBB_BUILD_DIR ${ENV_TBB_ROOT}/build)
+   endif ()
+ 
+-  unset (TBB_STATIC_SUFFIX)
+-
+-  find_package_handle_standard_args(TBB 
+-      REQUIRED_VARS TBB_INCLUDE_DIRS TBB_LIBRARIES
+-      FAIL_MESSAGE "TBB library cannot be found. Consider set TBBROOT environment variable."
+-      HANDLE_COMPONENTS
+-      VERSION_VAR TBB_VERSION)
+-
+-  ##################################
+-  # Create targets
+-  ##################################
+-
+-  if(NOT CMAKE_VERSION VERSION_LESS 3.0 AND TBB_FOUND)
+-    add_library(TBB::tbb UNKNOWN IMPORTED)
+-    set_target_properties(TBB::tbb PROPERTIES
+-          INTERFACE_COMPILE_DEFINITIONS "${TBB_DEFINITIONS}"
+-          INTERFACE_LINK_LIBRARIES  "Threads::Threads;${CMAKE_DL_LIBS}"
+-          INTERFACE_INCLUDE_DIRECTORIES  ${TBB_INCLUDE_DIRS}
+-          IMPORTED_LOCATION              ${TBB_LIBRARIES})
+-    if(TBB_LIBRARIES_RELEASE AND TBB_LIBRARIES_DEBUG)
+-      set_target_properties(TBB::tbb PROPERTIES
+-          INTERFACE_COMPILE_DEFINITIONS "${TBB_DEFINITIONS};$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:${TBB_DEFINITIONS_DEBUG}>;$<$<CONFIG:Release>:${TBB_DEFINITIONS_RELEASE}>"
+-          IMPORTED_LOCATION_DEBUG          ${TBB_LIBRARIES_DEBUG}
+-          IMPORTED_LOCATION_RELWITHDEBINFO ${TBB_LIBRARIES_RELEASE}
+-          IMPORTED_LOCATION_RELEASE        ${TBB_LIBRARIES_RELEASE}
+-          IMPORTED_LOCATION_MINSIZEREL     ${TBB_LIBRARIES_RELEASE}
+-          )
+-    endif()
+-  endif()
++  # include directory under ${ENV_TBB_ROOT}/include
++  list(APPEND TBB_LIB_SEARCH_PATH
++    ${ENV_TBB_BUILD_DIR}/${TBB_BUILD_PREFIX}_release
++    ${ENV_TBB_BUILD_DIR}/${TBB_BUILD_PREFIX}_debug)
++endif ()
++
++
++# For Windows, let's assume that the user might be using the precompiled
++# TBB packages from the main website. These use a rather awkward directory
++# structure (at least for automatically finding the right files) depending
++# on platform and compiler, but we'll do our best to accommodate it.
++# Not adding the same effort for the precompiled linux builds, though. Those
++# have different versions for CC compiler versions and linux kernels which
++# will never adequately match the user's setup, so there is no feasible way
++# to detect the "best" version to use. The user will have to manually
++# select the right files. (Chances are the distributions are shipping their
++# custom version of tbb, anyway, so the problem is probably nonexistent.)
++if (WIN32 AND MSVC)
++  set(COMPILER_PREFIX "vc7.1")
++  if (MSVC_VERSION EQUAL 1400)
++    set(COMPILER_PREFIX "vc8")
++  elseif(MSVC_VERSION EQUAL 1500)
++    set(COMPILER_PREFIX "vc9")
++  elseif(MSVC_VERSION EQUAL 1600)
++    set(COMPILER_PREFIX "vc10")
++  elseif(MSVC_VERSION EQUAL 1700)
++    set(COMPILER_PREFIX "vc11")
++  elseif(MSVC_VERSION EQUAL 1800)
++    set(COMPILER_PREFIX "vc12")
++  elseif(MSVC_VERSION GREATER_EQUAL 1900)
++    set(COMPILER_PREFIX "vc14")
++  endif ()
++
++  # for each prefix path, add ia32/64\${COMPILER_PREFIX}\lib to the lib search path
++  foreach (dir IN LISTS TBB_PREFIX_PATH)
++    if (CMAKE_CL_64)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/ia64/${COMPILER_PREFIX}/lib)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/ia64/${COMPILER_PREFIX})
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/intel64/${COMPILER_PREFIX}/lib)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/intel64/${COMPILER_PREFIX})
++    else ()
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/ia32/${COMPILER_PREFIX}/lib)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/ia32/${COMPILER_PREFIX})
++    endif ()
++  endforeach ()
++endif ()
++
++# For OS X binary distribution, choose libc++ based libraries for Mavericks (10.9)
++# and above and AppleClang
++if (CMAKE_SYSTEM_NAME STREQUAL "Darwin" AND
++    NOT CMAKE_SYSTEM_VERSION VERSION_LESS 13.0)
++  set (USE_LIBCXX OFF)
++  cmake_policy(GET CMP0025 POLICY_VAR)
++
++  if (POLICY_VAR STREQUAL "NEW")
++    if (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
++      set (USE_LIBCXX ON)
++    endif ()
++  else ()
++    if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
++      set (USE_LIBCXX ON)
++    endif ()
++  endif ()
+ 
+-  mark_as_advanced(TBB_INCLUDE_DIRS TBB_LIBRARIES)
+-
+-  unset(TBB_ARCHITECTURE)
+-  unset(TBB_BUILD_TYPE)
+-  unset(TBB_LIB_PATH_SUFFIX)
+-  unset(TBB_DEFAULT_SEARCH_DIR)
+-
+-  if(TBB_DEBUG)
+-    message(STATUS "  TBB_FOUND               = ${TBB_FOUND}")
+-    message(STATUS "  TBB_INCLUDE_DIRS        = ${TBB_INCLUDE_DIRS}")
+-    message(STATUS "  TBB_DEFINITIONS         = ${TBB_DEFINITIONS}")
+-    message(STATUS "  TBB_LIBRARIES           = ${TBB_LIBRARIES}")
+-    message(STATUS "  TBB_DEFINITIONS_DEBUG   = ${TBB_DEFINITIONS_DEBUG}")
+-    message(STATUS "  TBB_LIBRARIES_DEBUG     = ${TBB_LIBRARIES_DEBUG}")
+-    message(STATUS "  TBB_DEFINITIONS_RELEASE = ${TBB_DEFINITIONS_RELEASE}")
+-    message(STATUS "  TBB_LIBRARIES_RELEASE   = ${TBB_LIBRARIES_RELEASE}")
++  if (USE_LIBCXX)
++    foreach (dir IN LISTS TBB_PREFIX_PATH)
++      list (APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/libc++ ${dir}/libc++/lib)
++    endforeach ()
++  endif ()
++endif ()
++
++# check compiler ABI
++if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++  set(COMPILER_PREFIX)
++  if (NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
++    list(APPEND COMPILER_PREFIX "gcc4.8")
++  endif()
++  if (NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.7)
++    list(APPEND COMPILER_PREFIX "gcc4.7")
++  endif()
++  if (NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.4)
++    list(APPEND COMPILER_PREFIX "gcc4.4")
++  endif()
++  list(APPEND COMPILER_PREFIX "gcc4.1")
++elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
++  set(COMPILER_PREFIX)
++  if (NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.0) # Complete guess
++    list(APPEND COMPILER_PREFIX "gcc4.8")
+   endif()
++  if (NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.6)
++    list(APPEND COMPILER_PREFIX "gcc4.7")
++  endif()
++  list(APPEND COMPILER_PREFIX "gcc4.4")
++else() # Assume compatibility with 4.4 for other compilers
++  list(APPEND COMPILER_PREFIX "gcc4.4")
++endif ()
++
++# if platform architecture is explicitly specified
++set(TBB_ARCH_PLATFORM $ENV{TBB_ARCH_PLATFORM})
++if (TBB_ARCH_PLATFORM)
++  foreach (dir IN LISTS TBB_PREFIX_PATH)
++    list(APPEND TBB_LIB_SEARCH_PATH ${dir}/${TBB_ARCH_PLATFORM}/lib)
++    list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/${TBB_ARCH_PLATFORM})
++  endforeach ()
++endif ()
++
++foreach (dir IN LISTS TBB_PREFIX_PATH)
++  foreach (prefix IN LISTS COMPILER_PREFIX)
++    if (CMAKE_SIZEOF_VOID_P EQUAL 8)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/intel64)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/intel64/${prefix})
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/intel64/lib)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/intel64/${prefix}/lib)
++    else ()
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/ia32)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib/ia32/${prefix})
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/ia32/lib)
++      list(APPEND TBB_LIB_SEARCH_PATH ${dir}/ia32/${prefix}/lib)
++    endif ()
++  endforeach()
++endforeach ()
++
++# add general search paths
++foreach (dir IN LISTS TBB_PREFIX_PATH)
++  list(APPEND TBB_LIB_SEARCH_PATH ${dir}/lib ${dir}/Lib ${dir}/lib/tbb
++    ${dir}/Libs)
++  list(APPEND TBB_INC_SEARCH_PATH ${dir}/include ${dir}/Include
++    ${dir}/include/tbb)
++endforeach ()
++
++set(TBB_LIBRARY_NAMES tbb)
++get_debug_names(TBB_LIBRARY_NAMES)
++
++find_path(TBB_INCLUDE_DIR
++          NAMES tbb/tbb.h
++          HINTS ${TBB_INC_SEARCH_PATH})
++find_tbb_library_verifying_release_debug_locations(TBB_LIBRARY)
++make_library_set(TBB_LIBRARY)
++
++findpkg_finish(TBB tbb)
++
++#if we haven't found TBB no point on going any further
++if (NOT TBB_FOUND)
++  return()
++endif ()
++
++#=============================================================================
++# Look for TBB's malloc package
++set(TBB_MALLOC_LIBRARY_NAMES tbbmalloc)
++get_debug_names(TBB_MALLOC_LIBRARY_NAMES)
++
++find_path(TBB_MALLOC_INCLUDE_DIR
++          NAMES tbb/tbb.h
++          HINTS ${TBB_INC_SEARCH_PATH})
++find_tbb_library_verifying_release_debug_locations(TBB_MALLOC_LIBRARY)
++make_library_set(TBB_MALLOC_LIBRARY)
++
++findpkg_finish(TBB_MALLOC tbbmalloc)
++
++#=============================================================================
++# Look for TBB's malloc proxy package
++set(TBB_MALLOC_PROXY_LIBRARY_NAMES tbbmalloc_proxy)
++get_debug_names(TBB_MALLOC_PROXY_LIBRARY_NAMES)
++
++find_path(TBB_MALLOC_PROXY_INCLUDE_DIR
++          NAMES tbb/tbbmalloc_proxy.h
++          HINTS ${TBB_INC_SEARCH_PATH})
++find_tbb_library_verifying_release_debug_locations(TBB_MALLOC_PROXY_LIBRARY)
++make_library_set(TBB_MALLOC_PROXY_LIBRARY)
++
++findpkg_finish(TBB_MALLOC_PROXY tbbmalloc_proxy)
++
++
++#=============================================================================
++#parse all the version numbers from tbb
++if(NOT TBB_VERSION)
++  set(TBB_VERSION_FILE_PRIOR_TO_TBB_2021_1
++    "${TBB_INCLUDE_DIR}/tbb/tbb_stddef.h")
++  set(TBB_VERSION_FILE_AFTER_TBB_2021_1
++    "${TBB_INCLUDE_DIR}/oneapi/tbb/version.h")
++
++  if (EXISTS "${TBB_VERSION_FILE_PRIOR_TO_TBB_2021_1}")
++    set(TBB_VERSION_FILE "${TBB_VERSION_FILE_PRIOR_TO_TBB_2021_1}")
++  elseif (EXISTS "${TBB_VERSION_FILE_AFTER_TBB_2021_1}")
++    set(TBB_VERSION_FILE "${TBB_VERSION_FILE_AFTER_TBB_2021_1}")
++  else()
++    message(FATAL_ERROR "Found TBB installation: ${TBB_INCLUDE_DIR} "
++      "missing version header.")
++  endif()
++
++ #only read the start of the file
++ file(STRINGS
++      "${TBB_VERSION_FILE}"
++      TBB_VERSION_CONTENTS
++      REGEX "VERSION")
++
++  string(REGEX REPLACE
++    ".*#define TBB_VERSION_MAJOR ([0-9]+).*" "\\1"
++    TBB_VERSION_MAJOR "${TBB_VERSION_CONTENTS}")
++
++  string(REGEX REPLACE
++    ".*#define TBB_VERSION_MINOR ([0-9]+).*" "\\1"
++    TBB_VERSION_MINOR "${TBB_VERSION_CONTENTS}")
++
++  string(REGEX REPLACE
++        ".*#define TBB_INTERFACE_VERSION ([0-9]+).*" "\\1"
++        TBB_INTERFACE_VERSION "${TBB_VERSION_CONTENTS}")
++
++  string(REGEX REPLACE
++        ".*#define TBB_COMPATIBLE_INTERFACE_VERSION ([0-9]+).*" "\\1"
++        TBB_COMPATIBLE_INTERFACE_VERSION "${TBB_VERSION_CONTENTS}")
+ 
+ endif()
++
+diff --git a/src/libslic3r/Print.cpp b/src/libslic3r/Print.cpp
+index 693c4e5be..8750c7f8f 100644
+--- a/src/libslic3r/Print.cpp
++++ b/src/libslic3r/Print.cpp
+@@ -36,7 +36,7 @@ template class PrintState<PrintObjectStep, posCount>;
+ 
+ void Print::clear() 
+ {
+-	tbb::mutex::scoped_lock lock(this->state_mutex());
++	std::scoped_lock<std::mutex> lock(this->state_mutex());
+     // The following call should stop background processing if it is running.
+     this->invalidate_all_steps();
+ 	for (PrintObject *object : m_objects)
+@@ -262,7 +262,7 @@ bool Print::is_step_done(PrintObjectStep step) const
+ {
+     if (m_objects.empty())
+         return false;
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+     for (const PrintObject *object : m_objects)
+         if (! object->is_step_done_unguarded(step))
+             return false;
+@@ -617,7 +617,7 @@ Print::ApplyStatus Print::apply(const Model &model, DynamicPrintConfig new_full_
+         update_apply_status(false);
+ 
+     // Grab the lock for the Print / PrintObject milestones.
+-	tbb::mutex::scoped_lock lock(this->state_mutex());
++	std::scoped_lock<std::mutex> lock(this->state_mutex());
+ 
+     // The following call may stop the background processing.
+     if (! print_diff.empty())
+diff --git a/src/libslic3r/PrintBase.cpp b/src/libslic3r/PrintBase.cpp
+index fb5e102c1..72ceaf677 100644
+--- a/src/libslic3r/PrintBase.cpp
++++ b/src/libslic3r/PrintBase.cpp
+@@ -97,7 +97,7 @@ void PrintBase::status_update_warnings(ObjectID object_id, int step, PrintStateB
+     	printf("%s warning: %s\n", (object_id == this->id()) ? "print" : "print object", message.c_str());
+ }
+ 
+-tbb::mutex& PrintObjectBase::state_mutex(PrintBase *print)
++std::mutex& PrintObjectBase::state_mutex(PrintBase *print)
+ { 
+ 	return print->state_mutex();
+ }
+diff --git a/src/libslic3r/PrintBase.hpp b/src/libslic3r/PrintBase.hpp
+index bfbabd06b..512b7755e 100644
+--- a/src/libslic3r/PrintBase.hpp
++++ b/src/libslic3r/PrintBase.hpp
+@@ -6,12 +6,8 @@
+ #include <vector>
+ #include <string>
+ #include <functional>
+-
+-// tbb/mutex.h includes Windows, which in turn defines min/max macros. Convince Windows.h to not define these min/max macros.
+-#ifndef NOMINMAX
+-    #define NOMINMAX
+-#endif
+-#include "tbb/mutex.h"
++#include <atomic>
++#include <mutex>
+ 
+ #include "ObjectID.hpp"
+ #include "Model.hpp"
+@@ -84,23 +80,23 @@ class PrintState : public PrintStateBase
+ public:
+     PrintState() {}
+ 
+-    StateWithTimeStamp state_with_timestamp(StepType step, tbb::mutex &mtx) const {
+-        tbb::mutex::scoped_lock lock(mtx);
++    StateWithTimeStamp state_with_timestamp(StepType step, std::mutex &mtx) const {
++        std::scoped_lock<std::mutex> lock(mtx);
+         StateWithTimeStamp state = m_state[step];
+         return state;
+     }
+ 
+-    StateWithWarnings state_with_warnings(StepType step, tbb::mutex &mtx) const {
+-        tbb::mutex::scoped_lock lock(mtx);
++    StateWithWarnings state_with_warnings(StepType step, std::mutex &mtx) const {
++        std::scoped_lock<std::mutex> lock(mtx);
+         StateWithWarnings state = m_state[step];
+         return state;
+     }
+ 
+-    bool is_started(StepType step, tbb::mutex &mtx) const {
++    bool is_started(StepType step, std::mutex &mtx) const {
+         return this->state_with_timestamp(step, mtx).state == STARTED;
+     }
+ 
+-    bool is_done(StepType step, tbb::mutex &mtx) const {
++    bool is_done(StepType step, std::mutex &mtx) const {
+         return this->state_with_timestamp(step, mtx).state == DONE;
+     }
+ 
+@@ -121,8 +117,8 @@ public:
+     // This is necessary to block until the Print::apply() updates its state, which may
+     // influence the processing step being entered.
+     template<typename ThrowIfCanceled>
+-    bool set_started(StepType step, tbb::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
+-        tbb::mutex::scoped_lock lock(mtx);
++    bool set_started(StepType step, std::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
++        std::scoped_lock<std::mutex> lock(mtx);
+         // If canceled, throw before changing the step state.
+         throw_if_canceled();
+ #ifndef NDEBUG
+@@ -154,8 +150,8 @@ public:
+     // 		Timestamp when this stepentered the DONE state.
+     // 		bool indicates whether the UI has to update the slicing warnings of this step or not.
+ 	template<typename ThrowIfCanceled>
+-	std::pair<TimeStamp, bool> set_done(StepType step, tbb::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
+-        tbb::mutex::scoped_lock lock(mtx);
++	std::pair<TimeStamp, bool> set_done(StepType step, std::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
++        std::scoped_lock<std::mutex> lock(mtx);
+         // If canceled, throw before changing the step state.
+         throw_if_canceled();
+         assert(m_state[step].state == STARTED);
+@@ -266,9 +262,9 @@ public:
+     // Return value:
+     // 		Current milestone (StepType).
+     // 		bool indicates whether the UI has to be updated or not.
+-    std::pair<StepType, bool> active_step_add_warning(PrintStateBase::WarningLevel warning_level, const std::string &message, int message_id, tbb::mutex &mtx)
++    std::pair<StepType, bool> active_step_add_warning(PrintStateBase::WarningLevel warning_level, const std::string &message, int message_id, std::mutex &mtx)
+     {
+-        tbb::mutex::scoped_lock lock(mtx);
++        std::scoped_lock<std::mutex> lock(mtx);
+         assert(m_step_active != -1);
+         StateWithWarnings &state = m_state[m_step_active];
+         assert(state.state == STARTED);
+@@ -314,7 +310,7 @@ protected:
+     PrintObjectBase(ModelObject *model_object) : m_model_object(model_object) {}
+     virtual ~PrintObjectBase() {}
+     // Declared here to allow access from PrintBase through friendship.
+-	static tbb::mutex&                  state_mutex(PrintBase *print);
++	static std::mutex&                  state_mutex(PrintBase *print);
+ 	static std::function<void()>        cancel_callback(PrintBase *print);
+ 	// Notify UI about a new warning of a milestone "step" on this PrintObjectBase.
+ 	// The UI will be notified by calling a status callback registered on print.
+@@ -461,7 +457,7 @@ protected:
+ 	friend class PrintObjectBase;
+     friend class BackgroundSlicingProcess;
+ 
+-    tbb::mutex&            state_mutex() const { return m_state_mutex; }
++    std::mutex&            state_mutex() const { return m_state_mutex; }
+     std::function<void()>  cancel_callback() { return m_cancel_callback; }
+ 	void				   call_cancel_callback() { m_cancel_callback(); }
+ 	// Notify UI about a new warning of a milestone "step" on this PrintBase.
+@@ -486,7 +482,7 @@ protected:
+     status_callback_type                    m_status_callback;
+ 
+ private:
+-    tbb::atomic<CancelStatus>               m_cancel_status;
++    std::atomic<CancelStatus>               m_cancel_status;
+ 
+     // Callback to be evoked to stop the background processing before a state is updated.
+     cancel_callback_type                    m_cancel_callback = [](){};
+@@ -494,7 +490,7 @@ private:
+     // Mutex used for synchronization of the worker thread with the UI thread:
+     // The mutex will be used to guard the worker thread against entering a stage
+     // while the data influencing the stage is modified.
+-    mutable tbb::mutex                      m_state_mutex;
++    mutable std::mutex                      m_state_mutex;
+ };
+ 
+ template<typename PrintStepEnum, const size_t COUNT>
+diff --git a/src/libslic3r/PrintObject.cpp b/src/libslic3r/PrintObject.cpp
+index ed17676e0..12d61651a 100644
+--- a/src/libslic3r/PrintObject.cpp
++++ b/src/libslic3r/PrintObject.cpp
+@@ -19,7 +19,6 @@
+ #include <float.h>
+ 
+ #include <tbb/parallel_for.h>
+-#include <tbb/atomic.h>
+ 
+ #include <Shiny/Shiny.h>
+ 
+diff --git a/src/libslic3r/SLA/Concurrency.hpp b/src/libslic3r/SLA/Concurrency.hpp
+index 300024c76..6b609da00 100644
+--- a/src/libslic3r/SLA/Concurrency.hpp
++++ b/src/libslic3r/SLA/Concurrency.hpp
+@@ -1,12 +1,13 @@
+ #ifndef SLA_CONCURRENCY_H
+ #define SLA_CONCURRENCY_H
+ 
++#include <tbb/blocked_range.h>
+ #include <tbb/spin_mutex.h>
+-#include <tbb/mutex.h>
+ #include <tbb/parallel_for.h>
+ #include <tbb/parallel_reduce.h>
+ 
+ #include <algorithm>
++#include <mutex>
+ #include <numeric>
+ 
+ #include <libslic3r/libslic3r.h>
+@@ -23,7 +24,7 @@ template<bool> struct _ccr {};
+ template<> struct _ccr<true>
+ {
+     using SpinningMutex = tbb::spin_mutex;
+-    using BlockingMutex = tbb::mutex;
++    using BlockingMutex = std::mutex;
+ 
+     template<class Fn, class It>
+     static IteratorOnly<It, void> loop_(const tbb::blocked_range<It> &range, Fn &&fn)
+diff --git a/src/libslic3r/SLA/SupportTree.cpp b/src/libslic3r/SLA/SupportTree.cpp
+index 1bb4cfab7..7062a3860 100644
+--- a/src/libslic3r/SLA/SupportTree.cpp
++++ b/src/libslic3r/SLA/SupportTree.cpp
+@@ -16,9 +16,6 @@
+ #include <libnest2d/optimizers/nlopt/genetic.hpp>
+ #include <libnest2d/optimizers/nlopt/subplex.hpp>
+ #include <boost/log/trivial.hpp>
+-#include <tbb/parallel_for.h>
+-#include <tbb/mutex.h>
+-#include <tbb/spin_mutex.h>
+ #include <libslic3r/I18N.hpp>
+ 
+ //! macro used to mark string used at localization,
+diff --git a/src/libslic3r/SLAPrint.cpp b/src/libslic3r/SLAPrint.cpp
+index 65fac73f3..c743683c4 100644
+--- a/src/libslic3r/SLAPrint.cpp
++++ b/src/libslic3r/SLAPrint.cpp
+@@ -19,8 +19,6 @@
+ #include <libnest2d/tools/benchmark.h>
+ #endif
+ 
+-//#include <tbb/spin_mutex.h>//#include "tbb/mutex.h"
+-
+ #include "I18N.hpp"
+ 
+ //! macro used to mark string used at localization,
+@@ -118,7 +116,7 @@ bool validate_pad(const TriangleMesh &pad, const sla::PadConfig &pcfg)
+ 
+ void SLAPrint::clear()
+ {
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+     // The following call should stop background processing if it is running.
+     this->invalidate_all_steps();
+     for (SLAPrintObject *object : m_objects)
+@@ -212,7 +210,7 @@ SLAPrint::ApplyStatus SLAPrint::apply(const Model &model, DynamicPrintConfig con
+         update_apply_status(false);
+ 
+     // Grab the lock for the Print / PrintObject milestones.
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+ 
+     // The following call may stop the background processing.
+     bool invalidate_all_model_objects = false;
+@@ -514,7 +512,7 @@ SLAPrint::ApplyStatus SLAPrint::apply(const Model &model, DynamicPrintConfig con
+ void SLAPrint::set_task(const TaskParams &params)
+ {
+     // Grab the lock for the Print / PrintObject milestones.
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+ 
+     int n_object_steps = int(params.to_object_step) + 1;
+     if (n_object_steps == 0)
+@@ -884,7 +882,7 @@ bool SLAPrint::is_step_done(SLAPrintObjectStep step) const
+ {
+     if (m_objects.empty())
+         return false;
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+     for (const SLAPrintObject *object : m_objects)
+         if (! object->is_step_done_unguarded(step))
+             return false;
+diff --git a/src/libslic3r/SupportMaterial.cpp b/src/libslic3r/SupportMaterial.cpp
+index 95c429754..bbcf475a5 100644
+--- a/src/libslic3r/SupportMaterial.cpp
++++ b/src/libslic3r/SupportMaterial.cpp
+@@ -12,7 +12,6 @@
+ #include <boost/log/trivial.hpp>
+ 
+ #include <tbb/parallel_for.h>
+-#include <tbb/atomic.h>
+ #include <tbb/spin_mutex.h>
+ #include <tbb/task_group.h>
+ 
+diff --git a/src/libslic3r/Thread.cpp b/src/libslic3r/Thread.cpp
+index d203acb90..51dec618e 100644
+--- a/src/libslic3r/Thread.cpp
++++ b/src/libslic3r/Thread.cpp
+@@ -9,10 +9,10 @@
+ #include <atomic>
+ #include <condition_variable>
+ #include <mutex>
++#include <thread>
++#include <tbb/global_control.h>
+ #include <tbb/parallel_for.h>
+-#include <tbb/tbb_thread.h>
+ #include <tbb/task_arena.h>
+-#include <tbb/task_scheduler_init.h>
+ 
+ #include "Thread.hpp"
+ 
+@@ -206,13 +206,13 @@ void name_tbb_thread_pool_threads()
+ 	nthreads = 1;
+ #endif
+ 
+-	if (nthreads != nthreads_hw) 
+-		new tbb::task_scheduler_init(int(nthreads));
++	if (nthreads != nthreads_hw)
++		tbb::global_control(tbb::global_control::max_allowed_parallelism, nthreads);
+ 
+ 	std::atomic<size_t>		nthreads_running(0);
+ 	std::condition_variable cv;
+ 	std::mutex				cv_m;
+-	auto					master_thread_id = tbb::this_tbb_thread::get_id();
++	auto					master_thread_id = std::this_thread::get_id();
+     tbb::parallel_for(
+         tbb::blocked_range<size_t>(0, nthreads, 1),
+         [&nthreads_running, nthreads, &master_thread_id, &cv, &cv_m](const tbb::blocked_range<size_t> &range) {
+@@ -226,7 +226,7 @@ void name_tbb_thread_pool_threads()
+ 				std::unique_lock<std::mutex> lk(cv_m);
+ 			    cv.wait(lk, [&nthreads_running, nthreads]{return nthreads_running == nthreads;});
+         	}
+-        	auto thread_id = tbb::this_tbb_thread::get_id();
++        	auto thread_id = std::this_thread::get_id();
+ 			if (thread_id == master_thread_id) {
+ 				// The calling thread runs the 0'th task.
+ 				assert(range.begin() == 0);
+diff --git a/src/libslic3r/pchheader.hpp b/src/libslic3r/pchheader.hpp
+index 0135fd712..98c55bf37 100644
+--- a/src/libslic3r/pchheader.hpp
++++ b/src/libslic3r/pchheader.hpp
+@@ -93,12 +93,9 @@
+ #include <boost/thread.hpp>
+ #include <boost/version.hpp>
+ 
+-#include <tbb/atomic.h>
+ #include <tbb/parallel_for.h>
+ #include <tbb/spin_mutex.h>
+-#include <tbb/mutex.h>
+ #include <tbb/task_group.h>
+-#include <tbb/task_scheduler_init.h>
+ 
+ #include <Eigen/Dense>
+ #include <Eigen/Geometry>
+diff --git a/src/libslic3r/utils.cpp b/src/libslic3r/utils.cpp
+index 1a27684d8..32be0fb79 100644
+--- a/src/libslic3r/utils.cpp
++++ b/src/libslic3r/utils.cpp
+@@ -43,7 +43,7 @@
+ #include <boost/nowide/convert.hpp>
+ #include <boost/nowide/cstdio.hpp>
+ 
+-#include <tbb/task_scheduler_init.h>
++#include <tbb/global_control.h>
+ 
+ #if defined(__linux__) || defined(__GNUC__ )
+ #include <strings.h>
+@@ -118,9 +118,7 @@ void trace(unsigned int level, const char *message)
+ void disable_multi_threading()
+ {
+     // Disable parallelization so the Shiny profiler works
+-    static tbb::task_scheduler_init *tbb_init = nullptr;
+-    if (tbb_init == nullptr)
+-        tbb_init = new tbb::task_scheduler_init(1);
++    tbb::global_control(tbb::global_control::max_allowed_parallelism, 1);
+ }
+ 
+ static std::string g_var_dir;
+diff --git a/src/slic3r/GUI/BackgroundSlicingProcess.cpp b/src/slic3r/GUI/BackgroundSlicingProcess.cpp
+index 2cc9f84a3..cfc3c3bbf 100644
+--- a/src/slic3r/GUI/BackgroundSlicingProcess.cpp
++++ b/src/slic3r/GUI/BackgroundSlicingProcess.cpp
+@@ -465,7 +465,7 @@ void BackgroundSlicingProcess::schedule_export(const std::string &path, bool exp
+ 		return;
+ 
+ 	// Guard against entering the export step before changing the export path.
+-	tbb::mutex::scoped_lock lock(m_print->state_mutex());
++	std::scoped_lock<std::mutex> lock(m_print->state_mutex());
+ 	this->invalidate_step(bspsGCodeFinalize);
+ 	m_export_path = path;
+ 	m_export_path_on_removable_media = export_path_on_removable_media;
+@@ -478,7 +478,7 @@ void BackgroundSlicingProcess::schedule_upload(Slic3r::PrintHostJob upload_job)
+ 		return;
+ 
+ 	// Guard against entering the export step before changing the export path.
+-	tbb::mutex::scoped_lock lock(m_print->state_mutex());
++	std::scoped_lock<std::mutex> lock(m_print->state_mutex());
+ 	this->invalidate_step(bspsGCodeFinalize);
+ 	m_export_path.clear();
+ 	m_upload_job = std::move(upload_job);
+@@ -491,7 +491,7 @@ void BackgroundSlicingProcess::reset_export()
+ 		m_export_path.clear();
+ 		m_export_path_on_removable_media = false;
+ 		// invalidate_step expects the mutex to be locked.
+-		tbb::mutex::scoped_lock lock(m_print->state_mutex());
++		std::scoped_lock<std::mutex> lock(m_print->state_mutex());
+ 		this->invalidate_step(bspsGCodeFinalize);
+ 	}
+ }
+diff --git a/src/slic3r/GUI/BackgroundSlicingProcess.hpp b/src/slic3r/GUI/BackgroundSlicingProcess.hpp
+index b3f8a0a6b..2f750cee4 100644
+--- a/src/slic3r/GUI/BackgroundSlicingProcess.hpp
++++ b/src/slic3r/GUI/BackgroundSlicingProcess.hpp
+@@ -213,7 +213,7 @@ private:
+ 	State 						m_state = STATE_INITIAL;
+ 
+     PrintState<BackgroundSlicingProcessStep, bspsCount>   	m_step_state;
+-    mutable tbb::mutex                      				m_step_state_mutex;
++    mutable std::mutex                      				m_step_state_mutex;
+ 	bool                set_step_started(BackgroundSlicingProcessStep step);
+ 	void                set_step_done(BackgroundSlicingProcessStep step);
+ 	bool 				is_step_done(BackgroundSlicingProcessStep step) const;
+diff --git a/src/slic3r/GUI/InstanceCheck.hpp b/src/slic3r/GUI/InstanceCheck.hpp
+index 9fb74b0a9..23a75edc5 100644
+--- a/src/slic3r/GUI/InstanceCheck.hpp
++++ b/src/slic3r/GUI/InstanceCheck.hpp
+@@ -13,7 +13,7 @@
+ 
+ #if __linux__
+ #include <boost/thread.hpp>
+-#include <tbb/mutex.h>
++#include <mutex>
+ #include <condition_variable>
+ #endif // __linux__
+ 
+diff --git a/src/slic3r/GUI/Mouse3DController.cpp b/src/slic3r/GUI/Mouse3DController.cpp
+index 692ae7f1b..541345194 100644
+--- a/src/slic3r/GUI/Mouse3DController.cpp
++++ b/src/slic3r/GUI/Mouse3DController.cpp
+@@ -66,7 +66,7 @@ void update_maximum(std::atomic<T>& maximum_value, T const& value) noexcept
+ 
+ void Mouse3DController::State::append_translation(const Vec3d& translation, size_t input_queue_max_size)
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     while (m_input_queue.size() >= input_queue_max_size)
+         m_input_queue.pop_front();
+     m_input_queue.emplace_back(QueueItem::translation(translation));
+@@ -77,7 +77,7 @@ void Mouse3DController::State::append_translation(const Vec3d& translation, size
+ 
+ void Mouse3DController::State::append_rotation(const Vec3f& rotation, size_t input_queue_max_size)
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     while (m_input_queue.size() >= input_queue_max_size)
+         m_input_queue.pop_front();
+     m_input_queue.emplace_back(QueueItem::rotation(rotation.cast<double>()));
+@@ -92,7 +92,7 @@ void Mouse3DController::State::append_rotation(const Vec3f& rotation, size_t inp
+ 
+ void Mouse3DController::State::append_button(unsigned int id, size_t /* input_queue_max_size */)
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     m_input_queue.emplace_back(QueueItem::buttons(id));
+ #if ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+     update_maximum(input_queue_max_size_achieved, m_input_queue.size());
+@@ -277,7 +277,7 @@ void Mouse3DController::device_attached(const std::string &device)
+ #if ENABLE_CTRL_M_ON_WINDOWS
+             m_device_str = format_device_string(vid, pid);
+             if (auto it_params = m_params_by_device.find(m_device_str); it_params != m_params_by_device.end()) {
+-                tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++                std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+                 m_params = m_params_ui = it_params->second;
+             }
+             else
+@@ -295,7 +295,7 @@ void Mouse3DController::device_detached(const std::string& device)
+     int pid = 0;
+     if (sscanf(device.c_str(), "\\\\?\\HID#VID_%x&PID_%x&", &vid, &pid) == 2) {
+         if (std::find(_3DCONNEXION_VENDORS.begin(), _3DCONNEXION_VENDORS.end(), vid) != _3DCONNEXION_VENDORS.end()) {
+-            tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++            std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+             m_params_by_device[format_device_string(vid, pid)] = m_params_ui;
+         }
+     }
+@@ -307,12 +307,12 @@ void Mouse3DController::device_detached(const std::string& device)
+ // Filter out mouse scroll events produced by the 3DConnexion driver.
+ bool Mouse3DController::State::process_mouse_wheel()
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
+-	if (m_mouse_wheel_counter == 0)
+-    	// No 3DConnexion rotation has been captured since the last mouse scroll event.
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
++    if (m_mouse_wheel_counter == 0)
++        // No 3DConnexion rotation has been captured since the last mouse scroll event.
+         return false;
+     if (std::find_if(m_input_queue.begin(), m_input_queue.end(), [](const QueueItem &item){ return item.is_rotation(); }) != m_input_queue.end()) {
+-    	// There is a rotation stored in the queue. Suppress one mouse scroll event.
++        // There is a rotation stored in the queue. Suppress one mouse scroll event.
+         -- m_mouse_wheel_counter;
+         return true;
+     }
+@@ -329,7 +329,7 @@ bool Mouse3DController::State::apply(const Mouse3DController::Params &params, Ca
+     std::deque<QueueItem> input_queue;
+     {
+     	// Atomically move m_input_queue to input_queue.
+-    	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    	std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     	input_queue = std::move(m_input_queue);
+         m_input_queue.clear();
+     }
+@@ -418,7 +418,7 @@ bool Mouse3DController::apply(Camera& camera)
+ #if ENABLE_CTRL_M_ON_WINDOWS
+ #ifdef _WIN32
+     {
+-        tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++        std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         if (m_params_ui_changed) {
+             m_params = m_params_ui;
+             m_params_ui_changed = false;
+@@ -447,7 +447,7 @@ void Mouse3DController::render_settings_dialog(GLCanvas3D& canvas) const
+     Params params_copy;
+     bool   params_changed = false;
+     {
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+     	params_copy = m_params_ui;
+     }
+ 
+@@ -565,7 +565,7 @@ void Mouse3DController::render_settings_dialog(GLCanvas3D& canvas) const
+ 
+     if (params_changed) {
+         // Synchronize front end parameters to back end.
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         auto pthis = const_cast<Mouse3DController*>(this);
+ #if ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+         if (params_copy.input_queue_max_size != params_copy.input_queue_max_size)
+@@ -586,7 +586,7 @@ void Mouse3DController::connected(std::string device_name)
+ 	m_device_str = device_name;
+     // Copy the parameters for m_device_str into the current parameters.
+     if (auto it_params = m_params_by_device.find(m_device_str); it_params != m_params_by_device.end()) {
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+     	m_params = m_params_ui = it_params->second;
+     }
+     m_connected = true;
+@@ -597,7 +597,7 @@ void Mouse3DController::disconnected()
+     // Copy the current parameters for m_device_str into the parameter database.
+     assert(m_connected == ! m_device_str.empty());
+     if (m_connected) {
+-        tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++        std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         m_params_by_device[m_device_str] = m_params_ui;
+ 	    m_device_str.clear();
+ 	    m_connected = false;
+@@ -621,7 +621,7 @@ bool Mouse3DController::handle_input(const DataPacketAxis& packet)
+     {
+     	// Synchronize parameters between the UI thread and the background thread.
+     	//FIXME is this necessary on OSX? Are these notifications triggered from the main thread or from a worker thread?
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+     	if (m_params_ui_changed) {
+     		m_params = m_params_ui;
+     		m_params_ui_changed = false;
+@@ -733,7 +733,7 @@ void Mouse3DController::run()
+ 
+     for (;;) {
+         {
+-        	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++        	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         	if (m_stop)
+         		break;
+         	if (m_params_ui_changed) {
+@@ -998,7 +998,7 @@ bool Mouse3DController::connect_device()
+ #endif // ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+         // Copy the parameters for m_device_str into the current parameters.
+         if (auto it_params = m_params_by_device.find(m_device_str); it_params != m_params_by_device.end()) {
+-	    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++	    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+ 	    	m_params = m_params_ui = it_params->second;
+ 	    }
+     }
+@@ -1023,7 +1023,7 @@ void Mouse3DController::disconnect_device()
+ 	    BOOST_LOG_TRIVIAL(info) << "Disconnected device: " << m_device_str;
+         // Copy the current parameters for m_device_str into the parameter database.
+         {
+-	        tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++	        std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+ 	        m_params_by_device[m_device_str] = m_params_ui;
+ 	    }
+ 	    m_device_str.clear();
+diff --git a/src/slic3r/GUI/Mouse3DController.hpp b/src/slic3r/GUI/Mouse3DController.hpp
+index af131992c..f648efa6e 100644
+--- a/src/slic3r/GUI/Mouse3DController.hpp
++++ b/src/slic3r/GUI/Mouse3DController.hpp
+@@ -10,12 +10,12 @@
+ 
+ #include <queue>
+ #include <atomic>
++#include <mutex>
+ #include <thread>
+ #include <vector>
+ #include <chrono>
+ #include <condition_variable>
+ 
+-#include <tbb/mutex.h>
+ 
+ namespace Slic3r {
+ 
+@@ -85,7 +85,7 @@ class Mouse3DController
+     	// m_input_queue is accessed by the background thread and by the UI thread. Access to m_input_queue
+     	// is guarded with m_input_queue_mutex.
+         std::deque<QueueItem> m_input_queue;
+-        mutable tbb::mutex	  m_input_queue_mutex;
++        mutable std::mutex	  m_input_queue_mutex;
+ 
+ #ifdef WIN32
+         // When the 3Dconnexion driver is running the system gets, by default, mouse wheel events when rotations around the X axis are detected.
+@@ -112,12 +112,12 @@ class Mouse3DController
+ 
+ #if ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+         Vec3d               get_first_vector_of_type(unsigned int type) const {
+-            tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++            std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+             auto it = std::find_if(m_input_queue.begin(), m_input_queue.end(), [type](const QueueItem& item) { return item.type_or_buttons == type; });
+             return (it == m_input_queue.end()) ? Vec3d::Zero() : it->vector;
+         }
+         size_t              input_queue_size_current() const { 
+-        	tbb::mutex::scoped_lock lock(m_input_queue_mutex); 
++        	std::scoped_lock<std::mutex> lock(m_input_queue_mutex); 
+         	return m_input_queue.size(); 
+         }
+         std::atomic<size_t> input_queue_max_size_achieved;
+@@ -133,7 +133,7 @@ class Mouse3DController
+     // UI thread will read / write this copy.
+     Params 				m_params_ui;
+     bool 	            m_params_ui_changed { false };
+-    mutable tbb::mutex	m_params_ui_mutex;
++    mutable std::mutex	m_params_ui_mutex;
+ 
+     // This is a database of parametes of all 3DConnexion devices ever connected.
+     // This database is loaded from AppConfig on application start and it is stored to AppConfig on application exit.
+diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
+index 59a202beb..8de684e2e 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -84,7 +84,7 @@ void RemovableDriveManager::eject_drive()
+ 	this->update();
+ #endif // REMOVABLE_DRIVE_MANAGER_OS_CALLBACKS
+ 	BOOST_LOG_TRIVIAL(info) << "Ejecting started"; 
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	auto it_drive_data = this->find_last_save_path_drive_data();
+ 	if (it_drive_data != m_current_drives.end()) {
+ 		// get handle to device
+@@ -130,7 +130,7 @@ std::string RemovableDriveManager::get_removable_drive_path(const std::string &p
+ 	this->update();
+ #endif // REMOVABLE_DRIVE_MANAGER_OS_CALLBACKS
+ 
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	if (m_current_drives.empty())
+ 		return std::string();
+ 	std::size_t found = path.find_last_of("\\");
+@@ -146,7 +146,7 @@ std::string RemovableDriveManager::get_removable_drive_path(const std::string &p
+ 
+ std::string RemovableDriveManager::get_removable_drive_from_path(const std::string& path)
+ {
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	std::size_t found = path.find_last_of("\\");
+ 	std::string new_path = path.substr(0, found);
+ 	int letter = PathGetDriveNumberW(boost::nowide::widen(new_path).c_str());	
+@@ -285,7 +285,7 @@ void RemovableDriveManager::eject_drive()
+ 
+ 	DriveData drive_data;
+ 	{
+-		tbb::mutex::scoped_lock lock(m_drives_mutex);
++		std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 		auto it_drive_data = this->find_last_save_path_drive_data();
+ 		if (it_drive_data == m_current_drives.end())
+ 			return;
+@@ -341,7 +341,7 @@ void RemovableDriveManager::eject_drive()
+ 		if (success) {
+ 			// Remove the drive_data from m_current drives, searching by value, not by pointer, as m_current_drives may get modified during
+ 			// asynchronous execution on m_eject_thread.
+-			tbb::mutex::scoped_lock lock(m_drives_mutex);
++			std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 			auto it = std::find(m_current_drives.begin(), m_current_drives.end(), drive_data);
+ 			if (it != m_current_drives.end())
+ 				m_current_drives.erase(it);
+@@ -361,7 +361,7 @@ std::string RemovableDriveManager::get_removable_drive_path(const std::string &p
+ 	std::size_t found = path.find_last_of("/");
+ 	std::string new_path = found == path.size() - 1 ? path.substr(0, found) : path;
+ 
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	for (const DriveData &data : m_current_drives)
+ 		if (search_for_drives_internal::compare_filesystem_id(new_path, data.path))
+ 			return path;
+@@ -377,7 +377,7 @@ std::string RemovableDriveManager::get_removable_drive_from_path(const std::stri
+     new_path = new_path.substr(0, found);
+     
+ 	// check if same filesystem
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	for (const DriveData &drive_data : m_current_drives)
+ 		if (search_for_drives_internal::compare_filesystem_id(new_path, drive_data.path))
+ 			return drive_data.path;
+@@ -452,7 +452,7 @@ RemovableDriveManager::RemovableDrivesStatus RemovableDriveManager::status()
+ 
+ 	RemovableDriveManager::RemovableDrivesStatus out;
+ 	{
+-		tbb::mutex::scoped_lock lock(m_drives_mutex);
++		std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 		out.has_eject = 
+ 			// Cannot control eject on Chromium.
+ 			platform_flavor() != PlatformFlavor::LinuxOnChromium &&
+@@ -468,17 +468,17 @@ RemovableDriveManager::RemovableDrivesStatus RemovableDriveManager::status()
+ // Update is called from thread_proc() and from most of the public methods on demand.
+ void RemovableDriveManager::update()
+ {
+-	tbb::mutex::scoped_lock inside_update_lock;
++	std::unique_lock<std::mutex> inside_update_lock(m_inside_update_mutex, std::defer_lock);
+ #ifdef _WIN32
+ 	// All wake up calls up to now are now consumed when the drive enumeration starts.
+ 	m_wakeup = false;
+ #endif // _WIN32
+-	if (inside_update_lock.try_acquire(m_inside_update_mutex)) {
++	if (inside_update_lock.try_lock()) {
+ 		// Got the lock without waiting. That means, the update was not running.
+ 		// Run the update.
+ 		std::vector<DriveData> current_drives = this->search_for_removable_drives();
+ 		// Post update events.
+-		tbb::mutex::scoped_lock lock(m_drives_mutex);
++		std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 		std::sort(current_drives.begin(), current_drives.end());
+ 		if (current_drives != m_current_drives) {
+ 			assert(m_callback_evt_handler);
+@@ -489,7 +489,7 @@ void RemovableDriveManager::update()
+ 	} else {
+ 		// Acquiring the m_iniside_update lock failed, therefore another update is running.
+ 		// Just block until the other instance of update() finishes.
+-		inside_update_lock.acquire(m_inside_update_mutex);
++		inside_update_lock.lock();
+ 	}
+ }
+ 
+diff --git a/src/slic3r/GUI/RemovableDriveManager.hpp b/src/slic3r/GUI/RemovableDriveManager.hpp
+index f707b40c3..29363647c 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.hpp
++++ b/src/slic3r/GUI/RemovableDriveManager.hpp
+@@ -5,7 +5,7 @@
+ #include <string>
+ 
+ #include <boost/thread.hpp>
+-#include <tbb/mutex.h>
++#include <mutex>
+ #include <condition_variable>
+ 
+ // Custom wxWidget events
+@@ -111,9 +111,9 @@ private:
+ 	// m_current_drives is guarded by m_drives_mutex
+ 	// sorted ascending by path
+ 	std::vector<DriveData> 	m_current_drives;
+-	mutable tbb::mutex 		m_drives_mutex;
++	mutable std::mutex 		m_drives_mutex;
+ 	// Locking the update() function to avoid that the function is executed multiple times.
+-	mutable tbb::mutex 		m_inside_update_mutex;
++	mutable std::mutex 		m_inside_update_mutex;
+ 
+ 	// Returns drive path (same as path in DriveData) if exists otherwise empty string.
+ 	std::string 			get_removable_drive_from_path(const std::string& path);
