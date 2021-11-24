@@ -1,0 +1,18 @@
+pkgbase = python-kaldialign-git
+	pkgdesc = Edit distance computation functions from Kaldi.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/pzelasko/kaldialign
+	arch = any
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = cython
+	provides = python-kaldialign
+	conflicts = python-kaldialign
+	source = python-kaldialign-git::git+https://github.com/pzelasko/kaldialign
+	md5sums = SKIP
+
+pkgname = python-kaldialign-git
