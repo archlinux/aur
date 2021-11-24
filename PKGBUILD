@@ -9,7 +9,7 @@ pkgver=0.4.7.0
 pkgrel=1
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
-url="http://rigsofrods.com"
+url="https://rigsofrods.org"
 license=('GPL')
 #depends=('angelscript-2.22.1' 'openal' 'wxgtk' 'ogre-1.8' 'caelum-ogre1.8' 'mygui-ogre1.8' 'ogre-1.8-pagedgeometry' 'socketw')
 depends=('openal' 'wxgtk' 'ogre>=1.8.0' 'ogre<2.0.0' 'caelum' 'mygui' 'ogre-pagedgeometry-git' 'socketw' 'angelscript-2.22.1' 'jsoncpp')
