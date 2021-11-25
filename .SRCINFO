@@ -1,5 +1,5 @@
 pkgbase = copytranslator
-	pkgdesc = 复制即翻译的外文辅助阅读翻译解决方案
+	pkgdesc = Foreign language reading and translation assistant based on copy and translate.
 	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://copytranslator.gitee.io/
