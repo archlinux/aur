@@ -1,6 +1,6 @@
 pkgbase = bfs
 	pkgdesc = A breadth-first version of find.
-	pkgver = 2.2.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://tavianator.com/projects/bfs.html
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = bfs
 	license = BSD
 	depends = acl
 	depends = libcap
-	source = bfs-2.2.1.tar.gz::https://github.com/tavianator/bfs/archive/2.2.1.tar.gz
-	sha256sums = 94a9c9a03d82c2d8e81ff373021d8188925a1a5e525937ddda2523483629e390
+	source = bfs-2.3.tar.gz::https://github.com/tavianator/bfs/archive/2.3.tar.gz
+	sha256sums = 15d5455af3a399561db1d701f2032d743a7a1a201d60df2b55cafd3517277bd3
 
 pkgname = bfs
