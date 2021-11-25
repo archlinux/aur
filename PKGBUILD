@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-pytorch-complex-git
-pkgver=0.2.1.r98
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Python class for PyTorch-ComplexTensor (workaround for missing Pytorch Class)'
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
