@@ -1,7 +1,7 @@
 pkgbase = wikibase-cli
-	pkgdesc = The command-line interface to Wikibase (Wikidata)
+	pkgdesc = Command-line interface to Wikibase instances
 	pkgver = 15.15.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maxlath/wikibase-cli
 	arch = any
 	license = MIT
