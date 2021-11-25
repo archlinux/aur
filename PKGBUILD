@@ -1,6 +1,6 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('git' 'meson' 'ninja' 'scdoc' 'libdrm')
 checkdepends=('weston' 'python-psutil')
 url='https://gitlab.freedesktop.org/mstoeckl/waypipe'
 source=("https://gitlab.freedesktop.org/mstoeckl/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('a6f71fa325ca37d998705fa864e39af8d32fb5dca252fc1d3e41542bb40e758b')
+sha256sums=('a14ef6688dd2d3b2b8027305c9ff248b94c1903ca7099c35d7b917d456e3f9a3')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 
 build() {
