@@ -1,17 +1,21 @@
 pkgbase = trader
-	pkgdesc = Star Trader, a simple text-based game of interstellar trading
-	pkgver = 7.14
+	pkgdesc = Star Trader, a text-based game of interstellar trading
+	pkgver = 7.16
 	pkgrel = 1
-	url = http://www.zap.org.au/software/trader/
+	url = https://www.zap.org.au/software/trader
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	depends = ncurses
-	source = https://ftp.zap.org.au/pub/trader/unix/trader-7.14.tar.xz
-	source = https://ftp.zap.org.au/pub/trader/unix/trader-7.14.tar.xz.sig
+	source = https://ftp.zap.org.au/pub/trader/unix/trader-7.16.tar.xz
+	source = https://ftp.zap.org.au/pub/trader/unix/trader-7.16.tar.xz.sig
 	validpgpkeys = B0F6BC7F46D30F1432FC46190D254111C4EE569B
-	md5sums = 510c4273f91cd6edc4ac919cc0a4f401
-	md5sums = SKIP
+	sha256sums = 7fced3adfe61099679cec67dd7d7187314b0f6d4378a4aece1a1b5eab9f81ef2
+	sha256sums = SKIP
 
 pkgname = trader
-

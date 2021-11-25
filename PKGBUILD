@@ -1,18 +1,20 @@
+# Contributor: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Brian "Beej" Hall <beej@beej.us>
 
 pkgname=trader
-pkgver=7.14
+pkgver=7.16
 pkgrel=1
-pkgdesc="Star Trader, a simple text-based game of interstellar trading"
-arch=('i686' 'x86_64')
-url="http://www.zap.org.au/software/trader/"
+pkgdesc="Star Trader, a text-based game of interstellar trading"
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://www.zap.org.au/software/trader"
 license=('GPL3')
 depends=('ncurses')
 source=("https://ftp.zap.org.au/pub/trader/unix/$pkgname-$pkgver.tar.xz"{,.sig})
-md5sums=('510c4273f91cd6edc4ac919cc0a4f401'
-         'SKIP')
+sha256sums=('7fced3adfe61099679cec67dd7d7187314b0f6d4378a4aece1a1b5eab9f81ef2'
+            'SKIP')
 validpgpkeys=('B0F6BC7F46D30F1432FC46190D254111C4EE569B') # John Zaitseff <J.Zaitseff@zap.org.au>
+# PGP Key available at https://www.zap.org.au/~john/contact.html
 
 
 build() {
