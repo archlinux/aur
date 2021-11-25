@@ -1,7 +1,7 @@
 pkgbase = gerbil-scheme
 	pkgdesc = Opinionated dialect of Scheme designed for systems programming, on the Gambit runtime.
 	pkgver = 0.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/vyzo/gerbil
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = gerbil-scheme
 	optdepends = lmdb: key/value store support
 	optdepends = leveldb: key/value store support
 	conflicts = gerbil-scheme-git
-	source = gerbil-scheme-0.16-4.tar.gz::https://github.com/vyzo/gerbil/archive/refs/tags/v0.16.tar.gz
+	source = gerbil-scheme-0.16-5.tar.gz::https://github.com/vyzo/gerbil/archive/refs/tags/v0.16.tar.gz
 	source = install.patch
 	sha512sums = 46782b4b71a3b437501b825f2f164e53b285d3a4cdba8f04485edaaa589d8500535c06a47a1464fc537ab7546413dde37c8d6a16a5e076a99ccf255905ed105d
 	sha512sums = 79ad0046390b40748830dfd96d48162dcd3658503c208fecad33aee4b2f6f2430856d425a042c30a110b515135eab2105ae254548b762347d1d1efbd8c106cc9
