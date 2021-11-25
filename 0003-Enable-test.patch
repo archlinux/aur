@@ -1,7 +1,7 @@
 From b25ebe5bf1417276f3e17709062eb9d6148f3802 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Thu, 25 Nov 2021 16:41:38 +0100
-Subject: [PATCH 3/3] Enable test
+Subject: [PATCH 3/4] Enable test
 
 ---
  CMakeLists.txt | 2 ++
