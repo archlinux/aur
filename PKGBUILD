@@ -1,21 +1,25 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-
-pkgname=python-pandas-summary
-_pkgname=pandas-summary
-pkgver=0.0.41
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Jean Lucas <jean@4ray.co>
+_base=pandas-summary
+pkgname=python-${_base}
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='An extension to pandas dataframes describe function'
+pkgdesc="An extension to pandas describe function"
 arch=(any)
-url='https://github.com/mouradmourafiq/pandas-summary'
+url="https://pypi.org/project/${_base}"
 license=(MIT)
-depends=(python)
-makedepends=(python-setuptools)
-source=(https://pypi.python.org/packages/3d/a7/0364272be0c6561c45d67edec8a7bf0532d56b830438168f9078f7720f63/$_pkgname-$pkgver.tar.gz)
-md5sums=(ff2b4ae3e55d48e10029dcd231f93167)
-sha512sums=(02c3a767f2f41abb5e8d0271c1bf09904ddf94a47cc85c298d10436e744a44e980c9a2a1bee1026748fed4ba7d2d02fd28e3aa25b280b43a26daf40d8f826873)
+depends=(python-pandas)
+# makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('56dd74f53ab6d8838e38ab923551804217defe7a2dc6a9235dce15ec4bf6e7085f8a3805b731d1d558b66ff774aaeb625bd2ee6656b12ad91017a260f1e35d0f')
+
+build() {
+  cd "${_base}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
-
-  python setup.py install --root=$pkgdir --optimize=1
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
