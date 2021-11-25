@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 
 pkgname=pict-rs
-_pkgver=0.3.0-beta.5
+_pkgver=0.3.0-beta.6
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="A simple image hosting service"
@@ -11,8 +11,8 @@ license=('AGPL3')
 depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'perl-image-exiftool')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha512sums=('d189bfdbf54702c0afa9e545f75b2ef5f98fb7a8bd4b253d839c03fa66b5593d6b975e5e2b26ed85b03ca3da42af3f0d2887bb4b2136f74847fb6b7031dd58f4')
-b2sums=('1cbe01f636e6a53c260d1cf42c104de59be88b1401577899fae2e57221bcb48a29884c996d6bc02bb7fb0a40b4882c45ade63b4759aeee075117b82cd7e34b9f')
+sha512sums=('0047e26a3aea1d0dca22d493ecaa03797205eb727a0d5115e74eb3815ea1dc0e71583dba1e1d343aba1d162b5199cc5ed43c45084b5ce5672240749c95c7e9f1')
+b2sums=('427d70120b110f736692839d85f8fa5af91c822142ffc79dab790402552eac609eac41bdbc54664146233ad9c39df94958e25c449412e23f532b1f0d7f14107f')
 
 prepare() {
   cd "$pkgname"
