@@ -1,13 +1,13 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 pkgname=wayfire-git
-pkgver=0.7.2.r20211118.0fc949e
+pkgver=0.6.0.r317.g0fc949ea
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
 url="https://github.com/ammen99/wayfire"
 license=('MIT')
-depends=('wlroots-git' 'cairo' 'libjpeg' 'wf-config-git' 'seatd' 'libinput')
+depends=('wlroots-git' 'cairo' 'libjpeg' 'wf-config-git' 'seatd' 'libinput' 'pango')
 makedepends=('git' 'glm' 'meson' 'ninja' 'wayland-protocols' 'doctest' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
