@@ -54,6 +54,7 @@ pkgbase = pulseaudio-git
 	depends = python-sip
 	depends = fftw
 	depends = dconf
+	depends = libwrap
 	depends = gst-plugins-base-libs
 	optdepends = alsa-plugins: ALSA support
 	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
