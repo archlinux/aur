@@ -8,7 +8,7 @@ pkgdesc="binding for the libvips image processing library, API mode"
 arch=(any)
 url="https://github.com/libvips/pyvips"
 license=(MIT)
-depends=("libvips" "python" "python-cffi" "python-pkgconfig" "curl")
+depends=("libvips" "python" "python-cffi" "python-pkgconfig")
 makedepends=("python-pip" "curl" "jq" "findutils")
 
 pkgver() {
