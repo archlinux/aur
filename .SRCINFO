@@ -1,0 +1,16 @@
+pkgbase = next-rust-release-date
+	pkgdesc = When's the next Rust release?
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://crates.io/crates/next-rust-release-date
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = next-rust-release-date-0.1.0.tar.gz::https://crates.io/api/v1/crates/next-rust-release-date/0.1.0/download
+	sha512sums = ca65510cbcdd87e2531aeaed970c1ffeed3e898af0809397f0e41f67b94ae3d62a1874298e8d6439d9c9dfceab069ae30241705e5efe38920fa991c7042f2c68
+
+pkgname = next-rust-release-date
