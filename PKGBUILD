@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 
 _name="luxcorerender"
 pkgname=${_name}-git
-pkgver=2.5.r182.gc7d4e677f
+pkgver=2.5.r225.g7ff6d46e4
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
