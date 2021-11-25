@@ -1,16 +1,16 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgname=python-scooby
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='A Great Dane turned Python environment detective'
 arch=('any')
 url='https://github.com/banesullivan/scooby'
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 source=("https://github.com/banesullivan/scooby/archive/v${pkgver}.tar.gz")
-sha256sums=('c7fc23d96ef1fb567e7eea6b406cde021fbc8602083c48bffc85abc5e402b7b3')
+sha256sums=('9b61a98782562ebc3ac4bf383e4ef924d60f5e14a1f548561f5710ad367f492f')
 
 build() {
   cd "$srcdir"/scooby-${pkgver}
