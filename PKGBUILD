@@ -1,6 +1,6 @@
 pkgname=powershell-empire
 _name=Empire
-pkgver=3.8.2
+pkgver=4.0.2
 pkgrel=0
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
@@ -10,15 +10,17 @@ license=('BSD-3-Clause')
 install="$pkgname.install"
 source=("http://http.kali.org/pool/main/p/powershell-empire/${pkgname}_${pkgver}-${pkgrel}kali1_all.deb"
         "$pkgname::git+https://github.com/peek1e/${pkgname}-AUR")
-sha256sums=('fb01b9a0138dbafeb418350ace8e10dc6b1a0e3c83864a1a2ce4eef78863d36d'
+sha256sums=('1727f4ff2242e55d5aca64311ae9fdb70d74fb43e2b852fd3d41e8ba5298a333'
             'SKIP')
 
 package() {
     ar x $srcdir/${pkgname}_${pkgver}-${pkgrel}kali1_all.deb
     tar -xf $srcdir/data.tar.xz
 
-    mkdir -p "$pkgdir/etc/$pkgname"
-    install -m 755 "$srcdir/etc/$pkgname/config.yaml" "$pkgdir/etc/$pkgname/config.yaml"
+    mkdir -p "$pkgdir/etc/$pkgname/client"
+    mkdir -p "$pkgdir/etc/$pkgname/server"
+    install -m 755 "$srcdir/etc/$pkgname/server/config.yaml" "$pkgdir/etc/$pkgname/server/config.yaml"
+    install -m 755 "$srcdir/etc/$pkgname/client/config.yaml" "$pkgdir/etc/$pkgname/client/config.yaml"
     install -m 755 "$srcdir/$pkgname/requirements.txt" "$pkgdir/etc/$pkgname/requirements.txt"
 
     mkdir -p "$pkgdir/usr/bin/"
