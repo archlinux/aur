@@ -1,6 +1,6 @@
 pkgbase = ansible-language-server
 	pkgdesc = Ansible Language Server
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ansible/ansible-language-server
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ansible-language-server
 	depends = ansible
 	depends = nodejs
 	optdepends = ansible-lint: required for linter support
-	noextract = ansible-language-server-0.2.6.tgz
-	source = ansible-language-server-0.2.6.tgz::https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.2.6.tgz
-	sha256sums = a26ad6fa183ee54de1a2832a5fd60622330f0677d2879af2ed87eed19e7f71a5
+	noextract = ansible-language-server-0.3.0.tgz
+	source = ansible-language-server-0.3.0.tgz::https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.3.0.tgz
+	sha256sums = 4a38925516b1c8f462eb159566d71e4eb2124aea96c5a162e080d2f7fe606e96
 
 pkgname = ansible-language-server
