@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2078
+pkgver=1.7.2079
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -71,6 +71,7 @@ build()
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_DIR=/usr/lib/pcsx2 \
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
+    -DWAYLAND_API=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE \
