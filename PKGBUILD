@@ -2,8 +2,8 @@
 # Based on the PKGBUILD for gdlauncher.
 pkgname="gdlauncher-beta"
 _pkgname="gdlauncher"
-pkgver="1.1.15.stable"
-_pkgver="1.1.15"
+pkgver="1.1.16beta.2"
+_pkgver="1.1.16-beta.2"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -15,7 +15,7 @@ conflicts=('gdlauncher' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlauncher-
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${_pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
-md5sums=('20c4326767f5b54be5922c5d16b7e95a'
+md5sums=('493fea976818960a9c70eabf2388e7dc'
          '68c75869fe0898c54699b9a5eb667d7b')
 
 prepare() {
@@ -28,7 +28,8 @@ prepare() {
     sed -i package.json \
         -e '/electron-updater/d;/7zip-bin/d' \
         -e 's$public/electron.js$build/electron.js$' \
-        -e '/"dependencies"/i\  "bundledDependencies": ["7zip-bin"],'
+        -e '/"dependencies"/i\  "bundledDependencies": ["7zip-bin"],' \
+        -e 's/0.13.1/0.13.2/g' # bump dependency version
     patch -p1 -i "${srcdir}/use-system-7za-and-disable-updater.patch"
 
     # Create .git folder to stop Husky from crashing
