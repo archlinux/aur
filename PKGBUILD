@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone
-pkgver=8.20210904
+pkgver=8.20211118
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64)
@@ -23,7 +23,7 @@ pkgver() {
 package() {
   cd "$srcdir/git-annex.linux"
 
-  for lib in libffi.so.7; do
+  for lib in libffi.so.8; do
     install -Dm644 lib/x86_64-linux-gnu/$lib "$pkgdir/usr/share/$pkgname/lib/$lib"
   done
 
