@@ -1,10 +1,11 @@
 # Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # -*- sh -*-
 
 pkgname='python-sphinx-markdown-tables'
-_pkgname=${pkgname#python-}
+_pkgname=${pkgname##python-}
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL3')
 pkgdesc='Sphinx extension for rendering tables written in markdown'
@@ -13,6 +14,9 @@ source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 depends=(
   'python'
   'python-markdown'
+)
+makedepends=(
+  'python-setuptools'
 )
 md5sums=(
   'f7ef0287d5d8ff06e7f6fdd96c1ed27a'
@@ -30,6 +34,12 @@ b2sums=(
   '4ad974678fe2f99f7c69b63e2e98bc11dfcea088b08d39600be708449c3e6da29e12ff6d10cba7f0f33fc3db1a550504b21ed2b16047cdfd3d804afca0b73df6'
 )
 
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver" || exit 1
+
+  sed -i '/data_files/d' setup.py
+}
+
 build() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
@@ -39,8 +49,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-  rm -vf "$pkgdir/usr/LICENSE"
+  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1  --skip-build
 
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
