@@ -2,12 +2,12 @@
 _pkgname=quickgui
 pkgname=$_pkgname-bin
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Flutter frontend for quickget and quickemu"
 arch=('x86_64')
 url="https://github.com/quickgui/quickgui"
 license=('unknown')
-depends=('quickemu')
+depends=('quickemu' 'zenity')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.tar.xz"::"https://github.com/quickgui/quickgui/releases/download/v$pkgver/quickgui-$pkgver.tar.xz")
