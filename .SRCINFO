@@ -24,6 +24,7 @@ pkgbase = nvidia-vulkan-utils-nvlax
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
 	options = !strip
+	options = !ccache
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-vulkan-utils.sysusers
 	source = NVIDIA-Linux-x86_64-470.62.12.run::https://developer.nvidia.com/vulkan-beta-4706212-linux
