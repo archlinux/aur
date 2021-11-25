@@ -36,15 +36,6 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "$srcdir/$_pkgname"
-    if [ -f "$srcdir"/*.patch ]; then
-        for i in "$srcdir"/*.patch; do
-            patch -Np1 -i "$i" || true
-        done
-    fi
-}
-
 build() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
