@@ -1,7 +1,7 @@
 pkgbase = ymuse
 	pkgdesc = Easy, functional, and snappy client for Music Player Daemon
-	pkgver = 0.17
-	pkgrel = 2
+	pkgver = 0.18
+	pkgrel = 1
 	url = https://yktoo.com/en/software/ymuse/
 	arch = x86_64
 	arch = aarch64
@@ -9,11 +9,7 @@ pkgbase = ymuse
 	makedepends = go
 	depends = gtk3
 	optdepends = mpd
-	source = ymuse-0.17.tar.gz::https://github.com/yktoo/ymuse/archive/v0.17.tar.gz
-	source = ymuse.desktop
-	source = gotk3.patch
-	sha512sums = 3beefe0582df71f06c1da9e27d9daf3c8abc259c7d153ec645f571e89eef4339d114317eafc7f0cbf302053355347c0865e50d02df684180704d4cfa8789b8e8
-	sha512sums = dbf124b2be06036faecb0a5af76b6b44bfdfcd7461c69807a6fcfb3008131072412387e888d9c6777ef9549aa2ae1fafb296d904a9b525dff4b09cc36400a6ff
-	sha512sums = 10aeae92246376ea4e90ba0180e4c677b32dfd831d54722bf8fa9a7ed4c6d54882f87befda3973482dcf9af081e6a5ec9d0d50167c171d14f2b4ab64326a75ca
+	source = ymuse-0.18.tar.gz::https://github.com/yktoo/ymuse/archive/v0.18.tar.gz
+	sha512sums = 909808c7e0ef7bd970ad3bc6bf4928f1b3fbe0df1a70633f781f87464af74a4d327ac8a2a3869eff34e6496fdb13d4759ef855cf61b12ac553e8fd5d733ec08a
 
 pkgname = ymuse

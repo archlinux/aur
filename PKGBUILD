@@ -1,8 +1,8 @@
 # Maintainer: Georg Graßnick <dev.grassnick at mailbox dot org>
 
 pkgname=ymuse
-pkgver=0.17
-pkgrel=2
+pkgver=0.18
+pkgrel=1
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon"
 arch=("x86_64" "aarch64")
 url="https://yktoo.com/en/software/ymuse/"
@@ -12,24 +12,10 @@ optdepends=("mpd")
 makedepends=("go")
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz"
-	"ymuse.desktop"
-	"gotk3.patch"
 )
 sha512sums=(
-	"3beefe0582df71f06c1da9e27d9daf3c8abc259c7d153ec645f571e89eef4339d114317eafc7f0cbf302053355347c0865e50d02df684180704d4cfa8789b8e8"
-	"dbf124b2be06036faecb0a5af76b6b44bfdfcd7461c69807a6fcfb3008131072412387e888d9c6777ef9549aa2ae1fafb296d904a9b525dff4b09cc36400a6ff"
-	"10aeae92246376ea4e90ba0180e4c677b32dfd831d54722bf8fa9a7ed4c6d54882f87befda3973482dcf9af081e6a5ec9d0d50167c171d14f2b4ab64326a75ca"
+	"909808c7e0ef7bd970ad3bc6bf4928f1b3fbe0df1a70633f781f87464af74a4d327ac8a2a3869eff34e6496fdb13d4759ef855cf61b12ac553e8fd5d733ec08a"
 )
-
-prepare() {
-	cd "${pkgname}-${pkgver}"
-
-	# Use newer version
-	# The included gotk3 version does does not support recent go releases
-	# See https://github.com/gotk3/gotk3/issues/726
-	patch -p1 < ../gotk3.patch
-}
-
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -55,5 +41,5 @@ package() {
 		install -Dm644  ${file} "${pkgdir}"/usr/share/locale/${file#resources/i18n/generated}
 	done
 
-	install -Dm644 "${srcdir}"/ymuse.desktop -t "${pkgdir}"/usr/share/applications/
+	install -Dm644 resources/ymuse.desktop -t "${pkgdir}"/usr/share/applications/
 }
