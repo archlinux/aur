@@ -2,13 +2,13 @@
 
 pkgname=alhp-mirrorlist
 pkgver=20211125
-pkgrel=1
+pkgrel=2
 pkgdesc="ALHP mirror list for use by pacman"
 arch=('any')
-url="https://git.harting.dev/anonfunc/alhp-mirrorlist"
+url="https://git.harting.dev/ALHP/alhp-mirrorlist"
 license=('GPL')
 backup=(etc/pacman.d/alhp-mirrorlist)
-source=("https://git.harting.dev/anonfunc/$pkgname/raw/branch/master/mirrorlist")
+source=("https://git.harting.dev/ALHP/$pkgname/raw/branch/master/mirrorlist")
 
 package() {
   mkdir -p "$pkgdir/etc/pacman.d"
