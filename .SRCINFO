@@ -5,7 +5,6 @@ pkgbase = transmission-remote-tui-git
 	url = https://github.com/Murtaza-Udaipurwala/transmission-remote-tui
 	arch = any
 	license = GPL3
-	makedepends = make
 	makedepends = git
 	makedepends = go
 	depends = transmission-cli
