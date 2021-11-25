@@ -11,7 +11,7 @@
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
 pkgver=0.23.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=('GPL2')
@@ -21,7 +21,7 @@ depends=('gcc-libs' 'glibc' 'libcdio-paranoia' 'libmad' 'sqlite'
          'alsa-lib' 'audiofile' 'curl' 'faad2' 'ffmpeg' 'flac' 'fmt'
          'icu' 'libid3tag' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate'
          'libupnp' 'liburing' 'libvorbis')
-makedepend=('boost' 'meson' 'python-sphinx')
+makedepends=('boost' 'meson' 'python-sphinx')
 provides=("mpd=${pkgver}")
 conflicts=('mpd')
 replaces=('mpd')
