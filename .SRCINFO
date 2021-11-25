@@ -1,14 +1,14 @@
 pkgbase = bartib
 	pkgdesc = A simple timetracker for the command line
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/nikolassv/bartib
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
-	source = bartib-1.0.0.tar.gz::https://github.com/nikolassv/bartib/archive/v1.0.0.tar.gz
-	sha512sums = 39dbac35dbf30152eecc789ecc6cc0f378e9db8ebe64df256928d8f668de66906bb61159b029fe57ab628beaa44c2e8d83ec70a7d8c6e81dd3e0ba0a44f5f15c
-	b2sums = b9309830cfa5d639f589ae75f4c152420ff9203f99e6ebd1704ca7ccd60e1f7c267670558fc5c8f2e3b204041c98ff941d049e16db1cc5a7a756369a6dba0675
+	source = bartib-1.0.1.tar.gz::https://github.com/nikolassv/bartib/archive/v1.0.1.tar.gz
+	sha512sums = ba66195bf6bc382cf366de95aadb3b6c49c5d27bf772cd2cdbe082740df181c6efdd12d04a05cde6afe5c3b732226ba806981d27d275924e1b2c2545fd67cd3b
+	b2sums = 74389818de8c16c91bdbc76070a32918170497520e1ad43eb20353cf04c65f2605b23bd101dd4a6c1f7f14d443332fedebc1e75f03fb0b9f3b795070b20ff3e8
 
 pkgname = bartib
