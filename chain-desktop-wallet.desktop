@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crypto.org Chain Desktop Wallet (Beta)
+Exec=chain-desktop-wallet %U
+Terminal=false
+Type=Application
+Icon=chain-desktop-wallet
+StartupWMClass=Crypto.org Chain Desktop Wallet (Beta)
+Comment=Crypto.com Chain Desktop Wallet App
+Categories=Utility;
