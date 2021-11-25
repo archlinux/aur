@@ -26,6 +26,7 @@ package() {
 
 	python -O -m compileall "$pkgdir"
 
+  [ -e "$pkgdir/LICENSE.txt" ] && rm -f "$pkgdir/LICENSE.txt"
   curl -o "$pkgdir/LICENSE.txt" https://raw.githubusercontent.com/libvips/pyvips/master/LICENSE.txt
 
 	install -Dm644 $(find $pkgdir -name LICENSE*) \
