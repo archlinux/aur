@@ -2,7 +2,7 @@
 _pkgname=libargparse
 pkgname=$_pkgname-git
 pkgver=r65.1315fd7
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ command-line parsing library"
 arch=(x86_64)
 url="https://github.com/kmurray/libargparse"
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
             '97fa62a5e93fe181bdde23d0507323c0f302acc892b285fcdc9464b3a0f76121'
             '6908089ba45176c06995aa1ecf99335e523d560622386cd59c076874676370f3'
             '11a673f5e9a167e1dfcc6a3c6a5b708bd4f655c5769c1d6ef2dc6770bbe74bc1'
-            'f8745e604e2514d1bf3848912ad340557b630a810ebd2fecbe2a30c1d8dfcb89')
+            'c30cc2e74b4bdd04da31e3c7416cbddaded53b9336bbde5620c0eff3d5a6f771')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
