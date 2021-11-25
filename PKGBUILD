@@ -1,7 +1,7 @@
 
 _pkgname=minq_stopwatch
 pkgname="${_pkgname}-git"
-pkgver=r16.68b01790288d166a7e108eb8812e78eea609f66f
+pkgver=r21.292500f5f7837440e4fcff617794cd151c24a460
 pkgrel=1
 epoch=
 pkgdesc="A terminal based timer that remembers where you left off"
