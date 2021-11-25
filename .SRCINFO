@@ -1,17 +1,18 @@
 pkgbase = bupstash
 	pkgdesc = A tool for encrypted backups
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/andrewchambers/bupstash
 	arch = x86_64
 	license = MIT
 	checkdepends = bash-bats
 	checkdepends = python
-	makedepends = cargo
+	makedepends = rust
 	makedepends = ruby-ronn-ng
 	depends = libsodium
 	depends = gcc-libs
-	source = bupstash-0.10.2.tar.gz::https://github.com/andrewchambers/bupstash/archive/v0.10.2.tar.gz
-	b2sums = 71ab5f55292490c8a4d268c292f68358ad408430c2ff3a7b2bb9850d6aca04e4473703b6bd0ff5e7a468268246e7e86c591d6f651f113970f6f2270a28241440
+	source = bupstash-0.10.3.tar.gz::https://github.com/andrewchambers/bupstash/archive/v0.10.3.tar.gz
+	sha512sums = 5968e063fd7c97bb85cdcdf6fa95146030f6149e6919722f26642187fa6fced52de68615e91a5202d2880357527c517f2711a5e04d00a1908b6081ccf886e47b
+	b2sums = 071887a598f0767fdf6b0224800286d75be3ad48b5df57575138c4ff24f05bb68089f7e65c531892589c307c4cb612cc716f6769105793e20b0c92228f3da006
 
 pkgname = bupstash
