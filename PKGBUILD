@@ -1,6 +1,8 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
+# WARNING: This version corrupted my signal-beta database. I recommend taking a backup of
+# "~/.config/Signal Beta" before upgrading.
 pkgname=signal-desktop-beta-bin
-pkgrel=2
+pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
 url="https://github.com/WhisperSystems/Signal-Desktop#readme"
@@ -10,9 +12,9 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 provides=('signal-desktop-beta')
 
-pkgver=5.25.0beta.1
-source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_5.25.0-beta.1_amd64.deb")
-sha256sums=('6d41dea5b4bfab2f8e938e06aa9a18562cc12cb3c941078fe9c936317d1e0985')
+pkgver=5.25.0beta.2
+source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_5.25.0-beta.2_amd64.deb")
+sha256sums=('71b88e7bca116e2c878ce4b66f0b1ac0d216653b86577654257602c0a9071bbc')
 
 package(){
 	# Extract package data
