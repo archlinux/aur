@@ -78,7 +78,7 @@ package() {
 #!/bin/bash
 export GERBIL_GSC=/usr/bin/gambitc
 export GERBIL_HOME=/opt/gerbil-scheme
-export PATH=/opt/gerbil-scheme/bin:$PATH
+export PATH=/opt/gerbil-scheme/bin:\$PATH
 EOF
     chmod +x ${pkgdir}/etc/profile.d/gerbil-scheme.sh
 }
