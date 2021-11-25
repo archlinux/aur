@@ -2,16 +2,16 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.3.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('i686' 'x86_64')
 url="http://specutils.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-gwcs' 'graphviz')
-checkdepends=('python-pytest-doctestplus')
+makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-gwcs' 'python-ndcube>=2.0' 'python-mpl-animators' 'graphviz')
+#checkdepends=('python-pytest-doctestplus')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f9c8f77effed79068e511843a913456d')
+md5sums=('af883f8fa36a2e55d4e24284cbde7dcd')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -22,14 +22,14 @@ build() {
     PYTHONPATH="../build/lib" make html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    PYTHONPATH="build/lib" pytest "build/lib" || warning "Tests failed"
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    PYTHONPATH="build/lib" pytest "build/lib" #|| warning "Tests failed"
+#}
 
 package_python-specutils() {
-    depends=('python>=3.7' 'python-scipy' 'python-gwcs>0.16.0' 'python-ndcube')
+    depends=('python>=3.7' 'python-scipy' 'python-gwcs>=0.17.0' 'python-ndcube')
     optdepends=('python-specutils-doc: Documentation for Specutils'
                 'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
