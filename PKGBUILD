@@ -30,7 +30,7 @@ replaces=(
   'nvidia-libgl'
 )
 install="${_pkgname}.install"
-options=('!strip')
+options=('!strip' '!ccache')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=(
   "nvidia-drm-outputclass.conf"

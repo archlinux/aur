@@ -23,6 +23,7 @@ pkgbase = nvidia-utils-beta-nvlax
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
 	options = !strip
+	options = !ccache
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-beta.sysusers
 	source = nvidia.rules
