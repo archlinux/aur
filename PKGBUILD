@@ -2,7 +2,7 @@
 pkgname=python-lhotse-git
 pkgver=1.0.0.dev0+git.a6c3936.clean
 pkgrel=1
-pkgdesc="Speech and audio data preparation toolkit."
+pkgdesc="Speech and audio data preparation toolkit"
 arch=('any')
 url='https://github.com/lhotse-speech/lhotse'
 license=('Apache 2.0')
