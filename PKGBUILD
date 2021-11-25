@@ -10,10 +10,13 @@ arch=('i686' 'x86_64')
 url='http://gdcm.sourceforge.net'
 license=('BSD')
 optdepends=('python: python bindings')
-makedepends=('cmake'
-             'openjpeg2'
-             'python'
-             'swig'
+makedepends=(
+  'cmake'
+  'python'
+  'swig'
+)
+depends=(
+  'openjpeg2'
 )
 source=("https://github.com/malaterre/GDCM/archive/v$pkgver.tar.gz")
 sha512sums=('1141389d9720b593a578b31069f93a3abe0abf559ac999c366cae28f1fd804e967c51548d4417e12d61dcc5d59d68b1c015857e31455b5a30e2063d3ee4102e9')
