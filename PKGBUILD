@@ -2,12 +2,12 @@
 pkgname=minetest-nodecore
 _pkgname=nodecore
 _pkgauthor=Warr1024
-pkgver=01532876
-_cdbrel=9378
+pkgver=01561373
+_cdbrel=9761
 pkgrel=1
 pkgdesc="Original, immersive puzzle/adventure game with NO popup GUIs, minimal HUDs."
 license=("MIT")
-sha256sums=('4b46464043686ab754894602f56565bb78b278b0682c98f7c0dc3d8ed5bee51b')
+sha256sums=('eeff0708fb219aa47539b0702e443e5e879ce565429b69470a0d678db5810e84')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
