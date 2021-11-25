@@ -1,0 +1,22 @@
+pkgbase = qoi-git
+	pkgdesc = The 'Quite OK Image' format for fast, lossless image compression
+	pkgver = r7.30f8a39
+	pkgrel = 1
+	url = https://phoboslab.org/log/2021/11/qoi-fast-lossless-image-compression
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc-libs
+	makedepends = stb
+	source = qoi::git+https://github.com/phoboslab/qoi.git#commit=30f8a39ec8ca609d33d401d0b6d94290f3bc05a6
+	sha256sums = SKIP
+
+pkgname = qoi-headers-git
+	provides = qoi-headers
+
+pkgname = qoiconv-git
+	provides = qoiconv
+
+pkgname = qoibench-git
+	depends = libpng
+	provides = qoibench
