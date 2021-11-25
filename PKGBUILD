@@ -3,50 +3,14 @@
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="AMDGPU Fan control service"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
-_source=(
-  "https://github.com/Eraden/amdgpud/releases/download/${pkgver}/build.tar.gz"
-)
+source=( "https://github.com/Eraden/amdgpud/releases/download/v${pkgver}/build.tar.gz")
 arch=('x86_64')
-_md5sums=(
-  'eb496cca24bba7647d37c6bc38e1aae2'
-)
-depends=(
-)
-keywords=(
-  'amdgpu'
-  'controller'
-  'fan'
-)
-
-prepare() {
-    cd $srcdir/
-    echo "Due to 'makepkg' and 'PKGBUILD' specs limitations I need to download sources and validate them by myself"
-    for source_url in ${_source[@]}; do
-        source_filename=${source_url##*/}
-        if [ ! -f "$source_filename" ]; then
-            echo "Downloading next source - $source_filename ..."
-            curl -O -L "$source_url";
-        else
-            echo "Found already downloaded source - $source_filename"
-        fi
-    done
-    echo "And now we must validated dowanloaded sources ..."
-    for (( i=0; i<${#_source[@]}; ++i )); do
-        source_url=${_source[i]}
-        source_filename=${source_url##*/}
-        source_expected_md5sum=${_md5sums[i]}
-        source_actual_md5sum=$(md5sum $source_filename | awk '{print $1}')
-        if [ "$source_actual_md5sum" == "$source_expected_md5sum" ]; then
-            echo "Validated next source - $source_filename"
-        else
-            echo "Found corrupted source - $source_filename"; return 1
-        fi
-    done    
-}
+md5sums=( '73c6d65a29412c9b83a21f20265ff517')
+keywords=( 'amdgpu' 'controller' 'fan')
 
 build() {
     cd $srcdir/
