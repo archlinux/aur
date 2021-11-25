@@ -1,6 +1,6 @@
 # Maintainer: Linus Probert <linus.probert@gmail.com>
 pkgname=blightmud
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 epoch=
 pkgdesc="A terminal mud client written in rust"
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Blightmud/Blightmud/archive/v$pkgver.tar.gz")
-md5sums=('303726cecd68957b1eccc1976674740a')
+md5sums=('83ac7f57d89c75bd928bed0aa914f0ca')
 
 prepare() {
 	mv Blightmud-$pkgver $pkgname-$pkgver
