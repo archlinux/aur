@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.1.5
-pkgrel=3
+pkgver=1.1.6
+pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('any')
 url="https://github.com/linuxmint/webapp-manager"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python-beautifulsoup4' 'python-configobj' 'python-gobject' 'python-pillow'
          'python-setproctitle' 'python-tldextract' 'dconf' 'xapp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('05c88d7007d5de77d0dda37eb7772a80f72b0421f8140c73ffa457c841c5132b')
+sha256sums=('794733a9a001f25aa3f0495d63fddb241e2ed3e4cec237270ad82e9de463e273')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  make buildmo
+  make
 }
 
 package() {
