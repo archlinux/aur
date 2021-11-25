@@ -1,0 +1,13 @@
+pkgbase = terrafirma-git
+	pkgdesc = Mapping for Terraria
+	pkgver = r263.0cc8162
+	pkgrel = 1
+	url = https://github.com/mrkite/TerraFirma
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	conflicts = terrafirma
+	source = terrafirma-git::git+https://github.com/mrkite/TerraFirma.git
+	md5sums = SKIP
+
+pkgname = terrafirma-git
