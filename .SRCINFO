@@ -1,0 +1,16 @@
+pkgbase = mspdebug-git
+	pkgdesc = Free debugger for MSP430 MCUs
+	pkgver = v0.25.r76.ga1a06e7
+	pkgrel = 1
+	url = https://github.com/dlbeer/mspdebug
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libusb-compat
+	depends = readline
+	provides = mspdebug
+	conflicts = mspdebug
+	source = git+https://github.com/dlbeer/mspdebug.git
+	sha256sums = SKIP
+
+pkgname = mspdebug-git
