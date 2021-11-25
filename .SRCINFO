@@ -1,7 +1,7 @@
 pkgbase = kks
 	pkgdesc = Handy Kakoune companion
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 0.3.7
+	pkgrel = 1
 	url = https://github.com/kkga/kks
 	arch = x86_64
 	arch = arm
@@ -13,7 +13,7 @@ pkgbase = kks
 	optdepends = ripgrep: fzf integration
 	provides = kks
 	conflicts = kks
-	source = https://github.com/kkga/kks/archive/refs/tags/v0.3.6.tar.gz
+	source = https://github.com/kkga/kks/archive/refs/tags/v0.3.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = kks
