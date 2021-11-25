@@ -1,7 +1,7 @@
 pkgbase = mpd-light-pulse-ffmpeg
 	pkgdesc = Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.
 	pkgver = 0.23.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.musicpd.org/
 	arch = x86_64
 	license = GPL2
@@ -32,6 +32,7 @@ pkgbase = mpd-light-pulse-ffmpeg
 	depends = libmms
 	depends = libnfs
 	depends = libsoxr
+	depends = zlib
 	provides = mpd=0.23.4
 	conflicts = mpd
 	replaces = mpd
@@ -57,6 +58,7 @@ pkgname = mpd-light-pulse-ffmpeg
 	depends = libmms
 	depends = libnfs
 	depends = libsoxr
+	depends = zlib
 	depends = libFLAC.so
 	depends = libasound.so
 	depends = libaudiofile.so

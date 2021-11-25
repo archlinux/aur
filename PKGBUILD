@@ -11,7 +11,7 @@
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
 pkgver=0.23.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=('GPL2')
@@ -100,5 +100,13 @@ package() {
   install -vDm 644 "../${_pkgname}.conf" -t "${pkgdir}/etc/"
   install -vDm 644 "../${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
   install -vDm 644 "../${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+
+	# Now service file installs only when libsystemd package was found
+	if [ -e "${pkgdir}"/usr/lib/systemd/system/mpd.service ]; then
+		sed \
+			-e '/\[Service\]/a User=mpd' \
+			-e '/WantedBy=/c WantedBy=default.target' \
+			-i "${pkgdir}"/usr/lib/systemd/system/mpd.service
+	fi
 }
 # vim: ts=2 sw=2 et:
