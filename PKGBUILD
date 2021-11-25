@@ -1,4 +1,4 @@
-# Maintainer: Ben Golberg <ben@benaaron.dev>
+# Maintainer: Ben Goldberg <ben@benaaron.dev>
 
 pkgname=gemcert-git
 pkgver=r15.fc14deb
