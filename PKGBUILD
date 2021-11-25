@@ -7,7 +7,7 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.35.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 license=('MIT')
@@ -15,21 +15,20 @@ depends=('ledger-udev')
 makedepends=('git' 'yarn' 'python' 'nodejs>=12')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live-git')
-source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
+_pkgfolder=${_pkgbin}-${pkgver}
+source=("${_pkgfolder}.tar.gz::https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live-desktop.desktop")
 sha512sums=('a0906c82d98290768a4675dc215fc8a1f5429f518eea11005cb73d9f03b18af356be5a05a97b469fcc448d130beaf38dcc5a0369b48f39b3cc87e6cf610ac1ec'
             '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda')
 
-extracted_folder=ledger-live-desktop-$pkgver
-
 prepare() {
-  cd $extracted_folder
+  cd $_pkgfolder
   export JOBS=max
   yarn --ignore-scripts
 }
 
 build() {
-  cd $extracted_folder
+  cd $_pkgfolder
   export GIT_REVISION=$pkgver
   export JOBS=max
   yarn dist
@@ -38,7 +37,7 @@ build() {
 package() {
   install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  cd $extracted_folder
+  cd $_pkgfolder
 
   install -dm755 "${pkgdir}/opt"
   cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
