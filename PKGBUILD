@@ -8,17 +8,21 @@
 # Contributor: Bart Verhagen <barrie.verhagen at gmail dot com>
 
 pkgname=catch2-git
-pkgver=2.7.2.r25.gf1e14a11
+pkgver=3.0.0.preview3.r347.gdcf9479c
 pkgrel=1
 pkgdesc="Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (developmental version)"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/catchorg/catch2"
 license=('Boost')
 makedepends=('cmake' 'python' 'git') # python seems to be necessary for building tests (FS#60273)
-provides=(catch2)
+provides=("catch2=$pkgver")
 conflicts=(catch2)
-source=("git+https://github.com/catchorg/Catch2")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/catchorg/Catch2"
+  "0001-Remove-misguided-attempt-at-reproducibility-that-bre.patch"
+)
+sha256sums=('SKIP'
+            '1c319512ac86acd50801cffc7be98939ef62fc571fe530ff29bedbbd6fc902c6')
 
 pkgver() {
   cd Catch2
@@ -26,28 +30,31 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
-build() {
+prepare() {
   cd Catch2
 
-  mkdir -p build
-  cd build
-  cmake .. \
+  patch -p1 < "$srcdir/0001-Remove-misguided-attempt-at-reproducibility-that-bre.patch"
+}
+
+build() {
+  cmake -B build -S Catch2 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCATCH_USE_VALGRIND=OFF \
+    -DCATCH_DEVELOPMENT_BUILD=ON \
     -DCATCH_BUILD_EXAMPLES=OFF \
     -DCATCH_ENABLE_COVERAGE=OFF \
     -DCATCH_ENABLE_WERROR=OFF \
-    -DBUILD_TESTING=ON
-  make
+    -DCATCH_BUILD_TESTING=ON
+  make -C build
 }
 
 check() {
-  cd Catch2/build
-  make test
+  make -C build test
 }
 
 package() {
-  cd Catch2/build
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
 }
+
+# vim: set et ts=2:

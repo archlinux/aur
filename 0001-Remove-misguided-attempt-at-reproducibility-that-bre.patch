@@ -1,0 +1,35 @@
+From d889d3de36eaa9f2404f93d31a7e95c6cec7e94b Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Thu, 25 Nov 2021 15:59:16 +0100
+Subject: [PATCH] Remove misguided attempt at reproducibility that breaks debug
+ package
+
+makepkg uses -fdebug-prefix-map=$srcdir=/usr/src/debug to make debug
+packages work, -ffile-prefix-map overrides this.
+---
+ src/CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f57725a9..7bc0e654 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -246,7 +246,6 @@ add_library(Catch2 STATIC
+   ${BENCHMARK_HEADERS}
+   ${BENCHMARK_SOURCES}
+ )
+-add_build_reproducibility_settings(Catch2)
+ add_library(Catch2::Catch2 ALIAS Catch2)
+ 
+ if (ANDROID)
+@@ -290,7 +289,6 @@ target_include_directories(Catch2
+ add_library(Catch2WithMain STATIC
+     ${SOURCES_DIR}/internal/catch_main.cpp
+ )
+-add_build_reproducibility_settings(Catch2WithMain)
+ add_library(Catch2::Catch2WithMain ALIAS Catch2WithMain)
+ target_link_libraries(Catch2WithMain PUBLIC Catch2)
+ set_target_properties(Catch2WithMain
+-- 
+2.34.1
+
