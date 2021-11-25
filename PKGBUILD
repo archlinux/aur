@@ -13,6 +13,7 @@ arch=('any')
 url="https://github.com/wting/autojump"
 license=('GPL3')
 depends=('python>=3.3')
+conflicts=('shonenjump')
 source=($pkgname-$pkgver.tar.gz::https://github.com/wting/$pkgname/archive/release-v$pkgver.tar.gz)
 sha256sums=('00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
 install=readme.install
