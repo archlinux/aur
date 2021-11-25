@@ -12,11 +12,11 @@ pkgbase = libretro-dosbox-core-git
 	makedepends = ninja
 	makedepends = meson
 	depends = libretro-core-info
+	depends = gcc-libs
 	depends = alsa-lib
 	depends = libsndfile
 	depends = sdl
 	depends = sdl_net
-	options = !buildflags
 	source = git+https://github.com/realnc/dosbox-core.git
 	sha256sums = SKIP
 
