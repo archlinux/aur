@@ -1,6 +1,6 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 pkgname=an-anime-game-launcher
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 arch=("x86_64")
@@ -9,8 +9,7 @@ depends=(
 "electron"
 "tar"
 "unzip"
-"wine"
-"winetricks"
+"xdelta3"
 "git"
 )
 makedepends=(
@@ -21,6 +20,8 @@ optdepends=(
 "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
 "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
 "mangohud: Required if you want to check FPS"
+"gamemode-git: Optimization"
+"switcheroo-control: Hybrid GPU Support"
 )
 provides=("${pkgname}")
 source=(
