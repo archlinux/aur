@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-git
 	pkgdesc = A featureful, general-purpose sound server (development version)
-	pkgver = 14.0.r271.g1a194c991
+	pkgver = 15.0.r136.g484b69863
 	pkgrel = 1
 	url = http://pulseaudio.org/
 	install = pulseaudio.install
@@ -31,6 +31,9 @@ pkgbase = pulseaudio-git
 	makedepends = webrtc-audio-processing
 	makedepends = check
 	makedepends = meson
+	makedepends = valgrind
+	makedepends = libwrap
+	makedepends = doxygen
 	depends = libltdl
 	depends = libsoxr
 	depends = libasyncns

@@ -11,7 +11,7 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=14.0.r271.g1a194c991
+pkgver=15.0.r136.g484b69863
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
@@ -22,7 +22,8 @@ depends=(lib{ltdl,soxr,asyncns,xtst,sndfile} "rtkit" "speexdsp" "tdb" "orc"
          python-{pyqt5,dbus,sip} "fftw" dconf gst-plugins-base-libs)
 makedepends=("git" lib{asyncns,xtst,tool,soxr,sndfile} "attr" "rtkit" "speexdsp"
              "tdb" jack2 bluez{,-libs} "intltool"  "sbc" "lirc" "fftw"
-             "orc" "gtk3" "webrtc-audio-processing" "check" "meson")
+             "orc" "gtk3" "webrtc-audio-processing" "check" "meson" "valgrind"
+             "libwrap" "doxygen")
 optdepends=("alsa-plugins: ALSA support"
             "pulseaudio-alsa: ALSA configuration (recommended)"
             "lirc-utils: infra-red support")
