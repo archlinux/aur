@@ -1,0 +1,11 @@
+pkgbase = hvd_comic_serif_pro_font
+	pkgdesc = The cool alternative to Comic Sans
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.hvdfonts.com/fonts/hvd-comic-serif
+	arch = any
+	license = custom
+	source = https://www.hvdfonts.com/public/downloads/HVD_Comic_Serif_Pro.zip
+	sha256sums = c883585be685573862633b8b6f21ac0723c519a51cc02676627fbc0a1c1ae602
+
+pkgname = hvd_comic_serif_pro_font
