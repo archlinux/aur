@@ -4,13 +4,13 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_srctag=6.3-7
+_srctag=6.3-8
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.3.0
+_monover=6.4.1
 _asyncver=1.9.2
-pkgrel=3
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -125,9 +125,10 @@ source=(
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
+    dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
@@ -198,6 +199,9 @@ prepare() {
         vkd3d-proton
         OpenXR-SDK
         dxvk-nvapi
+        SPIRV-Headers
+        Vulkan-Headers
+        vkd3d-zfigura::vkd3d
     )
 
     for submodule in "${_submodules[@]}"; do
@@ -234,6 +238,10 @@ prepare() {
     popd
 
     pushd wine
+        # From Arch Wine
+        sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+        # Fix openldap 2.5+ detection
+        sed 's/-lldap_r/-lldap/' -i configure
         # Add FSR for fshack
         patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
@@ -245,7 +253,7 @@ prepare() {
         # Enable at your own risk. If you don't know what it is,
         # and its implications, leave it as is. You have been warned.
         # I am not liable if anything happens to you by using it.
-        patch -p1 -i "$srcdir"/dxvk-async.patch
+        patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
     popd
 
     patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
@@ -376,13 +384,14 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            'eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2'
+            'a70c865e590058fa6fc3aa47425646405bdda27f78b9aa6d2030d2d2a8efadbb'
             '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
             'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '20e2a6883d4848ff3d4c59a543e0f20f0b6c3d16d0294272bec2536252f855c8'
+            '4abadfbcc01beb7781edadeebc6b5fadea97b0808eebf4648fd812748c730e9c'
             '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '958f8e69bc789cc8fbe58cb6c9fc62f065692c3c165f20b0c21133ce94bad736')

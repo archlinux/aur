@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index d978a99..d010e36 100644
+index d935b9f..2171976 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -59,11 +59,9 @@ include $(SRC)/make/rules-cargo.mk
@@ -33,7 +33,7 @@ index d978a99..d010e36 100644
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
  COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
-@@ -354,8 +353,8 @@ ALL_TARGETS += dist
+@@ -353,8 +352,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
  dist_prefix: wine gst_good
@@ -44,7 +44,7 @@ index d978a99..d010e36 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -411,6 +410,9 @@ endif # ifeq ($(CONTAINER),)
+@@ -410,6 +409,9 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
@@ -54,7 +54,7 @@ index d978a99..d010e36 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -423,6 +425,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -422,6 +424,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -62,7 +62,7 @@ index d978a99..d010e36 100644
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -439,6 +442,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -438,6 +441,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -72,7 +72,7 @@ index d978a99..d010e36 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -477,6 +483,7 @@ GST_BASE_MESON_ARGS := \
+@@ -476,6 +482,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
@@ -80,7 +80,7 @@ index d978a99..d010e36 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -538,6 +545,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -537,6 +544,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
@@ -88,7 +88,7 @@ index d978a99..d010e36 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -658,10 +666,20 @@ WINE_SOURCE_ARGS = \
+@@ -680,10 +688,20 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -109,7 +109,15 @@ index d978a99..d010e36 100644
  WINE_CONFIGURE_ARGS64 = --enable-win64
  
  WINE_DEPENDS = gst_orc gstreamer gst_base faudio jxrlib
-@@ -729,6 +747,9 @@ DXVK_MESON_ARGS64 = \
+@@ -693,6 +711,7 @@ $(eval $(call rules-autoconf,wine,32))
+ $(eval $(call rules-autoconf,wine,64))
+ 
+ $(OBJ)/.wine-post-source:
++	cd $(WINE_SRC) && dlls/winevulkan/make_vulkan
+ 	cd $(WINE_SRC) && tools/make_requests
+ 	touch $@
+ 
+@@ -747,6 +766,9 @@ DXVK_MESON_ARGS64 = \
      --bindir=$(DXVK_DST64)/lib64/wine/dxvk \
      --cross-file=$(DXVK_OBJ64)/build-win64.txt
  
@@ -119,7 +127,7 @@ index d978a99..d010e36 100644
  $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
  $(eval $(call rules-meson,dxvk,32))
  $(eval $(call rules-meson,dxvk,64))
-@@ -755,6 +776,9 @@ DXVK_NVAPI_MESON_ARGS64 = \
+@@ -773,6 +795,9 @@ DXVK_NVAPI_MESON_ARGS64 = \
      --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi \
      --cross-file=$(DXVK_NVAPI_OBJ64)/build-win64.txt
  
@@ -129,7 +137,27 @@ index d978a99..d010e36 100644
  $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
  $(eval $(call rules-meson,dxvk-nvapi,32))
  $(eval $(call rules-meson,dxvk-nvapi,64))
-@@ -778,7 +802,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -810,17 +835,18 @@ VKD3D_CONFIGURE_ARGS = \
+   --disable-tests \
+   --disable-demos \
+   --without-ncurses \
+-  WIDL=$(WINE_OBJ64)/tools/widl/widl
+ 
+ VKD3D_CONFIGURE_ARGS32 = \
+   --host=i686-w64-mingw32 \
+   CC="$(CCACHE_BIN) i686-w64-mingw32-gcc" \
+   LD="i686-w64-mingw32-ld" \
++  WIDL="i686-w64-mingw32-widl" \
+ 
+ VKD3D_CONFIGURE_ARGS64 = \
+   --host=x86_64-w64-mingw32 \
+   CC="$(CCACHE_BIN) x86_64-w64-mingw32-gcc" \
+   LD="x86_64-w64-mingw32-ld" \
++  WIDL="x86_64-w64-mingw32-widl" \
+ 
+ VKD3D_LDFLAGS = -static-libgcc $(CROSSLDFLAGS)
+ VKD3D_LDFLAGS32 = -L$(WINE_OBJ32)/dlls/vulkan-1/
+@@ -850,7 +876,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -138,7 +166,7 @@ index d978a99..d010e36 100644
  VKD3D_PROTON_MESON_ARGS32 = \
      --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton \
      --cross-file=$(VKD3D_PROTON_OBJ32)/build-win32.txt
-@@ -786,6 +810,9 @@ VKD3D_PROTON_MESON_ARGS64 = \
+@@ -858,6 +884,9 @@ VKD3D_PROTON_MESON_ARGS64 = \
      --bindir=$(VKD3D_PROTON_DST64)/lib64/wine/vkd3d-proton \
      --cross-file=$(VKD3D_PROTON_OBJ64)/build-win64.txt
  
@@ -149,10 +177,10 @@ index d978a99..d010e36 100644
  $(eval $(call rules-meson,vkd3d-proton,32))
  $(eval $(call rules-meson,vkd3d-proton,64))
 diff --git a/make/rules-autoconf.mk b/make/rules-autoconf.mk
-index 80eee67..12a360a 100644
+index 6567f05..00b7455 100644
 --- a/make/rules-autoconf.mk
 +++ b/make/rules-autoconf.mk
-@@ -16,9 +16,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
+@@ -21,9 +21,9 @@ $$(OBJ)/.$(1)-configure$(3): $$(OBJ)/.$(1)-pre-configure
  	    --prefix="$$($(2)_DST$(3))" \
  	    --libdir="$$($(2)_DST$(3))/lib$(subst 32,,$(3))" \
  	    $$($(2)_ENV$(3)) \
@@ -165,7 +193,7 @@ index 80eee67..12a360a 100644
  	    $$($(2)_CONFIGURE_ARGS) \
  	    $$($(2)_CONFIGURE_ARGS$(3))
  
-@@ -27,9 +27,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
+@@ -32,9 +32,9 @@ $$(OBJ)/.$(1)-configure$(3): $$(OBJ)/.$(1)-pre-configure
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
@@ -178,14 +206,14 @@ index 80eee67..12a360a 100644
  endif
  endef
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
-index 5369fb4..91d8cf0 100644
+index 36ec054..91d8cf0 100644
 --- a/make/rules-cargo.mk
 +++ b/make/rules-cargo.mk
 @@ -14,7 +14,9 @@ $(OBJ)/.$(1)-configure$(3):
  $(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
--	cargo build --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
+-	cargo build $$(filter -j%,$$(MAKEFLAGS)) --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
 +	cargo update --offline --verbose
 +	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
 +	cargo build -j$$(SUBJOBS) --locked --offline --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
@@ -209,12 +237,16 @@ index 4c61951..3f3a62b 100644
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index 916df8b..2a61c5e 100644
+index 083655b..37e58e3 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
-@@ -109,17 +109,18 @@ CONTAINERGOALS := $(CONTAINERGOALS) $(filter $(1),$(MAKECMDGOALS))
+@@ -108,18 +108,22 @@ CONTAINERGOALS := $(CONTAINERGOALS) $(filter $(1),$(MAKECMDGOALS))
+ 
  
  $(2)_ENV$(3) = \
++    WINEDEBUG="-all" \
++    WINEPREFIX="$$(OBJ)/pfx-wine$(3)" \
++    WINEDLLOVERRIDES="winemenubuilder=d;mscoree=d;mshtml=d" \
      CARGO_HOME=$$(OBJ)/.cargo \
 -    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="$$(ARCH$(3))-linux-gnu-gcc" \
 +    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="$$(ARCH$(3))-pc-linux-gnu-gcc" \
