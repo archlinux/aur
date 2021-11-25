@@ -7,7 +7,7 @@
 
 pkgname=autojump
 pkgver=22.5.3
-pkgrel=8
+pkgrel=9
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=('any')
 url="https://github.com/wting/autojump"
@@ -44,7 +44,7 @@ package() {
   python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
 
   # FS#49601
-  install -d "${pkgdir}"/usr/share/fish/completions
+  install -d "${pkgdir}"/usr/share/fish/functions
   mv "${pkgdir}"/etc/profile.d/$pkgname.fish "${pkgdir}"/usr/share/fish/functions
 
   # https://github.com/joelthelion/autojump/pull/339
