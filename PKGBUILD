@@ -1,6 +1,6 @@
 # Maintainer: Daniel Escoz <darkhogg+aur.nosqlbooster-mongodb@gmail.com>
 pkgname=nosqlbooster-mongodb
-pkgver=7.0.1
+pkgver=7.0.5
 _majorver="$(echo $pkgver | sed -E 's/\..+$//')"
 pkgrel=1
 pkgdesc="Shell-centric GUI tool for MongoDB"
@@ -13,11 +13,11 @@ optdepends=()
 source=(nsqlb4m-${pkgver}.AppImage::https://nosqlbooster.com/s3/download/releasesv${_majorver}/nosqlbooster4mongo-${pkgver}.AppImage
         LICENSE)
 noextract=(nsqlb4m-${pkgver}.AppImage)
-md5sums=('e5d6b0441d82793f8f86da85c7e70e3b'
+md5sums=('ac8aa3a2c56bd09d8feb6d5d851d8b98'
          'fab008e596133037239e4a206bba3ccf')
-sha1sums=('4504773461b53f19958cb51a565733a2731b568c'
+sha1sums=('9a8b2bd41b7edde21d957461d7aa708accba9dee'
           'de718440354eb3c4844eda1b90bf092dcec4cf87')
-sha256sums=('f018c0552ba2b2f9d6cc527c1d78eaf765e1308aac05387f9a66bf093e3521fc'
+sha256sums=('f705171b758bbb6ba4c992ea61192a06e9a52c1738c952dded82e2df3dddfcfc'
             '1640d17baeee24279f7d998719e37a331c8e12627c755b4b250f1c95b16f032f')
 
 build() {
