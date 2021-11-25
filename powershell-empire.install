@@ -2,8 +2,9 @@ post_install() {
     #installing python depends into venv
     cd /usr/share/powershell-empire
     virtualenv -p python3 env
-    pip3 install setuptools==57
     source env/bin/activate
+    # setuptools 57 needed because >= 58 breaks requirements
+    pip3 install setuptools==57
     pip3 install -r "/etc/powershell-empire/requirements.txt"
     deactivate
 
