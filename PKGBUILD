@@ -20,7 +20,7 @@ optdepends=(
 "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
 "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
 "mangohud: Required if you want to check FPS"
-"gamemode-git: Optimization"
+"gamemode: Game Optimization"
 "switcheroo-control: Hybrid GPU Support"
 )
 provides=("${pkgname}")
