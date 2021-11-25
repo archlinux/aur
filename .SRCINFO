@@ -1,12 +1,11 @@
 pkgbase = ttf-aquiline-two
 	pkgdesc = Calligraphic display font by Manfred Klein
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fontsquirrel.com/fonts/aquiline-two
 	arch = any
 	license = custom
 	source = ttf-aquiline-two-1.0.zip::https://www.fontsquirrel.com/fonts/download/Aquiline-two
-	sha256sums = aa3b96b82f3a89453c926cff91d8cd695c9faec269f73c1086a3104609ab2302
+	sha256sums = SKIP
 
 pkgname = ttf-aquiline-two
-
