@@ -3,7 +3,7 @@
 pipname=pyvips
 pkgname=python-$pipname
 pkgver=2.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="binding for the libvips image processing library, API mode"
 arch=(any)
 url="https://github.com/libvips/pyvips"
