@@ -2,7 +2,7 @@
 
 pkgname=ipinfo-cli
 _pkgname=${pkgname%-cli}
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ipinfo/cli/archive/$_pkgname-$pkgver.tar.gz")
-sha256sums=('1230052f9fa953190c0166c54fa223c778ace69863e216c5c6b69d6aa0495009')
+sha256sums=('58f856b63fdf1c03c83514e7479c8b5fb301c3706435f541aaf031ed9be47a53')
 
 prepare(){
   cd "cli-$_pkgname-$pkgver"
