@@ -1,9 +1,9 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
-# Signature: Christopher Jeffrey (https://keybase.io/chjj)
+# Signature: Matthew Zipkin (https://keybase.io/pinheadmz)
 # Upstream: https://github.com/handshake-org/hs-client
 pkgname=hs-client
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=('MIT')
 pkgdesc="Handshake daemon node and wallet client"
@@ -28,7 +28,7 @@ sha256sums=(
 	'6cdb40a11dd25b908ea8fd7f806752bd50bffb4ef62aa621f604453910336d38'
 	'SKIP'
 )
-validpgpkeys=('B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD')
+validpgpkeys=('E61773CD6E01040E2F1BD78CE7E2984B6289C93A')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
