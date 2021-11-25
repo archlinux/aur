@@ -2,17 +2,18 @@
 # Contributor: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=15.0.4178.1
-_prodver=${pkgver}-3
+pkgver=15.0.4188.2
+_remRevision=3
+_prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15"
 license=('unknown')
-depends=(python2-configparser numactl sssd 'openssl-1.0>=1.0.2.l')
+depends=('python2-configparser' 'numactl' 'sssd' 'openssl-1.0>=1.0.2.l' 'libldap<=2.4.59' 'lib32-libldap<=2.4.59')
 source=("https://packages.microsoft.com/rhel/7/mssql-server-2019/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('7b3f20cd98cdf18369413fa06856da71b5ae71f5c82198fd2ab08cb765c9a083')
+sha256sums=('bf51dc2d4d05c72cc9ca02050e7409fbfaca80ecdfeb529b631fbc44e33b091e')
 
 install=$pkgname.install
 
