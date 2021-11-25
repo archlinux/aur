@@ -14,31 +14,31 @@ source=("gemcert::git+https://tildegit.org/solderpunk/gemcert.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/gemcert"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/gemcert"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/gemcert"
-	mkdir -p build/
+    cd "$srcdir/gemcert"
+    mkdir -p build/
 }
 
 build() {
-  cd "$srcdir/gemcert"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build/gemcert main.go
+    cd "$srcdir/gemcert"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o build/gemcert main.go
 }
 
 check() {
-  cd "$srcdir/gemcert"
-  go test ./...
+    cd "$srcdir/gemcert"
+    go test ./...
 }
 
 package() {
-  cd "$srcdir/gemcert"
-  install -Dm755 build/gemcert "$pkgdir"/usr/bin/gemcert
+    cd "$srcdir/gemcert"
+    install -Dm755 build/gemcert "$pkgdir"/usr/bin/gemcert
 }
