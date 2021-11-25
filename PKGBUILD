@@ -9,8 +9,10 @@ pkgdesc='Crypto.org Chain desktop wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
+provides=('cro-chain-desktop')
+conflicts=('cro-chain-desktop')
 _pkgsrc="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
 source=(
   "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
