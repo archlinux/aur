@@ -1,0 +1,11 @@
+pkgbase = ttf-segoe-ui-variable
+	pkgdesc = Segoe UI Variable is the new system font for Windows. It is a refreshed take on the classic Segoe and uses variable font technology to dynamically provide great legibility at very small sizes, and improved outlines at display sizes.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://docs.microsoft.com/windows/apps/design/downloads/#fonts
+	arch = any
+	license = custom
+	source = https://aka.ms/SegoeUIVariable
+	sha256sums = 5087e1932abdbd67730aac465fcf2b9ebdbfd89102942e476197ffc74a14ed57
+
+pkgname = ttf-segoe-ui-variable
