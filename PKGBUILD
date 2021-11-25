@@ -76,6 +76,10 @@ prepare(){
   #cd pywrap
   #curl https://patch-diff.githubusercontent.com/raw/CadQuery/pywrap/pull/34.diff | patch -p1 || true
   #git checkout f8869e5a47fd3e3e1d31e7ab89b46c158f7487bf
+
+  # https://github.com/CadQuery/pywrap/issues/41
+  cd pywrap
+  curl -q https://patch-diff.githubusercontent.com/raw/CadQuery/pywrap/pull/43.patch | patch -p1
 }
 
 build() {
@@ -95,10 +99,8 @@ build() {
   rm -rf ${_structure_needed}
   find -maxdepth 1 -name '*.dat' -exec ln -sf ../{} pywrap/{} \;
 
-  export CONDA_PREFIX="/usr"
-  
   msg2 "Generating bindings..."
-  PYTHONPATH=pywrap python -m bindgen \
+  CONDA_PREFIX="/usr" PYTHONPATH=pywrap python -m bindgen \
     --clean \
     --libclang /usr/lib/libclang.so \
     --include "$(clang -print-resource-dir)"/include \
@@ -106,12 +108,16 @@ build() {
     all ocp.toml
   msg2 "Bindings generated."
 
-  msg2 "Building OCP..."
-  cmake -B build_dir -S OCP -W no-dev -G Ninja \
+  msg2 "Setting up OCP build..."
+  CONDA_PREFIX="/usr" cmake -B build_dir -S OCP -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_FIND_ROOT_PATH="${_opencascade_install_prefix}" \
     -D OPENCASCADE_INCLUDE_DIR="${_opencascade_install_prefix}"/include/opencascade/
-  cmake --build build_dir -- -j1  # -j1 prevents memory exhaustion
+
+  msg2 "Building OCP..."
+  _n_parallel_build_jobs=1  # needed to prevent memory exhaustion on my many core machine, 10 seems to consume about 14.5 GiB
+  cmake --build build_dir -j${_n_parallel_build_jobs}
+
   msg2 "OCP built."
 }
 
