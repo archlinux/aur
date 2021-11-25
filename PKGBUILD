@@ -10,7 +10,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.4.1
 _asyncver=1.9.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -242,8 +242,8 @@ prepare() {
         sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
-        # Add FSR for fshack
-        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        # Add FSR for fshack (broken)
+        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
