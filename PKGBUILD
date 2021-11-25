@@ -60,8 +60,6 @@ pkgver() {
 
 prepare() {
   git -C "${srcdir}/${_name}" apply -v "${srcdir}"/*.patch
-  #fix gcc:11 missing header
-  grep -lRE "is(nan|inf)" "${srcdir}/${_name}"/{include,src}|grep -E '\.(c|cpp|h|hpp)$'|xargs sed -E 's/is(nan|inf)/std::&/g' -i
   #fix build against fmt 8.0
   sed '/format_system_error/s/msg/msg.c_str()/' -i "${srcdir}/${_name}"/deps/spdlog-1.8.0/include/spdlog/common-inl.h
 }
