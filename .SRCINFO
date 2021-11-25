@@ -1,11 +1,12 @@
 pkgbase = python-nestedtext
 	pkgdesc = Human readable and writable data interchange format
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KenKundert/nestedtext
 	arch = any
 	license = MIT
 	makedepends = python-inform
+	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python>=3.6
 	source = nestedtext-3.1.tar.gz::https://github.com/KenKundert/nestedtext/archive/refs/tags/v3.1.tar.gz

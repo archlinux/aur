@@ -4,7 +4,7 @@
 pkgname='python-nestedtext'
 _pkgname=${pkgname##python-}
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
 license=('MIT')
@@ -15,6 +15,7 @@ source=(
 depends=('python>=3.6')
 makedepends=(
   'python-inform'
+  'python-setuptools'
   'python-sphinx'
 )
 md5sums=(
@@ -42,7 +43,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
 
   install -Dm0644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
