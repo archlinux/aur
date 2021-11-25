@@ -1,9 +1,9 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
-# Signature: Christopher Jeffrey (https://keybase.io/chjj)
+# Signature: Matthew Zipkin (https://keybase.io/pinheadmz)
 # Upstream: https://github.com/handshake-org/hsd
 pkgname=hsd
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=('MIT')
 pkgdesc="Handshake daemon node"
@@ -31,7 +31,7 @@ sha256sums=(
 	'ff69a6d0fefb096a5cabafe08dc2e8414da46109886b06d12b2a2447f725fa87'
 	'SKIP'
 )
-validpgpkeys=('B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD')
+validpgpkeys=('E61773CD6E01040E2F1BD78CE7E2984B6289C93A')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
