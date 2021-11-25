@@ -1,0 +1,14 @@
+pkgbase = lenovo-100-m1520-m1688-series
+	pkgdesc = Lenovo printer driver for 100, m1520, and m1688 series.
+	pkgver = 1.0.43
+	pkgrel = 1
+	url = https://www.lenovoimage.com/
+	arch = x86_64
+	license = custom:Lenovo
+	makedepends = tar
+	depends = cups
+	depends = sane
+	source = lenovo-100-m1520-m1688-series-1.0.43.7z::https://lenovo-upload.oss-cn-beijing.aliyuncs.com/drivers/L100_Series_drivers_Lin_20210511095611.7z
+	sha256sums = 3ac923c20e25047edb12242ddbbcd626bc77990ec31332de2c84950dc9a1f386
+
+pkgname = lenovo-100-m1520-m1688-series
