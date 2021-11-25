@@ -2,7 +2,7 @@
 
 pkgname=license
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to easily add a license to your project"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/license/"
