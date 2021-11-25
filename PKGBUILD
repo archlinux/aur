@@ -11,16 +11,17 @@
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
 pkgver=0.23.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=('GPL2')
 arch=('x86_64')
 depends=('gcc-libs' 'glibc' 'libcdio-paranoia' 'libmad' 'sqlite'
-         'libmms' 'libnfs' 'libsoxr' 'zlib')
-makedepends=('alsa-lib' 'audiofile' 'boost' 'curl' 'faad2' 'ffmpeg' 'flac' 'fmt'
-             'icu' 'libid3tag' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate'
-             'libupnp' 'liburing' 'libvorbis' 'meson' 'python-sphinx')
+         'libmms' 'libnfs' 'libsoxr' 'zlib'
+         'alsa-lib' 'audiofile' 'curl' 'faad2' 'ffmpeg' 'flac' 'fmt'
+         'icu' 'libid3tag' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate'
+         'libupnp' 'liburing' 'libvorbis')
+makedepend=('boost' 'meson' 'python-sphinx')
 provides=("mpd=${pkgver}")
 conflicts=('mpd')
 replaces=('mpd')
@@ -89,10 +90,10 @@ check() {
 }
 
 package() {
-  depends+=('libFLAC.so' 'libasound.so' 'libaudiofile.so' 'libavcodec.so' 'libavformat.so'
-            'libcurl.so' 'libfaad.so' 'libfmt.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so'
-            'libmpdclient.so' 'libogg.so' 'libsamplerate.so'
-            'libvorbis.so' 'libupnp.so' 'liburing.so' 'libixml.so')
+  # depends+=('libFLAC.so' 'libasound.so' 'libaudiofile.so' 'libavcodec.so' 'libavformat.so'
+            # 'libcurl.so' 'libfaad.so' 'libfmt.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so'
+            # 'libmpdclient.so' 'libogg.so' 'libsamplerate.so'
+            # 'libvorbis.so' 'libupnp.so' 'liburing.so' 'libixml.so')
   cd "${_pkgname}-${pkgver}"
 	DESTDIR="${pkgdir}" ninja -C build install
   install -vDm 644 "doc/${_pkgname}conf.example" \
