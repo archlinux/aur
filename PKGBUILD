@@ -11,9 +11,9 @@ url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=0.5.6
 pkgrel=1
 arch=('x86_64')
-_package="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
+_pkgsrc="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
 source=(
-  "${_package}::${url}/releases/download/v${pkgver}/${_package}"
+  "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
   "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE"
 )
 sha512sums=('e05820f8c76f01eac1f8fe464ba273a90f2586eb8a7ba5877c10277fd5665f0bfd99bc26023a08ec288a70865a462c7ef9592808e367ed5ae20598b6f09ee0c6'
@@ -21,8 +21,8 @@ sha512sums=('e05820f8c76f01eac1f8fe464ba273a90f2586eb8a7ba5877c10277fd5665f0bfd9
 
 build() {
   # Extract files
-  chmod +x "$srcdir/$_package"
-  $srcdir/$_package --appimage-extract
+  chmod +x "$srcdir/$_pkgsrc"
+  $srcdir/$_pkgsrc --appimage-extract
 
   # Correct .desktop, icon
   mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/0x0" "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512"
