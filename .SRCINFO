@@ -8,15 +8,17 @@ pkgbase = stratagus-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = glu
-	depends = libgl
-	depends = sdl
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = sdl2_image
 	depends = libpng
 	depends = libmng
 	depends = libtheora
-	depends = libmikmod
-	depends = sqlite
+	depends = libogg
+	depends = lua51
 	depends = tolua++
+	depends = zlib
+	depends = openmp
 	provides = stratagus-git
 	provides = stratagus
 	provides = stratagus-gameutils.h
@@ -24,4 +26,3 @@ pkgbase = stratagus-git
 	md5sums = SKIP
 
 pkgname = stratagus-git
-

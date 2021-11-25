@@ -8,8 +8,11 @@ pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
 url="https://github.com/Wargus/stratagus"
 license=('GPL')
-depends=('libgl' 'sdl' 'libpng' 'libmng' 'libtheora' 'libmikmod' 'sqlite' 'tolua++')
-makedepends=('git' 'cmake' 'glu')
+#//depends=('libgl' 'sdl' 'libpng' 'libmng' 'libtheora' 'libmikmod' 'sqlite' 'tolua++')
+#//makedepends=('git' 'cmake' 'glu')
+# Quick and dirty edit. fix later.
+depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'libpng' 'libmng' 'libtheora' 'libogg' 'lua51' 'tolua++' 'zlib' 'openmp')
+makedepends=('git' 'cmake')
 source=("${pkgname}::git://github.com/Wargus/stratagus.git")
 md5sums=('SKIP')
 provides=(${pkgname}
