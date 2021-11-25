@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gtk-theme-elementary-git
-pkgver=5.4.2.r121.e3c0ed4
+pkgver=6.1.1.r4.g87bfed67
 pkgrel=1
 pkgdesc='elementary GTK theme'
 arch=('any')
@@ -17,8 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd gtk-theme-elementary
-
-  printf "5.4.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
