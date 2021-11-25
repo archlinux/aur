@@ -1,12 +1,12 @@
 # Maintainer: Hemish <hemish04082005@gmail.com>
 pkgname=backman
 
-pkgver=0.3
-pkgrel=1
+pkgver=0.4
+pkgrel=2
 
 pkgdesc="Backman is a random/fixed background image setter for major GTK desktops, X11, sway and other wlroots based wayland compositors"
 arch=("x86_64")
-url="https://github.com/loadofearth/backman"
+url="https://github.com/securearth/backman"
 license=('MIT')
 depends=(
 		"python>=3.5"
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/loadofearth/backman/archive/refs/tags/0.3.tar.gz")
+source=("https://github.com/securearth/backman/archive/refs/tags/0.4.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
