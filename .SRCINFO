@@ -1,7 +1,7 @@
 pkgbase = stklos
 	pkgdesc = Free R5RS/R7RS Scheme system.
-	pkgver = 1.60
-	pkgrel = 2
+	pkgver = 1.70
+	pkgrel = 1
 	url = http://www.stklos.net
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = stklos
 	depends = pcre
 	depends = libffi
 	depends = gc
-	source = http://www.stklos.net/download/stklos-1.60.tar.gz
-	md5sums = f5f692b3e7d5654cd0eb262be9185530
+	source = http://www.stklos.net/download/stklos-1.70.tar.gz
+	md5sums = ee6d93a524bf193250c004efcc50b9fe
 
 pkgname = stklos
-
