@@ -2,12 +2,12 @@
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Map Editor for the game CrossCode"
 arch=('any')
 url='https://github.com/CCDirectLink/crosscode-map-editor'
 license=('custom:MIT')
-depends=(electron)
+depends=(electron13)
 makedepends=(asar npm jq)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -36,7 +36,7 @@ prepare() {
   msg2 "Generating ${_pkgname}.sh..."
   cat > "${_pkgname}.sh" <<EOF
 #!/bin/sh
-exec electron /usr/lib/${_pkgname}/app.asar "\$@"
+exec electron13 /usr/lib/${_pkgname}/app.asar "\$@"
 EOF
 
   msg2 "Generating ${_pkgname}.desktop..."
