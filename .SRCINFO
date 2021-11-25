@@ -1,6 +1,6 @@
 pkgbase = easyssh-git
 	pkgdesc = SSH connection manager for Pantheon
-	pkgver = 1.7.6.r9.ge8b38620
+	pkgver = 1.7.7.r7.gfe585c9e
 	pkgrel = 1
 	url = https://github.com/muriloventuroso/easyssh
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = easyssh-git
 	sha256sums = SKIP
 
 pkgname = easyssh-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=easyssh-git
-pkgver=1.7.6.r9.ge8b38620
+pkgver=1.7.7.r7.gfe585c9e
 pkgrel=1
 pkgdesc="SSH connection manager for Pantheon"
 arch=(x86_64)
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  meson build --prefix=/usr -D libunity=false -D ubuntu-bionic-patched-vte=false -D patched-vte=true
+  meson build --prefix=/usr -D ubuntu-bionic-patched-vte=false -D patched-vte=true
   ninja -C build
 }
 
