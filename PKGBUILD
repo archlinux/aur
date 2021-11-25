@@ -4,7 +4,7 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.1.alpha.r776.g85311d94fe
+pkgver=1.1.alpha.r960.g4df970686a
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -24,12 +24,10 @@ conflicts=('inkscape')
 options=('!libtool' '!buildflags')
 source=("inkscape.git::git+$url/inkscape.git"
 	"extensions.git::git+$url/extensions.git"
-	"lib2geom.git::git+$url/lib2geom.git"
-	"poppler:21.11.patch::https://gitlab.com/inkscape/inkscape/-/merge_requests/3622.patch")
+	"lib2geom.git::git+$url/lib2geom.git")
 sha1sums=('SKIP'
           'SKIP'
-          'SKIP'
-          '60f7b1e065f935d7d055f7d5fbe79f19c737cc3d')
+          'SKIP')
 _gitname="inkscape.git"
 
 prepare() {
@@ -37,7 +35,6 @@ prepare() {
   git config submodule.share/extensions.url ${srcdir}/extensions.git
   git config submodule.src/3rdparty/2geom.url ${srcdir}/lib2geom.git
   git submodule update --init --remote
-  git apply -v "${srcdir}"/poppler:21.11.patch
 }
 
 pkgver() {
