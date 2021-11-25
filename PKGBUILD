@@ -2,12 +2,11 @@
 
 pkgname=shonenjump
 pkgver=0.7.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to change directory and improve command line productivity"
 arch=(x86_64)
 url="https://github.com/suzaku/shonenjump"
 license=(custom)
-depends=(bash)
 makedepends=(go)
 conflicts=(autojump)
 install=readme.install
