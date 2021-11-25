@@ -16,6 +16,8 @@ pkgbase = tango-database
 	conflicts = tango
 	conflicts = tango-database-git
 	source = https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Release-5.16/TangoDatabase-Database-Release-5.16.tar.gz
+	source = tango-database.service
 	sha256sums = f1585422800a22c7919261425f28992b865152a3756e0d0bcdddc6f0eaa7fc01
+	sha256sums = 5c54520ad2072aefe6b408d4caa8a2a9fffb093fb2ea93b46d9ab3cccbb0ae1f
 
 pkgname = tango-database
