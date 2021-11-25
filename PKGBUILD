@@ -1,28 +1,28 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
+
 pkgname=wikibase-cli
-pkgver=15.15.4
+pkgver=15.15.5
 pkgrel=1
 pkgdesc="The command-line interface to Wikibase (Wikidata)"
-arch=(any)
-url="https://github.com/maxlath/wikibase-cli#readme"
+arch=('any')
+url="https://github.com/maxlath/wikibase-cli"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-noextract=($pkgname-$pkgver.tgz)
 replaces=('nodejs-wikibase-cli')
-options=(!strip)
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+noextract=("$pkgname-$pkgver.tgz")
+sha256sums=('262b1e1c63b5c632206258fcbdf36de9852ba0497ac31b067cf3e9fdb2c53a23')
 
 package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
-  install -Dm755 "$_npmdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  export NODE_ENV=production
+  npm install -g \
+    --cache "$srcdir/npm-cache" \
+    --prefix "$pkgdir/usr" \
+    --build-from-source \
+    "$pkgname-$pkgver.tgz"
+  chown -R root:root "$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('debdcf4f7dc0136f15bbea1fac9d5056707f2f54033a9a2880abf39791965440')
