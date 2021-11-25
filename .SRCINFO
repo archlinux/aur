@@ -1,6 +1,6 @@
 pkgbase = hsd
 	pkgdesc = Handshake daemon node
-	pkgver = 2.4.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://handshake.org
 	arch = any
@@ -14,11 +14,10 @@ pkgbase = hsd
 	provides = hs-wallet
 	provides = hsd-cli
 	provides = hsw-cli
-	source = https://handshake.org/files/hsd-2.4.0.tar.gz
-	source = https://handshake.org/files/hsd-2.4.0.tar.gz.asc
+	source = https://handshake.org/files/hsd-3.0.0.tar.gz
+	source = https://handshake.org/files/hsd-3.0.0.tar.gz.asc
 	validpgpkeys = B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD
-	sha256sums = 3cc6d6c6687b4f4d7779f8ff0341b934479a8d007d8b7448dd63ffa8aef79884
+	sha256sums = ff69a6d0fefb096a5cabafe08dc2e8414da46109886b06d12b2a2447f725fa87
 	sha256sums = SKIP
 
 pkgname = hsd
-
