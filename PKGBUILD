@@ -21,8 +21,10 @@ pkgver() {
 prepare() {
     cd "$srcdir/gemcert"
     mkdir -p build/
-    go mod init "${url#https://}" # strip https:// from canonical URL
-    go mod tidy
+    if [ ! -f go.mod ]; then
+        go mod init "${url#https://}" # strip https:// from canonical URL
+        go mod tidy
+    fi
 }
 
 build() {
