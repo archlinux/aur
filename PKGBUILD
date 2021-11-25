@@ -2,12 +2,13 @@
 
 pkgname=shonenjump
 pkgver=0.7.20
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster way to change directory and improve command line productivity"
 arch=(x86_64)
 url="https://github.com/suzaku/shonenjump"
 license=(custom)
 makedepends=(go)
+depends=(glibc)
 conflicts=(autojump)
 install=readme.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/suzaku/shonenjump/archive/refs/tags/v$pkgver.tar.gz")
@@ -15,7 +16,8 @@ b2sums=('fbc85639dfde6451a7103d186e6d2db72b9d6b2294c13f794b80d50804b544b47d7422b
 
 build() {
   cd "$pkgname-$pkgver"
-  go build -v -buildmode=pie -ldflags "-extldflags \"$LDFLAGS\""
+  export CGO_LDFLAGS="$LDFLAGS"
+  go build -v -ldflags "-buildmode=pie"
 }
 
 package() {
