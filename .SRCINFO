@@ -1,12 +1,12 @@
 pkgbase = kaizen
 	pkgdesc = Kaizen ElasticSearch GUI
 	pkgver = 5.715.100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic-kaizen.com/
 	arch = x86_64
 	license = custom
 	optdepends = gtk-theme-murrine-collection
-	source = https://www.elastic-kaizen.com/releases/kaizen-5.715.100-linux-x64.zip
+	source = kaizen-5.715.100-linux-x64.zip::https://www.elastic-kaizen.com/releases/kaizen-5.715.100-linux-x64.zip
 	source = kaizen.desktop
 	source = LICENSE
 	source = kaizen.png
