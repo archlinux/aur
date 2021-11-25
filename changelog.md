@@ -2733,4 +2733,14 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.2.36 add: add stock_info_bj_name_code interface
 
 1.2.37 fix: fix stock_info_a_code_name interface
+
+1.2.38 fix: fix futures_foreign_commodity_realtime interface
+
+1.2.39 fix: fix stock_info_sh_delist interface
+
+1.2.40 add: add fund_scale_change_em interface
+
+1.2.41 add: add fund_hold_structure_em interface
+
+1.2.42 fix: fix fund_manager interface
 ```
