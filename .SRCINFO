@@ -1,12 +1,11 @@
 pkgbase = ansible-openstack-inventory
 	pkgdesc = OpenStack dynamic inventory script for Ansible
 	pkgver = 21.11.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html
 	arch = x86_64
 	license = GNUv3
 	depends = python
-	depends = cryptopro-csp-k1
 	source = https://raw.githubusercontent.com/openstack/ansible-collections-openstack/master/scripts/inventory/openstack_inventory.py
 	sha256sums = 61b541da6c34c659b730b479a4bba2e897da2e1a582c6a42a6073b5dcfca9139
 

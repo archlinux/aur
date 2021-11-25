@@ -2,7 +2,7 @@
 
 pkgname=ansible-openstack-inventory
 pkgver=21.11.25
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack dynamic inventory script for Ansible"
 arch=('x86_64')
 license=('GNUv3')
