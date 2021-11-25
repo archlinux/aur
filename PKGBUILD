@@ -15,9 +15,9 @@ depends=('ledger-udev')
 options=(!strip)
 provides=('ledger-live')
 conflicts=('ledger-live' 'ledger-live-git')
-_package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
+_pkgsrc="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
 source=(
-  "${_package}::${url}/releases/download/v${pkgver}/${_package}"
+  "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
   "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live-desktop/v${pkgver}/LICENSE"
 )
 sha512sums=('116a42202a9e7bc13fed00cc82516c3e57d59148a2ce8070118c7af72b876f5d3ba7e8242eee222cae419d2dfa0955b87f8c68301ef317e03846e51165088bdc'
@@ -26,8 +26,8 @@ sha512sums=('116a42202a9e7bc13fed00cc82516c3e57d59148a2ce8070118c7af72b876f5d3ba
 
 build() {
   # Extract files
-  chmod +x "$srcdir/$_package"
-  $srcdir/$_package --appimage-extract
+  chmod +x "$srcdir/$_pkgsrc"
+  $srcdir/$_pkgsrc --appimage-extract
 
   # Correct .desktop
   sed -e "s/AppRun/${_pkgbin}/g" -i "$srcdir/squashfs-root/$_pkgbin.desktop"
