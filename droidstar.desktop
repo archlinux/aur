@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Droid-Star
+Comment=Connect to DMR Amateur Radio Networks over the internet
+Exec=droidstar
+Icon=droidstar
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+
