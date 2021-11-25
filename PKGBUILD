@@ -5,7 +5,7 @@ _srcname=rtw89
 _branch=v7
 pkgname=${_pkgbase}-dkms-git
 pkgver=r129.248a921
-pkgrel=3
+pkgrel=4
 pkgdesc="Driver for Realtek 8852AE, an 802.11ax device"
 arch=('x86_64')
 url="https://github.com/lwfinger/rtw89"
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 build() {
   cd "$srcdir/${_srcname}"
-  rm -fv dkms.conf .gitignore README.md
+  rm -fv dkms.conf
 }
 pkgver() {
   cd "$srcdir/${_srcname}"
@@ -39,5 +39,7 @@ package() {
 
   # Copy sources (including Makefile)
   cp -rT "$_srcname" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-  rm -rfv "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/.git"
+  # This isn't the best solution but it works
+  # and does not require additional dependencies
+  rm -rfv "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"/{.git,debian,.gitignore,README.md}
 }
