@@ -2,7 +2,7 @@
 pkgname=python-icefall-git
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="Lossy compression of floating-point NumPy arrays into byte strings."
+pkgdesc="Official recipes associated with k2 and lhotse"
 arch=('any')
 url='https://github.com/danpovey/lilcom'
 license=('MIT')

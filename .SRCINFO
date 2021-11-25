@@ -1,5 +1,5 @@
 pkgbase = python-icefall-git
-	pkgdesc = Lossy compression of floating-point NumPy arrays into byte strings.
+	pkgdesc = Official recipes associated with k2 and lhotse
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/danpovey/lilcom
@@ -9,6 +9,7 @@ pkgbase = python-icefall-git
 	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = python-kaldialign
+	depends = python-kaldilm
 	depends = python-sentencepiece
 	depends = tensorboard
 	optdepends = python-lhotse: Datasets
