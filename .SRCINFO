@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-peripheral-joystick-git
 	pkgdesc = Joystick support for Kodi
-	pkgver = r876.e045115
+	pkgver = r912.2786720
 	pkgrel = 1
 	url = https://github.com/xbmc/peripheral.joystick
 	arch = any

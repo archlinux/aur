@@ -1,8 +1,8 @@
-# Maintainer: Tilla <carlosfritz@posteo.net>
+# Maintainer: carlosfritz <carlosfritz@posteo.net>
 
 _gitname=peripheral.joystick
 pkgname=kodi-addon-peripheral-joystick-git
-pkgver=r876.e045115
+pkgver=r912.2786720
 pkgrel=1
 pkgdesc="Joystick support for Kodi"
 url='https://github.com/xbmc/peripheral.joystick'
