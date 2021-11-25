@@ -1,0 +1,16 @@
+pkgbase = libimbe_vocoder-git
+	pkgdesc = imbe_vocoder library from osmocom OP25
+	pkgver = r3.551ade3
+	pkgrel = 1
+	url = https://github.com/nostar/imbe_vocoder
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	provides = libimbe_vocoder
+	conflicts = libimbe_vocoder
+	source = libimbe_vocoder-git::git+https://github.com/nostar/imbe_vocoder
+	sha1sums = SKIP
+
+pkgname = libimbe_vocoder-git
