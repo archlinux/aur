@@ -1,14 +1,14 @@
 pkgbase = python-multipledispatch
 	pkgdesc = Multiple dispatch implementation in Python
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrocklin/multipledispatch
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python>=3.4
+	depends = python-six
 	source = https://github.com/mrocklin/multipledispatch/archive/0.6.0.tar.gz
 	sha256sums = 649f6e61b8a6ce581c75f32365c926b55495c01b8177135408b83aa03886cde0
 
 pkgname = python-multipledispatch
-
