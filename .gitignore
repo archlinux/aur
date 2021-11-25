@@ -1,16 +1,18 @@
 # Xanmod-ROG .gitignore
-src-cache
-release*
-clang*
-build*
+
+# build artifacts
 src
 pkg
-*/
 *.log
 *.log.*
 *.pkg.tar.*
 *.sig
+
+# any local subdirectories
+*/
+
+# local config customizations
 myconfig
+
+# last run config
 config.last
-oldconfig*
-*build.sh
