@@ -1,7 +1,7 @@
 pkgbase = cro-chain-desktop-bin
-	pkgdesc = Crypto.org Chain desktop wallet
+	pkgdesc = Crypto.org Chain desktop wallet (AppImage version)
 	pkgver = 0.5.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
 	license = Apache

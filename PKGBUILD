@@ -5,11 +5,11 @@
 _pkgbin=chain-desktop-wallet
 _pkgname=cro-chain-desktop
 pkgname=cro-chain-desktop-bin
-pkgdesc='Crypto.org Chain desktop wallet'
+pkgdesc='Crypto.org Chain desktop wallet (AppImage version)'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 provides=('cro-chain-desktop')
 conflicts=('cro-chain-desktop')
