@@ -1,6 +1,6 @@
 # Maintainer: Egor Tensin <Egor.Tensin@gmail.com>
 pkgname=config-links
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc='Config file sharing'
 arch=(any)
@@ -23,9 +23,11 @@ package() {
 
     install -D -m 0755 -t "$pkgdir/usr/lib/config-links" links-update
     install -D -m 0755 -t "$pkgdir/usr/lib/config-links" links-remove
+    install -D -m 0755 -t "$pkgdir/usr/lib/config-links" links-chmod
     find src -type f -exec install -D -m 0644 -t "$pkgdir/usr/lib/config-links/src" {} ';'
 
     install -d "$pkgdir/usr/bin"
     ln -s -- /usr/lib/config-links/links-update "$pkgdir/usr/bin/"
     ln -s -- /usr/lib/config-links/links-remove "$pkgdir/usr/bin/"
+    ln -s -- /usr/lib/config-links/links-chmod  "$pkgdir/usr/bin/"
 }
