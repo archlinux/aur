@@ -1,6 +1,9 @@
 #!/bin/sh
 
 post_install() {
+    echo "crate user: tango"
+    useradd -M tango
+    echo ""
     echo "Note: It is recommended to setup the database to use latin1 character set."
     echo "Especially, any other character set with characters longer than 3 bytes"
     echo "will not work. Character set can be specified in my.cnf configuration file:"
@@ -32,5 +35,11 @@ post_install() {
     echo "# Now, you should be able to launch the DB server"
     echo ""
     echo "Databaseds 2 -ORBendPoint giop:tcp:[hostname]:[port]"
+    echo "# or"
+    echo "systemctl start tango-database"
+    echo "# for this for this you need to create \"tango\" database"
+    echo "# under \"tango\" user and \"tango\" password,"
+    echo "# or change the variables in the tango-database.service file."
 
+    systemctl daemon-reload
 }

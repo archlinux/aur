@@ -14,8 +14,11 @@ license=('GPL3')
 depends=('tango-cpp' 'mariadb' 'mariadb-clients' 'mariadb-libs' 'cmake>=2.8.9' )
 conflicts=('tango' 'tango-database-git')
 install=tango-database.install
-source=("https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Release-${pkgver}/TangoDatabase-Database-Release-${pkgver}.tar.gz")
-sha256sums=('f1585422800a22c7919261425f28992b865152a3756e0d0bcdddc6f0eaa7fc01')
+source=("https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Release-${pkgver}/TangoDatabase-Database-Release-${pkgver}.tar.gz"
+        "tango-database.service")
+sha256sums=('f1585422800a22c7919261425f28992b865152a3756e0d0bcdddc6f0eaa7fc01'
+            '5c54520ad2072aefe6b408d4caa8a2a9fffb093fb2ea93b46d9ab3cccbb0ae1f')
+
 _dir="${_pkgname}-Database-Release-${pkgver}"
 
 prepare() {
@@ -29,6 +32,9 @@ build() {
 }
 
 package() {
+  mkdir -p ${pkgdir}/etc/systemd/system
+  install -Dm 644 tango-database.service ${pkgdir}/etc/systemd/system
+
   cd ${_dir}/build
   make DESTDIR=${pkgdir} install
 }
