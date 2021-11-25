@@ -2,10 +2,10 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.15.1.r33.g9e65bef2e621
+pkgver=5.16.rc1.r44.g28c030d2e0c6
 pkgrel=1
 pkgdesc="Linux pf-kernel (git version)"
-_kernel_rel=5.15
+_kernel_rel=5.16
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 url=https://gitlab.com/post-factum/pf-kernel/wikis/README
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '38525736a5426350e22e7467fc2e85387441f203e2b63ad9ac60e2bb7048e1e1')
+            '2054eeff3d6ec5b1eeae47404634bc9ad149c11d03a4aeb5ab7e70b676c3ee00')
 
 pkgver() {
   cd "${_srcname}"
@@ -71,7 +71,10 @@ _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+              'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
+              'linux-firmware: firmware images needed for some devices'
+              'uksmd: userspace KSM helper daemon'
+              'v4l2loopback-utils: v4l2-loopback device utilities')
   provides=(linux-pf KSMBD-MODULE NTFS3-MODULE UKSMD-BUILTIN V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(linux-pf ksmbd-dkms ntfs3-dkms v4l2loopback-dkms virtualbox-guest-modules-arch wireguard-arch)
 
