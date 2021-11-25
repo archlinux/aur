@@ -1,0 +1,4 @@
+#!/bin/sh
+pkgdir=/usr/share/cbqn-git
+
+INPUTRC="${pkgdir}/inputrc" rlwrap "${pkgdir}/bqn" "$@"

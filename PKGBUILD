@@ -1,21 +1,24 @@
 # Maintainer: Firegem <mrfiregem [at] protonail [dot] ch>
 pkgname=cbqn-git
-pkgver=r686.2baa9ac
-pkgrel=3
+pkgver=r704.0389eda
+pkgrel=1
 pkgdesc="A BQN implementation in C."
 arch=('x86_64')
 url="https://github.com/dzaima/CBQN"
-license=('GPL3')
-depends=('glibc')
-optdepends=('rlwrap: Better REPL'
-            'ttf-bqn386: BQN and APL compatible font')
+license=('GPL3' 'custom:ISC')
+depends=('glibc' 'rlwrap')
+optdepends=('ttf-bqn386: BQN and APL compatible font')
 makedepends=('git' 'clang')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git"
-        'makefile.patch')
+        "bqn-ref::git+https://github.com/mlochbaum/BQN.git"
+        'makefile.patch'
+        'rlwrap-shim')
 md5sums=('SKIP'
-         'f23b43c3c37457cdb830eb7794ee945f')
+         'SKIP'
+         'f23b43c3c37457cdb830eb7794ee945f'
+         '02cb8cb1a3f5832526614237a04de4de')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -28,12 +31,26 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  make PIE='-pie'
+  cd "${srcdir}/${pkgname%-git}"
+  make PIE='-pie' o3
+  ./BQN genRuntime "${srcdir}/bqn-ref"
+  make PIE='-pie' o3
+}
+
+check() {
+  cd "${srcdir}/${pkgname%-git}"
+  ./BQN "${srcdir}/bqn-ref/test/this.bqn"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -Dm755 BQN "${pkgdir}/usr/bin/bqn"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 ./rlwrap-shim "${pkgdir}/usr/bin/bqn"
+
+  cd "${srcdir}/${pkgname%-git}"
+  install -Dm755 ./BQN "${pkgdir}/usr/share/${pkgname}/bqn"
+  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cbqn"
+
+  cd "$srcdir/bqn-ref"
+  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-bqn"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" ./tutorial/*.{md,bqn}
+  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" ./editors/inputrc
 }
