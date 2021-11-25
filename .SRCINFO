@@ -1,0 +1,18 @@
+pkgbase = python-ansible-vault-rekey
+	pkgdesc = Rolls keys and re-encrypts secrets in any repo using Ansible Vault
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/inhumantsar/python-ansible-vault-rekey
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = gcc
+	makedepends = libffi
+	makedepends = openssl
+	depends = python
+	source = git+https://github.com/inhumantsar/python-ansible-vault-rekey/#tag=v2.0.1
+	sha512sums = SKIP
+
+pkgname = python-ansible-vault-rekey
