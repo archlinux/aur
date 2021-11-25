@@ -8,13 +8,12 @@ arch=(x86_64 aarch64)
 url="https://github.com/realnc/dosbox-core"
 license=('GPL2')
 groups=('libretro')
-depends=('libretro-core-info' 'alsa-lib' 'libsndfile' 'sdl' 'sdl_net')
+depends=('libretro-core-info' 'gcc-libs' 'alsa-lib' 'libsndfile' 'sdl' 'sdl_net')
 makedepends=('git' 'cmake' 'ninja' 'meson')
 _libname=dosbox_core_libretro
 _gitname=dosbox-core
 source=("git+https://github.com/realnc/${_gitname}.git")
 sha256sums=('SKIP')
-options=(!buildflags)
 
 pkgver() {
   cd ${_gitname}
