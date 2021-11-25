@@ -3,12 +3,12 @@
 _pkgname=ubgpsuite
 pkgname=${_pkgname}-git
 pkgver=r67.f214c5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro BGP Suite and Utility library"
 url="https://git.doublefourteen.io/bgp/ubgpsuite"
 license=("GPL3" "GPL lesser 3")
 arch=(i686 x86_64 armv7h aarch64 riscv32 riscv64)
-#depends=(build)
+depends=('bzip2' 'xz')
 makedepends=('git' 'meson' 'ninja')
 provides=(upkgbuild)
 conflicts=(upkgbuild)

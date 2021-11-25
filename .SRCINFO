@@ -1,7 +1,7 @@
 pkgbase = ubgpsuite-git
 	pkgdesc = Micro BGP Suite and Utility library
 	pkgver = r67.f214c5e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.doublefourteen.io/bgp/ubgpsuite
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = ubgpsuite-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	depends = bzip2
+	depends = xz
 	provides = upkgbuild
 	conflicts = upkgbuild
 	source = git+https://git.doublefourteen.io/bgp/ubgpsuite.git
