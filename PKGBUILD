@@ -2,8 +2,8 @@
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix-git
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="An IPTV streaming application"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
@@ -31,7 +31,7 @@ package() {
 	cd ${pkgname/-git}
 	install -D     -t "$pkgdir"/usr/bin usr/bin/hypnotix
 	install -D     -t "$pkgdir"/usr/lib/hypnotix usr/lib/hypnotix/{common,hypnotix}.py
-	install -Dm644 -t "$pkgdir"/usr/lib/hypnotix usr/lib/hypnotix/mpv.py
+	install -Dm644 -t "$pkgdir"/usr/lib/hypnotix usr/lib/hypnotix/{mpv,xtream}.py
 	install -Dm644 -t "$pkgdir"/usr/share/applications usr/share/applications/hypnotix.desktop
 	install -Dm644 -t "$pkgdir"/usr/share/glib-2.0/schemas usr/share/glib-2.0/schemas/org.x.hypnotix.gschema.xml
 	install -Dm644 -t "$pkgdir"/usr/share/hypnotix usr/share/hypnotix/*.{css,png,ui}
