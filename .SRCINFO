@@ -1,18 +1,22 @@
 pkgbase = dump
-	pkgdesc = Standard *nix for performing backups to tapedrive from ext2 and ext3 filesystems
-	pkgver = 0.4b46
-	pkgrel = 2
+	pkgdesc = Dump/Restore ext2/3/4 filesystem backup
+	pkgver = 0.4b47
+	pkgrel = 1
 	url = http://dump.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = pkg-config
-	makedepends = openssl-1.0
+	makedepends = util-linux
+	makedepends = sqlite
+	makedepends = openssl
+	depends = util-linux-libs
+	depends = zlib
+	depends = bzip2
+	depends = lzo
+	depends = readline
+	depends = ncurses
 	depends = e2fsprogs
-	source = http://downloads.sourceforge.net/dump/dump-0.4b46.tar.gz
-	md5sums = 4c463f797e7e8a1112fabf5cbf8e1855
+	source = http://downloads.sourceforge.net/dump/dump-0.4b47.tar.gz
+	sha512sums = e9c567fe2ffad196b9657c551d83f7607758f3704cad6cb407514bbe2bc765c16968997dc3a5bc92b9eb5900fa5bd6e7cebc92c81afff53339fca92891a5259d
 
 pkgname = dump
-
