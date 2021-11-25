@@ -1,7 +1,7 @@
 pkgbase = polyphone-git
 	pkgdesc = A soundfont editor for quickly designing musical instruments
 	pkgver = 2.2.0.r98.5d9179b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://polyphone-soundfonts.com/en/
 	arch = x86_64
 	groups = pro-audio
@@ -42,7 +42,7 @@ pkgname = polyphone-git
 	depends = libogg.so
 	depends = libportaudio.so
 	depends = libqcustomplot.so
-	depends = libstk-4.6.1.so
+	depends = libstk-4.6.2.so
 	depends = libvorbis.so
 	depends = libvorbisenc.so
 	depends = libvorbisfile.so
