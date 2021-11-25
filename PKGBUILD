@@ -4,7 +4,7 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.55
+pkgver=2.1.56
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -40,5 +40,5 @@ build() {
 package() {
 	cd "$pkgname"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
 }
