@@ -91,8 +91,8 @@ _makenconfig=
 
 pkgbase=linux-xanmod-rog
 xanmod=5.15.4-xanmod1
-pkgver=${xanmod//-/.}
-#pkgver=5.15.4.prexan0
+#pkgver=${xanmod//-/.}
+pkgver=5.15.5.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -121,13 +121,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
-        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.3-4.xz"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.4-5.xz"
         #"Linux-5.15.4-rc1.patch"
 
         # Arch: misc hotfixes
         "staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch"
         "PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
-        "drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch"
         "iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
 
         # amd-pstate v4 included in Xanmod
@@ -184,9 +183,9 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'de79c72c7ae45d81b603d112cea8c74ae050185e81708ea1fa36d4c6fdc40a77'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
+            '72cc0f1b5233389358a946eb7abc181ba6c28a4937492b75f859c517a51bc592'
             'ce50ee3c64f6865234f6ec79fcbd87704494b0fbb7d3cc124f97244c731f9e61'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
-            '2651439720a03a83ce127d58fadb15f7f64f092c7f8224dcb63f5b34e5b7ffa1'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
             'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
