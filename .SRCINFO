@@ -1,6 +1,6 @@
 pkgbase = arturo-bin
 	pkgdesc = Simple, expressive & portable programming language for efficient scripting.
-	pkgver = 0.9.77
+	pkgver = 0.9.78
 	pkgrel = 1
 	url = https://arturo-lang.io/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = arturo-bin
 	depends = webkit2gtk
 	provides = arturo
 	conflicts = arturo
-	source = arturo-bin-0.9.77.tar.gz::https://github.com/arturo-lang/arturo/releases/download/v0.9.77/arturo-0.9.77-Linux-full.tar.gz
-	sha256sums = 73a6da91dcda2657fab26c944594ebbf7134c60b1ed9077539f6c09440f582a2
+	source = arturo-bin-0.9.78.tar.gz::https://github.com/arturo-lang/arturo/releases/download/v0.9.78/arturo-0.9.78-Linux-full.tar.gz
+	sha256sums = 6b344cd25f3413f20fc51293dc38d7e44d8d0cc1d5c0c96ee8987af3c10b35aa
 
 pkgname = arturo-bin
