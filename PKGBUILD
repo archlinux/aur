@@ -8,9 +8,11 @@ pkgdesc='Crypto.org Chain desktop wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'yarn' 'nodejs<16')
+provides=('cro-chain-desktop')
+conflicts=('cro-chain-desktop-bin')
 _pkgfolder=${_pkgbin}-${pkgver}
 source=(
   "${_pkgfolder}.tar.gz::https://github.com/crypto-com/chain-desktop-wallet/archive/refs/tags/v${pkgver}.tar.gz"
