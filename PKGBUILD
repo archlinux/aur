@@ -5,11 +5,11 @@
 pkgname=manuskript-git
 _pkgname=manuskript
 pkgver=0.12.0.r0.g1eab989
-pkgrel=1
+pkgrel=2
 arch=('any')
 
 pkgdesc="Manuskript is an open-source tool for writers (git version)."
-url="http://www.theologeek.ch/manuskript"
+url="https://www.theologeek.ch/manuskript"
 license=('GPL3')
 
 provides=('manuskript')
