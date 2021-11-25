@@ -11,7 +11,7 @@ pkgbase=linux-rk3328
 _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for RK3328"
-pkgver=5.15.1
+pkgver=5.15.4
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "0002-rk3328-add-dmc-driver.patch"
         "0003-rk3328-audio-and-renegade-supplies.patch"
         "0004-rk3328-dtsi-mmc-vdec-usb3-tweaks.patch"
-        "0005-rk3328-fix-mali-node.patch"
+        # "0005-rk3328-fix-mali-node.patch"
         "0006-rockchip-rng-driver.patch"
         "0007-fixed-mmc-index.patch"
         "0008-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch"
@@ -45,16 +45,15 @@ md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '010810596a08c508c1b57350de3c1ee5'
          'ccb144e753dce358915ed615329d2067'
          'dcc8de3b63a31dc71a7c735032b1345d'
-         '9b6fdc9b96013041189fc35bcc32e31d'
          'c06786666d8433fb5339c7734bcd1509'
          '966cbe04ab5848bf6972411166adfee4'
          '7a18066683f3351b2bbd2653db783f80'
          '6dfa62f14b2a3390b1a4ca2e5cf5c9a2'
-         '2bf52304216e7a6b12ecf1a046f15908'
+         'b4244846a39258022a2ab4248aaadb11'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         'be8741a89421be268c51393e62905636')
+         '2824fda27f71a076b0a52245f2c3d6b0')
 
 prepare() {
   cd ${_srcname}
@@ -78,7 +77,7 @@ prepare() {
   patch -p1 < ../0002-rk3328-add-dmc-driver.patch
   patch -p1 < ../0003-rk3328-audio-and-renegade-supplies.patch
   patch -p1 < ../0004-rk3328-dtsi-mmc-vdec-usb3-tweaks.patch
-  patch -p1 < ../0005-rk3328-fix-mali-node.patch
+  # patch -p1 < ../0005-rk3328-fix-mali-node.patch
   patch -p1 < ../0006-rockchip-rng-driver.patch
   patch -p1 < ../0007-fixed-mmc-index.patch
   patch -p1 < ../0008-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
