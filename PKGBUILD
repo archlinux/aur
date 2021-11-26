@@ -1,19 +1,19 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=squaw
-pkgver=3.3
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc='Simplistic quiet user agent for the Web'
 url='http://fenua.org/gaetan/src/'
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('webkit2gtk-unstable')
+depends=('webkit2gtk-5.0')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha256sums=('e64a996c82d06a4a73ce676404e10aa6767c4ec2c9946aa57ad44ef8f1606189')
+sha256sums=('e7dcae37d7d23e4b0275a4c4d2668d682636a1782163c41d174dbee8386334f3')
 
 build() {
 	cd "${srcdir}"
-	cc $(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.1) \
+	cc $(pkg-config --cflags --libs gtk4 webkit2gtk-5.0) \
 		${CPPFLAGS} ${CFLAGS} ${LDFLAGS} \
 		-o ${pkgname} ${pkgname}-${pkgver}.c
 }
