@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=6.3-20211118
+_srctag=6.3-20211124
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.4.1
+_monover=7.0.0
 _asyncver=a9de5a9fc12d12a2cd50e3aeffae01e6f51ddbd4
 pkgrel=1
 epoch=1
@@ -125,7 +125,7 @@ source=(
     vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
+    dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
@@ -235,8 +235,12 @@ prepare() {
     popd
 
     pushd wine
-        # Add FSR for fshack (doesn't compile)
-        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        # From Arch Wine
+        sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+        # Fix openldap 2.5+ detection
+        sed 's/-lldap_r/-lldap/' -i configure
+        # Add FSR for fshack
+        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
@@ -246,7 +250,7 @@ prepare() {
         # Enable at your own risk. If you don't know what it is,
         # and its implications, leave it as is. You have been warned.
         # I am not liable if anything happens to you by using it.
-        patch -p1 -i "$srcdir"/dxvk-async.patch
+        patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
     popd
 
     patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
@@ -300,9 +304,7 @@ build() {
     # Filter known bad flags before applying optimizations
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    #export CFLAGS+=" -fno-stack-protector"
     export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    #export CXXFLAGS+=" -fno-stack-protector"
     export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
     # From wine-staging PKGBUILD
     # Doesn't compile with these flags in MingW so remove them.
@@ -377,10 +379,10 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            'a70c865e590058fa6fc3aa47425646405bdda27f78b9aa6d2030d2d2a8efadbb'
+            '2a047893f047b4f0f5b480f1947b7dda546cee3fec080beb105bf5759c563cd3'
             'ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463'
-            'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
+            '62f1c2e7295801cedc7b1d8aea6ba3804ea61419cbf6a113dc700d95755ae1d9'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '37b262cfe70b19b59c06f24a35dceb8473d6dfc0016ca9bd20b1d4fa271ee6fe'
+            '56e673622ae4dbed438f4759cb9c25bc43a5532173eef6db6da13d3abe9d3933'
             '12a587972a101a6d0c279a3820135277097c5f3e9f5990c5741d5fb1626dc770'
             'cfe984e2b3d65b01e2875e51b8ef8b8d6f1268dd09a88d5611655f24b46cff8d')
