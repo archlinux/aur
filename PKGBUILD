@@ -7,9 +7,10 @@
 #
 
 pkgname=mas
-pkgver=1.42b178
+_pkgbuild=213
+pkgver=1.42b${_pkgbuild}
 _pkgfilebase=asl-current
-_pkgfile=${_pkgfilebase}-142-bld178
+_pkgfile=${_pkgfilebase}-142-bld${_pkgbuild}
 pkgrel=1
 pkgdesc="Macro cross-assembler (asl) for various processors and microcontrollers."
 arch=("i686" "x86_64")
@@ -23,8 +24,8 @@ source=("http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/${_pkgfile
 				"Makefile.def"
 				"makefile_nodocs.patch")
 
-sha256sums=('cb3740a96be117719b1a4b8de2bc02a84146898ee774de5cf3e0b352275209b2'
-            '0507795f2558bff086bc3d88169529a6dba5fe6cf4731433eb1388b421fa6d9f'
+sha256sums=('c6fb37c1a2f65e6d28ef813b57463c0e1da1717e9c203b5fa4e2e74984602dfa'
+            'a245fe24db2359b36f2224f7a70914979593c20beb633f10b9ca7bdcfa033851'
             '67c5d45388250f030c0cf5dfa4c18bec0f55aa2d5ae9b21875d32b0167d3e9d7')
 
 prepare() {
@@ -43,6 +44,3 @@ package() {
 	cd "${_pkgfilebase}"
 	make DESTDIR="$pkgdir" install
 }
-sha256sums=('cb3740a96be117719b1a4b8de2bc02a84146898ee774de5cf3e0b352275209b2'
-            '0507795f2558bff086bc3d88169529a6dba5fe6cf4731433eb1388b421fa6d9f'
-            '67c5d45388250f030c0cf5dfa4c18bec0f55aa2d5ae9b21875d32b0167d3e9d7')

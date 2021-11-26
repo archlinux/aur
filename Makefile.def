@@ -12,7 +12,7 @@ LD = $(CC)
 LDFLAGS =
 HOST_EXEXTENSION =
 
-# ...for the actual build targets.  This is the simple case for no cross-build:
+# no cross build
 
 TARG_OBJDIR = $(OBJDIR)
 TARG_CC = $(CC)
