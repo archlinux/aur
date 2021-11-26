@@ -1,0 +1,17 @@
+pkgbase = rtl8821cu-morrownr-dkms-git
+	pkgdesc = rtl8821cu chipset driver
+	pkgver = 5.8.1.7.123.499f495
+	pkgrel = 1
+	url = https://github.com/morrownr/8821cu
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = bc
+	depends = dkms
+	conflicts = rtl8821cu
+	source = git+https://github.com/morrownr/8821cu
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rtl8821cu-morrownr-dkms-git
