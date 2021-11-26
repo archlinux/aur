@@ -62,12 +62,12 @@ _minor=15
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=0
-_pfrel=1
+_unpatched_sublevel=4
+_pfrel=2
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.15-r0.patch
+_projectcpatchname=prjc_v5.15-r1.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER STEAMROLLER MEXCAVATOR ZEN ZEN2 MPSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -662,12 +662,12 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
 
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            '0eecdc29b3bde4bccda282c4c04ef114250fedddcf3dbf07a3cc201dce35838f'
-            '8c8065b992aca95154ebcd6e0ddda31ddf0c1979240c016cec34976888a342fa'
+            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586'
+            'ab1407647e26dee1e9d631ea51c0dc0dfc5ee170fa02492ac5075d6518fe780f'
             '8723eb2d5e3473db978bfa7e8d94c80efeac61d71e7fad2f1214ad55671a33a2'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'ab7dfc75abc1efdcf321614d5ebb41faa0382910c7e4750fad524ab87f864f02'
-            'decd4a55c0d47b1eb808733490cdfea1207a2022d46f06d04a3cc60fdcb3f32c'
+            '9281cae0b5f3864c56bc2b668b1fe0021926cf88ef22289638584af6870f9cec'
+            '768239d739180c0199545b5c5cf2d78de6261aec769008e6a2b7e97c7477b756'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
