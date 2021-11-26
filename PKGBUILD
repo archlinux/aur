@@ -2,17 +2,17 @@
 
 _pkgname=ryaml
 pkgname="python-${_pkgname}"
-pkgver=0.2.0.post1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A simple yaml serializer and deserializer using Rust."
 arch=(x86_64)
 url="https://pypi.org/project/${_pkgname}"
 license=('MIT')
 depends=('python')
 makedepends=('maturin' 'python-pip' 'rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ethanhs/ryaml/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8ae4224ff8ea0aeabcc5090a31040b0607446ec38b8dc284ba455b0f1d3a077d')
-b2sums=('76fddd9979bf7dcb3881345c5c69ec0022729b5aa72432f0db0a8da85e55b886a52ee271fb0b072bddf78322ddda44d819e310ab68bf8f15da75e9d06cb787a3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ethanhs/ryaml/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('889373d73807367e0de4cbf538cb42096fd4a7372985bc6afa354e4ded8dfda7')
+b2sums=('6d2ae86ed682c25d39783dab36d4e59fbca72b26dc43d36b9b5eee219fab5adf74d5f5963b425a180628d5e303cbbbf2d84538cf355d57521e88dd3799cfc61f')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
@@ -26,7 +26,7 @@ build() {
   cd "$_pkgname-$pkgver"
 
   maturin build --no-sdist --release --strip \
-    --cargo-extra-args="--features=abi3"
+    --cargo-extra-args="--frozen --features=abi3"
 }
 
 package() {
