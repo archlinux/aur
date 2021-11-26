@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-make
 	pkgdesc = Make wrapper for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = GPL
@@ -11,4 +11,3 @@ pkgbase = mingw-w64-make
 	sha256sums = SKIP
 
 pkgname = mingw-w64-make
-
