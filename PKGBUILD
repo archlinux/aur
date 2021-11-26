@@ -1,7 +1,7 @@
 # Maintainer: Jamin Collins <jamin.collins@gmail.com>
 
 pkgname=mkinitcpio-aoe-utils
-pkgver=20211122
+pkgver=20211126
 pkgrel=1
 pkgdesc="tools for AoE root support in mkinitcpio"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=()
 source=('65-aoe.rules'
 	'initcpio-install-aoe'
         'initcpio-hook-aoe')
-md5sums=('12a2d8f0c052d5d4744721880b524d1d'
-         '20f5f0aaf311f74999c521d4f81f9558'
-         'c230c653f86a4d86fea3bdb1e847ccb7')
+md5sums=('01acda437f29451c54deb9ffbe877f18'
+         '5f614fdc62e3a44e2c1fdfe01955b18f'
+         'afc422d76e3b47ba7eb6035dc339d87c')
 
 package() {
     mkdir -p "$pkgdir/usr/lib/udev/rules.d"
