@@ -1,13 +1,12 @@
 pkgbase = vim-pandoc-git
 	pkgdesc = plugin for writing and editing documents in Pandoc's extended markdown
-	pkgver = 1363054733
+	pkgver = 1631042682
 	pkgrel = 1
 	url = https://github.com/vim-pandoc/vim-pandoc
 	arch = any
-	license = unknown
+	license = MIT
 	depends = vim
 	source = git://github.com/vim-pandoc/vim-pandoc.git
 	sha512sums = SKIP
 
 pkgname = vim-pandoc-git
-
