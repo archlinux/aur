@@ -13,3 +13,17 @@ pkgbase = xrt-bin
 
 pkgname = xrt-bin
 
+pkgbase = xrt-bin
+	pkgdesc = Xilinx Run Time for FPGA
+	pkgver = 2021.2
+	pkgrel = 1
+	url = https://github.com/Xilinx/XRT
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	depends = ocl-icd
+	optdepends = vivado
+	source = https://www.xilinx.com/bin/public/openDownload?filename=xrt_202110.2.11.634_20.04-amd64-xrt.deb
+	md5sums = a40f8a4386e8f92f9af43d1bfae54b62
+
+pkgname = xrt-bin
