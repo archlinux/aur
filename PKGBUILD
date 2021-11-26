@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=python-mwoauth
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic MediaWiki OAuth handshake helper for Python"
 license=(MIT)
 arch=('any')
@@ -19,7 +19,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
