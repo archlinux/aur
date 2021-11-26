@@ -3,10 +3,10 @@
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-bin)
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.mounriver.com/'
-license=('GPL2' 'GPL3' 'Custom')
+license=('GPL2' 'GPL3' 'custom')
 provides=('MRS-Toolchain')
 conflicts=()
 depends=('bash')
@@ -22,7 +22,13 @@ source=("${pkgbase}-${pkgver}.tar.gz::http://file.mounriver.com/tools/MRS_Toolch
 
 sha256sums=('443a7392c42cd387a2b0445f265e9e98b020b7779d346f360a786f1c0c1a7b9b')
 
+options=('!strip')
+
 noextract=(${pkgbase}-${pkgver}.tar.gz)
+
+_install(){
+     find ${@: 2} -type f -exec install -Dm$1 {}  ${pkgdir}/opt/wch/${pkgname%-bin}/{} \;
+} 
 
 package_mounriver-studio-toolchain-bin() {
     pkgdesc="This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD."
@@ -30,11 +36,22 @@ package_mounriver-studio-toolchain-bin() {
 }
 
 package_mounriver-studio-toolchain-openocd-bin() {
+    depends=('bash'
+             'libftdi-compat'
+             'libusb'
+             'hidapi'
+             'libusb-compat'
+             'libudev.so')
+
     pkgdesc="MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip."
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
 
     tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.gz" --strip-components=2 -C "${srcdir}"
-    cp -r "${srcdir}"/OPENOCD/* "${pkgdir}/opt/wch/${pkgname%-bin}"
+# cp -r "${srcdir}"/OPENOCD/* "${pkgdir}/opt/wch/${pkgname%-bin}"
+    cd "${srcdir}"/OPENOCD/
+    _install 644 bin -name "*.cfg"
+    _install 755 bin -name "openocd"
+    _install 644 share
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-arm" << EOF
 #!/bin/env bash

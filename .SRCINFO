@@ -1,11 +1,11 @@
 pkgbase = mounriver-studio-toolchain-bin
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	license = Custom
+	license = custom
 	makedepends = tar
 	depends = bash
 	optdepends = ch34x-dkms-git: CH341SER driver with fixed bug
@@ -16,6 +16,7 @@ pkgbase = mounriver-studio-toolchain-bin
 	optdepends = ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A
 	provides = MRS-Toolchain
 	noextract = mounriver-studio-toolchain-bin-1.10.tar.gz
+	options = !strip
 	source = mounriver-studio-toolchain-bin-1.10.tar.gz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V1.10.tar.gz
 	sha256sums = 443a7392c42cd387a2b0445f265e9e98b020b7779d346f360a786f1c0c1a7b9b
 
@@ -26,6 +27,12 @@ pkgname = mounriver-studio-toolchain-bin
 
 pkgname = mounriver-studio-toolchain-openocd-bin
 	pkgdesc = MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip.
+	depends = bash
+	depends = libftdi-compat
+	depends = libusb
+	depends = hidapi
+	depends = libusb-compat
+	depends = libudev.so
 
 pkgname = mounriver-studio-toolchain-riscv-bin
 	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
