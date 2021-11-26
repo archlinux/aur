@@ -2,7 +2,7 @@
 # Maintainer: Maël <alemswaj+tutanota+com>
 
 pkgname=hypnotix-wayland
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="An IPTV streaming application. (With Wayland support). It's the package from the linux mint's github modified to work with wayland as it's whrote on the hypnotix's github repository. IT WORK GREAT EVEN IF YOU USE X11"
 arch=(any)
@@ -10,8 +10,8 @@ url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp)
 conflicts=(hypnotix hypnotix-git)
-source=(https://codeload.github.com/linuxmint/hypnotix/tar.gz/refs/tags/${pkgver})
-sha256sums=('acc86f76a6f4bce3da2114b71ff9e105383b84ae54d21a9fd0993ce52da8c3e9')
+source=(https://github.com/linuxmint/hypnotix/archive/refs/tags/${pkgver}.tar.gz)
+sha256sums=('4321e008f41073b74bfa41b66989d314cae01b1cecce4c092aea1a7fa74b16f0')
 prepare() {
 	cd hypnotix-$pkgver
 	sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
@@ -27,7 +27,7 @@ GDK_BACKEND=x11 /usr/lib/hypnotix/hypnotix.py &
 else
 /usr/lib/hypnotix/hypnotix.py &
 fi'" >> usr/bin/hypnotix 
-	sed -i '1245a \        options["vo"] = "x11"' usr/lib/hypnotix/hypnotix.py
+	sed -i '1392a \        options["vo"] = "x11"' usr/lib/hypnotix/hypnotix.py
 }
 
 package() {
