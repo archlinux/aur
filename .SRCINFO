@@ -1,6 +1,6 @@
 pkgbase = soju-git
 	pkgdesc = A user-friendly IRC bouncer
-	pkgver = v0.2.1.r96.g73295e4
+	pkgver = v0.3.0.r6.ge3d7c33
 	pkgrel = 1
 	url = https://soju.im/
 	install = soju.install
@@ -9,7 +9,8 @@ pkgbase = soju-git
 	makedepends = git
 	makedepends = go
 	makedepends = scdoc
-	depends = sqlite
+	optdepends = sqlite: SQLite support
+	optdepends = postgresql: PostgreSQL support
 	provides = soju
 	conflicts = soju
 	backup = etc/soju/config

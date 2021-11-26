@@ -2,14 +2,17 @@
 
 pkgname=soju-git
 _pkgname=soju
-pkgver=v0.2.1.r96.g73295e4
+pkgver=v0.3.0.r6.ge3d7c33
 pkgrel=1
 pkgdesc='A user-friendly IRC bouncer'
 arch=('x86_64')
 url='https://soju.im/'
 license=('AGPL3')
-depends=('sqlite')
 makedepends=('git' 'go' 'scdoc')
+optdepends=(
+    "sqlite: SQLite support"
+    "postgresql: PostgreSQL support"
+)
 install=$_pkgname.install
 provides=('soju')
 conflicts=('soju')
