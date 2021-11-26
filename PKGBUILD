@@ -1,6 +1,6 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-git
-pkgver=v0.4.0
+pkgver=0.5.0
 pkgrel=1
 epoch=
 pkgdesc="Syncing dotfiles and more"
