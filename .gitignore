@@ -1,0 +1,4 @@
+src/
+pkg/
+btrfs-assistant/
+*.tar.zst
