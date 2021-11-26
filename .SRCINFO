@@ -6,7 +6,7 @@ pkgbase = lime
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = boost-libs
+	makedepends = boost
 	depends = bctoolbox>=5.0.53
 	depends = soci>=4.0.0
 	source = lime-5.0.53.tar.gz::https://github.com/BelledonneCommunications/lime/archive/5.0.53.tar.gz
