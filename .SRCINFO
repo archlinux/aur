@@ -1,5 +1,5 @@
 pkgbase = pop-launcher
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pop-launcher
 	depends = fd
 	depends = gtk3
 	depends = libqalculate
-	source = pop-launcher-1.0.3.tar.gz::https://github.com/pop-os/launcher/archive/refs/tags/1.0.3.tar.gz
-	sha256sums = fcf405537effc40f8d851101a8f165bda244be369080ad1078a5b9631459403f
+	source = pop-launcher-1.1.0.tar.gz::https://github.com/pop-os/launcher/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 6d834d5763a5f309a83d29536a8308962135cb99511ec50b7e23e016c7e84d49
 
 pkgname = pop-launcher
 	pkgdesc = Modular IPC-based desktop launcher service

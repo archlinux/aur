@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher' 'pop-shell-plugin-system76-power')
 pkgbase=pop-launcher
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('fd' 'gtk3' 'libqalculate')
 makedepends=('cargo')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('fcf405537effc40f8d851101a8f165bda244be369080ad1078a5b9631459403f')
+sha256sums=('6d834d5763a5f309a83d29536a8308962135cb99511ec50b7e23e016c7e84d49')
 
 prepare() {
   cd "launcher-$pkgver"
@@ -31,7 +31,7 @@ package_pop-launcher() {
   cd "launcher-$pkgver"
   sed -i "s|$pkgbase-bin \$(BIN)|$pkgbase-bin $pkgdir/usr/bin/$pkgbase|g" Makefile
 
-  make BIN="/usr/bin/$pkgbase" DESTDIR="$pkgdir/" install
+  make BIN="/usr/bin/$pkgbase" DESTDIR="$pkgdir" install
 
   rm -rf "$pkgdir/usr/lib/$pkgbase/scripts/system76-power"
 }
