@@ -11,7 +11,9 @@ url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL3')
 depends=('systemd' 'iproute2')
 arch=('any')
-optdepends=()
+optdepends=(
+	'nftables: nat feature'
+	'bash-completion')
 makedepends=('git' 'libxslt' 'docbook-xsl' 'docbook5-xml')
 sha256sums=('SKIP')
 source=("git+https://gitlab.com/patlefort/${_pkgname}")
