@@ -2,8 +2,8 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=7.0
-pkgrel=2
+pkgver=8.0
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -34,14 +34,14 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bbaeb6bedd36c3ea7c1f7163230e55ba1bf0eac6427fd3a1773095a9ded7a0a0')
+sha256sums=('b9adb81fc747f64415820d578c361f3901deec905d559639f2106e53c4f31929')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
-    install -Dm755 stl -t "$pkgdir/usr/bin"
+    install -Dm755 "${pkgname}" -t "$pkgdir/usr/bin"
 
-    install -d "$pkgdir/usr/share/stl"
-    cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/stl"
+    install -d "$pkgdir/usr/share/${pkgname}"
+    cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/${pkgname}"
 
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 "misc/${pkgname}.desktop" -t "$pkgdir/usr/share/applications"
