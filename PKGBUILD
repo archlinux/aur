@@ -2,7 +2,7 @@
 
 pkgname=steam-screensaver-fix
 pkgver=2.0.16
-pkgrel=3
+pkgrel=4
 pkgdesc='Fix for steam screensaving bug.'
 arch=('i686' 'x86_64')
 url='https://github.com/ValveSoftware/steam-for-linux/issues/5607'
@@ -17,15 +17,14 @@ source=(
 	'steam_sdl_injection.sh'
 	'steam-screensaver-fix-runtime'
 	'steam-screensaver-fix-native')
-sha256sums=(
-	'65be9ff6004034b5b2ce9927b5a4db1814930f169c4b2dae0a1e4697075f287b'
-	'SKIP'
-	'114c7ca82e6b7605c9e88bf569bd7f0d3ddad3f7260ac79c255f7f8f833a5379'
-	'1fdb424e1535aae8ae0acf045cc0b251f14563b7423f895abc6110b1da4c4ef1'
-	'a2f2935c0ae252a0e0fe924ebf4083b101689347f782c4a48637e41bdee849ef'
-	'cbed37a29051364311da8a08c01c173bde2e0d3c30fdaec9aa6d01c6018b24b5'
-	'c14b0f0a7a901d02de53ef7a511b7df7e87d670abb3181872a823d1ce57330f2'
-	'84573eca1c4006c35ed451d38cad0c7e41e31c819f35ccffffb2dfedfcee10ac')
+sha256sums=('65be9ff6004034b5b2ce9927b5a4db1814930f169c4b2dae0a1e4697075f287b'
+            'SKIP'
+            '114c7ca82e6b7605c9e88bf569bd7f0d3ddad3f7260ac79c255f7f8f833a5379'
+            '1fdb424e1535aae8ae0acf045cc0b251f14563b7423f895abc6110b1da4c4ef1'
+            'a2f2935c0ae252a0e0fe924ebf4083b101689347f782c4a48637e41bdee849ef'
+            'fe684fd277bb27cc79c9648d2d44ae9e936717f32b7c099ba05579dd53524840'
+            'c14b0f0a7a901d02de53ef7a511b7df7e87d670abb3181872a823d1ce57330f2'
+            '84573eca1c4006c35ed451d38cad0c7e41e31c819f35ccffffb2dfedfcee10ac')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6')
 
 prepare() {
