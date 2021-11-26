@@ -21,6 +21,11 @@ pkgver() {
   git describe --tags | sed 's+-+.r+' |tr - . | cut -c2-
 }
 
+prepare() {
+  cd ${pkgname%-git}
+  git apply "$srcdir"/io-curses.patch
+}
+
 build() {
   cd ${pkgname%-git}
   autoreconf -iv
