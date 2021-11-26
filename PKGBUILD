@@ -3,7 +3,7 @@
 pkgname=com.qq.weixin.deepin
 pkgver=3.2.1.154
 _pkgver=3.2.1.154deepin13
-pkgrel=14
+pkgrel=15
 pkgdesc="Deepin Wine WeChat"
 arch=('i686' 'x86_64')
 url="http://pc.weixin.qq.com/"
@@ -20,13 +20,24 @@ depends=(
     )
 makedepends=('tar')
 conflicts=('deepin-wine-wechat' 'deepin.com.wechat' 'deepin.com.wechat2')
-source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
-md5sums=('1cc7cfc9f77f60147f476121bd9e7542')
+source=(
+    "https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb"
+    "libldap24.tar.gz"
+)
+md5sums=(
+    '1cc7cfc9f77f60147f476121bd9e7542'
+    '9f42504749b5d9936428a83c28d13aad'
+)
 
 package() {
     tar -xf data.tar.xz -C ${pkgdir}
     mkdir -p ${pkgdir}/usr/share/applications
+    # install icon and desktop file
     cp -r ${pkgdir}/opt/apps/${pkgname}/entries/icons/ ${pkgdir}/usr/share/
     cp ${pkgdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     sed -i 's/WeChat.exe/wechat.exe/' ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    # fix WeChatWin.dll error
+    mv libldap24 ${pkgdir}/opt/apps/${pkgname}/lib
+    sed -i '8iexport LD_LIBRARY_PATH=/opt/apps/com.qq.weixin.deepin/lib/' ${pkgdir}/opt/apps/${pkgname}/files/run.sh
+
 }
