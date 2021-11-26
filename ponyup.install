@@ -5,7 +5,7 @@ post_install() {
     echo 'NOTE: consider export PATH=~s/.local/share/ponyup/bin/ponyup:$PATH'
     echo
     echo 'NOTE: if this is your first time using ponyup please visit https://github.com/ponylang/ponyup'
-    echo 'NOTE: if you would just like to get going:'
+    echo 'NOTE: if you would just like to get going, install the compiler with:'
     echo
     echo '    $  ponyup update ponyc release'
     echo
