@@ -1,6 +1,6 @@
 pkgbase = python-pypinfo
 	pkgdesc = View PyPI download statistics with ease
-	pkgver = 19.0.0
+	pkgver = 20.0.0
 	pkgrel = 1
 	url = https://github.com/ofek/pypinfo
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = python-pypinfo
 	depends = python-appdirs
 	depends = python-binary
 	depends = python-click
-	depends = python-google-cloud-bigquery>=0.29.0
-	depends = python-tinydb>=4
-	depends = python-tinyrecord>=0.2.0
-	source = python-pypinfo-19.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinfo/pypinfo-19.0.0.tar.gz
-	sha256sums = d2e85268c5e8b21b092b929cd7812788496166835975e3fe49d16271d3fabf6a
+	depends = python-google-cloud-bigquery
+	depends = python-tinydb
+	depends = python-tinyrecord
+	source = python-pypinfo-20.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinfo/pypinfo-20.0.0.tar.gz
+	sha256sums = 770bbafda03eb231929ef6e245bf75c09b260bbd5fcdf54a8cc446aa2b2d2d0e
 
 pkgname = python-pypinfo
