@@ -1,26 +1,34 @@
-_name="sneak"
-_reponame="vim-${_name}"
-pkgname="${_reponame}-git"
-pkgver=r293.5cd2642
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+
+pkgname=vim-sneak-git
+pkgver=1.9.r6.g94c2de4
 pkgrel=1
-pkgdesc="VIM plugin for jumping to a location specified by two characters"
+pkgdesc='Motion plugin for Vim'
 arch=('any')
-url="http://www.vim.org/scripts/script.php?script_id=4809"
+url='https://github.com/justinmk/vim-sneak'
 license=('MIT')
-depends=('vim')
+groups=('vim-plugins')
+depends=('vim-plugin-runtime')
 makedepends=('git')
-source=("git+https://github.com/justinmk/${_reponame}")
-md5sums=('SKIP')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url")
+sha256sums=('SKIP')
+
+PURGE_TARGETS=('.gitignore')
 
 pkgver() {
-	cd "${srcdir}/${_reponame}"
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+  git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
-	cd "${srcdir}/${_reponame}/plugin"
-	install -Dm 644 ${_name}.vim "${pkgdir}/usr/share/vim/vim74/plugin/${_name}.vim"
+  cd "$pkgname"
+  find autoload doc plugin \
+    -type f \
+    -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
+
+# vim:set et sw=2 ts=2 tw=79:
