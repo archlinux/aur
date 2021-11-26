@@ -20,9 +20,8 @@ pkgver() {
 }
 
 prepare() {
-	cd $_pkgname
 	# only build shared library
-	sed -i '/(chdr-static/d;/tests/d' CMakeLists.txt
+	sed -i '/(chdr-static/d;/tests/d' $_pkgname/CMakeLists.txt
 }
 
 build() {
