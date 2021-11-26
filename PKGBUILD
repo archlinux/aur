@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://gitlab.com/garuda-linux/applications/$_pkgname"
 license=('GPL3')
 depends=('qt5-base' 'qt5-svg' 'noto-fonts' 'polkit')
+conflicts=('garuda-assistant' 'garuda-assistant-git')
 optdepends=('snapper')
 makedepends=('git' 'cmake' 'qt5-tools')
 groups=('garuda')
