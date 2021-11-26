@@ -13,10 +13,14 @@ conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.xz"::"https://github.com/quickgui/quickgui/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6c644d91cab88fe53cd3cba52dedb54fd500e2e0385d803846d961f39c517683')
 
-package() {
+build() {
   cd "$pkgname-$pkgver"
 
   flutter build linux --release
+}
+
+package() {
+  cd "$pkgname-$pkgver"
 
   install -Dm755 build/linux/x64/release/bundle/quickgui "$pkgdir/opt/$pkgname/quickgui"
   install -Dm644 assets/resources/quickgui.desktop "${pkgdir}/usr/share/applications/quickgui.desktop"
