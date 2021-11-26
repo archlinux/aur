@@ -1,14 +1,17 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=soju
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A user-friendly IRC bouncer'
 arch=('x86_64')
 url='https://soju.im/'
 license=('AGPL3')
-depends=('sqlite')
 makedepends=('go' 'scdoc')
+optdepends=(
+    "sqlite: SQLite support"
+    "postgresql: PostgreSQL support"
+)
 install=$pkgname.install
 source=(
     "https://git.sr.ht/~emersion/${pkgname}/refs/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.sig}
@@ -16,7 +19,7 @@ source=(
     "soju.service"
     "soju.tmpfiles"
 )
-sha256sums=('d55c5c6e7dac5855280e6d19ed54e65445f847ed9a620b0aee58d0e398c3107a'
+sha256sums=('c1b77e87e42eb12bdc57a8c308b0d0f2b3dd367a2a8f9093a3983fa692c6aa01'
             'SKIP'
             'c050d3f376f43e1cc22e75f445027862df8d09230e18cbb0913ab58ddced78aa'
             '4c609a9b267bb4877ba5e212f71146c87eccb13e2801edd7b68003e2ad8c2555'
