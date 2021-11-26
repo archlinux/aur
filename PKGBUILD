@@ -1,9 +1,9 @@
 # Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 
 pkgname=sozi-bin
-pkgver=21.09
+pkgver=21.11
 # the build version is obtained from [here](https://github.com/sozi-projects/Sozi/releases)
-_buildver=21.09.14-1631646245
+_buildver=21.11.14-1636892493
 _electronver="9.4.4"
 pkgrel=1
 pkgdesc="A zooming presentation editor and player based on SVG and JavaScript"
@@ -15,7 +15,7 @@ arch=('x86_64')
 license=('MPL2')
 
 source=("https://github.com/sozi-projects/Sozi/releases/download/v${pkgver}/sozi-${_buildver}-linux-x64.tar.xz")
-sha512sums=('50d2e78d2e7cfaabb84bb90f64c4b4eed615ad88281647bb0a49cb5bf232adc36e90e705e18d3a4b74278d6324cf5996f9a874b1a184517976370b4970ee4046')
+sha512sums=('f8d13af0247acc05ccc52f88ce4bd73c208844ba8f45776234d00f597a57ffaaf5d8b118366f25479bd0205cbe03f07fa80816e6864f014f2a660ee2a924cac0')
 
 depends=("gconf" "libnotify" "alsa-lib" "nss" "gtk2" "gtkmm" "libxtst")
 optdepends=(
