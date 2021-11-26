@@ -2,8 +2,9 @@ pkgbase = gentoo-mirrorselect
 	pkgdesc = Script for selecting Gentoo mirrors.
 	pkgver = 2.2.6
 	pkgrel = 1
-	url = https://wiki.gentoo.org/wiki/Mirrorselectlicense=('GPL2')
+	url = https://wiki.gentoo.org/wiki/Mirrorselect
 	arch = any
+	license = GPL2
 	depends = python
 	depends = netselect
 	depends = dialog

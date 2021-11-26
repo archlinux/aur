@@ -5,7 +5,8 @@ pkgver=2.2.6
 pkgrel=1
 pkgdesc="Script for selecting Gentoo mirrors."
 arch=( 'any' )
-url="https://wiki.gentoo.org/wiki/Mirrorselectlicense=('GPL2')"
+url="https://wiki.gentoo.org/wiki/Mirrorselect"
+license=('GPL2')
 depends=('python' 'netselect' 'dialog' 'ssl-fetch>=0.3' )
 source=("https://dev.gentoo.org/~zmedico/dist/${_basename}-${pkgver}.tar.gz")
 b2sums=('8875bf61e26ac474338d81a602297fa4fdf3fab3dbd478b02129dbe71f2d09445efa9b82792e3e654725c5e87a4ca00d37a3d924f8bd6f2decdf74148d1069c8')
