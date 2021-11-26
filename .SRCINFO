@@ -1,14 +1,14 @@
 pkgbase = firecracker-bin
 	pkgdesc = Secure and fast microVMs for serverless computing
-	pkgver = 0.25.1
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = https://github.com/firecracker-microvm/firecracker
 	arch = x86_64
 	arch = aarch64
 	license = Apache:2.0
 	provides = firecracker
-	source = https://github.com/firecracker-microvm/firecracker/releases/download/v0.25.1/firecracker-v0.25.1-x86_64.tgz
-	sha512sums = 8108b7576655ae31c97f6349f5dd530aca2828acbb0d4589d6d0c113d44c4e14b28c4d76f73fe16c5538ce4940bd86e913e97ad35d7f915f8199bceaf4f74fe3
-	b2sums = d577dfad765b8135471a673e9699c75bb7905e73496b7e9940a7634182267a1b3bfd8111088db4e1103da47e64159c585d46f8a9fb913ba3dcb1d4d1fe5f9920
+	source = https://github.com/firecracker-microvm/firecracker/releases/download/v0.25.2/firecracker-v0.25.2-x86_64.tgz
+	sha512sums = 24d7a466019e786ded7eb6747108123c1f177e86d3197738ffc646a2f27f642576e052a8b52a0b75fa3b53de6e0a2828defa5dbba62b208e8c262248240c5059
+	b2sums = dd1287cbbc2955368011417b56d24d7ab4d44b5d102a38541b5038d7a400dad71393ba25ab831cacf0aca8c1e6e344f56fb668af88ebb4c379941bed152a5e71
 
 pkgname = firecracker-bin
