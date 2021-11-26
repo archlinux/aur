@@ -13,15 +13,18 @@ source=("git+$url.git" "pidcat.patch")
 md5sums=('SKIP' "c9bfb27615710b5ddaaf74cef0042a17")
 
 build() {
-  patch -N "$srcdir"/pidcat/pidcat.py pidcat.patch
+  cd "$srcdir/${pkgname%-git}"
+  patch -N pidcat.py "$srcdir"/pidcat.patch
 }
 
 package() {
+  cd "$srcdir/${pkgname%-git}"
+
   # Install license
-  install -Dm644 "$srcdir"/pidcat/LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.txt
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.txt
 
   # Install run script
-  install -Dm755 "$srcdir"/pidcat/pidcat.py "$pkgdir"/usr/bin/pidcat
+  install -Dm755 pidcat.py "$pkgdir"/usr/bin/pidcat
 }
 
 pkgver() {
