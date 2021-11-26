@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=zycore-c
 pkgname=$_pkgname-git
-pkgver=1.0.0.r20.g767719d
+pkgver=1.1.0.r3.g8983325
 pkgrel=1
 pkgdesc='Zyan core library for C'
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/zyantific/$_pkgname"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake' 'git' 'ninja')
+checkdepends=('gtest')
 provides=("$_pkgname=$pkgver" 'libZycore.so')
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -23,8 +24,13 @@ build() {
 	cmake -S $_pkgname -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DZYCORE_BUILD_SHARED_LIB=ON \
+		-DZYCORE_BUILD_TESTS="$CHECKFUNC" \
 		-Wno-dev
 	cmake --build build
+}
+
+check() {
+	cmake --build build --target test
 }
 
 package() {

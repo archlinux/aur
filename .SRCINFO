@@ -1,15 +1,16 @@
 pkgbase = zycore-c-git
 	pkgdesc = Zyan core library for C
-	pkgver = 1.0.0.r20.g767719d
+	pkgver = 1.1.0.r3.g8983325
 	pkgrel = 1
 	url = https://github.com/zyantific/zycore-c
 	arch = x86_64
 	license = MIT
+	checkdepends = gtest
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
 	depends = glibc
-	provides = zycore-c=1.0.0.r20.g767719d
+	provides = zycore-c=1.1.0.r3.g8983325
 	provides = libZycore.so
 	conflicts = zycore-c
 	source = git+https://github.com/zyantific/zycore-c.git
