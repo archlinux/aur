@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Zacsh <j@zac.sh>
 
 pkgname=pidcat-git
-pkgver=2.1.0
+pkgver=2.1.0.r14.0cb1c2c
 pkgrel=1
 pkgdesc="Pidcat is a colored logcat script with improved readability that only shows log entries for a specific Android package."
 arch=('any')
@@ -22,4 +22,10 @@ package() {
 
   # Install run script
   install -Dm755 "$srcdir"/pidcat/pidcat.py "$pkgdir"/usr/bin/pidcat
+}
+
+pkgver() {
+  # per https://gitlab.archlinux.org/pacman/pacman/blob/edce7555a6b7410d1a4da6d27d22383989306ccc/proto/PKGBUILD-vcs.proto#L46
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
