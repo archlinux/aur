@@ -1,31 +1,32 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgname=python-pydub
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
+_base=pydub
+pkgname=python-${_base}
 pkgver=0.25.1
-pkgrel=1
-pkgdesc="Manipulate audio with an simple and easy high level interface"
-url="https://pydub.com"
-license=('MIT')
+pkgrel=2
+pkgdesc="Manipulate audio with a simple and easy high level interface"
+url="https://${_base}.com"
+license=(MIT)
 arch=('any')
-optdepends=('python-pyaudio: for playback' 'python-simpleaudio: for playback' 'ffmpeg: for playback' 'libav: for playback')
-makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/p/pydub/pydub-$pkgver.tar.gz"
-        "https://github.com/jiaaro/pydub/raw/v$pkgver/LICENSE")
-sha256sums=('980a33ce9949cab2a569606b65674d748ecbca4f0796887fd6f46173a7b0d30f'
-            'ae856536224cc7a389e968771fc5f259814bdd0da63539cf72282adbaef6897a')
+depends=(python ffmpeg)
+makedepends=(python-setuptools)
+optdepends=('python-pyaudio: for playback'
+  'python-simpleaudio: for playback') # python-scipy opus
+source=(https://github.com/jiaaro/${_base}/archive/v${pkgver}.tar.gz)
+sha512sums=('8c3fb3714c4b0aed37ba7ab6727776bf4cd7568c1f5060cf43c30ede8da2ce4b498fb83326daa19ef44635250d552295407289c3945681e028eedde1b2b418e0')
 
 build() {
-  cd "$srcdir/pydub-$pkgver"
+  cd "${_base}-${pkgver}"
   python setup.py build
 }
 
 check() {
-  cd "$srcdir/pydub-$pkgver"
-  python setup.py check
+  cd "${_base}-${pkgver}"
+  python test/test.py
 }
 
 package() {
-  cd "$srcdir/pydub-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_base}-${pkgver}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
