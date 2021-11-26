@@ -3,49 +3,32 @@
 
 _pkgname=tshock
 pkgname=${_pkgname}-bin
-pkgver=4.3.26
+pkgver=4.5.9
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
-pkgrel=2
+pkgrel=1
 pkgdesc="A Terraria Server administration modification that runs on the open source TerrariaAPI."
 arch=(any)
 url="http://tshock.co/xf"
 license=("GPL3")
-depends=("mono" "tmux")
+depends=("mono")
 provides=($_pkgname)
 conflicts=($_pkgname)
-install="${pkgname}.install"
-source=("${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/download/v${pkgver}/${_pkgname}_${pkgver}.zip"
-        'tshock.sh'
-        'default.conf'
-        'service'
-        "tmpfiles"
-        "sysusers")
+#install="${pkgname}.install"
+source=("${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/download/v4.5.9/TShock4.5.9_Terraria.1.4.3.2.zip"
+		'tshock-bin.install'
+        'tshock.sh')
 noextract=("${_pkgname}_${pkgver}.zip")
-sha512sums=('b61712988fb34324625bbba49779655c7b92e067a720b7d116c41583addec3592ae0a879a02e664fa172572512c0aad56038a4d1e5535f47e31108cb683e300c'
-            'f0958448b53ff9851c47876b89f1cef6d3e33ce1b8cbe13167c685ed1c9d89a8bf0f01929d47200e4f0f964c3e7796a2d9ca558e5d9f1269db3f2e4537a6c97a'
-            'd530a528ba84d57dfcb360e03ec62b1b38da6fa2383bef8cdb0cd039ba6466b053dd99a130a858c86405c8957ba86a0a080f2f56089843a7055662fa41cee102'
-            '7c1788f21664f038c32da6c0cbe817404a83f81b7b8be07bb0483d5ffd35991a07b647b18d7aa316db369edd4e7eab21c1b81ab3b45aa2c3692c6c63673a3fdb'
-            'a04b458932bb3882b9d40f9b5a9074b681e60cb3284635d1efb7e54293f39df334e7ae526dabf50f633ecdde980f287a939d3ea6eb0d4098663fbda21af70a65'
-            '5752f8453fbb4d973ebe71bba371ae7b0ddd2313ccd17de89b3942d024e295805324085640756e7118e4cc76abee675f5e253526261cb62cb76b0bc155aca317')
+sha512sums=('495a40ff1b27436d39e983c57987a22bf747aff7d7561b24dce675d855a1306e8204cfb0f68547a665ef157995e71b93260617f07e383ae444e69b2027fcde02'
+			'ae90ff11842c93a12d5e84b5090731e0194280d5e598d54695dec6d9496e5d2f8d363a8b894e12343583df97ff904a10f008e9b13854cc1c555f65b100a8cadb'
+            'f0958448b53ff9851c47876b89f1cef6d3e33ce1b8cbe13167c685ed1c9d89a8bf0f01929d47200e4f0f964c3e7796a2d9ca558e5d9f1269db3f2e4537a6c97a')
 
-backup=("etc/conf.d/${_pkgname}/default.conf")
+#backup=("etc/conf.d/${_pkgname}/default.conf")
 
 package() {
     install -Dm755 "${srcdir}/tshock.sh" "${pkgdir}/usr/bin/tshock"
 
-    install -Dm644 "${srcdir}/default.conf" "${pkgdir}/etc/conf.d/${_pkgname}/default.conf"
-
-    # Install sysusers
-    install -Dm644 "${srcdir}/sysusers" "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
-
-    # Install tmpfiles
-    install -Dm644 "${srcdir}/tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
-
-    # Install service
-    install -Dm644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/tshock@.service"
-
     # Unzip server files
-    install -d "${pkgdir}/srv/tshock"
-    bsdtar -x -f "${srcdir}/${_pkgname}_${pkgver}.zip" -C "${pkgdir}/srv/tshock"
+    install -d "${pkgdir}/usr/lib/tshock"
+    bsdtar -x -f "${srcdir}/${_pkgname}_${pkgver}.zip" -C "${pkgdir}/usr/lib/tshock"
 }
