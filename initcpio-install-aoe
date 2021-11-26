@@ -8,6 +8,23 @@ build() {
     add_binary "/usr/bin/aoe-discover" "/bin/aoe-discover"
 
     add_runscript
+
+    cat >"$BUILDROOT/usr/lib/systemd/system/aoe.service" <<EOF
+[Unit]
+Description=AoE startup
+After=systemd-modules-load.service
+Before=initrd-root-device.target
+DefaultDependencies=no
+
+[Service]
+Type=idle
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/modprobe aoe
+ExecStart=/hooks/aoe run_hook
+EOF
+
+    cd "$BUILDROOT/usr/lib/systemd/system/sysinit.target.wants"
+    ln -sf ../aoe.service aoe.service
 }
 
 help() {

@@ -1,3 +1,5 @@
+#!/usr/bin/ash
+
 # vim: set ft=sh:
 run_hook() {
     for i in $(ls /sys/class/net); do
@@ -15,5 +17,8 @@ run_hook() {
     echo Issuing AoE discover
     aoe-discover
 }
+
+# Run as `/hooks/aoe run_hook` to run the function()
+"$@"
 
 # vim: set ft=sh ts=4 sw=4 et:
