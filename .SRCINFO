@@ -1,19 +1,19 @@
 pkgbase = python-panel
-	pkgdesc = A high level app and dashboarding solution for Python.
-	pkgver = 0.9.7
+	pkgdesc = A high-level app and dashboarding solution for Python
+	pkgver = 0.12.5
 	pkgrel = 1
-	url = https://panel.holoviz.org/
+	url = https://panel.holoviz.org
 	arch = any
-	license = BSD
+	license = custom:BSD-3-clause
+	makedepends = python-setuptools
+	makedepends = npm
 	depends = python-bokeh
-	depends = python-param
 	depends = python-pyviz_comms
 	depends = python-markdown
 	depends = python-tqdm
 	depends = python-pyct
-	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/97/72/d7c08aafd4a1cb170711ab4631342152a5345cb05231b20205f53e6b4144/panel-0.9.7.tar.gz
-	sha256sums = 2e86d82bdd5e7664bf49558eedad62b664d5403ec9e422e5ddfcf69e3bd77318
+	depends = python-bleach
+	source = panel-0.12.5::https://github.com/holoviz/panel/archive/v0.12.5.tar.gz
+	sha512sums = 3cc26bc4a26c805685fcd9ff23945f7026da12bcd7d1d3e57ad8e398571a4544c45ab1559c0d86d021b04abd31422bf04f45710a0980ed918385bc5a92ce0274
 
 pkgname = python-panel
-

@@ -1,20 +1,26 @@
-# Maintainer: Markus Kaiser <markus dot kaiser at in dot tum dot de>
-_pkgname=panel
-pkgname=python-$_pkgname
-pkgver=0.9.7
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Markus Kaiser <markus dot kaiser at in dot tum dot de>
+_base=panel
+pkgname=python-${_base}
+pkgver=0.12.5
 pkgrel=1
-pkgdesc="A high level app and dashboarding solution for Python."
-arch=("any")
-url="https://panel.holoviz.org/"
-license=('BSD')
-depends=('python-bokeh' 'python-param' 'python-pyviz_comms' 'python-markdown' 'python-tqdm' 'python-pyct')
-options=(!emptydirs)
-source=('https://files.pythonhosted.org/packages/97/72/d7c08aafd4a1cb170711ab4631342152a5345cb05231b20205f53e6b4144/panel-0.9.7.tar.gz')
-sha256sums=('2e86d82bdd5e7664bf49558eedad62b664d5403ec9e422e5ddfcf69e3bd77318')
+pkgdesc="A high-level app and dashboarding solution for Python"
+arch=('any')
+url="https://${_base}.holoviz.org"
+license=('custom:BSD-3-clause')
+depends=(python-bokeh python-pyviz_comms python-markdown python-tqdm python-pyct python-bleach)
+makedepends=(python-setuptools npm)
+source=(${_base}-${pkgver}::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
+sha512sums=('3cc26bc4a26c805685fcd9ff23945f7026da12bcd7d1d3e57ad8e398571a4544c45ab1559c0d86d021b04abd31422bf04f45710a0980ed918385bc5a92ce0274')
 
-package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "${_base}-${pkgver}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+}
