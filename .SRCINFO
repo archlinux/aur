@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-acecombat
+	pkgdesc = Fortune quotes from Ace Combat
+	pkgver = 2012130332
+	pkgrel = 1
+	url = http://en.wikiquote.org/wiki/Ace_Combat
+	arch = any
+	license = custom:cc-sa-3.0
+	makedepends = fortune-mod
+	makedepends = wikiquote-fortune
+	depends = fortune-mod
+
+pkgname = fortune-mod-acecombat
