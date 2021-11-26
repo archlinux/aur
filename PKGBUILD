@@ -2,26 +2,25 @@
 # Contributor: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 # Contributor: Feufochmar <feufochmar dot gd at gmail dot com>
 
+## Cannot use libtcod as dependency; statically linked
+
 pkgname=python-tcod
-pkgver=13.0.0
+pkgver=13.1.0
 pkgrel=1
 pkgdesc='High-performance Python port of libtcod'
 arch=('x86_64')
 url='https://github.com/libtcod/python-tcod'
 license=('BSD')
-depends=(
-	'python-cffi'
-	'python-numpy>=1.20.3'
-	'python-typing_extensions')
+depends=('python-cffi' 'python-numpy' 'python-typing_extensions')
 makedepends=(
 	'git'
 	'python-setuptools'
 	'python-pytest-runner'
-	'python-pycparser>=2.14'
+	'python-pycparser'
 	'python-sphinx'
-	'sdl2>=2.0.5')
+	'sdl2')
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver?signed"
-        'libtcod::git+https://github.com/libtcod/libtcod#tag=1.18.1?signed')
+        'libtcod::git+https://github.com/libtcod/libtcod#tag=1.19.0?signed')
 sha256sums=('SKIP'
             'SKIP')
 validpgpkeys=('9EF1E80F3817BC043097A7C15814977902B194CC') # Kyle Benesch @ GitHub
@@ -49,6 +48,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 docs/_build/man/python-tcod.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 docs/_build/man/python-tcod.1 -t "$pkgdir/usr/share/man/man1/"
 }
