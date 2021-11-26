@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-metalgear
+	pkgdesc = Fortune quotes from Metal Gear
+	pkgver = 2110081421
+	pkgrel = 1
+	url = http://en.wikiquote.org/wiki/Metal_Gear
+	arch = any
+	license = custom:cc-sa-3.0
+	makedepends = fortune-mod
+	makedepends = wikiquote-fortune
+	depends = fortune-mod
+
+pkgname = fortune-mod-metalgear
