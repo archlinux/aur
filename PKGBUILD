@@ -11,7 +11,7 @@ _version_tag=24337
 
 pkgname="gnome-shell-extension-$_name"
 pkgver=$_version
-pkgrel=1
+pkgrel=2
 pkgdesc='Change workspaces by scrolling while over the top panel in Gnome Shell'
 arch=('any')
 url="$_gnome_site/extension/$_pk/$_name/"
