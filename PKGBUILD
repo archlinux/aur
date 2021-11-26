@@ -2,14 +2,13 @@
 
 pkgname=btrfs-assistant-git
 _pkgname=btrfs-assistant
-pkgver=0.0.1.r0.gc2d77bd
+pkgver=0.0.1.r1.g5820284
 pkgrel=1
 pkgdesc="An application for managing BTRFS subvolumes and Snapper snapshots"
 arch=('x86_64')
 url="https://gitlab.com/garuda-linux/applications/$_pkgname"
 license=('GPL3')
 depends=('qt5-base' 'qt5-svg' 'noto-fonts' 'polkit')
-conflicts=('garuda-assistant' 'garuda-assistant-git')
 optdepends=('snapper')
 makedepends=('git' 'cmake' 'qt5-tools')
 groups=('garuda')
@@ -32,5 +31,5 @@ package() {
     cd "$srcdir/$_pkgname"
     make -C build DESTDIR="$pkgdir" install
 
-    install -Dm0644 "$srcdir/$_pkgname/snapper-check.desktop" "$pkgdir/etc/xdg/autostart/snapper-check.desktop"
+    install -Dm0644 "$srcdir/$_pkgname/snapper-snap-check.desktop" "$pkgdir/etc/xdg/autostart/snapper-snap-check.desktop"
 }
