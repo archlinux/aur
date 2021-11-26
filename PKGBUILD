@@ -7,13 +7,13 @@
 
 pkgname=mattermost-desktop
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Mattermost Desktop application for Linux'
 arch=(x86_64 i686)
 url="https://github.com/${pkgname/-//}"
 license=(Apache)
-_electron=electron12
-_builderVersion='^20.10.4'
+_electron=electron14
+_builderVersion='^22.14.5'
 depends=($_electron)
 makedepends=(git jq moreutils npm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
