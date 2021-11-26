@@ -1,4 +1,4 @@
-# Maintainer: <mikl_ls at protonmail dot com>
+# Maintainer: mikl_ls  <mikl_ls at protonmail dot com>
 # Maintainer: Skallwar <estblcsk(at)gmail(dot)com>
 
 pkgname=rtl8821cu-morrownr-dkms-git
