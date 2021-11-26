@@ -1,13 +1,14 @@
 pkgbase = python-datashader
 	pkgdesc = Quickly and accurately render even the largest data
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://datashader.org
 	arch = any
 	license = BSD
 	depends = python-dask
 	depends = python-datashape
 	depends = python-numba
+	depends = python-pillow
 	depends = python-xarray
 	depends = python-colorcet
 	depends = python-scipy
