@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=arsdk3
 pkgver=3.14.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The SDK for Parrot Bebop drones"
 arch=('x86_64')
 url="http://developer.parrot.com/docs/SDK3/"
@@ -62,5 +62,5 @@ package() {
 
     # set ARSDK_ROOT environment variable
     install -d "${pkgdir}"/etc/profile.d
-    echo export ARSDK_ROOT=/opt/arsdk3 > "${pkgdir}"/etc/profile.d/arsdk3.sh
+    echo export ARSDK_ROOT_DIR=/opt/arsdk3 > "${pkgdir}"/etc/profile.d/arsdk3.sh
 }
