@@ -10,10 +10,11 @@ url="https://github.com/ofek/pypinfo"
 license=('MIT')
 depends=(
 	'python>=3.6'
-	'python-appdirs'
 	'python-binary'
 	'python-click'
 	'python-google-cloud-bigquery'
+	'python-packaging'
+	'python-platformdirs'
 	'python-tinydb'
 	'python-tinyrecord')
 makedepends=('python-setuptools')

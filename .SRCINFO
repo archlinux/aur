@@ -7,10 +7,11 @@ pkgbase = python-pypinfo
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.6
-	depends = python-appdirs
 	depends = python-binary
 	depends = python-click
 	depends = python-google-cloud-bigquery
+	depends = python-packaging
+	depends = python-platformdirs
 	depends = python-tinydb
 	depends = python-tinyrecord
 	source = python-pypinfo-20.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinfo/pypinfo-20.0.0.tar.gz
