@@ -2,7 +2,7 @@
 
 appname=smartsynchronize
 pkgname=${appname}-preview
-pkgver=4.2_rc_2
+pkgver=4.3_preview_4
 pkgrel=1
 pkgdesc="Comparing Directories the Smart Way"
 arch=("any")
@@ -15,7 +15,7 @@ pkgver_tar=${pkgver_tar//./_}
 source=("https://www.syntevo.com/downloads/${appname}/${appname}-linux-${pkgver_tar}.tar.gz"
         "${pkgname}.desktop")
 
-sha1sums=("1228522da2f1b717d161308ea9c585f45ad99936"
+sha1sums=("d55ed59f5f46feba3c3172c897b7fa3007716ef8"
           "e0e0097cd79d194d27973a9b16414b2b5dca32bd")
 
 package() {
