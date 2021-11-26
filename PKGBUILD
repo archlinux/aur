@@ -7,12 +7,12 @@
 pkgname=zenmap
 _pkgname=nmap
 pkgver=7.92
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical Nmap frontend and results viewer"
 url="https://nmap.org/"
 arch=("any")
 license=("GPL2")
-depends=("nmap" "pygtk")
+depends=("nmap" "pygtk" "libffi7")
 source=("https://nmap.org/dist/${_pkgname}-${pkgver}.tar.bz2")
 sha256sums=("a5479f2f8a6b0b2516767d2f7189c386c1dc858d997167d7ec5cfc798c7571a1")
 
