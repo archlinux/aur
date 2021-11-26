@@ -1,21 +1,20 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: gkmcd <g@dramati.cc>
 
+## Must use git to pull sources because of python-setuptools-scm
+
 pkgname=python-pyscaffold
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
 arch=('any')
 license=('MIT')
 depends=(
-	'python-appdirs>=1.4.4'
-	'python-appdirs<2'
-	'python-configupdater>=3.0'
-	'python-configupdater<4'
-	'python-tomlkit>=0.7.0'
-	'python-tomlkit<2'
-	'python-packaging>=20.7')
+	'python-appdirs'
+	'python-configupdater'
+	'python-tomlkit'
+	'python-packaging')
 optdepends=(
 	'python-django: Scaffold Django projects.'
 	'python-cookiecutter: Create custom scaffold templates.'
@@ -39,7 +38,7 @@ build() {
 # 	python setup.py pytest --addopts '-c /dev/null'
 # }
 
-package_python-pyscaffold() {
+package() {
 	cd "$pkgname"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
