@@ -12,7 +12,7 @@ url="https://github.com/morrownr/8821cu"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git' 'bc')
-conflicts=("${_pkgbase}")
+conflicts=("${_pkgbase}-git" "${_pkgbase}-dkms-git")
 source=("git+https://github.com/morrownr/8821cu"
         'dkms.conf')
 sha256sums=('SKIP'
