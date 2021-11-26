@@ -1,7 +1,7 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=fortran-fpm
 _pkgname=fpm
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 epoch=
 pkgdesc="A Fortran package manager and build system"
@@ -22,8 +22,8 @@ install=
 changelog=
 source=("https://github.com/fortran-lang/fpm/releases/download/v$pkgver/$_pkgname-$pkgver.zip"
         "https://github.com/fortran-lang/fpm/releases/download/v$pkgver/"$_pkgname-$pkgver.F90)
-sha256sums=('cd9b80b7f40d9cf357ca8d5d4fe289fd32dfccb729bad7d2a68f245e4cdd0045'
-            'f69c18364e43ca1ef69e19f44c28e2929e30c1b33d78821db96da49f086963f9')
+sha256sums=('e4a06956d2300f9aa1d06bd3323670480e946549617582e32684ded6921a921e'
+            '53bba4d3d09d875d513ed4309a3defe414fa727dbcdeb38e4fdcf094e19c0257')
 noextract=()
 
 prepare() {
