@@ -90,9 +90,9 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.15.4-xanmod1
-#pkgver=${xanmod//-/.}
-pkgver=5.15.5.prexan0
+xanmod=5.15.5-xanmod1
+pkgver=${xanmod//-/.}
+#pkgver=5.15.5.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -121,7 +121,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.4-5.xz"
+        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.4-5.xz"
         #"Linux-5.15.4-rc1.patch"
 
         # Arch: misc hotfixes
@@ -132,6 +132,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # amd-pstate v4 included in Xanmod
         # multigenerational lru v5 included in Xanmod
         # 5.17 TCP Optimizations included in Xanmod
+        # 5.17 TCP csum optimization included in Xanmod
 
         # 5.16: zstd 1.4.10 update stack size regression fixes
         "zstd-udpate-fixes.patch"
@@ -141,9 +142,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # 5.16 spectre defaults
         "x86-change-default-to-spec_store_bypass_disable-prct.patch"
-
-        # 5.17 TCP csum optimization
-        "x86-csum-Rewrite-optimize-csum_partial.patch"
 
         # -- patch from Chromium developers; more accurately report battery state changes
         "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
@@ -180,17 +178,15 @@ validpgpkeys=(
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'de79c72c7ae45d81b603d112cea8c74ae050185e81708ea1fa36d4c6fdc40a77'
+            'd1b3e3aae70eae207d473214b33c088f646105fdbc52d8a7df71fbbdeede83b3'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            '72cc0f1b5233389358a946eb7abc181ba6c28a4937492b75f859c517a51bc592'
             'ce50ee3c64f6865234f6ec79fcbd87704494b0fbb7d3cc124f97244c731f9e61'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
             'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
-            '261807a9bc838709bd04e65a83eba2fefd8554699e5dfc8da9a1ee8499807813'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
