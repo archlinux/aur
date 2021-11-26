@@ -1,14 +1,15 @@
 pkgbase = python-veryprettytable
-	pkgdesc = A simple Python library for easily displaying tabular data in a visually appealing ASCII table format
+	pkgdesc = Python library for displaying tabular data
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smeggingsmegger/VeryPrettyTable
+	changelog = CHANGELOG
 	arch = any
 	license = BSD
-	makedepends = python3
-	depends = python
-	source = https://pypi.python.org/packages/50/43/d2695870d2b175be4c8a8f2f150626c6aec11469eeb6af284347b4bcf8ad/veryprettytable-0.8.1.tar.gz
-	md5sums = 9c166015f2429ea622cfd408ffc1c651
+	makedepends = python-setuptools
+	depends = python-colorama
+	depends = python-termcolor
+	source = python-veryprettytable-0.8.1.tar.gz::https://files.pythonhosted.org/packages/source/v/veryprettytable/veryprettytable-0.8.1.tar.gz
+	sha256sums = 6e4ca6fc88acae5de13f37ff7d8b130b03c9fadb4947d12b8b0c9b8ebe8b39cc
 
 pkgname = python-veryprettytable
-
