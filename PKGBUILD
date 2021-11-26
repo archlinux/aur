@@ -67,7 +67,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.15.4
+pkgver=5.15.5
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=1c61d8bae658098893817c837fbb8393247e726c
+_arch_config_commit=131a17b2319e4d56f3d95a1a2fca183e86474225
 _prjc_version=5.15-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20211114
@@ -85,30 +85,30 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/8f4b84416e1738041fe3cae3ee00e5227365c11c.patch"
-  "0002-staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch::https://github.com/archlinux/linux/commit/564a2d913e6d580a28c2e7710f04f2a27ec027f2.patch"
-  "0003-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch::https://github.com/archlinux/linux/commit/b6f0344961e165919bfddb0e03033792b9ea8a28.patch"
-  "0004-drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch::https://github.com/archlinux/linux/commit/4e023bf774e59df151f0b056179ab46f5d60423e.patch"
-  "0005-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch::https://github.com/archlinux/linux/commit/e17b993a29594029001366eb183c527ef9144d6c.patch"
-  "0006-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch::https://github.com/archlinux/linux/commit/43c4562c8109e71a5a363af5ddb027ef734132b0.patch"
-  "0007-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/236027c0ae73217898ac8249e44394cc1026dada.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/ddfcf9d61c8e8c85f10da9342641abd96b988d4c.patch"
+  "0002-staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch::https://github.com/archlinux/linux/commit/31d5f32df63c575edb494b4d87779f8030f32700.patch"
+  "0003-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch::https://github.com/archlinux/linux/commit/b791689a01733490accfbec492aa000e70db4cb9.patch"
+  "0004-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch::https://github.com/archlinux/linux/commit/9d27a8f230c4d6ff6a936c227e08cf2d4370f5cc.patch"
+  "0005-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch::https://github.com/archlinux/linux/commit/c9f82c4d609a59b1cf15981bf096ccc448290d8b.patch"
+  "0006-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/45f6ca918de13164a3213594f37a0ebed5506bdf.patch"
+  "0007-lg-laptop-Recognize-more-models.patch::https://github.com/archlinux/linux/commit/d8bbc459909a15bb5ad00b86475011172fab957c.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1ce31010ecd0945fa8c521da092f6dacef9b1223723fba9c271424427a4b23decac11c6dcf68eabf4f5f0f91cc4abab50e3bcbd776632f345fdc86be5ca7d986'
+b2sums=('2921b549a44ff4202ab96d35d6b7ce99bef914db5c1dba066fb7c4b146ef987d1aed53d0773fbe07cd6bb3b964d40b6f3f8c47f6a04149ea1c64e2f8f87343bb'
         'SKIP'
-        '1154722c5d8a33dedbd18679724ef34ac3aa96900c53aa8ebbba10ea87b0aaa0363d278b0aa4e5e5fed7e85c05e9b7892ba6bdd72f87117f584fef785d6f91d0'
+        '4b6759fae0abc440292b310aed12bd12bbfbc172f968572ee9b8a9164c844b3f2a12f81b1fdf5ed86d75403f0c5be5d57933292e22c2973ef14f481bf78a3f7e'
         '110a03b5658200f7414922cf4ed361b6127c08d99359111209c86d951907626c92ff1e50f6906a0f56534e24aa2f35520dae11fa0d148ade488b93a401cb706f'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        'c9d4d9ac756342cadbccbb278d3b412cd5bd265195f11374651cc0f8f82f1dba5a9150593e30b1931a1c97d8eae22352c8e605a1461f9cd2549bc410e36ddd5d'
-        '530d50fa961785eb2bb443b4a5327d416ac95922cc3cf7220e9e597bd158e0a0c767ec90fcb6f2ab8ecb6370c7eadd4d8e61a8ad9bf887735fe094d202df5568'
-        '0da1f147a5a2053e786056937b7acd5cfb747108a603a2f20533b1e9beb43c48bf533b3700dc51a5ee263895e736fa4782a8d176c99c24a7355a2a3f06d87e6e'
-        '3996d46019d9c80bb53e2a73ea584c5b530696c71b6ca3708cf8e00daa9c9c53d7e90eb2a2dc0acd31aa84cc32731a9b01aaf5bfc29c8d11690531e86a0c5243'
-        '805d36318c1da46f41344781c559ade4e714c429ad49d3b021e8b13c445247d2a3c1ffd2257bf83ab77011ffc98444639a3b29279caf4bc98864c858f30fbc28'
-        '55ef23269648b8132403dcb537ccd63c9a1ed729c12693dc55bb7506f8fb8b97d66e86cf6496be3c7738ae8e9f044e5240ca415ea75b7f8ff04ef0d6cd67da06'
-        '6dddaf79c531b5b1fa8e600710c24beeaee7ca07125543e09f44b17e869e4314e9aa56fe3ecf5b4e5816d81e67ed83a7ecc86b1a69b4262657bda74706b97c1d')
+        '7359ea6338fe362ce5c36ea51f98a40eb2b53908f11b19c3c2a6a4c301604787d6b6d78b1eb2f303083701196d7ff650d8ac2a12432bb36e11a6ac28752fbf3a'
+        'd7fd32266ff3045c27288d6b0bc7ae3d55f5953026aaa476c1e53b9cd0923bb7d62e2b5c53a9f62201c527d2cd525b20bf4b98f96d25c862da83317b61738341'
+        '3c61c5c321d34768ca40e0150534987c5b8d970dba7b98b70ab6d6cb21ca6b2f81d1d7429c275e2c5810352a0d4d72f50626678355164fe756319d4a40153601'
+        '4fd724c0f44e641b911e3f4f956ebc26003b62ee28f8b7e8cd5879a4a5a697ae7510e78e8f078da21f2b8b67725491edcfc3c6dc2ba9fe5aa95523b625cf36f0'
+        'd114321d231483c5718bd0ef3239e780bc4fa12e80c3c2202387f4abe3c8125c5733da55f1ce43dbb3244f62f38695e4bbb79782bb457fde233dd654ccb1c6b4'
+        'fa475462173f15ea7e02c27761509f4049866243d4f9427a04b332f21a56762955777843f9240be119273cab401bc337fac766664a99abbab31cf3000602aa16'
+        'a47edb0b018cf360c9cec4ac358b87878a65720f03353826cce8e9f10e12b2d7f647fc11fbca6c5fc66020c03a69c92eacfb7ef261ce265d5429f02be63c15b5')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
