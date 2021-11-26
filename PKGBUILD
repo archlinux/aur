@@ -7,14 +7,15 @@
 
 pkgname=gnome-commander
 pkgver=1.12.3.1
-pkgrel=1
+_pkgver=1.12
+pkgrel=2
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
 depends=('python' 'libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libunique3' 'gnome-vfs' 'gtk2')
 makedepends=('perl-xml-parser' 'itstool' 'yelp-tools')
-source=(https://download.gnome.org/sources/gnome-commander/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+source=(https://download.gnome.org/sources/gnome-commander/${_pkgver}/$pkgname-$pkgver.tar.xz)
 sha256sums=('42eb16b96ec5d2ee67e38870e01361bb60471e69c7c675f77b90ad696077153a')
 
 build() {
