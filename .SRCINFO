@@ -1,7 +1,7 @@
 pkgbase = com.qq.weixin.deepin
 	pkgdesc = Deepin Wine WeChat
-	pkgver = 3.2.1.154deepin13
-	pkgrel = 1
+	pkgver = 3.2.1.154
+	pkgrel = 14
 	url = http://pc.weixin.qq.com/
 	arch = i686
 	arch = x86_64

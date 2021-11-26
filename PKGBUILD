@@ -1,8 +1,9 @@
 # Maintainer: Jove Yu <yushijun110@126.com>
 # Contribuor: luosoy <249799588@qq.com>
 pkgname=com.qq.weixin.deepin
-pkgver=3.2.1.154deepin13
-pkgrel=1
+pkgver=3.2.1.154
+_pkgver=3.2.1.154deepin13
+pkgrel=14
 pkgdesc="Deepin Wine WeChat"
 arch=('i686' 'x86_64')
 url="http://pc.weixin.qq.com/"
@@ -19,7 +20,7 @@ depends=(
     )
 makedepends=('tar')
 conflicts=('deepin-wine-wechat' 'deepin.com.wechat' 'deepin.com.wechat2')
-source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 md5sums=('1cc7cfc9f77f60147f476121bd9e7542')
 
 package() {
