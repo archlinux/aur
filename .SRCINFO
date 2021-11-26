@@ -1,6 +1,6 @@
 pkgbase = gamja-git
 	pkgdesc = Simple IRC web client
-	pkgver = r229.982a945
+	pkgver = v1.0.0.beta.1.r85.g3e309e9
 	pkgrel = 1
 	url = https://sr.ht/~emersion/gamja/
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = gamja-git
 	sha256sums = SKIP
 
 pkgname = gamja-git
-

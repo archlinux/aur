@@ -2,7 +2,7 @@
 
 pkgname=gamja-git
 _pkgname=gamja
-pkgver=r229.982a945
+pkgver=v1.0.0.beta.1.r85.g3e309e9
 pkgrel=1
 pkgdesc='Simple IRC web client'
 arch=('any')
@@ -26,10 +26,14 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    npm install --production
+    npm install --include=dev
+    npm run build
+
+    cd dist
+    echo "{}" > config.json
 }
 
 package() {
     install -dm755 "$pkgdir"/usr/share/webapps/gamja/
-    cp -r "$srcdir/$_pkgname" "$pkgdir"/usr/share/webapps/
+    cp -r "$srcdir/$_pkgname"/dist/* "$pkgdir"/usr/share/webapps/gamja
 }
