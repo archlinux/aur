@@ -13,7 +13,7 @@ conflicts=(hypnotix hypnotix-git)
 source=(https://github.com/linuxmint/hypnotix/archive/refs/tags/${pkgver}.tar.gz)
 sha256sums=('4321e008f41073b74bfa41b66989d314cae01b1cecce4c092aea1a7fa74b16f0')
 prepare() {
-	cd hypnotix-$pkgverpython-unidecode
+	cd hypnotix-$pkgver
 	sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
 }
 
