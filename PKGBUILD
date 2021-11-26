@@ -1,11 +1,11 @@
 pkgname=feelpp
-pkgver=0.108.0
+pkgver=0.109.0
 pkgrel=1
 pkgdesc="Finite Element Embedded Language and Library in C++"
 arch=('x86_64')
 url="https://github.com/feelpp"
 license=('LGPL')
-depends=('cln' 'mumps' 'slepc' 'gmsh' 'fftw' 'ann' 'glpk' 'gsl' 'python')
+depends=('cln' 'mumps' 'slepc' 'gmsh' 'fftw' 'ann' 'glpk' 'gsl' 'python' 'elastic' 'openvr' 'libharu')
 makedepends=('cmake' 'clang' 'eigen')
 source=("${pkgname}-${pkgver}::git+https://github.com/feelpp/feelpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
