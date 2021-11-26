@@ -18,7 +18,7 @@ url="$_gnome_site/extension/$_pk/$_name/"
 license=('GPL')
 depends=("gnome-shell>=$_gnome_shell_version")
 source=("$pkgname.zip::$_gnome_site/download-extension/$_uuid.shell-extension.zip?version_tag=$_version_tag")
-sha256sums=('905a5fc0d5d74ef129c5a856f733df7ae8febda504a547900bb6b226b614f97c')
+sha256sums=('588e977da06f03169e2e15058734ff576810ce3d289fb9a2966779f967ab287b')
 
 package() {
     local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
