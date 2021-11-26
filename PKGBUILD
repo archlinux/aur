@@ -1,7 +1,7 @@
 # Maintainer: Dakeryas <mrdakeryas at gmail dot com>
 pkgbase=deadbeef-dr-meter-git
 pkgname=(deadbeef-dr-meter-gtk2-git deadbeef-dr-meter-gtk3-git)
-pkgver=r380.0e355d4
+pkgver=r382.2e9656c
 pkgrel=1
 _pkgdesc="Dynamic Range meter plugin for the DeaDBeeF audio player"
 pkgdesc="${_pkgdesc}"
