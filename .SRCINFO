@@ -1,12 +1,12 @@
 pkgbase = vim-melange
 	pkgdesc = Warm colorscheme for Vim and others
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/savq/melange
 	arch = any
 	license = MIT
-	source = vim-melange-0.7.1.tar.gz::https://github.com/savq/melange/archive/v0.7.1.tar.gz
-	sha256sums = 3b938b11c60a01d1122fae4f3251de5c86a054258eb9a92a01ebe83208588df7
+	source = vim-melange-0.7.2.tar.gz::https://github.com/savq/melange/archive/v0.7.2.tar.gz
+	sha256sums = da44daba8d567ba153ab70361235ba069ccfa75fa0235091aefe6b90d8c2ef7e
 
 pkgname = vim-melange
 	groups = vim-plugins
