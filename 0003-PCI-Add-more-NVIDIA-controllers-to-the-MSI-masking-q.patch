@@ -1,4 +1,4 @@
-From b6f0344961e165919bfddb0e03033792b9ea8a28 Mon Sep 17 00:00:00 2001
+From b791689a01733490accfbec492aa000e70db4cb9 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
 Date: Thu, 18 Nov 2021 22:53:31 +0100
 Subject: [PATCH 3/8] PCI: Add more NVIDIA controllers to the MSI masking quirk
@@ -20,5 +20,5 @@ index 208fa03acdda..7fdb7e9c2e12 100644
 +DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0ab9, nvidia_ion_ahci_fixup);
 +DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0d88, nvidia_ion_ahci_fixup);
 -- 
-2.34.0
+2.34.1
 

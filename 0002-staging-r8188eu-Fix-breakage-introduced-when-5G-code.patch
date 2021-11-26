@@ -1,4 +1,4 @@
-From 564a2d913e6d580a28c2e7710f04f2a27ec027f2 Mon Sep 17 00:00:00 2001
+From 31d5f32df63c575edb494b4d87779f8030f32700 Mon Sep 17 00:00:00 2001
 From: Larry Finger <Larry.Finger@lwfinger.net>
 Date: Sun, 7 Nov 2021 11:35:43 -0600
 Subject: [PATCH 2/8] staging: r8188eu: Fix breakage introduced when 5G code
@@ -43,5 +43,5 @@ index 5a472a4954b0..e5c907ac10fc 100644
  	{0x00},	/* 0x20, RT_CHANNEL_DOMAIN_WORLD_NULL */
  	{0x01},	/* 0x21, RT_CHANNEL_DOMAIN_ETSI1_NULL */
 -- 
-2.34.0
+2.34.1
 

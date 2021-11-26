@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.15.4
+pkgver=5.15.5
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -88,27 +88,27 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch
   0003-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
-  0004-drm-amd-pm-avoid-duplicate-powergate-ungate-setting.patch
-  0005-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
-  0006-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
-  0007-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  0004-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
+  0005-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
+  0006-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  0007-lg-laptop-Recognize-more-models.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1ce31010ecd0945fa8c521da092f6dacef9b1223723fba9c271424427a4b23decac11c6dcf68eabf4f5f0f91cc4abab50e3bcbd776632f345fdc86be5ca7d986'
+b2sums=('2921b549a44ff4202ab96d35d6b7ce99bef914db5c1dba066fb7c4b146ef987d1aed53d0773fbe07cd6bb3b964d40b6f3f8c47f6a04149ea1c64e2f8f87343bb'
         'SKIP'
         '1154722c5d8a33dedbd18679724ef34ac3aa96900c53aa8ebbba10ea87b0aaa0363d278b0aa4e5e5fed7e85c05e9b7892ba6bdd72f87117f584fef785d6f91d0'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
         'cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e'
-        '6455347b76354f76d53eff94208bcfefc0b0b049fe6ed4e0826f662bd4886aecd1e4f4b4996bc3d34643d0b37b3928a7e5078dd4b33dcf1a1e6ac07faddc57de'
-        'c8430454c9f687634bd0b665f008bfa419acc583686365af1b05fda04453cc6346059699ebdfd74892976ebe4904a7717fb7559f6b1015cba376adecf7244617'
-        'e41135711db868fc409b1410844d595164849e5f4e3f000cb1e332b87aa8729c3f6388b334425ca15e596ce602441ff8e09a0053af097449e7f55f9215f0a7f6'
-        '7d3df7bc40789ef93e5a76f8d9362862b13ba480961ce9a5a41bf3eef1dafef78016d491fb09021e06579cb97d0d9512b83b88b639679c053d3b5d94e353f02c'
-        '9607b2d9d280c532eeaa85130b534d8269e2d9e9040169e25106ae973b793e382ac0cd437795c1bdd55a75769385554a212e4436d8e00678353854c984ed167e'
-        '7589f7428716a41e871278da235f5009deb8a2efc3d2ffb6b05fd4b190bb5cc9eebdb36fe3b812bbcfbe9e945844528f562830833098f9c2c75dd68306f123d0'
-        '0f604789c8f4a59c0dcd9c1fa6aae15bf769bc85f64ea4cb8074d330b23e6d4a1b552efc583f3c4d4fe2e0dc98ea3bcf20f8058e42728e62a38e4fb03bb28ce4')
+        'd107ab04b9f187fa78481a83ac90e9d9e335d2fd6a5eba07cd48bfa659999f3d54afd2b01b8c1d49faf7b95c7ceee37ca038e2169e252dc9938228b7176204de'
+        '2857d0a1b79ba768bbc321ac7461b0cdd19e9ecbc8f10674b47f834c7f19c8771e3adec842f796b138da8f8ecd1b955a9de332072f0b3d776667956a1ec26c13'
+        'f6319aaf6cd1b040cee8fbd8c9ad993b011586037cef249f679efda0e5eb819b08d96abdf91f08d70e634e5d958aee8c756068ce38f34e33893f27d511c8efbe'
+        '640d8a6ff7394d2cab6ac949ce73cb14696165897f9c453a8cfafa93a071f3cbcdd5db90c0e6e35ec4f33276912034f1232bdb419029746d78c351dc2120eab8'
+        'ff0599fb11714b2a1399a7c9b568e688472a8ed646c8a2eacfe78593cc4beae4d0675151d0a7742b15d6dbf815ce6a99678fca5da69defedee1416aadee6773d'
+        '87eb24ff13fa79660383749e6fb7f5aaaf42c725877f839d7c8be087c1692ac66ed2f3c66b1c779c9b8d823c798fd732eb4dcba091fd0ddce65de11c5eef07a2'
+        'c842942c45c0fa816b9e5e6a4893a61986126fddb94c02854640f136d06ac20abc0fcc65b0f7196cc5a647fc075f343ad7da54fa541b46d75f00fac07b0063d1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

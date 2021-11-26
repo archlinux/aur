@@ -1,4 +1,4 @@
-From 8f4b84416e1738041fe3cae3ee00e5227365c11c Mon Sep 17 00:00:00 2001
+From ddfcf9d61c8e8c85f10da9342641abd96b988d4c Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH 1/8] ZEN: Add sysctl and CONFIG to disallow unprivileged
@@ -150,5 +150,5 @@ index 6b2e3ca7ee99..0253002184f1 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.34.0
+2.34.1
 

@@ -1,7 +1,7 @@
-From 43c4562c8109e71a5a363af5ddb027ef734132b0 Mon Sep 17 00:00:00 2001
+From c9f82c4d609a59b1cf15981bf096ccc448290d8b Mon Sep 17 00:00:00 2001
 From: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
 Date: Thu, 18 Nov 2021 21:18:01 -0800
-Subject: [PATCH 6/8] cpufreq: intel_pstate: ITMT support for overclocked
+Subject: [PATCH 5/8] cpufreq: intel_pstate: ITMT support for overclocked
  system
 
 On systems with overclocking enabled, CPPC Highest Performance can be
@@ -51,5 +51,5 @@ index dafa631582ba..7307b3c4a4c4 100644
  	 * The priorities can be set regardless of whether or not
  	 * sched_set_itmt_support(true) has been called and it is valid to
 -- 
-2.34.0
+2.34.1
 
