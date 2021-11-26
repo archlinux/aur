@@ -10,7 +10,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.4.1
 _asyncver=1.9.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -242,8 +242,8 @@ prepare() {
         sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
-        # Add FSR for fshack (broken)
-        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        # Add FSR for fshack
+        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
@@ -307,9 +307,7 @@ build() {
     # Filter known bad flags before applying optimizations
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    #export CFLAGS+=" -fno-stack-protector"
     export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    #export CXXFLAGS+=" -fno-stack-protector"
     export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
     # From wine-staging PKGBUILD
     # Doesn't compile with these flags in MingW so remove them.
@@ -389,7 +387,7 @@ sha256sums=('SKIP'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'a70c865e590058fa6fc3aa47425646405bdda27f78b9aa6d2030d2d2a8efadbb'
             '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
-            'b4e9c0c4959fcb3f7b7f25e35e5e0577dac5d54fe18e6edb15852a2a4196f2a2'
+            '77214acb6ffc0648408c5e28b434b71d4c6a8c35f7795ac38565e6e0695208b2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
             '4abadfbcc01beb7781edadeebc6b5fadea97b0808eebf4648fd812748c730e9c'
             '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
