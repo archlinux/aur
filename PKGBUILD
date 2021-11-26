@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python2')
 
 source=("git+$url.git" "pidcat.patch")
-md5sums=('SKIP' "88dd654d600d8de4ff42174d042f0a77")
+md5sums=('SKIP' "c9bfb27615710b5ddaaf74cef0042a17")
 
 build() {
 	patch -N ${srcdir}/pidcat/pidcat.py pidcat.patch 
