@@ -1,1 +1,1 @@
-mono /usr/lib/tshock/TerrariaServer.exe -configpath "$HOME/.config/tshock" "$@"
+mono /usr/lib/tshock/TerrariaServer.exe -logpath "$HOME/.config/tshock" -configpath "$HOME/.config/tshock" "$@"
