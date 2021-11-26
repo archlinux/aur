@@ -1,5 +1,5 @@
 pkgname=mingw-w64-pybind11
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-boost' 'mingw-w64-eigen')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
-sha256sums=('9ca7770fc5453b10b00a4a2f99754d7a29af8952330be5f5602e7c2635fa3e79')
+sha256sums=('f1bcc07caa568eb312411dde5308b1e250bd0e1bc020fae855bf9f43209940cc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
