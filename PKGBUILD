@@ -11,8 +11,8 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.9.6
-pkgrel=3
+pkgver=4.9.8
+pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -34,14 +34,13 @@ makedepends=('openldap'
              'python-pyasn1-modules')
 options=(emptydirs)
 validpgpkeys=('0E63D716D76AC080A4A33513F40800B6298EB963')
-source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"{,.asc}
+source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook
         nis-domainname.service
         ipaplatform.tar.gz)
-sha256sums=('f211167513704c567f9e36fad16c0eba2961e3596d03f079d85a18bc9c644dc4'
-            'SKIP'
+sha256sums=('2fddaf6de41dfe244e25a3211f756491ffa8e657595b74388249d2287a601782'
             '4b3629f2733182f68b3d28c28f782773103b814c486cf4fdb15336163b08c82e'
             '09894b521258983da988b6d78ed8d5370669ffb7d6a6e3cfbf0c0b8eda67f11b'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
@@ -59,6 +58,12 @@ prepare() {
     # Workaround: We want to build Python things twice. To be sure we do not mess
     # up something, do two separate builds in separate directories.
     cp -r ../freeipa-${pkgver} ../freeipa-${pkgver}-python3
+    
+    # On Fedora, ldap is the non-threaded version while ldap_r is the threaded version.
+    # On Fedora 34, it stopped shipping both and ldap is symlinked to ldap_r. On Arch, 
+    # libldap is compiled as threaded.
+    sed -i 's/ldap_r/ldap/' 'configure.ac'
+    autoreconf
 }
 
 build() {
@@ -80,7 +85,7 @@ build() {
                 --disable-server \
                 --without-ipatests \
                 --disable-pylint --without-jslint \
-		--with-ipaplatform=arch
+                --with-ipaplatform=arch
 
     mkdir -p ../install
 
