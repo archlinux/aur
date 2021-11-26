@@ -1,0 +1,32 @@
+ config/baseconfig.mk                  | 2 +-
+ toolkit/mozapps/installer/packager.mk | 4 ++--
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git c/config/baseconfig.mk i/config/baseconfig.mk
+index 3ef3af95d611..81530dface0a 100644
+--- c/config/baseconfig.mk
++++ i/config/baseconfig.mk
+@@ -2,7 +2,7 @@
+ # directly in python/mozbuild/mozbuild/base.py for gmake validation.
+ # We thus use INCLUDED_AUTOCONF_MK to enable/disable some parts depending
+ # whether a normal build is happening or whether the check is running.
+-installdir = $(libdir)/$(MOZ_APP_NAME)
++installdir = $(libdir)/$(MOZ_APP_NAME)-beta
+ ifeq (.,$(DEPTH))
+ DIST = dist
+ else
+diff --git c/toolkit/mozapps/installer/packager.mk i/toolkit/mozapps/installer/packager.mk
+index 64f902a26942..d3313dacbcb7 100644
+--- c/toolkit/mozapps/installer/packager.mk
++++ i/toolkit/mozapps/installer/packager.mk
+@@ -138,8 +138,8 @@ endif
+ 	(cd $(DIST)/$(MOZ_PKG_DIR) && $(TAR) --exclude=precomplete $(TAR_CREATE_FLAGS) - .) | \
+ 	  (cd $(DESTDIR)$(installdir) && tar -xf -)
+ 	$(NSINSTALL) -D $(DESTDIR)$(bindir)
+-	$(RM) -f $(DESTDIR)$(bindir)/$(MOZ_APP_NAME)
+-	ln -s $(installdir)/$(MOZ_APP_NAME) $(DESTDIR)$(bindir)
++	$(RM) -f $(DESTDIR)$(bindir)/$(MOZ_APP_NAME)-beta
++	ln -s $(installdir)/$(MOZ_APP_NAME) $(DESTDIR)$(bindir)/$(MOZ_APP_NAME)-beta
+ 
+ upload:
+ 	$(PYTHON) -u $(MOZILLA_DIR)/build/upload.py --base-path $(DIST) $(UPLOAD_FILES)
