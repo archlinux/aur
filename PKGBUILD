@@ -4,7 +4,7 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=synfig-dev
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Professional vector animation program (CLI renderer only)"
 arch=(x86_64 armv7h armv8 riscv32 riscv64)
@@ -19,7 +19,7 @@ conflicts=('synfig')
 replaces=('synfig')
 provides=('synfig-dev')
 source=("https://github.com/synfig/synfig/archive/v$pkgver.tar.gz")
-sha512sums=('a3beecdfae5508c6ccf0aa9ec44d817264266a5bb4b7dd580ade53c613658d34e5edc860c17ba5a2d7aa5c3c91a30bb8550b87623ccaad53a4b584cc93852c40')
+sha512sums=('0c1dd53a445f037bcdb742d7c17d1d3a2039e80d3e49f5cd67119fb9792d96b47154874d5be42d36443b0d09c61b7864dfe33ebd5f3998783c54eb3cc936d11b')
 
 prepare() {
   cd synfig-$pkgver/synfig-core
