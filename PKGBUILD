@@ -1,21 +1,21 @@
 # Contributor: Linux Gamers <linuxgamers@protonmail.com>
-_version=20211125-0a696851d
+_version=20211126-e56915b00
 pkgname=yuzu-mainline-bin
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu' 'yuzu-git' 'yuzu-canary-git' 'yuzu-mainline-git')
-pkgver=0.826
+pkgver=0.827
 pkgrel=1
 pkgdesc="Nintendo Switch emulator - mainline branch"
 arch=('x86_64')
 url="https://github.com/yuzu-emu/yuzu-mainline"
 license=('GPL2')
-depends=('qt5-base' 'ffmpeg')
+depends=('qt5-base' 'opus' 'hicolor-icon-theme')
 optdepends=('qt5-wayland: for Wayland support')
 source=("${url}/releases/download/mainline-${pkgver/./-}/yuzu-linux-${_version}.tar.xz"
         # icon and desktop from upstream not included in sources
         "yuzu.svg"
         "yuzu.desktop")
-sha512sums=('4eb4580583c834688aa77fd682570466dcbcd101b9d3b643d6ea9966f8982e1febbbabbbd57ed2674b323b3d9f135edf88d6c2f0aa3352876a7136cbe030161b'
+sha512sums=('5a27ab54961c5239a277b1a583f731134211a98dcf9ed7e912f6cd49849be2f8f025ba4aea7a9ac3963c26ec10fb1e21b2e192738b17c01786fa47b7e6a9a0d8'
             '8e9f442436bd5f89a99c902960b51a3dd124ba17119422cca1ae792da0bcf3c757862bc88cb3d229b1f6a3b8b36c73f47f2c7266a11f91ebb38265777a2ba6b3'
             '0b2383b87abbb80a26a7926b5b64121ec0399832aee474ebfdb9f2b001fee6cf4b90d0a8625028f05273e95e2c94f692291a98d769fac5a1f2ad598e168811a1')
 package() {
