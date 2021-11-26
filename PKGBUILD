@@ -3,7 +3,7 @@
 
 pkgname=neoleo-git
 pkgver=11.0.r9.g33b25b4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
 arch=('i686' 'x86_64')
 url="https://github.com/blippy/neoleo"
