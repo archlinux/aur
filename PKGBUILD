@@ -2,8 +2,8 @@
 
 pkgname=funkwhale
 pkgver=1.1.4
-pkgrel=2
-pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
+pkgrel=3
+pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
 url="https://funkwhale.audio/"
 license=(GPL3)
@@ -25,7 +25,7 @@ depends=('ffmpeg'
         'python-django-redis'  # ~= 4.12.0
         'python-redis'  # ~= 3.5.0
         'python-kombu'  # ~= 4.6.0
-        'python-celery'  # ~= 4.4.0
+        'python-celery>=5.2'  # ~= 4.4.0
         'python-django-cors-headers'  # ~= 3.4.0
         'python-musicbrainzngs'  # ~= 0.7.1
         'python-django-rest-framework'  # ~= 3.11.0
@@ -66,6 +66,7 @@ depends=('ffmpeg'
         'python-bleach'  # ~= 3.1.0
         'python-feedparser>=6'  # ~= 6.0.0
         'python-watchdog'  # ~= 1.0.2
+        'python-asgiref_patch'  # ~= 3.4.1 patched
 )
 makedepends=(git)
 _source_api="https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/${pkgver}/download?job="

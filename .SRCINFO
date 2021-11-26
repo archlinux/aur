@@ -1,7 +1,7 @@
 pkgbase = funkwhale
-	pkgdesc = A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark.
+	pkgdesc = A community-driven project that lets you listen and share music and audio within a decentralized, open network.
 	pkgver = 1.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://funkwhale.audio/
 	install = funkwhale.install
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = funkwhale
 	depends = python-django-redis
 	depends = python-redis
 	depends = python-kombu
-	depends = python-celery
+	depends = python-celery>=5.2
 	depends = python-django-cors-headers
 	depends = python-musicbrainzngs
 	depends = python-django-rest-framework
@@ -62,6 +62,7 @@ pkgbase = funkwhale
 	depends = python-bleach
 	depends = python-feedparser>=6
 	depends = python-watchdog
+	depends = python-asgiref_patch
 	optdepends = apache: to use the Apache web server
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = mod_xsendfile: needed if Apache server is used
