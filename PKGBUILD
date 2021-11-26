@@ -1,6 +1,6 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=zram-generator-git
-pkgver=0.3.2
+pkgver=1.1.0+7+ga3660dd
 pkgrel=1
 pkgdesc="Systemd unit generator for zram devices"
 arch=("x86_64" "arm" "arv6h" "armv7h" "aarch64" "i686" "pentium4")
