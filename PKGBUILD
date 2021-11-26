@@ -2,7 +2,7 @@
 
 pkgname=btrfs-assistant-git
 _pkgname=btrfs-assistant
-pkgver=0.0.1.r1.g5820284
+pkgver=0.0.1.r2.g6c63963
 pkgrel=1
 pkgdesc="An application for managing BTRFS subvolumes and Snapper snapshots"
 arch=('x86_64')
@@ -32,4 +32,5 @@ package() {
     make -C build DESTDIR="$pkgdir" install
 
     install -Dm0644 "$srcdir/$_pkgname/snapper-snap-check.desktop" "$pkgdir/etc/xdg/autostart/snapper-snap-check.desktop"
+    install -Dm0644 org.garuda.btrfs-assistant.pkexec.policy $pkgdir/usr/share/polkit-1/actions/org.garuda.btrfs-assistant.pkexec.policy
 }
