@@ -1,6 +1,6 @@
 pkgbase = ponyup
 	pkgdesc = The Pony language toolchain multiplexer
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/ponylang/ponyup
 	install = ponyup.install
@@ -10,7 +10,7 @@ pkgbase = ponyup
     makedepends = sed
     makedepends = tar
 	depends = openssl
-	source = ponyup-0.6.4.tar.gz::https://github.com/ponylang/ponyup/archive/0.6.4.tar.gz
+	source = ponyup-0.6.5.tar.gz::https://github.com/ponylang/ponyup/archive/0.6.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = ponyup

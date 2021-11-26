@@ -33,10 +33,5 @@ package() {
   mkdir -p $install_dir
   chmod -R 646 $install_dir
   echo "x86_64-linux-gnu" > "${ponyup_root}/.platform"
-  # NOTE:
-  # This will fail on existing instals when updating to a new
-  # version with -- install: will not overwrite just-created --
-  # I think there is a --overwite option but for now
-  # uninstall and install new version works
   install -Dm755  $ponyup_bin $install_dir
 }
