@@ -1,16 +1,16 @@
-# Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
+# Maintainer:  Petr Mrázek <peterix@gmail.com>
 pkgname=multimc-bin
-pkgver=0.6.12.1438
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc="Free, open source launcher and instance manager for Minecraft."
 arch=('i686' 'x86_64')
 url="http://multimc.org/"
 license=('Apache')
-depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget')
+depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget')
 conflicts=('multimc' 'multimc5' 'multimc5-git')
 provides=('multimc' 'multimc5' 'multimc5-git')
-source=("$pkgname-$pkgver.deb::https://files.multimc.org/downloads/multimc_1.5-1.deb")
-sha512sums=('26fe11eff406efd09612002e4c53fc1ea0b3f7d0aca389475a7afff454efa52ed52097f6a0bbc27de61fba3fed252321754738a0f79b0d8a7308a39701087e67')
+source=("$pkgname-$pkgver.deb::https://files.multimc.org/downloads/multimc_$pkgver-$pkgrel.deb")
+sha1sums=('b943427e5f32f6a41d77a373029731c67571901d')
 noextract=("$pkgname-$pkgver.deb")
 
 prepare() {
