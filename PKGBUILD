@@ -4,7 +4,7 @@
 
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
-pkgver=40.0
+pkgver=41.0+r15+g23ebe617
 pkgrel=1
 pkgdesc="Display manager and login screen"
 url="https://wiki.gnome.org/Projects/GDM"
@@ -14,31 +14,34 @@ depends=(gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-xhost
          libxdmcp systemd)
 makedepends=(yelp-tools gobject-introspection git docbook-xsl meson)
 checkdepends=(check)
-_commit=3246bf1af8589899621649df523e6840e4858cda  # tags/40.0^0
+_commit=23ebe617119506a0614f1bd2c76cd9bcf7e8fb7c  # main
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
-        0001-pam-arch-Update-to-match-pambase-20200721.1-2.patch
-        0002-Xsession-Don-t-start-ssh-agent-by-default.patch
+        0001-Xsession-Don-t-start-ssh-agent-by-default.patch
+        0002-pam-arch-Drop-pam_faillock-counting-from-fingerprint.patch
         0003-nvidia-prime.patch
         default.pa)
 sha256sums=('SKIP'
-            'f32555703d4f3b6babbe49ddd2c82295238623050b63826c95a959d5caec37f8'
-            'aa751223e8664f65fe2cae032dc93bb94338a41cfca4c6b66a0fca0c788c4313'
+            '39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8'
+            'e3dcaaa5ffa2dd4d3338c8b5827965ea2ca1efd9a95d7272a107e6121cb7898f'
             'a1fb80c69454492390e4b7edac0efe55b2178c7031051d3eab99ed8c14d3e0e4'
             'e88410bcec9e2c7a22a319be0b771d1f8d536863a7fc618b6352a09d61327dcb')
 
 pkgver() {
   cd gdm
-  git describe --tags | sed 's/\.rc/rc/;s/-/+/g'
+  git describe --tags | sed 's/\.rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd gdm
 
   # https://bugs.archlinux.org/task/67485
-  git apply -3 ../0001-pam-arch-Update-to-match-pambase-20200721.1-2.patch
+  git cherry-pick -n 8528a503ad70669a5f0c03d0a92ba19326983b82
 
   # Don't start ssh-agent by default
-  git apply -3 ../0002-Xsession-Don-t-start-ssh-agent-by-default.patch
+  git apply -3 ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
+
+  # https://bugs.archlinux.org/task/71750
+  git apply -3 ../0002-pam-arch-Drop-pam_faillock-counting-from-fingerprint.patch
 
   git apply -3 ../0003-nvidia-prime.patch
 }
@@ -72,7 +75,7 @@ package_gdm-prime() {
   groups=(gnome)
   install=gdm-prime.install
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   install -d "$pkgdir/var/lib"
   install -d "$pkgdir/var/lib/gdm"                           -o120 -g120 -m1770
@@ -83,7 +86,7 @@ package_gdm-prime() {
   install -d "$pkgdir/var/lib/gdm/.local/share/applications" -o120 -g120
 
   # https://src.fedoraproject.org/rpms/gdm/blob/master/f/default.pa-for-gdm
-  install -Dt "$pkgdir/var/lib/gdm/.config/pulse" -o120 -g120 -m644 default.pa
+  install -t "$pkgdir/var/lib/gdm/.config/pulse" -o120 -g120 -m644 default.pa
 
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/gdm.conf" <<END
 g gdm 120 -
