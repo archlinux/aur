@@ -21,7 +21,7 @@ source=("${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/d
 noextract=("${_pkgname}_${pkgver}.zip")
 sha512sums=('495a40ff1b27436d39e983c57987a22bf747aff7d7561b24dce675d855a1306e8204cfb0f68547a665ef157995e71b93260617f07e383ae444e69b2027fcde02'
 			'c7a4381585a479a3e27601f32c665b4d6a5a6825ceb9ed153ac5b67614e9afce5c855f5c94f77c4afbadcf6a941dde85683d628c573b059940030298484955a3'
-            'f0958448b53ff9851c47876b89f1cef6d3e33ce1b8cbe13167c685ed1c9d89a8bf0f01929d47200e4f0f964c3e7796a2d9ca558e5d9f1269db3f2e4537a6c97a')
+            '96c157b2ae2b418efddb58fd88e53ae9724e94fa9023f1979bd412f1a69e0d472b081ba83aa84c67907e1a4c9bd2a396b386f361b9c6a4de97b0fe6468f1005f')
 
 #backup=("etc/conf.d/${_pkgname}/default.conf")
 
