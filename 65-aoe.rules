@@ -1,6 +1,6 @@
-KERNEL!="etherd/*", GOTO "aoe_end"
+KERNEL!="etherd/*", GOTO="aoe_end"
 
-SUBSYSTEM!="block", GOTO "aoe_end"
+SUBSYSTEM!="block", GOTO="aoe_end"
 
 IMPORT{builtin}="blkid"
 
