@@ -1,46 +1,26 @@
-# Maintainer: jerry73204 <jerry73204 at google gmail>
-# Previous maintainer: Gaël Donval <gdonval+aur at google mail>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: jerry73204 <jerry73204 at google gmail>
 # Contributor: Gaël Donval <gdonval+aur at google mail>
-
-pkgbase='python-datashader'
-pkgname='python-datashader'
-pkgver=0.11.0
+_base=datashader
+pkgname=python-${_base}
+pkgver=0.13.0
 pkgrel=1
-pkgdesc='Bin-based rendering toolchain to visualize large datasets.'
+pkgdesc="Quickly and accurately render even the largest data"
 arch=('any')
-url='https://github.com/bokeh/datashader'
+url="https://${_base}.org"
 license=('BSD')
-makedepends=('python-setuptools' 
-             'python-param'
-             'python-pyct')
-groups=('bokeh-ecosystem')
-depends=(
-  'python>=3.4'
-  'python-dask>=0.18.0'
-  'python-datashape>=0.5.1'
-  'python-numba>=0.37.0'
-  'python-numpy>=1.7'
-  'python-pandas>=0.24.1'
-  'python-pillow>=3.1.1'
-  'python-toolz>=0.7.4'
-  'python-xarray>=0.9.6'
-  'python-colorcet>=0.9.0'
-  'python-param>=1.6.0'
-  'python-pyct'
-  'python-bokeh'
-  'python-scipy'
-)
-source=("https://github.com/pyviz/datashader/archive/v${pkgver}.tar.gz")
-sha256sums=('27c1bf758eb7c57c17fcb15da93c108b382d522472f464ab8565c8f51e9707be')
+depends=(python-dask python-datashape python-numba python-xarray python-colorcet python-scipy)
+source=(${_base}-${pkgver}::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
+sha512sums=('24272e75a8f7417531b5e35e8e74649f50a101b382475ba478cff11dcb819c4cb2773a8a26d19ee0993cb9988d26a5b82a1dc108ec511e505ebaffef72668477')
 
 build() {
-  cd "${srcdir}/datashader-${pkgver}"
+  cd "${_base}-${pkgver}"
   python setup.py build
 }
 
-package_python-datashader() {
-  cd "${srcdir}"/datashader-$pkgver
-  python setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 README* "${pkgdir}/usr/share/doc/${pkgname}/README"
+package() {
+  cd "${_base}-${pkgver}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
