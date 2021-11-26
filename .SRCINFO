@@ -1,5 +1,5 @@
 pkgbase = mavsdk
-	pkgdesc = API and library for MAVLink compatible systems written in C++11
+	pkgdesc = API and library for MAVLink compatible systems written in C++17
 	pkgver = 0.49.0
 	pkgrel = 1
 	url = https://mavsdk.mavlink.io
