@@ -57,7 +57,7 @@ package() {
 	mv "${pkgdir}/${_prefix}/lib/${pkgname}-${_pkgname}.desktop" "usr/share/applications/${pkgname}.desktop"
 	
 	install -dm755 'usr/bin'
-	echo "#!/bin/bash" > "usr/bin/${pkgname}"
+	echo "#!/usr/bin/env sh" > "usr/bin/${pkgname}"
 	echo "${_prefix}/bin/MapTool \"\$@\"" >> "usr/bin/${pkgname}"
 	chmod 755 "usr/bin/${pkgname}"
 }
