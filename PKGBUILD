@@ -1,12 +1,12 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=14.2.0
-_commit=c2b3c974e07a9743ab758cb98db323dceddd6903
+pkgver=14.2.1
+_commit=71cd259b7bf1fb246399932e63f8ebcc2f02a05a
 _chromiumver=93.0.4577.82
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -58,6 +58,7 @@ source=('git+https://github.com/electron/electron.git'
         'replace-blacklist-with-ignorelist.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'chromium-93-ffmpeg-4.4.patch'
+        'chromium-93-pdfium-include.patch'
         'chromium-harfbuzz-3.0.0.patch'
         'skia-harfbuzz-3.0.0.patch'
        )
@@ -78,6 +79,7 @@ sha256sums=('SKIP'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
+            '7c0c47f4b67d96515bcfa68ffd34d515d03f1e9e41c063459f39e4169de0324c'
             '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
             'dae11dec5088eb1b14045d8c9862801a342609c15701d7c371e1caccf46e1ffd'
            )
@@ -169,7 +171,6 @@ prepare() {
 
   echo "Applying local patches..."
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../patches/chromium-93-pdfium-include.patch
   patch -Np1 -i ../patches/chromium-90-ruy-include.patch
   patch -Np1 -i ../patches/chromium-93-HashPasswordManager-include.patch
   patch -Np1 -i ../patches/chromium-93-BluetoothLowEnergyScanFilter-include.patch
@@ -178,6 +179,7 @@ prepare() {
   patch -Np1 -i ../patches/chromium-93-ScopedTestDialogAutoConfirm-include.patch
 
   patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
+  patch -Np1 -i ../chromium-93-pdfium-include.patch
   patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
   patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
   patch -Np1 -i ../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
