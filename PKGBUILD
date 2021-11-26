@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.linphone.org/"
 license=('GPL')
 depends=("bctoolbox>=$pkgver" 'soci>=4.0.0')
-makedepends=('cmake')
+makedepends=('cmake' 'boost-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BelledonneCommunications/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('85e6d6262b315281a7350adc3cb91046ec94cac20c4bcc78cd590618e1642e1e')
 
