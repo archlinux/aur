@@ -4,7 +4,7 @@
 # Contributor: orbisvicis <gmail.com>
 
 pkgname=xmonad-contrib-git
-pkgver=v0.17.0.r32.g6cb2796f
+pkgver=v0.17.0.r44.g3d71669b
 pkgrel=1
 pkgdesc="Add-ons for xmonad"
 arch=('x86_64')
@@ -26,7 +26,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname/-git}"
-  sed -i -e '/semigroups/d' -e 's/utf8-string,/utf8-string/' ${pkgname/-git}.cabal
   git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
