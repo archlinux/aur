@@ -63,7 +63,7 @@ package_linux-kernel-ohio-headers() {
     mkdir -p $builddir
     mkdir -p $pkgdir/usr/lib/modules/$pkgver-kernel-ohio/extra
     mkdir -p $pkgdir/usr/lib/modules/$pkgver-kernel-ohio/kernel
-    mkdir -p $pkgdir/usr/lib/ modules/$pkgver-kernel-ohio/updates
+    mkdir -p $pkgdir/usr/lib/modules/$pkgver-kernel-ohio/updates
     mkdir -p $builddir/tools/objtool
 	make INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH="$pkgdir"/usr modules_install
 	cp Module.symvers $pkgdir/usr/src/linux-$pkgver-ohio
