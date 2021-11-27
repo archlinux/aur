@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=caj2pdf-qt
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='CAJ 转 PDF 转换器（GUI 版本）'
 arch=('x86_64')
@@ -17,7 +17,6 @@ md5sums=('SKIP'
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git clean -dfx -- .
   ./build.py
 }
 
@@ -27,4 +26,7 @@ package() {
   install -Dm 755 "${srcdir}/${pkgname}/build/caj2pdf" "${pkgdir}/usr/share/${pkgname}/caj2pdf"
   install -Dm 755 "${srcdir}/${pkgname}/build/external/caj2pdf" "${pkgdir}/usr/share/${pkgname}/external/caj2pdf"
   install -Dm 755 "${srcdir}/${pkgname}/build/external/mutool" "${pkgdir}/usr/share/${pkgname}/external/mutool"
+  install -Dm 644 "${srcdir}/${pkgname}/build/external/libjbigdec.so" "${pkgdir}/usr/share/${pkgname}/external/libjbigdec.so"
+  install -Dm 644 "${srcdir}/${pkgname}/build/external/libjbig2codec.so" "${pkgdir}/usr/share/${pkgname}/external/libjbig2codec.so"
+  chmod a+w "${pkgdir}/usr/share/${pkgname}/external"
 }
