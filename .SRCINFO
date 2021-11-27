@@ -1,7 +1,7 @@
 pkgbase = webcord
 	pkgdesc = A Discord web-based client made with the Electron API.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = webcord
 	makedepends = typescript>=4.3.4
 	makedepends = typescript<5
 	makedepends = git
-	depends = electron>=15.1.0
-	depends = electron<16
+	depends = electron15>=15.1.0
 	provides = webcord=2.1.2
 	conflicts = webcord-bin
 	conflicts = webcord-git
