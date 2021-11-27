@@ -35,5 +35,5 @@ pkgbase = linux-kernel-ohio
 pkgname = linux-kernel-ohio
 
 pkgname = linux-kernel-ohio-headers
-	pkgdesc = linux-kernel-ohio-headers-headers
+	pkgdesc = Headers for kernel-ohio
 	provides = linux-headers

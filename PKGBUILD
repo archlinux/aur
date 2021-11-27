@@ -55,7 +55,7 @@ package_linux-kernel-ohio() {
 	msg2 "Run mkinitcpio -P when done with the installation, and then update GRUB!"
 }
 package_linux-kernel-ohio-headers() {
-    pkgdesc="$pkgname-headers"
+    pkgdesc="Headers for kernel-ohio"
     provides=("linux-headers")
     builddir="$pkgdir/usr/lib/modules/$pkgver-kernel-ohio/build"
     cd "$srcdir"/linux-$pkgver
