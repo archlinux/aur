@@ -1,6 +1,6 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=cpp-httplib
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc='A C++ header-only HTTP/HTTPS server and client library'
 arch=('any')
@@ -9,15 +9,10 @@ license=('MIT')
 makedepends=('cmake>=3.14')
 optdepends=('openssl>=1.1.1: HTTPS support' 'zlib: compression support' 'brotli: Brotli decompression support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v$pkgver.tar.gz")
-sha512sums=('ee96e346ff02281069578022560f8b5cef8d37a92c5fe85018ce8f803813ec7c6a0e66b8c6de3ca675a90f84b7a64691df7ee48c1f5688396650fb8de36b07c4')
+sha512sums=('dc48bc7d0ae1b98d57a799e08fd62627ffffafe1ba0f9a43d51d48db0c498457ae0851796c538fdb3d383cb2585b223bfe9ea0426c9bca6b369a7cfc18d6efe4')
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	# Quiets the "no git tag" warning
-	sed -i "78d" "CMakeLists.txt"
-	# Lets us force a full version string to be defined instead of just a major.minor
-	sed -i "86s/^/set\(_httplib_version ${pkgver}\)/" "CMakeLists.txt"
-	mkdir -p "build"
-	cd "build"
+	mkdir -p "$srcdir/$pkgname-$pkgver/build"
+	cd "$srcdir/$pkgname-$pkgver/build"
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
 	cmake --build .
 }
