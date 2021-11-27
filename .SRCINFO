@@ -1,4 +1,4 @@
-pkgbase = cobra
+pkgbase = cobra-knife
 	pkgdesc = cobra is a swiss army knife
 	pkgver = 0.0.1
 	pkgrel = 2
@@ -7,4 +7,4 @@ pkgbase = cobra
 	source = https://github.com/DHWIDSA/cobra/raw/main/cobra.tar.gz
 	md5sums = c857152ec0eecf4dadd5128fb281a36c
 
-pkgname = cobra
+pkgname = cobra-knife
