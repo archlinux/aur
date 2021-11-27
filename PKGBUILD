@@ -14,10 +14,11 @@ pkgname="${pkgbase}"
 #_pkgver='3.40'; _commonver='3.80'; _dl='8/0100002708/17'
 #_pkgver='3.50'; _commonver='3.90'; _dl='8/0100007658/05'
 #_pkgver='3.60'; _commonver='4.00'; _dl='0/0100009240/02'
-_pkgver='3.70'; _commonver='4.10'; _dl='8/0100007658/08'
+#_pkgver='3.70'; _commonver='4.10'; _dl='8/0100007658/08'
+_pkgver='3.70'; _commonver='4.10'; _dl='4/0100010264/01'
 
 pkgver="${_commonver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='common printer driver modules for Canon cndrvcups-lb package, built from source'
 arch=('i686' 'x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -34,17 +35,17 @@ options=('!emptydirs' '!strip')
 options+=('staticlibs')
 _srcdir="${pkgname%-lb}-${pkgver}"
 source=(
-  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-05.tar.gz"
+  "https://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-07.tar.gz"
   '0000-cgnplp-po-Makefile-quote-spaces.patch'
   '0002-c3plmod_ipc-Makefile-quote-spaces.patch'
 )
-md5sums=('7818b516c98bbcb38505b2ad50e69599'
+md5sums=('35d69e337c7043d1adc4f5a496126d88'
          '638b9668916f5973df0dba0526ba803a'
          'd3484478d650132ab6cf5f0a820b9286')
-sha256sums=('e05d758f12b45582dcd8cd17ee0b23e1b8a363a3e412f530494b6f9dfda64410'
+sha256sums=('ff16438de55c982d649cdb20e262a54b13569e2320ed3e75b9c4b000c7bbdd06'
             'b2e4185c66d42facb57783d3d4b7d571b826b8af23d66f60574e0604b3bfd0b7'
             '2a769d95f443ce6bbb4b52a2d1819a7dcacf855ac38a21fea056941bdf3f4b72')
-sha512sums=('d83254b7f7f87c56caeaaf151d898de36f746c03ad88d427959bdeec905b9cd92a14a8ac534073473a6cefbb5e2b0be9e9faa79b500e252ecd0a0564d2312bbc'
+sha512sums=('d7ae9cd31a42a4e8284d058654182ae091c1e4e4d2f62a8e3ca9a89893af5769a6c03dd2a6d11e767cb30b003facf20adcf00438d026c21125968cee687d5bea'
             'cc24afbc841125dc3556ada8fa2fc9b432f9b648efe18f0f6c659fdf916fe22d80f5524340877696e896d7f4a00206ba54c89943290c08377cbfaa6c9569fc00'
             '1f98bf1341e2ed188d48640c49aef5209564ad9249b78d44ee53378c4cb5a4153ddbe53813523e2790c4adb314cd9047364e147dfa659d981f0f7d657a0d34fc')
 
