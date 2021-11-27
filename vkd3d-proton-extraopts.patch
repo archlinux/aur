@@ -11,7 +11,7 @@ index c1f017a0..8fd09003 100644
 -c_link_args = ['-static', '-static-libgcc']
 -cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++']
 +c_args=['-msse', '-msse2', @CARGS@]
-+cpp_args=['-msse', '-msse2', @CARGS@]
++cpp_args=['-msse', '-msse2', @CXXARGS@]
 +c_link_args = ['-static', '-static-libgcc', @LDARGS@]
 +cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++', @LDARGS@]
  needs_exe_wrapper = true
@@ -28,7 +28,7 @@ index 8a241178..e3f619eb 100644
 -c_link_args = ['-static', '-static-libgcc']
 -cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++']
 +c_args=[@CARGS@]
-+cpp_args=[@CARGS@]
++cpp_args=[@CXXARGS@]
 +c_link_args = ['-static', '-static-libgcc', @LDARGS@]
 +cpp_link_args = ['-static', '-static-libgcc', '-static-libstdc++', @LDARGS@]
  needs_exe_wrapper = true
