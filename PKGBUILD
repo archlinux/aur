@@ -1,5 +1,5 @@
 # Maintainer = Kazaii (mark.a.prosser@gmail.com)
-# Maintainer = Caleb Yates (caldog20@gmail.com)
+# Contributor = Caleb Yates (caldog20@gmail.com)
 # Contributor = Raymii
 # SecureCRT software is owned and copyrighted by Vandyke Inc. The software is free to download for eval and requires a separately purchased license for full features and support
  
@@ -8,8 +8,8 @@
 ## Ensure the 'pkgver' and 'incrver' variables are updated below to match your package version
 
 pkgname=scrt
-pkgver=9.1.0
-incrver=2579
+pkgver=9.1.1
+incrver=2638
 pkgrel=0
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'qt5-base' 'qt5-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu66')
 options=('!strip' '!emptydirs')
 source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu20-64.tar.gz")
-md5sums=('5D84645E8B7A586CC08BD31A338E0F41')
+md5sums=('9F7E5D60E777B22DCB727B1DAD1EFE7D')
 
 package() {
        cd "${srcdir}"/${pkgname}-${pkgver}
