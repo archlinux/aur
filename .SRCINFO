@@ -21,7 +21,7 @@ pkgbase = dxvk-mingw
 	conflicts = d9vk
 	options = !lto
 	options = !staticlibs
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v1.9.2
 	source = dxvk-async-1.9.2.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/1.9.2/dxvk-async.patch
 	source = dxvk-async-conf.patch
 	source = dxvk-extraopts.patch
