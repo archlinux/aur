@@ -1,7 +1,7 @@
 # Maintainer: Paul Bastian <paul.bastian@posteo.de>
 pkgname=nextcloud-maintenance
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts and services to support nextcloud maintenance"
 arch=('any')
 url="https://github.com/paulbastian/aur/tree/master/nextcloud-maintenance"
