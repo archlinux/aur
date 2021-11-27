@@ -2,10 +2,10 @@
 
 pkgname=aflplusplus
 pkgver=3.14c
-pkgrel=1
+pkgrel=2
 pkgdesc="afl++ is afl with community patches, AFLfast power schedules, qemu 3.1 upgrade + laf-intel support, MOpt mutators, InsTrim instrumentation, unicorn_mode and a lot more!"
 arch=('x86_64')
-url="https://github.com/vanhauser-thc/AFLplusplus"
+url="https://github.com/AFLplusplus/AFLplusplus"
 license=('Apache')
 provides=('afl')
 conflicts=('afl')
