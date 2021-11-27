@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with WIP AMDGPU material
-	pkgver = v5.16.rc1.r141.gc8d265840be6
+	pkgver = 5.16.r1058192.c8d265840be6
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64

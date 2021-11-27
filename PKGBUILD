@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with WIP AMDGPU material'
-pkgver=v5.16.rc1.r141.gc8d265840be6
+pkgver=5.16.r1058192.c8d265840be6
 _product="${pkgbase%-git}"
 _branch=drm-next
 pkgrel=1
@@ -25,7 +25,11 @@ sha256sums=('SKIP'
             '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586')
 
 pkgver() {
-  git -C $_srcname describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_srcname}"
+  local version="$(grep \^VERSION Makefile|cut -d" " -f3)"
+  local patch="$(grep \^PATCHLEVEL Makefile|cut -d" " -f3)"
+
+  printf "%s.%s.r%s.%s" "${version}" "${patch}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 export KBUILD_BUILD_HOST=archlinux
