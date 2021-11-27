@@ -1,8 +1,8 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 5.11.r987909.f60839821f77
+	pkgver = 5.13.r1018615.be0118f90e18
 	pkgrel = 1
-	url = https://gitlab.freedesktop.org/drm/amd
+	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -22,10 +22,8 @@ pkgbase = linux-amd-staging-drm-next-git
 	options = !strip
 	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
 	source = config
-	source = sphinx-workaround.patch
 	sha256sums = SKIP
-	sha256sums = 0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d
-	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
+	sha256sums = 324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586
 
 pkgname = linux-amd-staging-drm-next-git
 	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules

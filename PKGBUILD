@@ -1,14 +1,14 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.11.r987909.f60839821f77
+pkgver=5.13.r1018615.be0118f90e18
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
 pkgrel=1
 arch=(x86_64)
-url='https://gitlab.freedesktop.org/drm/amd'
+url=https://gitlab.freedesktop.org/agd5f/linux
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
@@ -18,18 +18,16 @@ makedepends=(
 options=('!strip')
 _srcname=linux-agd5f
 source=(
-  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
-  config                  # the main kernel config file
-  sphinx-workaround.patch # Sphinx 3.5 broke the build again
+  "${_srcname}::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
+  config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d'
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
+            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586')
 
 pkgver() {
   cd "${_srcname}"
-  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  local version="$(grep \^VERSION Makefile|cut -d" " -f3)"
+  local patch="$(grep \^PATCHLEVEL Makefile|cut -d" " -f3)"
 
   printf "%s.%s.r%s.%s" "${version}" "${patch}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -58,6 +56,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -124,13 +123,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
