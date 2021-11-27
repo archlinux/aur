@@ -12,8 +12,8 @@ makedepends=(bc kmod libelf pahole cpio perl tar xz zstd
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git)
 checkdepends=()
-optdepends=(ccache)
-provides=('linux' 'linux-headers')
+optdepends=(ccache linux-docs)
+provides=('linux')
 conflicts=()
 replaces=()
 backup=()
@@ -56,14 +56,14 @@ package_linux-kernel-ohio() {
 }
 package_linux-kernel-ohio-headers() {
     pkgdesc="$pkgname-headers"
-    provides=("linux-headers=${pkgver}" "${pkgbase}-headers=${pkgver}")
+    provides=("linux-headers")
     builddir="$pkgdir/usr/lib/modules/$pkgver-kernel-ohio/build"
     cd "$srcdir"/linux-$pkgver
     mkdir -p $pkgdir/usr/src
     mkdir -p $builddir
     mkdir -p $pkgdir/usr/lib/modules/$pkgver-kernel-ohio/extra
     mkdir -p $pkgdir/usr/lib/modules/$pkgver-kernel-ohio/kernel
-    mkdir -p $pkgdir/usr/lib/modules/$pkgver-kernel-ohio/updates
+    mkdir -p $pkgdir/usr/lib/ modules/$pkgver-kernel-ohio/updates
     mkdir -p $builddir/tools/objtool
 	make INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH="$pkgdir"/usr modules_install
 	cp Module.symvers $pkgdir/usr/src/linux-$pkgver-ohio
