@@ -1,6 +1,6 @@
 pkgbase = qpwgraph
 	pkgdesc = PipeWire Graph Qt GUI Interface
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/rncbc/qpwgraph
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = qpwgraph
 	depends = alsa-lib
 	depends = pipewire
 	depends = qt6-base
-	source = https://gitlab.freedesktop.org/rncbc/qpwgraph/-/archive/v0.0.8/qpwgraph-v0.0.8.tar.gz
-	sha512sums = b17687482509d3b300e19319ce47c9738bb9f3e8beca352def2e6d151775527cc0ff750ff97d45e96a67e6262952e691b0439b4caad1e5993f43c5b0483ed953
+	source = https://gitlab.freedesktop.org/rncbc/qpwgraph/-/archive/v0.0.9/qpwgraph-v0.0.9.tar.gz
+	sha512sums = b6e60d8b784c52863a0d845ac39e6133d4abaaf321b8c61ad0c017e740181267f3859579ea2b3582596a81aae13ee106bf3e8edd60b71d3452d614c4db4dfb51
 
 pkgname = qpwgraph
