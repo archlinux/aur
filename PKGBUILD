@@ -1,9 +1,10 @@
 # Maintainer: E-Hern Lee <ehern.lee@gmail.com>
 _pkgname=kaiju
 pkgname=ghidra-extension-kaiju-bin
+pkgdesc="Binary analysis improvements for Ghidra. Can import C++ symbols from OOAnalyer"
 pkgver=10.0.4
-_updatedate=20211121
 pkgrel=1
+_updatedate=20211121
 arch=('any')
 url=https://github.com/CERTCC/kaiju
 license=('BSD')
