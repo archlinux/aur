@@ -1,7 +1,7 @@
 pkgbase = sftpgo-bin
-	pkgdesc = Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP
+	pkgdesc = Fully featured and highly configurable SFTP server with optional HTTP, FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo-bin.install
 	arch = x86_64

@@ -3,8 +3,8 @@
 pkgname=sftpgo-bin
 _pkgname=sftpgo
 pkgver=2.2.0
-pkgrel=1
-pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
+pkgrel=2
+pkgdesc='Fully featured and highly configurable SFTP server with optional HTTP, FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('x86_64')
 url="https://github.com/drakkan/${_pkgname}"
 license=('AGPLv3')
@@ -39,7 +39,7 @@ package() {
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/etc/${_pkgname}"
   install -Dm 640 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/var/lib/${_pkgname}"
-  install -Dm 600 sqlite/sftpgo.db -t "${pkgdir}/var/lib/${_pkgname}"
+  install -Dm 600 -o ${_uid_sftpgo} -g ${_gid_sftpgo} sqlite/sftpgo.db -t "${pkgdir}/var/lib/${_pkgname}"
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/srv/${_pkgname}"
   install -d "${pkgdir}/usr/share/${_pkgname}"
   cp -r templates "${pkgdir}/usr/share/${_pkgname}/"
