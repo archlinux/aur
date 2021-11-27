@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe Calà <gcala at mailbox dot org>
 
 pkgname=kalendar-git
-pkgver=r515.79116ec8
+pkgver=0.2.1.r47.g27bed19a
 pkgrel=1
 pkgdesc="A calendar application using Akonadi to sync with external services (NextCloud, GMail, ...)"
 arch=(x86_64 aarch64)
@@ -17,7 +17,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
