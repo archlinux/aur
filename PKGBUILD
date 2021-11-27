@@ -3,14 +3,12 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with WIP AMDGPU material'
-pkgver=.r1031518.8f0284f190e6
+pkgver=v5.16.rc1.r141.gc8d265840be6
 _product="${pkgbase%-git}"
-# _kernel_rel=5.16
-# _branch=drm-next-${_kernel_rel}
 _branch=drm-next
 pkgrel=1
 arch=(x86_64)
-url=https://gitlab.freedesktop.org/drm/amd
+url=https://gitlab.freedesktop.org/agd5f/linux
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
@@ -24,12 +22,10 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060')
+            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586')
 
 pkgver() {
-  cd "${_srcname}"
-
-  printf "%s.r%s.%s" "${_kernel_rel}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C $_srcname describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 export KBUILD_BUILD_HOST=archlinux
