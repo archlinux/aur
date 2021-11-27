@@ -3,7 +3,7 @@
 
 _pkgname=augustus
 pkgname=$_pkgname-game
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="An enhanced re-implementation of Caesar III (Original copy required)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=(${pkgname}.desktop ${pkgname}.install $url/archive/v$pkgver.tar.gz)
 sha256sums=('52fd21bbd8a32cee21399c598283dfea11fa507e01e92c8344fb6e021fae0928'
             'd0d9e1fdfa9edbb22239d55612c8b7ffdb501a1cfebea82cce2ccf4259f867ef'
-            '3452ff516f1006e48036925a3f815329cce6e90d8848e44a90ea7ce120169eb2')
+            '3886e05ec1d6722197a43eaf3fbef0cdf1c5ce604f99bddef03771de4f49501d')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
