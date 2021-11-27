@@ -8,7 +8,7 @@ index a1406832..748f5c1e 100644
  
 +[built-in options]
 +c_args=[@CARGS@]
-+cpp_args=[@CARGS@]
++cpp_args=[@CXXARGS@]
 +c_link_args = [@LDARGS@]
 +cpp_link_args = [@LDARGS@]
 +
@@ -25,7 +25,7 @@ index 1aee4626..7d2e84f4 100644
  
 +[built-in options]
 +c_args=[@CARGS@]
-+cpp_args=[@CARGS@]
++cpp_args=[@CXXARGS@]
 +c_link_args = [@LDARGS@]
 +cpp_link_args = [@LDARGS@]
 +
