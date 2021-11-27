@@ -1,12 +1,12 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# based on testing/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-drm-next-git
+pkgver=5.16.rc1.r141.gc8d265840be6
+pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
-pkgver=5.14.r1029334.e73f0f0ee754
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
-pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
@@ -22,14 +22,10 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84')
+            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586')
 
 pkgver() {
-  cd "${_srcname}"
-  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
-
-  printf "%s.%s.r%s.%s" "${version}" "${patch}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C $_srcname describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 export KBUILD_BUILD_HOST=archlinux
@@ -56,6 +52,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
