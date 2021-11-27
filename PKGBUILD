@@ -1,41 +1,51 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: dreieck
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=twaindsm
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="TWAIN Data Source Manager"
-arch=('i686' 'x86_64')
-url="http://twain.org/"
+arch=(
+  'i686'
+  'x86_64'
+)
+# url='http://twain.org/'
+url='https://github.com/twain/twain-dsm/'
 license=('LGPL2.1')
 depends=('gcc-libs')
 makedepends=('cmake')
-source=("https://github.com/twain/twain-dsm/raw/master/Releases/dsm_020402/tarball/twaindsm_${pkgver}.orig.tar.gz"
-        "no-werror.patch")
-md5sums=('8f9c9b9a13a3225c6e5828a0561a826f'
-         '7880d330686bffad0c00b6a2731be338')
+source=(
+  "twaindsm-${pkgver}.tar.gz::https://github.com/twain/twain-dsm/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=(
+  '89b226f1197c34fc6dff213c5bf656964460045517f886976a45417932de2f10'  # twaindsm-${pkgver}.tar.gz
+)
+options+=('emptydirs')
 
 prepare() {
-  cd "${srcdir}/TWAIN_DSM/src"
+  cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM/src"
 
   # Someone thought it was a good idea to distribute CMake build artifacts
   rm -rf CMakeCache.txt CMakeFiles
-
-  patch -Np3 < "${srcdir}/no-werror.patch"
 }
 
 build() {
-  cd "${srcdir}/TWAIN_DSM/src"
+  cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM/src"
 
   test -d build && rm -rf build
   mkdir build
   cd build
 
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ..
+
   make
 }
 
 package() {
-  cd "${srcdir}/TWAIN_DSM/src/build"
+  cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM/src/build"
 
   make install DESTDIR="${pkgdir}"
 
@@ -43,10 +53,19 @@ package() {
   # a good idea to put everything in /usr/local on Linux. So in order to comply
   # with the spec while still having everything in Arch's usual filesystem
   # hierarchy, we are going to create a few symlinks.
-  install -dm755 "${pkgdir}/usr/lib/twain"
-  install -dm755 "${pkgdir}/usr/local/lib"
+  install -d -m755 -v "${pkgdir}/usr/lib/twain"
+  install -d -m755 -v "${pkgdir}/usr/local/lib"
   for i in "${pkgdir}/usr/lib/libtwaindsm.so"*; do
     ln -s "/usr/lib/$(basename "${i}")" "${pkgdir}/usr/local/lib/$(basename "${i}")"
-  done;
+  done
   ln -s "/usr/lib/twain" "${pkgdir}/usr/local/lib/twain"
+
+
+  cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM"
+
+  install -D -m644 -v license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license_LGPL2.1.txt"
+
+  for _docfile in ChangeLog.txt README.txt TODO.txt twaindsm.spec; do
+    install -D -m644 -v "${_docfile}" "${pkgdir}/usr/share/doc/${pkgname}/${_docfile}"
+  done
 }
