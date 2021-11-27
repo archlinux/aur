@@ -4,17 +4,18 @@
 # Contributor: Guten Ye <ywzhaifei [at] gmail [dot] com>
 
 pkgname=ruby-build-git
-pkgver=v20160228.r5.g522f3ba
+pkgver=v20211124
 pkgrel=1
 pkgdesc="Compile and install Ruby"
 arch=('any')
-url="http://github.com/rbenv/ruby-build"
+url="https://github.com/rbenv/ruby-build"
 license=("MIT")
+depends=('bash')
 makedepends=('git')
 provides=('ruby-build')
 conflicts=('ruby-build')
 _gitname="ruby-build"
-source=("git://github.com/rbenv/ruby-build.git")
+source=("git+https://github.com/rbenv/ruby-build.git")
 sha1sums=('SKIP')
 
 pkgver() {
