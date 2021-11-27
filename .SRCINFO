@@ -1,7 +1,7 @@
 pkgbase = python-odo
 	pkgdesc = Data Migration for the Blaze Project
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/blaze/odo
 	arch = any
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = python-odo
 	depends = python-pandas
 	depends = python-dask
 	depends = python-networkx
-	source = odo-0.5.0::https://github.com/blaze/odo/archive/0.5.0.tar.gz
-	sha512sums = 661912ad34a72df0991366f8f42a5359855f8e3d01abbad52c2b327069dc67d4af2f76c73710a1b614f6cfda9fa2eeda93eec0365cc126a5a15fb4ca6a449557
+	source = odo-0.5.1::https://github.com/blaze/odo/archive/0.5.1.tar.gz
+	sha512sums = 20d4660cae170699440bf629568d8170ee69386c4d01eeafd7a5db6b1338202f76b8d6c618cafed966893bb04e7b6b97674e923c6ddfc5a3c16f6e2bd011e2d8
 
 pkgname = python-odo
