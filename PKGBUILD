@@ -3,7 +3,7 @@
 
 pkgname=twaindsm
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TWAIN Data Source Manager"
 arch=(
   'i686'
@@ -68,4 +68,6 @@ package() {
   for _docfile in ChangeLog.txt README.txt TODO.txt twaindsm.spec; do
     install -D -m644 -v "${_docfile}" "${pkgdir}/usr/share/doc/${pkgname}/${_docfile}"
   done
+  install -D -m644 -v "${srcdir}/twain-dsm-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/TWAIN-DSM_REPO-INFO.md"
+  install -D -m644 -v "${srcdir}/twain-dsm-${pkgver}/TWAIN DSM Linux Build Procedure.rtf" "${pkgdir}/usr/share/doc/${pkgname}/TWAIN_DSM_Linux_Build_Procedure.rtf"
 }
