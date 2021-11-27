@@ -11,7 +11,7 @@
 set -u
 _pkgname='dompdf'
 pkgname="php-${_pkgname}"
-pkgver='0.8.5'
+pkgver='1.1.1'
 pkgrel='1'
 pkgdesc='HTML to PDF converter'
 arch=('any')
@@ -33,7 +33,8 @@ options=('!strip')
 # opcache: enabled in compile but not enabled by default
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/dompdf/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d5b5a6d13cc9d0aad02ef95ac97f8214745db95a9f81a23e8e39d7b551176451')
+md5sums=('303fa80d806d33005ff714ae77e00971')
+sha256sums=('27536ff9f25602957933b4ced68b5063df38c3947cc2b36df4625e3c1e6161c0')
 
 prepare() {
   set -u
