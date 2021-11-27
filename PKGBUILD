@@ -4,7 +4,7 @@
 pkgname=mingw-w64-fltk
 _pkgname=fltk
 pkgdesc="Graphical user interface toolkit for X (mingw-w64)"
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 arch=('any')
 license=('custom:LGPL')
@@ -14,7 +14,7 @@ depends=('mingw-w64-libjpeg' 'mingw-w64-libpng' 'mingw-w64-zlib' 'mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 source=(http://fltk.org/pub/fltk/$pkgver/fltk-$pkgver-source.tar.gz
         subdirs.patch)
-md5sums=('8483e58b2312a348c0f66101eead1409'
+md5sums=('84907602c2e50fadec3bc40fb61935cd'
          '42d65739702f35bfe40ae15d59c77c66')
 options=('!docs' '!strip' '!buildflags' 'staticlibs')
 
