@@ -1,7 +1,7 @@
 pkgbase = elastic-git
 	pkgdesc = Simple yet efficient finite element solver for linear elasticity problems in two and three dimensions.
-	pkgver = 20190226.r136
-	pkgrel = 1
+	pkgver = 20210506.r145
+	pkgrel = 2
 	url = https://github.com/ISCDtoolbox/LinearElasticity
 	arch = x86_64
 	license = LGPL
@@ -14,4 +14,3 @@ pkgbase = elastic-git
 	sha256sums = SKIP
 
 pkgname = elastic-git
-

@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=elastic-git
-pkgver=20190226.r136
-pkgrel=1
+pkgver=20210506.r145
+pkgrel=2
 pkgdesc="Simple yet efficient finite element solver for linear elasticity problems in two and three dimensions."
 arch=('x86_64')
 url="https://github.com/ISCDtoolbox/LinearElasticity"
@@ -36,6 +36,5 @@ build() {
 
 package() {
   cd ${pkgname%-git}/build
-  install -Dm755 elastic "$pkgdir"/usr/bin/elastic
-  install -Dm644 libElas.so "$pkgdir"/usr/lib/libElas.so
+  make install DESTDIR="${pkgdir}"
 }
