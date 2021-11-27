@@ -4,22 +4,25 @@
 
 pkgname=electrumx-git
 _pkgname=electrumx
-pkgver=1.16.0.r1984.fe6bf7e
+pkgver=1.16.0.r2025.0e321d2
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet (git version)"
 arch=('any')
 depends=('leveldb'
          'python>=3.7'
-         'python-aiorpcx>=0.18.3' 'python-aiorpcx<0.19.0'
+         'python-aiorpcx>=0.18.5' 'python-aiorpcx<0.19.0'
          'python-attrs'
          'python-plyvel'
          'python-pylru'
-         'python-aiohttp>=3.3.0'
+         'python-aiohttp>=3.3.0' 'python-aiohttp<4.0.0'
          'python-websockets'
          )
 makedepends=('python-setuptools' 'git')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
-            'electrum: Bitcoin thin client')
+            'electrum: Bitcoin thin client'
+            'python-rapidjson<2.0: Alternative JSON parsing library for improved performance'
+            'python-ujson<4.0: Alternative JSON parsing library for improved performance'
+            )
 url="https://github.com/spesmilo/electrumx"
 license=('MIT')
 conflicts=('electrumx')
