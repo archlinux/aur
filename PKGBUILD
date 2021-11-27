@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=iscdcommons-git
-pkgver=20190315.r37
+pkgver=20210723.r39
 pkgrel=2
 pkgdesc="Common library for ISCD tools, e.g. elastic"
 arch=('x86_64')
@@ -30,5 +30,5 @@ build() {
 
 package() {
   cd ${pkgname%-git}/build
-  install -Dm644 libCommons.so "$pkgdir"/usr/lib/libCommons.so
+  make install DESTDIR="${pkgdir}"
 }
