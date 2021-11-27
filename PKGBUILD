@@ -17,7 +17,7 @@ package() {
   cd "$srcdir"
 
   mkdir -p "${pkgdir}"/usr/share/nextcloud-maintenance
-  install -D -m755 checkUpdates.sh "$pkgdir/usr/share/nextcloud-maintenance/nextcloud-backup.sh" 
+  install -D -m755 nextcloud-backup.sh "$pkgdir/usr/share/nextcloud-maintenance/nextcloud-backup.sh" 
   
   install -m644 -Dt "$pkgdir/usr/lib/systemd/system" nextcloud-backup.service
   install -m644 -Dt "$pkgdir/usr/lib/systemd/system" nextcloud-backup.timer
