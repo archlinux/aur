@@ -3,3 +3,4 @@
 *.zst
 pkg/
 src/
+*.zip
