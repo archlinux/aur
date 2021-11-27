@@ -1,14 +1,14 @@
 pkgbase = jello
 	pkgdesc = Filter JSON and JSON Lines data with Python syntax
-	pkgver = 1.4.4
-	pkgrel = 2
+	pkgver = 1.4.5
+	pkgrel = 1
 	url = https://github.com/kellyjonbrazil/jello
 	changelog = CHANGELOG
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pygments
-	source = https://files.pythonhosted.org/packages/source/j/jello/jello-1.4.4.tar.gz
-	sha256sums = c42d5202282fa10b57f5830b8e4a74da7a75d585f000b812bbfd90bff28c2bfc
+	source = jello-1.4.5.tar.gz::https://github.com/kellyjonbrazil/jello/archive/v1.4.5.tar.gz
+	sha256sums = b15a3c8b55b0149dddaf01fc989bc7b6b418e87967a8368f6dec2c4b5fb00132
 
 pkgname = jello

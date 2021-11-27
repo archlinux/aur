@@ -2,8 +2,8 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.4.5
+pkgrel=1
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
 url='https://github.com/kellyjonbrazil/jello'
@@ -11,26 +11,31 @@ license=('MIT')
 depends=('python-pygments')
 makedepends=('python-setuptools')
 changelog=CHANGELOG
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c42d5202282fa10b57f5830b8e4a74da7a75d585f000b812bbfd90bff28c2bfc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('b15a3c8b55b0149dddaf01fc989bc7b6b418e87967a8368f6dec2c4b5fb00132')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  ## remove manpage from setuptools installation to install it manually
-  mv jello/man ./
+  ## setup.py installs man page to site-package directory; we don't want that
+  sed -i '/include_package_data/s/True/False/' setup.py
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+  python -m unittest
+}
+
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "$pkgname-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim: ts=2 sw=2 et:
