@@ -14,8 +14,8 @@ license=('MIT')
 
 build() {
   cd "$srcdir/dvm" || exit 1
-
-  cargo build --release
+  echo -e "$(tput bold)If build fails please install $(tput bold)$(tput setaf 2)rustup-nightly$(tput setaf 7) or run $(tput bold)$(tput setaf 2)\`rustup install nightly\`"
+  cargo +nightly build --release
 }
 
 package() {
