@@ -31,3 +31,4 @@ package() {
    mv "$pkgdir/opt/bin" "$pkgdir/usr"
    sed -i "s|$pkgdir||" "$pkgdir/usr/bin/cobra"
    install -Dm644 ../License.text "$pkgdir/usr/share/licenses/$pkgname/License.text"
+}
