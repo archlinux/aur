@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-bin
 _pkgname=sftpgo
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('x86_64')
@@ -26,8 +26,8 @@ install=${pkgname}.install
 source=("https://github.com/drakkan/sftpgo/releases/download/v${pkgver}/sftpgo_v${pkgver}_linux_x86_64.tar.xz"
   "sftpgo.json"
   "sftpgo.sysusers")
-sha256sums=('98ce7ef15e704cf5ba252bcf6304a89652fa534df1b4036cdd275526a42265ea'
-  '6f1fbbf9d19a10b09bd37f293bcae5a807bfd7bc12552f7b2a5d19eb87afa0dc'
+sha256sums=('43db4301bd9b3f2536ca96de71bc295e5186d197d86edc0d6260bf6e5df62267'
+  'd9188b0c2eb2d7e486318622a955a01f66e63d8c816ad8c3e548d89ae0af193e'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
@@ -44,6 +44,7 @@ package() {
   install -d "${pkgdir}/usr/share/${_pkgname}"
   cp -r templates "${pkgdir}/usr/share/${_pkgname}/"
   cp -r static "${pkgdir}/usr/share/${_pkgname}/"
+  cp -r openapi "${pkgdir}/usr/share/${_pkgname}/"
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dm 644 "$srcdir/sftpgo.json" "${pkgdir}/usr/share/doc/${_pkgname}/sftpgo.json.default"
   install -Dm 644 README.txt "${pkgdir}"/usr/share/doc/${_pkgname}/README
