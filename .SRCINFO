@@ -1,0 +1,15 @@
+pkgbase = nextcloud-maintenance
+	pkgdesc = Scripts and services to support nextcloud maintenance
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/paulbastian/aur/tree/master/nextcloud-maintenance
+	arch = any
+	license = APACHE
+	source = https://raw.githubusercontent.com/paulbastian/aur/master/nextcloud-maintenance/nextcloud-backup.sh
+	source = https://raw.githubusercontent.com/paulbastian/aur/master/nextcloud-maintenance/nextcloud-backup.service
+	source = https://raw.githubusercontent.com/paulbastian/aur/master/nextcloud-maintenance/nextcloud-backup.timer
+	sha256sums = 7a63bb54ab1115906e3f4313b44d24d8de012ce21999949ed797d4f91e00bc9a
+	sha256sums = 3129b829825c8870176360e29a20c3edcbf0fd7a9851c371d4ca5cd444b12b93
+	sha256sums = 35cc1188c25f3b86f47512d2328dd519b68bf5cef97494f4c18de2d292096c59
+
+pkgname = nextcloud-maintenance
