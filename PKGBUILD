@@ -1,6 +1,6 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 pkgname=an-anime-game-launcher
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 arch=("x86_64")
@@ -10,6 +10,7 @@ depends=(
 "tar"
 "unzip"
 "xdelta3"
+"cabextract"
 "git"
 )
 makedepends=(
@@ -25,7 +26,7 @@ optdepends=(
 )
 provides=("${pkgname}")
 source=(
-"git+https://notabug.org/nobody/an-anime-game-launcher.git"
+"git+https://gitlab.com/KRypt0n_/an-anime-game-launcher.git"
 "an-anime-game-launcher.desktop"
 "an-anime-game-launcher.sh"
 )
