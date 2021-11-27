@@ -5,22 +5,22 @@
 
 pkgname=lightzone
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source professional-level digital darkroom software"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
 arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
-depends=('java-runtime'
-    'java-openjfx'
+depends=('java-runtime>11'
+    'java-openjfx>11'
     'javahelp2'
     'lcms2'
     'lensfun'
     'libjpeg-turbo'
     'libtiff'
     'libxml2')
-makedepends=('java-environment'
+makedepends=('java-environment>11'
     'ant'
     'autoconf'
     'gcc'
@@ -38,8 +38,8 @@ source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
 md5sums=('fde0d532e943cb08bc69640e82de8a65')
 
 build() {
-  if [ -d /usr/lib/jvm/java-15-jdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-15-jdk
+  if [ -d /usr/lib/jvm/java-17-openjdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
   elif [ -d /usr/lib/jvm/java-15-openjdk ]; then
     export JAVA_HOME=/usr/lib/jvm/java-15-openjdk
   else
