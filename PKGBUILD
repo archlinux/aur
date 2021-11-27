@@ -4,8 +4,8 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=moneymanagerex-git
-pkgver=1.5.6
-pkgrel=5
+pkgver=1.5.10
+pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -32,6 +32,8 @@ prepare() {
 
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
   sed -i "s/luaL_checkint(/luaL_checkinteger(/g" ./3rd/LuaGlue/include/LuaGlue/LuaGlueApplyTuple.h
+  # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/3796
+  sed -i "s/hb.init(true/hb.init(true, \"\"/g" ./src/aboutdialog.cpp
 }
 
 build() {
