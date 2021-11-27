@@ -1,13 +1,13 @@
 pkgbase = yesplaymusic-electron
 	pkgdesc = A third party music application for Netease Music. Using the system electron
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qier222/YesPlayMusic
 	arch = any
 	license = MIT
 	depends = gtk3
 	depends = nss
-	depends = electron
+	depends = electron13
 	optdepends = c-ares
 	optdepends = ffmpeg
 	optdepends = http-parser
@@ -27,6 +27,6 @@ pkgbase = yesplaymusic-electron
 	source = yesplaymusic
 	md5sums = 58b9b2eb66b69342cf3ebeff86511407
 	md5sums = ade11d60b069c369b57b5d1e09066519
-	md5sums = 426a2f7143ad4d0f5d060ba01e349518
+	md5sums = 4e0fc58c70fa5fa4b1e581dc0fba8b9e
 
 pkgname = yesplaymusic-electron

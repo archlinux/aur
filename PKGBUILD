@@ -2,7 +2,7 @@
 
 pkgname=yesplaymusic-electron
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music application for Netease Music. Using the system electron"
 arch=("any")
 url="https://github.com/qier222/YesPlayMusic"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=(
     "gtk3"
     "nss"
-    "electron"
+    "electron13"
 )
 optdepends=(
     'c-ares'
@@ -35,13 +35,13 @@ source=(
 )
 md5sums=('58b9b2eb66b69342cf3ebeff86511407'
          'ade11d60b069c369b57b5d1e09066519'
-         '426a2f7143ad4d0f5d060ba01e349518')
+         '4e0fc58c70fa5fa4b1e581dc0fba8b9e')
 
 package() {
     cp -r "usr" "${pkgdir}"
     rm "${pkgdir}/usr/share/applications/yesplaymusic.desktop"
     install -d "${pkgdir}/usr/share"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "yesplaymusic.desktop"
-    install -Dm644 "opt/YesPlayMusic/resources/app.asar" "${pkgdir}/usr/share/yesplaymusic.asar"
+    install -Dm644 "opt/YesPlayMusic/resources/app.asar" "${pkgdir}/usr/share/yesplaymusic/app.asar"
     install -Dm755 "yesplaymusic" "${pkgdir}/usr/bin/yesplaymusic"
 }

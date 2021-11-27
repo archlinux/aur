@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-electron /usr/share/yesplaymusic.asar
+electron13 /usr/share/yesplaymusic/app.asar
