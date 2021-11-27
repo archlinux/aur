@@ -2,7 +2,7 @@
 # Contributor: Chi_Tang <bilibilichitang@hotmail.com>
 # Contributor: KiteAB <kiteabpl@outlook.com>
 pkgname=fuckmemory
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A great program to fill up your memory or swap."
 arch=('any')
