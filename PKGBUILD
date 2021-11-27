@@ -12,10 +12,11 @@ pkgname="${pkgbase}"
 #_pkgver='3.40'; _commonver='3.80'; _dl='8/0100002708/17'
 #_pkgver='3.50'; _commonver='3.90'; _dl='8/0100007658/05'
 #_pkgver='3.60'; _commonver='4.00'; _dl='0/0100009240/02'
-_pkgver='3.70'; _commonver='4.10'; _dl='8/0100007658/08'
+#_pkgver='3.70'; _commonver='4.10'; _dl='8/0100007658/08'
+_pkgver='3.70'; _commonver='4.10'; _dl='4/0100010264/01'
 
 pkgver="${_pkgver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('i686' 'x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -36,17 +37,17 @@ options+=('!libtool')
 install="${pkgname}.install"
 _srcdir="${pkgbase}-${pkgver}"
 source=(
-  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-05.tar.gz"
+  "https://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-07.tar.gz"
   '0000-cgnplp-po-Makefile-quote-spaces.patch'
   'how-to.txt'
 )
-md5sums=('7818b516c98bbcb38505b2ad50e69599'
+md5sums=('35d69e337c7043d1adc4f5a496126d88'
          '638b9668916f5973df0dba0526ba803a'
          'e9b4391436a9ccf730a4f6e8adc74657')
-sha256sums=('e05d758f12b45582dcd8cd17ee0b23e1b8a363a3e412f530494b6f9dfda64410'
+sha256sums=('ff16438de55c982d649cdb20e262a54b13569e2320ed3e75b9c4b000c7bbdd06'
             'b2e4185c66d42facb57783d3d4b7d571b826b8af23d66f60574e0604b3bfd0b7'
             '62c4bfe3e4155e5e805b51eaa4b9dd3581ba029259c2817d9ebe66077aad7280')
-sha512sums=('d83254b7f7f87c56caeaaf151d898de36f746c03ad88d427959bdeec905b9cd92a14a8ac534073473a6cefbb5e2b0be9e9faa79b500e252ecd0a0564d2312bbc'
+sha512sums=('d7ae9cd31a42a4e8284d058654182ae091c1e4e4d2f62a8e3ca9a89893af5769a6c03dd2a6d11e767cb30b003facf20adcf00438d026c21125968cee687d5bea'
             'cc24afbc841125dc3556ada8fa2fc9b432f9b648efe18f0f6c659fdf916fe22d80f5524340877696e896d7f4a00206ba54c89943290c08377cbfaa6c9569fc00'
             '736e1785c443c4d129c8801a127410012889f46691259e8a7f6a54106a0647beb5b6267aabb78b3ed0a1c7a9d8ce216e159515d3aad425812e5be52c8b58e4ee')
 
