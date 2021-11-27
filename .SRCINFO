@@ -1,13 +1,14 @@
 pkgbase = python2-greenlet
 	pkgdesc = Lightweight in-process concurrent programming
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://pypi.org/project/greenlet/
 	arch = x86_64
 	license = MIT
+	license = PSF
 	makedepends = python2-setuptools
 	depends = python2
-	source = python2-greenlet-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-1.1.1.tar.gz
-	sha512sums = 156ad7dfcb73764818d5f6176b5c80dc5a3ac532db5af5ffe654033a5e336d35a9e9edadb3b37fa9bf5fc338f706baf3693dcfb550598d8f17f042f5a27b86f9
+	source = python2-greenlet-1.1.2.tar.gz::https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-1.1.2.tar.gz
+	sha512sums = e7bcc1bfffc80fcaee735ee69f6f53e8f68bd4d3ab8ad6ed813684ffad72340a347e4810f18cc32d9c3948b5c995aefc3a53ce4ae60324093dae12042d33183b
 
 pkgname = python2-greenlet
