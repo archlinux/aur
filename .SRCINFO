@@ -1,0 +1,12 @@
+pkgbase = bolliedelayxt.lv2-git
+	pkgdesc = A lv2 delay plugin
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/MrBollie/bolliedelayxt.lv2
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/MrBollie/bolliedelayxt.lv2
+	md5sums = SKIP
+
+pkgname = bolliedelayxt.lv2-git
