@@ -1,11 +1,13 @@
 pkgbase = elemental-gmp-git
-	pkgdesc = Frok of elemental which bypasses MPFR to use GMP directly
+	pkgdesc = Fork of elemental which bypasses MPFR to use GMP directly
 	pkgver = 3801.cc51ddb0f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arxiv.org/abs/1502.02033
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
+	makedepends = git
 	depends = gmp
 	depends = lapack
 	depends = metis
