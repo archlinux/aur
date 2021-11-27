@@ -1,6 +1,6 @@
 pkgbase = python-gff3
 	pkgdesc = Manipulate genomic features and validate the syntax and reference sequence of GFF3 files
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/hotdogee/gff3-py
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-gff3
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
-	source = python-gff3-1.0.0.tar.gz::https://github.com/hotdogee/gff3-py/archive/1.0.0.tar.gz
-	sha256sums = d9a4791f5b5c5132672fb8ef7250622f1940026459b555035463b38652d32933
+	source = python-gff3-1.0.1.tar.gz::https://github.com/hotdogee/gff3-py/archive/1.0.1.tar.gz
+	sha256sums = b9547543df39250200c56e3ea336651e72233c4eb8b71295ac51dbe3b2c020d7
 
 pkgname = python-gff3

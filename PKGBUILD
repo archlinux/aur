@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=python-gff3
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Manipulate genomic features and validate the syntax and reference sequence of GFF3 files"
 arch=('any')
@@ -11,7 +11,7 @@ license=('ISC')
 depends=('python')
 makedepends=('python-setuptools' 'python-sphinx')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d9a4791f5b5c5132672fb8ef7250622f1940026459b555035463b38652d32933')
+sha256sums=('b9547543df39250200c56e3ea336651e72233c4eb8b71295ac51dbe3b2c020d7')
 
 build(){
 	cd "gff3-py-$pkgver"
@@ -29,6 +29,6 @@ check() {
 package() {
 	cd "gff3-py-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 "$srcdir/man/gff3.1" -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "$srcdir/man/gff3.1" -t "$pkgdir/usr/share/man/man1/"
 }
