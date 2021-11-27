@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=air
-pkgver=1.27.6
+pkgver=1.27.7
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3fcba175d3b3e6ff63a732440ab6547b356864c60f8e513d942ff7e35bc83a0cc38e914f852cb2e4319f2cad0f21d0800db1709709ac196f3b2b286a8e80c76d')
-b2sums=('027be16d6fdbfb45faf6c0b6742243129d4a34b60ae4f7775b14529c490babff09ccbe0dc806be461b2ebcc3f1c1e9e52dbf9222a1409c3035909f81e870470f')
+sha512sums=('e3f9142efc62fbd1fc37ee031d671a53dee59f6e69b6887e69a4db53e1a964503d2481fdf63f9943ecb7a7efeb604725b844b7a21c24fd390e3f43d88b13ffa6')
+b2sums=('5b85ced110aa77076b0d6ab09d5ad61882b6f36d05fe28ac7af8ab8cb9f8841a8573342f72146bf15e640c2a797761ba4307ab261fd2a99bc1a0934c8c674148')
 
 prepare() {
   cd "$pkgname-$pkgver"
