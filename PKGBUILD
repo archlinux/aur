@@ -1,7 +1,7 @@
 # Maintainer: Tom Pillot <tom dot pillot at pm dot me>
 pkgname=gopass-ui-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Awesome UI for the gopass CLI – a password manager for your daily business"
 arch=('x86_64')
 url="https://github.com/codecentric/gopass-ui"
@@ -12,7 +12,7 @@ provides=('gopass-ui')
 install="${pkgname}.install"
 source=("https://github.com/codecentric/gopass-ui/releases/download/v${pkgver}/gopass-ui-${pkgver}.pacman" 'LICENSE')
 
-sha256sums=('d92b1abb269076a2dd116138c6371cb7e20aafcbec24fb50e651c03f5fa4dbe0'
+sha256sums=('f347618be91a79ad39804a41d9165dec6336d0a7a7c8c316200efca8376e565f'
             '21852b19d5c49c5d36f2c23cc60a299beeb94a64ec197dab5a57065fd73ecac3')
 
 package() {
