@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd $_pkgname
   [ -d build ] && rm -rf build
-  meson build --prefix=/usr --buildtype=release -Denable_https_everywhere=false
+  meson build --prefix=/usr --buildtype=release
   ninja -C build
 }
 
