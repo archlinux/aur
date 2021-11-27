@@ -14,6 +14,10 @@ then
   echo -e "\e[0;35mNOTE: The config.ini file is located at: $HOME/.local/share/PixivUtil2/config.ini\033[0m"
 else
   # cd $HOME/.local/share/PixivUtil2/
+  export ogdir="`pwd`"
+  cd $HOME/.local/share/PixivUtil2/
+  git pull -q
+  cd $ogdir
   source $HOME/.local/share/PixivUtil2/pixiv_venv/bin/activate
   $HOME/.local/share/PixivUtil2/PixivUtil2.py
 fi
