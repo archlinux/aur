@@ -2,7 +2,7 @@
 
 _pkgname='sfeed_curses'
 pkgname="${_pkgname/_/-}-git"
-pkgver=0.9.4.r0.g58dc3d5
+pkgver=1.0.r4.g8e151ce
 pkgrel=1
 pkgdesc='Curses UI front-end for sfeed RSS and Atom parser'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('ISC')
 depends=('ncurses')
 makedepends=('git')
 optdepends=('sfeed: RSS and Atom parser')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname/_/-}")
+conflicts=("${_pkgname/_/-}")
 source=("git://git.codemadness.org/${_pkgname}")
 sha256sums=('SKIP')
 
@@ -25,8 +25,8 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "${_pkgname}" install
-  install -Dvm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+  make NAME="${_pkgname/_/-}" DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "${_pkgname}" install
+  install -Dvm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname/_/-}"
 }
 
 # vim: ts=2 sw=2 et:
