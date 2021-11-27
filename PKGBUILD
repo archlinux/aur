@@ -5,8 +5,8 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=pixivutil2-git
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="A utility for the image hosting website Pixiv, once downloaded you can use the pixiv command to run it"
 arch=('any')
 url="https://github.com/Nandaka/PixivUtil2"

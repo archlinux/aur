@@ -1,7 +1,7 @@
 pkgbase = pixivutil2-git
 	pkgdesc = A utility for the image hosting website Pixiv, once downloaded you can use the pixiv command to run it
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = https://github.com/Nandaka/PixivUtil2
 	arch = any
 	license = BSD 2-Clause
