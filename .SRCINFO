@@ -7,6 +7,6 @@ pkgbase = cell-bin
 	provides = cell
 	conflicts = cell
 	source = https://github.com/humblepengi/cell/releases/download/v0.1.0/cell-0.1.0-x86_64.tar.gz
-	sha256sums = c804feaeea3b32168dee46527f91fa8227c3fe64c65965d1ce9540f2b1b13fae
+	sha256sums = 5bec0807ed403d815bc3cb981c8272a3a5127e8221f3eca3e3864b637bf81bdb
 
 pkgname = cell-bin
