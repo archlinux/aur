@@ -23,7 +23,7 @@ changelog=
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.5.tar.xz" "config" "0007-v5.15-fsync.patch" "linux-5.15.5-ohio.preset")
 noextract=()
 sha256sums=("e9565a301525ac81c142ceb832f9053dd5685e107dbcf753d0de4c58bc98851f" "324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586" "6c4f0099896f69e56ebd8c9eac266ac8ad993acecd50945e0e84ef6f95f9ddca"
-"80f05dbd248394fffc84267faf2fd1887f175842eefceef58a2f16d04ccf1b4e")
+"e519968bcf581afc67932a888d9a5db14f10d023d292a50646f69f3d597b70f8")
 validpgpkeys=()
 
 #prepare and nuker

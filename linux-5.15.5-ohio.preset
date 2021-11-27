@@ -7,7 +7,7 @@ PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
 default_image="/boot/initramfs-linux-5.15.5-ohio.img"
-#default_options=""
+default_options="-S autodetect"
 
 #fallback_config="/etc/mkinitcpio.conf"
 fallback_image="/boot/initramfs-linux-5.15.5-ohio-fallback.img"
