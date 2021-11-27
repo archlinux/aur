@@ -9,6 +9,7 @@ pkgbase = overdrive2opus-git
 	depends = python
 	depends = ffmpeg
 	depends = opus-tools
+	depends = python-appdirs
 	optdepends = python-progress
 	source = overdrive2opus-git::git+https://github.com/vcalv/overdrive2opus
 	md5sums = SKIP
