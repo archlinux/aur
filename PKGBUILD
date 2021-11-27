@@ -1,18 +1,33 @@
-pkgname="cobra"
-pkgver="0.0.1"
-pkgrel="2"
-pkgdesc="cobra is a swiss army knife"
-arch=("x86_64")
-depends=('ffmpeg')
-source=("https://github.com/DHWIDSA/cobra/raw/main/cobra.tar.gz")
+# Contributor: Paul Dufrese <dufresnep@gmail.com>
+# Contributor: spider-mario <spidermario@free.fr>
+# Contributor: Johannes Krampf <mail@johkra.de>
 
+pkgname=cobra
+pkgver=0.9.6
+pkgrel=1
+pkgdesc="Clean and expressive language for .NET and Mono"
+arch=('any')
+options=('!strip')
+url="http://cobra-language.com/"
+license=('MIT')
+depends=(mono)
+source=(http://cobra-language.com/downloads/Cobra-$pkgver.tar.gz install.patch)
+sha256sums=('9f1e496520bad124f5d827aa35d7a591c412fbb4c41633ecb00e68fbb35457fa'
+            'SKIP')
+
+prepare() {
+	cd Cobra-$pkgver/Source
+	patch -Np2 -i "$srcdir/install.patch"
+	echo "$pkgdir/opt" > install-directory.text
+	sed -i "s|\$(MSBuildExtensionsPath)|$pkgdir/usr/lib/mono/xbuild|" Cobra.MSBuild/Targets/Cobra.targets
+}
 
 package() {
-
-   install -d "${pkgdir}/usr/local/"
-   install -d "${pkgdir}/usr/bin/"
-
-   cp -r "$pkgname" "${pkgdir}/usr/local/"
-   ln -s "/usr/local/$pkgname/cobra" "${pkgdir}/usr/bin/$pkgname"
-}
-md5sums=('c857152ec0eecf4dadd5128fb281a36c')
+   cd Cobra-$pkgver/Source
+   bin/install-from-workspace
+   gacutil -i "$pkgdir/opt/Cobra-$pkgver/bin/Cobra.Core.dll" -root "$pkgdir/usr/lib/"
+   gacutil -i "$pkgdir/opt/Cobra-$pkgver/bin/Cobra.Compiler.dll" -root "$pkgdir/usr/lib/"
+   install -dm755 "$pkgdir/usr"
+   mv "$pkgdir/opt/bin" "$pkgdir/usr"
+   sed -i "s|$pkgdir||" "$pkgdir/usr/bin/cobra"
+   install -Dm644 ../License.text "$pkgdir/usr/share/licenses/$pkgname/License.text"
