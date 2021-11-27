@@ -1,7 +1,6 @@
-# Maintainer: tildearrow <tildearrow@protonmail.com>
-# yes, I'm aware of the reference to $srcdir issue
+# Maintainer: tildearrow <me@tildearrow.org>
 pkgname=input-modifier
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="uinput based key bindings and macros tool"
 arch=('i686' 'x86_64')
@@ -10,7 +9,7 @@ license=('GPL')
 depends=('udev')
 makedepends=('cmake')
 source=("https://github.com/tildearrow/input-modifier/archive/v$pkgver.tar.gz")
-sha256sums=('25b522d72d3a5a75c42e4c7bf9d63fa547e7912e7266d7306d04a532ae149137')
+sha256sums=('d36f2453be794f2ae8b84178ae7527aa61c439470315f20f473f07f76b21ac83')
 install=imod.install
 
 build() {
@@ -26,8 +25,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
-  # unneeded. to be fixed for 1.3.2
-  # oh, really? did I say 1.3.2? i'm sorry :( I completely forgot about
-  # the PKGBUILD
   rm "$pkgdir/usr/lib/udev/rules.d/98-imod-ubuntu14.rules"
 }
