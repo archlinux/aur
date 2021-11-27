@@ -1,6 +1,6 @@
 pkgbase = maestral
 	pkgdesc = Open-source Dropbox client
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral
 	arch = any
@@ -9,29 +9,26 @@ pkgbase = maestral
 	checkdepends = python-pytest-benchmark
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python>=3.6
-	depends = python-click>=8.0.0
-	depends = python-desktop-notifier>=3.3.0
-	depends = python-dropbox>=10.9.0
-	depends = python-dropbox<12.0
-	depends = python-fasteners>=0.15
-	depends = python-keyring>=22
-	depends = python-keyrings-alt>=3.1.0
+	depends = python-click
+	depends = python-desktop-notifier
+	depends = python-dropbox
+	depends = python-fasteners
+	depends = python-keyring
+	depends = python-keyrings-alt
 	depends = python-packaging
-	depends = python-pathspec>=0.5.8
-	depends = python-pyro5>=5.10
-	depends = python-requests>=2.16.2
-	depends = python-sdnotify>=0.3.2
+	depends = python-pathspec
+	depends = python-pyro5
+	depends = python-requests
+	depends = python-sdnotify
 	depends = python-setuptools
-	depends = python-survey>=3.4.3
-	depends = python-survey<4.0
+	depends = python-survey
 	depends = python-watchdog-git
 	depends = python-systemd
 	optdepends = maestral-qt: Qt interface for the maestral daemon
 	optdepends = python-importlib-metadata: REQUIRED for python<3.8
-	source = maestral-1.5.1.tar.gz::https://github.com/SamSchott/maestral/archive/v1.5.1.tar.gz
+	source = maestral-1.5.2.tar.gz::https://github.com/SamSchott/maestral/archive/v1.5.2.tar.gz
 	source = maestral@.service
-	sha256sums = a239110c54448d88742a0b23f29cf4d4f8c5569ade9e6c081f3ff5e338c48ac0
+	sha256sums = e0746b1860def3758e5a3688ab7c03230d0bac8f0a984badffa915f2fcee42b5
 	sha256sums = 79f48787cec441c252b1fcbecbce1342bbac1de275e90fe9dfbd1b9cad2ba2c8
 
 pkgname = maestral
