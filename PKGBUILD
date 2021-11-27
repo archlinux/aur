@@ -11,7 +11,7 @@ _stag_commit=a9aa06c58eea77c66417b48669a00d7b32b70c99
 pkgname=wine-ge-custom
 _srctag=6.21-GE-1
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 
 #_winever=${pkgver%.*}
 _winever=$pkgver
@@ -61,7 +61,8 @@ depends=(
   desktop-file-utils
 )
 
-makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc git
+makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
+  git
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -146,6 +147,9 @@ prepare() {
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/wine/configure*
 
+  # Fix openldap 2.5+ detection
+  sed 's/-lldap_r/-lldap/' -i $pkgname/wine/configure
+
   # Get rid of old build dirs
   rm -rf $pkgname-{32,64}-build
   mkdir $pkgname-{32,64}-build
@@ -154,21 +158,23 @@ prepare() {
 build() {
   cd "$srcdir"
 
-  export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-  export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
   # Doesn't compile without remove these flags as of 4.10
   export CFLAGS="${CFLAGS/-fno-plt/}"
   export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
+
+  export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+  export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
   # Disable AVX instead of using 02, same as dxvk, the rest are from Proton
   export CFLAGS+=" -mno-avx -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
   export CXXFLAGS+=" -mno-avx -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
 
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
-  export CROSSLDFLAGS="$LDFGFLAGS -Wl,--file-alignment,4096"
+  export CROSSLDFLAGS="$LDFLAGS -Wl,--file-alignment,4096"
 
   msg2 "Building Wine-64..."
 
