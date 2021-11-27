@@ -1,3 +1,11 @@
+#### 0.2.14 (2021-11-19)
+
+#### 0.2.13 (2021-11-19)
+
+##### New Features
+
+*  auto complete ([9f9ef8b9](https://github.com/zaaack/foy/commit/9f9ef8b995b5b731a70fd8496cb6e085124faf5d))
+
 #### 0.2.12 (2021-09-03)
 
 ##### New Features
