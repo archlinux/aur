@@ -3,7 +3,7 @@
 
 # Package Information
 pkgname="mstickereditor-git"
-pkgver=r71.gc9b4790c
+pkgver=r76.g28b23c08
 pkgrel=1
 pkgdesc='import sticker packs from telegram, to be used at the Maunium sticker picker for Matrix'
 license=('Apache')
@@ -34,10 +34,15 @@ build() {
 	cd "$srcdir/$pkgname"
 	
 	cargo build --locked --release
+	
+	cd target/release
+	mkdir -p share/bash-completion/completions
+	./mstickereditor shell-completion bash > share/bash-completion/completions/mstickereditor
 }
 
 package() {
 	cd "$srcdir/$pkgname"
 	
 	install -Dm755 "target/release/mstickereditor" -t "$pkgdir/usr/bin"
+	cp -r "target/release/share" "$pkgdir/usr/share"
 }
