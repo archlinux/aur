@@ -1,6 +1,6 @@
 pkgbase = python-fastecdsa
 	pkgdesc = Python library for fast elliptic curve crypto
-	pkgver = 2.2.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/antonkueltz/fastecdsa
 	changelog = CHANGELOG.md
@@ -10,10 +10,10 @@ pkgbase = python-fastecdsa
 	makedepends = python-sphinx
 	depends = python
 	depends = gmp
-	source = python-fastecdsa-2.2.1.tar.gz::https://files.pythonhosted.org/packages/source/f/fastecdsa/fastecdsa-2.2.1.tar.gz
-	source = python-fastecdsa-2.2.1.tar.gz.asc::https://files.pythonhosted.org/packages/source/f/fastecdsa/fastecdsa-2.2.1.tar.gz.asc
-	validpgpkeys = 9D3197AB0B3E694D33C89C3E8C1324A2DACDE5AA
-	sha256sums = 48d59fcd18d0892a6b76463d4c98caa217975414f6d853af7cfcbbb0284cb52d
+	source = python-fastecdsa-2.2.3.tar.gz::https://files.pythonhosted.org/packages/source/f/fastecdsa/fastecdsa-2.2.3.tar.gz
+	source = python-fastecdsa-2.2.3.tar.gz.asc::https://files.pythonhosted.org/packages/source/f/fastecdsa/fastecdsa-2.2.3.tar.gz.asc
+	validpgpkeys = 67C1C1178894F9017D47AC0E15AB0E7C8A4019BF
+	sha256sums = 269bdb0f618b38f8f6aec9d23d23db518046c3cee01a954fa6aa7322a1a7db8f
 	sha256sums = SKIP
 
 pkgname = python-fastecdsa

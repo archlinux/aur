@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-fastecdsa
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Python library for fast elliptic curve crypto"
 arch=('x86_64')
@@ -13,9 +13,9 @@ changelog=CHANGELOG.md
 source=(
 	"$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/fastecdsa/fastecdsa-$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/f/fastecdsa/fastecdsa-$pkgver.tar.gz.asc")
-sha256sums=('48d59fcd18d0892a6b76463d4c98caa217975414f6d853af7cfcbbb0284cb52d'
+sha256sums=('269bdb0f618b38f8f6aec9d23d23db518046c3cee01a954fa6aa7322a1a7db8f'
             'SKIP')
-validpgpkeys=('9D3197AB0B3E694D33C89C3E8C1324A2DACDE5AA')
+validpgpkeys=('67C1C1178894F9017D47AC0E15AB0E7C8A4019BF')
 
 prepare() {
 	cd "fastecdsa-$pkgver"
@@ -35,6 +35,6 @@ check() {
 package() {
 	cd "fastecdsa-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }

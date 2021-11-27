@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.2.3]
+### Fixed
+- Minor doc issues and doc build
+
+## [2.2.2]
+### Added
+- Support for python3.10
+
+### Fixed
+- Error when adding two equal points where one point's coordinates are not reduced mod p (issue #75)
+
 ## [2.2.1]
 ### Fixed
 - Incorrect DER encoding of data with length >=0x80 (issue #61)
