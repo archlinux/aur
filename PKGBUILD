@@ -16,10 +16,10 @@ sha256sums=('9f1e496520bad124f5d827aa35d7a591c412fbb4c41633ecb00e68fbb35457fa'
             'SKIP')
 
 prepare() {
-	cd Cobra-$pkgver/Source
-	patch -Np2 -i "$srcdir/install.patch"
-	echo "$pkgdir/opt" > install-directory.text
-	sed -i "s|\$(MSBuildExtensionsPath)|$pkgdir/usr/lib/mono/xbuild|" Cobra.MSBuild/Targets/Cobra.targets
+   cd Cobra-$pkgver/Source
+   patch -Np2 -i "$srcdir/install.patch"
+   echo "$pkgdir/opt" > install-directory.text
+   sed -i "s|\$(MSBuildExtensionsPath)|$pkgdir/usr/lib/mono/xbuild|" Cobra.MSBuild/Targets/Cobra.targets
 }
 
 package() {
