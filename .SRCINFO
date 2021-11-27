@@ -1,6 +1,6 @@
 pkgbase = python-m3u8
 	pkgdesc = Python m3u8 parser
-	pkgver = 0.7.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/globocom/m3u8
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-m3u8
 	makedepends = python-setuptools
 	depends = python
 	depends = python-iso8601
-	source = https://github.com/globocom/m3u8/archive/0.7.1.tar.gz
-	md5sums = 0aae5bc0a5fe6b8dd3ab7f01a458e7a1
+	source = https://github.com/globocom/m3u8/archive/0.9.0.tar.gz
+	md5sums = bdb4c6fd62509e336d3fe5c6e3d95374
 
 pkgname = python-m3u8
-
