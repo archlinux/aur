@@ -2,7 +2,7 @@
 # Contributor: Tim Diels <youremail@domain.com>
 
 pkgname=python2-xlsx2csv
-pkgver=0.7.6
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="xlsx to csv converter"
 arch=(any)
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python2')
 options=(!emptydirs)
 source=(https://github.com/dilshod/xlsx2csv/archive/$pkgver.tar.gz)
-md5sums=('e1f585ed3c2f90e419c2e8d1efd46d76')
+md5sums=('70296d89c84dec9e5da08bed4af14c17')
 
 package() {
   cd "$srcdir/xlsx2csv-$pkgver"
