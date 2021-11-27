@@ -14,7 +14,7 @@ provides=('dxvk' 'd9vk' "dxvk=$pkgver")
 conflicts=('dxvk' 'd9vk')
 options=(!lto !staticlibs)
 source=(
-    "git+https://github.com/doitsujin/dxvk.git#tag=v$_dxvkver"
+    "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
     "dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
