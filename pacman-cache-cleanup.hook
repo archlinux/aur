@@ -1,11 +1,11 @@
 [Trigger]
+Type = Package
 Operation = Remove
 Operation = Install
 Operation = Upgrade
-Type = Package
 Target = *
 
 [Action]
-Description = Removing unnecessary cached files (keeping the latest two)…
+Description = Removing obsolete cached package files (keeping the latest two)...
 When = PostTransaction
 Exec = /usr/bin/paccache -rvk2
