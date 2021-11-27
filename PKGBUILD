@@ -2,7 +2,7 @@
 
 pkgname=iscdcommons-git
 pkgver=20210723.r39
-pkgrel=2
+pkgrel=3
 pkgdesc="Common library for ISCD tools, e.g. elastic"
 arch=('x86_64')
 url="https://github.com/ISCDtoolbox/Commons"
@@ -30,5 +30,5 @@ build() {
 
 package() {
   cd ${pkgname%-git}/build
-  make install DESTDIR="${pkgdir}"
+  install -Dm644 libCommons.so "$pkgdir"/usr/lib/libCommons.so
 }
