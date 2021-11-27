@@ -1,4 +1,4 @@
-pkgname="cobra"
+pkgname="cobra-knife"
 pkgver="0.0.1"
 pkgrel="2"
 pkgdesc="cobra is a swiss army knife"
