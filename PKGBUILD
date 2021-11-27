@@ -3,12 +3,9 @@
 # Contributor: Marko Korhonen <reekymarko at reekynet.com>
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
-_svt_hevc_ver='33ca9aa8a2a2d28022d3fc03704e99ce01828376'
-_svt_vp9_ver='abd5c59c06d686eae57ef4e6f899c601f791d055'
-
 pkgname=ffmpeg-amd-full
-pkgver=4.4
-pkgrel=3
+pkgver=4.4.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -43,13 +40,15 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full')
 conflicts=('ffmpeg')
+_svt_hevc_ver='33ca9aa8a2a2d28022d3fc03704e99ce01828376'
+_svt_vp9_ver='abd5c59c06d686eae57ef4e6f899c601f791d055'
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '010-ffmpeg-fix-vmaf-model-path.patch'
         "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
-sha256sums=('06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909'
+sha256sums=('eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02'
             'SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
             '740dc9838aa47daa9f9b107178e53e384344f4c6f90865bd7e3af189257da544'
@@ -135,7 +134,7 @@ build() {
         --enable-libpulse \
         --enable-librabbitmq \
         --enable-librav1e \
-        --enable-librist \
+        --disable-librist \
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
