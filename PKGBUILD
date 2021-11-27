@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=elektra-git
-pkgver=0.9.2.r91.ga40ba50ca
-pkgrel=2
+pkgver=0.9.8.r136.g98b09f35d
+pkgrel=1
 pkgdesc="A universal hierarchical configuration store from git master"
 url="https://www.libelektra.org"
 license=('custom:BSD')
