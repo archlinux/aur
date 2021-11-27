@@ -2,7 +2,7 @@
 
 pkgname=zebedee
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple program to establish an encrypted, compressed "tunnel" for TCP/IP or UDP data transfer between two systems."
 arch=('x86_64')
 url="https://github.com/AriaMoradi/zebedee"
@@ -29,7 +29,7 @@ build() {
 	cd $srcdir/$pkgname
 
 	cd blowfish-0.9.5a
-	make optimize
+	make
 	cd ..
 
 	cd zlib-1.2.3

@@ -1,7 +1,7 @@
 pkgbase = zebedee
 	pkgdesc = A simple program to establish an encrypted, compressed tunnel for TCP/IP or UDP data transfer between two systems.
 	pkgver = 2.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AriaMoradi/zebedee
 	arch = x86_64
 	license = GPL2
@@ -10,4 +10,3 @@ pkgbase = zebedee
 	md5sums = SKIP
 
 pkgname = zebedee
-
