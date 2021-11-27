@@ -16,7 +16,7 @@ provides=('pixiv')
 source=('git+https://github.com/Nandaka/PixivUtil2.git'
         'pixiv')
 sha256sums=('SKIP'
-            '7306c2b7b160a098f79dec5f76389b1ab3e1de6b03c9d45f54ce57e1b916ccfa')
+            'aca6fdc4c6a1b05fecc4d67f82b6bc40f45b813b7d326bc2f81c3a08ea0e9969')
 
 package() {
         mkdir -p $pkgdir/usr/bin
