@@ -4,22 +4,22 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.34.1
-pkgrel=2
+pkgver=2.35.1
+pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
 depends=(libxt libxslt enchant gst-plugins-base-libs libmanette libsecret libwebp
          openjpeg2 harfbuzz-icu gtk3 libnotify hyphen woff2 libwpe wpebackend-fdo
-         bubblewrap xdg-dbus-proxy libavif libsoup3)
+         bubblewrap xdg-dbus-proxy libavif libsoup3 libjxl)
 makedepends=(gperf gobject-introspection ruby gtk-doc cmake python geoclue ninja)
 optdepends=('geoclue: Geolocation support'
             'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('443c1316705de024741748e85fe32324d299d9ee68e6feb340b89e4a04073dee'
+sha256sums=('468539be0ea42a6f3464ea5f7e87e4bddf173d558e8a0a1a02873c8bbd49fa89'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
@@ -38,7 +38,8 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DUSE_SOUP2=OFF \
     -DENABLE_GTKDOC=OFF \
-    -DUSE_AVIF=ON
+    -DUSE_AVIF=ON \
+    -DUSE_JPEGXL=ON
   cmake --build build
 }
 
