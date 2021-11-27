@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 _base=pandas-summary
 pkgname=python-${_base}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An extension to pandas describe function"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-pandas)
 # makedepends=(python-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('56dd74f53ab6d8838e38ab923551804217defe7a2dc6a9235dce15ec4bf6e7085f8a3805b731d1d558b66ff774aaeb625bd2ee6656b12ad91017a260f1e35d0f')
+sha512sums=('0c004be41aad3d04bf67cea15c54dde6a6114819c768ee7c21255ad824d75201c925262c7f1a879a85d61dd32e369dd1519137db065eb5e136ad3742a6ab6be1')
 
 build() {
   cd "${_base}-${pkgver}"
