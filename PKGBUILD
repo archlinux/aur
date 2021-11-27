@@ -3,13 +3,13 @@
 
 pkgname=octopus
 pkgver=11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-space Time-Dependent Density Functional Theory code"
 arch=('x86_64')
 url="https://octopus-code.org"
 license=('LGPL')
 depends=('elpa' 'gd' 'gsl' 'libxc' 'libvdwxc' 'netcdf-fortran' 'parmetis'
-         'nlopt' 'cgal' 'clfft' 'clblas')
+         'nlopt' 'cgal' 'clfft' 'clblas' 'python')
 makedepends=('gcc-fortran')
 checkdepends=('procps-ng')
 source=("$url/down.php?file=$pkgver/$pkgname-$pkgver.tar.gz")
