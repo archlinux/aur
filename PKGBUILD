@@ -1,7 +1,7 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=5.4.3
-pkgrel=1
+pkgver=5.4.4
+pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
 arch=('x86_64')
@@ -37,9 +37,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/d06aba6623ba565a0f9806bf019b7345/parallel-launcher-5.4.3.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/332b9507afbf93474554fa22438c927c/parallel-launcher-5.4.4.tar.gz')
 noextract=()
-sha256sums=('ca0187e2e047ccde5ca85ce31f4bcb5639bf8c80e11b5c5de6eb435c771dee0a')
+sha256sums=('5eaeb98362d60b6f780037eeb2c23e09dfac918da3504f678aea8869fb3eb33e')
 validpgpkeys=()
 
 build() {
