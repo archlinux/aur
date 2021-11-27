@@ -5,7 +5,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname='makeself'
-pkgver='2.4.2'
+pkgver='2.4.5'
 pkgrel='1'
 pkgdesc='Utility to create self-extracting packages'
 arch=('any')
@@ -30,9 +30,9 @@ optdepends=(
   'tar: archive support'
 )
 source=("${pkgname}-release-${pkgver}.tar.gz::https://github.com/megastep/${pkgname}/archive/release-${pkgver}.tar.gz")
-md5sums=('7f81a68ee6a8db39ca099e93e7bbc5ed')
-sha256sums=('8789312db5e93fc471a1e4fb88ec13227ef63a9c7aad297f3bbf35f9511f8d62')
-sha512sums=('9a80442b53193db22ea13862a7c3923d7e6774babfb505d136b40ba67793068287beaad926087fa97e16e5e9d7aca38a6e77c0f483b1cd95a7b1e6b1766b9e5d')
+md5sums=('18bd1c06156cdf2d006ce21a72078e30')
+sha256sums=('91deafdbfddf130abe67d7546f0c50be6af6711bb1c351b768043bd527bd6e45')
+sha512sums=('1dae74586f6bd5afb526801b7ffa7fc7962ff74b0f190cdd51da93c21421864b72f5fe18090cb2ff6ad27f0907fbf3aeb5545f3f70e33dbc9e505a78505f5f90')
 
 prepare() {
   cd "${pkgname}-release-${pkgver}"
