@@ -12,7 +12,7 @@ package() {
    install -d "${pkgdir}/usr/local/"
    install -d "${pkgdir}/usr/bin/"
 
-   cp -r "$pkgname" "${pkgdir}/usr/local/"
-   ln -s "/usr/local/$pkgname/cobra" "${pkgdir}/usr/bin/$pkgname"
+   cp -r "cobra" "${pkgdir}/usr/local/"
+   ln -s "/usr/local/cobra/cobra" "${pkgdir}/usr/bin/cobra"
 }
 md5sums=('c857152ec0eecf4dadd5128fb281a36c')
