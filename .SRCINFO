@@ -1,0 +1,11 @@
+pkgbase = makeppf
+	pkgdesc = PPF (Playstation Patch File) Version 3.0 creation tool
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://rescene.wikidot.com/ppf-o-matic
+	arch = x86_64
+	license = custom
+	source = http://rescene.wdfiles.com/local--files/ppf-o-matic/pdx-ppf3.zip
+	sha256sums = 5201d979e720d59750a1341fac9cb2a1f1d57dc4cf49218f6c17a1b560ee1213
+
+pkgname = makeppf
