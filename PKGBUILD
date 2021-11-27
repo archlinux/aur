@@ -122,11 +122,12 @@ pkgname='cndrvcups-lb-bin'
 #pkgver='3.50'; _commonver='3.90'; _dl='8/0100007658/05'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100007658/05/linux-UFRII-drv-v350-uken.tar.gz c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f
 #pkgver='3.60'; _commonver='4.00'; _dl='0/0100009240/02'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/02/linux-UFRII-drv-v360-uken.tar.gz a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd
 #pkgver='3.60'; _commonver='4.00'; _dl='0/0100009240/02'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/02/linux-UFRII-drv-v360-uken.tar.gz a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd
-pkgver='3.70'; _commonver='4.10'; _dl='8/0100007658/08'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100007658/08/linux-UFRII-drv-v370-uken-05.tar.gz
+#pkgver='3.70'; _commonver='4.10'; _dl='8/0100007658/08'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100007658/08/linux-UFRII-drv-v370-uken-05.tar.gz
+pkgver='3.70'; _commonver='4.10'; _dl='4/0100010264/01'; _co='uk' # https://gdlp01.c-wss.com/gds/4/0100010264/01/linux-UFRII-drv-v370-uken-07.tar.gz
 
 _pkgver="${pkgver}"
-pkgrel='1'
-pkgdesc='CUPS Canon UFR II LT LIPSLX driver for imageCLASS D Laser Shot LBP i-SENSYS MF imagePRESS iPR imageRUNNER iR ADVANCE iR-ADV FAX color copiers and printers, does not require PCL/PXL or PS dealer LMS license'
+pkgrel='2'
+pkgdesc='CUPS Canon UFR II LT LIPSLX CARPS2 printer driver for imageCLASS D Laser Shot LBP i-SENSYS MF imagePRESS iPR imageRUNNER iR ADVANCE iR-ADV FAX color printers and copiers, does not require PCL/PXL or PS dealer LMS license'
 # Not UFR II: PRO PC-D
 arch=('i686' 'x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -172,7 +173,7 @@ else
   _srcdir=("linux-UFRII-drv-v${_pkgverV//./}-${_co}en")
 fi
 unset _pkgverV
-source=("http://gdlp01.c-wss.com/gds/${_dl}/${_srcdir}-05.tar.gz")
+source=("https://gdlp01.c-wss.com/gds/${_dl}/${_srcdir}-07.tar.gz")
 unset _dl
 if [ "${_inst_mix}" -ne 0 ]; then
   _pkgverA='3.20'
@@ -193,8 +194,8 @@ if [ "${_inst_lb}" -ne 0 ] && [ "${_opt_debug_cnpkmoduleufr2}" -ne 0 ]; then
     'https://archive.archlinux.org/packages/l/lib32-glibc/lib32-glibc-2.23-5-x86_64.pkg.tar.xz'
   )
 fi
-md5sums=('7818b516c98bbcb38505b2ad50e69599')
-sha256sums=('e05d758f12b45582dcd8cd17ee0b23e1b8a363a3e412f530494b6f9dfda64410')
+md5sums=('35d69e337c7043d1adc4f5a496126d88')
+sha256sums=('ff16438de55c982d649cdb20e262a54b13569e2320ed3e75b9c4b000c7bbdd06')
 #PKGEXT='.tar.gz'
 
 package() {
