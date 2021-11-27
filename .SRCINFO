@@ -1,0 +1,40 @@
+pkgbase = linux-kernel-ohio
+	pkgdesc = A fsync patched, configured kernel, which apparently works now!
+	pkgver = 5.15.5
+	pkgrel = 1
+	url = none://none
+	arch = x86_64
+	license = GPL
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = zstd
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	optdepends = ccache
+	provides = linux
+	provides = linux-headers
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.5.tar.xz
+	source = config
+	source = 0007-v5.15-fsync.patch
+	source = linux-5.15.5-ohio.preset
+	sha256sums = e9565a301525ac81c142ceb832f9053dd5685e107dbcf753d0de4c58bc98851f
+	sha256sums = 324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586
+	sha256sums = 6c4f0099896f69e56ebd8c9eac266ac8ad993acecd50945e0e84ef6f95f9ddca
+	sha256sums = 80f05dbd248394fffc84267faf2fd1887f175842eefceef58a2f16d04ccf1b4e
+
+pkgname = linux-kernel-ohio
+
+pkgname = linux-kernel-ohio-headers
+	pkgdesc = linux-kernel-ohio-headers-headers
+	provides = linux-headers=5.15.5
+	provides = linux-kernel-ohio-headers=5.15.5
