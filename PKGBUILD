@@ -3,7 +3,7 @@
 
 pkgname=streamdeck-ui
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
 url="https://timothycrosley.github.io/streamdeck-ui/"
@@ -14,7 +14,7 @@ provides=('streamdeck-ui')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/timothycrosley/streamdeck-ui/archive/refs/tags/v${pkgver}.tar.gz"
         "60-streamdeck.rules")
 sha512sums=('26c431f4c9a552d9dc79af9387b465d50a41de09d169a2d7642aef4c21e34cd6097981437c7b7a9f24b574fafa385cd4469f0a6a25a1de32b3b5a113f6a3f581'
-            '79b03a68354f4642067cea9884a839c3869186165e4ad9a61dd60c865dc61c2dc392619a13767c4e4da34b34ec2988333f2f0f704f5a5d277f45216eb872d000')
+            '690aa38c549b09c7c49d99e47dea74fc47d778881ce1947d9da37f6d1d94f8745c4724c23a702167e6d714ea9b4fd13a4414eb6945b17728eef9b5319b9a6c0f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
