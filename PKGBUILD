@@ -2,7 +2,7 @@
 
 _pkgname=box86
 pkgname=${_pkgname}-git
-pkgver=v0.2.2.r258.g46114235
+pkgver=v0.2.4.r22.g4813a35e
 pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
@@ -10,7 +10,7 @@ url='https://github.com/ptitSeb/box86'
 license=('MIT')
 depends=('gcc-libs')
 #optdepends=('')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'python')
 provides=(box86)
 conflicts=(box86)
 source=("git+https://github.com/ptitSeb/box86.git#branch=master")
