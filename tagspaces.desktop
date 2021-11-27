@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TagSpaces
+Exec=/usr/bin/tagspaces %U
+Terminal=false
+Type=Application
+Icon=tagspaces
+StartupWMClass=TagSpaces
+Comment=Offline file organizer and browser with tagging support.
+Categories=Office;
