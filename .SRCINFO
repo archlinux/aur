@@ -1,6 +1,6 @@
 pkgbase = sweet-kde-git
 	pkgdesc = A very sweet theme
-	pkgver = r212.ab6a7d3
+	pkgver = r216.123dd8b
 	pkgrel = 1
 	url = https://github.com/EliverLara/sweet
 	arch = any

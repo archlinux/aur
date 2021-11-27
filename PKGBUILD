@@ -3,7 +3,7 @@
 pkgbase=sweet-kde-git
 pkgname=(sweet-kde-git kvantum-theme-sweet-git)
 _pkgname=sweet
-pkgver=r212.ab6a7d3
+pkgver=r216.123dd8b
 pkgrel=1
 pkgdesc="A very sweet theme"
 arch=(any)
@@ -58,9 +58,6 @@ package_kvantum-theme-sweet-git() {
     cd $_pkgname/kde
 
     install -d "$pkgdir"/usr/share
-
-    # Workaround: https://github.com/EliverLara/Sweet/issues/181
-    mv kvantum Kvantum
 
     cp -r Kvantum "$pkgdir"/usr/share
 }
