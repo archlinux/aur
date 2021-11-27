@@ -7,14 +7,13 @@ pkgdesc="Sensei is a simple command line tool to open documentation for any crat
 arch=(x86_64)
 url="https://sensei.edfloreshz.dev"
 license=('GPL')
-provides=(sns)
-conflicts=(sensei sns)
-source=("https://github.com/edfloreshz/sensei/releases/download/v$pkgver/sensei-amd64.tar.gz")
-md5sums=('SKIP')
+provides=('sns')
+conflicts=('sensei' 'sns' 'sensei-git')
+source=("https://github.com/edfloreshz/$pkgname/releases/download/v$pkgver/$pkgname-amd64.tar.gz")
+sha256sums=('445753db9caf4ec423a27a3a9299e0b642c1816a4801b76bf73d15955ead6b18')
 
 package() {
-	sudo mv release/sns /usr/bin
-	sudo install -Dm644 release/LICENSE /usr/share/licenses/${pkgname}/LICENSE
-	sudo install -Dm644 release/README.md /usr/share/doc/${pkgname}/README.md
-	rm -rf sensei-amd64.tar.gz sensei-0.2.8-1-x86_64.pkg.tar.zst src pkg
+	install -Dm755 release/sns ${pkgdir}/usr/bin/sns
+	install -Dm644 release/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -Dm644 release/README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 }
