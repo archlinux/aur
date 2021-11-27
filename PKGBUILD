@@ -1,19 +1,28 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=sfeed
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='RSS and Atom parser'
 arch=('any')
 url='https://codemadness.org/sfeed-simple-feed-parser.html'
 _url_source='https://codemadness.org/releases/sfeed'
 license=('ISC')
-depends=('sh')
+depends=('sh' 'ncurses')
+optdepends=('curl: sfeed_update script'
+    'xclip: used by sfeed_curses for yanking the URL or enclosure'
+    'xdg-utils: for xdg-open, used by sfeed_curses as a plumber by default'
+    'awk: used by the sfeed_content and sfeed_markread script'
+    'lynx: used by the sfeed_content script to convert HTML content'
+)
+provides=('sfeed-curses')
+conflicts=('sfeed-curses')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('46bf3336046789e5001541588c27af92f517a017d8cd377d0feeb64268e5687a')
+sha256sums=('8481e7df07d9ee66d6e50f45f61fcff62b9efe9c4686160ef70883d6083a25ef')
 
 build() {
-  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE" -C "${pkgname}-${pkgver}"
+  # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
+  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE" SFEED_THEME="mono" -C "${pkgname}-${pkgver}"
 }
 
 package() {
