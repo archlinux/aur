@@ -5,7 +5,7 @@
 # Contributor: Mitmischer
 
 pkgname=ultrastardx-git
-pkgver=r1033.088aaa2a
+pkgver=r1126.a5f4f6d5
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/USDX"
-  ./configure --prefix=/usr --without-portaudio
+  ./configure --prefix=/usr
   make LDFLAGS="-O1 --sort-common --as-needed -z relro"
 }
 
