@@ -3,7 +3,7 @@
 
 pkgname=maestral
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Dropbox client'
 arch=('any')
 url="https://github.com/SamSchott/maestral"
@@ -29,6 +29,7 @@ optdepends=(
 	'python-importlib-metadata: REQUIRED for python<3.8')
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'maestral@.service')
 sha256sums=('e0746b1860def3758e5a3688ab7c03230d0bac8f0a984badffa915f2fcee42b5'
