@@ -1,0 +1,17 @@
+pkgbase = renderman-for-houdini
+	pkgdesc = RenderMan plugin for Houdini
+	pkgver = 24.2.2199188
+	pkgrel = 1
+	url = https://renderman.pixar.com/
+	install = renderman-for-houdini.install
+	arch = x86_64
+	license = custom
+	depends = renderman=24.2.2199188
+	depends = renderman-pro-server=24.2.2199188
+	depends = houdini
+	source = manual://RenderManForHoudini-py3-24.2_2199188-linuxRHEL7_gcc63icc190.x86_64.rpm
+	source = manual://RenderManForHoudini-24.2_2199188-linuxRHEL7_gcc63icc190.x86_64.rpm
+	sha256sums = 63ba5ae135419773bfdbab510ffa1f30fe026efca7457b5a44a15e422ac64427
+	sha256sums = f6087f30ee10f847059737a308849f4f9bf0bbaa15d477528381e49b3ec45d90
+
+pkgname = renderman-for-houdini
