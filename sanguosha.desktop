@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sanguosha Online
+Name[zh_CN]=三国杀在线
+Comment=Sanguosha Online
+Comment[zh_CN]=三国杀在线
+GenericName=sanguosha
+Exec=sanguosha
+Icon=sanguosha
+Type=Application
+Categories=Game;Network;
