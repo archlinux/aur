@@ -2,7 +2,7 @@
 
 _pkgname=stack_data
 pkgname=python-stack-data
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Python library that extracts data from stack frames and tracebacks"
 arch=('any')
