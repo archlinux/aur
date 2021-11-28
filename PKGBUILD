@@ -12,7 +12,7 @@ license=('Apache')
 provides=("${_pkgname}")
 source=(
     "https://github.com/informalsystems/${_reponame}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch}-unknown-linux-gnu.tar.gz"
-    "https://raw.githubusercontent.com/informalsystems/${_reponame}/master/LICENSE"
+    "https://raw.githubusercontent.com/informalsystems/${_reponame}/v${pkgver}/LICENSE"
 )
 sha256sums=(
 	'31785abb8c2ab2bee68ff3003080d049ea9b702a43ce8f8a937bf8df5370c3e6'
