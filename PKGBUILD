@@ -9,7 +9,7 @@ license=(OFL)
 url='https://fonts.google.com/specimen/Philosopher'
 depends=()
 source=("Philosopher-$pkgver.zip::https://fonts.google.com/download?family=Philosopher")
-md5sums=('87df65b81843f479c7f3577d7ea2b918')
+md5sums=('c22c9ed23a6ac5ccb8956d1bd0253847')
 
 package() {
 
