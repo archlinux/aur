@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-hide'
-pkgver='0.0014'
+pkgver='0.0015'
 pkgrel='1'
 pkgdesc="Forces the unavailability of specified Perl modules (for testing)"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl>=5.6.1')
 makedepends=()
 url='https://metacpan.org/release/Devel-Hide'
 source=("http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Devel-Hide-${pkgver}.tar.gz")
-md5sums=('ddb8a7ef95a32df876e4131c50392610')
-sha512sums=('395d2c9ca4090398f31a50fe4970b6c4349424c11eaac407c5d2860bdf95c7d00844be9333bd62671baa82e668f6589c5bf61e7da7f99a2a03385e2dfc23cd78')
+md5sums=('7f11107163e259754c3f7dc7c2cf6d91')
+sha512sums=('6fbd73e21630596c2c398ba2490be4f17b95de5c25af547f3a824cebb87ed57d99cba418ba6caefbb8494f3341c571da5debae13add6b698c9e6ba4e001f60d7')
 _distdir="Devel-Hide-${pkgver}"
 
 build() {
