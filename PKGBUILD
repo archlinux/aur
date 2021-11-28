@@ -1,7 +1,7 @@
 # Maintainer Vincent Schweiger <vincent.schweiger@xolley.de>
 
 pkgname=rget
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Wget alternative"
 arch=(x86_64)
@@ -9,6 +9,7 @@ license=('GPL')
 makedepends=('rustup')
 url=https://github.com/legendary-cookie/rustutils
 source=("https://github.com/legendary-cookie/rustutils/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('21ddec6788cc01af77b283fda7bd85fc98146547188eab74bc13ff51e2c494be')
 
 prepare() {
     cd "$srcdir/rustutils-${pkgname}-${pkgver}"
@@ -31,4 +32,3 @@ package() {
 
 
 #vim: syntax=sh
-sha256sums=('6e69b07af62da24aedab0706474fa51bcae9f2020589758ca46611806746c357')
