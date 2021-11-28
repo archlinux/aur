@@ -1,0 +1,16 @@
+pkgbase = bins-git
+	pkgdesc = A tool for pasting from the terminal
+	pkgver = v2.0.0.r9.gd91d94e
+	pkgrel = 1
+	url = https://github.com/ascclemens/bins
+	arch = x86_64
+	license = MPL2
+	makedepends = cargo-nightly
+	depends = file
+	depends = libxcb
+	provides = bins
+	conflicts = bins
+	source = bins-git-v2.0.0.r9.gd91d94e::git+https://github.com/ascclemens/bins.git
+	sha256sums = SKIP
+
+pkgname = bins-git
