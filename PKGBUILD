@@ -4,7 +4,7 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin
-pkgver=3.1.8
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 # After 2.4.4 i686 has no official binary
@@ -37,9 +37,9 @@ source=(
 	tg.protocol
 	https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 )
-source_x86_64=("https://updates.tdesktop.com/tlinux/tsetup.${pkgver}.tar.xz")
-# If your ISP blocks the official Telegram Desktop sources, GitHub works as alternative
-#source_x86_64=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz")
+source_x86_64=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz")
+# If your ISP blocks Github
+#source_x86_64=("https://updates.tdesktop.com/tlinux/tsetup.${pkgver}.tar.xz")
 # Old 32-bit sources:
 #source_i686=("https://updates.tdesktop.com/tlinux32/tsetup32.${pkgver}.tar.xz")
 #source_i686=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup32.${pkgver}.tar.xz")
@@ -54,7 +54,7 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6'
             '3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090'
             'e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119')
-sha256sums_x86_64=('19eeeb931b401afd8da8811be8d56b993662833f67035114489447544871e5cd')
+sha256sums_x86_64=('82015812f6334bd5c8ee56204a946cf0a27344e48ce9f44bff87d0dc3f84ef03')
 # Some installation information
 install="$pkgname.install"
 
