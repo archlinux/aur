@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="155_48"
+VERSION="160_55"
 
 if [ -f /home/$(whoami)/.local/share/Kolossus-Launcher/Kolossus\ Launcher.x86_64 ]; then
 	if [ $(cat /home/$(whoami)/.local/share/Kolossus-Launcher/version.txt) == $VERSION ]; then
