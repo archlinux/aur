@@ -12,10 +12,10 @@ optdepends=()
 provides=('thextech')
 install=${pkgname}.install
 source=("git://github.com/Wohlstand/TheXTech"
-"http://wohlsoft.ru/projects/TheXTech/_downloads/thextech-smbx13-assets-full.7z"
+"https://wohlsoft.ru/projects/TheXTech/_downloads/thextech-smbx13-assets-full.7z"
 "thextech-supermariobrosx.desktop")
 sha256sums=("SKIP"
-"9b8292d2b16df32db0d06619a02b42fd70db385e87a43a4236dccd0eafd04c42"
+"SKIP"
 "5fd5af376176f4e1d466020da57e0ccff73abb4f52a30e6e429b0eb52b1887b3")
 noextract=()
 
