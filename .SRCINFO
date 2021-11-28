@@ -1,0 +1,17 @@
+pkgbase = dwm-layoutconfigrules-git
+	pkgdesc = dwm with layoutconfigrules patch applied
+	pkgver = 0.r1786.c5e4c56
+	pkgrel = 1
+	url = https://github.com/cdown/dwm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	provides = dwm
+	conflicts = dwm
+	source = git://github.com/cdown/dwm.git
+	md5sums = SKIP
+
+pkgname = dwm-layoutconfigrules-git
