@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=turnserver
-_tag=5578
-_version=1.0.5578
+_tag=5614
+_version=1.0.5614
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
