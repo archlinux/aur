@@ -1,6 +1,6 @@
 pkgbase = andi
 	pkgdesc = Rapid estimation of evolutionary distances
-	pkgver = 0.13
+	pkgver = 0.14
 	pkgrel = 1
 	url = https://github.com/evolbioinf/andi/
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = andi
 	checkdepends = glib2
 	depends = libdivsufsort
 	depends = gsl
-	source = https://github.com/EvolBioInf/andi/releases/download/v0.13/andi-0.13.tar.gz
-	sha256sums = 03e493ee22b6773a600b47cbfb121f4c2affd6e646ea16dad0d322e9276b3943
+	source = https://github.com/EvolBioInf/andi/releases/download/v0.14/andi-0.14.tar.gz
+	sha256sums = ae48cea10bfb008f89b7ac5cc06ea9ffa005716c12ac58922f33d1bf12da89ac
 
 pkgname = andi
-

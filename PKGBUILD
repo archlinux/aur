@@ -1,6 +1,6 @@
 # Maintainer: Fabian Klötzl <fabian-aur@kloetzl.info>
 pkgname=andi
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Rapid estimation of evolutionary distances"
 url="https://github.com/evolbioinf/andi/"
@@ -9,7 +9,7 @@ depends=("libdivsufsort" "gsl")
 arch=("i686" "x86_64")
 checkdepends=("glib2")
 source=("https://github.com/EvolBioInf/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('03e493ee22b6773a600b47cbfb121f4c2affd6e646ea16dad0d322e9276b3943')
+sha256sums=('ae48cea10bfb008f89b7ac5cc06ea9ffa005716c12ac58922f33d1bf12da89ac')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
