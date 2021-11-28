@@ -2,12 +2,12 @@
 
 pkgname=sdpb-git
 pkgver=1512.80746b8
-pkgrel=1
+pkgrel=2
 pkgdesc="Semidefinite program solver designed for the conformal bootstrap"
 arch=(x86_64)
 license=('MIT')
 url="https://arxiv.org/abs/1909.09745"
-depends=('boost' 'libxml2' 'rapidjson' 'elemental-gmp-git')
+depends=('boost' 'libarchive' 'libxml2' 'mpfr' 'rapidjson' 'elemental-gmp-git')
 optdepends=('openmpi')
 makedepends=('git' 'python')
 source=('git+https://github.com/davidsd/sdpb.git')
@@ -20,7 +20,7 @@ pkgver() {
 build () {
         cd "$srcdir"/sdpb
 
-        python waf configure --elemental-dir="$pkgdir"/usr
+        python waf configure --prefix=/usr
         python waf
 }
 
