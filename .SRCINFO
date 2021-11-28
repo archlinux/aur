@@ -1,6 +1,6 @@
 pkgbase = bumblebee-picasso-git
 	pkgdesc = NVIDIA Optimus support for Linux through VirtualGL or primus, igpu amd picasso
-	pkgver = 3.2.1
+	pkgver = 3.2.1.r2.aaa1b42
 	pkgrel = 1
 	url = http://www.bumblebee-project.org
 	install = bumblebee.install
