@@ -23,12 +23,6 @@ gestures = [
 	# Next desktop/workspace
 	{ type = "swipe", direction = "left", fingers = 3, execute = "syngestures-switch-ws next" },
 
-	# Next desktop/workspace
-	{ type = "swipe", direction = "right", fingers = 4, execute = "xdotool key Super_L+Right" },
-
-	# Previous desktop/workspace
-	{ type = "swipe", direction = "left", fingers = 4, execute = "xdotool key Super_L+Left" },
-
 	# Enter/leave multi-tasking view
 	{ type = "swipe", direction = "up", fingers = 3, execute = "xdotool key Super_L" },
 
