@@ -1,14 +1,14 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=ttf-special-elite
-pkgver=2011.04.18
-pkgrel=2
+pkgver=2021.11.28
+pkgrel=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="A typewriter-like font."
 arch=('any')
 source=("special-elite.zip::http://www.fontsquirrel.com/fonts/download/special-elite")
 install=$pkgname.install
-md5sums=('c1d88fab4e4db838c74c7ee69eef39e9')
+md5sums=('883122e129b602bcc089f051438f7ce4')
 url="http://www.fontsquirrel.com/fonts/special-elite"
 license=('Apache')
 
