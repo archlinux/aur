@@ -1,0 +1,24 @@
+pkgbase = wayfire-shell-aur-git
+	pkgdesc = Wayfire panel and background for wayfire-aur-git aur package
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://wayfire.org
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = wayfire-aur-git
+	depends = gtkmm3
+	depends = gtk-layer-shell
+	depends = gobject-introspection
+	depends = libpulse
+	depends = wayland
+	depends = wayland-protocols
+	conflicts = wayfire-shell-aur-git
+	conflicts = wf-shell-git
+	conflicts = wf-shell
+	source = git+https://github.com/WayfireWM/wf-shell
+	sha512sums = SKIP
+
+pkgname = wayfire-shell-aur-git
