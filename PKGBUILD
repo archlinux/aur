@@ -2,12 +2,12 @@
 
 pkgname=ttf-sbl-biblit
 pkgver=1.0_Build001
-pkgrel=2
+pkgrel=3
 pkgdesc="SBL biblical font, including SBL Greek, SBL Hebrew, and transliteration glyphs"
 arch=('any')
 url="https://www.sbl-site.org/educational/BiblicalFonts_SBLBibLit.aspx"
 license=('custom')
-source=("http://www.sbl-site.org/Fonts/SBL_BLit.ttf"
+source=("https://www.sbl-site.org/Fonts/SBL_BLit.ttf"
         "https://www.sbl-site.org/assets/pdfs/SBL_Font_End_User_License_Agreement.pdf")
 sha256sums=('bfd1ed38833f112d9998d5631c533ef347ad0affc6b600220d50123a7816a814'
             '70c6d5d0f95a97c80f348e5dc22ac647a4b591a5cf6d5021a0588563eed844ed')
