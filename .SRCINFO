@@ -1,6 +1,6 @@
 pkgbase = icesl-beta
 	pkgdesc = A GPU accelerated modeler and slicer for 3D printing
-	pkgver = 2.3.4
+	pkgver = 2.4.2_beta1
 	pkgrel = 1
 	url = http://shapeforge.loria.fr/icesl/
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = icesl-beta
 	depends = perl
 	provides = icesl
 	conflicts = icesl
-	source = https://gforge.inria.fr/frs/download.php/file/38248/icesl-beta-2.3.4-amd64.zip
-	sha512sums = b716880e56c30689f350af613f50dc7d2327f05b3accdf3615f6863b77a98b3084226a36e3c10cf1db5c39508c059bd1a804ed9bf22194ed2bf799e8ae7f25a0
+	source = https://icesl.loria.fr/assets/packages/linux/beta/IceSL_beta.zip
+	sha512sums = 57fbb9c3c28ac13c8ba0d665ee7169973f3ebf0037eeb3cf2f96dbdef38cbd858b4a5de1ab675f3cb98c69361273b2ef32e2bc1d02055484114f3286c4bad60e
 
 pkgname = icesl-beta
-
