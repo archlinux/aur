@@ -2,8 +2,8 @@
 
 pkgname=flips
 # Each commit to master should be treated as a release as per upstream recommendation.
-pkgver=126
-_commit=3476e5e46fc6f10df475f0cad1714358ba04c756
+pkgver=135
+_commit=96df78fd733ebc56d64bcfcaee7d127bfd6643d6
 pkgrel=1
 pkgdesc="Floating IPS - Applies and creates IPS and BPS patches"
 depends=('gtk3')
