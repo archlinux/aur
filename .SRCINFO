@@ -8,8 +8,8 @@ pkgbase = healthy-git
 	makedepends = git
 	depends = python-gobject
 	depends = gtk3
+	depends = python-cairo
 	source = healthy-git::git+https://github.com/heyLu/healthy
 	md5sums = SKIP
 
 pkgname = healthy-git
-
