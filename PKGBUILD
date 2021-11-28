@@ -2,7 +2,7 @@
 
 _pkgname=zigpy-deconz
 pkgname=python-$_pkgname
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Zigpy support for deCONZ based Zigbee radio devices.'
 url='https://github.com/zigpy/zigpy-deconz'
