@@ -1,28 +1,21 @@
 # Maintainer: Tyler Furby <tyler@theforge.xyz>
+# Maintainer: Robert Zhou <meep.aur@meepzh.com>
+
 pkgname=renderman
-pkgver=current
-pkgrel=5
-pkgdesc="Pixar's Renderman render engine."
+pkgver=24.2.2199188
+pkgrel=1
+pkgdesc="Proprietary photorealistic 3D rendering software produced by Pixar Animation Studios"
 arch=('x86_64')
 url="https://renderman.pixar.com"
-license=('unknown')
-depends=('libidn')
-makedepends=('rpmextract')
-options=('emptydirs')
-source=("https://storage.googleapis.com/pixar-renderman/RenderMan-InstallerNCR-23.5.0_2121399-linuxRHEL7_gcc63icc190.x86_64.rpm")
-md5sums=('61b2b5c94a7ae4089e8b8408b8ab16f4')
+license=('custom')
+depends=('libidn' 'libicu50')
+install="${pkgname}.install"
+
+DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website")
+source=("manual://RenderMan-InstallerNCR-24.2.0_2199188-linuxRHEL7_gcc63icc190.x86_64.rpm")
+sha256sums=('8b97e66d8fafa1e34552a8715a352d58dc22a98ee01246579d08b82c408c8041')
 
 package() {
-  if [ -d "/opt/pixar/RenderMan-Installer-ncr-23.5" ]; then
-    sudo rm -rf "/opt/pixar/RenderMan-Installer-ncr-23.5"
-  fi
-  sudo mkdir -p "/opt/pixar/" 
-	sudo mv "opt/pixar/RenderMan-Installer-ncr-23.5" /opt/pixar/
-
-  sudo /opt/pixar/RenderMan-Installer-ncr-23.5/bin/RenderManInstaller
+    mv opt $pkgdir/
 }
 
-build() {
-  cd "$src"
-  rpmextract.sh RenderMan-InstallerNCR-23.5.0_2121399-linuxRHEL7_gcc63icc190.x86_64.rpm
-}
