@@ -2,7 +2,7 @@
 
 pkgname=corectrl
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=('procps-ng' 'hwids' 'karchive' 'kauth' 'qt5-charts' 'qt5-quickcontrols2
 makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 optdepends=(
 	'vulkan-tools: For vulkaninfo'
-	'mesa-demos: For glxinfo',
+	'mesa-utils: For glxinfo',
 	'util-linux: For lscpu'
 )
 source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
