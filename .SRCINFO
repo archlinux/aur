@@ -1,0 +1,14 @@
+pkgbase = btw
+	pkgdesc = Adds 'Btw' to 'Arch Linux' strings
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tyzoid/btw
+	arch = any
+	license = MIT
+	optdepends = neofetch
+	optdepends = lsb-release
+	source = git+https://github.com/tyzoid/btw.git#tag=v1.0
+	validpgpkeys = F2955C3B63EE4E421F30670A3B08EFC6BA974CFC
+	sha256sums = SKIP
+
+pkgname = btw
