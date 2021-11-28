@@ -1,6 +1,6 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=canokey-usbip-git
-pkgver=r974.2b7186a
+pkgver=r1016.2bde7c0d
 pkgrel=1
 pkgdesc="A virtual canokey based on USB/IP"
 arch=('x86_64')
@@ -19,10 +19,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/canokey-core"
 	git submodule update --init --recursive
-
-	# # mbedtls version patch
-	# cd canokey-crypto/mbedtls
-	# git checkout v2.27.0
 }
 
 build() {
