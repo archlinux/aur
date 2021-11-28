@@ -1,6 +1,6 @@
 pkgbase = protonmail-bridge-nokeychain
 	pkgdesc = An IMAP/SMTP bridge to a ProtonMail account
-	pkgver = 1.8.2
+	pkgver = 1.8.10
 	pkgrel = 1
 	url = https://protonmail.com/bridge/
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = protonmail-bridge-nokeychain
 	provides = protonmail-bridge
 	conflicts = protonmail-bridge
 	options = !strip
-	source = https://github.com/ProtonMail/proton-bridge/archive/refs/tags/v1.8.2.tar.gz
+	source = https://github.com/ProtonMail/proton-bridge/archive/refs/tags/v1.8.10.tar.gz
 	source = keyfile.patch
 	source = protonmail-bridge.service
-	sha256sums = 3fd4f3649fae4063a67e8b5fd3472bc656d546449a2f7be4537e748989ba93e7
+	sha256sums = efa2abc6390ea6f18a4f2472533722b6bbd4b76f450553df5215167642022595
 	sha256sums = 60e1394fed0ae4feb4111476aa68817f2da72bb6bf516bc60ad9d618aead5ce8
 	sha256sums = 5ffaaa5acc030ebed82b3b13f1ddc2791b50851fb93964a5d6a20a11000c18c2
 
 pkgname = protonmail-bridge-nokeychain
-
