@@ -1,0 +1,4 @@
+*.rpm
+*.zst
+src/
+pkg/
