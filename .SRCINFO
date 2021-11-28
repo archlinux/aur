@@ -1,0 +1,14 @@
+pkgbase = tetris
+	pkgdesc = Port of OpenBSD tetris for Linux.
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/eNV25/tetris
+	arch = x86_64
+	license = BSD
+	makedepends = libbsd
+	depends = ncurses
+	depends = libbsd
+	source = tetris-7.0.0.tar.gz::https://github.com/eNV25/tetris/archive/v7.0.0.tar.gz
+	sha256sums = 13bd0201a5324e0a5f1b91b6be2c98e3789ef10fdd296a9cdb05f79134d797a9
+
+pkgname = tetris
