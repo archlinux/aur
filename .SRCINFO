@@ -1,0 +1,16 @@
+pkgbase = dockeye
+	pkgdesc = GUI app to manage Docker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vv9k/dockeye
+	arch = x86_64
+	license = GPLv3
+	makedepends = cargo
+	makedepends = rust
+	makedepends = libxcb
+	makedepends = libxkbcommon
+	provides = dockeye
+	source = https://github.com/vv9k/dockeye/archive/refs/tags/0.1.0.tar.gz
+	sha1sums = SKIP
+
+pkgname = dockeye
