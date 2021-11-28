@@ -4,7 +4,7 @@
 
 pkgname=bumblebee-picasso-git
 _gitname=bumblebee
-pkgver=3.2.1
+pkgver=3.2.1.r2.aaa1b42
 pkgrel=1
 pkgdesc="NVIDIA Optimus support for Linux through VirtualGL or primus, igpu amd picasso"
 arch=('i686' 'x86_64')
@@ -33,12 +33,14 @@ source=("$_gitname::git://github.com/Bumblebee-Project/Bumblebee.git#branch=mast
         "0001-libglvnd.patch"
          "bumblebee.conf"
          "0002-bumblebee-f23xorgnvidiafix.patch"
-         "0003-config-igpu.patch")
+         "0003-config-igpu.patch"
+         "gcc10.patch")
 sha256sums=('SKIP'
             'b260d64a53617807afe21560db0592d114d7775b182e13fb59349f0157c8dba4'
             '1c3d4f5d40245a23a5f1cb1f2f6bd4274ff3c5b3749f76a09255191328ae3193'
             '0a4885344a2e6ea08d87f163e133e5256a9c0badf6fe05f91dfcdc9e716135c7'
-            '84f684ee8da0a6e841df5021de7647d587f34117dfdc55b71c0548817506c1a3')
+            '84f684ee8da0a6e841df5021de7647d587f34117dfdc55b71c0548817506c1a3'
+            'SKIP')
 
 pkgver() {
     cd "$_gitname"
