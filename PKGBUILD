@@ -35,5 +35,4 @@ package() {
     install -Dm755 ../syngestures-switch-ws ${pkgdir}/usr/bin/syngestures-switch-ws
     install -Dm644 ../syngestures.toml ${pkgdir}/usr/local/etc/syngestures.toml
     install -Dm644 ../syngestures.desktop ${pkgdir}/usr/share/applications/syngestures.desktop
-    install -Dm644 ../syngestures.service ${pkgdir}/usr/lib/systemd/system/syngestures.service
 }
