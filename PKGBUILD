@@ -1,6 +1,6 @@
 # Maintainer: alecromski <alecromski@gmail.com>
 pkgname=asus-touchpad-numpad-driver
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="asus touchpad numpad toggler"
 arch=('any')
