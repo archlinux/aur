@@ -1,6 +1,6 @@
 pkgbase = totem-vaapi
 	pkgdesc = Movie player for the GNOME desktop based on GStreamer with (unstable) VA-API support
-	pkgver = 3.38.0
+	pkgver = 3.38.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Videos
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = totem-vaapi
 	conflicts = totem-plugin
 	conflicts = totem
 	replaces = totem-plugin
-	source = git+https://gitlab.gnome.org/GNOME/totem.git#commit=18a9c6a988597958be014b4648696ed5eb221e5f
+	source = git+https://gitlab.gnome.org/GNOME/totem.git#commit=5bcc171feaf6127dcd2c09289063adef662d33b2
 	source = git+https://gitlab.gnome.org/GNOME/libgd.git
 	sha256sums = SKIP
 	sha256sums = SKIP

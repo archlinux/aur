@@ -1,10 +1,10 @@
-# Maintainer: Ícar N. S. <icar.nin@pm.me>
-# ArchLinux's PKGBUILD with a commit disabled to enable unstable vaapi support
+# Maintainer: Ícar N. S. <personal@icarns.xyz>
+# ArchLinux's PKGBUILD with a commit reverted to enable unstable vaapi support
 # https://github.com/archlinux/svntogit-packages/blob/master/totem/repos/extra-x86_64/PKGBUILD
 
 _gitname=totem
 pkgname=totem-vaapi
-pkgver=3.38.0
+pkgver=3.38.2
 pkgrel=1
 pkgdesc="Movie player for the GNOME desktop based on GStreamer with (unstable) VA-API support"
 url="https://wiki.gnome.org/Apps/Videos"
@@ -23,7 +23,7 @@ groups=(gnome)
 conflicts=(totem-plugin totem)
 replaces=(totem-plugin)
 provides=(totem)
-_commit=18a9c6a988597958be014b4648696ed5eb221e5f  # tags/V_3_38_0-fixed^0
+_commit=5bcc171feaf6127dcd2c09289063adef662d33b2  # tags/V_3_38_2^0
 source=("git+https://gitlab.gnome.org/GNOME/totem.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgd.git")
 sha256sums=('SKIP'
@@ -50,6 +50,6 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -Dt "$pkgdir/usr/share/licenses/${_gitname}" -m644 ${_gitname}/COPYING
 }
