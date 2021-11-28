@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 
 pkgname=emacs-ng
-pkgver=0.0.6b89399
+pkgver=0.0.1006c73
 pkgrel=1
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('emacs')
 depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'libtiff' 'giflib' 'libpng' 'gtk3' 'harfbuzz' 'libxcb' 'libxml2' 'gpm' 'libotf' 'm17n-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'gnutls' 'cairo' 'zlib')
 makedepends=('clang' 'rustup' 'python')
 source=("https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4bcbb8f5cec37df18ff216e2863b38e729e4fb963c720cc4a91424f69884ee89')
+sha256sums=('d1519aa594654ff8c881853b3cc215d92ef113e120ff2bd127bf2050a96371e9')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,7 +33,7 @@ build() {
         --with-all
     make NATIVE_FULL_AOT=1 \
         PATH="$HOME/.rustup/toolchains/${RUSTUP_TOOLCHAIN}-$(uname -m)-unknown-linux-gnu/bin:$PATH" \
-        -j$(($(nproc) * 2))
+        -j$(nproc)
 }
 
 package() {
@@ -48,4 +48,3 @@ package() {
     _emacs_ver=$(ls "$pkgdir/usr/share/emacs" | grep '[[:digit:]].*')
     find "$pkgdir"/usr/share/emacs/$_emacs_ver -exec chown root:root {} \;
 }
-
