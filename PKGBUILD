@@ -1,39 +1,46 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 
-pkgbase=python-decorators
 pkgname=('python-decorators' 'python2-decorators')
-pkgname=python-decorators
-pkgver=0.1
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Quickly create flexible Python decorators"
-arch=(any)
-url="http://github.com/firstopinion/decorators"
+arch=('any')
+url="https://github.com/jaymon/decorators"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/e9/57/4ce9b1211b65d69db884fa912d912845c129ed6db833fa0c00ce43fb1f4d/decorators-${pkgver}.tar.gz")
-sha256sums=('9d1ebf1c0ecb0cbb376c00d4b218ef3a0cc3c54ccdfd4c0884a75826c08f3a86')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/decorators/decorators-$pkgver.tar.gz"
+        "LICENSE::$url/raw/master/LICENSE.txt")
+sha256sums=('9cf26202d6170a5cdca8a9cf6cd4b467c10601d4a9076470bceb9d282a5fa28a'
+            '9fd61e97b164020abd86853f13e58609a0053046f8963fd01a32adef7defa2c8')
+
+prepare() {
+  cp -a "decorators-$pkgver" "decorators-$pkgver-py2"
+}
+
+build() {
+  ( cd "decorators-$pkgver"
+    python setup.py build )
+  ( cd "decorators-$pkgver-py2"
+    python2 setup.py build )
+}
 
 package_python2-decorators() {
   depends=('python2')
-  pkgdesc="Quickly create flexible Python decorators (python2 version)"
-  
-  cd "${srcdir}/decorators-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
 
-  install -v -m755 -d "${pkgdir}/usr/share/doc/python2-decorators"
-  install -v -m644 README.rst "${pkgdir}/usr/share/doc/python2-decorators/"
+  cd "decorators-$pkgver-py2"
+  PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 package_python-decorators() {
   depends=('python')
-  pkgdesc="Quickly create flexible Python decorators (python3 version)"
 
-  cd "${srcdir}/decorators-${pkgver}"  
-  python setup.py install --root="${pkgdir}/" --optimize=1
-
-  install -v -m755 -d "${pkgdir}/usr/share/doc/python-decorators"
-  install -v -m644 README.rst "${pkgdir}/usr/share/doc/python-decorators/"
+  cd "decorators-$pkgver"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
