@@ -3,9 +3,8 @@
 pkgname=zram-openrc
 pkgdesc="Activate zram using openrc"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
-groups=('openrc-galaxy')
 provides=('init-zram')
 conflicts=('init-zram')
 url="https://aur.archlinux.org/$pkgname"
