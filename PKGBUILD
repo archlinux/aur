@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.23.1
+pkgver=0.23.4
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over pipewire through socket connection as user."
 arch=(i686 x86_64 armv7h)
@@ -13,8 +13,8 @@ makedepends=(boost meson python-sphinx systemd)
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha512sums=(98af165881ee85c65ffd22bea77e0a62e13a8a5e8e30dc620761fe51422b605d886a957faf441bfe8f5e0728d651202c7f43e270335337a822258fcb5cd76e9e SKIP)
-b2sums=(7b517d72c536496c4ceb579fcce3d4822a45a9975c7f1f53ab3c6e1eb1b133364eea9d62fa4ef53065961e3edf4474ba454aac846d50c5a96428cbacacdb0d9d SKIP)
+sha512sums=(fb476b108a7be842663683fe6ca6737cffad73c0f09874f9d052121d188d16f69b144e993d1691f2edfac713db24aa3c28302b399f4720b29c09c909860c0938 SKIP)
+b2sums=(34ea3f0065edcb26e57350a9cdfc79e8705674a4811b06ff4dfa0a93a1c92bcfae7c9e6ae208210289a1f11fac079aa53ad34a3b317fd5dbe4c6d522883b6623 SKIP)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
 build() {
