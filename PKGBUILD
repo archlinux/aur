@@ -9,7 +9,7 @@ license=('AGPL-3.0')
 arch=('x86_64')
 provides=('steampipe')
 source=("steampipe-$pkgver-$pkgrel.tgz::https://github.com/turbot/steampipe/releases/download/v$pkgver/steampipe_linux_amd64.tar.gz")
-sha256sums=('0a056694f40cac75f063969b09e0ac4cd9ec7cdc139499289f28a7c9956e5579')
+sha256sums=('76fd1017e883252ccacab64b1e5d0b38567fd5d3affd3b46d64a039e5dd40dcb')
 
 package() {
     tar xzf $srcdir/steampipe-$pkgver-$pkgrel.tgz

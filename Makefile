@@ -19,5 +19,5 @@ specificrelease:
 .ONESHELL:
 latestrelease:
 	@export VER=$(shell curl -sL https://api.github.com/repos/turbot/steampipe/releases/latest | jq -r ".name" | cut -c 2-)
-	@export SHA256=$(shell curl -sL https://api.github.com/repos/turbot/steampipe/releases/latest | jq -r ".assets[] | select(.name | contains(\"checksums.txt\")) | .browser_download_url" | wget -q -i - -O - | grep linux_amd64 | cut -d' ' -f1)
+	@export SHA256=$(shell curl -sL https://api.github.com/repos/turbot/steampipe/releases/latest | jq -r ".assets[] | select(.name | contains(\"checksums.txt\")) | .browser_download_url" | wget -q -i - -O - | grep linux_amd64.tar.gz | cut -d' ' -f1)
 	@make generate srcinfo
