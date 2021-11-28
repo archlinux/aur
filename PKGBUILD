@@ -39,7 +39,7 @@ build() {
 	# ./configure --prefix=/usr
     cd BingWall
 	qmake-qt5
-	make
+	make -j$(nproc --all)
 
 }
 
