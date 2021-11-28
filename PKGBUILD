@@ -2,15 +2,16 @@
 # Contributor: Marcin Tydelski <marcin.tydelski@gmail.com>
 # Contributor: Siddhartha Das bablu.boy@gmail.com>
 pkgname=nutty-git
-pkgver=1.1.1.r72.gde6a857
-pkgrel=1
+_app_id=com.github.babluboy.nutty
+pkgver=1.1.1.r75.g8838eeb
+pkgrel=2
 pkgdesc='A network utility that monitors the devices on your network,
          checks bandwidth and speed details.'
 arch=('x86_64')
 url='https://github.com/babluboy/nutty'
 license=('GPL3')
-depends=('granite' 'libnotify' 'libxml2' 'libgee' 'sqlite' 'net-tools' 'nethogs'
-         'nmap' 'traceroute' 'vnstat' 'wireless_tools' 'iproute2' 'pciutils')
+depends=('granite' 'iproute2' 'libgee' 'libnotify' 'libxml2' 'net-tools' 'nethogs'
+         'nmap' 'pciutils' 'speedtest-cli' 'sqlite' 'traceroute' 'vnstat' 'wireless_tools')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
@@ -20,21 +21,25 @@ source=('git+https://github.com/babluboy/nutty.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	arch-meson "${pkgname%-git}" build
-	meson compile -C build
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
-	ln -s /usr/bin/com.github.babluboy.nutty "$pkgdir/usr/bin/${pkgname%-git}"
+  ln -s "/usr/bin/$_app_id" "$pkgdir/usr/bin/${pkgname%-git}"
+
+  # Included speedtest-cli script is broken, use system package:
+  rm "$pkgdir/usr/share/$_app_id/scripts/speedtest-cli"
+  ln -s /usr/bin/speedtest-cli "$pkgdir/usr/share/$_app_id/scripts/"
 }
