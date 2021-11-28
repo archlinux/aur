@@ -1,0 +1,99 @@
+pkgbase = java-14-openjdk
+	pkgver = 14.0.2.u12
+	pkgrel = 1
+	url = https://openjdk.java.net/
+	arch = x86_64
+	license = custom
+	makedepends = java-environment-jdk<=14
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libelf
+	makedepends = libcups
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = alsa-lib
+	makedepends = pandoc
+	makedepends = graphviz
+	makedepends = freetype2
+	makedepends = libjpeg-turbo
+	makedepends = giflib
+	makedepends = libpng
+	makedepends = lcms2
+	makedepends = libnet
+	makedepends = bash
+	source = https://hg.openjdk.java.net/jdk-updates/jdk14u/archive/jdk-14.0.2+12.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = dfb3607f1b675458f29a185a40f1dbbf896439cf33b3aa0f3d89df297e604935
+	sha256sums = 165273caba29f70496e697c9ed5bf61a4322ab324888f78559820f0032df48c9
+	sha256sums = 1e3decf29075b6f62238a5b2ac537679f00c185ce36d83db254004237cfe7084
+	sha256sums = 676c74c8aed53d6cd4c4755ece2b2e3ab1a72b1bd2ef53983dcad0229d91af3c
+
+pkgname = jre14-openjdk-headless
+	pkgdesc = OpenJDK Java 14 headless runtime environment
+	install = install_jre-openjdk-headless.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = lcms2
+	depends = libnet
+	depends = freetype2
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=14
+	provides = java-runtime-headless-openjdk=14
+	provides = jre14-openjdk-headless=14.0.2.u12-1
+	backup = etc/java-14-openjdk/logging.properties
+	backup = etc/java-14-openjdk/management/jmxremote.access
+	backup = etc/java-14-openjdk/management/jmxremote.password.template
+	backup = etc/java-14-openjdk/management/management.properties
+	backup = etc/java-14-openjdk/net.properties
+	backup = etc/java-14-openjdk/security/java.policy
+	backup = etc/java-14-openjdk/security/java.security
+	backup = etc/java-14-openjdk/security/policy/README.txt
+	backup = etc/java-14-openjdk/security/policy/limited/default_US_export.policy
+	backup = etc/java-14-openjdk/security/policy/limited/default_local.policy
+	backup = etc/java-14-openjdk/security/policy/limited/exempt_local.policy
+	backup = etc/java-14-openjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-14-openjdk/security/policy/unlimited/default_local.policy
+	backup = etc/java-14-openjdk/sound.properties
+
+pkgname = jre14-openjdk
+	pkgdesc = OpenJDK Java 14 full runtime environment
+	install = install_jre-openjdk.sh
+	depends = jre14-openjdk-headless=14.0.2.u12-1
+	depends = giflib
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=14
+	provides = java-runtime-openjdk=14
+	provides = jre14-openjdk=14.0.2.u12-1
+
+pkgname = jdk14-openjdk
+	pkgdesc = OpenJDK Java 14 development kit
+	install = install_jdk-openjdk.sh
+	depends = jre14-openjdk=14.0.2.u12-1
+	depends = java-environment-common=3
+	depends = hicolor-icon-theme
+	depends = libelf
+	provides = java-environment=14
+	provides = java-environment-jdk=14
+	provides = java-environment-openjdk=14
+	provides = jdk14-openjdk=14.0.2.u12-1
+
+pkgname = openjdk14-src
+	pkgdesc = OpenJDK Java 14 sources
+	depends = jdk14-openjdk=14.0.2.u12-1
+	provides = openjdk14-src=14.0.2.u12-1
+
+pkgname = openjdk14-doc
+	pkgdesc = OpenJDK Java 14 documentation
+	depends = jdk14-openjdk=14.0.2.u12-1
+	provides = openjdk14-doc=14.0.2.u12-1
