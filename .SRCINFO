@@ -1,6 +1,6 @@
 pkgbase = codelite-unstable
 	pkgdesc = Cross platform C/C++/PHP and Node.js IDE written in C++
-	pkgver = 15.0.7
+	pkgver = 15.0.8
 	pkgrel = 1
 	url = http://www.codelite.org/
 	arch = i686
@@ -24,9 +24,9 @@ pkgbase = codelite-unstable
 	optdepends = valgrind: debugger
 	conflicts = codelite
 	noextract = wxgui.zip
-	source = codelite-15.0.7.tar.gz::https://github.com/eranif/codelite/archive/15.0.7.tar.gz
+	source = codelite-15.0.8.tar.gz::https://github.com/eranif/codelite/archive/15.0.8.tar.gz
 	source = http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-	md5sums = d39d6bbe560b607e20d944e15cc669b6
+	md5sums = 9775fbe4acf998ee7f4c189b26658381
 	md5sums = 20f3428eb831c3ff2539a7228afaa3b4
 
 pkgname = codelite-unstable
