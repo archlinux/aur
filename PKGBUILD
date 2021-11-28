@@ -13,10 +13,15 @@ makedepends=('npm')
 source=("https://github.com/darkreader/darkreader/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('2987b3e7ebd4e0a69244e1652f63ea09ad4ebea4c152841bdb2efdd069563ebdd31a04b0dd6f1fd230512d6c44a2b149164c97c09feab1f80264ac5221fbf110')
 
+prepare() {
+  cd darkreader-$pkgver
+  npm ci
+}
+
 build() {
   cd darkreader-$pkgver
-  npm install --frozen-lockfile
   npm run build
+  strip-nondeterminism -t zip build/release/*.xpi
 }
 
 check() {
@@ -24,7 +29,7 @@ check() {
   npm test
 }
 
-package() {
+librewolf-extension-dark-reader() {
   groups=('librewolf-addons')
   cd darkreader-$pkgver
   install -Dm644 build-firefox.xpi \
