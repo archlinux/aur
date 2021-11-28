@@ -1,0 +1,21 @@
+pkgbase = ruby-haml-rails
+	pkgdesc = Haml-rails provides Haml generators for Rails 4
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/haml/haml-rails
+	arch = any
+	license = MIT
+	checkdepends = ruby-activejob
+	checkdepends = ruby-rails
+	makedepends = ruby-bundler
+	depends = ruby
+	depends = ruby-actionpack
+	depends = ruby-activesupport
+	depends = ruby-haml
+	depends = ruby-html2haml
+	depends = ruby-railties
+	options = !emptydirs
+	source = https://github.com/haml/haml-rails/archive/v2.0.1/ruby-haml-rails-2.0.1.tar.gz
+	sha512sums = d49c60584ad08a268c1109e21116cc5bbb9290c5a5732c8bfddd2fc12aa513e3e9a6ab2092ab89dde4ae8884a06f964a3c0693ea1544541cadb256183027b519
+
+pkgname = ruby-haml-rails
