@@ -1,12 +1,12 @@
 pkgbase = mediawiki-extension-abusefilter
 	pkgdesc = An extension for MediaWiki that allows privileged users to set specific actions to be taken when actions by users, such as edits, match certain criteria
-	pkgver = 1.36+r6232+gf5c98bf44
+	pkgver = 1.37+r6400+gfec014d4c
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:AbuseFilter
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/AbuseFilter.git#commit=f5c98bf44736dec13dfb94d8fbb3850e6586bad0
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/AbuseFilter.git#commit=fec014d4cb0ee29adb7adb4aeb2f3dd3b61d438a
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-abusefilter
