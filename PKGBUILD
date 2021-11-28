@@ -4,13 +4,14 @@
 _pkgbase='worm'
 pkgname='worm-git'
 pkgdesc="A floating, tag-based window manager written in Nim"
-pkgver=0.1.0.90.g47ebe56
+pkgver=0.1.0.96.gdfe2f58
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/codic12/worm"
 license=('MIT')
-makedepends=('choosenim' 'git')
+makedepends=('nimble' 'nim' 'git')
 depends=('xorg-server')
+install=$_pkgbase.install
 
 source=("$_pkgbase::git+$url.git")
 sha256sums=('SKIP')
@@ -20,16 +21,8 @@ pkgver() {
     echo "$(grep '^version       =' worm.nimble|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$_pkgbase"
-    export CHOOSENIM_NO_ANALYTICS=1
-    export PATH=$srcdir/$_pkgbase/nimble/bin:$PATH
-    choosenim 1.6.0 --choosenimDir:choosenim --nimbleDir:nimble
-}
-
 build() {
     cd "$_pkgbase"
-    export PATH=$srcdir/$_pkgbase/choosenim/toolchains/nim-1.6.0/bin:$PATH
     nimble -y build -d:release --gc:arc
 }
 
