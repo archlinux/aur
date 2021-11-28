@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-amd
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -19,12 +19,14 @@ source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-opencl-$pkgver.tar.gz::$_opencl/archive/rocm-$pkgver.tar.gz"
         "$pkgname-rocclr-$pkgver.tar.gz::$_rocclr/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
-        'disable-testing.patch')
+        'disable-testing.patch'
+        'vector_oob.patch')
 sha256sums=('4026f31fb4f8050e9aa9d4294f29c3410bfb38422dbbae4236ccd65fed4d55b2'
             '3a163aed24619b3faf5e8ba17325bdcedd1667a904ea20914ac6bdd33fcdbca8'
             'ca8d6305ff0e620d9cb69ff7ac3898917db9e9b6996a7320244b48ab6511dd8e'
             '7b93ab64d6894ff9b5ba0be35e3ed8501d6b18a2a14223d6311d72ab8a9cdba6'
-            '3f158fb78296477db176c53a8df60b8034004c400b6c62f558c94663a5246883')
+            '3f158fb78296477db176c53a8df60b8034004c400b6c62f558c94663a5246883'
+            '8295e2d1b1d48da821f280e6a44f8376cbe73b77bd58bdceed38dbc2a100569f')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _diropencl="$(basename "$_opencl")-$(basename "${source[1]}" ".tar.gz")"
 _dirrocclr="$(basename "$_rocclr")-$(basename "${source[2]}" ".tar.gz")"
@@ -34,6 +36,9 @@ prepare() {
   cd "$_dirhipamd"
   # Tests are broken with cmake 3.21
   patch -Np1 -i "$srcdir/disable-testing.patch"
+  cd "$srcdir/$_dirrocclr"
+  # https://github.com/ROCm-Developer-Tools/HIP/issues/2426
+  patch -Np1 -i "$srcdir/vector_oob.patch"
 }
 
 build() {
