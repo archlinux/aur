@@ -1,5 +1,5 @@
 post_install() {
-  systemctl try-reload-or-restart org.cups.cupsd
+  systemctl try-reload-or-restart cups.service
 }
 
 post_upgrade() {
