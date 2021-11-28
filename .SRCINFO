@@ -1,6 +1,6 @@
 pkgbase = justext
 	pkgdesc = Heuristic based boilerplate removal tool
-	pkgver = 2.2.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/miso-belica/justext
 	changelog = CHANGELOG.rst
@@ -8,15 +8,16 @@ pkgbase = justext
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = justext-2.2.0.zip::https://files.pythonhosted.org/packages/source/j/jusText/jusText-2.2.0.zip
-	sha256sums = 330035dfaaa960465276afa1836dfb6e63791011a8dfc6da2757142cc4d14d54
+	makedepends = python-docutils
+	source = justext-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/j/jusText/jusText-3.0.0.tar.gz
+	sha256sums = 7640e248218795f6be65f6c35fe697325a3280fcb4675d1525bcdff2b86faadf
 
 pkgname = python-justext
-	depends = python-lxml>=4.4.2
+	depends = python-lxml
 	provides = justext
 	replaces = justext
 
 pkgname = python2-justext
-	depends = python2-lxml>=4.4.2
+	depends = python2-lxml
 	provides = justext
 	replaces = justext

@@ -3,6 +3,12 @@
 Changelog for jusText
 =====================
 
+3.0.0 (2021-10-21)
+------------------
+- *INCOMPATIBLE CHANGE:* Dropped support for Python 3.4 and below.
+- *BUG FIX:* Don't join words separated only by ``<br>`` tag.
+- *BUG FIX:* List available stop-lists alphabetically.
+
 2.2.0 (2016-03-06)
 ------------------
 - *INCOMPATIBLE CHANGE:* Stop words are case insensitive.
