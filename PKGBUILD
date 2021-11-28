@@ -2,7 +2,7 @@
 
 pkgname=syngestures
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol"
 arch=('x86_64')
 url="https://github.com/mqudsi/syngesture"

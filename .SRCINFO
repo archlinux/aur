@@ -1,7 +1,7 @@
 pkgbase = syngestures
 	pkgdesc = Swipes and gestures for Linux with the MT multitouch protocol
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mqudsi/syngesture
 	arch = x86_64
 	license = MIT
