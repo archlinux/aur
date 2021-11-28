@@ -1,9 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=liquidsoap
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
-_commit=bd9a2e3531ec03bae4f2812b6d83bdacf2277f0c
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="https://www.liquidsoap.info"
@@ -52,22 +51,22 @@ depends=('fluidsynth' 'giflib' 'gst-plugins-good' 'gst-plugins-ugly'
 makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-menhir' 'ocaml-pcre' 'ocaml-sedlex' 'perl-xml-dom')
 optdepends=('curl')
 options=('!makeflags')
-source=("https://github.com/savonet/${pkgname}/archive/${_commit}.tar.gz"
+source=("https://github.com/savonet/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
   ${pkgname}.service
   ${pkgname}.tmpfilesd
 )
 
-install=${pkgname}.install
+install="${pkgname}.install"
 conflicts=('liquidsoap-git' 'liquidsoap-full')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${_commit}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   find . -name "*.in" -type f -exec sed -i "s/@version@/${pkgver}/ig" {} +
   find . -type f -exec sed -i "s/liq_libs_dir_version=\".*\"/liq_libs_dir_version=\"${pkgver}\"/" {} +
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${_commit}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./bootstrap
   ./configure --prefix="${pkgdir}/usr" \
     --with-bash-completion-dir="${pkgdir}/usr/share/bash-completion/completions" \
@@ -79,9 +78,16 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_commit}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="${pkgdir}" datadir="${pkgdir}/usr/share/" mandir="${pkgdir}/usr/share/man/" localstatedir="${pkgdir}/var" bindir="${pkgdir}/usr/bin/" libdir="${pkgdir}/usr/lib/" sysconfdir="${pkgdir}/etc/" install
+  make DESTDIR="${pkgdir}" \
+    datadir="${pkgdir}/usr/share/" \
+    mandir="${pkgdir}/usr/share/man/" \
+    localstatedir="${pkgdir}/var" \
+    bindir="${pkgdir}/usr/bin/" \
+    libdir="${pkgdir}/usr/lib/" \
+    sysconfdir="${pkgdir}/etc/" \
+    install
 
   # Install systemd unit
   install -Dm644 "${srcdir}/${pkgname}.service" \
@@ -91,6 +97,6 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/liquidsoap.conf"
 }
 
-sha256sums=('45bb9c3e4113173e2df007a03dd1f4320706f134c500a152bafdbba9e66ac4fb'
+sha256sums=('11f93adacfb0b469a5355a1126dc67219902e54f6b89440e9d72ba95b2952217'
             'df6d2cec1be47a57a02ed04a1f527c0349221fad39d8d152aca13734d3808661'
             '9f286958af0c751c2a43d74614cdd1c4629c0583d619875385c09417a5383675')
