@@ -3,9 +3,8 @@
 pkgname=zram-s6
 pkgdesc="Activate zram using skarnet's s6"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=('any')
-groups=('s6-galaxy')
 provides=('init-zram')
 conflicts=('init-zram')
 url="https://aur.archlinux.org/$pkgname"
