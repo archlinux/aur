@@ -2,7 +2,7 @@
 # Maintainer: vtyulb
 
 pkgname=vk-calls-bin
-pkgver=1.0.2762
+pkgver=1.0.2951
 pkgrel=1
 pkgdesc="VK Calls for fast conference calls"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gcc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-svg')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://vkcalls-native-ac.vk-apps.com/latest/vk-calls-amd64.deb")
-sha512sums_x86_64=('8ebdaa66d0828ae33a3557e5dc0dbad58b617ce07b830e620489a4b8fc33b95dc2070cb29d85469990685045869effa6f58b1583c0c28e355810b0d6f11a81ac')
+sha512sums_x86_64=('SKIP')
 
 package(){
 	# Extract package data
