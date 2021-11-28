@@ -1,0 +1,24 @@
+From 6d0f100d25fecae89a48c76f55371730a51c10fe Mon Sep 17 00:00:00 2001
+From: Maxime Gauduin <alucryd@archlinux.org>
+Date: Wed, 18 Mar 2020 17:08:25 +0100
+Subject: [PATCH] use system flags
+
+---
+ nall/GNUmakefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/nall/GNUmakefile b/nall/GNUmakefile
+index 67fb3a15..fddec93d 100755
+--- a/nall/GNUmakefile
++++ b/nall/GNUmakefile
+@@ -127,7 +127,8 @@ endif
+
+ # linux settings
+ ifeq ($(platform),linux)
+-  options += -ldl
++  flags += ${CXXFLAGS}
++  options += ${LDFLAGS} -ldl
+ endif
+
+ # bsd settings
+
