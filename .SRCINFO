@@ -1,13 +1,13 @@
 pkgbase = dbxfs
 	pkgdesc = User-space file system for Dropbox
 	pkgver = 1.0.51
-	pkgrel = 4
+	pkgrel = 5
 	url = https://thelig.ht/code/dbxfs
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
 	depends = fuse2
-	depends = python-dropbox>=11.0.0
+	depends = python-dropbox<11.25.0
 	depends = python-appdirs
 	depends = python-userspacefs
 	depends = python-block_tracing

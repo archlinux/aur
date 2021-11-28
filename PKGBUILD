@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=dbxfs
 pkgver=1.0.51
-pkgrel=4
+pkgrel=5
 pkgdesc="User-space file system for Dropbox"
 arch=('x86_64')
 url="https://thelig.ht/code/dbxfs"
 license=('GPL3')
-depends=('fuse2' 'python-dropbox>=11.0.0' 'python-appdirs' 'python-userspacefs'
+depends=('fuse2' 'python-dropbox<11.25.0' 'python-appdirs' 'python-userspacefs'
          'python-block_tracing' 'python-privy' 'python-keyrings-alt' 'python-sentry_sdk<1.5.0')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
