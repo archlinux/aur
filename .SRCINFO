@@ -1,6 +1,6 @@
 pkgbase = lsidups-git
 	pkgdesc = Find duplicates / similar images from your terminal and export them as list or json
-	pkgver = r96.1c468cd
+	pkgver = r99.7891cfc
 	pkgrel = 1
 	url = https://github.com/MahouShoujoMivutilde/lsidups
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = lsidups-git
 	sha256sums = SKIP
 
 pkgname = lsidups-git
-

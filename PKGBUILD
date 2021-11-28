@@ -2,7 +2,7 @@
 
 pkgname=lsidups-git
 _pkgname=${pkgname%-git}
-pkgver=r96.1c468cd
+pkgver=r99.7891cfc
 pkgrel=1
 
 pkgdesc='Find duplicates / similar images from your terminal and export them as list or json'
@@ -34,7 +34,6 @@ build() {
 
     CGO_ENABLED=0 go build \
         -trimpath \
-        -mod=readonly \
         -ldflags "-s -w -X main.GitVersion=${pkgver}" \
         .
 }
