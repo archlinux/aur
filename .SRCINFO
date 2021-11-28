@@ -5,7 +5,6 @@ pkgbase = gallery-dl
 	url = https://github.com/mikf/gallery-dl
 	arch = any
 	license = GPL2
-	checkdepends = python-nose
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python

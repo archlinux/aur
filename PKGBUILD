@@ -10,7 +10,6 @@ url=https://github.com/mikf/gallery-dl
 license=(GPL2)
 depends=(python python-requests)
 makedepends=(python-setuptools git)
-checkdepends=(python-nose)
 optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
             'youtube-dl: Download videos'
             'python-pysocks: SOCKS support')
