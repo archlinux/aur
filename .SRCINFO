@@ -1,14 +1,12 @@
 pkgbase = mips-linux-gnu-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the MIPS target
-	pkgver = 2.35
+	pkgver = 2.37
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.35.tar.bz2
-	sha1sums = 148cd8a885276b89aee37ed35927ff3949eaaba8
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.bz2
+	sha512sums = b3f5184697f77e94c95d48f6879de214eb5e17aa6ef8e96f65530d157e515b1ae2f290e98453e4ff126462520fa0f63852b6e1c8fbb397ed2e41984336bc78c6
 
 pkgname = mips-linux-gnu-binutils
-
