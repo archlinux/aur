@@ -1,5 +1,5 @@
 pkgname=nodejs-webpack-dev-server
-pkgver=3.11.2
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Serves a webpack app. Updates the browser on changes."
 arch=(any)
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('nodejs' 'npm' )
 source=(http://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-$pkgver.tgz)
 noextract=(${npmname#nodejs-}-$pkgver.tgz)
-sha512sums=('03cd0192e1d141f0a236d1814b510c7f60a14d4b34c7e077c060c598e793e2b9893878474c21f69da37120786692bd3f5229653f8537c9e232bf5a4da7e4032d')
+sha512sums=('a288dc0482afc7761aeeab35fc05561c38263f55e697cac6b040674a86f153f509497d713f518f337330b009c3cefa9c5665648bcb55ee56dcb231239343ed62')
 
 package() {
   cd $srcdir
