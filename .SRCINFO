@@ -1,0 +1,12 @@
+pkgbase = syngestures
+	pkgdesc = Swipes and gestures for Linux with the MT multitouch protocol
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mqudsi/syngesture
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = syngestures-1.0::https://github.com/mqudsi/syngesture/archive/refs/tags/1.0.tar.gz
+	sha256sums = 308499e6dceb40a11dc56d8c780d3844f92d846f6819af1012aabf1e9843fdee
+
+pkgname = syngestures
