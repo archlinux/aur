@@ -1,0 +1,11 @@
+pkgbase = cucumber-json-formatter
+	pkgdesc = This standalone JSON Formatter provide a language agnostic tool to convert cucumber messages into a JSON document.
+	pkgver = 19.0.0
+	pkgrel = 1
+	url = https://github.com/cucumber/common/tree/main/json-formatter
+	arch = x86_64
+	license = MIT
+	source = https://github.com/cucumber/common/releases/download/json-formatter%2Fgo%2Fv19.0.0/cucumber-json-formatter-linux-amd64
+	sha1sums = fd87d036bd379393262784da5d766e79c935fa03
+
+pkgname = cucumber-json-formatter
