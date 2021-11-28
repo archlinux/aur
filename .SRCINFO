@@ -1,0 +1,11 @@
+pkgbase = ttos
+	pkgdesc = Tunnel TO Socket
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shyaminayesh/ttos
+	arch = x86_64
+	makedepends = go
+	source = https://github.com/shyaminayesh/ttos/archive/v1.0.0.tar.gz
+	sha256sums = b9226bf866e7e89e62ce1c84ccbf8e00ca3d0bfa24f6e1bf6ff49e62555c1e74
+
+pkgname = ttos
