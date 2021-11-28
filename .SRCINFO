@@ -1,0 +1,115 @@
+pkgbase = java-16-openjdk
+	pkgver = 16.0.2.u7
+	pkgrel = 1
+	url = https://openjdk.java.net/
+	arch = x86_64
+	license = custom
+	makedepends = java-environment-jdk<=16
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libelf
+	makedepends = libcups
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = alsa-lib
+	makedepends = pandoc
+	makedepends = graphviz
+	makedepends = freetype2
+	makedepends = libjpeg-turbo
+	makedepends = giflib
+	makedepends = libpng
+	makedepends = lcms2
+	makedepends = libnet
+	makedepends = bash
+	makedepends = harfbuzz
+	makedepends = gcc-libs
+	makedepends = glibc
+	source = https://github.com/openjdk/jdk16u/archive/jdk-16.0.2+7.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = b4a0e71e41a11175e8a7c1dba86ed5b0aa878413158c8d48813db1b64ac9536c
+	sha256sums = 11150daae08fff25309dcc060c07cd056181644d2b563c22668b98e306e8f2db
+	sha256sums = c0673d680cc728af88bec89275f0a8e2199d52e48b5c5b0aa2d921bedbc2e12f
+	sha256sums = 0cdf3dc10a64c5e589e655276189422b60a6b3294539164a6f29123d6b2046c7
+
+pkgname = jre16-openjdk-headless
+	pkgdesc = OpenJDK Java 16 headless runtime environment
+	install = install_jre-openjdk-headless.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = lcms2
+	depends = liblcms2.so
+	depends = libnet
+	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=16
+	provides = java-runtime-headless-openjdk=16
+	provides = jre16-openjdk-headless=16.0.2.u7-1
+	backup = etc/java-16-openjdk/logging.properties
+	backup = etc/java-16-openjdk/management/jmxremote.access
+	backup = etc/java-16-openjdk/management/jmxremote.password.template
+	backup = etc/java-16-openjdk/management/management.properties
+	backup = etc/java-16-openjdk/net.properties
+	backup = etc/java-16-openjdk/security/java.policy
+	backup = etc/java-16-openjdk/security/java.security
+	backup = etc/java-16-openjdk/security/policy/README.txt
+	backup = etc/java-16-openjdk/security/policy/limited/default_US_export.policy
+	backup = etc/java-16-openjdk/security/policy/limited/default_local.policy
+	backup = etc/java-16-openjdk/security/policy/limited/exempt_local.policy
+	backup = etc/java-16-openjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-16-openjdk/security/policy/unlimited/default_local.policy
+	backup = etc/java-16-openjdk/sound.properties
+
+pkgname = jre16-openjdk
+	pkgdesc = OpenJDK Java 16 full runtime environment
+	install = install_jre-openjdk.sh
+	depends = jre16-openjdk-headless=16.0.2.u7-1
+	depends = giflib
+	depends = libgif.so
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=16
+	provides = java-runtime-openjdk=16
+	provides = jre16-openjdk=16.0.2.u7-1
+
+pkgname = jdk16-openjdk
+	pkgdesc = OpenJDK Java 16 development kit
+	install = install_jdk-openjdk.sh
+	depends = jre16-openjdk=16.0.2.u7-1
+	depends = java-environment-common=3
+	depends = hicolor-icon-theme
+	depends = libelf
+	depends = glibc
+	depends = gcc-libs
+	provides = java-environment=16
+	provides = java-environment-jdk=16
+	provides = java-environment-openjdk=16
+	provides = jdk16-openjdk=16.0.2.u7-1
+
+pkgname = openjdk16-src
+	pkgdesc = OpenJDK Java 16 sources
+	depends = jdk16-openjdk=16.0.2.u7-1
+	provides = openjdk16-src=16.0.2.u7-1
+
+pkgname = openjdk16-doc
+	pkgdesc = OpenJDK Java 16 documentation
+	depends = jdk16-openjdk=16.0.2.u7-1
+	provides = openjdk16-doc=16.0.2.u7-1
