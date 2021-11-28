@@ -1,7 +1,7 @@
 pkgbase = iscdcommons-git
 	pkgdesc = Common library for ISCD tools, e.g. elastic
 	pkgver = 20210723.r39
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ISCDtoolbox/Commons
 	arch = x86_64
 	license = GPL3
