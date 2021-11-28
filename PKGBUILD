@@ -12,10 +12,10 @@ optdepends=()
 provides=('thextech')
 install=${pkgname}.install
 source=("git://github.com/Wohlstand/TheXTech"
-"http://wohlsoft.ru/projects/TheXTech/_downloads/thextech-adventure-of-demo-assets-full.7z"
+"https://wohlsoft.ru/projects/TheXTech/_downloads/thextech-adventure-of-demo-assets-full.7z"
 "thextech-adventuresofdemo.desktop")
 sha256sums=("SKIP"
-"7940f5bd31b2b356dc40060c5cee20e79039cb01386a1c4920dd485ab8261f0d"
+"SKIP"
 "06970c41b9e4b35a975c4d9352525d2b1b444b2b5d7d9dd8dcb6a4802a1e201e")
 noextract=()
 
