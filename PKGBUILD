@@ -2,7 +2,7 @@
 # Contributor: Ben Silverman <bensilverman10 at gmail dot com>
 
 pkgname=alacritty-themes
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
@@ -17,7 +17,7 @@ install="$pkgname.install"
 
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-b2sums=('4af21927ebfd6b677fa95ea72671bd7fde15d01abdaa355afb1adaf83c2585f3d423319200a4ed04946eed883c4422dfbde2d243870f37c5613716636ed58d1e')
+b2sums=('1b662634f0f4d43912568c36927a34548cce77709674dcd3102e4c3bd082ad435cdd5fe65eaf6857755a3fc050bb6747f30f7dd6f86117efc53f3e3895a812f8')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
