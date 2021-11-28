@@ -19,10 +19,8 @@ pkgbase = av1an-git
 	optdepends = mkvtoolnix-cli: mkvmerge support
 	optdepends = ffms2
 	optdepends = vapoursynth-plugin-lsmashsource
-	provides = python-av1an
-	provides = python-av1an-git
-	conflicts = python-av1an
-	conflicts = python-av1an-git
+	provides = av1an
+	conflicts = av1an
 	source = git+https://github.com/master-of-zen/Av1an.git
 	sha256sums = SKIP
 

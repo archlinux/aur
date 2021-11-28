@@ -16,8 +16,8 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
             'mkvtoolnix-cli: mkvmerge support'
             'ffms2'
             'vapoursynth-plugin-lsmashsource')
-provides=('python-av1an' 'python-av1an-git')
-conflicts=('python-av1an' 'python-av1an-git')
+provides=('av1an')
+conflicts=('av1an')
 source=("git+https://github.com/master-of-zen/Av1an.git")
 sha256sums=('SKIP')
 
