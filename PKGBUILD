@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
@@ -16,18 +16,22 @@ makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
 source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
   "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
   "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
+  0001-warnings-fix-format-security-warnings.patch
   imhex.desktop)
 cksums=('SKIP'
         'SKIP'
         'SKIP'
+        '1240984838'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            '66f1e9ae39a24b27cbf80ddb1b6c364dd4895ec66b6cc9154384354c1b8d54f2'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
+        'c9b7bf565006dc1aa9605f653ac94fbed2b01d0ab481de51efac0034cb84267576902bcf43e1dbb4b0f05c495c5040755d26d299cb427d00fc80d752bd3990d1'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
@@ -41,6 +45,9 @@ prepare() {
     git config --remove-section submodule.external/$name
   done
   git submodule update
+
+  git apply \
+    "$srcdir/0001-warnings-fix-format-security-warnings.patch"
 }
 
 build() {
