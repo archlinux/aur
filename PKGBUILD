@@ -1,7 +1,7 @@
 # Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 pkgname=webcord-git
 pkgver=2.1.2.r324.3342d53
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord client based on the Electron engine."
 arch=("any")
 
