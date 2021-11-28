@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=fastiv-git
 _pkgname=fastiv
-pkgver=r129.e6ad6c6
+pkgver=r152.666bfc0
 pkgrel=1
 pkgdesc="Fast image viewer"
 url="https://git.janouch.name/p/fastiv"
@@ -11,7 +11,7 @@ conflicts=('fastiv')
 provides=('fastiv')
 makedepends=('meson' 'pkg-config' 'git')
 depends=('gtk3' 'pixman' 'libjpeg-turbo')
-optdepends=('libraw' 'librsvg' 'gdk-pixbuf2' 'libxcursor')
+optdepends=('libraw' 'librsvg' 'gdk-pixbuf2' 'libxcursor' 'libtiff')
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 

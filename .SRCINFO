@@ -1,6 +1,6 @@
 pkgbase = fastiv-git
 	pkgdesc = Fast image viewer
-	pkgver = r128.dd2a95b
+	pkgver = r152.666bfc0
 	pkgrel = 1
 	url = https://git.janouch.name/p/fastiv
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = fastiv-git
 	optdepends = librsvg
 	optdepends = gdk-pixbuf2
 	optdepends = libxcursor
+	optdepends = libtiff
 	provides = fastiv
 	conflicts = fastiv
 	source = git+https://git.janouch.name/p/fastiv.git
