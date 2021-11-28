@@ -1,4 +1,4 @@
-# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 # Contributor: redfish <redfish AT galactica DOT pw>
 # Contributor: kertase <kertase AT gmail DOT com>
 # Contributor: Sergej Pupykin <pupykin DOT s+arch AT gmail.com>
@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.15.4.alpha.2.r9.gd64ac2698
+pkgver=0.15.4.alpha.2.r85.g4eb546478
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ optdepends=('bluez: for bluetooth transport'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
             'zbar: for reading/writing QR codes using gnunet-qr')
 backup=("etc/${_appname}.conf")
-source=("git+https://git.${_appname}.org/git/${_appname}.git"
+source=("git+https://git.${_appname}.org/${_appname}.git"
         "${_appname}-system.service"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles"
