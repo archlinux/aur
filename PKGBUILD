@@ -7,7 +7,7 @@ pkgdesc="A Minecraft launcher aims to provide easy access to old versions and im
 arch=('x86_64')
 url="https://github.com/Moresteck/BetaCraft-Launcher-Java"
 license=('GPL3')
-depends=('java-runtime=8' 'java8-openjfx')
+depends=('java-runtime=8')
 provides=("${pkgname%-bin}")
 
 source=("$pkgname-$pkgver.jar::https://github.com/Moresteck/BetaCraft-Launcher-Java/releases/download/$pkgver/launcher-$pkgver.jar"

@@ -6,7 +6,6 @@ pkgbase = betacraft-launcher-bin
 	arch = x86_64
 	license = GPL3
 	depends = java-runtime=8
-	depends = java8-openjfx
 	provides = betacraft-launcher
 	source = betacraft-launcher-bin-1.09_15.jar::https://github.com/Moresteck/BetaCraft-Launcher-Java/releases/download/1.09_15/launcher-1.09_15.jar
 	source = betacraft-launcher
