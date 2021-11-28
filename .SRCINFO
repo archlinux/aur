@@ -1,6 +1,6 @@
 pkgbase = libecbor
 	pkgdesc = CBOR library for desktop and embedded applications
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/rimio/libecbor
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = libecbor
 	makedepends = cmake
 	makedepends = gcc
 	options = staticlibs
-	source = https://github.com/rimio/libecbor/archive/v1.0.0.tar.gz
-	md5sums = 01b64576ff7738c9a804c9504c14329d
+	source = https://github.com/rimio/libecbor/archive/v1.0.1.tar.gz
+	md5sums = 1b851865ee934362cae9c03578810db7
 
 pkgname = libecbor
-

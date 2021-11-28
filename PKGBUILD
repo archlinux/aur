@@ -1,6 +1,6 @@
 # Maintainer: Vasile Vilvoiu <vasi.vilvoiu@gmail.com>
 pkgname=libecbor
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CBOR library for desktop and embedded applications"
 arch=('x86_64')
@@ -14,7 +14,26 @@ backup=()
 options=(staticlibs)
 source=("https://github.com/rimio/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=("01b64576ff7738c9a804c9504c14329d")
+md5sums=("1b851865ee934362cae9c03578810db7")
+
+prepare() {
+    PATCH="
+--- a/src/ecbor-describe/ecbor_describe.c
++++ b/src/ecbor-describe/ecbor_describe.c
+@@ -62,7 +62,7 @@ print_ecbor_item (ecbor_item_t *item, unsigned int level, char *prefix)
+   unsigned int i;
+ 
+   for(i = 0; i < level * 2; i ++) putchar(' ');
+-  printf (prefix);
++  printf (\"%s\", prefix);
+ 
+   mt = ecbor_get_type (item);
+   switch (mt) {
+   "
+
+    cd "$pkgname-$pkgver"
+    echo "${PATCH}" | patch --forward --strip=1
+}
 
 build() {
 	cd "$pkgname-$pkgver"
