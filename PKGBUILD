@@ -1,6 +1,6 @@
 # Maintainer: Abdur Rehman Imran <arehmanimran4@gmail.com>
 pkgname=uconv
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A CLI Unit Converter written in Rust."
 arch=('any')
