@@ -1,0 +1,19 @@
+pkgbase = libzstd-seek-git
+	pkgdesc = A library that mimic fread, fseek and ftell for reading zstd compressed files.
+	pkgver = r18.0d073ce
+	pkgrel = 1
+	url = https://github.com/martinellimarco/libzstd-seek
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = zstd
+	provides = libzstd-seek
+	options = staticlibs
+	source = git+https://github.com/martinellimarco/libzstd-seek.git
+	sha384sums = SKIP
+
+pkgname = libzstd-seek-git
