@@ -23,7 +23,7 @@ sha256sums=('23acbee197eaaec9bce6e6bfd885bd8f79708332639243ff04833020865713cd'
 validpgpkeys=('206D3B352F566F3B0E6572E997D9123DE37A484F') # Victor Toso de Carvalho <me@victortoso.com>
 
 build() {
-  arch-meson $pkgname-$pkgver build -D celt051=disabled
+  arch-meson $pkgname-$pkgver build
   ninja -C build
 }
 
@@ -47,7 +47,7 @@ sha256sums+=('3f5129e56b5816d5e5ce0a3cc2e875cc175f1be88eed6495cc1b85b1068bcf4a')
 
 _pkgname=$pkgname
 pkgname+="-extra-mouse-buttons"
-pkgrel="$pkgrel.2"
+pkgrel="$pkgrel.3"
 pkgdesc+=" (with support for extra mouse buttons)"
 eval "$(declare -f build | sed 's/$pkgname/$_pkgname/g')"
 
