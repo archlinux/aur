@@ -1,0 +1,22 @@
+
+# HG changeset patch
+# User fweimer
+# Date 1573592408 0
+# Node ID d6d8fdc95ed252fbce6080b93e52fbf61b54e30b
+# Parent  1251d78fafbf9ab67937b450ea31a93fcbc121e7
+8233880: Support compilers with multi-digit major version numbers
+Reviewed-by: tbell
+
+diff -r 1251d78fafbf -r d6d8fdc95ed2 make/autoconf/toolchain.m4
+--- a/make/autoconf/toolchain.m4	Tue Nov 12 20:14:49 2019 +0000
++++ b/make/autoconf/toolchain.m4	Tue Nov 12 21:00:08 2019 +0000
+@@ -481,7 +481,7 @@
+     COMPILER_VERSION_STRING=`$ECHO $COMPILER_VERSION_OUTPUT | \
+         $SED -e 's/ *Copyright .*//'`
+     COMPILER_VERSION_NUMBER=`$ECHO $COMPILER_VERSION_OUTPUT | \
+-        $SED -e 's/^.* \(@<:@1-9@:>@\.@<:@0-9.@:>@*\)@<:@^0-9.@:>@.*$/\1/'`
++        $SED -e 's/^.* \(@<:@1-9@:>@<:@0-9@:>@*\.@<:@0-9.@:>@*\)@<:@^0-9.@:>@.*$/\1/'`
+   elif test  "x$TOOLCHAIN_TYPE" = xclang; then
+     # clang --version output typically looks like
+     #    Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java 12 Shell
+Comment=OpenJDK Java 12 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-12-openjdk/bin/jshell
+Terminal=true
+Type=Application
+Icon=java12-openjdk
+Categories=Application;System;

@@ -1,0 +1,39 @@
+diff -Naur jdk12u-jdk-12.0.2+10.orig/src/jdk.sctp/unix/native/libsctp/Sctp.h jdk12u-jdk-12.0.2+10/src/jdk.sctp/unix/native/libsctp/Sctp.h
+--- jdk12u-jdk-12.0.2+10.orig/src/jdk.sctp/unix/native/libsctp/Sctp.h	2019-07-16 18:38:28.000000000 +0200
++++ jdk12u-jdk-12.0.2+10/src/jdk.sctp/unix/native/libsctp/Sctp.h	2021-11-28 17:16:57.454740208 +0100
+@@ -322,12 +322,12 @@
+ 
+ #endif /* __linux__ */
+ 
+-sctp_getladdrs_func* nio_sctp_getladdrs;
+-sctp_freeladdrs_func* nio_sctp_freeladdrs;
+-sctp_getpaddrs_func* nio_sctp_getpaddrs;
+-sctp_freepaddrs_func* nio_sctp_freepaddrs;
+-sctp_bindx_func* nio_sctp_bindx;
+-sctp_peeloff_func* nio_sctp_peeloff;
++extern sctp_getladdrs_func* nio_sctp_getladdrs;
++extern sctp_freeladdrs_func* nio_sctp_freeladdrs;
++extern sctp_getpaddrs_func* nio_sctp_getpaddrs;
++extern sctp_freepaddrs_func* nio_sctp_freepaddrs;
++extern sctp_bindx_func* nio_sctp_bindx;
++extern sctp_peeloff_func* nio_sctp_peeloff;
+ 
+ jboolean loadSocketExtensionFuncs(JNIEnv* env);
+ 
+diff -Naur jdk12u-jdk-12.0.2+10.orig/src/jdk.sctp/unix/native/libsctp/SctpNet.c jdk12u-jdk-12.0.2+10/src/jdk.sctp/unix/native/libsctp/SctpNet.c
+--- jdk12u-jdk-12.0.2+10.orig/src/jdk.sctp/unix/native/libsctp/SctpNet.c	2019-07-16 18:38:28.000000000 +0200
++++ jdk12u-jdk-12.0.2+10/src/jdk.sctp/unix/native/libsctp/SctpNet.c	2021-11-28 17:17:28.778497579 +0100
+@@ -43,6 +43,13 @@
+ static const char* nativeSctpLib = "libsctp.so.1";
+ static jboolean funcsLoaded = JNI_FALSE;
+ 
++sctp_getladdrs_func* nio_sctp_getladdrs;
++sctp_freeladdrs_func* nio_sctp_freeladdrs;
++sctp_getpaddrs_func* nio_sctp_getpaddrs;
++sctp_freepaddrs_func* nio_sctp_freepaddrs;
++sctp_bindx_func* nio_sctp_bindx;
++sctp_peeloff_func* nio_sctp_peeloff;
++
+ JNIEXPORT jint JNICALL DEF_JNI_OnLoad
+   (JavaVM *vm, void *reserved) {
+     return JNI_VERSION_1_2;
