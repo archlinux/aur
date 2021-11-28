@@ -1,6 +1,6 @@
 # Maintainer: 
 pkgname=eprosima-fast-dds-gen
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Fast-DDS IDL code generator tool"
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-    '7410cfed376b05ceceb84aef2d8cc2c96460a57c1e04bea12f68eaa2dfc6c64f'
+    'a75399160aab20490a64a4e936230f446441a2717c756e478bbd83822fcb97a2'
     '1c28d12e863a798fa869e0cfa001e8158d9650e81f4336f73c317d77423a0701'
 )
 
