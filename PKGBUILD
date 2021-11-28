@@ -79,7 +79,7 @@ prepare(){
 
   # https://github.com/CadQuery/pywrap/issues/41
   cd pywrap
-  curl -q https://patch-diff.githubusercontent.com/raw/CadQuery/pywrap/pull/43.patch | patch -p1
+  #curl -q https://patch-diff.githubusercontent.com/raw/CadQuery/pywrap/pull/43.patch | patch -p1
 }
 
 build() {
