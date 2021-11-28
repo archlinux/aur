@@ -2,7 +2,7 @@
 # The default configuration installs the MuPDF version with Qt 5 and without debug options.
 _renderer=mupdf
 pkgname=beamerpresenter-git
-pkgver=0.2.1_550.362674a
+pkgver=0.2.1_560.d1028dc
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
