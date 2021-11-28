@@ -5,7 +5,7 @@
 
 _gemname="sprockets-rails"
 pkgname="ruby-${_gemname}"
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Sprockets Rails integration'
 arch=('any')
@@ -14,8 +14,8 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activesupport' 'ruby-sprockets')
 checkdepends=('ruby-bundler' 'ruby-rails' 'ruby-rake')
-source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('38ebadc351b807382be05e6e070f572a32b96a9b19572fff46eac3cf89574aa27c1ca1ae4419b626e3024cc79684423380e051c69d86dbec73284c50c1d1729c')
+source=("${url}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha512sums=('3c0f1d85e67365cd75504737127f0855093107734ceaa6e614735c11828b40bc7d341609aa3d743f8266bce1a61b68cac713b1742bef523085bba1906a6b685e')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
