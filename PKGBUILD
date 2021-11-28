@@ -3,14 +3,14 @@ pkgname=goverlay-bin
 _id="io.github.benjamimgois.${pkgname%-bin}"
 _pkgver=0_6_4
 pkgver=${_pkgver//_/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL3')
 depends=('mangohud' 'qt5pas')
 optdepends=('vkbasalt: Configure vkBasalt'
-            'mesa-demos: OpenGL preview'
+            'mesa-utils: OpenGL preview'
             'vulkan-tools: Vulkan preview'
             'git: Clone reshade repository'
             'replay-sorcery: Instant replay solution')
