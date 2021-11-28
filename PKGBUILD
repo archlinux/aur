@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Krebs <sebastian[at]krebs.one>
 
 pkgname=prometheus-process-exporter
-pkgver=0.7.7
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="Prometheus exporter that mines /proc to report on selected processes"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("https://github.com/ncabatoff/process-exporter/archive/v${pkgver}.tar.gz")
-sha256sums=('fd3e2a13f8e5cc4d3bfd25c45441d7f7ac83edb7481fab2026c4f027e0699d7c')
+sha256sums=('197a950879f90d36e3979ab412c60ec35eec5942451a0105e070a670474d730a')
 
 prepare() {
   cd "${srcdir}/process-exporter-${pkgver}"
