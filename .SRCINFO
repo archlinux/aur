@@ -1,7 +1,7 @@
 pkgbase = ruby2.6
 	pkgdesc = An object-oriented language for quick and easy programming (version 2.6)
-	pkgver = 2.6.5
-	pkgrel = 1
+	pkgver = 2.6.8
+	pkgrel = 2
 	url = http://www.ruby-lang.org/en/
 	arch = x86_64
 	license = BSD
@@ -22,8 +22,7 @@ pkgbase = ruby2.6
 	depends = zlib
 	optdepends = tk: for Ruby/TK
 	options = !emptydirs
-	source = https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.xz
-	sha512sums = e8ae3b5d4d23a93d0ef6057235ad0e573665a8b4b6544e1c70b4cce9c4d2fb9094e5c8fe8a9ab7b9996efe3ada603f9b4ef1fd08fb5a83253c1ae2b5e3f202db
+	source = https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.8.tar.xz
+	sha512sums = d040ad2238523587d8f356fcb796b8b6ad7f8caff7dd6df09e3f7efcbfa0369e33600e78c7f2bc713ae77c040757cce5c4fec223cb9070209f2bf741899c556d
 
 pkgname = ruby2.6
-
