@@ -1,0 +1,15 @@
+pkgbase = v2csub-git
+	pkgdesc = Subscriber for v2ray-core
+	pkgver = 20211127
+	pkgrel = 1
+	url = https://github.com/yanwh0311/v2csub
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = curl
+	depends = coreutils
+	depends = v2ray-rules-dat-git
+	optdepends = v2ray: connecting support
+
+pkgname = v2csub-git
