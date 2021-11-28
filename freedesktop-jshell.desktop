@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java 15 Shell
+Comment=OpenJDK Java 15 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-15-openjdk/bin/jshell
+Terminal=true
+Type=Application
+Icon=java15-openjdk
+Categories=Application;System;
