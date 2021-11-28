@@ -6,7 +6,7 @@
 # Maintainer: Your Name <hritwiksinghal@pm.me>
 pkgname=bing-wall
 pkgver=2.0
-pkgrel=0.2
+pkgrel=0.3
 # epoch=
 pkgdesc="Bing wallpaper of the day application for Gnome desktop"
 arch=('x86_64' 'i686')
