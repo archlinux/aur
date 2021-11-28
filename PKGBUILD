@@ -1,6 +1,6 @@
 # Maintainer: Luis Batalha <lfrb25 at gmail dot com>
 
-commit_hash=30f8a39ec8ca609d33d401d0b6d94290f3bc05a6
+commit_hash=f0a38c19e5d0fe6e5bf0fdd783aa805520586eae
 source_dir='qoi'
 
 pkgname=(qoi-headers-git
@@ -8,7 +8,7 @@ pkgname=(qoi-headers-git
          qoibench-git
         )
 pkgbase=qoi-git
-pkgver=r7.30f8a39
+pkgver=r21.f0a38c1
 pkgrel=1
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
@@ -40,15 +40,18 @@ build() {
 
 package_qoi-headers-git() {
   provides=('qoi-headers')
+  pkgdesc+=" - headers"
   install -Dm644 $source_dir/qoi.h $pkgdir/usr/include/qoi.h
 }
 package_qoiconv-git() {
   provides=('qoiconv')
+  pkgdesc+=" - PNG<>QOI conversion utility" 
   install -Dm755 $source_dir/qoiconv "$pkgdir"/usr/bin/qoiconv
 }
 
 package_qoibench-git() {
   provides=('qoibench')
+  pkgdesc+=" - Benchmark qoi against various png libraries" 
   depends=('libpng')
   install -Dm755 $source_dir/qoibench "$pkgdir"/usr/bin/qoibench
 }
