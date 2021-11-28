@@ -1,10 +1,9 @@
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='An alternative Discord client made with C++/gtkmm'
 url='https://github.com/uowuo/abaddon'
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz")
 source=("git+https://github.com/uowuo/abaddon#tag=v$pkgver")
 arch=('x86_64')
 license=('GPL3')
@@ -29,8 +28,10 @@ build () {
 package() {
   install -Dm755 build/abaddon "$pkgdir"/opt/abaddon/abaddon
 
-  install -Dm644 "$pkgname"/css/* -t "$pkgdir"/opt/abaddon/css
-  install -Dm644 "$pkgname"/res/* -t "$pkgdir"/opt/abaddon/res
+  install -Dm644 "$pkgname"/res/css/* -t "$pkgdir"/opt/abaddon/css
+  install -Dm644 "$pkgname"/res/res/* -t "$pkgdir"/opt/abaddon/res
+  install -d "$pkgdir"/opt/abaddon/fonts
+  cp -r "$pkgname"/res/fonts/* "$pkgdir"/opt/abaddon/fonts/
 
   install -Dm666 /dev/null "$pkgdir"/opt/abaddon/abaddon.ini
 
