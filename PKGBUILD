@@ -1,7 +1,7 @@
 # Maintainer: trap000d <trap000d at gmail dot com>
 
 pkgname=gridwars-git
-pkgver=r14.7249699
+pkgver=r13.e760698
 pkgrel=2
 pkgdesc="Grid Wars 2: A clone of Geometry Wars"
 _bmver="0.129.3.45"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('libglvnd' 'libxdmcp' 'libxxf86vm' 'libxau' 'libxft' 'libx11' 'glu')
 makedepends=('git')
 source=("https://github.com/bmx-ng/bmx-ng/releases/download/v${_bmver}.linux.x64/BlitzMax_linux_x64_0.129.3.45.tar.xz"
-        "git+https://github.com/trap000d/GridWars.git"
+        "git+https://github.com/mmatyas/GridWars.git"
         "gridwars.desktop")
 sha256sums=('635108f2b93d654934ae2baf15698082e2f21f070d6872da8e42bb9d4e331447'
             'SKIP'
