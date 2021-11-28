@@ -2,3 +2,6 @@
 !/.gitignore
 !/PKGBUILD
 !/.SRCINFO
+!/syngestures-switch-ws
+!/syngestures.desktop
+!/syngestures.toml

@@ -1,0 +1,37 @@
+# Syngestures configuration file, version 1
+
+# This file should be placed in any of the following paths.
+# * $PREFIX/syngestures.toml (for global configuration)
+# * $PREFIX/syngestures.d/*.toml (for gloabl configuration, separate file per device)
+# * $XDG_CONFIG_HOME/syngestures.toml (for per-user configuration)
+# * $XDG_CONFIG_HOME/syngestures.d/*.toml (for per-user configuration, separate file per device)
+#
+# If $XDG_CONFIG_HOME is not set, $HOME/.config/ is used in its place.
+
+[[device]]
+device = "/dev/input/by-path/pci-0000:00:17.0-platform-i2c_designware.4-event-mouse"
+gestures = [
+	# Emulate right-click. Don't use this if two-finger tap to right-click already works
+	# { type = "tap", fingers = 2, execute = "xdotool click 3" },
+
+	# Emulate middle-click. Don't use this if three-finger tap to middle-click already works
+	# { type = "tap", fingers = 3, execute = "xdotool click 2" },
+
+	# Previous desktop/workspace
+	{ type = "swipe", direction = "right", fingers = 3, execute = "syngestures-switch-ws prev" },
+
+	# Next desktop/workspace
+	{ type = "swipe", direction = "left", fingers = 3, execute = "syngestures-switch-ws next" },
+
+	# Next desktop/workspace
+	{ type = "swipe", direction = "right", fingers = 4, execute = "xdotool key Super_L+Right" },
+
+	# Previous desktop/workspace
+	{ type = "swipe", direction = "left", fingers = 4, execute = "xdotool key Super_L+Left" },
+
+	# Enter/leave multi-tasking view
+	{ type = "swipe", direction = "up", fingers = 3, execute = "xdotool key Super_L" },
+
+	# Show desktop
+	{ type = "swipe", direction = "down", fingers = 3, execute = "xdotool key Super_L+d" },
+]

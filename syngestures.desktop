@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Syngestures
+Exec=/usr/bin/syngestures
+Icon=libinput-gestures
+Comment=Swipes and gestures for Linux with the MT multitouch protocol
+Categories=System;
