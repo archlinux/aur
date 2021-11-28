@@ -9,7 +9,7 @@ pkgdesc='Inverts brightness of web pages and aims to reduce eyestrain while brow
 url=https://darkreader.org/
 arch=('any')
 license=('MIT')
-makedepends=('npm')
+makedepends=('npm' 'strip-nondeterminism')
 source=("https://github.com/darkreader/darkreader/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('2987b3e7ebd4e0a69244e1652f63ea09ad4ebea4c152841bdb2efdd069563ebdd31a04b0dd6f1fd230512d6c44a2b149164c97c09feab1f80264ac5221fbf110')
 
