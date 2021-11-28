@@ -1,6 +1,6 @@
 pkgbase = asus-touchpad-numpad-driver
 	pkgdesc = asus touchpad numpad toggler
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = asus-touchpad-numpad-driver
 	depends = i2c-tools
 	depends = git
 	provides = asus-touchpad-numpad-driver
-	noextract = https://github.com/OppaiWeeb/asus-touchpad-numpad-driver/releases/download/2.0/asus-touchpad-numpad-driver.zip
-	source = https://github.com/OppaiWeeb/asus-touchpad-numpad-driver/releases/download/2.0/asus-touchpad-numpad-driver.zip
+	noextract = https://github.com/OppaiWeeb/asus-touchpad-numpad-driver/releases/download/3.0/asus-touchpad-numpad-driver.zip
+	source = https://github.com/OppaiWeeb/asus-touchpad-numpad-driver/releases/download/3.0/asus-touchpad-numpad-driver.zip
 	md5sums = SKIP
 
 pkgname = asus-touchpad-numpad-driver
