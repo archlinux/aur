@@ -1,18 +1,17 @@
-# Maintainer: EatMyVenom <eat.my.venom@gmail.com>
+# Maintainer: pongo1231 <pongo1999712@gmail.com>
+# Contributor: EatMyVenom <eat.my.venom@gmail.com>
 # Contributor: Radostin Stoyanov <rstoyanov1@gmail.com>
 
 pkgname=xz-static-git
-pkgver=5.3.1alpha.r.ga35a69d
+pkgver=5.3.2alpha.r.g2024fbf
 pkgrel=1
 pkgdesc='Statically linked tools for XZ or LZMA compressed files - git checkout'
 arch=('x86_64')
 url='http://tukaani.org/xz/'
 license=('GPL' 'LGPL' 'custom')
 depends=('sh')
+conflicts=('xz-static')
 makedepends=('git' 'po4a')
-provides=('lzma' 'lzma-utils' 'xz-utils' "xz=${pkgver%%.r*}")
-replaces=('lzma' 'lzma-utils' 'xz-utils')
-conflicts=('lzma' 'lzma-utils' 'xz-utils' 'xz')
 options=('staticlibs')
 source=('git+http://git.tukaani.org/xz.git')
 sha256sums=('SKIP')
@@ -36,8 +35,17 @@ build() {
 
 	./autogen.sh
 	./configure --prefix=/usr \
-		--disable-rpath 
-	make CFLAGS="-static"
+		--disable-rpath \
+		--enable-werror \
+        --disable-shared \
+        --disable-xz \
+        --disable-xzdec \
+        --disable-lzmadec \
+        --disable-lzmainfo \
+        --disable-scripts \
+        --disable-doc
+
+	make
 }
 
 check() {
@@ -48,8 +56,9 @@ check() {
 
 package() {
 	cd xz/
-	make DESTDIR=${pkgdir} install 
-	install -d -m0755 ${pkgdir}/usr/share/licenses/xz/
-	ln -s /usr/share/doc/xz/COPYING ${pkgdir}/usr/share/licenses/xz/
+
+	make DESTDIR=${pkgdir} install
+
+	rm -Rf ${pkgdir}/usr/{bin,include,share,lib/pkgconfig}
 }
 
