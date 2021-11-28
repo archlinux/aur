@@ -24,12 +24,7 @@ build() {
   strip-nondeterminism -t zip build/release/*.xpi
 }
 
-check() {
-  cd darkreader-$pkgver
-  npm test
-}
-
-librewolf-extension-dark-reader() {
+package() {
   groups=('librewolf-addons')
   cd darkreader-$pkgver
   install -Dm644 build-firefox.xpi \
