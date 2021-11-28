@@ -1,6 +1,6 @@
 pkgbase = boxedwine-git
 	pkgdesc = An emulator that runs 16-bit and 32-bit Windows applications
-	pkgver = 21.0.1.r31.g68d9f034
+	pkgver = 21.0.1.r36.ge2021c45
 	pkgrel = 1
 	url = http://www.boxedwine.org
 	arch = x86_64
