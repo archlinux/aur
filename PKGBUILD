@@ -24,8 +24,8 @@ sha256sums=('468539be0ea42a6f3464ea5f7e87e4bddf173d558e8a0a1a02873c8bbd49fa89'
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
 
-conflicts=(webkit2gtk)
-provides=(webkit2gtk)
+conflicts=(webkit2gtk-4.1)
+provides=(webkit2gtk-4.1)
 options=('!emptydirs')
 
 build() {
@@ -50,7 +50,7 @@ check() {
 
 package() {
   depends+=(libwpe-1.0.so libWPEBackend-fdo-1.0.so)
-  provides+=(libjavascriptcoregtk-4.0.so libwebkit2gtk-4.0.so)
+  provides+=(libjavascriptcoregtk-4.1.so libwebkit2gtk-4.1.so)
 
   DESTDIR="$pkgdir" cmake --install build
 
