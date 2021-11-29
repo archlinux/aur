@@ -1,7 +1,7 @@
 # Maintainer: nightuser <nightuser.android@gmail.com>
 
 pkgname=glib2-static
-pkgver=2.70.0
+pkgver=2.70.1
 pkgrel=1
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
@@ -12,13 +12,18 @@ makedepends=(gettext zlib libffi shared-mime-info python libelf git util-linux m
 checkdepends=(desktop-file-utils)
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz")
-sha256sums=('200d7df811c5ba634afbf109f14bb40ba7fde670e89389885da14e27c0840742')
+sha256sums=('f9b7bce7f51753a1f43853bbcaca8bf09e15e994268e29cfd7a76f65636263c0')
 
-prepare() {
-  cd "glib-$pkgver"
-}
+#prepare() {
+#  cd "glib-$pkgver"
+#}
 
 build() {
+  LTO=""
+  if check_option "lto" "n"; then
+    LTO="-Db_lto=false"
+  fi
+
   CFLAGS+=' -Wno-unused-result -Wno-stringop-overflow'
   arch-meson "glib-$pkgver" _build \
     --default-library static \
@@ -26,7 +31,7 @@ build() {
     -Dselinux=disabled \
     -Dman=false \
     -Dgtk_doc=false \
-    -Dinternal_pcre=false
+    $LTO
   ninja -C _build
 }
 
