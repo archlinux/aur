@@ -2,8 +2,8 @@
 # Contributor: tharazgul <tharazgul at gmx dot at>
 pkgname=darktable-cr3
 _gitname=darktable
-pkgver=3.6.0
-pkgrel=3
+pkgver=3.6.1
+pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers with CR3 support"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd $_gitname 
-  git checkout release-3.6.0
+  git checkout release-3.6.1
   git submodule init
   git submodule update
   cd src/external/rawspeed
