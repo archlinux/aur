@@ -1,17 +1,18 @@
 # Maintainer: Nathaniel R. Lewis <linux.robotdude@gmail.com>
+# Contributor: Chloe Brown <chloe dot brown dot 00 at outlook dot com>
 
 _pkgbase='herdtools7'
 pkgname=('herdtools7-git')
 provides=('herdtools7')
 conflicts=('herdtools7')
-pkgver=r744.6192a9b
+pkgver=7.52.r1322.g650450b6
 pkgrel=1
 pkgdesc="The Herd toolsuite to deal with .cat memory models"
 arch=('i686' 'x86_64')
 url='https://github.com/herd/herdtools7'
 license=('CeCILL-B')
 depends=('ocaml')
-makedepends=('git' 'make' 'ocamlbuild')
+makedepends=('git' 'make' 'dune' 'ocaml-menhir')
 source=('git://github.com/herd/herdtools7')
 sha256sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = herdtools7-git
 	pkgdesc = The Herd toolsuite to deal with .cat memory models
-	pkgver = r744.6192a9b
+	pkgver = 7.52.r1322.g650450b6
 	pkgrel = 1
 	url = https://github.com/herd/herdtools7
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = herdtools7-git
 	license = CeCILL-B
 	makedepends = git
 	makedepends = make
-	makedepends = ocamlbuild
+	makedepends = dune
+	makedepends = ocaml-menhir
 	depends = ocaml
 	provides = herdtools7
 	conflicts = herdtools7
@@ -16,4 +17,3 @@ pkgbase = herdtools7-git
 	sha256sums = SKIP
 
 pkgname = herdtools7-git
-
