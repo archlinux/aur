@@ -65,7 +65,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=5.15.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -92,6 +92,7 @@ source=(
   0005-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
   0006-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
   0007-lg-laptop-Recognize-more-models.patch
+  0008-scsi-sd-Fix-sd_do_mode_sense-buffer-length-handling.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -108,7 +109,8 @@ b2sums=('2921b549a44ff4202ab96d35d6b7ce99bef914db5c1dba066fb7c4b146ef987d1aed53d
         '640d8a6ff7394d2cab6ac949ce73cb14696165897f9c453a8cfafa93a071f3cbcdd5db90c0e6e35ec4f33276912034f1232bdb419029746d78c351dc2120eab8'
         'ff0599fb11714b2a1399a7c9b568e688472a8ed646c8a2eacfe78593cc4beae4d0675151d0a7742b15d6dbf815ce6a99678fca5da69defedee1416aadee6773d'
         '87eb24ff13fa79660383749e6fb7f5aaaf42c725877f839d7c8be087c1692ac66ed2f3c66b1c779c9b8d823c798fd732eb4dcba091fd0ddce65de11c5eef07a2'
-        'c842942c45c0fa816b9e5e6a4893a61986126fddb94c02854640f136d06ac20abc0fcc65b0f7196cc5a647fc075f343ad7da54fa541b46d75f00fac07b0063d1')
+        'c842942c45c0fa816b9e5e6a4893a61986126fddb94c02854640f136d06ac20abc0fcc65b0f7196cc5a647fc075f343ad7da54fa541b46d75f00fac07b0063d1'
+        '0876ef25a850e218948d2f595732c51714b04dbc88a14fc1c599034eb2c4d742f171ff3fce1fcae628050f29aa48495c92a58471058649797fb1f1734cc5d7e0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

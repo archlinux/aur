@@ -1,0 +1,37 @@
+From c749301ebee82eb5e97dec14b6ab31a4aabe37a6 Mon Sep 17 00:00:00 2001
+From: Damien Le Moal <damien.lemoal@wdc.com>
+Date: Fri, 20 Aug 2021 16:02:55 +0900
+Subject: [PATCH] scsi: sd: Fix sd_do_mode_sense() buffer length handling
+
+For devices that explicitly asked for MODE SENSE(10) use, make sure that
+scsi_mode_sense() is called with a buffer of at least 8 bytes so that the
+sense header fits.
+
+Link: https://lore.kernel.org/r/20210820070255.682775-4-damien.lemoal@wdc.com
+Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+---
+ drivers/scsi/sd.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/scsi/sd.c b/drivers/scsi/sd.c
+index cbd9999f93a6..71fa70b42c2b 100644
+--- a/drivers/scsi/sd.c
++++ b/drivers/scsi/sd.c
+@@ -2604,6 +2604,13 @@ sd_do_mode_sense(struct scsi_disk *sdkp, int dbd, int modepage,
+ 		 unsigned char *buffer, int len, struct scsi_mode_data *data,
+ 		 struct scsi_sense_hdr *sshdr)
+ {
++	/*
++	 * If we must use MODE SENSE(10), make sure that the buffer length
++	 * is at least 8 bytes so that the mode sense header fits.
++	 */
++	if (sdkp->device->use_10_for_ms && len < 8)
++		len = 8;
++
+ 	return scsi_mode_sense(sdkp->device, dbd, modepage, buffer, len,
+ 			       SD_TIMEOUT, sdkp->max_retries, data,
+ 			       sshdr);
+-- 
+2.34.1
+
