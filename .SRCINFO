@@ -1,7 +1,7 @@
 pkgbase = audacity-git-bin
-	pkgdesc = GitHub releases version of the audio recording and processing software, Audacity, since Arch version is on 1.2
+	pkgdesc = Binary from GitHub Releases for the audio recording and processing software, Audacity, since Arch binary version is on 1.2 (via old audacity site) and audacity-git requires a lengthy building from source
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL2
 	makedepends = wget
