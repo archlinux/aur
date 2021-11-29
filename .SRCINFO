@@ -17,7 +17,8 @@ pkgbase = rare
 	depends = python-pypresence
 	optdepends = wine-staging: Run windows games
 	conflicts = legendary
-	source = rare-1.7.0.tar.gz::https://github.com/Dummerle/Rare/archive/refs/tags/1.7.0.tar.gz
+	conflicts = rare-git
+	source = rare-1.7.0::git+https://github.com/Dummerle/Rare#tag=1.7.0
 	sha256sums = SKIP
 
 pkgname = rare
