@@ -12,7 +12,7 @@ license=('GPL')
 conflicts=("${_modname}" "${_modname}-bin")
 provides=("${_modname}")
 depends=("${_appname}" 'python')
-source=("git+https://${_appname}.org/git/${_modname}.git")
+source=("git+https://git.${_appname}.org/${_modname}.git")
 sha256sums=('SKIP')
 
 pkgver() {

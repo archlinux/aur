@@ -10,7 +10,7 @@ pkgbase = gnunet-python-git
 	provides = gnunet-python
 	conflicts = gnunet-python
 	conflicts = gnunet-python-bin
-	source = git+https://gnunet.org/git/gnunet-python.git
+	source = git+https://git.gnunet.org/gnunet-python.git
 	sha256sums = SKIP
 
 pkgname = gnunet-python-git
