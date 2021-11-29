@@ -1,6 +1,6 @@
 pkgname=gnome-shell-extension-media-controls
-pkgver=17
-pkgrel=1
+pkgver=20
+pkgrel=2
 pkgdesc="A media indicator for the GNOME shell"
 arch=('any')
 url="https://github.com/cliffniff/media-controls"
