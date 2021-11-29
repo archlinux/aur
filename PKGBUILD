@@ -57,7 +57,7 @@ build() {
     runtime-link=shared \
     link=shared,static \
     toolset=gcc \
-    python=3.9 \
+    python=3.10 \
     cflags="$CPPFLAGS $CFLAGS -fPIC -O3" \
     cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3" \
     linkflags="$LDFLAGS" \
@@ -92,9 +92,9 @@ package_boost-libs() {
     libboost_json.so libboost_locale.so libboost_log.so libboost_log_setup.so
     libboost_math_c99.so libboost_math_c99f.so libboost_math_c99l.so
     libboost_math_tr1.so libboost_math_tr1f.so libboost_math_tr1l.so
-    libboost_mpi.so libboost_numpy39.so
+    libboost_mpi.so libboost_numpy310.so
     libboost_prg_exec_monitor.so libboost_program_options.so
-    libboost_python39.so libboost_random.so
+    libboost_python310.so libboost_random.so
     libboost_regex.so libboost_serialization.so
     libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
     libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
@@ -105,11 +105,11 @@ package_boost-libs() {
   cp -a fakeinstall/lib/*.so* "$pkgdir"/usr/lib/
 
   # https://github.com/boostorg/mpi/issues/112
-  install -d "$pkgdir"/usr/lib/python3.9/site-packages/boost
-  touch "$pkgdir"/usr/lib/python3.9/site-packages/boost/__init__.py
-  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"/usr/lib/python3.9/site-packages/boost
-  cp fakeinstall/lib/boost-python3.9/mpi.so \
-    "$pkgdir"/usr/lib/python3.9/site-packages/boost/mpi.so
+  install -d "$pkgdir"/usr/lib/python3.10/site-packages/boost
+  touch "$pkgdir"/usr/lib/python3.10/site-packages/boost/__init__.py
+  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"/usr/lib/python3.10/site-packages/boost
+  cp fakeinstall/lib/boost-python3.10/mpi.so \
+    "$pkgdir"/usr/lib/python3.10/site-packages/boost/mpi.so
 
   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
   for _lib in python numpy; do
