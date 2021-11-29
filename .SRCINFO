@@ -1,15 +1,14 @@
 pkgbase = python-pulsar
-	pkgdesc = Event driven concurrent framework using asyncio
-	pkgver = 1.4.0
+	pkgdesc = Event driven concurrent framework
+	pkgver = 2.0.2
 	pkgrel = 1
-	url = http://pythonhosted.org/pulsar/
+	url = https://github.com/quantmind/pulsar
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = cython
-	depends = python
-	source = pulsar-1.4.0.tar.gz::https://pypi.python.org/packages/02/b6/3f741760b7ef692f6a03cdf476715239a9c21ee12a692c58e58a7c6c2484/pulsar-1.4.0.tar.gz
-	md5sums = 5074e8c82765b263e86211d98febd79e
+	makedepends = python-wheel
+	depends = python-multidict
+	source = python-pulsar-2.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pulsar/pulsar-2.0.2.tar.gz
+	sha256sums = 8120782a4daaeaf9717f800d901895a8d131ecfef8f26f5141416b640f9e31d3
 
 pkgname = python-pulsar
-

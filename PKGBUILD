@@ -1,26 +1,27 @@
-# Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+
+## Cython compile does not work for some reason
 
 pkgname=python-pulsar
-_pkgname=pulsar
-pkgver=1.4.0
+pkgver=2.0.2
 pkgrel=1
-pkgdesc='Event driven concurrent framework using asyncio'
-arch=(any)
-url=http://pythonhosted.org/pulsar/
+pkgdesc='Event driven concurrent framework'
+arch=('any')
+url='https://github.com/quantmind/pulsar'
 license=('BSD')
-depends=(python)
-makedepends=(python-setuptools cython)
-source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.python.org/packages/02/b6/3f741760b7ef692f6a03cdf476715239a9c21ee12a692c58e58a7c6c2484/${_pkgname}-${pkgver}.tar.gz")
-md5sums=(5074e8c82765b263e86211d98febd79e)
+depends=('python-multidict')
+makedepends=('python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pulsar/pulsar-$pkgver.tar.gz")
+sha256sums=('8120782a4daaeaf9717f800d901895a8d131ecfef8f26f5141416b640f9e31d3')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  python setup.py build
+	cd "pulsar-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  python setup.py install --root=${pkgdir} --optimize=1
-  install -d -m 755 ${pkgdir}/usr/share/licenses/${pkgname}
-  install -D -m 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	cd "pulsar-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
