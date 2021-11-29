@@ -1,4 +1,4 @@
-# Maintainer:  Matt McDonald <gardotd426@gmail.com>
+# Maintainer:  gardotd426 <gardotd426@gmail.com>
 
 pkgname=regolith-full
 pkgver=1.6
