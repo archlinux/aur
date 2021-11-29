@@ -1,0 +1,22 @@
+pkgbase = deconz-dev
+	pkgdesc = A generic ZigBee monitoring and control tool
+	pkgver = 2.13.02
+	pkgrel = 1
+	url = https://www.dresden-elektronik.de
+	arch = x86_64
+	arch = aarch64
+	license = custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"
+	makedepends = xz
+	depends = hicolor-icon-theme
+	depends = libcap
+	depends = libpng
+	depends = qt5-base
+	depends = qt5-serialport
+	depends = qt5-websockets
+	depends = sqlite
+	source_x86_64 = deconz-dev-2.13.02-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/deconz-dev-2.13.02.deb
+	sha256sums_x86_64 = 38d19613462e618b3774d56f019f89d50beadc8d053d028fd84e85540a70fb37
+	source_aarch64 = deconz-dev_2.13.02-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/beta/deconz-dev_2.13.02-debian-buster-beta_arm64.deb
+	sha256sums_aarch64 = 1b41cd6c251d1c9754cddb5786ea069c17d6680ee35587c478260fb187bddf97
+
+pkgname = deconz-dev
