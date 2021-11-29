@@ -6,9 +6,9 @@ pkgver=20.10.11
 
 # must use commit sha as currently not tagged with 20.10+ versions
 _packaging_version=1c1cb918d8cf84f321bab7cb9739c221fe4f3ed7
-_buildx_version=v0.7.0
+_buildx_version=v0.7.1
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -34,7 +34,7 @@ source=(
 sha256sums=('dd6ff72df1edfd61ae55feaa4aadb88634161f0aa06dbaaf291d1be594099ff3'
             '595f3bcd61aaa01ece8f967e4f6c5cd1fe05c3de9736bf595b0a7c99ba7b9eaf'
             '2ad2cbebdba0a2e0bac17cdb71a81e317686f31d3f17c6bc13292a9ce322b544'
-            '52f38cd1508d2002525ba81f86adc9c34515e7c03c5e08f7e179d560cd1ad344'
+            '22fcb78c66905bf6ddf198118aaa9838b0349a25347606264be17e4276d6d5fc'
             'caf98bf39fb8621fb955476567a38b8a6b35bab2dccd8a29a16da23d4bb99450'
             'ed2ebb93d4bb3a30b5ad214d2ea5d467e714928d4fbf077e2a77dce758c0fa60'
             '3b1bd816a4a029ac048be7703a72a69ff44c531ead443d573e04f29d812594f1'
