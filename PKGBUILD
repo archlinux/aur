@@ -1,4 +1,5 @@
-# Maintainer: Spencer Muise <smuise@spencermuise.ca>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=calibre-web
 pkgver=0.6.14
