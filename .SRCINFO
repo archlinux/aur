@@ -1,6 +1,6 @@
 pkgbase = ttf-qurancomplex-fonts
 	pkgdesc = Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah
-	pkgver = 20211108
+	pkgver = 20211116
 	pkgrel = 1
 	url = http://fonts.qurancomplex.gov.sa
 	arch = any

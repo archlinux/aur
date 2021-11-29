@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 
 pkgname=ttf-qurancomplex-fonts
-pkgver=20211108
+pkgver=20211116
 pkgrel=1
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
