@@ -23,7 +23,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  # lookup path, i.e. "/usr/lib/python3.9"
+  # lookup path, i.e. "/usr/lib/python3.10"
   local python_stdlib_basepath="$(python -c "from sysconfig import get_path; print(get_path('stdlib'))")"
   # Hack entry points by installing it
   python setup.py install --root="${PWD}/tmp_install" --optimize=1
