@@ -1,6 +1,6 @@
 pkgbase = gnome-egpu-git
 	pkgdesc = eGPU switcher for GNOME using udev rules
-	pkgver = 0.1.0.9.g16617f5
+	pkgver = 0.1.0.11.g41b77bb
 	pkgrel = 1
 	url = https://github.com/dangreco/gnome-egpu
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = gnome-egpu-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	provides = lsd
 	conflicts = gnome-egpu
 	source = gnome-egpu::git+https://github.com/dangreco/gnome-egpu.git
 	sha256sums = SKIP

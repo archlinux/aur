@@ -2,7 +2,7 @@
 
 pkgname="gnome-egpu-git"
 _pkgname="gnome-egpu"
-pkgver=0.1.0.9.g16617f5
+pkgver=0.1.0.11.g41b77bb
 pkgrel=1
 pkgdesc="eGPU switcher for GNOME using udev rules"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=()
 optdepends=()
 makedepends=("rust" "cargo" "git")
-provides=("lsd")
+provides=()
 conflicts=("gnome-egpu")
 source=("$_pkgname::git+https://github.com/dangreco/gnome-egpu.git")
 sha256sums=("SKIP")
@@ -24,12 +24,12 @@ pkgver() {
 build() {
   cd $_pkgname
   export SHELL_COMPLETIONS_DIR="$PWD/completions"
-  cargo build --release --locked
+  cargo build --release
 }
 
 check() {
   cd $_pkgname
-  cargo test --release --locked
+  cargo test --release
 }
 
 package() {
