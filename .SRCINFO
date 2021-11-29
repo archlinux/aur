@@ -1,6 +1,6 @@
 pkgbase = worm-git
 	pkgdesc = A floating, tag-based window manager written in Nim
-	pkgver = 0.1.0.96.gdfe2f58
+	pkgver = 0.1.0.108.g815be87
 	pkgrel = 1
 	url = https://github.com/codic12/worm
 	install = worm.install

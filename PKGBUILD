@@ -4,7 +4,7 @@
 _pkgbase='worm'
 pkgname='worm-git'
 pkgdesc="A floating, tag-based window manager written in Nim"
-pkgver=0.1.0.96.gdfe2f58
+pkgver=0.1.0.108.g815be87
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/codic12/worm"
@@ -34,8 +34,8 @@ package() {
     install -D -m755 "wormc" "$pkgdir/usr/bin/wormc"
 
     # license
-    #install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 
     # X session file
-    #install -Dm644 "assets/worm.desktop" "$pkgdir/usr/share/xsessions/worm.desktop"
+    install -Dm644 "assets/worm.desktop" "$pkgdir/usr/share/xsessions/worm.desktop"
 }
