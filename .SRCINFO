@@ -1,6 +1,6 @@
 pkgbase = python-mimeutil
 	pkgdesc = High-level WSGI library based on flask
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/homeinfogmbh/mimeutil
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-mimeutil
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-magic-git
-	source = mimeutil::git+https://github.com/homeinfogmbh/mimeutil.git#tag=1.0.0
+	source = mimeutil::git+https://github.com/homeinfogmbh/mimeutil.git#tag=1.0.1
 	md5sums = SKIP
 
 pkgname = python-mimeutil

@@ -2,7 +2,7 @@
 
 _pkgbase='mimeutil'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='High-level WSGI library based on flask'
 arch=('any')
