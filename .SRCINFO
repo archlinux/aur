@@ -1,0 +1,14 @@
+pkgbase = localcdn-chromium-git
+	pkgdesc = A web browser extension that emulates CDNs to improve your online privacy.
+	pkgver = v2.6.19
+	pkgrel = 1
+	url = https://codeberg.org/nobody/LocalCDN.git
+	arch = any
+	license = MPL2
+	makedepends = git
+	provides = localcdn-chromium
+	conflicts = localcdn-chromium
+	source = localcdn-chromium::git+https://codeberg.org/nobody/LocalCDN.git#tag=v2.6.19
+	md5sums = SKIP
+
+pkgname = localcdn-chromium-git
