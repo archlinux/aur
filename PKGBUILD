@@ -14,7 +14,7 @@ md5sums=(220db5518e3f7fa06c980f057b22ba62)
 
 build() {
 	cd "gtksourceview-$pkgver/"
-	./configure
+	./configure --prefix=/usr
 	make
 }
 
