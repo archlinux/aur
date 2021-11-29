@@ -11,10 +11,10 @@ arch=('any')
 url="https://github.com/Tautulli/Tautulli"
 license=('GPL')
 makedepends=(
-  'python-setuptools'
   'curl'
 )
 depends=(
+  'python-setuptools'
   'python-pytz'
 )
 install='tautulli.install'
