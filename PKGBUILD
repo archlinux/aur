@@ -1,6 +1,6 @@
 pkgname=msvc-wine-git
 pkgver=16.11.7
-pkgrel=2
+pkgrel=3
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
 url='https://github.com/mstorsjo/msvc-wine'
@@ -55,5 +55,6 @@ package() {
 		mkdir -p "${pkgdir}/opt/msvc/cmake/find_root/${_arch}"
 		mv "${srcdir}/toolchain-${_arch}.cmake" "${pkgdir}/opt/msvc/cmake/toolchain-${_arch}.cmake"
 		mv "${srcdir}/msvc-${_arch}-cmake" "${pkgdir}/usr/bin/msvc-${_arch}-cmake"
+		chmod 755 "${pkgdir}/usr/bin/msvc-${_arch}-cmake"
 	done
 }
