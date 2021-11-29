@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd "$srcdir"/pysendfile-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.9" python test/test_sendfile.py
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.10" python test/test_sendfile.py
 }
 
 package() {
