@@ -1,14 +1,14 @@
 pkgbase = air
 	pkgdesc = Live reload for Go apps
-	pkgver = 1.27.7
+	pkgver = 1.27.8
 	pkgrel = 1
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = air-1.27.7.tar.gz::https://github.com/cosmtrek/air/archive/v1.27.7.tar.gz
-	sha512sums = e3f9142efc62fbd1fc37ee031d671a53dee59f6e69b6887e69a4db53e1a964503d2481fdf63f9943ecb7a7efeb604725b844b7a21c24fd390e3f43d88b13ffa6
-	b2sums = 5b85ced110aa77076b0d6ab09d5ad61882b6f36d05fe28ac7af8ab8cb9f8841a8573342f72146bf15e640c2a797761ba4307ab261fd2a99bc1a0934c8c674148
+	source = air-1.27.8.tar.gz::https://github.com/cosmtrek/air/archive/v1.27.8.tar.gz
+	sha512sums = 3a63da40296810b58e595ac3e543656bcc4ba4052be8f429050dacabb0bcdc40dc57200d138722b4733403e5c9ccafab712c0ffc2131fce9801654b0b2bbeb35
+	b2sums = fbedb7af3bfac93c37c294242e2f22da073656ce7f825da1a82b11a71c3ff8d050978d70a083c18b1cf81206c0ab5b687e020b742e126c1f4a6b22521f7910b9
 
 pkgname = air
