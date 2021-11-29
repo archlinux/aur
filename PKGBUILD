@@ -24,7 +24,7 @@ check() {
   cd alt-pytest-asyncio-release-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   # https://github.com/delfick/alt-pytest-asyncio/issues/5
-  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.9/site-packages:$PYTHONPATH" pytest \
+  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.10/site-packages:$PYTHONPATH" pytest \
     --deselect tests/test_examples.py::test_shows_correctly_for_failing_fixtures[example_timeouts] \
     --deselect tests/test_examples.py::test_shows_correctly_for_failing_fixtures[example_fixture_failures]
 }
