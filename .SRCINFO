@@ -1,6 +1,6 @@
 pkgbase = shortwave-git
 	pkgdesc = Find and listen to internet radio stations
-	pkgver = 2.0.1.r114.gf7c53c5
+	pkgver = 2.0.1.r147.gee10f63
 	pkgrel = 1
 	url = https://apps.gnome.org/app/de.haeckerfelix.Shortwave
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = shortwave-git
 	makedepends = meson
 	makedepends = wayland-protocols
 	depends = gst-plugins-bad
+	depends = gst-plugins-base
 	depends = gstreamer
 	depends = gtk4
 	depends = libadwaita
