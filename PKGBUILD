@@ -1,7 +1,7 @@
 # Maintainer: François-Xavier Payet <fx.payet@tfdn.org>
 pkgname=snapraid-btrfs-git
-pkgver=0.14.0
-pkgrel=3
+pkgver=0.14.1
+pkgrel=1
 pkgdesc="snapraid-btrfs is a script for using SnapRAID with data drives which are formatted with btrfs."
 arch=('any')
 url="https://github.com/automorphism88/snapraid-btrfs.git"
