@@ -4,7 +4,7 @@
 pkgbase=garuda-settings-manager-git
 pkgname=('garuda-settings-manager-git' 'garuda-settings-manager-kcm-git' 
          'garuda-settings-manager-notifier-git' 'garuda-settings-manager-knotifier-git')
-pkgver=r16.011593f
+pkgver=r28.f060956
 pkgrel=1
 pkgdesc="Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
 arch=('i686' 'x86_64')

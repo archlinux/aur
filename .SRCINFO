@@ -1,6 +1,6 @@
 pkgbase = garuda-settings-manager-git
 	pkgdesc = Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
-	pkgver = r16.011593f
+	pkgver = r28.f060956
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/garuda-settings-manager
 	arch = i686
@@ -56,4 +56,3 @@ pkgname = garuda-settings-manager-knotifier-git
 	provides = garuda-settings-manager-knotifier
 	conflicts = garuda-settings-manager-knotifier
 	replaces = garuda-settings-manager-knotifier
-
