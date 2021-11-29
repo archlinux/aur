@@ -2,7 +2,7 @@
 
 pkgname="lemons"
 pkgver="0.6.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="Output script for lemonbar"
 arch=("any")
 url="https://git.sr.ht/~rycwo/lemons"
@@ -19,7 +19,7 @@ depends=(
 	"iw")
 optdepends=("otf-san-francisco-mono: for a nice default font")
 source=("https://git.sr.ht/~rycwo/""$pkgname""/archive/""$pkgver"".tar.gz")
-sha256sums=('59cd16176a7c21eba5cbe16618d1d1e367404151f4dd92ee23217aaad2f96631')
+sha256sums=('bdbc5478ad44acc5d4d301152b5a427876cecafb57dd3de82ed13cd54059f82d')
 
 package() {
 	cd "$srcdir""/""$pkgname""-""$pkgver"

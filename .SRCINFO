@@ -1,7 +1,7 @@
 pkgbase = lemons
 	pkgdesc = Output script for lemonbar
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~rycwo/lemons
 	arch = any
 	license = custom:WTFPL
@@ -16,6 +16,6 @@ pkgbase = lemons
 	depends = iw
 	optdepends = otf-san-francisco-mono: for a nice default font
 	source = https://git.sr.ht/~rycwo/lemons/archive/0.6.0.tar.gz
-	sha256sums = 59cd16176a7c21eba5cbe16618d1d1e367404151f4dd92ee23217aaad2f96631
+	sha256sums = bdbc5478ad44acc5d4d301152b5a427876cecafb57dd3de82ed13cd54059f82d
 
 pkgname = lemons
