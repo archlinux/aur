@@ -4,7 +4,7 @@
 
 pkgname=idris2
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Funtional Programming Lanugage with Dependent Types"
 url="https://www.idris-lang.org/"
 license=('custom')
@@ -20,7 +20,7 @@ build() {
     cd "$srcdir/$_srcname"
 
     unset MAKEFLAGS # Parallel builds cause problems
-    export SCHEME=scheme
+    export SCHEME=chez
 
     mkdir -p "$srcdir/bootstrap"
     PREFIX="$srcdir/bootstrap" make bootstrap
@@ -37,7 +37,7 @@ package() {
     cd "$srcdir/$_srcname"
 
     unset MAKEFLAGS
-    export SCHEME=scheme
+    export SCHEME=chez
 
     # Install compiler and runtime
     PREFIX="$pkgdir/usr/lib" make install-idris2
