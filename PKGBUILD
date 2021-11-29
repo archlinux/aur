@@ -1,8 +1,8 @@
 # Maintainer: Rick van Lieshout <info@rickvanlieshout.com>
 
 pkgname=tidal-hifi-git
-pkgrel=2
-pkgver=2.3.0.r0.g8fea526
+pkgrel=1
+pkgver=2.4.0.r0.g5ef6074
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
