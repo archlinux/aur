@@ -1,4 +1,4 @@
-# Maintainer: Matt M <gardotd426@gmail.com>
+# Maintainer: gardotd426 <gardotd426@gmail.com>
 
 _pkgname=electronplayer
 pkgname=$_pkgname
