@@ -2,7 +2,7 @@
 
 pkgname='ttf-delugia-code'
 pkgver=2110.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cascadia Code + Nerd Fonts, with some small differences."
 arch=('any')
 url='https://github.com/adam7/delugia-code'

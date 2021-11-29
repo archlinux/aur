@@ -1,7 +1,7 @@
 pkgbase = ttf-delugia-code
 	pkgdesc = Cascadia Code + Nerd Fonts, with some small differences.
 	pkgver = 2110.31.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adam7/delugia-code
 	arch = any
 	license = MIT
