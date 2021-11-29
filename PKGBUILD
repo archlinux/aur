@@ -2,7 +2,7 @@
 
 pkgname=otf-manrope
 pkgver=4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Manrope font – modern geometric sans-serif"
 url="https://manropefont.com"
 # Git repository: https://github.com/sharanda/manrope
@@ -11,7 +11,7 @@ arch=("any")
 source=("https://manropefont.com/manrope.zip"
        "OFL.txt")
 sha256sums=('bf0ddf534df077c149c6c3af440a4f48e80e01b491f805b134b55da8081e425e'
-            'ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3')
+            'ce243fd4a62b1b76c959ffba6ec16a7a3146b2362d441ae4f9f7f32fc3750d6c')
 
 package() {
   install -d "${pkgdir}"/usr/share/fonts/OTF

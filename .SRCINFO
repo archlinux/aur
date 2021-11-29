@@ -1,14 +1,13 @@
 pkgbase = otf-manrope
 	pkgdesc = Manrope font – modern geometric sans-serif
 	pkgver = 4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://manropefont.com
 	arch = any
 	license = custom:OFL
 	source = https://manropefont.com/manrope.zip
 	source = OFL.txt
 	sha256sums = bf0ddf534df077c149c6c3af440a4f48e80e01b491f805b134b55da8081e425e
-	sha256sums = ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3
+	sha256sums = ce243fd4a62b1b76c959ffba6ec16a7a3146b2362d441ae4f9f7f32fc3750d6c
 
 pkgname = otf-manrope
-
