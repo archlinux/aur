@@ -1,7 +1,7 @@
 pkgbase = dataspell
 	pkgdesc = Python IDE for data scientists
 	pkgver = 213.5744.170
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/dataspell/
 	arch = x86_64
 	arch = i686
