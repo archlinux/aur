@@ -1,5 +1,5 @@
 pkgbase = xz-static-git
-	pkgdesc = Statically linked tools for XZ or LZMA compressed files - git checkout
+	pkgdesc = Statically linked tools for XZ or LZMA compressed files
 	pkgver = 5.3.2alpha.r.g2024fbf
 	pkgrel = 1
 	url = http://tukaani.org/xz/

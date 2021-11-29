@@ -5,7 +5,7 @@
 pkgname=xz-static-git
 pkgver=5.3.2alpha.r.g2024fbf
 pkgrel=1
-pkgdesc='Statically linked tools for XZ or LZMA compressed files - git checkout'
+pkgdesc='Statically linked tools for XZ or LZMA compressed files'
 arch=('x86_64')
 url='http://tukaani.org/xz/'
 license=('GPL' 'LGPL' 'custom')
