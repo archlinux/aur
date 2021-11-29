@@ -9,6 +9,7 @@ pkgbase = f3d-git
 	makedepends = git-lfs
 	makedepends = cmake
 	depends = vtk
+	depends = netcdf
 	depends = ospray
 	depends = opencascade
 	provides = f3d
