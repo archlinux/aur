@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-grenze-gotisch
-pkgver=1.001
+pkgver=1.002
 pkgrel=1
 pkgdesc='Peculiar version of Grenze from Omnibus-Type.'
 arch=('any')
@@ -17,15 +17,15 @@ source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.c
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-SemiBold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Thin.otf')
 sha256sums=('bca29af2c3c9e142d11f523f414902ab8fb9ab8ffa3c34c63b6b72aa4e7d6acc'
-            '16626b530fdb5e1a4e1030b7832d625729223ad08d88a500f6d18f4e531a6060'
-            'baf548f7e9030ac67e383b01ea8090bb19f8c4e09f5dcbfb6be1ae25f721e587'
-            'af8a12c9fcab8019b197b6c6bac76712021405d82320fd90bddd05f37bb5fcf8'
-            'f625301cd4e8e4adab07659ab9bb6f53716d9cc3b07867786be701f2e1d32417'
-            '0a5db0a015cc1c804083e630c8ca176e3e8d76de6faf964baac18dd90ad9a53b'
-            '4e2f21fdf9578f9f0982d1619d96923a370b782919d9afe367ffd19b8297edf8'
-            '805d89f53d634434cc8c9b97b49f55983f33f3e7a84fbabc9f59193e454f7900'
-            '1d4088afea223bc3860ca2e2ca08132278f3c347f66d57cd9cf81355939ede23'
-            '3b89a564925f1ee4835cd13c8c11e0fa5e0576133533fb4732698958f474650f')
+            '11e25db75a19ad845c2841d6149ee01728789714248bfc7fb67ea7a2281642bc'
+            'fb217962804b351c69670a8983849deb9bc518998e065b448414c647dff451a2'
+            '1a91a44b2aae46160de34e70e2ce31458940b19c5287167587f8297aaa9e3d23'
+            'e874490350e734a992ccb7f9d3113593cdf4318f3330bfbfd5131bc156b4e8eb'
+            '793a57cdba023078ffc530db656ab10445e45bc33ef793d26917cfa117ae6175'
+            'c8efb5de2ce383cbea3f1cd7d01f3f7cc91a2fdcb34a337c598e6958aed9ced2'
+            '63987280247b54d3659a35f425f52918ae9921b1de299a40f6962e8648045a57'
+            'eec66d5bd2478be33d35b80a79602c265701774175484c4e38493acbe7c10d1a'
+            'cd6d84f3fa03e54d3d868aeeffea1d53c97ec22b6963c842a14aabddcf867b24')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
