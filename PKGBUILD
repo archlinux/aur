@@ -1,7 +1,7 @@
 # Maintainer: Ayush Agarwal <ayush at fastmail dot in>
 
 pkgname=tessen
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="An interactive menu to autotype and copy password-store data"
 arch=(x86_64)
@@ -15,10 +15,11 @@ optdepends=('libnotify: to send notifications about copied data'
             'bemenu: wayland native dmenu backend'
             'rofi-lbonn-wayland-git: the wayland native fork of rofi'
             'wofi: unmaintained gtk based backend'
+            'pass-otp: to generate OTP'
             'xdg-utils: to open URLs in default web browser')
 conflicts=('tessen-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ayushnix/tessen/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1a182cd7b856311d95a1ad099c753ca2fce2c2bf1cfcb22113c849ac2f476ad3')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('53fb446d1f00b08ef3a08a90bc5c5031f4ecfdd198b3dda94bf16ba9e611351e')
 install=tessen.install
 
 package() {
