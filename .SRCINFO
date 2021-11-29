@@ -8,7 +8,7 @@ pkgbase = pje-office
 	license = custom
 	depends = java-runtime
 	depends = bash
-	source = pje-office-1.0.22.deb::https://cnj-pje-programs.s3-sa-east-1.amazonaws.com/pje-office/pje-office_amd64.deb
+	source = pje-office-1.0.24.deb::https://cnj-pje-programs.s3-sa-east-1.amazonaws.com/pje-office/pje-office_amd64.deb
 	md5sums = 9d2f1248567b8ab7b8184b08105d6165
 
 pkgname = pje-office
