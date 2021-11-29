@@ -1,11 +1,11 @@
 pkgbase = fonts-droid-fallback
 	pkgdesc = handheld device font with extensive style and language support (fallback) This package provides DroidSans Fallback variants, Fallback and FallbackFull.
-	pkgver = fallback_6.0.1r16
+	pkgver = 6.0.1r16
 	pkgrel = 1.1
-	url = http://ftp.de.debian.org/debian/pool/main/f/fonts-android/
+	url = http://deb.debian.org/debian/pool/main/f/fonts-android/
 	arch = any
 	license = GPL
-	source = https://mirrors.tuna.tsinghua.edu.cn/debian/pool/main/f/fonts-android/fonts-droid-fallback_6.0.1r16-1.1_all.deb
+	source = http://deb.debian.org/debian/pool/main/f/fonts-android/fonts-droid-fallback_6.0.1r16-1.1_all.deb
 	sha256sums = d2096d4edde128fedf6749be2dd204a5810210a6201126d99b8d412344f71056
 
 pkgname = fonts-droid-fallback

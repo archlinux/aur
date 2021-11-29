@@ -5,11 +5,11 @@
 
 # Maintainer: zzy-ac <zzy-ac@qq.com>
 pkgname=fonts-droid-fallback
-pkgver=fallback_6.0.1r16
+pkgver=6.0.1r16
 pkgrel=1.1
 pkgdesc="handheld device font with extensive style and language support (fallback) This package provides DroidSans Fallback variants, Fallback and FallbackFull."
 arch=(any)
-url="http://ftp.de.debian.org/debian/pool/main/f/fonts-android/"
+url="http://deb.debian.org/debian/pool/main/f/fonts-android/"
 license=('GPL')
 depends=()
 provides=()
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://mirrors.tuna.tsinghua.edu.cn/debian/pool/main/f/fonts-android/fonts-droid-fallback_6.0.1r16-1.1_all.deb")
+source=("http://deb.debian.org/debian/pool/main/f/fonts-android/fonts-droid-fallback_6.0.1r16-1.1_all.deb")
 noextract=()
 validpgpkeys=()
 
