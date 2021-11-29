@@ -1,6 +1,6 @@
 pkgbase = nordic-wallpapers
 	pkgdesc = A collection of wallpapers that go well with the rices inspired by the Nord Colorscheme.
-	pkgver = 20211121
+	pkgver = 20211128
 	pkgrel = 1
 	url = https://github.com/linuxdotexe/nordic-wallpapers
 	arch = any
