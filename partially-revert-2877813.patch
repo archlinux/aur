@@ -1,0 +1,24 @@
+From 919b023237f49b0184e3bc305121d43c10722ec2 Mon Sep 17 00:00:00 2001
+From: Eden Rose <3156202+EndlessEden@users.noreply.github.com>
+Date: Thu, 2 Jul 2020 22:10:19 +1000
+Subject: [PATCH] Partially revert 2877813 | Upstream issue #82
+
+As per upstream issue#82(https://github.com/solus-project/linux-steam-integration/issues/82), the specific change to explicit inclusion of libbz2.so.1.0.6, which is specific to Fedora. Is not availible on all linux flavors. In the specific case of ArchLinux, v1.0.8 is current. Symlinking from 1.0.6 > 1.0.8, does not work and is just silly.
+Given single-digit major-version numbers is used for the rest of the so-name's, and this commit breaks LSI on non-fedora OS's, treating this as a regression seems most effective.
+---
+ src/intercept/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/intercept/main.c b/src/intercept/main.c
+index 38407b2..da8c11f 100644
+--- a/src/intercept/main.c
++++ b/src/intercept/main.c
+@@ -324,7 +324,7 @@ static const char *vendor_transmute_target[] = {
+         "libcurl-gnutls.so.4",
+         "libcurl.so.4",
+ 
+-        "libbz2.so.1.0.6",
++        "libbz2.so.1",
+ 
+         "libudev.so.1",
+ };

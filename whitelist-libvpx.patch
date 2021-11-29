@@ -1,0 +1,21 @@
+From 5d275b9284a68b13e063adba758fe1e66e0fd9ce Mon Sep 17 00:00:00 2001
+From: Troy Harvey <harveydevel@gmail.com>
+Date: Fri, 30 Jul 2021 14:43:19 +1000
+Subject: [PATCH] whitelist libvpx.so
+
+---
+ src/intercept/main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/intercept/main.c b/src/intercept/main.c
+index 04a3c74..de2570a 100644
+--- a/src/intercept/main.c
++++ b/src/intercept/main.c
+@@ -59,6 +59,7 @@ static const char *steam_allowed[] = {
+         "libavutil.so.",
+         "libswscale.so.",
+         "libx264.so.",
++        "libvpx.so.",
+ 
+         /* core plugins */
+         "chromehtml.so",
