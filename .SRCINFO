@@ -17,9 +17,6 @@ pkgbase = harbour-amazfish-git
 	depends = nemo-qml-plugin-dbus
 	depends = kirigami2
 	provides = amazfish
-	conflicts = amazfish
-	conflicts = harbour-amazfish-git
-	conflicts = harbour-amazfish
 	source = git+https://github.com/piggz/harbour-amazfish
 	md5sums = SKIP
 
