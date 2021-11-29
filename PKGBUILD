@@ -2,8 +2,8 @@
 
 _pkgbase='peeweeplus'
 pkgname="python-${_pkgbase}"
-pkgver=1.16.5
-pkgrel=2
+pkgver=1.16.6
+pkgrel=1
 pkgdesc='Practical extension of a small, expressive ORM'
 arch=('any')
 url="https://github.com/homeinfogmbh/${_pkgbase}"
