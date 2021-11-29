@@ -3,7 +3,7 @@
 
 pkgname=f3d
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/${pkgname}-app/${pkgname}"
