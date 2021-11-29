@@ -50,7 +50,7 @@ package(){
     install -Dm644 ${_pkgname2}.desktop -t ${pkgdir}/usr/share/applications/
     
     # icons 
-    install -Dm644 opt/apps/${_pkgname2}/files/logo.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
+    install -Dm644 opt/apps/${_pkgname2}/files/logo.ico ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.ico
 
     # license
     install -Dm644 service-terms-zh ${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html
