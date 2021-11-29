@@ -13,8 +13,6 @@ pkgbase = python-wsgilib
 	depends = python-flask
 	depends = python-mimeutil
 	depends = python-werkzeug
-	provides = python-wsgilib
-	conflicts = python-wsgilib
 	source = wsgilib::git+https://github.com/homeinfogmbh/wsgilib.git#tag=1.0.3
 	md5sums = SKIP
 
