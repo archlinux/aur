@@ -4,7 +4,7 @@
 _name=pyinstrument
 
 pkgname=python-pyinstrument
-pkgver=4.0.3
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Call stack profiler for Python"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=('python-setuptools')
 # 	'python-myst-parser>=0.15.1'
 # 	'python-greenlet')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('08caf41d21ae8f24afe79c664a34af1ed1e17aa5d4441cd9b1dc15f87bbbac95')
+sha256sums=('1dc2791d2cd2fd3459cb55010004a5cc2a9a8b4625a0cbea45a4b1aebbe2c3a2')
 
 build() {
 	cd "$_name-$pkgver"
@@ -38,7 +38,7 @@ build() {
 
 package() {
 	cd "$_name-$pkgver"
-	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
