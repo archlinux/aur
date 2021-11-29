@@ -152,9 +152,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "HID-asus-Reduce-object-size-by-consolidating-calls.patch"
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
-        # cherry-picked iwlwifi patches
-        "iwlwifi-next-patches-through-2020-11-08-5.15.3.patch"
-
         # mediatek mt7921 bt/wifi patches
         "mt76-mt7921-Add-mt7922-support.patch"
         "1-2-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
@@ -190,7 +187,6 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
-            'b12a5bb789e4c854617ca3c7405fcc3121457ddb6564c8f758edfe4633cf24bd'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
             '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
