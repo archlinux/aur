@@ -1,6 +1,6 @@
 pkgbase = otf-japanese-radicals-font
 	pkgdesc = Japanese Radicals font
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/kanjialive/kanji-data-media/tree/master/radicals-font
 	install = otf-japanese-radicals-font.install
@@ -17,8 +17,7 @@ pkgbase = otf-japanese-radicals-font
 	md5sums = 67157e82d40f57ddf022d01bf9a69a7e
 	md5sums = 9cd42d8d727f67db43729dea68fabfaf
 	md5sums = 53e49f20ee48569fd6d86391c70460f9
-	md5sums = 81d60a39e8b582c9a37d34ae961360de
+	md5sums = d0216db18f4a8f7bfa0880571d132798
 	md5sums = a8cc38846db9cb8a0539c35854436dde
 
 pkgname = otf-japanese-radicals-font
-

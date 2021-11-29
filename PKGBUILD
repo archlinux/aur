@@ -1,9 +1,10 @@
 # Maintainor: android arch@johnea.net
 # Contributor : KanjiAlive
 # Created: 2016-05-16
-# Updated: source github url and docs 2019-10-21
+# Updated: 2019-10-21 1.0-1 source github url and docs
+# Updated: 2021-11-29 1.1-1 update md5sums for updated README.md
 pkgname=otf-japanese-radicals-font
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Japanese Radicals font"
 arch=('any')
@@ -19,7 +20,7 @@ source=(https://github.com/kanjialive/kanji-data-media/raw/master/radicals-font/
 md5sums=('67157e82d40f57ddf022d01bf9a69a7e'
          '9cd42d8d727f67db43729dea68fabfaf'
          '53e49f20ee48569fd6d86391c70460f9'
-         '81d60a39e8b582c9a37d34ae961360de'
+         'd0216db18f4a8f7bfa0880571d132798'
          'a8cc38846db9cb8a0539c35854436dde')
 
 package() {
