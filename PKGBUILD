@@ -1,9 +1,9 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=amdgpud
-pkgver=1.0.6
-_commit=75737de
-pkgrel=3
+pkgver=1.0.7
+_commit=7dcb6e0
+pkgrel=1
 pkgdesc="Fan control service for AMD GPUs"
 arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
@@ -13,7 +13,10 @@ makedepends=('cargo' 'git')
 backup=("etc/$pkgname/config.toml")
 source=("$pkgname::git+$url#commit=$_commit?signed")
 sha256sums=('SKIP')
-validpgpkeys=('0768AEEA335417256AEEA0910012845A89C7352B') ## Adrian Wozniak
+validpgpkeys=(
+	'0768AEEA335417256AEEA0910012845A89C7352B' ## Adrian Wozniak
+	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' ## GitHub
+)
 ## use command below to import public key
 ## curl https://github.com/eraden.gpg | gpg --import
 
