@@ -21,6 +21,11 @@ build() {
     make PREFIX="/usr"
 }
 
+check() {
+    cd $srcdir/$_pkgbase
+    make test
+}
+
 pkgver() {
     cd $srcdir/$_pkgbase
     ( set -o pipefail
