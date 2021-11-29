@@ -1,6 +1,6 @@
 pkgbase = ormolu
 	pkgdesc = A formatter for Haskell source code
-	pkgver = 0.3.1.0
+	pkgver = 0.4.0.0
 	pkgrel = 1
 	url = https://github.com/tweag/ormolu
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = ormolu
 	license = custom
 	makedepends = stack
 	depends = gmp
-	source = https://github.com/tweag/ormolu/archive/0.3.1.0.tar.gz
+	source = https://github.com/tweag/ormolu/archive/0.4.0.0.tar.gz
 	source = stack.yaml
-	sha256sums = b0bbf229f1878c39aa58dbb71d8cc4fbc4713252c7acbc0fd9921804fecbd273
-	sha256sums = 3b3c1499c535905e83e168052a1dec1b084829dc7832a9aaa3150aba251dae88
+	sha256sums = c87b2e09cef54aa7568b9bc990bb6ffd7b8dae3d8b950557fbe60ec286039353
+	sha256sums = 8b473464fa93da60396c74177d5a2fb7d9295686a89ed803b8a6650cdb8fb67d
 
 pkgname = ormolu
