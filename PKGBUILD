@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=125.1
+pkgver=126
 pkgrel=1
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
 arch=(x86_64 i686)
@@ -13,7 +13,7 @@ provides=(ares-emu)
 conflicts=(ares-emu)
 source=("https://github.com/higan-emu/ares/archive/refs/tags/v${pkgver}.tar.gz"
         "ares-paths.patch")
-sha256sums=("6d801d43fe4872db322d63e9446f2bc50530fed2a6a09fae1e0ad7a9622fd3dd"
+sha256sums=("7957b81ed82a0496630a9cd3a714bb8865b26405cf2f8d0f6b7a0cc4f517a1c2"
         "c58222c38315197a8a6b1635958dcd99f97056dbb82db93096e94c376f500376")
 
 prepare() {
