@@ -18,7 +18,7 @@ build() {
 
 check() {
   cd salsa20-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.9:$PYTHONPATH" python -m doctest -v README.rst
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.10:$PYTHONPATH" python -m doctest -v README.rst
 }
 
 package() {
