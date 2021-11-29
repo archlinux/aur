@@ -16,8 +16,10 @@ optdepends=('python2: Xspice server')
 makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'spice-protocol')
 provides=('xf86-video-qxl')
 conflicts=('xf86-video-qxl' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
-source=("git+https://gitlab.freedesktop.org/xorg/driver/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/xorg/driver/$_pkgname.git"
+       fix-build-against-current-x-server.diff)
+sha256sums=('SKIP'
+            a5e4292d3a6bc9641a8d4ec4d9eb92094ee3d20581c590051e878c8829b9a035)
 
 pkgver() {
     cd $_pkgname
@@ -26,7 +28,7 @@ pkgver() {
 
 prepare() {
     cd $_pkgname
-    sed -i '1c #!/usr/bin/python2' scripts/Xspice
+    patch -p1 < ../fix-build-against-current-x-server.diff
 }
 
 build() {

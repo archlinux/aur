@@ -25,6 +25,8 @@ pkgbase = xf86-video-qxl-git
 	conflicts = X-ABI-VIDEODRV_VERSION<23
 	conflicts = X-ABI-VIDEODRV_VERSION>=24
 	source = git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-qxl.git
+	source = fix-build-against-current-x-server.diff
 	sha256sums = SKIP
+	sha256sums = a5e4292d3a6bc9641a8d4ec4d9eb92094ee3d20581c590051e878c8829b9a035
 
 pkgname = xf86-video-qxl-git
