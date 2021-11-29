@@ -1,7 +1,7 @@
 pkgbase = tldr-cpp-git
 	pkgdesc = The all-in-one tldr client for users and contributors
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marchersimon/tldr-cpp.git
 	arch = x86_64
 	license = GPL3

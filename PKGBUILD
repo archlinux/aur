@@ -1,7 +1,7 @@
 # Maintainer: Simon Marcher <marchersimon@zohomail.eu>
 pkgname=tldr-cpp-git
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The all-in-one tldr client for users and contributors"
 arch=(x86_64)
 url="https://github.com/marchersimon/tldr-cpp.git"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd tldr-cpp
-  ( git tag | tail -n 1 ; echo "-" ; git rev-list $(git tag | tail -n 1)..HEAD --count ) | tr -d '\n' # returns the number of commits since the last tag
+  ( git tag | tail -n 1 ; echo "." ; git rev-list $(git tag | tail -n 1)..HEAD --count ) | tr -d '\n' # returns the number of commits since the last tag
 }
 
 build() {
