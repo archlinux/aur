@@ -5,7 +5,7 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live-git
 pkgdesc="Ledger Live - Desktop (Git version)"
-pkgver=2.29.0.r1.g1446fb88e
+pkgver=2.35.2.r0.gd383f73f8
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
