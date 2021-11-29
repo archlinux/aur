@@ -1,5 +1,5 @@
 pkgbase = freetube-wayland
-	pkgdesc = Like the freetube package, but with Ozone enabled when running on Wayland)
+	pkgdesc = Like the freetube package, but with Ozone enabled when running on Wayland
 	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://freetubeapp.io
