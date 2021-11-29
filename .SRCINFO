@@ -1,13 +1,13 @@
 pkgbase = earthly
 	pkgdesc = A build automation tool that executes in containers
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://earthly.dev/
 	arch = x86_64
 	license = custom: BSL1.1
 	makedepends = go
 	depends = docker
-	source = https://github.com/earthly/earthly/archive/v0.6.0/earthly-0.6.0.tar.gz
-	sha256sums = 5fcf254e3e88b99f4fb937e74dbb5c88b68c077b33c00f7c32bd773edc4a1bf2
+	source = https://github.com/earthly/earthly/archive/v0.6.1/earthly-0.6.1.tar.gz
+	sha256sums = d426e370e2ddaa5c5d0064cc52e1dc63a41b9107d3b252c6990672eca506b0cf
 
 pkgname = earthly
