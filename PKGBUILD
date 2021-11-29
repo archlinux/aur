@@ -2,7 +2,7 @@
 
 pkgname=youku
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="YouKu Video client"
 url="http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md"
 arch=('x86_64')

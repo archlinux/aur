@@ -1,7 +1,7 @@
 pkgbase = youku
 	pkgdesc = YouKu Video client
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md
 	arch = x86_64
 	license = GPL
