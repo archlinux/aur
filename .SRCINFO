@@ -1,6 +1,6 @@
 pkgbase = swarm-bee-clef-bin
 	pkgdesc = Go Ethereum's external signer
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://swarm.ethereum.org/
 	install = bee-clef.install
@@ -15,11 +15,11 @@ pkgbase = swarm-bee-clef-bin
 	replaces = bee-clef-bin
 	backup = etc/bee-clef/4byte.json
 	backup = etc/bee-clef/rules.js
-	source_x86_64 = https://github.com/ethersphere/bee-clef/releases/download/v0.5.0/bee-clef_0.5.0_amd64.deb
-	sha256sums_x86_64 = 59df79c5dc49992cd5f9f02265ac7a5f2480a9d7f1d89959abb2f5ad419872d0
-	source_armv7h = https://github.com/ethersphere/bee-clef/releases/download/v0.5.0/bee-clef_0.5.0_armv7.deb
-	sha256sums_armv7h = 844862550d19dcdbc5024dbc617689a1073284c2f4eaaf832b50ce57d7ae5726
-	source_aarch64 = https://github.com/ethersphere/bee-clef/releases/download/v0.5.0/bee-clef_0.5.0_arm64.deb
-	sha256sums_aarch64 = f8100d7c9f9767567fbe65a993ce0f175cc27862b72cad65de61ecf2f48a82db
+	source_x86_64 = https://github.com/ethersphere/bee-clef/releases/download/v0.6.0/bee-clef_0.6.0_amd64.deb
+	sha256sums_x86_64 = 573f5790c5ec408b4a151514d9791114d3247de517297aaea0825b68ed10b515
+	source_armv7h = https://github.com/ethersphere/bee-clef/releases/download/v0.6.0/bee-clef_0.6.0_armv7.deb
+	sha256sums_armv7h = a1fdc1492aea688370f2892a63f5cff73e0d3f7cbc3293c9237254e81da86b7b
+	source_aarch64 = https://github.com/ethersphere/bee-clef/releases/download/v0.6.0/bee-clef_0.6.0_arm64.deb
+	sha256sums_aarch64 = 6bf6b7cf15dc7312d25636593048ef0ce6b55b4fbb282d49c6ad00d14bf75f9e
 
 pkgname = swarm-bee-clef-bin

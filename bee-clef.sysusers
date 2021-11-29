@@ -1,0 +1,3 @@
+# vim: se ft=conf:
+u bee-clef - "Swarm Bee Clef user" /var/lib/bee-clef
+m bee bee-clef
