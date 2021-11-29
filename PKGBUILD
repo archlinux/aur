@@ -124,7 +124,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"Linux-5.15.4-rc1.patch"
 
         # Arch: misc hotfixes
-        "staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch"
         "PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
         "iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
         "cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
@@ -184,7 +183,6 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'd1b3e3aae70eae207d473214b33c088f646105fdbc52d8a7df71fbbdeede83b3'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            'ce50ee3c64f6865234f6ec79fcbd87704494b0fbb7d3cc124f97244c731f9e61'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
             '54f161457cc4de4ebd5770c16f14f7a47f1dbbc4f1af83dec651e6a8b1eaad56'
