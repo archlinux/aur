@@ -20,7 +20,7 @@ depends=(
 	'nemo-qml-plugin-dbus'
 	'kirigami2'
 )
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=('amazfish')
