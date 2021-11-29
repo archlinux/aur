@@ -1,11 +1,11 @@
 pkgbase = intel-compute-runtime-bin
 	pkgdesc = Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)
-	pkgver = 21.46.21636
+	pkgver = 21.47.21710
 	pkgrel = 1
 	url = https://github.com/intel/compute-runtime/
 	arch = x86_64
 	license = MIT
-	depends = intel-graphics-compiler-bin=1:1.0.8744
+	depends = intel-graphics-compiler-bin=1:1.0.9389
 	optdepends = libva: for cl_intel_va_api_media_sharing
 	optdepends = libdrm: for cl_intel_va_api_media_sharing
 	provides = intel-compute-runtime
@@ -14,21 +14,21 @@ pkgbase = intel-compute-runtime-bin
 	provides = opencl-driver
 	conflicts = intel-compute-runtime
 	conflicts = intel-gmmlib
-	noextract = intel-opencl-icd_21.46.21636_amd64.deb
-	noextract = intel-level-zero-gpu_1.2.21636_amd64.deb
-	noextract = intel-compute-runtime-bin-21.46.21636-gmmlib-devel-21.2.1_amd64.deb
-	noextract = intel-compute-runtime-bin-21.46.21636-gmmlib-21.2.1_amd64.deb
+	noextract = intel-opencl-icd_21.47.21710_amd64.deb
+	noextract = intel-level-zero-gpu_1.2.21710_amd64.deb
+	noextract = intel-compute-runtime-bin-21.47.21710-gmmlib-devel-21.3.3_amd64.deb
+	noextract = intel-compute-runtime-bin-21.47.21710-gmmlib-21.3.3_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/intel/compute-runtime/releases/download/21.46.21636/intel-opencl-icd_21.46.21636_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/21.46.21636/intel-level-zero-gpu_1.2.21636_amd64.deb
-	source = intel-compute-runtime-bin-21.46.21636-gmmlib-devel-21.2.1_amd64.deb::https://github.com/intel/compute-runtime/releases/download/21.46.21636/intel-gmmlib-devel_21.2.1_amd64.deb
-	source = intel-compute-runtime-bin-21.46.21636-gmmlib-21.2.1_amd64.deb::https://github.com/intel/compute-runtime/releases/download/21.46.21636/intel-gmmlib_21.2.1_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/21.47.21710/intel-opencl-icd_21.47.21710_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/21.47.21710/intel-level-zero-gpu_1.2.21710_amd64.deb
+	source = intel-compute-runtime-bin-21.47.21710-gmmlib-devel-21.3.3_amd64.deb::https://github.com/intel/compute-runtime/releases/download/21.47.21710/intel-gmmlib-devel_21.3.3_amd64.deb
+	source = intel-compute-runtime-bin-21.47.21710-gmmlib-21.3.3_amd64.deb::https://github.com/intel/compute-runtime/releases/download/21.47.21710/intel-gmmlib_21.3.3_amd64.deb
 	source = LICENSE
-	sha256sums = e36b5b99bc1e8c79de1cd2243077eabc46f75d4c3d81fc8fb824c8f41ac514d4
-	sha256sums = c8e9ce6b39eb8ac1182c9bbcd635c24de671f6b62da708c124265276550b0d5d
-	sha256sums = d690abbc15a4897dccf8cd9859aebacd98e09fa1c11c5ce81a4899cbe1bd8948
-	sha256sums = e74cc69610ec0d0d824e83606a7196691bfea6f85db137ba03c96d1ee94abe19
+	sha256sums = 627d35d87a372dc1cb39e88d4956864a7c57bf0ab78e1e13d387db883598ffb5
+	sha256sums = db41da37ce0fb851a2333f03dc63770d6a44cfd84f2e179e9f3e6c9054be89dc
+	sha256sums = 6778896d42d1ba72b01dfbc8d756cc65754ead7315226bc06857a7a4875f1e20
+	sha256sums = ccdf0c1062854236da4ad4671d0c7cb0fac9ad6e4ca46b2690e6a32b83fa8feb
 	sha256sums = 73783f7cd3b35aa7d23fa64e400c8c6a6cf6256b62b35e4827094719a9acb172
 
 pkgname = intel-compute-runtime-bin
