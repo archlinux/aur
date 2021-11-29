@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd pycapnp-$pkgver
-  PYTHONPATH="build/lib.linux-$CARCH-3.9" pytest
+  PYTHONPATH="build/lib.linux-$CARCH-3.10" pytest
 }
 
 package() {
