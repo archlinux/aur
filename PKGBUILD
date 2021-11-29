@@ -3,14 +3,14 @@
 
 pkgname=fvwm3-git
 _pkgname=fvwm3
-pkgver=1.0.2.r132.g5f1cf518
+pkgver=1.0.4.r106.gf4848b95
 pkgrel=1
 pkgdesc="A powerful ICCCM2 compliant multiple virtual desktop window manager for X11"
 arch=('i686' 'x86_64')
 url="http://www.fvwm.org"
 license=('GPL')
-depends=('fribidi' 'libxpm' 'librsvg' 'libxrandr' 'libevent' 'libxcursor' 'rplay' 'mongo-c-driver')
-makedepends=('git' 'libxslt' 'mongo-c-driver')
+depends=('fribidi' 'libxpm' 'librsvg' 'libxrandr' 'libevent' 'libxcursor')
+makedepends=('git' 'libxslt')
 optdepends=('perl-tk: for ClickToFocus support'
             'perl-x11-protocol: for ClickToFocus support'
 	           'python: for fvwm-menu-desktop')
@@ -31,12 +31,11 @@ build() {
   cd "${srcdir}/${_pkgname}"
   autoreconf -fiv
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib \
-    --with-stroke-library \
     --enable-perllib \
-    --enable-xinerama \
     --enable-bidi \
     --enable-nls --enable-iconv \
-    --enable-xft
+    --enable-xft \
+    --enable-mandoc
   make V=0
 }
 
