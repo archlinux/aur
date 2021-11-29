@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-media-controls
 	pkgdesc = A media indicator for the GNOME shell
-	pkgver = 17
-	pkgrel = 1
+	pkgver = 20
+	pkgrel = 2
 	url = https://github.com/cliffniff/media-controls
 	arch = any
 	license = MIT
