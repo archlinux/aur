@@ -1,14 +1,21 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=otf-londrina
-pkgver=1.0
-pkgrel=2
+pkgver=1.0r19.f7aed96
+pkgrel=1
 pkgdesc='Handwriting font inspired from the streets of Sao Paulo, Brazil'
 arch=(any)
-url="https://www.fontsquirrel.com/fonts/londrina"
-license=(CCPL:by-sa)
-source=("$pkgname-$pkgver.zip::https://www.fontsquirrel.com/fonts/download/londrina")
-sha256sums=('47f63498a2752bd903ff7c9e0c9fa9d718d2c4c3abe9ca0d4bb5db03be53b7d2')
+url="https://tipospereira.com/londrina-typeface"
+license=('OFL')
+source=("git+https://github.com/marcelommp/Londrina-Typeface")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "Londrina-Typeface" || return 1
+	printf "1.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-	install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" *.otf
+	cd "Londrina-Typeface" || return 1
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" OTF/*.otf
 }

@@ -1,12 +1,11 @@
 pkgbase = otf-londrina
 	pkgdesc = Handwriting font inspired from the streets of Sao Paulo, Brazil
-	pkgver = 1.0
-	pkgrel = 2
-	url = https://www.fontsquirrel.com/fonts/londrina
+	pkgver = 1.0r3.5d042c8
+	pkgrel = 1
+	url = https://tipospereira.com/londrina-typeface
 	arch = any
-	license = CCPL:by-sa
-	source = otf-londrina-1.0.zip::https://www.fontsquirrel.com/fonts/download/londrina
-	sha256sums = 47f63498a2752bd903ff7c9e0c9fa9d718d2c4c3abe9ca0d4bb5db03be53b7d2
+	license = OFL
+	source = git+https://github.com/marcelommp/Londrina-Typeface
+	sha256sums = SKIP
 
 pkgname = otf-londrina
-
