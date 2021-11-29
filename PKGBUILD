@@ -11,13 +11,7 @@ url="https://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
 
 groups=()
-depends=('hicolor-icon-theme'
-         'libcap'
-         'libpng'
-         'qt5-base'
-         'qt5-serialport'
-         'qt5-websockets'
-         'sqlite')
+depends=()
 makedepends=('xz')
 optdepends=()
 provides=()
