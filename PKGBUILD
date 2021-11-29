@@ -1,4 +1,4 @@
-# Maintainer: Spencer Muise <smuise@spencermuise.ca>
+# Maintainer: Martin Rys <rys.pw/contact>
 pkgname=bookstack
 _camelname=BookStack
 pkgver=21.11.1
