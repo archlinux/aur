@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 build() {
     cd $srcdir/$_pkgbase
-    make $MAKEFLAGS PREFIX="/usr"
+    make PREFIX="/usr"
 }
 
 pkgver() {
