@@ -1,13 +1,13 @@
 pkgbase = dino-cli
 	pkgdesc = A dinosaur on the CLI.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tryton-vanmeer/dino-cli
 	arch = x86_64
 	license = GPL3
 	makedepends = dub
+	makedepends = dmd
 	source = dino-cli-1.0.0.tar.gz::https://github.com/tryton-vanmeer/dino-cli/archive/v1.0.0.tar.gz
 	sha256sums = a1ea4a48711c55ad62a5b6febd96b8028c1629606912dccef7423d24ad8dde9e
 
 pkgname = dino-cli
-
