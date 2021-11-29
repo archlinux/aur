@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/Shortwave"
   export RUSTUP_TOOLCHAIN=stable
-#  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
