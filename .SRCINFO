@@ -13,8 +13,6 @@ pkgbase = python-peeweeplus
 	depends = python-peewee
 	optdepends = python-argon2_cffi: for Argon2Field
 	optdepends = python-authlib: for authlib integration
-	provides = python-peeweeplus
-	conflicts = python-peeweeplus
 	source = peeweeplus::git+https://github.com/homeinfogmbh/peeweeplus.git#tag=1.16.5
 	md5sums = SKIP
 

@@ -11,8 +11,6 @@ license=('GPLv3')
 depends=('python' 'python-peewee')
 optdepends=('python-argon2_cffi: for Argon2Field' 'python-authlib: for authlib integration')
 makedepends=('git' 'python' 'python-setuptools' 'python-setuptools-scm')
-provides=("python-${_pkgbase}")
-conflicts=("python-${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
