@@ -4,7 +4,7 @@
 
 pkgname='monero-feather'
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A free Monero desktop wallet'
 license=('BSD')
 arch=('x86_64')
@@ -15,13 +15,12 @@ makedepends=('git' 'cmake' 'boost')
 provides=('monero-feather')
 conflicts=('monero-feather' 'monero-feather-git')
 
-source=("${pkgname}"::"git+https://git.featherwallet.org/feather/feather")
+source=("${pkgname}"::"git+https://git.featherwallet.org/feather/feather#tag=${pkgver}")
 
 sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  git checkout tags/"$pkgver"
   git submodule update --init --recursive
 }
 
