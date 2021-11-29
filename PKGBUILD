@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-faustina
-pkgver=1.008
+pkgver=1.200
 pkgrel=1
 pkgdesc='Serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
@@ -20,18 +20,18 @@ source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.c
         'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-SemiBold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-SemiBoldItalic.otf')
 sha256sums=('73f1067ce6357d5da461e7973e7fc1092fbf44212730b77759b1b9a4f39466ec'
-            '3be6c3ee343aaeae5443768413c15f5ce609320e6cd7615bd4ae8a43784d51fa'
-            '1d362ed00fcee6203ef0ca2e0d753aa73a9c95749e87dcf3de1dea301e95cc7e'
-            'dfb6b1204b4dbacb0506f086bc714c89fd53aca07ad2b87de8dc8b8a3295c05f'
-            '754f349ebbfbd61d38fe62883ae87f9631186ef932eda62e07916aac4c759e55'
-            'df1305ae6fa6c8fafef44f3490b8c138068e03f7895ed3ada02a7b6967eebedd'
-            '8259d3569a0e014a526620afef1a6f60b4c741899d268f0ecaf2725356a289be'
-            '318bdb647fdf7d033b1296f1da051770fdfa5eca96379b16b4f92550aec300d4'
-            '89c3187d418b17083e051504acae9085b19de743da9745f8d3f7e992c6922981'
-            'a328bb6a8e00709cf053b79664eed5be7a27392c30e0f9e571a77cf016cb830c'
-            '5bf7bfc8bd306ed466df5539d7448008e99c81e715e88c5968e5658129a72db0'
-            '1c8ab369603d2efdfdd2d28af9160f72283548521d16fbf554bb72cd89491a61'
-            '05e75030a5e8066e7d33368bcad985346d3121eed56226927b4fe8016664c313')
+            'e19491c8c35a2c88f8697bb8421f8292a3ca9fcf0c493988ff5eda01831ae240'
+            '35b66ca6ca922d4ac2bfcec9f7da9ae9bafa5d5c75c54a9d781b723424ff0bc0'
+            'd8beb21f723cbaa4bf75ba31fb8501bad79c238caec0ae9a279f795e930024fe'
+            'a14a3f0ffa071d571da9c247993228b61b1fa19598509caa7af316ff3651bdfd'
+            '6c63ad745b2e135a1150cec180645e873e47bb6b1d4babe146f65b3c2c48dfb4'
+            'cf2eedf0381cf2dee64c1042fc2ff3b19f24feedc1474a442b8aa86c950bf990'
+            'a19e07750f04a42e779de345a5f8cf27ce39ad7ddd3e2ac80f5dfa996f9133d2'
+            'a12588109f634461a5341ae6a0444998cab290472e29de92fd7480887a504a2a'
+            '993d1fd7e88728160e7b0c587cfaf9858e82ba4f2bb19b0967b4cb585039834a'
+            '991cfcafb4eae6ea650092adcf251143a440b9397f7d29389bc5ffcfa602b8b7'
+            'a19012eb89a05f328f1d567a94b65a26e461dc2c992967de74e7896ccf7f2664'
+            'c0c7c207969113d4f104e5a708ecfa18da45ba8fcb7bb5c5f6d96c1effa5dce7')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
