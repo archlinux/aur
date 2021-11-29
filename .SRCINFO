@@ -1,6 +1,6 @@
 pkgbase = sndcpy-bin
 	pkgdesc = Android audio forwarding (scrcpy, but for audio)
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/rom1v/sndcpy
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = sndcpy-bin
 	depends = vlc
 	provides = sndcpy
 	conflicts = sndcpy
-	source = https://github.com/rom1v/sndcpy/releases/download/v1.0/sndcpy-v1.0.zip
-	source = https://github.com/rom1v/sndcpy/raw/v1.0/LICENSE
+	source = https://github.com/rom1v/sndcpy/releases/download/v1.1/sndcpy-v1.1.zip
+	source = https://github.com/rom1v/sndcpy/raw/v1.1/LICENSE
 	source = sndcpy.sh
-	sha256sums = 4495f752fc192535cd5208ace4d35d2ba644beb9aabb0e288ae339861ad6782b
+	sha256sums = b045320ddddbc5a237d6d95213c664f03b2f46ef8bbfcef91c2d95644ed42bbc
 	sha256sums = 6b6d5219c4732200fdf483c5a9bde69867a1386b6278c176ce3598c32132e66d
 	sha256sums = 51eb4996dd266cd8e5e362d388982d250a285218642737c4464291de0808203e
 
 pkgname = sndcpy-bin
-
