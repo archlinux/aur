@@ -5,13 +5,13 @@
 
 # Maintainer: zzy-ac <zzy-ac@qq.com>
 pkgname=fonts-noto-hinted
-pkgver=_20161116
+pkgver=20161116
 pkgrel=1
 pkgdesc="'No Tofu' font families with large Unicode coverage (hinted)
  Noto is a collection of font families, each visually harmonized across
  scripts."
 arch=(any)
-url="http://ftp.de.debian.org/debian/pool/main/f/fonts-android/"
+url="http://deb.debian.org/debian/pool/main/f/fonts-android/"
 license=('GPL')
 depends=()
 provides=()
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://mirrors.tuna.tsinghua.edu.cn/debian/pool/main/f/fonts-noto/fonts-noto-hinted_20161116-1_all.deb")
+source=("http://deb.debian.org/debian/pool/main/f/fonts-noto/fonts-noto-hinted_20161116-1_all.deb")
 noextract=()
 validpgpkeys=()
 
