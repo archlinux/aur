@@ -3,7 +3,7 @@
 
 pkgname=slack-wayland
 _name="slack"
-pkgver=4.20.0
+pkgver=4.22.0
 pkgrel=1
 pkgdesc="Slack Desktop with system Electron and Ozone enabled for native Wayland support"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("${_name}" "${_name}-desktop")
 conflicts=("${_name}-desktop")
 source=("https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
         'slack-wayland.sh')
-sha256sums=('b08207389246837536ea769425d458411c08dc6802ffaae9249092e387461ce5'
+sha256sums=('d12026d979673aa5cdc14f6a484776a72bedf7fec5acb2ddeb7414733b7d044d'
             '9a6efa826134234744ab83b2a0ff67d99ceb55e5e3efdb776029b3e7d4914ed2')
 
 prepare() {
