@@ -1,0 +1,20 @@
+pkgbase = detwinner
+	pkgdesc = Duplicate file finder for the Linux desktop
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://neatdecisions.com/products/detwinner-linux/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = gtest
+	makedepends = cppcheck
+	depends = gtkmm3>=3.22
+	depends = graphicsmagick
+	source = https://github.com/neatdecisions/detwinner/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 08e348dff6ac40cec5f6bf3bd1ab4d7fbcde0932550a682d3171b5c1c34f7ffe
+
+pkgname = detwinner
