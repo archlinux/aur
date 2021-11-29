@@ -1,6 +1,6 @@
 pkgbase = anki-git
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
-	pkgver = r8319.ab20f215b
+	pkgver = r9014.5a3999d0c
 	pkgrel = 1
 	url = http://ankisrs.net/
 	arch = any

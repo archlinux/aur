@@ -1,4 +1,5 @@
-# Maintainer: Martin Dünkelmann<nc-duenkekl3@netcologne.de>
+# Maintainer:  Fabian Maurer<dark.shadow4@web.de>
+# Contributor: Martin Dünkelmann<nc-duenkekl3@netcologne.de>
 # Contributor: Shaoyu Tseng<zandimna@autistici.org>
 # Contributor: Daniel Egeberg <daniel.egeberg@gmail.com
 # Contributor: Sławomir Kowalski <suawekk+aur@gmail.com>
@@ -8,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r8319.ab20f215b
+pkgver=r9014.5a3999d0c
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -100,6 +101,6 @@ package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps bazel-bin/pylib/anki/anki-*.whl bazel-bin/qt/aqt/aqt-*.whl
 
     install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
-    install -Dm644 qt/linux/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
-    install -Dm644 qt/linux/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+    install -Dm644 qt/package/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+    install -Dm644 qt/package/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
 }
