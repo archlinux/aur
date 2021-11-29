@@ -1,4 +1,4 @@
-# Maintainer: <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 pkgname=linux-steam-integration
 pkgver=0.7.3
