@@ -1,0 +1,21 @@
+pkgbase = system-monitoring-center
+	pkgdesc = System performance and usage monitoring tool
+	pkgver = 0.1.21.beta18
+	pkgrel = 1
+	url = https://github.com/hakandundar34coding/system-monitoring-center
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = bash
+	depends = dmidecode
+	depends = gtk3
+	depends = hwids
+	depends = mesa-utils
+	depends = python-gobject
+	depends = python-opengl
+	depends = systemd
+	depends = util-linux
+	source = system-monitoring-center-0.1.21.beta18.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v0.1.21-beta18.tar.gz
+	sha256sums = 329c916a101635a591d43fbff439fa8d4d8cfcdb41a85ee2074df43104aad3d3
+
+pkgname = system-monitoring-center
