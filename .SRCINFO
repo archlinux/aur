@@ -2,7 +2,7 @@ pkgbase = python-peeweeplus
 	pkgdesc = Practical extension of a small, expressive ORM
 	pkgver = 1.16.5
 	pkgrel = 1
-	url = https://gitlab.com/HOMEINFO/peeweeplus
+	url = https://github.com/homeinfogmbh/peeweeplus
 	arch = any
 	license = GPLv3
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = python-peeweeplus
 	optdepends = python-authlib: for authlib integration
 	provides = python-peeweeplus
 	conflicts = python-peeweeplus
-	source = peeweeplus::git+https://gitlab.com/HOMEINFO/peeweeplus.git#tag=1.16.5
+	source = peeweeplus::git+https://github.com/homeinfogmbh/peeweeplus.git#tag=1.16.5
 	md5sums = SKIP
 
 pkgname = python-peeweeplus
