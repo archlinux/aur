@@ -20,7 +20,7 @@ build() {
 check() {
   cd spec-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
-  PATH="$PWD/tmp_install/usr/bin" PYTHONPATH="$PWD/tmp_install/usr/lib/python3.9/site-packages:$PYTHONPATH" spec --help
+  PATH="$PWD/tmp_install/usr/bin" PYTHONPATH="$PWD/tmp_install/usr/lib/python3.10/site-packages:$PYTHONPATH" spec --help
 }
 
 package() {
