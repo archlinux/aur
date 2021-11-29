@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+if [ -f ~/.avrbuild ]; then
+    source ~/.avrbuild
+else
+    echo "configuration file not found:"
+    echo "$ cat ~/.avrbuild
+repository_name=avr
+repository_location=/foo/\$repository_name/\$(uname -m)
+"
+    exit 1
+fi
+
+location="$(pwd)"
+
+function released_version {
+    name=$1
+
+    pacman -Ss $name | grep -e "^$repository_name/$name " | cut -d" " -f2
+}
+
+packages=()
+echo "initializing build queue"
+for name in $(find . -mindepth 1 -maxdepth 1 -type d -not -name "\.*"); do
+    source $(basename $name)/PKGBUILD
+
+    package=$pkgname
+    local_version="${pkgver}-${pkgrel}"
+    remote_version="$(released_version $package)"
+
+    if [ -f $package/.norelease ]; then
+        echo "  disabled: $package (explicit)"
+    elif [ "$local_version" == "$(echo -e "$local_version\n$remote_version" | sort -V | head -n1)" ]; then
+        echo "  disabled: $package (local version $local_version <= remote version $remote_version)"
+    elif [[ ! " ${arch[*]} " =~ " any " ]] && [[ ! " ${arch[*]} " =~ " $(uname -m) " ]]; then
+        echo "  disabled: $package (arch not targeted in PKGBUILD: $(uname -m))"
+    else
+        echo "  enabled: $package ($local_version)"
+        packages+=($package)
+    fi
+done
+
+failures=()
+for package in ${packages[@]} ; do
+    cd "$location/$package"
+
+    makepkg $*
+
+    if [ $? -eq 0 ]; then
+        rsync -avhP *.tar.zst $repository_location
+        rsync -avhP *.tar.zst.sig $repository_location
+    else
+        failures+=($package)
+    fi
+done
+
+cd "$location"
+
+if [ ${#failures[@]} -gt 0 ]; then
+    echo "failed to build ${#failures[@]} package(s):"
+    for package in ${failures[@]} ; do
+        echo "  $package"
+    done
+    exit 1
+fi
