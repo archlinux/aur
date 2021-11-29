@@ -22,7 +22,7 @@ check() {
   cd memory_profiler-$pkgver
   # Hack entry points by installing it
   python setup.py install --root="$PWD/tmp_install" --optimize=1
-  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.9/site-packages:$PYTHONPATH" PATH="$PWD/tmp_install/usr/bin:$PATH" make test
+  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.10/site-packages:$PYTHONPATH" PATH="$PWD/tmp_install/usr/bin:$PATH" make test
 }
 
 package() {
