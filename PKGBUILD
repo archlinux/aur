@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('mesa' 'pth' 'cuda')
 makedepends=('cmake' 'python' 'git')
 provides=('ethminer-etchash')
-conflicts=('ethminer' 'ethminer-bin' 'ethminer-cuda' 'ethminer-git' 'ethminer-ocl-git')
+conflicts=('ethminer')
 source=("${pkgname%-git}::git+$url")
 md5sums=('SKIP')
 

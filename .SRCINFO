@@ -13,10 +13,6 @@ pkgbase = ethminer-etchash-git
 	depends = cuda
 	provides = ethminer-etchash
 	conflicts = ethminer
-	conflicts = ethminer-bin
-	conflicts = ethminer-cuda
-	conflicts = ethminer-git
-	conflicts = ethminer-ocl-git
 	source = ethminer-etchash::git+https://github.com/etclabscore/ethminer
 	md5sums = SKIP
 
