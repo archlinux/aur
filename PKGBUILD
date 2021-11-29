@@ -6,7 +6,7 @@ pkgver=${_pkgver//-/.}
 pkgrel=2
 pkgdesc="A CLI tool to manage your devcontainers"
 arch=('x86_64')
-url="https://git.sr.ht/~nka/devc"
+url="https://github.com/nikaro/devc"
 license=('GPL3')
 depends=('docker')
 optdepends=('docker-compose')
@@ -17,8 +17,8 @@ makedepends=(
 provides=('devc')
 conflicts=('devc')
 
-source=("$pkgname-v$pkgver.tar.gz::https://git.sr.ht/~nka/$pkgname/archive/v$_pkgver.tar.gz")
-sha256sums=("94cec2138684124385fabfbafda0f5aea33c4e6ba84522e7b7a855dc78764193")
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/nikaro/releases/download/v$_pkgver/${pkgname}_${_pkgver}_Linux_x86_64.tar.gz")
+sha256sums=("836e46df8f4ec1b28e66139a35e228aa08247501d653a6977390894b6966f144")
 
 build() {
 	cd "$pkgname-v$_pkgver"

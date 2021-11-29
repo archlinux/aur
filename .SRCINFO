@@ -11,7 +11,7 @@ pkgbase = devc
 	optdepends = docker-compose
 	provides = devc
 	conflicts = devc
-	source = devc-v1.0.0.alpha.3.tar.gz::https://git.sr.ht/~nka/devc/archive/v1.0.0-alpha.3.tar.gz
-	sha256sums = 94cec2138684124385fabfbafda0f5aea33c4e6ba84522e7b7a855dc78764193
+	source = devc-v1.0.0.alpha.3.tar.gz::https://github.com/nikaro/releases/download/v1.0.0-alpha.3/devc_1.0.0-alpha.3_Linux_x86_64.tar.gz
+	sha256sums = 836e46df8f4ec1b28e66139a35e228aa08247501d653a6977390894b6966f144
 
 pkgname = devc
