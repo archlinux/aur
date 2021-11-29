@@ -7,12 +7,12 @@ pkgdesc="Cascadia Code + Nerd Fonts, with some small differences."
 arch=('any')
 url='https://github.com/adam7/delugia-code'
 license=('MIT')
-source=("https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-book.zip"
-        "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-complete.zip"
-        "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-mono-complete.zip"
-        "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-mono-powerline.zip"
-        "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-powerline.zip"
-        "https://raw.githubusercontent.com/adam7/delugia-code/master/LICENSE")
+source=("delugia-book-v$pkgver.zip::$url/releases/download/v$pkgver/delugia-book.zip"
+        "delugia-complete-v$pkgver.zip::$url/releases/download/v$pkgver/delugia-complete.zip"
+        "delugia-mono-complete-v$pkgver.zip::$url/releases/download/v$pkgver/delugia-mono-complete.zip"
+        "delugia-mono-powerline-$pkgver.zip::$url/releases/download/v$pkgver/delugia-mono-powerline.zip"
+        "delugia-powerline-v$pkgver.zip::$url/releases/download/v$pkgver/delugia-powerline.zip"
+        "LICENSE::$url/raw/master/LICENSE")
 sha512sums=('3d172501120afc7e529a71ed12e2314de9c367326f8629355469c09d47173a05b4af4611b26b0373f595eb5f00275397854f70cf66ebda6c0e245246e6fc6baf'
             '750f7bf2e6276e6f7807bae54110bb1c67867f37f59dccaf027829768ea637df0b941ebec350a68babd792975cd3819b33bf194d05eb579715e77034ca2e2092'
             '4b2fdd862838150017f64b006bf4a1e8ed0b9703f3e19f0930a0e561c1516b2da7e90c06888e92aece3cadd149c067c50125f9e27447c7430a5440923c2670b4'
