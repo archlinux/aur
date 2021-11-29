@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=anchor-wallet-bin
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="EOSIO Desktop Wallet and Authenticator"
 arch=("x86_64")
 url="https://github.com/greymass/anchor"
@@ -22,4 +22,7 @@ package() {
   mv opt "$pkgdir"
 
   sed -i "/Name=anchor-wallet/c\Name=Anchor Wallet" "$pkgdir/usr/share/applications/anchor-wallet.desktop"
+
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf "/opt/Anchor Wallet/anchor-wallet" "$pkgdir/usr/bin/anchor-wallet"
 }
