@@ -1,0 +1,59 @@
+diff --git a/dune-install.sh b/dune-install.sh
+index 9c44f689..1560c222 100755
+--- a/dune-install.sh
++++ b/dune-install.sh
+@@ -15,7 +15,7 @@ then
+ fi
+ 
+ readonly prefix="${1}"
+-readonly libdir="${prefix}/share/herdtools7"
++readonly libdir="${DESTDIR}/${prefix}/share/herdtools7"
+ 
+ . ./defs.sh
+ 
+diff --git a/dune-uninstall.sh b/dune-uninstall.sh
+index d0802e97..52962340 100755
+--- a/dune-uninstall.sh
++++ b/dune-uninstall.sh
+@@ -17,7 +17,7 @@ fi
+ readonly prefix="${1}"
+ 
+ readonly bindir="${prefix}/bin"
+-readonly libdir="${prefix}/share/herdtools7"
++readonly libdir="${DESTDIR}/${prefix}/share/herdtools7"
+ 
+ # Print out the commands that this script runs.
+ set -x
+diff --git a/ocb-install.sh b/ocb-install.sh
+index d9740477..b22227c5 100755
+--- a/ocb-install.sh
++++ b/ocb-install.sh
+@@ -18,8 +18,8 @@ readonly prefix="${1}"
+ 
+ . ./defs.sh
+ 
+-readonly bindir="${prefix}/bin"
+-readonly libdir="${prefix}/share/herdtools7"
++readonly bindir="${DESTDIR}/${prefix}/bin"
++readonly libdir="${DESTDIR}/${prefix}/share/herdtools7"
+ 
+ mkdir -p "${bindir}"
+ mkdir -p "${libdir}"
+diff --git a/ocb-uninstall.sh b/ocb-uninstall.sh
+index 37dc09b3..343a4274 100755
+--- a/ocb-uninstall.sh
++++ b/ocb-uninstall.sh
+@@ -18,8 +18,8 @@ readonly prefix="${1}"
+ 
+ . ./defs.sh
+ 
+-readonly bindir="${prefix}/bin"
+-readonly libdir="${prefix}/share/herdtools7"
++readonly bindir="${DESTDIR}/${prefix}/bin"
++readonly libdir="${DESTDIR}/${prefix}/share/herdtools7"
+ 
+ rmbin () {
+   execs="$1"
+-- 
+2.34.1
+

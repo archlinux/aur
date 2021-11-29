@@ -13,8 +13,14 @@ url='https://github.com/herd/herdtools7'
 license=('CeCILL-B')
 depends=('ocaml')
 makedepends=('git' 'make' 'dune' 'ocaml-menhir')
-source=('git://github.com/herd/herdtools7')
-sha256sums=('SKIP')
+source=('git://github.com/herd/herdtools7' '0001-Add-DESTDIR-support.patch')
+sha256sums=('SKIP'
+            'f620292cd27f6183cb5029c87bf3e70ffafd3444d584055512e80a475f10f993')
+
+prepare() {
+    cd $srcdir/$_pkgbase
+    git apply $srcdir/0001-Add-DESTDIR-support.patch
+}
 
 build() {
     cd $srcdir/$_pkgbase
@@ -23,7 +29,7 @@ build() {
 
 check() {
     cd $srcdir/$_pkgbase
-    make test
+    make test PREFIX="/usr"
 }
 
 pkgver() {
@@ -35,6 +41,10 @@ pkgver() {
 }
 
 package() {
-    make -C $srcdir/$_pkgbase PREFIX="$pkgdir/usr" install
-}
+    mkdir -p "$pkgdir/usr/share/doc"
 
+    # Add a shim for /usr/doc, because dune installs it wrong
+    ln -s "$pkgdir/usr/share/doc" "$pkgdir/usr/doc"
+    DESTDIR="$pkgdir" make -C $srcdir/$_pkgbase PREFIX="usr" install
+    rm "$pkgdir/usr/doc"   
+}
