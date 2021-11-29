@@ -1,6 +1,6 @@
 pkgbase = libgnunetchat-git
 	pkgdesc = GNUnet chat library
-	pkgver = r19.c18988a
+	pkgver = r34.1edfdc7
 	pkgrel = 1
 	url = http://gnunet.org
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = libgnunetchat-git
 	conflicts = libgnunetchat-bin
 	options = !makeflags
 	options = !buildflags
-	source = git+https://gnunet.org/git/libgnunetchat.git
+	source = git+https://git.gnunet.org/libgnunetchat.git
 	sha256sums = SKIP
 
 pkgname = libgnunetchat-git

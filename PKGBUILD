@@ -4,7 +4,7 @@ _framework='gnunet'
 _module='libgnunetchat'
 
 pkgname="${_module}-git"
-pkgver='r19.c18988a'
+pkgver='r34.1edfdc7'
 pkgrel=1
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=("${_module}" "${_module}-bin")
 provides=("${_module}")
 depends=("${_framework}")
 options=('!makeflags' '!buildflags')
-source=("git+https://${_framework}.org/git/${_module}.git")
+source=("git+https://git.${_framework}.org/${_module}.git")
 sha256sums=('SKIP')
 
 pkgver() {
