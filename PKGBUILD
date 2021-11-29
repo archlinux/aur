@@ -3,13 +3,14 @@
 
 pkgname=haskell-jet-git
 pkgver=r55.4dc00e9
-pkgrel=1
+pkgrel=2
 pkgdesc="A structural editor for JSON values"
 arch=('x86_64')
 url="https://github.com/ChrisPenner/jet"
 license=('BSD-3-Clause')
 source=("git+https://github.com/ChrisPenner/jet.git")
 sha256sums=('SKIP')
+depends=('cabal-install' 'ghc')
 
 pkgver() {
   cd jet
