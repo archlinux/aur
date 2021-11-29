@@ -1,8 +1,8 @@
 # Maintainer: Lennart Husvogt <lennart at husvogt dot net>
 
 pkgname=faubox
-pkgver=16.3.100
-pkgrel=2
+pkgver=16.6.100
+pkgrel=1
 pkgdesc="FAU file synchronization client"
 arch=('any')
 url="https://www.intern.fau.de/personal-und-arbeitsleben/arbeitsmittel-und-instrumente/faubox-cloudspeicher-fuer-alle-fau-angehoerigen"
@@ -14,7 +14,7 @@ makedepends=('gendesk')
 source=("faubox.sh"
         "https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz")
 sha512sums=('8983893a7d470544633c0815a0f097f5c0ac2ceadf52a37e6fd308118692e228a455e084382d67c641385349eb25e5936502bc9322a88a29aa1c221ea5e18c90'
-            '0208d6875581c03d246a3818b7adb89e106c0ca21946ff85286eeeaa58b8ca1b40d5a7951f88e3a9c31dbb462550d430be23c3f4bbd870fb9ec88db0e657acbc')
+            '1621500deb6b2851fc9764126eb4afd0ef1a04f40777731f927b5c7ada3a03f325894fba78a02da7bf3c881b48e5979e2ffe9716f37af7401ef02e533ac69ac5')
 
 
 prepare() {
