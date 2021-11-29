@@ -1,7 +1,7 @@
 # Maintainer: mynacol <paul àt dismail _ de>
 
 pkgname=theme-switcher-git
-pkgver=0.2.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="Switching between light and dark themes made easy"
 arch=('any')
@@ -20,6 +20,7 @@ optdepends=(
 	'adwaita-qt: Qt5 theme'
 	'feh: for setting wallpaper under Xorg'
 	'swaybg: for setting wallpaper in sway'
+    'neovim-remote: setting theme in neovim'
 )
 makedepends=('coreutils')
 provides=("${pkgname%-git}")

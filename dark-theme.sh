@@ -84,6 +84,11 @@ if [ -w "$f" ]; then
   jq ".[\"workbench.colorTheme\"]=\"${UI_VSCODE}\"" "$f" | sponge "$f"
 fi
 
+# set neovim background
+for r in $(nvr --serverlist); do
+  nvr --servername "$r" -c "set background=${UI_NEOVIM}"
+done
+
 # set background
 # properly supply arguments separated by spaces
 if [ "$XDG_SESSION_TYPE" = "x11" ]; then

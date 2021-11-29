@@ -1,6 +1,6 @@
 pkgbase = theme-switcher-git
 	pkgdesc = Switching between light and dark themes made easy
-	pkgver = 0.2.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/theme-switcher-git/
 	arch = any
@@ -17,10 +17,10 @@ pkgbase = theme-switcher-git
 	optdepends = adwaita-qt: Qt5 theme
 	optdepends = feh: for setting wallpaper under Xorg
 	optdepends = swaybg: for setting wallpaper in sway
+	optdepends = neovim-remote: setting theme in neovim
 	provides = theme-switcher
 	conflicts = theme-switcher
 	source = dark-theme.sh
 	sha256sums = SKIP
 
 pkgname = theme-switcher-git
-
