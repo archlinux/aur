@@ -1,0 +1,369 @@
+From 5f18b1be0f2ce492017cf19a0ad9dd52248283ba Mon Sep 17 00:00:00 2001
+Message-Id: <5f18b1be0f2ce492017cf19a0ad9dd52248283ba.1638186196.git.maciej.zenon.borzecki@canonical.com>
+From: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+Date: Fri, 26 Nov 2021 08:58:57 +0100
+Subject: [PATCH] cmd/libsnap-confine-private: fix snap-device-helper device
+ allow list modification on cgroup v2
+
+* cmd/libsnap-confine-private: split attaching BPF program to own cgroup
+
+Split attaching the BPF filtering program to own cgroup, such that the process
+of setting up the map, loading device acecsses is not mixed with locking down
+own cgroup. This makes the cgroup v2 setup even closer to v1, and fixes
+snap-device-helper which tried to verify own cgroup during initialization what
+prevented it from properly responding to device events.
+
+Signed-off-by: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+
+* tests/main/security-device-cgroups-helper: spread test for snap-device-helper
+
+Signed-off-by: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+
+* cmd/libsnap-confine-private: tweak variable naming
+
+Signed-off-by: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+
+* tests/main/security-device-cgroups-helper: comment tweaks
+
+Signed-off-by: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+---
+ .../device-cgroup-support.c                   | 100 ++++++++++------
+ .../security-device-cgroups-helper/task.yaml  | 109 ++++++++++++++++++
+ .../test-strict-cgroup-helper/bin/sh          |   3 +
+ .../test-strict-cgroup-helper/meta/snap.yaml  |   8 ++
+ 4 files changed, 183 insertions(+), 37 deletions(-)
+ create mode 100644 tests/main/security-device-cgroups-helper/task.yaml
+ create mode 100755 tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/bin/sh
+ create mode 100644 tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/meta/snap.yaml
+
+diff --git a/cmd/libsnap-confine-private/device-cgroup-support.c b/cmd/libsnap-confine-private/device-cgroup-support.c
+index 5557179745de49b93ab2354e0ccb876c9d5ebde9..e215632b3a782464d7545dc48ca1272ea94dbf79 100644
+--- a/cmd/libsnap-confine-private/device-cgroup-support.c
++++ b/cmd/libsnap-confine-private/device-cgroup-support.c
+@@ -57,8 +57,8 @@ struct sc_device_cgroup {
+             sc_cgroup_fds fds;
+         } v1;
+         struct {
+-            int cgroup_fd;
+             int devmap_fd;
++            int prog_fd;
+             char *tag;
+             struct rlimit old_limit;
+         } v2;
+@@ -82,13 +82,13 @@ static int _sc_cgroup_v1_init(sc_device_cgroup *self, int flags) {
+         }
+         die("cannot prepare cgroup v1 device hierarchy");
+     }
+-    /* Only deny devices if we are not using an existing group - 
++    /* Only deny devices if we are not using an existing group -
+      * if we deny devices for an existing group that we just opened,
+      * we risk denying access to a device that a currently running process
+      * is about to access and should legitimately have access to.
+      * A concrete example of this is when this function is used by snap-device-helper
+      * when a new udev device event is triggered and we are adding that device
+-     * to the snap's device cgroup. At this point, a running application may be 
++     * to the snap's device cgroup. At this point, a running application may be
+      * accessing other devices which it should have access to (such as /dev/null
+      * or one of the other common, default devices) we would deny access to that
+      * existing device by re-creating the allow list of devices every time.
+@@ -148,11 +148,6 @@ typedef struct sc_cgroup_v2_device_key sc_cgroup_v2_device_key;
+  */
+ typedef uint8_t sc_cgroup_v2_device_value;
+ 
+-static void _sc_cgroup_v2_attach_pid(sc_device_cgroup *self, pid_t pid) {
+-    /* nothing to do here, the device controller is attached to the cgroup
+-     * already, and we are part of it */
+-}
+-
+ #ifdef ENABLE_BPF
+ static int load_devcgroup_prog(int map_fd) {
+     /* Basic rules about registers:
+@@ -316,34 +311,13 @@ static bool _sc_is_snap_cgroup(const char *group) {
+ 
+ static int _sc_cgroup_v2_init_bpf(sc_device_cgroup *self, int flags) {
+     self->v2.devmap_fd = -1;
+-    self->v2.cgroup_fd = -1;
+-
+-    char *own_group SC_CLEANUP(sc_cleanup_string) = sc_cgroup_v2_own_path_full();
+-    if (own_group == NULL) {
+-        die("cannot obtain own group path");
+-    }
+-    debug("process in cgroup %s", own_group);
+-    if (!_sc_is_snap_cgroup(own_group)) {
+-        /* we cannot proceed to install a device filtering program when the
+-         * process is not in a snap specific cgroup, as we would effectively
+-         * lock down the group that can be shared with other processes or even
+-         * the whole desktop session */
+-        die("%s is not a snap cgroup", own_group);
+-    }
++    self->v2.prog_fd = -1;
+ 
+     /* fix the memlock limit if needed, this affects creating maps */
+     self->v2.old_limit = _sc_cgroup_v2_adjust_memlock_limit();
+ 
+     const bool from_existing = (flags & SC_DEVICE_CGROUP_FROM_EXISTING) != 0;
+ 
+-    char own_group_full[PATH_MAX] = {0};
+-    sc_must_snprintf(own_group_full, sizeof(own_group_full), "/sys/fs/cgroup/%s", own_group);
+-    int cgroup_fd = open(own_group_full, O_PATH | O_DIRECTORY | O_CLOEXEC | O_NOFOLLOW);
+-    if (cgroup_fd < 0) {
+-        die("cannot open own cgroup directory %s", own_group_full);
+-    }
+-    debug("cgroup %s opened at %d", own_group_full, cgroup_fd);
+-
+     self->v2.tag = sc_strdup(self->security_tag);
+     /* bpffs is unhappy about dots in the name, replace all with underscores */
+     for (char *c = strchr(self->v2.tag, '.'); c != NULL; c = strchr(c, '.')) {
+@@ -363,14 +337,19 @@ static int _sc_cgroup_v2_init_bpf(sc_device_cgroup *self, int flags) {
+     }
+     /* and obtain a file descriptor to the map, also as root */
+     int devmap_fd = bpf_get_by_path(path);
++    /* keep a copy of errno in case it gets clobbered */
++    int get_by_path_errno = errno;
+     (void)sc_set_effective_identity(old);
+     /* XXX: this should be more than enough keys */
+     const size_t max_entries = 500;
+     if (devmap_fd < 0) {
+-        if (errno != ENOENT) {
++        if (get_by_path_errno != ENOENT) {
+             die("cannot get existing device map");
+         }
+         if (from_existing) {
++            debug("device map not present, not creating one");
++            /* restore the errno so that the caller sees ENOENT */
++            errno = get_by_path_errno;
+             /* there is no map, and we haven't been asked to setup a new cgroup */
+             return -1;
+         }
+@@ -464,15 +443,12 @@ static int _sc_cgroup_v2_init_bpf(sc_device_cgroup *self, int flags) {
+         /* load and attach the BPF program as root */
+         (void)sc_set_effective_identity(sc_root_group_identity());
+         int prog_fd = load_devcgroup_prog(devmap_fd);
+-        int attach = bpf_prog_attach(BPF_CGROUP_DEVICE, cgroup_fd, prog_fd);
+-        if (attach < 0) {
+-            die("cannot attach cgroup program");
+-        }
+         (void)sc_set_effective_identity(old);
++        /* keep track of the program */
++        self->v2.prog_fd = prog_fd;
+     }
+ 
+     self->v2.devmap_fd = devmap_fd;
+-    self->v2.cgroup_fd = cgroup_fd;
+ 
+     return 0;
+ }
+@@ -485,7 +461,7 @@ static void _sc_cgroup_v2_close_bpf(sc_device_cgroup *self) {
+     /* the map is pinned to a per-snap-application file and referenced by the
+      * program */
+     sc_cleanup_close(&self->v2.devmap_fd);
+-    sc_cleanup_close(&self->v2.cgroup_fd);
++    sc_cleanup_close(&self->v2.prog_fd);
+ }
+ 
+ static void _sc_cgroup_v2_allow_bpf(sc_device_cgroup *self, int kind, int major, int minor) {
+@@ -512,6 +488,48 @@ static void _sc_cgroup_v2_deny_bpf(sc_device_cgroup *self, int kind, int major,
+         die("cannot delete device map entry for key %c %u:%u", key.type, key.major, key.minor);
+     }
+ }
++
++static void _sc_cgroup_v2_attach_pid_bpf(sc_device_cgroup *self, pid_t pid) {
++    /* we are setting up device filtering for ourselves */
++    if (pid != getpid()) {
++        die("internal error: cannot attach device cgroup to other process than current");
++    }
++    if (self->v2.prog_fd == -1) {
++        die("internal error: BPF program not loaded");
++    }
++
++    char *own_group SC_CLEANUP(sc_cleanup_string) = sc_cgroup_v2_own_path_full();
++    if (own_group == NULL) {
++        die("cannot obtain own group path");
++    }
++    debug("process in cgroup %s", own_group);
++
++    if (!_sc_is_snap_cgroup(own_group)) {
++        /* we cannot proceed to install a device filtering program when the
++         * process is not in a snap specific cgroup, as we would effectively
++         * lock down the group that can be shared with other processes or even
++         * the whole desktop session */
++        die("%s is not a snap cgroup", own_group);
++    }
++
++    char own_group_full_path[PATH_MAX] = {0};
++    sc_must_snprintf(own_group_full_path, sizeof(own_group_full_path), "/sys/fs/cgroup/%s", own_group);
++
++    int cgroup_fd SC_CLEANUP(sc_cleanup_close) = -1;
++    cgroup_fd = open(own_group_full_path, O_PATH | O_DIRECTORY | O_CLOEXEC | O_NOFOLLOW);
++    if (cgroup_fd < 0) {
++        die("cannot open own cgroup directory %s", own_group_full_path);
++    }
++    debug("cgroup %s opened at %d", own_group_full_path, cgroup_fd);
++
++    /* attach the program to the cgroup */
++    sc_identity old = sc_set_effective_identity(sc_root_group_identity());
++    int attach = bpf_prog_attach(BPF_CGROUP_DEVICE, cgroup_fd, self->v2.prog_fd);
++    (void)sc_set_effective_identity(old);
++    if (attach < 0) {
++        die("cannot attach cgroup program");
++    }
++}
+ #endif /* ENABLE_BPF */
+ 
+ static void _sc_cgroup_v2_close(sc_device_cgroup *self) {
+@@ -536,6 +554,14 @@ static void _sc_cgroup_v2_deny(sc_device_cgroup *self, int kind, int major, int
+ #endif
+ }
+ 
++static void _sc_cgroup_v2_attach_pid(sc_device_cgroup *self, pid_t pid) {
++#ifdef ENABLE_BPF
++    _sc_cgroup_v2_attach_pid_bpf(self, pid);
++#else
++    die("device cgroup v2 is not enabled");
++#endif
++}
++
+ static int _sc_cgroup_v2_init(sc_device_cgroup *self, int flags) {
+ #ifdef ENABLE_BPF
+     return _sc_cgroup_v2_init_bpf(self, flags);
+diff --git a/tests/main/security-device-cgroups-helper/task.yaml b/tests/main/security-device-cgroups-helper/task.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..3d8caaf031dca2960f6e60c5c5efe9347b23695c
+--- /dev/null
++++ b/tests/main/security-device-cgroups-helper/task.yaml
+@@ -0,0 +1,109 @@
++summary: Check that snap-device-helper operates correctly
++
++details: |
++  The test verifies that snap-device-helper correctly modifies the cgroups
++
++environment:
++    # note that /dev/full has well known major:minor which is 1:7
++    DEVICES_PATH_MEM_FULL: /devices/virtual/mem/full
++    # and /dev/kmsg has 1:11
++    DEVICES_PATH_MEM_KMSG: /devices/virtual/mem/kmsg
++
++execute: |
++    #shellcheck source=tests/lib/systems.sh
++    . "$TESTSLIB/systems.sh"
++    libexecdir=$(os.paths libexec-dir)
++
++    echo "Given a snap is installed"
++    "$TESTSTOOLS"/snaps-state install-local test-strict-cgroup-helper
++
++    echo "Verify that no devices are assigned to that snap"
++    udevadm info "/sys/$DEVICES_PATH_MEM_FULL" | NOMATCH "E: (CURRENT_)?TAGS=.*snap_test-strict-cgroup-helper_sh"
++    udevadm info "/sys/$DEVICES_PATH_MEM_KMSG" | NOMATCH "E: (CURRENT_)?TAGS=.*snap_test-strict-cgroup-helper_sh"
++
++    echo "Force a device cgroup to be assigned to a snap"
++    # this will assign the /dev/full device to a snap
++    content='KERNEL=="full", TAG+="snap_test-strict-cgroup-helper_sh" '
++    echo "$content" > /etc/udev/rules.d/70-snap.test-strict-cgroup-helper.rules
++    udevadm control --reload-rules
++    udevadm settle
++    udevadm trigger
++    udevadm settle
++
++    # /dev/full is now tagged for the snap
++    udevadm info "/sys/$DEVICES_PATH_MEM_FULL" | MATCH "E: (CURRENT_)?TAGS=.*snap_test-strict-cgroup-helper_sh"
++    # but /dev/kmsg is not
++    udevadm info "/sys/$DEVICES_PATH_MEM_KMSG" | NOMATCH "E: (CURRENT_)?TAGS=.*snap_test-strict-cgroup-helper_sh"
++
++    # the apparmor profile prevents the app from accessing /dev/kmsg workaround
++    # it by switching the profile to complain
++    if aa-status && test -e /var/lib/snapd/apparmor/profiles/snap.test-strict-cgroup-helper.sh; then
++        sed -i -e 's/attach_disconnected,/attach_disconnected,complain,/' \
++            /var/lib/snapd/apparmor/profiles/snap.test-strict-cgroup-helper.sh
++        apparmor_parser -r /var/lib/snapd/apparmor/profiles/snap.test-strict-cgroup-helper.sh
++    fi
++
++    snap run test-strict-cgroup-helper.sh -c 'echo hello'
++
++    # explicitly verify that the right cgroup path exists, which is either
++    # /sys/fs/cgroup/devices/snap.test-strict-cgroup-helper.sh or
++    # /sys/fs/bpf/snap/test-strict-cgroup-helper_sh
++    if is_cgroupv2; then
++        test -e /sys/fs/bpf/snap/snap_test-strict-cgroup-helper_sh
++    else
++        test -e /sys/fs/cgroup/devices/snap.test-strict-cgroup-helper.sh
++    fi
++
++    tests.device-cgroup test-strict-cgroup-helper.sh dump | MATCH 'c 1:7 rwm'
++    # /dev/kmsg is not added
++    tests.device-cgroup test-strict-cgroup-helper.sh dump | NOMATCH 'c 1:11 rwm'
++    # and it's not possible to read /dev/kmsg
++    snap run test-strict-cgroup-helper.sh -c 'head -1 /dev/kmsg' 2>&1 | MATCH "Operation not permitted"
++
++    # snap-device-helper is invoked by udev as:
++    # RUN+="$libexecdir/snapd/snap-device-helper $env{ACTION} snap_test-strict-cgroup-helper_sh $devpath $major:$minor"
++
++    "$libexecdir"/snapd/snap-device-helper add snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_FULL" 1:7
++    "$libexecdir"/snapd/snap-device-helper change snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_FULL" 1:7
++    # still present
++    tests.device-cgroup test-strict-cgroup-helper.sh dump | MATCH 'c 1:7 rwm'
++
++    # now invoke it for /dev/kmsg, but since the device cgroup is reinitialized
++    # when the snap starts, we have to make the operation async
++    rm -f /var/snap/test-strict-cgroup-helper/common/ready
++    snap run test-strict-cgroup-helper.sh -c 'touch /var/snap/test-strict-cgroup-helper/common/started; until test -e /var/snap/test-strict-cgroup-helper/common/ready; do sleep 1; done; head -1 /dev/kmsg' > run.log 2>&1 &
++    retry -n 5 test -e /var/snap/test-strict-cgroup-helper/common/started
++
++    # device got added
++    "$libexecdir"/snapd/snap-device-helper add snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_KMSG" 1:11
++    tests.device-cgroup test-strict-cgroup-helper.sh dump | MATCH 'c 1:11 rwm'
++    # or changed
++    "$libexecdir"/snapd/snap-device-helper change snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_KMSG" 1:11
++    tests.device-cgroup test-strict-cgroup-helper.sh dump | MATCH 'c 1:11 rwm'
++    # and it should be possible to read a line now
++    touch /var/snap/test-strict-cgroup-helper/common/ready
++    # wait for the snap application we started in the background earlier to
++    # finish
++    wait
++    NOMATCH 'Operation not permitted' < run.log
++    test -n "$(cat run.log)"
++
++    # now remove the cgroup
++    if is_cgroupv2; then
++        rm /sys/fs/bpf/snap/snap_test-strict-cgroup-helper_sh
++    else
++        rmdir /sys/fs/cgroup/devices/snap.test-strict-cgroup-helper.sh
++    fi
++
++    # running the helper does not fail for either device and action
++    "$libexecdir"/snapd/snap-device-helper add snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_FULL" 1:7
++    "$libexecdir"/snapd/snap-device-helper change snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_FULL" 1:7
++    "$libexecdir"/snapd/snap-device-helper add snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_KMSG" 1:11
++    "$libexecdir"/snapd/snap-device-helper change snap_test-strict-cgroup-helper_sh "$DEVICES_PATH_MEM_KMSG" 1:11
++
++    # and the device cgroup map/directory is still gone
++    if is_cgroupv2; then
++        test ! -e /sys/fs/bpf/snap/snap_test-strict-cgroup-helper_sh
++    else
++        test ! -e /sys/fs/cgroup/devices/snap.test-strict-cgroup-helper.sh
++    fi
+diff --git a/tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/bin/sh b/tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/bin/sh
+new file mode 100755
+index 0000000000000000000000000000000000000000..0f845e07c5a8d6873f48e485a1a213dfa7b41a45
+--- /dev/null
++++ b/tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/bin/sh
+@@ -0,0 +1,3 @@
++#!/bin/sh
++PS1='$ '
++exec /bin/sh "$@"
+diff --git a/tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/meta/snap.yaml b/tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/meta/snap.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..c2df1aa37d8e75f057ae095c4db5d3c2afca0db4
+--- /dev/null
++++ b/tests/main/security-device-cgroups-helper/test-strict-cgroup-helper/meta/snap.yaml
+@@ -0,0 +1,8 @@
++name: test-strict-cgroup-helper
++version: 1.0
++summary: snap-device-helper tester
++confinement: strict
++
++apps:
++  sh:
++    command: bin/sh
+-- 
+2.34.1
+

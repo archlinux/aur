@@ -1,7 +1,7 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
 	pkgver = 2.53.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = x86_64
@@ -28,6 +28,8 @@ pkgbase = snapd
 	options = !strip
 	options = emptydirs
 	source = snapd-2.53.2.tar.xz::https://github.com/snapcore/snapd/releases/download/2.53.2/snapd_2.53.2.vendor.tar.xz
+	source = 0001-cmd-libsnap-confine-private-fix-snap-device-helper-d.patch
 	sha256sums = 41a652365a76c812e0c795457ee3e96463a4350787143b2c60161edbfa296109
+	sha256sums = c04258626b891d1530991784b24efa6c5de427824238d7cd6d2aca878f16ee4f
 
 pkgname = snapd
