@@ -30,5 +30,5 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 
   # It's only present when tests are enabled, so adding -f
-  rm -rf "$pkgdir"/usr/lib/python3.9/site-packages/tests
+  rm -rf "$pkgdir"/usr/lib/python3.10/site-packages/tests
 }
