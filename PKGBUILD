@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd sysv_ipc-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.9" python -m unittest discover
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.10" python -m unittest discover
 }
 
 package() {
