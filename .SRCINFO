@@ -1,0 +1,14 @@
+pkgbase = tarp
+	pkgdesc = Fast and simple stream processing of files in tar files, useful for deep learning, big data, and many other applications.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/webdataset/tarp
+	arch = x86_64
+	license = custom
+	makedepends = go
+	depends = glibc
+	depends = czmq
+	source = tarp-0.0.2.tar.gz::https://github.com/webdataset/tarp/archive/refs/tags/v0.0.2.tar.gz
+	sha512sums = 241b01c88913472200fbdba8250fd99f738c889148522dc4eadfa94daa5dd25bae9ca2372cb4429fde9703c1930af619e06e7bb4ed39ceba3f0e17df79f95a17
+
+pkgname = tarp
