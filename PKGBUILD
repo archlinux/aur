@@ -3,7 +3,7 @@
 
 pkgname=('tailwindcss-language-server')
 pkgbase=tailwindcss-intellisense
-pkgver=0.7.0
+pkgver=0.7.2
 _serverver=0.0.4
 pkgrel=1
 pkgdesc='Intelligent Tailwind CSS tooling'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$url/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
-b2sums=('a2c5a63e6a7acc49ed282a57340314221b681a2d55af2686cec39e7b43ae0fe8411ec6a5fae05916a7287460cc3bd642ef0acf0fd06976166354dfa82e1d8f41')
+b2sums=('68a25a0aa0d056f12d5eebf65fa4bdce101cd6ea8694c93c251a5a2bd812d2eaf3fa63521b1315fe4e6cce5e7556e2222bacbdad3da1ddc4079f25c23e757cee')
 
 build() {
   cd $pkgbase-$pkgver
