@@ -1,5 +1,5 @@
-pkgbase = freetube
-	pkgdesc = An open source desktop YouTube player built with privacy in mind.
+pkgbase = freetube-wayland
+	pkgdesc = Like the freetube package, but with Ozone enabled when running on Wayland)
 	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://freetubeapp.io
@@ -11,7 +11,9 @@ pkgbase = freetube
 	makedepends = yarn
 	depends = gtk3
 	depends = nss
-	depends = electron
+	depends = electron15
+	provides = freetube
+	conflicts = freetube
 	source = https://github.com/FreeTubeApp/FreeTube/archive/v0.15.1-beta.tar.gz
 	source = package-only-necessary.diff
 	source = freetube.desktop
@@ -19,6 +21,6 @@ pkgbase = freetube
 	sha256sums = 3fb74191848d11122dc0461fd7de8ee79a14dbfb2f977f124b10842780272655
 	sha256sums = ccb774571df6fcf7b1cd62cdf45c0345179a682fe8856c0011f846fe9bf50c8a
 	sha256sums = 928f0d7f07afdecf35fcf48ba109ab7e28f51bb233327263faa2c0499d669581
-	sha256sums = 9a8b5f1a5fabd1c6cbd9300163dd079d7663c8a7571402678ee1d875ef9c030d
+	sha256sums = c9de659dc7745704aeca44144bbb4459e3f02b2d07ae7a93e28aa9fa5d96c365
 
-pkgname = freetube
+pkgname = freetube-wayland
