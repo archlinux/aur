@@ -1,6 +1,6 @@
 pkgbase = garuda-settings-manager-git
 	pkgdesc = Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
-	pkgver = r28.f060956
+	pkgver = 1.0.0.r1.g15c4106
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/garuda-settings-manager
 	arch = i686

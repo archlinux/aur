@@ -2,9 +2,10 @@
 # Contributer : Ramon Buldo <ramon@garuda.org>
 
 pkgbase=garuda-settings-manager-git
+_pkgbase=garuda-settings-manager
 pkgname=('garuda-settings-manager-git' 'garuda-settings-manager-kcm-git' 
          'garuda-settings-manager-notifier-git' 'garuda-settings-manager-knotifier-git')
-pkgver=r28.f060956
+pkgver=1.0.0.r1.g15c4106
 pkgrel=1
 pkgdesc="Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
 arch=('i686' 'x86_64')
@@ -19,14 +20,15 @@ makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'qt5-tools' 'knotifications
 conflicts=('kcm-msm')
 source=("git+$url.git")
 sha256sums=('SKIP')
-pkgver() {
-  cd "$srcdir/$pkgbase"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
+pkgver() {
+    cd "$srcdir/$_pkgbase"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
 build() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgbase"
   mkdir -p build
   cd build
   cmake ../ \
@@ -42,7 +44,8 @@ package_garuda-settings-manager-git() {
 provides=('garuda-settings-manager')
   conflicts=('garuda-settings-manager')
   replaces=('garuda-settings-manager')
-  cd "$srcdir/$pkgbase/build"
+
+  cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install 
   rm -rf $pkgdir/usr/bin/msm_notifier
   rm -rf $pkgdir/usr/bin/msm_kde_notifier
@@ -59,7 +62,8 @@ package_garuda-settings-manager-kcm-git() {
   provides=('garuda-settings-manager-kcm')
   conflicts=('garuda-settings-manager-kcm')
   replaces=('garuda-settings-manager-kcm')
-  cd "$srcdir/$pkgbase/build"
+
+  cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install
   rm -rf $pkgdir/etc  
   rm -rf $pkgdir/usr/bin
@@ -73,7 +77,8 @@ package_garuda-settings-manager-notifier-git() {
   provides=('garuda-settings-manager-notifier')
   conflicts=('garuda-settings-manager-notifier')
   replaces=('garuda-settings-manager-notifier')
-  cd "$srcdir/$pkgbase/build"
+
+  cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install
   rm -rf $pkgdir/etc/dbus-1
   rm -rf $pkgdir/etc/xdg/autostart/msm_kde_notifier.desktop
@@ -91,7 +96,8 @@ package_garuda-settings-manager-knotifier-git() {
   provides=('garuda-settings-manager-knotifier')
   conflicts=('garuda-settings-manager-knotifier')
   replaces=('garuda-settings-manager-knotifier')
-  cd "$srcdir/$pkgbase/build"
+
+  cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install
   rm -rf $pkgdir/etc/dbus-1
   rm -rf $pkgdir/etc/xdg/autostart/msm_notifier.desktop
