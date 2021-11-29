@@ -1,5 +1,5 @@
 pkgbase = python-mimeutil
-	pkgdesc = High-level WSGI library based on flask
+	pkgdesc = Python MIME type and file extension detection library
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/homeinfogmbh/mimeutil
