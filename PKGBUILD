@@ -2,20 +2,18 @@
 
 pkgname=otf-ibarra-real
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Serif font used for 1780 edition of El Quijote'
 arch=('any')
-license=('custom:as-is')
 url='http://www.ibarrareal.es/'
-depends=('fontconfig' 'xorg-font-utils')
+license=('custom:as-is')
 source=('http://www.ibarrareal.es/font/ibarrareal.zip'
         'LICENSE')
-sha512sums=('e81bfd43c662faf8ab8136cd905212413e992d96b170d5af07a7c4781c97fed174dd0de2617d049b2a91e811eaf409c7be05faa50f91b26365bf691c1f8c7018'
-            '6b8e2ab35ae691a55ce385d5065f591099714aa6024778dcbf7f2910a3fd059f346999f0013c0bf5b5bea31504c765f49ce843fe0d77eed0f9d5ece740d8a4d5')
-install=$pkgname.install
+b2sums=('d19a2deff9cd84c9f479837f8c9f7f834ec8efe13774f5f79ef45613945d443545e01fb014071c364ea4d319d0dcc566bdc876bf0fb767a1d00ab17e50b0a8e7'
+        '3673224067c383a52552b40e99df5f1c94538aa36d814dcb1a3e5eee844edb1a0b60343ce087b9c6eda840d5c3f955c378f86d818bb180cf05c818a61223bd1d')
 
 package() {
-	install -dm755 ${pkgdir}/usr/share/fonts/OTF/
-	install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 ${pkgdir}/usr/share/fonts/OTF/
+  install -m644 *.otf ${pkgdir}/usr/share/fonts/OTF/
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
