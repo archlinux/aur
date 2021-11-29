@@ -1,3 +1,4 @@
+# Maintainer: Pedro Veloso <pedro.n.veloso at gmail dot com>
 # Maintainer: Jonathan Zacsh <j@zac.sh>
 
 pkgname=pidcat-git
