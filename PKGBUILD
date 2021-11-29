@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-manuale
-pkgver=1.001
-pkgrel=3
+pkgver=1.002
+pkgrel=1
 pkgdesc='Serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/manuale/'
@@ -20,18 +20,18 @@ source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.c
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Semibold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-SemiboldItalic.otf')
 sha256sums=('6f5869d0892d8c06cabcccce3726cacc849bd0a96b83bef5850402ab2b9fce71'
-            'b71e9365de9fc4e330146d4af5e1f0e9e53559b7fcce60f0b656288a0c1d0fe4'
-            '419b09b1794f3d84b227a9a32c9c217950ec78aa94c3b07ad25f3b378eeb2333'
-            '353228a0d33bfa3e8ce8d44b2fc95d77fd4ebc20c4a1d03dab7b5f22106c5258'
-            '7a2df4500ce8cc1dcac9bc1a28aef486ec85000c332ec2021c72e01430350883'
-            'b625fd177d30b5a8a04f141ea77c6b0171029bc989a64d0269eb540eb1b5b2fd'
-            'e9c2535e93ac5e9142ea161a8091048249d97dc6a6d8fa89f9e54b09651e20ad'
-            '4a697982e018e16ca88b20befccd69fa19951128327b0c78589686a6fd2dff4e'
-            'ef1ed0a724e0a48dc2d0dfbdee988780e0b5aec075005a82e99b929d21577d71'
-            'e22a2244ddbd22967b2fe1885272c5cf13918648f24950b65e18caa396e3c901'
-            '2de60e761c808dc9392d0207a9a2d22f40cfef39d8a60f62ea28be6c1abde117'
-            'ff0bcde51a4c161bcfb3c106aa5894b6bd2d72bc3a7c0a4d26ccb0939cdc67c7'
-            '9e90af61118ddf8b2387202779e7ea2757dde9c90e5ca52d08237ae81029d57d')
+            '984bcc3eccac32713e49ff33bc4ac59c64c59aef5da9f6ac8dbbaf9219efee42'
+            'ee9df0e749f1421ffe1f5e9655784625ecd01c44545df45ae77278ef501ce0d6'
+            'b963f7377f49bd93f2713df4fd7d14029aeb9f1838db5688daa4abb326d4c914'
+            'bf433da7f3956bd52119d253a651034aa282f8887ac4e0c1ff5410b8de1f05ac'
+            'd05221e07d113f330d4e62a2caee33beee3c13895df60abc828cf068a66a6342'
+            '3012b19769f92379054b620cb9bfe22b5b7d8fcd5820ffe341c5c83975f6a70f'
+            '5cb1d14512c7cad1aae11782da20038fb42807301659ef765c65b40530fb9559'
+            '9a1de51b82793c4216a03ebee091a9c81642f64a40c9540c5143e89e814a1b89'
+            'a943c31a4502fdbc4ad38e2968b8dbef86f9e67e361e412da30d06050c9ee84b'
+            'a2e809cf359ebe3e941b2f7d2b8c407d29e29f4084bdb38a6f75efda83bd5fcb'
+            '9039e66da3aea75af04a9b38b9cef88ec8826483f3706a455d1388a2dd84427f'
+            '333a55fa88aa46e294674b15df2cd64224f7beb86d502858b2d1838b13fc08bc')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
