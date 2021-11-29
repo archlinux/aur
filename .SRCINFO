@@ -1,6 +1,6 @@
 pkgbase = balena-etcher
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	epoch = 2
 	url = https://balena.io/etcher
@@ -20,7 +20,7 @@ pkgbase = balena-etcher
 	depends = libxss
 	depends = nss
 	depends = alsa-lib
-	depends = nodejs
+	depends = nodejs<17
 	depends = glib2
 	depends = polkit
 	depends = libusb
@@ -29,7 +29,7 @@ pkgbase = balena-etcher
 	conflicts = etcher-git
 	conflicts = etcher-bin
 	options = !strip
-	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.7.0
+	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.7.1
 	source = balena-etcher-electron.sh
 	source = balena-etcher-electron.desktop
 	sha256sums = SKIP
