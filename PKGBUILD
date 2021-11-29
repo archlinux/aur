@@ -1,6 +1,6 @@
 #Maintainer: Justine Smithies <justine at smithies dot me dot uk>
 pkgname=swayr-git
-pkgver=97ee8cb
+pkgver=v0.10.1.r0.g97ee8cb
 pkgrel=1
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd swayr
-  git describe --always
+  git describe --long --tags | sed 's/^short-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
