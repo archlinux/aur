@@ -3,7 +3,7 @@
 pkgname=tidal-hifi-git
 pkgrel=1
 pkgver=2.4.0.r0.g5ef6074
-pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
+pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
