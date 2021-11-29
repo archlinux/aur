@@ -1,7 +1,7 @@
-# Author: Matt McDonald <gardotd426@gmail.com>
+# Author: gardotd426 <gardotd426@gmail.com>
 # Contributor: Kevin Gilmer
 # Contributor: Avinash Duduskar <strykar@hotmail.com>
-# Maintainer: Matt McDonald <gardotd426@gmail.com>
+# Maintainer: gardotd426 <gardotd426@gmail.com>
 
 
 pkgbase=regolith-de
