@@ -1,7 +1,7 @@
 pkgbase = ttf-lcsmith-typewriter
 	pkgdesc = L. C. Smith Typewriter font.
 	pkgver = 20120906
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.typewriters.ch/collection/l_c_smith_no5.html
 	install = ttf-lcsmith-typewriter.install
 	arch = any
@@ -10,9 +10,8 @@ pkgbase = ttf-lcsmith-typewriter
 	makedepends = unzip
 	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = http://www.typewriters.ch/fonts/L.C.%20Smith%20typewriter%20font.zip
+	depends = xorg-font-util
+	source = https://web.archive.org/web/20180925203852/http://www.typewriters.ch/fonts/L.C.%20Smith%20typewriter%20font.zip
 	sha512sums = e23a4b3afdc23127fb2ebdd6af6d9c40bdc5692dd02ffe8bb4dbefec7326a8e8c7b1a28d84f2739c61cc82e32b43810bee4a85fa3f7fb724a311884e6a35953b
 
 pkgname = ttf-lcsmith-typewriter
-

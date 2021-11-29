@@ -1,17 +1,17 @@
-# Maintainer: Michael Düll <mail@akurei.me> PGP-Key: AAAEE882
+# Maintainer: Michael Düll <mail@akurei.me> PGP-Key: 24060000C0DE1337
 
 pkgname=ttf-lcsmith-typewriter
 pkgver=20120906
-pkgrel=2
+pkgrel=3
 pkgdesc='L. C. Smith Typewriter font.'
 arch=('any')
 license=('custom:free_for_non_commercial_use')
 url="http://www.typewriters.ch/collection/l_c_smith_no5.html"
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util')
 makedepends=('wget' 'unzip')
 install=$pkgname.install
 source=(
-  "http://www.typewriters.ch/fonts/L.C.%20Smith%20typewriter%20font.zip"
+  "https://web.archive.org/web/20180925203852/http://www.typewriters.ch/fonts/L.C.%20Smith%20typewriter%20font.zip"
 )
 
 package()
