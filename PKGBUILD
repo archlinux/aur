@@ -109,10 +109,9 @@ if [ "$_compiler" = "clang" ]; then
   _LLVM=1
 fi
 options=('!strip')
-_major=$(echo $xanmod | cut -d'.' -f1,2)
-_patchver=$(echo $pkgver | cut -d'.' -f3)
-_branch="$(echo $xanmod | cut -d'.' -f1).x"
-_localversion=$(echo $pkgver | cut -d'.' -f4)
+_major=${xanmod%\.*\-*}           # 5.15
+_branch=${xanmod%%\.*\-*}.x       # 5.x
+_localversion=${pkgver##*\.}      # xanmod1
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${xanmod}/patch-${xanmod}.xz"
