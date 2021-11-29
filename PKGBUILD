@@ -3,9 +3,9 @@
 
 pkgname=nginx-mod-slowfs-cache
 pkgver=1.10
-pkgrel=8
+pkgrel=9
 _dirname="ngx_slowfs_cache-${pkgver}"
-_nginxver=1.20.1
+_nginxver=1.20.2
 
 pkgdesc='NGINX module that adds ability to cache static files'
 arch=('x86_64')
