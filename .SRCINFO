@@ -10,6 +10,8 @@ pkgbase = worm-git
 	makedepends = nim
 	makedepends = git
 	depends = xorg-server
+	provides = worm
+	conflicts = worm
 	source = worm::git+https://github.com/codic12/worm.git
 	sha256sums = SKIP
 

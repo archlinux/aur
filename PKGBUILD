@@ -12,9 +12,10 @@ license=('MIT')
 makedepends=('nimble' 'nim' 'git')
 depends=('xorg-server')
 install=$_pkgbase.install
-
 source=("$_pkgbase::git+$url.git")
 sha256sums=('SKIP')
+provides=("worm")
+conflicts=("worm")
 
 pkgver() {
     cd "$_pkgbase"
