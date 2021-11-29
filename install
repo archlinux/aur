@@ -1,63 +1,61 @@
 #!/bin/sh
 
 post_install() {
+  post_upgrade
 
-  ## From Debian packages ##
-
-  # We assume that the LibreOffice to be used is built TDF-style
-  # and installs in /opt/collaboraoffice6.4, and that /opt/lool is
-  # on the same file system
-  mkdir -p opt/lool/child-roots
-
-  ## From Docker script ##
-
-  # Fix domain name resolution from jails
-  : # no need
-
-  # Generate new SSL certificate instead of using the default
-  #+
-  # Replace trusted host and set admin username and password
   cat <<-THEEND
 IMPORTANT!
 IMPORTANT! A certificate must be issued if restricted HTTP access is not possible.
-IMPORTANT! See /usr/share/doc/loolwsd/example.mkcert.sh for guidance.
+IMPORTANT! See /usr/share/doc/coolwsd/example.mkcert.sh for guidance.
 IMPORTANT!
-IMPORTANT! The username and password must be set in /etc/loolwsd/loolwsd.xml
+IMPORTANT! The username and password must be set in /etc/coolwsd/coolwsd.xml
 IMPORTANT! for the admin console.
 IMPORTANT!
-IMPORTANT! In /etc/loolwsd/loolwsd.xml, the host should be set to a value
+IMPORTANT! In /etc/coolwsd/coolwsd.xml, the host should be set to a value
 IMPORTANT! different than “localhost”.
 IMPORTANT!
-IMPORTANT! You may also want to force the server_name in /etc/loolwsd/loolwsd.xml.
+IMPORTANT! You may also want to force the server_name in /etc/coolwsd/coolwsd.xml.
 IMPORTANT!
 THEEND
-
-  post_upgrade
 }
 
 pre_upgrade() {
-  systemctl stop loolwsd.service
+  systemctl stop coolwsd.service 2>/dev/null || true
 }
 
 post_upgrade() {
+  systemd-sysusers collabora-online-server-nodocker.conf
+  systemd-tmpfiles --create --clean collabora-online-server-nodocker.conf
 
   ## From Debian packages ##
 
-  setcap cap_chown,cap_fowner,cap_mknod,cap_sys_chroot=ep usr/bin/loolforkit || true
-  setcap cap_sys_admin=ep usr/bin/loolmount || true # this line + cap_chown above contributed by celogeek
+	setcap cap_fowner,cap_chown,cap_mknod,cap_sys_chroot=ep usr/bin/coolforkit || true
+	setcap cap_sys_admin=ep /usr/bin/coolmount || true
 
-  systemd-sysusers collabora-online-server-nodocker.conf
-  chown lool:lool etc/loolwsd/loolwsd.xml
-  chmod 640       etc/loolwsd/loolwsd.xml
+	# We assume that the LibreOffice to be used is built TDF-style
+	# and installs in /opt/collaboraoffice, and that /opt/cool is
+	# on the same file system
 
-  chown -R lool:lool opt/lool
+	rm -rf opt/cool
+	mkdir -p opt/cool/child-roots
+	chown cool: opt/cool
+	chown cool: opt/cool/child-roots
 
-  fc-cache opt/collaboraoffice6.4/share/fonts/truetype
-  su lool --shell=/bin/sh -c 'set -x; loolwsd-systemplate-setup /opt/lool/systemplate /opt/collaboraoffice6.4 >/dev/null'
+	fc-cache opt/collaboraoffice/share/fonts/truetype
+
+	coolwsd-systemplate-setup opt/cool/systemplate opt/collaboraoffice >/dev/null 2>&1
+	coolwsd-generate-proof-key >/dev/null 2>&1
+
+  ## From Docker script ##
+
+  cp /etc/resolv.conf /etc/hosts opt/cool/systemplate/etc/
+  chown cool:cool opt/cool/systemplate/etc/hosts opt/cool/systemplate/etc/resolv.conf
+
+  ##
 
   systemctl daemon-reload
-  if systemctl list-unit-files loolwsd.service | grep -q 'enabled$'; then
-    systemctl start loolwsd.service
+  if systemctl list-unit-files coolwsd.service | grep -q 'enabled$'; then
+    systemctl start coolwsd.service
   fi
 }
 
@@ -66,6 +64,6 @@ pre_remove() {
 }
 
 post_remove() {
-  rm -rf /var/cache/loolwsd
-  rm -rf /opt/lool
+  systemctl disable coolwsd.service 2>/dev/null || true
+  rm -rf opt/cool
 }

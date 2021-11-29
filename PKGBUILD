@@ -5,8 +5,8 @@
 _I18N_EREGEX='.*'
 _pkgname=collabora-online-server-nodocker
 
-# taking version of loolwsd:
-pkgver=6.4.11
+# taking version of coolwsd:
+pkgver=21.11.0.3
 pkgrel=1
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -19,7 +19,6 @@ optdepends=(
   'hyphen: Use with language-specific hyphen rules for LibreOffice hyphenation'
 )
 
-# From Dockerfile’s install script, minus inotify-tools+psmisc: not actually part of CODE
 depends=()
 
 source=(
@@ -31,14 +30,20 @@ source=(
 )
 sha1sums=(
   'SKIP'
-  '876319e04146b36bd53b06e14917c86cb8ec6acc'
+  '69c3f1ee98aa44aae759c011fcfac6502676535e'
   '3fe2db88f4f7ee203520c59760582103d3e41210'
-  '2d271f9493ea14c675af1bfa76f6b654569dd51f'
-  'f9c102a06b2582548f13121e78790237e2cb38e1'
+  'b44b1ddaa362c6fdf65a0899beaa40dada3b232e'
+  'aeb478d352c89acb43d651de75fb9951f47e8556'
 )
 
 # From deb’s conffiles
 backup=(
+  # new:
+  etc/apache2/conf-available/coolwsd.conf
+  etc/coolwsd/coolkitconfig.xcu
+  etc/coolwsd/coolwsd.xml
+  etc/nginx/snippets/coolwsd.conf
+  # old:
   etc/apache2/conf-available/loolwsd.conf
   etc/loolwsd/loolkitconfig.xcu
   etc/loolwsd/loolwsd.xml
@@ -50,8 +55,8 @@ backup=(
 # From deb’s pre/post scripts
 install=install
 
-# From Dockerfile (https://github.com/CollaboraOnline/Docker-CODE), minus i18n files
-_upstream_deps=(loolwsd code-brand)
+# From Dockerfile (https://github.com/CollaboraOnline/online/tree/master/docker), minus i18n files
+_upstream_deps=(coolwsd code-brand)
 
 # DEBIAN–ARCHLINUX EQUIVALENCES
 #
@@ -71,6 +76,8 @@ _upstream_deps=(loolwsd code-brand)
 #    you may need to create the package if it does not exist (usually old versions).
 #  * Else the missing file is probably expected to be present on any Debian/Ubuntu system;
 #    thus add the missing dependency in the $depends array.
+#
+# 5. Review files under ./src/_control/* and see if install/upgrade actions have changed.
 _upstream_equiv='
   adduser             = 
   cpio                = cpio
@@ -133,7 +140,7 @@ _upstream_handle_dep() {
 if [ ${#source[*]} -eq 5 ]; then
   curl -s "${source[0]}" >Packages
   pkgver=$(
-    awk -F$'\n' -vRS= '/^Package:[[:blank:]]*loolwsd\n/{print}' Packages \
+    awk -F$'\n' -vRS= '/^Package:[[:blank:]]*coolwsd\n/{print}' Packages \
     | sed -n 's/^Version:[[:blank:]]*\(.*\)-.*/\1/p'
   )
 
@@ -148,9 +155,9 @@ if [ ${#source[*]} -eq 5 ]; then
     pkgname=($_pkgname)
     eval "package_$_pkgname() { _main_package; }"
     for p in $( \
-      sed -nr 's#^Package:[[:blank:]]*((collaboraoffice[0-9.]+-dict|collaboraofficebasis[0-9.]+)-[a-z]{2}(-[a-z]+)?)$#\1#p' Packages \
+      sed -nr 's#^Package:[[:blank:]]*((collaboraoffice-dict|collaboraofficebasis)-[a-z]{2}(-[a-z]+)?)$#\1#p' Packages \
       | grep -ve '-en-us$' \
-      | grep -E "[0-9.]+(-dict)?-($_I18N_EREGEX)\$")
+      | grep -E "(dict|basis)-($_I18N_EREGEX)\$")
     do
       # for each .DEB file found that matches the requested i18n regex, register that .DEB as a i18n one
       __i18n_debs[$p]=_pending_
@@ -160,7 +167,7 @@ if [ ${#source[*]} -eq 5 ]; then
       pkgname+=(${_pkgname}_${l})
       eval "package_${_pkgname}_${l}() { _i18n_package $l; }"
     done < <( \
-      sed -nr 's#^Package:[[:blank:]]*(collaboraoffice[0-9.]+-dict-|collaboraofficebasis[0-9.]+-)([a-z]{2}(-[a-z]+)?)$#\2#p' Packages \
+      sed -nr 's#^Package:[[:blank:]]*(collaboraoffice-dict-|collaboraofficebasis-)([a-z]{2}(-[a-z]+)?)$#\2#p' Packages \
       | grep -vxF en-us \
       | sort -u \
       | grep -Exe "$_I18N_EREGEX")
@@ -183,6 +190,22 @@ echo "I18N DEBs: $_i18n_debs" >&2
 unset _upstream_handle_dep _upstream_equiv _upstream_deps __main_debs __i18n_debs
 # <<<< END OF DYNAMIC ADAPTATION OF PKGBUILD
 
+_unpack_deb_file() {
+  local target="$1"
+  local deb="$2"
+  local archive="$3"
+  local data="$(ar t "$deb" | grep "^${archive}\.")"
+  if [ -n "$data" ]; then
+    [ -d "$target" ] || mkdir -p "$target"
+    case "$data" in
+    *.bz2) ar p "$deb" "$data" | tar -C "$target" -xjf - ;;
+    *.gz) ar p "$deb" "$data" | tar -C "$target" -xzf - ;;
+    *.xz) ar p "$deb" "$data" | tar -C "$target" -xJf - ;;
+    *) echo "Unknown file format: $data" >&2; exit 1 ;;
+    esac
+  fi
+}
+
 _i18n_package() {
   depends=()
   backup=()
@@ -193,15 +216,9 @@ _i18n_package() {
   cd "$pkgdir"
 
   while read f; do
-    [[ "$f" =~ [0-9.]+(-dict)?-$1 ]] || continue
+    [[ "$f" =~ (dict|basis)-$1 ]] || continue
     f="$srcdir/$(basename "$f")"
-    data="$(ar t "$f" | grep ^data)"
-    case "$data" in
-    *.bz2) ar p "$f" "$data" | tar -xjf - ;;
-    *.gz) ar p "$f" "$data" | tar -xzf - ;;
-    *.xz) ar p "$f" "$data" | tar -xJf - ;;
-    *) echo "Unknown file format: $data" >&2; exit 1 ;;
-    esac
+    _unpack_deb_file "$pkgdir" "$f" data
   done < <(tr '|' '\n' <<<"$_i18n_debs")
   chown -R $(id -nu):$(id -ng) .
 }
@@ -214,14 +231,11 @@ _main_package() {
 
   while read f; do
     f="$srcdir/$(basename "$f")"
-    data="$(ar t "$f" | grep ^data)"
-    case "$data" in
-    *.bz2) ar p "$f" "$data" | tar -xjf - ;;
-    *.gz) ar p "$f" "$data" | tar -xzf - ;;
-    *.xz) ar p "$f" "$data" | tar -xJf - ;;
-    *) echo "Unknown file format: $data" >&2; exit 1 ;;
-    esac
+    _unpack_deb_file "$pkgdir" "$f" data
+    _unpack_deb_file "$srcdir/_control/$(basename "$f")" "$f" control
   done < <(tr '|' '\n' <<<"$_main_debs")
+  find "$srcdir/_control" -type f \( -name control -o -name copyright -o -name md5sums \) -exec rm -f {} +
+  find "$srcdir/_control" -depth -empty -exec rm -rf {} \;
   chown -R $(id -nu):$(id -ng) .
 
   # /lib is deprecated
@@ -236,18 +250,18 @@ _main_package() {
 
   # add dependency on systemd
   sed -i '/^\[Unit\]/ a \
-After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
+After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/coolwsd.service
 
   # keep the cert-making script from the Dockerfile for reference
-  install -Dm0755 "$srcdir"/mkcert_example.sh usr/share/doc/loolwsd/example.mkcert.sh
+  install -Dm0755 "$srcdir"/mkcert_example.sh usr/share/doc/coolwsd/example.mkcert.sh
 
   # do not provide libreoffice for the desktop (seems broken…)
-  rm -rf opt/collaboraoffice6.4/share/xdg
+  rm -rf opt/collaboraoffice/share/xdg
 
   # fix lib + desktop files’ permissions
-  chmod a+x opt/collaboraoffice6.4/program/lib*.so
+  chmod a+x opt/collaboraoffice/program/lib*.so
 
   # https://github.com/CollaboraOnline/Docker-CODE/issues/32
   [ -d etc/sysconfig ] || mkdir etc/sysconfig
-  echo 'SLEEPFORDEBUGGER=0' >>etc/sysconfig/loolwsd
+  echo 'SLEEPFORDEBUGGER=0' >>etc/sysconfig/coolwsd
 }
