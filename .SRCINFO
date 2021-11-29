@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (pre-compiled binaries)
-	pkgver = 1.0.8744
+	pkgver = 1.0.9389
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -13,22 +13,22 @@ pkgbase = intel-graphics-compiler-bin
 	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
-	noextract = intel-igc-core_1.0.8744_amd64.deb
-	noextract = intel-igc-media_1.0.8744_amd64.deb
-	noextract = intel-igc-opencl-devel_1.0.8744_amd64.deb
-	noextract = intel-igc-opencl_1.0.8744_amd64.deb
+	noextract = intel-igc-core_1.0.9389_amd64.deb
+	noextract = intel-igc-media_1.0.9389_amd64.deb
+	noextract = intel-igc-opencl-devel_1.0.9389_amd64.deb
+	noextract = intel-igc-opencl_1.0.9389_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.8744/intel-igc-core_1.0.8744_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.8744/intel-igc-media_1.0.8744_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.8744/intel-igc-opencl-devel_1.0.8744_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.8744/intel-igc-opencl_1.0.8744_amd64.deb
-	source = git+https://github.com/intel/opencl-clang.git#commit=c8cd72e32b6abc18ce6da71c357ea45ba78b52f0
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9389/intel-igc-core_1.0.9389_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9389/intel-igc-media_1.0.9389_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9389/intel-igc-opencl-devel_1.0.9389_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9389/intel-igc-opencl_1.0.9389_amd64.deb
+	source = git+https://github.com/intel/opencl-clang.git#commit=924763064c7c3f706bd824eb704d2d6408f9127e
 	source = LICENSE
-	sha256sums = d3e96527970a508c5eeeee7afec251dab19bcd15eaf7921c6b007194a5d627b7
-	sha256sums = cb9ff19a53ab0ec29aee87b9740039f7ba1ca72215ab097d9a68751fca1dc3d6
-	sha256sums = 5d2f5394e2c083114f32896e5e342e2dc11ad72f6e9730bf12faefa20afca427
-	sha256sums = 73a115e83d6860e9f6a5772ebfe35822bc7f13c6dcec6a94cc56ee6d557bddab
+	sha256sums = 0863f244a1c7b14663822551b6cc679af1627fa3668dbc468d02191cc390a877
+	sha256sums = 74130d943171531a90bd2b707adb412840f9cf5a8c76367c6a78be9178a2f46c
+	sha256sums = 1489134054907a318cda29adcc0ef214997f9753bad511506a0879a0bf1a28f8
+	sha256sums = 569da2e0202473712478d788c2b25ad8e74f532c93927f9fd9617aafcdf96037
 	sha256sums = SKIP
 	sha256sums = 0ddcc820928d5fc03b6c1271de8c0f9e9be74717f872956cc3fc4ae25eca9d90
 
