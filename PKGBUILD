@@ -2,7 +2,7 @@
 
 _pkgbase='wsgilib'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='High-level WSGI library based on flask'
 arch=('any')
