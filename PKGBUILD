@@ -2,7 +2,7 @@
 
 pkgname=scratch-desktop
 pkgver=3.26.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Create and share your own interactive stories, games, music and art"
 url="https://scratch.mit.edu"
 arch=('x86_64')

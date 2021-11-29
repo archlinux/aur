@@ -1,7 +1,7 @@
 pkgbase = scratch-desktop
 	pkgdesc = Create and share your own interactive stories, games, music and art
 	pkgver = 3.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://scratch.mit.edu
 	arch = x86_64
 	license = GPL
