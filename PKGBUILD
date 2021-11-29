@@ -1,9 +1,10 @@
 # Maintainer: Mufeed Ali <lastweakness@tuta.io>
+# Maintainer: Salamandar <salamandar@salamandar.fr>
 
 pkgname=keepass-diff
 _author=Narigo
 _gitname=keepass-diff
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Tool to find diff between KeePass (*.kdbx) files'
 arch=(any)
@@ -12,8 +13,12 @@ license=(MIT)
 makedepends=(
   cargo
 )
-source=("$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('08cbab6c7120635a31396091e726ede86a957c835a899750a96e621888714159')
+source=(
+  "$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz"
+)
+sha256sums=(
+  '9f4bfedefd0d99c79ddd5458c021bb76fc70b04cac2eb09896e1740f696156c9'
+)
 
 build() {
   cd "$_gitname-$pkgver"
