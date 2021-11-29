@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             '1772173d005de0502ded847316456104561e5a8e22934b0f5a5b9c91ae44ca79')
 
 pkgver() {
-  cd $srcdir/kart-public
+  cd "$srcdir"/kart-public
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
