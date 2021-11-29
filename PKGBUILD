@@ -4,7 +4,7 @@
 
 pkgname='monero-feather'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free Monero desktop wallet'
 license=('BSD')
 arch=('x86_64')
@@ -12,6 +12,8 @@ url="https://featherwallet.org"
 depends=('libzip' 'boost-libs' 'libunwind' 'openssl' 'zeromq' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'libgcrypt'
     'qrencode' 'libsodium' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor' 'zbar')
 makedepends=('git' 'cmake' 'boost')
+provides=('monero-feather')
+conflicts=('monero-feather' 'monero-feather-git')
 
 source=("${pkgname}"::"git+https://git.featherwallet.org/feather/feather")
 
