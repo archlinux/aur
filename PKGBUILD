@@ -6,7 +6,7 @@ _channel=beta
 arch=('x86_64' 'aarch64')
 pkgver=2.13.02
 pkgrel=1
-pkgdesc="A generic ZigBee monitoring and control tool"
+pkgdesc="A generic ZigBee monitoring and control tool (development headers)"
 url="https://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
 
