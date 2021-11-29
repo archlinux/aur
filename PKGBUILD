@@ -23,5 +23,5 @@ package() {
   cd "${srcdir}"/translate-$pkgver
 
   python -s setup.py install --root="${pkgdir}" --optimize=1
-  python -m compileall "${pkgdir}"/usr/lib/python3.9/site-packages/translate
+  python -m compileall "${pkgdir}"/usr/lib/python3.10/site-packages/translate
 }
