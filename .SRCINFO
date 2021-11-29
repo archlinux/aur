@@ -1,0 +1,14 @@
+pkgbase = python2-backports.entry-points-selectable
+	pkgdesc = Compatibility shim providing selectable entry points for older implementations
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://github.com/jaraco/backports.entry_points_selectable
+	arch = any
+	license = MIT
+	checkdepends = python2-pytest
+	makedepends = python2-setuptools
+	depends = python2-backports
+	source = https://pypi.io/packages/source/b/backports.entry-points-selectable/backports.entry_points_selectable-1.1.0.tar.gz
+	sha512sums = 86c794899cac2f916b36388fd071a619ef27743ac94f0bb058e6157d02481109088ed7891c7775c2f859b92150315acce9052b04ae000363c54af052fbf50ea7
+
+pkgname = python2-backports.entry-points-selectable
