@@ -1,7 +1,6 @@
 # Maintainer: Michael Migliore <mcmigliore+aur@gmail.com>
 # Maintainer: Mathieu Wespthal <mathieu.westphal+aur@gmail.com>
 
-export GIT_LFS_SKIP_SMUDGE=1
 pkgname=f3d
 pkgver=1.1.1
 pkgrel=1
@@ -9,8 +8,8 @@ pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('BSD')
-depends=('vtk' 'ospray')
-makedepends=('git' 'git-lfs' 'cmake')
+depends=('vtk' 'netcdf' 'ospray')
+makedepends=('cmake')
 source=("https://github.com/$pkgname-app/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('68bdbe3a90f2cd553d5e090a95d3c847e2a2f06abbe225ffecd47d3d29978b0a')
 
