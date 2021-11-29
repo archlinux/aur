@@ -8,7 +8,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -178,6 +178,7 @@ build() {
     --enable-nvenc \
     --enable-openssl \
     --enable-shared \
+    --enable-vaapi \
     --enable-version3 \
     --enable-libfdk_aac \
     --enable-nonfree
