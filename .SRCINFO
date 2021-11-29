@@ -12,7 +12,7 @@ pkgbase = gnunet-fuse-git
 	provides = gnunet-fuse
 	conflicts = gnunet-fuse
 	conflicts = gnunet-fuse-bin
-	source = git+https://git.gnunet.org/git/gnunet-fuse.git
+	source = git+https://git.gnunet.org/gnunet-fuse.git
 	md5sums = SKIP
 
 pkgname = gnunet-fuse-git

@@ -12,7 +12,7 @@ provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
 depends=('gnunet' 'fuse2' 'libextractor')
 makedepends=('autoconf')
-source=("git+https://git.gnunet.org/git/${_appname}.git")
+source=("git+https://git.gnunet.org/${_appname}.git")
 
 md5sums=('SKIP')
 
