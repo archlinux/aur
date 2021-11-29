@@ -1,21 +1,21 @@
 pkgbase = wargus-git
-	pkgdesc = Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine (git version)
-	pkgver = 2.4.0
+	pkgdesc = Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine (dev version)
+	pkgver = 3.1.3.r2697.6079ff28_20211129
 	pkgrel = 1
-	url = https://github.com/Wargus/wargus
+	url = https://github.com/WARGUS/WARGUS
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = stratagus=2.4.0
+	makedepends = git
+	makedepends = cmake
+	depends = stratagus-git
 	depends = ffmpeg2theora
 	depends = cdparanoia
 	depends = timidity++
-	depends = gtk2
-	provides = wargus=2.4.0
+	provides = wargus-git
+	provides = wargus
 	conflicts = wargus
-	replaces = wargus
-	source = wargus::git://github.com/Wargus/wargus.git
+	source = wargus-git::git://github.com/Wargus/wargus.git
 	md5sums = SKIP
 
 pkgname = wargus-git
-
