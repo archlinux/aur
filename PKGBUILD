@@ -2,30 +2,29 @@
 # Upstream URL: https://gitlab.com/gabmus/gnome-feeds
 
 pkgname=gfeeds-git
-pkgver=0.16.2.r0.g01e4df4
+pkgver=0.16.2.r167.g807ceb0
 pkgrel=1
 pkgdesc='News reader for GNOME'
 arch=('any')
 url='https://gitlab.com/gabmus/gnome-feeds'
 license=('GPL3')
 depends=(
-  'gtk3'
+  'gtk4'
   'python'
   'python-pytz'
   'python-dateutil'
   'python-pillow'
-  'libhandy>=0.83'
-  'python-listparser'
-  'python-feedparser'
+  'libadwaita-git'
   'python-requests'
   'python-lxml'
-  'webkit2gtk'
+  'webkit2gtk-5.0'
   'python-html5lib'
   'python-gobject'
   'gobject-introspection'
   'python-readability-lxml'
   'python-pygments'
   'python-beautifulsoup4'
+  'python-syndom-git'
 )
 replaces=(gnome-feeds gnome-feeds-git)
 makedepends=('git' 'meson')
@@ -35,21 +34,19 @@ source=("gfeeds::git+https://gitlab.gnome.org/World/gfeeds")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/gfeeds"
+  cd "$srcdir/${pkgname%-git}"
   git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/gfeeds"
-  rm -rf build
-  mkdir build
-  cd build
-  meson --prefix /usr --buildtype release ..
-  ninja
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/gfeeds"
-  cd build
-  DESTDIR="$pkgdir" ninja install
+  meson install -C build --destdir "$pkgdir"
 }
