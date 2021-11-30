@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cocogitto-git
-pkgver=3.0.0.r2.geaf63bb
+pkgver=4.0.1.r1.gfb4a294
 pkgrel=1
 pkgdesc="Set of CLI tools for the conventional commit and semver specifications (git)"
 arch=('x86_64')
@@ -29,11 +29,12 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   cargo build --release --frozen
-  for bin in 'cog' 'coco'; do
-    "target/release/$bin" generate-completions bash > "completions/$bin.bash"
-    "target/release/$bin" generate-completions fish > "completions/$bin.fish"
-    "target/release/$bin" generate-completions zsh > "completions/_$bin"
-  done
+  target/release/coco --completion bash > "completions/coco.bash"
+  target/release/coco --completion fish > "completions/coco.fish"
+  target/release/coco --completion zsh > "completions/_coco"
+  target/release/cog generate-completions bash > "completions/cog.bash"
+  target/release/cog generate-completions fish > "completions/cog.fish"
+  target/release/cog generate-completions zsh > "completions/_cog"
 }
 
 #check() {
