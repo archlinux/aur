@@ -1,14 +1,13 @@
 pkgbase = lesspass
 	pkgdesc = Stateless open source password manager
-	pkgver = 10.0.0
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://lesspass.com
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/l/lesspass/lesspass-10.0.0.tar.gz
-	sha256sums = 631f086e58041753c4098ad8bbf1577cd21c2263069425e5f3df025de054d414
+	source = https://files.pythonhosted.org/packages/source/l/lesspass/lesspass-10.1.0.tar.gz
+	b2sums = c368b1478c42172427029188638f6f68319a6f62f1661f4cd7c17cf885875ed0b60b36072ad7d1b95719da7a65b3f5987c084988787f684d0d2afafc0f96065a
 
 pkgname = lesspass
-
