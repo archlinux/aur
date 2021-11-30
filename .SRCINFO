@@ -1,0 +1,20 @@
+pkgbase = feedbin-git
+	pkgdesc = A nice place to read on the web
+	pkgver = 2021.11.17
+	pkgrel = 1
+	url = https://feedbin.com/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ruby2.6
+	depends = ruby2.6-bundler
+	depends = postgresql
+	depends = redis
+	depends = memcached
+	depends = elasticsearch
+	provides = feedbin
+	conflicts = feedbin
+	source = git+https://github.com/feedbin/feedbin.git
+	sha256sums = SKIP
+
+pkgname = feedbin-git
