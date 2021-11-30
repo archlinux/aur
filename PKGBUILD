@@ -6,8 +6,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=41.1
-pkgrel=2
+pkgver=41.1+r20+ge3931f7b8
+pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -24,10 +24,10 @@ conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
 
-_commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
+_commit=e3931f7b8cbd44072137c5dc9de9041486daeade  # gnome-41
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-_shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
-_shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
+_shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.h"
+_shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.c"
 _settings_src="https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/2b934d0b3194f0b2adb9a5392e512c76/mutter-settings.tar"
 
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
@@ -56,7 +56,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
