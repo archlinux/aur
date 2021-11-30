@@ -1,4 +1,3 @@
-
 === Morgen 2.1.6
 
 * Bug Fixes
@@ -222,4 +221,15 @@ Bug Fixes
 - Fixed an issue preventing the Quick Join button to appear with many all-day events.
 - Fixed time zone helper showing out of the screen on the Day view.
 
+=== Morgen 2.3.4
+Improvements
+- We have made the size of the Morgen panel when using the Alt+C option the same for the Day and the Week views. This makes the transition smoother and gives more space for events and tasks in the Day view.
+- It is now possible to delete a calendar account from a device where the account itself is not authenticated. This covers some edge cases where it was not possible to add or remove an account.
 
+General Fixes
+- We disabled the possibility to RSVP to "This & Future occurrences". The reason is that this operation is not really supported by the calendar protocols and could lead to odd behaviors, like duplicate events. You can still RSVP to single occurrences or the entire event series.
+- We fixed a problem causing some events not to synchronize with the calendar provider immediately. This was a source of confusion as events would appear in Morgen but not immediately on other devices.
+- We fixed a problem delivering event invitations with some providers (e.g. Infomaniak).
+- We fixed a problem fetching events from some CalDAV providers.
+- We fixed a problem with Google Out-of-office (OOO) events. Before these events were displayed as one day longer than they actually were.
+- On a minor note, we fixed the downgrading alert. In general, it is not possible to downgrade Morgen to a previous version. A warning should be displayed if this is detected, but this warning was not displayed on some systems. This is now fixed.
