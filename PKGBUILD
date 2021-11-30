@@ -3,15 +3,15 @@
 
 pkgname=jexiftoolgui
 PkgName=jExifToolGUI
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="${PkgName} is a java/Swing graphical frontend for the excellent command-line ExifTool application by Phil Harvey"
 arch=('any')
 url="https://github.com/hvdwolf/${PkgName}"
 license=("GNU General Public License v3.0")
 depends=('java-runtime>=8' 'perl-image-exiftool' 'dcraw')
 source=("https://github.com/hvdwolf/${PkgName}/releases/download/${pkgver}/${pkgname}-${pkgver}.deb")
-md5sums=('057009cf8dbd32c5692e12c2916fadb4')
+md5sums=('e0902662f15741d95fa17104b5fcb543')
 
 prepare() {
 tar -xf data.tar.xz

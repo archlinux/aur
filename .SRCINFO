@@ -1,15 +1,14 @@
 pkgbase = jexiftoolgui
 	pkgdesc = jExifToolGUI is a java/Swing graphical frontend for the excellent command-line ExifTool application by Phil Harvey
-	pkgver = 1.8.1
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/hvdwolf/jExifToolGUI
 	arch = any
 	license = GNU General Public License v3.0
 	depends = java-runtime>=8
 	depends = perl-image-exiftool
 	depends = dcraw
-	source = https://github.com/hvdwolf/jExifToolGUI/releases/download/1.8.1/jexiftoolgui-1.8.1.deb
-	md5sums = 057009cf8dbd32c5692e12c2916fadb4
+	source = https://github.com/hvdwolf/jExifToolGUI/releases/download/1.9.0/jexiftoolgui-1.9.0.deb
+	md5sums = e0902662f15741d95fa17104b5fcb543
 
 pkgname = jexiftoolgui
-
