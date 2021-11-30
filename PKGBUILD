@@ -3,7 +3,7 @@ pkgname=goverlay-bin
 _id="io.github.benjamimgois.${pkgname%-bin}"
 _pkgver=0_7
 pkgver=${_pkgver//_/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -27,10 +27,15 @@ sha256sums=('0e65b999af868b5530a23ccc4c93ae335a83ba2119eb66a8761f725ab5982c2b'
             'a83b788c6ed87e6a33531eb51b967cfb4db610a1f8546fba38321fa2ba101166'
             '82baf73d583dd13f1073b2b8d6aa7edc0c558521a46d77bdf1a88cc401e7cc7f')
 
+prepare() {
+  sed -i "s|./${pkgname%-bin}|/usr/lib/${pkgname%-bin}/${pkgname%-bin}|g" "start_${pkgname%-bin}.sh"
+}
+
 package() {
-  install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
-  install -Dm644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1"
-  install -Dm644 "$_id.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "$_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
-  install -Dm644 "${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
+  install -Dm755 "start_${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
+  install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/lib/${pkgname%-bin}/"
+  install -Dm644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "$_id.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps/"
 }
