@@ -1,8 +1,8 @@
-# Maintainer: Sergey Starovoytov <sergey.starovoytov.94@gmail.com>
+# Maintainer: Drommer <drommer@github.com>
 
 pkgname=plasma5-theme-sweet-git
 _pkgname=sweet-kde
-pkgver=r15.5791401
+pkgver=r18.48e2fa4
 pkgrel=1
 pkgdesc="Dark and modern Sweet theme for Plasma based on Helium"
 provides=('plasma5-theme-sweet')
