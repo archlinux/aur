@@ -1,7 +1,7 @@
 # Maintainer: Ashvin Nihalani <	ashvin.nihalani+aur@gmail.com>
 pkgname=(webull-desktop)
 pkgver=4.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Invest in stocks, ETFs, and options with Webull Financial, all commission-free, $0 minimum deposit."
 arch=('x86_64')
 url="https://webull.com"

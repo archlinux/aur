@@ -1,6 +1,6 @@
 pkgbase = webull-desktop
 	pkgver = 4.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://webull.com
 	arch = x86_64
 	license = custom
