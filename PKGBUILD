@@ -6,8 +6,8 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-git
 _pkgname=findex
-pkgver=0.2.0.0580b23
-pkgrel=1
+pkgver=0
+pkgrel=0
 epoch=
 pkgdesc="Highly customizable finder with high performance. Written in Rust and uses GTK"
 arch=('x86_64')
