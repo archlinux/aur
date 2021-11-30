@@ -4,7 +4,7 @@ pkgbase = webull-desktop
 	url = https://webull.com
 	arch = x86_64
 	license = custom
-	depends = hicolor-icon-theme
+	depends = hicolor-icon-theme nss
 	source_x86_64 = https://pub.webull.com/us/desktop/qt_5.13.2_WebullDesktop_ubuntu_4.7.0.deb
 	sha512sums_x86_64 = a49ac1355c194aa1a0479fb1a12f2cc8769a2618cbab2c2fb6fd1692e95752d9f859f10f64b8288b9ddebd7d2a1d3da7a6cc4bfb6cd419e4e97fef351ec109c8
 
