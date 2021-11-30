@@ -1,0 +1,21 @@
+pkgbase = dhall-toml
+	pkgdesc = Convert between Dhall and TOML
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/dhall-lang/dhall-haskell/tree/master/dhall-toml
+	arch = x86_64
+	license = custom: BSD3
+	makedepends = ghc
+	makedepends = uusi
+	makedepends = haskell-doctest
+	makedepends = haskell-tasty
+	makedepends = haskell-tasty-hunit
+	depends = ghc-libs
+	depends = dhall
+	depends = haskell-prettyprinter
+	depends = haskell-tomland
+	depends = haskell-unordered-containers
+	source = https://hackage.haskell.org/packages/archive/dhall-toml/1.0.1/dhall-toml-1.0.1.tar.gz
+	sha256sums = 6b55ca62520ce4405ffd6eb8afb76b2df8eb5d2c086eb3a93c38a3c9298d8c08
+
+pkgname = dhall-toml
