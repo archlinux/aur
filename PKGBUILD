@@ -127,6 +127,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch"
         "PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
         "iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
+        "cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
+        "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "lg-laptop-Recognize-more-models.patch"
 
         # amd-pstate v4 included in Xanmod
         # multigenerational lru v5 included in Xanmod
@@ -180,6 +183,9 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'ce50ee3c64f6865234f6ec79fcbd87704494b0fbb7d3cc124f97244c731f9e61'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
+            '54f161457cc4de4ebd5770c16f14f7a47f1dbbc4f1af83dec651e6a8b1eaad56'
+            '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
+            '80538b0f529ed32118dac933d50599c6e843ae31882361fd88cd40a1dc7d21f9'
             'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
