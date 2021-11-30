@@ -53,7 +53,7 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # for some tips on using outline fonts with
                   # Xft, if you choose no toolkit or Lucid.
                   #
-NOCAIRO=          # Disable here. 
+NOCAIRO=          # Disable here.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
@@ -70,7 +70,7 @@ else
 pkgname="emacs28-git"
 fi
 pkgver=28.0.60.152178
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
