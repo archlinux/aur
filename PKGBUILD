@@ -2,7 +2,7 @@
 
 pkgname='python-apptools'
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application tools"
 arch=('any')
 url="https://github.com/enthought/apptools"
