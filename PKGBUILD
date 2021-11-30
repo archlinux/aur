@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=em-keyboard
 pkgdesc='Command-line utility for referencing emoji characters by name'
-pkgver=2.3.1
+pkgver=3.0.1
 pkgrel=1
 url=https://github.com/hugovk/em-keyboard
 license=(custom:MIT)
