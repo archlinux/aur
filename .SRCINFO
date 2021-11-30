@@ -1,0 +1,23 @@
+pkgbase = stow-dotfiles-git
+	pkgdesc = stow package with AitorATuin's patches for --dotfiles, git version
+	pkgver = 20190728
+	pkgrel = 1
+	url = https://github.com/aspiers/stow/issues/33
+	arch = x86_64
+	license = GPL2
+	checkdepends = perl-test-output
+	checkdepends = perl-io-stringy
+	makedepends = git
+	makedepends = texi2html
+	makedepends = texinfo
+	makedepends = texlive-core
+	depends = perl
+	provides = stow
+	conflicts = stow
+	conflicts = stow-git
+	source = git://git.savannah.gnu.org/stow.git
+	source = aitoratuin-dotfiles.patch
+	sha256sums = SKIP
+	sha256sums = effe1387783e6f0046ad02ffb1647a083d49a887bea5e09173ea45dd5a11548f
+
+pkgname = stow-dotfiles-git
