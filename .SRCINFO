@@ -1,6 +1,6 @@
 pkgbase = beamerpresenter
 	pkgdesc = Modular multi-screen pdf presenter
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	install = beamerpresenter.install
@@ -17,8 +17,7 @@ pkgbase = beamerpresenter
 	conflicts = beamerpresenter-git
 	backup = etc/xdg/beamerpresenter/beamerpresenter.conf
 	backup = etc/xdg/beamerpresenter/gui.json
-	source = beamerpresenter-0.2.0.tar.gz::https://github.com/stiglers-eponym/BeamerPresenter/archive/v0.2.0.tar.gz
-	sha256sums = 524a3509cafebf5ced7fad3bfb1c4b35267913baebd142885a74e029d37812e9
+	source = beamerpresenter-0.2.1.tar.gz::https://github.com/stiglers-eponym/BeamerPresenter/archive/v0.2.1.tar.gz
+	sha256sums = 3876bea71907aa64766cff6f7da6fd3bb50a89325e8dba64618a594e1749ed42
 
 pkgname = beamerpresenter
-
