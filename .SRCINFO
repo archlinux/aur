@@ -1,6 +1,6 @@
 pkgbase = python-configupdater
 	pkgdesc = Parser like ConfigParser but for updating configuration files
-	pkgver = 2.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/pyscaffold/configupdater
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-configupdater
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/C/ConfigUpdater/ConfigUpdater-2.0.tar.gz
-	sha256sums = 6a60447fb25e5cb5036cdd5761287ac5649135a49094bc8bd71d999417483441
+	source = https://files.pythonhosted.org/packages/source/C/ConfigUpdater/ConfigUpdater-3.0.1.tar.gz
+	sha256sums = 372a6a6ef598a118ec17927bec9486a7d36f44ccd3e641e879e0bf998b70924e
 
 pkgname = python-configupdater
-
