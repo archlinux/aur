@@ -1,8 +1,8 @@
 # Maintainer: Ashvin Nihalani <	ashvin.nihalani+aur@gmail.com>
 pkgname=(webull-desktop)
 pkgver=4.7.0
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Invest in stocks, ETFs, and options with Webull Financial, all commission-free, $0 minimum deposit."
 arch=('x86_64')
 url="https://webull.com"
 license=('custom')
@@ -13,10 +13,11 @@ sha512sums_x86_64=('a49ac1355c194aa1a0479fb1a12f2cc8769a2618cbab2c2fb6fd1692e957
 package(){
   bsdtar --no-same-owner -xf  data.tar.xz -C "${pkgdir}"
   mv "${pkgdir}"/usr/local/ "${pkgdir}"/opt
+  rm "${pkgdir}"/opt/WebullDesktop/libnssutil3.so
+  ln -s /usr/lib/libnssutil3.so "${pkgdir}"/opt/WebullDesktop/libnssutil3.so
   install -Dm644 "${pkgdir}"/opt/WebullDesktop/LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
   install -dm755 "${pkgdir}"/usr/bin
   ln -s /opt/WebullDesktop/WebullDesktop "${pkgdir}"/usr/bin
-  rm /opt/WebullDesktop/libnssutil3.so
-  ln -s /usr/lib/libnssutil3.so /opt/WebullDesktop/libnssutil3.so
   sed -i 's|Exec=/usr/local/WebullDesktop/WebullDesktop|Exec=LD_LIBRARY_PATH=/opt/WebullDesktop WebullDesktop|' "${pkgdir}"/usr/share/applications/WebullDesktop.desktop
 }
+ 
