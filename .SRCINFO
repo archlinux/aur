@@ -1,0 +1,12 @@
+pkgbase = gnome-shell-caps-pacman-hook
+	pkgdesc = Pacman hook to set CAP_SYS_NICE for gnome-shell executable
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = gnome-shell
+	depends = libcap
+	source = gnome-shell-caps.hook
+	sha256sums = e2beb32d7d8cfb645a0f2501c933ee682bf5dfa9b0486938ac2d36c566be1baa
+
+pkgname = gnome-shell-caps-pacman-hook

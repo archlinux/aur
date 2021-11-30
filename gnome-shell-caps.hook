@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = gnome-shell
+
+[Action]
+Description = Set CAP_SYS_NICE for gnome-shell...
+When = PostTransaction
+Exec = /usr/bin/setcap CAP_SYS_NICE=+ep /usr/bin/gnome-shell
