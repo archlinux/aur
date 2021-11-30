@@ -1,7 +1,7 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
 	pkgver = 0.5.9.1.r25.ge03f91f7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lutris.net/
 	arch = any
 	license = GPL3
@@ -37,6 +37,7 @@ pkgbase = lutris-git
 	optdepends = gvfs: GVFS backend
 	optdepends = lib32-glibc: for 32bit games support
 	optdepends = gamemode: Allows games to request a temporary set of optimisations
+	optdepends = lib32-gamemode: Allows games to request a temporary set of optimisations
 	optdepends = mangohud: Display the games' FPS + other information
 	optdepends = lib32-mangohud: Display the games' FPS + other information
 	optdepends = innoextract: Extract Inno Setup installers

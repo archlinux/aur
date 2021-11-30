@@ -6,7 +6,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
 pkgver=0.5.9.1.r25.ge03f91f7
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
@@ -26,6 +26,7 @@ optdepends=(
   'gvfs: GVFS backend'
   'lib32-glibc: for 32bit games support'
   'gamemode: Allows games to request a temporary set of optimisations'
+  'lib32-gamemode: Allows games to request a temporary set of optimisations'
   "mangohud: Display the games' FPS + other information"
   "lib32-mangohud: Display the games' FPS + other information"
   'innoextract: Extract Inno Setup installers'
