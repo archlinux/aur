@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=ferret
-pkgver=0.13.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A web scraping system aiming to simplify data extraction from the web'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,8 +9,8 @@ url='https://www.montferret.dev'
 license=('Apache')
 makedepends=('go')
 optdepends=('chromium: to handle dynamically rendered web pages')
-source=("https://github.com/MontFerret/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b9e243c6a3000173088f359512f3a1697abcfde1ce96917f6c10e5d1f98e84bb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MontFerret/${pkgname}/archive/v${pkgver}.tar.gz")
+b2sums=('b31e649034c32d3c2a6baa5475669c09a8feb9c95306621110ef02a7fa444732f383ff08b515448e3c2c0c6fd30f7c1278d6a4fdd18f7807a3903a4d0e94d981')
 
 build() {
   cd "${pkgname}-${pkgver}"
