@@ -4,11 +4,11 @@
 pkgname=python-dbg
 _major=3
 _minor=9
-_patch=7
+_patch=9
 _pybasever=${_major}
 _pyminorver=${_pybasever}.${_minor}
 pkgver=${_pyminorver}.${_patch}
-pkgrel=2
+pkgrel=1
 epoch=0
 pkgdesc="Python 3 interpreter (debug)."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ backup=()
 options=(!debug !strip)
 
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
-sha256sums=('f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57')
+sha256sums=('06828c04a573c073a4e51c4292a27c1be4ae26621c3edc7cf9318418ce3b6d27')
 
 prepare() {
     cd Python-${pkgver}
