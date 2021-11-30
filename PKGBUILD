@@ -32,6 +32,7 @@ validpgpkeys=()
 
 build() {
 	cd $_pkgname
+	git checkout development
 
 	rustup default stable
 	cargo build --release
