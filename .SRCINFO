@@ -1,6 +1,6 @@
 pkgbase = cocogitto-bin
 	pkgdesc = The conventional commits toolbox
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/cocogitto/cocogitto
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cocogitto-bin
 	license = MIT
 	makedepends = git
 	provides = cocogitto
-	source = https://github.com/cocogitto/cocogitto/releases/download/4.0.0/cocogitto-4.0.0-x86_64-unknown-linux-musl.tar.gz
-	md5sums = 6305efc833f24718e56b5dbd62537bc3
-	source_armv7h = https://github.com/cocogitto/cocogitto/releases/download/4.0.0/cocogitto-4.0.0-armv7-unknown-linux-musleabihf.tar.gz
-	md5sums_armv7h = e73716757add18a4bcaa93ef0afc6fcb
-	source_aarch64 = https://github.com/cocogitto/cocogitto/releases/download/4.0.0/cocogitto-4.0.0-aarch64-linux-android.tar.gz
-	md5sums_aarch64 = 7f3ff6c2377e5f28c7117d4c244337cc
+	source = https://github.com/cocogitto/cocogitto/releases/download/4.0.1/cocogitto-4.0.1-x86_64-unknown-linux-musl.tar.gz
+	md5sums = 88839fcdafa52de178239bf179e03f52
+	source_armv7h = https://github.com/cocogitto/cocogitto/releases/download/4.0.1/cocogitto-4.0.1-armv7-unknown-linux-musleabihf.tar.gz
+	md5sums_armv7h = deb2e132de756cb738fb2a2dddd4f602
+	source_aarch64 = https://github.com/cocogitto/cocogitto/releases/download/4.0.1/cocogitto-4.0.1-aarch64-linux-android.tar.gz
+	md5sums_aarch64 = 300357f41d72b0795236dfaee3ad7877
 
 pkgname = cocogitto-bin
