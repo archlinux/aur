@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ScratchJr
+Comment=ScratchJr Desktop Edition
+GenericName=ScratchJr
+Exec=ScratchJr %U
+Icon=ScratchJr
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+
