@@ -50,15 +50,15 @@ build() {
 # Note that `${srcdir}/md5sums` contains the absolute path to the files on disk
 # in the src paths.
 check() {
-    msg2 "Validating packaged md5sums"
+    echo "==> Validating packaged md5sums"
 
     if ! md5sum --status --check ${srcdir}/md5sums
     then
-        error "Packaged md5sum mismatch!"
+        echo "!!> Packaged md5sum mismatch!"
         exit 1
     fi
 
-    msg2 "Validation succeeded"
+    echo "==> Validation succeeded"
 }
 
 package() {
