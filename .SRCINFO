@@ -1,16 +1,15 @@
 pkgbase = python-stwcs-doc
 	pkgdesc = Documentation for STWCS
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://stwcs.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	makedepends = python-stwcs=1.7.1
+	makedepends = python-stwcs=1.7.2
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = texlive-latexextra
-	source = https://files.pythonhosted.org/packages/source/s/stwcs/stwcs-1.7.1.tar.gz
-	md5sums = 8af1c55c7a1508b3daa68fa04964fdf4
+	source = https://files.pythonhosted.org/packages/source/s/stwcs/stwcs-1.7.2.tar.gz
+	md5sums = 7c9a2236c3313737483f8643843a3cae
 
 pkgname = python-stwcs-doc
