@@ -1,0 +1,13 @@
+pkgbase = w80xprog-git
+	pkgdesc = A simple command line programmer interfacing for Winner Marco 800 series chips.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/John-sanpe/w80xprog.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = w80xprog::git+https://github.com/John-sanpe/w80xprog.git
+	md5sums = SKIP
+
+pkgname = w80xprog-git
