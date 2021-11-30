@@ -7,6 +7,7 @@ url='https://gitlab.gnome.org/GNOME/gtksourceview'
 license=('LGPL')
 arch=(x86_64 aarch64)
 depends=(gtk4)
+provides=(gtksourceview5=5.3.0)
 makedepends=(
 	gobject-introspection
 	gtk-doc
