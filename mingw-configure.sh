@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. mingw-env @TRIPLE@
+. /usr/bin/mingw-env @TRIPLE@
 
 # check if last arg is a path to configure, else use parent
 for last; do true; done
