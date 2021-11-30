@@ -8,6 +8,7 @@ pkgbase = feelpp
 	makedepends = cmake
 	makedepends = clang
 	makedepends = eigen
+	makedepends = openmp
 	depends = cln
 	depends = mumps
 	depends = slepc
@@ -17,7 +18,7 @@ pkgbase = feelpp
 	depends = glpk
 	depends = gsl
 	depends = python
-	depends = elastic
+	depends = elastic-git
 	depends = openvr
 	depends = libharu
 	source = feelpp-0.109.0::git+https://github.com/feelpp/feelpp.git#tag=v0.109.0
