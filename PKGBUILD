@@ -1,9 +1,9 @@
-# Maintainer: Sergey Starovoytov <sergey.starovoytov.94@gmail.com>
+# Maintainer: Drommer <drommer@github.com>
 
 pkgbase=sweet-theme-nova-git
 pkgname=(sweet-gtk-theme-nova-git sweet-kde-theme-nova-git kvantum-theme-sweet-nova-git sweet-cursor-theme-git)
 _pkgname=sweet
-pkgver=r157.93b2375
+pkgver=r218.741c4f3
 pkgrel=1
 pkgdesc="Colorful Sweet GTK and KDE theme"
 arch=('any')
@@ -56,7 +56,7 @@ package_kvantum-theme-sweet-nova-git() {
 	depends=(kvantum-qt5)
 	cd $_pkgname/kde
 	install -d $pkgdir/usr/share/Kvantum/Sweet
-	mv kvantum/* "$pkgdir/usr/share/Kvantum/Sweet"
+	mv Kvantum/* "$pkgdir/usr/share/Kvantum/Sweet"
 }
 
 package_sweet-cursor-theme-git() {
@@ -64,6 +64,6 @@ package_sweet-cursor-theme-git() {
 	conflicts=('xcursor-sweet')
 	pkgdesc="Sweet cursor theme"
 	cd $_pkgname/kde
-	install -d $pkgdir/usr/share/themes
-	mv cursors/Sweet-cursors "$pkgdir/usr/share/themes"
+	install -d $pkgdir/usr/share/icons
+	mv cursors/Sweet-cursors "$pkgdir/usr/share/icons"
 }

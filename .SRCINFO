@@ -1,6 +1,6 @@
 pkgbase = sweet-theme-nova-git
 	pkgdesc = Colorful Sweet GTK and KDE theme
-	pkgver = r157.93b2375
+	pkgver = r218.741c4f3
 	pkgrel = 1
 	url = https://github.com/EliverLara/sweet
 	arch = any
@@ -42,4 +42,3 @@ pkgname = sweet-cursor-theme-git
 	pkgdesc = Sweet cursor theme
 	provides = sweet-cursor-theme
 	conflicts = xcursor-sweet
-
