@@ -1,10 +1,11 @@
 pkgbase = cxbqn
 	pkgdesc = BQN virtual machine.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/ashermancinelli/cxbqn
 	arch = x86_64
 	license = GPL3
+	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
@@ -14,7 +15,7 @@ pkgbase = cxbqn
 	conflicts = cbqn
 	conflicts = cbqn-git
 	conflicts = cxbqn-git
-	source = cxbqn-0.8.0::git+https://github.com/ashermancinelli/cxbqn#tag=v0.8.0
+	source = cxbqn-0.8.1::git+https://github.com/ashermancinelli/cxbqn#tag=v0.8.1
 	sha256sums = SKIP
 
 pkgname = cxbqn
