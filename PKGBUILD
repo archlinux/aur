@@ -9,16 +9,21 @@ license=('custom')
 source=('git+https://github.com/Parrot-Developers/arsdk_manifests')
 options=(!emptydirs staticlibs)
 md5sums=('SKIP')
-makedepends=('repo' 'python' 'python2')
+makedepends=('repo' 'python2')
 
 prepare() {
 	cd "$srcdir"
-	repo init -u arsdk_manifests -b 4b50e865427e6f2f2f19be1d4c55ab87a03b804a \
+	yes|repo init -u arsdk_manifests -b 4b50e865427e6f2f2f19be1d4c55ab87a03b804a \
 			--no-clone-bundle --depth=1
 	repo sync
 }
 
 build() {
+	# Make sure to use python 2 with scripts: they fail with v3.6+
+	mkdir "$srcdir/bin" || true
+	ln -s /usr/bin/python2 "$srcdir/bin/python"
+	export PATH="$srcdir/bin":$PATH
+
 	"$srcdir"/build.sh -p arsdk-native -t build-sdk -j
 }
 

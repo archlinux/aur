@@ -6,7 +6,6 @@ pkgbase = arsdk3
 	arch = x86_64
 	license = custom
 	makedepends = repo
-	makedepends = python
 	makedepends = python2
 	options = !emptydirs
 	options = staticlibs
