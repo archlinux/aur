@@ -2,7 +2,7 @@
 _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/kinnala/${_base}"
@@ -11,7 +11,7 @@ depends=(python-scipy python-meshio)
 makedepends=(python-setuptools python-pip)
 checkdepends=(python-pytest python-matplotlib python-pacopy python-pyamg python-h5py)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('1ed3527a3660e6880a37205918de76cd49a590d014da61f29dce04c33e3642d85c9ddf45770524e038ff0cae38bc21f8f15aed04a9aa417bfb5d8a4313b57ea1')
+sha512sums=('d617aa572a5a7d39e3379c22708cf2dbabb66357e769ebe59718cf0858ec357fec46edb938a05ce7bddb0d639b46d5c24a4f299df5f2c47d8a7704e154ab42ca')
 
 build() {
   cd "${_base}-${pkgver}"
