@@ -1,4 +1,5 @@
 # Maintainer: lestb <gitcommitter at email dot ardentcoding dot com>
+# Package Repository: https://github.com/mij-aur-packages/log2ram
 
 pkgname=log2ram
 pkgver=1.6.0
