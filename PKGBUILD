@@ -5,7 +5,7 @@ pkgver=v1.2.0.r1.gdb1c789
 pkgrel=1
 pkgdesc="A minuscule RSS notifier"
 arch=("any")
-url=https://github.com/132ikl/minirss
+url=https://git.ikl.sh/132ikl/minirss
 license=("GPL3")
 depends=("python>=3.7" "python-appdirs" "python-requests" "python-feedparser" "notification-daemon" "xdg-utils")
 makedepends=("git")
