@@ -1,8 +1,5 @@
 See the full changelog for all versions at:
 https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
 
-2.3.3 (October 27, 2021)
-    Added more German translations from incompetentcoder (PR#6)
-    Fixed an issue where wtwitch would not use the correct `date` command on non-GNU systems under certain circumstances
-    Using wtwitch on *BSD systems will now correctly require GNU date (`gdate`) to be installed
-    Updated man page to reflect code changes, other minor man page improvements
+2.3.4 (November 30, 2021)
+    Fixed an issue where users would be prompted to show more streamers infinitely even if there were no more streamers for that game
