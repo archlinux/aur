@@ -1,13 +1,11 @@
 pkgbase = jrnl-git
 	pkgdesc = Collect your thoughts and notes without leaving the command line
-	pkgver = v2.8.2.r1.gb23c831d
+	pkgver = v2.8.4.beta.r11.gba8a59b2
 	pkgrel = 1
 	url = https://jrnl.sh/
 	arch = any
 	license = GPL3
-	checkdepends = python-behave
-	checkdepends = python-pytest
-	checkdepends = python-black
+	checkdepends = python-poetry
 	makedepends = git
 	makedepends = python-dephell
 	makedepends = python-setuptools
