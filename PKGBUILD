@@ -1,9 +1,10 @@
 
 pkgname=python2-docutils
 _pkgname=docutils
-pkgver=0.17.1
+# From the release notes: "Docutils 0.18.x is the last version supporting Python 2.7, 3.5, and 3.6."
+pkgver=0.18.1
 pkgrel=1
-pkgdesc='Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX'
+pkgdesc='Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX (0.18.x is the last version supporting Python 2)'
 arch=('any')
 url='http://docutils.sourceforge.net'
 license=('custom')
@@ -11,7 +12,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 install=python2-docutils.install
 source=("https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('5ec2087116bd5356fdffc54f07f6b0355aac5fa9d6caeefa77e8d201fd4706c0d419193c4d9a3964ae493da3091fe2c7dc36b74f81a1e1b9282173658b06e71b')
+sha512sums=('44404a6cc9d4c1e79c73a6ffee2898e459c9925ab9661e5d41394e13b3d861334cf0c5efcd18e87eb03041374e326cfd00539a6b2ec5979678889e8a536c9542')
 
 build() {
   cd $_pkgname-$pkgver
