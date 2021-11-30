@@ -1,26 +1,46 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-botorch
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Bayesian Optimization in PyTorch'
-arch=('x86_64')
+arch=('any')
 url='https://botorch.org'
 license=('MIT')
-depends=('python' 'python-pytorch' 'python-gpytorch' 'python-scipy')
-optdepends=()
-makedepends=('python' 'python-setuptools')
-source=("$pkgname-$pkgver::https://github.com/pytorch/botorch/archive/v$pkgver.tar.gz")
-sha256sums=('0a59d44f62e5cb315d6727677a2c7e2420375b73db189d416d723bdb7e7e5a5b')
+depends=('python>=3.7' 'python-pytorch' 'python-gpytorch' 'python-scipy')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-sphinx')
+checkdepends=('python-pytest')
+changelog=CHANGELOG.md
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/botorch/botorch-$pkgver.tar.gz")
+sha256sums=('fa0f6ad582f3d3320d6b59315cd859ccba6ffab44a0d9a7681b92af89c2490bd')
 
-_pkgname=botorch
+prepare() {
+	cd "botorch-$pkgver"
+	sed -i "/packages=/c\packages=find_packages(exclude=['test*'])," setup.py
+	cd sphinx
+	sed -i "/^version/c\version = '$pkgver'" source/conf.py
+}
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+	cd "botorch-$pkgver"
+	python setup.py build
+	cd sphinx
+	make man
+}
+
+check() {
+	cd "botorch-$pkgver"
+	pytest -x
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+	cd "botorch-$pkgver"
+	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 sphinx/build/man/botorch.1 -t "$pkgdir/usr/share/man/man1/"
+	find docs \
+		-type f \
+		-name '*.md' \
+		-exec install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" '{}' \+
 }
