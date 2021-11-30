@@ -1,7 +1,7 @@
 pkgbase = libsigmf-git
 	pkgdesc = A header-only C++ library for working with SigMF metadata
-	pkgver = r13.8ac7dbc
-	pkgrel = 2
+	pkgver = r18.94445d4
+	pkgrel = 1
 	url = https://github.com/deepsig/libsigmf
 	arch = any
 	license = Apache
@@ -12,10 +12,6 @@ pkgbase = libsigmf-git
 	provides = libsigmf
 	conflicts = libsigmf
 	source = git+https://github.com/deepsig/libsigmf.git
-	source = 0001-cmake-fix-installation-of-fbs-files.patch
-	source = 0002-fix-for-flatbuffers-v2.patch
 	sha256sums = SKIP
-	sha256sums = 03012d41f55c1a2f7a61f952c79d14e80bba1f2ee508d77a3d94fe78f3ab394c
-	sha256sums = 9eae8483e26085999654ef9a633648b7025eca2c7a16b19b471ad7c189c47e04
 
 pkgname = libsigmf-git
