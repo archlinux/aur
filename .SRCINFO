@@ -27,7 +27,7 @@ pkgbase = waybar-git
 	optdepends = otf-font-awesome: Icons in the default configuration
 	provides = waybar
 	conflicts = waybar
-	source = waybar-git::git://github.com/Alexays/Waybar
+	source = waybar-git::git+https://github.com/Alexays/Waybar
 	sha1sums = SKIP
 
 pkgname = waybar-git

@@ -36,7 +36,7 @@ optdepends=(
     'otf-font-awesome: Icons in the default configuration'
 )
 
-source=("${pkgname}::git://github.com/Alexays/Waybar")
+source=("${pkgname}::git+https://github.com/Alexays/Waybar")
 
 sha1sums=('SKIP')
 
