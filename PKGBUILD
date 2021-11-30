@@ -1,7 +1,7 @@
 # Maintainer:  Xavier Dectot <firstname dot lastname at gmail dot com>
 
 pkgname=otf-antykwa-poltawskiego
-pkgver=1.01
+pkgver=1.02
 pkgrel=1
 pkgdesc="Open Type Antiqua Półtawskiego, a typeface designed by Adam Połtawski"
 arch=('any')
