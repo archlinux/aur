@@ -5,7 +5,7 @@ pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.15
 _minor=4
-_clr=1100
+_clr=1103
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=35320
+_clear_version=35330
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=ae44cb1d3a6c73daff4c1ccf603d32d50ba0eeda1f252d4c1b9ad7e20a5f520e
-_config_hash_clear_version=35320
+_config_hash=d31d891cf33b21a98ef145e4fb822d23eb41a1c1222181b8f26761ca16b60f03
+_config_hash_clear_version=35330
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('1633a61300b790c8c6499a02462a94347e3680a333dd4675a41fe53c4b2088875e7e918f3bb4a0d69b614d49ef989a7743356a2603e7932c550551c8315aef3e'
-        'a332ec8d3ed26fd256317d23b31509cc86a4eb6bb31fad5c26e00a9adc3f9401e61dc81db1bdbcb670b78548a6b9a4cb00051d719a5bd6b186f423a25c53203e'
-        '76cd84ecf5716d4fdcb468044ab6fcecf954364cf6e64db6780b937d15f3aa0b51a29e7ca2e83541d356c61e06315dc7385b7186bf7f98ac15bf49336b7c6750')
+b2sums=('7c85b76a90429a08a1b21192f051a162db1bb6b09c25e821fc745777e311895b9587306f465e268d462f9169555c532dd98d925c122f748c6d6d52d823fe93ef'
+        'b2e112dcb817cb867fe724b16abca04144f9dd6821485c85613e08086522f342d1908d09c514d2849ff93deea3c1ee5da612b5b511449f5652e2f11c7d4e88a9'
+        '3dd55a3d79a210882eede8825ca2ed308b1b7dd05ad9d803faca88afbddae06f1fc276e3cf367a3a2ea013a018bec7f4b72737c232d575893bbd2a4312681dfc')
