@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Galazyn <carbolymer at gmail.com>
 
 pkgname=haskell-language-server-static
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Successor of ghcide & haskell-ide-engine. One IDE to rule them all."
 arch=('x86_64')
@@ -11,14 +11,14 @@ depends=()
 provides=('haskell-language-server')
 conflicts=('haskell-language-server' 'haskell-language-server-git')
 source=()
-sha256sums=('a9c5a9831dda14d7832e98e184d1d7f19474218c5dee8621e679e77cb485319e'
-            '5b172a0581619d774eebb1035351af69770d0c94d78cd42afceb361aa11c3182'
-            '1bafb38483cb7be49b6839b1572644a820fb248ba597914b21789f35bcd94225'
-            '7b9fc595ef8709a51c83f80b0d89246c95e96052610f59a214d6e88f6b5536b8'
-            '89adabc2c4756d3bd25283f6fb227ec30b5cdb853c8a22f51f3771ea0739529c'
-            '585d163654518648d99500cf28c5e39ca0e21aab5a275b1d3c6880c34f518638'
-            'aff2b4f7716494324ee9ee180088dce2c0c03ad3cf934910146624e34881b6a7'
-            '2876ac5f12d5c31be82167567b51a6d67c4a1dc510ae99394ad6c776c2705acb')
+sha256sums=('3618783bcbcdb0232dd671078ffc21f5164d38076c1bdea23c47c7ea3a4cc46c'
+            'f121b94f2c2eaf37c0add3dd340bc7944979338c45deca738573482995a6a1ca'
+            'b98c9220ee6e5c4f2ca1fa665053ecbafefb890429f32b5354c2823478d12398'
+            '76b645b8f710d612d679a8858554f4a0fd0c1153fd05c0ddcde5fc60bb10db4f'
+            '8c034d8a56dcee8b6507791e1e2878504f8f683458ad55a1557fa223a01007a9'
+            '61e52e2a796f7a876cad07932e593ebd725dd0821656bd1536b9b657608c23a0'
+            '0a1e128ee5f1a994798ad0e0af1490722810622045f3baa5749f99d7cf5b780c'
+            '595eb1cb1e7670010048016a49e71ecb64dce6b398f214c72a4d762d28fdbd3f')
 _prefix="${pkgname%-static}-Linux"
 _ghc_versions=('8.6.5' '8.8.3' '8.8.4' '8.10.5' '8.10.6' '8.10.7' '9.0.1')
 
