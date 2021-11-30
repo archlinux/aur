@@ -2,7 +2,7 @@
 # Maintainer: John N Bilbery (beelzebud) <beelzebud@gmail.com>
 
 pkgname=chowmatrix-git
-pkgver=v1.2.0.r36.g045fd75
+pkgver=v1.2.0.r38.gceda003
 pkgrel=1
 pkgdesc='CHOW Matrix is a delay effect, made up of an infinitely growable tree of delay lines, each with individual controls for feedback, panning, distortion, and more.'
 arch=('x86_64')
