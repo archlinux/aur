@@ -1,13 +1,13 @@
 pkgbase = sniffer
 	pkgdesc = Modern alternative network traffic sniffer
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/chenjiandongx/sniffer
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = libpcap
-	source = sniffer-0.3.0.tar.gz::https://github.com/chenjiandongx/sniffer/archive/v0.3.0.tar.gz
-	sha256sums = 9c52bfdd59e6f7b27f29ff5e4efe40829fd6d2f21229dd91c46eceb11a991c66
+	source = sniffer-0.4.1.tar.gz::https://github.com/chenjiandongx/sniffer/archive/v0.4.1.tar.gz
+	sha256sums = 6517f4edf3f655963c3ff7f57a7f8c472bf8d2f4638f86d1ae06aef8a3e72e15
 
 pkgname = sniffer
