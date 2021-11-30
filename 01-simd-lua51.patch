@@ -1,0 +1,27 @@
+diff --git a/Makefile.Linux b/Makefile.Linux
+index 968b868..af017b5 100644
+--- a/Makefile.Linux
++++ b/Makefile.Linux
+@@ -51,12 +51,19 @@ LIBS += -logg -lvorbis -lvorbisfile
+ 
+ # optional: lua
+ DEFS += -DUSE_LUA
+-INCS += -I/usr/include/lua
+-LIBS += -llua
++INCS += -I/usr/include/lua5.1
++LIBS += -llua5.1
+ EXT_OBJS += LUAHandler$(OBJSUFFIX)
+ 
+ # optional: SIMD optimizing
+-DEFS += -DUSE_SIMD -DUSE_SIMD_X86_SSE2
++ifneq ($(filter i686 x86_64,$(ARCH)),)
++    DEFS += -DUSE_SIMD -DUSE_SIMD_X86_SSE2
++else
++    DEFS += -DUSE_SIMD_ARM_NEON
++    ifneq ($(filter armv7h armv7l,$(ARCH)),)
++	    EXT_FLAGS += -mfpu=neon
++    endif
++endif
+ 
+ # optional: multicore rendering
+ DEFS += -DUSE_OMP_PARALLEL
