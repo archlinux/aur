@@ -8,7 +8,7 @@ source=("$pkgver.tar.gz::https://github.com/EFForg/apkeep/archive/$pkgver.tar.gz
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'aarch64')
 license=('custom:MIT')
 depends=('openssl' 'gcc-libs')
-makedepends=('cargo')
+makedepends=('rust>=1.56.1')
 sha256sums=('62b18953a633c8f8844858f283f04363c3da5b753b4634b1aae017453b623b9f')
 
 build () {
