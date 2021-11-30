@@ -1,12 +1,11 @@
 pkgbase = otf-minecraft
 	pkgdesc = Font based off Minecraft’s original ASCII charts
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.fontspace.com/jdgraphics/minecraft
 	arch = any
 	license = custom:free for personal use
 	source = otf-minecraft-1.0.zip::https://www.fontspace.com/get/family/m3zm2
-	sha256sums = 36acb15ae59e9eed51e581b0a3ad4d56761bd0db7c0902d3e3c517d29fa9246e
+	sha256sums = SKIP
 
 pkgname = otf-minecraft
-
