@@ -1,10 +1,9 @@
 pkgbase = python-stwcs
 	pkgdesc = WCS based distortion models and coordinate transformation
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://stwcs.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-stsci.tools
@@ -12,8 +11,8 @@ pkgbase = python-stwcs
 	checkdepends = python-lxml
 	checkdepends = python-requests
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/s/stwcs/stwcs-1.7.1.tar.gz
-	md5sums = 8af1c55c7a1508b3daa68fa04964fdf4
+	source = https://files.pythonhosted.org/packages/source/s/stwcs/stwcs-1.7.2.tar.gz
+	md5sums = 7c9a2236c3313737483f8643843a3cae
 
 pkgname = python-stwcs
 	depends = python>=3.6
