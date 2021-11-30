@@ -1,0 +1,14 @@
+pkgbase = joern-git
+	pkgdesc = The Bug Hunter's Workbench
+	pkgver = 1.1.364
+	pkgrel = 1
+	url = https://joern.io/
+	arch = any
+	license = apache
+	makedepends = sbt
+	makedepends = java-environment>=11
+	depends = java-runtime>=11
+	source = git+https://github.com/joernio/joern.git
+	md5sums = SKIP
+
+pkgname = joern-git
