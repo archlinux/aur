@@ -5,7 +5,7 @@
 pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme)
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 _python_ver=3.10
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
