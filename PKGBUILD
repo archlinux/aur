@@ -4,7 +4,7 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint
-pkgver=0.9.26
+pkgver=0.9.27
 pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
@@ -12,19 +12,19 @@ url='http://tuxpaint.org/' # no https available
 license=('GPL')
 backup=('etc/tuxpaint/tuxpaint.conf')
 depends=('fribidi' 'libpaper' 'librsvg' 'libimagequant' 'sdl_image'
-         'sdl_mixer' 'sdl_pango' 'sdl_ttf')
+         'sdl_gfx' 'sdl_mixer' 'sdl_pango' 'sdl_ttf')
 makedepends=('gperf' 'setconf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager'
             'python2: zh_tw font generator script')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('4aa83eb2e67bfc7e3493366d0ea231da46b9e6a9c552bf267ec868241fffa8f1')
+sha256sums=('ab2b80e89df88228cd0ec0a6c90b49d543cb157aa38fb90cbd3a29f00140557a')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   # python2 fix
-  for f in docs/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
+  for f in docs/outdated/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
     sed -i '0,/on/s//on2/' $f
   done
 
@@ -38,7 +38,7 @@ prepare() {
   setconf Makefile COMPLETIONDIR='$(DESTDIR)/usr/share/bash-completion/completions'
 
   # no KDE4-related requirements at installation-time
-  setconf Makefile ARCH_INSTALL=''
+  setconf Makefile ARCH_INSTALL='install-man install-importscript install-bash-completion'
 }
 
 build() {
