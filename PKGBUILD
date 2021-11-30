@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd swayr
-  git describe --long --tags | sed 's/^short-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=8 | sed 's/.g/./g' | sed 's/^short-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
