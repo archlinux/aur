@@ -1,6 +1,6 @@
 pkgname=gtksourceview-git
 _pkgname=gtksourceview
-pkgver=6676
+pkgver=6690
 pkgrel=1
 pkgdesc='A text widget adding syntax highlighting and more to GNOME'
 url='https://gitlab.gnome.org/GNOME/gtksourceview'
