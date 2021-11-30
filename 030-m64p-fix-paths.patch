@@ -8,22 +8,16 @@
  #include "settingsdialog.h"
  #include "plugindialog.h"
  #include "mainwindow.h"
-@@ -371,11 +372,11 @@ MainWindow::MainWindow(QWidget *parent) :
+@@ -370,7 +371,7 @@ MainWindow::MainWindow(QWidget *parent) :
      updatePIF(ui);
  
-     if (!settings->contains("coreLibPath"))
--        settings->setValue("coreLibPath", "$APP_PATH$");
-+        settings->setValue("coreLibPath", "/usr/lib");
-     if (!settings->contains("pluginDirPath"))
--        settings->setValue("pluginDirPath", "$APP_PATH$");
-+        settings->setValue("pluginDirPath", "/usr/lib/mupen64plus");
      if (!settings->contains("configDirPath"))
 -        settings->setValue("configDirPath", "$CONFIG_PATH$");
 +        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/mupen64plus");
  
- #ifdef CORE_LIBRARY_PATH
-     settings->setValue("coreLibPath", CORE_LIBRARY_PATH);
-@@ -438,7 +439,7 @@ void MainWindow::updateApp()
+ #ifdef CONFIG_DIR_PATH
+     settings->setValue("configDirPath", CONFIG_DIR_PATH);
+@@ -430,7 +431,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {
