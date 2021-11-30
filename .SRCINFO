@@ -1,6 +1,6 @@
 pkgbase = python-conda
 	pkgdesc = OS-agnostic, system-level binary package manager and ecosystem https://conda.io
-	pkgver = 4.10.3
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/conda/conda
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = python-conda
 	provides = python-conda
 	provides = python-conda-env
 	options = !emptydirs
-	source = conda-4.10.3.tar.gz::https://github.com/conda/conda/archive/4.10.3.tar.gz
-	sha512sums = 1f12506229975a04920745eaca2a06d3ef4b2ef76a7bd78473f156dfc64f16b63f0303a2a14cfa25cdb25081de2a24e451cc401184d7a4f77174292b901224c6
+	backup = etc/conda/condarc
+	source = conda-4.11.0.tar.gz::https://github.com/conda/conda/archive/4.11.0.tar.gz
+	sha512sums = 1cb457c2e3a395cc2512912c5e1299d7db928d033496ddb4c8c855d34ac7ab93bcd41d97f419638ac17237c9f79671eccd4a9d3bc747befb43606be5243a92ce
 
 pkgname = python-conda

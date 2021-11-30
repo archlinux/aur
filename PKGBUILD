@@ -3,7 +3,7 @@
 
 pkgname=python-conda
 _name=${pkgname#python-}
-pkgver=4.10.3
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem https://conda.io"
 arch=('any')
@@ -19,10 +19,11 @@ depends=(
 makedepends=('python-setuptools')
 provides=('python-conda' 'python-conda-env')
 options=(!emptydirs)
+backup=(etc/conda/condarc)
 source=(
   $_name-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
 )
-sha512sums=('1f12506229975a04920745eaca2a06d3ef4b2ef76a7bd78473f156dfc64f16b63f0303a2a14cfa25cdb25081de2a24e451cc401184d7a4f77174292b901224c6')
+sha512sums=('1cb457c2e3a395cc2512912c5e1299d7db928d033496ddb4c8c855d34ac7ab93bcd41d97f419638ac17237c9f79671eccd4a9d3bc747befb43606be5243a92ce')
 
 prepare() {
   cd "$srcdir/${_name}-$pkgver"
@@ -45,6 +46,7 @@ build() {
 package() {
   cd "$srcdir/${_name}-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  rm -f conda/shell/bin/{,de}activate
   for _bin in $(ls conda/shell/bin); do
     install -Dm 655 conda/shell/bin/$_bin $pkgdir/usr/bin/$_bin
   done
