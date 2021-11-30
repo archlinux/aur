@@ -1,0 +1,22 @@
+pkgbase = tg-archive-git
+	pkgdesc = A tool for exporting Telegram group chats into static websites to preserve chat history like mailing list archives.
+	pkgver = 0.3.10.r0.geec04c4
+	pkgrel = 1
+	url = https://github.com/knadh/tg-archive
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cryptg
+	depends = python-feedgen
+	depends = python-jinja
+	depends = python-pillow
+	depends = python-yaml
+	depends = python-telethon
+	provides = tg-archive
+	conflicts = tg-archive
+	source = tg-archive::git+https://github.com/knadh/tg-archive.git
+	md5sums = SKIP
+
+pkgname = tg-archive-git
