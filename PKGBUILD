@@ -2,7 +2,7 @@
 
 pkgname=python-pyrsistent
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent/Functional/Immutable data structures"
 arch=('x86_64')
 license=('MIT')
