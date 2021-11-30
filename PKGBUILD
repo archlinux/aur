@@ -2,7 +2,7 @@
 # Contributor: Péter Tombor <aur at tmbpeter dot com>
 pkgname=fabric-installer
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='installer for the Minecraft mod loader Fabric'
 arch=('any')
 url='https://fabricmc.net'
@@ -13,7 +13,7 @@ source=("https://maven.fabricmc.net/net/fabricmc/fabric-installer/$pkgver/fabric
         'https://fabricmc.net/assets/logo.png'
         'fabric-installer'
         'fabric-installer.desktop')
-sha256sums=('11bf2058eb2d0441e1af38f570c5b920571449dadb2e316fcf021ba78443592b'
+sha256sums=('1546196400bcd5c31b87f264a4d5bfa77318ec8bebcee78754010d05d2120d2d'
             'b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1'
             'a41878c3c4c5790cfc920eabf98d3404103a74a6f3df69d632ceb220c9ec9dc7'
             '20b3368adc352dfc241b84d62aabd05734863650225ae3930deee9ca53a2c0a8'
