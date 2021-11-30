@@ -3,5 +3,5 @@
 pkg/
 src/
 *.tar.*
-emacs-git
+emacs28-git
 *.local

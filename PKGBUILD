@@ -71,7 +71,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs28-git"
 fi
-pkgver=28.0.60.150631
+pkgver=28.0.60.152178
 pkgrel=1
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
@@ -86,9 +86,9 @@ replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq' 'emacs-no
 #source=("emacs28-git::git://git.savannah.gnu.org/emacs.git#branch=emacs-28")
 # If Savannah fails for reasons, use Github's mirror
 source=("emacs28-git::git://github.com/emacs-mirror/emacs.git#branch=emacs-28")
+b2sums=('SKIP')
 options=(!strip)
 install=emacs28-git.install
-b2sums=('SKIP')
 ################################################################################
 
 ################################################################################
@@ -288,7 +288,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # are reusing your src directory!
   #
   if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
-    make -j $(nproc) NATIVE_FULL_AOT=1
+    make NATIVE_FULL_AOT=1
   else
     make
   fi
