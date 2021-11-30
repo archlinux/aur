@@ -1,0 +1,15 @@
+pkgbase = gedit-plugin-grammalecte
+	pkgdesc = Un greffon pour intégrer Grammalecte dans gedit.
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/sveyret/gedit-grammalecte
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = gedit
+	depends = grammalecte
+	source = git+https://github.com/sveyret/gedit-grammalecte#commit=2a0ed5deefaf85045f665c677d0005d1efa701af
+	sha512sums = SKIP
+
+pkgname = gedit-plugin-grammalecte
