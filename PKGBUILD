@@ -5,9 +5,9 @@
 
 pkgname=nginx-mod-rtmp
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 _dirname="nginx-rtmp-module-$pkgver"
-_nginxver=1.20.1
+_nginxver=1.20.2
 
 pkgdesc='Module for nginx that adds RTMP support'
 arch=('x86_64')
