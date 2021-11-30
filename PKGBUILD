@@ -3,7 +3,7 @@
 _pkg=abydos
 pkgname=python-${_pkg,,}
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="NLP/IR library for Python"
 arch=(any)
 url="https://github.com/chrislit/abydos"
