@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-git
-pkgver=3.3.03.r0.g7ecea586
+pkgver=3.3.09.r0.g2feaf0b8
 pkgrel=2
 pkgdesc="Full featured CLI system information tool"
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=(
         "ipmitool: -s IPMI sensors"
         "kmod: inxi -Ax,-Nx module version"
         "lm_sensors: inxi -s sensors output"
-        "mesa-demos: inxi -G glx info"
+        "mesa-utils: inxi -G glx info"
         "net-tools: inxi -i ip lan-deprecated"
         "perl-io-socket-ssl: -U; -w,-W; -i (if dig not installed)"
         "perl-cpanel-json-xs: --output json - required for export"
