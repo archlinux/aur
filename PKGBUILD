@@ -5,7 +5,7 @@
 
 _pkgname=avahi
 pkgname=avahi-gtk2
-pkgver=0.8+20+gd1e71b3
+pkgver=0.8+22+gfd482a7
 pkgrel=1
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
 url='https://github.com/lathiat/avahi'
@@ -29,11 +29,13 @@ provides=(libavahi-client.so libavahi-common.so libavahi-core.so
 conflicts=(${_pkgname})
 backup=(etc/avahi/{hosts,avahi-daemon.conf,avahi-{autoip,dnsconf}d.action}
         usr/lib/avahi/service-types.db)
-_commit=d1e71b320d96d0f213ecb0885c8313039a09f693  # master
+_commit=fd482a74625b8db8547b8cfca3ee3d3c6c721423  # master
 source=("git+https://github.com/lathiat/avahi#commit=$_commit"
-        282.patch)
+        282.patch
+        0001-Fix-avahi-browse-Invalid-service-type.patch)
 sha512sums=('SKIP'
-            '26b1e74450944f5c4385d2f5df18523cfb953e4138f6d9e81061a626453e40d8ed2dee44535cfbb547848eefb3cdca408009d5f0e0c465f144a8803db8593b46')
+            '26b1e74450944f5c4385d2f5df18523cfb953e4138f6d9e81061a626453e40d8ed2dee44535cfbb547848eefb3cdca408009d5f0e0c465f144a8803db8593b46'
+            'e39c17d9a5d534784a3c7b6947da994d0ab5fa354aac5cecde6d3baaa2bb3d57f02f91cc6fb68885a4e98f44efe615b01631a4c7af752aa26f35082cfcc0ddd7')
 
 pkgver() {
   cd $_pkgname
@@ -46,6 +48,10 @@ prepare() {
   # https://bugs.archlinux.org/task/68518
   # https://github.com/lathiat/avahi/pull/282
   git apply -3 ../282.patch
+
+  # https://bugs.archlinux.org/task/71781
+  # https://github.com/lathiat/avahi/issues/212
+  git apply -3 ../0001-Fix-avahi-browse-Invalid-service-type.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }
