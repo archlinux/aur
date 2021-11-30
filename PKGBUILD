@@ -4,8 +4,8 @@
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
 
 pkgname=ruby2.7
-pkgver=2.7.4
-pkgrel=2
+pkgver=2.7.5
+pkgrel=1
 arch=(x86_64)
 pkgdesc='An object-oriented language for quick and easy programming, version 2.7'
 url='https://www.ruby-lang.org/en/'
@@ -17,7 +17,7 @@ optdepends=(
 makedepends=(tk)
 options=(!emptydirs)
 source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
-sha512sums=('2cbb70ecfdd69120e789023ddb2b25cab0d03bc33fdc367a8f74ca8a3ee785c18c8ded9de3ecee627c7e275ffb85147e6abf921b6a61e31851b37c7fedf45bf9')
+sha512sums=('21c8a713e3ce115fc4c405113ac691ddcefc3419f528b93ca1ac59e7052c1b6e9e241da0e570e291e567f28f3d840824dbcc5967b216cbe7d6ca7a05580fa311')
 
 build() {
   cd ruby-${pkgver}
