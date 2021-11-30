@@ -6,13 +6,13 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-pixbuf
-pkgver=9.26
+pkgver=9.30
 pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
-depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification' 'gdk-pixbuf2')
+depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification' 'gdk-pixbuf2' 'libptytty')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=('rxvt-unicode')
 conflicts=('rxvt-unicode')
@@ -23,7 +23,7 @@ source=(
 'urxvt-tabbed.desktop'
 'font-width-fix.patch'
 'line-spacing-fix.patch')
-md5sums=('18dd0b15e7f67478bf0a88b0fc5e8cd4'
+md5sums=('793ae8d59cf911fc6a93254234933d25'
          'fec94dc986fa37ec380079d81de3e0b2'
          'fac55f0a8404c86dad3e702146762332'
          '8a5599197568c63720e282b9722a7990'

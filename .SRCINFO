@@ -1,6 +1,6 @@
 pkgbase = rxvt-unicode-pixbuf
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds
-	pkgver = 9.26
+	pkgver = 9.30
 	pkgrel = 1
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
@@ -11,16 +11,17 @@ pkgbase = rxvt-unicode-pixbuf
 	depends = perl
 	depends = startup-notification
 	depends = gdk-pixbuf2
+	depends = libptytty
 	optdepends = gtk2-perl: to use the urxvt-tabbed
 	provides = rxvt-unicode
 	conflicts = rxvt-unicode
-	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.26.tar.bz2
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.30.tar.bz2
 	source = urxvt.desktop
 	source = urxvtc.desktop
 	source = urxvt-tabbed.desktop
 	source = font-width-fix.patch
 	source = line-spacing-fix.patch
-	md5sums = 18dd0b15e7f67478bf0a88b0fc5e8cd4
+	md5sums = 793ae8d59cf911fc6a93254234933d25
 	md5sums = fec94dc986fa37ec380079d81de3e0b2
 	md5sums = fac55f0a8404c86dad3e702146762332
 	md5sums = 8a5599197568c63720e282b9722a7990
@@ -28,4 +29,3 @@ pkgbase = rxvt-unicode-pixbuf
 	md5sums = d4e03127a0d3bbf2e173850770651b08
 
 pkgname = rxvt-unicode-pixbuf
-
