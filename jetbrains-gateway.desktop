@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JetBrains Gateway
+Icon=/opt/jetbrains-gateway/bin/gateway.svg
+Exec="/opt/jetbrains-gateway/bin/gateway.sh" %f
+Comment=Develop together with pleasure!
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-gateway
+StartupNotify=true
