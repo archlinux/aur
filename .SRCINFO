@@ -1,0 +1,16 @@
+pkgbase = gogle-git
+	pkgdesc = Simple utility for quickly getting a Google search URL pasted to your clipboard.
+	pkgver = 1.0.r2.b7eaa43
+	pkgrel = 1
+	url = https://github.com/miapolis/gogle
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = gogle
+	conflicts = gogle
+	source = git+https://github.com/miapolis/gogle.git
+	md5sums = SKIP
+
+pkgname = gogle-git
