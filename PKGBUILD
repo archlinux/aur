@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-multisource-effect
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="This is a simple source providing custom effect to render multiple sources"
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ license=("GPL2")
 depends=("obs-studio")
 makedepends=("cmake")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("3ba232c237336b056798b1c1da4009e5691701b5ab71662de77daeeae690191f")
+sha256sums=("45b0556eec7fd759d14e6634e68540efbffd2851297cc024631a78256976b2a4")
 
 build() {
   cd "$pkgname-$pkgver"
