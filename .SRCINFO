@@ -1,14 +1,14 @@
 pkgbase = intellij-idea-ultimate-edition
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
-	pkgver = 2021.2.3
+	pkgver = 2021.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/idea/
 	arch = any
 	license = Commercial
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIU-2021.2.3.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIU-2021.3.tar.gz
 	source = jetbrains-idea.desktop
-	sha256sums = 16929fd22b84b400d0b9e24fd356dd2e7a614511a2d779ee37082c90df179c25
+	sha256sums = 429838940b2312ea15f12a2c2e7a1bdd65a885df96fec6270c91856c012294fe
 	sha256sums = 83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b
 
 pkgname = intellij-idea-ultimate-edition
