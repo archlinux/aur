@@ -3,3 +3,5 @@
 *.tar.bz2
 pkg/
 src/
+*.tar.zst
+
