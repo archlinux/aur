@@ -1,5 +1,5 @@
 diff --git a/Action.c b/Action.c
-index 1d373ef..b89d94a 100644
+index 07e21dc..4d6d801 100644
 --- a/Action.c
 +++ b/Action.c
 @@ -459,7 +459,7 @@ static const struct {
@@ -72,7 +72,7 @@ index 1d373ef..b89d94a 100644
     keys[KEY_F(2)] = actionSetup;
     keys[KEY_F(3)] = actionIncSearch;
 diff --git a/CategoriesPanel.c b/CategoriesPanel.c
-index 21010b3..459e87e 100644
+index 30867ee..635140e 100644
 --- a/CategoriesPanel.c
 +++ b/CategoriesPanel.c
 @@ -101,6 +101,12 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
@@ -89,7 +89,7 @@ index 21010b3..459e87e 100644
        case EVENT_SET_SELECTED:
           result = HANDLED;
 diff --git a/MainPanel.c b/MainPanel.c
-index e7033bf..ca5ba6c 100644
+index 07dc631..a528238 100644
 --- a/MainPanel.c
 +++ b/MainPanel.c
 @@ -50,7 +50,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
@@ -102,7 +102,7 @@ index e7033bf..ca5ba6c 100644
  
     HandlerResult result = IGNORED;
 diff --git a/MainPanel.h b/MainPanel.h
-index 04f347d..6c8fd32 100644
+index 04f4c0a..cc6b0ed 100644
 --- a/MainPanel.h
 +++ b/MainPanel.h
 @@ -46,4 +46,6 @@ void MainPanel_setState(MainPanel* this, State* state);
@@ -113,7 +113,7 @@ index 04f347d..6c8fd32 100644
 +
  #endif
 diff --git a/Panel.c b/Panel.c
-index dea6401..a0ceccb 100644
+index a5773d5..b1afa98 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -351,6 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
@@ -185,7 +185,7 @@ index dea6401..a0ceccb 100644
        break;
  
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 914c510..67e6130 100644
+index 96e9c47..93afc79 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
 @@ -16,6 +16,7 @@ in the source distribution for its full text.
@@ -196,7 +196,7 @@ index 914c510..67e6130 100644
  #include "Object.h"
  #include "Platform.h"
  #include "ProcessList.h"
-@@ -224,14 +225,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -229,14 +230,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           redraw = false;
           continue;
        }
@@ -219,7 +219,7 @@ index 914c510..67e6130 100644
           result = Panel_eventHandler(panelFocus, ch);
        }
        if (result & SYNTH_KEY) {
-@@ -265,7 +268,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -270,7 +273,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -228,7 +228,7 @@ index 914c510..67e6130 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -286,7 +289,7 @@ tryLeft:
+@@ -291,7 +294,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
@@ -238,7 +238,7 @@ index 914c510..67e6130 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
 diff --git a/htop.1.in b/htop.1.in
-index ceec216..1d1a0d9 100644
+index 49c4a52..a288507 100644
 --- a/htop.1.in
 +++ b/htop.1.in
 @@ -95,27 +95,30 @@ held.
