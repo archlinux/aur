@@ -2,7 +2,7 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=sourcegraph-cli
-pkgver=3.34.1
+pkgver=3.34.2
 pkgrel=1
 pkgdesc="Command line interface to Sourcegraph"
 url="https://github.com/sourcegraph/src-cli"
@@ -39,5 +39,5 @@ package() {
 	cd "$pkgname"
 	install -D build/src -t "$pkgdir/usr/bin/"
 	ln -s /usr/bin/src "$pkgdir/usr/bin/src-cli"
-	install -Dm 644 README.markdown -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 README.markdown -t "$pkgdir/usr/share/doc/$pkgname/"
 }
