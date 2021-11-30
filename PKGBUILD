@@ -2,7 +2,7 @@
 
 _pkgname=SwiftLint
 pkgname=swiftlint
-pkgver=0.45.0
+pkgver=0.45.1
 pkgrel=1
 pkgdesc="A tool to enforce Swift style and conventions."
 arch=("i686" "x86_64")
