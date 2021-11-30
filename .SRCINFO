@@ -1,14 +1,15 @@
 pkgbase = cocogitto
 	pkgdesc = Set of CLI tools for the conventional commit and semver specifications
-	pkgver = 3.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
-	url = https://github.com/oknozor/cocogitto
+	url = https://github.com/cocogitto/cocogitto
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	depends = git
 	depends = gcc-libs
 	depends = zlib
-	source = cocogitto-3.0.0.tar.gz::https://github.com/oknozor/cocogitto/archive/3.0.0.tar.gz
-	sha512sums = e5cad97823d0e8a08b4165a8ec1c62ebd673f5f977accc925794e93614bc8bb536feacaf2755b29c21cf570ce0b463265c575190b706427b7ec538c66ad009aa
+	source = cocogitto-4.0.1.tar.gz::https://github.com/cocogitto/cocogitto/archive/4.0.1.tar.gz
+	sha512sums = b08efea6ccfc28509771ca6ecacdecafcfd79187caa82cc65cde6f44fceedf8c21ee67dee5526b2f30a9dfdda30efbd101eaeec8494a8e121489335d69d1a626
 
 pkgname = cocogitto
