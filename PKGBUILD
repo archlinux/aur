@@ -1,12 +1,12 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter
-pkgver=1.10.1
+pkgver=1.11
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL3')
-depends=('lensfun' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils') 
+depends=('lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils') 
 optdepends=('perl-image-exiftool: metadata support for CR3 images' )
 makedepends=('pkgconf' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter-git')
@@ -23,9 +23,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DPROC_TARGET_NUMBER="2" \
-    -DWITH_LTO="ON" 
-    #-DENABLE_TCMALLOC="ON" \
-    #-DTCMALLOC_LIB_DIR=/usr/lib
+    -DWITH_LTO="ON" \
+	-DENABLE_LIBRAW="ON"
 
   make
 }
