@@ -1,16 +1,16 @@
 pkgbase = janet-lang-bin
 	pkgdesc = A dynamic Lisp dialect and bytecode vm
-	pkgver = 1.18.1
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://janet-lang.org/
 	arch = x86_64
 	license = MIT
-	provides = janet
+	provides = janet-lang
 	conflicts = janet-lang
 	conflicts = janet-lang-git
-	source = https://github.com/janet-lang/janet/releases/download/v1.18.1/janet-v1.18.1-linux-x64.tar.gz
-	source = https://github.com/janet-lang/janet/releases/download/v1.18.1/janet.h
-	sha256sums = 8d1a7408d61e177e6496911ffb22e5015f077a99cef7abe270eb9d791773f451
+	source = https://github.com/janet-lang/janet/releases/download/v1.19.0/janet-v1.19.0-linux-x64.tar.gz
+	source = https://github.com/janet-lang/janet/releases/download/v1.19.0/janet.h
+	sha256sums = cffeddfa67512c4eb40ec6044b11105dfb6dd2a9baa8001c317cc57fb4bf8534
 	sha256sums = 1bcf23d0426d7fbe999f7f11bd3614e8407adaf2b9dbcf500a87ec8b5de461c2
 
 pkgname = janet-lang-bin
