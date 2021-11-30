@@ -1,23 +1,25 @@
-# Maintainer: Sergey Starovoytov <sergey.starovoytov.94@gmail.com>
+# Maintainer: Drommer <drommer@github.com>
 
+_pkgname=breath
+_commit=85732de201180acc9aa396ebf7d85a819fe72c34
 pkgname=breath2-git
-_pkgname=breath2
-pkgver=r110.ed26e232
+pkgver=r170.85732de2
 pkgrel=1
 pkgdesc="Breath 2 Look & Feel package (color schemes, icons, Konsole theme, Plasma5 theme, SDDM theme, wallpapers, Yakuake theme)"
-provides=('breath2-kde-theme')
+provides=('breath2-icon-theme' 'breath2-wallpaper' 'plasma5-themes-breath2' 'sddm-breath2-theme')
+conflicts=('breath-wallpaper' 'plasma5-themes-breath' 'sddm-breath-theme' 'breath-legacy-icon-theme' 'breath-legacy-wallpaper' 'plasma5-themes-breath-legacy' 'sddm-breath-legacy-theme')
 arch=('any')
 url="https://gitlab.manjaro.org/artwork/themes/$_pkgname"
 license=('LGPL')
 depends=('hicolor-icon-theme' 'plasma-workspace')
 makedepends=('extra-cmake-modules' 'plasma-framework')
 optdepends=('breath-gtk-theme: Breath widget style for GTK applications')
-source=("git+$url.git")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo r$(git rev-list --count master).$(git rev-parse --short master)
+  echo r$(git rev-list --count $_commit).$(git rev-parse --short $_commit)
 }
 
 prepare() {

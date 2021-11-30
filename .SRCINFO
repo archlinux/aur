@@ -1,8 +1,8 @@
 pkgbase = breath2-git
 	pkgdesc = Breath 2 Look & Feel package (color schemes, icons, Konsole theme, Plasma5 theme, SDDM theme, wallpapers, Yakuake theme)
-	pkgver = r110.ed26e232
+	pkgver = r170.85732de2
 	pkgrel = 1
-	url = https://gitlab.manjaro.org/artwork/themes/breath2
+	url = https://gitlab.manjaro.org/artwork/themes/breath
 	arch = any
 	license = LGPL
 	makedepends = extra-cmake-modules
@@ -10,9 +10,18 @@ pkgbase = breath2-git
 	depends = hicolor-icon-theme
 	depends = plasma-workspace
 	optdepends = breath-gtk-theme: Breath widget style for GTK applications
-	provides = breath2-kde-theme
-	source = git+https://gitlab.manjaro.org/artwork/themes/breath2.git
+	provides = breath2-icon-theme
+	provides = breath2-wallpaper
+	provides = plasma5-themes-breath2
+	provides = sddm-breath2-theme
+	conflicts = breath-wallpaper
+	conflicts = plasma5-themes-breath
+	conflicts = sddm-breath-theme
+	conflicts = breath-legacy-icon-theme
+	conflicts = breath-legacy-wallpaper
+	conflicts = plasma5-themes-breath-legacy
+	conflicts = sddm-breath-legacy-theme
+	source = git+https://gitlab.manjaro.org/artwork/themes/breath.git#commit=85732de201180acc9aa396ebf7d85a819fe72c34
 	sha256sums = SKIP
 
 pkgname = breath2-git
-
