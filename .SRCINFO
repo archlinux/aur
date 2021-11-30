@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-user-external
 	pkgdesc = External user authentication methods like IMAP, SMB and FTP
-	pkgver = 1.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/user_external
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-user-external-1.0.0.tar.gz::https://github.com/nextcloud/user_external/releases/download/v1.0.0/user_external-1.0.0.tar.gz
-	sha256sums = 11405eaca332dac9af06702c1aa357be61362df4cd24746fdd24d0f7eebdf231
+	source = nextcloud-app-user-external-2.1.0.tar.gz::https://github.com/nextcloud/user_external/releases/download/v2.1.0/user_external-2.1.0.tar.gz
+	sha256sums = 79d400c05737ea3512faf0ab77411dd5da9c830341e59b1a98b86775c92acf19
 
 pkgname = nextcloud-app-user-external
 
