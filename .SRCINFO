@@ -1,6 +1,6 @@
 pkgbase = sweet-theme-mars-git
 	pkgdesc = Colorful Sweet Mars GTK and KDE theme
-	pkgver = r121.134ff45
+	pkgver = r176.b273e43
 	pkgrel = 1
 	url = https://github.com/EliverLara/sweet
 	arch = any
@@ -33,4 +33,3 @@ pkgname = kvantum-theme-sweet-mars-git
 	pkgdesc = Sweet Mars theme for Kvantum
 	depends = kvantum-qt5
 	provides = kvantum-theme-sweet-mars
-

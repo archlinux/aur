@@ -1,9 +1,9 @@
-# Maintainer: Sergey Starovoytov <sergey.starovoytov.94@gmail.com>
+# Maintainer: Drommer <drommer@github.com>
 
 pkgbase=sweet-theme-mars-git
 pkgname=(sweet-gtk-theme-mars-git sweet-kde-theme-mars-git kvantum-theme-sweet-mars-git)
 _pkgname=sweet
-pkgver=r121.134ff45
+pkgver=r176.b273e43
 pkgrel=1
 pkgdesc="Colorful Sweet Mars GTK and KDE theme"
 arch=('any')
@@ -56,5 +56,5 @@ package_kvantum-theme-sweet-mars-git() {
 	depends=(kvantum-qt5)
 	cd $_pkgname/kde
 	install -d $pkgdir/usr/share/Kvantum/Sweet-Mars
-	mv kvantum/Sweet-Mars{.kvconfig,-transparent-toolbar.kvconfig,.svg} "$pkgdir/usr/share/Kvantum/Sweet-Mars"
+	mv kvantum/* "$pkgdir/usr/share/Kvantum/Sweet-Mars"
 }
