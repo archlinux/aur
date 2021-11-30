@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. mingw-env @TRIPLE@
+. /usr/bin/mingw-env @TRIPLE@
 
 mingw_prefix=/usr/@TRIPLE@
 
