@@ -14,8 +14,7 @@ build() {
 }
 
 package() {
-    cd DollarSkip-${pkgver} &&
-    install -m 755 -D dollarskip "${pkgdir}/usr/bin/\$" 
+    cd DollarSkip-${pkgver}
+    make install PREFIX="/usr" DESTDIR="${pkgdir}"
 }
-
 sha256sums=('120ba7642bcef50da5f6644856810c4b13ab00b7e65b093ac84d5772a2a667f6')
