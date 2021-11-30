@@ -7,7 +7,7 @@
 
 pkgname=mutter-rounded
 pkgver=41.1+r20+ge3931f7b8
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -28,11 +28,11 @@ _commit=e3931f7b8cbd44072137c5dc9de9041486daeade  # gnome-41
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.c"
-_settings_src="https://gitlab.gnome.org/lluo/mutter-rounded-setting/uploads/2b934d0b3194f0b2adb9a5392e512c76/mutter-settings.tar"
+_settings_src="https://github.com/yilozt/mutter-rounded-setting/releases/download/41.1/mutter-settings.tar"
 
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
   _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
-  _settings_src="https://gitee.com/lluo/mutter-rounded-setting/attach_files/886389/download/mutter-settings.tar"
+  _settings_src="https://gitee.com/lluo/mutter-rounded-setting/attach_files/896393/download/mutter-settings.tar"
 fi
 
 source=("$_mutter_src"
@@ -52,7 +52,7 @@ sha256sums=('SKIP'
             'a02e991156dc3b4418899b73a2e65187a43990851fb235ea128ed7650c839a3b'
             '8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b'
             'd58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a'
-            '750d602fbfc08ed810d49c3ff90800ea3c243a16f74feaff995b209d00721867')
+            '94f95723cacbbb6d6ffc2f81df8d663cc0394b209097589c0a7a8dfb8f333184')
 
 pkgver() {
   cd $pkgname
