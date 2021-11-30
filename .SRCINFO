@@ -1,0 +1,21 @@
+pkgbase = breath-classic-theme-git
+	pkgdesc = Classic Breath Plasma Look & Feel package by Manjaro Team (ex-Breath2)
+	pkgver = r182.feac4e04
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/artwork/themes/breath
+	arch = any
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = plasma-framework
+	depends = breeze
+	depends = plasma-framework
+	depends = plasma-workspace
+	optdepends = breath-gtk-theme: Breath widget style for GTK applications
+	provides = breath-classic-icon-theme
+	provides = breath-classic-wallpaper
+	provides = plasma5-themes-breath-classic
+	source = git+https://gitlab.manjaro.org/artwork/themes/breath.git#branch=classic
+	sha256sums = SKIP
+
+pkgname = breath-classic-theme-git
