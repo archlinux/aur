@@ -1,0 +1,24 @@
+pkgbase = pocsuite3
+	pkgdesc = Open-sourced remote vulnerability testing framework
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://github.com/knownsec/pocsuite3
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-pysocks
+	depends = python-requests-toolbelt
+	depends = python-urllib3
+	depends = python-chardet
+	depends = python-termcolor
+	depends = python-colorama
+	depends = python-prettytable
+	depends = python-colorlog
+	depends = python-scapy
+	depends = python-faker
+	optdepends = python-pyopenssl: self-signed certificate support
+	source = https://github.com/knownsec/pocsuite3/archive/v1.8.6/pocsuite3-1.8.6.tar.gz
+	sha512sums = 70ec8e1fdb68f349fb5c18a84396ebf331c4e2287e059183296a72a64876ac6f08b4205befa1e93893b9753d716505cfd92cfac1cac762440658f92d3d35a6c7
+
+pkgname = pocsuite3
