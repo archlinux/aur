@@ -1,14 +1,12 @@
 pkgbase = json-simple
 	pkgdesc = JSON.simple - Simple, fast, extensible JSON encoder/decoder for Java
-	pkgver = 1.1.1
-	pkgrel = 2
-	url = http://code.google.com/p/json-simple
-	arch = i686
-	arch = x86_64
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://cliftonlabs.github.io/json-simple/
+	arch = any
 	license = APACHE
 	depends = java-runtime
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/json-simple/json-simple-1.1.1.jar
-	sha1sums = 5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5
+	source = https://cliftonlabs.github.io/json-simple/target/json-simple-4.0.0.jar
+	sha256sums = e8001c79a89dae597ec3e5cce480a81c7ff3773d6f62a7861288e90c67eb361c
 
 pkgname = json-simple
-
