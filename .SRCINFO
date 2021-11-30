@@ -1,6 +1,6 @@
 pkgbase = heaptrace-git
 	pkgdesc = helps visualize heap operations for pwn and debugging
-	pkgver = 2.2.7
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = https://github.com/Arinerron/heaptrace
 	arch = x86_64
