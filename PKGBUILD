@@ -1,15 +1,23 @@
 # Maintainer: Wojciech Kępka (wojciech@wkepka.dev) 
 pkgname=helix-git
-pkgver=0
-pkgrel=4
+_pkgname=helix
+pkgver=r1775.c08d2fae
+pkgrel=1
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
+_git="https://github.com/helix-editor/${_pkgname}.git"
 arch=(x86_64)
-makedepends=("cargo" "rust" "git")
+makedepends=('cargo')
 depends=()
-provides=("hx")
-source=("git+https://github.com/helix-editor/helix.git")
+provides=('hx')
+conflicts=('helix')
+source=("${_pkgname}::git+${_git}")
 sha256sums=('SKIP')
+
+_bin="hx"
+_lib_path="/usr/lib/${_pkgname}"
+_rt_path="${_lib_path}/runtime"
+
 
 pkgver() {
   cd helix
@@ -17,31 +25,31 @@ pkgver() {
 }
 
 prepare() {
-	cat > "hx" << EOF
+	cat > "$_bin" << EOF
 #!/usr/bin/env sh
-HELIX_RUNTIME=/usr/lib/helix/runtime exec /usr/lib/helix/hx "\$@"
+HELIX_RUNTIME=${_rt_path} exec ${_lib_path}/${_bin} "\$@"
 EOF
-	chmod +x "hx"
+	chmod +x "$_bin"
 
-	rm -rf helix
-	git clone --recurse-submodules --shallow-submodules -j8 https://github.com/helix-editor/helix
+	rm -rf "${_pkgname}"
+	git clone --recurse-submodules --shallow-submodules -j8 "$_git"
 }
 
 build() {
-	cd helix
-	cargo build --release	
+	cd "${_pkgname}"
+	cargo build --release --locked --all-features
 }
 
 check() {
-	cd helix
+	cd "${_pkgname}"
 	cargo test --all-features
 }
 
 package() {
-	cd helix
-	mkdir -p "$pkgdir/usr/lib/helix/"
-	cp -r "runtime" "$pkgdir/usr/lib/helix/"
-	install -Dm 0777 "target/release/hx" "$pkgdir/usr/lib/helix/hx"
-	install -Dm 0444 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm 0777 "$srcdir/hx" "$pkgdir/usr/bin/hx"
+	cd "${_pkgname}"
+	mkdir -p "${pkgdir}${_lib_path}"
+	cp -r "runtime" "${pkgdir}${_lib_path}"
+	install -Dm 0755 "target/release/${_bin}" "${pkgdir}${_lib_path}/${_bin}"
+	install -Dm 0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm 0777 "${srcdir}/${_bin}" "${pkgdir}/usr/bin/${_bin}"
 }
