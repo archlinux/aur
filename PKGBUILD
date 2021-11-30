@@ -4,7 +4,7 @@
 _pkgname=nault
 pkgname="${_pkgname}-bin"
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Nault AppImage client'
 arch=('x86_64')
 url='https://github.com/Nault/Nault'
