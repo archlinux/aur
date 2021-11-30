@@ -3,9 +3,9 @@
 
 pkgname=qt5-3d
 _qtver=5.15.2
-pkgver=5.15.2+kde+r37
+pkgver=5.15.2+kde+r38
 pkgrel=1
-_commit=d8997fb4b17cb9f0ea527093649fc04f85f9c00b
+_commit=c75916125d825220a45698601d2250b42e392746
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
