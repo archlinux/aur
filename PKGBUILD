@@ -1,7 +1,7 @@
 # Maintainer: Tong Chunli <tty2099@gmail.com>
 
 pkgname=cyclonedds
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Eclipse Cyclone DDS is a very performant and robust open-source DDS implementation.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'maven')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/eclipse-cyclonedds/cyclonedds/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('ff3a8545c78c0019014bbb906da2f44184e919a4f9985995014a0b08238d86e5')
+sha256sums=('ec830057682b7706492a3e9a6907c2ad6fefbd78b1794fcad21743901ff193ef')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \

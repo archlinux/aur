@@ -1,6 +1,6 @@
 pkgbase = cyclonedds
 	pkgdesc = Eclipse Cyclone DDS is a very performant and robust open-source DDS implementation.
-	pkgver = 0.7.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/eclipse-cyclonedds/cyclonedds
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cyclonedds
 	makedepends = cmake
 	makedepends = maven
 	depends = jdk
-	source = cyclonedds-0.7.0.tar.gz::https://github.com/eclipse-cyclonedds/cyclonedds/archive/refs/tags/0.7.0.tar.gz
-	sha256sums = ff3a8545c78c0019014bbb906da2f44184e919a4f9985995014a0b08238d86e5
+	source = cyclonedds-0.8.1.tar.gz::https://github.com/eclipse-cyclonedds/cyclonedds/archive/refs/tags/0.8.1.tar.gz
+	sha256sums = ec830057682b7706492a3e9a6907c2ad6fefbd78b1794fcad21743901ff193ef
 
 pkgname = cyclonedds
