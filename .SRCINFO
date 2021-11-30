@@ -1,14 +1,14 @@
 pkgbase = koreader-bin
 	pkgdesc = An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices
-	pkgver = 2021.10.1
-	pkgrel = 1
+	pkgver = 2021.11
+	pkgrel = 2
 	url = https://github.com/koreader/koreader/
 	arch = x86_64
 	license = AGPL3
 	depends = sdl2
 	depends = fonts-noto-hinted
 	depends = fonts-droid-fallback
-	source = https://github.com/koreader/koreader/releases/download/v2021.10.1/koreader-2021.10.1-amd64.deb
-	sha512sums = 47aed12db05dbead5881661dd6c5b77398f7e8a9fce19af9441ce98898ee0ab22b3c5de4729d5651029b540a1f2e84d92fd0c6a0d041fb1d5c2c4a7ff2469c89
+	source = https://github.com/koreader/koreader/releases/download/v2021.11/koreader-2021.11-amd64.deb
+	sha512sums = 811adc6a6fb4fef2ed9bb00ceb41b4c4d0cad9e024cb19021c9fad3d1f7dc06e8105fbb0f8410464576b0436e04e3c60e852db32d8c89bc14adf3a36f93223da
 
 pkgname = koreader-bin
