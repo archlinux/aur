@@ -1,6 +1,6 @@
 pkgbase = emacs-native-comp-git-enhanced
 	pkgdesc = GNU Emacs. Development native-comp branch and pgtk branch combined.
-	pkgver = 28.0.60.151288
+	pkgver = 29.0.50.152374
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -21,7 +21,6 @@ pkgbase = emacs-native-comp-git-enhanced
 	depends = libjpeg-turbo
 	depends = giflib
 	depends = cairo
-	depends = webkit2gtk
 	provides = emasc-git
 	provides = emacs
 	provides = emacs26-git
@@ -41,7 +40,7 @@ pkgbase = emacs-native-comp-git-enhanced
 	replaces = emacs-seq
 	replaces = emacs-nox
 	options = !strip
-	source = emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp
+	source = emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk
 	b2sums = SKIP
 
 pkgname = emacs-native-comp-git-enhanced

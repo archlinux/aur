@@ -74,7 +74,7 @@ GTK2=             # GTK2 support. Why would you?
                
 NOCAIRO=          # Disable here. 
                
-XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
+XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
                
 DOCS_HTML=        # Generate and install html documentation.
                
@@ -93,7 +93,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-native-comp-git-enhanced"
 fi
-pkgver=28.0.60.151288
+pkgver=29.0.50.152374
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
 arch=('x86_64')
@@ -107,8 +107,8 @@ conflicts=('emacs-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-n
 replaces=('emacs-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
 # Use flatwhatson's branch
 # Use emacs's savannah repo (pgtk branch) if you have network issues
-source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
-#source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
+#source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
+source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
