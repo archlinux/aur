@@ -1,7 +1,7 @@
 # Maintainer: Rose Spangler <132@ikl.sh>
 _pkgname="minirss"
 pkgname="${_pkgname}-git"
-pkgver=v1.2.0.r1.gdb1c789
+pkgver=v2.0.0.r0.gfe3d50a
 pkgrel=1
 pkgdesc="A minuscule RSS notifier"
 arch=("any")
