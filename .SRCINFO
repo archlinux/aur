@@ -1,6 +1,6 @@
 pkgbase = swayr-git
 	pkgdesc = Swayr is a window switcher (and more) for sway
-	pkgver = v0.10.1.r3.gc23ab5f
+	pkgver = v0.10.1.r3.c23ab5f2
 	pkgrel = 1
 	url = https://git.sr.ht/~tsdh/swayr
 	arch = x86_64
