@@ -1,5 +1,5 @@
 pkgbase = garuda-settings-manager-git
-	pkgdesc = Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Garuda Linux system settings (Manjaro settings manager ported to work with Arch standards and limited to only DKMS drivers)
 	pkgver = 1.0.0.r1.g15c4106
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/garuda-settings-manager
@@ -31,28 +31,24 @@ pkgbase = garuda-settings-manager-git
 pkgname = garuda-settings-manager-git
 	provides = garuda-settings-manager
 	conflicts = garuda-settings-manager
-	replaces = garuda-settings-manager
 
 pkgname = garuda-settings-manager-kcm-git
-	pkgdesc = Garuda Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Garuda Linux system settings - Plasma 5 KCM
 	depends = garuda-settings-manager
 	depends = kcmutils
 	depends = kconfigwidgets
 	provides = garuda-settings-manager-kcm
 	conflicts = garuda-settings-manager-kcm
-	replaces = garuda-settings-manager-kcm
 
 pkgname = garuda-settings-manager-notifier-git
-	pkgdesc = Garuda Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Garuda Linux system settings - notifier
 	depends = garuda-settings-manager
 	provides = garuda-settings-manager-notifier
 	conflicts = garuda-settings-manager-notifier
-	replaces = garuda-settings-manager-notifier
 
 pkgname = garuda-settings-manager-knotifier-git
-	pkgdesc = Garuda Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Garuda Linux system settings - knotifier
 	depends = garuda-settings-manager
 	depends = knotifications
 	provides = garuda-settings-manager-knotifier
 	conflicts = garuda-settings-manager-knotifier
-	replaces = garuda-settings-manager-knotifier

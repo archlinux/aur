@@ -7,7 +7,7 @@ pkgname=('garuda-settings-manager-git' 'garuda-settings-manager-kcm-git'
          'garuda-settings-manager-notifier-git' 'garuda-settings-manager-knotifier-git')
 pkgver=1.0.0.r1.g15c4106
 pkgrel=1
-pkgdesc="Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+pkgdesc="Garuda Linux system settings (Manjaro settings manager ported to work with Arch standards and limited to only DKMS drivers)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/garuda-linux/applications/garuda-settings-manager"
 license=("GPL")
@@ -41,9 +41,8 @@ build() {
 }
 
 package_garuda-settings-manager-git() {
-provides=('garuda-settings-manager')
+  provides=('garuda-settings-manager')
   conflicts=('garuda-settings-manager')
-  replaces=('garuda-settings-manager')
 
   cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install 
@@ -57,11 +56,10 @@ provides=('garuda-settings-manager')
 }
 
 package_garuda-settings-manager-kcm-git() {
-  pkgdesc="Garuda Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+  pkgdesc="Garuda Linux system settings - Plasma 5 KCM"
   depends=('garuda-settings-manager' 'kcmutils' 'kconfigwidgets')
   provides=('garuda-settings-manager-kcm')
   conflicts=('garuda-settings-manager-kcm')
-  replaces=('garuda-settings-manager-kcm')
 
   cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install
@@ -72,11 +70,10 @@ package_garuda-settings-manager-kcm-git() {
 }
 
 package_garuda-settings-manager-notifier-git() {
-  pkgdesc="Garuda Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+  pkgdesc="Garuda Linux system settings - notifier"
   depends=('garuda-settings-manager')
   provides=('garuda-settings-manager-notifier')
   conflicts=('garuda-settings-manager-notifier')
-  replaces=('garuda-settings-manager-notifier')
 
   cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install
@@ -91,11 +88,10 @@ package_garuda-settings-manager-notifier-git() {
 }
 
 package_garuda-settings-manager-knotifier-git() {
-  pkgdesc="Garuda Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+  pkgdesc="Garuda Linux system settings - knotifier"
   depends=('garuda-settings-manager' 'knotifications')
   provides=('garuda-settings-manager-knotifier')
   conflicts=('garuda-settings-manager-knotifier')
-  replaces=('garuda-settings-manager-knotifier')
 
   cd "$srcdir/$_pkgbase/build"
   make DESTDIR=${pkgdir} install
