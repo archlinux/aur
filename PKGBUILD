@@ -3,7 +3,7 @@
 pkgbase=jetbrains-gateway
 pkgname=(jetbrains-gateway jetbrains-gateway-jre)
 pkgver=213.5744.213
-pkgrel=1
+pkgrel=2
 pkgdesc='An entry point to Remote Development'
 arch=('x86_64' 'i686')
 license=('custom:jetbrains')
@@ -18,8 +18,8 @@ b2sums=('001b7e98248711d84b3498b27e72f2244ff6f006fca76994eb1470890a9a95520faf47e
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
 package_jetbrains-gateway() {
-  optdepends=('jetbrains-gateway-jre-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime: JRE - Required if jetbrains-gateway-jre-jre is not installed'
+  optdepends=('jetbrains-gateway-jre: JetBrains custom Java Runtime (Recommended)'
+              'java-runtime: JRE - Required if jetbrains-gateway-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely'
               'java-openjfx: rendering Markdown files')
 

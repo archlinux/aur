@@ -1,7 +1,7 @@
 pkgbase = jetbrains-gateway
 	pkgdesc = An entry point to Remote Development
 	pkgver = 213.5744.213
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/remote-development/gateway/
 	arch = x86_64
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = jetbrains-gateway
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
 pkgname = jetbrains-gateway
-	optdepends = jetbrains-gateway-jre-jre: JetBrains custom Java Runtime (Recommended)
-	optdepends = java-runtime: JRE - Required if jetbrains-gateway-jre-jre is not installed
+	optdepends = jetbrains-gateway-jre: JetBrains custom Java Runtime (Recommended)
+	optdepends = java-runtime: JRE - Required if jetbrains-gateway-jre is not installed
 	optdepends = gnome-keyring: save login/deployment credentials safely
 	optdepends = java-openjfx: rendering Markdown files
 
