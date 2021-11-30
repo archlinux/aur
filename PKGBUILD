@@ -13,9 +13,16 @@ url='https://www.gnupg.org/related_software/gpgme/'
 license=('LGPL')
 makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'swig')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch (dist signing 2020)
-source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig})
+source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig}
+        python310.patch)
 sha256sums=('6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0'
-            'SKIP')
+            'SKIP'
+            '5de2f6bcb6b30642d0cbc3fbd86803c9460d732f44a526f44cedee8bb78d291a')
+
+prepare() {
+  cd ${pkgbase}-${pkgver}
+  patch -Np1 -i ../python310.patch
+}
 
 build() {
   cd ${pkgbase}-${pkgver}
