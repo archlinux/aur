@@ -2,7 +2,7 @@
 
 pkgname=batz-converter
 rpkgname=batzconverter
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Show and convert timezone in shell"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 groups=('utils')
 depends=('bash')
 source=("${rpkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/chmouel/${rpkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('44d83018d5c838d651cac447814da992f6342268e603245c8b8885a9f524991db58984e2628de918f36e742a0d07987c9367d88c3ac2e405a2077515caf680b7')
+sha512sums=('4b1fdc0ba9ccca3d0bfc3a50e2b79817025495e4e888cab9fb9d6546d99336142d0de68e0c37c3f4a58cb2fc19dc72dc59c5f5daadc7f90d801794e820ffe508')
 
 
 package() {
