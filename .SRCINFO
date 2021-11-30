@@ -1,7 +1,7 @@
 pkgbase = findex-git
 	pkgdesc = Highly customizable finder with high performance. Written in Rust and uses GTK
-	pkgver = 0.2.0.0580b23
-	pkgrel = 1
+	pkgver = 0
+	pkgrel = 0
 	url = https://github.com/mdgaziur/findex
 	arch = x86_64
 	license = GPL3
