@@ -1,6 +1,6 @@
 pkgbase = teleport-git
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
-	pkgver = r6843.36998cf56
+	pkgver = r7049.38b24f680
 	pkgrel = 1
 	url = https://github.com/gravitational/teleport
 	install = teleport.install
@@ -11,6 +11,7 @@ pkgbase = teleport-git
 	license = Apache
 	makedepends = go>=1.16.0,
 	makedepends = git
+	makedepends = rust
 	depends = glibc
 	provides = tctl
 	provides = tsh

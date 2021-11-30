@@ -1,14 +1,14 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 
 pkgname=('teleport-git' 'teleport-client-git')
-pkgver=r6843.36998cf56
+pkgver=r7049.38b24f680
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('Apache')
 depends=('glibc')
-makedepends=('go>=1.16.0', 'git')
+makedepends=('go>=1.16.0', 'git' 'rust')
 provides=('tctl' 'tsh')
 install=teleport.install
 
@@ -52,7 +52,7 @@ build() {
     export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # Build
-    make full
+    PATH="${PATH}:${HOME}/.cargo/bin" make full
 
     # Make sure go path is writable so it can be cleaned up
     chmod -R u+w "${srcdir}/go"
