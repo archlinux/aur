@@ -37,10 +37,12 @@ build() {
   target/release/cog generate-completions zsh > "completions/_cog"
 }
 
-#check() {
-#  cd "${pkgname%-git}"
-#  cargo test --frozen
-#}
+check() {
+  cd "${pkgname%-git}"
+  git config --global user.name "the name"
+  git config --global user.email "paul.delafosse@gmail.com"
+  cargo test --frozen -- --test-threads=1
+}
 
 package() {
   cd "${pkgname%-git}"
