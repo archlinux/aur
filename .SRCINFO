@@ -1,7 +1,7 @@
 pkgbase = inxi
 	pkgdesc = Full featured CLI system information tool
 	pkgver = 3.3.09.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smxi.org/docs/inxi.htm
 	arch = any
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = inxi
 	optdepends = ipmitool: -s IPMI sensors
 	optdepends = kmod: inxi -Ax,-Nx module version
 	optdepends = lm_sensors: inxi -s sensors output
-	optdepends = mesa-demos: inxi -G glx info
+	optdepends = mesa-utils: inxi -G glx info
 	optdepends = net-tools: inxi -i ip lan-deprecated
 	optdepends = perl-io-socket-ssl: -U; -w,-W; -i (if dig not installed)
 	optdepends = perl-cpanel-json-xs: --output json - required for export
