@@ -1,6 +1,6 @@
 pkgbase = python-minio
 	pkgdesc = MinIO Python SDK for Amazon S3 Compatible Cloud Storage
-	pkgver = 7.1.1
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://github.com/minio/minio-py
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = python-minio
 	makedepends = python-setuptools
 	depends = python-certifi
 	depends = python-urllib3
-	source = python-minio-7.1.1.tar.gz::https://files.pythonhosted.org/packages/source/m/minio/minio-7.1.1.tar.gz
-	source = python-minio-7.1.1.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/minio/minio-7.1.1.tar.gz.asc
+	source = python-minio-7.1.2.tar.gz::https://files.pythonhosted.org/packages/source/m/minio/minio-7.1.2.tar.gz
+	source = python-minio-7.1.2.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/minio/minio-7.1.2.tar.gz.asc
 	validpgpkeys = 4405F3F0DDBA1B9E68A31D2512C74390F9AAC728
-	sha256sums = f8271a56c3b91b54c9b25e3d12e1a88ccffea70b7bdce5c906e7bb7dea45c7ba
+	sha256sums = 40d0cdb4dba5d5610d6599ea740cf827102db5bfa71279fc220c3cf7305bedc1
 	sha256sums = SKIP
 
 pkgname = python-minio
