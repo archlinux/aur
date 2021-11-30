@@ -1,15 +1,15 @@
 pkgbase = dhall-bin
 	pkgdesc = Dhall typechecker and formatter
-	pkgver = 1.40.1
+	pkgver = 1.40.2
 	pkgrel = 1
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = BSD
 	conflicts = dhall
-	source = dhall-1.40.1.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/1.40.1/dhall-1.40.1-x86_64-linux.tar.bz2
-	source = LICENSE-1.40.1::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.40.1/dhall/LICENSE
-	source = dhall.1-1.40.1::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.40.1/dhall/man/dhall.1
-	sha256sums = 213ee6eb2792bf5bacf89b4f1fde6449310476ce4ab37d769d6037179f5adb6e
+	source = dhall-1.40.2.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/1.40.2/dhall-1.40.2-x86_64-linux.tar.bz2
+	source = LICENSE-1.40.2::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.40.2/dhall/LICENSE
+	source = dhall.1-1.40.2::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.40.2/dhall/man/dhall.1
+	sha256sums = 56ecbcdc7daaf42d764764f06c71426b982032d70a075a2f1b7e2acfcb0fda6f
 	sha256sums = 91f68ca8606e7ae993148187e397e20431aa6d870ac9fcc70330a0479468eef9
 	sha256sums = a41e5df44d67d9ea3dd4a64c85457f156d5266875046ea5de40adf1b3fc2a29f
 
