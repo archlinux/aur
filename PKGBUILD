@@ -11,8 +11,8 @@ conflicts=('breath-wallpaper' 'plasma5-themes-breath' 'sddm-breath-theme' 'breat
 arch=('any')
 url="https://gitlab.manjaro.org/artwork/themes/$_pkgname"
 license=('LGPL')
-depends=('hicolor-icon-theme' 'plasma-workspace')
-makedepends=('extra-cmake-modules' 'plasma-framework')
+depends=('breeze' 'plasma-framework' 'plasma-workspace')
+makedepends=('extra-cmake-modules' 'git' 'plasma-framework')
 optdepends=('breath-gtk-theme: Breath widget style for GTK applications')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
