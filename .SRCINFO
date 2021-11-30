@@ -1,7 +1,7 @@
 pkgbase = limine
 	pkgdesc = An advanced x86/x86_64 BIOS/UEFI bootloader
 	pkgver = 2.68
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/limine-bootloader/limine
 	arch = x86_64
 	license = BSD

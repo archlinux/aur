@@ -1,7 +1,7 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
 pkgver=2.68
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced x86/x86_64 BIOS/UEFI bootloader"
 arch=("x86_64")
 url="https://github.com/limine-bootloader/limine"
@@ -15,6 +15,10 @@ build() {
   (
     unset CFLAGS
     unset LDFLAGS
+    # Unset MAKEFLAGS because, in some rare occasions, parallelism
+    # may cause the build process to fail.
+    # This should be removed once this is sorted out upstream.
+    unset MAKEFLAGS
     make -C "${_dir}"
   )
 }
