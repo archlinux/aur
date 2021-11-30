@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.7.r0.gf18ddb4
-pkgrel=1
+pkgver=0.7.r9.g4f1f1cc
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -36,5 +36,5 @@ check() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make prefix=/usr DESTDIR="$pkgdir/" install
+  make prefix=/usr libexecdir=/lib DESTDIR="$pkgdir/" install
 }
