@@ -1,7 +1,7 @@
 pkgbase = sqlfluff
 	pkgdesc = A dialect-flexible and configurable SQL linter
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sqlfluff.com
 	arch = any
 	license = MIT

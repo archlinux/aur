@@ -3,7 +3,7 @@
 
 pkgname=sqlfluff
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A dialect-flexible and configurable SQL linter"
 arch=('any')
 url="https://www.sqlfluff.com"
@@ -29,6 +29,13 @@ makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sqlfluff/sqlfluff/archive/$pkgver.tar.gz")
 sha512sums=('ac073a114e597430eeff4b34c9fec05253e124751c2cb79a865cbb9b42be449cd0d313a1c9bd986145587f7d534109e8bedd3a71983398c4873aaa46aa5cec04')
 b2sums=('3370e65faf0d613ed6131c1da77f776c9e70896c1c2b5847b481b767006e4719a280a40b69d4862fcd0a1c3ff6fef53a3966134f725fcc29e47ec824ddc17fbc')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # removed upstream in https://github.com/sqlfluff/sqlfluff/commit/257c0476948c987af5dc47e9323a2af3464385ec
+  sed -i '/"configparser"/d' setup.py
+}
 
 build() {
   cd "$pkgname-$pkgver"
