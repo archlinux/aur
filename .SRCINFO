@@ -1,6 +1,6 @@
 pkgbase = trunk-recorder-git
 	pkgdesc = Records calls from a Trunked Radio System (P25 & SmartNet)
-	pkgver = r1643.804df23
+	pkgver = r1706.8072483
 	pkgrel = 1
 	url = https://github.com/robotastic/trunk-recorder
 	arch = x86_64
