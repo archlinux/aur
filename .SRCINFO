@@ -1,26 +1,23 @@
 pkgbase = glportal
-	pkgdesc = OpenGL puzzle game inspired by portal. Stable branch.
+	pkgdesc = OpenGL puzzle game inspired by Portal
 	pkgver = 0.0.7.2
-	pkgrel = 1
-	epoch = 1
-	url = http://glportal.de/
+	pkgrel = 2
+	url = https://glportal.de/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = cmake
-	makedepends = unittestpp
-	depends = assimp
 	depends = sdl2_mixer
-	depends = tinyxml2
-	depends = libepoxy
-	depends = bullet
 	depends = freeimage
-	provides = glportal=0.0.7.2
+	depends = mesa
+	depends = qt5-base
+	depends = assimp
+	depends = tinyxml2
+	depends = bullet
+	depends = libepoxy
 	conflicts = glportal-git
-	conflicts = glportal-stable
-	source = git://github.com/glportal/glportal.git#branch=stable
+	source = glportal::git+https://github.com/GlPortal/glPortal.git#commit=50298e61f22503b8f74d4e44cdebc08d7532a4c4
 	md5sums = SKIP
 
 pkgname = glportal
-
