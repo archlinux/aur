@@ -2,14 +2,14 @@
 
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-bin)
-pkgver=1.10
-pkgrel=2
+pkgver=1.20
+pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
 provides=('MRS-Toolchain')
 conflicts=()
-depends=('bash')
+depends=()
 makedepends=('tar')
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
@@ -17,14 +17,14 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A'
             'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
             'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A')
-source=("${pkgbase}-${pkgver}.tar.gz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.gz"
+source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz"
         )
 
-sha256sums=('443a7392c42cd387a2b0445f265e9e98b020b7779d346f360a786f1c0c1a7b9b')
+sha256sums=('f70344379c586d93c5405ed7c75a2b71ef952c5747ad587cab5fc641b65276eb')
 
 options=('!strip')
 
-noextract=(${pkgbase}-${pkgver}.tar.gz)
+noextract=()
 
 _install(){
      find ${@: 2} -type f -exec install -Dm$1 {}  ${pkgdir}/opt/wch/${pkgname%-bin}/{} \;
@@ -44,37 +44,31 @@ package_mounriver-studio-toolchain-openocd-bin() {
              'libudev.so')
 
     pkgdesc="MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip."
-    install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
 
-    tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.gz" --strip-components=2 -C "${srcdir}"
-# cp -r "${srcdir}"/OPENOCD/* "${pkgdir}/opt/wch/${pkgname%-bin}"
-    cd "${srcdir}"/OPENOCD/
+    cd "${srcdir}"/OpenOCD/
     _install 644 bin -name "*.cfg"
     _install 755 bin -name "openocd"
     _install 644 share
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-arm" << EOF
 #!/bin/env bash
-cd /opt/wch/${pkgname%-bin}/bin
-exec ./openocd -f wch-arm.cfg "\$@"
+exec /opt/wch/${pkgname%-bin}/bin/openocd -f /opt/wch/${pkgname%-bin}/bin/wch-arm.cfg "\$@"
 
 EOF
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-riscv" << EOF
 #!/bin/env bash
-cd /opt/wch/${pkgname%-bin}/bin
-exec ./openocd -f wch-riscv.cfg "\$@"
+exec /opt/wch/${pkgname%-bin}/bin/openocd -f /opt/wch/${pkgname%-bin}/bin/wch-riscv.cfg "\$@"
 
 EOF
 }
 
 package_mounriver-studio-toolchain-riscv-bin() {
     pkgdesc="MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation."
+    depends=('bash')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
+    cp -a "${srcdir}"/RISC-V\ Embedded\ GCC/* "${pkgdir}/opt/wch/${pkgname%-bin}"
 
-    tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.gz" --strip-components=2 -C "${srcdir}"
-    cp -r "${srcdir}"/RISC-V\ Embedded\ GCC/* "${pkgdir}/opt/wch/${pkgname%-bin}"
-
-    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
 #!/bin/sh
 [ -d /opt/wch/${pkgname%-bin}/bin ] && append_path '/opt/wch/${pkgname%-bin}/bin'
 
