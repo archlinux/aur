@@ -1,6 +1,6 @@
 pkgbase = inxi-perl-git
 	pkgdesc = Pinxi, development branch of inxi, a full featured CLI system information tool
-	pkgver = r4153.fe6666c6
+	pkgver = r4548.0e8a7d5b
 	pkgrel = 2
 	url = https://smxi.org/docs/inxi.htm
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = inxi-perl-git
 	optdepends = ipmitool: -s IPMI sensors
 	optdepends = kmod: inxi -Ax,-Nx module version
 	optdepends = lm_sensors: inxi -s sensors output
-	optdepends = mesa-demos: inxi -G glx info
+	optdepends = mesa-utils: inxi -G glx info
 	optdepends = net-tools: inxi -i ip lan-deprecated
 	optdepends = perl-io-socket-ssl: -U; -w,-W; -i (if dig not installed)
 	optdepends = perl-cpanel-json-xs: --output json - required for export
@@ -40,4 +40,3 @@ pkgbase = inxi-perl-git
 	sha256sums = SKIP
 
 pkgname = inxi-perl-git
-

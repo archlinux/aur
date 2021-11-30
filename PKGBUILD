@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-perl-git
-pkgver=r4153.fe6666c6
+pkgver=r4548.0e8a7d5b
 pkgrel=2
 pkgdesc="Pinxi, development branch of inxi, a full featured CLI system information tool"
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=(
         "ipmitool: -s IPMI sensors"
         "kmod: inxi -Ax,-Nx module version"
         "lm_sensors: inxi -s sensors output"
-        "mesa-demos: inxi -G glx info"
+        "mesa-utils: inxi -G glx info"
         "net-tools: inxi -i ip lan-deprecated"
         "perl-io-socket-ssl: -U; -w,-W; -i (if dig not installed)"
         "perl-cpanel-json-xs: --output json - required for export"
@@ -49,6 +49,6 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname/-perl-git/}"
   install -D -m755 pinxi "$pkgdir/usr/bin/pinxi"
-  install -D -m755 pinxi.1 "$pkgdir/usr/share/man/man1/pinxi.1.gz"
+  install -D -m644 pinxi.1 "$pkgdir/usr/share/man/man1/pinxi.1.gz"
 }
 
