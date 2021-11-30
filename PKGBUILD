@@ -5,7 +5,7 @@
 pkgname=spot
 pkgver=2.10.1
 pkgrel=1
-pkgdesc="A C++14 library for omega automata manipulation and model checking."
+pkgdesc="A C++17 library for LTL, omega automata manipulation and model checking."
 arch=('i686' 'x86_64')
 url="https://spot.lrde.epita.fr/"
 license=('GPL3')
