@@ -3,14 +3,14 @@
 
 pkgname=koala-bin
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Koala is a GUI application for LESS, Sass and CoffeeScript compilation, to help web developers use these tools more efficiently for development."
 arch=('x86_64' 'i686')
 url="http://koala-app.com/"
 _repourl="https://github.com/oklai/koala"
 license=('Apache License, Version 2.0')
 provides=('koala')
-depends=('ruby')
+depends=('ruby' 'gconf')
 optdepends=()
 
 source=('koala.png'
