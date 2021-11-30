@@ -1,6 +1,6 @@
 pkgbase = minirss-git
 	pkgdesc = A minuscule RSS notifier
-	pkgver = v2.0.0.r0.gfe3d50a
+	pkgver = v2.0.1.r0.g2727cd1
 	pkgrel = 1
 	url = https://git.ikl.sh/132ikl/minirss
 	arch = any
