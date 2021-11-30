@@ -5,13 +5,13 @@ pkgbase=chowtapemodel-git
 pkgname=('chowtapemodel-jack-git' 'chowtapemodel-vst3-git' 'chowtapemodel-lv2-git')
 _pkgname=AnalogTapeModel
 pkgver=2.9.0.r20.gd5b3109
-pkgrel=1
+pkgrel=2
 pkgdesc="Physical modelling signal processing for analog tape recording"
 arch=('x86_64')
 url="https://github.com/jatinchowdhury18/AnalogTapeModel"
 license=('GPL3')
 depends=('freeglut' 'freetype2' 'libxcursor' 'libxinerama' 'libxrandr')
-makedepends=('git' 'alsa-lib' 'jack' 'webkit2gtk')
+makedepends=('git' 'cmake' 'alsa-lib' 'jack' 'webkit2gtk')
 source=('git+https://github.com/jatinchowdhury18/AnalogTapeModel.git')
 sha256sums=('SKIP')
 

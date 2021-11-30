@@ -1,11 +1,12 @@
 pkgbase = chowtapemodel-git
 	pkgdesc = Physical modelling signal processing for analog tape recording
 	pkgver = 2.9.0.r20.gd5b3109
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jatinchowdhury18/AnalogTapeModel
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	makedepends = alsa-lib
 	makedepends = jack
 	makedepends = webkit2gtk
