@@ -2,12 +2,12 @@
 pkgname=minetest-dreambuilder
 _pkgname=dreambuilder
 _pkgauthor=VanessaE
-pkgver=20210626.0349
-_cdbrel=8225
+pkgver=20211128.1200
+_cdbrel=9807
 pkgrel=1
 pkgdesc="An attempt to give the player pretty much everything they could ever want to build with, and all the tools they should need to actually get the job done. "
 license=("LGPLv3")
-sha256sums=('1e5fde5b9fdebcdcd70de462ef822201c7e651c811f167460dff6f96707bced4')
+sha256sums=('fe505dc932f7aec25106b8b995c0ea821f62285593939630402cf6ab3a8bcf02')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"

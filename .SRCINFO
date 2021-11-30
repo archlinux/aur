@@ -1,14 +1,14 @@
 pkgbase = minetest-dreambuilder
 	pkgdesc = An attempt to give the player pretty much everything they could ever want to build with, and all the tools they should need to actually get the job done.
-	pkgver = 20210626.0349
+	pkgver = 20211128.1200
 	pkgrel = 1
 	url = https://content.minetest.net/packages/VanessaE/dreambuilder/
 	arch = any
 	license = LGPLv3
 	depends = minetest-common
-	noextract = dreambuilder-20210626.0349.zip
+	noextract = dreambuilder-20211128.1200.zip
 	options = !strip
-	source = dreambuilder-20210626.0349.zip::https://content.minetest.net/packages/VanessaE/dreambuilder/releases/8225/download/
-	sha256sums = 1e5fde5b9fdebcdcd70de462ef822201c7e651c811f167460dff6f96707bced4
+	source = dreambuilder-20211128.1200.zip::https://content.minetest.net/packages/VanessaE/dreambuilder/releases/9807/download/
+	sha256sums = fe505dc932f7aec25106b8b995c0ea821f62285593939630402cf6ab3a8bcf02
 
 pkgname = minetest-dreambuilder
