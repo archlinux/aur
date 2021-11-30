@@ -1,13 +1,13 @@
-# Maintainer: Steven Spangler <132@ikl.sh>
+# Maintainer: Rose Spangler <132@ikl.sh>
 _pkgname="minirss"
 pkgname="${_pkgname}-git"
-pkgver=v1.0.0.r1.g2af2112
+pkgver=v1.2.0.r1.gdb1c789
 pkgrel=1
 pkgdesc="A minuscule RSS notifier"
 arch=("any")
 url=https://github.com/132ikl/minirss
 license=("GPL3")
-depends=("xmlstarlet" "notification-daemon" "bash>=4.0" "xdg-utils")
+depends=("python>=3.7" "python-appdirs" "python-requests" "python-feedparser" "notification-daemon" "xdg-utils")
 makedepends=("git")
 optdepends=("dunst: enable middle click open link functionality")
 provides=("minirss")
