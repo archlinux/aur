@@ -2,7 +2,7 @@
 
 pkgname=python-yg.lockfile
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lockfile object with timeouts and context manager"
 url="https://github.com/yougov/yg.lockfile"
 license=('MIT')
