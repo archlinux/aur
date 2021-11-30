@@ -15,6 +15,13 @@ pkgbase = breath-theme-git
 	provides = breath-wallpaper
 	provides = plasma5-themes-breath
 	provides = sddm-breath-theme
+	conflicts = breath-legacy-wallpaper
+	conflicts = plasma5-themes-breath-legacy
+	conflicts = sddm-breath-legacy-theme
+	conflicts = breath2-icon-theme
+	conflicts = breath2-wallpaper
+	conflicts = plasma5-themes-breath2
+	conflicts = sddm-breath2-theme
 	source = git+https://gitlab.manjaro.org/artwork/themes/breath.git
 	sha256sums = SKIP
 
