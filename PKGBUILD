@@ -8,7 +8,6 @@ arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
 license=('MIT')
 depends=('gnome-shell')
-makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname-git")
 source=("https://github.com/aunetx/blur-my-shell/archive/refs/tags/v$pkgver.zip")
