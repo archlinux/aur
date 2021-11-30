@@ -1,0 +1,16 @@
+pkgbase = dockeye-git
+	pkgdesc = GUI app to manage Docker
+	pkgver = 0.1.0.54.g4bfd0e9
+	pkgrel = 1
+	url = https://github.com/vv9k/dockeye
+	arch = x86_64
+	license = GPLv3
+	makedepends = cargo
+	depends = libxcb
+	depends = gcc-libs
+	provides = dockeye
+	conflicts = dockeye
+	source = dockeye::git+https://github.com/vv9k/dockeye.git
+	sha256sums = SKIP
+
+pkgname = dockeye-git
