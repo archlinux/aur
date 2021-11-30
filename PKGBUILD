@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.0.0_devel.147096.d80c7f3406b
+pkgver=22.0.0_devel.147532.34a75ce15ce
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -96,8 +96,11 @@ prepare() {
 }
 
 build () {
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
+    export CC="${CC:-gcc}"
+    export CXX="${CXX:-g++}"
+    CC="$CC -m32"
+    CXX="$CXX -m32"
+
     export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
     meson setup mesa _build \
