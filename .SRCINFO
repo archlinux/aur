@@ -1,5 +1,5 @@
 pkgbase = webull-desktop
-	pkgdesc = Invest in stocks, ETFs, and options with Webull Financial, all commission-free, /usr/bin/makepkg minimum deposit.
+	pkgdesc = Invest in stocks, ETFs, and options with Webull Financial, all commission-free, $0 minimum deposit.
 	pkgver = 4.7.0
 	pkgrel = 3
 	url = https://webull.com
