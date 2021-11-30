@@ -86,7 +86,7 @@ fi
 
 # set neovim background
 for r in $(nvr --serverlist); do
-  nvr --servername "$r" -c "set background=${UI_NEOVIM}"
+  nvr --servername "$r" -c "set background=${UI_NEOVIM} | colorscheme ${UI_NEOVIM_COLORSCHEME}"
 done
 
 # set background

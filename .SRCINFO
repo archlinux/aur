@@ -1,6 +1,6 @@
 pkgbase = theme-switcher-git
 	pkgdesc = Switching between light and dark themes made easy
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/theme-switcher-git/
 	arch = any
