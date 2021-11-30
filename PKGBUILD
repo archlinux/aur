@@ -85,9 +85,6 @@ package_nvidia-470xx-dkms() {
     install -dm 755 "${pkgdir}"/usr/src
     cp -dr --no-preserve='ownership' kernel "${pkgdir}/usr/src/nvidia-${pkgver}"
 
-    echo "blacklist nouveau" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
-    echo "nvidia-uvm" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
-
     install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
 }
 
@@ -234,6 +231,9 @@ package_nvidia-470xx-utils() {
     install -Dm644 "${srcdir}/nvidia-470xx-utils.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
 
     install -Dm644 "${srcdir}/nvidia-470xx.rules" "$pkgdir"/usr/lib/udev/rules.d/60-nvidia-470xx.rules
+
+    echo "blacklist nouveau" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+    echo "nvidia-uvm" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 
     create_links
 }
