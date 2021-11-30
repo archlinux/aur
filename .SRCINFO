@@ -13,6 +13,7 @@ pkgbase = gtksourceview-git
 	makedepends = vala
 	depends = gtk4
 	provides = gtksourceview5=5.3.0
+	conflicts = gtksourceview5
 	source = gtksourceview::git+https://gitlab.gnome.org/GNOME/gtksourceview.git
 	sha256sums = SKIP
 
