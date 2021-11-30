@@ -1,6 +1,6 @@
 pkgname=mingw-w64-make
 pkgver=1
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Make wrapper for MinGW (mingw-w64)"
 depends=('mingw-w64-gcc' 'mingw-w64-environment')
