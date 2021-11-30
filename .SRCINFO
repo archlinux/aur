@@ -1,0 +1,14 @@
+pkgbase = python2-docutils
+	pkgdesc = Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = http://docutils.sourceforge.net
+	install = python2-docutils.install
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://downloads.sourceforge.net/docutils/docutils-0.17.1.tar.gz
+	sha512sums = 5ec2087116bd5356fdffc54f07f6b0355aac5fa9d6caeefa77e8d201fd4706c0d419193c4d9a3964ae493da3091fe2c7dc36b74f81a1e1b9282173658b06e71b
+
+pkgname = python2-docutils
