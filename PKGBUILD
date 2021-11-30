@@ -4,12 +4,13 @@
 
 pkgname=mprime
 pkgver=307b9
-pkgrel=1
+pkgrel=2
 pkgdesc="A GIMPS, distributed computing project client, dedicated to finding Mersenne primes."
 arch=(x86_64)
 url="http://www.mersenne.org"
 license=('custom')
-depends=(curl hwloc boost)
+depends=(curl hwloc boost-libs)
+makedepends=(boost)
 conflicts=(mprime-bin)
 source=("http://www.mersenne.org/ftp_root/gimps/p95v${pkgver}.source.zip"
 0001-makefile-fix-build-for-Arch-Linux.patch)
