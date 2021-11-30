@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -14,11 +14,10 @@ depends=('gambas3-runtime'
          'gambas3-gb-desktop'
          'gambas3-gb-qt5'
          'gambas3-gb-desktop-x11'
-         'python2'
          'libcpuid'
          'lsb-release'
          'curl'
-         'procps-ng')
+)
 makedepends=('gambas3-dev-tools' 'gcc' 'imagemagick')
 source=("https://github.com/i-nex/I-Nex/archive/${pkgver}.tar.gz"
         "Fix-error-if-proc-mtrr-doesn-t-exist.patch"
