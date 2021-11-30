@@ -1,0 +1,15 @@
+--- manifest_orig.json	2021-11-29 20:42:33.672207939 -0500
++++ manifest.json	2021-11-29 20:43:51.739191683 -0500
+@@ -22,5 +22,12 @@
+       "css": ["content-style.css"]
+     }
+   ]
++  ,
++  "applications": {
++      "gecko": {
++          "id": "addon@returnyoutubedislike.com",
++          "strict_min_version": "63.0"
++      }
++  }
+ 
+ }

@@ -1,0 +1,17 @@
+pkgbase = librewolf-extension-return-youtube-dislike-git
+	pkgdesc = open-source extension that returns the YouTube dislike count
+	pkgver = r133.f44f22e
+	pkgrel = 1
+	url = https://github.com/Anarios/return-youtube-dislike
+	arch = any
+	groups = librewolf-addons
+	license = GPL
+	makedepends = web-ext
+	provides = librewolf-extension-return-youtube-dislike
+	conflicts = librewolf-extension-return-youtube-dislike
+	source = git://github.com/Anarios/return-youtube-dislike.git
+	source = insert_addon_id.patch
+	sha256sums = SKIP
+	sha256sums = 81a0e6980a1fe85f28a49c07ea1a2c9ead66c5e18341cbdf11fc7d5d7e835dad
+
+pkgname = librewolf-extension-return-youtube-dislike-git
