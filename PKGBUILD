@@ -7,8 +7,8 @@ pkgname=kfoldersync
 #_id3=1526499274
 #_id4=338265
 pkgver=3.4.1
-pkgrel=2
-pkgrel_=1
+pkgrel=3
+pkgrel_=2
 pkgdesc="Folder synchronization and backup tool for KDE"
 arch=('x86_64')
 url="https://www.linux-apps.com/content/show.php/${_pkgname}?content=164092"
@@ -19,7 +19,7 @@ depends=('plasma-workspace' 'hicolor-icon-theme' 'kconfigwidgets' 'kdbusaddons' 
 source=("https://download.opensuse.org/repositories/home:/Vindex17:/myapps/Arch/x86_64/${pkgname}-${pkgver}-${pkgrel_}-x86_64.pkg.tar.zst"         
         "${pkgname}.install")
 install=${pkgname}.install
-md5sums=('dd5beca2231def66c9605a82df863cc2' '262fc1597fb332894d1367f510a7f39b')
+md5sums=('573f1f9cd38c5e17cb7ada13b203f136' '262fc1597fb332894d1367f510a7f39b')
 
 build()
 {
