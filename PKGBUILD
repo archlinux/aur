@@ -2,7 +2,7 @@
 
 pkgname=tg-archive
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='is a tool for exporting Telegram group chats into static websites, preserving the chat history like mailing list archives.'
 arch=(any)
 url=https://github.com/knadh/tg-archive
@@ -10,8 +10,9 @@ license=('MIT')
 depends=(python python-cryptg python-feedgen python-jinja python-pillow python-yaml python-telethon)
 makedepends=(python-pip python-wheel)
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
+# 'https://files.pythonhosted.org/packages/90/54/2f0c5ec169ebfe0ab1c68c2b960acac248ab8b6b9ed6614208d484bed5b6/tg-archive-0.3.10.tar.gz'
 source=(
-        'https://files.pythonhosted.org/packages/90/54/2f0c5ec169ebfe0ab1c68c2b960acac248ab8b6b9ed6614208d484bed5b6/tg-archive-0.3.10.tar.gz'
+        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         'LICENSE'
 )
 md5sums=(
