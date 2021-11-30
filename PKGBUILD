@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-pygments')
 makedepends=('python-setuptools')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b15a3c8b55b0149dddaf01fc989bc7b6b418e87967a8368f6dec2c4b5fb00132')
+sha256sums=('f7b2e9128a00d4439f9b3c11e328934ee73870f5fc32cfc40958ee9763bb14fc')
 
 prepare() {
   cd "$pkgname-$pkgver"
