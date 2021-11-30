@@ -2,7 +2,7 @@
 
 pkgname=koreader-bin
 pkgver=2021.11
-pkgrel=2
+pkgrel=1
 pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices"
 arch=("x86_64")
 url="https://github.com/koreader/koreader/"
