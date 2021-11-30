@@ -25,6 +25,7 @@ depends=(
   'python-pygments'
   'python-beautifulsoup4'
   'python-syndom-git'
+  'python-humanize'
 )
 replaces=(gnome-feeds gnome-feeds-git)
 makedepends=('git' 'meson')

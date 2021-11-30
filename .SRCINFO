@@ -23,6 +23,7 @@ pkgbase = gfeeds-git
 	depends = python-pygments
 	depends = python-beautifulsoup4
 	depends = python-syndom-git
+	depends = python-humanize
 	provides = gfeeds
 	provides = gnome-feeds
 	conflicts = gnome-feeds
