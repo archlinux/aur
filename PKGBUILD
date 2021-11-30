@@ -1,12 +1,12 @@
 #AUR Maintainter: Javier Steinaker <jsteinaker@gmail.com>
 pkgname=pinta-gtk3-git
 pkgver=r2282.077ca6d2
-pkgrel=1
+pkgrel=2
 pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
 arch=('x86_64' 'i686')
 url="https://pinta-project.com"
 license=('MIT')
-depends=('mono' 'gtk-sharp-3' 'mono-addins' 'yelp-tools' 'intltool' 'dotnet-runtime')
+depends=('mono' 'gtk-sharp-3' 'mono-addins' 'yelp-tools' 'intltool' 'dotnet-runtime-5.0-bin')
 makedepends=('git' 'dotnet-sdk' 'autoconf-archive')
 provides=('pinta')
 conflicts=('pinta')
