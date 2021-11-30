@@ -1,12 +1,12 @@
 pkgbase = fabric-installer
 	pkgdesc = installer for the Minecraft mod loader Fabric
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://fabricmc.net
 	arch = any
 	license = Apache-2.0
 	depends = java-environment>=8
-	source = https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.9.0/fabric-installer-0.9.0.jar
+	source = https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.9.1/fabric-installer-0.9.1.jar
 	source = https://raw.githubusercontent.com/FabricMC/fabric-installer/master/LICENSE
 	source = https://fabricmc.net/assets/logo.png
 	source = fabric-installer

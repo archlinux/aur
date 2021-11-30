@@ -1,7 +1,7 @@
 # Maintainer: <me at auoeke dot net>
 # Contributor: Péter Tombor <aur at tmbpeter dot com>
 pkgname=fabric-installer
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='installer for the Minecraft mod loader Fabric'
 arch=('any')
