@@ -1,6 +1,6 @@
 #Maintainer: Justine Smithies <justine at smithies dot me dot uk>
 pkgname=swayr-git
-pkgver=v0.10.1.r0.g97ee8cb
+pkgver=v0.10.1.r3.gc23ab5f
 pkgrel=1
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://git.sr.ht/~tsdh/swayr"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("git+https://git.sr.ht/~tsdh/swayr/")
+source=("${pkgname%-*}::git+https://git.sr.ht/~tsdh/swayr/")
 md5sums=('SKIP')
 
 pkgver() {
