@@ -8,7 +8,7 @@
 #
 
 pkgname=mkgmap
-pkgver=4818
+pkgver=4819
 pkgrel=1
 pkgdesc='Create maps for Garmin GPS devices from OpenStreetMap (OSM) data.'
 url='http://www.mkgmap.org.uk'
@@ -18,7 +18,7 @@ depends=('java-runtime=8')
 conflicts=("${pkgname}-svn")
 source=("${pkgname}" "http://www.mkgmap.org.uk/download/${pkgname}-r${pkgver}.zip")
 sha256sums=('135dfbca5146cea34ef48ed6908a817efdfbbcccbb8adfbbb6a100f58c2c7bb6'
-            '6003f49c94cdef0f715306427149d386afb063c08a0b396b2fa8ea58813f486d')
+            'efb5b3e09bae40497ce054d8a0179a3bd81ac2d9bd4050bfa958e922688ed0dc')
 
 package() {
   cd "${srcdir}/${pkgname}-r${pkgver}"
