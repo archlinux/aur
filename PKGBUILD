@@ -353,7 +353,7 @@ package_php72-sodium() {
 }
 md5sums=('adb64072b9b7e4634844a72512239a34'
          '3bcefa76cf2f73f5f851a95c92e217a1'
-         'fc9359517c9bdc7028bbc6a17e9e9632'
+         '3cb2095ab40f225a4048704685ae783f'
          '13cda50a6a420d04ddc26935ded3164e'
          'b7d69762f7c045b3950d770e04db504c'
          'f248c783449f310291905b5551c57e48'
