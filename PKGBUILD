@@ -2,13 +2,15 @@
 pkgname=gnome-shell-extension-impatience-git
 _pkgname=gnome-shell-impatience
 pkgver=r45.9d48e4d
-pkgrel=1
+pkgrel=2
 pkgdesc="speed up gnome-shell animations"
 arch=('any')
 url="https://github.com/gfxmonk/gnome-shell-impatience"
 license=('GPL3')
 depends=('gnome-shell>=1:40' 'gnome-shell<1:42')
 makedepends=('git')
+conflicts=('gnome-shell-extension-impatience')
+provides=('gnome-shell-extension-impatience')
 install='gschemas.install'
 source=("git+https://github.com/gfxmonk/gnome-shell-impatience")
 sha256sums=('SKIP')
