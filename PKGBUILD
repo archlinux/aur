@@ -1,13 +1,13 @@
-_phpbase=72
 pkgname=php72-xdebug
+_phpbase=72
 _extname=xdebug
 pkgver=3.1.1
-pkgrel=1
-pkgdesc="Xdebug is an extension for PHP to assist with debugging and development"
+pkgrel=2
+pkgdesc="Xdebug is an extension for PHP to assist with debugging and development."
 arch=("x86_64")
 url="https://xdebug.org/"
 license=('Xdebug')
-depends=("php${_phpbase}")
+depends=('php72')
 makedepends=()
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php${_phpbase}/conf.d/$_extname.ini")
@@ -15,7 +15,7 @@ backup=("etc/php${_phpbase}/conf.d/$_extname.ini")
 build() {
     cd "$srcdir/$_extname-$pkgver"
     phpize${_phpbase}
-    ./configure
+    ./configure --with-php-config=php-config${_phpbase}
     make
 }
 
@@ -28,4 +28,4 @@ package() {
     install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config${_phpbase} --extension-dir)/$_extname.so"
 }
 
-md5sums=('3c2473656fb9aec8efd6b90ef6c45a66')
+sha256sums=('9be3ae0fdb4dc4a4c68084626cddc56f12396487e309a8c8dd318f0f900d1a68')
