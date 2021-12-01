@@ -3,7 +3,7 @@
 
 pkgname='emulicious-bin'
 _genericname='Emulator'
-pkgver=2021.11.08
+pkgver=2021.11.30
 pkgrel=1
 pkgdesc='Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator'
 # sms is backwards compatible to sg1000
@@ -15,7 +15,7 @@ arch=('any')
 depends=('java-environment' 'sh' 'hicolor-icon-theme')
 makedepends=('java-environment-common' 'gendesk' 'dos2unix' 'imagemagick')
 source=("$pkgname-$pkgver-$pkgrel.zip::https://emulicious.net/download/emulicious/?wpdmdl=205" 'emulicious.sh')
-sha256sums=('a4039487b8f67344c55052e8c41dea61cdeb6c5d481cbc5a351032c3e43fac37'
+sha256sums=('2661a75fbf049bc365c281dd4777e269b36b17497d68d999d4bc9560ebe85b78'
             '3f9442376a7a8ba93ff5490826bcd5b5b81c5c62b3a6ec48bcd586a0e42fca66')
 
 prepare() {
