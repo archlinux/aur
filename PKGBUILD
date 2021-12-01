@@ -5,27 +5,25 @@
 # Contributor: xiretza <xiretza+aur@gmail.com>
 
 pkgname=multimc5
-_pkgname=multimc5
 pkgver=0.6.13
 _nbtplusplusver=dc72a20b7efd304d12af2025223fad07b4b78464
 _quazipver=b1a72ac0bb5a732bf887a535ab75c6f9bedb6b6b
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
 license=('Apache')
-depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget')
-makedepends=('cmake' 'java-environment' 'git')
-provides=('multimc')
-conflicts=('multimc')
+depends=('qt5-base' 'java-runtime>=17')
+makedepends=('cmake' 'java-environment>=17' 'git')
 optdepends=('mcedit: Allows editing of minecraft worlds'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
             'openal: to use system OpenAL libraries'
             'glfw: to use system GLFW libraries'
 )
-
-source=("${_pkgname}::git+https://github.com/MultiMC/Launcher#tag=${pkgver}"
+provides=('multimc')
+conflicts=('multimc')
+source=("${pkgname}::git+https://github.com/MultiMC/Launcher#tag=${pkgver}"
         "libnbtplusplus::git+https://github.com/MultiMC/libnbtplusplus#commit=${_nbtplusplusver}"
         "quazip::git+https://github.com/MultiMC/quazip#commit=${_quazipver}"
         "modern-java.patch"
@@ -35,7 +33,7 @@ sha512sums=('SKIP'
             'SKIP'
             'ede87db7e1ce67184409123720b48f65d35884bac5dfff34cc099c5d7520fd9173be00997df82ad29da4640928134a7199ffdd1cbaa83a72101dbed72736508b')
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
 
   # https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
   git submodule init
@@ -48,7 +46,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   mkdir -p build
 
   cd build
@@ -61,15 +59,17 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}/build"
+  cd "${srcdir}/${pkgname}/build"
   make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/build"
-  make install DESTDIR="${pkgdir}"
-  install -D "${srcdir}/${_pkgname}/launcher/resources/multimc/scalable/multimc.svg" "${pkgdir}/usr/share/pixmaps/multimc.svg"
-  install -D "${srcdir}/${_pkgname}/launcher/package/linux/multimc.desktop" "${pkgdir}/usr/share/applications/multimc.desktop"
-  install -D "${srcdir}/${_pkgname}/build/libMultiMC_quazip.so" "${pkgdir}/usr/lib/libMultiMC_quazip.so"
-  install -D "${srcdir}/${_pkgname}/build/libMultiMC_nbt++.so" "${pkgdir}/usr/lib/libMultiMC_nbt++.so"
+  cd "${srcdir}/${pkgname}/build"
+  make install DESTDIR="${pkgdir}/"
+  install -Dm644 "${srcdir}/${pkgname}/launcher/resources/multimc/scalable/multimc.svg" "${pkgdir}/usr/share/pixmaps/multimc.svg"
+  install -Dm644 "${srcdir}/${pkgname}/launcher/package/linux/multimc.desktop" "${pkgdir}/usr/share/applications/multimc.desktop"
+  install -Dm755 "${srcdir}/${pkgname}/build/libMultiMC_quazip.so" "${pkgdir}/usr/lib/libMultiMC_quazip.so"
+  install -Dm755 "${srcdir}/${pkgname}/build/libMultiMC_nbt++.so" "${pkgdir}/usr/lib/libMultiMC_nbt++.so"
 }
+
+# vim:set ts=2 sw=2 et:

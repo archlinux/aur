@@ -1,23 +1,16 @@
 pkgbase = multimc5
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 0.6.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://multimc.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = java-environment
+	makedepends = java-environment>=17
 	makedepends = git
-	depends = zlib
-	depends = libgl
 	depends = qt5-base
-	depends = qt5-x11extras
-	depends = java-runtime
-	depends = qt5-svg
-	depends = xorg-xrandr
-	depends = zenity
-	depends = wget
+	depends = java-runtime>=17
 	optdepends = mcedit: Allows editing of minecraft worlds
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
