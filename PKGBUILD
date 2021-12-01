@@ -6,7 +6,7 @@
 # Contributor: z3ntu <WEI16416@spengergasse.at>
 
 pkgname=packettracer
-pkgver=8.0.1
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network"
 arch=( 'x86_64' )
@@ -15,9 +15,9 @@ options=('!strip' '!emptydirs')
 url="https://www.netacad.com/courses/packet-tracer"
 license=('custom')
 
-source=('local://CiscoPacketTracer_801_Ubuntu_64bit.deb'
+source=('local://CiscoPacketTracer_810_Ubuntu_64bit.deb'
 	'packettracer.sh')
-sha512sums=('541743d823b6bbe4ac86491fa2361d2de62761f4bbefe52c832706dff807c80342b4dbd5c9f8dbfebcda1a502cfe11257af98728053ccab20fefebfa7701309c'
+sha512sums=('0eb696d755771bdecff1f84616d973e8578149b1eb3272faa3f7c914be3a13165874dcedffb643dc1e7395f9df06fabc0ce3b11327ed2d358c0b6dcb14605a65'
 	    '3246843441207d66ccffd0717aa85a7bf828842c2c337d1527597bdf57cc2f9966c75c764aa22f9cb6a331e6268dd64af0da7ce4cc89725d418fc54e163230f2')
 
 package() {
