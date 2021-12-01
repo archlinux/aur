@@ -7,7 +7,7 @@ pkgbase = mcmojave-cursors
 	license = GPL
 	makedepends = git
 	provides = mcmojave-cursors
-	source = git+ssh://git@github.com/vinceliuice/mcmojave-cursors.git
+	source = git+https://github.com/vinceliuice/mcmojave-cursors
 	md5sums = SKIP
 
 pkgname = mcmojave-cursors

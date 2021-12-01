@@ -9,7 +9,7 @@ url="https://github.com/vinceliuice/${pkgname}"
 license=('GPL')
 makedepends=('git')
 provides=("${pkgname}")
-source=("git+ssh://git@github.com/vinceliuice/${pkgname}.git")
+source=("git+https://github.com/vinceliuice/${pkgname}")
 md5sums=('SKIP')
 
 package() {
