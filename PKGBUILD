@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=git2r
-_cranver=0.28.0
+_cranver=0.29.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,17 +16,14 @@ depends=('r>=3.1' libgit2 zlib openssl)
 optdepends=(r-getpass
             'libssh2: SSH transport support')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('ce6d148d21d2c87757e98ef4474b2d09faded9b9b866f046bd26d4ca925e55f2')
+sha256sums=('f8f7a181dc0ac761f2a0c4099bfd744ded01c0e0832cab32dc5b4da32accd48e')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
