@@ -1,19 +1,17 @@
 pkgbase = python-onnxconverter-common
 	pkgdesc = Common utilities for ONNX converters
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/onnxconverter-common
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	checkdepends = python-onnxruntime
+	checkdepends = python-pytest
 	makedepends = python-setuptools
-	depends = python
 	depends = python-numpy
-	depends = python-protobuf
 	depends = python-onnx
-	source = https://github.com/microsoft/onnxconverter-common/archive/v1.8.1/python-onnxconverter-common-1.8.1.tar.gz
+	depends = python-protobuf
+	source = onnxconverter-common-1.8.1.tar.gz::https://github.com/microsoft/onnxconverter-common/archive/refs/tags/v1.8.1.tar.gz
 	sha256sums = f95f2a2d1fedc20cccbc820d4f63cbe84e287a5bd8c863ced400ae73946e13e6
 
 pkgname = python-onnxconverter-common
-
