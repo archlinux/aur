@@ -3,7 +3,7 @@
 _name=slimit
 pkgname=slimit
 pkgver=0.8.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A JavaScript minifier/parser in Python"
 arch=('any')
 url="https://github.com/rspivak/slimit"
