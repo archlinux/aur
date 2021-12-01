@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=pyocd-pemicro
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="PEMicro probe plugin for pyOCD"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools'
              'python-setuptools-scm'
              'python-setuptools-scm-git-archive')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('e1d8aef6bc4eb945fd367d4d200cec4e')
+md5sums=('502afc512308fdcd58aaee7322622da1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
