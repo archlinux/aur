@@ -2,7 +2,7 @@
 pkgname=goverlay
 pkgver=0.7.0
 _pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -31,5 +31,5 @@ check() {
 
 package() {
 	cd "$srcdir/$pkgname-$_pkgver"
-	make prefix=/usr DESTDIR="$pkgdir/" install
+	make prefix=/usr libexecdir=/lib DESTDIR="$pkgdir/" install
 }
