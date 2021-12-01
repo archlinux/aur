@@ -4,8 +4,7 @@ pkgbase = r-devtools
 	pkgrel = 1
 	url = https://cran.r-project.org/package=devtools
 	arch = any
-	license = GPL2
-	license = GPL3
+	license = MIT
 	depends = r>=3.0.2
 	depends = r-usethis>=2.0.1
 	depends = r-callr>=3.6.0
