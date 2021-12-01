@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/Pure-D/serve-d"
 license=("MIT")
 groups=('dlang')
-makedepends=('ldc' 'git' 'dub')
+makedepends=('ldc' 'git' 'dub' 'dtools')
 depends=('liblphobos' 'dcd')
 
 source=(
