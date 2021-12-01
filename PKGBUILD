@@ -1,9 +1,9 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at manjaro_dot org>
+# Maintainer: Jonathon Fernyhough <jonathon_at m2x dot dev>
 # Contributor: John Trengrove
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=tcc-git
-pkgver=0.9.27.r210.gf420259
+pkgver=0.9.27.r791.gda11cf6
 pkgrel=1
 pkgdesc='Tiny C Compiler'
 arch=('x86_64' 'i686')
@@ -33,7 +33,7 @@ check() {
 }
 
 package() {
-  make -C tinycc DESTDIR="$pkgdir" install
+  make -C tinycc DESTDIR="$pkgdir" docdir="$pkgdir"/usr/share/doc/tcc install
 }
 
 # vim:set ts=2 sw=2 et:
