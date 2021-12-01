@@ -1,6 +1,6 @@
 pkgbase = siggo
 	pkgdesc = A terminal gui for signal-cli, written in Go.
-	pkgver = 0.11.2
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/derricw/siggo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = siggo
 	depends = libmatthew-unix-java
 	depends = signal-cli
 	depends = glibc
-	source = https://github.com/derricw/siggo/archive/0.11.2/siggo-0.11.2.tar.gz
-	b2sums = 4a1eb18bd90d34d2292a0f3f2917ad310088a3e4206c8b392f654077362aadcc2a38bd177be7451c4bc6fce456ba36ab1d021d4c0b616a7cad24d0ca16637eae
+	source = https://github.com/derricw/siggo/archive/0.12.0/siggo-0.12.0.tar.gz
+	b2sums = 3653dce9f545d1b816f2bc4a35512c793b277e8b472419b9ed5a0e20a70c344cbd0edd51727290471192d772fc883189a5c2b3682408d01fd2c17e40b665afc0
 
 pkgname = siggo
