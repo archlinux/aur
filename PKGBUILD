@@ -3,7 +3,7 @@
 # 
 
 pkgname=graphite-cli-git
-pkgver=0.16.2.r5.c369394
+pkgver=0.16.2.r6.d8959c5
 pkgrel=1
 pkgdesc="CLI that makes creating stacked git changes fast & intuitive"
 url=https://graphite.dev/
@@ -29,13 +29,11 @@ build() {
     npm install --cache "$srcdir/npm-cache"
     npm run build
     cd ..
-    TAR=`npm pack --cache "$srcdir/npm-cache" "$_srcname"`
+    TAR=`npm pack --cache "$srcdir/npm-cache" "$srcdir/$_srcname"`
     mv "$TAR" "graphite-cli.tgz"
 }
 
 package() {
     npm install -g --prefix "$pkgdir/usr" "$srcdir/graphite-cli.tgz" 
     chown -R root:root "$pkgdir"
-    # remove man not relevant man pages 
-    rm -r "$pkgdir/usr/lib/node_modules/graphite-cli/node_modules/sshpk/man"
 }
