@@ -1,5 +1,5 @@
 pkgbase = fcitx5-pinyin-moegirl-rime
-	pkgdesc = Fcitx 5 Pinyin Dictionary from moegirl.org for rime
+	pkgdesc = Fcitx 5 Pinyin Dictionary from moegirl.org wiki for rime
 	pkgver = 20211116
 	pkgrel = 2
 	url = https://github.com/outloudvi/mw2fcitx
