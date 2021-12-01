@@ -21,7 +21,13 @@ pkgver() {
 build() {
     export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
     cd "$srcdir/${pkgname%-git}/yang-lsp"
-    ./gradlew --no-daemon build
+    ./gradlew --no-daemon build -x test
+}
+
+check() {
+    export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+    cd "$srcdir/${pkgname%-git}/yang-lsp"
+    ./gradlew --no-daemon test
 }
 
 package() {
