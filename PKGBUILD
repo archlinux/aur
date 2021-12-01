@@ -5,16 +5,16 @@ pkgrel=1
 
 pkgdesc="A tool environment and a library for safe floating-point code development"
 arch=('any')
-url="http://sollya.gforge.inria.fr/"
+url="https://gitlab.inria.fr/sollya/sollya/"
 license=('CeCILL-C')
 
 depends=('gmp' 'mpfr' 'mpfi' 'libxml2' 'fplll')
 optdepends=(
   'gnuplot: for using the plot and externalplot commands'
- )
+)
 
-source=(http://gforge.inria.fr/frs/download.php/file/37749/sollya-7.0.tar.gz)
-md5sums=('7634380e998f9653f4c0bbc38994aac3')
+source=('git+https://gitlab.inria.fr/sollya/sollya.git#tag=sollya-7.0')
+md5sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
