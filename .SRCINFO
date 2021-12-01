@@ -1,6 +1,6 @@
 pkgbase = dosbox-x
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 0.83.19
+	pkgver = 0.83.20
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = dosbox-x
 	optdepends = libpcap: Allows DosBox-X to connect to a network and to the internet
 	optdepends = libslirp: Allows DosBox-X to connect to the internet (rootless solution)
 	conflicts = dosbox-x-git
-	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.19.tar.gz
-	sha256sums = 66d69ec9308dd3977f5a8911990d34eac12a30f56400534c867f8aa712b7fdda
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.20.tar.gz
+	sha256sums = 5a7eb5c7de8c540ce8d41914e43393bfbd17c99ace48311b646e5df0d08e80b2
 
 pkgname = dosbox-x
