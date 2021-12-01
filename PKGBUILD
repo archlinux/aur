@@ -19,7 +19,7 @@ pkgver() {
 }
 
 build() {
-    export PATH="/usr/lib/jvm/java-11-openjdk/jre/bin/:$PATH"
+    export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
     cd "$srcdir/${pkgname%-git}/yang-lsp"
     ./gradlew --no-daemon build
 }
@@ -31,7 +31,7 @@ package() {
     cp -r yang-lsp/io.typefox.yang.diagram/build/install/yang-language-server/{lib,bin} "${pkgdir}/usr/share/${pkgname%-git}"
 
     EXECUTABLE_NAME="yang-language-server"
-    sed -i '/Determine the Java/aexport PATH="/usr/lib/jvm/java-11-openjdk/jre/bin/:$PATH"' \
+    sed -i '/Determine the Java/aexport PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"' \
         "${pkgdir}/usr/share/${pkgname%-git}/bin/$EXECUTABLE_NAME"
 
     ln -s "/usr/share/${pkgname%-git}/bin/$EXECUTABLE_NAME" "${pkgdir}/usr/bin/$EXECUTABLE_NAME"
