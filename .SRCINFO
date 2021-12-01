@@ -7,7 +7,7 @@ pkgbase = masterpassword-gui
 	license = GPL3
 	depends = java-runtime
 	noextract = masterpassword-gui-2.7.12.jar
-	source = https://ssl.masterpasswordapp.com/masterpassword-gui-2.7.12.jar
+	source = masterpassword-gui-2.7.12.jar::https://web.archive.org/web/20210417211605if_/https://masterpassword.app/masterpassword-gui.jar
 	source = masterpassword-gui.desktop
 	source = masterpassword-gui.png
 	source = masterpassword-gui.sh
@@ -17,4 +17,3 @@ pkgbase = masterpassword-gui
 	sha1sums = cea8783054a993d5f18d71edb3ec991453f9c46c
 
 pkgname = masterpassword-gui
-

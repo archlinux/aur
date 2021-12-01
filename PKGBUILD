@@ -9,7 +9,7 @@ arch=('any')
 url='http://masterpasswordapp.com/'
 license=('GPL3')
 depends=('java-runtime')
-source=("https://ssl.masterpasswordapp.com/${pkgname}-${pkgver}.jar"
+source=("${pkgname}-${pkgver}.jar::https://web.archive.org/web/20210417211605if_/https://masterpassword.app/masterpassword-gui.jar"
         "${pkgname}.desktop" "${pkgname}.png" "${pkgname}.sh")
 sha1sums=('5d97c5ade25be66e29f4add9451f4d9147ed4955'
           '663d645fe83358b8a5061de7260b3eed9c79bac3'
