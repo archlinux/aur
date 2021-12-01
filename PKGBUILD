@@ -2,7 +2,7 @@
 
 pkgname=bedstead-fonts-powerline
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Bedstead is a family of outline fonts based on the characters produced by the Mullard SAA5050 series of Teletext Character Generators. Patched for powerline"
 url="https://bjh21.me.uk/bedstead/"
 arch=(any)
@@ -30,7 +30,7 @@ package() {
 }
 
 md5sums=('SKIP'
-         '15ca003818995bc4a9644bb294fc1733'
-         '26da580e65466c7d584365826587241d'
-         '112d481df0467030723ade2b08ea8e0b'
-         'eca3e19a6b193adb49c9b553aac0fd64')
+         '8f470fe3177d0ade14a5e464a08c365d'
+         'e180a7de8a79427bf42aebf78313a1e1'
+         '8a614f589a87e8c1b2bb09a53316692c'
+         '9c7f71fce912257e3fa1e822e5099421')
