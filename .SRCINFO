@@ -1,0 +1,15 @@
+pkgbase = kind-git
+	pkgdesc = Kubernetes IN Docker - local clusters for testing Kubernetes
+	pkgver = 0.11.1.r244.g92e01d72
+	pkgrel = 1
+	url = https://github.com/kubernetes-sigs/kind
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = kind
+	conflicts = kind-bin
+	source = git+https://github.com/kubernetes-sigs/kind
+	sha256sums = SKIP
+
+pkgname = kind-git
