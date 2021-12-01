@@ -1,5 +1,5 @@
 pkgname=php72-solr-git
-pkgver=r665.9c0e234
+pkgver=r741.d6eb50f
 pkgrel=1
 pkgdesc='PHP PECL extension for Apache Solr API (git version)'
 arch=('x86_64')
