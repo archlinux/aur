@@ -1,0 +1,23 @@
+From a2850397ba3eec5d4c58304cf8277ca535919760 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Thu, 5 Aug 2021 14:05:10 +0200
+Subject: [PATCH] [Python] Fix overload_simple_cast test with 3.10
+
+Closes #2044
+---
+ Examples/test-suite/python/python_overload_simple_cast_runme.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Examples/test-suite/python/python_overload_simple_cast_runme.py b/Examples/test-suite/python/python_overload_simple_cast_runme.py
+index fc398ab29b9..7a0174af8a2 100644
+--- a/Examples/test-suite/python/python_overload_simple_cast_runme.py
++++ b/Examples/test-suite/python/python_overload_simple_cast_runme.py
+@@ -9,6 +9,8 @@ def __init__(self, x):
+     def __int__(self):
+         return self.x
+ 
++    def __index__(self):
++        return self.x
+ 
+ class Ad:
+ 

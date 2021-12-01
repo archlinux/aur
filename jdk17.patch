@@ -1,0 +1,28 @@
+From 34e663a61af13eec62050d2b105ace418929e289 Mon Sep 17 00:00:00 2001
+From: William S Fulton <wsf@fultondesigns.co.uk>
+Date: Sat, 20 Mar 2021 09:49:30 +0000
+Subject: [PATCH] Test a different C# keyword rename
+
+Worked around warning in java jdk-15:
+  warning: 'sealed' may become a restricted type name in a future release
+  and may be unusable for type declarations or as the element type of an array
+
+Adding sealed to the list of automatically renamed keywords in Java does
+not seem prudent.
+---
+ Examples/test-suite/keyword_rename.i | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Examples/test-suite/keyword_rename.i b/Examples/test-suite/keyword_rename.i
+index 23c01087dc4..645f0266112 100644
+--- a/Examples/test-suite/keyword_rename.i
++++ b/Examples/test-suite/keyword_rename.i
+@@ -27,7 +27,7 @@ KW(synchronized, final)
+ 
+ /* C# Keywords */
+ KW(string, out)
+-struct sealed {int i;};
++struct stackalloc {int i;};
+ 
+ /* Go Keywords */
+ KW(go, defer)
