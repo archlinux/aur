@@ -1,25 +1,24 @@
 pkgbase = r-rex
 	pkgdesc = Friendly Regular Expressions
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rex
 	arch = any
 	license = MIT
 	depends = r
 	depends = r-lazyeval
-	optdepends = r-testthat
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
+	optdepends = r-covr
 	optdepends = r-dplyr
 	optdepends = r-ggplot2
-	optdepends = r-magrittr
 	optdepends = r-hmisc
-	optdepends = r-stringr
-	optdepends = r-rvest
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
-	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/rex_1.2.0.tar.gz
-	md5sums = 78e7a150e76b16cb7596313b816b08bc
+	optdepends = r-rvest
+	optdepends = r-stringr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rex_1.2.1.tar.gz
+	sha256sums = af42e649c06e4bbdba94d5a1870a7e8347903571c90cd5e5ca40f52307a3bfd6
 
 pkgname = r-rex
-

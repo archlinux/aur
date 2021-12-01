@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=rex
-_cranver=1.2.0
+_cranver=1.2.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,19 +11,16 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r r-lazyeval)
-optdepends=(r-testthat r-knitr r-rmarkdown r-dplyr r-ggplot2 r-magrittr r-hmisc r-stringr r-rvest r-roxygen2 r-covr)
+optdepends=(r-covr r-dplyr r-ggplot2 r-hmisc r-knitr r-magrittr r-rmarkdown r-roxygen2 r-rvest r-stringr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('78e7a150e76b16cb7596313b816b08bc')
+sha256sums=('af42e649c06e4bbdba94d5a1870a7e8347903571c90cd5e5ca40f52307a3bfd6')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
