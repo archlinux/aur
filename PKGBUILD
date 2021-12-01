@@ -3,7 +3,7 @@
 _name=calmjs
 pkgname=python-calmjs
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="framework for building toolchains and utilities for working with the JavaScript/Node.js ecosystem"
 arch=('any')
 url="https://github.com/calmjs/calmjs"
