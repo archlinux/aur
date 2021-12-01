@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=vroom
-_cranver=1.5.5
+_cranver=1.5.7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=('r>=3.1' r-bit64 r-crayon r-cli r-glue r-hms r-lifecycle 'r-rlang>=0.4.2' 'r-tibble>=2.0.0' 'r-tzdb>=0.1.1' 'r-vctrs>=0.2.0' r-tidyselect r-withr 'r-progress>=1.2.1' 'r-cpp11>=0.2.0')
 optdepends=(r-archive r-bench r-covr r-curl r-dplyr r-forcats r-fs r-ggplot2 r-knitr r-patchwork r-prettyunits r-purrr r-rmarkdown r-rstudioapi r-scales r-spelling r-testthat r-tidyr r-waldo r-xml2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('1d45688c08f162a3300eda532d9e87d144f4bc686769a521bf9a12e3d3b465fe')
+sha256sums=('d087cb148f71c222fc89199d03df2502689149873414a6d89c2f006d3a109fde')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
