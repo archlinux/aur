@@ -1,0 +1,15 @@
+pkgbase = nvidia-prime-select-git
+	pkgdesc = A collection of shell scripts that makes it possible to use the NVIDIA GPU on a Optimus Laptop, similar to the feature provided by the nvidia-prime package in Ubuntu. Forked by wildtruc
+	pkgver = 20191010.902aa9a
+	pkgrel = 1
+	url = https://github.com/wildtruc/nvidia-prime-select
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = nvidia
+	provides = nvidia-prime-select
+	conflicts = nvidia-prime-select
+	source = nvidia-prime-select::git+https://github.com/wildtruc/nvidia-prime-select.git
+	sha1sums = SKIP
+
+pkgname = nvidia-prime-select-git
