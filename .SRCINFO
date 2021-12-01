@@ -1,15 +1,23 @@
-pkgbase = arcanist
+pkgbase = arcanist-ssl-stable-git
 	pkgdesc = The command line interface for Phabricator
-	pkgver = 2018.31
+	pkgver = r2462.59b273fd
 	pkgrel = 1
 	url = https://www.phacility.com/phabricator/
 	arch = any
 	license = Apache
 	makedepends = git
 	depends = libphutil
+	depends = php
 	depends = python
-	source = git://github.com/phacility/arcanist.git#commit=9dfa68d739ee05e806018821cd4d997307ae54f1
+	depends = ca-certificates-utils
+	optdepends = git: Git VCS support
+	optdepends = subversion: Subversion VCS support
+	optdepends = mercurial: Mercurial VCS support
+	provides = arcanist=r2462.59b273fd
+	conflicts = arcanist
+	source = git://github.com/phacility/arcanist.git#branch=stable
+	source = updated-ssl.patch::https://github.com/rashkov/arcanist/commit/e3659d43d8911e91739f3b0c5935598bceb859aa.patch
 	sha256sums = SKIP
+	sha256sums = 038cc4f25938dd344f4518bfc604c2a0d71e71fe7ffdbe5fcea9e4fb1580bf85
 
-pkgname = arcanist
-
+pkgname = arcanist-ssl-stable-git

@@ -1,5 +1,5 @@
-*.pkg.tar.xz
+*.pkg.tar.*
+*.log
 /src
 /pkg
 /arcanist
-
