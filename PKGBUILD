@@ -1,7 +1,7 @@
 # Maintainer: Daniel Dimijian <jetfrog28@yahoo.com>
 _prjctname=GodotPckTool
 pkgname=godotpcktool
-pkgver=1.4
+pkgver=1.6
 pkgrel=1
 pkgdesc="A standalone executable for unpacking and packing Godot .pck files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('cmake' 'cxxopts' 'nlohmann-json')
 # source unsigned.  git commits are signed, but I can't find the public key for the tagged commits
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('84d2264c3e0f89dbabf8707a90966610fc7c0c1e0bff8b278e81d71e26aa0121')
+sha256sums=('58422d7ff651e5c7ab11d136a176ae12dedfaf0018171357d489f309646ebbd9')
 
 build() {
 	cd "$_prjctname-$pkgver"
