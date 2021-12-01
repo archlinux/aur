@@ -3,7 +3,7 @@
 _pkgname=okonomiyaki
 pkgname=python-$_pkgname
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Experimental library aimed at consolidating a lot of our low-level code used for Enthought eggs'
 arch=('any')
 url='https://github.com/enthought/okonomiyaki'
