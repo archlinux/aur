@@ -1,7 +1,7 @@
 # Maintainer: Rainu <mqtt-shell@raysha.de>
 pkgname=mqtt-shell
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A shell like command line interface for MQTT written in go.'
 arch=('x86_64' 'i686')
 url="https://github.com/rainu/mqtt-shell"
@@ -16,7 +16,7 @@ prepare(){
 }
 
 build() {
-  GIT_REV=$(git rev-parse --short HEAD)
+  GIT_REV=$(cd "$srcdir/$pkgname"; git rev-parse --short HEAD)
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"

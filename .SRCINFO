@@ -1,7 +1,7 @@
 pkgbase = mqtt-shell
 	pkgdesc = A shell like command line interface for MQTT written in go.
 	pkgver = 2.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rainu/mqtt-shell
 	arch = x86_64
 	arch = i686
