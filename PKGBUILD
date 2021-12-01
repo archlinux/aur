@@ -9,7 +9,7 @@ arch=('any')
 url="http://aajohan.deviantart.com/art/Montepetrum-Font-151870278"
 license=('CCPL')
 # depends=('fontconfig' 'xorg-font-utils')
-source=("https://dl.dafont.com/dl/?f=montepetrum")
+source=("montepetrum_dafont.zip::https://dl.dafont.com/dl/?f=montepetrum")
 md5sums=('1aee8b73cf337c1fe8c59a5a2f75f126')
 
 package() {
