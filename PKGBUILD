@@ -3,10 +3,10 @@
 pkgname=cs-firewall-bouncer
 _altpkgname=crowdsec-firewall-bouncer
 pkgver=0.0.17
-pkgrel=7
-pkgdesc="The firewall bouncer will fetch new and old decisions from a CrowdSec API to add them in a blocklist used by supported firewalls."
+pkgrel=8
+pkgdesc="CrowdSec firewall bouncer fetches decisions via the CrowdSec API to add them in a blocklist used by supported firewalls."
 arch=('any')
-url="https://crowdsec.net"
+url="https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer"
 license=('MIT')
 install=${pkgname}.install
 source=(
