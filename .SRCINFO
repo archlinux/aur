@@ -1,8 +1,8 @@
 pkgbase = cs-firewall-bouncer
-	pkgdesc = The firewall bouncer will fetch new and old decisions from a CrowdSec API to add them in a blocklist used by supported firewalls.
+	pkgdesc = CrowdSec firewall bouncer fetches decisions via the CrowdSec API to add them in a blocklist used by supported firewalls.
 	pkgver = 0.0.17
-	pkgrel = 7
-	url = https://crowdsec.net
+	pkgrel = 8
+	url = https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer
 	install = cs-firewall-bouncer.install
 	arch = any
 	license = MIT
