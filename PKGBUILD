@@ -2,7 +2,7 @@
 
 _pkgname=starport
 pkgname=${_pkgname}-bin
-pkgver=0.18.5
+pkgver=0.18.6
 pkgrel=1
 pkgdesc="Starport is the all-in-one platform to build, launch and maintain any crypto application on a sovereign and secured blockchain"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"https://github.com/tendermint/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz"
 )
 sha256sums=(
-	'670f935425d88d06bf6a5995f72966b1bd6eb32ab1440173f84c2621ce88fb87'
+	'907bd56512b0854c1c99d1e9bd309d163947ae09ab86cfbe9b31b27fb092c8d4'
 )
 
 package() {
