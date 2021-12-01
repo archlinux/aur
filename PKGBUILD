@@ -3,7 +3,7 @@
 pkgname='python-pytest-freezegun'
 _pkgbase="${pkgname//python-/}"
 pkgver=0.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Easily freeze time in pytest test + fixtures"
 arch=('any')
 license=('MIT')
