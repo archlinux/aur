@@ -24,26 +24,20 @@ pkgver() {
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
-check() {
-	cd "${srcdir}/${_pkgname}"
-	bash -n *.sh
-}
-
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 nvidia-prime-ui usr/bin
-	install -Dm755 nvidia-prime-select usr/sbin
-	install -Dm644 xorg.nvidia.conf etc/nvidia-prime
-	install -Dm644 xorg.offload.conf etc/nvidia-prime
-	install -Dm644 xorg.intel.conf etc/nvidia-prime
-	install -Dm644 library.conf etc/nvidia-prime
-	install -Dm644 options.conf etc/nvidia-prime
-	install -Dm644 report.sample etc/nvidia-prime
-	install -Dm644 nvidia-prime.desktop etc/nvidia-prime
-	install -Dm644 nvidia-session.desktop etc/nvidia-prime
-	install -Dm644 nvidia-prime.png usr/share/pixmaps
-	install -Dm644 nvidia-prime-ui.desktop usr/share/applications
-	install -Dm644 com.github.pkexec.nvidia-prime-select.policy  usr/share/polkit-1/actions
-	install -Dm644 com.github.pkexec.nvidia-prime-editor.policy usr/share/polkit-1/actions
-	bash ./changelog.sh
+	install -Dm755 nvidia-prime-ui "${pkgdir}/usr/bin/nvidia-prime-ui" 
+	install -Dm755 nvidia-prime-select "${pkgdir}/usr/bin/nvidia-prime-select"
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" xorg.nvidia.conf
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" xorg.offload.conf
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" xorg.intel.conf
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" library.conf
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" options.conf
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" report.sample
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" nvidia-prime.desktop
+	install -Dm644 -t "${pkgdir}/etc/nvidia-prime/" nvidia-session.desktop
+	install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" nvidia-prime.png
+	install -Dm644 -t "${pkgdir}/usr/share/applications/" nvidia-prime-ui.desktop
+	install -Dm644 -t "${pkgdir}/usr/share/polkit-1/actions/" com.github.pkexec.nvidia-prime-select.policy
+	install -Dm644 -t "${pkgdir}/usr/share/polkit-1/actions/" com.github.pkexec.nvidia-prime-editor.policy
 }
