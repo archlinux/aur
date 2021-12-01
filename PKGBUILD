@@ -5,7 +5,7 @@
 
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
-pkgver='0.10.8'
+pkgver='0.10.9'
 pkgrel=1
 epoch=
 pkgdesc='Language Server For Scala'
@@ -26,53 +26,53 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/scalameta/$pkgname/archive/v$pkgver.tar.gz" 'metals-client.sh' 'metals-emacs.sh' 'metals-vim.sh' 'metals-vscode.sh' 'metals-sublime.sh' 'version-fix.patch' 'JREMajorVersion.java')
 noextract=()
-md5sums=('b616835d2cb66e33a3fe910b0dbff1b9'
+md5sums=('dc643e376bd85d3590987c2e483c4fcc'
          'af44c1849b0dcfed177bd6fae1d30413'
          'ad97e9262c7b22dd71b017a6402f612a'
          '000bd73ebc3ea46b23e2c418ef97f4c7'
          '83b5669127510100d6e7ab4094877a6e'
          '38c34ab96f6cf637f7be9f72b7400983'
-         '72c4aa13220408e553482fb456536949'
+         '9395c948081de9c9b99212e3dce67f91'
          '8ddf6b592e6167de2df073016a9b042d')
-sha1sums=('e9fb663707edbaccd40218cf85efc17de53af0d9'
+sha1sums=('77bc0659d89fde9f87f4c86d46bd0ccf0580cd0b'
           '8989fcd5e0d6f25976fc2646d7542d0ed2f04f28'
           'b498568936dcfd03a06d7b41f76bbb7fffbc3bdf'
           '3882901e88f4a85f85d67dcda53f83c89d4563c6'
           'f2d0e8aa2744697d4dad0a7c10f835fe5814524b'
           'b2577ac4ee93e3a611558294378c185227ed8321'
-          '036981388d8a597fe4d56fb23c1f74a8c0f6d1d1'
+          '21fa7bb1cdfd01a7e98e285a0818f397a7b0083d'
           '1f659a83c4403c038bb33026fc69a73c4ac4d76d')
-sha224sums=('2880c71e85ab779630cc958bc8b2a582829fecca965f3136ada5b09b'
+sha224sums=('63d173d7a11dcc229f003ebb78dfbb3dc97d774b785e668bce3c8304'
             '77db230a65c8b75858ce6f4f52a3ae709072004ae5a0fc3d1072e415'
             '43d2f6b0b4b7ef539f5109b1127dcd88828f2f8ae0b9c052899af1c9'
             'a99d9457fd6cf582b349e56e5e8e9cece30e33ff6866c5969f090f5e'
             '6ffcb9ee870dd260f90e333082e90b9b30212f1f21dd3d3a0048a67e'
             'fff5cbeed72e44f9159872f59a0ca0a19fc81a8ed943500373e9108e'
-            '98cb368d98c8d16f306af5f84ae77be6ac89d60e623dc16332cf9e9e'
+            '860bdafffceba76e92112d01dec771f853d5c42530e166bef187dc14'
             'd48db6d9e58e19bbd7715aef204c04d01953479e9d5ca7aba94b8f36')
-sha256sums=('1fc1ccf6fff5cac5af0d30ea2ad2a67aa56a2c987118d452eb77586196668ddd'
+sha256sums=('9cd709ae1b0c72eece40a76e31f9c1a7b6fb43e0b1b40e3f54fbcd0748552c98'
             '3d533b5191154ed9d8dbcc27a286f8da6a0e6031bca0e6d6fc0987f9fe6484c0'
             'b3579e68cee7f23f6f6a12fe0bc6396f1722434d23ce3c58e7c9fac2233cd1d3'
             'e9bbc61ec99dc0893560a12a8a0f56c9f27016895e177a164019ab9174fe94e2'
             'c2213c8d4a1a0fe5bb12d5bcde53ab04d9b0aa08ddcabd60de938a8d480e49d5'
             'fb42157046a11089fa69e0120ae83ff3bc354709e2add4644fe3fc60aa80c984'
-            '0224e20c4798d26d08bad12818065a97622fbd737fcf0a16916ed8cf88a90c3e'
+            'd13ae6105b6f4b1e89db42b8c682ffe5734501ceecc06ce2229f4de287ef30c7'
             '9b5fcbcd9628d2c003d48d8e5dbbc3cb1de8dd4fa4c272cafed4f1d027e67bdb')
-sha384sums=('c8e582b61ceb49001d421bb439d2037bebd07f365f2c729542aca8362acb8c0af14ca38d3007cd5648998df7226b41d6'
+sha384sums=('fc1bd1eaa3b89d081d33ad7e0eb2b98f4048d92b9cdcbd0554425bcc0a1168a2e7f303666d20ad691028a62822a05f5d'
             'd2bdfdbba7f0aa0e6589b43aaffd0c7b1fc5c7231767e30c4680fa9a2e5166ed94e4bdfe6e4465613f739854660ebecb'
             '762dd7c73e994b74ebeb5c975ca0b53ddf4cbf181664d465bd9c543798333dcc4939c360a4b5b8b1b162810ea363d288'
             '6bee0d21d0fcf3d8f5ee14545be63fb2bbababb0665020540daafc708939bbc539ab940cfe122b2281156bc78d401768'
             '26859b59a04e38a5e7d02e188643765d06b893385232895f5b1435fb3d4fa4d676e8d43bbc80360f9ee7a2ee01e64d2c'
             '8b9204ce4a60890eb94f0fe673504a9a10c583b9814e844da14b8d1313db7f8cf7d5f9a7b8db0bbd25fb2f9263e434b7'
-            '59e65761969e57665627286dd54484534fbe7a0ddcc198ed22fa71d86b7970d6e35bff5ca2813c10879be289f5eb2ca8'
+            '9f88e4acfb7fa0988dc87c0757cac5a4c08cc97cbb28729b9d5716f63f18097d07a3d167c17010ad493e5bcb8ff7bbe7'
             '021c3837df318b14a5b4547717b4b19436a07edf61d735ce05d2fe57f23ca2d1c9787c8b86a08f43547b6d92f935476c')
-sha512sums=('692a51aaa8f2bde3fdc8bbd28b8f5f2e81b5a5399628f400fc19d2e2f6e5e756e41322ea9fca0d714ba0a81144a57799163940edde67a40559c46bc732d2fb40'
+sha512sums=('883ed5776502eec0dd9bb27729ce57dbede4288b773ca6c05f7c6c370f5e12144a030c2e4b4936dc5bf632866ef924bb8ea890904ca1cda968442e0e85cb5dfb'
             'd0539dfd53e95bea29cb92d634dd2df259d9db8ad568c6ec368ddaeaf53e1f6b946218820bd2aa0e4726a21225e863dc55b2ddd8a0ee12fc1426fdd34feb856a'
             'bd26818e43627c4e20aa931663b4623e45ade0930a29952d6508fa6e1302f5140afed7f57a796c12da3e9ae256ff7c0b3eb2e5075b00ceda9d2e4ddc22e89205'
             '16d01a820f1ed93ae46194d3d77187adf6fd4e9764fcf99554430e3e2f2af4cc2b6f7918f595febd3c5e6a380bbfb930bb47a3dd2ba93c60b2ca1f874f264fee'
             '722770a6c30ccf75c73ae9be19655cdff00561c62bf15b619dfa618cdd636e97aaf5a6aca1297add4e6a54274cd49e81781d98a59986526d0077a6c64855562d'
             '9f32d0ead26fad866f52209c0f6dabdaa3481bafd6121134b2fde6e95a80b5d2757c17ca6f1804b6e060b839efa9a9f7d342d48ad8d22b767e13c585e209045b'
-            '1fd9393b422b893effc969ad915af25398b11f9433821b01d302b773f1ca3a102158befac683070b333a022e79a3a519dfb4308009574889fb35b8497fa9e860'
+            '47a3e11fd4cd7d2141c8043bb50b54aab1926d1f662a9da412e93d0c787f9ab7a4ea7f45415fd72d9825720565e1d054abe0446beb9bfc0183d5b13e6e6c74e6'
             '7e9f198f0141cf750cb67ac0b350fb0fa2c204f5a8a271e475b2699ecf0f46cf20219cea3fd12bb5edeb8fb08159069d03afc1dd6626703e8eeddee9b365d191')
 validpgpkeys=()
 install=metals.install
@@ -94,8 +94,8 @@ build() {
     local -r _ORG_PATH="$PATH"
     local -r _SBT_DIR="./.sbt"
     local -r _SBT_IVY="./.ivy2"
-    local -r -a _JAVA_ARCH_PACKAGE_PATHS=('/usr/lib/jvm/java-11-openjdk/bin'
-                                          '/usr/lib/jvm/java-10-openjdk/bin'
+    local -r -a _JAVA_ARCH_PACKAGE_PATHS=('/usr/lib/jvm/java-17-openjdk/bin'
+                                          '/usr/lib/jvm/java-11-openjdk/bin'
                                           '/usr/lib/jvm/java-8-openjdk/jre/bin'
                                          )
     local -r _LEN="${#_JAVA_ARCH_PACKAGE_PATHS[@]}"
@@ -162,8 +162,8 @@ package() {
     local -r _TEMP_FILE="$(mktemp)"
     local -r _LAUNCHER_SCRIPTS=('metals-client.sh' 'metals-emacs.sh' 'metals-vim.sh' 'metals-vscode.sh' 'metals-sublime.sh')
     local -r _ORG_PATH="$PATH"
-    local -r -a _JAVA_ARCH_PACKAGE_PATHS=('/usr/lib/jvm/java-11-openjdk/bin'
-                                          '/usr/lib/jvm/java-10-openjdk/bin'
+    local -r -a _JAVA_ARCH_PACKAGE_PATHS=('/usr/lib/jvm/java-17-openjdk/bin'
+                                          '/usr/lib/jvm/java-11-openjdk/bin'
                                           '/usr/lib/jvm/java-8-openjdk/jre/bin'
                                          )
 
