@@ -1,6 +1,6 @@
 pkgbase = php72-mcrypt
 	pkgdesc = PHP 7.2 bindings for the unmaintained libmcrypt. For compat purposes
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://pecl.php.net/package/mcrypt
 	install = mcrypt.install
@@ -11,8 +11,7 @@ pkgbase = php72-mcrypt
 	makedepends = re2c
 	depends = php72
 	depends = libmcrypt
-	source = http://pecl.php.net/get/mcrypt-1.0.2.tgz
-	md5sums = 72ff2090a523dc6c388e5ee75d23b035
+	source = http://pecl.php.net/get/mcrypt-1.0.4.tgz
+	md5sums = 7097fac371820ff130c90330b556f1bf
 
 pkgname = php72-mcrypt
-
