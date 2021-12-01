@@ -4,7 +4,7 @@
 
 _realname=clize
 pkgname=python-clize
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="This decorator will turn your normal python functions into proper shell commands"
 arch=('any')
@@ -12,8 +12,8 @@ url="https://pypi.python.org/pypi/clize/"
 license=('MIT')
 depends=('python' 'python-sigtools' 'python-six')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/6e/c7/82a14fef31f555db30d53dc52f17cfcf1707d6355ab49132b30671daebd6/$_realname-$pkgver.tar.gz")
-md5sums=('7b74dd19b8f4dd0c90220835955ce729')
+source=("https://files.pythonhosted.org/packages/a4/be/a36c49d7d92d60de4a011ca0e5bdca9b3ecaf825337ff2e09244776ab0db/$_realname-$pkgver.tar.gz")
+md5sums=('b61f1f9d08841010ed15a62ddb215ccb')
 
 package() {
   cd "$srcdir/$_realname-$pkgver"
