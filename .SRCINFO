@@ -1,31 +1,32 @@
 pkgbase = r-glue
 	pkgdesc = Interpreted String Literals
-	pkgver = 1.4.2
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=glue
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = r>=3.2
-	optdepends = r-testthat
 	optdepends = r-covr
-	optdepends = r-magrittr
 	optdepends = r-crayon
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
 	optdepends = r-dbi
-	optdepends = r-rsqlite
-	optdepends = r-r.utils
-	optdepends = r-forcats
-	optdepends = r-microbenchmark
-	optdepends = r-rprintf
-	optdepends = r-stringr
-	optdepends = r-ggplot2
 	optdepends = r-dplyr
-	optdepends = r-withr
+	optdepends = r-forcats
+	optdepends = r-forcats
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-microbenchmark
+	optdepends = r-r.utils
+	optdepends = r-rmarkdown
+	optdepends = r-rprintf
+	optdepends = r-rsqlite
+	optdepends = r-stringr
+	optdepends = r-testthat
 	optdepends = r-vctrs
-	source = https://cran.r-project.org/src/contrib/glue_1.4.2.tar.gz
-	md5sums = 0193cf06363f9334b313a7e5503b27e6
+	optdepends = r-waldo
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/glue_1.5.1.tar.gz
+	sha256sums = dc1a1ad263fbba092bcae660b5ad335645d875e5251aebcbdbc56870b98705ea
 
 pkgname = r-glue
-
