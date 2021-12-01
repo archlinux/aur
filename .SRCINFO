@@ -1,6 +1,6 @@
 pkgbase = linux-simple-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 5.15.arch1.r976
+	pkgver = 5.15.arch1.r1022
 	pkgrel = 1
 	url = https://github.com/archlinux/linux/commits/v5.15-arch1
 	arch = x86_64

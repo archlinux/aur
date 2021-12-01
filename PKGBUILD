@@ -11,7 +11,7 @@ _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=5.15.arch1.r976
+pkgver=5.15.arch1.r1022
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
@@ -35,8 +35,15 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   local bcachefspatch="${srcdir}/bcachefs.patch"
   echo "Extracting ${_bcachefsname} tree..."
-  ( cd "${srcdir}/$_bcachefsname" && git fetch --depth 1 "$_bcachefsurl" "$_bcachefstag" && git checkout FETCH_HEAD ) ||
-  ( cd "$srcdir" && rm -rf "$_bcachefsname" && git clone --depth 1 --branch "$_bcachefstag" "$_bcachefsurl" "$_bcachefsname" )
+  (
+    cd "${srcdir}/$_bcachefsname" &&
+    git fetch --depth 1 "$_bcachefsurl" "$_bcachefstag" "+refs/tags/${_bcachefstag}:refs/tags/${_bcachefstag}" &&
+    git checkout FETCH_HEAD
+  ) || (
+    cd "$srcdir" &&
+    rm -rf "$_bcachefsname" &&
+    git clone --depth 1 --branch "$_bcachefstag" "$_bcachefsurl" "$_bcachefsname"
+  )
 
   cd "${srcdir}/$_bcachefsname"
   local version1="$(grep -m 1 -E "^VERSION\s*=\s*[0-9]+\s*$" Makefile | sed -e "s/[^0-9]//g")"
@@ -55,9 +62,16 @@ prepare() {
   git diff HEAD FETCH_HEAD > "$bcachefspatch"
 
   echo "Extracting ${_srcname} tree..."
-  ( cd "${srcdir}/$_srcname" && git fetch --depth 1 "$_srcurl" "$_srctag" &&
-    git checkout -f FETCH_HEAD && git clean -fdq ) ||
-  ( cd "$srcdir" && rm -rf "$_srcname" && git clone --depth 1 --branch "$_srctag" "$_srcurl" "$_srcname" )
+  (
+    cd "${srcdir}/$_srcname" &&
+    make mrproper &&
+    git fetch --depth 1 "$_srcurl" "$_srctag" "+refs/tags/${_srctag}:refs/tags/${_srctag}" &&
+    git checkout -f FETCH_HEAD && git clean -fdq
+  ) || (
+    cd "$srcdir" &&
+    rm -rf "$_srcname" &&
+    git clone --depth 1 --branch "$_srctag" "$_srcurl" "$_srcname"
+  )
   cd "${srcdir}/$_srcname"
 
   echo "Setting version..."
