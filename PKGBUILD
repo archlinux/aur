@@ -3,7 +3,7 @@
 pkgname=python-ansiwrap
 pkgver=0.8.4
 _commit=20e2e8c78a54bdce947e38c069c5eb9c115423ae
-pkgrel=4
+pkgrel=5
 pkgdesc="textwrap, but savvy to ANSI colors and styles"
 url="https://github.com/jonathaneunice/ansiwrap"
 license=('Apache')
