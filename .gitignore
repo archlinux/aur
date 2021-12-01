@@ -3,3 +3,4 @@ src/
 redis-*
 php-redis*
 *.tar.xz
+*.tar.*
