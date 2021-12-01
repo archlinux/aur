@@ -3,7 +3,7 @@
 _pkgname=litesata
 pkgname=python-$_pkgname
 pkgver=2020.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Small footprint and configurable SATA core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
