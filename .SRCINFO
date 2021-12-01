@@ -1,0 +1,155 @@
+pkgbase = php81
+	pkgver = 8.1.0
+	pkgrel = 1
+	url = https://www.php.net/
+	arch = x86_64
+	license = PHP
+	checkdepends = procps-ng
+	makedepends = apache
+	makedepends = aspell
+	makedepends = c-client
+	makedepends = db
+	makedepends = enchant
+	makedepends = gd
+	makedepends = gmp
+	makedepends = icu
+	makedepends = libsodium
+	makedepends = libxslt
+	makedepends = libzip
+	makedepends = net-snmp
+	makedepends = postgresql-libs
+	makedepends = sqlite
+	makedepends = systemd
+	makedepends = tidy
+	makedepends = unixodbc
+	makedepends = curl
+	makedepends = libtool
+	makedepends = postfix
+	makedepends = freetds
+	makedepends = pcre2
+	makedepends = libnsl
+	makedepends = oniguruma
+	source = https://php.net/distributions/php-8.1.0.tar.xz
+	source = apache.patch
+	source = apache.conf
+	source = php-fpm.patch
+	source = php-fpm.tmpfiles
+	source = php.ini.patch
+	sha256sums = a1317eff0723a2b3d3122bbfe107a1158570ea2822dc35a5fb360086db0f6bbc
+	sha256sums = 702b163c66c65af92dcad8d79f41bda84bcd5d863235fcf1497c33a86db9e4ca
+	sha256sums = ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce
+	sha256sums = 96e0b05a5ec72ee0f907d29fbb9612414d9dfebeee1249cbf2f2318bacf2d37c
+	sha256sums = eb0c0aec5b5fb282df0bfefd4d5bbc229ee80a5c5da6760ecf52697a23cc7175
+	sha256sums = 6f73b6ac4b425ebc4505c7f75ca48763605b2c774c30bfa20072adcfbb1030cd
+
+pkgname = php81
+	pkgdesc = A general-purpose scripting language that is especially suited to web development
+	depends = libxml2
+	depends = hspell
+	depends = nuspell
+	depends = libvoikko
+	depends = curl
+	depends = libzip
+	depends = pcre2
+	depends = argon2
+	provides = php81-ldap=8.1.0
+	provides = php81
+	conflicts = php81-ldap
+	replaces = php81-ldap
+	backup = etc/php81/php.ini
+
+pkgname = php81-cgi
+	pkgdesc = CGI and FCGI SAPI for PHP
+	depends = php81
+
+pkgname = php81-apache
+	pkgdesc = Apache SAPI for PHP
+	depends = php81
+	depends = apache
+	depends = libnsl
+	backup = etc/httpd/conf/extra/php81_module.conf
+
+pkgname = php81-fpm
+	pkgdesc = FastCGI Process Manager for PHP
+	depends = php81
+	depends = systemd
+	options = !emptydirs
+	backup = etc/php81/php-fpm.conf
+	backup = etc/php81/php-fpm.d/www.conf
+
+pkgname = php81-embed
+	pkgdesc = Embedded PHP SAPI library
+	depends = php81
+	depends = systemd-libs
+	depends = libnsl
+	options = !emptydirs
+
+pkgname = php81-phpdbg
+	pkgdesc = Interactive PHP debugger
+	depends = php81
+	options = !emptydirs
+
+pkgname = php81-dblib
+	pkgdesc = dblib module for PHP
+	depends = php81
+	depends = freetds
+
+pkgname = php81-enchant
+	pkgdesc = enchant module for PHP
+	depends = php81
+	depends = enchant
+
+pkgname = php81-gd
+	pkgdesc = gd module for PHP
+	depends = php81
+	depends = gd
+
+pkgname = php81-imap
+	pkgdesc = imap module for PHP
+	depends = php81
+	depends = c-client
+
+pkgname = php81-intl
+	pkgdesc = intl module for PHP
+	depends = php81
+	depends = icu
+
+pkgname = php81-sodium
+	pkgdesc = sodium module for PHP
+	depends = php81
+	depends = libsodium
+
+pkgname = php81-odbc
+	pkgdesc = ODBC modules for PHP
+	depends = php81
+	depends = unixodbc
+
+pkgname = php81-pgsql
+	pkgdesc = PostgreSQL modules for PHP
+	depends = php81
+	depends = postgresql-libs
+
+pkgname = php81-pspell
+	pkgdesc = pspell module for PHP
+	depends = php81
+	depends = aspell
+
+pkgname = php81-snmp
+	pkgdesc = snmp module for PHP
+	depends = php81
+	depends = net-snmp
+
+pkgname = php81-sqlite
+	pkgdesc = sqlite module for PHP
+	depends = php81
+	depends = sqlite
+
+pkgname = php81-tidy
+	pkgdesc = tidy module for PHP
+	depends = php81
+	depends = tidy
+
+pkgname = php81-xsl
+	pkgdesc = xsl module for PHP
+	depends = php81
+	depends = libxslt
