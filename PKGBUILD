@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=sessioninfo
-_cranver=1.2.0
+_cranver=1.2.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,17 +12,14 @@ license=(GPL2)
 depends=('r>=2.10' 'r-cli>=3.1.0')
 optdepends=(r-callr r-covr r-mockery r-reticulate r-rmarkdown r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('adebf738ad3d3af9e018302d949994240311ef06c0a77c645b2f761c1a8c07df')
+sha256sums=('424ddf1e808ecf6d0d201d71fbd9ecb7a78ff4dede31a21019441451cc857b70')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
