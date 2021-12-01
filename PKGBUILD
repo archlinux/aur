@@ -3,7 +3,7 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=2.8.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unknown')
@@ -14,7 +14,7 @@ source=("${_pkgname}-${pkgver}-${arch}.deb::https://updatecdn.meeting.qq.com/cos
 depends=('qt5-x11extras' 'hicolor-icon-theme' 'libbsd'  'libxrandr' 'qt5-webkit' 'libxinerama' 'libpulse')
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 sha512sums=('37d3aec3de68fc79da744690d65f5ceef6d67d9bfba40f52b14429847ec72d9136e34fe87fbdd7d9dd14e91f543bf9b5fdbd4f50cfe25a3677b557daa4ed38ce'
-            'b4d199290278539cd9dcd23a4f66f6136abd38b0e5a884db3ca4d9b1a23217c330777d1d5ec533053242dd1493c513a3dc0cf6e7ac5a6ca04f1918d4a9430e4c')
+            'e0ff38f1317922af37d916d42f77faea40385839a52455a8871e7e4d5b644b6fa92bf1d086e5e24a6d2b3f8985a30d339aa3dc046b5f13415985aa6dfbda238e')
 
 
 package() {
