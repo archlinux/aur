@@ -2,20 +2,21 @@
 # Contributor:
 
 pkgname=simpleconvert
+_pkgname=SimpleConvert
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Application to convert multiple files to another filetype using FFMPEG.'
-url='https://github.com/bartkessels/simpleconvert'
+url='https://github.com/bartkessels/SimpleConvert'
 arch=('x86_64')
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'qt5-base')
 makedepends=('qt5-tools')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1b39acabdb26810e8fc4550247b5fe92bb6b25871e1b9993bb1352384abcae96')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('ba8dee967a1d0f0874f3e7663d7f2cd300b02853b806d5a4b43c47ccb4429eeb')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  qmake-qt5 PREFIX=/usr SimpleConvert.pro \
+  cd "${_pkgname}-${pkgver}"
+  qmake-qt5 PREFIX=/usr ${_pkgname}.pro \
     QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
     QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
     QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
@@ -23,5 +24,5 @@ build() {
 }
 
 package() {
-  make -C "${pkgname}-${pkgver}" INSTALL_ROOT="${pkgdir}" install
+  make -C "${_pkgname}-${pkgver}" INSTALL_ROOT="${pkgdir}" install
 }

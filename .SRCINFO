@@ -1,16 +1,15 @@
 pkgbase = simpleconvert
 	pkgdesc = Application to convert multiple files to another filetype using FFMPEG.
 	pkgver = 3.2
-	pkgrel = 1
-	url = https://github.com/bartkessels/simpleconvert
+	pkgrel = 2
+	url = https://github.com/bartkessels/SimpleConvert
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = qt5-base
-	source = simpleconvert-3.2.tar.gz::https://github.com/bartkessels/simpleconvert/archive/3.2/simpleconvert-3.2.tar.gz
-	sha256sums = 1b39acabdb26810e8fc4550247b5fe92bb6b25871e1b9993bb1352384abcae96
+	source = SimpleConvert-3.2.tar.gz::https://github.com/bartkessels/SimpleConvert/archive/refs/tags/3.2.tar.gz
+	sha256sums = ba8dee967a1d0f0874f3e7663d7f2cd300b02853b806d5a4b43c47ccb4429eeb
 
 pkgname = simpleconvert
-
