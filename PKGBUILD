@@ -2,7 +2,7 @@
 
 pkgname=python-editdistance-s
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast implementation of the edit distance (Levenshtein distance)"
 url="https://github.com/asottile/editdistance-s"
 license=('MIT')
