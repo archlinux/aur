@@ -2,7 +2,7 @@
 
 pkgname=python-alt-pytest-asyncio
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Alternative pytest plugin to pytest-asyncio'
 arch=('any')
 license=('MIT')
