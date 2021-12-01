@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.45.0
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=1f14e434c90b0f9caf2de63593d9256ecc11d131") # tag: 2.45.0
+source=("git+$url#commit=e8e7d6874beeacac6715a0711972bb81f83ccc83") # tag: 2.46.0
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
@@ -20,18 +20,21 @@ optdepends=('asciidoctor: for writing man pages'
             'cxx: for compiling C++'
             'fpc: for compiling Object Pascal'
             'fstabfmt: for formatting /etc/fstab'
+            'gdc: for compiling D'
             'ghc: for compiling Haskell'
             'google-java-format: for formatting Java'
             'guessica: for updating PKGBUILD files'
+            'jad: for decompiling .class files on the fly'
             'java-environment: for compiling Java'
             'kotlin: for compiling Kotlin'
+            'ktlint: for formatting Kotlin'
             'lua: for compiling Lua'
             'lua-format: for formatting Lua'
             'mlton: for compiling Standard ML'
             'mono: for compiling C#'
             'ocaml: for compiling and formatting OCaml'
             'odin: for compiling Odin'
-            'pandoc: for exporting Markdown to PDF'
+            'pandoc-bin: for exporting Markdown to PDF'
             'prettier: for formatting JavaScript, TypeScript and CSS'
             'rustup: for compiling and formatting Rust'
             'scala: for compiling Scala'

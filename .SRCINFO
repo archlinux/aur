@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.45.0
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -18,18 +18,21 @@ pkgbase = o
 	optdepends = cxx: for compiling C++
 	optdepends = fpc: for compiling Object Pascal
 	optdepends = fstabfmt: for formatting /etc/fstab
+	optdepends = gdc: for compiling D
 	optdepends = ghc: for compiling Haskell
 	optdepends = google-java-format: for formatting Java
 	optdepends = guessica: for updating PKGBUILD files
+	optdepends = jad: for decompiling .class files on the fly
 	optdepends = java-environment: for compiling Java
 	optdepends = kotlin: for compiling Kotlin
+	optdepends = ktlint: for formatting Kotlin
 	optdepends = lua: for compiling Lua
 	optdepends = lua-format: for formatting Lua
 	optdepends = mlton: for compiling Standard ML
 	optdepends = mono: for compiling C#
 	optdepends = ocaml: for compiling and formatting OCaml
 	optdepends = odin: for compiling Odin
-	optdepends = pandoc: for exporting Markdown to PDF
+	optdepends = pandoc-bin: for exporting Markdown to PDF
 	optdepends = prettier: for formatting JavaScript, TypeScript and CSS
 	optdepends = rustup: for compiling and formatting Rust
 	optdepends = scala: for compiling Scala
@@ -37,7 +40,7 @@ pkgbase = o
 	optdepends = tidy: for formatting HTML
 	optdepends = v: for compiling and formatting V
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=1f14e434c90b0f9caf2de63593d9256ecc11d131
+	source = git+https://github.com/xyproto/o#commit=e8e7d6874beeacac6715a0711972bb81f83ccc83
 	b2sums = SKIP
 
 pkgname = o
