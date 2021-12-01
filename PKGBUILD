@@ -5,9 +5,9 @@
 
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
-pkgver=2.8.0
+pkgver=2.9.0
 _stlink_updater_ver=2.38.27
-pkgrel=4
+pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -31,15 +31,17 @@ makedepends=('xdotool'
 provides=("${pkgname}rammer")
 options=('!strip')
 _pkg_main_name="${pkgname//prog/prg}-lin_v${pkgver//./-}"
+_pkg_main_url_index="af/f8/e3/60/56/b9/42/9d"
 _stlink_updater_name="stsw-link007_V${_stlink_updater_ver//./-}"
+_stlink_url_index="4e/80/8d/29/e0/c7/4e/13"
 # stm32cubeprog
 ## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
 # stsw-link007
 ## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-link007/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
-source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/0a/02/5f/ff/fb/27/4d/84/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
-        "en.${_stlink_updater_name}.zip::https://st.com/content/ccc/resource/technical/software/firmware/group1/4e/80/8d/29/e0/c7/4e/13/${_stlink_updater_name}/files/${_stlink_updater_name}.zip/jcr:content/translations/en.${_stlink_updater_name}.zip"
+source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
+        "en.${_stlink_updater_name}.zip::https://st.com/content/ccc/resource/technical/software/firmware/group1/${_stlink_url_index}/${_stlink_updater_name}/files/${_stlink_updater_name}.zip/jcr:content/translations/en.${_stlink_updater_name}.zip"
         "${pkgname}.xdotool")
-sha256sums=('c896a9e2cd6c43c9d98a7271c52934eb7151c22117afdf6e8175e7c6a83fdc40'
+sha256sums=('53b3648bd0297330b4e82eaba80d69d9fa50ac8e57a41c32d00ac32ca77ccad9'
             'bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
 
@@ -73,7 +75,7 @@ build() {
 
 package() {
   install -dm755 ${pkgdir}/opt/${pkgname}
-  cp -r ${srcdir}/build/* ${pkgdir}/opt/${pkgname}
+  cp -a ${srcdir}/build/* ${pkgdir}/opt/${pkgname}
 
   # icon
   index=0
@@ -113,6 +115,9 @@ END
   do
     ln -sf /opt/${pkgname}/bin/${_cmd} ${pkgdir}/usr/bin/${_cmd}
   done
+
+  # Remove STM32CubePrgUpd update
+  rm -rf ${pkgdir}/opt/${pkgname}/updater
 
   # ST-link updater
   # https://community.st.com/s/question/0D53W00000mlLP9/how-to-install-stlinkupgradejar-from-stswlink007-so-it-can-be-found-by-stm32cubeprogrammer
