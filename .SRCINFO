@@ -1,7 +1,7 @@
 pkgbase = cairo-ubuntu
 	pkgdesc = 2D graphics library with support for multiple output devices (with ubuntu patches)
-	pkgver = 1.16.0
-	pkgrel = 3
+	pkgver = 1.17.4
+	pkgrel = 1
 	url = https://cairographics.org/
 	arch = x86_64
 	license = LGPL
@@ -22,7 +22,7 @@ pkgbase = cairo-ubuntu
 	depends = lzo
 	provides = cairo
 	conflicts = cairo
-	source = cairo::git+https://anongit.freedesktop.org/git/cairo#commit=3ad43122b21a3299dd729dc8462d6b8f7f01142d
+	source = cairo::git+https://anongit.freedesktop.org/git/cairo#commit=156cd3eaaebfd8635517c2baf61fcf3627ff7ec2
 	source = cairo-make-lcdfilter-default.patch
 	source = cairo-respect-fontconfig_pb.patch
 	source = cairo-server-side-gradients.patch
@@ -34,4 +34,3 @@ pkgbase = cairo-ubuntu
 	md5sums = 6080d20e289f5e75cc013e8f40710aa3
 
 pkgname = cairo-ubuntu
-

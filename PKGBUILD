@@ -1,7 +1,7 @@
 pkgname=cairo-ubuntu
 _realpkg=cairo
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.17.4
+pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices (with ubuntu patches)"
 url="https://cairographics.org/"
 arch=(x86_64)
@@ -10,7 +10,8 @@ license=(LGPL MPL)
 conflicts=("cairo")
 depends=(libpng libxrender libxext fontconfig pixman glib2 lzo)
 makedepends=(librsvg gtk2 poppler-glib libspectre gtk-doc valgrind git)
-_commit=3ad43122b21a3299dd729dc8462d6b8f7f01142d
+#_commit=3ad43122b21a3299dd729dc8462d6b8f7f01142d
+_commit=156cd3eaaebfd8635517c2baf61fcf3627ff7ec2
 source=("cairo::git+https://anongit.freedesktop.org/git/cairo#commit=$_commit"
         cairo-make-lcdfilter-default.patch
         cairo-respect-fontconfig_pb.patch
