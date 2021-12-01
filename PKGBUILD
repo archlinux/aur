@@ -5,15 +5,15 @@ pkgname=mullvad-vpn-bin
 pkgver=2021.6
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
-url="https://www.mullvad.net"
 arch=('x86_64')
+url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
-install="${pkgname%-bin}.install"
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+install="${pkgname%-*}.install"
 source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc}
-        "${pkgname%-bin}.sh")
+        "${pkgname%-*}.sh")
 sha256sums=('95b9638f304a00d72ce6b6f3a38ff9f623142541cfaa4d6e9aa142c27d86ea6e'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
@@ -23,7 +23,7 @@ package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir"
 
   # Link to the GUI binary
-  install -m755 "$srcdir/${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
+  install -m755 "$srcdir/${pkgname%-*}.sh" "$pkgdir/usr/bin/${pkgname%-*}"
 
   # Symlink daemon service to correct directory
   install -d "$pkgdir/usr/lib/systemd/system"
