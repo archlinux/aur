@@ -1,0 +1,17 @@
+pkgbase = php81-mcrypt
+	pkgdesc = php80 bindings for the unmaintained libmcrypt. For compat purposes
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://pecl.php.net/package/mcrypt
+	install = mcrypt.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = autoconf
+	makedepends = re2c
+	depends = php81
+	depends = libmcrypt
+	source = http://pecl.php.net/get/mcrypt-1.0.4.tgz
+	md5sums = 7097fac371820ff130c90330b556f1bf
+
+pkgname = php81-mcrypt
