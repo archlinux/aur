@@ -3,7 +3,7 @@
 _name=langdetect
 pkgname=python-langdetect
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Language detection library ported from Google's language-detection"
 arch=('any')
 url="https://github.com/Mimino666/langdetect"
