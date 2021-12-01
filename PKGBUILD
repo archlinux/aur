@@ -1,7 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=goverlay
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.7.0
+_pkgver=0.7
+pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -15,20 +16,20 @@ optdepends=('vkbasalt: Configure vkBasalt'
             'git: Clone reshade repository'
             'replay-sorcery: Instant replay solution')
 conflicts=("${pkgname%-git}" "${pkgname%-bin}")
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('869ff06ea11890a65b45cf98b4a9c462373aba63532757c2084f18992d3b86f3c8e88d6e4a8d7d9af650a7ebaa0fd5d33d27878c0b1d545982368da115d17d0d')
+source=("${url}/archive/refs/tags/${_pkgver}.tar.gz")
+sha512sums=('ab30c5ebfed568801a9e5f89ce3700c738aaee51ad8be451a2b08cddabe7c81e9faaeff51c1c45afe0fedbbc0e41682d053b7c274b2b7a055084637412779524')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$_pkgver"
 	make LAZBUILDOPTS=--lazarusdir=/usr/lib/lazarus
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$_pkgver"
 	make tests
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$_pkgver"
 	make prefix=/usr DESTDIR="$pkgdir/" install
 }
