@@ -3,7 +3,7 @@
 _pkgname=litedram
 pkgname=python-$_pkgname
 pkgver=2020.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Small footprint and configurable DRAM core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
