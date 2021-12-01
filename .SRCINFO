@@ -1,0 +1,55 @@
+pkgbase = icaclient-2109
+	pkgdesc = Citrix Workspace App version 2109 (ICAClient, Citrix Receiver)
+	pkgver = 21.9.0.25
+	pkgrel = 1
+	url = https://www.citrix.com/downloads/workspace-app/legacy-workspace-app-for-linux/workspace-app-for-linux-2109.html
+	install = citrix-client.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = custom:Citrix
+	depends = alsa-lib
+	depends = curl
+	depends = gst-plugins-base-libs
+	depends = gtk2
+	depends = libc++
+	depends = libc++abi
+	depends = libidn11
+	depends = libjpeg6-turbo
+	depends = libpng12
+	depends = libsecret
+	depends = libsoup
+	depends = libvorbis
+	depends = libxaw
+	depends = libxp
+	depends = speex
+	depends = webkit2gtk
+	optdepends = xerces-c: gtk2 configuration manager
+	optdepends = webkit2gtk: gtk2 selfservice/storefront ui
+	optdepends = libc++: for HDXTeams
+	conflicts = bin32-citrix-client
+	conflicts = citrix-client
+	options = !strip
+	backup = opt/Citrix/ICAClient/config/appsrv.ini
+	backup = opt/Citrix/ICAClient/config/wfclient.ini
+	backup = opt/Citrix/ICAClient/config/module.ini
+	source = configmgr.desktop
+	source = conncenter.desktop
+	source = selfservice.desktop
+	source = wfica.desktop
+	source = wfica.sh
+	source = wfica_assoc.sh
+	sha256sums = 38e0de641fd374c65c84cb2e82a976595380c32d5f89cff8a25843bdd000d637
+	sha256sums = cf9aed0c471658665fdc8bc3b8e7583d78834ecb5066d1c287bbcf890d5d14b9
+	sha256sums = 2d84f8cb6f5dfd1a92024b2344cef0affac021327e5ff6ffe579395fffd1fdf4
+	sha256sums = 1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064
+	sha256sums = a3da4a2cdc6f8ef7f3f26fe3344f7e6b6ee5cbe1cded77aadd616adc7771adb8
+	sha256sums = a5b03c48f359cdb3667ca0721c6b4091b97300605d5c9ca959ce072580483c81
+	source_x86_64 = icaclient-2109-x64-21.9.0.25.tar.gz::https://downloads.citrix.com/19881/linuxx64-21.9.0.25.tar.gz?__gda__=exp=1638388024~acl=/*~hmac=c5f6cb944ccb4fa088d8c0a96395470b2a8f7299e9183cc59ee9fd74a71d20ab
+	sha256sums_x86_64 = d58d5cbbcb5ace95b75b1400061d475b8e72dbdf5f03abacea6d39686991f848
+	source_i686 = icaclient-2109-x86-21.9.0.25.tar.gz::https://downloads.citrix.com/19881/linuxx86-21.9.0.25.tar.gz?__gda__=exp=1638388024~acl=/*~hmac=c5f6cb944ccb4fa088d8c0a96395470b2a8f7299e9183cc59ee9fd74a71d20ab
+	sha256sums_i686 = c646c52889e88aa0bb051070076763d5407f21fb6ad6dfcb0fe635ac01180c51
+	source_armv7h = icaclient-2109-armhf-21.9.0.25.tar.gz::https://downloads.citrix.com/19881/linuxarmhf-21.9.0.25.tar.gz?__gda__=exp=1638388024~acl=/*~hmac=c5f6cb944ccb4fa088d8c0a96395470b2a8f7299e9183cc59ee9fd74a71d20ab
+	sha256sums_armv7h = 0a00a07081087a45b6c94da946209ce8aa8047cf57c521ecb0a9d1fbe41251a5
+
+pkgname = icaclient-2109

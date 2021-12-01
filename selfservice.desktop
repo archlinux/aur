@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Citrix Receiver Self Service
+Categories=Application;Network;X-Red-Hat-Base;X-SuSE-Core-Internet;
+Icon=/opt/Citrix/ICAClient/icons/manager.png
+TryExec=/opt/Citrix/ICAClient/selfservice
+Exec=/opt/Citrix/ICAClient/selfservice --icaroot /opt/Citrix/ICAClient
