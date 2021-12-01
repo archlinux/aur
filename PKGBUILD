@@ -5,7 +5,7 @@
 
 pkgname=python-future
 pkgver=0.18.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="https://python-future.org/"
 arch=('any')
