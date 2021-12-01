@@ -3,7 +3,7 @@
 
 pkgname=write_stylus
 pkgver=300.r421
-pkgrel=1
+pkgrel=2
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
 url="http://www.styluslabs.com/"
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   desktop-file-edit --set-key=Exec --set-value=/usr/bin/write_stylus "$srcdir/Write/Write.desktop"
-  desktop-file-edit --set-key=Icon --set-value=/usr/share/icons/hicolor/144x144/apps/write_stylus.png "$srcdir/Write/Write.desktop"
+  desktop-file-edit --set-key=Icon --set-value=write_stylus "$srcdir/Write/Write.desktop"
 }
 
 package() {
@@ -35,7 +35,7 @@ package() {
 
   install -Dm644 "$srcdir/eula.docx" "$pkgdir/usr/share/licenses/write_stylus/eula.docx"
   install -Dm644 "$srcdir/Write/Write.desktop" "$pkgdir/usr/share/applications/Write.desktop"
-  install -Dm644 "$srcdir/Write/Write144x144.png" "$pkgdir/usr/share/icons/hicolor/144x144/apps/write_stylus.png"
+  install -Dm644 "$srcdir/Write/Write144x144.png" "$pkgdir/usr/share/pixmaps/write_stylus.png"
 }
 
 # vim:set ts=2 sw=2 et:
