@@ -3,7 +3,7 @@
 _pkgname=async_generator
 pkgname=python-${_pkgname}
 pkgver=1.10
-pkgrel=6
+pkgrel=7
 pkgdesc='Making it easy to write async iterators'
 url='https://github.com/python-trio/async_generator'
 arch=('any')
