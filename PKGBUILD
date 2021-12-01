@@ -1,17 +1,17 @@
 # Maintainer: Leo <i@setuid0.dev>
 
-_bin_ver=2.5.7
-_rr_ver=2.5.3
+_bin_ver=2.6.0
+_rr_ver=2.6.0
 
 pkgname=roadrunner
 pkgver=$_rr_ver
-pkgrel=2
+pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
 license=(MIT)
 depends=("php>=7.3")
-makedepends=("go>=1.16")
+makedepends=("go>=1.16" "composer")
 source=(
 	"$pkgname-$_rr_ver.tar.gz::https://github.com/spiral/$pkgname/archive/v$_rr_ver.tar.gz"
 	"$pkgname-binary-$_bin_ver.tar.gz::https://github.com/spiral/$pkgname-binary/archive/v$_bin_ver.tar.gz"
@@ -19,8 +19,8 @@ source=(
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	'f78277368caa00b3fd37589887a16390d41021e15d98946ef45b94f818c3c744'
-	'382f4b8e222aeec5bd8828b78fc696981267e3f8a7c97c09ae219c9bbd8f0f85'
+	'dd6a42513252480e749b45fb99b118cfdc01be1ff393820f954c236227ffd191'
+	'a951f9e6a5fd56d0003e2ae72c8dffa5c862378efa98dc1419d0737f510e7e68'
 	SKIP
 	SKIP
 )
@@ -54,6 +54,14 @@ build() {
 }
 
 check() {
+	cd "$srcdir/$pkgname-$_rr_ver/tests"
+	composer update --prefer-dist --no-progress --ansi
+
+	cd "$srcdir/$pkgname-$_rr_ver"
+	rm -rf coverage-ci
+	mkdir ./coverage-ci
+	go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
+
 	cd "$srcdir/$pkgname-binary-$_bin_ver"
 	go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
 }
