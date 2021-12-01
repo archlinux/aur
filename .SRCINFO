@@ -1,7 +1,7 @@
 pkgbase = alacritty-colorscheme
 	pkgdesc = Change colorscheme of alacritty with ease
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/toggle-corp/alacritty-colorscheme/
 	arch = any
 	license = Apache
@@ -9,8 +9,7 @@ pkgbase = alacritty-colorscheme
 	depends = python-ruamel-yaml
 	depends = python-typed-argument-parser
 	depends = python-pynvim
-	source = https://files.pythonhosted.org/packages/source/a/alacritty-colorscheme/alacritty-colorscheme-1.0.0.tar.gz
-	sha256sums = 9b4f9c95fb58edbef97452ba5a3fb9bfe989da4601beb0b025350cfc1acab22d
+	source = https://files.pythonhosted.org/packages/source/a/alacritty-colorscheme/alacritty-colorscheme-1.0.1.tar.gz
+	sha256sums = 779fa9b7c2352050ca50758c74493a7599ede8a584a089ad9fc7bbc0d9b51c53
 
 pkgname = alacritty-colorscheme
-
