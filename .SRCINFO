@@ -1,7 +1,7 @@
 pkgbase = openafs
 	pkgdesc = Open source implementation of the AFS distributed file system
 	pkgver = 1.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	install = openafs.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = openafs
 	arch = armv7h
 	license = custom:"IBM Public License Version 1.0"
 	depends = krb5
+	depends = libxcrypt
 	optdepends = openafs-modules: Kernel module for OpenAFS
 	optdepends = openafs-modules-dkms: Kernel module for OpenAFS, built automatically using dkms
 	conflicts = openafs-features
