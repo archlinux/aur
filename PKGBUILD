@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=digest
-_cranver=0.6.28
+_cranver=0.6.29
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,19 +12,16 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.3.0')
-optdepends=(r-tinytest r-knitr r-rmarkdown r-minidown)
+optdepends=(r-tinytest r-simplermarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('4a328c75e95f8522fc07390d1dd00c19fb643f558e761a8aed04f99c1dc7db00')
+sha256sums=('792c1f14a4c8047745152f5e45ce7351978af8d770c29d2ea39c7acd5d619cd9')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
