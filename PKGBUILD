@@ -3,19 +3,19 @@
 pkgname="mcmojave-cursors"
 pkgver=1.0
 pkgrel=1
-pkgdesc="x-cursor theme inspired by macOS and based on capitaine-cursors"
+pkgdesc="X-cursor theme inspired by macOS and based on capitaine-cursors"
 arch=("any")
-url="https://github.com/vinceliuice/McMojave-cursors"
+url="https://github.com/vinceliuice/${pkgname}"
 license=('GPL')
-source=("https://github.com/vinceliuice/McMojave-cursors/archive/master.zip")
-md5sums=('0beb30670b7ad4da538a86ab64b88d00')
+source=("${pkgname}::git+ssh://git@github.com/vinceliuice/${pkgname}.git")
+md5sums=('SKIP')
 
 build() {
 	true
 }
 
 package() {
-    cd $srcdir
-	mkdir -p $pkgdir/usr/share/icons/$pkgname
-	cp -r McMojave-cursors-master/dist/* $pkgdir/usr/share/icons/$pkgname
+	cd "${srcdir}" || exit
+	mkdir -p "${pkgdir}/usr/share/icons/${pkgname}"
+	cp -r "${pkgname}"/dist/* "${pkgdir}/usr/share/icons/${pkgname}"
 }

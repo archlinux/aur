@@ -1,12 +1,11 @@
 pkgbase = mcmojave-cursors
-	pkgdesc = x-cursor theme inspired by macOS and based on capitaine-cursors
+	pkgdesc = X-cursor theme inspired by macOS and based on capitaine-cursors
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/vinceliuice/McMojave-cursors
+	url = https://github.com/vinceliuice/mcmojave-cursors
 	arch = any
 	license = GPL
-	source = https://github.com/vinceliuice/McMojave-cursors/archive/master.zip
-	md5sums = 28010cba022b1418ae2823ab46023d3f
+	source = mcmojave-cursors::git+ssh://git@github.com/vinceliuice/mcmojave-cursors.git
+	md5sums = SKIP
 
 pkgname = mcmojave-cursors
-
