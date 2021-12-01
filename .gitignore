@@ -1,0 +1,5 @@
+imagick-*
+php81-imagick-*
+pkg/
+src/
+*.tar.*
