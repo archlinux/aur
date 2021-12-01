@@ -7,7 +7,7 @@ pkgdesc="X-cursor theme inspired by macOS and based on capitaine-cursors"
 arch=("any")
 url="https://github.com/vinceliuice/${pkgname}"
 license=('GPL')
-source=("${pkgname}::git+ssh://git@github.com/vinceliuice/${pkgname}.git")
+source=("${pkgname}::git+https://git@github.com/vinceliuice/${pkgname}.git")
 md5sums=('SKIP')
 
 build() {

@@ -5,7 +5,7 @@ pkgbase = mcmojave-cursors
 	url = https://github.com/vinceliuice/mcmojave-cursors
 	arch = any
 	license = GPL
-	source = mcmojave-cursors::git+ssh://git@github.com/vinceliuice/mcmojave-cursors.git
+	source = mcmojave-cursors::git+https://git@github.com/vinceliuice/mcmojave-cursors.git
 	md5sums = SKIP
 
 pkgname = mcmojave-cursors
