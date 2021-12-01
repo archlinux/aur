@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=2.2.27
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
 url='https://github.com/GNS3/gns3-server'
@@ -50,6 +50,7 @@ prepare() {
         -e 's|^Jinja2==3\.0\.1$|Jinja2>=3.0.1|' \
         -e 's|^sentry-sdk==1\.3\.1$|sentry-sdk>=1.3.1|' \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
+        -e 's|^async-timeout==3\.0\.1$|async-timeout>=3.0.1|' \
         -e 's|^distro==1\.6\.0$|distro>=1.6.0|' \
         -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
         requirements.txt
