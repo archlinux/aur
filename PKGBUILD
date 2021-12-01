@@ -3,7 +3,7 @@
 pkgname=python-hs-dbus-signature
 _pkgname=hs-dbus-signature
 pkgver=0.07
-pkgrel=1
+pkgrel=2
 pkgdesc="dbus signature hypothesis strategy generator"
 url="https://github.com/stratis-storage/hs-dbus-signature"
 depends=('python-hypothesis' )
