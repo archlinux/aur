@@ -1,8 +1,9 @@
 # meson/ninja build() & package() taken from community/radare2
 # Contributor: 0xAA <0xaa at dmg dot sx>
 # Contributor: bratus <szczepaniak.bartek plus github at gmail dot com>
+# Contributor: jjguti
 pkgname=radare2-git
-pkgver=5.4.0.r26148.86f8c9dce6
+pkgver=5.5.1.r26987.e07fbc2f37
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -41,6 +42,7 @@ build() {
     -D use_sys_openssl=true \
     -D use_libuv=true \
     -D use_webui=true
+  ninja -C build
 }
 
 package() {
