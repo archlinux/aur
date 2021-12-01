@@ -12,8 +12,7 @@ makedepends=("gcc")
 
 build() {
     # build
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+    make "--directory=${srcdir}/${pkgname}-${pkgver}"
 }
 
 check() {
@@ -22,5 +21,6 @@ check() {
 }
 
 package() {
-    install -D "${srcdir}/${pkgname}-${pkgver}/heaptrace" "${pkgdir}/usr/bin/heaptrace" --mode=755 --owner="root" --group="root"
+    make "--directory=${srcdir}/${pkgname}-${pkgver}" install "DESTDIR=${pkgdir}"
+    chmod 755 "${pkgdir}/usr/bin/heaptrace"
 }
