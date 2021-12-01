@@ -5,7 +5,7 @@
 
 pkgname=chromium-wayland-vaapi
 pkgver=96.0.4664.45
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="Chromium, patched to enable VA-API video decoding on the Ozone Wayland backend"
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-94-ffmpeg-roll.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch
-        https://raw.githubusercontent.com/OSSystems/meta-browser/c6d5a05890ba38a7aa529c3e9f0a5e04db37b18e/meta-chromium/recipes-browser/chromium/files/chromium-wayland/0001-ozone-add-va-api-support-to-wayland.patch)
+        0001-ozone-wayland-add-VA-API-support.patch)
 sha256sums=('488c6ad983ebf7781cb4d704f70496e8aa2165611b46656d7aa62f269c760407'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '090af7eab39aade15a1786273f2497d6b4abfaef24279fbf97ce0dd1c38c69aa'
@@ -42,7 +42,7 @@ sha256sums=('488c6ad983ebf7781cb4d704f70496e8aa2165611b46656d7aa62f269c760407'
             '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-            '84a3f1ed743f3fd751cc8790aaae4d23e0d847ab321bc5f1cd346e1a05591002')
+            '9fde4bb81ef045a0606d951516780288a48defe8ce50c7790c5a5d444bf58941')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -122,7 +122,7 @@ prepare() {
   patch -Np1 -i ../patches/chromium-96-CouponDB-include.patch
 
   # Enable VAAPI on Wayland
-  patch -Np1 -i ../0001-ozone-add-va-api-support-to-wayland.patch
+  patch -Np1 -i ../0001-ozone-wayland-add-VA-API-support.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
