@@ -8,6 +8,7 @@ url="https://www.mirbsd.org/kwalletcli.htm"
 license=('custom:MirOS' 'LGPL3')
 arch=('i686' 'x86_64')
 depends=('kwallet' 'mksh')
+conflicts=('kwallet-cli')
 makedepends=('gcc' 'make')
 source=("${pkgname}::git://github.com/MirBSD/kwalletcli")
 sha512sums=('SKIP')
