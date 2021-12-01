@@ -1,14 +1,14 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=pdfquirk-git
-pkgver=continuous.r13.g157f773
+pkgver=continuous.r18.g3f45dc9
 pkgrel=1
 pkgdesc="Creating PDFs from images or scanner made easy"
 arch=('x86_64')
 url="https://dragotin.github.io/quirksite"
 license=(GPL3)
 depends=(hicolor-icon-theme imagemagick qt6-tools)
-makedepends=(extra-cmake-modules glu git)
+makedepends=(clang extra-cmake-modules glu git)
 optdepends=('sane: scanning support')
 provides=("${pkgname/-git/}")
 source=("git+https://github.com/dragotin/${pkgname/-git/}.git")
