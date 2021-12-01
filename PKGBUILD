@@ -3,7 +3,7 @@
 
 pkgname=python-selectors2
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc='Backported, durable, and portable selectors.'
 url='https://github.com/SethMichaelLarson/selectors2'
