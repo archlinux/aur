@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ForkBoard
+GenericName=CryptoCurrency
+Comment=An ElectronJS Dashboard App to show wallets balances from Chia and Forks in one convenient location.
+Exec=forkboard
+Terminal=false
+Type=Application
+Icon=forkboard
+Categories=Utility;
+StartupWMClass=forkboard
