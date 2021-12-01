@@ -8,6 +8,7 @@ pkgbase = pleaser
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	backup = etc/please.ini,etc/pam.d/please,etc/pam.d/pleaseedit
 	source = https://gitlab.com/edneville/please/-/archive/v0.5.0/please-v0.5.0.tar.gz
 	sha512sums = 0d2551d6985e4f1d64f49f8c726c6b0cba224de10ca0571dead592cd35b45082935fcfc2dfd85901870db12a13176ea49eaee625dcc55eab3eb5448ef7e98c06
 
