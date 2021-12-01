@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-drop-down-terminal
 	pkgdesc = Drop Down Terminal extension for the Gnome Shell
-	pkgver = 24.patch2
-	pkgrel = 2
+	pkgver = 24.patch3
+	pkgrel = 1
 	url = https://github.com/zzrough/gs-extensions-drop-down-terminal
 	install = drop-down-terminal.install
 	arch = any
 	license = GPL3
-	depends = gnome-shell<1:41
-	source = drop-down-terminal-24.patch2.tar.gz::https://github.com/zzrough/gs-extensions-drop-down-terminal/archive/v24.tar.gz
+	depends = gnome-shell<1:42
+	source = drop-down-terminal-24.patch3.tar.gz::https://github.com/zzrough/gs-extensions-drop-down-terminal/archive/v24.tar.gz
 	source = https://patch-diff.githubusercontent.com/raw/zzrough/gs-extensions-drop-down-terminal/pull/245.diff
 	sha256sums = abeaab555b48820f4f72224f3c60bbecd7c7cd696c42cd44fbaa7c5e763a990d
 	sha256sums = 9086cb782959a315b33262e0ec77af32f2fe21733af612f1930cb8806bab14b7
