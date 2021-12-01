@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=colorway
-_commit=87bcc4206ee333cc23d818b0f773ebb92dc6ec58
-pkgver=1.0.5
+_commit=40c29cb0d3fa2aadb199d8154bce954710489120
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Generate color pairings'
 arch=(x86_64)
