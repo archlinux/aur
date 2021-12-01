@@ -7,15 +7,15 @@ pkgdesc="X-cursor theme inspired by macOS and based on capitaine-cursors"
 arch=("any")
 url="https://github.com/vinceliuice/${pkgname}"
 license=('GPL')
-source=("${pkgname}::git+https://git@github.com/vinceliuice/${pkgname}.git")
+makedepends=('git')
+provides=("${pkgname}")
+source=("git+ssh://git@github.com/vinceliuice/${pkgname}.git")
 md5sums=('SKIP')
-
-build() {
-	true
-}
 
 package() {
 	cd "${srcdir}" || exit
 	mkdir -p "${pkgdir}/usr/share/icons/${pkgname}"
-	cp -r "${pkgname}"/dist/* "${pkgdir}/usr/share/icons/${pkgname}"
+	mkdir -p "${pkgdir}/usr/share/icons/${pkgname}/cursors"
+	install -Dm755 "${pkgname}"/dist/index.theme -t "${pkgdir}/usr/share/icons/${pkgname}"
+	install -Dm755 "${pkgname}"/dist/cursors/* -t "${pkgdir}/usr/share/icons/${pkgname}/cursors"
 }
