@@ -1,0 +1,15 @@
+pkgbase = heaptrace
+	pkgdesc = helps visualize heap operations for pwn and debugging
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = https://github.com/Arinerron/heaptrace
+	arch = x86_64
+	license = BSD
+	noextract = heaptrace-heaptrace
+	noextract = heaptrace-heaptrace.1
+	source_x86_64 = heaptrace-heaptrace::https://github.com/Arinerron/heaptrace/releases/download/2.2.8/heaptrace
+	source_x86_64 = heaptrace-heaptrace.1::https://raw.githubusercontent.com/Arinerron/heaptrace/main/man/heaptrace.1
+	sha256sums_x86_64 = 7882bf4660c3516ce261f4b3c9f9cc5b946bf75e799c6090c45ac074d59a9ce9
+	sha256sums_x86_64 = 598cc86c6a74a5f43a6c65c9964c80fc5bfa61cea95d0f99eafd48f3a26007c2
+
+pkgname = heaptrace
