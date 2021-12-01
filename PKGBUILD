@@ -4,19 +4,15 @@
 
 pkgname=python-dataproperty
 pkgver=0.54.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Extract properties from data'
 arch=('any')
 url='https://github.com/thombashi/DataProperty'
 license=('MIT')
-depends=(
-  'python-mbstrdecoder>=1.0.0'
-  'python-mbstrdecoder<2'
-  'python-typepy>=1.2.0'
-  'python-typepy<2')
-makedepends=('python-setuptools')
+depends=('python-mbstrdecoder' 'python-typepy')
+makedepends=('python-setuptools' 'python-docutils' 'python-pygments')
 checkdepends=(
-  'python-pytest>=6.0.1'
+  'python-pytest'
   'python-pytest-runner'
   'python-termcolor'
   'python-dateutil'
@@ -30,6 +26,7 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 build() {
   cd "DataProperty-$pkgver"
   python setup.py build
+  rst2man README.rst "$pkgname.7"
 }
 
 check() {
@@ -40,8 +37,8 @@ check() {
 package() {
   cd "DataProperty-$pkgver"
   PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$pkgname.7" -t "$pkgdir/usr/share/man/man7/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
