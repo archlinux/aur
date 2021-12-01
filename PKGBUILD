@@ -3,7 +3,7 @@
 _pkgname=edalize
 pkgname=python-$_pkgname
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An abstraction library for interfacing EDA tools'
 arch=('any')
 url='https://github.com/olofk/edalize'
