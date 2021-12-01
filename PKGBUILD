@@ -2,7 +2,7 @@
 _base=mplx
 pkgname=python-${_base}
 pkgdesc="Extensions for Matplotlib"
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -11,7 +11,7 @@ depends=(python-networkx)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0771206c00f53a04edd1cc00841e42873c052ce54491d158ffd94a9bc2553966e7dbd368b4c5a436113e24751fdaf4418b43864d6d1bed2659fc6d689b616901')
+sha512sums=('ef943b2d139a8ccfe657f0ad1e2ed98e8f988a7cbe6a4be15956e938e1d4fba8b8287fbf5d6034a974f9284013f61a2ed6a3d5bd51b7beed9d403593dcb14e4d')
 
 build() {
   cd "${_base}-${pkgver}"
