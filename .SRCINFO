@@ -1,11 +1,10 @@
 pkgbase = r-corrplot
 	pkgdesc = Visualization of a Correlation Matrix
-	pkgver = 0.90
+	pkgver = 0.92
 	pkgrel = 1
 	url = https://cran.r-project.org/package=corrplot
 	arch = any
-	license = GPL2
-	license = GPL3
+	license = MIT
 	depends = r
 	optdepends = r-seriation
 	optdepends = r-knitr
@@ -14,7 +13,7 @@ pkgbase = r-corrplot
 	optdepends = r-magrittr
 	optdepends = r-prettydoc
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/corrplot_0.90.tar.gz
-	sha256sums = d9871f219351f443f879ae93c45e3a364eb32cc6f41491a801e7b8a91e96d5dd
+	source = https://cran.r-project.org/src/contrib/corrplot_0.92.tar.gz
+	sha256sums = e8c09f963f9c4837036c439ebfe00fa3a6e462ccbb786d2cf90850ddcd9428bd
 
 pkgname = r-corrplot
