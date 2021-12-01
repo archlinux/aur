@@ -2,7 +2,7 @@
 
 pkgname=python-expects
 pkgver=0.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Expressive and extensible TDD/BDD assertion library for Python"
 arch=('any')
 license=('Apache')
