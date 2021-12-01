@@ -2,7 +2,7 @@
 
 pkgname=python-glob2
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Version of the glob module that can capture patterns and supports recursive wildcards"
 url="https://github.com/miracle2k/glob2"
 license=('BSD')
