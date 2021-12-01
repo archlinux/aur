@@ -1,4 +1,4 @@
 /ncbi-genome-download-*.tar.gz
-/*.pkg.tar.xz
+/*.pkg.tar.*
 /src
 /pkg

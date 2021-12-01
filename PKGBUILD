@@ -2,7 +2,7 @@
 
 _reponame=ncbi-genome-download
 pkgname=python-ncbi-genome-download
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Scripts to download genomes from the NCBI FTP servers"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/kblin/ncbi-genome-download"
 license=('Apache')
 depends=('python' 'python-setuptools' 'python-appdirs' 'python-requests')
 source=(ncbi-genome-download-$pkgver.tar.gz::https://github.com/kblin/ncbi-genome-download/archive/$pkgver.tar.gz)
-sha512sums=('5bcd6e0d731bc4bb6792821dc6d233e2f7acac6ee6819ddd14014a881d475c43ad084ff000d78e12fc2528d179be0e3db076fbe15da4b83dc6815c37c188ab61')
+sha512sums=('2364ef1945276e8c594aefd9613688a3cbfa54c8e68c819849853d8073525ec029d68b7e11a54830ad63219a3c5c6ddfdcf1ab7341caf9e0952a67f0b730616b')
 
 build() {
   cd "${srcdir}"/${_reponame}-$pkgver
