@@ -14,8 +14,8 @@ _rel=1
 pkgver=${_pkgver}.${_channel}
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
-url="https://www.mullvad.net"
 arch=('x86_64')
+url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
 makedepends=('cargo' 'git' 'go' 'npm')
@@ -40,8 +40,8 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
 
 prepare() {
   cd "$srcdir/mullvadvpn-app"
-  git submodule init dist-assets/binaries
-  git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
+  git submodule init
+  git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
   git submodule update
 
   # Disable building of rpm
