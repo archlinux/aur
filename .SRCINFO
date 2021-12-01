@@ -1,0 +1,17 @@
+pkgbase = python-ummalqura
+	pkgdesc = Python Hijri Ummalqura
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/borni-dhifi/ummalqura
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-ummalqura-2.0.tar.gz::https://files.pythonhosted.org/packages/source/u/ummalqura/ummalqura-2.0.tar.gz
+	sha256sums = bd09af4166e7af5bfd8db90a51db4602a2e0b08e8d56edb46f3b5c010743d4ee
+
+pkgname = python-ummalqura
+	depends = python
+
+pkgname = python2-ummalqura
+	depends = python2
