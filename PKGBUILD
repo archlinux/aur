@@ -11,7 +11,7 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.76.0
-pkgrel=3
+pkgrel=4
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('x86_64')
@@ -19,12 +19,17 @@ url="https://www.boost.org/"
 license=('custom')
 makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
 source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.gz
+        $pkgname-boost_install-python310.patch::https://github.com/boostorg/boost_install/commit/e193f080c7d2.patch
         $pkgname-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
 sha256sums=('7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca'
+            '550ad9a4d0afa108bb9f2e2b7f53b548618542db8000e2334261f6fe03850d87'
             'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
 
 prepare() {
   cd $_srcname
+
+  # https://github.com/boostorg/boost_install/pull/53
+  patch -Np1 -d tools/boost_install <../$pkgname-boost_install-python310.patch
 
   # https://github.com/boostorg/ublas/pull/97
   patch -Np2 -i ../$pkgname-ublas-c++20-iterator.patch
