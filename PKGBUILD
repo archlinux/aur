@@ -3,7 +3,7 @@
 _pkgname=ipyxact
 pkgname=python-$_pkgname
 pkgver=0.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Python-based IP-XACT parser'
 arch=('any')
 url='https://github.com/olofk/ipyxact'
