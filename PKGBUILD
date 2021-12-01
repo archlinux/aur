@@ -2,7 +2,7 @@
 
 pkgname='python-doublex-expects'
 pkgver=0.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Expects matchers for Doublex test doubles assertions"
 arch=('any')
 license=('Apache')
