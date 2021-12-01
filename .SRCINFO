@@ -1,14 +1,13 @@
 pkgbase = hsinstall
 	pkgdesc = Deploy Haskell software for installation
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/dino-/hsinstall
 	arch = x86_64
 	license = ISC
 	depends = fuse2
 	options = !strip
-	source = https://github.com/dino-/hsinstall/releases/download/2.6/hsinstall-2.6-x86_64.AppImage
-	sha256sums = 166be24af97ee95d0a77609bd9464a6459155e7658b52997fbe099d113b00476
+	source = https://github.com/dino-/hsinstall/releases/download/2.7/hsinstall-2.7-x86_64.AppImage
+	sha256sums = 02bf12636c8639dc067786d56bbcc9b69385889999a023850578f02935a06284
 
 pkgname = hsinstall
-

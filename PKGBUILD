@@ -1,7 +1,7 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=hsinstall
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc='Deploy Haskell software for installation'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 options=(!strip)
 source=("https://github.com/dino-/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-${arch}.AppImage")
 
-sha256sums=('166be24af97ee95d0a77609bd9464a6459155e7658b52997fbe099d113b00476')
+sha256sums=('02bf12636c8639dc067786d56bbcc9b69385889999a023850578f02935a06284')
 
 
 # PKGBUILD functions
