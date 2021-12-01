@@ -1,25 +1,22 @@
-From da872dd50dcccbb2e7b176c24b17a2cc88fe3e13 Mon Sep 17 00:00:00 2001
+From c0a03910971a066c3b8f92f5a169e5a82d09fbae Mon Sep 17 00:00:00 2001
 From: Tilmann Meyer <allescrafterx@gmail.com>
 Date: Fri, 17 Apr 2020 02:12:23 +0200
 Subject: [PATCH 1/2] Fix mingw-w64 build
 
 ---
- CMakeLists.txt                 | 35 ++++++++++++++++-------------
- cmake/install.cmake            |  4 ++--
- cmake/symlink.cmake            |  2 +-
- include/ma_global.h            |  4 ++--
- include/mysql.h                |  6 +----
- include/mysql/client_plugin.h  |  2 +-
- libmariadb/CMakeLists.txt      | 40 ++++++++++++++++++----------------
- plugins/auth/CMakeLists.txt    |  2 +-
- plugins/auth/caching_sha2_pw.c |  2 +-
- plugins/auth/ed25519.c         |  2 +-
- plugins/auth/sha256_pw.c       |  4 ++--
- plugins/io/CMakeLists.txt      |  2 +-
- 12 files changed, 54 insertions(+), 51 deletions(-)
+ CMakeLists.txt                | 35 +++++++++++++++++-------------
+ cmake/install.cmake           |  4 ++--
+ cmake/symlink.cmake           |  2 +-
+ include/ma_global.h           |  4 ++--
+ include/mysql.h               |  6 +-----
+ include/mysql/client_plugin.h |  2 +-
+ libmariadb/CMakeLists.txt     | 40 ++++++++++++++++++-----------------
+ plugins/auth/CMakeLists.txt   |  2 +-
+ plugins/io/CMakeLists.txt     |  2 +-
+ 9 files changed, 50 insertions(+), 47 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 63c2066..1c01b6a 100644
+index b03b546..7c8a362 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -3,6 +3,9 @@
@@ -58,7 +55,7 @@ index 63c2066..1c01b6a 100644
  ###############
  
  INCLUDE(${CC_SOURCE_DIR}/cmake/misc.cmake)
-@@ -224,14 +223,20 @@ IF(UNIX)
+@@ -244,14 +243,20 @@ IF(UNIX)
    SET(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
      ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
    SET(SYSTEM_LIBS ${SYSTEM_LIBS} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
@@ -179,10 +176,10 @@ index 72939d2..77e4538 100644
                    int argc, ...);
  
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index cf96b9e..949803e 100644
+index 2bf85f2..bd0b11a 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
-@@ -390,7 +390,7 @@ ENDIF()
+@@ -393,7 +393,7 @@ ENDIF()
  FILE(WRITE ${CC_BINARY_DIR}/manpages.list "${MARIADB_LIB_SYMBOLS};${MYSQL_LIB_SYMBOLS}")
  
  IF(WIN32)
@@ -191,7 +188,7 @@ index cf96b9e..949803e 100644
                     "FILE_TYPE:VFT_DLL"
                     "SOURCE_FILE:libmariadb/libmariadb.c"
                     "ORIGINAL_FILE_NAME:libmariadb.dll"
-@@ -402,30 +402,28 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
+@@ -405,30 +405,28 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
  TARGET_LINK_LIBRARIES(mariadbclient ${SYSTEM_LIBS})
  
  IF(UNIX)
@@ -231,7 +228,7 @@ index cf96b9e..949803e 100644
  
  #
  # Installation
-@@ -437,8 +435,8 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
+@@ -440,8 +438,8 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
  # use mariadb client library we provide libmysql symlinks
  
  IF(WITH_MYSQLCOMPAT)
@@ -242,7 +239,7 @@ index cf96b9e..949803e 100644
    IF(NOT CMAKE_SYSTEM_NAME MATCHES AIX)
      create_symlink(libmysqlclient${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
      create_symlink(libmysqlclient_r${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
-@@ -446,7 +444,7 @@ IF(WITH_MYSQLCOMPAT)
+@@ -449,7 +447,7 @@ IF(WITH_MYSQLCOMPAT)
  ENDIF()
  
  
@@ -251,7 +248,7 @@ index cf96b9e..949803e 100644
   ${CPACK_PACKAGE_VERSION_MAJOR}
   SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR})
  
-@@ -456,15 +454,19 @@ ENDIF()
+@@ -459,15 +457,19 @@ ENDIF()
  
  INSTALL(TARGETS mariadbclient
            COMPONENT Development
@@ -276,7 +273,7 @@ index cf96b9e..949803e 100644
             COMPONENT Development)
  ENDIF()
 diff --git a/plugins/auth/CMakeLists.txt b/plugins/auth/CMakeLists.txt
-index 0e3b547..d9aca9b 100644
+index e5448f8..ae2cf27 100644
 --- a/plugins/auth/CMakeLists.txt
 +++ b/plugins/auth/CMakeLists.txt
 @@ -4,7 +4,7 @@ INCLUDE_DIRECTORIES(${AUTH_DIR})
@@ -285,57 +282,9 @@ index 0e3b547..d9aca9b 100644
  SET(CRYPTO_PLUGIN 1)
 -IF(WIN32)
 +IF(WIN32 AND NOT MINGW)
+   ADD_DEFINITIONS(-DHAVE_WINCRYPT)
    SET(CRYPT_SOURCE ${CC_SOURCE_DIR}/libmariadb/secure/win_crypt.c)
    SET(CRYPT_LIBS crypt32 bcrypt)
- ELSEIF(WITH_SSL STREQUAL "OPENSSL")
-diff --git a/plugins/auth/caching_sha2_pw.c b/plugins/auth/caching_sha2_pw.c
-index 22154a8..6715f55 100644
---- a/plugins/auth/caching_sha2_pw.c
-+++ b/plugins/auth/caching_sha2_pw.c
-@@ -20,7 +20,7 @@
- #define _GNU_SOURCE 1
- #endif
- 
--#ifdef _WIN32
-+#if defined(_WIN32) && !(defined(__MINGW32__) || defined(__MINGW64__))
- #define HAVE_WINCRYPT
- #undef HAVE_OPENSSL
- #undef HAVE_GNUTLS
-diff --git a/plugins/auth/ed25519.c b/plugins/auth/ed25519.c
-index 918b8ba..4c63820 100644
---- a/plugins/auth/ed25519.c
-+++ b/plugins/auth/ed25519.c
-@@ -20,7 +20,7 @@
- #define _GNU_SOURCE 1
- #endif
- 
--#ifdef _WIN32
-+#if defined(_WIN32) && !(defined(__MINGW32__) || defined(__MINGW64__))
- #define HAVE_WINCRYPT
- #undef HAVE_OPENSSL
- #undef HAVE_GNUTLS
-diff --git a/plugins/auth/sha256_pw.c b/plugins/auth/sha256_pw.c
-index a3b5ec3..45da225 100644
---- a/plugins/auth/sha256_pw.c
-+++ b/plugins/auth/sha256_pw.c
-@@ -20,7 +20,7 @@
- #define _GNU_SOURCE 1
- #endif
- 
--#ifdef _WIN32
-+#if defined(_WIN32) && !(defined(__MINGW32__) || defined(__MINGW64__))
- #undef HAVE_GNUTLS
- #undef HAVE_OPENSSL
- #define HAVE_WINCRYPT
-@@ -42,7 +42,7 @@
- #include <dlfcn.h>
- #endif
- 
--#if defined(WIN32)
-+#if defined(WIN32) && !(defined(__MINGW32__) || defined(__MINGW64__))
- #include <wincrypt.h>
- #elif defined(HAVE_OPENSSL)
- #include <openssl/rsa.h>
 diff --git a/plugins/io/CMakeLists.txt b/plugins/io/CMakeLists.txt
 index 8c304c9..e2e9c5a 100644
 --- a/plugins/io/CMakeLists.txt
@@ -349,5 +298,5 @@ index 8c304c9..e2e9c5a 100644
    ENDIF()
  ENDIF()
 -- 
-2.33.1
+2.34.1
 
