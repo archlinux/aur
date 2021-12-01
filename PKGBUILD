@@ -1,138 +1,135 @@
-# Maintainer: John Andrews <theunderdog09 at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
-
 pkgname=mullvad-vpn-cli
-pkgver=2021.4
+pkgver=2021.6
 pkgrel=1
-pkgdesc="The Mullvad VPN client cli"
-url="https://www.mullvad.net"
+pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
+url="https://www.mullvad.net"
 license=('GPL3')
-depends=('nss' 'iputils')
-makedepends=('git' 'rust' 'go')
-optdepends=('networkmanager: create Wireguard interface')
-conflicts=('mullvad-vpn')
-provides=('mullvad-vpn')
-install="${pkgname}.install"
-_commit='3a236d50fd1ffb67cd3d29fbfc31393cdf03a224'
+depends=('dbus' 'iputils')
+makedepends=('cargo' 'git' 'go')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+install="${pkgname%-*}.install"
+_commit=19a97997b188855d0ba5aedb7419683df45d93bc
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
-#        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed" # unverified commit by mvd-ows
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}"
-        'override.conf'
-        )
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
+        'override.conf')
 sha256sums=('SKIP'
             'SKIP'
             'ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
-              # Linus Färnstrand (code signing key) <linus at mullvad dot net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
-              # David Lönnhager (code signing) <david dot l at mullvad dot net>
+              # Linus Färnstrand (code signing key) <linus@mullvad.net>
+              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
+              # David Lönnhager (code signing) <david.l@mullvad.net>
+              )
 
 prepare() {
-    # Point the submodule to our local copy
-    cd "${srcdir}/mullvadvpn-app"
-    git submodule init dist-assets/binaries
-    git config submodule.mullvadvpn-app-binaries.url "${srcdir}/mullvadvpn-app-binaries"
-    git submodule update
+  cd "$srcdir/mullvadvpn-app"
+  git submodule init
+  git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
+  git submodule update
 
-    echo "Removing old Rust build artifacts"
-    cargo clean --target-dir=target
+  export RUSTUP_TOOLCHAIN=stable
+  echo "Removing old Rust build artifacts"
+  cargo clean
 
-    # Prevent creation of `go` directory in user's HOME.
-    export GOPATH="$srcdir/gopath"
-    go clean -modcache
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+  # Prevent creation of a `go` directory in one's home.
+  # Sometimes this directory cannot be removed with even `rm -rf` unless
+  # one becomes root or changes the write permissions.
+  export GOPATH="$srcdir/gopath"
+  go clean -modcache
 }
 
 build() {
-    cd "$srcdir/mullvadvpn-app"
-    source env.sh ""
+  cd "$srcdir/mullvadvpn-app"
+  local RUSTC_VERSION=$(rustc --version)
+  source env.sh ""
 
-    echo "Building Mullvad VPN..."
-    echo "Building wireguard-go..."
-    pushd wireguard/libwg
-    mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
-    export GOPATH="$srcdir/gopath"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
-    popd
+  echo "Building Mullvad VPN CLI $pkgver..."
 
-    # Clean mod cache for makepkg -C
-    go clean -modcache
+  echo "Building wireguard-go..."
+  pushd wireguard/libwg
+  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
+  export GOPATH="$srcdir/gopath"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
+  popd
 
-    export MULLVAD_ADD_MANIFEST="1"
+  # Clean mod cache for makepkg -C
+  go clean -modcache
 
-    echo "Building Rust code in release mode"
+  export MULLVAD_ADD_MANIFEST="1"
 
-    # Build mullvad-daemon
-    cargo build --release --locked --target-dir=target
+  echo "Building Rust code in release mode using $RUSTC_VERSION..."
 
-    mkdir -p dist-assets/shell-completions
-    for sh in bash zsh fish; do
-        echo "Generating shell completion script for $sh..."
-        cargo run --bin mullvad --release --locked --target-dir=target \
-            -- shell-completions "$sh" dist-assets/shell-completions/
-    done
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 
-    echo "Copying binaries"
+  mkdir -p dist-assets/shell-completions
+  for sh in bash zsh fish; do
+    echo "Generating shell completion script for $sh..."
+    cargo run --bin mullvad --frozen --release -- shell-completions "$sh" \
+      dist-assets/shell-completions/
+  done
 
-    # Copy binaries for packaging
-    cp -v dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} dist-assets/
-    binaries=(mullvad
-              mullvad-daemon
-              mullvad-problem-report
-              mullvad-setup
-              mullvad-exclude
-              libtalpid_openvpn_plugin.so)
-    for binary in ${binaries[*]}; do
-        cp target/release/${binary} dist-assets/${binary}
-    done
+  echo "Copying binaries"
+  binaries=(
+    mullvad-daemon
+    mullvad
+    mullvad-problem-report
+    libtalpid_openvpn_plugin.so
+    mullvad-setup
+    mullvad-exclude
+  )
+  for binary in ${binaries[*]}; do
+    cp "target/release/$binary" "dist-assets/$binary"
+  done
 
-    echo "Updating relay list..."
-    # Update relays.json
-    cargo run --bin relay_list --release --target-dir=target > dist-assets/relays.json
+  echo "Updating relay list..."
+  cargo run --bin relay_list --frozen --release > dist-assets/relays.json
 
-    echo "Updating API address cache..."
-    cargo run --bin address_cache --release --target-dir=target > dist-assets/api-ip-address.txt
+  echo "Updating API address cache..."
+  cargo run --bin address_cache --frozen --release > dist-assets/api-ip-address.txt
 }
 
 package() {
-    cd "${srcdir}/mullvadvpn-app"
+  cd "$srcdir/mullvadvpn-app"
 
-    # Install main files
-    install --verbose --directory --mode=755 "${pkgdir}/opt/mullvad-vpn-cli"
-    cp -rav dist-assets/* "${pkgdir}/opt/mullvad-vpn-cli"
+  # Install main files
+  install -d "$pkgdir/opt/$pkgname"
+  cp -r dist-assets/* "$pkgdir/opt/$pkgname"
 
-    # Symlink daemon service to correct directory
-    install --verbose -d "${pkgdir}/usr/lib/systemd/system"
-    ln -s "/opt/mullvad-vpn-cli/linux/mullvad-daemon.service" \
-        "${pkgdir}/usr/lib/systemd/system"
+  # Symlink daemon service to correct directory
+  install -d "$pkgdir/usr/lib/systemd/system"
+  ln -s "/opt/$pkgname/linux/mullvad-daemon.service" \
+    "$pkgdir/usr/lib/systemd/system"
 
-    # Install override for daemon
-    install --verbose -D --mode=644 "${srcdir}/override.conf" -t \
-        "${pkgdir}/etc/systemd/system/mullvad-daemon.service.d"
+  # Install binaries
+  install -Dm755 dist-assets/{mullvad,mullvad-exclude} -t "$pkgdir/usr/bin"
 
-    # Install CLI binary
-    install --verbose -D --mode=755 target/release/mullvad -t "${pkgdir}/usr/bin"
+  # Link to the problem report binary
+  ln -s "/opt/$pkgname/resources/mullvad-problem-report" \
+    "$pkgdir/usr/bin/mullvad-problem-report"
 
-    # Install CLI exclude binary
-    install --verbose -D --mode=755 target/release/mullvad-exclude -t "${pkgdir}/usr/bin"
+  # Install completions
+  install -Dm755 dist-assets/shell-completions/mullvad.bash \
+    "$pkgdir/usr/share/bash-completion/completions/mullvad"
+  install -Dm755 dist-assets/shell-completions/_mullvad -t \
+    "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
+    "$pkgdir/usr/share/fish/vendor_completions.d"
 
-    # Install shell completion zsh
-    install --verbose -D --mode=644 dist-assets/shell-completions/_mullvad -t \
-        "${pkgdir}/usr/share/zsh/site-functions"
-
-    # Install shell completion bash
-    install --verbose -D --mode=644 dist-assets/shell-completions/mullvad.bash -t \
-        "${pkgdir}/usr/share/bash-completion/completions/mullvad"
-
-    # Install shell completion fish
-    install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
-        "$pkgdir/usr/share/fish/vendor_completions.d"
-
-    # Install license
-    install --verbose -D --mode=644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install override for daemon
+  install -Dm644 "$srcdir/override.conf" -t \
+    "$pkgdir/etc/systemd/system/mullvad-daemon.service.d"
 }

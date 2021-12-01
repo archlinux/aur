@@ -1,9 +1,9 @@
+# Ignore everything
 *
 
+# But not these files...
+!.gitignore
 !PKGBUILD
 !.SRCINFO
-!README.md
-!LICENSE
+!mullvad-vpn.install
 !override.conf
-!settings.json.sample
-!mullvad-vpn-cli.install
