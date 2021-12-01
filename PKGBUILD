@@ -11,10 +11,10 @@ url='https://python-hvac.org/'
 license=(Apache)
 arch=(any)
 depends=(python python-requests python-six)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools vault)
 checkdepends=(python-pytest python-authlib python-flask python-flask-sqlalchemy python-mock
               python-parameterized python-pyhcl python-requests-mock python-werkzeug python-jwcrypto
-              vault consul)
+              consul)
 optdepends=(
   'python-pyhcl: for parsing returned data'
 )
