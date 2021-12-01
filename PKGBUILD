@@ -5,7 +5,7 @@
 
 pkgname=python-tempita
 pkgver=0.5.2
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A lightweight unicode templating language"
 arch=('any')
