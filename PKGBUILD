@@ -1,18 +1,18 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=arcdps-log-manager
-pkgver=1.2.1
-_gitver=1.2.1
+pkgver=1.3.0
+_gitver=1.3.0
 pkgrel=1
 pkgdesc="Manager for Guild Wars 2 arcdps EVTC logs"
 arch=(x86_64)
 url="https://gw2scratch.com/tools/manager"
 license=(MIT)
-makedepends=(git 'dotnet-sdk>=5' 'dotnet-sdk<6' imagemagick)
-depends=(dotnet-runtime-3.1 gtk3)
+makedepends=(git 'dotnet-sdk>=6' 'dotnet-sdk<7' imagemagick)
+depends=('dotnet-runtime>=6' 'dotnet-runtime<7' gtk3)
 source=("git+https://github.com/gw2scratch/evtc.git#tag=manager-v$_gitver"
         "$pkgname.desktop")
-sha256sums=(SKIP
-            ed093835a12ef648e9f19035faca91db0e18c89837e66f44e4e6e81980ac5bce)
+sha256sums=('SKIP'
+            'ed093835a12ef648e9f19035faca91db0e18c89837e66f44e4e6e81980ac5bce')
 
 build () {
     cd "$srcdir/evtc/ArcdpsLogManager.Gtk"
@@ -23,7 +23,7 @@ build () {
 
 package () {
     install -d "$pkgdir/opt/" "$pkgdir/usr/bin/"
-    cp -Rl "$srcdir/evtc/ArcdpsLogManager.Gtk/bin/Release"/*app*/ \
+    cp -Rl "$srcdir/evtc/ArcdpsLogManager.Gtk/bin/Release"/net*/ \
         "$pkgdir/opt/$pkgname"
     ln -s "/opt/$pkgname/GW2Scratch.ArcdpsLogManager.Gtk" \
         "$pkgdir/usr/bin/$pkgname"
