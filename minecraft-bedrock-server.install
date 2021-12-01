@@ -1,0 +1,5 @@
+post_upgrade() {
+    echo ":: Minecraft Bedrock Server has been updated to v1.18"
+    echo "   If you see permission errors above, please run:"
+    echo "   sudo chmod -R 755 /opt/minecraft-bedrock-server"
+}
