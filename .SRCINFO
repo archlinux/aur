@@ -25,6 +25,6 @@ pkgbase = quickemu
 	provides = quickemu
 	conflicts = quickemu
 	source = quickemu-2.3.2.tar.gz::https://github.com/wimpysworld/quickemu/archive/refs/tags/2.3.2.tar.gz
-	md5sums = 4642635189d793c696b8ccf92c9d9076
+	sha256sums = b1319b5edf7432fbe45258c39997d17b87f714f439249c6057342c9afd37a50c
 
 pkgname = quickemu

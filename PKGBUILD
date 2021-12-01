@@ -11,7 +11,7 @@ optdepends=('quickgui: graphical user interface')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/wimpysworld/quickemu/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('a6850b0cbff99b488caf0b0335627afc')
+sha256sums=('b1319b5edf7432fbe45258c39997d17b87f714f439249c6057342c9afd37a50c')
 
 package() {
   cd "$pkgname-$pkgver"
