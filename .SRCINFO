@@ -1,21 +1,18 @@
 pkgbase = purple-facebook-git
-	pkgdesc = A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook Messenger protocol
-	pkgver = v0.9.6.r4.g106d7ac
+	pkgdesc = Facebook protocol plugin for libpurple
+	pkgver = 0.9.6.r8.g1a6711f
 	pkgrel = 1
 	url = https://github.com/dequis/purple-facebook/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = mercurial
-	makedepends = autoconf
 	makedepends = git
 	depends = libpurple
 	depends = json-glib
-	depends = zlib
 	provides = purple-facebook
 	conflicts = purple-facebook
-	source = purple-facebook::git+https://github.com/jgeboski/purple-facebook
+	source = purple-facebook::git+https://github.com/dequis/purple-facebook
 	sha512sums = SKIP
 
 pkgname = purple-facebook-git
-

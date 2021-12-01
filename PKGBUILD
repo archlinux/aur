@@ -1,26 +1,24 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: McLenin <mclenin at gooogles email>
 
 pkgname=purple-facebook-git
 _gitname="purple-facebook"
 pkgrel=1
-pkgver=v0.9.6.r4.g106d7ac
-pkgdesc="A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook 
-Messenger protocol"
+pkgver=0.9.6.r8.g1a6711f
+pkgdesc='Facebook protocol plugin for libpurple'
 url="https://github.com/dequis/purple-facebook/"
 arch=('i686' 'x86_64')
-depends=(libpurple json-glib zlib)
-makedepends=(mercurial autoconf git)
+depends=(libpurple json-glib)
+makedepends=(mercurial git)
 license=('GPL2')
 provides=('purple-facebook')
 conflicts=('purple-facebook')
-source=('purple-facebook::git+https://github.com/jgeboski/purple-facebook'
-)
+source=('purple-facebook::git+https://github.com/dequis/purple-facebook')
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -32,5 +30,5 @@ build() {
 
 package() {
   cd "$_gitname"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
