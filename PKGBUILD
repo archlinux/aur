@@ -38,7 +38,9 @@ build() {
 package() {
   cd build
   make DESTDIR="${pkgdir}" install
-
+  # Move icons theme and wallpapers to resolve conflicts with Breath & Breath Legacy themes
+  mv -f ${pkgdir}/usr/share/icons/breath ${pkgdir}/usr/share/icons/breath-classic
+  mv -f ${pkgdir}/usr/share/icons/breath-dark ${pkgdir}/usr/share/icons/breath-classic-dark
   mv -f ${pkgdir}/usr/share/wallpapers/Breath ${pkgdir}/usr/share/wallpapers/BreathClassic
   sed -i 's/Breath/Breath Classic/g' ${pkgdir}/usr/share/wallpapers/BreathClassic/metadata.desktop
 }
