@@ -6,7 +6,7 @@
 
 pkgname='python-typed-argument-parser'
 _name=${pkgname#python-}
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Typed modernization of Python's argparse library"
 arch=('any')
