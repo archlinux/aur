@@ -14,6 +14,7 @@ pkgbase = libldap24
 	makedepends = libsodium
 	depends = libsasl
 	depends = e2fsprogs
+	provides = libldap=2.4.59
 	options = !makeflags
 	options = emptydirs
 	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.59.tgz

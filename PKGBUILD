@@ -10,6 +10,7 @@ license=('custom')
 makedepends=('libtool' 'libsasl' 'e2fsprogs' 'util-linux' 'chrpath' 'unixodbc' 'libsodium')
 depends=('libsasl' 'e2fsprogs')
 options=('!makeflags' 'emptydirs')
+provides=(libldap=${pkgver})
 source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz{,.asc})
 sha256sums=('99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34'
             'SKIP')
