@@ -12,19 +12,21 @@ source=("git+https://github.com/qca/open-plc-utils#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
-	echo r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
+  cd $pkgname
+  echo r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
 }
 
 build() {
-	cd $pkgname
-	make
+  cd $pkgname
+  make
 }
 
 package() {
-	cd $pkgname
-	make ROOTFS="$pkgdir" BIN="$pkgdir"/usr/bin install manuals
-	mv "$pkgdir"/usr/bin/amptest{,.plc}
-	mv "$pkgdir"/usr/bin/pev{,.plc}
-	install -D -m 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd $pkgname
+  make ROOTFS="$pkgdir" BIN="$pkgdir"/usr/bin install manuals
+  mv "$pkgdir"/usr/bin/amptest{,.plc}
+  mv "$pkgdir"/usr/bin/pev{,.plc}
+  install -D -m 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+# vim: ts=2:sw=2:et:
