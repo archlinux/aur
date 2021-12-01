@@ -4,18 +4,18 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=memoise
-_cranver=2.0.0
+_cranver=2.0.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Cache the results of a function so that when you call it again with the same arguments it returns the pre-computed value"
+pkgdesc="'Memoisation' of Functions"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r 'r-rlang>=0.4.10' r-cachem)
 optdepends=(r-digest r-aws.s3 r-covr r-googleauthr r-googlecloudstorager r-httr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('ff9ae3a1a95ad6271d98e6eca016768b790e44bd613356b8e86b685aefd9ecaf')
+sha256sums=('f85034ee98c8ca07fb3cd826142c1cd1e1e5747075a94c75a45783bbc4fe2deb')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
