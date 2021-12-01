@@ -1,0 +1,22 @@
+pkgbase = cs-firewall-bouncer
+	pkgdesc = The firewall bouncer will fetch new and old decisions from a CrowdSec API to add them in a blocklist used by supported firewalls.
+	pkgver = 0.0.17
+	pkgrel = 7
+	url = https://crowdsec.net
+	install = cs-firewall-bouncer.install
+	arch = any
+	license = MIT
+	makedepends = libnewt
+	makedepends = go
+	depends = crowdsec
+	provides = cs-firewall-bouncer
+	source = cs-firewall-bouncer-source.tgz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/refs/tags/v0.0.17.tar.gz
+	source = cs-firewall-bouncer.install
+	source = install.sh.patch
+	source = Makefile.patch
+	sha256sums = 53af239b86c6b554da3711e3686d7d3036d33b2e561bfb00e195b6c8a06918c8
+	sha256sums = f68cba127a9db82f2ee1f36a47bd8076d2192b925982da03339f75b53601e326
+	sha256sums = 7639c8b37eeb2bc14c3814579f20fb2e23975f44e3e3ea32426d29975776b742
+	sha256sums = b5007048a796fd59ec70f290cdac17e602e18aefa35de90cadab012e4a9b09d6
+
+pkgname = cs-firewall-bouncer

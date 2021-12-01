@@ -1,0 +1,11 @@
+--- install.sh	2021-11-30 14:43:17.878132550 -0500
++++ arch-install.sh	2021-11-30 14:46:14.478577902 -0500
+@@ -18,6 +18,8 @@
+         PKG="yum"
+     elif [ -f /etc/debian_version ]; then
+         PKG="apt"
++    elif [ -f /etc/arch-release ]; then
++        PKG="pacman"
+     else
+         echo "Distribution is not supported, exiting."
+         exit

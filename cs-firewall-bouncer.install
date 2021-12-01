@@ -1,0 +1,46 @@
+post_install() {
+	echo "Running cs-firewall-bouncer installation script"
+	cd /var/lib/crowdsec/installers/cs-firewall-bouncer
+	sh ./install.sh 
+	echo  -ne "\n"
+	echo "cs-firewall-bouncer installer files have been saved to /var/lib/crowdsec/installers"
+	echo "It's recommended to keep these in place for proper package removal"
+}
+
+post_upgrade() {
+	echo "Running cs-firewall-bouncer upgrade script"
+	cd /var/lib/crowdsec/installers/cs-firewall-bouncer
+	sh ./upgrade.sh 
+}
+pre_install(){
+	echo " Check for existing cs-firewall-bouncer installations"
+	#
+        # This is necessary in order to successfully install the bouncer.
+        # The install script will create multiple configurations and 
+	# that isn't needed. 	
+	#
+	INSTANCES="`cscli bouncers list | grep cs-firewall-bouncer | awk '{print $1}'`"
+	if [[ ${#INSTANCES[@]} != 0 ]]; then
+		echo "Error: cscli reports existing iptables bouncer"
+		echo "Please remove that before continuing package install"
+	       	exit 2
+	fi
+}
+
+pre_remove(){
+	echo "Removing cs-firewall-bouncer installation"
+	#
+        # This is necessary in order to successfully uninstall crowdsec. 
+	# If bouncers are not removed then crowdsec uninstall will fail
+	#
+	for i in `sudo cscli bouncers list | grep cs-firewall-bouncer | awk '{print $1}'`
+	do 
+	   cscli bouncers delete $i
+	done
+	#
+        # Run the official uninstall script
+	#
+	cd /var/lib/crowdsec/installers/cs-firewall-bouncer
+	sh ./uninstall.sh
+}
+
