@@ -1,0 +1,22 @@
+post_install() {
+	cd /var/lib/crowdsec/installers/crowdsec
+	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --install --unattended
+	echo  -ne "\n"
+	echo "Crowdsec installer files have been saved to /var/lib/crowdsec/installer"
+	echo "It's recommended to keep these in place for proper package removal"
+}
+
+post_upgrade() {
+	cd /var/lib/crowdsec/installers/crowdsec
+	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --upgrade --unattended
+	echo -ne "\n"
+	echo "Crowdsec installer files have been saved to /var/lib/crowdsec/installer"
+	echo "It's recommended to keep these in place for proper package removal"
+}
+
+pre_remove(){
+	echo "Removing CrowdSec installation"
+	cd /var/lib/crowdsec/installers/crowdsec
+	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --uninstall
+}
+
