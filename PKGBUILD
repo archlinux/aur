@@ -1,7 +1,7 @@
 _phpbase=72
 pkgname=php72-xdebug
 _extname=xdebug
-pkgver=2.9.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Xdebug is an extension for PHP to assist with debugging and development"
 arch=("x86_64")
@@ -17,10 +17,6 @@ build() {
     phpize${_phpbase}
     ./configure
     make
-
-    cd "$srcdir/$_extname-$pkgver/debugclient"
-    ./configure --prefix=/usr
-    make
 }
 
 package() {
@@ -30,7 +26,6 @@ package() {
     echo ";zend_extension=$_extname.so" > "$pkgdir/etc/php${_phpbase}/conf.d/$_extname.ini"
     chmod 0644 "$pkgdir/etc/php${_phpbase}/conf.d/$_extname.ini"
     install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config${_phpbase} --extension-dir)/$_extname.so"
-    install -m0755 -D "$srcdir/$_extname-$pkgver/debugclient/debugclient" "$pkgdir/usr/bin/debugclient${_phpbase}"
 }
 
-md5sums=('8b8ca211cb7053c19aec2dbde4ab5ffa')
+md5sums=('3c2473656fb9aec8efd6b90ef6c45a66')
