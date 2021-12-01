@@ -1,13 +1,13 @@
 pkgbase = r-exact
 	pkgdesc = Unconditional Exact Test
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Exact
 	arch = any
 	license = GPL2
 	depends = r>=3.5.0
 	depends = r-rootsolve
-	source = https://cran.r-project.org/src/contrib/Exact_3.0.tar.gz
-	sha256sums = a76114e9780c86e4ea0a561300db024b95af9b0ebb6c3bf9a7598d276d009529
+	source = https://cran.r-project.org/src/contrib/Exact_3.1.tar.gz
+	sha256sums = d67f5c71b1209bea655d1e8d7530fa72359e0bcac25312551524501d0287e3cf
 
 pkgname = r-exact
