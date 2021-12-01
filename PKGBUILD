@@ -1,8 +1,8 @@
 _phpbase=72
 pkgname=php72-imagick
 _extname=imagick
-pkgver=3.4.4
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc="PHP extension for IMagick"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/${_extname}"
@@ -26,4 +26,4 @@ package() {
   echo "extension=${_extname}.so" > "${_extname}.ini"
   install -D -m644 "${_extname}.ini" "${pkgdir}/etc/php${_phpbase}/conf.d/${_extname}.ini"
 }
-md5sums=('6d3a7048ab73b0fab931f28c484dbf76')
+md5sums=('f7b5e9b23fb844e5eb035203d316bc63')
