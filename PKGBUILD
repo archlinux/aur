@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT')
 url='https://github.com/carsongee/pytest-pylint'
 depends=('python-pytest' 'python-pylint' 'python-toml')
-makedepends=('python-pytest-flake8')
+makedepends=('python-pytest-flake8' 'python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carsongee/pytest-pylint/archive/v$pkgver.tar.gz")
 sha512sums=('a0716104d288774d4c3ab596f30a33cf439df5031647912574c31eefc3a84e69e82fc362f77e73b437c7566a596d2ff8bf51a332626a7fa7468cea3b916e9ad9')
 
