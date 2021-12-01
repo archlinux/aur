@@ -6,7 +6,7 @@ pkgname=python-$_pkgname
 pkgver=1.0
 # git rev-parse v1.0.0.sig
 _tag=8040a603b5281cdc5876aa4b0c771f30fe60de62
-pkgrel=1
+pkgrel=2
 pkgdesc='Python implementation of JWK, JWS, JWE specifications'
 arch=(any)
 url='https://github.com/latchset/jwcrypto'
