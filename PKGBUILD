@@ -2,7 +2,7 @@
 # Contributor: Charlie Wolf <charlie at wolf dot is>
 
 pkgname=pushpin
-pkgver=1.33.1
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="Reverse proxy for realtime web services"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('AGPL')
 depends=("qt5-base" "zeromq" "zurl" "mongrel2")
 makedepends=("cargo" "qt5-base" "zeromq")
 source=("https://github.com/fanout/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2" "$pkgname.service")
-sha256sums=('37b8ed8a262492e86fd02fe55c3b6f280cff2da718400ce926b5480745cec4a4'
+sha256sums=('b6142650bccbc766d98782ce6489b62cf0f7d6e30784fa0b02ffa5307184d572'
             '4883656bed6873853a901a6017c9ebc557260cec690cbdb8231458a9dc33a686')
 
 build() {
