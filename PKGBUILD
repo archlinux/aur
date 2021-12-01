@@ -1,6 +1,6 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=cpplog-git
-pkgver=20150430
+pkgver=20211201
 pkgrel=1
 pkgdesc="A simple, header-only, MIT-licensed C++ logging library."
 arch=('i686' 'x86_64')
@@ -48,6 +48,7 @@ build() {
 # Create the package
 package() {
     cd "${srcdir}/${_builddir}"
-
     make --silent DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/cpplog"
+    install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/cpplog/LICENSE
 }
