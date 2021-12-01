@@ -3,7 +3,7 @@
 pkgname=aliyunpan-liupan1890
 url="https://github.com/liupan1890/aliyunpan"
 pkgrel=1
-pkgver=2.11.28
+pkgver=2.11.29
 pkgdesc="阿里云盘小白羊版 阿里云盘PC版"
 arch=("x86_64")
 license=("None")
@@ -14,7 +14,7 @@ source=(
 #       "https://github.com/liupan1890/aliyunpan/releases/download/v${pkgver}/Linux.v${pkgver}.zip"
         'aliyunpan-liupan1890.svg'
         'aliyunpan-liupan1890.desktop')
-sha256sums=('5e4aca0544b58eab43acab042daa61d2f1f3c35002721ed4e469cfaf8daf2d18'
+sha256sums=('05085e46fa2cf197d4328da372fedfe46c7180bd140913c7382fe1bf6ed8baa6'
             'd2601a3d659348395a853ff3659a664b464dd82a841c0ee51462d2446d054cf4'
             'd66ea764845bf3f7619d447aef33c78b2b06470c855941f337d2b37e6de5a347')
 options=()
