@@ -1,5 +1,5 @@
-pkgname=php81-mcrypt
-_phpbase=80
+_phpbase=81
+pkgname=php${_phpbase}-mcrypt
 pkgver=1.0.4
 pkgrel=1
 pkgdesc="php${_phpbase} bindings for the unmaintained libmcrypt. For compat purposes"

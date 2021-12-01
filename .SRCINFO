@@ -1,5 +1,5 @@
 pkgbase = php81-mcrypt
-	pkgdesc = php80 bindings for the unmaintained libmcrypt. For compat purposes
+	pkgdesc = php81 bindings for the unmaintained libmcrypt. For compat purposes
 	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://pecl.php.net/package/mcrypt
