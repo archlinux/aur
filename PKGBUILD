@@ -4,7 +4,7 @@
 _pkgname=PyBrowserID
 pkgname=python-browserid
 pkgver=0.14.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Python client library for the BrowserID protocol'
 arch=('any')
 url='https://github.com/mozilla/PyBrowserID'
