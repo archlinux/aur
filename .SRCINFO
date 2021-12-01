@@ -1,0 +1,18 @@
+pkgbase = python-sklearn-onnx
+	pkgdesc = Convert scikit-learn models and pipelines to ONNX
+	pkgver = 1.10.3
+	pkgrel = 1
+	url = https://github.com/onnx/sklearn-onnx
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-onnx
+	depends = python-protobuf
+	depends = python-scikit-learn
+	depends = python-onnxconverter-common
+	source = sklearn-onnx-1.10.3.tar.gz::https://github.com/onnx/sklearn-onnx/archive/refs/tags/1.10.3.tar.gz
+	sha256sums = df792aa8198eda399eaae7f99fca15365066f344dc352557303dc913bf1a2028
+
+pkgname = python-sklearn-onnx
