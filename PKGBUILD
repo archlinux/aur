@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=arti
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="An implementation of Tor in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('sqlite' 'openssl' 'xz')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgname-v$pkgver/$pkgname-$pkgname-v$pkgver.tar.gz")
-sha256sums=('a35f53f056220818d0f8ce82f1640e81106a1fdab4170e583abebad320f68ad5')
+sha256sums=('aff46ead2391ca7b7b2aa9c4ee64b83ec7bff3446afe8cc1fd1b249b7896b7a1')
 
 prepare() {
   mv "$pkgname-$pkgname-v$pkgver" "$pkgname-$pkgver"
@@ -21,7 +21,6 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  sed -n '/This code/,/ conditions./p' README.md > LICENSE
   cargo build --release --frozen
 }
 
@@ -34,5 +33,5 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
