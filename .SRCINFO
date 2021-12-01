@@ -1,0 +1,23 @@
+pkgbase = elektroid-git
+	pkgdesc = GNU/Linux transfer application for Elektron devices
+	pkgver = 2.0.beta.r101.ge94eb07
+	pkgrel = 1
+	url = https://github.com/dagargo/elektroid
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = gtk3
+	depends = alsa-lib
+	depends = libpulse
+	depends = libsndfile
+	depends = libsamplerate
+	depends = zlib
+	depends = json-glib
+	depends = libzip
+	provides = elektroid
+	conflicts = elektroid
+	source = git+https://github.com/dagargo/elektroid.git
+	sha256sums = SKIP
+
+pkgname = elektroid-git
