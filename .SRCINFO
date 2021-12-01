@@ -1,6 +1,6 @@
 pkgbase = helvum-git
 	pkgdesc = GTK-based patchbay for pipewire, inspired by the JACK tool catia
-	pkgver = 0.1.0.r13.g3fccff0
+	pkgver = 0.3.2.115.gc1ec56e
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/ryuukyu/helvum
 	arch = x86_64
