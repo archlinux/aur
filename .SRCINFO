@@ -6,8 +6,8 @@ pkgbase = open-plc-utils
 	arch = i686
 	arch = x86_64
 	license = custom:Clear_BSD
+	makedepends = git
 	source = git+https://github.com/qca/open-plc-utils#commit=bb50f635ef6cec8b52898051e0d18f4ac3fdd331
 	sha256sums = SKIP
 
 pkgname = open-plc-utils
-

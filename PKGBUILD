@@ -6,6 +6,7 @@ pkgdesc="Qualcomm Atheros Open Powerline Toolkit for HomePlug AV"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
 license=(custom:Clear_BSD)
+makedepends=(git)
 _commit=bb50f635ef6cec8b52898051e0d18f4ac3fdd331
 source=("git+https://github.com/qca/open-plc-utils#commit=$_commit")
 sha256sums=('SKIP')
