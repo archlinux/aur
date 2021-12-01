@@ -22,17 +22,17 @@ package() {
 	prefix="${pkgdir}/opt/${pkgname}"
 	LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
 
-	msg2 "Packaging ${pkgname} for installation to /opt/${pkgname}"
+	# Packaging miniconda3 for installation to /opt/miniconda3
 	bash "${srcdir}/miniconda3-${pkgver}.sh" -b -p $prefix -f
 	[ "$BREAK_EARLY" = 1 ] && exit 1
 	cd "${prefix}"
 
-	msg2 "Correcting permissions"
+	# Correcting permissions
 	chmod a+r -R pkgs
 
-	msg2 "Stripping \$pkgdir"
+	# Stripping $pkgdir
 	sed "s|${pkgdir}||g" -i $(grep "$pkgdir" . -rIl)
 
-	msg2 "Installing license"
+	# Installing license
 	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
