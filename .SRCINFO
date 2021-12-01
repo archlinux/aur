@@ -1,6 +1,6 @@
 pkgbase = cuberite
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client.
-	pkgver = 1.12.2c1_afe07fe
+	pkgver = 1.12.2c1_1be14eb
 	pkgrel = 1
 	url = https://cuberite.org/
 	install = cuberite.install
@@ -24,7 +24,7 @@ pkgbase = cuberite
 	provides = minecraft-server=1.12.2
 	provides = spigot=1.12.2
 	backup = etc/conf.d/cuberite
-	source = git+https://github.com/cuberite/cuberite#commit=afe07fe
+	source = git+https://github.com/cuberite/cuberite#commit=1be14eb
 	source = git+https://github.com/cuberite/Core
 	source = git+https://github.com/cuberite/ProtectionAreas
 	source = git+https://github.com/cuberite/ChatLog
