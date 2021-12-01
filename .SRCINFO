@@ -1,6 +1,6 @@
 pkgbase = r-pkgload
 	pkgdesc = Simulate Package Installation and Attach
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgload
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = r-pkgload
 	optdepends = r-pkgbuild
 	optdepends = r-rcpp
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/pkgload_1.2.3.tar.gz
-	sha256sums = 105ae5b2caca495bd0702757c5c676353cca8525954d0822f07103ca8a54b349
+	source = https://cran.r-project.org/src/contrib/pkgload_1.2.4.tar.gz
+	sha256sums = d6912bc824a59ccc9b2895c3cf3b08a3ff310a333888bb8e90d1a6ce754dd90f
 
 pkgname = r-pkgload
