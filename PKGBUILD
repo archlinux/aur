@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc-git
-pkgver=2.0.0dev.r6625.g243bb15ef
+pkgver=2.0.0dev.r6833.g1f3b1857b
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -20,8 +20,8 @@ _islver=0.24
 
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
-	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
-	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+	"https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
+	"https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
 )
 sha256sums=(
 	'SKIP'
@@ -77,7 +77,7 @@ prepare() {
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-	# Remove all previously built stuff (optional)
+	# Remove all previously built stuff (needed when gcc sources version changes)
 	rm -rf "${srcdir}/gcc-build"
 	mkdir -p "${srcdir}/gcc-build"
 }
@@ -163,7 +163,11 @@ package() {
 	# Remove gcc-specific files, keep only what is related to ghdl
 	cd "${pkgdir}"
 	rm -rf "usr/include/libiberty"
-	rm -rf "usr/share/"{locale,man}
+	rm -rf "usr/share/locale"
+	rm -rf "usr/share/man/man7"
+	find "usr/share/man/man1" \
+		-maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
+		-exec rm -rf {} +
 	find "usr/lib" \
 		-maxdepth 1 -mindepth 1 \
 		-not -name 'gcc' \
@@ -184,5 +188,5 @@ package() {
 
 	# GTKWave has always installed binary ghwdump, now ghdl does it too
 	# While awaiting for the two projects to agree, you can prevent install of ghwdump here
-	#rm -f "${pkgdir}/usr/bin/ghwdump"
+	rm -f "${pkgdir}/usr/bin/ghwdump"
 }
