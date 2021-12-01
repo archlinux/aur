@@ -5,7 +5,7 @@
 
 _pkgname=ansible-lint
 pkgname=ansible-lint-git
-pkgver=5.1.2.r17.g200e69c
+pkgver=5.2.1.r10.g15565da
 pkgrel=1
 pkgdesc="Checks playbooks for practices and behaviour that could potentially be improved."
 arch=('any')
@@ -33,11 +33,11 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  python setup.py build
+  python -c "from setuptools import setup; setup();" build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1
+  PYTHONHASHSEED=0 python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
