@@ -21,7 +21,7 @@ changelog=
 source=(
 run.sh
 ${pkgname}.desktop
-"https://sucdn.jerrywang.top//store/network/cn.189.cloud.spark/cn.189.cloud.spark_6.3.8spark2_i386.deb"
+"https://d.store.deepinos.org.cn/store/network/cn.189.cloud.spark/cn.189.cloud.spark_6.3.8spark2_i386.deb"
 )
 md5sums=(
 '427e42b4e4ff0055532af7b331f91d85'
