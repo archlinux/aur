@@ -3,7 +3,7 @@
 _pipname=random2
 pkgname=python-$_pipname
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Python 3 compatible port of Python 2 random module"
 arch=(any)
 url="https://pypi.org/project/random2/"
