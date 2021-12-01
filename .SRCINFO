@@ -10,6 +10,7 @@ pkgbase = cs-firewall-bouncer
 	makedepends = go
 	depends = crowdsec
 	provides = cs-firewall-bouncer
+	provides = crowdsec-firewall-bouncer
 	source = cs-firewall-bouncer-source.tgz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/refs/tags/v0.0.17.tar.gz
 	source = cs-firewall-bouncer.install
 	source = install.sh.patch

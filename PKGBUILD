@@ -24,7 +24,10 @@ makedepends=(
 	'go'
 )
 
-provides=('cs-firewall-bouncer')
+provides=(
+	'cs-firewall-bouncer'
+ 	'crowdsec-firewall-bouncer'
+)
 
 build(){
 	cd "${srcdir}/${pkgname}-${pkgver}"
