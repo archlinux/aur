@@ -8,7 +8,7 @@
 #   contains an up-to-date merge of masm11 and fejfighter's pgtk work with
 #   the feature/native-comp branch from the official emacs repo.
 # - the pure-GTK3 rendering backend is enabled.
-# - the xwidgets webkit2gtk support is enabled.
+# - the xwidgets webkit2gtk is disabled for xwidgets doesn't support pgtk.
 # - link-time optimization is enabled by default.
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
@@ -93,7 +93,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-native-comp-git-enhanced"
 fi
-pkgver=29.0.50.152374
+pkgver=29.0.50.152375
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
 arch=('x86_64')

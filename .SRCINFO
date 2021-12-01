@@ -1,6 +1,6 @@
 pkgbase = emacs-native-comp-git-enhanced
 	pkgdesc = GNU Emacs. Development native-comp branch and pgtk branch combined.
-	pkgver = 29.0.50.152374
+	pkgver = 29.0.50.152375
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
