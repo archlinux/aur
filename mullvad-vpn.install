@@ -1,11 +1,9 @@
 pre_install() {
   if systemctl status mullvad-daemon &> /dev/null; then
     echo 'Stopping & disabling Mullvad VPN daemon...'
-    /opt/  mullvad-vpn-cli/resources/mullvad-setup prepare-restart || true
+    /opt/mullvad-vpn-cli/resources/mullvad-setup prepare-restart || true
     systemctl disable --now mullvad-daemon
   fi
-
-  pkill -x "mullvad-gui" || true
 
   rm -f /var/cache/mullvad-vpn/relays.json || true
 }
@@ -37,7 +35,7 @@ pre_remove() {
   systemctl stop mullvad-daemon || true
   systemctl disable mullvad-daemon || true
 
-  /opt/  mullvad-vpn-cli/resources/mullvad-setup reset-firewall || true
+  /opt/mullvad-vpn-cli/resources/mullvad-setup reset-firewall || true
 }
 
 post_remove() {
