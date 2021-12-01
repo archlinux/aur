@@ -5,18 +5,16 @@ pkgname=zelcore
 pkgver=5.6.2
 pkgrel=1
 pkgdesc="Zelcore Platform"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://zelcore.io/"
 license=('')
 groups=('')
-depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxshmfence' 'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'tuxedo-control-center' 'util-linux-libs' 'xdg-utils')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'xdg-utils' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_i686=("https://zelcore.io/downloads/zelcore.deb")
 source_x86_64=("https://zelcore.io/downloads/zelcore.deb")
-sha512sums_i686=('d0c6a6ca241061c3e322d71beda719ddf18c555fe8de2a8224dc6c508c252f9f')
-sha512sums_x86_64=('83534228de891710383bacca98fdd81158c958f4fc1caccc8dec0fe0a05bc12dc4d82e6b91f69192ea7f4243a04b8189bceec8198b3cb37f5469a82c2f566f00')
+sha512sums_x86_64=('fc7975917166d4d1ab55be3a5fe992f1976e749b850b2f3b0a0920b6aad532add61f67229ae4ae218b85a339099dec3f0545147350a2ec9e2500d944c39d6c69')
 
 package(){
 
