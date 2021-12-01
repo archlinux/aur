@@ -2,7 +2,7 @@
 
 pkgname=python-cached-property
 pkgver=1.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A decorator for caching properties in classes"
 arch=('any')
 license=('BSD')
