@@ -9,24 +9,24 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=r10801+.2b97aac0ea3c+
+pkgver=r11977+.10cdfb94f1cc+
 pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (development build from trunk-branch)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://prosody.im/"
 license=('MIT')
 depends=(
   'icu'
-  'lua52'
-  'lua52-socket'
-  'lua52-expat'
-  'lua52-filesystem'
-  'lua52-sec')
+  'lua'
+  'lua-socket'
+  'lua-expat'
+  'lua-filesystem'
+  'lua-sec')
 makedepends=('mercurial')
-checkdepends=('luacheck' 'shellcheck' 'lua52-posix' 'lua52-sec')
+checkdepends=('luacheck' 'shellcheck' 'lua-posix' 'lua-sec')
 conflicts=('prosody')
 provides=('prosody')
 optdepends=(
-  'lua52-event: libevent support')
+  'lua-event: libevent support')
 install=prosody.install
 backup=('etc/prosody/prosody.cfg.lua')
 source=("prosody-hg::hg+https://hg.prosody.im/trunk"
@@ -48,11 +48,11 @@ prepare() {
   sed -i s/"--\ \"\*syslog\"\;"/"\"*syslog\"\;"/g prosody.cfg.lua.dist
 
   ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
-    --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.2 \
+    --datadir=/var/lib/prosody --with-lua-include=/usr/include \
     --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" --no-example-certs \
-    --runwith=lua5.2 \
-    --lua-version=5.2 \
+    --runwith=lua \
+    --lua-version=5.4 \
     --idn-library=icu
 }
 
