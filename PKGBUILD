@@ -2,7 +2,7 @@
 
 pkgname="mcmojave-cursors"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X-cursor theme inspired by macOS and based on capitaine-cursors"
 arch=("any")
 url="https://github.com/vinceliuice/${pkgname}"
