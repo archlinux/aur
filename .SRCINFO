@@ -1,7 +1,7 @@
 pkgbase = webcord
 	pkgdesc = A Discord web-based client made with the Electron API.
-	pkgver = 2.1.2
-	pkgrel = 2
+	pkgver = 2.1.3
+	pkgrel = 1
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
 	license = MIT
@@ -12,10 +12,10 @@ pkgbase = webcord
 	conflicts = webcord
 	options = !strip
 	options = !emptydirs
-	source = WebCord-2.1.2.tar.gz::https://github.com/SpacingBat3/WebCord/archive/refs/tags/v2.1.2.tar.gz
+	source = WebCord-2.1.3.tar.gz::https://github.com/SpacingBat3/WebCord/archive/refs/tags/v2.1.3.tar.gz
 	source = app.desktop
 	source = disable-updates-check.patch
-	sha512sums = 1e80b09ba72b7c69a2f023fbc6c87afae0f2ad81c726b12f1d77d7ba87e9da34c4af9ab49e9bae1cef60f9ea7c479a0092e12ab0d8698c7ebcffc21085bcf46d
+	sha512sums = 00aa8e9ec824f8db861d786b61481ddc52ec149e1a9a3eccd5d1bfe80e5e990936dfe8cc21607f7938be43c5fb9e1c82b6e4df154839aeee67b688c3e4740833
 	sha512sums = bb07c103ef15c2b12d610cfbdedc6b6ff9c3c8b3ec942a9f7cda461e9a906b49a268a9ce6a1fc0eb3783695fc8ecefac04aff4b8052bb17a19101cba340d40f0
 	sha512sums = 454f3d005e77d7f146ff13b8f5c0af8ce9480529b6b9f4ce8541e6e141a8c8a79b700bdf95337e52b8aa7fd7fd3478d16fb274f4d46bf3bb70467d77e909dcdc
 
