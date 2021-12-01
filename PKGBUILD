@@ -2,10 +2,10 @@
 pkgname='igel-git'
 _pkgname=igel
 pkgver=3.0.5.r6.g301fc70
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source UCI chess engine written in C++. "
 arch=('i686' 'x86_64')
-url="https://github.com/cetincan0/Defenchess"
+url="https://github.com/vshcherbyna/igel"
 license=('GPL3')
 makedepends=('git')
 provides=('igel')
