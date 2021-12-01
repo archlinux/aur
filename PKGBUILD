@@ -1,37 +1,30 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-
-pkgname=helvum-git
-pkgver=0.1.0.r13.g3fccff0
+pkgname='helvum-git'
+_pkgname='helvum'
+pkgver=0.3.2.115.gc1ec56e
 pkgrel=1
-pkgdesc='GTK-based patchbay for pipewire, inspired by the JACK tool catia'
-arch=('x86_64' 'aarch64')
-url='https://gitlab.freedesktop.org/ryuukyu/helvum'
+pkgdesc="A GTK patchbay for pipewire."
+arch=('i686' 'x86_64')
+url="https://gitlab.freedesktop.org/ryuukyu/helvum"
 license=('GPL3')
-depends=('gtk4' 'pipewire')
-makedepends=('git' 'rust')
+depends=('pipewire' 'gtk4')
+makedepends=('rust' 'cargo' 'git')
 provides=('helvum')
 conflicts=('helvum')
-source=('git+https://gitlab.freedesktop.org/ryuukyu/helvum.git')
-sha256sums=('SKIP')
+source=("$_pkgname::git+https://gitlab.freedesktop.org/ryuukyu/helvum.git")
+sha384sums=('SKIP')
 
 pkgver() {
-  cd helvum
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    echo "$(grep '^version =' Cargo.toml | head -n1 | awk -F '"' '{print $2}').$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd helvum
-
-  cargo update
-  cargo build \
-    --release
-}
+    cd $_pkgname
+    RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+ }
 
 package() {
-  cd helvum
-
-  cargo install \
-    --no-track \
-    --root "$pkgdir/usr" \
-    --path "$srcdir/helvum"
+    cd "$srcdir/$_pkgname"
+    install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
