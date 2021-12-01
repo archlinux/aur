@@ -3,7 +3,7 @@
 pkgname=fcitx5-pinyin-moegirl-rime
 pkgver=20211116
 _reponame=mw2fcitx
-pkgrel=5
+pkgrel=2
 pkgdesc="Fcitx 5 Pinyin Dictionary from moegirl.org for rime"
 arch=('any')
 url="https://github.com/outloudvi/mw2fcitx"
