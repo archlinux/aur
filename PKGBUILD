@@ -2,7 +2,7 @@
 
 pkgname=jdnbtexplorer
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Editor for Minecraft NBT files"
 arch=("any")
 url="https://gitlab.com/JakobDev/jdNBTExplorer"
@@ -22,7 +22,7 @@ package() {
         --name "jdNBTExplorer" \
         --comment "$pkgdesc" \
         --exec jdNBTExplorer \
-        --categories "Game"
+        --categories "Game" \
         --icon "${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
