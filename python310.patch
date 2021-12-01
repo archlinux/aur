@@ -1,0 +1,23 @@
+diff -upr pyside-setup-opensource-src-5.15.2.orig/build_scripts/config.py pyside-setup-opensource-src-5.15.2/build_scripts/config.py
+--- pyside-setup-opensource-src-5.15.2.orig/build_scripts/config.py	2020-11-11 14:51:30.000000000 +0200
++++ pyside-setup-opensource-src-5.15.2/build_scripts/config.py	2021-12-01 15:36:17.120806984 +0200
+@@ -93,6 +93,7 @@ class Config(object):
+             'Programming Language :: Python :: 3.7',
+             'Programming Language :: Python :: 3.8',
+             'Programming Language :: Python :: 3.9',
++            'Programming Language :: Python :: 3.10',
+         ]
+ 
+         self.setup_script_dir = None
+diff -upr pyside-setup-opensource-src-5.15.2.orig/sources/pyside2/libpyside/feature_select.cpp pyside-setup-opensource-src-5.15.2/sources/pyside2/libpyside/feature_select.cpp
+--- pyside-setup-opensource-src-5.15.2.orig/sources/pyside2/libpyside/feature_select.cpp	2020-11-11 14:51:30.000000000 +0200
++++ pyside-setup-opensource-src-5.15.2/sources/pyside2/libpyside/feature_select.cpp	2021-12-01 15:39:40.356426568 +0200
+@@ -405,6 +405,8 @@ static inline PyObject *SelectFeatureSet
+             if (!SelectFeatureSetSubtype(sub_type, select_id))
+                 break;
+         }
++        // PYSIDE-1436: Clear all caches for the type and subtypes.
++        PyType_Modified(type);
+     }
+     return type->tp_dict;
+ }

@@ -34,8 +34,15 @@ conflicts=(python-pyside2)
 provides=(python-pyside2 qt5-python-bindings)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
-source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('b306504b0b8037079a8eab772ee774b9e877a2d84bab2dbefbe4fa6f83941418')
+source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz"
+        python310.patch)
+sha256sums=('b306504b0b8037079a8eab772ee774b9e877a2d84bab2dbefbe4fa6f83941418'
+            'ae896a09d18ef215243175fce047d8c370ab4a2d77ed0022991ed70bd23a30d0')
+
+prepare() {
+  cd ${_pkgfqn}
+  patch -Np1 -i ../python310.patch
+}
 
 build() {
   cmake -B build -S ${_pkgfqn}/sources/pyside2 \
