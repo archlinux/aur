@@ -3,7 +3,7 @@
 
 pkgname=python-pathtools
 pkgver=0.1.2
-pkgrel=10
+pkgrel=11
 pkgdesc="Pattern matching and various utilities for file systems paths"
 arch=('any')
 url="https://pypi.python.org/pypi/pathtools/"
