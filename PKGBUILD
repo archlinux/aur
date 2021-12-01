@@ -7,7 +7,7 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=41.0+r15+g23ebe6171
+pkgver=41.0+r15+g23ebe617
 pkgrel=1
 pkgdesc="Display manager and login screen with plymouth support"
 url="https://wiki.gnome.org/Projects/GDM"

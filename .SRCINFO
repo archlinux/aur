@@ -1,6 +1,6 @@
 pkgbase = gdm-plymouth
 	pkgdesc = Display manager and login screen with plymouth support
-	pkgver = 41.0+r15+g23ebe6171
+	pkgver = 41.0+r15+g23ebe617
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
