@@ -1,15 +1,16 @@
 #Maintainer: Dylan Delgado
 
 pkgname=mlucas
-pkgver=20.1
+pkgver=20.1.1
 pkgrel=1
 pkgdesc="Program used to perform Lucas-Lehmer tests of Mersenne numbers. Can be built on the ARM architecture."
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://www.mersenneforum.org/mayer/README.html"
-depends=("gmp")
+depends=("gmp" "xz")
+optdepends=("python: to use the primenet.py work management script")
 license=('FDL1.3')
 source=("https://www.mersenneforum.org/mayer/src/C/mlucas_v${pkgver}.txz")
-md5sums=('2ac7bc70a853fa07f6b02f10636a12a5')
+md5sums=('dc5487e984196a32b47a8066ec9a6803')
 
 #prepare() {
 #cd "${srcdir}"/"${pkgname}"_v"${pkgver}"
