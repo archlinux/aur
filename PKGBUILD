@@ -3,7 +3,7 @@
 _pkgname=sat-solver
 pkgname=python-simplesat
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc='SAT solver for use in Enstaller, based on the MiniSat implementation'
 arch=('any')
 url='https://github.com/enthought/sat-solver'
