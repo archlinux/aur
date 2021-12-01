@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=cryptonose
-pkgver=2.21.1
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="A free and open source desktop application that keeps track of significant price changes within small time periods (5 minutes, 30 minutes) on cryptocurrency markets"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libnet'
          'freetype2'
          'alsa-lib')
 source=("${pkgname}-${pkgver}.deb::https://github.com/dawidm/cryptonose2/releases/download/v${pkgver}/cryptonose_${pkgver}-1_amd64.deb")
-sha256sums=('70794cb0bd4ea5d2a711138e8b5157ea2bde0e7691830cf1e72abedb7b3dc629')
+sha256sums=('992d4e35ad9f8c7e6d688cffbb857851c2d0b942cc30d40b7e3a65009604bbbd')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
