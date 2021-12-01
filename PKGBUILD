@@ -19,8 +19,8 @@
 pkgbase="zfs-linux-rt"
 pkgname=("zfs-linux-rt" "zfs-linux-rt-headers")
 _zfsver="2.1.1"
-_kernelver="5.15.2.19.realtime1-2"
-_extramodules="5.15.2.19.realtime1-2-rt"
+_kernelver="5.15.3.21.realtime1-1"
+_extramodules="5.15.3.21.realtime1-1-rt"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
