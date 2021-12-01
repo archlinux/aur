@@ -3,7 +3,7 @@
 pkgbase=python-pytest-plugins
 pkgname=('python-pytest-fixture-config' 'python-pytest-shutil' 'python-pytest-virtualenv')
 pkgver=1.7.0
-pkgrel=6
+pkgrel=7
 arch=('any')
 license=('BSD')
 url='https://github.com/manahl/pytest-plugins'
