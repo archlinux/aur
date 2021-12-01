@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-impersonate
 	pkgdesc = Allow administrators to become a different user by adding an impersonate action to the user list
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://apps.nextcloud.com/apps/impersonate
 	arch = any
 	license = GPL
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-impersonate-1.9.0.tgz::https://github.com/nextcloud-releases/impersonate/releases/download/v1.9.0/impersonate.tar.gz
-	sha256sums = 125fdf45a9d525c0aba8c9e2945fe943b9a2e02f7a4e9fdc5aa059ad42ef3c64
+	source = nextcloud-app-impersonate-1.10.0.tgz::https://github.com/nextcloud-releases/impersonate/releases/download/v1.10.0/impersonate-v1.10.0.tar.gz
+	sha256sums = 3aad8f0d27cd8408d7130789923791d4134f54748f7268052117b4484745d90c
 
 pkgname = nextcloud-app-impersonate
