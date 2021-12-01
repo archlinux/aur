@@ -3,8 +3,8 @@
 # Contributor: Roni Choudhury <aichoudh@gmail.com>
 
 pkgname=pin
-pkgver=3.20.r98437
-_pkgver=3.20-98437-gf02b61307
+pkgver=3.21.r98484
+_pkgver=3.21-98484-ge7cd811fd
 pkgrel=1
 pkgdesc="A tool for the dynamic instrumentation of programs"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gcc>=4.4.7' 'bash' 'lib32-gcc-libs>=4.4.7')
 options=('!strip' 'staticlibs')
 source=("http://software.intel.com/sites/landingpage/pintool/downloads/${pkgname}-${_pkgver}-gcc-linux.tar.gz"
         "pin.sh")
-sha256sums=('ca2f542eee2013471961bb683d06ccb20ef5dd8ed0d02537cf4d47f09bd616bf'
+sha256sums=('a0bd6640d7b4a53f78cf0a2df843b034f2e2ec38e77f018d8e3ef032360b0c5c'
             '7198073c94e785cbd9002cdd174ab3bb1d28cc4e26626905c12173ad31ae82fc')
 
 package() {
@@ -27,8 +27,7 @@ package() {
     cp -r * ${pkgdir}/opt/pin
 
     # Fix the permissions (they're very broken)
-    find "${pkgdir}/opt/pin" -type d -exec chmod 755 {} \;
-    find "${pkgdir}/opt/pin" -type f -exec chmod 644 {} \;
+    chmod -R a=r,u+w,a+X "${pkgdir}/opt/pin"
     chmod +x "${pkgdir}/opt/pin/pin"
     find "${pkgdir}/opt/pin" -name pinbin -type f -exec chmod +x {} \;
     find "${pkgdir}/opt/pin" -name xed -type f -exec chmod +x {} \;
