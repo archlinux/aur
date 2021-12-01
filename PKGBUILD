@@ -10,7 +10,7 @@ arch=('any')
 license=('MPL2')
 url='https://stratis-storage.github.io/'
 depends=('dbus-python' 'dbus-client-gen' 'python-into-dbus')
-makedepends=('git' 'python-pylint')
+makedepends=('git' 'python-pylint' 'python-setuptools')
 checkdepends=('python-nose')
 source=(
   "${_srcname}-${pkgver}.tar.gz::https://github.com/stratis-storage/${_srcname}/archive/v${pkgver}.tar.gz"
