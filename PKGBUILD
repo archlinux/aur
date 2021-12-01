@@ -2,7 +2,7 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.0.1
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,9 +24,9 @@ install="${_pkgname}.install"
 source_x86_64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_aarch64.deb")
 source_armv7h=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_armv7l.deb")
-sha256sums_x86_64=('4a0903088d3067c28e97dc1593ce4f6b48c48194f3b46f82bad53be2839bb0f7')
-sha256sums_aarch64=('b9dc79c058341b1a5fa981930ec1c9f989212ac8b8f03cc7e4d93491601b8805')
-sha256sums_armv7h=('5c53ac2f8e2ff099649c55f0b925d71b02af32190fe2c5e475aa05282ec16a35')
+sha256sums_x86_64=('94b8c991a52f17940995c23aba2e40a1276f68d92c9e2a156f6af0bf2c06b615')
+sha256sums_aarch64=('32217448c888e32a8b87c47ae1335ec3af5e8064bc11f50520c75c5390ad59a3')
+sha256sums_armv7h=('e49cd8e1f2e53e0af13056cfc21c2af1c7365d5462762a17362070c4b8790a4b')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/{} \;
