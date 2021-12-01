@@ -1,8 +1,13 @@
-pkgbase=php72
-_pkgbase=${pkgbase%72}
-_realpkg=${pkgbase%}
-pkgname=("${pkgbase}"
-         "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl,sodium}"")
+_phpbase=72
+_suffix=
+pkgbase=php${_phpbase}${_suffix}
+_pkgbase=${pkgbase%$_phpbase$_suffix}
+if [ -z "${_suffix}" ]; then
+  _realpkg=${pkgbase}
+else
+  _realpkg=${pkgbase%$_suffix}
+fi
+pkgname=("${pkgbase}" "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl,sodium}"${_suffix}")
 pkgver=7.2.34
 pkgrel=3
 pkgdesc="php 7.2 compiled as to not conflict with mainline php"
@@ -10,7 +15,7 @@ arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'freetds' 'pcre' 'libsodium')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'freetds' 'pcre' 'libsodium' 'patchutils')
 #checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz" 'intl.patch' 'icu.patch'
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch' 'php-freetype-2.9.1.patch' )
@@ -148,6 +153,7 @@ build() {
 #    ${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
 #}
 
+if [ -z "${_suffix}" ]; then
 package_php72() {
     pkgdesc='A general-purpose scripting language that is especially suited to web development'
     depends=('libxml2' 'curl' 'libzip' 'pcre')
@@ -203,10 +209,10 @@ package_php72-apache() {
     backup=("etc/httpd/conf/extra/${_realpkg}_module.conf")
     provides=("${_pkgbase}-apache=${pkgver}")
         echo "# End of LoadModule in httpd.conf - see ArchWiki Apache HTTP Server"
-        echo "LoadModule php7_module modules/libphp72.so"
+        echo "LoadModule php7_module modules/libphp${_phpbase}.so"
         echo "AddHandler php7-script .php"
         echo "# End of Include List"
-        echo "Include conf/extra/php72_module.conf"
+        echo "Include conf/extra/php${_phpbase}_module.conf"
     install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${_realpkg}.so
     install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${_realpkg}_module.conf
 }
@@ -234,7 +240,7 @@ package_php72-embed() {
     make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
 # move libphp7.so to libphp-72.so -- note well: this is to prevent ldconfig
 # from complaining about libphp7.so not being a symbolic link if another php7 is installed.
-mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-72.so
+    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-${_phpbase}.so
 }
 
 package_php72-phpdbg() {
@@ -351,9 +357,215 @@ package_php72-sodium() {
     depends=("${pkgbase}" 'libsodium')
     install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${_realpkg}/modules/sodium.so
 }
+else
+package_php72-el() {
+    pkgdesc='A general-purpose scripting language that is especially suited to web development'
+    depends=('libxml2' 'curl' 'libzip' 'pcre')
+    backup=("etc/${_realpkg}/php.ini")
+    provides=("${_pkgbase}=${pkgver}")
+
+    cd ${srcdir}/build
+    make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
+    install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${_realpkg}/php.ini
+    install -d -m755 ${pkgdir}/etc/${_realpkg}/conf.d/
+
+    # remove static modules
+    rm -f ${pkgdir}/usr/lib/${_realpkg}/modules/*.a
+    # remove modules provided by sub packages
+    rm -f ${pkgdir}/usr/lib/${_realpkg}/modules/{enchant,gd,imap,intl,sodium,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+    # remove empty directory
+    rmdir ${pkgdir}/usr/include/php/include
+
+    # move include directory
+    mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${_realpkg}
+
+    # fix phar symlink
+    rm ${pkgdir}/usr/bin/phar
+    ln -sf phar.${_realpkg/php/phar} ${pkgdir}/usr/bin/${_realpkg/php/phar}
+
+    # rename executables
+    mv ${pkgdir}/usr/bin/phar.{phar,${_realpkg/php/phar}}
+
+    # rename man pages
+    mv ${pkgdir}/usr/share/man/man1/{phar,${_realpkg/php/phar}}.1
+    mv ${pkgdir}/usr/share/man/man1/phar.{phar,${_realpkg/php/phar}}.1
+
+    # fix paths in executables
+    sed -i "/^includedir=/c \includedir=/usr/include/${_realpkg}" ${pkgdir}/usr/bin/${_realpkg/php/phpize}
+    sed -i "/^include_dir=/c \include_dir=/usr/include/${_realpkg}" ${pkgdir}/usr/bin/${_realpkg/php/php-config}
+
+    # make phpize use php-config72
+    sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${_realpkg/php/php-config}]], ${_realpkg/php/php-config}, no)" ${pkgdir}/usr/lib/${_realpkg}/build/phpize.m4
+}
+
+package_php72-cgi-el() {
+    pkgdesc='CGI and FCGI SAPI for PHP'
+    depends=("${pkgbase}")
+    provides=("${_pkgbase}-cgi=${pkgver}")
+
+    cd ${srcdir}/build
+    make -j1 INSTALL_ROOT=${pkgdir} install-cgi
+}
+
+package_php72-apache-el() {
+    pkgdesc='Apache SAPI for PHP'
+    depends=("${pkgbase}" 'apache')
+    backup=("etc/httpd/conf/extra/${_realpkg}_module.conf")
+    provides=("${_pkgbase}-apache=${pkgver}")
+        echo "# End of LoadModule in httpd.conf - see ArchWiki Apache HTTP Server"
+        echo "LoadModule php7_module modules/libphp${_phpbase}.so"
+        echo "AddHandler php7-script .php"
+        echo "# End of Include List"
+        echo "Include conf/extra/php${_phpbase}_module.conf"
+    install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${_realpkg}.so
+    install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${_realpkg}_module.conf
+}
+
+package_php72-fpm-el() {
+    pkgdesc='FastCGI Process Manager for PHP'
+    depends=("${pkgbase}" 'systemd')
+    backup=("etc/${_realpkg}/php-fpm.conf" "etc/${_realpkg}/php-fpm.d/www.conf")
+    options=('!emptydirs')
+    provides=("${_pkgbase}-fpm=${pkgver}")
+
+    cd ${srcdir}/build
+    make -j1 INSTALL_ROOT=${pkgdir} install-fpm
+    install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${_realpkg}-fpm.service
+    install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_realpkg}-fpm.conf
+}
+
+package_php72-embed-el() {
+    pkgdesc='Embedded PHP SAPI library'
+    depends=("${pkgbase}" 'libsystemd')
+    options=('!emptydirs')
+    provides=("${_pkgbase}-embed=${pkgver}")
+
+    cd ${srcdir}/build
+    make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
+    # move libphp7.so to libphp-${_phpbase}.so -- note well: this is to prevent ldconfig
+    # from complaining about libphp7.so not being a symbolic link if another php7 is installed.
+    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-${_phpbase}.so
+}
+
+package_php72-phpdbg-el() {
+    pkgdesc='Interactive PHP debugger'
+    depends=("${pkgbase}")
+    options=('!emptydirs')
+    provides=("${_pkgbase}-phpdbg=${pkgver}")
+
+    cd ${srcdir}/build-phpdbg
+    make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
+}
+
+package_php72-dblib-el() {
+    pkgdesc='dblib module for PHP'
+    depends=("${pkgbase}" 'freetds')
+    provides=("${_pkgbase}-dblib=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_dblib.so
+}
+
+package_php72-enchant-el() {
+    pkgdesc='enchant module for PHP'
+    depends=("${pkgbase}" 'enchant')
+    provides=("${_pkgbase}-enchant=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/${_realpkg}/modules/enchant.so
+}
+
+package_php72-gd-el() {
+    pkgdesc='gd module for PHP'
+    depends=("${pkgbase}" 'gd')
+    provides=("${_pkgbase}-gd=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/${_realpkg}/modules/gd.so
+}
+
+package_php72-imap-el() {
+    pkgdesc='imap module for PHP'
+    depends=("${pkgbase}" 'c-client')
+    provides=("${_pkgbase}-imap=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/${_realpkg}/modules/imap.so
+}
+
+package_php72-intl-el() {
+    pkgdesc='intl module for PHP'
+    depends=("${pkgbase}" 'icu')
+    provides=("${_pkgbase}-intl=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/${_realpkg}/modules/intl.so
+}
+
+package_php72-odbc-el() {
+    pkgdesc='ODBC modules for PHP'
+    depends=("${pkgbase}" 'unixodbc')
+    provides=("${_pkgbase}-odbc=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/odbc.so
+    install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_odbc.so
+}
+
+package_php72-pgsql-el() {
+    pkgdesc='PostgreSQL modules for PHP'
+    depends=("${pkgbase}" 'postgresql-libs')
+    provides=("${_pkgbase}-pgsql=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pgsql.so
+    install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_pgsql.so
+}
+
+package_php72-pspell-el() {
+    pkgdesc='pspell module for PHP'
+    depends=("${pkgbase}" 'aspell')
+    provides=("${_pkgbase}-pspell=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/${_realpkg}/modules/pspell.so
+}
+
+package_php72-snmp-el() {
+    pkgdesc='snmp module for PHP'
+    depends=("${pkgbase}" 'net-snmp')
+    provides=("${_pkgbase}-snmp=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/${_realpkg}/modules/snmp.so
+}
+
+package_php72-sqlite-el() {
+    pkgdesc='sqlite module for PHP'
+    depends=("${pkgbase}" 'sqlite')
+    provides=("${_pkgbase}-sqlite=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/${_realpkg}/modules/sqlite3.so
+    install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_sqlite.so
+}
+
+package_php72-tidy-el() {
+    pkgdesc='tidy module for PHP'
+    depends=("${pkgbase}" 'tidy')
+    provides=("${_pkgbase}-tidy=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/${_realpkg}/modules/tidy.so
+}
+
+package_php72-xsl-el() {
+    pkgdesc='xsl module for PHP'
+    depends=("${pkgbase}" 'libxslt')
+    provides=("${_pkgbase}-xsl=${pkgver}")
+
+    install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${_realpkg}/modules/xsl.so
+}
+
+package_php72-sodium-el() {
+    pkgdesc='sodium module for PHP'
+    depends=("${pkgbase}" 'libsodium')
+    install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${_realpkg}/modules/sodium.so
+}
+fi
+
 md5sums=('adb64072b9b7e4634844a72512239a34'
          '3bcefa76cf2f73f5f851a95c92e217a1'
-         '3e7039d5ef6074b5153d9d7087503c21'
+         '879e4a88a1707c05749f53196940e42a'
          '13cda50a6a420d04ddc26935ded3164e'
          'b7d69762f7c045b3950d770e04db504c'
          'f248c783449f310291905b5551c57e48'
