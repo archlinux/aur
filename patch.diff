@@ -1,0 +1,25 @@
+diff --git a/electron/main.js b/electron/main.js
+index b81d974..6132e29 100644
+--- a/electron/main.js
++++ b/electron/main.js
+@@ -1,7 +1,6 @@
+ // Modules to control application life and create native browser window
+ const {app, BrowserWindow, Menu} = require('electron')
+ const path = require('path')
+-require('@electron/remote/main').initialize()
+ 
+ function createWindow () {
+     // Create the browser window.
+diff --git a/electron/package.json b/electron/package.json
+index 21097e0..82b0c0a 100644
+--- a/electron/package.json
++++ b/electron/package.json
+@@ -44,8 +44,5 @@
+   "devDependencies": {
+     "electron": "^15.3.0",
+     "electron-builder": "^22.11.7"
+-  },
+-  "dependencies": {
+-    "@electron/remote": "^2.0.1"
+   }
+ }
