@@ -3,7 +3,7 @@
 
 pkgname=seqdiag
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="seqdiag generates sequence-diagram images from .diag files"
 url="http://blockdiag.com/en/seqdiag/index.html"
 license=('Apache')
