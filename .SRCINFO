@@ -1,6 +1,6 @@
 pkgbase = certigo
 	pkgdesc = A utility to examine and validate certificates in a variety of formats
-	pkgver = 1.12.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/square/certigo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = certigo
 	makedepends = go-pie
 	makedepends = git
 	depends = glibc
-	source = certigo-1.12.1.tar.gz::https://github.com/square/certigo/archive/v1.12.1.tar.gz
-	sha256sums = 800bdfa10ffc7f6313397220d02769e88ed5dae001224c9f0199383dcb63eaec
+	source = certigo-1.13.0.tar.gz::https://github.com/square/certigo/archive/v1.13.0.tar.gz
+	sha256sums = 06d7663b6c46904a020edcaeaceb6476fd808677a1ee0c11b3aaf1926c84da5b
 
 pkgname = certigo
