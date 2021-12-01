@@ -1,12 +1,7 @@
-# Maintainer: Michael Picht <mipi@fsfe.org>
-# SPDX-FileCopyrightText: 2020 Michael Picht <mipi@fsfe.org>
-#
-# SPDX-License-Identifier: GPL-3.0-or-later
-
 _pkgorg=gitlab.com/mipimipi
 pkgname=armutils-git
 _pkgname=armutils
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Build ARM packages in chroot containers on x86_64"
 arch=(x86_64)
@@ -31,7 +26,7 @@ provides=(armutils)
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
