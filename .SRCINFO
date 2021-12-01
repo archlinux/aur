@@ -1,12 +1,13 @@
 pkgbase = astroid-git
 	pkgdesc = a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others
-	pkgver = v0.15.r13.gb675b42
+	pkgver = v0.16.r1.g4d6b06a
 	pkgrel = 1
 	url = https://github.com/astroidmail/astroid
 	arch = x86_64
 	arch = i686
 	license = GPL
 	checkdepends = notmuch-runtime
+	checkdepends = w3m
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
@@ -32,9 +33,6 @@ pkgbase = astroid-git
 	provides = astroid
 	conflicts = astroid
 	source = git+https://github.com/astroidmail/astroid.git
-	source = test_compose.patch
 	md5sums = SKIP
-	md5sums = 75188a53e85c7d80f7553d2cc38d5bb3
 
 pkgname = astroid-git
-
