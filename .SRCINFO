@@ -1,7 +1,7 @@
 pkgbase = darktable-cr3-git
 	pkgdesc = A virtual lighttable and darkroom for photographers with CR3 support
-	pkgver = 3.7.0
-	pkgrel = 3
+	pkgver = 3.7.0.r1599.gc9d36274d3
+	pkgrel = 5
 	url = http://www.darktable.org/
 	install = darktable.install
 	arch = i686
