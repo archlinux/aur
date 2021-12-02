@@ -26,11 +26,11 @@ sha256sums=('cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79'
 prepare() {
   cd "$srcdir"/$_src_folder
   msg2 "drop_ThirdParty_repo"
-  patch -p1 < "$srcdir"/drop_ThirdParty_repo.patch
+  patch -f -p1 < "$srcdir"/drop_ThirdParty_repo.patch || true
   msg2 "qchar"
   patch -p1 < "$srcdir"/qchar.patch
   msg2 "quazip"
-  patch -p1 < "$srcdir"/quazip.patch
+  patch -f -p1 < "$srcdir"/quazip.patch
   msg2 "gcc11"
   sed 's/_serialize/serialize/g' -i src/pdf-merger/Object.{h,cpp}
 }
