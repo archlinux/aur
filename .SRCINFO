@@ -1,0 +1,25 @@
+pkgbase = google-cloud-ops-agent-git
+	pkgdesc = Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)
+	pkgver = 2.7.0.r7.g43187fc
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/ops-agent
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = cmake
+	makedepends = go
+	makedepends = git
+	makedepends = pkg-config
+	provides = google-cloud-ops-agent
+	conflicts = stackdriver-collectd
+	source = google-cloud-ops-agent-git::git+https://github.com/GoogleCloudPlatform/ops-agent.git
+	source = collectd::git+https://github.com/Stackdriver/collectd.git
+	source = fluent-bit::git+https://github.com/fluent/fluent-bit.git
+	source = opentelemetry-operations-collector::git+https://github.com/GoogleCloudPlatform/opentelemetry-operations-collector.git
+	source = opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = google-cloud-ops-agent-git

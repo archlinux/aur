@@ -1,0 +1,9 @@
+*.zst
+/collectd
+/fluent-bit
+/google-cloud-ops-agent-git
+/opentelemetry-java-contrib
+/opentelemetry-operations-collector
+/pkg
+/src
+/tmp
