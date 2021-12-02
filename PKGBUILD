@@ -1,12 +1,13 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=osabie-git
 pkgver=r857.f34df35
-pkgrel=1
+pkgrel=2
 pkgdesc="An esoteric code golfing language"
 arch=('x86_64')
 url="https://github.com/Adriandmen/05AB1E"
 license=('MIT')
 makedepends=('elixir')
+provides=('osabie')
 source=("$pkgname::git+https://github.com/Adriandmen/05AB1E.git#branch=master")
 noextract=()
 
