@@ -1,21 +1,22 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=minosoft
 pkgname=$_pkgname-git
-pkgver=r1377.eba0cf5d
+pkgver=r1967.298c27bcd
 pkgrel=1
-pkgdesc="Open source minecraft client, written from scratch in java."
+pkgdesc="Open source minecraft client, written from scratch in kotlin (and java)."
 arch=('any')
 url="https://gitlab.bixilon.de/bixilon/minosoft"
 license=('GPL3')
-depends=('java-runtime>=14' 'sh')
+depends=('java-runtime>=11' 'sh')
 makedepends=('git' 'maven' 'java-environment')
+optdepends=('java-runtime>=16: recommended by developer')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://gitlab.bixilon.de/bixilon/minosoft.git"
 	'minosoft.sh'
 	'minosoft.desktop')
 md5sums=('SKIP'
-         'ccf32826e6ba903bad8653160af7d731'
+         '6aff5163122dfb8aff3bdb0f162b588d'
          '26f1f6230fb117c558f848a08165c8d5')
 
 pkgver() {
@@ -35,7 +36,7 @@ check() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	install -Dm644 target/Minosoft-0.1-jar-with-dependencies.jar "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
+	install -Dm644 target/Minosoft-*-jar-with-dependencies.jar "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
 	install -Dm644 doc/img/Minosoft_logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
 	cd "$srcdir"
