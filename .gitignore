@@ -3,3 +3,4 @@ LICENSE.txt
 *.zst
 src/
 pkg/
+*.log
