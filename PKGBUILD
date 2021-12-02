@@ -2,7 +2,7 @@
 
 pkgname=google-cloud-ops-agent-git
 pkgver=2.7.0.r7.g43187fc
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
 arch=(x86_64)
@@ -30,6 +30,7 @@ source=(
 	"fluent-bit::git+https://github.com/fluent/fluent-bit.git"
 	"opentelemetry-operations-collector::git+https://github.com/GoogleCloudPlatform/opentelemetry-operations-collector.git"
 	"opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git"
+	"0001-apps-hostmetrics.patch"
 )
 md5sums=(
 	'SKIP'
@@ -37,6 +38,7 @@ md5sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'aa21cd77ff9aba8ba7b8583c97e71c8f'
 )
 
 pkgver() {
@@ -56,6 +58,7 @@ prepare() {
 	git config submodule."submodules/opentelemetry-java-contrib".url \
 		"${srcdir}/opentelemetry-java-contrib"
 	git submodule update
+	git apply "${srcdir}/0001-apps-hostmetrics.patch"
 }
 
 build() {

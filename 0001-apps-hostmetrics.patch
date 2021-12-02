@@ -1,0 +1,35 @@
+diff --git a/apps/hostmetrics.go b/apps/hostmetrics.go
+index 84bdc49..14a77f7 100644
+--- a/apps/hostmetrics.go
++++ b/apps/hostmetrics.go
+@@ -43,8 +43,6 @@ func (r MetricsReceiverHostmetrics) Pipelines() []otel.Pipeline {
+ 					"filesystem": struct{}{},
+ 					"network":    struct{}{},
+ 					"paging":     struct{}{},
+-					"process":    struct{}{},
+-					"processes":  struct{}{},
+ 				},
+ 			},
+ 		},
+diff --git a/confgenerator/confgenerator.go b/confgenerator/confgenerator.go
+index 1916bcd..a8443ec 100644
+--- a/confgenerator/confgenerator.go
++++ b/confgenerator/confgenerator.go
+@@ -47,7 +47,7 @@ func (uc *UnifiedConfig) GenerateOtelConfig(hostInfo *host.InfoStat) (string, er
+ 	}.Pipeline()
+ 
+ 	if uc.Metrics.Service.LogLevel == "" {
+-		uc.Metrics.Service.LogLevel = "info"
++		uc.Metrics.Service.LogLevel = "error"
+ 	}
+ 	otelConfig, err := otel.ModularConfig{
+ 		LogLevel:  uc.Metrics.Service.LogLevel,
+@@ -126,7 +126,7 @@ func (uc *UnifiedConfig) GenerateFluentBitConfigs(logsDir string, stateDir strin
+ func (l *Logging) generateFluentbitComponents(userAgent string, hostInfo *host.InfoStat) ([]fluentbit.Component, error) {
+ 	var out []fluentbit.Component
+ 	if l.Service.LogLevel == "" {
+-		l.Service.LogLevel = "info"
++		l.Service.LogLevel = "error"
+ 	}
+ 	out = append(out, fluentbit.Service{LogLevel: l.Service.LogLevel}.Component())
+ 
