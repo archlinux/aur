@@ -2,7 +2,7 @@
 # Contributor: Daniel Moch <daniel AT danielmoch DOT com>
 _base=pytest-flakes
 pkgname=python-${_base}
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="pytest plugin to check source code with pyflakes"
 arch=('any')
@@ -10,9 +10,9 @@ url="https://github.com/asmeurer/${_base}"
 license=(MIT)
 depends=(python-pytest python-pyflakes)
 makedepends=(python-setuptools)
-checkdepends=(python-coverage python-pytest-pep8)
+checkdepends=(python-pytest-pep8)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('f3bc82bef2dad4a1bf145179f1d25330adcb123cb6e2dd9802b0696be56ef66a8c705725a4e05a9fbbdc37d7482af7fe615735e0e94055f66b0893cc4cf15e53')
+sha512sums=('5ddcb1dff38c9b0118e4bab7718932da001deabeff8c62a259c3b15832d7f76cb77e1576aa5679a87ed203b2db68e0e45d7e641d2b7fff731069931ac752ceef')
 
 build() {
   cd "${_base}-${pkgver}"
@@ -23,7 +23,7 @@ check() {
   cd "${_base}-${pkgver}"
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python setup.py install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  PYTHONPATH="$PWD/tmp_install/$site_packages" py.test
+  PYTHONPATH="${PWD}/tmp_install/${site_packages}" py.test
 }
 
 package() {
