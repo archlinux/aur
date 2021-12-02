@@ -4,7 +4,7 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.62
-pkgrel=2
+pkgrel=3
 pkgdesc="A new multiboot USB solution"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.ventoy.net"
@@ -22,8 +22,8 @@ install="${pkgname%-bin}.install"
 source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.tar.gz"
         "${pkgname%-bin}"
         "${pkgname%-bin}gui"
-        "${pkgname%-bin}plugson"
         "${pkgname%-bin}web"
+        "${pkgname%-bin}plugson"
         "${pkgname%-bin}-persistent"
         "${pkgname%-bin}-extend-persistent"
         "${pkgname%-bin}.desktop"
@@ -31,12 +31,12 @@ source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/${pkgname
 sha256sums=('073828200289bb07c9598ffc1ca82292ba62ec90a05ad34e3f489a292158f8dc'
             '1ad5d314e02b84127a5a59f3871eb1d28617218cad07cde3eeddcac391473000'
             'cbe6f47007981ada5e27a092fac7620a926301a704b59186295552d9f64cb0e7'
-            '1bbe66b52398be96402604562bddb5c9fbebfe345f0de184709e1c74086f2be6'
             'c3d4463a878a89d96e5f0bc4e1a43e48f27af5965bd4c977567695d7cf91fe5f'
+            '1bbe66b52398be96402604562bddb5c9fbebfe345f0de184709e1c74086f2be6'
             '51029745da197dded6e007aee3f30f7ea1aa6e898172a6ea176cc2f3a842d0ff'
             '00dec31721a052d5e6c928e3b38b870959bdb42188f34717898d99c0cef950df'
             '22225d48023806d0d15e059216ef4921de70cdb78348630be109fa9c669e2900'
-            '67c8c95719490376515719db41f84e812afb8d9f62b7a79ba8ede09afe6bf02c')
+            '100ae29bc4e87a2dede71882689f7737041d5c0f1d7f30f23098cda74d9e9510')
 
 prepare() {
   cd "${pkgname%-bin}-$pkgver"
@@ -53,10 +53,10 @@ prepare() {
   popd
 
   # Apply sanitize patch
-  patch --verbose -Np1 -i "$srcdir/sanitize.patch"
+  patch --verbose -p0 < "$srcdir/sanitize.patch"
 
   # Log location
-  sed -i 's|log\.txt|/var/log/ventoy.log|g' WebUI/static/js/languages.js
+  sed -i 's|log\.txt|/var/log/ventoy.log|g' WebUI/static/js/languages.js tool/languages.json
 
   # Non-POSIX compliant scripts
   sed -i 's|bin/sh|usr/bin/env bash|g' tool/{ventoy_lib.sh,VentoyWorker.sh}
@@ -72,7 +72,7 @@ package() {
   cd "${pkgname%-bin}-$pkgver"
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/boot/"            boot/*
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/${pkgname%-bin}/" "${pkgname%-bin}"/*
-  install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/"            tool/*.{cer,glade,json,sh,xz
+  install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/"            tool/*.{cer,glade,json,sh}
   install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/$CARCH/"     tool/$CARCH/*
   install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/"                 *.sh
   cp --no-preserve=o -avt "$pkgdir/opt/${pkgname%-bin}/"                 plugin WebUI
@@ -86,5 +86,5 @@ package() {
     ln -svf /usr/bin/$binary "$pkgdir/opt/${pkgname%-bin}/tool/$CARCH/"
   done
 
-  install -Dm755 "$srcdir/${pkgname%-bin}"{,gui,plugson,web,-{,extend-}persistent} -vt "$pkgdir"/usr/bin/
+  install -Dm755 "$srcdir/${pkgname%-bin}"{,gui,web,-{,extend-}persistent,plugson} -vt "$pkgdir"/usr/bin/
 }
