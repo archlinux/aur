@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-multimedia
-_qtver=6.2.1
+_qtver=6.2.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('07764ad31d4d4ef679c3ceb861e762d12690b4fa899b3ccec45e5353309a90d0')
+sha256sums=('37ec84e7e35a818e86eee5059bd245d6c42cc11f9fa4110df35b3644b7494810')
 
 build() {
   source android-env ${_android_arch}
