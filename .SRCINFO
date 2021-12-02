@@ -1,6 +1,6 @@
 pkgbase = kwin-bismuth-git
 	pkgdesc = Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers.
-	pkgver = 2.1.0.r21.g4c3b17d
+	pkgver = 2.1.0.r27.g84a0ac5
 	pkgrel = 1
 	url = https://github.com/Bismuth-Forge/bismuth
 	arch = x86_64
