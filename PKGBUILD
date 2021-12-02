@@ -4,11 +4,11 @@
 # Contributor: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
 
 pkgname=redis-desktop-manager
-pkgver=2021.8
+pkgver=2021.9.1
 pkgrel=1
 pkgdesc='Open source cross-platform Redis Desktop Manager based on Qt 5'
 arch=('x86_64')
-url="https://redisdesktop.com/"
+url="https://rdm.dev"
 license=('GPL3')
 depends=(
 	'qt5-base'
@@ -31,24 +31,21 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd rdm/
-
 	git submodule update --init --recursive
-	git submodule add https://chromium.googlesource.com/linux-syscall-support 3rdparty/linux-syscall-support
-
-	python build/utils/set_version.py "$pkgver" >src/version.h
-
-	_lssdir='3rdparty/gbreakpad/src/third_party/lss/'
-	mkdir -p ${_lssdir}
-	cp 3rdparty/linux-syscall-support/linux_syscall_support.h ${_lssdir}
-	touch 3rdparty/gbreakpad/README
 }
 
 build() {
 	cd "$srcdir/rdm/3rdparty/lz4/build/cmake"
-	cmake -DLZ4_BUNDLED_MODE=ON . && make
+	cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DLZ4_BUNDLED_MODE=ON . && make
+	cd "$srcdir/rdm/3rdparty/zstd/build/cmake"
+	cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release . && make libzstd_static
+	cd "$srcdir/rdm/3rdparty/snappy"
+	cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release . && make
+	cd "$srcdir/rdm/3rdparty/brotli"
+	cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release . && make
 	cd "$srcdir/rdm/src"
-	lrelease resources/translations/*.ts
-	qmake && make
+	lrelease rdm.pro
+	qmake VERSION="$pkgver" && make
 }
 
 package() {
