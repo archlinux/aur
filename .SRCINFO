@@ -1,12 +1,12 @@
 pkgbase = eea-dkms
 	pkgdesc = ESET Endpoint Antivirus Business for Linux (DKMS)
 	pkgver = 8.1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eset.com/int/business/endpoint-antivirus-linux/
 	install = eea.install
 	arch = x86_64
 	license = proprietary
-	depends = dkms
+	depends = dkms>=3.0.2
 	depends = perl
 	depends = libelf
 	depends = systemd-libs
@@ -18,7 +18,7 @@ pkgbase = eea-dkms
 	source = dkms.conf
 	source = dkms_postinst
 	sha256sums = 956ff6766b792d665e3d7fd27fc479e80f88b8815f304800d58debad1cdef9f6
-	sha256sums = 0ff7dd79c8811afbc95b121f322bbec4839d7ce7334e5825fa447e3f3ad129e7
+	sha256sums = 53df6d50f98792053da2580df7828a06eef34dd066de684a333dd7569b481f93
 	sha256sums = 20539f7116bf44defc2df0f244d8c02722b06b97fe6be8a049c4ecafce2d744c
 
 pkgname = eea-dkms
