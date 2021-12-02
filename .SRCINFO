@@ -1,0 +1,13 @@
+pkgbase = python-markpress-git
+	pkgver = 2.0.2.r0.g4c284b8
+	pkgrel = 1
+	arch = any
+	makedepends = python-setuptools
+	depends = python-socks
+	depends = python-beautifulsoup4
+	depends = python-markdown
+	depends = python-wordpress-xmlrpc
+	source = git+https://github.com/black-desk/markpress#branch=master
+	md5sums = SKIP
+
+pkgname = python-markpress-git
