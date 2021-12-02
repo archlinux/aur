@@ -24,7 +24,6 @@ makedepends=('patchelf' 'python-setuptools')
 optdepends=()
 # Stripping breaks the generated cymj_*.so file
 options=(!strip)
-_release_commit="4830435a169c1f3e3b5f9b58a7c3d9c39bdf4acb"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "$_name.patch")
 sha256sums=('eb5b14485acf80a3cf8c15f4b080c6a28a9f79e68869aa696d16cbd51ea7706f'
