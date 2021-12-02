@@ -7,7 +7,7 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
 pkgver=7.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -95,11 +95,9 @@ backup=(
   'etc/logrotate.d/libvirtd.qemu'
   'etc/sasl2/libvirt.conf'
 )
-source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
-        "find_programs.ini")
+source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc})
 sha256sums=('cb318014af097327928c6e3d72922e3be02a3e6401247b2aa52d9ab8e0b480f9'
-            'SKIP'
-            '735ac805fbf06021418f82297845babf481d5681bd939a6994fbdf36fe1661e4')
+            'SKIP')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
@@ -122,7 +120,6 @@ build() {
 
   arch-meson build \
     --libexecdir=lib/libvirt \
-    --native-file "$srcdir"/find_programs.ini \
     -Drunstatedir=/run \
     -Dqemu_group=kvm \
     -Dnetcf=disabled \
