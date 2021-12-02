@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=fortune-mod-de-git
-pkgver=0.34.r382.gd11792e
-pkgrel=2
+pkgver=0.34.r383.gc0e2322
+pkgrel=1
 pkgdesc="Fortune Cookies in German, from the Debian project"
 url="https://salsa.debian.org/debian/fortunes-de"
 depends=('fortune-mod')
