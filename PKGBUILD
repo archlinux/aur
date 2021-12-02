@@ -4,7 +4,7 @@
 # Contributor: John W. Trengrove <john@retrofilter.com>
 
 pkgname='stagit'
-pkgver=0.9.6
+pkgver=1.0
 pkgrel=1
 pkgdesc='Static site generator for git version control'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('libgit2')
 optdepends=('git: scripting functionality')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d9f0cdb67ed0e6355f0485e36cc81136d7f21d73a35010faf41f2c967ff462ca948b2b8d2e6ce226a065969636d1ffc5603ef8da2c86598b861bd6c7c2f0d368')
+sha512sums=('d18d7adadf85979f3062f0d4c41580d06f11a39c8864184d5a37822689bd372bb26139c7ae16728d71e240f90e2dbe6ce829cd27ee2ea684474974341c208813')
 
 build() {
   make -C "${pkgname}-${pkgver}"
