@@ -2,6 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!fluent-reader-bin.install
 !changelog.md
 !changelog_generator.sh

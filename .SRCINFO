@@ -1,9 +1,8 @@
 pkgbase = fluent-reader-bin
 	pkgdesc = Modern desktop RSS reader built with Electron, React, and Fluent UI.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyliu.me/fluent-reader/
-	install = fluent-reader-bin.install
 	changelog = changelog.md
 	arch = x86_64
 	license = custom:BSD3
