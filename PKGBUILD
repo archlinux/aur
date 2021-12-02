@@ -90,9 +90,9 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.15.5-xanmod1
-#pkgver=${xanmod//-/.}
-pkgver=5.15.6.prexan0
+xanmod=5.15.6-xanmod1
+pkgver=${xanmod//-/.}
+#pkgver=5.15.6.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -120,7 +120,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.5-6.xz"
+        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.5-6.xz"
 
         # Arch: misc hotfixes
         "PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
@@ -179,10 +179,9 @@ validpgpkeys=(
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'd1b3e3aae70eae207d473214b33c088f646105fdbc52d8a7df71fbbdeede83b3'
+            'ced66546f6d4cceb9e3d21891469a1bf59fb9cb6e630dd84330856e4a570f0ba'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            '8d636a78874d7d1e13809fcb77594c0e70eb8b510f4cc99c3b29018722f97e6a'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
             '54f161457cc4de4ebd5770c16f14f7a47f1dbbc4f1af83dec651e6a8b1eaad56'
