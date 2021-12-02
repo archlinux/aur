@@ -1,6 +1,6 @@
 pkgbase = python-gaphor
 	pkgdesc = Simple and easy to use modeling tool for UML using GTK3
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/gaphor/gaphor
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-gaphor
 	depends = python-typing_extensions
 	depends = python-generic
 	depends = python-tinycss2
-	source = https://files.pythonhosted.org/packages/py3/g/gaphor/gaphor-2.7.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/g/gaphor/gaphor-2.7.1-py3-none-any.whl
 	source = https://raw.githubusercontent.com/gaphor/gaphor/master/logos/org.gaphor.Gaphor.svg
-	sha256sums = c727f58047380ad4a609f76b055ee9bcae3a8a29ade48a77c01d1b6b964d7a15
+	sha256sums = fc61918df54d1aa5b0ae2399030dea737b8f2a8a2ff546cd8884ae744a1fbdf5
 	sha256sums = c4bbe4a67662d52c04cbd283b33f3ff3a97697e158c56c4b776c1c4ef527dd62
 
 pkgname = python-gaphor
