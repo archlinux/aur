@@ -1,6 +1,6 @@
 # Maintainer: Epix <epixtm@protonmail.com>
 pkgname=plasma5-wallpapers-wallpaper-engine-git
-pkgver=r238.8a53a6a
+pkgver=r379.5bf407a
 pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('any')
