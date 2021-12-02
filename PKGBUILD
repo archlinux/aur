@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=7.5.2.beta.r3.ge74a3de
+pkgver=r7.5.2.beta.4.gbd7c196
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -41,17 +41,13 @@ git+https://github.com/CadQuery/pywrap.git
 sha256sums=('SKIP'
             'SKIP')
 
-# pick where opencascade is installed
+# pick where the opencascade is installed
 export _opencascade_install_prefix="/opt/opencascade-cadquery/usr"
 #export _opencascade_install_prefix="/usr"
 
-# pick the package name that will provide opencascade here
-export _occt_package_name="opencascade-cadquery"
-#export _occt_package_name="opencascade"
-
 pkgver() {
   cd OCP
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-\)/r\1/;s/-/./g'
 }
 
 prepare(){
@@ -61,8 +57,7 @@ prepare(){
   #git submodule update  # use the submodule commit hashes specified
   git submodule update --remote --merge  # use the latest commit(s)
   
-  _system_occt_ver=$(pacman -Q opencascade-cadquery | cut -f2 -d ' ' | cut -f1 -d'-')
-  sed "s,^libs_linux = .*,libs_linux = prefix_linux.glob('**/libTK*.so.${_system_occt_ver%p*}')," -i dump_symbols.py
+  sed "s,^libs_linux = .*,libs_linux = prefix_linux.glob('**/libTK*.so')," -i dump_symbols.py
   
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
@@ -90,17 +85,17 @@ build() {
   mkdir -p "${_structure_needed}"
   ln -s "${_opencascade_install_prefix}"/lib dummy/lib_linux/.
   msg2 "Old symbols:"
-  ls -lh *.dat
+  ls -gG --human-readable *.dat
   rm *.dat
-  msg2 "Dumping symbols..."
+  msg2 "Redumping symbols..."
   python dump_symbols.py dummy
   msg2 "Dump complete. New symbols:"
-  ls -lh *.dat
+  ls -gG --human-readable *.dat
   rm -rf ${_structure_needed}
   find -maxdepth 1 -name '*.dat' -exec ln -sf ../{} pywrap/{} \;
 
   msg2 "Generating bindings..."
-  CONDA_PREFIX="/usr" PYTHONPATH=pywrap python -m bindgen \
+  CONDA_PREFIX="/usr" PYTHONPATH=pywrap python -m bindgen -v \
     --clean \
     --libclang /usr/lib/libclang.so \
     --include "$(clang -print-resource-dir)"/include \
@@ -115,9 +110,8 @@ build() {
     -D OPENCASCADE_INCLUDE_DIR="${_opencascade_install_prefix}"/include/opencascade/
 
   msg2 "Building OCP..."
-  _n_parallel_build_jobs=1  # needed to prevent memory exhaustion on my many core machine, 10 seems to consume about 14.5 GiB
+  _n_parallel_build_jobs=1  # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB
   cmake --build build_dir -j${_n_parallel_build_jobs}
-
   msg2 "OCP built."
 }
 
@@ -129,7 +123,7 @@ check() {
   unset "${!DRAW@}"
   unset CASROOT
 
-  PYTHONPATH="$(pwd)/build_dir" python -c "from OCP import *"
+  PYTHONPATH="$(pwd)/build_dir" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
 }
 
 package(){
