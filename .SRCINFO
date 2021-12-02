@@ -1,13 +1,13 @@
 pkgbase = neovim-scrollview
 	pkgdesc = Neovim plugin that displays interactive vertical scrollbars
-	pkgver = 2.4.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/dstein64/nvim-scrollview
 	arch = any
 	groups = neovim-plugins
 	license = MIT
-	depends = neovim>=0.5
-	source = neovim-scrollview-2.4.2.tar.gz::https://github.com/dstein64/nvim-scrollview/archive/v2.4.2.tar.gz
-	sha256sums = a5b5b3349855cd2cfc6aefe987dbf1ec3926848e4c05371d214980bbd613a486
+	depends = neovim
+	source = neovim-scrollview-3.0.0.tar.gz::https://github.com/dstein64/nvim-scrollview/archive/v3.0.0.tar.gz
+	sha256sums = e5af1462d14aee8cae53ce06d36e94f300955e61625f2398a920dca9d1ef4529
 
 pkgname = neovim-scrollview
