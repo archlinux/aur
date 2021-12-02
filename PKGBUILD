@@ -2,7 +2,7 @@
 
 pkgname=python-awkward
 pkgver=0.15.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward-0.x"
 license=('BSD')
