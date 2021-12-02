@@ -1,19 +1,18 @@
 pkgbase = enchantmentcracker-bin
 	pkgdesc = Cracking the XP seed in Minecraft and choosing your enchantments
-	pkgver = 1.5.1
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/Earthcomputer/EnchantmentCracker
 	arch = any
 	license = MIT
 	makedepends = unzip
 	depends = java-runtime=8
-	noextract = enchcracker-1.5.1.zip
-	source = https://github.com/Earthcomputer/EnchantmentCracker/releases/download/v1.5.1/enchcracker-1.5.1.zip
-	source = https://raw.githubusercontent.com/Earthcomputer/EnchantmentCracker/v1.5.1/LICENSE.txt
+	noextract = enchcracker-1.6.zip
+	source = https://github.com/Earthcomputer/EnchantmentCracker/releases/download/v1.6/enchcracker-1.6.zip
+	source = https://raw.githubusercontent.com/Earthcomputer/EnchantmentCracker/v1.6/LICENSE.txt
 	source = enchcracker
-	md5sums = e6c123e675b55e4dd9bd74e361810ef4
+	md5sums = 12e4ec378c04a97136b1487065dbb6bb
 	md5sums = 47d894a54821060b37984df5ee85c467
 	md5sums = f0322a90cebb3bdb20e65c1fdca5b33c
 
 pkgname = enchantmentcracker-bin
-

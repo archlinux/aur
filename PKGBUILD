@@ -1,5 +1,5 @@
 pkgname='enchantmentcracker-bin'
-pkgver='1.5.1'
+pkgver='1.6'
 pkgrel=1
 epoch=
 pkgdesc='Cracking the XP seed in Minecraft and choosing your enchantments'
@@ -13,7 +13,7 @@ source=("https://github.com/Earthcomputer/EnchantmentCracker/releases/download/v
 	"enchcracker")
 noextract=("enchcracker-${pkgver//_/-}.zip")
 
-md5sums=('e6c123e675b55e4dd9bd74e361810ef4'
+md5sums=('12e4ec378c04a97136b1487065dbb6bb'
          '47d894a54821060b37984df5ee85c467'
          'f0322a90cebb3bdb20e65c1fdca5b33c')
 
