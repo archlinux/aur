@@ -1,0 +1,13 @@
+diff --git a/trilinos.py b/trilinos.py
+index 143140d..a9bc190 100644
+--- a/trilinos.py
++++ b/trilinos.py
+@@ -44,7 +44,7 @@ def configure(conf):
+     if conf.options.trilinos_libs:
+         trilinos_libs_list=[conf.options.trilinos_libs.split()]
+     else:
+-        trilinos_libs_list=[['sacado'],['trilinos_teuchoscomm','trilinos_teuchoscore','trilinos_kokkoscore']]
++        trilinos_libs_list=[['sacado'],['teuchoscomm','teuchoscore','kokkoscore', 'dl']]
+ 
+     found_trilinos=False
+     for trilinos_libs in trilinos_libs_list:
