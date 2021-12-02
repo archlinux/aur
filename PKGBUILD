@@ -17,8 +17,15 @@ checkdepends=(
 )
 # No tests in PyPi tarballs
 #source=(https://files.pythonhosted.org/packages/source/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz)
-source=(${url}/archive/v${pkgver}/${_pkg}-${pkgver}.tar.gz)
-sha256sums=('0d46be1a40cfcdcd9ff9d052828c6ea57f5e1e2378373761c963c4a0cfcc5512')
+source=(${url}/archive/v${pkgver}/${_pkg}-${pkgver}.tar.gz
+        python310.patch)
+sha256sums=('0d46be1a40cfcdcd9ff9d052828c6ea57f5e1e2378373761c963c4a0cfcc5512'
+            '33d7c2d13f7e87c33c6f92caf934b6eb10b9503b1334068aee7b4de6bc2660e3')
+
+prepare() {
+  cd ${_pkg}-${pkgver}
+  patch -Np1 -i ../python310.patch
+}
 
 build() {
   cd ${_pkg}-${pkgver}

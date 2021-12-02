@@ -1,0 +1,51 @@
+From 27dee3e61f06be004fb8a3ac31056afa23b0ee90 Mon Sep 17 00:00:00 2001
+From: Julian Gilbey <julian-git@d-and-j.net>
+Date: Thu, 31 Dec 2020 19:47:08 +0000
+Subject: [PATCH] The Iterable ABC is now in collections.abc
+
+(cherry picked from commit 7daef8e050e5367b60c694cb5c578b305eed84be)
+---
+ abydos/distance/_synoname.py     | 2 +-
+ abydos/tokenizer/_q_grams.py     | 2 +-
+ abydos/tokenizer/_q_skipgrams.py | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/abydos/distance/_synoname.py b/abydos/distance/_synoname.py
+index 7fd7edda..f9bc4825 100644
+--- a/abydos/distance/_synoname.py
++++ b/abydos/distance/_synoname.py
+@@ -19,7 +19,7 @@
+ Synoname.
+ """
+ 
+-from collections import Iterable
++from collections.abc import Iterable
+ 
+ from deprecation import deprecated
+ 
+diff --git a/abydos/tokenizer/_q_grams.py b/abydos/tokenizer/_q_grams.py
+index 0e1f82f7..8de2e3fa 100644
+--- a/abydos/tokenizer/_q_grams.py
++++ b/abydos/tokenizer/_q_grams.py
+@@ -19,7 +19,7 @@
+ QGrams multi-set class
+ """
+ 
+-from collections import Iterable
++from collections.abc import Iterable
+ 
+ from ._tokenizer import _Tokenizer
+ 
+diff --git a/abydos/tokenizer/_q_skipgrams.py b/abydos/tokenizer/_q_skipgrams.py
+index 9219873d..36e98c26 100644
+--- a/abydos/tokenizer/_q_skipgrams.py
++++ b/abydos/tokenizer/_q_skipgrams.py
+@@ -19,7 +19,7 @@
+ Q-Skipgrams multi-set class
+ """
+ 
+-from collections import Iterable
++from collections.abc import Iterable
+ from itertools import combinations
+ 
+ from ._tokenizer import _Tokenizer
