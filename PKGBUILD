@@ -4,7 +4,7 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc='Self-hosted social media and network server based on ActivityPub and OStatus'
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=(https://github.com/tootsuite/mastodon/archive/v$pkgver.tar.gz
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d)
-sha512sums=('cb89b27d48bb6849f66ba31d8e869a0f0590fbe52b28b1fc8da612d2df39d45f7a0137926adcb19fbd2c19d227314a9863f56246d0e4e6d1bc1fe52e8fa72319'
+sha512sums=('0105ebebf57ec44ebe817f4f05b636793e8bf06a089683a25f6a9a60d0763f093f9aa3688577207af7446c29389869b1e82e3d313d24d83c5ea5117695b33f10'
             'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb'
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
             '73493680845e690d0cfd769fbbe68978c0a615602375078aea945ca1f1011404eb4b64972aec7a6e5efa720fb425d91b3f30025391c38ccf77e070ccb391e710')
