@@ -4,13 +4,13 @@
 
 pkgname=python-binance-git
 pkgver=1.0.15.r2.g217f1e2
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial Python wrapper for the Binance exchange REST API"
 arch=('any')
 url="https://github.com/sammchardy/python-binance"
 license=('MIT')
 depends=('python' 'python-aiohttp' 'python-dateparser' 'python-pytz'
-         'python-requests' 'python-ujson' 'python-websockets=9.1')
+         'python-requests' 'python-ujson' 'python-websockets')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-requests-mock')
 provides=("${pkgname%-git}")
