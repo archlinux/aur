@@ -5,7 +5,7 @@
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch-xpack
-pkgver=7.15.1
+pkgver=7.15.2
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha512sums=('c9b03db45d6f8e35ac46cbfee37cccddc5ee001fa5f0ded39917697de8b73f5da79ecde34692f0d31b664073d7d8dd5c8e1cc279759dd02895788bffa9ae8b7a'
+sha512sums=('55361f14c25e9930f18053fa5b105c25ee6d551d56588ff51640fcd1e26048da6d3b43e3216da8b891833b427d518e0fb7e84d34089661081c4457385a563a92'
             'SKIP'
             '52556e0709590f0e15039d89b64c08c9bbeb0c61d29e3cd5a4471744968c882eb559081db1c89e846fa33d50b31e2fe9ba46d7e7e2cf5d4a23e78bc97a50c853'
             '8280cfd911c1762a1cba67a72bf01c593dbcec00ab02b5f7ca2ef05dbcbae835f2d0e20f3143b0f601e233708e7a60148a1b2087aaff0e0b239361ca4792409f'
