@@ -2,6 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!mymonero.install
 !changelog.md
 !changelog_generator.sh

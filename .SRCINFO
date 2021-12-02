@@ -1,9 +1,8 @@
 pkgbase = mymonero
 	pkgdesc = The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mymonero.com/
-	install = mymonero.install
 	changelog = changelog.md
 	arch = x86_64
 	license = custom:MyMonero
