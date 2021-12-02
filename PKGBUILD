@@ -2,10 +2,10 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-stamps-git
-pkgver=1516.689013db5
-pkgrel=2
+pkgver=1620.97c9e761e
+pkgrel=1
 arch=('any')
-pkgdesc="Additional stamps for Tux Paint, cvs version"
+pkgdesc="Additional stamps for Tux Paint, git-version"
 url="http://www.newbreedsoftware.com/tuxpaint/"
 license=('GPL')
 provides=('tuxpaint-stamps')
