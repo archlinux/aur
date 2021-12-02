@@ -33,8 +33,8 @@ build() {
 }
 
 package() {
-  install -Dm 644 ../safe-rm.conf -t "$pkgdir/etc"
-  install -Dm 755 ../safe-rm.sh -t "$pkgdir/etc/profile.d"
+  install -Dm 644 $srcdir/safe-rm.conf -t "$pkgdir/etc"
+  install -Dm 755 $srcdir/safe-rm.sh -t "$pkgdir/etc/profile.d"
   cd $pkgname-$pkgver
   install -Dm 755 target/release/$pkgname -t "$pkgdir/usr/bin"
   install -Dm 644 safe-rm.1 -t "$pkgdir/usr/share/man/man1"
