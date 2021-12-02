@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd editdistance-s-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-x86_64-3.9" pytest
+  PYTHONPATH="$PWD/build/lib.linux-x86_64-3.10" pytest
 }
 
 package() {
