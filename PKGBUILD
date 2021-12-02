@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly-git
-pkgver=0.6.0rc2.r1.ge1cc7ff1
+pkgver=0.6.2.r3.g42698d34
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers (git version)'
 arch=('x86_64')
@@ -24,13 +24,18 @@ pkgver() {
 }
 
 build() {
+    local _ldflags='-linkmode=external'
+    _ldflags+=' -X main.DefaultBuildkitdImage=docker.io/earthly/buildkitd:latest'
+    _ldflags+=' -X main.Version=latest'
+    _ldflags+=" -X main.GitSha=$(git -C earthly rev-parse HEAD)"
+    local _tags='dfrunmount,dfrunsecurity,dfsecrets,dfssh,dfrunnetwork,dfheredoc'
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
-    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
+    export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
     cd earthly
-    go build -o build ./cmd/...
+    go build -tags "$_tags" -ldflags "$_ldflags" -o build ./cmd/...
 }
 
 check() {
