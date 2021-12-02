@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.33.0.336.g62b2c5db98
+pkgver=v0.34.0.94.gd86bfebe6d
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -41,6 +41,8 @@ depends=(
          'uchardet'
          'v4l-utils'
          'vulkan-icd-loader'
+         'wayland'
+         'spirv-cross'
          'zimg'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
@@ -102,7 +104,6 @@ prepare() {
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
     '--disable-programs'
-    '--enable-ladspa'
     '--enable-libbs2b'
     '--enable-libdav1d'
     '--enable-libgme'
@@ -136,10 +137,30 @@ fi
     '--enable-sdl2'
     '--enable-shaderc'
     '--enable-vulkan'
+    '--enable-gl-x11'
+    '--enable-egl'
+    '--enable-egl-x11'
+    '--enable-egl-drm'
+    '--enable-gl-wayland'
+    '--enable-drm'
+    '--enable-gbm'
+    '--enable-wayland-scanner'
+    '--enable-wayland-protocols'
+    '--enable-wayland'
+    '--enable-vdpau'
+    '--enable-vdpau-gl-x11'
+    '--enable-vaapi'
+    '--enable-vaapi-x11'
+    '--enable-vaapi-wayland'
+    '--enable-vaapi-drm'
+    '--enable-vaapi-x-egl'
+    '--enable-cuda-hwaccel'
+    '--enable-cuda-interop'
+    '--color=yes'
     )
 
-  echo ${_ffmpeg_options[@]} > ffmpeg_options
-  echo ${_mpv_options[@]} > mpv_options
+  (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options )
+  (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options )
 
   cd mpv
 
@@ -148,8 +169,6 @@ fi
 
 build() {
   cd mpv-build
-  # https://github.com/mpv-player/mpv-build/issues/150
-  LDFLAGS+=" $(pkg-config --libs fontconfig harfbuzz fribidi)"
   ./build
 }
 

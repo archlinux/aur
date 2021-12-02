@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = v0.33.0.336.g62b2c5db98
+	pkgver = v0.34.0.94.gd86bfebe6d
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
@@ -53,6 +53,8 @@ pkgbase = mpv-build-git
 	depends = uchardet
 	depends = v4l-utils
 	depends = vulkan-icd-loader
+	depends = wayland
+	depends = spirv-cross
 	depends = zimg
 	depends = vapoursynth
 	depends = avisynthplus
