@@ -1,17 +1,18 @@
 # Maintainer: Xuanrui Qi <xuanrui@xuanruiwork>
 pkgbase=rebuild-initramfs-dracut
 pkgname=(rebuild-initramfs-dracut rebuild-initramfs-dracut-hook)
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 arch=('any')
 url="https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xuanruiqi/${pkgname}-arch/archive/${pkgver}.tar.gz")
-sha256sums=('43093bffb3a602dda7bafccb326adb95cf2960b6c3f87fd53701c9349c9eedf4')
+sha256sums=('e071adeec2ba2fe6b05f4bdb79075c70ea5e5acbafc91bdbcf7422e5439c4621')
 
 package_rebuild-initramfs-dracut() {
   pkgdesc="A helper script to rebuild initramfs images using dracut"
   depends=("dracut")
+  optdepends=("sbsigntools: to sign kernel image")
 
   cd "${srcdir}/${pkgbase}-arch-${pkgver}"
 
