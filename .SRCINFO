@@ -1,12 +1,12 @@
 pkgbase = whatsappqt
 	pkgdesc = Unofficial WhatsApp Web desktop client
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/bit3/whatsappqt
 	arch = x86_64
 	license = MIT
 	depends = qt5-webengine
-	source = https://gitlab.com/bit3/whatsappqt/-/archive/v1.0.2/whatsappqt-v1.0.2.tar.gz
-	sha256sums = 272dc5bc67252ebfe0fae2fbd09b10afd9045c10922c3c81580480160c72f3cd
+	source = whatsappqt-1.0.3.tar.gz::https://gitlab.com/bit3/whatsappqt/-/archive/v1.0.3/whatsappqt-v1.0.3.tar.gz
+	sha256sums = 5ffc915341ce64e323f88c6b2f098555c601d202b4023e1b6c44c38967e2a713
 
 pkgname = whatsappqt
