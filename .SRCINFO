@@ -1,19 +1,19 @@
 pkgbase = fish-fzf
 	pkgdesc = fzf key-bindings into fish
-	pkgver = 7.3
-	pkgrel = 2
+	pkgver = 7.4
+	pkgrel = 1
 	url = https://github.com/PatrickF1/fzf.fish
 	install = fish-fzf.install
 	arch = any
 	groups = fish-plugins
 	license = MIT
 	makedepends = git
-	depends = fish>=3.2.0
-	depends = fzf>=0.27.2
-	optdepends = fd>=7.5.0: required for search directory feature
-	optdepends = bat>=0.16.0: required for search directory feature
+	depends = fish
+	depends = fzf
+	optdepends = fd: required for search directory feature
+	optdepends = bat: required for search directory feature
 	optdepends = git
-	source = fish-fzf-7.3.tar.gz::https://github.com/PatrickF1/fzf.fish/archive/v7.3.tar.gz
-	sha512sums = 160735d107f2e6feaf9c51699abe425d36562bfb3a11135564c32944650b76c071fc7d5adc717a0d4f66df43c1ddad9a447d085a3063099dab7a6be1f9c395e7
+	source = fish-fzf-7.4.tar.gz::https://github.com/PatrickF1/fzf.fish/archive/v7.4.tar.gz
+	sha256sums = 2e88f4c9ee068f798c861c299f41a40e1163e76242df47ddef438445868b16e4
 
 pkgname = fish-fzf

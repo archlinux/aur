@@ -1,6 +1,3 @@
 post_upgrade() {
-	echo ":: There are breaking changes in version 7.0."
-	echo ":: Search directory's key binding has changed to Ctrl-Alt-F."
-	echo ":: All fzf's private functions have been renamed; if you have binded this yourself, switch to fzf_configure_bindings."
-	echo ":: See https://github.com/PatrickF1/fzf.fish/wiki/Migration-Guides#v7 for more details."
+	echo 'Please check upstream documentation for any breaking changes.'
 }
