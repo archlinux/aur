@@ -2,7 +2,7 @@
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.20
+pkgver=0.10.21
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest' 'python-sphinx' 'python-feedgen')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('d1544e9ff0b42d607f74c087cfac1529')
+md5sums=('ed61eb7dcc3c17149411b030ee967a61')
 
 #prepare() {
 #    export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
@@ -42,7 +42,7 @@ check() {
 }
 
 package_python-ablog() {
-    depends=('python-sphinx' 'python-feedgen' 'python-invoke' 'python-watchdog')
+    depends=('python-sphinx' 'python-feedgen' 'python-invoke' 'python-watchdog')    # dateutil pulled by feedgen
     optdepends=('ipython: notebook'
                 'python-nbsphinx: notebook'
                 'python-myst-parser: markdown'
