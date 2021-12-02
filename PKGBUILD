@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=95.0.4638.54
+pkgver=96.0.4664.45
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('x86_64')
@@ -16,15 +16,12 @@ makedepends=(
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
-  "gn-visibility-webrtc.patch"
 )
-sha512sums=('159c8d37e8cfb5bb0e55d3d1329295dab585164b84b8c514ea80f0f68ce0b491f4c40a186a2bc108baae2341cf320dee78c654c0a038d5aeb17b5a19c7f043d9'
-            'a0d2b31b870a53af6c68ef1f66c6e6bdeb63ca4bf49120c389dfbd41f98818c387295b0b9330d5e446ebdb46e20a7eb69ab2007eb5c5efdeb16e83e7e01b2e3b')
+sha512sums=('0b1ccaf95697c14cb080dcb22e8584817ddcd98e704d081bc4f35a22dcfc8cca82dcabc4b82ad89ed0cd64752d226f389941bfab33b615e3948e2f778b9d9028')
 
-prepare() {
-  cd "$srcdir/chromium-$pkgver"
-  patch -Np1 -i ../gn-visibility-webrtc.patch
-}
+#prepare() {
+  #cd "$srcdir/chromium-$pkgver"
+#}
 
 build() {
   cd "$srcdir/chromium-$pkgver"
