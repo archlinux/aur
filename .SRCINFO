@@ -1,0 +1,12 @@
+pkgbase = python-sphinx-renku-theme
+	pkgdesc = Sphinx theme for Renku documentation
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/SwissDataScienceCenter/renku-sphinx-theme
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	source = https://github.com/SwissDataScienceCenter/renku-sphinx-theme/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = a02e96e4b15fb3100d5d0d549795c47e35c66219a6279723848212fe2a206e3b
+
+pkgname = python-sphinx-renku-theme
