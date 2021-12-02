@@ -9,7 +9,7 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-improve-font-rendering
-pkgver=9.26
+pkgver=9.30
 pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with improved font rendering'
 arch=('i686' 'x86_64')
@@ -25,11 +25,12 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'urxvt-tabbed.desktop'
         'https://gist.githubusercontent.com/emonkak/28bbc5474697695321452b6d9bf1d0bd/raw/a888c37ae10376598e663cf989132648f89219c0/rxvt-unicode-9.22-improve-font-endering.patch'
         )
-sha1sums=('d325d8cdea6bcb8e0b8b219b8451bf5c690b6c62'
-          'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
-          '62c4ffecfce6967def394dd4d418b68652372ea2'
-          'cd204d608d114d39c80331efe0af0231ad6b7e18'
-          'e3d9f5575d048cf6ff7724f3e3051d48bfa22946')
+sha256sums=(
+        'fe1c93d12f385876457a989fc3ae05c0915d2692efc59289d0f70fabe5b44d2d'
+        '13b3ce60ef607b5c94c9e0e2aa5236781e7a4c1c69da2c0ea9ef30c52728ac69'
+        '9c1964776a1f7fe0ccfff937355e7dedca812c328e38970598bf2f62633ee121'
+        '1841d774887c4402f9fd431abc54776a914ac7f9d19cb1903035fb2afd6a79c4'
+        'b3708e6be20a87e99c3bdb498ceb7aef3c149d063d687118a5e008881dcd335b')
 prepare() {
   cd $_pkgname-$pkgver
 
