@@ -19,7 +19,7 @@ pkgbase = lagrange
 	depends = pcre
 	depends = sdl2
 	optdepends = mpg123
-	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v1.8.2/lagrange-1.8.2.tar.gz
-	sha256sums = 375a3640284d29a182ffec138298c9590d7228a390113023164a6a312c7e64f1
+	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v1.9.1/lagrange-1.9.1.tar.gz
+	sha256sums = b0ddc675f9167c55aa0dc508fe092cc22759b1741ddd6913c25c00d20980ad1a
 
 pkgname = lagrange
