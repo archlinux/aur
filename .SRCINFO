@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-protectedheaders-nonm-git
 	pkgdesc = A GTK+ based e-mail client. With patch to show 'protected headers' (currently only IETF draft, not enigmail flavour), without network manager dependency. Latest git checkout.
-	pkgver = 3.18.0.295+r11447.20211106.71e1e70a4
-	pkgrel = 3
+	pkgver = 3.18.0.303+r11455.20211110.8c0ef328f
+	pkgrel = 1
 	epoch = 0
 	url = http://thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426
 	arch = i686
@@ -53,15 +53,15 @@ pkgbase = claws-mail-gtk2-protectedheaders-nonm-git
 	optdepends = python: For some tools/ plugins.
 	optdepends = python2: For Python plugin.
 	optdepends = spamassassin: Adds support for spamfiltering.
-	provides = claws=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail-git=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail-gtk2=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail-nonm=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail-protectedheaders=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail-gtk2-protectedheaders-nonm=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail-plugins=3.18.0.295+r11447.20211106.71e1e70a4
-	provides = claws-mail-extra-plugins=3.18.0.295+r11447.20211106.71e1e70a4
+	provides = claws=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail-git=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail-gtk2=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail-nonm=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail-protectedheaders=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail-gtk2-protectedheaders-nonm=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail-plugins=3.18.0.303+r11455.20211110.8c0ef328f
+	provides = claws-mail-extra-plugins=3.18.0.303+r11455.20211110.8c0ef328f
 	conflicts = claws-mail
 	conflicts = claws-mail-plugins
 	conflicts = claws-mail-extra-plugins
@@ -69,9 +69,7 @@ pkgbase = claws-mail-gtk2-protectedheaders-nonm-git
 	replaces = claws-mail-extra-plugins
 	replaces = sylpheed-claws
 	options = emptydirs
-	source = claws-mail::git://git.claws-mail.org/claws.git
-	source = protectedheaders-ietf.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2260
+	source = claws-mail::git://github.com/ahngoo8Gongi/claws-mail.git#branch=protected-headers-21
 	sha256sums = SKIP
-	sha256sums = 6c11ec02b0184e5552689cc1316b88b08fe541bae42991e26cb32e7783493ea4
 
 pkgname = claws-mail-gtk2-protectedheaders-nonm-git

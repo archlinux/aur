@@ -6,8 +6,8 @@ _pkgvariant='-gtk2-protectedheaders-nonm'
 _pkgvcs='-git'
 pkgname="${_pkgname}${_pkgvariant}${_pkgvcs}"
 epoch=0
-pkgver=3.18.0.295+r11447.20211106.71e1e70a4
-pkgrel=3
+pkgver=3.18.0.303+r11455.20211110.8c0ef328f
+pkgrel=1
 pkgdesc="A GTK+ based e-mail client. With patch to show 'protected headers' (currently only IETF draft, not enigmail flavour), without network manager dependency. Latest git checkout."
 arch=(
   'i686'
@@ -96,13 +96,13 @@ provides=(
 )
 options=('emptydirs')
 source=(
-  "${_pkgname}::git://git.claws-mail.org/claws.git" # Vanilla source from main upstream
-  # "${_pkgname}::git://github.com/ahngoo8Gongi/claws-mail.git#branch=protected-headers" # Source where protected headers support get's developed
-  'protectedheaders-ietf.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2260' # https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c17
+  # "${_pkgname}::git://git.claws-mail.org/claws.git" # Vanilla source from main upstream. Select only one main source!
+  "${_pkgname}::git://github.com/ahngoo8Gongi/claws-mail.git#branch=protected-headers-21" # Source where protected headers support get's developed. Select only one main source!
+  # 'protectedheaders-ietf.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2260' # https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c17
 )
 sha256sums=(
   'SKIP' # main sorce (git)
-  '6c11ec02b0184e5552689cc1316b88b08fe541bae42991e26cb32e7783493ea4' # protectedheaders-ietf.patch
+  # '6c11ec02b0184e5552689cc1316b88b08fe541bae42991e26cb32e7783493ea4' # protectedheaders-ietf.patch
 )
 
 # options+=('ccache')
@@ -110,10 +110,10 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  for _patch in 'protectedheaders-ietf.patch'; do
-    msg2 "Applying patch ${_patch} ..."
-    patch -N -p0 -i "${srcdir}/${_patch}"
-  done
+#   for _patch in 'protectedheaders-ietf.patch'; do
+#     msg2 "Applying patch ${_patch} ..."
+#     patch -N -p0 -i "${srcdir}/${_patch}"
+#   done
 
   msg2 "Running ./autogen.sh ..."
   NOCONFIGURE=1 ./autogen.sh
@@ -122,7 +122,8 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe  --tags | sed 's|^v||' | sed 's|-[^-]*$||' | tr '-' '.')"
+  _ver="$(git describe  --tags | sed 's|^v||' | sed 's|-[^-]*$||' | tr '-' '.')"  # Applicable for source which has git tags (correctly) defined, e.g. source from git://git.claws-mail.org/claws.git
+  # _ver="$(grep -E -m 1 [^[:space:]*] RELEASE_NOTES | sed -E 's|^.*claws[[:space:]]+mail[[:space:]]+([0-9\.-_]*).*$|\1|I')"  # Applicable for source which has git tags not (correctly) defined.
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
@@ -132,6 +133,7 @@ pkgver() {
     return 1
   else
     printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    # printf '%s' "${_ver}"
   fi
 }
 
