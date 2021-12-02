@@ -1,13 +1,10 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
-	checkdepends = python-mock
-	checkdepends = python-pytest
-	checkdepends = python-scipy
 	makedepends = cuda
 	makedepends = ffmpeg
 	makedepends = python-av
