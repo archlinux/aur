@@ -13,7 +13,6 @@ pkgbase = r-gtable
 	optdepends = r-ggplot2
 	optdepends = r-profvis
 	source = https://cran.r-project.org/src/contrib/gtable_0.3.0.tar.gz
-	md5sums = f996c5aa07b0ddaa52dc3a22bf3b2c99
+	sha256sums = fd386cc4610b1cc7627dac34dba8367f7efe114b968503027fb2e1265c67d6d3
 
 pkgname = r-gtable
-

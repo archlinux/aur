@@ -13,17 +13,14 @@ license=(GPL2)
 depends=('r>=3.0')
 optdepends=(r-covr r-testthat r-knitr r-rmarkdown r-ggplot2 r-profvis)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('f996c5aa07b0ddaa52dc3a22bf3b2c99')
+sha256sums=('fd386cc4610b1cc7627dac34dba8367f7efe114b968503027fb2e1265c67d6d3')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
