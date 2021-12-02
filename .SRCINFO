@@ -1,7 +1,7 @@
 pkgbase = agisoft-metashape-pro
 	pkgdesc = Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.agisoft.com/
 	install = agisoft-metashape-pro.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = agisoft-metashape-pro
 	optdepends = opencl-amd: AMDGPU PRO OpenCL runtime for GPU acceleration
 	optdepends = cuda: nvidia CUDA runtime for GPU acceleration
 	optdepends = intel-compute-runtime: Intel Neo OpenCL runtime for GPU acceleration
+	optdepends = libffi6: Python rich console support
 	provides = agisoft-metashape-pro
 	provides = agisoft-network-monitor
 	provides = agisoft-viewer
