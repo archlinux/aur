@@ -1,5 +1,5 @@
 pkgbase = hardinfo-gtk3
-	pkgdesc = A system information and benchmark tool.
+	pkgdesc = A system information and benchmark tool. (GTK3 version)
 	pkgver = 0.5.1.816.g877ea2b
 	pkgrel = 2
 	url = https://github.com/lpereira/hardinfo
