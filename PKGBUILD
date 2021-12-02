@@ -3,7 +3,7 @@
 
 pkgname='omada-sdn-controller'
 pkgver=4.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Centralized Omada SDN controller software'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
@@ -21,7 +21,7 @@ sha256sums=('be3ebc1ced254560e21945303df99bdfa1e49a4448311297db0f34de746ba0bf'
 
 package() {
     # Install required source files.
-    cd "${srcdir}/Omada_SDN_Controller_v${pkgver}_linux_x64"
+    cd "${srcdir}/Omada_SDN_Controller_v${pkgver}_Linux_x64"
     local BASEDIR="${pkgdir}/opt/omada-sdn-controller"
     install -dm 755 "${BASEDIR}"
 
