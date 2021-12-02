@@ -1,0 +1,3 @@
+#!/bin/execlineb -P
+fdmove -c 2 1
+exec "/opt/Mullvad VPN/resources/mullvad-daemon" -v --disable-log-to-file --disable-stdout-timestamps
