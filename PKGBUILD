@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-prerelease
-pkgver=2.3.57.5
+pkgver=2.3.57.6
 _pkgtag=$pkgver
 pkgrel=3
 epoch=1
