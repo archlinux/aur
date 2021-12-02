@@ -9,9 +9,9 @@ _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=6.0
 _pkgver=${_pkgvermajmin}.0
-_verpostfix="rc1"
+_verpostfix=""
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=1
+pkgrel=2
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -39,7 +39,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt6-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha512sums=('8e82b27b1c1fe8b675bae1e9c650060993c1f13fad456a63fe1685ec3dc21cafbcb979e0f2bfc0f476f6831cb501d036606889851958c3ba791a7185e286ff87')
+sha512sums=('4d97b18cb5ad8388f3ea0f1cff3b4d0cb04251d2dba22770a7d9f387efbe670b9461a8d83e08a92aefb6472c36e19d0902ff42fd85fd224318b99c66d2526bbb')
 
 prepare() {
   cd ${srcdir}/${_filename}
