@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=distribyted-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Torrent client with on-demand file downloading as a filesystem"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 provides=('distribyted')
 conflicts=('distribyted')
 source=("https://github.com/distribyted/distribyted/releases/download/v${pkgver}/distribyted-v${pkgver}-linux-amd64")
-sha256sums=('3c3526bb1dd0eb0baa3fc5c54cbf77237e142cb623cf47f713e2cb3ed09dcf06')
+sha256sums=('6b82ea9590d93beded98708656da47aa4867a374b4b56772905b06f4408200fe')
 
 package() {
     install -D -m 755 "distribyted-v${pkgver}-linux-amd64" "${pkgdir}/usr/bin/distribyted"
