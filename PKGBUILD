@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd "${_name}-${pkgver}"
-  python setup.py test
+  PYTHONPATH=. pytest
 }
 
 package_python-kaptan() {
