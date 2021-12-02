@@ -5,14 +5,14 @@ pkgver=0
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Fanciest, most efficient and customizable sticky note application (now with Vim!)"
+pkgdesc="Fanciest sticky note-taking application (now with Vim!)"
 url="https://gitlab.com/william.belanger/${pkgname%-git}"
 arch=("any")
 license=("GPL3")
 depends=("python" "python-setuptools" "python-pyqt5" "python-requests")
 optdepends=("qtermwidget: support for console and Vim modes"
-            "gvim: support for Vim mode")
-source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git")
+            "vim: support for Vim mode")
+source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git#branch=master")
 md5sums=("SKIP")
 
 pkgver()
