@@ -65,7 +65,7 @@ pkgbase=linux-xanmod-edge
 _major=5.15
 pkgver=${_major}.6
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod - Latest Mainline (EDGE)'
 url="http://www.xanmod.org/"
@@ -100,7 +100,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'ced66546f6d4cceb9e3d21891469a1bf59fb9cb6e630dd84330856e4a570f0ba'
+            '8055bcb3765ca7995477db3f5de71d3ce76a232885a8179ff37dda21e0e5a587'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
