@@ -3,7 +3,7 @@
 
 pkgname='omada-sdn-controller'
 pkgver=4.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Centralized Omada SDN controller software'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
