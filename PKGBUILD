@@ -3,7 +3,7 @@
 _name=tzdata
 pkgname=python-tzdata
 pkgver=2021.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Provider of IANA time zone data'
 arch=('any')
 url=https://github.com/python/tzdata

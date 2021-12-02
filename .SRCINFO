@@ -1,7 +1,7 @@
 pkgbase = python-tzdata
 	pkgdesc = Provider of IANA time zone data
 	pkgver = 2021.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/python/tzdata
 	arch = any
 	license = Apache
