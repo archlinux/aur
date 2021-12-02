@@ -1,4 +1,4 @@
-From c7d311a6364dcf8b83e68025ed269fa3a3beff88 Mon Sep 17 00:00:00 2001
+From 0b0834acba35161a25517494e7d73ec7e889bdd6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
 Subject: [PATCH 6/8] Support finding static MariaDB client library
@@ -27,5 +27,5 @@ index 0fcba2148e..ab4f6fdc9e 100644
  
  include(FindPackageHandleStandardArgs)
 -- 
-2.33.1
+2.34.1
 

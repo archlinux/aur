@@ -1,4 +1,4 @@
-From 0757e7a6edc83bcb6def8d705e51ff8b764dc740 Mon Sep 17 00:00:00 2001
+From 4a907550b9abc3f7519cf3c2e990bbc4824e4c2c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 2 Nov 2020 13:47:45 +0100
 Subject: [PATCH 5/8] Fix libjpeg workaround for conflict with rpcndr.h
@@ -25,5 +25,5 @@ index a17afc0f69..72708145f4 100644
  #ifdef const
  #  undef const          // remove crazy C hackery in jconfig.h
 -- 
-2.33.1
+2.34.1
 
