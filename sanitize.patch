@@ -5,9 +5,9 @@ Let me do some optimisations.
 
 If you are interested to improve this patch, welcome to mail me.
 
-diff -ru old/tool/ventoy_lib.sh new/tool/ventoy_lib.sh
---- tool/ventoy_lib.sh	2021-03-06 14:54:04.163817366 +0100
-+++ tool/ventoy_lib.sh	2021-03-06 14:56:07.053667242 +0100
+diff --unified --recursive --text ventoy-1.0.62.orig/tool/ventoy_lib.sh ventoy-1.0.62.new/tool/ventoy_lib.sh
+--- ventoy-1.0.62.orig/tool/ventoy_lib.sh	2021-12-02 04:53:22.000000000 -0700
++++ ventoy-1.0.62.new/tool/ventoy_lib.sh	2021-12-02 09:09:33.339996473 -0700
 @@ -29,7 +29,7 @@
  }
  
@@ -48,7 +48,7 @@ diff -ru old/tool/ventoy_lib.sh new/tool/ventoy_lib.sh
      vtdebug "tool check success ..."
      ventoy_true
  }
-@@ -264,7 +240,7 @@
+@@ -269,7 +245,7 @@
      else
      vtdebug "format disk by fdisk ..."
      
@@ -57,9 +57,10 @@ diff -ru old/tool/ventoy_lib.sh new/tool/ventoy_lib.sh
  o
  n
  p
-diff -ru old/tool/VentoyWorker.sh new/tool/VentoyWorker.sh
---- tool/VentoyWorker.sh	2021-03-06 14:53:26.603866863 +0100
-+++ tool/VentoyWorker.sh	2021-03-06 14:55:52.493675465 +0100
+Only in ventoy-1.0.62.new/tool: ventoy_lib.sh.orig
+diff --unified --recursive --text ventoy-1.0.62.orig/tool/VentoyWorker.sh ventoy-1.0.62.new/tool/VentoyWorker.sh
+--- ventoy-1.0.62.orig/tool/VentoyWorker.sh	2021-12-02 04:53:22.000000000 -0700
++++ ventoy-1.0.62.new/tool/VentoyWorker.sh	2021-12-02 09:09:33.339996473 -0700
 @@ -99,7 +99,7 @@
  if check_tool_work_ok; then
      vtdebug "check tool work ok"
@@ -69,10 +70,10 @@ diff -ru old/tool/VentoyWorker.sh new/tool/VentoyWorker.sh
      exit 1
  fi
  
-diff -ru old/Ventoy2Disk.sh new/Ventoy2Disk.sh
---- Ventoy2Disk.sh	2021-03-06 14:52:52.703911700 +0100
-+++ Ventoy2Disk.sh	2021-03-06 14:55:45.943684011 +0100
-@@ -34,46 +34,4 @@
+diff --unified --recursive --text ventoy-1.0.62.orig/Ventoy2Disk.sh ventoy-1.0.62.new/Ventoy2Disk.sh
+--- ventoy-1.0.62.orig/Ventoy2Disk.sh	2021-12-02 04:53:22.000000000 -0700
++++ ventoy-1.0.62.new/Ventoy2Disk.sh	2021-12-02 09:11:09.285825629 -0700
+@@ -32,48 +32,4 @@
  echo '**********************************************'
  echo ''
  
@@ -90,22 +91,24 @@ diff -ru old/Ventoy2Disk.sh new/Ventoy2Disk.sh
 -date >> ./log.txt
 -
 -#decompress tool
--if [ -f ./tool/$TOOLDIR/ash ]; then
--    echo "no need to decompress tools" >> ./log.txt
--else
--    cd ./tool/$TOOLDIR
--    
+-echo "decompress tools" >> ./log.txt
+-cd ./tool/$TOOLDIR
+-
+-ls *.xz > /dev/null 2>&1
+-if [ $? -eq 0 ]; then
 -    [ -f ./xzcat ] && chmod +x ./xzcat
--    
+-
 -    for file in $(ls *.xz); do
+-        echo "decompress $file" >> ./log.txt
 -        xzcat $file > ${file%.xz}
 -        [ -f ./${file%.xz} ] && chmod +x ./${file%.xz}
 -        [ -f ./$file ] && rm -f ./$file
 -    done
--    cd ../../
--    
--    chmod +x -R ./tool/$TOOLDIR
 -fi
+-
+-cd ../../
+-chmod +x -R ./tool/$TOOLDIR
+-
 -
 -if [ -f /bin/bash ]; then
 -    /bin/bash ./tool/VentoyWorker.sh $*
@@ -120,9 +123,9 @@ diff -ru old/Ventoy2Disk.sh new/Ventoy2Disk.sh
 -    fi
 -fi
 +./tool/VentoyWorker.sh $*
-diff -ru old/VentoyWeb.sh new/VentoyWeb.sh
---- VentoyWeb.sh	2021-03-06 14:54:25.383789486 +0100
-+++ VentoyWeb.sh	2021-03-06 14:56:01.253668661 +0100
+diff --unified --recursive --text ventoy-1.0.62.orig/VentoyWeb.sh ventoy-1.0.62.new/VentoyWeb.sh
+--- ventoy-1.0.62.orig/VentoyWeb.sh	2021-12-02 04:53:22.000000000 -0700
++++ ventoy-1.0.62.new/VentoyWeb.sh	2021-12-02 09:09:33.339996473 -0700
 @@ -15,12 +15,6 @@
      echo ""
  }
