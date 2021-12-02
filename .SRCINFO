@@ -10,7 +10,6 @@ pkgbase = r-pkgconfig
 	optdepends = r-testthat
 	optdepends = r-disposables
 	source = https://cran.r-project.org/src/contrib/pkgconfig_2.0.3.tar.gz
-	md5sums = 7b9ca1d45d941238381cb55d13ff4d68
+	sha256sums = 330fef440ffeb842a7dcfffc8303743f1feae83e8d6131078b5a44ff11bc3850
 
 pkgname = r-pkgconfig
-
