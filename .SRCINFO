@@ -1,0 +1,17 @@
+pkgbase = trilinos-sacado
+	pkgdesc = automatic differentiation library within the trilinos framework
+	pkgver = 13.2.0
+	pkgrel = 1
+	url = http://trilinos.org
+	arch = x86_64
+	license = LGPL3
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = boost
+	conflicts = trilinos
+	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-13-2-0.tar.gz
+	source = python-mpi-version.patch
+	sha256sums = 0ddb47784ba7b8a6b9a07a4822b33be508feb4ccd54301b2a5d10c9e54524b90
+	sha256sums = 9920ddf718ff04a14d1263623dfd98791404b1db0a73d95ba48d87215e8409eb
+
+pkgname = trilinos-sacado
