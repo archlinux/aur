@@ -1,8 +1,8 @@
 # Maintainer: Spyros Stathopoulos <spystath@gmail.com>
 pkgname=wide-dhcpv6
 pkgver=20080615
-pkgrel=16
-pkgdesc='An open source implementation of DHCPv6 developed by KAME project (with Debian patches)'
+pkgrel=17
+pkgdesc="An open source implementation of DHCPv6 developed by KAME project (with Debian patches)"
 arch=('i686' 'x86_64')
 url="http://wide-dhcpv6.sourceforge.net/"
 license=('custom')
@@ -10,7 +10,7 @@ backup=('etc/wide-dhcpv6/dhcp6c.conf' 'etc/conf.d/startpd.conf')
 options=('emptydirs')
 
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "https://ftp.debian.org/debian/pool/main/w/${pkgname}/${pkgname}_${pkgver}-22.debian.tar.xz"
+        "https://deb.debian.org/debian/pool/main/w/${pkgname}/${pkgname}_${pkgver}-22.debian.tar.xz"
         "0000-noyywrap-option.patch"
         "0002-Fix-makefile.patch"
         "dhcp6c.service"
@@ -18,7 +18,7 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgna
         "startpd.conf"
         "dhcp6c.conf")
 
-install="dhcp6c.install"
+install='dhcp6c.install'
 
 md5sums=('1011e165850fe40d3e332dad2bfd30b3'
          '5e40a641ff20c8c0aceea269c1f1921e'
