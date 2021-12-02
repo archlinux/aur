@@ -2,7 +2,7 @@
 
 pkgname=python-behave
 pkgver=1.2.7.dev1
-pkgrel=2
+pkgrel=3
 pkgdesc="Behaviour-driven development, Python style"
 url="https://github.com/behave/behave"
 license=('BSD')
