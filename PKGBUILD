@@ -3,14 +3,16 @@ _release=beta
 _target=aur
 
 pkgname=makedeb-beta
-pkgver=8.3.1
+pkgver=8.4.2
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release} release)"
 arch=('any')
 license=('GPL3')
-depends=('tar' 'binutils' 'lsb-release' 'dpkg' 'makedeb-makepkg-beta')
+depends=('awk' 'binutils' 'bzip2' 'coreutils' 'dpkg' 'fakeroot' 'file' 'findutils' 'gettext' 'gnupg' 'grep' 'gzip' 'libarchive' 'lsb-release' 'ncurses' 'sed' 'tar' 'xz')
 makedepends=('asciidoctor' 'git' 'make' 'jq')
-conflicts=('makedeb' 'makedeb-alpha')
+conflicts=('makedeb-makepkg' 'makedeb-makepkg-beta' 'makedeb-makepkg-alpha')
+provides=('makedeb-makepkg' 'makedeb-makepkg-beta' 'makedeb-makepkg-alpha')
+replaces=('makedeb-makepkg' 'makedeb-makepkg-beta' 'makedeb-makepkg-alpha')
 url="https://github.com/makedeb/makedeb"
 
 source=("makedeb::git+${url}/#tag=v${pkgver}-${pkgrel}-${_release}")
