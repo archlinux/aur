@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-networkauth
 	pkgdesc = Network authentication module (android)
-	pkgver = 6.2.1
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-aarch64-qt6-networkauth
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.2/6.2.1/submodules/qtnetworkauth-everywhere-src-6.2.1.tar.xz
-	sha256sums = 8027f85095a9c56d8cada988527454f786a5f8dd4157206db4f21299016d1c9e
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.2/submodules/qtnetworkauth-everywhere-src-6.2.2.tar.xz
+	sha256sums = c8217c740167b9e96c3fabcc92d781864220c553c7a23254c16bd8f09f05e9e1
 
 pkgname = android-aarch64-qt6-networkauth
