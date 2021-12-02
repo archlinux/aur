@@ -21,7 +21,6 @@ sha256sums=('be3ebc1ced254560e21945303df99bdfa1e49a4448311297db0f34de746ba0bf'
 
 package() {
     # Install required source files.
-    cd "${srcdir}/Omada_SDN_Controller_v${pkgver}_Linux_x64"
     local BASEDIR="${pkgdir}/opt/omada-sdn-controller"
     install -dm 755 "${BASEDIR}"
 
