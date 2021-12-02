@@ -4,7 +4,7 @@ pkgname=python-doublex
 pkgver=1.9.3
 # Upstream forgot to push tags and ignored my notice
 _commit=fe03fcb4672d
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful test doubles framework for Python"
 arch=('any')
 license=('GPL')
