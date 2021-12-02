@@ -8,7 +8,7 @@
 
 pkgname=python-cx-freeze
 pkgver=6.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
 url='https://marcelotduarte.github.io/cx_Freeze'
