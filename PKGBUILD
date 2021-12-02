@@ -8,7 +8,7 @@ url="https://github.com/tvrzna/emptty"
 license=('MIT')
 depends=('emptty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('56a823dc718436a9d3ac4ad6ec2e87554595430c0d1f91316c8c7539530e116914d51a8923eb6c05b16832330eb4090511300e056763583aaa23f05902920afe')
+sha512sums=('489003c567bcbe1c704a349aff516c4179a9a8ca5a3dc70b1a86772d8bf60baffd3fe85dd5423ade29b48cd0240bd47f4fec244c3a1b6aeaacef5d6f4f67aa5e')
 
 package() {
   cd "emptty-$pkgver"
