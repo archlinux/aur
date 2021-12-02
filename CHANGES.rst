@@ -1,3 +1,11 @@
+1.8 (2021-11-24)
+================
+
+- Fix coroutine detection on partials.
+
+- Fix a bug with python3.10. gather no longer accept a loop
+
+
 1.7 (2021-09-01)
 ================
 
