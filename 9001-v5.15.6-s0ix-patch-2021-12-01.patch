@@ -1,11 +1,43 @@
-From 70f661cc31dda409c33684c053204d962fbb7e9f Mon Sep 17 00:00:00 2001
+From 108511d10f990b72bb9780ee968da41e725e070a Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Tue, 30 Nov 2021 05:32:18 -0800
-Subject: [PATCH] v5.15.6 s0ix patch 2021-11-30
+Date: Wed, 1 Dec 2021 21:46:44 -0800
+Subject: [PATCH] v5.15.6 s0ix patch 2021-12-01
 
 Squashed commit of the following:
 
-commit e0f5afe24a996d1b1b4f5637cf24da8a76385f79
+commit 9711b304f4bdb5716bccd9a8149721d95a323eb0
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Tue Nov 30 16:53:18 2021 +0530
+
+    platform/x86: amd-pmc: Add support for AMD Smart Trace Buffer (v6)
+
+    STB (Smart Trace Buffer), is a debug trace buffer that isolates the
+    failures by analyzing the last running feature of a system. This
+    non-intrusive way always runs in the background and stores the trace
+    into the SoC.
+
+    This patch enables the STB feature by passing module param
+    "enable_stb=1" while loading the driver and provides mechanism to
+    access the STB buffer using the read and write routines.
+
+    Co-developed-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+
+commit 8287166ca29ac9d85efb24eedeb5ea19df23d046
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Tue Nov 30 16:53:17 2021 +0530
+
+    platform/x86: amd-pmc: Simplify error handling and store the pci_dev in amd_pmc_dev structure
+
+    Handle error-exits in the amd_pmc_probe() to avoid duplication and store
+    the root port information in amd_pmc_probe() so that the information
+    can be used across multiple routines.
+
+    Suggested-by: Hans de Goede <hdegoede@redhat.com>
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+
+commit 98f5b572e24241e7486edddd851bac67e28b7879
 Author: Fabrizio Bertocci <fabriziobertocci@gmail.com>
 Date:   Mon Nov 29 23:15:40 2021 -0500
 
@@ -35,53 +67,13 @@ Date:   Mon Nov 29 23:15:40 2021 -0500
     Signed-off-by: Fabrizio Bertocci <fabriziobertocci@gmail.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit f4894b07180003ccb590a8a724cf4d693385b21b
+commit 09aa49d6916646e9c9e61f9f8273fa5b19d040f8
 Author: Julian Sikorski <belegdol+github@gmail.com>
 Date:   Fri Nov 19 17:52:36 2021 +0100
 
     GFXOFF check patch by Lijo Lazar
 
-commit 10f835f8af4a5cd3de6c528d6a043b1f85e5c551
-Author: Sanket Goswami <Sanket.Goswami@amd.com>
-Date:   Thu Oct 28 17:09:35 2021 +0530
-
-    platform/x86: amd-pmc: Add support for AMD Smart Trace Buffer (v5)
-
-    STB (Smart Trace Buffer), is a debug trace buffer which is used to help
-    isolate failures by analyzing the last feature that a system was running
-    before hitting a failure. This nonintrusive way is always running in the
-    background and trace is stored into the SoC.
-
-    This patch provides mechanism to access the STB buffer using the read
-    and write routines.
-
-    Co-developed-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
-    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
-    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
-
-commit 5e1a0b139d6671c7b11c66d43b3586c4cbe553c3
-Author: Sanket Goswami <Sanket.Goswami@amd.com>
-Date:   Thu Oct 28 17:09:34 2021 +0530
-
-    platform/x86: amd-pmc: Store the pci_dev instance inside struct amd_pmc_dev
-
-    Store the root port information in amd_pmc_probe() so that the
-    information can be used across multiple routines.
-
-    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
-
-commit d8e4959a551caf6ee3bfd9e8f796015e4f5b0639
-Author: Sanket Goswami <Sanket.Goswami@amd.com>
-Date:   Thu Oct 28 17:09:33 2021 +0530
-
-    platform/x86: amd-pmc: Simplify error handling path
-
-    Handle error-exits in the amd_pmc_probe() so that the code duplication
-    is reduced.
-
-    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
-
-commit 3224a153fa87d53c31872b59bb1c406e6de0575c
+commit 83ee85520c4596cebf3cf890d353cfbfaaf77b25
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Sun Oct 31 20:48:53 2021 -0500
 
@@ -100,7 +92,7 @@ Date:   Sun Oct 31 20:48:53 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit 21cc52343b9a5eb79b09f0cd76bce90015bf090c
+commit dba797f557711fb8993667fbb7e0b34042db0ff2
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Oct 29 15:40:16 2021 -0500
 
@@ -116,7 +108,7 @@ Date:   Fri Oct 29 15:40:16 2021 -0500
     Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 432160499ce239052f05017fad41b42ea4b2dcf2
+commit 1ddc9a1733e87dd3005ed53337d9d69b23aa1a4f
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Nov 2 16:32:56 2021 +0100
 
@@ -132,7 +124,7 @@ Date:   Tue Nov 2 16:32:56 2021 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Acked-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 5947a1b7c0e511f9fd1e17d621cfb5f448454d16
+commit e8c5a00337bfb9b62cdedef1a7d6c450f60a951e
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:43 2021 -0500
 
@@ -143,7 +135,7 @@ Date:   Tue Oct 26 12:14:43 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 155bfb1c74ba3a6701011a468b110302a196689c
+commit 43033cf10893d27836e236988f33ef953ddf757e
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:42 2021 -0500
 
@@ -155,7 +147,7 @@ Date:   Tue Oct 26 12:14:42 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 4b1e39fe26d9d38cbc002babd7c0b7a20f543f49
+commit 89e93759f2620d03d697d65cac55c309106d100b
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:41 2021 -0500
 
@@ -169,7 +161,7 @@ Date:   Tue Oct 26 12:14:41 2021 -0500
     Fixes: 59348401ebed ("platform/x86: amd-pmc: Add special handling for timer based S0i3 wakeup")
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 92f92faa4dd841257bd199324e55cb928866c909
+commit cfc12d41d1d1452c42322f22fd9f616717ba7749
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:46 2021 -0500
 
@@ -192,7 +184,7 @@ Date:   Wed Oct 20 11:29:46 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 9806d02931dfb47659fddad08507b108435652ae
+commit 7dcf1c9ae4f2caed03784502577bf539a3e53dc7
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:45 2021 -0500
 
@@ -206,7 +198,7 @@ Date:   Wed Oct 20 11:29:45 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 12bf23ac9d21d9cd82c42cb693dc2d8b866ceeb4
+commit 516d3914ef3426d5d43b629d8d93a42a1c8b785b
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -225,7 +217,7 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit e6b18b073a0cbfe58bbcf997d83e2dae2cf54ebe
+commit 6325ca6afbf40e754d8728ee5d1344eace8e3ef1
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -238,7 +230,7 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 
-commit 5a73b706a0d57ade075bcecf73414e1ef3f861b6
+commit dae24ef8ce2f6387009e817b551e288c77c89fad
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -250,7 +242,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit ec9223c61ac9727b5e053ed22904ae294df24c67
+commit 6a3093ee140f99fa0f9d1c7fc1d365915e7c6856
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -265,7 +257,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit f4ce14a38143977abac79c2f574801ed174054a6
+commit 60d906dfba284dc0fc04a7e292d430719ec07c9e
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -278,7 +270,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 17cfbb28c0b621468701b89b0db3cbd854a91a37
+commit db5921cfa7644f2cb1a5dc00d2411c1d43fa6c85
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -297,7 +289,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 5120d93fe946d4d1e443371b100aa1813739cdf8
+commit 243e2e4bf81943ce98e425bcb974abaa4c2a990a
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -315,11 +307,11 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
  drivers/acpi/processor_idle.c             |   3 +-
  drivers/acpi/x86/s2idle.c                 |   6 +
  drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   5 +-
- drivers/pinctrl/pinctrl-amd.c             |  29 ++-
+ drivers/pinctrl/pinctrl-amd.c             |  29 +-
  drivers/platform/x86/Kconfig              |   2 +-
- drivers/platform/x86/amd-pmc.c            | 303 ++++++++++++++++++++--
+ drivers/platform/x86/amd-pmc.c            | 326 ++++++++++++++++++++--
  include/linux/acpi.h                      |   9 +
- 7 files changed, 331 insertions(+), 26 deletions(-)
+ 7 files changed, 349 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index f37fba9e5ba0..9d378dc9e928 100644
@@ -466,7 +458,7 @@ index e21ea3d23e6f..4cc2782635ec 100644
  	  The driver provides support for AMD Power Management Controller
  	  primarily responsible for S2Idle transactions that are driven from
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index fc95620101e8..6ffb3594e0ad 100644
+index fc95620101e8..2f55439e0f66 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -17,9 +17,11 @@
@@ -550,7 +542,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  	u32 timein_s0i2;
  	u64 timeentering_s0i3_lastcapture;
  	u64 timeentering_s0i3_totaltime;
-@@ -147,6 +171,97 @@ struct smu_metrics {
+@@ -147,6 +171,93 @@ struct smu_metrics {
  	u64 timecondition_notmet_totaltime[SOC_SUBSYSTEM_IP_MAX];
  } __packed;
  
@@ -584,14 +576,12 @@ index fc95620101e8..6ffb3594e0ad 100644
 +		return -ENOMEM;
 +
 +	rc = amd_pmc_read_stb(dev, buf);
-+	if (rc)
-+		goto out;
++	if (rc) {
++		kfree(buf);
++		return rc;
++	}
 +
 +	filp->private_data = buf;
-+	return 0;
-+
-+out:
-+	kfree(buf);
 +	return rc;
 +}
 +
@@ -608,8 +598,6 @@ index fc95620101e8..6ffb3594e0ad 100644
 +static int amd_pmc_stb_debugfs_release(struct inode *inode, struct file *filp)
 +{
 +	kfree(filp->private_data);
-+	filp->private_data = NULL;
-+
 +	return 0;
 +}
 +
@@ -648,7 +636,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  #ifdef CONFIG_DEBUG_FS
  static int smu_fw_info_show(struct seq_file *s, void *unused)
  {
-@@ -162,9 +277,12 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
+@@ -162,9 +273,12 @@ static int smu_fw_info_show(struct seq_file *s, void *unused)
  	seq_puts(s, "\n=== SMU Statistics ===\n");
  	seq_printf(s, "Table Version: %d\n", table.table_version);
  	seq_printf(s, "Hint Count: %d\n", table.hint_count);
@@ -662,7 +650,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  
  	seq_puts(s, "\n=== Active time (in us) ===\n");
  	for (idx = 0 ; idx < SOC_SUBSYSTEM_IP_MAX ; idx++) {
-@@ -201,6 +319,23 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
+@@ -201,6 +315,23 @@ static int s0ix_stats_show(struct seq_file *s, void *unused)
  }
  DEFINE_SHOW_ATTRIBUTE(s0ix_stats);
  
@@ -686,7 +674,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  static void amd_pmc_dbgfs_unregister(struct amd_pmc_dev *dev)
  {
  	debugfs_remove_recursive(dev->dbgfs_dir);
-@@ -213,6 +348,12 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+@@ -213,6 +344,12 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
  			    &smu_fw_info_fops);
  	debugfs_create_file("s0ix_stats", 0644, dev->dbgfs_dir, dev,
  			    &s0ix_stats_fops);
@@ -699,7 +687,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  }
  #else
  static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
-@@ -264,7 +405,7 @@ static void amd_pmc_dump_registers(struct amd_pmc_dev *dev)
+@@ -264,7 +401,7 @@ static void amd_pmc_dump_registers(struct amd_pmc_dev *dev)
  	dev_dbg(dev->dev, "AMD_PMC_REGISTER_MESSAGE:%x\n", value);
  }
  
@@ -708,7 +696,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  {
  	int rc;
  	u32 val;
-@@ -283,7 +424,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
+@@ -283,7 +420,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
  	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_RESPONSE, 0);
  
  	/* Write argument into response register */
@@ -717,7 +705,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  
  	/* Write message ID to message ID register */
  	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_MESSAGE, msg);
-@@ -339,21 +480,79 @@ static int amd_pmc_get_os_hint(struct amd_pmc_dev *dev)
+@@ -339,21 +476,83 @@ static int amd_pmc_get_os_hint(struct amd_pmc_dev *dev)
  	return -EINVAL;
  }
  
@@ -793,12 +781,16 @@ index fc95620101e8..6ffb3594e0ad 100644
  		dev_err(pdev->dev, "suspend failed\n");
  
 +	if (enable_stb)
-+		amd_pmc_write_stb(pdev, AMD_PMC_STB_PREDEF);
++		rc = amd_pmc_write_stb(pdev, AMD_PMC_STB_PREDEF);
++	if (rc)	{
++		dev_err(pdev->dev, "error writing to STB\n");
++		return rc;
++	}
 +
  	return rc;
  }
  
-@@ -363,14 +562,21 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+@@ -363,14 +562,25 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
  	int rc;
  	u8 msg;
  
@@ -818,70 +810,79 @@ index fc95620101e8..6ffb3594e0ad 100644
 +
 +	/* Write data incremented by 1 to distinguish in stb_read */
 +	if (enable_stb)
-+		amd_pmc_write_stb(pdev, AMD_PMC_STB_PREDEF + 1);
++		rc = amd_pmc_write_stb(pdev, AMD_PMC_STB_PREDEF + 1);
++	if (rc)	{
++		dev_err(pdev->dev, "error writing to STB\n");
++		return rc;
++	}
 +
  	return 0;
  }
  
-@@ -387,6 +593,57 @@ static const struct pci_device_id pmc_pci_ids[] = {
+@@ -387,6 +597,62 @@ static const struct pci_device_id pmc_pci_ids[] = {
  	{ }
  };
  
 +static int amd_pmc_write_stb(struct amd_pmc_dev *dev, u32 data)
 +{
-+	int rc;
++	int err;
 +
-+	rc = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_ADDRESS, AMD_PMC_STB_PMI_0);
-+	if (rc) {
++	err = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_ADDRESS, AMD_PMC_STB_PMI_0);
++	if (err) {
 +		dev_err(dev->dev, "failed to write addr in stb: 0x%X\n",
 +			AMD_PMC_STB_INDEX_ADDRESS);
-+		pci_dev_put(dev->rdev);
-+		return pcibios_err_to_errno(rc);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
 +	}
 +
-+	rc = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_DATA, data);
-+	if (rc) {
++	err = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_DATA, data);
++	if (err) {
 +		dev_err(dev->dev, "failed to write data in stb: 0x%X\n",
 +			AMD_PMC_STB_INDEX_DATA);
-+		pci_dev_put(dev->rdev);
-+		return pcibios_err_to_errno(rc);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
 +	}
 +
 +	return 0;
++
++err_pci_dev_put:
++	pci_dev_put(dev->rdev);
++	return err;
 +}
 +
 +static int amd_pmc_read_stb(struct amd_pmc_dev *dev, u32 *buf)
 +{
 +	int i, err;
-+	u32 value;
 +
 +	err = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_ADDRESS, AMD_PMC_STB_PMI_0);
 +	if (err) {
 +		dev_err(dev->dev, "error writing addr to stb: 0x%X\n",
 +			AMD_PMC_STB_INDEX_ADDRESS);
-+		pci_dev_put(dev->rdev);
-+		return pcibios_err_to_errno(err);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
 +	}
 +
 +	for (i = 0; i < FIFO_SIZE; i++) {
-+		err = pci_read_config_dword(dev->rdev, AMD_PMC_STB_INDEX_DATA, &value);
++		err = pci_read_config_dword(dev->rdev, AMD_PMC_STB_INDEX_DATA, buf++);
 +		if (err) {
 +			dev_err(dev->dev, "error reading data from stb: 0x%X\n",
 +				AMD_PMC_STB_INDEX_DATA);
-+			pci_dev_put(dev->rdev);
-+			return pcibios_err_to_errno(err);
++			err = pcibios_err_to_errno(err);
++			goto err_pci_dev_put;
 +		}
-+
-+		*buf++ = value;
 +	}
 +
 +	return 0;
++
++err_pci_dev_put:
++	pci_dev_put(dev->rdev);
++	return err;
 +}
 +
  static int amd_pmc_probe(struct platform_device *pdev)
  {
  	struct amd_pmc_dev *dev = &pmc;
-@@ -400,22 +657,23 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -400,22 +666,23 @@ static int amd_pmc_probe(struct platform_device *pdev)
  
  	rdev = pci_get_domain_bus_and_slot(0, 0, PCI_DEVFN(0, 0));
  	if (!rdev || !pci_match_id(pmc_pci_ids, rdev)) {
@@ -911,7 +912,7 @@ index fc95620101e8..6ffb3594e0ad 100644
  	}
  
  	base_addr_lo = val & AMD_PMC_BASE_ADDR_HI_MASK;
-@@ -423,14 +681,14 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -423,24 +690,25 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	err = pci_write_config_dword(rdev, AMD_PMC_SMU_INDEX_ADDRESS, AMD_PMC_BASE_ADDR_HI);
  	if (err) {
  		dev_err(dev->dev, "error writing to 0x%x\n", AMD_PMC_SMU_INDEX_ADDRESS);
@@ -930,7 +931,33 @@ index fc95620101e8..6ffb3594e0ad 100644
  	}
  
  	base_addr_hi = val & AMD_PMC_BASE_ADDR_LO_MASK;
-@@ -457,9 +715,14 @@ static int amd_pmc_probe(struct platform_device *pdev)
+-	pci_dev_put(rdev);
+ 	base_addr = ((u64)base_addr_hi << 32 | base_addr_lo);
+ 
+ 	dev->regbase = devm_ioremap(dev->dev, base_addr + AMD_PMC_BASE_ADDR_OFFSET,
+ 				    AMD_PMC_MAPPING_SIZE);
+-	if (!dev->regbase)
+-		return -ENOMEM;
++	if (!dev->regbase) {
++		err = -ENOMEM;
++		goto err_pci_dev_put;
++	}
+ 
+ 	mutex_init(&dev->lock);
+ 
+@@ -449,17 +717,24 @@ static int amd_pmc_probe(struct platform_device *pdev)
+ 	base_addr_hi = FCH_BASE_PHY_ADDR_HIGH;
+ 	fch_phys_addr = ((u64)base_addr_hi << 32 | base_addr_lo);
+ 	dev->fch_virt_addr = devm_ioremap(dev->dev, fch_phys_addr, FCH_SSC_MAPPING_SIZE);
+-	if (!dev->fch_virt_addr)
+-		return -ENOMEM;
++	if (!dev->fch_virt_addr) {
++		err = -ENOMEM;
++		goto err_pci_dev_put;
++	}
+ 
+ 	/* Use SMU to get the s0i3 debug stats */
+ 	err = amd_pmc_setup_smu_logging(dev);
  	if (err)
  		dev_err(dev->dev, "SMU debugging info not supported on this platform\n");
  
@@ -945,6 +972,14 @@ index fc95620101e8..6ffb3594e0ad 100644
  }
  
  static int amd_pmc_remove(struct platform_device *pdev)
+@@ -467,6 +742,7 @@ static int amd_pmc_remove(struct platform_device *pdev)
+ 	struct amd_pmc_dev *dev = platform_get_drvdata(pdev);
+ 
+ 	amd_pmc_dbgfs_unregister(dev);
++	pci_dev_put(dev->rdev);
+ 	mutex_destroy(&dev->lock);
+ 	return 0;
+ }
 diff --git a/include/linux/acpi.h b/include/linux/acpi.h
 index 974d497a897d..6224b1e32681 100644
 --- a/include/linux/acpi.h
