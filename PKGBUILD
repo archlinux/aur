@@ -1,9 +1,9 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ruby-koala
 _gemname=koala
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight Facebook library supporting the Graph, Marketing, and Atlas APIs, realtime updates, test users, and OAuth'
 arch=('any')
 url='https://github.com/arsduo/koala'
@@ -18,5 +18,5 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" ${pkgname}-${pkgver}.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -Dm644 "${pkgdir}/usr/lib/ruby/gems/2.7.0/gems/koala-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${pkgdir}/usr/lib/ruby/gems/3.0.0/gems/koala-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
