@@ -1,6 +1,6 @@
 pkgbase = clyrics-git
 	pkgdesc = An extensible lyrics fetcher, with daemon support for cmus and mocp.
-	pkgver = 0.12.r1.g0bd4961
+	pkgver = 0.13.r0.gfa48905
 	pkgrel = 1
 	url = https://github.com/trizen/clyrics
 	install = readme.install
@@ -15,7 +15,6 @@ pkgbase = clyrics-git
 	provides = clyrics
 	conflicts = clyrics
 	source = clyrics::git+https://github.com/trizen/clyrics.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = clyrics-git
-

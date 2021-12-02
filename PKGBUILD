@@ -3,7 +3,7 @@
 
 _pkgname=clyrics
 pkgname=$_pkgname-git
-pkgver=0.12.r1.g0bd4961
+pkgver=0.13.r0.gfa48905
 pkgrel=1
 
 pkgdesc="An extensible lyrics fetcher, with daemon support for cmus and mocp."
@@ -22,11 +22,11 @@ conflicts=("$_pkgname")
 
 install='readme.install'
 source=("$_pkgname::git+https://github.com/trizen/clyrics.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
