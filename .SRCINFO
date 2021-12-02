@@ -1,7 +1,7 @@
 pkgbase = war1gus
 	pkgdesc = Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wargus/war1gus
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,11 @@ pkgbase = war1gus
 	depends = stratagus=3.1.2
 	depends = ffmpeg
 	depends = innoextract
-	provides = war1gus
+	optdepends = zenity: graphical UI for data extractor
+	optdepends = xdialog: graphical UI for data extractor
+	optdepends = dialog: console UI for data extractor
+	optdepends = fluidsynth: midi music suport
+	optdepends = soundfont-fluid: sound font for midi music support
 	conflicts = war1gus-git
 	source = https://github.com/Wargus/war1gus/archive/v3.1.2.tar.gz
 	md5sums = 3b0cad05b8b7be117426ab8d1f58bfb5
