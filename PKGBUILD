@@ -20,7 +20,7 @@ url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
          'qt5-base' 'qt5-svg' 'qt5-x11extras' 'libmediainfo' 'libraw'
-         'ffmpeg')
+         'ffmpeg' 'freeimage')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Win"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
@@ -28,13 +28,13 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "ffmpeg.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '7457fb9af5ddda96608fd9c7420b19e9e92febb8722a0d4d4ddb8b5b788b0d16')
+            '3a15322d39b7f69a21c866cd1965893c5c1b4285b1a079593a183aefcff0f8c2')
 
 prepare() {
     cd "MEGAsync"
     git config submodule.src/MEGASync/mega.url "../meganz-sdk"
     git submodule update --init
-    git apply -v "$srcdir/ffmpeg.patch"
+    git -C src/MEGASync/mega apply -v "$srcdir/ffmpeg.patch"
 
     cd "src/MEGASync"
     sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
@@ -59,7 +59,7 @@ build() {
         --with-sqlite \
         --with-cares \
         --with-curl \
-        --without-freeimage \
+        --with-freeimage \
         --with-libuv \
         --disable-posix-threads \
         --disable-examples \

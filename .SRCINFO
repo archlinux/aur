@@ -22,6 +22,7 @@ pkgbase = megasync-nopdfium
 	depends = libmediainfo
 	depends = libraw
 	depends = ffmpeg
+	depends = freeimage
 	provides = megasync=4.6.1.0
 	conflicts = megasync
 	source = git+https://github.com/meganz/MEGAsync.git#tag=v4.6.1.0_Win
@@ -29,6 +30,6 @@ pkgbase = megasync-nopdfium
 	source = ffmpeg.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7457fb9af5ddda96608fd9c7420b19e9e92febb8722a0d4d4ddb8b5b788b0d16
+	sha256sums = 3a15322d39b7f69a21c866cd1965893c5c1b4285b1a079593a183aefcff0f8c2
 
 pkgname = megasync-nopdfium
