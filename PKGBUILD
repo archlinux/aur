@@ -2,15 +2,15 @@
 # Contributor: SAFIB LTD <service.assist@safib.ru>
 
 pkgname=assistant
-pkgver=4.5
+pkgver=4.6
 pkgrel=1
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 arch=('any')
 license=('custom')
 url="https://xn--80akicokc0aablc.xn--p1ai/"
 depends=('bash' 'gtk2')
-source=(${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/466)
-md5sums=('20EBE0EC0529496822411136D57E6A1D')
+source=(${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/487)
+md5sums=('EF8BF0BB8F2620627F5DC899203CE850')
 
 package() {
 	install -Dm644 ${srcdir}/${pkgname}/doc/Assistant_license_agreement.pdf "$pkgdir/usr/share/licenses/$pkgname/Assistant_license_agreement.pdf"
