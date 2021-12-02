@@ -1,7 +1,7 @@
 # Maintainer: TheAirBlow <pilexet.danila@gmail.com>
 _pkgname=mindustry-foos-client
 pkgname="${_pkgname}-bin"
-_build=763
+_build=833
 pkgver="7.0_${_build}"
 pkgrel=1
 epoch=1
@@ -34,7 +34,7 @@ package() {
   echo "WARNING: thus requires to run it with root permissions."
 }
 
-sha256sums=('69cc92d51ea1049519a485327480b7904b4f98648cc806ec500e8dc2402a2234'
+sha256sums=('8ed4709f7a433926da3c2bbd9d995682d2587824aa09158155a8ed6ed3f24ca6'
             '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
             '93f661599e14456f27c3adb92c31538a3b707e11876310a8440430cb23ada8b1'
             '6827b29e2afc023089c4d46c6dde3fccf3ad01554ba6c22c20e7bce7a109224f')
