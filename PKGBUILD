@@ -1,20 +1,29 @@
 # Maintainer: ipochto <ipochto@gmail.com>
 
 pkgname=war1gus-git
-pkgver=3.1.3.r817.592656a_20211117
+pkgver=3.1.3.r848.e2a55e3_20211202
 pkgrel=1
-pkgdesc="Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (development version)"
+pkgdesc="Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (dev version)"
 arch=("i686" "x86_64")
 url="https://github.com/Wargus/war1gus"
 license=('GPL')
-depends=('stratagus-git' 'ffmpeg' 'innoextract')
-makedepends=('git' 'cmake' 'imagemagick')
-
+makedepends=(
+	'git' 
+	'cmake' 
+	'imagemagick'
+)
+depends=(
+	'stratagus-git' 
+	'ffmpeg' 
+	'innoextract'
+)
+optdepends=(
+	'fluidsynth: midi music support'
+	'soundfont-fluid: sound font for midi music support'
+)
+conflicts=('war1gus')
 source=("${pkgname}::git://github.com/Wargus/war1gus.git")
 md5sums=('SKIP')
-provides=(${pkgname}
-	  'war1gus')
-conflicts=('war1gus')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -24,9 +33,7 @@ pkgver() {
 
 build() {
   cd ${srcdir}
-
   cmake ${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DGAMEDIR=/usr/bin -Bbuild
-
   make -C build
 }
 
