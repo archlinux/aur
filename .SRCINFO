@@ -1,0 +1,17 @@
+pkgbase = ios-mount-git
+	pkgdesc = Utility script to mount iOS photos and app files on linux, built around ifuse
+	pkgver = r4.18028f8
+	pkgrel = 1
+	url = https://github.com/Willy-JL/iOS-Mount
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = ifuse
+	depends = zenity
+	provides = ios-mount
+	conflicts = ios-mount
+	source = git+https://github.com/Willy-JL/iOS-Mount.git
+	md5sums = SKIP
+
+pkgname = ios-mount-git
