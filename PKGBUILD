@@ -48,12 +48,12 @@ package() {
     ln -rsT "${pkgdir}/usr/lib/${pkgname}.so.${pkgver}" "${pkgdir}/opt/LSL/lib/${pkgname}.so.${pkgver}"
     ln -rsT "${pkgdir}/opt/LSL/lib/${pkgname}.so.${pkgver}" "${pkgdir}/opt/LSL/lib/${pkgname}.so"
 
-    install -D -m644 "${pkgdir}/usr/lib/cmake/LSL/LSLCMake.cmake" -t "${pkgdir}/opt/LSL/share"
-    install -D -m644 "${pkgdir}/usr/lib/cmake/LSL/LSLConfig.cmake" -t "${pkgdir}/opt/LSL/share"
-    install -D -m644 "${pkgdir}/usr/lib/cmake/LSL/LSLConfigVersion.cmake" -t "${pkgdir}/opt/LSL/share"
-    install -D -m644 "${pkgdir}/usr/lib/cmake/LSL/LSLTargets-none.cmake" -t "${pkgdir}/opt/LSL/share"
-    install -D -m644 "${pkgdir}/usr/lib/cmake/LSL/LSLTargets.cmake" -t "${pkgdir}/opt/LSL/share"
+    install -Dm644 "${pkgdir}/usr/lib/cmake/LSL/LSLCMake.cmake" -t "${pkgdir}/opt/LSL/share"
+    install -Dm644 "${pkgdir}/usr/lib/cmake/LSL/LSLConfig.cmake" -t "${pkgdir}/opt/LSL/share"
+    install -Dm644 "${pkgdir}/usr/lib/cmake/LSL/LSLConfigVersion.cmake" -t "${pkgdir}/opt/LSL/share"
+    install -Dm644 "${pkgdir}/usr/lib/cmake/LSL/LSLTargets-none.cmake" -t "${pkgdir}/opt/LSL/share"
+    install -Dm644 "${pkgdir}/usr/lib/cmake/LSL/LSLTargets.cmake" -t "${pkgdir}/opt/LSL/share"
 
-    install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/opt/LSL/share/licenses"
-    install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/LSL/licenses"
+    install -Dm644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/opt/LSL/share/licenses"
+    install -Dm644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/LSL/licenses"
 }
