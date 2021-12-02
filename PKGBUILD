@@ -1,7 +1,7 @@
 # Maintainer: Ning Sun <n@sunng.info>
 
 pkgname=zipkin
-pkgver=2.23.4
+pkgver=2.23.9
 pkgrel=2
 pkgdesc='Opensource Distributed Tracing System'
 arch=('any')
