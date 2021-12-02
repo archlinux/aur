@@ -8,6 +8,7 @@ pkgbase = quake3e-git
 	license = GPL
 	makedepends = git
 	makedepends = libxxf86dga
+	provides = quake3
 	source = git+http://github.com/ec-/Quake3e.git
 	source = quake3e.desktop
 	source = quake3e.png
@@ -16,4 +17,3 @@ pkgbase = quake3e-git
 	sha256sums = 9bb20ad9e3f569dcc0d0b522c03bfb2021096b08f073b79704b86feaa67e82f8
 
 pkgname = quake3e-git
-
