@@ -1,7 +1,7 @@
 pkgbase = lokinet-bin
 	pkgdesc = Anonymous, decentralized and IP based overlay network for the internet. [LOKI, OXEN]
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oxen.rocks/oxen-io/loki-network
 	install = lokinet.install
 	arch = x86_64

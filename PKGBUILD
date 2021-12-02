@@ -3,7 +3,7 @@
 pkgname=lokinet-bin
 _pkgname=lokinet
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Anonymous, decentralized and IP based overlay network for the internet. [LOKI, OXEN]'
 #url='https://github.com/oxen-io/loki-network'
 url='https://oxen.rocks/oxen-io/loki-network'
@@ -45,6 +45,8 @@ package() {
   cd ${_pkgname}-linux-amd64-v$pkgver
   install -D -m 755 lokinet "$pkgdir/opt/${_pkgname}/lokinet"
   install -D -m 755 lokinet-vpn "$pkgdir/opt/${_pkgname}/lokinet-vpn"
+  #install -D -m 644 bootstrap.signed "$pkgdir/var/lib/${_pkgname}/bootstrap.signed"
+  install -D -m 644 bootstrap.signed "$pkgdir/opt/${_pkgname}/bootstrap.signed"
 
   # install configuration files
   install -D -m 644 "$srcdir/lokinet.conf"                   "$pkgdir/etc/conf.d/lokinet"
@@ -57,8 +59,6 @@ package() {
   install -D -m 644 "$srcdir/lokinet.tmpfiles"               "$pkgdir/usr/lib/tmpfiles.d/lokinet.conf"
   install -D -m 644 "$srcdir/lokinet.pkla"                   "$pkgdir/var/lib/polkit-1/localauthority/10-vendor.d/lokinet.pkla"
   install -D -m 644 "$srcdir/lokinet.rules"                  "$pkgdir/usr/share/polkit-1/rules.d/lokinet.rules"
-
-  install -D -m 644 bootstrap.signed               "$pkgdir/var/lib/${_pkgname}/bootstrap.signed"
 
   # links scripts to /usr/bin
   install -d "${pkgdir}/usr/bin"
