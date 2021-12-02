@@ -1,5 +1,5 @@
 pkgbase = apple-music-electron-git
-	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface.
+	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Compiled using yarn and electron-builder from the master branch.
 	pkgver = 3.0.0
 	pkgrel = 2
 	url = https://github.com/Apple-Music-Electron/Apple-Music-Electron.git
@@ -13,6 +13,7 @@ pkgbase = apple-music-electron-git
 	depends = libxss
 	optdepends = libnotify: Playback notifications
 	optdepends = otf-san-francisco: Use of SF Font for certain themes
+	provides = apple-music-electron-git
 	provides = apple-music-electron
 	conflicts = apple-music-electron
 	source = Apple-Music-Electron::git+https://github.com/Apple-Music-Electron/Apple-Music-Electron.git

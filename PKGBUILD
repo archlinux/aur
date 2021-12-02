@@ -1,10 +1,11 @@
-# Maintainer Core_UK <mail.coreuk@gmail.com>
+# Maintainer: Core_UK <mail.coreuk@gmail.com>
 
 pkgname=apple-music-electron-git
+_pkgnamelow=apple-music-electron
 _pkgname=Apple-Music-Electron
 pkgver=3.0.0
 pkgrel=2
-pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface."
+pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Compiled using yarn and electron-builder from the master branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/Apple-Music-Electron/${_pkgname}.git"
 license=("MIT")
@@ -12,8 +13,8 @@ depends=('libxss')
 makedepends=('yarn' 'git' 'npm')
 optdepends=('libnotify: Playback notifications'
             'otf-san-francisco: Use of SF Font for certain themes')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=(${pkgname} ${_pkgnamelow})
+conflicts=(${_pkgnamelow})
 source=(
   "${_pkgname}::git+https://github.com/Apple-Music-Electron/${_pkgname}.git"
   "Apple-Music-Electron.desktop"
