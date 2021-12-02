@@ -26,6 +26,8 @@ pkgbase = mwptools-git
 	depends = libxml2
 	depends = vte3
 	depends = mosquitto
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
 	optdepends = blackbox-tools-git: Replay Blackbox files (AUR)
 	optdepends = gnuplot: Mission Elevation plots
 	optdepends = ruby: Replay Blackbox logs
@@ -37,4 +39,3 @@ pkgbase = mwptools-git
 	sha512sums = SKIP
 
 pkgname = mwptools-git
-
