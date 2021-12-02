@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-quick3d
 	pkgdesc = Qt module and API for defining 3D content in Qt Quick (android)
-	pkgver = 6.2.1
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = android-aarch64-qt6-quick3d
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.2/6.2.1/submodules/qtquick3d-everywhere-src-6.2.1.tar.xz
-	sha256sums = 4022ce0e40a5d1c93a9593037a151cf7abe64c91a8b9882d9549f6a3c002a1b2
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.2/submodules/qtquick3d-everywhere-src-6.2.2.tar.xz
+	sha256sums = be7ef8a36e84cb2f05edfd238d98899478eefbd56a5fecc7d570ce5848b5364b
 
 pkgname = android-aarch64-qt6-quick3d
