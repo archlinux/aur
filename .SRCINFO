@@ -1,6 +1,6 @@
 pkgbase = kas
 	pkgdesc = Setup tool for bitbake based projects
-	pkgver = 2.6.1
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/siemens/kas
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = kas
 	depends = python-distro
 	depends = python-jsonschema
 	depends = python-kconfiglib
-	source = kas-2.6.1.tar.gz::https://github.com/siemens/kas/archive/refs/tags/2.6.1.tar.gz
-	sha512sums = f6f3201392bc6ed920f44584e15ead5f21c08793744e2021cd67cbc2e8049be52f15380004022a4a9bdf65cde9a0a50a5cfa74fb2b0fe6fbdd818b80cdf4f69e
+	source = kas-2.6.3.tar.gz::https://github.com/siemens/kas/archive/refs/tags/2.6.3.tar.gz
+	sha512sums = 7e09b2a49e92f490f0932da7c7395ff0296124bec1d345e7514bc1b26fc1e9201d4c933829f7ae1eda0f4a62ed929ac794880fa9c4e7084ba4f7534c0367243b
 
 pkgname = kas
