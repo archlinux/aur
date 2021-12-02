@@ -5,7 +5,7 @@ pkgbase = r-vctrs
 	url = https://cran.r-project.org/package=vctrs
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	depends = r>=3.3
 	depends = r-ellipsis>=0.2.0
 	depends = r-glue
@@ -29,4 +29,3 @@ pkgbase = r-vctrs
 	sha256sums = 7f4e8b75eda115e69dddf714f0643eb889ad61017cdc13af24389aab2a2d1bb1
 
 pkgname = r-vctrs
-
