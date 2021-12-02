@@ -2,33 +2,33 @@
 # Contributor: Kim Scarborough <kim@scarborough.kim>
 pkgname=deluge1
 pkgver=1.3.15
-pkgrel=8
+pkgrel=9
 pkgdesc='A BitTorrent client with multiple interfaces in a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
 license=('GPL3')
 makedepends=('intltool'
-	'libtorrent-rasterbar'
-	'python2-chardet'
-	'python2-pyopenssl')
+  'libtorrent-rasterbar')
 depends=('python2'
-        'python2-gobject2'
-	'python2-pyxdg-git'
-	'python2-twisted-git'
-	'python2-incremental-git'
-        'pygtk'
-	'desktop-file-utils'
-	'hicolor-icon-theme')
+  'python2-attrs'
+  'python2-constantly'
+  'python2-gobject2'
+  'python2-pyxdg-git'
+  'python2-twisted-git'
+  'python2-incremental-git'
+  'python2-zope-interface-git'
+  'pygtk'
+  'desktop-file-utils'
+  'hicolor-icon-theme')
 optdepends=('python2-service-identity'
-	'libtorrent-rasterbar: required for daemon'
-	'pygtk: required for GTK client'
-	'xdg-utils: required for GTK client'
-	'python2-chardet: required for GTK client'
-	'python2-xdg: required for GTK client'
-	'python2-notify: optional for GTK client'
-	'python2-pygame: optional for GTK client'
-	'python2-libappindicator: optional for GTK client'
-	'python2-mako: required for web client')
+  'libtorrent-rasterbar: required for daemon'
+  'pygtk: required for GTK client'
+  'xdg-utils: required for GTK client'
+  'python2-xdg: required for GTK client'
+  'python2-notify: optional for GTK client'
+  'python2-pygame: optional for GTK client'
+  'python2-libappindicator: optional for GTK client'
+  'python2-mako: required for web client')
 provides=('deluge')
 conflicts=('deluge'
 	'deluge-git'
