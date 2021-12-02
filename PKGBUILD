@@ -3,7 +3,7 @@
 pkgname=darktable-cr3-git
 _gitname=darktable
 pkgver=3.7.0.r1599.gc9d36274d3
-pkgrel=4
+pkgrel=5
 pkgdesc="A virtual lighttable and darkroom for photographers with CR3 support"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
