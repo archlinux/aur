@@ -1,0 +1,20 @@
+pkgbase = xkeyboard-config-bbkt
+	pkgdesc = Upstream XKB configuration files patched with DreymaR's Big Bag mods (Colemak)
+	pkgver = 2.34_1
+	pkgrel = 1
+	url = https://github.com/SeerLite/xkeyboard-config-bbkt
+	arch = any
+	license = custom
+	makedepends = xorg-xkbcomp
+	makedepends = libxslt
+	makedepends = python
+	makedepends = meson
+	provides = xkbdata
+	provides = xkeyboard-config
+	conflicts = xkbdata
+	conflicts = xkeyboard-config
+	replaces = xkbdata
+	source = https://github.com/SeerLite/xkeyboard-config-bbkt/releases/download/xkeyboard-config-bbkt-2.34-1/xkeyboard-config-bbkt-2.34-1.tar.bz2
+	sha512sums = 0707aaa6c877bb76d91c5b0df9899de9e5a7dac0e999551bd0ee6f20527f171542bb451bc9378ac89e74f4f1aae1b450a07aa50ad209da600f59d2908a6b1fe1
+
+pkgname = xkeyboard-config-bbkt
