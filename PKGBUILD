@@ -12,16 +12,16 @@ _fragment="${FRAGMENT:-#branch=master}"
 
 # Use CUDA_ARCH to build for specific GPU architecture
 # Supports: single arch (5.2) and list of archs (5.2;6.0), arch name (Maxwell) or auto (Auto)
-[[ -v CUDA_ARCH ]] && _cuda_arch="-DCCTAG_CUDA_CC_LIST_INIT=${CUDA_ARCH}"
+[[ -v CUDA_ARCH ]]	&& _cuda_arch="-DCCTAG_CUDA_CC_LIST_INIT=${CUDA_ARCH}"
 
-((DISABLE_CUDA)) && _with_cuda=OFF || _with_cuda=ON	# Build without cuda support
-((ENABLE_APPS)) && _build_apps=ON || _build_apps=OFF	# Build the sample applications
-((ENABLE_AVX2)) && _enable_avx=ON || _enable_avx=OFF	# Enable AVX2 optimizations
-((ENABLE_SERIALIZE)) && _serialize=ON || _serialize=OFF	# Store all the output
-((ENABLE_VISUAL_DEBUG)) && _visual_debug=ON || _visual_debug=OFF # Enable visual debug
-((GPU_DETECT)) && _cc_current=ON || _cc_current=OFF	# Detect local GPU arch
-((THRUST_COPY_IF)) && _no_thrust=ON || _no_thrust=OFF	# Don't use thrust::copy_if() ( bug on cuda:7 with GTX 980/1080
-((ENABLE_DOC)) && _build_doc=ON || _build_doc=OFF	# Build doc
+((DISABLE_CUDA))	&& _with_cuda=OFF	|| _with_cuda=ON	# Build without cuda support
+((ENABLE_APPS))		&& _build_apps=ON	|| _build_apps=OFF	# Build the sample applications
+((ENABLE_AVX2))		&& _enable_avx=ON	|| _enable_avx=OFF	# Enable AVX2 optimizations
+((ENABLE_SERIALIZE))	&& _serialize=ON	|| _serialize=OFF	# Store all the output
+((ENABLE_VISUAL_DEBUG))	&& _visual_debug=ON	|| _visual_debug=OFF	# Enable visual debug
+((GPU_DETECT))		&& _cc_current=ON	|| _cc_current=OFF	# Detect local GPU arch
+((THRUST_COPY_IF))	&& _no_thrust=ON	|| _no_thrust=OFF	# Don't use thrust::copy_if() (bug on cuda:7 with GTX 980/1080)
+((ENABLE_DOC))		&& _build_doc=ON	|| _build_doc=OFF	# Build doc
 
 # Unused cmake flags.
 #option(CCTAG_NO_COUT "Disable output stream" ON)
@@ -47,7 +47,7 @@ sha256sums=('ae8a819bc978eb13bb1061a204c214da835e56c9b7dc775237ed6b2191011dec')
 
 build() {
 	cmake -S "${srcdir}/${_src_dir}" -B build -G Ninja \
-		-DCUDA_HOST_COMPILER=$(which gcc-10) \
+		-DCUDA_HOST_COMPILER="$(which gcc-10)" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
@@ -66,4 +66,4 @@ build() {
 package() {
 	DESTDIR="${pkgdir}" ninja -C build install
 }
-# vim:set tabstop=8:
+# vim:set ts=8:
