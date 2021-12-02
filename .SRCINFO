@@ -10,4 +10,3 @@ pkgbase = r-labeling
 	sha256sums = e022d79276173e0d62bf9e37d7574db65ab439eb2ae1833e460b1cff529bd165
 
 pkgname = r-labeling
-
