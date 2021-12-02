@@ -1,7 +1,7 @@
 # Maintainer: OrkenWhite <orkenwhite@disroot.org>
 pkgname=emptty-runit
 pkgdesc="Runit init script for emptty"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 arch=('any')
 url="https://github.com/tvrzna/emptty"

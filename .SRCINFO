@@ -1,12 +1,12 @@
 pkgbase = emptty-runit
 	pkgdesc = Runit init script for emptty
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/tvrzna/emptty
 	arch = any
 	license = MIT
 	depends = emptty
-	source = emptty-runit-0.6.1.tar.gz::https://github.com/tvrzna/emptty/archive/v0.6.1.tar.gz
+	source = emptty-runit-0.6.2.tar.gz::https://github.com/tvrzna/emptty/archive/v0.6.2.tar.gz
 	sha512sums = 56a823dc718436a9d3ac4ad6ec2e87554595430c0d1f91316c8c7539530e116914d51a8923eb6c05b16832330eb4090511300e056763583aaa23f05902920afe
 
 pkgname = emptty-runit
