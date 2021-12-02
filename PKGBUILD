@@ -2,7 +2,7 @@
 
 pkgname=python-colander
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple schema-based serialization and deserialization library"
 url="https://docs.pylonsproject.org/projects/colander/en/latest/"
 license=('BSD')
