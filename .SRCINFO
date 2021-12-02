@@ -16,7 +16,6 @@ pkgbase = r-stringr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/stringr_1.4.0.tar.gz
-	md5sums = 1c3e0267af33d829b842de9fa68853e2
+	sha256sums = 87604d2d3a9ad8fd68444ce0865b59e2ffbdb548a38d6634796bbd83eeb931dd
 
 pkgname = r-stringr
-
