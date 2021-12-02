@@ -11,7 +11,6 @@ pkgbase = r-viridislite
 	optdepends = r-testthat
 	optdepends = r-covr
 	source = https://cran.r-project.org/src/contrib/viridisLite_0.4.0.tar.gz
-	md5sums = 4281c39f0fef8a75fdd61d6a98203957
+	sha256sums = 849955dc8ad9bc52bdc50ed4867fd92a510696fc8294e6971efa018437c83c6a
 
 pkgname = r-viridislite
-
