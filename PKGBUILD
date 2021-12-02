@@ -1,29 +1,27 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Mick Elliot <micke@sfu.ca>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=muscle
-pkgver=3.8.1551
+pkgver=5.0.1428
 pkgrel=1
-pkgdesc="multiple sequence comparison by log-expectation"
+pkgdesc="Multiple sequence comparison by log-expectation"
 arch=('i686' 'x86_64')
-url="http://www.drive5.com/muscle/"
-license=('custom')
-source=(http://www.drive5.com/muscle/muscle_src_$pkgver.tar.gz LICENSE)
-sha256sums=('c70c552231cd3289f1bad51c9bd174804c18bb3adcf47f501afec7a68f9c482e'
-            '2ee887dede5d3ddb6fa65690e0afd8d1083d835522d9271450752df0cc2f6658')
+url="https://github.com/rcedgar/muscle"
+license=('GPL')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('59a8196890893e44a60f24134e8da24ee8381830a0f84e37378a3ca8be5430f5')
 
-build() {
-  cd "$srcdir"
-  if [ "${CARCH}" = "i686" ]; then
-    make CFLAGS=" -march=i686 -mtune=generic -O2 -pipe" LDLIBS=" -lm"
-  else
-    make CFLAGS=" -march=x86-64 -mtune=generic -O2 -pipe" LDLIBS=" -lm"
-  fi
-}
+#build() {
+#  cd "$srcdir"/$pkgname-$pkgver
+#  make
+##  if [ "${CARCH}" = "i686" ]; then
+##    make CFLAGS=" -march=i686 -mtune=generic -O2 -pipe" LDLIBS=" -lm"
+##  else
+##    make CFLAGS=" -march=x86-64 -mtune=generic -O2 -pipe" LDLIBS=" -lm"
+##  fi
+#}
 
 package() {
-  cd "$srcdir"
-  install -D -m755 muscle "$pkgdir/usr/bin/muscle"
-  install -D -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir"/$pkgname-$pkgver
+  install -Dm755 binaries/muscle "$pkgdir"/usr/bin/muscle
 }
- 
