@@ -4,7 +4,7 @@ pkgbase = r-ggplot2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggplot2
 	arch = any
-	license = GPL2
+	license = MIT
 	depends = r>=3.3
 	depends = r-digest
 	depends = r-glue
@@ -15,10 +15,12 @@ pkgbase = r-ggplot2
 	depends = r-tibble
 	depends = r-withr>=2.0.0
 	optdepends = r-covr
+	optdepends = r-ragg
 	optdepends = r-dplyr
 	optdepends = r-ggplot2movies
 	optdepends = r-hexbin
 	optdepends = r-hmisc
+	optdepends = r-interp
 	optdepends = r-knitr
 	optdepends = r-lattice
 	optdepends = r-mapproj
@@ -36,6 +38,7 @@ pkgbase = r-ggplot2
 	optdepends = r-svglite
 	optdepends = r-testthat
 	optdepends = r-vdiffr
+	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/ggplot2_3.3.5.tar.gz
 	sha256sums = b075294faf3af31b18e415f260c62d6000b218770e430484fe38819bdc3224ea
 
