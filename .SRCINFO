@@ -1,0 +1,18 @@
+pkgbase = sailboot
+	pkgdesc = Highly customizable framework for performing numerical bootstrap computations
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/maneandrea/sailboot
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-mpmath
+	depends = python-pyparsing
+	depends = sdpb-git
+	optdepends = python-gmpy2
+	optdepends = sagemath
+	optdepends = scalar_blocks-git
+	source = https://gitlab.com/maneandrea/sailboot/-/archive/v1.0/sailboot-v1.0.tar.gz
+	sha256sums = fcac6a42c2220220737d1274ec86afb2a33488737fb2a81d8ec3e8526b272bc7
+
+pkgname = sailboot
