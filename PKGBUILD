@@ -29,7 +29,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 #option(CCTAG_USE_POSITION_INDEPENDENT_CODE "Generate position independent code." ON)
 
 pkgname=cctag
-pkgver=1.0.0
+pkgver=1.0.1
 _src_dir="CCTag-${pkgver}"
 pkgrel=1
 pkgdesc="Detection of CCTag markers made up of concentric circles."
@@ -42,15 +42,8 @@ makedepends=(boost cmake eigen gcc10 ninja opencv)
 ((DISABLE_CUDA)) || { makedepends+=(cuda); optdepends+=('cuda: for cuda detector'); }
 ((ENABLE_APPS)) && depends+=(devil2 qt5-base)
 ((ENABLE_DOC)) && makedepends+=(python-sphinx doxygen)
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"fix_boost_math.patch::https://github.com/alicevision/CCTag/pull/166.diff")
-sha256sums=('0b40506506219cc839424496871e8d392311ed4ae0512f0740e8111a5da44796'
-            '2ce981c55538849e667dab168d88c16f0006c9bb76846e18300495b95a853141')
-
-prepare() {
-# Fix missing -lboostmath for geom_elipse.cpp
-	patch -d "${srcdir}/${_src_dir}" -Np1 -i "${srcdir}"/fix_boost_math.patch
-}
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ae8a819bc978eb13bb1061a204c214da835e56c9b7dc775237ed6b2191011dec')
 
 build() {
 	cmake -S "${srcdir}/${_src_dir}" -B build -G Ninja \
