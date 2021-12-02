@@ -1,4 +1,4 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Jove Yu <yushijun110@126.com>
 
 pkgname=hardinfo-gtk3
 pkgver=0.5.1.816.g877ea2b
