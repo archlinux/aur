@@ -13,6 +13,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Prepend "$1" to $PATH when not already in.
+#  derived from Arch /etc/profile append_path()
+prepend_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="$1${PATH:+:$PATH}"
+    esac
+}
+
 # Ensure that safe-rm takes precedence over the real `rm` command
-PATH="/usr/lib/safe-rm:$PATH"
+prepend_path '/usr/lib/safe-rm'
 export PATH
+
+# Remove our path function
+unset -f prepend_path

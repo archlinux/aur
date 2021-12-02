@@ -4,7 +4,7 @@
 
 pkgname=safe-rm
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool intended to prevent the accidental deletion of important files"
 arch=(any)
 url='https://launchpad.net/safe-rm'
@@ -18,7 +18,7 @@ source=(https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.
 sha256sums=('a1c916894c5b70e02a6ec6c33abbb2c3b3827464cffd4baffd47ffb69a56a1e0'
             'SKIP'
             'd016ccf8e5dcd517bacaae1bb71509932bae813b451da33850347aba7e481739'
-            'b72582e5bb4ea8a98eb9e038021443e066a1b195585a4e9bb0dd9010da434836')
+            '6d5abd6439addd41ee78f1a3ba01648ec656dbd54cfeb78e20d386ac337d6ae9')
 validpgpkeys=(8C470B2A0B31568E110D432516281F2E007C98D1) # Francois Marier <fmarier@gmail.com>
 
 
