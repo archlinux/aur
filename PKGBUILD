@@ -2,12 +2,12 @@
 # Contributor: Wouter Wijsman <wwijsman@live.nl>
 pkgname=minigalaxy
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
 url="https://sharkwouter.github.io/minigalaxy"
 license=('GPL3' 'CC-BY-3.0')
-depends=('gtk3' 'python-gobject' 'python-requests' 'webkit2gtk')
+depends=('gtk3' 'python-gobject' 'python-requests' 'unzip' 'webkit2gtk' 'xdg-utils')
 makedepends=('python-setuptools')
 optdepends=('dosbox: Use the system DOSBox installation'
             'innoextract: Extract Windows installers'
