@@ -6,10 +6,9 @@ pkgbase = r-yaml
 	arch = i686
 	arch = x86_64
 	license = BSD3
-	makedepends = gcc
 	depends = r
+	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/yaml_2.2.1.tar.gz
-	md5sums = ab6c7315d898dbd0848542bcbe5f335b
+	sha256sums = 1115b7bc2a397fa724956eec916df5160c600c99a3be186d21558dd38d782783
 
 pkgname = r-yaml
-
