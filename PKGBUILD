@@ -2,7 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=kddockwidgets
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="KDAB's Dock Widget Framework for Qt"
