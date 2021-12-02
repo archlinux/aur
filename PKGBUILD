@@ -4,7 +4,7 @@
 
 pkgname=koofr
 pkgver=5974c04
-pkgrel=1
+pkgrel=2
 pkgdesc="Managing your Koofr cloud drive"
 arch=('x86_64')
 url="https://koofr.eu/"
@@ -14,7 +14,7 @@ options=(!strip)
 source=("${pkgname}-${pkgver}-linux-${arch}.tar.gz::https://app.koofr.net/dl/apps/linux64"
   "koofr.desktop")
 sha512sums=('f39d96d3229fa52abacf7552e718e3a2d8ad7b2d1cb437a27197b7f3026e8a5ade30d739de5883300f46dbfb061c42c853bf123c0497fe5c9f442217df25840d'
-  'a2dd10dbe1ab895c75401487b29faae78dcc6d154db34b523d20578ad12fe083fd0ca1c8385a22b553d1238bbf1da5d1b6ddf3d2d8c5f36f5858680a23d7d130')
+            'e344aa5b345e6f1ff4a77d464682cf28dfa4a5604ee1b0fb7b43451cc6bdce3238fc27ee232763b6380ea5e146c238c3c19638283b220d39bc8091b5a0fd8711')
 
 package() {
   cd ${srcdir}

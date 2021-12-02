@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Koofr
 GenericName=Hybrid storage cloud
-Exec=/opt/koofr/storagegui
+Exec=koofr
 Terminal=false
 Type=Application
 Icon=koofr
