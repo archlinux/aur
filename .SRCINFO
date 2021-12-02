@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-serialport
 	pkgdesc = Provides access to hardware and virtual serial ports (android)
-	pkgver = 6.2.1
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-aarch64-qt6-serialport
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.2/6.2.1/submodules/qtserialport-everywhere-src-6.2.1.tar.xz
-	sha256sums = ec77f4c9d6096588f3e735315f873976103479be453985b27f27fe8994e0776a
+	source = https://download.qt.io/official_releases/qt/6.2/6.2.2/submodules/qtserialport-everywhere-src-6.2.2.tar.xz
+	sha256sums = 5555aae0332df90c7d955381a758a2b918b6e65e2148da8003c1fb2f9cf9640a
 
 pkgname = android-aarch64-qt6-serialport
