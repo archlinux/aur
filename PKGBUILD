@@ -64,8 +64,8 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.15.5
-pkgrel=2
+pkgver=5.15.6
+pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -86,31 +86,29 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch
-  0003-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
-  0004-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
-  0005-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
-  0006-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
-  0007-lg-laptop-Recognize-more-models.patch
-  0008-scsi-sd-Fix-sd_do_mode_sense-buffer-length-handling.patch
+  0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
+  0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
+  0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
+  0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  0006-lg-laptop-Recognize-more-models.patch
+  0007-Revert-drm-i915-Implement-Wa_1508744258.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('2921b549a44ff4202ab96d35d6b7ce99bef914db5c1dba066fb7c4b146ef987d1aed53d0773fbe07cd6bb3b964d40b6f3f8c47f6a04149ea1c64e2f8f87343bb'
+b2sums=('dedcff13b0829b9bdfc4998a9bedcf932dee48ade3bef722ccbd8fc7bef9832462ac2f1064b77926f86d93c7035634db8ba8f6c1e2d957ff749b34e218c565c7'
         'SKIP'
-        '1154722c5d8a33dedbd18679724ef34ac3aa96900c53aa8ebbba10ea87b0aaa0363d278b0aa4e5e5fed7e85c05e9b7892ba6bdd72f87117f584fef785d6f91d0'
+        '4b6759fae0abc440292b310aed12bd12bbfbc172f968572ee9b8a9164c844b3f2a12f81b1fdf5ed86d75403f0c5be5d57933292e22c2973ef14f481bf78a3f7e'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
         'cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e'
-        'd107ab04b9f187fa78481a83ac90e9d9e335d2fd6a5eba07cd48bfa659999f3d54afd2b01b8c1d49faf7b95c7ceee37ca038e2169e252dc9938228b7176204de'
-        '2857d0a1b79ba768bbc321ac7461b0cdd19e9ecbc8f10674b47f834c7f19c8771e3adec842f796b138da8f8ecd1b955a9de332072f0b3d776667956a1ec26c13'
-        'f6319aaf6cd1b040cee8fbd8c9ad993b011586037cef249f679efda0e5eb819b08d96abdf91f08d70e634e5d958aee8c756068ce38f34e33893f27d511c8efbe'
-        '640d8a6ff7394d2cab6ac949ce73cb14696165897f9c453a8cfafa93a071f3cbcdd5db90c0e6e35ec4f33276912034f1232bdb419029746d78c351dc2120eab8'
-        'ff0599fb11714b2a1399a7c9b568e688472a8ed646c8a2eacfe78593cc4beae4d0675151d0a7742b15d6dbf815ce6a99678fca5da69defedee1416aadee6773d'
-        '87eb24ff13fa79660383749e6fb7f5aaaf42c725877f839d7c8be087c1692ac66ed2f3c66b1c779c9b8d823c798fd732eb4dcba091fd0ddce65de11c5eef07a2'
-        'c842942c45c0fa816b9e5e6a4893a61986126fddb94c02854640f136d06ac20abc0fcc65b0f7196cc5a647fc075f343ad7da54fa541b46d75f00fac07b0063d1'
-        '0876ef25a850e218948d2f595732c51714b04dbc88a14fc1c599034eb2c4d742f171ff3fce1fcae628050f29aa48495c92a58471058649797fb1f1734cc5d7e0')
+        'd3949a2c42bef49159ebbb03a6a0428d7733149a62e5211cff160da068139f39655cf45b5557ed491a9078253d892ea7fe64e41010d95dad073e565b7616e587'
+        '3ccad696e49c2d8b6202cabceefcbbfbbe3f7d29a5a895552a03b2c5418b6f7570ce06614d3b34fb0ca6d765e8becf69466b3d9997393f02a9a1efc2de214407'
+        '709d734efdc407ac250af9527a9bf42abb5d19be8432e5670b28e68d4de65d38b36edfde5c83636870340adc8ec4bea36703f3ab54e4c7cd8cf46eb805751498'
+        'e698661f8246d46eea768b0115e98c70179a1ff3c5931ec5bacabb476bfce3fb01c3b754065cbdcf36730e59b317b7b74d5b9a305b649a22b6af20abd999e89e'
+        'c3eb2897afb99d51911f92372d4c9d37297c0910d4cd17b24b70c85a1ef95bf8f6c280bc9f43d2dc80593756628c7dcdd721f3f4bbbed8bf74ef347844606ddf'
+        'bfef7971cb082ed938da787335404a788530f84b9b3416e8a6983556d1e69e552e777fd4dd276662da5808973e0896e8024b8227c601add98c4c72093a03d1ce'
+        'dfa875a75daae7f65dcadcbfc0fe025133f838594b59f9d158c5eff5bb86dab33e34aba4fc215c91d397c6bcff0a60d7368d08d3b1c4b73c5562518d0f6f88c0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

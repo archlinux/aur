@@ -1,7 +1,7 @@
-From c9f82c4d609a59b1cf15981bf096ccc448290d8b Mon Sep 17 00:00:00 2001
+From 62f1f7606485d450b23f86bc18dab101e7a2443d Mon Sep 17 00:00:00 2001
 From: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
 Date: Thu, 18 Nov 2021 21:18:01 -0800
-Subject: [PATCH 5/8] cpufreq: intel_pstate: ITMT support for overclocked
+Subject: [PATCH 4/8] cpufreq: intel_pstate: ITMT support for overclocked
  system
 
 On systems with overclocking enabled, CPPC Highest Performance can be
@@ -23,7 +23,7 @@ Signed-off-by: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
  1 file changed, 10 insertions(+)
 
 diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
-index dafa631582ba..7307b3c4a4c4 100644
+index e15c3bc17a55..8a2c6b58b652 100644
 --- a/drivers/cpufreq/intel_pstate.c
 +++ b/drivers/cpufreq/intel_pstate.c
 @@ -335,6 +335,8 @@ static void intel_pstste_sched_itmt_work_fn(struct work_struct *work)
