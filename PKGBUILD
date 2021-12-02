@@ -30,7 +30,7 @@ depends=(
     
     'mpv>=0.28'
     'taglib'
-    'youtube-dl'
+    'yt-dlp'
     'wget'
 )
 
