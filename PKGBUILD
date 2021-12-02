@@ -2,14 +2,14 @@
 pkgdesc="A tile cache and WMS proxy."
 pkgbase=python-mapproxy
 pkgname=('python-mapproxy' 'python2-mapproxy')
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 arch=('any')
 url="https://github.com/mapproxy/mapproxy"
 license=('APACHE')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("mapproxy-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2433f9a05b863cecebe54460c92032cb8d176e0b773b7e08f623db41eb2710a6')
+sha256sums=('a47eeaf6211424694f9af43599f26da2546da866299a0048a2a6eb414869388c')
 
 build() {
   cp -rf mapproxy-${pkgver} mapproxy2-${pkgver}
