@@ -1,5 +1,5 @@
 pkgbase = apple-music-electron-bin
-	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Binary Release that builds from most recent release on GitHub.
+	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Binary release that builds from most recent release on GitHub (Uses .deb file).
 	pkgver = 3.0.0
 	pkgrel = 2
 	url = https://github.com/Apple-Music-Electron/Apple-Music-Electron.git
@@ -14,7 +14,7 @@ pkgbase = apple-music-electron-bin
 	optdepends = libnotify: Playback notifications
 	optdepends = otf-san-francisco: Use of SF Font for certain themes
 	provides = apple-music-electron-bin
-	conflicts = apple-music-electron-git
+	provides = apple-music-electron
 	conflicts = apple-music-electron
 	options = !strip
 	options = !emptydirs

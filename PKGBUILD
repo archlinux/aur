@@ -15,8 +15,8 @@ depends=('gtk3' 'nss')
 makedepends=('desktop-file-utils' 'xdg-utils')
 optdepends=('libnotify: Playback notifications'
             'otf-san-francisco: Use of SF Font for certain themes')
-provides=(${pkgname})
-conflicts=("${_pkgnamelow}-git" ${_pkgnamelow})
+provides=(${pkgname} ${_pkgnamelow})
+conflicts=(${_pkgnamelow})
 source=("https://github.com/Apple-Music-Electron/${_pkgname}/releases/download/v${pkgver}/apple-music-electron_${pkgver}_amd64.deb"
         "apple-music-electron.install")
 sha256sums=('5eb8497256995158b0e539d464122d81d281a195b3eaf941fcef4fc94e70b501'
