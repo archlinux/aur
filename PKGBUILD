@@ -2,8 +2,8 @@
 # Contributor: tharazgul <tharazgul at gmx dot at>
 pkgname=darktable-cr3-git
 _gitname=darktable
-pkgver=3.7.0
-pkgrel=3
+pkgver=3.7.0.r1599.gc9d36274d3
+pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers with CR3 support"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
@@ -33,13 +33,6 @@ prepare() {
   cd $_gitname
   git submodule init
   git submodule update
-  cd src/external/rawspeed
-  git config remote.origin.url https://github.com/cytrinox/rawspeed.git
-  git fetch
-  cd ../../..
-  git config submodule.src/external/rawspeed.url "https://github.com/cytrinox/rawspeed.git"
-  git config submodule.src/external/rawspeed.branch "canon_cr3"
-  git submodule update --remote
   sed '/-Werror/d' -i src/CMakeLists.txt
 }
 
