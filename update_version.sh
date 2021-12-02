@@ -5,7 +5,7 @@ set -euxo pipefail
 PKG=$(awk -F '=' '/pkgname=/{ print $2 }' PKGBUILD)
 
 # Get latest version
-VER=$(curl -sSfL "https://lv.luzifer.io/catalog-api/reg/latest.txt?p=version")
+VER=$(curl -sSfL "https://lv.luzifer.io/v1/catalog/reg/latest/version")
 
 # Insert latest version into PKGBUILD
 sed -i \
