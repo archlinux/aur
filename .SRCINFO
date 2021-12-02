@@ -1,6 +1,6 @@
 pkgbase = ruby-chef-utils
 	pkgdesc = Basic utility functions for Core Chef Infra development
-	pkgver = 17.7.29
+	pkgver = 17.8.25
 	pkgrel = 1
 	url = https://github.com/chef/chef/tree/master/chef-utils
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ruby-chef-utils
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-concurrent
-	noextract = chef-utils-17.7.29.gem
+	noextract = chef-utils-17.8.25.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/chef-utils-17.7.29.gem
-	sha512sums = 2533104f0a79053c30ecf940ec6aa814cb2b892ad0a59de765be5350326026d41607b2a42b6c3afc592400bf4604c16bca9b67402550a0d96bd2a8a82552a6bf
-	b2sums = 701b50225532dafc9794dcf1dead25a65f484a799c4dbe65717b5bb986a6a72a3be361471ce5e15331e6491451cc6239fc7cb28079cdb35f3f9ac5da4c8b5ec6
+	source = https://rubygems.org/downloads/chef-utils-17.8.25.gem
+	sha512sums = c3f7e52f1fb167d6e41ced61f89de802378e879b74b6c0a27d92e44dcff115ae8252ea52a35dd700a3f621743dad217d87a7c3e4920740b76eed05ad48029557
+	b2sums = 793256b648e57548a12d5060b8a683da6ddf14043fbbfc5539293f74e46ffdc2f2a26fbadd6ff143bdb0d11fbc7b98381e382e26c0280da226ea1c26b1125f02
 
 pkgname = ruby-chef-utils
