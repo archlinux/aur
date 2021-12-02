@@ -36,5 +36,5 @@ package() {
     ln -rs "${pkgdir}/usr/bin/LabRecorder.cfg" -t "${pkgdir}/opt/LSL/bin"
     ln -rs "${pkgdir}/usr/bin/LabRecorderCLI" -t "${pkgdir}/opt/LSL/bin"
 
-    install -D -m644 "${pkgdir}/usr/bin/LICENSE" -t "${pkgdir}/opt/LSL/bin"
+    install -Dm644 "${pkgdir}/usr/bin/LICENSE" -t "${pkgdir}/opt/LSL/bin"
 }
