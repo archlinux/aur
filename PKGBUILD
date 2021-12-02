@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=coredns-s6
-pkgver=20211202
+pkgver=20211203
 pkgrel=1
 pkgdesc="s6-rc service scripts for coredns"
 arch=('any')
@@ -24,7 +24,7 @@ sha256sums=('8a3d2abcc40d355ca913f39871d24f6c770dd216fe075d2548e729b2ae952135'
             '0587215650201c054407bbc74d50d278bf670831659ed540e36e9fae566c08c9'
             'd0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006'
             '3d21334d0330d5de357dd2ae048eff0c2f5f0bbb21d39bc6ab1e2b04915f5036'
-            '5b264c22addf900f5a48de2a5c358436fde81841cddf79db47d415dcf0194847'
+            '969412b20adf2ad64fb2d7fb318020ef97a9cfe4921c2d1085c1432084d61274'
             'd0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006')
 
 _inst_sv() {
