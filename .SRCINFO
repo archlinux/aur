@@ -1,0 +1,13 @@
+pkgbase = coremark-git
+	pkgdesc = CoreMark® is an industry-standard benchmark that measures the performance of central processing units (CPU) and embedded microcrontrollers (MCU).
+	pkgver = r50.45faaf8
+	pkgrel = 1
+	url = https://github.com/eembc/coremark.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = coremark::git+https://github.com/eembc/coremark.git
+	md5sums = SKIP
+
+pkgname = coremark-git
