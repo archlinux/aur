@@ -5,7 +5,6 @@ pkgbase = heaptrace-git
 	url = https://github.com/Arinerron/heaptrace
 	arch = x86_64
 	license = BSD
-	makedepends = gcc
 	source = heaptrace-git-2.2.8::git+https://github.com/Arinerron/heaptrace.git#branch=main
 	md5sums = SKIP
 

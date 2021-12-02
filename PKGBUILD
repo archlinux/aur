@@ -8,7 +8,6 @@ md5sums=("SKIP")
 url="https://github.com/Arinerron/heaptrace"
 pkgdesc="helps visualize heap operations for pwn and debugging"
 source=("${pkgname}-${pkgver}::git+https://github.com/Arinerron/heaptrace.git#branch=main")
-makedepends=("gcc")
 
 build() {
     # build
