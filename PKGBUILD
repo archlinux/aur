@@ -7,7 +7,7 @@ pkgdesc='Cracking the XP seed in Minecraft and choosing your enchantments'
 arch=('any')
 url='https://github.com/Earthcomputer/EnchantmentCracker'
 license=('MIT')
-depends=('java-runtime=8')
+depends=('java-runtime=8' bash)
 makedepends=('unzip')
 source=("https://github.com/Earthcomputer/EnchantmentCracker/releases/download/v$pkgver/enchcracker-${pkgver//_/-}.zip"
 	"https://raw.githubusercontent.com/Earthcomputer/EnchantmentCracker/v$pkgver/LICENSE.txt"
