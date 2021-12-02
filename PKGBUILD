@@ -1,5 +1,5 @@
 pkgname=mtg
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64' 'armv7h' 'aarch64') # possibly others?
