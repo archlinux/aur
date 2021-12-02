@@ -5,7 +5,7 @@
 # Contributor: serp <serp256 at gmail dot com>
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
-pkgver='5.4.2'
+pkgver='5.5.0'
 pkgrel='1'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,17 +13,25 @@ url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
 depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-luv' 'ocaml-mmap>=1.1.0' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0' 'ocaml-result' 'ocaml-seq')
 makedepends=('cppo>=1.1.0')
+checkdepends=('ocaml-ppx_let')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e169cbe6722d9364002e8107297a24c7479843cb88222fe3e179e58407c1d2cb')
+sha512sums=('8951b94555e930634375816d71815b9d85daad6ffb7dab24864661504d11be26575ab0b237196c54693efa372a9b69cdc1d5068a20a250dc0bbb4a3c03c5fda1')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
-	# this test breaks for some people but not for others
+
+	# This test breaks for some people but not for others,
 	# see comments from oriba, crave and pha-qu on the AUR page
 	sed -i '/test_mcast "mcast-join-loop"/d' 'test/unix/test_mcast.ml'
+
+	# I was unable to persuade dune to not build lwt_domain (which
+	# we don't want to build as there's no ocaml-multicore package),
+	# so let's just delete it until I figure out what's going on
+	rm -rf 'lwt_domain.opam'
+	rm -rf {'src','test'}'/domain/'
 }
 
 build() {
