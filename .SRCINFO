@@ -16,4 +16,3 @@ pkgbase = r-magrittr
 	sha256sums = 75c265d51cc2b34beb27040edb09823c7b954d3990a7a931e40690b75d4aad5f
 
 pkgname = r-magrittr
-
