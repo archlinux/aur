@@ -1,7 +1,8 @@
 pkgname=libcamera-git
 _pkgname=libcamera
-pkgver=r3240.f2a18172
-pkgrel=3
+pkgver=r3303.b7b72027
+_gtestver=1.11.0
+pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
 arch=('x86_64' 'i686' 'aarch64' )
 url='http://libcamera.org/'
@@ -16,6 +17,7 @@ makedepends=(
     "python-jinja"
     "python-ply"
     "python-yaml"
+    "sed"
 )
 optdepends=(
     "doxygen"
@@ -30,35 +32,54 @@ optdepends=(
 )
 license=('LGPL2.1')
 options=('!buildflags')
-source=('git://linuxtv.org/libcamera.git/')
-md5sums=('SKIP')
+source=(
+  'git://linuxtv.org/libcamera.git/'
+  "gtest-${_gtestver}.zip::https://github.com/google/googletest/archive/release-${_gtestver}.zip"
+  "gtest_${_gtestver}-1_patch.zip::https://wrapdb.mesonbuild.com/v2/gtest_${_gtestver}-1/get_patch"
+  )
+noextract=(
+  "gtest-${_gtestver}.zip"
+  "gtest_${_gtestver}-1_patch.zip"
+  )
+sha256sums=(
+  'SKIP'
+  '353571c2440176ded91c2de6d6cd88ddd41401d14692ec1f99e35d013feda55a'
+  'd38c39184384608b08419be52aed1d0f9d9d1b5ed71c0c35e51cccbdddab7084'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd "$_pkgname"
+prepare() {
+    cd "$srcdir/$_pkgname"
+    sed -i 's/^\(source_url\|patch_url\).*/#&/g' ./subprojects/gtest.wrap
+    mkdir -p subprojects/packagefiles
+    ln -sf "${srcdir}/gtest_${_gtestver}-1_patch.zip" "${srcdir}/gtest-${_gtestver}.zip" subprojects/packagefiles/ 
+}
 
-    meson setup build \
-        --prefix        /usr \
-        --buildtype     plain \
-        -D              werror=false \
-        -D              documentation=disabled \
-        -D              tracing=disabled
+build() {
+    cd "$srcdir/$_pkgname"
+
+    arch-meson build \
+        -D          b_lto=false \
+        -D          werror=false \
+        -D          documentation=disabled \
+        -D          tracing=disabled
+
     meson compile -C build
 }
 
 check() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
     ninja -C build test
 }
 
 package() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
     DESTDIR="$pkgdir" ninja -C build install
     install -d -m 755 "$pkgdir"/usr/share/licenses/"$_pkgname"
     install -D -m 644 ./LICENSES/* "$pkgdir"/usr/share/licenses/"$_pkgname"/
