@@ -4,23 +4,23 @@
 
 _cranname=base64enc
 _cranver=0.1-3
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-base64enc
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tools for base64 encoding"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' )
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('0f476dacdd11a3e0ad56d13f5bc2f190')
+license=(GPL2 GPL3)
+depends=('r>=2.9.0')
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('6d856d8a364bcdc499a0bf38bfd283b7c743d08f0b288174fba7dbf0a04b688d')
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
