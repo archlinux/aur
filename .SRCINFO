@@ -3,10 +3,10 @@ pkgbase = r-colorspace
 	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=colorspace
+	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD3
 	depends = r>=3.0.0
-	optdepends = r-kernsmooth
 	optdepends = r-kernlab
 	optdepends = r-mvtnorm
 	optdepends = r-vcd
@@ -24,7 +24,7 @@ pkgbase = r-colorspace
 	optdepends = r-scico
 	optdepends = r-viridis
 	optdepends = r-wesanderson
-	source = r-colorspace-2.0.2.tar.gz::https://cran.r-project.org/src/contrib/colorspace_2.0-2.tar.gz
+	source = https://cran.r-project.org/src/contrib/colorspace_2.0-2.tar.gz
 	sha256sums = b891cd2ec129ed5f116429345947bcaadc33969758a108521eb0cf36bd12183a
 
 pkgname = r-colorspace
