@@ -1,0 +1,19 @@
+pkgbase = cyberghostvpn-openresolv
+	pkgdesc = CyberGhost VPN (with openresolv for clients using NetworkManager)
+	pkgver = 1.3.4
+	pkgrel = 3
+	url = https://www.cyberghostvpn.com
+	install = cyberghostvpn.install
+	arch = any
+	license = custom:cyberghostvpn
+	makedepends = zip
+	depends = curl
+	depends = openvpn
+	depends = wireguard-tools
+	depends = openresolv
+	conflicts = cyberghostvpn
+	source = https://download.cyberghostvpn.com/linux/cyberghostvpn-ubuntu-20.04-1.3.4.zip
+	sha256sums = d28d6008c71896bdb3af67d4d047eb4738e061e7cd5d2d9debef7e90b875fec5
+
+pkgname = cyberghostvpn-openresolv
+
