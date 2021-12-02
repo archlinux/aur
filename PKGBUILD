@@ -3,7 +3,7 @@
 
 pkgname='omada-sdn-controller'
 pkgver=4.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Centralized Omada SDN controller software'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
@@ -12,7 +12,7 @@ depends=('jre8-openjdk' 'java-jsvc' 'curl' 'mongodb>=3.0' 'mongodb<4')
 provides=('sdn-controller')
 conflicts=('eap-controller')
 source=(
-    "http://static.tp-link.com/upload/software/2021/202110/20211011/Omada_SDN_Controller_v4.4.6_linux_x64.tar.gz"
+    "http://static.tp-link.com/upload/software/2021/202110/20211011/Omada_SDN_Controller_v4.4.6_Linux_x64.tar.gz"
     "git://github.com/tlonic/omada-sdn-controller-scripts.git#commit=8123f2aad2cda365c5a19d7e386d2de6e79402d9" 
 )
 sha256sums=('be3ebc1ced254560e21945303df99bdfa1e49a4448311297db0f34de746ba0bf'
