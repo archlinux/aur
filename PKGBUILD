@@ -4,7 +4,7 @@ pkgname=antconc
 pkgver=3.5.9
 _pkgver=${pkgver//./}
 _appname=AntConc_64bit
-pkgrel=3
+pkgrel=4
 pkgdesc="A freeware corpus analysis toolkit for arrying out corpus linguistics research and data-driven learning."
 arch=('x86_64')
 url="https://www.laurenceanthony.net/software/antconc/"
@@ -21,6 +21,6 @@ sha256sums=('ca0e7a25457911856c36e13591fd1d9b1d19cb30258836ca7659e5617192abd0'
 package() {
   install -Dm755 "$srcdir"/${_appname} "$pkgdir"/usr/bin/${pkgname}
   install -Dm644 ${pkgname}.png "$pkgdir"/usr/share/pixmaps/${pkgname}.png 
-  install -Dm644 ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}desktop 
+  install -Dm644 ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop 
   install -Dm644 license-$pkgname-$pkgver.pdf "$pkgdir"/usr/share/licenses/$pkgname/license.pdf
 }
