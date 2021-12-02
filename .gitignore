@@ -2,4 +2,4 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!*.patch
+!0001-Defuse-root-block.patch
