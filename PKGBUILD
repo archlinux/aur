@@ -3,7 +3,7 @@
 _name=coverage-highlight.vim
 pkgname=vim-coverage-highlight
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim plugin to highlight Python source code lines that lack test coverage"
 arch=('any')
 url="https://github.com/mgedmin/coverage-highlight.vim"
