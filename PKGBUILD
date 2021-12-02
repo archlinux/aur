@@ -33,8 +33,8 @@ package() {
     install -D -m 644 $srcdir/Quake3e/build/release-linux-x86_64/quake3e_opengl_x86_64.so $pkgdir/opt/quake3/quake3e_opengl_x86_64.so
     install -D -m 644 $srcdir/Quake3e/build/release-linux-x86_64/quake3e_vulkan_x86_64.so $pkgdir/opt/quake3/quake3e_vulkan_x86_64.so
     mkdir -p $pkgdir/usr/bin
-    ln -s /opt/quake3e/quake3e.x64 $pkgdir/usr/bin/quake3
-    ln -s /opt/quake3e/quake3e.ded.x64 $pkgdir/usr/bin/quake3.ded
+    ln -s /opt/quake3/quake3e.x64 $pkgdir/usr/bin/quake3e
+    ln -s /opt/quake3/quake3e.ded.x64 $pkgdir/usr/bin/quake3e.ded
     install -D -m 644 quake3e.desktop $pkgdir/usr/share/applications/quake3e.desktop
     install -D -m 644 quake3e.png $pkgdir/usr/share/pixmaps/quake3e.png
     }
