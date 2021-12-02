@@ -2,7 +2,7 @@
 _name=kaptan
 pkgname=python-kaptan
 pkgver=0.5.12
-pkgrel=6
+pkgrel=7
 pkgdesc="Configuration manager in your pocket"
 arch=('any')
 url="https://emre.github.io/kaptan/"
