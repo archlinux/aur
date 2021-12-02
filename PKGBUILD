@@ -4,7 +4,7 @@
 _pkgname=pyhcl
 pkgname=python-pyhcl
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='HCL configuration parser for python'
 arch=(any)
 url='https://pypi.org/project/pyhcl/'
