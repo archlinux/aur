@@ -2,7 +2,7 @@
 
 pkgname=python-chameleon
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast HTML/XML Template Compiler"
 arch=('any')
 license=('BSD' 'ZPL')
