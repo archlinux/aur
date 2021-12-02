@@ -17,17 +17,17 @@ sha256sums=('910c252ff86f649e6e10f88e937062257a3dd71606db728eff49397524b34863'
             'ef526daab8b9656b33893bbeb43d9e9d96ad81a01446bbe0d3035170a7b80163')
 
 prepare () {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/legacy-python-cli-$pkgver"
   patch -Np1 -i "${srcdir}/literal_comparison.patch"
 }
 
 build () {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/legacy-python-cli-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/legacy-python-cli-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/
