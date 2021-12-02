@@ -1,3 +1,4 @@
+# Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname='enchantmentcracker-bin'
 pkgver='1.6'
 pkgrel=1
