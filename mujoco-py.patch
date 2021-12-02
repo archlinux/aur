@@ -1,16 +1,7 @@
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/builder.py mujoco-py-2.0.2.13.new/mujoco_py/builder.py
---- mujoco-py-2.0.2.13.orig/mujoco_py/builder.py	2021-10-27 15:35:32.352940239 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/builder.py	2021-10-27 15:42:48.400639577 -0400
-@@ -31,7 +31,7 @@
-     docker_path = '/usr/local/nvidia/lib64'
-     if exists(docker_path):
-         return docker_path
--    paths = glob.glob('/usr/lib/nvidia-[0-9][0-9][0-9]')
-+    paths = glob.glob('/usr/lib/nvidia')
-     paths = sorted(paths)
-     if len(paths) == 0:
-         return None
-@@ -66,9 +66,7 @@
+diff '--color=auto' --unified --recursive --text mujoco-py-2.1.2.14.orig/mujoco_py/builder.py mujoco-py-2.1.2.14.new/mujoco_py/builder.py
+--- mujoco-py-2.1.2.14.orig/mujoco_py/builder.py	2021-12-02 03:51:35.827128615 -0500
++++ mujoco-py-2.1.2.14.new/mujoco_py/builder.py	2021-12-02 04:07:00.863927035 -0500
+@@ -71,9 +71,7 @@
      if sys.platform == 'darwin':
          Builder = MacExtensionBuilder
      elif sys.platform == 'linux':
@@ -20,7 +11,7 @@ diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_
              Builder = LinuxGPUExtensionBuilder
          else:
              Builder = LinuxCPUExtensionBuilder
-@@ -84,6 +82,13 @@
+@@ -89,6 +87,13 @@
      builder = Builder(mujoco_path)
      cext_so_path = builder.get_so_file_path()
  
@@ -34,18 +25,7 @@ diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_
      lockpath = os.path.join(os.path.dirname(cext_so_path), 'mujocopy-buildlock')
  
      with fasteners.InterProcessLock(lockpath):
-@@ -172,8 +177,8 @@
- 
-     # Fix the rpath of the generated library -- i lost the Stackoverflow
-     # reference here
--    from_mujoco_path = '@executable_path/libmujoco200.dylib'
--    to_mujoco_path = '%s/libmujoco200.dylib' % mj_bin_path
-+    from_mujoco_path = '@executable_path/libmujoco210.dylib'
-+    to_mujoco_path = '%s/libmujoco210.dylib' % mj_bin_path
-     subprocess.check_call(['install_name_tool',
-                            '-change',
-                            from_mujoco_path,
-@@ -205,11 +210,10 @@
+@@ -210,11 +215,10 @@
              sources=[join(self.CYMJ_DIR_PATH, "cymj.pyx")],
              include_dirs=[
                  self.CYMJ_DIR_PATH,
@@ -53,13 +33,12 @@ diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_
 +                "/usr/include/mujoco",
                  np.get_include(),
              ],
--            libraries=['mujoco200'],
+             libraries=['mujoco210'],
 -            library_dirs=[join(mujoco_path, 'bin')],
-+            libraries=['mujoco210'],
              extra_compile_args=[
                  '-fopenmp',  # needed for OpenMP
                  '-w',  # suppress numpy compilation warnings
-@@ -266,14 +270,13 @@
+@@ -271,14 +275,13 @@
  
          self.extension.sources.append(
              join(self.CYMJ_DIR_PATH, "gl", "osmesashim.c"))
@@ -70,14 +49,13 @@ diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_
      def _build_impl(self):
          so_file_path = super()._build_impl()
          # Removes absolute paths to libraries. Allows for dynamic loading.
--        fix_shared_library(so_file_path, 'libmujoco200.so', 'libmujoco200.so')
+         fix_shared_library(so_file_path, 'libmujoco210.so', 'libmujoco210.so')
 -        fix_shared_library(so_file_path, 'libglewosmesa.so', 'libglewosmesa.so')
-+        fix_shared_library(so_file_path, 'libmujoco210.so', 'libmujoco210.so')
 +        fix_shared_library(so_file_path, 'libGLEW.so', 'libGLEW.so')
          return so_file_path
  
  
-@@ -284,15 +287,14 @@
+@@ -289,15 +292,14 @@
  
          self.extension.sources.append(self.CYMJ_DIR_PATH + "/gl/eglshim.c")
          self.extension.include_dirs.append(self.CYMJ_DIR_PATH + '/vendor/egl')
@@ -89,392 +67,39 @@ diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_
          so_file_path = super()._build_impl()
          fix_shared_library(so_file_path, 'libOpenGL.so', 'libOpenGL.so.0')
          fix_shared_library(so_file_path, 'libEGL.so', 'libEGL.so.1')
--        fix_shared_library(so_file_path, 'libmujoco200.so', 'libmujoco200.so')
+         fix_shared_library(so_file_path, 'libmujoco210.so', 'libmujoco210.so')
 -        fix_shared_library(so_file_path, 'libglewegl.so', 'libglewegl.so')
-+        fix_shared_library(so_file_path, 'libmujoco210.so', 'libmujoco210.so')
 +        fix_shared_library(so_file_path, 'libGLEW.so', 'libGLEW.so')
          return so_file_path
  
  
-@@ -476,9 +478,8 @@
+@@ -481,8 +483,7 @@
      source_string += '\nuintptr_t __fun = (uintptr_t) fun;'
      # Link against mujoco so we can call mujoco functions from within callback
      ffibuilder.set_source(name, source_string,
 -                          include_dirs=[join(mujoco_path, 'include')],
 -                          library_dirs=[join(mujoco_path, 'bin')],
--                          libraries=['mujoco200'])
 +                          include_dirs=["/usr/include/mujoco"],
-+                          libraries=['mujoco210'])
+                           libraries=['mujoco210'])
      # Catch compilation exceptions so we can cleanup partial files in that case
      try:
-         library_path = ffibuilder.compile(verbose=True)
-@@ -497,13 +498,11 @@
- 
- def find_key():
-     ''' Try to find the key file, if missing, print out a big message '''
--    if exists(key_path):
--        return
--    print(MISSING_KEY_MESSAGE.format(key_path), file=sys.stderr)
-+    pass
- 
- 
- def activate():
--    functions.mj_activate(key_path)
-+    pass
- 
- 
- mujoco_path, key_path = discover_mujoco()
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/generated/wrappers.pxi mujoco-py-2.0.2.13.new/mujoco_py/generated/wrappers.pxi
---- mujoco-py-2.0.2.13.orig/mujoco_py/generated/wrappers.pxi	2021-10-27 15:35:32.366273501 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/generated/wrappers.pxi	2021-10-27 15:50:08.868315702 -0400
-@@ -3857,9 +3857,9 @@
-     @flg_symmetric.setter
-     def flg_symmetric(self, int x): self.ptr.flg_symmetric = x
-     @property
--    def legendoff(self): return self.ptr.legendoff
--    @legendoff.setter
--    def legendoff(self, int x): self.ptr.legendoff = x
-+    def legendoffset(self): return self.ptr.legendoffset
-+    @legendoffset.setter
-+    def legendoffset(self, int x): self.ptr.legendoffset = x
-     @property
-     def selection(self): return self.ptr.selection
-     @selection.setter
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/__init__.py mujoco-py-2.0.2.13.new/mujoco_py/__init__.py
---- mujoco-py-2.0.2.13.orig/mujoco_py/__init__.py	2021-10-27 15:35:32.352940239 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/__init__.py	2021-10-31 18:10:40.549488051 -0400
-@@ -28,11 +28,3 @@
-            'load_model_from_mjb',
-            'ignore_mujoco_warnings', 'const', "functions",
-            "__version__", "get_version"]
--
--
--# Print out a warning if we can't find the key.
--# this is nicer than failing activation, which we can not do in python.
--# The mujoco library exits the process forcibly, in a way we can't try/catch.
--mujoco_py.builder.find_key()
--if not os.environ.get('MUJOCO_PY_SKIP_ACTIVATE'):
--    mujoco_py.builder.activate()
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mjmodel.pxd mujoco-py-2.0.2.13.new/mujoco_py/pxd/mjmodel.pxd
---- mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mjmodel.pxd	2021-10-27 15:35:32.366273501 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/pxd/mjmodel.pxd	2021-10-31 18:35:39.151094912 -0400
-@@ -457,7 +457,7 @@
-         int nlight                      # number of lights
-         int nmesh                       # number of meshes
-         int nmeshvert                   # number of vertices in all meshes
--        int nmeshtexvert;               # number of vertices with texcoords in all meshes
-+        int nmeshtexvert                # number of vertices with texcoords in all meshes
-         int nmeshface                   # number of triangular faces in all meshes
-         int nmeshgraph                  # number of ints in mesh auxiliary data
-         int nskin                       # number of skins
-@@ -484,6 +484,7 @@
-         int ntuple                      # number of tuple custom fields
-         int ntupledata                  # number of objects in all tuple fields
-         int nkey                        # number of keyframes
-+        int nmocap                      # number of mocap bodies
-         int nuser_body                  # number of mjtNums in body_user
-         int nuser_jnt                   # number of mjtNums in jnt_user
-         int nuser_geom                  # number of mjtNums in geom_user
-@@ -494,14 +495,13 @@
-         int nuser_sensor                # number of mjtNums in sensor_user
-         int nnames                      # number of chars in all names
- 
--        # sizes set after jModel construction (only affect mjData)
-+        # sizes set after mjModel construction (only affect mjData)
-         int nM                          # number of non-zeros in sparse inertia matrix
-         int nemax                       # number of potential equality-constraint rows
-         int njmax                       # number of available rows in constraint Jacobian
-         int nconmax                     # number of potential contacts in contact list
-         int nstack                      # number of fields in mjData stack
-         int nuserdata                   # number of extra fields in mjData
--        int nmocap                      # number of mocap bodies
-         int nsensordata                 # number of fields in sensor data vector
- 
-         int nbuffer                     # number of bytes in buffer
-@@ -571,7 +571,7 @@
-         mjtNum*   dof_frictionloss      # dof friction loss                        (nv x 1)
-         mjtNum*   dof_armature          # dof armature inertia/mass                (nv x 1)
-         mjtNum*   dof_damping           # damping coefficient                      (nv x 1)
--        mjtNum*   dof_invweight0        # inv. diag. inertia in qpos0              (nv x 1)
-+        mjtNum*   dof_invweight0        # diag. inverse inertia in qpos0           (nv x 1)
-         mjtNum*   dof_M0                # diag. inertia in qpos0                   (nv x 1)
- 
-         # geoms
-@@ -649,8 +649,8 @@
-         int*      mesh_faceadr          # first face address                       (nmesh x 1)
-         int*      mesh_facenum          # number of faces                          (nmesh x 1)
-         int*      mesh_graphadr         # graph data address; -1: no graph         (nmesh x 1)
--        float*    mesh_vert             # vertex data for all meshes               (nmeshvert x 3)
--        float*    mesh_normal           # vertex normal data for all meshes        (nmeshvert x 3)
-+        float*    mesh_vert             # vertex positions for all meshe           (nmeshvert x 3)
-+        float*    mesh_normal           # vertex normals for all meshes            (nmeshvert x 3)
-         float*    mesh_texcoord         # vertex texcoords for all meshes          (nmeshtexvert x 2)
-         int*      mesh_face             # triangle face data                       (nmeshface x 3)
-         int*      mesh_graph            # convex graph data                        (nmeshgraph x 1)
-@@ -701,7 +701,7 @@
-         float*    mat_reflectance       # reflectance (0: disable)                 (nmat x 1)
-         float*    mat_rgba              # rgba                                     (nmat x 4)
- 
--        # predefined geom pairs for collision detection; has precedence over exclude
-+        # predefined geom pairs for collision detection  has precedence over exclude
-         int*      pair_dim              # contact dimensionality                   (npair x 1)
-         int*      pair_geom1            # id of geom1                              (npair x 1)
-         int*      pair_geom2            # id of geom2                              (npair x 1)
-@@ -739,8 +739,8 @@
-         mjtNum*   tendon_margin         # min distance for limit detection         (ntendon x 1)
-         mjtNum*   tendon_stiffness      # stiffness coefficient                    (ntendon x 1)
-         mjtNum*   tendon_damping        # damping coefficient                      (ntendon x 1)
--        mjtNum*   tendon_frictionloss;  # loss due to friction                     (ntendon x 1)
--        mjtNum*   tendon_lengthspring;  # tendon length in qpos_spring             (ntendon x 1)
-+        mjtNum*   tendon_frictionloss   # loss due to friction                     (ntendon x 1)
-+        mjtNum*   tendon_lengthspring   # tendon length in qpos_spring             (ntendon x 1)
-         mjtNum*   tendon_length0        # tendon length in qpos0                   (ntendon x 1)
-         mjtNum*   tendon_invweight0     # inv. weight in qpos0                     (ntendon x 1)
-         mjtNum*   tendon_user           # user data                                (ntendon x nuser_tendon)
-@@ -758,18 +758,18 @@
-         int*      actuator_biastype     # bias type (mjtBias)                      (nu x 1)
-         int*      actuator_trnid        # transmission id: joint, tendon, site     (nu x 2)
-         int*      actuator_group        # group for visibility                     (nu x 1)
--        mjtByte*  actuator_ctrllimited; # is control limited                       (nu x 1)
--        mjtByte*  actuator_forcelimited;# is force limited                         (nu x 1)
-+        mjtByte*  actuator_ctrllimited  # is control limited                       (nu x 1)
-+        mjtByte*  actuator_forcelimited # is force limited                         (nu x 1)
-         mjtNum*   actuator_dynprm       # dynamics parameters                      (nu x mjNDYN)
-         mjtNum*   actuator_gainprm      # gain parameters                          (nu x mjNGAIN)
-         mjtNum*   actuator_biasprm      # bias parameters                          (nu x mjNBIAS)
-         mjtNum*   actuator_ctrlrange    # range of controls                        (nu x 2)
--        mjtNum*   actuator_forcerange;  # range of forces                          (nu x 2)
-+        mjtNum*   actuator_forcerange   # range of forces                          (nu x 2)
-         mjtNum*   actuator_gear         # scale length and transmitted force       (nu x 6)
--        mjtNum*   actuator_cranklength; # crank length for slider-crank            (nu x 1)
-+        mjtNum*   actuator_cranklength  # crank length for slider-crank            (nu x 1)
-         mjtNum*   actuator_acc0         # acceleration from unit force in qpos0    (nu x 1)
-         mjtNum*   actuator_length0      # actuator length in qpos0                 (nu x 1)
--        mjtNum*   actuator_lengthrange  # ... not yet implemented ???              (nu x 2)
-+        mjtNum*   actuator_lengthrange  # feasible actuator length range           (nu x 2)
-         mjtNum*   actuator_user         # user data                                (nu x nuser_actuator)
- 
-         # sensors
-@@ -806,6 +806,8 @@
-         mjtNum*   key_qpos              # key position                             (nkey x nq)
-         mjtNum*   key_qvel              # key velocity                             (nkey x nv)
-         mjtNum*   key_act               # key activation                           (nkey x na)
-+        mjtNum*   key_mpos              # key mocap position                       (nkey x 3*nmocap)
-+        mjtNum*   key_mquat             # key mocap quaternion                     (nkey x 4*nmocap)
- 
-         # names
-         int*      name_bodyadr          # body name pointers                       (nbody x 1)
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mjui.pxd mujoco-py-2.0.2.13.new/mujoco_py/pxd/mjui.pxd
---- mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mjui.pxd	2021-10-27 15:35:32.366273501 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/pxd/mjui.pxd	2021-10-31 18:51:08.782160995 -0400
-@@ -7,6 +7,7 @@
-     enum: mjMAXUIMULTI
-     enum: mjMAXUIEDIT
-     enum: mjMAXUIRECT
-+    enum: mjSEPCLOSED
- 
- 
-     # predicate function: set enable/disable based on item category
-@@ -87,6 +88,26 @@
-         float cursor[3]            # edit cursor
- 
- 
-+    ctypedef struct mjuiItemSingle: # check and button-related
-+        int modifier        # 0: none, 1: control, 2: shift; 4: alt
-+        int shortcut        # shortcut key; 0: undefined
-+
-+
-+    ctypedef struct mjuiItemMulti:  # static, radio and select-related
-+        int nelem           # number of elements in group
-+        char name[mjMAXUIMULTI][mjMAXUINAME]  # element names
-+
-+
-+    ctypedef struct mjuiItemSlider: # slider-related
-+        double range[2]     # slider range
-+        double divisions    # number of range divisions
-+
-+
-+    ctypedef struct mjuiItemEdit:   # edit-related
-+        int nelem           # number of elements in list
-+        double range[mjMAXUIEDIT][2]  # element range (min>=max: ignore)
-+
-+
-     ctypedef struct mjuiItem:                # UI item
-         # common properties
-         int type                   # type (mjtItem)
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mjvisualize.pxd mujoco-py-2.0.2.13.new/mujoco_py/pxd/mjvisualize.pxd
---- mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mjvisualize.pxd	2021-10-27 15:35:32.366273501 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/pxd/mjvisualize.pxd	2021-10-31 18:24:38.971350558 -0400
-@@ -117,6 +117,7 @@
-         int      select                 # selected body id; non-positive: none
-         int      skinselect;            # selected skin id; non-positive: none
-         int      active                 # perturbation bitmask (mjtPertBit)
-+        int      active2                # secondary perturbation bitmask (mjtPertBit)
-         mjtNum   refpos[3]              # desired position for selected object
-         mjtNum   refquat[4]             # desired orientation for selected object
-         mjtNum   localpos[3]            # selection point in object coordinates
-@@ -220,7 +221,6 @@
-         float*   skinvert               # skin vertex data
-         float*   skinnormal             # skin normal data
- 
--
-         # OpenGL lights
-         int      nlight                 # number of lights currently in buffer
-         mjvLight lights[8]              # buffer for lights
-@@ -238,10 +238,13 @@
-         int      stereo                 # stereoscopic rendering (mjtStereo)
-         mjtByte  flags[mjNRNDFLAG]      # rendering flags (indexed by mjtRndFlag)
- 
-+        # framing
-+        int      framewidth             # frame pixel width; 0: disable framing
-+        float    framergb[3]            # frame color
- 
- 
-     ctypedef struct mjvFigure:          # abstract 2D figure passed to OpenGL renderer
--        # enable/disable flags
-+        # enable flags
-         int     flg_legend              # show legend
-         int     flg_ticklabel[2]        # show grid tick labels (x,y)
-         int     flg_extend              # automatically extend axis ranges to fit data
-@@ -249,30 +252,36 @@
-         int     flg_selection           # vertical selection line
-         int     flg_symmetric           # symmetric y-axis
- 
--        # figure options
--        int     legendoff               # number of lines to offset legend
-+        # style settings
-+        float   linewidth               # line width
-+        float   gridwidth               # grid line width
-         int     gridsize[2]             # number of grid points in (x,y)
--        int     selection               # selection line x-value
--        int     highlight[2]            # if point is in legend rect, highlight line
-         float   gridrgb[3]              # grid line rgb
--        float   gridwidth               # grid line width
-         float   figurergba[4]           # figure color and alpha
-         float   panergba[4]             # pane color and alpha
-         float   legendrgba[4]           # legend color and alpha
-         float   textrgb[3]              # text color
-+        float   linergb[mjMAXLINE][3]   # line colors
-         float   range[2][2]             # axis ranges; (min>=max) automatic
--        char    xlabel[100]             # x-axis label
--        char    title[100]              # figure title
-         char    xformat[20]             # x-tick label format for sprintf
-         char    yformat[20]             # y-tick label format for sprintf
-         char    minwidth[20]            # string used to determine min y-tick width
- 
-+        # text labels
-+        char    title[1000]             # figure title; subplots separated with 2+ spaces
-+        char    xlabel[100]             # x-axis label
-+        char    linename[mjMAXLINE][100]  # line names for legend
-+
-+        # dynamic settings
-+        int     legendoffset            # number of lines to offset legend
-+        int     subplot                 # selected subplot (for title rendering)
-+        int     highlight[2]            # if point is in legend rect, highlight line
-+        int     highlightid             # if id>=0 and no point, highlight id
-+        float   selection               # selection line x-value
-+
-         # line data
--        int     linepnt[mjMAXLINE]                   # number of points in line; (0) disable
--        float   linergb[mjMAXLINE][3]                # line color
--        float   linewidth[mjMAXLINE]                 # line width
-+        int     linepnt[mjMAXLINE]      # number of points in line; (0) disable
-         float   linedata[mjMAXLINE][2*mjMAXLINEPNT]  # line data (x,y)
--        char    linename[mjMAXLINE][100]             # line name for legend
- 
-         # output from renderer
-         int     xaxispixel[2]           # range of x-axis in pixels
-@@ -280,3 +289,4 @@
-         float   xaxisdata[2]            # range of x-axis in data units
-         float   yaxisdata[2]            # range of y-axis in data units
- 
-+
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mujoco.pxd mujoco-py-2.0.2.13.new/mujoco_py/pxd/mujoco.pxd
---- mujoco-py-2.0.2.13.orig/mujoco_py/pxd/mujoco.pxd	2021-10-27 15:35:32.369606817 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/pxd/mujoco.pxd	2021-10-27 16:14:06.401353520 -0400
-@@ -54,15 +54,6 @@
-     # deactivate license, free memory
-     void mj_deactivate();
- 
--    # server: generate certificate question
--    void mj_certQuestion(mjtNum question[16]);
--
--    # client: generate certificate answer given question
--    void mj_certAnswer(const mjtNum question[16], mjtNum answer[16]);
--
--    # server: check certificate question-answer pair; return 1 if match, 0 if mismatch
--    int mj_certCheck(const mjtNum question[16], const mjtNum answer[16]);
--
-     #---------------------- Virtual file system --------------------------------------------
- 
-     # Initialize VFS to empty (no deallocation).
-@@ -637,6 +628,11 @@
-     # Draw rectangle.
-     void mjr_rectangle(mjrRect viewport, float r, float g, float b, float a);
- 
-+    # Draw rectangle with centered text.
-+    void mjr_label(mjrRect viewport, int font, const char* txt,
-+                     float r, float g, float b, float a, float rt, float gt, float bt,
-+                     const mjrContext* con);
-+
-     # Draw 2D figure.
-     void mjr_figure(mjrRect viewport, const mjvFigure* fig, const mjrContext* con);
- 
-@@ -657,6 +653,9 @@
-     # Add definitions to UI.
-     void mjui_add(mjUI* ui, const mjuiDef* _def);
- 
-+    # Add definitions to UI section.
-+    void mjui_addToSection(mjUI* ui, int sect, const mjuiDef* _def);
-+
-     # Compute UI sizes.
-     void mjui_resize(mjUI* ui, const mjrContext* con);
- 
-@@ -1072,6 +1071,11 @@
-     # Insertion sort, resulting list is in increasing order.
-     void mju_insertionSort(mjtNum* list, int n);
- 
-+    # Integer insertion sort, resulting list is in increasing order.
-+    void mju_insertionSortInt(int* list, int n);
-+
-     # Generate Halton sequence.
-     mjtNum mju_Halton(int index, int base);
- 
-+    # Sigmoid function over 0<=x<=1 constructed from half-quadratics.
-+    mjtNum mju_sigmoid(mjtNum x);
-diff '--color=auto' --unified --recursive --text mujoco-py-2.0.2.13.orig/mujoco_py/utils.py mujoco-py-2.0.2.13.new/mujoco_py/utils.py
---- mujoco-py-2.0.2.13.orig/mujoco_py/utils.py	2021-10-27 15:35:32.366273501 -0400
-+++ mujoco-py-2.0.2.13.new/mujoco_py/utils.py	2021-10-27 15:41:18.601113360 -0400
-@@ -72,18 +72,16 @@
+diff '--color=auto' --unified --recursive --text mujoco-py-2.1.2.14.orig/mujoco_py/utils.py mujoco-py-2.1.2.14.new/mujoco_py/utils.py
+--- mujoco-py-2.1.2.14.orig/mujoco_py/utils.py	2021-12-02 03:51:35.837128511 -0500
++++ mujoco-py-2.1.2.14.new/mujoco_py/utils.py	2021-12-02 04:02:43.413373188 -0500
+@@ -61,7 +61,6 @@
  def discover_mujoco():
      """
      Discovers where MuJoCo is located in the file system.
 -    Currently assumes path is in ~/.mujoco
  
      Returns:
-     - mujoco_path (str): Path to MuJoCo 2.0 directory.
-     - key_path (str): Path to the MuJoCo license key.
-     """
--    key_path = os.getenv('MUJOCO_PY_MJKEY_PATH')
--    if not key_path:
--        key_path = join(expanduser('~'), '.mujoco', 'mjkey.txt')
+     - mujoco_path (str): Path to MuJoCo 2.1 directory.
+@@ -69,6 +68,8 @@
      mujoco_path = os.getenv('MUJOCO_PY_MUJOCO_PATH')
      if not mujoco_path:
--        mujoco_path = join(expanduser('~'), '.mujoco', 'mujoco200')
-+        mujoco_path = join(expanduser('~'), '.mujoco', 'mujoco210')
+         mujoco_path = join(expanduser('~'), '.mujoco', 'mujoco210')
 +        if not exists(mujoco_path):
 +            mujoco_path = "/opt/mujoco"
  
      # We get lots of github issues that seem to be missing these
      # so check that mujoco is really there and raise errors if not.
-@@ -91,9 +89,5 @@
-         message = MISSING_MUJOCO_MESSAGE.format(mujoco_path)
-         print(message, file=sys.stderr)
-         raise Exception(message)
--    if not exists(key_path):
--        message = MISSING_KEY_MESSAGE.format(key_path)
--        print(message, file=sys.stderr)
--        raise Exception(message)
- 
--    return (mujoco_path, key_path)
-+    return (mujoco_path, "/dev/null")
