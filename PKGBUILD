@@ -20,6 +20,6 @@ sha256sums=('15e5e8ae0765d3fd1a2987e69acc13583b7d9c7daa58c4f830a137648c0a6a9c')
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps "${_wheelname}"
-	rm "${pkgdir}"/usr/lib/python*/site-packages/gaphas-*.dist-info/direct_url.json
+	rm -f "${pkgdir}"/usr/lib/python*/site-packages/gaphas-*.dist-info/direct_url.json
 }
 
