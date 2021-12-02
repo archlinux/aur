@@ -9,6 +9,6 @@ pkgbase = saladbind
 	makedepends = npm
 	options = !strip
 	source = https://github.com/LITdevs/SaladBind/archive/v1.7.1.tar.gz
-	sha256sums = 4904285c19ed59cafc76f1b34dddfd549ee90a32cd390db8365cd65e82b76065
+	sha256sums = 44bebca62a44ad3d523fd87b467c4bae9c0608579fc226e6dd3a22b1f26fd6d5
 
 pkgname = saladbind
