@@ -1,6 +1,6 @@
 pkgbase = saladbind
 	pkgdesc = A tool for Salad to customize your miner
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/LITdevs/SaladBind
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = saladbind
 	makedepends = nodejs
 	makedepends = npm
 	options = !strip
-	source = https://github.com/LITdevs/SaladBind/archive/v1.7.1.tar.gz
-	sha256sums = 44bebca62a44ad3d523fd87b467c4bae9c0608579fc226e6dd3a22b1f26fd6d5
+	source = https://github.com/LITdevs/SaladBind/archive/v1.7.2.tar.gz
+	sha256sums = e9f5f6e7d68e3ab719dcfca53ef63dcf7c69c52b42a96015a0e21dbd0e2f7cd7
 
 pkgname = saladbind
