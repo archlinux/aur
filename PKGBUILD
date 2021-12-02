@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.7.r9.g4f1f1cc
+pkgver=0.7.r10.gf4e5a66
 pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('mangohud' 'qt5pas')
 makedepends=('git' 'lazarus')
 checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('vkbasalt: Configure vkBasalt'
-            'mesa-utils: OpenGL preview'
+            'glxgears: OpenGL preview'
             'vulkan-tools: Vulkan preview'
             'git: Clone reshade repository'
             'replay-sorcery: Instant replay solution')
