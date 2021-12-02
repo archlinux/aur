@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
         'literal_comparison.patch')
-sha256sums=('9e44e784a010039eb9e91227fdacd2920002a04b131f6468dd7ec13067c180e7'
+sha256sums=('910c252ff86f649e6e10f88e937062257a3dd71606db728eff49397524b34863'
             'ef526daab8b9656b33893bbeb43d9e9d96ad81a01446bbe0d3035170a7b80163')
 
 prepare () {
