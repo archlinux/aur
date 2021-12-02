@@ -1,44 +1,33 @@
 # Maintainer:  jon4hz me@jon4hz.io
+
 pkgname=aaregurucli-git
-pkgver=v0.5.0
+pkgver=0.4.3.r12.g2e5e424
 pkgrel=1
-epoch=
 pkgdesc="aare.guru CLI "
 arch=(x86_64)
-url="https://github.com/gexclaude/aaregurucli.git"
+url="https://github.com/gexclaude/aaregurucli"
 license=('GPL3')
-groups=()
-depends=()
+depends=(glibc)
 makedepends=(go git)
-checkdepends=()
-optdepends=()
 provides=(aaregurucli)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+$url")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
-
-get_latest_release() {
-	curl --silent "https://api.github.com/repos/gexclaude/aaregurucli/releases/latest" |
-	grep '"tag_name":' |
-	sed -E 's/.*"([^"]+)".*/\1/'
-}
+conflicts=(aaregurucli)
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	printf "%s" "$(get_latest_release)"
-	
+	cd aaregurucli
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd aaregurucli
-	go build .
+    go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {

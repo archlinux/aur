@@ -1,14 +1,16 @@
 pkgbase = aaregurucli-git
 	pkgdesc = aare.guru CLI
-	pkgver = v0.5.0
+	pkgver = 0.4.3.r12.g2e5e424
 	pkgrel = 1
-	url = https://github.com/gexclaude/aaregurucli.git
+	url = https://github.com/gexclaude/aaregurucli
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	makedepends = git
+	depends = glibc
 	provides = aaregurucli
+	conflicts = aaregurucli
 	source = git+https://github.com/gexclaude/aaregurucli.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = aaregurucli-git
