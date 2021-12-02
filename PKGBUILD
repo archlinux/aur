@@ -3,7 +3,7 @@
 
 pkgname=typora
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal markdown editor and reader."
 arch=('x86_64')
 filename="${pkgname}_${pkgver}_amd64.deb"
@@ -19,9 +19,6 @@ sha512sums=('0db0780382fd42e2e84bb2bb7b96cc7c3914e816baa6e2a1e02411c62d660778872
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 	rm -rf "$pkgdir/usr/share/lintian/"
-	chmod 4755 "$pkgdir/usr/share/typora/chrome-sandbox"
-	# Remove write permission for group/other
-	chmod -R go-w "$pkgdir/usr/share/typora/resources/node_modules"
 	sed -i '/Change Log/d' "$pkgdir/usr/share/applications/typora.desktop"
 	find "$pkgdir" -type d -exec chmod 755 {} \;
 }
