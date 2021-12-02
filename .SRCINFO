@@ -1,12 +1,13 @@
 pkgbase = ess-epics
 	pkgdesc = Experimental Physics and Industrial Control System -- ESS falvor
-	pkgver = 7.0.3
+	pkgver = 7.0.5
 	pkgrel = 1
 	url = http://www.aps.anl.gov/epics/
 	arch = any
 	license = EPICS Open License
 	makedepends = rpcsvc-proto
 	makedepends = tree
+	makedepends = git
 	depends = libtirpc-compat
 	depends = tclx
 	depends = tcl
@@ -31,6 +32,7 @@ pkgbase = ess-epics
 	depends = libusb
 	depends = libusb-compat
 	depends = remake
+	depends = systemd
 	depends = linux-headers
 	depends = mercurial
 	depends = boost
@@ -39,8 +41,7 @@ pkgbase = ess-epics
 	depends = opencv
 	provides = epics
 	conflicts = epics
-	source = git+https://github.com/icshwi/e3.git
+	source = git+https://gitlab.esss.lu.se/e3/e3.git
 	md5sums = SKIP
 
 pkgname = ess-epics
-
