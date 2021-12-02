@@ -2,7 +2,7 @@
 
 pkgname=certbot-dns-ovh
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OVH DNS Authenticator plugin for Certbot"
 arch=('any')
 license=('Apache')
