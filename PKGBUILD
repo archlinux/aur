@@ -3,7 +3,7 @@
 _pkgname=flask-babelex
 pkgname=python-flask-babelex
 pkgver=0.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Adds i18n/l10n support to Flask applications'
 url='https://github.com/mrjoes/flask-babelex'
 arch=('any')
