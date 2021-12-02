@@ -13,17 +13,14 @@ license=(MIT)
 depends=(r r-colorspace)
 optdepends=(r-ggplot2 r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('b287f380a958399cfa12f665232e7f34')
+sha256sums=('d0f3a9fb30e2b5d411fa61db56d4be5733a2621c0edf017d090bdfa5e377e199')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }

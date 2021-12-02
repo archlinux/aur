@@ -10,7 +10,6 @@ pkgbase = r-munsell
 	optdepends = r-ggplot2
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/munsell_0.5.0.tar.gz
-	md5sums = b287f380a958399cfa12f665232e7f34
+	sha256sums = d0f3a9fb30e2b5d411fa61db56d4be5733a2621c0edf017d090bdfa5e377e199
 
 pkgname = r-munsell
-
