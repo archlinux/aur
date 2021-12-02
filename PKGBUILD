@@ -3,7 +3,7 @@
 
 pkgname=python-kombu
 pkgver=5.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="https://kombu.readthedocs.org/"
