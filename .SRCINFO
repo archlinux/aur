@@ -1,9 +1,8 @@
 pkgbase = alacritty-themes
 	pkgdesc = A utility for choosing and applying Alacritty terminal themes.
 	pkgver = 4.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rajasegar/alacritty-themes
-	install = alacritty-themes.install
 	arch = any
 	license = MIT
 	makedepends = npm
@@ -12,6 +11,8 @@ pkgbase = alacritty-themes
 	conflicts = alacritty-themes
 	noextract = alacritty-themes-4.1.6.tgz
 	source = https://registry.npmjs.org/alacritty-themes/-/alacritty-themes-4.1.6.tgz
+	source = https://raw.githubusercontent.com/rajasegar/alacritty-themes/master/LICENSE
 	b2sums = 1b662634f0f4d43912568c36927a34548cce77709674dcd3102e4c3bd082ad435cdd5fe65eaf6857755a3fc050bb6747f30f7dd6f86117efc53f3e3895a812f8
+	b2sums = 7a11e2eeed89bc67e6cef84badf8cccd1bf2de44423c22bd023fe579795b45bc8906c7a2dc3df4c005d0524b99994d2f534410df8e9a52e2d95f97591dd8949c
 
 pkgname = alacritty-themes
