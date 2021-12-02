@@ -1,4 +1,4 @@
-From f6e2b65e02ff6c29fe77dbb6b12f50d8a9414068 Mon Sep 17 00:00:00 2001
+From f60b0a86b113e248ba3574633856e59d35d1ea4b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 4/8] Fix transitive dependencies (of static libraries)
@@ -120,7 +120,7 @@ index 372a064ff4..a363bfd31b 100644
  unset(__png_target_name)
  unset(__png_found)
 diff --git a/src/plugins/sqldrivers/psql/CMakeLists.txt b/src/plugins/sqldrivers/psql/CMakeLists.txt
-index 8ed84c9028..807dc34cf7 100644
+index d3a6a8588e..743154fc50 100644
 --- a/src/plugins/sqldrivers/psql/CMakeLists.txt
 +++ b/src/plugins/sqldrivers/psql/CMakeLists.txt
 @@ -16,7 +16,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
@@ -133,5 +133,5 @@ index 8ed84c9028..807dc34cf7 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.33.1
+2.34.1
 

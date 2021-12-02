@@ -1,4 +1,4 @@
-From 42a00262b863de893a81fd289f39c317c5f0eebc Mon Sep 17 00:00:00 2001
+From 99ddd863a93afc92c622f2eba83f15d2b0b96af6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:13:19 +0100
 Subject: [PATCH 3/8] Fix using static PCRE2 and DBus-1
@@ -44,5 +44,5 @@ index accaa4f5ed..4b11c74caa 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.33.1
+2.34.1
 
