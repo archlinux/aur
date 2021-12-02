@@ -8,7 +8,7 @@ shopt -s extglob
 
 pkgname=pandoc-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=2.16.2.r18.gc5287e9de
+pkgver=2.14rc.r12.g54ab7a0a3
 pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 url='https://pandoc.org'
@@ -20,9 +20,8 @@ conflicts=('haskell-pandoc' 'pandoc' 'pandoc-bin')
 replaces=('haskell-pandoc' 'pandoc' 'pandoc-bin')
 provides=("pandoc=${pkgver%%*([a-z]).r*}")
 makedepends=('stack>=1.7.0')
-source=("git+https://github.com/jgm/pandoc.git" ver-bump.patch)
-sha512sums=('SKIP'
-            '7593c460253fdfa958ce48b79dcef2a781c18fffb5aad31628b27042dc59b4b57ef42e2a21c5069de74eda485bd1ed8b4e2d81ed995cc31fee0b97879598cb76')
+source=("git+https://github.com/jgm/pandoc.git")
+sha512sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -37,12 +36,6 @@ pkgver() {
 #     # TODO: find a better solution
 #     sed -i "s|let env' = dynlibEnv ++ |let env' = dynlibEnv ++ [(\"LD_LIBRARY_PATH\", \"$PWD/dist/build\")] ++ |" test/Tests/Command.hs
 # }
-
-prepare() {
-    cd "$_pkgname"
-    patch --forward --strip=1 --input="${srcdir}/ver-bump.patch"
-}
-
 
 build() {
     cd "$_pkgname"
