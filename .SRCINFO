@@ -1,9 +1,8 @@
 pkgbase = betterdiscord-installer-bin
 	pkgdesc = A simple standalone program which automates the installation, removal and maintenance of BetterDiscord.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BetterDiscord/Installer
-	install = betterdiscord-installer-bin.install
 	arch = x86_64
 	license = MIT
 	depends = nss
