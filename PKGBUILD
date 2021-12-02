@@ -3,16 +3,16 @@
 pkgname=liblsl
 pkgver=1.15.2
 _pkgver=v1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ lsl library for multi-modal time-synched data transmission over the local network (stable release)'
 arch=('any')
 url='https://github.com/sccn/liblsl/'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'patchelf')
-provides=($pkgname)
+provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("${pkgname}-${pkgver}::git+ssh://git@github.com/sccn/liblsl.git#tag=${_pkgver}")
+source=("${pkgname}-${pkgver}::git+https://github.com/sccn/liblsl.git#tag=${_pkgver}")
 md5sums=('SKIP')
 
 build() {
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    make -C "${pkgname}-${pkgver}/build" DESTDIR="$pkgdir" install
+    make -C "${pkgname}-${pkgver}/build" DESTDIR="${pkgdir}" install
 
     mkdir -p "${pkgdir}/opt/LSL/bin"
     mkdir -p "${pkgdir}/opt/LSL/include/lsl"
