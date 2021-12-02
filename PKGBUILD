@@ -1,38 +1,43 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers'
 arch=('x86_64')
 url='https://earthly.dev/'
 license=('custom: BSL1.1')
 depends=('docker')
-makedepends=('go')
+makedepends=('git' 'go')
 BUILDENV+=('!check')
-source=("https://github.com/earthly/earthly/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d426e370e2ddaa5c5d0064cc52e1dc63a41b9107d3b252c6990672eca506b0cf')
+source=("git+https://github.com/earthly/earthly.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
-    mkdir -p "earthly-${pkgver}/build"
+    mkdir -p earthly/build
 }
 
 build() {
+    local _ldflags='-linkmode=external'
+    _ldflags+=" -X main.DefaultBuildkitdImage=docker.io/earthly/buildkitd:v${pkgver}"
+    _ldflags+=" -X main.Version=${pkgver}"
+    _ldflags+=" -X main.GitSha=$(git -C earthly rev-parse HEAD)"
+    local _tags='dfrunmount,dfrunsecurity,dfsecrets,dfssh,dfrunnetwork,dfheredoc'
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
-    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
-    cd "earthly-${pkgver}"
-    go build -o build ./cmd/...
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    cd earthly
+    go build -tags "$_tags" -ldflags "$_ldflags" -o build ./cmd/...
 }
 
 check() {
-    cd "earthly-${pkgver}"
+    cd earthly
     go test ./...
 }
 
 package() {
-    install -D -m755 "earthly-${pkgver}/build/earthly" -t "${pkgdir}/usr/bin"
-    install -D -m644 "earthly-${pkgver}/licenses/BSL" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m755 earthly/build/earthly -t "${pkgdir}/usr/bin"
+    install -D -m644 earthly/licenses/BSL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
