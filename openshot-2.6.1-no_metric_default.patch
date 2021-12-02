@@ -1,0 +1,12 @@
+diff -ruN a/src/settings/_default.settings b/src/settings/_default.settings
+--- a/src/settings/_default.settings	2021-09-05 01:16:20.000000000 +0200
++++ b/src/settings/_default.settings	2021-12-02 22:07:32.812473428 +0100
+@@ -340,7 +340,7 @@
+     "restart": true
+   },
+   {
+-    "value": true,
++    "value": false,
+     "title": "Send Anonymous Metrics and Errors",
+     "type": "bool",
+     "category": "Debug",
