@@ -2,7 +2,7 @@
 
 pkgname=war1gus-git
 pkgver=3.1.3.r848.e2a55e3_20211202
-pkgrel=1
+pkgrel=2
 pkgdesc="Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (dev version)"
 arch=("i686" "x86_64")
 url="https://github.com/Wargus/war1gus"
@@ -18,6 +18,9 @@ depends=(
 	'innoextract'
 )
 optdepends=(
+	'zenity: graphical UI for data extractor'
+	'xdialog: graphical UI for data extractor'
+	'dialog: console UI for data extractor'
 	'fluidsynth: midi music support'
 	'soundfont-fluid: sound font for midi music support'
 )
