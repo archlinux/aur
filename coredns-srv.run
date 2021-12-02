@@ -1,0 +1,3 @@
+#!/bin/execlineb -P
+fdmove -c 2 1
+exec setpriv --reuid coredns --regid coredns --clear-groups --inh-caps +net_bind_service --ambient-caps +net_bind_service -- coredns -conf=/etc/coredns/Corefile
