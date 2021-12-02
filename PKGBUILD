@@ -4,7 +4,7 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.62
-pkgrel=1
+pkgrel=2
 pkgdesc="A new multiboot USB solution"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.ventoy.net"
@@ -53,7 +53,7 @@ prepare() {
   popd
 
   # Apply sanitize patch
-  patch --verbose -p0 < "$srcdir/sanitize.patch"
+  patch --verbose -Np1 -i "$srcdir/sanitize.patch"
 
   # Log location
   sed -i 's|log\.txt|/var/log/ventoy.log|g' WebUI/static/js/languages.js
