@@ -6,8 +6,8 @@ pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('any')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
 license=('GPL2')
-depends=('mpv' 'qt5-declarative')
-makedepends=('cmake')
+depends=('mpv' 'qt5-declarative' 'python-websockets' 'plasma-framework' 'qt5-websockets' 'qt5-webchannel')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 source=("plasma5-wallpapers-wallpaper-engine-git::git+https://github.com/catsout/wallpaper-engine-kde-plugin.git")
 md5sums=('SKIP')
 build() {
@@ -20,8 +20,6 @@ package() {
 	cd "$pkgname"
 	cd build
 	make DESTDIR="$pkgdir/" install
-	cd ..
-	plasmapkg2 -p "$pkgdir/usr/share/plasma/wallpapers" -i plugin
 }
 pkgver() {
 	cd "$pkgname"
