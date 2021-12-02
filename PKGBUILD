@@ -1,11 +1,11 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron13
-pkgver=13.6.2
-_commit=2ee43f9ecedc50daf875c50f1a1fb11b0bd5c10d
+pkgver=13.6.3
+_commit=aa9d2dbef7f485c06d82001597a8374291e92c81
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
-pkgrel=2
+pkgrel=1
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
