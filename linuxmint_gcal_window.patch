@@ -1,6 +1,6 @@
 --- src/gui/gcal-window.c
 +++ src/gui/gcal-window.c
-@@ -395,7 +395,7 @@
+@@ -486,7 +486,7 @@
  {
    GApplication *application = g_application_get_default ();
  
@@ -9,5 +9,13 @@
  }
  
  static void
-
+@@ -1221,6 +1221,8 @@
+   gcal_window_add_accelerator (app, "win.change-view(2)",    "<Ctrl>3");
+   gcal_window_add_accelerator (app, "app.quit", "<Ctrl>q");
+   gcal_window_add_accelerator (app, "win.new-event", "<Ctrl>n");
++
++  gtk_window_set_icon_name (self, "org.gnome.Calendar");
+ }
+ 
+ /**
 

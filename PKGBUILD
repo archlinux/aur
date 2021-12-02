@@ -2,7 +2,7 @@
 
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
-pkgver=40.1
+pkgver=41.1
 pkgrel=1
 pkgdesc='Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(
     cinnamon
     cinnamon-control-center
     evolution-data-server
-    geoclue2
+    geoclue
     gnome-online-accounts
     gsettings-desktop-schemas
     libdazzle
@@ -25,25 +25,21 @@ optdepends=(
 )
 makedepends=(
     appstream-glib
-    libhandy0
     git
     meson
-    python
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 groups=(gnome)
-_commit=c3211a888d9315ffaa427bbc4c00c12d5dcc1774  # tags/40.1^0
+_commit=59ad10ba3aaed69c96c5e7f710b3f2c6b35131ae  # tags/41.1^0
 source=(
     "git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
-    "add_cinnamon_settings_online_support.patch"
-    "replace_link_cinnamon_settings_online_support.patch"
-    "set_window_icon_name.patch"
+    "linuxmint_gcal_window.patch"
+    "linuxmint_gcal_new_calendar_page.patch"
 )
 sha256sums=('SKIP'
-            'c05b6d35b89c9b121d544f86a788f021bf06a705d8c507c8a9eecc596d1320ba'
-            'ee49aad54bee8c50e5cdbbe68cd6f58287cd1cb368dd0f9f3a996a99418489c4'
-            '1788c8cb1fbf8bd5cf81d700d9f5f7eb1e5eea265e35930dc70df147f79ebc9a')
+            '8ee8805a0d185b9458016c7855f789f849982c68f9c42407504d3144696d825c'
+            'c935e126d9201c37f4b33460ae834c6c4a18c71fd06c2d768480b559a8a92e5f')
 
 pkgver() {
   cd $_pkgname
@@ -53,14 +49,12 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  # Fix: Set window icon name
-  patch -Np0 -i ../set_window_icon_name.patch
-
   # Replace GNOME Control Center internal call with Cinnamon Settings (cinnamon-settings online-accounts)
-  patch -Np0 -i ../add_cinnamon_settings_online_support.patch
+  # Set window icon name
+  patch -Np0 -i ../linuxmint_gcal_window.patch
 
   # Replace GNOME Web Description link label with cinnamon-settings online-accounts
-  patch -Np0 -i ../replace_link_cinnamon_settings_online_support.patch
+  patch -Np0 -i ../linuxmint_gcal_new_calendar_page.patch
 }
 
 build() {

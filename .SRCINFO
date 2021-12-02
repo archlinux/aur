@@ -1,20 +1,18 @@
 pkgbase = gnome-calendar-linuxmint
 	pkgdesc = Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches
-	pkgver = 40.1
+	pkgver = 41.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Calendar
 	arch = x86_64
 	groups = gnome
 	license = GPL
 	makedepends = appstream-glib
-	makedepends = libhandy0
 	makedepends = git
 	makedepends = meson
-	makedepends = python
 	depends = cinnamon
 	depends = cinnamon-control-center
 	depends = evolution-data-server
-	depends = geoclue2
+	depends = geoclue
 	depends = gnome-online-accounts
 	depends = gsettings-desktop-schemas
 	depends = libdazzle
@@ -24,14 +22,11 @@ pkgbase = gnome-calendar-linuxmint
 	optdepends = evolution: ICS file import
 	provides = gnome-calendar
 	conflicts = gnome-calendar
-	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=c3211a888d9315ffaa427bbc4c00c12d5dcc1774
-	source = add_cinnamon_settings_online_support.patch
-	source = replace_link_cinnamon_settings_online_support.patch
-	source = set_window_icon_name.patch
+	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=59ad10ba3aaed69c96c5e7f710b3f2c6b35131ae
+	source = linuxmint_gcal_window.patch
+	source = linuxmint_gcal_new_calendar_page.patch
 	sha256sums = SKIP
-	sha256sums = c05b6d35b89c9b121d544f86a788f021bf06a705d8c507c8a9eecc596d1320ba
-	sha256sums = ee49aad54bee8c50e5cdbbe68cd6f58287cd1cb368dd0f9f3a996a99418489c4
-	sha256sums = 1788c8cb1fbf8bd5cf81d700d9f5f7eb1e5eea265e35930dc70df147f79ebc9a
+	sha256sums = 8ee8805a0d185b9458016c7855f789f849982c68f9c42407504d3144696d825c
+	sha256sums = c935e126d9201c37f4b33460ae834c6c4a18c71fd06c2d768480b559a8a92e5f
 
 pkgname = gnome-calendar-linuxmint
-
