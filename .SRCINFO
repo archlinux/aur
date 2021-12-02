@@ -1,0 +1,16 @@
+pkgbase = unityhub-beta
+	pkgdesc = Unity Hub beta
+	pkgver = 2.4.5
+	pkgrel = 1
+	url = https://unity.com/
+	arch = x86_64
+	license = custom
+	depends = zlib
+	source = unityhub-beta-2.4.5.tar.gz::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubBeta.tar.gz
+	source = license.txt
+	source = unityhub.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = unityhub-beta
