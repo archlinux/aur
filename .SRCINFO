@@ -1,0 +1,12 @@
+pkgbase = earthy-gtk-theme-git
+	pkgdesc = A theme for GTK based on Nordic and the gruvbox color scheme.
+	pkgver = r5.51fdae4
+	pkgrel = 1
+	url = https://github.com/stevensonmt/earthy
+	arch = any
+	provides = earthy-gtk-theme
+	conflicts = earthy-gtk-theme
+	source = earthy-gtk-theme::git+https://github.com/stevensonmt/earthy.git
+	md5sums = SKIP
+
+pkgname = earthy-gtk-theme-git
