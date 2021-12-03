@@ -11,7 +11,7 @@ license=('Apache')
 conflicts=('natscli')
 provides=('nats')
 
-source=("https://github.com/nats-io/natscli/releases/download/${pkgver}/nats-${pkgver}-linux-amd64.zip")
+source=("https://github.com/nats-io/natscli/releases/download/v${pkgver}/nats-${pkgver}-linux-amd64.zip")
 
 sha256sums=('109849adf8e8ae112e01351e235f41dfa605dbe62886903d0a8d83fc935e52cc')
 

@@ -7,7 +7,7 @@ pkgbase = natscli-bin
 	license = Apache
 	provides = nats
 	conflicts = natscli
-	source = https://github.com/nats-io/natscli/releases/download/0.0.28/nats-0.0.28-linux-amd64.zip
+	source = https://github.com/nats-io/natscli/releases/download/v0.0.28/nats-0.0.28-linux-amd64.zip
 	sha256sums = 109849adf8e8ae112e01351e235f41dfa605dbe62886903d0a8d83fc935e52cc
 
 pkgname = natscli-bin
