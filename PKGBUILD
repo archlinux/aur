@@ -1,24 +1,28 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
-pkgname=primenote-git
-pkgver=0
+pkgver=r495.034643f
 pkgrel=1
+pkgname=primenote-git
+pkgdesc="Fanciest sticky note-taking application"
+arch=("any")
+url="https://gitlab.com/william.belanger/${pkgname%-git}"
+license=("GPL3")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Fanciest sticky note-taking application (now with Vim!)"
-url="https://gitlab.com/william.belanger/${pkgname%-git}"
-arch=("any")
-license=("GPL3")
+
+makedepends=("git")
 depends=("python" "python-setuptools" "python-pyqt5" "python-requests")
 optdepends=("qtermwidget: support for console and Vim modes"
             "vim: support for Vim mode")
-source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git#branch=master")
-md5sums=("SKIP")
 
 pkgver()
 {
   cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  git clone https://gitlab.com/william.belanger/${pkgname%-git}.git --single-branch
 }
 
 package()

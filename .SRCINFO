@@ -1,10 +1,11 @@
 pkgbase = primenote-git
-	pkgdesc = Fanciest sticky note-taking application (now with Vim!)
-	pkgver = 0
+	pkgdesc = Fanciest sticky note-taking application
+	pkgver = r495.034643f
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/primenote
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python
 	depends = python-setuptools
 	depends = python-pyqt5
@@ -13,7 +14,5 @@ pkgbase = primenote-git
 	optdepends = vim: support for Vim mode
 	provides = primenote
 	conflicts = primenote
-	source = git+https://gitlab.com/william.belanger/primenote.git#branch=master
-	md5sums = SKIP
 
 pkgname = primenote-git
