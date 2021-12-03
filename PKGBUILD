@@ -3,7 +3,7 @@
 _name=FoxDot
 pkgname=foxdot
 pkgver=0.8.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Live Coding with Python"
 arch=('any')
 url="https://foxdot.org"
