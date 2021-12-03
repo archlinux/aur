@@ -16,7 +16,7 @@ license=('GPL')
 depends=('rxvt-unicode-terminfo' 'libxft' 'libxt' 'perl' 'startup-notification' 'libnsl')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 source=(
-  "http://dist.schmorp.de/rxvt-unicode/$_pkgbase-$pkgver.tar.bz2"
+  "http://dist.schmorp.de/rxvt-unicode/Attic/$_pkgbase-$pkgver.tar.bz2"
   'urxvt.desktop'
   'urxvtc.desktop'
   'urxvt-tabbed.desktop'
