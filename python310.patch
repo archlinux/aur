@@ -1,0 +1,13 @@
+diff -upr selectors2-2.0.2.orig/selectors2.py selectors2-2.0.2/selectors2.py
+--- selectors2-2.0.2.orig/selectors2.py	2020-07-22 01:37:48.000000000 +0300
++++ selectors2-2.0.2/selectors2.py	2021-12-04 00:57:54.254560632 +0200
+@@ -22,7 +22,8 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ # SOFTWARE.
+ 
+-from collections import namedtuple, Mapping
++from collections import namedtuple
++from collections.abc import Mapping
+ import errno
+ import math
+ import platform
