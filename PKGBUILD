@@ -2,7 +2,7 @@
 # Contributor: kehon
 
 pkgname=traccar-bin
-pkgver=4.12
+pkgver=4.14
 pkgrel=1
 pkgdesc="Open source GPS tracking system"
 arch=('i686' 'x86_64')
@@ -19,4 +19,4 @@ package() {
   chmod 755 -R "${pkgdir}/opt"
 }
 
-sha256sums=('08ff6bfb09e61ad25ec41e5b55f093f96a966c59c294a9691217c519e3ac8a41')
+sha256sums=('138bffec34b04bbb42d4637b36a74cd0273ed08472995167792caf0b62676c9e')
