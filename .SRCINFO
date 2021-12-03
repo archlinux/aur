@@ -1,0 +1,14 @@
+pkgbase = lavender-kde-theme-git
+	pkgdesc = A KDE theme inspired by lavender
+	pkgver = r5.8cd7222
+	pkgrel = 1
+	url = https://github.com/rkstrdee/Lavender
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: for plasma theme
+	optdepends = konsole: for konsole colorscheme
+	source = lavender-kde-theme-git::git+https://github.com/rkstrdee/Lavender.git
+	sha256sums = SKIP
+
+pkgname = lavender-kde-theme-git
