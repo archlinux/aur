@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=adwm
-pkgver=0.7.13
-pkgrel=1
+pkgver=0.7.12
+pkgrel=2
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/adwm"
@@ -14,12 +14,12 @@ optdepends=('xdg-launch: for application launching key bindings'
             'xde-session: for xde-logout and xde-xlock default bindings')
 options=('!libtool')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
-sha512sums=('e859a1a4eb9e9d016322298a59373b8faa45efe70b7ee4c1fa6c10e152b0470d657d065c193bf3a41d716c89093e5a89f3e6bd2f7c4dfbad939ca84cd0c5de3d')
+sha512sums=('2ad47c54545f27aaf126e28529b0b16465d9c968814816e7389b16572791b9bcd5810ba59d7e3481b611c62b75317235fe33f6e1766ac14f2efcdd74469aa45c')
 
 build() {
   cd $pkgname-$pkgver
   ./configure
-  make
+  make CFLAGS="$CFLAGS -Wno-format-security"
 }
 
 package() {
