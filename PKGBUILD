@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=rapidwright
-_pkgver=2021.1.2-beta
+_pkgver=2021.2.0-beta
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Build Customized FPGA Implementations for Vivado"
@@ -17,9 +17,9 @@ source=(
 	"invoke_rapidwright"
 )
 
-sha256sums=('addc9bfc8c314be7f01b50f0fd99177ab1f4ed1db6cebef6072c5b5fbac5a059'
-            'c081428bb6ccdbcbf3ddd5944d34eea95bbcfa1d3d7510ffb9b111c2348cb04d'
-            '4652fd503a746feb11cb89ffe3e1dbbb8aee02a901c147ec0d04c9cbe4224f70'
+sha256sums=('7e75eb6c5fe8987001f404c67fd45ff00438c8828cf5db6bf9186f3fdae2386f'
+            '21e10518bed1192d94463804c309b09eff3ca7e5dff5e8998498eff8437ac9af'
+            'a2e6a9fb0230b6aa72c5d4732d6dce82dcb53f16194fdb64a60270500bb81a20'
             'a0c2f5577cd955cb81aec2839c3c060dc78c6ee48dc99406f67cc902e98f644f')
 
 prepare() {
