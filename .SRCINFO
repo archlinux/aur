@@ -1,6 +1,6 @@
 pkgbase = pizarra-git
 	pkgdesc = Simple Gtk drawing application
-	pkgver = 1.5.3.b
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://gitlab.com/categulario/pizarra-gtk
 	arch = i686
