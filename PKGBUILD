@@ -14,14 +14,17 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-mock' 'python-requests' 'python-httpretty')
 source=("$pkgname-$_commit.tar.gz::https://github.com/boto/boto/archive/$_commit.tar.gz"
+         boto-python-3.10.patch::https://github.com/boto/boto/pull/3898.patch
          boto-python-3.8.patch)
 sha512sums=('a68b7560caef3328970b9d1febc77fb28e537e4012b692b492d69428aca7deccf539e883cba4975497059ccdc56452f6e46f4a101b6e93f007667fe45c842e24'
+            '86c1318781832dad8e45f5a0168fe338f0c3dd168568342055191db68779caa8af04a4e11357a37e6b47adb132f9dccfd6e2e4df96d59ebb71db4e6073a625ba'
             '3e32db201adb637d3b6041f9e7be65889f1306042cbed36e4884207cbf772dc8f7691be9a505ec79f111b99c8313e0d42436c1f9a2dfa095de6cc77a7fe4bc6d')
 
 prepare() {
   mv boto-{$_commit,$pkgver}
   (cd boto-$pkgver
    patch -p1 -i ../boto-python-3.8.patch # Fix escaping with python 3.8
+   patch -p1 -i ../boto-python-3.10.patch # Fix collections.abc imports
   )
 }
 
