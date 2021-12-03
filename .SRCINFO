@@ -1,7 +1,7 @@
 pkgbase = easyeda-router
 	pkgdesc = LCEDA/EasyEDA local auto router server for Linux.
 	pkgver = 0.8.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://docs.easyeda.com/en/PCB/Route/index.html#Local-Auto-Router
 	arch = x86_64
 	license = unknown
