@@ -46,4 +46,3 @@ pkgname = yaru-remix-wallpaper-git
 	pkgdesc = Yaru-remix wallpaper theme
 	provides = yaru-remix-wallpaper
 	conflicts = yaru-remix-wallpaper
-
