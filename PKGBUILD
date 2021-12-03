@@ -4,7 +4,7 @@
 pkgname=python-simplemediawiki
 pkgdesc="Extremely low-level wrapper to the MediaWiki API"
 pkgver=1.2.0_b2
-pkgrel=7
+pkgrel=8
 arch=('any')
 url="https://github.com/ianweller/python-simplemediawiki"
 license=('LGPL')
