@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-extensions-sync-git
 	pkgdesc = Sync all extensions and their configurations across all gnome instances
-	pkgver = 12.r1.ga147409
+	pkgver = 16.r0.g46727b4
 	pkgrel = 1
 	url = https://github.com/oae/gnome-shell-extensions-sync
 	install = gnome-shell-extension-extensions-sync.install
@@ -10,11 +10,12 @@ pkgbase = gnome-shell-extension-extensions-sync-git
 	makedepends = git
 	makedepends = glib2
 	makedepends = yarn
-	depends = gnome-shell>=3.36
+	makedepends = appstream
+	depends = gnome-shell>=40
 	provides = gnome-shell-extension-extensions-sync
 	conflicts = gnome-shell-extension-extensions-sync
+	options = !strip
 	source = gnome-shell-extension-extensions-sync::git+https://github.com/oae/gnome-shell-extensions-sync.git
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-extensions-sync-git
-

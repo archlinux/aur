@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-extensions-sync-git
-pkgver=12.r1.ga147409
+pkgver=16.r0.g46727b4
 pkgrel=1
 pkgdesc="Sync all extensions and their configurations across all gnome instances"
 arch=('any')
@@ -9,11 +9,12 @@ url="https://github.com/oae/gnome-shell-extensions-sync"
 install=${pkgname%-git}.install
 license=('GPL3')
 groups=('gnome-shell-extensions')
-depends=('gnome-shell>=3.36')
-makedepends=('git' 'glib2' 'yarn')
+depends=('gnome-shell>=40')
+makedepends=('git' 'glib2' 'yarn' 'appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
+options=('!strip')
 md5sums=('SKIP')
 
 pkgver() {
