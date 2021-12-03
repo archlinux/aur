@@ -1,15 +1,14 @@
 pkgbase = tlauncher-bin
-	pkgdesc = TLauncher Legacy is freeware launcher of Minecraft.
+	pkgdesc = TLauncher – The best Minecraft Launcher.
 	pkgver = 2.83
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tlauncher.org
 	arch = any
-	license = GPLv3
+	license = custom
 	depends = java8-openjfx
 	depends = jdk8-openjdk
 	depends = jre8-openjdk
 	depends = jre8-openjdk-headless
-	provides = tlauncher
 	source = tlauncher-bin-2.83.zip::https://dl2.tlauncher.org/f.php?f=files%2FTLauncher-2.83.zip
 	source = tlauncher.desktop
 	sha512sums = edd828a80dc3c739e928256b0d0423545ea88a9074c9e0a8937ab1e6dae7b8d586322e301f5334f29bf4925916d285c6b120e95c2536de578d6806689e78b641
