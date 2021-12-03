@@ -4,7 +4,7 @@
 
 pkgname=glom
 pkgver=1.32.0
-pkgrel=6
+pkgrel=7
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('x86_64')
 url="https://www.glom.org/"
