@@ -3,7 +3,7 @@
 _pkgname=litex-boards
 pkgname=python-$_pkgname
 pkgver=2020.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Small footprint and configurable Ethernet core'
 arch=('any')
 url="https://github.com/litex-hub/$_pkgname"
