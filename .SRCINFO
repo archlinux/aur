@@ -1,6 +1,6 @@
 pkgbase = taplo-cli
 	pkgdesc = A TOML toolkit written in Rust.
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://taplo.tamasfe.dev/cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = taplo-cli
 	depends = glibc
 	depends = gcc-libs
 	provides = taplo
-	source = taplo-cli-0.4.1.tar.gz::https://static.crates.io/crates/taplo-cli/taplo-cli-0.4.1.crate
-	sha256sums = 365054cfed9ce1267880b44610a2a8c7d50aa5102e753982ba6f56f950d07cc3
+	source = taplo-cli-0.5.0.tar.gz::https://static.crates.io/crates/taplo-cli/taplo-cli-0.5.0.crate
+	sha256sums = c511442de2b9a2086ed260831209ed84ef20d1d85f0aae8993d91ce71bb4e7e1
 
 pkgname = taplo-cli

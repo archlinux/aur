@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=taplo-cli
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A TOML toolkit written in Rust."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('openssl' 'glibc' 'gcc-libs')
 makedepends=('cargo')
 provides=("${pkgname%-cli}")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha256sums=('365054cfed9ce1267880b44610a2a8c7d50aa5102e753982ba6f56f950d07cc3')
+sha256sums=('c511442de2b9a2086ed260831209ed84ef20d1d85f0aae8993d91ce71bb4e7e1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
