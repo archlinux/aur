@@ -1,7 +1,7 @@
 pkgbase = unity-version-manager-git
 	pkgdesc = cli utility to install and manager unity versions
-	pkgver = 2.4.1.r6.g9259ba8
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/Larusso/unity-version-manager
 	arch = x86_64
 	license = Apache

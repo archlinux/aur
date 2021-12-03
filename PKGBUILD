@@ -1,7 +1,7 @@
 _pkgname=unity-version-manager
 pkgname=${_pkgname}-git
-pkgver=2.4.1.r6.g9259ba8
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='cli utility to install and manager unity versions'
 arch=(x86_64)
 url='https://github.com/Larusso/unity-version-manager'
