@@ -55,7 +55,7 @@ depends=(
 
 _dir="mavros-release-upstream-${pkgver}/mavros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/${pkgver}.tar.gz")
-sha256sums=('d49d7fd264e70d6f4be696a82dbf9c6c4ef23ca30dea9186ee6be8cf8f89dd3e')
+sha256sums=('fe34686cee3ea92eaf7973cc6bb9fac893535123ca8caf3692f028ac6a3cd5a8')
 
 build() {
   # Use ROS environment variables
