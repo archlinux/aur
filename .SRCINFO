@@ -1,18 +1,17 @@
 pkgbase = restic-systemd-automatic-backup
-	pkgdesc = Backup solution using restic/Backblaze B2 storage.
-	pkgver = 1.0.0
+	pkgdesc = Backup solution using restic with Backblaze B2 storage backend.
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/erikw/restic-systemd-automatic-backup
 	arch = any
 	license = BSD
 	license = custom
-	makedepends = git
 	depends = systemd
 	depends = restic
 	backup = etc/restic/b2_env.sh
 	backup = etc/restic/b2_pw.txt
 	backup = etc/restic/backup_exclude
-	source = https://github.com/erikw/restic-systemd-automatic-backup/archive/v1.0.0.tar.gz
-	sha256sums = 3efc6793954b232e497fb05db48aec0c174d64ccddda89432f253e6e74b66476
+	source = https://github.com/erikw/restic-systemd-automatic-backup/archive/v1.0.1.tar.gz
+	sha256sums = 10f8b99c70e7ae8abdb2670edd323f11d7fe8f1b5ecafaa7e0d3c01b1658e290
 
 pkgname = restic-systemd-automatic-backup
