@@ -1,5 +1,5 @@
---- 7.2.34/ext/intl/breakiterator/codepointiterator_internal.cpp	2020-09-30 08:15:54.000000000 +0300
-+++ 7.2.34/ext/intl/breakiterator/codepointiterator_internal.cpp	2021-11-30 20:43:09.078705667 +0200
+--- 7.2.34/ext/intl/breakiterator/codepointiterator_internal.cpp
++++ 7.2.34/ext/intl/breakiterator/codepointiterator_internal.cpp
 @@ -74,7 +74,11 @@
  	clearCurrentCharIter();
  }
@@ -12,8 +12,8 @@
  {
  	if (typeid(*this) != typeid(that)) {
  		return FALSE;
---- 7.2.34/ext/intl/breakiterator/codepointiterator_internal.h	2020-09-30 08:15:54.000000000 +0300
-+++ 7.2.34/ext/intl/breakiterator/codepointiterator_internal.h	2021-11-30 20:45:34.371317671 +0200
+--- 7.2.34/ext/intl/breakiterator/codepointiterator_internal.h
++++ 7.2.34/ext/intl/breakiterator/codepointiterator_internal.h
 @@ -36,8 +36,11 @@
  
  		virtual ~CodePointBreakIterator();
@@ -27,8 +27,8 @@
  		virtual CodePointBreakIterator* clone(void) const;
  
  		virtual UClassID getDynamicClassID(void) const;
---- 7.2.34/ext/intl/locale/locale_methods.c	2020-09-30 08:15:54.000000000 +0300
-+++ 7.2.34/ext/intl/locale/locale_methods.c	2021-11-30 20:46:15.912078221 +0200
+--- 7.2.34/ext/intl/locale/locale_methods.c
++++ 7.2.34/ext/intl/locale/locale_methods.c
 @@ -1333,7 +1333,7 @@
  		if( token && (token==cur_lang_tag) ){
  			/* check if the char. after match is SEPARATOR */
