@@ -1,0 +1,14 @@
+pkgbase = python-pytooling-packaging
+	pkgdesc = A set of helper functions to describe a Python package for setuptools.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/pyTooling/pyTooling.Packaging
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = python-pytooling-packaging-0.3.0.tar.gz::https://github.com/pyTooling/pyTooling.Packaging/archive/v0.3.0.tar.gz
+	sha256sums = 2ad351c4902aa447b1818d3ca70d6716c2de6cff5ff2933726628bbbb56cd3c2
+
+pkgname = python-pytooling-packaging
