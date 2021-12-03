@@ -34,16 +34,16 @@ prepare() {
     git pull
     git sparse-checkout set "/package.json" "/CMakeLists.txt" "/src" "/LICENSES"
     git checkout -f "master"
-}
-
-build() {
-    cd "${srcdir}/repo"
-
-    npm i --omit=dev -P "esbuild"
 
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
         patch -p0 -N -i "${srcdir}/hide-tray-icon.patch"
     fi
+
+    npm i --omit=dev -P "esbuild"
+}
+
+build() {
+    cd "${srcdir}/repo"
 
     cmake -S "." -B "build" -G Ninja -DCMAKE_BUILD_TYPE=MinSizeRel -DUSE_TSC=OFF
     cmake --build "build"
@@ -52,7 +52,7 @@ build() {
 package() {
     cd "${srcdir}/repo"
 
-    DESTDIR="${pkgdir}" cmake --install "build"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/" && cp -rt "$_" "./LICENSES/"*
 
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/" && cp -r "./LICENSES/"* "$_"
+    DESTDIR="${pkgdir}" cmake --install "build"
 }
