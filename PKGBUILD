@@ -3,7 +3,7 @@
 _name=pytest-helpers-namespace
 pkgname=python-pytest-helpers-namespace
 pkgver=2021.4.29
-pkgrel=2
+pkgrel=3
 pkgdesc="PyTest Helpers Namespace"
 arch=('any')
 url="https://github.com/saltstack/pytest-helpers-namespace"
