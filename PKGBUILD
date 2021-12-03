@@ -1,5 +1,11 @@
 _phpbase=72
+pkgver=7.2.34
+pkgrel=4
+if [ 1 == "${EL_SUFFIX}" ]; then
+_suffix=-el
+else
 _suffix=
+fi
 pkgbase=php${_phpbase}${_suffix}
 _pkgbase=${pkgbase%$_phpbase$_suffix}
 if [ -z "${_suffix}" ]; then
@@ -8,8 +14,6 @@ else
   _realpkg=${pkgbase%$_suffix}
 fi
 pkgname=("${pkgbase}" "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl,sodium}"${_suffix}")
-pkgver=7.2.34
-pkgrel=3
 pkgdesc="php 7.2 compiled as to not conflict with mainline php"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -139,230 +143,28 @@ build() {
     make
 }
 
-#check() {
-#    cd ${srcdir}/${_pkgbase}-${pkgver}
-#
-#    # Check if sendmail was configured correctly (FS#47600)
-#    ${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
-#
-#    export REPORT_EXIT_STATUS=1
-#    export NO_INTERACTION=1
-#    export SKIP_ONLINE_TESTS=1
-#    export SKIP_SLOW_TESTS=1
-#
-#    ${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
-#}
+check() {
+   cd ${srcdir}/${_pkgbase}-${pkgver}
 
-if [ -z "${_suffix}" ]; then
-package_php72() {
+   # Check if sendmail was configured correctly (FS#47600)
+   ${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
+
+   export REPORT_EXIT_STATUS=1
+   export NO_INTERACTION=1
+   export SKIP_ONLINE_TESTS=1
+   export SKIP_SLOW_TESTS=1
+
+   ${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
+}
+
+_real_package() {
     pkgdesc='A general-purpose scripting language that is especially suited to web development'
     depends=('libxml2' 'curl' 'libzip' 'pcre')
     backup=("etc/${_realpkg}/php.ini")
-    provides=("${_pkgbase}=${pkgver}")
-
-    cd ${srcdir}/build
-    make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-    install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${_realpkg}/php.ini
-    install -d -m755 ${pkgdir}/etc/${_realpkg}/conf.d/
-
-    # remove static modules
-    rm -f ${pkgdir}/usr/lib/${_realpkg}/modules/*.a
-    # remove modules provided by sub packages
-    rm -f ${pkgdir}/usr/lib/${_realpkg}/modules/{enchant,gd,imap,intl,sodium,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
-    # remove empty directory
-    rmdir ${pkgdir}/usr/include/php/include
-
-# move include directory
-        mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${_realpkg}
-
-# fix phar symlink
-        rm ${pkgdir}/usr/bin/phar
-        ln -sf phar.${_realpkg/php/phar} ${pkgdir}/usr/bin/${_realpkg/php/phar}
-
-        # rename executables
-        mv ${pkgdir}/usr/bin/phar.{phar,${_realpkg/php/phar}}
-
-        # rename man pages
-        mv ${pkgdir}/usr/share/man/man1/{phar,${_realpkg/php/phar}}.1
-        mv ${pkgdir}/usr/share/man/man1/phar.{phar,${_realpkg/php/phar}}.1
-
-        # fix paths in executables
-        sed -i "/^includedir=/c \includedir=/usr/include/${_realpkg}" ${pkgdir}/usr/bin/${_realpkg/php/phpize}
-        sed -i "/^include_dir=/c \include_dir=/usr/include/${_realpkg}" ${pkgdir}/usr/bin/${_realpkg/php/php-config}
-
-        # make phpize use php-config72
-        sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${_realpkg/php/php-config}]], ${_realpkg/php/php-config}, no)" ${pkgdir}/usr/lib/${_realpkg}/build/phpize.m4
-}
-
-package_php72-cgi() {
-    pkgdesc='CGI and FCGI SAPI for PHP'
-    depends=("${pkgbase}")
-    provides=("${_pkgbase}-cgi=${pkgver}")
-
-    cd ${srcdir}/build
-    make -j1 INSTALL_ROOT=${pkgdir} install-cgi
-}
-
-package_php72-apache() {
-    pkgdesc='Apache SAPI for PHP'
-    depends=("${pkgbase}" 'apache')
-    backup=("etc/httpd/conf/extra/${_realpkg}_module.conf")
-    provides=("${_pkgbase}-apache=${pkgver}")
-        echo "# End of LoadModule in httpd.conf - see ArchWiki Apache HTTP Server"
-        echo "LoadModule php7_module modules/libphp${_phpbase}.so"
-        echo "AddHandler php7-script .php"
-        echo "# End of Include List"
-        echo "Include conf/extra/php${_phpbase}_module.conf"
-    install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${_realpkg}.so
-    install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${_realpkg}_module.conf
-}
-
-package_php72-fpm() {
-    pkgdesc='FastCGI Process Manager for PHP'
-    depends=("${pkgbase}" 'systemd')
-    backup=("etc/${_realpkg}/php-fpm.conf" "etc/${_realpkg}/php-fpm.d/www.conf")
-    options=('!emptydirs')
-    provides=("${_pkgbase}-fpm=${pkgver}")
-
-    cd ${srcdir}/build
-    make -j1 INSTALL_ROOT=${pkgdir} install-fpm
-    install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${_realpkg}-fpm.service
-    install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_realpkg}-fpm.conf
-}
-
-package_php72-embed() {
-    pkgdesc='Embedded PHP SAPI library'
-    depends=("${pkgbase}" 'libsystemd')
-    options=('!emptydirs')
-    provides=("${_pkgbase}-embed=${pkgver}")
-
-    cd ${srcdir}/build
-    make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
-# move libphp7.so to libphp-72.so -- note well: this is to prevent ldconfig
-# from complaining about libphp7.so not being a symbolic link if another php7 is installed.
-    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-${_phpbase}.so
-}
-
-package_php72-phpdbg() {
-    pkgdesc='Interactive PHP debugger'
-    depends=("${pkgbase}")
-    options=('!emptydirs')
-    provides=("${_pkgbase}-phpdbg=${pkgver}")
-
-    cd ${srcdir}/build-phpdbg
-    make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
-}
-
-package_php72-dblib() {
-    pkgdesc='dblib module for PHP'
-    depends=("${pkgbase}" 'freetds')
-    provides=("${_pkgbase}-dblib=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_dblib.so
-}
-
-package_php72-enchant() {
-    pkgdesc='enchant module for PHP'
-    depends=("${pkgbase}" 'enchant')
-    provides=("${_pkgbase}-enchant=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/${_realpkg}/modules/enchant.so
-}
-
-package_php72-gd() {
-    pkgdesc='gd module for PHP'
-    depends=("${pkgbase}" 'gd')
-    provides=("${_pkgbase}-gd=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/${_realpkg}/modules/gd.so
-}
-
-package_php72-imap() {
-    pkgdesc='imap module for PHP'
-    depends=("${pkgbase}" 'c-client')
-    provides=("${_pkgbase}-imap=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/${_realpkg}/modules/imap.so
-}
-
-package_php72-intl() {
-    pkgdesc='intl module for PHP'
-    depends=("${pkgbase}" 'icu')
-    provides=("${_pkgbase}-intl=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/${_realpkg}/modules/intl.so
-}
-
-package_php72-odbc() {
-    pkgdesc='ODBC modules for PHP'
-    depends=("${pkgbase}" 'unixodbc')
-    provides=("${_pkgbase}-odbc=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/odbc.so
-    install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_odbc.so
-}
-
-package_php72-pgsql() {
-    pkgdesc='PostgreSQL modules for PHP'
-    depends=("${pkgbase}" 'postgresql-libs')
-    provides=("${_pkgbase}-pgsql=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pgsql.so
-    install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_pgsql.so
-}
-
-package_php72-pspell() {
-    pkgdesc='pspell module for PHP'
-    depends=("${pkgbase}" 'aspell')
-    provides=("${_pkgbase}-pspell=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/${_realpkg}/modules/pspell.so
-}
-
-package_php72-snmp() {
-    pkgdesc='snmp module for PHP'
-    depends=("${pkgbase}" 'net-snmp')
-    provides=("${_pkgbase}-snmp=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/${_realpkg}/modules/snmp.so
-}
-
-package_php72-sqlite() {
-    pkgdesc='sqlite module for PHP'
-    depends=("${pkgbase}" 'sqlite')
-    provides=("${_pkgbase}-sqlite=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/${_realpkg}/modules/sqlite3.so
-    install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_sqlite.so
-}
-
-package_php72-tidy() {
-    pkgdesc='tidy module for PHP'
-    depends=("${pkgbase}" 'tidy')
-    provides=("${_pkgbase}-tidy=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/${_realpkg}/modules/tidy.so
-}
-
-package_php72-xsl() {
-    pkgdesc='xsl module for PHP'
-    depends=("${pkgbase}" 'libxslt')
-    provides=("${_pkgbase}-xsl=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${_realpkg}/modules/xsl.so
-}
-
-package_php72-sodium() {
-    pkgdesc='sodium module for PHP'
-    depends=("${pkgbase}" 'libsodium')
-    install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${_realpkg}/modules/sodium.so
-}
-else
-package_php72-el() {
-    pkgdesc='A general-purpose scripting language that is especially suited to web development'
-    depends=('libxml2' 'curl' 'libzip' 'pcre')
-    backup=("etc/${_realpkg}/php.ini")
-    provides=("${_pkgbase}=${pkgver}")
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}")
+      conflicts=("${_realpkg}")
+    fi
 
     cd ${srcdir}/build
     make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
@@ -398,176 +200,320 @@ package_php72-el() {
     sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${_realpkg/php/php-config}]], ${_realpkg/php/php-config}, no)" ${pkgdir}/usr/lib/${_realpkg}/build/phpize.m4
 }
 
-package_php72-cgi-el() {
-    pkgdesc='CGI and FCGI SAPI for PHP'
-    depends=("${pkgbase}")
-    provides=("${_pkgbase}-cgi=${pkgver}")
+_real_package_cgi() {
+    _ext=cgi
+    _desc='CGI and FCGI SAPI for'
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"    
+    depends=("${pkgbase}")  
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
 
-    cd ${srcdir}/build
+    cd "${srcdir}/build"
     make -j1 INSTALL_ROOT=${pkgdir} install-cgi
 }
 
-package_php72-apache-el() {
-    pkgdesc='Apache SAPI for PHP'
+_real_package_apache() {
+    _ext=apache
+    _desc='Apache SAPI for PHP for'
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'apache')
     backup=("etc/httpd/conf/extra/${_realpkg}_module.conf")
-    provides=("${_pkgbase}-apache=${pkgver}")
-        echo "# End of LoadModule in httpd.conf - see ArchWiki Apache HTTP Server"
-        echo "LoadModule php7_module modules/libphp${_phpbase}.so"
-        echo "AddHandler php7-script .php"
-        echo "# End of Include List"
-        echo "Include conf/extra/php${_phpbase}_module.conf"
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+
     install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${_realpkg}.so
     install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${_realpkg}_module.conf
 }
 
-package_php72-fpm-el() {
-    pkgdesc='FastCGI Process Manager for PHP'
+_real_package_fpm() {
+    _ext=fpm
+    _desc='FastCGI Process Manager for'
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'systemd')
     backup=("etc/${_realpkg}/php-fpm.conf" "etc/${_realpkg}/php-fpm.d/www.conf")
     options=('!emptydirs')
-    provides=("${_pkgbase}-fpm=${pkgver}")
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
 
-    cd ${srcdir}/build
+    cd "${srcdir}/build"
     make -j1 INSTALL_ROOT=${pkgdir} install-fpm
     install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${_realpkg}-fpm.service
     install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_realpkg}-fpm.conf
 }
 
-package_php72-embed-el() {
-    pkgdesc='Embedded PHP SAPI library'
+_real_package_embed() {
+    _ext=embed
+    _desc="Embedded PHP SAPI library for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'libsystemd')
     options=('!emptydirs')
-    provides=("${_pkgbase}-embed=${pkgver}")
-
-    cd ${srcdir}/build
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    cd "${srcdir}/build"
     make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
-    # move libphp7.so to libphp-${_phpbase}.so -- note well: this is to prevent ldconfig
+    # move libphp7.so to libphp-71.so -- note well: this is to prevent ldconfig
     # from complaining about libphp7.so not being a symbolic link if another php7 is installed.
-    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-${_phpbase}.so
+    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-71.so
 }
 
-package_php72-phpdbg-el() {
-    pkgdesc='Interactive PHP debugger'
+_real_package_phpdbg() {
+    _ext=phpdbg
+    _desc="Interactive PHP debugger for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}")
     options=('!emptydirs')
-    provides=("${_pkgbase}-phpdbg=${pkgver}")
-
-    cd ${srcdir}/build-phpdbg
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    cd "${srcdir}/build"-phpdbg
     make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
 }
 
-package_php72-dblib-el() {
-    pkgdesc='dblib module for PHP'
+_real_package_dblib() {
+    _ext=dblib
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'freetds')
-    provides=("${_pkgbase}-dblib=${pkgver}")
-
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
     install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_dblib.so
 }
 
-package_php72-enchant-el() {
-    pkgdesc='enchant module for PHP'
+_real_package_enchant() {
+    _ext=enchant
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'enchant')
-    provides=("${_pkgbase}-enchant=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/${_realpkg}/modules/enchant.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-gd-el() {
-    pkgdesc='gd module for PHP'
+_real_package_gd() {
+    _ext=gd
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'gd')
-    provides=("${_pkgbase}-gd=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/${_realpkg}/modules/gd.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-imap-el() {
-    pkgdesc='imap module for PHP'
+_real_package_imap() {
+    _ext=imap
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'c-client')
-    provides=("${_pkgbase}-imap=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/${_realpkg}/modules/imap.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-intl-el() {
-    pkgdesc='intl module for PHP'
+_real_package_intl() {
+    _ext=intl
+    pkgdesc="${_ext} module for ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'icu')
-    provides=("${_pkgbase}-intl=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/${_realpkg}/modules/intl.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-odbc-el() {
-    pkgdesc='ODBC modules for PHP'
+_real_package_mcrypt() {
+    _ext=mcrypt
+    _desc="${_ext} module for"   
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"    
+    depends=("${pkgbase}" 'libmcrypt' 'libtool')
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
+}
+
+_real_package_odbc() {
+    _ext=odbc
+    _desc="ODBC modules for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'unixodbc')
-    provides=("${_pkgbase}-odbc=${pkgver}")
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi  
 
     install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/odbc.so
     install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_odbc.so
 }
 
-package_php72-pgsql-el() {
-    pkgdesc='PostgreSQL modules for PHP'
+_real_package_pgsql() {
+    _ext=pgsql
+    _desc="PostgreSQL modules for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'postgresql-libs')
-    provides=("${_pkgbase}-pgsql=${pkgver}")
-
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
     install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pgsql.so
     install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_pgsql.so
 }
 
-package_php72-pspell-el() {
-    pkgdesc='pspell module for PHP'
+_real_package_pspell() {
+    _ext=pspell
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'aspell')
-    provides=("${_pkgbase}-pspell=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/${_realpkg}/modules/pspell.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi 
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-snmp-el() {
-    pkgdesc='snmp module for PHP'
+_real_package_snmp() {
+    _ext=snmp
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'net-snmp')
-    provides=("${_pkgbase}-snmp=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/${_realpkg}/modules/snmp.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi  
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-sqlite-el() {
-    pkgdesc='sqlite module for PHP'
+_real_package_sodium() {
+    _ext=sodium
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
+    depends=("${pkgbase}" 'libsodium')
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
+}
+
+_real_package_sqlite() {
+    _ext=sqlite
+    _desc="${_ext} modules for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'sqlite')
-    provides=("${_pkgbase}-sqlite=${pkgver}")
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi    
 
     install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/${_realpkg}/modules/sqlite3.so
     install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_sqlite.so
 }
 
-package_php72-tidy-el() {
-    pkgdesc='tidy module for PHP'
+_real_package_tidy() {
+    _ext=tidy
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'tidy')
-    provides=("${_pkgbase}-tidy=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/${_realpkg}/modules/tidy.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-xsl-el() {
-    pkgdesc='xsl module for PHP'
+_real_package_xsl() {
+    _ext=xsl
+    _desc="${_ext} module for"
+    pkgdesc="${_desc} ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'libxslt')
-    provides=("${_pkgbase}-xsl=${pkgver}")
-
-    install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${_realpkg}/modules/xsl.so
+    if [ -n "${_suffix}" ]; then
+      provides=("${_realpkg}-${_ext}")
+      conflicts=("${_realpkg}-${_ext}")
+    fi  
+    
+    install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-package_php72-sodium-el() {
-    pkgdesc='sodium module for PHP'
-    depends=("${pkgbase}" 'libsodium')
-    install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${_realpkg}/modules/sodium.so
-}
+
+
+if [ -z "${_suffix}" ]; then
+    package_php72()         { _real_package; }
+    package_php72-cgi()     { _real_package_cgi; }
+    package_php72-apache()  { _real_package_apache; }
+    package_php72-fpm()     { _real_package_fpm; }
+    package_php72-embed()   { _real_package_embed; }
+    package_php72-phpdbg()  { _real_package_phpdbg; }
+    package_php72-dblib()   { _real_package_dblib; }
+    package_php72-enchant() { _real_package_enchant; }
+    package_php72-gd()      { _real_package_gd; }
+    package_php72-imap()    { _real_package_imap; }
+    package_php72-intl()    { _real_package_intl; }
+    package_php72-odbc()    { _real_package_odbc; }
+    package_php72-pgsql()   { _real_package_pgsql; }
+    package_php72-pspell()  { _real_package_pspell; }
+    package_php72-snmp()    { _real_package_snmp; }
+    package_php72-sodium()  { _real_package_sodium; }
+    package_php72-sqlite()  { _real_package_sqlite; }
+    package_php72-tidy()    { _real_package_tidy; }
+    package_php72-xsl()     { _real_package_xsl; }
+    
+else
+    package_php72-el()         { _real_package; }
+    package_php72-cgi-el()     { _real_package_cgi; }
+    package_php72-apache-el()  { _real_package_apache; }
+    package_php72-fpm-el()     { _real_package_fpm; }
+    package_php72-embed-el()   { _real_package_embed; }
+    package_php72-phpdbg-el()  { _real_package_phpdbg; }
+    package_php72-dblib-el()   { _real_package_dblib; }
+    package_php72-enchant-el() { _real_package_enchant; }
+    package_php72-gd-el()      { _real_package_gd; }
+    package_php72-imap-el()    { _real_package_imap; }
+    package_php72-intl-el()    { _real_package_intl; }    
+    package_php72-odbc-el()    { _real_package_odbc; }
+    package_php72-pgsql-el()   { _real_package_pgsql; }
+    package_php72-pspell-el()  { _real_package_pspell; }
+    package_php72-snmp-el()    { _real_package_snmp; }
+    package_php72-sodium-el()  { _real_package_sodium; }
+    package_php72-sqlite-el()  { _real_package_sqlite; }
+    package_php72-tidy-el()    { _real_package_tidy; }
+    package_php72-xsl-el()     { _real_package_xsl; }
 fi
 
 md5sums=('adb64072b9b7e4634844a72512239a34'
          '3bcefa76cf2f73f5f851a95c92e217a1'
          '879e4a88a1707c05749f53196940e42a'
          '13cda50a6a420d04ddc26935ded3164e'
-         'b7d69762f7c045b3950d770e04db504c'
+         '0677a10d2e721472d6fccb470356b322'
          'f248c783449f310291905b5551c57e48'
          '406f7a3ef7f476e4a5c26e462e47b7c7'
          '4bf0b1296fc95947a11bef36fe76102a'
