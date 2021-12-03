@@ -76,7 +76,7 @@ arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends_nox=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'gpm')
-depends=("${depends_nox[@]}" 'm17n-lib' 'libotf' 'harfbuzz')
+depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git')
 provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
@@ -199,6 +199,8 @@ build() {
     --with-gameuser=:games
     --with-sound=alsa
     --with-modules
+    --without-libotf
+    --without-m17n-flt
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings you set in ~/.emacs.
 # If you insist you'll need to read that bug report in *full*.
