@@ -18,7 +18,7 @@ md5sums=('SKIP')
 build() {
   cd "$srcdir/$_pkgname/src"
   sed -i.bak -e 's/uname -i/uname -m/' Makefile
-  make
+  make ENVCFLAGS="-Dunix -D_BSD -D_ALL_SOURCE -std=c++14"
 }
 
 package() {
