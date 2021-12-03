@@ -2,18 +2,18 @@
 # Contributor: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 
 pkgname=python-tikzplotlib
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc="Convert matplotlib figures into TikZ/PGFPlots"
 license=('MIT')
 arch=('any')
 url="https://github.com/nschloe/tikzplotlib"
-depends=('python>=3.8' 'python-matplotlib>=1.4.0' 'python-pillow' 'python-numpy')
+depends=('python>=3.8' 'python-matplotlib' 'python-pillow' 'python-numpy')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner' 'python-pandas' 'python-pytest-randomly')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "setup.py")
-sha256sums=('4867f376d14d0fb572f788b59ccd4c199eec35efa19c22b94629a6abf40ad82e'
+sha256sums=('5247dad79da6b11cb8e1aa828f4cd7425dc6b970dee935e053db227c97ffdd78'
             '76189f7511a9eb8dab0ccaf022097f598fa32c3026ce2c2174ea7e7c3fccc71e')
 
 prepare() {
