@@ -1,6 +1,6 @@
 pkgbase = python-sunpy
 	pkgdesc = Python library for solar physics
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://sunpy.org
 	arch = i686
@@ -9,13 +9,14 @@ pkgbase = python-sunpy
 	makedepends = python-setuptools-scm
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-3.1.1.tar.gz
-	md5sums = feeab9e6fac36800f916bfd2c1865ac0
+	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-3.1.2.tar.gz
+	md5sums = 3ec09683e6b92571a49106e2c7d17ab4
 
 pkgname = python-sunpy
 	depends = python>=3.7
 	depends = python-astropy>=4.2.1
 	depends = python-parfive>=1.2.0
+	depends = python-packaging>=19.0
 	optdepends = python-asdf>=2.6.0: asdf
 	optdepends = python-dask>=2.0.0: dask
 	optdepends = python-sqlalchemy>=1.3.4: database
