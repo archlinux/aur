@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-lsp
 	pkgdesc = Coding assistance for JupyterLab with Language Server Protocol.
-	pkgver = 3.9.0
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://pypi.org/project/jupyterlab-lsp
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = jupyterlab-lsp
 	depends = python
 	depends = jupyter-lsp
 	depends = jupyterlab
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-lsp/jupyterlab-lsp-3.9.0.tar.gz
-	sha256sums = 40b3cf18c4f9299af4d88096290ad28750418f75e791f68a2a1f6891bb1dce9e
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-lsp/jupyterlab-lsp-3.9.1.tar.gz
+	sha256sums = c9deba5dd3e89b3c20cefd50f8760d2f96e3439092d0dc5567e09c623cdc71a8
 
 pkgname = jupyterlab-lsp
