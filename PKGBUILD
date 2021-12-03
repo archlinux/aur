@@ -4,7 +4,7 @@
 _pkgname="opencomic"
 pkgname="$_pkgname-bin"
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron."
 arch=('x86_64')
@@ -22,10 +22,15 @@ options=(strip emptydirs zipman)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ollm/OpenComic/releases/download/v${pkgver}/opencomic-${pkgver}.x86_64.rpm")
 b2sums=('d2d7effcd0e63fae25c95905d0e1d8a571b25d1ca073af7bebfc3efda25a90423d7a4307cb205be0c5bac91aa92aba65cda2b4cc9406a177ef2c868b4d70c310')
 
+build() {
+	# modifying .desktop file
+	sed -i -E "s|Exec=/opt/OpenComic/opencomic|Exec=/usr/bin/${_pkgname}|" "usr/share/applications/${_pkgname}.desktop"
+}
+
 package() {
 	# copying file
 	install -vdm 755 "${pkgdir}/usr/share/"
-	cp -vaR usr/share/ "${pkgdir}/usr/share/"
+	cp -vaR usr/share/* "${pkgdir}/usr/share/"
 	install -vdm 755 "${pkgdir}/opt/${pkgname}"
 	cp -vaR opt/OpenComic/* "${pkgdir}/opt/${pkgname}"
 

@@ -1,7 +1,7 @@
 pkgbase = opencomic-bin
 	pkgdesc = Comic and Manga reader, written with Node.js and using Electron.
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ollm/OpenComic
 	arch = x86_64
 	license = GPL3
