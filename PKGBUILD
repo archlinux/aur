@@ -3,7 +3,7 @@
 _pkgname=flask-security
 pkgname=python-flask-security
 pkgver=3.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Quick and simple security for Flask applications'
 url='https://github.com/mattupstate/flask-security'
 arch=('any')
