@@ -13,7 +13,7 @@ makedepends=("go")
 conflicts=('natscli-bin')
 provides=('nats')
 
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 sha256sums=('2be99c70eeabed5510a8c28dbf443b04e503a54536374d543a4c8c8756831a2c')
 
