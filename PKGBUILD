@@ -21,4 +21,3 @@ package() {
     mkdir -p ${pkgdir}/usr/bin
     install ${srcdir}/${_pkgname}-linux-${CARCH} ${pkgdir}/usr/bin/${_pkgname}
 }
-
