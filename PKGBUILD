@@ -1,7 +1,7 @@
 # Maintainer: Duncan X Simpson <duncan@k7dxs.net>
 # Contributor: Duncan X Simpson <duncan@k7dxs.net>
 pkgname=pat-bin
-pkgver=0.10.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A modern Winlink client"
 arch=('i686' 'x86_64' 'armhf' 'armv6h')
@@ -18,10 +18,10 @@ source_i686=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${p
 source_x86_64=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${pkgver}_linux_amd64.deb")
 source_armhf=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${pkgver}_linux_armhf.deb")
 source_armv6h=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${pkgver}_linux_armhf.deb")
-sha512sums_i686=('07775922b1362ccbd3eb1d638bfddc5456e98ea5365e9ce6f9dd7650439145e30b8bc5e030b49d9962e3b390c219ceba104320726f5270c8d7134268c4e2b874')
-sha512sums_x86_64=('0b66198edc1299bde446c7d1f2cdcdc1bce28f470e9b7a6caaa9bb28965a21bc198bfe8243cdbc69570aec852eac0d588e941165fedf45cf1cdc5272774866ac')
-sha512sums_armhf=('4b2f37a9fc5ddcb0dc5bbfdf342da4d5a1e3e60b131813a5267d09d49f217b8c856df47c8a674f56cc8e3116f186fa61a3e5e1ea037f93998c27cd21615e0af8')
-sha512sums_armv6h=('4b2f37a9fc5ddcb0dc5bbfdf342da4d5a1e3e60b131813a5267d09d49f217b8c856df47c8a674f56cc8e3116f186fa61a3e5e1ea037f93998c27cd21615e0af8')
+sha512sums_i686=('0a516c46c1548c09a70a01b601028f1bcf1ac45c0372bac5ca23c5d91d729e0eca70aad0b6822d21416532bac92eacd89eb458b5195dbd246e450f47f29edc44')
+sha512sums_x86_64=('b76c8bd055e2cb6ebf37c8d53a60c25eab8ebb5f719c43ad031419330f5c66e8d456224ece540295813ce1fb08513292b6dc4e5d8bf00811b936e54116045334')
+sha512sums_armhf=('668f3f860bcf3ff8ae46d3b9d35b448bbfe73699397b410b76b78123f7300797b0ca660a35151740ccd43ed1a9daf660a04d1baa78051adbb17efdeb2f117073')
+sha512sums_armv6h=('668f3f860bcf3ff8ae46d3b9d35b448bbfe73699397b410b76b78123f7300797b0ca660a35151740ccd43ed1a9daf660a04d1baa78051adbb17efdeb2f117073')
 
 
 package(){
