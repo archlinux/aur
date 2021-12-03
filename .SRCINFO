@@ -1,21 +1,21 @@
 pkgbase = i2p-bin
 	pkgdesc = A distributed anonymous network (pre-compiled binary)
-	pkgver = 1.5.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://geti2p.net
 	install = i2p.install
 	arch = any
 	license = GPL2
-	depends = java-runtime>=11
+	depends = java-runtime>=13
 	depends = java-service-wrapper
 	provides = i2p
 	conflicts = i2p
 	conflicts = i2p-dev
-	noextract = i2pinstall_1.5.0.jar
+	noextract = i2pinstall_1.6.1.jar
 	options = !strip
 	backup = opt/i2p/wrapper.config
-	source = https://files.i2p-projekt.de/1.5.0/i2pinstall_1.5.0.jar
-	source = https://files.i2p-projekt.de/1.5.0/i2pinstall_1.5.0.jar.sig
+	source = https://files.i2p-projekt.de/1.6.1/i2pinstall_1.6.1.jar
+	source = https://files.i2p-projekt.de/1.6.1/i2pinstall_1.6.1.jar.sig
 	source = eepget.bash::https://raw.githubusercontent.com/i2p/i2p.i2p/master/installer/resources/bash-completion/eepget
 	source = i2prouter.service
 	source = i2p.tmpfiles
@@ -25,7 +25,7 @@ pkgbase = i2p-bin
 	source = i2prouter.sh
 	source = chromium-i2p.sh
 	validpgpkeys = 2D3D2D03910C6504C1210C65EE60C0C8EE7256A8
-	sha256sums = 8c843c90870223b4808065761d059a02b168b74daddd1773c36f0a0245e201f9
+	sha256sums = 2ae90f28d51b84796079430bde53589e1c2117125d5fb7bb5c036c4e1ad1eb80
 	sha256sums = SKIP
 	sha256sums = 925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d
 	sha256sums = 644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876
