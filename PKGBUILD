@@ -10,9 +10,8 @@ url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-numpy python-sympy)
 makedepends=(python-setuptools)
-checkdepends=(python-pytest-codeblocks python-ndim python-scipy python-meshzoo python-dufte python-cplot python-meshio)
+checkdepends=(python-pytest-codeblocks python-ndim python-scipy python-meshzoo python-cplot python-meshio)
 optdepends=('python-cplot: for SRGB1 coloring'
-  'python-dufte: for minimalistic matplotlib style'
   'python-meshio: for creation sphere mesh'
   'python-meshzoo: for creation of sphere mesh generated from the icosahedron')
 source=(${url}/archive/v${pkgver}.tar.gz)
