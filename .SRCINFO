@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-nightthemeswitcher-git
 	pkgdesc = Automatically toggle your light and dark themes variants
-	pkgver = 37.r48.g90e0669
+	pkgver = 37.r146.g5355bf6
 	pkgrel = 1
 	url = https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension
 	install = gnome-shell-extension-nightthemeswitcher.install
@@ -16,4 +16,3 @@ pkgbase = gnome-shell-extension-nightthemeswitcher-git
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-nightthemeswitcher-git
-
