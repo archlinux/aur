@@ -1,6 +1,6 @@
 pkgbase = cqlsh-git
 	pkgdesc = CQL shell for apache cassandra
-	pkgver = 4.0.1
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/apache/cassandra
 	arch = any

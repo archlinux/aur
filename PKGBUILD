@@ -2,7 +2,7 @@
 
 pkgname=cqlsh-git
 pkgdesc="CQL shell for apache cassandra"
-pkgver=4.0.1
+pkgver=6.0.0
 pkgrel=1
 arch=('any')
 license=('Apache')
@@ -20,8 +20,8 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/bin
-  cp "$srcdir/cassandra/bin/cqlsh" $pkgdir/usr/bin/cqlsh
-  cp "$srcdir/cassandra/bin/cqlsh.py" $pkgdir/usr/bin/cqlsh
+  cp "$srcdir/cassandra/bin/cqlsh" $pkgdir/usr/bin/
+  cp "$srcdir/cassandra/bin/cqlsh.py" $pkgdir/usr/bin/
 
   cd "$srcdir/cassandra/pylib"
   python3 setup.py install --prefix=/usr --root="$pkgdir"
