@@ -52,6 +52,7 @@ prepare() {
     patch -p1 -i ${srcdir}/php-freetype-2.9.1.patch
     patch -p1 -i ${srcdir}/intl.patch
     patch -p1 -i ${srcdir}/icu.patch
+    rm tests/output/stream_isatty_*.phpt
 }
 
 build() {
