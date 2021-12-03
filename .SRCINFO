@@ -9,7 +9,7 @@ pkgbase = easyeda-router
 	source = easyeda-router-0.8.11.zip::https://image.easyeda.com/files/easyeda-router-linux-x64-v0.8.11.zip
 	source = easyeda-router.sh
 	source = easyeda-router.service
-	sha256sums = c7d5e36f60e9ff47a2775cdd922151173012d45f44bc843afeed80d1fb0a7616
+	sha256sums = 188c71abddc29abda5caab6e7ebb158c1baa45dfcec6e0e18f150a253cde1383
 	sha256sums = 0b08eca8fc84a2b5ec3fc34c0cbcd37fd22cd9d2687214e298c82486bd7b9c0a
 	sha256sums = 35e5e4a2b5b6ba80ce9d8f807e3ddcabe1020fe77600a4de6b72f74f8a4c0a53
 

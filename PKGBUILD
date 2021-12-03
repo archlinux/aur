@@ -13,7 +13,7 @@ source=(${pkgname}-${pkgver}.zip::"https://image.easyeda.com/files/easyeda-route
 # source=(${pkgname}-${pkgver}.zip::"https://image.lceda.cn/files/easyeda-router-linux-x64-v${pkgver}.zip")
 source+=("${pkgname}.sh"
          "${pkgname}.service")
-sha256sums=('c7d5e36f60e9ff47a2775cdd922151173012d45f44bc843afeed80d1fb0a7616'
+sha256sums=('188c71abddc29abda5caab6e7ebb158c1baa45dfcec6e0e18f150a253cde1383'
             '0b08eca8fc84a2b5ec3fc34c0cbcd37fd22cd9d2687214e298c82486bd7b9c0a'
             '35e5e4a2b5b6ba80ce9d8f807e3ddcabe1020fe77600a4de6b72f74f8a4c0a53')
 
