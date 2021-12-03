@@ -7,7 +7,7 @@ pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.9.0
 _stlink_updater_ver=2.38.27
-pkgrel=1
+pkgrel=2
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -42,7 +42,7 @@ source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/techn
         "en.${_stlink_updater_name}.zip::https://st.com/content/ccc/resource/technical/software/firmware/group1/${_stlink_url_index}/${_stlink_updater_name}/files/${_stlink_updater_name}.zip/jcr:content/translations/en.${_stlink_updater_name}.zip"
         "${pkgname}.xdotool")
 sha256sums=('53b3648bd0297330b4e82eaba80d69d9fa50ac8e57a41c32d00ac32ca77ccad9'
-            'bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
+            '4668a288138fd3d7907e803837e26fd85aafb52ffa691d15bb56b8b1a8bb5563'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
 
 prepare() {
