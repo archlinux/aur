@@ -2,7 +2,7 @@
 
 pkgname=an-anime-game-launcher
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
 arch=("x86_64")
@@ -42,11 +42,18 @@ md5sums=(
     '8b875e8115a3b80f9964dc66ddf46a9a'
 )
 
+prepare () {
+    electronDist=/usr/lib/electron
+    electronVer=$(electron --version | tail -c +2)
+
+    sed -i '/"electron": /d' "${pkgname}/package.json"
+}
+
 build() {
     cd "${pkgname}"
     npm install --cache "${srcdir}/npm-cache"
     npm run dev
-    npm run build
+    ./node_modules/.bin/electron-builder -l dir
 }
 
 package() {
