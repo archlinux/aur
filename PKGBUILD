@@ -3,7 +3,7 @@
 _name=pytest-html
 pkgname=python-pytest-html
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for generating HTML reports for pytest results"
 arch=('any')
 url="https://github.com/pytest-dev/pytest-html"
