@@ -3,7 +3,7 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=slf4j
-pkgver=1.7.30
+pkgver=1.7.32
 pkgrel=1
 pkgdesc="Simple Logging Facade for Java for various logging frameworks (e.g. java.util.logging, logback, log4j)"
 arch=('any')
@@ -59,16 +59,16 @@ package() {
 }
 
 sha256sums=('899cb2e2f92e74ec969e477503c6442fb50bec5d523bc87dc40bad3419113c3b'
-            '71e9ee37b9e4eb7802a2acc5f41728a4cf3915e7483d798db3b4ff2ec8847c50'
-            'bbcbfdaa72572255c4f85207a9bfdb24358dc993e41252331bd4d0913e4988b9'
-            'ad9d34d0b7f0bf576be2b5f844988fd872bb99f87ecffa41d54a8ebaad79a10b'
-            'cdba07964d1bb40a0761485c6b1e8c2f8fd9eb1d19c53928ac0d7f9510105c57'
-            'd56010e891107179fee0b298510303c028733b83a4363c4bfbe7b82e6d3a8c53'
-            '6fa998aa9a036afdef526e2f2505f8aa00971d4b239e247d8cf7cdd1a5a364d7'
-            'e0f9db049378f6467941771454995233285fb7adf72c467e65daf25e673acba8'
-            '4d41e01c40caf8a6c74add2b073055d8a4ce1c30e58154177b13f12d78abbe7b'
-            'ebbb1fff0c4f2ec9f0efe07183ecfa670f43888d990677be76991cf3e8a7ee83'
-            '2d550dcefaea23d223b72027dbc7cbdb7327676ccefdd9cfe49cf9ea8e9ac8e0'
-            '8b9279cbff6b9f88594efae3cf02039b6995030eec023ed43928748c41670fee'
+            '60f3bda5922e3912889cca1311d1b227753610bf60cb4e5e914e8b2eaa0326b4'
+            '6dee8d85ad6943aff0600f14897c469e64bae0413ee33a15c448af00432c0642'
+            'cef183e051664d53cc8f046fb616ed39eab9e61631e13299c939c995c11e57e3'
+            '3624f8474c1af46d75f98bc097d7864a323c81b3808aa43689a6e1c601c027be'
+            '1f252dd5c85d901186198ad3e89ab2996182b6cc3aaa17c08c2ab8dcbda46b54'
+            '6341e0327931b879215dfd37f6928544b682c95599e8be95caf762b91ea4e725'
+            '4e09fd5ace1d3e5d1c9571b8eb7b17a23149e5ac322c11314c688991e2eb6f0b'
+            '93b09895667903d6154093b6ce10002529dfe01348e6050bf351e835fdd0f194'
+            'b818b3af71960c96e6d176981ba1607fee82394d1f3023a0f599b2ca5e82ddcb'
+            'f2d20b60b2b87fc1ca904e0cd4520deeeebf8a9c5b723ae2493cc4219389d782'
+            'd2fdd7b73ca2019a2062d145a0d86179a58f98c8c3e35ca7c735a27b3b5621c3'
             '9a1efcd3b99c0ef88e1fbdf361a7832f09a925802a7518629f271ff8e08ae940'
             '3fa0fb54bd4b0cd91e16b882002943d0ea3d0985ecf8fa870c9afc9b73656dba')
