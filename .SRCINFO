@@ -1,0 +1,23 @@
+pkgbase = gospider-bin
+	pkgdesc = Fast web spider written in Go
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/jaeles-project/gospider
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = MIT
+	provides = gospider
+	conflicts = gospider
+	options = !strip
+	source_x86_64 = https://github.com/jaeles-project/gospider/releases/download/v1.1.6/gospider_v1.1.6_linux_x86_64.zip
+	sha256sums_x86_64 = 41bdd76aff8d063655dc473f035ca7659f8549fbf264be5185f50d288666f93d
+	source_i686 = https://github.com/jaeles-project/gospider/releases/download/v1.1.6/gospider_v1.1.6_linux_i386.zip
+	sha256sums_i686 = d0c87efbda2aa9d0b6f1dfeec890a914a035dbf6d2aa8245de8a7fe23cf5871f
+	source_arm = https://github.com/jaeles-project/gospider/releases/download/v1.1.6/gospider_v1.1.6_linux_arm.zip
+	sha256sums_arm = 3f73275689b28b24f2f139225423a3f263c1e11f910b4151b34fe7f41ceb49ad
+	source_aarch64 = https://github.com/jaeles-project/gospider/releases/download/v1.1.6/gospider_v1.1.6_linux_arm64.zip
+	sha256sums_aarch64 = 39b78dc7deb2fb3e271aded05b6d7e47a395cd743f07bfdbfc0ee5083ba30b0e
+
+pkgname = gospider-bin
