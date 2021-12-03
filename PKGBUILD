@@ -12,8 +12,15 @@ license=('Apache')
 depends=('python' 'python-lockfile' 'python-docutils')
 makedepends=('python-setuptools' 'python-docutils' 'python-lockfile' 'python-pip')
 checkdepends=('python-mock' 'python-testscenarios' 'python-wheel')
-source=(https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('bda993f1623b1197699716d68d983bb580043cf2b8a66a01274d9b8297b0aeaf')
+source=(https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
+        python-daemon-2.3.0-fix-py3.10.patch)
+sha256sums=('bda993f1623b1197699716d68d983bb580043cf2b8a66a01274d9b8297b0aeaf'
+            '3e6091f4eea62ec738c424867766e2755155b807fb58622e07e565ae7b97c1b6')
+
+build() {
+  cd "${srcdir}"/python-daemon-$pkgver
+  patch -Np1 -i ${srcdir}/python-daemon-2.3.0-fix-py3.10.patch
+}
 
 build() {
   cd "${srcdir}"/python-daemon-$pkgver
@@ -22,6 +29,10 @@ build() {
 
 check() {
   cd python-daemon-$pkgver
+  # fix for >=testtools-2.5.0
+  sed -e 's/testtools.helpers.safe_hasattr/hasattr/' \
+          -i test/test_metadata.py || die
+
   python setup.py test
 }
 
