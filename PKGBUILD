@@ -2,7 +2,7 @@
 
 pkgname=python-xtarfile
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper around tarfile to add support for more compression formats'
 arch=('any')
 url=https://github.com/ascoderu/xtarfile
