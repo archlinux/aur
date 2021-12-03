@@ -2,17 +2,17 @@
 
 _pkgname='pyAttributes'
 pkgname=python-${_pkgname,,}
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="Implementations of .NET-like attributes realized with Python decorators"
 arch=(any)
-url="https://github.com/Paebbels/pyAttributes"
+url="https://github.com/pyTooling/$_pkgname"
 license=('Apache')
-depends=('python' 'python-argcomplete' 'python-pydecor')
-makedepends=('python-setuptools')
+depends=('python' 'python-argcomplete' 'python-pytooling')
+makedepends=('python-setuptools' 'python-pytooling-packaging')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e845cec75053bc662bf014d0b584b56bce85670ce99ae6f0c3d38410d58e4f4')
+sha256sums=('2086df3ac0f55d34dcecba624caf6e09bddf9a0e7b7044826fdea55772a225b2')
 
 build() {
   cd "$_pkgname-$pkgver"
