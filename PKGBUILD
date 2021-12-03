@@ -4,7 +4,7 @@
 
 pkgname=gnubg
 pkgver=1.06.002
-pkgrel=6
+pkgrel=7
 pkgdesc="World class backgammon application"
 arch=('x86_64')
 url="https://www.gnu.org/software/gnubg/"
@@ -25,7 +25,7 @@ build() {
 
   ./autogen.sh
 
-  ./configure --prefix=/usr --bindir=/usr/bin --sysconfdir=/etc \
+  PYTHONWARNINGS=ignore ./configure --prefix=/usr --bindir=/usr/bin --sysconfdir=/etc \
     --mandir=/usr/share/man --enable-simd=sse2
 
   make
