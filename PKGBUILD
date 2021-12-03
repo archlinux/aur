@@ -5,12 +5,12 @@
 pkgname=vcvrack-git
 _branchname=v1
 pkgver=1.1.6.r18.ga5fc5891
-pkgrel=7
+pkgrel=8
 pkgdesc="Open-source virtual Eurorack DAW"
 url="https://github.com/VCVRack/Rack"
 license=(BSD)
-arch=(i686 x86_64)
-depends=(glew glfw-x11 jansson libsamplerate curl libzip rtmidi rtaudio gtk2 jq)
+arch=(i686 x86_64 armv7h armv8 riscv32 riscv64)
+depends=(glew glfw-x11 jansson libsamplerate curl libzip rtmidi rtaudio gtk2 gtk3 jq)
 makedepends=(git unzip wget cmake)
 provides=(vcvrack)
 conflicts=(vcvrack)
@@ -44,6 +44,9 @@ build() {
 package() {
     cd "${pkgname%-git}"
     install -D -m755 "$srcdir/vcvrack.sh" "$pkgdir/usr/bin/vcvrack"
+    if [ ${_branchname} == "v2" ]; then
+      install -D -m644 -t "$pkgdir/usr/lib" "libRack.so"
+    fi
     install -D -m644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE*
     install -D -m755 -t "$pkgdir/opt/${pkgname%-git}" Rack
     install -d "$pkgdir/opt/${pkgname%-git}/plugins"
