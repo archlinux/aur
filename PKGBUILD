@@ -5,9 +5,9 @@
 
 pkgname=sphinxbase
 pkgver=5prealpha
-pkgrel=12
+pkgrel=13
 pkgdesc='Common library for sphinx speech recognition'
-url='http://cmusphinx.sourceforge.net/'
+url='https://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('BSD')
 makedepends=('bison' 'swig')
@@ -22,15 +22,16 @@ options=('!libtool')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  msg2 "Reconfiguring project for current version of Automake"
-  autoreconf -ivf > /dev/null
   patch -p1 -b -i ../sphinxbase-5prealpha-fix-doxy2swig.patch
+
+  echo "Reconfiguring project for current version of Automake"
+  autoreconf -ivf > /dev/null
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  export PYTHON=/usr/bin/python
+  export PYTHON=/usr/bin/python PYTHONWARNINGS=ignore
   ./configure --prefix=/usr
   make
 }

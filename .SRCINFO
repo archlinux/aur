@@ -1,8 +1,8 @@
 pkgbase = sphinxbase
 	pkgdesc = Common library for sphinx speech recognition
 	pkgver = 5prealpha
-	pkgrel = 12
-	url = http://cmusphinx.sourceforge.net/
+	pkgrel = 13
+	url = https://cmusphinx.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
