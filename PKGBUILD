@@ -2,11 +2,11 @@
 
 pkgname=dracut-uefi-hook
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Install/update/removal hooks for dracut unifed uefi image generation"
 arch=(any)
 license=('MIT')
-depends=(dracut systemd)
+depends=(dracut systemd binutils)
 source=('90-dracut-uefi-install.hook'
         '60-dracut-uefi-remove.hook'
         'dracut-uefi-install'

@@ -1,12 +1,13 @@
 pkgbase = dracut-uefi-hook
 	pkgdesc = Install/update/removal hooks for dracut unifed uefi image generation
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/dracut-uefi-hook/
 	arch = any
 	license = MIT
 	depends = dracut
 	depends = systemd
+	depends = binutils
 	conflicts = dracut-hook-uefi
 	backup = etc/dracut-uefi-hook.conf
 	source = 90-dracut-uefi-install.hook
