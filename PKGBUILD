@@ -2,7 +2,7 @@
 
 pkgname=adwm-git
 _pkgname=adwm
-pkgver=0.7.13.r1.g7f33587
+pkgver=0.7.12.r1.gbec9879
 pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('xdg-launch-git: for application launching key bindings'
             'xde-session-git: for xde-logout and xde-xlock default bindings')
 options=('!libtool' '!strip' 'debug')
 makedepends=('git' 'perl-timedate')
-source=("$pkgname::git+https://github.com/bbidulock/$_pkgname")
+source=("$pkgname::git+https://github.com/bbidulock/$_pkgname#commit=bec9879")
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,7 +35,7 @@ build() {
   ./configure
   # Fight unused direct deps
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
-  make
+  make CFLAGS="$CFLAGS -Wno-format-security"
 }
 
 package() {
