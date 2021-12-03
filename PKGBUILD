@@ -2,7 +2,7 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
 pkgver="1.1.15"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -26,7 +26,8 @@ prepare() {
     sed -i package.json \
         -e '/electron-updater/d;/7zip-bin/d' \
         -e 's$public/electron.js$build/electron.js$' \
-        -e '/"dependencies"/i\  "bundledDependencies": ["7zip-bin"],'
+        -e '/"dependencies"/i\  "bundledDependencies": ["7zip-bin"],' \
+        -e 's/0.13.1/0.13.2/g' # bump dependency version
     patch -p1 -i "${srcdir}/use-system-7za-and-disable-updater.patch"
 
     # Create .git folder to stop Husky from crashing
