@@ -5,8 +5,9 @@
 
 pkgname=bigloo-devel
 pkgver=4.4c
-pkgrel=4
+pkgrel=5
 epoch=1
+_suffix=latest
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
 url="https://www-sop.inria.fr/mimosa/fp/Bigloo/"
@@ -17,16 +18,16 @@ optdepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi')
 options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
-source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-unstable.tar.gz bigloo-emacs.patch)
-sha256sums=('37200d1bbdbc0899afd4663f1b9d661bf4c99cb356bd46eac15e51896b805bd6'
+source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-latest.tar.gz bigloo-emacs.patch)
+sha256sums=('8b00f36d0843ff948422e224b5da938e990ad1d9e6ffad77c54b1f89e0107495'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 prepare() {
-  patch -p0 -d "${srcdir}/${pkgname%-devel}-unstable" -i "${srcdir}/bigloo-emacs.patch"
+  patch -p0 -d "${srcdir}/${pkgname%-devel}-$_suffix" -i "${srcdir}/bigloo-emacs.patch"
 }
 
 build() {
-  cd ${pkgname%-devel}-unstable
+  cd ${pkgname%-devel}-$_suffix
   ./configure --prefix=/usr \
     --docdir=/usr/share/doc/bigloo \
     --mandir=/usr/share/man \
@@ -50,12 +51,12 @@ build() {
 }
 
 check() {
-  cd ${pkgname%-devel}-unstable
+  cd ${pkgname%-devel}-$_suffix
   make test
 }
 
 package() {
-  cd ${pkgname%-devel}-unstable
+  cd ${pkgname%-devel}-$_suffix
 
   make DESTDIR="${pkgdir}" install install-bee
   make -C manuals DESTDIR="${pkgdir}" install-bee
