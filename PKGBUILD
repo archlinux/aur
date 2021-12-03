@@ -2,7 +2,7 @@
 # Contributor: Jay Tauron <jytrn@protonmail.com>
 pkgname=s-bin
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -19,6 +19,4 @@ package() {
 	install -Dm775 "s" "${pkgdir}/usr/bin/s"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/s/LICENSE"
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/s/README.md"
-	install -Dm644 "autocomplete/s-completion.bash" "${pkgdir}/usr/share/bash-completion/completions/s"
-	install -Dm644 "autocomplete/s.fish" "${pkgdir}/usr/share/fish/vendor-completions.d/s.fish"
 }
