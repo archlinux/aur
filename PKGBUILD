@@ -1,7 +1,8 @@
+# Maintainer: MikeBreytenbach <mike.breyten.bach at gmail dot com>
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2021.2.3
+pkgver=2021.3
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -16,10 +17,10 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('2763564a793797f60ea36e5ea2fafc5ef8f44c1bc4964eb6061862999e12e77e'
+sha256sums=('81426f86e1b3de0bd00488e037e9fdcaab4772f1f259ff551ac904d35fb4cd7c'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
-            '43d05c8bebe48eaa0489f739387c58ad919b2f07a2d9003c8e6fb1cc309e3af2')
+            '039f0d1dc447fb26bb9df35b3a85145a47ce42193c8b2d56bf7bdf090fff0da9')
 makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
