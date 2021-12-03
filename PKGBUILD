@@ -2,7 +2,7 @@
 
 pkgname=yesplaymusic-electron
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A third party music application for Netease Music. Using the system electron"
 arch=("any")
 url="https://github.com/qier222/YesPlayMusic"

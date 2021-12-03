@@ -6,4 +6,4 @@ Type=Application
 Icon=yesplaymusic
 StartupWMClass=YesPlayMusic
 Comment=A third party music application for Netease Music
-Categories=Music;
+Categories=AudioVideo;Audio;Music;
