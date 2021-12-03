@@ -7,7 +7,7 @@
 pkgname=kibana-xpack
 relpkgname=kibana
 pkgver=7.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
 arch=('x86_64')
@@ -33,7 +33,7 @@ prepare() {
   cd $relpkgname-${pkgver}-linux-x86_64
 
   # remove nodejs strict version requirements
-  sed "s@^require('./node_version_validator');@// \0@" -i src/setup_node_env/no_transpilation.js
+  sed "s@^require('./node_version_validator');@// \0@" -i src/setup_node_env/no_transpilation_dist.js
 
   # set default quiet mode for systemd, cli option forces specified values
   sed -r 's|#(logging.quiet:) false|\1 true|' -i config/kibana.yml

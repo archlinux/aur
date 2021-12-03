@@ -1,7 +1,7 @@
 pkgbase = kibana-xpack
 	pkgdesc = Browser based analytics and search dashboard for Elasticsearch
 	pkgver = 7.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/products/kibana
 	arch = x86_64
 	license = custom:Elastic2
