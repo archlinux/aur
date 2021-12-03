@@ -3,8 +3,8 @@
 pkgname=grapejuice-git
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
-pkgver=3.65.16.fce7ae7
-pkgrel=1
+pkgver=3.65.16
+pkgrel=2
 pkgdesc='Simple Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
@@ -43,10 +43,9 @@ pkgver() {
   _project_root=$(_get_project_root)
   export PYTHONPATH="$_project_root/src"
   
-  _commit_id=$(git rev-parse --short HEAD)
   _grapejuice_version=$(python3 -c 'from grapejuice import __version__; print(__version__)')
 
-  echo "${_grapejuice_version}.${_commit_id}"
+  echo "${_grapejuice_version}"
 }
 
 package() {
