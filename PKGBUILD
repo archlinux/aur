@@ -2,7 +2,7 @@
 # Contributor: LIN Rs <LinRs[d]users.noreply.github.com>
 
 pkgname=devilutionx-git
-pkgver=1.3.0.r123.111092705
+pkgver=1.3.0.r318.da837c4d2
 pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
@@ -20,9 +20,14 @@ pkgver() {
   printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-build() {
+prepare() {
   cd "${pkgname%-git}"
-  cd build
+  if [ ! -d build ]; then
+	mkdir build
+  fi
+}
+build() {
+  cd "${pkgname%-git}/build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX="/usr"
   make
