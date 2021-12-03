@@ -3,16 +3,16 @@
 _base=perfplot
 pkgname=python-${_base}
 pkgdesc="Performance plots for Python code"
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
-depends=(python-dufte python-rich)
+depends=(python-matplotx python-rich)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('508468f434807cce9206c78d25fc757392942b1de259b896e0bbba9965273ff4124df8bf96f3d7a14f0a718120aac87627b8eccfa7cc8073e2045574308acde3')
+sha512sums=('2a6608e2317415fe997355a6c1e815cc57b6d37e330429d55b8c123037f33d505e55ec86410637abb877c1dbdeab91836417e87e983de5289986662005bfc723')
 
 build() {
   cd "${_base}-${pkgver}"
