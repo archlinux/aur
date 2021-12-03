@@ -3,7 +3,7 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-picolibc
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='Fork of newlib with stdio bits from avrlibc'
 conflicts=("$_target-newlib")
@@ -12,7 +12,7 @@ url='https://github.com/picolibc/picolibc'
 license=('BSD')
 makedepends=("$_target-gcc" 'meson')
 source=("picolibc-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('32240468f0045673f8d144cd04b86f7a25b310e9039fba659750ec5269877825')
+sha256sums=('f7f08f2e4d03920080b7876c3f0c3cd955a548c3c6bfb3c269a8a450c7c14a84')
 options=(!strip !buildflags)
 
 build() {
