@@ -4,7 +4,7 @@
 pkgname=python-nose-random
 _pkgname=nose-random
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Nose plugin to facilitate randomized unit testing'
 arch=(any)
 url='https://github.com/xlwings/nose-random'
