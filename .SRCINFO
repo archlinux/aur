@@ -1,0 +1,17 @@
+pkgbase = pg_graphql
+	pkgdesc = GraphQL support for PostgreSQL
+	pkgver = r108.0d712aa
+	pkgrel = 1
+	url = https://github.com/supabase/pg_graphql
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = clang
+	makedepends = llvm
+	depends = libgraphqlparser
+	depends = postgresql
+	depends = glibc
+	source = pg_graphql::git+https://github.com/supabase/pg_graphql#commit=0d712aa976f20c7d492855e65314d9531791f5b0
+	md5sums = SKIP
+
+pkgname = pg_graphql
