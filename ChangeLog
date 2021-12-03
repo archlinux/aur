@@ -233,3 +233,7 @@ General Fixes
 - We fixed a problem fetching events from some CalDAV providers.
 - We fixed a problem with Google Out-of-office (OOO) events. Before these events were displayed as one day longer than they actually were.
 - On a minor note, we fixed the downgrading alert. In general, it is not possible to downgrade Morgen to a previous version. A warning should be displayed if this is detected, but this warning was not displayed on some systems. This is now fixed.
+
+=== Morgen 2.3.5
+Morgen developers communicates the same changelog for 2.3.4 and 2.3.5 - so the latter arguably fixes issues of the former.
+
