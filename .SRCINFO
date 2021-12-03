@@ -1,0 +1,11 @@
+pkgbase = lbry-vault
+	pkgdesc = The LBRY Vault for Ledger
+	pkgver = 3.3.8.2
+	pkgrel = 1
+	url = https://github.com/LBRYFoundation/LBRY-Vault
+	arch = x86_64
+	license = MIT
+	source = https://github.com/LBRYFoundation/LBRY-Vault/releases/download/3.3.8.2/lbry-vault-3.3.8.2-x86_64.AppImage
+	sha512sums = 624a321e08e381a2857d788cabf11bbf06da1170b067413ebe67fbf5544b60d4405dcce67a8c0e093fbab7ab1a66186b4619902de785b4df825f4c9abadc51bc
+
+pkgname = lbry-vault
