@@ -49,6 +49,11 @@ if [ -z ${_compiler+x} ]; then
   _compiler=gcc
 fi
 
+# Compress modules with ZSTD (to save disk space)
+if [ -z ${_compress_modules+x} ]; then
+  _compress_modules=n
+fi
+
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -69,16 +74,16 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=5.13
-pkgver=${_major}.19
+_major=5.15
+pkgver=${_major}.6
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="d9c7027c0788462c20c523d95d5eebf58ad02724" # 5.13.19-2
+__commit="e07c100203a9e1e30ed3dc84d6a14e6e37e72849" # 5.13.6-1
 
 license=(GPL2)
 makedepends=(
@@ -94,7 +99,7 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux513/-/archive/${__commit}/linux513-${__commit}.tar.gz")
+        "https://gitlab.manjaro.org/packages/core/linux515/-/archive/${__commit}/linux513-${__commit}.tar.gz")
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 
 # Archlinux patches
@@ -105,11 +110,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'  # kernel tar.xz
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'ba173136348108df3066db4c2e2c0539e16162fa017aa738df81de85e0124657'  # xanmod
+            '8055bcb3765ca7995477db3f5de71d3ce76a232885a8179ff37dda21e0e5a587'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            'd85c1f3a4b22ada4a7511154d27f2146379128cd9ee60afbf1cdc3b7254e1d08') # manjaro
+            '0595d4c51f631b2d1ed2424511aab36970043f143e66bcf07fd0274273377060') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -142,15 +147,19 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux513-$__commit/0103-futex.patch  # remove conflicting ones
-  rm ../linux513-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+  rm ../linux515-$__commit/0103-futex.patch  # remove conflicting ones
+  rm ../linux515-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+  rm ../linux515-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
   local _patch
-  for _patch in ../linux513-$__commit/*; do
+  rm ../linux515-$__commit/0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch
+  rm ../linux515-$__commit/0106-Fix_OLED_brightness_control_on_eDP.patch
+
+  for _patch in ../linux515-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux513-$__commit/$_patch"
+      patch -Np1 < "../linux515-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux513-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux515-$__commit/0413-bootsplash.gitpatch"
   
   
   # Applying configuration
@@ -195,6 +204,11 @@ prepare() {
   # CONFIG_ANDROID_BINDER_IPC_SELFTEST is not set
   
   scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "manjaro"
+
+  # Compress modules by default (following Arch's kernel)
+  if [ "$_compress_modules" = "y" ]; then
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+  fi
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
