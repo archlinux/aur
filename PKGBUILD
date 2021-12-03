@@ -39,7 +39,10 @@ prepare() {
         patch -p0 -N -i "${srcdir}/hide-tray-icon.patch"
     fi
 
-    npm i --omit=dev -P "esbuild"
+    local ver=$(perl -ne'/"esbuild":\s*"(\S+)",?/ && print $1' <"package.json")
+    rm "package.json"
+
+    npm i -E --package-lock=false "esbuild"@"${ver}"
 }
 
 build() {
