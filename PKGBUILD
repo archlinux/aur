@@ -1,7 +1,7 @@
 # Maintainer: Nathan Doyle <natetronn <at> Gmail-DOT-Com>
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 pkgname=grub2-theme-preview
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Preview a full GRUB 2.x theme (or just a background image) using KVM/QEMU"
 arch=('any')
