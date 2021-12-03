@@ -1,7 +1,9 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=orthopy
 pkgname=python-${_base}
 pkgdesc="Orthogonal polynomials in all shapes and sizes"
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -14,7 +16,7 @@ optdepends=('python-cplot: for SRGB1 coloring'
   'python-meshio: for creation sphere mesh'
   'python-meshzoo: for creation of sphere mesh generated from the icosahedron')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f65c88dc7a59cbb5ba03929e6334f2b0aad213dc5d335a9bb42a8371b30108fb94e757453a9d3062ef3de988c8dc0a3ecd9e54a5a57139b485aca6bf442d9635')
+sha512sums=('43b2eee46d4395800902fb83a36b1af3c68020f06f28234aeac4c3fe9265c1b76709377fa7e92717c528ee14d089efba17211ab5b285cf7578bad013d289c8b9')
 
 build() {
   cd "${_base}-${pkgver}"
