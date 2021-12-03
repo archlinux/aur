@@ -10,8 +10,8 @@ url="https://github.com/Bismuth-Forge/bismuth"
 license=('MIT')
 depends=('systemsettings')
 makedepends=('git' 'npm' 'cmake' 'ninja' 'extra-cmake-modules' 'kcoreaddons' 'kconfig' 'ki18n' 'kcmutils' 'kdeclarative')
-provides=("bismuth" "kwin-bismuth")
-conflicts=('bismuth')
+provides=('kwin-bismuth')
+conflicts=('kwin-bismuth')
 options=('!emptydirs')
 
 source=('hide-tray-icon.patch')
