@@ -1,13 +1,13 @@
 # Maintainer: Jordan Day < jordanday444 at gmail dot com >
 
 pkgname=dasm
-pkgver=2.20.14
+pkgver=2.20.14.1
 pkgrel=1
 pkgdesc="A versatile macro assembler with support for several 8-bit microprocessors including 6502, 6507, 6803, HD6303, 68HC11, 68705, and F8"
 arch=('x86_64')
 url="https://dasm-assembler.github.io/"
 source=(https://github.com/dasm-assembler/dasm/archive/${pkgver}.tar.gz)
-sha256sums=('c66538ad8c413a4ea88525246ed9fef2bf9c9d2e36593acdf651e06635ad7497')
+sha256sums=('ec71ffd10eeaa70bf7587ee0d79a92cd3f0a017c0d6d793e37d10359ceea663a')
 license=('GPL2')
 provides=('dasm' 'ftohex')
 depends=('glibc')
