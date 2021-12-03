@@ -69,12 +69,12 @@ prepare(){
 
   # add support for jinja v3
   #cd pywrap
-  #curl https://patch-diff.githubusercontent.com/raw/CadQuery/pywrap/pull/34.diff | patch -p1 || true
+  #curl --silent https://patch-diff.githubusercontent.com/raw/CadQuery/pywrap/pull/34.diff | patch -p1 || true
   #git checkout f8869e5a47fd3e3e1d31e7ab89b46c158f7487bf
 
   # disable progress bars
   cd pywrap
-  curl -q https://patch-diff.githubusercontent.com/raw/greyltc/pywrap/pull/1.patch | patch -p1
+  curl --silent https://patch-diff.githubusercontent.com/raw/greyltc/pywrap/pull/1.patch | patch -p1
 }
 
 build() {
