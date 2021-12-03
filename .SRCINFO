@@ -1,6 +1,6 @@
 pkgbase = i2p-dev
 	pkgdesc = A distributed anonymous network (daily mtn->git sync)
-	pkgver = 1.5.0.0
+	pkgver = 1.6.1.1
 	pkgrel = 1
 	url = https://geti2p.net
 	install = i2p.install
@@ -9,10 +9,10 @@ pkgbase = i2p-dev
 	arch = armv6h
 	arch = armv7h
 	license = GPL2
-	makedepends = java-environment>=15
+	makedepends = java-environment>=17
 	makedepends = apache-ant
 	makedepends = git
-	depends = java-runtime>=15
+	depends = java-runtime>=17
 	depends = java-service-wrapper
 	depends = gmp
 	provides = i2p

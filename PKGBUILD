@@ -5,14 +5,14 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=1.5.0.0
+pkgver=1.6.1.1
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-depends=('java-runtime>=15' 'java-service-wrapper' 'gmp')
-makedepends=('java-environment>=15' 'apache-ant' 'git')
+depends=('java-runtime>=17' 'java-service-wrapper' 'gmp')
+makedepends=('java-environment>=17' 'apache-ant' 'git')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-bin')
 provides=('i2p')
@@ -78,7 +78,7 @@ build() {
         -Dfile.encoding=UTF-8 \
         -Djavac.compilerargs=-Xlint:-options \
         -Dbuild.reproducible=true \
-        -Djavac.version=15 \
+        -Djavac.version=17 \
         preppkg-linux
 }
 
