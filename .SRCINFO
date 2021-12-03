@@ -1,11 +1,12 @@
 pkgbase = smuview-git
 	pkgdesc = SmuView is a Qt-based source measurement unit GUI for sigrok.
-	pkgver = r838.41a86c0
+	pkgver = r882.7050317
 	pkgrel = 1
 	url = https://github.com/knarfS/smuview
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = boost
 	depends = libsigrok-git
 	depends = qwt
 	provides = smuview

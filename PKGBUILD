@@ -2,14 +2,14 @@
 
 _pkgname=smuview
 pkgname=${_pkgname}-git
-pkgver=r838.41a86c0
+pkgver=r882.7050317
 pkgrel=1
 pkgdesc="SmuView is a Qt-based source measurement unit GUI for sigrok."
 arch=('any')
 url="https://github.com/knarfS/$_pkgname"
 license=('GPL3')
 depends=('libsigrok-git' 'qwt')
-makedepends=('git')
+makedepends=('git' 'boost')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+$url.git")
