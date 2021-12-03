@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=tidal-hifi
+GenericName=tidal-hifi
+Comment=The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
+Exec=/usr/bin/tidal-hifi %u
+Icon=tidal-hifi
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;Application;Audio;Video
+StartupWMClass=tidal-hifi
+X-PulseAudio-Properties=media.role=music
