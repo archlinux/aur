@@ -1,11 +1,7 @@
 _phpbase=72
 pkgver=7.2.34
 pkgrel=4
-if [ 1 == "${EL_SUFFIX}" ]; then
-_suffix=-el
-else
 _suffix=
-fi
 pkgbase=php${_phpbase}${_suffix}
 _pkgbase=${pkgbase%$_phpbase$_suffix}
 if [ -z "${_suffix}" ]; then
@@ -157,7 +153,7 @@ check() {
    ${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
 }
 
-_real_package() {
+package_php72() {
     pkgdesc='A general-purpose scripting language that is especially suited to web development'
     depends=('libxml2' 'curl' 'libzip' 'pcre')
     backup=("etc/${_realpkg}/php.ini")
@@ -200,7 +196,7 @@ _real_package() {
     sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${_realpkg/php/php-config}]], ${_realpkg/php/php-config}, no)" ${pkgdir}/usr/lib/${_realpkg}/build/phpize.m4
 }
 
-_real_package_cgi() {
+package_php72-cgi() {
     _ext=cgi
     _desc='CGI and FCGI SAPI for'
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"    
@@ -214,7 +210,7 @@ _real_package_cgi() {
     make -j1 INSTALL_ROOT=${pkgdir} install-cgi
 }
 
-_real_package_apache() {
+package_php72-apache() {
     _ext=apache
     _desc='Apache SAPI for PHP for'
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -229,7 +225,7 @@ _real_package_apache() {
     install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${_realpkg}_module.conf
 }
 
-_real_package_fpm() {
+package_php72-fpm() {
     _ext=fpm
     _desc='FastCGI Process Manager for'
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -247,7 +243,7 @@ _real_package_fpm() {
     install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_realpkg}-fpm.conf
 }
 
-_real_package_embed() {
+package_php72-embed() {
     _ext=embed
     _desc="Embedded PHP SAPI library for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -265,7 +261,7 @@ _real_package_embed() {
     mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-71.so
 }
 
-_real_package_phpdbg() {
+package_php72-phpdbg() {
     _ext=phpdbg
     _desc="Interactive PHP debugger for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -280,7 +276,7 @@ _real_package_phpdbg() {
     make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
 }
 
-_real_package_dblib() {
+package_php72-dblib() {
     _ext=dblib
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -293,7 +289,7 @@ _real_package_dblib() {
     install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_dblib.so
 }
 
-_real_package_enchant() {
+package_php72-enchant() {
     _ext=enchant
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -306,7 +302,8 @@ _real_package_enchant() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_gd() {
+
+package_php72-gd() {
     _ext=gd
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -319,7 +316,7 @@ _real_package_gd() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_imap() {
+package_php72-imap() {
     _ext=imap
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -332,7 +329,7 @@ _real_package_imap() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_intl() {
+package_php72-intl() {
     _ext=intl
     pkgdesc="${_ext} module for ${_pkgbase}${_suffix}"
     depends=("${pkgbase}" 'icu')
@@ -344,7 +341,7 @@ _real_package_intl() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_mcrypt() {
+package_php72-odbc() {
     _ext=mcrypt
     _desc="${_ext} module for"   
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"    
@@ -357,7 +354,7 @@ _real_package_mcrypt() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_odbc() {
+package_php72-odbc() {
     _ext=odbc
     _desc="ODBC modules for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -371,7 +368,7 @@ _real_package_odbc() {
     install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_odbc.so
 }
 
-_real_package_pgsql() {
+package_php72-pgsql() {
     _ext=pgsql
     _desc="PostgreSQL modules for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -385,7 +382,7 @@ _real_package_pgsql() {
     install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_pgsql.so
 }
 
-_real_package_pspell() {
+package_php72-pspell() {
     _ext=pspell
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -398,7 +395,7 @@ _real_package_pspell() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_snmp() {
+package_php72-snmp() {
     _ext=snmp
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -411,7 +408,7 @@ _real_package_snmp() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_sodium() {
+package_php72-sodium() {
     _ext=sodium
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -424,7 +421,7 @@ _real_package_sodium() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_sqlite() {
+package_php72-sqlite() {
     _ext=sqlite
     _desc="${_ext} modules for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -438,7 +435,7 @@ _real_package_sqlite() {
     install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${_realpkg}/modules/pdo_sqlite.so
 }
 
-_real_package_tidy() {
+package_php72-tidy() {
     _ext=tidy
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -451,7 +448,7 @@ _real_package_tidy() {
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
 
-_real_package_xsl() {
+package_php72-xsl() {
     _ext=xsl
     _desc="${_ext} module for"
     pkgdesc="${_desc} ${_pkgbase}${_suffix}"
@@ -463,51 +460,6 @@ _real_package_xsl() {
     
     install -D -m755 "${srcdir}/build/modules/${_ext}.so" "${pkgdir}/usr/lib/${_realpkg}/modules/${_ext}.so"
 }
-
-
-
-if [ -z "${_suffix}" ]; then
-    package_php72()         { _real_package; }
-    package_php72-cgi()     { _real_package_cgi; }
-    package_php72-apache()  { _real_package_apache; }
-    package_php72-fpm()     { _real_package_fpm; }
-    package_php72-embed()   { _real_package_embed; }
-    package_php72-phpdbg()  { _real_package_phpdbg; }
-    package_php72-dblib()   { _real_package_dblib; }
-    package_php72-enchant() { _real_package_enchant; }
-    package_php72-gd()      { _real_package_gd; }
-    package_php72-imap()    { _real_package_imap; }
-    package_php72-intl()    { _real_package_intl; }
-    package_php72-odbc()    { _real_package_odbc; }
-    package_php72-pgsql()   { _real_package_pgsql; }
-    package_php72-pspell()  { _real_package_pspell; }
-    package_php72-snmp()    { _real_package_snmp; }
-    package_php72-sodium()  { _real_package_sodium; }
-    package_php72-sqlite()  { _real_package_sqlite; }
-    package_php72-tidy()    { _real_package_tidy; }
-    package_php72-xsl()     { _real_package_xsl; }
-    
-else
-    package_php72-el()         { _real_package; }
-    package_php72-cgi-el()     { _real_package_cgi; }
-    package_php72-apache-el()  { _real_package_apache; }
-    package_php72-fpm-el()     { _real_package_fpm; }
-    package_php72-embed-el()   { _real_package_embed; }
-    package_php72-phpdbg-el()  { _real_package_phpdbg; }
-    package_php72-dblib-el()   { _real_package_dblib; }
-    package_php72-enchant-el() { _real_package_enchant; }
-    package_php72-gd-el()      { _real_package_gd; }
-    package_php72-imap-el()    { _real_package_imap; }
-    package_php72-intl-el()    { _real_package_intl; }    
-    package_php72-odbc-el()    { _real_package_odbc; }
-    package_php72-pgsql-el()   { _real_package_pgsql; }
-    package_php72-pspell-el()  { _real_package_pspell; }
-    package_php72-snmp-el()    { _real_package_snmp; }
-    package_php72-sodium-el()  { _real_package_sodium; }
-    package_php72-sqlite-el()  { _real_package_sqlite; }
-    package_php72-tidy-el()    { _real_package_tidy; }
-    package_php72-xsl-el()     { _real_package_xsl; }
-fi
 
 md5sums=('adb64072b9b7e4634844a72512239a34'
          '3bcefa76cf2f73f5f851a95c92e217a1'

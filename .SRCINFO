@@ -51,39 +51,141 @@ pkgbase = php72
 	md5sums = b40b82f55208eaead22dbfb64720b064
 
 pkgname = php72
+	pkgdesc = A general-purpose scripting language that is especially suited to web development
+	depends = libxml2
+	depends = curl
+	depends = libzip
+	depends = pcre
+	provides = php72
+	conflicts = php72
+	backup = etc/php72/php.ini
 
 pkgname = php72-cgi
+	pkgdesc = php
+	depends = php72
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-apache
+	pkgdesc = php
+	depends = php72
+	depends = apache
+	provides = php72-
+	conflicts = php72-
+	backup = etc/httpd/conf/extra/php72_module.conf
 
 pkgname = php72-fpm
+	pkgdesc = php
+	depends = php72
+	depends = systemd
+	provides = php72-
+	conflicts = php72-
+	options = !emptydirs
+	backup = etc/php72/php-fpm.conf
+	backup = etc/php72/php-fpm.d/www.conf
 
 pkgname = php72-embed
+	pkgdesc = php
+	depends = php72
+	depends = libsystemd
+	provides = php72-
+	conflicts = php72-
+	options = !emptydirs
 
 pkgname = php72-phpdbg
+	pkgdesc = php
+	depends = php72
+	provides = php72-
+	conflicts = php72-
+	options = !emptydirs
 
 pkgname = php72-dblib
+	pkgdesc = php
+	depends = php72
+	depends = freetds
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-enchant
+	pkgdesc = php
+	depends = php72
+	depends = enchant
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-gd
+	pkgdesc = php
+	depends = php72
+	depends = gd
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-imap
+	pkgdesc = php
+	depends = php72
+	depends = c-client
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-intl
+	pkgdesc = module for php
+	depends = php72
+	depends = icu
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-odbc
+	pkgdesc = php
+	depends = php72
+	depends = unixodbc
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-pgsql
+	pkgdesc = php
+	depends = php72
+	depends = postgresql-libs
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-pspell
+	pkgdesc = php
+	depends = php72
+	depends = aspell
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-snmp
+	pkgdesc = php
+	depends = php72
+	depends = net-snmp
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-sqlite
+	pkgdesc = php
+	depends = php72
+	depends = sqlite
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-tidy
+	pkgdesc = php
+	depends = php72
+	depends = tidy
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-xsl
+	pkgdesc = php
+	depends = php72
+	depends = libxslt
+	provides = php72-
+	conflicts = php72-
 
 pkgname = php72-sodium
+	pkgdesc = php
+	depends = php72
+	depends = libsodium
+	provides = php72-
+	conflicts = php72-
