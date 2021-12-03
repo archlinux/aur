@@ -1,6 +1,6 @@
 pkgbase = quickemu
 	pkgdesc = Quickly create and run optimised Windows, macOS and Linux desktop virtual machines.
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/quickemu-project/quickemu
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = quickemu
 	optdepends = quickgui: graphical user interface
 	provides = quickemu
 	conflicts = quickemu
-	source = quickemu-2.3.2.tar.gz::https://github.com/quickemu-project/quickemu/archive/refs/tags/2.3.2.tar.gz
-	sha256sums = b1319b5edf7432fbe45258c39997d17b87f714f439249c6057342c9afd37a50c
+	source = quickemu-2.3.3.tar.gz::https://github.com/quickemu-project/quickemu/archive/refs/tags/2.3.3.tar.gz
+	sha256sums = 9694f55364aca373d0e621977675800d9da69173d22f0bf005242daaa1e28d9a
 
 pkgname = quickemu
