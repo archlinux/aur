@@ -28,18 +28,6 @@ if (( dracut_update )); then
     done
 fi
 
-os_release_mounted=0
-function unmount_os_release() {
-    if [ "$os_release_mounted" -ne 0 ]; then
-        umount /etc/os-release
-        os_release_mounted=0
-    fi
-}
-
-if [[ "$hook_for_pretty_name" == "true" ]]; then
-    trap unmount_os_release EXIT
-fi
-
 for kernel in "${!kernels[@]}"; do
     version="${kernels[$kernel]}"
     path="/usr/lib/modules/${version}/pkgbase"
@@ -52,15 +40,10 @@ for kernel in "${!kernels[@]}"; do
         tmp_file=$(mktemp)
         cat /etc/os-release > "$tmp_file"
         echo "VERSION_ID=\"$pkgbase $version\"" >> "$tmp_file"
-        mount --bind "$tmp_file" /etc/os-release
-        os_release_mounted=1
+        unshare -m /bin/sh -c "mount --bind '$tmp_file' /etc/os-release && dracut -q -f --uefi --kver '${version}'"
         rm "$tmp_file"
-    fi
-    
-    dracut -q -f --uefi --kver "${version}"
-
-    if [[ "$hook_for_pretty_name" == "true" ]]; then
-        unmount_os_release
+    else
+        dracut -q -f --uefi --kver "${version}"
     fi
 
     if [[ "$pkgbase" == "$default_kernel_package" ]]; then
