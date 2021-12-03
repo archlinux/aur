@@ -3,8 +3,8 @@
 
 pkgname=nbfc-linux-git
 _pkgname=nbfc-linux
-pkgver=0.1.5.r0.g8d5f1fa
-pkgrel=2
+pkgver=0.1.6.r37.g3360e35
+pkgrel=1
 pkgdesc="Lightweight C port of NoteBook FanControl (no Mono required)"
 arch=('i686' 'x86_64')
 url="https://github.com/nbfc-linux/nbfc-linux"
@@ -31,6 +31,6 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 
-  make DESTDIR="${pkgdir}" install
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 # vim:set ts=2 sw=2 et:

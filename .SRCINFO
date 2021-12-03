@@ -1,7 +1,7 @@
 pkgbase = nbfc-linux-git
 	pkgdesc = Lightweight C port of NoteBook FanControl (no Mono required)
-	pkgver = 0.1.5.r0.g8d5f1fa
-	pkgrel = 2
+	pkgver = 0.1.6.r37.g3360e35
+	pkgrel = 1
 	url = https://github.com/nbfc-linux/nbfc-linux
 	arch = i686
 	arch = x86_64
