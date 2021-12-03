@@ -11,7 +11,7 @@ pkgbase=linux-rk3328
 _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for RK3328"
-pkgver=5.15.4
+pkgver=5.15.6
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -49,11 +49,11 @@ md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '966cbe04ab5848bf6972411166adfee4'
          '7a18066683f3351b2bbd2653db783f80'
          '6dfa62f14b2a3390b1a4ca2e5cf5c9a2'
-         'b4244846a39258022a2ab4248aaadb11'
+         'ad939650b9e905da9f5891820ff0e4e2'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '2824fda27f71a076b0a52245f2c3d6b0')
+         'a41ce0931f89959fb2457f8a54e5c811')
 
 prepare() {
   cd ${_srcname}
