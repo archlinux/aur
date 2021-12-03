@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-bigquery
 	pkgdesc = Google BigQuery API client library
-	pkgver = 2.30.1
+	pkgver = 2.31.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-bigquery
 	changelog = CHANGELOG.md
@@ -10,22 +10,22 @@ pkgbase = python-google-cloud-bigquery
 	makedepends = python-sphinx
 	makedepends = python-recommonmark
 	depends = python>=3.6
-	depends = python-dateutil>=2.7.2
-	depends = python-google-api-core>=1.29.0
-	depends = python-google-cloud-core>=1.4.1
-	depends = python-google-resumable-media>=0.6.0
-	depends = python-grpcio>=1.38.1
-	depends = python-packaging>=14.3
-	depends = python-proto-plus>=1.10.0
-	depends = python-protobuf>=3.12.0
-	depends = python-requests>=2.18.0
-	optdepends = python-arrow>=3.0.0: pyarrow support
-	optdepends = python-pandas>=0.24.2: pandas support
-	optdepends = python-tqdm>=4.7.4: tqdm support
+	depends = python-dateutil
+	depends = python-google-api-core
+	depends = python-google-cloud-core
+	depends = python-google-resumable-media
+	depends = python-grpcio
+	depends = python-packaging
+	depends = python-proto-plus
+	depends = python-protobuf
+	depends = python-requests
+	optdepends = python-arrow: pyarrow support
+	optdepends = python-pandas: pandas support
+	optdepends = python-tqdm: tqdm support
 	optdepends = python-fastparquet: fastparquet support
 	optdepends = python-snappy: fastparquet support
 	optdepends = python-llvmlite: fastparquet support
-	source = python-google-cloud-bigquery-2.30.1.tar.gz::https://github.com/googleapis/python-bigquery/archive/v2.30.1.tar.gz
-	sha256sums = 11b35a342fb1f10964fe7b987891eb8b4c5aa50c08e4aa00e02a5dcfe393ea07
+	source = python-google-cloud-bigquery-2.31.0.tar.gz::https://github.com/googleapis/python-bigquery/archive/v2.31.0.tar.gz
+	sha256sums = 8c0b915d4c05926e96761cce0ae449e25b26f14e5063adbc931239d82890276f
 
 pkgname = python-google-cloud-bigquery

@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.30.1
+pkgver=2.31.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
@@ -10,26 +10,26 @@ url="https://github.com/googleapis/python-bigquery"
 license=('Apache')
 depends=(
 	'python>=3.6'
-	'python-dateutil>=2.7.2'
-	'python-google-api-core>=1.29.0'
-	'python-google-cloud-core>=1.4.1'
-	'python-google-resumable-media>=0.6.0'
-	'python-grpcio>=1.38.1'
-	'python-packaging>=14.3'
-	'python-proto-plus>=1.10.0'
-	'python-protobuf>=3.12.0'
-	'python-requests>=2.18.0')
+	'python-dateutil'
+	'python-google-api-core'
+	'python-google-cloud-core'
+	'python-google-resumable-media'
+	'python-grpcio'
+	'python-packaging'
+	'python-proto-plus'
+	'python-protobuf'
+	'python-requests')
 makedepends=('python-setuptools' 'python-sphinx' 'python-recommonmark')
 optdepends=(
-	'python-arrow>=3.0.0: pyarrow support'
-	'python-pandas>=0.24.2: pandas support'
-	'python-tqdm>=4.7.4: tqdm support'
+	'python-arrow: pyarrow support'
+	'python-pandas: pandas support'
+	'python-tqdm: tqdm support'
 	'python-fastparquet: fastparquet support'
 	'python-snappy: fastparquet support'
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/python-bigquery/archive/v$pkgver.tar.gz")
-sha256sums=('11b35a342fb1f10964fe7b987891eb8b4c5aa50c08e4aa00e02a5dcfe393ea07')
+sha256sums=('8c0b915d4c05926e96761cce0ae449e25b26f14e5063adbc931239d82890276f')
 
 build() {
 	cd "python-bigquery-$pkgver"
@@ -41,7 +41,7 @@ build() {
 package() {
 	cd "python-bigquery-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 docs/_build/google-cloud-bigquery.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 docs/_build/google-cloud-bigquery.1 -t "$pkgdir/usr/share/man/man1/"
 }
