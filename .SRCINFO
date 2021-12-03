@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-plotly
 	pkgdesc = Jupyter Extension for Plotly.py.
-	pkgver = 5.1.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://pypi.org/project/plotly/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = jupyterlab-plotly
 	depends = python
 	depends = jupyterlab
 	depends = jupyter-nbformat
-	source = https://files.pythonhosted.org/packages/source/p/plotly/plotly-5.1.0.tar.gz
-	sha256sums = 71f6744acdc524c22236c226d7cf1072d1a58ebacaf749c640998298472c8c44
+	source = https://files.pythonhosted.org/packages/source/p/plotly/plotly-5.4.0.tar.gz
+	sha256sums = 735d50738c760ecbf3a38e2336b8c1b119bff2d857096e4f68af31089b798161
 
 pkgname = jupyterlab-plotly
