@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.15.3.arch1.r1045918.70b5fb5dafe6
-_srcver_tag=v5.15.3.arch1
+pkgver=v5.15.6.arch2.r1045936.dc8f5cda97ad
+_srcver_tag=v5.15.6.arch2
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -117,7 +117,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '20a1c257ba31322d0bd74176094b2e6c5b6f51ddd284077e6b9b17c17d5cd5f47f0f536160d508c1dc14c9764453ba0b89a94eb3a1a82220f21685c6e5394287')
+            '82e8b78085623407c1423e5bfcee544dcfbce78b157a2d7861066cf3615f5a9d240f1f2d1d12df40dce2f9941cd07ef2a6528bb48fb35236ae835ce61c1fc0f7')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -175,6 +175,9 @@ prepare() {
 
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
+
+    msg2 "Showing config diff"
+    diff -u ../config .config || :
 
     make -s kernelrelease > version
     msg2 "Prepared $pkgbase version $(<version)"
