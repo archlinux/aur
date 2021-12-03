@@ -2,7 +2,7 @@
 
 pkgname=python-geocoder
 pkgver=1.38.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and consistent geocoding library"
 url="https://github.com/DenisCarriere/geocoder"
 license=('MIT')
