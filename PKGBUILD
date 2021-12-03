@@ -3,7 +3,7 @@
 pkgname=('psiphon-console-client' 'psiphon-server')
 pkgbase=psiphon-tunnel-core
 pkgver=2.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Psiphon Internet censorship circumvention system."
 arch=('i686' 'x86_64')
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
@@ -95,7 +95,7 @@ package_psiphon-server() {
 		Restart=on-failure
 
 		[Install]
-		WantedBy=multi-user.target
+		WantedBy=default.target
 	EOF
 }
 

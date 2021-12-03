@@ -1,7 +1,7 @@
 pkgbase = psiphon-tunnel-core
 	pkgdesc = Psiphon Internet censorship circumvention system.
 	pkgver = 2.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	install = psiphon.install
 	arch = i686
