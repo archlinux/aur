@@ -34,7 +34,7 @@ source=(
     yesplaymusic
 )
 md5sums=('58b9b2eb66b69342cf3ebeff86511407'
-         'ade11d60b069c369b57b5d1e09066519'
+         '292b7bd4de561f869625c55d8a60b608'
          '4e0fc58c70fa5fa4b1e581dc0fba8b9e')
 
 package() {
