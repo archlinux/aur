@@ -2,7 +2,7 @@
 
 pkgname=python-socketpool
 pkgver=0.5.3
-pkgrel=7
+pkgrel=8
 pkgdesc="A simple Python socket pool"
 arch=('any')
 license=('MIT')
