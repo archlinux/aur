@@ -3,11 +3,11 @@
 _pkgname=RespeQt
 pkgbase=respeqt-git
 pkgname=respeqt-git
-pkgver=r5.3.r5.ge1b1eca
+pkgver=r5.3.r16.gc7489af
 pkgrel=1
 pkgdesc="RespeQt emulates Atari SIO peripherals when connected to an Atari 8-bit computer with an SIO2PC cable."
-url="https://github.com/jzatarski/RespeQt"
-arch=('i686' 'x86_64')
+url="https://github.com/RespeQt/RespeQt"
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
 depends=('zlib' 'qt5-base' 'glibc' 'hicolor-icon-theme' 'qt5-serialport' 'qt5-svg')
 makedepends=('git' 'qt5-tools')
@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  sed -i '1s/^/#include "stdexcept"\n/' atascii.cpp # Temp patch. Remove if compiling fails. Added March 22, 2021.
   install -d build
   cd build
   qmake-qt5 ..
