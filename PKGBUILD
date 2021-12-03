@@ -2,7 +2,7 @@
 
 _pkgname=polyscope
 pkgname=python-${_pkgname}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Python viewer and user interface for 3D data, like meshes and point clouds'
 url='https://polyscope.run/py/'
@@ -19,7 +19,7 @@ makedepends=(
 	python-setuptools
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f2071ecff08b66e094df8d12fc4fc3d671f307aac7086c749c3e7746f7428084')
+sha256sums=('63cd6583da984d817407417a4c3f4075de094a9f712b39a6a7caf24fa16b5659')
 
 build(){
 	cd "polyscope-${pkgver}"
