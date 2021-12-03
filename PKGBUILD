@@ -3,8 +3,9 @@
 # Contributor: Miroslav Koškár
 
 pkgname=vcvrack-git
+_branchname=v1
 pkgver=1.1.6.r18.ga5fc5891
-pkgrel=6
+pkgrel=7
 pkgdesc="Open-source virtual Eurorack DAW"
 url="https://github.com/VCVRack/Rack"
 license=(BSD)
@@ -14,10 +15,13 @@ makedepends=(git unzip wget cmake)
 provides=(vcvrack)
 conflicts=(vcvrack)
 source=(
-    "${pkgname%-git}::git+https://github.com/VCVRack/Rack.git"
+   "${pkgname%-git}::git+https://github.com/VCVRack/Rack.git#branch=${_branchname}"
+    "vcvrack.desktop"
+    "vcvrack.sh"
 )
 sha256sums=('SKIP'
-)
+            'a7aa48156543ca6d05def561b6708935d7fd284baff4412716ad7077fb221b6c'
+            '6299d2de5b6c71db5c9e736095bbf141e4f0bc6eb90b4791aa384b3accd59bbd')
 
 pkgver() {
     cd "${pkgname%-git}"
@@ -34,7 +38,6 @@ build() {
     make dep
     local tag flags
     tag=$(git describe --tags --abbrev=0)
-    export FLAGS=$(pkg-config --cflags-only-I glew glfw3 jansson samplerate libcurl libzip rtmidi rtaudio gtk+-2.0)
     make VERSION="${tag##v}"
 }
 
