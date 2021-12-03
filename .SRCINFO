@@ -1,21 +1,18 @@
 pkgbase = emacs-pretest
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version
-	pkgver = 27.0
-	pkgrel = 0.91
+	pkgver = 28.0
+	pkgrel = 0.90
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
 	depends = gpm
-	depends = m17n-lib
 	depends = gtk3
 	depends = jansson
+	depends = giflib
+	depends = libgccjit
 	provides = emacs
 	conflicts = emacs
-	source = https://alpha.gnu.org/gnu/emacs/pretest/emacs-27.0.91.tar.xz
-	source = https://alpha.gnu.org/gnu/emacs/pretest/emacs-27.0.91.tar.xz.sig
-	validpgpkeys = 28D3BED851FDF3AB57FEF93C233587A47C207910
-	sha512sums = fcae087c7d153ce45640dc5785e0829e85b14400eec70f833e1f7ee7d3903f1e4adb469d812596fc6e7ff792ccaeda3fde5fa1c37b609ab83e8432d9f63be36a
-	sha512sums = SKIP
+	source = https://alpha.gnu.org/gnu/emacs/pretest/emacs-28.0.90.tar.xz
+	b2sums = 51bb58a0bb2d1dbe7dc0cf490d9a66f1028ec2291db18782ebeb64df29117a6230f1c46b71842fbc0935f50060536b58522d235bb0ee4333c0f137fde7407141
 
 pkgname = emacs-pretest
-
