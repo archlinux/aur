@@ -1,6 +1,6 @@
 # Maintainer: Nobbele <realnobbele@gmail.com>
 pkgname=unityhub-beta
-pkgver=2.4.5
+pkgver=3.0.0-beta.6
 pkgrel=1
 pkgdesc="Unity Hub beta"
 arch=('x86_64')
