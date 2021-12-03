@@ -2,7 +2,7 @@
 
 pkgname=python-ewmh
 pkgver=0.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Python implementation of Extended Window Manager Hints, based on Xlib"
 url="https://github.com/parkouss/pyewmh"
 license=('LGPL')
