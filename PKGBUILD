@@ -2,7 +2,7 @@
 
 pkgname='python-requests-ftp'
 pkgver=0.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="FTP transport adapter for Requests"
 arch=('any')
 url="https://github.com/Lukasa/requests-ftp"
