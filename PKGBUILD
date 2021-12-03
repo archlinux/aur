@@ -4,28 +4,28 @@
 
 pkgname=pocketsphinx
 pkgver=5prealpha
-pkgrel=12
+pkgrel=13
 pkgdesc='Lightweight speech recognition engine'
 arch=('i686' 'x86_64')
 url='http://cmusphinx.sourceforge.net'
 license=('BSD')
 makedepends=('swig' 'python')
 depends=('sphinxbase=5prealpha' 'gst-plugins-base-libs')
-source=("http://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz")
 sha256sums=('ef5bb5547e2712bdf571f256490ef42a47962033892efd9d7df8eed7fe573ed9')
 options=('!libtool')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  msg2 "Reconfiguring project for current version of Automake"
+  echo "Reconfiguring project for current version of Automake"
   autoreconf -ivf > /dev/null
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
-  export PYTHON=/usr/bin/python
+  export PYTHON=/usr/bin/python PYTHONWARNINGS=ignore
   ./configure --prefix=/usr
   make
 }

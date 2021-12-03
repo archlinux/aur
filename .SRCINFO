@@ -1,7 +1,7 @@
 pkgbase = pocketsphinx
 	pkgdesc = Lightweight speech recognition engine
 	pkgver = 5prealpha
-	pkgrel = 12
+	pkgrel = 13
 	url = http://cmusphinx.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pocketsphinx
 	depends = sphinxbase=5prealpha
 	depends = gst-plugins-base-libs
 	options = !libtool
-	source = http://downloads.sourceforge.net/cmusphinx/pocketsphinx-5prealpha.tar.gz
+	source = https://downloads.sourceforge.net/cmusphinx/pocketsphinx-5prealpha.tar.gz
 	sha256sums = ef5bb5547e2712bdf571f256490ef42a47962033892efd9d7df8eed7fe573ed9
 
 pkgname = pocketsphinx
