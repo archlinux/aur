@@ -1,0 +1,19 @@
+pkgbase = pico-wizard-bigscreen-configs-git
+	pkgdesc = Pico Wizard configurations for Bigscreen Images
+	pkgver = r01.8977fdbf
+	pkgrel = 1
+	url = https://invent.kde.org/adityam/pico-wizard-bigscreen-configs
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	provides = pico-wizard-bigscreen-configs
+	conflicts = pico-wizard-bigscreen-configs
+	source = git+https://invent.kde.org/adityam/pico-wizard-bigscreen-configs
+	sha512sums = SKIP
+
+pkgname = pico-wizard-bigscreen-configs-git
