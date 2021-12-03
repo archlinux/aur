@@ -1,0 +1,17 @@
+pkgbase = carbon-now-cli-bin
+	pkgdesc = Beautiful images of your code — from right inside your terminal.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/mixn/carbon-now-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	provides = carbon-now-cli
+	conflicts = carbon-now-cli
+	noextract = carbon-now-cli-bin-1.4.0.tgz
+	source = https://registry.npmjs.org/carbon-now-cli/-/carbon-now-cli-1.4.0.tgz
+	sha256sums = d9463e2ce016d1460301c0d2eb0114146f594ec1b88277dda7fdd6d1364a31e8
+
+pkgname = carbon-now-cli-bin
