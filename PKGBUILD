@@ -4,7 +4,7 @@
 pkgname=python-tarantool
 pkgver=0.6.6.r25.gb267643
 _commit=b267643a242e2e6abc013539395b89dd235b798f
-pkgrel=3
+pkgrel=4
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
 url='https://github.com/tarantool/tarantool-python'
