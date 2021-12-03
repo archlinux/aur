@@ -1,6 +1,6 @@
 pkgbase = blueprint-compiler-git
 	pkgdesc = A markup language for GTK user interfaces
-	pkgver = d0cf13b
+	pkgver = r80.d0cf13b
 	pkgrel = 1
 	url = https://jwestman.pages.gitlab.gnome.org/blueprint-compiler
 	arch = any

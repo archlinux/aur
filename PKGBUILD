@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.gnome.org/jwestman/blueprint-compiler
 
 pkgname=blueprint-compiler-git
-pkgver=d0cf13b
+pkgver=r80.d0cf13b
 pkgrel=1
 pkgdesc="A markup language for GTK user interfaces"
 arch=('any')
@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
