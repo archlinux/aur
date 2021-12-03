@@ -69,8 +69,8 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs28-git"
 fi
-pkgver=28.0.60.152178
-pkgrel=4
+pkgver=28.0.90.151020
+pkgrel=1
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
