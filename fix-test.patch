@@ -1,0 +1,12 @@
+diff --git a/test/plugins/test_folding.py b/test/plugins/test_folding.py
+index 05f0cdd..06e644f 100644
+--- a/test/plugins/test_folding.py
++++ b/test/plugins/test_folding.py
+@@ -118,6 +118,7 @@ def test_folding(workspace):
+                 {'startLine': 2, 'endLine': 3},
+                 {'startLine': 5, 'endLine': 6},
+                 {'startLine': 8, 'endLine': 11},
++                {'startLine': 9, 'endLine': 10},
+                 {'startLine': 12, 'endLine': 20},
+                 {'startLine': 13, 'endLine': 14},
+                 {'startLine': 15, 'endLine': 16},
