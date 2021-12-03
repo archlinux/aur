@@ -3,7 +3,7 @@
 _name=whichcraft
 pkgname=python-whichcraft
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="This package provides cross-platform cross-python shutil.which functionality"
 arch=('any')
 url="https://github.com/cookiecutter/whichcraft"
