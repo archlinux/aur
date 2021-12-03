@@ -1,0 +1,11 @@
+diff -aur crc16-0.1.1/src/_crc16module.c crc16-0.1.1.new/src/_crc16module.c
+--- crc16-0.1.1/src/_crc16module.c	2011-06-04 22:27:05.000000000 +0200
++++ crc16-0.1.1.new/src/_crc16module.c	2021-12-03 16:57:49.467854624 +0100
+@@ -21,6 +21,7 @@
+ 
+ #include <Python.h>
+ 
++#define PY_SSIZE_T_CLEAN
+ /* table for calculating CRC
+  * this particular table was generated using pycrc v0.7.6, http://www.tty1.net/pycrc/
+  * using the configuration:
