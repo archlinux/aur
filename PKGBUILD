@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=tinytex
-_cranver=0.34
+_cranver=0.35
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,7 +16,7 @@ depends=("r" "r-xfun>=0.23")
 # makedepends=()
 optdepends=("r-textit" "r-rstudioapi")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz" "https://cran.r-project.org/web/packages/tinytex/LICENSE")
-sha256sums=('1d059397b70579c325b64bfd548ef7b985a7558bd1e3d95716e0ed7a0dd8e69b'
+sha256sums=('d36397f677d1699337374cbbe415a6cc351023ed01b224c9d751e8e62619cf12'
             'f58c2f5b0f10b231d9cea9bc4ea0d849cd4279a21d03257be8dc9fd9452fad37')
 
 build() {
