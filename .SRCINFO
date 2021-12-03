@@ -1,7 +1,7 @@
 pkgbase = freetype2-ultimate5
 	pkgdesc = FreeType patched for effect similar to Infinality's ultimate5 preset.
-	pkgver = 2.11.0
-	pkgrel = 2
+	pkgver = 2.11.1
+	pkgrel = 1
 	url = https://www.freetype.org/
 	install = freetype2-ultimate5.install
 	arch = x86_64
@@ -11,30 +11,20 @@ pkgbase = freetype2-ultimate5
 	depends = bzip2
 	depends = libpng
 	depends = harfbuzz
-	provides = freetype2=2.11.0
+	provides = freetype2=2.11.1
 	provides = libfreetype.so
 	conflicts = freetype2
 	source = like-ultimate5.patch
-	source = upstream_01.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0001-Enable-table-validation-modules.patch
-	source = upstream_02.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0002-Enable-subpixel-rendering.patch
-	source = upstream_03.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0003-Enable-infinality-subpixel-hinting.patch
-	source = upstream_04.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0004-Enable-long-PCF-family-names.patch
-	source = upstream_06.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0006-Return_FT_Err_Ok_while_trying_to_render_bitmap.patch
-	source = upstream_07.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0007-Restore_quiet_no-op_rendering_of_bitmap_glyphs.patch
-	source = upstream_08.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0008-sfnt-Add-API-for-retrieving-a-COLR-v1-ClipBox-table.patch
-	source = upstream_09.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0009-src-sfnt-ttcolr.c-tt_face_get_color_glyph_clipbox-Mi.patch
-	source = upstream_10.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/dc7f306d5507d0f2898a669b5d2d8fc6cd2a59a4/trunk/0010-sfnt-Add-missing-blend-mode-plus-to-COLR-v1.patch
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.11.0.tar.xz
+	source = upstream_01.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0001-Enable-table-validation-modules.patch
+	source = upstream_02.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0002-Enable-subpixel-rendering.patch
+	source = upstream_03.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0003-Enable-infinality-subpixel-hinting.patch
+	source = upstream_04.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0004-Enable-long-PCF-family-names.patch
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.11.1.tar.xz
 	sha256sums = 9554d3a23619a46cf48e512e5b6336afd0802f42fdaf9b2e47ba0c718143f1dd
 	sha256sums = e606bdba5c0ee698902886140e4643551ffc8327b1b7d2b0c9129d1f93b1f36c
 	sha256sums = 17ab1609cdbcaba3c5975f5cf1ffd078e067d560f906d5507390d41997e6c468
 	sha256sums = 561d2f2503d180b796f868470612610f6d7fcb34efa0620ecab38fd39002e27a
 	sha256sums = 9c068a984e7b9a27ff9e709839d522b66815ac4e8c7a5bd4ea0224335f7f2ef6
-	sha256sums = 2b13b8cc9acc3e56be6b0f8102d648864227bf93637bc956d5052c77c8509782
-	sha256sums = 21a2d243bc6b44d1cdb88ef29af2bd5ceda8d0faaf928bdc2c078a474ddc61f1
-	sha256sums = 13aba5006db13522ff0f3ffc85f81058b6cfcc48671285b1a90ac041a6a51952
-	sha256sums = 09a01b99839fc864db7a2c0748b4703ac5b04897cbd35e0d8969024b4ba89649
-	sha256sums = fbabfb745db32e1d90f9798e1018da26578f3bce9714dac8e64c15b691e76f69
-	sha256sums = 8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7
+	sha256sums = 3333ae7cfda88429c97a7ae63b7d01ab398076c3b67182e960e5684050f2c5c8
 
 pkgname = freetype2-ultimate5
