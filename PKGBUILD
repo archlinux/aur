@@ -47,10 +47,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
-_major=5.14
-_minor=21
+_major=5.15
+_minor=6
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=3
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -71,9 +71,9 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K211015v1"
+_bfq_rel="r2K211201v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
-_compiler_path="cpu-patches-sep"
+_compiler_path="cpu-patches-v2-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -81,10 +81,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0002-Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0003-Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0004-ALSA-pci-rme-Set-up-buffer-type-properly.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0006-lg-laptop-Recognize-more-models.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0007-Revert-drm-i915-Implement-Wa_1508744258.patch"
          # the main kernel config files
         'config')
 
@@ -332,15 +335,18 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('0f428cb7273de5b440b610b1a3709563e4ed955afb4df084750a8b43c45e5b000a5906780ff7079a8324fac0a8b7ecace778ab8bbf0511fba92d4dad160d7f87'
+sha512sums=('0f69e98590e796a3ec3e04340fc41954f1cdb7a5859da8efec1ba4a6498760778744e6243d068bc91343e3e7029239ff2e9ee2572f458c6b0e31c23f3686b5f5'
             'SKIP'
-            '026388e5bc3560d9275efe3b10a578276253988bdc4c30b20e71b688a7c32e238686d6fa054ea1014d4b3226e7d113cd088644045b95bae99252718e0dbd22ae'
-            'b1aef4f4e7350ce8132e019f76a2ac68bee8a46eb981598fbda11402e62a8bcdfd2f49e5b2cc5dcf2e96c88ad047af12d53abb9fda05c9f7acec37879e5240db'
-            'ba40d02c5ed6e1b6509aa9607dd4594dc168ee2aaf92647cbd2efa4e5921b9165633c7013467b14e5934080b7c656dcaeda225fce6089bcf8fe8a336404038e1'
-            'd566e5660ec5b2fabb10baacafb84ae925ddf2ba05db29f5f4225f68b49bf2ba8ccf10dfdc820b88e196265bf5aa70d8d8319acfbe813914916479b1097df7a9'
-            '322106526f6a8110af558b363ec9377427f1b548ab62a0ab07f5557728aeff0ec7adb8d6f5d30585290cdb460427bbd91e7a5674b60c6049a65f469da18830d2'
-            '787ea00ae9d98cac1d2bbc6d4ee17c2419cd708aef902875bc803f4be5fec8392c6c743bd80e0c9a99624b5b074ed899f7412d2ad9f41add6ee038dda2a6d0f4'
-            'b5af36ea554a112e14b55567551cdaf3c8f85d86fee79705c71836b22606e3f3b3432f86f51ae7e5c07b83ee1f48de5629feb34c736255651523421d1d6b8591')
+            '3a134c60f3c579160362120ef6001ebed0deed274702b38efbf237c10d8072f4881314e991fb7b2a1e2dcf062fc471718d59a761d4fac3ef0da88772766da394'
+            '53fa9b8a6fa451a7d57846d261f9af2de24e6442d2f318dfef899580d85e9cc54fa17267803a4f064eecab8ba3739062bfdf185de0afe119a1c86fe71cf3c711'
+            '7570945d5a75dfa6b20d4babf826ecfcac647f7b4396fdc5ea21f304d2ff3fbf1591b6bfee72309c463bcb4c090deaca4201988c5e1834b9d451e04322946082'
+            '6c13ccaa1403400e014a80d022a251a25e8401b7767cff899c6de0f3837a0efdba751c6eec51bb0b20818c3e200fbd5a2289b99908fbe457590ad87e7af20667'
+            '2b2b8bfe487611248ea304fbbb6d6c933e6d07e2ed43914807bba3f808d82cfd60b711210e26b6177ba817a8a15910a900dc6a3e0027ecac5dd4dcd5b3be851b'
+            'cf1f6efacf802f6a05a6290fdcc2fa8c963c974b45510ed88bb8a1ddcc9e7b531d60ff91ac5ee697c9d2768f7211431dec1dad5c46cbadd1962fdad6740d6f19'
+            'eaa1fe11667bed7ac28535e2859dcec886420db09fbbafc687c352b757d5d250e1792a9afb27d9be89c098e899673f1d47e12d258f3053573548b8f4dafca905'
+            '44572dab7481b98d7eb63a3f41ef527cae466ac6c695c4f6ea6a665c63dc995c4ab57323b1c14a4f66fcd8af640c3104e2aa1f067667da338c52fe474153b49d'
+            '623b96f722e8d7baba91bbf7b1f10c60879e493a94990e056276a94b2076a5ba672ff20833952a106c0cb1c38b8bc59a3a32bc9df8a3b623479eab28cff33ba4'
+            '4d608fe71abfc076825372b3987809e6e97be7160209595c63fc5a56d3e6d1ae6bd5b61a96243ff2c25fc15a8024ade798a764e5d31046bdb7093b70f00ed4dd')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
