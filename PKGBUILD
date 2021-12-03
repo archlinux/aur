@@ -1,7 +1,7 @@
 # Maintainer: theokonos
 
 pkgname="pulse-sms"
-pkgver="4.4.1"
+pkgver="4.5.2"
 pkgrel=1
 pkgdesc="A native desktop implementation of Pulse"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "https://github.com/maplemedia/pulse-sms-desktop/releases/download/v${pkgver}/pulse-sms-${pkgver}-amd64.deb"
 )
 sha512sums=(
-    "d2a06269a1f212d97c90935091313da54b64d6e4c54715468da6b1bf7ff01c512f8f519224fc8f9aa2a502fd65c7b8a18ad79557327ab935e6f70e347225a2ca"
+    "33f3c6c0ac8cc26c688c7a04f9568f8aceae8c95627ce77f152ef428ab31d32439af6dcef077ff20ddc316a240e45f7e9e12e63324681f6b3838a5722805d384"
 )
 
 package() {
