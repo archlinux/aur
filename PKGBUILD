@@ -1,7 +1,7 @@
 # Maintainer: Specter119 <spcter119 AT gmail.com>
 
 pkgname=jupyter-lsp
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server.'
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=(
   vscode-json-languageserver
   yaml-language-server)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('3b423ab38c93c8b951a0c20cc4c0ba56920cde09b226001353b967b1e5bcfae2')
+sha256sums=('d30f114ac8318fd7ebac23bf106eadd912d330e39abac2abb0240d1a2840f4ac')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -33,5 +33,6 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --root $pkgdir --skip-build --optimize=1
+  mv $pkgdir/{usr,}/etc
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
