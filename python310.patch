@@ -1,0 +1,12 @@
+diff -upr testing.common.database-2.0.3.orig/src/testing/common/database.py testing.common.database-2.0.3/src/testing/common/database.py
+--- testing.common.database-2.0.3.orig/src/testing/common/database.py	2017-10-23 17:54:04.000000000 +0300
++++ testing.common.database-2.0.3/src/testing/common/database.py	2021-12-04 00:36:43.005938263 +0200
+@@ -285,7 +285,7 @@ class SkipIfNotInstalledDecorator(object
+ 
+             return skipIf(cond, "%s not found" % self.name)(fn)
+ 
+-        if isinstance(arg, collections.Callable):  # execute as simple decorator
++        if isinstance(arg, collections.abc.Callable):  # execute as simple decorator
+             return decorator(arg, None)
+         else:  # execute with path argument
+             return decorator
