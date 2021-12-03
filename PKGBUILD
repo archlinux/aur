@@ -2,7 +2,7 @@
 # Contributor: Yufan You <ouuansteve at gmail>
 
 pkgname=nvui
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Modern frontend for Neovim'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 	nvui.desktop
 	nvui.sh
 )
-sha256sums=('2289986108533f0b492581e024f76cf9c24b854c14a42576b6beec27c2626c3e'
+sha256sums=('89cdeaec33f9727e1bbac29b7700cf29189c55a85e4b1fd08d55ea1d6484ee32'
             '529e087f9ea5d212c05e1cfd7da51f5e5718acc186a1925f937707c641ebd509'
             'f6094d0da2e36432a74a6e7d4169b5c3c74d1c7383bec53819b5821e658ba12e')
 
