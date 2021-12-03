@@ -26,13 +26,13 @@ sha512sums=(
 package() {
     cd "${srcdir}"
 
-    install -Dm644 -t "${pkgdir}/usr/lib/qt/plugins/kcms/" "./lib/x86_64-linux-gnu/plugins/kcms/kcm_bismuth.so"
+    install -Dm644 -t "${pkgdir}/usr/lib/qt/plugins/kcms" "lib/x86_64-linux-gnu/plugins/kcms/kcm_bismuth.so"
 
-    rm "./share/icons/hicolor/icon-theme.cache"
+    rm "share/icons/hicolor/icon-theme.cache"
 
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
         patch -p0 -N -i "hide-tray-icon.patch"
     fi
 
-    cp -r "./share/" "${pkgdir}/usr/"
+    cp -rt "${pkgdir}/usr" "share"
 }
