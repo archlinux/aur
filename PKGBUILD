@@ -4,17 +4,30 @@
 _name=ipyparallel
 pkgbase=ipython-${_name}
 pkgname=python-${_name}
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Interactive Parallel Computing in Python"
 url="https://github.com/ipython/ipyparallel"
 arch=(any)
 license=('BSD')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'jupyterlab' 'python-packaging' 'npm')
 optdepends=('openmpi: to use the MPI Launchers in ipcluster command')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ea756df0d2485bac19cccb0dbf4cafbc855c922b9b5905b4906e6cfac8b3c648')
-depends=('ipython' 'python-setuptools' 'python-jupyter_client' 'python-tornado' 'python-decorator')
+sha256sums=('95305a886f2c42e9603c034ea684e5c031d9d4222c66ed6d85eb3ae15d631e4b')
+depends=(
+  'ipython'
+  'python-dateutil'
+  'python-decorator'
+  'python-entrypoints'
+  'python-ipykernel'
+  'python-jupyter_client'
+  'python-psutil'
+  'python-pyzmq'
+  'python-setuptools'
+  'python-tornado'
+  'python-tqdm'
+  'python-traitlets'
+)
 conflicts=('ipython2-ipyparallel')
 replaces=('ipython-ipyparallel')
 
