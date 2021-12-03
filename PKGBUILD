@@ -2,7 +2,7 @@
 # Contributor: theguy147 <yakamoz147 at protonmail dot com>
 # Contributor: Marco Steiger <marco at steiger dot online>
 pkgname=buffalo-bin
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 epoch=
 pkgdesc="A Go web development ecosystem, designed to make your project easier"
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("https://github.com/gobuffalo/cli/releases/download/v$pkgver/buffalo_${pkgver}_Linux_x86_64.tar.gz")
 noextract=()
-sha256sums=('7a1a623e6386b1227f61b29245b13f623d404c3e23dd23a6b16e393467ac1eed')
+sha256sums=('d2aa023f1294bee1f0c3d84941966a6158212b9b765dbbbb0414f35b23aa5ef3')
 validpgpkeys=()
 
 package() {
