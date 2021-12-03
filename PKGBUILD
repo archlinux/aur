@@ -42,13 +42,6 @@ md5sums=(
     '8b875e8115a3b80f9964dc66ddf46a9a'
 )
 
-prepare () {
-    electronDist=/usr/lib/electron
-    electronVer=$(electron --version | tail -c +2)
-
-    sed -i '/"electron": /d' "${pkgname}/package.json"
-}
-
 build() {
     cd "${pkgname}"
     npm install --cache "${srcdir}/npm-cache"
