@@ -2,12 +2,12 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2021.10
+pkgver=2021.11
 pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
-url="https://www.waterfox.net/"
+url="https://classic.waterfox.net/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'sqlite>=3.33' 'ttf-font' 'icu' 'kwaterfoxhelper' 'hicolor-icon-theme' 'jemalloc' 'libevent')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
@@ -26,8 +26,8 @@ options=('!emptydirs' '!makeflags' 'zipman')
 _filesrev=2a0b88ee80b2ec6bbd4642290402392185570f52
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=709bbfedcb2750665fbda4993b253737615ee8f8
-#"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-classic"
+#"git+https://github.com/WaterfoxCo/Waterfox-Classic.git#commit=$_commit"
+source=("git+https://github.com/WaterfoxCo/Waterfox-Classic.git#tag=$pkgver-classic"
         "waterfox-classic.desktop::$_filesurl/waterfox-classic.desktop"
         "kde.js::$_filesurl/kde.js"
         "distribution.ini::$_filesurl/distribution.ini"
