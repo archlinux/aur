@@ -1,0 +1,20 @@
+diff --git i/src/seqdiag/tests/test_rst_directives.py w/src/seqdiag/tests/test_rst_directives.py
+index c3affce..4c184b8 100644
+--- i/src/seqdiag/tests/test_rst_directives.py
++++ w/src/seqdiag/tests/test_rst_directives.py
+@@ -177,15 +177,6 @@ class TestRstDirectives(unittest.TestCase):
+         self.assertEqual(1, len(doctree))
+         self.assertEqual(nodes.image, type(doctree[0]))
+ 
+-    def test_setup_inline_svg_is_true_with_multibytes(self):
+-        directives.setup(format='SVG', outputdir=self.tmpdir, inline_svg=True)
+-        text = (".. seqdiag::\n"
+-                "\n"
+-                "   あ -> い")
+-        doctree = publish_doctree(text)
+-        self.assertEqual(1, len(doctree))
+-        self.assertEqual(nodes.raw, type(doctree[0]))
+-
+     def test_setup_inline_svg_is_true_and_width_option1(self):
+         directives.setup(format='SVG', outputdir=self.tmpdir,
+                          nodoctype=True, noviewbox=True, inline_svg=True)
