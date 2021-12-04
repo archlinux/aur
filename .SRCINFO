@@ -1,7 +1,7 @@
 pkgbase = brim
 	pkgdesc = Desktop application to efficiently search large packet captures and Zeek logs.
 	pkgver = 0.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brimsecurity.com/download/
 	arch = x86_64
 	license = custom

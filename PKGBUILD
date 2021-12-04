@@ -1,7 +1,7 @@
 # Maintainer: Drew S. Ortega <orvyx@protonmail.com>
 pkgname=brim
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application to efficiently search large packet captures and Zeek logs."
 arch=('x86_64')
 url="https://www.brimsecurity.com/download/"
