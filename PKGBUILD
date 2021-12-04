@@ -25,7 +25,7 @@ prepare() {
 
     cd "repo"
 
-    git fetch -f origin master:master
+    git fetch -f --filter=tree:0 origin master:master
 }
 
 package() {
