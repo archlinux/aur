@@ -1,9 +1,8 @@
 pkgbase = mutter-oldstable
 	pkgdesc = A window manager for GNOME (oldstable version)
-	pkgver = 3.38.6
+	pkgver = 40.6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
-	install = mutter.install
 	arch = x86_64
 	groups = gnome-oldstable
 	license = GPL
@@ -14,6 +13,7 @@ pkgbase = mutter-oldstable
 	makedepends = egl-wayland
 	makedepends = meson
 	makedepends = xorg-server
+	makedepends = wayland-protocols
 	depends = dconf
 	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas-oldstable
@@ -31,10 +31,10 @@ pkgbase = mutter-oldstable
 	depends = xorg-xwayland
 	depends = graphene
 	depends = libxkbfile
-	provides = libmutter-7.so
+	provides = libmutter-8.so
 	conflicts = mutter
 	replaces = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=8bf8474372ea66ee7cccf369a95f6be83109681e
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=48f4306b738b079d3758595cdb6ab7f6a1f821c8
 	sha256sums = SKIP
 
 pkgname = mutter-oldstable
