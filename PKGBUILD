@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Kevin Morris <kevr at 0cost dot org>
 pkgname=system76-kbd-led-git
 pkgver=0.1.r13.g21f071d
 pkgrel=1
