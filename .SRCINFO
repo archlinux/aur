@@ -1,6 +1,7 @@
 pkgbase = php81
+	pkgdesc = php 8.1.0 compiled as to not conflict with mainline php
 	pkgver = 8.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.php.net/
 	arch = x86_64
 	arch = i686
@@ -39,10 +40,10 @@ pkgbase = php81
 	source = php.ini.patch
 	sha256sums = a1317eff0723a2b3d3122bbfe107a1158570ea2822dc35a5fb360086db0f6bbc
 	sha256sums = 702b163c66c65af92dcad8d79f41bda84bcd5d863235fcf1497c33a86db9e4ca
-	sha256sums = 52bdc4a5fae96e2aab1de707001414b6a5a9a17823e1e3a47f0f1e9a9788dc3e
+	sha256sums = 4a2add00d93fa991ccdf6356090264c1059c79935642afff6e8d4a2107fa037e
 	sha256sums = 96e0b05a5ec72ee0f907d29fbb9612414d9dfebeee1249cbf2f2318bacf2d37c
 	sha256sums = eb0c0aec5b5fb282df0bfefd4d5bbc229ee80a5c5da6760ecf52697a23cc7175
-	sha256sums = 6f73b6ac4b425ebc4505c7f75ca48763605b2c774c30bfa20072adcfbb1030cd
+	sha256sums = cc17f28807c63c49c6047fbaf19384f348af51bb0e737b364b9780e7b3cd4050
 
 pkgname = php81
 	pkgdesc = A general-purpose scripting language that is especially suited to web development
@@ -54,10 +55,6 @@ pkgname = php81
 	depends = libzip
 	depends = pcre2
 	depends = argon2
-	provides = php81-ldap=8.1.0
-	provides = php81
-	conflicts = php81-ldap
-	replaces = php81-ldap
 	backup = etc/php81/php.ini
 
 pkgname = php81-cgi
@@ -68,7 +65,6 @@ pkgname = php81-apache
 	pkgdesc = Apache SAPI for PHP
 	depends = php81
 	depends = apache
-	depends = libnsl
 	backup = etc/httpd/conf/extra/php81_module.conf
 
 pkgname = php81-fpm
@@ -82,8 +78,7 @@ pkgname = php81-fpm
 pkgname = php81-embed
 	pkgdesc = Embedded PHP SAPI library
 	depends = php81
-	depends = systemd-libs
-	depends = libnsl
+	depends = libsystemd
 	options = !emptydirs
 
 pkgname = php81-phpdbg
@@ -115,11 +110,6 @@ pkgname = php81-intl
 	pkgdesc = intl module for PHP
 	depends = php81
 	depends = icu
-
-pkgname = php81-sodium
-	pkgdesc = sodium module for PHP
-	depends = php81
-	depends = libsodium
 
 pkgname = php81-odbc
 	pkgdesc = ODBC modules for PHP
@@ -155,3 +145,8 @@ pkgname = php81-xsl
 	pkgdesc = xsl module for PHP
 	depends = php81
 	depends = libxslt
+
+pkgname = php81-sodium
+	pkgdesc = sodium module for PHP
+	depends = php81
+	depends = libsodium
