@@ -2,8 +2,8 @@
 
 pkgname=libdeltachat-git
 _srcname=deltachat-core-rust
-pkgver=1.60.0.r68.g398cea64
-pkgrel=2
+pkgver=1.70.0.r9.g7ab71bb4
+pkgrel=1
 pkgdesc="Deltachat-core written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/deltachat/deltachat-core-rust/"
@@ -18,7 +18,6 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_srcname}"
-#   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/^py.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
