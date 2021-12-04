@@ -1,7 +1,7 @@
 pkgbase = gsettings-desktop-schemas-oldstable
 	pkgdesc = Shared GSettings schemas for the desktop (oldstable version)
-	pkgver = 3.38.0
-	pkgrel = 2
+	pkgver = 40.0
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = any
 	license = GPL
@@ -12,11 +12,10 @@ pkgbase = gsettings-desktop-schemas-oldstable
 	depends = dconf
 	depends = cantarell-fonts
 	depends = adobe-source-code-pro-fonts
-	provides = gsettings-desktop-schemas=3.38.0
+	provides = gsettings-desktop-schemas=40.0
 	conflicts = gsettings-desktop-schemas
 	replaces = gsettings-desktop-schemas
-	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#commit=bbb4e9d70bea13416a6f7558fddc75c0bb60739a
+	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#commit=330c148978aa865851b0be3dd72f0817cbd94f31
 	sha256sums = SKIP
 
 pkgname = gsettings-desktop-schemas-oldstable
-
