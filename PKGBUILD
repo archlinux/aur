@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe Calà <gcala at mailbox dot org>
 
 pkgname=kdeltachat-git
-pkgver=r177.2936a85
+pkgver=r190.3c62d25
 pkgrel=1
 pkgdesc="KDeltaChat is a Delta Chat client using Kirigami framework"
 arch=(x86_64 aarch64)
