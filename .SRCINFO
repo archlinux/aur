@@ -1,0 +1,19 @@
+pkgbase = moe-nim
+	pkgdesc = A command line based editor inspired by vim. Written in Nim.
+	pkgver = 0.2.8.0
+	pkgrel = 1
+	url = https://editor.moe
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nim
+	makedepends = nimble
+	depends = glibc
+	optdepends = wl-clipboard: Clipboard support (Wayland)
+	optdepends = xsel: Clipboard support (x11)
+	optdepends = xclip: Clipboard support (x11)
+	conflicts = moe
+	source = moe-nim-0.2.8.0.tar.gz::https://github.com/fox0430/moe/archive/refs/tags/v0.2.8.0.tar.gz
+	sha256sums = 61343feb1fa451a3e7a505052c14bc33da5bbd6ab5cf6ae2b0289e70b5389b63
+
+pkgname = moe-nim
