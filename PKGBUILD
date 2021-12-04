@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=crosvm-git
-pkgver=r2268.e2a61d328
+pkgver=r2800.ff0337423
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/chromiumos/platform/crosvm"
@@ -27,7 +27,7 @@ prepare() {
   mv crosvm platform
   mv adhd third_party
   mv vhost third_party/rust-vmm
-  mv minijail aosp/external
+  mv minijail platform/crosvm/third_party/
 }
 
 pkgver() {
