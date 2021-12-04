@@ -2,7 +2,7 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'vim-zenbones' 'neovim-zenbones-extras')
-pkgver=0.21
+pkgver=1.0
 pkgrel=1
 pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
@@ -23,28 +23,27 @@ package_neovim-zenbones() {
 
 	cd "$pkgbase"
 	find autoload doc colors lua \
-		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+		-type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 package_vim-zenbones() {
 	depends=('vim')
 	provides=('vim-lightline-zenbones')
 	conflicts=('neovim-zenbones' 'vim-lightline-zenbones')
-	install=vim.install
 
 	cd "$pkgbase"
 	find autoload doc colors \
-		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+		-type f -exec install -Dm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 package_neovim-zenbones-extras() {
 	pkgdesc='Zenbones color templates for other programs'
 
 	cd "$pkgbase"
-	find extras -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/$pkgbase/{}" \;
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	find extras -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/$pkgbase/{}" \;
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

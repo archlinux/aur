@@ -1,3 +1,0 @@
-post_install() {
-	echo ':: You MUST set g:zenbones_compat to 1 for this plugin to work in vim'
-}

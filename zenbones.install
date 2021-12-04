@@ -1,3 +1,8 @@
 post_install() {
 	echo ':: If you choose not to install neovim-lush, you must set g:zenbones_compat to 1'
 }
+
+post_upgrade() {
+	echo ':: There may be breaking changes with this update.'
+	echo ':: Please check upstream documentation for more information.'
+}
