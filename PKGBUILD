@@ -8,12 +8,12 @@ pkgdesc='Practical extension of a small, expressive ORM'
 arch=('any')
 url="https://github.com/homeinfogmbh/${_pkgbase}"
 license=('GPLv3')
-depends=('python' 'python-configlib' 'python-peewee' 'python-lxml')
+depends=('python' 'python-configlib' 'python-peewee' 'python-setuptools' 'python-lxml')
 optdepends=(
     'python-argon2_cffi: for Argon2Field'
     'python-authlib: for authlib integration'
 )
-makedepends=('git' 'python' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
