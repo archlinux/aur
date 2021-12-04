@@ -1,7 +1,7 @@
 # Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 
 pkgname=specter-desktop
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Specter Desktop functions as a watch-only coordinator for multi-signature and single-key Bitcoin wallets."
 arch=('any')
@@ -15,9 +15,9 @@ source=("https://github.com/cryptoadvance/${pkgname}/archive/refs/tags/v${pkgver
         'specter.service'
 	'version.patch')
 
-sha256sums=('d16c3441d30b61a90d11c8089141549ecc74fa62ba7640f5151b0ce20d955b9a'
+sha256sums=('2ea805705e5808f75c51aae0a74c39c6a8d6e176ee1f66aa52b1b64aff1d0d46'
             '9b5f57a0ebd48e6b7d1ac240913e4b502a6e3ffc5b64ff87ed263f1a4810a265'
-	    'af0abc0f034d587256ae3d5c956a29707cb6c52a67796d5b992d02e59cc19dbc')
+	    '32c38d16cc00fba2ad3d5ac9df3b1742fd57b625f6b34f368e59affd9aa440d3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
