@@ -1,7 +1,7 @@
 pkgbase = ezshare
-	pkgdesc = Parse a torrent identifier (magnet uri, .torrent file, info hash)
+	pkgdesc = Easily share files, folders and clipboard over LAN - Like Google Drive but without internet
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mifi/ezshare
 	arch = any
 	license = MIT

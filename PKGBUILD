@@ -3,9 +3,9 @@
 _npmname=ezshare
 pkgname=$_npmname
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 
-pkgdesc="Parse a torrent identifier (magnet uri, .torrent file, info hash)"
+pkgdesc="Easily share files, folders and clipboard over LAN - Like Google Drive but without internet"
 arch=(any)
 url="https://github.com/mifi/ezshare"
 license=("MIT")
