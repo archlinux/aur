@@ -31,9 +31,9 @@ prepare() {
 
     cd "repo"
 
-    git fetch -f origin
+    git fetch -f --filter=tree:0 origin
     git sparse-checkout set "/package.json" "/CMakeLists.txt" "/src" "/LICENSES"
-    git checkout -f
+    git reset --hard origin
 
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
         patch -p0 -N -i "${srcdir}/hide-tray-icon.patch"
