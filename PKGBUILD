@@ -3,11 +3,11 @@
 # Contributor: Simon Kronberg <Simon.Kronberg at gmail dot com>
 
 pkgname=waterfox-classic-bin
-pkgver=2021.10
+pkgver=2021.11
 pkgrel=1
 pkgdesc="Customizable privacy-conscious web browser with primary support for legacy extensions"
 arch=('x86_64')
-url="https://www.waterfox.net"
+url="https://classic.waterfox.net"
 license=('MPL')
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme')
@@ -22,7 +22,7 @@ conflicts=('waterfox-classic' 'waterfox-classic-git')
 replaces=('waterfox-bin')
 
 source=('waterfox-classic.desktop'
-        'https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-'"${pkgver}"'.en-US.linux-'$arch'.tar.bz2')
+        'https://github.com/WaterfoxCo/Waterfox-Classic/releases/download/'"${pkgver}"'-classic/waterfox-classic-'"${pkgver}"'.en-US.linux-'"${arch}"'.tar.bz2')
 
 package() {
     # Create the directories.
@@ -71,4 +71,4 @@ END
 }
 
 sha256sums=('5504d06da38c87cf655f8109047ebfdd09baa8588e08a7ee93c0012e2c5a7ad3'
-            '19defb7a1b838761de5cac999c225d5e3143fadb74f1994c7aa612a854d74002')
+            'b849d75c55c549af046327d9305b076c76d57b7c37c98fb5035a363b20c517f7')
