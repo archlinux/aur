@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-oldstable
-pkgver=3.38.6
+pkgver=40.6
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell (oldstable version)"
@@ -14,18 +14,17 @@ provides=("gnome-shell=$pkgver")
 replaces=("gnome-shell")
 arch=(x86_64)
 license=(GPL)
-depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session
+depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gtk4
          gnome-settings-daemon-oldstable gnome-themes-extra gsettings-desktop-schemas-oldstable
          libcanberra-pulse libgdm libsecret mutter-oldstable nm-connection-editor unzip
          gstreamer libibus gnome-autoar gnome-disk-utility gst-plugin-pipewire)
-makedepends=(gtk-doc gnome-control-center evolution-data-server
+makedepends=(gtk-doc gnome-control-center-oldstable evolution-data-server
              gobject-introspection git meson sassc asciidoc bash-completion)
 checkdepends=(xorg-server-xvfb)
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome-oldstable)
-install=gnome-shell.install
-_commit=beb24d6b101708e978eda748187e351e35e3ce66  # tag/3.38.6
+_commit=eadfc757dba87223b17a8b3313f36f8b17abef54  # tags/40.6^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -50,16 +49,15 @@ build() {
 }
 
 check() (
-  # Check might fail without clean build env. Continue building in any case.
   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
   export XDG_RUNTIME_DIR
 
   dbus-run-session xvfb-run \
     -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
-  meson test -C build --print-errorlogs || true
+  meson test -C build --print-errorlogs
 )
 
 package() {
-  depends+=(libmutter-7.so)
-  DESTDIR="$pkgdir" meson install -C build
+  depends+=(libmutter-8.so)
+  meson install -C build --destdir "$pkgdir"
 }

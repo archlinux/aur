@@ -1,16 +1,15 @@
 pkgbase = gnome-shell-oldstable
 	pkgdesc = Next generation desktop shell (oldstable version)
-	pkgver = 3.38.6
+	pkgver = 40.6
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
-	install = gnome-shell.install
 	arch = x86_64
 	groups = gnome-oldstable
 	license = GPL
 	checkdepends = xorg-server-xvfb
 	makedepends = gtk-doc
-	makedepends = gnome-control-center
+	makedepends = gnome-control-center-oldstable
 	makedepends = evolution-data-server
 	makedepends = gobject-introspection
 	makedepends = git
@@ -24,6 +23,7 @@ pkgbase = gnome-shell-oldstable
 	depends = gnome-bluetooth
 	depends = upower
 	depends = gnome-session
+	depends = gtk4
 	depends = gnome-settings-daemon-oldstable
 	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas-oldstable
@@ -40,10 +40,10 @@ pkgbase = gnome-shell-oldstable
 	depends = gst-plugin-pipewire
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
-	provides = gnome-shell=3.38.6
+	provides = gnome-shell=40.6
 	conflicts = gnome-shell
 	replaces = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=beb24d6b101708e978eda748187e351e35e3ce66
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=eadfc757dba87223b17a8b3313f36f8b17abef54
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -55,6 +55,7 @@ pkgname = gnome-shell-oldstable
 	depends = gnome-bluetooth
 	depends = upower
 	depends = gnome-session
+	depends = gtk4
 	depends = gnome-settings-daemon-oldstable
 	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas-oldstable
@@ -69,4 +70,4 @@ pkgname = gnome-shell-oldstable
 	depends = gnome-autoar
 	depends = gnome-disk-utility
 	depends = gst-plugin-pipewire
-	depends = libmutter-7.so
+	depends = libmutter-8.so
