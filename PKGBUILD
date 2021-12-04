@@ -3,7 +3,7 @@ _release=alpha
 _target=aur
 
 pkgname=makedeb-alpha
-pkgver=8.4.3
+pkgver=8.4.4
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release} release)"
 arch=('any')
