@@ -1,4 +1,7 @@
 2021-12-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.0.10-1:
+    I've reverted the breaking change of refusing to run as root, as apparently a lot of Windows setups are configured like that, and I do not really expect from every second user to override it with a cmdline arg. ASF will still display a warning though (@JustArchi).
+    Fixed ASF silently ignoring invalid --path argument supplied, it'll now exit with an error if told to navigate to invalid directory (@JustArchi).
   * 5.2.0.9-1:
     [!] ASF V5.2 opens a new major milestone due to significant .NET 6.0 runtime upgrade. .NET runtime upgrade brings a lot of under-the-hood changes, compatibility enhancements, performance improvements, features and bugfixes (@JustArchi @Abrynos #2388).
     Breaking: renamed commands bl, ib and iq (with add and rm) to tb, fb and fq, accordingly. This further helps unifying the terms used across ASF (@JustArchi #2368).
