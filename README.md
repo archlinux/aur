@@ -9,6 +9,12 @@ See the project commit log for full version history and changes.
 
 [[_TOC_]]
 
+### Installation
+
+From the AUR: `paru -S linux-xanmod-rog linux-xanmod-rog-headers`
+
+Or clone the repo and `makepkg -Ccsri` to manually build and install
+
 ### Major changes vs `linux-xanmod-edge`
 
   * Xanmod-rog builds for the `x86-64-v3` μarch target by default, this boosts kernel performance by ~10-15%
