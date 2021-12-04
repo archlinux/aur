@@ -1,11 +1,12 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname="whitesur-cursor-theme-git"
 _gitname=WhiteSur-cursors
-pkgver=r3.1ada17d
-pkgrel=1
+pkgver=r6.2cb7219
+pkgrel=2
 pkgdesc="WhiteSur cursors theme for linux desktops"
 arch=("any")
 makedepends=('git')
+provides=('whitesur-cursor-theme')
 url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
 source=("git+${url}.git")
