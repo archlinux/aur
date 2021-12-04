@@ -1,0 +1,33 @@
+diff --git a/master/buildbot/test/unit/www/test_ws.py b/master/buildbot/test/unit/www/test_ws.py
+index 43dfce5a7..21f4b3b5c 100644
+--- a/master/buildbot/test/unit/www/test_ws.py
++++ b/master/buildbot/test/unit/www/test_ws.py
+@@ -92,7 +92,7 @@ class WsResource(TestReactorMixin, www.WwwTestMixin, unittest.TestCase):
+             {
+                 "_id": 1,
+                 "code": 400,
+-                "error": "Invalid method argument 'cmd_ping() got an unexpected keyword "
++                "error": "Invalid method argument 'WsProtocol.cmd_ping() got an unexpected keyword "
+                 "argument 'foo''",
+             },
+         )
+@@ -106,7 +106,7 @@ class WsResource(TestReactorMixin, www.WwwTestMixin, unittest.TestCase):
+             self.proto.sendMessage,
+             {
+                 "id": None,
+-                "message": "Invalid method argument 'graphql_cmd_connection_init() got an "
++                "message": "Invalid method argument 'WsProtocol.graphql_cmd_connection_init() got an "
+                 "unexpected keyword argument 'foo''",
+                 "type": "error",
+             },
+diff --git a/master/buildbot/test/__init__.py b/master/buildbot/test/__init__.py
+index 8c8f53823..0f176028a 100644
+--- a/master/buildbot/test/__init__.py
++++ b/master/buildbot/test/__init__.py
+@@ -128,3 +128,6 @@ warnings.filterwarnings('ignore', ".*Not importing directory .*/sphinxcontrib: m
+ # https://github.com/pypa/setuptools/issues/2086
+ warnings.filterwarnings('ignore', ".*lib2to3 package is deprecated",
+                         category=PendingDeprecationWarning)
++
++warnings.filterwarnings('ignore', r".*currentThread\(\) is deprecated, use current_thread\(\) instead.*",
++                        category=DeprecationWarning)

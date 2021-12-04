@@ -28,11 +28,13 @@ makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
+        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
+        "python310.diff")
 sha256sums=('da729c7f4dc2e30f5a5d69e34dd629b0b3d97001b12d72aeb691bb2f0ef0efeb'
             'SKIP'
             'SKIP'
-            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
+            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
+            '7ca79a209e5f77dff01bef526d92a0ac08cf65a6ab22f32d03575c97a5b49ebd')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -56,6 +58,11 @@ prepare() {
   # namcap-git complain
   rm -v master/buildbot/scripts/windows_service.py
   rm -v worker/buildbot_worker/scripts/windows_service.py
+
+  # Fixes for Python 3.10 breakages:
+  # https://github.com/python/cpython/pull/20236
+  # https://twistedmatrix.com/trac/ticket/10273
+  patch -Np1 -i ../python310.diff
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
