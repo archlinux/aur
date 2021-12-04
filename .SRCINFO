@@ -1,15 +1,13 @@
 pkgbase = webtorrent-bittorrent-tracker
 	pkgdesc = Simple, robust, BitTorrent tracker (client & server) implementation
 	pkgver = 9.18.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/webtorrent/bittorrent-tracker
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	provides = bittorrent-tracker
-	conflicts = bittorrent-tracker
 	noextract = bittorrent-tracker-9.18.3.tgz
 	options = strip
 	options = emptydirs

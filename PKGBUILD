@@ -3,7 +3,7 @@
 _npmname=bittorrent-tracker
 pkgname=webtorrent-$_npmname
 pkgver=9.18.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Simple, robust, BitTorrent tracker (client & server) implementation"
 arch=(any)
@@ -12,8 +12,8 @@ license=("MIT")
 
 depends=("nodejs")
 makedepends=("npm" "jq")
-provides=("$_npmname")
-conflicts=("$_npmname")
+# provides=("$_npmname")
+# conflicts=("$_npmname")
 options=(strip emptydirs zipman)
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
