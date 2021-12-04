@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!test_server.js
+
