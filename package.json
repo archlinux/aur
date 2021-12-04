@@ -1,0 +1,15 @@
+{
+  "name": "aigepu",
+  "version": "1.0.0",
+  "description": "aigepu",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "author": "wuxiaotian",
+  "license": "ISC"
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=aigepu
+Name[zh_CN]=爱歌谱
+Comment=Jianpu editor software
+Comment[zh_CN]=简谱制谱软件
+Exec=aigepu
+Icon=aigepu
+Type=Application
+Categories=Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;
