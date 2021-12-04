@@ -2,13 +2,13 @@
 
 pkgname=tidal-hifi-git
 pkgrel=1
-pkgver=2.4.0.r0.g5ef6074
+pkgver=2.5.0.r0.g662ef6a
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
 depends=(libxss nss gtk3)
-makedepends=(npm git)
+makedepends=(git)
 provides=(tidal-hifi)
 conflicts=(tidal-hifi)
 
@@ -17,13 +17,35 @@ source=("git+https://github.com/Mastermindzh/tidal-hifi.git"
 sha512sums=('SKIP'
             '31cf40fb3ac81c4a64a8410a78e97c268a440577bce54347ce62f8a9566c8897f8083cd1e5afa40b0fbe9a149fc4fb4f29cad91a12e5b47cf8e300e56351a4f1')
 
+getnvm() {
+    if command -v nvm 
+    then
+        echo "nvm command found, using system version.."
+    else
+        echo "nvm could not be found, installing"
+        unset npm_config_prefix
+        git clone https://aur.archlinux.org/nvm.git .nvmdep
+        cd .nvmdep
+        makepkg -si --asdeps
+        source /usr/share/nvm/init-nvm.sh
+        cd ../
+        rm -rf .nvmdep
+    fi
+}
+
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
+    getnvm
+
     cd "${srcdir}/${pkgname%-git}"
+
+    # use correct nodejs/npm versions
+    nvm install lts/gallium
+    nvm use lts/gallium
 
     # install build dependencies
     npm install
