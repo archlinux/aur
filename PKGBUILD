@@ -33,9 +33,9 @@ package() {
 
     export GIT_WORK_TREE=$(install -dm755 "${pkgdir}/usr/share/icons" && echo "$_")
     git sparse-checkout set "/Papirus" "/Papirus-Dark"
-    git checkout
+    git checkout -f
 
     export GIT_WORK_TREE=$(install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && echo "$_")
     git sparse-checkout set "/LICENSE"
-    git checkout
+    git checkout -f
 }
