@@ -1,12 +1,12 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=r6327.95318200
+pkgver=r6473.71cca642
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('i686' 'x86_64')
 url='https://86box.net/'
 license=('GPL2')
-depends=('freetype2' 'sdl2' 'libpng' 'openal' 'alsa-lib')
+depends=('freetype2' 'sdl2' 'libpng' 'openal' 'alsa-lib' 'rtmidi')
 makedepends=('git' 'cmake>=3.15')
 optdepends=('86box-roms-git: ROM files')
 source=("${pkgname}::git+https://github.com/86Box/86Box.git" '86Box.desktop')
