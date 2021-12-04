@@ -3,7 +3,7 @@ _release=stable
 _target=aur
 
 pkgname=makedeb
-pkgver=8.4.2
+pkgver=8.4.6
 pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release} release)"
 arch=('any')
@@ -25,5 +25,5 @@ prepare() {
 
 package() {
 	cd makedeb/
-	make package DESTDIR="${pkgdir}"
+	make package DESTDIR="${pkgdir}" TARGET="${_target}"
 }
