@@ -1,0 +1,19 @@
+pkgbase = usbguard-notifier-git
+	pkgdesc = A tool for detecting usbguard policy and device presence changes
+	pkgver = 0.0.6_6_gaf64a92
+	pkgrel = 1
+	url = https://github.com/Cropi/usbguard-notifier
+	arch = x86_64
+	license = GPL2
+	makedepends = catch2
+	makedepends = asciidoc
+	makedepends = git
+	depends = usbguard
+	depends = libnotify
+	depends = librsvg
+	provides = usbguard-notifier
+	conflicts = usbguard-notifier
+	source = git+https://github.com/Cropi/usbguard-notifier
+	sha256sums = SKIP
+
+pkgname = usbguard-notifier-git
