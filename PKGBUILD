@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/homeinfogmbh/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'python-setuptools')
-makedepends=('git' 'python' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
