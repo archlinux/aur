@@ -1,14 +1,13 @@
 pkgbase = devmode-git
 	pkgdesc = Devmode is a code management utility for developers.
 	pkgver = 1e1be59
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/edfloreshz/devmode
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cargo
 	makedepends = git
-	makedepends = python-sphinx
 	provides = devmode
 	conflicts = devmode
 	source = devmode::git+https://github.com/edfloreshz/devmode
