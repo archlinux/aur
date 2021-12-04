@@ -1,4 +1,4 @@
-From 023ea3c6cf9be0da6080c0f9f475b58a1c213066 Mon Sep 17 00:00:00 2001
+From 9ca162d2fce0afffe7a98613e2305148ec8bf5c2 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 28 Nov 2021 16:48:29 +0100
 Subject: [PATCH] warnings: fix format-security warnings
@@ -8,13 +8,13 @@ Subject: [PATCH] warnings: fix format-security warnings
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/source/views/view_strings.cpp b/source/views/view_strings.cpp
-index f28ec78..6fcfa24 100644
+index 195d84d..ef39b26 100644
 --- a/source/views/view_strings.cpp
 +++ b/source/views/view_strings.cpp
-@@ -127,7 +127,7 @@ namespace hex {
+@@ -128,7 +128,7 @@ namespace hex {
                          return 0;
                      }, this);
-                     if(this->m_regex && !this->m_pattern_parsed){
+                     if (this->m_regex && !this->m_pattern_parsed) {
 -                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "hex.view.strings.regex_error"_lang);
 +                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "%s", "hex.view.strings.regex_error"_lang);
                      }
