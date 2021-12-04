@@ -1,7 +1,7 @@
 pkgbase = sctd
 	pkgdesc = A daemon to change the display color temperature based on time of day
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/amir/sctd
 	arch = x86_64
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = sctd
 	sha512sums = 229ff4ab97ee1dadff1e245295291f7fbb8375570419e56c979429bf7d80a0de543ca6e7a01637fd5a76b06e2674dba2721570834701405ccae8286671bf0b39
 
 pkgname = sctd
-
