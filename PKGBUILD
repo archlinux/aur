@@ -2,14 +2,14 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=1.2.0.r0.g9f90efe33
+pkgver=1.2.2.r114.g08b4e26a0
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('x86_64' 'aarch64')
 url="http://crystal-lang.org"
 license=('Apache')
 depends=('gc' 'pcre' 'libevent')
-makedepends=('git' 'libxml2' 'llvm10' 'crystal')
+makedepends=('git' 'libxml2' 'llvm' 'crystal')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git' 'inetutils')
 optdepends=('shards: To make the crystal deps command work'
             'libyaml: For YAML support'
