@@ -10,7 +10,7 @@ license=("None")
 depends=('electron12' 'aria2')
 optdepends=('mpv: media preview support')
 source=(
-        "https://store.deepinos.org.cn//store/network/liupan1890.github.aliyunpan/liupan1890.github.aliyunpan_${pkgver}_all.deb"
+        "https://d.store.deepinos.org.cn//store/network/liupan1890.github.aliyunpan/liupan1890.github.aliyunpan_${pkgver}_all.deb"
 #       "https://github.com/liupan1890/aliyunpan/releases/download/v${pkgver}/Linux.v${pkgver}.zip"
         'aliyunpan-liupan1890.svg'
         'aliyunpan-liupan1890.desktop')
