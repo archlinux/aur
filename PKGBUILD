@@ -3,7 +3,7 @@
 pkgname=forkboard
 _pkgname_src=fork-board
 pkgver=1.0.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc='An ElectronJS Dashboard App to show wallets balances from Chia and Forks in one convenient location.'
 arch=('x86_64')
 url='https://github.com/aaroncarpenter/fork-board'
@@ -19,12 +19,12 @@ build() {
 	cd ${_pkgname_src}-${pkgver}
 	yarn add electron-packager
 	yarn install
-	node_modules/.bin/electron-packager . ${pkgname} --linux --amd64  --out dist/ --overwrite
+	node_modules/.bin/electron-packager . ${pkgname} --overwrite --linux --x64 --icon=assets/icons/fork-board-gray.png --prune=true --out=./out --ignore=^/assets/config
 }
 package() {
 	cd ${_pkgname_src}-${pkgver}
 	mkdir -p "${pkgdir}/opt/${pkgname}"
-	cp -r dist/${pkgname}-linux-x64/* "${pkgdir}/opt/${pkgname}"
+	cp -r out/${pkgname}-linux-x64/* "${pkgdir}/opt/${pkgname}"
 	mkdir -p "${pkgdir}/opt/${pkgname}"/resources/app/assets/config
         chmod a+rw -R "${pkgdir}/opt/${pkgname}"/resources/app/assets/config
 	chmod  a+rx "${pkgdir}/opt/${pkgname}"/${pkgname}
