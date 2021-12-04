@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=tidal-hifi
+Name=Tidal Hifi
 GenericName=tidal-hifi
 Comment=The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
 Exec=tidal-hifi %u

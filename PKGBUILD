@@ -1,18 +1,18 @@
-# Maintainer: Rick van Lieshout <info@rickvanlieshout.com>
+# Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=tidal-hifi
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
 depends=(libxss nss gtk3)
-makedepends=(npm)
+makedepends=(nodejs-lts-gallium npm)
 source=("${pkgname}-${pkgver}.zip::https://github.com/Mastermindzh/tidal-hifi/archive/${pkgver}.zip"
         "tidal-hifi.desktop")
-md5sums=('SKIP'
-        'SKIP')
+md5sums=('a40f46926fc1e787b6dce836402a1c76'
+        '9485931968b0de7c1b05ad52a2f5b421')
 
 prepare() {
     cd "tidal-hifi-${pkgver}"
@@ -38,6 +38,6 @@ package() {
 
     ln -s "/opt/tidal-hifi/tidal-hifi" "${pkgdir}/usr/bin/tidal-hifi"
 
-    install -Dm644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 build/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/tidal-hifi.desktop" -t "${pkgdir}/usr/share/applications"
 }
