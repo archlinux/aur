@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -12,7 +12,7 @@ makedepends=(npm)
 source=("${pkgname}-${pkgver}.zip::https://github.com/Mastermindzh/tidal-hifi/archive/${pkgver}.zip"
         "tidal-hifi.desktop")
 md5sums=('SKIP'
-        '9485931968b0de7c1b05ad52a2f5b421')
+        'SKIP')
 
 prepare() {
     cd "tidal-hifi-${pkgver}"
