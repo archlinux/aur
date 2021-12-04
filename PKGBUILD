@@ -2,7 +2,7 @@
 
 pkgname=funkwhale
 pkgver=1.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -82,10 +82,10 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "apache-funkwhale.conf"
         "env-template"
 )
-sha256sums=('82fb761ec4d98c732771011b3053f52237b85d575debf08f7184eede5fb0e37b'
-            '4e7461510a7bbfefa78c514f35597ea7b95836cc4407ea0421463d7798c8a7cd'
+sha256sums=('c3ea7013ffcbeb4e2832cc596cdccb2e2034b4250a25130aa4dc0d648fe03463'
+            '83e11273159dd617d16483168300768583b14ffb93cbceec5c4dccdfe2d3fb44'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
-            'f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa'
+            'db334d0ac62bc5cbf9b70ee5350ae0364e19253e51fa17c337487778f02d96af'
             '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349'
             '812c9a49436725e18768c5eb772c7207c184cdcf3a057432dc998387c481bd8d'
             '9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470'
