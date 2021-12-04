@@ -1,13 +1,13 @@
 # Maintainer: Giuseppe Calà <gcala at mailbox dot org>
 
 pkgname=audiotube-git
-pkgver=v0.1.r79.g068a5b7
+pkgver=21.08.r23.ge8e6a5f
 pkgrel=1
 pkgdesc="Client for YouTube Music"
 arch=(x86_64 aarch64)
-url="https://invent.kde.org/jbbgameich/audiotube"
+url="https://invent.kde.org/plasma-mobile/audiotube"
 license=(GPL3)
-depends=('ki18n' 'kirigami2' 'python-ytmusicapi' 'youtube-dl' 'gst-plugins-good' 'qt5-imageformats' 'kcrash')
+depends=('ki18n' 'kirigami2' 'python-ytmusicapi' 'yt-dlp' 'gst-plugins-good' 'qt5-imageformats' 'kcrash')
 makedepends=('fakeroot' 'binutils' 'git' 'extra-cmake-modules' 'pybind11' 'qt5-svg')
 provides=('audiotube')
 conflicts=('audiotube')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
