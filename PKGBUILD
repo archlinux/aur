@@ -3,19 +3,19 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gnome-tweaks-oldstable
-pkgver=3.34.1
-pkgrel=2
+pkgver=40.0
+pkgrel=1
 pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool) (oldstable version)"
 url="https://wiki.gnome.org/Apps/Tweaks"
 arch=(any)
 license=(GPL)
-depends=(gnome-settings-daemon-oldstable python-gobject libhandy0)
+depends=(gnome-settings-daemon-oldstable python-gobject libhandy)
 makedepends=(git meson)
 groups=(gnome-oldstable)
 conflicts=("gnome-tweaks" "gnome-tweak-tool")
 provides=("gnome-tweaks=$pkgver" "gnome-tweak-tool=$pkgver")
 replaces=("gnome-tweaks" "gnome-tweak-tool")
-_commit=6e8fedad09c48fe942156ebcf3a88dc3c9698e54  # tags/3.34.1^0
+_commit=7a16849f498c8a57d525eb9184a8b0163e2ddcbb  # tags/40.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-tweaks.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -34,6 +34,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+   meson install -C build --destdir "$pkgdir"
 }
 
