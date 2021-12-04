@@ -2,15 +2,15 @@
 # Contributor: Cong Gu <gucong43216@gmail.com>
 pkgname=zoltan
 pkgver=3.90
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel Partitioning, Load Balancing and Data-Management Services"
 arch=('x86_64')
-url="https://cs.sandia.gov/Zoltan"
-license=('LGPL')
-depends=('scotch' 'parmetis' 'openmpi')
-source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/sandialabs/${pkgname}/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('30a470af4d97cf03aa5434eb0a095f627a3a8096ecdb17f4f6b9ce58e832d28b')
-b2sums=('28a08120afefba4ebd498b60a4de884347c52a37559e85af3387ba5e37c791d8b705f94d26775d96c5ae04f3a102d64419d87fdf160389270bfc59a3f71b5ed4')
+url="https://github.com/sandialabs/${pkgname}"
+license=(LGPL)
+depends=(scotch parmetis openmpi)
+conflicts=('trilinos')
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('29dc42c81db36129b0a97836c9192ef7e7fc86231f2f8224a68a36642042a0d8272e791a10a5907d2e07cac691cf5fc2e7199f92a0a441d4c165eae5c7b692cf')
 
 prepare() {
   rm -rf "${srcdir}/build"
@@ -49,5 +49,3 @@ package() {
 
   install -Dm644 ${srcdir}/Zoltan-${pkgver}/COPYRIGHT_AND_LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
