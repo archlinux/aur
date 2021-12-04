@@ -1,0 +1,17 @@
+pkgbase = oh-my-dde-bin
+	pkgdesc = A customization tool for deepin desktop environmen.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://gitee.com/Limexb/oh-my-dde
+	arch = x86_64
+	license = unknown
+	makedepends = bzip2
+	depends = xautomation
+	depends = xclip
+	depends = gsettings-desktop-schemas
+	depends = dtkwidget
+	provides = oh-my-dde
+	source = https://gitee.com/Limexb/oh-my-dde/attach_files/845257/download/top.yzzi.youjian_1.0.3_amd64.deb
+	sha256sums = 5746784feb5bfd281119940a69b6e8a13a0157301d529b38af40a0a67fb1fcb2
+
+pkgname = oh-my-dde-bin
