@@ -2,13 +2,14 @@
 
 _pkgname=ssh-rdp
 pkgname=${_pkgname}-git
-pkgver=r100.fd0db21
+pkgver=r102.7a48766
 pkgrel=1
 pkgdesc="Real display ssh based remote desktop. No relation to Microsoft's remote desktop protocol."
 arch=('any')
 url='https://github.com/kokoko3k/ssh-rdp'
 license=('LGPL3')
 depends=('bash' 'ffmpeg' 'openssh' 'netevent-git' 'inotify-tools' 'wmctrl' 'mpv' 'util-linux')
+makedepends=('git')
 optdepends=('ssh-rdp-host-git: udev rules and dependencies for the host')
 provides=('ssh-rdp')
 conflicts=('ssh-rdp')
