@@ -1,5 +1,5 @@
 # Set this flag to 1 if you want to hide Bismuth tray icon.
-HIDE_TRAY_ICON=0
+HIDE_TRAY_ICON=1
 
 pkgname=kwin-bismuth-git
 pkgver=2.1.0.r27.g84a0ac5
@@ -19,7 +19,7 @@ sha512sums=('333a495c907652bfc583a6f365acac70077fb622817a390853524f2ec21debad008
 
 pkgver() {
     cd "${srcdir}/repo"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -31,9 +31,9 @@ prepare() {
 
     cd "repo"
 
-    git pull
+    git fetch -f origin
     git sparse-checkout set "/package.json" "/CMakeLists.txt" "/src" "/LICENSES"
-    git checkout -f "master"
+    git checkout -f
 
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
         patch -p0 -N -i "${srcdir}/hide-tray-icon.patch"
