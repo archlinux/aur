@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
-pkgver=41.1
+pkgver=41.2
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -26,7 +26,7 @@ optdepends=('system-config-printer: Printer settings'
             )
 provides=("$_pkgname" 'firmware-manager-virtual')
 conflicts=("$_pkgname")
-_commit=eb053617651d251d29128525eb18592a2283d0cf  # tags/41.1^0
+_commit=babeb0ce357d55406b0ba0a4597e0513a0419de8  # tags/41.2^0
 _pop_commit=b0ac308c24521fbd8e82f74b479a99e68167d109 # 1:40.0-1ubuntu5pop0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
