@@ -2,7 +2,7 @@
 
 _pkgbase='peeweeplus'
 pkgname="python-${_pkgbase}"
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='Practical extension of a small, expressive ORM'
 arch=('any')
