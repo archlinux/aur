@@ -1,10 +1,11 @@
 pkgbase = ssh-rdp-host-git
 	pkgdesc = Udev rules and dependencies for an ssh-rdp host
-	pkgver = r100.fd0db21
+	pkgver = r102.7a48766
 	pkgrel = 1
 	url = https://github.com/kokoko3k/ssh-rdp
 	arch = any
 	license = LGPL3
+	makedepends = git
 	depends = bash
 	depends = ffmpeg
 	depends = openssh

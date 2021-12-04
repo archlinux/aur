@@ -2,13 +2,14 @@
 
 _pkgname=ssh-rdp
 pkgname=${_pkgname}-host-git
-pkgver=r100.fd0db21
+pkgver=r102.7a48766
 pkgrel=1
 pkgdesc='Udev rules and dependencies for an ssh-rdp host'
 arch=('any')
 url='https://github.com/kokoko3k/ssh-rdp'
 license=('LGPL3')
 depends=('bash' 'ffmpeg' 'openssh' 'netevent-git' 'xorg-xdpyinfo' 'pulseaudio')
+makedepends=('git')
 optdepends=('ssh-rdp-git: bash script used on clients to connect')
 provides=('ssh-rdp-host')
 conflicts=('ssh-rdp-host')
