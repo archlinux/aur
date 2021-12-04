@@ -1,7 +1,7 @@
 From f17b183cbc296edc7d5f3611053e47229a7cb4e2 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Tue, 13 Jul 2021 20:18:29 +0200
-Subject: [PATCH] Use ld as Library_Partial_Linker
+Subject: [PATCH 1/2] Use ld as Library_Partial_Linker
 
 Arch's GCC is built with --enable-default-pie, so if it's used as a linker
 frontend, it passes -pie to ld internally. Because -pie is incompatible
@@ -35,5 +35,5 @@ index e14f4fb..6f85636 100644
    </configuration>
  
 -- 
-2.32.0
+2.34.1
 

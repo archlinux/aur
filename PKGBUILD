@@ -7,7 +7,7 @@ pkgbase=gprbuild
 pkgname=(libgpr gprbuild)
 epoch=1
 pkgver=21.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
@@ -20,17 +20,20 @@ source=(
     'relocatable-build.patch'
     'always-use-host-gprinstall.patch'
     '0001-Use-ld-as-Library_Partial_Linker.patch'
+    '0002-compilers.xml-use-gcc-version-to-get-version-number-.patch'
 )
 sha256sums=('54b7d1a3298160109aaee4d8c263c1ab3ab4abae75d354f3e90a4c51639167a2'
             '2aec26afad5bb1a4685d9c041c9c797ff5beda211a5e81f2a97452d2ceabc557'
             'd6479e03e6b6cfb09c133d94e3c47ea5d5e5e756b95554ab3106a679c3d57de4'
             '3fe0fd1df3156c9a8488d98ee6e7e822ae904ce410838661c8fc14c29abe2620'
-            '1749c8cdecf42bec9103fd9d1b7f79556eeb37de5a51c115eda8368dba3cc7c0')
+            'b1a38e166f54d7b8e85f7351341109200c5712f7bfa79a9233adf8a24e036a3a'
+            '9aa8cd9e522fb8a39b2512698885016db1b7286d8fe87d35bdc92e1bc10b20b7')
 
 prepare() {
     cd "$srcdir/gprconfig_kb-$pkgver"
 
     patch -Np1 -i "$srcdir/0001-Use-ld-as-Library_Partial_Linker.patch"
+    patch -Np1 -i "$srcdir/0002-compilers.xml-use-gcc-version-to-get-version-number-.patch"
 
     cd "$srcdir/$pkgbase-$pkgver"
 
