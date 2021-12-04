@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
