@@ -1,0 +1,18 @@
+pkgbase = ezshare
+	pkgdesc = Parse a torrent identifier (magnet uri, .torrent file, info hash)
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/mifi/ezshare
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = ezshare-1.9.0.tgz
+	options = strip
+	options = emptydirs
+	options = zipman
+	source = https://registry.npmjs.org/ezshare/-/ezshare-1.9.0.tgz
+	b2sums = a46df8031c223da4158bb0b88003675c87644ccddd0e1725b8e8455da99dab607b1d8c4ddc3cc56efc667d66a9822734bc6c50f3ff5e5fc5d34749fe53a5c6ab
+
+pkgname = ezshare
