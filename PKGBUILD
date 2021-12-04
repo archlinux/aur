@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -12,7 +12,7 @@ makedepends=(npm)
 source=("${pkgname}-${pkgver}.zip::https://github.com/Mastermindzh/tidal-hifi/archive/${pkgver}.zip"
         "tidal-hifi.desktop")
 sha512sums=('de91b8d8c71af56c3d8d15f4ddcd32ff62f5b85ded730354774e4835d983264f40dd7eb291365effa45c39ddd945b34d010f64a62f985db6edb299af0452a161'
-            'e47dc754a23dbf6f9837275a93cf5868b23abca84b789393d77da855068eb6f63a1d702b4688c315ad3f7c5c09deab5d172566a377807bc56f54dc8a31431495')
+            '7661a54e8ba5555be733d6bf1bf1398e7ddc322a51dc101104b11bd0a6245d2ca32729972a99d2c0c6049eff70dfc510b01f9726f390efb299cb92ec1e5fa95a')
 
 prepare() {
     cd "tidal-hifi-${pkgver}"
@@ -31,19 +31,13 @@ build() {
 package() {
     cd "tidal-hifi-${pkgver}"
 
-    install -d "${pkgdir}/opt/tidal-hifi/" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/doc" "${pkgdir}/usr/share/licenses"
+    install -d "${pkgdir}/opt/tidal-hifi/" "${pkgdir}/usr/bin"
 
     cp -r dist/linux-unpacked/* "${pkgdir}/opt/tidal-hifi/"
     chmod +x "${pkgdir}/opt/tidal-hifi/tidal-hifi"
 
     ln -s "/opt/tidal-hifi/tidal-hifi" "${pkgdir}/usr/bin/tidal-hifi"
 
-    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
-    install -Dm 644 "${srcdir}/tidal-hifi.desktop" "${pkgdir}/usr/share/applications/tidal-hifi.desktop"
-
-    install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -dm755 "icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
-    ln -s "/opt/tidal-hifi/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
-    ln -s "/opt/tidal-hifi/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+    install -Dm644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/tidal-hifi.desktop" -t "${pkgdir}/usr/share/applications"
 }
