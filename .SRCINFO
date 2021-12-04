@@ -1,6 +1,6 @@
 pkgbase = spot
 	pkgdesc = A C++17 library for LTL, omega automata manipulation and model checking.
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://spot.lrde.epita.fr/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = spot
 	depends = sh
 	depends = python
 	depends = libtool
-	source = http://www.lrde.epita.fr/dload/spot/spot-2.10.1.tar.gz
-	sha256sums = 38002989fc8e3725841a0537665bb2d5dfc259d2e09358100322c38f4c7481ad
+	source = http://www.lrde.epita.fr/dload/spot/spot-2.10.2.tar.gz
+	sha256sums = c1c4ba4f1c87919b3d2749280c7e9959a7d82a4a43a97a19eca0a3ca22605066
 
 pkgname = spot
