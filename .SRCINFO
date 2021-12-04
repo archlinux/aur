@@ -1,6 +1,6 @@
 pkgbase = subnetcalc
 	pkgdesc = Subnet Calculator for IPv4/IPv6
-	pkgver = 2.4.16
+	pkgver = 2.4.19
 	pkgrel = 1
 	url = https://www.uni-due.de/~be0001/subnetcalc/
 	arch = i686
@@ -8,9 +8,8 @@ pkgbase = subnetcalc
 	license = GPL
 	makedepends = cmake
 	depends = geoip
-	source = https://www.uni-due.de/~be0001/subnetcalc/download/subnetcalc-2.4.16.tar.xz
-	md5sums = e8afbb2b212bbed5644f1298a123c9ea
-	sha512sums = 5adbd45963885d6f344dffb6f6c7922e576e4341c5db4c299fca8f1227188aaf2d485dbee947af38c7223dddc95898b6433a67558cc2c8474285630e9036098a
+	source = https://www.uni-due.de/~be0001/subnetcalc/download/subnetcalc-2.4.19.tar.xz
+	md5sums = 31382eabe15d768691b75b33d282062f
+	sha512sums = 00283e8c7f4fbf5bc58d425e98d73e118469d58a88016d6fd17bcdaa73337182f166249ef1778408411b29d0bcde706d618985fa7f7b4df1424d175c689e49cb
 
 pkgname = subnetcalc
-
