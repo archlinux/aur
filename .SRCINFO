@@ -1,7 +1,7 @@
 pkgbase = kwin-bismuth
 	pkgdesc = Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers.
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/Bismuth-Forge/bismuth
 	arch = x86_64
 	license = MIT
@@ -15,13 +15,11 @@ pkgbase = kwin-bismuth
 	makedepends = kcmutils
 	makedepends = kdeclarative
 	depends = systemsettings
-	noextract = bismuth-2.1.0.tar.gz
+	noextract = bismuth-2.2.0.tar.gz
 	options = !emptydirs
-	source = bismuth-2.1.0.tar.gz::https://github.com/Bismuth-Forge/bismuth/archive/refs/tags/v2.1.0.tar.gz
+	source = bismuth-2.2.0.tar.gz::https://github.com/Bismuth-Forge/bismuth/archive/refs/tags/v2.2.0.tar.gz
 	source = hide-tray-icon.patch
-	source = script-cmake.patch
-	sha512sums = 9e689646eeb5a879e080faeca0a6df7f5699d6ef312a5b39bd9607628f4d11d1b06a8893b9a8db32ae239d6174770c8356a3cb019bfd481b0a464e74f094ed10
+	sha512sums = 674718945cece600b33895eceb358972b4f3b41f0fbe1ea29199738579b5a2b50c34e0c67a8ec9d67b0ef2ce2bf8e7db946c98db1820c9e698a85ac6610c84fa
 	sha512sums = 333a495c907652bfc583a6f365acac70077fb622817a390853524f2ec21debad00841b29b3ffd88271077287182814790496b4961c90412d71eae6d1a9d6e919
-	sha512sums = b1beed3c17d9b66c2cb887dd475177534d7519389a120cf2718f295daa78634a6459e28580d6a63f2519b3861391ad8e03615040af00bd2151db2cd08d194f32
 
 pkgname = kwin-bismuth
