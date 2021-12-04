@@ -3,7 +3,7 @@
 
 pkgname=stressberry
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Stress tests and temperature plots for the Raspberry Pi'
 arch=(any)
 url='https://github.com/nschloe/stressberry'
@@ -11,9 +11,9 @@ license=(GPL3)
 depends=(python-matplotlib python-yaml python-matplotx stress)
 makedepends=(python-pytest python-setuptools python-build python-install python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/$pkgname/archive/v$pkgver.tar.gz"
-0001-convert-to-matplotx-from-dufte.patch::https://github.com/graysky2/stressberry/commit/0cbb7ce73200503843a9338a8e7662b1887bce1b.patch)
+0001-convert-to-matplotx-from-dufte.patch::https://github.com/graysky2/stressberry/commit/55501513eaa2497c955daaa2179ca5c2e48eaa6b.patch)
 b2sums=('3ebdcc0f0a951b9a0c8a5a35d96cda2edc535b58f08abeb3eefb281a7bb6c582e66e9eb601acce6c79ad92320c0b97ef481d2e76ffa97ae7e7033a5a7e9c38a3'
-        '6878c9a086beba28c50c1892dd7363d9bf70a1a3781874c043c28a5269f06a18081df0c1a4d0cf31c05e204c181d761814e12739a1c3ab7295d5e00652b6442f')
+        '6498fa0c57241ec9c228ecbbd25f4df6fe39b60fcbded91f90e85ee16c98cf64b0cb97e9a962bd1bea65d81d85c534eca6af5c456ee77883fcc793d83d13a876')
 
 prepare() {
   cd $pkgname-$pkgver
