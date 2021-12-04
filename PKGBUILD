@@ -3,7 +3,7 @@
 
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
-pkgver=0.13.0
+pkgver=0.14.1
 pkgrel=1
 epoch=4
 pkgdesc="A Modern Library for 3D Data Processing"
@@ -11,12 +11,13 @@ arch=('x86_64')
 url="http://www.open3d.org"
 license=('MIT')
 depends=(
+    libc++abi
+    libc++
     eigen
     flann
     fmt
     glew
     glfw-x11
-    gtest
     jsoncpp
     libjpeg-turbo
     liblzf
@@ -55,7 +56,6 @@ function build() {
           -DUSE_SYSTEM_FMT=ON \
           -DUSE_SYSTEM_GLEW=ON \
           -DUSE_SYSTEM_GLFW=ON \
-          -DUSE_SYSTEM_GOOGLETEST=ON \
           -DUSE_SYSTEM_JPEG=ON \
           -DUSE_SYSTEM_LIBLZF=ON \
           -DUSE_SYSTEM_PNG=ON \
@@ -65,12 +65,13 @@ function build() {
 
 function package_open3d() {
     depends=(
+        libc++abi
+        libc++
         eigen
         flann
         fmt
         glew
         glfw-x11
-        gtest
         jsoncpp
         libjpeg-turbo
         liblzf
@@ -92,12 +93,13 @@ function package_open3d() {
 
 function package_python-open3d() {
     depends=(
+        libc++abi
+        libc++
         eigen
         flann
         fmt
         glew
         glfw-x11
-        gtest
         jsoncpp
         libjpeg-turbo
         liblzf
@@ -127,12 +129,13 @@ function package_python-open3d() {
 
 function package_python-py3d() {
     depends=(
+        libc++abi
+        libc++
         eigen
         flann
         fmt
         glew
         glfw-x11
-        gtest
         jsoncpp
         libjpeg-turbo
         liblzf
