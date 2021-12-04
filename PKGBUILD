@@ -16,16 +16,18 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_branch="master"
+
 prepare() {
     cd "${srcdir}"
 
     if [ ! -d "repo" ]; then
-        git clone --bare --filter=tree:0 "${url}" "repo"
+        git clone --bare --filter=tree:0 --single-branch -b "${_branch}" "${url}" "repo"
     fi
 
     cd "repo"
 
-    git fetch -f --filter=tree:0 origin master:master
+    git fetch -f --filter=tree:0 origin "${_branch}:${_branch}"
 }
 
 package() {
