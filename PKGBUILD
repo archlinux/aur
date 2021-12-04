@@ -5,8 +5,8 @@
 # Contributor: Adam Hani Schakaki (krzd) <krzd@krzd.net>
 
 pkgname=gsettings-desktop-schemas-oldstable
-pkgver=3.38.0
-pkgrel=2
+pkgver=40.0
+pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop (oldstable version)"
 arch=(any)
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
@@ -16,7 +16,7 @@ replaces=("gsettings-desktop-schemas")
 license=(GPL)
 depends=(glib2 dconf cantarell-fonts adobe-source-code-pro-fonts)
 makedepends=(gobject-introspection git meson)
-_commit=bbb4e9d70bea13416a6f7558fddc75c0bb60739a  # tags/3.38.0^0
+_commit=330c148978aa865851b0be3dd72f0817cbd94f31  # tags/40.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -39,5 +39,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
