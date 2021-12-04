@@ -2,15 +2,15 @@
 
 _pkgbase='recaptcha'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='ReCAPTCHA library for python'
 arch=('any')
 url="https://github.com/homeinfogmbh/${_pkgbase}"
 license=('GPLv3')
-depends=('python')
+depends=('python' 'python-setuptools')
 optdepends=('python-flask: for flask integration')
-makedepends=('git' 'python' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
