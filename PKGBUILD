@@ -2,7 +2,7 @@
 
 _pkgname=breath
 pkgname=breath-theme-git
-pkgver=r203.58f18ef0
+pkgver=r216.e6123a4b
 pkgrel=1
 pkgdesc="Breath Plasma Look & Feel packages by Manjaro Team"
 provides=('breath-wallpaper' 'plasma5-themes-breath' 'sddm-breath-theme')
@@ -39,4 +39,6 @@ build() {
 package() {
   cd build
   make DESTDIR="${pkgdir}" install
+  # Remove unneeded files
+  rm -r ${pkgdir}/usr/{lib/kconf_update_bin,share/kconf_update}
 }

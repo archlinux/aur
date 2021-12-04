@@ -1,6 +1,6 @@
 pkgbase = breath-theme-git
 	pkgdesc = Breath Plasma Look & Feel packages by Manjaro Team
-	pkgver = r203.58f18ef0
+	pkgver = r216.e6123a4b
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/artwork/themes/breath
 	arch = any
