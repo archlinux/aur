@@ -25,4 +25,8 @@ package() {
         # install LICENSE.txt
         install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
         install "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+
+	# add binary to path
+	mkdir "${pkgdir}/usr/bin"
+	ln -s "${pkgdir}/opt/Brim/brim" "${pkgdir}/usr/bin/brim"
 }
