@@ -1,19 +1,18 @@
-_ver="5.15"
-_snapshot="linux-${_ver}"
-_archive="${_snapshot}.tar.gz"
-
 pkgname=ntfs3-dkms
-pkgver=${_ver}
-pkgrel=3
+pkgver=5.15
+pkgrel=4
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
 url='https://www.kernel.org/doc/html/latest/filesystems/ntfs3.html'
 license=('GPL2')
 depends=('dkms')
-provides=('NTFS3-MODULE' "ntfs3=${_ver}" "ntfs3-dkms=${_ver}")
+provides=('NTFS3-MODULE' 'ntfs3')
 conflicts=('ntfs3')
 options=('!strip' '!emptydirs')
+
+_snapshot="linux-${pkgver}"
+_archive="${_snapshot}.tar.gz"
 
 source=(
     "${_archive}::https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/${_archive}"
@@ -40,24 +39,23 @@ prepare() {
     tar xf "${_archive}" "${_snapshot}/fs/ntfs3" --strip-components=2
 }
 
-build() {
-    cd "${srcdir}/ntfs3"
+package() {
+    cd "${srcdir}"
+
+    local dest=$(install -dm755 "${pkgdir}/usr/src/ntfs3-${pkgver}" && echo "$_")
+
+    install -Dm644 -t "${dest}" "dkms.conf"
+
+    install -dm755 "${dest}/patches" && cp -t "$_" "kernel-"*.patch
+
+    cd "ntfs3"
+
     patch -p0 -N -i "${srcdir}/Makefile.patch"
 
     # For testing
     # patch -p1 -N -i "${srcdir}/kernel-5.15-backport.patch"
     # patch -p1 -N -i "${srcdir}/kernel-5.14-backport.patch"
     # patch -p1 -N -i "${srcdir}/kernel-5.12-backport.patch"
-}
 
-package() {
-    cd "${srcdir}"
-
-    local dest=$(install -dm755 "${pkgdir}/usr/src/ntfs3-${_ver}" && echo "$_")
-
-    cp -rt "${dest}" "ntfs3/"*
-
-    install -Dm644 -t "${dest}" "dkms.conf"
-
-    install -dm755 "${dest}/patches" && cp -t "$_" "kernel-"*.patch
+    cp -rt "${dest}" *
 }
