@@ -15,7 +15,7 @@ _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=14.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -49,8 +49,8 @@ prepare() {
     cd ${srcdir}/${_srcname}
     local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
     sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
-    git apply -v ${srcdir}/cran_multithread.patch
-    git apply -v ${srcdir}/node_version.patch
+    patch -p1 < ${srcdir}/cran_multithread.patch
+    patch -p1 < ${srcdir}/node_version.patch
 
     msg "Extracting dependencies..."
     cd "${srcdir}/${_srcname}/src/gwt"

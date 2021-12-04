@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2021.09.1.+372
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rstudio.com/products/rstudio/
 	arch = i686
 	arch = x86_64
