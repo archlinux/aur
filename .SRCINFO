@@ -1,6 +1,6 @@
 pkgbase = funkwhale
-	pkgdesc = A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark.
-	pkgver = 1.0.1
+	pkgdesc = A community-driven project that lets you listen and share music and audio within a decentralized, open network.
+	pkgver = 1.1.4
 	pkgrel = 3
 	url = https://funkwhale.audio/
 	install = funkwhale.install
@@ -21,7 +21,7 @@ pkgbase = funkwhale
 	depends = python-django-redis
 	depends = python-redis
 	depends = python-kombu
-	depends = python-celery
+	depends = python-celery>=5.2
 	depends = python-django-cors-headers
 	depends = python-musicbrainzngs
 	depends = python-django-rest-framework
@@ -60,16 +60,17 @@ pkgbase = funkwhale
 	depends = python-service-identity
 	depends = python-markdown
 	depends = python-bleach
-	depends = python-feedparser-dev>=6
+	depends = python-feedparser>=6
 	depends = python-watchdog
+	depends = python-asgiref_patch
 	optdepends = apache: to use the Apache web server
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = mod_xsendfile: needed if Apache server is used
 	optdepends = nginx: to use nginx web server
-	source = funkwhale-1.0.1-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.0.1/download?job=build_api
-	source = funkwhale-1.0.1-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.0.1/download?job=build_front
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.0.1/deploy/funkwhale_proxy.conf
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.0.1/deploy/nginx.template
+	source = funkwhale-1.1.4-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.1.4/download?job=build_api
+	source = funkwhale-1.1.4-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.1.4/download?job=build_front
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.1.4/deploy/funkwhale_proxy.conf
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.1.4/deploy/nginx.template
 	source = funkwhale.service
 	source = funkwhale-beat.service
 	source = funkwhale-server.service
@@ -80,7 +81,7 @@ pkgbase = funkwhale
 	sha256sums = 4e7461510a7bbfefa78c514f35597ea7b95836cc4407ea0421463d7798c8a7cd
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
 	sha256sums = f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa
-	sha256sums = 9a84d9e1f105cd92448e6e4696e11412584b616b248d578e2fe756972a20f74e
+	sha256sums = 01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349
 	sha256sums = 812c9a49436725e18768c5eb772c7207c184cdcf3a057432dc998387c481bd8d
 	sha256sums = 9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470
 	sha256sums = 57c17dbd033fff76b344c90114d3b1f9eae3aaaa49128b61fcd1b5e808561dc3

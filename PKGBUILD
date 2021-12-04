@@ -1,9 +1,9 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=funkwhale
-pkgver=1.0.1
+pkgver=1.1.4
 pkgrel=3
-pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
+pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
 url="https://funkwhale.audio/"
 license=(GPL3)
@@ -15,57 +15,58 @@ depends=('ffmpeg'
         'libjpeg'
         'postgresql'
         'python'
-        'python-setuptools'
-        'python-django'
-        'python-django-environ'
-        'python-pillow'
-        'python-django-allauth'
-        'python-psycopg2'
-        'python-pytz'
-        'python-django-redis'
-        'python-redis'
-        'python-kombu'
-        'python-celery'
-        'python-django-cors-headers'
-        'python-musicbrainzngs'
-        'python-django-rest-framework'
-        'python-django-rest-framework-jwt'
-        'python-arrow'
-        'python-persisting-theory'
-        'python-django-versatile-imagefield'
-        'python-django-filter'
-        'python-django-rest-auth'
-        'ipython'
-        'python-mutagen'
-        'python-pymemoize'
-        'python-django-dynamic-preferences'
-        'python-raven'
-        'python-magic-git'
-        'python-django-channels'
-        'python-django-channels-redis>=3'
-        'uvicorn'
-        'gunicorn'
-        'python-cryptography'
-        'python-requests-http-signature'
-        'python-django-cleanup'
-        'python-requests'
-        'python-pyopenssl'
-        'python-ldap'
-        'python-django-auth-ldap'
-        'python-pydub'
-        'python-pyld'
-        'python-aiohttp'
-        'python-django-oauth-toolkit'
-        'python-django-storages'
-        'python-boto3'
-        'python-unicode-slugify-git'
-        'python-django-cacheops'
-        'python-click'
-        'python-service-identity'
-        'python-markdown'
-        'python-bleach'
-        'python-feedparser-dev>=6'
-        'python-watchdog'
+        'python-setuptools'  # >=49
+        'python-django'  # ~= 3.0.8
+        'python-django-environ'  # ~= 0.4.0
+        'python-pillow'  # ~= 7.0.0
+        'python-django-allauth'  # ~= 0.42.0
+        'python-psycopg2'  # ~= 2.8.0
+        'python-pytz'  # ~= 2020.1
+        'python-django-redis'  # ~= 4.12.0
+        'python-redis'  # ~= 3.5.0
+        'python-kombu'  # ~= 4.6.0
+        'python-celery>=5.2'  # ~= 4.4.0
+        'python-django-cors-headers'  # ~= 3.4.0
+        'python-musicbrainzngs'  # ~= 0.7.1
+        'python-django-rest-framework'  # ~= 3.11.0
+        'python-django-rest-framework-jwt'  # ~= 1.11.0
+        'python-arrow'  # ~= 0.15.5
+        'python-persisting-theory'  # ~= 0.2.0
+        'python-django-versatile-imagefield'  # ~= 2.0.0
+        'python-django-filter'  # ~= 2.3.0
+        'python-django-rest-auth'  # ~= 0.9.0
+        'ipython'  # ~= 7.10.0
+        'python-mutagen'  # ~= 1.45.0
+        'python-pymemoize'  # ~= 1.0.0
+        'python-django-dynamic-preferences'  # ~= 1.10
+        'python-raven'  # ~= 6.10.0
+        'python-magic-git'  # ~= 0.4.0
+        'python-django-channels'  # ~= 2.4.0
+        'python-django-channels-redis>=3'  # ~= 3.0.0
+        'uvicorn'  # ~= 0.12.0
+        'gunicorn'  # ~= 20.0.0
+        'python-cryptography'  # ~= 2.9.0
+        'python-requests-http-signature'  # == 0.0.3
+        'python-django-cleanup'  # ~= 5.0.0
+        'python-requests'  # ~= 2.25.1
+        'python-pyopenssl'  # ~= 19.1.0
+        'python-ldap'  # ~= 3.3.0
+        'python-django-auth-ldap'  # ~= 2.2.0
+        'python-pydub'  # ~= 0.24.0
+        'python-pyld'  # ~= 1.0.0
+        'python-aiohttp'  # ~= 3.7.4
+        'python-django-oauth-toolkit'  # ~= 1.3.0
+        'python-django-storages'  # ~= 1.9.0
+        'python-boto3'  # ~= 1.14.0
+        'python-unicode-slugify-git'  # ~= 0.1.0
+        'python-django-cacheops'  # ~= 5.0.0
+        'python-click'  # ~= 7.1.0
+        'python-service-identity'  # ~= 18.1.0
+        'python-markdown'  # ~= 3.2.0
+        'python-bleach'  # ~= 3.1.0
+        'python-feedparser>=6'  # ~= 6.0.0
+        'python-watchdog'  # ~= 1.0.2
+        'python-asgiref_patch'  # ~= 3.4.1 patched
 )
 makedepends=(git)
 _source_api="https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/${pkgver}/download?job="
@@ -81,8 +82,8 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "apache-funkwhale.conf"
         "env-template"
 )
-sha256sums=('5c0689c0e05d3271d161c13e8063e5053f4ecb582e3a7e3d6973d1c46be23887'
-            '0b77367cb4e8d1b57af59282af90ac41e0915de85cf5337b02f16e6aa0bd0129'
+sha256sums=('82fb761ec4d98c732771011b3053f52237b85d575debf08f7184eede5fb0e37b'
+            '4e7461510a7bbfefa78c514f35597ea7b95836cc4407ea0421463d7798c8a7cd'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             'f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa'
             '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349'
@@ -124,10 +125,7 @@ package() {
   install -Dm644 apache-funkwhale.conf "$pkgdir"/etc/webapps/${pkgname}/.
   install -Dm644 env-template "$pkgdir"/etc/webapps/${pkgname}/env.template
 
-  install -Dm644 funkwhale.service "$pkgdir/usr/lib/systemd/system/funkwhale.service"
-  install -Dm644 funkwhale-beat.service "$pkgdir/usr/lib/systemd/system/funkwhale-beat.service"
-  install -Dm644 funkwhale-worker.service "$pkgdir/usr/lib/systemd/system/funkwhale-worker.service"
-  install -Dm644 funkwhale-server.service "$pkgdir/usr/lib/systemd/system/funkwhale-server.service"
+  install -Dm644 funkwhale{,-beat,-worker,-server}.service -t "$pkgdir/usr/lib/systemd/system/"
 
   echo -e 'u funkwhale - "Funkwhale music server" /srv/funkwhale\nm funkwhale http' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
