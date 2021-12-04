@@ -5,7 +5,7 @@
 
 pkgname=rtl8812au-20210629-dkms-git
 _pkgbase=rtl8812au-20210629
-pkgver=5.13.6.r66.g1111f3b
+pkgver=5.13.6.r74.g2e76f81
 pkgrel=1
 pkgdesc="rtl8812AU chipset driver with firmware v5.13.6"
 arch=('i686' 'x86_64')
