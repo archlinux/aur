@@ -1,9 +1,10 @@
 pkgbase = php81-igbinary
-	pkgdesc = php81 extension igbinary
+	pkgdesc = php81 PECL extension igbinary
 	pkgver = 3.2.6
 	pkgrel = 1
 	url = http://pecl.php.net/package/igbinary
 	arch = x86_64
+	arch = i686
 	license = PHP
 	makedepends = php81
 	depends = php81
