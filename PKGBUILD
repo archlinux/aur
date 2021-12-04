@@ -1,5 +1,5 @@
 # Set this flag to 1 if you want to hide Bismuth tray icon.
-HIDE_TRAY_ICON=1
+HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth-git
 pkgver=2.1.0.r27.g84a0ac5
