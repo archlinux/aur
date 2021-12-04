@@ -4,17 +4,17 @@
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=0.3.0.r178.gea2646f
+pkgver=0.6.0.r8.gf776fb8
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
-url='https://git.sr.ht/~sircmpwn/aerc'
+url='https://git.sr.ht/~rjarry/aerc'
 license=('MIT')
 depends=('w3m' 'dante' 'notmuch')
 makedepends=('git' 'go' 'scdoc')
 provides=('aerc')
 conflicts=('aerc')
-source=("$_pkgname::git+https://git.sr.ht/~sircmpwn/aerc")
+source=("$_pkgname::git+https://git.sr.ht/~rjarry/aerc")
 sha512sums=('SKIP')
 
 pkgver() {
