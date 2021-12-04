@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-oldstable
 	pkgdesc = GNOME Settings Daemon (oldstable version)
-	pkgver = 3.38.2
-	pkgrel = 2
+	pkgver = 40.0.1
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = x86_64
 	groups = gnome-oldstable
@@ -20,7 +20,7 @@ pkgbase = gnome-settings-daemon-oldstable
 	depends = gsettings-desktop-schemas-oldstable
 	depends = libcanberra-pulse
 	depends = libnotify
-	depends = systemd-libs
+	depends = systemd
 	depends = libwacom
 	depends = pulseaudio
 	depends = pulseaudio-alsa
@@ -35,14 +35,15 @@ pkgbase = gnome-settings-daemon-oldstable
 	depends = libnm
 	depends = gcr
 	optdepends = usbguard: USB protection support
-	provides = gnome-settings-daemon=3.38.2
+	provides = gnome-settings-daemon=40.0.1
 	conflicts = gnome-settings-daemon
 	replaces = gnome-settings-daemon
 	backup = etc/xdg/Xwayland-session.d/00-xrdb
-	source = git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=e9c5057315d5e3fbb90482bb054e250773aad9ab
+	source = git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=f33abac1de0c8cecd8ededa75200648c6470e406
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	source = fix_str-bool_comparison.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = e12a423f16d68e6fd7fe9c2953b77c25aef85ca39d757f5e6debd53f266e0292
 
 pkgname = gnome-settings-daemon-oldstable
-

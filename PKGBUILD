@@ -2,8 +2,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gnome-settings-daemon-oldstable
-pkgver=3.38.2
-pkgrel=2
+pkgver=40.0.1
+pkgrel=1
 pkgdesc="GNOME Settings Daemon (oldstable version)"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 conflicts=("gnome-settings-daemon")
@@ -11,19 +11,21 @@ provides=("gnome-settings-daemon=$pkgver")
 replaces=("gnome-settings-daemon")
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gnome-desktop gsettings-desktop-schemas-oldstable libcanberra-pulse libnotify systemd-libs
-         libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue nss
-         libgudev gtk3 libnm gcr)
+depends=(dconf gnome-desktop gsettings-desktop-schemas-oldstable libcanberra-pulse libnotify systemd libwacom
+         pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue nss libgudev
+         gtk3 libnm gcr)
 makedepends=(xf86-input-wacom libxslt docbook-xsl python git meson usbguard)
 checkdepends=(python-gobject python-dbusmock)
 optdepends=('usbguard: USB protection support')
 groups=(gnome-oldstable)
 backup=(etc/xdg/Xwayland-session.d/00-xrdb)
-_commit=e9c5057315d5e3fbb90482bb054e250773aad9ab  # tags/GNOME_SETTINGS_DAEMON_3_38_2^0
+_commit=f33abac1de0c8cecd8ededa75200648c6470e406  # tags/tags/40.0.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+        "fix_str-bool_comparison.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'e12a423f16d68e6fd7fe9c2953b77c25aef85ca39d757f5e6debd53f266e0292')
 
 pkgver() {
   cd gnome-settings-daemon
@@ -32,6 +34,7 @@ pkgver() {
 
 prepare() {
   cd gnome-settings-daemon
+  git apply -3 ../fix_str-bool_comparison.patch
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
@@ -44,10 +47,9 @@ build() {
 }
 
 check() {
-  # Check might fail without clean build env. Continue building in any case.
-  meson test -C build --print-errorlogs || true
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
