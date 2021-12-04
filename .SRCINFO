@@ -1,15 +1,13 @@
 pkgbase = parse-torrent
 	pkgdesc = Parse a torrent identifier (magnet uri, .torrent file, info hash)
 	pkgver = 9.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/webtorrent/parse-torrent
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	provides = parse-torrent
-	conflicts = parse-torrent
 	noextract = parse-torrent-9.1.4.tgz
 	options = strip
 	options = emptydirs

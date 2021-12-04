@@ -3,7 +3,7 @@
 _npmname=parse-torrent
 pkgname=$_npmname
 pkgver=9.1.4
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Parse a torrent identifier (magnet uri, .torrent file, info hash)"
 arch=(any)
@@ -12,8 +12,8 @@ license=("MIT")
 
 depends=("nodejs")
 makedepends=("npm" "jq")
-provides=("$_npmname")
-conflicts=("$_npmname")
+# provides=("$_npmname")
+# conflicts=("$_npmname")
 options=(strip emptydirs zipman)
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
