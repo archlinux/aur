@@ -1,7 +1,7 @@
 pkgbase = vivado
 	pkgdesc = FPGA/CPLD design suite for Xilinx devices
-	pkgver = 2021.1
-	pkgrel = 3
+	pkgver = 2021.2
+	pkgrel = 1
 	url = https://www.xilinx.com/products/design-tools/vivado.html
 	arch = x86_64
 	license = custom
@@ -15,9 +15,9 @@ pkgbase = vivado
 	optdepends = digilent.adept.runtime
 	optdepends = digilent.adept.utilities
 	options = !strip
-	source = file:///Xilinx_Unified_2021.1_0610_2318.tar.gz
+	source = file:///Xilinx_Unified_2021.2_1021_0703.tar.gz
 	source = spoof_homedir.c
-	md5sums = 3a88784dbed40ab1008c28b040717f72
+	md5sums = c6f91186f332528a7b74a6a12a759fb6
 	md5sums = 69d14ad64f6ec44e041eaa8ffcb6f87c
 
 pkgname = vivado

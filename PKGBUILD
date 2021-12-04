@@ -5,7 +5,7 @@
 #
 # 1. Log in to xilinx.com
 # 2. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
-# 3. Download "Xilinx Unified Installer SFD (TAR/GZIP)" - WARNING: This file is >50GB in size
+# 3. Download "Xilinx Unified Installer SFD (TAR/GZIP)" - WARNING: This file is >70GB in size
 # 4. Place the .tar.gz in the same directory as the PKGBUILD
 # 5. Build!
 #
@@ -13,8 +13,8 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a 52GB .tar.gz, which decompresses to ~54GB,
-# and the final zstd-compressed package is another 21GB. Reserve ~150GB in total for building.
+# This package is huge. The download alone is a 72GB .tar.gz, which decompresses to 73GB (yeah...),
+# and the final zstd-compressed package is another 46GB. Reserve at least 200GB in total for building.
 #
 # It can also take up to two hours to build, being mostly limited by I/O and single-thread
 # performance. `namcap` takes another 30 minutes, make sure you're not running that automatically.
@@ -27,9 +27,9 @@
 
 pkgname=vivado
 _srcname=Xilinx_Unified
-pkgver=2021.1
-_more_ver=0610_2318
-pkgrel=3
+pkgver=2021.2
+_more_ver=1021_0703
+pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('3a88784dbed40ab1008c28b040717f72'
+md5sums=('c6f91186f332528a7b74a6a12a759fb6'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
@@ -71,7 +71,7 @@ package() {
 	# LD_PRELOAD already contains libfakeroot.so, add our own library before that
 	LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
 		--batch Install \
-		--agree XilinxEULA,3rdPartyEULA,WebTalkTerms \
+		--agree XilinxEULA,3rdPartyEULA \
 		--product Vivado \
 		--edition 'Vivado ML Standard' \
 		--location "$pkgdir/opt/Xilinx"
