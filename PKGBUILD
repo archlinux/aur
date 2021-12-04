@@ -1,6 +1,6 @@
 _name='papirus-icon-theme'
 pkgname="${_name}-stripped"
-pkgver=20211101
+pkgver=20211201
 pkgrel=1
 pkgdesc="Papirus icon theme, stripped to only base variations."
 url="https://github.com/PapirusDevelopmentTeam/${_name}"
@@ -15,17 +15,14 @@ _archive="${_snapshot}.tar.gz"
 
 source=("${_archive}::${url}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha512sums=('13b8e0624d1cb0a39f5dbb407682766de942a31a19b683ca1429dc9c97b4f236e070176f1a5e6f37893d0587276d37c6b8e3cee2bea72bf535598ea84704f717')
-
-prepare() {
-    cd "${srcdir}"
-    tar xf "${_archive}" "${_snapshot}/Papirus" "${_snapshot}/Papirus-Dark" "${_snapshot}/LICENSE"
-}
+sha512sums=('746055e9db0ef11c996fd90892582ca5ffd3e7c77aa08a43de2dd162364e915c73b3e1ab139c8caa4295e0857b4b5a6e273606f41ae5ab91de9dd160598ec621')
 
 package() {
-    cd "${srcdir}/${_snapshot}"
+    cd "${srcdir}"
 
-    install -dm755 "${pkgdir}/usr/share/icons" && cp -rt "$_" "Papirus" "Papirus-Dark"
+    install -dm755 "${pkgdir}/usr/share/icons" &&
+        tar -C "$_" --strip-components=1 -xf "${_archive}" "${_snapshot}/Papirus" "${_snapshot}/Papirus-Dark"
 
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" &&
+        tar -C "$_" --strip-components=1 -xf "${_archive}" "${_snapshot}/LICENSE"
 }
