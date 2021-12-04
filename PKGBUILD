@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="Wraps GEOS geometry functions in numpy ufuncs. "
 url="https://pygeos.readthedocs.io/"
 
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 
 arch=("x86_64")
@@ -22,7 +22,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("c9371ce412ab28e2d0e90a9d65e42eb9933d0dc33edf36c575d56187c6183acf")
+sha256sums=("3c41542ef67c66015f443ae3e6e683503a8a221f9c24fb2380f6ae42aed1600a")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
