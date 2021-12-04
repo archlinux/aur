@@ -12,7 +12,7 @@ makedepends=(nodejs-lts-gallium npm)
 source=("${pkgname}-${pkgver}.zip::https://github.com/Mastermindzh/tidal-hifi/archive/${pkgver}.zip"
         "tidal-hifi.desktop")
 md5sums=('a40f46926fc1e787b6dce836402a1c76'
-        '9485931968b0de7c1b05ad52a2f5b421')
+        '234e31f93ccbdeb67f425165efe9e938')
 
 prepare() {
     cd "tidal-hifi-${pkgver}"

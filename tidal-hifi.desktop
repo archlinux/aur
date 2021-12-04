@@ -1,10 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Tidal Hifi
 GenericName=tidal-hifi
+Icon=tidal-hifi
 Comment=The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
 Exec=tidal-hifi %u
-Icon=tidal-hifi
 StartupNotify=true
 Terminal=false
 Type=Application
