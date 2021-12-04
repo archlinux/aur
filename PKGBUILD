@@ -2,14 +2,15 @@
 pkgname=whitesur-kde-theme-git
 _themeName=WhiteSur
 _gitname="$_themeName-kde"
-pkgver=r33.a7f777c
-pkgrel=1
+pkgver=r66.c65b6cc
+pkgrel=2
 pkgdesc="MacOS big sur like theme for KDE Plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
 optdepends=('plasma-desktop: for included plasma theme' 'kvantum-qt5: for included kvantum theme' 'sddm: for included sddm theme' 'whitesur-icon-theme-git: matching icon theme' 'whitesur-cursor-theme-git: matching cursor theme' 'whitesur-gtk-theme-git: matching gtk theme' 'latte-dock: for included latte theme') 
 makedepends=('git')
+provides=('whitesur-kde-theme')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
