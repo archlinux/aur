@@ -1,0 +1,10 @@
+pkgbase = ttf-whatever-it-takes
+	pkgdesc = Handwritten chalkboard typeface
+	pkgver = 20201230
+	pkgrel = 1
+	arch = any
+	license = custom
+	source = https://www.makerstype.com/wp-content/uploads/2020/12/Whatever-It-Takes.zip
+	sha512sums = a9e44e09a6a18d9f36279ca48c13a5b7c059bdcf7cf8afbbcd37b70e40b1bb6d6624f5a61c7b032812ffc2de7866daab41f040faee54061f8f546f311767ecf2
+
+pkgname = ttf-whatever-it-takes
