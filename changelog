@@ -1,3 +1,21 @@
+2021-12-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.0.9-1:
+    [!] ASF V5.2 opens a new major milestone due to significant .NET 6.0 runtime upgrade. .NET runtime upgrade brings a lot of under-the-hood changes, compatibility enhancements, performance improvements, features and bugfixes (@JustArchi @Abrynos #2388).
+    Breaking: renamed commands bl, ib and iq (with add and rm) to tb, fb and fq, accordingly. This further helps unifying the terms used across ASF (@JustArchi #2368).
+    Breaking: functions previously marked as obsolete exposed to third-party plugins have been removed from ASF as a part of B release cycle (@JustArchi).
+    Breaking: ASF will now refuse to run as root user by default. See wiki entry for more details (@JustArchi).
+    Breaking: removed password command, use encrypt instead (@JustArchi).
+    ASF's internal codebase has changed dramatically in regards to various .NET 6.0 improvements that we've implemented. While those changes should not cause regressions in regards to previous usage, the scope of them is huge enough to warrant a note in the changelog, as it's far more than just "usual amount of core improvements", please let us know if you spot any kind of regressions or other issues that you didn't face with V5.1 versions, and you suspect that they could be related to new runtime (@JustArchi #2446).
+    ASF will now validate build checksum against independent remote server prior to automatically updating from GitHub, this improves overall security in case of malicious GitHub takeover (@JustArchi #2452).
+    .NET 6.0 allows further performance tweaking, we've updated high-performance-setup on the wiki to reflect that (@JustArchi).
+    Added two additional crypto methods for SteamPassword: EnvironmentVariable and File, check out security section for more details (@JustArchi).
+    Added osx-arm64 variant of ASF for 64-bit ARM-based (Apple silicon) OS X OSes (@JustArchi).
+    It's now possible to use SOCKS proxies as a WebProxy setting in ASF. Simply use socks5:// (or likewise) protocol (NET 6.0 enhancement).
+    Added evaluation of ~ character mapped to user's home directory when used in --path. This allows you to use non-evaluated ~ character in --path and ASF_PATH environment variable, also on Windows (@JustArchi).
+    Fixed ASF unnecessarily trying to create www directory in its binary location if it didn't exist yet, and crashing when not being able to do so (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2021-11-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.5.3-1:
     Fixed 5.1.5.2 regression of IPC crash in generic-netf build, which doesn't support qps-Ploc culture (@JustArchi).
