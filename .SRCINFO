@@ -1,13 +1,13 @@
 pkgbase = goimports-reviser-bin
 	pkgdesc = Tool for Golang to sort goimports by 3-4 groups: std, general, local(which is optional) and project dependencies.
-	pkgver = 2.4.4
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://github.com/incu6us/goimports-reviser
 	arch = x86_64
 	license = MIT
 	provides = goimports-reviser
 	conflicts = goimports-reviser-git
-	source_x86_64 = https://github.com/incu6us/goimports-reviser/releases/download/v2.4.4/goimports-reviser_2.4.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5d3870699bc43459ebcf78e65d93c7901c47dbde58c5bffd441a40c4f1d85515
+	source_x86_64 = https://github.com/incu6us/goimports-reviser/releases/download/v2.4.6/goimports-reviser_2.4.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = c86f80ab9b385264305e5aaf3a5b8d8a6e31d5d0f67547b4ccc6151aa3d82a1a
 
 pkgname = goimports-reviser-bin
