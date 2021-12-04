@@ -1,0 +1,21 @@
+pkgbase = sysfetch-git
+	pkgdesc = A super tiny Linux system information fetch script written in BASH
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/wick3dr0se/sysfetch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = coreutils
+	depends = bash
+	depends = awk
+	depends = sed
+	depends = psmisc
+	depends = grep
+	depends = pacman
+	optdepends = xorg-xprop: fallback for X session info
+	optdepends = pciutils: for gpu detection
+	source = git+https://github.com/wick3dr0se/sysfetch
+	sha256sums = SKIP
+
+pkgname = sysfetch-git
