@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch-git
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 8.0_r541.264268b
+	pkgver = 8.0.202112058.0_r554.84aca65
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -37,6 +37,7 @@ pkgbase = steamtinkerlaunch-git
 	optdepends = rsync: optional for backing up steamuser files from proton games
 	optdepends = imagemagick: optional to scale a custom installed game header picture and for converting game icons
 	optdepends = p7zip: optional for extracting SpecialK archives
+	optdepends = pev: optional for extracting data from windows game executables
 	provides = steamtinkerlaunch
 	conflicts = steamtinkerlaunch
 	source = git+https://github.com/frostworx/steamtinkerlaunch.git
