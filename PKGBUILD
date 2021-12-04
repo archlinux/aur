@@ -1,7 +1,7 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-lsp-mypy
 _name=pylsp-mypy
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-setuptools)
 checkdepends=(python-mock python-pytest python-pytest-cov)
 options=(!strip)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ba7944f8d070e1dde51cb07efd372c9f488dfd2c96dbd65933f6d0cded941c36')
+sha256sums=('ee141284b91f7e11485f1cc4972c93b0e6f479f6ab4fe6ae98a7b1b33e178b63')
 
 build() {
   cd "$_name-$pkgver"
