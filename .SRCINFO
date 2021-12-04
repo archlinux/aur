@@ -1,0 +1,25 @@
+pkgbase = gnuradio-fcdproplus
+	pkgdesc = GNU Radio source block for Funcube Dongle Pro +
+	pkgver = 3.8.0
+	pkgrel = 9
+	url = https://github.com/dl1ksv/gr-fcdproplus
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	makedepends = systemd
+	makedepends = ninja
+	depends = gnuradio
+	depends = libusb
+	depends = alsa-lib
+	depends = boost-libs
+	depends = hidapi
+	replaces = gr-fcdproplus
+	source = gr-fcdpp-575fcafbb8f.tgz::https://github.com/dl1ksv/gr-fcdproplus/archive/575fcafbb8f.tar.gz
+	source = 88-fcdproplus.rules
+	md5sums = bfd926db8b413e92687603d179e91d6b
+	md5sums = 465e12c454c6a22ebec9849181af7bdc
+
+pkgname = gnuradio-fcdproplus
