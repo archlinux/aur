@@ -1,7 +1,7 @@
 pkgbase = funkwhale
 	pkgdesc = A community-driven project that lets you listen and share music and audio within a decentralized, open network.
 	pkgver = 1.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://funkwhale.audio/
 	install = funkwhale.install
 	arch = any

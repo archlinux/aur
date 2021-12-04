@@ -2,7 +2,7 @@
 
 pkgname=funkwhale
 pkgver=1.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
 url="https://funkwhale.audio/"
