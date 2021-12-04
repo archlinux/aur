@@ -1,35 +1,35 @@
 # Maintainer: zebulon <zeb (at)zebulon(dot)org(dot)uk>
 # Contributor: NovaMoon <novamoon1 (at)gmail(dot)com>
 # Contributor: dchusovitin <dchusovitin@gmail.com>
+# Contributor: unphysicalix <develADDzukuulDE>
 
 pkgname=rtl8812au-dkms-git
 _pkgbase=rtl8812au
-pkgver=5.9.3.2.r8.gb95e750
+pkgver=5.13.6.r73.g55a4c22
 pkgrel=1
-pkgdesc="rtl8812AU chipset driver with firmware v5.9.3.2"
+pkgdesc="rtl8812AU chipset driver with firmware v5.13.6"
 arch=('i686' 'x86_64')
-url="https://github.com/gordboy/rtl8812au-5.9.3.2"
+url="https://github.com/morrownr/8812au-20210629"
 license=('GPL2')
 depends=('dkms' 'bc')
 makedepends=('git')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/gordboy/rtl8812au-5.9.3.2.git"
-        'dkms.conf')
+source=("git+https://github.com/morrownr/8812au-20210629.git"
+       'dkms.conf')
 sha256sums=('SKIP'
-	    'f0842466dad49a2d0a16fd29e3c5253128b3642d6a42a0a8e08b7310ab265204')
-
+	    '9164f68d837976d0992a50875281f22fb7a2a82981346bde33706701f15bbcc8')
 pkgver() {
-    cd ${srcdir}/rtl8812au-5.9.3.2
-    printf '%s.r%s.g%s' '5.9.3.2' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${srcdir}/8812au-20210629
+    printf '%s.r%s.g%s' '5.13.6' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-        cd ${srcdir}/rtl8812au-5.9.3.2
-        mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        # Set name and version
-        sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
-                        -e "s/@PKGVER@/${pkgver}/" \
-                        -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+    cd ${srcdir}/8812au-20210629
+    mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+    cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+    cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+    # Set name and version
+    sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
+        -e "s/@PKGVER@/${pkgver}/" \
+        -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
