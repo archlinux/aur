@@ -1,7 +1,7 @@
 pkgbase = tidal-hifi
 	pkgdesc = The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Mastermindzh/tidal-hifi
 	arch = x86_64
 	license = custom:MIT
@@ -11,7 +11,7 @@ pkgbase = tidal-hifi
 	depends = gtk3
 	source = tidal-hifi-2.4.0.zip::https://github.com/Mastermindzh/tidal-hifi/archive/2.4.0.zip
 	source = tidal-hifi.desktop
-	sha512sums = de91b8d8c71af56c3d8d15f4ddcd32ff62f5b85ded730354774e4835d983264f40dd7eb291365effa45c39ddd945b34d010f64a62f985db6edb299af0452a161
-	sha512sums = SKIP
+	md5sums = SKIP
+	md5sums = 9485931968b0de7c1b05ad52a2f5b421
 
 pkgname = tidal-hifi
