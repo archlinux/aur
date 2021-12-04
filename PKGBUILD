@@ -3,7 +3,7 @@
 
 pkgname=seqdiag
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Sequence-diagram images from .diag files"
 arch=('any')
 url="https://blockdiag.com/en/seqdiag/index.html"
