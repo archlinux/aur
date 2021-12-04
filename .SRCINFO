@@ -1,6 +1,6 @@
 pkgbase = python-peeweeplus
 	pkgdesc = Practical extension of a small, expressive ORM
-	pkgver = 1.16.6
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/homeinfogmbh/peeweeplus
 	arch = any
@@ -10,11 +10,12 @@ pkgbase = python-peeweeplus
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	depends = python
-	depends = python-argon2_cffi
+	depends = python-configlib
 	depends = python-peewee
 	depends = python-lxml
+	optdepends = python-argon2_cffi: for Argon2Field
 	optdepends = python-authlib: for authlib integration
-	source = peeweeplus::git+https://github.com/homeinfogmbh/peeweeplus.git#tag=1.16.6
+	source = peeweeplus::git+https://github.com/homeinfogmbh/peeweeplus.git#tag=1.17.0
 	md5sums = SKIP
 
 pkgname = python-peeweeplus
