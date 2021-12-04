@@ -22,18 +22,20 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_branch="master"
+
 prepare() {
     cd "${srcdir}"
 
     if [ ! -d "repo" ]; then
-        git clone --filter=tree:0 --sparse --no-checkout "${url}" "repo"
+        git clone --filter=tree:0 --sparse --no-checkout --single-branch -b "${_branch}" "${url}" "repo"
     fi
 
     cd "repo"
 
-    git fetch -f --filter=tree:0 origin
+    git fetch -f --filter=tree:0
     git sparse-checkout set "/package.json" "/CMakeLists.txt" "/src" "/LICENSES"
-    git reset --hard origin
+    git reset --hard "origin/${_branch}"
 
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
         patch -p0 -N -i "${srcdir}/hide-tray-icon.patch"
