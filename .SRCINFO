@@ -1,7 +1,7 @@
 pkgbase = zipkin
 	pkgdesc = Opensource Distributed Tracing System
 	pkgver = 2.23.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://zipkin.io
 	install = zipkin.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = zipkin
 	source = zipkin.sh
 	source = zipkin.sysusers
 	source = zipkin.service
-	sha1sums = c42524abf8b5906728551c990d69fc3f3252b15a
+	sha1sums = a2ad09bd5ec1cf06abaae325fc28161995d80a16
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
