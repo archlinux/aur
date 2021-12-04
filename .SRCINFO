@@ -9,8 +9,7 @@ pkgbase = ntfs3-dkms-git
 	makedepends = git
 	depends = dkms
 	provides = NTFS3-MODULE
-	provides = ntfs3=5.15
-	provides = ntfs3-dkms=5.15
+	provides = ntfs3
 	conflicts = ntfs3
 	options = !strip
 	options = !emptydirs

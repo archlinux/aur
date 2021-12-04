@@ -1,19 +1,15 @@
-_repo="Paragon-Software-Group/linux-ntfs3"
-_ver="5.15"
-_base="8bb7eca972ad531c9b149c0a51ab43a417385813"
-_head="master"
-
 pkgname=ntfs3-dkms-git
 pkgver=5.15.r9.g52e00ea
 pkgrel=1
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
+_repo="Paragon-Software-Group/linux-ntfs3"
 url="https://github.com/${_repo}"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-provides=('NTFS3-MODULE' "ntfs3=${_ver}" "ntfs3-dkms=${_ver}")
+provides=('NTFS3-MODULE' 'ntfs3')
 conflicts=('ntfs3')
 options=('!strip' '!emptydirs')
 
@@ -33,36 +29,35 @@ sha512sums=(
     'c061d3d3b0e531f6d0eba533b884c168a3b057d96d68000cdb9e0fc736538cdc4e7e38d0168f58c3c1b8cb1a7c413f4fb32068847b8c4601dc0406f3fead7533'
 )
 
+_ver="5.15"
+_branch="master"
+_base="8bb7eca972ad531c9b149c0a51ab43a417385813"
+
+# The whole kernel history is very huge, so downloading it is a pain.
+# Also commits count is insane and we don't want to see all that in pkgver.
+# Here is tricky workaround.
+# Use latest merge as base commit and request info via GitHub API.
+
 pkgver() {
-    local api="https://api.github.com/repos/${_repo}"
-    local rev=$(curl "${api}/compare/${_base}...${_head}" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
-    local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "${api}/commits/${_head}")
+    cd "${srcdir}/repo"
+
+    local rev=$(curl "https://api.github.com/repos/${_repo}/compare/${_base}...${_branch}" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
+    local sha=$(git rev-parse HEAD)
     echo "${_ver}.r${rev}.g${sha:0:7}"
 }
 
 prepare() {
     cd "${srcdir}"
 
-    rm -rf "repo" "ntfs3"
-
-    git clone --depth 1 --filter=tree:0 --sparse --no-checkout "${url}" "repo"
+    if [ ! -d "repo" ]; then
+        git clone --depth=1 --filter=tree:0 --sparse --no-checkout --single-branch -b "${_branch}" "${url}" "repo"
+    fi
 
     cd "repo"
 
+    git fetch -f --depth=1 --filter=tree:0
     git sparse-checkout set "/fs/ntfs3"
-    git checkout "${_head}"
-
-    ln -rs "fs/ntfs3" "${srcdir}/ntfs3"
-}
-
-build() {
-    cd "${srcdir}/ntfs3"
-    patch -p0 -N -i "${srcdir}/Makefile.patch"
-
-    # For testing
-    # patch -p1 -N -i "${srcdir}/kernel-5.15-backport.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.14-backport.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.12-backport.patch"
+    git reset --hard "origin/${_branch}"
 }
 
 package() {
@@ -70,9 +65,18 @@ package() {
 
     local dest=$(install -dm755 "${pkgdir}/usr/src/ntfs3-${_ver}" && echo "$_")
 
-    cp -rt "${dest}" "ntfs3/"*
-
     install -Dm644 -t "${dest}" "dkms.conf"
 
     install -dm755 "${dest}/patches" && cp -t "$_" "kernel-"*.patch
+
+    cd "repo/fs/ntfs3"
+
+    patch -p0 -N -i "${srcdir}/Makefile.patch"
+
+    # For testing
+    # patch -p1 -N -i "${srcdir}/kernel-5.15-backport.patch"
+    # patch -p1 -N -i "${srcdir}/kernel-5.14-backport.patch"
+    # patch -p1 -N -i "${srcdir}/kernel-5.12-backport.patch"
+
+    cp -rt "${dest}" *
 }
