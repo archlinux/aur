@@ -3,8 +3,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-control-center-oldstable
-pkgver=3.38.6
-pkgrel=2
+pkgver=40.7
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (oldstable version)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 conflicts=("gnome-control-center")
@@ -16,7 +16,7 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          gnome-online-accounts gnome-settings-daemon-oldstable gsettings-desktop-schemas-oldstable gtk3
          libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd grilo libibus
-         cheese libgudev bolt udisks2 libhandy gsound colord-gtk)
+         libcheese libgudev bolt udisks2 libhandy gsound colord-gtk)
 makedepends=(docbook-xsl modemmanager git python meson)
 checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
 optdepends=('system-config-printer: Printer settings'
@@ -25,7 +25,7 @@ optdepends=('system-config-printer: Printer settings'
             'rygel: media sharing'
             'openssh: remote login')
 groups=(gnome-oldstable)
-_commit=54eb734eaaa95807dd805fbe4e4ad0dceb787736  # tags/3.38.6^0
+_commit=aa721dc9ac2eae7c81e0c339cebb878201acbbc0  # tags/40.7^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -54,6 +54,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
 }
