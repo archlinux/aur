@@ -1,11 +1,12 @@
 pkgbase = apvlv
 	pkgdesc = PDF/DJVU/TXT viewer which behaves like vi
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/naihe2010/apvlv/
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = ghostscript
 	depends = gtk3
 	depends = poppler-glib
 	depends = djvulibre
