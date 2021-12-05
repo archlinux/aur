@@ -4,9 +4,9 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Multi-user server for Jupyter notebooks "
+pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
 arch=(any)
 license=('BSD')
@@ -14,8 +14,8 @@ depends=(
   'ipython' 'nodejs-configurable-http-proxy' 'python-alembic'
   'python-async_generator' 'python-certipy' 'python-entrypoints' 'python-jinja'
   'python-jsonschema' 'python-jupyter_telemetry' 'python-oauthlib'
-  'python-pamela' 'python-prometheus_client' 'python-requests'
-  'python-sqlalchemy' 'python-tornado'
+  'python-packaging' 'python-pamela' 'python-prometheus_client' 'python-requests'
+  'python-sqlalchemy' 'python-tornado' 'python-traitlets'
 )
 makedepends=(
   'npm' 'python-setuptools'
@@ -27,6 +27,7 @@ checkdepends=(
 optdepends=(
   'jupyter-notebook: standard notebook server'
   'jupyterlab: to use the JupyterLab interface'
+  'python-pycurl: improved HTTP performance'
 )
 install=jupyterhub.install
 backup=(
@@ -35,11 +36,18 @@ backup=(
 source=(
   "jupyterhub-${pkgver}.tar.gz::https://github.com/jupyterhub/jupyterhub/archive/${pkgver}.tar.gz"
   'jupyterhub.service'
+  'tests_use_random_ports.patch'
 )
 sha256sums=(
-  'fc1f52d7073e65cf7e93caff87ebc3eeff65cd18e0aaa734ffaa0c00cbe6a352'
+  'e66e9e4a0975fba6563d8a5351bb2911228a5dd884347da77e3a4387a70d6952'
   'adb4c09c668c35605d9cddc4a4171dd64ed6e74ab82da97f19b3437d26b052b9'
+  'acba51024276670aabad3d3f2a1c80d4b573809ca7e7ef6594916329d842417f'
 )
+
+prepare() {
+  cd "${srcdir}/jupyterhub-$pkgver"
+  patch -p0 -i "${srcdir}/tests_use_random_ports.patch"
+}
 
 build() {
   cd "${srcdir}/jupyterhub-$pkgver"
@@ -58,11 +66,17 @@ check() {
   cd "${srcdir}/jupyterhub-$pkgver"
 
   # Run the tests we can. The DB upgrade tests always fail for me (it looks
-  # like the virtual environment they set up is not complete) and the others
-  # intermittently fail. We'll have to trust the upstream CI on those.
-  PYTHONPATH="$PWD/build/lib" pytest -v jupyterhub/tests \
+  # like the virtual environment they set up is not complete). The internal SSL
+  # connections test are broken by our patch to use random ports for testing.
+  # This enables a lot more tests than it breaks so it is a worthwhile
+  # trade-off for now. The test_server_token_role test needs the package
+  # installed so it can find the jupyterhub-singleuser script. The other
+  # specific skipped tests intermittently fail. We'll have to trust the
+  # upstream CI on those.
+  PYTHONPATH="$PWD/build/lib" pytest -v jupyterhub \
     --ignore=jupyterhub/tests/test_db.py \
-    -k "not test_external_service and not test_single_user_spawner"
+    --ignore=jupyterhub/tests/test_internal_ssl_connections.py \
+    -k "not test_server_token_role and not test_external_service and not test_single_user_spawner"
 }
 
 package() {

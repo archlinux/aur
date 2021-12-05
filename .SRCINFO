@@ -1,6 +1,6 @@
 pkgbase = jupyterhub
 	pkgdesc = Multi-user server for Jupyter notebooks
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://jupyter.org/hub
 	install = jupyterhub.install
@@ -23,18 +23,22 @@ pkgbase = jupyterhub
 	depends = python-jsonschema
 	depends = python-jupyter_telemetry
 	depends = python-oauthlib
+	depends = python-packaging
 	depends = python-pamela
 	depends = python-prometheus_client
 	depends = python-requests
 	depends = python-sqlalchemy
 	depends = python-tornado
+	depends = python-traitlets
 	optdepends = jupyter-notebook: standard notebook server
 	optdepends = jupyterlab: to use the JupyterLab interface
+	optdepends = python-pycurl: improved HTTP performance
 	backup = etc/jupyterhub/jupyterhub_config.py
-	source = jupyterhub-1.4.0.tar.gz::https://github.com/jupyterhub/jupyterhub/archive/1.4.0.tar.gz
+	source = jupyterhub-2.0.0.tar.gz::https://github.com/jupyterhub/jupyterhub/archive/2.0.0.tar.gz
 	source = jupyterhub.service
-	sha256sums = fc1f52d7073e65cf7e93caff87ebc3eeff65cd18e0aaa734ffaa0c00cbe6a352
+	source = tests_use_random_ports.patch
+	sha256sums = e66e9e4a0975fba6563d8a5351bb2911228a5dd884347da77e3a4387a70d6952
 	sha256sums = adb4c09c668c35605d9cddc4a4171dd64ed6e74ab82da97f19b3437d26b052b9
+	sha256sums = acba51024276670aabad3d3f2a1c80d4b573809ca7e7ef6594916329d842417f
 
 pkgname = jupyterhub
-
