@@ -3,7 +3,7 @@
 
 _pkgname=gnome-control-center
 pkgname=$_pkgname-x11-scaling
-pkgver=41.1
+pkgver=41.2
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with X11 fractional scaling patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -24,7 +24,7 @@ optdepends=('system-config-printer: Printer settings'
 groups=(gnome)
 conflicts=($_pkgname)
 provides=($_pkgname)
-_commit=eb053617651d251d29128525eb18592a2283d0cf  # tags/41.1^0
+_commit=babeb0ce357d55406b0ba0a4597e0513a0419de8  # tags/41.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=c5ab6037f460406ac9799b1e5765de3ce0097a8b"
         "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/10b4141256e5027b6df14eaa6659f15c523b2b8b/fractional-scaling.patch")
