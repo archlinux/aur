@@ -129,14 +129,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
         "lg-laptop-Recognize-more-models.patch"
 
-        # amd-pstate v4 included in Xanmod
+        # amd-pstate v5 included in Xanmod
         # multigenerational lru v5 included in Xanmod
         # 5.17 TCP Optimizations included in Xanmod
         # 5.17 TCP csum optimization included in Xanmod
-
-        # -- amd-pstate v5
-        "Revert-amd-pstate-v4.patch"
-        "squashed-amd-pstate-v5-on-5.15.y.patch"
 
         # 5.16: zstd 1.4.10 update stack size regression fixes
         "zstd-udpate-fixes.patch"
@@ -187,8 +183,6 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '54f161457cc4de4ebd5770c16f14f7a47f1dbbc4f1af83dec651e6a8b1eaad56'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
             '80538b0f529ed32118dac933d50599c6e843ae31882361fd88cd40a1dc7d21f9'
-            '75d9270564fd861083a71632bbd1110791b53c862956c8f393b40cf6bb16974e'
-            '26cb23bc212e8d8d6a18dd2ffa96dd2943170cb9572ce6aed36b5257de54df3a'
             'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
             '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
             'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
