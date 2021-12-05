@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.33.0.r336.g62b2c5db98
+pkgver=0.34.0.r96.gfc94c8c365
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -75,7 +75,7 @@ depends=(
          'libxss'
          'libxv'
          'lilv'
-         'luajit'
+         'lua52'
          'lv2'
          'mujs'
          'ocl-icd'
@@ -342,7 +342,13 @@ prepare() {
     '--confdir=/etc/mpv'
     '--htmldir=/usr/share/doc/mpv/html'
     '--disable-build-date'
-    '--lua=luajit'
+    '--disable-debug-build'
+    
+    '--enable-manpage-build'
+    '--disable-html-build'
+    '--disable-pdf-build'
+    
+    '--lua=lua52'
     '--enable-alsa'
     '--enable-caca'
     '--enable-cdda'
@@ -369,6 +375,7 @@ prepare() {
     '--enable-lua'
     '--enable-manpage-build'
     '--enable-openal'
+    '--disable-oss-audio'
     '--enable-plain-gl'
     '--enable-pulse'
     '--enable-rubberband'
