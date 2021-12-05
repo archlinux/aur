@@ -2,7 +2,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="dendrite"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 url="https://github.com/matrix-org/dendrite"
@@ -13,7 +13,7 @@ source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "$pkgname.service")
-sha256sums=('6871c9f23cf64cddadf198454154b4244a7d9f33005c848eacd48905a5359e36'
+sha256sums=('0c69e8031278d0b951e6a35532be939665ba8d8eab2d8eac80d8deed0656cf74'
             'aba328d7a7244e82f866f9d0ead0a53e79e1590b9c449ad6d18ff2659cb5e035'
             '83fa60ac51eb307aa1c96dbb088aa1ce69a91694b3bbaac210bf37408f33d837'
             'b0d5da62858969bed01fa6d8154cf43867dba48e86821e51cda8dc6eecba5cc7')
