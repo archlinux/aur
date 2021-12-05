@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-lhotse-git
-pkgver=1.0.0.dev0+git.a6c3936.clean
+pkgver=1.0.0.dev0+git.2b467a6.clean
 pkgrel=1
 pkgdesc="Speech and audio data preparation toolkit"
 arch=('any')
