@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=khronos
-pkgver=3.6.1
+pkgver=3.6.6
 pkgrel=1
 pkgdesc="Track each task's time in a simple inobtrusive way"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtk4' 'json-glib' 'libadwaita' 'libgee')
 makedepends=('meson' 'gobject-introspection' 'vala')
 source=(${url}/archive/$pkgver.tar.gz)
-sha512sums=('49bfd02423e65583deb3bfabe278d8c59737e646fbe738c4be027e2c7ee808b37a0429abde84be96afdaadb050845ea75b89322ab11dc75d8d4a77b95d59349e')
+sha512sums=('beebd090f87e1f0aa3d16fd7305f32b27b9c49cd8469e303fd8a77709244c5b754e95d8280584d6137a3375cbb6d575037719bf9de9ee7b98a05d36498c0d8ec')
 
 build() {
   arch-meson ${pkgname%-git}-${pkgver} build
