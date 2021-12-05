@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.0.0_devel.147532.34a75ce15ce
+pkgver=22.0.0_devel.147684.6e7ffa760f3
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -27,9 +27,7 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
                 'LICENSE'
-                'llvm32.native'
-)
-
+                'llvm32.native')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          '6b4a19068a323d7f90a3d3cd315ed1f9')
@@ -113,7 +111,6 @@ build () {
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland \
-        -D dri-drivers=i915,i965,r200,r100,nouveau \
         -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus \
         -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
         -D dri3=enabled \
