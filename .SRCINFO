@@ -6,14 +6,12 @@ pkgbase = r-lazyeval
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
 	depends = r>=3.1.0
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-covr
 	source = https://cran.r-project.org/src/contrib/lazyeval_0.2.2.tar.gz
-	md5sums = 1de725fe0cd496a2535020867458641a
+	sha256sums = d6904112a21056222cfcd5eb8175a78aa063afe648a562d9c42c6b960a8820d4
 
 pkgname = r-lazyeval
-
