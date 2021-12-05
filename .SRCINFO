@@ -5,7 +5,7 @@ pkgbase = r-tidyselect
 	url = https://cran.r-project.org/package=tidyselect
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	depends = r>=3.2
 	depends = r-ellipsis
 	depends = r-glue>=1.3.0
@@ -25,4 +25,3 @@ pkgbase = r-tidyselect
 	sha256sums = 18eb6a6746196a81ce19ee6cbf1db0c33f494177b97e2419312ef25a00ae486b
 
 pkgname = r-tidyselect
-
