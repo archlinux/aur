@@ -1,5 +1,5 @@
 pkgbase = clifm-git
-	pkgdesc = The KISS, non-curses terminal file manager (development version)
+	pkgdesc = The command line file manager (development version)
 	pkgver = 1.1.r346.gec633a5
 	pkgrel = 1
 	url = https://github.com/leo-arch/clifm
@@ -19,6 +19,9 @@ pkgbase = clifm-git
 	optdepends = atool: Archives/compression support
 	optdepends = p7zip: ISO 9660 support
 	optdepends = cdrtools: ISO 9660 support
+	optdepends = fzf: fzf mode for TAB completion
+	optdepends = udevil: (un)mount storage devices
+	optdepends = udisks2: (un)mount storage devices
 	provides = clifm
 	source = git+https://github.com/leo-arch/clifm.git
 	sha256sums = SKIP
