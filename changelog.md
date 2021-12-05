@@ -2751,4 +2751,28 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.2.45 fix: fix stock_info_a_code_name interface
 
 1.2.46 add: add stock_board_industry_cons_em interface
+
+1.2.47 fix: fix covid_19_dxy interface
+
+1.2.48 fix: fix covid_19_dxy interface
+
+1.2.49 fix: fix rate_interbank interface
+
+1.2.50 fix: fix nh_price_index interface
+
+1.2.51 add: add futures_hq_subscribe_exchange_symbol interface
+
+1.2.52 fix: fix futures_foreign_commodity_realtime interface
+
+1.2.53 add: add get_ine_daily interface
+
+1.2.54 fix: fix bond_zh_hs_cov_min interface
+
+1.2.55 add: add stock_repurchase_em interface
+
+1.2.56 fix: fix stock_zh_a_tick_163 interface
+
+1.2.57 add: add stock_us_hist_fu interface
+
+1.2.58 fix: fix stock_board_concept_hist_ths interface
 ```

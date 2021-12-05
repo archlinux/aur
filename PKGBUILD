@@ -2,7 +2,7 @@
 # Contributor:	Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=1.2.46
+pkgver=1.2.58
 pkgrel=1
 pkgdesc="Financial data interface library"
 arch=('any')
@@ -35,7 +35,7 @@ makedepends=(
 	'python-recommonmark')
 changelog=changelog.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akfamily/akshare/archive/v$pkgver.tar.gz")
-sha256sums=('3afeb6596e9a89f644557c1a489e5be097350e9f1d0bb951a882a002b3d07c3a')
+sha256sums=('f7d56445675b0b30e43040ed0b678c6ca315566c6272318f05f1d3894fe3f6f7')
 
 prepare() {
 	cd "akshare-$pkgver"
@@ -51,6 +51,6 @@ build() {
 package() {
 	cd "akshare-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 docs/build/man/akshare.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 docs/build/man/akshare.1 -t "$pkgdir/usr/share/man/man1/"
 }
