@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.12.3.r374.g4b5d703e0
+pkgver=1.12.3.r385.g197897979
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -22,7 +22,6 @@ makedepends=(
 	'libzip'
 	'miniupnpc'
 	'ninja'
-	'sdl2'
 	'spirv-cross'
 	'zstd'
 )
@@ -53,7 +52,7 @@ prepare() {
 	ln -s /usr/include/glslang ext/glslang
 	sed -i '/glslang/d' ext/CMakeLists.txt
 	# unbundle miniupnpc
-	sed -i 's|ext/miniupnp/||' Core/Util/PortManager.h
+	ln -s /usr/include/miniupnpc ext/miniupnp
 	# unbundle spirv-cross
 	rmdir ext/SPIRV-Cross
 	ln -s /usr/include/spirv_cross ext/SPIRV-Cross
@@ -67,7 +66,6 @@ build() {
 		-DLIBRETRO=ON \
 		-DUSE_SYSTEM_FFMPEG=ON \
 		-DUSE_SYSTEM_LIBPNG=ON \
-		-DUSE_SYSTEM_LIBSDL2=ON \
 		-DUSE_SYSTEM_LIBZIP=ON \
 		-DUSE_SYSTEM_MINIUPNPC=ON \
 		-DUSE_SYSTEM_SNAPPY=ON \

@@ -1,6 +1,6 @@
 pkgbase = libretro-ppsspp-git
 	pkgdesc = Sony PlayStation Portable core
-	pkgver = 1.12.3.r374.g4b5d703e0
+	pkgver = 1.12.3.r385.g197897979
 	pkgrel = 1
 	url = https://www.ppsspp.org/
 	arch = arm
@@ -16,7 +16,6 @@ pkgbase = libretro-ppsspp-git
 	makedepends = libzip
 	makedepends = miniupnpc
 	makedepends = ninja
-	makedepends = sdl2
 	makedepends = spirv-cross
 	makedepends = zstd
 	depends = ffmpeg
