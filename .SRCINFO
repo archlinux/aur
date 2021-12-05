@@ -1,0 +1,12 @@
+pkgbase = camunda-modeler-plugin-tooltip
+	pkgdesc = This plugin adds tooltips to various BPMN-elements revealing some properties and conditional flows
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/viadee/camunda-modeler-tooltip-plugin
+	arch = any
+	license = MIT
+	depends = camunda-modeler
+	source = https://github.com/viadee/camunda-modeler-tooltip-plugin/archive/v0.0.8.tar.gz
+	sha256sums = 83eea45e7727ab4f8d6f7f7cd5d55c864763321e114f412489e621a84c6e9a6e
+
+pkgname = camunda-modeler-plugin-tooltip
