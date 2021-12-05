@@ -1,0 +1,24 @@
+--- sqlite-src-3370000/configure.ac.old	2021-12-05 22:29:52.509814861 +0300
++++ sqlite-src-3370000/configure.ac	2021-12-05 22:53:06.317941047 +0300
+@@ -258,14 +258,16 @@
+ fi
+ if test "$CYGWIN" = "yes"; then
+   BUILD_EXEEXT=.exe
+-else
+-  BUILD_EXEEXT=$EXEEXT
+ fi
++
+ if test x"$cross_compiling" = xno; then
+-  TARGET_EXEEXT=$BUILD_EXEEXT
+-else
+-  TARGET_EXEEXT=$config_TARGET_EXEEXT
++  BUILD_EXEEXT=$EXEEXT
++fi
++
++if test -z "$TARGET_EXEEXT"; then
++  TARGET_EXEEXT=$EXEEXT
+ fi
++
+ if test "$TARGET_EXEEXT" = ".exe"; then
+   SQLITE_OS_UNIX=0
+   SQLITE_OS_WIN=1
