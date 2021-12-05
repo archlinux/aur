@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.0.0_devel.147096.d80c7f3406b
+pkgver=22.0.0_devel.147684.6e7ffa760f3
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -26,8 +26,7 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-laye
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
-        'LICENSE'
-)
+        'LICENSE')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
@@ -78,11 +77,7 @@ case $MESA_WHICH_LLVM in
         ;;
     *)
 esac
-        
-        
-        
-        
-        
+
 pkgver() {
     cd mesa
     read -r _ver <VERSION
@@ -97,7 +92,6 @@ prepare() {
     fi
 }
 
-
 build () {
     meson setup mesa _build \
        -D b_ndebug=true \
@@ -107,7 +101,6 @@ build () {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D dri-drivers=i915,i965,r200,r100,nouveau \
        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus \
        -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
        -D dri3=enabled \
