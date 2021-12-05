@@ -1,10 +1,4 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
-# Contributor: Tucker Boniface <tucker@boniface.tech>
-# Contributor: Tejuswi Vaghjee <tejvghj at gmail dot com>
-# Contributor: Sven-Hendrik Haase <sh at lutzhaase dot com>
-# Contributor: Jaroslaw Swierczynski <swiergot at aur dot archlinux dot org>
-# Contributor: Roman Kyrylych <Roman dot Kyrylych at gmail dot com>
-# Contributor: Rabyte <rabyte at gmail dot com>
 
 pkgbase=assaultcube
 pkgname=(assaultcube-client assaultcube-server assaultcube-common)
