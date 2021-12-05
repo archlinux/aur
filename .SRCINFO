@@ -26,6 +26,9 @@ pkgbase = r-lme4
 	optdepends = r-numderiv
 	optdepends = r-car
 	optdepends = r-dfoptim
+	optdepends = r-statmod
+	optdepends = r-rr2
+	optdepends = r-semeff
 	source = https://cran.r-project.org/src/contrib/lme4_1.1-27.1.tar.gz
 	sha256sums = 25fa873e39b8192e48c15eec93db8c8bf6f03baf3bd8d5ca9188482ce8442ec5
 
