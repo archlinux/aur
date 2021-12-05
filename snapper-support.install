@@ -1,0 +1,25 @@
+#!/bin/bash
+
+post_install() {
+    # Change grub snapshot submenu name
+    sed -i /etc/default/grub-btrfs/config \
+        -e 's,.*GRUB_BTRFS_SUBMENUNAME=.*,GRUB_BTRFS_SUBMENUNAME=\"Snapper snapshots\",'
+
+    if [[ $(/usr/bin/systemctl is-enabled grub-btrfs.path) == "enabled" ]]; then 
+        /usr/bin/systemctl disable --now grub-btrfs.path; 
+    fi
+
+    echo "Enabling automatic rebuild of grub-btrfs when snapshots are taken"
+    /usr/bin/systemctl daemon-reload
+    /usr/bin/systemctl enable --now grub-btrfs-snapper.path
+    /usr/bin/systemctl enable snapper-cleanup.timer
+    /usr/bin/systemctl enable snapper-timeline.timer
+    
+    echo "Creating snapper config for root"
+    /usr/bin/snapper create-config --template snapper /
+}
+
+pre_remove() {
+    echo "Deleting snapper config for root"
+    /usr/bin/snapper delete-config
+}
