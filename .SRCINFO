@@ -1,6 +1,6 @@
 pkgbase = libretro-ppsspp-git
 	pkgdesc = Sony PlayStation Portable core
-	pkgver = 1.12.2.r9.g11b65ca22
+	pkgver = 1.12.3.r374.g4b5d703e0
 	pkgrel = 1
 	url = https://www.ppsspp.org/
 	arch = arm
@@ -14,6 +14,7 @@ pkgbase = libretro-ppsspp-git
 	makedepends = git
 	makedepends = libpng
 	makedepends = libzip
+	makedepends = miniupnpc
 	makedepends = ninja
 	makedepends = sdl2
 	makedepends = spirv-cross
@@ -28,8 +29,6 @@ pkgbase = libretro-ppsspp-git
 	conflicts = libretro-ppsspp
 	source = git+https://github.com/hrydgard/ppsspp.git
 	source = git+https://github.com/Kingcom/armips.git
-	source = git+https://github.com/miniupnp/miniupnp.git
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 
