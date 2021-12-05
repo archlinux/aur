@@ -11,6 +11,7 @@ pkgbase = pince-git
 	depends = python-pyqt5
 	depends = python-distorm
 	depends = python-pygdbmi
+	depends = python-gobject
 	depends = gdb
 	depends = sudo
     makedepends = git
