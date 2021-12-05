@@ -6,7 +6,7 @@ pkgver=1.3.0.0
 pkgrel=1
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
-url='https://assaultcube.com'
+url='https://assault.cubers.net/'
 license=('ZLIB' 'custom')
 depends=('zlib' 'gcc-libs')
 makedepends=('mesa' 'clang')
@@ -31,7 +31,7 @@ prepare() {
 	sed -i 's|CUBE_OPTIONFILE=-Cconfig/servercmdline.txt|CUBE_OPTIONFILE=-C/etc/assaultcube/servercmdline.txt|' 'server.sh'
 	cd 'source/src'
 	FLAGS=${CLANG_CXXFLAGS:-}
-	check_option "lto" "y" && FLAGS+=' -flto'
+	check_option 'lto' 'y' && FLAGS+=' -flto'
 	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${FLAGS} -O3/" 'Makefile'
 	make
 }
