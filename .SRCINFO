@@ -1,6 +1,6 @@
 pkgbase = freetype2-git
 	pkgdesc = Font rasterization library (from git)
-	pkgver = 2.11.0+p110+g842ec5ed6
+	pkgver = 2.11.1+p0+g3f83daeec
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freetype.org/
@@ -39,7 +39,7 @@ pkgbase = freetype2-git
 pkgname = freetype2-git
 	install = freetype2.install
 	provides = libfreetype.so
-	provides = freetype2=2.11.0+p110+g842ec5ed6
+	provides = freetype2=2.11.1+p0+g3f83daeec
 	conflicts = freetype2
 	backup = etc/profile.d/freetype2.sh
 
@@ -48,11 +48,11 @@ pkgname = freetype2-demos-git
 	depends = freetype2-git
 	depends = libx11
 	optdepends = qt5-base: ftinspect
-	provides = freetype2-demos=2.11.0+p110+g842ec5ed6
+	provides = freetype2-demos=2.11.1+p0+g3f83daeec
 	conflicts = freetype2-demos
 
 pkgname = freetype2-docs-git
 	pkgdesc = Freetype documentation (from git)
 	depends = freetype2-git
-	provides = freetype2-docs=2.11.0+p110+g842ec5ed6
+	provides = freetype2-docs=2.11.1+p0+g3f83daeec
 	conflicts = freetype2-docs

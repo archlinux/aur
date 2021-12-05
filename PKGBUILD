@@ -3,7 +3,7 @@
 
 pkgbase=freetype2-git
 pkgname=(freetype2-git freetype2-demos-git freetype2-docs-git)
-pkgver=2.11.0+p110+g842ec5ed6
+pkgver=2.11.1+p0+g3f83daeec
 pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -43,18 +43,16 @@ pkgver() {
 }
 
 prepare() {
+  ln -sr freetype freetype-demos/subprojects/freetype2
   python -m venv docwriter-venv
   docwriter-venv/bin/pip install docwriter
 
   cd freetype
-
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
   patch -Np1 -i ../0005-Run-docwriter-via-venv.patch
-
-  ln -sr . ../freetype-demos/subprojects/freetype2
 }
 
 build() {
@@ -91,9 +89,8 @@ package_freetype2-git() {
   install -Dt "$pkgdir/usr/share/aclocal" -m644 \
     freetype/builds/unix/freetype2.m4
 
-  cd "$pkgdir"
-  _pick demos usr/bin
-  _pick demos usr/share/man/man1
+  _pick demos "$pkgdir"/usr/bin
+  _pick demos "$pkgdir"/usr/share/man/man1
 }
 
 package_freetype2-demos-git() {
