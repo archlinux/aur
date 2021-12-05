@@ -12,11 +12,13 @@ pkgbase = xmm7360-pci-git
 	source = xmm7360.service
 	source = kernel-5.15-compat.patch
 	source = nodbus-exit-code.patch
+	source = dns-priority.patch
 	sha256sums = SKIP
 	sha256sums = 2400211ef89ab0003db5ad2ffaf2bc9306c33d0d259f57f1457a4bc688a4c41f
 	sha256sums = 1c541d039c4ee26502b6efa5aea4c788359036f34299db1dc808cbfb803bfe8e
 	sha256sums = 2347cbf69ad32c33eae11546865355a2fc3b0a2ae747c70057e1ca142957edf3
 	sha256sums = b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82
+	sha256sums = 8389a09554df2e87f3b9df921e018bcb46585bde31e47699999b8576510e19f0
 
 pkgname = xmm7360-pci-dkms-git
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – module sources

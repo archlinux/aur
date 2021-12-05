@@ -1,0 +1,12 @@
+diff --git a/rpc/open_xdatachannel.py b/rpc/open_xdatachannel.py
+index d4186e1..1337f9a 100755
+--- a/rpc/open_xdatachannel.py
++++ b/rpc/open_xdatachannel.py
+@@ -192,6 +192,7 @@ if (myconnection is not None):
+         config["ipv4"]["dns"] = dbus.Array([dbus.UInt32(ip) for ip in dbus_ip],
+                                            signature=dbus.Signature("u")
+                                            )
++        config["ipv4"]["dns-priority"] = cfg.metric
+         settings_connection.Update(config)
+ else:
+     print("adding connection")

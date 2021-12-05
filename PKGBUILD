@@ -12,12 +12,14 @@ source=("git+$url"
         "dkms.conf"
         "xmm7360.service"
         "kernel-5.15-compat.patch"
-        "nodbus-exit-code.patch")
+        "nodbus-exit-code.patch"
+        "dns-priority.patch")
 sha256sums=('SKIP'
             '2400211ef89ab0003db5ad2ffaf2bc9306c33d0d259f57f1457a4bc688a4c41f'
             '1c541d039c4ee26502b6efa5aea4c788359036f34299db1dc808cbfb803bfe8e'
             '2347cbf69ad32c33eae11546865355a2fc3b0a2ae747c70057e1ca142957edf3'
-            'b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82')
+            'b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82'
+            '8389a09554df2e87f3b9df921e018bcb46585bde31e47699999b8576510e19f0')
 
 pkgver() {
   cd ${_pkgbase}
@@ -28,6 +30,7 @@ prepare() {
   cd ${_pkgbase}
   patch -p1 -i'' "${srcdir}"/kernel-5.15-compat.patch
   patch -p1 -i'' "${srcdir}"/nodbus-exit-code.patch
+  patch -p1 -i'' "${srcdir}"/dns-priority.patch
 }
 
 build() {
