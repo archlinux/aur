@@ -3,7 +3,7 @@
 _pkgname=libegit2
 pkgname=emacs-${_pkgname}-wbundled-git
 pkgver=r463.77bd28a
-pkgrel=1
+pkgrel=2
 pkgdesc='Emacs bindings for libgit2 without bundled libgit2'
 arch=('i686' 'x86_64')
 url="https://github.com/magit/libegit2"
@@ -27,6 +27,10 @@ prepare() {
   cd "${_pkgname}"
 
   patch -p1 -i "$srcdir"/96.patch
+
+  # Patch libgit.el to find libegit.so
+  sed -e 's|(expand-file-name "build" libgit--root)|\"/usr/lib/emacs/site-lisp\"|'  \
+      -i libgit.el
 
   mkdir -p build
 }
