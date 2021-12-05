@@ -11,7 +11,7 @@
 
 pkgname=ffmpeg-cuda
 pkgver=4.4.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -198,5 +198,5 @@ package() {
   make DESTDIR="${pkgdir}" -C ffmpeg install install-man
   install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
 
-  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 ffmpeg/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
