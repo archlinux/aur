@@ -4,7 +4,7 @@ pkgbase = r-generics
 	pkgrel = 1
 	url = https://cran.r-project.org/package=generics
 	arch = any
-	license = GPL2
+	license = MIT
 	depends = r>=3.2
 	optdepends = r-covr
 	optdepends = r-pkgload
