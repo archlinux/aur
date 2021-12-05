@@ -1,7 +1,7 @@
-# Maintainer:
+# Maintainer: RealStickman <mrc+aur@frm01.net>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 pkgname=cpu-g-git
-pkgver=0.16.3.1ubuntu1.r59.78fd9ec
+pkgver=0.16.3.1ubuntu1.r62.7c28cce
 pkgrel=1
 pkgdesc="Shows useful information about your computer"
 arch=('any')
