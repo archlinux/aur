@@ -21,6 +21,6 @@ build() {
 package() {
     mkdir "$pkgdir/usr"
     mkdir "$pkgdir/usr/bin/"
-	cp  "$pkgname/target/release/uconv" "$pkgdir/usr/bin/"
+	cp  "$pkgname/build/bin/rconv" "$pkgdir/usr/bin/"
     install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
