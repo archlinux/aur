@@ -3,7 +3,7 @@
 
 pkgname=f3d
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/${pkgname}-app/${pkgname}"
@@ -21,8 +21,8 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF \
         -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
-        -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE_IN_PREFIX=ON \
-        -DF3D_GENERATE_MAN=ON -DF3D_INSTALL_MIME_TYPES_FILE=ON \
+        -DF3D_GENERATE_MAN=ON \
+        -DF3D_INSTALL_MIME_TYPES_FILE=ON \
         -DF3D_INSTALL_THUMBNAILER_FILES=ON \
         -DF3D_MODULE_OCCT=ON \
         -DF3D_MODULE_ASSIMP=ON \
