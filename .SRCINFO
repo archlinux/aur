@@ -1,6 +1,6 @@
 pkgbase = obs-multisource-effect
 	pkgdesc = This is a simple source providing custom effect to render multiple sources
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/multi-source-effect.1412/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = obs-multisource-effect
 	license = GPL2
 	makedepends = cmake
 	depends = obs-studio
-	source = obs-multisource-effect-0.1.2.tar.gz::https://github.com/norihiro/obs-multisource-effect/archive/0.1.2.tar.gz
-	sha256sums = 45b0556eec7fd759d14e6634e68540efbffd2851297cc024631a78256976b2a4
+	source = obs-multisource-effect-0.1.3.tar.gz::https://github.com/norihiro/obs-multisource-effect/archive/0.1.3.tar.gz
+	sha256sums = b38a42309acbba2c55ff2e711d579990b531cb38fcd2b69961cbf09e0a55ec2d
 
 pkgname = obs-multisource-effect
