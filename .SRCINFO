@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-common
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
-	pkgver = 2.26.4556.102.20211121
+	pkgver = 2.26.4577.102.20211205
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = mozc-ut-common
 	makedepends = pkgconf
 	makedepends = python-six
 	depends = qt5-base
-	provides = mozc=2.26.4556.102
-	provides = mozc-ut=2.26.4556.102.20211121
+	provides = mozc=2.26.4577.102
+	provides = mozc-ut=2.26.4577.102.20211205
 	conflicts = mozc
 	conflicts = mozc-ut
 	conflicts = mozc-ut2
@@ -19,9 +19,9 @@ pkgbase = mozc-ut-common
 	conflicts = mozc-neologd-ut+ut2
 	conflicts = mozc-ut-unified
 	conflicts = mozc-ut-united
-	source = mozc-ut-common-git::git+https://github.com/google/mozc.git#commit=3dc692847d53e209ef9010791c3ab5ac06fd979b
-	source = https://osdn.net/downloads/users/37/37157/mozcdic-ut-20211121.tar.bz2
+	source = mozc-ut-common-git::git+https://github.com/google/mozc.git#commit=01306d0c67c5faa203994bab281c515b9d1248fa
+	source = https://osdn.net/downloads/users/37/37279/mozcdic-ut-20211205.tar.bz2
 	sha256sums = SKIP
-	sha256sums = f7850791df8d295f2df70fd50b7dee5c38f203a315de0dca80fd45adc0d430ec
+	sha256sums = 20c54170391e8e5037310ede7f0bf335e44d6e7471f485e468365ef382c72685
 
 pkgname = mozc-ut-common
