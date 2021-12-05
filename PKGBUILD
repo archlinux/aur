@@ -2,7 +2,7 @@
 
 _pkgbase='wgtools'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Python bindings for wireguard-tools'
 arch=('any')
