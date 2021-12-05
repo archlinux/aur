@@ -1,4 +1,4 @@
-From c3a08bfeec98cc5abe61d0f30cb4d8bd2d338263 Mon Sep 17 00:00:00 2001
+From 6ef883a739366e9b1f4cae4aab2ba4ed9f1bfc0a Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 21:03:19 +0100
 Subject: [PATCH 2/2] Makefile: prepend to build flags
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] Makefile: prepend to build flags
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile_plugin.common b/Makefile_plugin.common
-index 661c47d..d05c375 100644
+index 63a356e..dfaa805 100644
 --- a/Makefile_plugin.common
 +++ b/Makefile_plugin.common
 @@ -48,9 +48,9 @@ $(error "Didn't find 'yosys-config' under '$(YOSYS_PATH)'")
@@ -23,7 +23,7 @@ index 661c47d..d05c375 100644
 +LDLIBS := $(shell $(YOSYS_CONFIG) --ldlibs) $(LDLIBS)
  PLUGINS_DIR ?= $(DESTDIR)$(shell $(YOSYS_CONFIG) --datdir)/plugins
  DATA_DIR ?= $(DESTDIR)$(shell $(YOSYS_CONFIG) --datdir)
- 
+ EXTRA_FLAGS ?=
 -- 
-2.33.0
+2.34.1
 

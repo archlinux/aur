@@ -2,13 +2,13 @@
 
 _pkgname=yosys-symbiflow-plugins
 pkgname="$_pkgname-git"
-pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r405.g041f93b
+pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r515.g3b9e83b
 pkgrel=1
 pkgdesc="Plugins for Yosys developed as part of the SymbiFlow project."
 arch=(x86_64)
 url="https://github.com/SymbiFlow/yosys-symbiflow-plugins"
 license=('ISC')
-depends=('yosys>0.9' 'gcc-libs' 'tcl')
+depends=('yosys>0.9' 'gcc-libs' 'tcl' 'uhdm' 'surelog' 'flatbuffers')
 makedepends=('git')
 checkdepends=()
 provides=("$_pkgname=$pkgver")
@@ -18,8 +18,8 @@ source=("git+$url.git"
         "0002-Makefile-prepend-to-build-flags.patch"
 )
 sha256sums=('SKIP'
-            '5c2da350d8326fb4cc7d255aa2dbcdab296648f0ef96c267d0c48e00f1a114f1'
-            'bc876f94e81121c79b871f747f86ad231d1f627ee7e51e40f7001fd8d0bd21ec')
+            '74d186214d52126776019098f0bc9f03ab42b0ac0e15a3958312731beb8cdfea'
+            '1d7db82077c79fc078ba4c02700a05fcbf28a13dd16ae04c8ddffa4db11f0598')
 
 pkgver() {
 	cd "$_pkgname"
@@ -40,7 +40,7 @@ prepare() {
 build() {
 	cd "$_pkgname"
 
-	make
+	make BUILD_UPSTREAM=1 UHDM_INSTALL_DIR=/usr
 }
 
 check() {

@@ -1,4 +1,4 @@
-From 6c9c180aa0b1a6e9e6907ec34ef05d40e252fa86 Mon Sep 17 00:00:00 2001
+From 8ae4b31ca39725c6327d994c4290ded4178a82fc Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 20:30:00 +0100
 Subject: [PATCH 1/2] Makefile: respect DESTDIR
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] Makefile: respect DESTDIR
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile_plugin.common b/Makefile_plugin.common
-index ac9ae9b..661c47d 100644
+index 0870f21..63a356e 100644
 --- a/Makefile_plugin.common
 +++ b/Makefile_plugin.common
 @@ -51,8 +51,8 @@ CXX ?= $(shell $(YOSYS_CONFIG) --cxx)
@@ -19,9 +19,9 @@ index ac9ae9b..661c47d 100644
 -DATA_DIR ?= $(shell $(YOSYS_CONFIG) --datdir)
 +PLUGINS_DIR ?= $(DESTDIR)$(shell $(YOSYS_CONFIG) --datdir)/plugins
 +DATA_DIR ?= $(DESTDIR)$(shell $(YOSYS_CONFIG) --datdir)
+ EXTRA_FLAGS ?=
  
  OBJS := $(SOURCES:cc=o)
- 
 -- 
-2.33.0
+2.34.1
 
