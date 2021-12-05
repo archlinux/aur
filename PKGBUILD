@@ -33,6 +33,10 @@ b2sums=('5e5bbb2baeb8e7d70ec47cd6b7e147df3c9f53eaa02260510f12e9204cd39b4ac6ec151
 pkgver() {
   echo "${pkgver}"
 }
+strip() {
+  # package is already pre-stripped when desired
+  true
+}
 package() {
   mkdir -p "${pkgdir}"/usr/share/applications
   mkdir -p "${pkgdir}"/opt
