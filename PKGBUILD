@@ -1,9 +1,9 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
 pkgname=clifm
-pkgver=1.2.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="The KISS, non-curses terminal file manager"
+pkgdesc="The command line file manager"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
@@ -15,9 +15,12 @@ optdepends=(
 	'atool: Archives/compression support'
 	'p7zip: ISO 9660 support'
 	'cdrtools: ISO 9660 support'
+	'fzf: fzf mode for TAB completion'
+	'udevil: (un)mount storage devices'
+	'udisks2: (un)mount storage devices'
 	)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('61574023e597a047ca8842fd5b3b8fd099b02be52f188acc41a23678bf4ac2e4')
+sha256sums=('8418c71e90fe3b88b2e5b30eeadcb829574f99a9c90049e550a38f8c9e3f1076')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
