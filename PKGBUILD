@@ -5,7 +5,7 @@ pkgver=10.0.2
 pkgrel=1
 pkgdesc="DeDRM tools for ebooks - Calibre plugin"
 arch=(x86_64)
-url=https://github.com/apprenticeharper/DeDRM_tools/
+url=https://github.com/noDRM/DeDRM_tools/
 license=(GPL3)
 depends=('calibre>=5.15')
 makedepends=(unzip zip)
