@@ -1,0 +1,41 @@
+From 7daa3a5e17685e9eacb7d2361aaea428f1079d40 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 5 Dec 2021 20:08:42 +0100
+Subject: [PATCH 4/5] Fix install location of cmake config files
+
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 01f6e275c..dd13c32b1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -713,21 +713,21 @@ endif()
+ install(
+   EXPORT Surelog
+   FILE Surelog.cmake
+-  DESTINATION cmake)
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Surelog)
+ include(CMakePackageConfigHelpers)
+ 
+ # generate the config file that is includes the exports
+ configure_package_config_file(
+   ${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
+   "${CMAKE_CURRENT_BINARY_DIR}/SurelogConfig.cmake"
+-  INSTALL_DESTINATION cmake
++  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Surelog
+   NO_SET_AND_CHECK_MACRO
+   NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+ 
+ # install the configuration file
+ install(
+   FILES ${CMAKE_CURRENT_BINARY_DIR}/SurelogConfig.cmake
+-  DESTINATION cmake)
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Surelog)
+ 
+ ADD_CUSTOM_TARGET(link_target ALL
+                   COMMAND ${CMAKE_COMMAND} -E create_symlink
+-- 
+2.34.1
+

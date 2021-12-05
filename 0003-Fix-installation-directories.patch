@@ -1,0 +1,25 @@
+From f80247d4d065f234b43fbf71b5817f26097a3528 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 5 Dec 2021 19:56:28 +0100
+Subject: [PATCH 3/5] Fix installation directories
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ad96f6c08..01f6e275c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,6 +20,8 @@ option(
+ 
+ project(SURELOG)
+ 
++include(GNUInstallDirs)
++
+ # NOTE: Policy changes has to happen before adding any subprojects
+ cmake_policy(SET CMP0091 NEW)
+ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+-- 
+2.34.1
+

@@ -1,0 +1,31 @@
+pkgbase = surelog-git
+	pkgdesc = SystemVerilog 2017 Pre-processor, Parser, Elaborator, UHDM Compiler.
+	pkgver = r3840.a1edc64c1
+	pkgrel = 1
+	url = https://github.com/chipsalliance/Surelog
+	arch = x86_64
+	license = Apache
+	checkdepends = gtest
+	makedepends = git
+	makedepends = cmake
+	makedepends = tcl
+	makedepends = antlr4
+	depends = antlr4-runtime
+	depends = uhdm
+	depends = flatbuffers
+	provides = surelog=r3840.a1edc64c1
+	conflicts = surelog
+	source = git+https://github.com/chipsalliance/Surelog
+	source = 0001-Unvendor-dependencies.patch
+	source = 0002-Don-t-build-hello-worlds.patch
+	source = 0003-Fix-installation-directories.patch
+	source = 0004-Fix-install-location-of-cmake-config-files.patch
+	source = 0005-Build-shared-instead-of-static-library.patch
+	sha256sums = SKIP
+	sha256sums = 957d4ac0d8da855d993719ae5a33ee112c01ec62cdf2411f93d945b33e4f246e
+	sha256sums = edb38cf4fbed373574e02f2e7559ee8c43ffaf75d6945ff5c0251886d18a9924
+	sha256sums = f6ce38895b3f493f45e75fe87b7604d9f0a52b56f38b320d797ba6e4c3d79969
+	sha256sums = 4a14d0861cc8daa3fd192711870c02394e2def0ff662c9f846c4baf36f97f6d4
+	sha256sums = 968e6832222b9eadce0bc4dc4e0e7872f26bb4bec69709771d1bd4c7b64b22ba
+
+pkgname = surelog-git

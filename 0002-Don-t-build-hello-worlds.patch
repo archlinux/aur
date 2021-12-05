@@ -1,0 +1,47 @@
+From d874ba796f28a8349c872620b0bc3a264794f47d Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 5 Dec 2021 19:39:06 +0100
+Subject: [PATCH 2/5] Don't build hello worlds
+
+---
+ CMakeLists.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fff4cfa9d..ad96f6c08 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -381,9 +381,9 @@ if (APPLE)
+   endif()
+ endif()
+ 
+-add_executable(hellosureworld ${PROJECT_SOURCE_DIR}/src/hellosureworld.cpp)
+-add_executable(hellouhdm ${PROJECT_SOURCE_DIR}/src/hellouhdm.cpp)
+-add_executable(hellodesign ${PROJECT_SOURCE_DIR}/src/hellodesign.cpp)
++add_executable(hellosureworld EXCLUDE_FROM_ALL ${PROJECT_SOURCE_DIR}/src/hellosureworld.cpp)
++add_executable(hellouhdm EXCLUDE_FROM_ALL ${PROJECT_SOURCE_DIR}/src/hellouhdm.cpp)
++add_executable(hellodesign EXCLUDE_FROM_ALL ${PROJECT_SOURCE_DIR}/src/hellodesign.cpp)
+ 
+ if(MSVC OR WIN32)
+   # We have two files named "surelog.lib" and both getting generated in the lib folder
+@@ -551,7 +551,7 @@ else()
+     WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+ endif()
+ 
+-add_custom_target(PrecompileOVM DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/ovm_pkg.sv.slpa)
++add_custom_target(PrecompileOVM ALL DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/ovm_pkg.sv.slpa)
+ add_custom_command(
+   #TARGET surelog-bin
+   #POST_BUILD
+@@ -565,7 +565,7 @@ add_custom_command(
+   COMMAND echo "       Package OVM created"
+   WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+ 
+-add_custom_target(PrecompileUVM DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/uvm_pkg.sv.slpa)
++add_custom_target(PrecompileUVM ALL DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/uvm_pkg.sv.slpa)
+ add_custom_command(
+   #TARGET surelog-bin
+   #POST_BUILD
+-- 
+2.34.1
+

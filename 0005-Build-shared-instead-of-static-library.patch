@@ -1,0 +1,25 @@
+From 8f5e69dafcf211002201587f1721987fc4701846 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 5 Dec 2021 20:52:12 +0100
+Subject: [PATCH 5/5] Build shared instead of static library
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dd13c32b1..1b34c44f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -354,7 +354,7 @@ endforeach()
+ 
+ find_package(antlr4-runtime REQUIRED)
+ 
+-add_library(surelog STATIC ${surelog_SRC} ${surelog_generated_SRC})
++add_library(surelog SHARED ${surelog_SRC} ${surelog_generated_SRC})
+ set_target_properties(surelog PROPERTIES PUBLIC_HEADER src/surelog.h)
+ target_include_directories(surelog PRIVATE ${ANTLR4_INCLUDE_DIR})
+ target_include_directories(surelog PUBLIC $<INSTALL_INTERFACE:include/surelog>)
+-- 
+2.34.1
+
