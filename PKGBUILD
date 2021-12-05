@@ -15,7 +15,7 @@ makedepends=(
 	'ninja'
 	'robin-map>=0.6.2'
 	'xbyak>=5.995.r3'
-	'zydis>=3.1.0.r78'
+	'zydis>=3.2.0.r2'
 )
 checkdepends=('catch2>=2.13.1')
 provides=("$_pkgname=$pkgver" 'libdynarmic.so')
@@ -26,6 +26,11 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^r//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	# fix building with zydis>=4
+	sed -i 's/ZYDIS_ADDRESS_WIDTH_64/ZYDIS_STACK_WIDTH_64/' $_pkgname/src/dynarmic/common/x64_disassemble.cpp
 }
 
 build() {
@@ -49,7 +54,7 @@ check() {
 }
 
 package() {
-	depends+=('libfmt.so' 'libZydis.so')
+	depends+=('libfmt.so' 'libZydis.so>=4')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.txt
