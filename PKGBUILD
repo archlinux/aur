@@ -2,7 +2,7 @@
 
 pkgname=protonutils
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool that provides different utilities to make using the Proton compatibility tool more easily"
 arch=(x86_64)
 url="https://github.com/nning/protonutils"
@@ -22,6 +22,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
+  export GO111MODULE=on
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"

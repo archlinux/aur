@@ -1,7 +1,7 @@
 pkgbase = protonutils
 	pkgdesc = CLI tool that provides different utilities to make using the Proton compatibility tool more easily
 	pkgver = 1.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nning/protonutils
 	arch = x86_64
 	license = MIT
