@@ -9,7 +9,6 @@ pkgbase = r-abind
 	license = LGPL3
 	depends = r>=1.5.0
 	source = https://cran.r-project.org/src/contrib/abind_1.4-5.tar.gz
-	md5sums = 136f981e1c4f618b64a87faaa7797c97
+	sha256sums = 3a3ace5afbcb86e56889efcebf3bf5c3bb042a282ba7cc4412d450bb246a3f2c
 
 pkgname = r-abind
-
