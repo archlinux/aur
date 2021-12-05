@@ -1,30 +1,36 @@
 # Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=pkger-rs
-pkgver=0.6.0
+_pkgname=pkger
+pkgver=0.7.0
 pkgrel=0
 epoch=
 pkgdesc='Build rpm, deb, pkg and other packages using Docker'
 arch=('x86_64')
-url='https://github.com/wojciechkepka/pkger'
+url="https://github.com/vv9k/${_pkgname}"
 license=('MIT')
 depends=()
 makedepends=('cargo')
-provides=("pkger")
-conflicts=("pkger")
-sha1sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+sha256sums=('b1305ce0143ff31ad7bfb92deef4b1475f1cd092b687537ca95275733cc91462')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-PACKAGE_NAME="pkger"
-SOURCE_DIR="${PACKAGE_NAME}-${pkgver}"
+prepare() {
+    cd "${_pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
 
 build() {
-    cd $SOURCE_DIR
-    cargo build --release
+    cd "${_pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 package() {
-	cd $SOURCE_DIR
-	install -Dm755 "target/release/pkger" "${pkgdir}/usr/bin/pkger"
+    cd "${_pkgname}-${pkgver}"
+	install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${PACKAGE_NAME}/README.md"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${PACKAGE_NAME}/LICENSE"
