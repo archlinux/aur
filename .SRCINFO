@@ -1,7 +1,7 @@
 pkgbase = spotify
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.1.72.439
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.spotify.com
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = spotify
 	source = spotify-1.1.72.439-Release::http://repository.spotify.com/dists/testing/Release
 	source = spotify-1.1.72.439-Release.sig::http://repository.spotify.com/dists/testing/Release.gpg
 	source = spotify-1.1.72.439-x86_64-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages
-	validpgpkeys = 8FD3D9A8D3800305A9FFF259D1742AD60D811D58
+	validpgpkeys = F9A211976ED662F00E59361E5E3C45D7B312C643
 	sha512sums = 999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20
 	sha512sums = 2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615
 	sha512sums = 65cec95448d936b7be93b0d16f29927a298b5b56aa2bc4834a5d357e341c78486fa69e61b3b6cf9fbe7da88c8d3b6ce3bccb5e963ed1b5a23320c0c808ccb385

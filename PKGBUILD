@@ -7,7 +7,7 @@ pkgname=spotify
 pkgver=1.1.72.439
 epoch=1
 _commit=gc253025e
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
@@ -37,8 +37,11 @@ sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb43
             'SKIP'
             'SKIP'
             'SKIP')
-validpgpkeys=('8FD3D9A8D3800305A9FFF259D1742AD60D811D58') # Spotify <tux@spotify.com>
+# Import key with:
+# curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg --import -
+validpgpkeys=('F9A211976ED662F00E59361E5E3C45D7B312C643') # Spotify Public Repository Signing Key <tux@spotify.com>
 # Old Keys:
+# 8FD3D9A8D3800305A9FFF259D1742AD60D811D58
 # 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 # 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
 
