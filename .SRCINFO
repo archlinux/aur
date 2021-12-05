@@ -1,0 +1,18 @@
+pkgbase = xenia-bin
+	pkgdesc = Xenia is an experimental emulator for the Xbox 360.
+	pkgver = r6144.130888dbf
+	pkgrel = 1
+	url = http://xenia.jp
+	arch = x86_64
+	license = BSD
+	depends = gtk3
+	depends = lz4
+	depends = glew
+	depends = libx11
+	provides = xenia
+	conflicts = xenia
+	options = !strip
+	source = https://github.com/HMKnapp/xenia-bin/releases/download/r6144.130888dbf/xenia.r6144.130888dbf.tar.xz
+	sha256sums = f53f1721cf31f3bb79bc258284d9b1d8c49358223bcf2b5a5df7060858a98636
+
+pkgname = xenia-bin
