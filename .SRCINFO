@@ -1,0 +1,29 @@
+pkgbase = uhdm-git
+	pkgdesc = A complete modeling of the IEEE SystemVerilog Object Model
+	pkgver = r1173.d6edfd8
+	pkgrel = 1
+	url = https://github.com/chipsalliance/UHDM
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = tcl
+	makedepends = gtest
+	depends = capnproto
+	provides = uhdm=r1173.d6edfd8
+	conflicts = uhdm
+	source = git+https://github.com/chipsalliance/UHDM
+	source = 0001-Remove-unnecessary-submodules.patch
+	source = 0002-Don-t-try-to-_FORTIFY_SOURCE-unoptimized-files.patch
+	source = 0003-Install-libuhdm.so-to-usr-lib.patch
+	source = 0004-Install-capnp-file-to-usr-share.patch
+	source = 0005-Make-shared-instead-of-static-library.patch
+	sha256sums = SKIP
+	sha256sums = 844cd92b591369a08ef951367fb99eeacac43d1306989067984045be7b02c3fc
+	sha256sums = 7e6e15e7a8455bfa2c08516a620d006f0dbd643a4a8e4b1705749aaad3466666
+	sha256sums = 6f2fbfcc1b263847558266e7c3f99d08354846fe8fb8ccb2fb049f16ed19b772
+	sha256sums = 37add34d362a454630d202485400f59994e05886838efe3ef61a4b661073b0e0
+	sha256sums = 7e40c7ea12d1c276c923bd28d5074352e7720d4072e2a57df1f85f5c1d624cd3
+
+pkgname = uhdm-git

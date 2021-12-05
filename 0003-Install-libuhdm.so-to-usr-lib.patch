@@ -1,0 +1,24 @@
+From 1da4db630bb5ffc481d37f8816a01f69703375ab Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 5 Dec 2021 17:16:57 +0100
+Subject: [PATCH 3/5] Install libuhdm.so to /usr/lib
+
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8d6096f..fa086c5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -327,7 +327,6 @@ target_link_libraries(test_inst PRIVATE
+ # Installation target
+ install(
+   TARGETS uhdm uhdm-dump uhdm-hier
+-  ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/uhdm
+   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include/uhdm)
+ install(DIRECTORY ${GENDIR}/uhdm/
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/uhdm/)
+-- 
+2.34.1
+

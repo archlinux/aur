@@ -1,0 +1,33 @@
+From cae5ae02e218a6852f86dd17015a114c7456a215 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Mon, 8 Nov 2021 20:15:52 +0100
+Subject: [PATCH 2/5] Don't try to _FORTIFY_SOURCE unoptimized files
+
+/usr/include/features.h:397:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  397 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+In file included from /usr/include/c++/11.1.0/x86_64-pc-linux-gnu/bits/os_defines.h:39,
+                 from /usr/include/c++/11.1.0/x86_64-pc-linux-gnu/bits/c++config.h:571,
+                 from /usr/include/c++/11.1.0/string:38,
+                 from /build/uhdm-git/src/build/generated/uhdm/Serializer.h:30,
+                 from /build/uhdm-git/src/build/generated/src/Serializer_restore.cpp:25:
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 009ca61..8d6096f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -89,7 +89,7 @@ else()
+     set_property(SOURCE
+       ${GENDIR}/src/Serializer_save.cpp
+       ${GENDIR}/src/Serializer_restore.cpp
+-      PROPERTY COMPILE_FLAGS -O0
++      APPEND PROPERTY COMPILE_OPTIONS -O0 -Wp,-U_FORTIFY_SOURCE
+    )
+  endif()
+ endif()
+-- 
+2.34.1
+

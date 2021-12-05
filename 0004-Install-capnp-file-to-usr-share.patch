@@ -1,0 +1,22 @@
+From e7b9c5ff37fe7f088a10b63f555952519b3aa3f4 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 5 Dec 2021 17:23:28 +0100
+Subject: [PATCH 4/5] Install capnp file to /usr/share
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fa086c5..3e2e508 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -331,4 +331,4 @@ install(
+ install(DIRECTORY ${GENDIR}/uhdm/
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/uhdm/)
+ install(FILES ${GENDIR}/src/UHDM.capnp
+-        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/uhdm)
++        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/uhdm)
+-- 
+2.34.1
+

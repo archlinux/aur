@@ -1,0 +1,25 @@
+From f7f5ead4ab4936e40bdf724658aa0a3f5ce23aa9 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 5 Dec 2021 18:19:07 +0100
+Subject: [PATCH 5/5] Make shared instead of static library
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3e2e508..9cde6d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -219,7 +219,7 @@ foreach(src_file ${uhdm-GENERATED_SRC})
+   set_source_files_properties(${src_file} PROPERTIES GENERATED TRUE)
+ endforeach(src_file ${uhdm-GENERATED_SRC})
+ 
+-add_library(uhdm STATIC ${uhdm-GENERATED_SRC})
++add_library(uhdm SHARED ${uhdm-GENERATED_SRC})
+ set_target_properties(uhdm PROPERTIES PUBLIC_HEADER ${GENDIR}/uhdm/uhdm.h)
+ 
+ if(WITH_PYTHON_GENERATOR)
+-- 
+2.34.1
+

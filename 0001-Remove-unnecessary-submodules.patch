@@ -1,0 +1,85 @@
+From 0c4272a8d8de1779be8fe704e681c258bc749466 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Mon, 8 Nov 2021 19:56:58 +0100
+Subject: [PATCH 1/5] Remove unnecessary submodules
+
+---
+ CMakeLists.txt | 20 +++++---------------
+ 1 file changed, 5 insertions(+), 15 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c040f9f..009ca61 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,7 +34,7 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter)
+ message(STATUS "Python3_EXECUTABLE = ${Python3_EXECUTABLE}")
+ 
+ set(BUILD_TESTING OFF CACHE BOOL "Don't build capnproto tests")
+-add_subdirectory(third_party/capnproto EXCLUDE_FROM_ALL)
++find_package(CapnProto)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+@@ -135,12 +135,10 @@ foreach(header_file ${model-GENERATED_SRC})
+   set_source_files_properties(${header_file} PROPERTIES GENERATED TRUE)
+ endforeach(header_file ${model-GENERATED_SRC})
+ 
+-set(CAPNP_DIR ${CMAKE_CURRENT_BINARY_DIR}/third_party/capnproto/c++/src/capnp)
+-
+ add_custom_command(
+   OUTPUT ${model-GENERATED_SRC}
+-  COMMAND ${CAPNP_DIR}/capnp compile -o${CAPNP_DIR}/capnpc-c++ ${model-GENERATED_UHDM}
+-  DEPENDS capnpc capnpc_cpp ${model-GENERATED_UHDM})
++  COMMAND capnp compile -o c++ ${model-GENERATED_UHDM}
++  DEPENDS ${model-GENERATED_UHDM})
+ add_custom_target(GenerateCode DEPENDS ${model-GENERATED_SRC})
+ 
+ if (WITH_PYTHON_GENERATOR)
+@@ -234,13 +232,10 @@ endif()
+ target_include_directories(uhdm SYSTEM PUBLIC
+   $<BUILD_INTERFACE:${GENDIR}>
+   $<INSTALL_INTERFACE:include>)
+-target_include_directories(uhdm PRIVATE
+-  ${PROJECT_SOURCE_DIR}/third_party/capnproto/c++/src
+-  ${PROJECT_SOURCE_DIR}/third_party/UHDM/src)
+ target_compile_definitions(uhdm
+   PUBLIC PLI_DLLISPEC=
+   PUBLIC PLI_DLLESPEC=)
+-target_link_libraries(uhdm PUBLIC capnp)
++target_link_libraries(uhdm PUBLIC kj capnp)
+ 
+ if(APPLE)
+   target_link_libraries(uhdm
+@@ -258,10 +253,8 @@ elseif(UNIX)
+ endif()
+ 
+ add_dependencies(uhdm GenerateCode)
+-add_dependencies(GenerateCode capnpc capnp_tool capnpc_cpp)
+ 
+ if (UHDM_BUILD_TESTS)
+-  add_subdirectory(third_party/googletest EXCLUDE_FROM_ALL)
+   enable_testing()
+   include(GoogleTest)
+   # All unit-tests are registered with this custom target as dependency, so
+@@ -275,9 +268,6 @@ if (UHDM_BUILD_TESTS)
+       get_filename_component(test_prefix ${test_cc_file} DIRECTORY)
+ 
+       add_executable(${test_bin} ${PROJECT_SOURCE_DIR}/${test_cc_file})
+-      target_include_directories(${test_bin} PRIVATE
+-        third_party/googletest/googletest/include
+-        third_party/googletest/googlemock/include)
+       target_link_libraries(${test_bin} PRIVATE uhdm gtest gmock gtest_main)
+       add_test(
+         NAME ${test_prefix}/${test_bin} COMMAND ${test_bin}
+@@ -336,7 +326,7 @@ target_link_libraries(test_inst PRIVATE
+ 
+ # Installation target
+ install(
+-  TARGETS uhdm capnp kj uhdm-dump uhdm-hier
++  TARGETS uhdm uhdm-dump uhdm-hier
+   ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/uhdm
+   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include/uhdm)
+ install(DIRECTORY ${GENDIR}/uhdm/
+-- 
+2.34.1
+
