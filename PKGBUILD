@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.7.0.18
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2020_05_23
 _ffdetect_ver=2020_05_23
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -14,8 +14,9 @@ url='https://emby.media'
 license=('custom')
 depends=('alsa-lib'
          'aom'
+         'aspnet-runtime'
          'bzip2'
-         'dotnet-runtime-3.1'
+         'dotnet-runtime'
          'dotnet-host-bin'
          'expat'
          'fontconfig'
@@ -59,7 +60,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
 install=emby-server.install
-sha256sums=('9112fe8337fb901197ae26c6dceeaa26382e8a107c6bd11a0a60a8e090df274b'
+sha256sums=('96513e8659250cebbdd4dad0f1e83d5d7a9e75538b5b5f9ae711904799beb154'
             'ed2fde500b705b06a0b82a9bf6b367c63b0fc899f69f77691bc68d61f3862a77'
             'c66e73c86ebfdfb169dbdc3c6731f09bd82382dda3fb8a77abe19d6973c09b51'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
