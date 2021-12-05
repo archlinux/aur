@@ -18,12 +18,12 @@ pkgbase = xmm7360-pci-git
 	sha256sums = 2347cbf69ad32c33eae11546865355a2fc3b0a2ae747c70057e1ca142957edf3
 	sha256sums = b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82
 
-pkgname = xmm7360-pci-dkms-git
+pkgname = xmm7360-pci-git-dkms
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – module sources
 	depends = dkms
 	provides = XMM7360-PCI-MODULE
 
-pkgname = xmm7360-pci-utils-git
+pkgname = xmm7360-pci-git-utils
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – utilities only
 	depends = XMM7360-PCI-MODULE
 	depends = dbus-python

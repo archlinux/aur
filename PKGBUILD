@@ -1,6 +1,6 @@
 _pkgbase=xmm7360-pci
 pkgbase=xmm7360-pci-git
-pkgname=(xmm7360-pci-dkms-git xmm7360-pci-utils-git)
+pkgname=(xmm7360-pci-git-dkms xmm7360-pci-git-utils)
 pkgver=r219.b28714b
 pkgrel=1
 pkgdesc='Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem'
@@ -35,7 +35,7 @@ build() {
   python -m compileall -o1 rpc
 }
 
-package_xmm7360-pci-dkms-git() {
+package_xmm7360-pci-git-dkms() {
   pkgdesc+=" – module sources"
   depends=(dkms)
   provides=(XMM7360-PCI-MODULE)
@@ -43,7 +43,7 @@ package_xmm7360-pci-dkms-git() {
   install -Dm644 "${srcdir}"/dkms.conf xmm7360.c Makefile -t "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/
 }
 
-package_xmm7360-pci-utils-git() {
+package_xmm7360-pci-git-utils() {
   pkgdesc+=" – utilities only"
   depends=(XMM7360-PCI-MODULE dbus-python python-pyroute2 python-configargparse)
   backup=(etc/xmm7360)
