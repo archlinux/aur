@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-startuptime
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Vim plugin for profiling startup time"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e29660bfed2715aabd2699bd6bf6742dfa042ab6f3cd22c36ebc27fd28f78c48')
+sha256sums=('d283f75a6212cc0df5ac00c48ad697ea48199a165250b150fa6f8f18561f0867')
 
 package() {
 	cd "$pkgname-$pkgver"
