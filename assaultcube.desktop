@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=assaultcube
+Icon=assaultcube
+Type=Application
+Terminal=false
+Name=AssaultCube
+GenericName=First Person Shooter Game
+StartupNotify=false
+Categories=Game;ActionGame;Shooterl
+Comment=AssaultCube is a FREE, multiplayer, first-person shooter game, based on the CUBE engine.
