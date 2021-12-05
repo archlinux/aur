@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 pkgname=ryujinx-git
-pkgver=r1842.d92fff541
-pkgrel=3
+pkgver=r1902.acc0b0f31
+pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
@@ -41,6 +41,6 @@ package() {
 	install -D ryujinx.desktop "${pkgdir}/usr/share/applications/ryujinx.desktop"
 	install -D ryujinx.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ryujinx.png"
 
-	cp -R ${srcdir}/Ryujinx/Ryujinx/bin/Release/net5.0/linux-x64/publish/* "${pkgdir}/opt/ryujinx/"
+	cp -R ${srcdir}/Ryujinx/Ryujinx/bin/Release/net6.0/linux-x64/publish/* "${pkgdir}/opt/ryujinx/"
 	ln -s "/opt/ryujinx/Ryujinx" "${pkgdir}/usr/bin/ryujinx"
 }
