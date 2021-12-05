@@ -1,7 +1,7 @@
 [Unit]
 Description=XMM7360 Modem Init
 After=NetworkManager.service
-Requires=multi-user.target systemd-user-sessions.service dev-ttyXMM1.device
+Requires=multi-user.target systemd-user-sessions.service dev-ttyXMM2.device
 
 [Service]
 Type=oneshot
