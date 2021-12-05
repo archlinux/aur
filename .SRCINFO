@@ -1,21 +1,16 @@
 pkgbase = librepfunc
 	pkgdesc = a collection of common functions, classes and tools. Mainly used by w_scan_cpp
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wirbel-at-vdr-portal/librepfunc
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = GPL2
-	makedepends = make
-	makedepends = wget
-	makedepends = git
-	makedepends = grep
-	makedepends = sed
 	depends = glibc
-	provides = librepfunc
-	source = librepfunc::git+https://github.com/wirbel-at-vdr-portal/librepfunc
-	sha256sums = SKIP
+	depends = gcc-libs
+	source = librepfunc-1.1.1.tar.gz::https://github.com/wirbel-at-vdr-portal/librepfunc/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = 3ccf92b8b6bcc9eb78cc8b67f000ac1f306aa752103c30b6b7b4b717a0f15514
 
 pkgname = librepfunc
