@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env sh
 /usr/share/games/actionfps/assaultcube.sh "$@"
