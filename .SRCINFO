@@ -1,19 +1,19 @@
 pkgbase = nessus
 	pkgdesc = Nessus vulnerability scanner
-	pkgver = 8.15.2
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://www.tenable.com/downloads/nessus
 	install = nessus.install
 	arch = x86_64
 	license = custom
 	depends = gnupg
-	source = nessus-8.15.2-fc20.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/14952/download?i_agree_to_tenable_license_agreement=true
+	source = nessus-10.0.1-fc20.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/15334/download?i_agree_to_tenable_license_agreement=true
 	source = nessus.desktop
 	source = nessus.sh
 	source = LICENSE
-	sha256sums = 4cd26e04f6c33a2e38cdf31a350656fd0b0f4a5d57b9ba23ffa5c82f03fe1061
-	sha256sums = 8c5e82d609a7290c34cbfa5635012cb66820e4e2c1db2bf5808fc306fcefdc30
-	sha256sums = 9b8e2c15d86ce7b83806a27bd6685f009ad339f3ea52022b87a75fbd2802ec5a
-	sha256sums = d647aedd39d571faa3f1a9906db561eecbd9c41605ba7f562261ffb04877ba26
+	b2sums = db4f60c2f2f420f10db1370bea7e506d41ebecfa367cfc165d42049828ef4729d81fc0fd35df99adf28205a0591e1755baba4766ba30eba0f8681f2b91c8ce60
+	b2sums = e9f6346d0c2b444c71f0673a9dd22f4298abf1ccc4500fa2db4439627844106e3d523cda976411aa243f56711b691a12ac228809cdae038371607db11a44dd61
+	b2sums = fbc6b44c6722e48b26011314d3cd2a44780ef94965db159ef1a35743e371927ec4927a9da2db9ebbb9714fc3a0a30fa4d785b23aa76e4a8a1e446a515fc1bcdd
+	b2sums = 2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1
 
 pkgname = nessus
