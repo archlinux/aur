@@ -1,0 +1,16 @@
+pkgbase = ruby-jekyll-theme-minimal
+	pkgdesc = A minimal Jekyll theme for GitHub Pages
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pages-themes/minimal
+	arch = any
+	license = CC0
+	depends = ruby
+	depends = jekyll
+	depends = ruby-jekyll-seo-tag
+	noextract = jekyll-theme-minimal-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-theme-minimal-0.2.0.gem
+	sha1sums = 0b84b93333d664b01d8d37ab2953d48c61bd6d76
+
+pkgname = ruby-jekyll-theme-minimal
