@@ -8,7 +8,7 @@ pkgbase = pkger-rs
 	makedepends = cargo
 	provides = pkger
 	conflicts = pkger
-	source = https://github.com/vv9k/pkger/archive/refs/tags/0.7.0.tar.gz
+	source = pkger-rs-0.7.0.tar.gz::https://github.com/vv9k/pkger/archive/refs/tags/0.7.0.tar.gz
 	sha256sums = b1305ce0143ff31ad7bfb92deef4b1475f1cd092b687537ca95275733cc91462
 
 pkgname = pkger-rs
