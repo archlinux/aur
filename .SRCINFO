@@ -14,8 +14,6 @@ pkgbase = python-degiro-connector
 	depends = python-requests
 	depends = python-wrapt
 	provides = degiro-connector
-	conflicts = python-degiro-connector
-	replaces = python-degiro-connector
 	source = python-degiro-connector-2.0.9.tar.gz::https://github.com/Chavithra/degiro-connector/archive/refs/tags/2.0.9.tar.gz
 	sha256sums = 8d09882b75aefbcd63d91afaaff45df3546b2501c03f8dc79d33af12cc88b4ac
 

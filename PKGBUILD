@@ -8,8 +8,6 @@ url="https://github.com/Chavithra/degiro-connector"
 license=("BSD-3")
 arch=("any")
 provides=("degiro-connector")
-replaces=("python-degiro-connector")
-conflicts=("python-degiro-connector")
 # not adding "python-orjson" because it is not compatible with ARM architectures yet
 depends=("python-grpcio" "python-onetimepass" "python-pandas" "python-protobuf" "python-requests" "python-wrapt")
 makedepends=("python-dephell" "python-setuptools")
