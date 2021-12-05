@@ -1,6 +1,6 @@
 # Maintainer: John Downey <jdowney@gmail.com>
 pkgname=libnss-cache
-pkgver=0.17
+pkgver=0.20
 pkgrel=1
 epoch=
 pkgdesc="A NSS module for reading directory service information for Linux hosts from an indexed, local disk cache"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/google/libnss-cache/archive/version/${pkgver}.tar.gz")
 noextract=()
-sha256sums=("3777cbc46dc8d08144b99321d1f039718cd347d3be8ed66a8cb3722d3e6692f5")
+sha256sums=('71324b6035674028a0f39c98aedfbaed94adbcddd72dc1c4ab81308b135dd586')
 validpgpkeys=()
 
 build() {
