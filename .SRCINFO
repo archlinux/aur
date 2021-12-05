@@ -1,7 +1,7 @@
 pkgbase = xaskpass
 	pkgdesc = A lightweight passphrase dialog
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/user827/xaskpass.git
 	arch = x86_64
 	license = Apache
