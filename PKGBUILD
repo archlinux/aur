@@ -3,7 +3,7 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite-milestone
-pkgver=10.2.0m2
+pkgver=10.4.0m1
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=(any)
@@ -23,7 +23,7 @@ provides=(phoronix-test-suite)
 conflicts=(phoronix-test-suite)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch")
-sha256sums=('8f7937d3295544c1fa18a85c9b4550a62b0de7d639ef5688df73a2b3a08f114c'
+sha256sums=('469d477f9756d303c3365517f125f06e52e451a61ed91bd349e213fde144157b'
             '577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d')
 options=(!strip)
 
