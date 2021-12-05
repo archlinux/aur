@@ -11,7 +11,7 @@ options=(!strip)
 provides=('sass')
 conflicts=('ruby-sass')
 source=("https://github.com/sass/$pkgname/archive/$pkgver.tar.gz")
-b2sums=('8b02eaab47bddd9466e55edfead40895833eb635616dfd4c30206e6bed12227a6ac2a19521be0a246ba9b8cdd5fd90b5c0f821446ce825f6ddd210fbd39965a1')
+b2sums=('1c1a182191e47ed4f372f2eb744d97557eebbaff82b92dcfac6d1d36e0d602ad5198ebb59686d83fccf04355ef357ac59974a5c36f068f91d5f704027c3a8686')
 
 build() {
   cd "$pkgname-$pkgver"
