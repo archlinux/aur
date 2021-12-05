@@ -3,7 +3,7 @@
 pkgname=xaskpass
 pkgdesc="A lightweight passphrase dialog"
 url="https://github.com/user827/xaskpass.git"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=2
 arch=('x86_64')
 license=('Apache')
