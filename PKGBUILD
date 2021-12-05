@@ -1,12 +1,13 @@
-# Maintainer: DannyChain <dev@dannychain.anonaddy.me>
+# Maintainer: Stephen Steward <smstewa4 at protonmail dot com>
+# Contributor: DannyChain <dev at dannychain dot anonaddy dot me>
 
 _appname=app-outlet
 pkgname=app-outlet-bin
-pkgver=1.3.4
-pkgrel=4
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="A Universal linux app store"
-url="https://app-outlet.github.io"
 arch=("x86_64")
+url="https://app-outlet.github.io"
 license=("MIT")
 source=(
   "${_appname}.AppImage::https://github.com/app-outlet/app-outlet/releases/download/v${pkgver}/App.Outlet-${pkgver}.AppImage"
@@ -14,13 +15,11 @@ source=(
   "LICENSE"
   "icon.png"
 )
-sha256sums=(
-  "81ffabda2dd6f049cd41ac58056463c93197bf19ad8f245b333f2b6cd9914ed5"
-  "80fbc53f25a545b042e80ad71801ce680cce1a625c55f00aeb6b5a00d11cb507"
-  "8aba9d7f0845dbd30493aa751441f3e63ba32f12a526aa028ff155196d3f2393"
-  "0330721088dee7e9f88ed35e254fa9843a87fdc2c4996a50ac26adf2adf77818"
+sha256sums=('c8f39d7867e850d55fbd6fbb7495559901d042caa13da68607787cf1a61d46ca'
+            '85f9535c10eb692f0edf9742ac06c1aa03b2c3afc61fcc9019a45b211a45ff83'
+            'c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8'
+            'eed1d87a3f89afbd73898d331bcb484afc3862a0b67bc8b47d5c29aa97c55e5c'
 )
-
 package() {
   install -Dm644 ${_appname}.desktop -t "${pkgdir}/usr/share/applications"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_appname}"
