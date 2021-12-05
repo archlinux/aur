@@ -2,7 +2,7 @@
 
 pkgname="python-pylspci"
 _pkgname="pylspci"
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Python parser for the lspci command from the pciutils package."
 arch=('any')
