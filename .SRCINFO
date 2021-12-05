@@ -1,7 +1,7 @@
 pkgbase = efiboots-git
 	pkgdesc = Manage EFI boot loader entries with this simple GUI
 	pkgver = 1.0.r0.ga127150
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Elinvention/efiboots
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = efiboots-git
 	depends = python-gobject
 	depends = efibootmgr
 	depends = python3
+	depends = gtk4
 	provides = efiboots
 	conflicts = efiboots
 	source = git+https://github.com/Elinvention/efiboots.git
