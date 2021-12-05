@@ -5,7 +5,7 @@
 
 pkgbase=bitbake
 pkgname=(bitbake bitbake-vim)
-pkgver=1.50.1
+pkgver=1.52.0
 pkgrel=1
 pkgdesc="Build tool executing tasks and managing metadata"
 url="https://www.openembedded.org/wiki/Main_Page"
@@ -13,7 +13,7 @@ license=(GPL2)
 arch=(any)
 source=("https://git.openembedded.org/bitbake/snapshot/bitbake-${pkgver}.tar.gz"
         "ignore-TestHashEquivalenceTCPServer.patch")
-sha256sums=('04dd74c66902c1ada8e2f3e52b33747712ccac57f4fba2d6e51e0cc0661614b8'
+sha256sums=('ec23630cff7da2fa6e686cd330cc50c834472433a3f1001bcb857c2f837519dd'
             '0347fc61bb5e1b25e62b698470aaecf411680088c7d5c88a8a0e59138b620a33')
 
 #check() {
