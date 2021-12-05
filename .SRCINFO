@@ -1,16 +1,19 @@
 pkgbase = python-endpoints
 	pkgdesc = Lightweight REST API framework
-	pkgver = 4.3.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/jaymon/endpoints
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-decorator
+	depends = python-decorators
 	depends = python-datatypes
-	source = https://files.pythonhosted.org/packages/source/e/endpoints/endpoints-4.3.0.tar.gz
+	optdepends = python-jinja
+	optdepends = python-tornado
+	optdepends = python-websockets
+	source = python-endpoints-5.0.1.tar.gz::https://files.pythonhosted.org/packages/source/e/endpoints/endpoints-5.0.1.tar.gz
 	source = 001-setup.py.patch
-	sha256sums = c29088ebe60944e2049f25ac424d9fe1ce3b59033e73c6819ce380977a780c86
+	sha256sums = a251b9662b40a063907d627d7c66e76a12034ee424ddf64aed2a15441b5e105b
 	sha256sums = a2d153ce864bada83622dd4ff8b7f7c83a04ba84c7cc8cf83707e4a420f27e23
 
 pkgname = python-endpoints
