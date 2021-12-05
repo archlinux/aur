@@ -1,9 +1,11 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
+# Maintainer: graysky <graysky AT archlinux DOT us>
 _base=matplotx
 pkgname=python-${_base}
 pkgdesc="Extensions for Matplotlib"
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
@@ -21,7 +23,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks -k 'not README'
 }
 
 package() {
