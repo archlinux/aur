@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index ab5c84c..c3bd432 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,7 +36,7 @@ setuptools.setup(
+     author_email="googleapis-packages@google.com",
+     license="Apache 2.0",
+     url="https://github.com/googleapis/python-test-utils",
+-    packages=setuptools.PEP420PackageFinder.find(),
++    packages=setuptools.find_packages(exclude=['tests']),
+     entry_points={"console_scripts": scripts},
+     platforms="Posix; MacOS X; Windows",
+     include_package_data=True,
