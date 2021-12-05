@@ -5,8 +5,7 @@ pkgbase = r-later
 	url = https://cran.r-project.org/package=later
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = MIT
 	depends = r
 	depends = r-rcpp>=0.12.9
 	depends = r-rlang

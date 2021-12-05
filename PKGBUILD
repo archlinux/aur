@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Utilities for Scheduling Functions to Execute Later with Event Loops"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL2 GPL3)
+license=(MIT)
 depends=(r 'r-rcpp>=0.12.9' r-rlang)
 optdepends=(r-knitr r-rmarkdown r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
@@ -23,4 +23,3 @@ package() {
 
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
-
