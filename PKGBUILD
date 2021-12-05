@@ -2,7 +2,7 @@
 pkgname=helix-git
 _pkgname=helix
 pkgver=r1775.c08d2fae
-pkgrel=1
+pkgrel=2
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
 _git="https://github.com/helix-editor/${_pkgname}.git"
@@ -20,8 +20,8 @@ _rt_path="${_lib_path}/runtime"
 
 
 pkgver() {
-  cd helix
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -31,8 +31,9 @@ HELIX_RUNTIME=${_rt_path} exec ${_lib_path}/${_bin} "\$@"
 EOF
 	chmod +x "$_bin"
 
-	rm -rf "${_pkgname}"
-	git clone --recurse-submodules --shallow-submodules -j8 "$_git"
+    cd "${_pkgname}"
+    git submodule update --force --init --recursive --depth 1 --jobs 8
+
 }
 
 build() {
