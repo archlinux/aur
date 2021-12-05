@@ -6,12 +6,12 @@ pkgname=beyondallreason-bin
 pkgdesc='Beyond All Reason'
 license=('LGPL3')
 url='https://github.com/beyond-all-reason/BYAR-Chobby'
-pkgver=1.1272.0
+pkgver=1.1276.0
 pkgrel=1
 arch=('x86_64')
 _package="Beyond-All-Reason-${pkgver}.AppImage"
 source=("${_package}::${url}/releases/download/v${pkgver}/${_package}")
-sha512sums=('993cdbf396f50c6b50ce4f44a958a84cb39ce6994adcfeaa6046ac0030407ede85f2ada6d302af4e3a319f44d906d07d5ff19d1848dec7b6733e3bed220e809f')
+sha512sums=('1238e3d44fa804d0f8b6f25f054f73baee54f430a011c23639a9331b12f206e156b064b37c596c1b84120374f56e0d04d63b5f4260a25363dea114f2c54d4483')
 
 build() {
   # Extract files
