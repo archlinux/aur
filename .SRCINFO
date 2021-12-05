@@ -1,7 +1,7 @@
 pkgbase = daggerfall-unity-aur-bin
 	pkgdesc = The Elder Scrolls: Daggerfall rebuilt using the unity engine
 	pkgver = 0.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dfworkshop.net/
 	arch = x86_64
 	license = GPL3

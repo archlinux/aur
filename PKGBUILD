@@ -1,7 +1,7 @@
 #Maintainer: james@stampatron.com
 pkgname=daggerfall-unity-aur-bin
 pkgver=0.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Elder Scrolls: Daggerfall rebuilt using the unity engine"
 arch=('x86_64')
 url=https://www.dfworkshop.net/
@@ -75,8 +75,8 @@ check() {
 
   if [ $REMOTE_DATA_FILES == "TRUE" ]; then
     echo "Checking downloaded data files integrity"
-    DATA_VALID=$(echo "$DATA_HASH ${srcdir}/data.zip" | sha256sum -c | grep -o OK)
-    if [ $DATA_VALID == "OK" ]; then
+    DATA_VALID=$(sha256sum ${srcdir}/data.zip | grep -o $DATA_HASH)
+    if [ $DATA_VALID == "$DATA_HASH" ]; then
       echo "Data file confirmed to be valid"
     fi
   else
