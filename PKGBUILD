@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=dockeye
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 epoch=
 pkgdesc="GUI app to manage Docker"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 provides=("$pkgname")
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5a2bb2ae5972cdea193b24e9b315352181e48001c58fb6846abcb6e5a3936c67')
+sha256sums=('222faa30c78ab2f77da1be6d46a5da01c47fc24ed7438aef9d7e42fded08ef22')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

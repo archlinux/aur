@@ -1,7 +1,7 @@
 pkgbase = dockeye
 	pkgdesc = GUI app to manage Docker
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/vv9k/dockeye
 	arch = x86_64
 	license = GPLv3
@@ -9,7 +9,7 @@ pkgbase = dockeye
 	depends = libxcb
 	depends = gcc-libs
 	provides = dockeye
-	source = dockeye-0.1.0.tar.gz::https://github.com/vv9k/dockeye/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = 5a2bb2ae5972cdea193b24e9b315352181e48001c58fb6846abcb6e5a3936c67
+	source = dockeye-0.2.0.tar.gz::https://github.com/vv9k/dockeye/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 222faa30c78ab2f77da1be6d46a5da01c47fc24ed7438aef9d7e42fded08ef22
 
 pkgname = dockeye
