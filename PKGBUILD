@@ -21,7 +21,7 @@ sha256sums=('81426f86e1b3de0bd00488e037e9fdcaab4772f1f259ff551ac904d35fb4cd7c'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '039f0d1dc447fb26bb9df35b3a85145a47ce42193c8b2d56bf7bdf090fff0da9')
-makedepends=('python-setuptools' 'cython')
+makedepends=('python-setuptools' 'cython' 'lib32-gcc-libs')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
             'python-setuptools: Packages manager for Python, for project interpreter'
