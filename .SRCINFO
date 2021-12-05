@@ -1,0 +1,13 @@
+pkgbase = python-testdata
+	pkgdesc = Generates random test data
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/jaymon/testdata
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-datatypes
+	source = python-testdata-5.0.1.tar.gz::https://files.pythonhosted.org/packages/source/t/testdata/testdata-5.0.1.tar.gz
+	sha256sums = 555d0946debd5864fd69f5ceb3083347208df950699fd06c74338926cf045a75
+
+pkgname = python-testdata
