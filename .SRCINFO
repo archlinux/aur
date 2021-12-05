@@ -15,9 +15,9 @@ pkgbase = mingw-w64-gdbm
 	source = https://ftp.gnu.org/gnu/gdbm/gdbm-1.19.tar.gz
 	source = https://ftp.gnu.org/gnu/gdbm/gdbm-1.19.tar.gz.sig
 	source = gdbm-1.15-win32.patch
+	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
 	sha256sums = 37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc
 	sha256sums = SKIP
 	sha256sums = 2c3f0ed37482fe874218f4464414b592ebffa8776cca3c20fb0660f0036f4324
 
 pkgname = mingw-w64-gdbm
-
