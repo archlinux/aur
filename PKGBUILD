@@ -1,3 +1,4 @@
+# Maintainer: Ilya Basin <basinilya at gmail dot com>
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Aleksey Filippov <sarum9in at gmail dot com>
 # Contributor: xantares <xantares09 at hotmail dot com>
@@ -17,6 +18,7 @@ source=("https://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz"{,.sig}
 sha256sums=('37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc'
             'SKIP'
             '2c3f0ed37482fe874218f4464414b592ebffa8776cca3c20fb0660f0036f4324')
+validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
