@@ -1,0 +1,14 @@
+pkgbase = pomodoro-logger
+	pkgdesc = A Pomodoro Timer/Logger with Integrated Kanban Board
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/zxch3n/PomodoroLogger
+	arch = x86_64
+	license = GPL3
+	depends = libxss
+	depends = gtk3
+	depends = nss
+	source = https://github.com/zxch3n/PomodoroLogger/releases/download/v0.5.3/pomodoro-logger_0.5.3_amd64.deb
+	sha256sums = 214a81eb857af9a810f7ee18a23c983513d428d39f899a7fa9d932b9df00615d
+
+pkgname = pomodoro-logger
