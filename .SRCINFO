@@ -8,7 +8,6 @@ pkgbase = epick
 	makedepends = cargo
 	makedepends = rust
 	provides = epick
-	source = https://github.com/vv9k/epick/archive/refs/tags/0.6.0.tar.gz
-	sha1sums = SKIP
+	source = epick-0.6.0.tar.gz::https://github.com/vv9k/epick/archive/refs/tags/0.6.0.tar.gz
 
 pkgname = epick
