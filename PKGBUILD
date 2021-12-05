@@ -2,11 +2,11 @@
 # Contributor: Gökberk Yaltıraklı <aur at gkbrk dot com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
-pkgname=aerc-git
+pkgname=aerc-rjarry-git
 _pkgname=aerc
 pkgver=0.6.0.r8.gf776fb8
 pkgrel=1
-pkgdesc='Email Client for your Terminal'
+pkgdesc='Email Client for your Terminal (new fork maintained by ~rjarry)'
 arch=('x86_64')
 url='https://git.sr.ht/~rjarry/aerc'
 license=('MIT')

@@ -1,5 +1,5 @@
-pkgbase = aerc-git
-	pkgdesc = Email Client for your Terminal
+pkgbase = aerc-rjarry-git
+	pkgdesc = Email Client for your Terminal (new fork maintained by ~rjarry)
 	pkgver = 0.6.0.r8.gf776fb8
 	pkgrel = 1
 	url = https://git.sr.ht/~rjarry/aerc
@@ -16,4 +16,4 @@ pkgbase = aerc-git
 	source = aerc::git+https://git.sr.ht/~rjarry/aerc
 	sha512sums = SKIP
 
-pkgname = aerc-git
+pkgname = aerc-rjarry-git
