@@ -3,7 +3,7 @@
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
@@ -12,7 +12,7 @@ license=('MIT' 'custom')
 url="https://github.com/ManimCommunity/manim"
 
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('25da592788ac1e287e6df3b18afd1331583b488ee7672e7975495470164024b0cbcedc4e484a46137fd02196363e39169b93aa38fc6cc3bbf15e469d59b64005')
+sha512sums=('9f4586ca312ce9082887714cd668f25a64fa68cb117144b581925cf7b38d7639a1ba8ec795887df5dc414b2c78c2d765f23ba90e17deb49633525fc848881f5e')
 
 conflicts=('python-manimlib')
 
