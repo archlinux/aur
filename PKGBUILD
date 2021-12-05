@@ -1,6 +1,6 @@
 # Maintainer: Daniel Löbl <dloebl.2000@gmail.com>
 pkgname=libcgif
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A fast and lightweight GIF encoding library"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('meson' 'ninja')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dloebl/cgif/archive/refs/tags/V$pkgver.tar.gz")
-sha256sums=('679e8012b9fe387086e6b3bcc42373dbc66fb26f8d070d7a1d23f39d42842258')
+sha256sums=('160e88bc126ad0f1fa6ae07b7660852242efefe687bc0181e3b5acea01939bd4')
 
 build() {
  cd "$srcdir/cgif-$pkgver/"
