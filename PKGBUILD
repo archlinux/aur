@@ -10,19 +10,16 @@ pkgdesc="Companion to Applied Regression Data Sets"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=(r)
+depends=('r>=3.5.0')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('e41712fe4583c13f129894150019b014')
+sha256sums=('cda6f5e3efc1d955a4a0625e9c33f90d49f5455840e88b3bd757129b86044724')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }

@@ -6,9 +6,8 @@ pkgbase = r-cardata
 	arch = any
 	license = GPL2
 	license = GPL3
-	depends = r
+	depends = r>=3.5.0
 	source = https://cran.r-project.org/src/contrib/carData_3.0-4.tar.gz
-	md5sums = e41712fe4583c13f129894150019b014
+	sha256sums = cda6f5e3efc1d955a4a0625e9c33f90d49f5455840e88b3bd757129b86044724
 
 pkgname = r-cardata
-
