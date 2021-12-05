@@ -1,6 +1,6 @@
 pkgbase = monado-git
 	pkgdesc = The open source OpenXR runtime.
-	pkgver = 21.0.0.r911.g40954142
+	pkgver = 21.0.0.r1135.ga6b4e6a8
 	pkgrel = 1
 	url = https://monado.dev
 	install = monado.install
@@ -23,8 +23,9 @@ pkgbase = monado-git
 	depends = libbsd
 	optdepends = libuvc: optical tracking support
 	optdepends = opencv: optical tracking support
+	optdepends = libsurvive-git: lighthouse positional tracking support
 	provides = openxr-runtime
-	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git
+	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main
 	md5sums = SKIP
 
 pkgname = monado-git
