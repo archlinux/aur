@@ -8,7 +8,7 @@
 
 pkgname=actionfps
 pkgver=1.2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://actionfps.com'
@@ -25,13 +25,15 @@ sha512sums=('97a5eaa1fba716d6c29dd1dbcdf3a44fbdaa3c5ba1b350eae3834699d20784b7e45
             'ba4f9cb222e9440dea9c44ca7f492e26a012c850b96adc866b76a30ed93b0b9b38c0b67c63b03e310769801c1be41c604606ddd819af8bce3a6acbb6b91c30f4'
             '751376e2820a3a5d590f4f323e414d5a40b34137ce9988a9dfe9aa857ba00ec3d721c323be7497e7d3f5002de0746c3af02f557029977247d0e72b16bdb6cbb8'
             '30b0e533939831f90695641632b70dbdd3adbab09fb89af24d8eb1fed7056942124775c1f8b2bb22b852800eb6d9749ed54b5fb6661c283ea590b519acbd1975')
-            
+backup=('etc/actionfps/servercmdline.txt')
+
 _srcdir="AC-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
 	rm -rf 'source/lib'
 	sed -i 's|CUBE_DIR=./|CUBE_DIR=$(dirname "$(readlink -f "${0}")")|' 'server.sh'
+	sed -i 's|CUBE_OPTIONFILE=-Cconfig/servercmdline.txt|CUBE_OPTIONFILE=-C/etc/actionfps/servercmdline.txt|' 'server.sh'
 	cd 'source/src'
 	sed -i 's|static inline float round|//static inline float round|' 'tools.h'
 	make
@@ -39,11 +41,11 @@ prepare() {
 
 package() {
 	install -dm755 "${pkgdir}/usr/share/games/actionfps/bin_unix"
-	cp -r "${_srcdir}"/{bot,docs,mods,packages,scripts,assaultcube.sh,changelog.txt,README.html,server.sh,server_wizard.sh} \
+	cp -r "${_srcdir}"/{bot,docs,mods,packages,config,scripts,assaultcube.sh,changelog.txt,README.html,server.sh,server_wizard.sh} \
 		"${pkgdir}/usr/share/games/actionfps"
 		
-	install -dm755 "${pkgdir}/usr/share/games/actionfps/config_default"
-	cp -r "${_srcdir}/config"/* "${pkgdir}/usr/share/games/actionfps/config_default"
+	install -Dm644 "${_srcdir}/config/servercmdline.txt" "${pkgdir}/etc/actionfps/servercmdline.txt"
+	rm "${pkgdir}/usr/share/games/actionfps/config/servercmdline.txt"
 	
 	install -Dm755 "${_srcdir}/source/src/ac_client" "${pkgdir}/usr/share/games/actionfps/bin_unix/native_client"
 	install -Dm755 "${_srcdir}/source/src/ac_server" "${pkgdir}/usr/share/games/actionfps/bin_unix/native_server"

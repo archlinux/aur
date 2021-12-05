@@ -1,7 +1,7 @@
 pkgbase = actionfps
 	pkgdesc = A game based on the open-source AssaultCube first-person shooter (FPS)
 	pkgver = 1.2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://actionfps.com
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = actionfps
 	depends = curl
 	depends = libogg
 	depends = libvorbis
+	backup = etc/actionfps/servercmdline.txt
 	source = actionfps-1.2.0.2.tar.gz::https://github.com/ActionFPS/AC/archive/refs/tags/v1.2.0.2.tar.gz
 	source = actionfps
 	source = actionfps-server
