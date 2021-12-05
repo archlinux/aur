@@ -17,7 +17,7 @@ ENABLE_CUDA=OFF
 USE_AS_BLAS=OpenBLAS
 
 pkgname=obs-face-tracker
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
@@ -29,10 +29,8 @@ source=(
   "$pkgname::git+https://github.com/norihiro/obs-face-tracker.git#tag=$pkgver"
   "libvisca-ip::git+https://github.com/norihiro/libvisca-ip.git"
   "dlib::git+https://github.com/davisking/dlib.git"
-  "obs-ptz::git+https://github.com/norihiro/obs-ptz.git#branch=mod-for-ft"
 )
 sha256sums=(
-  "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
@@ -58,11 +56,6 @@ prepare() {
   cp -r $srcdir/dlib .
   cd dlib
   patch -Np1 < $srcdir/$pkgname/ci/common/dlib-cmake-no-openblasp.patch
-
-  cd "$srcdir/$pkgname"
-  cp -r $srcdir/obs-ptz .
-
-  sed -i 's/blog(LOG_INFO, qPrintable(logmsg));/blog(LOG_INFO, "%s", qPrintable(logmsg));/g' obs-ptz/ptz-visca.cpp
 }
 
 build() {
