@@ -74,7 +74,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=29.0.50.152394
+pkgver=29.0.50.152407
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -260,7 +260,7 @@ if [[ $NOCAIRO == "YES" || $CLI == "YES" ]]; then
   _conf+=( '--without-cairo' );
 fi
 
-if [[ $SOUND == "YES" ]]; then
+if [[ $ALSA == "YES" ]]; then
     _conf+=( '--with-sound=alsa' );
 else
     _conf+=( '--with-sound=no' );
