@@ -1,25 +1,11 @@
-# Maintained by Kodehawa <david.alejandro.rubio at gmail.com>
-
-# Original discord_arch_electron PKGBUILD:
-# Maintained by johnnyapol (arch@johnnyapol.me)
-
-# Original mantainers below:
-# Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
-# Maintainer: Anna <morganamilo@gmail.com>
-# Maintainer: E5ten <e5ten.arch@gmail.com>
-# Maintainer: Parker Reed <parker.l.reed@gmail.com>
-# Maintainer: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
-# Contributor: Cayde Dixon <me@cazzar.net>
-# Contributor: Anthony Anderson <aantony4122@gmail.com>
-
-pkgname=discord-development-electron-bin
 _pkgname=discord-development
-pkgver=0.0.173
+pkgname=${_pkgname}-electron-bin
+pkgver=0.0.188
 pkgrel=1
 pkgdesc="Discord Development (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
-provides=('discord-development')
-conflicts=('discord-development')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 url='https://discordapp.com'
 license=('custom')
 depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
@@ -33,7 +19,7 @@ source=("https://dl-development.discordapp.net/apps/linux/${pkgver}/${_pkgname}-
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
 # Skip BLAKE2 of licenses, it fails always for some reason.
-b2sums=('9ff2aa119cde9b3e774fbfe97777a0330e9adfb59edbe92d7d0a6fe7bbc74331f0a943b5c94d23a17db4cdbe865f68d18d34298376ec712d48812541411a6577'
+b2sums=('42e2217578b48180c4b27b5a606ecced814004c8aa7144dd5728f43ae1c2a7354c558e27fd1df9e1fe1f88382495321afff78738dd186e4919650b70a46c37d0'
         'SKIP'
         'SKIP')
 
