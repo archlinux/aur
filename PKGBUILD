@@ -1,6 +1,6 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
-pkgver=1.23
+pkgver=1.24
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
 pkgrel=1
 pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
@@ -13,7 +13,7 @@ source=(
     hledger-${pkgver}.zip::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-linux-static-x64.zip
 )
 sha256sums=(
-    7c44a3b2bce8b3c7747c8aa8e58e0638c11dc479a80b8de6f962484a0517655c
+    9447a8583b489eb8f7ff1b1f243c67b073d641c531d7ffc238e83e8bca430353
 )
 
 package_hledger-bin() {
