@@ -1,7 +1,7 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=cxbqn
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='BQN virtual machine.'
 arch=('x86_64')
 url='https://github.com/ashermancinelli/cxbqn'
@@ -25,9 +25,12 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
   install -Dm755 build/BQN "${pkgdir}/usr/bin/bqn"
 
-  cd ext
-  install -Dm644 bqn/community/README.md "${pkgdir}/usr/share/doc/${pkgname}/community.md"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" bqn/doc/*.md
-  mv bqn/tutorial "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" bqn/editors/inputrc
+  cd ext/bqn
+  install -Dm644 community/README.md "${pkgdir}/usr/share/doc/${pkgname}/community.md"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/*.md
+  install -Dm644 editors/README.md "${pkgdir}/usr/share/doc/${pkgname}/editors.md"
+  mv tutorial "${pkgdir}/usr/share/doc/${pkgname}"
+
+  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" editors/{inputrc,XCompose}
+  install -Dm644 -t "${pkgdir}/usr/share/X11/xkb/symbols" editors/bqn
 }

@@ -1,7 +1,7 @@
 pkgbase = cxbqn
 	pkgdesc = BQN virtual machine.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ashermancinelli/cxbqn
 	arch = x86_64
 	license = GPL3
