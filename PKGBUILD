@@ -4,7 +4,7 @@ _pkgname=exodus
 _owner=Intoli
 pkgname=exodus-bundler
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Painless relocation of Linux binaries"
 arch=('any')
 url="https://github.com/$_owner/$_pkgname"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 provides=("$pkgname=$pkgver")
 conflicts=('exodus')
-source=("https://github.com/$_owner/$_pkgname/archive/v$pkgver.tar.gz")
+source=($_pkgname-$pkgver.tar.gz::"https://github.com/$_owner/$_pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('6dba2e0c8b4e4fcfc22d516b8efcf373afe2fc5a6346d85f3a98d411126f2446')
 
 package() {
