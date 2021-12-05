@@ -1,28 +1,28 @@
 pkgbase = w_scan_cpp
 	pkgdesc = A dtv channel scanner based on VDR. Successor of w_scan
 	pkgver = 20211128
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gen2vdr.de/wirbel/w_scan_cpp/index2.html
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = GPL
-	makedepends = sed
-	makedepends = make
-	makedepends = wget
 	makedepends = git
 	makedepends = pango
-	depends = glibc
-	depends = libcap
 	depends = freetype2
 	depends = fontconfig
 	depends = pugixml
 	depends = librepfunc
-	provides = w_scan
-	conflicts = w_scan
-	replaces = w_scan
+	depends = libjpeg
+	depends = curl
 	source = https://www.gen2vdr.de/wirbel/w_scan_cpp/w_scan_cpp-20211128.tar.bz2
+	source = https://www.gen2vdr.de/wirbel/wirbelscan/vdr-wirbelscan-2021.11.28.tgz
+	source = git://git.tvdr.de/vdr.git#commit=0d50ec57f50375c8fda92d117e348dd8fd5a77a9
+	source = git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=a89ad423e9a3994572d3bbbbf2958b470afa8de1
 	sha256sums = c3a859a42f338d9c4bbdde2883e32989cd02f72bf2c31bfb18f7b6b23fc61254
+	sha256sums = f1005d1cccba77faacd294723240656fd7bad7987f0cf4a9728cc527fd7db76a
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = w_scan_cpp
