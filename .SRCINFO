@@ -5,8 +5,7 @@ pkgbase = r-purrr
 	url = https://cran.r-project.org/package=purrr
 	arch = i686
 	arch = x86_64
-	license = gpl3
-	makedepends = gcc
+	license = GPL3
 	depends = r>=3.2
 	depends = r-magrittr>=1.5
 	depends = r-rlang>=0.3.1
@@ -19,7 +18,6 @@ pkgbase = r-purrr
 	optdepends = r-tibble
 	optdepends = r-tidyselect
 	source = https://cran.r-project.org/src/contrib/purrr_0.3.4.tar.gz
-	md5sums = e5800da22652606547ab14b7ae38058e
+	sha256sums = 23ebc93bc9aed9e7575e8eb9683ff4acc0270ef7d6436cc2ef4236a9734840b2
 
 pkgname = r-purrr
-
