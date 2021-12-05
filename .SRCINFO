@@ -8,6 +8,7 @@ pkgbase = recaf-bin
 	makedepends = jdk-openjdk
 	depends = java-runtime
 	depends = java-openjfx
+	depends = ttf-font
 	conflicts = recaf
 	replaces = recaf
 	noextract = recaf-2.21.5-J8-jar-with-dependencies.jar
