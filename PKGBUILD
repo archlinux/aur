@@ -1,7 +1,7 @@
 # Maintainer: Popkornium18 <mail@popkornium18.de>
 pkgname=audiotag
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="Simple command line audio tagger written in python3"
 arch=("any")
 url="https://github.com/Popkornium18/audiotag"
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("python-pytaglib")
 makedepends=("python-setuptools")
 source=("https://github.com/Popkornium18/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("11072b566ea137acb79220a9bb03a4ea6892da2a1c953d51d813360c9dac172c")
+sha256sums=("a58ac3c18d5415602682d12d1d247e8aefa2a2905fb665e0e50f46308e68f431")
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
     /usr/bin/python3 setup.py install --root="$pkgdir/" --optimize=1
