@@ -10,7 +10,8 @@ arch=('x86_64')
 url="http://www.lexmark.com/"
 license=('custom')
 depends=('java-runtime' 'sane' 'systemd' 'xorg-xdpyinfo')
-optdepends=('xsane: sane scanner frontend')
+optdepends=('sane-frontends: sane scanner frontends'
+            'xsane: sane scanner frontend')
 provides=('libsane-lexmark_nscan.so=1.0.16')
 install="$pkgname.install"
 source=("https://downloads.lexmark.com/downloads/drivers/lexmark_network-scan-linux-glibc2_${_revision}_${CARCH}.deb")

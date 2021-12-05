@@ -10,6 +10,7 @@ pkgbase = lexmark-network-scan
 	depends = sane
 	depends = systemd
 	depends = xorg-xdpyinfo
+	optdepends = sane-frontends: sane scanner frontends
 	optdepends = xsane: sane scanner frontend
 	provides = libsane-lexmark_nscan.so=1.0.16
 	source = https://downloads.lexmark.com/downloads/drivers/lexmark_network-scan-linux-glibc2_09232021_x86_64.deb
