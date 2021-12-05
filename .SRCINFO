@@ -6,13 +6,10 @@ pkgbase = r-minqa
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = gcc
 	makedepends = make
-	makedepends = gcc-fortran
 	depends = r
 	depends = r-rcpp>=0.9.10
 	source = https://cran.r-project.org/src/contrib/minqa_1.2.4.tar.gz
-	md5sums = bcaae4fdba60a33528f2116e2fd51105
+	sha256sums = cfa193a4a9c55cb08f3faf4ab09c11b70412523767f19894e4eafc6e94cccd0c
 
 pkgname = r-minqa
-
