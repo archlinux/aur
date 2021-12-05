@@ -8,12 +8,21 @@
  #include "settingsdialog.h"
  #include "plugindialog.h"
  #include "mainwindow.h"
+@@ -44,7 +45,7 @@ void MainWindow::updatePlugins()
+ #ifdef PLUGIN_DIR_PATH
+     QString pluginPath = PLUGIN_DIR_PATH;
+ #else
+-    QString pluginPath = QCoreApplication::applicationDirPath();
++    QString pluginPath = QStringLiteral(u"/usr/lib/mupen64plus");
+ #endif
+     QDir PluginDir(pluginPath);
+     PluginDir.setFilter(QDir::Files);
 @@ -370,7 +371,7 @@ MainWindow::MainWindow(QWidget *parent) :
      updatePIF(ui);
  
      if (!settings->contains("configDirPath"))
 -        settings->setValue("configDirPath", "$CONFIG_PATH$");
-+        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/mupen64plus");
++        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QStringLiteral(u"/mupen64plus"));
  
  #ifdef CONFIG_DIR_PATH
      settings->setValue("configDirPath", CONFIG_DIR_PATH);
@@ -22,7 +31,36 @@
  void MainWindow::setupDiscord()
  {
 -    QLibrary *discordLib = new QLibrary((QDir(QCoreApplication::applicationDirPath()).filePath("discord_game_sdk")), this);
-+    QLibrary *discordLib = new QLibrary("/usr/lib/discord_game_sdk", this);
++    QLibrary *discordLib = new QLibrary(QStringLiteral(u"/usr/lib/discord_game_sdk"), this);
  
      memset(&discord_app, 0, sizeof(discord_app));
  
+@@ -1015,7 +1016,7 @@ void MainWindow::loadCoreLib()
+ #ifdef CORE_LIBRARY_PATH
+     QString corePath = CORE_LIBRARY_PATH;
+ #else
+-    QString corePath = QCoreApplication::applicationDirPath();
++    QString corePath = QStringLiteral(u"/usr/lib");
+ #endif
+     m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
+ 
+@@ -1105,7 +1106,7 @@ void MainWindow::loadPlugins()
+ #ifdef PLUGIN_DIR_PATH
+     QString pluginPath = PLUGIN_DIR_PATH;
+ #else
+-    QString pluginPath = QCoreApplication::applicationDirPath();
++    QString pluginPath = QStringLiteral(u"/usr/lib/mupen64plus");
+ #endif
+     QString file_path;
+     QString plugin_path;
+--- a/mupen64plus-gui/settingsdialog.cpp
++++ b/mupen64plus-gui/settingsdialog.cpp
+@@ -58,7 +58,7 @@ void SettingsDialog::initStuff()
+ #ifdef PLUGIN_DIR_PATH
+     QString pluginPath = PLUGIN_DIR_PATH;
+ #else
+-    QString pluginPath = QCoreApplication::applicationDirPath();
++    QString pluginPath = QStringLiteral(u"/usr/lib/mupen64plus");
+ #endif
+     QDir PluginDir(pluginPath);
+     QStringList Filter;
