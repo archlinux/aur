@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-nativeauthenticator
 pkgdesc="Authenticator for storing users in the JupyterHub database"
-pkgver=0.0.7
+pkgver=1.0.5
 pkgrel=1
 url="https://github.com/jupyterhub/nativeauthenticator"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/j/$pkgname/$pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  'e8c690746e16ec57b9e2d09c7942e0c8ae39cbc993c1cd5fd14e5a140dd64720'
+  'a9271b49a22667d67cd82a7441569cbaefc2947ade507d3d52dda47629ab60a5'
 )
 
 build() {
@@ -24,7 +24,7 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
-    pytest
+    pytest -v
 }
 
 package() {
