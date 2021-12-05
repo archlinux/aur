@@ -2,10 +2,10 @@
 
 pkgname=badwolf
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist and privacy-oriented WebKitGTK+ browser."
 url="https://hacktivis.me/projects/badwolf"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('BSD')
 #makedepends=('clang') # if you want to use clang instead of gcc, decomment this line and change CC=gcc to CC=clang in the build section
 depends=('webkit2gtk')
