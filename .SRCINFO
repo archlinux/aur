@@ -1,0 +1,19 @@
+pkgbase = xdgmenumaker-git
+	pkgdesc = A command line tool that generates XDG menus for several window managers
+	pkgver = r204.7dd8a63
+	pkgrel = 2
+	url = https://github.com/gapan/xdgmenumaker
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyxdg
+	depends = python-gobject
+	depends = gtk3
+	optdepends = txt2tags: for manpages
+	optdepends = python-pillow: for restricting icon size
+	provides = xdgmenumaker
+	conflicts = xdgmenumaker
+	source = git+https://github.com/gapan/xdgmenumaker.git
+	md5sums = SKIP
+
+pkgname = xdgmenumaker-git
