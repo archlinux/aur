@@ -5,6 +5,7 @@ pkgbase = powershell-bin
 	url = https://github.com/Powershell/Powershell
 	install = powershell.install
 	arch = x86_64
+	license = MIT
 	depends = krb5
 	depends = gcc-libs
 	depends = glibc
