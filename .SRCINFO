@@ -4,7 +4,8 @@ pkgbase = fcitx5-pinyin-moegirl-rime
 	pkgrel = 2
 	url = https://github.com/outloudvi/mw2fcitx
 	arch = any
-	license = cc-by-nc-sa-3.0
+	license = Unlicense 
+        license = cc-by-nc-sa-3.0
 	source = https://github.com/outloudvi/mw2fcitx/releases/download/20211116/moegirl.dict.yaml
 	md5sums = 1a33799f53cd8162bcc24bfd08a3163d
 
