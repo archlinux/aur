@@ -1,14 +1,13 @@
 pkgbase = spruce
-	pkgdesc = A BOSH template merge tool
-	pkgver = 1.27.0
+	pkgdesc = General purpose YAML/JSON merging tool
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://github.com/geofffranks/spruce
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = https://github.com/geofffranks/spruce/archive/v1.27.0/spruce-1.27.0.tar.gz
-	sha256sums = 2fdd439ceb11c36447c80d41f6b229df186013dbe0b13fc7dd704d0de475d147
+	source = https://github.com/geofffranks/spruce/archive/v1.29.0/spruce-1.29.0.tar.gz
+	sha256sums = 357515c5e516f70b644c8fe947105ade6bc30169981196d80305bb816df6753f
 
 pkgname = spruce
-

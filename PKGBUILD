@@ -1,19 +1,20 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=spruce
-pkgver=1.27.0
+pkgver=1.29.0
 pkgrel=1
-pkgdesc='A BOSH template merge tool'
+pkgdesc='General purpose YAML/JSON merging tool'
 arch=('x86_64')
 url='https://github.com/geofffranks/spruce'
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2fdd439ceb11c36447c80d41f6b229df186013dbe0b13fc7dd704d0de475d147')
+sha256sums=('357515c5e516f70b644c8fe947105ade6bc30169981196d80305bb816df6753f')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  go mod download
+  # bad go.mod
+  go mod vendor
 }
 
 build() {
@@ -23,13 +24,13 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=vendor'
   go build -ldflags="-linkmode=external -X=main.Version=$pkgver" ./cmd/spruce
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  go test -ldflags="-linkmode=external -X=main.Version=$pkgver" -short ./...
+  go test -ldflags=-linkmode=external -short ./...
 }
 
 package() {
