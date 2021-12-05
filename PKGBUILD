@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=python-pydna
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 pkgdesc='Data structures for double-stranded DNA & simulation of homologous recombination'
 arch=('any')
@@ -52,6 +52,6 @@ check() {
 package() {
 	cd "$pkgname"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

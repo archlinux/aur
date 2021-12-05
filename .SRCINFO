@@ -1,6 +1,6 @@
 pkgbase = python-pydna
 	pkgdesc = Data structures for double-stranded DNA & simulation of homologous recombination
-	pkgver = 4.0.5
+	pkgver = 4.0.6
 	pkgrel = 1
 	url = https://github.com/bjornfjohansson/pydna
 	changelog = CHANGELOG.md
@@ -21,7 +21,7 @@ pkgbase = python-pydna
 	optdepends = python-numpy: gel simulation
 	optdepends = python-pint: gel simulation
 	optdepends = python-scipy: gel simulation
-	source = python-pydna::git+https://github.com/bjornfjohansson/pydna#tag=4.0.5
+	source = python-pydna::git+https://github.com/bjornfjohansson/pydna#tag=4.0.6
 	sha256sums = SKIP
 
 pkgname = python-pydna
