@@ -10,6 +10,11 @@ makedepends=('cmake')
 source=("https://github.com/JuliaInterop/libcxxwrap-julia/archive/v${pkgver}.tar.gz")
 sha256sums=('b0421d11bdee5ce8af4922de6dfe3b0e5d69b07bb52894e3a22a477bbd27ee9e')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  curl -L https://github.com/JuliaInterop/libcxxwrap-julia/pull/86.patch | patch -p1
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   cmake \
