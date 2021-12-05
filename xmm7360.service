@@ -1,0 +1,14 @@
+[Unit]
+Description=XMM7360 Modem Init
+After=NetworkManager.service
+Requires=multi-user.target systemd-user-sessions.service dev-ttyXMM1.device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/xmm7360-pci-git/rpc/open_xdatachannel.py -c /etc/xmm7360
+RemainAfterExit=yes
+TimeoutSec=60
+
+
+[Install]
+WantedBy=graphical.target

@@ -1,0 +1,22 @@
+diff --git a/xmm7360.c b/xmm7360.c
+index ccd149d..5a4dc74 100644
+--- a/xmm7360.c
++++ b/xmm7360.c
+@@ -1272,7 +1272,7 @@ static int xmm7360_tty_write(struct tty_struct *tty,
+ 	return written;
+ }
+ 
+-static int xmm7360_tty_write_room(struct tty_struct *tty)
++static unsigned int xmm7360_tty_write_room(struct tty_struct *tty)
+ {
+ 	struct queue_pair *qp = tty->driver_data;
+ 	if (!xmm7360_qp_can_write(qp))
+@@ -1555,7 +1555,7 @@ static void xmm7360_exit(void)
+ 	pci_unregister_driver(&xmm7360_driver);
+ 	unregister_chrdev_region(xmm_base, 8);
+ 	tty_unregister_driver(xmm7360_tty_driver);
+-	put_tty_driver(xmm7360_tty_driver);
++	tty_driver_kref_put(xmm7360_tty_driver);
+ }
+ 
+ module_init(xmm7360_init);
