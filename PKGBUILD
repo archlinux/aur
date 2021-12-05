@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-beetle-saturn
 pkgname=$_pkgname-git
-pkgver=r600.f90e099
+pkgver=r606.8351a17
 pkgrel=1
 pkgdesc="Sega Saturn core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -14,11 +14,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git"
-	'unbundle-libchdr.patch'
+	"$_pkgname-unbundle-libchdr.patch::$url/pull/210.patch"
 )
 b2sums=(
 	'SKIP'
-	'b129230a6a3df8c1a5bdfabfe9e20a29297df33b1bfd6ad9ad2dc35e3dd28c9208a6c506869849fe928a7ec4c1f94cb1099651f44c65e99d9d86994b7db188b0'
+	'3750dd4a9a036c2e271744ea7aa772272fa256916e3a8a0465c03d930ca94b1a4744c1731211d07ad305c60142fccc2c3936af127dd3d6e84a59b43019ea8801'
 )
 
 pkgver() {
@@ -27,11 +27,13 @@ pkgver() {
 }
 
 prepare() {
-	patch -d $_pkgname -Np1 < unbundle-libchdr.patch
+	cd $_pkgname
+	patch -Np1 < ../$_pkgname-unbundle-libchdr.patch
+	sed -i 's/-O2//' Makefile
 }
 
 build() {
-	make -C $_pkgname
+	make -C $_pkgname SYSTEM_LIBCHDR=1
 }
 
 package() {
