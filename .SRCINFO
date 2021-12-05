@@ -35,6 +35,7 @@ pkgbase = r-dplyr
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite
 	optdepends = r-testthat
+	optdepends = r-tidyr
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/dplyr_1.0.7.tar.gz
 	sha256sums = d2fe3aedbce02fdddce09a8a80f85f5918a9d1f15f792ad4a98f254959d7123d
