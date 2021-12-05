@@ -4,7 +4,7 @@
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -47,6 +47,7 @@ build() {
     cd "${srcdir}/${_go_srcpath}"
 
     export GOPATH="${srcdir}/go"
+    export CARGO_HOME="${srcdir}/cargo"
 
     # See: https://wiki.archlinux.org/index.php/Go_package_guidelines
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -56,7 +57,7 @@ build() {
     export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # Build
-    PATH="${PATH}:${HOME}/.cargo/bin" make full
+    PATH="${PATH}:${CARGO_HOME}/bin" make full
 
     # Make sure go path is writable so it can be cleaned up
     chmod -R u+w "${srcdir}/go"
