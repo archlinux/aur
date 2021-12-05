@@ -1,6 +1,6 @@
 pkgbase = jupyterhub-firstuseauthenticator
 	pkgdesc = Authenticator to help new users create a password on first JupyterHub login
-	pkgver = 0.14.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/jupyterhub/firstuseauthenticator
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = jupyterhub-firstuseauthenticator
 	makedepends = python-setuptools
 	depends = jupyterhub
 	depends = python-bcrypt
-	source = git+https://github.com/jupyterhub/firstuseauthenticator.git#tag=v0.14.1
+	source = git+https://github.com/jupyterhub/firstuseauthenticator.git#tag=1.0.0
 	sha256sums = SKIP
 
 pkgname = jupyterhub-firstuseauthenticator
-

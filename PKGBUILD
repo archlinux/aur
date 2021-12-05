@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-firstuseauthenticator
 pkgdesc="Authenticator to help new users create a password on first JupyterHub login"
-pkgver=0.14.1
+pkgver=1.0.0
 pkgrel=1
 url="https://github.com/jupyterhub/firstuseauthenticator"
 arch=('any')
@@ -12,7 +12,7 @@ checkdepends=('python-pytest' 'python-pytest-asyncio')
 license=('BSD')
 _reponame=firstuseauthenticator
 source=(
-  "git+https://github.com/jupyterhub/$_reponame.git#tag=v$pkgver"
+  "git+https://github.com/jupyterhub/$_reponame.git#tag=$pkgver"
 )
 sha256sums=(
   'SKIP'
@@ -25,7 +25,7 @@ build() {
 
 check() {
     cd "$_reponame"
-    PYTHONPATH="$PWD/build/lib" python -m pytest
+    PYTHONPATH="$PWD/build/lib" python -m pytest -v
 }
 
 package() {
