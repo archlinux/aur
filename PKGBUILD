@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 
 pkgname=pgformatter
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="A PostgreSQL SQL syntax beautifier"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/darold/pgformatter"
 license=('BSD')
 depends=('perl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('86afb0e77a000145bdcfbd3d5f91c59dc8de3676b4e764a4b86147a52fd7787681b33f4e23a4e0eb9b15e9a24d5b60eb01c90574f59ff5cab2f33489c5f2e91b')
-b2sums=('e6615cc2b2d98bbbff18f6a13694061639566ef96f991fa6cb6c3c43df5fa502d814a965b5cb287675152ddc2990d8170a325bc7cd75d0f5d8b6fb903fc21c71')
+sha512sums=('6244cf41a7a93c2fedf69707e11dccbe72d44965682fb4c469718538c8a22b90192e8de8a123c5f093a40728dd6d8e728c1967953ca70f9dcd6d052d57342666')
+b2sums=('3f2b27290f9498cf1562575f57ecf6697920754c059712ad3ea7846a58131f6e41708de2a493ea42c00fc8b71018002001e0edb63ee096318f3e0b09aef3fabc')
 
 build() {
   cd "pgFormatter-$pkgver"
