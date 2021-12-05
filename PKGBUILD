@@ -1,12 +1,12 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: ZaZam <zazaamm ät gmail döt com>
 # Contributor: Yegorius <yegorius@domic.us>
 # Contributor: yannleretaille
-# Contributor: pika02 <pikakolendo02 ät gmail döt com>
+# Maintainer: pika02 <pikakolendo02 ät gmail döt com>
 
 pkgname=pulseaudio-dlna-python3
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Python 3 edition'
 arch=('x86_64')
 url=https://github.com/Cygn/pulseaudio-dlna/
@@ -27,7 +27,7 @@ optdepends=('faac: AAC transcoding support'
             'sox: WAV transcoding support'
             'vorbis-tools: OGG transcoding support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/${pkgver}.tar.gz")
-sha256sums=('497743700377389ae03ffae2d8fbf8c49ed8ec219d53fd8ca7f0aea0d464b15d')
+sha256sums=('9c61f64e7262ce91e55058fc9474db6fbd5a029e94826c749b48d42c423ec98b')
 
 prepare() {
   mv "pulseaudio-dlna-${pkgver}" "${pkgname}-${pkgver}"
