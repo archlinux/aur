@@ -1,55 +1,74 @@
 # Maintainer: stiglers-eponym
-# The default configuration installs the MuPDF version with Qt 5 and without debug options.
-_renderer=mupdf
+# Select the PDF engine
+_use_mupdf=ON  # ON or OFF
+_use_poppler=OFF  # ON or OFF
+# Select the Qt version
+_qt_version_major=6  # 5 or 6
+
 pkgname=beamerpresenter-git
-pkgver=0.2.1_560.d1028dc
+pkgver=0.2.1_575.9e8efa7
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3')
+# depends and makedepends will be filled based on the variables defined at the beginning.
+depends=()
+makedepends=('cmake' 'git')
 
-# Dependencies when using MuPDF:
-depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt5-multimedia' 'hicolor-icon-theme')
-# For Qt 6:
-#depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt6-multimedia>=6.2.0' 'hicolor-icon-theme')
-makedepends=('git' 'libmupdf')
+if [ ${_qt_version_major} -eq 5 ]
+then
+    depends=( ${depends[@]} 'qt5-multimedia>=5.9.0' )
+elif [ ${_qt_version_major} -eq 6 ]
+then
+    depends=( ${depends[@]} 'qt6-multimedia>=6.2.0' )
+else
+    echo "FATAL ERROR: invalid Qt version: ${_qt_version_major}"
+    exit 1
+fi
 
-optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos')
+if [ ${_use_mupdf} == 'ON' ]
+then
+    depends=( ${depends[@]} 'jbig2dec' 'openjpeg2' 'gumbo-parser' )
+    makedepends=( ${makedepends[@]} 'libmupdf')
+elif [ ${_use_mupdf} == 'OFF' ]
+then
+    license=('GPL3')
+fi
+
+if [ ${_use_poppler} == 'ON' ]
+then
+    depends=( ${depends[@]} "poppler-qt${_qt_version_major}" )
+fi
+
+optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: icons')
 conflicts=('beamerpresenter')
-backup=("etc/xdg/beamerpresenter/beamerpresenter.conf" "etc/xdg/beamerpresenter/gui.json")
+backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
 install=beamerpresenter.install
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 sha256sums=('SKIP')
 
-# Change depends and makedepends if poppler is used as renderer.
-if [ "${_renderer}" == "poppler" ]; then
-    # Dependencies when using poppler:
-    depends=('poppler-qt5' 'qt5-multimedia' 'hicolor-icon-theme')
-    # For Qt 6:
-    #depends=('poppler-qt6' 'qt6-multimedia>=6.2.0' 'hicolor-icon-theme')
-    makedepends=('git')
-fi
-
 pkgver() {
-  cd "${srcdir}/BeamerPresenter"
-  printf "%s_%s.%s" \
-	  "$(sed -n 's/^VERSION *= *\([^ ]\+\)$/\1/p' beamerpresenter.pro)" \
-	  "$(git rev-list --count HEAD)" \
-	  "$(git rev-parse --short HEAD)"
+    printf "%s_%s.%s" \
+        "$(sed -n 's/^VERSION *= *\([^ ]\+\)$/\1/p' "${srcdir}/BeamerPresenter/beamerpresenter.pro")" \
+        "$(git -C "${srcdir}/BeamerPresenter" rev-list --count HEAD)" \
+        "$(git -C "${srcdir}/BeamerPresenter" rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/BeamerPresenter"
-  qmake RENDERER="${_renderer}" && make
-  # For Qt 6:
-  #qmake6 RENDERER="${_renderer}" && make
-
-  # With debug information:
-  #qmake CONFIG+=debug RENDERER="${_renderer}" && make
+    cmake \
+        -B "${pkgname}-${pkgver}/build" \
+        -S "${srcdir}/BeamerPresenter" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_POPPLER=${_use_poppler} \
+        -DUSE_MUPDF=${_use_mupdf} \
+        -DQT_VERSION_MAJOR=${_qt_version_major} \
+        -DCREATE_SHARED_LIBRARIES=OFF \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc
+    make -C "${pkgname}-${pkgver}/build" all
 }
 
 package() {
-  cd "${srcdir}/BeamerPresenter"
-  make install INSTALL_ROOT="${pkgdir}"
+    make -C "${pkgname}-${pkgver}/build" DESTDIR="${pkgdir}" install
 }
