@@ -1,8 +1,8 @@
-# Maintainer:  Thomas Weißschuh <thomas t-8ch de>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=calibre-plugin-dedrm
-pkgver=7.2.1
-pkgrel=2
+pkgver=10.0.2
+pkgrel=1
 pkgdesc="DeDRM tools for ebooks - Calibre plugin"
 arch=(x86_64)
 url=https://github.com/apprenticeharper/DeDRM_tools/
@@ -14,9 +14,9 @@ optdepends=(
 	'python-pycryptodome: for crytographic primitives'
 )
 source=(
-	DeDRM_tools-$pkgver.tar.gz::https://github.com/apprenticeharper/DeDRM_tools/archive/refs/tags/v$pkgver.tar.gz
+	DeDRM_tools-$pkgver.tar.gz::https://github.com/noDRM/DeDRM_tools/archive/refs/tags/v$pkgver.tar.gz
 )
-sha256sums=('cb13e7ecbc4d2a757b65a232db2c5ae5ef9ae13fe6a3d028c031735f0b8368cb')
+sha256sums=('227220a88b0c87d0c8dc511bd91be59d3bffd74ef82bacf75bdcf9d5c2f56094')
 
 _calibre_system_plugin_dir='/usr/share/calibre/system-plugins'
 _libalfcryptodir="libalfcrypto-${pkgver}"
