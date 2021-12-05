@@ -9,6 +9,7 @@ pkgbase = r-pbkrtest
 	depends = r>=3.5.0
 	depends = r-lme4>=1.1.10
 	depends = r-broom
+	depends = r-dplyr
 	depends = r-magrittr
 	depends = r-numderiv
 	depends = r-knitr
@@ -16,4 +17,3 @@ pkgbase = r-pbkrtest
 	sha256sums = b2a3452003d93890f122423b3f2487dcb6925440f5b8a05578509e98b6aec7c5
 
 pkgname = r-pbkrtest
-
