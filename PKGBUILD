@@ -12,7 +12,7 @@ depends=()
 makedepends=('cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-sha256sums=('b1305ce0143ff31ad7bfb92deef4b1475f1cd092b687537ca95275733cc91462')
+sha256sums=('83af4d470492e82c8071b40566f977d64b1ab3be710da957b37cfedfcd159f63')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 prepare() {
