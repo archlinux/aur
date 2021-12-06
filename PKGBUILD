@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d@gmail.com>
 
 pkgname=python-wsgidav-seafile
-pkgver=8.0.7
+pkgver=8.0.8
 pkgrel=1
 pkgdesc="Seafile webdav server"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python-setuptools'
              'libyaml')
 conflicts=('python-wsgidav')
 source=("${url}/archive/v${pkgver}-server.tar.gz")
-sha256sums=('71d33d3843ba784c69d9e82c4cf383153f12486b5b98367c4d58915c7f22d521')
+sha256sums=('c0795d0bab6e7f4cf76ef50f2d1a6bbee0e5bab8b25f35c8647a7c3224daa918')
 
 package() {
     cd "$srcdir/seafdav-$pkgver-server"
