@@ -3,24 +3,24 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
-pkgname=mutter-oldstable
+pkgname=mutter-338
 pkgver=3.38.6
 pkgrel=1
-pkgdesc="A window manager for GNOME (oldstable version)"
+pkgdesc="A window manager for GNOME (338 version)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 conflicts=("mutter")
 provides=("mutter=$pkgver")
 replaces=("mutter")
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas-oldstable
+depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas-338
          libcanberra startup-notification zenity libsm gnome-desktop upower
-         libxkbcommon-x11 gnome-settings-daemon-oldstable libgudev libinput pipewire
+         libxkbcommon-x11 gnome-settings-daemon-338 libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server)
 checkdepends=(xorg-server-xvfb pipewire-media-session)
 provides=(libmutter-7.so)
-groups=(gnome-oldstable)
+groups=(gnome-338)
 install=mutter.install
 _commit=8bf8474372ea66ee7cccf369a95f6be83109681e  # tag/3.38.6
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
