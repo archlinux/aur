@@ -1,14 +1,13 @@
 pkgbase = chronic
 	pkgdesc = Filters out standard output for cron emails.
-	pkgver = 1.0.11
-	pkgrel = 2
+	pkgver = 1.0.12
+	pkgrel = 1
 	url = https://github.com/docwhat/chronic
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = moreutils
-	source = chronic-1.0.11.tar.gz::https://github.com/docwhat/chronic/archive/v1.0.11.tar.gz
-	sha256sums = 9e0a50086f15d32c68cdafa22919f088813b64bd4890e667a7c08ed7ba7dce1c
+	source = chronic-1.0.12.tar.gz::https://github.com/docwhat/chronic/archive/v1.0.12.tar.gz
+	sha256sums = e0e3254fdcb220ec56ee2bab725115fe93024317a9ed43e28951c6b39f4e70f8
 
 pkgname = chronic
-

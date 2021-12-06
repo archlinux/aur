@@ -1,15 +1,15 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=chronic
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.12
+pkgrel=1
 pkgdesc='Filters out standard output for cron emails.'
 arch=('x86_64')
 url='https://github.com/docwhat/chronic'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9e0a50086f15d32c68cdafa22919f088813b64bd4890e667a7c08ed7ba7dce1c')
+sha256sums=('e0e3254fdcb220ec56ee2bab725115fe93024317a9ed43e28951c6b39f4e70f8')
 conflicts=('moreutils')
 
 build() {
