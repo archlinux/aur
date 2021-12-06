@@ -1,7 +1,7 @@
-# Maintainer: Nate Simon <aurpkg (at natesimon.net)>
+# Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=xviewer-plugins
-pkgver=1.2.0
+pkgver=1.4.1
 pkgrel=3
 pkgdesc="Plugins for xviewer. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,7 +13,7 @@ conflicts=('xviewer-plugins-git')
 url='https://github.com/linuxmint/xviewer-plugins'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('359029dd46d5c18c43faf7080ad46ed4')
+md5sums=('be81aab5f798ba018f747e3be1dbd8d7')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}

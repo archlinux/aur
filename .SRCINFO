@@ -1,6 +1,6 @@
 pkgbase = xviewer-plugins
 	pkgdesc = Plugins for xviewer. X-Apps Project.
-	pkgver = 1.2.0
+	pkgver = 1.4.1
 	pkgrel = 3
 	url = https://github.com/linuxmint/xviewer-plugins
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = xviewer-plugins
 	depends = libpeas
 	provides = xviewer-plugins
 	conflicts = xviewer-plugins-git
-	source = xviewer-plugins-1.2.0.tar.gz::https://github.com/linuxmint/xviewer-plugins/archive/1.2.0.tar.gz
-	md5sums = 359029dd46d5c18c43faf7080ad46ed4
+	source = xviewer-plugins-1.4.1.tar.gz::https://github.com/linuxmint/xviewer-plugins/archive/1.4.1.tar.gz
+	md5sums = be81aab5f798ba018f747e3be1dbd8d7
 
 pkgname = xviewer-plugins
-
