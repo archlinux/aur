@@ -1,15 +1,15 @@
 # Maintainer: Mark Kostovetskyy <mark at sgtxd dot de >
 pkgname='ani-cli-git'
 _pkgname='ani-cli'
-pkgver='r53.7d9ae36'
-pkgrel=4
+pkgver=r96.1a1909b
+pkgrel=1
 pkgdesc="A cli to browse and watch anime."
 arch=('any')
 url="https://github.com/pystardust/ani-cli"
 license=('GPL3')
 depends=('grep' 'curl' 'sed' 'mpv')
 makedepends=('git')
-source=('ani-cli::git://github.com/pystardust/ani-cli.git')
+source=('ani-cli::git+https://github.com/pystardust/ani-cli.git')
 md5sums=('SKIP')
 
 pkgver() {
