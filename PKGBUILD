@@ -6,7 +6,7 @@
 pkgname=mutter-338
 pkgver=3.38.6
 pkgrel=1
-pkgdesc="A window manager for GNOME (338 version)"
+pkgdesc="A window manager for GNOME (3.38 version)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 conflicts=("mutter")
 provides=("mutter=$pkgver")
