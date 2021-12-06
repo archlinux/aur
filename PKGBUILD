@@ -1,13 +1,14 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=gdb-ctest-git
 pkgrel=1
-pkgver=rf5d8f00
+pkgver=r3823665
 license=('MIT')
 arch=('any')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 pkgdesc='Run ctest in gdb with fixtures and environment'
 makedepends=('git')
+depends=('cmake' 'gdb' 'jq')
 url="https://github.com/syyyr/gdb-ctest"
 source=("git+https://github.com/syyyr/gdb-ctest.git")
 md5sums=('SKIP')
