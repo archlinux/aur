@@ -76,7 +76,7 @@ pkgbase = linux-xanmod-rog
 	sha256sums = 59334c9a48a5483c34b3566e5dc45d93c6e775b954d8f7d28f0fce01c3384765
 
 pkgname = linux-xanmod-rog
-	pkgdesc = The Linux kernel and modules with Xanmod and ASUS ROG laptop patches (Zephyrus G14, G15, etc)
+	pkgdesc = The Linux Xanmod kernel and modules with ASUS ROG laptop patches (Zephyrus G14, G15, etc)
 	depends = coreutils
 	depends = kmod
 	depends = initramfs

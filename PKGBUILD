@@ -360,7 +360,7 @@ build() {
 
 # shellcheck disable=SC2154,SC2155
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod and ASUS ROG laptop patches (Zephyrus G14, G15, etc)"
+  pkgdesc="The $pkgdesc kernel and modules with ASUS ROG laptop patches (Zephyrus G14, G15, etc)"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
