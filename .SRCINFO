@@ -1,10 +1,10 @@
-pkgbase = gnome-control-center-oldstable
+pkgbase = gnome-control-center-338
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop
 	pkgver = 3.38.6
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
-	groups = gnome-oldstable
+	groups = gnome-338
 	license = GPL2
 	checkdepends = python-dbusmock
 	checkdepends = python-gobject
@@ -19,8 +19,8 @@ pkgbase = gnome-control-center-oldstable
 	depends = gnome-bluetooth
 	depends = gnome-desktop
 	depends = gnome-online-accounts
-	depends = gnome-settings-daemon-oldstable
-	depends = gsettings-desktop-schemas-oldstable
+	depends = gnome-settings-daemon-338
+	depends = gsettings-desktop-schemas-338
 	depends = gtk3
 	depends = libgtop
 	depends = nm-connection-editor
@@ -53,5 +53,5 @@ pkgbase = gnome-control-center-oldstable
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = gnome-control-center-oldstable
+pkgname = gnome-control-center-338
 

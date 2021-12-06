@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=gnome-control-center-oldstable
+pkgname=gnome-control-center-338
 pkgver=3.38.6
 pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
@@ -13,7 +13,7 @@ replaces=("gnome-control-center")
 license=(GPL2)
 arch=(x86_64)
 depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
-         gnome-online-accounts gnome-settings-daemon-oldstable gsettings-desktop-schemas-oldstable gtk3
+         gnome-online-accounts gnome-settings-daemon-338 gsettings-desktop-schemas-338 gtk3
          libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd grilo libibus
          cheese libgudev bolt udisks2 libhandy gsound colord-gtk)
@@ -24,7 +24,7 @@ optdepends=('system-config-printer: Printer settings'
             'gnome-remote-desktop: screen sharing'
             'rygel: media sharing'
             'openssh: remote login')
-groups=(gnome-oldstable)
+groups=(gnome-338)
 _commit=54eb734eaaa95807dd805fbe4e4ad0dceb787736  # tags/3.38.6^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
