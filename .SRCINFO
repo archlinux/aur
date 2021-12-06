@@ -1,7 +1,7 @@
 pkgbase = dracula-icons-git
 	pkgdesc = Dark Icons Theme for Linux Desktops
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.0.2d3c83ca
+	pkgrel = 2
 	url = https://github.com/m4thewz/dracula-icons.git
 	arch = any
 	makedepends = git
