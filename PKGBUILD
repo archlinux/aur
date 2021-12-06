@@ -2,7 +2,7 @@
 pkgname='ani-cli-git'
 _pkgname='ani-cli'
 pkgver=r96.1a1909b
-pkgrel=1
+pkgrel=5
 pkgdesc="A cli to browse and watch anime."
 arch=('any')
 url="https://github.com/pystardust/ani-cli"
