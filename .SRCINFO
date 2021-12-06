@@ -1,6 +1,6 @@
 pkgbase = cargo-deny
 	pkgdesc = Cargo plugin for linting your dependencies
-	pkgver = 0.10.3
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/EmbarkStudios/cargo-deny
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = cargo-deny
 	license = APACHE
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-deny-0.10.3.tar.gz::https://github.com/EmbarkStudios/cargo-deny/archive/0.10.3/cargo-deny-0.10.3.tar.gz
-	sha512sums = 68033fae9a16753342e222a23f3a3288c9474c0ce404321054dcd661aa15ca1dd59de0dfbc3a65df7ae8d857577a4f11af181393801ffd1a3c8cf5470a2402da
+	source = cargo-deny-0.11.0.tar.gz::https://github.com/EmbarkStudios/cargo-deny/archive/0.11.0/cargo-deny-0.11.0.tar.gz
+	sha512sums = b16da610be6a17335198689c1531bc8715f1b96a2febcad6f80d84afb17f98b3302fd64c8c539a45b8a7fb684e2369e9f4ec8d19a13c226ae526c24950687278
 
 pkgname = cargo-deny
