@@ -10,7 +10,7 @@ pkgbase = gnome-shell-338
 	license = GPL
 	checkdepends = xorg-server-xvfb
 	makedepends = gtk-doc
-	makedepends = gnome-control-center
+	makedepends = gnome-control-center-338
 	makedepends = evolution-data-server
 	makedepends = gobject-introspection
 	makedepends = git
@@ -39,7 +39,6 @@ pkgbase = gnome-shell-338
 	depends = gnome-autoar
 	depends = gnome-disk-utility
 	depends = gst-plugin-pipewire
-	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell=3.38.6
 	conflicts = gnome-shell

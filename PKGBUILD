@@ -18,11 +18,10 @@ depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session
          gnome-settings-daemon-338 gnome-themes-extra gsettings-desktop-schemas-338 gnome-control-center-338
          libcanberra-pulse libgdm libsecret mutter-338 nm-connection-editor unzip
          gstreamer libibus gnome-autoar gnome-disk-utility gst-plugin-pipewire)
-makedepends=(gtk-doc gnome-control-center evolution-data-server
+makedepends=(gtk-doc gnome-control-center-338 evolution-data-server
              gobject-introspection git meson sassc asciidoc bash-completion)
 checkdepends=(xorg-server-xvfb)
-optdepends=('gnome-control-center: System settings'
-            'evolution-data-server: Evolution calendar integration')
+optdepends=('evolution-data-server: Evolution calendar integration')
 groups=(gnome-338)
 install=gnome-shell.install
 _commit=beb24d6b101708e978eda748187e351e35e3ce66  # tag/3.38.6
