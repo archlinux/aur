@@ -6,11 +6,11 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.71.r413.g815f0b45
+pkgver=2.71.r492.g49371c4f
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
-url="https://asymptote.sourceforge.net/"
+url="https://github.com/vectorgraphics/asymptote"
 license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'gsl' 'fftw' 'libsigsegv')
 makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'librsvg')
@@ -19,7 +19,7 @@ optdepends=('python-pyqt5:      for the xasy GUI'
 	    'python-cson:       for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
-source=('git+https://github.com/vectorgraphics/asymptote.git')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,18 +32,18 @@ build() {
   ./autogen.sh
   ./configure --enable-gc=system \
 	      --prefix=/usr \
-	      --enable-texlive-build
-  make all
+	      --enable-texlive-build 
+  make
 }
 
 check() {
   cd ${pkgname%-git}
-  make check-all
+  make check
 }
 
 package() {
   cd ${pkgname%-git}
-  make DESTDIR="${pkgdir}" install-all
+  make -j1 DESTDIR="${pkgdir}" install
 
   # move vim files to correct place
   install -dm755 "$pkgdir"/usr/share/vim/vimfiles/{ftdetect,syntax}
@@ -53,4 +53,8 @@ package() {
 	  "$pkgdir"/usr/share/vim/vimfiles/ftdetect/asy.vim
   rm "$pkgdir"/usr/share/asymptote/asy.vim \
      "$pkgdir"/usr/share/asymptote/asy_filetype.vim
+  install -dm755 "$pkgdir"/usr/share/org.kde.syntax-highlighting/syntax
+  cd "$pkgdir"/usr/share/asymptote/
+  sh asy-kate.sh
+  mv asymptote.xml "$pkgdir"/usr/share/org.kde.syntax-highlighting/syntax
 }
