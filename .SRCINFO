@@ -1,0 +1,21 @@
+pkgbase = wabt-git
+	pkgdesc = The WebAssembly binary toolkit
+	pkgver = r2087.g5d2123b1
+	pkgrel = 1
+	url = https://github.com/WebAssembly/wabt
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = clang
+	makedepends = cmake
+	makedepends = gcc
+	depends = gcc-libs
+	depends = glibc
+	provides = wabt
+	conflicts = wabt
+	options = staticlibs
+	source = git+https://github.com/WebAssembly/wabt.git
+	sha256sums = SKIP
+
+pkgname = wabt-git
