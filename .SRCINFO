@@ -1,7 +1,7 @@
 pkgbase = nodejs-csso
 	pkgdesc = CSS minifier with structural optimisations
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/css/csso
 	arch = any
 	license = MIT
