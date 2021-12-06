@@ -4,7 +4,7 @@ pkgbase = r-recipes
 	pkgrel = 1
 	url = https://cran.r-project.org/package=recipes
 	arch = any
-	license = GPL2
+	license = MIT
 	depends = r>=3.1
 	depends = r-dplyr
 	depends = r-ellipsis
@@ -12,6 +12,7 @@ pkgbase = r-recipes
 	depends = r-glue
 	depends = r-gower
 	depends = r-ipred>=0.9.12
+	depends = r-lifecycle
 	depends = r-lubridate
 	depends = r-magrittr
 	depends = r-purrr>=0.2.3
@@ -31,6 +32,7 @@ pkgbase = r-recipes
 	optdepends = r-kernlab
 	optdepends = r-knitr
 	optdepends = r-modeldata
+	optdepends = r-parsnip
 	optdepends = r-rann
 	optdepends = r-rcpproll
 	optdepends = r-rmarkdown
@@ -38,6 +40,7 @@ pkgbase = r-recipes
 	optdepends = r-rsample
 	optdepends = r-rspectra
 	optdepends = r-testthat
+	optdepends = r-workflows
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/recipes_0.1.17.tar.gz
 	sha256sums = ed20ba0ea0165310e31864ed7d2e005a2a37b76c7913977fd124d8b567616d3d
