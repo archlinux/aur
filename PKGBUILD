@@ -21,9 +21,11 @@ groups=(gnome-338)
 backup=(etc/xdg/Xwayland-session.d/00-xrdb)
 _commit=e9c5057315d5e3fbb90482bb054e250773aad9ab  # tags/GNOME_SETTINGS_DAEMON_3_38_2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+        "meson.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '2de4a9e1673f85f70417927902eb4a01ddb403eac26515b4881e35978c2f980d')
 
 pkgver() {
   cd gnome-settings-daemon
@@ -36,6 +38,8 @@ prepare() {
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
+  
+  patch apply -p1 meson.build < ../meson.patch
 }
 
 build() {
