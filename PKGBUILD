@@ -28,7 +28,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.1.99.r311.gafa7b34845
+pkgver=2.1.99.r553.gdf42e20ac6
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
@@ -56,15 +56,15 @@ source+=(
   'zfs.initcpio.hook'
 )
 md5sums=('SKIP'
-         'f66790ba3c14c8ebf276ea06f9376e32'
+         '25ddbcc775faef1fc25211b82b7e9fe8'
          'eca615c602740315333aedd417d83541'
          'fa15be4761c8a56ad0177d1a06a4c7f8')
 sha256sums=('SKIP'
-            '780e590383fb00389c5e02ac15709b7a476d9e07d3c4935ed9eb67c951a88409'
+            '7da29212a34851b04d72ee6aad30576ed744b04ace091d5f55e202faaf8fb8d2'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
             '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc')
 b2sums=('SKIP'
-        '1fdae935043d979b9241f07f8baa25a9a0367c24c31c84a59dfe8d6b468a523d8f49b68da3c7fd3194db6638f9d7bef046fc5e2669ce25d73c65009c16bf6c50'
+        '914e519bd2172fef1c9032695cecb3c00a73cbcaeb37496f0f9058e636dabd0116d527ad490a82b51e7abf74837af539ddaa9d969a949ec648ba40b281a817be'
         '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
         'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0')
 
