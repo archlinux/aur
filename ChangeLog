@@ -1,5 +1,4 @@
 === Morgen 2.1.6
-
 * Bug Fixes
 - Fixed an issue where certain CalDAV accounts could not be connected
 - Fixed a bug causing recurring events to be displayed on the wrong day in some timezones
@@ -237,3 +236,13 @@ General Fixes
 === Morgen 2.3.5
 Morgen developers communicates the same changelog for 2.3.4 and 2.3.5 - so the latter arguably fixes issues of the former.
 
+=== Morgen 2.3.6
+Improvements
+- Loading calendars with tons of events, especially recurrent ones, is now much faster. This is only the first step towards making Morgen the faster calendar ever.
+- The creation of new events now feels more stable. We have fixed the flickering of the event that was occurring after hitting Save.
+- We have made several UI adjustments that we hope you'll love! For example, the current time indicator, as well as the color of the calendar to which an event belongs, are now more visible, even when the calendar is crowded.
+
+General Fixes
+- We fixed a possible crash sometimes occurring when creating a new event.
+- We improved the repositioning of the Morgen windows on Windows when disconnecting an external screen, and make the Alt+C toggling robust to fast switches.
+- We fixed an issue pushing events to some CalDAV providers.
