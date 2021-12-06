@@ -1,6 +1,6 @@
 pkgbase = mkosi-git
 	pkgdesc = Build Legacy-Free OS Images
-	pkgver = 11.r1.gf7d518e
+	pkgver = 12.r3.gdeaea67
 	pkgrel = 1
 	url = https://github.com/systemd/mkosi
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = mkosi-git
 	optdepends = xfsprogs: raw_xfs output format
 	optdepends = tar: tar output format
 	optdepends = cryptsetup: add dm-verity partitions
+	optdepends = python-cryptography: sign verity data
 	optdepends = ovmf: run bootable images in QEMU
 	optdepends = edk2-ovmf: run bootable images in QEMU
 	optdepends = qemu: run bootable images in QEMU

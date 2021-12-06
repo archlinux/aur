@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=11.r1.gf7d518e
+pkgver=12.r3.gdeaea67
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -28,6 +28,7 @@ optdepends=('dnf: build Fedora or Mageia images'
             'xfsprogs: raw_xfs output format'
             'tar: tar output format'
             'cryptsetup: add dm-verity partitions'
+            'python-cryptography: sign verity data'
             # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
             'ovmf: run bootable images in QEMU'
             'edk2-ovmf: run bootable images in QEMU'
