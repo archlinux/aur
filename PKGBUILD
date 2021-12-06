@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2021.11.2
+pkgver=2021.12.2
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ replaces=('jitsi-meet-electron')
 depends=('gtk3'
          'libxss'
          'nss')
-depends=('electron13')
+depends=('electron>=16.0.4')
 makedepends=('coreutils'
              'git'
              'npm'
@@ -26,12 +26,12 @@ makedepends=('coreutils'
              )
 # _node_version="v16.13.0"
 # v16 seems to make robotjs-installation/building break, so 14 it is for now
-_node_version="14"
+_node_version="16"
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('a3479dbd04ef646a925fe55ae8d6f506e09711d1e79d3b0a82a85d9dc075dbff'
+sha256sums=('6d3e896f7e53906cf8d48597e6953d1af6177ed6c28ec86eed4c1c83131a298a'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
@@ -57,7 +57,7 @@ prepare() {
   # target when calling electron-builder..
   patch -Np1 -i ${srcdir}/no_targets.patch
 
-  _electron_dist=/usr/lib/electron13
+  _electron_dist=/usr/lib/electron
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
   sed 's#git+ssh://git@github.com#git+https://github.com#g' -i package-lock.json
@@ -74,9 +74,11 @@ build() {
   nvm use ${_node_version}
 
   # npm run build
-  npx webpack --config ./webpack.main.js --mode production
-  npx webpack --config ./webpack.renderer.js --mode production
-  npx electron-builder --linux --${_electronbuilderrarch} --dir dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
+  # no npx anymore, see https://github.com/electron-userland/electron-builder/issues/6411
+  npm exec -c 'webpack --config ./webpack.main.js --mode production'
+  npm exec -c 'webpack --config ./webpack.renderer.js --mode production'
+  # npx electron-builder --linux --${_electronbuilderrarch} --dir dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
+  npm exec -c "electron-builder --linux --${_electronbuilderrarch} --dir dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}"
 }
 
 package() {
@@ -92,7 +94,7 @@ package() {
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec electron13 /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec electron /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
