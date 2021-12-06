@@ -1,0 +1,9 @@
+pkgbase = virtualbox-host-dummy
+	pkgdesc = VirtualBox Host kernel modules, dummy package
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	provides = VIRTUALBOX-HOST-MODULES
+
+pkgname = virtualbox-host-dummy
