@@ -41,6 +41,7 @@ pkgbase = r-metr
 	optdepends = r-kriging
 	optdepends = r-raster
 	optdepends = r-rgdal
+	optdepends = r-here
 	source = https://cran.r-project.org/src/contrib/metR_0.11.0.tar.gz
 	sha256sums = dc896d235cc83045ab93af8103bd11c45293a4cd94db2781677bfd3c194d5925
 
