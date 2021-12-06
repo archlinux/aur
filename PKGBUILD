@@ -39,7 +39,7 @@ prepare() {
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
   
-  patch apply -p1 $srcdir/gnome-settings-daemon/meson.build < $srcdir/../meson.patch
+  patch meson.build ../../meson.patch
 }
 
 build() {
