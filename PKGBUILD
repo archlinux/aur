@@ -5,7 +5,7 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.12-31
+_pkgver=6.9.12-32
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -16,22 +16,24 @@ depends=('libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng' 'l
 makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp' 'libzip' 'libjxl'
              'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng' 'djvulibre')
 checkdepends=('gsfonts' 'ttf-dejavu')
-source=("ImageMagick6-$_pkgver.tar.gz::https://github.com/ImageMagick/ImageMagick6/archive/refs/tags/$_pkgver.tar.gz"
+source=("https://download.imagemagick.org/ImageMagick/download/ImageMagick-$_pkgver.tar.gz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('b9c14457bafc5f94097009a52bad8835d86729f42d9944622d2d58fdff9d7797'
+sha256sums=('dfb353be07b6e2f605c3d2fe53779224daaf06b5c62f94b23ff5144e78c14b66'
+            'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
+validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
 
 prepare() {
   mkdir -p binpkg/usr/lib/pkgconfig {binpkg,docpkg}/usr/share
 
-  cd ImageMagick6-$_pkgver
+  cd ImageMagick-$_pkgver
 
   # Fix up typemaps to match our packages, where possible
   patch -Np1 -i ../arch-fonts.diff
 }
 
 build() {
-  cd ImageMagick6-$_pkgver
+  cd ImageMagick-$_pkgver
   ./configure \
     PKG_CONFIG="/usr/bin/env PKG_CONFIG_PATH=/usr/lib/$pkgbase/pkgconfig pkg-config" \
     --prefix=/usr \
@@ -70,7 +72,7 @@ build() {
 }
 
 check() (
-  cd ImageMagick6-$_pkgver
+  cd ImageMagick-$_pkgver
   ulimit -n 4096
   make check || :
 )
@@ -93,7 +95,7 @@ package_libmagick6() {
   options=('!emptydirs' 'libtool')
   backup=(etc/ImageMagick-6/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
 
-  cd ImageMagick6-$_pkgver
+  cd ImageMagick-$_pkgver
   make DESTDIR="$pkgdir" install pkgconfigdir="/usr/lib/$pkgbase/pkgconfig"
 
   rm "$pkgdir"/etc/ImageMagick-6/type-{apple,urw-base35,windows}.xml
