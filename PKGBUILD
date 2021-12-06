@@ -15,7 +15,7 @@ replaces=("gnome-shell")
 arch=(x86_64)
 license=(GPL)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session
-         gnome-settings-daemon-338 gnome-themes-extra gsettings-desktop-schemas-338
+         gnome-settings-daemon-338 gnome-themes-extra gsettings-desktop-schemas-338 gnome-control-center-338
          libcanberra-pulse libgdm libsecret mutter-338 nm-connection-editor unzip
          gstreamer libibus gnome-autoar gnome-disk-utility gst-plugin-pipewire)
 makedepends=(gtk-doc gnome-control-center evolution-data-server
