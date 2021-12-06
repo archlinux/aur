@@ -7,7 +7,6 @@ pkgbase = r-dunn.test
 	license = GPL2
 	depends = r
 	source = https://cran.r-project.org/src/contrib/dunn.test_1.3.5.tar.gz
-	md5sums = 766dd9c2342ce7efadad6da433cbec14
+	sha256sums = 8a4419c5ba13fefc9ae01ec479f2207cd03ff87f01393b0e73cffb3ba8df1c53
 
 pkgname = r-dunn.test
-
