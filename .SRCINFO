@@ -1,6 +1,6 @@
 pkgbase = alibuild
 	pkgdesc = A simple build tool for ALICE software at CERN
-	pkgver = 1.9.7
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://alisw.github.io/alibuild/
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = alibuild
 	optdepends = findutils: support for s3:// remote stores
 	optdepends = awk: support for s3:// remote stores
 	optdepends = python-boto3: support for b3:// remote stores
-	source = https://github.com/alisw/alibuild/archive/refs/tags/v1.9.7.tar.gz
-	sha256sums = cd49919f4304df7f6e575d342f0b625c7543b9b00570a9d59dbfd2e400fcf4da
+	source = https://github.com/alisw/alibuild/archive/refs/tags/v1.9.8.tar.gz
+	sha256sums = bbcc95cf12137d01689b30a83cc91c5f5014b9c030047d4454582743cb1d2d73
 
 pkgname = alibuild
