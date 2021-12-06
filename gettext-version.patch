@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 0a35e4c..6c587a0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -84,7 +84,7 @@ AC_CHECK_DECLS([errno, getpwnam, getgrnam, getgrgid, strdup, strerror, getenv, a
+ # Gettext.
+ AM_ICONV
+ AM_GNU_GETTEXT([external], [need-formatstring-macros])
+-AM_GNU_GETTEXT_VERSION(0.19)
++AM_GNU_GETTEXT_VERSION(0.20)
+
+ LIBS="$LIBS $LIB_CLOCK_GETTIME"

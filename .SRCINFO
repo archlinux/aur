@@ -1,17 +1,19 @@
 pkgbase = cpio-git
 	pkgdesc = Utility that copy files into or out of a cpio or tar archive
-	pkgver = 2.12.r15.g068f5db
+	pkgver = 2.13.r15.g86dacfe
 	pkgrel = 1
 	url = https://www.gnu.org/software/cpio/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = rsync
 	depends = glibc
 	provides = cpio
 	conflicts = cpio
 	source = git+https://git.savannah.gnu.org/git/cpio.git
+	source = gettext-version.patch
 	sha256sums = SKIP
+	sha256sums = 90ed0528fcc541ab83b3d9c97522bf7b8196a2da8dd60278656158806ee23599
 
 pkgname = cpio-git
-
