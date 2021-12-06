@@ -1,6 +1,6 @@
 pkgbase = libcamera-git
 	pkgdesc = A complex camera support library for Linux, Android, and ChromeOS
-	pkgver = r3303.b7b72027
+	pkgver = r3331.f8d2f17a
 	pkgrel = 1
 	url = http://libcamera.org/
 	arch = x86_64

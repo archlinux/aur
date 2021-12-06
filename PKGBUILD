@@ -1,6 +1,10 @@
+# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
+# Contributor: Sourav Das <souravdas142@gmail.com>
+# Contributor: fordprefect <fordprefect@dukun.de>
+
 pkgname=libcamera-git
 _pkgname=libcamera
-pkgver=r3303.b7b72027
+pkgver=r3331.f8d2f17a
 _gtestver=1.11.0
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
