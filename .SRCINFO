@@ -1,6 +1,6 @@
 pkgbase = rpiusbboot
 	pkgdesc = Raspberry Pi USB boot
-	pkgver = v2021.07.01
+	pkgver = 2021.07.01
 	pkgrel = 1
 	url = https://github.com/raspberrypi/usbboot
 	arch = i686
