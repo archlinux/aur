@@ -1,0 +1,20 @@
+
+# Created by https://www.gitignore.io/api/archlinuxpackages
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+mqttui/
+
+# End of https://www.gitignore.io/api/archlinuxpackages
