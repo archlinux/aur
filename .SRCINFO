@@ -1,19 +1,18 @@
 pkgbase = amok-exif-sorter
 	pkgdesc = AmoK Exif Sorter is the easy but powerful solution for renaming your photos using EXIF data
-	pkgver = 2.81
+	pkgver = 3.00
 	pkgrel = 1
 	url = http://www.amok.am/en/freeware/amok_exif_sorter/
 	arch = x86_64
 	license = custom
 	depends = java-runtime
-	source = http://www.amok.am/files/releases/AmoK_Exif_Sorter_v2.81_(Linux_64Bit).tar.bz2
+	source = https://www.amok.am/files/releases/AmoK_Exif_Sorter_v3.00_(Linux_64Bit).tar.bz2
 	source = amok-exif-sorter.desktop
 	source = amok-exif-sorter.ico
 	source = amok-exif-sorter
-	md5sums = c7a7d6731cca7c90fbe1c94445107c7f
+	md5sums = 4eb3621ceca7969f00019fd084006550
 	md5sums = 234329004eb631c32c6789dcad08704c
 	md5sums = 43d8104af166aefe26016ff011af0f37
 	md5sums = aa5894fe7f60a2cd8f9b157776c72e3b
 
 pkgname = amok-exif-sorter
-
