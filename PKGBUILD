@@ -3,14 +3,14 @@
 # Contributor: fabioticconi <fabio dot ticconi at gmail dot com>
 
 pkgname=weidu-bin
-pkgver=247
+pkgver=249
 pkgrel=1
 pkgdesc="A dialogue compiler for Infinity Engine games (precompiled binary)"
 arch=('x86_64')
 url="http://weidu.org"
 license=('GPL2')
 source=(https://github.com/WeiDUorg/weidu/releases/download/v$pkgver.00/WeiDU-Linux-$pkgver-amd64.zip)
-md5sums=('3b2abb25f34e728960a454e05c654e5c')
+md5sums=('e80e52ed8dd95eeba8005eb0ea6c9e29')
 options=('!strip')
 
 package() {
@@ -26,8 +26,8 @@ package() {
   install -D -m755 ./weinstall "${pkgdir}/usr/bin/weinstall"
   
   # copy the examples & lib directories
-  install -m755 -d "${pkgdir}/usr/share/${pkgname}/lib" "${pkgdir}/usr/share/doc/${pkgname}/examples"
-  cp -r ./lib "${pkgdir}/usr/share/${pkgname}/lib"  
+  install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}/examples" #"${pkgdir}/usr/share/${pkgname}/lib"
+#  cp -r ./lib "${pkgdir}/usr/share/${pkgname}/lib"  
   cp -r ./examples "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
   # copy the readmes
