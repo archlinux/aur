@@ -1,6 +1,6 @@
 # Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=pwclient
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="The command-line client for the patchwork patch tracking tool"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(python-pbr)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-mock)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('a4affd5a38170f78b63e752bb110f908c8250f13bfa1d6bbd9abdd6bc157db2c')
+sha256sums=('33fa25cd1839806f700304ab839ca910ea2b45cf1c1deba909cd0a76aba03e55')
 
 build() {
 	cd "$pkgname-$pkgver"
