@@ -1,14 +1,14 @@
-pkgbase = gnome-tweaks-oldstable
-	pkgdesc = Graphical interface for advanced GNOME 3 settings (Tweak Tool) (oldstable version)
+pkgbase = gnome-tweaks-338
+	pkgdesc = Graphical interface for advanced GNOME 3 settings (Tweak Tool) (338 version)
 	pkgver = 3.34.1
 	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Tweaks
 	arch = any
-	groups = gnome-oldstable
+	groups = gnome-338
 	license = GPL
 	makedepends = git
 	makedepends = meson
-	depends = gnome-settings-daemon-oldstable
+	depends = gnome-settings-daemon-338
 	depends = python-gobject
 	depends = libhandy0
 	provides = gnome-tweaks=3.34.1
@@ -20,5 +20,5 @@ pkgbase = gnome-tweaks-oldstable
 	source = git+https://gitlab.gnome.org/GNOME/gnome-tweaks.git#commit=6e8fedad09c48fe942156ebcf3a88dc3c9698e54
 	sha256sums = SKIP
 
-pkgname = gnome-tweaks-oldstable
+pkgname = gnome-tweaks-338
 

@@ -2,16 +2,16 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=gnome-tweaks-oldstable
+pkgname=gnome-tweaks-338
 pkgver=3.34.1
 pkgrel=2
-pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool) (oldstable version)"
+pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool) (338 version)"
 url="https://wiki.gnome.org/Apps/Tweaks"
 arch=(any)
 license=(GPL)
-depends=(gnome-settings-daemon-oldstable python-gobject libhandy0)
+depends=(gnome-settings-daemon-338 python-gobject libhandy0)
 makedepends=(git meson)
-groups=(gnome-oldstable)
+groups=(gnome-338)
 conflicts=("gnome-tweaks" "gnome-tweak-tool")
 provides=("gnome-tweaks=$pkgver" "gnome-tweak-tool=$pkgver")
 replaces=("gnome-tweaks" "gnome-tweak-tool")
