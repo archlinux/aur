@@ -1,10 +1,10 @@
 # Maintainer: Mahdy Mirzade <me@mahdym.ir>
-pkgname=gip
+pkgname=getip
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Get Private/Public IP & IP's Geolocation."
 arch=(any)
-url="https://github.com/mahdymirzade/gip"
+url="https://github.com/mahdymirzade/getip"
 license=('GPL-3.0')
 depends=('bash' 'curl' 'dog' 'grep' 'jq')
 makedepends=('git')
