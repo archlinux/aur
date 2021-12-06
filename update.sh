@@ -15,3 +15,9 @@ fi
 
 sed -i "s/pkgver=.*/pkgver=$GITHUBTEXT/g" PKGBUILD
 echo "Updated version to $GITHUBTEXT"
+
+updpkgsums
+makepkg --printsrcinfo >.SRCINFO
+git add ./PKGBUILD ./.SRCINFO
+git commit -m "Bump version to $GITHUBTEXT"
+git push && git push aur master

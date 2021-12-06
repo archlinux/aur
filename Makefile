@@ -8,12 +8,7 @@ install:
 	makepkg -si
 
 update:
-	./checkupdate.sh
-	updpkgsums
-	makepkg --printsrcinfo > .SRCINFO
-	git add ./PKGBUILD ./.SRCINFO
-	git commit -m "Bump version"
-	git push && git push aur master
+	./update.sh
 
 check:
 	./checkupdate.sh --dry-run
