@@ -1,6 +1,6 @@
-diff -ru nvidia-settings-340.104/src/libXNVCtrl/Makefile nvidia-settings-340.104-patched/src/libXNVCtrl/Makefile
---- nvidia-settings-340.104/src/libXNVCtrl/Makefile	2017-09-19 18:35:55.000000000 +0200
-+++ nvidia-settings-340.104-patched/src/libXNVCtrl/Makefile	2018-06-09 08:12:48.643147441 +0200
+diff -ru a/src/libXNVCtrl/Makefile b/src/libXNVCtrl/Makefile
+--- a/src/libXNVCtrl/Makefile	2017-09-19 18:35:55.000000000 +0200
++++ b/src/libXNVCtrl/Makefile	2018-06-09 08:12:48.643147441 +0200
 @@ -55,10 +55,17 @@
  .PHONY: clean
  
@@ -19,10 +19,9 @@ diff -ru nvidia-settings-340.104/src/libXNVCtrl/Makefile nvidia-settings-340.104
  # define the rule to build each object file
  $(foreach src,$(SRC),$(eval $(call DEFINE_OBJECT_RULE,TARGET,$(src))))
  
-Only in nvidia-settings-340.104-patched/src/libXNVCtrl: _out
-diff -ru nvidia-settings-340.104/src/Makefile nvidia-settings-340.104-patched/src/Makefile
---- nvidia-settings-340.104/src/Makefile	2017-09-19 18:35:55.000000000 +0200
-+++ nvidia-settings-340.104-patched/src/Makefile	2018-06-09 08:16:48.837588597 +0200
+diff -ru a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2017-09-19 18:35:55.000000000 +0200
++++ b/src/Makefile	2018-06-09 08:16:48.837588597 +0200
 @@ -84,6 +84,8 @@
  XNVCTRL_DIR             ?= libXNVCtrl
  XNVCTRL_MAKEFILE        ?= Makefile
@@ -53,4 +52,28 @@ diff -ru nvidia-settings-340.104/src/Makefile nvidia-settings-340.104-patched/sr
  
  build-xnvctrl:
  	@$(MAKE) -C $(XNVCTRL_DIR) -f $(XNVCTRL_MAKEFILE)
-Only in nvidia-settings-340.104-patched/src: _out
+
+diff -ru a/src/gtk+-2.x/ctkvdpau.c b/src/gtk+-2.x/ctkvdpau.c
+--- a/src/gtk+-2.x/ctkvdpau.c
++++ b/src/gtk+-2.x/ctkvdpau.c
+@@ -103,6 +103,8 @@
+ const gchar* __video_mixer_attribute_help =
+ "This shows the video mixer attributes and any applicable ranges.";
+ 
++struct VDPAUDeviceImpl VDPAUDeviceFunctions;
++
+ static int queryOutputSurface(CtkVDPAU *ctk_vdpau, VdpDevice device,
+                               VdpGetProcAddress *getProcAddress);
+ 
+diff -ru a/src/gtk+-2.x/ctkvdpau.h b/src/gtk+-2.x/ctkvdpau.h
+--- a/src/gtk+-2.x/ctkvdpau.h
++++ b/src/gtk+-2.x/ctkvdpau.h
+@@ -46,7 +46,7 @@
+     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VDPAU, CtkVDPAUClass))
+ 
+ 
+-struct VDPAUDeviceImpl {
++extern struct VDPAUDeviceImpl {
+ 
+     VdpGetErrorString *GetErrorString;
+     VdpGetProcAddress *GetProcAddress;
