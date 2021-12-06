@@ -1,7 +1,7 @@
 pkgbase = htrace.sh
 	pkgdesc = A shell script for http/https troubleshooting and profiling
 	pkgver = 1.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trimstray/htrace.sh
 	arch = any
 	license = MIT

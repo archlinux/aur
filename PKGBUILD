@@ -2,7 +2,7 @@
 
 pkgname=htrace.sh
 pkgver=1.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A shell script for http/https troubleshooting and profiling"
 arch=('any')
 url="https://github.com/trimstray/htrace.sh"
