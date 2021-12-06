@@ -1,23 +1,22 @@
 # Contributor: Sebastain Wolf <fatmike303 at gmail.com>
 pkgname=cbmconvert
-pkgver=2.1.2
-pkgrel=2
-pkgdesc="Create, extract and convert different Commodore binary archives."
+pkgver=2.1.4
+pkgrel=1
+pkgdesc="Create, extract and convert 8-bit Commodore binary archives"
 arch=('i686' 'x86_64')
-url="http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/cbmconvert.html"
+url="https://github.com/dr-m/cbmconvert"
 license=('GPL')
-source=(http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/$pkgname-$pkgver.tar.gz)
-md5sums=('6f8baf36cee34d098bf780fee39615be')
+source=(https://github.com/dr-m/$pkgname/archive/refs/tags/$pkgname-$pkgver.tar.gz)
+sha256sums=('9e82e9b281bc014dd3a283fd173f6fccc43043851a8926cac6be9b17ef68e3dc')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
-	make -f Makefile.unix || return 1
+  cd $srcdir/$pkgname-$pkgname-$pkgver
+	cmake -B build  || return 1
+	cmake --build build || return 1
+	ctest --test-dir build || return 1
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-	make -f Makefile.unix install DESTDIR="$pkgdir" || return 1
-	install -D -m644 cbmconvert.1 $pkgdir/usr/man/man1/cbmconvert.1
-	install -D -m644 disk2zip.1 $pkgdir/usr/man/man1/disk2zip.1
-	install -D -m644 zip2disk.1 $pkgdir/usr/man/man1/zip2disk.1
+  cd $srcdir/$pkgname-$pkgname-$pkgver/build
+	cmake --install . --prefix $pkgdir/usr
 }

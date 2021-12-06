@@ -1,13 +1,12 @@
 pkgbase = cbmconvert
-	pkgdesc = Create, extract and convert different Commodore binary archives.
-	pkgver = 2.1.2
-	pkgrel = 2
-	url = http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/cbmconvert.html
+	pkgdesc = Create, extract and convert 8-bit Commodore binary archives
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://github.com/dr-m/cbmconvert
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://www.zimmers.net/anonftp/pub/cbm/crossplatform/converters/unix/cbmconvert-2.1.2.tar.gz
-	md5sums = 6f8baf36cee34d098bf780fee39615be
+	source = https://github.com/dr-m/cbmconvert/archive/refs/tags/cbmconvert-2.1.4.tar.gz
+	sha256sums = 9e82e9b281bc014dd3a283fd173f6fccc43043851a8926cac6be9b17ef68e3dc
 
 pkgname = cbmconvert
-
