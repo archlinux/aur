@@ -76,7 +76,6 @@ prepare() {
   patch -Np1 -i ../fix-testing-build.patch
   patch -Np1 -i ../fix-langpack-id.patch
   patch -Np1 -i ../git_sourcestamp-info.patch
-  patch -Np1 -i ../gitignore.patch
   patch -Np1 -i ../fix-3pgo.patch
 
   cat >../mozconfig <<END
