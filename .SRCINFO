@@ -6,7 +6,6 @@ pkgbase = r-checkmate
 	arch = i686
 	arch = x86_64
 	license = BSD3
-	makedepends = gcc
 	depends = r>=3.0.0
 	depends = r-backports>=1.1.0
 	optdepends = r-r6
@@ -22,7 +21,6 @@ pkgbase = r-checkmate
 	optdepends = r-tinytest
 	optdepends = r-tibble
 	source = https://cran.r-project.org/src/contrib/checkmate_2.0.0.tar.gz
-	md5sums = bcb4f623a0a9c5b297fb818346cad9a4
+	sha256sums = 0dc25b0e20c04836359df1885d099c6e4ad8ae0e585a9e4107f7ea945d9c6fa4
 
 pkgname = r-checkmate
-
