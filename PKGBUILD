@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.0.6
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('unknow')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-wine} 'h7toolpc-bin')
 replaces=(h7toolpc-bin)
-depends=('wine' 'wqy-zenhei')
+depends=('wine' 'wqy-microhei')
 optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
 makedepends=('unarchiver')
 backup=()
@@ -19,7 +19,7 @@ install=${pkgname}.install
 source=("${pkgname/pc-wine/PC_release}.zip::http://www.armfly.com/download/H7-TOOL/${pkgname/pc-wine/PC_release}(V${pkgver}).zip"
         "icons.tar.gz"
         "${pkgname}.install")
-sha256sums=('6c14fe23a41f5c95d7ed44ff1ea58ada1bf58d5701bf8e408fa1ce06bc827ed6'
+sha256sums=('89b52cdc43bbfdd3c75c634dcddc1933ffb7f69571322e883b3815ac67af3d82'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             '078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef')
 noextract=("${pkgname/pc-wine/PC_release}.zip"
@@ -41,7 +41,7 @@ package() {
     find "${pkgdir}/${armfly}" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/${armfly}" -type d -exec chmod 755 "{}" \;
 
-    _ftname="wqy-zenhei.ttc"
+    _ftname="wqy-microhei.ttc"
     install -Dm0644 /dev/stdin "${pkgdir}/${armfly}/${pkgname%-wine}/regpatch.reg" << EOF
 REGEDIT4
 

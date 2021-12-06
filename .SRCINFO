@@ -1,6 +1,6 @@
 pkgbase = h7toolpc-wine
 	pkgdesc = Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等
-	pkgver = 2.0.6
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468
 	install = h7toolpc-wine.install
@@ -8,7 +8,7 @@ pkgbase = h7toolpc-wine
 	license = unknow
 	makedepends = unarchiver
 	depends = wine
-	depends = wqy-zenhei
+	depends = wqy-microhei
 	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
 	provides = h7toolpc-wine
 	conflicts = h7toolpc-wine
@@ -18,10 +18,10 @@ pkgbase = h7toolpc-wine
 	noextract = h7toolPC_release.zip
 	noextract = icons.tar.gz
 	options = !strip
-	source = h7toolPC_release.zip::http://www.armfly.com/download/H7-TOOL/h7toolPC_release(V2.0.6).zip
+	source = h7toolPC_release.zip::http://www.armfly.com/download/H7-TOOL/h7toolPC_release(V2.0.9).zip
 	source = icons.tar.gz
 	source = h7toolpc-wine.install
-	sha256sums = 6c14fe23a41f5c95d7ed44ff1ea58ada1bf58d5701bf8e408fa1ce06bc827ed6
+	sha256sums = 89b52cdc43bbfdd3c75c634dcddc1933ffb7f69571322e883b3815ac67af3d82
 	sha256sums = 6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142
 	sha256sums = 078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef
 
