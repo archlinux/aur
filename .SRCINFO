@@ -7,7 +7,6 @@ pkgbase = r-numderiv
 	license = GPL2
 	depends = r>=2.11.1
 	source = https://cran.r-project.org/src/contrib/numDeriv_2016.8-1.1.tar.gz
-	md5sums = f894081f6d73822a362f156e849c9657
+	sha256sums = d8c4d19ff9aeb31b0c628bd4a16378e51c1c9a3813b525469a31fe89af00b345
 
 pkgname = r-numderiv
-
