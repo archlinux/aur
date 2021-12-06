@@ -1,0 +1,24 @@
+diff -upr flask-jwt-0.3.2.orig/flask_jwt/__init__.py flask-jwt-0.3.2/flask_jwt/__init__.py
+--- flask-jwt-0.3.2.orig/flask_jwt/__init__.py	2015-11-03 16:41:38.000000000 +0200
++++ flask-jwt-0.3.2/flask_jwt/__init__.py	2021-12-06 23:38:24.755653892 +0200
+@@ -129,7 +129,7 @@ def _default_auth_request_handler():
+ 
+ 
+ def _default_auth_response_handler(access_token, identity):
+-    return jsonify({'access_token': access_token.decode('utf-8')})
++    return jsonify({'access_token': access_token})
+ 
+ 
+ def _default_jwt_error_handler(error):
+diff -upr flask-jwt-0.3.2.orig/tests/test_jwt.py flask-jwt-0.3.2/tests/test_jwt.py
+--- flask-jwt-0.3.2.orig/tests/test_jwt.py	2015-11-03 16:41:38.000000000 +0200
++++ flask-jwt-0.3.2/tests/test_jwt.py	2021-12-06 23:38:31.295817131 +0200
+@@ -193,7 +193,7 @@ def test_custom_error_handler(client, jw
+ def test_custom_response_handler(client, jwt, user):
+     @jwt.auth_response_handler
+     def resp_handler(access_token, identity):
+-        return jsonify({'mytoken': access_token.decode('utf-8')})
++        return jsonify({'mytoken': access_token})
+ 
+     resp, jdata = post_json(
+         client, '/auth', {'username': user.username, 'password': user.password})
