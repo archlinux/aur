@@ -24,8 +24,8 @@ _mirror='https://deb.termius.com'
 # I got the URL to download the deb package using the server from ubuntu, path: /var/lib/apt/lists/deb.termius.com_dists_squeeze_main_binary-amd64_Packages
 # TERMS_OF_USE is a copy-paste of https://termius.com/terms-of-use from browser
 source=(
-	"pkgs.gz::$_mirror/dists/squeeze/main/binary-amd64/Packages.gz"
-        "$pkgname.deb::https://termius.com/download/linux/Termius.deb"
+	"pkgs-$pkgver.gz::$_mirror/dists/squeeze/main/binary-amd64/Packages.gz"
+        "$pkgname-$pkgver.deb::https://termius.com/download/linux/Termius.deb"
         "TERMS_OF_USE"
 )
 sha512sums=(
@@ -35,12 +35,12 @@ sha512sums=(
 )
 
 pkgver() {
-	sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs" | grep -o 'Version: .*' | cut -d " " -f 2
+	sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs-$pkgver" | grep -o 'Version: .*' | cut -d " " -f 2
 }
 prepare() {
         mkdir "$srcdir/work" || :
-	sha512sum1="$(sha512sum "$srcdir/$pkgname.deb" | cut -d " " -f 1)"
-	sha512sum2="$(sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs" | grep -o 'SHA512: .*' | cut -d " " -f 2)"
+	sha512sum1="$(sha512sum "$srcdir/$pkgname-$pkgver.deb" | cut -d " " -f 1)"
+	sha512sum2="$(sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs-$pkgver" | grep -o 'SHA512: .*' | cut -d " " -f 2)"
 	if [ "$sha512sum1" != "$sha512sum2" ]; then
 		warning "SHA512SUM doesn't match!"
 		exit 1
