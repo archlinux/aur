@@ -7,7 +7,7 @@ pkgname=gnome-shell-338
 pkgver=3.38.6
 pkgrel=1
 epoch=1
-pkgdesc="Next generation desktop shell (338 version)"
+pkgdesc="Next generation desktop shell (3.38 version)"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 conflicts=("gnome-shell")
 provides=("gnome-shell=$pkgver")
