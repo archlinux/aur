@@ -1,11 +1,11 @@
 pkgbase = python-typepy
 	pkgdesc = Variable runtime type checker/validator/converter
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/typepy
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	checkdepends = python-tcolorpy
 	checkdepends = python-dateutil
 	checkdepends = python-pytz

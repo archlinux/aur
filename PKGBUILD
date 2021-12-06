@@ -4,7 +4,7 @@
 
 pkgname=python-typepy
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Variable runtime type checker/validator/converter'
 arch=('any')
 url='https://github.com/thombashi/typepy'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-mbstrdecoder')
 makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
 optdepends=('python-dateutil' 'python-pytz')
-checkdepends=('python-pytest-runner' 'python-tcolorpy' 'python-dateutil' 'python-pytz')
+checkdepends=('python-pytest' 'python-tcolorpy' 'python-dateutil' 'python-pytz')
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
 # source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/typepy/typepy-$pkgver.tar.gz"
@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  python setup.py pytest
+  pytest -x
 }
 
 package() {
