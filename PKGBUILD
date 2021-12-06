@@ -2,7 +2,7 @@
 # Maintainer: Jonas Bucher <j.bucher.mn at gmail>
 
 pkgname=newm-git
-pkgver=0.1.r27.g33aea1f.a6d799f
+pkgver=0.2.r0.g5e4a171.27b399d
 pkgrel=1
 license=('MIT')
 pkgdesc="Wayland compositor"

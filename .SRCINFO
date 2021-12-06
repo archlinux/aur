@@ -1,6 +1,6 @@
 pkgbase = newm-git
 	pkgdesc = Wayland compositor
-	pkgver = 0.1.r27.g33aea1f.a6d799f
+	pkgver = 0.2.r0.g5e4a171.27b399d
 	pkgrel = 1
 	url = https://github.com/jbuchermn/newm
 	arch = any
