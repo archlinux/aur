@@ -1,8 +1,8 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 _pkgname=libargparse
 pkgname=$_pkgname-git
-pkgver=r65.1315fd7
-pkgrel=3
+pkgver=r69.ee74d1b
+pkgrel=1
 pkgdesc="A C++ command-line parsing library"
 arch=(x86_64)
 url="https://github.com/kmurray/libargparse"
@@ -12,16 +12,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"git+$url"
-	"0001-include-limits-in-argparse.cpp.patch"
-	"0002-Install-library.patch"
-	"0003-Enable-test.patch"
-	"0004-Install-headers.patch"
 )
-sha256sums=('SKIP'
-            '97fa62a5e93fe181bdde23d0507323c0f302acc892b285fcdc9464b3a0f76121'
-            '6908089ba45176c06995aa1ecf99335e523d560622386cd59c076874676370f3'
-            '11a673f5e9a167e1dfcc6a3c6a5b708bd4f655c5769c1d6ef2dc6770bbe74bc1'
-            'c30cc2e74b4bdd04da31e3c7416cbddaded53b9336bbde5620c0eff3d5a6f771')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -32,10 +24,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 
-	patch -p1 < "$srcdir/0001-include-limits-in-argparse.cpp.patch"
-	patch -p1 < "$srcdir/0002-Install-library.patch"
-	patch -p1 < "$srcdir/0003-Enable-test.patch"
-	patch -p1 < "$srcdir/0004-Install-headers.patch"
 }
 
 build() {

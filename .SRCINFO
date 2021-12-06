@@ -10,14 +10,6 @@ pkgbase = libargparse-git
 	provides = libargparse
 	conflicts = libargparse
 	source = git+https://github.com/kmurray/libargparse
-	source = 0001-include-limits-in-argparse.cpp.patch
-	source = 0002-Install-library.patch
-	source = 0003-Enable-test.patch
-	source = 0004-Install-headers.patch
 	sha256sums = SKIP
-	sha256sums = 97fa62a5e93fe181bdde23d0507323c0f302acc892b285fcdc9464b3a0f76121
-	sha256sums = 6908089ba45176c06995aa1ecf99335e523d560622386cd59c076874676370f3
-	sha256sums = 11a673f5e9a167e1dfcc6a3c6a5b708bd4f655c5769c1d6ef2dc6770bbe74bc1
-	sha256sums = c30cc2e74b4bdd04da31e3c7416cbddaded53b9336bbde5620c0eff3d5a6f771
 
 pkgname = libargparse-git
