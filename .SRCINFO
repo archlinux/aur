@@ -1,7 +1,7 @@
 pkgbase = htrace.sh
 	pkgdesc = A shell script for http/https troubleshooting and profiling
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trimstray/htrace.sh
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = htrace.sh
 	depends = bc
 	depends = jq
 	depends = testssl.sh
-	depends = nodejs-observatory-cli
+	depends = observatory-cli
 	depends = ssllabs-scan
 	depends = mixed-content-scan
 	depends = nmap
@@ -27,4 +27,3 @@ pkgbase = htrace.sh
 	sha256sums = 8feae39f2f3a4fb2b0c24734bdfdd778aa8b12848b4f2d7c81fe3a04eb7553ff
 
 pkgname = htrace.sh
-
