@@ -32,13 +32,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_PLASMA_THEMES=ON \
-    -DBUILD_SDDM_THEME=ON
+    -DBUILD_SDDM_THEME=ON \
+    -DBUILD_EXTRA_COLORS=ON
   make
 }
 
 package() {
   cd build
   make DESTDIR="${pkgdir}" install
-  # Remove unneeded files
-  rm -r ${pkgdir}/usr/{lib/kconf_update_bin,share/kconf_update}
 }
