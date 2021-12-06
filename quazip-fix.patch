@@ -19,8 +19,8 @@ diff -ur old/src/common.cpp mupen64plus-qt-1.14/src/common.cpp
  
 -#include <quazip5/quazip.h>
 -#include <quazip5/quazipfile.h>
-+#include <QuaZip-Qt5-1.1/quazip/quazip.h>
-+#include <QuaZip-Qt5-1.1/quazip/quazipfile.h>
++#include <QuaZip-Qt5-1.2/quazip/quazip.h>
++#include <QuaZip-Qt5-1.2/quazip/quazipfile.h>
  
  #ifdef Q_OS_WIN
  #include <QCoreApplication>
@@ -33,8 +33,8 @@ diff -ur old/src/emulation/emulatorhandler.cpp mupen64plus-qt-1.14/src/emulation
  
 -#include <quazip5/quazip.h>
 -#include <quazip5/quazipfile.h>
-+#include <QuaZip-Qt5-1.1/quazip/quazip.h>
-+#include <QuaZip-Qt5-1.1/quazip/quazipfile.h>
++#include <QuaZip-Qt5-1.2/quazip/quazip.h>
++#include <QuaZip-Qt5-1.2/quazip/quazipfile.h>
  
  
  EmulatorHandler::EmulatorHandler(QWidget *parent) : QObject(parent)
