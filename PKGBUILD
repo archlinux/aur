@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=sticky-git
-pkgver=1.2.r21.g6d6b1ce
+pkgver=1.4.r0.g45c90a4
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('any')
@@ -18,9 +18,20 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+
+  # Set version in About dialog
+  sed -i "s/__DEB_VERSION__/${pkgver//+*/}/g" "usr/lib/${pkgname%-git}/${pkgname%-git}.py"
+
+  # Fix license path
+  sed -i 's|common-licenses/GPL|licenses/common/GPL/license.txt|g' \
+    "usr/lib/${pkgname%-git}/${pkgname%-git}.py"
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make buildmo
+  make
 }
 
 package() {
