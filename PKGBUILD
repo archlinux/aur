@@ -75,8 +75,8 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mini
-pkgver=5.15.2
-pkgrel=2
+pkgver=5.15.6
+pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
 url="https://www.kernel.org/"
@@ -102,9 +102,9 @@ validpgpkeys=(
 )
 b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
         'SKIP'
-        '769ef83b6613d865b420d048c25ac1df4c2f88f7ae580b373f874d312720bad877e561756943c9833535a94e5621922bba24cb1b804a1540f2e67cfa23f1a1aa'
+        'ed3eb640ae8617ae726b9d98f3b17ab1602f733e228970826e4a34cb7e466b61ead5371f51e6bc1fc75bb9e468cfeca66c6bca21731f25b53decc52eb59ecb3e'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        '13e22007dfd81dcfcd9a159881ddc5f92a600d6ed5f581c0826c5e2b2823b6a7ba0628e09960b8146d3a9bb669ee5ba7b119bd7ecb6cad06a76e6511bf533a44')
+        '4b6759fae0abc440292b310aed12bd12bbfbc172f968572ee9b8a9164c844b3f2a12f81b1fdf5ed86d75403f0c5be5d57933292e22c2973ef14f481bf78a3f7e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
