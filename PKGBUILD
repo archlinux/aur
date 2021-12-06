@@ -149,8 +149,8 @@ check() {
   cd "$srcdir/build"
   export PATH=$PATH:$PWD/fem/src
   jobs=$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")
-  ((jobs*=4))
-  ctest -j "${jobs}" || true
+  ((!DISABLE_MP)) && export OMP_NUM_THREADS=$jobs
+  ctest -j "$((DISABLE_MPI?jobs:jobs/2))" -LE slow || ((DISABLE_CHECK)) && true # -LE slow: exclude test with label 'slow'
 }
 
 package() {
