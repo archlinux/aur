@@ -1,0 +1,23 @@
+--- vanilla/silc-toolkit-1.1.12/includes/silcwin32.h	2014-05-13 02:20:22.000000000 -0400
++++ silc-toolkit-1.1.12/includes/silcwin32.h	2014-12-27 21:28:18.165096000 -0500
+@@ -71,7 +71,7 @@
+ #undef sleep
+ #define sleep(x) Sleep((x) * 1000)
+ 
+-#if _MSC_VER < 1300
++#if defined(_MSC_VER) && _MSC_VER < 1300
+ #define SetWindowLongPtr SetWindowLong
+ #define GetWindowLongPtr GetWindowLong
+ #endif /* _MSC_VER < 1300 */
+--- silc-toolkit-1.1.12/configure.ac.old	2021-12-07 00:02:24.180565726 +0300
++++ silc-toolkit-1.1.12/configure.ac	2021-12-07 00:03:18.051816830 +0300
+@@ -1233,7 +1233,8 @@
+     AC_MSG_RESULT(yes)
+     AC_DEFINE([SILC_WIN32], [], [SILC_WIN32])
+     win32_support=true
+-    CFLAGS="-mno-cygwin $CFLAGS"
++    #Remove -mno-cygwin, void having DLLAPI defined to import symbols while the library is being compiled
++    CFLAGS="-D_LIB $CFLAGS"
+     LIBS="$LIBS -lwsock32"
+   ],
+   [

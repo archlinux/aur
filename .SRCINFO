@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-silc-toolkit
+	pkgdesc = Toolkit for Secure Internet Live Conferencing
+	pkgver = 1.1.12
+	pkgrel = 1
+	url = http://silcnet.org
+	arch = any
+	license = GPL2
+	options = !strip
+	options = !buildflags
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/silc/silc/toolkit/sources/silc-toolkit-1.1.12.tar.gz
+	source = pidgin-silc-toolkit-1.1.12.patch
+	source = GWLP_USERDATA.patch
+	sha512sums = 21393e9e7880670550e2325aa2eeda65a802bca87888b6d807ebed3a86844428b2a99f7434e6208ff61308df3767a12dd5d047dc546197bb78782811cf2b5e60
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = mingw-w64-silc-toolkit

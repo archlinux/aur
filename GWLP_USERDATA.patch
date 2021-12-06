@@ -1,0 +1,20 @@
+--- silc-toolkit-1.1.12.old/lib/silcutil/win32/silcwin32schedule.c	2014-05-13 10:20:17.000000000 +0400
++++ silc-toolkit-1.1.12/lib/silcutil/win32/silcwin32schedule.c	2021-12-07 00:12:05.363374849 +0300
+@@ -130,7 +130,7 @@
+ static LRESULT CALLBACK
+ silc_schedule_wnd_proc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
+ {
+-  SilcSchedule schedule = (SilcSchedule)GetWindowLongPtr(hwnd, GWL_USERDATA);
++  SilcSchedule schedule = (SilcSchedule)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+   SilcWin32Scheduler internal;
+   SilcUInt32 fd;
+   SilcTaskFd task;
+@@ -268,7 +268,7 @@
+   }
+ 
+   /* Set the scheduler as the window's context */
+-  SetWindowLongPtr(internal->window, GWL_USERDATA, (void *)schedule);
++  SetWindowLongPtr(internal->window, GWLP_USERDATA, (void *)schedule);
+   SetWindowPos(internal->window, HWND_BOTTOM, 0, 0, 0, 0, SWP_FRAMECHANGED);
+ 
+   internal->wakeup_sema = CreateSemaphore(NULL, 0, 100, NULL);
