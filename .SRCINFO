@@ -1,0 +1,13 @@
+pkgbase = sddm-theme-astronaut
+	pkgdesc = Beautiful SDDM astronaut theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/joe733/sddm-theme-astronaut
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = sddm
+	source = git+https://github.com/joe733/sddm-theme-astronaut.git
+	md5sums = SKIP
+
+pkgname = sddm-theme-astronaut
