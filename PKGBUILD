@@ -1,5 +1,8 @@
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Contributor: xantares
+
 pkgname=mingw-w64-libzip
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives (mingw-w64)"
 url="http://www.nih.at/libzip/index.html"
@@ -9,7 +12,7 @@ depends=('mingw-w64-xz' 'mingw-w64-zlib' 'mingw-w64-bzip2' 'mingw-w64-openssl' '
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.nih.at/libzip/libzip-${pkgver}.tar.xz")
-sha256sums=('a60473ffdb7b4260c08bfa19c2ccea0438edac11193c3afbbb1f17fbcf6c6132')
+sha256sums=('f0763bda24ba947e80430be787c4b068d8b6aa6027a26a19923f0acfa3dac97e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
