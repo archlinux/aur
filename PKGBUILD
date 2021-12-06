@@ -99,7 +99,7 @@ package () {
   local _pico8_bin="pico8"
   local _pico8_dyn="pico8_dyn"
   local _pico8_dat="pico8.dat"
-  local _pico8_txt="pico-8.txt"
+  local _pico8_txt="pico-8_manual.txt"
   local _pico8_icon="pico-8.png"
   local _pico8_mime="${_file_mime}"
   local _pico8_desktop="${_file_desktop}"
