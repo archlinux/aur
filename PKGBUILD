@@ -1,8 +1,8 @@
 # Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=nodejs-csso
-pkgver=4.2.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="CSS minifier with structural optimisations"
 arch=('any')
 url="https://github.com/css/csso"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/csso/-/csso-$pkgver.tgz")
-sha256sums=('4b9b8c96cb4082224fec97d9050c48b1877bd03fab6332b2cb4b649b0f71f948')
+sha256sums=('5786f51f021300198086494a2a04aa4baf6126f0d39d3a749c28f293655fb893')
 
 package() {
     npm install -g --prefix "$pkgdir"/usr "$srcdir"/csso-$pkgver.tgz
