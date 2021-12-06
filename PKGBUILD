@@ -2,7 +2,7 @@
 # Contributor: Blackleg <blackleg@openaliasbox.org>
 
 pkgname=ca-certificates-fnmt
-pkgver=20211113
+pkgver=20211206
 pkgrel=1
 pkgdesc='Spanish Fabrica Nacional de Moneda y Timbre (FNMT) certificates'
 arch=('any')
@@ -46,11 +46,11 @@ sha256sums=('ebc5570c29018c4d67b1aa127baf12f703b4611ebc17b7dab5573894179b93fa'
             '1edb6bd91274882db795bfc514f8aabe10ad955cbccfd3fd5a5b5febb2ce5b68'
             '9ff23cb9387b9e0083bd5aa1954eeddf792890aa8e67cd4d38dd28af4a439ad8'
             'c508f0fb0492d9acc8390b39bb6cfe281ce5e6e39e1f648feffe90339d6d7ec6'
-            '49552f5fd0f67be27c62a00980576b594d15058c88be37451b55d7911b7dbecd'
+            'c08b06f3f23bad4e95ca1ecf8dcb12908e5b558711f0518039b7cfa436925f0c'
             'd6d1a026461ddb4c25849affe0881f1eea2e67e33e30636b5e0c68bcc3972690'
             'd74ee6a47cb2dae6003288857a2d7d135ba1e21e7eac8d145d8cc96b5a7b280f'
             '5f570d2f3fbb3c423e13b8087653ec06af9cf166d635668f661644eefed71860'
-            '01e8ba844ff4c70d8dff2601b5cd80a63bf32dee8f94876c8c216bbf6c0f8b84'
+            '3eaceda37914ccd4b454f0449dbc3857198b8e6da4cd022778ddcf37d1e20581'
             'b03f7cc682d2f0a7c1d195692cc0de4c35ad017294955d35f6eb743fe78595f3'
             '5d93e19f26bcdcc9744f3f342a7d09b3d4d11f3e2dfd4c6079821625878be10a'
             'baf597d97d16bc697f8eb2a1e20ce68c08ad11024f9b1f5264271c1525eeb500'
