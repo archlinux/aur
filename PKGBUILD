@@ -2,7 +2,7 @@
 # Contributor: Ícar N. S. <icar.nin@protonmail.com>
 
 pkgname=crawley
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Simple web scraper"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('61f98fb2a2ed11a17282793c66f569d423d33c84148fbd47fd1e5f17bd6781a8')
+sha256sums=('5efda88123f53c669d1f890f0b1b646a07c860de48175e9ec6a88fed4ff9c19e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -38,6 +38,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -D "build/$pkgname" -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
