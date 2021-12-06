@@ -113,6 +113,7 @@ source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
         "print_target_properties.patch"
         "vtk9.cmake.patch"
         "vtk9.1.patch"
+        "cmake-fix.patch::https://github.com/ElmerCSC/elmerfem/pull/309.patch"
         "FindMMG.patch")
 
 sha256sums=('SKIP'
@@ -121,6 +122,7 @@ sha256sums=('SKIP'
             '97dae953c0c43bcd265dd141cec8b22912c3ae6808ed60782b84dde90468ebbd'
             '0adc38f90eb2311ad0754d0e1c30a46a36195b0b444f359eea4a9a0ba14408b7'
             'f995a09fb8999ccb965c7dfe1de602e99a630b84f6ca260b2bdfece1372aeceb'
+            '1e2c5b810dc9388f837d79c25a419d3ab250fa084b7b8f1d5b6cbe9b8dd537bf'
             '89b0e79ca1ad8952839d0578cdbce86ea4dad46e3c68aa1ce5b8b83bcff94e57')
 
 pkgver() {

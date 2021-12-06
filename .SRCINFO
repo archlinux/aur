@@ -40,6 +40,7 @@ pkgbase = elmerfem-git
 	source = print_target_properties.patch
 	source = vtk9.cmake.patch
 	source = vtk9.1.patch
+	source = cmake-fix.patch::https://github.com/ElmerCSC/elmerfem/pull/309.patch
 	source = FindMMG.patch
 	sha256sums = SKIP
 	sha256sums = f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca
@@ -47,6 +48,7 @@ pkgbase = elmerfem-git
 	sha256sums = 97dae953c0c43bcd265dd141cec8b22912c3ae6808ed60782b84dde90468ebbd
 	sha256sums = 0adc38f90eb2311ad0754d0e1c30a46a36195b0b444f359eea4a9a0ba14408b7
 	sha256sums = f995a09fb8999ccb965c7dfe1de602e99a630b84f6ca260b2bdfece1372aeceb
+	sha256sums = 1e2c5b810dc9388f837d79c25a419d3ab250fa084b7b8f1d5b6cbe9b8dd537bf
 	sha256sums = 89b0e79ca1ad8952839d0578cdbce86ea4dad46e3c68aa1ce5b8b83bcff94e57
 
 pkgname = elmerfem-git
