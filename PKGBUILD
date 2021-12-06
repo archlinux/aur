@@ -28,7 +28,8 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir/$_name"
-  opam init --bare -n --disable-sandboxing
+  # Disable sandboxing with bwrap since AUR is doing that already
+  opam init --bare -n --disable-sandboxing --no-opamrc --root=$srcdir/opam
   make build-deps
 }
 
