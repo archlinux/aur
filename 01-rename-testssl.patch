@@ -12,15 +12,15 @@ index 04bb1a0..609f11b 100644
    _msg_args+=(\
                "$_testssl_desc")
 diff --git a/src/__init__ b/src/__init__
-index 68029f8..96e5311 100644
+index c7a098e..351b8b5 100644
 --- a/src/__init__
 +++ b/src/__init__
-@@ -320,7 +320,7 @@ function __main__() {
+@@ -338,7 +338,7 @@ function __main__() {
    # unnecessarily run.
    readonly commands=(basename dirname stat ps date grep cut sed awk chown \
                       chmod mkdir curl openssl dig mmdblookup bc jq fmt \
--                     testssl.sh observatory ssllabs-scan \
-+                     testssl observatory ssllabs-scan \
+-                     testssl.sh observatory ssllabs-scan nghttp \
++                     testssl observatory ssllabs-scan nghttp \
                       mixed-content-scan nmap wafw00f subfinder)
  
    # If you intend to specify the full path to the command we do it like:

@@ -21,11 +21,11 @@ depends=('bind-tools'
          'subfinder'
          'wafw00f'
          'nghttp2')
-source=("https://github.com/trimstray/htrace.sh/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trimstray/htrace.sh/archive/v${pkgver}.tar.gz"
         "01-rename-testssl.patch"
         "02-relocation-tmp-and-log-folder.patch")
-sha256sums=('727b684361d2cb88c605471f9d030e0f132d9d8bde7fb2734d8753b4e7cf73bc'
-            'dd15bd186d5e32dc1d87997bde068d07fa32c61385466aeee0896c300d32071a'
+sha256sums=('bc8ed23f247d7ae45dd65bdc844c4681215d27016f4b90957493ecbac9e2b743'
+            '76ea3e6c1271089f8773c0da066a1b4678082b196b9bab51c24fcd3e73c96035'
             '8feae39f2f3a4fb2b0c24734bdfdd778aa8b12848b4f2d7c81fe3a04eb7553ff')
 
 prepare() {
