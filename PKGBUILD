@@ -1,4 +1,4 @@
-pkgname=mingw-w64-libelf-lfg-win32-git
+pkgname=mingw-w64-libelf-lfg-win32
 pkgver=1.1.0
 pkgrel=1
 pkgdesc='Subset of FreeBSD modified to compile libelf on Windows (mingw-w64)'
