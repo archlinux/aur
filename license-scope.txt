@@ -1,11 +1,17 @@
-NOTE: This text was copied from http://www.softmaker.com/en/softmaker-office on 2020-05-09, actual text may have altered in the meantime. Please check the softmaker website for up-to-date text.
+NOTE: This text was copied from http://www.softmaker.com/en/softmaker-office on 2021-12-06, actual text may have altered in the meantime. Please check the softmaker website for up-to-date text.
 ---
 Scope of license
-Non-commercial use: You and the members of your family are entitled to using
-one license on up to five computers at the same time, as long as these
-computers belong to the same household.
+Non-commercial use:
+- You and the members of your family are entitled to using one license on up
+  to five computers at the same time, as long as these computers belong to the
+  same household. You can choose any combination of Windows PCs, Linux PCs and
+  Macs.
+- With SoftMaker Office NX, you also receive five licenses for use with Android.
 
-Commercial use: Each license may only be installed and used on one computer.
-Every user of that computer may use the software, but only 1 (one) user at any
-given time. Secondary use right: The single primary user of that computer is
-additionally entitled to use the software on a portable computer.
+Commercial use:
+- Each license may be installed and used on one computer (running Windows,
+  macOS or Linux). Every user of that computer may use the software, but only
+  1 (one) user at any given time.
+- Secondary use right: The single primary user of that computer is
+  additionally entitled to use the software on a portable computer.
+- With SoftMaker Office NX, you also receive one license for use with Android.

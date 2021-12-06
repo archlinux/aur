@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2021-bin
-pkgver=2021.1038
+pkgver=2021.1040
 pkgrel=1
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations"
 url="https://www.softmaker.com"
@@ -18,24 +18,24 @@ source=('planmaker-2021.desktop'
         'softmaker-office-2021.xml'
         'license-scope.txt')
 source_x86_64=("http://www.softmaker.net/down/softmaker-office-${pkgver//./-}-amd64.tgz")
-md5sums=('099706015d0caf75c2b84a577344b0bd'
+md5sums=('977caa68fee4db85d1c6c565fdfa4256'
          'e8afc2d2a0c25695b7cf566d72be7801'
          '8c10cddb9608f7687ae5bf5356be96b5'
          'd78fc58f618fa821bb1595542a7ea131'
          '27de947ff56b5e9ad92910c68be83cfa'
          'e1ddaf11756afede521fad32ab5207cd'
          '35c13675d6e89033c1897ca2457c70c2'
-         'dd7564d0b83052bf59086391347bebd8')
-md5sums_x86_64=('eac7ce8bef4506aa95225b436f3588c7')
-sha512sums=('f29dba6cf303e4b2c9e45f039f1793eb838a0bc9d623a4fc1b009fdb0021ccd8c6396a41d2420c0924f4d635fbf330748ec6238573d88d9b0599bd24f7f28d2e'
+         '66f9488ab5e2b93f82534b1d8e7b20d3')
+md5sums_x86_64=('b42faf01ad2f20b51a597f90fed740c9')
+sha512sums=('7c8af74aad1b36412e24b0d8f4d3ead3ae2dafa8af832795e202cdfb2536e38fed905da8894d85dbe9b8d3aa2991974c992bbdd38b7dbc68cea10b7e6bffdfcb'
             'fecf6db647218fe8b2c0288675db225ca992e7e245a06a9d442a3674418f94730a782baeddf9eb482447432bd9543ba60ddaa471a80b56741b4a55c4edac3dc0'
             'b0a1a665a7affae304a34b453dac9b4a8ef2ac17b64e8fe701900f954b494daf0c75a7e62cc53e1b70becc5a3320e372c208787655965c2244d7824a939b5d3f'
             '1a4c94ab9448e267ec30b23f0f50aeb6ecef28aa0c92cf85ec9e13ce3fc54f87006cca351f7aef0eb7421e9890a8d9db0f0b0a839cb8f55730cdba47f6975fae'
             'a2944023917f9efff4ad659640197d47ea7804dd83bf974834b3c4508b3a4dd7f378ca2845e84cb18563c106d0e4512340d6b5a0d7e98e05afe88e184ab9c52e'
             '1677ab6b31683f55bc0b144b787968729048bc4cd66e3e4e334c935488c64bab6baa92258d90ef0dac9fc2b7ec3ae5dd0cf451c63954b07f2d885c4e15937dc4'
             '334d90369b026ef773b7c778ca2fb09e38cae5cb64be0f9bd200010f149364c742f9ac991d597df0a71ee14c082c2fd2fa327df2ef85c6e4693c7e5da8cb14c1'
-            '02245e32c6cdaaedaa255d11c94b0948abf3e12b04cb8bf6f799bfb11cea1cf432890bb8ef8a6b1b28038e09339f33a79d3f590fd2bf5bb29b059c3269e2830d')
-sha512sums_x86_64=('d7704071a77fe682f402f8d6037262cec916cb15bc90ef3d22d83c220782f6f3efd085b443c57e75ab06a7e41812ecee3b534399d91c120cef01195aa52d4a16')
+            '41fd130546ed40b4241e2e97187286742d3d0e033c16448e6d644e27c763196196e839f663d462a00a01f94e2becba4700b487b668a4fd356f6b91bacc29ab7a')
+sha512sums_x86_64=('de33a051fe0400fa7e0b9cb948af1041b6fd04688afac16b1ce825f2abfa2bab9d74aa990337617d2fb4dc97cd1da00abfe2c281851dc94549801fb6cfe00909')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/office2021"
