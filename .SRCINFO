@@ -1,6 +1,6 @@
 pkgbase = f3d-bin
 	pkgdesc = A fast and minimalist 3D viewer
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/f3d-app/f3d
@@ -8,7 +8,7 @@ pkgbase = f3d-bin
 	license = BSD
 	provides = f3d
 	conflicts = f3d
-	source = https://github.com/f3d-app/f3d/releases/download/v1.1.0/f3d-1.1.0-Linux.tar.xz
-	sha256sums = 8a0968437463a1713e16be16216fe30fea5a34ae1546de6ceb5187effd96dbc1
+	source = https://github.com/f3d-app/f3d/releases/download/v1.2.0/f3d-1.2.0-Linux.tar.xz
+	sha256sums = b062143fefb37de78aabf935fe0331c6b7a5558e71c69a814da772e6c14afbe7
 
 pkgname = f3d-bin
