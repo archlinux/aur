@@ -17,4 +17,3 @@ pkgbase = r-foreach
 	sha256sums = fb5ad69e295618c52b2ac7dff84a0771462870a97345374d43b3de2dc31a68e1
 
 pkgname = r-foreach
-
