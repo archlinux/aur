@@ -1,7 +1,7 @@
 # Maintained by Faisal Moledina (faisal at moledina dot me)
 pkgname=onedriver-git
 _pkgname=onedriver
-pkgver=0.11.1.r1.gb7ecb47
+pkgver=0.12.0.r1.g73d9320
 pkgrel=1
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
