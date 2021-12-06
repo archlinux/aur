@@ -1,14 +1,14 @@
 pkgbase = pkger-rs
 	pkgdesc = Build rpm, deb, pkg and other packages using Docker
 	pkgver = 0.7.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vv9k/pkger
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	provides = pkger
 	conflicts = pkger
-	source = pkger-rs-0.7.0.tar.gz::https://github.com/vv9k/pkger/archive/refs/tags/0.7.0.tar.gz
+	source = pkger-0.7.0.tar.gz::https://github.com/vv9k/pkger/archive/refs/tags/0.7.0.tar.gz
 	sha256sums = 83af4d470492e82c8071b40566f977d64b1ab3be710da957b37cfedfcd159f63
 
 pkgname = pkger-rs
