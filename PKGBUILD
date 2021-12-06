@@ -3,13 +3,13 @@
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname=app-icon-preview
-pkgver=2.1.2
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Tool for designing applications icons'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/World/design/app-icon-preview'
 license=(GPL3)
-depends=(libhandy0)
+depends=(libadwaita)
 makedepends=(
 	git
 	meson
