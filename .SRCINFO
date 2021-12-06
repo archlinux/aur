@@ -6,7 +6,6 @@ pkgbase = r-reshape2
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	depends = r>=3.1
 	depends = r-plyr>=1.8.1
 	depends = r-rcpp
@@ -14,7 +13,6 @@ pkgbase = r-reshape2
 	optdepends = r-covr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/reshape2_1.4.4.tar.gz
-	md5sums = ab6b937ba184817a8f33690b5ed6ffcb
+	sha256sums = d88dcf9e2530fa9695fc57d0c78adfc5e361305fe8919fe09410b17da5ca12d8
 
 pkgname = r-reshape2
-
