@@ -3,9 +3,9 @@
 
 pkgname=assistant
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
-arch=('any')
+arch=('x86_64')
 license=('custom')
 url="https://xn--80akicokc0aablc.xn--p1ai/"
 depends=('bash' 'gtk2')

@@ -1,9 +1,9 @@
 pkgbase = assistant
 	pkgdesc = Secure remote access to computers over a local network or over the Internet.
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xn--80akicokc0aablc.xn--p1ai/
-	arch = any
+	arch = x86_64
 	license = custom
 	depends = bash
 	depends = gtk2
