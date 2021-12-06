@@ -1,0 +1,174 @@
+# Maintainer: Ilya Basin <basinilya at gmail dot com>
+# https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-cyrus-sasl
+
+# Contributor: Alexey Pavlov <alexpux@gmail.com>
+# Contributor: Ray Donnelly <mingw.android@gmail.com>
+# Contributor: Renato Silva <br.renatosilva@gmail.com>
+
+# There's an ugliness issue in cyrus-sasl's build system.
+# It builds libsasl2.dll with some compat objects, somehow
+# gotten from saslauthd/Makefile.am?! but these files -
+# getaddrinfo.c, getnameinfo.c (and one that doesn't ever
+# get built, snprintf.c) depend on ws2_32 on Windows.
+# The plugins need these objects too, so they are LN_S'ed
+# as COMPAT_OBJS and that's added to plugins/Makefile.am:
+# lib{plain,anonymous,kerberos4...}_la_{DEPENDENCIES,LIBADD}
+# .. problem with doing it this way is that the ws2_32
+# (encoded into LIB_SOCKET) dependency needs to be specified
+# repeatedly for each one ..
+# Instead these compat objects should be linked into a
+# convenience libtool library (.a compiled with -fPIC) that
+# carries the ws2_32 dependency with it, and this libtool
+# library should be added as a dependency to each of the
+# plugins. I've not fixed this because I've not got enough
+# libtool experience to do it yet so instead 12-MinGW-w64..patch
+# adds LIB_SOCKET all over the place in plugins/Makefile.am
+
+provides=(mingw-w64-libsasl)
+conflicts=(mingw-w64-libsasl)
+
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+MINGW_PACKAGE_PREFIX=mingw-w64
+_adapt_msys2() {
+  MINGW_CHOST=${_arch:?}
+  MINGW_PREFIX=/usr/${_arch:?}
+  CARCH=${_arch%%-*}
+}
+
+_realname=cyrus-sasl
+pkgbase=mingw-w64-${_realname}
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=2.1.27
+pkgrel=1
+pkgdesc="Cyrus Simple Authentication Service Layer (SASL) library (mingw-w64)"
+arch=('any')
+mingw_arch=('mingw32' 'mingw64' 'ucrt64' 'clang64' 'clang32')
+url="https://www.cyrusimap.org/sasl/"
+license=('custom')
+depends=("${MINGW_PACKAGE_PREFIX}-gdbm"
+         "${MINGW_PACKAGE_PREFIX}-openssl"
+         "${MINGW_PACKAGE_PREFIX}-sqlite3")
+options=('emptydirs' !strip !buildflags !makeflags)
+source=(https://github.com/cyrusimap/${_realname}/releases/download/${_realname}-${pkgver}/${_realname}-${pkgver}.tar.gz{,.sig}
+        pathtools.c
+        pathtools.h
+        02-exeext.patch
+        03-fix-plugins.patch
+        04-manpage-paths.patch
+        14-MinGW-w64-add-LIBSASL_API-to-function-definitions.patch
+        15-MinGW-w64-define-LIBSASL_EXPORTS_eq_1-for-sasldb.patch
+        16-MinGW-w64-define-WIN32_LEAN_AND_MEAN-avoiding-handle_t-redef.patch
+        19-paths-relocation.patch
+        20-mingw-tchar.patch
+        21-fix-getopt-guard.patch
+        with-sqlite3-makemd5.patch
+        22-autoconf-prevent-full-path-resolution.patch)
+sha256sums=('26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5'
+            'SKIP'
+            '6f1016e6647b6340fdceefaf24ff391f4c0ea3c785ddf70c9794ca2356797888'
+            '6ce4dcf4ef6c4bce48dbcb6f1b5226baf79f74ac76719fb0c06419a0aadb37a3'
+            '0d0220f721b07f821e14f00c04250c2243620301200f825e7f0532b581d63a7d'
+            '62fca7407d288e021fac6fed47d8a94ef2775c257ddcb79071428fe7719485f5'
+            'b8bedacab5fc992eb2afd259ce2e898291d2bec685030108be3f51e6ce30977c'
+            '795196a9db0c8155d59c08dcbb0df15dfe7bb4eb47b30df511649573ac59b39f'
+            '148c2062d22011f731ad93fb603cde9c519e73322c89add0408772c434c6bf17'
+            'e101e1bd3ee03650e89e05c18d5f699d2f69aecc4f7aac4b11db2d1755783c5c'
+            'f10b41804eeb4c77cb3b061c95c5c71d5624faa17925e5e04e683f4bd6c2bee7'
+            '57b1b40017fa2a3fb189deedc01959673ed96cc01e088fd85ae0d59e1e13f25f'
+            'f51412367d893cb4c2e4ee2ec76a6a641abaaf6d3086af93a9b579a8d0ce26c5'
+            SKIP
+            '8cca4435b2d8bc5c04490bd16092bc9c5fcf3eb5c113778674b8393342302c65')
+validpgpkeys=('829F339F8C296FE80F409D93E3D7C118C7B9F46A') # Partha Susarla <mail@spartha.org>
+
+prepare() {
+  test ! -d "${startdir}/../mingw-w64-pathtools" || {
+    cmp "${startdir}/../mingw-w64-pathtools/pathtools.c" "${srcdir}/pathtools.c" &&
+    cmp "${startdir}/../mingw-w64-pathtools/pathtools.h" "${srcdir}/pathtools.h"
+  } || exit 1
+
+  cd "${srcdir}/${_realname}-${pkgver}"
+  cp -fHv "${srcdir}"/pathtools.[ch] lib/
+
+  patch -p1 -i ${srcdir}/02-exeext.patch
+  patch -p1 -i ${srcdir}/03-fix-plugins.patch
+  patch -p1 -i ${srcdir}/04-manpage-paths.patch
+  patch -p1 -i ${srcdir}/14-MinGW-w64-add-LIBSASL_API-to-function-definitions.patch
+  patch -p1 -i ${srcdir}/15-MinGW-w64-define-LIBSASL_EXPORTS_eq_1-for-sasldb.patch
+  patch -p1 -i ${srcdir}/16-MinGW-w64-define-WIN32_LEAN_AND_MEAN-avoiding-handle_t-redef.patch
+  patch -p1 -i ${srcdir}/19-paths-relocation.patch
+  patch -p1 -i ${srcdir}/20-mingw-tchar.patch
+  patch -p1 -i ${srcdir}/21-fix-getopt-guard.patch
+
+  patch -p1 -i ${srcdir}/with-sqlite3-makemd5.patch
+
+  # Partially revert upstream b017b437bef7b329097945172b8516d434754d41 commit.
+  patch -p1 -i ${srcdir}/22-autoconf-prevent-full-path-resolution.patch
+
+  # For clang
+  sed -i "s/-fPIC //g" common/Makefile.am sasldb/Makefile.am
+
+  autoreconf -fiv
+  cp -f ${srcdir}/${_realname}-${pkgver}/win32/include/md5global.h ${srcdir}/${_realname}-${pkgver}/include/md5global.h
+}
+
+build() {
+
+  for _arch in ${_architectures}; do
+  _adapt_msys2
+  pushd .
+
+  [[ -d ${srcdir}/build-${CARCH} ]] && rm -rf ${srcdir}/build-${CARCH}
+  mkdir -p "${srcdir}/build-${CARCH}"
+  cd "${srcdir}/build-${CARCH}"
+
+  # Useful ref:
+  # https://fedorapeople.org/cgit/elmarco/public_git/mingw32-cyrus-sasl.git/tree/mingw32-cyrus-sasl.spec
+  # --oldincludedir=${MINGW_PREFIX}/include is so that /usr/include isn't added by default.
+  # --enable-sql seems to have problems with <mysql.h> not existing, I thought it would be a part of sqlite.
+  # --enable-sql
+  # --without-saslauthd because it needs sockaddr_un.
+
+  # We disable OpenSSL (--without-openssl --without-des) so that applications
+  # with licenses incompatible with OpenSSL (such as GPL applications) do not
+  # end up linked with OpenSSL if they use and redistribute Cyrus SASL outside
+  # MSYS2. See these links:
+  #
+  #     * https://www.openssl.org/support/faq.html#LEGAL2
+  #     * https://en.wikipedia.org/wiki/OpenSSL#Licensing
+
+  ${_arch}-configure \
+    --with-configdir=${MINGW_PREFIX}/etc/sasl2:${MINGW_PREFIX}/etc/sasl:${MINGW_PREFIX}/lib/sasl2 \
+    --with-plugindir=${MINGW_PREFIX}/lib/sasl2 \
+    --disable-static --enable-shared \
+    --with-sqlite3=${MINGW_PREFIX} \
+    --disable-ldapdb \
+    --oldincludedir=${MINGW_PREFIX}/include \
+    --without-saslauthd \
+    --without-pwcheck \
+    --without-des \
+    --without-authdaemond \
+    --with-dblib=gdbm \
+    --disable-sample \
+    ../${_realname}-${pkgver}
+
+  make
+
+  popd
+  done
+}
+
+package() {
+  for _arch in ${_architectures}; do
+  _adapt_msys2
+  pushd .
+
+  local _plugindir=${MINGW_PREFIX}/lib/sasl2
+
+  cd "${srcdir}/build-${CARCH}"
+  make DESTDIR="${pkgdir}" install sasldir=${_plugindir}
+
+  install -Dm644 ${srcdir}/${_realname}-${pkgver}/COPYING "${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/COPYING"
+
+  popd
+  done
+}

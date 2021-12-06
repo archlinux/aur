@@ -1,0 +1,10 @@
+--- cyrus-sasl-2.1.27/include/Makefile.am.old	2021-12-06 20:28:13.897877877 +0300
++++ cyrus-sasl-2.1.27/include/Makefile.am	2021-12-06 20:29:17.361859040 +0300
+@@ -53,6 +53,7 @@
+ 
+ makemd5$(BUILD_EXEEXT) $(makemd5_OBJECTS): CC=$(CC_FOR_BUILD)
+ makemd5$(BUILD_EXEEXT) $(makemd5_OBJECTS): CFLAGS=$(CFLAGS_FOR_BUILD)
++makemd5$(BUILD_EXEEXT) $(makemd5_OBJECTS): CPPFLAGS=$(CPPFLAGS_FOR_BUILD)
+ makemd5$(BUILD_EXEEXT): LDFLAGS=$(LDFLAGS_FOR_BUILD)
+ 
+ md5global.h: makemd5$(BUILD_EXEEXT) Makefile
