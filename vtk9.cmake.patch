@@ -11,18 +11,6 @@ index 8b520162..68b0a6c3 100644
    INCLUDE(${VTK_USE_FILE})
    MESSAGE(STATUS "  [ElmerGUI] VTK version:       " ${VTK_VERSION})
    MESSAGE(STATUS "  [ElmerGUI] VTK_LIBS:          " "${VTK_LIBRARIES}")
-diff --git a/ElmerGUI/Application/CMakeLists.txt b/ElmerGUI/Application/CMakeLists.txt
-index 9ba8dee1..74dd5ddb 100644
---- a/ElmerGUI/Application/CMakeLists.txt
-+++ b/ElmerGUI/Application/CMakeLists.txt
-@@ -243,6 +244,7 @@ ENDIF()
- 
- IF(WITH_VTK)
-   TARGET_LINK_LIBRARIES(ElmerGUI ${VTK_LIBRARIES})
-+  print_target_properties(${VTK_LIBRARIES})
-   IF(VTK_MAJOR_VERSION VERSION_LESS 6)
-     TARGET_LINK_LIBRARIES(ElmerGUI QVTK)
-   ENDIF()
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 5b8d2abc..e552ece4 100644
 --- a/CMakeLists.txt
