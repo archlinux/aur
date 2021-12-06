@@ -7,6 +7,7 @@ pkgbase = r-lmtest
 	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = gcc-fortran
 	depends = r>=3.0.0
 	depends = r-zoo
 	optdepends = r-car
