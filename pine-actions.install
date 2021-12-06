@@ -1,0 +1,20 @@
+post_install() {
+	echo ":: Enabling twist-flashlight service"
+	systemctl enable twist-flashlight.service
+	echo ":: Starting twist-flashlight service"
+	systemctl start twist-flashlight.service
+}
+
+post_upgrade() {
+	echo ":: Enabling twist-flashlight service"
+	systemctl enable twist-flashlight.service
+	echo ":: Starting twist-flashlight service"
+	systemctl start twist-flashlight.service
+}
+
+pre_remove() {
+	echo ":: Disabling twist-flashlight service"
+	systemctl disable twist-flashlight.service
+	echo ":: Stopping twist-flashlight service"
+	systemctl stop twist-flashlight.service
+}

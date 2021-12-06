@@ -1,0 +1,17 @@
+pkgbase = pine-actions
+	pkgdesc = A re-implementation of some Moto Actions for the Pine Phone
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/jpeiffer16/pine-actions
+	install = pine-actions.install
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	conflicts = pine-actions
+	source = pine-actions_1.0.4.orig.tar.gz::https://github.com/jpfeiffer16/pine-actions/archive/v1.0.4.tar.gz
+	sha256sums = b7983e008ef6a747b8817c4ec9e25cd8df1004bdd51ddb3fa418400787e76450
+
+pkgname = pine-actions
