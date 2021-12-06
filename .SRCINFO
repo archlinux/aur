@@ -1,6 +1,6 @@
 pkgbase = dt-cli-bin
 	pkgdesc = Syncing dotfiles and more
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/blurgyy/dt
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = dt-cli-bin
 	provides = dt-cli
 	conflicts = dt-cli
 	conflicts = dt-cli-git
-	source = https://github.com/blurgyy/dt/releases/download/v0.5.0/dt-cli-v0.5.0
-	source = https://raw.githubusercontent.com/blurgyy/dt/v0.5.0/LICENSE-APACHE
-	source = https://raw.githubusercontent.com/blurgyy/dt/v0.5.0/LICENSE-MIT
-	sha256sums = 26d67d08d1365d5e1f30d36725fb51861fddabee7057dde4945b6c2b100a00da
+	source = https://github.com/blurgyy/dt/releases/download/v0.5.1/dt-cli-v0.5.1-x86_64
+	source = https://raw.githubusercontent.com/blurgyy/dt/v0.5.1/LICENSE-APACHE
+	source = https://raw.githubusercontent.com/blurgyy/dt/v0.5.1/LICENSE-MIT
+	sha256sums = f4e40f48046d78be22ca157960cb3b6b131147feb8d32429b827755e022f6484
 	sha256sums = c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c
 	sha256sums = 1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322
 
