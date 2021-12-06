@@ -1,25 +1,23 @@
-# Maintainer Simon Legner <Simon.Legner@gmail.com>
-
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=soundcloud-syncer
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Synchronize user's favorites tracks from soundcloud"
-url="https://github.com/sliim/soundcloud-syncer"
-depends=('python' 'python-stagger-git' 'python-pydub' 'python-dateutil' 'python-magic-git')
-license=('GPLv3')
+url="https://github.com/sliim/${pkgname}"
+depends=(python-stagger python-pydub python-dateutil python-magic)
+makedepends=(python-setuptools)
+license=(GPL3)
 arch=('any')
-source=("https://github.com/Sliim/$pkgname/archive/$pkgver.tar.gz")
+source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('3c90b7d0682cc21c9fc40bce097a089d5a3fd7597f03471094b88894fa2a5806263f92f0fac7fe8479b0e42300a3a98dd82849bc17baf90b47b9c3e2b798a5f3')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
-    python setup.py build
+  cd "${pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1 
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
-
-md5sums=('d666cecfa280a4c08c1401ebb495a313')
-sha1sums=('6a81b3d00e96975d11821e4a64d804aff46f548a')
-sha256sums=('7d77b7b6c799a4bc7701210fab0df79f825f5bf54362ac2bfa16d2b83cd8019b')
