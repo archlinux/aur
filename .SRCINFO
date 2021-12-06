@@ -2,14 +2,14 @@ pkgbase = driftctl-bin
 	pkgdesc = Detect, track and alert on infrastructure drift
 	pkgver = 0.17.0
 	pkgrel = 1
-	url = https://github.com/cloudskiff/driftctl
+	url = https://github.com/snyk/driftctl
 	arch = x86_64
 	arch = i686
 	license = Apache
 	provides = driftctl
-	source_x86_64 = driftctl-0.17.0::https://github.com/cloudskiff/driftctl/releases/download/v0.17.0/driftctl_linux_amd64
+	source_x86_64 = driftctl-0.17.0::https://github.com/snyk/driftctl/releases/download/v0.17.0/driftctl_linux_amd64
 	sha256sums_x86_64 = da0f2f9a9ce0cbda4db2603cff00be1c462b9ce001da0229e7f08892f6a7d1f1
-	source_i686 = driftctl-0.17.0::https://github.com/cloudskiff/driftctl/releases/download/v0.17.0/driftctl_linux_386
+	source_i686 = driftctl-0.17.0::https://github.com/snyk/driftctl/releases/download/v0.17.0/driftctl_linux_386
 	sha256sums_i686 = b4560c8ffc12aa6fcf6a87c409e131d561809482b4e1369fe14d24971490c67e
 
 pkgname = driftctl-bin

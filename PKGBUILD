@@ -1,11 +1,11 @@
-# Maintainer: Cloudskiff <tech at cloudskiff dot com>
-# Maintainer: Elie <elie at cloudskiff dot com>
+# Maintainer: Snyk <elie dot charra at snyk dot io>
+# Maintainer: Elie <elie dot charra at snyk dot io>
 pkgname=driftctl-bin
 pkgver=0.17.0
 pkgrel=1
 pkgdesc="Detect, track and alert on infrastructure drift"
 arch=(x86_64 i686)
-url="https://github.com/cloudskiff/driftctl"
+url="https://github.com/snyk/driftctl"
 license=(Apache)
 provides=('driftctl')
 _src="${url}/releases/download/v${pkgver}/driftctl"
