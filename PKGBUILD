@@ -119,8 +119,8 @@ source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
 sha256sums=('SKIP'
             'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
             '04e73a99d7e8d501a2c7c5211a83257137a30a8b1b5c2f7c7ff6304e0e0a6da9'
-            '97dae953c0c43bcd265dd141cec8b22912c3ae6808ed60782b84dde90468ebbd'
-            '0adc38f90eb2311ad0754d0e1c30a46a36195b0b444f359eea4a9a0ba14408b7'
+            'da0245b22e305591913e1f78c5808a2aa33b9380a6052e5596fc16280234aac0'
+            '2a8577c6f5f0a44d9d4758dc603b6bc7d4d1e8160d2412370f4ab4e3944766e9'
             'f995a09fb8999ccb965c7dfe1de602e99a630b84f6ca260b2bdfece1372aeceb'
             '1e2c5b810dc9388f837d79c25a419d3ab250fa084b7b8f1d5b6cbe9b8dd537bf'
             '89b0e79ca1ad8952839d0578cdbce86ea4dad46e3c68aa1ce5b8b83bcff94e57')
