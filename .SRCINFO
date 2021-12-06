@@ -1,7 +1,7 @@
 pkgbase = rclone-beta-bin
 	pkgdesc = Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. (Beta version)
 	pkgver = 1.58.0_beta.5918.408d9f3e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beta.rclone.org/
 	arch = i686
 	arch = x86_64

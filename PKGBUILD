@@ -3,7 +3,8 @@
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
 
 pkgname=rclone-beta-bin
-pkgrel=1
+_srcname=rclone
+pkgrel=2
 pkgver=1.58.0_beta.5918.408d9f3e7
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. (Beta version)"
 provides=('rclone')
