@@ -1,0 +1,22 @@
+diff --unified --recursive --text docker.orig/docker-static-build.sh docker.new/docker-static-build.sh
+--- docker.orig/docker-static-build.sh	2021-12-06 12:18:10.154949959 +0100
++++ docker.new/docker-static-build.sh	2021-12-06 12:13:44.724949629 +0100
+@@ -10,8 +10,9 @@
+ set -euo pipefail
+ 
+ binaries=("tezos-admin-client" "tezos-client" "tezos-node" "tezos-signer" "tezos-codec" "tezos-sandbox")
++zcash_params=("sapling-output.params" "sapling-spend.params")
+ 
+-for proto in $(jq -r ".active | .[]" ../protocols.json); do
++for proto in $(jq -r ".active | .[]" protocols.json); do
+     binaries+=("tezos-accuser-$proto" "tezos-baker-$proto" "tezos-endorser-$proto")
+ done
+ 
+@@ -46,4 +47,7 @@
+ for b in "${binaries[@]}"; do
+     "$virtualisation_engine" cp "$container_id:/tezos/$b" "$b"
+ done
++for p in "${zcash_params[@]}"; do
++    "$virtualisation_engine" cp "$container_id:/tezos/_opam/share/zcash-params/$p" "$p"
++done
+ "$virtualisation_engine" rm -v "$container_id"

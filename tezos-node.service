@@ -1,0 +1,15 @@
+[Unit]
+Description=Tezos node in RPC mode in RPC mode on 127.0.0.1.
+
+[Service]
+Type=simple
+User=tezos
+Group=tezos
+ExecStart=/usr/bin/tezos-node run --rpc-addr=127.0.0.1
+TimeoutStartSec=5
+TimeoutStopSec=180
+Restart=on-failure
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

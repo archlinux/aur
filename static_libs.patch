@@ -1,0 +1,142 @@
+# SPDX-FileCopyrightText: 2020 TQ Tezos <https://tqtezos.com/>
+#
+# SPDX-License-Identifier: LicenseRef-MIT-TQ
+diff --git a/src/bin_client/dune b/src/bin_client/dune
+index 00fb3a632..923739d2b 100644
+--- a/src/bin_client/dune
++++ b/src/bin_client/dune
+@@ -76,7 +76,9 @@
+                     -open Tezos_client_commands
+                     -open Tezos_mockup_commands
+                     -open Tezos_client_base_unix
+-                    -linkall)))
++                    -linkall
++                    -ccopt -static
++                    -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+
+ (rule
+  (action
+diff --git a/src/bin_codec/dune b/src/bin_codec/dune
+index f7577c4e5..949d2cbc4 100644
+--- a/src/bin_codec/dune
++++ b/src/bin_codec/dune
+@@ -33,7 +33,9 @@
+                    -open Tezos_clic
+                    -open Tezos_stdlib_unix
+                    -open Tezos_event_logging
+-                   -linkall)))
++                   -linkall
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+
+ (rule
+  (action
+diff --git a/src/bin_node/dune b/src/bin_node/dune
+index 95a8d1af7..ce2ac8e3e 100644
+--- a/src/bin_node/dune
++++ b/src/bin_node/dune
+@@ -96,7 +96,8 @@
+                    -open Tezos_shell_context
+                    -open Tezos_workers
+                    -open Tezos_protocol_updater
+-                   -linkall)))
++                   -linkall
++                   -ccopt -static)))
+
+ (rule
+  (action
+diff --git a/src/bin_signer/dune b/src/bin_signer/dune
+index 26c1fa638..029a50c07 100644
+--- a/src/bin_signer/dune
++++ b/src/bin_signer/dune
+@@ -21,4 +21,6 @@
+                    -open Tezos_rpc_http_server
+                    -open Tezos_rpc_http_client_unix
+                    -open Tezos_stdlib_unix
+-                   -open Tezos_stdlib)))
++                   -open Tezos_stdlib
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+diff --git a/src/proto_010_PtGRANAD/bin_accuser/dune b/src/proto_010_PtGRANAD/bin_accuser/dune
+index 11c77973e3..43515f16ed 100644
+--- a/src/proto_010_PtGRANAD/bin_accuser/dune
++++ b/src/proto_010_PtGRANAD/bin_accuser/dune
+@@ -10,4 +10,6 @@
+                    -open Tezos_client_commands
+                    -open Tezos_baking_010_PtGRANAD_commands
+                    -open Tezos_stdlib_unix
+-                   -open Tezos_client_base_unix)))
++                   -open Tezos_client_base_unix
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+diff --git a/src/proto_010_PtGRANAD/bin_baker/dune b/src/proto_010_PtGRANAD/bin_baker/dune
+index 0535edf13c..f0c85ad447 100644
+--- a/src/proto_010_PtGRANAD/bin_baker/dune
++++ b/src/proto_010_PtGRANAD/bin_baker/dune
+@@ -10,4 +10,6 @@
+                    -open Tezos_client_commands
+                    -open Tezos_baking_010_PtGRANAD_commands
+                    -open Tezos_stdlib_unix
+-                   -open Tezos_client_base_unix)))
++                   -open Tezos_client_base_unix
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+diff --git a/src/proto_010_PtGRANAD/bin_endorser/dune b/src/proto_010_PtGRANAD/bin_endorser/dune
+index c19a310a8f..6c38226293 100644
+--- a/src/proto_010_PtGRANAD/bin_endorser/dune
++++ b/src/proto_010_PtGRANAD/bin_endorser/dune
+@@ -10,4 +10,6 @@
+                    -open Tezos_client_commands
+                    -open Tezos_baking_010_PtGRANAD_commands
+                    -open Tezos_stdlib_unix
+-                   -open Tezos_client_base_unix)))
++                   -open Tezos_client_base_unix
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+diff --git a/src/proto_011_PtHangz2/bin_accuser/dune b/src/proto_011_PtHangz2/bin_accuser/dune
+index 11c77973e3..43515f16ed 100644
+--- a/src/proto_011_PtHangz2/bin_accuser/dune
++++ b/src/proto_011_PtHangz2/bin_accuser/dune
+@@ -10,4 +10,6 @@
+                    -open Tezos_client_commands
+                    -open Tezos_baking_011_PtHangz2_commands
+                    -open Tezos_stdlib_unix
+-                   -open Tezos_client_base_unix)))
++                   -open Tezos_client_base_unix
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+diff --git a/src/proto_011_PtHangz2/bin_baker/dune b/src/proto_011_PtHangz2/bin_baker/dune
+index 0535edf13c..f0c85ad447 100644
+--- a/src/proto_011_PtHangz2/bin_baker/dune
++++ b/src/proto_011_PtHangz2/bin_baker/dune
+@@ -10,4 +10,6 @@
+                    -open Tezos_client_commands
+                    -open Tezos_baking_011_PtHangz2_commands
+                    -open Tezos_stdlib_unix
+-                   -open Tezos_client_base_unix)))
++                   -open Tezos_client_base_unix
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+diff --git a/src/proto_011_PtHangz2/bin_endorser/dune b/src/proto_011_PtHangz2/bin_endorser/dune
+index c19a310a8f..6c38226293 100644
+--- a/src/proto_011_PtHangz2/bin_endorser/dune
++++ b/src/proto_011_PtHangz2/bin_endorser/dune
+@@ -10,4 +10,6 @@
+                    -open Tezos_client_commands
+                    -open Tezos_baking_011_PtHangz2_commands
+                    -open Tezos_stdlib_unix
+-                   -open Tezos_client_base_unix)))
++                   -open Tezos_client_base_unix
++                   -ccopt -static
++                   -cclib "-lusb-1.0 -lhidapi-libusb -ludev")))
+diff --git a/src/bin_sandbox/dune b/src/bin_sandbox/dune
+index 6289c6d124..aa2eb20a29 100644
+--- a/src/bin_sandbox/dune
++++ b/src/bin_sandbox/dune
+@@ -2,4 +2,5 @@
+   (names main)
+   (libraries tezos-base
+              tezos-base.unix
+-             flextesa))
++             flextesa)
++  (flags :standard -ccopt -static))

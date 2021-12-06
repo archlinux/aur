@@ -1,0 +1,21 @@
+post_upgrade() {
+    if [ ! -d "/usr/share/tezos" ]; then
+        echo "Creating directory /usr/share/tezos..."
+        mkdir -p -m755 /usr/share/tezos
+        chown tezos:tezos /usr/share/tezos
+    fi
+    if [ ! -f "/usr/share/tezos/.tezos-node/identity.json" ]; then
+        echo -e "To create a tezos node identity, run\n"
+        echo -e "    $ sudo -u tezos tezos-node identity generate\n"
+    else
+        echo ""
+    fi
+    echo -e "To start the tezos node on localhost, run\n"
+    echo -e "    $ sudo systemctl start tezos-node\n"
+    echo -e "To automatically start it on system start:\n"
+    echo -e "    $ sudo systemctl enable tezos-node\n"
+}
+
+post_install() {
+    post_upgrade
+}
