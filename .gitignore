@@ -1,6 +1,6 @@
 *.asc
 *.tar.gz
-*.pkg.tar.xz
+*.pkg.tar.*
 src/
 pkg/
 nginx-uaparser-module/

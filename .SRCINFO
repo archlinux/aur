@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-uaparser-git
 	pkgdesc = User agent parser module for mainline nginx
 	pkgver = r1.f5a1e52
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/clarfon/nginx-uaparser-module
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Clar Fon <clarfon@pm.me>
 pkgname=nginx-mainline-mod-uaparser-git
 pkgver=r1.f5a1e52
-pkgrel=6
+pkgrel=7
 _modname="nginx-uaparser-module"
 pkgdesc="User agent parser module for mainline nginx"
 arch=('i686' 'x86_64')
@@ -16,6 +16,17 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_modname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+prepare() {
+  mkdir -p build
+  cd build
+  ln -sf /usr/src/nginx/auto
+  ln -sf /usr/src/nginx/src
+
+  cd "$srcdir/$_modname"
+  sed 's@/usr/local@/usr@' -i config
 }
 
 build() {
