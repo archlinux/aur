@@ -12,7 +12,6 @@ pkgbase = r-prodlim
 	depends = r-rcpp>=0.11.5
 	depends = r-lava
 	source = https://cran.r-project.org/src/contrib/prodlim_2019.11.13.tar.gz
-	md5sums = 4439266060d24ffef32a5e6bec3c01ef
+	sha256sums = 6809924f503a14681de84730489cdaf9240d7951c64f5b98ca37dc1ce7809b0f
 
 pkgname = r-prodlim
-
