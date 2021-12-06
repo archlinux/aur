@@ -6,11 +6,15 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+# optionally modify to fit your specific hardware
+#export CFLAGS+=" -march=haswell -mtune=haswell"
+#export CXXFLAGS="${CFLAGS}"
+
 pkgname=ffmpeg-shinobi
 _pkgname=ffmpeg
-pkgver=4.3.2
-pkgrel=5
-pkgdesc='FFmpeg from the 4.3 release branch for use with Shinobi'
+pkgver=4.3.3
+pkgrel=1
+pkgdesc='FFmpeg from the release/4.3 branch for use with Shinobi'
 arch=(x86_64 aarch64 armv6h armv7h)
 url=https://ffmpeg.org/
 license=(GPL3)
@@ -105,7 +109,7 @@ provides=(
 conflicts=(
   ffmpeg
 )
-_tag=f719f869907764e6412a6af6e178c46e5f915d25
+_tag=a77521cd5d27e955b16e8097eecefc779ffdcb6d
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch

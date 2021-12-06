@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-shinobi
-	pkgdesc = FFmpeg from the 4.3 release branch for use with Shinobi
-	pkgver = 4.3.2
-	pkgrel = 5
+	pkgdesc = FFmpeg from the release/4.3 branch for use with Shinobi
+	pkgver = 4.3.3
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
 	arch = aarch64
@@ -82,7 +82,7 @@ pkgbase = ffmpeg-shinobi
 	provides = libswresample.so
 	provides = libswscale.so
 	conflicts = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=f719f869907764e6412a6af6e178c46e5f915d25
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=a77521cd5d27e955b16e8097eecefc779ffdcb6d
 	source = vmaf-model-path.patch
 	source = 0001-configure-use-no-narrowing-for-cuda-llvm-compilation.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/52cc323735ced6e8095cfd3acea0e36e35c76eb2
 	sha256sums = SKIP
