@@ -25,4 +25,6 @@ cd "$srcdir/$_pkgname"
 install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 install -m 0755 -d "$pkgdir/usr/share/$_pkgname/components"
 install -m 0755 components/*.sh "$pkgdir/usr/share/$_pkgname/components"
+install -m 0755 -d "$pkgdir/usr/share/$_pkgname/assets"
+install -m 0755 assets/*.sh "$pkgdir/usr/share/$_pkgname/assets"
 }
