@@ -1,16 +1,17 @@
 pkgbase = pgformatter-git
 	pkgdesc = Correctly indent PostgreSQL queries
-	pkgver = v4.0.r19.gd6e919b
+	pkgver = v5.2.r0.gfe95448
 	pkgrel = 1
 	url = https://github.com/darold/pgformatter
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	provides = pgformatter-git
+	conflicts = pgformatter
 	options = !emptydirs
 	options = !libtool
 	source = git+https://github.com/darold/pgformatter.git
 	md5sums = SKIP
 
 pkgname = pgformatter-git
-
