@@ -6,7 +6,7 @@ pkgbase = r-listenv
 	arch = any
 	license = LGPL2.1
 	license = LPGL3
-	depends = r
+	depends = r>=3.1.2
 	optdepends = r-r.utils
 	optdepends = r-r.rsp
 	optdepends = r-markdown

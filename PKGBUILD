@@ -9,7 +9,7 @@ pkgdesc="Environments Behaving (Almost) as Lists"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2.1 LPGL3)
-depends=(r)
+depends=('r>=3.1.2')
 optdepends=(r-r.utils r-r.rsp r-markdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('fd2aaf3ff2d8d546ce33d1cb38e68401613975117c1f9eb98a7b41facf5c485f')
