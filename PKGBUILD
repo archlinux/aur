@@ -1,7 +1,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgname=gnome-settings-daemon-oldstable
+pkgname=gnome-settings-daemon-338
 pkgver=3.38.2
 pkgrel=2
 pkgdesc="GNOME Settings Daemon"
@@ -11,13 +11,13 @@ provides=("gnome-settings-daemon=$pkgver")
 replaces=("gnome-settings-daemon")
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gnome-desktop gsettings-desktop-schemas-oldstable libcanberra-pulse libnotify systemd-libs
+depends=(dconf gnome-desktop gsettings-desktop-schemas-338 libcanberra-pulse libnotify systemd-libs
          libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue nss
          libgudev gtk3 libnm gcr)
 makedepends=(xf86-input-wacom libxslt docbook-xsl python git meson usbguard)
 checkdepends=(python-gobject python-dbusmock)
 optdepends=('usbguard: USB protection support')
-groups=(gnome-oldstable)
+groups=(gnome-338)
 backup=(etc/xdg/Xwayland-session.d/00-xrdb)
 _commit=e9c5057315d5e3fbb90482bb054e250773aad9ab  # tags/GNOME_SETTINGS_DAEMON_3_38_2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=$_commit"

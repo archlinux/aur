@@ -1,10 +1,10 @@
-pkgbase = gnome-settings-daemon-oldstable
+pkgbase = gnome-settings-daemon-338
 	pkgdesc = GNOME Settings Daemon
 	pkgver = 3.38.2
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = x86_64
-	groups = gnome-oldstable
+	groups = gnome-338
 	license = GPL
 	checkdepends = python-gobject
 	checkdepends = python-dbusmock
@@ -17,7 +17,7 @@ pkgbase = gnome-settings-daemon-oldstable
 	makedepends = usbguard
 	depends = dconf
 	depends = gnome-desktop
-	depends = gsettings-desktop-schemas-oldstable
+	depends = gsettings-desktop-schemas-338
 	depends = libcanberra-pulse
 	depends = libnotify
 	depends = systemd-libs
@@ -44,5 +44,5 @@ pkgbase = gnome-settings-daemon-oldstable
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = gnome-settings-daemon-oldstable
+pkgname = gnome-settings-daemon-338
 
