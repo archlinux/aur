@@ -7,6 +7,7 @@ pkgbase = r-sparsem
 	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = gcc-fortran
 	depends = r>=2.15
 	source = https://cran.r-project.org/src/contrib/SparseM_1.81.tar.gz
 	sha256sums = bd838f381ace680fa38508ff70b3d83cb9ffa28ac1ab568509249bca53c34b33
