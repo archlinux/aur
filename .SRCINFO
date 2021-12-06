@@ -1,4 +1,4 @@
-pkgbase = gsettings-desktop-schemas-oldstable
+pkgbase = gsettings-desktop-schemas-338
 	pkgdesc = Shared GSettings schemas for the desktop
 	pkgver = 3.38.0
 	pkgrel = 2
@@ -18,5 +18,5 @@ pkgbase = gsettings-desktop-schemas-oldstable
 	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#commit=bbb4e9d70bea13416a6f7558fddc75c0bb60739a
 	sha256sums = SKIP
 
-pkgname = gsettings-desktop-schemas-oldstable
+pkgname = gsettings-desktop-schemas-338
 

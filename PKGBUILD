@@ -4,7 +4,7 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Adam Hani Schakaki (krzd) <krzd@krzd.net>
 
-pkgname=gsettings-desktop-schemas-oldstable
+pkgname=gsettings-desktop-schemas-338
 pkgver=3.38.0
 pkgrel=2
 pkgdesc="Shared GSettings schemas for the desktop"
