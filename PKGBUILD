@@ -7,7 +7,7 @@ pkgname=spotify
 pkgver=1.1.72.439
 epoch=1
 _commit=gc253025e
-pkgrel=2
+pkgrel=3
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
@@ -28,9 +28,9 @@ source=('spotify.protocol'
         'LICENSE'
         "${pkgname}-${pkgver}-x86_64.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}_amd64.deb"
         # GPG signature check
-        "${pkgname}-${pkgver}-Release::http://repository.spotify.com/dists/testing/Release"
-        "${pkgname}-${pkgver}-Release.sig::http://repository.spotify.com/dists/testing/Release.gpg"
-        "${pkgname}-${pkgver}-x86_64-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages")
+        "${pkgname}-${pkgver}-${pkgrel}-Release::http://repository.spotify.com/dists/testing/Release"
+        "${pkgname}-${pkgver}-${pkgrel}-Release.sig::http://repository.spotify.com/dists/testing/Release.gpg"
+        "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages")
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
             '65cec95448d936b7be93b0d16f29927a298b5b56aa2bc4834a5d357e341c78486fa69e61b3b6cf9fbe7da88c8d3b6ce3bccb5e963ed1b5a23320c0c808ccb385'
@@ -60,6 +60,9 @@ package() {
     cd "${srcdir}"
 
     tar -xzf data.tar.gz -C "${pkgdir}"
+
+    # Enable spotify to open URLs from the webapp
+    sed -i 's/^Exec=.*/Exec=spotify --uri=%U/' "${pkgdir}"/usr/share/spotify/spotify.desktop
 
     install -Dm644 "${pkgdir}"/usr/share/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
     install -Dm644 "${pkgdir}"/usr/share/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
