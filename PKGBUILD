@@ -1,11 +1,10 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
-
 # Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Auteiy <dmitry@synh.me>
 
 pkgname=kotatogram-desktop-bin
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 url="https://github.com/kotatogram/kotatogram-desktop"
 arch=(x86_64)
@@ -20,7 +19,7 @@ optdepends=('xdg-desktop-portal: for native file dialogs, do not forget to insta
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-dynamic-bin')
 provides=('kotatogram-desktop')
 
-source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver-appimage.tar.xz
+source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver-linux.tar.xz
         https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
         icon16-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon16.png
         icon32-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon32.png
@@ -30,8 +29,8 @@ source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver-appimage.tar.x
         icon256-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon256.png
         icon512-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon512.png)
 
-sha512sums=('d22c5eb8092f0bba71002d4492729b18dc1f2b94ebe460870d0dd388e91287c661d7e506b1a9dafac249292e4a7eedab7dcc500b3dd573ae07280870f0de7659'
-            'e9f0d9174f43cf30b8dc982ce898f5330152cf4d8da03f6e99bd409f6caee7a93f05121d9acdac4ead0c0ef3dfc82ba597b670deac43fe17d08dc221e01e463a'
+sha512sums=('351b7d9afec736be3736922a675677c3a890e0a01036c9182d0c155e3dc2fa9485962a858c6f2e51fc0dbb097267c080840d9f20503430d95308485ee4c48bb3'
+            '5ac25c8b41792d170df5f124001dbe1ea4d26d0f16add6d2a5e6463167ae613a1316dc48d462bc1a7b319722df01d749f1375ef6112168960b62e343e8bef72b'
             '89bb399142ec968a1c9d96e7e3639036aa8d70968c89c6d2b77def5ea6cbb0d88de8b3c8bb10f457600cdd4c7926d7f8ff9907f511aaaac832b218c9353c4b50'
             'facff9860ebb15045e6c7fb6483317c2319bea8b256cbc0986a252863ccedd80e1cf1e4c81a259b303651b450371b1daaf9f61be26129296b71c58ed08644cf9'
             '655bce2e9e55933a733a681e117be0e541cf2f0bdb7b60d9baacaa634b0cf4ba0add53d174807a22449b9ffbbb2b050f24aadb1974d2e471f841d3c227c04c97'
