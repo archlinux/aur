@@ -1,13 +1,13 @@
 pkgbase = virtctl-bin
 	pkgdesc = Kubernetes Virtualization API and runtime in order to define and manage virtual machines (CLI)
-	pkgver = 0.47.1
+	pkgver = 0.36.5
 	pkgrel = 1
 	url = https://github.com/kubevirt/kubevirt
 	arch = x86_64
 	license = Apache
 	provides = virtctl
 	conflicts = virtctl
-	source = https://github.com/kubevirt/kubevirt/releases/download/v0.47.1/virtctl-v0.47.1-linux-amd64
-	sha512sums = 613e6940c0b24bc741e75f2216bf8abdb9113a9a4e67aa3ef6d03c9a2d2e2c530898773a3bc1c2c1a6b7a8c6abbe88761bfd47d5380e8156d2f40d8955ccbe13
+	source = https://github.com/kubevirt/kubevirt/releases/download/v0.36.5/virtctl-v0.36.5-linux-amd64
+	sha512sums = d7f4a61da0f439ca1ddc6d606a866fb0c15cb628822a988cf8c8834ebeaecd8a7ab9c1c23913ea9100a209520dd7a40b496e8dcb9586e24059a06b0649916614
 
 pkgname = virtctl-bin
