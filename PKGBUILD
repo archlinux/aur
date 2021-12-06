@@ -47,11 +47,11 @@ validpgpkeys=('F9A211976ED662F00E59361E5E3C45D7B312C643') # Spotify Public Repos
 
 prepare() {
     # Validate hashes from the PGP signed "Release" file
-    echo "$(grep non-free/binary-amd64/Packages ${pkgname}-${pkgver}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-x86_64-Packages" \
+    echo "$(grep non-free/binary-amd64/Packages ${pkgname}-${pkgver}-${pkgrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages" \
         > "${pkgname}-${pkgver}-x86_64-Packages.sha256"
     sha256sum -c "${pkgname}-${pkgver}-x86_64-Packages.sha256"
 
-    echo "$(grep SHA512 ${pkgname}-${pkgver}-x86_64-Packages | head -n 1 | awk '{print $2}') ${pkgname}-${pkgver}-x86_64.deb" \
+    echo "$(grep SHA512 ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages | head -n 1 | awk '{print $2}') ${pkgname}-${pkgver}-x86_64.deb" \
         > "${pkgname}-${pkgver}-x86_64.deb.sha512"
     sha512sum -c "${pkgname}-${pkgver}-x86_64.deb.sha512"
 }
