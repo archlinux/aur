@@ -77,7 +77,7 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r695.g6ab20a47
+pkgver=9.0.r730.g09aa1f26
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -135,7 +135,9 @@ prepare() {
   sed -i 's/FALSE/false/g' ElmerGUI/Application/vtkpost/matc.cpp
   ((!DISABLE_VTK)) && patch+=(vtk9{.cmake,.1}.patch)
   ((!DISABLE_MMG)) && patch+=({FindMMG,print_target_properties}.patch)
-  git apply -v "${srcdir}"/arpack.patch "${patch[@]/#/${srcdir}/}"
+  for patch in "${srcdir}"/{arpack,cmake-fix}.patch "${patch[@]/#/${srcdir}/}"
+  do msg2 "Apply: ${patch##*/}"; git apply -v "$patch"
+  done
 }
 
 build() {
