@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/ismaelgv/rnr'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ismaelgv/rnr/archive/v$pkgver/v$pkgver.tar.gz")
-md5sums=('5716da90e696da1aa04221f277cbdea0')
+md5sums=('188068f981387865f4f0eab07a7aad85')
 
 build () {
   cd ${pkgname}-$pkgver
