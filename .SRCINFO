@@ -1,6 +1,6 @@
 pkgbase = libretro-beetle-saturn-git
 	pkgdesc = Sega Saturn core
-	pkgver = r606.8351a17
+	pkgver = r608.e6ba71f
 	pkgrel = 1
 	url = https://github.com/libretro/beetle-saturn-libretro
 	arch = arm
@@ -17,9 +17,7 @@ pkgbase = libretro-beetle-saturn-git
 	provides = libretro-beetle-saturn
 	conflicts = libretro-beetle-saturn
 	source = libretro-beetle-saturn::git+https://github.com/libretro/beetle-saturn-libretro.git
-	source = libretro-beetle-saturn-unbundle-libchdr.patch::https://github.com/libretro/beetle-saturn-libretro/pull/210.patch
 	b2sums = SKIP
-	b2sums = 3750dd4a9a036c2e271744ea7aa772272fa256916e3a8a0465c03d930ca94b1a4744c1731211d07ad305c60142fccc2c3936af127dd3d6e84a59b43019ea8801
 
 pkgname = libretro-beetle-saturn-git
 	depends = gcc-libs
