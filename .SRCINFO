@@ -1,6 +1,6 @@
 pkgbase = dt-cli-git
 	pkgdesc = Syncing dotfiles and more
-	pkgver = v0.5.0
+	pkgver = v0.5.1
 	pkgrel = 1
 	url = https://github.com/blurgyy/dt
 	arch = any
