@@ -1,9 +1,9 @@
 # Maintainer: Nicolas KAROLAK <nicolas at karolak dot fr>
 
 pkgname=devc
-_pkgver=1.0.0-alpha.3
+_pkgver=1.0.0-alpha.4
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A CLI tool to manage your devcontainers"
 arch=('x86_64')
 url="https://github.com/nikaro/devc"
@@ -18,14 +18,14 @@ provides=('devc')
 conflicts=('devc')
 
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/nikaro/$pkgname/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=("7f486bb847157eeea799ff5581e6f0dd0078d540745c1f10911ba79ff7880fff")
+sha256sums=("16e4ab7d9b4f445892745905a32d3b8f50b909b3a95f0c0af81c4e5e40e08b81")
 
 build() {
-	cd "$pkgname-v$_pkgver"
+	cd "$srcdir/$pkgname-v$_pkgver"
 	make
 }
 
 package() {
-	cd "$pkgname-v$_pkgver"
+	cd "$srcdir/$pkgname-v$_pkgver"
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
