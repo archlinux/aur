@@ -5,7 +5,7 @@
 pkgname=gnome-tweaks-338
 pkgver=3.34.1
 pkgrel=2
-pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool) (338 version)"
+pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool) (gnome 3.38 version)"
 url="https://wiki.gnome.org/Apps/Tweaks"
 arch=(any)
 license=(GPL)
