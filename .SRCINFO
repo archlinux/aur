@@ -7,13 +7,11 @@ pkgbase = r-modelmetrics
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	makedepends = gcc
 	depends = r>=3.2.2
 	depends = r-rcpp
 	depends = r-data.table
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/ModelMetrics_1.2.2.2.tar.gz
-	md5sums = 3f3d10e443dab1a0e8e399bcd6be6d1b
+	sha256sums = 5e06f1926aebca5654e1329c66ef19b04058376b2277ebb16e3bf8c208d73457
 
 pkgname = r-modelmetrics
-
