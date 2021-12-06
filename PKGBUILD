@@ -7,8 +7,8 @@
 
 pkgname=opencpn
 _name="OpenCPN"
-pkgver=5.2.4
-pkgrel=3
+pkgver=5.6.0
+pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64' 'aarch64')
 license=("GPL2")
@@ -17,7 +17,7 @@ makedepends=('cmake' 'lsb-release')
 url="http://opencpn.org"
 install=opencpn.install
 source=("https://github.com/${_name}/${_name}/archive/Release_${pkgver}.tar.gz")
-sha1sums=('157d7392e42a8ee9b6efbb6496642e575ad958fa')
+sha1sums=('62b3ebdf373c76f00b7191a44e1b0576df872e55')
 
 prepare() {
   cd "OpenCPN-Release_${pkgver}"
@@ -29,7 +29,6 @@ prepare() {
 build() {
   cd "OpenCPN-Release_${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUNDLE_GSHHS=CRUDE -DBUNDLE_TCDATA=ON -DBUNDLE_DOCS=ON \
         -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
         -DOCPN_FORCE_GTK3=ON
   make
