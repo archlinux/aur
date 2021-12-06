@@ -17,6 +17,6 @@ pkgbase = aurutils
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: default pager
 	source = aurutils-3.2.2.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/3.2.2.tar.gz
-	sha256sums = 56fbb747c516a6b4a32a267a84afe9ab6eb882f7960ac4dcf7b570373d6f7624
+	sha256sums = 6bbc6949d27b1132828aa3e68ad2252d8125365c9b7bec6c587fd15bf3081f72
 
 pkgname = aurutils
