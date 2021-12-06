@@ -58,7 +58,7 @@ prepare() {
   #sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
 
-  cd Waterfox
+  cd Waterfox-Classic
 
   patch -Np1 -i ../dont-statically-link-libstdc++.patch
 
@@ -168,12 +168,12 @@ END
 }
 
 build() {
-  cd Waterfox
+  cd Waterfox-Classic
   ./mach build
 }
 
 package() {
-  cd Waterfox
+  cd Waterfox-Classic
 
   cp "$srcdir/kde.js" obj-$CARCH-pc-linux-gnu/dist/bin/defaults/pref
 
