@@ -6,7 +6,6 @@ pkgbase = r-plyr
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	depends = r>=3.1.0
 	depends = r-rcpp>=0.11.0
 	optdepends = r-abind
@@ -17,7 +16,6 @@ pkgbase = r-plyr
 	optdepends = r-itertools
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/plyr_1.8.6.tar.gz
-	md5sums = 2f4b1a4d42e0b6e4d18918c703eb1926
+	sha256sums = ea55d26f155443e9774769531daa5d4c20a0697bb53abd832e891b126c935287
 
 pkgname = r-plyr
-
