@@ -2,7 +2,7 @@
 # Co-maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
 
 pkgname=piwigo
-pkgver=12.0.0
+pkgver=12.1.0
 pkgrel=1
 pkgdesc='Photo gallery software for the web'
 arch=(any)
@@ -20,7 +20,6 @@ optdepends=('php-gd: graphic library (one graphic library is required)'
             'pdftoppm: generate poster from PDF files (instead of ImageMagick)')
 makedepends=("unzip")
 backup=('etc/webapps/piwigo/apache.conf'
-        'etc/nginx/sites-available/piwigo.conf'
         'etc/php/php-fpm.d/piwigo.conf')
 options=(emptydirs)
 source=("${pkgname}-${pkgver}.zip::https://piwigo.org/download/dlcounter.php?code=${pkgver}"
@@ -29,7 +28,9 @@ source=("${pkgname}-${pkgver}.zip::https://piwigo.org/download/dlcounter.php?cod
         'nginx.conf'
         'php-fpm.conf'
         'php-fpm.service.conf')
-sha256sums=('cb711819cfcc931e79f975cef1fc12f7d1289d2d260455af1aac91419858e68f'
+md5sums=('c6edb6d0617ccbdc27bf35e06efbaa96'  # Provided by upstream
+         SKIP SKIP SKIP SKIP SKIP)
+sha256sums=('538c8b6974cf69720f683f082cf413db0e122e1ce52a81e491cd5145b8948e3c'
             '64435b2f5fe29ab6201e00a755bff5dbe77bc4450559a2668a21e750ce13f8be'
             '0e6d4af6552f4eead62825999eee115152cf5f884f2c65b759379ac5b15d36f7'
             '13db3e357bd30cab3ba9eb460e76ac9009cf974606ea55981d30c326db6db366'
