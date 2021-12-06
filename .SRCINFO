@@ -41,8 +41,9 @@ pkgbase = gnome-settings-daemon-338
 	backup = etc/xdg/Xwayland-session.d/00-xrdb
 	source = git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=e9c5057315d5e3fbb90482bb054e250773aad9ab
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	source = meson.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 2de4a9e1673f85f70417927902eb4a01ddb403eac26515b4881e35978c2f980d
 
 pkgname = gnome-settings-daemon-338
-

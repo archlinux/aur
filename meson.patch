@@ -1,0 +1,7 @@
+84,85c84,86
+< # https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/commit/28e28e9e5983
+< if get_option('b_ndebug') == 'true'
+---
+> # Workaround for meson's bug
+> # https://github.com/mesonbuild/meson/pull/1896
+> if get_option('b_ndebug') == true
