@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/vejnar/fontools"
 license=("MPLv2")
 depends=("python" "python-pyfnutils" "python-pyfaidx")
-makedepends=("python-setuptools" "python-pip")
+makedepends=("python-setuptools" "python-pip" "python-wheel")
 source=("https://github.com/vejnar/fontools/archive/refs/tags/v$pkgver.tar.gz")
 sha1sums=("966b0888d7a50369f9f04b907f6d480a5ede7a72")
 

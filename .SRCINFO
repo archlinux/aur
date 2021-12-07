@@ -7,6 +7,7 @@ pkgbase = python-fontools
 	license = MPLv2
 	makedepends = python-setuptools
 	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python
 	depends = python-pyfnutils
 	depends = python-pyfaidx
