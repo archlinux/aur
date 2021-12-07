@@ -1,0 +1,14 @@
+pkgbase = python-pygame-menu
+	pkgdesc = Menu for pygame
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://www.pygame.org/project/3165/7986
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygame
+	source = https://github.com/ppizarror/pygame-menu/archive/refs/tags/4.2.0.tar.gz
+	sha256sums = 215868e4753c48dc7b49ab54fff75fbb2827e86947e175006eac1588acdd837d
+
+pkgname = python-pygame-menu
