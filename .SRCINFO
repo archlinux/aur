@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gsl
 	pkgdesc = The GNU Scientific Library (GSL) is a modern numerical library for C and C++ programmers (mingw-w64)
-	pkgver = 2.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/gsl/gsl.html
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-gsl
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
-	sha256sums = efbbf3785da0e53038be7907500628b466152dbc3c173a87de1b5eba2e23602b
+	source = http://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz
+	sha256sums = dcb0fbd43048832b757ff9942691a8dd70026d5da0ff85601e52687f6deeb34b
 
 pkgname = mingw-w64-gsl
-

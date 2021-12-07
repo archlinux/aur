@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=mingw-w64-gsl
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="The GNU Scientific Library (GSL) is a modern numerical library for C and C++ programmers (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://ftp.gnu.org/gnu/gsl/gsl-$pkgver.tar.gz")
-sha256sums=('efbbf3785da0e53038be7907500628b466152dbc3c173a87de1b5eba2e23602b')
+sha256sums=('dcb0fbd43048832b757ff9942691a8dd70026d5da0ff85601e52687f6deeb34b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
