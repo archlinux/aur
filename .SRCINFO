@@ -1,6 +1,6 @@
 pkgbase = pict-rs
 	pkgdesc = A simple image hosting service
-	pkgver = 0.3.0.beta.6
+	pkgver = 0.3.0.beta.11
 	pkgrel = 1
 	url = https://git.asonix.dog/asonix/pict-rs
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pict-rs
 	depends = imagemagick
 	depends = ffmpeg
 	depends = perl-image-exiftool
-	source = pict-rs-0.3.0.beta.6.tar.gz::https://git.asonix.dog/asonix/pict-rs/archive/v0.3.0-beta.6.tar.gz
-	sha512sums = 0047e26a3aea1d0dca22d493ecaa03797205eb727a0d5115e74eb3815ea1dc0e71583dba1e1d343aba1d162b5199cc5ed43c45084b5ce5672240749c95c7e9f1
-	b2sums = 427d70120b110f736692839d85f8fa5af91c822142ffc79dab790402552eac609eac41bdbc54664146233ad9c39df94958e25c449412e23f532b1f0d7f14107f
+	source = pict-rs-0.3.0.beta.11.tar.gz::https://git.asonix.dog/asonix/pict-rs/archive/v0.3.0-beta.11.tar.gz
+	sha512sums = 40513e06144b8aeee30819f7ebdc08c8c7af2a5036df37d64c6159cb84c0fddf589392dcd77e327ebad0741be1085fefaf0811fa5fe1462f1738939843af5a98
+	b2sums = c812b1fd577c30cbbe8e0302e55779ea5eea960e3b530992c663f1b4feeb29de0ac444e413b6bea61a2aee2bd569a27e9e745c80de4b1c19a42d09975fcd3d18
 
 pkgname = pict-rs
