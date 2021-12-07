@@ -1,15 +1,15 @@
 pkgbase = python-pymetaclasses
 	pkgdesc = A collection of MetaClasses for Python
 	pkgver = 1.3.1
-	pkgrel = 1
-	url = https://github.com/Paebbels/pyMetaClasses
+	pkgrel = 2
+	url = https://github.com/pyTooling/pyTooling.MetaClasses
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pydecor
-	source = python-pymetaclasses-1.3.1.tar.gz::https://github.com/Paebbels/pyMetaClasses/archive/v1.3.1.tar.gz
-	sha256sums = 54c1265f13304c2b9fbcff96ba10a05690a96685bb55ea39d0f43b82b837ced4
+	source = python-pymetaclasses-1.3.1.tar.gz::https://github.com/pyTooling/pyTooling.MetaClasses/archive/v1.3.1.tar.gz
+	sha256sums = 0fd8a4056be79fb2ec46fb567c06e809f69ad4bbda6650f83d7b1d734b89b7de
 
 pkgname = python-pymetaclasses
