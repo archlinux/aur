@@ -4,7 +4,7 @@ pkgbase = pandoc-pyplot
 	pkgrel = 1
 	url = https://github.com/LaurentRDC/pandoc-pyplot
 	arch = x86_64
-	license = MIT
+	license = GPL
 	makedepends = ghc
 	depends = ghc-libs
 	depends = pandoc
@@ -19,7 +19,6 @@ pkgbase = pandoc-pyplot
 	depends = python-matplotlib
 	depends = python-pillow
 	source = pandoc-pyplot-2.3.0.1.tar.gz::https://github.com/LaurentRDC/pandoc-pyplot/archive/2.3.0.1.tar.gz
-	sha256sums = 5808f261e1e6f706667f377f7522dbac8a5d6ad11f02f75c5aba641bfe750c59
+	sha256sums = 5cb424df18b4151472c02ccb35360392bf800a1aa5d650dec1fdbab68a93101e
 
 pkgname = pandoc-pyplot
-
