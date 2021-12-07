@@ -9,7 +9,7 @@ url="https://kotatogram.github.io"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
-         'rnnoise' 'pipewire' 'jemalloc' 'libtg_owt')
+         'rnnoise' 'jemalloc' 'libtg_owt')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
             'extra-cmake-modules' 'webkit2gtk')
 optdepends=('webkit2gtk: embedded browser features'
