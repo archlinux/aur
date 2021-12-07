@@ -1,0 +1,16 @@
+pkgbase = python-jupyterlab-latex
+	pkgdesc = JupyterLab extension for running LaTeX
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/jupyterlab/jupyterlab-latex
+	arch = any
+	license = BSD
+	makedepends = unzip
+	makedepends = python-setuptools
+	depends = python
+	depends = jupyterlab
+	depends = jupyter-server
+	source = https://files.pythonhosted.org/packages/py3/j/jupyterlab_latex/jupyterlab_latex-3.1.0-py3-none-any.whl
+	sha256sums = ccfbb85599d0cb72bd07905c8a3ecfce5f777b395ee512338d5c6f32fbe7343b
+
+pkgname = python-jupyterlab-latex
