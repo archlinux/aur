@@ -3,7 +3,7 @@
 pkgname=openboard
 pkgver=1.6.1
 _src_folder="OpenBoard-${pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -18,7 +18,7 @@ source+=(qchar.patch)
 source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
 sha256sums=('cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79'
-            '00688af02006bddeab797f624e5cbae66a5c02f4e14315d87d3f198f74797c17'
+            '64289f9d91cb25fa79fb988f19d43a542d67380fcf27668d0da1ee4ba1e705eb'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
             '0a9d037336dab3dbd99652b71934a94cd1e9801650fe5e72f4dd1de1718dd4c1'
             'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14')
