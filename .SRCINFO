@@ -1,14 +1,14 @@
 pkgbase = zenmap
 	pkgdesc = Graphical Nmap frontend and results viewer
 	pkgver = 7.92
-	pkgrel = 4
+	pkgrel = 5
 	url = https://nmap.org/
 	arch = any
 	license = GPL2
 	depends = nmap
 	depends = pygtk
 	depends = libffi7
-	depends = gksu
+	optdepends = gksu: starting zenmap as root
 	source = https://nmap.org/dist/nmap-7.92.tar.bz2
 	sha256sums = a5479f2f8a6b0b2516767d2f7189c386c1dc858d997167d7ec5cfc798c7571a1
 
