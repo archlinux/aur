@@ -11,7 +11,8 @@ license=('BSD')
 depends=('python-migen' 'python-pyserial' 'python-requests' 'python-pythondata-software-compiler_rt')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-litedram' 'python-liteeth' 'python-liteiclink' 'python-litesdcard' 'yosys'
-              'python-pythondata-cpu-vexriscv' 'python-pythondata-cpu-picorv32' 'python-pythondata-cpu-lm32' 'python-pythondata-cpu-mor1kx')
+              'python-pythondata-cpu-vexriscv' 'python-pythondata-cpu-picorv32' 'python-pythondata-cpu-lm32' 'python-pythondata-cpu-mor1kx'
+              'python-litex-boards' 'python-litepcie')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('144a1ef81afcb0e762853a48d1b8d248ad414d159ae6ea659f7b6a6538c75d3cfb38238aea40572ce2a787fb183af10fe63ca4842e7e5b4761817916b8404344')
 
