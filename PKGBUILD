@@ -1,9 +1,9 @@
 # Maintainer: Jove Yu <yushijun110@126.com>
 # Contribuor: luosoy <249799588@qq.com>
 pkgname=com.qq.weixin.deepin
-pkgver=3.2.1.154
-_pkgver=3.2.1.154deepin13
-pkgrel=15
+_pkgver=3.2.1.154deepin14
+pkgver=${_pkgver//deepin/_}
+pkgrel=1
 pkgdesc="Deepin Wine WeChat"
 arch=('i686' 'x86_64')
 url="http://pc.weixin.qq.com/"
@@ -25,7 +25,7 @@ source=(
     "libldap24.tar.gz"
 )
 md5sums=(
-    '1cc7cfc9f77f60147f476121bd9e7542'
+    'b48cd3c089b7c2bb7b68aba018b306b1'
     '9f42504749b5d9936428a83c28d13aad'
 )
 
