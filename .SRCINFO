@@ -1,0 +1,17 @@
+pkgbase = orthanc-plugin-web-viewer
+	pkgdesc = Web viewer of medical images plugin for Orthanc
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://book.orthanc-server.com/plugins/webviewer.html
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = make
+	depends = orthanc
+	source = https://www.orthanc-server.com/downloads/get.php?path=/plugin-webviewer/OrthancWebViewer-2.7.tar.gz
+	sha512sums = 86b08652a0216e802f2ccc93f2298b42437d3dfcf9d260d7da6920119901a61b4065fe29451a3660d64ec84a8fcd9eb18269d7b41fe1ce365b50892ea485aae2
+
+pkgname = orthanc-plugin-web-viewer
