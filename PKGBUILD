@@ -1,9 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 
-# https://github.com/orhun/pkgbuilds
-
 pkgname=timer-rs
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Simple countdown terminal alarm"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
