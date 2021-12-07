@@ -1,11 +1,11 @@
-From 108511d10f990b72bb9780ee968da41e725e070a Mon Sep 17 00:00:00 2001
+From ad1358e3707e4446df19eaf29580fecd70262742 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Wed, 1 Dec 2021 21:46:44 -0800
-Subject: [PATCH] v5.15.6 s0ix patch 2021-12-01
+Date: Mon, 6 Dec 2021 17:55:46 -0800
+Subject: [PATCH] v5.15.7 s0ix patch 2021-12-06
 
 Squashed commit of the following:
 
-commit 9711b304f4bdb5716bccd9a8149721d95a323eb0
+commit 4dc27334f6763233481e45a507dcf099320d91f4
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -24,7 +24,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 8287166ca29ac9d85efb24eedeb5ea19df23d046
+commit cc94dad3592f5f1d57403bec4d50abdf4209391f
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -37,7 +37,7 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 98f5b572e24241e7486edddd851bac67e28b7879
+commit e3c0e098789b6ded7e7ce8aad93a8456a1d30c33
 Author: Fabrizio Bertocci <fabriziobertocci@gmail.com>
 Date:   Mon Nov 29 23:15:40 2021 -0500
 
@@ -67,13 +67,13 @@ Date:   Mon Nov 29 23:15:40 2021 -0500
     Signed-off-by: Fabrizio Bertocci <fabriziobertocci@gmail.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 09aa49d6916646e9c9e61f9f8273fa5b19d040f8
+commit 1883942788ed4cf652910769bd67d6af42191c98
 Author: Julian Sikorski <belegdol+github@gmail.com>
 Date:   Fri Nov 19 17:52:36 2021 +0100
 
     GFXOFF check patch by Lijo Lazar
 
-commit 83ee85520c4596cebf3cf890d353cfbfaaf77b25
+commit baf4f5783e186f463ce3142f40944f624ffa6861
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Sun Oct 31 20:48:53 2021 -0500
 
@@ -92,23 +92,7 @@ Date:   Sun Oct 31 20:48:53 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit dba797f557711fb8993667fbb7e0b34042db0ff2
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Fri Oct 29 15:40:16 2021 -0500
-
-    ACPI: Add stubs for wakeup handler functions
-
-    The commit ddfd9dcf270c ("ACPI: PM: Add acpi_[un]register_wakeup_handler()")
-    added new functions for drivers to use during the s2idle wakeup path, but
-    didn't add stubs for when CONFIG_ACPI wasn't set.
-
-    Add those stubs in for other drivers to be able to use.
-
-    Fixes: ddfd9dcf270c ("ACPI: PM: Add acpi_[un]register_wakeup_handler()")
-    Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-
-commit 1ddc9a1733e87dd3005ed53337d9d69b23aa1a4f
+commit f1eb90b140359c0094e3d6fc57eb3d974f0ba6a5
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Nov 2 16:32:56 2021 +0100
 
@@ -124,7 +108,7 @@ Date:   Tue Nov 2 16:32:56 2021 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Acked-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit e8c5a00337bfb9b62cdedef1a7d6c450f60a951e
+commit 47b7c5640eac2213969d632fda7120c9a2503c73
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:43 2021 -0500
 
@@ -135,7 +119,7 @@ Date:   Tue Oct 26 12:14:43 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 43033cf10893d27836e236988f33ef953ddf757e
+commit cfb5a086920496ce0ffda59f16a4ef4c60127db9
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:42 2021 -0500
 
@@ -147,7 +131,7 @@ Date:   Tue Oct 26 12:14:42 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 89e93759f2620d03d697d65cac55c309106d100b
+commit 2d8f0bbdda20d1d50a0e401b5dc757e401a78469
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:41 2021 -0500
 
@@ -161,7 +145,7 @@ Date:   Tue Oct 26 12:14:41 2021 -0500
     Fixes: 59348401ebed ("platform/x86: amd-pmc: Add special handling for timer based S0i3 wakeup")
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit cfc12d41d1d1452c42322f22fd9f616717ba7749
+commit 631b629565dd5b1d7a434727908583de19a0a2ba
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:46 2021 -0500
 
@@ -184,7 +168,7 @@ Date:   Wed Oct 20 11:29:46 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 7dcf1c9ae4f2caed03784502577bf539a3e53dc7
+commit 43b31ca239e020560d1449158b88c47bb2d07e6e
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:45 2021 -0500
 
@@ -198,7 +182,7 @@ Date:   Wed Oct 20 11:29:45 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 516d3914ef3426d5d43b629d8d93a42a1c8b785b
+commit 162fcb4a5f5ffa2f0ad320cbdce71f79c0a2aeac
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -217,7 +201,7 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit 6325ca6afbf40e754d8728ee5d1344eace8e3ef1
+commit c7bc8dd8c6fede2bcd078c16dd614a78cfa5008d
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -230,7 +214,7 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 
-commit dae24ef8ce2f6387009e817b551e288c77c89fad
+commit a50b91b8b1ab6e13a76c379f035cfaaf0140bd94
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -242,7 +226,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 6a3093ee140f99fa0f9d1c7fc1d365915e7c6856
+commit f26d7f3a5a0f88020b743c07971d048df63e12d2
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -257,7 +241,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 60d906dfba284dc0fc04a7e292d430719ec07c9e
+commit b6880ca1ad5bff41d2dae2bc889c72972a0e06b8
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -270,7 +254,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit db5921cfa7644f2cb1a5dc00d2411c1d43fa6c85
+commit 5a1244852f5128f20a85f07b28d1cb38cd1ae2b5
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -289,7 +273,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 243e2e4bf81943ce98e425bcb974abaa4c2a990a
+commit d13cdcae51a386995bc19c3d4d4728dadc052148
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -310,8 +294,7 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
  drivers/pinctrl/pinctrl-amd.c             |  29 +-
  drivers/platform/x86/Kconfig              |   2 +-
  drivers/platform/x86/amd-pmc.c            | 326 ++++++++++++++++++++--
- include/linux/acpi.h                      |   9 +
- 7 files changed, 349 insertions(+), 31 deletions(-)
+ 6 files changed, 340 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index f37fba9e5ba0..9d378dc9e928 100644
@@ -980,26 +963,6 @@ index fc95620101e8..2f55439e0f66 100644
  	mutex_destroy(&dev->lock);
  	return 0;
  }
-diff --git a/include/linux/acpi.h b/include/linux/acpi.h
-index 974d497a897d..6224b1e32681 100644
---- a/include/linux/acpi.h
-+++ b/include/linux/acpi.h
-@@ -976,6 +976,15 @@ static inline int acpi_get_local_address(acpi_handle handle, u32 *addr)
- 	return -ENODEV;
- }
- 
-+static inline int acpi_register_wakeup_handler(int wake_irq,
-+	bool (*wakeup)(void *context), void *context)
-+{
-+	return -ENXIO;
-+}
-+
-+static inline void acpi_unregister_wakeup_handler(
-+	bool (*wakeup)(void *context), void *context) { }
-+
- #endif	/* !CONFIG_ACPI */
- 
- #ifdef CONFIG_ACPI_HOTPLUG_IOAPIC
 -- 
 2.34.1
 

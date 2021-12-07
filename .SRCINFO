@@ -43,7 +43,7 @@ pkgbase = linux-xanmod-rog
 	source = Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip.patch
 	source = Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chip.patch
 	source = Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip-MT7921.patch
-	source = 9001-v5.15.6-s0ix-patch-2021-12-01.patch
+	source = 9001-v5.15.7-s0ix-patch-2021-12-06.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8
@@ -73,7 +73,7 @@ pkgbase = linux-xanmod-rog
 	sha256sums = 292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c
 	sha256sums = 7dbfdd120bc155cad1879579cb9dd1185eb5e37078c8c93fef604a275a163812
 	sha256sums = 1444af2e125080934c67b6adb4561fd354a72ce47d3de393b24f53832ee492ac
-	sha256sums = 59334c9a48a5483c34b3566e5dc45d93c6e775b954d8f7d28f0fce01c3384765
+	sha256sums = 5de844ba5f33d487a707370f7953ade03852b9848153acd989bb00e95f4fba89
 
 pkgname = linux-xanmod-rog
 	pkgdesc = The Linux Xanmod kernel and modules with ASUS ROG laptop patches (Zephyrus G14, G15, etc)
