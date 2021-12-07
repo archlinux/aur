@@ -2,27 +2,24 @@
 
 _cranname=operator.tools
 _cranver=1.6.3
-pkgname=r-${_cranname}
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Utilities for Working with R's Operators"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL2')
-depends=('r')
-optdepends=('r-operators>=0.1.8' 'r-magrittr>=1.5' 'r-testthat>=1.0.2')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('16c236522901759bd83488e736e406aa')
+license=(GPL2)
+depends=(r)
+optdepends=(r-operators r-magrittr r-testthat)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('e5b74018fb75bfa02820dec4b822312f1640422f01d9fec1b58d880ffb798dec')
 
-build(){
-    cd "${srcdir}"
-
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
+build() {
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-    cd "${srcdir}"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-    install -dm0755 "$pkgdir/usr/lib/R/library"
-    cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
