@@ -7,6 +7,7 @@ pkgbase = r-dotcall64
 	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = gcc-fortran
 	depends = r>=3.1
 	optdepends = r-microbenchmark
 	optdepends = r-openmpcontroller
@@ -18,4 +19,3 @@ pkgbase = r-dotcall64
 	sha256sums = f10b28fcffb9453b1d8888a72c8fd2112038b5ac33e02a481492c7bd249aa5c6
 
 pkgname = r-dotcall64
-

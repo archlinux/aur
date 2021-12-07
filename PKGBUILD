@@ -10,6 +10,7 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.1')
+makedepends=(gcc-fortran)
 optdepends=(r-microbenchmark r-openmpcontroller r-rcolorbrewer r-roxygen2 r-spam r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('f10b28fcffb9453b1d8888a72c8fd2112038b5ac33e02a481492c7bd249aa5c6')
