@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=2
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver
         github_api::git+https://github.com/Kicer86/github_api.git#commit=61267f15d558819bab7218c353a03d0d449774f9
 )
 noextract=()
-md5sums=('7b6b7404adffdc2f11aee2a7c96de6b1'
+md5sums=('b848257683d47b9e07e6c513452a2344'
          'SKIP'
          'SKIP'
          'SKIP'

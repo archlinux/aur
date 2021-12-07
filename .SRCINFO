@@ -1,6 +1,6 @@
 pkgbase = photobroom
 	pkgdesc = Photos managing tool
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 2
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
@@ -19,12 +19,12 @@ pkgbase = photobroom
 	optdepends = imagemagick
 	provides = photobroom
 	conflicts = photobroom
-	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.5.1
+	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.5.2
 	source = cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=b1e3891453826887411c952315227d5c91e204b6
 	source = kwidgetsaddons::git+https://invent.kde.org/frameworks/kwidgetsaddons.git#commit=a2adad286075e4033bbba14ce0a3798a256622ac
 	source = face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
 	source = github_api::git+https://github.com/Kicer86/github_api.git#commit=61267f15d558819bab7218c353a03d0d449774f9
-	md5sums = 7b6b7404adffdc2f11aee2a7c96de6b1
+	md5sums = b848257683d47b9e07e6c513452a2344
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
