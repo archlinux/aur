@@ -6,13 +6,11 @@ pkgbase = r-commonmark
 	arch = i686
 	arch = x86_64
 	license = BSD2
-	makedepends = gcc
 	depends = r
 	optdepends = r-curl
 	optdepends = r-testthat
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/commonmark_1.7.tar.gz
-	md5sums = 48bf2251862a494d8ee3acde02dce385
+	sha256sums = d14a767a3ea9778d6165f44f980dd257423ca6043926e3cd8f664f7171f89108
 
 pkgname = r-commonmark
-
