@@ -19,30 +19,23 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mattermost/focalboard/releases/download/${pkgver}/focalboard-linux.tar.gz")
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/mattermost/focalboard/releases/download/${pkgver}/focalboard-linux.tar.gz"
+	"focalboard.desktop"
+)
 noextract=()
-sha256sums=('6d6422ccddd55dda40690acd2b70b5b82afef0a3d132c89f0804fb4ab3ffae2d')
+sha256sums=('6d6422ccddd55dda40690acd2b70b5b82afef0a3d132c89f0804fb4ab3ffae2d'
+            '6b35f2f2dbba5181b5b368d49b1ca5a05e07224c9f5e9e0e46079be854b8ed7d')
 validpgpkeys=()
 
 package() {
 	cd focalboard-app
-	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/${pkgname}"
+	mkdir -p "$pkgdir/opt/${pkgname}" "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
 
 	# Copy data in /usr/share
-	cp -r focalboard-app pack config.json "${pkgdir}/usr/share/${pkgname}/"
+	cp -r focalboard-app pack config.json "${pkgdir}/opt/${pkgname}/"
+	install "${srcdir}/focalboard.desktop" "$pkgdir/usr/share/applications/"
 
 	# Create launcher in /usr/bin
-	cat <<EOF > ${pkgdir}/usr/bin/${pkgname}
-#!/bin/sh
-origin_share=/usr/share/${pkgname}
-share=\${HOME}/.local/share/${pkgname}
-[[ -d \${share} ]] || mkdir -p \${share}
-cd \${share}
-[[ -f config.json ]] || cp \${origin_share}/config.json .
-[[ -e pack ]] || ln -s \${origin_share}/pack
-[[ -e focalboard-app ]] || ln -s \${origin_share}/focalboard-app
-./focalboard-app \$@
-EOF
-	chmod +x ${pkgdir}/usr/bin/${pkgname}
-
+	ln -s "/opt/${pkgname}/focalboard-app" "$pkgdir/usr/bin/${pkgname}"
 }

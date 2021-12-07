@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Focalboard
+Comment=A self-hosted alternative to Trello, Notion, and Asana.
+Icon=/opt/focalboard-bin/pack/static/favicon.svg
+X-GNOME-UsesNotifications=true
+Exec=/opt/focalboard-bin/focalboard-app
+Path=/opt/focalboard-bin/
+Actions=
+Categories=Database;Documentation;Office;WordProcessor;
+Keywords=focalboard;board;trello;notion;asana;board;database;
+StartupNotify=true
+StartupWMClass=Focalboard-app=
