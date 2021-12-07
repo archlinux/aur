@@ -1,6 +1,6 @@
 pkgbase = python-pyreadstat
-	pkgdesc = Python package to read sas, spss and stata files into pandas data frames.
-	pkgver = 1.1.3
+	pkgdesc = Reads sas, spss and stata files into Pandas data frames.
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/Roche/pyreadstat
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = python-pyreadstat
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python-pandas
-	source = pyreadstat-1.1.3.tar.gz::https://github.com/Roche/pyreadstat/archive/refs/tags/v1.1.3.tar.gz
-	md5sums = 6bd684f0a26eead9b9446679e42aa037
+	source = python-pyreadstat-1.1.4.tar.gz::https://github.com/Roche/pyreadstat/archive/v1.1.4.tar.gz
+	sha256sums = 04d776d195c1f7a9a9b2d2933699e9969ef9791d616191415d0c02a5877a1d83
 
 pkgname = python-pyreadstat
