@@ -1,0 +1,12 @@
+pkgbase = camunda-modeler-plugin-bpmn-js-token-simulation
+	pkgdesc = Token Simulation for the Camunda Modeler
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/bpmn-io/bpmn-js-token-simulation-plugin
+	arch = any
+	license = MIT
+	depends = camunda-modeler
+	source = https://github.com/bpmn-io/bpmn-js-token-simulation-plugin/archive/v0.13.1.tar.gz
+	sha256sums = 7d5e986f0a3f422b23061006a2cd1c8384a0d84921bbb4a6c561523f6b70a49e
+
+pkgname = camunda-modeler-plugin-bpmn-js-token-simulation
