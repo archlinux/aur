@@ -1,20 +1,27 @@
+# Maintainer: David Marzal <mundolibre at tutanota dot com>
 # Maintainer: (XavierCLL) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ksvnupdater
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="ksvnupdater is a utility oriented KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
+pkgdesc="Utility oriented to KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
+arch=('i686' 'x86_64')
 url="http://www.eloihr.net/ksvnupdater"
 license=('GPL')
-arch=('i686' 'x86_64')
-depends=('kfilemetadata' 'kio' 'knotifications' 'kitemviews' 'kiconthemes' 'karchive' 'qt5-base')
+depends=('kfilemetadata' 'kio' 'knotifications' 'kitemviews' 'kiconthemes' 'karchive' 'qt5-base' 'subversion')
 makedepends=('extra-cmake-modules' 'kdoctools')
-optdepends=('lokalize' 'pology' 'kdiff3' 'gettext' 'openssh' 'which')
-source=(http://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
-md5sums=('b8a821a91bb09dedac9b409f7e217d03')
+optdepends=('git: Download Scripty and Pology'
+            'lokalize: File translations.'
+            'pology: Translations checks. Broken due to dependencies'
+            'kdiff3: Conflict merge'
+            'gettext: msginit. GNU internationalization library'
+            'openssh: ssh-agent and ssh-add. Accesing KDE repos with auth'
+            'jq: Creating documentation')
+source=(https://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
+md5sums=('72d4cd1d03e6373c577147b3d48ac996')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -23,6 +30,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver/build
-  make DESTDIR=${pkgdir} install
+  cd "$pkgname-$pkgver/build"
+  make DESTDIR="$pkgdir/" install
 }
+ 

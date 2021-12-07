@@ -1,6 +1,6 @@
 pkgbase = ksvnupdater
-	pkgdesc = ksvnupdater is a utility oriented KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more.
-	pkgver = 2.1.3
+	pkgdesc = Utility oriented to KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more.
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://www.eloihr.net/ksvnupdater
 	arch = i686
@@ -15,14 +15,15 @@ pkgbase = ksvnupdater
 	depends = kiconthemes
 	depends = karchive
 	depends = qt5-base
-	optdepends = lokalize
-	optdepends = pology
-	optdepends = kdiff3
-	optdepends = gettext
-	optdepends = openssh
-	optdepends = which
-	source = http://www.eloihr.net/ksvnupdater/files/ksvnupdater-2.1.3.tar.bz2
-	md5sums = b8a821a91bb09dedac9b409f7e217d03
+	depends = subversion
+	optdepends = git: Download Scripty and Pology
+	optdepends = lokalize: File translations.
+	optdepends = pology: Translations checks. Broken due to dependencies
+	optdepends = kdiff3: Conflict merge
+	optdepends = gettext: msginit. GNU internationalization library
+	optdepends = openssh: ssh-agent and ssh-add. Accesing KDE repos with auth
+	optdepends = jq: Creating documentation
+	source = https://www.eloihr.net/ksvnupdater/files/ksvnupdater-2.2.0.tar.bz2
+	md5sums = 72d4cd1d03e6373c577147b3d48ac996
 
 pkgname = ksvnupdater
-
