@@ -1,14 +1,13 @@
 pkgbase = charm-tool-bin
 	pkgdesc = The Charm Cloud Tool
-	pkgver = 0.8.5
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/charmbracelet/charm
 	arch = x86_64
 	license = MIT
 	provides = charm-tool
 	conflicts = charm-tool
-	source_x86_64 = https://github.com/charmbracelet/charm/releases/download/v0.8.5/charm_0.8.5_linux_x86_64.tar.gz
-	sha256sums_x86_64 = c071ec07b23033fe4574392069d25099fbbafdbd2243194f3d1814fc5694d015
+	source_x86_64 = https://github.com/charmbracelet/charm/releases/download/v0.9.0/charm_0.9.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 668f6cbeb38e550be4e87dd7b8a29e5cda2e6473a1e801fb44f4b7060a587622
 
 pkgname = charm-tool-bin
-
