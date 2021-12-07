@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -92,6 +92,9 @@ prepare() {
 
   ## UI: Link python when obs-scripting python is enabled (https://github.com/obsproject/obs-studio/commit/1017cd5430602f695713f191ef8f5fa9940baee6)
   git cherry-pick --no-commit 1017cd5430602f695713f191ef8f5fa9940baee6
+
+  ## UI: Update python linkage for older compilers (https://github.com/obsproject/obs-studio/commit/293b7951ed5a22529ffb214029de9233190a6f2f)
+  git cherry-pick --no-commit 293b7951ed5a22529ffb214029de9233190a6f2f
 
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
