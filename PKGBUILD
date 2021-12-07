@@ -1,9 +1,9 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-invites-adhoc
-pkgver=2021.01.28
+pkgver=2021.11.09
 pkgrel=1
-_commit="d1230d32d709"
+_commit="ea93b204104e"
 pkgdesc="Enable ad-hoc command for XMPP clients to create invitations"
 arch=('any')
 url="https://modules.prosody.im/mod_invites_adhoc.html"

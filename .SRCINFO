@@ -1,14 +1,13 @@
 pkgbase = prosody-mod-invites-adhoc
 	pkgdesc = Enable ad-hoc command for XMPP clients to create invitations
-	pkgver = 2021.01.28
+	pkgver = 2021.11.09
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_invites_adhoc.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
 	depends = prosody
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=d1230d32d709
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=ea93b204104e
 	sha1sums = SKIP
 
 pkgname = prosody-mod-invites-adhoc
-
