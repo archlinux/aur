@@ -3,9 +3,9 @@
 pkgname=keystore-explorer-bin
 _reponame=keystore-explorer
 _pkgname=kse
-pkgver=5.4.4
+pkgver=5.5.0
 _pkgver=${pkgver//./}
-pkgrel=3
+pkgrel=1
 pkgdesc="a free GUI replacement for the Java command-line utilities keytool, jarsigner and jadtool"
 arch=('i686' 'x86_64')
 url="http://www.keystore-explorer.org/"
@@ -15,7 +15,7 @@ conflicts=('keystore-explorer')
 install=${pkgname}.install
 source=("https://github.com/kaikramer/${_reponame}/releases/download/v${pkgver}/${_pkgname}-${_pkgver}.zip"
         "${_reponame}.desktop")
-md5sums=('9418c17f7049365c7c089b95091296a2'
+md5sums=('e310c634afe1748c87617d4fac44a1a0'
          'dfaa247ab726fe2e44368101399b508d')
 
 package() {
@@ -30,7 +30,7 @@ package() {
   install -D -m644 *.jar "${pkgdir}/usr/lib/${pkgname}"
   install -D -m755 kse.sh "${pkgdir}/usr/lib/${pkgname}"
   install -D -m644 readme.txt "${pkgdir}/usr/share/doc/${pkgname}"
-  install -D -m644 licenses/license-*.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D -m644 licenses/*.txt "${pkgdir}/usr/share/licenses/${pkgname}"
   install -D -m644 lib/*.jar "${pkgdir}/usr/lib/${pkgname}/lib"
 
   ln -sf "/usr/lib/${pkgname}/kse.sh" "${pkgdir}/usr/bin/kse"
