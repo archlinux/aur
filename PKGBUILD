@@ -1,6 +1,6 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=sasview
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc=""
 arch=(x86_64)
@@ -30,12 +30,13 @@ depends=( python-setuptools
 	  python-qt5reactor
 	  python-service-identity
           python-pytest
+	  sasmodels
 )
 checkdepends=(python-unittest-xml-reporting)
 
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SasView/sasview/archive/v${pkgver}.tar.gz")
-md5sums=('fe4a96c271950171e5cf9a0b921e06ea')
+md5sums=('bd43ab43e5fc6a4a1ea4a8f44277147a')
 
 build() {
 	cd "$pkgname-$pkgver"
