@@ -5,7 +5,7 @@ _pkgver=${pkgver/\.0_/_}
 _pkgver=${_pkgver/_/-}
 pkgrel=1
 pkgdesc="Private Internet Access client"
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url="https://privateinternetaccess.com/"
 license=('custom')
 depends=(libxkbcommon-x11 libnl)
@@ -19,6 +19,9 @@ options=(!strip)
 sha256sums=('2d7b983beafb272b9d229b3838c24eb23a3d8e6edd84e257d406af057a1145e8')
 
 prepare() {
+	if [ $arch == "aarch64" ] ;then
+		_pkgver="arm64-${_pkgver}"
+	fi
 	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
 }
 

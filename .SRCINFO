@@ -5,6 +5,7 @@ pkgrel = 1
 url = https://privateinternetaccess.com/
 install = piavpn-bin.install
 arch = x86_64
+arch = aarch64
 license = custom
 makedepends = libcap
 depends = libxkbcommon-x11
