@@ -1,12 +1,12 @@
 pkgbase = frum
 	pkgdesc = A little bit fast and modern Ruby version manager written in Rust
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/TaKO8Ki/frum
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = frum-0.1.1.tar.gz::https://github.com/TaKO8Ki/frum/archive/v0.1.1.tar.gz
-	sha256sums = b1227899d7b49c478cc56eba6c0e36325dca34e49db096c1a6fddceec5b0b9b9
+	source = frum-0.1.2.tar.gz::https://github.com/TaKO8Ki/frum/archive/v0.1.2.tar.gz
+	sha256sums = 0a67d12976b50f39111c92fa0d0e6bf0ae6612a0325c31724ea3a6b831882b5d
 
 pkgname = frum
