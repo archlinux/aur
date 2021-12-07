@@ -5,15 +5,15 @@
 
 # Maintainer: duapple <2832893880@qq.com>
 pkgname=genmake
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="generate C/C++/Go Makefile template"
 arch=(x86_64)
-url="https://gitee.com/duapple/genmake/attach_files/904565/download/genmake"
+url="https://gitee.com/duapple/genmake/attach_files/904692/download/genmake"
 license=('AGPL-3.0')
 depends=()
-makedepends=("git" "wget")
+makedepends=("git")
 checkdepends=()
 optdepends=()
 source=("${pkgname}::${url}"
