@@ -1,7 +1,7 @@
 pkgbase = v2ray-geoip-lite
 	pkgdesc = GeoIP List for V2Ray (only-cn-private version)
 	pkgver = 202112061314
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v2fly/geoip
 	arch = any
 	license = CCPL:by-sa
