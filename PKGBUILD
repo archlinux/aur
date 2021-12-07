@@ -2,14 +2,14 @@
 
 pkgname=iridium-rpm
 pkgver=95.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
 license=('BSD')
 provides=('iridium')
 conflicts=('iridium' 'chromium')
-depends=('ffmpeg' 'pipewire' 're2')
+depends=('ffmpeg' 'pipewire' 're2' 'snappy' 'minizip')
 options=('!emptydirs' '!strip')
 
 source=('https://downloads.iridiumbrowser.de/openSUSE_Leap_15.3/x86_64/iridium-browser-2021.10.95.1-lp153.1.1.x86_64.rpm')
