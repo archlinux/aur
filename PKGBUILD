@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Levy <blevy@protonmail.com>
 
 pkgname=cmatrix-git
-pkgver=1.2.r45.g70be5c3
+pkgver=1.2.r110.g3112b12
 pkgrel=1
 pkgdesc="A curses-based scrolling 'Matrix'-like screen"
 arch=('x86_64')
