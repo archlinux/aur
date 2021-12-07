@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
 	pkgver = 2.4.11
-	pkgrel = 25
+	pkgrel = 26
 	epoch = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
