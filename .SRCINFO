@@ -1,0 +1,13 @@
+pkgbase = nzyme
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://assets.nzyme.org/releases/
+	arch = x86_64
+	depends = jre11-openjdk-headless
+	depends = libpcap
+	depends = wireless_tools
+	depends = postgresql
+	source = https://assets.nzyme.org/releases//nzyme-1.2.1.deb
+	sha256sums = b01c938a05767242606f0d855d6835b2216b1ad6ae8760c695c924797617d6a1
+
+pkgname = nzyme
