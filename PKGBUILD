@@ -5,7 +5,7 @@
 
 # Maintainer: duapple <2832893880@qq.com>
 pkgname=genmake
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 epoch=
 pkgdesc="generate C/C++/Go Makefile template"
@@ -16,15 +16,16 @@ depends=()
 makedepends=("git" "wget")
 checkdepends=()
 optdepends=()
-source=("${pkgname}::${url}")
+source=("${pkgname}::${url}"
+        "genmake_conf.json::https://gitee.com/duapple/genmake/attach_files/904564/download/genmake_conf.json")
 noextract=("${source[@]##*/}")
-md5sums=("SKIP")
+md5sums=("SKIP"
+        "SKIP")
 
 prepare() {
     rm -rf ${srcdir}/template
 	git clone https://gitee.com/duapple/makefile ${srcdir}/template
-    rm -r ${srcdir}/template/.git
-    wget -P ${srcdir}/ https://gitee.com/duapple/genmake/attach_files/904564/download/genmake_conf.json
+    rm -rf ${srcdir}/template/.git
 } 
 
 package() {
