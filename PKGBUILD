@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
-pkgver=3.16.1
+pkgver=3.16.2
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -34,7 +34,7 @@ optdepends=('trilinos: support for trilinos'
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
-sha256sums=('909cf7bce7b6a0ddb2580a1ac9502aa01631ec4105c716594c1804f0ee1ea06a'
+sha256sums=('7ab257ae150d4837ac8d3872a1d206997962578785ec2427639ceac46d131bbc'
             'c6c97507b9970529b0f22fe61eb290101c2ab0aad2d8bf42f44eb8ba90bd42d3')
 
 _install_dir=/opt/petsc/${_config}
