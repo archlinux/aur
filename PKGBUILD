@@ -5,7 +5,7 @@
 _pkgbase=msbuild
 pkgbase=msbuild-git
 pkgname=('msbuild-git' 'msbuild-sdkresolver-git')
-pkgver=16.8.0.r4172.gb2c271b4
+pkgver=16.10.1.r5004.g63458bd6c
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/mono/msbuild'
