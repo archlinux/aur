@@ -2,8 +2,8 @@
 # Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=websockify
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="WebSockets support for any application/server"
 license=('LGPL3')
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(python-setuptools)
 depends=(python)
 optdepends=('python-numpy: for better HyBi protocol performance')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/novnc/$pkgname/archive/v${pkgver}.tar.gz")
-sha512sums=('d2251f653a40dc6dca0e5541845565d968c60be96a20a9b70b0305c4b7578f7fe205d4b98a94bb77d7c9383a396833af90fe92a6ade7e1a6f2d9bf8513d372c8')
+sha512sums=('262071f4858e5e3b6471c6f3731d8715c5c13fcc5f43738a330323958a8f0cbe7797847bdc676f1c6c34055c6f8afb949d005a5607d6b220b893910ff973ddc5')
 
 prepare(){
   cd $pkgname-$pkgver
