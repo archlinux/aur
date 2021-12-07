@@ -2,7 +2,7 @@
 
 pkgname=pandoc-pyplot
 pkgver=2.3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Pandoc filter to generate Matplotlib figures directly in documents'
 url='https://github.com/LaurentRDC/pandoc-pyplot'
 license=('GPL')

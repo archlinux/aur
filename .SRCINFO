@@ -1,7 +1,7 @@
 pkgbase = pandoc-pyplot
 	pkgdesc = A Pandoc filter to generate Matplotlib figures directly in documents
 	pkgver = 2.3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LaurentRDC/pandoc-pyplot
 	arch = x86_64
 	license = GPL
