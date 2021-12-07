@@ -9,7 +9,7 @@
 
 pkgbase=postgresql-9.6
 pkgname=(${pkgbase} ${pkgbase/-/-libs-} ${pkgbase/-/-docs-})
-pkgver=9.6.23
+pkgver=9.6.24
 pkgrel=1
 pkgdesc="Sophisticated object-relational DBMS"
 arch=("i686" "x86_64")
@@ -28,7 +28,7 @@ source=(
   "${pkgbase%-*}.tmpfiles"
 )
 sha256sums=(
-  "679a7004871d3af4fd70144a6f885db00a8337bd384504527e7b579e81f35926"
+  "52947ecc119846eace5164399d173576c0d4a47ec116ae58a46a8fd0c576c7c3"
   "77624f5efda79bd12d5ab59831883aad8e94395bc3ab933268b215d0b7b0df5f"
   "23ada3488c0d219f5957130b8231ab495b02467c30773082a9851ddc855cd705"
   "57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5"
