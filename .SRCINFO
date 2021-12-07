@@ -1,0 +1,14 @@
+pkgbase = ros-noetic-serial
+	pkgdesc = ROS - Serial is a cross-platform, simple to use library for using serial ports on computers.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/wjwwood/serial
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-serial-1.2.1.tar.gz::https://github.com/wjwwood/serial-release/archive/release/melodic/serial/1.2.1.tar.gz
+	sha256sums = 3591de6b9035a647e0c3050109fb7d342681742e617bbf0e8f3d828e21b84c0f
+
+pkgname = ros-noetic-serial
