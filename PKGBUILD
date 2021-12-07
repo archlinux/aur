@@ -2,19 +2,19 @@
 
 pkgname=python-pip-audit-git
 _gitpkgname=pip-audit
-pkgver=r98.1c69d2d
+pkgver=r136.a4620f7
 pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/trailofbits/pip-audit'
 license=('Apache')
 depends=(
-  # Upstream requires pip-api >= 0.0.23 but Arch’s Community
+  # Upstream requires pip-api >= 0.0.25 but Arch’s Community
   # repository is on 0.0.18, which causes an error message that
   # says “failed to list installed distributions.”
-  # Once community/python-pip-api catches up to version 0.0.23,
-  # remove the `>=0.0.23` part from the following line.
-  'python-pip-api>=0.0.23'
+  # Once community/python-pip-api catches up to version 0.0.25,
+  # remove the `>=0.0.25` part from the following line.
+  'python-pip-api>=0.0.25'
   'python-packaging'
   'python-dataclasses'
   'python-progress'
