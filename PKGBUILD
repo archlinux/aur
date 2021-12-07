@@ -2,7 +2,7 @@
 
 pkgname=mangadesk
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal client for MangaDex'
 arch=('x86_64')
 url="https://github.com/darylhjd/mangadesk"
@@ -12,7 +12,6 @@ depends=('glibc')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('dbb7874d960266f2e8e9a19e88d8df5db141cb87dfab6d3a98eb1d231b778826415e40e23a3f383e1de2baa4b74226bd472c191a14dc8c7c3360f5ae7142b9a2')
-validpgpkeys=('SKIP')
 
 prepare(){
   cd "$pkgname-$pkgver"
