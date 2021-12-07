@@ -1,0 +1,5 @@
+## 2021-12-07 20:32
++ Fixed a (rather stupid) typo in /rars.sh
++ Added Icon
++ Fixed makedepends and depends for java>=8
++ Thank you yjun <3

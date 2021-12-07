@@ -6,7 +6,8 @@ pkgbase = rars-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = java-environment
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
 	provides = rars
 	conflicts = rars
 	source = git+https://github.com/TheThirdOne/rars.git
