@@ -305,15 +305,7 @@
  			      struct inode *inode, int type, void *buffer,
  			      size_t size)
  {
-@@ -631,20 +631,20 @@
- 		return -EOPNOTSUPP;
- 	}
- 
--	acl = ntfs_get_acl(inode, type, false);
-+	acl = ntfs_get_acl(inode, type);
- 	if (IS_ERR(acl))
- 		return PTR_ERR(acl);
- 
+@@ -638,7 +638,7 @@
  	if (!acl)
  		return -ENODATA;
  

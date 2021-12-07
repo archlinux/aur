@@ -25,3 +25,12 @@
  	/* TODO: init_user_ns? */
  	return ntfs_get_acl_ex(&init_user_ns, inode, type, 0);
  }
+@@ -634,7 +634,7 @@
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	acl = ntfs_get_acl(inode, type, false);
++	acl = ntfs_get_acl(inode, type);
+ 	if (IS_ERR(acl))
+ 		return PTR_ERR(acl);
+ 
