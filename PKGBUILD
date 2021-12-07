@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shinobi-git"
-pkgver=r2038.04a7bae
-pkgrel=2
+pkgver=r2106.a2faa40
+pkgrel=1
 pkgdesc="The Open Source CCTV and NVR Solution"
 url="https://shinobi.video/"
 license=("custom") # not free for commercial use
@@ -18,14 +18,14 @@ source=("git+https://gitlab.com/Shinobi-Systems/Shinobi.git"
         "shinobi.tmpfiles"
         "conf.json"
         "super.json")
-sha256sums=("SKIP"
-            "59b51fe6cb3dc5e7e01401b20a1a7e51f649a7fd2292ff1d2d88df2cbdff9d5b"
-            "9794abc97379e84fc688977e6d675d607c1136dda8a428e6c5aa8a9cfac8029c"
-            "60cb5660061fccae12a8ffaf4b1ee2960ab4dc8106b4b95419274a359cd9cd22"
-            "e7c849bfcf8619a093ec75467cf5e44b34cd3621fa0d639bfacf4c88e0bad258"
-            "a0213eb276dfd468ed835cccceece75da92141716afa4c2426e20a06f64b5625"
-            "45c64bdaf8e7c99f14a8467fc3c996fefdaab8c100c9f28f03054c248f62a7d3"
-            "b6f2093025736770ed18141eee36b2cd2507142310bb258bf6365c4740c9aae6")
+sha256sums=('SKIP'
+            'da346d9858dafb1a42dd43153d26763de05bc7cdabb5563b979ca62d2cc51ce3'
+            'adacf7a3ec970e6d5c5d8c339f56bdce3720b952ab7278f31d70a294fd0b5bdd'
+            '676111c7502ed43671ac5a4451ee0f89913de1c4b4f1e2120cd5c4b89e842757'
+            'e7c849bfcf8619a093ec75467cf5e44b34cd3621fa0d639bfacf4c88e0bad258'
+            'a0213eb276dfd468ed835cccceece75da92141716afa4c2426e20a06f64b5625'
+            '45c64bdaf8e7c99f14a8467fc3c996fefdaab8c100c9f28f03054c248f62a7d3'
+            'b6f2093025736770ed18141eee36b2cd2507142310bb258bf6365c4740c9aae6')
 backup=("etc/shinobi/conf.json" "etc/shinobi/super.json")
 install="shinobi.install"
 options=("!strip")
