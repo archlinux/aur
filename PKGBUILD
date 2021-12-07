@@ -2,11 +2,11 @@
 
 pkgname=orthanc-plugin-dicomweb
 pkgver=1.7
-pkgrel=1
-pkgdesc='Web viewer of medical images plugin for Orthanc'
+pkgrel=2
+pkgdesc='Extends Orthanc with support of the DICOMweb protocols'
 arch=('x86_64' 'i686')
 url='https://book.orthanc-server.com/plugins/dicomweb.html'
-license=('GPL3')
+license=('AGPL3')
 
 depends=(
     'orthanc'
