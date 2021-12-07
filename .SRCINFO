@@ -1,6 +1,6 @@
-pkgbase = mfgtools-git
+pkgbase = mfgtools-git-noproxy
 	pkgdesc = uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.
-	pkgver = 1.4.165.r8.g87a99ff
+	pkgver = 1.4.174.r2.g64ca58f
 	pkgrel = 1
 	url = https://github.com/NXPmicro/mfgtools
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = mfgtools-git
 	depends = openssl
 	provides = uuu
 	provides = mfgtool
-	conflicts = mfgtools
+	conflicts = mfgtools-git-noproxy
 	options = !strip
-	source = mfgtools::git+https://ghproxy.com/https://github.com/NXPmicro/mfgtools.git
+	source = mfgtools-git-noproxy::git+https://github.com/NXPmicro/mfgtools.git
 	sha256sums = SKIP
 
-pkgname = mfgtools-git
+pkgname = mfgtools-git-noproxy
