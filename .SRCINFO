@@ -5,12 +5,11 @@ pkgbase = r-formula.tools
 	url = https://cran.r-project.org/package=formula.tools
 	arch = any
 	license = GPL2
-	depends = r
+	depends = r>=3.0.0
 	depends = r-operator.tools>=1.4.0
 	optdepends = r-magrittr
 	optdepends = r-testthat
-	source = http://cran.r-project.org/src/contrib/formula.tools_1.7.1.tar.gz
-	md5sums = ab6ac9a593b99ef94148b2c908abc07d
+	source = https://cran.r-project.org/src/contrib/formula.tools_1.7.1.tar.gz
+	sha256sums = 4fe0e72d9d96f2398e86cbd8536d0c84de38e5583d4ff7dcd73f415ddd8ca395
 
 pkgname = r-formula.tools
-
