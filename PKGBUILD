@@ -4,7 +4,7 @@
 pkgname=nbfc-linux-git
 _pkgname=nbfc-linux
 pkgver=0.1.6.r37.g3360e35
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight C port of NoteBook FanControl (no Mono required)"
 arch=('i686' 'x86_64')
 url="https://github.com/nbfc-linux/nbfc-linux"
@@ -25,7 +25,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-  make
+  make PREFIX=/usr confdir=/etc DESTDIR="${pkgdir}"
 }
 
 package() {
