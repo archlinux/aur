@@ -6,6 +6,7 @@ pkgbase = cmatrix-git
 	arch = x86_64
 	license = GPL3
 	makedepends = fontconfig
+	makedepends = git
 	depends = ncurses
 	optdepends = fontconfig: custom font
 	provides = cmatrix
