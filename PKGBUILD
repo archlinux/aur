@@ -16,10 +16,10 @@ arch=(x86_64 x86_64_v3 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse
-         libvpx libjpeg zlib icu libevent pipewire)
+         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
+         libvpx libwebp libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust xorg-server-xwayland xorg-server-xvfb
+             rust xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld dump_syms
              wasi-sdk-git)
@@ -71,8 +71,12 @@ ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+export MOZ_PGO=1
 export CC='clang'
 export CXX='clang++'
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 
 # wasi sdk
 ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
@@ -97,6 +101,7 @@ export STRIP_FLAGS="--strip-debug --strip-unneeded"
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
+ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
 ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
@@ -249,49 +254,49 @@ build() {
   # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # Do 3-tier PGO
-  echo "Building instrumented browser..."
+#  echo "Building instrumented browser..."
 
 if [[ $CARCH == 'aarch64' ]]; then
 
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
+#ac_add_options --enable-profile-generate
 END
 
 else
 
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
+#ac_add_options --enable-profile-generate=cross
 END
 
 fi
 
-  ./mach build
+#  ./mach build
 
-  echo "Profiling instrumented browser..."
-  ./mach package
-  LLVM_PROFDATA=llvm-profdata \
-    JARLOG_FILE="$PWD/jarlog" \
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-    ./mach python build/pgo/profileserver.py
+#  echo "Profiling instrumented browser..."
+#  ./mach package
+#  LLVM_PROFDATA=llvm-profdata \
+#    JARLOG_FILE="$PWD/jarlog" \
+#    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+#    ./mach python build/pgo/profileserver.py
 
-  stat -c "Profile data found (%s bytes)" merged.profdata
-  test -s merged.profdata
+#  stat -c "Profile data found (%s bytes)" merged.profdata
+#  test -s merged.profdata
 
-  stat -c "Jar log found (%s bytes)" jarlog
-  test -s jarlog
+#  stat -c "Jar log found (%s bytes)" jarlog
+#  test -s jarlog
 
-  echo "Removing instrumented browser..."
-  ./mach clobber
+#  echo "Removing instrumented browser..."
+#  ./mach clobber
 
-  echo "Building optimized browser..."
+#  echo "Building optimized browser..."
 
 if [[ $CARCH == 'aarch64' ]]; then
 
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+#ac_add_options --enable-profile-use
+#ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+#ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
 END
 
@@ -299,9 +304,9 @@ else
 
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+#ac_add_options --enable-profile-use=cross
+#ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+#ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
