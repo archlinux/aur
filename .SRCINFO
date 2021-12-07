@@ -1,7 +1,7 @@
 pkgbase = oda-file-converter
 	pkgdesc = Converts files between the .dwg and .dxf file formats
 	pkgver = 22.10.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesign.com/guestfiles/oda_file_converter
 	arch = x86_64
 	license = custom
