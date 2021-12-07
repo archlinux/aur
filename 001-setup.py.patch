@@ -1,0 +1,8 @@
+1d0
+< import os
+3,4c2,3
+< import setuptools
+< from distutils.core import setup
+---
+> from setuptools import setup, find_packages
+> # from distutils.core import setup
