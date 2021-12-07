@@ -10,6 +10,7 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.0' r-spam r-maps r-viridis)
+makedepends=(gcc-fortran)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('c652838b1ae7eb368831522824bfbc1d1db7b9d1db5e9bb52b194098549944c3')
 
