@@ -7,10 +7,10 @@
 # Contributor: Magicking
 
 pkgname=libpurple-minimal
-pkgver=2.14.1
+pkgver=2.14.8
 pkgrel=1
 pkgdesc="Minimal build of the Pidgin IM library without gstreamer/perl/X11/etc for bitlbee and such."
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://developer.pidgin.im/wiki/WhatIsLibpurple"
 license=(GPL)
 options=(!libtool)
@@ -18,7 +18,7 @@ depends=(glib2 libsasl libxml2 libidn nss ca-certificates)
 conflicts=(pidgin libpurple)
 provides=("libpurple=${pkgver}")
 source=("http://downloads.sourceforge.net/pidgin/pidgin-${pkgver}.tar.gz")
-sha256sums=(21f0b20fee1421cf25bdf5c592b8a92eed9ca48c5c1e85b1fba90d965eff8db0)
+sha256sums=(262c2dd58dd9f5f4d38b6a6b578ba9c81dbbdcfcdd5afdddc7c3dbf598e367de)
 
 build(){
 	cd "$srcdir/pidgin-${pkgver}"
