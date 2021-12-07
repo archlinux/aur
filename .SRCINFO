@@ -1,12 +1,12 @@
 pkgbase = python-pip-audit
 	pkgdesc = A tool for scanning Python environments for known vulnerabilities
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trailofbits/pip-audit
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	depends = python-pip-api>=0.0.23
+	depends = python-pip-api>=0.0.25
 	depends = python-packaging
 	depends = python-dataclasses
 	depends = python-progress
