@@ -1,6 +1,6 @@
 pkgbase = python-tablib
 	pkgdesc = Format-agnostic tabular data library (XLS, JSON, YAML, CSV)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://python-tablib.org
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-tablib
 	checkdepends = python-xlwt
 	checkdepends = python-openpyxl
 	checkdepends = python-pyaml
+	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-tabulate: cli interface
@@ -24,8 +25,7 @@ pkgbase = python-tablib
 	optdepends = python-xlwt: for XLS support (create spreadsheets)
 	optdepends = python-openpyxl: for XLSX support
 	optdepends = python-pyaml: for YAML support
-	source = https://files.pythonhosted.org/packages/source/t/tablib/tablib-3.0.0.tar.gz
-	sha256sums = f83cac08454f225a34a305daa20e2110d5e6335135d505f93bc66583a5f9c10d
+	source = https://files.pythonhosted.org/packages/source/t/tablib/tablib-3.1.0.tar.gz
+	sha256sums = d64c9f6712918a3d90ec5d71b44b8bab1083e3609e4844ad2be80eb633e097ed
 
 pkgname = python-tablib
-
