@@ -7,6 +7,7 @@ pkgbase = r-spam
 	arch = x86_64
 	license = LGPL2
 	license = BSD3
+	makedepends = gcc-fortran
 	depends = r>=3.1
 	depends = r-dotcall64
 	optdepends = r-spam64
