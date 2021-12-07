@@ -1,17 +1,17 @@
 pkgbase = wiredtiger
-	pkgdesc = High performance, scalable, production quality, NoSQL, Open Source extensible platform for data management
-	pkgver = 3.1.1.20190808
+	pkgdesc = High performance NoSQL platform
+	pkgver = 10.0.0
 	pkgrel = 1
-	url = http://source.wiredtiger.com/
+	url = https://source.wiredtiger.com
 	arch = x86_64
 	license = GPL
-	makedepends = aspell-en
 	depends = snappy
 	depends = lz4
 	depends = zlib
+	depends = zstd
 	depends = gperftools
-	source = wiredtiger-48bf8dae7cd96286d176f14feebb7250dcfe1430.tar.gz::https://github.com/wiredtiger/wiredtiger/archive/48bf8dae7cd96286d176f14feebb7250dcfe1430.tar.gz
-	sha512sums = 6bd1459b62b6856b7d09265d07694661dd826541223913f9491de8838a354b0dcde251d037d5387824f4fb9a57460fa9942a8376eec72bba0650abcca903ebb3
+	source = wiredtiger-10.0.0.tar.gz::https://github.com/wiredtiger/wiredtiger/archive/10.0.0.tar.gz
+	sha512sums = 6e2d0fa1e20467ce6d39d4ac097b0bad9954e10f6ff72dc35b02871f9ce5492a889899560065dfdf8d60f966f1d3cf0b3b8490ab017a4199bdcab9d190e77bb0
+	b2sums = 2b9b85bd7711c114a9b6e3c8cd0db3ce8ba6d08efd3b7b8e39ceff8cd251147c9d9a13942353ec885b7542f732d25946befd814fc046225bfde6ae6d31097c10
 
 pkgname = wiredtiger
-
