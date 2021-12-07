@@ -1,13 +1,17 @@
 pkgbase = gg
-	pkgdesc = Shuts down the system in anger.
-	pkgver = 0.2.0
+	pkgdesc = A command-line tool for one-click proxy in your research and development without installing v2ray or anything else (only for linux).
+	pkgver = 0.1.6
 	pkgrel = 1
-	url = https://github.com/qguv/gg
-	arch = any
-	license = Apache
-	depends = bash
-	source = https://github.com/qguv/gg/archive/v0.2.0.tar.gz
-	sha256sums = 5ab51b7eeea5f1830cc95e24817df111cc10c6fa5e764ff0a4fce8c0bec0eb25
+	url = https://github.com/mzz2017/gg
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	license = AGPL
+	makedepends = go
+	depends = glibc
+	provides = gg
+	source = gg-0.1.6.tar.gz::https://github.com/mzz2017/gg/archive/v0.1.6.tar.gz
+	sha256sums = df0864f6b29f0b5eb34435b2e5c9509002795645138601667cddbdedb6f920d4
 
 pkgname = gg
-

@@ -1,19 +1,40 @@
-# Maintainer: Quint Guvernator <quint@guvernator.net>
+# Maintainer: cubercsl <2014cais01 at gmail dot com>
+# Contributor:  mzz2017 < mzz at tuta dot io>
 
 pkgname=gg
-pkgver=0.2.0
+pkgver=0.1.6
 pkgrel=1
+provides=('gg')
+pkgdesc='A command-line tool for one-click proxy in your research and development without installing v2ray or anything else (only for linux). '
+arch=('x86_64' 'arm' 'armv7h' 'armv6h')
+url='https://github.com/mzz2017/gg'
+license=('AGPL')
+depends=('glibc')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('df0864f6b29f0b5eb34435b2e5c9509002795645138601667cddbdedb6f920d4')
 
-pkgdesc='Shuts down the system in anger.'
-url='https://github.com/qguv/gg'
-arch=('any')
-license=('Apache')
+prepare(){
+    cd "$srcdir/$pkgname-$pkgver"
+    mkdir -p build/
+}
 
-depends=('bash')
-source=("https://github.com/qguv/gg/archive/v$pkgver.tar.gz")
-sha256sums=('5ab51b7eeea5f1830cc95e24817df111cc10c6fa5e764ff0a4fce8c0bec0eb25')
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o build ./...
+}
 
 package() {
-	cd gg-"$pkgver"
-	install -Dm755 gg "$pkgdir"/usr/bin/gg
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+}
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    go test ./...
 }
