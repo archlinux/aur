@@ -1,14 +1,14 @@
 pkgbase = do-agent
 	pkgdesc = DigitalOcean Agent for Enhanced Droplet Graphs
-	pkgver = 3.11.0
+	pkgver = 3.12.0
 	pkgrel = 1
 	url = https://github.com/digitalocean/do-agent
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = https://github.com/digitalocean/do-agent/archive/3.11.0.tar.gz
+	source = https://github.com/digitalocean/do-agent/archive/3.12.0.tar.gz
 	source = do-agent.service
-	sha512sums = a4cee2d8dba41aa120899a28303d6199ee197c4c50501eb41b4e5b2b7293170ddb38b2949bfc472a05ac42641307c9d0ecc541f8217d61e3d9814294e34ccdcf
+	sha512sums = faacaf918213df5436b1fc13c4af667efbeb8acc674d70f3b3cb51b520ad386dd4ce55056e4ea2bfbf91992ba41383341d5e95ff9a07d6f9d46258b4c865b1cd
 	sha512sums = 3758a5d63c12db885d54829f67ce62a00ce0155c0d292969fcbb7d9177666fc499d1d5c37c05424fd6684ee793d2c93ddd442948805b313f23af12b97bcd695b
 
 pkgname = do-agent
