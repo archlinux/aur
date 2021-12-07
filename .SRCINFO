@@ -20,7 +20,6 @@ pkgbase = kotatogram-desktop-dynamic-bin
 	depends = kwayland
 	depends = glibmm
 	depends = rnnoise
-	depends = pipewire
 	depends = jemalloc
 	depends = libtg_owt
 	optdepends = webkit2gtk: embedded browser features

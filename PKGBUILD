@@ -25,7 +25,6 @@ depends=(
 	'kwayland'
 	'glibmm'
 	'rnnoise'
-	'pipewire'
 	'jemalloc'
 	'libtg_owt'
 )
