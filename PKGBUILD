@@ -2,7 +2,7 @@
 
 pkgname=rash
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Declarative shell scripting using Rust native bindings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://rash.sh"
@@ -34,5 +34,5 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm0755 -t "$pkgdir/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/bin/$pkgname" "target/release/$pkgname"
 }
