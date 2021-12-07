@@ -1,6 +1,6 @@
 pkgbase = eversticky
 	pkgdesc = A sticky note client that sync to Evernote.
-	pkgver = 0.95.0
+	pkgver = 0.95.2
 	pkgrel = 1
 	url = https://eversticky.joeeey.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = eversticky
 	depends = qt5-x11extras>=5.12.2
 	conflicts = eversticky
 	replaces = eversticky
-	source = https://github.com/itsmejoeeey/eversticky/releases/download/v0.95.0/eversticky_0.95.0-1_amd64.deb
-	sha256sums = fa14a88e01c8e640b0b44867d942ce160aaa290a96c65642c833f58d907ae982
+	source = https://github.com/itsmejoeeey/eversticky/releases/download/v0.95.2/eversticky_0.95.2-1_amd64.deb
+	sha256sums = dc77765df293dedb60711a96128e7c04292c3f95d0cb28bff6b423e5f6e1d497
 
 pkgname = eversticky
