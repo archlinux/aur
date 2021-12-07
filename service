@@ -1,0 +1,13 @@
+[Unit]
+Description=changedetection.io server
+After=network.target
+
+[Service]
+User=changedetectionio
+Environment="PYTHONPATH=/usr/lib/changedetection.io"
+ExecStart=/usr/bin/changedetection.io -d /var/lib/changedetection.io
+Restart=on-abort
+#TimeoutSec=20
+
+[Install]
+WantedBy=multi-user.target
