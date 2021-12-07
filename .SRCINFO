@@ -1,0 +1,15 @@
+pkgbase = python-robinhood-aiokafka
+	pkgdesc = Fork of aiokafka
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/robinhood/aiokafka
+	arch = x86_64
+	license = Apache
+	checkdepends = python-pytest-runner
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python-kafka
+	source = python-robinhood-aiokafka-1.1.6.tar.gz::https://github.com/robinhood/aiokafka/archive/v1.1.6.tar.gz
+	sha256sums = c68c0406dde96984c7bf73dcd4ac09dc88472d988e35ac3945792179d8c7a598
+
+pkgname = python-robinhood-aiokafka
