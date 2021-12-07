@@ -7,6 +7,9 @@ pkgbase = sddm-theme-astronaut
 	license = LGPL3
 	makedepends = git
 	depends = sddm
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-svg
 	source = git+https://github.com/joe733/sddm-theme-astronaut.git
 	md5sums = SKIP
 
