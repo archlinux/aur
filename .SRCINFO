@@ -1,7 +1,7 @@
 pkgbase = telegram-tdlib-purple-minimal-git
-	pkgdesc = libpurple Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies.
+	pkgdesc = libpurple Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies. Needs TD_API_ID and TD_API_HASH env vars to be set for makepkg.
 	pkgver = 0.7.9.r496.80a9163
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ars3niy/tdlib-purple
 	arch = any
 	license = GPL2
