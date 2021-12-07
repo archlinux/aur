@@ -1,7 +1,7 @@
 pkgbase = qtforkawesome-qt6
 	pkgdesc = Library that bundles ForkAwesome for use within Qt applications (using Qt 6)
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Martchus/qtforkawesome
 	arch = i686
 	arch = x86_64

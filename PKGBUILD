@@ -10,7 +10,7 @@ _cfg=qt6
 pkgname=qtforkawesome-$_cfg
 _name=${pkgname%-$_cfg}
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications (using Qt 6)'
 license=('GPL')
@@ -37,7 +37,6 @@ build() {
     -DCONFIGURATION_TARGET_SUFFIX:STRING="$_cfg" \
     -DCONFIGURATION_PACKAGE_SUFFIX_QTUTILITIES:STRING="-$_cfg" \
     -DQT_PACKAGE_PREFIX:STRING='Qt6' \
-    -DQT_PLUGIN_DIR:STRING='/usr/lib/qt6/plugins' \
     -DBUILTIN_TRANSLATIONS:BOOL=ON \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DFORK_AWESOME_FONT_FILE="$srcdir/${_reponame_forkawesome}/fonts/forkawesome-webfont.woff2" \
