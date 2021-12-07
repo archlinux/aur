@@ -1,9 +1,0 @@
-diff --git a/electron-builder.yml b/electron-builder.yml
-index 893fa470..174b91b8 100644
---- a/electron-builder.yml
-+++ b/electron-builder.yml
-@@ -72,4 +72,3 @@ protocols:
- asarUnpack:
-   - ./recipes
-   - ./assets/images/taskbar
--  - ./node_modules/@meetfranz

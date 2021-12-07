@@ -4,28 +4,26 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 pkgname='ferdi'
-pkgver='5.6.2'
-_recipescommit='9db43e100a672b6d6932ac68c0fbe503c129138b'
+pkgver='5.6.3'
+_recipescommit='1e2a7c3ba221baa1bca04db8f9231a3a9d35e1a7'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
-depends=('electron13' 'libxkbfile')
-makedepends=('git' 'nodejs>=14.0.0' 'npm6' 'pnpm' 'python' 'python2')
+_electronpkg='electron15'
+depends=("$_electronpkg" 'libxkbfile')
+makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.1.0' 'pnpm' 'python')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
 	'fix-autostart-path.diff'
-	'remove-meetfranz-unpack.diff'
 )
-sha512sums=('eb3dc113b8e4d271259c0a86a36f2a1bc1b27b249cd2df18b043cb461ab892defe4b3b03c454f716e6c5f751b0aeeedb6b5724836bcfc705adbc8c3ee9ed9f53'
-            '02dea029eb2c7caa9823032ef28ecad97ff07d1f547ee31ae7e7e617730a2af8b63855d1236fc4305a23fee881e853e4ded243f02bae61e896294d3f1366bb06'
-            '4c179a9ec233393d9cdc58f5cc28fc66096b8fcb72eee8c827b045f477fdbc9a30ccf1e42d7aca1bdf46f21ad8962bfabaa84d686116197e73c62d99719b7174'
-            'fd7f735dbb735b2eb8b2fd63f74981fc415ebe5afd964100a54840676ab8059acfc82c3a48e394db2e8eb4094f266b2578d64f867a448e6932f7b936db3cd151')
+sha512sums=('59336276878c51e4e96a50416ccc2cd9fb0dc783fbb0c1f24a3461dfae54f77d0fdb4c3f776e6318956d7f15ad467b6f87055d3e9d0a825d211319e213944be7'
+            '00b77d6828f93922e057a9c22d08535af9566a50c73180cae7ec698ec0a4998f2c395c0bfc971cc2a1a1c4927a234d09ebf3a1c4cf73010e6b41dbd97f2d1153'
+            '5263a9e1f4f9e4435f857181e67eb6b3ed254a18371ab5430bdf614821831aea2474f385b3860e783119fed5eb0c5f0cc94c74b1510e2ae29da524cd0d77fee3')
 
 _sourcedirectory="$pkgname-$pkgver"
-_homedirectory="$pkgname-$pkgver-$pkgrel-home"
 
 case "$CARCH" in
 	i686)
@@ -50,7 +48,7 @@ prepare() {
 	mv "../recipes-$_recipescommit/" 'recipes/'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron13/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' 'package.json'
 
 	# Loosen node version restriction
 	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
@@ -58,32 +56,37 @@ prepare() {
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
 
-	# Remove asarUnpack rule for @meetfranz packages
-	patch --forward -p1 < '../remove-meetfranz-unpack.diff'
-
+	# Prepare recipes
 	cd "$srcdir/$_sourcedirectory/recipes/"
 
-	# Disable the prepare script as we don't want husky to run
-	sed -E -i 's|"prepare": "npx husky install"|"prepare": ""|' 'package.json'
+	# Disable the prepare script for recipes as we don't want husky to run
+	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
 
 	# Build recipe archives
-	HOME="$srcdir/$_homedirectory" pnpm install
-	HOME="$srcdir/$_homedirectory" pnpm run package
+	pnpm install
+	pnpm run package
 
+	# Prepare ferdi dependencies
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Disable the prepare script as we don't want husky to run
-	sed -E -i 's|"prepare": "node scripts/prepare.js"|"prepare": ""|' 'package.json'
+	# Disable the prepare script for ferdi itself as we don't want husky to run
+	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
 
-	# Prepare dependencies
-	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
+	# Install ferdi dependencies
+	npm install
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron13' -c.electronVersion="$(cat '/usr/lib/electron13/version')"
+	# Run pre-build tasks: prepare build info, run gulp
+	npm run prebuild
+
+	# Use npmrc from the root folder for npm>=6 compatibility
+	cp '.npmrc' 'build/.npmrc'
+
+	# Build the actual application
+	NODE_ENV='production' ./node_modules/.bin/electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist="/usr/lib/$_electronpkg" -c.electronVersion="$(cat "/usr/lib/$_electronpkg/version")"
 }
 
 package() {
@@ -96,13 +99,12 @@ package() {
 	_outpath="$_outpath-unpacked"
 
 	install -Dm644 "$_outpath/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
-	install -dm755 "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
-	cp -r --no-preserve=ownership --preserve=mode "$_outpath/resources/app.asar.unpacked/recipes/" "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/recipes/"
+	cp -r --no-preserve=ownership --preserve=mode "$_outpath/resources/app.asar.unpacked/" "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
 
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-NODE_ENV=production ELECTRON_IS_DEV=0 exec electron13 '/usr/lib/$pkgname/app.asar' "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=0 exec $_electronpkg '/usr/lib/$pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
