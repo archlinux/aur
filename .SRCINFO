@@ -1,0 +1,14 @@
+pkgbase = genmake
+	pkgdesc = generate C/C++/Go Makefile template
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitee.com/duapple/genmake/attach_files/904565/download/genmake
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = wget
+	noextract = genmake
+	source = genmake::https://gitee.com/duapple/genmake/attach_files/904565/download/genmake
+	md5sums = SKIP
+
+pkgname = genmake
