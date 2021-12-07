@@ -41,7 +41,9 @@ _base="8bb7eca972ad531c9b149c0a51ab43a417385813"
 pkgver() {
     cd "${srcdir}/repo"
 
-    local rev=$(curl "https://api.github.com/repos/${_repo}/compare/${_base}...${_branch}" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
+    local rev=$(curl -sS "https://api.github.com/repos/${_repo}/compare/${_base}...${_branch}" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
+    test "${rev}"
+
     local sha=$(git rev-parse HEAD)
     echo "${_ver}.r${rev}.g${sha:0:7}"
 }
