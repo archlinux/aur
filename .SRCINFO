@@ -1,0 +1,19 @@
+pkgbase = rash
+	pkgdesc = Declarative shell scripting using Rust native bindings
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://rash.sh
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/rash-sh/rash.git#tag=v1.0.2?signed
+	validpgpkeys = C15CDDF9318F14398300B917C6CB8A1793CA3F94
+	sha512sums = SKIP
+
+pkgname = rash
