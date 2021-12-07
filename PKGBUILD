@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=jspeak
 _pkgname=JSpeak
-pkgver=2020.8.09
+pkgver=2020.12.06
 pkgrel=1
 pkgdesc='A Text to Speech Reader Front-end that Reads from the Clipboard and with Exceptionable Features '
 arch=('any')
