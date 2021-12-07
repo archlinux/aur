@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=gdb-ctest-git
 pkgrel=1
-pkgver=r14.3823665
+pkgver=r15.e45fd82
 license=('MIT')
 arch=('any')
 provides=("${pkgname%-git}")

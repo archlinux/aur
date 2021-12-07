@@ -1,6 +1,6 @@
 pkgbase = gdb-ctest-git
 	pkgdesc = Run ctest in gdb with fixtures and environment
-	pkgver = rfff5bb0
+	pkgver = r15.e45fd82
 	pkgrel = 1
 	url = https://github.com/syyyr/gdb-ctest
 	arch = any
