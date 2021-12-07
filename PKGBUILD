@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$_pkgname"
-    git checkout tags/v$pkgver -b build
+    git checkout tags/v$pkgver -b build-$pkgver
     cargo build --release
 }
 
