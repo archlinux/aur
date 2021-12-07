@@ -1,5 +1,5 @@
 # Maintainer: Harold Cheng <niuchangcun@gmail.com>
-pkgname=pcstat
+pkgname=pcstat-git
 pkgver=v0.0.1.r2.g728a573
 pkgrel=1
 pkgdesc="Page Cache stat: get page cache stats for files on Linux"

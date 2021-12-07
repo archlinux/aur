@@ -1,4 +1,4 @@
-pkgbase = pcstat
+pkgbase = pcstat-git
 	pkgdesc = Page Cache stat: get page cache stats for files on Linux
 	pkgver = v0.0.1.r2.g728a573
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = pcstat
 	license = Apache
 	makedepends = go
 	makedepends = git
-	source = pcstat::git+https://github.com/tobert/pcstat.git
+	source = pcstat-git::git+https://github.com/tobert/pcstat.git
 	sha256sums = SKIP
 
-pkgname = pcstat
+pkgname = pcstat-git
