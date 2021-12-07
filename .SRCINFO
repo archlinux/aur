@@ -1,6 +1,6 @@
 pkgbase = mkdocs-material
 	pkgdesc = Material design theme for MkDocs
-	pkgver = 8.0.4
+	pkgver = 8.0.5
 	pkgrel = 1
 	url = http://squidfunk.github.io/mkdocs-material/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mkdocs-material
 	conflicts = python-mkdocs-material
 	replaces = python-mkdocs-material
 	options = !strip
-	source = mkdocs-material-8.0.4.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/8.0.4.tar.gz
-	sha256sums = 408774ff93d20e1e0b754781d2e3b57c251d0ec8364aa68de7e7f10102c2063c
+	source = mkdocs-material-8.0.5.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/8.0.5.tar.gz
+	sha256sums = 3a22277b85194b4a9534c25439f6ac54fdb46d72c86bfafb04f26bb3b1a83733
 
 pkgname = mkdocs-material
