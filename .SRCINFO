@@ -1,0 +1,21 @@
+pkgbase = kimera-vio-monado-git
+	pkgdesc = Visual Inertial Odometry pipeline for accurate State Estimation from Stereo/Mono + IMU data
+	pkgver = r3568.2bea61c5
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/mateosss/Kimera-VIO
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ninja
+	depends = gtsam
+	depends = opencv
+	depends = opengv
+	depends = dbow2
+	depends = google-glog
+	depends = gflags
+	depends = kimera-rpgo
+	source = git+https://gitlab.freedesktop.org/mateosss/Kimera-VIO.git#branch=xrtslam
+	sha256sums = SKIP
+
+pkgname = kimera-vio-monado-git
