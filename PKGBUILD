@@ -1,8 +1,8 @@
 # Maintainer: Mike Kazantsev <mk.fraggod@gmail.com>
 
 pkgname=telegram-tdlib-purple-minimal-git
-pkgver=r481.4a19cc1
-pkgrel=7
+pkgver=0.7.9.r496.80a9163
+pkgrel=1
 pkgdesc='libpurple Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies.'
 arch=(any)
 url='https://github.com/ars3niy/tdlib-purple'
@@ -15,7 +15,8 @@ sha256sums=(SKIP)
 
 pkgver() {
 	cd $pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	ver=$(awk '/^\s*set\(VERSION / {sub(")","",$2); print $2}' CMakeLists.txt)
+	printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
