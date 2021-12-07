@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/vejnar/pyfnutils"
 license=("MPLv2")
 depends=("python")
-makedepends=("python-setuptools" "python-pip")
+makedepends=("python-setuptools" "python-pip" "python-wheel")
 source=("https://github.com/vejnar/pyfnutils/archive/refs/tags/v$pkgver.tar.gz")
 sha1sums=("055825e6dbeebde50e955535c22a7af973ea4d41")
 
