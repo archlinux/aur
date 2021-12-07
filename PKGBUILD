@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=96.0.4664.45
-pkgrel=2
+pkgver=96.0.4664.93
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-94-ffmpeg-roll.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('488c6ad983ebf7781cb4d704f70496e8aa2165611b46656d7aa62f269c760407'
+sha256sums=('7c7b1f8e4e0abc3453d40c60d6a70f30851db96e5d872cbaa1b4dd7f43aa3493'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '090af7eab39aade15a1786273f2497d6b4abfaef24279fbf97ce0dd1c38c69aa'
             'd0b17162211dd49e3a58c16d1697e7d8c322dcfd3b7890f0c2f920b711f52293'
