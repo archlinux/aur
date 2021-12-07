@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/dnglab/dnglab"
 license=(GPL2)
 depends=()
-makedepends=(git cargo)
+makedepends=(git rust)
 
 source=("git+https://github.com/dnglab/dnglab.git")
 sha256sums=('SKIP')

@@ -6,7 +6,7 @@ pkgbase = dnglab-git
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = cargo
+	makedepends = rust
 	source = git+https://github.com/dnglab/dnglab.git
 	sha256sums = SKIP
 
