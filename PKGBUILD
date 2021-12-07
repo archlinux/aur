@@ -11,7 +11,7 @@ source=(https://github.com/mono/mono-addins/archive/mono-addins-1.3.3.tar.gz)
 license=('MIT')
 provides=("$_pkgname")
 depends=('bash' 'gtk-sharp-2' 'gtk-sharp-3')
-makedepends=('pkgconfig' 'msbuild-bin')
+makedepends=('pkgconfig' 'msbuild')
 
 build() {
   cd "$srcdir"/${_pkgname}-${_pkgname}-${pkgver}

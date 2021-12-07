@@ -7,7 +7,7 @@ pkgbase = mono-addins-git
 	arch = x86_64
 	license = MIT
 	makedepends = pkgconfig
-	makedepends = msbuild-bin
+	makedepends = msbuild
 	depends = bash
 	depends = gtk-sharp-2
 	depends = gtk-sharp-3
@@ -16,4 +16,3 @@ pkgbase = mono-addins-git
 	md5sums = 7ac27ffa4616fd03dc299749f16bce2a
 
 pkgname = mono-addins-git
-
