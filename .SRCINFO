@@ -1,0 +1,19 @@
+pkgbase = jellyshuf
+	pkgdesc = Randomly add items to mpd queue from jellyfin (use in tandem with mopidy-jellyfin)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/deafmute1/jellyshuf
+	arch = any
+	license = MIT
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-appdirs
+	depends = python-musicpd
+	optdepends = mopidy: to enable access to jellyfin music files via a local MPD server
+	optdepends = mopidy-jellyfin: to enable access to jellyfin music files via a local MPD server
+	optdepends = mopidy: to enable access jellyfin music files via a local MPD server
+	source = https://files.pythonhosted.org/packages/source/j/jellyshuf/jellyshuf-0.1.1.tar.gz
+	sha256sums = a10cf873050cafe51c1ec3d646c45f9d6485e02efb1bc5a784821c92023053ff
+
+pkgname = jellyshuf
