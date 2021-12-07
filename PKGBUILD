@@ -2,9 +2,9 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname='python-rq'
-pkgver=1.10.0
+pkgver=1.10.1
 _ver="${pkgver%.*}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple job queues for Python"
 arch=('any')
 license=('BSD')

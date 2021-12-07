@@ -1,7 +1,7 @@
 pkgbase = python-rq
 	pkgdesc = Simple job queues for Python
-	pkgver = 1.10.0
-	pkgrel = 2
+	pkgver = 1.10.1
+	pkgrel = 1
 	url = https://github.com/rq/rq
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = python-rq
 	depends = python
 	depends = python-click
 	depends = python-redis
-	source = python-rq-1.10.0.tar.gz::https://github.com/rq/rq/archive/refs/tags/v1.10.tar.gz
+	source = python-rq-1.10.1.tar.gz::https://github.com/rq/rq/archive/refs/tags/v1.10.tar.gz
 	sha256sums = cc86804d245ac2978391fb0a7030b0b107d6a5acc1eb5ceb8224149123492f58
 
 pkgname = python-rq
