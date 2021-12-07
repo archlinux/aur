@@ -2,7 +2,7 @@
 
 pkgname=rars-git
 pkgver=r340.f0c874c
-pkgrel=1
+pkgrel=2
 pkgdesc="RISC-V Assembler and Runtime Simulator"
 url="https://github.com/TheThirdOne/${pkgname%-git}"
 arch=('x86_64')
