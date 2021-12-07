@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-alt-pytest-asyncio
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.6.0
+pkgrel=0
 pkgdesc='Alternative pytest plugin to pytest-asyncio'
 arch=('any')
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python-pytest')
 makedepends=('python-setuptools')
 checkdepends=('python-noseofyeti' 'python-nest-asyncio')
 source=("https://github.com/delfick/alt-pytest-asyncio/archive/release-$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('2078e053e93b926fa847e8cb7db4c23a9f47b2135f7ce5ff5883602ba8e1689f01b486ce566776c07aa680ef5f38a3d746a34f338b8e11bf18ceec78e942431d')
+sha512sums=('1e93fd6a14bdff4f9ec3efa2300093cf235d911d47c198b52ebf3038ddde738e5f4083909c815438b3b9a7eefc301fe0d6acf56d95ef0e7c9e68a3e61016e233')
 
 build() {
   cd alt-pytest-asyncio-release-$pkgver
@@ -24,9 +24,7 @@ check() {
   cd alt-pytest-asyncio-release-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   # https://github.com/delfick/alt-pytest-asyncio/issues/5
-  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.10/site-packages:$PYTHONPATH" pytest \
-    --deselect tests/test_examples.py::test_shows_correctly_for_failing_fixtures[example_timeouts] \
-    --deselect tests/test_examples.py::test_shows_correctly_for_failing_fixtures[example_fixture_failures]
+  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.10/site-packages:$PYTHONPATH" pytest
 }
 
 package() {
