@@ -1,16 +1,20 @@
 pkgbase = python-pytablewriter-altrow-theme
-	pkgdesc = pytablewriter plugin to provide a theme that colored rows alternatively
-	pkgver = 0.0.2
-	pkgrel = 2
+	pkgdesc = pytablewriter plugin to provide a theme that colors rows alternatively
+	pkgver = 0.0.3
+	pkgrel = 1
 	url = https://github.com/thombashi/pytablewriter-altrow-theme
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytz
+	checkdepends = python-dateutil
 	makedepends = python-setuptools
-	depends = python
 	depends = python-pytablewriter
 	depends = python-tcolorpy
-	source = https://files.pythonhosted.org/packages/source/p/pytablewriter-altrow-theme/pytablewriter-altrow-theme-0.0.2.tar.gz
-	sha256sums = 4fc14a914ee99f707c81a6d8a29f79e61b6d2e74dae7a03c7fc6342b5cae5398
+	source = python-pytablewriter-altrow-theme-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pytablewriter-altrow-theme/pytablewriter-altrow-theme-0.0.3.tar.gz
+	source = python-pytablewriter-altrow-theme-0.0.3.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytablewriter-altrow-theme/pytablewriter-altrow-theme-0.0.3.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 3f24b65fb6cfc2b1fd170c8b0cf6ed74e7836d8a81cfd7aa5d0fe509be605b77
+	sha256sums = SKIP
 
 pkgname = python-pytablewriter-altrow-theme
-
