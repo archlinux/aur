@@ -1,0 +1,17 @@
+pkgbase = mdloader-git
+	pkgdesc = Massdrop Firmware Loader - for CTRL / ALT / SHIFT / Rocketeer keyboards
+	pkgver = 1.0.6.r0.ge4f9774
+	pkgrel = 1
+	url = https://github.com/Massdrop/mdloader
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = mdloader
+	conflicts = mdloader
+	conflicts = mdloader-bin
+	source = mdloader::git+https://github.com/Massdrop/mdloader.git
+	md5sums = SKIP
+
+pkgname = mdloader-git
