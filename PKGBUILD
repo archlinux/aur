@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkdocs-with-pdf"
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Plugin to generate a single PDF file from a MkDocs repository"
 url="https://github.com/orzih/mkdocs-with-pdf"
@@ -12,7 +12,7 @@ replaces=("python-mkdocs-with-pdf-git")
 depends=("mkdocs" "python-libsass" "python-weasyprint")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("5596552fbf13887aeb3ec4c53822867692a742979de85ba1f6770bfbf2c73d4a")
+sha256sums=('5977570d90296f67a1e622bbf6b23d931ff31765e035bf015de363cf808e467c')
 
 build(){
  cd "$pkgname-$pkgver"
