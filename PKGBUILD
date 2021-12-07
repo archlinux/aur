@@ -1,19 +1,19 @@
 # Maintainer: Arnaud Berthomier <arnaud@cyprio.net>
 
 pkgname=gleam
-pkgver="0.17.0"
+pkgver="0.18.0"
 pkgrel=1
-pkgdesc="A statically typed language for the Erlang VM"
+pkgdesc="A friendly language for building type-safe, scalable systems!"
 arch=('any')
-url="http://github.com/lpil/gleam/"
+url="http://github.com/gleam-lang/gleam"
 license=('Apache2')
 depends=('erlang-nox')
 makedepends=('rust')
 provides=('gleam')
 options=(strip !docs !libtool !staticlibs)
 source=("https://github.com/gleam-lang/gleam/archive/v${pkgver}.tar.gz")
-sha256sums=('9530e616d42b4158ffcc5dd1befdc87ab2ea2af784fce6c57aec8c42a71a4ce2')
-sha512sums=('7ed0955fc323cd5223fca075a70d92720d84527dfbe65c6755d9a1cb960c0151328554885cdef9df628a6d18b07a64a766b36b34a7364bb6d85bb5295f69ab20')
+sha256sums=('9aead695a3baf2e62b462dbacb588be3f3ac778415afc57ab85087fc7955f0ac')
+sha512sums=('72ed516e415ba811b4c9b9511eb8432a3de0249f2d44379f62058991c585192c0f9d2eb2f13a7c65e7e8401a75db4970e3e219088e86988b31d5b4e030f0dac4')
 
 prepare() {
     cd "$pkgname-$pkgver"
