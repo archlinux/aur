@@ -1,0 +1,16 @@
+pkgbase = cformat
+	pkgdesc = format C/C++ file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitee.com/duapple/go_projects/attach_files/904852/download/cformat
+	arch = x86_64
+	license = unknow
+	makedepends = git
+	source = https://gitee.com/duapple/go_projects/attach_files/904851/download/clang-format
+	source = https://gitee.com/duapple/go_projects/attach_files/904852/download/cformat
+	source = https://gitee.com/duapple/go_projects/attach_files/904850/download/.clang-format
+	md5sums = ae1f245d659b0a180d483b4240f7ebd6
+	md5sums = 6061ca24978dbd8dd50e7b03571c7111
+	md5sums = da2c17594374202bff1d26677c633176
+
+pkgname = cformat
