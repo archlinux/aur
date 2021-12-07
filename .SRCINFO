@@ -1,6 +1,6 @@
 pkgbase = diffsitter-git
 	pkgdesc = A tree-sitter based AST difftool to get meaningful semantic diffs
-	pkgver = 0.6.6.r75.gbecc6d3
+	pkgver = 0.6.8.r0.gdbe30c3
 	pkgrel = 1
 	url = https://github.com/afnanenayet/diffsitter
 	arch = x86_64

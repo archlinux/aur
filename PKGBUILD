@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=diffsitter-git
-pkgver=0.6.6.r75.gbecc6d3
+pkgver=0.6.8.r0.gdbe30c3
 pkgrel=1
 pkgdesc="A tree-sitter based AST difftool to get meaningful semantic diffs"
 arch=('x86_64' 'i686' 'arm' 'aarch64')
@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -43,6 +42,7 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -Dm 755 target/release/diffsitter -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -D target/release/diffsitter -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
