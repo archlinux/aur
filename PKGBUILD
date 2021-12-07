@@ -2,16 +2,18 @@
 # Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=novnc
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="HTML VNC Client Library and Application"
 arch=('any')
 url="https://github.com/novnc/noVNC"
 license=('custom')
 depends=('bash' 'websockify' 'inetutils')
 optdepends=('python-numpy: better HyBi protocol performance')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/noVNC/noVNC/archive/v${pkgver}.tar.gz")
-sha512sums=('461490da7bb983e9c94b8ce39f8455ee6609b5a9df8d88254bcc37ebaa5153f5ee9db6afbd88b51762d6d55661bc5cde6fbe70616597583bfce1203e337adf75')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/noVNC/noVNC/archive/v${pkgver}.tar.gz"
+        "novnc.service")
+sha512sums=('2c9eb019bd9c86a0ffb716eba06e8f05bc522c37561e0acc7f88a66188c617ebc54f4cc9220897c241280ba2ed5919a2050a94eeb3da2c030bde43af0bd92c51'
+            '5dce6fb71dcdeab9ebe3986ebad431d01bb01860cb9960b1e70af84b2beba2330738cd9aa37ab9e025ee8263cba7475d484d5c6d55d4b3750d27aff37c7aef41')
 
 
 prepare(){
@@ -19,10 +21,12 @@ prepare(){
   sed \
     -e 's#\(share\)#\1/webapps#g' \
     -e '2 i WEBSOCKIFY=/usr/bin/websockify' \
-    -i utils/launch.sh
+    -i utils/novnc_proxy
 }
 
 package() {
+  install -Dm644 novnc.service "${pkgdir}/usr/lib/systemd/system/novnc.service"
+
   cd "noVNC-$pkgver"
 
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -32,7 +36,7 @@ package() {
   install -dm644 "$pkgdir/usr/share/doc/$pkgname"
   ( cd docs; find . ! -name 'LICENSE*' -type f -exec cp -a {} "$pkgdir/usr/share/doc/$pkgname/{}" \; )
 
-  install -Dm755 utils/launch.sh "$pkgdir/usr/bin/novnc"
+  install -Dm755 utils/novnc_proxy "$pkgdir/usr/bin/novnc"
 
   install -dm755 "$pkgdir/usr/share/webapps/novnc"
   cp -a app core po vendor vnc.html karma.conf.js package.json vnc_lite.html "$pkgdir/usr/share/webapps/novnc"
