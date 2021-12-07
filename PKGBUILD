@@ -1,7 +1,7 @@
 # Maintainer: José Luis Salvador Rufo <salvador.joseluis@gmail.com>
 
 pkgname=godns
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="A dynamic DNS client tool, supports AliDNS, Cloudflare, Google Domains, DNSPod, HE.net & DuckDNS, written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ provides=('godns')
 makedepends=('go')
 backup=(etc/conf.d/godns.json)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TimothyYe/godns/archive/v${pkgver}.tar.gz")
-sha256sums=('22c901fd4a7428e04eb7bdd362dec3ac07e517abb6a8ecb8453c492d7081793d')
+sha256sums=('5b2abc90aa3d25d3d028ad69a34d8c02438492a60049ccf733b6906a46a07d20')
 
 build() {
 	export GOPATH="$srcdir"/gopath
@@ -31,8 +31,9 @@ build() {
 
 package() {
 	install -Dm755 "${srcdir}"/$pkgname-$pkgver/godns "${pkgdir}/usr/bin/godns"
-	install -Dm640 "${srcdir}"/$pkgname-$pkgver/config_sample.json "${pkgdir}/etc/conf.d/godns.json"
-	install -Dm644 "${srcdir}"/$pkgname-$pkgver/config_sample.json "${pkgdir}/usr/share/godns/config_sample.json"
-	install -Dm644 "${srcdir}"/$pkgname-$pkgver/systemd/godns.service "${pkgdir}/usr/lib/systemd/system/godns.service"
+	install -Dm640 "${srcdir}"/$pkgname-$pkgver/configs/config_sample.json "${pkgdir}/etc/conf.d/godns.json"
+	install -Dm644 "${srcdir}"/$pkgname-$pkgver/configs/config_sample.json "${pkgdir}/usr/share/godns/config_sample.json"
+	install -Dm644 "${srcdir}"/$pkgname-$pkgver/configs/config_sample.yaml "${pkgdir}/usr/share/godns/config_sample.yaml"
+	install -Dm644 "${srcdir}"/$pkgname-$pkgver/configs/systemd/godns.service "${pkgdir}/usr/lib/systemd/system/godns.service"
 	sed -e 's/^\(ExecStart=\).*$/\1\/usr\/bin\/godns -c=\/etc\/conf.d\/godns.json/g' -i "${pkgdir}/usr/lib/systemd/system/godns.service"
 }
