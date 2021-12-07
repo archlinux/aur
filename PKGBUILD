@@ -1,7 +1,7 @@
 # Maintainer: Jacek Szafarkiewicz <szafar@linux.pl>
 
 pkgname=paperspace
-pkgver=11.4.0.3932
+pkgver=11.4.1.4096
 pkgrel=1
 pkgdesc='Paperspace Receiver'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libva: For hardware accelerated decoding')
 source=("https://assets.paperspace.com/native-app/prod/linux/PaperspaceInstaller-${pkgver}"
         paperspace-installer-noninteractive.qs.in
         paperspace.sh)
-sha256sums=('d01a41840136af6cb3257820cfa70c6e20fb8683aae34198d078877f2abd3337'
+sha256sums=('a69daf2ae559334481673bddabc9ad2e60977f4aad1b51945b0f416a70df1f07'
             '4dddf0c7212de5db2c51a8b212b95632bfc92d635e46a136e299308f9de8db0c'
             '32231f483b9ad1369936b7157d5160597014fb418b453f7216b51b9e2b074772')
 
@@ -27,6 +27,7 @@ prepare() {
 
     mv "$HOME/.local/share/applications/Paperspace.desktop" .
     rm paperspace/InstallationLog.txt
+    rm paperspace/maintenancetool*
 }
 
 build() {
