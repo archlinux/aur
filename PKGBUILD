@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=6.10.0.95.r761.8248c906564
+pkgver=6.12.0.162.r1375.70481876a0d
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -37,13 +37,12 @@ source=(
   'git+https://github.com/mono/api-doc-tools.git'
   'git+https://github.com/mono/api-snapshot.git'
   'git+https://github.com/dotnet/llvm-project.git'
-  'git+https://github.com/mono/helix-binaries.git'
   'git+https://github.com/Unity-Technologies/bdwgc.git'
   'mono.binfmt.d'
 )
 sha256sums=(
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
   '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425'
 )
 
@@ -82,7 +81,6 @@ prepare() {
     'api-doc-tools'
     'api-snapshot'
     'llvm-project'
-    'helix-binaries'
     'bdwgc'
   )
 

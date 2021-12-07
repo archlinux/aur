@@ -1,6 +1,6 @@
 pkgbase = mono-git
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler
-	pkgver = 6.10.0.95.r761.8248c906564
+	pkgver = 6.12.0.162.r1375.70481876a0d
 	pkgrel = 1
 	url = http://www.mono-project.com/
 	install = mono.install
@@ -44,10 +44,8 @@ pkgbase = mono-git
 	source = git+https://github.com/mono/api-doc-tools.git
 	source = git+https://github.com/mono/api-snapshot.git
 	source = git+https://github.com/dotnet/llvm-project.git
-	source = git+https://github.com/mono/helix-binaries.git
 	source = git+https://github.com/Unity-Technologies/bdwgc.git
 	source = mono.binfmt.d
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -73,4 +71,3 @@ pkgbase = mono-git
 	sha256sums = 9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425
 
 pkgname = mono-git
-
