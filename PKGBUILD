@@ -15,7 +15,7 @@ depends=('libnotify' 'libpamac-full' 'libhandy')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
-provides=('pamac')
+provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 

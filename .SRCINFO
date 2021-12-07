@@ -23,7 +23,7 @@ pkgbase = pamac-all
 	depends = libpamac-full
 	depends = libhandy
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
-	provides = pamac
+	provides = pamac=10.3.0-2
 	conflicts = pamac
 	conflicts = pamac-gtk
 	conflicts = pamac-cli
