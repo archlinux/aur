@@ -1,7 +1,7 @@
 pkgbase = rars-git
 	pkgdesc = RISC-V Assembler and Runtime Simulator
 	pkgver = r340.f0c874c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheThirdOne/rars
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = rars-git
 	source = rars.desktop
 	source = rars.sh
 	sha256sums = SKIP
-	sha256sums = cccd77ebd03d0e9080c3840ddad6f0cdc677ca9129ad9db844d9eaaa90716919
-	sha256sums = 6478c02af2ec257d681b9cfb222a05da79ba1680db2fe3d09894308d113c0107
+	sha256sums = 94f7e604bc4447bfc8b0b32d9ca529163ca011623ebf2294fb3ccf4791272d4e
+	sha256sums = ab5b088335e5f189eaffa3399e764d85ad5069bb266a68a5640d2732504c5b56
 
 pkgname = rars-git
