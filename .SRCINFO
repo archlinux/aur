@@ -1,0 +1,11 @@
+pkgbase = cfetch
+	pkgdesc = A shitty fetch written in C99
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ItzAfroBoy/cfetch
+	arch = any
+	license = GPL3
+	source = cfetch-1.0.0.tar.gz::https://github.com/ItzAfroBoy/cfetch/archive/refs/tags/1.0.0.tar.gz
+	md5sums = 4e97c99a6ee8c840c3833fd52655b37b
+
+pkgname = cfetch
