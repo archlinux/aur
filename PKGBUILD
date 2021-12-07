@@ -1,7 +1,7 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=0.83.19.r290.g55e0a0e90
+pkgver=0.83.20.r37.gc89f2d347
 pkgrel=1
 epoch=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
