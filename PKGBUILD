@@ -36,14 +36,14 @@
 #
 #       wimextract install.wim 1 /Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf} --dest-dir fonts
 #
-#    Fonts and license will be located in the 'fonts' dir.
+#    Fonts and license will be located in the 'fonts' dir, copy these to the package root.
 #
 # You need all files listed in the _ttf_ms_win11[_*] arrays.Place them in the
 # same directory as this PKGBUILD file, then run makepkg.
 
 pkgbase=ttf-ms-win11
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.22000.194
+pkgver=10.0.22000.348
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -263,7 +263,7 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '9f84a0a9193fe1d6335967f46606997a208adde053d006b21c03f9375ec5d416'
             'e17738f092c8b02f4443867a7dfcdde66fb4cd6f6b10de8e40b2f3192f8a5835'
             '33212faa85fad61785cd6917172378b798bc9f5d4c47c121437354f47980aa6f'
-            'd0c42e82933cfb99b67846dbade2ce5d02c83a4d93c653f0d892226dd697e2d5'
+            'edd76b88c44432ba1818992259c31d45abd28fbcfbb3eeebad3f6af27636213c'
             '9cd6a9b0093476f7a717dcaf19813fcea7565afe1bffd6ad8bc0f0b1cdb38003'
             '9853283466bd43993b9813215281fb9c7090cbd8e9b5453f6d0d040622e117e2'
             '9959977d9fcf8ebc5fe48f6ee418f05378132b47d21bd5dcc798ad7cff274006'

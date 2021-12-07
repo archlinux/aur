@@ -1,5 +1,5 @@
 pkgbase = ttf-ms-win11
-	pkgver = 10.0.22000.194
+	pkgver = 10.0.22000.348
 	pkgrel = 1
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
@@ -227,7 +227,7 @@ pkgbase = ttf-ms-win11
 	sha256sums = 9f84a0a9193fe1d6335967f46606997a208adde053d006b21c03f9375ec5d416
 	sha256sums = e17738f092c8b02f4443867a7dfcdde66fb4cd6f6b10de8e40b2f3192f8a5835
 	sha256sums = 33212faa85fad61785cd6917172378b798bc9f5d4c47c121437354f47980aa6f
-	sha256sums = d0c42e82933cfb99b67846dbade2ce5d02c83a4d93c653f0d892226dd697e2d5
+	sha256sums = edd76b88c44432ba1818992259c31d45abd28fbcfbb3eeebad3f6af27636213c
 	sha256sums = 9cd6a9b0093476f7a717dcaf19813fcea7565afe1bffd6ad8bc0f0b1cdb38003
 	sha256sums = 9853283466bd43993b9813215281fb9c7090cbd8e9b5453f6d0d040622e117e2
 	sha256sums = 9959977d9fcf8ebc5fe48f6ee418f05378132b47d21bd5dcc798ad7cff274006
