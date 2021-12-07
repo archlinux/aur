@@ -1,7 +1,7 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gavinhoward/bc
 	arch = i686
 	arch = x86_64

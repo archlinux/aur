@@ -4,7 +4,7 @@
 
 pkgname=bc-gh
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gavinhoward/bc"
@@ -36,7 +36,7 @@ build() {
 check() {
   cd "bc-$pkgver"
 
-  make check
+  env LANG=C LC_ALL=C make check
 }
 
 package() {
