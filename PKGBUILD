@@ -5,29 +5,27 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.1.nightly.56.r3.g3cd0daa8'
+pkgver='5.6.4.nightly.26.r0.ge3de5c87'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
-depends=('electron13' 'libxkbfile')
-makedepends=('git' 'nodejs>=14.0.0' 'npm6' 'pnpm' 'python' 'python2')
+_electronpkg='electron15'
+depends=("$_electronpkg" 'libxkbfile')
+makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.1.0' 'pnpm' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/get$_pkgname/$_pkgname"
 	"$pkgname-recipes::git+https://github.com/get$_pkgname/recipes"
 	'fix-autostart-path.diff'
-	'remove-meetfranz-unpack.diff'
 )
 sha512sums=('SKIP'
             'SKIP'
-            '4c179a9ec233393d9cdc58f5cc28fc66096b8fcb72eee8c827b045f477fdbc9a30ccf1e42d7aca1bdf46f21ad8962bfabaa84d686116197e73c62d99719b7174'
-            'fd7f735dbb735b2eb8b2fd63f74981fc415ebe5afd964100a54840676ab8059acfc82c3a48e394db2e8eb4094f266b2578d64f867a448e6932f7b936db3cd151')
+            '5263a9e1f4f9e4435f857181e67eb6b3ed254a18371ab5430bdf614821831aea2474f385b3860e783119fed5eb0c5f0cc94c74b1510e2ae29da524cd0d77fee3')
 
 _sourcedirectory="$pkgname"
-_homedirectory="$pkgname-home"
 
 case "$CARCH" in
 	i686)
@@ -53,7 +51,7 @@ prepare() {
 	git submodule update --init --recursive
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron13/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' 'package.json'
 
 	# Loosen node version restriction
 	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
@@ -61,17 +59,24 @@ prepare() {
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
 
-	# Remove asarUnpack rule for @meetfranz packages
-	patch --forward -p1 < '../remove-meetfranz-unpack.diff'
+	# Prepare recipes
+	cd "$srcdir/$_sourcedirectory/recipes/"
+
+	# Disable the prepare script for recipes as we don't want husky to run
+	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
 
 	# Build recipe archives
-	cd "$srcdir/$_sourcedirectory/recipes/"
-	HOME="$srcdir/$_homedirectory" pnpm install
-	HOME="$srcdir/$_homedirectory" pnpm run package
+	pnpm install
+	pnpm run package
 
-	# Prepare dependencies
+	# Prepare ferdi dependencies
 	cd "$srcdir/$_sourcedirectory/"
-	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
+
+	# Disable the prepare script for ferdi itself as we don't want husky to run
+	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
+
+	# Install ferdi dependencies
+	npm install
 }
 
 pkgver() {
@@ -82,8 +87,14 @@ pkgver() {
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron13' -c.electronVersion="$(cat '/usr/lib/electron13/version')"
+	# Run pre-build tasks: prepare build info, run gulp
+	npm run prebuild
+
+	# Use npmrc from the root folder for npm>=6 compatibility
+	cp '.npmrc' 'build/.npmrc'
+
+	# Build the actual application
+	NODE_ENV='production' ./node_modules/.bin/electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist="/usr/lib/$_electronpkg" -c.electronVersion="$(cat "/usr/lib/$_electronpkg/version")"
 }
 
 package() {
@@ -96,13 +107,12 @@ package() {
 	_outpath="$_outpath-unpacked"
 
 	install -Dm644 "$_outpath/resources/app.asar" "$pkgdir/usr/lib/$_pkgname/app.asar"
-	install -dm755 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
-	cp -r --no-preserve=ownership --preserve=mode "$_outpath/resources/app.asar.unpacked/recipes/" "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/recipes/"
+	cp -r --no-preserve=ownership --preserve=mode "$_outpath/resources/app.asar.unpacked/" "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
 
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
-NODE_ENV=production ELECTRON_IS_DEV=0 exec electron13 '/usr/lib/$_pkgname/app.asar' "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=0 exec $_electronpkg '/usr/lib/$_pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 
