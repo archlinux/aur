@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=python-bumps
 _name=${pkgname#python-}
-pkgver=0.7.13
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Data fitting with uncertainty analysis"
 arch=(any)
@@ -21,13 +21,12 @@ depends=( python-numpy
           python-pyparsing
           python-periodictable
           python-scikit-learn
+	  python-six
 )
 source=("https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz" 
 	"bumps.patch")
-sha256sums=('f0c368d7beb4307297fb5298658921941a80c21e7bc52fb5dab1a1d1ef16d250'
-	    'SKIP')
-sha256sums=('c7070b55bdcb3ebb3bdb4242092c1f9c68ad8d7ecfe0990cd80b849d9f80f0a7'
-            'SKIP')
+sha256sums=('225dd236fd014f9cd15fbaec5badbcb65d4f1e31a96dc62f71f042e4ed091c5b'
+            'dbe2b429a766f2c8b022f5745cc43d1cf947cb481c348f86fa551d592920e1c0')
 
 prepare() {
 	cd ${_name}-${pkgver}
