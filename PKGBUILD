@@ -1,18 +1,24 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=charm-tool
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="The Charm Cloud Tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/charmbracelet/charm"
 license=('MIT')
-makedepends=('go')
+depends=('glibc')
+makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/charm-${pkgver}.tar.gz")
-sha256sums=('9ae084c1d21af79ffe14074937e5aa57dab728d7791fc927e006b1d982ee9e2a')
+sha256sums=('cfee217681b5253601afa844b9673c4a41b53ff00037e5cc126fecba0c8cae1d')
 
 build() {
-    cd "charm-$pkgver"/cmd/charm
+    local commit
+    local extraflags
+    commit=$(zcat charm-${pkgver}.tar.gz | git get-tar-commit-id)
+    extraflags="-X main.Version=${pkgver} -X main.CommitSHA=${commit}"
+
+    cd "charm-$pkgver"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -24,14 +30,14 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-X main.Version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
+        -ldflags "${extraflags} -linkmode external -extldflags \"${LDFLAGS}\"" \
         -o "charm" .
 }
 
 package() {
     cd "charm-$pkgver"
 
-    install -Dm755 "cmd/charm/charm" "$pkgdir/usr/bin/charm"
+    install -Dm755 "charm" "$pkgdir/usr/bin/charm"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
