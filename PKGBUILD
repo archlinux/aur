@@ -1,4 +1,5 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Brian Salcedo <brian@salcedo.tech>
+# Contributor: GI Jack <GI_Jack@hackermail.com>
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=flamp
