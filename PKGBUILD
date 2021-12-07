@@ -8,7 +8,7 @@ pkgver=9.3.4
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
-arch=('x86_64' 'arm')
+arch=('x86_64' 'armv7h')
 url="https://www.tango-controls.org/"
 license=('GPL3')
 depends=('tango-idl' 'omniorb' 'zeromq' 'doxygen' 'cmake>=3.7')
@@ -23,7 +23,17 @@ prepare() {
 
 build() {
   cd ${_dir}/build
-  cmake -DIDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
+
+  if [[ $CARCH == "x86_64" ]]
+  then
+    cmake -DIDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
+  fi
+
+  # Disable mmmx (for jpeg) instruction for arm architecture
+  if [[ $CARCH == "armv7h" ]]
+  then
+    cmake -DTANGO_JPEG_MMX=0 -DIDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
+  fi
 }
 
 package() {
