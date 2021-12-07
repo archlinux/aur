@@ -1,6 +1,6 @@
 pkgbase = java-design-patterns
 	pkgdesc = Design patterns implemented in Java
-	pkgver = 1.24.0
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = http://java-design-patterns.com/
 	install = java-design-patterns.install
@@ -8,8 +8,7 @@ pkgbase = java-design-patterns
 	license = MIT
 	optdepends = java-environment
 	optdepends = maven
-	source = java-design-patterns-1.24.0.tar.gz::https://github.com/iluwatar/java-design-patterns/archive/1.24.0.tar.gz
-	sha256sums = e6803ec03f745732cc6fcafcaf16a9b7e6cffc1519240488dc77275fcc02dadb
+	source = java-design-patterns-1.25.0.tar.gz::https://github.com/iluwatar/java-design-patterns/archive/1.25.0.tar.gz
+	sha256sums = bdf6572882230031070ce82d789ecd78faa8681671881d6937c943a5eac53a15
 
 pkgname = java-design-patterns
-
