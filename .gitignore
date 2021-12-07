@@ -1,3 +1,4 @@
-*.pkg.tar.xz
-*.tar.gz
-*.tar.zst
+/*.pkg.tar.xz
+/*.tar.gz
+/*.tar.zst
+/*.log
