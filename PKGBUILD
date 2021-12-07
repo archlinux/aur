@@ -1,6 +1,6 @@
 pkgname=jellyshuf
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 license=("MIT" "Apache")
 arch=('any')
 pkgdesc="Randomly add items to mpd queue from jellyfin (use in tandem with mopidy-jellyfin)"
@@ -16,7 +16,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
 optdepends=(
 	"mopidy: to enable access to jellyfin music files via a local MPD server" 
 	"mopidy-jellyfin: to enable access to jellyfin music files via a local MPD server" 
-	"mopidy: to enable access jellyfin music files via a local MPD server"
+	"mopidy-mpd: to enable access jellyfin music files via a local MPD server"
 )
 sha256sums=('a10cf873050cafe51c1ec3d646c45f9d6485e02efb1bc5a784821c92023053ff')
 
