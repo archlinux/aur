@@ -2,18 +2,18 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.9.4
+pkgver=3.9.7
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
-depends=('electron13')
+depends=('electron15')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
-_nodeversion=14.18.1
+_nodeversion=14
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=716e1cf46518f8f3a6c4445e72d746722c16edec"
+        "git://github.com/standardnotes/web.git#commit=6ca3ee01f8eb293963d02528fb552b8d17c9a29d"
         'webpack.patch'
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
@@ -37,7 +37,7 @@ prepare() {
   cp .env.sample .env
 
   # Set system Electron version for ABI compatibility
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron13/version)'"#' -i package.json
+  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron15/version)'"#' -i package.json
 
   # workaround for TS compilation failing due to a "might be null" error.
   # this might be an ugly thing to just ignore, but, well, uh... (electron >=11/12 needs this)
@@ -78,7 +78,7 @@ build() {
     export npm_config_host_arch=arm64
   fi
 
-  _electron_dist=/usr/lib/electron13
+  _electron_dist=/usr/lib/electron15
   _electron_ver=$(cat ${_electron_dist}/version)
   case "$CARCH" in
           aarch64)
