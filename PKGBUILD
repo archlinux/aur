@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkdocs-ezlinks-plugin"
-pkgver=0.1.11
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="MkDocs plugin to automagically generate relative links between markdown pages"
 url="https://github.com/orbikm/mkdocs-ezlinks-plugin"
@@ -12,7 +12,7 @@ replaces=("python-mkdocs-ezlinks-plugin-git")
 depends=("mkdocs" "python-pygtrie-git")
 makedepends=("python-setuptools")
 source=("$url/releases/download/v_$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("fb89c71aed642bba221ad7f8e6cc27a1812c0865ed27f43c667c6133254eca02")
+sha256sums=('2b489271aebf2e4c4d52338e1e0a7391feb50baf83634083656bd02a34b8c382')
 
 build(){
  cd "$pkgname-$pkgver"
