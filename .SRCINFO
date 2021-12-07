@@ -1,7 +1,7 @@
 pkgbase = rstudio-server-preview-bin
 	pkgdesc = A integrated development environment (IDE) for R (binary preview version from RStudio official website)
 	pkgver = 2021.09.1+372
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	install = rstudio-server-preview-bin.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = rstudio-server-preview-bin
 	conflicts = rstudio-server
 	conflicts = rstudio-server-git
 	conflicts = rstudio-server-bin
-	source = https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-2021.09.1+372-amd64.deb
+	source = https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-2021.09.1-372-amd64.deb
 	source = rstudio-server.service
 	source = rstudio
 	sha256sums = c58df09468870b89f1796445853dce2dacaa0fc5b7bb1f92b036fa8da1d1f8a3
