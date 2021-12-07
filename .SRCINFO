@@ -1,19 +1,18 @@
 pkgbase = remotebox
 	pkgdesc = Open Source VirtualBox Client with Remote Management
-	pkgver = 2.7
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://remotebox.knobgoblin.org.uk/
 	install = remotebox.install
 	arch = any
-	license = gpl
+	license = GPL
 	depends = perl
 	depends = perl-soap-lite
 	depends = gtk2-perl
 	optdepends = rdesktop
-	source = http://remotebox.knobgoblin.org.uk/downloads/RemoteBox-2.7.tar.bz2
+	source = http://remotebox.knobgoblin.org.uk/downloads/RemoteBox-3.0.tar.bz2
 	source = remotebox.desktop
-	md5sums = 236315bd7e2696ba8900b57ee9bef7aa
+	md5sums = c231deb84c7e11f9a0eff08b66ca93ff
 	md5sums = b64b16d198471f9868ce7ed018295296
 
 pkgname = remotebox
-
