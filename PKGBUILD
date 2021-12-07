@@ -2,27 +2,24 @@
 
 _cranname=sourcetools
 _cranver=0.1.7
-pkgname=r-${_cranname}
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Tools for Reading, Tokenizing and Parsing R Code"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3')
-depends=('r')
-optdepends=('r-testthat')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('04284c2d78a9626fe5f219942836c530')
+license=(MIT)
+depends=('r>=3.0.2')
+optdepends=(r-testthat)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('47984406efb3b3face133979ccbae9fefb7360b9a6ca1a1c11473681418ed2ca')
 
-build(){
-    cd "${srcdir}"
-
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
+build() {
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-    cd "${srcdir}"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-    install -dm0755 "$pkgdir/usr/lib/R/library"
-    cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }

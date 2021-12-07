@@ -5,11 +5,10 @@ pkgbase = r-sourcetools
 	url = https://cran.r-project.org/package=sourcetools
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r
+	license = MIT
+	depends = r>=3.0.2
 	optdepends = r-testthat
-	source = http://cran.r-project.org/src/contrib/sourcetools_0.1.7.tar.gz
-	md5sums = 04284c2d78a9626fe5f219942836c530
+	source = https://cran.r-project.org/src/contrib/sourcetools_0.1.7.tar.gz
+	sha256sums = 47984406efb3b3face133979ccbae9fefb7360b9a6ca1a1c11473681418ed2ca
 
 pkgname = r-sourcetools
-
