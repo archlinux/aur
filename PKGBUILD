@@ -1,8 +1,9 @@
-# Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 
 pkgname=pgformatter
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A PostgreSQL SQL syntax beautifier"
 arch=('any')
 url="https://github.com/darold/pgformatter"
@@ -36,6 +37,9 @@ package() {
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+
+  # provide symlink in /usr/bin for non-interactive shells
+  ln -sf /usr/bin/vendor_perl/pg_format "$pkgdir/usr/bin/pg_format"
 
   # delete usr/lib as it's empty ...
   rm -rf "$pkgdir/usr/lib"
