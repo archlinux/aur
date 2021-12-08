@@ -1,6 +1,6 @@
 pkgbase = pizarra-bin
 	pkgdesc = A free-hand vector drawing application with infinite canvas
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://gitlab.com/categulario/pizarra-gtk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pizarra-bin
 	depends = gtk3
 	provides = pizarra
 	conflicts = pizarra
-	source = https://pizarra.categulario.tk/releases/any-linux/pizarra-1.6.0-x86_64.tar.gz
-	sha256sums = 9da8160bba7a650f6e08a81a1d1666f92c0b397e6aa0ff480f5d43893aecbad1
+	source = https://pizarra.categulario.tk/releases/any-linux/pizarra-1.6.1-x86_64.tar.gz
+	sha256sums = fc45c18db87f89567ae1b0657d542d3462e7e3483de33ca2ca8e2e69f648591d
 
 pkgname = pizarra-bin
