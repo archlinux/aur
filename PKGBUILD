@@ -1,19 +1,19 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-pip-audit
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/trailofbits/pip-audit'
 license=('Apache')
 depends=(
-  # Upstream requires pip-api >= 0.0.25 but Arch’s Community
+  # Upstream requires pip-api >= 0.0.26 but Arch’s Community
   # repository is on 0.0.18, which causes an error message that
   # says “failed to list installed distributions.”
-  # Once community/python-pip-api catches up to version 0.0.25,
-  # remove the `>=0.0.25` part from the following line.
-  'python-pip-api>=0.0.25'
+  # Once community/python-pip-api catches up to version 0.0.26,
+  # remove the `>=0.0.26` part from the following line.
+  'python-pip-api>=0.0.26'
   'python-packaging'
   'python-dataclasses'
   'python-progress'
@@ -31,7 +31,7 @@ makedepends=('python-setuptools')
 conflicts=('python-pip-audit-git')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trailofbits/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('77c0552f840ca17fb9a80e9dd594bf8faf74aad5331e1689ad6b7c436d29589fd1b5db9db3e41a16679934fe1856ad0d0821ee5c52a5d4508fda6236bdf27f22')
+sha512sums=('f51c9911b57db1dcff74730041ef9cdc8913939c6d21bad1fcfc44feb1ce4c6d9cff00d6fd4e74c2defc04defdacac701c80dc8a65ef3e9fa9e3a10ac53dd9b7')
 
 build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
