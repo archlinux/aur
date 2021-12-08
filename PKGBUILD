@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.3.10.0
+pkgver=2.3.10.1
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -34,7 +34,7 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('3b8a43135792373da7d8897a5937dce96cfd2a2bfb92ff8c51a870df1e9cfbd9')
+sha256sums=('3b83d2329c5f1d771773ba149d4292b13492cbbc8a936fab63502372d8603995')
 
 _srcdir="oiio-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -58,7 +58,7 @@ build() {
 		cmake --build "build-${_arch}-static"
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF -DOIIO_BUILD_TESTS=OFF \
-		-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF -DOIIO_BUILD_TOOLS=ON
+			-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF -DOIIO_BUILD_TOOLS=ON
 		cmake --build "build-${_arch}"
 	done
 }
