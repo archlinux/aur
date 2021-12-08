@@ -1,0 +1,19 @@
+pkgbase = web-greeter
+	pkgdesc = A modern, visually appealing greeter for LightDM
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/JezerM/web-greeter
+	arch = x86_64
+	license = GPL3
+	makedepends = rsync
+	makedepends = zip
+	depends = lightdm
+	depends = python3
+	depends = python-gobject
+	depends = python-pyqt5
+	depends = qt5-webengine
+	depends = gobject-introspection
+	source = web-greeter-3.2.0.tar.gz::https://github.com/JezerM/web-greeter/archive/3.2.0.tar.gz
+	sha512sums = aa9a24a54f1d1becc33d7b1d5f90fd8960ca94372648c665a7858a8d546b932c2f3e9ce158cae6530f439a9fe85861769e26933fe043ef8b6914bd71384bf15f
+
+pkgname = web-greeter
