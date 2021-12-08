@@ -1,6 +1,6 @@
 pkgbase = yle-dl
 	pkgdesc = Download video and audio from YLE Areena.
-	pkgver = 20211203
+	pkgver = 20211207
 	pkgrel = 1
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = yle-dl
 	depends = python-lxml
 	depends = python-requests
 	optdepends = wget: for some rare streams
-	source = yle-dl-20211203.tar.gz::https://github.com/aajanki/yle-dl/archive/refs/tags/20211203.tar.gz
-	sha256sums = 62baa58b9620f78e70423d413be5efccbae0606d626e816ae8192514d18a574c
+	source = yle-dl-20211207.tar.gz::https://github.com/aajanki/yle-dl/archive/refs/tags/20211207.tar.gz
+	sha256sums = 425a2043ff7ab7ce274b08ebb41a9341a7c4bb65aa9dfe75d46c614768126d8e
 
 pkgname = yle-dl
