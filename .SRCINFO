@@ -1,6 +1,6 @@
 pkgbase = android-studio
 	pkgdesc = The official Android IDE (Stable branch)
-	pkgver = 2020.3.1.25
+	pkgver = 2020.3.1.26
 	pkgrel = 1
 	url = https://developer.android.com/
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = android-studio
 	optdepends = libgl: emulator support
 	optdepends = ncurses5-compat-libs: native debugger support
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2020.3.1.25/android-studio-2020.3.1.25-linux.tar.gz
+	source = https://dl.google.com/dl/android/studio/ide-zips/2020.3.1.26/android-studio-2020.3.1.26-linux.tar.gz
 	source = android-studio.desktop
 	source = license.html
-	sha256sums = cfc96e4981ad17e27ba91681fada06553fb118960c95f49232f72f30c2e2f781
+	sha256sums = 344d858235ed5d3095ac25916a4a8f8730069f76e5a5fd0eba02522af88f541b
 	sha256sums = 73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4
 	sha256sums = 9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e
 
