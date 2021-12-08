@@ -1,0 +1,54 @@
+From e3ef7eedc94fe4eb2af2f79324bfaf4e56b37961 Mon Sep 17 00:00:00 2001
+From: Qiang Yu <yuq825@gmail.com>
+Date: Wed, 8 Dec 2021 10:57:45 +0800
+Subject: [PATCH] glx: fix regression for drawable type detection
+
+Newer version of XServer supporting GLX_DRAWABLE_TYPE query also
+support query with raw X11 window ID besides GLXWindow ID. So we
+should not limit the suppported type to GLXPbuffer when query
+success.
+
+Otherwise can't start GLX application on newer XServer with:
+
+  libGL error: GLX drawable type is not supported
+  libGL error: GLX drawable type is not supported
+  X Error of failed request:  GLXBadContext
+    Major opcode of failed request:  149 (GLX)
+    Minor opcode of failed request:  5 (X_GLXMakeCurrent)
+    Serial number of failed request:  35
+    Current serial number in output stream:  35
+
+Fixes: 6625c960c58 ("glx: check drawable type before create drawble")
+
+Signed-off-by: Qiang Yu <yuq825@gmail.com>
+---
+ src/glx/dri_common.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/src/glx/dri_common.c b/src/glx/dri_common.c
+index 0be684dda95..27e78fb3799 100644
+--- a/src/glx/dri_common.c
++++ b/src/glx/dri_common.c
+@@ -392,15 +392,13 @@ driFetchDrawable(struct glx_context *gc, GLXDrawable glxDrawable)
+ 
+    /* Infer the GLX drawable type. */
+    if (__glXGetDrawableAttribute(dpy, glxDrawable, GLX_DRAWABLE_TYPE, &type)) {
+-      if (type != GLX_PBUFFER_BIT) {
+-         ErrorMessageF("GLX drawable type is not supported\n");
++      /* Xserver may support query with raw X11 window. */
++      if (type == GLX_PIXMAP_BIT) {
++         ErrorMessageF("GLXPixmap drawable type is not supported\n");
+          return NULL;
+       }
+    } else {
+-      /* Xserver may not implement GLX_DRAWABLE_TYPE query yet, or glxDrawable
+-       * is a X window. Assume it's a GLXPbuffer in former case, because we don't
+-       * know GLXPixmap and GLXWindow's X drawable ID anyway.
+-       */
++      /* Xserver may not implement GLX_DRAWABLE_TYPE query yet. */
+       type = GLX_PBUFFER_BIT | GLX_WINDOW_BIT;
+    }
+ 
+-- 
+2.34.1
+
