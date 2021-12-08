@@ -1,16 +1,15 @@
 pkgbase = ruby-json_pure
 	pkgdesc = JSON Implementation for Ruby
-	pkgver = 2.5.1
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = http://flori.github.com/json
 	arch = any
 	license = RUBY
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = json_pure-2.5.1.gem
+	noextract = json_pure-2.6.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/json_pure-2.5.1.gem
-	sha1sums = 271ccd98ae9db6cbc6223df5a374ad529dc11e39
+	source = https://rubygems.org/downloads/json_pure-2.6.1.gem
+	sha1sums = 39ae8150208741b832e54244aa441cf103cfc0ec
 
 pkgname = ruby-json_pure
-
