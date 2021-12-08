@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-libpurple
+	pkgver = 2.14.8
+	pkgrel = 1
+	url = https://pidgin.im/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	options = !emptydirs
+	options = !strip
+	options = !buildflags
+	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.8/pidgin-2.14.8.tar.bz2
+	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.8/pidgin-2.14.8.tar.bz2.asc
+	validpgpkeys = 40DE1DC7288FE3F50AB938C548F66AFFD9BDB729
+	sha256sums = 3f8085c0211c4ca1ba9f8a03889b3d60738432c1673b57b0086070ef6e094cca
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libpurple
+	pkgdesc = IM library extracted from Pidgin
+	depends = mingw-w64-libxml2
+	depends = mingw-w64-cyrus-sasl
+	depends = mingw-w64-nss
+	depends = mingw-w64-meanwhile
+	depends = mingw-w64-silc-toolkit
