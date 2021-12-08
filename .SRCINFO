@@ -1,7 +1,7 @@
 pkgbase = multimc-native
-	pkgdesc = MultiMC without the non-native download script.
-	pkgver = 0.6.13.2519
-	pkgrel = 2
+	pkgdesc = MultiMC binaries without the non-native download script.
+	pkgver = 0.6.14.2998
+	pkgrel = 1
 	url = https://multimc.org/
 	arch = x86_64
 	license = Apache
@@ -16,13 +16,13 @@ pkgbase = multimc-native
 	optdepends = glfw: to use system GLFW libraries
 	provides = multimc
 	conflicts = multimc
-	source = multimc-0.6.13.2519.tar.gz::https://github.com/MultiMC/Launcher/releases/download/0.6.13/mmc-stable-lin64.tar.gz
+	source = multimc-0.6.14.2998.tar.gz::https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz
 	source = multimc.svg
 	source = multimc.desktop
 	source = multimc
-	sha256sums = 96a660ca8b81c4214489bfb390911bce554c65c980e7b5ee0d5d8e11becd15bd
+	sha256sums = b99051b70903c7229877c9c2bc2ccaf1c20bb2510a5e4082d0113331bd321023
 	sha256sums = 8c2c1ff1f4ce4ca7a7453ec1f7f666087f4319db7c654f81a7827a34f0c17e33
 	sha256sums = 6d12903a5630c9ff7aa35769566f29a8b4b591024cc61be826f4a3b1e8bea3bc
-	sha256sums = 3daa7b436cd7230d06a8808a9c9b5e6b4612572350d928149125a88a1ca5a515
+	sha256sums = e92fbc457b2cb00515450d7177a9f3f367694b60c6caaeb8b4069ca74b123b70
 
 pkgname = multimc-native

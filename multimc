@@ -1,3 +1,2 @@
 #!/bin/bash
-
-exec /usr/lib/multimc/MultiMC -d "$HOME/.local/share/multimc" "$@"
+exec /usr/lib/multimc/MultiMC -d "${XDG_DATA_HOME-"$HOME"/.local/share}/multimc" "$@"
