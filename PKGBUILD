@@ -1,7 +1,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname=mounch
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A simple rofi based launcher based on yaml config"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('utils')
 depends=('python>=3.6' 'python-yaml' 'rofi')
 makedepends=('python-setuptools')
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/chmouel/mounch/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('02ea8ba3c6d57ff722e7f545316a41abb692608581746efb39a5089d74f7059121cb251549d253762488bb168e9c0f79e4107394d409d22ae7f8f35fa37c83be')
+sha512sums=('18e112fada38897c0d766e60b1d456fc68e3560e91841e43f482a9ea06d2578bbe0d64d12c2bda847819b2eb4742bdb54b847aa04cc34bfc14840c11d2bccef1')
 
 
 package() {
