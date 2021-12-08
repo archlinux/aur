@@ -1,4 +1,4 @@
-# Maintainer: Stefan J. Betz <info@stefan-betz.net>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=dibbler-git
 pkgver=1.0.1.r129.ga7c6cf58
 pkgrel=1
