@@ -21,7 +21,6 @@ prepare() {
 
 build() {
   cd "${_base}-python-${pkgver}"
-  python setup.py --help
   python setup.py build_py -cO1
   python setup.py build_ext --extra-cmake-args="-DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_STANDARD=14 -DBUILD_SHARED_LIBS=TRUE"
   python setup.py build_clib
