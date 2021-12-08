@@ -2,7 +2,7 @@
 _fname=stdlib
 pkgname=fortran_${_fname}
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Fortran standard library"
 url="https://github.com/fortran-lang/stdlib"
@@ -22,7 +22,7 @@ build() {
 
   FC=gfortran cmake \
     -GNinja \
-    -DCMAKE_INSTALL_PREFIX=${MINGW_PREFIX} \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -B"${_build}"
   cmake --build "${_build}"
@@ -34,5 +34,5 @@ package() {
   DESTDIR="${pkgdir}" \
   cmake --install .
 
-  install -Dm0644 ${srcdir}/${_fname}-${pkgver}/LICENSE ${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/LICENSE
+  install -Dm0644 "${srcdir}/${_fname}-${pkgver}/LICENSE" "${pkgdir}/share/licenses/${pkgname}/LICENSE"
 }
