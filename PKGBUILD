@@ -32,7 +32,7 @@ source=("https://st.com/content/ccc/resource/technical/software/firmware/group1/
 sha256sums=('56666bd0985fa403008b0a88194266a92dcf346232fa0f4de8a9d072bee62318'
             'ccf814ca4b768285e611c809be147be2b0df10d39ceedfafa7f901a56bd4fcd3'
             'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
-            '2ceecf9925b8f55418fe75068976125d8b45cf24aecd7e87b8b05d03e4a4c50b')
+            'SKIP')
 
 package() {
 
