@@ -22,6 +22,6 @@ pkgbase = hoffice-viewer
 	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_viewer_2020_amd64.deb
 	source = LICENSE
 	sha256sums = db25bfbbe3661625ef3640f619db106f7be9745808277f8a0614f859270dacdd
-	sha256sums = 50d024b38be8a8463b283b0aac5f04bb7e2738ee2573f1edbf5328e43ae1b5c7
+	sha256sums = f2524728f91bf392edfbc3afce2126c7f0df8e22fc00b798f09e50693cf852e0
 
 pkgname = hoffice-viewer
