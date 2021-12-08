@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Launch application
-exec /opt/imagine-git/imagine "$@"
+exec /opt/imagine/imagine "$@"
