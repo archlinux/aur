@@ -15,6 +15,7 @@ arch=('any')
 url='https://sr.ht/~cdrozak/bawesome'
 license=('Apache')
 depends=('awesome')
+makedepends=('ldoc')
 source=("v$pkgver.tar.gz::${_git_url}/archive/v$pkgver.tar.gz")
 md5sums=('d015f4d10c31d78125c2d4e3943b7243')
 

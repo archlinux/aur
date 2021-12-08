@@ -5,6 +5,7 @@ pkgbase = awesome-bawesome
 	url = https://sr.ht/~cdrozak/bawesome
 	arch = any
 	license = Apache
+	makedepends = ldoc
 	depends = awesome
 	source = v0.1.1.tar.gz::https://git.sr.ht/~cdrozak/bawesome/archive/v0.1.1.tar.gz
 	md5sums = d015f4d10c31d78125c2d4e3943b7243
