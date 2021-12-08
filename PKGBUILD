@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='kclock'
-pkgver=21.08
+pkgver=21.12
 pkgrel=1
 pkgdesc='Convergent clock application for Plasma'
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ makedepends=('extra-cmake-modules')
 provides=('kclockd')  # as well as kclock (pkgname)
 conflicts=('kclock' 'kclockd')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b8b2bdedb422127d211f1a1c80e5e2318711b47e2d05a4e1e4584d3236c37f99')
+sha256sums=('ce6f66269d8e3d93be2578a201a452a2d186ed4958ff8438a6ecd09c3f8b0129')
 
 build() {
   cmake -B 'build' -S "${pkgname}-v${pkgver}" \
