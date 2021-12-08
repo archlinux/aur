@@ -1,0 +1,13 @@
+pkgbase = python2-crypto
+	pkgdesc = gpg interface
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/chrissimpkins/crypto
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/c/crypto/crypto-1.4.1.tar.gz
+	b2sums = 06d131e01a2d46f713f9ac2c323acbda8853e7f8ec8d5e22553469ad5ab71efc378caea79b4d384dc7040b9409171ccbdb1434ffbf23cae6412cd9e0e8d31e59
+
+pkgname = python2-crypto
