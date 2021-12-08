@@ -13,19 +13,16 @@ license=('Apache-2.0')
 depends=('clang' 'lld')
 options=('!strip')
 source=(
-    "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${_pkgver_major}/wasi-sysroot-${pkgver}.tar.gz"
-    "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${_pkgver_major}/libclang_rt.builtins-wasm32-wasi-${pkgver}.tar.gz"
+    "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${_pkgver_major}/wasi-sdk-${pkgver}-linux.tar.gz"
 )
-sha512sums=('e44a9cc02a5cd6dab22e345c9f4be529d79e5191f6b6bc462e032f7bd04b4161294430cfde235a66d503965f1d0154479cc8201152bcea1fb48c1a01289d94f9'
-            '555c575c7188b81a2926046daec12721c1d2c1f67f1c06dcbafad0ac6fe417fd826de89f0d47699e9154e684ea6bae528595f164d945b0eb94ebe9708ea93b5c')
+sha512sums=('288a367e051f5b3f5853de97fabaedd3acf2255819d50c24f48f573897518500ea808342fd9aea832b2a5717089807bf1cbcf6d46b156b4eb60cc6b3c02ee997')
 
 package() {
     _clang_version=$(clang --version | grep version | cut -d" " -f3)
     cd $srcdir
-    mkdir -p "$pkgdir/opt/wasi-sdk" "$pkgdir/usr/lib/clang/${_clang_version}/"
+    mkdir -p "$pkgdir/opt/wasi-sdk"
 
-    mv wasi-sysroot "$pkgdir/opt/wasi-sdk/"
-    mv lib "$pkgdir/usr/lib/clang/${_clang_version}/"
+    mv wasi-sdk-${pkgver}/* "$pkgdir/opt/wasi-sdk/"
 }
 # vim:set ts=2 sw=2 et:
 
