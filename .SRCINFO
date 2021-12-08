@@ -1,7 +1,7 @@
 pkgbase = fortran_stdlib
 	pkgdesc = Fortran standard library
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fortran-lang/stdlib
 	arch = i686
 	arch = x86_64
