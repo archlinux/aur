@@ -1,6 +1,6 @@
 pkgbase = waterfox-g4-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions
-	pkgver = 0.3.1
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = waterfox-g4-kpe
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G4.0.3.1
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G4.0.4
 	source = waterfox-g4.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/waterfox-g4.desktop
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/distribution.ini
 	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/vendor.js
@@ -57,11 +57,7 @@ pkgbase = waterfox-g4-kpe
 	source = mozilla-ntlm-full-path.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/mozilla-ntlm-full-path.patch
 	source = Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/Use-remoting-name-for-GDK-application-names.patch
 	source = sandbox-fips.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/sandbox-fips.patch
-	source = branded-icons.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/branded-icons.patch
-	source = fix-testing-build.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/fix-testing-build.patch
 	source = fix-langpack-id.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/fix-langpack-id.patch
-	source = git_sourcestamp-info.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/git_sourcestamp-info.patch
-	source = fix-3pgo.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/fix-profiler.patch
 	sha256sums = SKIP
 	sha256sums = 76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb
 	sha256sums = bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26
@@ -76,11 +72,7 @@ pkgbase = waterfox-g4-kpe
 	sha256sums = 2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f
 	sha256sums = 138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d
 	sha256sums = c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4
-	sha256sums = 8aeb1c141bfafce19a41805f9f8b14af6e9293cfc36a198af813ca88d5431de5
-	sha256sums = cbe5e43387b473b80b4c25db30feb013fa32725a181e0c7e8be8685b1cf5a59b
 	sha256sums = e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5
-	sha256sums = 046d8fc9f2986d128af25daea8657c858157ac860f83f14821fb678520e6147d
-	sha256sums = 46e446b1f004ed643b6865ac006acbb581c93f9eec24ea022278b15e6c67e3f0
 
 pkgname = waterfox-g4-kpe
 	optdepends = networkmanager: Location detection via available WiFi networks
@@ -90,4 +82,4 @@ pkgname = waterfox-g4-kpe
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = kwaterfoxhelper: KDE Plasma Integration
-	provides = waterfox-g4=0.3.1
+	provides = waterfox-g4=0.4

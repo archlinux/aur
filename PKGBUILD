@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g4-kpe
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -29,11 +29,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
         "mozilla-ntlm-full-path.patch::$_filesurl/patches/mozilla-ntlm-full-path.patch"
         "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
-        "branded-icons.patch::$_filesurl/patches/branded-icons.patch"
-        "fix-testing-build.patch::$_filesurl/patches/fix-testing-build.patch"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
-        "git_sourcestamp-info.patch::$_filesurl/patches/git_sourcestamp-info.patch"
-        "fix-3pgo.patch::$_filesurl/patches/fix-profiler.patch"
         )
 sha256sums=('SKIP'
             '76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb'
@@ -49,11 +45,7 @@ sha256sums=('SKIP'
             '2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f'
             '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             'c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4'
-            '8aeb1c141bfafce19a41805f9f8b14af6e9293cfc36a198af813ca88d5431de5'
-            'cbe5e43387b473b80b4c25db30feb013fa32725a181e0c7e8be8685b1cf5a59b'
-            'e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5'
-            '046d8fc9f2986d128af25daea8657c858157ac860f83f14821fb678520e6147d'
-            '46e446b1f004ed643b6865ac006acbb581c93f9eec24ea022278b15e6c67e3f0')
+            'e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5')
 
 prepare() {
 
@@ -72,11 +64,7 @@ prepare() {
   patch -Np1 -i ../mozilla-ntlm-full-path.patch
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
-  patch -Np1 -i ../branded-icons.patch
-  patch -Np1 -i ../fix-testing-build.patch
   patch -Np1 -i ../fix-langpack-id.patch
-  patch -Np1 -i ../git_sourcestamp-info.patch
-  patch -Np1 -i ../fix-3pgo.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
