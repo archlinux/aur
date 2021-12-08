@@ -1,6 +1,6 @@
 # original source code from crian <crian84 at gmail dot com> / temp package till 1.8.1 out
 # this will be deleted when 1.8.1 out
-pkgname=auto-cpufreq
+pkgname=auto-cpufreq-no-gnome-power
 pkgver=1.8.0
 pkgrel=1
 pkgdesc='TEMP Automatic CPU speed & power optimizer with non-systemd-gnome-power. original source code from crian. this will be deleted when 1.8.1 out'
@@ -11,6 +11,7 @@ depends=('python-distro' 'python-psutil' 'python-click' 'dmidecode')
 optdepends=('cpufreqctl: CPU Power Manager'
             'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell')
 makedepends=('git' 'python-setuptools')
+conflicts=('auto-cpufreq' 'auto-cpufreq-git')
 install="${pkgname}.install"
 source=("git+${url}.git")
 sha256sums=('SKIP')

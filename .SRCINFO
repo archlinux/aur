@@ -1,9 +1,9 @@
-pkgbase = auto-cpufreq
+pkgbase = auto-cpufreq-no-gnome-power
 	pkgdesc = TEMP Automatic CPU speed & power optimizer with non-systemd-gnome-power. original source code from crian. this will be deleted when 1.8.1 out
 	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/AdnanHodzic/auto-cpufreq
-	install = auto-cpufreq.install
+	install = auto-cpufreq-no-gnome-power.install
 	arch = any
 	license = LGPL-3.0
 	makedepends = git
@@ -14,7 +14,9 @@ pkgbase = auto-cpufreq
 	depends = dmidecode
 	optdepends = cpufreqctl: CPU Power Manager
 	optdepends = gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell
+	conflicts = auto-cpufreq
+	conflicts = auto-cpufreq-git
 	source = git+https://github.com/AdnanHodzic/auto-cpufreq.git
 	sha256sums = SKIP
 
-pkgname = auto-cpufreq
+pkgname = auto-cpufreq-no-gnome-power
