@@ -1,11 +1,12 @@
 # Maintainer: Stefan J. Betz <info@stefan-betz.net>
-pkgname=dibbler
-pkgver=RELEASE1.0.1+r129+ga7c6cf58
+pkgname=dibbler-git
+pkgver=1.0.1.r129.ga7c6cf58
 pkgrel=1
 pkgdesc="Dibbler, a portable DHCPv6"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://klub.com.pl/dhcpv6/"
 license=('GPL')
+conflicts=('dibbler')
 source=(git+https://github.com/tomaszmrugalski/dibbler
 	'dibbler-client.service')
 sha512sums=('SKIP'
@@ -13,7 +14,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd dibbler
-  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+  git describe --long --tags | sed 's/^RELEASE//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
