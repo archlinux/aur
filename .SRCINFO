@@ -1,6 +1,6 @@
 pkgbase = atuin
 	pkgdesc = atuin - magical shell history
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/ellie/atuin
 	arch = i686
@@ -11,4 +11,3 @@ pkgbase = atuin
 	makedepends = cargo
 
 pkgname = atuin
-

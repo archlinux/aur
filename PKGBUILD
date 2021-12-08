@@ -1,6 +1,6 @@
 # Maintainer: Ellie Huxtable <e@elm.sh>
 pkgname=atuin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
