@@ -2,7 +2,7 @@
 
 pkgname=dell-g5se-fanctl
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 _srcpkgver=3.3-2
 pkgdesc='Script to automatically set fan speed according to cpu and gpu thermals on Dell G5SE laptops.'
 url='https://github.com/DavidLapous/DellG5SE-Fan-Linux'
@@ -32,7 +32,7 @@ backup=('etc/dell-g5se-fanctl.conf')
 
 build() {
 	mkdir -p "build"
-	g++ -std=c++20 -lstdc++fs ${CXXFLAGS} "${_srcdir}/DellFan.cpp" -o 'build/dell-g5se-fanctl'
+	g++ -std=c++20 -lstdc++fs ${CPPFLAGS} ${CXXFLAGS} "${_srcdir}/DellFan.cpp" -o 'build/dell-g5se-fanctl'
 }
 
 package() {
