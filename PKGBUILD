@@ -4,8 +4,8 @@
 
 _pkgname=kse
 pkgname=keystore-explorer
-pkgver=5.4.4
-pkgrel=2
+pkgver=5.5.0
+pkgrel=1
 pkgdesc='KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner'
 arch=('any')
 url='https://keystore-explorer.org'
@@ -13,15 +13,8 @@ license=('GPL3')
 depends=('java-runtime')
 makedepends=('gradle' 'java-environment')
 conflicts=('keystore-explorer-bin' 'keystore-explorer-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kaikramer/${pkgname}/archive/v${pkgver}.tar.gz"
-        "${pkgname}-fix-282.patch")
-sha256sums=('18d60f452e81ab6009df5e5d7b40d5a6f0aca570efd198de44c7980031bf99b1'
-            '45782f76b3556c0705f9ef47493642cf69ef3cba226ac8aee1560a7c97464d70')
-
-prepare() {
-  # Fix gradle build #282
-  patch -d "${pkgname}-${pkgver}"/${_pkgname} -p1 <"${pkgname}"-fix-282.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kaikramer/${pkgname}/archive/v${pkgver}.tar.gz")
+b2sums=('07721f9775494aa793b409797fcf4a437b3ad856db2620c8584f57caf1c81cc8c97e25e99eb2e2ac0081f39121d1cc966bc8a51c52a2e64b80a2d2e1a1ebc0dd')
 
 build() {
   cd "${pkgname}-${pkgver}"/${_pkgname}
@@ -45,13 +38,13 @@ package() {
 
   # Desktop
   for size in 16 32 48 128 256 512; do
-    install -Dm644 "${_pkgname}/res/icons/${_pkgname}_${size}.png" \
+    install -Dm644 "${_pkgname}/icons/${_pkgname}_${size}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png"
   done
-  install -Dm644 "${_pkgname}/res/icons/${_pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+  install -Dm644 "${_pkgname}/icons/${_pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
   install -Dm644 "${_pkgname}/res/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Doc
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${_pkgname}/res/readmes/readme.txt" "${pkgdir}/usr/share/doc/${pkgname}/readme.txt"
+  install -Dm644 "${_pkgname}/res/readme.txt" "${pkgdir}/usr/share/doc/${pkgname}/readme.txt"
 }
