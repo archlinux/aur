@@ -3,3 +3,4 @@ src/
 pkg/
 klipper/
 klipper-dict.tar.gz
+klipper-*.tar.gz
