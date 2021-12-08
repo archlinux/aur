@@ -1,11 +1,11 @@
 # Maintainer: Hemish <hemish04082005@gmail.com>
 pkgname=backman
 
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.4
+pkgrel=0
 
 pkgdesc="Backman is a random/fixed background image setter for major GTK desktops, X11, sway and other wlroots based wayland compositors"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/securearth/backman"
 license=('MIT')
 depends=(
@@ -13,7 +13,7 @@ depends=(
 		"swaybg"
 		"python-toml"
 		"hsetroot"
-        "bash"
+        	"bash"
 		)
 makedepends=()
 optdepends=()
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/securearth/backman/archive/refs/tags/0.3.2.tar.gz")
+source=("https://github.com/securearth/backman/archive/refs/tags/0.4.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()

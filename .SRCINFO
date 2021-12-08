@@ -1,9 +1,9 @@
 pkgbase = backman
 	pkgdesc = Backman is a random/fixed background image setter for major GTK desktops, X11, sway and other wlroots based wayland compositors
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.4
+	pkgrel = 0
 	url = https://github.com/securearth/backman
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python>=3.5
 	depends = swaybg
@@ -12,7 +12,7 @@ pkgbase = backman
 	depends = bash
 	provides = backman
 	conflicts = backman-git
-	source = https://github.com/securearth/backman/archive/refs/tags/0.3.2.tar.gz
+	source = https://github.com/securearth/backman/archive/refs/tags/0.4.tar.gz
 	md5sums = SKIP
 
 pkgname = backman
