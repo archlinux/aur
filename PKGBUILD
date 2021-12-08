@@ -1,12 +1,13 @@
 pkgname=jellyshuf
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 license=("MIT" "Apache")
 arch=('any')
 pkgdesc="Randomly add items to mpd queue from jellyfin (use in tandem with mopidy-jellyfin)"
 url="https://github.com/deafmute1/jellyshuf"
 makedepends=("python-setuptools")
 depends=(
+	"python"
 	"python-requests"
 	"python-appdirs"
 	"python-musicpd"
@@ -33,4 +34,5 @@ package() {
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
 
