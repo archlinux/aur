@@ -20,9 +20,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=256
+_minor=257
 _srcname=linux-${_major}
-_clr=${_major}.255-181
+_clr=${_major}.256-182
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -274,7 +274,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'c67b651b48ba55197f3c42812a6ab92ed884800fccec002575ba26a1736ebbcb'
+            '524b305357b8ed3f1b212203f5576e6a183992770631fd032a56061faa7ddfc7'
             'SKIP')
 
 validpgpkeys=(
