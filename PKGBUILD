@@ -1,5 +1,6 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: graysky <graysky at archlinux dot us>
 
 _pkgname=deja-dup
 pkgname=$_pkgname-git
