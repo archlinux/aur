@@ -1,3 +1,4 @@
+# Maintainer: Ethan Djeric <ethan@ethandjeric.com> 
 pkgname=jellyshuf
 pkgver=0.2.0
 pkgrel=2
