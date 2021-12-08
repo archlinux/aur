@@ -6,8 +6,8 @@
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.9.0
-_stlink_updater_ver=2.38.27
-pkgrel=3
+_stlink_updater_ver=3.9.3
+pkgrel=4
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -32,17 +32,17 @@ provides=("${pkgname}rammer")
 options=('!strip')
 _pkg_main_name="${pkgname//prog/prg}-lin_v${pkgver//./-}"
 _pkg_main_url_index="af/f8/e3/60/56/b9/42/9d"
-_stlink_updater_name="stsw-link007_V${_stlink_updater_ver//./-}"
-_stlink_url_index="4e/80/8d/29/e0/c7/4e/13"
+_stlink_updater_name="stsw-link007-v${_stlink_updater_ver//./-}"
+_stlink_url_index="16/ac/ae/04/0b/01/42/5a"
 # stm32cubeprog
 ## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
 # stsw-link007
 ## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-link007/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
 source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
-        "en.${_stlink_updater_name}.zip::https://st.com/content/ccc/resource/technical/software/firmware/group1/${_stlink_url_index}/${_stlink_updater_name}/files/${_stlink_updater_name}.zip/jcr:content/translations/en.${_stlink_updater_name}.zip"
+        "en.${_stlink_updater_name}.zip::https://www.st.com/content/ccc/resource/technical/software/firmware/group1/${_stlink_url_index}/${_stlink_updater_name}/files/${_stlink_updater_name}.zip/jcr:content/translations/en.${_stlink_updater_name}.zip"
         "${pkgname}.xdotool")
 sha256sums=('53b3648bd0297330b4e82eaba80d69d9fa50ac8e57a41c32d00ac32ca77ccad9'
-            'bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
+            '56666bd0985fa403008b0a88194266a92dcf346232fa0f4de8a9d072bee62318'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
 
 prepare() {
