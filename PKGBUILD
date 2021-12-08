@@ -71,12 +71,8 @@ ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-export MOZ_PGO=1
 export CC='clang'
 export CXX='clang++'
-export AR=llvm-ar
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
 
 # wasi sdk
 ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
