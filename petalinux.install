@@ -1,0 +1,4 @@
+post_install() {
+	echo 'Run the following command to add the PetaLinux tools to your shell:'
+	echo 'source /opt/petalinux/settings.sh'
+}
