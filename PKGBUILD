@@ -19,5 +19,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
