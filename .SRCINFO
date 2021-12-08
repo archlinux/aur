@@ -1,7 +1,7 @@
 pkgbase = dnsdist
 	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dnsdist.org/
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = dnsdist
 	makedepends = systemd
 	depends = fstrm
 	depends = gnutls
-	depends = h2o
+	depends = h2o-2.2
 	depends = libcap
 	depends = libedit
 	depends = libsodium
@@ -24,7 +24,7 @@ pkgbase = dnsdist
 	source = https://downloads.powerdns.com/releases/dnsdist-1.6.1.tar.bz2.asc
 	source = sysusers.conf
 	validpgpkeys = D6300CABCBF469BBE392E503A208ED4F8AF58446
-	sha512sums = f6a1676c431d5622af075bc184c9f82b4ea0bb40ec84797a8fe835804f91bc0a93a745495f193bb52f3a5204ec0e98ed41bc206c997d1f5b13e872bb31747b0f
+	sha512sums = 68e114eeb1a7ae8a4ce52a7de31095c46d0ba8f572676a8ef1e858b97da199c04ec88656c7642160ba07b7db325cc2a49cd91794da8dd2e81a5301d089c34f90
 	sha512sums = SKIP
 	sha512sums = d55ccd612cbe08b353815027d30a3b0f0ec7bf6b0d74a0a634939be53ce6e6b41d23e54c2328946f00738c03e9f306ce4f2dabe5e4b11d9fb28d0abf49917893
 
