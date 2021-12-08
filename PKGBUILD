@@ -3,7 +3,7 @@
 
 _gemname=excon
 pkgname=ruby-$_gemname
-pkgver=0.88.0
+pkgver=0.89.0
 pkgrel=1
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=('rubygems' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('0f92ca3f3abfe5c7058e3bb190914eecd5dee08c8c6f9708f74600bc5be62e3cabb16de5696ae57352663f3f4cc0aef846215aeb893e63d3d8a209fba49ce8a2')
-b2sums=('a0867ec1da392fe2f7662ae461761d036ea283227034e7c48c872917ebb2eaf045bc5518c07e1122fce92efbe352961350e26e184b94540207c2a19ae75fbb83')
+sha512sums=('bd615bc04bc683a7264159f3f89529d92e8098b75b694889eec339699abafc51338c4b6d73c29a09c0264d7cd6eeb034245379297972fed8dd9f7cc4190b1d30')
+b2sums=('8237f636161d1d33d5944fbfda93dc7f9d6a60d204293d9e854b9c8be8692a4eccf1eed3dc9454bacb193e006cb176bcb9f482028aeb3813c5af23af1ce560fc')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -50,6 +50,7 @@ package() {
     --format ri \
     --output "$pkgdir$_gemdir/doc/$_gemname-$pkgver/ri" \
     ./lib
+
   # delete unnecessary rdoc metadata file
   rm -f "$pkgdir$_gemdir/doc/$_gemname-$pkgver/ri/created.rid"
 }
