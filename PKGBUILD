@@ -1,6 +1,6 @@
 pkgname=jellyshuf
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 license=("MIT" "Apache")
 arch=('any')
 pkgdesc="Randomly add items to mpd queue from jellyfin (use in tandem with mopidy-jellyfin)"
@@ -10,15 +10,17 @@ depends=(
 	"python-requests"
 	"python-appdirs"
 	"python-musicpd"
+	"python-keyring"
+	"dbus-python"
 )
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 optdepends=(
 	"mopidy: to enable access to jellyfin music files via a local MPD server" 
 	"mopidy-jellyfin: to enable access to jellyfin music files via a local MPD server" 
-	"mopidy-mpd: to enable access jellyfin music files via a local MPD server"
+	"mopidy-mpd: to enable access to jellyfin music files via a local MPD server"
 )
-sha256sums=('a10cf873050cafe51c1ec3d646c45f9d6485e02efb1bc5a784821c92023053ff')
+sha256sums=('36fcb49ca9147f5b64c1eacd83acce9c344cc776ef66d2b3e36f594062cbc26e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -31,3 +33,4 @@ package() {
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
