@@ -1,15 +1,17 @@
 pkgbase = deja-dup-git
 	pkgdesc = Simple backup tool, that hides the complexity of backing up the Right Way and uses duplicity as the backend
-	pkgver = 42.4+142+g39e801e8
+	pkgver = 43.beta+14+g9052f8b7
 	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/DejaDup
 	arch = any
 	license = GPL
 	makedepends = appstream-glib
+	makedepends = git
 	makedepends = itstool
 	makedepends = meson
 	makedepends = vala
 	depends = duplicity
+	depends = gtk4
 	depends = gvfs
 	depends = libadwaita
 	depends = libsecret
@@ -23,4 +25,3 @@ pkgbase = deja-dup-git
 	sha512sums = SKIP
 
 pkgname = deja-dup-git
-
