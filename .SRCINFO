@@ -34,6 +34,7 @@ pkgbase = rstudio-desktop-git
 	depends = pandoc
 	depends = yaml-cpp
 	depends = quarto-cli-bin
+	depends = libldap24
 	optdepends = git: for git support
 	optdepends = subversion: for subversion support
 	optdepends = openssh-askpass: for a git ssh access
