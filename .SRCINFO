@@ -1,0 +1,13 @@
+pkgbase = dtc-python2
+	pkgdesc = Device Tree Compiler
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://www.devicetree.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	makedepends = swig
+	source = https://www.kernel.org/pub/software/utils/dtc/dtc-1.6.1.tar.xz
+	b2sums = c6fd93ede494923bcad1ac9aabe328f13333d70ccb52c048b085392cc5ebfe886c442bd95733a14044381b65a6eca130c57c473e6a5f8573e301dbe52cc4875d
+
+pkgname = dtc-python2
