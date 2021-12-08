@@ -1,14 +1,15 @@
 pkgbase = tkn-pac
 	pkgdesc = CLI for interacting with Openshift Pipelines as Code
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/openshift-pipelines/pipelines-as-code
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	makedepends = git
 	depends = glibc
-	source = https://github.com/openshift-pipelines/pipelines-as-code/archive/refs/tags/0.5.0.tar.gz
-	sha512sums = fb74b67c28f15d107287146b21064124533906a3030836ce54fcec66e4d97f4fa4787a26299454747830c9ca286e965d581fb38568ff6d3e31b95489b7e733b9
+	depends = kubectl
+	depends = tekton-cli
+	source = tkn-pac_0.5.2-1.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/archive/refs/tags/0.5.2.tar.gz
+	sha512sums = b6d34f2830addd3916e011f88b5f86d90289af6d4d9a68b0d8915cb632d414bcc25633103d99ceec675002169cd5ebe27b824716351048abe57dff2549edbcb1
 
 pkgname = tkn-pac
