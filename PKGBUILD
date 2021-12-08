@@ -6,14 +6,14 @@ pkgdesc='DefiChain Wallet AppImage'
 _pkgbin=defi-wallet
 license=('MIT')
 url='https://github.com/DeFiCh/app'
-pkgver=v2.7.3
+pkgver=v2.8.0
 pkgrel=1
 arch=('x86_64')
 _package="DeFi-Wallet-${pkgver#v}.AppImage"
 provides=('defi-app')
 conflicts=('defi-app')
 source=("${_package}::${url}/releases/download/${pkgver}/${_package}")
-sha256sums=('05ce2ff29611abfb6669ebe837245c89752a7dc4e4043836136779f90dea3d88')
+sha256sums=('2f88622de9767283aacbdf0bcb40da7a4e59bb67c5f302187a9930f9863878ba')
 OPTIONS=(!strip)
 
 prepare() {
