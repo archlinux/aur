@@ -22,6 +22,7 @@ pkgver() {
 build() {
   cd "$srcdir"/ems-flasher
   ./config.sh --prefix /usr
+  sed -i '/^CFLAGS/ s/$/ -fcommon/' Makefile
   make
 }
 
