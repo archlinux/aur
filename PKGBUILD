@@ -3,7 +3,7 @@
 
 pkgname=box64
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ptitSeb/box64'
@@ -31,7 +31,6 @@ build() {
 
 package() {
     cd ${pkgname}-${pkgver}/build
-    make DESTDIR=${pkgdir} install
     if [[ $CARCH == "aarch64" ]]; then
       make DESTDIR=${pkgdir} install
     elif [[ $CARCH == "x86_64" ]]; then
