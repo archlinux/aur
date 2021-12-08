@@ -6,8 +6,8 @@
 pkgname=sway9
 pkgver=1.6.1
 epoch=1
-pkgrel=1
-_commit=057fabba28443e9ca5e9cf99d1b47eb0501fcdc8
+pkgrel=2
+_commit=2e86c22ab87900f0efcadc03a6aa23c345c7b60c
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
 url='https://github.com/9ary/sway9'
@@ -43,7 +43,7 @@ optdepends=(
 source=("git+https://github.com/9ary/$pkgname.git#commit=$_commit"
         "50-systemd-user.conf")
 sha512sums=('SKIP'
-            '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
+            'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
 
 build() {
   mkdir -p build
