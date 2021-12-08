@@ -1,23 +1,35 @@
-# Maintainer: 4679kun <4679kun@outlook.com>
+# Maintainer: Anatoly Bashmakov <anatoly at posteo.net>
+# Contributor: 4679kun <4679kun at outlook.com>
 
-pkgname=httpstat-go
 _pkgname=httpstat
-pkgver=1.0.0
+pkgname=$_pkgname-go
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="It's like curl -v, with colours."
-arch=('x86_64' 'i686')
-url="https://github.com/davecheney/httpstat"
+arch=('x86_64')
+url='https://github.com/davecheney/httpstat'
 license=('MIT')
-if [ "$CARCH" = "i686" ]; then
-  _PKGARCH=386
-else
-  _PKGARCH=amd64
-fi
-source_x86_64=("httpstat::https://github.com/davecheney/httpstat/releases/download/v1.0.0/httpstat-linux-amd64-v1.0.0")
-source_i686=("httpstat::https://github.com/davecheney/httpstat/releases/download/v1.0.0/httpstat-linux-386-v1.0.0")
-md5sums_x86_64=('9389453ae98f90c1514ae4b60049ac10')
-md5sums_i686=('9389453ae98f90c1514ae4b60049ac10')
+makedepends=('go')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/davecheney/httpstat/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('58260ab0a56557d0c2509ea09ee3fe54fe21a49f95d94189efdd64caec84fa67')
+
+prepare() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    mkdir -p build
+}
+
+build() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    mkdir -p build
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o build/$_pkgname
+}
 
 package() {
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    cd "$srcdir/$_pkgname-$pkgver"
+    install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
