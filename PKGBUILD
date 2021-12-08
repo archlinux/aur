@@ -19,7 +19,7 @@ provides=(${pkgname} ${_pkgnamelow})
 conflicts=(${_pkgnamelow})
 source=("https://github.com/Apple-Music-Electron/${_pkgname}/releases/download/v${pkgver}/apple-music-electron_${pkgver}_amd64.deb"
         "apple-music-electron.install")
-sha256sums=('5eb8497256995158b0e539d464122d81d281a195b3eaf941fcef4fc94e70b501'
+sha256sums=('d8a91c0171bde307e7da0eb3a40131c999b49c2fa59a7442fbce19f2b9d519b7'
             'b82a3d4ec0cac09d76346db489faa1a526f3e8e5c2d4d2c56c91416fc9c45f88')
 
 package(){
