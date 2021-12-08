@@ -3,18 +3,21 @@
 # Contributor: Markus Sommer <markus@splork.de>
 pkgname=core
 pkgver=7.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Open Research Emulator"
 arch=('i686' 'x86_64')
 url="https://github.com/coreemu/core/"
 license=('BSD')
+# 'python-certifi' should' be a dependency of 'python-pyproj',
+# but the corresponding bug report seems to be orphaned
 depends=('ebtables' 'ethtool' 'fabric' 'iproute2' 'libev' 'python'
          'python-grpcio' 'python-invoke' 'python-lxml' 'python-mako'
          'python-netaddr' 'python-pillow' 'python-protobuf' 'python-pyproj'
-         'python-yaml')
+         'python-yaml' 'python-certifi' 'python-decorator')
 makedepends=('help2man' 'imagemagick' 'python-dephell' 'python-grpcio-tools'
              'python-setuptools')
 optdepends=('openvswitch: Open vSwitch SDN support'
+            'tk: Legacy Tk-based GUI'
             'tkimg: Thumbnail support in Tcl/Tk GUI'
             'emane: Support for heterogeneous network emulation')
 backup=('etc/core/core.conf'
