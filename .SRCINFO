@@ -1,6 +1,6 @@
 pkgbase = archey3-git
-	pkgdesc = Python script to display system infomation alongside the Arch Linux logo.
-	pkgver = 172
+	pkgdesc = Python script to display system information alongside the Arch Linux logo.
+	pkgver = 0.4+r57+gac68752
 	pkgrel = 1
 	url = https://lclarkmichalek.github.io/archey3/
 	arch = any
@@ -8,14 +8,13 @@ pkgbase = archey3-git
 	makedepends = git
 	makedepends = python-distribute
 	depends = python
-	optdepends = python-mpd2: python libary for mpd interaction,
+	optdepends = python-mpd2: python library for mpd interaction,
 	optdepends = python-logbook: for logging
 	optdepends = imagemagick: for default screenshot command
 	provides = archey
 	conflicts = archey
 	conflicts = archey3
 	source = git+https://github.com/bluepeppers/archey3.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = archey3-git
-
