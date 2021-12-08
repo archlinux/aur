@@ -1,17 +1,15 @@
 pkgbase = dynd
-	pkgdesc = A dynamic array library (similar to python-numpy but written in C++).
+	pkgdesc = C++ dynamic ndarray library, with Python exposure
 	pkgver = 0.7.2
-	pkgrel = 1
-	url = https://github.com/libdynd/libdynd
-	arch = i686
+	pkgrel = 2
+	url = http://libdynd.org
 	arch = x86_64
 	groups = blaze-ecosystem
-	license = BSD
+	license = custom:BSD-2-clause
 	makedepends = cmake
 	depends = fftw
+	depends = llvm
 	source = https://github.com/libdynd/libdynd/archive/v0.7.2.tar.gz
-	md5sums = 7447e1c0620cfd51c32bc260a01e0a2c
-	sha1sums = e360c8da6cbb6b8f6d719458c067defbfee5d475
+	sha512sums = 134195ba5839e05af07dd9ad0b8e749a83345511acd2a22a029a4d9a2c0fc77a8a1f36722bce20653d28189b7883afe7feb651c7d32ff921ef257a8a9aa4bd7f
 
 pkgname = dynd
-
