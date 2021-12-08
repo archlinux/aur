@@ -275,7 +275,7 @@ post_install() {
                         ccid_reg.sh -add $pList 0x2fb0 0x0004 "Infocrypt Token++ - CP"
                         ccid_reg.sh -add $pList 0x2fb0 0x0006 "Infocrypt Token++ lite - CP"
                         ccid_reg.sh -add $pList 0x2fb0 0x0008 "Infocrypt Token++ lite - CP"
-                        ccid_reg.sh -add $pList 0x2fb0 0x003a "Infocrypt Token++ lite - CP"
+                        ccid_reg.sh -add $pList 0x2fb0 0x003a "Infocrypt Token++ - CP"
                         ccid_reg.sh -add $pList 0x2022 0x078a "Infocrypt HWDSSL DEVICE - CP"
                         ccid_reg.sh -add $pList 0x2022 0x016c "Infocrypt HWDSSL DEVICE - CP"
                         ccid_reg.sh -add $pList 0x2022 0x0172 "Infocrypt HWDSSL DEVICE - CP"
@@ -289,6 +289,14 @@ post_install() {
                         ccid_reg.sh -add $pList 0x23a0 0x0008 "BIFIT ANGARA - CP"
                         ccid_reg.sh -add $pList 0x1fc9 0x7479 "ISBC ESMART reader - CP"
                         ccid_reg.sh -add $pList 0x2ce4 0x7479 "ESMART Token - CP"
+                        ccid_reg.sh -add $pList 0x24DC 0x0101 "Aladdin R.D. JaCarta"
+                        ccid_reg.sh -add $pList 0x24DC 0x0402 "Aladdin R.D. JaCarta"
+                        ccid_reg.sh -add $pList 0x24DC 0x0406 "Aladdin JaCarta SF GOST"
+                        ccid_reg.sh -add $pList 0x24DC 0x0409 "Aladdin JaCarta-2 SF"
+                        ccid_reg.sh -add $pList 0x24DC 0x040D "Aladdin JaCarta SF"
+                        ccid_reg.sh -add $pList 0x24DC 0x04FF "Aladdin JaCarta SF GOST"
+                        ccid_reg.sh -add $pList 0x24DC 0x100F "Aladdin R.D. JaCarta Flash"
+                        ccid_reg.sh -add $pList 0x0529 0x0620 "eToken PRO Java 72K OS755"
                     done
                 fi
             fi
@@ -296,51 +304,65 @@ post_install() {
     fi
 
     # cprocsp-rdr-jacarta-64
-    cpconfig -ini '\config\apppath' -add string librdrjacarta.so.5.0.0 /opt/cprocsp/lib/amd64/librdrjacarta.so.5.0.0
+    LIBNAME=librdrjacarta
 
-    cpconfig -ini '\config\KeyCarriers\eToken_PRO16' -add string DLL librdrjacarta.so.5.0.0
-    cpconfig -ini '\config\KeyCarriers\eToken_PRO32' -add string DLL librdrjacarta.so.5.0.0
-    cpconfig -ini '\config\KeyCarriers\eToken_PRO_M420' -add string DLL librdrjacarta.so.5.0.0
-    cpconfig -ini '\config\KeyCarriers\eToken_PRO_M420B' -add string DLL librdrjacarta.so.5.0.0
-    cpconfig -ini '\config\KeyCarriers\eToken_JAVA_10' -add string DLL librdrjacarta.so.5.0.0
-    cpconfig -ini '\config\KeyCarriers\eToken_JAVA_10B' -add string DLL librdrjacarta.so.5.0.0
-    cpconfig -ini '\config\KeyCarriers\JaCarta' -add string DLL librdrjacarta.so.5.0.0
-    cpconfig -ini '\config\KeyCarriers\JaCarta_LT' -add string DLL librdrjacarta.so.5.0.0
+    cpconfig -ini '\config\apppath' -add string $LIBNAME.so /opt/cprocsp/lib/amd64/$LIBNAME.so
 
-    cpconfig -hardware media -add eToken_PRO16 -name 'Aladdin R.D. eToken Pro 16K' > /dev/null
-    cpconfig -hardware media -configure eToken_PRO16 -add hex atr 3be200ffc11031fe55c8029c
-    cpconfig -hardware media -configure eToken_PRO16 -add hex mask ffffffffffffffffffffffff
-    cpconfig -hardware media -configure eToken_PRO16 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
-    cpconfig -hardware media -add eToken_PRO32 -name 'Aladdin R.D. eToken Pro 32K' > /dev/null
-    cpconfig -hardware media -configure eToken_PRO32 -add hex atr 3bf29800ffc11031fe55c80315
-    cpconfig -hardware media -configure eToken_PRO32 -add hex mask ffffffffffffffffffffffffff
-    cpconfig -hardware media -configure eToken_PRO32 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
-    cpconfig -hardware media -add eToken_PRO_M420 -name 'Aladdin R.D. eToken Pro M420' > /dev/null
-    cpconfig -hardware media -configure eToken_PRO_M420 -add hex atr 3bf2180000c10a31fe55c80600
-    cpconfig -hardware media -configure eToken_PRO_M420 -add hex mask ffffffff00ffffffffffffff00
-    cpconfig -hardware media -configure eToken_PRO_M420 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
-    cpconfig -hardware media -add eToken_PRO_M420B -name 'Aladdin R.D. eToken Pro M420b' > /dev/null
-    cpconfig -hardware media -configure eToken_PRO_M420B -add hex atr 3bf2180002c10a31fe58c80975
-    cpconfig -hardware media -configure eToken_PRO_M420B -add hex mask ffffffffffffffffffffffffff
-    cpconfig -hardware media -configure eToken_PRO_M420B -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
-    cpconfig -hardware media -add eToken_JAVA_10 -name 'Aladdin R.D. eToken Java v1.0' > /dev/null
-    cpconfig -hardware media -configure eToken_JAVA_10 -add hex atr 3bd518008131fe7d8073c82110f4
-    cpconfig -hardware media -configure eToken_JAVA_10 -add hex mask ffffffffffffffffffffffffffff
-    cpconfig -hardware media -configure eToken_JAVA_10 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
-    cpconfig -hardware media -add eToken_JAVA_10B -name 'Aladdin R.D. eToken Java v1.0b' > /dev/null
-    cpconfig -hardware media -configure eToken_JAVA_10B -add hex atr 3bd5180081313a7d8073c8211030
-    cpconfig -hardware media -configure eToken_JAVA_10B -add hex mask ffffffffffffffffffffffffffff
-    cpconfig -hardware media -configure eToken_JAVA_10B -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
-    cpconfig -hardware media -add JaCarta -name 'Aladdin R.D. JaCarta' > /dev/null
-    cpconfig -hardware media -configure JaCarta -add hex atr 3bdc18ff8191fe1fc38073c821136601061159000128
-    cpconfig -hardware media -configure JaCarta -add hex mask ffffffffffffffffffffffffffffffffffffffffffff
-    cpconfig -hardware media -configure JaCarta -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
-    cpconfig -hardware media -add JaCarta_LT -name 'Aladdin R.D. JaCarta LT' > /dev/null
-    cpconfig -hardware media -configure JaCarta_LT -add hex atr 3bdc18ff8111fe8073c82113660106013080018d
-    cpconfig -hardware media -configure JaCarta_LT -add hex mask ffffffffffffffffffffffffffffffffffffffff
-    cpconfig -hardware media -configure JaCarta_LT -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    NAME="jacarta"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. JaCarta' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3bdc18ff8191fe1fc38073c821136601061159000128
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
 
-    bash /opt/cprocsp/tmp/PLIST-csp/Linux/update_all_plists.sh >/dev/null 2>&1
+    NAME="jacarta_lt"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. JaCarta LT' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3bdc18ff8111fe8073c82113660106013080018d
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
+
+    NAME="eToken_JAVA_10"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. eToken Java' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3bd518008131fe7d8073c82110f4
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
+
+    NAME="eToken_JAVA_10b"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. eToken Java' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3bd5180081313a7d8073c8211030
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
+
+    NAME="eToken_PRO16"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. eToken Pro 16K' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3be200ffc11031fe55c8029c                                               
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffff                                              
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
+
+    NAME="eToken_PRO32"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. eToken Pro 32K' > /dev/null
+    cpconfig -hardware media -configure NAME -add hex atr 3bf29800ffc11031fe55c80315                                             
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffff                                            
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
+
+    NAME="eToken_PRO_M420"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. eToken Pro M420' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3bf2180000c10a31fe55c80600                                          
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffff00ffffffffffffff00                                         
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
+
+    NAME="eToken_PRO_M420B"
+    cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
+    cpconfig -hardware media -add $NAME -name 'Aladdin R.D. eToken Pro M420b' > /dev/null
+    cpconfig -hardware media -configure $NAME -add hex atr 3bf2180002c10a31fe58c80975                                         
+    cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffff                                        
+    cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
 
     # cprocsp-rdr-rutoken-64
     cpconfig -ini '\config\apppath' -add string librdrrutoken.so /opt/cprocsp/lib/amd64/librdrrutoken.so

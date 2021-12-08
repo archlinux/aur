@@ -1,7 +1,7 @@
 # Maintainer: Platon Pronko < platon7pronko at gmail dot com >
 
 pkgname="cryptopro-csp-k1"
-pkgver=5.0.12222
+pkgver=5.0.12330
 # pkgver is not allowed to contain forward slashes
 _pkgver_patch="6"
 _pkgver="$pkgver-$_pkgver_patch"
@@ -28,11 +28,11 @@ makedepends=(
     'libarchive'
 )
 source=(
-    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12222/linux-amd64.tgz
-    'https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz'
+    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12330/linux-amd64.tgz
+    'cades_linux_amd64.tar.gz' # download from https://www.cryptopro.ru/products/cades/plugin
 )
-sha256sums=('b7229c7884ea5340b10ecc3e11c378a69c4ef9d8266e0a96a1f087082481026e'
-            '5eef8664765a08c2354248289a3c232adf1a4596fedb520460877fe7e2c295ec')
+sha256sums=('51ccdbb330d8c5f8ec4566bb72bd85fc0daecf7b47bed6c6c1af84879a20b1e1'
+            'f0c9e288620f85b7ee175d31cefacd73434632d5a07fab1e5cc25847de78bcaa')
 install=cryptopro-csp-k1.install
 options=(!strip)
 
@@ -46,16 +46,15 @@ package() {
     bsdtar -xf "lsb-cprocsp-pkcs11-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-gui-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-pcsc-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
-    bsdtar -xf "cprocsp-rdr-jacarta-64-5.0.0.1237-4.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-rdr-jacarta-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-rutoken-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-cptools-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
 
-    cd "$srcdir/cades_linux_amd64"
-    bsdtar -xf "cprocsp-pki-cades-64-2.0.14368-1.amd64.rpm" -C "$pkgdir"
-    bsdtar -xf "cprocsp-pki-plugin-64-2.0.14368-1.amd64.rpm" -C "$pkgdir"
+    cd "$srcdir"
+    bsdtar -xf "cprocsp-pki-cades-64-2.0.14458-1.amd64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-pki-plugin-64-2.0.14458-1.amd64.rpm" -C "$pkgdir"
 
     rm -r "$pkgdir/etc/init.d/"
-    mv "$pkgdir/tmp/" "$pkgdir/opt/cprocsp/tmp/"
     rm -r "$pkgdir/usr/lib64/"
 
     mkdir -p "$pkgdir/etc/ld.so.conf.d/"
