@@ -10,5 +10,4 @@ post_remove() {
     echo "Removing generated files"
     [ -e /usr/local/bin/klipper_mcu ] && rm -v /usr/local/bin/klipper_mcu
     [ -e /usr/lib/klipper/out ] && rm -rv /usr/lib/klipper/out
-    [ -e /usr/lib/klipper/.config ] && rm -v /usr/lib/klipper/.config
 }

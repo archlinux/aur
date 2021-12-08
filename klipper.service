@@ -10,6 +10,6 @@ Type=simple
 User=klipper
 RemainAfterExit=no
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/usr/bin/python /usr/lib/klipper/klippy/klippy.py /etc/klipper/klipper.cfg -I /run/klipper/sock
+ExecStart=/usr/bin/python /usr/lib/klipper/klippy/klippy.py /etc/klipper/klipper.cfg -I /run/klipper/sock -a /run/klipper/ud_sock
 Restart=always
 RestartSec=10
