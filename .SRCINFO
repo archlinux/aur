@@ -1,0 +1,19 @@
+pkgbase = plano-git
+	pkgdesc = A Cartesian Plane Calculator
+	pkgver = r127.c2b7ae9
+	pkgrel = 1
+	url = https://github.com/DiegoIvanME/plano-rewritten
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	provides = plano
+	conflicts = plano
+	source = git+https://github.com/DiegoIvanME/plano-rewritten.git
+	sha512sums = SKIP
+
+pkgname = plano-git
