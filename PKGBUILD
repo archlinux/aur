@@ -1,5 +1,6 @@
-# Maintainer: Artem Klevtsov <a.a.klevtsov@gmail com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Artem Klevtsov <a.a.klevtsov@gmail com>
 pkgname=afancontrol
 pkgver=3.0.0
 pkgrel=2
@@ -31,7 +32,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -d "$pkgdir/etc"
