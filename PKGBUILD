@@ -17,22 +17,16 @@
 ##
 ## 'amd_pstate' - Setting this variable to 'n' will disable amd-pstate
 ##                unset/default enables the driver
-if [ -z ${amd_pstate+x} ]; then
-  amd_pstate=y
-fi
+: "${amd_pstate:=y}"
 
 ## 'no_makeflags_check' - If /etc/makepkg.conf MAKEFLAGS is null or unset we'll throw a big warning
 ##                        and pause long enough for the user to cancel their build.
 ##                        Set "no_makeflags_check" to anything to skip this.
-if [ -z ${no_makeflags_check+x} ]; then
-  makeflags_check=y
-fi
+: "${makeflags_check:=y}"
 
 ## '_O3' -  Enable -O3 optimization - this isn't generally worth much, especially in the face of
 ##          -march=native (or -march=x86-64-v3) and clang ThinLTO; set _O3 to anything to enable
-if [ -n "${_O3+x}" ]; then
-  _O3=y
-fi
+: "${_O3:=y}"
 
 ##
 ## Xanmod options:
@@ -41,25 +35,19 @@ fi
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=93
-fi
+: "${_microarchitecture:=93}"
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
 ##                             y to enable  (stock default)
-if [ -z ${use_numa+x} ]; then
-  use_numa=y
-fi
+: "${use_numa:=y}"
 
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
 ## Stock Archlinux and Xanmod have this enabled.
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
-if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
-fi
+: "${use_tracers:=y}"
 
 ## Choose between GCC and CLANG config (default is GCC)
 case "${_compiler,,}" in
@@ -67,10 +55,8 @@ case "${_compiler,,}" in
                 *) _compiler=gcc            ;; # default to GCC
 esac
 
-## Compress modules with ZSTD (to save disk space)
-#if [ -z ${_compress_modules+x} ]; then
-#  _compress_modules=y
-#fi
+## Compress modules with ZSTD (to save disk space); enabled by Xanmod-ROG
+##: "${_compress_modules:=y}"
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
@@ -80,9 +66,7 @@ esac
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-if [ -z ${_localmodcfg+x} ]; then
-  _localmodcfg=n
-fi
+: "${_localmodcfg:=n}"
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
