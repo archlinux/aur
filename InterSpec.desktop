@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=InterSpec
+GenericName=spectral radiation analysis software
+Exec=/opt/InterSpec/InterSpec
+Terminal=False
+StartupNotify=true
+Categories=Science;
