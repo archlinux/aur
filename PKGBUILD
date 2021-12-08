@@ -2,9 +2,9 @@
 
 pkgname="stsw-link007"
 _pkgname="STLinkUpgrade"
-pkgver=2.38.27
-pkgrel=4
-_stlink_upgrade_ver=3.3.6
+pkgver=3.9.3
+pkgrel=1
+_stlink_upgrade_ver=3.3.7
 pkgdesc="The firmware upgrade application for ST-LINK, ST-LINK/V2, ST-LINK/V2-1, and STLINK-V3 boards through the USB port"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stsw-link007.html"
@@ -24,14 +24,15 @@ depends=('stlink'
          'java-runtime>=7')
 provides=("stlink-upgrade" "stlinkupgrade")
 # https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-link007/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
-source=("https://st.com/content/ccc/resource/technical/software/firmware/group1/4e/80/8d/29/e0/c7/4e/13/${pkgname}_V${pkgver//./-}/files/${pkgname}_V${pkgver//./-}.zip/jcr:content/translations/en.${pkgname}_V${pkgver//./-}.zip"
+_stsw_link007_url_index='16/ac/ae/04/0b/01/42/5a'
+source=("https://st.com/content/ccc/resource/technical/software/firmware/group1/${_stsw_link007_url_index}/${pkgname}-v${pkgver//./-}/files/${pkgname}-v${pkgver//./-}.zip/jcr:content/translations/en.${pkgname}-v${pkgver//./-}.zip"
         "${pkgname}.sh"
         "${pkgname}.png"
         "SLA0048.pdf::https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
-sha256sums=('bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
+sha256sums=('56666bd0985fa403008b0a88194266a92dcf346232fa0f4de8a9d072bee62318'
             'ccf814ca4b768285e611c809be147be2b0df10d39ceedfafa7f901a56bd4fcd3'
             'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
-            'SKIP')
+            '2ceecf9925b8f55418fe75068976125d8b45cf24aecd7e87b8b05d03e4a4c50b')
 
 package() {
 
