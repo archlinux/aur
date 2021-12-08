@@ -59,11 +59,11 @@ package() {
 
 	bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
 
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/hoffice/LICENSE" "${srcdir}/LICENSE"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/hoffice" "${srcdir}/LICENSE"
 
 	if [ -f "${srcdir}/${KIMELIB}" ] && [ -f "${srcdir}/${NIMFLIB}" ]; then
-		install -Dm755 -t "${pkgdir}/${HNCCONTEXT}/${KIMELIB}" "${srcdir}/${KIMELIB}"
-		install -Dm755 -t "${pkgdir}/${HNCCONTEXT}/${NIMFLIB}" "${srcdir}/${NIMFLIB}"
+		install -Dm755 -t "${pkgdir}/${HNCCONTEXT}" "${srcdir}/${KIMELIB}"
+		install -Dm755 -t "${pkgdir}/${HNCCONTEXT}" "${srcdir}/${NIMFLIB}"
 	fi
 
 	msg2 "The error messages are from UTF-8 limitations. Please ignore it, as it does no harm."
