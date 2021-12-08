@@ -1,6 +1,6 @@
 pkgbase = bevm-git
 	pkgdesc = A God's basic evm
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/JustAGod1/bevm
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = bevm-git
 	depends = gtk3
 	depends = gcc-libs
 	provides = bevm
-	source = bevm-git-1.7::git+https://github.com/JustAGod1/bevm
+	source = bevm-git-1.8::git+https://github.com/JustAGod1/bevm
 	md5sums = SKIP
 
 pkgname = bevm-git
