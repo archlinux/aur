@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-testutils
 	pkgdesc = Collection of testing tools used in Python client libraries for Google APIs
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/googleapis/python-test-utils
 	changelog = CHANGELOG.md
@@ -11,9 +11,9 @@ pkgbase = python-google-cloud-testutils
 	depends = python-google-auth
 	depends = python-click
 	depends = python-packaging
-	source = python-google-cloud-testutils-1.3.0.tar.gz::https://github.com/googleapis/python-test-utils/archive/v1.3.0.tar.gz
+	source = python-google-cloud-testutils-1.3.1.tar.gz::https://github.com/googleapis/python-test-utils/archive/v1.3.1.tar.gz
 	source = 001-setup.py.patch
-	sha256sums = 862f737bcdd57a61fd11a70d9b9cfd9a4426b0357cefcaef326f494d4f0b01af
+	sha256sums = cb6e6c9f158038a1fff8bf114e14507b25b985e7b3e1944bea4e4dd5929552b1
 	sha256sums = b1b21b2a0e329f38914b07c1184f8a2dede39599a540ee89125d42a7dfaae533
 
 pkgname = python-google-cloud-testutils

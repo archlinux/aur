@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-google-cloud-testutils
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Collection of testing tools used in Python client libraries for Google APIs"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         '001-setup.py.patch')
-sha256sums=('862f737bcdd57a61fd11a70d9b9cfd9a4426b0357cefcaef326f494d4f0b01af'
+sha256sums=('cb6e6c9f158038a1fff8bf114e14507b25b985e7b3e1944bea4e4dd5929552b1'
             'b1b21b2a0e329f38914b07c1184f8a2dede39599a540ee89125d42a7dfaae533')
 
 prepare() {
