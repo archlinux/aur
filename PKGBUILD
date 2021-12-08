@@ -5,13 +5,13 @@
 
 pkgname=vte3-git
 
-pkgver=0.67.0.4.3e163e1
+pkgver=0.67.0.5.14eb34a
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
 arch=('x86_64')
 license=('LGPL')
 options=('!emptydirs')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'gtk-doc' 'gperf' 'meson>=0.49.0')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'gtk-doc' 'gperf' 'meson' 'ninja')
 url="http://www.gnome.org"
 depends=('gtk3' 'vte-common' 'glibc' 'pcre2')
 
@@ -37,6 +37,10 @@ build() {
   ninja -C build
 }
 
+check() {
+  ninja test -C build
+}
+
 package() {
-  ninja install -C build
+  DESTDIR="$pkgdir" ninja install -C build
 }
