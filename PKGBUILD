@@ -4,7 +4,7 @@
 # Contributor: Emanuel Fontelles ("emanuelfontelles") <emanuelfontelles@hotmail.com>
 
 pkgname=apache-spark
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=0
 pkgdesc="Apache Spark is a unified analytics engine for large-scale data processing."
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('python2: python2 support for pyspark'
             'hadoop: support for running on YARN')
 
 install=apache-spark.install
-source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-bin-hadoop2.7.tgz"
+source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-bin-hadoop3.2.tgz"
         'apache-spark-master.service'
         'apache-spark-slave@.service'
         'spark-env.sh'
@@ -39,12 +39,12 @@ sha256sums=('4e0846207bf10311de43451bc99309086fce7990aaf54bf3038608b1981afbe7'
 backup=('etc/apache-spark/spark-env.sh')
 
 package() {
-        cd "$srcdir/spark-${pkgver}-bin-hadoop2.7"
+        cd "$srcdir/spark-${pkgver}-bin-hadoop3.2"
 
         install -d "${pkgdir}/usr/bin" "${pkgdir}/opt" "${pkgdir}/var/log/apache-spark" "${pkgdir}/var/lib/apache-spark/work"
         chmod 2775 "${pkgdir}/var/log/apache-spark" "${pkgdir}/var/lib/apache-spark/work"
 
-        cp -r "${srcdir}/spark-${pkgver}-bin-hadoop2.7" "${pkgdir}/opt/apache-spark/"
+        cp -r "${srcdir}/spark-${pkgver}-bin-hadoop3.2" "${pkgdir}/opt/apache-spark/"
 
         cd "${pkgdir}/usr/bin"
         for binary in beeline pyspark sparkR spark-class spark-shell find-spark-home spark-sql spark-submit load-spark-env.sh; do
@@ -65,10 +65,17 @@ package() {
         for script in run-master.sh run-slave.sh spark-daemon-run.sh; do
             install -Dm755 "${srcdir}/${script}" "${pkgdir}/opt/apache-spark/sbin/${script}"
         done
-        install -Dm644 "${srcdir}/spark-${pkgver}-bin-hadoop2.7/conf"/* "${pkgdir}/etc/apache-spark"
+        install -Dm644 "${srcdir}/spark-${pkgver}-bin-hadoop3.2/conf"/* "${pkgdir}/etc/apache-spark"
 
         cd "${pkgdir}/opt/apache-spark"
         mv conf conf-templates
         ln -sf "/etc/apache-spark" conf
         ln -sf "/var/lib/apache-spark/work" .
 }
+sha256sums=('a78c30450ac862338dbc77e6e97bae69569e2c30615efa082d28d47c0781afef'
+            'e4333e4a484543786e82d1f7af144ad99d9cc666d2e2742f30b5120996f32183'
+            'e656ef5599d095472641e6fd58e9046d7db3f983b334e9a695e278ba799afc5b'
+            '0e9c3721cfac02e3b67248e1dfe2def49a9fc6408092b291b1c67e89a9c130cb'
+            '6ded9f6b31b8be5fa782fc18ec0991eb7cb18fbea65b8e7560587c3fbe7f20f7'
+            '1134342330c7680e7d9847cc4de2c0f97ecd55ee7db1c6068bc45219b5838e98'
+            '4e1159b25d0f6f3dcdf72d1a5f186e5693a5e9d8690ad1600a9e44aa43022e29')
