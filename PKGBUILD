@@ -7,7 +7,7 @@
 
 pkgname=icaclient
 pkgver=21.12.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
@@ -30,9 +30,9 @@ source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.
 source_x86_64=("$pkgname-x64-$pkgver.tar.gz::$_source64")
 source_i686=("$pkgname-x86-$pkgver.tar.gz::$_source32")
 source_armv7h=("$pkgname-armhf-$pkgver.tar.gz::$_sourcearmhf")
-sha256sums=('38e0de641fd374c65c84cb2e82a976595380c32d5f89cff8a25843bdd000d637'
+sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'cf9aed0c471658665fdc8bc3b8e7583d78834ecb5066d1c287bbcf890d5d14b9'
-            '2d84f8cb6f5dfd1a92024b2344cef0affac021327e5ff6ffe579395fffd1fdf4'
+            'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
             'a3da4a2cdc6f8ef7f3f26fe3344f7e6b6ee5cbe1cded77aadd616adc7771adb8'
             'a5b03c48f359cdb3667ca0721c6b4091b97300605d5c9ca959ce072580483c81')
