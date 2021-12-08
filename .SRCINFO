@@ -1,0 +1,14 @@
+pkgbase = component-detection
+	pkgdesc = Scans your project to determine what components you use
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/microsoft/component-detection
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	depends = icu
+	options = staticlibs
+	source = component-detection-1.0.6.tar.gz::https://github.com/microsoft/component-detection/archive/refs/tags/v1.0.6.tar.gz
+	b2sums = 0711b0458b92095ae5fc31266dc3eca46030b983d0961268abbba263bb6d77100960ea580348649283f76083cb150dacfe2be2bcac649fea7917c6ad684e9fb9
+
+pkgname = component-detection
