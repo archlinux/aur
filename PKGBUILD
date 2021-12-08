@@ -6,7 +6,7 @@ KIMELIB=libkime-qt-5.11.3.so
 
 _host='Host: cdn.hancom.com'
 _referer='Referer: https://www.hancom.com/cs_center'
-DLAGENTS=("https::/usr/bin/curl -o %o -H ${_referer// /\\ } -H ${_host// /\\} %u")
+DLAGENTS=("https::/usr/bin/curl -# -o %o -H ${_referer// /\\ } -H ${_host// /\\} %u")
 
 pkgname='hoffice'
 pkgver=11.20.0.1520
