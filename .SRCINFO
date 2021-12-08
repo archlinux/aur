@@ -1,0 +1,16 @@
+pkgbase = wasmedge
+	pkgdesc = WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime for cloud native, edge, and decentralized applications. It powers serverless apps, embedded functions, microservices, smart contracts, and IoT devices.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://wasmedge.org
+	arch = any
+	license = Apache
+	depends = cmake
+	depends = boost
+	depends = openssl
+	depends = pkgconf
+	depends = ninja
+	source = https://github.com/WasmEdge/WasmEdge/archive/refs/tags/0.8.2.tar.gz
+	sha256sums = d21fac6e213b438371d6ba12308bbc3bef5842f8a89d9965874a5785c4f970fc
+
+pkgname = wasmedge
