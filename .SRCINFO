@@ -10,6 +10,7 @@ pkgbase = cgmnlm-git
 	makedepends = git
 	makedepends = scdoc
 	depends = bearssl
+	optdepends = xdg-utils
 	conflicts = gmni-git
 	conflicts = cgmnlm
 	source = cgmnlm-git::git+https://src.clttr.info/rwa/cgmnlm.git

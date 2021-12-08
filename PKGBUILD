@@ -10,12 +10,13 @@ license=('GPL3')
 source=("${pkgname}::git+https://src.clttr.info/rwa/cgmnlm.git")
 conflicts=('gmni-git' 'cgmnlm')
 depends=('bearssl')
+optdepends=('xdg-utils')
 makedepends=('git' 'scdoc')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
-    printf "%s" "$(git describe | sed -r 's/\-/_/g' )"
+	printf "r%s_%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
