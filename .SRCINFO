@@ -1,7 +1,7 @@
 pkgbase = hoffice-viewer
 	pkgdesc = Office document viewer for Linux
 	pkgver = 11.20.0.991
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.hancom.com/
 	arch = x86_64
 	license = custom:hoffice-viewer
@@ -21,7 +21,9 @@ pkgbase = hoffice-viewer
 	depends = zlib
 	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_viewer_2020_amd64.deb
 	source = LICENSE
+	source = libqt5im-nimf.so
 	sha256sums = db25bfbbe3661625ef3640f619db106f7be9745808277f8a0614f859270dacdd
 	sha256sums = f2524728f91bf392edfbc3afce2126c7f0df8e22fc00b798f09e50693cf852e0
+	sha256sums = d246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c
 
 pkgname = hoffice-viewer
