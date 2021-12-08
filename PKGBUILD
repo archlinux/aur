@@ -17,4 +17,5 @@ package() {
 	cd ${srcdir}/
 	tar -C ${pkgdir}/ -xf data.tar.gz
 	sed -i 's:/usr/bin/java:/usr/lib/jvm/java-11-openjdk/bin/java:' ${pkgdir}/usr/bin/nzyme-tracker
+	sed -i 's:/usr/bin/java:/usr/lib/jvm/java-11-openjdk/bin/java:' ${pkgdir}/usr/share/nzyme/bin/nzyme
 }
