@@ -1,22 +1,21 @@
 # Maintainer: Core_UK <mail.coreuk@gmail.com>
 
 pkgname=apple-music-electron-git
-_pkgnamelow=apple-music-electron
 _pkgname=Apple-Music-Electron
-pkgver=3.0.0
-pkgrel=2
-pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Compiled using yarn and electron-builder from the master branch."
+pkgver=3.0.0.r45.g5403f56
+pkgrel=1
+pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
 license=("MIT")
-depends=('libxss')
-makedepends=('yarn' 'git' 'npm')
+depends=('gtk3' 'libxss' 'nss')
+makedepends=('yarn' 'git' 'npm' 'nodejs-lts-gallium')
 optdepends=('libnotify: Playback notifications'
             'otf-san-francisco: Use of SF Font for certain themes')
-provides=(${pkgname} ${_pkgnamelow})
-conflicts=(${_pkgnamelow})
+provides=(apple-music-electron)
+conflicts=(apple-music-electron)
 source=(
-  "${_pkgname}::git+https://github.com/CiderApp/${_pkgname}.git"
+  "git+https://github.com/CiderApp/${_pkgname}.git"
   "Apple-Music-Electron.desktop"
 )
 sha256sums=('SKIP'
@@ -24,8 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-  var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
-  echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -65,8 +63,8 @@ package() {
 
     echo "Packaging : Desktop Shortcut | Icon | Build Files | [Other Files] | Done"
     install -d "$pkgdir/usr/share/licenses" "$pkgdir/usr/share/doc"
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 
     echo "Packaging : Desktop Shortcut | Icon | Build Files | Other Files | [Done]"
