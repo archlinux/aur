@@ -1,6 +1,6 @@
 pkgbase = anki-git
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
-	pkgver = r9014.5a3999d0c
+	pkgver = r9068.8306bc1e2
 	pkgrel = 1
 	url = http://ankisrs.net/
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = anki-git
 	makedepends = python-mypy-protobuf
 	makedepends = npm
 	makedepends = typescript
+	makedepends = jre11-openjdk
 	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-wheel

@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r9014.5a3999d0c
+pkgver=r9068.8306bc1e2
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -56,6 +56,7 @@ makedepends=(
     'python-mypy-protobuf'
     'npm'
     'typescript'
+    'jre11-openjdk'
 )
 optdepends=(
     'lame: record sound'
@@ -93,6 +94,7 @@ build() {
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     ./scripts/build
 }
 
