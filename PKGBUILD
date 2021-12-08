@@ -2,9 +2,9 @@
 
 _pkgname=pythonocc-core
 pkgname=python-${_pkgname#python}
-pkgver=7.4.1.r16.gfcf4e6ec
-_commit=fcf4e6ecf8518bbfb5fb7e4c55f9e79bd319eaa7
-pkgrel=2
+pkgver=7.5.1.r90.g141c53f7
+_commit=141c53f716ca4c138a6ddee2ce6ed1d3c28944e8
+pkgrel=0
 pkgdesc='Python package for 3D CAD/BIM/PLM/CAM'
 arch=('x86_64')
 url='https://github.com/tpaviot/pythonocc-core'
