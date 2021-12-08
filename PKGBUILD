@@ -1,9 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Fredrik Strandin <fredrik@strandin.name>
 
-_commit='b9550bf460e6429e2557d55fcfe206930d86d639'
 pkgname=mop
-pkgver=2021.11.29
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,25 +12,25 @@ depends=('glibc')
 makedepends=('git' 'go')
 conflicts=('mop-git')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mop-tracker/${pkgname}/archive/${_commit}.tar.gz")
-b2sums=('361562d17ca90539f30b454e4eec36aeb6bf6b51c3f82092435e14994ea18ada6dfa5974b07a10597f95de8ecfd30a3a9adde4ffb785a276c23c2709980f39a0')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mop-tracker/${pkgname}/archive/v${pkgver}.tar.gz")
+b2sums=('1608edc521e959d932a7b4a49f29a04ddff1a259e49be36d20694c15419bee542b7983fd6ac4a6f6475aa3765cf762fdd2bb7ed8de0e6dede050ebd740c9754b')
 
 build() {
-  cd "${pkgname}-${_commit}"
+  cd "${pkgname}-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -X main.commit=${_commit} -extldflags ${LDFLAGS}"
+  _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -X main.commit=${pkgver} -extldflags ${LDFLAGS}"
   go build -o mop -ldflags="${_LDFLAGS}" "./cmd/..."
 }
 
 package() {
   # binary
-  install -D -m755 "${srcdir}/${pkgname}-${_commit}/mop" \
+  install -D -m755 "${srcdir}/${pkgname}-${pkgver}/mop" \
     "${pkgdir}/usr/bin/mop"
 
   # docs
-  install -D -m644 "${srcdir}/${pkgname}-${_commit}/README.md" \
+  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/README.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
