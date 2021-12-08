@@ -4,10 +4,10 @@
 pkgname=klipper-py3-git
 _pkgname=klipper
 pkgver=r4325.bea20278
-pkgrel=1
+pkgrel=2
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/KevinOConnor/klipper"
+url="https://www.klipper3d.org/"
 license=('GPL3')
 groups=()
 depends=(
@@ -47,9 +47,9 @@ source=("${_pkgname}::git+https://github.com/Klipper3d/klipper"
         'klipper-dict.tar.gz::https://github.com/Klipper3d/klipper/files/7491378/klipper-dict-20211106.tar.gz')
 noextract=()
 md5sums=('SKIP'
-         '135bc8490fafe2d670c619b412deebef'
+         '05777aeafefe89aed2448df45e5bb6ea'
          'cf3715af9f53cc1660e412abe3697342'
-         '94100ed3da74a98bdaed27f395621511'
+         '4c058f09014cf6a3995b761ef81672b1'
          '9d0fde55e3e8240bc26b476519018195')
 
 pkgver() {
@@ -77,11 +77,12 @@ package() {
 	install -m755 -d "$pkgdir/usr/share/doc/${_pkgname}"
 	install -m755 -d "$pkgdir/usr/share/${_pkgname}/scripts"
 	install -m755 -d "$pkgdir/usr/share/${_pkgname}/examples"
-	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/klippy"
+	install -m775 -d "$pkgdir/usr/lib/${_pkgname}/klippy"
 	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/lib"
 	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/src"
-	install -m755 -d "$pkgdir/etc/${_pkgname}"
-	install -m755 -d "$pkgdir/var/lib/${_pkgname}"
+	install -m2775 -d "$pkgdir/etc/${_pkgname}"
+	install -m2775 -d "$pkgdir/usr/lib/out/${_pkgname}"
+	install -m2755 -d "$pkgdir/var/lib/${_pkgname}"
 
 	cp -ra "$srcdir/${_pkgname}/docs"/* "$pkgdir/usr/share/doc/${_pkgname}"/
 	cp -ra "$srcdir/${_pkgname}/scripts/"* "$pkgdir/usr/share/${_pkgname}/scripts"/

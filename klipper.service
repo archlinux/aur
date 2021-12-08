@@ -8,7 +8,7 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 User=klipper
-RemainAfterExit=yes
+RemainAfterExit=no
 Environment=PYTHONUNBUFFERED=1
 ExecStart=/usr/bin/python /usr/lib/klipper/klippy/klippy.py /etc/klipper/klipper.cfg -I /run/klipper/sock
 Restart=always
