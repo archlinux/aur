@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=libmodulemd-git
-pkgver=2.13.0.r27.g9d3a115
+pkgver=2.13.0.r31.g9c6c0ba
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=("any")
@@ -22,8 +22,9 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	arch-meson build -Ddeveloper_build=false -Dbuild_api_v1=true
+	arch-meson build
 	ninja -C build
+	ninja -C build modulemd-2.0-doc
 }
 
 check() {
