@@ -1,0 +1,7 @@
+post_install() {
+    echo "Before launching, copy one of example configs in /usr/share/klipper/examples/ to /etc/klipper/klipper.cfg and adjust it to suit your printer"
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,4 +1,5 @@
-*.pkg.tar.xz
+*.pkg.tar.*
 src/
 pkg/
 klipper/
+klipper-dict.tar.gz
