@@ -199,20 +199,20 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     case "$src" in
-      patch-${_major}*xanmod*xz)
+      patch-${_major}*xanmod*.xz)
         # Apply Xanmod patch
         msg2 "Applying Xanmod patch..."
         patch -Np1 -i "../${src%\.xz}"
         ;;
-      patch-${_major}*xz)
+      patch-${_major}*xz|Linux-${_major}*.xz)
         # Apply kernel.org point releases if we're building ahead of Xanmod official
         msg2 "Applying kernel.org point release ${src%\.xz} ..."
         patch -Np1 -i "../${src%\.xz}"
         ;;
-      *patch|*diff)
+      *.patch|*.patch.xz|*.diff|*.diff.xz)
         # Apply any other patches
-        msg2 "Applying patch $src..."
-        patch -Np1 < "../$src"
+        msg2 "Applying patch ${src%\.xz} ..."
+        patch -Np1 -i "../${src%\.xz}"
         ;;
     esac
   done
