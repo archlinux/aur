@@ -1,7 +1,7 @@
-From 62f1f7606485d450b23f86bc18dab101e7a2443d Mon Sep 17 00:00:00 2001
+From aa7300919d0656a001fe0d526508b8c5958e7630 Mon Sep 17 00:00:00 2001
 From: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
 Date: Thu, 18 Nov 2021 21:18:01 -0800
-Subject: [PATCH 4/8] cpufreq: intel_pstate: ITMT support for overclocked
+Subject: [PATCH 4/7] cpufreq: intel_pstate: ITMT support for overclocked
  system
 
 On systems with overclocking enabled, CPPC Highest Performance can be
