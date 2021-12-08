@@ -1,7 +1,7 @@
 pkgbase = qubes-gui-agent-linux
 	pkgdesc = The Qubes GUI Agent for AppVMs
 	pkgver = 4.0.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QubesOS/qubes-gui-agent-linux
 	arch = x86_64
 	license = GPL
@@ -37,8 +37,8 @@ pkgname = qubes-vm-gui
 	depends = zenity
 	depends = qubes-libvchan-xen
 	depends = python-xcffib
-	depends = X-ABI-VIDEODRV_VERSION=24.0
-	depends = X-ABI-XINPUT_VERSION=24.1
+	depends = X-ABI-VIDEODRV_VERSION=25.2
+	depends = X-ABI-XINPUT_VERSION=24.4
 	depends = X-ABI-EXTENSION_VERSION=10.0
 
 pkgname = qubes-vm-pulseaudio
