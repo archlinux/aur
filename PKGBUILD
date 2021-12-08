@@ -2,7 +2,7 @@
 
 pkgname=cgmnlm-git
 pkgrel=1
-pkgver=1.0_6_g6e3c8e4
+pkgver=1.1_3_gdeeea43
 pkgdesc="colorful gemini line mode client - fork of gmni"
 url="https://src.clttr.info/rwa/cgmnlm"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
-	printf "r%s_%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe | sed -r 's/\-/_/g' )"
 }
 
 build() {
