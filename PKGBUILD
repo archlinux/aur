@@ -1,7 +1,7 @@
 # Maintainer: Nobody <>
 
 _referer='Referer: https://www.hancom.com/cs_center'
-DLAGENTS=("https::/usr/bin/curl -o %o -H ${_referer// /\\ } %u")
+DLAGENTS=("https::/usr/bin/curl -# -o %o -H ${_referer// /\\ } %u")
 
 pkgname='hoffice-viewer'
 pkgver=11.20.0.991
