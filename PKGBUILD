@@ -7,7 +7,7 @@ pkgver=3.0.0
 pkgrel=2
 pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. Compiled using yarn and electron-builder from the master branch."
 arch=("armv7h" "i686" "x86_64")
-url="https://github.com/Apple-Music-Electron/${_pkgname}.git"
+url="https://github.com/CiderApp/${_pkgname}.git"
 license=("MIT")
 depends=('libxss')
 makedepends=('yarn' 'git' 'npm')
@@ -16,7 +16,7 @@ optdepends=('libnotify: Playback notifications'
 provides=(${pkgname} ${_pkgnamelow})
 conflicts=(${_pkgnamelow})
 source=(
-  "${_pkgname}::git+https://github.com/Apple-Music-Electron/${_pkgname}.git"
+  "${_pkgname}::git+https://github.com/CiderApp/${_pkgname}.git"
   "Apple-Music-Electron.desktop"
 )
 sha256sums=('SKIP'
