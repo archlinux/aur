@@ -1,6 +1,6 @@
 pkgbase = ddev-edge-bin
 	pkgdesc = DDEV-Local: a local PHP development environment system (edge channel)
-	pkgver = v1.18.1
+	pkgver = v1.18.2
 	pkgrel = 1
 	url = https://github.com/drud/ddev
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = ddev-edge-bin
 	optdepends = bash-completion: subcommand completion support
 	provides = ddev
 	conflicts = ddev
-	source = https://github.com/drud/ddev/releases/download/v1.18.1/ddev_linux-amd64.v1.18.1.tar.gz
-	sha256sums = d527b703e1bd976f22cdd582607ef5c9ade6ab0142986788b05b205727650873
+	source = https://github.com/drud/ddev/releases/download/v1.18.2/ddev_linux-amd64.v1.18.2.tar.gz
+	sha256sums = c311b20583c93be5abd4dc4d8cdf16d587c88bfa84e62d6a9d7afd8d620a1de7
 
 pkgname = ddev-edge-bin
 
