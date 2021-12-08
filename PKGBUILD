@@ -30,6 +30,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
         "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
+        "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
         )
 sha256sums=('SKIP'
             '76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb'
@@ -45,7 +46,8 @@ sha256sums=('SKIP'
             '2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f'
             '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             'c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4'
-            'e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5')
+            'e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5'
+            '85c7287cd38d218305bf80dfb462db98ba27d55b13ba30275194e28b8fa03f48')
 
 prepare() {
 
@@ -65,6 +67,7 @@ prepare() {
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
   patch -Np1 -i ../fix-langpack-id.patch
+  patch -Np1 -i ../fix-wayland-build.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa

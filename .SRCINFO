@@ -58,6 +58,7 @@ pkgbase = waterfox-g4-kpe
 	source = Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/Use-remoting-name-for-GDK-application-names.patch
 	source = sandbox-fips.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/sandbox-fips.patch
 	source = fix-langpack-id.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/fix-langpack-id.patch
+	source = fix-wayland-build.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b45715a554968aa64448010ccaefe453a74cc328/waterfox-g4-kpe/patches/fix-wayland-build.patch
 	sha256sums = SKIP
 	sha256sums = 76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb
 	sha256sums = bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26
@@ -73,6 +74,7 @@ pkgbase = waterfox-g4-kpe
 	sha256sums = 138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d
 	sha256sums = c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4
 	sha256sums = e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5
+	sha256sums = 85c7287cd38d218305bf80dfb462db98ba27d55b13ba30275194e28b8fa03f48
 
 pkgname = waterfox-g4-kpe
 	optdepends = networkmanager: Location detection via available WiFi networks
