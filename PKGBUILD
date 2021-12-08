@@ -111,7 +111,6 @@ fi
 options=('!strip')
 _major=${xanmod%\.*\-*}           # 5.15
 _branch=${xanmod%%\.*\-*}.x       # 5.x
-_localversion=${pkgver##*\.}      # xanmod1
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${xanmod}/patch-${xanmod}.xz"
@@ -239,9 +238,17 @@ prepare() {
   echo "-$pkgrel" > localversion.99-pkgrel
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
-  # Monkey patch: rewrite Xanmod release to $_localversion (eg: xanpre0) if we're applying a point release on top of Xanmod
-  if [[ ${xanmod%-xanmod?} != "$_localversion" ]]; then
-    msg2 "(Monkey)ing with kernel, rewriting localversion ${xanmod%-xanmod?} to $_localversion ..."
+  # xanmod release localversion
+  local _xanlver=${xanmod##*\-}
+  # pkgver localversion
+  local _localversion=${pkgver##*\.}
+  # chop the +clang off clang builds
+  _localversion=${_localversion%\+*}
+
+  # Monkey patch: If we're applying a point release on top of Xanmod official then we'll monkey with the
+  #               localversion and use our own localversion slug to indicate this isn't an upstream kernel.
+  if [[ "$_xanlver" != "$_localversion" ]]; then
+    msg2 "(Monkey)ing with kernel, rewriting localversion $_xanlver to $_localversion ..."
     sed -Ei "s/xanmod[0-9]+/${_localversion}/" localversion
   fi
 
