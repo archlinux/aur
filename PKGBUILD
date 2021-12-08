@@ -10,7 +10,8 @@
 
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
+##    Eg: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
+##    Or: makepkg -sc -- _microarchitecture=98 use_numa=n use_tracers=n
 
 ##
 ## Xanmod-ROG options:
@@ -24,9 +25,9 @@
 ##                        Set "no_makeflags_check" to anything to skip this.
 : "${makeflags_check:=y}"
 
-## '_O3' -  Enable -O3 optimization - this isn't generally worth much, especially in the face of
+## '_O3' -   Enable -O3 optimization - this isn't generally worth much, especially in the face of
 ##          -march=native (or -march=x86-64-v3) and clang ThinLTO; set _O3 to anything to enable
-: "${_O3:=y}"
+[[ -v _O3 ]] && _O3='y'
 
 ##
 ## Xanmod options:
