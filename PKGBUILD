@@ -3,14 +3,14 @@
 
 _pkgname=deja-dup
 pkgname=$_pkgname-git
-pkgver=42.4+142+g39e801e8
+pkgver=43.beta+14+g9052f8b7
 pkgrel=2
 pkgdesc="Simple backup tool, that hides the complexity of backing up the Right Way and uses duplicity as the backend"
 arch=('any')
 url="https://wiki.gnome.org/Apps/DejaDup"
 license=(GPL)
-depends=(duplicity gvfs libadwaita libsecret org.freedesktop.secrets python-gobject python-pydrive)
-makedepends=(appstream-glib itstool meson vala)
+depends=(duplicity gtk4 gvfs libadwaita libsecret org.freedesktop.secrets python-gobject python-pydrive)
+makedepends=(appstream-glib git itstool meson vala)
 source=("git+https://gitlab.gnome.org/World/$_pkgname")
 conflicts=("deja-dup")
 provides=("deja-dup")
@@ -23,12 +23,8 @@ pkgver() {
 }
 
 build() {
-  arch-meson -Denable_nautilus=true $_pkgname build
+  arch-meson $_pkgname build
   meson compile -C build
-}
-
-check() {
-  meson test -C build
 }
 
 package() {
