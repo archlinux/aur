@@ -1,6 +1,6 @@
 pkgbase = kubeadm-bin
 	pkgdesc = Kubernetes.io kubeadm binary
-	pkgver = 1.22.4
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = kubeadm-bin
 	conflicts = kubernetes
 	conflicts = kubernetes-bin
 	source = 10-kubeadm.conf
-	source = kubeadm-bin-1.22.4::https://storage.googleapis.com/kubernetes-release/release/v1.22.4/bin/linux/amd64/kubeadm
+	source = kubeadm-bin-1.23.0::https://storage.googleapis.com/kubernetes-release/release/v1.23.0/bin/linux/amd64/kubeadm
 	sha256sums = 8af7f7910fd8710ce02af03170e109c6dc6d4d74eb2cc06f90530be4f0090b65
-	sha256sums = 33b799df2941f12a53ffe995d86a385c35d3c543f9d2c00c0cdb47ec91a98c5c
+	sha256sums = e21269a058d4ad421cf5818d4c7825991b8ba51cd06286932a33b21293b071b0
 
 pkgname = kubeadm-bin
