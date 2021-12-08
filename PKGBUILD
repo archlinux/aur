@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/Arinerron/heaptrace"
 pkgdesc="helps visualize heap operations for pwn and debugging"
 source_x86_64=("${pkgname}-heaptrace::https://github.com/Arinerron/heaptrace/releases/download/${pkgver}/heaptrace" "${pkgname}-heaptrace.1::https://raw.githubusercontent.com/Arinerron/heaptrace/main/man/heaptrace.1")
-sha256sums_x86_64=("7882bf4660c3516ce261f4b3c9f9cc5b946bf75e799c6090c45ac074d59a9ce9" "598cc86c6a74a5f43a6c65c9964c80fc5bfa61cea95d0f99eafd48f3a26007c2")
+sha256sums_x86_64=("e833de9fd06d841e83d43e7e422e83b64ca741cb7cb3c8aa5f0814743c44cbd5" "d5fbceef6081c53c6234d8ec5380114623a2470fe9ae78bef389feb9dc6bf89f")
 noextract=("${pkgname}-heaptrace" "${pkgname}-heaptrace.1")
 
 package() {
