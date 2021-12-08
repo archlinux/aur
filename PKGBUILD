@@ -13,13 +13,16 @@ depends=('python' 'python-lockfile' 'python-docutils')
 makedepends=('python-setuptools' 'python-docutils' 'python-lockfile' 'python-pip')
 checkdepends=('python-mock' 'python-testscenarios' 'python-wheel')
 source=(https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
-        python-daemon-2.3.0-fix-py3.10.patch)
+        testtools-2.5.0.patch
+        python310.patch)
 sha256sums=('bda993f1623b1197699716d68d983bb580043cf2b8a66a01274d9b8297b0aeaf'
-            '3e6091f4eea62ec738c424867766e2755155b807fb58622e07e565ae7b97c1b6')
+            '7f8dfbe9e01edcb19ebede5580d448a995b721ee3b56ca1d353f58c36416c980'
+            '1777e34936ed5d45001e9994f563fdf8c9e2045b667223f1eebf896031627ddc')
 
-build() {
+prepare() {
   cd "${srcdir}"/python-daemon-$pkgver
-  patch -Np1 -i ${srcdir}/python-daemon-2.3.0-fix-py3.10.patch
+  patch -Np1 -i ../testtools-2.5.0.patch
+  patch -Np1 -i ../python310.patch
 }
 
 build() {
@@ -29,10 +32,6 @@ build() {
 
 check() {
   cd python-daemon-$pkgver
-  # fix for >=testtools-2.5.0
-  sed -e 's/testtools.helpers.safe_hasattr/hasattr/' \
-          -i test/test_metadata.py || die
-
   python setup.py test
 }
 

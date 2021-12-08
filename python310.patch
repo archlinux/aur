@@ -1,0 +1,31 @@
+From 0c67a3c6407fbf4483ccfc94a7a0d78cf3379296 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Wed, 29 Sep 2021 19:59:30 +1000
+Subject: [PATCH] Remove incorrect double-patch of objects in test cases.
+
+The specific test cases relying on the patches, already are decorated
+to patch the specific attributes needed. We don't need a general patch
+of the attributes in the test case setup.
+
+Signed-off-by: Ben Finney <ben+python@benfinney.id.au>
+---
+ test/test_pidfile.py | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/test/test_pidfile.py b/test/test_pidfile.py
+index 2448855..1d0dd93 100644
+--- a/test/test_pidfile.py
++++ b/test/test_pidfile.py
+@@ -367,12 +367,6 @@ class TimeoutPIDLockFile_TestCase(scaffold.TestCase):
+         pidlockfile_scenarios = make_pidlockfile_scenarios()
+         self.pidlockfile_scenario = pidlockfile_scenarios['simple']
+ 
+-        for func_name in ['__init__', 'acquire']:
+-            func_patcher = unittest.mock.patch.object(
+-                    lockfile.pidlockfile.PIDLockFile, func_name)
+-            func_patcher.start()
+-            self.addCleanup(func_patcher.stop)
+-
+         self.scenario = {
+                 'pidfile_path': self.pidlockfile_scenario['pidfile_path'],
+                 'acquire_timeout': self.getUniqueInteger(),

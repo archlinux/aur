@@ -1,0 +1,22 @@
+From bacc1774e8ff7504092a0612197c36153731cd70 Mon Sep 17 00:00:00 2001
+From: Ben Finney <ben+python@benfinney.id.au>
+Date: Mon, 27 Sep 2021 21:17:57 +1000
+Subject: [PATCH] Drop a helper for obsolete bugs in `hasattr`.
+
+---
+ test/test_metadata.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_metadata.py b/test/test_metadata.py
+index 3bb1e3a..77e6464 100644
+--- a/test/test_metadata.py
++++ b/test/test_metadata.py
+@@ -39,7 +39,7 @@ class HasAttribute(testtools.matchers.Matcher):
+     def match(self, instance):
+         """ Assert the object `instance` has an attribute named `name`. """
+         result = None
+-        if not testtools.helpers.safe_hasattr(instance, self.attribute_name):
++        if not hasattr(instance, self.attribute_name):
+             result = AttributeNotFoundMismatch(instance, self.attribute_name)
+         return result
+ 
