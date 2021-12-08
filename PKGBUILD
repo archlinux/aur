@@ -102,6 +102,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "choose-gcc-optimization.sh"
         "sphinx-workaround.patch"
 
+        # revert duplicate s0ix patch from xanmod so our later patch applies
+        "Revert-duplicate-S0ix-patch.patch"
+
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.6-7.xz"
@@ -163,6 +166,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '8055bcb3765ca7995477db3f5de71d3ce76a232885a8179ff37dda21e0e5a587'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
+            'dbe7547f9b4716ca0909fb064d2ece5478906c85578eb7ee5418c175aa70651a'
             '9ccc8dbf9853a44e1da6e9487af9e0097e4d42b9998227f919257f991de385c5'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
             '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'

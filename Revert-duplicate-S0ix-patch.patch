@@ -1,0 +1,26 @@
+From b3863a9f2fc39a1dc23bf164ec3e92506afd4684 Mon Sep 17 00:00:00 2001
+From: Scott B <arglebargle@arglebargle.dev>
+Date: Wed, 8 Dec 2021 10:10:08 -0800
+Subject: [PATCH] Revert duplicate S0ix patch
+
+This reverts commit cb65ee0c7e5981c4eca2cb3c30b389d020c3afb6.
+---
+ drivers/platform/x86/amd-pmc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
+index 54b88bedecdf..fc95620101e8 100644
+--- a/drivers/platform/x86/amd-pmc.c
++++ b/drivers/platform/x86/amd-pmc.c
+@@ -70,7 +70,7 @@
+ #define AMD_CPU_ID_CZN			AMD_CPU_ID_RN
+ #define AMD_CPU_ID_YC			0x14B5
+ 
+-#define PMC_MSG_DELAY_MIN_US		50
++#define PMC_MSG_DELAY_MIN_US		100
+ #define RESPONSE_REGISTER_LOOP_MAX	20000
+ 
+ #define SOC_SUBSYSTEM_IP_MAX	12
+-- 
+2.34.1
+
