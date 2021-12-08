@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64'  'aarch64')
@@ -15,8 +15,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.zst::https://proxy.git.entr0py.de/garionion/fluffychat/releases/download/tag:v${pkgver}/fluffychat-linux-x86.tar.zst")
 source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('ab78e42248a0b319cff293087904fa03a5a1567d1fd5cfb999a380a062271703')
-sha256sums_aarch64=('a93872ad1b94cc021d44509e34b62ae5789732736e278ea5b2644db6fd09b98b')
+sha256sums_x86_64=('986a208de58f9c63e0fdc70a4a6a5c0725fadce6e38990564fc6241b3def1a79')
+sha256sums_aarch64=('57d1230344bbadd1ff19505855eda65fd22edf8056014c7b395987bfb73da485')
 
 
 package() {  
