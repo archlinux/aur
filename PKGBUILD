@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    make
+    make AURUTILS_VERSION="$pkgver"
 }
 
 package() {
