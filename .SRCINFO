@@ -9,6 +9,7 @@ pkgbase = cgmnlm
 	license = GPL3
 	makedepends = scdoc
 	depends = bearssl
+	optdepends = xdg-utils
 	conflicts = gmni-git
 	conflicts = cgmnlm-git
 	source = cgmnlm-1.1.tar.gz::https://src.clttr.info/rwa/cgmnlm/archive/1.1.tar.gz
