@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-tt
 	pkgdesc = Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri
-	pkgver = 5.15.6
-	pkgrel = 2
+	pkgver = 5.15.7
+	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -15,13 +15,13 @@ pkgbase = linux-xanmod-tt
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.15.6-xanmod2-tt/patch-5.15.6-xanmod2-tt.xz
+	source = https://github.com/xanmod/linux/releases/download/5.15.7-xanmod1-tt/patch-5.15.7-xanmod1-tt.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8
 	sha256sums = SKIP
-	sha256sums = ba92bf91f30ba6ab7d0ce15e37cefc789168262a31b48cbb6459ad44e8744e09
+	sha256sums = 8b65259ef4cd1b03f1ec4a2b36daa33145c3004124a6681433a53c449ecbbb02
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
 
 pkgname = linux-xanmod-tt
