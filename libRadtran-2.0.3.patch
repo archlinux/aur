@@ -1,0 +1,63 @@
+diff -Nur libRadtran-2.0.3/configure libRadtran-2.0.3-patch/configure
+--- libRadtran-2.0.3/configure	2019-12-23 19:18:03.000000000 +0800
++++ libRadtran-2.0.3-patch/configure	2021-12-07 14:41:35.288255726 +0800
+@@ -4807,7 +4807,7 @@
+ 
+ 
+ # Extract the first word of "python", so it can be a program name with args.
+-set dummy python; ac_word=$2
++set dummy python2; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+ if ${ac_cv_path_PYTHON+:} false; then :
+diff -Nur libRadtran-2.0.3/libsrc_c/uvspecrandom.c libRadtran-2.0.3-patch/libsrc_c/uvspecrandom.c
+--- libRadtran-2.0.3/libsrc_c/uvspecrandom.c	2019-12-16 22:48:53.000000000 +0800
++++ libRadtran-2.0.3-patch/libsrc_c/uvspecrandom.c	2021-12-07 14:41:48.085116786 +0800
+@@ -36,7 +36,7 @@
+ 
+ /* global variable: random number generator */
+ #if HAVE_LIBGSL 
+-  gsl_rng *uvspecrng; 
++  gsl_rng *__uvspecrng__; 
+ #endif
+ 
+ 
+@@ -48,7 +48,7 @@
+ double uvspec_random ()
+ {
+   #if HAVE_LIBGSL 
+-    return gsl_rng_uniform (uvspecrng);
++    return gsl_rng_uniform (__uvspecrng__);
+   #else
+     return (double) random();
+   #endif
+@@ -57,7 +57,7 @@
+ double uvspec_random_gauss (double sigma)
+ {
+   #if HAVE_LIBGSL 
+-    return gsl_ran_gaussian (uvspecrng, sigma);
++    return gsl_ran_gaussian (__uvspecrng__, sigma);
+   #else
+     return (double) random();
+   #endif
+@@ -69,7 +69,7 @@
+ 
+ /* global variable, defined in uvspec_lex.l */
+ #if HAVE_LIBGSL 
+-  /*  extern gsl_rng *uvspecrng; */  /* global random number generator */
++  /*  extern gsl_rng *__uvspecrng__; */  /* global random number generator */
+   const gsl_rng_type *T;
+ #endif
+ 
+@@ -85,9 +85,9 @@
+ #if HAVE_LIBGSL 
+   T = gsl_rng_mt19937;
+   gsl_rng_default_seed = rseed;
+-  uvspecrng = gsl_rng_alloc (T);
++  __uvspecrng__ = gsl_rng_alloc (T);
+   if (!quiet && need_mt19937)
+-    fprintf (stderr, " ... using %s random number generator\n", gsl_rng_name (uvspecrng));
++    fprintf (stderr, " ... using %s random number generator\n", gsl_rng_name (__uvspecrng__));
+ #else
+   if (need_mt19937) {
+     fprintf (stderr, "Error, GSL not found. The MT19937 random number generator is\n");
