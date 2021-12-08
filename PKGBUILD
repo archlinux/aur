@@ -13,7 +13,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=98.0.4710.4
+pkgver=98.0.4750.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -693,7 +693,6 @@ package() {
   _nacl_libs=(
               'nacl_helper'
               'nacl_helper_bootstrap'
-              'nacl_helper_nonsfi'
               'nacl_irt_x86_64.nexe'
               )
   for i in "${_nacl_libs[@]}"; do
