@@ -1,0 +1,12 @@
+pkgbase = rt-thread-devel
+	pkgdesc = Metapackage to pull all dependencies required to build rt-thread (ARM Cortex M)
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/RT-Thread/rtthread-manual-doc#supported-ide-and-compiler
+	arch = any
+	license = None
+	depends = arm-none-eabi-gcc
+	depends = arm-none-eabi-gdb
+	depends = scons
+
+pkgname = rt-thread-devel
