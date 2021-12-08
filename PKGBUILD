@@ -9,7 +9,7 @@ DLAGENTS=("https::/usr/bin/curl -# -o %o -H ${_referer// /\\ } %u")
 
 pkgname='hoffice-viewer'
 pkgver=11.20.0.991
-pkgrel=4
+pkgrel=5
 pkgdesc='Office document viewer for Linux'
 arch=('x86_64')
 url='https://www.hancom.com/'
