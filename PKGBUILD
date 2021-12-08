@@ -4,8 +4,8 @@ _Name=OpenFermion
 _name=${_Name,,}
 pkgname=python-$_name
 
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="The electronic structure package for quantum computers."
 arch=('any')
 url="https://github.com/quantumlib/OpenFermion"
@@ -24,7 +24,7 @@ checkdepends=('python-numpy'
 	      # AUR dependencies
 	      'python-pubchempy')
 source=("https://github.com/quantumlib/OpenFermion/archive/v$pkgver.tar.gz")
-sha256sums=('a6b7a78671c1a2b88b22a26fb945e90456f809731c338cdba58f739314ad6146')
+sha256sums=('f66d4999b10c7989ec509cce26c7ac184a3de95c4fd43a7fc67adc7e4637cc41')
 # source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 # sha256sums=('2aede7cf2e5f7be4c0016c9b542c27505644f8ecb9411c653dc89a5cd746f84c')
 
