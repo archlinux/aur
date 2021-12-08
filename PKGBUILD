@@ -2,7 +2,7 @@
 # If you think this package is shit, contact me with patch
 
 pkgname=keystore-explorer-git
-pkgver=v5.4.4+169+g667c3c84
+pkgver=v5.5.0+4+g444df8cb
 pkgrel=1
 pkgdesc="KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner."
 _pkgname=keystore-explorer
