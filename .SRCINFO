@@ -1,7 +1,7 @@
 pkgbase = hoffice-viewer
 	pkgdesc = Office document viewer for Linux
 	pkgver = 11.20.0.991
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hancom.com/
 	arch = x86_64
 	license = custom:hoffice-viewer

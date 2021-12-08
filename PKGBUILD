@@ -5,7 +5,7 @@ DLAGENTS=("https::/usr/bin/curl -# -o %o -H ${_referer// /\\ } %u")
 
 pkgname='hoffice-viewer'
 pkgver=11.20.0.991
-pkgrel=1
+pkgrel=2
 pkgdesc='Office document viewer for Linux'
 arch=('x86_64')
 url='https://www.hancom.com/'
@@ -24,5 +24,5 @@ sha256sums=(
 package() {
 	msg2 "Extracting data.tar.xz..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
-	install -Dm644 license.txt "$pkgdir/usr/share/licenses/hoffice-viewer/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hoffice-viewer/LICENSE"
 }
