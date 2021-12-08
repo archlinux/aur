@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Cider
+Exec="/opt/cider/cider" %U
+Terminal=False
+Type=Application
+Icon=cider
+StartupWMClass=Cider
+Encoding=UTF-8
+Comment=Project Cider. A new look into listening and enjoying music in style and performance.
+MimeType=x-scheme-handler/ame;x-scheme-handler/itms;x-scheme-handler/itmss;x-scheme-handler/musics;x-scheme-handler/music;
+Categories=AudioVideo;
