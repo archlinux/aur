@@ -1,7 +1,7 @@
 # Maintainer: Rick van Lieshout <info@rickvanlieshout.com>
 
 pkgname=tidal-hifi-git
-pkgrel=1
+pkgrel=2
 pkgver=2.5.0.r0.g662ef6a
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
@@ -24,12 +24,13 @@ getnvm() {
     else
         echo "nvm could not be found, installing"
         unset npm_config_prefix
-        git clone https://aur.archlinux.org/nvm.git .nvmdep
-        cd .nvmdep
+        folderName=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 12)
+        git clone https://aur.archlinux.org/nvm.git "$folderName"
+        cd "$folderName"
         makepkg -si --asdeps
         source /usr/share/nvm/init-nvm.sh
         cd ../
-        rm -rf .nvmdep
+        rm -rf "$folderName"
     fi
 }
 
