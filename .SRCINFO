@@ -1,0 +1,24 @@
+pkgbase = i3wins
+	pkgdesc = A better i3/sway window switcher with rofi
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/ylmrx/i3wins
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-i3ipc
+	depends = python-dynmen
+	depends = python-traitlets
+	optdepends = sway: compatible Wayland compositor
+	optdepends = i3-wm: compatible X11 window manager
+	optdepends = i3-gaps: compatible X11 window manager
+	optdepends = rofi: comaptible X11 dynamic menu
+	optdepends = rofi-lbonn-wayland: compatible Wayland dynamic menu
+	provides = i3lasts
+	source = https://files.pythonhosted.org/packages/source/i/i3wins/i3wins-0.0.4.tar.gz
+	source = LICENSE
+	sha256sums = d3fb8d5342257f1d86401202da27d929458c9045af81c7d3afd072455f87c88e
+	sha256sums = eb50b4519867346b2a79fbd7483a1924d4ed095ab382536a7827fb55c9975997
+
+pkgname = i3wins
