@@ -3,26 +3,19 @@
 
 pkgname=nona
 pkgver=2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="NONA: a bastard son of Pee-Wee. Phylogenetic Analysis Software"
 arch=('any')
-url="www.cladistics.com"
+url="http://www.lillo.org.ar/phylogeny/Nona-PeeWee/readme.htm"
 license=('custom')
-depends=(
-	'wine'
-	'wine_gecko'
-	'wine-mono'
-)
-source=("https://github.com/starsareintherose/nona/releases/download/v2.0/NONA.zip" "nona.desktop" "nona")
-sha256sums=('508f41744162a6e637b6844048e51e5e49c8d689ec4373d2442113d08abe4d52'
-            '47d543686903d8226427472e4f0ebe1edfa6bec3a551787bf60013300a29aea3'
-            '21a66189b3bf4f9eb475b7d7adbef903d867de0cc4a69008340fbba67cdc8405')
+source=("http://www.lillo.org.ar/phylogeny/Nona-PeeWee/nona-linux.tar.gz")
+sha256sums=('40698b797a3d58707521dd3cea0ebdf3f80ff5c1075382f98b81860fc426de69')
 
 package() {
 	
-	install -dm755 "$pkgdir"/usr/{bin,share/{applications,${pkgname}}}
-	install -Dm755 ${srcdir}/nona.desktop ${pkgdir}/usr/share/applications/nona.desktop
-	install -Dm755 ${srcdir}/nona ${pkgdir}/usr/bin/nona
-
-	mv ${srcdir}/* ${pkgdir}/usr/share/${pkgname}
-		       }
+	install -dm755 "$pkgdir"/usr/{bin,share/doc/$pkgname}
+	install -Dm755 ${srcdir}/piwe.doc ${pkgdir}/usr/share/doc/$pkgname/piwe.doc
+	chmod +x $srcdir/nona
+	install -Dm755 $srcdir/nona $pkgdir/usr/bin/nona
+	
+}
