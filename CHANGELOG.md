@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.10.3](#1-10-3)
 * [1.10.2](#1-10-2)
 * [1.10.1](#1-10-1)
 * [1.10.0](#1-10-0)
@@ -34,6 +35,28 @@
 * [1.2.0](#1-2-0)
 
 
+## 1.10.3
+
+### Added
+
+* Kitty keyboard protocol:
+  - [Report event types](https://sw.kovidgoyal.net/kitty/keyboard-protocol/#report-events)
+    (mode `0b10`)
+  - [Report alternate keys](https://sw.kovidgoyal.net/kitty/keyboard-protocol/#report-alternates)
+    (mode `0b100`)
+  - [Report all keys as escape codes](https://sw.kovidgoyal.net/kitty/keyboard-protocol/#report-all-keys)
+    (mode `0b1000`)
+  - [Report associated text](https://sw.kovidgoyal.net/kitty/keyboard-protocol/#report-text)
+    (mode `0b10000`)
+
+
+### Fixed
+
+* Crash when bitmap fonts are scaled down to very small font sizes
+  (https://codeberg.org/dnkl/foot/issues/830).
+* Crash when overwriting/erasing an OSC-8 URL.
+
+
 ## 1.10.2
 
 ### Added
@@ -41,7 +64,7 @@
 * New value, `max`, for `[tweak].grapheme-width-method`.
 * Initial support for the [Kitty keyboard protocol](https://sw.kovidgoyal.net/kitty/keyboard-protocol/).
   Modes supported:
-  - [Disambiguate escape codes](https://sw.kovidgoyal.net/kitty/keyboard-protocol/#disambiguate)
+  - [Disambiguate escape codes](https://sw.kovidgoyal.net/kitty/keyboard-protocol/#disambiguate) (mode `0b1`)
 * “Window menu” (compositor provided) on right clicks on the CSD title
   bar.
 
