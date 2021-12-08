@@ -1,6 +1,6 @@
 pkgbase = haguichi-git
 	pkgdesc = Provides a user friendly GUI to control the Hamachi client on Linux (development version)
-	pkgver = 1.4.4.r0.gd2d3b14
+	pkgver = 1.4.5.r0.g6f844a5
 	pkgrel = 1
 	url = https://github.com/ztefn/haguichi
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = haguichi-git
 	makedepends = vala
 	depends = gtk3
 	depends = libappindicator-gtk3
-	depends = libnotify
 	depends = logmein-hamachi
 	provides = haguichi
 	conflicts = haguichi
@@ -22,4 +21,3 @@ pkgbase = haguichi-git
 	sha512sums = SKIP
 
 pkgname = haguichi-git
-
