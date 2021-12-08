@@ -4,7 +4,7 @@ GRAPHEME_SHAPING=enabled   # auto|disabled|enabled
 RUN_SHAPING=enabled        # auto|disabled|enabled
 
 pkgname=fcft
-pkgver=2.5.0  # Don’t forget to update CHANGELOG.md
+pkgver=2.5.1  # Don’t forget to update CHANGELOG.md
 pkgrel=1
 pkgdesc="Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('meson' 'ninja' 'scdoc' 'tllist')
 checkdepends=('check' 'ttf-dejavu')
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('58663c684f04154674c52551daa604618e0bb3db6c62492b06b13768fb4f4b3c')
+sha256sums=('1b9e9346c884f16bce9548806ea89c5e34ccc98ce27ec6ecff1f5011235de112')
 
 if [[ ${RUN_SHAPING} == enabled ]]; then
   depends+=('harfbuzz' 'libutf8proc')

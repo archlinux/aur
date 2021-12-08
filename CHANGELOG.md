@@ -1,5 +1,6 @@
 # Changelog
 
+* [2.5.1](#2-5-1)
 * [2.5.0](#2-5-0)
 * [2.4.6](#2-4-6)
 * [2.4.5](#2-4-5)
@@ -26,6 +27,34 @@
 * [2.1.0](#2-1-0)
 * [2.0.0](#2-0-0)
 * [1.1.7](#1-1-7)
+
+
+## 2.5.1
+
+### Added
+
+* Meson command line option `-Ddocs` to force disable or enable
+  building manual pages and installing changelog and readme files
+
+
+### Changed
+
+* `scdoc` is optional and detected automatically
+* `fcft_set_scaling_filter()` now applies to color bitmap fonts only
+  (i.e. emoji fonts). Applying e.g. cubic or lanczos3 on regular text
+  glyphs simply does not look good.
+
+
+### Fixed
+
+* `FCFT_SCALING_FILTER_CUBIC` incorrectly being mapped to “lanczos3”.
+* Pixman errors and program freezes when scaling bitmap fonts to very
+  small sizes (https://codeberg.org/dnkl/foot/issues/830).
+
+
+### Contributors
+
+*  Alibek Omarov
 
 
 ## 2.5.0
