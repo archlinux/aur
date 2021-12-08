@@ -1,31 +1,20 @@
 pkgbase = liblinear
 	pkgdesc = A Library for Large Linear Classification
-	pkgver = 2.42
+	pkgver = 2.43
 	pkgrel = 1
 	url = http://www.csie.ntu.edu.tw/~cjlin/liblinear/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = gcc
+	makedepends = python-setuptools
 	depends = gcc-libs
-	source = https://www.csie.ntu.edu.tw/~cjlin/liblinear/liblinear-2.42.tar.gz
-	source = fix-import-module.diff
-	sha256sums = cf44f13809f506be10c8434fdbf4d4f7a3c6f8da9e93b6e03fb8a80a8e9c938d
-	sha256sums = c595cbf378ca2e781a63cb7127880c8d4bd8b118d1aef1b7b5a4324ba065e6b0
+	source = https://www.csie.ntu.edu.tw/~cjlin/liblinear/liblinear-2.43.tar.gz
+	sha256sums = 02bad43d745e2796f39a08ac9d117770e71939ef06b1ee7afc6ab7909e304807
 
 pkgname = liblinear
 
 pkgname = python-liblinear
 	pkgdesc = Python bindings for liblinear
 	depends = gcc-libs
-	depends = liblinear
-	depends = python
-	optdepends = python-scipy: sparse matrix support
-
-pkgname = python2-liblinear
-	pkgdesc = Python2 bindings for liblinear
-	depends = gcc-libs
-	depends = liblinear
-	depends = python2
-	optdepends = python2-scipy: sparse matrix support
-
+	depends = python-scipy

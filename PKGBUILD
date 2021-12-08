@@ -1,4 +1,4 @@
-# Maintainer : dianlujitao <dianlujitao at gmail dot com>
+# Maintainer : MoetaYuko <loli at yuko dot moe>
 # Contributor: jiuren <qiuwei1987@gmail.com>
 # Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 # Contributor: Kristof Marussy <kris7topher@gmail.com>
@@ -9,33 +9,28 @@
 # Contributor: Tim Huetz <tim at huetz biz>
 
 pkgbase=liblinear
-pkgname=(liblinear python-liblinear python2-liblinear)
-pkgver=2.42
+pkgname=(liblinear python-liblinear)
+pkgver=2.43
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification"
 arch=('i686' 'x86_64')
 url="http://www.csie.ntu.edu.tw/~cjlin/liblinear/"
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('gcc')
-source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz"
-        "fix-import-module.diff")
-sha256sums=('cf44f13809f506be10c8434fdbf4d4f7a3c6f8da9e93b6e03fb8a80a8e9c938d'
-            'c595cbf378ca2e781a63cb7127880c8d4bd8b118d1aef1b7b5a4324ba065e6b0')
-
-prepare() {
-    cd "${pkgbase}-${pkgver}"
-    patch -p1 < ../fix-import-module.diff
-}
+makedepends=('gcc' 'python-setuptools')
+source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz")
+sha256sums=('02bad43d745e2796f39a08ac9d117770e71939ef06b1ee7afc6ab7909e304807')
 
 build() {
-    printf '%s\n' '  -> Building library and CLI binaries...'
-    cd "${pkgbase}-${pkgver}"
+    cd $srcdir/${pkgbase}-${pkgver}
     make lib all
+
+    cd python
+    python setup.py build
 }
 
 package_liblinear() {
-    cd "${srcdir}/${pkgbase}-${pkgver}"
+    cd $srcdir/${pkgbase}-${pkgver}
 
     local _sover
 
@@ -59,43 +54,12 @@ package_liblinear() {
 }
 
 package_python-liblinear() {
-    depends+=(liblinear python)
-    optdepends=('python-scipy: sparse matrix support')
+    depends+=('python-scipy')
     pkgdesc="Python bindings for liblinear"
 
-    cd "${srcdir}/${pkgbase}-${pkgver}"
-
-    local _pyver
-
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-
-    # python modules
-    pushd python
-    install -D -m644 commonutil.py      -t "${pkgdir}/usr/lib/python${_pyver}/${pkgbase}"
-    install -D -m644 liblinear.py       -t "${pkgdir}/usr/lib/python${_pyver}/${pkgbase}"
-    install -D -m644 liblinearutil.py   -t "${pkgdir}/usr/lib/python${_pyver}/${pkgbase}"
-    popd
+    cd "${srcdir}/${pkgbase}-${pkgver}/python"
+    python setup.py install --root="$pkgdir" --optimize=1
 
     # license
-    install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-liblinear() {
-    depends+=(liblinear python2)
-    optdepends=('python2-scipy: sparse matrix support')
-    pkgdesc="Python2 bindings for liblinear"
-
-    cd "${srcdir}/${pkgbase}-${pkgver}"
-
-    # python modules
-    pushd python
-    install -D -m644 commonutil.py      -t "${pkgdir}/usr/lib/python2.7/${pkgbase}"
-    install -D -m644 liblinear.py       -t "${pkgdir}/usr/lib/python2.7/${pkgbase}"
-    install -D -m644 liblinearutil.py   -t "${pkgdir}/usr/lib/python2.7/${pkgbase}"
-    sed -i '1s/python$/python2/' "${pkgdir}/usr/lib/python2.7/${pkgbase}/"{commonutil,liblinear,liblinearutil}.py
-    printf '' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/python2.7/${pkgbase}/__init__.py"
-    popd
-
-    # license
-    install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 ../COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
