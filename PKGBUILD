@@ -2,7 +2,7 @@
 
 pkgname=vorta-git
 _pkgname=vorta
-pkgver=r567.b2a08b9
+pkgver=r582.17eb71a
 pkgrel=1
 pkgdesc="A GUI for BorgBackup (git)"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/borgbase/vorta"
 license=('GPL')
 provides=('vorta')
 conflicts=('vorta')
-depends=('borg' 'python-appdirs' 'python-apscheduler' 'python-pyqt5' 'python-peewee' 'python-paramiko' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools')
+depends=('borg' 'python-appdirs' 'python-pyqt5' 'python-peewee' 'python-paramiko' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools')
 makedepends=('qt5-tools' 'python-pip' 'git')
 options=(!emptydirs)
 source=("$pkgname"::"git+https://github.com/borgbase/${_pkgname}")

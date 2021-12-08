@@ -1,6 +1,6 @@
 pkgbase = vorta-git
 	pkgdesc = A GUI for BorgBackup (git)
-	pkgver = r567.b2a08b9
+	pkgver = r582.17eb71a
 	pkgrel = 1
 	url = https://github.com/borgbase/vorta
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = vorta-git
 	makedepends = git
 	depends = borg
 	depends = python-appdirs
-	depends = python-apscheduler
 	depends = python-pyqt5
 	depends = python-peewee
 	depends = python-paramiko
