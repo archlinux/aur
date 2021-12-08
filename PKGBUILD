@@ -1,14 +1,14 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc='Alternative terminfo files for the foot terminal emulator, with additional non-standard capabilities'
 pkgname=foot-terminfo
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 arch=('any')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('ncurses')
 source=(foot-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('49ad179d5815bf76f8ccdd869b28ce56e3cb5aab8e73e45b09c7510d4a5086d7')
+sha256sums=('24f57d9926ead7bea491f1bdd97eaceae5fdc10c1cb3435ee588a8f9c9af805a')
 install=foot-terminfo-git.install
 
 build() {
