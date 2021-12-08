@@ -1,13 +1,19 @@
 pkgbase = air-bin
-	pkgdesc = Cloud Live reload for Go apps
-	pkgver = 1.12.4
+	pkgdesc = Live reload for Go apps
+	pkgver = 1.27.8
 	pkgrel = 1
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = GPL3
 	provides = air
-	source = air-bin-1.12.4.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.12.4/air_1.12.4_linux_amd64.tar.gz
-	sha256sums = d1078851009cc34a4c1d47be10e34b7fb853e639e5785fc120622addc6c93de0
+	conflicts = air
+	source_x86_64 = air-1.27.8-x86_64.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.27.8/air_1.27.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 77ea75459a700cea94b3d32a2b1bdcf781574298ae86afc7cef5c64bbdb79ece
+	source_i686 = air-1.27.8-i686.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.27.8/air_1.27.8_linux_386.tar.gz
+	sha256sums_i686 = 56aa56b7bb919e6dc1b15109a78035d9d64c5a2d5afca5b1f25a52aaa40d57dc
+	source_aarch64 = air-1.27.8-aarch64.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.27.8/air_1.27.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4abe879e3a0ff8e1659b60b2fc8f869b80bddaefb26129b16751de9b01e954c8
 
 pkgname = air-bin
-
