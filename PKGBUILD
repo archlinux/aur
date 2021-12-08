@@ -115,8 +115,7 @@ ac_add_options --with-system-nss
 export MOZ_REQUIRE_SIGNING=
 export MOZ_INCLUDE_SOURCE_INFO=1
 
-X=$(($(nproc --all)/2))
-mk_add_options MOZ_MAKE_FLAGS="-j\${X%.*}"
+#mk_add_options MOZ_MAKE_FLAGS="-j$(($(nproc --all) / 2))"
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 END
 }
@@ -126,7 +125,8 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export LDFLAGS+=" -Wl,--no-keep-memory -Wl,--no-mmap-output-file"
+  LDFLAGS+=" -Wl,--no-keep-memory -Wl,--no-mmap-output-file"
+  export LDFLAGS
   export MACH_USE_SYSTEM_PYTHON=1
 
   # LTO needs more open files
@@ -209,7 +209,7 @@ package_waterfox-g4-kpe() {
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
-  for i in 16 32 48 64 128; do
+  for i in 16 22 24 32 48 64 128 256; do
       install -d "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
       ln -Ts /usr/lib/waterfox-g4/browser/chrome/icons/default/default$i.png \
         "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox-g4.png"
