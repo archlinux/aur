@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=211028.r5.gb46f1647
+pkgver=211203.r16.gee56e06d
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ optdepends=('python-svgwrite: blender bim addon svg support'
 			'python-behave: python-bimtester'
 			'python-isodate: blender bim addon'
 			'python-olca-ipc: blender bim addon life cycle analysis support')
-makedepends=('cmake' 'boost>=1.58.0' 'swig')
+makedepends=('cmake' 'boost>=1.58.0' 'swig' 'python-babel')
 provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
 conflicts=()
 replaces=()
@@ -65,7 +65,7 @@ build() {
     -DOCC_INCLUDE_DIR=/usr/include/opencascade \
     -DOCC_LIBRARY_DIR=/usr/lib \
     -DHDF5_INCLUDE_DIR=/usr/include \
-    -DHDF5_LIBRARY_DIR=/usr/lib \
+    -DHDF5_LIBRARIES="/usr/lib/libhdf5_cpp.so;/usr/lib/libhdf5.so;/usr/lib/libSZ.so;/usr/lib/libaec.so;" \
     -DLIBXML2_INCLUDE_DIR=/usr/include/libxml2 \
     -DLIBXML2_LIBRARIES="/usr/lib/libxml2.so.2" \
     -DGMP_INCLUDE_DIR=/usr/include \
@@ -93,11 +93,12 @@ package_ifcopenshell-git() {
   cp -rf "${srcdir}/IfcOpenShell/src/ifcclash/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcdiff/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/bcf/src/bcf" "./"
-  cp -rf "${srcdir}/IfcOpenShell/src/ifccsv/ifccsv.py" "./"
+  cp -rf "${srcdir}/IfcOpenShell/src/ifccsv" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcbimtester/bimtester" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcpatch" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifc4d/ifc4d" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifc5d/ifc5d" "./"
+  pybabel compile -d "./bimtester/locale"
   python -O -m compileall "./"
 }
 
