@@ -1,5 +1,5 @@
 # Maintainer: Stefan J. Betz <info@stefan-betz.net>
-pkgname=dibbler
+pkgname=dibbler-git
 pkgver=1.0.1.r129.ga7c6cf58
 pkgrel=1
 pkgdesc="Dibbler, a portable DHCPv6"

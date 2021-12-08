@@ -1,4 +1,4 @@
-pkgbase = dibbler
+pkgbase = dibbler-git
 	pkgdesc = Dibbler, a portable DHCPv6
 	pkgver = 1.0.1.r129.ga7c6cf58
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = dibbler
 	sha512sums = SKIP
 	sha512sums = c8334be4ac1cf011b2727a72e0f35b12ce063ffd5e517182f5733b6a3d57cf406eed6436f6133b9b1bcd77792a44e6ee52c40b462c253bf1d245f0dbf9791ef3
 
-pkgname = dibbler
+pkgname = dibbler-git
