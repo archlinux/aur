@@ -1,5 +1,5 @@
 /*
- * (C) 2020 by Christian Hesse <mail@eworm.de>
+ * (C) 2020-2021 by Christian Hesse <mail@eworm.de>
  *
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
