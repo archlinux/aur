@@ -1,6 +1,6 @@
 pkgbase = skate
 	pkgdesc = A personal key value store
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/charmbracelet/skate
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = skate
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/charmbracelet/skate/archive/v0.1.0/skate-0.1.0.tar.gz
-	sha256sums = cc1c8c2a72af4071de0e67ecb8a7f0d37297740af172192d3f5e34f3087a5b6f
+	source = https://github.com/charmbracelet/skate/archive/v0.1.1/skate-0.1.1.tar.gz
+	sha256sums = 7fa4a229b6c61f8437dcc210b4348923e57b29504d4a59c46bd1c5974a2c9c87
 
 pkgname = skate
