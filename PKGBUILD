@@ -79,7 +79,7 @@ _srcname=linux-${_major}
 _clr=${_major}.6-1105
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -177,6 +177,11 @@ prepare() {
                    --enable NTFS3_LZX_XPRESS \
                    --enable NTFS3_FS_POSIX_ACL
 
+    scripts/config --module SMB_SERVER \
+                   --enable SMB_SERVER_SMBDIRECT \
+                   --enable SMB_SERVER_CHECK_CAP_NET_ADMIN \
+                   --enable SMB_SERVER_KERBEROS5
+
     # Security options
     scripts/config --enable SECURITY_SELINUX \
                    --enable SECURITY_SELINUX_BOOTPARAM \
@@ -254,7 +259,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
     install=linux.install
 
     cd $_srcname
