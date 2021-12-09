@@ -1,6 +1,6 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=algobox
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Algorithmic learning for high school students"
 url="http://www.xm1math.net/algobox/index.html"
@@ -11,8 +11,7 @@ optdepends=()
 makedepends=()
 source=("http://www.xm1math.net/algobox/${pkgname}-${pkgver}.tar.bz2"
        )
-md5sums=('320d37c01e2064470f10cd653716fb80')
-
+md5sums=('a3abf874761e6369e312f07f7c81cf8a')
 
 build() {
 	  cd "${srcdir}/${pkgname}-${pkgver}"
