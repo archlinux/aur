@@ -8,6 +8,7 @@ pkgbase = bustd
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	optdepends = bustd-pacman-hooks: restart executable after pacman transaction
 	provides = bustd
 	conflicts = oomd
 	source = bustd::git+https://github.com/vrmiguel/bustd
