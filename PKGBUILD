@@ -1,5 +1,5 @@
 pkgname=pcsclite-toolbox
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library patched for a Fedora socket"
 arch=('x86_64')
@@ -13,9 +13,9 @@ options=('!docs')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
 source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.bz2"{,.asc} 
         "https://src.fedoraproject.org/rpms/pcsc-lite/raw/rawhide/f/pcsc-lite-1.9.1-maxreaders.patch")
-sha256sums=('8a8caac227e0a266015298dda663e81576a0d11d698685101e6aa6c9fdb51c4b'
+sha256sums=('9ee3f9b333537562177893559ad4f7b8d5c23ebe828eef53056c02db14049d08'
             'SKIP'
-            '11f0d8c4c54aba6bc6a5f8a799301f66c48c11894a173c0c670c6ad6785daa87')
+            'd4b7ad3e8b019ae8ba9bc73775dedaf0a749748ab1978a2d60a339a835c4d640')
 
 prepare() {
     cd "${srcdir}/${_pkgname}/pcsc-lite-${pkgver}"
