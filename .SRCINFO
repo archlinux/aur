@@ -6,7 +6,7 @@ pkgbase = calcure
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = python curl
+	depends = python,curl
 	source = calcure-1.4.tar.gz::https://github.com/anufrievroman/calcure/archive/1.4.tar.gz
 	md5sums = e2e30613b7b6c3ac0695672dcbf74059
 
