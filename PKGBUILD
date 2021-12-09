@@ -2,11 +2,12 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=air-bin
 pkgver=1.27.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Live reload for Go apps"
 url="https://github.com/cosmtrek/${pkgname%-bin}"
 arch=('x86_64' 'i686' 'aarch64')
 license=(GPL3)
+depends=(go)
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("${pkgname/-bin/}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_amd64.tar.gz")

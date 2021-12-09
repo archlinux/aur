@@ -1,12 +1,13 @@
 pkgbase = air-bin
 	pkgdesc = Live reload for Go apps
 	pkgver = 1.27.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = GPL3
+	depends = go
 	provides = air
 	conflicts = air
 	source_x86_64 = air-1.27.8-x86_64.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.27.8/air_1.27.8_linux_amd64.tar.gz
