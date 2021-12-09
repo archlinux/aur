@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello
-pkgver=1.4.6
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-pygments')
 makedepends=('python-setuptools')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f7b2e9128a00d4439f9b3c11e328934ee73870f5fc32cfc40958ee9763bb14fc')
+sha256sums=('41a50dd6ee88a7a69d73bd818cc0a69b1ec2542ea471a81329934b2aeea232fa')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -31,8 +31,9 @@ check() {
 }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "$pkgname-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
