@@ -1,6 +1,6 @@
 pkgbase = cider
 	pkgdesc = Project Cider. A new look into listening and enjoying music in style and performance. This is a git package, thus it compiles straight from the GitHub repository.
-	pkgver = 1.0.0.221.9abb13c
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/CiderApp/Cider.git
 	arch = armv7h
