@@ -1,10 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-poliastro
 _pyname=${pkgname#python-}
-pkgver=0.15.2
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Astrodynamics and Orbital Mechanics computations"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://docs.poliastro.space"
 license=('MIT')
 makedepends=('python-setuptools' 'python-dephell')
@@ -21,7 +21,7 @@ makedepends=('python-setuptools' 'python-dephell')
 #              'python-jplephem'
 #              'python-numba')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6f3e724beff0b8831dc3101acfadb633')
+md5sums=('37e9d40c6190e8ca765c57adb727d176')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -43,12 +43,12 @@ build() {
 #}
 
 package() {
-    depends=('python-scipy' 'python-astropy' 'python-jplephem' 'python-matplotlib' 'python-plotly')
+    depends=('python-scipy' 'python-astropy' 'python-jplephem' 'python-matplotlib>3.0.1' 'python-plotly' 'python-numba>=0.53.0')
     #'python-retrying')
-    optdepends=('python-numba: For accelerating the code'
-                'python-poliastro-doc: Documentation for poliastro'
+    optdepends=('python-poliastro-doc: Documentation for poliastro'
+#               'python-numba: For accelerating the code'
                 'python-pandas'
-                'python-astroquery'
+                'python-astroquery>=0.3.9'
                 'python-pytest: For running the tests from the package')
     cd ${srcdir}/${_pyname}-${pkgver}
 
