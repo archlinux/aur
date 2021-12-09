@@ -2,7 +2,7 @@
 
 pkgname=cider
 _pkgname=Cider
-pkgver=1.0.0.198.2087be2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. This is a git package, thus it compiles straight from the GitHub repository."
 arch=("armv7h" "i686" "x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=('gtk3' 'libxss' 'nss')
 makedepends=('yarn' 'git' 'npm' 'nodejs-lts-gallium')
 optdepends=('libnotify: Playback notifications'
-            'otf-san-francisco: Use of SF Font for certain themes')
+            'otf-apple-sf-pro: Use of SF Font for certain themes')
 source=(
   "git+https://github.com/CiderApp/${_pkgname}.git"
   "Cider.desktop"
