@@ -15,7 +15,7 @@ optdepends=('libnotify: Playback notifications'
 provides=(apple-music-electron)
 conflicts=(apple-music-electron)
 source=(
-  "git+https://github.com/CiderApp/${_pkgname}.git"
+  "${_pkgname}::git+https://github.com/CiderApp/${_pkgname}.git"
   "Apple-Music-Electron.desktop"
 )
 sha256sums=('SKIP'
