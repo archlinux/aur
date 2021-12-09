@@ -1,0 +1,16 @@
+pkgbase = python-jxmlease
+	pkgdesc = XML to Python object conversion library
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Juniper/jxmlease
+	changelog = CHANGES
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	depends = python
+	optdepends = python-lxml
+	source = python-jxmlease-1.0.3.tar.gz::https://github.com/Juniper/jxmlease/archive/1.0.3.tar.gz
+	sha256sums = 6b1fd14f192450601d4ea5d0fbb2c7e49f9bc6e9ab9530dcf91c8ef57f65ed4d
+
+pkgname = python-jxmlease

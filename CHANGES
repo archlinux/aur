@@ -1,0 +1,22 @@
+jxmlease Change Log
+Copyright (c) 2016, Juniper Networks, Inc.
+All rights reserved.
+
+Entries are grouped by release. Releases are listed in reverse
+chronological order.
+
+version 1.0.1 (April 18, 2016):
+    Minor bugfixes and enhancements.
+
+    Enhancement:
+    - Issue #9: Add top-level emit_xml() function.
+
+    Fixes:
+    - Issue #7: Parser not correctly detecting corrupt XML input documents.
+    - Documentation producing wrong cross-references (fixed with #9).
+    - Redo the logic in the emit_handler() method to split detection of when
+      it is permissible to use the full_document option from the detection of
+      when we should default to using it.
+
+version 1.0 (April 12, 2016):
+    Initial release of jxmlease!
