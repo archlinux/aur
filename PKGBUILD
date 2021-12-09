@@ -1,4 +1,5 @@
 # Maintainer: Core_UK <mail.coreuk@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=apple-music-electron-git
 _pkgname=Apple-Music-Electron
