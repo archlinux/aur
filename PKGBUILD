@@ -3,7 +3,7 @@
 pkgname=python-blist
 _name=blist
 pkgver=1.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A list-like type with better asymptotic performance"
 arch=(i686 x86_64)
 url="https://pypi.org/project/blist/"
@@ -19,4 +19,5 @@ build() {
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
+  chmod -R 0644 "$pkgdir"/usr/lib/python*/site-packages/*.egg-info 
 }
