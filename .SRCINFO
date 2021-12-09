@@ -4,6 +4,7 @@ pkgbase = bustd
 	pkgrel = 1
 	url = https://github.com/vrmiguel/bustd
 	arch = x86_64
+	groups = bustd
 	license = MIT
 	makedepends = cargo
 	makedepends = git

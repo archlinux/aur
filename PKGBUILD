@@ -4,6 +4,7 @@ pkgname=bustd
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Process Killer Daemon for Out-of-Memory Scenarios, written in Rust"
+groups=("bustd")
 
 arch=("x86_64")
 license=("MIT")
