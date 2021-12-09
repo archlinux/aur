@@ -21,14 +21,18 @@ conflicts=("oomd")
 # (The rest of the build process may be run offline.)
 prepare() {
   cd "${pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
+  if [[ -z $RUSTUP_TOOLCHAIN ]]; then
+    export RUSTUP_TOOLCHAIN=stable
+  fi
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 # Compiles the package with all optimizations and features.
 build() {
   cd "${pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
+  if [[ -z $RUSTUP_TOOLCHAIN ]]; then
+    export RUSTUP_TOOLCHAIN=stable
+  fi
   export CARGO_TARGET_DIR=target
   cargo build --release --all-features --frozen
 }
