@@ -1,20 +1,20 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=python-pandas-docs
-pkgver=1.0.1
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Documentation for Python Pandas module."
 arch=('any')
 url='http://pandas.pydata.org'
 license=('BSD')
-source=("${pkgname}-${pkgver}.zip::http://pandas.pydata.org/pandas-docs/stable/pandas.zip")
-sha256sums=('57202d20f8d168d3a40bcf1fd4b44192032d18a6e1c45ca0bfefb4479824e7ca')
+source=("${pkgname}-${pkgver}.zip::http://pandas.pydata.org/pandas-docs/version/${pkgver}/pandas.zip")
+sha256sums=('c36559fb92a22015864a091d4c7a9c995fdc9a57a4f0e5bceb6d681587f78f66')
 
 prepare() {
-  rm ${pkgname}-${pkgver}.zip
+	rm ${pkgname}-${pkgver}.zip
 }
 
 package() {
-  install -d "${pkgdir}"/usr/share/doc/python-pandas/html
-  cp -a ./* "${pkgdir}"/usr/share/doc/python-pandas/html/
+	install -d "${pkgdir}"/usr/share/doc/python-pandas/html
+	cp -a ./* "${pkgdir}"/usr/share/doc/python-pandas/html/
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4:
