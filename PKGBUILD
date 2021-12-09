@@ -8,7 +8,7 @@ pkgdesc="Process Killer Daemon for Out-of-Memory Scenarios, written in Rust"
 arch=("x86_64")
 license=("MIT")
 url="https://github.com/vrmiguel/bustd"
-source=("${pkgname}::git+${url}" "bustd.service")
+source=("${pkgname}::git+${url}" "${pkgname}.service")
 provides=("bustd")
 conflicts=("bustd")
 sha1sums=("SKIP" "5a6571580691a96e8cfedba8e6d951e93c033997")
@@ -17,28 +17,36 @@ depends=("gcc-libs")
 makedepends=("cargo" "git")
 conflicts=("oomd")
 
-build() {
-  cd "${srcdir}/${pkgname}"
-  cargo build --release --all-features
+# Fetches the libraries required via 'cargo'.
+# (The rest of the build process may be run offline.)
+prepare() {
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-package() {
+# Compiles the package with all optimizations and features.
+build() {
   cd "${srcdir}/${pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --all-features --frozen
+}
 
+# Installs the binary and associated metadata to the system.
+package() {
   # Binary Executable
-  install -Dm755 "target/release/${pkgname}" \
-    "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin" \
+    "${pkgname}/target/release/${pkgname}"
 
   # Package License
-  install -Dm644 "LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
+    "${pkgname}/LICENSE"
 
   # Documentation (README)
-  install -Dm644 "README.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+    "${pkgname}/README.md"
 
   # Systemd Service
-  install -Dm644 bustd.service \
-    "${pkgdir}/etc/systemd/system/bustd.service"
-  echo "To load bustd with systemd, run 'sudo systemctl enable --now bustd'."
+  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" \
+    "${pkgname}.service"
+  echo "To load bustd with systemd, run 'sudo systemctl enable --now ${pkgname}'."
 }
