@@ -2,7 +2,7 @@
 
 pkgname="mstream"
 pkgver=5.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Music player server with a web-based interface"
 url="https://mstream.io"
 license=("GPL3")
@@ -12,7 +12,7 @@ conflicts=("nodejs-mstream" "mstream-git")
 replaces=("mstream-git")
 depends=("nodejs")
 makedepends=("npm")
-source=("https://github.com/IrosTheBeggar/mStream/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/IrosTheBeggar/mStream/archive/refs/tags/v$pkgver.tar.gz"
         "mstream.json"
         "mstream.service"
         "mstream.sysusers"
@@ -22,13 +22,12 @@ sha256sums=('9be41e9076be724f29d433857402b10082b0b8ee85c73c84137de340f8847c6f'
             '833f86daaffb12857612ef5b1264e944b0a48a077d5a8bb8d217ec6565ed90c3'
             '5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437'
             '3664207c5b2782d55acc77a6ff1ced5c80447047c4c036837983dc03e19896de')
+noextract=("$pkgname-$pkgver.tar.gz")
 backup=("etc/mstream.json")
 options=("!strip")
 
 package(){
- # archiving the folder because `npm install` doesn't move the files to $pkgdir
- tar czf "mStream.tar.gz" -C "mStream-$pkgver" .
- npm install -g --user root --prefix "$pkgdir/usr" "mStream.tar.gz"
+ npm install -g --user root --prefix "$pkgdir/usr" "$pkgname-$pkgver.tar.gz"
 
  install -d -m 750 "$pkgdir/var/cache/mstream"
  install -d -m 750 "$pkgdir/var/lib/mstream"
