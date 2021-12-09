@@ -1,11 +1,11 @@
 pkgbase = kompose-bin
 	pkgdesc = Takes a Docker Compose file and translates it into Kubernetes resources
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = http://kompose.io/
 	arch = x86_64
 	license = Apache
-	source_x86_64 = kompose-1.24.0.tar.gz::https://github.com/kubernetes/kompose/releases/download/v1.24.0/kompose-linux-amd64.tar.gz
-	sha256sums_x86_64 = 88cac7b503cce5a4f83d3ac7690311307bc62a380e29b22a6557581c2b4c6d4d
+	source_x86_64 = kompose-1.26.0.tar.gz::https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-linux-amd64.tar.gz
+	sha256sums_x86_64 = ee2d8e15b0887b22fb4e0ac59db9d787d7670d4c424d7765c85ab1595f840674
 
 pkgname = kompose-bin
