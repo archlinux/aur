@@ -1,5 +1,5 @@
-src/
-pkg/
-*.tar
-*.deb
-
+*
+!alfaview.install
+!PKGBUILD
+!.SRCINFO
+!.gitignore
