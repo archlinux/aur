@@ -1,6 +1,6 @@
 pkgbase = wiki-monkey
 	pkgdesc = Wiki Monkey - MediaWiki (ArchWiki-optimized) bot and editor-assistant user script (server-enabled version).
-	pkgver = 5.5.1
+	pkgver = 5.5.2
 	pkgrel = 1
 	url = https://github.com/kynikos/wiki-monkey/wiki
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = wiki-monkey
 	depends = python-marshmallow-sqlalchemy
 	optdepends = gunicorn: serve the application with a proper WSGI server instead of Flask's local development server
 	optdepends = python-pyopenssl: make Flask's local development server use ad-hoc SSL certificates instead of a permanent one
-	source = https://files.pythonhosted.org/packages/source/w/wiki-monkey/wiki-monkey-5.5.1.tar.gz
-	sha256sums = 973cf796e1a4c3d765bc091197215c0e5b5a7bd60189c6d3e7ae796d090cbcbb
+	source = https://files.pythonhosted.org/packages/source/w/wiki-monkey/wiki-monkey-5.5.2.tar.gz
+	sha256sums = ee1cc65890c4e5415505696333041914781e4c65b8ade70a04d331cc85c4876e
 
 pkgname = wiki-monkey
