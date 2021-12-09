@@ -1,6 +1,6 @@
 pkgbase = python-pytest-codeblocks
 	pkgdesc = Test code blocks in your READMEs
-	pkgver = 0.11.4
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/nschloe/pytest-codeblocks
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pytest-codeblocks
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	depends = python-pytest
-	source = https://pypi.org/packages/source/p/pytest-codeblocks/pytest-codeblocks-0.11.4.tar.gz
-	sha512sums = f1fc4c83a2450882743f93e0c7615259b3c20c206a94d222b14d5ac489259e33dca6c059445b1a493bcce1fe0e02eb81f605869883702d2ebb0304583bc430e9
+	source = https://github.com/nschloe/pytest-codeblocks/archive/v0.12.0.tar.gz
+	sha512sums = 59dad93fd902b1c5b3d80effdc182845f42eb2b91c9458cde963bac077ed66d007ffdcde2b20ef0f89970fb0fed625c5efd9d5b03e815f232d65c0052a151d56
 
 pkgname = python-pytest-codeblocks
