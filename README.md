@@ -4,7 +4,11 @@
 may be resource hungry or memory starved. Therefore, extra preference is given to this
 package to ensure that the latest (and greatest) version is always running.
 
+<<<<<<< HEAD
 ![Hooks Directory Tree](resources/pacman-hooks-scrot.png "Bustd Pacman Hooks")
+=======
+![Hooks Directory Tree](pacman-hooks-scrot.png "Bustd Pacman Hooks")
+>>>>>>> e353b38 (New Readme)
 
 ## Why are Pacman Hooks Used
 
