@@ -3,7 +3,7 @@
 pkgname=python-simplecrf
 _pkgname=SimpleCRF
 pkgver=0.2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wrap of crf and dense crf, both 2d and 3d are supported'
 arch=('x86_64')
 url='https://github.com/HiLab-git/SimpleCRF'
@@ -26,5 +26,6 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:

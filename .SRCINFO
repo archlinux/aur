@@ -1,7 +1,7 @@
 pkgbase = python-simplecrf
 	pkgdesc = Python wrap of crf and dense crf, both 2d and 3d are supported
 	pkgver = 0.2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HiLab-git/SimpleCRF
 	arch = x86_64
 	license = BSD
