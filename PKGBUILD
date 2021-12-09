@@ -5,7 +5,7 @@
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-electron
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 #_mainver=${pkgver%.*}
 pkgdesc="Baidu Net Disk - a cloud storage client (Linux Version). Run with system electron."
 arch=('x86_64')
@@ -47,12 +47,9 @@ package() {
     
     # remove unnecessary libs
     cd "${pkgdir}/usr/lib/${_pkgname}"
-    rm -rf baidunetdisk swiftshader chrome_100_percent.pak libEGL.so locales v8_context_snapshot.bin chrome_200_percent.pak  libffmpeg.so         libvk_swiftshader.so  vk_swiftshader_icd.json chrome-sandbox libGLESv2.so libvulkan.so resources.pak icudtl.dat snapshot_blob.bin
+    rm -rf baidunetdisk swiftshader chrome_100_percent.pak libEGL.so locales v8_context_snapshot.bin chrome_200_percent.pak  libffmpeg.so         libvk_swiftshader.so  vk_swiftshader_icd.json chrome-sandbox libGLESv2.so libvulkan.so resources.pak icudtl.dat snapshot_blob.bin baiduNetdiskContext.conf baidunetdisk.svg baidunetdiskv.desktop resources/8bb88996964c4e3202fecaaa5605af03 resources/default.db resources/dir.icns resources/resource.db
 
 
     # install license
-    ln -s "/usr/lib/${_pkgname}/LICENSE.electron.txt" \
-        "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.electron.txt"
-    ln -s "/usr/lib/${_pkgname}/LICENSES.chromium.html" \
-        "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
+    mv LICENSE* "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }

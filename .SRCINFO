@@ -1,7 +1,7 @@
 pkgbase = baidunetdisk-electron
 	pkgdesc = Baidu Net Disk - a cloud storage client (Linux Version). Run with system electron.
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pan.baidu.com
 	arch = x86_64
 	license = custom
