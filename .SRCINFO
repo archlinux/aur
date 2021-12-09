@@ -1,6 +1,6 @@
 pkgbase = vscodium-git
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest commit).
-	pkgver = 1.62.3.r2.gf3ba593
+	pkgver = 1.63.0.r0.gd164e43
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = vscodium-git
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = codium
 	source = git+https://github.com/VSCodium/vscodium.git#branch=master
-	source = git+https://github.com/microsoft/vscode.git#tag=1.62.3
+	source = git+https://github.com/microsoft/vscode.git#tag=1.63.0
 	source = vscodium.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
