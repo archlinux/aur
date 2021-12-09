@@ -1,0 +1,15 @@
+pkgbase = pdfium-binaries-v8
+	pkgdesc = PDFium binaries with V8 and XFA built with scripts from pdfium-binaries
+	pkgver = 4736
+	pkgrel = 1
+	url = https://github.com/bblanchon/pdfium-binaries
+	arch = x86_64
+	license = Apache
+	makedepends = ninja
+	provides = libpdfium
+	conflicts = libpdfium-nojs
+	conflicts = pdfium-binaries
+	source = https://github.com/bblanchon/pdfium-binaries/archive/refs/tags/chromium/4736.tar.gz
+	sha512sums = d032928fca1a568cc3e1051179e463747df5430566af14e212fddcb5f357dda3c2b63e21ccda404bfb5b132091ce4b93faf615020ac80a3781bac186bdf9e0e7
+
+pkgname = pdfium-binaries-v8
