@@ -1,9 +1,10 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 # Contributor: orumin <dev at orum.in>
 
 _basename=openexr
 pkgname=lib32-openexr
-pkgver=3.0.5
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library (32-bit)"
 url="https://www.openexr.com/"
@@ -14,7 +15,7 @@ makedepends=('cmake')
 conflicts=('lib32-ilmbase')
 replaces=('lib32-ilmbase')
 source=(https://github.com/openexr/openexr/archive/v$pkgver/$_basename-$pkgver.tar.gz)
-sha256sums=('7aa6645da70e9a0cce8215d25030cfd4f4b17b4abf1ceec314f7eae15674e8e4')
+sha256sums=('6f70a624d1321319d8269a911c4032f24950cde52e76f46e9ecbebfcb762f28c')
 
 build() {
     export CC='gcc -m32'
@@ -35,6 +36,7 @@ package() {
 
     rm -r "${pkgdir}/usr/include"
     rm -r "${pkgdir}/usr/share"
+    rm -r "${pkgdir}/usr/bin"
 
     install -D -m644 "$srcdir"/$_basename-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
