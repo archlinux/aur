@@ -3,8 +3,8 @@
 
 pkgname=gmid-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.1.r21.ga8e1e8d
-pkgrel=2
+pkgver=1.7.3.r100.g34c4ca6
+pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
 url='https://gmid.omarpolo.com'
