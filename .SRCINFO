@@ -1,0 +1,18 @@
+pkgbase = termv
+	pkgdesc = A terminal iptv player written in bash
+	pkgver = v1.2
+	pkgrel = 1
+	url = https://github.com/Roshan-R/termv
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = fzf
+	depends = jq
+	depends = mpv
+	depends = wget
+	conflicts = termv-git
+	source = termv-v1.2::https://github.com/Roshan-R/termv/archive/refs/tags/v1.2.tar.gz
+	sha256sums = 5ab655818f4ed20435885102b6dd8789e07726e8d25f41d35bf29a8091a3e2c6
+
+pkgname = termv
