@@ -1,20 +1,16 @@
 pkgbase = gnome-keyring-import-export-git
-	pkgdesc = Simple script for exporting gnome2 (seahorse) keyrings, and re-importing on another machine - git version
+	pkgdesc = Simple script for exporting Gnome/Seahorse keyrings, and re-importing on another machine - git version
 	pkgver = r20.g6b55065
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spookylukey/gnome-keyring-import-export
 	arch = any
 	license = unknown
 	makedepends = git
 	depends = python
 	depends = python-secretstorage
-	depends = pygtk
-	depends = python2
-	depends = python2-gnomekeyring
-	depends = python2-lxml
 	provides = gnome-keyring-import-export
 	conflicts = gnome-keyring-import-export
 	source = gnome-keyring-import-export-git::git+https://github.com/spookylukey/gnome-keyring-import-export
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = gnome-keyring-import-export-git
