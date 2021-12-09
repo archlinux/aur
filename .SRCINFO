@@ -1,6 +1,6 @@
 pkgbase = hurl-rs
 	pkgdesc = HTTP Client to run and test requests
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Orange-OpenSource/hurl
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hurl-rs
 	makedepends = python
 	depends = curl
 	depends = libxml2
-	source = https://github.com/Orange-OpenSource/hurl/archive/1.4.0/hurl-1.4.0.tar.gz
-	sha512sums = 7609550afbd6ebb57f9c1ac1bc0de9ac74042d346a6d9c7e0a82879da03d917f4adc0037980f70a90585a15286bb7db8a3d321f96130345b7b129e2869ba3925
+	source = https://github.com/Orange-OpenSource/hurl/archive/1.5.0/hurl-1.5.0.tar.gz
+	sha512sums = 3533ff7500cc3448215123f961378dc13cda0e034fea33e1118958b6303693a9a141934cdb0b82ee5cff091e7c77c6dfce97a8207a46e2edecbdc619ddb9f61a
 
 pkgname = hurl-rs
