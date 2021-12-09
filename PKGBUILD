@@ -17,7 +17,7 @@ source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
         "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-${pkgver}.gz"
         "config.yaml")
 sha256sums=('SKIP' 
-            'eddcc90f7d78c19c57c963e500dbb45c2fe0bcda2e5eca1f84e5b678603bc267'
+            '8ee636be9cb6590c95b583dc023eddebe4fe02791e393a2011e3b393d3941993'
             '1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
 
 prepare() {
