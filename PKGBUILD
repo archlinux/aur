@@ -3,7 +3,7 @@
 
 pkgname=opensnitch
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -32,7 +32,7 @@ backup=(
     'etc/opensnitchd/system-fw.json'
 )
 source=(
-    "$url/archive/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
 sha512sums=(
     '4ddee77089320018fd0e719b6da0144473f438d1455a43b07fb72f7a9932cc293f06b03e634d3afc1e184b4eb52f4b56997e857c2019c072905ffb4c447461f3'
@@ -55,8 +55,8 @@ build() {
 
     export PATH="${GOPATH}/bin:${PATH}"
 
-    go install github.com/golang/protobuf/protoc-gen-go@latest
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+    go install github.com/golang/protobuf/protoc-gen-go
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
     echo "$(whereis protoc-gen-go)"
     echo "$(whereis protoc-gen-go-grpc)"

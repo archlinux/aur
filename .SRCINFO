@@ -1,7 +1,7 @@
 pkgbase = opensnitch
 	pkgdesc = GNU/Linux port of the Little Snitch application firewall
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evilsocket/opensnitch
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = opensnitch
 	optdepends = hicolor-icon-theme: for gui
 	backup = etc/opensnitchd/default-config.json
 	backup = etc/opensnitchd/system-fw.json
-	source = https://github.com/evilsocket/opensnitch/archive/v1.4.3.tar.gz
+	source = opensnitch-1.4.3.tar.gz::https://github.com/evilsocket/opensnitch/archive/v1.4.3.tar.gz
 	sha512sums = 4ddee77089320018fd0e719b6da0144473f438d1455a43b07fb72f7a9932cc293f06b03e634d3afc1e184b4eb52f4b56997e857c2019c072905ffb4c447461f3
 
 pkgname = opensnitch
