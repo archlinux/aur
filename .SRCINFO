@@ -1,6 +1,6 @@
 pkgbase = clash-premium-tun
 	pkgdesc = A rule-based tunnel in Go for Linux with TUN
-	pkgver = 2021.11.08
+	pkgver = 2021.12.07
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash
 	install = clash-premium-tun.install
@@ -16,7 +16,7 @@ pkgbase = clash-premium-tun
 	conflicts = clash
 	backup = etc/clash/config.yaml
 	source = git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
-	source = https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.11.08.gz
+	source = https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.12.07.gz
 	source = config.yaml
 	sha256sums = SKIP
 	sha256sums = eddcc90f7d78c19c57c963e500dbb45c2fe0bcda2e5eca1f84e5b678603bc267
