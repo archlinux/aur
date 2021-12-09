@@ -1,8 +1,8 @@
 pkgbase = perl-vk-app
 	pkgdesc = Creation of a client application for vk.com
 	pkgver = 0.12
-	pkgrel = 1
-	url = http://search.cpan.org/dist/$_cpanname/
+	pkgrel = 2
+	url = http://search.cpan.org/dist/VK-App/
 	arch = any
 	license = GPL2
 	depends = perl
@@ -12,4 +12,3 @@ pkgbase = perl-vk-app
 	sha1sums = 4878af974036204d7e6ecbf603ecb855316f7e6f
 
 pkgname = perl-vk-app
-
