@@ -1,19 +1,21 @@
 pkgbase = xfce4-zorinmenulite-plugin
-	pkgdesc = Zorin OS Xfce menu
-	pkgver = _1.1.4
-	pkgrel = 2
+	pkgdesc = Zorin Menu Lite is the default application launcher in Zorin OS Lite.
+	pkgver = 1.1.4
+	pkgrel = 3
 	epoch = 0
 	url = https://zorin.com/os/
 	arch = any
 	license = GPL2
 	makedepends = cmake
 	makedepends = make
+	makedepends = pkgconfig
+	makedepends = gettext
 	depends = gtk3>=3.22
 	depends = exo>=0.11
-	depends = garcon
+	depends = garcon>=0.6
 	depends = xfce4-panel>=4.11
 	depends = libxfce4ui>=4.11
-	depends = libxfce4util>=4.11
+	depends = libxfce4util>=4.9
 	source = http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/x/xfce4-zorinmenulite-plugin/xfce4-zorinmenulite-plugin_1.1.4.tar.xz
 	sha256sums = e5fc91ca464c004885c8ffaf5d9a3216cd7f6b5a0d2afa1df6327e88ae80487c
 
