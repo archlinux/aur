@@ -11,6 +11,8 @@ pkgbase = bustd
 	provides = bustd
 	conflicts = oomd
 	source = bustd::git+https://github.com/vrmiguel/bustd
+	source = bustd.service
 	sha1sums = SKIP
+	sha1sums = 5a6571580691a96e8cfedba8e6d951e93c033997
 
 pkgname = bustd
