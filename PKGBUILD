@@ -12,27 +12,27 @@ optdepends=('cpufreqctl: CPU Power Manager'
             'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell')
 makedepends=('git' 'python-setuptools')
 conflicts=('auto-cpufreq' 'auto-cpufreq-git')
-install="${pkgname}.install"
+install="auto-cpufreq.install"
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/auto-cpufreq"
     git fetch
     git checkout non-systemd-gnome-power
-    sed -i 's|usr/local|usr|g' "scripts/${pkgname}.service" auto_cpufreq/core.py
+    sed -i 's|usr/local|usr|g' "scripts/auto-cpufreq.service" auto_cpufreq/core.py
 }
 
 build() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/auto-cpufreq"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/auto-cpufreq"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
-    install -Dm755 scripts/cpufreqctl.sh -t "$pkgdir/usr/share/$pkgname/scripts"
-    install -Dm644 "scripts/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/auto-cpufreq/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/auto-cpufreq/README"
+    install -Dm755 scripts/cpufreqctl.sh -t "$pkgdir/usr/share/auto-cpufreq/scripts"
+    install -Dm644 "scripts/auto-cpufreq.service" -t "$pkgdir/usr/lib/systemd/system"
 }
