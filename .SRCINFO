@@ -1,7 +1,7 @@
 pkgbase = across
 	pkgdesc = The next GUI client for v2ray core (Development Branch)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArkToria/ACross
 	arch = x86_64
 	license = GPL3
