@@ -1,0 +1,610 @@
+diff --git a/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/mem.cc b/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/mem.cc
+index 3b172bf..ee016b8 100644
+--- a/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/mem.cc
++++ b/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/mem.cc
+@@ -79,10 +79,8 @@ memgraph_construct (XfcePanelPlugin *plugin)
+ static guint
+ init_mem_data (std::vector<MemData> &data)
+ {
+-    guint memNr = detect_mem_number ();
+-    if (memNr != 0)
+-        data.resize(memNr+1);
+-    return memNr;
++    data.resize(2);
++    return 1;
+ }
+ 
+ static Ptr<MEMGraph>
+@@ -640,7 +638,10 @@ update_cb (const Ptr<MEMGraph> &base)
+ static void
+ update_tooltip (const Ptr<MEMGraph> &base)
+ {
+-    auto tooltip = xfce4::sprintf (_("Usage: %u%%"), (guint) roundf (base->mem_data[0].load * 100));
++    auto tooltip = xfce4::sprintf (_("%u%% ( %uMb / %uMb )"),
++        (guint) roundf (base->mem_data[0].load * 100),
++		    (guint) roundf (base->mem_data[0].previous_used / 1024),
++		    (guint) roundf (base->mem_data[0].previous_total / 1024));
+     if (gtk_label_get_text (GTK_LABEL (base->tooltip_text)) != tooltip)
+         gtk_label_set_text (GTK_LABEL (base->tooltip_text), tooltip.c_str());
+ }
+diff --git a/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.cc b/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.cc
+index b30413d..25cf834 100644
+--- a/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.cc
++++ b/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.cc
+@@ -32,503 +32,104 @@
+ #endif
+ 
+ #include "os.h"
+-
+-#include <errno.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <unordered_map>
+-#include <unordered_set>
+-#include <vector>
+-
+-using xfce4::parse_ulong;
+-
+ #if defined (__linux__) || defined (__FreeBSD_kernel__)
+-#define PROC_STAT "/proc/stat"
+-#define PROCMAXLNLEN 256 /* should make it */
+-#endif
++#include <errno.h>
+ 
+-#if defined (__FreeBSD__)
+-#include <osreldate.h>
++// START MEMREAD LIBS
+ #include <sys/types.h>
+-#if __FreeBSD_version < 500101
+-#include <sys/dkstat.h>
+-#else
+-#include <sys/resource.h>
+-#endif
+-#include <sys/sysctl.h>
+-#include <devstat.h>
++#include <sys/stat.h>
+ #include <fcntl.h>
+-#include <nlist.h>
+-#endif
+-
+-#if defined (__NetBSD__)
+-#include <sys/param.h>
+-#include <sys/sched.h>
+-#include <sys/sysctl.h>
+-#endif
++#include <unistd.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
+ 
+-#if defined (__OpenBSD__)
+-#include <sys/param.h>
+-#include <sys/sched.h>
+-#include <sys/sysctl.h>
+-#endif
++#define MEMINFOBUFSIZE (2 * 1024)
++static char MemInfoBuf[MEMINFOBUFSIZE];
+ 
+-#if defined (__sun__)
+-#include <kstat.h>
+-static kstat_ctl_t *kc;
+-#endif
++static unsigned long MTotal = 0;
++static unsigned long MFree = 0;
++static unsigned long MBuffers = 0;
++static unsigned long MCached = 0;
++static unsigned long MAvail = 0;
++static unsigned long MUsed = 0;
++// END MEMREAD LIBS
+ 
+-#if defined (__linux__) || defined (__FreeBSD_kernel__)
+-guint
+-detect_mem_number ()
++int
++read_mem_file(guint64 *MT, guint64 *MU)
+ {
+-    FILE *fstat = NULL;
+-    if (!(fstat = fopen (PROC_STAT, "r")))
+-        return 0;
++    int fd;
++    size_t n;
++    char *b_MTotal, *b_MFree, *b_MBuffers, *b_MCached, *b_MAvail, *b_STotal, *b_SFree;
+ 
+-    guint nb_mem = 0;
+-    gchar memStr[PROCMAXLNLEN];
+-    while (fgets (memStr, PROCMAXLNLEN, fstat))
++    if ((fd = open("/proc/meminfo", O_RDONLY)) < 0)
+     {
+-        if (strncmp (memStr, "mem", 3) != 0)
+-            break;
+-
+-        gchar *s = memStr + 3;
+-        if (!g_ascii_isspace (*s))
+-        {
+-            gulong mem = parse_ulong(&s);
+-            nb_mem = MAX(nb_mem, mem + 1);
+-        }
++        g_warning("Cannot open \'/proc/meminfo\'");
++        return -1;
+     }
+-
+-    fclose (fstat);
+-    return nb_mem;
+-}
+-
+-bool
+-read_mem_data (std::vector<MemData> &data)
+-{
+-    if (G_UNLIKELY(data.size() == 0))
+-        return false;
+-
+-    const size_t nb_mem = data.size()-1;
+-    FILE *fStat;
+-    gulong used[nb_mem+1], total[nb_mem+1];
+-
+-    if (!(fStat = fopen (PROC_STAT, "r")))
+-        return false;
+-
+-    for (guint mem = 0; mem < nb_mem+1; mem++)
+-        used[mem] = total[mem] = 0;
+-
+-    while (true)
++    if ((n = read(fd, MemInfoBuf, MEMINFOBUFSIZE - 1)) == MEMINFOBUFSIZE - 1)
+     {
+-        gchar memStr[PROCMAXLNLEN];
+-        if (!fgets (memStr, PROCMAXLNLEN, fStat))
+-        {
+-            fclose (fStat);
+-            return false;
+-        }
+-
+-        if (strncmp (memStr, "mem", 3) != 0)
+-            break;
+-
+-        gchar *s = memStr + 3;
+-
+-        guint mem;
+-        if (g_ascii_isspace (*s))
+-            mem = 0;
+-        else
+-            mem = 1 + parse_ulong (&s);
+-
+-        gulong user = parse_ulong (&s);
+-        gulong nice = parse_ulong (&s);
+-        gulong system = parse_ulong (&s);
+-        gulong idle = parse_ulong (&s);
+-        gulong iowait = parse_ulong (&s);
+-        gulong irq = parse_ulong (&s);
+-        gulong softirq = parse_ulong (&s);
+-
+-        if (G_LIKELY (mem < nb_mem + 1))
+-        {
+-            used[mem] = user + nice + system + irq + softirq;
+-            total[mem] = used[mem] + idle + iowait;
+-        }
++        g_warning("Internal buffer too small to read \'/proc/mem\'");
++        close(fd);
++        return -1;
+     }
++    close(fd);
+ 
+-    fclose (fStat);
+-
+-    for (guint mem = 0; mem < nb_mem + 1; mem++)
+-    {
+-        if (used[mem] >= data[mem].previous_used && total[mem] > data[mem].previous_total)
+-            data[mem].load = (gfloat) (used[mem] - data[mem].previous_used) /
+-                             (gfloat) (total[mem] - data[mem].previous_total);
+-        else
+-            data[mem].load = 0;
+-
+-        data[mem].previous_used = used[mem];
+-        data[mem].previous_total = total[mem];
+-    }
+-
+-    return true;
+-}
+-
+-#elif defined (__FreeBSD__)
+-guint
+-detect_mem_number ()
+-{
+-    static gint mib[] = {CTL_HW, HW_NMEM};
+-    gint nmem;
+-    gsize len = sizeof (gint);
+-
+-    if (sysctl (mib, 2, &nmem, &len, NULL, 0) < 0)
+-        return 0;
+-    else
+-        return nmem;
+-}
+-
+-bool
+-read_mem_data (std::vector<MemData> &data)
+-{
+-    if (G_UNLIKELY(data.size() == 0))
+-        return false;
++    MemInfoBuf[n] = '\0';
+ 
+-    const size_t nb_mem = data.size()-1;
+-    glong used, total;
+-    glong *cp_time;
+-    glong *cp_time1;
+-    guint i;
+-    unsigned int max_mem;
+-    gsize len = sizeof (max_mem);
+-
+-    data[0].load = 0;
+-    if (sysctlbyname ("kern.smp.maxid", &max_mem, &len, NULL, 0) < 0)
+-        return false;
+-
+-    max_mem++; /* max_mem is 0-based */
+-    if (max_mem < nb_mem)
+-        return false; /* should not happen */
+-    len = sizeof (glong) * max_mem * MEMSTATES;
+-    cp_time = (glong *) g_malloc (len);
+-
+-    if (sysctlbyname ("kern.cp_times", cp_time, &len, NULL, 0) < 0) {
+-        g_free (cp_time);
+-        return false;
+-    }
+-
+-    for (i = 1; i <= nb_mem; i++)
+-    {
+-        cp_time1 = &cp_time[MEMSTATES * (i - 1)];
+-        used = cp_time1[CP_USER] + cp_time1[CP_NICE] + cp_time1[CP_SYS] + cp_time1[CP_INTR];
+-        total = used + cp_time1[CP_IDLE];
+-
+-        if (used >= (gint64) data[i].previous_used && total > (gint64) data[i].previous_total)
+-            data[i].load = (gfloat) (used - data[i].previous_used) /
+-                           (gfloat) (total - data[i].previous_total);
+-        else
+-            data[i].load = 0;
+-
+-        data[i].previous_used = used;
+-        data[i].previous_total = total;
+-        data[0].load += data[i].load;
+-    }
+-
+-    data[0].load /= nb_mem;
+-    g_free (cp_time);
+-    return true;
+-}
+-
+-#elif defined (__NetBSD__)
+-guint
+-detect_mem_number ()
+-{
+-    static gint mib[] = {CTL_HW, HW_NMEM};
+-    gint nmem;
+-    gsize len = sizeof (gint);
+-
+-    if (sysctl (mib, 2, &nmem, &len, NULL, 0) < 0)
+-        return 0;
+-    else
+-        return nmem;
+-}
++    b_MTotal = strstr(MemInfoBuf, "MemTotal");
++    if (!b_MTotal || !sscanf(b_MTotal + strlen("MemTotal"), ": %lu", &MTotal))
++        return -1;
+ 
+-bool
+-read_mem_data (std::vector<MemData> &data)
+-{
+-    if (G_UNLIKELY(data.size() == 0))
+-        return false;
++    b_MFree = strstr(MemInfoBuf, "MemFree");
++    if (!b_MFree || !sscanf(b_MFree + strlen("MemFree"), ": %lu", &MFree))
++        return -1;
+ 
+-    const size_t nb_mem = data.size()-1;
+-    guint64 cp_time[MEMSTATES * nb_mem];
+-    gsize len = nb_mem * MEMSTATES * sizeof (guint64);
+-    gint mib[] = {CTL_KERN, KERN_CP_TIME};
++    b_MBuffers = strstr(MemInfoBuf, "Buffers");
++    if (!b_MBuffers || !sscanf(b_MBuffers + strlen("Buffers"), ": %lu", &MBuffers))
++        return -1;
+ 
+-    if (sysctl (mib, 2, &cp_time, &len, NULL, 0) < 0)
+-        return false;
++    b_MCached = strstr(MemInfoBuf, "Cached");
++    if (!b_MCached || !sscanf(b_MCached + strlen("Cached"), ": %lu", &MCached))
++        return -1;
+ 
+-    data[0].load = 0;
+-    for (guint i = 1; i <= nb_mem; i++)
++    /* In Linux 3.14+, use MemAvailable instead */
++    b_MAvail = strstr(MemInfoBuf, "MemAvailable");
++    if (b_MAvail && sscanf(b_MAvail + strlen("MemAvailable"), ": %lu", &MAvail))
+     {
+-        guint64 *cp_time1 = cp_time + MEMSTATES * (i - 1);
+-        guint64 used = cp_time1[CP_USER] + cp_time1[CP_NICE] + cp_time1[CP_SYS] + cp_time1[CP_INTR];
+-        guint64 total = used + cp_time1[CP_IDLE];
+-
+-        if (used >= data[i].previous_used && total > data[i].previous_total)
+-            data[i].load = (gfloat) (used - data[i].previous_used) /
+-                           (gfloat) (total - data[i].previous_total);
+-        else
+-            data[i].load = 0;
+-
+-        data[i].previous_used = used;
+-        data[i].previous_total = total;
+-        data[0].load += data[i].load;
++        MFree = MAvail;
++        MBuffers = 0;
++        MCached = 0;
+     }
+ 
+-    data[0].load /= nb_mem;
+-    return true;
+-}
++    MFree += MCached + MBuffers;
++    MUsed = MTotal - MFree;
+ 
+-#elif defined (__OpenBSD__)
+-guint
+-detect_mem_number ()
+-{
+-    static gint mib[] = {CTL_HW, HW_NMEM};
+-    gint nmem;
+-    gsize len = sizeof (gint);
++    *MT = MTotal;
++    *MU = MUsed;
+ 
+-    if (sysctl (mib, 2, &nmem, &len, NULL, 0) < 0)
+-        return 0;
+-    else
+-        return nmem;
++    return 0;
+ }
+ 
+ bool
+ read_mem_data (std::vector<MemData> &data)
+ {
+-    if (G_UNLIKELY(data.size() == 0))
+-        return false;
++    guint64 MT, MU;
++    read_mem_file(&MT, &MU);
+ 
+-    const size_t nb_mem = data.size()-1;
+-    guint64 cp_time[MEMSTATES];
+-    data[0].load = 0;
++    data[0].load = (gfloat) (MU) / (gfloat) (MT);
++    data[0].previous_used  = MU;
++    data[0].previous_total = MT;
+ 
+-    for (guint i = 1; i <= nb_mem; i++)
+-    {
+-        gsize len = MEMSTATES * sizeof (guint64);
+-        gint mib[] = {CTL_KERN, KERN_CPTIME2, gint(i) - 1};
+-
+-        if (sysctl (mib, 3, &cp_time, &len, NULL, 0) < 0)
+-            return false;
+-
+-        guint64 used = cp_time[CP_USER] + cp_time[CP_NICE] + cp_time[CP_SYS] + cp_time[CP_INTR];
+-        guint64 total = used + cp_time[CP_IDLE];
+-
+-        if (used >= data[i].previous_used && total > data[i].previous_total)
+-            data[i].load = (gfloat) (used - data[i].previous_used) /
+-                           (gfloat) (total - data[i].previous_total);
+-        else
+-            data[i].load = 0;
+-
+-        data[i].previous_used = used;
+-        data[i].previous_total = total;
+-        data[0].load += data[i].load;
+-    }
+-
+-    data[0].load /= nb_mem;
+     return true;
+ }
+ 
+-#elif defined (__sun__)
+-static void
+-init_stats ()
+-{
+-    kc = kstat_open ();
+-}
+-
+-guint
+-detect_mem_number ()
++Ptr0<Topology>
++read_topology ()
+ {
+-    kstat_t *ksp;
+-    kstat_named_t *knp;
+-
+-    if (!kc)
+-        init_stats ();
+-
+-    if (!(ksp = kstat_lookup (kc, "unix", 0, "system_misc")))
+-        return 0;
+-
+-    kstat_read (kc, ksp, NULL);
+-    knp = kstat_data_lookup (ksp, "nmems");
+-
+-    return knp->value.ui32;
++    return nullptr;
+ }
+ 
+-bool
+-read_mem_data (std::vector<MemData> &data)
+-{
+-    if (G_UNLIKELY(data.size() == 0))
+-        return false;
+-
+-    const size_t nb_mem = data.size()-1;
+-    kstat_t *ksp;
+-    kstat_named_t *knp;
+-    data[0].load = 0;
+-
+-    if (!kc)
+-        init_stats ();
+-
+-    gint i = 1;
+-
+-    for (ksp = kc->kc_chain; ksp != NULL; ksp = ksp->ks_next)
+-    {
+-        if (!g_strcmp0 (ksp->ks_module, "mem") && !g_strcmp0 (ksp->ks_name, "sys"))
+-        {
+-            kstat_read (kc, ksp, NULL);
+-            knp = kstat_data_lookup (ksp, "mem_nsec_user");
+-            guint64 used = knp->value.ul;
+-            knp = kstat_data_lookup (ksp, "mem_nsec_intr");
+-            used += knp->value.ul;
+-            knp = kstat_data_lookup (ksp, "mem_nsec_kernel");
+-            used += knp->value.ul;
+-            knp = kstat_data_lookup (ksp, "mem_nsec_idle");
+-            guint64 total = used + knp->value.ul;
+-
+-            if (used >= data[i].previous_used && total > data[i].previous_total)
+-                data[i].load = (gfloat) (used - data[i].previous_used) /
+-                               (gfloat) (total - data[i].previous_total);
+-            else
+-                data[i].load = 0;
+-
+-            data[i].previous_used = used;
+-            data[i].previous_total = total;
+-            data[0].load += data[i].load;
+-            i++;
+-        }
+-    }
+-
+-    data[0].load /= nb_mem;
+-    return true;
+-}
+ #else
+ #error "Your OS is not supported."
+ #endif
+-
+-
+-
+-static Ptr0<Topology>
+-read_topology_linux ()
+-{
+-    std::unordered_set<gint> core_ids;
+-    std::unordered_map<guint, gint> logical_mem_2_core;
+-    gint max_core_id = -1;
+-
+-    guint num_online_logical_mems = 0;
+-    for (guint logical_mem = 0; true; logical_mem++)
+-    {
+-        /* See also: https://www.kernel.org/doc/html/latest/admin-guide/memtopology.html */
+-
+-        const char *sysfs_base = "/sys/devices/system/mem";
+-
+-        if (!xfce4::is_directory (xfce4::sprintf ("%s/mem%d", sysfs_base, logical_mem)))
+-            break;
+-
+-        std::string file_contents;
+-        if (xfce4::read_file (xfce4::sprintf ("%s/mem%d/topology/core_id", sysfs_base, logical_mem), file_contents))
+-        {
+-            auto core_id_opt = xfce4::parse_long (file_contents, 10);
+-            if (core_id_opt.has_value())
+-            {
+-                auto core_id = core_id_opt.value();
+-                if (G_LIKELY (core_id >= 0 && core_id <= G_MAXINT))
+-                {
+-                    num_online_logical_mems++;
+-                    core_ids.insert(core_id);
+-                    logical_mem_2_core[logical_mem] = core_id;
+-                    if (max_core_id < core_id)
+-                        max_core_id = core_id;
+-                }
+-                else
+-                    return nullptr;
+-            }
+-            else
+-                return nullptr;
+-        }
+-        else
+-        {
+-            /* The MEM is probably offline */
+-            logical_mem_2_core[logical_mem] = -1;
+-        }
+-    }
+-
+-    const size_t num_cores = core_ids.size();
+-    const size_t num_logical_mems = logical_mem_2_core.size();
+-
+-    /* Perform some sanity checks */
+-    if (G_UNLIKELY (max_core_id < 0 || max_core_id > G_MAXINT-1 || !(num_cores <= num_logical_mems)))
+-        return nullptr;
+-
+-    if (!logical_mem_2_core.empty())
+-    {
+-        auto t = xfce4::make<Topology>();
+-
+-        /* Fill-in the topology data */
+-
+-        t->num_logical_mems = num_logical_mems;
+-        t->num_online_logical_mems = num_online_logical_mems;
+-        t->num_cores = num_cores;
+-        t->logical_mem_2_core.resize(num_logical_mems);
+-        {
+-            for (const auto &i : logical_mem_2_core)
+-            {
+-                guint logical_mem = i.first;
+-                gint core_id = i.second;
+-                if (core_id != -1)
+-                {
+-                    t->logical_mem_2_core[logical_mem] = core_id;
+-                    t->cores[core_id].logical_mems.push_back(logical_mem);
+-                }
+-                else
+-                {
+-                    t->logical_mem_2_core[logical_mem] = -1;
+-                }
+-                g_info ("thread %u is in core %d", logical_mem, t->logical_mem_2_core[logical_mem]);
+-            }
+-        }
+-
+-        t->num_online_cores = 0;
+-        t->smt = false;
+-        for (const auto &i : t->cores)
+-        {
+-            const Topology::MemCore &core = i.second;
+-            if (!core.logical_mems.empty())
+-                t->num_online_cores++;
+-            if (core.logical_mems.size() > 1)
+-                t->smt = true;
+-        }
+-        t->smt_ratio = t->num_online_logical_mems / (gdouble) t->num_online_cores;
+-
+-        g_info ("num_logical_mems: %u total, %u online", t->num_logical_mems, t->num_online_logical_mems);
+-        g_info ("num_cores: %u total, %u online", t->num_cores, t->num_online_cores);
+-        g_info ("smt: %s, ratio=%.3f", t->smt ? "active" : "inactive", t->smt_ratio);
+-
+-        return t;
+-    }
+-    else
+-        return nullptr;
+-}
+-
+-Ptr0<Topology>
+-read_topology ()
+-{
+-    bool is_linux = false;
+-
+-#if defined __linux__
+-    is_linux = true;
+-#endif
+-
+-    if (is_linux)
+-        return read_topology_linux();
+-    else
+-        return nullptr;
+-}
+diff --git a/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.h b/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.h
+index 9ac4b9c..d6d4418 100644
+--- a/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.h
++++ b/src/xfce4-memgraph-plugin-1.2.5/panel-plugin/os.h
+@@ -73,7 +73,6 @@ struct Topology
+     gdouble smt_ratio;  /* Equals to (num_online_logical_mems / num_online_cores), >= 1.0 */
+ };
+ 
+-guint detect_mem_number ();
+ bool read_mem_data (std::vector<MemData> &data);
+ Ptr0<Topology> read_topology ();
+ 
