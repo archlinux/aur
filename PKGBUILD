@@ -6,7 +6,7 @@
 # Maintainer: Matt Coffin <mcoffin13 at gmail.com>
 pkgname=wl-clipboard-rs
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A safe Rust reimplementation of the Wayland command-line copy/paste utilities"
 arch=('x86_64')
@@ -16,31 +16,36 @@ depends=('gcc-libs')
 makedepends=('git' 'cargo')
 provides=('wl-clipboard')
 conflicts=('wl-clipboard')
-source=("https://github.com/YaLTeR/wl-clipboard-rs/archive/v${pkgver}.tar.gz")
-sha512sums=('b1c80b09c2216be92f780e31d1b56e00c69df137aa6ac9bb15d3d90140970087caf8ed614f906172db6474b3a80a92ecf7f9420612453cc97883e62d08306795')
+source=("${pkgname}::git+git://github.com/YaLTeR/wl-clipboard-rs.git#tag=v${pkgver}" Cargo.lock)
+sha512sums=('SKIP'
+            'c74a50b361fd470843e44b704eec2dc63933b4090e32fcf5b6df8b3d455f69a9d46c4eb27c884ea06f787141129d1f160c90a793654f3eaf3052172ff5e7b652')
+
+prepare() {
+	cp "$srcdir"/Cargo.lock "$srcdir"/"$pkgname"/
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	cargo build --release
+	cd "$pkgname"
+	CARGO_INCREMENTAL=0 cargo build --release --locked
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	cargo test
+	cd "$pkgname"
+	CARGO_INCREMENTAL=0 cargo test --release --locked
 }
 
 package() {
 	if [ ! -d "$pkgdir/usr/bin" ]; then
 		mkdir -p "$pkgdir/usr"
 	fi
-	cargo install --path "$pkgname-$pkgver" --root "$pkgdir/usr" --bins
+	CARGO_INCREMENTAL=0 cargo install --path "$pkgname" --root "$pkgdir/usr" --bins --frozen --offline
 
 	local _f
 	for _f in "$pkgdir"/usr/{.crates.toml,.crates2.json}; do
 		[ ! -e "$_f" ] || rm "$_f"
 	done
 
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-APACHE LICENSE-MIT
