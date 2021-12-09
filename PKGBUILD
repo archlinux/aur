@@ -202,6 +202,8 @@ package_waterfox-g4-kpe() {
 
   cd Waterfox
 
+  export MACH_USE_SYSTEM_PYTHON=1
+
   DESTDIR="$pkgdir" ./mach install
 
   _spellcheck_js="$pkgdir/usr/lib/waterfox-g4/browser/defaults/preferences/spellcheck.js"
