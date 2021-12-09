@@ -1,6 +1,6 @@
 pkgbase = scrabble-1d
 	pkgdesc = A one-dimensional scrabble-like console game.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/YassenEfremov/scrabble-1d.git
 	arch = x86_64

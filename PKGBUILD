@@ -1,7 +1,7 @@
 # Maintainer: Yassen Efremov <yassen.games@gmail.com>
 pkgname=scrabble-1d
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A one-dimensional scrabble-like console game."
 arch=(x86_64)
 url="https://github.com/YassenEfremov/scrabble-1d.git"
