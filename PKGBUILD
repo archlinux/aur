@@ -1,6 +1,6 @@
 # Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>
 pkgname=fanctl
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="replacement for fancontrol with more fine-grained control interface in its config file"
 arch=('i686' 'x86_64')
@@ -17,17 +17,19 @@ sha512sums=('SKIP'
 
 build() {
     cd "${srcdir}/${pkgname}"
-    cargo build --release
+    CARGO_INCREMENTAL=0 \
+	    cargo build --release --locked
 }
 
 check() {
     cd "${srcdir}/${pkgname}"
-    cargo test --release
+    CARGO_INCREMENTAL=0 \
+	    cargo test --release --locked
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    cargo install --path . --root "${pkgdir}/usr" --bins
+    CARGO_INCREMENTAL=0 cargo install --path . --root "${pkgdir}/usr" --bins --locked
     install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ./COPYING
     install -D -m 644 fanctl.yml "${pkgdir}/usr/share/fanctl.example.yml"
     install -D -m 644 -t "${pkgdir}/usr/lib/systemd/system" "${srcdir}/fanctl.service"
