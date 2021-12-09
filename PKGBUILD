@@ -2,9 +2,9 @@
 
 pkgname=mineonline
 pkg_case=MineOnline
-pkgdev=codieradical
+pkgdev=craftycodie
 depends=('jre8' 'jq')
-pkgver=$(curl -s "https://api.github.com/repos/codieradical/MineOnline/releases/latest" | jq -r '.tag_name')
+pkgver=$(curl -s "https://api.github.com/repos/craftycodie/MineOnline/releases/latest" | jq -r '.tag_name')
 pkgrel=1
 pkgdesc="Launch old versions of Minecraft just as you remembered them, only without a browser."
 url="http://mineonline.codie.gg"
