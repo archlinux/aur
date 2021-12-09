@@ -1,0 +1,11 @@
+pkgbase = python-scipy-docs
+	pkgdesc = Documentation for Python SciPy module
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = http://docs.scipy.org
+	arch = any
+	license = BSD
+	source = python-scipy-docs-1.7.1.zip::https://docs.scipy.org/doc/scipy-1.7.1/scipy-html-1.7.1.zip
+	sha256sums = 744bfeb75df78eaf2d5de71d57e10649eb593e34b0dc47a21ef1209742b8be9f
+
+pkgname = python-scipy-docs
