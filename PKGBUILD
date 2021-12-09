@@ -4,7 +4,7 @@
 # Contributor: Kyle Laker <kyle+aur at laker dot email>
 
 pkgname=marp-cli
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A CLI interface for Marp and Marpit based converters'
 url='https://github.com/marp-team/marp-cli'
@@ -28,7 +28,7 @@ source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 # I may need to extract it for installing license.
 #noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('11acd8172082b34613c7f746d652faaaf842b16758d5b7ef1c15c4928105ad2e6033613adc654f666d0876e44ba4a116abc42c4cdb691801a66c51706ab41d47')
+b2sums=('5fb50bb442e8df0e69b825292e86e9f3eca233b6b855c17b7d549b7ea9f7bfc3ccd2f467896fa729330df82d060b7856b3800f08882ee0ebee607dce66d25f0b')
 
 package() {
     npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
@@ -51,6 +51,4 @@ package() {
 
     # Install MIT license
     install -Dm644 "$srcdir/package/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
-    #    ln -s "../../../lib/node_modules/@marp-team/marp-cli/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
