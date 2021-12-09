@@ -1,6 +1,6 @@
 pkgbase = marp-cli-bin
 	pkgdesc = A CLI interface for Marp and Marpit based converters
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/marp-team/marp-cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = marp-cli-bin
 	conflicts = marp-cli
 	replaces = marp
 	options = !strip
-	source = https://github.com/marp-team/marp-cli/releases/download/v1.4.1/marp-cli-v1.4.1-linux.tar.gz
+	source = https://github.com/marp-team/marp-cli/releases/download/v1.5.0/marp-cli-v1.5.0-linux.tar.gz
 	source = https://raw.githubusercontent.com/marp-team/marp-cli/master/LICENSE
-	b2sums = fe6131ab65ca8be88b1f808148f14df3ca5c7f2a88df00a5398ed567131f75f433599250cc7a7c5b665e3a5717d659c052762c548c9572536380e01c24b368de
+	b2sums = 45db3d6ca69f0d30c14b6a3b8143fcdaf2db6a6a02211509c9a9f4c4957a764c0c5504fe91214d314268c37b2990d215aa3a8f14b05396f3f2e896cb19b4f296
 	b2sums = c53efbcec37e21912a9cb464a70839674a6174b577656c738d72e803e53bb0d05050056c9144d1952a2e1db39cad66ce0176d6d17c92fa847e22a20ce98ec596
 
 pkgname = marp-cli-bin
