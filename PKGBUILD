@@ -1,26 +1,41 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Bao Trinh <qubidt@gmail.com>
+# Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 pkgname=gimp-plugin-image-reg
 _srcname=gimp-image-reg
-pkgver=0.5.5
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Image registration plugin for the GIMP"
 arch=('i686' 'x86_64')
-url="http://registry.gimp.org/node/24248"
+url="https://gimp-image-reg.sourceforge.io/"
 license=('GPL3')
 depends=('gimp')
-makedepends=('intltool' 'gettext')
-source=(http://downloads.sourceforge.net/${_srcname}/${_srcname}-${pkgver}.tar.gz)
-md5sums=('405b87140880de18d695173ee6b08981')
+makedepends=('intltool' 'gettext' 'cmake')
+source=("https://downloads.sourceforge.net/sourceforge/${_srcname}/version-${pkgver}/${_srcname}-${pkgver}-source.zip")
+noextract=("${_srcname}-${pkgver}-source.zip")
+md5sums=('64d1e579c12b45131bf8ebdc54ad19b4')
+
+prepare() {
+  unzip "${_srcname}-${pkgver}-source.zip" -d "${_srcname}-${pkgver}"
+}
 
 build() {
-  cd "$srcdir/${_srcname}-${pkgver}"
-  sed -i 's#^GIMP_PLUGIN_BINDIR=.*$#&\nGIMP_PLUGIN_BINDIR="/usr/lib/gimp/2.0/plug-ins"#' ./configure
-  LIBS='-lm' ./configure --prefix=/usr
-  make
+  cmake \
+      -B "${_srcname}-${pkgver}/build" \
+      -S "${_srcname}-${pkgver}" \
+      -DCMAKE_BUILD_TYPE:STRING='None' \
+      -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+      -Wno-dev
+
+  cd "${_srcname}-${pkgver}"
+  cmake --build build --target install
 }
 
 package() {
-  cd "$srcdir/${_srcname}-${pkgver}"
-  make DESTDIR="$pkgdir/" PLUGINDIR=/usr/lib/gimp/2.0 install
-}
+  cd "${_srcname}-${pkgver}"
+  install -m755 -d "$pkgdir/usr/lib/gimp/2.0/plug-ins"
+  install -m755 -d "$pkgdir/usr/share/doc/${pkgname}"
 
+  install -m644 build/install/README.md "$pkgdir/usr/share/doc/${pkgname}/"
+  install -m755 build/install/gimp-image-reg.py "$pkgdir/usr/lib/gimp/2.0/plug-ins/"
+  cp -ra build/install/imreg "$pkgdir/usr/lib/gimp/2.0/plug-ins/"
+}
