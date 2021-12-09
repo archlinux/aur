@@ -1,6 +1,6 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=checkmake
-pkgver=0.1.0.47
+pkgver=0.2.0
 pkgrel=2
 pkgdesc="Experimental linter/analyzer for makefiles"
 arch=('any')

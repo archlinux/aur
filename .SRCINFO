@@ -1,6 +1,6 @@
 pkgbase = checkmake
 	pkgdesc = Experimental linter/analyzer for makefiles
-	pkgver = 0.1.0.47
+	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://github.com/mrtazz/checkmake
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = checkmake
 	sha256sums = SKIP
 
 pkgname = checkmake
-
