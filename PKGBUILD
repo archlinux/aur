@@ -1,13 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=fluent-gtk-theme
 pkgver=2021.11.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Fluent design GTK theme'
 arch=(any)
 url=https://github.com/vinceliuice/Fluent-gtk-theme
 license=(GPL3)
 options=('!strip')
-conflicts=("${pkgname}-git")
 makedepends=(gnome-shell)
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'fluent-icon-theme: Matching icon theme'
