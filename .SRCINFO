@@ -1,6 +1,6 @@
 pkgbase = adwm-git
 	pkgdesc = Advanced dynamic window manager for X
-	pkgver = 0.7.12.r1.gbec9879
+	pkgver = 0.7.14.r1.g11b2288
 	pkgrel = 1
 	url = http://github.com/bbidulock/adwm
 	arch = i686
@@ -21,12 +21,12 @@ pkgbase = adwm-git
 	optdepends = xde-ctools-git: for xde-run, xde-winmenu, xde-winlist and xde-wkspmenu default bindings
 	optdepends = xde-menu-git: for xde-menu root menu default bindings
 	optdepends = xde-session-git: for xde-logout and xde-xlock default bindings
-	provides = adwm=0.7.12-1
+	provides = adwm=0.7.14-1
 	conflicts = adwm
 	options = !libtool
 	options = !strip
 	options = debug
-	source = adwm-git::git+https://github.com/bbidulock/adwm#commit=bec9879
+	source = adwm-git::git+https://github.com/bbidulock/adwm
 	md5sums = SKIP
 
 pkgname = adwm-git
