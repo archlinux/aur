@@ -1,0 +1,18 @@
+pkgbase = neovim-stabilize-git
+	pkgdesc = Stabilizes buffer content on window events
+	pkgver = r36.191d102
+	pkgrel = 1
+	url = https://github.com/luukvbaal/stabilize.nvim
+	install = stabilize.install
+	arch = any
+	groups = neovim-plugins
+	license = BSD
+	makedepends = git
+	depends = neovim
+	provides = neovim-stabilize
+	conflicts = neovim-stabilize
+	source = neovim-stabilize-git::git+https://github.com/luukvbaal/stabilize.nvim?signed
+	validpgpkeys = 521E78F69DC400BA56D4C424E7D1BC845D39FA83
+	md5sums = SKIP
+
+pkgname = neovim-stabilize-git
