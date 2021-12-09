@@ -1,17 +1,21 @@
 pkgbase = php73-imagick
 	pkgdesc = PHP 7.3 extension to create and modify images using the ImageMagick library
-	pkgver = 3.4.4
-	pkgrel = 2
+	pkgver = 3.5.1
+	pkgrel = 1
 	url = https://github.com/mkoppanen/imagick
 	arch = x86_64
 	license = PHP
-	checkdepends = librsvg
-	depends = php73
+	checkdepends = ttf-dejavu
+	makedepends = librsvg
 	depends = imagemagick
-	depends = ttf-dejavu
+	depends = ttf-font
+	depends = php73
 	backup = etc/php73/conf.d/imagick.ini
-	source = php73-imagick-3.4.4.tar.gz::https://github.com/mkoppanen/imagick/archive/3.4.4.tar.gz
-	sha512sums = f3d3c74b4d0bb5c2dd986a8b960096ff200daa82e60fdd1467a54944be06810923b4e68a4f70194e25c8176afd9a609b9f2545054520ec759202e5fc3f1e827b
+	source = php73-imagick-3.5.1.tar.gz::https://github.com/imagick/imagick/archive/refs/tags/3.5.1.tar.gz
+	source = imagick.ini
+	sha512sums = 8ef4b4a253deb80909c34ae87ba7783a295e93c5033f95ecae56e6ebf7ef7be8deb8e1bfecfa9f3dcb9ba26ee95ef49a0d69418af96fd7cd01d5316f63bdc2cd
+	sha512sums = 1463505bd6b2572e21f6bbc242c2e0bf8b881b839ac38e38c230f09b4bf4c4698cafba1a026da8f615ee2b2980ab74dc68284afd70bb732db6fb70b5efba2bfc
+	b2sums = d2ad6d3e1568d5769d2b3ba8f77af2e7d82b04bb65535b9901846602b8dcee3954a8451ffd5c2c86590f35dc209eb9301e8ea75a28ddf7c989cf41a104f04656
+	b2sums = 291d68f50a2c173b857c0f132e1874f0682da3c7176f67b946a19a68256ab19f56a234bafa16711c3f8ef26c4bc7df04ea8afdecbcb984820b9bf3fd2a135edb
 
 pkgname = php73-imagick
-
