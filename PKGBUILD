@@ -1,16 +1,16 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-notes
-pkgver=21.08.3
+pkgver=21.12.0
 pkgrel=1
 pkgdesc='Libraries and daemons to implement management of notes in Akonadi'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
 depends=(kmime)
-makedepends=(extra-cmake-modules)
+makedepends=(extra-cmake-modules qt5-tools doxygen)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('d6818c00f8fc1f693b7019d7dba8d1c764e2c0a08ed0064e4f824a4c246c333c'
+sha256sums=('42d87fa2bf4ba4316917b90745089b446da1120d86dcd32709d0c34273b22f5c'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -18,7 +18,8 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   cmake --build build
 }
 
