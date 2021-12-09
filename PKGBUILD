@@ -8,13 +8,15 @@ name=cloudcompare
 #_fragment="#branch="
 options=('!strip') # strip would also remove plugins, for some reason
 pkgname=${name}-git
-pkgver=2.10.2.r1012.g74d3f082
+pkgver=2.10.2.r1025.g08b7ae9a
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
 depends=('cgal' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pcl-git' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'qt5-websockets' 'shapelib' 'tbb' 'opencascade' 'opencv' 'gdal')
+#fix pcl:>vtk:>vtkm:>openmp missing deps
+depends+=(openmp)
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'proj' 'python')
 conflicts=('cloudcompare')
 provides=('cloudcompare')
@@ -51,6 +53,7 @@ build() {
 # shellcheck disable=SC2191
   CMAKE_FLAGS=(
         -Wno-dev
+        -DPCL_QHULL_REQUIRED_TYPE=SHARED
         -DCMAKE_CXX_STANDARD=14
         -DCMAKE_CXX_FLAGS="$CXXFLAGS -fpermissive -DSUPPORT_TOPO_STREAM_OPERATORS -Wno-deprecated-declarations"
         -DCMAKE_INSTALL_PREFIX=/usr
