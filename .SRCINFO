@@ -1,7 +1,7 @@
 pkgbase = php81
 	pkgdesc = php 8.1.0 compiled as to not conflict with mainline php
 	pkgver = 8.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.php.net/
 	arch = x86_64
 	arch = i686
