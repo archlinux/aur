@@ -1,0 +1,16 @@
+pkgbase = bustd-git
+	pkgdesc = Process killer daemon for out-of-memory scenarios
+	pkgver = 7ae6b9b
+	pkgrel = 1
+	url = https://github.com/vrmiguel/bustd
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = bustd
+	conflicts = bustd
+	source = git+https://github.com/vrmiguel/bustd.git
+	source = bustd.service
+	sha256sums = SKIP
+	sha256sums = 9478439a970d865cf29523f297fa3c2a6ce9aa4fd04b1c2ab1ccbde9a320333f
+
+pkgname = bustd-git

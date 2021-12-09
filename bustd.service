@@ -1,0 +1,9 @@
+[Unit]
+Description = Process killer daemon for out-of-memory scenarios 
+
+[Service]
+ExecStart = /usr/bin/bustd -n
+
+[Install]
+WantedBy = multi-user.target
+
