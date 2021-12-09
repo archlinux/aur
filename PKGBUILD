@@ -1,8 +1,9 @@
-# Maintainer: Glen D'souza <gdsouza@linuxmail.org>
-# Maintainer: aimileus <me at aimileus dot nl>
+# Maintainer: Ward Segers <w@rdsegers.be> 
+# Contributor: Glen D'souza <gdsouza@linuxmail.org>
+# Contributor: aimileus <me at aimileus dot nl>
 pkgname=fedora-arm-installer
 _pkgname=arm-image-installer
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Script to automate the installation of Fedora on ARM boards"
 arch=('any')
@@ -11,7 +12,7 @@ license=('GPL')
 depends=('bash' 'e2fsprogs' 'parted' 'util-linux')
 makedepends=('git')
 source=("https://pagure.io/$_pkgname/archive/$_pkgname-$pkgver/$_pkgname-$_pkgname-$pkgver.tar.gz")
-sha512sums=('64b6fe9f0176124136c88ac2e95963172d115b9a52cae0a36761a6478ddeca2a984ba9459578d13b92414c63159443b646e8bdcb8f9d80cc7a2591dd1209626b')
+sha512sums=('b67c1895c826fe06531794835ee5965efd53bcedaad5f7d8c011cc5366c45f0bced1b0642334634bff2d45fd6da23a5a286d50c6e341b78094aca58f0c745e47')
 
 package() {
 	cd "$_pkgname-$_pkgname-$pkgver"

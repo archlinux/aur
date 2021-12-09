@@ -1,6 +1,6 @@
 pkgbase = fedora-arm-installer
 	pkgdesc = Script to automate the installation of Fedora on ARM boards
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://pagure.io/arm-image-installer
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = fedora-arm-installer
 	depends = e2fsprogs
 	depends = parted
 	depends = util-linux
-	source = https://pagure.io/arm-image-installer/archive/arm-image-installer-3.4/arm-image-installer-arm-image-installer-3.4.tar.gz
-	sha512sums = 64b6fe9f0176124136c88ac2e95963172d115b9a52cae0a36761a6478ddeca2a984ba9459578d13b92414c63159443b646e8bdcb8f9d80cc7a2591dd1209626b
+	source = https://pagure.io/arm-image-installer/archive/arm-image-installer-3.5/arm-image-installer-arm-image-installer-3.5.tar.gz
+	sha512sums = b67c1895c826fe06531794835ee5965efd53bcedaad5f7d8c011cc5366c45f0bced1b0642334634bff2d45fd6da23a5a286d50c6e341b78094aca58f0c745e47
 
 pkgname = fedora-arm-installer
-
