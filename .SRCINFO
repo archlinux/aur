@@ -1,6 +1,6 @@
 pkgbase = hypnotix
 	pkgdesc = An IPTV streaming application
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = hypnotix
 	depends = mpv
 	depends = xapp
 	optdepends = yt-dlp: YouTube channel support
-	source = hypnotix-2.2.tar.gz::https://github.com/linuxmint/hypnotix/archive/2.2.tar.gz
-	b2sums = cd241f8ee3f7529a74538156bcbec2f9c68fe4fa61af24822724dd6af6d7fddb926d0b90963f233fd1a5beb918936f6b594dab1705c891bcaa2ebee45305ce27
+	source = hypnotix-2.3.tar.gz::https://github.com/linuxmint/hypnotix/archive/2.3.tar.gz
+	b2sums = 5a75078743cd12d1cc98f84b1c797961ea59d2ed4634dfe9f2d899569d29a184b2f9d851158f39cee861f58c5e7127e9d2ccd7ccfa1da32b735d34ae65a085ba
 
 pkgname = hypnotix
