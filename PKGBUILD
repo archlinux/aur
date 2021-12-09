@@ -1,15 +1,15 @@
 # Maintainer: Anufriev Roman <anufriev.roman@protonmail.com>
 pkgname=calcure
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Minimalist TUI calendar and task manager"
 arch=('x86_64')
 url="https://github.com/anufrievroman/calcure"
 license=('GPL')
-depends=('python')
+depends=('python' 'curl')
 makedepends=('git')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-md5sums=('2e793bea78a56166e5e3dfb3f3223738')
+md5sums=('e2e30613b7b6c3ac0695672dcbf74059')
 
 
 package() {
