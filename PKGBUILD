@@ -2,7 +2,7 @@
 pkgname=com.qq.im.deepin
 _pkgver=9.3.2deepin20
 pkgver=9.3.2
-pkgrel=20
+pkgrel=21
 epoch=
 pkgdesc="Deepin Wine QQ"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
+source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 #source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${_pkgver}_i386.deb")
 noextract=("${pkgname}_${_pkgver}_i386.deb")
 md5sums=('5fdc20e614d945bd2ba5251420872479')
