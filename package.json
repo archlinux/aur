@@ -1,0 +1,9 @@
+{
+    "dependencies": {
+        "@types/dompurify": "^2.2.3",
+        "@types/marked": "^4.0.1",
+        "@types/semver": "^7.3.8",
+        "@types/source-map-support": "^0.5.3",
+        "electron": "^15.1.0"
+    }
+}
