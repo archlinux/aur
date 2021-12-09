@@ -1,7 +1,7 @@
 pkgbase = rexpaint
 	pkgdesc = A powerful and user-friendly ASCII art editor
 	pkgver = 1.60
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gridsagegames.com/rexpaint
 	arch = any
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = rexpaint
 	source = https://www.gridsagegames.com/blogs/files/REXPaint-v1.60.zip
 	source = launcher.sh
 	source = launcher.desktop
-	sha256sums = 55c8c7dc299ff4a246d2f381c0ce8a3f72bc1df0922364ed17cb3d05bc48bdb1
+	sha256sums = 1ba608a54c0078c7fbe085c48b5f7bb6065c1ffffc8205f887ecb7860a84d714
 	sha256sums = b68e78c4b4d0373944158c1dc6146dd3401b06f040d35166b6328aed0b872306
 	sha256sums = 3fc98f84e55888c60d423c60532e048601a84debd1d15fcb015b5a2a15b6c648
 
