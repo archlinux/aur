@@ -1,6 +1,6 @@
 pkgbase = figma-linux
 	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 0
 	url = https://github.com/Figma-Linux/figma-linux
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = figma-linux
 	sha256sums = 1db635df7d84f73694303eba423acd75da892e084cf35c4e260bd5c6b56fcc1e
 	sha256sums = 5dc381da3bb02e5bc9d60cdbae3e3c5c8f249a83b4ef606721bb87559d0a122b
 	sha256sums = e77bf9e7c699a53e69ba4a025e31ccf2b0a3b4c86acc842f7d0ecf1f8fe71ac2
-	source_x86_64 = https://github.com/Figma-Linux/figma-linux/releases/download/v0.9.2/figma-linux_0.9.2_linux_amd64.zip
-	sha256sums_x86_64 = 0f9d0c158f50fd970b84d4bfbdeb0235382c337f9a32cff402efd1f544c2c350
-	source_aarch64 = https://github.com/Figma-Linux/figma-linux/releases/download/v0.9.2/figma-linux_0.9.2_linux_arm64.zip
-	sha256sums_aarch64 = aaebd1fb96c67ad83c4ed0a32c1973c7d138f4a2c77d8b14c4448a7384dffc6d
+	source_x86_64 = https://github.com/Figma-Linux/figma-linux/releases/download/v0.9.3/figma-linux_0.9.3_linux_amd64.zip
+	sha256sums_x86_64 = 4c104a19c2a427722bc49134590f3cf5b0954a39f26da734efa4be73230dafbe
+	source_aarch64 = https://github.com/Figma-Linux/figma-linux/releases/download/v0.9.3/figma-linux_0.9.3_linux_arm64.zip
+	sha256sums_aarch64 = 9698c45bb7ea1e0ab6c3b30e9694e5f6d23abfcd2e442fb7a3ba5ee467c1eea7
 
 pkgname = figma-linux
