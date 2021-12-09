@@ -1,17 +1,16 @@
 pkgbase = python-omegaconf
 	pkgdesc = Flexible Python configuration system
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/omry/omegaconf
 	arch = any
 	license = BSD
-	checkdepends = python-pytest-mock
 	makedepends = python-setuptools
 	makedepends = java-runtime
 	makedepends = python-pytest-runner
 	makedepends = python-sphinx
 	depends = python-antlr4
-	depends = python-pyaml>=5.1.0
+	depends = python-pyaml
 	source = python-omegaconf-2.1.1.tar.gz::https://github.com/omry/omegaconf/archive/v2.1.1.tar.gz
 	sha256sums = 1c090255e303cd72af546fd6a433722edcd5ff30edf915405e6f56d28fb02b36
 
