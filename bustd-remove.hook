@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = bustd
+
+[Action]
+Description = Stop 'bustd' and disable autoload with systemd
+When = PreTransaction
+Depends = systemd
+Exec = /usr/bin/systemctl disable --now bustd

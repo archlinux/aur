@@ -1,0 +1,17 @@
+pkgbase = bustd-pacman-hooks
+	pkgdesc = Series of Pacman Hooks to Ensure Systemd is Always Running an Up-to-Date Binary
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JamesDevlin5/bustd-pacman-hooks
+	arch = any
+	license = MIT
+	source = bustd-install.hook
+	source = bustd-remove.hook
+	source = bustd-upgrade.hook
+	source = LICENSE
+	sha1sums = 8dd6aad1156bd71cc02d5204caea8a58d717a030
+	sha1sums = 4e29dea1c62c217822cb966e3199d338fa342ccb
+	sha1sums = 997f826b14255fd627717f2826526a45b8a8f969
+	sha1sums = ecc31cc12d89501688dcf6fa790e9ef162fa66d5
+
+pkgname = bustd-pacman-hooks

@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!*.hook
+!LICENSE
+!PKGBUILD

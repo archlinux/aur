@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = bustd
+
+[Action]
+Description = Reload the current running instance of 'bustd'
+When = PostTransaction
+Depends = systemd
+Exec = /usr/bin/systemctl restart --now bustd

@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = bustd
+
+[Action]
+Description = Start 'bustd' executable with systemd
+When = PostTransaction
+Depends = systemd
+Exec = /usr/bin/systemctl enable --now bustd
