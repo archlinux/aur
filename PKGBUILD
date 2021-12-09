@@ -1,6 +1,6 @@
 pkgbase=python-hydrus
 pkgname=("python-hydrus")
-pkgver=3.22.1
+pkgver=3.22.2
 pkgrel=1
 pkgdesc="Python module implementing the Hydrus API."
 arch=("any")
@@ -9,7 +9,7 @@ license=("AGPLv3")
 depends=("python" "python-requests")
 makedepends=("python-poetry" "python-pip" "python-requests")
 source=("https://gitlab.com/cryzed/hydrus-api/-/archive/v${pkgver}/hydrus-api-v${pkgver}.tar.gz")
-sha512sums=('88967f1aa9ae8428aa112929bcf0dae5e993899841aa6d6351e375ee5bafca3424417c904b2cf2c737955e6900fc05d2e4b82a13a31661a1df5cb2ee322997f1')
+sha512sums=('a593177d273cad2287ebcbe166f54c861b3419fedb859604a2ad0721e718b9d69915176e869a5abef4f0a06cc2d9d0e9a69c3cfd7bd390cbb67e619fbe6a7060')
 
 prepare() {
   export HOME=$(mktemp -d) # Don't create a virtual environment inside the user's home dir
