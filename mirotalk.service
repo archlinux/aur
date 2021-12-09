@@ -1,0 +1,12 @@
+[Unit]
+Description=MiroTalk
+After=network-online.target
+
+[Service]
+User=mirotalk
+Type=simple
+WorkingDirectory=/var/lib/mirotalk
+ExecStart=/usr/bin/npm start --prefix /usr/lib/node_modules/mirotalk
+
+[Install]
+WantedBy=multi-user.target 

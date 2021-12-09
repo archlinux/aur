@@ -1,0 +1,22 @@
+pkgbase = mirotalk-git
+	pkgdesc = A free WebRTC browser-based video call, chat and screen sharing
+	pkgver = r543.46dbdbf
+	pkgrel = 1
+	url = https://github.com/miroslavpejic85/mirotalk
+	arch = any
+	license = AGPL3
+	makedepends = npm
+	depends = nodejs
+	provides = mirotalk
+	options = !strip
+	backup = etc/mirotalk.ini
+	source = git+https://github.com/miroslavpejic85/mirotalk.git
+	source = mirotalk.service
+	source = mirotalk.sysusers
+	source = mirotalk.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 01f28055ddf837c370d09e23dc8d29159105af9278eacf083d5aad47dd53ccd6
+	sha256sums = 62dd3e528f09651c467b11b8baeebf2bf15f20024968f08cf96fa3fb1273ef14
+	sha256sums = 427475400afcc2a6f9d0cde63fd171b01df9f3ffa9acecdc56f9b275e70a97d7
+
+pkgname = mirotalk-git

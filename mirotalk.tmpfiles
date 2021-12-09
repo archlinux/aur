@@ -1,0 +1,2 @@
+f /etc/mirotalk.ini 0640 root mirotalk
+d /var/lib/mirotalk 0750 mirotalk mirotalk
