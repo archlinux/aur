@@ -2,7 +2,7 @@
 # this will be deleted when 1.8.1 out
 pkgname=auto-cpufreq-no-gnome-power
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TEMP Automatic CPU speed & power optimizer with non-systemd-gnome-power. original source code from crian. this will be deleted when 1.8.1 out'
 arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
