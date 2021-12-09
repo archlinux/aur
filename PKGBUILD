@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa-git
-pkgver=21.3.0_devel.143406.ec66c581389
+pkgver=22.0.0_devel.147904.77db4e27b18
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-dlfcn')
 provides=('mingw-w64-mesa')
 conflicts=('mingw-w64-mesa')
 options=('staticlibs' '!strip' '!buildflags')
-source=("git+git://anongit.freedesktop.org/mesa/mesa")
-sha256sums=('SKIP')
+source=("git+git://anongit.freedesktop.org/mesa/mesa" gen.patch)
+sha256sums=('SKIP' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/mesa
+  patch -p1 -i  "${srcdir}"/gen.patch
   for _arch in ${_architectures}; do
     ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast
     ninja -C build-${_arch} ${MAKEFLAGS}

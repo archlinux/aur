@@ -1,0 +1,14 @@
+diff --git a/src/vulkan/runtime/meson.build b/src/vulkan/runtime/meson.build
+index 46d47d0ec56..8bdb1d61da6 100644
+--- a/src/vulkan/runtime/meson.build
++++ b/src/vulkan/runtime/meson.build
+@@ -137,7 +137,8 @@ libvulkan_runtime = static_library(
+ )
+ 
+ idep_vulkan_runtime_headers = declare_dependency(
+-  include_directories : include_directories('.')
++  include_directories : include_directories('.'),
++  sources : vk_cmd_queue
+ )
+ 
+ # This is likely a bug in the Meson VS backend, as MSVC with ninja works fine.

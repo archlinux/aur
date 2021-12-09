@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mesa-git
 	pkgdesc = An open-source implementation of the OpenGL specification (mingw-w64)
-	pkgver = 21.3.0_devel.143406.ec66c581389
+	pkgver = 22.0.0_devel.147904.77db4e27b18
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = any
@@ -17,6 +17,8 @@ pkgbase = mingw-w64-mesa-git
 	options = !strip
 	options = !buildflags
 	source = git+git://anongit.freedesktop.org/mesa/mesa
+	source = gen.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-mesa-git
