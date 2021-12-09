@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.14.0.r330.gd1b75674
+pkgver=0.14.0.r439.g0fcc8422
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
@@ -23,6 +23,7 @@ depends=(
 	xcb-util-wm
 	seatd
 	vulkan-icd-loader
+	vulkan-validation-layers
 	xorg-xwayland)
 makedepends=(
 	git
