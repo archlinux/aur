@@ -1,19 +1,35 @@
 post_install() {
 	
 	cat << EOF 
+===========================================================================
 
-The OpenXRay project continues the unofficial support and development of the X-Ray 1.6.02 game engine. The original engine is used in the game S.T.A.L.K.E.R.: Call of Pripyat, released by GSC Game World.
+The OpenXRay project continues the unofficial support and development of the X-Ray 1.6.02 game engine. The original engine is used in the 
+S.T.A.L.K.E.R.: Call of Pripyat game released by GSC Game World.
 
-Attention!!! Keep in mind that this GSC Game World project is in no way authorized, and they remain the copyright holders of all source code.
+Attention!!! Keep in mind that this GSC Game World project is in no way authorized, and they remain the copyright holders of the entire source code.
 
-This package does not provide game resources, to start the game you will need the original game resources of a licensed copy of S.T.A.L.K.E.R.: Call of Pripyat version 1.6.02 and S.T.A.L.K.E.R.: Clear Sky
+This package does not provide game resources, to start the game you will need the original game resources of a licensed copy of 
+S.T.A.L.K.E.R.: Call of Pripyat version 1.6.02 and S.T.A.L.K.E.R.: Clear Sky 1.5.10
 
-From the original licensed version of the game, copy the following directories, localization, mp, patches and resources to ~/.local/share/GSC Game World/S.T.A.L.K.E.R. - Call of Pripyat for S.T.A.L.K.E.R.: Call of Pripyat and ~/.local/share/GSC Game World/S.T.A.L.K.E.R. - Clear Sky for S.T.A.L.K.E.R.: Clear Sky respectively. You can use resources from Steam or physical DVD media, GOG to unpack the distribution of the game, you can use the innoextract program.
+From the original licensed version of the game, copy the following directories, levels, localization, mp, patches and resources to 
+~/.local/share/GSC Game World/S.T.A.L.K.E.R. - Call of Pripyat for S.T.A.L.K.E.R.: Call of Pripyat and 
+~/.local/share/GSC Game World/S.T.A.L.K.E.R. - Clear Sky for S.T.A.L.K.E.R.: - Clear Sky respectively. 
+You can use the resources of Steam or a physical DVD-media, GOG to unpack the distribution of the game, you can use the innoextract program.
 
 Attention!!! All directory and file names inside directories must be lowercase.
 
+When using a copy from GOG, you may have problems localizing the game to solve it, go to the ~/.local/share/GSC Game World/S.T.A.L.K.E.R..../localization directory 
+and delete all directories and files related to third-party translations in the localization directory there should be a db archive with your 
+localization for example xrussian.db some translations may contain separate archives with voice acting for characters and video clips for 
+example base_sounds.db and xefis_movies.db
+
+Despite the fact that in the Ira section you will see the item S.T.A.L.K.E.R.:Shadow of Chernobyl (OpenXRay) to launch this part of the trilogy at the 
+moment it is not possible it is at an early stage of development
+
+===========================================================================
+
 EOF
-	
+
 }
 
 
