@@ -1,14 +1,13 @@
 pkgbase = minergate-cli
 	pkgdesc = MinerGate xFast CLI Miner
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.minergate.com/
 	arch = x86_64
 	license = custom
 	provides = minergate-cli
 	options = !strip
-	source = minergate-cli-1.7.deb::https://www.minergate.com/download/xfast-ubuntu-cli
+	source = minergate-cli-1.7.deb::https://vin.ovh/MinerGate-xFast-cli-1.7-ubuntu.deb
 	sha256sums = bff127436b13a455c2022052d67156313163f53a1ee1835c0756d39adf591a77
 
 pkgname = minergate-cli
-
