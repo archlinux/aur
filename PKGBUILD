@@ -5,7 +5,7 @@
 
 pkgname=python-pex
 pkgver=2.1.56
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Generates executable Python environments'
 url='https://github.com/pantsbuild/pex'
@@ -14,6 +14,8 @@ depends=('python')
 makedepends=('git' 'python-setuptools' 'python-dephell' 'python-sphinx')
 # checkdepends=('python-pytest-runner' 'python-pkginfo')
 changelog=CHANGES.rst
+provides=('pex')
+replaces=('pex')
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
 validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')

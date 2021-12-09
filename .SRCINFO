@@ -1,7 +1,7 @@
 pkgbase = python-pex
 	pkgdesc = Generates executable Python environments
 	pkgver = 2.1.56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pantsbuild/pex
 	changelog = CHANGES.rst
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = python-pex
 	makedepends = python-dephell
 	makedepends = python-sphinx
 	depends = python
+	provides = pex
+	replaces = pex
 	source = python-pex::git+https://github.com/pantsbuild/pex#tag=v2.1.56?signed
 	validpgpkeys = A1FE765B15233EAD18FA6ABB93E55CB567B5C626
 	sha256sums = SKIP
