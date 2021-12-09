@@ -1,7 +1,7 @@
 pkgbase = pcsclite-toolbox
 	pkgdesc = PC/SC Architecture smartcard middleware library patched for a Fedora socket
-	pkgver = 1.9.4
-	pkgrel = 1
+	pkgver = 1.9.5
+	pkgrel = 2
 	url = https://pcsclite.apdu.fr/
 	arch = x86_64
 	license = BSD
@@ -15,12 +15,12 @@ pkgbase = pcsclite-toolbox
 	provides = pcsclite
 	conflicts = pcsclite
 	options = !docs
-	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.4.tar.bz2
-	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.4.tar.bz2.asc
-	source = https://src.fedoraproject.org/rpms/pcsc-lite/raw/rawhide/f/pcsc-lite-1.9.1-maxreaders.patch
+	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.5.tar.bz2
+	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.5.tar.bz2.asc
+	source = https://src.fedoraproject.org/rpms/pcsc-lite/raw/f35/f/pcsc-lite-1.9.1-maxreaders.patch
 	validpgpkeys = F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E
-	sha256sums = 8a8caac227e0a266015298dda663e81576a0d11d698685101e6aa6c9fdb51c4b
+	sha256sums = 9ee3f9b333537562177893559ad4f7b8d5c23ebe828eef53056c02db14049d08
 	sha256sums = SKIP
-	sha256sums = 11f0d8c4c54aba6bc6a5f8a799301f66c48c11894a173c0c670c6ad6785daa87
+	sha256sums = SKIP
 
 pkgname = pcsclite-toolbox
