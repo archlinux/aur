@@ -3,8 +3,8 @@
 _pkgbase=nginx
 pkgbase=nginx-quic-vkontakte
 pkgname=(nginx-quic-vkontakte nginx-quic-vkontakte-src)
-pkgver=1.21.3
-pkgrel=2
+pkgver=1.21.4
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch with improvements from VKontakte'
 arch=('i686' 'x86_64')
 url='https://github.com/VKCOM/nginx-quic'
@@ -23,8 +23,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-quic')
-source=("$pkgname::git+https://github.com/VKCOM/nginx-quic#commit=af12e2d30b873075421bc04b9e50ea7570089ff4"
-        "git+https://boringssl.googlesource.com/boringssl#commit=91b8924969fc5a76eb4c80e1c138b87d4be6a7df"
+source=("$pkgname::git+https://github.com/VKCOM/nginx-quic#commit=e57783d157381d9c341b30c751568dae858fe763"
+        "git+https://boringssl.googlesource.com/boringssl#commit=2042972e8458833714bce23386931b1c79978439"
         "service"
         "logrotate")
 sha256sums=('SKIP'
