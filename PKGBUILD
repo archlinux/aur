@@ -1,13 +1,13 @@
 # Maintainer: Jason Nader <jason.nader@protonmail.com>
 pkgname=("virtualfish-git")
 _pkgname=virtualfish
-pkgver=r345.a19000a
+pkgver=r378.7d63a1c
 pkgrel=1
 pkgdesc="Fish shell tool for managing Python virtual environments"
 arch=("any")
 url="https://github.com/justinmayer/virtualfish"
 license=("MIT")
-depends=("python-pkgconfig" "python-psutil" "python-virtualenv" "fish")
+depends=("python-pkgconfig" "python-psutil" "python-setuptools" "python-virtualenv" "fish")
 makedepends=("git" "python-setuptools" "python-dephell")
 source=("${pkgname%-*}::git+https://github.com/justinmayer/virtualfish.git")
 md5sums=('SKIP')
