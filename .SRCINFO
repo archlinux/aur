@@ -1,6 +1,6 @@
 pkgbase = apkeep
 	pkgdesc = Tool for downloading android APK files from various sources
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/EFForg/apkeep
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = apkeep
 	makedepends = rust>=1.56.1
 	depends = openssl
 	depends = gcc-libs
-	source = 0.7.0.tar.gz::https://github.com/EFForg/apkeep/archive/0.7.0.tar.gz
-	sha256sums = 62b18953a633c8f8844858f283f04363c3da5b753b4634b1aae017453b623b9f
+	source = 0.8.0.tar.gz::https://github.com/EFForg/apkeep/archive/0.8.0.tar.gz
+	sha256sums = 2b3ca13fc23f5e08ef52de76d02b3f6e0a9d39a02496b5a895c618c99264ddbe
 
 pkgname = apkeep
