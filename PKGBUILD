@@ -2,7 +2,7 @@
 
 pkgname=python-deezer-py
 _reponame=deezer-py
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="A wrapper for all Deezer's APIs"
 url="https://pypi.org/project/deezer-py/"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-$pkgver.tar.gz")
-sha256sums=('25c7b23014052c3ddf44f6fd9c994639237b8800ae246f1d9a515f3a186c60a7')
+sha256sums=('20a99337fc22b7406f5bb9b4687535b91a61dc31998c0369c4efc76dffeb9a2c')
 
 build() {
 	cd "$srcdir/${_reponame}-$pkgver"
