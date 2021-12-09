@@ -20,21 +20,31 @@ conflicts=("oomd")
 # Fetches the libraries required via 'cargo'.
 # (The rest of the build process may be run offline.)
 prepare() {
-  cd "${pkgname}"
   if [[ -z $RUSTUP_TOOLCHAIN ]]; then
     export RUSTUP_TOOLCHAIN=stable
   fi
+  cd "${pkgname}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 # Compiles the package with all optimizations and features.
 build() {
-  cd "${pkgname}"
   if [[ -z $RUSTUP_TOOLCHAIN ]]; then
     export RUSTUP_TOOLCHAIN=stable
   fi
   export CARGO_TARGET_DIR=target
+  cd "${pkgname}"
   cargo build --release --all-features --frozen
+}
+
+# Optional routine, which lints the code as a faster checking-mechanism prior to
+# compiling it.
+check() {
+  if [[ -z $RUSTUP_TOOLCHAIN ]]; then
+    export RUSTUP_TOOLCHAIN=stable
+  fi
+  cd "${pkgname}"
+  cargo check --release --all-features --frozen
 }
 
 # Installs the binary and associated metadata to the system.
