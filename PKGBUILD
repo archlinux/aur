@@ -4,6 +4,7 @@ pkgname=bustd-pacman-hooks
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Series of Pacman Hooks to Ensure Systemd is Always Running an Up-to-Date Binary"
+groups=("bustd")
 
 arch=("any")
 license=("MIT")

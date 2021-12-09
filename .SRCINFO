@@ -4,6 +4,7 @@ pkgbase = bustd-pacman-hooks
 	pkgrel = 1
 	url = https://github.com/JamesDevlin5/bustd-pacman-hooks
 	arch = any
+	groups = bustd
 	license = MIT
 	source = bustd-install.hook
 	source = bustd-remove.hook
