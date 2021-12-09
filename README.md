@@ -44,3 +44,16 @@ This hook is triggered on the event that a new version of the package **bustd** 
 available on the *AUR*. Once the executable has been upgraded, the currently running
 instance is halted and an instance of the new version is started.
 
+## Installation
+
+Install this package before, at the same time as, or after the *bustd* package.
+
+> `$ yay -S bustd-pacman-hooks`
+
+Once installed, the hooks will simply be set up but will not be triggered until the
+appropriate event takes place. Therefore, once the package bustd is installed, the binary
+will be registered with systemd and started. Any updates to this package will cause
+a restart in the binary, and a removal of the program also halts the executable. Should
+any of these events not trigger the associated hook, it will simply keep its current
+instance running and not restart to the fresh version until a reboot.
+
