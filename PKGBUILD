@@ -4,13 +4,13 @@
 # Contributor: Nelson Menon <nelsonmenon@gmail.com insanatorium.wordpress.com>
 
 pkgname=freecol-git
-pkgver=0.15730.c7ccc8d5b
-pkgrel=2
-pkgdesc="A turn-based strategy game based on Colonization, git version build against java8 "
+pkgver=0.15794.fcb19e04f
+pkgrel=1
+pkgdesc="A turn-based strategy game based on Colonization, git version build against java11 "
 arch=('any')
 url="http://www.freecol.org/"
 license=('GPL')
-depends=('java-environment=8' 'bash')
+depends=('java-environment=11' 'bash')
 makedepends=('git' 'ant' 'junit' 'texlive-core')
 source=("$pkgname::git+https://git.code.sf.net/p/freecol/git"
         'freecol-git.sh')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ant -Djava.target.version=1.8 package print-manual desktop-entry
+  ant -Djava.target.version=11 package print-manual desktop-entry
 }
 
 package() {
