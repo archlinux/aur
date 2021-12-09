@@ -6,7 +6,7 @@
 pkgname=dnsmasq-nftset
 _pkgname=dnsmasq
 pkgver=2.86
-pkgrel=0
+pkgrel=1
 pkgdesc='Lightweight, easy to configure DNS forwarder and DHCP server, with nftset patches'
 url='http://www.thekelleys.org.uk/dnsmasq/doc.html'
 arch=('x86_64')
@@ -20,20 +20,23 @@ validpgpkeys=('D6EACBD6EE46B834248D111215CDDA6AE19135A2') # Simon Kelley <simon@
 source=("http://www.thekelleys.org.uk/$_pkgname/$_pkgname-$pkgver.tar.xz"{,.asc}
         'dnsmasq-sysusers.conf'
         'dnsmasq.service'
-		'0001-Add-nftables-set-support.patch')
+        '0001-Add-nftset-option-like-ipset-but-for-the-newer-nftab.patch'
+        '0002-Get-compilation-flags-for-libnftables-from-pkg-confi.patch')
 
 sha256sums=('28d52cfc9e2004ac4f85274f52b32e1647b4dbc9761b82e7de1e41c49907eb08'
             'SKIP'
             '7f6ff6a709038ae580758f4b6a754451d7f7ce22957b88a36b97f7b643d3c2ab'
             '297dbae8cfa3d353284820dd87cc65c37d1ef289cac3a5c3ede079413d31eeec'
-            '4ac11dfb3228ddeb36eaa45778bf4cf22aac38262a54774420cf7ced3d5b59e0')
+            'ee70166802252539139d449f468d1bc5ef6bed9913e56a09d44dffd5c28583c9'
+            '83d77ee326d6718731a3909158a3a3d3567345c2aa875045fd0ee3e8170dd2e8')
 
 _build_copts='-DHAVE_DNSSEC -DHAVE_DBUS -DHAVE_LIBIDN2 -DHAVE_CONNTRACK'
 
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  patch -p1 -i "$srcdir/0001-Add-nftables-set-support.patch"
+  patch -p1 -i "$srcdir/0001-Add-nftset-option-like-ipset-but-for-the-newer-nftab.patch"
+  patch -p1 -i "$srcdir/0002-Get-compilation-flags-for-libnftables-from-pkg-confi.patch"
 }
 
 build() {
