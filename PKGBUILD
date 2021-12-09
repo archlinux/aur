@@ -26,7 +26,7 @@ package_sweet-gtk-theme-mars-git() {
 							'sweet-cursor-theme: Cursor theme')
 	cd $_pkgname
 	install -d $pkgdir/usr/share/themes/Sweet-Mars
-	mv assets cinnamon gnome-shell gtk-2.0 gtk-3.0 metacity-1 xfwm4 index.theme "$pkgdir/usr/share/themes/Sweet-Mars"
+	mv assets cinnamon gnome-shell gtk-2.0 gtk-3.0 gtk-4.0 metacity-1 xfwm4 index.theme "$pkgdir/usr/share/themes/Sweet-Mars"
 	find "$pkgdir/usr/share/themes/Sweet-Mars" -name "*.scss" -exec rm -f {} \;
 	rm $pkgdir/usr/share/themes/Sweet-Mars/{cinnamon/thumbnail.png,gtk-2.0/{assets{.svg,.txt},links.fish,render-assets.sh}}
 }
