@@ -1,6 +1,6 @@
 pkgbase = eclipse-java
 	pkgdesc = Highly extensible IDE (Java version)
-	pkgver = 4.21
+	pkgver = 4.22
 	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
@@ -9,12 +9,12 @@ pkgbase = eclipse-java
 	depends = java-environment>=11
 	depends = webkit2gtk
 	depends = unzip
-	provides = eclipse=4.21-1
+	provides = eclipse=4.22-1
 	conflicts = eclipse
 	backup = usr/lib/eclipse/eclipse.ini
-	source = eclipse-java-2021-09-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-09/R/eclipse-java-2021-09-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse-java-2021-12-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-12/R/eclipse-java-2021-12-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
-	sha512sums = 1baeed0f32ea23eed2c1166ab6b92b086f181a030c9a4e59bf424515c558bf1c57c5f6ce077c2f94c12644eb8224f6034b5d724d726636454428c12459f2028f
+	sha512sums = 6a1ca4ba3607f512efc5530f1651482c66093b42d71efba19c82e27de028e6fe53a7992d195959586e3ad6264711396df19afbea588602a9b5cad41cbb30b240
 	sha512sums = 676d79e18ef847fc27efc68d85e5f3c3af3eaaa9946acc98161998a3a0771d2a72c7197bdb6d8c180e1b59c2a0bb591150d15114b416c1a0a0f5dbdb06bdb13e
 
 pkgname = eclipse-java
