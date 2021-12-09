@@ -8,31 +8,15 @@ pre_install() {
 
 post_install() {
   	BASE_TC_PATH="/opt/trueconf"
-	STARTUP_SCRIPT="${BASE_TC_PATH}/trueconf-client"
-	AUTORUN_SCRIPT="${BASE_TC_PATH}/trueconf-client-autostart"
-
-	chmod a+x ${STARTUP_SCRIPT}
-	chmod a+x ${AUTORUN_SCRIPT}	
-
 	LINK_FILE="/usr/bin/trueconf"
-	if [ -f ${LINK_FILE} ]; then
-		rm ${LINK_FILE}
-	fi
-	if [ ! -f ${LINK_FILE} ]; then
-		ln -s -f ${STARTUP_SCRIPT} ${LINK_FILE}
-	fi
 
-	if cmd_present "gconftool-2"; then
-		gconftool-2 -s /desktop/gnome/url-handlers/visicall/command '/opt/trueconf/trueconf-client %s' --type String
-		gconftool-2 -s /desktop/gnome/url-handlers/visicall/enabled --type Boolean true
-		
-		gconftool-2 -s /desktop/gnome/url-handlers/trueconf/command '/opt/trueconf/trueconf-client %s' --type String
-		gconftool-2 -s /desktop/gnome/url-handlers/trueconf/enabled --type Boolean true
-	fi
+	chmod a+x ${BASE_TC_PATH}/trueconf-client
+	chmod a+x ${BASE_TC_PATH}/trueconf-client-autostart
 
-	if cmd_present "xdg-desktop-menu"; then
+	ln -f -s ${BASE_TC_PATH}/trueconf-client ${LINK_FILE}
+
+	if command -v "xdg-desktop-menu" >/dev/null 2>&1; then
 		xdg-desktop-menu install --novendor --mode system /opt/trueconf/trueconf.desktop
-		xdg-desktop-menu forceupdate --mode system
 	else
 		echo "WARNING: Could not find xdg-desktop-menu" >&2
 	fi
@@ -45,10 +29,17 @@ post_install() {
 		appstreamcli refresh
 	fi
 
-	pid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
-	if [ -n "$pid" ]; then
-		for process in "$pid"; do
-				kill -s 50 $process 
+	binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+	if [ -n "$binpid" ]; then
+		for process in "$binpid"; do
+			kill -s 50 $process 
+		done
+	fi
+
+	startupbin=$(ps axco pid,command | awk '$2 == "trueconf-client" {print $1; }')
+	if [ -n "$startupbin" ]; then
+		for process in "$startupbin"; do
+			kill -s 50 $process 
 		done
 	fi
 }
@@ -62,24 +53,30 @@ post_upgrade() {
 }
 
 pre_remove() {    
-	if cmd_present 'xdg-desktop-menu'; then
-	    xdg-desktop-menu uninstall --novendor --mode system /opt/trueconf/trueconf.desktop
-	    xdg-desktop-menu forceupdate --mode system
-	else
-	    echo "WARNING: Could not find xdg-desktop-menu" >&2
+	binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+	if [ -n "$binpid" ]; then
+		for process in "$binpid"; do
+			kill -9 $process 
+		done
 	fi
-	autostart_dir="${HOME}/.config/autostart"
-	if [ -f ${autostart_dir}/trueconf.desktop ]; then
-	    rm ${autostart_dir}/trueconf.desktop
-	fi
-	if [ -f ${autostart_dir}/trueconf-autostart.desktop ]; then
-	    rm ${autostart_dir}/trueconf-autostart.desktop
+
+	startupbin=$(ps axco pid,command | awk '$2 == "trueconf-client" {print $1; }')
+	if [ -n "$startupbin" ]; then
+		for process in "$startupbin"; do
+			kill -9 $process 
+		done
 	fi
 }
 
 post_remove() {	
-  	LINK_FILE="/usr/bin/trueconf"
-  	if [ -f ${LINK_FILE} ]; then
-  	    rm ${LINK_FILE}
-  	fi
+	LINK_FILE="/usr/bin/trueconf"
+	if [ -f ${LINK_FILE} ]; then
+	    rm ${LINK_FILE}
+	fi
+
+	if command -v "xdg-desktop-menu" >/dev/null 2>&1; then
+		xdg-desktop-menu forceupdate --mode system
+	else
+		echo "WARNING: Could not find xdg-desktop-menu" >&2
+	fi
 }
