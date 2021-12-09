@@ -37,8 +37,10 @@ build() {
 check() {
   cd $_pkgname-$pkgver
   # test_ldap requires many unpackaged dependencies
+  # some tests are disabled due to incompatibility with vault 1.9 https://github.com/hvac/hvac/issues/786
   PATH="$srcdir/vault-unprivileged:$PATH" pytest tests \
-    --ignore=tests/integration_tests/api/auth_methods/test_ldap.py
+    --ignore=tests/integration_tests/api/auth_methods/test_ldap.py \
+    -k 'not test_oidc_authorization_url_request_0_success and not test_delete_config_0_create_and_then_delete_config and not test_auth_kubernetes'
 }
 
 package() {
