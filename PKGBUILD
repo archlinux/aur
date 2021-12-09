@@ -4,7 +4,7 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=r764.18072e0
+pkgver=0.1.0.r7.g93afdb3
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -37,8 +37,7 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
