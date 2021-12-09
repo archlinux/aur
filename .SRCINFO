@@ -1,6 +1,6 @@
 pkgbase = python-pdm
 	pkgdesc = A modern Python package manager with PEP 582 support.
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 3
 	url = https://pdm.fming.dev/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-pdm
 	depends = python-resolvelib
 	depends = python-shellingham
 	depends = python-tomli>=1.1.0
-	source = https://files.pythonhosted.org/packages/py3/p/pdm/pdm-1.11.0-py3-none-any.whl
-	sha512sums = 70f34d0384d23ea679c916ecbe2799b710c301464fe10992eba763b5a3ef1ce513bfb1088e3d21e022b42bccd960edbe103e6bc78a9f50ac8c15523662a23460
+	source = https://files.pythonhosted.org/packages/py3/p/pdm/pdm-1.11.1-py3-none-any.whl
+	sha512sums = cc905f535c263ab5f07c10d2a6c32e82376e7646bfd3b47232bd4a0f3a22e87f1ddd08f1548105f90915a13aa86235a36952d27556eaee7d9fb5363365f51669
 
 pkgname = python-pdm
