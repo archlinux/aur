@@ -5,10 +5,11 @@ pkgver=5.3.0
 pkgrel=1
 pkgdesc='A text widget adding syntax highlighting and more to GNOME'
 url='https://gitlab.gnome.org/GNOME/gtksourceview'
-license=('LGPL')
+license=(LGPL)
 arch=(x86_64 aarch64)
 depends=(gtk4)
 makedepends=(
+	gi-docgen
 	gobject-introspection
 	gtk-doc
 	meson

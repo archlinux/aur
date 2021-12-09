@@ -7,6 +7,7 @@ pkgbase = gtksourceview5
 	arch = aarch64
 	license = LGPL
 	checkdepends = xorg-server-xvfb
+	makedepends = gi-docgen
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = meson
