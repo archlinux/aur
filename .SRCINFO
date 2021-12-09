@@ -1,0 +1,23 @@
+pkgbase = tailscale-systray-git
+	pkgdesc = Linux port of tailscale system tray menu.
+	pkgver = 20211209
+	pkgrel = 1
+	url = https://github.com/mattn/tailscale-systray
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = gcc
+	makedepends = gtk3
+	depends = tailscale
+	depends = libappindicator-gtk3
+	source = tailscale-systray.desktop
+	source = icon.png
+	source = LICENSE
+	source = git+https://github.com/mattn/tailscale-systray
+	sha256sums = a218407cfc354f3fa0844007aaac38c255e60a45aad09601208d73b03f3b7ebc
+	sha256sums = daffb052995411f5c25ac8977531bccb63a82d259817d4bd7808668fd4b5373c
+	sha256sums = d467163815d58e1aa199ffb6985cdc252b7c71fb454c5b6c5860498806c56670
+	sha256sums = SKIP
+
+pkgname = tailscale-systray-git

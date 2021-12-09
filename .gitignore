@@ -1,0 +1,4 @@
+pkg/
+src/
+tailscale-systray/
+tailscale-systray-git-*.pkg.tar.zst

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tailscale
+Exec=/usr/bin/tailscale-systray
+Type=Application
+StartupNotify=true
+Path=/usr/bin/tailscale-systray
+Icon=/usr/share/icons/tailscale-systray/icon.png
+StartupWMClass=tailscale-systray
