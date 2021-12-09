@@ -1,7 +1,7 @@
 pkgbase = toit
 	pkgdesc = Toit programming language SDK
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://toitlang.org
 	arch = x86_64
 	license = LGPL

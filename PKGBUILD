@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname='toit'
 pkgver='0.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -22,6 +22,7 @@ prepare() {
 	cd esp-idf
 	git checkout patch-head-4.3-3
 	git submodule update .
+	# We only need the mbedtls component, so don't bother doing a full recursive init.
 	git submodule update --init components/mbedtls
 }
 
