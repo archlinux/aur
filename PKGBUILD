@@ -2,7 +2,7 @@
 
 _name=bespokesynth
 pkgname=bespokesynth-git
-pkgver=1.1.0.r12.g7d802f2
+pkgver=1.1.0.r33.g8c3f5c2
 pkgrel=1
 pkgdesc="A software modular synth"
 arch=(x86_64)
@@ -16,17 +16,11 @@ provides=(bespokesynth)
 source=(
   "$pkgname::git+https://github.com/${_name}/${_name}"
   "MTS-ESP::git+https://github.com/ODDSound/MTS-ESP"
-  "${_name}-1.1.0.r12.g7d802f2-devendor_tuning_library.patch::https://github.com/dvzrv/BespokeSynth/commit/4a42c0945ff7f4cebac58482be5217a16122eca4.patch"
-  "${_name}-1.1.0.r12.g7d802f2-devendor_juce.patch::https://github.com/dvzrv/BespokeSynth/commit/04efc00b1f97b9ea3e1ec1bc3666baf23c1c693c.patch"
 )
 sha512sums=('SKIP'
-            'SKIP'
-            '1a2f8c2397f52572b9ae3680e6b7fb092d568cdba5d6ba13a54e7e7bdd160491bca5bc53b43d461ae1fc3bdd11f5ecebd336a20285a7cd4e869c150f752900ca'
-            'be7fa56c1b46b1d3d157e88ea84fdea70be8e5287a19b2c75b20f0d580a4e3078ad7e02939734cf11be8ff75a69c3f8a29aaa88df91e5c45530eac9e360f6712')
+            'SKIP')
 b2sums=('SKIP'
-        'SKIP'
-        'f40b598e2dd3bc12cc6117748147608da3cae7895cda8e7822c3d3e9d1b805ffd702dce3848ffe3ce55660e1789515c7cb903e226e9592c45bed2442e51b185c'
-        '9d6b2f09822f542c8873b73942f1a1decb21b7e3fe81687c058795dd8e76ac4d55b99e2a4bdbb314eca2b788958fb5a9908e8482b4555f52037a4e31fa000562')
+        'SKIP')
 validpgpkeys=()
 
 prepare() {
@@ -38,14 +32,11 @@ prepare() {
   git submodule deinit libs/tuning-library
   git submodule deinit libs/json/jsoncpp
   git submodule update
-
-  patch -Np1 -i ../${_name}-1.1.0.r12.g7d802f2-devendor_tuning_library.patch
-  patch -Np1 -f -i ../${_name}-1.1.0.r12.g7d802f2-devendor_juce.patch
 }
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --exclude Nightly --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

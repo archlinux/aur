@@ -1,6 +1,6 @@
 pkgbase = bespokesynth-git
 	pkgdesc = A software modular synth
-	pkgver = 1.1.0.r12.g7d802f2
+	pkgver = 1.1.0.r33.g8c3f5c2
 	pkgrel = 1
 	url = https://www.bespokesynth.com/
 	arch = x86_64
@@ -33,16 +33,10 @@ pkgbase = bespokesynth-git
 	conflicts = bespokesynth
 	source = bespokesynth-git::git+https://github.com/bespokesynth/bespokesynth
 	source = MTS-ESP::git+https://github.com/ODDSound/MTS-ESP
-	source = bespokesynth-1.1.0.r12.g7d802f2-devendor_tuning_library.patch::https://github.com/dvzrv/BespokeSynth/commit/4a42c0945ff7f4cebac58482be5217a16122eca4.patch
-	source = bespokesynth-1.1.0.r12.g7d802f2-devendor_juce.patch::https://github.com/dvzrv/BespokeSynth/commit/04efc00b1f97b9ea3e1ec1bc3666baf23c1c693c.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 1a2f8c2397f52572b9ae3680e6b7fb092d568cdba5d6ba13a54e7e7bdd160491bca5bc53b43d461ae1fc3bdd11f5ecebd336a20285a7cd4e869c150f752900ca
-	sha512sums = be7fa56c1b46b1d3d157e88ea84fdea70be8e5287a19b2c75b20f0d580a4e3078ad7e02939734cf11be8ff75a69c3f8a29aaa88df91e5c45530eac9e360f6712
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = f40b598e2dd3bc12cc6117748147608da3cae7895cda8e7822c3d3e9d1b805ffd702dce3848ffe3ce55660e1789515c7cb903e226e9592c45bed2442e51b185c
-	b2sums = 9d6b2f09822f542c8873b73942f1a1decb21b7e3fe81687c058795dd8e76ac4d55b99e2a4bdbb314eca2b788958fb5a9908e8482b4555f52037a4e31fa000562
 
 pkgname = bespokesynth-git
 	depends = gcc-libs
