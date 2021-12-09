@@ -38,8 +38,8 @@ package() {
 	install -D "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm 644 "assets/git-ignore.1" "$pkgdir/usr/share/man/man1/git-ignore.1"
-  install -Dm 644 "assets/git-ignore.bash" "$pkgdir/usr/share/bash-completion/completions/git-ignore"
-  install -Dm 644 "assets/git-ignore.fish" "$pkgdir/usr/share/fish/vendor_completions.d/git-ignore.fish"
-  install -Dm 644 "assets/_git-ignore" "$pkgdir/usr/share/zsh/site-functions/_git-ignore"
+	install -Dm 644 "assets/git-ignore.1" "$pkgdir/usr/share/man/man1/git-ignore.1"
+	install -Dm 644 "assets/git-ignore.bash" "$pkgdir/usr/share/bash-completion/completions/git-ignore"
+	install -Dm 644 "assets/git-ignore.fish" "$pkgdir/usr/share/fish/vendor_completions.d/git-ignore.fish"
+	install -Dm 644 "assets/_git-ignore" "$pkgdir/usr/share/zsh/site-functions/_git-ignore"
 }
