@@ -1,0 +1,20 @@
+pkgbase = xfce4-zorinmenulite-plugin
+	pkgdesc = Zorin OS Xfce menu
+	pkgver = _1.1.4
+	pkgrel = 1
+	epoch = 0
+	url = https://zorin.com/os/
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	depends = gtk3>=3.22,
+	depends = exo>=0.11
+	depends = garcon
+	depends = xfce4-panel>=4.11
+	depends = libxfce4ui>=4.11
+	depends = libxfce4util>=4.11
+	source = http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/x/xfce4-zorinmenulite-plugin/xfce4-zorinmenulite-plugin_1.1.4.tar.xz
+	sha256sums = e5fc91ca464c004885c8ffaf5d9a3216cd7f6b5a0d2afa1df6327e88ae80487c
+
+pkgname = xfce4-zorinmenulite-plugin
