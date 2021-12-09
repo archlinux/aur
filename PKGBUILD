@@ -20,13 +20,11 @@ conflicts=('cloudcompare')
 provides=('cloudcompare')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
         "${name}-cork::git+https://github.com/CloudCompare/cork.git"
-        cork.patch
         CloudCompare.desktop
         ccViewer.desktop
         )
 sha256sums=('SKIP'
             'SKIP'
-            '1789d726d65478857633fa4797da7c3ea4c13d90cdcc169d4197c58d2d33f123'
             '14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe'
             '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc'
             'SKIP'
@@ -40,7 +38,6 @@ sha256sums=('SKIP'
 
 prepare() {
   prepare_submodule
-  git -C "${srcdir}/${name}-cork" apply -v "${srcdir}"/cork.patch
   #fix gcc:11 porting
   sed '1 i\#include <limits>' -i "${srcdir}/${name}"/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp
 }
