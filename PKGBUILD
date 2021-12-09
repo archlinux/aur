@@ -1,5 +1,5 @@
-# Mod Maintainer: Martin Cation <martincation@protonmail.com>
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Martin Cation <martincation@protonmail.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Aurelien Foret <orelien@chez.com>
 
