@@ -1,7 +1,7 @@
 pkgbase = openxray
 	pkgdesc = Unofficial X-Ray Engine port for Linux from the OpenXRay team, stable version (originally developed by GSC Game World)
-	pkgver = 1.6.02_822
-	pkgrel = 2
+	pkgver = 1.6.02_1144
+	pkgrel = 1
 	url = https://github.com/OpenXRay/xray-16
 	install = info.install
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = openxray
 	depends = glew
 	depends = sdl2
 	depends = openal
-	depends = intel-tbb
 	depends = crypto++
 	depends = liblockfile
 	depends = freeimage
@@ -29,8 +28,7 @@ pkgbase = openxray
 	depends = libjpeg-turbo
 	conflicts = openxray-git
 	conflicts = openxray-dev
-	source = xray-16::git+https://github.com/OpenXRay/xray-16.git#tag=822-december-preview
+	source = xray-16::git+https://github.com/OpenXRay/xray-16.git#tag=1144-december-2021-rc1
 	md5sums = SKIP
 
 pkgname = openxray
-
