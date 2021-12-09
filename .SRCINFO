@@ -1,0 +1,19 @@
+pkgbase = android-google-apis-x86-64-system-image-31
+	pkgdesc = Android with Google APIs x86_64 Atom System Image, API-31
+	pkgver = r08
+	pkgrel = 1
+	url = https://software.intel.com/en-us/android/tools
+	arch = any
+	license = custom
+	provides = android-google-apis-x86-64-system-image-31
+	conflicts = android-google-apis-x86-64-system-image-31
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/google_apis/x86_64-31_r08.zip
+	source = package.xml
+	sha256sums = dd3c590a4776c9c9401d6e3bf53706c08c26ff16b7b14ba2ecaffbdc3e1ad3a4
+	sha256sums = e070ba43b732a7f0089bdcafbed1bb955f76a4c9322fb34fddb7030571891444
+
+pkgname = android-google-apis-x86-64-system-image-31
+	depends = android-platform-31
+	optdepends = qemu
+	optdepends = libvirt
