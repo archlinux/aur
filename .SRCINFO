@@ -1,0 +1,27 @@
+pkgbase = dnsmasq-nftset-git
+	pkgdesc = Lightweight, easy to configure DNS forwarder and DHCP server, with nftset support enabled
+	pkgver = 2.86test5.r1.g767d9cb
+	pkgrel = 1
+	url = http://www.thekelleys.org.uk/dnsmasq/doc.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = gmp
+	depends = libidn2
+	depends = libdbus
+	depends = libnetfilter_conntrack
+	depends = nettle
+	depends = nftables
+	provides = dnsmasq
+	conflicts = dnsmasq
+	backup = etc/dnsmasq.conf
+	source = git://thekelleys.org.uk/dnsmasq.git
+	source = dnsmasq-sysusers.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq-sysusers.conf
+	source = dnsmasq.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dnsmasq-nftset-git
