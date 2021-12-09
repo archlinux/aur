@@ -17,7 +17,7 @@ sha1sums=("SKIP" "0ed07411677251c1f26d8a482f898b1d49807730")
 depends=("gcc-libs")
 makedepends=("cargo" "git")
 conflicts=("oomd")
-optdepends=('bustd-pacman-hooks: restart executable after pacman transaction')
+optdepends=("bustd-pacman-hooks: restart executable after pacman transaction")
 
 # Fetches the libraries required via 'cargo'.
 # (The rest of the build process may be run offline.)
@@ -66,5 +66,4 @@ package() {
   # Systemd Service
   install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" \
     "${pkgname}.service"
-  # echo "To load bustd with systemd, run 'sudo systemctl enable --now ${pkgname}'."
 }
