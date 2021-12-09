@@ -8,7 +8,7 @@ groups=("bustd")
 
 arch=("any")
 license=("MIT")
-url="https://github.com/JamesDevlin5/bustd-pacman-hooks"
+url="https://github.com/vrmiguel/bustd"
 source=("bustd-install.hook" "bustd-remove.hook" "bustd-upgrade.hook" "LICENSE")
 sha1sums=("8dd6aad1156bd71cc02d5204caea8a58d717a030" "4e29dea1c62c217822cb966e3199d338fa342ccb" "997f826b14255fd627717f2826526a45b8a8f969" "ecc31cc12d89501688dcf6fa790e9ef162fa66d5")
 
