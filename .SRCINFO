@@ -1,6 +1,6 @@
 pkgbase = barley
 	pkgdesc = A cli that shows a GitHub-like language usage statistics bar.
-	pkgver = r27.ecaf0c1
+	pkgver = r32.5e864b2
 	pkgrel = 1
 	url = https://github.com/baris-inandi/barley
 	arch = x86_64
