@@ -24,6 +24,7 @@ source=("wine-tkg-5.18.tar.gz::https://github.com/Tk-Glitch/wine-tkg/archive/e37
         0001-Updated-wow64cpu-Wow64Transition-patchset.patch
         0001-ntdll-Stub-NtQueryInformationThread-ThreadHideFromDe.patch
         0001-Revert-winex11.drv-Update-_NET_WM_STATE-before-resiz.patch
+        0001-Fix-ldap_connect-name-conflict.patch
        )
 sha512sums=('85ea388e711b2a659b37233bcfd423d6bed3a56190d6cff3a9465eb8c0590cbc73b69479ec25749d43be9de7d8a37833e1c5c5f908d8e3c69f131ffa79dcbde3'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
@@ -31,7 +32,8 @@ sha512sums=('85ea388e711b2a659b37233bcfd423d6bed3a56190d6cff3a9465eb8c0590cbc73b
             'e8207a4cf79fe83c20d6f2257b469127baf81876f3de240a24744b23ab1c2b0b523afae6acb1fc95edfc1e2cb5db34adea87e36047455b82f42b29228681b9d5'
             '78680db42591fc882c50c4fc5156a1d3db915d71b8982b42b2affc6701d55bc5dacfd2d7a435a7b1424f9480b1e2db332321d9b4dae7122a3a0ad1efdcbe1d59'
             '68c027c748faf1ea86c4b01f2decadb3240d1e98f1f16a9fc6f6a841bb5240efc91237e77aedd188c450b6f47e1ca89620ef924ec44e3f0bc2c9097361c1ac08'
-            'ff6ea107598bd681bb5534d977e2f40fe8104bcf53148284fdd2be14f67db1dfe6d8176ff8200fc982ab3902c28e4186876c4d1870fd7362d98e8b3b6d8efe31')
+            'ff6ea107598bd681bb5534d977e2f40fe8104bcf53148284fdd2be14f67db1dfe6d8176ff8200fc982ab3902c28e4186876c4d1870fd7362d98e8b3b6d8efe31'
+            '9be470762bfa4bf098e919bf94210103e1e9147693e74bfbc88fa539b3d1c8bd2da017005380dbe21ace39cc4fa949e923b3682cb9265d61bbd0e2f988562dbd')
 
 pkgdesc="A compatibility layer for running Windows programs - Wine Tk-Glitch with League Of Legends fixes"
 url="https://github.com/M-Reimer/wine-lol"
@@ -148,6 +150,9 @@ prepare() {
 
   # Fix opencl header path
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
+
+  # Fix ldap_connect
+  patch -d "$srcdir/$pkgname" -p1 -i "$srcdir/0001-Fix-ldap_connect-name-conflict.patch"
 }
 
 build() {
