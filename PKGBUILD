@@ -71,6 +71,9 @@ _subarch=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+# Enable compiling with LLVM
+_use_llvm_lto=
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.15
@@ -79,12 +82,15 @@ _srcname=linux-${_major}
 _clr=${_major}.6-1105
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'xmlto')
+if [ -n "$_use_llvm_lto" ]; then
+  makedepends+=(clang llvm lld python)
+fi
 options=('!strip')
 _gcc_more_v='20210914'
 source=(
@@ -96,6 +102,13 @@ source=(
   "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8ba6612318090567422d49ccc79bc7bbe5484cfc/linux-5.15.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
   "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8ba6612318090567422d49ccc79bc7bbe5484cfc/linux-5.15.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
+
+if [ -n "$_use_llvm_lto" ]; then
+  BUILD_FLAGS=(
+    LLVM=1
+    LLVM_IAS=1
+  )
+fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -196,7 +209,18 @@ prepare() {
     # Library routines
     scripts/config --enable FONT_TER16x32
 
-    make olddefconfig
+    if [ -n "$_use_llvm_lto" ]; then
+        scripts/config --disable LTO_NONE \
+                       --enable LTO \
+                       --enable LTO_CLANG \
+                       --enable ARCH_SUPPORTS_LTO_CLANG \
+                       --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
+                       --enable HAS_LTO_CLANG \
+                       --enable LTO_CLANG_THIN \
+                       --enable HAVE_GCC_PLUGINS
+    fi
+
+    make ${BUILD_FLAGS[*]} olddefconfig
     diff -u $srcdir/$pkgbase/config .config || :
 
     # https://github.com/graysky2/kernel_compiler_patch
@@ -206,10 +230,10 @@ prepare() {
 
     if [ -n "$_subarch" ]; then
         # user wants a subarch so apply choice defined above interactively via 'yes'
-        yes "$_subarch" | make oldconfig
+        yes "$_subarch" | make ${BUILD_FLAGS[*]} oldconfig
     else
         # no subarch defined so allow user to pick one
-        make oldconfig
+        make ${BUILD_FLAGS[*]} oldconfig
     fi
 
     ### Optionally use running kernel's config
@@ -232,17 +256,17 @@ prepare() {
     if [ -n "$_localmodcfg" ]; then
         if [ -e $HOME/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+            make ${BUILD_FLAGS[*]} LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             echo "No modprobed.db data found"
             exit
         fi
     fi
 
-    make -s kernelrelease > version
+    make ${BUILD_FLAGS[*]} -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 
-    [[ -z "$_makenconfig" ]] || make nconfig
+    [[ -z "$_makenconfig" ]] || make ${BUILD_FLAGS[*]} nconfig
 
     ### Save configuration for later reuse
     cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
@@ -250,7 +274,7 @@ prepare() {
 
 build() {
     cd ${_srcname}
-    make all
+    make ${BUILD_FLAGS[*]} all
 }
 
 _package() {
