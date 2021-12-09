@@ -1,13 +1,13 @@
 pkgbase = muffet-bin
 	pkgdesc = Fast website link checker
-	pkgver = 2.4.6
+	pkgver = 2.4.8
 	pkgrel = 1
 	url = https://github.com/raviqqe/muffet
 	arch = x86_64
 	license = MIT
 	provides = muffet
 	conflicts = muffet
-	source_x86_64 = https://github.com/raviqqe/muffet/releases/download/v2.4.6/muffet_2.4.6_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 42314914d6c33050ddec150eaca400c76b061314ae01328a187fa95a0b2daf9d
+	source_x86_64 = https://github.com/raviqqe/muffet/releases/download/v2.4.8/muffet_2.4.8_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d964ebfc898e9a2b0829b5a5c35cea69d46eba480347145d44caf22d9673e509
 
 pkgname = muffet-bin
