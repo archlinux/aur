@@ -1,8 +1,8 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.15.6.arch2
+	pkgver = 5.15.7.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.15.6-arch2
+	url = https://github.com/archlinux/linux/commits/v5.15.7-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.6-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.7-arch1
 	source = config
 	source = bfq-default.patch
 	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/ba636511f4862466b11ea69264cab70b7ccb3459/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch
