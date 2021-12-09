@@ -1,14 +1,13 @@
 pkgbase = python-pythondialog-docs
 	pkgdesc = Documentation for Python pythondialog module.
-	pkgver = 3.5.1
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = http://pythondialog.sourceforge.net/
 	arch = any
 	license = LGPL
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
-	source = python-pythondialog-docs-3.5.1.tar.bz2::https://sourceforge.net/projects/pythondialog/files/latest/download?source=files
-	sha256sums = 4a972412edc2673158e9f7d8ad04f73e55aec7b2a2cfd7a98df26326b6090620
+	source = python-pythondialog-docs-3.5.3.tar.bz2::https://sourceforge.net/projects/pythondialog/files/pythondialog/3.5.3/python3-pythondialog-3.5.3.tar.bz2/download?source=files
+	sha256sums = f55fc6db1f537b07253e4a5bf0bd5d7ba343c2c2bab38f43319874edd0f0ad4b
 
 pkgname = python-pythondialog-docs
-
