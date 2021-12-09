@@ -6,7 +6,7 @@ pkgver=3.0.0.r45.g5403f56
 pkgrel=1
 pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface."
 arch=("armv7h" "i686" "x86_64")
-url="https://github.com/CiderApp/${_pkgname}"
+url="https://github.com/CiderApp/${_pkgname}.git"
 license=("MIT")
 depends=('gtk3' 'libxss' 'nss')
 makedepends=('yarn' 'git' 'npm' 'nodejs-lts-gallium')
@@ -15,7 +15,7 @@ optdepends=('libnotify: Playback notifications'
 provides=(apple-music-electron)
 conflicts=(apple-music-electron)
 source=(
-  "git+https://github.com/CiderApp/${_pkgname}"
+  "git+https://github.com/CiderApp/${_pkgname}.git"
   "Apple-Music-Electron.desktop"
 )
 sha256sums=('SKIP'
@@ -23,8 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-    var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
-    echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
