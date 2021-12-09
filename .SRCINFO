@@ -1,6 +1,6 @@
 pkgbase = android-platform-31
 	pkgdesc = Android SDK Platform, API 31
-	pkgver = 31_r01
+	pkgver = r01
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
