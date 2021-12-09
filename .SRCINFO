@@ -1,13 +1,13 @@
 pkgbase = git-ignore-bin
 	pkgdesc = Quickly and easily list and fetch .gitignore templates from www.gitignore.io
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 0
 	url = https://github.com/sondr3/git-ignore
 	arch = x86_64
 	license = GPL3
 	provides = git-ignore
 	conflicts = git-ignore
-	source_x86_64 = https://github.com/sondr3/git-ignore/releases/download/v1.1.2/git-ignore-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 314c4e47723b79fc4b9973219db43187a4abf3d5d2c3c83cfa23abc669c404a9
+	source_x86_64 = https://github.com/sondr3/git-ignore/releases/download/v1.2.0/git-ignore-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5a3a4e2c94e2645b56e021338d94236bf730d4f36dac1cb31390b8b8c4016cf8
 
 pkgname = git-ignore-bin

@@ -1,4 +1,7 @@
-
+*
+!.SRCINFO
+!PKGBUILD
+!.gitignore
 
 ### Created by https://www.gitignore.io
 ### ArchLinuxPackages ###
