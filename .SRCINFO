@@ -1,7 +1,7 @@
 pkgbase = infnoise
 	pkgdesc = Infinite Noise TRNG
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leetronics/infnoise
 	arch = x86_64
 	license = custom:CC0 1.0 Universal

@@ -7,7 +7,7 @@ pkgbase=infnoise
 pkgname=(infnoise libinfnoise infnoise-tools)
 pkgver=0.3.2
 _commit=e80ddd7
-pkgrel=1
+pkgrel=2
 pkgdesc="Infinite Noise TRNG"
 arch=('x86_64')
 url="https://github.com/leetronics/infnoise"
@@ -50,7 +50,7 @@ package_infnoise() {
   install -Dm755 "software/infnoise"                           "${pkgdir}/usr/bin/infnoise"
 
   # in Arch the `uucp` group owns /dev/tty* devices, not `dialout`
-  sed --in-place 's/dialout/uccp/g' "${pkgdir}/usr/lib/udev/rules.d/75-infnoise.rules"
+  sed --in-place 's/dialout/uucp/g' "${pkgdir}/usr/lib/udev/rules.d/75-infnoise.rules"
 }
 
 package_infnoise-tools() {
