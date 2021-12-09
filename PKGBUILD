@@ -2,7 +2,7 @@
 
 pkgname="en_se"
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="English locale for Sweden with ISO date and time format"
 url="https://gist.github.com/bmaupin/d64368e78cd359d309685fecbe2baf23"
 license=("GPL")

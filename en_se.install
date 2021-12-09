@@ -2,7 +2,7 @@ post_install(){
  cat <<INFO
 In order to use the en_SE locale, run the following commands as root:
 
-echo "en_SE.UTF8 UTF-8" >> /etc/locale.gen
+echo "en_SE.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_SE.UTF-8" > /etc/locale.conf
 
