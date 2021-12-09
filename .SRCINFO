@@ -1,7 +1,7 @@
 pkgbase = nautilus-mediainfo
 	pkgdesc = View media information from the properties tab
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-man/nautilus-mediainfo
 	arch = any
 	license = GPL3
