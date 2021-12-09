@@ -1,6 +1,6 @@
 pkgbase = jgd-black
 	pkgdesc = Black and gray GTK theme collection (GTK 3.20+)
-	pkgver = 09_15_19
+	pkgver = 12_09_21
 	pkgrel = 1
 	url = http://www.jasong-designs.com/2017/02/04/jgd-black-gtk3/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = jgd-black
 	optdepends = openbox: optional window manager theme
 	optdepends = ttf-dejavu: font support
 	optdepends = xfce4: optional desktop environment for xfwm
-	source = https://github.com/jgpws/jgd-black/raw/master/downloads/jgd-black-09-15-19.tar.gz
-	md5sums = da87f9d800a8b86dd3cd0d6d4bb8e58b
+	source = https://github.com/jgpws/jgd-black/raw/master/downloads/jgd-black-12-09-21.tar.gz
+	sha256sums = 23431cd4d04f664f2c208ee4501e46d3026e1a024205de59fcaa0ac61d3ec0d9
 
 pkgname = jgd-black
-

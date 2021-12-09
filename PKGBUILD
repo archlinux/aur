@@ -1,7 +1,7 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=jgd-black
-pkgver=09_15_19
+pkgver=12_09_21
 pkgrel=1
 pkgdesc="Black and gray GTK theme collection (GTK 3.20+)"
 arch=('any')
@@ -18,6 +18,4 @@ package() {
 	cp -R JGD-Black "$pkgdir/usr/share/themes"
 }
 
-
-
-md5sums=('da87f9d800a8b86dd3cd0d6d4bb8e58b')
+sha256sums=('23431cd4d04f664f2c208ee4501e46d3026e1a024205de59fcaa0ac61d3ec0d9')
