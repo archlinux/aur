@@ -4,8 +4,8 @@
 
 _pkgname=swayimg
 pkgname=${_pkgname}-git
-pkgver=1.4
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc='Image viewer for Sway/Wayland'
 arch=('x86_64')
 license=('MIT')
@@ -21,6 +21,7 @@ depends=(
   'json-c'
   'hicolor-icon-theme'
   'libavif'
+  'libjxl'
   'librsvg'
   'libwebp'
   )
@@ -31,9 +32,15 @@ url='https://github.com/artemsen/swayimg'
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --tags --long --always | sed 's/-g.*//;s/^v//;s/-/./'
+}
+
 build() {
   local meson_options=(
     -D jpeg=enabled
+    -D jxl=enabled
     -D gif=enabled
     -D svg=enabled
     -D webp=enabled
@@ -41,6 +48,7 @@ build() {
     -D bash=enabled
     -D man=true
     -D desktop=true
+    -D version=${pkgver}
   )
   arch-meson ${_pkgname} build "${meson_options[@]}"
   meson compile -C build
