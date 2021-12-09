@@ -27,7 +27,7 @@ pkgver() {
 package() {
   install -Dm755 "$srcdir/$_pkgname/networkmanager_dmenu" "$pkgdir/usr/bin/networkmanager_dmenu"
   install -Dm644 "$srcdir/$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/$_pkgname/README.rst" "$pkgdir/usr/share/doc/$pkgname/README.rst"
+  install -Dm644 "$srcdir/$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir/$_pkgname/config.ini.example" "$pkgdir/usr/share/doc/$pkgname/config.ini.example"
   install -Dm644 "$srcdir/$_pkgname/networkmanager_dmenu.desktop" "$pkgdir/usr/share/applications/networkmanager_dmenu.desktop"
 }
