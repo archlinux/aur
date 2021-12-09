@@ -5,11 +5,11 @@
 # Contributor: Mitch Bigelow <ipha00 at gmail dot com>
 
 pkgname=ncnn
-pkgver=20211122
+pkgver=20211208
 pkgrel=1
 pkgdesc='High-performance neural network inference framework optimized for the mobile platform'
 url='https://github.com/Tencent/ncnn'
-arch=('any')
+arch=('x86_64')
 license=('BSD')
 depends=()
 makedepends=(
@@ -22,7 +22,7 @@ makedepends=(
 )
 conflicts=('ncnn-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tencent/ncnn/archive/$pkgver.tar.gz")
-b2sums=('5bffad938c0a5048256c3a05659601ab7e8c24cd61d1c634dc2620e56adc887b0747d8e8959a34049297ebf14bc881f9f49af4b506ca9d97556337071408c3b1')
+b2sums=('7ed8806681c9c4d58b05d1120fec95c5fdc2bd036ded045775938e64cda9313f37d0c63f2d0bc64d3aa2629f6c222819bb032e6d9f503dfdafb5816e07851954')
 
 prepare() {
     cd "$srcdir/ncnn-$pkgver" || exit
