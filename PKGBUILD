@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=skate
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A personal key value store"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7fa4a229b6c61f8437dcc210b4348923e57b29504d4a59c46bd1c5974a2c9c87')
+sha256sums=('ac4e71bc58bed2feef5611fb2062cc762d52cdeb510b2a7eab2bda983dbbdc7a')
 
 build() {
     local commit
