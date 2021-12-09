@@ -1,0 +1,16 @@
+pkgbase = lorax
+	pkgdesc = Set of tools for creating bootable images
+	pkgver = 36.3_1
+	pkgrel = 1
+	url = https://github.com/weldr/lorax
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-mako
+	backup = etc/lorax/lorax.conf
+	source = lorax::git+https://github.com/weldr/lorax#tag=lorax-36.3-1?signed
+	validpgpkeys = B4C6B451E4FA8B4232CA191E117E8C168EFE3A7F
+	sha256sums = SKIP
+
+pkgname = lorax
