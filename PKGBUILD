@@ -1,28 +1,22 @@
-# Maintainer: Aaron DeVore <aaron.devore@gmail.com>
-# Contributor: Chris Baker <baker.chris.3@gmail.com>
+# Maintainer: Midov <midov@midov.pl>
 
-pkgname=(python-blist python2-blist)
+pkgname=python-blist
+_name=blist
 pkgver=1.3.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A list-like type with better asymptotic performance"
 arch=(i686 x86_64)
-url="http://pypi.python.org/pypi/blist/"
-license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=(http://pypi.python.org/packages/source/b/blist/blist-$pkgver.tar.gz)
-md5sums=('a538f1a24b9191e3c40252e9397408a9')
+url="https://pypi.org/project/blist/"
+license=('GPL')
+depends=('python' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/6b/a8/dca5224abe81ccf8db81f8a2ca3d63e7a5fa7a86adc198d4e268c67ce884/${_name}-${pkgver}.tar.gz")
+sha256sums=('3a12c450b001bdf895b30ae818d4d6d3f1552096b8c995f0fe0c74bef04d1fc3')
 
-package_python-blist() {
-  depends=('python')
-  cd "$srcdir/blist-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build() {
+  cd "${srcdir}/${_name}-${pkgver}"
 }
 
-package_python2-blist() {
-  depends=('python2')
-  cd "$srcdir/blist-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
-
