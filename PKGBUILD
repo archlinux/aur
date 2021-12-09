@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gtksourceview5
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='A text widget adding syntax highlighting and more to GNOME'
 url='https://gitlab.gnome.org/GNOME/gtksourceview'
