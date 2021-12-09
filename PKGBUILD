@@ -1,7 +1,7 @@
 # Maintainer: midnightix <midnightix@protonmail.com>
 
 pkgname=clash-premium-tun
-pkgver=2021.11.08
+pkgver=2021.12.07
 pkgrel=1
 pkgdesc="A rule-based tunnel in Go for Linux with TUN"
 arch=('x86_64')
