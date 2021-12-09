@@ -13,6 +13,6 @@ pkgbase = bustd
 	source = bustd::git+https://github.com/vrmiguel/bustd
 	source = bustd.service
 	sha1sums = SKIP
-	sha1sums = 5a6571580691a96e8cfedba8e6d951e93c033997
+	sha1sums = 0ed07411677251c1f26d8a482f898b1d49807730
 
 pkgname = bustd

@@ -11,7 +11,7 @@ url="https://github.com/vrmiguel/bustd"
 source=("${pkgname}::git+${url}" "${pkgname}.service")
 provides=("bustd")
 conflicts=("bustd")
-sha1sums=("SKIP" "5a6571580691a96e8cfedba8e6d951e93c033997")
+sha1sums=("SKIP" "0ed07411677251c1f26d8a482f898b1d49807730")
 
 depends=("gcc-libs")
 makedepends=("cargo" "git")
