@@ -1,6 +1,6 @@
 # Maintainer: Yassen Efremov <yassen.games@gmail.com>
 pkgname=scrabble-1d
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A one-dimensional scrabble-like console game."
 arch=(x86_64)
