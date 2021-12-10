@@ -1,0 +1,18 @@
+pkgbase = python-dhooks-git
+	pkgdesc = An (a)sync wrapper for discord webhooks
+	pkgver = v1.1.4.r243.cdd5f3f
+	pkgrel = 1
+	url = https://github.com/kyb3r/dhooks/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-requests
+	provides = python-dhooks
+	conflicts = python-dhooks
+	source = git+https://github.com/kyb3r/dhooks.git
+	md5sums = SKIP
+
+pkgname = python-dhooks-git
