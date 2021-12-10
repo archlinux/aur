@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-nnedi3_resamplecl-git
 	pkgdesc = Plugin for Vapoursynth: nnedi3_resamplecl (GIT version)
-	pkgver = r4.75877c8
+	pkgver = r19.be07d66
 	pkgrel = 1
 	url = https://github.com/xyx98/my-vapoursynth-script
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = vapoursynth-plugin-nnedi3_resamplecl-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-nnedi3_resamplecl-git
-
