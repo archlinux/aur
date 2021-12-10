@@ -1,7 +1,7 @@
 pkgbase = nosystemd-boot
 	pkgdesc = UEFI boot manager from systemd (formerly gummiboot) - patched to work without systemd
 	pkgver = 249.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = docbook-xsl
