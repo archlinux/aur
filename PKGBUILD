@@ -3,13 +3,13 @@
 
 pkgname=libsigrok
 pkgver=0.5.2
-pkgrel=9
+pkgrel=10
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=('x86_64')
 url='https://www.sigrok.org/wiki/Libsigrok'
 license=('GPL3')
 depends=('libftdi' 'libserialport' 'glibmm' 'libzip' 'libieee1284' 'bluez-libs' 'hidapi' 'libudev.so')
-makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools')
+makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools' 'autoconf-archive')
 optdepends=('python' 'ruby' 'jdk8-openjdk'
             'sigrok-firmware-fx2lafw: Cypress FX2-based device support')
 source=("https://sigrok.org/download/source/$pkgname/$pkgname-$pkgver.tar.gz"
@@ -23,6 +23,9 @@ prepare() {
   cd $pkgname-$pkgver
   patch -p1 < ../fix_swig4_java_bindings.patch # https://sigrok.org/bugzilla/show_bug.cgi?id=1527
   patch -p1 < ../fix_ruby_bindings.patch # https://sigrok.org/bugzilla/show_bug.cgi?id=1526
+
+  # regenerate ./configure so it can detect Python 3.10
+  autoreconf -vi
 }
 
 build() {
