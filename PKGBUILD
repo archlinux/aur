@@ -3,7 +3,7 @@
 # what: openresty/lua-nginx-module
 
 pkgname=nginx-mainline-mod-lua
-pkgver=0.10.20
+pkgver=0.10.21rc1
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
@@ -16,7 +16,7 @@ url="https://github.com/openresty/lua-nginx-module"
 license=('BSD')
 
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('efeb38afc966dec36a086a99f9b8706b8a343e5e44d75c19bf8f017ea6657313')
+sha256sums=('45001dbce64d4aff44ab52c238cd30febfa0367a8a5c09fb8a83e202c52dcaa1')
 
 prepare() {
 	mkdir -p build

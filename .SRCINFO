@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline-mod-lua
 	pkgdesc = Lua script engine module for mainline nginx
-	pkgver = 0.10.20
+	pkgver = 0.10.21rc1
 	pkgrel = 1
 	url = https://github.com/openresty/lua-nginx-module
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = nginx-mainline-mod-lua
 	depends = nginx-mainline-mod-ndk
 	depends = luajit
 	depends = lua-resty-core
-	source = https://github.com/openresty/lua-nginx-module/archive/v0.10.20/lua-0.10.20.tar.gz
-	sha256sums = efeb38afc966dec36a086a99f9b8706b8a343e5e44d75c19bf8f017ea6657313
+	source = https://github.com/openresty/lua-nginx-module/archive/v0.10.21rc1/lua-0.10.21rc1.tar.gz
+	sha256sums = 45001dbce64d4aff44ab52c238cd30febfa0367a8a5c09fb8a83e202c52dcaa1
 
 pkgname = nginx-mainline-mod-lua
