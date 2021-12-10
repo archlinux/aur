@@ -1,10 +1,10 @@
-# Maintainer: Vlad Glagolev <stealth(at)sourcemage(dot)org>
+# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
 
 _pkgbase=loop-aes
 pkgname=loop-aes-dkms
 _pkgname=loop-AES
 pkgver=3.7v
-pkgrel=3
+pkgrel=4
 pkgdesc="loop Linux kernel module that has AES,Twofish,Blowfish,Serpent cipher built-in (DKMS version)"
 arch=('i686' 'x86_64')
 license=('GPL2')
