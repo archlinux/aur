@@ -1,0 +1,17 @@
+pkgbase = hru
+	pkgdesc = Filter that translates latin or cyrillic text into grunt
+	pkgver = 1.0
+	pkgrel = 0
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	depends = libutf8proc
+	depends = scdoc
+	source = hru-1.0.tar.gz::https://git.sr.ht/~begs/hru/archive/1.0.tar.gz
+	sha512sums = 17bb8de165beec75713a53b8f0a159ab0bd07e4f40184b6439c5016c4c31773a7785c2faedb432a2aa40f3117a014924af75897ec86d43df790f222be502bfbf
+
+pkgname = hru
