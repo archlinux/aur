@@ -2,7 +2,7 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mkinitcpio-archiso-git
-pkgver=58.r0.gbdad4a1
+pkgver=59.r2.g5dfbb53
 pkgrel=1
 pkgdesc='Initcpio scripts used by archiso'
 arch=('any')
@@ -21,7 +21,10 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
 source=("git+https://gitlab.archlinux.org/mkinitcpio/${pkgname%-git}.git?signed")
 sha512sums=('SKIP')
-validpgpkeys=('C7E7849466FE2358343588377258734B41C31549') # David Runge <dvzrv@archlinux.org>
+validpgpkeys=(
+  'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
+  'BB8E6F1B81CF0BB301D74D1CBF425A01E68B38EF' # nl6720 <nl6720@gmail.com>
+)
 
 pkgver() {
   cd "${pkgname%-git}"
