@@ -14,7 +14,7 @@
 # The sha1 should be: 9bef1128717f958171a4afac3ed78ee2bb4e86ce
 
 pkgname=sm64plus-git
-pkgver=1.1.3.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A standalone fork of the Super Mario 64 PC Port with quality of life improvements"
 arch=(x86_64)
