@@ -22,7 +22,7 @@ makedepends=('python-docutils')
 #checkdepends=('python-pytest')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('23909b3621bff191177d4119c85e6db9a2badd69742f13c4e39df7b1e07395a4')
+sha256sums=('e57f14135df8f2862393eac50244a062d6ea76bf7a66040e5a13d0422b384231')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/doc/guide"
