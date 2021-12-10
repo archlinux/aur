@@ -1,6 +1,6 @@
 pkgbase = rconv
 	pkgdesc = A Command Line Unit Converter written in Rust.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/abdurehman4/rconv
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rconv
 	makedepends = cargo
 	provides = rconv
 	conflicts = rconv
-	source = git+https://github.com/abdurehman4/rconv
+	source = git+https://github.com/abdurehman4/rconv.git#branch=stable
 	md5sums = SKIP
 
 pkgname = rconv
