@@ -1,7 +1,7 @@
 pkgbase = offsetexplorer2
 	pkgdesc = The Ultimate UI Tool for Kafka
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kafkatool.com
 	arch = x86_64
 	license = custom
