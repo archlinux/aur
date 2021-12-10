@@ -14,4 +14,3 @@ pkgbase = vapoursynth-plugin-ediresample-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-ediresample-git
-
