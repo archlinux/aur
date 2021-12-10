@@ -2,8 +2,8 @@
 
 _plug=vine
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r100.1a36d54
-pkgrel=3
+pkgver=r101.b8285e8
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=173703'
@@ -18,7 +18,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/IFeelBloated/Vine.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"

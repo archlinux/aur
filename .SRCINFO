@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vine-git
 	pkgdesc = Plugin for Vapoursynth: vine (GIT version)
-	pkgver = r100.1a36d54
-	pkgrel = 3
+	pkgver = r101.b8285e8
+	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=173703
 	arch = any
 	license = LGPL3.0
@@ -15,4 +15,3 @@ pkgbase = vapoursynth-plugin-vine-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-vine-git
-
