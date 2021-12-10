@@ -12,7 +12,7 @@ depends=('vapoursynth-plugin-histogram-git')
 source=('averagehist.py')
 sha256sums=('728334aa284a87c123c1d4a91b6ec826c07c46d56754532743d6e18cc60d01de')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 package(){
   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"

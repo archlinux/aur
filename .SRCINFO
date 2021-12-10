@@ -10,4 +10,3 @@ pkgbase = vapoursynth-plugin-averagehist
 	sha256sums = 728334aa284a87c123c1d4a91b6ec826c07c46d56754532743d6e18cc60d01de
 
 pkgname = vapoursynth-plugin-averagehist
-
