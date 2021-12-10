@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=94.0.2
-pkgrel=5
+pkgver=95.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -35,10 +35,10 @@ conflicts=('firedragon-hg')
 install=$pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
-        "git+https://gitlab.com/dr460nf1r3/common.git#commit=7eacbbb16ac45202fbda1b294a552fdc4c55bef1"
+        "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('899ba1c806549034793d7e8ca53f4c845d783c810338f314f3d653d39649e575'
+sha256sums=('7fa3e43f6ec710b2ebba0e99db713a56d13d85f1f23c4a1399bb594fd74864de'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
@@ -197,6 +197,7 @@ ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-strip
+ac_add_options --without-wasm-sandboxed-libraries
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
