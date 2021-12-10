@@ -1,0 +1,60 @@
+diff -aur sprng2.0.orig/Makefile sprng2.0/Makefile
+--- sprng2.0.orig/Makefile	1999-06-29 11:42:10.000000000 -0500
++++ sprng2.0/Makefile	2021-12-09 16:25:41.469919013 -0600
+@@ -24,7 +24,7 @@
+ 
+ include $(SRCDIR)/make.$(PLAT)
+ 
+-all : src examples tests
++all : src
+ 
+ src :
+ 	(cd SRC; $(MAKE) ; cd ..)
+diff -aur sprng2.0.orig/SRC/make.INTEL sprng2.0/SRC/make.INTEL
+--- sprng2.0.orig/SRC/make.INTEL	2007-01-26 10:30:06.000000000 -0600
++++ sprng2.0/SRC/make.INTEL	2021-12-09 17:05:20.273108882 -0600
+@@ -6,8 +6,8 @@
+ CC = gcc
+ CLD = $(CC)
+ # Set f77 to echo if you do not have a FORTRAN compiler
+-F77 = g77
+-#F77 = echo
++#F77 = g77
++F77 = echo
+ F77LD = $(F77)
+ FFXN = -DAdd__
+ FSUFFIX = F
+@@ -27,7 +27,7 @@
+ # Please include mpi header file path, if needed
+ 
+ #CFLAGS = -O3 -DLittleEndian $(PMLCGDEF) $(MPIDEF) -D$(PLAT)  -I/usr/local/mpi/include -I/usr/local/mpi/build/LINUX/ch_p4/include
+-CFLAGS = -O3 -DLittleEndian $(PMLCGDEF) $(MPIDEF) -D$(PLAT)  
++CFLAGS = -O3 -DLittleEndian $(PMLCGDEF) $(MPIDEF) -D$(PLAT) -fPIC
+ CLDFLAGS =  -O3 
+ #FFLAGS = -O3 $(PMLCGDEF) $(MPIDEF) -D$(PLAT)  -I/usr/local/mpi/include -I/usr/local/mpi/build/LINUX/ch_p4/include -I.
+ FFLAGS = -O3 $(PMLCGDEF) $(MPIDEF) -D$(PLAT)
+diff -aur sprng2.0.orig/SRC/primes_32.c sprng2.0/SRC/primes_32.c
+--- sprng2.0.orig/SRC/primes_32.c	1999-06-29 11:42:11.000000000 -0500
++++ sprng2.0/SRC/primes_32.c	2021-12-09 16:24:19.559412772 -0600
+@@ -7,7 +7,7 @@
+ #define NO  0
+ #define NPRIMES 1000
+ 
+-int primes[NPRIMES];
++static int primes[NPRIMES];
+ 
+ #ifdef __STDC__
+ int init_prime_32(void)
+Only in sprng2.0/SRC: primes_32.o
+diff -aur sprng2.0.orig/SRC/primes_64.c sprng2.0/SRC/primes_64.c
+--- sprng2.0.orig/SRC/primes_64.c	1999-06-29 11:42:11.000000000 -0500
++++ sprng2.0/SRC/primes_64.c	2021-12-09 16:24:33.312830198 -0600
+@@ -7,7 +7,7 @@
+ #define NO  0
+ #define NPRIMES 10000
+ 
+-int primes[NPRIMES];
++static int primes[NPRIMES];
+ 
+ #ifdef __STDC__
+ int init_prime_64(void)
