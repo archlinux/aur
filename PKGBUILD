@@ -1,35 +1,48 @@
-# Maintainer: Nikolay Arhipovs <nikolajs.arhipovs@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Nikolay Arhipovs <nikolajs.arhipovs@gmail.com>
 
 pkgname=wuzz-git
-_pkgname=wuzz
-pkgver=0.4.0.r0.gef041bc
+pkgver=0.5.0.r2.g66176b6
 pkgrel=1
-pkgdesc="Interactive cli tool for HTTP inspection"
-arch=('x86_64' 'i686')
+pkgdesc="Interactive CLI tool for HTTP inspection"
+arch=('x86_64' 'i686' 'arm')
 url="https://github.com/asciimoo/wuzz"
 license=('AGPL3')
+depends=('glibc')
 makedepends=('go' 'git')
-provides=('wuzz')
-conflicts=('wuzz')
-options=('!strip' '!emptydirs')
-source=("git+https://github.com/asciimoo/wuzz.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url")
 sha256sums=("SKIP")
-_goname="github.com/asciimoo/wuzz"
 
 pkgver() {
-    cd "$SRCDEST/$_pkgname"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	mkdir -p build
+	go mod tidy
 }
 
 build() {
-    rm -rf gopath
-    mkdir -p gopath/src/$_goname
-    mv "$srcdir/$_pkgname/"* "gopath/src/$_goname"
-    cd "gopath/src/$_goname"
-    env GOPATH="$srcdir/gopath" go get -v
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	cd "$pkgname"
+	go build -o build/
+}
+
+check() {
+	cd "$pkgname"
+	go test ./...
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    install -D -m 755 "$srcdir/gopath/bin/$_pkgname" "$pkgdir/usr/bin"
+	cd "$pkgname"
+	install -D build/wuzz -t "$pkgdir/usr/bin/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
