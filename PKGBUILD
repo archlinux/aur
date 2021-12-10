@@ -2,13 +2,13 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=gdown
-pkgver=4.0.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Download a large file from Google Drive"
 arch=('any')
 url="https://github.com/wkentaro/gdown"
 license=('MIT')
-depends=('python' 'python-tqdm' 'python-filelock' 'python-pysocks' 'python-six')
+depends=('python' 'python-tqdm' 'python-filelock' 'python-pysocks' 'python-six' 'python-beautifulsoup4')
 makedepends=('python-setuptools' 'git')
 source=(git+https://github.com/wkentaro/gdown.git#tag=v${pkgver})
 sha512sums=('SKIP')

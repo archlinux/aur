@@ -1,6 +1,6 @@
 pkgbase = gdown
 	pkgdesc = Download a large file from Google Drive
-	pkgver = 4.0.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/wkentaro/gdown
 	arch = any
@@ -12,7 +12,8 @@ pkgbase = gdown
 	depends = python-filelock
 	depends = python-pysocks
 	depends = python-six
-	source = git+https://github.com/wkentaro/gdown.git#tag=v4.0.2
+	depends = python-beautifulsoup4
+	source = git+https://github.com/wkentaro/gdown.git#tag=v4.2.0
 	sha512sums = SKIP
 
 pkgname = gdown
