@@ -1,11 +1,11 @@
 # Maintainer: Zsolt Donca <dnczsolt@gmail.com>
 # Contributor (from 1.0.2): Viliam Ganz <viliam.ganz@gmail.com>
 
-pkgname=kafkatool2
-pkgver=2.0.3
+pkgname=offsetexplorer2
+pkgver=2.2
 pkgrel=1
 epoch=
-pkgdesc="The Ultimate Kafka UI Tool, version 2"
+pkgdesc="The Ultimate UI Tool for Kafka"
 arch=("x86_64")
 url="http://www.kafkatool.com"
 license=('custom')
@@ -21,17 +21,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://www.kafkatool.com/download2/kafkatool.sh")
-noextract=("kafkatool.sh")
-md5sums=('932db885b3e5dfee351d14fe29baa928')
+source=("https://www.kafkatool.com/download2/offsetexplorer.sh")
+noextract=("offsetexplorer.sh")
+md5sums=('9d0a89ebf89b2ddbd40b9adc8b5e7066')
 validpgpkeys=()
 
 package() {
-        install -dm 755 "$pkgdir/opt/kafkatool2"
+        install -dm 755 "$pkgdir/opt/offsetexplorer2"
         install -dm 755 "$pkgdir/usr/bin"
-        echo -e "#!/bin/bash\n/bin/bash -c \"DISPLAY='' $srcdir/kafkatool.sh\"" > $srcdir/install.sh
+        echo -e "#!/bin/bash\n/bin/bash -c \"DISPLAY='' $srcdir/offsetexplorer.sh\"" > $srcdir/install.sh
         chmod +x $srcdir/install.sh
-        chmod +x $srcdir/kafkatool.sh
+        chmod +x $srcdir/offsetexplorer.sh
 
         EXPECT="#!/usr/bin/expect -f
 
@@ -40,7 +40,7 @@ set timeout -1
 exp_internal 1
 spawn $srcdir/install.sh
 match_max 100000
-expect \"This will install Kafka Tool 2 on your computer.\r\n\"
+expect \"This will install Offset Explorer 2 on your computer.\r\n\"
 expect \"\[OK (o)\]*\[Cancel\]*\"
 send -- \"o\r\"
 
@@ -62,8 +62,8 @@ expect {
     default  { exit 1 }
   }
 
-expect \"Where should Kafka Tool 2 be installed?*\]\r\"
-send -- \"$pkgdir/opt/kafkatool2\r\"
+expect \"Where should Offset Explorer 2 be installed?*\]\r\"
+send -- \"$pkgdir/opt/offsetexplorer2\r\"
 expect \"already exists. Would you like to install to that directory anyway?\"
 expect \"Yes*\[y, Enter\]*No*\[n\]\"
 send -- \"y\r\"
@@ -74,10 +74,10 @@ expect eof
 "
 
     echo "$EXPECT" | /bin/expect
-    sed -i -- "s~$pkgdir~~g" $pkgdir/opt/kafkatool2/.install4j/*
-    ln -s /opt/kafkatool2/kafkatool $pkgdir/usr/bin/kafkatool2
+    sed -i -- "s~$pkgdir~~g" $pkgdir/opt/offsetexplorer2/.install4j/*
+    ln -s /opt/offsetexplorer2/offsetexplorer $pkgdir/usr/bin/offsetexplorer2
 
     gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgdir/opt/kafkatool2/.install4j/kafkatool.png" "$pkgdir/usr/share/pixmaps/kafkatool2.png"
+    install -Dm644 "$pkgdir/opt/offsetexplorer2/.install4j/offsetexplorer.png" "$pkgdir/usr/share/pixmaps/offsetexplorer2.png"
 }
