@@ -1,15 +1,17 @@
 pkgbase = sherlock
-	pkgdesc = Find information about public IP address
-	pkgver = 1.0.2
+	pkgdesc = Find information about public IP addresses
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/sergius02/Sherlock
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
-	depends = granite
-	source = Sherlock-1.0.2.tar.gz::https://github.com/sergius02/Sherlock/archive/1.0.2.tar.gz
-	sha256sums = 6327fbf3f684e18da695ed4c7a7b8a764dd8c895b3c263034d1248b4c0939325
+	depends = glib2
+	depends = gtk3
+	depends = libsoup
+	depends = json-glib
+	source = sherlock-1.2.0.tar.gz::https://github.com/sergius02/Sherlock/archive/1.2.0.tar.gz
+	sha256sums = 230c39448640cace1d9b27424f990f79be2278bb45752eb241cfe159cd3f33ae
 
 pkgname = sherlock
-

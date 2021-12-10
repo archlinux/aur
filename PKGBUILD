@@ -1,26 +1,26 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='Sherlock'
-pkgname="${_pkgname,,}"
-pkgver=1.0.2
+pkgname=sherlock
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='Find information about public IP address'
+pkgdesc='Find information about public IP addresses'
 arch=('x86_64')
 url='https://github.com/sergius02/Sherlock'
 license=('GPL3')
-depends=('granite')
+depends=('glib2' 'gtk3' 'libsoup' 'json-glib')
 makedepends=('meson' 'vala')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6327fbf3f684e18da695ed4c7a7b8a764dd8c895b3c263034d1248b4c0939325')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('230c39448640cace1d9b27424f990f79be2278bb45752eb241cfe159cd3f33ae')
 
 build() {
-  arch-meson "${_pkgname}-${pkgver}" build
+  arch-meson "Sherlock-$pkgver" build
   meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${_pkgname}-${pkgver}/README.md"
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "Sherlock-$pkgver/README.md"
 }
 
 # vim: ts=2 sw=2 et:
