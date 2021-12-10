@@ -5,7 +5,7 @@
 pkgname=lirc-git
 _pkgname=lirc
 pkgver=r3261.fc67ec65
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('x86_64')
 url="https://www.lirc.org/"
@@ -34,12 +34,16 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
+
   patch -Np1 -i ../unfuck_build.patch
+
+  autoreconf -fi
+  automake -ac
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./autogen.sh
+
   HAVE_UINPUT=1 ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make

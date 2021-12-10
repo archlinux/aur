@@ -1,7 +1,7 @@
 pkgbase = lirc-git
 	pkgdesc = Linux Infrared Remote Control utils. Git version.
 	pkgver = r3261.fc67ec65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lirc.org/
 	arch = x86_64
 	license = GPL
@@ -35,4 +35,3 @@ pkgbase = lirc-git
 	md5sums = febf25c154a7d36f01159e84f26c2d9a
 
 pkgname = lirc-git
-
