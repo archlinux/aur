@@ -17,8 +17,6 @@ pkgbase = mingw-w64-mesa-git
 	options = !strip
 	options = !buildflags
 	source = git+git://anongit.freedesktop.org/mesa/mesa
-	source = gen.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-mesa-git
