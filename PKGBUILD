@@ -2,7 +2,7 @@
 
 pkgname=tg-archive
 pkgver=0.5.3
-pkgrel=3
+pkgrel=1
 pkgdesc='is a tool for exporting Telegram group chats into static websites, preserving the chat history like mailing list archives.'
 arch=(any)
 url=https://github.com/knadh/tg-archive
