@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-insaneaa-git
 	pkgdesc = Plugin for Vapoursynth: insaneaa (GIT version)
-	pkgver = 0.9c.0.g2f6eda5
+	pkgver = 0.91.2.g9a7e646
 	pkgrel = 1
 	url = https://github.com/Beatrice-Raws/VapourSynth-insaneAA
 	arch = any

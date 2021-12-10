@@ -2,7 +2,7 @@
 
 _plug=insaneaa
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.9c.0.g2f6eda5
+pkgver=0.91.2.g9a7e646
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -20,7 +20,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Beatrice-Raws/VapourSynth-insaneAA.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
