@@ -2,7 +2,7 @@
 # Contributor: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 pkgname=nemo-compare
-pkgver=5.0.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Context menu comparison extension for Nemo file manager"
 arch=("x86_64" 'i686' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('meld: Install at least one file comparison program'
 	        'diffuse: Alternate comparison backend'
 	        'kdiff3: Alternate comparison backend')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('e9d0e592a8b8bc0a4f0eb5222994f522f0e255f5a0c86e8069933864e2ca7485')
+sha256sums=('92364ac03be3458d3cdfa39ebd4061babd3926c280459e66f8814a6acc42a6a5')
 
 build() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
