@@ -1,0 +1,14 @@
+pkgbase = cdk8s-cli
+	pkgdesc = Define Kubernetes native apps and abstractions using object-oriented programming
+	pkgver = 1.0.48
+	pkgrel = 1
+	url = https://cdk8s.io
+	arch = any
+	license = Apache
+	makedepends = npm
+	depends = nodejs
+	optdepends = python: python language support
+	source = http://registry.npmjs.org/cdk8s-cli/-/cdk8s-cli-1.0.48.tgz
+	sha256sums = 5e362c7be68ff7033c263708a54a13b582501c32bdecf2ae7bea34c74f05c8dd
+
+pkgname = cdk8s-cli
