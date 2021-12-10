@@ -1,0 +1,35 @@
+pkgbase = game-speak
+	pkgdesc = Helps people with reading difficulties play games
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jkoking/game-speak
+	arch = x86_64
+	license = GPL
+	license = BSD
+	license = APACHE
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = qt5-speech
+	depends = speech-dispatcher
+	depends = espeak-ng
+	depends = pkgconf
+	depends = tesseract
+	depends = opencv
+	depends = vtk
+	depends = glew
+	depends = pugixml
+	depends = openmpi
+	depends = hdf5
+	depends = fmt
+	source = git://github.com/jkoking/game-speak.git#tag=0.1
+	source = git://github.com/Skycoder42/QHotkey.git#tag=1.5.0
+	source = git://github.com/jkoking/tessdata-game-speak.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = game-speak
