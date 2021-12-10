@@ -3,7 +3,7 @@
 pkgname=nautilus-copy-path
 pkgver=1.5.3
 pkgrel=1
-pkgdesc="Extension for Nautilus to copy files/dir path or name"
+pkgdesc="Configurable extension for Nautilus to copy path, URI, or name"
 arch=('any')
 url="https://github.com/chr314/nautilus-copy-path"
 license=('MIT')
