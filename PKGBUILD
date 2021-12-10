@@ -2,7 +2,7 @@
 
 _plug=hdr2sdr
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2
+pkgver=r3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://gist.github.com/4re/34ccbb95732c1bef47c3d2975ac62395")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
