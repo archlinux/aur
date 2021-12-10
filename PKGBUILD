@@ -1,10 +1,10 @@
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=optimesh
 pkgname=python-${_base}
 pkgdesc="Mesh optimization, mesh smoothing"
-pkgver=0.8.4
-pkgrel=3
+pkgver=0.8.5
+pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -14,7 +14,7 @@ makedepends=(python-setuptools)
 optdepends=('python-matplotlib: for Matplotlib rendering')
 provides=('optimesh' 'optimesh-info')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('c700f9784c0a12f6f8f133544e18057c4f084a6532ac74f66bbb9d272dfcf98f7f4bbb5ea62b41fc24d3a385ae6a1bb6b31ad40394ea5f1ed747f7f7fca8d5d4')
+sha512sums=('ce96eaf6e340214838a869ac26c00fb5320686ed1a48a0b99de92e1d6233f797263aa141c25a24990038ca37a3448a05b7568cf4ac99c62b571aa1bf3954d127')
 
 build() {
   cd "${_base}-${pkgver}"
