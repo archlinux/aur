@@ -1,5 +1,5 @@
 pkgbase = bustd-pacman-hooks
-	pkgdesc = Series of Pacman Hooks to Ensure Systemd is Always Running an Up-to-Date Binary
+	pkgdesc = Series of Pacman Hooks to Ensure 'bustd' is Always Running an Up-to-Date Binary
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/vrmiguel/bustd
