@@ -8,18 +8,21 @@
 pkgname=icaclient
 pkgver=21.11.0.20
 pkgrel=1
-pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
+pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=('custom:Citrix')
-depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn11')
+depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
+         'libjpeg6-turbo' 'libpng12' 'libsecret' 'libsoup' 'libvorbis' 'libxaw' 'libxp'
+         'speex' 'webkit2gtk')
 optdepends=('xerces-c: gtk2 configuration manager'
             'webkit2gtk: gtk2 selfservice/storefront ui'
             'libc++: for HDXTeams')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
-_dl_urls="$(curl -sL "$url" | grep -F "$pkgver.tar.gz?__gda__")"
+_dl_urls_="$(curl -sL "$url" | grep -F ".tar.gz?__gda__")"
+_dl_urls="$(echo "$_dl_urls_" | grep -F "$pkgver.tar.gz?__gda__")"
 _source32=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
 _source64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
 _sourcearmhf=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
