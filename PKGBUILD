@@ -1,34 +1,43 @@
-# Maintainer: duapple <2832893880@qq.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: duapple <2832893880@qq.com>
 
 pkgname=genmake
 pkgver=0.4.0
 pkgrel=2
-pkgdesc="generate C/C++/Go Makefile template"
+_commit=c16e594
+pkgdesc="Makefile template generator"
 arch=('x86_64')
-url="https://gitee.com/duapple/genmake/attach_files/904692/download/genmake"
-license=('AGPL-3.0')
-depends=()
-makedepends=("git")
-optdepends=()
-source=("${srcdir}/template::git+https://gitee.com/duapple/makefile.git"
-        "${url}"
-        "https://gitee.com/duapple/genmake/attach_files/904564/download/genmake_conf.json")
-noextract=()
-md5sums=("SKIP" "cb3845ee35a1bea7b44daa7a9fef3aaf" "2bb569a143fa683893369eba49e8652c")
+url="https://gitee.com/duapple/genmake"
+license=('AGPL3')
+depends=('glibc')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/repository/archive/$_commit?format=tar.gz")
+sha256sums=('53f998c73d9662bc364f8d22541e7720f5058524ac57ef66f3b466dace0fd563')
 
 prepare() {
-    rm -rf ${pkgname}-${pkgver}
-    mkdir -p ${pkgname}-${pkgver}
-    mv template ${pkgname}-${pkgver}
-    mv genmake ${pkgname}-${pkgver}
-    mv genmake_conf.json ${pkgname}-${pkgver}
+	cd "$pkgname-$_commit"
+	mkdir -p build
+	go mod tidy
+}
+
+build() {
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	cd "$pkgname-$_commit"
+	go build -o build/genmake
+}
+
+check() {
+	cd "$pkgname-$_commit"
+	go test ./...
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/share/${pkgname}/  
-    mkdir -p ${pkgdir}/usr/share/${pkgname}/config
-    cd ${pkgname}-${pkgver}
-    install -Dm777 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-    mv template ${pkgdir}/usr/share/${pkgname}/template
-    cp genmake_conf.json ${pkgdir}/usr/share/${pkgname}/config/
+	cd "$pkgname-$_commit"
+	install -D build/genmake -t "$pkgdir/usr/bin/"
+	install -Dm644 config/genmake_conf.json -t "$pkgdir/usr/share/$pkgname/config/"
 }
