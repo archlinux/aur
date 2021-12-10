@@ -1,4 +1,4 @@
-# Maintainer: Anderson Rocha <anderson2320@gmail.com>
+# Active Maintainers: Anderson Rocha <anderson2320@gmail.com>
 
 pkgname=cef-minimal
 pkgver="96.0.17"
