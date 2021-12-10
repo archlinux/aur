@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit-git
 pkgver=VERSION
-pkgrel=1
+pkgrel=2
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -13,6 +13,7 @@ makedepends=(
 	'ninja'
 	'go'
 )
+conflicts=('toit')
 source=('git+https://github.com/toitlang/toit')
 noextract=()
 md5sums=('SKIP')
