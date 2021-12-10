@@ -8,7 +8,7 @@ RuntimeDirectory=craftbukkit@%i
 WorkingDirectory=%f
 Environment=JAVA_ARGS=-Xmx1G RUNTIME_DIR=/run/craftbukkit@%i
 ExecStartPre=/usr/share/craftbukkit-spigot/init-rcon.sh
-ExecStart=/usr/lib/jvm/java-16-openjdk/bin/java $JAVA_ARGS -jar /usr/share/java/craftbukkit-spigot/%p.jar --noconsole
+ExecStart=/usr/lib/jvm/java-17-openjdk/bin/java $JAVA_ARGS -jar /usr/share/java/craftbukkit-spigot/%p.jar --noconsole
 ExecStop=/usr/share/craftbukkit-spigot/notify-shutdown.sh
 PrivateTmp=true
 SuccessExitStatus=143

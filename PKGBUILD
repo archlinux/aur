@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.17.1.3216
+pkgver=1.17.1.3284_a
 #### Minecraft version to build. Just change this to build a different branch.
 #### Makepkg will automatically (unless --holdver is specified) select the most
 #### recent Spigot version for this Minecraft version.
@@ -11,13 +11,13 @@ _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
-_buildtoolver=132
+_buildtoolver=141
 pkgrel=1
 pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
 url="https://www.spigotmc.org/"
 license=("GPL3")
-depends=(bash "java-runtime-headless-openjdk>=16" fontconfig)
+depends=(bash "java-runtime-headless-openjdk=17" fontconfig)
 makedepends=(git)
 optdepends=("mcrcon: Notify users before shutdown and consistent backups")
 conflicts=(bukkit craftbukkit craftbukkit-stable)
@@ -34,9 +34,9 @@ source=("BuildTools-${_buildtoolver}.jar::https://hub.spigotmc.org/jenkins/job/B
         "notify-shutdown.sh"
         "readme.md"
         "sysusers.conf")
-sha256sums=('c611d2cd7d54dc8ff3d4a50c01ba49dffbfb4e9e73e3c0428b22b7a49e52a31c'
-            '806c5a06fc98f88355810734b60e5e3f4dac11e62e0d9f5f918f53c7d7cdf4d1'
-            '54e1334db6e011353c8d67b5827b46479e79b824935f2efe06c885938c7defbe'
+sha256sums=('7ce7fa840d14242e40e65a03638c85ec1cb8bc97118bd76cd2c5a5e8c962948a'
+            '6694a8cccb1b8da8a3ae2d05dfea693364678fc0b097f5c589b7063f9a42c392'
+            'cbaaa76357925bb9e2db8ff2da31901f03c16d5a14f7c4ec05eb2cfdeba63fd7'
             '16d2281874c953eb94141994d5a4c4c31b0b3f7d51652ebdad1f2367fdeaea8c'
             'a835b1c96a731694628b8d3950edfc4171c75f711ecd7feef91f3d9b9eac4a73'
             '2b758beb056019daa92caf19a9d35f33ab2c90b4f422e5ab4f0791c72a3f7ed0'
@@ -48,6 +48,7 @@ sha256sums=('c611d2cd7d54dc8ff3d4a50c01ba49dffbfb4e9e73e3c0428b22b7a49e52a31c'
 pkgver() {
   _build="$(curl "https://hub.spigotmc.org/versions/$_pkgver.json" 2> /dev/null | \
            grep '"name"' | sed 's/.*: "\([^"]*\)",/\1/')"
+  _build="$(echo "$_build" | sed 's/\([0-9]\+\)\([a-z]\)/\1-\2/')"
   # Force three version numbers. %d becomes 0 if too few arguments
   printf "%d.%d.%d." ${_pkgver//./ }
   echo "${_build//-/_}"
