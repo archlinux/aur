@@ -1,8 +1,8 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=cinnamon-doc
-pkgver=4.8.6
-_pkgver=ulyssa
+pkgver=5.2.5
+_pkgver=una
 pkgrel=1
 pkgdesc='Code documentation for various Cinnamon components.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
     devhelp
 )
 source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_all.deb")
-sha256sums=('1454b9e07da4cc6e767a1e5b16dadaebe02d319e4a8aadfb8c6b7af09bf84110')
+sha256sums=('7137076ad8519e1f44b911491425d6619b09b5d59ad965834ca1410b87db5d55')
 
 package() {
   tar xf "${srcdir}/data.tar.xz"

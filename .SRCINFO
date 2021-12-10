@@ -1,14 +1,13 @@
 pkgbase = cinnamon-doc
 	pkgdesc = Code documentation for various Cinnamon components.
-	pkgver = 4.8.6
+	pkgver = 5.2.5
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/backport/c/cinnamon
 	arch = any
 	license = GPL3
 	depends = cinnamon
 	depends = devhelp
-	source = cinnamon-doc_4.8.6.deb::http://packages.linuxmint.com/pool/backport/c/cinnamon/cinnamon-doc_4.8.6+ulyssa_all.deb
-	sha256sums = 1454b9e07da4cc6e767a1e5b16dadaebe02d319e4a8aadfb8c6b7af09bf84110
+	source = cinnamon-doc_5.2.5.deb::http://packages.linuxmint.com/pool/backport/c/cinnamon/cinnamon-doc_5.2.5+una_all.deb
+	sha256sums = 7137076ad8519e1f44b911491425d6619b09b5d59ad965834ca1410b87db5d55
 
 pkgname = cinnamon-doc
-
