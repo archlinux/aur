@@ -1,12 +1,12 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=cd5c6cd0419ac5e4de975d6c476fb760bf06d2ce  # tags/3.1.1
+_commit=8aed5c21a31eece6a9f3cd775fda8facb6c28b9b  # tags/3.1.2
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
