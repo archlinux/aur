@@ -2,7 +2,7 @@
 pkgname=backman-git
 _pkgname=backman
 
-pkgver=0.4.0.gdf83968
+pkgver=0.4.6.g976fe21
 pkgrel=1
 pkgver() {
         cd "${_pkgname}"
