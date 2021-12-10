@@ -1,0 +1,15 @@
+pkgbase = llama-bin
+	pkgdesc = A terminal file manager written in Go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://yktoo.com/en/software/ymuse/#software-downloads
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = llama
+	conflicts = llama
+	noextract = llama_linux_amd64
+	source = https://github.com/antonmedv/llama/releases/download/v1.0.0/llama_linux_amd64
+	sha256sums = 6fb879a0a4267fdb54ea190e14f32f815dcc4548dc042c8226e04ee5b33f4038
+
+pkgname = llama-bin
