@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-tonemaping-git
 	pkgdesc = Plugin for Vapoursynth: tonemaping (GIT version)
-	pkgver = r5.c8e956d
+	pkgver = r9.c0c3705
 	pkgrel = 1
 	url = https://github.com/age1988/vapoursynth-tonemapping
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = vapoursynth-plugin-tonemaping-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-tonemaping-git
-

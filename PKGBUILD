@@ -2,7 +2,7 @@
 
 _plug=tonemaping
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r5.c8e956d
+pkgver=r9.c0c3705
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/age1988/vapoursynth-tonemapping.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
