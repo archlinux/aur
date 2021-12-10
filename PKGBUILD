@@ -1,11 +1,10 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 # Maintainer: graysky <graysky AT archlinux DOT us>
 _base=matplotx
 pkgname=python-${_base}
 pkgdesc="Extensions for Matplotlib"
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
@@ -13,7 +12,7 @@ depends=(python-networkx)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('84f75c239ebd29f3b4585a5112ef1c4681ddf16cab89f207988cb2446aecafed1ed2f84df707517b87ba8aa90b3625c191fbc51d234e55316e483af46dcb1e99')
+sha512sums=('fc7f89e0b2fbf1557dbd344d1f86de2866b729a86c096e8c07de45231523a783a321ed20b53c26bf65fcc95c3cfbdb3f10759577f8b65992cb625ab7d4a5b5e4')
 
 build() {
   cd "${_base}-${pkgver}"

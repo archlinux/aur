@@ -1,14 +1,14 @@
 pkgbase = python-matplotx
 	pkgdesc = Extensions for Matplotlib
-	pkgver = 0.2.4
-	pkgrel = 2
+	pkgver = 0.2.5
+	pkgrel = 1
 	url = https://github.com/nschloe/matplotx
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-setuptools
 	depends = python-networkx
-	source = https://github.com/nschloe/matplotx/archive/v0.2.4.tar.gz
-	sha512sums = 84f75c239ebd29f3b4585a5112ef1c4681ddf16cab89f207988cb2446aecafed1ed2f84df707517b87ba8aa90b3625c191fbc51d234e55316e483af46dcb1e99
+	source = https://github.com/nschloe/matplotx/archive/v0.2.5.tar.gz
+	sha512sums = fc7f89e0b2fbf1557dbd344d1f86de2866b729a86c096e8c07de45231523a783a321ed20b53c26bf65fcc95c3cfbdb3f10759577f8b65992cb625ab7d4a5b5e4
 
 pkgname = python-matplotx
