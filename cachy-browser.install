@@ -1,0 +1,15 @@
+post_upgrade() {
+  echo ">>    Remember to check for changes in /usr/lib/cachy-browser/cachy.cfg.pacnew"
+  echo ">>    as those will not automatically overwrite your existing cachy.cfg."
+  echo ">>    "
+  echo ">>    We would encourage you to migrate your own changes to the new overrides file"
+  echo ">>    at ~/.cachy/cachy.overrides.cfg instead, so making changes directly"
+  echo ">>    in your cachy.cfg is not necessary anymore (in most cases at least)."
+  echo ">>    "
+  echo ">>    Check out https://gitlab.com/librewolf-community/settings/-/merge_requests/13"
+  echo ">>    for more information on this."
+}
+
+post_install() {
+  post_upgrade
+}
