@@ -2,7 +2,7 @@
 pkgname=('python-sphinx-comments')
 _pkgname=('sphinx-comments')
 pkgver='0.0.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="hypothes.is interaction layer with Sphinx."
 url="https://github.com/executablebooks/sphinx-comments"
 depends=('python'
@@ -13,7 +13,7 @@ checkdepends=()
 makedepends=()
 license=('MIT')
 arch=("any")  
-source=("${_pkgname}-${pkgver}.tgz::https://github.com/executablebooks/sphinx-comments/archive/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tgz::https://github.com/executablebooks/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('f0978c3f8eeb4f10711493f11cd8c6c0fc3dd61899ed593660c728741c331b40')
 
 build() {
