@@ -1,15 +1,17 @@
-diff -aur sprng2.0.orig/Makefile sprng2.0/Makefile
---- sprng2.0.orig/Makefile	1999-06-29 11:42:10.000000000 -0500
-+++ sprng2.0/Makefile	2021-12-09 16:25:41.469919013 -0600
-@@ -24,7 +24,7 @@
+diff -aur sprng2.0.orig/make.CHOICES sprng2.0/make.CHOICES
+--- sprng2.0.orig/make.CHOICES	1999-06-29 11:42:11.000000000 -0500
++++ sprng2.0/make.CHOICES	2021-12-09 20:20:51.532512219 -0600
+@@ -62,8 +62,8 @@
+ # comment out if you want to exclude generator pmlcg which needs libgmp 
+ #---------------------------------------------------------------------------
  
- include $(SRCDIR)/make.$(PLAT)
+-PMLCGDEF = -DUSE_PMLCG
+-GMPLIB = -lgmp
++#PMLCGDEF = -DUSE_PMLCG
++#GMPLIB = -lgmp
  
--all : src examples tests
-+all : src
+ ############################################################################
  
- src :
- 	(cd SRC; $(MAKE) ; cd ..)
 diff -aur sprng2.0.orig/SRC/make.INTEL sprng2.0/SRC/make.INTEL
 --- sprng2.0.orig/SRC/make.INTEL	2007-01-26 10:30:06.000000000 -0600
 +++ sprng2.0/SRC/make.INTEL	2021-12-09 17:05:20.273108882 -0600
@@ -45,7 +47,6 @@ diff -aur sprng2.0.orig/SRC/primes_32.c sprng2.0/SRC/primes_32.c
  
  #ifdef __STDC__
  int init_prime_32(void)
-Only in sprng2.0/SRC: primes_32.o
 diff -aur sprng2.0.orig/SRC/primes_64.c sprng2.0/SRC/primes_64.c
 --- sprng2.0.orig/SRC/primes_64.c	1999-06-29 11:42:11.000000000 -0500
 +++ sprng2.0/SRC/primes_64.c	2021-12-09 16:24:33.312830198 -0600

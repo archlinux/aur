@@ -2,12 +2,11 @@
 
 pkgname=icecube-sprng
 pkgver=2.0b
-pkgrel=1
+pkgrel=2
 pkgdesc="An ancient version of sprng needed by IceCube software"
 arch=('i686' 'x86_64')
 url="http://www.sprng.org/"
 license=('CC BY-NC-SA 4.0')
-depends=('gmp')
 source=("http://www.sprng.org/Version2.0/sprng2.0b.tar.gz")
 sha256sums=('8985d7cae4f20f57889bc7ba11dfed226a02057d396731f4a5cc174704131ac2')
 
