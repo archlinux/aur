@@ -1,7 +1,7 @@
 pkgbase = hru
 	pkgdesc = Filter that translates latin or cyrillic text into grunt
 	pkgver = 1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://git.sr.ht/~begs/hru
 	arch = i686
 	arch = pentium4
@@ -10,12 +10,11 @@ pkgbase = hru
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = WTFPL
-	makedepends = git
+	license = custom:WTFPL
 	makedepends = scdoc
 	depends = libutf8proc
-	depends = scdoc
-	source = hru::git+https://git.sr.ht/~begs/hru
-	sha512sums = SKIP
+	depends = glibc
+	source = hru-1.0.tar.gz::https://git.sr.ht/~begs/hru/archive/1.0.tar.gz
+	sha256sums = 8f2da7447ea23950e151cbd71eefc1f112d1a06acd017d485acbde937b916fea
 
 pkgname = hru
