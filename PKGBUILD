@@ -15,7 +15,7 @@ makedepends=(
 	'git'
 	'scdoc'
 )
-source=("hru::git+https://git.sr.ht/~begs/hru.git")
+source=("hru::git+https://git.sr.ht/~begs/hru")
 sha512sums=("SKIP")
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
