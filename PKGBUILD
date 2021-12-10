@@ -6,7 +6,7 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
 pkgname=archiso-git
-pkgver=57.r5.g0f3a83a
+pkgver=59.r2.g01d03eb
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
@@ -26,7 +26,10 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
 source=("git+https://gitlab.archlinux.org/archlinux/${pkgname%-git}.git?signed")
 sha512sums=('SKIP')
-validpgpkeys=('C7E7849466FE2358343588377258734B41C31549') # David Runge <dvzrv@archlinux.org>
+validpgpkeys=(
+  'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
+  'BB8E6F1B81CF0BB301D74D1CBF425A01E68B38EF' # nl6720 <nl6720@gmail.com>
+)
 
 pkgver() {
   cd "${pkgname%-git}"
