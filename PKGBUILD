@@ -85,30 +85,30 @@ package()
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
 
     ## GeoIP database
-    cur_year=$(date +"%Y")
-    cur_month=$(date +"%m")
+    current_year=$(date +"%Y")
+    current_month=$(date +"%m")
 
-    while [ "$(curl -s -o /dev/null/ -w "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${cur_year}"-"${cur_month}".mmdb.gz)" != "200" ]; do
+    while [ "$(curl -s -o /dev/null/ -w "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${current_year}"-"${current_month}".mmdb.gz)" != "200" ]; do
         # Remove the preceding 0.
-        if [ "${cur_month::1}" == "0" ]; then
-            cur_month=${cur_month:1}
+        if [ "${current_month::1}" == "0" ]; then
+            current_month=${current_month:1}
         fi
 
         # Take the last month.
-        if [ "${cur_month}" -gt 1 ]; then
-            ((cur_month--))
+        if [ "${current_month}" -gt 1 ]; then
+            ((current_month--))
         else
-            ((cur_year--))
-            cur_month=12
+            ((current_year--))
+            current_month=12
         fi
 
         # Put a 0 at the beginning.
-        if [ "${#cur_month}" == 2 ]; then
-            cur_month="0${cur_month}"
+        if [ "${#current_month}" == 2 ]; then
+            current_month="0${current_month}"
         fi
     done
 
-    curl https://download.db-ip.com/free/dbip-city-lite-"${cur_year}"-"${cur_month}".mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
+    curl https://download.db-ip.com/free/dbip-city-lite-"${current_year}"-"${current_month}".mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
     gzip -d "${srcdir}"/DBIP-City-Lite.mmdb.gz
     install -Dm644 "${srcdir}"/DBIP-City-Lite.mmdb "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
 
