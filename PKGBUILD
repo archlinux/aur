@@ -6,7 +6,7 @@
 pkgname=evince-no-gnome
 _pkgname=evince
 pkgver=41.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
@@ -36,7 +36,6 @@ build() {
         -D ps=enabled \
         -D nautilus=false \
         -D introspection=false \
-        -D browser_plugin=false \
         -D thumbnail_cache=disabled \
         -D keyring=disabled
     meson compile -C build
