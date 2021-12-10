@@ -9,7 +9,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.17.1_0.10.2-1"
+_ver="1.17.1_0.10.2-2"
 _minecraft_ver_latest="1.17.1"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
@@ -83,6 +83,18 @@ package() {
 	# Install Minecraft Server
 	install -Dm644 "server.jar" "${_server_root}/server.jar"
 
+	# install the libraries subfolder
+	# 1 create the emptyfolder structure 
+	install -dm755 "libraries" "${_server_root}/libraries"
+	
+	for d in $(find "libraries" -type d);do
+		install -d --mode 755 "$d" "${_server_root}/${d}";
+	done
+	# 2 install all files
+	for f in $(find "libraries" -type f); do
+		install -D --mode 755 "$f" "${_server_root}/${f}";
+	done
+
 	# Link log files
 	mkdir -p "${pkgdir}/var/log/"
 	install -dm2755 "${_server_root}/logs"
@@ -90,4 +102,7 @@ package() {
 
 	# Give the group write permissions and set user or group ID on execution
 	chmod g+ws "${_server_root}"
+	
+	# the server needs to be owned by fabric user and group
+	chown -R fabric:fabric "${_server_root}"
 }
