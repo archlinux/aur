@@ -1,0 +1,12 @@
+diff --color -Nur libRadtran-2.0.4/GUI/resources/Makefile.in libRadtran-2.0.4-patch/GUI/resources/Makefile.in
+--- libRadtran-2.0.4/GUI/resources/Makefile.in	2020-01-23 18:54:31.000000000 +0800
++++ libRadtran-2.0.4-patch/GUI/resources/Makefile.in	2021-12-10 09:06:07.531169426 +0800
+@@ -37,7 +37,7 @@
+ install: 
+ 	$(MKPATH) $(datadir)/GUI/$(THISDIR)
+ 	$(INSTALL_DATA) $(DATAFILES) $(datadir)/GUI/$(THISDIR)
+-	tar -xzvf $(HTML_DOC_TAR_FILE) -C $(datadir)/GUI/$(THISDIR)
++	bsdtar --no-same-owner -xzvf $(HTML_DOC_TAR_FILE) -C $(datadir)/GUI/$(THISDIR)
+ #AK 20100308	$(INSTALL_DATA) $(HTML_DOC_DIR) $(datadir)/GUI/$(THISDIR)
+ .PHONY: install
+ 
