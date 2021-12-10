@@ -1,0 +1,5 @@
+pkg/
+src/
+libwifi-*.tar.gz
+libwifi-*.pkg.*
+gitpush.sh
