@@ -34,45 +34,45 @@ b2sums=('SKIP'
         'da5639043f1854d9d2dc884fd62a4239fdc7ca2467cd95cfcb7f6bc73ac93e73cc0229e16000378efa22d646e3756a9495d2d8bb8c76049f77e4731c2a997729')
 
 pkgver() {
-	cd "${pkgname}"
-	( set -o pipefail
-	    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	    printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+    cd "${pkgname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
-	cd "$pkgname" || exit 1
-	git fetch --prune
-	git checkout main
-	git pull --autostash
-	git checkout "origin/${_branch}"
+    cd "$pkgname" || exit 1
+    git fetch --prune
+    git checkout main
+    git pull --autostash
+    git checkout "origin/${_branch}"
 }
 
 build() {
-	cd "$pkgname" || exit 1
-	virtualenv ".venv" -p python3
-	source ".venv/bin/activate"
-	if command -v autobuild; then
-		abver="$(autobuild --version)"
-		echo "Found $abver"
-		if [[ "${abver}" == "autobuild 2.1.0" ]]; then
-			echo "Reinstalling autobuild to work around some bugs"
-			pip3 uninstall --yes autobuild
-		fi
-	fi
-	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON -DVIEWER_CHANNEL="Alchemy Test"
+    cd "$pkgname" || exit 1
+    virtualenv ".venv" -p python3
+    source ".venv/bin/activate"
+    if command -v autobuild; then
+        abver="$(autobuild --version)"
+        echo "Found $abver"
+        if [[ "${abver}" == "autobuild 2.1.0" ]]; then
+            echo "Reinstalling autobuild to work around some bugs"
+            pip3 uninstall --yes autobuild
+        fi
+    fi
+    pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
+    autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON -DVIEWER_CHANNEL="Alchemy Test"
 
-	cd "build-linux-64" || exit 1
-	ninja -j$(nproc)
+    cd "build-linux-64" || exit 1
+    ninja -j$(nproc)
 }
 
 package() {
-	mkdir -p "$pkgdir/opt"
-	mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir/opt"
+    mkdir -p "$pkgdir/usr/share/applications"
 
-	mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next-viewer"
+    mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next-viewer"
 
-	install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
+    install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
 }
