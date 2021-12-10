@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
 pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=('any')
 url="https://www.openssl.org"
@@ -33,6 +33,9 @@ build() {
   cd "${srcdir}/openssl-${_pkgver}"
   for _arch in ${_architectures}; do
     source mingw-env ${_arch}
+    # conflict with --cross-compile-prefix
+    unset CC
+    unset CXX
     mkdir -p "${srcdir}/build-${_arch}" && cp -a "${srcdir}/openssl-${_pkgver}/"* "${srcdir}/build-${_arch}" && cd "${srcdir}/build-${_arch}"
     _mingw=mingw
     [ "${_arch}" = 'x86_64-w64-mingw32' ] && _mingw=mingw64
