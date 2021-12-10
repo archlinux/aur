@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.0.r96.gfc94c8c365
+pkgver=0.34.0.r100.g0e76372e86
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -456,8 +456,8 @@ prepare() {
     fi
   fi
 
-  echo ${_ffmpeg_options[@]} > ffmpeg_options
-  echo ${_mpv_options[@]} > mpv_options
+  (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options)
+  (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options)
 
   pushd ffmpeg > /dev/null
   sed -i 's|/usr/local/share/|/usr/share/|' libavfilter/vf_libvmaf.c
