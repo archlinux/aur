@@ -4,7 +4,7 @@ _pkgbase=loop-aes
 pkgname=loop-aes-dkms
 _pkgname=loop-AES
 pkgver=3.7v
-pkgrel=1
+pkgrel=2
 pkgdesc="loop Linux kernel module that has AES,Twofish,Blowfish,Serpent cipher built-in (DKMS version)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -21,26 +21,34 @@ validpgpkeys=('12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu (2013) <j
 
 
 prepare() {
-	cd "${_pkgname}-v${pkgver}"
+  cd "${_pkgname}-v${pkgver}"
 
-	patch -p0 < "${srcdir}"/dkms.patch
+  patch -p0 < "${srcdir}"/dkms.patch
 }
 
 package() {
-	mkdir -p "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}
-	cp -r ${_pkgname}-v${pkgver}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  mkdir -p "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}
+  cp -r ${_pkgname}-v${pkgver}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 
-	# Set name and version
-        sed -e "s/@PKGNAME@/${_pkgbase}/" \
-            -e "s/@PKGVER@/${pkgver}/" \
-            -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+  # Set name and version
+  sed -e "s/@PKGNAME@/${_pkgbase}/" \
+      -e "s/@PKGVER@/${pkgver}/" \
+      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
-	install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
-	install -d -m755 "${pkgdir}/usr/lib/modules-load.d"
-	echo "blacklist loop" >> "${pkgdir}/usr/lib/modprobe.d/loop.conf"
-	echo "alias loop loop-aes" > "${pkgdir}/usr/lib/modprobe.d/loop.conf"
-	echo "loop-aes" > "${pkgdir}/usr/lib/modules-load.d/loop.conf"
-	echo "loop_serpent" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"
-	echo "loop_twofish" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"
-	echo "loop_blowfish" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"
+  install -d -m 0755 "${pkgdir}/usr/lib/modprobe.d"
+  install -d -m 0755 "${pkgdir}/usr/lib/modules-load.d"
+  install -d -m 0755 "${pkgdir}/usr/share/doc/${pkgname}"
+
+  cd "${_pkgname}-v${pkgver}"
+
+  install -D -m 0755 loop-aes-keygen "${pkgdir}/usr/bin/loop-aes-keygen"
+  install -D -m 0644 loop-aes-keygen.1 "${pkgdir}/usr/share/man/man1/loop-aes-keygen.1"
+  install -m 0644 ChangeLog README "${pkgdir}/usr/share/doc/${pkgname}"
+
+  echo "blacklist loop" >> "${pkgdir}/usr/lib/modprobe.d/loop.conf"
+  echo "alias loop loop-aes" > "${pkgdir}/usr/lib/modprobe.d/loop.conf"
+  echo "loop-aes" > "${pkgdir}/usr/lib/modules-load.d/loop.conf"
+  echo "loop_serpent" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"
+  echo "loop_twofish" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"
+  echo "loop_blowfish" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"
 }
