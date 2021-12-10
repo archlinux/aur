@@ -2,23 +2,24 @@
 
 pkgname=fortune-mod-portal-game
 pkgver=1.0
-pkgrel=1
-pkgdesc="Portal and Portal 2 fortune cookie file"
-url="https://en.wikiquote.org/"
+pkgrel=2
+pkgdesc="Portal quotes for the Unix fortune tool"
+url="https://github.com/outadoc/portal-fortunes"
 arch=('any')
 license=('unknown')
 depends=('fortune-mod')
 conflicts=('fortune-mod-portal')
 groups=('fortune-mods')
-source=(portal)
-md5sums=('8fa36b14727d84000930069164de5cf5')
+source=("git+https://github.com/outadoc/portal-fortunes.git")
+md5sums=(SKIP)
 
 build() {
-  cd "$srcdir"
-  strfile portal portal.dat
+    cd portal-fortunes
+    make clean && make
 }
 
 package () {
-  install -D -m644 portal $pkgdir/usr/share/fortune/portal
-  install -D -m644 portal.dat $pkgdir/usr/share/fortune/portal.dat
+    cd portal-fortunes
+    mkdir -p $pkgdir/usr/share/fortune
+    install -D -m644 fortunes/* $pkgdir/usr/share/fortune
 }
