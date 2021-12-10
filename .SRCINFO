@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-znedi3_resample-git
 	pkgdesc = Plugin for Vapoursynth: znedi3_resample (GIT version)
-	pkgver = r4.75877c8
+	pkgver = r19.be07d66
 	pkgrel = 1
 	url = https://github.com/xyx98/my-vapoursynth-script
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = vapoursynth-plugin-znedi3_resample-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-znedi3_resample-git
-
