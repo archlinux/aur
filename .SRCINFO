@@ -1,6 +1,6 @@
-pkgbase = kafkatool2
-	pkgdesc = The Ultimate Kafka UI Tool, version 2
-	pkgver = 2.0.9
+pkgbase = offsetexplorer2
+	pkgdesc = The Ultimate UI Tool for Kafka
+	pkgver = 2.2
 	pkgrel = 1
 	url = http://www.kafkatool.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kafkatool2
 	makedepends = expect
 	makedepends = gendesk
 	depends = java-runtime
-	noextract = kafkatool.sh
-	source = https://www.kafkatool.com/download2/kafkatool.sh
-	md5sums = a616c0e7e42f03fbb40d11e8ce1d2d6a
+	noextract = offsetexplorer.sh
+	source = https://www.kafkatool.com/download2/offsetexplorer.sh
+	md5sums = 9d0a89ebf89b2ddbd40b9adc8b5e7066
 
-pkgname = kafkatool2
+pkgname = offsetexplorer2
 
