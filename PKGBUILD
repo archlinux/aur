@@ -3,8 +3,8 @@
 pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
-pkgver='0.1.22'
-pkgrel='1'
+pkgver=0.1.22.r186.gb99cc39
+pkgrel=0
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
