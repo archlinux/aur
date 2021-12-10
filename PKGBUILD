@@ -1,6 +1,6 @@
 # Maintainer: XMiao
 pkgname="techmino-client"
-pkgver=0.16.5
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Techmino:方块研究所"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(fuse xorg-xrandr)
 options=(!strip)
 _pkgname="Techmino.AppImage"
 source=("https://d.flaribbit.workers.dev/${_pkgname}")
-sha256sums=('edc2fa31b034676a924d457b1a1fcd50dd60e8daf2aa0088585a15a36edf0a84')
+sha256sums=('6d116fd4fa22117589e0539f2cbb4ac45cb7e34aa8e61a82b7ab9aa74ba9d1f4')
 _installdir=/opt/appimages
 _installname=techmino
 
