@@ -1,0 +1,16 @@
+pkgbase = atuin-git
+	pkgdesc = Magical shell history (git)
+	pkgver = 0.7.2.r6.gb549095d
+	pkgrel = 1
+	url = https://github.com/ellie/atuin
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	provides = atuin
+	conflicts = atuin
+	source = git+https://github.com/ellie/atuin
+	sha256sums = SKIP
+
+pkgname = atuin-git
