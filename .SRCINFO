@@ -1,6 +1,6 @@
 pkgbase = adobe-source-han-fonts
 	pkgdesc = Meta package of Adobe Source Han fonts in the official repositories.
-	pkgver = 20201128
+	pkgver = 2021110
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
@@ -11,11 +11,9 @@ pkgbase = adobe-source-han-fonts
 	depends = adobe-source-han-sans-otc-fonts
 	depends = adobe-source-han-sans-tw-fonts
 	depends = adobe-source-han-serif-cn-fonts
-	depends = adobe-source-han-serif-hk-fonts
 	depends = adobe-source-han-serif-jp-fonts
 	depends = adobe-source-han-serif-kr-fonts
 	depends = adobe-source-han-serif-otc-fonts
 	depends = adobe-source-han-serif-tw-fonts
 
 pkgname = adobe-source-han-fonts
-

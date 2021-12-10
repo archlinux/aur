@@ -1,6 +1,6 @@
 # Maintainer: Stick <stick@stma.is>
 pkgname=adobe-source-han-fonts
-pkgver=20201128
+pkgver=2021110
 pkgrel=1
 pkgdesc='Meta package of Adobe Source Han fonts in the official repositories.'
 arch=('any')
@@ -12,7 +12,6 @@ depends=('adobe-source-han-sans-cn-fonts'
 	'adobe-source-han-sans-otc-fonts'
 	'adobe-source-han-sans-tw-fonts'
 	'adobe-source-han-serif-cn-fonts'
-	'adobe-source-han-serif-hk-fonts'
 	'adobe-source-han-serif-jp-fonts'
 	'adobe-source-han-serif-kr-fonts'
 	'adobe-source-han-serif-otc-fonts'
