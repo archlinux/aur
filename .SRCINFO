@@ -10,8 +10,7 @@ pkgbase = pick-colour-picker
 	depends = gtk3
 	depends = python-cairo
 	depends = python-gobject
-	source = git+https://github.com/stuartlangridge/ColourPicker#commit=e54bc020b76ae3c79ae9221452d5e51a1ddde292
+	source = git+https://github.com/stuartlangridge/ColourPicker#commit=dec8f144918aa7964aaf86a346161beb7e997f09
 	sha256sums = SKIP
 
 pkgname = pick-colour-picker
-

@@ -9,7 +9,7 @@ url="https://www.kryogenix.org/code/pick/"
 license=(MIT)
 depends=(gtk3 python-cairo python-gobject)
 makedepends=(git python-setuptools)
-_commit=e54bc020b76ae3c79ae9221452d5e51a1ddde292  # 1.51
+_commit=dec8f144918aa7964aaf86a346161beb7e997f09 #jan-22
 source=("git+https://github.com/stuartlangridge/ColourPicker#commit=$_commit")
 sha256sums=('SKIP')
 
