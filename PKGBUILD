@@ -1,39 +1,32 @@
-# Maintainer: Spencer Muise <smuise@spencermuise.ca>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=plex-mpv-shim
 pkgver=1.10.3
-pkgrel=1
-pkgdesc="Cast media from Plex Mobile and Web apps to MPV"
+pkgrel=2
+pkgdesc='Cast media from Plex Mobile and Web apps to MPV'
 arch=('any')
-url='https://github.com/iwalton3/plex-mpv-shim'
+url=https://github.com/iwalton3/plex-mpv-shim
 license=('MIT')
-depends=(
-  'python'
-  'mpv'
-  'python-mpv'
-  'python-requests'
-  'python-mpv-jsonipc'
-)
-optdepends=(
-  'python-pystray: system tray support'
-  'tk: gui support'
-  'mpv-shim-default-shaders: default shader pack'
-)
-makedepends=(
-  'python-setuptools'
-)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/iwalton3/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('a3db8a1e4004ac43d77a5c8d7fb7e492')
+depends=('python-certifi' 'python-mpv' 'python-mpv-jsonipc' 'python-requests')
+optdepends=('mpv-shim-default-shaders: for the default shader pack'
+            'python-pystray: for system tray support'
+            'tk: for GUI support')
+makedepends=('python-setuptools')
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('cd1ebe5086d3125efa7215e358bf0c616d125d50beec3d8909a434136f16f38f2942ae876c684b59ce308ce61e5cc24fe3cee980843388887cce6d34bdcd1e2e')
 
 build() {
-    cd $pkgname-$pkgver
-    python setup.py build
+  cd $pkgname-$pkgver
+  python setup.py build
 }
 
 package() {
-    cd $pkgname-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cd "${pkgdir}"
-    ln -s "/usr/share/mpv-shim-default-shaders" "usr/lib/$(ls usr/lib/ | grep python)/site-packages/plex_mpv_shim/default_shader_pack"
+  cd $pkgname-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE.md
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  ln -s /usr/share/mpv-shim-default-shaders \
+    "$pkgdir"/"$site_packages"/plex_mpv_shim/default_shader_pack
 }
