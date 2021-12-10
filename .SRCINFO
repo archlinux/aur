@@ -1,6 +1,6 @@
 pkgbase = rpi-eeprom-git
 	pkgdesc = Raspberry Pi4 boot EEPROM updater, latest git version
-	pkgver = r332.b9955db
+	pkgver = r436.a4c259a
 	pkgrel = 1
 	url = http://github.com/raspberrypi/rpi-eeprom
 	arch = armv6h
@@ -17,4 +17,3 @@ pkgbase = rpi-eeprom-git
 	md5sums = SKIP
 
 pkgname = rpi-eeprom-git
-

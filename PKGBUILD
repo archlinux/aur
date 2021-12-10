@@ -1,9 +1,10 @@
-# Maintainer: Oleg Rakhmanov <oleg@archlinuxarm.org>
+# Maintainer: robertfoster
+# Contributor: Oleg Rakhmanov <oleg@archlinuxarm.org>
 # Contributor: Donald Webster <fryfrog@gmail.com>
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom-git
-pkgver=r332.b9955db
+pkgver=r436.a4c259a
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater, latest git version'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -23,12 +24,17 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/rpi-eeprom/rpi-eeprom-config" "${pkgdir}/usr/bin/rpi-eeprom-config"
-  install -Dm755 "${srcdir}/rpi-eeprom/rpi-eeprom-update" "${pkgdir}/usr/bin/rpi-eeprom-update"
-  sed -i 's/#!\/bin\/sh/#!\/bin\/sh\nPATH=\"$PATH:\/opt\/vc\/bin\"\n/g' "${pkgdir}/usr/bin/rpi-eeprom-update"
+  install -Dm755 "${srcdir}/rpi-eeprom/rpi-eeprom-config" \
+    "${pkgdir}/usr/bin/rpi-eeprom-config"
+  install -Dm755 "${srcdir}/rpi-eeprom/rpi-eeprom-update" \
+    "${pkgdir}/usr/bin/rpi-eeprom-update"
+  sed -i "s/#!\/bin\/sh/#!\/bin\/sh\nPATH=\"$PATH:\/opt\/vc\/bin\"\n/g" \
+    "${pkgdir}/usr/bin/rpi-eeprom-update"
   install -dm755 "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader"
-  cp -a rpi-eeprom/firmware/* "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader"
+  cp -a rpi-eeprom/firmware/* \
+    "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader"
 
   install -dm755 "${pkgdir}/etc/default"
-  install -Dm644 "${srcdir}/rpi-eeprom/rpi-eeprom-update-default" "${pkgdir}/etc/default/rpi-eeprom-update"
+  install -Dm644 "${srcdir}/rpi-eeprom/rpi-eeprom-update-default" \
+    "${pkgdir}/etc/default/rpi-eeprom-update"
 }
