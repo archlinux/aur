@@ -1,7 +1,7 @@
 pkgbase = sheepit-client-git
 	pkgdesc = Client for the free and distributed render farm
-	pkgver = v6.20364.0r474.c0155f1
-	pkgrel = 4
+	pkgver = v6.21338.0r526.37244b4
+	pkgrel = 1
 	url = https://www.sheepit-renderfarm.com/
 	arch = i686
 	arch = x86_64
@@ -34,4 +34,3 @@ pkgbase = sheepit-client-git
 	sha256sums = ba7e49757345d04ae42a8a86fcee3ff53eb9fc86ef8a5b3db8895b5e4b42440a
 
 pkgname = sheepit-client-git
-
