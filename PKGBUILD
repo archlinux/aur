@@ -1,35 +1,32 @@
-# Maintainer: Taijian <taijian@posteo.de>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
+# Contributor: Taijian <taijian@posteo.de>
 # Contributor: jtts
 # Contributor: Christian METZLER <neroth@xeked.com>
-
 pkgname=gnome-shell-extension-openweather-git
-pkgver=r1098.d714eb1
+pkgver=1.0.r259.gd714eb1
 pkgrel=1
-pkgdesc="A simple extension for displaying weather informations from several cities in GNOME Shell."
+pkgdesc="Gnome shell extension for displaying weather information"
 arch=(any)
 url="https://gitlab.com/jenslody/gnome-shell-extension-openweather"
 license=(GPL3)
-depends=(glib2 gettext pkg-config)
+depends=(glib2 gettext pkg-config gnome-shell)
 makedepends=(git gnome-common autoconf automake intltool)
-provides=(gnome-shell-extension-weather-neroth-git
-	  gnome-shell-extension-weather-git
-	  gnome-shell-extension-yawe-git)
-conflicts=(gnome-shell-extension-weather-neroth-git
-	  gnome-shell-extension-weather-git
-	  gnome-shell-extension-yawe-git)
-install='gschemas.install'
-source=("$pkgname"::"git+https://gitlab.com/jenslody/gnome-shell-extension-openweather.git#branch=gnome40")
+provides=(gnome-shell-extension-weather-git)
+conflicts=(gnome-shell-extension-weather-git)
+install=gschemas.install
+source=($pkgname::git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$srcdir/$pkgname"
   ./autogen.sh --prefix=/usr
   make
+  sed -i '/shell-version/s|"40"|"41", "41.1"|' data/metadata.json
 }
 
 package() {
