@@ -2,7 +2,7 @@
 # Contributor: Dan Printzell <me@vild.io>
 
 pkgname=('serve-d')
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Microsoft language server protocol implementation for D using workspace-d"
 arch=('x86_64')
