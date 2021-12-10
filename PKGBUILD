@@ -2,7 +2,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname=keysmith
-pkgver=21.08
+pkgver=21.12
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -43,7 +43,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v$
 # shellcheck disable=SC2034
 noextract=()
 # shellcheck disable=SC2034
-sha256sums=("2e41bfa37a56572971c87b9cf6cf6fee02d772fd190b3e9dffb8cae347a2c2aa")
+sha256sums=("2c6a8befbdf39593cc743c168d9a6c77d2715dcf2e652ab738c655a900487860")
 # shellcheck disable=SC2034
 validpgpkeys=()
 
