@@ -7,7 +7,7 @@ _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
 _pkgver=2021
 pkgver=$_pkgver.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=(x86_64)
 url='https://www.qoppa.com/pdfstudio/'
@@ -25,6 +25,8 @@ sha256sums=('7af4b3af56c1c36f10c04bca81fabdcdedadac7dabd3e782b82cfe1bbf34cf43'
 
 prepare() {
   bsdtar xf data.tar.gz
+  # Comment out this in `.vmoptions` to be compatible with *JRE 15*
+  sed -i 's/\(^-XX:+UseConcMarkSweepGC$\)/# \1/' "$srcdir/opt/${pkgname%-bin}$_pkgver/${pkgname%-bin}$_pkgver.vmoptions"
   bsdtar xf "opt/${pkgname%-bin}$_pkgver/lib/pdfstudio.jar" resources/license.html
   rm -rf "opt/${pkgname%-bin}$_pkgver/jre"
 }
