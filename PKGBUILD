@@ -1,21 +1,21 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=detect-it-easy
-pkgver=3.01
+pkgver=3.03
 pkgrel=1
 pkgdesc="Detect It Easy is a packer identifier"
 arch=(x86_64)
 url="http://ntinfo.biz/index.html"
-license=(custom)
-depends=(glibc)
-source=("https://github.com/horsicq/DIE-engine/releases/download/${pkgver}/die_lin64_portable_${pkgver}.tar.gz")
-install="$pkgname.install"
-sha256sums=('65e8881ce8bc14d376d909976f739e0cd9ca0ad846906518e0297dbb56f62662')
+license=('MIT')
+depends=('glibc')
+options=('!emptydirs' '!strip')
+source=("${pkgname}-${pkgver}.deb::https://github.com/horsicq/DIE-engine/releases/download/${pkgver}/die_3.03_Debian_10_amd64.deb"
+        "LICENSE")
+sha256sums=('5b64063e5a4950144b731224c87d20a57be5bf6759e5c708775676d4fe56e630'
+            'f78bf193f3aebf1225e4b5be12f7184178ca4fa3a3d3444e2ac933d86af9dc68')
 
 package() {
-	install -dm755 "$pkgdir/usr/share/detect-it-easy"
-	cp -a "${srcdir}/die_lin64_portable/base" "$pkgdir/usr/share/detect-it-easy/"
+    tar -xJf data.tar.xz -C "${pkgdir}"/
 
-	install -Dm755 "${srcdir}/die_lin64_portable/die.sh" "${pkgdir}/usr/bin/die.sh"
-	install -Dm755 "${srcdir}/die_lin64_portable/diec.sh" "${pkgdir}/usr/bin/diec.sh"
+	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
