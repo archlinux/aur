@@ -1,0 +1,6 @@
+post_install () {
+  # Disable old cryptoloop module
+  if [ -f /etc/modules-load.d/util-linux-aes.conf ]; then
+    rm /etc/modules-load.d/util-linux-aes.conf 
+  fi
+}

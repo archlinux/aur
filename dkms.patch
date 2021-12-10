@@ -1,0 +1,32 @@
+--- dkms.conf.orig	2021-12-10 08:17:31.384092365 -0800
++++ dkms.conf	2021-12-10 08:19:49.670885909 -0800
+@@ -1,19 +1,19 @@
+ # dkms.conf for Dynamic Kernel Module Support
+ # http://linux.dell.com/dkms/dkms.html for more info
+ 
+-PACKAGE_VERSION=v3.7v
+-PACKAGE_NAME="loop-AES"
++PACKAGE_NAME="@PKGNAME@"
++PACKAGE_VERSION="@PKGVER@"
+ CLEAN="make clean"
+ 
+-MAKE[0]="make MODINST=n LINUX_SOURCE=${kernel_source_dir}"
+-#MAKE[0]="make EXTRA_CIPHERS=y MODINST=n LINUX_SOURCE=${kernel_source_dir}"
++MAKE[0]="make MODINST=n EXTRA_CIPHERS=y -j1 LINUX_SOURCE=/usr/lib/modules/$kernelver/build"
+ 
+ BUILT_MODULE_NAME[0]="loop"
+-#BUILT_MODULE_NAME[1]="loop_twofish"
+-#BUILT_MODULE_NAME[2]="loop_serpent"
+-#BUILT_MODULE_NAME[3]="loop_blowfish"
++BUILT_MODULE_NAME[1]="loop_twofish"
++BUILT_MODULE_NAME[2]="loop_serpent"
++BUILT_MODULE_NAME[3]="loop_blowfish"
+ 
+ DEST_MODULE_LOCATION[0]="/kernel/drivers/block"
++DEST_MODULE_NAME="loop-aes"
+-#DEST_MODULE_LOCATION[1]="/kernel/drivers/block"
+-#DEST_MODULE_LOCATION[2]="/kernel/drivers/block"
+-#DEST_MODULE_LOCATION[3]="/kernel/drivers/block"
++DEST_MODULE_LOCATION[1]="/kernel/drivers/block"
++DEST_MODULE_LOCATION[2]="/kernel/drivers/block"
++DEST_MODULE_LOCATION[3]="/kernel/drivers/block"
