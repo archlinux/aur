@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-jupyterbook-latex
+	pkgdesc = Supporting LaTeX infrastructure for Jupyter Book.
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/executablebooks/sphinx-jupyterbook-latex
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-setuptools
+	depends = python-sphinx
+	depends = python-importlib_resources
+	source = sphinx-jupyterbook-latex-0.4.6.tgz::https://github.com/executablebooks/sphinx-jupyterbook-latex/archive/v0.4.6.tar.gz
+	sha256sums = 88f299c21de5612a7be9d8c19206014b1554735ba132433356d18b3b5a5893c8
+
+pkgname = python-sphinx-jupyterbook-latex
