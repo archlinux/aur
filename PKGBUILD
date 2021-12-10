@@ -27,6 +27,6 @@ build() {
 package() {
   groups=('librewolf-addons')
   cd darkreader-$pkgver
-  install -Dm644 build-firefox.xpi \
+  install -Dm644 build/release/darkreader-firefox.xpi \
     "$pkgdir"/usr/lib/librewolf/browser/extensions/addon@darkreader.org.xpi
 }
