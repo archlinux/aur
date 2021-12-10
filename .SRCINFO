@@ -7,7 +7,6 @@ pkgbase = python-meshplex
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-meshio
-	depends = python-npx
 	optdepends = python-matplotlib: for Matplotlib rendering
 	optdepends = vtk: for create polygonal sphere
 	source = https://pypi.org/packages/source/m/meshplex/meshplex-0.16.7.tar.gz

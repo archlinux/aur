@@ -1,5 +1,5 @@
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=meshplex
 pkgname=python-${_base}
 pkgdesc="Compute interesting points, areas, and volumes in simplex meshes of any dimension"
@@ -8,7 +8,7 @@ pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
-depends=(python-meshio python-npx)
+depends=(python-meshio)
 makedepends=(python-setuptools)
 # checkdepends=(python-pytest-codeblocks python-meshzoo python-matplotlib python-scipy)
 optdepends=('python-matplotlib: for Matplotlib rendering'
