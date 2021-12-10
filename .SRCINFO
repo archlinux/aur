@@ -1,6 +1,6 @@
 pkgbase = raze
 	pkgdesc = Build engine port backed by GZDoom tech
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = raze
 	optdepends = gxmessage: crash dialog (GNOME)
 	optdepends = kdialog: crash dialog (KDE)
 	optdepends = xorg-xmessage: crash dialog (other)
-	source = Raze::git+https://github.com/coelckers/Raze#tag=1.2.1
+	source = Raze::git+https://github.com/coelckers/Raze#tag=1.3.0
 	source = 0001-Fix-file-paths.patch
 	source = raze.desktop
 	sha256sums = SKIP
