@@ -1,0 +1,16 @@
+pkgbase = libxcrypt-compat
+	pkgdesc = Compatibility library providing legacy API functions
+	pkgver = 4.4.26
+	pkgrel = 1
+	url = https://github.com/besser82/libxcrypt/
+	install = libxcrypt.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = libcrypt.so.1
+	source = git+https://github.com/besser82/libxcrypt.git#commit=8ff7a8c5019cbd50419f7d0a8cd691eb99d6b086?signed
+	validpgpkeys = 678CE3FEE430311596DB8C16F52E98007594C21D
+	sha256sums = SKIP
+
+pkgname = libxcrypt-compat
