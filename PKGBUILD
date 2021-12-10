@@ -2,8 +2,8 @@
 # Maintainer: John Turner <jturner.usa+aur@gmail.com>
 
 pkgname=sheepit-client-git
-pkgver=v6.20364.0r474.c0155f1
-pkgrel=4
+pkgver=v6.21338.0r526.37244b4
+pkgrel=1
 pkgdesc="Client for the free and distributed render farm"
 arch=('i686' 'x86_64')
 url="https://www.sheepit-renderfarm.com/"
@@ -40,7 +40,7 @@ build() {
 
 package() {
 	cd "$srcdir"
-        install -Dm644 "${pkgname%-git}/build/libs/${pkgname%-git}.jar" "${pkgdir}/usr/share/java/${pkgname%-git}/${pkgname%-git}.jar"
+        install -Dm644 "${pkgname%-git}/build/libs/${pkgname%-git}-all.jar" "${pkgdir}/usr/share/java/${pkgname%-git}/${pkgname%-git}.jar"
         install -Dm755 "${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
         install -Dm644 "${pkgname%-git}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
         install -Dm644 "${pkgname%-git}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
