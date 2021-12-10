@@ -78,6 +78,6 @@ expect eof
     ln -s /opt/offsetexplorer2/offsetexplorer $pkgdir/usr/bin/offsetexplorer
 
     gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-    install -f -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -f -Dm644 "$pkgdir/opt/offsetexplorer2/.install4j/offsetexplorer.png" "$pkgdir/usr/share/pixmaps/offsetexplorer2.png"
+    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$pkgdir/opt/offsetexplorer2/.install4j/offsetexplorer.png" "$pkgdir/usr/share/pixmaps/offsetexplorer2.png"
 }
