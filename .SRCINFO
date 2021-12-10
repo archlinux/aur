@@ -1,15 +1,19 @@
 pkgbase = wuzz-bin
-	pkgdesc = Interactive cli tool for HTTP inspection
-	pkgver = 0.4.0
+	pkgdesc = Interactive CLI tool for HTTP inspection
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/asciimoo/wuzz
 	arch = x86_64
+	arch = i686
+	arch = arm
 	license = AGPL3
 	provides = wuzz
 	conflicts = wuzz
-	noextract = wuzz-bin
-	source = wuzz-bin::https://github.com/asciimoo/wuzz/releases/download/v0.4.0/wuzz_linux_amd64
-	sha256sums = 5a1443e07a5a9b9bb813804290e87fdd27b544f4fe00ef95fe3b64e7b56459ec
+	source_x86_64 = wuzz-0.5.0-x86_64::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_amd64
+	sha256sums_x86_64 = 359d03a28013ca4636a3d31871ebb30cf303b86b2bf8993b380f7633ec8e5dda
+	source_i686 = wuzz-0.5.0-i686::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_386
+	sha256sums_i686 = 849be3c903df37329b266a7109a5a04de4014711dd14cce08a42f135d9bcfebc
+	source_arm = wuzz-0.5.0-arm::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_arm
+	sha256sums_arm = 4e20254791aa7e49bc8f9ea0cc5f67a5e0d0466eaa25aa9a0ecb212a720bc592
 
 pkgname = wuzz-bin
-
