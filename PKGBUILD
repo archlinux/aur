@@ -2,8 +2,8 @@
 
 _plug=adjust
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.g7370577
-pkgrel=2
+pkgver=v1.1.ga3af7cb
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=171956'
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
             '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5'
             )
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
