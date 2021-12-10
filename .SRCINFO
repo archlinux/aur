@@ -1,10 +1,11 @@
 pkgbase = pdfium-binaries-v8
 	pkgdesc = PDFium binaries with V8 and XFA built with scripts from pdfium-binaries
 	pkgver = 4752
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bblanchon/pdfium-binaries
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = ninja
 	provides = libpdfium
 	conflicts = libpdfium-nojs

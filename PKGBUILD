@@ -1,12 +1,12 @@
 # Maintainer:
 pkgname=pdfium-binaries-v8
 pkgver=4752
-pkgrel=1
+pkgrel=2
 pkgdesc='PDFium binaries with V8 and XFA built with scripts from pdfium-binaries'
 arch=('x86_64')
 url='https://github.com/bblanchon/pdfium-binaries'
 license=('Apache')
-makedepends=('ninja')
+makedepends=('git' 'ninja')
 provides=('libpdfium')
 conflicts=('libpdfium-nojs' 'pdfium-binaries')
 
