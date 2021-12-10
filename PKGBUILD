@@ -1,7 +1,7 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.9.22
+pkgver=0.9.23
 pkgrel=1
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
@@ -34,10 +34,12 @@ optdepends=('flatpak: required for Flatpak support'
             'ccache: can improve AUR packages compilation speed' 
             'aria2: multi-threaded downloading support'
             'breeze: KDE Plasma main theme'
-            'axel: multi-threaded downloading support')
+            'axel: multi-threaded downloading support'
+            'shadow: to install AUR packages as the root user'
+            'util-linux: to install AUR packages as the root user')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('585bf6aa2fdd7adaf86d38ea10ed3c2f4426b5ab7e1d79c7b171b0f5425595711f5d38ffc256c921f667ef81c82922002cbd6bab005aec1a51bbd778b742f20e')
+sha512sums=('86f5e53bda1f06b98eb9a0d2e304dd05a35b5e380181bc0b2b87cd719ba1a5e2e988087872799b6648610631399386a79102719f9f217d02078c778bf65336dc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
