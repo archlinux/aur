@@ -1,7 +1,7 @@
 pkgbase = python-facexlib
 	pkgdesc = FaceXlib aims at providing ready-to-use face-related functions based on current STOA open-source methods.
 	pkgver = 0.2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xinntao/facexlib
 	arch = x86_64
 	license = MIT

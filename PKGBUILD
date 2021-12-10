@@ -1,7 +1,7 @@
 pkgbase='python-facexlib'
 pkgname=('python-facexlib' 'facexlib-model')
 pkgver=0.2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="FaceXlib aims at providing ready-to-use face-related functions based on current STOA open-source methods. "
 arch=('x86_64')
 url="https://github.com/xinntao/facexlib"
@@ -38,6 +38,6 @@ package_python-facexlib() {
 package_facexlib-model() {
     pkgdesc="Pre-trained model and interference script for python-facexlib."
     depends=('python-facexlib')
-    mkdir -p ${pkgdir}/usr/lib/python3.9/site-packages/facexlib/weights
-    cp *.pth ${pkgdir}/usr/lib/python3.9/site-packages/facexlib/weights/
+    mkdir -p ${pkgdir}/usr/lib/python3.10/site-packages/facexlib/weights
+    cp *.pth ${pkgdir}/usr/lib/python3.10/site-packages/facexlib/weights/
 }
