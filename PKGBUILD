@@ -2,12 +2,13 @@
 pkgname=termv
 _pkgname=termv
 pkgver=v1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal iptv player written in bash"
 arch=('any')
 url="https://github.com/Roshan-R/termv"
 license=('GPL')
-depends=('bash' 'fzf' 'jq' 'mpv' 'wget')
+depends=('bash' 'fzf' 'jq' 'mpv' 'curl' 'gawk')
+optdepends=('xdo: for terminal swallowing')
 makedepends=('git')
 conflicts=('termv-git')
 
