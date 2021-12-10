@@ -40,7 +40,7 @@ set timeout -1
 exp_internal 1
 spawn $srcdir/install.sh
 match_max 100000
-expect \"This will install Offset Explorer 2.2 on your computer.\r\n\"
+expect \"This will install Offset Explorer 2 on your computer.\r\n\"
 expect \"\[OK (o)\]*\[Cancel\]*\"
 send -- \"o\r\"
 
@@ -62,7 +62,7 @@ expect {
     default  { exit 1 }
   }
 
-expect \"Where should Offset Explorer 2.2 be installed?*\]\r\"
+expect \"Where should Offset Explorer 2 be installed?*\]\r\"
 send -- \"$pkgdir/opt/offsetexplorer2\r\"
 expect \"already exists. Would you like to install to that directory anyway?\"
 expect \"Yes*\[y, Enter\]*No*\[n\]\"
@@ -78,6 +78,6 @@ expect eof
     ln -s /opt/offsetexplorer2/offsetexplorer $pkgdir/usr/bin/offsetexplorer
 
     gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgdir/opt/offsetexplorer2/.install4j/offsetexplorer.png" "$pkgdir/usr/share/pixmaps/offsetexplorer2.png"
+    install -f -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -f -Dm644 "$pkgdir/opt/offsetexplorer2/.install4j/offsetexplorer.png" "$pkgdir/usr/share/pixmaps/offsetexplorer2.png"
 }
