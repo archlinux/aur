@@ -3,7 +3,7 @@
 
 _plug=acsuite
 pkgname=vapoursynth-tools-${_plug}-git
-pkgver=5.0.0.r0.g240ab21
+pkgver=6.0.0.r4.ge40f503
 pkgrel=1
 pkgdesc="Frame-based cutting/trimming/splicing of audio with VapourSynth (GIT version)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package(){
