@@ -28,21 +28,6 @@ check() {
   PYTHONPATH="$PWD/build/python2/" python2 test/alltests.py
 }
 
-#package_python-docutils() {
-#  depends=('python')#
-
-#  cd $_pkgname-$pkgver
-#  python setup.py build --build-lib=build/python \
-#                  install --root="$pkgdir" --optimize=1
-#  # symlink without .py
-#  for f in "$pkgdir"/usr/bin/*.py; do
-#      ln -s "$(basename $f)" "$pkgdir/usr/bin/$(basename $f .py)"
-#  done
-#  # setup license
-#  install -D -m644 COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
-#  install -D -m644 licenses/python* "$pkgdir/usr/share/licenses/$pkgname/"
-#}
-
 package() {
   cd $_pkgname-$pkgver
   python2 setup.py build --build-lib=build/python2 \
