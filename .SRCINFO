@@ -1,7 +1,7 @@
 pkgbase = river
 	pkgdesc = A dynamic tiling wayland compositor.
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/riverwm/river
 	arch = x86_64
 	license = GPL3
@@ -24,6 +24,8 @@ pkgbase = river
 	conflicts = river-git
 	conflicts = river-noxwayland-git
 	source = https://github.com/riverwm/river/releases/download/v0.1.0/river-0.1.0.tar.gz
+	source = river.desktop
 	sha256sums = 4153a5511a1008e87a2251fc4510a43d6f6085f41b040222506355ff6d4bd10f
+	sha256sums = 6ccc55e95666904cbdeeeeed841a16f728cbae2609646130a4c53785e588e4b0
 
 pkgname = river
