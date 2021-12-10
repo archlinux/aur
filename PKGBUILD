@@ -1,9 +1,9 @@
 # Maintainer: Anderson Rocha <anderson2320@gmail.com>
 
 pkgname=cef-minimal
-pkgver="96.0.16"
-_pkgcommit="g89c902b"
-_chromiumver="96.0.4664.55"
+pkgver="96.0.17"
+_pkgcommit="g20e2617"
+_chromiumver="96.0.4664.93"
 _pkgver="${pkgver}+${_pkgcommit}+chromium-${_chromiumver}"
 _url_pkgver="${pkgver}%2B${_pkgcommit}%2Bchromium-${_chromiumver}"
 pkgrel=1
@@ -24,8 +24,8 @@ source_x86_64=(
   "${cdn_build_package_url}/cef_binary_${_url_pkgver}_linux64_minimal.tar.bz2"
 )
 
-sha1sums_i686=("0f1a78e3ab1b4fddf7583227b057e9a58c612730")
-sha1sums_x86_64=("f703cda0b72c47b510fea2eaf0c09e410dedb1b8")
+sha1sums_i686=("839057f86a318364aa7b01bc2d0af295dbcda204")
+sha1sums_x86_64=("4fd9ddb76a916ad7360027733b1fd12176757d27")
 
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
