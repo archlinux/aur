@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.134.1
+pkgver=1.134.3
 pkgrel=1
 epoch=1
 pkgdesc='TL (Legacy) is freeware launcher of Minecraft.'
@@ -30,15 +30,15 @@ _mojang='https://libraries.minecraft.net'
 
 _bootstrap_version='1.14.0'
 _bootstrap_checksum='fb56dc76a1b4d1e44065cc297ea7fcfca805f554e4e22298cb828ddd13c514eb'
-_launcher_checksum='0e46698007825148eb706b3109ac7ca971ece9433414c5be8658fcea61d0c2b8'
+_launcher_checksum='a5dd47a71a280e87690127a0cf54c84a8ee88966b0dbd0ac482ce3c2721611b4'
 
 source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
 
         ${_maven}/com/google/guava/guava/14.0/guava-14.0.jar
-        ${_maven}/org/apache/logging/log4j/log4j-core/2.14.0/log4j-core-2.14.0.jar
-        ${_maven}/org/apache/logging/log4j/log4j-1.2-api/2.14.0/log4j-1.2-api-2.14.0.jar
-        ${_maven}/org/apache/logging/log4j/log4j-api/2.14.0/log4j-api-2.14.0.jar
+        ${_maven}/org/apache/logging/log4j/log4j-core/2.15.0/log4j-core-2.15.0.jar
+        ${_maven}/org/apache/logging/log4j/log4j-1.2-api/2.15.0/log4j-1.2-api-2.15.0.jar
+        ${_maven}/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar
         ${_maven}/io/sentry/sentry/1.7.30/sentry-1.7.30.jar
         ${_maven}/org/slf4j/slf4j-api/1.7.24/slf4j-api-1.7.24.jar
         ${_maven}/com/fasterxml/jackson/core/jackson-core/2.12.0/jackson-core-2.12.0.jar
@@ -78,9 +78,9 @@ sha256sums=("${_bootstrap_checksum}"
             "${_launcher_checksum}"
 
             "c0127b076e3056f58294e4ae6c01a96599b8f58200345eb6f859192a2d9b2962"
-            "f04ee9c0ac417471d9127b5880b96c3147249f20674a8dbb88e9949d855382a8"
-            "75cd0a16cf2da9c2689f49fef8f5adc917e019704049027b96fba53cc0ccbd06"
-            "9791ac85aa3cdad633e512192766f84995eddf4db188cc42facec52a0dae15e8"
+            "419a8512895971b7b4f4f33e620d361254e5c9552b904b0474b09ddd4a6a220b"
+            "15489413a3161e70c96cd5a30220e386bf82aaeb854e78f4974ee25f2605cbf3"
+            "c8c33e7e8e05496dae69cf0caac8c3092cffd937a164526e92922d2d566d0a55"
             "ede7def7507a24e74b501f80ba0cfb82eb5e5745cb493d3ee5720a385bfde1f1"
             "baf3c7fe15fefeaf9e5b000d94547379dc48370f22a8797e239c127e7d7756ec"
             "8acab5ef6e4f332bbb331b3fcd24d716598770d13a47e7215aa5ee625d1fd9c9"
@@ -133,9 +133,9 @@ package() {
 
   # install launcher libraries
   install -Dm0644 "${srcdir}/guava-14.0.jar" "${pkgdir}/opt/tlauncher/lib/com/google/guava/guava/14.0/guava-14.0.jar"
-  install -Dm0644 "${srcdir}/log4j-core-2.14.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-core/2.14.0/log4j-core-2.14.0.jar"
-  install -Dm0644 "${srcdir}/log4j-1.2-api-2.14.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-1.2-api/2.14.0/log4j-1.2-api-2.14.0.jar"
-  install -Dm0644 "${srcdir}/log4j-api-2.14.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-api/2.14.0/log4j-api-2.14.0.jar"
+  install -Dm0644 "${srcdir}/log4j-core-2.15.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-core/2.15.0/log4j-core-2.15.0.jar"
+  install -Dm0644 "${srcdir}/log4j-1.2-api-2.15.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-1.2-api/2.15.0/log4j-1.2-api-2.15.0.jar"
+  install -Dm0644 "${srcdir}/log4j-api-2.15.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar"
   install -Dm0644 "${srcdir}/sentry-1.7.30.jar" "${pkgdir}/opt/tlauncher/lib/io/sentry/sentry/1.7.30/sentry-1.7.30.jar"
   install -Dm0644 "${srcdir}/slf4j-api-1.7.24.jar" "${pkgdir}/opt/tlauncher/lib/org/slf4j/slf4j-api/1.7.24/slf4j-api-1.7.24.jar"
   install -Dm0644 "${srcdir}/jackson-core-2.12.0.jar" "${pkgdir}/opt/tlauncher/lib/com/fasterxml/jackson/core/jackson-core/2.12.0/jackson-core-2.12.0.jar"
