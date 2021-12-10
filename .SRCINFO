@@ -13,4 +13,3 @@ pkgbase = vapoursynth-plugin-dither-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-dither-git
-
