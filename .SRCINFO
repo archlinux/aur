@@ -1,0 +1,14 @@
+pkgbase = nodejs-ts-standard
+	pkgdesc = Typescript Standard Style based on StandardJS
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/standard/ts-standard
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = ts-standard-11.0.0.tgz
+	source = https://registry.npmjs.org/ts-standard/-/ts-standard-11.0.0.tgz
+	b2sums = 1bb64e42218ba9a397d5ff0cc24c0d9ced558c93cc938e0af52f586e9903a81f2e92d2205a436e83cc9f3e991918a12d67d970e30a07912588f3dc4124e3e658
+
+pkgname = nodejs-ts-standard
