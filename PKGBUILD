@@ -3,7 +3,7 @@
 # Contributor: hobi82 <hobi82@gmx.net>
 # Contributor: Marius Nestor <marius softpedia com>
 pkgname=musictube
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="YouTube streaming music player"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://flavio.tordini.org/musictube"
 license=('unknown')
 depends=('qt5-declarative' 'qt5-x11extras' 'mpv')
 source=("$pkgname-$pkgver.deb::https://flavio.tordini.org/files/$pkgname/$pkgname.deb")
-sha256sums=('f7e171614c1031e4b0fa04e15601bfafe46f3e10fe94dadf5d29a32fa8384076')
+sha256sums=('8d90ccad5a2dfe32cef7d823d82f8fb53ad456f021e5b1e2cfd874bc9a6695f3')
 
 pkgver() {
   echo $(curl -s https://flavio.tordini.org/musictube-ws/release.xml | tr -dc 0-9.)
