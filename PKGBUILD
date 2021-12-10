@@ -1,5 +1,5 @@
 pkgname=vk-layer-flimes-gui-git
-pkgver=1.3.0.r0.g572c311
+pkgver=1.4.0.r0.g495bf1a
 pkgrel=1
 pkgdesc="GUI for vk-layer-flimes external control"
 arch=('x86_64')
@@ -20,7 +20,7 @@ build() {
     cd "${srcdir}/vk-layer-flimes-gui"
     mkdir -p build
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_QT6=OFF
     make
 }
 
