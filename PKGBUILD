@@ -2,7 +2,7 @@
 pkgname=ubports-installer
 pkgver=0.9.1_beta
 _ver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('x86_64' 'i686')
 url='https://github.com/ubports/ubports-installer'
@@ -15,5 +15,5 @@ sha512sums=('0b7921370bab98a847cd3d40872ba1a6ca50af08f6f889a40f1c7e9f52e02d481e1
 
 package() {
         tar xf data.tar.xz -C "${pkgdir}"
-        install -D -m644 "/opt/ubports-installer/resources/app.asar.unpacked/node_modules/universalify/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        install -D -m644 "${pkgdir}/opt/ubports-installer/resources/app.asar.unpacked/node_modules/universalify/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
