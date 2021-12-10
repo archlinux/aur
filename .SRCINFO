@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-astdr-git
 	pkgdesc = Plugin for Vapoursynth: astdr (GIT version)
-	pkgver = v2.1.g30d2750
+	pkgver = v3.1.g29c34ac
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-astdr
 	arch = any
@@ -22,4 +22,3 @@ pkgbase = vapoursynth-plugin-astdr-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-astdr-git
-
