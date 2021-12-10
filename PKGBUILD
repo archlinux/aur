@@ -18,7 +18,7 @@ conflicts=("vapoursynth-tools-${_plug}")
 source=("${_plug}::git+https://github.com/AzraelNewtype/${_plug}.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
@@ -32,6 +32,6 @@ package(){
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
-  install -Dm644 example.vpy "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/example.vpy"
+  install -Dm644 example.vpy "${pkgdir}/usr/share/doc/vapoursynth/plugin/${_plug}/example.vpy"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugin/${_plug}/README.md"
 }

@@ -15,4 +15,3 @@ pkgbase = vapoursynth-tools-audiocutter-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-tools-audiocutter-git
-
