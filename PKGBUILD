@@ -27,6 +27,10 @@ package_colloid-gtk-theme-git() {
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact -d "$pkgdir/usr/share/themes"
+
+  # Nord version - currently missing assets
+#  ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
+#  ./install.sh -t all -s compact --tweaks nord -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-icon-theme-git() {
