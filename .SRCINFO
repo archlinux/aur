@@ -1,7 +1,7 @@
 pkgbase = python-dhall
 	pkgdesc = Python bindings for dhall, a functional configuration language
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/dhall
 	arch = x86_64
 	arch = i686
