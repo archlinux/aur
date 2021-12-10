@@ -1,23 +1,21 @@
 pkgbase = symengine-git
 	pkgdesc = Fast symbolic manipulation library, written in C++
-	pkgver = 0.4.1.r0.g4f7cd0e7
+	pkgver = 0.8.1.r101.g8be879dd
 	pkgrel = 1
 	url = http://sympy.org/
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	makedepends = boost
+	depends = arb
+	depends = boost-libs
 	depends = gmp
 	depends = gperftools
-	depends = boost-libs
+	depends = primesieve
 	provides = symengine
-	conflicts = csympy-git
 	conflicts = symengine
-	replaces = csympy-git
 	source = git+https://github.com/sympy/symengine.git
 	sha256sums = SKIP
 
 pkgname = symengine-git
-
