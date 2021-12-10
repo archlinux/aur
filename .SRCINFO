@@ -1,0 +1,14 @@
+pkgbase = yex-git
+	pkgdesc = Yex programming language created by nonamescm
+	pkgver = 0.1.r128.6a6648a
+	pkgrel = 1
+	url = https://github.com/nonamescm/yex-lang
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	provides = yex
+	source = git+https://github.com/nonamescm/yex-lang
+	md5sums = SKIP
+
+pkgname = yex-git
