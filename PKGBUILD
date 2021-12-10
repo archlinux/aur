@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-unshield
-pkgver=1.4.3
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Extracts CAB files from InstallShield installers (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 options=('!buildflags' '!strip' '!libtool' 'staticlibs')
 source=("unshield-$pkgver.tar.gz::https://github.com/twogood/unshield/archive/$pkgver.tar.gz")
-sha256sums=('aa8c978dc0eb1158d266eaddcd1852d6d71620ddfc82807fe4bf2e19022b7bab')
+sha256sums=('34cd97ff1e6f764436d71676e3d6842dc7bd8e2dd5014068da5c560fe4661f60')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
