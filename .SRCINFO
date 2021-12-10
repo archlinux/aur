@@ -1,0 +1,13 @@
+pkgbase = amdctl
+	pkgdesc = Tool for changing voltages and clock speeds for AMD processors
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/kevinlekiller/amdctl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	provides = amdctl
+	source = amdctl-0.6.1.tar.gz::https://github.com/kevinlekiller/amdctl/archive/refs/tags/v0.6.1.tar.gz
+	md5sums = 86cea68c3497d40fe65c63ac98edab27
+
+pkgname = amdctl
