@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase="percolator-git"
 pkgname=('percolator-git' 'percolator-converters-git' 'elude-git')
-pkgver=3.05.r95.g62185c8f
+pkgver=3.05.r137.ge806a0c5
 pkgrel=1
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
 url="http://percolator.ms/"
