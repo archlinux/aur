@@ -12,7 +12,7 @@ depends=('vapoursynth-plugin-mvtools_sf-git')
 source=('https://raw.githubusercontent.com/IFeelBloated/vapoursynth-mvtools-sf/r9/src/mvmulti.py')
 sha256sums=('97ead4d5dee3f9a8a3fca31cadc1978f5cacf442c78bf198c84ab5de1e277dc2')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 package(){
   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
