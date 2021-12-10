@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=05dba6ee20e7eacc84b4f66c0aa65329c7304974  # tags/2.50.2
+_commit=2f6f58ef7edda386badf24d2beac153f0195723a  # tags/2.52.4
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.52.2
+pkgver=2.52.4
 pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
@@ -34,7 +34,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/librsvg"
-  sed 's/rsvg_c_api.lib/librsvg_c_api.a/g' -i Makefile.am
+  #sed 's/rsvg_c_api.lib/librsvg_c_api.a/g' -i Makefile.am
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -63,8 +63,8 @@ build() {
       --disable-tools
     # pass static rust package to linker
     sed -i "s/^deplibs_check_method=.*/deplibs_check_method=\"pass_all\"/g" libtool
-    # add missing crt libs (ws2_32 and userenv) to LIBRSVG_LIBS
-    sed -i "s/^LIBRSVG_LIBS = .*/& -lws2_32 -luserenv/g" Makefile
+    # add missing crt libs (bcrypt, ws2_32 and userenv) to LIBRSVG_LIBS
+    sed -i "s/^LIBRSVG_LIBS = .*/& -lbcrypt -lws2_32 -luserenv/g" Makefile
     # add missing ".exe" to name
     sed -i "s/mv \$(RSVG_CONVERT_BIN) rsvg-convert/&\$(EXEEXT)/g" Makefile
     make
