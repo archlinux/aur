@@ -1,6 +1,6 @@
 pkgname=tlstunnel
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A TLS reverse proxy'
 arch=('x86_64')
 url="https://sr.ht/~emersion/tlstunnel"
@@ -13,20 +13,17 @@ source=(
   'tlstunnel.service'
   'tlstunnel.tmpfiles'
   'tlstunnel.sysusers'
-  'https://git.sr.ht/~emersion/tlstunnel/commit/eda551a4d77d3dfe6eaef12f6fc71a0d93542467.patch'
 )
 validpgpkeys=("34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48")
 sha256sums=('b7e6805e4663f63d9ce17f19ed02df02b4c97e1a0386b85709f4065264559c26'
             'SKIP'
             'a298eb15cef1253c235c89e670a01f2ef9eb09276b0661c7b265cfd8bf43326a'
             '4a891acfb64531c8ff3a9b1d596df749614d89dd4edd4571f683b71c7c31a5a6'
-            '068caae43739c591b84ed36db6545e7c694e17443d86bfdbc6568e49cdde103f'
-            '431de281aafba5814c7f4cf6d30f153eb6d090d0f5f5807804c0f7fcab5613ae')
+            '068caae43739c591b84ed36db6545e7c694e17443d86bfdbc6568e49cdde103f')
 backup=('etc/tlstunnel/config')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -p1 <"$srcdir/eda551a4d77d3dfe6eaef12f6fc71a0d93542467.patch"
 }
 
 build() {
