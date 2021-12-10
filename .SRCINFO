@@ -1,15 +1,14 @@
 pkgbase = allure-commandline
-	pkgdesc = A flexible lightweight multi-language test report tool with the possibility to add steps, attachments, parameters and so on.
-	pkgver = 2.7.0
+	pkgdesc = A flexible, lightweight multi-language test reporting tool
+	pkgver = 2.17.1
 	pkgrel = 1
-	url = http://allure.qatools.ru
+	url = https://github.com/allure-framework/allure2
 	arch = i686
 	arch = x86_64
 	depends = jdk8-openjdk
-	source = https://github.com/allure-framework/allure2/releases/download/2.7.0/allure-2.7.0.tgz
+	source = https://github.com/allure-framework/allure2/releases/download/2.17.1/allure-2.17.1.tgz
 	source = allure
-	md5sums = 14e582816aa4c5148439dc6bc3dbe6b2
-	md5sums = d5cda88380d1d44d68e3eb72df369cd9
+	sha512sums = 80dd20e64ad725d19d34c074b3a4ff4dc317e4e84f823b103e8e563c76c6edac0229e5e0ca67d944311f7212a3fcf770b3294b76714d6c197fd1c8f09b5b531d
+	sha512sums = d1c50028f8ba9d791d113314cec71c5174a69e1e9136c1d22bfb58e844d20f7c15c1917184e827bbdfbd25ffd7a0fc5259004e57da331f54948f25e310927ad5
 
 pkgname = allure-commandline
-
