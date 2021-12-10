@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-kagefunc-git
 	pkgdesc = Plugin for Vapoursynth: kagefunc (GIT version)
-	pkgver = r47.8d3f377
-	pkgrel = 3
+	pkgver = r61.ee61e8f
+	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/kagefunc
 	arch = x86_64
 	license = GPL
@@ -24,4 +24,3 @@ pkgbase = vapoursynth-plugin-kagefunc-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-kagefunc-git
-
