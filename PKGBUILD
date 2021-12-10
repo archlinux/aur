@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=scotch-git
-pkgver=r337.03d9a7d
+pkgver=r542.2148346
 pkgrel=1
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
@@ -56,17 +56,6 @@ build() {
 
   make ptscotch
   make -j1 ptesmumps
-}
-
-check() {
-  cd "${srcdir}/${_pkgname}/src"
-
-  # Thx to sigvald: https://aur.archlinux.org/packages/scotch/?O=20&PP=10#comment-634455
-  # Upstream issue: https://gitlab.inria.fr/scotch/scotch/issues/7
-  sed -i 's/mpirun/mpirun --oversubscribe/' check/Makefile
-
-  make check LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
-  make ptcheck LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
 }
 
 package() {
