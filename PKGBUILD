@@ -2,16 +2,16 @@
 pkgbase=python-fitsblender
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.3.6
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="FITS header merging from multiple images"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/spacetelescope/fitsblender"
 license=('BSD')
-makedepends=('python-setuptools' 'python-astropy' 'python-sphinx' 'python-stsci.tools')
+makedepends=('python-setuptools-scm' 'python-astropy' 'python-sphinx' 'python-stsci.tools')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('79314597bf568f7bf1bff96fcaee60b4')
+md5sums=('2b7af9dcfc5c4356644cad372fd5f915')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -41,6 +41,7 @@ package_python-fitsblender-doc() {
     pkgdesc="Documentation for Python FITS blender"
     cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
 
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.txt
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
