@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-havsfunc-git
 	pkgdesc = Plugin for Vapoursynth: havsfunc. (GIT Version)
-	pkgver = r33.9.g28f325c
+	pkgver = r33.17.gee00fd4
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166582
 	arch = any
