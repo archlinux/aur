@@ -2,7 +2,7 @@
 
 _plug=vsgan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.0.0.gd700baa
+pkgver=1.3.1.0.g3b545bf
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('vapoursynth-plugin-mvsfunc-git'
 makedepends=('git'
              'python-build'
              'python-pip'
-             'puyhon-wheel'
+             'python-wheel'
              )
 optdepends=('python-pytorch: CPU'
             'python-pytorch-opt: CPU with AVX2 optimizations'
@@ -26,7 +26,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/rlaPHOENiX/VSGAN.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"

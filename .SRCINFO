@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsgan-git
 	pkgdesc = Plugin for Vapoursynth: vsgan (GIT version)
-	pkgver = 1.3.0.0.gd700baa
+	pkgver = 1.3.1.0.g3b545bf
 	pkgrel = 1
 	url = https://github.com/rlaPHOENiX/VSGAN
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = vapoursynth-plugin-vsgan-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-pip
-	makedepends = puyhon-wheel
+	makedepends = python-wheel
 	depends = vapoursynth-plugin-mvsfunc-git
 	depends = python-numpy
 	optdepends = python-pytorch: CPU
