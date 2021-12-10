@@ -1,0 +1,23 @@
+pkgbase = mint-themes-legacy
+	pkgdesc = A collection of legacy mint themes.
+	pkgver = 1.8.9
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-themes-legacy
+	arch = any
+	license = GPL3
+	makedepends = gtk3
+	makedepends = inkscape
+	makedepends = optipng
+	makedepends = python
+	makedepends = sassc
+	depends = ttf-ubuntu-font-family
+	optdepends = mint-y-icons
+	optdepends = mint-x-icons
+	conflicts = mint-x-theme
+	conflicts = mint-y-theme
+	conflicts = mint-cinnamon-themes
+	conflicts = mint-themes
+	source = mint-themes-legacy_1.8.9.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes-legacy/mint-themes-legacy_1.8.9.tar.xz
+	sha256sums = b92352e35ee482c0502f556f875939ea47e9b55d898411d9907ed8e5638a649a
+
+pkgname = mint-themes-legacy
