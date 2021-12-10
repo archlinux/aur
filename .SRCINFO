@@ -2,6 +2,7 @@ pkgbase = hru
 	pkgdesc = Filter that translates latin or cyrillic text into grunt
 	pkgver = 1.0
 	pkgrel = 0
+	url = https://git.sr.ht/~begs/hru
 	arch = i686
 	arch = pentium4
 	arch = x86_64
