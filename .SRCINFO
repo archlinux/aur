@@ -15,7 +15,7 @@ pkgbase = hru
 	makedepends = scdoc
 	depends = libutf8proc
 	depends = scdoc
-	source = hru::git+https://git.sr.ht/~begs/hru.git
+	source = hru::git+https://git.sr.ht/~begs/hru
 	sha512sums = SKIP
 
 pkgname = hru

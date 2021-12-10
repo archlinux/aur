@@ -18,11 +18,11 @@ makedepends=(
 source=("hru::git+https://git.sr.ht/~begs/hru")
 sha512sums=("SKIP")
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	make build
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	make install
 }
