@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.15.6.arch2.r1045936.dc8f5cda97ad
+	pkgver = v5.15.7.arch1.r1045945.82206c4210f1
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = linux-bcachefs-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 82e8b78085623407c1423e5bfcee544dcfbce78b157a2d7861066cf3615f5a9d240f1f2d1d12df40dce2f9941cd07ef2a6528bb48fb35236ae835ce61c1fc0f7
+	sha512sums = e751e72554bc6975979e947d475ede8a9ca0b7bc67d0fe28547668bc4f17ce0e6b400309bbe5163f300131e3430e8c3df45e30c7fe1a786a56ea8a79a7c64cf8
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
