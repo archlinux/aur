@@ -9,7 +9,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.17.1_0.9.1-1"
+_ver="1.17.1_0.10.2-1"
 _minecraft_ver_latest="1.17.1"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
@@ -54,7 +54,7 @@ sha512sums=('38642e2cbd218221a93996b86cdb1bf1b1d3c78a377ea22b32c597ce5e4a2e6cb2b
             '5c1bcd2e0298d0200bfd3ec4996510e8fc04ac62f0a688bd6ef4cf0c92d6b1c545406fe8cbc447148f1dbaf4fb1e5cbf4c2636c0c088d127a54356d98552beed'
             '4270d2d85902b76df6de5f8e3b908748ff582919734ca835bb9ed4bf957e3127dc758c9247f4bbb8842fa0d4a30983105e84aeb7623e2bc1cf528cc955685b8d'
             'ee04c7e30cedbc724975973bba144b6f0137f66f1d2bd2f132d59e09990e7fa7817dda9eedcdaeb961cef0ce3f728a0727fec3c590ce6abd9b93ef6467a4587f'
-            '2c5eee779ceac27e0da0e2ed627af75d4e3646a58ae47cb69507b88dd6f883c71db49db3d204bef4c213fad51775cd0f49bf3c59d789f61acef1176179ab8b20')
+            'b1a36cb8f5d5f9a13a344d4669e10c7d6d706abe0856adc5fa1187616c2302a1a22d4a5a44c0c2942d0ffea5201e52548126e42b40a2abe4bc074411959e6f71')
 
 # -- Fabric Installer -- #
 source+=("fabric-installer-${_fabric_ver}.jar"::"https://maven.fabricmc.net/net/fabricmc/fabric-installer/${_fabric_ver}/fabric-installer-${_fabric_ver}.jar")
