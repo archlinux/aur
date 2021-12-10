@@ -14,9 +14,9 @@ provides=()
 conflicts=()
 replaces=()
 options=()
-source=("https://gitlab.com/inivation/dv/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://release.inivation.com/processing/$pkgname-$pkgver.zip")
 noextract=()
-sha256sums=('e0ab45b9b66ddfc912df034e76ddbc2c69fd13a920ab2e9dec3b3d3051244cd5')
+sha256sums=('0f9465e0736dcb5d7a84d03b55e91209f282de60ec91c6f235b43b04eb765f92')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
