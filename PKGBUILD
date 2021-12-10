@@ -2,7 +2,7 @@
 
 pkgname=an-anime-game-launcher
 pkgver=1.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
 arch=("x86_64")
@@ -17,11 +17,6 @@ depends=(
     "git"
 )
 
-makedepends=(
-    "nodejs-lts-gallium"
-    "npm"
-)
-
 optdepends=(
     "mangohud: FPS Hud/GUI"
     "gamemode: Game Optimizations"
@@ -31,30 +26,24 @@ optdepends=(
 )
 
 source=(
-    "git+${url}.git#tag=${pkgver}"
+    "https://dev.kaifa.ch/Maroxy/an-anime-game-aur/raw/tag/${pkgver}/app.asar"
+    "icon.png"
     "an-anime-game-launcher.desktop"
     "an-anime-game-launcher.sh"
 )
 
 md5sums=(
     'SKIP'
+    '82d75ad72aed6c6962f203f9c6f329d3'
     '44b5730fe1a5cf22d7be6e3bf717ea0f'
     '8b875e8115a3b80f9964dc66ddf46a9a'
 )
 
-build() {
-    cd "${pkgname}"
-    npm install --cache "${srcdir}/npm-cache"
-    npm run dev
-    ./node_modules/.bin/electron-builder -l dir
-}
-
 package() {
-    cd "${pkgname}"
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -dr --no-preserve=ownership dist/linux-unpacked/resources/* "${pkgdir}/usr/lib/${pkgname}/"
+    cp -dr --no-preserve=ownership app.asar "${pkgdir}/usr/lib/${pkgname}/"
 
-    install -Dm644 public/images/icons/256x256.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm755 "${srcdir}/an-anime-game-launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
 }
