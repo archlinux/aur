@@ -2,16 +2,16 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.alpha.26.0.13.r0.gf8acad4d9
+pkgver=1.0.0.alpha.26.0.13.r77.g7f64601af
 pkgrel=1
 epoch=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
-depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
+depends=('lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
          'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter'
-         'xxhash' 'vamp-plugin-sdk' 'carla-git')
+         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'graphviz')
 makedepends=('ruby-sass' 'python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
              'ladspa' 'lv2' 'gtksourceview3' 'cmake')
@@ -31,14 +31,14 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    meson build --prefix=/usr -Dtests=true -Dmanpage=true -Dcarla=enabled
+    meson build --prefix=/usr -Dmanpage=true -Dcarla=enabled -Dforce_fallback_for=libadwaita
     ninja -C build
 }
 
-check() {
-    cd "$srcdir/${pkgname%-git}"
-    ninja -C build test
-}
+#check() {
+#    cd "$srcdir/${pkgname%-git}"
+#    ninja -C build test
+#}
 
 package() {
     cd "$srcdir/${pkgname%-git}"
