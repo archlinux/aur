@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-xvs-git
 	pkgdesc = Plugin for Vapoursynth: xvs (GIT version)
-	pkgver = r18.982b32b
+	pkgver = r19.be07d66
 	pkgrel = 1
 	url = https://github.com/xyx98/my-vapoursynth-script
 	arch = any

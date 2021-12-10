@@ -2,7 +2,7 @@
 
 _plug=xvs
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r18.982b32b
+pkgver=r19.be07d66
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -37,7 +37,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/xyx98/my-vapoursynth-script.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
