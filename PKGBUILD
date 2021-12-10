@@ -3,7 +3,7 @@
 
 pkgname=gg
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 provides=('gg')
 pkgdesc='A command-line tool for one-click proxy in your research and development without installing v2ray or anything else (only for linux). '
 arch=('x86_64' 'aarch64' 'arm' 'armv7h' 'armv6h' 'armv7l')
