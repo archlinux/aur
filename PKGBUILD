@@ -75,7 +75,7 @@ expect eof
 
     echo "$EXPECT" | /bin/expect
     sed -i -- "s~$pkgdir~~g" $pkgdir/opt/offsetexplorer2/.install4j/*
-    ln -s /opt/offsetexplorer2/offsetexplorer $pkgdir/usr/bin/offsetexplorer
+    ln -s /opt/offsetexplorer2/offsetexplorer $pkgdir/usr/bin/offsetexplorer2
 
     gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
