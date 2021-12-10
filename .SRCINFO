@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-knlm-git
 	pkgdesc = Plugin for Vapoursynth: knlm (GIT version)
-	pkgver = r3
-	pkgrel = 3
+	pkgver = r4
+	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = vapoursynth-plugin-knlm-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-knlm-git
-

@@ -2,8 +2,8 @@
 
 _plug=knlm
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3
-pkgrel=3
+pkgver=r4
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
@@ -17,7 +17,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://gist.github.com/4788aa29cee72ac78361.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
