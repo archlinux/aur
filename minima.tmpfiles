@@ -1,0 +1,2 @@
+d /var/lib/minima 0750 minima minima
+d /var/lib/minima/data-9001 0750 minima minima

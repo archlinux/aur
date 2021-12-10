@@ -1,0 +1,9 @@
+post_install() {
+    echo -e '\033[0;32m
+    Run Minima node with:
+    systemctl start minima@9001
+
+    To see the logs:
+    journalctl -n 100 -fu minima@9001
+\033[0m'
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=Minima on port %I
+
+[Service]
+User=minima
+Type=simple
+EnvironmentFile=/etc/default/minima-%I
+ExecStart=/usr/bin/java -Xmx1G -jar /usr/bin/minima.jar -daemon -port %I -data /var/lib/minima/data-%I $MINIMA_PARAMS
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target

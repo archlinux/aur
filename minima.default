@@ -1,0 +1,4 @@
+MINIMA_PARAMS="
+-rpcenable
+-rpc 9002
+"
