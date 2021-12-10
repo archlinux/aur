@@ -7,7 +7,6 @@ pkgdesc="A modern Winlink client"
 arch=('i686' 'x86_64' 'armhf' 'armv6h')
 url="http://getpat.io"
 license=('MIT')
-groups=('')
 provides=('pat')
 conflicts=('pat')
 optdepends=('gpsd>=2.90'

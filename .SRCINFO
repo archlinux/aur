@@ -7,7 +7,6 @@ pkgbase = pat-bin
 	arch = x86_64
 	arch = armhf
 	arch = armv6h
-	groups = 
 	license = MIT
 	optdepends = gpsd>=2.90
 	optdepends = hamlib>=1.2
