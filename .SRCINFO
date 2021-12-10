@@ -1,0 +1,19 @@
+pkgbase = wolfssh-git
+	pkgdesc = A small, fast, portable SSH implementation, including support for SCP and SFTP
+	pkgver = 1.4.8.r8.gd603418
+	pkgrel = 1
+	url = https://www.wolfssl.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = wolfssl
+	provides = wolfssh
+	conflicts = wolfssh
+	options = staticlibs
+	source = git+https://github.com/wolfSSL/wolfssh.git
+	sha256sums = SKIP
+
+pkgname = wolfssh-git
