@@ -5,7 +5,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+: "${_makenconfig:=""}"
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -15,7 +15,7 @@ _makenconfig=
 # This PKGBUILD reads the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+: "${_localmodcfg:=""}"
 
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
@@ -62,27 +62,27 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
-_subarch=
+: "${_subarch:=""}"
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
 # through the trouble of customizing your config options.  NOT recommended when
 # a new kernel is released, but again, convenient for package bumps.
-_use_current=
+: "${_use_current:=""}"
 
 # Enable compiling with LLVM
-_use_llvm_lto=
+: "${_use_llvm_lto:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.15
 _minor=7
 _srcname=linux-${_major}
-_clr=${_major}.6-1105
+_clr=${_major}.7-1106
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
