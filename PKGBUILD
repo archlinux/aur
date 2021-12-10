@@ -24,17 +24,17 @@ sha256sums=('7af4b3af56c1c36f10c04bca81fabdcdedadac7dabd3e782b82cfe1bbf34cf43'
             'ab33299dce16ea485d50d9505bfef0768e205ea55ba35788e850f2aed7753221')
 
 prepare() {
-	bsdtar xf data.tar.gz
-	bsdtar xf "opt/${pkgname%-bin}$_pkgver/lib/pdfstudio.jar" resources/license.html
-	rm -rf "opt/${pkgname%-bin}$_pkgver/jre"
+  bsdtar xf data.tar.gz
+  bsdtar xf "opt/${pkgname%-bin}$_pkgver/lib/pdfstudio.jar" resources/license.html
+  rm -rf "opt/${pkgname%-bin}$_pkgver/jre"
 }
 
 package() {
-	install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-bin}.desktop"
-	install -Dm644 -t "$pkgdir/usr/share/pixmaps/" "${pkgname%-bin}.png"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" resources/license.html
-	install -dm 755 "$pkgdir/usr/share/"
-	cp -r "opt/${pkgname%-bin}$_pkgver" "$pkgdir/usr/share/${pkgname%-bin}"
-	install -dm 755 "$pkgdir/usr/bin"
-	ln -sf "/usr/share/${pkgname%-bin}/${pkgname%-bin}$_pkgver" "$pkgdir/usr/bin/${pkgname%-bin}"
+  install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-bin}.desktop"
+  install -Dm644 -t "$pkgdir/usr/share/pixmaps/" "${pkgname%-bin}.png"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" resources/license.html
+  install -dm 755 "$pkgdir/usr/share/"
+  cp -r "opt/${pkgname%-bin}$_pkgver" "$pkgdir/usr/share/${pkgname%-bin}"
+  install -dm 755 "$pkgdir/usr/bin"
+  ln -sf "/usr/share/${pkgname%-bin}/${pkgname%-bin}$_pkgver" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
