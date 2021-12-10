@@ -12,7 +12,7 @@ depends=('vapoursynth-plugin-temporalsoften2-git')
 source=("https://sl1pkn07.wtf/${_plug}/${_plug}-${pkgver/_/-}.7z")
 sha256sums=('138ef3bd565e54dab556080e0ae3a426ef00f62f340e8eb6c2cb134dbf14332c')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 prepare() {
   rm -fr src/Vapoursynth.h
