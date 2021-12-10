@@ -1,0 +1,10 @@
+--- xmrig-cuda-6.15.1/src/crypto/common/Algorithm.h	2021-09-18 15:16:03.000000000 +0200
++++ xmrig-cuda-6.15.1/src/crypto/common/Algorithm.h	2021-09-18 16:44:27.677847874 +0200
+@@ -22,6 +22,7 @@
+
+
+ #include <cstdint>
++#include <cstddef>
+ #include <vector>
+
+

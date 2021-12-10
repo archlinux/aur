@@ -1,0 +1,19 @@
+pkgbase = xmrig-mo-cuda
+	pkgdesc = NVIDIA CUDA plugin for XMRig miner, MoneroOcean fork.
+	pkgver = 6.15.1mo1
+	pkgrel = 1
+	url = https://github.com/MoneroOcean/xmrig-cuda
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = cuda>=8.0
+	makedepends = git
+	depends = xmrig-mo>=6.15.0
+	depends = cuda>=8.0
+	optdepends = monero: wallet
+	source = git+https://github.com/MoneroOcean/xmrig-cuda#tag=v6.15.1-mo1
+	source = fix-compile.patch
+	sha256sums = SKIP
+	sha256sums = d702dc516dc5b57c814d9ddeffb6df72b699891b2c0c50eb690f5a9dd1a3a77f
+
+pkgname = xmrig-mo-cuda
