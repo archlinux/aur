@@ -6,7 +6,7 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient
-pkgver=21.11.0.20
+pkgver=21.12.0.18
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
@@ -36,9 +36,9 @@ sha256sums=('38e0de641fd374c65c84cb2e82a976595380c32d5f89cff8a25843bdd000d637'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
             'a3da4a2cdc6f8ef7f3f26fe3344f7e6b6ee5cbe1cded77aadd616adc7771adb8'
             'a5b03c48f359cdb3667ca0721c6b4091b97300605d5c9ca959ce072580483c81')
-sha256sums_x86_64=('1ef35b14ba281ecf5ef029998d04076b8a15da8ae5e0a36d96eb70684bbd2595')
-sha256sums_i686=('32273bcadfcc239a17e56f7e628aab7f86a0ec507031ad6b58a115fe51946521')
-sha256sums_armv7h=('c7442fbb7a01dd69cf449d367a8f32cf89589beed05896b90abda9ea4d3dd019')
+sha256sums_x86_64=('de81deab648e1ebe0ddb12aa9591c8014d7fad4eba0db768f25eb156330bb34d')
+sha256sums_i686=('3746cdbe26727f7f6fb85fbe5f3e6df0322d79bb66e3a70158b22cb4f6b6b292')
+sha256sums_armv7h=('3ca3572c1ebe10c926985e4d24ae804905c17b859d0b5f135bc3bd62824c4a19')
 install=citrix-client.install
 
 package() {
