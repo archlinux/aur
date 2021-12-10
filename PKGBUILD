@@ -14,9 +14,11 @@ provides=("hyperion")
 conflicts=('hyperion' 'hyperion-git')
 backup=('etc/hyperion/config/hyperion.config.json')
 source=("git+https://github.com/hyperion-project/${pkgname%-git}"
-        "hyperion.systemd")
+        "hyperion.systemd"
+        "hyperion.systemd-user")
 sha512sums=('SKIP'
-            '7ecaacff7d25bb79b4ad4246e993cda578c6513e0cbd76493c24afba0dd1580c49d99a43c099c0d9dfdb6a28ed7d496dda1ae498ba8c4d2a61759f2095ec28fd')
+            '135a02e07c21f13c078914b5420db97b3d8b5d40fd4c06d10ab9750ce5ebe5c8872fbbc48e33c51edede8c65674cdbb2148aa9a02ce27081980442d360061a38'
+            'ca894619a552df48c5d83a43c377d54df87aab641ed279de1f7f97788ecbcb641f9114a511ff4632e386ebe5363cb5b378775323aa19304dbc046c6b0b5b9aad')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -30,8 +32,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  
-  sed -i "s/python/python2/g" CMakeLists.txt
   
   test -d build || mkdir build
   cd build
@@ -54,7 +54,8 @@ package() {
   
   install -d "${pkgdir}/etc/hyperion/"
 
-  install -Dm 644 ${srcdir}/hyperion.systemd "${pkgdir}/usr/lib/systemd/system/hyperiond.service"
+  install -Dm 644 ${srcdir}/hyperion.systemd "${pkgdir}/usr/lib/systemd/system/hyperiond@.service"
+  install -Dm 644 ${srcdir}/hyperion.systemd-user "${pkgdir}/usr/share/hyperion/hyperiond-user.service"
 
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }

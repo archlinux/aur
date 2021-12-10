@@ -1,21 +1,18 @@
 [Unit]
 Description=Hyperion ambient light systemd service
 Documentation=https://docs.hyperion-project.org
-Requisite=network.target
-Wants=network-online.target
-After=network-online.target
 StartLimitIntervalSec=30s
 StartLimitBurst=3
 
 [Service]
 Environment=DISPLAY=:0
-User=%i
-ExecStart=/usr/bin/hyperiond -u /etc/hyperion/
+ExecStart=/usr/bin/hyperiond
 WorkingDirectory=/usr/share/hyperion
 TimeoutStopSec=5
 KillMode=mixed
 Restart=always
 RestartSec=2
 
+
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

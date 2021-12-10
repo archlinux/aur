@@ -26,7 +26,9 @@ pkgbase = hyperion.ng-git
 	backup = etc/hyperion/config/hyperion.config.json
 	source = git+https://github.com/hyperion-project/hyperion.ng
 	source = hyperion.systemd
+	source = hyperion.systemd-user
 	sha512sums = SKIP
-	sha512sums = 7ecaacff7d25bb79b4ad4246e993cda578c6513e0cbd76493c24afba0dd1580c49d99a43c099c0d9dfdb6a28ed7d496dda1ae498ba8c4d2a61759f2095ec28fd
+	sha512sums = 135a02e07c21f13c078914b5420db97b3d8b5d40fd4c06d10ab9750ce5ebe5c8872fbbc48e33c51edede8c65674cdbb2148aa9a02ce27081980442d360061a38
+	sha512sums = ca894619a552df48c5d83a43c377d54df87aab641ed279de1f7f97788ecbcb641f9114a511ff4632e386ebe5363cb5b378775323aa19304dbc046c6b0b5b9aad
 
 pkgname = hyperion.ng-git
