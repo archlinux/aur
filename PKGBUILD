@@ -2,7 +2,7 @@
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2021
 pkgver=2021.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64')
 url="https://www.qoppa.com/pdfstudioviewer"
@@ -18,6 +18,10 @@ prepare() {
   bsdtar xf data.tar.gz -C "$pkgname-$pkgver"
 
   cd "$pkgname-$pkgver"
+
+  # Allow compatibility with JRE 15
+  sed -i 's/\(^-XX:+UseConcMarkSweepGC$\)/# \1/' "opt/$_pkgname/$_pkgname.vmoptions"
+
   bsdtar xf "opt/$_pkgname/lib/pdfstudio.jar" resources/license.html
 
   # Remove bundled JRE
