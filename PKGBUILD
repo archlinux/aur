@@ -36,6 +36,7 @@ _targets=(
 
 prepare() {
   cd "$_pkgbase-stable"
+  sed -i 's/if want_ossfuzz + want_libfuzzer > 1/if want_ossfuzz and want_libfuzzer/g' meson.build
   git apply ../249-libshared-static.patch
 }
 
