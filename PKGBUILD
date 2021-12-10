@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R55.20.g3d18191a
+pkgver=R57.47.geeae2eef
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -54,7 +54,6 @@ pkgver() {
 prepare() {
   mkdir -p build
   mkdir -p vapoursynth/doc/_static
-  sed "s|'vspipe', 'vspipe'|'output', 'vspipe'|g" -i vapoursynth/doc/conf.py
 }
 
 build() {
@@ -71,7 +70,11 @@ build() {
 }
 
 check() {
+  (cd build; make DESTDIR="$(pwd)/testdir" install)
   cd vapoursynth
+  _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
+  LD_LIBRARY_PATH=../build/testdir/usr/lib \
+  PYTHONPATH=../build/testdir${_site_packages}:${_site_packages} \
   python -m unittest discover -s test -p "*test.py" -v
 }
 
