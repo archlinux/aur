@@ -3,7 +3,7 @@ pkgbase=python-pytest-doctestplus
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Pytest plugin that provides advanced features for testing example code in documentation"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools-scm')
 #'python-sphinx')
 checkdepends=('python-pytest-remotedata')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d49a97f361eaddc5612f6b8af9bb29e2')
+md5sums=('0722247b329b08ce2084534e185b66a5')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
