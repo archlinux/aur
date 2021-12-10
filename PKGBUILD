@@ -1,8 +1,8 @@
 # Maintainer: Dave Simons <pkgs@simonsd.org> 
 
 pkgname=dynamic-colors-git
-pkgver=35325f4
-pkgrel=3
+pkgver=47a91bb
+pkgrel=1
 pkgdesc="Change terminal colors on the fly"
 arch=('any')
 url="https://github.com/sos4nt/dynamic-colors"
