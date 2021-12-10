@@ -2,7 +2,7 @@
 
 _plug=ocsuite
 pkgname=vapoursynth-tools-${_plug}-git
-pkgver=r2.74757c3
+pkgver=r6.c20a166
 pkgrel=1
 pkgdesc="Tools for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=("vapoursynth-tools-${_plug}")
 source=("${_plug}::git+https://github.com/OrangeChannel/${_plug}.git")
 sha256sums=('SKIP')
 
-_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
