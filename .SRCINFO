@@ -1,23 +1,19 @@
 pkgbase = python-pingparsing
 	pkgdesc = CLI and library parser and transmitter for `ping`
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/pingparsing
 	arch = any
 	license = MIT
-	checkdepends = python-pytest>=6.0.1
+	checkdepends = python-pytest
 	checkdepends = python-pytest-runner
 	checkdepends = python-dateutil
 	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python-humanreadable>=0.1.0
-	depends = python-humanreadable<1
-	depends = python-pyparsing>=2.0.3
-	depends = python-pyparsing<3
-	depends = python-subprocrunner>=1.2.2
-	depends = python-subprocrunner<2
-	depends = python-typepy>=1.1.0
-	depends = python-typepy<2
+	depends = python-humanreadable
+	depends = python-pyparsing
+	depends = python-subprocrunner
+	depends = python-typepy
 	provides = pingparsing
 	replaces = pingparsing
 	source = python-pingparsing-1.4.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pingparsing/pingparsing-1.4.0.tar.gz

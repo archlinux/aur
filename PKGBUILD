@@ -3,22 +3,14 @@
 
 pkgname=python-pingparsing
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI and library parser and transmitter for `ping`'
 arch=('any')
 url='https://github.com/thombashi/pingparsing'
 license=('MIT')
-depends=(
-  'python-humanreadable>=0.1.0'
-  'python-humanreadable<1'
-  'python-pyparsing>=2.0.3'
-  'python-pyparsing<3'
-  'python-subprocrunner>=1.2.2'
-  'python-subprocrunner<2'
-  'python-typepy>=1.1.0'
-  'python-typepy<2')
+depends=('python-humanreadable' 'python-pyparsing' 'python-subprocrunner' 'python-typepy')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest>=6.0.1' 'python-pytest-runner' 'python-dateutil' 'python-pytz')
+checkdepends=('python-pytest' 'python-pytest-runner' 'python-dateutil' 'python-pytz')
 provides=('pingparsing')
 replaces=('pingparsing')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pingparsing/pingparsing-$pkgver.tar.gz"
@@ -47,8 +39,8 @@ check() {
 package() {
   cd "pingparsing-$pkgver"
   PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
