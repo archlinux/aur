@@ -1,7 +1,7 @@
 pkgbase = elements-project
 	pkgdesc = Elements blockchain platform, a collection of feature experiments and extensions to the Bitcoin protocol
 	pkgver = 0.21.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ElementsProject/elements
 	arch = aarch64
 	arch = x86_64

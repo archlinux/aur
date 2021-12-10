@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento @ gmail.com>
 pkgname=elements-project
 pkgver=0.21.0.1
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'x86_64')
 pkgdesc="Elements blockchain platform, a collection of feature experiments and extensions to the Bitcoin protocol"
 url="https://github.com/ElementsProject/elements"

@@ -3,7 +3,7 @@ Description=Elements Liquid Blockchain
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/elements -daemon \
+ExecStart=/usr/bin/elementsd -daemon \
                             -pid=/run/elementsd/elementsd.pid \
                             -conf=/etc/elements/elements.conf \
                             -datadir=/var/lib/elementsd
