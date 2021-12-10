@@ -1,6 +1,6 @@
 # Maintainer: Kian Kasad <kian at kasad.com>
 pkgname=s6-man-pages-git
-pkgver=v2.10.0.2.1.r0.93b0e5c
+pkgver=v2.11.0.0.4.r0.efea5f8
 pkgrel=1
 pkgdesc='Manual pages for the s6 suite of software'
 arch=('any')
@@ -25,6 +25,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make MANPATH="$pkgdir/usr/share/man" install
+	install -d -m 0755 $pkgdir/usr/share/man/man{7,8}
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
 	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
