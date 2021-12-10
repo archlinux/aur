@@ -6,7 +6,7 @@ _pkgsrcname=emacs-which-key
 _pkgmaintainer=justbur
 _pkgdestdirname=which-key
 _versionprefix=v
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Emacs package that displays available keybindings in popup"
 pkgname=emacs-${_pkgdestdirname}
@@ -15,7 +15,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('be9a2164fe811cd5d5185f6b2d5b4b3fdef160a5b89573aca361d45d50fffb25')
+sha256sums=('e4feb39699905a85bf57e757400e63473b3fcdcf3644bc862a82db5c805b8e07')
 install=${pkgname}.install
 
 build() {

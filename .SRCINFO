@@ -1,13 +1,13 @@
 pkgbase = emacs-which-key
 	pkgdesc = Emacs package that displays available keybindings in popup
-	pkgver = 3.5.3
+	pkgver = 3.5.4
 	pkgrel = 1
 	url = https://github.com/justbur/emacs-which-key
 	install = emacs-which-key.install
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = emacs-which-key-3.5.3.tar.gz::https://github.com/justbur/emacs-which-key/archive/v3.5.3.tar.gz
-	sha256sums = be9a2164fe811cd5d5185f6b2d5b4b3fdef160a5b89573aca361d45d50fffb25
+	source = emacs-which-key-3.5.4.tar.gz::https://github.com/justbur/emacs-which-key/archive/v3.5.4.tar.gz
+	sha256sums = e4feb39699905a85bf57e757400e63473b3fcdcf3644bc862a82db5c805b8e07
 
 pkgname = emacs-which-key
