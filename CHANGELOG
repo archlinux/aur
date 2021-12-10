@@ -1,3 +1,14 @@
+4.5.1
+-----
+
+ - Add `max_length` parameter in :py:func:`pyteomics.parser.cleave`.
+ - Bugfix in :py:func:`pyteomics.parser.cleave` for `semi=True`.
+ - Add `regex` parameter in :py:func:`pyteomics.parser.cleave` and warn for possible typos in cleavage rule names.
+ - Add functions :py:func:`parser.icleave` (generator) and :py:func:`parser.xcleave` (list) to produce
+   peptide sequences with indices and possible repetitions.
+ - Bugfixes (`#63 <https://github.com/levitsky/pyteomics/pull/63>`_ and `#64 <https://github.com/levitsky/pyteomics/pull/64>`_
+   by Joshua Klein).
+
 4.5
 ---
 
