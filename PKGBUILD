@@ -14,9 +14,9 @@ provides=()
 conflicts=()
 replaces=()
 options=()
-source=("https://release.inivation.com/processing/$pkgname-$pkgver.zip")
+source=("https://release.inivation.com/processing/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('0f9465e0736dcb5d7a84d03b55e91209f282de60ec91c6f235b43b04eb765f92')
+sha256sums=('82842f94a7bce4680edd217bc75f0a47d67fbef0fd0dd16bc502680bed347e61')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
