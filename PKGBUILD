@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2021-09-09
-_rustc=1.55.0
+_date=2021-11-01
+_rustc=1.56.1
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.56.1
+pkgver=1.57.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('61fdcc8bc2530ee18f91318347e09b7cc07e9ca04b1c627c135ecc8dcb8f2ac5'
+sha256sums=('fad07ea1daf9c6195c32e6e9c43ece4565c5f2f1de3c3771574790d6abbc9704'
             'SKIP'
-            '160873f5ba5099b21202a1e62eb7b0588aabf88dd709f886b142ce60356b3006'
+            'b01011cbb5503c456ecc6a557a38e099994b8497df545c661ce8fd48c5beadc6'
             'SKIP'
-            'a602f4178d5adfa8428f89bd4045df029586d1bb87e04ae6ec2da7eb702a403d'
+            'a7001d1218b62d377cab15522d1b1c376b073c05f7d0ff32cf278871a5eeda3d'
             'SKIP'
-            '1ab9296faf1909fe3ac619ba208aeff905c39124504991c14e06462b9328493e'
+            'dfed65a50e2b58b6807c1fb6f8afa7abd5c3b22c682d505721d615823687c708'
             'SKIP'
-            '4cd21911ecdbe7f7c39091264d3f39551c4647eda80cf2b94f2923ba243391d7')
+            '25ddd6c6c4af4f7fde94dcd040c32ef53c5b16d7590f3bc306fe0c05a6380f9d')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
