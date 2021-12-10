@@ -19,9 +19,9 @@ pkgver() {
 package_colloid-gtk-theme-git() {
   pkgdesc="Modern and clean Gtk theme for linux"
   url="https://www.gnome-look.org/p/1661959"
+  optdepends=('gtk-engine-murrine: GTK2 theme support')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
-  optdepends=('gtk-engine-murrine: GTK2 theme support')
 
   cd "$srcdir/Colloid-gtk-theme"
   install -d "$pkgdir/usr/share/themes"
@@ -32,9 +32,9 @@ package_colloid-gtk-theme-git() {
 package_colloid-icon-theme-git() {
   pkgdesc="Modern and clean icon theme for linux"
   url="https://www.gnome-look.org/p/1661983"
+  depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
-  depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
 
   cd "$srcdir/Colloid-gtk-theme"
 
