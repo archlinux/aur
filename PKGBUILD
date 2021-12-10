@@ -1,51 +1,54 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=clair-git
-pkgver=v3.0.0.pre1.r35.g9897d151
+pkgver=4.3.5.r3.gc88c406f
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
-url='https://github.com/coreos/clair'
+url="https://github.com/quay/clair.git"
 license=(Apache)
 makedepends=('git' 'go')
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	version=$(git tag -l --sort=-v:refname | sed 's/v\([^-].*\)/\1/g' | head -1)
+	release=$(git describe --long --tags | sed 's/\([^-].*\)-\([0-9]*\)-\(g.*\)/r\2.\3/g')
+
+	echo "${version}.${release}" | sed -re 's/-//g' # strip hyphen
 }
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	install -m755 -d "${srcdir}/go/src/github.com/coreos/"
-	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/coreos/clair"
+    install -m755 -d "${srcdir}/go/src/github.com/quay/"
+    ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/quay/clair"
 
-	cd "${srcdir}/go/src/github.com/coreos/clair"
-
-	export GOPATH="${srcdir}/go" PATH="${srcdir}/go/bin:${PATH}"
-	go get -v ./...
+    cd "${srcdir}/go/src/github.com/quay/clair"
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/coreos/clair"
+	cd "${srcdir}/go/src/github.com/quay/clair"
 
-	mkdir -p build
+    export GOPATH="${srcdir}/go" PATH="${srcdir}/go/bin:${PATH}"
+    make
 
-	export GOPATH="${srcdir}/go" PATH="${srcdir}/go/bin:${PATH}"
-	go build \
-		-ldflags "-s -w -X github.com/coreos/clair/pkg/version.Version=${pkgver}" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
-		-o build/clair -v ./cmd/clair
+    go build -o clair -trimpath \
+        -ldflags "-s -w -X main.Version=${pkgver}" \
+        ./cmd/clair
+
+    go build -o clairctl -trimpath \
+        -ldflags "-s -w -X main.Version=${pkgver}" \
+        ./cmd/clairctl
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/coreos/clair"
+	cd "${srcdir}/go/src/github.com/quay/clair"
 
-	install -Dm755 "build/clair" "${pkgdir}/usr/bin/clair"
+	install -Dm755 "clair" "${pkgdir}/usr/bin/clair"
+	install -Dm755 "clairctl" "${pkgdir}/usr/bin/clair"
 	install -Dm755 "config.yaml.sample" "${pkgdir}/etc/clair/config.yaml"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
