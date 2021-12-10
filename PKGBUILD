@@ -1,7 +1,7 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=lc0
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
 		       specifically those of the LeelaChessZero project."
@@ -22,7 +22,7 @@ source=("$pkgname"
 	"lczero-common-master.tar.gz::https://github.com/LeelaChessZero/lczero-common/archive/master.tar.gz"
 	"$_weights::https://www.comp.nus.edu.sg/~sergio-v/t40/256x20/256x20-t40-1541.pb.gz")
 md5sums=('8ef8809da2c627dd2472859b157bb408'
-         '7d25819d8d277cd78ef730279e338abe'
+         'eba27fccaa7e3e162abda751fa77366b'
          'f0111da33207c6941ff06f268fba675f'
          '59da4859de827d3cd75866c40920f8a0')
 noextract=('$_weights')
@@ -30,11 +30,6 @@ noextract=('$_weights')
 prepare() {
   cp -PRu "$srcdir/lczero-common-master/proto" "$srcdir/$pkgname-$pkgver/libs/lczero-common/"
   rm -dr "$srcdir/lczero-common-master"
-  rm -f  "$srcdir/$pkgname-$pkgver/build-cl.cmd"
-  rm -f  "$srcdir/$pkgname-$pkgver/build-cuda-ninja.cmd"
-  rm -f  "$srcdir/$pkgname-$pkgver/build-cuda.cmd"
-  rm -f  "$srcdir/$pkgname-pkgver/install_openSUSE_lc0.sh"
-  rm -f  "$srcdir/$pkgname-pkgver/windows_build.md"
 }
 
 build() {
