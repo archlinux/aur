@@ -1,0 +1,16 @@
+# Original source:
+# https://gitlab.manjaro.org/applications/pamac/-/issues/772
+# Has been refactored and improved over time.
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/share/app-info/xmls/*.xml*
+
+[Action]
+Description = Fixing AppStream data for Pamac ...
+When = PostTransaction
+Exec = /usr/share/pamac-appstream-hook/pamac-fix-appstream-data.sh
+NeedsTargets
+

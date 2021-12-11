@@ -1,0 +1,13 @@
+pkgbase = pamac-appstream-hook
+	pkgdesc = Pacman hook for cleaning up Appstream data from tags that Pamac can't handle.
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/pamac-appstream-hook
+	arch = any
+	license = GPL
+	source = pamac-fix-appstream-data.hook
+	source = pamac-fix-appstream-data.sh
+	sha256sums = 4556916fcfcf1548d1ac2c9c37eb2e3b36559675ce4b50a96bc5b62da9d67780
+	sha256sums = 437a02357705f96f98c862ef3a95d22960e0a4b042003e81dbcab4730cee956e
+
+pkgname = pamac-appstream-hook
