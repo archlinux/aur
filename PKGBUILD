@@ -2,8 +2,8 @@
 #			Jake <aur@ja-ke.tech>
 
 pkgname=next
-pkgver=1.727
-_download_id='9chpuZOR'
+pkgver=2.018
+_download_id='ggLbDgGj6A7Aj5a'
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('x86_64')
@@ -14,11 +14,11 @@ optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joys
                 'antimicro: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
 
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.zip::https://www.magentacloud.de/api/sharelink/download?id=${_download_id}"
+source=("${pkgname}-${pkgver}.zip::https://magentacloud.de/s/${_download_id}/download/cgm-rc-flight-simulator-linux-2018.zip"
         "next.desktop"
         "next.sh")
 
-sha512sums=('3a18304066410dc6de2c3cbc83c8a394649b271ee6ebccb9752ee03ecee496183d9a63c00024f913128712e65bf36c4c3a74aa0e258222bc65119d412aa60a83'
+sha512sums=('81157eb03db5dd2275dba9eb07c29ee28f6de30deb92091d6d02b9e9993a9e523367d21f616078ca6550fcd70305c918aaccd12a8e0393f522379d4f05db3312'
             '73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d'
             'c982aea8a23d6259069f97a8a71f74270811488818ad0e5c8496047f94cf357d64fe3267f04628030d6b766dc3dd62d5d56ab0387e4ad5bd943a7e7a39598669')
 
