@@ -3,7 +3,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors 
 pkgname=veloren
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='An open-world, open-source multiplayer voxel RPG'
 arch=('x86_64' 'i686')

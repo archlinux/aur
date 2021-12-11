@@ -1,31 +1,30 @@
 pkgbase = veloren
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = systemd
+	makedepends = atk
+	makedepends = cairo
+	makedepends = gdk-pixbuf2
 	makedepends = git
 	makedepends = git-lfs
-	makedepends = rustup
-	makedepends = cairo
-	makedepends = pango
-	makedepends = atk
-	makedepends = gdk-pixbuf2
-	makedepends = python
 	makedepends = openssl
-	depends = systemd-libs
+	makedepends = pango
+	makedepends = python
+	makedepends = rustup
+	makedepends = systemd
 	depends = alsa-lib
-	depends = libxcb
+	depends = glslang
+	depends = libxkbcommon-x11
 	depends = pulseaudio-alsa
-	depends = vulkan-driver
 	depends = vulkan-icd-loader
 	provides = veloren
 	conflicts = veloren
 	options = !strip
-	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.10.0
+	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.11.0
 	sha512sums = SKIP
 
 pkgname = veloren
