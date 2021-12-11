@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
-	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk16
-	pkgver = 16.0.2b7_openj9_0.27.0
+	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk17
+	pkgver = 17.0.1b12_openj9_0.29.1
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = jdk-openj9-bin
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=16
-	provides = java-environment-openjdk=16
-	provides = java-runtime=16
-	provides = java-runtime-openjdk=16
-	provides = java-runtime-headless=16
-	provides = java-runtime-headless-openjdk=16
-	conflicts = jdk16-openj9-bin
-	conflicts = jdk16-openj9
+	provides = java-environment=17
+	provides = java-environment-openjdk=17
+	provides = java-runtime=17
+	provides = java-runtime-openjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	conflicts = jdk17-openj9-bin
+	conflicts = jdk17-openj9
 	options = !strip
-	source = https://github.com/ibmruntimes/semeru16-binaries/releases/download/jdk-16.0.2%2B7_openj9-0.27.0/ibm-semeru-open-jdk_x64_linux_16.0.2_7_openj9-0.27.0.tar.gz
-	sha256sums = 1349eb9a1d9af491a1984d66a80126730357c4a5c4fcbe7112a2c832f6c0886e
+	source = https://github.com/ibmruntimes/semeru17-binaries/releases/download/jdk-17.0.1%2B12_openj9-0.29.1/ibm-semeru-open-jdk_x64_linux_17.0.1_12_openj9-0.29.1.tar.gz
+	sha256sums = 154f6411742ee1f8cbf004d72e7e71053b9ad4e89090cb930b6f16951e56503e
 
 pkgname = jdk-openj9-bin
