@@ -1,5 +1,5 @@
 src
 pkg
 goxel-git
-*pkg.tar.xz
+*.pkg.tar.*
 tags

@@ -2,7 +2,7 @@
 
 pkgname=goxel-git
 pkgver=r126.0e00703
-pkgrel=2
+pkgrel=3
 pkgdesc="Download accelerator written in Go (inspired by axel)"
 url="https://github.com/m1ck43l/goxel"
 arch=('x86_64' 'i686')
@@ -22,11 +22,6 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/m1ck43l/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/m1ck43l/goxel"
-
-	cd "${srcdir}/go/src/github.com/m1ck43l/goxel"
-
-	export GOPATH="${srcdir}/go"
-	go get -v ./...
 }
 
 build() {
@@ -35,10 +30,8 @@ build() {
 	mkdir -p build
 
 	export GOPATH="${srcdir}/go"
-	go build -ldflags "-s -w" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
-		-o build/goxel .
+	go build -trimpath -modcacherw \
+		-ldflags "-s -w" -o build/goxel
 }
 
 package() {
