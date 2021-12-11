@@ -2,7 +2,7 @@
 
 pkgname=dive-git
 pkgver=v0.10.0.r2.gc7d121b
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/dive"
 arch=('x86_64' 'i686')
@@ -24,6 +24,11 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/wagoodman/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/wagoodman/dive"
+
+	cd "${srcdir}/go/src/github.com/wagoodman/dive"
+
+    export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
+    go get -v ./...
 }
 
 build() {
@@ -31,15 +36,15 @@ build() {
 
 	mkdir -p build
 
-	export GOPATH="${srcdir}/go"
+    export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
 	go build \
-		-trimpath -modcacherw \
-		-ldflags "-s -w" -o build/dive
+		-trimpath -ldflags "-s -w" \
+		-o build/dive
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/wagoodman/dive"
 
-	install -Dm755 "./build/dive" "${pkgdir}/usr/bin/dive"
-	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "build/dive" "${pkgdir}/usr/bin/dive"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
