@@ -2,7 +2,7 @@
 pkgbase=decklink
 pkgname=(decklink mediaexpress)
 _pkgname=decklink
-pkgver=12.2
+pkgver=12.2.2
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('!strip' 'staticlibs')
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/f3106b481e2b4cd5934a650c869be25f"
+_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/d58607f0c29d4e17a6813f5d06ab2959"
 _pkgsrc_file=${_pkgname}-${pkgver}.tar.gz
 
 DLAGENTS=("https::/usr/bin/curl \
@@ -30,10 +30,8 @@ DLAGENTS=("https::/usr/bin/curl \
 )
 
 source=("${_pkgsrc_file}"::"${_pkgsrc_url}"
-        "01-fix-alloc_tty_driver.patch"
     )
-sha256sums=('62954a18b60d9040aa4a959dff30ac9c260218ef78d6a63cbb243788f7abc05f'
-            'ede66414652d5bb669bf32eb8aa870d8e91889db23919a454606daa1a4c2cd73')
+sha256sums=('8bca946bd3f002d2d404a74210c881935351e1a0d03f750559b180fdb439ef35')
 
 prepare() {
   cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
@@ -42,11 +40,11 @@ prepare() {
 
   cd desktopvideo-*/usr/src
 
-  for p in ${srcdir}/*.patch;
-  do
-    echo "Applying ${p}"
-    patch --forward --strip=1 --input="${p}"
-  done
+  # for p in ${srcdir}/*.patch;
+  # do
+  #   echo "Applying ${p}"
+  #   patch --forward --strip=1 --input="${p}"
+  # done
 
 }
 
