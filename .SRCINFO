@@ -1,7 +1,7 @@
 pkgbase = zedpro
 	pkgdesc = Zed! Encrypted containers manager
 	pkgver = 2020.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.primx.eu
 	install = zedpro.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = zedpro
 	depends = libxslt
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	depends = libldap24
 	conflicts = zedfree
 	options = !strip
 	options = !emptydirs

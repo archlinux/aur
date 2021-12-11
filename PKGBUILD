@@ -3,12 +3,12 @@
 # Contributor: puleiya <ninettristan@gmail.com>
 pkgname=zedpro
 pkgver=2020.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Zed! Encrypted containers manager"
 arch=("i686" "x86_64")
 url="http://www.primx.eu"
 license=("Prim'X")
-depends=("libxslt" "qt5-base" "hicolor-icon-theme")
+depends=("libxslt" "qt5-base" "hicolor-icon-theme" "libldap24")
 conflicts=("zedfree")
 options=("!strip" "!emptydirs")
 install=${pkgname}.install
