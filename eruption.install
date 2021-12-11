@@ -4,9 +4,6 @@ post_install() {
     systemctl daemon-reload
     systemctl --global daemon-reload
 
-    systemctl reload dbus.service
-    udevadm control --reload-rules
-
     systemctl preset eruption
     systemctl preset eruption-audio-proxy
     systemctl preset eruption-process-monitor
@@ -14,20 +11,23 @@ post_install() {
     systemctl enable --now eruption.service
     systemctl --global enable --now eruption-audio-proxy.service
     # systemctl --global enable --now eruption-process-monitor.service
+
+    systemctl reload dbus.service
+    udevadm control --reload-rules
 }
 
 post_upgrade() {
     setcap cap_net_admin+ep /usr/bin/eruption-process-monitor
 
     systemctl daemon-reload
-    # systemctl --global daemon-reload
-
-    systemctl reload dbus.service
-    udevadm control --reload-rules
+    systemctl --global daemon-reload
 
     systemctl try-restart eruption.service
     systemctl --global try-restart eruption-audio-proxy.service
     systemctl --global try-restart eruption-process-monitor.service
+
+    systemctl reload dbus.service
+    udevadm control --reload-rules
 }
 
 pre_remove() {
