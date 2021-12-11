@@ -1,7 +1,7 @@
 pkgbase = python-glyphslib
 	pkgdesc = A bridge from Glyphs source files (.glyphs) to UFOs
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/glyphsLib
 	arch = any
 	license = Apache
@@ -11,7 +11,6 @@ pkgbase = python-glyphslib
 	checkdepends = python-ufonormalizer
 	checkdepends = python-xmldiff
 	makedepends = python-defcon
-	makedepends = python-dephell
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-fonttools
