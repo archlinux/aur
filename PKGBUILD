@@ -1,14 +1,14 @@
 # Maintainer: hellosway hellosway@protonmail.com
 pkgname=mcpppp
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.7
+pkgrel=1
 pkgdesc="Converter for minecraft resourcepacks"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url="https://github.com/supsm/MCPPPP"
 license=('MPL-2.0')
 conflicts=(mcpppp-git)
 source=(https://github.com/supsm/MCPPPP/archive/refs/tags/$pkgver.tar.gz)
-md5sums=('f7d40a9979a7ced73b9403409e27d3bf')
+md5sums=('665d2823e86e78c4b160ca2a9aa0f92a')
 
 build() {
     cd "${pkgname^^}-$pkgver"

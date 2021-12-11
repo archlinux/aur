@@ -1,14 +1,13 @@
 pkgbase = mcpppp
 	pkgdesc = Converter for minecraft resourcepacks
-	pkgver = 0.5.6
-	pkgrel = 2
+	pkgver = 0.5.7
+	pkgrel = 1
 	url = https://github.com/supsm/MCPPPP
 	arch = x86_64
 	arch = aarch64
-	arch = armv7h
 	license = MPL-2.0
 	conflicts = mcpppp-git
-	source = https://github.com/supsm/MCPPPP/archive/refs/tags/0.5.6.tar.gz
-	md5sums = f7d40a9979a7ced73b9403409e27d3bf
+	source = https://github.com/supsm/MCPPPP/archive/refs/tags/0.5.7.tar.gz
+	md5sums = 665d2823e86e78c4b160ca2a9aa0f92a
 
 pkgname = mcpppp
