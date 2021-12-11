@@ -2,13 +2,13 @@
 
 pkgname=wezterm-nightly-bin
 pkgver=20200517.122836.92c201c6.105.g5d508350
-pkgrel=9
+pkgrel=10
 pkgdesc='Bleeding edge builds of a GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
 license=('MIT')
 provides=('wezterm')
-conflicts=('wezterm-bin')
+conflicts=('wezterm-bin' 'wezterm' 'wezterm-git')
 # Don't strip: it will break the AppImage!
 options=('!strip')
 depends=('fuse')
