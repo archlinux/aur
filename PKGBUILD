@@ -1,22 +1,25 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
-pkgname=aws-cdk
-pkgver=1.134.0
+_pkgname=aws-cdk
+pkgname=aws-cdk-v1
+pkgver=1.135.0
 pkgrel=1
 pkgdesc="CDK Toolkit, the command line tool for CDK apps"
 arch=(any)
 url="https://github.com/awslabs/aws-cdk#readme"
 license=('Apache')
+provides=(aws-cdk)
+conflicts=(aws-cdk)
 makedepends=('npm')
 depends=('nodejs')
 optdepends=('python: python language support')
-source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha1sums=('c25e8f9fde10a5732e036a7c121444171ee7f872')
+source=(http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
+sha1sums=('b997b33ecf2109bf6286c6eefff37bf125fc78d9')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" $_pkgname@$pkgver
   chown 0:0 -R "$pkgdir"
 }
