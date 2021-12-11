@@ -18,6 +18,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make PREFIX=/usr DESTDIR="$pkgdir" install
+	make PREFIX=/usr DESTDIR="$pkgdir" DEPS=libutf8proc install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
