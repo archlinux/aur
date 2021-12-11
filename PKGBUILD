@@ -1,8 +1,8 @@
 # Maintainer: li <lcj211@aihlp.com>
 
 pkgname=systemd-godns
-pkgver=1.0.0
-pkgrel=6
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="systemd for godns"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
