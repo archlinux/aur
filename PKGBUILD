@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-nvidia
-pkgver=4.5.0
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -16,8 +16,8 @@ _hipamd='https://github.com/ROCm-Developer-Tools/hipamd'
 source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
         'disable-testing.patch')
-sha256sums=('4026f31fb4f8050e9aa9d4294f29c3410bfb38422dbbae4236ccd65fed4d55b2'
-            '7b93ab64d6894ff9b5ba0be35e3ed8501d6b18a2a14223d6311d72ab8a9cdba6'
+sha256sums=('c2113dc3c421b8084cd507d91b6fbc0170765a464b71fb0d96bb875df368f160'
+            'b6f35b1a1d0c466b5af28e26baf646ae63267eccc4852204db1e0c7222a39ce2'
             '3f158fb78296477db176c53a8df60b8034004c400b6c62f558c94663a5246883')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _dirhipamd="$(basename "$_hipamd")-$(basename "${source[1]}" ".tar.gz")"
