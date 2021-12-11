@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('rust' 'cargo')
 provides=('rconv')
 conflicts=('rconv')
-source=(git+"https://github.com/abdurehman4/rconv.git#branch=1.0.4")
+source=(git+"https://github.com/abdurehman4/rconv.git#commit=1a1e2f0e4b0adc067c06842bef1626f8762139b5")
 md5sums=('SKIP')
 
 build() {
