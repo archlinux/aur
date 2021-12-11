@@ -3,9 +3,7 @@ pkgbase = qdre-git
 	pkgver = 3cc6842
 	pkgrel = 1
 	url = https://gitlab.com/zaps166/qdre
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	groups = qdre
 	license = MIT
 	makedepends = fakeroot
@@ -17,15 +15,12 @@ pkgbase = qdre-git
 	depends = qt5-x11extras
 	depends = glib2
 	depends = gnome-menus
-	depends = libgtop
 	depends = exiv2
 	depends = kcrash
 	depends = kwindowsystem
-	depends = qrencode
 	depends = libxcb
 	optdepends = drkonqi
 	source = git+https://gitlab.com/zaps166/qdre.git#branch=master
 	sha1sums = SKIP
 
 pkgname = qdre-git
-
