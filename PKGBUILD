@@ -2,7 +2,7 @@
 
 pkgname=virusgotal-git
 pkgver=1.0.2.r5.g295d2dc
-pkgrel=2
+pkgrel=3
 pkgdesc='VirusTotal zero dependency command line client.'
 arch=(x86_64)
 url="https://github.com/moldabekov/virusgotal"
@@ -27,9 +27,7 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/moldabekov/virusgotal"
 
-	export GO111MODULE="auto"
-	export GOPATH="${srcdir}/go"
-
+	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
 	go get -v ./...
 }
 
@@ -38,18 +36,14 @@ build() {
 
 	mkdir -p build
 
-	export GO111MODULE="auto"
-	export GOPATH="${srcdir}/go"
-
-	go build -ldflags "-s -w" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
+	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
+	go build -trimpath -ldflags "-s -w" \
 		-o build/virusgotal
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/moldabekov/virusgotal"
 
-	install -Dm755 "./build/virusgotal" "${pkgdir}/usr/bin/virusgotal"
-	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "build/virusgotal" "${pkgdir}/usr/bin/virusgotal"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
