@@ -1,9 +1,9 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=alizams-qt5-git
-pkgver=1.6.3.1.r1.gb80baea
+pkgver=1.7.2.r12.gb99831d
 pkgrel=1
-pkgdesc=""
+pkgdesc="Qt5 DICOM Viewer"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.aliza-dicom-viewer.com/"
 license=(GPL3)

@@ -1,5 +1,6 @@
 pkgbase = alizams-qt5-git
-	pkgver = 1.6.3.1.r1.gb80baea
+	pkgdesc = Qt5 DICOM Viewer
+	pkgver = 1.7.2.r12.gb99831d
 	pkgrel = 1
 	url = https://www.aliza-dicom-viewer.com/
 	arch = x86_64
