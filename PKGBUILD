@@ -1,7 +1,7 @@
 # Maintainer Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=libxsmm
-pkgver=1.16.3
+pkgver=1.17
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A library for small dense and small sparse matrix-matrix multiplications"
@@ -11,8 +11,8 @@ depends=('gcc-libs')
 makedepends=('gcc-fortran' 'python')
 checkdepends=('blas' 'lapack')
 conflicts=('libxsmm-git')
-source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('e491ccadebc5cdcd1fc08b5b4509a0aba4e2c096f53d7880062a66b82a0baf84')
+source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
+sha256sums=('8b642127880e92e8a75400125307724635ecdf4020ca4481e5efe7640451bb92')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -40,8 +40,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make PREFIX="$pkgdir/usr" install
   cd "$pkgdir/usr"
-  install -dm755 share/licenses/libxsmm
-  ln -sf share/libxsmm/LICENSE.md share/licenses/libxsmm
+  install -Dm755 share/libxsmm/LICENSE.md share/licenses/libxsmm/LICENSE.md
   find . -name "*.pc" -exec sed -i "/prefix=/c prefix=\/usr" {} \;
   find lib -name "libxsmm" -exec sed -i "s@$srcdir/$pkgname-$pkgver@/usr@g" {} \;
   install -dm755 lib/pkgconfig
