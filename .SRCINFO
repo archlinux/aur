@@ -6,6 +6,7 @@ pkgbase = bustd-pacman-hooks
 	arch = any
 	groups = bustd
 	license = MIT
+	depends = bustd
 	source = bustd-install.hook
 	source = bustd-remove.hook
 	source = bustd-upgrade.hook
