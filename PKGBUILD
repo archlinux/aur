@@ -2,7 +2,7 @@
 
 pkgname=mint-themes
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
@@ -25,7 +25,6 @@ conflicts=(
     mint-x-theme
     mint-y-theme
     mint-cinnamon-themes
-    mint-themes-legacy
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('78ff612998d29edfe935a6cb9891c253fd03324b34aa98085ed5af80d8e53f51')
