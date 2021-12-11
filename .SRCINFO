@@ -1,0 +1,17 @@
+pkgbase = obliviate
+	pkgdesc = A password manager that forgets your passwords
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/elfenware/obliviate
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = granite
+	depends = gtk3
+	depends = libgcrypt
+	source = https://github.com/elfenware/obliviate/archive/v2.1.0.tar.gz
+	sha512sums = 093bf5a1e8e6bc1d51c0f157b1eb73cf9aa2d9a49e1ae31c179719c448fbd774153f2dda09443d9737ad47d040e336945b7b33998055d31ea3abd9d0ce3bebe6
+
+pkgname = obliviate
