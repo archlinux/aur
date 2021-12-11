@@ -58,11 +58,33 @@ package_mingw-w64-libpurple(){
     pushd build-${_arch}/libpurple
     #ls win32-install-dir
     
-    install -d -m755 "$pkgdir/usr/$_arch/include/libpurple" "$pkgdir/usr/$_arch/bin" "$pkgdir/usr/$_arch/lib"
+    install -d -m755 "$pkgdir/usr/$_arch/include/libpurple" "$pkgdir/usr/$_arch/bin" "$pkgdir/usr/$_arch/lib" "$pkgdir/usr/$_arch/lib/pkgconfig"
     install -m644 `ls *.h | grep -v 'internal.h\|purple-client.h\|valgrind.h'` "$pkgdir/usr/$_arch/include/libpurple"
     install -m644 libpurple.dll.a "$pkgdir/usr/$_arch/lib"
     install -m755 libpurple.dll "$pkgdir/usr/$_arch/bin"
-    
+
+{
+echo "prefix=/usr/$_arch"
+cat <<'EOFCONF'
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+datarootdir=${prefix}/share
+datadir=${datarootdir}
+sysconfdir=${prefix}/etc
+gstreamer=1.0
+
+plugindir=${libdir}/purple-2
+
+Name: libpurple
+Description: libpurple is a GLib-based instant messenger library.
+Version: 2.14.8
+Requires: glib-2.0
+Cflags: -I${includedir}/libpurple
+Libs: -L${libdir} -lpurple
+EOFCONF
+} >"${pkgdir:?}/usr/${_arch:?}/lib/pkgconfig/purple.pc"
+
     popd
   done
 }
