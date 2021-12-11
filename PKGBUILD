@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16 at wp dot pl>
 
 pkgname=qdre-git
-pkgver=3cc6842
+pkgver=cd3e93a
 pkgrel=1
 pkgdesc='Qt Desktop Regular Environment (early development)'
 arch=('x86_64')
