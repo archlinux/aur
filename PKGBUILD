@@ -2,7 +2,7 @@
 # Based on extra/sdl2 PKGBUILD
 
 pkgname=sdl2-static
-pkgver=2.0.16
+pkgver=2.0.18
 pkgrel=1
 pkgdesc="SDL2 with libraries for static linking"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
 source=("https://www.libsdl.org/release/SDL2-${pkgver}.tar.gz"{,.sig})
-sha512sums=('ec75ef8526792650c2647b78bb0244f973774418aeae33a2182d90ce696b30acb652f8be9c2012a16c1c5d5622f7630ff2e1eadae27ea3dc78ab47730cf5e62f'
+sha512sums=('8688b855ce15d574fb0726dd2a44109bb7b34d81c652c51025a32bf7eb7015ceb685834cf9fc3f97a2f5f5a3203f548ce6845420fafae7e5dc6bb9d11ce1740d'
             'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 options=('staticlibs')
