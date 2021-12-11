@@ -1,12 +1,13 @@
 pkgbase = bibtex-tidy
 	pkgdesc = BibTeX Tidy - Cleaner and Formatter for BibTeX files
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FlamingTempura/bibtex-tidy
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
+	makedepends = txt2man
 	depends = nodejs
 	noextract = bibtex-tidy-1.8.5.tgz
 	source = https://registry.npmjs.org/bibtex-tidy/-/bibtex-tidy-1.8.5.tgz
