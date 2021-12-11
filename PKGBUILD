@@ -4,13 +4,13 @@
 
 pkgname=razercfg
 pkgver=0.42
-pkgrel=4
+pkgrel=5
 pkgdesc='Razer mouse configuration tool'
 arch=('x86_64')
 url=https://bues.ch/cms/hacking/razercfg
 license=('GPL')
 depends=('hicolor-icon-theme' 'libusb' 'python')
-makedepends=('cmake')
+makedepends=('cmake' 'systemd')
 optdepends=('python-pyqt5: for the graphical qrazercfg tool')
 provides=('razerd')
 backup=('etc/razer.conf')
