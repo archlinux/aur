@@ -1,7 +1,7 @@
-# Maintainer: Michal Wojdyla <micwoj9292 at gmail dot com>
+# Contributor: Michal Wojdyla <micwoj9292 at gmail dot com>
 
 pkgname=kdevelop-python-git
-pkgver=5.6.2.r3.gf8b381b6
+pkgver=5.6.1.r31.g95dc8683
 pkgrel=1
 pkgdesc="Python language and documentation plugin for KDevelop, git version"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules git)
 optdepends=('python-pycodestyle: for Python style checking')
 provides=('kdevelop-python')
 conflicts=('kdevelop-python')
-source=("git+https://invent.kde.org/kdevelop/kdev-python.git#branch=5.6") # currently master branch fails
+source=("git+https://invent.kde.org/kdevelop/kdev-python.git")
 sha256sums=('SKIP')
 
 pkgver() {

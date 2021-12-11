@@ -1,6 +1,6 @@
 pkgbase = kdevelop-python-git
 	pkgdesc = Python language and documentation plugin for KDevelop, git version
-	pkgver = 5.6.2.r3.gf8b381b6
+	pkgver = 5.6.1.r31.g95dc8683
 	pkgrel = 1
 	url = http://www.kdevelop.org/
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = kdevelop-python-git
 	optdepends = python-pycodestyle: for Python style checking
 	provides = kdevelop-python
 	conflicts = kdevelop-python
-	source = git+https://invent.kde.org/kdevelop/kdev-python.git#branch=5.6
+	source = git+https://invent.kde.org/kdevelop/kdev-python.git
 	sha256sums = SKIP
 
 pkgname = kdevelop-python-git
-
