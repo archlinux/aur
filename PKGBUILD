@@ -2,7 +2,7 @@
 
 pkgname=lemonade-git
 pkgver=v1.1.1.r20.g97ad2f7
-pkgrel=1
+pkgrel=2
 pkgdesc='A remote utility tool (copy, paste and open browser) over TCP.'
 url="https://github.com/lemonade-command/lemonade"
 arch=('x86_64' 'i686')
@@ -22,27 +22,16 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/lemonade-command/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/lemonade-command/lemonade"
-
-	cd "${srcdir}/go/src/github.com/lemonade-command/lemonade"
-
-	export GO111MODULE="auto"
-	export GOPATH="${srcdir}/go"
-
-	go get -v ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/lemonade-command/lemonade"
 
-	mkdir -p build
-
-	export GO111MODULE="auto"
 	export GOPATH="${srcdir}/go"
 
-	go build \
+	mkdir -p build
+	go build -trimpath \
 		-ldflags "-s -w -X github.com/lemonade-command/lemonade/lemon.Version=${pkgver}" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
 		-o build/lemonade
 }
 
