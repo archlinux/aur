@@ -1,79 +1,35 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
-# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
-# You may find it convenient to file issues and pull requests there.
+# Maintainer: Francesco Cherchi <francesco.cherchi@protonmail.com>
+# Contributor: Francesco Cherchi <francesco.cherchi@protonmail.com>
+# Contributor: XZS <d dot f dot fischer at web dot de>
 
 pkgname=gnome-shell-extension-scroll-workspaces-git
-pkgver=r59
+_srcname=gnome-shell-scroll-workspaces
+pkgver=r73.3b97321
 pkgrel=1
-pkgdesc="Switch workspaces by scrolling in the top panel"
-arch=(any)
-url="http://github.com/gfxmonk/gnome-shell-scroll-workspaces"
-license=(GPLv2)
+pkgdesc="Change workspaces by scrolling while over the top panel in Gnome Shell"
+url="https://github.com/timbertson/${_srcname}"
+arch=('any')
+license=("unknown")
+depends=( "gnome-shell" )
+makedepends=("git" "python" "jq")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
+md5sums=('SKIP')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
-for integ in $(get_integlist)
-do
-  typeset -n array="${integ}sums"
-  array+=('SKIP')
-done
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
 pkgver() {
-  cd ${_gitname:-$pkgname}
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-  [ ${PIPESTATUS[0]} -ne 0 ] && \
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_srcname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+build() {
+  cd "${_srcname}"
+  python tools/gup
+}
+
 package() {
-  for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
-  do
-    $function
-  done
-}
-package_01_locate() {
-  msg2 'Locating extension...'
-  cd "$(find -name 'metadata.json' -execdir test -e extension.js \; \
-    -printf '%C@ %h\n' | sort -nr | sed 's/^.* //;q' )"
-  extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  destdir="$pkgdir/usr/share/gnome-shell/extensions/$extname"
+  cd "${_srcname}"
+  mkdir --parents "${pkgdir}/usr/share/gnome-shell/extensions"
+  mv "${_srcname#gnome-shell-}" "${pkgdir}/usr/share/gnome-shell/extensions/$(jq -r .uuid "${_srcname#gnome-shell-}/metadata.json")"
 }
 
-package_02_install() {
-  msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
-    -exec install -Dm644 -t "$destdir" '{}' +
-}
-depends+=(gnome-shell-extensions)
-
-package_03_unify_conveniencejs() {
-  ln -fs \
-    ../user-theme@gnome-shell-extensions.gcampax.github.com/convenience.js \
-    "$destdir/convenience.js"
-}
-if [ -z "$install" ]
-then
-  install=gschemas.install
-fi
-
-package_10_schemas() {
-  msg2 'Installing schemas...'
-  find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
-}
-depends[125]=gnome-shell
-
-package_20_version() {
-  local compatibles=($(\
-    find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec cat '{}' \; | \
-    tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
-  unset depends[125]
-}
