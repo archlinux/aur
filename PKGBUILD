@@ -75,7 +75,7 @@ package_qubes-vm-core() {
              gnome-packagekit imagemagick fakeroot notification-daemon dconf
              zenity qubes-libvchan qubes-db-vm haveged python-gobject
              python-dbus xdg-utils notification-daemon gawk sed procps-ng librsvg
-             socat pacman-contrib
+             socat pacman-contrib icu
             # Block updating if there is a major python update as the python API will be in the wrong PYTHONPATH
             'python<3.10'
              )

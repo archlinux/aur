@@ -63,6 +63,7 @@ pkgname = qubes-vm-core
 	depends = librsvg
 	depends = socat
 	depends = pacman-contrib
+	depends = icu
 	depends = python<3.10
 	optdepends = gnome-keyring
 	optdepends = gnome-settings-daemon
