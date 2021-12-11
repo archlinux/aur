@@ -2,7 +2,7 @@
 
 pkgname=clair-git
 pkgver=4.3.5.r3.gc88c406f
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
 url="https://github.com/quay/clair.git"
@@ -25,21 +25,19 @@ prepare() {
 
     install -m755 -d "${srcdir}/go/src/github.com/quay/"
     ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/quay/clair"
-
-    cd "${srcdir}/go/src/github.com/quay/clair"
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/quay/clair"
 
     export GOPATH="${srcdir}/go" PATH="${srcdir}/go/bin:${PATH}"
-    make
+    # make
 
-    go build -o clair -trimpath \
+    go build -o clair -trimpath -modcacherw \
         -ldflags "-s -w -X main.Version=${pkgver}" \
         ./cmd/clair
 
-    go build -o clairctl -trimpath \
+    go build -o clairctl -trimpath -modcacherw \
         -ldflags "-s -w -X main.Version=${pkgver}" \
         ./cmd/clairctl
 }

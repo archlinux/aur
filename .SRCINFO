@@ -1,7 +1,7 @@
 pkgbase = clair-git
 	pkgdesc = Vulnerability Static Analysis for Containers
 	pkgver = 4.3.5.r3.gc88c406f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quay/clair.git
 	arch = x86_64
 	license = Apache
