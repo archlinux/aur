@@ -1,6 +1,6 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=rocm-dbgapi
-pkgver=4.5.0
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Support library necessary for a debugger of AMD's GPUs"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('comgr' 'hsa-rocr')
 makedepends=('cmake' 'rocm-cmake' 'git' 'doxygen' 'texlive-latexextra')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('583bbf18df593f376c4cc70f25b68c191bd38fde20a336c0f5c8e5d85fda2fcf')
+sha256sums=('9fa574e8389ef69d116caf714af2f938777e0aeeaadd7fad451cf5d2e6699c6e')
 _dirname=$(basename "$url")-$(basename "${source[0]}" ".tar.gz")
 
 build() {
