@@ -7,7 +7,7 @@ _commit="95e19b8"
 _cefbranch="4638"
 _chromiumver="95.0.${_cefbranch}.69"
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio beta release in /opt/cef-obs"
 arch=("i686" "x86_64" "aarch64")
@@ -16,7 +16,7 @@ license=("BSD")
 depends=("nss" "alsa-lib" "pango" "libxrandr" "libxcomposite"
          "at-spi2-atk" "libxkbcommon" "libcups" "mesa")
 makedepends=("cmake")
-provides=("cef-minimal-obs=$_version")
+provides=("cef-minimal-obs")
 conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
 options=('!lto')
