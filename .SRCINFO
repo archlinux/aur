@@ -1,0 +1,16 @@
+pkgbase = plasma-desktop-run-command
+	pkgdesc = See the project's homepage for more information
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/wsdfhjxc/run-command
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	provides = plasma-desktop-run-command
+	source = run-command-1.1.tar.gz::https://github.com/wsdfhjxc/run-command/archive/refs/tags/1.1.tar.gz
+	sha256sums = 8e5a143df53864487f67b391e85012cd75f43e1a13d832cc118ba2948a14fb53
+
+pkgname = plasma-desktop-run-command
