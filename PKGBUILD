@@ -16,7 +16,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.40.r16.gc03d1029
+pkgver=0.3.40.r125.gbcd867f8
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -26,6 +26,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
+             lilv
              avahi openssl
              gst-plugins-base-libs
              jack2
@@ -78,7 +79,8 @@ package_pipewire-full-git() {
            libsndfile.so libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
-           libfreeaptx.so libfdk-aac.so)
+           libfreeaptx.so libfdk-aac.so
+           liblilv-0.so)
   optdepends=('pipewire-session-manager: Session manager'
               'pipewire-full-docs-git: Documentation'
               'pipewire-full-alsa-git: ALSA configuration'
