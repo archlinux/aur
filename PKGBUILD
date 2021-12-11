@@ -10,7 +10,7 @@ arch=('i386' 'x86_64')
 depends=('brother-lpr-drivers-common' 'cups')
 [ $CARCH == "x86_64" ] && _a="amd64" && md5sums=(
   'a0eba0401fe80b7a4c1de777032d24f1')
-[ $CARCH == "i686" ] && _a="i386" && md5sums=(
+[ $CARCH == "i386" ] && _a="i386" && md5sums=(
   '0606a3bddcc387254eb0c0ffeadae72c')
 source=(http://ubuntu-master.mirror.tudos.de/ubuntu/pool/multiverse/b/${pkgname}/${pkgname}_${pkgver}-10-0ubuntu7_${_a}.deb)
 
