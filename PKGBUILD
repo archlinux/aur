@@ -1,10 +1,10 @@
-# Maintainer: Sam S. <smls75@gmail.com> 
+# Contributor: Sam S. <smls75@gmail.com> 
 # Contributor: trya <tryagainprod@gmail.com>
 
 pkgname=braid-hib
 pkgver=1.1+h20150611
 _hibver=2015-06-11
-pkgrel=1
+pkgrel=2
 pkgdesc="A puzzle platformer where you manipulate the flow of time (Humble Bundle/Store version)"
 url="http://braid-game.com"
 license=('custom: "commercial"')
@@ -14,7 +14,7 @@ depends_i686=('sdl2' 'nvidia-cg-toolkit' 'fltk')
 depends_x86_64=('lib32-sdl2' 'lib32-nvidia-cg-toolkit' 'lib32-fltk')
 optdepends_i686=('libtxc_dxtn: For more efficient texture handling when using one of the open-source Mesa graphics drivers')
 optdepends_x86_64=('lib32-libtxc_dxtn: For more efficient texture handling when using one of the open-source Mesa graphics drivers')
-options=('!strip' '!upx')
+options=('!strip')
 replaces=('braid')
 PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')

@@ -1,7 +1,7 @@
 pkgbase = braid-hib
 	pkgdesc = A puzzle platformer where you manipulate the flow of time (Humble Bundle/Store version)
 	pkgver = 1.1+h20150611
-	pkgrel = 1
+	pkgrel = 2
 	url = http://braid-game.com
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = braid-hib
 	depends = xdg-utils
 	replaces = braid
 	options = !strip
-	options = !upx
 	source = BraidSetup-2015-06-11.sh::hib://BraidSetup-2015-06-11.sh
 	source = braid.desktop
 	md5sums = 3650fa470b4794677086e792ddc29aa5
@@ -24,4 +23,3 @@ pkgbase = braid-hib
 	optdepends_x86_64 = lib32-libtxc_dxtn: For more efficient texture handling when using one of the open-source Mesa graphics drivers
 
 pkgname = braid-hib
-
