@@ -8,7 +8,7 @@ pkgname=${_pkgname}-bin
 
 _ghrepo=andydecleyre/archbuilder_${_pkgname}
 
-pkgver=3.2.2   # match telegram-desktop-userfonts:pkgver
+pkgver=3.2.5   # match telegram-desktop-userfonts:pkgver
 _pkgrel=1      # match telegram-desktop-userfonts:pkgrel
 
 pkgrel=1
@@ -32,7 +32,7 @@ optdepends=('gtk3: GTK environment integration'
 source=("https://github.com/${_ghrepo}/releases/download/${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst")
 
 # sha512sums match latest successful build at releases URL
-sha512sums=('20ab4e5978e60e6c2e4944ba1ceef89e897561091fa3f75b745e6a1ef64e106aced03094fde3bf0adfbd3fb0d4673126502bcd719f9f066f9c70217ae8909cf1')
+sha512sums=('162a77e34adf53e2ea95dbcb40a2ca40a15f88de21d48159009e2cd31e198487389ba8dc7398d2f8d092c4cd48215b65e77dafacb0e7f84bcf40d1a2cfe61eae')
 
 package() {
   cp -a usr $pkgdir/
