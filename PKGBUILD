@@ -5,10 +5,9 @@ pkgver=1.4.3.2.51716
 pkgrel=1
 epoch=1
 
-_gogrel=47102
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
-_setupname="setup_${_gamename}_${pkgver}_${_gogrel}.sh"
+_setupname="setup_${_gamename}_${pkgver}.sh"
 
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
