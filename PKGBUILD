@@ -6,7 +6,7 @@
 
 pkgname=marktext
 pkgver=0.16.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=(x86_64)
 url='https://marktext.app'
@@ -15,9 +15,10 @@ _electron=electron11
 depends=("$_electron"
          libxkbfile
          libsecret
+         openssl
          ripgrep)
 makedepends=(jq
-             nodejs
+             nodejs-lts-gallium
              npm
              node-gyp
              moreutils
