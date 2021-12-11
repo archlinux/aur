@@ -5,8 +5,7 @@ pkgbase = otf-antykwa-torunska
 	url = https://jmn.pl/en/antykwa-torunska/
 	arch = any
 	license = custom
-	source = https://jmn.pl/pliki/AntykwaTorunska-otf-2_08.zip
+	source = https://jmn.pl/download/AntykwaTorunska-otf-2_08.zip
 	sha256sums = 9f225ce269b5757b31019435077ea84606ba56b7d36a0b94f51dacd370b5868d
 
 pkgname = otf-antykwa-torunska
-

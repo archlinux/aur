@@ -7,7 +7,7 @@ pkgdesc='Open Type Antiqua of Torun, a two-element typeface designed by Zygfryd 
 arch=('any')
 url='https://jmn.pl/en/antykwa-torunska/'
 license=('custom')
-source=("https://jmn.pl/pliki/AntykwaTorunska-otf-${pkgver/./_}.zip")
+source=("https://jmn.pl/download/AntykwaTorunska-otf-${pkgver/./_}.zip")
 sha256sums=('9f225ce269b5757b31019435077ea84606ba56b7d36a0b94f51dacd370b5868d')
 
 package() {
