@@ -2,14 +2,14 @@
 
 pkgname=httptoolkit
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
 url="https://httptoolkit.tech/"
 license=('GPL3')
 depends=()
-makedepends=(npm zip)
+makedepends=(npm zip git)
 checkdepends=()
 optdepends=()
 provides=()
@@ -53,3 +53,4 @@ package() {
     ln -s "/opt/${pkgname}/httptoolkit" "${pkgdir}/usr/bin/${pkgname}"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i "s|$srcdir||g"
 }
+
