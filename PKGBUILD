@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=obs-cli
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="OBS-cli is a command-line remote control for OBS"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/muesli/${pkgname}"
 license=('MIT')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7a54fb6695ae663ab83b5327d9e470f7adb5d95996b071fc644762ceddc052bc')
+sha256sums=('9b7fc1e8fc265ea4db66bd57092ef37451a093d4fd73b88856adafb26fd86a9e')
 
 build() {
     local commit
