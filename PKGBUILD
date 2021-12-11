@@ -39,7 +39,7 @@ fi
 
 pkgbase=linux-mt
 _major=5.15
-_minor=4
+_minor=7
 pkgver=${_major}.${_minor}
 _branch=5.x
 pkgrel=1
@@ -56,9 +56,10 @@ options=('!strip')
 _srcname="linux-${pkgver}-cpu-optimized${pkgrel}"
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.${_minor}.tar."{xz,sign}
-  config         # the main kernel config file
   "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.15+.patch"
   choose-gcc-optimization.sh
+  "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/linux/trunk/config" # Config file to edit
+  linux-mt-prepare.sh
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -75,11 +76,12 @@ validpgpkeys=(
     #source+=("${_patch}::https://raw.gigthubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 #done
 
-sha256sums=('549d0fb75e65f6158e6f4becc648f249d386843da0e1211460bde8b1ea99cbca'
+sha256sums=('5d9050a839edc7480c5c8f7a284cd28bee6db07bec9e41c684f399192bbe5db1'
             'SKIP'
-            '24f326d127b5d01cf649ee626105806c632f367e3169a7c2036fadea2f555dd8'
             '380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d'
-            'f0559045319db718af902f0f9f1ba183b63d89190a4d2dceb0d39d6a814156f7')
+            'f0559045319db718af902f0f9f1ba183b63d89190a4d2dceb0d39d6a814156f7'
+            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586'
+            'ecb98a809454d28323af0afa02e09edf0ff45f9076080464e226f8e9f55262f4')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -104,6 +106,7 @@ prepare() {
   done
   
   echo "Setting config..."
+  ../linux-mt-prepare.sh
   cp ../config .config
   make olddefconfig
   diff -u ../config .config || :
