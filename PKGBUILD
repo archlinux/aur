@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
 # Contributor: Luke Street <luke.street@encounterpc.com>
 pkgname=gnome-shell-extension-gamemode-git
-pkgver=5.r1.ga3c13ae
+pkgver=6.r1.g345dc61
 pkgrel=1
 pkgdesc="GNOME Shell extension for Feral Interactive's GameMode"
 arch=('any')
@@ -26,9 +26,9 @@ build() {
 
 # No tests defined
 #check() {
-#	meson test -C build --print-errorlogs
+#  meson test -C build --print-errorlogs
 #}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
