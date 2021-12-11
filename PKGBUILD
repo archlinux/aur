@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=slit-git
-pkgver=1.3.0.r3.gc2463e2
+pkgver=1.3.0.r4.gb552962
 pkgrel=1
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
