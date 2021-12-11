@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/rippled --net --silent --conf /etc/opt/ripple/rippled.cfg
+ExecStart=/usr/bin/rippled --net --silent --conf /etc/rippled/rippled.cfg
 Restart=on-failure
 LimitNOFILE=65536
 

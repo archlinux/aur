@@ -1,0 +1,8 @@
+pre_upgrade() {
+  if [ -e etc/opt/ripple/rippled.cfg ]; then
+    mkdir -p etc/rippled && cp -u etc/opt/ripple/rippled.cfg "$_"
+  fi
+  if [ -e etc/opt/ripple/validators.txt ]; then
+    mkdir -p etc/rippled && cp -u etc/opt/ripple/validators.txt "$_"
+  fi
+}
