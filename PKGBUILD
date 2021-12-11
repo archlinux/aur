@@ -3,9 +3,8 @@
 _pkgname=kworkflow
 _lpkg="${_pkgname,,}"
 pkgname="${_pkgname}-git"
-_basepkgver=0.5.0
-pkgver=0.5.8206878
-pkgrel=3
+pkgver=0.5.r88.gf984b81
+pkgrel=1
 pkgdesc='CLI tool for kernel development'
 arch=('x86_64')
 url='https://github.com/kworkflow/kworkflow'
@@ -25,17 +24,17 @@ optdepends=('pipewire-pulse: PipeWire backend'
 	    'python-docutils: Build docs')
 provides=("${_lpkg}")
 conflicts=("${_lpkg}")
-sha512sums=('SKIP')
-#install=kw.install
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  echo "${_basepkgver}_$(git describe --always)"
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_pkgname"
-  git checkout unstable
+  git checkout master
+  #git checkout unstable
   git pull
 }
 

@@ -1,5 +1,0 @@
-post_install() {
-  echo 'Append these to your .bashrc to enable autocomplete:'
-  echo "PATH=$HOME/.local/bin:\$PATH"
-  echo "source $HOME/.local/lib/kw/src/bash_autocomplete.sh"
-}
