@@ -2,7 +2,7 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='A neovim plugin to independently run snippets of code'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc-libs')
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5fa26537667d24b367097b8017288e692103d2a411467beeddd69d93b060f23e')
+sha256sums=('8fff3b5e22bc858ce7c4d4f522eff36a1950cd959275641bc7877962a562cdeb')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
@@ -38,8 +38,8 @@ package_sniprun() {
 
 	cd "$pkgbase-$pkgver"
 	install -D target/release/sniprun -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 package_neovim-sniprun() {
@@ -66,7 +66,7 @@ package_neovim-sniprun() {
 
 	cd "$pkgbase-$pkgver"
 	find autoload doc plugin lua \
-		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+		-type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -d "$pkgdir/usr/share/nvim/runtime/target/release"
 	ln -s "/usr/bin/sniprun" "$pkgdir/usr/share/nvim/runtime/target/release/sniprun"
 	install -d "$pkgdir/usr/share/licenses/"
