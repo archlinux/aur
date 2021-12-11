@@ -1,6 +1,6 @@
 pkgbase = gdu
 	pkgdesc = Fast disk usage analyzer
-	pkgver = 5.12.0
+	pkgver = 5.12.1
 	pkgrel = 1
 	url = https://github.com/dundee/gdu
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gdu
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/dundee/gdu.git#tag=7365b42b9ef0bcf5b4b6866cc9fb62b0dafa8048?signed
+	source = git+https://github.com/dundee/gdu.git#tag=a00a9579c2f32dada6b85ebeaef6067201e8f670?signed
 	validpgpkeys = 360B658707A1A44CA57FB67EEF0BA1C4F3990103
 	sha256sums = SKIP
 
