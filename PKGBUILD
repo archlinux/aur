@@ -16,7 +16,12 @@ sha256sums=("SKIP")
 prepare() {
   cd ntv2
 
-  sed -i 's/Clang|GNU/GNU/g' cmake/CommonFlags.cmake
+  if [[ $CCX == 'clang++' ]]; then
+    sed -i 's/Clang|GNU/Clang/g' cmake/CommonFlags.cmake
+  else
+    sed -i 's/Clang|GNU/GNU/g' cmake/CommonFlags.cmake
+  fi
+  
   sed -i 's/Linux|Darwin/Linux/g' cmake/CommonFlags.cmake
 }
 
