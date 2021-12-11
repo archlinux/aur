@@ -12,21 +12,19 @@ makedepends=(git meson pam_wrapper python-cairo python-dbus python-dbusmock)
 source=("git+https://gitlab.com/mishakmak/pam-fprint-grosshack.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
-prepare() {
-  cd $pkgname
-}
-
 build() {
-  arch-meson $pkgname build \
+  cd $pkgname 
+  arch-meson . build \
     -D pam_modules_dir=/usr/lib/security
   meson compile -C build
 }
 
 check() {
+  cd $pkgname 
   meson test -C build --print-errorlogs
 }
 
 package() {
+  cd $pkgname 
   meson install -C build --destdir "$pkgdir"
-  rm -rf $pkgdir/usr/share
 }
