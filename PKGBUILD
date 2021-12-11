@@ -2,7 +2,7 @@
 
 pkgname=go-rainbow-git
 pkgver=v1.1.1.r2.g7161fb6
-pkgrel=1
+pkgrel=2
 pkgdesc='Tasty rainbows for your terminal! (lolcat clone)'
 url="https://github.com/arsham/rainbow"
 arch=('x86_64' 'i686')
@@ -24,11 +24,6 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/arsham/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/arsham/rainbow"
-
-	cd "${srcdir}/go/src/github.com/arsham/rainbow"
-
-	export GOPATH="${srcdir}/go"
-	go get -v ./...
 }
 
 build() {
@@ -37,17 +32,8 @@ build() {
 	mkdir -p build
 
 	export GOPATH="${srcdir}/go"
-
-	#go build \
-	#	-ldflags "-s -w -X github.com/arsham/rainbow/lemon.Version=${pkgver}" \
-	#	-gcflags="all=-trimpath=${GOPATH}/src" \
-	#	-asmflags="all=-trimpath=${GOPATH}/src" \
-	#	-o build/rainbow
-
 	go build \
-		-ldflags "-s -w " \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
+		-trimpath -modcacherw -ldflags "-s -w " \
 		-o build/rainbow
 }
 
