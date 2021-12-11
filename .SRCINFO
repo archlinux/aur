@@ -1,7 +1,7 @@
 pkgbase = ghw-git
 	pkgdesc = Golang hardware discovery/inspection library
 	pkgver = v0.8.0.r78.g4d0ed8f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jaypipes/ghw.git
 	arch = x86_64
 	license = Apache

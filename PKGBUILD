@@ -2,7 +2,7 @@
 
 pkgname=ghw-git
 pkgver=v0.8.0.r78.g4d0ed8f
-pkgrel=2
+pkgrel=3
 pkgdesc="Golang hardware discovery/inspection library"
 arch=('x86_64')
 url="https://github.com/jaypipes/ghw.git"
@@ -28,17 +28,18 @@ prepare() {
 	cd "${srcdir}/go/src/github.com/jaypipes/ghw"
 
     export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-    go get -v ./...
+    go get -v -t ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/jaypipes/ghw"
 
     mkdir -p build
-    export CGO_ENABLED=0
 
+    export CGO_ENABLED=0
     export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-    go build -trimpath -ldflags "-s -w" \
+    go build \
+		-trimpath -ldflags "-s -w" \
 		-o ./build/ghwc ./cmd/ghwc
 }
 
