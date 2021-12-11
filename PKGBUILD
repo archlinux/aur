@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Wobbly windows effect inspired by the Compiz ones"
 arch=('any')
 url="https://github.com/hermes83/compiz-alike-windows-effect"
-install="compiz-alike.install"
+install="${pkgname}.install"
 license=('GPL3')
 depends=('gnome-shell>=3.28')
 makedepends=('git' 'glib2')
