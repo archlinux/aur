@@ -2,7 +2,7 @@
 
 pkgname=health
 _reponame=Health
-pkgver=0.93.1
+pkgver=0.93.3
 pkgrel=1
 pkgdesc="A health tracking app for the GNOME desktop"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(libadwaita)
 checkdepends=(appstream-glib)
 makedepends=(meson rust)
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_reponame-$pkgver.tar.gz")
-sha512sums=('576001da38a9069ffb9a322c821fa58da1972aa2a4afab2a02245b8a3cc9c2f742031b8658fff76dd064aec1eb5e0b0a0545671582f2e2b5ac8df9be330c00e1')
+sha512sums=('8ddd88b47713c640d43284c0cdd3a43ab2007e99c57119ad5dace07f109b0beff2e87f3da46a826d4d793f59bde5b685ff74f17737d312f020cbc567c2405dbc')
 
 build() {
 	arch-meson "$_reponame-$pkgver" build
@@ -24,5 +24,5 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+	meson install -C build --destdir "$pkgdir"
 }
