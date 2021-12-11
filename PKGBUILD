@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034
 pkgname=dl-musescore
 # shellcheck disable=SC2034
-pkgver=0.27.4
+pkgver=0.30.1
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -45,7 +45,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
 # shellcheck disable=SC2034
 noextract=()
 # shellcheck disable=SC2034
-sha256sums=("9d8d7996af9fc6b4f7c6ba0542e508afe38490d3434424fedf300bb8a6f19b25")
+sha256sums=("eaec79c44603773fa4e83daf48c30d26532848a7d0b26897417b8fe4d6fde0ea")
 # shellcheck disable=SC2034
 validpgpkeys=()
 
