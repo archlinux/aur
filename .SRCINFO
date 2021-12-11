@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.40.r16.gc03d1029
+	pkgver = 0.3.40.r125.gbcd867f8
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = pipewire-common-git
 	makedepends = libldac
 	makedepends = libfreeaptx
 	makedepends = libfdk-aac
+	makedepends = lilv
 	makedepends = avahi
 	makedepends = openssl
 	makedepends = gst-plugins-base-libs
@@ -50,6 +51,7 @@ pkgname = pipewire-common-git
 	depends = libldacBT_abr.so
 	depends = libfreeaptx.so
 	depends = libfdk-aac.so
+	depends = liblilv-0.so
 	optdepends = pipewire-session-manager: Session manager
 	optdepends = pipewire-common-docs-git: Documentation
 	optdepends = pipewire-common-alsa-git: ALSA configuration
@@ -59,7 +61,7 @@ pkgname = pipewire-common-git
 	optdepends = gst-plugin-pipewire-common-git: GStreamer support
 	optdepends = ofono: ofono Bluetooth HFP support
 	optdepends = hsphfpd: hsphfpd Bluetooth HSP/HFP support
-	provides = pipewire=0.3.40.r16.gc03d1029
+	provides = pipewire=0.3.40.r125.gbcd867f8
 	provides = alsa-card-profiles
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
