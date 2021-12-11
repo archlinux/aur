@@ -1,5 +1,6 @@
 pkgbase = alizams
-	pkgver = 1.6.3.1
+	pkgdesc = Qt6 DICOM Viewer
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://www.aliza-dicom-viewer.com/
 	arch = x86_64
@@ -15,7 +16,7 @@ pkgbase = alizams
 	depends = qt6-base
 	depends = qt6-5compat
 	depends = insight-toolkit
-	source = git+https://github.com/AlizaMedicalImaging/AlizaMS.git#tag=v1.6.3.1
+	source = git+https://github.com/AlizaMedicalImaging/AlizaMS.git#tag=v1.7.2
 	sha256sums = SKIP
 
 pkgname = alizams
