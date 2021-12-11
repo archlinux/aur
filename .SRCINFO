@@ -1,12 +1,12 @@
 pkgbase = thrive
 	pkgdesc = Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond.
-	pkgver = 0.5.6.0
+	pkgver = 0.5.6.1
 	pkgrel = 1
 	url = http://revolutionarygamesstudio.com
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://github.com/Revolutionary-Games/Thrive/releases/download/v0.5.6/Thrive_0.5.6.0_linux_x11.7z
-	sha256sums = c4c159ad8fca4f4b4183eedad67942f5ae7d5cf412e490e633354926c7d48c0c
+	source = https://github.com/Revolutionary-Games/Thrive/releases/download/v0.5.6.1/Thrive_0.5.6.1_linux_x11.7z
+	sha256sums = 2af610d37c9007a6960eb5ce7860f8cf1066b46a823cfaa4659c9bcf6f8f722b
 
 pkgname = thrive
