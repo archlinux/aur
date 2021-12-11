@@ -1,9 +1,9 @@
 pkgbase = brother-cups-wrapper-common
 	pkgdesc = This package provides common files for some of the Brother cups wrapper packages.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://solutions.brother.com/linux/en_us/index.html
-	arch = i686
+	arch = i386
 	arch = x86_64
 	license = GPL
 	license = custom:brother commercial license

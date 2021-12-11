@@ -2,11 +2,11 @@
 
 pkgname=brother-cups-wrapper-common
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="This package provides common files for some of the Brother cups wrapper packages."
 license=('GPL' 'custom:brother commercial license')
 url="http://solutions.brother.com/linux/en_us/index.html"
-arch=('i686' 'x86_64')
+arch=('i386' 'x86_64')
 depends=('brother-lpr-drivers-common' 'cups')
 [ $CARCH == "x86_64" ] && _a="amd64" && md5sums=(
   'a0eba0401fe80b7a4c1de777032d24f1')
