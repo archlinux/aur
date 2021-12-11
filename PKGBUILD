@@ -1,21 +1,20 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 pkgname=qpasm
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="pseudo-assembler interpreter"
 arch=("x86_64")
 url="https://github.com/synio-wesley/qpasm"
 license=('LGPL')
-depends=("qt5-base")
+depends=("qt6-base" "qt6-svg")
 provides=("qpasm")
 source=("https://github.com/synio-wesley/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=("ff1f806f92d87763fd818414f53e981b2f2a1b5b87dd76b152a48d82bf422a0a8501dd622ef140a548fab6de5c98583f0f0046d5848873b6ee8ada0deb8ebccd")
-
+sha512sums=("59c57a0862bd7f48df09d6e9cfc6e8c0684520edd48d8477cbe981c8a9f59ea69a2a7da0760ce1084a93afeb7832890e34728824e7d928950de0bc3012140ffc")
 prepare() {
 	cd "$pkgname-$pkgver"
 	cd src
 
-	qmake
+	cmake .
 }
 
 build() {
@@ -33,5 +32,5 @@ package() {
 	# Binary
 	install -Dm 755 ./src/qpasm "$pkgdir"/usr/bin/qpasm
 	# Icon
-	install -Dm 644 ./src/img/qpasm.png "$pkgdir"/usr/share/icons/qpasm.png
+	install -Dm 644 ./src/img/qpasm.svg "$pkgdir"/usr/share/icons/qpasm.svg
 }
