@@ -11,8 +11,16 @@ url="http://www.nongnu.org/gksu/index.html"
 license=('GPL')
 depends=('libgksu>=2.0.12' 'xorg-xauth')
 makedepends=('gtk-doc' 'intltool')
-source=(https://people.debian.org/~kov/gksu/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('a1de3dca039d88c195fcdc9516379439a1d699750417f1e655aa2101a955ee5a')
+source=(https://people.debian.org/~kov/gksu/${pkgname}-${pkgver}.tar.gz
+        gksu-2.0.2-gksu_gksu.c.patch)
+sha256sums=('a1de3dca039d88c195fcdc9516379439a1d699750417f1e655aa2101a955ee5a'
+            '1c08658a8946713e1da9d9ae5f808fc87a35661bbb28def1552d4c13e5d46600')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  patch -Np1 -i "${srcdir}/gksu-2.0.2-gksu_gksu.c.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

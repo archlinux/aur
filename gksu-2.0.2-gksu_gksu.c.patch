@@ -1,0 +1,21 @@
+diff -Nura gksu-2.0.2_orig/gksu/gksu.c gksu-2.0.2/gksu/gksu.c
+--- gksu-2.0.2_orig/gksu/gksu.c	2021-12-11 13:53:13.538672664 +0100
++++ gksu-2.0.2/gksu/gksu.c	2021-12-11 13:55:43.245408259 +0100
+@@ -148,7 +148,7 @@
+ 
+   diag_win = gtk_message_dialog_new_with_markup (NULL, GTK_DIALOG_MODAL,
+ 						 type, GTK_BUTTONS_CLOSE,
+-						 msg);
++						 "%s", msg);
+ 
+   gtk_signal_connect_object (GTK_OBJECT(diag_win), "delete_event",
+ 			     GTK_SIGNAL_FUNC(gtk_main_quit),
+@@ -180,7 +180,7 @@
+ 
+       error_msg = g_strdup_printf ("Could not load desktop file: %s",
+ 				   error->message);
+-      g_warning (error_msg);
++      g_warning ("%s", error_msg);
+       g_free (error_msg);
+       g_error_free (error);
+       g_key_file_free (desktop);
