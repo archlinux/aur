@@ -1,0 +1,16 @@
+pkgbase = bootsound-git
+	pkgdesc = Systemd service that plays a sound at boot with alsa.
+	pkgver = r3.4b883ff
+	pkgrel = 1
+	url = https://gitlab.com/michalinteger/bootsound.git
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = bash
+	depends = systemd
+	depends = alsa-utils
+	provides = bootsound
+	source = git+https://gitlab.com/michalinteger/bootsound.git
+	md5sums = SKIP
+
+pkgname = bootsound-git
