@@ -1,11 +1,12 @@
 pkgbase = python-stagger
 	pkgdesc = ID3v1/ID3v2 tag manipulation package in pure Python 3
 	pkgver = 1.0.1
-	pkgrel = 4
-	url = http://github.com/lorentey/stagger
+	pkgrel = 5
+	url = https://github.com/lorentey/stagger
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	depends = python
 	source = python-stagger-1.0.1.tar.gz::https://github.com/lorentey/stagger/archive/release-1.0.1.tar.gz
 	sha512sums = 9f47f95d2d8473b89725c1568067a1462ca20bf424b08f226092bae6ea3df2c62eb7f0dda84e692f2b9b8526a8649ce42aa5ac7a152ccf813f8d7ccca6cd7598
 
