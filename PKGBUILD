@@ -2,7 +2,7 @@
 
 pkgname=gottengeography
 pkgver=2.5
-pkgrel=11
+pkgrel=12
 pkgdesc='Easy to use photo geotagging application for the GNOME desktop'
 arch=('any')
 url='https://launchpad.net/gottengeography'
@@ -30,6 +30,7 @@ build() {
 
 package() {
   cd $pkgname
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  # adding --skip-build makes it not install usr/share/{help,locale}
+  python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 ../gottengeography.appdata.xml "$pkgdir/usr/share/metainfo/gottengeography.appdata.xml"
 }
