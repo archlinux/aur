@@ -1,7 +1,7 @@
 pkgbase = yet-another-spotify-tray-git
 	pkgdesc = Tray icon for Spotify Linux client application
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/macdems/yet-another-spotify-tray
 	arch = x86_64
 	license = MIT
