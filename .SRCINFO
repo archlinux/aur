@@ -1,7 +1,7 @@
 pkgbase = sirfidal-git
 	pkgdesc = SiRFIDal - Simple RFID authentication for Linux
 	pkgver = r187.91f46d2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Giraut/SiRFIDaL
 	arch = x86_64
 	license = GPL3
@@ -22,7 +22,7 @@ pkgbase = sirfidal-git
 	depends = python-cryptography
 	depends = python-pynput
 	depends = sox
-	depends = python-pyufr
+	depends = python-pyufr-git
 	depends = pam-python
 	provides = sirfidal
 	source = git+https://github.com/Giraut/SiRFIDaL.git
