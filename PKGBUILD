@@ -1,34 +1,23 @@
 # Maintainer: Erik Westrup <erik.westrup@gmail.com>
+# Reference on git checkout: https://man.archlinux.org/man/PKGBUILD.5#USING_VCS_SOURCES
+
 pkgname=zscreen
-pkgver=20150725
-pkgrel=1.5
+pkgver=20160510  # date of latest commit
+pkgrel=1
 pkgdesc="Scrot and imgur/s3 upload zenity gui"
 arch=('any')
 url="https://github.com/ChrisZeta/Scrot-and-imgur-zenity-GUI"
+_git_commit='e9d15e606a0d358f002d0ec45324069c5cff3c68'
+source=("zscreen::git+https://github.com/ChrisZeta/Scrot-and-imgur-zenity-GUI#commit=${_git_commit}")
 license=()
 makedepends=('git')
+md5sums=('SKIP')
 depends=('bash' 'curl' 'scrot' 's3cmd' 'zenity')
 provides=('zscreen' 'zimgur' 'zs3upload')
 
 
-_gitname=Scrot-and-imgur-zenity-GUI
-_gitroot='https://github.com/ChrisZeta/Scrot-and-imgur-zenity-GUI.git'
-
-
 package() {
-  cd $srcdir
-
-  msg "Connecting to GIT server...."
-
-  if [[ -d $_gitname ]]; then
-    cd $_gitname || return 1
-    git pull || return 1
-  else
-    git clone $_gitroot || return 1
-  fi
-  msg " checkout done."
-
-  cd $srcdir/$_gitname/src || return 1
+  cd "$srcdir/${pkgname}/src"
 
   install -Dm755 zimgur.sh "${pkgdir}/usr/bin/zimgur"
   install -Dm755 zscreen.sh "${pkgdir}/usr/bin/zscreen"
