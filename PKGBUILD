@@ -1,0 +1,32 @@
+# Maintainer: Misha <mishakmak at gmail dot com>
+
+pkgname=pam-fprint-grosshack
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="PAM module enabling simultaneous fingerprint (fprintd) and password authentication"
+url="https://fprint.freedesktop.org/"
+arch=(x86_64)
+license=(GPL)
+depends=(fprintd glib2 libfprint polkit dbus dbus-glib systemd)
+makedepends=(git meson pam_wrapper python-cairo python-dbus python-dbusmock)
+source=("git+https://gitlab.com/mishakmak/pam-fprint-grosshack.git#tag=v$pkgver")
+sha256sums=('SKIP')
+
+prepare() {
+  cd $pkgname
+}
+
+build() {
+  arch-meson $pkgname build \
+    -D pam_modules_dir=/usr/lib/security
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
+}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+  rm -rf $pkgdir/usr/share
+}
