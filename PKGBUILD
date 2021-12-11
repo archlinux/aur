@@ -1,7 +1,7 @@
 # Maintainer: Ethan Djeric <ethan@ethandjeric.com> 
 pkgname=jellyshuf
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 license=("MIT" "Apache")
 arch=('any')
 pkgdesc="Randomly add items to mpd queue from jellyfin (use in tandem with mopidy-jellyfin)"
@@ -22,7 +22,7 @@ optdepends=(
 	"mopidy-jellyfin: to enable access to jellyfin music files via a local MPD server" 
 	"mopidy-mpd: to enable access to jellyfin music files via a local MPD server"
 )
-sha256sums=('36fcb49ca9147f5b64c1eacd83acce9c344cc776ef66d2b3e36f594062cbc26e')
+sha256sums=('0719a321578edd2b8d54145e8f1ddd58037be3050a801b70e888f713bcad6227')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
