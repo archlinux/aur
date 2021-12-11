@@ -1,8 +1,8 @@
-# Maintainer: Tomoghno Sen <tomoghno at outlook dot com>
+# Maintainer: Tomoghno Sen <sentomoghno503@gmail.com>
 
 pkgname=elementary-iridium
-pkgver=1.3.2
-pkgrel=1
+pkgver=1.7.0
+pkgrel=2
 pkgdesc="Friendly IRC Client"
 arch=('x86_64')
 url="https://appcenter.elementary.io/com.github.avojak.iridium/"
@@ -12,7 +12,7 @@ makedepends=('meson' 'vala')
 provides=('com.github.avojak.iridium')
 conflicts=('com.github.avojak.iridium')
 source=("iridium-$pkgver.tar.gz::https://github.com/avojak/iridium/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1cf7eb6405b55c639e878eaff1fc62325cdbc8a7e440a00fd4d7a53817f398a0')
+sha256sums=('078ec146a8a077f306e1d8740e5f2efe5dda225c70cbfcd0149a6b13c9d10390')
 
 build() {
 	arch-meson iridium-$pkgver build
