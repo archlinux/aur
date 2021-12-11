@@ -3,14 +3,14 @@
 # Contributor: Roberto Catini <roberto.catini@gmail.com>
 
 pkgname=rippled
-pkgrel=1
+pkgrel=2
 pkgver=1.8.1
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('x86_64')
 url="https://github.com/ripple/rippled"
 license=('custom:ISC')
 backup=("etc/$pkgname/rippled.cfg" "etc/$pkgname/validators.txt")
-depends=('protobuf' 'boost-libs' 'libarchive' 'libsecp256k1' 'snappy')
+depends=('protobuf' 'boost-libs' 'libarchive' 'libsecp256k1' 'snappy' 'rocksdb')
 makedepends=('git' 'cmake' 'boost' 'clang' 'doxygen')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver -Dstatic=OFF -Dlocal_rocksdb=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake ../$pkgname-$pkgver -Dstatic=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   cmake --build .
 }
 
