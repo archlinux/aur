@@ -1,7 +1,7 @@
 # Maintainer: Cristóbal Tapia <crtapia at gmail dot com>
 pkgname=bibtex-tidy
 pkgver=1.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc="BibTeX Tidy - Cleaner and Formatter for BibTeX files "
 arch=('any')
 url="https://github.com/FlamingTempura/bibtex-tidy"
@@ -29,7 +29,7 @@ package() {
   # Create manpage
   mfile="$pkgdir/usr/lib/node_modules/bibtex-tidy/bibtex-tidy.0"
   sed 's/^  Options:/OPTIONS/g' $mfile > "$pkgname.0"
-  txt2man "$pkgname.0" > "$pkgname.1"
+  txt2man -d "" -s 1 -t "$pkgname" "$pkgname.0" > "$pkgname.1"
 
   gzip -f "$pkgname.1"
   mkdir -p "$pkgdir/usr/share/man/man1/"
