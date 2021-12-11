@@ -1,5 +1,5 @@
 pkgbase = libajantv2
-	pkgdesc = Open Source Static Libs and Headers for building applications that only wish to statically link against
+	pkgdesc = JA NTV2 Open Source Static Libs and Headers for building applications that only wish to statically link against
 	pkgver = 16.1
 	pkgrel = 1
 	url = https://github.com/aja-video/ntv2

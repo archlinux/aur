@@ -3,7 +3,7 @@
 pkgname=libajantv2
 pkgver=16.1
 pkgrel=1
-pkgdesc="Open Source Static Libs and Headers for building applications that only wish to statically link against"
+pkgdesc="JA NTV2 Open Source Static Libs and Headers for building applications that only wish to statically link against"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/aja-video/ntv2"
 license=("MIT")
