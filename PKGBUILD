@@ -80,7 +80,7 @@ sha256sums=('5d9050a839edc7480c5c8f7a284cd28bee6db07bec9e41c684f399192bbe5db1'
             'SKIP'
             '380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d'
             'f0559045319db718af902f0f9f1ba183b63d89190a4d2dceb0d39d6a814156f7'
-            'f987d2bf4230633a9aa09f4c51159a1626a3d1b133c3fcf95ac62aaac7f1f895'
+            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586'
             '670d69688c0d745db13fd2116038d4644a41830511415399b7f2296c86099b9c')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
