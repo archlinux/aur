@@ -1,5 +1,10 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 # Contributor: lxsycht <lux@systemli.org>
+
+# https://gitlab.com/rmnvgr/metadata-cleaner/-/issues/18
+# Drag and drop won't be fixed for a few months. Here is the version where it
+# works
+
 pkgname=metadata-cleaner1
 _pkgname=metadata-cleaner
 pkgdesc='Python GTK application to view and clean metadata in files, using mat2(GTK3 1.x version)'
