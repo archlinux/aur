@@ -17,7 +17,7 @@ ENABLE_CUDA=OFF
 USE_AS_BLAS=OpenBLAS
 
 pkgname=obs-face-tracker
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
