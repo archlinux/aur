@@ -1,6 +1,6 @@
 pkgbase = flacon
 	pkgdesc = An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks.
-	pkgver = 7.0.1
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://flacon.github.io/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = flacon
 	depends = qt5-base
 	depends = uchardet
 	depends = ffmpeg
+	depends = taglib
 	optdepends = flac: For FLAC support
 	optdepends = lame: For MP3 support
 	optdepends = mac: For APE support
@@ -24,9 +25,7 @@ pkgbase = flacon
 	optdepends = vorbis-tools: For OGG support
 	optdepends = vorbisgain: For OGG Replay Gain support
 	optdepends = wavpack: For WavPack support
-	conflicts = flacon-git
-	source = flacon-7.0.1.tar.gz::https://github.com/flacon/flacon/archive/v7.0.1.tar.gz
-	sha256sums = f63b959099e7b97b02a7f9ccf2c922a99de6c0d1ec83e74c436fd10e41630b6e
+	source = flacon-8.1.0.tar.gz::https://github.com/flacon/flacon/archive/v8.1.0.tar.gz
+	sha256sums = 26830ef5eaf2c91d0a4802630c904b448235cb0f72ebfd470a76423bee4de8d8
 
 pkgname = flacon
-
