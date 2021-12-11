@@ -1,0 +1,13 @@
+pkgbase = video-hub-app-appimage
+	pkgdesc = Video Hub App 3 is the fastest way to browse and search for videos on your computer. Think of it like YouTube for videos on your computer: browse, search, and preview. Works on Windows, Mac, and Linux!
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/whyboris/Video-Hub-App
+	arch = x86_64
+	license = MIT
+	noextract = Video Hub App 3-3.1.0.AppImage
+	options = !strip
+	source_x86_64 = file://Video Hub App 3-3.1.0.AppImage
+	sha256sums_x86_64 = 81384d6754848bc3183eeb17d239fe3962959c015ffa9aedae76add6bf3db35f
+
+pkgname = video-hub-app-appimage
