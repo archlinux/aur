@@ -2,7 +2,7 @@
 
 pkgname=ginkgo-git
 pkgver=v1.16.5.r2.g71572c1
-pkgrel=2
+pkgrel=3
 pkgdesc="BDD Testing Framework for Go"
 arch=('x86_64')
 url="http://onsi.github.io/ginkgo/"
@@ -35,14 +35,16 @@ prepare() {
 build() {
 	cd "${srcdir}/go/src/github.com/onsi/ginkgo"
 
+    mkdir -p build
+
 	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
 	go build \
         -trimpath -ldflags "-s -w" \
-        -o ./bin/ginkgo ./ginkgo
+        -o ./build/ginkgo ./ginkgo
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/onsi/ginkgo"
 
-	install -Dm755 "bin/ginkgo" "${pkgdir}/usr/bin/ginkgo"
+	install -Dm755 "build/ginkgo" "${pkgdir}/usr/bin/ginkgo"
 }
