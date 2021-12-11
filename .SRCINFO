@@ -1,0 +1,15 @@
+pkgbase = qwertone
+	pkgdesc = Simple music synthesizer app based on usual qwerty-keyboard for input
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.com/azymohliad/qwertone
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = gtk3
+	depends = alsa-lib
+	source = git+https://gitlab.com/azymohliad/qwertone.git#commit=24bcfb08f332eb1b88b599194a20665b25650091
+	md5sums = SKIP
+
+pkgname = qwertone
