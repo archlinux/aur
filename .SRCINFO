@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-desktop-cube-git
+	pkgdesc = Desktop Cube for GNOME Shell
+	pkgver = r38.905a711
+	pkgrel = 1
+	url = https://github.com/Schneegans/Desktop-Cube
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell>=1:40
+	provides = gnome-shell-extension-desktop-cube
+	conflicts = gnome-shell-extension-desktop-cube
+	source = git+https://github.com/Schneegans/Desktop-Cube.git
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-desktop-cube-git
