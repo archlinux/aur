@@ -1,16 +1,16 @@
 pkgbase = psxact-git
 	pkgdesc = Sony Playstation emulator focused on accuracy
-	pkgver = 0.r200.c417dfb
+	pkgver = 0.r405.e482871
 	pkgrel = 1
-	url = https://github.com/adam-becker/psxact
+	url = https://gitlab.com/psxact/psxact
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cargo
 	depends = sdl2
 	provides = psxact
 	conflicts = psxact
-	source = psxact::git+https://github.com/adam-becker/psxact.git
+	source = psxact::git+https://gitlab.com/psxact/psxact.git
 	md5sums = SKIP
 
 pkgname = psxact-git
-
