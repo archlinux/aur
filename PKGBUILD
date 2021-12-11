@@ -1,20 +1,20 @@
 # Maintainer: asamk <asamk@gmx.de>
 
 pkgname=signal-cli
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
 license=('GPL3')
-depends=('java-runtime>=11' 'java-commons-logging' 'sh' 'libzkgroup' 'libsignal-client')
-makedepends=('java-environment>=11' 'gradle' 'asciidoc')
+depends=('java-runtime>=17' 'java-commons-logging' 'sh' 'libsignal-client')
+makedepends=('java-environment>=17' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "${pkgname}.sh"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
-sha512sums=('d3e380b541efc36117078a1790f0c7fd66d552b330f909e8dbd5e8101a433475252d2d56f20bac7786299434bf71893214e0cb09f22ec06b839135714c2f1d3e'
+sha512sums=('76e3c2f1305d8697d24fb8f7ded2ec5f77fb82b81c127ae29f78d081f6d32cbde402ee6d1ec72216a19bfe8e06232f4c2e6409a7b98dfab0bf95b9dfc76e8574'
             'SKIP'
             'e572c857864f30a85671738d5568c78b79831290dd066a43a62461ae760dd0fcb47c1b7d3577194e6441b890ab1b1cabdcc8db2ce549d7fd72527a6ced9d3156'
             'b4db42e18c957edb274637eee1ea5feb5d5f94e16ff0ced63788c8285e0c31c17e5414c6b93b1c2a6ffacca4888b177d33d1878727780e9a0e937b323e332021'
@@ -38,6 +38,7 @@ package() {
 	                 "${pkgdir}/usr/lib/sysusers.d/" \
 	                 "${pkgdir}/usr/lib/tmpfiles.d/" \
 	                 "${pkgdir}/usr/share/man/man1/" \
+	                 "${pkgdir}/usr/share/man/man5/" \
 	                 "${pkgdir}/etc/dbus-1/system.d/"
 
 	cd "${srcdir}"
@@ -54,11 +55,12 @@ package() {
 	sed -i "s|%dir%|/usr|" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
 	install -m644 "man/${pkgname}.1" "${pkgdir}/usr/share/man/man1/"
+	install -m644 "man/${pkgname}-dbus.5" "${pkgdir}/usr/share/man/man5/"
+	install -m644 "man/${pkgname}-jsonrpc.5" "${pkgdir}/usr/share/man/man5/"
 
 	cd "build/install/${pkgname}"
 
 	rm -f lib/commons-logging-*.jar
-	rm -f lib/zkgroup-java-*.jar
 	rm -f lib/signal-client-java-*.jar
 	install -m644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
 }
