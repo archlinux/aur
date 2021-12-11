@@ -4,7 +4,7 @@
 # Contributor: Aitor <aitor.iturri@gmail.com>
 
 pkgname=libcdk
-_pkgver=5.0-20210109
+_pkgver=5.0-20210825
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Curses Development Kit - widget library, enhanced version'
@@ -13,7 +13,7 @@ url="https://invisible-island.net/cdk/"
 license=('custom:BSD-like')
 options=('!emptydirs')
 source=("${pkgname}.${pkgver}.tar.gz::ftp://ftp.invisible-island.net/cdk/cdk-${_pkgver}.tgz")
-sha256sums=('c416c987bf77b4f1b2703d7c5e433ba9458c8be5266bf454cbf801ad87e72936')
+sha256sums=('ce6e7785084d3480b77b96c94b26f6deb18e6ffb2f79bdccc7025ced70d800a4')
 
 build() {
   cd "cdk-${_pkgver}"
