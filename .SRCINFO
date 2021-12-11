@@ -4,7 +4,7 @@ pkgbase = msgviewer-lolo101
 	pkgrel = 2
 	url = https://github.com/lolo101/MsgViewer/tree/msgviewer-1.8.3
 	arch = any
-	license = GPLv3)
+	license = GPLv3
 	makedepends = jdk11-openjdk
 	depends = java-runtime=11
 	conflicts = msgviewer
