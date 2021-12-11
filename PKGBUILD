@@ -2,7 +2,7 @@
 
 pkgname=gobuster-git
 pkgver=v3.1.0.r27.gf7bc132
-pkgrel=2
+pkgrel=3
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
 url="https://github.com/OJ/gobuster"
@@ -24,6 +24,11 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/OJ/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/OJ/gobuster"
+
+	cd "${srcdir}/go/src/github.com/OJ/gobuster"
+
+    export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
+    go get -v -t ./...
 }
 
 build() {
@@ -31,7 +36,7 @@ build() {
 
 	mkdir -p build
 
-	export GOPATH="${srcdir}/go"
+    export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
 	go build \
 		-trimpath -modcacherw -ldflags "-s -w" \
 		-o build/gobuster
@@ -40,7 +45,7 @@ build() {
 check() {
 	cd "${srcdir}/go/src/github.com/OJ/gobuster"
 
-	export GOPATH="${srcdir}/go"
+    export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
 	make test
 }
 
