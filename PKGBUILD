@@ -106,8 +106,8 @@ prepare() {
   done
   
   echo "Setting config..."
-  ../linux-mt-prepare.sh
   cp ../config .config
+  ../linux-mt-prepare.sh
   make olddefconfig
   diff -u ../config .config || :
 
