@@ -2,7 +2,7 @@
 pkgname=weechat-matrix
 pkgver=0.3.0
 _tag=ebf792a233a50d639b13e5f7c9a1c1fe988e7476 # git rev-parse "$pkgver"
-pkgrel=4
+pkgrel=5
 pkgdesc='WeeChat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
@@ -16,8 +16,10 @@ optdepends=('python-aiohttp: matrix_sso_helper support'
             'python-requests: matrix_decrypt and matrix_upload support'
             'xdg-utils: default plumber for matrix_decrypt')
 install='weechat-matrix.install'
-source=("git+$url.git?signed#tag=$_tag")
-sha512sums=('SKIP')
+source=("git+$url.git?signed#tag=$_tag"
+        'weechat-matrix_py3.10-remove-set_npn_protocols.patch')
+sha512sums=('SKIP'
+            '5dd6cee976de77a6747e238b3600bb0e83322482daedc7943d712ecc8e903cb452f46133a4fbb4f43e562dc7c2acffc5e8eece7e87ae21ca4affc5089444cc95')
 validpgpkeys=('689A3B5BC6560AB4C99A2A0581314DA807EF4E22') # Damir Jelić (poljar) <poljar@termina.org.uk>
 
 pkgver() {
@@ -29,6 +31,9 @@ prepare() {
 	cd "$pkgname"
 	sed -ri 's|#!/usr/bin/env( -S)? python3|#!/usr/bin/python3|' contrib/*.py
 	dephell deps convert --from pyproject.toml --to setup.py
+
+	# Remove deprecated function which is broken in Python 3.10
+	patch --forward --strip=1 --input="$srcdir/weechat-matrix_py3.10-remove-set_npn_protocols.patch"
 }
 
 build() {
