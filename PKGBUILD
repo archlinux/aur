@@ -1,7 +1,7 @@
 # Maintainer: pavel.finkelshtein@gmail.com <asm0dey>
 pkgname=askgit-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Query git repositories with SQL. Generate reports, perform status checks, analyze codebases."
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(mergestat-bin)
 replaces=()
 backup=()
 options=()
