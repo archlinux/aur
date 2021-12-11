@@ -1,0 +1,15 @@
+pkgbase = espeak
+	pkgdesc = Text to Speech engine for English, with support for other languages
+	pkgver = 1.48.04
+	pkgrel = 4
+	epoch = 1
+	url = http://espeak.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = portaudio
+	depends = libpulse
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/espeak/espeak-1.48.04-source.zip
+	sha256sums = bf9a17673adffcc28ff7ea18764f06136547e97bbd9edf2ec612f09b207f0659
+
+pkgname = espeak
