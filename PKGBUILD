@@ -4,24 +4,23 @@
 # Contributor: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 
 pkgname=upmpdcli
-pkgver=1.5.12
+pkgver=1.5.13
 pkgrel=1
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=(i686 x86_64 arm armv7h armv6h aarch64)
 url="https://www.lesbonscomptes.com/upmpdcli/"
 license=(GPL2)
 depends=(python libmpdclient libupnpp libmicrohttpd jsoncpp)
-makedepends=(python-setuptools python-requests recoll python-bottle python-mutagen aspell-en id3lib python-waitress sqlite)
+makedepends=(python-setuptools python-requests python-bottle python-mutagen aspell-en id3lib python-waitress sqlite)
 optdepends=(aspell-en id3lib sqlite
             'python-requests: enable search'
-            'recoll: enable search'
             'python-bottle: enable uprcl media server'
             'python-mutagen: enable uprcl media server'
             'python-waitress: enable uprcl media server')
 install=upmpdcli.install
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz"
         'upmpdcli.service')
-sha256sums=('1d7b6ab360c2549a7e3eff4f261471761dd837e18327a3ca29de1981c090ff3b'
+sha256sums=('c7726f0d4062ae253159102e499759bd513d3c68bfe16c44997ee3fba35509f8'
             '53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9')
 backup=('etc/upmpdcli.conf')
 
