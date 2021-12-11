@@ -4,7 +4,7 @@
 pkgname='python-pagegen'
 _pkgname="${pkgname#python-}"
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Python static site generator with reStructuredText markup'
 arch=('any')
 license=('GPL')
@@ -32,7 +32,15 @@ b2sums=(
 
 package() {
   umask 0022
-  pip install --force-reinstall --no-deps --root="$pkgdir" --prefix='/usr' --compile "$srcdir/$wheel"
+  pip install \
+    --force-reinstall \
+    --ignore-installed \
+    --no-warn-script-location \
+    --no-deps \
+    --compile \
+    --root="$pkgdir" \
+    --prefix='/usr' \
+      "$srcdir/$wheel"
 }
 
 # eof
