@@ -2,7 +2,7 @@
 
 pkgname=libsignal-client
 _libname=libsignal_jni
-pkgver=0.9.7
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${pkgname}"
@@ -13,8 +13,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${pkgname}/ar
         "fix_gradle_7.patch"
 )
 
-sha512sums=('4c1427ecdaa95eff76e9ee80e7c665a8425833b9a96a567c2b394e793ca479ab5f836ac75171d8c5d964d556d38ee231a1d8724c59f4f7ef8bf6871d7c5f7c08'
-            'fdaf7037f0338379701e9669012e4b4e47d17f99a195c70ce057dbdd626c8699abb1c6387fb65d0ab0e32bed5cdceed50db39712f542c150b24606824a3361f5')
+sha512sums=('dc4ba9b17253ec161dfbd7d65a27860fbca7eb936f7fa1c46192d77f42f03c2a939943c21325f2473584f466fede817f21bc91852c967eabaabd7c588dedbee2'
+            '888960120041304ba01eb1cd9b600062e5b23276784a5e174433f76bc667c3ca43ae844c355721e14b7a93e0ecc39053f108c803acef79f105e715609365b802')
 
 prepare() {
   tar xf "${pkgname}-$pkgver.tar.gz"

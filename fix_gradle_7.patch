@@ -14,8 +14,8 @@ index 2f31542..bd52473 100644
  }
  
  dependencies {
--    testCompile ('junit:junit:3.8.2')
-+    testImplementation ('junit:junit:3.8.2')
+-    testCompile ('junit:junit:4.12')
++    testImplementation ('junit:junit:4.12')
  }
  
  test {
