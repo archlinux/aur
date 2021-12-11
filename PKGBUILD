@@ -16,7 +16,7 @@ sha256sums=('90f2daf8741d0161e28792df055faedc3c1d55cd89f9e6def612658bbd804657'
 prepare() {
   cd "ProtonUp-Qt-$pkgver"
 
-  # Workaroudn for #21
+  # Workaround for #21
   setconf share/applications/net.davidotek.pupgui2.desktop Exec 'env PUPGUI2_DISABLE_GAMEPAD=1 net.davidotek.pupgui2'
 }
 
