@@ -1,13 +1,13 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-amd
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.5.2
+pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
 license=('MIT')
-depends=('mesa' 'comgr' 'rocminfo' 'libelf')
+depends=('mesa' 'comgr' 'rocminfo' 'rocm-llvm' 'libelf')
 makedepends=('cmake' 'python' 'git')
 provides=('hip')
 conflicts=('hip')
@@ -21,10 +21,10 @@ source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
         'disable-testing.patch'
         'vector_oob.patch')
-sha256sums=('4026f31fb4f8050e9aa9d4294f29c3410bfb38422dbbae4236ccd65fed4d55b2'
-            '3a163aed24619b3faf5e8ba17325bdcedd1667a904ea20914ac6bdd33fcdbca8'
-            'ca8d6305ff0e620d9cb69ff7ac3898917db9e9b6996a7320244b48ab6511dd8e'
-            '7b93ab64d6894ff9b5ba0be35e3ed8501d6b18a2a14223d6311d72ab8a9cdba6'
+sha256sums=('c2113dc3c421b8084cd507d91b6fbc0170765a464b71fb0d96bb875df368f160'
+            '96b43f314899707810db92149caf518bdb7cf39f7c0ad86e98ad687ffb0d396d'
+            '6581916a3303a31f76454f12f86e020fb5e5c019f3dbb0780436a8f73792c4d1'
+            'b6f35b1a1d0c466b5af28e26baf646ae63267eccc4852204db1e0c7222a39ce2'
             '3f158fb78296477db176c53a8df60b8034004c400b6c62f558c94663a5246883'
             '8295e2d1b1d48da821f280e6a44f8376cbe73b77bd58bdceed38dbc2a100569f')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
