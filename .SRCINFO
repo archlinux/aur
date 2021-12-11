@@ -1,0 +1,15 @@
+pkgbase = anbox-modules-dkms-git
+	pkgdesc = Kernel modules for Anbox or Waydroid (DKMS)
+	pkgver = r38.8148a16
+	pkgrel = 1
+	url = https://github.com/choff/anbox-modules
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	provides = anbox-modules-dkms
+	conflicts = anbox-modules-dkms
+	source = anbox-modules::git+https://github.com/choff/anbox-modules#branch=master
+	sha256sums = SKIP
+
+pkgname = anbox-modules-dkms-git
