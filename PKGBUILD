@@ -3,7 +3,7 @@
 
 pkgname=vuescan-bin
 pkgver=9.7.69
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful proprietary scanning tool developed by Hamrick Software"
 arch=(i686 x86_64 armv6h aarch64)
 url="https://www.hamrick.com/"
@@ -16,10 +16,10 @@ source_x86_64=("vuescan-x64-$(date +%F-%H).rpm::https://www.hamrick.com/files/vu
 source_aarch64=("vuescan-arm64-$(date +%F-%H).rpm::https://www.hamrick.com/files/vuea6497.rpm")
 source_armv6h=("vuescan-arm32-$(date +%F-%H).rpm::https://www.hamrick.com/files/vuea3297.rpm")
 sha256sums=('6dbe377ee83561ef0b12fec64dadb5c81beb1f9ee274284c09184366bad1a6d6')
-sha256sums_i686=('f438908a8a31392cf8bb5983dbb380fa9d5bca1d5cc7a53153315cf1db31f37a')
-sha256sums_x86_64=('964e636d0cab08ba697bf70694a93a43a0ad5d569c201af3241334c402e7928a')
-sha256sums_armv6h=('1b9572c449bccddbea7dde8a2e7201fa43227a0bc2e219fec5aecaad0f4b0d8b')
-sha256sums_aarch64=('f2bebda77e8d6bb139723fcf334646ad9e7bd2bead6423173fa84a724b74e908')
+sha256sums_i686=('429b6d71bd13ba5fdbcc768d9c24061a40dd074ce794d6a0bd581a68fd562fc1')
+sha256sums_x86_64=('98f5edc9db0962dd92644f12d0a8b91fc0ff29ff4c2120d6991d864ae51f4aa8')
+sha256sums_armv6h=('359589d766cb5badb8a7bb6f32da72ecd64a26378f7020a53193f508ee2768bb')
+sha256sums_aarch64=('f2bfecd5dacafe521e6749222ba8145256b70b9270f1027d60767394b0a9f8e6')
 
 package() {
   cp -a "${srcdir}"/usr "${pkgdir}"/
