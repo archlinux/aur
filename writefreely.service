@@ -1,5 +1,5 @@
 [Unit]
-Description=Write Freely
+Description=WriteFreely
 After=syslog.target
 After=network.target
 After=mysqld.service

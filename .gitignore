@@ -3,5 +3,5 @@ src/
 *.tar
 *.tar.gz
 *.tar.xz
-*.tar.zstd
+*.tar.zst
 *.zip
