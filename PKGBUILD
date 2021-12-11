@@ -111,6 +111,9 @@ prepare() {
   ./linux-mt-prepare.sh
   make olddefconfig
   diff -u ../config .config || :
+  
+  # Set the timer to 1000.
+  scripts/config --enable CONFIG_HZ_1000
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
