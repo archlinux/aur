@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
 replaces=("an-anime-game-launcher")
+conflicts=("an-anime-game-launcher")
 arch=("x86_64")
 license=("GPL3")
 

@@ -16,6 +16,7 @@ pkgbase = an-anime-game-launcher-bin
 	optdepends = switcheroo-control: Hybrid GPU Support
 	optdepends = vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)
 	optdepends = reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)
+	conflicts = an-anime-game-launcher
 	replaces = an-anime-game-launcher
 	source = an-anime-game-aur-1.8.0.tar.gz::https://dev.kaifa.ch/Maroxy/an-anime-game-aur/archive/1.8.0.tar.gz
 	source = icon.png
