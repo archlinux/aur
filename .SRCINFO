@@ -1,6 +1,6 @@
 pkgbase = kdevelop-php-git
 	pkgdesc = PHP language and documentation plugin for KDevelop
-	pkgver = v5.6.2.r3.gc967ed0
+	pkgver = 5.6.1.r26.g874c0bc
 	pkgrel = 1
 	url = http://www.kdevelop.org/
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = kdevelop-php-git
 	depends = kdevelop
 	provides = kdevelop-php
 	conflicts = kdevelop-php
-	source = git+https://invent.kde.org/kdevelop/kdev-php.git#branch=5.6
+	source = git+https://invent.kde.org/kdevelop/kdev-php.git
 	sha256sums = SKIP
 
 pkgname = kdevelop-php-git
-
