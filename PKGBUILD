@@ -2,7 +2,7 @@
 
 _pipname=cattrs
 pkgname=python-${_pipname,,}
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Complex custom class converters for attrs'
 arch=(any)
@@ -11,16 +11,17 @@ license=(MIT)
 depends=(python
          python-attrs)
 makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_pipname-$pkgver.tar.gz")
-sha256sums=('5c121ab06a7cac494813c228721a7feb5a6423b17316eeaebf13f5a03e5b0d53')
+_archive="$_pipname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_archive.tar.gz")
+sha256sums=('1ef33f089e0a494e8d1b487508356f055c865b1955b125c00c991a4358543c80')
 
 build() {
-	cd "$_pipname-$pkgver"
+	cd "$_archive"
 	python setup.py build
 }
 
 package() {
-	cd "$_pipname-$pkgver"
+	cd "$_archive"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
