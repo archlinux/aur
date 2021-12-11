@@ -29,7 +29,9 @@ build() {
   cd ntv2
   mkdir -p build; cd build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DAJA_BUILD_OPENSOURCE=ON ..
 
   make
 }
