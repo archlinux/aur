@@ -11,12 +11,14 @@ pkgbase = libfprint-tudor
 	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
+	makedepends = python-pip
 	depends = libgusb
 	depends = pixman
 	depends = nss
 	depends = systemd
 	depends = libgudev
-	provides = libfprint-2.so
+	provides = libfprint
+	provides = libfprint-2.so=2-64
 	conflicts = libfprint
 	source = git+https://github.com/Popax21/synaTudor/
 	sha256sums = SKIP
