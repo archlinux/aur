@@ -18,7 +18,7 @@ scripts/config  --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE \
                 --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
 
 # asusctl/supergfxctl VFIO compatibility
-scripts/config  --module CONFIG_VFIO_IOMMU_TYPE1 \
+scripts/config  --module CONFIG_VFIO \
                 --module CONFIG_VFIO_VIRQFD \
                 --disable CONFIG_VFIO_NOIOMMU \
                 --module CONFIG_VFIO_PCI
@@ -29,11 +29,13 @@ scripts/config  --disable CONFIG_X86_X32
 # sync default hostname with Arch
 scripts/config  --set-str CONFIG_DEFAULT_HOSTNAME archlinux
 
-# sync up BPF defaults with mainline
-scripts/config  --enable CONFIG_BPF_PRELOAD \
-                --module CONFIG_BPF_PRELOAD_UMD \
-                --enable CONFIG_BPF_LSM #\
-                #--disable CONFIG_BPF_UNPRIV_DEFAULT_OFF
+# XXX: CONFIG_BPF_PRELOAD is throwing boot-time warnings for people, disabling until we figure this out
+## sync up BPF defaults with mainline
+#scripts/config  --enable CONFIG_BPF_PRELOAD \
+#                --module CONFIG_BPF_PRELOAD_UMD \
+#                --enable CONFIG_BPF_LSM
+
+scripts/config  --enable CONFIG_BPF_LSM
 
 # sync some settings with Arch:
 scripts/config  --enable CONFIG_TASKS_RUDE_RCU \
