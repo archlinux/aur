@@ -3,37 +3,37 @@
 
 pkgname=python-fontmake
 _pyname=${pkgname#python-}
-pkgver=2.4.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
 license=(Apache)
 _pydeps=(attrs
-         compreffor # for ufo2ft[compreffor]
          fontmath
          fonttools
          fs # for fonttools[ufo]
-         'glyphslib<6' # https://github.com/googlefonts/fontmake/releases/tag/v2.4.2
+         glyphslib
          lxml # for fonttools[lxml] and defcon[lxml]
          ufo2ft
          ufolib2
          unicodedata2) # for fonttools[unicode]
 depends=(python
          "${_pydeps[@]/#/python-}")
-checkdepends=(python-defcon
+checkdepends=(python-compreffor
+              python-defcon
               python-mutatormath
-              python-pytest)
+              python-pytest
+              python-skia-pathops)
 makedepends=(python-setuptools-scm)
 optdepends=(python-mutatormath
             python-skia-pathops)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('e2bdb029b0205f4609948d3c7738864887f76a7081563eb8f5d87e1252502a75')
+sha256sums=('864983cb636c739d73dc859f0518a7480cecdd061e2b3484e1b457b5db7ecaae')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
