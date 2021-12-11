@@ -12,7 +12,7 @@ makedepends=(python-setuptools-scm git)
 source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
-prepare() {
+build() {
   cd "${_base}-python/${_base}-python-commons"
   python setup.py build
 }
