@@ -2,22 +2,23 @@
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=romvault
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A tool for managing your ROMs and DATs for emulators"
 arch=('i686' 'x86_64')
 url="https://www.romvault.com"
-license=('custom')
+license=('Apache')
 depends=('mono')
 install=$pkgname.install
-source=("$pkgname-$pkgver.zip::$url/download/ROMVault_V$pkgver.zip"
-        'LICENSE'
-        "$pkgname.sh"
-        'chdman.sh'
-        "$pkgname.desktop"
-        "$pkgname.png"
-        'tmpfiles.d.conf')
-sha256sums=('b2ae37a83f8766bada95d29e492b3c104c27c6612d2a055ada1e9cf7b576c0fe'
+source=(
+	"$pkgname-$pkgver.zip::$url/download/ROMVault_V$pkgver.zip"
+	'LICENSE'
+	"$pkgname.sh"
+	'chdman.sh'
+	"$pkgname.desktop"
+	"$pkgname.png"
+	'tmpfiles.d.conf')
+sha256sums=('f850296adce5596de194497d3e54288364af195e037f619428ea1a72cf7f9a27'
             '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
             'fab2a40272370226000afbd5dffb9502a664d1b93896b15583f1f3705250e5f4'
             '7970f3966dee1f9aa7d5b311753dbeaa7a7878e9fa7cb14e6be886900706a41d'
@@ -26,11 +27,11 @@ sha256sums=('b2ae37a83f8766bada95d29e492b3c104c27c6612d2a055ada1e9cf7b576c0fe'
             '4b5f470a64d44efea12d979340eba31225121100158b8c4409e1eca46c1cebd1')
 
 package() {
-	install -Dm 755 ROMVault3.exe chdman.exe -t "$pkgdir/opt/$pkgname/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-	install -Dm 755 chdman.sh "$pkgdir/usr/bin/chdman"
-	install -Dm 644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-	install -Dm 644 "$pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
-	install -Dm 644 tmpfiles.d.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -D ROMVault3.exe chdman.exe -t "$pkgdir/opt/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -D "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -D chdman.sh "$pkgdir/usr/bin/chdman"
+	install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm644 "$pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 tmpfiles.d.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
