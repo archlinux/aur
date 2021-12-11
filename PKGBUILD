@@ -1,6 +1,6 @@
 # Maintainer: Dylan Ferris (acerix) <dylan@pow7.com>
 
-_pkgbase=aquatic
+pkgbase=aquatic
 pkgname=(aquatic-udp aquatic-http aquatic-ws)
 pkgver=r1076.222fac0
 pkgrel=1
@@ -11,10 +11,10 @@ license=("Apache License 2.0")
 makedepends=(rustup)
 source=("git+https://github.com/greatest-ape/aquatic")
 sha512sums=("SKIP")
-install="$_pkgbase.install"
+install="$pkgbase.install"
 
 pkgver() {
-  cd $_pkgbase
+  cd $pkgbase
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd $_pkgbase
+  cd $pkgbase
 
   # Enable support for CPU all extensions on current CPU except ~AVX-512.
   . ./scripts/env-native-cpu-without-avx-512
@@ -41,31 +41,31 @@ build() {
 }
 
 check() {
-  cd $_pkgbase
+  cd $pkgbase
   RUSTC_BOOTSTRAP=1 cargo test --release
 }
 
 package_aquatic-udp() {
   pkgdesc="A multi-threaded BitTorrent tracker written in Rust - UDP daemon."
   _binname="aquatic_udp"
-  install -Dm755 $_pkgbase/target/release/$_binname $pkgdir/usr/bin/$pkgname
-  install -Dm644 $_pkgbase/$_binname.toml $pkgdir/etc/$_pkgbase/$pkgname.toml
+  install -Dm755 $pkgbase/target/release/$_binname $pkgdir/usr/bin/$pkgname
+  install -Dm644 $pkgbase/$_binname.toml $pkgdir/etc/$pkgbase/$pkgname.toml
   install -Dm644 ../$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
 }
 
 package_aquatic-http() {
   pkgdesc="A multi-threaded BitTorrent tracker written in Rust - HTTPS daemon."
   _binname="aquatic_http"
-  install -Dm755 $_pkgbase/target/release/$_binname $pkgdir/usr/bin/$pkgname
-  install -Dm644 $_pkgbase/$_binname.toml $pkgdir/etc/$_pkgbase/$pkgname.toml
+  install -Dm755 $pkgbase/target/release/$_binname $pkgdir/usr/bin/$pkgname
+  install -Dm644 $pkgbase/$_binname.toml $pkgdir/etc/$pkgbase/$pkgname.toml
   install -Dm644 ../$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
 }
 
 package_aquatic-ws() {
   pkgdesc="A multi-threaded BitTorrent tracker written in Rust - WebSocket daemon."
   _binname="aquatic_ws"
-  install -Dm755 $_pkgbase/target/release/$_binname $pkgdir/usr/bin/$pkgname
-  install -Dm644 $_pkgbase/$_binname.toml $pkgdir/etc/$_pkgbase/$pkgname.toml
+  install -Dm755 $pkgbase/target/release/$_binname $pkgdir/usr/bin/$pkgname
+  install -Dm644 $pkgbase/$_binname.toml $pkgdir/etc/$pkgbase/$pkgname.toml
   install -Dm644 ../$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
 }
 

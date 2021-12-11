@@ -1,4 +1,4 @@
-pkgbase = aquatic-udp
+pkgbase = aquatic
 	pkgdesc = A multi-threaded BitTorrent tracker written in Rust.
 	pkgver = r1076.222fac0
 	pkgrel = 1
