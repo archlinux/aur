@@ -1,18 +1,24 @@
-# Maintainer: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
-
-pkgname=python-allure-commons
-_pkgname=allure-python-commons
-pkgver=2.5.3
+_base=allure
+pkgname=python-${_base}-commons
+pkgver=2.9.45
 pkgrel=1
-pkgdesc='Commons of Allure python adaptors for python-based test frameworks'
+pkgdesc="Common module for integrate allure with python-based frameworks"
 arch=('any')
-url="https://github.com/allure-framework/allure-python/tree/master/$_pkgname"
-depends=('python' 'python-pluggy>=0.4.0' 'python-six>=1.9.0' 'python-attrs>=16.0.0')
-source=("git+https://github.com/allure-framework/allure-python.git#tag=$pkgver")
-md5sums=('SKIP')
+url="https://github.com/${_base}-framework/${_base}-python"
+depends=(python-pluggy python-six python-attrs)
+makedepends=(python-setuptools-scm git)
+source=("git+${url}.git#tag=${pkgver}")
+sha512sums=('SKIP')
+
+prepare() {
+  cd "${_base}-python/${_base}-python-commons"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/allure-python/$_pkgname"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+  cd "${_base}-python/${_base}-python-commons"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
