@@ -2,7 +2,7 @@
 
 pkgname=clair-git
 pkgver=4.3.5.r3.gc88c406f
-pkgrel=3
+pkgrel=4
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
 url="https://github.com/quay/clair.git"
@@ -29,27 +29,29 @@ prepare() {
 	cd "${srcdir}/go/src/github.com/quay/clair"
 
 	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-	go get -v ./...
+    go get -v -t ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/quay/clair"
 
-	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-    go build -o clair -trimpath \
-        -ldflags "-s -w -X main.Version=${pkgver}" \
-        ./cmd/clair
+    mkdir -p build
 
-    go build -o clairctl -trimpath \
+	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
+    go build -trimpath \
         -ldflags "-s -w -X main.Version=${pkgver}" \
-        ./cmd/clairctl
+        -o ./build/clair ./cmd/clair
+
+    go build -trimpath \
+        -ldflags "-s -w -X main.Version=${pkgver}" \
+        -o ./build/clairctl ./cmd/clairctl
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/quay/clair"
 
-	install -Dm755 "clair" "${pkgdir}/usr/bin/clair"
-	install -Dm755 "clairctl" "${pkgdir}/usr/bin/clair"
+	install -Dm755 "build/clair" "${pkgdir}/usr/bin/clair"
+	install -Dm755 "build/clairctl" "${pkgdir}/usr/bin/clair"
 	install -Dm755 "config.yaml.sample" "${pkgdir}/etc/clair/config.yaml"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
