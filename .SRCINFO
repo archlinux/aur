@@ -1,0 +1,12 @@
+pkgbase = catchme-git
+	pkgdesc = Catch Me mpv cli
+	pkgver = v1.0.r12.ga00618c
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = musl
+	source = catchme::git+https://gitlab.com/kurenaiz/catchme.git
+	sha256sums = SKIP
+
+pkgname = catchme-git
