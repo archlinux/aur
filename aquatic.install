@@ -1,0 +1,15 @@
+post_install() {
+  getent group aquatic > /dev/null || groupadd -r aquatic
+  getent passwd aquatic > /dev/null || useradd -r -m -d /var/lib/aquatic -g aquatic -s /usr/bin/nologin aquatic
+  usermod -a -G network aquatic
+  mkdir -p /var/lib/aquatic
+  chown -R aquatic:aquatic /var/lib/aquatic
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  getent passwd aquatic > /dev/null && userdel aquatic
+}

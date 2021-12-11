@@ -1,0 +1,13 @@
+[Unit]
+Description=aquatic HTTPS daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/aquatic-http -c /etc/aquatic/aquatic-http.toml
+Type=simple
+User=aquatic
+Group=aquatic
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

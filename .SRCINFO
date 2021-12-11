@@ -1,0 +1,20 @@
+pkgbase = aquatic-udp
+	pkgdesc = A multi-threaded BitTorrent tracker written in Rust.
+	pkgver = r1076.222fac0
+	pkgrel = 1
+	url = https://github.com/greatest-ape/aquatic
+	install = aquatic.install
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = rustup
+	source = git+https://github.com/greatest-ape/aquatic
+	sha512sums = SKIP
+
+pkgname = aquatic-udp
+	pkgdesc = A multi-threaded BitTorrent tracker written in Rust - UDP daemon.
+
+pkgname = aquatic-http
+	pkgdesc = A multi-threaded BitTorrent tracker written in Rust - HTTPS daemon.
+
+pkgname = aquatic-ws
+	pkgdesc = A multi-threaded BitTorrent tracker written in Rust - WebSocket daemon.

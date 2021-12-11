@@ -1,0 +1,13 @@
+[Unit]
+Description=aquatic UDP daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/aquatic-udp -c /etc/aquatic/aquatic-udp.toml
+Type=simple
+User=aquatic
+Group=aquatic
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

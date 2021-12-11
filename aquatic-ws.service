@@ -1,0 +1,13 @@
+[Unit]
+Description=aquatic WebSocket daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/aquatic-ws -c /etc/aquatic/aquatic-ws.toml
+Type=simple
+User=aquatic
+Group=aquatic
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
