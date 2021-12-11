@@ -2,7 +2,7 @@
 
 pkgname=dive-git
 pkgver=v0.10.0.r2.gc7d121b
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/dive"
 arch=('x86_64' 'i686')
@@ -28,7 +28,7 @@ prepare() {
 	cd "${srcdir}/go/src/github.com/wagoodman/dive"
 
     export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-    go get -v ./...
+    go get -v -t ./...
 }
 
 build() {
@@ -39,7 +39,7 @@ build() {
     export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
 	go build \
 		-trimpath -ldflags "-s -w" \
-		-o build/dive
+		-o ./build/dive .
 }
 
 package() {
