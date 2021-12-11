@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="A program to view msg file from outlook (forked version by lolo101)"
 arch=(any)
 url="https://github.com/lolo101/MsgViewer/tree/msgviewer-1.8.3"
-license=('GPLv3)')
+license=('GPLv3')
 depends=(java-runtime=11)
 makedepends=(jdk11-openjdk)
 conflicts=("msgviewer")
