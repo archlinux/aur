@@ -1,6 +1,6 @@
 pkgbase = qtcreator-git
 	pkgdesc = Lightweight, cross-platform integrated development environment
-	pkgver = v6.0.0.rc1.r238.g7a0bdccadf
+	pkgver = v6.0.0.r260.ga3af941adf
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
