@@ -4,7 +4,7 @@
 pkgname=nextcloud-app-calendar_resource_management
 _name=calendar_resource_management
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Resource manager for nextcloud calendar app"
 arch=('any')
 url="https://github.com/nextcloud/calendar_resource_management"
@@ -38,5 +38,5 @@ package() {
   depends=("nextcloud>=${_app_min_major_version}" "nextcloud<${_app_max_major_version}")
 
   install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
-  cp -r "${srcdir}"/${_name}-$pkgver "${pkgdir}"/usr/share/webapps/nextcloud/apps/
+  cp -r "${srcdir}"/${_name}-$pkgver "${pkgdir}"/usr/share/webapps/nextcloud/apps/${_name}
 }

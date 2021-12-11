@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-calendar_resource_management
 	pkgdesc = Resource manager for nextcloud calendar app
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/calendar_resource_management
 	arch = any
 	license = GPL
