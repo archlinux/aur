@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=soft-serve
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A self-hosted Git server for the command line"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ffe1eac8ea9ea0c1bc18840a6672f376f8abec4797242e9ac46de190ef0f769c')
+sha256sums=('04599719f9582b6572ca79662f6da28cca689f922b5f28baa3e96edd65dae7b6')
 
 build() {
     local commit
@@ -18,7 +18,7 @@ build() {
     commit=$(zcat ${pkgname}-${pkgver}.tar.gz | git get-tar-commit-id)
     extraflags="-X main.Version=${pkgver} -X main.CommitSHA=${commit}"
 
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"/cmd/soft
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -31,13 +31,13 @@ build() {
         -mod=readonly \
         -modcacherw \
         -ldflags "${extraflags} -linkmode external -extldflags \"${LDFLAGS}\"" \
-        -o "$pkgname" .
+        -o "soft" .
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/soft"
+    install -Dm755 "cmd/soft/soft" "$pkgdir/usr/bin/soft"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

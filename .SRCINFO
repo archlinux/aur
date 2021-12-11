@@ -1,6 +1,6 @@
 pkgbase = soft-serve
 	pkgdesc = A self-hosted Git server for the command line
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/charmbracelet/soft-serve
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = soft-serve
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/charmbracelet/soft-serve/archive/v0.1.0/soft-serve-0.1.0.tar.gz
-	sha256sums = ffe1eac8ea9ea0c1bc18840a6672f376f8abec4797242e9ac46de190ef0f769c
+	source = https://github.com/charmbracelet/soft-serve/archive/v0.1.2/soft-serve-0.1.2.tar.gz
+	sha256sums = 04599719f9582b6572ca79662f6da28cca689f922b5f28baa3e96edd65dae7b6
 
 pkgname = soft-serve
