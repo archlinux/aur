@@ -3,7 +3,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=buildgdx
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="A port of the Build Engine games based on Java's libGDX"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('buildgdx')
 source=('https://m210.duke4.net/index.php/downloads/send/8-java/54-buildgdx.zip'
         'buildgdx.desktop'
         'buildgdx')
-sha256sums=('SKIP'
+sha256sums=('7d42e8fe493c6040db29db70c197f6894c554c7e1bce36c823df63ea1a182e06'
             '52e5c860572f0f1e38c6fb2d55221e9dfeaa4b49e89142166634c9934d35f4f5'
             'f74ba6eae81693f79434c3f8dec4bca75b51a55b67b5875d4e1dd2340ff55c5c')
 
