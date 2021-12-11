@@ -1,9 +1,9 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=alizams-qt5
-pkgver=1.6.3.1
+pkgver=1.7.2
 pkgrel=1
-pkgdesc=""
+pkgdesc="Qt5 DICOM Viewer"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.aliza-dicom-viewer.com/"
 license=(GPL3)
@@ -13,11 +13,6 @@ provides=(alizams)
 conflicts=(alizams)
 source=("git+https://github.com/AlizaMedicalImaging/AlizaMS.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd AlizaMS
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
   cd AlizaMS
