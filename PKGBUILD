@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.842
+pkgver=mainline.0.845
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -71,6 +71,7 @@ prepare() {
 	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
 	install -Dm644 "../gamedb-$(date -I).json" ../build/dist/compatibility_list/compatibility_list.json
+	ln -sr .git ../build
 	patch -Np1 < ../unbundle-catch2.patch
 	patch -Np1 < ../unbundle-cubeb.patch
 	patch -Np1 < ../unbundle-discord-rpc.patch
