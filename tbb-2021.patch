@@ -1,0 +1,784 @@
+From 75320b9620b5240cda2c9d92cde394fb68ff97b6 Mon Sep 17 00:00:00 2001
+From: Lukas1818 <git@lukas1818.de>
+Date: Sat, 11 Dec 2021 14:54:22 +0100
+Subject: [PATCH] fixs for tbb21 based on
+ https://github.com/archlinux/svntogit-community/blob/packages/prusa-slicer/trunk/prusa-slicer-tbb-2021.patch
+
+---
+ src/libslic3r/Print.cpp                     |   6 +-
+ src/libslic3r/PrintBase.cpp                 |   2 +-
+ src/libslic3r/PrintBase.hpp                 |  40 +-
+ src/libslic3r/PrintObject.cpp               |   1 -
+ src/libslic3r/SLA/Concurrency.hpp           |   5 +-
+ src/libslic3r/SLA/SupportTree.cpp           |   3 -
+ src/libslic3r/SLAPrint.cpp                  |  10 +-
+ src/libslic3r/SupportMaterial.cpp           |   1 -
+ src/libslic3r/Thread.cpp                    |  10 +-
+ src/libslic3r/pchheader.hpp                 |   3 -
+ src/libslic3r/utils.cpp                     |   6 +-
+ src/slic3r/GUI/BackgroundSlicingProcess.cpp |   6 +-
+ src/slic3r/GUI/BackgroundSlicingProcess.hpp |   2 +-
+ src/slic3r/GUI/InstanceCheck.hpp            |   2 +-
+ src/slic3r/GUI/Mouse3DController.cpp        |  38 +-
+ src/slic3r/GUI/Mouse3DController.hpp        |  10 +-
+ src/slic3r/GUI/RemovableDriveManager.cpp    |  24 +-
+ src/slic3r/GUI/RemovableDriveManager.hpp    |   6 +-
+ 19 files changed, 543 insertions(+), 395 deletions(-)
+
+diff --git a/src/libslic3r/Print.cpp b/src/libslic3r/Print.cpp
+index 87c2cc2b3..07c7d00e6 100644
+--- a/src/libslic3r/Print.cpp
++++ b/src/libslic3r/Print.cpp
+@@ -37,7 +37,7 @@ template class PrintState<PrintObjectStep, posCount>;
+ 
+ void Print::clear() 
+ {
+-	tbb::mutex::scoped_lock lock(this->state_mutex());
++	std::scoped_lock<std::mutex> lock(this->state_mutex());
+     // The following call should stop background processing if it is running.
+     this->invalidate_all_steps();
+ 	for (PrintObject *object : m_objects)
+@@ -349,7 +349,7 @@ bool Print::is_step_done(PrintObjectStep step) const
+ {
+     if (m_objects.empty())
+         return false;
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+     for (const PrintObject *object : m_objects)
+         if (! object->is_step_done_unguarded(step))
+             return false;
+@@ -702,7 +702,7 @@ Print::ApplyStatus Print::apply(const Model &model, DynamicPrintConfig new_full_
+         update_apply_status(false);
+ 
+     // Grab the lock for the Print / PrintObject milestones.
+-	tbb::mutex::scoped_lock lock(this->state_mutex());
++	std::scoped_lock<std::mutex> lock(this->state_mutex());
+ 
+     // The following call may stop the background processing.
+     if (! print_diff.empty())
+diff --git a/src/libslic3r/PrintBase.cpp b/src/libslic3r/PrintBase.cpp
+index e4a0b45cc..b62fca38f 100644
+--- a/src/libslic3r/PrintBase.cpp
++++ b/src/libslic3r/PrintBase.cpp
+@@ -139,7 +139,7 @@ void PrintBase::status_update_warnings(ObjectID object_id, int step, PrintStateB
+     	printf("%s warning: %s\n", (object_id == this->id()) ? "print" : "print object", message.c_str());
+ }
+ 
+-tbb::mutex& PrintObjectBase::state_mutex(PrintBase *print)
++std::mutex& PrintObjectBase::state_mutex(PrintBase *print)
+ { 
+ 	return print->state_mutex();
+ }
+diff --git a/src/libslic3r/PrintBase.hpp b/src/libslic3r/PrintBase.hpp
+index a2db978fc..8d138137f 100644
+--- a/src/libslic3r/PrintBase.hpp
++++ b/src/libslic3r/PrintBase.hpp
+@@ -6,12 +6,8 @@
+ #include <vector>
+ #include <string>
+ #include <functional>
+-
+-// tbb/mutex.h includes Windows, which in turn defines min/max macros. Convince Windows.h to not define these min/max macros.
+-#ifndef NOMINMAX
+-    #define NOMINMAX
+-#endif
+-#include "tbb/mutex.h"
++#include <atomic>
++#include <mutex>
+ 
+ #include "ObjectID.hpp"
+ #include "Model.hpp"
+@@ -84,23 +80,23 @@ class PrintState : public PrintStateBase
+ public:
+     PrintState() {}
+ 
+-    StateWithTimeStamp state_with_timestamp(StepType step, tbb::mutex &mtx) const {
+-        tbb::mutex::scoped_lock lock(mtx);
++    StateWithTimeStamp state_with_timestamp(StepType step, std::mutex &mtx) const {
++        std::scoped_lock<std::mutex> lock(mtx);
+         StateWithTimeStamp state = m_state[step];
+         return state;
+     }
+ 
+-    StateWithWarnings state_with_warnings(StepType step, tbb::mutex &mtx) const {
+-        tbb::mutex::scoped_lock lock(mtx);
++    StateWithWarnings state_with_warnings(StepType step, std::mutex &mtx) const {
++        std::scoped_lock<std::mutex> lock(mtx);
+         StateWithWarnings state = m_state[step];
+         return state;
+     }
+ 
+-    bool is_started(StepType step, tbb::mutex &mtx) const {
++    bool is_started(StepType step, std::mutex &mtx) const {
+         return this->state_with_timestamp(step, mtx).state == STARTED;
+     }
+ 
+-    bool is_done(StepType step, tbb::mutex &mtx) const {
++    bool is_done(StepType step, std::mutex &mtx) const {
+         return this->state_with_timestamp(step, mtx).state == DONE;
+     }
+ 
+@@ -121,8 +117,8 @@ public:
+     // This is necessary to block until the Print::apply() updates its state, which may
+     // influence the processing step being entered.
+     template<typename ThrowIfCanceled>
+-    bool set_started(StepType step, tbb::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
+-        tbb::mutex::scoped_lock lock(mtx);
++    bool set_started(StepType step, std::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
++        std::scoped_lock<std::mutex> lock(mtx);
+         // If canceled, throw before changing the step state.
+         throw_if_canceled();
+ #ifndef NDEBUG
+@@ -154,8 +150,8 @@ public:
+     // 		Timestamp when this stepentered the DONE state.
+     // 		bool indicates whether the UI has to update the slicing warnings of this step or not.
+ 	template<typename ThrowIfCanceled>
+-	std::pair<TimeStamp, bool> set_done(StepType step, tbb::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
+-        tbb::mutex::scoped_lock lock(mtx);
++	std::pair<TimeStamp, bool> set_done(StepType step, std::mutex &mtx, ThrowIfCanceled throw_if_canceled) {
++        std::scoped_lock<std::mutex> lock(mtx);
+         // If canceled, throw before changing the step state.
+         throw_if_canceled();
+         assert(m_state[step].state == STARTED);
+@@ -266,9 +262,9 @@ public:
+     // Return value:
+     // 		Current milestone (StepType).
+     // 		bool indicates whether the UI has to be updated or not.
+-    std::pair<StepType, bool> active_step_add_warning(PrintStateBase::WarningLevel warning_level, const std::string &message, int message_id, tbb::mutex &mtx)
++    std::pair<StepType, bool> active_step_add_warning(PrintStateBase::WarningLevel warning_level, const std::string &message, int message_id, std::mutex &mtx)
+     {
+-        tbb::mutex::scoped_lock lock(mtx);
++        std::scoped_lock<std::mutex> lock(mtx);
+         assert(m_step_active != -1);
+         StateWithWarnings &state = m_state[m_step_active];
+         assert(state.state == STARTED);
+@@ -314,7 +310,7 @@ protected:
+     PrintObjectBase(ModelObject *model_object) : m_model_object(model_object) {}
+     virtual ~PrintObjectBase() {}
+     // Declared here to allow access from PrintBase through friendship.
+-	static tbb::mutex&                  state_mutex(PrintBase *print);
++	static std::mutex&                  state_mutex(PrintBase *print);
+ 	static std::function<void()>        cancel_callback(PrintBase *print);
+ 	// Notify UI about a new warning of a milestone "step" on this PrintObjectBase.
+ 	// The UI will be notified by calling a status callback registered on print.
+@@ -473,7 +469,7 @@ protected:
+ 	friend class PrintObjectBase;
+     friend class BackgroundSlicingProcess;
+ 
+-    tbb::mutex&            state_mutex() const { return m_state_mutex; }
++    std::mutex&            state_mutex() const { return m_state_mutex; }
+     std::function<void()>  cancel_callback() { return m_cancel_callback; }
+ 	void				   call_cancel_callback() { m_cancel_callback(); }
+ 	// Notify UI about a new warning of a milestone "step" on this PrintBase.
+@@ -498,7 +494,7 @@ protected:
+     status_callback_type                    m_status_callback;
+ 
+ private:
+-    tbb::atomic<CancelStatus>               m_cancel_status;
++    std::atomic<CancelStatus>               m_cancel_status;
+ 
+     // Callback to be evoked to stop the background processing before a state is updated.
+     cancel_callback_type                    m_cancel_callback = [](){};
+@@ -506,7 +502,7 @@ private:
+     // Mutex used for synchronization of the worker thread with the UI thread:
+     // The mutex will be used to guard the worker thread against entering a stage
+     // while the data influencing the stage is modified.
+-    mutable tbb::mutex                      m_state_mutex;
++    mutable std::mutex                      m_state_mutex;
+ };
+ 
+ template<typename PrintStepEnum, const size_t COUNT>
+diff --git a/src/libslic3r/PrintObject.cpp b/src/libslic3r/PrintObject.cpp
+index 3fbe51b3b..b65f38ff8 100644
+--- a/src/libslic3r/PrintObject.cpp
++++ b/src/libslic3r/PrintObject.cpp
+@@ -19,7 +19,6 @@
+ #include <float.h>
+ 
+ #include <tbb/parallel_for.h>
+-#include <tbb/atomic.h>
+ 
+ #include <Shiny/Shiny.h>
+ 
+diff --git a/src/libslic3r/SLA/Concurrency.hpp b/src/libslic3r/SLA/Concurrency.hpp
+index 300024c76..6b609da00 100644
+--- a/src/libslic3r/SLA/Concurrency.hpp
++++ b/src/libslic3r/SLA/Concurrency.hpp
+@@ -1,12 +1,13 @@
+ #ifndef SLA_CONCURRENCY_H
+ #define SLA_CONCURRENCY_H
+ 
++#include <tbb/blocked_range.h>
+ #include <tbb/spin_mutex.h>
+-#include <tbb/mutex.h>
+ #include <tbb/parallel_for.h>
+ #include <tbb/parallel_reduce.h>
+ 
+ #include <algorithm>
++#include <mutex>
+ #include <numeric>
+ 
+ #include <libslic3r/libslic3r.h>
+@@ -23,7 +24,7 @@ template<bool> struct _ccr {};
+ template<> struct _ccr<true>
+ {
+     using SpinningMutex = tbb::spin_mutex;
+-    using BlockingMutex = tbb::mutex;
++    using BlockingMutex = std::mutex;
+ 
+     template<class Fn, class It>
+     static IteratorOnly<It, void> loop_(const tbb::blocked_range<It> &range, Fn &&fn)
+diff --git a/src/libslic3r/SLA/SupportTree.cpp b/src/libslic3r/SLA/SupportTree.cpp
+index e09735fdc..e934843ee 100644
+--- a/src/libslic3r/SLA/SupportTree.cpp
++++ b/src/libslic3r/SLA/SupportTree.cpp
+@@ -16,9 +16,6 @@
+ #include <libnest2d/optimizers/nlopt/genetic.hpp>
+ #include <libnest2d/optimizers/nlopt/subplex.hpp>
+ #include <boost/log/trivial.hpp>
+-#include <tbb/parallel_for.h>
+-#include <tbb/mutex.h>
+-#include <tbb/spin_mutex.h>
+ #include <libslic3r/I18N.hpp>
+ 
+ //! macro used to mark string used at localization,
+diff --git a/src/libslic3r/SLAPrint.cpp b/src/libslic3r/SLAPrint.cpp
+index a24bdf8aa..d5a1f8421 100644
+--- a/src/libslic3r/SLAPrint.cpp
++++ b/src/libslic3r/SLAPrint.cpp
+@@ -19,8 +19,6 @@
+ #include <libnest2d/tools/benchmark.h>
+ #endif
+ 
+-//#include <tbb/spin_mutex.h>//#include "tbb/mutex.h"
+-
+ #include "I18N.hpp"
+ 
+ //! macro used to mark string used at localization,
+@@ -118,7 +116,7 @@ bool validate_pad(const TriangleMesh &pad, const sla::PadConfig &pcfg)
+ 
+ void SLAPrint::clear()
+ {
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+     // The following call should stop background processing if it is running.
+     this->invalidate_all_steps();
+     for (SLAPrintObject *object : m_objects)
+@@ -212,7 +210,7 @@ SLAPrint::ApplyStatus SLAPrint::apply(const Model &model, DynamicPrintConfig con
+         update_apply_status(false);
+ 
+     // Grab the lock for the Print / PrintObject milestones.
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+ 
+     // The following call may stop the background processing.
+     bool invalidate_all_model_objects = false;
+@@ -514,7 +512,7 @@ SLAPrint::ApplyStatus SLAPrint::apply(const Model &model, DynamicPrintConfig con
+ void SLAPrint::set_task(const TaskParams &params)
+ {
+     // Grab the lock for the Print / PrintObject milestones.
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+ 
+     int n_object_steps = int(params.to_object_step) + 1;
+     if (n_object_steps == 0)
+@@ -897,7 +895,7 @@ bool SLAPrint::is_step_done(SLAPrintObjectStep step) const
+ {
+     if (m_objects.empty())
+         return false;
+-    tbb::mutex::scoped_lock lock(this->state_mutex());
++    std::scoped_lock<std::mutex> lock(this->state_mutex());
+     for (const SLAPrintObject *object : m_objects)
+         if (! object->is_step_done_unguarded(step))
+             return false;
+diff --git a/src/libslic3r/SupportMaterial.cpp b/src/libslic3r/SupportMaterial.cpp
+index 71f734cd3..4160e3fed 100644
+--- a/src/libslic3r/SupportMaterial.cpp
++++ b/src/libslic3r/SupportMaterial.cpp
+@@ -13,7 +13,6 @@
+ #include <boost/log/trivial.hpp>
+ 
+ #include <tbb/parallel_for.h>
+-#include <tbb/atomic.h>
+ #include <tbb/spin_mutex.h>
+ #include <tbb/task_group.h>
+ 
+diff --git a/src/libslic3r/Thread.cpp b/src/libslic3r/Thread.cpp
+index bd44bc4f5..15a5928cc 100644
+--- a/src/libslic3r/Thread.cpp
++++ b/src/libslic3r/Thread.cpp
+@@ -9,10 +9,10 @@
+ #include <atomic>
+ #include <condition_variable>
+ #include <mutex>
++#include <thread>
++#include <tbb/global_control.h>
+ #include <tbb/parallel_for.h>
+-#include <tbb/tbb_thread.h>
+ #include <tbb/task_arena.h>
+-#include <tbb/task_scheduler_init.h>
+ 
+ #include "Thread.hpp"
+ 
+@@ -207,12 +207,12 @@ void name_tbb_thread_pool_threads()
+ #endif
+ 
+ 	if (nthreads != nthreads_hw) 
+-		new tbb::task_scheduler_init(int(nthreads));
++		tbb::global_control(tbb::global_control::max_allowed_parallelism, nthreads);
+ 
+ 	std::atomic<size_t>		nthreads_running(0);
+ 	std::condition_variable cv;
+ 	std::mutex				cv_m;
+-	auto					master_thread_id = tbb::this_tbb_thread::get_id();
++	auto					master_thread_id = std::this_thread::get_id();
+ 	auto					now = std::chrono::system_clock::now();
+     tbb::parallel_for(
+         tbb::blocked_range<size_t>(0, nthreads, 1),
+@@ -228,7 +228,7 @@ void name_tbb_thread_pool_threads()
+ 				// here can be deadlock with the main that creates me.
+ 			    cv.wait_until(lk, now + std::chrono::milliseconds(50), [&nthreads_running, nthreads]{return nthreads_running == nthreads;});
+         	}
+-        	auto thread_id = tbb::this_tbb_thread::get_id();
++        	auto thread_id = std::this_thread::get_id();
+ 			if (thread_id == master_thread_id) {
+ 				// The calling thread runs the 0'th task.
+ 				//assert(range.begin() == 0);
+diff --git a/src/libslic3r/pchheader.hpp b/src/libslic3r/pchheader.hpp
+index 0135fd712..98c55bf37 100644
+--- a/src/libslic3r/pchheader.hpp
++++ b/src/libslic3r/pchheader.hpp
+@@ -93,12 +93,9 @@
+ #include <boost/thread.hpp>
+ #include <boost/version.hpp>
+ 
+-#include <tbb/atomic.h>
+ #include <tbb/parallel_for.h>
+ #include <tbb/spin_mutex.h>
+-#include <tbb/mutex.h>
+ #include <tbb/task_group.h>
+-#include <tbb/task_scheduler_init.h>
+ 
+ #include <Eigen/Dense>
+ #include <Eigen/Geometry>
+diff --git a/src/libslic3r/utils.cpp b/src/libslic3r/utils.cpp
+index ef77f2263..1f1add200 100644
+--- a/src/libslic3r/utils.cpp
++++ b/src/libslic3r/utils.cpp
+@@ -43,7 +43,7 @@
+ #include <boost/nowide/convert.hpp>
+ #include <boost/nowide/cstdio.hpp>
+ 
+-#include <tbb/task_scheduler_init.h>
++#include <tbb/global_control.h>
+ 
+ #if defined(__linux__) || defined(__GNUC__ )
+ #include <strings.h>
+@@ -118,9 +118,7 @@ void trace(unsigned int level, const char *message)
+ void disable_multi_threading()
+ {
+     // Disable parallelization so the Shiny profiler works
+-    static tbb::task_scheduler_init *tbb_init = nullptr;
+-    if (tbb_init == nullptr)
+-        tbb_init = new tbb::task_scheduler_init(1);
++    tbb::global_control(tbb::global_control::max_allowed_parallelism, 1);
+ }
+ 
+ static std::string g_var_dir;
+diff --git a/src/slic3r/GUI/BackgroundSlicingProcess.cpp b/src/slic3r/GUI/BackgroundSlicingProcess.cpp
+index 638e5f39b..fd3f6d948 100644
+--- a/src/slic3r/GUI/BackgroundSlicingProcess.cpp
++++ b/src/slic3r/GUI/BackgroundSlicingProcess.cpp
+@@ -519,7 +519,7 @@ void BackgroundSlicingProcess::schedule_export(const std::string &path, bool exp
+ 		return;
+ 
+ 	// Guard against entering the export step before changing the export path.
+-	tbb::mutex::scoped_lock lock(m_print->state_mutex());
++	std::scoped_lock<std::mutex> lock(m_print->state_mutex());
+ 	this->invalidate_step(bspsGCodeFinalize);
+ 	m_export_path = path;
+ 	m_export_path_on_removable_media = export_path_on_removable_media;
+@@ -532,7 +532,7 @@ void BackgroundSlicingProcess::schedule_upload(Slic3r::PrintHostJob upload_job)
+ 		return;
+ 
+ 	// Guard against entering the export step before changing the export path.
+-	tbb::mutex::scoped_lock lock(m_print->state_mutex());
++	std::scoped_lock<std::mutex> lock(m_print->state_mutex());
+ 	this->invalidate_step(bspsGCodeFinalize);
+ 	m_export_path.clear();
+ 	m_upload_job = std::move(upload_job);
+@@ -552,7 +552,7 @@ void BackgroundSlicingProcess::reset_export()
+ 		m_export_path.clear();
+ 		m_export_path_on_removable_media = false;
+ 		// invalidate_step expects the mutex to be locked.
+-		tbb::mutex::scoped_lock lock(m_print->state_mutex());
++		std::scoped_lock<std::mutex> lock(m_print->state_mutex());
+ 		this->invalidate_step(bspsGCodeFinalize);
+ 	}
+ }
+diff --git a/src/slic3r/GUI/BackgroundSlicingProcess.hpp b/src/slic3r/GUI/BackgroundSlicingProcess.hpp
+index 814ed33f7..95c5e462f 100644
+--- a/src/slic3r/GUI/BackgroundSlicingProcess.hpp
++++ b/src/slic3r/GUI/BackgroundSlicingProcess.hpp
+@@ -230,7 +230,7 @@ private:
+     std::shared_ptr<UITask>     m_ui_task;
+ 
+     PrintState<BackgroundSlicingProcessStep, bspsCount>   	m_step_state;
+-    mutable tbb::mutex                      				m_step_state_mutex;
++    mutable std::mutex                      				m_step_state_mutex;
+ 	bool                set_step_started(BackgroundSlicingProcessStep step);
+ 	void                set_step_done(BackgroundSlicingProcessStep step);
+ 	bool 				is_step_done(BackgroundSlicingProcessStep step) const;
+diff --git a/src/slic3r/GUI/InstanceCheck.hpp b/src/slic3r/GUI/InstanceCheck.hpp
+index 9fb74b0a9..23a75edc5 100644
+--- a/src/slic3r/GUI/InstanceCheck.hpp
++++ b/src/slic3r/GUI/InstanceCheck.hpp
+@@ -13,7 +13,7 @@
+ 
+ #if __linux__
+ #include <boost/thread.hpp>
+-#include <tbb/mutex.h>
++#include <mutex>
+ #include <condition_variable>
+ #endif // __linux__
+ 
+diff --git a/src/slic3r/GUI/Mouse3DController.cpp b/src/slic3r/GUI/Mouse3DController.cpp
+index 692ae7f1b..541345194 100644
+--- a/src/slic3r/GUI/Mouse3DController.cpp
++++ b/src/slic3r/GUI/Mouse3DController.cpp
+@@ -66,7 +66,7 @@ void update_maximum(std::atomic<T>& maximum_value, T const& value) noexcept
+ 
+ void Mouse3DController::State::append_translation(const Vec3d& translation, size_t input_queue_max_size)
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     while (m_input_queue.size() >= input_queue_max_size)
+         m_input_queue.pop_front();
+     m_input_queue.emplace_back(QueueItem::translation(translation));
+@@ -77,7 +77,7 @@ void Mouse3DController::State::append_translation(const Vec3d& translation, size
+ 
+ void Mouse3DController::State::append_rotation(const Vec3f& rotation, size_t input_queue_max_size)
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     while (m_input_queue.size() >= input_queue_max_size)
+         m_input_queue.pop_front();
+     m_input_queue.emplace_back(QueueItem::rotation(rotation.cast<double>()));
+@@ -92,7 +92,7 @@ void Mouse3DController::State::append_rotation(const Vec3f& rotation, size_t inp
+ 
+ void Mouse3DController::State::append_button(unsigned int id, size_t /* input_queue_max_size */)
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     m_input_queue.emplace_back(QueueItem::buttons(id));
+ #if ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+     update_maximum(input_queue_max_size_achieved, m_input_queue.size());
+@@ -277,7 +277,7 @@ void Mouse3DController::device_attached(const std::string &device)
+ #if ENABLE_CTRL_M_ON_WINDOWS
+             m_device_str = format_device_string(vid, pid);
+             if (auto it_params = m_params_by_device.find(m_device_str); it_params != m_params_by_device.end()) {
+-                tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++                std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+                 m_params = m_params_ui = it_params->second;
+             }
+             else
+@@ -295,7 +295,7 @@ void Mouse3DController::device_detached(const std::string& device)
+     int pid = 0;
+     if (sscanf(device.c_str(), "\\\\?\\HID#VID_%x&PID_%x&", &vid, &pid) == 2) {
+         if (std::find(_3DCONNEXION_VENDORS.begin(), _3DCONNEXION_VENDORS.end(), vid) != _3DCONNEXION_VENDORS.end()) {
+-            tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++            std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+             m_params_by_device[format_device_string(vid, pid)] = m_params_ui;
+         }
+     }
+@@ -307,12 +307,12 @@ void Mouse3DController::device_detached(const std::string& device)
+ // Filter out mouse scroll events produced by the 3DConnexion driver.
+ bool Mouse3DController::State::process_mouse_wheel()
+ {
+-	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
+-	if (m_mouse_wheel_counter == 0)
+-    	// No 3DConnexion rotation has been captured since the last mouse scroll event.
++    std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
++    if (m_mouse_wheel_counter == 0)
++        // No 3DConnexion rotation has been captured since the last mouse scroll event.
+         return false;
+     if (std::find_if(m_input_queue.begin(), m_input_queue.end(), [](const QueueItem &item){ return item.is_rotation(); }) != m_input_queue.end()) {
+-    	// There is a rotation stored in the queue. Suppress one mouse scroll event.
++        // There is a rotation stored in the queue. Suppress one mouse scroll event.
+         -- m_mouse_wheel_counter;
+         return true;
+     }
+@@ -329,7 +329,7 @@ bool Mouse3DController::State::apply(const Mouse3DController::Params &params, Ca
+     std::deque<QueueItem> input_queue;
+     {
+     	// Atomically move m_input_queue to input_queue.
+-    	tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++    	std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+     	input_queue = std::move(m_input_queue);
+         m_input_queue.clear();
+     }
+@@ -418,7 +418,7 @@ bool Mouse3DController::apply(Camera& camera)
+ #if ENABLE_CTRL_M_ON_WINDOWS
+ #ifdef _WIN32
+     {
+-        tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++        std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         if (m_params_ui_changed) {
+             m_params = m_params_ui;
+             m_params_ui_changed = false;
+@@ -447,7 +447,7 @@ void Mouse3DController::render_settings_dialog(GLCanvas3D& canvas) const
+     Params params_copy;
+     bool   params_changed = false;
+     {
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+     	params_copy = m_params_ui;
+     }
+ 
+@@ -565,7 +565,7 @@ void Mouse3DController::render_settings_dialog(GLCanvas3D& canvas) const
+ 
+     if (params_changed) {
+         // Synchronize front end parameters to back end.
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         auto pthis = const_cast<Mouse3DController*>(this);
+ #if ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+         if (params_copy.input_queue_max_size != params_copy.input_queue_max_size)
+@@ -586,7 +586,7 @@ void Mouse3DController::connected(std::string device_name)
+ 	m_device_str = device_name;
+     // Copy the parameters for m_device_str into the current parameters.
+     if (auto it_params = m_params_by_device.find(m_device_str); it_params != m_params_by_device.end()) {
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+     	m_params = m_params_ui = it_params->second;
+     }
+     m_connected = true;
+@@ -597,7 +597,7 @@ void Mouse3DController::disconnected()
+     // Copy the current parameters for m_device_str into the parameter database.
+     assert(m_connected == ! m_device_str.empty());
+     if (m_connected) {
+-        tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++        std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         m_params_by_device[m_device_str] = m_params_ui;
+ 	    m_device_str.clear();
+ 	    m_connected = false;
+@@ -621,7 +621,7 @@ bool Mouse3DController::handle_input(const DataPacketAxis& packet)
+     {
+     	// Synchronize parameters between the UI thread and the background thread.
+     	//FIXME is this necessary on OSX? Are these notifications triggered from the main thread or from a worker thread?
+-    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+     	if (m_params_ui_changed) {
+     		m_params = m_params_ui;
+     		m_params_ui_changed = false;
+@@ -733,7 +733,7 @@ void Mouse3DController::run()
+ 
+     for (;;) {
+         {
+-        	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++        	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+         	if (m_stop)
+         		break;
+         	if (m_params_ui_changed) {
+@@ -998,7 +998,7 @@ bool Mouse3DController::connect_device()
+ #endif // ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+         // Copy the parameters for m_device_str into the current parameters.
+         if (auto it_params = m_params_by_device.find(m_device_str); it_params != m_params_by_device.end()) {
+-	    	tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++	    	std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+ 	    	m_params = m_params_ui = it_params->second;
+ 	    }
+     }
+@@ -1023,7 +1023,7 @@ void Mouse3DController::disconnect_device()
+ 	    BOOST_LOG_TRIVIAL(info) << "Disconnected device: " << m_device_str;
+         // Copy the current parameters for m_device_str into the parameter database.
+         {
+-	        tbb::mutex::scoped_lock lock(m_params_ui_mutex);
++	        std::scoped_lock<std::mutex> lock(m_params_ui_mutex);
+ 	        m_params_by_device[m_device_str] = m_params_ui;
+ 	    }
+ 	    m_device_str.clear();
+diff --git a/src/slic3r/GUI/Mouse3DController.hpp b/src/slic3r/GUI/Mouse3DController.hpp
+index af131992c..f648efa6e 100644
+--- a/src/slic3r/GUI/Mouse3DController.hpp
++++ b/src/slic3r/GUI/Mouse3DController.hpp
+@@ -10,12 +10,12 @@
+ 
+ #include <queue>
+ #include <atomic>
++#include <mutex>
+ #include <thread>
+ #include <vector>
+ #include <chrono>
+ #include <condition_variable>
+ 
+-#include <tbb/mutex.h>
+ 
+ namespace Slic3r {
+ 
+@@ -85,7 +85,7 @@ class Mouse3DController
+     	// m_input_queue is accessed by the background thread and by the UI thread. Access to m_input_queue
+     	// is guarded with m_input_queue_mutex.
+         std::deque<QueueItem> m_input_queue;
+-        mutable tbb::mutex	  m_input_queue_mutex;
++        mutable std::mutex	  m_input_queue_mutex;
+ 
+ #ifdef WIN32
+         // When the 3Dconnexion driver is running the system gets, by default, mouse wheel events when rotations around the X axis are detected.
+@@ -112,12 +112,12 @@ class Mouse3DController
+ 
+ #if ENABLE_3DCONNEXION_DEVICES_DEBUG_OUTPUT
+         Vec3d               get_first_vector_of_type(unsigned int type) const {
+-            tbb::mutex::scoped_lock lock(m_input_queue_mutex);
++            std::scoped_lock<std::mutex> lock(m_input_queue_mutex);
+             auto it = std::find_if(m_input_queue.begin(), m_input_queue.end(), [type](const QueueItem& item) { return item.type_or_buttons == type; });
+             return (it == m_input_queue.end()) ? Vec3d::Zero() : it->vector;
+         }
+         size_t              input_queue_size_current() const { 
+-        	tbb::mutex::scoped_lock lock(m_input_queue_mutex); 
++        	std::scoped_lock<std::mutex> lock(m_input_queue_mutex); 
+         	return m_input_queue.size(); 
+         }
+         std::atomic<size_t> input_queue_max_size_achieved;
+@@ -133,7 +133,7 @@ class Mouse3DController
+     // UI thread will read / write this copy.
+     Params 				m_params_ui;
+     bool 	            m_params_ui_changed { false };
+-    mutable tbb::mutex	m_params_ui_mutex;
++    mutable std::mutex	m_params_ui_mutex;
+ 
+     // This is a database of parametes of all 3DConnexion devices ever connected.
+     // This database is loaded from AppConfig on application start and it is stored to AppConfig on application exit.
+diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
+index 59a202beb..8de684e2e 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -84,7 +84,7 @@ void RemovableDriveManager::eject_drive()
+ 	this->update();
+ #endif // REMOVABLE_DRIVE_MANAGER_OS_CALLBACKS
+ 	BOOST_LOG_TRIVIAL(info) << "Ejecting started"; 
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	auto it_drive_data = this->find_last_save_path_drive_data();
+ 	if (it_drive_data != m_current_drives.end()) {
+ 		// get handle to device
+@@ -130,7 +130,7 @@ std::string RemovableDriveManager::get_removable_drive_path(const std::string &p
+ 	this->update();
+ #endif // REMOVABLE_DRIVE_MANAGER_OS_CALLBACKS
+ 
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	if (m_current_drives.empty())
+ 		return std::string();
+ 	std::size_t found = path.find_last_of("\\");
+@@ -146,7 +146,7 @@ std::string RemovableDriveManager::get_removable_drive_path(const std::string &p
+ 
+ std::string RemovableDriveManager::get_removable_drive_from_path(const std::string& path)
+ {
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	std::size_t found = path.find_last_of("\\");
+ 	std::string new_path = path.substr(0, found);
+ 	int letter = PathGetDriveNumberW(boost::nowide::widen(new_path).c_str());	
+@@ -285,7 +285,7 @@ void RemovableDriveManager::eject_drive()
+ 
+ 	DriveData drive_data;
+ 	{
+-		tbb::mutex::scoped_lock lock(m_drives_mutex);
++		std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 		auto it_drive_data = this->find_last_save_path_drive_data();
+ 		if (it_drive_data == m_current_drives.end())
+ 			return;
+@@ -341,7 +341,7 @@ void RemovableDriveManager::eject_drive()
+ 		if (success) {
+ 			// Remove the drive_data from m_current drives, searching by value, not by pointer, as m_current_drives may get modified during
+ 			// asynchronous execution on m_eject_thread.
+-			tbb::mutex::scoped_lock lock(m_drives_mutex);
++			std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 			auto it = std::find(m_current_drives.begin(), m_current_drives.end(), drive_data);
+ 			if (it != m_current_drives.end())
+ 				m_current_drives.erase(it);
+@@ -361,7 +361,7 @@ std::string RemovableDriveManager::get_removable_drive_path(const std::string &p
+ 	std::size_t found = path.find_last_of("/");
+ 	std::string new_path = found == path.size() - 1 ? path.substr(0, found) : path;
+ 
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	for (const DriveData &data : m_current_drives)
+ 		if (search_for_drives_internal::compare_filesystem_id(new_path, data.path))
+ 			return path;
+@@ -377,7 +377,7 @@ std::string RemovableDriveManager::get_removable_drive_from_path(const std::stri
+     new_path = new_path.substr(0, found);
+     
+ 	// check if same filesystem
+-	tbb::mutex::scoped_lock lock(m_drives_mutex);
++	std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 	for (const DriveData &drive_data : m_current_drives)
+ 		if (search_for_drives_internal::compare_filesystem_id(new_path, drive_data.path))
+ 			return drive_data.path;
+@@ -452,7 +452,7 @@ RemovableDriveManager::RemovableDrivesStatus RemovableDriveManager::status()
+ 
+ 	RemovableDriveManager::RemovableDrivesStatus out;
+ 	{
+-		tbb::mutex::scoped_lock lock(m_drives_mutex);
++		std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 		out.has_eject = 
+ 			// Cannot control eject on Chromium.
+ 			platform_flavor() != PlatformFlavor::LinuxOnChromium &&
+@@ -468,17 +468,17 @@ RemovableDriveManager::RemovableDrivesStatus RemovableDriveManager::status()
+ // Update is called from thread_proc() and from most of the public methods on demand.
+ void RemovableDriveManager::update()
+ {
+-	tbb::mutex::scoped_lock inside_update_lock;
++	std::unique_lock<std::mutex> inside_update_lock(m_inside_update_mutex, std::defer_lock);
+ #ifdef _WIN32
+ 	// All wake up calls up to now are now consumed when the drive enumeration starts.
+ 	m_wakeup = false;
+ #endif // _WIN32
+-	if (inside_update_lock.try_acquire(m_inside_update_mutex)) {
++	if (inside_update_lock.try_lock()) {
+ 		// Got the lock without waiting. That means, the update was not running.
+ 		// Run the update.
+ 		std::vector<DriveData> current_drives = this->search_for_removable_drives();
+ 		// Post update events.
+-		tbb::mutex::scoped_lock lock(m_drives_mutex);
++		std::scoped_lock<std::mutex> lock(m_drives_mutex);
+ 		std::sort(current_drives.begin(), current_drives.end());
+ 		if (current_drives != m_current_drives) {
+ 			assert(m_callback_evt_handler);
+@@ -489,7 +489,7 @@ void RemovableDriveManager::update()
+ 	} else {
+ 		// Acquiring the m_iniside_update lock failed, therefore another update is running.
+ 		// Just block until the other instance of update() finishes.
+-		inside_update_lock.acquire(m_inside_update_mutex);
++		inside_update_lock.lock();
+ 	}
+ }
+ 
+diff --git a/src/slic3r/GUI/RemovableDriveManager.hpp b/src/slic3r/GUI/RemovableDriveManager.hpp
+index f707b40c3..29363647c 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.hpp
++++ b/src/slic3r/GUI/RemovableDriveManager.hpp
+@@ -5,7 +5,7 @@
+ #include <string>
+ 
+ #include <boost/thread.hpp>
+-#include <tbb/mutex.h>
++#include <mutex>
+ #include <condition_variable>
+ 
+ // Custom wxWidget events
+@@ -111,9 +111,9 @@ private:
+ 	// m_current_drives is guarded by m_drives_mutex
+ 	// sorted ascending by path
+ 	std::vector<DriveData> 	m_current_drives;
+-	mutable tbb::mutex 		m_drives_mutex;
++	mutable std::mutex 		m_drives_mutex;
+ 	// Locking the update() function to avoid that the function is executed multiple times.
+-	mutable tbb::mutex 		m_inside_update_mutex;
++	mutable std::mutex 		m_inside_update_mutex;
+ 
+ 	// Returns drive path (same as path in DriveData) if exists otherwise empty string.
+ 	std::string 			get_removable_drive_from_path(const std::string& path);
+-- 
+2.34.1

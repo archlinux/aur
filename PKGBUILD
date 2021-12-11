@@ -1,8 +1,8 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.57.5.r1.gd19310228
-pkgrel=2
+pkgver=2.3.57.6.r1.g616fc2b52
+pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
@@ -17,10 +17,14 @@ provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-prerelease')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
         "0001-wxgtk3-is-broken-on-wayland.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch")
+        "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch"
+        "tbb-2021.patch"
+        "FindTBB.cmake")
 sha512sums=('SKIP'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
-            'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98')
+            'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98'
+            '6a00fa9eb13b2485aed493e96b49e1ef345d8fcf6adf2719c2336e4b07e4e7c1461ee288d77a9c45f3bac5e68507d54da00816817ef17023e6e0aa9d0fb36348'
+            '5a6426f7d5b1761923c83838b1b5c976529b7a4b5e8c5c98f34c6174d8636fbfca34e3a04ed5f5314c88db3261c454c9f4576f7cf58f6623a43cff08a0b5b105')
 
 pkgver()
 {
@@ -40,6 +44,8 @@ prepare()
 	# apply patches
 	patch --forward --strip=1 --input="$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
 	patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
+	patch -p1 < "$srcdir/tbb-2021.patch" # Fix build with TBB 2021
+	cp "$srcdir/FindTBB.cmake" "cmake/modules/FindTBB.cmake" # Fix build with TBB 2021
 }
 
 build()
