@@ -2,7 +2,7 @@
 
 pkgname=gogololcat-git
 pkgver=r3.236b66e
-pkgrel=4
+pkgrel=5
 pkgdesc="golang implementation of lolcat"
 url="https://github.com/vbatts/gogololcat/"
 arch=('x86_64' 'i686')
@@ -24,13 +24,6 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/vbatts/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/vbatts/gogololcat"
-
-	cd "${srcdir}/go/src/github.com/vbatts/gogololcat"
-
-	export GO111MODULE="auto"
-	export GOPATH="${srcdir}/go"
-
-	go get -v ./...
 }
 
 build() {
@@ -38,12 +31,9 @@ build() {
 
 	mkdir -p build
 
-	export GO111MODULE="auto"
-	export GOPATH="${srcdir}/go"
-
-	go build -ldflags "-s -w" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
+	export GOPATH="${srcdir}/go" GO111MODULE="auto"
+	go build \
+		-trimpath -ldflags "-s -w" \
 		-o build/lolcat ./cmd/lolcat
 }
 
