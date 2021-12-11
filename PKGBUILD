@@ -2,7 +2,7 @@
 
 pkgname=mint-themes-legacy
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of legacy mint themes.'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
@@ -25,7 +25,6 @@ conflicts=(
     mint-x-theme
     mint-y-theme
     mint-cinnamon-themes
-    mint-themes
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('b92352e35ee482c0502f556f875939ea47e9b55d898411d9907ed8e5638a649a')
