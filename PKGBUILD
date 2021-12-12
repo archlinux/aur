@@ -3,7 +3,7 @@
 # Contributor: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname="concourse-fly"
-pkgver=7.4.2
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=('x86_64')
