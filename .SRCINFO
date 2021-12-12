@@ -1,0 +1,13 @@
+pkgbase = btrfs-heatmap-systemd
+	pkgdesc = systemd service and timer unit for btrfs-heatmap
+	pkgver = r2.da5dbeb
+	pkgrel = 1
+	url = https://codeberg.org/Waimanu/btrfs-heatmap-systemd/
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = btrfs-heatmap
+	source = btrfs-heatmap-systemd::git+https://codeberg.org/Waimanu/btrfs-heatmap-systemd
+	sha256sums = SKIP
+
+pkgname = btrfs-heatmap-systemd
