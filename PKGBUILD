@@ -1,5 +1,5 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 # Maintainer: Michael Taboada <michael@2mb.solutions>
 # Contributor: Kyle <kyle@free2.ml>
 # Contributor: Steve Holmes <steve.holmes88@gmail.com>
@@ -9,8 +9,8 @@
 
 pkgbase=speech-dispatcher-git
 pkgname=(speech-dispatcher-git libspeechd-git)
-pkgver=0.11.0.rc2.r3.gd8accf2b
-pkgrel=2
+pkgver=0.11.0.r0.g56c07622
+pkgrel=1
 pkgdesc="High-level device independent layer for speech synthesis interface (development version)"
 arch=('x86_64')
 url='http://www.freebsoft.org/speechd'
@@ -33,17 +33,16 @@ prepare() {
 build() {
 	cd "${pkgname%-git}"
 	./configure --prefix=/usr --sysconfdir=/etc \
-	            --localedir=/usr/share/speech-dispatcher/locale \
+	            --disable-static \
 	            --libexecdir=/usr/lib/speech-dispatcher/ \
-	            --localstatedir=/var \
-	            --with-systemdsystemunitdir=/usr/lib/systemd/system \
-	            --with-espeak-ng \
-	            --with-pico
+	            --with-pico \
+	            --with-ibmtts=no --with-kali=no --with-baratinoo=no \
+	            --with-voxin=no --without-flite
 	make
 }
 
 package_speech-dispatcher-git() {
-	depends=("libspeechd-git=$pkgver-$pkgrel" 'glib2' 'libtool' 'python-pyxdg' 'dotconf' 'libpulse' 'libao')
+	depends=("libspeechd-git=$pkgver-$pkgrel" 'python-pyxdg' 'dotconf' 'libpulse' 'libao')
 	optdepends=('festival: Speech output using Festival'
 	            'espeak-ng: Speech output using ESpeak-ng'
 	            'svox-pico-bin: Speech output using pico'
@@ -51,24 +50,27 @@ package_speech-dispatcher-git() {
 	conflicts=("speech-dispatcher")
 	provides=("speech-dispatcher")
 	backup=('etc/speech-dispatcher/clients/emacs.conf'
-	        'etc/speech-dispatcher/modules/espeak.conf'
-	        'etc/speech-dispatcher/modules/espeak-ng.conf'
-	        'etc/speech-dispatcher/modules/swift-generic.conf'
-	        'etc/speech-dispatcher/modules/festival.conf'
-	        'etc/speech-dispatcher/modules/cicero.conf'
-	        'etc/speech-dispatcher/modules/espeak-mbrola-generic.conf'
-	        'etc/speech-dispatcher/modules/espeak-ng-mbrola-generic.conf'
 	        'etc/speech-dispatcher/modules/dtk-generic.conf'
-	        'etc/speech-dispatcher/modules/llia_phon-generic.conf'
 	        'etc/speech-dispatcher/modules/epos-generic.conf'
-	        'etc/speech-dispatcher/modules/flite.conf'
+	        'etc/speech-dispatcher/modules/espeak-ng.conf'
+	        'etc/speech-dispatcher/modules/espeak-ng-mbrola.conf'
+	        'etc/speech-dispatcher/modules/espeak-ng-mbrola-generic.conf'
+	        'etc/speech-dispatcher/modules/festival.conf'
+	        'etc/speech-dispatcher/modules/llia_phon-generic.conf'
+	        'etc/speech-dispatcher/modules/mary-generic.conf'
+	        'etc/speech-dispatcher/modules/pico.conf'
+	        'etc/speech-dispatcher/modules/swift-generic.conf'
 	        'etc/speech-dispatcher/speechd.conf'
 	)
 
 	cd "${pkgname%-git}"
 	make DESTDIR="${pkgdir}" install
 
-	install -d "${pkgdir}/var/log/speech-dispatcher"
+	rm "${pkgdir}/etc/speech-dispatcher/modules/cicero.conf"
+	rm "${pkgdir}/etc/speech-dispatcher/modules/espeak.conf"
+	rm "${pkgdir}/etc/speech-dispatcher/modules/espeak-mbrola-generic.conf"
+	rm "${pkgdir}/etc/speech-dispatcher/modules/flite.conf"
+	rm "${pkgdir}/usr/lib/speech-dispatcher/speech-dispatcher-modules/sd_cicero"
 
 	sed -i 's|includedir=.*|includedir=${prefix}/include/speech-dispatcher|g' "${pkgdir}/usr/lib/pkgconfig/speech-dispatcher.pc"
 
