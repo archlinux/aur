@@ -1,5 +1,7 @@
+# Maintainer: xlwz <xlwzforever@outlook.com>
+
 pkgname=mingw-w64-tcl
-pkgver=8.6.9
+pkgver=8.6.11
 pkgrel=1
 pkgdesc="The Tcl scripting language (mingw-w64)"
 arch=('any')
@@ -13,19 +15,17 @@ source=("http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.g
         "002-fix-forbidden-colon-in-paths.mingw.patch"
         "004-use-system-zlib.mingw.patch"
         "005-no-xc.mingw.patch"
-        "006-proper-implib-name.mingw.patch"
         "007-install.mingw.patch"
         "008-tcl-8.5.14-hidden.patch"
         "009-fix-using-gnu-print.patch")
-sha256sums=('ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e'
+sha256sums=('8c0486668586672c5693d7d95817cb05a18c5ecca2f40e2836b9578064088258'
             'cfcf9b3816f8bb063b514ac7f63a5ba73108f27e16fdf8e8312dc5f0683083f6'
             '70bf0d8e84985f4e8ee63447ad37d5e50376eaf35ace51112761cacbbd596c4c'
-            '01bf81675bb189314be5e024f58d20aafb3d2a35c1d2c4353045bbebd1e7a926'
+            '2d7581ad118c01afcebd762051eb74fe31511e8b40505554068f126bcd8d5d9f'
             '2b0f41f6704aa964dbfafa0a65dd5ce0ab97e82ff5cbbe2a95a2e8d644cc5550'
-            '5c0162fbb018c03b3e4b907bd0098ab5282314bc212e3929a0416126637e1350'
-            'f1833c3164229b017417d2ab2ce4cb066252fc1ad256de2313f0239481c7cc37'
+            '61d3430f82ee60000eab28758eba9663a747b1e79082758cb59e624aead6c517'
             '3ec2702efb1be6873d6ffd2ffb357637588f835f8817ae65cf0373020fcc7359'
-            'e49a314ff0262e487f15fa1cb6253e22e25e8b18dad0b057d600e833efa947a7')
+            '894afd1d97c25a2f7b21981810026450d44677a46ba07a32c4025783d027c6d7')
 
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -36,7 +36,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/002-fix-forbidden-colon-in-paths.mingw.patch"
   patch -Np1 -i "${srcdir}/004-use-system-zlib.mingw.patch"
   patch -Np1 -i "${srcdir}/005-no-xc.mingw.patch"
-  patch -Np1 -i "${srcdir}/006-proper-implib-name.mingw.patch"
   patch -Np1 -i "${srcdir}/007-install.mingw.patch"
   patch -Np1 -i "${srcdir}/008-tcl-8.5.14-hidden.patch"
   patch -Np1 -i "${srcdir}/009-fix-using-gnu-print.patch"
@@ -56,13 +55,16 @@ build() {
     pushd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
     [ "${_arch}" = 'x86_64-w64-mingw32' ] && enable64bit='--enable-64bit'
     ${_arch}-configure \
-    --enable-threads $enable64bit ../tcl${pkgver}/win
+      --enable-threads $enable64bit ../tcl${pkgver}/win
     make
     popd
   done
 }
 
 package() {
+  local _odbc_ver=1.1.2
+  local _itcl_ver=4.2.1
+
   for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
     make -j1 install INSTALL_ROOT="$pkgdir"
@@ -75,16 +77,15 @@ package() {
     sed -e "s#${srcdir}/tcl${pkgver}/win#/usr/lib#" \
       -e "s#${srcdir}/tcl${pkgver}#/usr/${_arch}/include/tcl-private#" \
       -i "${pkgdir}/usr/${_arch}/lib/tclConfig.sh"
-        sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/tdbc1.1.0#/usr/${_arch}/lib/tdbc1.1.0#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.1.0/generic#/usr/${_arch}/include#" \
-        -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.1.0/library#/usr/${_arch}/lib/tcl${pkgver%.*}#" \
-        -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc1.1.0#/usr/${_arch}/include#" \
-        -i "${pkgdir}/usr/${_arch}/lib/tdbc1.1.0/tdbcConfig.sh"
-    sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/itcl4.1.2#/usr/${_arch}/lib/itcl4.1.2#" \
-        -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl4.1.2/generic#/usr/${_arch}/include/tcl-private#" \
-        -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl4.1.2#/usr/${_arch}/include/tcl-private#" \
-        -i "${pkgdir}/usr/${_arch}/lib/itcl4.1.2/itclConfig.sh"
-    mv "$pkgdir/usr/${_arch}/lib/libtcl86.a" "$pkgdir/usr/${_arch}/lib/libtcl86.dll.a"
+        sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/tdbc${_odbc_ver}#/usr/${_arch}/lib/tdbc${_odbc_ver}#" \
+      -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${_odbc_ver}/generic#/usr/${_arch}/include#" \
+        -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${_odbc_ver}/library#/usr/${_arch}/lib/tcl${pkgver%.*}#" \
+        -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${_odbc_ver}#/usr/${_arch}/include#" \
+        -i "${pkgdir}/usr/${_arch}/lib/tdbc${_odbc_ver}/tdbcConfig.sh"
+    sed -e "s#${srcdir}/tcl${pkgver}/win/pkgs/itcl${_itcl_ver}#/usr/${_arch}/lib/itcl${_itcl_ver}#" \
+        -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${_itcl_ver}/generic#/usr/${_arch}/include/tcl-private#" \
+        -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${_itcl_ver}#/usr/${_arch}/include/tcl-private#" \
+        -i "${pkgdir}/usr/${_arch}/lib/itcl${_itcl_ver}/itclConfig.sh"
     ln -s "/usr/${_arch}/lib/libtcl86.dll.a" "$pkgdir/usr/${_arch}/lib/libtcl.dll.a"
     ln -s /usr/${_arch}/lib/tclConfig.sh "${pkgdir}/usr/${_arch}/lib/tcl${pkgver%.*.*}/tclConfig.sh"
     mkdir -p "${pkgdir}/usr/${_arch}/include/tcl-private/"{generic,win}
@@ -102,6 +103,9 @@ package() {
     mv ${pkgdir}/usr/${_arch}/bin/sqlite3_analyzer{,.sh}
 
   done
+
+  cd "${srcdir}/tcl${pkgver}"
+  install -Dm644 license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
