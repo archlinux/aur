@@ -5,9 +5,7 @@ pkgbase = keepass-zh-cn
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2
-	makedepends = unzip
-	depends = keepass
-	depends = xdotool
+	depends = keepass>=2.46
 	source = https://downloads.sourceforge.net/keepass/KeePass-2.46-Chinese_Simplified.zip
 	sha256sums = 3db8169b35d2565453f0fb942666d1ca28db6f263f2e9dbd9fbada126a252adf
 
