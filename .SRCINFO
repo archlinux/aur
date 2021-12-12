@@ -1,18 +1,22 @@
 pkgbase = weatherspect-git
 	pkgdesc = A virtual weather environment in ASCII - git version
 	pkgver = 2.0.r3.g0f85875
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnotherFoxGuy/weatherspect
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = perl
+	depends = perl-compass-points
+	depends = perl-json
 	depends = perl-term-animation
 	provides = weatherspect
 	conflicts = weatherspect
 	source = weatherspect-git::git+https://github.com/AnotherFoxGuy/weatherspect
+	source = devendor.diff
 	source = weatherspect.1
-	sha256sums = SKIP
-	sha256sums = 8b0d7bb995e44190cc005ec3b604f147dcb233744a262cbbf9a9ad8f9214ab0c
+	sha512sums = SKIP
+	sha512sums = adaadc88a212143a1d232756dda48580d612ce93024dd467608571344963dc6f9aa4fe0d2730f55f451946a47d31ac83fb9def18e10e33192b1b656db698b673
+	sha512sums = 494dcc31151912ae6965a6c7f6323f1c3fbfa01f1eadc72838e605917ab6a4df4aba95aab2a891070eb928817b35240eecfa3d6a4fc285ff8a4e729044968caa
 
 pkgname = weatherspect-git

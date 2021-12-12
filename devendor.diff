@@ -1,0 +1,651 @@
+diff --git a/weatherspect b/weatherspect
+index 5a8716c..774c9e8 100755
+--- a/weatherspect
++++ b/weatherspect
+@@ -44,6 +44,8 @@
+ #############################################################################
+ 
+ use Term::Animation 2.5;
++use Compass::Points;
++use JSON;
+ 
+ use Curses;
+ use Data::Dumper;
+@@ -5289,636 +5291,3 @@ Copyright (C) 2018 Edgar (Edgar@AnotherFoxGuy).  All rights reserved.  Use is su
+     1;
+ 
+ }
+-
+-
+-# From http://search.cpan.org/~janus/Compass-Points-0.02/lib/Compass/Points.pm
+-BEGIN{
+-    package Compass::Points;
+-
+-    use strict;
+-    use warnings;
+-
+-    our $VERSION = "0.02";
+-
+-    our @FIELDS = qw(abbr name);
+-    our @NAMES = (
+-        [ N => "North" ],
+-        [ NbE => "North by east" ],
+-        [ NNE => "North-northeast" ],
+-        [ NEbN => "Northeast by north" ],
+-        [ NE => "Northeast" ],
+-        [ NEbE => "Northeast by east" ],
+-        [ ENE => "East-northeast" ],
+-        [ EbN => "East by north" ],
+-        [ E => "East" ],
+-        [ EbS => "East by south" ],
+-        [ ESE => "East-southeast" ],
+-        [ SEbE => "Southeast by east" ],
+-        [ SE => "Southeast" ],
+-        [ SEbS => "Southeast by south" ],
+-        [ SSE => "South-southeast" ],
+-        [ SbE => "South by east" ],
+-        [ S => "South" ],
+-        [ SbW => "South by west" ],
+-        [ SSW => "South-southwest" ],
+-        [ SWbS => "Southwest by south" ],
+-        [ SW => "Southwest" ],
+-        [ SWbW => "Southwest by west" ],
+-        [ WSW => "West-southwest" ],
+-        [ WbS => "West by south" ],
+-        [ W => "West" ],
+-        [ WbN => "West by north" ],
+-        [ WNW => "West-northwest" ],
+-        [ NWbW => "Northwest by west" ],
+-        [ NW => "Northwest" ],
+-        [ NWbN => "Northwest by north" ],
+-        [ NNW => "North-northwest" ],
+-        [ NbW => "North by west" ],
+-    );
+-    our @GROUP; # separate groups to assign different degree values
+-    our @INDEX; # index per group
+-    our @MAP;   # mapping for easy access
+-
+-    for my $n (0 .. 3) {
+-        my $slice = 360 / (2 ** (2 + $n));            # 90, 45, 22.5, 11.25
+-        my $mod = 2 ** (3 - $n);                      # 8, 4, 2, 1
+-        my @offs = grep $_ % $mod == 0, 0 .. $#NAMES; # 0,8,16,24 0,4,8,12,...
+-
+-        $GROUP[ $n ] = bless([], __PACKAGE__);
+-
+-        for my $m (0 .. $#offs) {
+-            my @entry = @{$NAMES[ $offs[ $m ] ]};
+-
+-            for my $key (map lc, @entry) {
+-                $key =~ s![^a-z]!!g;
+-
+-                $INDEX[ $n ]{ $key } = \@entry;
+-            }
+-
+-            $entry[ 2 ] = $m * $slice;
+-
+-            $GROUP[ $n ][ $m ] = \@entry;
+-        }
+-
+-        $MAP[ $_ ] = $n for @MAP .. $#offs;
+-    }
+-
+-    sub new {
+-        my $class = shift;
+-        my $number = shift || 16;
+-
+-        $number = @{$GROUP[ $#GROUP ]}
+-            if $number > @{$GROUP[ $#GROUP ]};
+-
+-        return $GROUP[ $MAP[ $number - 1 ] ];
+-    }
+-
+-    for my $offset (0 .. $#FIELDS) {
+-        my $deg2sub = "deg2$FIELDS[ $offset ]";
+-        my $sub2deg = "$FIELDS[ $offset ]2deg";
+-
+-        no strict qw(refs);
+-
+-        *$deg2sub = sub {
+-            my $self = shift;
+-            my $deg = abs(shift || 0);
+-
+-            $deg -= 360 while $deg > 360;
+-
+-            my $slice = 360 / @$self;
+-            my $index = ($deg + $slice / 2) / $slice;
+-
+-            return $self->[ $index ][ $offset ];
+-        };
+-
+-        *$sub2deg = sub {
+-            my $self = shift;
+-            my $key = lc(shift || "");
+-            my $index = $INDEX[ $MAP[ @$self - 1 ] ];
+-
+-            $key =~ s![^a-z]!!g;
+-
+-            return exists($index->{ $key })
+-                ? $index->{ $key }[ 2 ]
+-                : undef
+-            ;
+-        };
+-    }
+-
+-    1;
+-
+-=head1 NAME
+-
+-Compass::Points - Convert between compass point names, abbreviations and values
+-
+-=head1 SYNOPSIS
+-
+-  use Compass::Points;
+-  my $points = Compass::Points->new();
+-  my $deg = $points->abbr2deg( "NNE" );
+-
+-=head1 DESCRIPTION
+-
+-This module converts compass point names and abbreviations to degrees
+-and vice versa.
+-It supports four different compass point systems: 4, 8, 16 and 32.
+-The default is 16 and can be used for wind compass usage.
+-
+-=head1 METHODS
+-
+-=head2 new( [ $points ] )
+-
+-Returns a Compass::Points object for the number of points (defaults to 16).
+-
+-=head2 deg2abbr( $degree )
+-
+-Takes a degree value and returns the corresponding abbreviation for the
+-matching wind name.
+-
+-=head2 deg2name( $degree )
+-
+-Same as deg2abbr() but returns the full wind name.
+-
+-=head2 abbr2deg( $abbreviation )
+-
+-Given a wind name abbreviation returns the degree of the points object.
+-
+-=head2 name2deg( $name )
+-
+-Same as abbr2deg() but takes full wind names.
+-
+-=head1 SEE ALSO
+-
+-L<http://en.wikipedia.org/wiki/Points_of_the_compass>
+-
+-=head1 AUTHOR
+-
+-Simon Bertrang, E<lt>janus@cpan.orgE<gt>
+-
+-=head1 COPYRIGHT AND LICENSE
+-
+-Copyright (C) 2014 by Simon Bertrang
+-
+-This library is free software; you can redistribute it and/or modify
+-it under the same terms as Perl itself.
+-
+-=cut
+-}
+-
+-
+-BEGIN{
+-    package JSON;
+-
+-
+-    use strict;
+-    use Carp ();
+-    use Exporter;
+-    BEGIN {@JSON::ISA = 'Exporter'}
+-
+-    @JSON::EXPORT = qw(from_json to_json jsonToObj objToJson encode_json decode_json);
+-
+-    BEGIN {
+-        $JSON::VERSION = '4.02';
+-        $JSON::DEBUG = 0 unless (defined $JSON::DEBUG);
+-        $JSON::DEBUG = $ENV{ PERL_JSON_DEBUG } if exists $ENV{ PERL_JSON_DEBUG };
+-    }
+-
+-    my %RequiredVersion = (
+-        'JSON::PP' => '2.27203',
+-        'JSON::XS' => '2.34',
+-    );
+-
+-    # XS and PP common methods
+-
+-    my @PublicMethods = qw/
+-        ascii latin1 utf8 pretty indent space_before space_after relaxed canonical allow_nonref
+-        allow_blessed convert_blessed filter_json_object filter_json_single_key_object
+-        shrink max_depth max_size encode decode decode_prefix allow_unknown
+-    /;
+-
+-    my @Properties = qw/
+-        ascii latin1 utf8 indent space_before space_after relaxed canonical allow_nonref
+-        allow_blessed convert_blessed shrink max_depth max_size allow_unknown
+-    /;
+-
+-    my @XSOnlyMethods = qw//; # Currently nothing
+-
+-    my @PublicMethodsSince4_0 = qw/allow_tags/;
+-    my @PropertiesSince4_0 = qw/allow_tags/;
+-
+-    my @PPOnlyMethods = qw/
+-        indent_length sort_by
+-        allow_singlequote allow_bignum loose allow_barekey escape_slash as_nonblessed
+-    /; # JSON::PP specific
+-
+-
+-    # used in _load_xs and _load_pp ($INSTALL_ONLY is not used currently)
+-    my $_INSTALL_DONT_DIE = 1; # When _load_xs fails to load XS, don't die.
+-    my $_ALLOW_UNSUPPORTED = 0;
+-    my $_UNIV_CONV_BLESSED = 0;
+-
+-
+-    # Check the environment variable to decide worker module.
+-
+-    unless ($JSON::Backend) {
+-        $JSON::DEBUG and Carp::carp("Check used worker module...");
+-
+-        my $backend = exists $ENV{PERL_JSON_BACKEND} ? $ENV{PERL_JSON_BACKEND} : 1;
+-
+-        if ($backend eq '1') {
+-            $backend = 'JSON::XS,JSON::PP';
+-        }
+-        elsif ($backend eq '0') {
+-            $backend = 'JSON::PP';
+-        }
+-        elsif ($backend eq '2') {
+-            $backend = 'JSON::XS';
+-        }
+-        $backend =~ s/\s+//g;
+-
+-        my @backend_modules = split /,/, $backend;
+-        while (my $module = shift @backend_modules) {
+-            if ($module =~ /JSON::XS/) {
+-                _load_xs($module, @backend_modules ? $_INSTALL_DONT_DIE : 0);
+-            }
+-            elsif ($module =~ /JSON::PP/) {
+-                _load_pp($module);
+-            }
+-            elsif ($module =~ /JSON::backportPP/) {
+-                _load_pp($module);
+-            }
+-            else {
+-                Carp::croak "The value of environmental variable 'PERL_JSON_BACKEND' is invalid.";
+-            }
+-            last if $JSON::Backend;
+-        }
+-    }
+-
+-
+-    sub import {
+-        my $pkg = shift;
+-        my @what_to_export;
+-        my $no_export;
+-
+-        for my $tag (@_) {
+-            if ($tag eq '-support_by_pp') {
+-                if (!$_ALLOW_UNSUPPORTED++) {
+-                    JSON::Backend::XS
+-                        ->support_by_pp(@PPOnlyMethods) if ($JSON::Backend->is_xs);
+-                }
+-                next;
+-            }
+-            elsif ($tag eq '-no_export') {
+-                $no_export++, next;
+-            }
+-            elsif ($tag eq '-convert_blessed_universally') {
+-                my $org_encode = $JSON::Backend->can('encode');
+-                eval q|
+-                require B;
+-                local $^W;
+-                no strict 'refs';
+-                *{"${JSON::Backend}\::encode"} = sub {
+-                    # only works with Perl 5.18+
+-                    local *UNIVERSAL::TO_JSON = sub {
+-                        my $b_obj = B::svref_2object( $_[0] );
+-                        return    $b_obj->isa('B::HV') ? { %{ $_[0] } }
+-                                : $b_obj->isa('B::AV') ? [ @{ $_[0] } ]
+-                                : undef
+-                                ;
+-                    };
+-                    $org_encode->(@_);
+-                };
+-            | if (!$_UNIV_CONV_BLESSED++);
+-                next;
+-            }
+-            push @what_to_export, $tag;
+-        }
+-
+-        return if ($no_export);
+-
+-        __PACKAGE__->export_to_level(1, $pkg, @what_to_export);
+-    }
+-
+-
+-    # OBSOLETED
+-
+-    sub jsonToObj {
+-        my $alternative = 'from_json';
+-        if (defined $_[0] and UNIVERSAL::isa($_[0], 'JSON')) {
+-            shift @_;
+-            $alternative = 'decode';
+-        }
+-        Carp::carp "'jsonToObj' will be obsoleted. Please use '$alternative' instead.";
+-        return JSON::from_json(@_);
+-    };
+-
+-    sub objToJson {
+-        my $alternative = 'to_json';
+-        if (defined $_[0] and UNIVERSAL::isa($_[0], 'JSON')) {
+-            shift @_;
+-            $alternative = 'encode';
+-        }
+-        Carp::carp "'objToJson' will be obsoleted. Please use '$alternative' instead.";
+-        JSON::to_json(@_);
+-    };
+-
+-
+-    # INTERFACES
+-
+-    sub to_json($@) {
+-        if (
+-            ref($_[0]) eq 'JSON'
+-                or (@_ > 2 and $_[0] eq 'JSON')
+-        ) {
+-            Carp::croak "to_json should not be called as a method.";
+-        }
+-        my $json = JSON->new;
+-
+-        if (@_ == 2 and ref $_[1] eq 'HASH') {
+-            my $opt = $_[1];
+-            for my $method (keys %$opt) {
+-                $json->$method($opt->{$method});
+-            }
+-        }
+-
+-        $json->encode($_[0]);
+-    }
+-
+-
+-    sub from_json($@) {
+-        if (ref($_[0]) eq 'JSON' or $_[0] eq 'JSON') {
+-            Carp::croak "from_json should not be called as a method.";
+-        }
+-        my $json = JSON->new;
+-
+-        if (@_ == 2 and ref $_[1] eq 'HASH') {
+-            my $opt = $_[1];
+-            for my $method (keys %$opt) {
+-                $json->$method($opt->{$method});
+-            }
+-        }
+-
+-        return $json->decode($_[0]);
+-    }
+-
+-
+-
+-    sub true {$JSON::true}
+-
+-    sub false {$JSON::false}
+-
+-    sub boolean {
+-        # might be called as method or as function, so pop() to get the last arg instead of shift() to get the first
+-        pop() ? $JSON::true : $JSON::false
+-    }
+-
+-    sub null {undef;}
+-
+-
+-    sub require_xs_version {$RequiredVersion{'JSON::XS'};}
+-
+-    sub backend {
+-        my $proto = shift;
+-        $JSON::Backend;
+-    }
+-
+-    #*module = *backend;
+-
+-
+-    sub is_xs {
+-        return $_[0]->backend->is_xs;
+-    }
+-
+-
+-    sub is_pp {
+-        return $_[0]->backend->is_pp;
+-    }
+-
+-
+-    sub pureperl_only_methods {@PPOnlyMethods;}
+-
+-
+-    sub property {
+-        my ($self, $name, $value) = @_;
+-
+-        if (@_ == 1) {
+-            my %props;
+-            for $name (@Properties) {
+-                my $method = 'get_' . $name;
+-                if ($name eq 'max_size') {
+-                    my $value = $self->$method();
+-                    $props{$name} = $value == 1 ? 0 : $value;
+-                    next;
+-                }
+-                $props{$name} = $self->$method();
+-            }
+-            return \%props;
+-        }
+-        elsif (@_ > 3) {
+-            Carp::croak('property() can take only the option within 2 arguments.');
+-        }
+-        elsif (@_ == 2) {
+-            if (my $method = $self->can('get_' . $name)) {
+-                if ($name eq 'max_size') {
+-                    my $value = $self->$method();
+-                    return $value == 1 ? 0 : $value;
+-                }
+-                $self->$method();
+-            }
+-        }
+-        else {
+-            $self->$name($value);
+-        }
+-
+-    }
+-
+-
+-    # INTERNAL
+-
+-    sub __load_xs {
+-        my ($module, $opt) = @_;
+-
+-        $JSON::DEBUG and Carp::carp "Load $module.";
+-        my $required_version = $RequiredVersion{$module} || '';
+-
+-        eval qq|
+-        use $module $required_version ();
+-    |;
+-
+-        if ($@) {
+-            if (defined $opt and $opt & $_INSTALL_DONT_DIE) {
+-                $JSON::DEBUG and Carp::carp "Can't load $module...($@)";
+-                return 0;
+-            }
+-            Carp::croak $@;
+-        }
+-        $JSON::BackendModuleXS = $module;
+-        return 1;
+-    }
+-
+-    sub _load_xs {
+-        my ($module, $opt) = @_;
+-        __load_xs($module, $opt) or return;
+-
+-        my $data = join("", <DATA>); # this code is from Jcode 2.xx.
+-        close(DATA);
+-        eval $data;
+-        JSON::Backend::XS->init($module);
+-
+-        return 1;
+-    };
+-
+-
+-    sub __load_pp {
+-        my ($module, $opt) = @_;
+-
+-        $JSON::DEBUG and Carp::carp "Load $module.";
+-        my $required_version = $RequiredVersion{$module} || '';
+-
+-        eval qq| use $module $required_version () |;
+-
+-        if ($@) {
+-            if ($module eq 'JSON::PP') {
+-                $JSON::DEBUG and Carp::carp "Can't load $module ($@), so try to load JSON::backportPP";
+-                $module = 'JSON::backportPP';
+-                local $^W; # if PP installed but invalid version, backportPP redefines methods.
+-                eval qq| require $module |;
+-            }
+-            Carp::croak $@ if $@;
+-        }
+-        $JSON::BackendModulePP = $module;
+-        return 1;
+-    }
+-
+-    sub _load_pp {
+-        my ($module, $opt) = @_;
+-        __load_pp($module, $opt);
+-
+-        JSON::Backend::PP->init($module);
+-    };
+-
+-    #
+-    # Helper classes for Backend Module (PP)
+-    #
+-
+-    package JSON::Backend::PP;
+-
+-    sub init {
+-        my ($class, $module) = @_;
+-
+-        # name may vary, but the module should (always) be a JSON::PP
+-
+-        local $^W;
+-        no strict qw(refs); # this routine may be called after JSON::Backend::XS init was called.
+-        *{"JSON::decode_json"} = \&{"JSON::PP::decode_json"};
+-        *{"JSON::encode_json"} = \&{"JSON::PP::encode_json"};
+-        *{"JSON::is_bool"} = \&{"JSON::PP::is_bool"};
+-
+-        $JSON::true = ${"JSON::PP::true"};
+-        $JSON::false = ${"JSON::PP::false"};
+-
+-        push @JSON::Backend::PP::ISA, 'JSON::PP';
+-        push @JSON::ISA, $class;
+-        $JSON::Backend = $class;
+-        $JSON::BackendModule = $module;
+-        my $version = ${"$class\::VERSION"} = $module->VERSION;
+-        $version =~ s/_//;
+-        if ($version < 3.99) {
+-            push @XSOnlyMethods, qw/allow_tags get_allow_tags/;
+-        }
+-        else {
+-            push @Properties, 'allow_tags';
+-        }
+-
+-        for my $method (@XSOnlyMethods) {
+-            *{"JSON::$method"} = sub {
+-                Carp::carp("$method is not supported by $module $version.");
+-                $_[0];
+-            };
+-        }
+-
+-        return 1;
+-    }
+-
+-    sub is_xs {0};
+-    sub is_pp {1};
+-
+-    #
+-    # To save memory, the below lines are read only when XS backend is used.
+-    #
+-
+-    package JSON;
+-
+-    1;
+-
+-    #
+-    # Helper classes for Backend Module (XS)
+-    #
+-
+-    package JSON::Backend::XS;
+-
+-    sub init {
+-        my ($class, $module) = @_;
+-
+-        local $^W;
+-        no strict qw(refs);
+-        *{"JSON::decode_json"} = \&{"$module\::decode_json"};
+-        *{"JSON::encode_json"} = \&{"$module\::encode_json"};
+-        *{"JSON::is_bool"} = \&{"$module\::is_bool"};
+-
+-        $JSON::true = ${"$module\::true"};
+-        $JSON::false = ${"$module\::false"};
+-
+-        push @JSON::Backend::XS::ISA, $module;
+-        push @JSON::ISA, $class;
+-        $JSON::Backend = $class;
+-        $JSON::BackendModule = $module;
+-        ${"$class\::VERSION"} = $module->VERSION;
+-
+-        if ($module->VERSION < 3) {
+-            eval 'package JSON::PP::Boolean';
+-            push @{"$module\::Boolean::ISA"}, qw(JSON::PP::Boolean);
+-        }
+-
+-        for my $method (@PPOnlyMethods) {
+-            *{"JSON::$method"} = sub {
+-                Carp::carp("$method is not supported by $module.");
+-                $_[0];
+-            };
+-        }
+-
+-        return 1;
+-    }
+-
+-    sub is_xs {1};
+-    sub is_pp {0};
+-
+-    sub support_by_pp {
+-        my ($class, @methods) = @_;
+-
+-        JSON::__load_pp('JSON::PP');
+-
+-        local $^W;
+-        no strict qw(refs);
+-
+-        for my $method (@methods) {
+-            my $pp_method = JSON::PP->can($method) or next;
+-            *{"JSON::$method"} = sub {
+-                if (!$_[0]->isa('JSON::PP')) {
+-                    my $xs_self = $_[0];
+-                    my $pp_self = JSON::PP->new;
+-                    for (@Properties) {
+-                        my $getter = "get_$_";
+-                        $pp_self->$_($xs_self->$getter);
+-                    }
+-                    $_[0] = $pp_self;
+-                }
+-                $pp_method->(@_);
+-            };
+-        }
+-
+-        $JSON::DEBUG and Carp::carp("set -support_by_pp mode.");
+-    }
+-
+-    1;
+-}
+\ No newline at end of file
