@@ -1,6 +1,6 @@
 pkgbase = lua-i3ipc-git
 	pkgdesc = A lua library for controlling i3wm & Sway
-	pkgver = v1.0.r1.g7a08c2f
+	pkgver = v1.2.r0.g8f6e411
 	pkgrel = 1
 	url = https://github.com/kraftwerk28/lua-i3ipc.git
 	arch = any
