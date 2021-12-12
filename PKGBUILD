@@ -2,18 +2,16 @@
 _pkgname=signal-rs
 pkgname=${_pkgname}-git
 pkgver=r76.fe8c162
-pkgrel=2
+pkgrel=3
 pkgdesc="A Rust-based Signal app with a QML/Kirigami frontend."
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~nicohman/signal-rs/"
 license=('GPL3')
 depends=('qt5-webengine')
-makedepends=('git' 'cargo-nightly' 'qt5-webengine' 'kirigami2' 'gettext')
+makedepends=('git' 'cargo-nightly' 'qt5-webengine' 'kirigami2')
 provides=(signal-rs)
-source=("git+https://git.sr.ht/~nicohman/signal-rs" "gettext-system.patch"
-       "signal-rs.desktop")
+source=("git+https://git.sr.ht/~nicohman/signal-rs" "signal-rs.desktop")
 sha256sums=('SKIP'
-            'd86d52b42f3f70b92490c14c7933b63eee895e5a6df272d39ddb73bb072ae85e'
             'ad3e71a3d6af08ee33c58c884bb097426b34aebe87add0f6fca57cf24d2864cd')
 
 pkgver() {
@@ -23,7 +21,6 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    patch --strip=1 --input="${srcdir}/gettext-system.patch"
     export RUSTUP_TOOLCHAIN=nightly
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
