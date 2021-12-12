@@ -2,7 +2,7 @@
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=mdsplib
 pkgver=0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="METAR Decoder Software Package Library"
 arch=('i686' 'x86_64')
 url="http://limulus.net/mdsplib/"
@@ -18,7 +18,7 @@ build() {
   cd ..
   sed -e "s|/usr/local/lib/|$pkgdir/usr/lib/|" -i Makefile
   sed -e "s|/usr/local/include/|$pkgdir/usr/include|" -i Makefile
-  make CFLAGS="-fPIC $CFLAGS"
+  make CFLAGS="-fPIC $CFLAGS -Wno-format-security"
 }
 
 package() {

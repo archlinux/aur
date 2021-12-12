@@ -1,7 +1,7 @@
 pkgbase = mdsplib
 	pkgdesc = METAR Decoder Software Package Library
 	pkgver = 0.11
-	pkgrel = 3
+	pkgrel = 4
 	url = http://limulus.net/mdsplib/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = mdsplib
 	md5sums = 9d3c1cf01bca65a379c52c152d28c732
 
 pkgname = mdsplib
-
