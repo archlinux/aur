@@ -2,18 +2,18 @@
 _base=tiptop
 pkgname=${_base}-cli
 pkgdesc="Command-line system monitoring"
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
 depends=(python-py-cpuinfo python-distro python-psutil python-textual)
 makedepends=(python-setuptools)
-checkdepends=(python-pytest) # python-pytest-codeblocks
+checkdepends=(python-pytest-codeblocks)
 provides=(${_base})
 conflicts=(${_base})
 source=(${_base}-${pkgver}::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f7f5984fe3e99245bc3c561f455da8d63f2dc6d7a75a5019deacc0f6a87e243055fab304a88c1fcccbb12f994c4fd712dafa4365c9bf7129b9da2bf0e4b148c6')
+sha512sums=('8b03f793f59099c3d0945b28e0e3e3de61e207189b3acc6f6a511ed6fa84b72a7b61f162ec5cb9318192a5fe091435773cbcda2710e1c8892750c9139223e506')
 
 build() {
   cd "${_base}-${pkgver}"
@@ -23,7 +23,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest
+  PATH="${PWD}/tmp_install/usr/bin:$PATH" PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
 }
 
 package() {
