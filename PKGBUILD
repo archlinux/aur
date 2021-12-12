@@ -2,10 +2,10 @@
 
 pkgname=game_music_emu-kode54-git
 pkgver=r193.be0a069
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-purpose console music emulator and player library (a.k.a. libgme) (kode54's fork)"
 arch=(i686 x86_64)
-url='https://gitlab.kode54.net/kode54/Game_Music_Emu'
+url='https://bitbucket.org/losnoco/game_music_emu'
 license=('LGPL2.1')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'qt5-base')
