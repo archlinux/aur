@@ -12,10 +12,6 @@ JVB_PORT=5347
 # sets the shared secret used to authenticate to the XMPP server
 JVB_SECRET=__PASSWORD_FOR_USER_jvb@auth.jitsi-meet.example.org__
 
-# extra options to pass to the JVB daemon
-JVB_OPTS="--apis=,"
-
-
 # adds java system props that are passed to jvb (default are for home and logging config file)
 JAVA_SYS_PROPS="\
   -Dnet.java.sip.communicator.SC_HOME_DIR_LOCATION=/etc\
