@@ -1,6 +1,6 @@
 pkgbase = caprice32-git
 	pkgdesc = An emulator of the Amstrad CPC 8bit home computer range (CPC 464, 664, 6128)
-	pkgver = 4.5.0.r502.gbe9fa88
+	pkgver = 4.5.0.r505.gbb3b23a
 	pkgrel = 1
 	url = https://github.com/ColinPitrat/caprice32
 	arch = i686
