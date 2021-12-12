@@ -2,7 +2,7 @@
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers-git
 _pkgname=xde-helpers
-pkgver=1.7.r4.g1b57e139
+pkgver=1.8.r1.g7978efbf
 pkgrel=1
 arch=('any')
 license=('GPL')
