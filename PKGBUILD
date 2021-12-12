@@ -3,7 +3,7 @@
 # Contributor: Mike Redd <mredd -at- 0 tue 0 dot com>
 
 pkgname=vim-badwolf-git
-pkgver=v1.6.0.r14.g682b521
+pkgver=1.6.0.r14.g682b521
 pkgrel=1
 pkgdesc='A color scheme for Vim, pieced together by Steve Losh.'
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

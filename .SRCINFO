@@ -1,6 +1,6 @@
 pkgbase = vim-badwolf-git
 	pkgdesc = A color scheme for Vim, pieced together by Steve Losh.
-	pkgver = v1.6.0.r14.g682b521
+	pkgver = 1.6.0.r14.g682b521
 	pkgrel = 1
 	url = http://stevelosh.com/projects/badwolf/
 	arch = any
