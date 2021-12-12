@@ -1,0 +1,18 @@
+pkgbase = gnome-loop-git
+	pkgdesc = A simple audio loop machind for GNOME
+	pkgver = 0.1.0.r2.ge818787
+	pkgrel = 1
+	url = https://gitlab.gnome.org/danigm/loop
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = python
+	depends = gtk4
+	depends = libadwaita
+	provides = gnome-loop
+	conflicts = gnome-loop
+	source = git+https://gitlab.gnome.org/danigm/loop.git
+	sha512sums = SKIP
+
+pkgname = gnome-loop-git
