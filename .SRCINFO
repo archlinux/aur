@@ -1,0 +1,15 @@
+pkgbase = perl-compass-points
+	pkgdesc = Convert between compass point names, abbreviations and values
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/dist/Compass-Points
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JA/JANUS/Compass-Points-0.02.tar.gz
+	sha512sums = 92fecbe5868aaae24662b0c856e0a1fed2b80d6bcf9c03fba05cee3bd4117b69c3b79933c0d3b26e145bda589cbafbb44565b0451661b0012cfbd4e38ce070d2
+
+pkgname = perl-compass-points
