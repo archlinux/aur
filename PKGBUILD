@@ -14,7 +14,7 @@
 
 pkgname=thunderbird-appmenu-bin
 pkgver=91.4.0
-pkgrel=6
+pkgrel=8
 _pkgrel=$pkgrel
 pkgdesc="Thunderbird-appmenu, binary version"
 arch=('x86_64')
