@@ -2,7 +2,7 @@
 # Contributor: Emilio Reggi <nag@mailbox.org>
 
 pkgname=llama
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal file manager"
 arch=('x86_64' 'i686' 'arm')
@@ -34,4 +34,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -D build/llama -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
