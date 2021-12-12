@@ -1,0 +1,21 @@
+
+post_install() {
+  # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues/2567#issuecomment-809602402
+  echo ""
+  echo "To use the alternate icons run the following commands in the terminal,"
+  echo "then log out and then log back in again to take effect if this required."
+  echo ""
+  echo "GNOME Files / Nautilus:"
+  echo "desktop-file-install --dir ~/.local/share/applications --set-icon=nautilus /usr/share/applications/org.gnome.Nautilus.desktop"
+  echo ""
+  echo "GNOME Files / Nautilus (alt):"
+  echo "desktop-file-install --dir ~/.local/share/applications --set-icon=nautilus-alt /usr/share/applications/org.gnome.Nautilus.desktop"
+  echo ""
+  echo "Xfce Thunar:"
+  echo "desktop-file-install --dir ~/.local/share/applications --set-icon=thunar /usr/share/applications/thunar.desktop"
+  echo ""
+}
+
+post_upgrade() {
+   post_install
+}
