@@ -1,10 +1,10 @@
-# Maintainer: vojvoda343 <voj343@yandex.com>
+# Maintainer: voj343 <voj343@yandex.com>
 pkgname=mullvad-openrc
 pkgver=1.0
 pkgrel=2
 pkgdesc="mullvad openrc service"
 arch=('any')
-url='https://github.com/vojvoda343/mullvad-openrc'
+url='https://github.com/voj343/mullvad-openrc'
 license=('GPL')
 depends=('openrc')
 source=("mullvadd.initd")
