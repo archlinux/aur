@@ -1,6 +1,6 @@
 pkgbase = trakt-scrobbler-git
 	pkgdesc = Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!
-	pkgver = 1.3.2.r10.gce94a07
+	pkgver = 1.3.2.r12.gf9725a7
 	pkgrel = 1
 	url = https://github.com/iamkroot/trakt-scrobbler
 	arch = any
