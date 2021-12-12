@@ -1,7 +1,7 @@
 pkgbase = stsoundlibrary-git
 	pkgdesc = Library for AY-3-8912 chip emulation and YM music files (libstsound)
 	pkgver = r45.ecae512
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/cpcsdk/libstsound
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = stsoundlibrary-git
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
+	provides = stsoundlibrary
+	conflicts = stsoundlibrary
 	source = git+https://github.com/cpcsdk/libstsound
 	sha256sums = SKIP
 
 pkgname = stsoundlibrary-git
-
