@@ -1,8 +1,8 @@
 pkgbase = perl-email-outlook-message
 	pkgdesc = Perl module to read Outlook .msg files
 	pkgver = 0.920
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Email-Outlook-Message/
+	pkgrel = 2
+	url = https://search.cpan.org/dist/Email-Outlook-Message/
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -15,8 +15,7 @@ pkgbase = perl-email-outlook-message
 	depends = perl-mro-compat
 	depends = perl-module-pluggable
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MV/MVZ/Email-Outlook-Message-0.920.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/M/MV/MVZ/Email-Outlook-Message-0.920.tar.gz
 	md5sums = d6134c6da44c87ba8636d563053d3425
 
 pkgname = perl-email-outlook-message
-
