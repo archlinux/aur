@@ -22,9 +22,9 @@ pkgver() {
 }
 
 package() {
-    install -Dm644 "${srcsdir}/${pkgname}/colors/badwolf.vim" \
+    install -Dm644 "${srcdir}/${pkgname}/colors/badwolf.vim" \
                    "${pkgdir}/usr/share/vim/vimfiles/colors/badwolf.vim"
-    install -Dm644 "${srcsdir}/${pkgname}/colors/goodwolf.vim" \
+    install -Dm644 "${srcdir}/${pkgname}/colors/goodwolf.vim" \
                    "${pkgdir}/usr/share/vim/vimfiles/colors/goodwolf.vim"
     install -Dm644 "${srcdir}/${pkgname}/LICENSE.markdown" \
                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
