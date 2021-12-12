@@ -1,7 +1,7 @@
 pkgbase = python-poetry-dynamic-versioning
 	pkgdesc = Plugin for Poetry to enable dynamic versioning based on VCS tags
 	pkgver = 0.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mtkennerly/poetry-dynamic-versioning
 	arch = any
 	license = MIT
