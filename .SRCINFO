@@ -1,9 +1,9 @@
 pkgbase = python-matplotx
 	pkgdesc = Extensions for Matplotlib
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/matplotx
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-setuptools
