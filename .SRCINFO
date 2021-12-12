@@ -1,6 +1,6 @@
 pkgbase = nsxiv-git
 	pkgdesc = Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)
-	pkgver = 27.1.r43.gd8a4d71
+	pkgver = 28.r0.g7a94a5e
 	pkgrel = 1
 	url = https://github.com/nsxiv/nsxiv.git
 	arch = x86_64

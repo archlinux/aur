@@ -2,7 +2,7 @@
 
 pkgname='nsxiv-git'
 _pkgname=nsxiv
-pkgver=27.1.r43.gd8a4d71
+pkgver=28.r0.g7a94a5e
 pkgrel=1
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)'
 arch=('x86_64')
@@ -18,7 +18,6 @@ pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 prepare() {
   cd "$srcdir/$_pkgname"
