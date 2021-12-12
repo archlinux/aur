@@ -1,5 +1,5 @@
 pkgbase = powershell-empire
-    pkgver = 4.0.2 
+    pkgver = 4.2.0
     pkgrel = 0
     pkgdesc = Empire is a PowerShell and Python 3.x post-exploitation framework
     url = https://github.com/BC-SECURITY/Empire
