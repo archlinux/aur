@@ -1,14 +1,12 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.9.1
-	pkgrel = 4
+	pkgver = 1.10.0
+	pkgrel = 2
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = gtest
-	makedepends = gmock
 	makedepends = pybind11
 	makedepends = python-setuptools
 	makedepends = nlohmann-json
@@ -29,10 +27,9 @@ pkgbase = python-onnxruntime
 	depends = openmpi
 	depends = onednn
 	options = !lto
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.9.1
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.10.0
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/dcleblanc/SafeInt.git
-	source = git+https://github.com/martinmoene/optional-lite.git
 	source = git+https://github.com/tensorflow/tensorboard.git
 	source = git+https://github.com/dmlc/dlpack.git
 	source = git+https://github.com/jarro2783/cxxopts.git
@@ -47,8 +44,7 @@ pkgbase = python-onnxruntime
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = 685f0235abed6e1277dd0eb9bda56c464d1987fe7fc90a3550e17ec70cc49fd15f34996a0e159f9622c4ca3e6bf29917fe51b7849342531fa2a6808d782f1e06
+	sha512sums = 80ea85ea20bbbdec7991f965a66b627a5f42828bc0c72be0913078d927833a82402fb1af6c5c9f6ecae861b45582fa42c98ce83b02768e4bf875ab89dd1c607c
 	sha512sums = ad94af8bb25744b244c4f82e9a06189741f82b295a88523ca0e8005568fac710c2299d783989457e9cf96ef8da0593fb4f70c8792d416f44ab29d6493e204f13
 	sha512sums = 6735c7aca2ba2f1f2a5286eb064125bf7f2c68a575d572dd157769d15778ff3e717b3a53d696c767748229f23ee6c3a7c82679df1d86283d7c4dd0ec9103ae08
 
