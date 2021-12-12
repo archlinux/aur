@@ -3,8 +3,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-xml-compile-wsdl11
-pkgver=3.07
-pkgrel=3
+pkgver=3.08
+pkgrel=1
 pkgdesc='Perl package to create SOAP messages defined by WSDL 1.1'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-WSDL11'
@@ -13,11 +13,12 @@ depends=(
 	'perl-xml-compile>=1.48'
 	'perl-xml-compile-cache>=1.03'
 	'perl-xml-compile-soap>=3.23'
+	'perl-xml-compile-tester'
 	'perl-log-report>=1.05')
 checkdepends=('perl-test-deep')
-source=(http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-WSDL11-3.07.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-WSDL11-3.08.tar.gz)
 options=(!emptydirs)
-md5sums=('2866c7ef1630b76182deaae36879b9f8')
+md5sums=('2ff6f56dc79265f99e175040e104e7ac')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -25,20 +26,20 @@ sanitize() {
 }
 
 build() {
-	cd XML-Compile-WSDL11-3.07
+	cd XML-Compile-WSDL11-3.08
 	sanitize
 	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd XML-Compile-WSDL11-3.07
+	cd XML-Compile-WSDL11-3.08
 	sanitize
 	make test
 }
 
 package() {
-	cd XML-Compile-WSDL11-3.07
+	cd XML-Compile-WSDL11-3.08
 	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
