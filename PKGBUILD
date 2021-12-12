@@ -17,7 +17,7 @@ depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss nspr ttf-font libpulse
         graphite dav1d kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust ccache autoconf2.13 clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
+             python-setuptools python-psutil python-zstandard git binutils lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
@@ -102,8 +102,8 @@ prepare() {
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
 
-  # Allow overriding the color scheme light/dark preference with RFP
-  patch -Np1 -i ${_patches_dir}/librewolf/allow_dark_preference_with_rfp.patch  
+  # Allow overriding the color scheme light/dark preference with RFP (deprecated, probably dropped soon)
+  # patch -Np1 -i ${_patches_dir}/librewolf/allow_dark_preference_with_rfp.patch
 
   # Remove Internal Plugin Certificates
   # => breaks profiled builds since 90.0, it seems
@@ -197,7 +197,7 @@ ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-strip
-ac_add_options --without-wasm-sandboxed-libraries
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
