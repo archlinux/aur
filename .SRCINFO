@@ -1,5 +1,5 @@
 pkgbase = bash-bats-file
-	pkgdesc = A library to ease e2e tests of applications in K8s environments with bats
+	pkgdesc = Common filesystem assertions for Bats
 	pkgver = 0.3.0
 	pkgrel = 2
 	url = https://github.com/bats-core/bats-file

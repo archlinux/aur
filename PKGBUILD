@@ -3,7 +3,7 @@
 pkgname=bash-bats-file
 pkgver=0.3.0
 pkgrel=2
-pkgdesc="A library to ease e2e tests of applications in K8s environments with bats"
+pkgdesc="Common filesystem assertions for Bats"
 arch=("any")
 url="https://github.com/bats-core/bats-file"
 license=("MIT")
