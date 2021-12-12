@@ -2,13 +2,13 @@
 pkgname=sirfidal-git
 _pkgname=sirfidal
 _gitname=SiRFIDaL
-pkgver=r187.91f46d2
-pkgrel=2
+pkgver=r188.eb51f69
+pkgrel=1
 pkgdesc="SiRFIDal - Simple RFID authentication for Linux"
 arch=('x86_64')
 url="https://github.com/Giraut/SiRFIDaL"
 license=('GPL3')
-depends=('python' 'pam' 'python-psutil' 'python-filelock' 'python-setproctitle' 'pcsclite' 'pcsc-tools' 'python-pyscard' 'python-pyserial' 'android-tools' 'python-evdev' 'tk' 'python-xlib' 'python-cryptography' 'python-pynput' 'sox' 'python-pyufr-git' 'pam-python')
+depends=('python' 'pam' 'python-psutil' 'python-filelock' 'python-setproctitle' 'pcsclite' 'pcsc-tools' 'python-pyscard' 'python-pyserial' 'android-tools' 'python-evdev' 'tk' 'python-xlib' 'python-cryptography' 'python-pynput' 'sox' 'python-pyufr-git' 'pam-python' 'python-pyperclip')
 makedepends=('git')
 provides=('sirfidal')
 conflicts=()
