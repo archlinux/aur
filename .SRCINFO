@@ -1,14 +1,15 @@
 pkgbase = python-amqpy-git
 	pkgdesc = Python 3 AMQP 0.9.1 client library
 	pkgver = v0.13.1.r3.gc5346b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/veegee/amqpy/
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	provides = python-amqpy
+	conflicts = python-amqpy
 	source = python-amqpy-git::git+https://github.com/veegee/amqpy.git
 	sha256sums = SKIP
 
 pkgname = python-amqpy-git
-
