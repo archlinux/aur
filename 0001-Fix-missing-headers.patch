@@ -1,0 +1,10 @@
+--- a/libAvKys/Plugins/VirtualCamera/src/VCamUtils/src/image/videoformat.cpp	2021-02-15 12:25:23.000000000 -0300
++++ b/libAvKys/Plugins/VirtualCamera/src/VCamUtils/src/image/videoformat.cpp	2021-12-12 08:15:03.519178427 -0300
+@@ -17,6 +17,7 @@
+  * Web-Site: http://webcamoid.github.io/
+  */
+
++#include <limits>
+ #include <map>
+ #include <algorithm>
+

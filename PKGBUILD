@@ -2,7 +2,7 @@
 
 pkgname=webcamoid
 pkgver=8.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
 license=('GPL')
@@ -39,8 +39,15 @@ makedepends=('v4l-utils'
 provides=('webcamoid')
 conflicts=('webcamoid-git')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('77ed77cbaf57180247485646b81af30edcc89ee545bc241c23d8bd648464bf15')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
+        "0001-Fix-missing-headers.patch")
+md5sums=('d2b4455aa01924a07fc03165185e317c'
+         'f7a79dac3b251f0e0454e512222e3306')
+
+prepare() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    patch -Np1 -i "../0001-Fix-missing-headers.patch"
+}
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
