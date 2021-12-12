@@ -1,7 +1,7 @@
 pkgbase = hvl_replay-kode54-git
 	pkgdesc = Hively Tracker (HVL and AHX) replayer library (kode54's fork, from foo_input_hvl)
 	pkgver = r52.f1ad113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/losnoco/foo_input_hvl
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,11 @@ pkgbase = hvl_replay-kode54-git
 	makedepends = git
 	makedepends = qt5-base
 	depends = glibc
+	provides = hvl_replay
+	provides = hvl_replay-kode54
+	conflicts = hvl_replay
+	conflicts = hvl_replay-kode54
 	source = hvl_replay-kode54-git::git+https://bitbucket.org/losnoco/foo_input_hvl.git
 	sha256sums = SKIP
 
 pkgname = hvl_replay-kode54-git
-
