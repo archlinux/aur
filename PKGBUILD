@@ -6,7 +6,7 @@
 pkgbase=glibc-dso
 pkgname=(glibc-dso lib32-glibc-dso)
 pkgver=2.33
-pkgrel=8
+pkgrel=9
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
@@ -24,8 +24,8 @@ source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         0001-nptl_db-Support-different-libpthread-ld.so-load-orde.patch
         0002-nptl-Check-for-compatible-GDB-in-nptl-tst-pthread-gd.patch
         0003-nptl-Do-not-build-nptl-tst-pthread-gdb-attach-as-PIE.patch
-        v6-1-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Testing-infrastructure.patch
-        v6-2-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Algorithm-changes.patch)
+        v8-1-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Testing-infrastructure.patch
+        v8-2-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Algorithm-changes.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
 md5sums=('390bbd889c7e8e8a7041564cb6b27cca'
@@ -39,8 +39,8 @@ md5sums=('390bbd889c7e8e8a7041564cb6b27cca'
          '78f041fc66fee4ee372f13b00a99ff72'
          '9e418efa189c20053e887398df2253cf'
          '7a09f1693613897add1791e7aead19c9'
-         'c553dbe5e7ae410629ca068d43ab7ebf'
-         'b83e5a982dc5ec58c69e30672ca903fe')
+         '5974b86859dd65c7cfda756a8b2445c2'
+         '26a619a810de7d296608cc78377bc27c')
 
 prepare() {
   mkdir -p glibc-build lib32-glibc-build
@@ -59,8 +59,8 @@ prepare() {
 
   # nptl: Do not build nptl/tst-pthread-gdb-attach as PIE
   patch -p1 -i "$srcdir"/0003-nptl-Do-not-build-nptl-tst-pthread-gdb-attach-as-PIE.patch
-  patch -p1 -i "$srcdir"/v6-1-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Testing-infrastructure.patch
-  patch -p1 -i "$srcdir"/v6-2-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Algorithm-changes.patch
+  patch -p1 -i "$srcdir"/v8-1-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Testing-infrastructure.patch
+  patch -p1 -i "$srcdir"/v8-2-2-BZ-17645-fix-slow-DSO-sorting-behavior-in-dynamic-loader----Algorithm-changes.patch
 }
 
 build() {

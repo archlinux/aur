@@ -1,8 +1,28 @@
+diff --git a/NEWS b/NEWS
+index 220d327071..b39b1e5e33 100644
+--- a/NEWS
++++ b/NEWS
+@@ -51,6 +51,15 @@  Major new features:
+ 
+ * The ISO C2X macro _PRINTF_NAN_LEN_MAX has been added to <stdio.h>.
+ 
++* A new DSO sorting algorithm has been added in the dynamic linker that uses
++  topological sorting by depth-first search (DFS), solving performance issues
++  of the existing sorting algorithm when encountering particular circular
++  object dependency cases.
++
++* A new tunable, glibc.rtld.dynamic_sort, can be used to select between the two
++  DSO sorting algorithms.  The default setting of '1' uses the current existing
++  algorithm, while a value of '2' selects the new DFS-based algorithm.
++
+ Deprecated and removed features, and other changes affecting compatibility:
+ 
+ * The r_version update in the debugger interface makes the glibc binary
 diff --git a/elf/dl-close.c b/elf/dl-close.c
-index f39001cab9..a55b3a00fa 100644
+index cfe0f1c0c9..4f5cfcc1c3 100644
 --- a/elf/dl-close.c
 +++ b/elf/dl-close.c
-@@ -167,8 +167,6 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -167,8 +167,6 @@  _dl_close_worker (struct link_map *map, bool force)
  
    bool any_tls = false;
    const unsigned int nloaded = ns->_ns_nloaded;
@@ -11,7 +31,7 @@ index f39001cab9..a55b3a00fa 100644
    struct link_map *maps[nloaded];
  
    /* Run over the list and assign indexes to the link maps and enter
-@@ -176,24 +174,21 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -176,24 +174,21 @@  _dl_close_worker (struct link_map *map, bool force)
    int idx = 0;
    for (struct link_map *l = ns->_ns_loaded; l != NULL; l = l->l_next)
      {
@@ -39,7 +59,7 @@ index f39001cab9..a55b3a00fa 100644
  	/* Already handled.  */
  	continue;
  
-@@ -204,12 +199,12 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -204,12 +199,12 @@  _dl_close_worker (struct link_map *map, bool force)
  	  /* See CONCURRENCY NOTES in cxa_thread_atexit_impl.c to know why
  	     acquire is sufficient and correct.  */
  	  && atomic_load_acquire (&l->l_tls_dtor_count) == 0
@@ -55,7 +75,7 @@ index f39001cab9..a55b3a00fa 100644
        /* Signal the object is still needed.  */
        l->l_idx = IDX_STILL_USED;
  
-@@ -225,9 +220,9 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -225,9 +220,9 @@  _dl_close_worker (struct link_map *map, bool force)
  		{
  		  assert ((*lp)->l_idx >= 0 && (*lp)->l_idx < nloaded);
  
@@ -67,7 +87,7 @@ index f39001cab9..a55b3a00fa 100644
  		      /* If we marked a new object as used, and we've
  			 already processed it, then we need to go back
  			 and process again from that point forward to
-@@ -250,9 +245,9 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -250,9 +245,9 @@  _dl_close_worker (struct link_map *map, bool force)
  	      {
  		assert (jmap->l_idx >= 0 && jmap->l_idx < nloaded);
  
@@ -79,7 +99,7 @@ index f39001cab9..a55b3a00fa 100644
  		    if (jmap->l_idx - 1 < done_index)
  		      done_index = jmap->l_idx - 1;
  		  }
-@@ -262,8 +257,7 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -262,8 +257,7 @@  _dl_close_worker (struct link_map *map, bool force)
  
    /* Sort the entries.  We can skip looking for the binary itself which is
       at the front of the search list for the main namespace.  */
@@ -89,7 +109,7 @@ index f39001cab9..a55b3a00fa 100644
  
    /* Call all termination functions at once.  */
  #ifdef SHARED
-@@ -280,7 +274,7 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -280,7 +274,7 @@  _dl_close_worker (struct link_map *map, bool force)
        /* All elements must be in the same namespace.  */
        assert (imap->l_ns == nsid);
  
@@ -98,7 +118,7 @@ index f39001cab9..a55b3a00fa 100644
  	{
  	  assert (imap->l_type == lt_loaded && !imap->l_nodelete_active);
  
-@@ -333,7 +327,7 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -333,7 +327,7 @@  _dl_close_worker (struct link_map *map, bool force)
  	  if (i < first_loaded)
  	    first_loaded = i;
  	}
@@ -107,7 +127,7 @@ index f39001cab9..a55b3a00fa 100644
        else if (imap->l_type == lt_loaded)
  	{
  	  struct r_scope_elem *new_list = NULL;
-@@ -557,7 +551,7 @@ _dl_close_worker (struct link_map *map, bool force)
+@@ -560,7 +554,7 @@  _dl_close_worker (struct link_map *map, bool force)
    for (unsigned int i = first_loaded; i < nloaded; ++i)
      {
        struct link_map *imap = maps[i];
@@ -120,7 +140,7 @@ diff --git a/elf/dl-deps.c b/elf/dl-deps.c
 index 087a49b212..237d9636c5 100644
 --- a/elf/dl-deps.c
 +++ b/elf/dl-deps.c
-@@ -613,10 +613,9 @@ Filters not supported with LD_TRACE_PRELINKING"));
+@@ -613,10 +613,9 @@  Filters not supported with LD_TRACE_PRELINKING"));
  
    /* If libc.so.6 is the main map, it participates in the sort, so
       that the relocation order is correct regarding libc.so.6.  */
@@ -138,7 +158,7 @@ diff --git a/elf/dl-fini.c b/elf/dl-fini.c
 index 6dbdfe4b3e..c683884c35 100644
 --- a/elf/dl-fini.c
 +++ b/elf/dl-fini.c
-@@ -92,8 +92,7 @@ _dl_fini (void)
+@@ -92,8 +92,7 @@  _dl_fini (void)
  	  /* Now we have to do the sorting.  We can skip looking for the
  	     binary itself which is at the front of the search list for
  	     the main namespace.  */
@@ -149,10 +169,10 @@ index 6dbdfe4b3e..c683884c35 100644
  	  /* We do not rely on the linked list of loaded object anymore
  	     from this point on.  We have our own list here (maps).  The
 diff --git a/elf/dl-sort-maps.c b/elf/dl-sort-maps.c
-index d21770267a..91c5009ac4 100644
+index d21770267a..a274ed66cc 100644
 --- a/elf/dl-sort-maps.c
 +++ b/elf/dl-sort-maps.c
-@@ -16,16 +16,24 @@
+@@ -16,16 +16,24 @@ 
     License along with the GNU C Library; if not, see
     <https://www.gnu.org/licenses/>.  */
  
@@ -161,7 +181,7 @@ index d21770267a..91c5009ac4 100644
 +#include <elf/dl-tunables.h>
  
 +/* Note: this is the older, "original" sorting algorithm, being used as
-+   default up to 2.32.
++   default up to 2.35.
  
 -/* Sort array MAPS according to dependencies of the contained objects.
 -   Array USED, if non-NULL, is permutated along MAPS.  If FOR_FINI this is
@@ -183,7 +203,7 @@ index d21770267a..91c5009ac4 100644
    /* A list of one element need not be sorted.  */
    if (nmaps <= 1)
      return;
-@@ -66,14 +74,6 @@ _dl_sort_maps (struct link_map **maps, unsigned int nmaps, char *used,
+@@ -66,14 +74,6 @@  _dl_sort_maps (struct link_map **maps, unsigned int nmaps, char *used,
  			   (k - i) * sizeof (maps[0]));
  		  maps[k] = thisp;
  
@@ -198,7 +218,7 @@ index d21770267a..91c5009ac4 100644
  		  if (seen[i + 1] > nmaps - i)
  		    {
  		      ++i;
-@@ -120,3 +120,183 @@ _dl_sort_maps (struct link_map **maps, unsigned int nmaps, char *used,
+@@ -120,3 +120,183 @@  _dl_sort_maps (struct link_map **maps, unsigned int nmaps, char *used,
      next:;
      }
  }
@@ -357,15 +377,17 @@ index d21770267a..91c5009ac4 100644
 +}
 +
 +void
++_dl_sort_maps_init (void)
++{
++  int32_t algorithm = TUNABLE_GET (glibc, rtld, dynamic_sort, int32_t, NULL);
++  GLRO(dl_dso_sort_algo) = algorithm == 1 ? dso_sort_algorithm_original
++					  : dso_sort_algorithm_dfs;
++}
++
++void
 +_dl_sort_maps (struct link_map **maps, unsigned int nmaps,
 +	       unsigned int skip, bool for_fini)
 +{
-+  /* Index code for sorting algorithm currently in use.  */
-+  static int32_t algorithm = 0;
-+  if (__glibc_unlikely (algorithm == 0))
-+    algorithm = TUNABLE_GET (glibc, rtld, dynamic_sort,
-+			     int32_t, NULL);
-+
 +  /* It can be tempting to use a static function pointer to store and call
 +     the current selected sorting algorithm routine, but experimentation
 +     shows that current processors still do not handle indirect branches
@@ -373,20 +395,45 @@ index d21770267a..91c5009ac4 100644
 +     PTR_MANGLE/DEMANGLE, further impairing performance of small, common
 +     input cases. A simple if-case with direct function calls appears to
 +     be the fastest.  */
-+  if (__glibc_likely (algorithm == 1))
++  if (__glibc_likely (GLRO(dl_dso_sort_algo) == dso_sort_algorithm_original))
 +    _dl_sort_maps_original (maps, nmaps, skip, for_fini);
-+  else if (algorithm == 2)
-+    _dl_sort_maps_dfs (maps, nmaps, skip, for_fini);
 +  else
-+    __builtin_unreachable ();
++    _dl_sort_maps_dfs (maps, nmaps, skip, for_fini);
 +}
 +
 +#endif /* HAVE_TUNABLES.  */
+diff --git a/elf/dl-support.c b/elf/dl-support.c
+index d99c1f1d62..98d5d8db5c 100644
+--- a/elf/dl-support.c
++++ b/elf/dl-support.c
+@@ -166,6 +166,8 @@  size_t _dl_phnum;
+ uint64_t _dl_hwcap;
+ uint64_t _dl_hwcap2;
+ 
++enum dso_sort_algorithm _dl_dso_sort_algo;
++
+ /* The value of the FPU control word the kernel will preset in hardware.  */
+ fpu_control_t _dl_fpu_control = _FPU_DEFAULT;
+ 
+diff --git a/elf/dl-sysdep.c b/elf/dl-sysdep.c
+index 2c684c2db2..4dc366eea4 100644
+--- a/elf/dl-sysdep.c
++++ b/elf/dl-sysdep.c
+@@ -231,6 +231,9 @@  _dl_sysdep_start (void **start_argptr,
+ 
+   __tunables_init (_environ);
+ 
++  /* Initialize DSO sorting algorithm after tunables.  */
++  _dl_sort_maps_init ();
++
+ #ifdef DL_SYSDEP_INIT
+   DL_SYSDEP_INIT;
+ #endif
 diff --git a/elf/dl-tunables.list b/elf/dl-tunables.list
 index 8ddd4a2314..46ffb23784 100644
 --- a/elf/dl-tunables.list
 +++ b/elf/dl-tunables.list
-@@ -156,4 +156,13 @@ glibc {
+@@ -156,4 +156,13 @@  glibc {
        security_level: SXID_IGNORE
      }
    }
@@ -400,11 +447,22 @@ index 8ddd4a2314..46ffb23784 100644
 +    }
 +  }
  }
+diff --git a/elf/dso-sort-tests-1.def b/elf/dso-sort-tests-1.def
+index 873ddf55d9..5f7f18ef27 100644
+--- a/elf/dso-sort-tests-1.def
++++ b/elf/dso-sort-tests-1.def
+@@ -62,5 +62,5 @@  output: b>a>{}<a<b
+ # The below expected outputs are what the two algorithms currently produce
+ # respectively, for regression testing purposes.
+ tst-bz15311: {+a;+e;+f;+g;+d;%d;-d;-g;-f;-e;-a};a->b->c->d;d=>[ba];c=>a;b=>e=>a;c=>f=>b;d=>g=>c
+-xfail_output(glibc.rtld.dynamic_sort=1): {+a[d>c>b>a>];+e[e>];+f[f>];+g[g>];+d[];%d(b(e(a()))a()g(c(a()f(b(e(a()))))));-d[];-g[];-f[];-e[];-a[<a<c<d<g<f<b<e];}
++output(glibc.rtld.dynamic_sort=1): {+a[d>c>b>a>];+e[e>];+f[f>];+g[g>];+d[];%d(b(e(a()))a()g(c(a()f(b(e(a()))))));-d[];-g[];-f[];-e[];-a[<a<c<d<g<f<b<e];}
+ output(glibc.rtld.dynamic_sort=2): {+a[d>c>b>a>];+e[e>];+f[f>];+g[g>];+d[];%d(b(e(a()))a()g(c(a()f(b(e(a()))))));-d[];-g[];-f[];-e[];-a[<g<f<a<b<c<d<e];}
 diff --git a/elf/rtld.c b/elf/rtld.c
-index d733359eaf..abdc13c13a 100644
+index b8ba2d8836..be2d5d8e74 100644
 --- a/elf/rtld.c
 +++ b/elf/rtld.c
-@@ -1389,6 +1389,9 @@ dl_main (const ElfW(Phdr) *phdr,
+@@ -1391,6 +1391,9 @@  dl_main (const ElfW(Phdr) *phdr,
        main_map->l_name = (char *) "";
        *user_entry = main_map->l_entry;
  
@@ -418,7 +476,7 @@ diff --git a/elf/tst-rtld-list-tunables.exp b/elf/tst-rtld-list-tunables.exp
 index 9f66c52885..9bf572715f 100644
 --- a/elf/tst-rtld-list-tunables.exp
 +++ b/elf/tst-rtld-list-tunables.exp
-@@ -10,5 +10,6 @@ glibc.malloc.tcache_max: 0x0 (min: 0x0, max: 0x[f]+)
+@@ -10,5 +10,6 @@  glibc.malloc.tcache_max: 0x0 (min: 0x0, max: 0x[f]+)
  glibc.malloc.tcache_unsorted_limit: 0x0 (min: 0x0, max: 0x[f]+)
  glibc.malloc.top_pad: 0x0 (min: 0x0, max: 0x[f]+)
  glibc.malloc.trim_threshold: 0x0 (min: 0x0, max: 0x[f]+)
@@ -426,10 +484,10 @@ index 9f66c52885..9bf572715f 100644
  glibc.rtld.nns: 0x4 (min: 0x1, max: 0x10)
  glibc.rtld.optional_static_tls: 0x200 (min: 0x0, max: 0x[f]+)
 diff --git a/include/link.h b/include/link.h
-index 4af16cb596..50f45db243 100644
+index 484ee6cb1b..c1c382ccfa 100644
 --- a/include/link.h
 +++ b/include/link.h
-@@ -181,6 +181,11 @@ struct link_map
+@@ -181,6 +181,11 @@  struct link_map
      unsigned int l_init_called:1; /* Nonzero if DT_INIT function called.  */
      unsigned int l_global:1;	/* Nonzero if object in _dl_global_scope.  */
      unsigned int l_reserved:2;	/* Reserved for internal use.  */
@@ -441,11 +499,56 @@ index 4af16cb596..50f45db243 100644
      unsigned int l_phdr_allocated:1; /* Nonzero if the data structure pointed
  					to by `l_phdr' is allocated.  */
      unsigned int l_soname_added:1; /* Nonzero if the SONAME is for sure in
+diff --git a/manual/tunables.texi b/manual/tunables.texi
+index 658547c613..10f4d75993 100644
+--- a/manual/tunables.texi
++++ b/manual/tunables.texi
+@@ -309,6 +309,17 @@  changed once allocated at process startup.  The default allocation of
+ optional static TLS is 512 bytes and is allocated in every thread.
+ @end deftp
+ 
++@deftp Tunable glibc.rtld.dynamic_sort
++Sets the algorithm to use for DSO sorting, valid values are @samp{1} and
++@samp{2}.  For value of @samp{1}, an older O(n^3) algorithm is used, which is
++long time tested, but may have performance issues when dependencies between
++shared objects contain cycles due to circular dependencies.  When set to the
++value of @samp{2}, a different algorithm is used, which implements a
++topological sort through depth-first search, and does not exhibit the
++performance issues of @samp{1}.
++
++The default value of this tunable is @samp{1}.
++@end deftp
+ 
+ @node Elision Tunables
+ @section Elision Tunables
 diff --git a/sysdeps/generic/ldsodefs.h b/sysdeps/generic/ldsodefs.h
-index 9c15259236..ad48a0d7da 100644
+index 0410f777a6..65a6a51633 100644
 --- a/sysdeps/generic/ldsodefs.h
 +++ b/sysdeps/generic/ldsodefs.h
-@@ -1084,7 +1084,7 @@ extern void _dl_fini (void) attribute_hidden;
+@@ -245,6 +245,13 @@  enum allowmask
+   };
+ 
+ 
++/* DSO sort algorithm to use (check dl-sort-maps.c).  */
++enum dso_sort_algorithm
++  {
++    dso_sort_algorithm_original,
++    dso_sort_algorithm_dfs
++  };
++
+ struct audit_ifaces
+ {
+   void (*activity) (uintptr_t *, unsigned int);
+@@ -678,6 +685,8 @@  struct rtld_global_ro
+      platforms.  */
+   EXTERN uint64_t _dl_hwcap2;
+ 
++  EXTERN enum dso_sort_algorithm _dl_dso_sort_algo;
++
+ #ifdef SHARED
+   /* We add a function table to _rtld_global which is then used to
+      call the function instead of going through the PLT.  The result
+@@ -1104,7 +1113,7 @@  extern void _dl_fini (void) attribute_hidden;
  
  /* Sort array MAPS according to dependencies of the contained objects.  */
  extern void _dl_sort_maps (struct link_map **maps, unsigned int nmaps,
@@ -454,3 +557,13 @@ index 9c15259236..ad48a0d7da 100644
  
  /* The dynamic linker calls this function before and having changing
     any shared object mappings.  The `r_state' member of `struct r_debug'
+@@ -1235,6 +1244,9 @@  extern struct link_map * _dl_get_dl_main_map (void)
+ # endif
+ #endif
+ 
++/* Initialize the DSO sort algorithm to use.  */
++extern void _dl_sort_maps_init (void) attribute_hidden;
++
+ /* Initialization of libpthread for statically linked applications.
+    If libpthread is not linked in, this is an empty function.  */
+ void __pthread_initialize_minimal (void) weak_function;
