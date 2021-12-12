@@ -1,2 +1,6 @@
 publish.js
 copy.sh
+pkg
+src
+*.pkg.tar.zst
+*.pkg.tar
