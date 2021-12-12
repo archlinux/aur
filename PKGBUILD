@@ -36,8 +36,3 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir" install
 }
-
-package() {
-  cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}/" install
-}
