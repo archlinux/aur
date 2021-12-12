@@ -1,3 +1,4 @@
+#Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
 pkgname=powershell-empire
 _name=Empire
 pkgver=4.2.0
