@@ -12,7 +12,6 @@ pkgbase = lattice-radiant
 	depends = atk
 	depends = cairo
 	depends = pango
-	depends = pulseaudio
 	depends = libxcb
 	depends = xcb-util
 	depends = xcb-util-image

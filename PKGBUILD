@@ -27,7 +27,7 @@ sha512sums=('1337d32401ee66ed31c880d4357f048195545f1166a8de11d5601fe686e03cb7e53
 
 # These run-time dependencies seem to be needed for proper operation
 depends=(
-        'fontconfig' 'gnu-free-fonts' 'nss' 'atk' 'cairo' 'pango' 'pulseaudio'
+        'fontconfig' 'gnu-free-fonts' 'nss' 'atk' 'cairo' 'pango'
         'libxcb' 'xcb-util' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm'
         'glibc' 'libjpeg' 'libieee1284' 'libusb' 'libx11' 'libice' 'libsm' 'libxt' 'libxtst' 'libxext' 'libxrender' 'libxi' 'libxft'
         'libxkbcommon' 'libxkbcommon-x11' 'libxslt' 'libxrandr' 'libxfixes' 'libxdamage' 'libxcursor' 'libxcomposite' 'libgl' 'libxinerama' 'libxss'
