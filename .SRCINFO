@@ -1,6 +1,6 @@
 pkgbase = pygrid
 	pkgdesc = Quickly place and move windows around the X11 desktop using a grid
-	pkgver = 7f896fa
+	pkgver = 1.0.0.r15.g7f896fa
 	pkgrel = 1
 	url = https://github.com/pkkid/pygrid
 	arch = i686
