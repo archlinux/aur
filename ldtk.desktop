@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=LDtk
+GenericName=Level Editor
+Comment=Modern and efficient 2D level editor with a strong focus on user-friendliness
+Icon=/usr/share/pixmaps/ldtk.png
+Exec=ldtk
+Terminal=false
+Categories=Development

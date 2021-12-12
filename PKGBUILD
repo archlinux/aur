@@ -2,19 +2,21 @@
 
 pkgname=ldtk
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
 url="https://github.com/deepnight/ldtk"
 license=('MIT')
 makedepends=('haxe' 'git' 'nodejs' 'npm')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deepnight/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8dcd179fcc932495d948e37bae99060aa89cf63bd9fae10faa06dff942102df4')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deepnight/$pkgname/archive/v$pkgver.tar.gz"
+        "${pkgname}.desktop")
+sha256sums=('8dcd179fcc932495d948e37bae99060aa89cf63bd9fae10faa06dff942102df4'
+            '5f15970200f2b14fd79eaaac03347e0b2d4845403347cb6ecfa57ee17e6642c0')
 options=('!strip' 'emptydirs' '!makeflags')
 
 build() {
+  haxelib deleterepo --quiet --always
   haxelib newrepo
-  haxe -version
   
   pushd "${pkgname}-${pkgver}"
   haxelib git castle https://github.com/deepnight/castle dcf41f6c9fc88f0bfbd87a4ad01568d07a1597b5 --always
@@ -38,6 +40,8 @@ build() {
 package() {
   pushd "${pkgname}-${pkgver}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "app/assets/appIcon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  
   pushd app/redist/linux-unpacked
   install -Dm644 LICENSE.electron.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 LICENSES.chromium.html "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -46,5 +50,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin/"
   ln -sf "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin"
   popd
+  
   popd
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

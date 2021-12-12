@@ -1,7 +1,7 @@
 pkgbase = ldtk
 	pkgdesc = Modern and efficient 2D level editor with a strong focus on user-friendliness
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/deepnight/ldtk
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,8 @@ pkgbase = ldtk
 	options = emptydirs
 	options = !makeflags
 	source = ldtk-0.9.3.tar.gz::https://github.com/deepnight/ldtk/archive/v0.9.3.tar.gz
+	source = ldtk.desktop
 	sha256sums = 8dcd179fcc932495d948e37bae99060aa89cf63bd9fae10faa06dff942102df4
+	sha256sums = 5f15970200f2b14fd79eaaac03347e0b2d4845403347cb6ecfa57ee17e6642c0
 
 pkgname = ldtk
