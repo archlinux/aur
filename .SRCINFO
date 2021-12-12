@@ -1,4 +1,4 @@
-pkgbase = bw-pack
+pkgbase = bigwigs-packager
 	pkgdesc = Generate an addon zip file from a Git, SVN, or Mercurial checkout.
 	pkgver = 1.0.3
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = bw-pack
 	source = https://raw.githubusercontent.com/BigWigsMods/packager/cd3d45ed8c7b1123bf5d2dffccc5241e2ec4971c/release.sh
 	sha512sums = 054bb4e82c512e572dcad1ac4232e54887827d0778fe74793b4b4cd86cbb3fe82a4aedfe2925bc4f68205dad2ebf4b951d4d50fda6cfd21bcb53bbc54c48a9ff
 
-pkgname = bw-pack
+pkgname = bigwigs-packager

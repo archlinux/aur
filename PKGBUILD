@@ -1,5 +1,5 @@
 # Maintainer: Allen Faure afaure6 at gmail dot com
-pkgname=bw-pack
+pkgname=bigwigs-packager
 pkgver="1.0.3"
 
 pkgrel="1"
