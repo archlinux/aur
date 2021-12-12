@@ -1,6 +1,6 @@
 pkgbase = vitomu
 	pkgdesc = Easy to use video to audio converter
-	pkgver = 2.0.6
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://www.digimezzo.com
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = vitomu
 	conflicts = vitomu
 	replaces = vitomu
 	options = !strip
-	source = Vitomu-2.0.6.AppImage::https://github.com/digimezzo/vitomu/releases/download/v2.0.6/Vitomu-2.0.6.AppImage
+	source = Vitomu-2.1.0.AppImage::https://github.com/digimezzo/vitomu/releases/download/v2.1.0/Vitomu-2.1.0.AppImage
 	source = vitomu.desktop
-	sha256sums = ed8e3e91808a70a48c581d4aa26ead281c4f500fd292dc92589ebe43c8335a3d
+	sha256sums = 180ec93b9b8a8b6dab960db899dfa551bbc6b33fba011e18133c7700eacad51b
 	sha256sums = 1330c2e18e4ffce1b7495f130441428a8e04bd04e030bd974993ac9f3fd3eddc
 
 pkgname = vitomu
