@@ -6,3 +6,4 @@ amdfand-bin-1.0.*
 build.tar.gz
 pkg/
 src/
+copy.sh
