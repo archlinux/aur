@@ -1,13 +1,13 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=kamonegi-git
-pkgver=0.1.0.r278.44bbdb3+r1681.486f8a2c
+pkgver=0.1.0.r290.84a9f2f+r1690.7e5e6729
 pkgrel=1
 pkgdesc="A Qt-based interface of SameBoy, An accuracy-focused Game Boy/Game Boy Color emulator (git build)"
 depends=('qt6-base')
 makedepends=('cmake' 'git' 'ninja' 'python' 'rgbds')
 arch=('x86_64')
-url="https://github.com/SnowyMouse/sameboy-dx"
+url="https://github.com/SnowyMouse/kamonegi"
 license=('GPL3')
 source=("git+https://github.com/SnowyMouse/${pkgname%-git}.git"
         "git+https://github.com/LIJI32/SameBoy.git")

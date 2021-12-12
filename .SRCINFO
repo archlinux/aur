@@ -1,8 +1,8 @@
 pkgbase = kamonegi-git
 	pkgdesc = A Qt-based interface of SameBoy, An accuracy-focused Game Boy/Game Boy Color emulator (git build)
-	pkgver = 0.1.0.r278.44bbdb3+r1681.486f8a2c
+	pkgver = 0.1.0.r290.84a9f2f+r1690.7e5e6729
 	pkgrel = 1
-	url = https://github.com/SnowyMouse/sameboy-dx
+	url = https://github.com/SnowyMouse/kamonegi
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
