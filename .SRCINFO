@@ -1,20 +1,19 @@
 pkgbase = papermc-git
-	pkgdesc = High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies
-	pkgver = 1.16.3
+	pkgdesc = Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance, built from the latest sources upstream
+	pkgver = 1.18.1.r6575.29bd57b4c
 	pkgrel = 1
 	epoch = 1
 	url = https://papermc.io/
 	install = paper.install
 	arch = any
 	license = custom
-	makedepends = java-environment>=8
+	makedepends = java-environment>=17
 	makedepends = git
 	makedepends = maven
-	depends = java-runtime-headless>=8
+	depends = java-runtime-headless>=17
 	depends = awk
-	provides = paperclip=1.16.3
+	provides = papermc=1.18.1.r6575.29bd57b4c
 	source = papermc-git::git+https://github.com/PaperMC/Paper.git#branch=master
 	md5sums = SKIP
 
 pkgname = papermc-git
-

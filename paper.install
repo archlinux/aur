@@ -1,7 +1,10 @@
 post_install() {
     getent group papermc > /dev/null 2>&1 || groupadd papermc
-    getent passwd papermc > /dev/null 2>&1 || useradd -g papermc -d /srv/paper -s /bin/bash papermc
-    chown -R papermc:papermc /srv/paper/
+    getent passwd papermc > /dev/null 2>&1 || useradd -g papermc -d /srv/papermc -s /bin/bash papermc
+    chown -R papermc:papermc /srv/papermc/
+
+    echo "For the server to start you have to accept the EULA in ${_server_root}/eula.txt !"
+	echo "The EULA file is generated after the first server start."
 }
 
 post_upgrade() {

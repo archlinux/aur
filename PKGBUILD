@@ -1,14 +1,14 @@
 pkgname=papermc-git
-pkgver=1.16.3.r5125.faf8eb035
+pkgver=1.18.1.r6575.29bd57b4c
 pkgrel=1
 epoch=1
-pkgdesc="High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies"
+pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance, built from the latest sources upstream"
 arch=('any')
 url="https://papermc.io/"
 license=("custom")
-depends=("java-runtime-headless>=8" 'awk')
-makedepends=("java-environment>=8" 'git' 'maven')
-provides=("paperclip=${pkgver}")
+depends=("java-runtime-headless>=17" 'awk')
+makedepends=("java-environment>=17" 'git' 'maven')
+provides=("papermc=${pkgver}")
 install="paper.install"
 source=("$pkgname"::'git+https://github.com/PaperMC/Paper.git#branch=master')
 md5sums=('SKIP')
@@ -21,7 +21,8 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "%s.r%s.%s" "$(awk -F: '/minecraftVersion/ {gsub(/"|,|\s/,""); printf $2}' work/BuildData/info.json)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	#printf "%s.r%s.%s" "$(awk -F: '/minecraftVersion/ {gsub(/"|,|\s/,""); printf $2}' work/BuildData/info.json)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(awk -F= '/^mcVersion/ {gsub(/"|,|\s/,""); printf $2}' gradle.properties)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -29,16 +30,19 @@ build() {
 	
 	export MAVEN_OPTS="-Xmx2G"
 
-	./paper jar
+	./gradlew applyPatches
+	./gradlew createReobfBundlerJar
 }
 
 package() {
-	install -Dm644 "$srcdir/$pkgname/paperclip.jar" "${pkgdir}/srv/paper/paperclip.${pkgver}.jar"
-	install -D "$srcdir/$pkgname/LICENSE.md" "${pkgdir}/srv/paper/LICENSE"
-	install -D "$srcdir/$pkgname/licenses/GPL.md" "${pkgdir}/srv/paper/LICENSE_GPL"
-	install -D "$srcdir/$pkgname/licenses/MIT.md" "${pkgdir}/srv/paper/LICENSE_MIT"
+	_bundlerver="$(awk -F= '/^version/ {gsub(/"|,|\s/,""); printf $2}' $srcdir/$pkgname/gradle.properties)"
+	
+	install -Dm644 "$srcdir/$pkgname/build/libs/paper-bundler-${_bundlerver}-reobf.jar" "${pkgdir}/srv/papermc/papermc.${pkgver}.jar"
+	install -D "$srcdir/$pkgname/LICENSE.md" "${pkgdir}/srv/papermc/LICENSE"
+	install -D "$srcdir/$pkgname/licenses/GPL.md" "${pkgdir}/srv/papermc/LICENSE_GPL"
+	install -D "$srcdir/$pkgname/licenses/MIT.md" "${pkgdir}/srv/papermc/LICENSE_MIT"
 
-	ln -s "paperclip.${pkgver}.jar" "${pkgdir}/srv/paper/paperclip.jar"
+	ln -s "papermc.${pkgver}.jar" "${pkgdir}/srv/papermc/papermc_server.jar"
 }
 
 
