@@ -1,11 +1,13 @@
 pkgname=aopsf-git
-pkgver=r26.08672d5
-pkgrel=2
+pkgver=r27.8213121
+pkgrel=1
 pkgdesc="Audio Overload's PSF core, now in a proper library"
 arch=(x86_64)
 url='https://bitbucket.org/losnoco/aopsf'
 license=(BSD)
 makedepends=(git)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=(${pkgname}::git+https://bitbucket.org/losnoco/aopsf.git makefile.patch decl.patch LICENSE.BSD)
 sha256sums=('SKIP'
             '63033efed8fbbe7fb357e9204c00977ec41c0c58518441e2d9d60412e21c8229'
