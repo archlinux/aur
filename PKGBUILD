@@ -1,7 +1,7 @@
 # Maintainer: henning mueller <mail@nning.io>
 
 pkgname=protonutils
-pkgver=1.2.11
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="CLI tool that provides different utilities to make using the Proton compatibility tool more easily"
 arch=(x86_64)
@@ -10,17 +10,17 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5a192c2c5a137f6e5e88638fda1ad50242e14735b91d138b68853ac5a6031682')
+sha256sums=('0d7f4bc0f367fc201c2818a45362163717bf7974e3d6d9ae503efe6234ea6943')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
 
   export GOPATH="$srcdir/gopath"
   go clean -modcache
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
 
   export GO111MODULE=on
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -28,17 +28,22 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
-  make clean build_pie VERSION=v$pkgver
+  make clean build_pie VERSION=v$pkgver 
 
-  ./cmd/$pkgname/$pkgname -m man1
+  "./cmd/$pkgname/$pkgname" -m man1
+  "./cmd/$pkgname/$pkgname" completion bash > comp.bash
+  "./cmd/$pkgname/$pkgname" completion zsh > comp.zsh
 
   go clean -modcache
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
 
-  install -Dm0755 cmd/$pkgname/$pkgname -t $pkgdir/usr/bin/
-  install -Dm0755 man1/* -t $pkgdir/usr/share/man/man1/
+  # TODO Replace by `make install` (with according prefixes)
+  install -Dm755 "cmd/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm755 man1/* -t $pkgdir/usr/share/man/man1/
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 comp.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 comp.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
