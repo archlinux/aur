@@ -1,0 +1,10 @@
+--- a/doc/manuals/conf.py
++++ b/doc/manuals/conf.py
+@@ -220,6 +220,7 @@
+     ('abilint', 'abilint', u'validate an abigail ABI representation', [u'Dodji Seketeli'], 1),
+     ('abicompat', 'abicompat', u'check ABI compatibility', [u'Dodji Seketeli'], 1),
+     ('fedabipkgdiff', 'fedabipkgdiff', u'compare ABIs of Fedora packages', [u'Chenxiong Qi'], 1),
++    ('kmidiff', 'kmidiff', u'compare KMIs of Linux Kernel trees', [u'Unknown'], 1),
+ ]
+ 
+ # If true, show URL addresses after external links.
