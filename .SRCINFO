@@ -19,6 +19,7 @@ pkgbase = qubes-gui-agent-linux
 	makedepends = libxcomposite
 	makedepends = libxt
 	makedepends = pixman
+	makedepends = lsb-release
 	makedepends = qubes-vm-gui-common
 	makedepends = qubes-libvchan
 	makedepends = qubes-db-vm

@@ -14,7 +14,7 @@ url="https://github.com/QubesOS/qubes-gui-agent-linux"
 license=('GPL')
 makedepends=(pkg-config make gcc patch git automake autoconf libtool
              'pulseaudio<=15.0'
-             xorg-server-devel xorg-util-macros libxcomposite libxt pixman
+             xorg-server-devel xorg-util-macros libxcomposite libxt pixman lsb-release
              qubes-vm-gui-common qubes-libvchan qubes-db-vm
 )
 validpgpkeys=('0AF64C3B1F1214B38C8C57861FA2DBE674387CC3'  # Otto Sabart
