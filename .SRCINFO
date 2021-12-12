@@ -9,7 +9,7 @@ pkgbase = pueue-git
 	makedepends = cargo
 	provides = pueue
 	conflicts = pueue
-	source = pueue-git::git://github.com/nukesor/pueue.git#branch=v1.1.0
+	source = pueue-git::git://github.com/nukesor/pueue.git#branch=development
 	sha256sums = SKIP
 
 pkgname = pueue-git
