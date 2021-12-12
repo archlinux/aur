@@ -1,0 +1,12 @@
+diff --unified --recursive --text purism-chatty.orig/sm.puri.Chatty.json purism-chatty.new/sm.puri.Chatty.json
+--- purism-chatty.orig/sm.puri.Chatty.json	2021-12-12 15:56:30.110497868 +0100
++++ purism-chatty.new/sm.puri.Chatty.json	2021-12-12 15:59:49.744909048 +0100
+@@ -224,7 +224,7 @@
+           "sources": [
+             {
+               "type": "git",
+-              "tag" : "3.2.6",
++              "tag" : "3.2.7",
+               "url": "https://gitlab.matrix.org/matrix-org/olm.git"
+             }
+           ]
