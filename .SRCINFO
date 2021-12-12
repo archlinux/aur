@@ -18,7 +18,6 @@ pkgbase = qubes-vm-xen
 	makedepends = openssl
 	makedepends = pixman
 	makedepends = python2
-	makedepends = python2-distlib
 	depends = python
 	depends = bridge-utils
 	depends = libutil-linux

@@ -27,6 +27,9 @@ depends=('python'
          'libsystemd'
          'yajl'
 )
+
+# FIXME: The 'python2' is *not* needed for newer Xen (>=4.14 tested).
+#        Remove it in the future
 makedepends=('wget'
              'make'
              'gcc'
@@ -40,10 +43,7 @@ makedepends=('wget'
              'openssl'
              'pixman'
 
-             # FIXME: This is *not* needed for newer Xen (>=4.14 tested).
-             #        Remove it in the future.
              'python2'
-             'python2-distlib'
 )
 checkdepends=()
 optdepends=()
