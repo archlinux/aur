@@ -1,12 +1,14 @@
 pkgname=viogsf-git
 pkgver=r30.6c43a99
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for decoding GBA Sound Format (GSF) files"
 arch=(i686 x86_64)
 url='https://bitbucket.org/losnoco/viogsf'
 license=(GPL2 LGPL2.1)
 depends=(glibc gcc-libs)
 makedepends=(git qt5-base)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=(${pkgname}::git+https://bitbucket.org/losnoco/viogsf.git)
 sha256sums=('SKIP')
 
