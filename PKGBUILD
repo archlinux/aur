@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=game_music_emu-kode54-git
 pkgver=r193.be0a069
 pkgrel=2
