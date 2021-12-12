@@ -1,6 +1,6 @@
 pkgbase = hqplayer4
 	pkgdesc = The high-end upsampling multichannel software HD-audio player
-	pkgver = 4.14.0
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = http://www.signalyst.com/consumer.html
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = hqplayer4
 	depends = flac
 	depends = wavpack
 	optdepends = evince: hqplayer manual reading
-	source = https://www.signalyst.com/bins/hqplayer4desktop_4.14.0-53_amd64.deb
-	sha256sums = 0df6fe8f6f12bc65ad69425ce17a0afc441886fd12c667eadb65292fb04ea862
+	source = https://www.signalyst.com/bins/hqplayer4desktop_4.15.0-55_amd64.deb
+	sha256sums = 58b9d11c49ee92dba6eb9b3576025ae2bc6a73e36c379877905e4e96c148259e
 
 pkgname = hqplayer4
