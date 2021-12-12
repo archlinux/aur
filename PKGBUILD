@@ -7,8 +7,8 @@ url='https://bitbucket.org/losnoco/game_music_emu'
 license=('LGPL2.1')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'qt5-base')
-conflicts=('libgme')
-provides=('libgme')
+conflicts=(libgme game_music_emu game_music_emu-kode54)
+provides=(libgme game_music_emu game_music_emu-kode54)
 source=("${pkgname}::git+https://bitbucket.org/losnoco/game_music_emu.git"
         'File_Extractor::git+https://bitbucket.org/losnoco/file_extractor.git')
 sha256sums=('SKIP' 'SKIP')

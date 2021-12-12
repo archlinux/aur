@@ -11,11 +11,14 @@ pkgbase = game_music_emu-kode54-git
 	depends = gcc-libs
 	depends = glibc
 	provides = libgme
+	provides = game_music_emu
+	provides = game_music_emu-kode54
 	conflicts = libgme
+	conflicts = game_music_emu
+	conflicts = game_music_emu-kode54
 	source = game_music_emu-kode54-git::git+https://bitbucket.org/losnoco/game_music_emu.git
 	source = File_Extractor::git+https://bitbucket.org/losnoco/file_extractor.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = game_music_emu-kode54-git
-
