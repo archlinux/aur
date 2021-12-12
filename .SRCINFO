@@ -1,0 +1,18 @@
+pkgbase = llama-git
+	pkgdesc = Terminal file manager
+	pkgver = 1.0.1.r3.g58c042e
+	pkgrel = 1
+	url = https://github.com/antonmedv/llama
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = llama
+	conflicts = llama
+	source = llama-git::git+https://github.com/antonmedv/llama
+	sha256sums = SKIP
+
+pkgname = llama-git
