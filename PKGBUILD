@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/dundee/gdu"
 _tag=a00a9579c2f32dada6b85ebeaef6067201e8f670 # git rev-parse v${pkgver}
 source=("git+https://github.com/dundee/gdu.git#tag=${_tag}?signed")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 validpgpkeys=(
   360B658707A1A44CA57FB67EEF0BA1C4F3990103  # Daniel Milde <daniel@milde.cz>, retrieved from https://github.com/dundee.gpg
   )
