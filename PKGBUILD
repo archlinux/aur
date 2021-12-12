@@ -68,7 +68,7 @@ else
 pkgname="emacs28-git"
 fi
 pkgver=28.0.90.151062
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -123,13 +123,13 @@ fi
 if [[ $CLI == "YES" ]]; then
   depends=("${depends_nox[@]}");
 elif [[ $NOTKIT == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' 'libxpm' );
   makedepends+=( 'xorgproto' );
 elif [[ $LUCID == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' 'libxpm' );
   makedepends+=( 'xorgproto' );
 else
-  depends+=( 'gtk3' );
+  depends+=( 'gtk3' 'libxpm' );
   makedepends+=( 'xorgproto' );
 fi
 
