@@ -77,7 +77,7 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r730.g09aa1f26
+pkgver=9.0.r741.g7665920e
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -97,7 +97,7 @@ depends+=('arpack' 'blas' 'libnn-git' 'libcsa-git' 'scalapack')
 ((!DISABLE_TRILINOS)) && depends+=('trilinos')
 ((!DISABLE_PARAVIEW)) && depends+=('paraview-opt') # paraview<>vtk conflict
 ((!DISABLE_MUMPS))    && depends+=('mumps-par')    # mumps
-((!DISABLE_OCC))      && depends+=('oce')          # opencascade
+((!DISABLE_OCC))      && depends+=('opencascade')  # opencascade
 ((!DISABLE_HYPRE))    && depends+=('hypre')
 ((!DISABLE_MPI))      && depends+=('openmpi')
 ((!DISABLE_MP))       && depends+=('openmp')
@@ -133,6 +133,8 @@ prepare() {
   cd "$srcdir/$_pkgname"
   sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
   sed -i 's/FALSE/false/g' ElmerGUI/Application/vtkpost/matc.cpp
+  sed -i '/OCE/s/DIRS/DIR/g;s/OCE/OpenCASCADE/g' ElmerGUI{/,/Application}/CMakeLists.txt
+  sed -i '/BRepMesh.hxx/d' ElmerGUI/Application/cad/cadview.cpp
   ((!DISABLE_VTK)) && patch+=(vtk9{.1,.cmake}.patch)
   ((!DISABLE_MMG)) && patch+=({FindMMG,print_target_properties}.patch)
   for patch in "${srcdir}"/{arpack,cmake-fix}.patch "${patch[@]/#/${srcdir}/}"
