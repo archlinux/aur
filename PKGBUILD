@@ -243,19 +243,19 @@ build() {
   # Do 3-tier PGO
 #  echo "Building instrumented browser..."
 
-if [[ $CARCH == 'aarch64' ]]; then
+#if [[ $CARCH == 'aarch64' ]]; then
 
-  cat >.mozconfig ../mozconfig - <<END
+#  cat >.mozconfig ../mozconfig - <<END
 #ac_add_options --enable-profile-generate
-END
+#END
 
-else
+#else
 
-  cat >.mozconfig ../mozconfig - <<END
+#  cat >.mozconfig ../mozconfig - <<END
 #ac_add_options --enable-profile-generate=cross
-END
+#END
 
-fi
+#fi
 
 #  ./mach build
 
@@ -266,15 +266,15 @@ fi
 #    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
 #    ./mach python build/pgo/profileserver.py
 
-  if [[ ! -s merged.profdata ]]; then
+#  if [[ ! -s merged.profdata ]]; then
 #    echo "No profile data produced."
-    return 1
-  fi
+#    return 1
+#  fi
 
-  if [[ ! -s jarlog ]]; then
+#  if [[ ! -s jarlog ]]; then
 #    echo "No jar log produced."
 #    return 1
-  fi
+#  fi
 
 #  echo "Removing instrumented browser..."
 #  ./mach clobber
