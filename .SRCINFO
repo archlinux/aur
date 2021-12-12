@@ -1,6 +1,6 @@
 pkgbase = xorg-xwayland-hidpi-git
 	pkgdesc = Run X clients under Wayland, with HiDPI (git version)
-	pkgver = 21.1.2.901.r274.gc97397dc4
+	pkgver = 21.1.3.r305.gd189102c7
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
@@ -41,6 +41,6 @@ pkgbase = xorg-xwayland-hidpi-git
 	source = xserver::git+https://gitlab.freedesktop.org/xorg/xserver.git
 	source = xwlScaling.diff
 	sha256sums = SKIP
-	sha256sums = 66135299c9d13e46444f8f32281cdc3f616c3a77f69bf13d798077e643992d2a
+	sha256sums = 8434eebf6223859052b8aaaf3e05caf0c96226e1679c8219528352cc2d61ecf7
 
 pkgname = xorg-xwayland-hidpi-git
