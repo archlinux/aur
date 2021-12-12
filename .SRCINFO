@@ -1,7 +1,7 @@
 pkgbase = python-lsp-isort
 	pkgdesc = isort plugin for python-lsp-server, sorts imports when formatting
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paradoxxxzero/pyls-isort
 	arch = any
 	license = MIT

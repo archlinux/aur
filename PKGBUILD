@@ -2,7 +2,7 @@
 pkgname=python-lsp-isort
 _name=pyls-isort
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="isort plugin for python-lsp-server, sorts imports when formatting"
 arch=(any)
 url="https://github.com/paradoxxxzero/pyls-isort"
