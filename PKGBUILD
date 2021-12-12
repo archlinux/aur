@@ -3,7 +3,7 @@
 # Contributor: Jonathan Coates <contact@squiddev.cc>
 pkgname=craftos-pc-data
 pkgver=2.6.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="ROM package for CraftOS-PC"
 arch=('any')
@@ -41,5 +41,5 @@ check() {
 package() {
     mkdir -p "$pkgdir/usr/share/craftos"
     cp -R craftos2-rom-$pkgver/* "$pkgdir/usr/share/craftos/"
-    sed 's/\\0/%z/g' < craftos2-rom-$pkgver/rom/apis/textutils.lua > "$pkgdir/usr/share/craftos/rom/apis/textutils.lua"
+    sed 's/\\0/%z\\1/g' < craftos2-rom-$pkgver/rom/apis/textutils.lua > "$pkgdir/usr/share/craftos/rom/apis/textutils.lua"
 }
