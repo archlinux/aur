@@ -1,5 +1,5 @@
 pkgname=libsnsf9x-git
-pkgver=r28.6b8bd73
+pkgver=r36.e53bff5
 pkgrel=1
 pkgdesc="SNSF playing library based on the Snes9x emulator"
 arch=(i686 x86_64)
@@ -7,6 +7,8 @@ url='https://github.com/Deewiant/libsnsf9x'
 license=(LGPL2.1)
 depends=(zlib)
 makedepends=(git)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=(${pkgname}::git+https://github.com/Deewiant/libsnsf9x.git)
 sha256sums=('SKIP')
 
