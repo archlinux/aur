@@ -45,6 +45,7 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
                   # for your own packages.
 CLI=              # CLI only binary.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
+                  # Bitmap fonts only, 1337!
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
                   # Read https://wiki.archlinux.org/index.php/X_resources
@@ -67,7 +68,7 @@ else
 pkgname="emacs28-git"
 fi
 pkgver=28.0.90.151062
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -225,7 +226,7 @@ fi
 if [[ $CLI == "YES" ]]; then
   _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' '--without-jpeg' '--without-gif' '--without-tiff' '--without-png' );
 elif [[ $NOTKIT == "YES" ]]; then
-  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
+  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--without-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
 else
