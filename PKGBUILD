@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Brouwer <jonathantbrouwer@gmail.com>
 
 pkgname=spoofax3-jvm-bin
-pkgver=0.16.15
+pkgver=0.16.16
 pkgrel=1
 pkgdesc="Spoofax 3 is a modular and incremental textual language workbench running on the JVM"
 arch=('x86_64')
@@ -14,10 +14,10 @@ source=('git+https://github.com/metaborg/spoofax-pie'
 sha256sums=('SKIP'
             '9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e')
 
-# pkgver() {
-# 	cd "spoofax-pie"
-#     git describe --tags | cut -d- -f2
-# }
+pkgver() {
+	cd "spoofax-pie"
+    git describe --tags | cut -d- -f2
+}
 
 build() {
     cd "$srcdir"
