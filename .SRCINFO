@@ -1,6 +1,6 @@
 pkgbase = xde-helpers
 	pkgdesc = XDE .desktop entry helpers
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-helpers
 	install = xde-helpers.install
@@ -11,8 +11,7 @@ pkgbase = xde-helpers
 	depends = xdg-utils
 	depends = gxmessage-gtk2
 	depends = desktop-file-utils
-	source = https://github.com/bbidulock/xde-helpers/releases/download/1.7/xde-helpers-1.7.tar.lz
-	md5sums = e659835d3fd7351c0e7064906ffc9539
+	source = https://github.com/bbidulock/xde-helpers/releases/download/1.8/xde-helpers-1.8.tar.lz
+	md5sums = 2005f967612f50077c378941af1b3977
 
 pkgname = xde-helpers
-
