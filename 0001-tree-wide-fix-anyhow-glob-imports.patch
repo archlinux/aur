@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Lamprecht <thomas@lamprecht.org>
+Date: Sun, 12 Dec 2021 13:44:17 +0100
+Subject: [PATCH] tree-wide: fix anyhow glob imports
+
+Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
+---
+ proxmox-router/src/cli/command.rs   | 2 +-
+ proxmox/src/sys/linux/procfs/mod.rs | 2 +-
+ proxmox/src/sys/linux/tty.rs        | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/proxmox-router/src/cli/command.rs b/proxmox-router/src/cli/command.rs
+index 906ec0c..c66797a 100644
+--- a/proxmox-router/src/cli/command.rs
++++ b/proxmox-router/src/cli/command.rs
+@@ -1,4 +1,4 @@
+-use anyhow::*;
++use anyhow::{format_err, Error};
+ use serde_json::Value;
+ use std::cell::RefCell;
+ use std::sync::Arc;
+diff --git a/proxmox/src/sys/linux/procfs/mod.rs b/proxmox/src/sys/linux/procfs/mod.rs
+index 5784e0e..0dffbbd 100644
+--- a/proxmox/src/sys/linux/procfs/mod.rs
++++ b/proxmox/src/sys/linux/procfs/mod.rs
+@@ -8,7 +8,7 @@ use std::str::FromStr;
+ use std::sync::RwLock;
+ use std::time::Instant;
+ 
+-use anyhow::*;
++use anyhow::{format_err, bail, Error};
+ use lazy_static::lazy_static;
+ use nix::unistd::Pid;
+ 
+diff --git a/proxmox/src/sys/linux/tty.rs b/proxmox/src/sys/linux/tty.rs
+index 0b4a3c1..121663a 100644
+--- a/proxmox/src/sys/linux/tty.rs
++++ b/proxmox/src/sys/linux/tty.rs
+@@ -2,7 +2,7 @@ use std::io::{self, Read, Write};
+ use std::mem::MaybeUninit;
+ use std::os::unix::io::AsRawFd;
+ 
+-use anyhow::*;
++use anyhow::{format_err, bail, Error};
+ use nix::fcntl::OFlag;
+ use nix::sys::stat::Mode;
+ 

@@ -1,32 +1,23 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From f7b9427ebee451bfe2e65661e6a0bffc30f247b0 Mon Sep 17 00:00:00 2001
 From: Thomas Lamprecht <thomas@lamprecht.org>
-Date: Wed, 22 Sep 2021 18:56:42 +0200
+Date: Sun, 12 Dec 2021 12:05:41 +0100
 Subject: [PATCH] re-route dependencies not available on crates.io to git repos
 
 Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
 ---
- Cargo.toml                       | 67 --------------------------------
- pbs-api-types/Cargo.toml         |  2 +-
- pbs-client/Cargo.toml            | 10 ++---
- pbs-config/Cargo.toml            |  2 +-
- pbs-datastore/Cargo.toml         |  6 +--
- pbs-fuse-loop/Cargo.toml         |  4 +-
- pbs-tools/Cargo.toml             |  2 +-
- proxmox-backup-client/Cargo.toml |  6 +--
- proxmox-systemd/Cargo.toml       |  2 +-
- pxar-bin/Cargo.toml              |  6 +--
- 10 files changed, 20 insertions(+), 87 deletions(-)
+ Cargo.toml | 92 +++++-------------------------------------------------
+ 1 file changed, 7 insertions(+), 85 deletions(-)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index 99c56f04..cfa49809 100644
+index eed8f8f9..4ed1fddd 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -26,80 +26,13 @@ members = [
+@@ -25,93 +25,12 @@ members = [
+     "pbs-config",
      "pbs-datastore",
      "pbs-fuse-loop",
-     "pbs-runtime",
 -    "proxmox-rest-server",
-     "proxmox-systemd",
+-    "proxmox-rrd",
 -    "pbs-tape",
      "pbs-tools",
  
@@ -43,9 +34,10 @@ index 99c56f04..cfa49809 100644
 -
 -[dependencies]
 -apt-pkg-native = "0.3.2"
--base64 = "0.12"
+-base64 = "0.13"
 -bitflags = "1.2.1"
 -bytes = "1.0"
+-cidr = "0.2.1"
 -crc32fast = "1"
 -endian_trait = { version = "0.6", features = ["arrays"] }
 -env_logger = "0.7"
@@ -55,6 +47,7 @@ index 99c56f04..cfa49809 100644
 -futures = "0.3"
 -h2 = { version = "0.3", features = [ "stream" ] }
 -handlebars = "3.0"
+-hex = "0.4.3"
 -http = "0.2"
 -hyper = { version = "0.14", features = [ "full" ] }
 -lazy_static = "1.4"
@@ -78,11 +71,10 @@ index 99c56f04..cfa49809 100644
 -tokio-stream = "0.1.0"
 -tokio-util = { version = "0.6", features = [ "codec", "io" ] }
 -tower-service = "0.3.0"
--udev = ">= 0.3, <0.5"
+-udev = "0.4"
 -url = "2.1"
 -#valgrind_request = { git = "https://github.com/edef1c/libvalgrind_request", version = "1.1.0", optional = true }
 -walkdir = "2"
--webauthn-rs = "0.2.5"
 -xdg = "2.2"
 -nom = "5.1"
 -crossbeam-channel = "0.5"
@@ -93,151 +85,54 @@ index 99c56f04..cfa49809 100644
 -pathpatterns = "0.1.2"
 -pxar = { version = "0.10.1", features = [ "tokio-io" ] }
 -
--proxmox = { version = "0.13.3", features = [ "sortable-macro", "api-macro", "cli", "router", "tfa" ] }
--proxmox-acme-rs = "0.2.1"
--proxmox-apt = "0.7.0"
--proxmox-http = { version = "0.4.0", features = [ "client", "http-helpers", "websocket" ] }
--proxmox-openid = "0.7.0"
+-proxmox = { version = "0.15.3", features = [ "sortable-macro" ] }
+-proxmox-http = { version = "0.5.4", features = [ "client", "http-helpers", "websocket" ] }
+-proxmox-io = "1"
+-proxmox-lang = "1"
+-proxmox-router = { version = "1.1", features = [ "cli" ] }
+-proxmox-schema = { version = "1", features = [ "api-macro" ] }
+-proxmox-section-config = "1"
+-proxmox-tfa = { version = "1.3", features = [ "api", "api-types" ] }
+-proxmox-time = "1"
+-proxmox-uuid = "1"
+-proxmox-shared-memory = "0.1.1"
+-proxmox-sys = "0.1.2"
+-
+-proxmox-acme-rs = "0.3"
+-proxmox-apt = "0.8.0"
+-proxmox-async = "0.2"
+-proxmox-openid = "0.9.0"
 -
  pbs-api-types = { path = "pbs-api-types" }
  pbs-buildcfg = { path = "pbs-buildcfg" }
  pbs-client = { path = "pbs-client" }
-diff --git a/pbs-api-types/Cargo.toml b/pbs-api-types/Cargo.toml
-index a64d7f0a..7166f7e4 100644
---- a/pbs-api-types/Cargo.toml
-+++ b/pbs-api-types/Cargo.toml
-@@ -14,7 +14,7 @@ openssl = "0.10"
- regex = "1.2"
- serde = { version = "1.0", features = ["derive"] }
+@@ -125,11 +44,22 @@ pbs-tape = { path = "pbs-tape" }
+ # Local path overrides
+ # NOTE: You must run `cargo update` after changing this for it to take effect!
+ [patch.crates-io]
+-#proxmox = { path = "../proxmox/proxmox" }
+-#proxmox-http = { path = "../proxmox/proxmox-http" }
++proxmox = { path = "../proxmox/proxmox" }
++proxmox-async = { path = "../proxmox/proxmox-async" }
++proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
++proxmox-http = { path = "../proxmox/proxmox-http" }
++proxmox-io = { path = "../proxmox/proxmox-io" }
++proxmox-lang = { path = "../proxmox/proxmox-lang" }
++proxmox-section-config = { path = "../proxmox/proxmox-section-config" }
++proxmox-shared-memory = { path = "../proxmox/proxmox-shared-memory" }
++proxmox-sys = { path = "../proxmox/proxmox-sys" }
++proxmox-time = { path = "../proxmox/proxmox-time" }
++proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
++proxmox-router = { path = "../proxmox/proxmox-router" }
+ #proxmox-tfa = { path = "../proxmox/proxmox-tfa" }
+-#proxmox-schema = { path = "../proxmox/proxmox-schema" }
+-#pxar = { path = "../pxar" }
++proxmox-schema = { path = "../proxmox/proxmox-schema" }
++proxmox-fuse = { path = "../proxmox-fuse" }
++pxar = { path = "../pxar" }
  
--proxmox = { version = "0.13.3", default-features = false, features = [ "api-macro" ] }
-+proxmox = { version = "0.13.3", features = ["api-macro"], git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
- 
- proxmox-systemd = { path = "../proxmox-systemd" }
- pbs-tools = { path = "../pbs-tools" }
-diff --git a/pbs-client/Cargo.toml b/pbs-client/Cargo.toml
-index 965282bc..f1381d23 100644
---- a/pbs-client/Cargo.toml
-+++ b/pbs-client/Cargo.toml
-@@ -27,11 +27,11 @@ tokio-stream = "0.1.0"
- tower-service = "0.3.0"
- xdg = "2.2"
- 
--pathpatterns = "0.1.2"
--proxmox = { version = "0.13.3", default-features = false, features = [ "cli" ] }
--proxmox-fuse = "0.1.1"
--proxmox-http = { version = "0.4.0", features = [ "client", "http-helpers", "websocket" ] }
--pxar = { version = "0.10.1", features = [ "tokio-io" ] }
-+pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+proxmox = { version = "0.13.3", features = ["cli"], git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
-+proxmox-fuse = { version = "0.1.1", git = "git://git.proxmox.com/git/proxmox-fuse.git" }
-+proxmox-http = { version = "0.4.0", features = [ "client", "http-helpers", "websocket" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "0f2caafc4ef407b809bcbdfa6b0392e55b218642" }
-+pxar = { version = "0.10.1", features = [ "tokio-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "b203d38bcd399f852f898d24403f3d592e5f75f8"}
- 
- pbs-api-types = { path = "../pbs-api-types" }
- pbs-buildcfg = { path = "../pbs-buildcfg" }
-diff --git a/pbs-config/Cargo.toml b/pbs-config/Cargo.toml
-index 48830045..36a911d6 100644
---- a/pbs-config/Cargo.toml
-+++ b/pbs-config/Cargo.toml
-@@ -16,7 +16,7 @@ nix = "0.19.1"
- regex = "1.2"
- once_cell = "1.3.1"
- 
--proxmox = { version = "0.13.3", default-features = false, features = [ "cli" ] }
-+proxmox = { version = "0.13.3", default-features = false, features = [ "cli" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
- 
- pbs-api-types = { path = "../pbs-api-types" }
- pbs-buildcfg = { path = "../pbs-buildcfg" }
-diff --git a/pbs-datastore/Cargo.toml b/pbs-datastore/Cargo.toml
-index 5b3c7fab..8622a73f 100644
---- a/pbs-datastore/Cargo.toml
-+++ b/pbs-datastore/Cargo.toml
-@@ -20,10 +20,10 @@ serde_json = "1.0"
- tokio = { version = "1.6", features = [] }
- zstd = { version = "0.6", features = [ "bindgen" ] }
- 
--pathpatterns = "0.1.2"
--pxar = "0.10.1"
-+pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+pxar = { version = "0.10.1", git = "git://git.proxmox.com/git/pxar.git", rev = "b203d38bcd399f852f898d24403f3d592e5f75f8"}
- 
--proxmox = { version = "0.13.3", default-features = false, features = [ "api-macro" ] }
-+proxmox = { version = "0.13.3", default-features = false, git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
- 
- pbs-api-types = { path = "../pbs-api-types" }
- pbs-tools = { path = "../pbs-tools" }
-diff --git a/pbs-fuse-loop/Cargo.toml b/pbs-fuse-loop/Cargo.toml
-index c3220be7..efab7fea 100644
---- a/pbs-fuse-loop/Cargo.toml
-+++ b/pbs-fuse-loop/Cargo.toml
-@@ -14,7 +14,7 @@ nix = "0.19.1"
- regex = "1.2"
- tokio = { version = "1.6", features = [] }
- 
--proxmox = "0.13.3"
--proxmox-fuse = "0.1.1"
-+proxmox = { version = "0.13.3", git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
-+proxmox-fuse = { version = "0.1.1", git = "git://git.proxmox.com/git/proxmox-fuse.git" }
- 
- pbs-tools = { path = "../pbs-tools" }
-diff --git a/pbs-tools/Cargo.toml b/pbs-tools/Cargo.toml
-index 88f6f54c..a545fcf4 100644
---- a/pbs-tools/Cargo.toml
-+++ b/pbs-tools/Cargo.toml
-@@ -30,7 +30,7 @@ url = "2.1"
- walkdir = "2"
- zstd = { version = "0.6", features = [ "bindgen" ] }
- 
--proxmox = { version = "0.13.3", default-features = false, features = [ "tokio" ] }
-+proxmox = { version = "0.13.3", default-features = false, git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
- 
- pbs-buildcfg = { path = "../pbs-buildcfg" }
- pbs-runtime = { path = "../pbs-runtime" }
-diff --git a/proxmox-backup-client/Cargo.toml b/proxmox-backup-client/Cargo.toml
-index d3c35534..f329079f 100644
---- a/proxmox-backup-client/Cargo.toml
-+++ b/proxmox-backup-client/Cargo.toml
-@@ -19,10 +19,10 @@ tokio-util = { version = "0.6", features = [ "codec", "io" ] }
- xdg = "2.2"
- zstd = { version = "0.6", features = [ "bindgen" ] }
- 
--pathpatterns = "0.1.2"
--pxar = { version = "0.10.1", features = [ "tokio-io" ] }
-+pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+pxar = { version = "0.10.1", features = [ "tokio-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "b203d38bcd399f852f898d24403f3d592e5f75f8"}
- 
--proxmox = { version = "0.13.3", features = [ "sortable-macro", "api-macro", "cli", "router" ] }
-+proxmox = { version = "0.13.3", features = [ "sortable-macro", "api-macro", "cli", "router" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
- 
- pbs-api-types = { path = "../pbs-api-types" }
- pbs-buildcfg = { path = "../pbs-buildcfg" }
-diff --git a/proxmox-systemd/Cargo.toml b/proxmox-systemd/Cargo.toml
-index c6caa7ec..96644995 100644
---- a/proxmox-systemd/Cargo.toml
-+++ b/proxmox-systemd/Cargo.toml
-@@ -11,6 +11,6 @@ bitflags = "1.2.1"
- lazy_static = "1.4"
- nom = "5.1"
- 
--proxmox = { version = "0.13.3", default-features = false }
-+proxmox = { version = "0.13.3", default-features = false, git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
- 
- #pbs-tools = { path = "../pbs-tools" }
-diff --git a/pxar-bin/Cargo.toml b/pxar-bin/Cargo.toml
-index e322e654..3324579a 100644
---- a/pxar-bin/Cargo.toml
-+++ b/pxar-bin/Cargo.toml
-@@ -15,9 +15,9 @@ nix = "0.19.1"
- serde_json = "1.0"
- tokio = { version = "1.6", features = [ "rt", "rt-multi-thread" ] }
- 
--pathpatterns = "0.1.2"
--proxmox = { version = "0.13.3", default-features = false, features = [] }
--pxar = { version = "0.10.1", features = [ "tokio-io" ] }
-+pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+proxmox = { version = "0.13.3", default-features = false, features = [], git = "git://git.proxmox.com/git/proxmox.git", rev = "3cd221c16380b33451bfd4db827cde3d96918376" }
-+pxar = { version = "0.10.1", features = [ "tokio-io" ], git = "git://git.proxmox.com/git/pxar.git", rev = "b203d38bcd399f852f898d24403f3d592e5f75f8"}
- 
- pbs-client = { path = "../pbs-client" }
- pbs-runtime = { path = "../pbs-runtime" }
+ [features]
+ default = []
+-- 
+2.34.1
+

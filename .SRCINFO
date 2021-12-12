@@ -1,8 +1,8 @@
 pkgbase = proxmox-backup-client
 	pkgdesc = Client for Proxmox Backup Server
-	pkgver = 2.0.10
+	pkgver = 2.1.2
 	pkgrel = 1
-	url = https://www.proxmox.com
+	url = https://pbs.proxmox.com
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
@@ -16,10 +16,16 @@ pkgbase = proxmox-backup-client
 	depends = fuse3
 	depends = gcc-libs
 	depends = openssl
-	source = proxmox-backup-client-2.0.10::git://git.proxmox.com/git/proxmox-backup.git#tag=v2.0.10
-	source = 0001-move-dump-catalog-shell-cli-doc-helper-to-proxmox-ba.patch
+	source = proxmox-backup-client-2.1.2::git://git.proxmox.com/git/proxmox-backup.git#tag=2.1.2
+	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=c0312f3717bd00ace434929e7d3305b058f4aae9
+	source = proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git
+	source = pxar::git://git.proxmox.com/git/pxar.git
 	source = 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
+	source = 0001-tree-wide-fix-anyhow-glob-imports.patch
 	source = elf-strip-unused-dependencies.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
