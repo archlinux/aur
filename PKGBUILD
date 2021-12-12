@@ -2,7 +2,7 @@
 # Maintainer: So1ar <so1ar114514@gmail.com>
 
 pkgname=hmcl-bin
-pkgver=3.4.211
+pkgver=3.4.212
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
@@ -14,11 +14,11 @@ conflicts=('hmcl')
 source=("hmcl.desktop"
         "hmcl-launch-script"
         "craft_table.png"
-        "${pkgname}-${pkgver}-${pkgrel}.jar::https://ci.huangyuhui.net/job/HMCL/lastSuccessfulBuild/artifact/HMCL/build/libs/HMCL-${pkgver}.jar")
+        "${pkgname}-${pkgver}-${pkgrel}.jar::https://cdn.jsdelivr.net/npm/hmcl-update@${pkgver}/HMCL-${pkgver}.zip")
 sha1sums=('613a2483883028a52b369c27c1468fc8d31e2d5e'
           'ff8a9141b115ea7788111ce28cc462c8fd46c471'
           '635509ef81b82837fcd1f7d4b24a7d44241559c2'
-          '5ef577e7025cc5d8cf747a67cb596b98a5679e01')
+          'a8433b7a09639a294c3c311771edc9e335989494')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
