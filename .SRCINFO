@@ -1,7 +1,7 @@
 pkgbase = python-asyncclick
 	pkgdesc = Composable command line interface toolkit, async version
 	pkgver = 8.0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-trio/asyncclick
 	arch = any
 	license = BSD

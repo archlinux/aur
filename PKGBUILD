@@ -2,7 +2,7 @@
 pkgname=python-asyncclick
 _name=${pkgname#python-}
 pkgver=8.0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Composable command line interface toolkit, async version"
 arch=(any)
 url="https://github.com/python-trio/asyncclick"
