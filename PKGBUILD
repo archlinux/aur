@@ -2,16 +2,17 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hi-res-scroll-git
-pkgver=0.13.0.r153.g9e58301d
-pkgrel=2
+pkgver=0.14.0.r439.g0fcc8422
+pkgrel=1
 license=(custom:MIT)
-pkgdesc='Modular Wayland compositor library with hi-res scroll patches (git version)'
-url=https://github.com/swaywm/wlroots
+pkgdesc='Modular Wayland compositor library (git version)'
+url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
-provides=("wlroots=${pkgver%%.r*}" "wlroots-git")
+provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
 conflicts=(wlroots)
 options=(debug)
 depends=(
+	glslang
 	libinput
 	libxcb
 	libxkbcommon
@@ -22,11 +23,13 @@ depends=(
 	xcb-util-renderutil
 	xcb-util-wm
 	seatd
-	systemd
+	vulkan-icd-loader
+	vulkan-validation-layers
 	xorg-xwayland)
 makedepends=(
 	git
 	meson
+	vulkan-headers
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}::git+${url}"
@@ -53,8 +56,6 @@ prepare () {
 build () {
 	arch-meson \
 		--buildtype=debug \
-		-Dlogind-provider=systemd \
-		-Dlibseat=enabled \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
