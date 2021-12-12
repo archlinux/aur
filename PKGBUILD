@@ -44,6 +44,7 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
                   # You still need to enable on-demand compilation
                   # for your own packages.
 CLI=              # CLI only binary.
+GPM=              # Mouse support in Linux using gpm.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
                   # Bitmap fonts only, 1337!
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
@@ -54,6 +55,7 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # for some tips on using outline fonts with
                   # Xft, if you choose no toolkit or Lucid.
                   #
+ALSA=             # Linux sound support.
 NOCAIRO=          # Disable here.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
@@ -68,12 +70,12 @@ else
 pkgname="emacs28-git"
 fi
 pkgver=28.0.90.151062
-pkgrel=5
+pkgrel=6
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
-depends_nox=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'gpm')
+depends_nox=('gnutls' 'libxml2' 'jansson')
 depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git')
 provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
@@ -139,6 +141,14 @@ elif [[ $CLI == "YES" ]]; then
   depends+=();
 fi
 
+if [[ $ALSA == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'alsa-lib' );
+  else
+    depends+=( 'alsa-lib' );
+  fi
+fi
+
 if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] ; then
   depends+=( 'cairo' );
 fi
@@ -153,6 +163,14 @@ if [[ $XWIDGETS == "YES" ]]; then
     exit 1;
   else
     depends+=( 'webkit2gtk' );
+  fi
+fi
+
+if [[ $GPM == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'gpm' );
+  else
+    depends+=( 'gpm' );
   fi
 fi
 
@@ -237,8 +255,20 @@ if [[ $NOCAIRO == "YES" || $CLI == "YES" ]]; then
   _conf+=( '--without-cairo' );
 fi
 
+if [[ $ALSA == "YES" ]]; then
+  _conf+=( '--with-sound=alsa' );
+else
+  _conf+=( '--with-sound=no' );
+fi
+
 if [[ $XWIDGETS == "YES" ]]; then
   _conf+=( '--with-xwidgets' );
+fi
+
+if [[ $GPM == "YES" ]]; then
+  :
+else
+  _conf+=( '--without-gpm' );
 fi
 
 if [[ $NOGZ == "YES" ]]; then
