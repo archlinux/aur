@@ -5,12 +5,12 @@
 _pkgname=deadbeef-fb
 pkgname=deadbeef-plugin-fb-gtk3-git
 pkgver=r166.g355e614
-pkgrel=2
+pkgrel=3
 pkgdesc="A filebrowser plugin for the DeaDBeeF audio player"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/zykure/deadbeef-fb"
 license=('GPL2')
-depends=('deadbeef' 'gtk3')
+depends=('deadbeef' 'gtk3' 'hicolor-icon-theme')
 makedepends=('git' 'autoconf' 'automake' 'libtool')
 source=("${_pkgname}::git+https://gitlab.com/zykure/${_pkgname}")
 sha256sums=('SKIP')
