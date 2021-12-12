@@ -1,0 +1,15 @@
+pkgbase = linx-client-git
+	pkgdesc = Command-line client for linx-server
+	pkgver = r28.f5b1589
+	pkgrel = 1
+	url = https://github.com/andreimarcu/linx-client
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = GPLv3
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/andreimarcu/linx-client.git
+	sha256sums = SKIP
+
+pkgname = linx-client-git
