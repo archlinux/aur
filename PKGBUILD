@@ -9,7 +9,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.17.1_0.10.2-3"
+_ver="1.17.1_0.10.2-4"
 _minecraft_ver_latest="1.17.1"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
