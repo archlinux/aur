@@ -1,0 +1,13 @@
+pkgbase = bash-bats-file
+	pkgdesc = A library to ease e2e tests of applications in K8s environments with bats
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/bats-core/bats-file
+	install = bash-bats-file.install
+	arch = any
+	license = MIT
+	depends = bash-bats
+	source = https://github.com/bats-core/bats-file/archive/v0.3.0/bash-bats-file-0.3.0.tar.gz
+	sha512sums = 948249ba72aa027153bdab55438e0b705c1efd06a934003ac60a51d839b0c91c0cb59b55260adcacfcaca9af5eed66c0c4197140aeb4db9dfbcc7ebed5cd4362
+
+pkgname = bash-bats-file

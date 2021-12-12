@@ -1,0 +1,4 @@
+post_install() {
+    echo -e "\nTo use bat-file library add this line\nto your bats test or common_setup function"    
+    echo -e '\nload "/lib/bats-file/load.bash" \n'
+}
