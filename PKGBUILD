@@ -68,7 +68,7 @@ else
 pkgname="emacs28-git"
 fi
 pkgver=28.0.90.151062
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -306,4 +306,4 @@ package() {
 }
 
 ################################################################################
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ft=bash ts=2 sw=2 et:
