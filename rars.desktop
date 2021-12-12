@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RARS
+GenericName=RISC-V Assembler and Runtime Simulator
+Comment=Assemble and simulate the execution of RISC-V assembly language programs
+Exec=rars
+Icon=rars
+Terminal=false
+Type=Application
+Categories=Utility;X-Emulation;
