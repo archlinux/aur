@@ -2,12 +2,13 @@
 
 pkgname=bitwarden-dmenu
 pkgver=1.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu adapter for bitwarden-cli"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/andykais/bitwarden-dmenu"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'dmenu')
+optdepends=('libx11: To use the clipboard in X11')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
@@ -20,6 +21,11 @@ package() {
     find ${pkgdir} -name package.json -type f -exec sed -i 's/"_where": ".*",//g' {} \;
     # Point remaining references to pkgdir to /
     find ${pkgdir} -name package.json -type f -exec sed -i "s!${pkgdir}/${pkgname}!/!g" {} \;
+    # License
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    tar -xf "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/usr/share/licenses/${pkgname}" --strip-components=1 "${pkgname}-${pkgver}/LICENSE"
+    # Change ownership to root
+    chown -R root:root "${pkgdir}"
 }
 
 # vim:set ts=4 sw=4 et:

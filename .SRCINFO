@@ -1,15 +1,16 @@
 pkgbase = bitwarden-dmenu
 	pkgdesc = dmenu adapter for bitwarden-cli
 	pkgver = 1.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andykais/bitwarden-dmenu
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = dmenu
+	optdepends = libx11: To use the clipboard in X11
 	noextract = bitwarden-dmenu-1.5.9.tar.gz
 	source = bitwarden-dmenu-1.5.9.tar.gz::https://github.com/andykais/bitwarden-dmenu/archive/v1.5.9.tar.gz
 	sha512sums = c99082fafe7382dd7609fb790676b2ca7391a99a2db89fd492866c4243dd11fbb40828e426dacb51b2fec5d7d35ee17f1541244f4763be365b0d967bc8074d6d
 
 pkgname = bitwarden-dmenu
-
