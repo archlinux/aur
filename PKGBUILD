@@ -1,15 +1,15 @@
-# Maintainer: Luigi Operoso <brokenpip3[at]gmail[dot]com>
+# Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=apacheconfig
-pkgver=0.2.7
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Apache-style config parser"
 arch=('any')
 url="https://github.com/etingof/apacheconfig"
 license=('BSD')
-depends=('python-ply')
+depends=('python-ply' 'python-six')
 source=("https://pypi.io/packages/source/a/apacheconfig/apacheconfig-$pkgver.tar.gz")
-sha256sums=('00e39bd2917248a35614dea0b53ebff3a3b51e81ab741e842582bb85e4bf4685')
+sha256sums=('c53204f37bb010cfd88d05d65ef579b4627aa76c8ec6db726243bc63dc90bb70')
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
