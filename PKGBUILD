@@ -1,6 +1,6 @@
 # Maintainer: Arisa Snowbell <goddess@chizuru.space>
 pkgname=shiny-mirrors
-pkgver=r152.a5dd24d
+pkgver=r162.5c87e97
 pkgrel=1
 pkgdesc="A replacement for reflector, rewritten in Rust! A tool to find the best mirrors for you!"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo-nightly' 'git' 'pandoc')
 backup=("etc/$pkgname.conf")
-_commit=a5dd24d2a6f50942a6c02c3ddff4011c925b9ab8
+_commit=5c87e979dad8eec9342a53b1d8eaa7254dbdbf31
 source=("git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('E2C998FA1F7B651E45B20CDC56AA2C2801F619D7' '93F4694364C3E688BA33E3E41CBE6B7A2B054E06')
