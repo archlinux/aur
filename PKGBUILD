@@ -41,4 +41,3 @@ package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}/" install
 }
-# vim:set ts=2 sw=2 et:
