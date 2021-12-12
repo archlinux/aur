@@ -2,7 +2,7 @@
 
 pkgname=vakzination-git
 _pkgname=vakzination
-pkgver=r68.690b1a6
+pkgver=r109.8484ef7
 pkgrel=1
 pkgdesc="Vakzination manages your health certificates like vaccination, test, and recovery certificates"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ url="https://invent.kde.org/plasma-mobile/vakzination"
 license=(LGPL)
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=(qt5-declarative kcodecs karchive qt5-svg khealthcertificate kitinerary)
+depends=(qt5-declarative kcodecs karchive qt5-svg khealthcertificate kitinerary kirigami2)
 makedepends=(git extra-cmake-modules prison)
 source=("git+https://invent.kde.org/plasma-mobile/vakzination.git")
 sha256sums=('SKIP')
