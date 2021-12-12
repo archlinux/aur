@@ -4,7 +4,7 @@
 # Contributor: utdemir <utdemir@riseup.net>
 
 pkgname='pelican-git'
-pkgver=4.7.1.r0.gbb10d286
+pkgver=4.7.1.r11.g11633992
 pkgrel=1
 pkgdesc='A static site generator written in Python w/ reST/Markdown support.'
 url='http://blog.getpelican.com/'
