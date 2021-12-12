@@ -1,4 +1,4 @@
-pkgbase = fabric-server-1.17.1
+pkgbase = fabric-server
 	pkgdesc = Minecraft Fabric server unit files, script and jar
 	pkgver = 1.17.1_0.10.2
 	pkgrel = 3
@@ -16,7 +16,7 @@ pkgbase = fabric-server-1.17.1
 	optdepends = netcat: required in order to suspend an idle server
 	provides = fabric-server=1.17.1_0.10.2
 	noextract = fabric-1.17.1-0.10.2.jar
-	backup = etc/conf.d/fabric-1.17.1
+	backup = etc/conf.d/fabric
 	source = fabricd-backup.service
 	source = fabricd-backup.timer
 	source = fabricd.service
@@ -34,4 +34,4 @@ pkgbase = fabric-server-1.17.1
 	sha512sums = ee04c7e30cedbc724975973bba144b6f0137f66f1d2bd2f132d59e09990e7fa7817dda9eedcdaeb961cef0ce3f728a0727fec3c590ce6abd9b93ef6467a4587f
 	sha512sums = b1a36cb8f5d5f9a13a344d4669e10c7d6d706abe0856adc5fa1187616c2302a1a22d4a5a44c0c2942d0ffea5201e52548126e42b40a2abe4bc074411959e6f71
 
-pkgname = fabric-server-1.17.1
+pkgname = fabric-server
