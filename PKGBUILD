@@ -2,13 +2,13 @@
 
 pkgname=distrobox
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Use any linux distribution inside your terminal."
-arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
+arch=('any')
 url="https://github.com/89luca89/distrobox"
 license=('GPL3')
 depends=('podman')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -16,4 +16,4 @@ package() {
   ./install -p "${pkgdir}/usr/bin"
 }
 
-sha256sums=('2b3fb9fd7d52458b9898b529fbb9c9ac67a0523eebbf554ac71f2bc2fc3c74bd')
+sha256sums=('3420f39e489f2025b701e2ac7d24b51f2158e53d9f5f8090f3100163b531f0dc')
