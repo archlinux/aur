@@ -48,8 +48,8 @@ optdepends=(
             "sndio: Sndio input client"
             "v4l2loopback-dkms: Virtual camera output"
 )
-provides=("obs-studio=$pkgver")
-conflicts=("obs-studio" "obs-linuxbrowser")
+provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
+conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
 source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch

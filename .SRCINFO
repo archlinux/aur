@@ -42,8 +42,12 @@ pkgbase = obs-studio-tytan652
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: Virtual camera output
 	provides = obs-studio=27.1.3
+	provides = obs-browser
+	provides = obs-vst
 	conflicts = obs-studio
 	conflicts = obs-linuxbrowser
+	conflicts = obs-browser
+	conflicts = obs-vst
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.1.3
 	source = bind_iface.patch
 	source = v4l2_by-path.patch
