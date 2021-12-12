@@ -1,5 +1,5 @@
 pkgbase = python-rtpplayapi
-	pkgdesc = Create static HTML galleries with thumbnails
+	pkgdesc = An unofficial python api to fetch media from RTPPlay, based on their mobile API.
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/guipenedo/rtp-play-api
