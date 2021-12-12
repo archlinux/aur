@@ -26,7 +26,6 @@ _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
 
 prepare() {
     # apply compile fix for tbb (backported from git repo)
-    echo $(pwd)
     patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="$srcdir/0001-Fix-FindTBB-version-detection-with-TBB-2021.1.1.patch"
 }
 
