@@ -8,7 +8,7 @@
 
 pkgname=cockroachdb-bin
 pkgver=21.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source, survivable, strongly consistent, scale-out SQL database'
 arch=('x86_64')
 url='https://www.cockroachlabs.com'
@@ -61,4 +61,8 @@ package() {
 
   # licenses
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # GEOS libraries (see: https://www.cockroachlabs.com/docs/stable/install-cockroachdb-linux.html)
+  install -Dm644 "${srcdir}/cockroach-v${pkgver}.linux-amd64/lib/libgeos.so" "${pkgdir}/usr/local/lib/cockroach/libgeos.so"
+  install -Dm644 "${srcdir}/cockroach-v${pkgver}.linux-amd64/lib/libgeos_c.so" "${pkgdir}/usr/local/lib/cockroach/libgeos_c.so"
 }
