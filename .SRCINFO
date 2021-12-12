@@ -1,15 +1,17 @@
 pkgbase = neix
 	pkgdesc = RSS/Atom feed reader for your terminal
 	pkgver = 0.1.5
-	pkgrel = 3
-	url = https://github.com/tomschwarz/neix
+	pkgrel = 4
+	url = https://github.com/qw3rtty/neix
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = ncurses
+	depends = curl
 	conflicts = neix-git
-	source = neix-0.1.5.tar.gz::https://github.com/tomschwarz/neix/archive/v0.1.5.tar.gz
+	source = neix-0.1.5.tar.gz::https://github.com/qw3rtty/neix/archive/v0.1.5.tar.gz
 	sha512sums = 85db547eba97b112895abd998f7f597a425aff5e37e917052c7c4fff3d7a8b14bf3c5704abc60ac6b3a9f6d7c25d0d690c64c06407927015036c2b733d18d7db
 
 pkgname = neix
