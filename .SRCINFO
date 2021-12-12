@@ -1,7 +1,7 @@
 pkgbase = goful-bin
 	pkgdesc = Goful is a CUI file manager written in Go
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anmitsu/goful
 	arch = i686
 	arch = x86_64

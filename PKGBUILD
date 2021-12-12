@@ -3,7 +3,7 @@
 pkgname=goful-bin
 pkgdesc='Goful is a CUI file manager written in Go'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 url='https://github.com/anmitsu/goful'
 arch=('i686' 'x86_64' 'aarch64')
 license=('MIT')
@@ -18,6 +18,6 @@ b2sums_x86_64=('ec89e220b3fbd43042e86fc36b9e3a154290d35e09d48d7817bdc1034e2bb397
 b2sums_aarch64=('6028369d9f97520babba5bdc81574908d4c2da4bdb2403dea8b56efd7d7284442252a472c004fdcfd77303955694802097dcf760d33e82c8b9e156ab5f98ce8c')
 
 package(){
-    install -Dm755 "$srcdir/goful" "$pkgdir/usr/bin/gofu"
+    install -Dm755 "$srcdir/goful" "$pkgdir/usr/bin/goful"
     install -Dm644 "$srcdir"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
