@@ -9,8 +9,8 @@ _lang='de_DE'
 
 pkgname=dm-fotowelt
 pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de'
-sha256sums=('440d1aaf4f64bc744b3cf627a1070a424fd41413de18cd7da29a4df023c225df')
-pkgver=7.1.4
+sha256sums=('68eec4dae341a6b6182f0859b3f753eec020172afbd2fa6b134905a052f53c26')
+pkgver=7.2.2
 pkgrel=1
 url="https://www.fotoparadies.de/"
 license=("custom:eula")
@@ -46,8 +46,6 @@ package() {
 
 	./install.pl $update $keepPackages --installDir=$_installDir -v
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
-        # pixmap for legacy customised mimetypes
-	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/$pkgname.xpm
 
 	# create startup script and desktop file
 	cat > $pkgdir/usr/bin/$pkgname <<-EOF
