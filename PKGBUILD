@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -54,8 +54,6 @@ source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
-        "FindLibpci.cmake" # https://github.com/carlocastoldi/obs-studio/blob/2936-fix/cmake/Modules/FindLibpci.cmake
-        "vaapi_set_dri_devices.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/5336.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -63,8 +61,6 @@ sha256sums=(
         "SKIP"
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
         "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
-        "916f9fb3819c9d952140d65434e9dffc77b688dc1dc027b39226c33ee97be63f"
-        "5c18a85f95090f01a9eb24aeea13220f8698f8d433970e4dc6391432d033f065"
         "SKIP"
         "SKIP"
 )
@@ -96,6 +92,9 @@ prepare() {
   ## UI: Update python linkage for older compilers (https://github.com/obsproject/obs-studio/commit/293b7951ed5a22529ffb214029de9233190a6f2f)
   git cherry-pick --no-commit 293b7951ed5a22529ffb214029de9233190a6f2f
 
+  ## obs-ffmpeg: Set DRI devices and their name persistently (https://github.com/obsproject/obs-studio/commit/4623a6b4bc4c89ceb5db684e2e7fbd57d01129aa)
+  git cherry-pick --no-commit 4623a6b4bc4c89ceb5db684e2e7fbd57d01129aa
+
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
   # Add translation
@@ -104,11 +103,6 @@ prepare() {
 
   ## linux-v4l2: Save device by path (https://github.com/obsproject/obs-studio/pull/3437)
   patch -Np1 < "$srcdir/v4l2_by-path.patch"
-
-  ## obs-ffmpeg: Set DRI devices and their name persistently (https://github.com/obsproject/obs-studio/pull/5336)
-  patch -Np1 < "$srcdir/vaapi_set_dri_devices.patch"
-  # Add CMake finder for libpci (pciutils)
-  cp "$srcdir/FindLibpci.cmake" cmake/Modules/
 }
 
 build() {
