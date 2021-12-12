@@ -18,4 +18,3 @@ pkgbase = webcord-git
 	md5sums = 85d234a65c69f3cf817fac5c54c194c8
 
 pkgname = webcord-git
-	depends = electron15
