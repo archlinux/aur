@@ -1,7 +1,7 @@
 # Maintainer: Eric Fung <loseurmarbles at gmail dot com>
 
 pkgname=vim-apprentice-git
-pkgver=v1.9.r53.g3491eda
+pkgver=1.9.r53.g3491eda
 pkgrel=1
 pkgdesc="A dark, low-contrast colorscheme for Vim based on Sorcerer by Jeet Sukumaran"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
