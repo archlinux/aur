@@ -23,3 +23,4 @@ package () {
     cd "${_pkgname}"
         install -Dm755 lsix "${pkgdir}/usr/bin/${_pkgname}"
         install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
