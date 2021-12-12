@@ -1,5 +1,5 @@
 pkgname=highly-experimental-git
-pkgver=r37.d59eec8
+pkgver=r42.19dbdf9
 pkgrel=1
 pkgdesc="Highly Experimental PS1/PS2 (PSF) emulator library"
 arch=(i686 x86_64)
@@ -7,6 +7,8 @@ url='https://bitbucket.org/losnoco/highly_experimental'
 license=(GPL3)
 depends=(glibc)
 makedepends=('git' 'qt5-base')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=("${pkgname}::git+https://bitbucket.org/losnoco/highly_experimental.git")
 sha256sums=('SKIP')
 

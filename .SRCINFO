@@ -1,6 +1,6 @@
 pkgbase = highly-experimental-git
 	pkgdesc = Highly Experimental PS1/PS2 (PSF) emulator library
-	pkgver = r37.d59eec8
+	pkgver = r42.19dbdf9
 	pkgrel = 1
 	url = https://bitbucket.org/losnoco/highly_experimental
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = highly-experimental-git
 	makedepends = git
 	makedepends = qt5-base
 	depends = glibc
+	provides = highly-experimental
+	conflicts = highly-experimental
 	source = highly-experimental-git::git+https://bitbucket.org/losnoco/highly_experimental.git
 	sha256sums = SKIP
 
 pkgname = highly-experimental-git
-
