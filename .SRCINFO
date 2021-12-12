@@ -1,6 +1,6 @@
 pkgbase = roctracer
 	pkgdesc = ROCm Tracer Callback/Activity Library for Performance tracing AMD GPU's
-	pkgver = 4.5.0
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html#amd-rocm-roctracer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = roctracer
 	depends = rocprofiler
 	options = !staticlibs
 	options = strip
-	source = roctracer-rocm-4.5.0.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.5.0.tar.gz
-	sha256sums = 83dcd8987e129b14da0fe74e24ce8d027333f8fedc9247a402d3683765983296
+	source = roctracer-rocm-4.5.2.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.5.2.tar.gz
+	sha256sums = 7012d18b79736dbe119161aab86f4976b78553ce0b2f4753a9386752d75d5074
 
 pkgname = roctracer

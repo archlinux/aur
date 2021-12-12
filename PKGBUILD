@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=roctracer
-pkgver=4.5.0
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="ROCm Tracer Callback/Activity Library for Performance tracing AMD GPU's"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'git' 'python-argparse' 'python-cppheaderparser' 'python-pl
 options=(!staticlibs strip)
 _git='https://github.com/ROCm-Developer-Tools/roctracer'
 source=("roctracer-rocm-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('83dcd8987e129b14da0fe74e24ce8d027333f8fedc9247a402d3683765983296')
+sha256sums=('7012d18b79736dbe119161aab86f4976b78553ce0b2f4753a9386752d75d5074')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
