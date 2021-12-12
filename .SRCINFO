@@ -1,0 +1,17 @@
+pkgbase = low-battery-warning-git
+	pkgdesc = Light weight low battery warning notification
+	pkgver = 0.1.r12f678230
+	pkgrel = 1
+	url = https://github.com/vedpatil611/low-battery-warning
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = libnotify
+	provides = low-battery-warning
+	conflicts = low-battery-warning
+	source = git+https://github.com/vedpatil611/low-battery-warning
+	md5sums = SKIP
+
+pkgname = low-battery-warning-git
