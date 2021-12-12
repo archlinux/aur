@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ffmpeg-minimal
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
-	pkgver = 4.4
+	pkgver = 4.4.1
 	pkgrel = 1
 	epoch = 1
 	url = http://ffmpeg.org/
@@ -18,9 +18,7 @@ pkgbase = mingw-w64-ffmpeg-minimal
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.4
-	source = windres.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.4.1
 	sha256sums = SKIP
-	sha256sums = c78ae2245fd1863ea495c115b24214d5692b86ff51b8899a23bc43a48c3385c0
 
 pkgname = mingw-w64-ffmpeg-minimal

@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-ffmpeg-minimal
-pkgver=4.4
+pkgver=4.4.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -16,17 +16,9 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
 provides=('mingw-w64-ffmpeg')
 conflicts=('mingw-w64-ffmpeg')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
-  "windres.patch")
-sha256sums=('SKIP'
-  'c78ae2245fd1863ea495c115b24214d5692b86ff51b8899a23bc43a48c3385c0')
+source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
+sha256sums=('SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd ffmpeg
-
-  patch -Np1 -i "${srcdir}/windres.patch"
-}
 
 build() {
   for _arch in ${_architectures}; do
