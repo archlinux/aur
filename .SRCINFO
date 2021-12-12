@@ -1,7 +1,7 @@
 pkgbase = python-atlassian-api
 	pkgdesc = Python Atlassian REST API Wrapper
 	pkgver = 3.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atlassian-api/atlassian-python-api
 	arch = any
 	license = Apache

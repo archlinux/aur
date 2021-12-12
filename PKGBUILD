@@ -2,7 +2,7 @@
 pkgname=python-atlassian-api
 _name=atlassian-python-api
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Atlassian REST API Wrapper"
 arch=(any)
 url="https://github.com/atlassian-api/atlassian-python-api"
