@@ -2,7 +2,7 @@
 pkgname=python-lsp-mypy
 _name=pylsp-mypy
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
 url="https://github.com/Richardk2n/pylsp-mypy"

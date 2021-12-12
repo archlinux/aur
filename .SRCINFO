@@ -1,7 +1,7 @@
 pkgbase = python-lsp-mypy
 	pkgdesc = Static type checking for python-lsp-server with mypy
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Richardk2n/pylsp-mypy
 	arch = any
 	license = MIT
