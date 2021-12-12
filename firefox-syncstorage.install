@@ -1,0 +1,11 @@
+post_install() {
+	getent group syncstorage &>/dev/null || groupadd -r syncstorage >/dev/null
+	getent passwd syncstorage &>/dev/null || useradd -r -s /usr/bin/false \
+		-g syncstorage -G syncstorage  syncstorage >/dev/null
+}
+
+pre_remove() {
+	getent passwd syncstorage &>/dev/null && userdel syncstorage >/dev/null
+	getent group syncstorage &>/dev/null && groupdel syncstorage >/dev/null
+	true
+}

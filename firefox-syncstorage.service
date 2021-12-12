@@ -1,0 +1,23 @@
+[Unit]
+Description=Actix web server running Mozilla Firefox Sync Storage
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/firefox-syncstorage --config=/etc/firefox-syncstorage.toml
+Restart=on-abort
+
+User=syncstorage
+Group=http
+UMask=007
+
+NoNewPrivileges=yes
+
+PrivateTmp=yes
+PrivateDevices=yes
+
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
