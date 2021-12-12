@@ -1,0 +1,6 @@
+post_install() {
+    echo -e "\n\nWorm will automatically execute the following file on startup:\n\n" \
+    "~/.config/worm/rc\n\n" \
+    "Create a simple shell-script to run your apps...\n" \
+    "(Don't forget to make it executable)\n\n"
+}
