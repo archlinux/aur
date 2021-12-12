@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1050.3969.g4cda04d0
+pkgver=r1050.4268.ga12d7289
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -8,7 +8,8 @@ license=(BSD)
 depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123 speex)
 makedepends=(audacious git gtk2)
 optdepends=('audacious: for using the bundled plugin')
-conflicts=(vgmstream-kode54-git)
+provides=(vgmstream)
+conflicts=(vgmstream vgmstream-kode54-git)
 replaces=(vgmstream-kode54-git)
 source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
