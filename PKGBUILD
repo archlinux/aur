@@ -3,7 +3,7 @@
 _port=9001
 pkgname=minima-bin
 pkgver=0.100.25
-pkgrel=1
+pkgrel=2
 pkgdesc='A completely decentralized network for information and value transfer'
 arch=(any)
 url='https://github.com/minima-global/Minima'
@@ -12,23 +12,24 @@ depends=('jre-openjdk-headless')
 makedepends=('git')
 source=(
     'https://github.com/minima-global/Minima/raw/master/jar/minima.jar'
-    'minima.default'
+    'minima.conf'
     'minima.sysusers'
     'minima.tmpfiles'
     'minima@.service'
 )
 sha512sums=(
     'ac9691f9142f1384ba07d98e89c222c036b5d40a511e584aa7dafb702353da2b5eb9810cb697231a43c5f198becb342809c2e0a274f385fab7ac296bc76b62d5'
-    '6ec21227df4a5bc701ec2f426cbf5083c469b4a0ef2e25ef6546e902fd96c606646cad9307c23e85dcab62ac83773f12d01f08edafa9d6148aebe557c6832588'
-    '9bc15d5c757ee895b040f1662e55f51aa9feb8775127665f339c65fccd293f345357fb88282770819b42c5efaf4e065e4454dfc19a5b3a05a0032190cd4934db'
-    'b8dfac639077547a717e30822c34f962259afdcb38363f3b2de3ca3510dfe81d690f4b898ac0307ad19fd97ac9f71a4ba70ee03d3b5c4f8c86a0e85533e81933'
-    '2c1f9029b23abc008f037029b63e7421660a7a390825f1b66bbe3bbad9e300c9a968956bc51eb3bc0e1331a6704f227a7e82ce3d2533a98441c03d3f9831305e'
+    '9554ac28c5a1285d46cb0e73fada7bf31e09c867e3732d53bcb3c1e02c27a01f573fd83ba161e98988331c54ab770398228c4837bccfa6e099c432e2f1184e77'
+    'eff286fa2f722bb1de82898a2552aa726c97f7fb9558426dad6802749bcd00792140b703e73da4491b85f883d92b8a8c6ffbb4ebf77a14d9cadbdad2e8af1e77'
+    '8f7de769d1c382bdcf6f0560bfe8bac53295ede13c0f01dbbca2395bb0d828adc4200c60579c1bd9f9f6ba499a0940a0b344194cfc47b6500f333798c2bacc78'
+    '7b5b4e4a9259d15eb8bb4a8623c2c3410c8707a611eb6d726a0eab6743616b578da966f92b249ffd66f38c7270a00fa7be0f8cd30c5d95a97bc609a6b2bebad6'
 )
 options=(!strip)
 install='minima.install'
+backup=("etc/minima/minima-$_port.conf")
 
 package() {
-    install -Dm644 minima.default "$pkgdir/etc/default/minima-$_port"
+    install -Dm644 minima.conf "$pkgdir/etc/minima/minima-$_port.conf"
     install -Dm644 minima.sysusers "$pkgdir/usr/lib/sysusers.d/minima.conf"
     install -Dm644 minima.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/minima.conf"
     install -Dm644 minima@.service -t "$pkgdir/usr/lib/systemd/system"

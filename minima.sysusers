@@ -1,1 +1,1 @@
-u minima - "Minima user" /var/lib/minima /bin/bash
+u minima - "Minima daemon user" /var/lib/minima /bin/bash
