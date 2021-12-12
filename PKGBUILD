@@ -1,12 +1,14 @@
 pkgname=libg7221_decode-git
 pkgver=r3.0d6324a
-pkgrel=1
+pkgrel=2
 pkgdesc='ITU-T G.722.1 annex C (G.722.1C) audio decoding library'
 arch=(x86_64)
 url='https://github.com/kode54/libg7221_decode'
 license=(LGPL3)
 depends=()
 makedepends=(git)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=(${pkgname}::git+https://github.com/kode54/libg7221_decode.git
         libsiren::git+https://github.com/kode54/libsiren.git)
 sha256sums=(SKIP SKIP)
