@@ -1,5 +1,3 @@
-# Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
-
 pkgname=lazyusf2-git
 pkgver=r85.7a95e97
 pkgrel=1
