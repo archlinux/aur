@@ -1,11 +1,11 @@
 pkgname=webcord
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A Discord web-based client made with the Electron API."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
 license=('MIT')
-depends=('electron15')
+depends=('electron')
 makedepends=('npm' 'typescript' 'git')
 conflicts=("${pkgname}")
 options=('!strip' '!emptydirs')
@@ -17,30 +17,25 @@ source=(
     "package.json"
     "buildInfo.json"
     "app.desktop"
-    "disable-updates-check.patch"
 )
 
 sha512sums=(
-    '00aa8e9ec824f8db861d786b61481ddc52ec149e1a9a3eccd5d1bfe80e5e990936dfe8cc21607f7938be43c5fb9e1c82b6e4df154839aeee67b688c3e4740833'
-    '868e3ca8ee5f936e9c596cfb61fdb32df72e0d30d0633878bd784464239e730d40c6f611797489753bcda919b53ccd26adaae84c345204434df951cf4939fe70'
-    '1914cc3b7c8da664f98510e727b601a090c5a5bc29050f01980e2104f80f06bb9fcda20d8d882523d9219cd0a9c50417d0902d00499f002109c81c3de74bb9b3'
+    '7a874a0abb52609759a2ba85fd1a8f8bb75f30b32b9d4786a16e98ac0beddee42447267e52b76cbe41fc6dc41f4164b36bbbe8f1e844f83b79ea39f0cfbc5134'
+    '7e9cd984c15d5977bc2e85e8d62e46a5dc7347c4746e22a0d5dbbe70551172c1a7330c214ec6d07d102d0c6ad736336efb50a57bbae16e34cc0ac80aa1082ba4'
+    '0c81274928a1dfd2d9adb2f8a7df011bb6d178a00bb4378ff0c9ccd17c6fbc180521c76c79969cd81eac611b9636e04036de906dd5be34cadc370fd93b0d21a4'
     'bb07c103ef15c2b12d610cfbdedc6b6ff9c3c8b3ec942a9f7cda461e9a906b49a268a9ce6a1fc0eb3783695fc8ecefac04aff4b8052bb17a19101cba340d40f0'
-    '454f3d005e77d7f146ff13b8f5c0af8ce9480529b6b9f4ce8541e6e141a8c8a79b700bdf95337e52b8aa7fd7fd3478d16fb274f4d46bf3bb70467d77e909dcdc'
 )
 
 prepare() {
     cd "${srcdir}"
 
-    ELECTRON_SKIP_BINARY_DOWNLOAD=1 \
-        npm i --package-lock=false
+    ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm i
 
     cd "${_srcname}"
 
-    npm i --omit=dev --package-lock=false
+    npm i --omit=dev
 
     rm -r "sources/code/build"
-
-    patch -p0 -N -i "${srcdir}/disable-updates-check.patch"
 }
 
 build() {
@@ -54,7 +49,7 @@ package() {
 
     local bin="${pkgname}"
     echo "#!/bin/sh" >"${bin}"
-    echo "electron15 \"/usr/lib/${pkgname}/\" \$@" >>"${bin}"
+    echo "electron '/usr/lib/${pkgname}' \$@" >>"${bin}"
     install -Dm755 -t "${pkgdir}/usr/bin" "${bin}"
 
     install -Dm644 "app.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"

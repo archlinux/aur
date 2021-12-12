@@ -1,7 +1,0 @@
---- sources/code/main.ts
-+++ sources/code/main.ts
-@@ -138,4 +138,2 @@
-         l10nStrings = (new l10n()).client;
--        checkVersion(updateInterval);
--        updateInterval = setInterval(function () { checkVersion(updateInterval); }, 1800000);
-         mainWindow = createMainWindow(startHidden, l10nStrings);

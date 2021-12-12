@@ -1,1 +1,6 @@
-{ "type": "release" }
+{
+    "type": "release",
+    "features": {
+        "updateNotifications": false
+    }
+}
