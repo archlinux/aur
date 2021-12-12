@@ -11,7 +11,7 @@ pkgname=('pipewire-git'
          'pipewire-zeroconf-git'
          'pipewire-v4l2-git'
          )
-pkgver=0.3.39.57.g9facfca45
+pkgver=0.3.40.126.g1e5f499ed
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -39,6 +39,7 @@ makedepends=('git'
              'avahi'
              'webrtc-audio-processing'
              'python-docutils'
+             'lilv'
 #              'roc-git'
              )
 checkdepends=('desktop-file-utils'
@@ -110,6 +111,9 @@ package_pipewire-git() {
            'libcamera-git'
            'libwebrtc_audio_processing.so'
            'libusb-1.0.so'
+           'libavahi-common.so'
+           'libavahi-client.so'
+           'liblilv-0.so'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
@@ -185,7 +189,7 @@ package_pipewire-jack-git() {
             'libjacknet.so'
             )
   conflicts=('pipewire-jack'
-            'jack2'
+             'jack2'
             )
 
   mv jack/* "${pkgdir}"
