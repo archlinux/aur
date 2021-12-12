@@ -1,10 +1,10 @@
-# Maintainer: vojvoda343 <voj343@yandex.com>
+# Maintainer: voj343 <voj343@yandex.com>
 pkgname=expressvpn-openrc
 pkgver=1.0
 pkgrel=1
 pkgdesc="expressvpn openrc service"
 arch=('any')
-url='https://github.com/vojvoda343/expressvpn-openrc'
+url='https://github.com/voj343/expressvpn-openrc'
 license=('GPL')
 depends=('expressvpn' 'openrc')
 source=("expressvpnd.initd")
