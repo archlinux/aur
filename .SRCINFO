@@ -1,7 +1,7 @@
 pkgbase = emacs28-git
 	pkgdesc = GNU Emacs. emacs-28 release branch.
 	pkgver = 28.0.90.151062
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/emacs/
 	install = emacs28-git.install
 	arch = x86_64
@@ -13,8 +13,6 @@ pkgbase = emacs28-git
 	depends = libxml2
 	depends = jansson
 	depends = gpm
-	depends = m17n-lib
-	depends = libotf
 	depends = harfbuzz
 	depends = libgccjit
 	depends = gtk3
