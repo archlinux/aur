@@ -4,7 +4,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 
 pkgname=uniconvertor
-pkgver=2.0rc4
+pkgver=2.0rc5
 pkgrel=1
 pkgdesc="Universal vector graphics translator using sK1 engine."
 arch=(x86_64)
@@ -12,15 +12,15 @@ url="https://sk1project.net/uc2/"
 license=(GPL3)
 depends=(lcms2 cairo imagemagick pango python2-cairo 
          python2-pillow python2-reportlab)
-source=("https://downloads.sk1project.net/uniconvertor/$pkgver/uniconvertor-$pkgver.tar.gz")
-sha256sums=('98c32fa7255825cb5a395346f77bafa256d78a7b06093dbbb5f612e46371f045')
+source=("https://downloads.sk1project.net/uc2/uniconvertor-$pkgver.tar.gz")
+sha256sums=('55660b0757ee90b04c532252f98b5d95f5c6060e8bd8e1448ae50951894a3d3d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup-uc2.py build
+  python2 setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup-uc2.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
