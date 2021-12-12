@@ -1,7 +1,7 @@
 pkgbase = python-pyrate-limiter
 	pkgdesc = Python Rate-Limiter using Leaky-Bucket Algorimth Family
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vutran1710/pyratelimiter
 	arch = any
 	license = MIT

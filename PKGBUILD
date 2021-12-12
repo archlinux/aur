@@ -3,7 +3,7 @@ _base=pyrate-limiter
 pkgname=python-${_base}
 pkgdesc="Python Rate-Limiter using Leaky-Bucket Algorimth Family"
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/vutran1710/${_base/-/}"
 license=(MIT)
@@ -22,4 +22,7 @@ package() {
   export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  # For avoid /usr/bin/test exists in filesystem (owned by coreutils)
+  cd "${pkgdir}/usr/bin"
+  rm test
 }
