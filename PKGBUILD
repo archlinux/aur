@@ -1,5 +1,5 @@
 pkgname=highly-theoretical-git
-pkgver=r60.48c4d01
+pkgver=r62.eb3f3e0
 pkgrel=1
 pkgdesc="Highly Theoretical Sega Saturn and Dreamcast Sound Format (SSF and DSF) emulator library"
 arch=(i686 x86_64)
@@ -7,6 +7,8 @@ url='https://bitbucket.org/losnoco/highly_theoretical'
 license=(GPL3)
 depends=(glibc)
 makedepends=('git' 'qt5-base')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=("${pkgname}::git+https://bitbucket.org/losnoco/highly_theoretical.git")
 sha256sums=('SKIP')
 
