@@ -1,5 +1,5 @@
 pkgname=libatrac9-git
-pkgver=r18.0fb7069
+pkgver=r19.6a9e00f
 pkgrel=1
 pkgdesc="A library for decoding audio in Sony's ATRAC9 format"
 arch=(x86_64)
@@ -7,6 +7,8 @@ url='https://github.com/Thealexbarney/LibAtrac9'
 license=(MIT)
 depends=()
 makedepends=(git)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=(${pkgname}::git+https://github.com/Thealexbarney/LibAtrac9.git)
 sha256sums=('SKIP')
 
