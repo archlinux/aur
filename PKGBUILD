@@ -1,16 +1,17 @@
-# Maintainer: Daniel Cafe
-# Contributor: 
+# Maintainer: Francois Menning <f.menning@pm.me>
 
 pkgname=qogir-gtk-theme-git
-pkgver=2020.02.26.r59.gebed08a
+pkgver=2021.11.17.r18.gdccc3e2
 pkgrel=1
 pkgdesc='Qogir is a flat Design theme for GTK'
 arch=('any')
 url='https://github.com/vinceliuice/Qogir-theme'
 license=('GPL3')
-depends=('gtk-engine-murrine' 'gtk-engines')
-makedepends=('git')
-optdepends=()
+depends=('gtk3' 'gtk4' 'gtk-engine-murrine' 'gtk-engines')
+makedepends=('git' 'sassc')
+optdepends=(
+  'qogir-icon-theme: Matching icon theme'
+)
 provides=('qogir-gtk-theme')
 conflicts=('qogir-gtk-theme')
 source=('git+https://github.com/vinceliuice/Qogir-theme')
@@ -23,6 +24,12 @@ pkgver() {
 
 package() {
   cd Qogir-theme
-  mkdir -p "${pkgdir}/usr/share/themes"
-  ./install.sh -d "${pkgdir}/usr/share/themes"
+
+  install -dm755 "${pkgdir}/usr/share/themes"
+  
+  ./install.sh \
+    --dest "${pkgdir}/usr/share/themes" \
+    --theme all \
+    --logo arch \
+    --tweaks image
 }
