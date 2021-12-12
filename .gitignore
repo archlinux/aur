@@ -1,0 +1,5 @@
+src/
+pkg/
+LICENSE
+*.pkg.tar.*
+*.xpi
