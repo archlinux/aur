@@ -1,0 +1,16 @@
+pkgbase = python-rtpplayapi
+	pkgdesc = Create static HTML galleries with thumbnails
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/guipenedo/rtp-play-api
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/r/rtpplayapi/rtpplayapi-1.0.3.tar.gz
+	sha256sums = 0f54272378f3bf9302827b202176f8ddc58f3e2c6f91ec90b01dd78bd7507a80
+
+pkgname = python-rtpplayapi
+	depends = python
+	depends = python-requests
