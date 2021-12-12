@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.5.beta7.r0.gcc60cfebc4
+pkgver=9.5.beta8.r0.gd6d0edce10
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -16,24 +16,35 @@ depends=(palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpyl
   python-matplotlib python-scipy python-sympy python-networkx python-pplpy python-sphinx python-ipywidgets python-memory-allocator
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt singular linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
-  iml giac libhomfly libbraiding symmetrica threejs-sage)
-optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
-  'jmol: alternative 3D plot engine' 'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
-  'sagemath-doc: HTML documentation' 'python-igraph: igraph backend for graph theory'
+  iml giac libhomfly libbraiding symmetrica threejs-sage primecount)
+optdepends=('cython: to compile cython code'
+  'python-pkgconfig: to compile cython code'
+  'jmol: alternative 3D plot engine'
+  'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
+  'sagemath-doc: HTML documentation'
+  'python-igraph: igraph backend for graph theory'
   'sage-numerical-backends-coin: COIN mixed integer linear programming backend'
   'sage-numerical-backends-gurobi: Gurobi mixed integer linear programming backend'
   'coin-or-csdp: for computing Lovász theta-function of graphs'
-  'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
-  'ffmpeg: to export animations to video' 'imagemagick: to show animations'
+  'buckygen: for generating fullerene graphs'
+  'plantri: for generating some classes of graphs'
+  'benzene: for generating fusenes and benzenoids'
+  'ffmpeg: to export animations to video'
+  'imagemagick: to show animations'
   'coxeter: Coxeter groups implementation'
   'rubiks: Rubiks cube algorithms'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'python-pynormaliz: Normaliz backend for polyhedral computations'
-  'latte-integrale: integral point count in polyhedra' 'python-jupymake: polymake backend for polyhedral computations'
-  'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
-  'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
-  'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python-pycosat: picosat SAT solver'
-  'python-pip: to install optional packages with sage -pip' 'sage-notebook-exporter: convert flask notebooks to Jupyter'
+  'latte-integrale: integral point count in polyhedra'
+  'python-jupymake: polymake backend for polyhedral computations'
+  'shared_meataxe: faster matrix arithmetic over finite fields'
+  'openblas: faster linear algebra'
+  'sirocco: for computing the fundamental group of the complement of a plane curve'
+  'dot2tex: for displaying some diagrams'
+  'cryptominisat5: SAT solver'
+  'python-pycosat: picosat SAT solver'
+  'python-pip: to install optional packages with sage -pip'
+  'sage-notebook-exporter: convert flask notebooks to Jupyter'
   'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases')
 makedepends=(cython boost ratpoints python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe primecount git)
 conflicts=(sagemath)
@@ -43,15 +54,14 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         latte-count.patch
         test-optional.patch
         sagemath-lrcalc2.patch
-        sagemath-lcalc2.patch
         sagemath-singular-4.2.1.p1.patch)
 sha256sums=('SKIP'
             'b2308f25c5e6ad330342fc365056d7aebfbba09b833e3be6fb6283061709b6a0'
             '2f310081357996b7d3bf813e63d07c0fc04d6724adbfbd1beeb554e9476e2e4c'
             'd1310321bf07491658e83087a6ddb0011738fa17a1dc3275d6d5c6907eaf3df8'
-            'b7ebdba8612b1219011642c9bd4b377a23f402876a7d3dac90679a2bb34bbf98'
-            '791b3f2c6e5529b09c3abf2f9703b6cf754d633a7a4177645b70b72ea014135a'
-            'e3cdfe730d0b0f422fe837e465ecde3419b16de50bef3dd2b674f275f528ed97')
+            'ede5e054c73eab9aa71285bb3a16c1f2f0e4fdc0d4645fe13912ff9489865bee'
+            '1f0c44a4998ed239a3d77e3028b98b6f2c28a95e9bb4b8557523cc8f12ffba34')
+options=(debug !strip)
 
 pkgver() {
   cd sage
@@ -64,9 +74,7 @@ prepare(){
 # Upstream patches
 # Replace lrcalc.pyx with a wrapper over lrcalc's python bindings https://trac.sagemath.org/ticket/31355
   patch -p1 -i ../sagemath-lrcalc2.patch
-# Port to lcalc 2 https://trac.sagemath.org/ticket/32037
-  patch -p1 -i ../sagemath-lcalc2.patch
-# Fix build with singular 4.2.1.p1
+# Fix build with singular 4.2.1.p1 https://trac.sagemath.org/ticket/32907
   patch -p1 -i ../sagemath-singular-4.2.1.p1.patch
 
 # Arch-specific patches
