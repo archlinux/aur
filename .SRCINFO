@@ -1,7 +1,7 @@
 pkgbase = papirus-icon-theme-git
 	pkgdesc = A free and open source SVG icon theme based on Paper Icon Set
 	pkgver = 20211201.r29.gc2c35ba3ab
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://git.io/papirus-icon-theme
 	install = alt-icons.install

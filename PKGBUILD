@@ -8,7 +8,7 @@
 
 pkgname=papirus-icon-theme-git
 pkgver=20211201.r29.gc2c35ba3ab
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A free and open source SVG icon theme based on Paper Icon Set"
 arch=('any')
