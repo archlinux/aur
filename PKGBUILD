@@ -4,8 +4,8 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.5.r84.ge554475
-pkgrel=4
+pkgver=0.9.5.r110.g5b91b9e
+pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('i686' 'x86_64')
@@ -114,7 +114,8 @@ package() {
 		install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
 	done
 	
-	ln -s "/usr/lib/systemd/system/gdm.service" "$pkgdir/usr/lib/systemd/system/gdm-plymouth.service"
+# soft-linking gdm-plymouth is deprecated and no longer necessary	
+#	ln -s "/usr/lib/systemd/system/gdm.service" "$pkgdir/usr/lib/systemd/system/gdm-plymouth.service"
 
 	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
 #	install -Dm644 "$srcdir/plymouth-start.path" 	"$pkgdir/usr/lib/systemd/system/plymouth-start.path"
