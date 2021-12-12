@@ -1,0 +1,13 @@
+pkgbase = gucci
+	pkgdesc = A simple CLI templating tool written in golang.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/noqcks/gucci
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = gucci-1.5.2.tar.gz::https://github.com/noqcks/gucci/archive/refs/tags/1.5.2.tar.gz
+	sha512sums = f6822ed340b0e337e4e6e70e412140b192f33d9e7effe63d9bdb40353c4b6c1cbf4446490716056a2e7ce1413c71b3a6e4163c57c62cf2124edccc7d2a767a27
+
+pkgname = gucci
