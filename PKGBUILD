@@ -3,15 +3,15 @@
 # Contributor: Evan McCarthy <evan@mccarthy.mn>
 
 pkgname=catgirl
-pkgver=1.9a
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc='TLS-only terminal IRC client'
 arch=('x86_64')
 url="https://git.causal.agency/${pkgname}/"
 license=('GPL3')
 depends=('libretls' 'ncurses')
 source=("https://git.causal.agency/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-md5sums=('11d1050876fce2d69002de5dfb3e61c0')
+md5sums=('74e142ffa7e61ec5a32424550128336f')
 
 build() {
 	cd "${pkgname}-${pkgver}"
