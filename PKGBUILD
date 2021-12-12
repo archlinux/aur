@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
-pkgver=2.74.1
+pkgver=2.74.2
 pkgrel=1
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ license=("LGPL")
 depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-sqlite' 'mingw-w64-libxml2' 'mingw-w64-libpsl' 'mingw-w64-brotli')
 makedepends=('mingw-w64-meson' 'git')
 options=(!strip !buildflags staticlibs)
-_commit=0e1d3eee74cc568aa077b3472e7fcd3f13d42007  # tags/2.74.1^0
+_commit=2add3502a7de754f4aed61571f6cb45094e8f443  # tags/2.74.2^0
 source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit"
   "libsoup_extern.patch")
 sha256sums=('SKIP'
