@@ -1,0 +1,25 @@
+pkgbase = classik
+	pkgdesc = ClassiK is a highly customizable binary Window Decoration and Application Style plugin for recent versions of the KDE Plasma desktop. It provides the Classik, Kite, Oxygen/Breeze, and Redmond icon styles.
+	pkgver = 3.0.breeze5.23.80
+	pkgrel = 1
+	url = https://github.com/paulmcauley/classik
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = extra-cmake-modules
+	makedepends = kcmutils
+	makedepends = kdecoration
+	makedepends = qt5-declarative
+	makedepends = qt5-x11extras
+	depends = frameworkintegration>=5.86
+	depends = kdecoration
+	depends = kwayland
+	optdepends = kcmutils: for classik-settings
+	replaces = classikstyles
+	source = classik-3.0.breeze5.23.80::https://github.com/paulmcauley/classik/archive/refs/tags/3.0.breeze5.23.80.tar.gz
+	sha256sums = 8258b06639e698b7e8a608afafae321574d911354b4dcc5043a1aab5929b18b4
+
+pkgname = classik
