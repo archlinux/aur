@@ -1,7 +1,7 @@
 # Maintainer: A. Husen <hi@husen.id>
 pkgname=ncspot-bin
 _pkgname=ncspot
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 provides=('ncspot')
 conflicts=('ncspot')
 source=("https://github.com/hapakaien/aur-packages/releases/download/ncspot%40v${pkgver}/ncspot-v${pkgver}-linux-x86_64.tar.gz")
-sha512sums=('9c1caebac72908c344720de50ea1249035b1cec8a278a2e6f22a31d38abd664609d873432cd0381c82a48e97b34976ff1a6f4c626fb70e7a4d66771305297f01')
+sha512sums=('aaa1fa9084976f3bfa1c17a956694a7c4a742ee40b94efe0373ea2a6bfaff5e3bbccc4f49e9e1040e11a6c5db0b05e4077d79d894b42f7abf097919fb8770e20')
 
 package() {
 	cd "$srcdir"
