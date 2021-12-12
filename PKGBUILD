@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=superdux-git
-pkgver=0.1.0.r1690.7e5e6729+r
+pkgver=0.1.0.r301.dda2581+r1690.7e5e6729
 pkgrel=1
 pkgdesc="A Qt-based interface of SameBoy, An accuracy-focused Game Boy/Game Boy Color emulator (git build)"
 depends=('qt6-base')
@@ -21,7 +21,7 @@ pkgver() {
     printf -v _superduxver "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     cd "$srcdir"/SameBoy
     printf -v _sameboyver "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    printf "0.1.0.r%s+r%s" $_superduxiver $_sameboyver
+    printf "0.1.0.r%s+r%s" $_superduxver $_sameboyver
 }
 
 prepare() {
