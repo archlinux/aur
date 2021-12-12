@@ -1,0 +1,11 @@
+pkgbase = libfsyncblock
+	pkgdesc = Lightweight reimplementation of libeatmydata
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/pbs3141/libfsyncblock
+	arch = x86_64
+	license = GPL3
+	source = https://gitlab.com/pbs3141/libfsyncblock/-/archive/v1.0/libfsyncblock-v1.0.tar.gz
+	sha256sums = a1cc5462b6aa21efc3bb136d84352154c1d5bca6283b1c8a0a65500947f3cb0d
+
+pkgname = libfsyncblock
