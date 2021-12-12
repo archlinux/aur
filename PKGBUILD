@@ -57,9 +57,6 @@ NOCAIRO=          # Disable here.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
-MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
-                  # ImageMagick, like flash, won't die... 
-                  # -->>If you just *believe* you need ImageMagick, you don't.<<--
 NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 
@@ -69,7 +66,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs28-git"
 fi
-pkgver=28.0.90.151020
+pkgver=28.0.90.151062
 pkgrel=1
 pkgdesc="GNU Emacs. emacs-28 release branch."
 arch=('x86_64')
@@ -135,9 +132,7 @@ else
   makedepends+=( 'xorgproto' );
 fi
 
-if [[ $MAGICK == "YES" ]]; then
-  depends+=( 'imagemagick'  'libjpeg-turbo' 'giflib' );
-elif [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
+if [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
 elif [[ $CLI == "YES" ]]; then
   depends+=();
@@ -233,12 +228,6 @@ elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
 else
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
-fi
-
-if [[ $MAGICK == "YES" ]]; then
-  _conf+=( '--with-imagemagick');
-else
-  _conf+=();
 fi
 
 if [[ $NOCAIRO == "YES" || $CLI == "YES" ]]; then
