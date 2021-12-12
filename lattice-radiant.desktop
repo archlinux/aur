@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=lattice-radiant
+Name=Lattice Radiant
+Exec=/usr/local/radiant/3.0.0.24.1/bin/lin64/radiant
+Categories=Development;
+Comment=Lattice Radiant Design Software
