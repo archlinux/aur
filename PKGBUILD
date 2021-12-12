@@ -4,7 +4,7 @@
 
 _pkgname=youtube
 pkgname=youtubedr
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc="Download YouTube videos"
 arch=('x86_64')
@@ -21,13 +21,13 @@ build() {
     CGO_CPPFLAGS="${CPPFLAGS}" \
     CGO_CFLAGS="${CFLAGS}" \
     CGO_CXXFLAGS="${CXXFLAGS}" \
-        go build -v \
-            -trimpath \
-            -buildmode=pie \
-            -mod=readonly \
-            -modcacherw \
-            -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-            -o build ./cmd/...
+    go build -v \
+      -trimpath \
+      -buildmode=pie \
+      -mod=readonly \
+      -modcacherw \
+      -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+      -o build ./cmd/...
 }
 
 check() {
