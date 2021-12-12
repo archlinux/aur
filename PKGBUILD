@@ -1,11 +1,14 @@
-# Maintainer:  Moses Narrow <moe-narrow@use.startmail.com>
+# Maintainer: Riccardo Berto <riccardo at rcrdbrt dot-symbol com>
+# 
+# Previous maintainers listed down here:
+# Contributor:  Moses Narrow <moe-narrow@use.startmail.com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Konrad Tegtmeier <konrad.tegtmeier+aur@gmail.com>
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=cockroachdb-bin
 pkgver=21.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source, survivable, strongly consistent, scale-out SQL database'
 arch=('x86_64')
 url='https://www.cockroachlabs.com'
