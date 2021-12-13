@@ -4,7 +4,7 @@
 
 pkgname=pgcli
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
 arch=(any)
