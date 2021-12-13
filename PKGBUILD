@@ -3,7 +3,7 @@
 pkgname='python-unrar'
 _name=${pkgname#python-}
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Work with RAR archive files through unrar library using ctypes.'
 arch=('any')
 url='https://github.com/matiasb/python-unrar'
