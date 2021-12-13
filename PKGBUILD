@@ -4,7 +4,7 @@
 
 pkgname=python-typepy
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Variable runtime type checker/validator/converter'
 arch=('any')
 url='https://github.com/thombashi/typepy'
@@ -15,10 +15,6 @@ optdepends=('python-dateutil' 'python-pytz')
 checkdepends=('python-pytest' 'python-tcolorpy' 'python-dateutil' 'python-pytz')
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
-# source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/typepy/typepy-$pkgver.tar.gz"
-#         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/t/typepy/typepy-$pkgver.tar.gz.asc")
-# sha256sums=('96788530614083164993d1443959f6c58e6bb8e2da839812ddf462c203e4b84c'
-#             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
 
 build() {
