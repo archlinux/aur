@@ -3,7 +3,7 @@
 pkgname=python-dnc
 _pkgname=dnc
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to check domain names configuration"
 arch=('any')
 url="https://github.com/fcambus/dnc"

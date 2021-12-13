@@ -1,7 +1,7 @@
 pkgbase = python-dnc
 	pkgdesc = A tool to check domain names configuration
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcambus/dnc
 	arch = any
 	license = BSD
