@@ -2,7 +2,7 @@
 
 pkgname=autosuspend
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
