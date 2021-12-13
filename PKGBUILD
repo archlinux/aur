@@ -5,7 +5,7 @@
 pkgname='python-sphinx-markdown-tables'
 _pkgname=${pkgname##python-}
 pkgver=0.0.15
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('GPL3')
 pkgdesc='Sphinx extension for rendering tables written in markdown'
