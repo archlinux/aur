@@ -1,12 +1,11 @@
 pkgbase = genmake-templates-git
 	pkgdesc = Makefile templates for genmake
 	pkgver = r2.0f13b05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/duapple/makefile
 	arch = any
 	license = unknown
 	makedepends = git
-	depends = genmake
 	provides = genmake-templates
 	conflicts = genmake-templates
 	source = genmake-templates-git::git+https://gitee.com/duapple/makefile

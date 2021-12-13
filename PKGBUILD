@@ -2,12 +2,11 @@
 
 pkgname=genmake-templates-git
 pkgver=r2.0f13b05
-pkgrel=1
+pkgrel=2
 pkgdesc="Makefile templates for genmake"
 arch=('any')
 url="https://gitee.com/duapple/makefile"
 license=('unknown')
-depends=('genmake')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
