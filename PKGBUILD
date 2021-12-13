@@ -1,18 +1,18 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=pypyr
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Task runner for automation pipelines"
 arch=('any')
 url="https://pypyr.io"
 license=('Apache')
-depends=('python' 'python-dateutil' 'python-ruamel-yaml')
+depends=('python' 'python-dateutil' 'python-ruamel-yaml' 'python-tomli' 'python-tomli-w')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pypyr/pypyr/archive/v$pkgver.tar.gz")
-sha512sums=('68488b18564a747cc5aeef095d208ce7d1110d4b6dd9ec121c10dc1bcbd0c61fc0841ab0d2bf0fb21e4a7e164186e7fc19cab09b016e1afb7f906d94f0ad7f71')
-b2sums=('02213356854a1dee813df513c66ab5da2fb1ce8f6c03de317116c99c2035ac56efc68795640f35fec808483dfe08be2631792afe35668c5b0e11951e14e8fad8')
+sha512sums=('ba8d4a91c1680cca909d8d5c3f041485cb8c8df4e26a4f173e29924e078014e485fcdad2848d844989f93494949d30cebd20b6b8a3e716db192d4f4d1fd5ef92')
+b2sums=('33d8c5f893d7321cd41c04826f891c6152ea691b75e65344c3275ad3be6b9e34a7da7ddf5dfc38151a5da3750367a206a5d24fe342ea8779c08d096ceea8ba49')
 
 build() {
   cd "$pkgname-$pkgver"
