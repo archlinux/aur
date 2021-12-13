@@ -1,7 +1,7 @@
 pkgbase = pbget
 	pkgdesc = Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.
 	pkgver = 2021.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/pbget
 	arch = any
 	license = GPL
