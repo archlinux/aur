@@ -2,7 +2,7 @@
 
 pkgname=pytify
 pkgver=3.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python CLI application for controlling Spotify.'
 arch=(any)
 url='https://github.com/bjarneo/Pytify'
