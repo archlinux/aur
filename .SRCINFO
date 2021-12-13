@@ -11,6 +11,9 @@ pkgbase = python-cle
 	depends = python-pyvex
 	depends = python-pefile
 	depends = python-sortedcontainers
+	optdepends = python-minidump: minidump
+	optdepends = python-pyxbe: xbe
+	optdepends = python-arpy: ar
 	source = https://files.pythonhosted.org/packages/source/c/cle/cle-9.0.10730.tar.gz
 	sha256sums = c948668bf72b7f366936a68c139a3021c67e938fb2b6cc7a088ecc2248987ba5
 
