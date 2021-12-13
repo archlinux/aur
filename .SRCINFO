@@ -1,7 +1,7 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
 	pkgver = 5.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linode/linode-cli
 	install = linode-cli.install
 	arch = any
