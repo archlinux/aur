@@ -1,14 +1,14 @@
 pkgbase = git-remote-codecommit
 	pkgdesc = Git extension for interacting with AWS CodeCommit repositories using federated access.
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html
 	arch = any
 	license = Apache
 	depends = aws-cli
 	depends = python-botocore
 	depends = python
-	source = git-remote-codecommit-1.16.0.tar.gz::https://github.com/aws/git-remote-codecommit/archive/1.16.0.tar.gz
+	source = git-remote-codecommit-1.16.tar.gz::https://github.com/aws/git-remote-codecommit/archive/1.16.tar.gz
 	sha256sums = ae8847c67bef283eb3a09ab0d920295cb33bc8544b1e6838dacd5c5619ddf1ba
 
 pkgname = git-remote-codecommit
