@@ -1,7 +1,7 @@
 pkgbase = python3-memoizedb
 	pkgdesc = Generic data retrieval memoizer that uses an sqlite database to cache data.
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/python3-memoizedb
 	arch = any
 	license = GPL
