@@ -3,13 +3,14 @@
 
 pkgname=netease-musicbox-git
 _gitname=musicbox
-pkgver=0.3.1.r1.gcd2874e
-pkgrel=2
+pkgver=0.3.1.r2.g60deb52
+pkgrel=3
 pkgdesc="A sexy command line interface musicbox for NetEase based on Python"
 arch=(any)
 url="https://github.com/darknessomi/musicbox"
-depends=('mpg123' 'python-pycryptodomex' 'python-requests' 'python-future' 
-         'python-fuzzywuzzy' 'python-requests-cache' 'python-importlib-metadata')
+depends=('mpg123' 'python-pycryptodomex' 'python-requests' 'python-future'
+         'python-fuzzywuzzy' 'python-requests-cache' 'python-importlib-metadata'
+         'python-url-normalize')
 makedepends=('python-setuptools' 'python-poetry' 'git')
 optdepends=('aria2: music caching'
             'libnotify: notifications'
