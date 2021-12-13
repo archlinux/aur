@@ -1,0 +1,4 @@
+post_install() {
+  echo "Source switch.sh in .bashrc/.zsh via:"
+  echo "source /usr/bin/switch.sh"
+}
