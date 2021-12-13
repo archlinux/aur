@@ -60,7 +60,7 @@ if [[ $CLI == YES ]]; then
 else
     pkgname=emacs28-git
 fi
-pkgver=28.0.90.151064
+pkgver=28.0.90.151068
 pkgrel=1
 pkgdesc='emacs-28 release branch'
 arch=(x86_64)
@@ -69,7 +69,7 @@ license=(GPL3)
 _depends_nox=(gnutls libxml2 jansson)
 depends=("${_depends_nox[@]}" harfbuzz)
 makedepends=(git)
-provides=(emacs emacs28-git emacs-nox)
+provides=(emacs emacs-nox)
 conflicts=(emacs emacs26-git emacs-27-git emacs-git emacs-seq emacs-nox)
 replaces=(emacs emacs26-git emacs-27-git emacs-git emacs-seq emacs-nox)
 options=(!strip)
