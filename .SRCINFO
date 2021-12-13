@@ -1,7 +1,7 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
 	pkgver = 6.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tauonmusicbox.rocks
 	arch = any
 	license = GPL3
