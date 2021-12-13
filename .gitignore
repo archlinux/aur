@@ -1,0 +1,7 @@
+publish.js
+copy.sh
+tmp
+*.tar.gz
+*.pkg.tar.zst
+pkg
+src
