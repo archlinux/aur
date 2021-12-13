@@ -1,12 +1,12 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
-pkgname="python-syncthing"
+pkgname=python-syncthing
 _name=${pkgname#python-}
 pkgdesc="Python bindings to the Syncthing REST interface"
 url="https://github.com/blakev/python-syncthing"
 
 pkgver=2.3.1
-pkgrel=4
+pkgrel=5
 
 arch=("any")
 license=("MIT")

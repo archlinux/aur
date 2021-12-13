@@ -1,7 +1,7 @@
 pkgbase = python-syncthing
 	pkgdesc = Python bindings to the Syncthing REST interface
 	pkgver = 2.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/blakev/python-syncthing
 	arch = any
 	license = MIT
@@ -15,4 +15,3 @@ pkgbase = python-syncthing
 	sha256sums = 268b08ca14af7c134a4655c3a5d269f5256bcb891f0745f0c08a0c04615b6211
 
 pkgname = python-syncthing
-
