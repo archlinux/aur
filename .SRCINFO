@@ -18,4 +18,3 @@ pkgbase = python-fasttext
 	sha256sums = 7ea4edcdb64bfc6faaaec193ef181bdc108ee62bb6a04e48b2e80b639a99e27e
 
 pkgname = python-fasttext
-
