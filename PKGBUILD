@@ -5,7 +5,7 @@ pkgname=python-spyse
 _name="${pkgname#python-}"
 
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Python wrapper for spyse.com API'
 arch=('any')
@@ -23,7 +23,7 @@ sha256sums=('cfceb8b2bd94a18f99f212bf6e8be6971687af5e9f8d8c57d36491022e1623f0')
 
 build() {
   cd "$_name-python-$pkgver"
-  PYTHONHASHSEED=0 python setup.py build
+  python setup.py build
 }
 
 #check() {
@@ -34,8 +34,8 @@ build() {
 
 package() {
   cd "$_name-python-$pkgver"
-  python setup.py install --root="$pkgdir" --skip-build --optimize=1
-  install -Dm644 README.md -t"$pkgdir/usr/share/doc/$pkgname/"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --skip-build --optimize=1
+  install -Dm644 README.md  -t"$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE.md -t"$pkgdir/usr/share/licenses/$pkgname/"
 }
 
