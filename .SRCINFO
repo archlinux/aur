@@ -1,13 +1,13 @@
 pkgbase = spicetify-theme-dribbblish-dynamic
 	pkgdesc = A mod of Dribbblish theme for Spicetify with support for light/dark modes and album art based colors.
-	pkgver = 4.0.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/JulienMaille/dribbblish-dynamic-theme
 	install = spicetify-theme-dribbblish-dynamic.install
 	arch = any
 	license = custom
 	depends = spicetify-cli
-	source = https://github.com/JulienMaille/dribbblish-dynamic-theme/releases/download/4.0.0/DribbblishDynamic_v4.0.0.zip
-	md5sums = a96fbe99238cf58c4d2f05629e9fc2f3
+	source = https://github.com/JulienMaille/dribbblish-dynamic-theme/releases/download/4.1.1/DribbblishDynamic_v4.1.1.zip
+	md5sums = 1adfad370b9204eb6b5168cac35cc7c7
 
 pkgname = spicetify-theme-dribbblish-dynamic
