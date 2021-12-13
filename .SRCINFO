@@ -1,6 +1,6 @@
 pkgbase = man-pages-sr-git
 	pkgdesc = Serbian man pages (Git version)
-	pkgver = r16588.33f5cb9e88
+	pkgver = r16937.ba3ae0c9d8
 	pkgrel = 1
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	arch = any
