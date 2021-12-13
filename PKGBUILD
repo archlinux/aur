@@ -2,7 +2,7 @@
 
 pkgname=python-pelican-jupyter
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pelican plugin for Jupyter Notebooks"
 arch=('any')
 url="https://github.com/danielfrg/pelican-jupyter"
