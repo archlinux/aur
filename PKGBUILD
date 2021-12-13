@@ -1,4 +1,6 @@
-# Active Maintainers: Anderson Rocha <anderson2320@gmail.com>
+# Maintainer: Anderson Rocha <anderson2320@gmail.com>
+# Contributor: etriguba <eugenetriguba@gmail.com>
+# Contributor: NexAdn <nexadn@yandex.com>
 
 pkgname=cef-standard
 pkgver="96.0.17"
