@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-plantuml
 	pkgdesc = Sphinx 'plantuml' extension
 	pkgver = 0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/sphinxcontrib-plantuml
 	arch = any
 	license = BSD
