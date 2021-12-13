@@ -1,6 +1,6 @@
 pkgbase = sc-controller-git
 	pkgdesc = User-mode driver and GTK3 based GUI for Steam Controller
-	pkgver = v0.4.8.1.r22.e026fc17
+	pkgver = v0.4.8.6.r14.3ce2d23c
 	pkgrel = 1
 	url = https://github.com/Ryochan7/sc-controller
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = sc-controller-git
 	provides = sc-controller
 	conflicts = sc-controller
 	source = sc-controller::git+https://github.com/Ryochan7/sc-controller.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sc-controller-git
-
