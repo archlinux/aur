@@ -3,8 +3,8 @@
 
 pkgname='python-pagegen'
 _pkgname="${pkgname#python-}"
-pkgver=3.0.2
-pkgrel=5
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='Python static site generator with reStructuredText markup'
 arch=('any')
 license=('GPL')
@@ -14,20 +14,23 @@ source=(
   "https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/$wheel"
 )
 depends=(
-  'python-lxml'
   'python-docutils'
+  'python-lxml'
+  'python-rcssmin'
+  'python-htmlmin'
+  'python-jsmin'
 )
 makedepends=(
   'python-pip'
 )
 sha256sums=(
-  '7f3c65341fc5e09459d0800d607a52237fa88d9d232f24140b59a0b2b9c999e0'
+  '23421103f92589cef029fe550a8c948f14e83093e44bd6ddb2b4f7457814302c'
 )
 sha512sums=(
-  '41d83217dc265575f8b2b838558b6c4e01df0e9d1f03bd5622504f3148828649c150298394d6b3df872dfe53519698798028c3a1d3ecd0d3464e6efd0fc97df8'
+  '2c98bd3d6d91333a94f875a6f9805f8a19ff1b9a438e42096e7a6b25e388fced8e70eb6316237f2655a1a88401734b74468ef5d42c7929c3c7dd4b645b770f3c'
 )
 b2sums=(
-  '7541c64b88ce187b98c001c9e32acb084188d5cf916b41b48a162d288ec6ebeb2d682dde23db739816647f0d495bb50ee242ab7f7a32d7720e89852266934d33'
+  '756dcdef8dc62cd58c904b3a634f36fdd6981e39921b178651a5141c67fed60724ceab13374227996de2fc01e0ff17309c113dafc845aa9b9943b71296743751'
 )
 
 package() {
