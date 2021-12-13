@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-ssh2'
 _pkgname='ssh2-python'
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Python bindings for libssh2"
 url="https://github.com/ParallelSSH/ssh2-python/"
@@ -12,22 +12,22 @@ license=('GPL')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ParallelSSH/$_pkgname/archive/$pkgver.tar.gz"
     "fix-tests.patch")
-sha256sums=('38912993a9d63f8ec6f137d04c8eff1c840bb4b4801260a5b686e50ab57c86e7'
-            '49c6c5d2021db7a7ae5d81b7f34abd16bef06e8112d72b17a86eb8760d339f57')
+sha256sums=('6da1c0331aef63f4a4c6cd27e5cb06bab7dcf311d887e918c6d6d058debb18fe'
+            'b328ec97238be0fab6171108666c18f7818de2dea247857851b2356303d65e19')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    patch -p0 -i ../fix-tests.patch
+    patch -p1 -i ../fix-tests.patch
 }
 
 build() {
     cd "${_pkgname}-${pkgver}"
-    SYSTEM_LIBSSH2=1 python setup.py build_ext
+    SYSTEM_LIBSSH2=1 python setup.py build
 }
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    SYSTEM_LIBSSH2=1 python setup.py install --root="${pkgdir}" --optimize=1
+    SYSTEM_LIBSSH2=1 python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
 
 check() {

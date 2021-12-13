@@ -1,18 +1,14 @@
---- tests/test_sftp.py	2021-04-10 21:23:36.390635351 -0400
-+++ tests/test_sftp.py	2021-04-10 21:22:43.131928927 -0400
-@@ -256,7 +256,6 @@
-         sftp = self.session.sftp_init()
-         vfs = sftp.statvfs('.')
-         self.assertTrue(vfs is not None)
--        self.assertTrue(vfs.f_files > 0)
-         self.assertTrue(vfs.f_bsize > 0)
-         self.assertTrue(vfs.f_namemax > 0)
- 
-@@ -272,7 +271,6 @@
-             with sftp.open(remote_filename, 0, 0) as fh:
-                 vfs = fh.fstatvfs()
-                 self.assertTrue(vfs is not None)
--                self.assertTrue(vfs.f_files > 0)
-                 self.assertTrue(vfs.f_bsize > 0)
-                 self.assertTrue(vfs.f_namemax > 0)
-         except Exception:
+diff -urN ssh2-python-0.27.0-orig/tests/embedded_server/sshd_config.tmpl ssh2-python-0.27.0/tests/embedded_server/sshd_config.tmpl
+--- ssh2-python-0.27.0-orig/tests/embedded_server/sshd_config.tmpl	2021-12-13 16:33:07.725557322 -0500
++++ ssh2-python-0.27.0/tests/embedded_server/sshd_config.tmpl	2021-12-13 16:33:39.578913619 -0500
+@@ -1,8 +2,9 @@
+ Protocol 2
+-UsePAM yes
+ HostbasedAuthentication no
+ IgnoreUserKnownHosts yes
+ ListenAddress 127.0.0.1
++HostKeyAlgorithms +ssh-rsa
++PubkeyAcceptedAlgorithms +ssh-rsa
+
+ AcceptEnv LANG LC_*
+ Subsystem sftp internal-sftp
