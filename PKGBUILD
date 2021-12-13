@@ -5,7 +5,7 @@
 pkgname=singularity-git
 _pkgname=singularity
 pkgver=r1964.a8510bd
-pkgrel=1
+pkgrel=2
 pkgdesc="Strategy game - simulation of true AI, git version"
 arch=('any')
 url="http://emhsoft.com/singularity/index.html"
@@ -34,7 +34,7 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   # music
-  cp -R "$srcdir"/singularity-music/music  "$pkgdir"/usr/lib/python3.9/site-packages/singularity/music
+  cp -R "$srcdir"/singularity-music/music  "$pkgdir"/usr/lib/python3.10/site-packages/singularity/music
   
   
   # desktop file
