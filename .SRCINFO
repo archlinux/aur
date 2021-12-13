@@ -1,7 +1,7 @@
 pkgbase = python-dlx
 	pkgdesc = Implementation of Donald Knuth's Dancing Links algorithm
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/dlx/
 	arch = x86_64
 	license = Apache
@@ -10,4 +10,3 @@ pkgbase = python-dlx
 	sha256sums = ef75bc9d590216ebde7d4811f9ae6b2d6c6dc2a54772d94ae13384dc517a5aae
 
 pkgname = python-dlx
-
