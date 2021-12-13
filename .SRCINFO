@@ -1,7 +1,7 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
 	pkgver = 5.13.3
-	pkgrel = 0.1
+	pkgrel = 0.2
 	url = https://pagure.io/pagure
 	arch = any
 	license = GPL2
