@@ -2,7 +2,7 @@
 
 pkgname=python-uritools
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse"
 arch=('any')
 url="https://pypi.python.org/pypi/uritools"
