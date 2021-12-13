@@ -6,7 +6,7 @@ pkgbase=qubes-core-agent-linux
 pkgname=(qubes-vm-core qubes-vm-networking qubes-vm-keyring)
 _gitname=${pkgname%-git*}
 pkgver=4.0.63
-pkgrel=1
+pkgrel=2
 pkgdesc="The Qubes core files for installation inside a Qubes VM."
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-core-agent-linux"
@@ -77,7 +77,8 @@ package_qubes-vm-core() {
              python-dbus xdg-utils notification-daemon gawk sed procps-ng librsvg
              socat pacman-contrib icu
             # Block updating if there is a major python update as the python API will be in the wrong PYTHONPATH
-            'python<3.10'
+            #'python<3.10'
+            'python<3.11'
              )
     optdepends=(gnome-keyring gnome-settings-daemon python-nautilus gpk-update-viewer qubes-vm-networking qubes-vm-keyring)
     install=PKGBUILD.install

@@ -1,7 +1,7 @@
 pkgbase = qubes-core-agent-linux
 	pkgdesc = The Qubes core files for installation inside a Qubes VM.
 	pkgver = 4.0.63
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QubesOS/qubes-core-agent-linux
 	arch = x86_64
 	license = GPL
@@ -64,7 +64,7 @@ pkgname = qubes-vm-core
 	depends = socat
 	depends = pacman-contrib
 	depends = icu
-	depends = python<3.10
+	depends = python<3.11
 	optdepends = gnome-keyring
 	optdepends = gnome-settings-daemon
 	optdepends = python-nautilus
