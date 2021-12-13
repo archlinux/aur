@@ -1,6 +1,6 @@
 pkgbase = gr-ham-git
 	pkgdesc = A collection of GNU Radio blocks useful for amateur radio
-	pkgver = 0ac9253
+	pkgver = r25.7ece28e
 	pkgrel = 1
 	url = https://github.com/argilo/gr-ham.git
 	arch = any
