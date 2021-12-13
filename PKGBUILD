@@ -4,7 +4,7 @@
 pkgname=('python-enzyme' 'python2-enzyme')
 _name=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python module to parse metadata in video files."
 arch=(any)
 url="https://github.com/Diaoul/enzyme"

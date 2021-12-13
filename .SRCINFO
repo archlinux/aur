@@ -1,7 +1,7 @@
 pkgbase = python-enzyme
 	pkgdesc = Python module to parse metadata in video files.
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Diaoul/enzyme
 	arch = any
 	license = Apache
@@ -16,4 +16,3 @@ pkgname = python-enzyme
 
 pkgname = python2-enzyme
 	depends = python2
-
