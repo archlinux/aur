@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-wrapper')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper to display a script output or a text file content on the desktop in sway or other wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-wrapper"

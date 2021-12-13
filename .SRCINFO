@@ -1,7 +1,7 @@
 pkgbase = nwg-wrapper
 	pkgdesc = Wrapper to display a script output or a text file content on the desktop in sway or other wlroots-based compositors
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-wrapper
 	arch = x86_64
 	license = MIT
