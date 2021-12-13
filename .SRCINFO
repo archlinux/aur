@@ -1,7 +1,7 @@
 pkgbase = ryzen-ppd
 	pkgdesc = Power management daemon for AMD Ryzen Mobile processors
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xsmile/ryzen-ppd
 	install = ryzen-ppd.install
 	arch = any
