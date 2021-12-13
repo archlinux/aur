@@ -3,7 +3,7 @@
 pkgname=python-postpic
 _pkgname="${pkgname#*-}"
 pkgver=0.4
-pkgrel=9
+pkgrel=10
 pkgdesc='The open source particle-in-cell post processor.'
 url='https://github.com/skuschel/postpic'
 arch=('i686' 'pentium4' 'x86_64')
