@@ -2,7 +2,7 @@
 
 pkgbase=brotli-git
 pkgname=('brotli-git' 'python-brotli-git')
-pkgver=1.0.9.r10.g685d7ba
+pkgver=1.0.9.r33.g4ec6703
 pkgrel=1
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ check() {
 
 package_brotli-git() {
   depends=('glibc')
-  provides=('brotli')
+  provides=('brotli' 'libbrotlicommon.so' 'libbrotlidec.so' 'libbrotlienc.so')
   conflicts=('brotli')
 
   cd "brotli"
