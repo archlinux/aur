@@ -1,14 +1,13 @@
 pkgbase = python-dbfread
 	pkgdesc = Read DBF Files with Python
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dbfread.readthedocs.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/olemb/dbfread/archive/2.0.7.tar.gz
+	source = dbfread-2.0.7.tar.gz::https://github.com/olemb/dbfread/archive/2.0.7.tar.gz
 	sha256sums = 7772db69a32beb87027356cb04dd7775bbc2e36581e76df6ba33c0eb8d1c49ad
 
 pkgname = python-dbfread
-
