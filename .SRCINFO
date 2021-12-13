@@ -1,7 +1,7 @@
 pkgbase = python-typedload
 	pkgdesc = Load and dump data from json-like format into typed data structures
 	pkgver = 2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ltworf.github.io/typedload/
 	arch = any
 	license = GPL3

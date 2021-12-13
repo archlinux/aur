@@ -4,7 +4,7 @@
 pkgname=python-typedload
 _name=typedload
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Load and dump data from json-like format into typed data structures'
 arch=('any')
 url='https://ltworf.github.io/typedload/'
