@@ -3,7 +3,7 @@
 
 pkgname=python-pyregion
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A python module to parse ds9 and ciao region files"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pyregion"
