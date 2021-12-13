@@ -1,7 +1,7 @@
 pkgbase = python-crate
 	pkgdesc = A Python client library for CrateDB
 	pkgver = 0.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crate/crate-python
 	arch = any
 	license = Apache
@@ -13,4 +13,3 @@ pkgbase = python-crate
 	sha256sums = 6f650c2efe250b89bf35f8fe3211eb37ebc8d76f7a9c09bd73db3076708fa2fc
 
 pkgname = python-crate
-
