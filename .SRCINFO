@@ -1,7 +1,7 @@
 pkgbase = python-patch
 	pkgdesc = Patch utility to apply unified diffs
 	pkgver = 1.16
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/techtonik/python-patch/
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = python-patch
 	md5sums = d3d565685461cd91cd445edf2217ac1b
 
 pkgname = python-patch
-

@@ -2,7 +2,7 @@
 
 pkgname=python-patch
 pkgver=1.16
-pkgrel=7
+pkgrel=8
 pkgdesc='Patch utility to apply unified diffs'
 arch=('any')
 url="https://github.com/techtonik/python-patch/"
