@@ -1,7 +1,7 @@
 pkgbase = python-typepy
 	pkgdesc = Variable runtime type checker/validator/converter
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thombashi/typepy
 	arch = any
 	license = MIT
