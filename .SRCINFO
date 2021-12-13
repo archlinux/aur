@@ -1,7 +1,7 @@
 pkgbase = python3-aur
 	pkgdesc = AUR-related modules and helper utilities (aurploader, aurquery, aurtomatic).
 	pkgver = 2021.11.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/python3-aur
 	arch = any
 	license = GPL
