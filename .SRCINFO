@@ -1,6 +1,6 @@
 pkgbase = wine-wl-git
-	pkgdesc = A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland-staging-wip branch)
-	pkgver = wine.6.0.rc1.r5959.g18eb84818ec
+	pkgdesc = A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland branch)
+	pkgver = wine.6.0.rc1.r9223.gbbb26438eb5
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
@@ -14,6 +14,7 @@ pkgbase = wine-wl-git
 	makedepends = fontforge
 	makedepends = flex
 	makedepends = mingw-w64-gcc
+	makedepends = wayland-protocols
 	makedepends = giflib
 	makedepends = lib32-giflib
 	makedepends = libpng
@@ -95,6 +96,7 @@ pkgbase = wine-wl-git
 	depends = faudio
 	depends = lib32-faudio
 	depends = desktop-file-utils
+	depends = wayland
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -141,12 +143,12 @@ pkgbase = wine-wl-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=wine.6.0.rc1.r5959.g18eb84818ec
-	provides = wine64=wine.6.0.rc1.r5959.g18eb84818ec
+	provides = wine=wine.6.0.rc1.r9223.gbbb26438eb5
+	provides = wine64=wine.6.0.rc1.r9223.gbbb26438eb5
 	conflicts = wine
 	conflicts = wine64
 	options = staticlibs
-	source = git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland-staging-wip
+	source = git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha512sums = SKIP

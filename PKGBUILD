@@ -1,17 +1,17 @@
 # Maintainer: sem.z <sem.z@protonmail.com>
 
 pkgname=wine-wl-git
-pkgver=wine.6.0.rc1.r5959.g18eb84818ec
+pkgver=wine.6.0.rc1.r9223.gbbb26438eb5
 pkgrel=1
 
-source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland-staging-wip
+source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
         '6200d75042a5993294ee58583fa9d145e46a36bcc2a38ddae92482366aaf67423b160556f748cd85d3ee1c521c497488810bdc0b79e192742f83ae49e7f55938'
         '0ae5202b0ec9b4b1437f8c19f6e5f9c8ed32ef5d112f87c2bebdad62dcc60cdc0016fb9fbf911773bfab0701bc7481e686a06d2a25c9127895b7bc2dde2f2035')
 
-pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland-staging-wip branch)"
+pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland branch)"
 url="http://www.winehq.com"
 arch=(x86_64)
 options=(staticlibs)
@@ -34,8 +34,9 @@ depends=(
     'libpcap'               'lib32-libpcap'
     'faudio'                'lib32-faudio'
     'desktop-file-utils'
+    'wayland'
 )
-makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
+makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc' 'wayland-protocols'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
     'gnutls'                'lib32-gnutls'
