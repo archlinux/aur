@@ -1,7 +1,7 @@
 pkgbase = python-pymctranslate
 	pkgdesc = A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format
 	pkgver = 1.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gentlegiantJGC/PyMCTranslate
 	arch = any
 	license = custom
