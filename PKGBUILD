@@ -2,7 +2,7 @@
 
 pkgname=python-ebtables
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple Python binding for Ebtables'
 arch=('x86_64')
 url='https://github.com/ldx/python-ebtables'
