@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
 _pkgname=docs-gl
 pkgname="${_pkgname}-git"
-pkgver=r312.6b3a87b
+pkgver=r337.7842647
 pkgrel=1
 pkgdesc="An improved version of the official OpenGL documentation"
 arch=(any)

@@ -1,6 +1,6 @@
 pkgbase = docs-gl-git
 	pkgdesc = An improved version of the official OpenGL documentation
-	pkgver = r312.6b3a87b
+	pkgver = r337.7842647
 	pkgrel = 1
 	url = https://docs.gl/
 	arch = any
