@@ -1,7 +1,7 @@
 pkgbase = imgv
 	pkgdesc = a feature rich image viewer including a GUI
 	pkgver = 3.1.6
-	pkgrel = 0
+	pkgrel = 1
 	url = http://imgv.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,8 @@ pkgbase = imgv
 	source = http://downloads.sourceforge.net/imgv/imgv-3.1.6-src.tar.gz
 	source = imgv.profile
 	source = imgv.sh
-	md5sums = 48e19d90000b5d17bb609c93dd74d5b8
-	md5sums = bd0daba52c3165b38ba5a7b61ec0a94d
-	md5sums = 60a287e055f6b17ba864c207cb78d9b2
+	sha256sums = 7dd9db8d68f772e44acb9d8e8a81fdbe346644b6834cb30aad6a06b3fec99cb3
+	sha256sums = eb218e000d1e6933dedef01e3f557e5a0da21ae9817698639ea385d55e99cb3c
+	sha256sums = f2be0d9ffe6e349b72ded3519201db2684762ac9291bc9a02d94b932edcb1748
 
 pkgname = imgv
-
