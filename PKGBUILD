@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-xynexdg
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of various freedesktop.org standards, for internal use in Xyne'"'"'s modules.'
 arch=(any)
 license=(GPL)

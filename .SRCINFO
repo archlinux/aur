@@ -1,7 +1,7 @@
 pkgbase = python3-xynexdg
 	pkgdesc = Implementation of various freedesktop.org standards, for internal use in Xyne's modules.
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/python3-xynexdg
 	arch = any
 	license = GPL
