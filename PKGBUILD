@@ -3,7 +3,7 @@
 pkgname=python-xdoctest
 _pkgname="${pkgname#python-}"
 pkgver=0.15.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A rewrite of Python's doctest module"
 arch=('any')
 url="https://github.com/Erotemic/xdoctest"

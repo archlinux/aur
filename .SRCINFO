@@ -1,7 +1,7 @@
 pkgbase = python-xdoctest
 	pkgdesc = A rewrite of Python's doctest module
 	pkgver = 0.15.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Erotemic/xdoctest
 	arch = any
 	license = MIT
