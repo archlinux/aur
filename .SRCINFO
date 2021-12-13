@@ -1,27 +1,20 @@
 pkgbase = flashfocus
 	pkgdesc = Simple Xorg window focus animations for tiling window managers
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/fennerm/flashfocus
 	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-pytest-runner
-	depends = python-cffi>=1.11
-	depends = python-cffi<2.0.0
-	depends = python-xcffib>=0.6.0
-	depends = python-xcffib<1.0.0
-	depends = python-click>=6.7
-	depends = python-click<9.0.0
-	depends = python-xpybutil>=0.0.6
-	depends = python-xpybutil<1.0.0
-	depends = python-marshmallow>=2.15.0
-	depends = python-marshmallow<4.0.0
-	depends = python-yaml>=5.1
-	depends = python-yaml<6.0.0
-	depends = python-i3ipc>=2.1.1
-	depends = python-i3ipc<3.0.0
+	depends = python-cffi
+	depends = python-xcffib
+	depends = python-click
+	depends = python-xpybutil
+	depends = python-marshmallow
+	depends = python-yaml
+	depends = python-i3ipc
 	optdepends = i3-wm: compatible window manager
 	optdepends = sway: compatible window manager
 	optdepends = bspwm: compatible window manager

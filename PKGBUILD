@@ -3,26 +3,19 @@
 
 pkgname=flashfocus
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Xorg window focus animations for tiling window managers"
 url="https://www.github.com/fennerm/flashfocus"
 license=('MIT')
 arch=('any')
 depends=(
-	'python-cffi>=1.11'
-	'python-cffi<2.0.0'
-	'python-xcffib>=0.6.0'
-	'python-xcffib<1.0.0'
-	'python-click>=6.7'
-	'python-click<9.0.0'
-	'python-xpybutil>=0.0.6'
-	'python-xpybutil<1.0.0'
-	'python-marshmallow>=2.15.0'
-	'python-marshmallow<4.0.0'
-	'python-yaml>=5.1'
-	'python-yaml<6.0.0'
-	'python-i3ipc>=2.1.1'
-	'python-i3ipc<3.0.0')
+	'python-cffi'
+	'python-xcffib'
+	'python-click'
+	'python-xpybutil'
+	'python-marshmallow'
+	'python-yaml'
+	'python-i3ipc')
 makedepends=('python-setuptools' 'python-pytest-runner')
 optdepends=(
 	'i3-wm: compatible window manager'
@@ -52,6 +45,7 @@ build() {
 # }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
