@@ -1,7 +1,7 @@
 pkgbase = nvidia-utils-nvlax
 	pkgdesc = NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax
-	pkgver = 495.44
-	pkgrel = 3
+	pkgver = 495.46
+	pkgrel = 1
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-utils.install
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = nvidia-utils-nvlax
 	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
-	optdepends = nvidia-settings=495.44: configuration tool
+	optdepends = nvidia-settings=495.46: configuration tool
 	optdepends = xorg-server-devel: nvidia-xconfig
-	optdepends = opencl-nvidia=495.44: OpenCL support
-	provides = nvidia-utils=495.44
+	optdepends = opencl-nvidia=495.46: OpenCL support
+	provides = nvidia-utils=495.46
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
@@ -26,12 +26,12 @@ pkgbase = nvidia-utils-nvlax
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
 	source = nvidia.rules
-	source = NVIDIA-Linux-x86_64-495.44.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/495.44/NVIDIA-Linux-x86_64-495.44.run
-	source = nvlax::git+https://github.com/illnyang/nvlax.git
+	source = NVIDIA-Linux-x86_64-495.46.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/495.46/NVIDIA-Linux-x86_64-495.46.run
+	source = nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989
-	sha512sums = bc9054e6028ba172906e6eb9a0b8f5cfc3ae74d57f3e95e0f9057879e3af07a4b19479e80d81e948872bc47bbd674f77f5f81d4debd2e2c3ce45058cd9211802
+	sha512sums = 859548fa81478acb994b40434fc85824976b1f83bc15846290898854db84ea3c6550586a1d7e89ff3afa248310d2bcf4d2d52d5d8e91cf74e3f7e4108a7002ad
 	sha512sums = SKIP
 
 pkgname = nvidia-utils-nvlax

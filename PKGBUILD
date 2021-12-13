@@ -2,8 +2,8 @@
 
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
-pkgver=495.44
-pkgrel=3
+pkgver=495.46
+pkgrel=1
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -37,13 +37,13 @@ source=(
   "${_pkgname}.sysusers"
   "nvidia.rules"
   "${_pkg}.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-  "nvlax::git+https://github.com/illnyang/nvlax.git"
+  "nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f"
 )
 sha512sums=(
   "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
   "4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499"
   "a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989"
-  "bc9054e6028ba172906e6eb9a0b8f5cfc3ae74d57f3e95e0f9057879e3af07a4b19479e80d81e948872bc47bbd674f77f5f81d4debd2e2c3ce45058cd9211802"
+  "859548fa81478acb994b40434fc85824976b1f83bc15846290898854db84ea3c6550586a1d7e89ff3afa248310d2bcf4d2d52d5d8e91cf74e3f7e4108a7002ad"
   "SKIP"
 )
 
@@ -61,6 +61,9 @@ prepare() {
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   bsdtar -xf nvidia-persistenced-init.tar.bz2
+
+  cd "$srcdir"/nvlax
+  sed -i 's/zydis#master/zydis#55dd08c210722aed81b38132f5fd4a04ec1943b5/g' CMakeLists.txt
 }
 
 build() {
