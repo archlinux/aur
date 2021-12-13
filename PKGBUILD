@@ -14,9 +14,13 @@ source=('git://github.com/argilo/gr-ham.git')
 sha1sums=('SKIP')
 _gitname=gr-ham
 
+
 pkgver() {
   cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
