@@ -1,7 +1,7 @@
 pkgbase = python-pystache-git
 	pkgdesc = The mustache template engine written in python
 	pkgver = 0.5.4.r3.17a5dfd
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/defunkt/pystache
 	changelog = history
@@ -12,8 +12,7 @@ pkgbase = python-pystache-git
 	depends = python
 	provides = python-pystache
 	conflicts = python-pystache
-	source = git+https://github.com/defunkt/pystache#branch=master
+	source = git+https://github.com/defunkt/pystache.git#branch=master
 	sha256sums = SKIP
 
 pkgname = python-pystache-git
-
