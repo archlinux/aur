@@ -1,7 +1,7 @@
 pkgbase = gepetto-viewer-corba
 	pkgdesc = Graphical Interface for Pinocchio and HPP.
 	pkgver = 5.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gepetto/gepetto-viewer-corba
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = gepetto-viewer-corba
 	sha256sums = SKIP
 
 pkgname = gepetto-viewer-corba
-
