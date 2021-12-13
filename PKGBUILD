@@ -5,7 +5,7 @@ pkgname=python-limiter
 _name="${pkgname#python-}"
 
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Rate-limiting thread-safe, async decorators/context-managers implementing token-bucket'
 arch=('any')
@@ -22,12 +22,12 @@ sha256sums=('5608e4b6c0990b30a3477effe1fb48c969bf037963da689b946654944da4f997')
 
 build() {
   cd "$_name-$pkgver"
-  PYTHONHASHSEED=0 python setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --skip-build --optimize=1
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --skip-build --optimize=1
   install -Dm644 README.md -t"$pkgdir/usr/share/doc/$pkgname/"
 }
 

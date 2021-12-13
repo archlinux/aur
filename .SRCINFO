@@ -1,7 +1,7 @@
 pkgbase = python-limiter
 	pkgdesc = Rate-limiting thread-safe, async decorators/context-managers implementing token-bucket
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/projects/limiter
 	arch = any
 	license = AGPL
