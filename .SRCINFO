@@ -1,11 +1,12 @@
 pkgbase = imgv
-	pkgdesc = a feature rich image viewer including a GUI
+	pkgdesc = A feature rich image viewer including a GUI
 	pkgver = 3.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://imgv.sourceforge.net/
 	arch = any
 	license = GPL
 	makedepends = dos2unix
+	depends = python
 	depends = python-pygame
 	depends = python-pillow
 	source = http://downloads.sourceforge.net/imgv/imgv-3.1.6-src.tar.gz
