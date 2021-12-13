@@ -1,7 +1,7 @@
 pkgbase = python-wfdb
 	pkgdesc = A library of tools for reading, writing, and processing WFDB signals and annotations
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MIT-LCP/wfdb-python
 	arch = any
 	license = MIT
@@ -28,4 +28,3 @@ pkgbase = python-wfdb
 	sha256sums = 0fe5df76ccb718536a4ea9cce4ca37aedda990a9d474f50facbea511edaee75d
 
 pkgname = python-wfdb
-
