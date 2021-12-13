@@ -1,7 +1,7 @@
 pkgbase = gftools
 	pkgdesc = Misc tools for working with the Google Fonts library
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/gftools
 	arch = any
 	license = Apache

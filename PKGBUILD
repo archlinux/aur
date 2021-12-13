@@ -2,7 +2,7 @@
 
 pkgname=gftools
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -47,6 +47,5 @@ build() {
 
 package() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
