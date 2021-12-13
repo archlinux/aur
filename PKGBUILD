@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils-beta
 pkgname=${_pkgname}-nvlax
 pkgver=495.44
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -37,7 +37,7 @@ source=(
   "${_pkgname}.sysusers"
   "nvidia.rules"
   "${_pkg}.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-  "nvlax::git+https://github.com/illnyang/nvlax.git"
+  "nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f"
 )
 sha512sums=(
   "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
@@ -61,6 +61,9 @@ prepare() {
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   bsdtar -xf nvidia-persistenced-init.tar.bz2
+
+  cd "$srcdir"/nvlax
+  sed -i 's/zydis#master/zydis#55dd08c210722aed81b38132f5fd4a04ec1943b5/g' CMakeLists.txt
 }
 
 build() {
