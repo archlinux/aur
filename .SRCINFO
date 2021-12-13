@@ -1,0 +1,19 @@
+pkgbase = python-pyvex
+	pkgdesc = A Python interface to libVEX and VEX IR
+	pkgver = 9.0.10730
+	pkgrel = 1
+	url = https://github.com/angr/pyvex
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = make
+	makedepends = gcc
+	depends = python-pycparser
+	depends = python-cffi
+	depends = python-archinfo
+	depends = python-bitstring
+	depends = python-future
+	source = https://files.pythonhosted.org/packages/source/p/pyvex/pyvex-9.0.10730.tar.gz
+	sha256sums = d9c5db74fa966ac1a55ee971cbacc62909377a7b78751c105911b32a3defe8db
+
+pkgname = python-pyvex
