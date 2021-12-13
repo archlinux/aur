@@ -3,13 +3,13 @@
 
 pkgname=genmake
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 _commit=c16e594
 pkgdesc="Makefile template generator"
 arch=('x86_64')
 url="https://gitee.com/duapple/genmake"
 license=('AGPL3')
-depends=('glibc')
+depends=('glibc' 'genmake-templates')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/repository/archive/$_commit?format=tar.gz")
 sha256sums=('53f998c73d9662bc364f8d22541e7720f5058524ac57ef66f3b466dace0fd563')
