@@ -1,7 +1,7 @@
 pkgbase = python-postpic
 	pkgdesc = The open source particle-in-cell post processor.
 	pkgver = 0.4
-	pkgrel = 53
+	pkgrel = 54
 	url = https://github.com/skuschel/postpic
 	arch = i686
 	arch = pentium4
