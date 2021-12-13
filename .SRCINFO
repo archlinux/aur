@@ -1,7 +1,7 @@
 pkgbase = python-google-cloud-storage
 	pkgdesc = Google Cloud Storage API client library
 	pkgver = 1.43.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/python-storage
 	changelog = CHANGELOG.md
 	arch = any
