@@ -1,7 +1,7 @@
 pkgbase = mirage-python3
 	pkgdesc = A fast and simple GTK+ Image Viewer (Python3 port)
 	pkgver = 0.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/thomasross/mirage
 	arch = any
 	license = GPL3
@@ -20,4 +20,3 @@ pkgbase = mirage-python3
 	sha256sums = 2de9c32689e1b0d2c559ea68b5eca4f0b37a53ddd8687b7a9c36b51c11ffee6b
 
 pkgname = mirage-python3
-

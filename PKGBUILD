@@ -3,7 +3,7 @@
 _pkgname=mirage
 pkgname="${_pkgname}-python3"
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 _debian_pkgrel=1build2
 pkgdesc="A fast and simple GTK+ Image Viewer (Python3 port)"
 arch=('any')
