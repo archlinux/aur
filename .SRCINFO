@@ -1,7 +1,7 @@
 pkgbase = xac
 	pkgdesc = A markdown- and Pandoc-based content management system (CMS).
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/xac
 	arch = any
 	license = GPL
