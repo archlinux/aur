@@ -17,9 +17,9 @@ optdepends=('python-aiohttp: matrix_sso_helper support'
             'xdg-utils: default plumber for matrix_decrypt')
 install='weechat-matrix.install'
 source=("git+$url.git?signed#tag=$_tag"
-        'weechat-matrix_py3.10-remove-set_npn_protocols.patch')
+        "weechat-matrix-0.3.0_remove-set_npn_protocols.patch::$url/commit/4e585d5f4628e6fbeba9ec4560b440d731e076f5.patch")
 sha512sums=('SKIP'
-            '5dd6cee976de77a6747e238b3600bb0e83322482daedc7943d712ecc8e903cb452f46133a4fbb4f43e562dc7c2acffc5e8eece7e87ae21ca4affc5089444cc95')
+            'a374aae0e3df0c47476ea100bd7bb570a46530a6daa5318a445e1c0becff64cdb0a62368e18c076bdb7a06a05e7ba8f02f806f0aa0062b4dacc98af3a26d978f')
 validpgpkeys=('689A3B5BC6560AB4C99A2A0581314DA807EF4E22') # Damir Jelić (poljar) <poljar@termina.org.uk>
 
 pkgver() {
@@ -32,8 +32,9 @@ prepare() {
 	sed -ri 's|#!/usr/bin/env( -S)? python3|#!/usr/bin/python3|' contrib/*.py
 	dephell deps convert --from pyproject.toml --to setup.py
 
-	# Remove deprecated function which is broken in Python 3.10
-	patch --forward --strip=1 --input="$srcdir/weechat-matrix_py3.10-remove-set_npn_protocols.patch"
+	# SSLContext.set_npn_protocols broken in Python 3.10
+	# (https://github.com/poljar/weechat-matrix/issues/308)
+	patch --forward --strip=1 --input="$srcdir/weechat-matrix-0.3.0_remove-set_npn_protocols.patch"
 }
 
 build() {
