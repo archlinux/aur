@@ -6,7 +6,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=249.r1795.g2ad2925de5
+pkgver=250.rc2.r55.g17cfd6f96f
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -20,13 +20,13 @@ makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson' 'python-jinja')
-options=('strip')
+options=('!ccache')
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgbasename"
-  # cutting off 'v' prefix that presents in the git tag
+  cd "${_pkgbasename}"
+
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -42,19 +42,21 @@ build() {
     #  * Cloudflare (https://1.1.1.1/)
     #  * Quad9 without filtering (https://www.quad9.net/)
     #  * Google (https://developers.google.com/speed/public-dns/)
-    1.1.1.1
-    9.9.9.10
-    8.8.8.8
-    2606:4700:4700::1111
-    2620:fe::10
-    2001:4860:4860::8888
+    1.1.1.1#cloudflare-dns.com
+    9.9.9.10#dns.quad9.net
+    8.8.8.8#dns.google
+    2606:4700:4700::1111#cloudflare-dns.com
+    2620:fe::10#dns.quad9.net
+    2001:4860:4860::8888#dns.google
   )
  
   local _meson_options=(
     --libexecdir  /usr/lib32
     --libdir    /usr/lib32
 
-    -Dversion-tag="${pkgver}-${pkgrel}-arch"
+    # internal version comparison is incompatible with pacman:
+    #   249~rc1 < 249 < 249.1 < 249rc
+    -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
     -Dmode=release
 
     # features
