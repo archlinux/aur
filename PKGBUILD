@@ -3,6 +3,7 @@ pkgname=('vramsteg')
 pkgver=1
 pkgrel=1
 pkgdesc="A command line utility that provides shell scripts with a full-featured progress indicator."
+provides=('vramsteg')
 arch=('x86_64')
 url="https://github.com/mogaal/vramsteg"
 license=('MIT')
@@ -18,5 +19,6 @@ build() {
 
 package() {
 	cd "$srcdir/vramsteg"
-	sudo make install
+	#sudo make install
+	install -Dm755 vramsteg "${pkgdir}/usr/bin/vramsteg"
 }

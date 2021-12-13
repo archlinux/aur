@@ -8,6 +8,7 @@ pkgbase = vramsteg
 	makedepends = git
 	makedepends = make
 	makedepends = cmake
+	provides = vramsteg
 	source = git+https://github.com/mogaal/vramsteg.git
 	md5sums = SKIP
 
