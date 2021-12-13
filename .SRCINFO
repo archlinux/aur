@@ -1,7 +1,7 @@
 pkgbase = python-uritools
 	pkgdesc = RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/uritools
 	arch = any
 	license = MIT
