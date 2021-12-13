@@ -4,14 +4,21 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
 checkdepends=(openssh python-dbus rsync systemd)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/$pkgver.tar.gz")
-b2sums=('b5bea6aad750ffe133d650af9b957500f857fabc9ab14e7e02abe2e7cc3bad806c609f76c5f553e764435b3ab5b5096d21c7329bd7497814f8a4ab23cb58f49f')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/$pkgver.tar.gz"
+0001-make-tools.py-work-on-python-3.10.patch::https://patch-diff.githubusercontent.com/raw/bit-team/backintime/pull/1174.patch)
+b2sums=('b5bea6aad750ffe133d650af9b957500f857fabc9ab14e7e02abe2e7cc3bad806c609f76c5f553e764435b3ab5b5096d21c7329bd7497814f8a4ab23cb58f49f'
+        '060784876df4be67324b49452b6382e542ba22071483ae1594e738e0480395415c84207fce66374be859f477b7e53f80fd8e0ef9ed93f1495b31b56f2387e52d')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch -Np1 -i ../0001-make-tools.py-work-on-python-3.10.patch
+}
 
 build() {
   cd "$_pkgname-$pkgver/common"
