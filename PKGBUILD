@@ -2,7 +2,7 @@
 
 pkgname=sc-controller
 pkgver=0.4.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('any')
 url='https://github.com/Ryochan7/sc-controller'
