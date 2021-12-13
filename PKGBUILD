@@ -2,7 +2,7 @@
 
 pkgname=fontdiffenator
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Font regression tester for Google Fonts'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -21,7 +21,6 @@ sha256sums=('23caa29fed25af34dfed5b2a51145f9b7153f5087f16b0b51c191d906cf47962')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 

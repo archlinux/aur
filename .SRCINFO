@@ -1,7 +1,7 @@
 pkgbase = fontdiffenator
 	pkgdesc = Font regression tester for Google Fonts
 	pkgver = 0.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/fontdiffenator
 	arch = any
 	license = Apache
