@@ -4,7 +4,7 @@
 _npmname=clean-css
 pkgname=nodejs-$_npmname
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, efficient, and well tested CSS minifier for node.js."
 arch=('any')
 url="https://github.com/jakubpawlowicz/clean-css"
@@ -16,11 +16,7 @@ noextract=($_npmname-$pkgver.tgz)
 sha256sums=('4eedbac6e7157bdd6d0879770359d8d29260cf453564e3dcae098b9413a4b324')
 
 package() {
-  npm install -g --prefix "$pkgdir/usr" "$srcdir"/$_npmname-$pkgver.tgz
-
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/npm/issues/9359 for details.
-  chmod -R u=rwX,go=rX "$pkgdir"
+  npm install -g --prefix "$pkgdir/usr" --cache "${srcdir}/npm-cache" "$srcdir"/$_npmname-$pkgver.tgz
 
   # npm installs package.json owned by build user
   # https://bugs.archlinux.org/task/63396
