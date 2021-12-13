@@ -1,3 +1,4 @@
+# Contributor: NexAdn <git@nexadn.de>
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon
 pkgver=0.1.2
@@ -26,12 +27,12 @@ build () {
 }
 
 package() {
-  install -Dm755 build/abaddon "$pkgdir"/opt/abaddon/abaddon
+  install -Dm755 build/abaddon "$pkgdir"/usr/bin/abaddon
 
-  install -Dm644 "$pkgname"/res/css/* -t "$pkgdir"/opt/abaddon/css
-  install -Dm644 "$pkgname"/res/res/* -t "$pkgdir"/opt/abaddon/res
-  install -d "$pkgdir"/opt/abaddon/fonts
-  cp -r "$pkgname"/res/fonts/* "$pkgdir"/opt/abaddon/fonts/
+  install -Dm644 "$pkgname"/res/css/* -t "$pkgdir"/usr/share/abaddon/css
+  install -Dm644 "$pkgname"/res/res/* -t "$pkgdir"/usr/share/abaddon/res
+  install -d "$pkgdir"/usr/share/abaddon/fonts
+  cp -r "$pkgname"/res/fonts/* "$pkgdir"/usr/share/abaddon/fonts/
 
   install -Dm666 /dev/null "$pkgdir"/opt/abaddon/abaddon.ini
 
