@@ -3,7 +3,7 @@
 pkgname=python-plasmalights
 _name=${pkgname#python-}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma LED driver, FX Sequencer and plugins for Pimoroni."
 arch=('any')
 url="https://github.com/pimoroni/plasma"

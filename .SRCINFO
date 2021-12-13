@@ -1,7 +1,7 @@
 pkgbase = python-plasmalights
 	pkgdesc = Plasma LED driver, FX Sequencer and plugins for Pimoroni.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pimoroni/plasma
 	arch = any
 	license = MIT
