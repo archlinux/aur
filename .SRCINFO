@@ -1,7 +1,7 @@
 pkgbase = zk
 	pkgdesc = A command-line tool helping you to maintain a Zettelkasten or personal wiki.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/mickael-menu/zk
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = zk
 	makedepends = go
 	makedepends = git
 	depends = icu
+	depends = sqlite
 	source = zk-0.8.0.tar.gz::https://github.com/mickael-menu/zk/archive/refs/tags/v0.8.0.tar.gz
 	sha256sums = b1967e93469aa6abdc49d0cbd21f603576bcf09d94c2a13a6dce78bbf2983805
 
