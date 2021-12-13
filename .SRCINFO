@@ -1,7 +1,7 @@
 pkgbase = python-cattrs
 	pkgdesc = Complex custom class converters for attrs
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tinche/cattrs
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 _pipname=cattrs
 pkgname=python-${_pipname,,}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complex custom class converters for attrs'
 arch=(any)
 url="https://github.com/Tinche/$_pipname"
