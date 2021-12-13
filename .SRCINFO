@@ -1,15 +1,12 @@
 pkgbase = python-attrdict
 	pkgdesc = A library that provides mapping objects that allow their elements to be accessed both as keys and as attributes.
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/attrdict/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/a/attrdict/attrdict-2.0.1.tar.gz
 	sha256sums = 35c90698b55c683946091177177a9e9c0713a0860f0e049febd72649ccd77b70
 
 pkgname = python-attrdict
-
-pkgname = python2-attrdict
