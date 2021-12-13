@@ -1,7 +1,7 @@
 pkgbase = python-oct2py
 	pkgdesc = Python to GNU Octave bridge.
-	pkgver = 5.2.0
-	pkgrel = 2
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = http://github.com/blink1073/oct2py
 	arch = any
 	license = MIT
@@ -16,8 +16,7 @@ pkgbase = python-oct2py
 	optdepends = python-sphinx: documentation support
 	optdepends = python-sphinx-bootstrap-theme
 	optdepends = python-numpydoc: documentation support
-	source = https://files.pythonhosted.org/packages/source/o/oct2py/oct2py-5.2.0.tar.gz
-	sha256sums = 7e7f03724d60745b6ff49760027712a5ae22ed3c67f8d4560ba8a80c2ebdfaf0
+	source = https://files.pythonhosted.org/packages/source/o/oct2py/oct2py-5.3.0.tar.gz
+	b2sums = 90bcfa9aafd16ba4da214e311c878eb864bc13310db1c4135258029e35f6adf0dfd241d8d6ec5f51a3a0a07c104d2eb7baed8cb87144a130f595677a24da4b90
 
 pkgname = python-oct2py
-
