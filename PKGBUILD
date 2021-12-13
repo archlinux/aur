@@ -3,7 +3,7 @@ pkgname=python-pyufr-git
 _pkgname=python-pyufr
 _gitname=pyuFR
 pkgver=r67.2df1e2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Python3 library to communicate with Digital Logic µFR-series NFC readers"
 arch=('x86_64')
 url="https://github.com/Giraut/pyuFR"
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir"/"$_gitname"
-	mkdir -p "$pkgdir"/usr/lib/python3.9/site-packages
+	mkdir -p "$pkgdir"/usr/lib/python3.10/site-packages
 
 	mkdir -p "$pkgdir"/usr/share/licenses/${_pkgname}
 
