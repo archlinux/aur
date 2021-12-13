@@ -1,6 +1,6 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
-pkgname="python-syncthingmanager-git"
+pkgname=python-syncthingmanager-git
 _name=${pkgname#python-}
 pkgdesc="Command line tool for the Syncthing API"
 url="https://github.com/classicsc/syncthingmanager"
@@ -9,7 +9,7 @@ provides=("python-syncthingmanager")
 conflicts=("python-syncthingmanager")
 
 pkgver=0.2.0dev2
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("MIT")
