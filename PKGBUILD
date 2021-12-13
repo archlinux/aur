@@ -5,7 +5,7 @@
 
 pkgname=pyspread
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based non-traditional spreadsheet application"
 arch=('any')
 url="https://pyspread.gitlab.io/"
