@@ -1,13 +1,13 @@
 # Maintainer: zezadas <zezadasmoreira at gmail dot com>
 
 pkgname=gr-mixalot-git
-pkgver=v34.56acf51
+pkgver=v93.6c01f75
 pkgrel=1
 pkgdesc="POCSAG encoder blocks for GNU radio"
 arch=('any')
 url="https://github.com/unsynchronized/gr-mixalot"
 license=(unknown)
-depends=('gnuradio' 'libosmocore' 'boost' 'swig' 'itpp')
+depends=('gnuradio<3.9' 'libosmocore' 'boost' 'swig' 'itpp')
 makedepends=('cmake')
 provides=('gr-mixalot')
 source=('git+https://github.com/unsynchronized/gr-mixalot.git') 

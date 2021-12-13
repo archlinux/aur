@@ -1,12 +1,12 @@
 pkgbase = gr-mixalot-git
 	pkgdesc = POCSAG encoder blocks for GNU radio
-	pkgver = v34.56acf51
+	pkgver = v93.6c01f75
 	pkgrel = 1
 	url = https://github.com/unsynchronized/gr-mixalot
 	arch = any
 	license = unknown
 	makedepends = cmake
-	depends = gnuradio
+	depends = gnuradio<3.9
 	depends = libosmocore
 	depends = boost
 	depends = swig
@@ -16,4 +16,3 @@ pkgbase = gr-mixalot-git
 	sha1sums = SKIP
 
 pkgname = gr-mixalot-git
-
