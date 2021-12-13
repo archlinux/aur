@@ -3,7 +3,7 @@
 pkgname=python-deezer-py
 _reponame=deezer-py
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper for all Deezer's APIs"
 url="https://pypi.org/project/deezer-py/"
 arch=(any)
