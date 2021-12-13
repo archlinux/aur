@@ -1,7 +1,7 @@
 pkgbase = relational
 	pkgdesc = Educational tool for relational algebra
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ltworf.github.io/relational/
 	arch = any
 	license = GPL3
@@ -14,4 +14,3 @@ pkgbase = relational
 	sha256sums = 3b0242f24f512f388625f1766381d1e53b5ceec078764035498b268c828eb72e
 
 pkgname = relational
-

@@ -3,7 +3,7 @@
 
 pkgname=relational
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Educational tool for relational algebra"
 arch=('any')
 url="http://ltworf.github.io/relational/"
