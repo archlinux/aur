@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=materia-kde-git
-pkgver=20180424.r2.ga974d24
+pkgver=20211123.r1.g9192b26
 pkgrel=1
 pkgdesc="Materia theme for KDE Plasma 5"
 arch=('any')
