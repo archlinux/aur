@@ -1,18 +1,18 @@
 pkgbase = python-pylzma
 	pkgdesc = Platform independent python bindings for the LZMA compression library
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.joachim-bauch.de/projects/pylzma/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	noextract = ux.stackexchange.com.201214.7z
+	noextract = ux.stackexchange.com.210629.7z
 	source = pylzma-0.5.0.tar.gz::https://github.com/fancycode/pylzma/archive/v0.5.0.tar.gz
-	source = ux.stackexchange.com.201214.7z::https://archive.org/download/stackexchange/ux.stackexchange.com.7z
+	source = ux.stackexchange.com.210629.7z::https://archive.org/download/stackexchange/ux.stackexchange.com.7z
 	sha256sums = baefed4c84d147a507a606206478ff0894e04fa41aa3742381159cde44836fc3
-	sha256sums = 37fdf094ee89bb03701ccbdf8ac7bee4733795738cbde62fdf032b8bd9f83cab
+	sha256sums = SKIP
 
 pkgname = python-pylzma
 	depends = python
@@ -23,4 +23,3 @@ pkgname = python2-pylzma
 	provides = pylzma=0.5.0
 	conflicts = pylzma
 	replaces = pylzma
-
