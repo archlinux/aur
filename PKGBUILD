@@ -13,12 +13,11 @@ md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/vramsteg"
-	cmake .
+	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/bin/vramsteg" .
 	make
 }
 
 package() {
 	cd "$srcdir/vramsteg"
-	#sudo make install
-	install -Dm755 vramsteg "${pkgdir}/usr/bin/vramsteg"
+	sudo make install
 }
