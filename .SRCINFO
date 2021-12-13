@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-infomaniak
 	pkgdesc = Infomaniak DNS Authenticator plugin for Certbot
 	pkgver = 0.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/certbot-dns-infomaniak
 	arch = any
 	license = Apache
