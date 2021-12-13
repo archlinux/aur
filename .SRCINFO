@@ -1,0 +1,17 @@
+pkgbase = kde-rounded-corners
+	pkgdesc = Round the corners of windows
+	pkgver = 1.0
+	pkgrel = 1.0
+	url = https://github.com/matinlotfali/KDE-Rounded-Corners
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = kinit
+	makedepends = git
+	depends = kwin
+	source = git+https://github.com/matinlotfali/KDE-Rounded-Corners
+	sha256sums = SKIP
+
+pkgname = kde-rounded-corners
