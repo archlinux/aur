@@ -1,7 +1,7 @@
 pkgbase = python-quantlib
 	pkgdesc = A Python binding for QuantLib.
 	pkgver = 1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://quantlib.org
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = python-quantlib
 	makedepends = boost
 	depends = quantlib>=1.24
 	depends = python
+	depends = openmp
 	options = !libtool
 	source = https://github.com/lballabio/QuantLib-SWIG/releases/download/QuantLib-SWIG-v1.24/QuantLib-SWIG-1.24.tar.gz
 	sha256sums = b04f85965bf3f890ef91eb2f826c64c27bd974078edca376013b497410605a4d
