@@ -1,7 +1,7 @@
 pkgbase = python-pydna
 	pkgdesc = Data structures for double-stranded DNA & simulation of homologous recombination
 	pkgver = 4.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bjornfjohansson/pydna
 	changelog = CHANGELOG.md
 	arch = any

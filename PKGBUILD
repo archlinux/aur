@@ -3,7 +3,7 @@
 
 pkgname=python-pydna
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Data structures for double-stranded DNA & simulation of homologous recombination'
 arch=('any')
 url='https://github.com/bjornfjohansson/pydna'
