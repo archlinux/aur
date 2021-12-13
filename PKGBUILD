@@ -4,7 +4,7 @@
 pkgname='python-schedule'
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python job scheduling for humans.'
 arch=('any')
 url="https://github.com/dbader/schedule"
