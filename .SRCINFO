@@ -1,7 +1,7 @@
 pkgbase = kosmorro
 	pkgdesc = A program to calculate the ephemerides
 	pkgver = 0.10.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kosmorro.space
 	arch = any
 	license = AGPL3

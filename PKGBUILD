@@ -2,7 +2,7 @@
 
 pkgname=kosmorro
 pkgver=0.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A program to calculate the ephemerides'
 depends=(
     'python'
