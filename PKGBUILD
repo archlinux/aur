@@ -3,7 +3,7 @@
 # https://github.com/phnx47/pkgbuilds
 
 pkgname=koofr
-pkgver=r6.eb5e9e0
+pkgver=6000.r0.eb5e9e0
 pkgrel=1
 pkgdesc="Managing your Koofr cloud drive"
 arch=('x86_64')
