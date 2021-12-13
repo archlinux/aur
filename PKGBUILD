@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=pssh-lilydjwg-git
-pkgver=2.3.1.r27.ga2f936b
+pkgver=2.3.4.r10.gd4909c9
 pkgrel=1
 pkgdesc='Parallel SSH Tools'
 arch=('any')
@@ -9,7 +9,7 @@ license=('custom')
 url='https://github.com/lilydjwg/pssh/'
 depends=('python')
 makedepends=('git' 'python-setuptools')
-conflicts=('python-pssh')
+conflicts=('python-pssh' 'putty')
 source=("git+https://github.com/lilydjwg/pssh/")
 sha512sums=('SKIP')
 
