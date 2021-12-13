@@ -39,7 +39,7 @@ build() {
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
-    PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-3.9" python tests/__init__.py
+    PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-3.10" python tests/__init__.py
 
     cd "$srcdir/$_pkgname-$pkgver-py2"
     PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-2.7" python2 tests/__init__.py
