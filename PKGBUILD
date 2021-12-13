@@ -3,7 +3,7 @@
 
 pkgname=python-faust
 pkgver=1.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Stream Processing"
 arch=('x86_64')
 url='https://github.com/robinhood/faust'

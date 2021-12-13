@@ -1,7 +1,7 @@
 pkgbase = python-faust
 	pkgdesc = Python Stream Processing
 	pkgver = 1.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robinhood/faust
 	arch = x86_64
 	license = BSD
