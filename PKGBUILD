@@ -3,8 +3,8 @@
 
 pkgname=vpn-slice-git
 _pkgname=vpn-slice
-pkgver=v0.15.r0.g2085bda
-pkgrel=2
+pkgver=v0.15.r38.g2bd5253
+pkgrel=1
 pkgdesc="Python based vpnc-script replacement for easy and secure split-tunnel VPN setup"
 arch=('any')
 url="https://github.com/dlenski/vpn-slice"
