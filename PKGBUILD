@@ -2,7 +2,7 @@
 
 _pkgbase=rtw89
 _srcname=rtw89
-_branch=v7
+_branch=main
 pkgname=${_pkgbase}-dkms-git
 pkgver=r129.248a921
 pkgrel=4

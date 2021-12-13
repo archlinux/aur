@@ -10,7 +10,7 @@ pkgbase = rtw89-dkms-git
 	depends = dkms
 	provides = rtw89
 	conflicts = rtw89
-	source = rtw89::git+https://github.com/lwfinger/rtw89.git#branch=v7
+	source = rtw89::git+https://github.com/lwfinger/rtw89.git#branch=main
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = d4015a9c63b86baa120b558f4acc19c60fe5cbea7ded338173e08cec47327b40
