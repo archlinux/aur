@@ -6,7 +6,7 @@
 
 pkgname=google-cloud-sdk-datastore-emulator
 pkgver=366.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A google-cloud-sdk component that provides local emulation of a Datastore environment."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
