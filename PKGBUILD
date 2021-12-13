@@ -3,7 +3,7 @@
 _name=Amulet-NBT
 pkgname=python-${_name,,}
 pkgver=1.0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python and Cython library for reading and writing binary NBT and stringified NBT'
 arch=('x86_64')
 url="https://github.com/Amulet-Team/$_name"
