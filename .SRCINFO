@@ -1,7 +1,7 @@
 pkgbase = python-kosmorrolib
 	pkgdesc = A library to compute the ephemerides
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kosmorro.space/lib
 	arch = any
 	license = AGPL
