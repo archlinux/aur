@@ -1,6 +1,6 @@
 pkgbase = zash
 	pkgdesc = Zash - A Zuper Awesome Shell
-	pkgver = 0.1.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/robiot/zash
 	install = zash.install
@@ -8,7 +8,7 @@ pkgbase = zash
 	arch = aarch64
 	license = GPL-3.0
 	makedepends = cargo
-	source = git+https://github.com/robiot/zash.git
+	source = https://github.com/robiot/zash/archive/refs/tags/v0.3.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = zash
