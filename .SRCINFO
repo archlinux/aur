@@ -1,0 +1,13 @@
+pkgbase = libgrapheme-git
+	pkgdesc = grapheme cluster utility library
+	pkgver = r48.f128a91
+	pkgrel = 1
+	url = https://git.suckless.org/libgrapheme/log.html
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	provides = libgrapheme
+	source = libgrapheme-git::git://git.suckless.org/libgrapheme
+	sha256sums = SKIP
+
+pkgname = libgrapheme-git
