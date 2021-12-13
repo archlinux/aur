@@ -3,7 +3,7 @@
 pkgname=python-pytest-deadfixtures
 _pkgname="${pkgname#python-}"
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pytest plugin to list unused fixtures in tests"
 arch=('any')
 url="https://github.com/jllorencetti/pytest-deadfixtures"
