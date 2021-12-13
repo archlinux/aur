@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-constraint
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Module implementing support for handling CSPs (Constraint Solving Problems) over finite domain"
 arch=('x86_64')
 url="https://github.com/python-constraint/python-constraint"
@@ -20,5 +20,5 @@ package() {
 	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 	# Delete example folder to avoid conflict files with python-cvxpy
-	rm -r "${pkgdir}/usr/lib/python3.9/site-packages/examples"
+	rm -r "${pkgdir}/usr/lib/python3.10/site-packages/examples"
 }
