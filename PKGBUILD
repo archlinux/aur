@@ -3,19 +3,19 @@
 
 _projectname=electron
 _major=14
-_pkgname=${_projectname}${_major}
-pkgname="${_pkgname}-bin"
-_pkgver="${_major}.2.1"
+_pkgname="${_projectname}${_major}"
+pkgname="${_pkgname}"-bin
+_pkgver="${_major}.2.5"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
-pkgdesc="Build cross platform desktop apps with web technologies - version ${_major} - binary version"
+pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url=https://electronjs.org/
 license=('MIT')
-provides=("${_pkgname}" "${_projectname}")
-conflicts=("${_pkgname}" "${_projectname}")
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxslt' 'minizip'
-         'nss' 're2' 'snappy')
+provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
+conflicts=("${_pkgname}")
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
+         'snappy')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
@@ -38,14 +38,14 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('5633db2081ab018f88b0357f16fafefd84e0df3d33c1b4d9cf18c9468d522163'
-                   '820271f62c17cdfe61ed7bce4eff1e82c375d317b7e8b47f965ce9fa863e5994')
-sha256sums_i686=('89e25f58e75e325844be78324ce3b957ebe3d631f6b64fa682ed1982b0df1bf5'
-                 '478efa82bf017f65fda6f90405d3ccc6adb073bd4b2ab2985e550b5ac6135cba')
-sha256sums_armv7h=('1b9e938fdd8e9c2bc463c5dadfbafb29cf9058f7c9acf25eb34808dd856cc0b4'
-                   'd95b5055a53ffb4c502885c3b35f0b938c1be3a7b77e378587d99e6ce009e5d5')
-sha256sums_aarch64=('7640bac70b95c66ec86032752dbf516987c93f5a9cd2077b7705193a6ca563d7'
-                    '52d71b92606b639881b82efd369e4cc3fd01cade476cbb25cafb22e05a8c423b')
+sha256sums_x86_64=('909c2062d7ef0659f5734fb7ea6d1e64bda2448403b7156427fdfca9b8492927'
+                   '5820ea6c9cfe02096a75df43cab7cdfe5947d6d90207e98c563bd50c400f8110')
+sha256sums_i686=('a16f86a6a59d0f2f46cee40bc0800045ed1beb13cbb8dcf34611078cc94dd1af'
+                 '8099fc3b137e80c5e65493dea2cf3dfb923e86693f3b082429f6fd949560f540')
+sha256sums_armv7h=('d018442f0cdd654b5fb9c523226fe09be8da30a18da7f8ec39dc2c8ff11a052a'
+                   'd6f7e2fe6088f57ecd455035e0815c20dd1d84b4cbf669e5fa355b96f36eaf2e')
+sha256sums_aarch64=('9e5752b9afa1008729b3a54ad12f3a370bc7e61e1f70d35fa9c3dd0694bf588f'
+                    'c8a1a7c5c04462bbe6e148587a72b002ab4bb90aecb9686546b22580c0f9fa52')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
