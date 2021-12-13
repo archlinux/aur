@@ -1,24 +1,26 @@
 pkgbase = pops-usb-setup
 	pkgdesc = Setup a USB drive for the POPS emulator
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/tallero/pops-usb-setup
 	arch = any
 	license = AGPL3
 	makedepends = git
+	makedepends = p7zip
 	makedepends = python-setuptools
-	makedepends = wget
 	depends = python
 	options = !strip
-	source = git+https://gitlab.com/tallero/pops-usb-setup#branch=opl
+	source = git+https://gitlab.com/tallero/pops-usb-setup
 	source = git+https://github.com/AnimMouse/POPS-binaries#commit=c63de15
 	source = https://github.com/ps2homebrew/Open-PS2-Loader/releases/download/v1.1.0/OPNPS2LD.7z
 	source = https://archive.org/download/pops-iox/POPSTARTER.ELF
 	source = https://archive.org/download/pops-iox/POPS_IOX.PAK
+	source = https://bitbucket.org/ShaolinAssassin/popstarter-documentation-stuff/downloads/POPStarter_SMB_Quickstarter_Pack_20200209.zip
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = e39a5537f8bfd5fcc9964f1d20302a02f5936c3bd5154db61b85aa16d9182a83f70135c4782ef38ca1120137c2c19c508587d3a7e69016008f2c77dca44ac50b
 	sha512sums = 2449bc74620434e8ef6e6bf0f564957b0ba80a9ea53d15a3245e2873367f61d8e0d0670f04003c3dc6d778c6a540be35570052d6f8ccd7201e6dbf6b4600ba9e
 	sha512sums = d171b51f19080f1dcbd25acdd3c8695014352472dd2a164b6053bfe8bb52741ef35e1852a244ba18c018a79eecd26ce185fc9d67bde85f32f48a7fdca01bf751
+	sha512sums = SKIP
 
 pkgname = pops-usb-setup
