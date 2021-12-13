@@ -1,7 +1,7 @@
 pkgbase = python-monai
-	pkgdesc = Python wrap of crf and dense crf, both 2d and 3d are supported
+	pkgdesc = AI Toolkit for Healthcare Imaging
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://monai.io
 	arch = x86_64
 	license = BSD
