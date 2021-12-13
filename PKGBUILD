@@ -3,7 +3,7 @@
 pkgbase=duckdb
 pkgname=('duckdb' 'python-duckdb')
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance analytical database system"
 arch=('x86_64')
 url="https://duckdb.org"
