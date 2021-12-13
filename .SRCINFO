@@ -1,7 +1,7 @@
 pkgbase = mutter-rounded
 	pkgdesc = A window manager for GNOME, with rounded corners patch
-	pkgver = 41.1+r20+ge3931f7b8
-	pkgrel = 1.1
+	pkgver = 41.2
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	install = mutter.install
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = mutter-rounded
 	provides = libmutter-9.so
 	provides = mutter
 	conflicts = mutter
-	source = mutter-rounded::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=e3931f7b8cbd44072137c5dc9de9041486daeade
+	source = mutter-rounded::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=664ac09eecfd365b5258f53d2c9e6c8410a37919
 	source = rounded_corners.patch
 	source = shell_blur_effect.patch
 	source = meta_clip_effect.c

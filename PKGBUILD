@@ -6,8 +6,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=41.1+r20+ge3931f7b8
-pkgrel=1.1
+pkgver=41.2
+pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -24,7 +24,7 @@ conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
 
-_commit=e3931f7b8cbd44072137c5dc9de9041486daeade  # gnome-41
+_commit=664ac09eecfd365b5258f53d2c9e6c8410a37919  # tags/41.2^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.c"
