@@ -1,7 +1,7 @@
 pkgbase = python-astropy
 	pkgdesc = A community python library for astronomy
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.astropy.org/
 	arch = i686
 	arch = x86_64
