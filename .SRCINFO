@@ -1,7 +1,7 @@
 pkgbase = ranger-sixel
 	pkgdesc = Simple, vim-like file manager, with PR 2234 for sixel image support
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ranger.github.io
 	arch = any
 	license = GPL

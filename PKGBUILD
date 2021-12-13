@@ -6,7 +6,7 @@
 _pkgname=ranger
 pkgname=ranger-sixel
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, vim-like file manager, with PR 2234 for sixel image support'
 arch=('any')
 url='https://ranger.github.io'
