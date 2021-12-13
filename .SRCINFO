@@ -1,7 +1,7 @@
 pkgbase = python-datauri
 	pkgdesc = A li'l class for data URI manipulation in Python
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcurella/python-datauri
 	arch = any
 	license = Unlicense
@@ -9,6 +9,8 @@ pkgbase = python-datauri
 	depends = python
 	options = !strip
 	source = python-datauri-1.0.0.tar.gz::https://github.com/fcurella/python-datauri/archive/refs/tags/v1.0.0.tar.gz
+	source = 0001-Explicitly-specify-break_on_hyphens-False-in-wrap.patch::https://github.com/fcurella/python-datauri/commit/73b4ee6c2e845dbd678f19dea95d5840f27a4015.patch
 	sha256sums = 82e53259cef2394268cb5b8e91453b48b68321d8473c32c6f903092e1b5c966f
+	sha256sums = 43c7ba65e4ce7bceb809d302ca7c6e6fe849477af8e23ad01f73fa5f007cb7ec
 
 pkgname = python-datauri
