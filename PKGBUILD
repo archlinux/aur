@@ -13,7 +13,7 @@ provides=('nats')
 
 source=("https://github.com/nats-io/natscli/releases/download/v${pkgver}/nats-${pkgver}-linux-amd64.zip")
 
-sha256sums=('109849adf8e8ae112e01351e235f41dfa605dbe62886903d0a8d83fc935e52cc')
+sha256sums=('0501cabd5da181a263bd2ac4d8bb35bddd022dd08fa2e2d537eae711997811a3')
 
 package() {
 	install -D -m755 $srcdir/nats-${pkgver}-linux-amd64/nats $pkgdir/usr/bin/nats
