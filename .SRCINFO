@@ -1,7 +1,7 @@
 pkgbase = python-taskipy
 	pkgdesc = The complementary task runner for Python
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illBeRoy/taskipy
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 pkgname=python-taskipy
 _pkgname="${pkgname#python-}"
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The complementary task runner for Python"
 arch=('any')
 url="https://github.com/illBeRoy/taskipy"
