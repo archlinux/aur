@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <info@fabiomanganiello.com>
 
 pkgname=platypush
-pkgver=0.22.7
+pkgver=0.22.8
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pyserial: Arduino/serial device support')
 options=(!strip)
 source=("${pkgname}-v${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('93f5e9d9d7bca86035338e5a01e52c85469f1b001f0386ac2a52eb894449f667dc741039b8b32dc4992c7c1e81b385313aba384f6ca76e8efa070c1e104a4728')
+sha512sums=('0b58cc55a02bf9d335b567cb916b9d2de15aea925040526334121a01e132322d99793b02412b5c59ae50424d8ea876db43801b8fcdc6d957e4c24c3e413f412f')
 
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
