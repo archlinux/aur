@@ -1,7 +1,7 @@
 pkgbase = git-remote-codecommit
 	pkgdesc = Git extension for interacting with AWS CodeCommit repositories using federated access.
 	pkgver = 1.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html
 	arch = any
 	license = Apache
