@@ -4,7 +4,7 @@
 
 pkgname=python-baker
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy, powerful access to Python functions from the command line."
 arch=('any')
 url='https://pypi.org/project/Baker'
