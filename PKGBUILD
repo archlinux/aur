@@ -3,7 +3,7 @@
 
 pkgname=pikaur-aurnews
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay, and with the live aurnews eggzpatch"
 arch=('any')
 url="https://github.com/actionless/pikaur"

@@ -1,7 +1,7 @@
 pkgbase = pikaur-aurnews
 	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay, and with the live aurnews eggzpatch
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actionless/pikaur
 	arch = any
 	license = GPL3
