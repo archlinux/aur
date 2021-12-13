@@ -4,7 +4,7 @@
 
 pkgname=python-pypuppetdb
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for working with the PuppetDB REST API'
 arch=('any')
 url='https://github.com/voxpupuli/pypuppetdb'

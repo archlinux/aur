@@ -1,7 +1,7 @@
 pkgbase = python-pypuppetdb
 	pkgdesc = Library for working with the PuppetDB REST API
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/voxpupuli/pypuppetdb
 	arch = any
 	license = Apache
