@@ -1,7 +1,7 @@
 pkgbase = obfilebrowser
 	pkgdesc = An Openbox pipe menu application and file browser.
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/obfilebrowser
 	arch = any
 	license = GPL

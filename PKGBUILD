@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=obfilebrowser
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc='An Openbox pipe menu application and file browser.'
 arch=(any)
 license=(GPL)
