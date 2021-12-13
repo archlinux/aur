@@ -1,17 +1,19 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=boston-icon-theme
-pkgver=0.9
+_upname=Boston
+pkgver=1.0
 pkgrel=1
 pkgdesc="A highly minimalist icon theme, with a sober color palette inspired on basic hues and forms."
 arch=('any')
 url="https://www.opendesktop.org/p/1012402"
 license=('CCPL:by-sa')
-_od_id=1612976709
-_od_data=($(curl -s "$url" | grep -e 'hash =' -e 'timetamp =' | sed "s/.*= '\\(.*\\)';/\\1/"))
-_upname=Boston
-source=("https://dllb2.pling.com/api/files/download/id/${_od_id}/s/${_od_data[0]}/t/${_od_data[1]}/u//Boston-icons-$pkgver.tar.xz")
-sha256sums=('80b7f8e979a045c80276612c765c3aa8535295c1b95dc92953eef271121fecd3')
+_od_id=1633030427
+_od_size=258764
+_od_project_id=1012402
+_od_url=$(curl -s "https://www.opendesktop.org/dl?file_id=${_od_id}&file_type=application/x-xz&file_name=${_upname}-${pkgver}.tar.xz&file_size=${_od_size}&has_torrent=0&project_id=${_od_project_id}&link_type=download&is_external=false&external_link=null" -X POST -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' --data-raw 'download_source=Continue+Download' | sed -n 's|^ *<a href="\([^"]*\)">Please click here</a>.*$|\1|p')
+source=($_od_url)
+sha256sums=('5caa4d56799ae287bcdd650efd0f649ab0d551a998e5b56f7d4c446a21fd4282')
 options=(!emptydirs)
 
 package() {
