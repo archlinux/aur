@@ -1,7 +1,7 @@
 pkgbase = font-line
 	pkgdesc = OpenType vertical metrics reporting and font line spacing adjustment tool
 	pkgver = 3.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/source-foundry/font-line
 	arch = any
 	license = MIT
@@ -14,4 +14,3 @@ pkgbase = font-line
 	sha256sums = 033baa102ab9c61a653f213997610e0de308d5bc75e989923927a0519687cbb1
 
 pkgname = font-line
-
