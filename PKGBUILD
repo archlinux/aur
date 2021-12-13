@@ -8,7 +8,7 @@ _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=249.r1795.g2ad2925de5
+pkgver=250.rc2.r55.g17cfd6f96f
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -18,7 +18,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync')
-options=('strip')
+options=('!ccache')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         '0003-PARTIAL-REVERT-commit-tree-wide-replace-strverscmp-and-str_verscmp-with-strverscmp_improved.patch'
@@ -43,8 +43,8 @@ sha512sums=('SKIP'
             '10f3b477527ec263cc6465c84d94416e356435930edc9e26844a0fd4f71e87a27fa0f91ce24b43a22cacdd2ead5e760e9d607369bc537a8da8d34021302a89a1'
             '34541f1967536524329867f9f341f8d9250d9d771c60dc3e6a22ccb82fc01f103cfd3f9903329777591ccbecd2446622a5d6b3804fa0411482b85c70593ee8ad'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '77582416df858e34bc05a9928ddacbe506d24946576cb7c08c7131cf2a9e059d8ff80b226684fc942bca2edf0c6d2584fa3e22939284b102b30395450784c4d3'
-            '8af5d7b1553be0cc193440dbb94683c2d2d777634dac4369716d75a1b2c2564551c836f3aee8220edfa5ef59122dea737bfe60c588637249bf67e15dba0534d0'
+            '5479c8ef963ff247381392907c13308b4ae3a9383c867bd4c8a318b159f23acdb4be5f4ddae0dab4665f4927d3f30166077b1d3aaa2cde6bf53d023b7abb939c'
+            'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
@@ -83,16 +83,18 @@ build() {
     #  * Cloudflare (https://1.1.1.1/)
     #  * Quad9 without filtering (https://www.quad9.net/)
     #  * Google (https://developers.google.com/speed/public-dns/)
-    1.1.1.1
-    9.9.9.10
-    8.8.8.8
-    2606:4700:4700::1111
-    2620:fe::10
-    2001:4860:4860::8888
+    1.1.1.1#cloudflare-dns.com
+    9.9.9.10#dns.quad9.net
+    8.8.8.8#dns.google
+    2606:4700:4700::1111#cloudflare-dns.com
+    2620:fe::10#dns.quad9.net
+    2001:4860:4860::8888#dns.google
   )
 
   local _meson_options=(
-    -Dversion-tag="${pkgver}-${pkgrel}-arch"
+    # internal version comparison is incompatible with pacman:
+    #   249~rc1 < 249 < 249.1 < 249rc
+    -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
     -Dmode=release
 
     -Dgnu-efi=true
@@ -120,10 +122,10 @@ build() {
     -Dsysvrcnd-path=
 
     -Dsbat-distro='arch'
-    -Dsbat-distro-summary='Arch Linux'
+    -Dsbat-distro-summary='Arch Linux AUR'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
-    -Dsbat-distro-url="https://archlinux.org/packages/core/x86_64/${pkgname}/"
+    -Dsbat-distro-url="https://aur.archlinux.org/packages/systemd-git/"
   )
 
   arch-meson "$_pkgbase" build "${_meson_options[@]}"
