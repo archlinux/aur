@@ -1,7 +1,7 @@
 pkgbase = python-flake8-todo
 	pkgdesc = flake8 plugin to check for todo notes
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/schlamar/flake8-todo
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = python-flake8-todo
 	b2sums = 5d2941bf8b7409a1d85a70b984cf48404e50a7249ccbc849e563781614186d2b9e5c4147c9f3e3dee363787a38e32df6f247b331142a2e52eed9d4a38d8eb5ab
 
 pkgname = python-flake8-todo
-
