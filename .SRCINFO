@@ -1,7 +1,7 @@
 pkgbase = jupyter-octave_kernel
 	pkgdesc = A Jupyter kernel for Octave
 	pkgver = 0.33.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Calysto/octave_kernel
 	arch = any
 	license = BSD
