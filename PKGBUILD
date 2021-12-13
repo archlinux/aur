@@ -2,7 +2,7 @@
 
 pkgname=canonical-multipass
 _realname=multipass
-pkgver=1.7.1
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
@@ -21,8 +21,10 @@ source=("git+https://github.com/canonical/${_realname}.git#tag=v${pkgver}"
         git+https://github.com/Skycoder42/QHotkey.git
         git+https://github.com/fmtlib/fmt.git
         git+https://github.com/pocoproject/poco.git
+        libssh-static.patch
 )
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+    "8cc982b96a800c9779134a00e741c472da7c8e11183931ec30b184c314364dde")
 
 prepare() {
   cd "${srcdir}/${_realname}"
@@ -40,6 +42,8 @@ prepare() {
   git config submodule.3rd-party/poco.url $srcdir/poco
 
   git submodule update --recursive --init
+
+  patch 3rd-party/libssh/CMakeLists.txt < ${srcdir}/libssh-static.patch
 }
 
 build() {
@@ -57,4 +61,6 @@ build() {
 package() {
   cd "_build"
   make DESTDIR="$pkgdir" install
+  # not needed in package
+  rm "$pkgdir"/usr/lib/libssh.a
 }

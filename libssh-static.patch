@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2021-12-13 16:34:54.635522925 +0100
++++ CMakeLists.txt~	2021-12-13 16:32:04.802336623 +0100
+@@ -29,7 +29,7 @@
+ set(LIB_INSTALL_DIR lib)
+ set(BIN_INSTALL_DIR bin)
+ 
+-set(BUILD_SHARED_LIBS ON)
++set(BUILD_SHARED_LIBS OFF)
+ set(GLOBAL_CLIENT_CONFIG "/etc/ssh/ssh_config")
+ set(GLOBAL_BIND_CONFIG "/etc/ssh/libssh_server_config")
+ 
