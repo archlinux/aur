@@ -4,7 +4,7 @@
 pkgname='python-rq'
 pkgver=1.10.1
 _ver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple job queues for Python"
 arch=('any')
 license=('BSD')

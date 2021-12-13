@@ -1,7 +1,7 @@
 pkgbase = python-rq
 	pkgdesc = Simple job queues for Python
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rq/rq
 	arch = any
 	license = BSD
