@@ -12,6 +12,8 @@ pkgbase = abaddon
 	provides = abaddon
 	conflicts = abaddon
 	source = git+https://github.com/uowuo/abaddon#tag=v0.1.2
+	source = abaddon.desktop
 	sha256sums = SKIP
+	sha256sums = 7840732362b8f2202cf79b7d7c2eb0e2cbd5a83dc45c5fca4609ec15b8bea6df
 
 pkgname = abaddon
