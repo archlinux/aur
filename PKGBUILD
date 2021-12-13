@@ -2,7 +2,7 @@
 
 pkgname=quickfix
 pkgver=1.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ Fix Engine Library"
 arch=("x86_64")
 url="http://www.quickfixengine.org/"
@@ -24,12 +24,17 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure \
-                --prefix=/usr \
-                --with-boost=/usr \
-                --with-openssl=/usr \
-                --with-tbb=/usr \
-                --with-python3
+    --prefix=/usr \
+    --with-boost=/usr \
+    --with-openssl=/usr \
+    --with-tbb=/usr \
+    --with-python3
   make
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make check
 }
 
 package() {

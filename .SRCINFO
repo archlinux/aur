@@ -1,7 +1,7 @@
 pkgbase = quickfix
 	pkgdesc = C++ Fix Engine Library
 	pkgver = 1.15.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.quickfixengine.org/
 	arch = x86_64
 	license = custom:The QuickFIX Software License, Version 1.0
@@ -15,4 +15,3 @@ pkgbase = quickfix
 	sha256sums = 238110374f3082db505cd0574b67d20aeb23c36e76f68ea7b2e277d8e1b3cada
 
 pkgname = quickfix
-
