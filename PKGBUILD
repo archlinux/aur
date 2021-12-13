@@ -2,15 +2,14 @@
 
 pkgname=vaults-git
 _pkgname=Vaults
-pkgver=0.1.0.r14.ge56f714
-pkgrel=2
+pkgver=0.1.0.r107.gd25806e
+pkgrel=1
 pkgdesc="An application for creating encrypted vaults for the GNOME desktop"
 arch=('x86_64')
 url="https://github.com/mpobaschnig/Vaults"
 license=('GPL3')
-depends=('glib2' 'gtk4' 'libadwaita' 'fuse3')
-makedepends=('meson' 'rust')
-optdepends=('gocryptfs' 'cryfs')
+depends=('glib2' 'gtk4' 'libadwaita' 'fuse3' 'gocryptfs' 'cryfs')
+makedepends=('git' 'meson' 'rust')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -28,9 +27,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
