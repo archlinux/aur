@@ -4,7 +4,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
 pkgver=6.5.1.1275
-pkgrel=3
+pkgrel=4
 _releasename="Project AgileAkita"
 _pkgfolder="Alchemy_${_releasename// /_}_${pkgver//\./_}_x86_64"
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - Official CI Project build"
@@ -39,7 +39,7 @@ strip() {
 package() {
   mkdir -p "${pkgdir}"/usr/share/applications
   mkdir -p "${pkgdir}"/opt
-  mv "${srcdir}/${_pkgfolder}/" "$pkgdir/opt/$pkgname/"
+  mv "${srcdir}/${_pkgfolder}" "$pkgdir/opt/$pkgname"
   install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
   sed -i 's/Name=Alchemy/Name=Alchemy '"${_releasename}"'/' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
 }
