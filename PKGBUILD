@@ -1,7 +1,9 @@
+# Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+
 pkgname=gedit-plugin-grammalecte
 _pluginname=gedit-grammalecte
 pkgver=v0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Un greffon pour intégrer Grammalecte dans gedit."
 url="https://github.com/sveyret/gedit-grammalecte"
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = gedit-plugin-grammalecte
 	pkgdesc = Un greffon pour intégrer Grammalecte dans gedit.
 	pkgver = v0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sveyret/gedit-grammalecte
 	arch = any
 	license = GPL3
