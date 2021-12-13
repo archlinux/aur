@@ -2,7 +2,7 @@
 pkgname=shiny-mirrors
 pkgver=r162.5c87e97
 pkgrel=1
-pkgdesc="A replacement for reflector, rewritten in Rust! A tool to find the best mirrors for you!"
+pkgdesc="An alternative to reflector, written in Rust! A tool to find the best mirrors for you!"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Arisa_Snowbell/shiny-mirrors"
 license=('GPL3')
