@@ -1,6 +1,6 @@
 pkgbase = perl-config-mvp
 	pkgdesc = multivalue-property package-oriented configuration
-	pkgver = 2.200011
+	pkgver = 2.200012
 	pkgrel = 1
 	url = https://metacpan.org/release/Config-MVP
 	arch = any
@@ -18,8 +18,7 @@ pkgbase = perl-config-mvp
 	depends = perl-tie-ixhash>=0
 	depends = perl-try-tiny>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Config-MVP-2.200011.tar.gz
-	md5sums = f33a305e495c83a49b2288ab2544ed03
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Config-MVP-2.200012.tar.gz
+	md5sums = 93b12dacd4d2bd828d40a1d0e2c260fd
 
 pkgname = perl-config-mvp
-

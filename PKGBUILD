@@ -2,7 +2,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Config-MVP
 pkgname=perl-config-mvp
-pkgver=2.200011
+pkgver=2.200012
 pkgrel=1
 pkgdesc="multivalue-property package-oriented configuration"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=()
 checkdepends=('perl-test-fatal>=0')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('f33a305e495c83a49b2288ab2544ed03')
+md5sums=('93b12dacd4d2bd828d40a1d0e2c260fd')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
