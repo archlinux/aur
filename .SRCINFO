@@ -1,7 +1,7 @@
 pkgbase = python-dunamai
 	pkgdesc = Produce dynamic, standards-compliant version strings
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mtkennerly/dunamai
 	arch = any
 	license = MIT

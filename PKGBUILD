@@ -6,7 +6,7 @@ pkgdesc="Produce dynamic, standards-compliant version strings"
 url="https://github.com/mtkennerly/dunamai"
 
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("MIT")
