@@ -3,7 +3,7 @@
 pkgname=python-biliass
 _pypiname=biliass
 pkgver=1.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc='将 B 站 XML 弹幕转换为 ASS 弹幕'
 arch=('any')
 url='https://github.com/ShigureLab/biliass'
