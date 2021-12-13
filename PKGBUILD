@@ -1,5 +1,5 @@
 pkgname=isabelle-tum
-pkgver=2021
+pkgver=2021_1
 pkgrel=1
 pkgdesc="A generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus. Release mirror: TUM."
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ fi
 optdepends=('texlive-core: document preparation')
 source=(https://isabelle.in.tum.de/dist/Isabelle${pkgver//_/-}_linux.tar.gz
          isabelle.desktop)
-md5sums=('9b91f6f78a5d3ab701d07f15404746d2'
+md5sums=('01bdd4e3fc2bd2a7b13d89405cc6b93f'
          '63add57fc05e5334ad1582d07a0c7146')
-sha256sums=('5d7811a658c43448456de1cb61e3bc27b93ac3ef2f3dc51a1aa6244c78624fc7'
+sha256sums=('315daab84713f9b59e5da0a2c0e9efa6656ef6bc5957b21294088d0727c3ca49'
             'a619c0c48805f80862c4bb8f2448ce8f3d0bef7cebda7ef98a21bdd40a5652da')
 
 
