@@ -6,9 +6,9 @@ pkgname=python-$_pipname
 pkgver=1.4.0
 pkgrel=2
 pkgdesc='Font analysis tool for determining character/glyph support'
-arch=('any')
+arch=(any)
 url="https://github.com/googlefonts/$_pyname"
-license=('GPL3')
+license=(GPL3)
 _py_deps=(fonttools
           lxml
           pyicu
@@ -17,21 +17,22 @@ _py_deps=(fonttools
 depends=(python
          "${_py_deps[@]/#/python-}")
 makedepends=(python-setuptools)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+_archive="$_pyname-$pkgver"
+source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('92215da45fed003032e5849e3d0917aaae9024e255affe9d28c67aed0223f11e')
 
 prepare() {
-    cd "$_pyname-$pkgver"
-    echo "version = '$pkgver'" > "$_pipname/_version.py"
-    sed -i -e '/_scm/d' setup.py
+	cd "$_archive"
+	echo "version = '$pkgver'" > "$_pipname/_version.py"
+	sed -i -e '/_scm/d' setup.py
 }
 
 build() {
-	cd "$_pyname-$pkgver"
+	cd "$_archive"
 	python setup.py build
 }
 
 package() {
-	cd "$_pyname-$pkgver"
+	cd "$_archive"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

@@ -12,7 +12,7 @@ pkgbase = python-fontaine
 	depends = python-pyicu
 	depends = python-requests
 	depends = python-tabulate
-	source = python-fontaine-1.4.0.tar.gz::https://github.com/googlefonts/pyfontaine/archive/1.4.0.tar.gz
+	source = pyfontaine-1.4.0.tar.gz::https://github.com/googlefonts/pyfontaine/archive/1.4.0.tar.gz
 	sha256sums = 92215da45fed003032e5849e3d0917aaae9024e255affe9d28c67aed0223f11e
 
 pkgname = python-fontaine
