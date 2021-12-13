@@ -3,7 +3,7 @@
 pkgname='python-apprise'
 _name=${pkgname#python-}
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
 url="https://github.com/caronc/apprise"
