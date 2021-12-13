@@ -1,7 +1,7 @@
 pkgbase = mfek-glif
 	pkgdesc = A stand-alone glyph viewer and editor (from Modular Font Editor K)
 	pkgver = 1.0.1a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MFEK/glif
 	arch = x86_64
 	license = Apache

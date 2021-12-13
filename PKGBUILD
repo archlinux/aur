@@ -3,7 +3,7 @@
 _pkgname=glif
 pkgname=mfek-$_pkgname
 pkgver=1.0.1a
-pkgrel=1
+pkgrel=2
 pkgdesc='A stand-alone glyph viewer and editor (from Modular Font Editor K)'
 arch=(x86_64)
 url="https://github.com/MFEK/$_pkgname"
