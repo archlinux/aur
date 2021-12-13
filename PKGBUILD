@@ -7,7 +7,7 @@
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=(x86_64 aarch64 armv7h i686)
 url='https://www.pjsip.org/'
@@ -28,60 +28,62 @@ makedepends=("${_pkgdepends[@]}"
              e2fsprogs
              python-setuptools
              swig)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pjsip/$pkgbase/archive/$pkgver.tar.gz"
-        '0001-Don-t-build-Java-bindings.patch'
-        '0002-Fix-installation-of-libpjsua2-shared-libraries-2670.patch::https://github.com/pjsip/pjproject/commit/742f7dc252ded778a8b677937791c02e2fbc0dde.patch'
-        'config_site.h')
+_archive="$pkgbase-$pkgver"
+_repourl="https://github.com/pjsip/$pkgbase"
+source=("$_archive.tar.gz::$_repourl/archive/$pkgver.tar.gz"
+        0001-Don-t-build-Java-bindings.patch
+        "0002-Fix-installation-of-libpjsua2-shared-libraries-2670.patch::$_repourl/commit/742f7dc252ded778a8b677937791c02e2fbc0dde.patch"
+        config_site.h)
 sha256sums=('45f6604372df3f49293749cd7c0b42cb21c4fb666c66f8ed9765de004d1eae38'
             'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
             '2c4102f143bbe045946c417c74596475b0a875c70fa1bb5c7e12fc1f8df15a7c'
             '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
 prepare() {
-	cd "$pkgbase-$pkgver"
+	cd "$_archive"
 	patch -Np1 < "../${source[1]}"
 	patch -Np1 < "../${source[2]%%::*}"
 	install -Dm644 -t "pjlib/include/pj/" "../${source[3]}"
 }
 
 build() {
-  cd "$pkgbase-$pkgver"
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-  if [ "$CARCH" = 'aarch64' ]; then
-    arch_opts=(--disable-libwebrtc)
-  fi
-  if [ "$CARCH" = 'i686' ]; then
-    export CXXFLAGS="$CXXFLAGS -march=i686"
-    arch_opts=(--disable-libwebrtc)
-  fi
-  export CFLAGS="$CFLAGS -fPIC -DNDEBUG"
-  ./configure \
-    --prefix=/usr \
-    --with-external-speex \
-    --with-external-srtp \
-    --with-external-pa \
-    --with-external-gsm \
-    --with-external-yuv \
-    --enable-shared \
-    --disable-opencore-amr \
-    "${arch_opts[@]}"
-  make dep
-  make
-  make -C pjsip-apps/src/swig
-  pushd 'pjsip-apps/src/swig/python'
-  python setup.py build
+	cd "$_archive"
+	export CXXFLAGS="$CXXFLAGS -fPIC"
+	if [ "$CARCH" = 'aarch64' ]; then
+		arch_opts=(--disable-libwebrtc)
+	fi
+	if [ "$CARCH" = 'i686' ]; then
+		export CXXFLAGS="$CXXFLAGS -march=i686"
+		arch_opts=(--disable-libwebrtc)
+	fi
+	export CFLAGS="$CFLAGS -fPIC -DNDEBUG"
+	./configure \
+		--prefix=/usr \
+		--with-external-speex \
+		--with-external-srtp \
+		--with-external-pa \
+		--with-external-gsm \
+		--with-external-yuv \
+		--enable-shared \
+		--disable-opencore-amr \
+		"${arch_opts[@]}"
+	make dep
+	make
+	make -C pjsip-apps/src/swig
+	pushd 'pjsip-apps/src/swig/python'
+	python setup.py build
 }
 
 package_pjproject() {
 	depends=("${_pkgdepends[@]}")
 	optdepends=(e2fsprogs "python-$pkgbase: Python bindings")
-	cd "$pkgbase-$pkgver"
+	cd "$_archive"
 	make -j1 DESTDIR="$pkgdir" install
 	install -Dm755 pjsip-apps/bin/pjsua-*gnu* "$pkgdir/usr/bin/pjsua"
 }
 
 package_python-pjproject() {
 	depends=("$pkgbase" "${_libdepends[@]}")
-	pushd "$pkgbase-$pkgver/pjsip-apps/src/swig/python"
+	pushd "$_archive/pjsip-apps/src/swig/python"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
