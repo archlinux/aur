@@ -2,7 +2,7 @@
 
 pkgname=pass-git-helper
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A git credential helper interfacing with pass, the standard unix password manager"
 arch=(any)
 url="https://github.com/languitar/pass-git-helper"
