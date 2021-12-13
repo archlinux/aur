@@ -1,7 +1,7 @@
 pkgbase = python-docplex
 	pkgdesc = The IBM Decision Optimization CPLEX Modeling for Python
 	pkgver = 2.22.213
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/docplex/
 	arch = x86_64
 	license = Apache

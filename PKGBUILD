@@ -2,7 +2,7 @@
 _pkgname=docplex
 pkgname=python-docplex
 pkgver=2.22.213
-pkgrel=1
+pkgrel=2
 pkgdesc="The IBM Decision Optimization CPLEX Modeling for Python"
 arch=('x86_64')
 url="https://pypi.org/project/docplex/"
