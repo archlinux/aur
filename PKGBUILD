@@ -2,7 +2,7 @@
 
 pkgname=python-lime
 pkgver=0.2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lime: Explaining the predictions of any machine learning classifier"
 arch=('any')
 url="https://github.com/marcotcr/lime"

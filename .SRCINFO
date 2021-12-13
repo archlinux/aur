@@ -1,7 +1,7 @@
 pkgbase = python-lime
 	pkgdesc = Lime: Explaining the predictions of any machine learning classifier
 	pkgver = 0.2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcotcr/lime
 	arch = any
 	license = BSD 2-Clause
@@ -11,4 +11,3 @@ pkgbase = python-lime
 	sha512sums = f72a91af7f0a9f2377e36a401724ffe09cd48f0c7d86385036fff1aa71686346547e03a690fe7896fcf97be0d23eb1a8d9db2c362ad10d6229bab808bd27c651
 
 pkgname = python-lime
-
