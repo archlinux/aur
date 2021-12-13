@@ -1,7 +1,7 @@
 pkgbase = font-v
 	pkgdesc = Font version string reporting and modification library + executable tool
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/source-foundry/font-v
 	arch = any
 	license = MIT
