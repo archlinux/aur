@@ -1,7 +1,7 @@
 pkgbase = pacroller
 	pkgdesc = Unattended upgrade for archlinux
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isjerryxiao/pacroller
 	arch = any
 	license = GPL3
