@@ -1,0 +1,9 @@
+build.sh
+publish.sh
+publish.js
+tmp
+amdfand-bin-1.0.*
+build.tar.gz
+pkg/
+src/
+copy.sh
