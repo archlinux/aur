@@ -34,12 +34,4 @@ package() {
   install -d "$pkgdir"/usr/share/abaddon/fonts
   cp -r "$pkgname"/res/fonts/* "$pkgdir"/usr/share/abaddon/fonts/
 
-  install -Dm666 /dev/null "$pkgdir"/opt/abaddon/abaddon.ini
-
-  install -Dm755 /dev/null "$pkgdir"/usr/bin/abaddon
-  cat - > "$pkgdir"/usr/bin/abaddon <<EOF
-#!/bin/sh
-cd /opt/abaddon
-./abaddon $@
-EOF
 }
