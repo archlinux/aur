@@ -1,7 +1,7 @@
 pkgbase = cronwhip
 	pkgdesc = Run missed cronjobs.
 	pkgver = 2021
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xyne.dev/projects/cronwhip
 	arch = any
 	license = GPL
