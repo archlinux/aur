@@ -48,8 +48,8 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.15
-_minor=5
-_rtver=22
+_minor=7
+_rtver=23
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -86,14 +86,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0002-staging-r8188eu-Fix-breakage-introduced-when-5G-code.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0003-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0004-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0005-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0006-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0007-lg-laptop-Recognize-more-models.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0008-Revert-drm-i915-Implement-Wa_1508744258.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0006-lg-laptop-Recognize-more-models.patch"
          # the main kernel config files
         'config')
 
@@ -344,20 +342,18 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7b9a78c734a24e8b67f93c8de65fb57cce498f18f4ce6a5c4cff0b834407dbf66cda6834118e67cfef3101979f2df78a7cc45854d943ffecee60a990783497df'
+sha512sums=('7f3e68f367ef4b56e39ffa48be29aa8c7eb6070294e9975bf60b068a518012b798469984a2ba894487e6f5a5701b91fba94413cc26e3258c81ffd759000ac7c0'
             'SKIP'
-            'c0538fe2f9dd977acb17093be63df367fc93cff892386e5cc101dc038f0f03c87cea3bf2c38d1eccf84f342f19bc9165e81752d7c66716f2b2ab01831ee7d1fa'
+            '4e8072ad3aaf7fc4c182c4c48e33b95e7983316cf183f78d0c9b5b7f70000c4efcc3a6978d6e224a9573144590174cbe25f7400b25200e4832ce5e9d51d7ef2d'
             'SKIP'
             '9fde2d5b778c2b54a4367a0bffe08186cf3e76011dd938f894fb3af03a0fa9a8d1fd26053eade1a878953feb84c52192b6851d8b8eef16ca619fc0312d6f6b97'
             '53fa9b8a6fa451a7d57846d261f9af2de24e6442d2f318dfef899580d85e9cc54fa17267803a4f064eecab8ba3739062bfdf185de0afe119a1c86fe71cf3c711'
-            'b23504c5dfe857f7c7379b21e571d9cac26404da845783b22db38066dc88f56d1a361c6ddeca78b91fdf3dea209fe5f9a26d8a05596e529dc6eceb087b26d799'
-            'c6f4d0343360889bb00e22327c808648c46dd6832c59595e484f3ddd7f38c1866b6807539edec36b176f42e3da6c0bcc009a23e53707976649ae02464f9218a2'
-            '7fb70c729d5bbd5c666f8fbfe0d46657920ee0403f6f830a3a398bced57d0570867232fd1d014fbecce331332c5c14f0701010d7d46155329bd6bb602bf9c96b'
-            '01a350732342a59ae8947ffbf9c741da22f2bf3937535e8261da348a80622c007c6b1e65208945a7680875d96cbba1888d8a7a38e9980446d519bee227b46195'
-            '0c7d5591b2359ab56b8c138d2f8312cfd9e85075ec91fee1acb02e5682e668c5c33d1066c69af838a19984f7458cf159a8069006b79a4cea02416609d6820837'
-            '69e4be2d5d39c1e6179a67526a067558ee3452746ff907c64b098b2b2a090381e267b29b5e677a3219e7ee9027d08a586032d784f2836379d1f929bd0829a4b5'
-            '9b0e7bcfb0039d1048f2ecb70102dfacd5b84889a203e593c492951e97aa7691952c429dec6753c2c72a3ce7bf3c0c0328672c4c3bcefe93197961a31ed0d6cd'
-            '5594a46ec65d188161039b54ca8771466d4a73c4448c6750e8f2405b36d60e8de8ce8cec7577f4adac061f5df60eb28843c77ae75daff0e2e0290b7567e5361e'
+            'fa5eabd0ec3e9661e0aab19eb20030944518ccc2cf31df889115db5b3c18a3846ae157d077ac90d8f3e4e332984c24cabcc470b9190c91e3d382ce67a3ed989c'
+            '0c00b7760ed6daa5506aa032893ac76722061bb140699bd1a0ded8589d1301b3e1b857bd5ad3c344db4a35c3915902a196e67147d238857d7e0c740e109a8da1'
+            '2bf1a3c1eafa6e485ed5e0517641220dbce6ccc0fef242abb74b00a9b7f32fe5350011fdbdf959a61672e81c76a414c4358bd1fbaf28d33c3f4964aade3b4983'
+            '9b14bede21e9979f843b624d0aaca389df93f388fdff9f1361d132aebca31e19b2e47dd1b4e83af0bbaae3a1884ac09a3605d3373cfd48eab0c49a8b11d0165a'
+            '8f2f6e1e3ee9cd58217daf6bf5385865732f2521bd084925d923d5477a294cbadfa60f3955b745c0a33bb97bb7fb0f3b829724930601354551caafbc76544fab'
+            'da2a99e0c6bc593e4e873c9ec7ce99cf31f12100efa6375805d935b2f0e7618d8a22d46929a7f5ff5cc86ed89309b292e698a28a7d288f95448f264f80bb7012'
             '23c4d428014d57da488d4f5f37ff486607631a86a10f045972f6b95c09bdb62c95ba2e5019f8eeef223bdb0459bdf122992eb1a7b2465b9f1a5cf5afd9c9c473')
 
 validpgpkeys=(
@@ -366,4 +362,5 @@ validpgpkeys=(
               '64254695FFF0AA4466CC19E67B96E8162A8CF5D1' # Sebastian Andrzej Siewior
               '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73' # Steven Rostedt
               'E644E2F1D45FA0B2EAA02F33109F098506FF0B14' # Thomas Gleixner
+              'D5653EA39C8675DA4BD5971C13B55DD07C53B851' # Clark Williams
               )
