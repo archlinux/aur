@@ -4,13 +4,13 @@
 # Contributor: James Duley <jagduley gmail>
 
 pkgname=xflr5
-_revision=1309
-_pkgver=6.49
-pkgver=6.49.r$_revision
-pkgrel=3
+_revision=1372
+_pkgver=6.53
+pkgver=$_pkgver.r$_revision
+pkgrel=1
 pkgdesc="An analysis tool for airfoils, wings and planes operating at low Reynolds Numbers."
 arch=('i686' 'x86_64')
-url="http://www.xflr5.com/xflr5.htm"
+url="http://www.xflr5.tech/xflr5.htm"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('subversion')
