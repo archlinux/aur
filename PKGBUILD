@@ -1,7 +1,7 @@
 # Maintainer: novenary <streetwalkermc@gmail.com>
 pkgname=socos
 pkgver=0.2.r33.g7719b54
-pkgrel=1
+pkgrel=2
 pkgdesc="Commandline tool for controlling Sonos devices"
 arch=('any')
 url="https://github.com/SoCo/socos"
