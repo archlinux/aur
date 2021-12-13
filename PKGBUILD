@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss-git
 _name=${pkgname#python-}
-pkgver=0.1.9.r736.0f48299
+pkgver=1.0.0rc0.r0.7cd4cc0
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${_name%-git}"
-	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long | sed 's/[-_]rc/rc/I;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
