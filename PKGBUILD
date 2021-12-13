@@ -2,8 +2,8 @@
 
 pkgname="python-pandana"
 _name=${pkgname#python-}
-pkgdesc="A Python tool to parse OSM data from Protobuf format into GeoDataFrame."
-url="https://pyrosm.readthedocs.io/"
+pkgdesc="A Python library for network analysis"
+url="http://udst.github.io/pandana/"
 
 pkgver=0.6.1
 pkgrel=4

@@ -1,8 +1,8 @@
 pkgbase = python-pandana
-	pkgdesc = A Python tool to parse OSM data from Protobuf format into GeoDataFrame.
+	pkgdesc = A Python library for network analysis
 	pkgver = 0.6.1
 	pkgrel = 4
-	url = https://pyrosm.readthedocs.io/
+	url = http://udst.github.io/pandana/
 	arch = any
 	license = AGPL
 	makedepends = python-setuptools
