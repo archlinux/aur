@@ -1,6 +1,6 @@
 pkgbase = pacpush
 	pkgdesc = Utility to push an Arch hosts package and AUR caches to other hosts
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://github.com/bulletmark/pacpush
 	arch = any
@@ -14,9 +14,10 @@ pkgbase = pacpush
 	depends = python-requests
 	depends = python-ruamel-yaml
 	depends = python-rich
+	depends = python-packaging
 	conflicts = pacsync
 	replaces = pacsync
-	source = pacpush-2.10.tar.gz::https://github.com/bulletmark/pacpush/archive/2.10.tar.gz
-	sha1sums = 38f2d31d8b397089c42217fc54fa3cab52a1dc6c
+	source = pacpush-2.11.tar.gz::https://github.com/bulletmark/pacpush/archive/2.11.tar.gz
+	sha1sums = 27b597b9decb87dc5cb96f2e164d38408cf7144b
 
 pkgname = pacpush
