@@ -3,7 +3,7 @@
 pkgname=python-msgpack-numpy-git
 pkgver=0.4.7.1.r0.g963db59
 _gitname=msgpack-numpy
-pkgrel=1
+pkgrel=2
 pkgdesc="Serialize numpy arrays using msgpack"
 arch=('any')
 url='https://github.com/lebedov/msgpack-numpy'
