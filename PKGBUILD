@@ -3,7 +3,7 @@
 pkgname=python-emojientities
 _name=${pkgname#python-}
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 
 pkgdesc="retrieves emoji character range from unicode.org"
 url="https://gitlab.com/christoph.fink/python-emojientities"
