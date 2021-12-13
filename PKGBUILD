@@ -3,7 +3,7 @@
 pkgname=python-flake8-plugin-utils
 _pkgname="${pkgname#python-}"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides base classes and utils for flake8 plugin writing"
 arch=('any')
 url="https://github.com/afonasev/flake8-plugin-utils"
