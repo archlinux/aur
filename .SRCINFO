@@ -1,7 +1,7 @@
 pkgbase = mopidy-mpd
 	pkgdesc = Mopidy extension for controlling playback from MPD clients
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.mopidy.com
 	arch = any
 	license = APACHE
