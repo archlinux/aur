@@ -1,14 +1,10 @@
 pkgbase = python-onnx
 	pkgdesc = Open Neural Network Exchange
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onnx.ai
 	arch = x86_64
 	license = MIT
-	checkdepends = python-nbval
-	checkdepends = python-nose
-	checkdepends = python-pytest
-	checkdepends = python-scipy
 	makedepends = cmake
 	makedepends = git
 	makedepends = python-setuptools

@@ -2,7 +2,7 @@
 
 pkgname=python-onnx
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Neural Network Exchange'
 arch=('x86_64')
 url='https://onnx.ai'
@@ -20,32 +20,17 @@ makedepends=(
   python-setuptools
   python-pip
 )
-checkdepends=(
-  python-nbval
-  python-nose
-  python-pytest
-  python-scipy
-)
 source=("${pkgname}::git+https://github.com/onnx/onnx.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
-get_pyver() {
-  python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
-}
-
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   git submodule update --init --recursive
 }
 
 build() {
   cd "${pkgname}"
   python setup.py build
-}
-
-check() {
-  cd "${srcdir}/${pkgname}"
-  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-$(get_pyver)" pytest -v
 }
 
 package() {
