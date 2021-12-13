@@ -1,7 +1,7 @@
 pkgbase = libsixel
 	pkgdesc = provides a codec for DEC SIXEL graphics, and some converter programs
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/libsixel/libsixel
 	arch = i686
 	arch = x86_64
