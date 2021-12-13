@@ -21,14 +21,18 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/ploxiln/paramiko-ng/archiv
 sha256sums=('fe79422bcb9c69ab40d7ce94979af43a928264b97fbe1839a7241ff500cdf938')
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   LANG=en_US.UTF-8 pytest
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+  PARAMIKO_REPLACE=1 python setup.py build
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-
-  PARAMIKO_REPLACE=1 python setup.py install --root="$pkgdir" --optimize=1
+  PARAMIKO_REPLACE=1 python setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -dm755 "$pkgdir"/usr/share/doc/python-$_pkgname/demos
   install -m644 demos/* "$pkgdir"/usr/share/doc/python-$_pkgname/demos
   chmod 755 "$pkgdir"/usr/share/doc/python-$_pkgname/demos/*.py

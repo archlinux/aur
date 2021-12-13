@@ -18,4 +18,3 @@ pkgbase = python-paramiko-ng
 	sha256sums = fe79422bcb9c69ab40d7ce94979af43a928264b97fbe1839a7241ff500cdf938
 
 pkgname = python-paramiko-ng
-
