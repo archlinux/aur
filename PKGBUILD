@@ -2,7 +2,7 @@
 
 pkgname=python-libdecsync
 pkgver=2.1.0_1
-pkgrel=1
+pkgrel=2
 pkgdesc="python3 wrapper around libdecsync"
 arch=('x86_64')
 url="https://github.com/39aldo39/libdecsync-bindings-python3"
