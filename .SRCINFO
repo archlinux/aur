@@ -1,6 +1,6 @@
 pkgbase = dyndhcpd-git
 	pkgdesc = start DHCP daemon that dynamically creates configuration based on assigned IP address - git checkout
-	pkgver = 0.0.9.r0.gdb40123
+	pkgver = 0.1.7.r2.g3450f14
 	pkgrel = 1
 	url = https://github.com/eworm-de/dyndhcpd
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = dyndhcpd-git
 	sha256sums = SKIP
 
 pkgname = dyndhcpd-git
-
