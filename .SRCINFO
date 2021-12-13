@@ -1,7 +1,7 @@
 pkgbase = python-aiocron
 	pkgdesc = Provide a decorator to run function at time
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gawel/aiocron
 	changelog = CHANGES.rst
 	arch = any

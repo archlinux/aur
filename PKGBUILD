@@ -3,7 +3,7 @@
 
 pkgname=python-aiocron
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide a decorator to run function at time"
 arch=('any')
 url="https://github.com/gawel/aiocron"
