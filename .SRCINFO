@@ -1,7 +1,7 @@
 pkgbase = python-lolcat
 	pkgdesc = Rainbows and unicorns (without Ruby! jay!)
 	pkgver = 1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tehmaze/lolcat
 	arch = any
 	license = custom:beerware
@@ -13,4 +13,3 @@ pkgbase = python-lolcat
 	sha512sums = 2e5608f541a2a5fa68811ec2e9907177cf8ad315b771b59e5873748ad2ab2c4ea1609f45a72b4c4b3c7d5383e88ac4e57be8e458a5f6a2f055faa714dd8ee5dc
 
 pkgname = python-lolcat
-
