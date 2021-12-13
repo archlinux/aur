@@ -1,7 +1,7 @@
 pkgbase = python-quandl
 	pkgdesc = Quandl's Python Package
 	pkgver = 3.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quandl/quandl-python
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = python-quandl
 	sha256sums = d885a269ccea7f4e6c6965fb31277f003c4d00bcdf947e6fe9c4f3b6e09d116e
 
 pkgname = python-quandl
-
