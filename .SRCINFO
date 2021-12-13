@@ -1,7 +1,7 @@
 pkgbase = plom
 	pkgdesc = Paperless open marking
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/plom/plom
 	arch = any
 	license = AGPL3

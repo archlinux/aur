@@ -3,7 +3,7 @@
 
 pkgname=plom
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Paperless open marking'
 arch=(any)
 url="https://gitlab.com/$pkgname/$pkgname"
@@ -41,7 +41,6 @@ sha256sums=('cf3fe708850c45d8cd1b4e4ad491162267c008dbe0bf80ae2db93cbb3fadcc0d')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
