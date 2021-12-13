@@ -1,7 +1,7 @@
 pkgbase = python-sabyenc3
 	pkgdesc = yEnc package optimized for use within SABnzbd.
 	pkgver = 4.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/sabyenc3/
 	arch = any
 	license = lgplv3
@@ -10,4 +10,3 @@ pkgbase = python-sabyenc3
 	sha256sums = dfaa0bdd01752a9cfde0d349a8f4e178b04b1cf9c1bc018b287961192cd2bb90
 
 pkgname = python-sabyenc3
-

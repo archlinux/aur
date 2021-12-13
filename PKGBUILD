@@ -3,7 +3,7 @@
 pkgname='python-sabyenc3'
 _name=${pkgname#python-}
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='yEnc package optimized for use within SABnzbd.'
 arch=('any')
 url='https://pypi.org/project/sabyenc3/'
