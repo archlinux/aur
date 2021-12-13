@@ -1,0 +1,12 @@
+pkgbase = python-ailment
+	pkgdesc = The angr intermediate language.
+	pkgver = 9.0.10730
+	pkgrel = 1
+	url = https://github.com/angr/ailment
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/ailment/ailment-9.0.10730.tar.gz
+	sha256sums = 4fab184783736e7090a6dde80ac655f39b812c41d38d212325abbfd56d585c85
+
+pkgname = python-ailment
