@@ -1,7 +1,7 @@
 # Maintainer: Ben Aaron Goldberg <ben@benaaron.dev>
 
 pkgname=plasma5-runners-poki-launcher
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An application launcher that shows recently used apps first"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~zethra/poki-launcher/archive/$pkgver.tar.gz")
 depends=('krunner')
 makedepends=('rust' 'cargo')
-sha256sums=("e0578de1a3916efdd962f24bc8c8fa3a26916e97e56627ffeeb84493f8b206e6")
+sha256sums=('095ca8b26728f4324c0d78938a63fc2bc8c90a5c1434e0c01d3c6b45b8ae7c91')
 
 build() {
     cd "poki-launcher-$pkgver"
