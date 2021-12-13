@@ -1,7 +1,7 @@
 pkgbase = python-addict
-	pkgdesc = Python Dict whos keys can be set both using attribute and item syntax
+	pkgdesc = Augments dictionaries with attribute syntax
 	pkgver = 2.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mewwts/addict
 	arch = any
 	license = MIT
