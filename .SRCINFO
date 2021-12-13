@@ -1,7 +1,7 @@
 pkgbase = python-pagegen
 	pkgdesc = Python static site generator with reStructuredText markup
 	pkgver = 3.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://pagegen.phnd.net/
 	arch = any
 	license = GPL

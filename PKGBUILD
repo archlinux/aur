@@ -4,7 +4,7 @@
 pkgname='python-pagegen'
 _pkgname="${pkgname#python-}"
 pkgver=3.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Python static site generator with reStructuredText markup'
 arch=('any')
 license=('GPL')
