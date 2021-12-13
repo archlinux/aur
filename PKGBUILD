@@ -1,41 +1,71 @@
-# Maintainer: Miko <mikoxyzzz@gmail.com>
+# Maintainer: Lenny McLennington <lennymclennington@protonmail.com>
+# Contributor: Miko <mikoxyzzz@gmail.com>
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
-pkgname=multimc-git
-pkgver=0.6.13.r0.ge2355eb2
-pkgrel=2
+_pkgname=multimc
+pkgname=${_pkgname}-git
+pkgver=0.6.14.r4.g7d047f92
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
-url="https://multimc.org/"
+url="https://github.com/MultiMC/Launcher"
 license=('Apache')
 depends=('java-runtime' 'libgl' 'qt5-base' 'zlib')
 provides=('multimc')
-conflicts=('multimc' 'multimc5' 'multimc5-bin')
+conflicts=('multimc' 'multimc5' 'multimc-bin' 'multimc-native')
 makedepends=('cmake' 'git' 'java-environment')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
-source=("git+https://github.com/MultiMC/MultiMC5"
+source=("git+https://github.com/MultiMC/Launcher"
         "git+https://github.com/MultiMC/libnbtplusplus"
         "git+https://github.com/MultiMC/quazip"
+        "https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz"
+        0001-Readd-lin-system-and-LAUNCHER_LINUX_DATADIR.patch
+        application.desktop
         modern-java.patch
+        fix-jars.patch
+        mmc-brand.patch
 )
 
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '0005a23628afbecb40591e9ef0fd2fc63367ca1be71a874de6791fb19ae112b5907e19975b40b770122e9e34cc3297b14d2a9d72c42f3fbfac221e41cbc67890')
+            'SKIP'
+            'cb003424404d83e3ee6e8c0c4d6be1562325185efac3f249f63542c05eda71144fd865e065c5bd00b981288df0ced12bb4ac6311ddd0cf9cc6dd7d611f94b107'
+            'a7c4654dd5ee260c25e0eab2dba0d929f09bc38b9af1505408a55058e73eaf35986b4a0e6de7e1893ebf860c472df984011340b3989f996a9d170cbc37dfd691'
+            '0005a23628afbecb40591e9ef0fd2fc63367ca1be71a874de6791fb19ae112b5907e19975b40b770122e9e34cc3297b14d2a9d72c42f3fbfac221e41cbc67890'
+            '1dc559a4b463bb9b0648d221df48a8ab562db186ea44fe0a3dba1af9c51306983faa27839abe7aea0478fb4d165fcf4af0db411fe063a18dcb9ca03c06196397'
+            '82f66f6aac1f7c09d2e242768b77af692216cfa99925585a7871fa71bec8197a246b66a3af7d9eab8856655ce80e4ced26a0fc331579a18badd8f86005b5bf53')
 
 pkgver() {
-  cd MultiMC5
+  cd Launcher
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/MultiMC5"
+  cd "${srcdir}/Launcher"
+  patch -p1 < "${srcdir}/0001-Readd-lin-system-and-LAUNCHER_LINUX_DATADIR.patch"
   patch -p1 < "${srcdir}/modern-java.patch"
+  patch -p1 < "${srcdir}/fix-jars.patch"
+  patch -p1 < "${srcdir}/mmc-brand.patch"
+
+  pushd ${srcdir}/MultiMC/bin
+  local token_asm=$(objdump -j '.text' --no-show-raw-insn -C --disassemble='Secrets::getMSAClientID(unsigned char)' MultiMC)
+  local token="$(grep -oP '[a-z0-9]{2}(?=,%r[89]d)' <<< ${token_asm} | tac | tr -d '\n')$(grep -oP '(push.+0x)\K[a-z0-9]{2}' <<< ${token_asm} | tac | tr -d '\n')"
+  token="${token:0:8}-${token:8:4}-${token:12:4}-${token:16:4}-${token:20}"
+  popd
+
+  sed -i 's/""/"'"${token}"'"/g' notsecrets/Secrets.cpp
+
+  git checkout 6a4130c9149deb029b496c81e3b874ad834c54b7 -- launcher/resources/{{OSX,flat,iOS,multimc,pe_{blue,colored,dark,light}}/scalable/multimc.svg,multimc/{32x32,128x128}/instances/infinity.png}
+
+  for f in launcher/resources/{OSX,flat,iOS,multimc,pe_{blue,colored,dark,light}}/scalable
+  do
+    mv "$f/multimc.svg" "$f/launcher.svg"
+  done
 
   git submodule init
   git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
@@ -44,28 +74,30 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/MultiMC5"
+  cd "${srcdir}/Launcher"
   mkdir -p build
 
   cd build
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DMultiMC_LAYOUT=lin-system \
+    -DLauncher_LAYOUT=lin-system \
+    -DLauncher_APP_BINARY_NAME="${_pkgname}" \
+    -DLauncher_SHARE_DEST_DIR="share/${_pkgname}" \
     ..
   make
 }
 
 check() {
-  cd "${srcdir}/MultiMC5/build"
+  cd "${srcdir}/Launcher/build"
   make test
 }
 
 package() {
-  cd "${srcdir}/MultiMC5/build"
+  cd "${srcdir}/Launcher/build"
   make install DESTDIR="${pkgdir}"
-  install -D "${srcdir}/MultiMC5/launcher/resources/multimc/scalable/multimc.svg" "${pkgdir}/usr/share/pixmaps/multimc.svg"
-  install -D "${srcdir}/MultiMC5/launcher/package/linux/multimc.desktop" "${pkgdir}/usr/share/applications/multimc.desktop"
-  install -D "${srcdir}/MultiMC5/build/libMultiMC_quazip.so" "${pkgdir}/usr/lib/libMultiMC_quazip.so"
-  install -D "${srcdir}/MultiMC5/build/libMultiMC_nbt++.so" "${pkgdir}/usr/lib/libMultiMC_nbt++.so"
+  install -D "${srcdir}/Launcher/launcher/package/ubuntu/multimc/opt/multimc/icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+  install -D "${srcdir}/application.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -D "${srcdir}/Launcher/build/libLauncher_quazip.so" "${pkgdir}/usr/lib/libLauncher_quazip.so"
+  install -D "${srcdir}/Launcher/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
 }
 

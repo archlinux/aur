@@ -1,0 +1,75 @@
+From 27e3d0174139b99da9e6afad1ba6fffff95ff3a9 Mon Sep 17 00:00:00 2001
+From: Miko <mikoxyzzz@gmail.com>
+Date: Sat, 20 Nov 2021 20:10:36 +0100
+Subject: [PATCH] Readd "lin-system" and LAUNCHER_LINUX_DATADIR
+
+During the debranding of MultiMC, peterix removed the "lin-system"
+layout and LAUNCHER_LINUX_DATADIR (previously known as
+MULTIMC_LINUX_DATADIR.) This patch reverts those two changes.
+
+Signed-off-by: Miko <mikoxyzzz@gmail.com>
+---
+ CMakeLists.txt           | 20 ++++++++++++++++++--
+ launcher/Application.cpp |  8 +++++++-
+ 2 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0cf93758..2fc38b59 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -140,8 +140,8 @@ endif()
+ ####################################### Install layout #######################################
+ 
+ # How to install the build results
+-set(Launcher_LAYOUT "auto" CACHE STRING "The layout for the launcher installation (auto, win-bundle, lin-nodeps, mac-bundle)")
+-set_property(CACHE Launcher_LAYOUT PROPERTY STRINGS auto win-bundle lin-nodeps mac-bundle)
++set(Launcher_LAYOUT "auto" CACHE STRING "The layout for the launcher installation (auto, win-bundle, lin-nodeps, lin-system, mac-bundle)")
++set_property(CACHE Launcher_LAYOUT PROPERTY STRINGS auto win-bundle lin-nodeps lin-system mac-bundle)
+ 
+ if(Launcher_LAYOUT STREQUAL "auto")
+     if(UNIX AND APPLE)
+@@ -206,6 +206,22 @@ elseif(Launcher_LAYOUT_REAL STREQUAL "lin-nodeps")
+     configure_file(launcher/Launcher.in "${CMAKE_CURRENT_BINARY_DIR}/LauncherScript" @ONLY)
+     install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/LauncherScript" DESTINATION ${BUNDLE_DEST_DIR} RENAME ${Launcher_Name})
+ 
++elseif(Launcher_LAYOUT_REAL STREQUAL "lin-system")
++	set(Launcher_APP_BINARY_NAME "devlauncher" CACHE STRING "Name of the Launcher binary")
++	set(Launcher_BINARY_DEST_DIR "bin" CACHE STRING "Path to the binary directory")
++	set(Launcher_LIBRARY_DEST_DIR "lib${LIB_SUFFIX}" CACHE STRING "Path to the library directory")
++	set(Launcher_SHARE_DEST_DIR "share/devlauncher" CACHE STRING "Path to the shard data directory")
++	set(JARS_DEST_DIR "${Launcher_SHARE_DEST_DIR}/jars")
++
++	set(BINARY_DEST_DIR ${Launcher_BINARY_DEST_DIR})
++	set(LIBRARY_DEST_DIR ${Launcher_LIBRARY_DEST_DIR})
++
++	MESSAGE(STATUS "Compiling for linux system with ${Launcher_SHARE_DEST_DIR} and LAUNCHER_LINUX_DATADIR")
++	SET(Launcher_APP_BINARY_DEFS "-DMULTIMC_JARS_LOCATION=${CMAKE_INSTALL_PREFIX}/${JARS_DEST_DIR}" "-DLAUNCHER_LINUX_DATADIR")
++
++	# install as bundle with no dependencies included
++	set(INSTALL_BUNDLE "nodeps")
++
+ elseif(Launcher_LAYOUT_REAL STREQUAL "win-bundle")
+     set(BINARY_DEST_DIR ".")
+     set(LIBRARY_DEST_DIR ".")
+diff --git a/launcher/Application.cpp b/launcher/Application.cpp
+index 8789d096..6ef64762 100644
+--- a/launcher/Application.cpp
++++ b/launcher/Application.cpp
+@@ -304,7 +304,13 @@ Application::Application(int &argc, char **argv) : QApplication(argc, argv)
+     }
+     else
+     {
+-#if defined(Q_OS_MAC)
++#ifdef LAUNCHER_LINUX_DATADIR
++        QString xdgDataHome = QFile::decodeName(qgetenv("XDG_DATA_HOME"));
++        if (xdgDataHome.isEmpty())
++            xdgDataHome = QDir::homePath() + QLatin1String("/.local/share");
++        dataPath = xdgDataHome + "/devlauncher";
++        adjustedBy += "XDG standard " + dataPath;
++#elif defined(Q_OS_MAC)
+         QDir foo(FS::PathCombine(applicationDirPath(), "../../Data"));
+         dataPath = foo.absolutePath();
+         adjustedBy += "Fallback to special Mac location " + dataPath;
+-- 
+2.34.0
+
