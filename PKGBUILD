@@ -1,6 +1,6 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
-pkgver=1.24
+pkgver=1.24.1
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
 pkgrel=1
 pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
@@ -10,10 +10,10 @@ license=('GPL')
 depends=('gmp' 'ncurses5-compat-libs')
 makedepends=('coreutils')
 source=(
-    hledger-${pkgver}.zip::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-linux-static-x64.zip
+    hledger-${pkgver}.zip::https://github.com/simonmichael/hledger/releases/download/hledger-${pkgver}/hledger-linux-x64.zip
 )
 sha256sums=(
-    9447a8583b489eb8f7ff1b1f243c67b073d641c531d7ffc238e83e8bca430353
+    64d83f1d344652ed50ecd838f11f85d0412ad06844cdbe97566fa081b1d506a9
 )
 
 package_hledger-bin() {
@@ -22,7 +22,7 @@ package_hledger-bin() {
 	conflicts=(hledger)
     depends+=(glibc)
 
-    install -Dm 755 ./hledger-linux-static-x64 "$pkgdir/usr/bin/hledger"
+    install -Dm 755 ./hledger-linux-x64 "$pkgdir/usr/bin/hledger"
 }
 
 package_hledger-ui-bin() {
@@ -31,7 +31,7 @@ package_hledger-ui-bin() {
 	conflicts=(hledger-ui)
     depends+=(zlib)
 
-    install -Dm 755 ./hledger-ui-linux-static-x64 "$pkgdir/usr/bin/hledger-ui"
+    install -Dm 755 ./hledger-ui-linux-x64 "$pkgdir/usr/bin/hledger-ui"
 }
 
 package_hledger-web-bin() {
@@ -40,5 +40,5 @@ package_hledger-web-bin() {
 	conflicts=(hledger-web)
     depends+=(zlib)
 
-    install -Dm 755 ./hledger-web-linux-static-x64 "$pkgdir/usr/bin/hledger-web"
+    install -Dm 755 ./hledger-web-linux-x64 "$pkgdir/usr/bin/hledger-web"
 }
