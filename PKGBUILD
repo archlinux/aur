@@ -2,46 +2,48 @@
 
 
 pkgname=dupliseek-git
+_name="${pkgname%-git}"
 
 epoch=1
-pkgver() { git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
+pkgver() { git -C "$_name" describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
 pkgver=0.0.3.r36.6c5cc90
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Duplicate image finder written in Python/Qt5'
 arch=('x86_64')
-url="https://gitlab.com/dupliseek-group/${pkgname%-git}"
+url="https://gitlab.com/dupliseek-group/$_name"
 license=('MIT')
 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_name")
+conflicts=("$_name")
 
-depends=('python-pyqt5' 'python-numpy' 'python-imutils' 'python-send2trash' 'opencv')
-makedepends=('git' 'python-setuptools' 'python-pip')
+makedepends=('git' 'python-setuptools')
+depends=('python' 'python-pyqt5' 'python-numpy' 'python-imutils' 'python-send2trash' 'opencv')
 
 source=("git+$url.git")
 sha256sums=('SKIP')
 
+
 prepare() {
-  cd "${pkgname%-git}"
-  sed -i "s|\(/usr/share/\)icons\(/${pkgname%-git}\)|\1pixmaps\2.png|;
-          s|^\(Categories=.*\)|\1\;Utility|" "${pkgname%-git}.desktop"
+  cd "$_name"
+  sed -i "s|\(/usr/share/\)icons\(/$_name\)|\1pixmaps\2.png|;
+          s|^\(Categories=.*\)|\1\;Utility|" "$_name.desktop"
   sed -i "s|opencv-python|opencv|" setup.py
   rm -r send2trash
 }
 
 build() {
-  cd "${pkgname%-git}"
+  cd "$_name"
   python setup.py build
 }
 
 package() {
-  cd "${pkgname%-git}"
-  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
-  install -Dm644 dupliseek_pkg/icons/compare.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
-  install -Dm644 "${pkgname%-git}.desktop" -t"$pkgdir/usr/share/applications/"
-  install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
-  install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  cd "$_name"
+  PYTHONHASHSEED=0 python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  install -Dm644 dupliseek_pkg/icons/compare.png "$pkgdir/usr/share/pixmaps/$_name.png"
+  install -Dm644 "$_name.desktop" -t"$pkgdir/usr/share/applications/"
+  install -Dm644 README.md -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/$_name/"
 }
 
 
