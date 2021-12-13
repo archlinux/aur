@@ -1,7 +1,7 @@
 pkgbase = powerpill
 	pkgdesc = Pacman wrapper for faster downloads.
 	pkgver = 2021.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/powerpill
 	arch = any
 	license = GPL
