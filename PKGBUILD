@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=mimeo
 pkgver=2021.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Open files by MIME-type or file name using regular expressions.'
 arch=(any)
 license=(GPL)
