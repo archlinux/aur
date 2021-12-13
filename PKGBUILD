@@ -1,7 +1,7 @@
 # Maintainer: fsyy <fossy2001 @ web.de>
 pkgname=python-elgato-streamdeck
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to control Elgato Stream Deck devices"
 arch=('any')
 url="https://github.com/abcminiuser/python-elgato-streamdeck"

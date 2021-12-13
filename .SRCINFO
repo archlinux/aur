@@ -1,7 +1,7 @@
 pkgbase = python-elgato-streamdeck
 	pkgdesc = Library to control Elgato Stream Deck devices
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abcminiuser/python-elgato-streamdeck
 	arch = any
 	license = MIT
