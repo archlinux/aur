@@ -3,7 +3,7 @@
 pkgname=python-webis
 _name="${pkgname#python-}"
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Python wrapper for the webis Twitter sentiment identification tool"
 url="https://gitlab.com/christoph.fink/python-webis"
