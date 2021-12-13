@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-oldstable
-pkgver=40.6
+pkgver=40.7
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell (oldstable version)"
@@ -24,7 +24,7 @@ checkdepends=(xorg-server-xvfb)
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome-oldstable)
-_commit=eadfc757dba87223b17a8b3313f36f8b17abef54  # tags/40.6^0
+_commit=d2e906d846d87fc6f6aa2f87a70082098ce7730b  # tags/40.7^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'

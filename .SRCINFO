@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-oldstable
 	pkgdesc = Next generation desktop shell (oldstable version)
-	pkgver = 40.6
+	pkgver = 40.7
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
@@ -40,10 +40,10 @@ pkgbase = gnome-shell-oldstable
 	depends = gst-plugin-pipewire
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
-	provides = gnome-shell=40.6
+	provides = gnome-shell=40.7
 	conflicts = gnome-shell
 	replaces = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=eadfc757dba87223b17a8b3313f36f8b17abef54
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=d2e906d846d87fc6f6aa2f87a70082098ce7730b
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
