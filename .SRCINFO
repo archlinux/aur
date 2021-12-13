@@ -1,7 +1,7 @@
 pkgbase = python-spf-engine
 	pkgdesc = SPF (Sender Policy Framework) back-end for integration with Postfix and Sendmail
 	pkgver = 2.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/spf-engine
 	arch = any
 	license = Apache
@@ -32,4 +32,3 @@ pkgbase = python-spf-engine
 	sha256sums = 6108b155534b024b692387c73a17eae5ddf7d261cea126932049a969012f4aca
 
 pkgname = python-spf-engine
-
