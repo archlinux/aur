@@ -9,7 +9,7 @@ arch=('any')
 depends=('python' 'python-virtualenv' 'python-pip' 'powershell' 'jdk-openjdk' 'xar' 'bomutils' 'libxml2' 'swig' 'zlib')
 license=('BSD-3-Clause')
 install="$pkgname.install"
-source=("http://http.kali.org/pool/main/p/powershell-empire/${pkgname}_${pkgver}-${pkgrel}kali2_all.deb"
+source=("http://old.kali.org/kali/pool/main/p/powershell-empire/${pkgname}_${pkgver}-${pkgrel}kali2_all.deb"
         "$pkgname::git+https://github.com/peek1e/${pkgname}-AUR")
 sha256sums=('ee1e8e9ffcdedc6fcf7cf88eee4608150914a8dc33c587f4ba8fdb6c40b0155e'
             'SKIP')
