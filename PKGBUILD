@@ -3,7 +3,7 @@
 
 pkgname=cram
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="functional testing framework for command line applications"
 arch=('any')
 url="https://bitheap.org/cram/"

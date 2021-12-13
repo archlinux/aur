@@ -1,7 +1,7 @@
 pkgbase = cram
 	pkgdesc = functional testing framework for command line applications
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitheap.org/cram/
 	arch = any
 	license = GPL2
@@ -11,4 +11,3 @@ pkgbase = cram
 	sha512sums = 9fa57e504abac8fd15bf5ff4a74405cb7acd10fd4c797adee87052a4f1c4e975bbc0f4219afd9485358b2c2939b48b3ffe538ae2abc6eea71e0ba8b458d50103
 
 pkgname = cram
-
