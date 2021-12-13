@@ -1,7 +1,7 @@
 pkgbase = mopidy-spotify
 	pkgdesc = Mopidy extension for playing music from Spotify
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mopidy.com
 	arch = any
 	license = APACHE
@@ -14,4 +14,3 @@ pkgbase = mopidy-spotify
 	sha256sums = 623f139703b633f06391cfc4e6d3e63936f0815fac1990bbbb798d6e377ea400
 
 pkgname = mopidy-spotify
-
