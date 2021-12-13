@@ -107,8 +107,8 @@ package_nvidia-470xx-utils() {
     install -D nvidia_drv.so "${pkgdir}/usr/lib/xorg/modules/drivers/nvidia_drv.so"
 
     # Wayland/GBM
-    install -D     libnvidia-egl-wayland.so.1* -t "${pkgdir}/usr/lib/"
-    install -Dm644 10_nvidia_wayland.json "${pkgdir}/usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json"
+    #install -Dm755 libnvidia-egl-gbm.so.1* -t "${pkgdir}/usr/lib/"
+    #install -Dm644 15_nvidia_gbm.json "${pkgdir}/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json"
     #mkdir -p "${pkgdir}/usr/lib/gbm"
     #ln -sr "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
 
