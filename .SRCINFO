@@ -1,7 +1,7 @@
 pkgbase = python-cssutils
 	pkgdesc = CSS Cascading Style Sheets library for Python
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaraco/cssutils
 	changelog = CHANGES.rst
 	arch = any
