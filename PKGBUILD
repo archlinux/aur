@@ -3,7 +3,7 @@
 
 pkgname=afdko
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Adobe Font Development Kit for OpenType'
 arch=(x86_64)
 url="https://github.com/adobe-type-tools/$pkgname"
