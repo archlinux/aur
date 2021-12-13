@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('plasma-framework' 'hicolor-icon-theme' 'supergfxctl')
 makedepends=('cmake')
 source=(
-    "https://gitlab.com/Jhyub/supergfxctl-plasmoid/-/archive/v0.1.0/supergfxctl-plasmoid-v$pkgver.tar.gz"
+    "https://gitlab.com/Jhyub/supergfxctl-plasmoid/-/archive/v$pkgver/supergfxctl-plasmoid-v$pkgver.tar.gz"
 )
 sha256sums=(
     '5f38f5bd17cb912da22dbb2c4d8c5d89e2a089248bb21f4a5fa84dd1c15cd9b1'
