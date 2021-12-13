@@ -4,7 +4,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
 pkgver=6.5.1.1275
-pkgrel=2
+pkgrel=3
 _releasename="Project AgileAkita"
 _pkgfolder="Alchemy_${_releasename// /_}_${pkgver//\./_}_x86_64"
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - Official CI Project build"
