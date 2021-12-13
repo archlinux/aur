@@ -3,7 +3,7 @@
 
 pkgname=python-msgpack-numpy
 pkgver=0.4.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Serialize numpy arrays using msgpack"
 url="https://pypi.org/project/msgpack-numpy/"
 depends=(python-numpy

@@ -1,7 +1,7 @@
 pkgbase = python-msgpack-numpy
 	pkgdesc = Serialize numpy arrays using msgpack
 	pkgver = 0.4.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/msgpack-numpy/
 	arch = any
 	license = BSD
@@ -12,4 +12,3 @@ pkgbase = python-msgpack-numpy
 	sha256sums = c1f3fc082efbf733aeb24aa638db622b8f6d6320a82b19116dc97e7afd0ab5cc
 
 pkgname = python-msgpack-numpy
-
