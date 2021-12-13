@@ -1,7 +1,7 @@
 pkgbase = amdfand-bin
-	pkgdesc = AMDGPU voltage management tool
+	pkgdesc = AMDGPU fan speed management tool
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
 	license = MIT

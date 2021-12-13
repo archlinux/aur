@@ -3,8 +3,8 @@
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
 pkgver=1.0.8
-pkgrel=1
-pkgdesc="AMDGPU voltage management tool"
+pkgrel=2
+pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
 source=( "https://github.com/Eraden/amdgpud/releases/download/v${pkgver}/amdfand.tar.gz")
