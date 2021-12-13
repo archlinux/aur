@@ -1,11 +1,12 @@
-# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
+# Maintainer: Ken Miller <ken plus aur at miller dot ec>
+# Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
 # Contributor: Karel Louwagie <karel@louwagie.net>
 # Contributor: Serge Pavlyuk <flopss at gmail dot com>
 # Contributor: phi-mah
 
 pkgname=toggldesktop
 pkgver=7.5.363
-pkgrel=1
+pkgrel=2
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
 url="https://github.com/toggl-open-source/toggldesktop"
