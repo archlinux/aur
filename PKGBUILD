@@ -6,7 +6,7 @@ pkgdesc="Wraps GEOS geometry functions in numpy ufuncs. "
 url="https://pygeos.readthedocs.io/"
 
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("BSD")
