@@ -1,7 +1,7 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=python-slack-sdk
-pkgver=3.10.1
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Slack Python SDK"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-wheel')
 replaces=('python-slackclient')
 conflicts=('python-slackclient')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slackapi/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('6c47e01bd1fc688d63f761b071960a887589ba00c3dfc81dfc2cfc1dbb215722')
+sha256sums=('fee6c296eaa9d7f05d7e36adc1e46f3f87a242a537710da1559a128aa5e8d257')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -22,7 +22,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" -O1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
