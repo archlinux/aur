@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/ripple/rippled"
 license=('custom:ISC')
 backup=("etc/$pkgname/rippled.cfg" "etc/$pkgname/validators.txt")
-depends=('protobuf' 'boost-libs' 'libarchive' 'libsecp256k1' 'snappy' 'rocksdb')
+depends=('protobuf' 'boost-libs' 'libarchive' 'libsecp256k1' 'rocksdb')
 makedepends=('git' 'cmake' 'boost' 'clang' 'doxygen')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
@@ -23,14 +23,16 @@ sha512sums=('87d770d32220f26d9724e46ea2080da9a1c915cd30203cac757163ab0ced44b5104
             '826c1233d10339176267cbd6ef394e3b4647630a074f2c4cdade7ee683319e01ea45209037cbce7acef7e97885adce7250f23d65174baca65f40a4aa2ef6b0fb')
 
 prepare() {
-  mkdir -p build
   patch -d $pkgname-$pkgver -p1 -i "$srcdir"/cflag_werror_format-security.patch
 }
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver -Dstatic=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-  cmake --build .
+  cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev \
+    -Dstatic=OFF
+  cmake --build build
 }
 
 check() {

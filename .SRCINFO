@@ -15,7 +15,6 @@ pkgbase = rippled
 	depends = boost-libs
 	depends = libarchive
 	depends = libsecp256k1
-	depends = snappy
 	depends = rocksdb
 	backup = etc/rippled/rippled.cfg
 	backup = etc/rippled/validators.txt
