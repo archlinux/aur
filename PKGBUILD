@@ -1,14 +1,16 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=gspeech
-pkgver=0.10.2.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="a GUI for SVox Pico TTS"
 license=('GPL')
 arch=('x86_64')
 url="https://github.com/mothsART/gSpeech"
-depends=('gst-python' 'python-gobject' 'pico-tts' 'python-notify2' 'gst-plugins-good' 'libappindicator-gtk3' 'sox' 'svox-pico-bin')
+depends=('gst-python' 'python-gobject' 'svox-pico-bin' 'python-notify2' 'gst-plugins-good' 'libappindicator-gtk3' 'sox' 'svox-pico-bin')
 makedepends=('python-setuptools')
 source=("https://github.com/mothsART/gSpeech/archive/${pkgver}.tar.gz")
-sha256sums=('e25da080e5bec3a45e323e76c1e89e92e23f3a29806c2776f6e9c20b37689c76')
+sha256sums=('5e6345b7bf11e24816de0c76045bdad45a4e612fe289288b37ee92f82b61623f')
 
 build() {
   cd gSpeech-$pkgver
