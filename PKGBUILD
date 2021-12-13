@@ -4,7 +4,7 @@
 _pkgname=ofxparse
 pkgname=python-$_pkgname
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for working with the OFX (Open Financial Exchange) file format"
 arch=('any')
 url="http://sites.google.com/site/ofxparse"
