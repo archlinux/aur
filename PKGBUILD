@@ -2,7 +2,7 @@
 
 pkgname=flent
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The FLExible Network Tester.'
 arch=('any')
 url='https://flent.org'
