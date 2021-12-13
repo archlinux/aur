@@ -3,7 +3,7 @@
 
 pkgname=python-tcolorpy
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library to apply true color for terminal text'
 arch=('any')
 url='https://github.com/thombashi/tcolorpy'
@@ -28,10 +28,11 @@ check() {
 }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "tcolorpy-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:

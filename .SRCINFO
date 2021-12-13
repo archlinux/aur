@@ -1,7 +1,7 @@
 pkgbase = python-tcolorpy
 	pkgdesc = Python library to apply true color for terminal text
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/tcolorpy
 	arch = any
 	license = MIT
