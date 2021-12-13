@@ -2,7 +2,7 @@
 _pkgname=nfcpy
 pkgname=python-${_pkgname}
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Module to read/write NFC tags or communicate with another NFC device"
 arch=('x86_64')
 url="https://github.com/nfcpy/nfcpy"
