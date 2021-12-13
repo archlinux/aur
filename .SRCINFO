@@ -1,7 +1,7 @@
 pkgbase = python-rapidfuzz
 	pkgdesc = Rapid fuzzy string matching in Python and C++ using the Levenshtein Distance
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maxbachmann/rapidfuzz
 	arch = x86_64
 	license = MIT
