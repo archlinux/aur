@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-tabulator
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc='A table formatter class with support for a variety of outputs.'
 arch=(any)
 license=(GPL)
