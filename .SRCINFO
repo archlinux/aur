@@ -1,7 +1,7 @@
 pkgbase = python3-nist
 	pkgdesc = Modules for accessing and working with data from the National Institute of Standards and Technology (NIST).
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/python3-nist
 	arch = any
 	license = GPL
