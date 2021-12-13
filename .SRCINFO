@@ -1,7 +1,7 @@
 pkgbase = getmail6
 	pkgdesc = POP3 mail retriever with reliable Maildir and command delivery; Python 3 port
 	pkgver = 6.18.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmail6.org
 	changelog = CHANGELOG
 	arch = any
