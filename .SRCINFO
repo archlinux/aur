@@ -1,7 +1,7 @@
 pkgbase = python-libcsearcher-git
 	pkgdesc = LibcSearcher-ng -- get symbols' offset in glibc.
-	pkgver = r24.10128fe
-	pkgrel = 2
+	pkgver = r27.9e380c4
+	pkgrel = 1
 	url = https://github.com/dev2ero/LibcSearcher
 	arch = any
 	license = BSD

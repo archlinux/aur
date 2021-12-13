@@ -1,8 +1,8 @@
 # Maintainer: Y7n05h <Y7n05h(aT)protonmail--d0t--com>
 
 pkgname=python-libcsearcher-git
-pkgver=r24.10128fe
-pkgrel=2
+pkgver=r27.9e380c4
+pkgrel=1
 pkgdesc="LibcSearcher-ng -- get symbols' offset in glibc. "
 arch=('any')
 url="https://github.com/dev2ero/LibcSearcher"
