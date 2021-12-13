@@ -1,7 +1,7 @@
 pkgbase = pypyr
 	pkgdesc = Task runner for automation pipelines
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypyr.io
 	arch = any
 	license = Apache

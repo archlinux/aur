@@ -2,7 +2,7 @@
 
 pkgname=pypyr
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Task runner for automation pipelines"
 arch=('any')
 url="https://pypyr.io"
