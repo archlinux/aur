@@ -3,7 +3,7 @@
 pkgname="python-desert"
 _pkgname="${pkgname#python-}"
 pkgver=2020.11.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Deserialize to objects while staying DRY'
 arch=('any')
 url='https://github.com/python-desert/desert'
