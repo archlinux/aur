@@ -3,7 +3,7 @@
 pkgname=python-sqlmodel
 _pkgname="${pkgname#python-}"
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="SQL databases in Python, designed for simplicity, compatibility, and robustness"
 arch=('any')
 url="https://sqlmodel.tiangolo.com"
