@@ -12,7 +12,7 @@ url="https://gitlab.com/portmod/portmod"
 license=(GPL3)
 depends=("python" "patool" "python-setuptools" "python-colorama" "python-appdirs" "python-gitpython"
          "python-progressbar" "python-restrictedpython" "bubblewrap" "python-redbaron"
-         "python-python-sat" "python-requests" "python-chardet" "python-fasteners-git")
+         "python-python-sat" "python-requests" "python-chardet" "python-fasteners")
 makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python-setuptools-rust" "python-packaging")
 checkdepends=("python-pytest")
 optdepends=("omwllf" "tes3cmd" "tr-patcher" "python-argcomplete")
