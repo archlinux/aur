@@ -1,7 +1,7 @@
 # Maintainer: Zezadas <zezadasmoreira@gmail.com>
 
 pkgname=gr-ham-git
-pkgver=0ac9253
+pkgver=r25.7ece28e
 pkgrel=1
 pkgdesc="A collection of GNU Radio blocks useful for amateur radio"
 arch=('any')
