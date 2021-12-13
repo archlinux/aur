@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-scinum
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of scientific number classes for arbitrary precision, standard and custom units, and uncertainty for measured values.'
 arch=(any)
 license=(GPL)

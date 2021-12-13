@@ -1,7 +1,7 @@
 pkgbase = python3-scinum
 	pkgdesc = A collection of scientific number classes for arbitrary precision, standard and custom units, and uncertainty for measured values.
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.dev/projects/python3-scinum
 	arch = any
 	license = GPL
