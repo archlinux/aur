@@ -9,7 +9,7 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.2.6
 secp256k1ver=0.20.9
-pkgrel=2
+pkgrel=3
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -89,7 +89,7 @@ build() {
 check() {
   cd "Electron-Cash-${pkgver}"
 
-  tox -e py39
+  tox -e py310
 }
 
 package() {
