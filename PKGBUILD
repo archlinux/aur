@@ -9,7 +9,7 @@
 
 pkgname=platformio
 pkgver=5.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio-core/"
