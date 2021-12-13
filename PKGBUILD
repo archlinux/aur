@@ -2,7 +2,7 @@
 # Maintainer: Médéric Boquien <mboquien@free.fr>
 pkgname=python-pyavm
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Module to represent, read, and write Astronomy Visualization Metadata"
 arch=('any')
 url="http://astrofrog.github.io/pyavm/"

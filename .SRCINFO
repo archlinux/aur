@@ -1,7 +1,7 @@
 pkgbase = python-pyavm
 	pkgdesc = Module to represent, read, and write Astronomy Visualization Metadata
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://astrofrog.github.io/pyavm/
 	arch = any
 	license = MIT
@@ -10,4 +10,3 @@ pkgbase = python-pyavm
 	sha512sums = 911669719bbd99a73989df27e84f645c66d059d16fb31bc2ba320630df60f6f1a98c7f06100f564d643b05467638422a91b75ec03491b57e50986ab9646e3c18
 
 pkgname = python-pyavm
-
