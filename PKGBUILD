@@ -3,9 +3,9 @@
 _pkgname=pydicom-seg
 pkgname=python-pydicom-seg
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package for DICOM-SEG medical segmentation file reading and writing'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/razorx89/pydicom-seg'
 license=('MIT')
 depends=(
