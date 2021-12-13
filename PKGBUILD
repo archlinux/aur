@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('psuinfo')
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A psutil-based command to display customizable system info, intended for Tint2 or other panels"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/psuinfo"
@@ -10,7 +10,7 @@ depends=('python' 'python-psutil')
 
 source=("https://github.com/nwg-piotr/psuinfo/archive/v$pkgver.tar.gz")
 
-md5sums=('ddbcfab6a6a9111fe3ea9e57186e9833')
+md5sums=('301b8d9f71b84150229c682fc047e3d7')
 
 package() {
   install -D -m 755 "$pkgname"-"$pkgver"/psuinfo "$pkgdir"/usr/bin/psuinfo
