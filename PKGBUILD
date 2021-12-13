@@ -4,7 +4,7 @@
 
 
 pkgname=flipper
-pkgver=0.109.0
+pkgver=0.125.0
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('watchman: Required for a fully functional install'
             'android-sdk: Required for a fully functional install')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('6728534dd1fccf31518d8a4a570a645d8ac33f6b8c2d16c852b3a23c71769856')
+sha256sums=('7b2cd375ee7fb061b6573bf02675af5aac63ff69935241d2b05aab820e4f972d')
 conflicts=('flipper-bin')
 
 build() {
@@ -27,7 +27,7 @@ build() {
   mkdir -p ${srcdir}/yarn_cache
   yarn --cache-folder=${srcdir}/yarn_cache
   # See https://github.com/electron-userland/electron-builder/issues/2665#issuecomment-370452193
-  NO_PROXY=* yarn build --linux
+  NO_PROXY=* yarn build --linux --version ${pkgver}
 }
 
 package() {
