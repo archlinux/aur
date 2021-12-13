@@ -1,7 +1,7 @@
 _pipname=yamk
 pkgname="python-${_pipname}"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another make"
 arch=('any')
 url="https://github.com/spapanik/yamk"

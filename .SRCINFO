@@ -1,7 +1,7 @@
 pkgbase = python-yamk
 	pkgdesc = Yet another make
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spapanik/yamk
 	arch = any
 	license = MIT
@@ -10,4 +10,3 @@ pkgbase = python-yamk
 	sha512sums = 48a2dc74ac77892b192b6c3c89cc06dff6bba7f751e680f7c79696e2d3a1ee047243bd3f333ba49588af53490ec7ea24ebbfa6ec84ba35a3953c5190372a2493
 
 pkgname = python-yamk
-
