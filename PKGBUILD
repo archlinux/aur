@@ -4,7 +4,7 @@
 pkgname=python-rebulk
 _name=${pkgname#python-}
 pkgver=3.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Define simple search patterns in bulk to perform advanced matching on any string.'
 arch=('any')
 url='https://github.com/Toilal/rebulk'
