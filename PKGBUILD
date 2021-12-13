@@ -2,9 +2,9 @@
 # -*- sh -*-
 
 pkgname='python-runtype'
-_pkgname=${pkgname##python-}
+_pkgname=${pkgname#python-}
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')
