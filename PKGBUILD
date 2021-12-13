@@ -1,7 +1,7 @@
 pkgname=python-pdbpp
 _realname=pdbpp
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="pdb++, a drop-in replacement for pdb"
 arch=(any)
 url="https://github.com/pdbpp/pdbpp"
