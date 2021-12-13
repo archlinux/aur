@@ -4,7 +4,7 @@
 
 pkgname=djv
 pkgver=2.0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
 url="http://djv.sourceforge.net/"
@@ -58,6 +58,9 @@ prepare() {
 	# Workaround potential gcc11 bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100381
 	sed -i "28,32d" ${pkgname^^}-${pkgver}/lib/djvAV/ThumbnailSystem.h
 	sed -i '7 i\#include <djvAV\/IO.h>'  ${pkgname^^}-${pkgver}/lib/djvAV/ThumbnailSystem.h
+
+	# Fix fseq version
+	sed -i '/GIT_REPOSITORY https:\/\/github.com\/darbyjohnston\/FSeq.git/a GIT_TAG 545fac6018100f7fca474b8ee4f1efa7cbf6bf45' ${pkgname^^}-${pkgver}/cmake/Modules/BuildFSeq.cmake
 }
 
 build() {
