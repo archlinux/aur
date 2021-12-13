@@ -1,7 +1,7 @@
 pkgbase = python-apa102
 	pkgdesc = A simple library to drive APA102 pixels from the Raspberry Pi, or similar SBCs.
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pimoroni/apa102-python
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = python-apa102
 	sha256sums = ae73bdea26f027b57052ab990004ca8faa0f160d10bcacf5bd07e04769513cf9
 
 pkgname = python-apa102
-

@@ -3,7 +3,7 @@
 pkgname='python-apa102'
 _name=${pkgname#python-}
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple library to drive APA102 pixels from the Raspberry Pi, or similar SBCs."
 arch=('any')
 url="https://github.com/pimoroni/apa102-python"
