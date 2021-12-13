@@ -1,7 +1,7 @@
 pkgbase = python-pytest-check
 	pkgdesc = Pytest plugin that allows multiple failures per test
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/okken/pytest-check
 	arch = any
 	license = MIT

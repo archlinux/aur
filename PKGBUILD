@@ -4,7 +4,7 @@ pkgname=python-pytest-check
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pytest plugin that allows multiple failures per test"
 arch=('any')
 url="https://github.com/okken/pytest-check"
@@ -21,6 +21,7 @@ build() {
 
 package() {
   cd "$_name-$pkgver"
+
   PIP_CONFIG_FILE=/dev/null pip install \
     --isolated \
     --root="$pkgdir" \
