@@ -1,7 +1,7 @@
 pkgbase = python-flake8-annotations
 	pkgdesc = A flake8 extension that checks type annotations
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sco1/flake8-annotations
 	arch = any
 	license = MIT
