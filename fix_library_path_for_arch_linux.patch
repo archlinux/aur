@@ -1,0 +1,20 @@
+--- a/ebtables.py	2016-08-14 23:38:16.000000000 +0000
++++ b/ebtables.py	2021-12-13 13:44:55.332479081 +0000
+@@ -6,7 +6,7 @@
+ 
+ __version__ = '0.2.0'
+ 
+-EBTABLES_LIBRARY_PATH = os.getenv('EBTABLES_LIBRARY_PATH') or '/lib/ebtables'
++EBTABLES_LIBRARY_PATH = os.getenv('EBTABLES_LIBRARY_PATH') or '/usr/lib'
+ 
+ 
+ class EbtablesException(Exception):
+@@ -24,7 +24,7 @@
+ 
+ def _get_libraries():
+     files = os.listdir(EBTABLES_LIBRARY_PATH)
+-    return [_get_libname(f) for f in files if f.endswith('.so')]
++    return [_get_libname(f) for f in files if f.startswith("libebt") and f.endswith('.so')]
+ 
+ 
+ ffi = FFI()

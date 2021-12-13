@@ -1,0 +1,30 @@
+commit f7956b47ac1ffd209bafd8b20ff19bedaa6d0cad
+Author: Gabriele Fariello <gabriele.fariello@gmail.com>
+Date:   Fri Mar 1 18:51:23 2019 +0000
+
+    Updated to make python3 compatible
+
+diff --git a/ebtables.py b/ebtables.py
+index e5903d8..eb562e3 100644
+--- a/ebtables.py
++++ b/ebtables.py
+@@ -85,7 +85,8 @@ _verify = """
+     void ebt_early_init_once(void);
+     """
+ 
+-_hash = hashlib.sha1('\0'.join([_cdef, _verify])).hexdigest()
++# Changed this to be python3 compatible which requires string encoding
++_hash = hashlib.sha1(_cdef.encode('utf-8') + _verify.encode('utf-8')).hexdigest()
+ 
+ ffi.cdef(_cdef)
+ 
+@@ -99,7 +100,8 @@ _ebtc = ffi.verify(_verify,
+ _ebtc.ebt_early_init_once()
+ 
+ _ebtc.ebt_silent = 1
+-_ebtc.ebt_errormsg[0] = '\0'
++# Changed this to be python3 compatible which requires string encoding
++_ebtc.ebt_errormsg[0] = '\0'.encode("ascii")
+ 
+ 
+ def _get_errormsg():
