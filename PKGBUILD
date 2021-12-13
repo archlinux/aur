@@ -4,7 +4,7 @@
 
 pkgname="python-amazon.ion"
 _name="amazon.ion"
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A Python implementation of Amazon Ion.'
 url='https://amzn.github.io/ion-docs/'
@@ -15,7 +15,7 @@ depends=(
     'python-six'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('e244c99d62820a28e13412e8d1d41bb54c78ec7037034e0c79a665c1689082c4b58a443845452757383975455386932e51bf410c600e7175da2e277ab1e6b321')
+b2sums=('d1bb3bc27a71ea6b2085dc6a4d9e5e935b4ac6e8f23abce48a7d509cbf56d97bf612c25f6d2545b18cdf960a66585c0872457609c383f00b7b8b9a7b8766d776')
 
 build() {
     cd "$srcdir/$_name-$pkgver" || exit
