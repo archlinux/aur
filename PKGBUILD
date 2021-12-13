@@ -12,7 +12,7 @@ depends=('coreutils' 'bash' 'awk' 'sed' 'psmisc' 'grep' 'pacman')
 optdepends=('xorg-xprop: fallback for X session info'
 'pciutils: for gpu detection')
 makedepends=('git')
-source=("git+${url}") 
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
