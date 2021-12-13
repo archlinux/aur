@@ -1,7 +1,7 @@
 pkgbase = python-pglast
 	pkgdesc = PostgreSQL Languages AST and statements prettifier
 	pkgver = 3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lelit/pglast
 	arch = x86_64
 	license = GPL3

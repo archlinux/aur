@@ -3,7 +3,7 @@
 pkgname=python-pglast
 _pkgname="${pkgname#python-}"
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="PostgreSQL Languages AST and statements prettifier"
 arch=('x86_64')
 url="https://github.com/lelit/pglast"
