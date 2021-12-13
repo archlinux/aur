@@ -1,7 +1,7 @@
 pkgbase = mopidy-internetarchive
 	pkgdesc = Mopidy extension for playing audio from the Internet Archive
 	pkgver = 3.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tkem/mopidy-internetarchive
 	arch = any
 	license = APACHE
