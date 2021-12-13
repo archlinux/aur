@@ -175,9 +175,9 @@ ac_add_options --allow-addon-sideload
 # System libraries
 ac_add_options --disable-libproxy
 ac_add_options --enable-system-pixman
-ac_add_options --with-system-av1
+#ac_add_options --with-system-av1 breaks build as of 13.12.
 ac_add_options --with-system-ffi
-ac_add_options --with-system-graphite2
+#ac_add_options --with-system-graphite2 breaks build as of 13.12
 ac_add_options --with-system-harfbuzz
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
