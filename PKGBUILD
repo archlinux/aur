@@ -2,7 +2,7 @@
 
 pkgname=python-dhash
 pkgver=1.3
-pkgrel=5
+pkgrel=6
 
 pkgdesc="Python library to calculate the difference hash (perceptual hash) for a given image, useful for detecting duplicates"
 url="https://github.com/Jetsetter/dhash"
