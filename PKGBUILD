@@ -2,7 +2,7 @@
 
 pkgname=picosvg
 pkgver=0.18.7
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to simplify SVG files, intended for use as part of a font build'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -20,7 +20,6 @@ sha256sums=('988a24eb0d017ff9b3dec32a35ced3dd9eeac12df18e645e0f8cd89107d38202')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
