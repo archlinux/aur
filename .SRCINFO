@@ -1,7 +1,7 @@
 pkgbase = python-nestedtext
 	pkgdesc = Human readable and writable data interchange format
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KenKundert/nestedtext
 	arch = any
 	license = MIT

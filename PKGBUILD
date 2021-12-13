@@ -4,7 +4,7 @@
 pkgname='python-nestedtext'
 _pkgname=${pkgname##python-}
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
 license=('MIT')
