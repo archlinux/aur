@@ -1,15 +1,15 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=mint
-pkgver=0.14.0
-pkgrel=6
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
 license=('BSD')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "baked_file_system.patch")
-sha256sums=('2ccfa50812b8d9f53ea2e66fb427d42730a8b22ce2831c208f5421fc8c4baf28'
+sha256sums=('a38e0314ad3a004dc60b7d006ddbb413fa87390580792d287d33299efc97363f'
             '2d5b204294fc56b91dfe6407d161309f866259e680e09dadb3737d46cb03687a')
 makedepends=('shards')
 conflicts=('mint-bin')
@@ -31,7 +31,5 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   install -Dm755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
