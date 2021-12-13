@@ -23,10 +23,10 @@ git describe --long --tags | cut -d'-' -f1
 package() {
 cd "$srcdir/$pkg_name"
 install -Dm755 "$pkg_name" "$pkgdir/usr/bin/$pkg_name"
-install -Dm755 "bsd" "$pkgdir/usr/bin/bsd"
-install -Dm755 "darwin" "$pkgdir/usr/bin/darwin"
-install -Dm755 "linux" "$pkgdir/usr/bin/linux"
-install -Dm755 "wsl" "$pkgdir/usr/bin/wsl"
+install -Dm755 "bsd" "$pkgdir/usr/bin/bsd.sh"
+install -Dm755 "darwin" "$pkgdir/usr/bin/darwin.sh"
+install -Dm755 "linux" "$pkgdir/usr/bin/linux.sh"
+install -Dm755 "wsl" "$pkgdir/usr/bin/wsl.sh"
 install -m 0755 -d "$pkgdir/usr/share/$pkg_name/assets"
-install -m 0755 assets/* "$pkgdir/usr/share/$pkg_name/assets"
+install -m 0755 assets/*.sh "$pkgdir/usr/share/$pkg_name/assets"
 }
