@@ -1,7 +1,7 @@
 pkgbase = tensorflow_datasets
 	pkgdesc = A collection of datasets ready to use with TensorFlow
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tensorflow/datasets
 	arch = any
 	license = Apache

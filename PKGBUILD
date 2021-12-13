@@ -4,7 +4,7 @@
 pkgname=(tensorflow_datasets)
 _name='tensorflow-datasets'
 pkgver='4.4.0'
-pkgrel=1
+pkgrel=2
 url="https://github.com/tensorflow/datasets"
 pkgdesc="A collection of datasets ready to use with TensorFlow"
 depends=('absl-py'
