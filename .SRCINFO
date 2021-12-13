@@ -1,7 +1,7 @@
 pkgbase = betterww-git
 	pkgdesc = Wind Waker Modding Tool for Game Cube
-	pkgver = 1.4.r16.g640a2a4
-	pkgrel = 7
+	pkgver = 1.5pre.r0.g640a2a4
+	pkgrel = 1
 	url = https://github.com/WideBoner/betterww
 	arch = any
 	license = MIT
