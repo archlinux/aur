@@ -1,7 +1,7 @@
 pkgbase = nvidia-vulkan-utils-nvlax
 	pkgdesc = NVIDIA drivers utilities (vulkan developer branch) with NVENC and NvFBC patched with nvlax
 	pkgver = 470.62.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-vulkan-utils.install
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = nvidia-vulkan-utils-nvlax
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-vulkan-utils.sysusers
 	source = NVIDIA-Linux-x86_64-470.62.12.run::https://developer.nvidia.com/vulkan-beta-4706212-linux
-	source = nvlax::git+https://github.com/illnyang/nvlax.git
+	source = nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = e7d21ce7bf4cf034cb7e6162dfc8b7cfb9bb3144fbb70c0c2e6b8aeaf6379665f15117edbb685ea7d97f0956f89d2a58f4c77645af967d33072cbc3186d5e503
