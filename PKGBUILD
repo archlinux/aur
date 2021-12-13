@@ -10,7 +10,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=366.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -27,12 +27,14 @@ source=(
   "0001-set-python2-for-dev-appserver-py.patch"
   "0002-set-python2-for-endpointscfg-py.patch"
   "0003-add-compdef-to-zsh-completion.patch"
+  "0004-collections-abc.patch"
 )
 sha256sums=('32a2d179539854a27ce7c203f9ba8a3ac5c346d99ca2565b8dad6e9645d1ac12'
             'a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
             'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe'
-            '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
+            '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93'
+            '48545d175e3242cadd198920ee23919b4c8a2ff7f222e1668bc13c9b19e8a103')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
