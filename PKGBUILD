@@ -4,7 +4,7 @@
 pkgname=python-defcon
 _pyname=${pkgname#python-}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=(any)
 url="https://github.com/robotools/$_pyname"
@@ -24,7 +24,6 @@ sha256sums=('140f51da51e9630a9fa11dfd34376c4e29785fdb0bddc2e371df5b36bec17b76')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
