@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-colorsysplus
 pkgver=2021.11
-pkgrel=1
+pkgrel=2
 pkgdesc='An extension of the standard colorsys module with support for CMYK, terminal colors, ANSI and more.'
 arch=(any)
 license=(GPL)
