@@ -1,7 +1,7 @@
 pkgbase = python-json-rpc
 	pkgdesc = JSON-RPC 1/2 transport implementation
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pavlov99/json-rpc
 	arch = any
 	license = MIT

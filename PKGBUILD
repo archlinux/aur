@@ -3,7 +3,7 @@
 
 pkgname=python-json-rpc
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON-RPC 1/2 transport implementation"
 arch=('any')
 depends=('python')
