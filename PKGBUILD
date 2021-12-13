@@ -6,14 +6,14 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.71.r492.g49371c4f
+pkgver=2.71.r610.g0c78f5d5
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="https://github.com/vectorgraphics/asymptote"
 license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'gsl' 'fftw' 'libsigsegv')
-makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'librsvg')
+makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'librsvg' 'rapidjson')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'tix:               for the xasy GUI'
 	    'python-cson:       for the xasy GUI')
@@ -27,12 +27,14 @@ pkgver() {
   git describe --tags|sed s+git.+.r+|tr - .
 }
 
+
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
   ./configure --enable-gc=system \
 	      --prefix=/usr \
-	      --enable-texlive-build 
+	      --enable-texlive-build \
+	      --disable-lsp
   make
 }
 
