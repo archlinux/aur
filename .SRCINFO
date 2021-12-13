@@ -1,9 +1,9 @@
 pkgbase = ros2-pyqt5-sip-compat
 	pkgdesc = pyqt5-sip compatibility symlinks for building ros2
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	arch = any
 	license = MIT
-	depends = python-pyqt5-sip
+	depends = python-pyqt5
 
 pkgname = ros2-pyqt5-sip-compat
