@@ -2,7 +2,7 @@
 
 _pkgbase='ddnss'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Update DynDNS hosts registered at ddnss.de'
 arch=('any')
