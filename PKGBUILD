@@ -2,7 +2,7 @@
 
 pkgname=bilili
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='bilibili video and danmaku downloader | B站视频、弹幕下载器'
 arch=('any')
 url='https://github.com/SigureMo/bilili'
