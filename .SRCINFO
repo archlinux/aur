@@ -1,7 +1,7 @@
 pkgbase = python-fontdoctools
 	pkgdesc = tools that help in documenting and reviewing the design or the engineering of fonts
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/LindenbergSW/fontdoctools
 	arch = any
 	license = MIT
@@ -13,8 +13,7 @@ pkgbase = python-fontdoctools
 	provides = glyhpsandwich
 	provides = glyphshaper
 	provides = roentgen
-	source = python-fontdoctools-1.1.zip::https://bitbucket.org/LindenbergSW/fontdoctools/get/5f2880db5e08.zip
+	source = LindenbergSW-fontdoctools-5f2880db5e08.zip::https://bitbucket.org/LindenbergSW/fontdoctools/get/5f2880db5e08.zip
 	sha256sums = ea86f79b851dc28f62c2ec3ca5824a7906ed97688b96b0170de4f1a5b455be7c
 
 pkgname = python-fontdoctools
-
