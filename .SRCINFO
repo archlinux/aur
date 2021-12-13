@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-henet-git
 	pkgdesc = he.net DNS Authenticator plugin for Certbot
 	pkgver = r17.e2cd097
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/qt-max/certbot-dns-henet
 	arch = any
 	license = MIT
