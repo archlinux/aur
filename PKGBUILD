@@ -5,7 +5,8 @@
 pkgname=wapiti
 
 pkgver=3.0.8
-pkgrel=2
+_name="$pkgname${pkgver:0:1}"
+pkgrel=3
 
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
@@ -22,21 +23,19 @@ optdepends=('python-requests-kerberos: Kerberos authentication'
 options=('zipman')
 
 changelog=ChangeLog
-source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname${pkgver:0:1}-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$_name-$pkgver.tar.gz")
 sha256sums=('110d825ec7c2ba6a063398d63c1939d893f219fee6b5444c643f4b1cd9c71441')
 
 
-prepare() {
-  rm -rf "$pkgname${pkgver:0:1}-$pkgver/tests"
-}
+prepare() { rm -rf "$_name-$pkgver/tests"; }
 
 build() {
-  cd "$pkgname${pkgver:0:1}-$pkgver"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname${pkgver:0:1}-$pkgver"
+  cd "$_name-$pkgver"
   PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 

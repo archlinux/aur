@@ -1,7 +1,7 @@
 pkgbase = wapiti
 	pkgdesc = Comprehensive web app vulnerability scanner written in Python
 	pkgver = 3.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wapiti.sourceforge.net
 	changelog = ChangeLog
 	arch = any
