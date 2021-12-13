@@ -1,7 +1,7 @@
 pkgbase = python-telegram
 	pkgdesc = Python API for the tdlib library. It helps you build your own Telegram clients.
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexander-akhmetov/python-telegram
 	arch = any
 	license = MIT

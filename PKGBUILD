@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=python-telegram
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python API for the tdlib library. It helps you build your own Telegram clients."
 arch=(any)
 url="https://github.com/alexander-akhmetov/python-telegram"
