@@ -1,7 +1,7 @@
 pkgbase = python-validity
 	pkgdesc = Validity fingerprint sensor driver
 	pkgver = 0.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/uunicorn/python-validity
 	arch = any
 	license = MIT
@@ -21,4 +21,3 @@ pkgbase = python-validity
 	md5sums = 1e7cb6079b95541dd2dd898c868ec107
 
 pkgname = python-validity
-
