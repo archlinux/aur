@@ -5,7 +5,7 @@
 pkgname_=mididings
 pkgname=${pkgname_}-git
 pkgver=r706.bbec99a
-pkgrel=3
+pkgrel=4
 pkgdesc="A MIDI router and processor based on Python, supporting ALSA and JACK MIDI (python3 patched)"
 arch=('i686' 'x86_64')
 url="http://das.nasophon.de/mididings/"
