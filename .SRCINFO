@@ -1,0 +1,12 @@
+pkgbase = python-pysmt
+	pkgdesc = A solver-agnostic library for SMT Formulae manipulation and solving
+	pkgver = 0.9.1.dev139
+	pkgrel = 1
+	url = http://www.pysmt.org
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	source = https://files.pythonhosted.org/packages/py2.py3/P/PySMT/PySMT-0.9.1.dev139-py2.py3-none-any.whl
+	sha256sums = 4ec51e21bf24b4d1aae83bf0ef941c93d7d315730f016930d5adfa3eac8c2d33
+
+pkgname = python-pysmt
