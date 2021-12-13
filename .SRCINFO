@@ -1,7 +1,7 @@
 pkgbase = nodejs-csso-cli
 	pkgdesc = Command line interface for CSSO
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/css/csso-cli
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = nodejs-csso-cli
 	sha256sums = dc4a516ef7184a5b3c26daef0f90b2c0ea9e280119fcc97b4ce925e34ff21adc
 
 pkgname = nodejs-csso-cli
-
