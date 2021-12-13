@@ -1,7 +1,7 @@
 pkgbase = tortoisehg
 	pkgdesc = Graphical tools for Mercurial
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://foss.heptapod.net/mercurial/tortoisehg/thg
 	arch = any
 	license = GPL
