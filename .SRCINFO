@@ -1,15 +1,14 @@
 pkgbase = nodejs-intelephense
 	pkgdesc = Intelephense is a PHP language server adhering to the Language Server Protocol.
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/bmewburn/vscode-intelephense
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = intelephense-1.7.1.tgz
-	source = https://registry.npmjs.org/intelephense/-/intelephense-1.7.1.tgz
-	sha256sums = ce89dc2a505fa978b92880cf3456de66598a3d79bcef3a17312ceb50400d533a
+	noextract = intelephense-1.8.0.tgz
+	source = https://registry.npmjs.org/intelephense/-/intelephense-1.8.0.tgz
+	sha256sums = fa27dad282b541853b16e75ae951f55163adb3ad5a2c7339220b4576e9260542
 
 pkgname = nodejs-intelephense
-
