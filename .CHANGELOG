@@ -1,6 +1,45 @@
 Version history
 ===============
 
+0.9.40
+------
+
+2021-12-13
+
+Added configurable hotkeys to play next levels from the end-of-singleplayer
+screen. Default is F1 to replay the same level, Space to play the next level,
+F to play the next unsolved level. There is no default hotkey to save the
+replay manually; you can configure it.
+
+Hotkey reminders on buttons are printed in slightly darker text. They're
+still brighter than the button itself, but darker than the main button text.
+
+Fix #417: The editor shows all teams per gadget. Example: 4 players A, B, C, D
+and the map has 2 exits. Before 0.9.40, the editor printed on the exits: A, B.
+Now, the editor print on the exits the outcome of distributing the 4 players
+round-robin to the exits: AC, BD.
+
+Clarify tile group names in the documentation doc/formats/level.txt: Groups
+can have any name, not necessarily only a number. Since I don't have support
+in the program for copying tile groups between levels, you can at least rename
+the groups in one level, e.g, by search-and-replace, then copy-paste them into
+the second level, and have no name clashes.
+
+Fixed exits order in Tunnel of Love 6p. There were 7 exits in a 6-player map,
+leading to apparent removal of a necessary exit in play. Now it has 6 exits.
+
+Added new multiplayer maps by Flopsy: The Lix and the Saboteurs 4p, 6p, 8p.
+
+Clarify documentation on tile groups in doc/format/level.txt: Tile groups
+can have any names. When you copy tile groups by hand between levels, you
+can first rename them with text replacement.
+
+Allow warnings when building Lix. This circumvents a warning in Phobos that
+would otherwise abort the build: Duplicate symbol for max!(int, int).max,
+_D3std9algorithm10comparison__T3maxTiTiZQjFNaNbNiNfiiZi.
+
+
+
 0.9.39
 ------
 
