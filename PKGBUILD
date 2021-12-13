@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extensions-fly-pie
 _pkgname=Fly-Pie
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc="Fly-Pie is an innovative marking menu written as a GNOME Shell extension"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gnome-shell>=1:40')
 makedepends=('make' 'zip')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('735e29dafc2aad075628293f53ed5083eca8b7884294f117d766659150fe896681c466448703c23147be0dbdf75022708f5b394a6d2b2c240a7bb9c8243b3153')
+sha512sums=('38c161f48cd0b373504ad615fd30669057a7d751ccd5abd6670fcbe24b6fa1dbf4aa3c6e8a56b696ea82f05d434c1be05b5ef40a452fde520e69d56172348552')
 
 build() {
   cd "$_pkgname-$pkgver"
