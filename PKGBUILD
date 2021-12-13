@@ -1,6 +1,6 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 pkgname=leftwm
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 epoch=1
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
