@@ -3,8 +3,8 @@
 _pkgname=id-validator.py
 pkgname=python-id-validator
 pkgver=1.0.20
-pkgrel=1
-pkgdesc='中华人民共和国居民身份证、中华人民共和国港澳居民居住证以及中华人民共和国台湾居民居住证号码验证工具'
+pkgrel=2
+pkgdesc='Validator tool for ID number in China (including mainland, Hongkong, Macao, and Taiwan)'
 arch=('any')
 url='https://github.com/jxlwqq/id-validator.py'
 license=('MIT')

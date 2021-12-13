@@ -1,7 +1,7 @@
 pkgbase = python-id-validator
-	pkgdesc = 中华人民共和国居民身份证、中华人民共和国港澳居民居住证以及中华人民共和国台湾居民居住证号码验证工具
+	pkgdesc = Validator tool for ID number in China (including mainland, Hongkong, Macao, and Taiwan)
 	pkgver = 1.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jxlwqq/id-validator.py
 	arch = any
 	license = MIT
