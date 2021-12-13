@@ -6,7 +6,7 @@
 _pkgbasename=nvidia-470xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-470xx-utils' 'lib32-opencl-nvidia-470xx')
-pkgver=470.86
+pkgver=470.94
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -15,7 +15,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('e541549967ee992b8e6812cb6a294307217e66c7380ec17ff143ddc637f6e3a5b6c807ba8e29bf4c3d6813d7589a41aa124e8a5709a484ecf7fedfe420598a06')
+sha512sums=('b70542af04691da623b494d49fcbd58c58b83388fdb1c7ea6dcc779755b595444a324f613840ccbba0d9029456668376fe6049a3e4496c6054efbbf1e0a59c0f')
 
 create_links() {
     # create soname links
