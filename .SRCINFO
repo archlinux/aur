@@ -1,0 +1,16 @@
+pkgbase = man-pages-id-git
+	pkgdesc = Indonesian man pages (Git version)
+	pkgver = r16937.ba3ae0c9d8
+	pkgrel = 1
+	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
+	arch = any
+	license = GPL3
+	makedepends = po4a
+	makedepends = git
+	depends = man-db
+	conflicts = man-pages-id
+	options = !emptydirs
+	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git
+	sha512sums = SKIP
+
+pkgname = man-pages-id-git
