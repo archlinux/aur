@@ -1,7 +1,7 @@
 pkgbase = python-cykhash
 	pkgdesc = cython wrapper for khash-sets/maps, efficient implementation of isin and unique
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realead/cykhash/
 	arch = x86_64
 	license = MIT
