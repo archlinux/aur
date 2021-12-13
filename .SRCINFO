@@ -6,14 +6,14 @@ pkgbase = gr-binviz-git
 	arch = any
 	license = unknown
 	makedepends = cmake
-	depends = gnuradio
+	depends = gnuradio<3.9
 	depends = libosmocore
 	depends = boost
 	depends = swig
 	depends = cimg
+	depends = cppunit
 	provides = gr-binviz
 	source = git+https://github.com/CBrunsch/BinViz.git
 	sha1sums = SKIP
 
 pkgname = gr-binviz-git
-
