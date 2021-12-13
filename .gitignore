@@ -1,5 +1,9 @@
 *.pkg.tar.zst
 *.tar.gz
+*.log
+.BUILDINFO
+.MTREE
+.PKGINFO
 multimc5/
 libnbtplusplus/
 quazip/
