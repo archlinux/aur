@@ -2,7 +2,7 @@
 _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
 pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
-pkgver=1.1.1.r45.g5947727
+pkgver=2.0.r21.g3400ea4
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 depends=('sdl2' 'sdl2_mixer')
@@ -37,7 +37,9 @@ build() {
   LDFLAGS="-DNDEBUG" CXXFLAGS="-DNDEBUG" cmake -B "$pkgname/build" -S "$pkgname" \
       -Wno-dev \
       -DCMAKE_BUILD_TYPE=None \
-      -DCMAKE_INSTALL_PREFIX=/usr
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS"
   make -C "$pkgname/build"
 }
 
