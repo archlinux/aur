@@ -1,7 +1,7 @@
 pkgbase = python-flake8-pytest-style
 	pkgdesc = A flake8 extension that checks issues with pytest tests
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m-burst/flake8-pytest-style
 	arch = any
 	license = MIT
