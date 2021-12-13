@@ -19,5 +19,5 @@ build() {
 
 package() {
 	cd "$srcdir/vramsteg"
-	sudo make install
+	make install
 }
