@@ -1,7 +1,7 @@
 pkgbase = python-pycose
 	pkgdesc = A Python implementation of the COSE specification described in RFC 8152
 	pkgver = 0.9.dev8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TimothyClaeys/pycose
 	arch = any
 	license = BSD

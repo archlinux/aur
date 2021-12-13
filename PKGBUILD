@@ -3,7 +3,7 @@
 pkgname=python-pycose
 _name="${pkgname#python-}"
 pkgver=0.9.dev8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python implementation of the COSE specification described in RFC 8152"
 arch=(any)
 url="https://github.com/TimothyClaeys/pycose"
