@@ -1,9 +1,9 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Lahfa Samy <samy@lahfa.xyz>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Sebastian Wieland <wieland.s[at]online[dot]de>
-
 _pkgname=nextcloud
 pkgname=${_pkgname}-client-appimage-daily
-pkgver=3.3.50.20210819
+pkgver=3.4.50.20211213
 pkgrel=1
 epoch=1
 pkgdesc="Nextcloud desktop client (official daily AppImage build)"
@@ -18,7 +18,7 @@ makedepends=('p7zip' 'curl')
 noextract=("$_pkgname.AppImage")
 options=('!strip')
 source=(${_pkgname}-${pkgver}.AppImage::${url}/Nextcloud-${pkgver}-daily-x86_64.AppImage)
-sha256sums=('f6d9b193dfa33ac1c26a05e3be5310859959a486ef53b09b541011b6ccca4c81')
+sha256sums=('cd4dc9bd4b3118b3dac8d74283a5b9250057fd78762a423c2b0bac8b122f76bc')
 
 prepare() {
     cd "${srcdir}"
