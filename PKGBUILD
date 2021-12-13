@@ -2,7 +2,7 @@
 
 pkgname=searx
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A privacy-respecting, hackable metasearch engine (python(3) based)"
 arch=('any')
 url="https://searx.github.io/searx/"

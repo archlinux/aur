@@ -1,7 +1,7 @@
 pkgbase = searx
 	pkgdesc = A privacy-respecting, hackable metasearch engine (python(3) based)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://searx.github.io/searx/
 	arch = any
 	license = AGPL
