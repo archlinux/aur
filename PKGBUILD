@@ -2,7 +2,7 @@
 _pkgname=Weblate
 pkgname=weblate
 pkgver=4.8.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Web based localization tool with tight version control integration"
 url="https://github.com/WeblateOrg/weblate"
@@ -96,8 +96,8 @@ package() {
 	python setup.py install --root "$pkgdir" --optimize=1 --skip-build
 
 	install -dm755 "$pkgdir"/etc/webapps/${pkgname}
-	cp ${pkgdir}/usr/lib/python3.9/site-packages/${pkgname}/settings_example.py ${pkgdir}/etc/webapps/${pkgname}/settings.py
-	ln -s /etc/webapps/${pkgname}/settings.py ${pkgdir}/usr/lib/python3.9/site-packages/${pkgname}/settings.py
+	cp ${pkgdir}/usr/lib/python3.10/site-packages/${pkgname}/settings_example.py ${pkgdir}/etc/webapps/${pkgname}/settings.py
+	ln -s /etc/webapps/${pkgname}/settings.py ${pkgdir}/usr/lib/python3.10/site-packages/${pkgname}/settings.py
 
 	install -Dm644 "$srcdir"/sysusers-weblate.conf "$pkgdir"/usr/lib/sysusers.d/weblate.conf
 	install -Dm644 "$srcdir"/tmpfiles-weblate.conf "$pkgdir"/usr/lib/tmpfiles.d/weblate.conf

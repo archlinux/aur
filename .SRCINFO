@@ -1,7 +1,7 @@
 pkgbase = weblate
 	pkgdesc = Web based localization tool with tight version control integration
 	pkgver = 4.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WeblateOrg/weblate
 	install = weblate.install
 	arch = any
