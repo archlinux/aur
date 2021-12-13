@@ -1,6 +1,6 @@
 pkgbase = sonic2013-git
 	pkgdesc = A full decompilation of Sonic 1 & 2 (2013).
-	pkgver = r548.e328c81
+	pkgver = r581.7f52eb9
 	pkgrel = 1
 	url = https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation
 	install = sonic2013.install

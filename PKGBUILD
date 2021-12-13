@@ -1,7 +1,7 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic2013-git
-pkgver=r548.e328c81
+pkgver=r581.7f52eb9
 pkgrel=1
 pkgdesc='A full decompilation of Sonic 1 & 2 (2013).'
 arch=('any')
