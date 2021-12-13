@@ -3,16 +3,17 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=27.0.0.rc1.r9.g38d17acdb
-pkgrel=2
+pkgver=27.1.3.r249.gea1ae5914
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
-         "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache")
+         "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache"
+         "speexdsp" "pciutils")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
-             "vlc" "swig" "luajit" "python" "cef-minimal>=87.0.0" "wayland"
+             "vlc" "swig" "luajit" "python" "cef-minimal-obs-bin" "wayland"
              "qt5-wayland" "pipewire" "xdg-desktop-portal")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
@@ -23,6 +24,7 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "python: Python scripting"
             "v4l2loopback-dkms: Virtual webcam"
             "pipewire: Pipewire capture"
+            "pipewire-media-session: Pipewire capture"
             "xdg-desktop-portal: Pipewire capture")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
