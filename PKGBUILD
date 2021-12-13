@@ -4,7 +4,7 @@
 pkgname=psautohint
 pkgver=2.3.1
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc='A standalone version of AFDKO’s autohinter'
 arch=(x86_64)
 url="https://github.com/adobe-type-tools/$pkgname"
@@ -15,16 +15,17 @@ _py_deps=(fonttools
 depends=(python
          "${_py_deps[@]/#/python-}")
 makedepends=(python-setuptools-scm)
-source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.zip")
+_archive="$pkgname-$pkgver"
+source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$_archive.zip")
 sha256sums=('ff2529dfd7cc58cf8b709714b9abd3468354742f18c1a140eb252e18f41a51d4')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
