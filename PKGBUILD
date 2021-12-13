@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-threaded_servers
 pkgver=2021.11.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Threaded server modules (ThreadedHTTPSServer, ThreadedMulticastServer, Quickserve, Pacserve).'
 arch=(any)
 license=(GPL)
