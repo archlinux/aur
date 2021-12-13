@@ -1,0 +1,12 @@
+# The install script for the pacman package.
+
+post_install() {
+	echo " >> encrypt-remote-hook: README!"
+	echo " >> Make sure to add your encrypted disks to /etc/crypttab.remote.toml. There is"
+	echo " >> no support for cryptdevice or cryptkey on the kernel command line."
+	echo ""
+	echo " >> Add this hook by adding 'encrypt-remote' as a HOOKS entry to"
+	echo " >> /etc/mkinitcpio.conf."
+	echo ""
+	echo " >> For more information, read /usr/share/doc/encrypt-remote-hook/README.md"
+}

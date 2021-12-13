@@ -1,0 +1,14 @@
+pkgbase = encrypt-remote-hook
+	pkgdesc = An initcpio hook to decrypt roofs by combining keys from multiple endpoints.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/skeggse/encrypt-remote-hook
+	install = encrypt-remote-hook.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = encrypt-remote-hook-0.1.2.tar.gz::https://static.crates.io/crates/encrypt-remote-hook/encrypt-remote-hook-0.1.2.crate
+	sha256sums = acecad3c511e27effe7d6ee3f5cc7b435ef0ccd72a3abc20798560273a35d1be
+
+pkgname = encrypt-remote-hook
