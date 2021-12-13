@@ -3,7 +3,7 @@
 
 pkgname=sqlfluff
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A dialect-flexible and configurable SQL linter"
 arch=('any')
 url="https://www.sqlfluff.com"
