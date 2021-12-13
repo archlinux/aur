@@ -4,7 +4,7 @@
 pkgname=python-ebaysdk
 _pkgname=ebaysdk-python
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="eBay SDK for Python"
 url="https://github.com/timotheus/ebaysdk-python"
 arch=('any')
