@@ -1,0 +1,17 @@
+pkgbase = dial-a-pirate
+	pkgdesc = A LÖVE implementation of Dial-A-Pirate from the EGA version of The Secret of Monkey Island
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/tallero/dial-a-pirate
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = wget
+	depends = love
+	options = !strip
+	source = dial-a-pirate::git+https://gitlab.com/tallero/dial-a-pirate#commit=a5728ea
+	source = dial-a-pirate.sh
+	sha512sums = SKIP
+	sha512sums = 18ed8c35ae97402b0b5b10630f7e9a477015200a6447fd6a45cab7e580d781381beb2b1c6bb8e2c893ddb6b0142ecec58b24831e75a0501f8ab3e3f5132b6e45
+
+pkgname = dial-a-pirate
