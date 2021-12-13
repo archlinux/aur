@@ -3,7 +3,7 @@
 pkgname=python-pylightxl
 _name=${pkgname#python-}
 pkgver=1.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal functionality Excel library"
 arch=('any')
 url="https://github.com/PydPiper/pylightxl"

@@ -1,7 +1,7 @@
 pkgbase = python-pylightxl
 	pkgdesc = Minimal functionality Excel library
 	pkgver = 1.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PydPiper/pylightxl
 	arch = any
 	license = GPL
