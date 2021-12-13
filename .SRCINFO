@@ -1,5 +1,5 @@
 pkgbase = sysfetch-git
-	pkgdesc = A super tiny Linux system information fetch script written in BASH
+	pkgdesc = A super tiny system information fetch script written in BASH
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/wick3dr0se/sysfetch

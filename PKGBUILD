@@ -1,10 +1,10 @@
-# Maintainer: wick3dr0se <https://github.com/wick3dr0se/sysfetch>
+# Maintainer: wick3dr0se <wick3dr0se@protonmail.com>
 
 pkgname=sysfetch-git
-_pkgname=sysfetch
+pkg_name=sysfetch
 pkgver=0.1
 pkgrel=1
-pkgdesc="A super tiny Linux system information fetch script written in BASH"
+pkgdesc="A super tiny system information fetch script written in BASH"
 arch=(any)
 url="https://github.com/wick3dr0se/sysfetch"
 license=(GPL3)
@@ -16,15 +16,17 @@ source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/$_pkgname"
+cd "$srcdir/$pkg_name"
 git describe --long --tags | cut -d'-' -f1
 }
 
 package() {
-cd "$srcdir/$_pkgname"
-install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-install -m 0755 -d "$pkgdir/usr/share/$_pkgname/components"
-install -m 0755 components/*.sh "$pkgdir/usr/share/$_pkgname/components"
-install -m 0755 -d "$pkgdir/usr/share/$_pkgname/assets"
-install -m 0755 assets/*.sh "$pkgdir/usr/share/$_pkgname/assets"
+cd "$srcdir/$pkg_name"
+install -Dm755 "$pkg_name" "$pkgdir/usr/bin/$pkg_name"
+install -Dm755 "bsd" "$pkgdir/usr/bin/bsd"
+install -Dm755 "darwin" "$pkgdir/usr/bin/darwin"
+install -Dm755 "linux" "$pkgdir/usr/bin/linux"
+install -Dm755 "wsl" "$pkgdir/usr/bin/wsl"
+install -m 0755 -d "$pkgdir/usr/share/$pkg_name/assets"
+install -m 0755 assets/* "$pkgdir/usr/share/$pkg_name/assets"
 }
