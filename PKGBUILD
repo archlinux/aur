@@ -4,7 +4,7 @@
 pkgname=(python-pymilter python2-pymilter)
 _pkgname=pymilter
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for libmilter API"
 arch=('x86_64')
 url="https://github.com/sdgathman/pymilter"
