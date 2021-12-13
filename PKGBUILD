@@ -5,7 +5,7 @@
 pkgname=python-ansi
 _pkgname=ansi
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='ANSI cursor movement and graphics'
 arch=('any')
 url='https://github.com/tehmaze/ansi'

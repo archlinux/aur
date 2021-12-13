@@ -1,7 +1,7 @@
 pkgbase = python-ansi
 	pkgdesc = ANSI cursor movement and graphics
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tehmaze/ansi
 	arch = any
 	license = MIT
