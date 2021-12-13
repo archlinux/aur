@@ -4,7 +4,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-oldstable
-pkgver=40.6
+pkgver=40.7
 pkgrel=1
 pkgdesc="A window manager for GNOME (oldstable version)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -22,7 +22,7 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 checkdepends=(xorg-server-xvfb pipewire-media-session)
 provides=(libmutter-8.so)
 groups=(gnome-oldstable)
-_commit=48f4306b738b079d3758595cdb6ab7f6a1f821c8  # tag/40.6
+_commit=9362e01b1b8bd2de2069320e8faa1ca4555f2f1a  # tag/40.7
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
