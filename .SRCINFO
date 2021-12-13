@@ -1,7 +1,7 @@
 pkgbase = python-auto-changelog
 	pkgdesc = Generates changelogs for git repositories using conventional style commit messages
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Michael-F-Bryan/auto-changelog
 	arch = any
 	license = MIT
@@ -16,4 +16,3 @@ pkgbase = python-auto-changelog
 	b2sums = ebac96acd5dc1abc318e6bdc492277b73aee8cbed750ecec002ad1777be5d9e013f52d8d42083691cad323e75486406ed9e895d283a688fa754f9362a42debbe
 
 pkgname = python-auto-changelog
-
