@@ -3,7 +3,7 @@
 
 pkgname=genmake
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 _commit=c16e594
 pkgdesc="Makefile template generator"
 arch=('x86_64')
@@ -40,4 +40,5 @@ package() {
 	cd "$pkgname-$_commit"
 	install -D build/genmake -t "$pkgdir/usr/bin/"
 	install -Dm644 config/genmake_conf.json -t "$pkgdir/usr/share/$pkgname/config/"
+	install -d "$pkgdir/usr/share/$pkgname/template/"
 }
