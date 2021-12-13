@@ -11,7 +11,7 @@ md5sums=("0ae9e06c01113a05b5aaef378e1909a4")
 source=("https://github.com/ZaViBiS/multithreaded-file-upload/releases/download/$pkgver/linux_x86_64_ofile")
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  mv "${srcdir}/linux_x86_64_ofile" "${pkgdir}/usr/bin/ofile"
-  chmod +x "${pkgdir}/usr/bin/ofile"
+  # mkdir -p "${pkgdir}/usr/bin"
+  install -D "$srcdir/linux_x86_64_ofile" "$pkgdir/usr/bin/$pkgname"
+  # chmod +x "${pkgdir}/usr/bin/ofile"
 }
