@@ -9,7 +9,7 @@ md5sums=("78a66bcd9cb8c4b94960200ae65621aa")
 source=("https://github.com/angelofallars/treefetch/releases/download/${pkgver}/treefetch")
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  mv "${srcdir}/treefetch" "${pkgdir}/usr/bin/treefetch"
-  chmod +x "${pkgdir}/usr/bin/treefetch"
+  # install "${pkgdir}/usr/bin"
+  install -D "${srcdir}/treefetch" "${pkgdir}/usr/bin/${pkgname}"
+  # chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
