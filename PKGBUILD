@@ -1,12 +1,12 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 
-pkgname="python-segno"
+pkgname=python-segno
 _name=${pkgname#python-}
 pkgdesc="Python QR Code and Micro QR Code encoder"
 url="https://segno.readthedocs.io/"
 
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("BSD")
