@@ -1,6 +1,6 @@
 pkgbase = tflint-bin
 	pkgdesc = A linter for Terraform code
-	pkgver = 0.33.2
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/terraform-linters/tflint
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tflint-bin
 	depends = glibc
 	provides = tflint
 	conflicts = tflint
-	source = tflint_linux_amd64-0.33.2.zip::https://github.com/terraform-linters/tflint/releases/download/v0.33.2/tflint_linux_amd64.zip
-	sha512sums = 8a9dc1b46aa7ff9b77805d293e94ca75818c884eb70a361bc7147ad689fd8b197a85fd5d716ffb6928439d4e7f214f8c62d2d3f654a2a21fc364f20352c20215
+	source = tflint_linux_amd64-0.34.0.zip::https://github.com/terraform-linters/tflint/releases/download/v0.34.0/tflint_linux_amd64.zip
+	sha512sums = 49d38864da7b9e940db802bb03c673c21fd34760b7b70b82665b5dae3814ac5fd9ca26729a5bd9304704746b64fc6deed039b418afc4dfba79c4a924a3340938
 
 pkgname = tflint-bin
