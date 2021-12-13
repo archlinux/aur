@@ -1,7 +1,7 @@
 pkgbase = python-backoff
 	pkgdesc = Function decoration for backoff and retry.
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/litl/backoff
 	arch = any
 	license = MIT
