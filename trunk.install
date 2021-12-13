@@ -1,0 +1,6 @@
+#!/bin/sh
+
+post_remove() {
+  echo "Warning: You must remove the downloaded linters 'manually' at ~/.cache/trunk"
+}
+
