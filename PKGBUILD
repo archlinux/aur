@@ -4,7 +4,7 @@
 pkgname=python-ipympl
 _pkgname="${pkgname#*-}"
 pkgver=0.8.2
-pkgrel=42
+pkgrel=43
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 depends=(
