@@ -1,7 +1,7 @@
 pkgbase = mopidy-alsamixer
 	pkgdesc = Mopidy extension for ALSA volume control
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mopidy.com
 	arch = any
 	license = APACHE
