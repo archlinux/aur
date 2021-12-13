@@ -1,0 +1,12 @@
+pkgbase = python-archinfo
+	pkgdesc = hit.edu.cn utils
+	pkgver = 9.0.10730
+	pkgrel = 1
+	url = https://github.com/billchenchina/hitutil
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/archinfo/archinfo-9.0.10730.tar.gz
+	sha256sums = 7ae1d034ca69f355204ace2de889bad6604deb8012f5086e2427292d91da4699
+
+pkgname = python-archinfo
