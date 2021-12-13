@@ -6,7 +6,7 @@
 pkgname=python-aioxmpp
 _pkgname=${pkgname#python-}
 pkgver=0.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An XMPP library for use with Python 3.5+ asyncio"
 arch=('any')
 url="https://github.com/horazont/aioxmpp"
