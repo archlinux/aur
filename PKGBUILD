@@ -1,6 +1,6 @@
 _npmname='reveal-md'
 pkgname='nodejs-reveal-md'
-pkgver=5.1.3
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
@@ -11,13 +11,18 @@ conflicts=('reveal-md')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=('$_npmname-$pkgver.tgz')
-sha256sums=('71f09f3c45e515880525f883c3cd09addbb1b4caa98334da557caff7b4ab3382')
+sha256sums=('2ed48047df9ce0e6ed72164ac0ec73d8e9dced599f12c725560c7b8d0d0efcf8')
 
 package() {
-    local _npmdir="$pkgdir/usr/lib/node_modules/"
-    mkdir -p $_npmdir
-    cd $_npmdir
-    npm i --omit=dev --omit=optional --global --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+    npm i --cache "${srcdir}/npm-cache" --omit=dev --omit=optional --global --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/cli/issues/1103 for details.
+    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
