@@ -1,0 +1,16 @@
+pkgbase = pdfrrr
+	pkgdesc = Rotate pdf pages automatically
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zebradil/pdfrrr
+	arch = any
+	license = MIT
+	depends = pdftk
+	depends = poppler
+	depends = sed
+	depends = tesseract
+	provides = pdfrrr
+	source = pdfrrr
+	sha256sums = 4e65f313bd2a9b0e22c6215b8757661e0479a61acb8a31ba8a5c8a05ab6c29b3
+
+pkgname = pdfrrr

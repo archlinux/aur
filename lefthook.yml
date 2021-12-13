@@ -1,0 +1,13 @@
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+
+pre-commit:
+  commands:
+    update-aur-files:
+      tags: aur packaging
+      glob: "{PKGBUILD,pdfrrr}"
+      run: |
+        echo {staged_files} >/dev/null &&
+        updpkgsums PKGBUILD &&
+        makepkg --printsrcinfo > .SRCINFO &&
+        git add .SRCINFO PKGBUILD

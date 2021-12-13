@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+readonly PDF_FILE="${1?Specify PDF file}"
+
+if ! command -v sed &>/dev/null; then
+  echo "sed command not found"
+  exit 1
+fi
+
+if ! command -v tesseract >/dev/null 2>&1; then
+    echo "tesseract is not installed"
+    exit 1
+fi
+
+if ! command -v pdftk >/dev/null 2>&1; then
+    echo "pdftk is not installed"
+    exit 1
+fi
+
+if ! command -v pdftoppm >/dev/null 2>&1; then
+    echo "pdftoppm is not installed"
+    exit 1
+fi
+
+TMP_DIR=$(mktemp -d)
+readonly TMP_DIR
+
+if [[ ! "${TMP_DIR}" || ! -d "${TMP_DIR}" ]]; then
+    echo "Could not create temp dir"
+    exit 1
+fi
+
+echo "Temp dir: ${TMP_DIR}" >&2
+
+function cleanup {
+    rm -rf "${TMP_DIR}"
+    echo "Deleted temp dir ${TMP_DIR}"
+}
+
+trap cleanup EXIT
+
+echo "Extracting pages from PDF" >&2
+pdftoppm -gray -png "${PDF_FILE}" "${TMP_DIR}"/page
+
+rotations=""
+
+for page in "${TMP_DIR}"/page-*.png; do
+    echo "" >&2
+    index=$(basename "${page}" | sed -E 's/^page-([0-9]+).png$/\1/')
+    echo "Running OCR on page #${index}: ${page}" >&2
+    rotate=$(tesseract "${page}" - --psm 0 | sed -nr '/^Rotate/s/Rotate: ([0-9]+)/\1/p')
+    case "${rotate}" in
+        90)
+            echo "Rotating 90 degrees" >&2
+            rotation=east
+            ;;
+        180)
+            echo "Rotating 180 degrees" >&2
+            rotation=south
+            ;;
+        270)
+            echo "Rotating 270 degrees" >&2
+            rotation=west
+            ;;
+        0)
+            echo "No rotation needed" >&2
+            continue
+            ;;
+        *)
+            echo "Unknown rotation: ${rotate}" >&2
+            exit 1
+            ;;
+    esac
+    rotations="${rotations} ${index}${rotation}"
+done
+echo "" >&2
+
+echo "Rotating pages: ${rotations}" >&2
+pdftk "${PDF_FILE}" rotate ${rotations} output "${PDF_FILE}.rotated.pdf"
+mv "${PDF_FILE}.rotated.pdf" "${PDF_FILE}"
+
+echo "Done" >&2
