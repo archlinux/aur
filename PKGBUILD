@@ -6,7 +6,7 @@ _name="${pkgname#python-}"
 
 epoch=1
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc='HTTP/SOCKS-proxy transports for httpx'
 arch=('any')
