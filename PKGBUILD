@@ -3,7 +3,7 @@
 
 pkgname=(tensorflow_metadata)
 pkgver='1.4.0'
-pkgrel=1
+pkgrel=2
 url="https://github.com/tensorflow/metadata"
 pkgdesc="Utilities for passing TensorFlow-related metadata between tools"
 depends=('absl-py'
