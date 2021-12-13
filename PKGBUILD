@@ -3,7 +3,7 @@
 _pkgname=investpy
 pkgname=python-$_pkgname
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Financial Data Extraction from Investing.com with Python"
 arch=("x86_64")
 url="https://github.com/alvarobartt/investpy"
@@ -20,6 +20,5 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" -O1 --skip-build
 }
