@@ -1,7 +1,7 @@
 pkgbase = python-ndeflib
 	pkgdesc = Python package for parsing and generating NFC Data Exchange Format messages
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nfcpy/ndeflib
 	arch = x86_64
 	license = custom:ISC
@@ -11,4 +11,3 @@ pkgbase = python-ndeflib
 	sha256sums = ba347891000a538616e41b7ff37ee8dc92ce6a742816c3e93a1f52e90b1606e7
 
 pkgname = python-ndeflib
-

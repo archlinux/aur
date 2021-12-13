@@ -2,7 +2,7 @@
 _pkgname=ndeflib
 pkgname=python-${_pkgname}
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Python package for parsing and generating NFC Data Exchange Format messages"
 arch=('x86_64')
 url="https://github.com/nfcpy/ndeflib"
