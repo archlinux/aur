@@ -3,7 +3,7 @@
 pkgname=python-numpy-groupies
 _name=numpy_groupies
 pkgver=0.9.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Optimised tools for group-indexing operations for python numpy'
 arch=("any")
 url="https://github.com/ml31415/numpy-groupies"
