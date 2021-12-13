@@ -3,7 +3,7 @@
 
 pkgname=python-ytmusicapi
 pkgver=0.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial API for YouTube Music"
 arch=('any')
 url="https://github.com/sigma67/ytmusicapi"
