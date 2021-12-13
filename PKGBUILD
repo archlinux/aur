@@ -3,7 +3,7 @@
 pkgname=python-snimpy
 _name="${pkgname#python-}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive SNMP tool'
 arch=('x86_64')
 url='https://github.com/vincentbernat/snimpy'
