@@ -7,7 +7,7 @@ pkgdesc="Using SQLAlchemy with Spatial Databases"
 url="https://geoalchemy-2.readthedocs.io/"
 
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("MIT")
