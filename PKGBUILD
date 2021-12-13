@@ -1,33 +1,35 @@
-# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+#  Maintainer: Blair Bonnett <blair.bonnett at gmail>
+# Contributor: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 # Contributor: Michael Schubert <mschu.dev at gmail>
 
-pkgname=(python-numba-git)
-pkgver=0.22.1.r772.gb2e1bb3
+pkgname=python-numba-git
+pkgver=0.55.0dev0.r1004.g8f3cd87a0
 pkgrel=1
-pkgdesc="NumPy aware dynamic Python compiler using LLVM"
-url="https://github.com/numba/numba"
-arch=('i686' 'x86_64')
+pkgdesc='NumPy aware dynamic Python compiler using LLVM (Git version)'
+url='https://github.com/numba/numba'
+arch=('x86_64')
 license=('BSD')
-depends=('python-llvmlite-git' )
-makedepends=('git' 'cython')
-conflicts=()
+depends=('python-llvmlite>0.37.999' 'python-numpy' 'python-setuptools' 'tbb')
+makedepends=('git')
+conflicts=('python-numba')
 replaces=()
-backup=()
-provides=(python-numba)
-source=(git+https://github.com/numba/numba.git)
-md5sums=('SKIP')
+provides=("python-numba=$pkgver")
+source=('git+https://github.com/numba/numba.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd numba
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/numba"
+  cd numba
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/numba"
+  cd numba
   python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE LICENSES.third-party
 }

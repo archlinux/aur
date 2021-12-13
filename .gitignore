@@ -1,0 +1,5 @@
+numba/
+pkg/
+src/
+*.log
+python-numba-git-*.pkg.tar*
