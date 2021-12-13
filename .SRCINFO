@@ -1,7 +1,7 @@
 pkgbase = tuned
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redhat-performance/tuned
 	install = tuned.install
 	arch = any
