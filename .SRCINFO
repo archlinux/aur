@@ -1,7 +1,7 @@
 pkgbase = python-cheetah3
 	pkgdesc = A Python powered template engine and code generator
 	pkgver = 3.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cheetahtemplate.org
 	arch = any
 	license = MIT
