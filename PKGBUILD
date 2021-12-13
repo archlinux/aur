@@ -2,7 +2,7 @@
 
 pkgname=python-ajsonrpc
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Async JSON-RPC 2.0 protocol + server"
 arch=('any')
 depends=('python')
