@@ -1,8 +1,8 @@
 pkgbase = tumbler-extra-thumbnailers
 	pkgdesc = Customized thumbnailers for Tumbler
 	pkgver = 4.1
-	pkgrel = 2
-	url = https://docs.xfce.org/xfce/thunar/tumbler
+	pkgrel = 3
+	url = https://docs.xfce.org/xfce/tumbler/start
 	arch = any
 	license = unknown
 	depends = imagemagick
@@ -23,4 +23,3 @@ pkgbase = tumbler-extra-thumbnailers
 	sha512sums = 01faadd6ff09eb60e723d0e84b5d6da5824c5702cb5285a4685ef299a95bcea13f5ae050def87890c87bad8b59152b3fc3e5c6ee9971ee90daf1102be83c21b2
 
 pkgname = tumbler-extra-thumbnailers
-
