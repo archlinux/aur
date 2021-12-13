@@ -1,7 +1,7 @@
 pkgbase = python-pyufr-git
 	pkgdesc = Python3 library to communicate with Digital Logic µFR-series NFC readers
 	pkgver = r67.2df1e2d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Giraut/pyuFR
 	arch = x86_64
 	license = GPL3
