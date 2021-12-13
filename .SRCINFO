@@ -1,18 +1,17 @@
 pkgbase = ruby-actioncable
-	pkgdesc = WebSocket framework for Rails.
-	pkgver = 5.2.2
-	pkgrel = 2
-	url = http://rubyonrails.org
+	pkgdesc = Structure many real-time application concerns into channels over a single WebSocket connection
+	pkgver = 6.1.4.1
+	pkgrel = 1
+	url = https://rubyonrails.org
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-actionpack
+	depends = ruby-activesupport
 	depends = ruby-nio4r
 	depends = ruby-websocket-driver
-	noextract = actioncable-5.2.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/actioncable-5.2.2.gem
-	sha1sums = d10aa1a5c5201a23236fbd6c4de0baf116141ae9
+	source = https://github.com/rails/rails/archive/v6.1.4.1/rails-6.1.4.1.tar.gz
+	sha256sums = 7f827c32b617a185716d22803dc241d855cac831388b6cf6d7842d08e5bb20bb
 
 pkgname = ruby-actioncable
-
