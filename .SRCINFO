@@ -1,16 +1,15 @@
 pkgbase = cupp-git
 	pkgdesc = Common User Passwords Profiler
 	pkgver = 3.3.0.r77.56547fd
-	pkgrel = 2
-	url = https://github.com/Mebus/cupp
+	pkgrel = 3
+	url = https://github.com/mebus/cupp
 	changelog = CHANGELOG.md
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
 	backup = etc/cupp.cfg
-	source = git+https://github.com/Mebus/cupp.git
+	source = git+https://github.com/mebus/cupp.git
 	sha256sums = SKIP
 
 pkgname = cupp-git
-
