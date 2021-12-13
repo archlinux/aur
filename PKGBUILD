@@ -3,7 +3,7 @@
 
 pkgname=genmake
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 _commit=c16e594
 pkgdesc="Makefile template generator"
 arch=('x86_64')
@@ -25,10 +25,10 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 	cd "$pkgname-$_commit"
-	go build -o build/genmake
+	go build -o build/genmake -ldflags "-linkmode=external -extldflags=${LDFLAGS}"
 }
 
 check() {
