@@ -1,4 +1,5 @@
-# Active Maintainers: Anderson Rocha <anderson2320@gmail.com>
+# Maintainer: Anderson Rocha <anderson2320@gmail.com>
+# Contributor: NexAdn <nexadn@yandex.com>
 
 pkgname=cef-minimal
 pkgver="96.0.17"
@@ -33,8 +34,9 @@ sha1sums_x86_64=("4fd9ddb76a916ad7360027733b1fd12176757d27")
 build() {
   cd "$srcdir"/cef_binary_${_pkgver}_linux${_arch}_minimal
   sed -i 's/-Werror/#-Werror/g' cmake/cef_variables.cmake
-  cmake .
-  make libcef_dll_wrapper
+
+  CMAKE_BUILD_TYPE=Release cmake .
+  CMAKE_BUILD_TYPE=Release make libcef_dll_wrapper
 }
 
 package() {

@@ -40,12 +40,12 @@ update_version() {
   replace_line "	pkgver = $version" 3 .SRCINFO
 
   if [ $arch = "linux64" ]; then
-    replace_line "sha1sums_x86_64=(\"$sha_hash\")" 28 PKGBUILD
+    replace_line "sha1sums_x86_64=(\"$sha_hash\")" 29 PKGBUILD
 
     replace_line "  source_x86_64 = $file_url" 27 .SRCINFO
     replace_line "  sha1sums_x86_64 = $sha_hash" 28 .SRCINFO
   else
-    replace_line "sha1sums_i686=(\"$sha_hash\")" 27 PKGBUILD
+    replace_line "sha1sums_i686=(\"$sha_hash\")" 28 PKGBUILD
 
     replace_line "  source_i686 = $file_url" 25 .SRCINFO
 	  replace_line "  sha1sums_i686 = $sha_hash" 26 .SRCINFO
