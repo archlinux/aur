@@ -5,7 +5,7 @@ pkgname=social-engineer-toolkit-git
 _name="${pkgname%-git}"
 
 pkgver() { git -C "$_name" describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=8.0.3.r74.ef19c0ca8
+pkgver=8.0.3.r82.80fe70d70
 pkgrel=2
 
 pkgdesc='The Social-Engineer Toolkit (SET) - Development Version'
@@ -39,8 +39,8 @@ package() {
   cd "$pkgdir/usr/share"
   mv setoolkit/readme    doc/setoolkit
   mv setoolkit/README.md doc/setoolkit/
-  ln -s /usr/share/doc/setoolkit         setoolkit/readme
-  ln -s /usr/share/doc/setoolkit/LICENSE licenses/setoolkit/
+  ln -s /usr/share/doc/setoolkit                        setoolkit/readme
+  ln -s /usr/share/doc/setoolkit/LICENSE                licenses/setoolkit/
   ln -s /usr/share/setoolkit/se{toolkit,proxy,automate} ../bin/
 }
 
