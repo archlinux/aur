@@ -1,0 +1,12 @@
+pkgbase = python-itanium-demangler
+	pkgdesc = Pure Python parser for mangled itanium symbols
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/whitequark/python-itanium_demangler
+	arch = any
+	license = 0BSD
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/i/itanium_demangler/itanium_demangler-1.0.tar.gz
+	sha256sums = bca0fae4cb0ad582a3c7ede97d66b325d13445fdf87c28947233d8559430967c
+
+pkgname = python-itanium-demangler
