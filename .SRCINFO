@@ -1,7 +1,7 @@
 pkgbase = python-unrar-cffi
 	pkgdesc = Exposes unrar library functionality through a zipfile-like interface.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davide-romanini/unrar-cffi
 	arch = any
 	license = Apache

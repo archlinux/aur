@@ -3,7 +3,7 @@
 pkgname='python-unrar-cffi'
 _name=${pkgname#python-}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Exposes unrar library functionality through a zipfile-like interface.'
 arch=('any')
 url='https://github.com/davide-romanini/unrar-cffi'
