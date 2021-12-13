@@ -1,7 +1,7 @@
 pkgbase = python-serializable
 	pkgdesc = Base class with serialization helpers for user-defined Python objects
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/serializable
 	arch = any
 	license = Apache
@@ -18,10 +18,10 @@ pkgbase = python-serializable
 
 pkgname = python-serializable
 	depends = python-simplejson
-	depends = python-six>=1.9.0
-	depends = python-typechecks>=0.0.2
+	depends = python-six
+	depends = python-typechecks
 
 pkgname = python2-serializable
 	depends = python2-simplejson
-	depends = python2-six>=1.9.0
-	depends = python2-typechecks>=0.0.2
+	depends = python2-six
+	depends = python2-typechecks

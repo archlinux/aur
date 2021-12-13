@@ -4,7 +4,7 @@
 pkgbase=python-serializable
 pkgname=('python-serializable' 'python2-serializable')
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Base class with serialization helpers for user-defined Python objects"
 arch=('any')
 url="https://pypi.python.org/pypi/serializable"
@@ -26,32 +26,28 @@ prepare() {
 }
 
 build(){
-	pushd "serializable-$pkgver"
-	python setup.py build
-	popd
-
-	pushd "serializable-$pkgver-py2"
-	python2 setup.py build
+	( cd "serializable-$pkgver"
+	  python setup.py build )
+	( cd "serializable-$pkgver-py2"
+	  python2 setup.py build )
 }
 
 check() {
-	pushd "serializable-$pkgver"
-	python setup.py nosetests
-	popd
-
-	pushd "serializable-$pkgver-py2"
-	python2 setup.py nosetests
+	( cd "serializable-$pkgver"
+	  python setup.py nosetests )
+	( cd "serializable-$pkgver-py2"
+	  python2 setup.py nosetests )
 }
 
 package_python2-serializable() {
-	depends=('python2-simplejson' 'python2-six>=1.9.0' 'python2-typechecks>=0.0.2')
+	depends=('python2-simplejson' 'python2-six' 'python2-typechecks')
 
 	cd "serializable-$pkgver-py2"
 	PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python-serializable() {
-	depends=('python-simplejson' 'python-six>=1.9.0' 'python-typechecks>=0.0.2')
+	depends=('python-simplejson' 'python-six' 'python-typechecks')
 
 	cd "serializable-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
