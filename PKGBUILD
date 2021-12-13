@@ -1,15 +1,16 @@
-# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
+# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=ekho
-pkgver=7.7.1
+pkgver=8.6
 pkgrel=1
 pkgdesc="Chinese text-to-speech (TTS) software for Cantonese, Mandarin, Zhaoan Hakka, Tibetan, Ngangien and Korean"
 arch=('i686' 'x86_64')
-url="http://www.eguidedog.net/ekho.php"
+url="https://www.eguidedog.net/ekho.php"
 license=('GPL')
-depends=('libpulse' 'lame' 'festival' 'ncurses' 'espeak')
-source=("http://downloads.sourceforge.net/e-guidedog/ekho-${pkgver}.tar.xz")
-md5sums=('dadf0739fe6a67e5a1de03750b23a4a7')
+depends=('espeak-ng' 'lame' 'festival')
+source=("https://downloads.sourceforge.net/e-guidedog/ekho-${pkgver}.tar.xz")
+sha512sums=('cca7b95efe04fa377bec557c792bf6c7788caf5c0275c00979c20fd8c8acd20193c9968499ab3c1f3ee4bb29b0b43eabafd154d7a76ee87971430c1ea890ea39')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,6 +25,8 @@ prepare() {
     's/^\(\s*LIB_FESTIVAL=.*\)-lncurses\(.*\)/\1-Wl,--push-state,--no-as-needed,-lncurses,--pop-state\2/' \
     $srcdir/$pkgname-$pkgver/configure
 
+  CXXFLAGS="${CXXFLAGS}" \
+  LDFLAGS="${LDFLAGS}" \
   ./configure --prefix=/usr --with-mp3lame --enable-festival
 }
 
