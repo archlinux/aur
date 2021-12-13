@@ -3,7 +3,7 @@
 pkgname=python-sqlalchemy2-stubs
 _pkgname="${pkgname#python-}"
 pkgver=0.0.2a19
-pkgrel=1
+pkgrel=2
 pkgdesc="PEP-484 typing stubs for SQLAlchemy 1.4 and SQLAlchemy 2.0"
 arch=('any')
 url="https://github.com/sqlalchemy/sqlalchemy2-stubs"

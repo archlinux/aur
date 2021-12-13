@@ -1,7 +1,7 @@
 pkgbase = python-sqlalchemy2-stubs
 	pkgdesc = PEP-484 typing stubs for SQLAlchemy 1.4 and SQLAlchemy 2.0
 	pkgver = 0.0.2a19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sqlalchemy/sqlalchemy2-stubs
 	arch = any
 	license = MIT
