@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-clipboard-indicator-git
 	pkgdesc = Adds a clipboard indicator to the top panel, and saves clipboard history
-	pkgver = v37.r0.g55f8934
+	pkgver = v39.r0.g691cf1c
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator
@@ -13,4 +13,3 @@ pkgbase = gnome-shell-extension-clipboard-indicator-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-clipboard-indicator-git
-
