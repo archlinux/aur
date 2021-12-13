@@ -1,6 +1,6 @@
 # Maintainer: Sigmasd
 pkgname=bustd-git
-pkgver=7ae6b9b
+pkgver=0.1.0.b197ac1
 pkgrel=1
 pkgdesc="Process killer daemon for out-of-memory scenarios"
 url="https://github.com/vrmiguel/bustd"
@@ -21,11 +21,14 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cd "$srcdir/bustd"
-  cargo build --frozen --release --all-features
+  #cargo build --frozen --release --all-features(Disabled till upstream fix)
+  cargo build --frozen --release
 }
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "bustd/target/release/bustd"
+    install -Dm0755 -t "$pkgdir/usr/share/licenses/bustd" "bustd/LICENSE"
+    install -Dm0755 -t "$pkgdir/usr/share/doc/bustd" "bustd/README.md"
     install -Dm0755 -t "$pkgdir/etc/systemd/system/" bustd.service
     echo "To enable and start bustd run 'sudo systemctl enable --now bustd.service'."
 }
