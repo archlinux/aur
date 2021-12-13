@@ -1,16 +1,19 @@
 pkgbase = python-kornia
 	pkgdesc = Open Source Differentiable Computer Vision Library for PyTorch
-	pkgver = 0.5.8
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/kornia/kornia
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mypy
+	checkdepends = python-pytest-flake8
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python-pytorch
 	options = !emptydirs
-	source = kornia-0.5.8.tar.gz::https://github.com/kornia/kornia/archive/refs/tags/0.5.8.tar.gz
-	sha256sums = e0a2686c7b2856b4ccc2883817d96c7d888c6df4745beedcfe307cbfe0b50cca
+	source = kornia-0.6.2.zip::https://github.com/kornia/kornia/archive/refs/tags/v0.6.2.zip
+	sha256sums = f4aa4b5d7882bf8337269a3378dcd2f88f9a3704d36b4d08073a0c01f1f6ab9b
 
 pkgname = python-kornia
