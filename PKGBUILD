@@ -2,7 +2,7 @@
 
 _plug=vsrife
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.0.3.g07f1c6c
+pkgver=2.0.0.0.g321d486
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,8 +10,6 @@ url='https://github.com/HolyWu/vs-rife'
 license=('MIT')
 depends=('vapoursynth'
          'python-numpy'
-         'python-tqdm'
-         'python-requests'
          )
 makedepends=('git'
              'python-pip'
@@ -33,8 +31,8 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}/vsrife"
-  python __main__.py
+  cd "${_plug}"
+  python -m vsrife.__init__
 }
 
 build() {

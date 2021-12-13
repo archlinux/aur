@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsrife-git
 	pkgdesc = Plugin for Vapoursynth: vsrife (GIT version)
-	pkgver = 1.3.0.3.g07f1c6c
+	pkgver = 2.0.0.0.g321d486
 	pkgrel = 1
 	url = https://github.com/HolyWu/vs-rife
 	arch = any
@@ -10,8 +10,6 @@ pkgbase = vapoursynth-plugin-vsrife-git
 	makedepends = python-wheel
 	depends = vapoursynth
 	depends = python-numpy
-	depends = python-tqdm
-	depends = python-requests
 	optdepends = python-pytorch: CPU
 	optdepends = python-pytorch-opt: CPU with AVX2 optimizations
 	optdepends = python-pytorch-cuda: CUDA and CPU
