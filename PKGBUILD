@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-currencyconverter
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc='Module and command-line tool for currency conversion and rate retrieval.'
 arch=(any)
 license=(GPL)
