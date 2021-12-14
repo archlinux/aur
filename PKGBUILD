@@ -4,13 +4,14 @@
 
 pkgname=ted
 pkgver=2.23
-pkgrel=9
+pkgrel=10
 pkgdesc="Lightweight RTF text processor"
 arch=('x86_64')
 url="https://www.nllgg.nl/Ted/"
-depends=('desktop-file-utils' 'freetype2' 'ghostscript' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
+depends=('freetype2' 'ghostscript' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
 license=('GPL')
 makedepends=('inetutils' 'lsb-release')    # hostname and lsb_release commands
+options=(!buildflags)
 source=(https://ftp.nluug.nl/pub/editors/$pkgname/$pkgname-$pkgver.src.tar.gz
         https://ftp.nluug.nl/pub/editors/ted/ted_nl_NL.tar.gz
         https://ftp.nluug.nl/pub/editors/ted/ted_en_GB.tar.gz
