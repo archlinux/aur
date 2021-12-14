@@ -1,6 +1,6 @@
 pkgbase = monado-git
 	pkgdesc = The open source OpenXR runtime.
-	pkgver = 21.0.0.r1135.ga6b4e6a8
+	pkgver = 21.0.0.r1187.g1203cf38
 	pkgrel = 1
 	url = https://monado.dev
 	install = monado.install
@@ -14,7 +14,6 @@ pkgbase = monado-git
 	makedepends = git
 	makedepends = vulkan-headers
 	depends = openxr
-	depends = openhmd
 	depends = vulkan-icd-loader
 	depends = libgl
 	depends = wayland
@@ -24,6 +23,10 @@ pkgbase = monado-git
 	optdepends = libuvc: optical tracking support
 	optdepends = opencv: optical tracking support
 	optdepends = libsurvive-git: lighthouse positional tracking support
+	optdepends = openhmd: additional hardware support (Oculus Rift, Nolo)
+	optdepends = basalt-monado-git: experimental SLAM tracking through basalt
+	optdepends = kimera-vio-monado-git: experimental SLAM tracking through kimera
+	optdepends = percetto: tracing support for performance debugging
 	provides = openxr-runtime
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main
 	md5sums = SKIP
