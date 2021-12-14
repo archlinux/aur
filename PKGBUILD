@@ -36,9 +36,10 @@ package() {
 	install -Dm 644 "icons/svg/thg_logo.svg" "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
 
 	# already provided by hg
-	rm -f ${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__init__.py
-	rm -f ${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__init__.pyc
-	rm -rf ${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__pycache__/
+	cd "$pkgdir/usr/lib/"
+	rm -f python*/site-packages/hgext3rd/__init__.py
+	rm -f python*/site-packages/hgext3rd/__init__.pyc
+	rm -rf python*/site-packages/hgext3rd/__pycache__/
 }
 
 sha256sums=('db9b90da5945ffec2a746a6e9ff9f396f01fdbce8e2119a5654212674b331fa6')
