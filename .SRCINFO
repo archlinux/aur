@@ -1,7 +1,7 @@
 pkgbase = python-gluoncv-torch-git
-	pkgdesc = Research Framework for easy and efficient training of GANs based on PyTorch
+	pkgdesc = PyTorch API for GluonCV Models
 	pkgver = 0.0.3.r8.7b71149
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/StacyYang/gluoncv-torch
 	arch = any
 	license = MIT
@@ -18,4 +18,3 @@ pkgbase = python-gluoncv-torch-git
 	md5sums = SKIP
 
 pkgname = python-gluoncv-torch-git
-
