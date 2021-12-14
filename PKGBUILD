@@ -3,7 +3,7 @@
 _pkgname=mmclassification
 pkgname=python-mmclassification-git
 _pkgver=0.1.0
-pkgver=0.1.0.r149.4b46fd6
+pkgver=0.1.0.r458.894a82ea
 pkgrel=1
 pkgdesc='OpenMMLab Image Classification Toolbox and Benchmark'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
 )
 provides=(python-mmclassification)
 conflicts=(python-mmclassification)
-source=("${_pkgname}"::git+https://github.com/open-mmlab/mmclassification.git)
+source=("${_pkgname}::git+https://github.com/open-mmlab/mmclassification.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   python setup.py build
 }
 
