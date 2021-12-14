@@ -4,7 +4,7 @@
 _pyname=weasyprint
 pkgname=python-$_pyname
 pkgver=53.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert web documents (HTML, CSS, SVG, ...) to PDF'
 arch=(any)
 url=https://weasyprint.org
@@ -45,7 +45,6 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build_ext
 	python setup.py build
 }
