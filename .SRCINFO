@@ -1,9 +1,13 @@
 pkgbase = systemd-godns
 	pkgdesc = systemd for godns
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	arch = any
-	groups = lcj
+	groups = lcj-all
+	groups = lcj-desk
+	groups = lcj-vps
+	groups = lcj-route
+	groups = lcj-server
 	license = GPL3
 	depends = godns
 	source = godns@.service

@@ -5,7 +5,7 @@ DefaultDependencies=no
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/godns -c=/etc/conf.d/%i.conf
+ExecStart=/usr/bin/godns -c=/etc/conf.d/%i.json
 Restart=always
 KillMode=process
 RestartSec=30s

@@ -2,7 +2,7 @@
 
 pkgname=systemd-godns
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="systemd for godns"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -16,7 +16,7 @@ depends=('godns')
 #)
 #source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
 source=("godns@.service")
-sha512sums=('e9a1b8601db10bf65c6dc2ff7c06caa5f5bda80119d18165e621ae49c95d3a747cb7cc114838e287c0e1967f7e5303e819c82ee714ab9e021a891a8eba15f3e9')
+sha512sums=('684ae45c61d2ad2591c39e0be13bde6e10a9d6563d567cb58568f105a8da6e05d5a817ac1b72367bad1e0d360d6f60bafb13053b6169d78932c297f71d7e7fa8')
 
 #Package files should follow these general directory guidelines:
 #/etc	System-essential configuration files
@@ -48,5 +48,5 @@ package() {
 install  -Dm644 godns@.service  "$pkgdir/usr/lib/systemd/system/godns@.service"
 }
 
-groups=('lcj')
+groups=(lcj-all lcj-desk lcj-vps lcj-route lcj-server)
 
