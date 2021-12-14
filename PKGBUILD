@@ -1,6 +1,6 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname='toit'
-pkgver='0.0.2'
+pkgver='0.10.0'
 pkgrel=1
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(
 	'go'
 )
 source=("https://github.com/toitlang/toit/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6d158952cba9466cbe0fa6290a95d0bf381aaf34dfd05c93b5199617c3de705f')
+sha256sums=('fb585f6ea3063a24c6a4a03596a10d9205f775d082ca245ecad056f8a11b39b3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	IDF_PATH=third_party/esp-idf make tools 
+	IDF_PATH=third_party/esp-idf make -j1 tools
 }
 
 package() {
