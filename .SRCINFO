@@ -1,7 +1,7 @@
 pkgbase = jupyter-gnuplot_kernel
 	pkgdesc = A Jupyter/IPython kernel for gnuplot
 	pkgver = 0.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/has2k1/gnuplot_kernel
 	install = jupyter-gnuplot_kernel.install
 	arch = any

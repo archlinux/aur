@@ -3,7 +3,7 @@
 _base=gnuplot_kernel
 pkgname=jupyter-${_base}
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A Jupyter/IPython kernel for gnuplot"
 arch=('any')
 url="https://github.com/has2k1/${_base}"
@@ -29,6 +29,6 @@ package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
