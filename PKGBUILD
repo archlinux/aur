@@ -3,7 +3,7 @@
 pkgname=python-heatshrink2
 _pypi_pkgname=heatshrink2
 pkgver=0.10.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Compression using the Heatshrink algorithm in Python 3"
 arch=(any)
 url="https://github.com/eerimoq/pyheatshrink"
