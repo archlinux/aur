@@ -4,7 +4,7 @@ pkgbase='python-marshmallow-enum'
 pkgname=('python-marshmallow-enum')
 _module='marshmallow-enum'
 pkgver='1.5.1'
-pkgrel=3
+pkgrel=4
 pkgdesc='Enum handling for Marshmallow'
 url='https://github.com/justanr/marshmallow_enum'
 depends=(
@@ -20,7 +20,7 @@ arch=('any')
 source=(
     'https://files.pythonhosted.org/packages/source/m/marshmallow-enum/marshmallow-enum-1.5.1.tar.gz'
 )
-md5sums=('7f4624f5b553c50895c33b5195108c10')
+sha256sums=('38e697e11f45a8e64b4a1e664000897c659b60aa57bfa18d44e226a9920b6e58')
 
 
 build() {
