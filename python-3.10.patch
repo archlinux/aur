@@ -1,0 +1,188 @@
+diff '--color=auto' --recursive -u blist-1.3.6.orig/blist/_blist.c blist-1.3.6/blist/_blist.c
+--- blist-1.3.6.orig/blist/_blist.c	2014-03-13 01:59:04.000000000 +0600
++++ blist-1.3.6/blist/_blist.c	2021-12-14 23:05:45.394273964 +0600
+@@ -101,8 +101,9 @@
+ /* This macro is defined in Python 3.  We need it since calling
+  * PyObject_GC_UnTrack twice is unsafe. */
+ /* True if the object is currently tracked by the GC. */
+-#define _PyObject_GC_IS_TRACKED(o)              \
++/*#define _PyObject_GC_IS_TRACKED(o)              \
+         ((_Py_AS_GC(o))->gc.gc_refs != _PyGC_REFS_UNTRACKED)
++*/
+ 
+ #if PY_MINOR_VERSION < 6
+ /* Backward compatibility with Python 2.5 */
+@@ -4580,7 +4581,7 @@
+ 
+         for (i = 0; i < leafs_n; i++) {
+                 PyBList *leaf = leafs[i];
+-                if (leafs_n > 1 && !_PyObject_GC_IS_TRACKED(leafs[i]))
++                if (leafs_n > 1 && !PyObject_GC_IsTracked((PyObject*)leafs[i]))
+                         PyObject_GC_Track(leafs[i]);
+                 for (j = 0; j < leaf->num_children && k < n; j++, k++) {
+                         sortwrapperobject *wrapper;
+@@ -5353,7 +5354,7 @@
+ #define BITS_PER_PASS 8
+ #define HISTOGRAM_SIZE (((Py_ssize_t) 1) << BITS_PER_PASS)
+ #define MASK (HISTOGRAM_SIZE - 1)
+-#define NUM_PASSES (((sizeof(unsigned long)*8-1) / BITS_PER_PASS)+1)
++#define NUM_PASSES (Py_ssize_t)(((sizeof(unsigned long)*8-1) / BITS_PER_PASS)+1)
+ 
+ /* The histogram arrays are two-dimension arrays of
+  * [HISTOGRAM_SIZE][NUM_PASSES].  Since that can end up somewhat large (16k on
+@@ -5783,7 +5784,7 @@
+         assert(PyBList_Check(oself));
+         self = (PyBList *) oself;
+ 
+-        if (_PyObject_GC_IS_TRACKED(self))
++        if (PyObject_GC_IsTracked((PyObject*)self))
+                 PyObject_GC_UnTrack(self);
+ 
+         Py_TRASHCAN_SAFE_BEGIN(self)
+@@ -6589,7 +6590,7 @@
+         memcpy(&saved.BLIST_FIRST_FIELD, &self->BLIST_FIRST_FIELD,
+                sizeof(*self) - offsetof(PyBListRoot, BLIST_FIRST_FIELD));
+         Py_TYPE(&saved) = &PyRootBList_Type;
+-        Py_REFCNT(&saved) = 1;
++        Py_SET_REFCNT(&saved, 1);
+ 
+         if (extra_list != NULL) {
+                 self->children = extra_list;
+diff '--color=auto' --recursive -u blist-1.3.6.orig/blist/_btuple.py blist-1.3.6/blist/_btuple.py
+--- blist-1.3.6.orig/blist/_btuple.py	2012-12-10 01:09:14.000000000 +0600
++++ blist-1.3.6/blist/_btuple.py	2021-12-14 23:04:49.210277227 +0600
+@@ -1,7 +1,7 @@
+ from blist._blist import blist
+ from ctypes import c_int
+ import collections
+-class btuple(collections.Sequence):
++class btuple(collections.abc.Sequence):
+     def __init__(self, seq=None):
+         if isinstance(seq, btuple):
+             self._blist = seq._blist
+diff '--color=auto' --recursive -u blist-1.3.6.orig/blist/__init__.py blist-1.3.6/blist/__init__.py
+--- blist-1.3.6.orig/blist/__init__.py	2014-03-13 21:10:24.000000000 +0600
++++ blist-1.3.6/blist/__init__.py	2021-12-14 23:04:49.214277225 +0600
+@@ -1,6 +1,6 @@
+ __version__ = '1.3.6'
+ from blist._blist import *
+-import collections
++import collections.abc as collections
+ if hasattr(collections, 'MutableSet'): # Only supported in Python 2.6+
+     from blist._sortedlist import sortedlist, sortedset, weaksortedlist, weaksortedset
+     from blist._sorteddict import sorteddict
+diff '--color=auto' --recursive -u blist-1.3.6.orig/blist/_sorteddict.py blist-1.3.6/blist/_sorteddict.py
+--- blist-1.3.6.orig/blist/_sorteddict.py	2012-12-10 00:32:56.000000000 +0600
++++ blist-1.3.6/blist/_sorteddict.py	2021-12-14 23:04:49.219610557 +0600
+@@ -6,7 +6,7 @@
+     def __missing__(self, key):
+         return self._missing(key)
+ 
+-class KeysView(collections.KeysView, collections.Sequence):
++class KeysView(collections.abc.KeysView, collections.abc.Sequence):
+     def __getitem__(self, index):
+         return self._mapping._sortedkeys[index]
+     def __reversed__(self):
+@@ -23,7 +23,7 @@
+         return self._mapping._sortedkeys.bisect_right(key)
+     bisect = bisect_right
+ 
+-class ItemsView(collections.ItemsView, collections.Sequence):
++class ItemsView(collections.abc.ItemsView, collections.abc.Sequence):
+     def __getitem__(self, index):
+         if isinstance(index, slice):
+             keys = self._mapping._sortedkeys[index]
+@@ -46,7 +46,7 @@
+       else:
+         return sortedset(it, key=lambda item: keyfunc(item[0]))
+ 
+-class ValuesView(collections.ValuesView, collections.Sequence):
++class ValuesView(collections.abc.ValuesView, collections.abc.Sequence):
+     def __getitem__(self, index):
+         if isinstance(index, slice):
+             keys = self._mapping._sortedkeys[index]
+@@ -54,7 +54,7 @@
+         key = self._mapping._sortedkeys[index]
+         return self._mapping[key]
+ 
+-class sorteddict(collections.MutableMapping):
++class sorteddict(collections.abc.MutableMapping):
+     def __init__(self, *args, **kw):
+         if hasattr(self, '__missing__'):
+             self._map = missingdict()
+diff '--color=auto' --recursive -u blist-1.3.6.orig/blist/_sortedlist.py blist-1.3.6/blist/_sortedlist.py
+--- blist-1.3.6.orig/blist/_sortedlist.py	2012-12-10 07:36:35.000000000 +0600
++++ blist-1.3.6/blist/_sortedlist.py	2021-12-14 23:04:49.234277218 +0600
+@@ -25,7 +25,7 @@
+             del self.local.repr_count[self.ob_id]
+         return False
+ 
+-class _sortedbase(collections.Sequence):
++class _sortedbase(collections.abc.Sequence):
+     def __init__(self, iterable=(), key=None):
+         self._key = key
+         if key is not None and not hasattr(key, '__call__'):
+@@ -428,23 +428,23 @@
+ 
+ def safe_cmp(f):
+     def g(self, other):
+-        if not isinstance(other, collections.Set):
++        if not isinstance(other, collections.abc.Set):
+             raise TypeError("can only compare to a set")
+         return f(self, other)
+     return g
+ 
+-class _setmixin2(collections.MutableSet):
+-    "methods that override or supplement the collections.MutableSet methods"
++class _setmixin2(collections.abc.MutableSet):
++    "methods that override or supplement the collections.abc.MutableSet methods"
+ 
+-    __ror__ = collections.MutableSet.__or__
+-    __rand__ = collections.MutableSet.__and__
+-    __rxor__ = collections.MutableSet.__xor__
++    __ror__ = collections.abc.MutableSet.__or__
++    __rand__ = collections.abc.MutableSet.__and__
++    __rxor__ = collections.abc.MutableSet.__xor__
+ 
+     if sys.version_info[0] < 3: # pragma: no cover
+-        __lt__ = safe_cmp(collections.MutableSet.__lt__)
+-        __gt__ = safe_cmp(collections.MutableSet.__gt__)
+-        __le__ = safe_cmp(collections.MutableSet.__le__)
+-        __ge__ = safe_cmp(collections.MutableSet.__ge__)
++        __lt__ = safe_cmp(collections.abc.MutableSet.__lt__)
++        __gt__ = safe_cmp(collections.abc.MutableSet.__gt__)
++        __le__ = safe_cmp(collections.abc.MutableSet.__le__)
++        __ge__ = safe_cmp(collections.abc.MutableSet.__ge__)
+ 
+     def __ior__(self, it):
+         if self is it:
+@@ -476,7 +476,7 @@
+         return self._from_iterable(other) - self
+ 
+     def _make_set(self, iterable):
+-        if isinstance(iterable, collections.Set):
++        if isinstance(iterable, collections.abc.Set):
+             return iterable
+         return self._from_iterable(iterable)
+ 
+diff '--color=auto' --recursive -u blist-1.3.6.orig/blist/test/sortedlist_tests.py blist-1.3.6/blist/test/sortedlist_tests.py
+--- blist-1.3.6.orig/blist/test/sortedlist_tests.py	2012-12-10 07:34:03.000000000 +0600
++++ blist-1.3.6/blist/test/sortedlist_tests.py	2021-12-14 23:04:49.247610548 +0600
+@@ -29,7 +29,7 @@
+                          repr(self.type2test()))
+ 
+     def validate_comparison(self, instance):
+-        if sys.version_info[0] < 3 and isinstance(instance, collections.Set):
++        if sys.version_info[0] < 3 and isinstance(instance, collections.abc.Set):
+             ops = ['ne', 'or', 'and', 'xor', 'sub']
+         else:
+             ops = ['lt', 'gt', 'le', 'ge', 'ne', 'or', 'and', 'xor', 'sub']
+@@ -185,7 +185,7 @@
+     def test_order(self):
+         stuff = [self.build_item(random.randrange(1000000))
+                  for i in range(1000)]
+-        if issubclass(self.type2test, collections.Set):
++        if issubclass(self.type2test, collections.abc.Set):
+             stuff = set(stuff)
+         sorted_stuff = list(sorted(stuff))
+         u = self.type2test
