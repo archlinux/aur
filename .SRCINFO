@@ -1,7 +1,7 @@
 pkgbase = dune-common
 	pkgdesc = Build system, infrastructure and foundation classes
 	pkgver = 2.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://dune-project.org/modules/dune-common
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
