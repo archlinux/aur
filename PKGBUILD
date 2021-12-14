@@ -1,42 +1,31 @@
-# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
-
-_name=VisualDL
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Sam L. Yes <samlukeyes123@gmail.com>
 pkgname=visualdl
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Deep Learning Visualization Toolkit"
-url="https://github.com/PaddlePaddle/VisualDL"
-depends=(
-    'python-baidubce'
-    'flake8'
-    'python-flask-babel'
-    'python-pillow'
-    'python-protobuf'
-    'python-requests'
-    'python-six'
-    'python-matplotlib'
-    'python-pandas'
-)
-makedepends=(
-    'python-setuptools' 'python-pre-commit' 'rustup' 'npm' 'yarn' 'shellcheck'
-)
-license=('Apache')
+url="https://github.com/PaddlePaddle/${pkgname}"
+depends=(python-baidubce flake8 python-flask-babel python-pillow python-protobuf python-requests python-matplotlib python-pandas)
+makedepends=(python-pre-commit rustup npm yarn shellcheck) # python-setuptools
+license=('Apache2')
 arch=('any')
-source=($pkgname-$pkgver.tar.gz::https://github.com/PaddlePaddle/VisualDL/archive/refs/tags/v$pkgver.tar.gz)
-md5sums=('8a0c393ba68956de94dce5aabc7e456b')
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('3c51486ba865e2744142a60677a960f67bfa4116df0c964e1e639b0a06591718a8a1d9ed86d8429c81f8319e3bd365d85e706b809d8814064820ef27288975be')
 
 prepare() {
-    cd $srcdir/${_name}-${pkgver}
-    sed -i '/pre-commit/d;/shellcheck/d' requirements.txt
+  cd "VisualDL-${pkgver}"
+  sed -i '/pre-commit/d;/shellcheck/d' requirements.txt
 }
 
 build() {
-    rustup toolchain install stable
-    cd $srcdir/${_name}-${pkgver}
-    rustup run stable python setup.py build
+  rustup toolchain install stable
+  cd "VisualDL-${pkgver}"
+  rustup run stable python setup.py build
 }
 
 package() {
-    cd $srcdir/${_name}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "VisualDL-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
