@@ -4,7 +4,7 @@
 _base=ufl
 pkgname=python-${_base}-git
 pkgdesc="UFL - Unified Form Language"
-pkgver=2021.1.0.12.ga4b7ab09
+pkgver=2021.1.0.14.g1de7f12a
 pkgrel=1
 arch=('any')
 url="https://github.com/FEniCS/${_base}"
