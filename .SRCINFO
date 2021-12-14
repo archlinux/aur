@@ -8,6 +8,6 @@ pkgbase = wakapi
 	makedepends = go
 	provides = wakapi
 	source = https://github.com/muety/wakapi/archive/refs/tags/1.30.2.tar.gz
-	sha256sums = 9c8286eaf8ad645bd14f20645e7e3f5974f8a87da04ea4fd1df857bb8b603d09
+	sha256sums = 7510645e2439a1b9a2432aea4c8dbe83ba668e4d7e85133aaaeb516b23885ff2
 
 pkgname = wakapi
