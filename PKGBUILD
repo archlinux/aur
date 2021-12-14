@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=nerdctl
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Docker-compatible CLI for containerd"
 arch=('x86_64')
 url="https://github.com/containerd/nerdctl"
@@ -16,8 +16,8 @@ optdepends=(
   'slirp4netns'
 ) # others: cni-isolation-plugin
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4d2054f7ecb5ea4d9d41c07bf7899fd5b60663bc4762deef3bb898762ca07f9f9e4e409910a45ec6a09233935d2c402d4cd86ca85a46e73048906632d92146a1')
-b2sums=('bdb7555e0b9ec08c1bd8badc7e42432957f1c0a36d5fc8bbf7b974a78d4dd87c25a1e1347703798a48230ae78d1bb6fbd4cf7315fd0d115c7ca0ecd4dc058853')
+sha512sums=('0b940813206b0a550d0ffc591f36b45f590f449341aee25d04754e8faac7057060ffbb5e8ee2a0499fa72e3295ba7ab94131baf9349e1e70e23ddce37a04f396')
+b2sums=('a0ad209e365fc4495f992848ba91bbb7b93aea7ff7cc9e4dcbd57aa10caf330e0188fb4650ae588bc9fde384ae7ad81a5b80c02af49fafd0181c3016a9703b3c')
 
 prepare() {
   cd "$pkgname-$pkgver"
