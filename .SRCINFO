@@ -1,18 +1,17 @@
 pkgbase = slice
 	pkgdesc = GUI app to generate custom static fonts from variable fonts
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/source-foundry/Slice
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
 	depends = python-brotli
-	depends = python-fonttools>=4.23.0
+	depends = python-fonttools
 	depends = python-pyqt5
 	depends = python-zopfli
-	source = slice-0.7.1.tar.gz::https://github.com/source-foundry/Slice/archive/v0.7.1.tar.gz
+	source = Slice-0.7.1.tar.gz::https://github.com/source-foundry/Slice/archive/v0.7.1.tar.gz
 	sha256sums = d844bc59256108480568c4bd5bcf95e88bda4695183232cfd0d1be11a3379318
 
 pkgname = slice
-
