@@ -2,7 +2,7 @@
 
 _pkgname=python-gaphas
 pkgname="${_pkgname}-git"
-pkgver=2.1.2.r348.gac552ad
+pkgver=3.5.0.r0.ga51f017
 pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('x86_64' 'i686')
@@ -32,7 +32,7 @@ conflicts=(
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
