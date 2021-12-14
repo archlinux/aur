@@ -3,28 +3,25 @@
 pkgname=python-torchio
 _pkgname=torchio
 pkgver=0.18.71
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for medical image processing in deep learning and PyTorch'
-arch=(any)
+arch=('any')
 url='https://github.com/fepegar/torchio'
-license=(MIT)
+license=('MIT')
 depends=(
-  'python-click'
-  'python-deprecated'
-  'python-humanize'
-  'python-nibabel'
-  'python-numpy'
-  'python-pytorch'
-  'python-scipy'
-  'python-simpleitk'
-  'python-torchvision'
-  'python-tqdm'
+  python-click
+  python-deprecated
+  python-humanize
+  python-nibabel
+  python-numpy
+  python-pytorch
+  python-scipy
+  python-simpleitk
+  python-torchvision
+  python-tqdm
 )
 makedepends=(
-  'python-setuptools'
-)
-checkdepends=(
-  'python-pytest'    
+  python-setuptools
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fepegar/torchio/archive/v${pkgver}.tar.gz")
@@ -33,11 +30,6 @@ sha512sums=('49d289e50809c5472e5abb9fce6a7d867a2628bc518c498a966ab23237c615b8368
 build() {
   cd "${_pkgname}-${pkgver}"
   python setup.py build
-}
-
-check() {
-  cd "${_pkgname}-${pkgver}"
-  pytest -v .
 }
 
 package() {
