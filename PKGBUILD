@@ -14,15 +14,16 @@ depends=(python
 makedepends=(python-setuptools)
 provides=(python-sfdlib)
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+_archive="$_pkgname-$pkgver"
+source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b4500e61f3714c762cb03f164823b5ea921b8e462a2a480a98f7a1cfb9a06ef4')
 
 build() {
-	cd "$_pkgname-$pkgver"
+	cd "$_archive"
 	python setup.py build
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+	cd "$_archive"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
