@@ -3,7 +3,7 @@
 _base=mwoauth
 pkgname=python-${_base}
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic MediaWiki OAuth handshake helper for Python"
 license=(MIT)
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = python-mwoauth
 	pkgdesc = Generic MediaWiki OAuth handshake helper for Python
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mediawiki-utilities/python-mwoauth
 	arch = any
 	license = MIT
