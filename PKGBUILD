@@ -1,6 +1,6 @@
 # Maintainer: James An <james@jamesan.ca>
 pkgname=geany-openscad
-pkgver=20140305
+pkgver=20140503
 pkgrel=2
 pkgdesc="Syntax highlighting and auto-completion for OpenSCAD files in Geany."
 arch=('any')
