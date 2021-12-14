@@ -1,0 +1,14 @@
+pkgbase = python2-pexpect
+	pkgdesc = Pexpect allows easy control of interactive console applications.
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = https://pexpect.readthedocs.io/en/stable/
+	arch = any
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-ptyprocess
+	provides = python2-pexpect
+	source = https://files.pythonhosted.org/packages/source/p/pexpect/pexpect-4.8.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python2-pexpect
