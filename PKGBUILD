@@ -3,7 +3,7 @@
 # Contributor: Jeff Mickey <j@codemac.net>
 
 pkgname=libvc
-pkgver=010
+pkgver=011
 pkgrel=1
 pkgdesc="vCard library."
 arch=('i686' 'x86_64')
@@ -34,5 +34,5 @@ package() {
 	make DESTDIR=${pkgdir} install
 }
 
-md5sums=('56fe3e7d0fb76270e6abc5437e90dfd9'
+md5sums=('48fce6fb917e1fdc91e1f1fb2ecad9bf'
          'SKIP')
