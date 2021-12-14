@@ -3,7 +3,7 @@
 _base=hvplot
 pkgname=python-${_base}
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level plotting API for pandas, dask, xarray, and networkx built on HoloViews"
 arch=('any')
 url="https://${_base}.holoviz.org"
