@@ -3,7 +3,7 @@
 # Contributor: Florian Pritz <f-p@gmx.at>
 
 pkgname=inxi
-_pkgver=3.3.09-1
+_pkgver=3.3.10-1
 pkgver=${_pkgver//-/.}
 pkgrel=2
 pkgdesc="Full featured CLI system information tool"
