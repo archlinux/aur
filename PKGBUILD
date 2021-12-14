@@ -1,36 +1,39 @@
-# Maintainer:  Petr Mrázek <peterix@gmail.com>
-pkgname=multimc-bin
-pkgver=1.6
-pkgrel=1
-pkgdesc="Free, open source launcher and instance manager for Minecraft."
-arch=('i686' 'x86_64')
-url="http://multimc.org/"
-license=('Apache')
-depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'xorg-xrandr' 'zenity' 'wget')
-conflicts=('multimc' 'multimc5' 'multimc5-git')
-provides=('multimc' 'multimc5' 'multimc5-git')
-source=("$pkgname-$pkgver.deb::https://files.multimc.org/downloads/multimc_$pkgver-$pkgrel.deb")
-sha1sums=('b943427e5f32f6a41d77a373029731c67571901d')
-noextract=("$pkgname-$pkgver.deb")
+# Maintainer: Yupian Shuang <shuangyupian at qq dot com>
 
-prepare() {
-	mkdir -p $pkgname-$pkgver && bsdtar -xf $pkgname-$pkgver.deb -C $pkgname-$pkgver
-	cd $srcdir/$pkgname-$pkgver && bsdtar -xf data.tar.xz -C $srcdir/$pkgname-$pkgver
-}
+pkgname=multimc-bin
+_pkgname=multimc
+pkgver=0.6.14.2998
+pkgrel=1
+pkgdesc="MultiMC binaries without the non-native download script."
+arch=('x86_64')
+url="https://multimc.org/"
+license=('Apache')
+depends=('zlib' 'libgl' 'qt5-base' 'java-runtime')
+provides=('multimc')
+conflicts=('multimc')
+optdepends=('mcedit: Allows editing of minecraft worlds'
+            'visualvm: Profiling support'
+            'xorg-xrandr: for older minecraft versions'
+            'openal: to use system OpenAL libraries'
+            'glfw: to use system GLFW libraries')
+source=("$_pkgname-$pkgver.tar.gz::https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz"
+        "multimc.svg"
+        "multimc.desktop"
+        "multimc")
+sha256sums=('b99051b70903c7229877c9c2bc2ccaf1c20bb2510a5e4082d0113331bd321023'
+            '8c2c1ff1f4ce4ca7a7453ec1f7f666087f4319db7c654f81a7827a34f0c17e33'
+            '6d12903a5630c9ff7aa35769566f29a8b4b591024cc61be826f4a3b1e8bea3bc'
+            'e92fbc457b2cb00515450d7177a9f3f367694b60c6caaeb8b4069ca74b123b70')
 
 package() {
-	mkdir -p "$pkgdir/opt/multimc"
-	mkdir -p "$pkgdir/usr/share/metainfo"
-	mkdir -p "$pkgdir/usr/share/applications"
-	mkdir -p "$pkgdir/usr/bin"
+  cd "$srcdir/MultiMC/bin"
 
-	cp -R "$srcdir/$pkgname-$pkgver/opt/multimc/" -T "$pkgdir/opt/multimc/"
-	cp -R "$srcdir/$pkgname-$pkgver/usr/share/metainfo/" -T "$pkgdir/usr/share/metainfo/"
-	cp -R "$srcdir/$pkgname-$pkgver/usr/share/applications/" -T "$pkgdir/usr/share/applications/"
+  find -type f -exec \
+    install -Dm 644 '{}' "$pkgdir/usr/lib/multimc/{}" \;
+  find "$pkgdir" -type f '(' -name '*.so' -o -name 'MultiMC' ')' -exec \
+    chmod +x '{}' \;
 
-	install -m644 -D "$srcdir/$pkgname-$pkgver/usr/share/applications/multimc.desktop" "$pkgdir/usr/share/applications/multimc.desktop"
-	install -m644 -D "$srcdir/$pkgname-$pkgver/usr/share/metainfo/multimc.metainfo.xml" "$pkgdir/usr/share/metainfo/multimc.metainfo.xml"
-	install -m644 -D "$srcdir/$pkgname-$pkgver/opt/multimc/icon.svg" "$pkgdir/opt/multimc/icon.svg"
-	install -m755 -D "$srcdir/$pkgname-$pkgver/opt/multimc/run.sh" "$pkgdir/opt/multimc/run.sh"
-	ln -s "/opt/multimc/run.sh" "$pkgdir/usr/bin/multimc"
+  install -Dm 644 "$srcdir/multimc.svg" "$pkgdir/usr/share/pixmaps/multimc.svg"
+  install -Dm 644 "$srcdir/multimc.desktop" "$pkgdir/usr/share/applications/multimc.desktop"
+  install -Dm 755 "$srcdir/multimc" "$pkgdir/usr/bin/multimc"
 }
