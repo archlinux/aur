@@ -1,4 +1,5 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
+# Orignal Maintainer: Nicolas Quiénot <niQo @ aur>
 pkgname=python-pretty-cron
 _pkgname=pretty-cron
 pkgver=1.2.0
