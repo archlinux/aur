@@ -1,6 +1,6 @@
 pkgbase = python-paramiko-ng
 	pkgdesc = Python module that implements the SSH2 protocol
-	pkgver = 2.8.4
+	pkgver = 2.8.8
 	pkgrel = 1
 	url = https://ploxiln.github.io/paramiko-ng/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-paramiko-ng
 	depends = python-pynacl
 	provides = python-paramiko
 	conflicts = python-paramiko
-	source = paramiko-ng-2.8.4.tar.gz::https://github.com/ploxiln/paramiko-ng/archive/2.8.4.tar.gz
-	sha256sums = fe79422bcb9c69ab40d7ce94979af43a928264b97fbe1839a7241ff500cdf938
+	source = paramiko-ng-2.8.8.tar.gz::https://github.com/ploxiln/paramiko-ng/archive/2.8.8.tar.gz
+	sha256sums = 4fa3bf4497a4c67d77c5d246f19d4460215d9943413dd1c2f6ed1c47d4b30f14
 
 pkgname = python-paramiko-ng
