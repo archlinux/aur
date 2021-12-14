@@ -2,7 +2,7 @@
 
 pkgname=kronosnet-git
 _pkgname=kronosnet
-pkgver=1.90.r499.gf31b02d
+pkgver=1.23.r2.gbf929fc3
 pkgrel=1
 pkgdesc="VPNs on steroids"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'doxygen' 'lksctp-tools' 'libqb-git')
 depends=('nss' 'lzo' 'zstd' 'bzip2' 'libnl')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$pkgname::git+https://github.com/$_pkgname/$_pkgname.git")
+source=("$pkgname::git+https://github.com/$_pkgname/$_pkgname.git#branch=stable1-proposed")
 md5sums=('SKIP')
 
 pkgver() {
