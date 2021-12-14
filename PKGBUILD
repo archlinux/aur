@@ -3,7 +3,7 @@
 _pyname=pydyf
 pkgname=python-$_pyname
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='a low-level PDF generator written in Python and based on PDF specification 1.7'
 arch=(any)
 url="https://www.courtbouillon.org/$_pyname"
