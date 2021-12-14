@@ -12,5 +12,5 @@ source=('http://www.thingiverse.com/download:479705')
 md5sums=('b97833567bdc0e084ae226ca7dc0a722')
 
 package() {
-    install -Dm644 'download:479705' "$pkgdir/usr/share/geany/filetypes.OpenSCAD.conf"
+    install -Dm644 'download:479705' "$pkgdir/usr/share/geany/filedefs/filetypes.OpenSCAD.conf"
 }
