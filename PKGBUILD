@@ -6,7 +6,7 @@
 
 pkgname=xiphos
 pkgver=4.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc='A Bible study tool for GTK3'
 arch=('x86_64' 'i686')
 url='http://xiphos.org'
