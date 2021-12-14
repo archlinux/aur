@@ -1,12 +1,12 @@
 pkgbase = ttf-pirata-one
 	pkgdesc = A gothic textura font, simplified and optimized to work well on screen and pixel displays.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.rfuenzalida.com/
 	arch = any
 	license = custom:OFL
-	source = http://www.1001freefonts.com/d/5814/pirata_one.zip
-	md5sums = 150aae277366407f44abd3340fea58f6
+	source = https://dl.dafont.com/dl/?f=pirata_one
+	md5sums = 617351f4869aa1dffb82e7a23cf7559e
 
 pkgname = ttf-pirata-one
 
