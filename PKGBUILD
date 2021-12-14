@@ -8,8 +8,8 @@
 #######################
 
 pkgname=rstudio-desktop-daily-bin
-pkgver=2022.02.0.daily.317
-pkgver_url=2022.02.0-daily-317
+pkgver=2022.02.0.daily.318
+pkgver_url=2022.02.0-daily-318
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('c668a6a2482e575338b0be77b9f7d9343515f05b34886e7c046b80f0be44e432')
+sha256sums_x86_64=('6767260e0d9e8f207e73fa8b73dc3adf4bfdbcdf83f5d3fa3c20490fe886d1d9')
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
 
 package() {
