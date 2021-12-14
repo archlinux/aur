@@ -10,7 +10,7 @@ BUILDENV+=('!check')
 _pipname=pancritic
 pkgname=python-$_pipname
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='CriticMarkdup parser with optional pandoc backend'
 arch=(any)
 url="https://github.com/ickc/$_pipname"
@@ -29,20 +29,21 @@ checkdepends=(python-coverage
               python-markdown2
               python-panflute
               python-pypandoc)
-source=("$_pipname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+_archive="$_pipname-$pkgver"
+source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('670c0093924c11bb05a42ace4250166e076ad00f41e4208972613c07e3573515')
 
 build() {
-	cd "$_pipname-$pkgver"
+	cd "$_archive"
 	python setup.py build
 }
 
 check() {
-	cd "$_pipname-$pkgver"
+	cd "$_archive"
 	make test ERRORCODE=0
 }
 
 package() {
-	cd "$_pipname-$pkgver"
+	cd "$_archive"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
