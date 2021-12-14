@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kodi-addon-pvr-mythtv
-pkgver=19.0.0
+pkgver=19.0.2
 _kodiminver=1
 _kodicname=Matrix
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('cmake' 'kodi-platform' 'kodi-dev')
 depends=("kodi>=19.0")
 source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}-${_kodicname}.tar.gz")
-sha256sums=('14d76fda4b9c8e7ac068071e322432fe585357154a2b2bae23d051def766f06d')
+sha256sums=('f5a2c0d4c742db3e8465369f4845faa87c76572290edc1792cf188ad977752b4')
 
 prepare() {
   mkdir -p "${srcdir}/build"
