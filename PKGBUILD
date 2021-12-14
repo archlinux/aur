@@ -12,7 +12,7 @@ url="https://github.com/MultiMC/Launcher"
 license=('Apache')
 depends=('java-runtime' 'libgl' 'qt5-base' 'zlib')
 provides=('multimc')
-conflicts=('multimc' 'multimc5' 'multimc-bin' 'multimc-native')
+conflicts=('multimc')
 makedepends=('cmake' 'git' 'java-environment')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
