@@ -2,9 +2,8 @@
 # Contributor: Gaël Donval <gdonval+aur at google mail>
 pkgname=dynd
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ dynamic ndarray library, with Python exposure"
-groups=('blaze-ecosystem')
 arch=('x86_64')
 url="http://lib${pkgname}.org"
 license=('custom:BSD-2-clause')
