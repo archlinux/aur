@@ -5,7 +5,6 @@ pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
 url="https://moonlight-stream.org"
 license=('GPL3')
-
 depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf' 'hicolor-icon-theme')
 optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs')
 
