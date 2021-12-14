@@ -1,12 +1,13 @@
 pkgbase = python-pyvisa
 	pkgdesc = A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library
 	pkgver = 1.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyvisa/pyvisa
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-pytest
 	depends = python
 	depends = python-distribute
 	depends = python-docutils
@@ -16,4 +17,3 @@ pkgbase = python-pyvisa
 	sha256sums = 8f8a309050a784b518a04b1506a06d34c69c630ee553e8a88d9d89cea4fd318a
 
 pkgname = python-pyvisa
-
