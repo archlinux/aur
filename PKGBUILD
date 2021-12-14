@@ -2,7 +2,7 @@
 
 pkgname=pantalaimon
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
 url='https://github.com/matrix-org/pantalaimon'
