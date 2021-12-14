@@ -8,7 +8,7 @@ pkgbase=epsxe
 pkgname=('epsxe' 'bin32-epsxe')
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=27
+pkgrel=28
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -25,10 +25,14 @@ md5sums=(aeb34e2ca34f968630ca133ea821c61c eb0c46b8ae1355c589792f6be1835e47 8d478
 
 if [[ $pkgname =~ 32 ]]; then
   source+=("http://www.epsxe.com/files/${_pkgname}${pkgver//./}linux.zip")
-  md5sums+=(3e1976822eb260722b31c9f24cb1d6e1)
+  source+=("https://archive.org/download/archlinux_pkg_ncurses/ncurses-5.9_20141101-1-i686.pkg.tar.xz")
+  md5sums+=(3e1976822eb260722b31c9f24cb1d6e1 22c4695856a1e8b7968d4b1e86956fa7)
+  noextract+=("ncurses-5.9_20141101-1-i686.pkg.tar.xz")
 else
   source+=("http://www.epsxe.com/files/${_pkgname}${pkgver//./}linux_x64.zip")
-  md5sums+=(79fefeb4bff26bf1d374befb35b390df)
+  source+=("https://archive.org/download/archlinux_pkg_ncurses/ncurses-5.9_20141101-1-x86_64.pkg.tar.xz")
+  md5sums+=(79fefeb4bff26bf1d374befb35b390df d435d3e9481e5786b9e377abe63ce325)
+  noextract+=("ncurses-5.9_20141101-1-x86_64.pkg.tar.xz")
 fi
 
 prepare()
@@ -40,6 +44,11 @@ prepare()
   else
     mv "${pkgname}_x64" "$pkgname"
   fi
+
+
+  tar xf ncurses*.tar.xz usr/lib/libncursesw.so.5.9 2> /dev/null
+  mv usr/lib/libncursesw.so.5.9 .
+  rm -rf usr
 
   ## process shaders ##
   rm -rf shaders tmp
@@ -69,8 +78,12 @@ package_epsxe()
   install -Dm 644 "$srcdir/epsxe.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # ln -sf "$HOME/.${pkgname}/${pkgname}rc "$pkgdir/opt/$pkgname/.${pkgname}rc"
-  ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgname/libncurses.so.5"
-  ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgname/libtinfo.so.5"
+  install -m 644 "$srcdir/libncursesw.so.5.9" "$pkgdir/opt/$pkgname/libncursesw.so.5.9"
+  cd "$pkgdir/opt/$pkgname"
+  ln -sf libncursesw.so.5.9 libncurses.so.5
+  ln -sf libncursesw.so.5.9 libtinfo.so.5
+  #ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgname/libncurses.so.5"
+  #ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgname/libtinfo.so.5"
 }
 
 package_bin32-epsxe()
@@ -92,8 +105,13 @@ package_bin32-epsxe()
   install -Dm 755 "${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -Dm 644 "$srcdir/epsxe.png" "$pkgdir/usr/share/pixmaps/$pkgbase.png"
   install -Dm 644 "$srcdir/epsxe.desktop" "$pkgdir/usr/share/applications/$pkgbase.desktop"
-
   # ln -sf "$HOME/.${pkgbase}/${pkgbase}rc "$pkgdir/opt/$pkgbase/.${pkgbase}rc"
-  ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgbase/libncurses.so.5"
-  ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgbase/libtinfo.so.5"
+ 
+  install -m 644 "$srcdir/libncursesw.so.5.9" "$pkgdir/opt/$pkgbase/libncursesw.so.5.9"
+  cd "$pkgdir/opt/$pkgbase"
+  ln -sf libncursesw.so.5.9 libncurses.so.5
+  ln -sf libncursesw.so.5.9 libtinfo.so.5
+
+  #ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgbase/libncurses.so.5"
+  #ln -sf /usr/lib/libncursesw.so "$pkgdir/opt/$pkgbase/libtinfo.so.5"
 }

@@ -1,7 +1,7 @@
 pkgbase = epsxe
 	pkgdesc = Enhanced PSX emulator
 	pkgver = 2.0.5
-	pkgrel = 27
+	pkgrel = 28
 	url = http://epsxe.com
 	install = epsxe.install
 	arch = i686
@@ -15,17 +15,20 @@ pkgbase = epsxe
 	depends = ncurses
 	depends = openssl-1.0
 	noextract = shaders.zip
+	noextract = ncurses-5.9_20141101-1-x86_64.pkg.tar.xz
 	options = !strip
 	source = epsxe.desktop
 	source = epsxe.png
 	source = epsxe.sh
 	source = http://www.epsxe.com/files/shaders.zip
 	source = http://www.epsxe.com/files/ePSXe205linux_x64.zip
+	source = https://archive.org/download/archlinux_pkg_ncurses/ncurses-5.9_20141101-1-x86_64.pkg.tar.xz
 	md5sums = aeb34e2ca34f968630ca133ea821c61c
 	md5sums = eb0c46b8ae1355c589792f6be1835e47
 	md5sums = 8d47875ba4f51943cdb6e09c2f25e4b5
 	md5sums = a863740899adb064b8a28c3fa47d5280
 	md5sums = 79fefeb4bff26bf1d374befb35b390df
+	md5sums = d435d3e9481e5786b9e377abe63ce325
 
 pkgname = epsxe
 	arch = x86_64
@@ -42,4 +45,3 @@ pkgname = epsxe
 pkgname = bin32-epsxe
 	provides = epsxe
 	conflicts = epsxe
-
