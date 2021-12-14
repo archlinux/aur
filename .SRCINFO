@@ -1,7 +1,7 @@
 pkgbase = dune-localfunctions
 	pkgdesc = Local Finite Elements
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dune-project.org/modules/dune-localfunctions
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
