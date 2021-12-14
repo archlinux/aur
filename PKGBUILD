@@ -3,11 +3,11 @@
 
 pkgname=visual-paradigm
 pkgver=16.3
-pkgrel=20211114
+pkgrel=20211201
 pkgdesc="UML design application (Free 30-day trial)"
 arch=('x86_64')
 url='https://www.visual-paradigm.com/download/'
-depends=('java-environment-common')
+depends=('java-environment-common' 'java-runtime-common')
 license=('custom')
 install=visual-paradigm-community.install
 conflicts=('visual-paradigm-community')
@@ -20,7 +20,7 @@ source=("https://www.visual-paradigm.com/downloads/vp/Visual_Paradigm_${_ver}_${
   'visual-paradigm.png'
   'x-visual-paradigm.xml')
 
-sha256sums=('14d929eb9ec3284c070b5c685d277c3c0a53bec66af3752d9baee6c99931214c'
+sha256sums=('dc79c3e649411a0f49b0cc94d7da734ce1d315638a87b26c8c748da198559a4a'
             'd49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e'
             'fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
