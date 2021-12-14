@@ -1,11 +1,11 @@
-From ad1358e3707e4446df19eaf29580fecd70262742 Mon Sep 17 00:00:00 2001
+From 187f0bd9779deedcf0cb9b165319bcb392d2e6ab Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Mon, 6 Dec 2021 17:55:46 -0800
-Subject: [PATCH] v5.15.7 s0ix patch 2021-12-06
+Date: Tue, 14 Dec 2021 11:51:41 -0800
+Subject: [PATCH] v5.15.8 s0ix patch 2021-12-14
 
 Squashed commit of the following:
 
-commit 4dc27334f6763233481e45a507dcf099320d91f4
+commit af60fb6c24323bdc7102ed06fc64f0775d28bdc7
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -24,7 +24,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit cc94dad3592f5f1d57403bec4d50abdf4209391f
+commit 14eb5a4ab94870979f9e724bba2ccfe59800a8e8
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -37,43 +37,13 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit e3c0e098789b6ded7e7ce8aad93a8456a1d30c33
-Author: Fabrizio Bertocci <fabriziobertocci@gmail.com>
-Date:   Mon Nov 29 23:15:40 2021 -0500
-
-    amd-pmu: fix s2idle failures on certain AMD laptops
-
-    On some AMD hardware laptops, the system fails communicating with the
-    PMU when entering s2idle and the machine is battery powered.
-
-    Hardware description: HP Pavilion Aero Laptop 13-be0097nr
-    CPU: AMD Ryzen 7 5800U with Radeon Graphics
-    GPU: 03:00.0 VGA compatible controller [0300]: Advanced Micro Devices,
-    Inc. [AMD/ATI] Device [1002:1638] (rev c1)
-
-    Detailed description of the problem (and investigation) here:
-    https://gitlab.freedesktop.org/drm/amd/-/issues/1799
-
-    Patch is a single line: reduce the polling delay in half, from 100uSec
-    to 50uSec when waiting for a change in state from the PMC after a
-    write command operation.
-
-    Tested on kernel tree detached at tag 5.14
-    (7d2a07b769330c34b4deabeed939325c77a7ec2f)
-    After changing the delay, I did not see a single failure on this
-    machine (I have this fix for now more than one week and s2idle worked
-    every single time on battery power).
-
-    Signed-off-by: Fabrizio Bertocci <fabriziobertocci@gmail.com>
-    Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
-
-commit 1883942788ed4cf652910769bd67d6af42191c98
+commit 596f396d5702cce782a50c8722e3b1fa0af41b9f
 Author: Julian Sikorski <belegdol+github@gmail.com>
 Date:   Fri Nov 19 17:52:36 2021 +0100
 
     GFXOFF check patch by Lijo Lazar
 
-commit baf4f5783e186f463ce3142f40944f624ffa6861
+commit c12e736deb503bb7667ea1a9f0693a747720a463
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Sun Oct 31 20:48:53 2021 -0500
 
@@ -92,7 +62,7 @@ Date:   Sun Oct 31 20:48:53 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
 
-commit f1eb90b140359c0094e3d6fc57eb3d974f0ba6a5
+commit 8db33f92c54d58a9d8e599cccd8f915abf2870d4
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Nov 2 16:32:56 2021 +0100
 
@@ -108,7 +78,7 @@ Date:   Tue Nov 2 16:32:56 2021 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Acked-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 47b7c5640eac2213969d632fda7120c9a2503c73
+commit a251b4e45c73952b7fd11e3888b6d214fcdf0050
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:43 2021 -0500
 
@@ -119,7 +89,7 @@ Date:   Tue Oct 26 12:14:43 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit cfb5a086920496ce0ffda59f16a4ef4c60127db9
+commit 616fa91f4aa2b0b36351c0d2ed2ff976a54d11d6
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:42 2021 -0500
 
@@ -131,7 +101,7 @@ Date:   Tue Oct 26 12:14:42 2021 -0500
     Suggested-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 2d8f0bbdda20d1d50a0e401b5dc757e401a78469
+commit 45a82b1001af1d727cbe3d30df78ad8239b4a18f
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Oct 26 12:14:41 2021 -0500
 
@@ -145,7 +115,7 @@ Date:   Tue Oct 26 12:14:41 2021 -0500
     Fixes: 59348401ebed ("platform/x86: amd-pmc: Add special handling for timer based S0i3 wakeup")
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 631b629565dd5b1d7a434727908583de19a0a2ba
+commit 4d3c3cb0abd5c76c0f91203d411ca690fbc3f27c
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:46 2021 -0500
 
@@ -168,7 +138,7 @@ Date:   Wed Oct 20 11:29:46 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 43b31ca239e020560d1449158b88c47bb2d07e6e
+commit a27b847db1af2af3b38244158ad3eab5a37ef06a
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Oct 20 11:29:45 2021 -0500
 
@@ -182,7 +152,7 @@ Date:   Wed Oct 20 11:29:45 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 162fcb4a5f5ffa2f0ad320cbdce71f79c0a2aeac
+commit b247063e38e04085d817320a3a15ba35c7307be0
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Tue Sep 28 16:21:22 2021 +0200
 
@@ -201,7 +171,7 @@ Date:   Tue Sep 28 16:21:22 2021 +0200
     Reported-by: Nathan Chancellor <nathan@kernel.org>
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
 
-commit c7bc8dd8c6fede2bcd078c16dd614a78cfa5008d
+commit f6e2a31449588e07f20453a97953d771c530c5ab
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -214,7 +184,7 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 
-commit a50b91b8b1ab6e13a76c379f035cfaaf0140bd94
+commit bc760745a8ae4f85d0217fa7e498e8734e57dc12
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:30:20 2021 +0530
 
@@ -226,7 +196,7 @@ Date:   Tue Sep 21 17:30:20 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit f26d7f3a5a0f88020b743c07971d048df63e12d2
+commit 6ec586750db5b2c953795e7e19f54d380e8d6d9a
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Sep 21 17:29:10 2021 +0530
 
@@ -241,7 +211,7 @@ Date:   Tue Sep 21 17:29:10 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit b6880ca1ad5bff41d2dae2bc889c72972a0e06b8
+commit 2a8b174cdcb18f93704458d57e1947316150326c
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:11:30 2021 +0530
 
@@ -254,7 +224,7 @@ Date:   Thu Sep 16 18:11:30 2021 +0530
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 5a1244852f5128f20a85f07b28d1cb38cd1ae2b5
+commit 28c0ac15e1a2cdc042d302929fc8a5ae43947cdf
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Thu Sep 16 18:10:02 2021 +0530
 
@@ -273,7 +243,7 @@ Date:   Thu Sep 16 18:10:02 2021 +0530
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit d13cdcae51a386995bc19c3d4d4728dadc052148
+commit a7a5fe92873e69e4e65ff2f86f4e1c43ff2e1d03
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Sep 15 16:52:16 2021 -0500
 
@@ -293,8 +263,8 @@ Date:   Wed Sep 15 16:52:16 2021 -0500
  drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   5 +-
  drivers/pinctrl/pinctrl-amd.c             |  29 +-
  drivers/platform/x86/Kconfig              |   2 +-
- drivers/platform/x86/amd-pmc.c            | 326 ++++++++++++++++++++--
- 6 files changed, 340 insertions(+), 31 deletions(-)
+ drivers/platform/x86/amd-pmc.c            | 324 ++++++++++++++++++++--
+ 6 files changed, 339 insertions(+), 30 deletions(-)
 
 diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
 index f37fba9e5ba0..9d378dc9e928 100644
@@ -441,7 +411,7 @@ index e21ea3d23e6f..4cc2782635ec 100644
  	  The driver provides support for AMD Power Management Controller
  	  primarily responsible for S2Idle transactions that are driven from
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index fc95620101e8..2f55439e0f66 100644
+index 54b88bedecdf..2f55439e0f66 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -17,9 +17,11 @@
@@ -473,14 +443,7 @@ index fc95620101e8..2f55439e0f66 100644
  /* Base address of SMU for mapping physical address to virtual address */
  #define AMD_PMC_SMU_INDEX_ADDRESS	0xB8
  #define AMD_PMC_SMU_INDEX_DATA		0xBC
-@@ -70,12 +82,13 @@
- #define AMD_CPU_ID_CZN			AMD_CPU_ID_RN
- #define AMD_CPU_ID_YC			0x14B5
- 
--#define PMC_MSG_DELAY_MIN_US		100
-+#define PMC_MSG_DELAY_MIN_US		50
- #define RESPONSE_REGISTER_LOOP_MAX	20000
- 
+@@ -76,6 +88,7 @@
  #define SOC_SUBSYSTEM_IP_MAX	12
  #define DELAY_MIN_US		2000
  #define DELAY_MAX_US		3000
