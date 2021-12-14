@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-bin
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("https://github.com/xiph/rav1e/releases/download/v$pkgver/rav1e-$
 source_aarch64=("https://github.com/xiph/rav1e/releases/download/v$pkgver/rav1e-$pkgver-aarch64-linux.tar.gz")
 sha256sums=('SKIP'
             'SKIP')
-sha256sums_x86_64=('9e822ac0b001ebad3da7db281e9114cc840d7f1a676278b0aac7b161558c3217')
-sha256sums_aarch64=('90d482b8f6485e06f7fe87aff180f3b6140c865b417b2e71464cd423d360211a')
+sha256sums_x86_64=('51fb44073f8917b8859319aae5d9ad91d9c8b9a53fe4698b6a845ede835fcd66')
+sha256sums_aarch64=('1a55635567e28145721e5a0d4ce0eb085ca9ff2533c993a32dfda165d023fe7b')
 
 
 package() {
