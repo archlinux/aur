@@ -1,7 +1,7 @@
 pkgbase = python-colour-science
 	pkgdesc = Colour Science for Python
 	pkgver = 0.3.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.colour-science.org
 	arch = x86_64
 	license = custom:BSD-3-clause
