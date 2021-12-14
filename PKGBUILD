@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gpg-tui-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A terminal user interface for GnuPG"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu.tar.gz"{,.sig})
-sha512sums_x86_64=('73ff0a88142ed6e7c01fff27c0580788cb0c48b24c2ab2bbd5f37d96fe882e4f2037d900bfd9016053afc475c08a4d2305b8a652d6cbdfe1d502786d6d5bb79d'
+sha512sums_x86_64=('b774853d4862e43fb94107051189b864011a937e807eb450a7dc6e7df2527bf26ee1746093f2a9592527a4feea20d0cc79e5f2efddc0097fcbaa362915215587'
                    'SKIP')
 validpgpkeys=('14D49A4073C6899425D5315C1BC755D9FBD24068') # gpg-tui <gpg-tui@protonmail.com>
 

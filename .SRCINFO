@@ -1,6 +1,6 @@
 pkgbase = gpg-tui-bin
 	pkgdesc = A terminal user interface for GnuPG
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/orhun/gpg-tui
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = gpg-tui-bin
 	provides = gpg-tui
 	conflicts = gpg-tui
 	validpgpkeys = 14D49A4073C6899425D5315C1BC755D9FBD24068
-	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.8.1/gpg-tui-0.8.1-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.8.1/gpg-tui-0.8.1-x86_64-unknown-linux-gnu.tar.gz.sig
-	sha512sums_x86_64 = 73ff0a88142ed6e7c01fff27c0580788cb0c48b24c2ab2bbd5f37d96fe882e4f2037d900bfd9016053afc475c08a4d2305b8a652d6cbdfe1d502786d6d5bb79d
+	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.8.2/gpg-tui-0.8.2-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.8.2/gpg-tui-0.8.2-x86_64-unknown-linux-gnu.tar.gz.sig
+	sha512sums_x86_64 = b774853d4862e43fb94107051189b864011a937e807eb450a7dc6e7df2527bf26ee1746093f2a9592527a4feea20d0cc79e5f2efddc0097fcbaa362915215587
 	sha512sums_x86_64 = SKIP
 
 pkgname = gpg-tui-bin
