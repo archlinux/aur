@@ -1,10 +1,10 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r173.6acafc7
+pkgver=r207.3f327f9
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/BLumia/pineapple-pictures/'
 license=('MIT')
 depends=(
