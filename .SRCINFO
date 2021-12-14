@@ -15,6 +15,8 @@ pkgbase = btrfs-assistant-git
 	depends = polkit
 	depends = btrfsmaintenance
 	optdepends = snapper
+	provides = btrfs-assistant
+	conflicts = btrfs-assistant
 	source = git+https://gitlab.com/garuda-linux/applications/btrfs-assistant.git
 	md5sums = SKIP
 
