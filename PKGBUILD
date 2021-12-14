@@ -2,7 +2,7 @@
 pkgname=python-pylint-plugin-utils
 _pypi_pkgname=pylint-plugin-utils
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities and helpers for writing Pylint plugins"
 arch=('any')
 url="https://github.com/landscapeio/pylint-plugin-utils"
