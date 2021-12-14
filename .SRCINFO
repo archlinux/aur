@@ -1,7 +1,7 @@
 pkgbase = python-pacopy
 	pkgdesc = Numerical parameter continuation in Python
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pacopy
 	arch = x86_64
 	license = GPL3
