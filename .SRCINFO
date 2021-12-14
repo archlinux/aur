@@ -1,0 +1,21 @@
+pkgbase = pacman.c-git
+	pkgdesc = A Pacman clone written in C99
+	pkgver = 0.r133.7bdeed9
+	pkgrel = 1
+	url = https://github.com/floooh/pacman.c
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = alsa-lib
+	makedepends = mesa
+	makedepends = libx11
+	source = ghost.svg
+	source = ICON-LICENSE
+	source = pacman.c.desktop
+	source = pacman.c::git+https://github.com/floooh/pacman.c
+	sha256sums = 47824cf3764f4ca8cee0e284bff2196b3b002a9070b91c1471e83b1d0e9f3863
+	sha256sums = 11859bc357155955b4ecade235e58269832258ad355eaf4673c7705a5de6c9ae
+	sha256sums = 876432a5d829a7bb167d4ef1ab0891320a76f462ad891317702f91c67eedaa91
+	sha256sums = SKIP
+
+pkgname = pacman.c-git

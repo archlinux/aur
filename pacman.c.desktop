@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=pacman.c
+Comment=A Pacman clone written in C99
+Exec=pacman.c
+Icon=ghost
+Categories=Game;ActionGame;
