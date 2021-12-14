@@ -4,7 +4,7 @@
 _pyname=pygtrie
 pkgname=python-$_pyname
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library implementing a trie data structure'
 arch=(any)
 url="https://github.com/google/$_pyname"
@@ -16,7 +16,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$
 sha256sums=('2204dbd95584f67821da5b3771c4305ac5585552b3230b210f1f05322608db2c')
 
 build() {
-	cd pygtrie-$pkgver
+	cd "$_archive"
 	python setup.py build
 }
 
