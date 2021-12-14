@@ -5,7 +5,7 @@
 # AUR Category: devel
 pkgname=tortoisehg
 pkgver=6.0
-pkgrel=4
+pkgrel=5
 #_pkgchangeset=1605d6fba195f02c0c689fe4aff5d7160aa2b15d
 pkgdesc="Graphical tools for Mercurial"
 url="https://foss.heptapod.net/mercurial/tortoisehg/thg"
