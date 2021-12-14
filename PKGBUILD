@@ -2,7 +2,7 @@
 _base=pytest-cache
 pkgname=python-${_base}
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="pytest plugin with mechanisms for caching across test runs"
 arch=('any')
 url="https://pypi.org/project/${_base}"
