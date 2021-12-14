@@ -1,6 +1,6 @@
 pkgbase = gdb-frontend-bin
 	pkgdesc = An easy, flexible and extensionable GUI debugger
-	pkgver = 0.10.0.beta
+	pkgver = 0.10.1.beta
 	pkgrel = 1
 	url = https://oguzhaneroglu.com/projects/gdb-frontend
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = gdb-frontend-bin
 	depends = tmux
 	provides = gdb-frontend
 	provides = gdbfrontend
-	source = gdb-frontend-bin-0.10.0-beta.tar.gz::https://github.com/rohanrhu/gdb-frontend/archive/v0.10.0-beta.tar.gz
-	sha256sums = 45e6564183623efe6b2459cda573570a3e5d11d0d539cc34c9f6becc8669b2a7
+	source = gdb-frontend-bin-0.10.1-beta.tar.gz::https://github.com/rohanrhu/gdb-frontend/archive/v0.10.1-beta.tar.gz
+	sha256sums = 9761660c41fa209bb5cf967d98cf1678db477a03fb7f2aa1a816cf0f86d99676
 
 pkgname = gdb-frontend-bin
 
