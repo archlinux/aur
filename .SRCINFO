@@ -1,7 +1,7 @@
 pkgbase = python-pyfma
 	pkgdesc = Fused multiply-add (with a single rounding) for Python
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pyfma
 	arch = x86_64
 	license = MIT
