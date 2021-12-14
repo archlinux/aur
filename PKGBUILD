@@ -1,23 +1,23 @@
-# Copyright (C) 2020  Matthew Glazar
+# Copyright (C) 2020  Matthew "strager" Glazar
 # See end of file for extended copyright information.
 
 # Maintainer: Matthew "strager" Glazar <strager.nds@gmail.com>
 # Contributor: Shivam Mehta <sm.cse at gmail dot com>
 
 pkgname=quick-lint-js-git
-pkgver=0.2.0.r309.g0486214b
+pkgver=1.0.0.r0.gd2ba6f3f
 pkgrel=1
 pkgdesc="Find bugs in JavaScript programs"
 arch=(aarch64 arm armv6h armv7h i686 pentium4 x86_64)
 url="https://quick-lint-js.com/"
 license=(Apache Boost GPL3)
 depends=(gcc-libs)
-makedepends=(cmake git ninja)
+makedepends=(cmake gcc git ninja)
 checkdepends=(icu)
 provides=(quick-lint-js)
 conflicts=(quick-lint-js)
 source=(quick-lint-js::git+https://github.com/quick-lint/quick-lint-js.git)
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
   cd quick-lint-js
@@ -28,6 +28,7 @@ build() {
   cd quick-lint-js
   cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=YES \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQUICK_LINT_JS_INSTALL_LICENSES_DIR="share/licenses/${pkgname}" \
     -S . -B build
@@ -45,7 +46,7 @@ package() {
 }
 
 # quick-lint-js finds bugs in JavaScript programs.
-# Copyright (C) 2020  Matthew Glazar
+# Copyright (C) 2020  Matthew "strager" Glazar
 #
 # This file is part of quick-lint-js.
 #

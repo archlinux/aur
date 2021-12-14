@@ -1,6 +1,6 @@
 pkgbase = quick-lint-js-git
 	pkgdesc = Find bugs in JavaScript programs
-	pkgver = 0.2.0.r309.g0486214b
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://quick-lint-js.com/
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = quick-lint-js-git
 	license = GPL3
 	checkdepends = icu
 	makedepends = cmake
+	makedepends = gcc
 	makedepends = git
 	makedepends = ninja
 	depends = gcc-libs
@@ -24,4 +25,3 @@ pkgbase = quick-lint-js-git
 	sha256sums = SKIP
 
 pkgname = quick-lint-js-git
-
