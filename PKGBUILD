@@ -3,8 +3,8 @@
 _pkgname=pyfuse3
 pkgbase=python-pyfuse3
 pkgname=(python-pyfuse3)
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Python 3 bindings for libfuse 3 with asynchronous API (Trio compatible)"
 url="https://github.com/libfuse/pyfuse3"
@@ -16,17 +16,17 @@ makedepends=('python-setuptools' 'cython')
 #            'SKIP')
 #validpgpkeys=('ED31791B2C5C1613AF388B8AD113FCAC3C4E599F')
 
-source=("https://github.com/libfuse/pyfuse3/archive/pyfuse-$pkgver.tar.gz")
-sha256sums=('d105d6f8b6cf1b4080f4f955fb2122f13d0a506a333f28ca63ef925b27fd3941')
+source=("https://github.com/libfuse/pyfuse3/archive/release-$pkgver.tar.gz")
+sha256sums=('686d202c2b37ef439bdb40827f80cbd3b5a7a64a275549ddf053ac781068b3ea')
 
 build() {
-	cd pyfuse3-pyfuse-$pkgver
+	cd pyfuse3-release-$pkgver
 	python setup.py build_cython
 	python setup.py build_ext --inplace
 	python setup.py build
 }
 
 package_python-pyfuse3() {
-	cd pyfuse3-pyfuse-$pkgver
+	cd pyfuse3-release-$pkgver
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }

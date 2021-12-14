@@ -1,7 +1,7 @@
 pkgbase = python-pyfuse3
 	pkgdesc = Python 3 bindings for libfuse 3 with asynchronous API (Trio compatible)
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = https://github.com/libfuse/pyfuse3
 	arch = x86_64
 	license = LGPL
@@ -10,8 +10,7 @@ pkgbase = python-pyfuse3
 	depends = python
 	depends = python-trio
 	depends = fuse3
-	source = https://github.com/libfuse/pyfuse3/archive/pyfuse-3.2.0.tar.gz
-	sha256sums = d105d6f8b6cf1b4080f4f955fb2122f13d0a506a333f28ca63ef925b27fd3941
+	source = https://github.com/libfuse/pyfuse3/archive/release-3.2.1.tar.gz
+	sha256sums = 686d202c2b37ef439bdb40827f80cbd3b5a7a64a275549ddf053ac781068b3ea
 
 pkgname = python-pyfuse3
-
