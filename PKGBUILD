@@ -3,7 +3,7 @@
 _base=panel
 pkgname=python-${_base}
 pkgver=0.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level app and dashboarding solution for Python"
 arch=('any')
 url="https://${_base}.holoviz.org"

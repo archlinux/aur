@@ -1,7 +1,7 @@
 pkgbase = python-panel
 	pkgdesc = A high-level app and dashboarding solution for Python
 	pkgver = 0.12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://panel.holoviz.org
 	arch = any
 	license = custom:BSD-3-clause
