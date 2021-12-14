@@ -10,7 +10,7 @@ url="https://github.com/wick3dr0se/sysfetch"
 license=(GPL3)
 depends=('coreutils' 'bash' 'awk' 'sed' 'psmisc' 'grep' 'pacman')
 optdepends=('xorg-xprop: fallback for X session info'
-'pciutils: for gpu detection')
+'pciutils: to detect gpu')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
