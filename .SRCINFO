@@ -1,0 +1,19 @@
+pkgbase = heimdal
+	pkgdesc = Heimdal, an implementation of Kerberos and PKIX
+	pkgver = 7.99.r29746.g717ad8b04
+	pkgrel = 1
+	url = https://www.heimdal.software/
+	arch = x86_64
+	makedepends = git
+	makedepends = libldap
+	makedepends = perl-json
+	depends = libcap-ng
+	depends = readline
+	depends = sqlite
+	optdepends = libldap
+	provides = heimdal=7.99.r29746.g717ad8b04
+	source = git+https://github.com/heimdal/heimdal
+	validpgpkeys = E65941B71CF3C459A34FA89C45E7572A28CD8CC8
+	sha256sums = SKIP
+
+pkgname = heimdal
