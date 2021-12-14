@@ -1,7 +1,7 @@
 pkgbase = python-ndim
 	pkgdesc = Compute multidimensional volumes and monomial integrals
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nschloe/ndim
 	arch = x86_64
 	license = GPL3
