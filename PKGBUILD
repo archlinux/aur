@@ -3,7 +3,7 @@
 _base=pytest-flakes
 pkgname=python-${_base}
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="pytest plugin to check source code with pyflakes"
 arch=('any')
 url="https://github.com/asmeurer/${_base}"
