@@ -1,7 +1,7 @@
 pkgbase = python-networkmanager
 	pkgdesc = Easy communication with NetworkManager
 	pkgver = 2.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/seveas/python-networkmanager
 	arch = any
 	license = zlib
@@ -12,4 +12,3 @@ pkgbase = python-networkmanager
 	sha256sums = de6eb921d94aba7549f428ed2b3aa482a5d543ecb6965cbaa0fbb555ab31b9d5
 
 pkgname = python-networkmanager
-
