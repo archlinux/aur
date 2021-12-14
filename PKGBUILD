@@ -2,7 +2,7 @@
 
 pkgname=python-gbinder
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for libgbinder"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/erfanoabdi/gbinder-python"
