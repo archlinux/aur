@@ -1,17 +1,21 @@
 pkgbase = python-pyvisa-py
 	pkgdesc = A pure python backend for PyVISA
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/pyvisa/pyvisa-py
 	arch = any
 	license = MIT
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-pytest
 	depends = python
 	depends = python-pyvisa
+	depends = python-pyserial
+	depends = python-pyusb
 	optdepends = linux-gpib: gpib instrument support
 	conflicts = python-pyvisa-py-git
-	source = https://github.com/pyvisa/pyvisa-py/archive/0.5.1.tar.gz
-	md5sums = 0fd82cb3a80e799a17307c2f774e204d
+	source = python-pyvisa-py-0.5.2.tar.gz::https://github.com/pyvisa/pyvisa-py/archive/0.5.2.tar.gz
+	sha256sums = 5a39209acbcdb597b3bd8f997d484e193d91b5622cb691dd1f513d610317594c
 
 pkgname = python-pyvisa-py
-
