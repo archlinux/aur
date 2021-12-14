@@ -1,7 +1,7 @@
 pkgbase = python-pytest-variables
 	pkgdesc = pytest plugin for providing variables to tests/fixtures
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytest-dev/pytest-variables
 	arch = any
 	license = MPL2
