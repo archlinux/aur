@@ -1,7 +1,7 @@
 pkgbase = python-adaptmesh
 	pkgdesc = Adaptive mesh generation and refinement
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kinnala/adaptmesh
 	arch = x86_64
 	license = MIT
