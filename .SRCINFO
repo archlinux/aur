@@ -1,18 +1,16 @@
 pkgbase = cmakew
 	pkgdesc = CMake wrapper CLI tool
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thombashi/cmakew
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python-logbook
 	depends = python-six
 	depends = python-subprocrunner
 	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/c/cmakew/cmakew-0.2.0.tar.gz
-	sha256sums = e18a968f7f254a13ae47911538c874e2d9877c0bf7507aa0cdcf1a66d907d376
+	source = https://pypi.org/packages/source/c/cmakew/cmakew-0.2.0.tar.gz
+	sha512sums = 5576877252e2ef2e3e0638eaa921f97e1a713b406061fcf4bda1b1703e8fd95ef858c1cba3d8951a1f09990128ba6b382b30dacffc6f808fc8f2f86f5c16578f
 
 pkgname = cmakew
-
