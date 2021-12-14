@@ -1,9 +1,7 @@
 #!/bin/bash
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
-# shellcheck disable=SC2034
 pkgname=dl-musescore
-# shellcheck disable=SC2034
 pkgver=0.30.1
 # shellcheck disable=SC2034
 pkgrel=1
