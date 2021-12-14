@@ -2,7 +2,7 @@
 
 pkgname=pacman.c-git
 _pkgname=pacman.c
-pkgver=0.r133.7bdeed9
+pkgver=0.r133.7bdeed9.r133.7bdeed9
 pkgrel=1
 pkgdesc='A Pacman clone written in C99'
 arch=('any')
