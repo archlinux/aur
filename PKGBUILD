@@ -2,8 +2,8 @@
 
 pkgname=aegisub-ttools-meson-git
 _srcname=aegisub-ttools
-pkgver=3.2.2.r644.696a73284
-pkgrel=1
+pkgver=3.2.2.r663.f21d8a360
+pkgrel=2
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork)'
 arch=('x86_64')
 url='http://www.aegisub.org'
@@ -20,25 +20,44 @@ makedepends=('boost' 'git' 'intltool' 'lua' 'mesa' 'meson')
 # which makes building quite inconvenient over using the vendored one.
 provides=('aegisub')
 conflicts=('aegisub' 'aegisub-git')
-source=("$_srcname::git+https://github.com/TypesettingTools/Aegisub.git")
-sha256sums=('SKIP')
+source=(
+  "$_srcname::git+https://github.com/TypesettingTools/Aegisub.git"
+  "luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
+  "gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
+  "gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
+)
+noextract=(
+  "gtest-1.8.1.zip"
+  "gtest-1.8.1-1-wrap.zip"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
+  'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
+)
 
 pkgver() {
   cd "$_srcname"
 
   tag='v3.2.2'
-
   echo "${tag#v}.r$(git rev-list --count ${tag}..HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$_srcname"
 
+  # Initialize subproject wraps for luajit
+  ln -s ../../luajit subprojects/luajit
+  meson subprojects packagefiles --apply luajit
+  # and gtest
+  mkdir subprojects/packagecache
+  ln -s ../../../gtest-1.8.1.zip subprojects/packagecache/gtest-1.8.1.zip
+  ln -s ../../../gtest-1.8.1-1-wrap.zip subprojects/packagecache/gtest-1.8.1-1-wrap.zip
+
   arch-meson builddir \
     -Dportaudio=disabled \
-    -Dopenal=disabled \
-    --wrap-mode=nofallback
-  # Must overwrite wrap-mode for luajit, which is 'nodownload' otherwise
+    -Dopenal=disabled
 }
 
 build() {
