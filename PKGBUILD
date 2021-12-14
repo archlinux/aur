@@ -1,17 +1,17 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=rnote
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple note taking application written in Rust and GTK4"
 arch=('x86_64')
 url="https://github.com/flxzt/rnote"
 license=('GPL3')
-depends=('gtk4' 'glib2' 'libadwaita')
+depends=('gtk4' 'glib2' 'libadwaita' 'poppler-glib')
 makedepends=('meson' 'rust')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=('341fc5a5b07fe7d4585e6cd25390052807f0223808b341fd744a94ada3178dd860aae99b3f6cac54a6258344c6b6c97be1158c6fa2f807a74abea5365711af7c')
+b2sums=('3ae11558e203e1c55f232f22ac30e370d4e974b827b33482031cd29a6d75e49508948954d3e7f6f558cc14869505fa4a2ae5512a642ab47c719a057f354a0b50')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
