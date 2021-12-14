@@ -1,6 +1,6 @@
 #!/bin/bash
 pkgname=python-commitizen
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=0
 pkgdesc="Create committing rules for projects, auto bump versions, and auto changelog generation"
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
   'python-tomlkit'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f0feb230afd2688a19fa6714ed8784564bcc27826aba0e44a3627f29fd7b07da')
+sha256sums=('5ab572e1dd021331f90991830ce904f939e631f7bfd27157fe5d76b0c029fa6d')
 
 _pkgname="${pkgname/python-/}"
 
