@@ -1,7 +1,7 @@
 pkgbase = qubes-db-vm
 	pkgdesc = QubesDB libs and daemon service.
 	pkgver = 4.0.16
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/QubesOS/qubes-core-qubesdb
 	install = PKGBUILD.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = qubes-db-vm
 	makedepends = qubes-libvchan
 	makedepends = python
 	depends = qubes-libvchan
+	depends = python<3.11
 	source = qubes-db-vm::git+https://github.com/QubesOS/qubes-core-qubesdb.git?signed#tag=v4.0.16
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
 	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
@@ -16,4 +17,3 @@ pkgbase = qubes-db-vm
 	sha512sums = SKIP
 
 pkgname = qubes-db-vm
-

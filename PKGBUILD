@@ -5,12 +5,17 @@
 pkgname=qubes-db-vm
 _gitname=${pkgname%-git*}
 pkgver=4.0.16
-pkgrel=5
+pkgrel=6
 pkgdesc="QubesDB libs and daemon service."
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-core-qubesdb"
 license=('GPL')
-depends=(qubes-libvchan)
+depends=(
+    'qubes-libvchan'
+
+    # Block updating if there is a major python update as the python API will be in the wrong PYTHONPATH
+    'python<3.11'
+)
 makedepends=(qubes-libvchan python)
 install=PKGBUILD.install
 validpgpkeys=('0AF64C3B1F1214B38C8C57861FA2DBE674387CC3'  # Otto Sabart
