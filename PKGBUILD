@@ -3,7 +3,7 @@
 _base=flake8-import-order
 pkgname=python-${_base}
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Flake8 and pylama plugin that checks the ordering of import statements"
 arch=('any')
 url="https://github.com/PyCQA/${_base}"
