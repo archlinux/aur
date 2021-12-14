@@ -2,7 +2,7 @@
 
 pkgname=python-lagom
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Autowiring dependency injection container"
 arch=('any')
 url="https://github.com/meadsteve/lagom"
