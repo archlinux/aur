@@ -2,7 +2,7 @@
 
 pkgname=sftpman
 epoch=1
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Application that handles sshfs/sftp file systems mounting."
 arch=('any')
