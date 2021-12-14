@@ -2,7 +2,7 @@
 
 pkgname=python-google-cloud-testutils
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of testing tools used in Python client libraries for Google APIs"
 arch=('any')
 url="https://github.com/googleapis/python-test-utils"
