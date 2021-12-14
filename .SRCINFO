@@ -1,14 +1,13 @@
 pkgbase = python-glyphconstruction
 	pkgdesc = a simple, powerful, human-readable language for describing how glyph shapes are built
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/typemytype/GlyphConstruction
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = python-glyphconstruction-0.8.3.tar.gz::https://github.com/typemytype/GlyphConstruction/archive/d7c7dd5ffe8a48d089c49206197a9091886fcb10.tar.gz
+	source = GlyphConstruction-d7c7dd5ffe8a48d089c49206197a9091886fcb10.tar.gz::https://github.com/typemytype/GlyphConstruction/archive/d7c7dd5ffe8a48d089c49206197a9091886fcb10.tar.gz
 	sha256sums = f0f6c48329f21aea6802dcf4d8790d1ca208723ace6e8c115c538be2c5809de5
 
 pkgname = python-glyphconstruction
-
