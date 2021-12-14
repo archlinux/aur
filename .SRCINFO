@@ -1,7 +1,7 @@
 pkgbase = python-django-channels-redis
 	pkgdesc = Redis-backed ASGI channel layer implementation
 	pkgver = 3.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = http://github.com/django/channels_redis/
 	arch = any
 	license = BSD
