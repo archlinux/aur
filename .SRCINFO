@@ -1,0 +1,16 @@
+pkgbase = practice-timer
+	pkgdesc = Track and analyze statistics about how long you do various activities
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/zander671/practice-timer
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = gtk3
+	optdepends = plotutils: graphs in the statistics window
+	source = git+https://gitlab.com/zander671/practice-timer.git
+	sha256sums = SKIP
+
+pkgname = practice-timer
