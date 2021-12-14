@@ -2,7 +2,7 @@
 
 pkgname=bgb
 pkgver=1.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Game Boy emulator with advanced debugger'
 arch=(x86_64)
 url=https://bgb.bircd.org
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.zip::https://bgb.bircd.org/$pkgname$(echo "$pkgver" | 
         $pkgname)
 noextract=("$pkgname-$pkgver.zip")
 md5sums=('2c63d9be39923de44478f27baa43d316'
-         '616bb455840468ffd7536f5d18d26879')
+         'a1ec5ad256ed7e26d4484f1faa8371b3')
 
 prepare() {
     cd "$srcdir"

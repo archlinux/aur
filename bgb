@@ -1,20 +1,44 @@
 #!/bin/sh
+#
+# run the gameboy emulator "bgb" in wine
+#
+# environment variables:
+#	BGB_CONFIG_PATH=...		override the path of the bgb.ini file
+#	BGB_SAVE_CONFIG=false		skip saving GUI configuration changes
+#	BGB_EXE_PATH=...		override the path to bgb.exe
+#	BGB_DEBUGMSG_DIR=...		override the path where debugmsg*.txt will be saved
+#	BGB_SAVE_DEBUGMSG=false		skip saving debugmsg*.txt files
 set -e
 
-BGB_EXE=/usr/lib/bgb/bgb.exe
-BGB_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/bgb"
-BGB_CONFIG="$BGB_CONFIG_DIR/bgb.ini"
-
-mkdir -p "$BGB_CONFIG_DIR"
-
-tmp="$(mktemp -d)"
-cp -t "$tmp" "$BGB_EXE"
-if [ -e "$BGB_CONFIG" ]; then
-	cp -t "$tmp" "$BGB_CONFIG"
+if [ -z "$BGB_EXE_PATH" ]; then
+	BGB_EXE_PATH=/usr/lib/bgb/bgb.exe
 fi
 
-wine "$tmp/$(basename "$BGB_EXE")" $@
+if [ -z "$BGB_CONFIG_PATH" ]; then
+	BGB_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/bgb/bgb.ini"
+fi
 
-cp -t "$BGB_CONFIG_DIR" "$tmp/$(basename "$BGB_CONFIG")"
-cp -t . "$tmp"/debugmsg*.txt || true
+if [ -z "$BGB_DEBUGMSG_DIR" ]; then
+	BGB_DEBUGMSG_DIR=.
+fi
+
+tmp="$(mktemp -d)"
+cp "$BGB_EXE_PATH" "$tmp/bgb.exe"
+
+if [ -e "$BGB_CONFIG_PATH" ]; then
+	cp "$BGB_CONFIG_PATH" "$tmp/bgb.ini"
+fi
+
+wine "$tmp/bgb.exe" "$@"
+
+if [ "$BGB_SAVE_DEBUGMSG" != false ]; then
+	mkdir -p "$(dirname "$BGB_DEBUGMSG_DIR")"
+	cp -t "$BGB_DEBUGMSG_DIR" "$tmp"/debugmsg*.txt || true
+fi
+
+if [ "$BGB_SAVE_CONFIG" != false ] && [ -e "$tmp/bgb.ini" ]; then
+	mkdir -p "$(dirname "$BGB_CONFIG_PATH")"
+	cp "$tmp/bgb.ini" "$BGB_CONFIG_PATH"
+fi
+
 rm -r "$tmp"

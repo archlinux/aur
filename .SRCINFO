@@ -1,7 +1,7 @@
 pkgbase = bgb
 	pkgdesc = Game Boy emulator with advanced debugger
 	pkgver = 1.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bgb.bircd.org
 	arch = x86_64
 	makedepends = unzip
@@ -10,7 +10,6 @@ pkgbase = bgb
 	source = bgb-1.5.9.zip::https://bgb.bircd.org/bgb159.zip
 	source = bgb
 	md5sums = 2c63d9be39923de44478f27baa43d316
-	md5sums = 616bb455840468ffd7536f5d18d26879
+	md5sums = a1ec5ad256ed7e26d4484f1faa8371b3
 
 pkgname = bgb
-
