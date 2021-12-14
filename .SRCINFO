@@ -1,7 +1,7 @@
 pkgbase = pacman.c-git
 	pkgdesc = A Pacman clone written in C99
-	pkgver = 0.r133.7bdeed9.r133.7bdeed9
-	pkgrel = 1
+	pkgver = 0.r133.7bdeed9
+	pkgrel = 2
 	url = https://github.com/floooh/pacman.c
 	arch = any
 	license = MIT

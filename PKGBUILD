@@ -2,8 +2,8 @@
 
 pkgname=pacman.c-git
 _pkgname=pacman.c
-pkgver=0.r133.7bdeed9.r133.7bdeed9
-pkgrel=1
+pkgver=0.r133.7bdeed9
+pkgrel=2
 pkgdesc='A Pacman clone written in C99'
 arch=('any')
 url='https://github.com/floooh/pacman.c'
@@ -21,7 +21,7 @@ sha256sums=(47824cf3764f4ca8cee0e284bff2196b3b002a9070b91c1471e83b1d0e9f3863
 
 pkgver() {
   cd "${_pkgname}"
-  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
