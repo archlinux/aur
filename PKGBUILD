@@ -4,7 +4,7 @@
 pkgname=python-lapsolver
 _pyname=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast linear assignment problem solvers'
 arch=(any)
 url="https://github.com/cheind/py-$_pyname"
@@ -20,7 +20,6 @@ sha256sums=('e438689e528f18b801d996f10d158554050618a89ffff6b562a97ba41cfd37ed')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
