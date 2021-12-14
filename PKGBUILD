@@ -2,7 +2,7 @@
 #Contributor: ovi chis <ovi@ovios.org>
 
 pkgname=corosync
-pkgver=3.1.3
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Cluster engine for nodal communications systems with high availability features."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.corosync.org/"
 license=('BSD')
 depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb' 'libcgroup' 'kronosnet')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/corosync/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('85dfb7a87a78ad5754873ece10c1cfe4')
+md5sums=('7b98886bd70071b941de7adc839c7d28')
 
 prepare() {
   cd ${pkgname}-${pkgver}
