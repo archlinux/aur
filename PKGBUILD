@@ -77,12 +77,12 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.15
-_minor=7
+_minor=8
 _srcname=linux-${_major}
 _clr=${_major}.7-1106
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=4
+pkgrel=1
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -92,7 +92,7 @@ if [ -n "$_use_llvm_lto" ]; then
   makedepends+=(clang llvm lld python)
 fi
 options=('!strip')
-_gcc_more_v='20210914'
+_gcc_more_v='20211114'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -398,9 +398,9 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '9112078380091e8f18680f9ea863bbd74cf36eaf2ee68f6e483e718ddd3314e1'
+            'c122c139f9b16fb6b78a70259c7fb689773c14581eb202425395e9ee251e98fb'
             'SKIP'
-            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611'
+            'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba'
             'a99d5a96302aaf49da43d3b4d2f9a5f92b1ae9a1bc7f474f0f01a87f64439391'
             'ece72251dacc37d239a5bbf170629c155cee634c05febd8d654b110077d29f28')
 
