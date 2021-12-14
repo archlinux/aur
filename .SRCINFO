@@ -1,7 +1,7 @@
 pkgbase = python-genpy
 	pkgdesc = AST for Python code generation, in Python
 	pkgver = 2021.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://documen.tician.de/genpy
 	arch = x86_64
 	license = MIT
