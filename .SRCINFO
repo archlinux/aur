@@ -1,7 +1,7 @@
 pkgbase = python-xmldiff
 	pkgdesc = A libray and command line utility for diffing xml
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xmldiff.readthedocs.io
 	arch = any
 	license = BSD
