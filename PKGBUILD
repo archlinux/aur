@@ -1,10 +1,10 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Marcos Heredia <chelqo@gmail.com>
 # Contributor: Filip Kemuel Dam Bartholdy <filip_kemuel@yahoo.dk>
 
 pkgname=typecatcher
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Download Google webfonts for off-line use'
 arch=(any)
 url="https://github.com/andrewsomething/$pkgname"
