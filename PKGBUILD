@@ -1,6 +1,6 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-backend
-pkgver=6.6.1
+pkgver=6.6.2
 pkgrel=0
 pkgdesc="Sensu Go Backend"
 arch=('x86_64' 'armv7h')
@@ -8,15 +8,15 @@ url='https://sensu.io'
 license=('MIT')
 if [ "$CARCH" = "armv7h" ]; then
   source=("${pkgname}-${pkgver}_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/${pkgver}/sensu-go_${pkgver}_linux_armv7.tar.gz")
-  sha256sums=('3963ae0b3d6f00ca62ba6e33e97a654297915297272823385e62fe9732b498b9')
+  sha256sums=('dbf58228e458483641895f2b8f15dcf7efba47f2272aaa24193e59f3b0648e42')
 fi
 if [ "$CARCH" = "x86_64" ]; then
 	source=("${pkgname}-${pkgver}_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/${pkgver}/sensu-go_${pkgver}_linux_amd64.tar.gz")
-  sha256sums=('c5ec12bdacbf7de805c00ab94a9d521705f77fe039ce003a9306b50783184c4f')
+  sha256sums=('b974f9d4751170eb560219c4564b14648842062fec4a351df9c7b1aa15188cfc')
 fi
 if [ "$CARCH" = "aarch64" ]; then
   source=("${pkgname}-${pkgver}_aarch64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/${pkgver}/sensu-go_${pkgver}_linux_arm64.tar.gz")
-  sha256sums=('2fbc59d2ffe0b351f80de12f6f224b4628782e9d7cb0ef811efe0eb8a933ce90')
+  sha256sums=('a7c4f19df002f2cd14df707f646cb24375bfc1afe4caa09b9f43aad636c36c5e')
 fi
 
 source+=(
