@@ -1,10 +1,10 @@
 pkgbase = paddleocr-git
 	pkgdesc = Awesome multilingual OCR toolkits based on PaddlePaddle
-	pkgver = r2924.f0fc9933
+	pkgver = r3045.63cd23ab
 	pkgrel = 1
-	url = https://github.com/PaddlePaddle/PaddleOCR
+	url = https://github.com/PaddlePaddle/paddleocr
 	arch = any
-	license = Apache
+	license = Apache2
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-shapely
@@ -22,7 +22,7 @@ pkgbase = paddleocr-git
 	depends = paddlepaddle
 	provides = paddleocr
 	conflicts = paddleocr
-	source = git+https://github.com/PaddlePaddle/PaddleOCR.git
-	md5sums = SKIP
+	source = paddleocr::git+https://github.com/PaddlePaddle/paddleocr.git
+	sha512sums = SKIP
 
 pkgname = paddleocr-git
