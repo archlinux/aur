@@ -3,7 +3,7 @@
 _base=triangle
 pkgname=python-${_base}
 pkgver=20200424
-pkgrel=4
+pkgrel=5
 pkgdesc="Python bindings to the triangle library"
 url="https://github.com/drufat/triangle"
 arch=('any')
