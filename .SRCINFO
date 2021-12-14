@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-gpio
 	pkgdesc = Library to provide a cross-platform GPIO interface on the Raspberry Pi and Beaglebone Black using the RPi.GPIO and Adafruit_BBIO libraries.
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adafruit/Adafruit_Python_GPIO//
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = python-adafruit-gpio
 	sha256sums = d6465b92c866c51ca8f3bc1e8f2ec36f5ccdb46d0fd54101c1109756d4a2dcd0
 
 pkgname = python-adafruit-gpio
-
