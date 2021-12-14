@@ -1,7 +1,7 @@
 pkgbase = python-requests-cache
 	pkgdesc = Transparent persistent cache for http://python-requests.org library
 	pkgver = 0.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
 	license = custom:BSD-2-clause
