@@ -2,8 +2,8 @@
 # Contributor: Patrick Lühne <patrick-arch@luehne.de>
 
 pkgname=python-miio
-pkgver=0.5.9.1
-pkgrel=2
+pkgver=0.5.9.2
+pkgrel=1
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=(
 	'python-sphinxcontrib-apidoc')
 install=miio.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('0b2fa7e27dd3adfa4b79bc96c2d25c335713822704b67bddb0137dce514dd43cfecf6864e976031cf654b5dc92638c8995bf4dfda45ccc03a5f30312e17bc8b2')
+sha512sums=('24299524ab2b8e6bab690481f6c27a60da1e4e1e1b1d2b2696ede9972382aa925d4cf3a0f546625550cbf1e3e717a407a064e083e621eacfa0eaf08984ed54f1')
 
 prepare() {
 	cd "$pkgname-$pkgver"
