@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit-git
 pkgver=VERSION
-pkgrel=2
+pkgrel=3
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	IDF_PATH=third_party/esp-idf make tools 
+	IDF_PATH=third_party/esp-idf make -j1 tools
 }
 
 package() {
