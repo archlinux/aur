@@ -1,7 +1,7 @@
 # Maintainer: wick3dr0se <wick3dr0se@protonmail.com>
 
 pkgname=sysfetch-git
-pkg_name=sysfetch
+pkg=sysfetch
 pkgver=0.1
 pkgrel=1
 pkgdesc="A super tiny system information fetch script written in BASH"
@@ -16,13 +16,15 @@ source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/$pkg_name"
+cd $srcdir/$pkg
 git describe --long --tags | cut -d'-' -f1
 }
 
 package() {
-cd "$srcdir/$pkg_name"
-install -Dm755 "$pkg_name" "$pkgdir/usr/bin/$pkg_name"
-install -m 0755 -d "$pkgdir/usr/share/$pkg_name/assets"
-install -m 0755 assets/*.sh "$pkgdir/usr/share/$pkg_name/assets"
+cd $srcdir/$pkg
+install -Dm 755 $pkg $pkgdir/usr/bin/$pkg
+install -m 755 -d "$pkgdir/usr/share/$pkg/sys"
+install -m 755 -d "$pkgdir/usr/share/$pkg/assets"
+install -m 755 sys/*.sh $pkgdir/usr/share/$pkg/sys
+install -m 755 assets/*.sh $pkgdir/usr/share/$pkg/assets
 }
