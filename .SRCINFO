@@ -1,12 +1,10 @@
 pkgbase = python-onnxconverter-common
 	pkgdesc = Common utilities for ONNX converters
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/onnxconverter-common
 	arch = any
 	license = MIT
-	checkdepends = python-onnxruntime
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-onnx

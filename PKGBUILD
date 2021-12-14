@@ -4,7 +4,7 @@
 _pkgname=onnxconverter-common
 pkgname=python-onnxconverter-common
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Common utilities for ONNX converters'
 arch=('any')
 url='https://github.com/microsoft/onnxconverter-common'
@@ -17,21 +17,12 @@ depends=(
 makedepends=(
   python-setuptools
 )
-checkdepends=(
-  python-onnxruntime
-  python-pytest
-)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/onnxconverter-common/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('32315bcc844a8203092f3117a4a092ac6cf03d6a20145477e284f1172557d6f9')
 
 build() {
   cd "${_pkgname}-${pkgver}"
   python setup.py build
-}
-
-check() {
-  cd "${_pkgname}-${pkgver}"
-  PYTHONPATH="${PWD}" pytest -v
 }
 
 package() {
