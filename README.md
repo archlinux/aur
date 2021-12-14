@@ -11,6 +11,12 @@
 
 ## Installation
 
+### AUR
+
+```sh
+yay -S pdfrrr
+```
+
 ### Manual
 
 Clone the repo or download [`pdfrrr`](./pdfrrr) and make it executable.
