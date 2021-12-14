@@ -3,7 +3,7 @@
 _base=quadpy
 pkgname=python-${_base}
 pkgver=0.16.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Numerical integration (quadrature, cubature) in Python"
 arch=('any')
 url="https://github.com/nschloe/${_base}"

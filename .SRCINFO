@@ -1,7 +1,7 @@
 pkgbase = python-quadpy
 	pkgdesc = Numerical integration (quadrature, cubature) in Python
 	pkgver = 0.16.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nschloe/quadpy
 	arch = any
 	license = GPL3
