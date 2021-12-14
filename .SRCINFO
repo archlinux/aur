@@ -1,7 +1,7 @@
 pkgbase = python-turkish-morphology
 	pkgdesc = A two-level morphological analyzer for Turkish
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google-research/turkish-morphology
 	arch = any
 	license = Apache
