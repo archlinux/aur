@@ -1,6 +1,6 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=buildgear
-pkgver=0.9.25
+pkgver=0.9.26
 pkgrel=1
 pkgdesc="A lightweight embedded firmware build tool"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('8420ab811870664fac25d4b648c2e0fe')
+md5sums=('c5d222e056c3f46d12b147804a48d190')
 
 build() {
 	cd "$pkgname-$pkgver"
