@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='ldaptools'
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Easily manage LDAP users and groups'
 arch=('any')
