@@ -1,7 +1,7 @@
 pkgbase = sol2
 	pkgdesc = C++ <-> Lua API wrapper with advanced features and top notch performance
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sol2.rtfd.io
 	arch = any
 	license = MIT

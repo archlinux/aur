@@ -3,7 +3,7 @@
 pkgbase=sol2
 pkgname=(sol2 sol2-single)
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ <-> Lua API wrapper with advanced features and top notch performance"
 arch=('any')
 options=(!strip)
