@@ -1,7 +1,7 @@
 pkgbase = statmake
 	pkgdesc = Dump, merge and compile Visual TrueType data in UFO3 with FontTools
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daltonmaag/statmake
 	arch = any
 	license = MIT

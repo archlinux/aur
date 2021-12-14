@@ -2,7 +2,7 @@
 
 pkgname=statmake
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dump, merge and compile Visual TrueType data in UFO3 with FontTools'
 arch=(any)
 url="https://github.com/daltonmaag/$pkgname"
