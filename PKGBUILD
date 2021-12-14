@@ -3,7 +3,7 @@
 
 pkgname=python-coveralls
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python integration with coveralls.io"
 url="https://github.com/thekevjames/coveralls-python"
 arch=('any')
@@ -23,11 +23,12 @@ build() {
 
 check() {
 	cd "coveralls-python-$pkgver"
-	pytest
+	pytest -x
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "coveralls-python-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
