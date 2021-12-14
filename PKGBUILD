@@ -45,17 +45,14 @@ _use_current=
 # Enable fsync
 _fsync=y
 
-#enable futex2
-_futex2=y
-
 #enable winesync
 _winesync=y
 
 ### Running with a 2000 HZ, 1000HZ, 750Hz or  500HZ tick rate
 _2k_HZ_ticks=
 _1k_HZ_ticks=
-_750_HZ_ticks=
-_600_HZ_ticks=y
+_750_HZ_ticks=y
+_600_HZ_ticks=
 _500_HZ_ticks=
 
 ### Disable MQ-Deadline I/O scheduler
@@ -65,7 +62,7 @@ _mq_deadline_disable=y
 _kyber_disable=y
 
 ### Enable protect file mappings under memory pressure
-_mm_protect=
+_mm_protect=y
 
 ### Enable multigenerational LRU
 _lru_enable=y
@@ -80,7 +77,9 @@ _use_auto_optimization=y
 _use_optimization_select=
 
 ### Enable DAMON
-_damon=y
+_damon=
+
+_use_page_check=y
 
 ### Selecting the ZSTD compression level
 # ATTENTION - one of two predefined values should be selected!
@@ -99,7 +98,7 @@ _zstd_level='ultra'
 # 'normal' - standard compression ratio
 # WARNING: the ultra settings can sometimes
 # be counterproductive in both size and speed.
-_zstd_module_level='ultra'
+_zstd_module_level='normal'
 
 ### Enable SECURITY_FORK_BRUTE
 # WARNING Not recommended.
@@ -124,11 +123,11 @@ else
   pkgbase=linux-cachyos-pds
 fi
 _major=5.15
-_minor=7
+_minor=8
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux PDS scheduler Kernel by CachyOS and with some other patches and other improvements'
+pkgdesc='Linux pds scheduler Kernel by CachyOS and with some other patches and other improvements'
 _srcname=linux-${pkgver}
 pkgrel=1
 arch=('x86_64' 'x86_64_v3')
@@ -144,42 +143,42 @@ if [ -n "$_use_llvm_lto" ]; then
   depends+=(clang llvm lld python)
 fi
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
-source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
   "config"
   "${_patchsource}/0001-prjc.patch"
   "${_patchsource}/0001-arch-patches.patch"
-  "${_patchsource}/0001-mm-lru.patch"
+  "${_patchsource}/0001-cfi.patch"
+  "${_patchsource}/0001-page-table-check.patch"
+  "${_patchsource}/0001-lru-patches.patch"
   "${_patchsource}/AMD/0001-amd-pstate-dev-v5-fixes.patch"
   "${_patchsource}/AMD/0001-amd64-patches.patch"
   "${_patchsource}/0001-bbr2.patch"
   "${_patchsource}/0001-bitmap.patch"
   "${_patchsource}/0001-block-patches.patch"
-  #"${_patchsource}/0001-ksm-patches.patch"
   "${_patchsource}/0001-cpu-patches.patch"
   "${_patchsource}/0001-misc.patch"
   "${_patchsource}/0001-btrfs-patches.patch"
   "${_patchsource}/0001-clearlinux-patches.patch"
+  "${_patchsource}/0001-intel-patches.patch"
   "${_patchsource}/0001-ntfs3.patch"
-#  "${_patchsource}/0001-ck-hrtimer.patch"
-#  "${_patchsource}/0001-fixes-miscellaneous.patch"
+  #  "${_patchsource}/0001-ck-hrtimer.patch"
+  "${_patchsource}/0001-fixes-miscellaneous.patch"
   "${_patchsource}/0001-futex-wait.v-fsync-winesync.patch"
   "${_patchsource}/0001-hwmon-patches.patch"
   "${_patchsource}/0001-ksmbd-patches.patch"
-  "${_patchsource}/0001-damon.patch"
+#  "${_patchsource}/0001-damon.patch"
   "${_patchsource}/0001-pf-patches.patch"
   "${_patchsource}/0001-lqx-patches.patch"
   "${_patchsource}/0001-lrng-patches.patch"
   "${_patchsource}/0001-v4l2loopback.patch"
   "${_patchsource}/0001-security-patches.patch"
+  "${_patchsource}/0001-spectre-patches.patch"
   "${_patchsource}/0001-sbitmap-patches.patch"
   "${_patchsource}/0001-zstd.patch"
   "${_patchsource}/0001-xfs-backport.patch"
   "auto-cpu-optimization.sh"
 )
 
-if [ -n "$_use_cfi" ]; then
-  source+=("${_patchsource}/0001-cfi.patch")
-fi
 
 if [ -n "$_use_pgo" ]; then
   source+=("${_patchsource}/0001-PGO.patch")
@@ -259,13 +258,26 @@ prepare() {
     cpu_arch
   fi
 
+  if [ -n "$_use_cfi" ] && [ -n "$_use_llvm_lto" ]; then
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_CFI_CLANG
+    scripts/config --enable CONFIG_CFI_CLANG
+  fi
 
-  ### Optionally set tickrate to 2000HZ
-  if [ -n "$_2k_HZ_ticks" ]; then
-    echo "Setting tick rate to 2k..."
-    scripts/config --disable CONFIG_HZ_300
-    scripts/config --enable CONFIG_HZ_2000
-    scripts/config --set-val CONFIG_HZ 2000
+  if [ -n "$_use_pgo" ]; then
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_PGO_CLANG
+    scripts/config --enable DEBUG_FS
+    scripts/config --enable CONFIG_PGO_CLANG
+  fi
+
+  ### Microarchitecture Optimization (GCC/CLANG)
+  if [ -n "$_use_auto_optimization" ]; then
+    "${srcdir}"/auto-cpu-optimization.sh
+  fi
+
+
+  if [ -n "$_use_optimization_select" ]; then
+    source "${startdir}"/configure
+    cpu_arch
   fi
 
   ### Optionally set tickrate to 1000
@@ -313,10 +325,6 @@ prepare() {
     scripts/config --enable CONFIG_FUTEX_PI
   fi
 
-  if [ -n "$_futex2" ]; then
-    echo "Enable Futex2 support"
-    scripts/config --enable CONFIG_FUTEX2
-  fi
 
   if [ -n "$_winesync" ]; then
     echo "Enable winesync support"
@@ -335,9 +343,17 @@ prepare() {
     scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   fi
 
+
   ### Enable protect mappings under memory pressure
   if [ -n "$_mm_protect" ]; then
-    scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 524288
+    echo "Enabling protect file mappings under memory pressure..."
+    scripts/config --enable CONFIG_UNEVICTABLE_FILE
+    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 0
+    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 0
+    echo "Enabling protect anonymous mappings under memory pressure..."
+    scripts/config --enable CONFIG_UNEVICTABLE_ANON
+    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 0
+    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 0
   fi
 
   ### Enable multigenerational LRU
@@ -345,9 +361,9 @@ prepare() {
     echo "Enabling multigenerational LRU..."
     scripts/config --enable CONFIG_ARCH_HAS_NONLEAF_PMD_YOUNG
     scripts/config --enable CONFIG_LRU_GEN
-    scripts/config --set-val CONFIG_NR_LRU_GENS 4
-    scripts/config --set-val CONFIG_TIERS_PER_GEN 2
-    scripts/config --disable CONFIG_LRU_GEN_ENABLED
+    scripts/config --set-val CONFIG_NR_LRU_GENS 7
+    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+    scripts/config --enable CONFIG_LRU_GEN_ENABLED
     scripts/config --disable CONFIG_LRU_GEN_STATS
   fi
 
@@ -364,6 +380,7 @@ prepare() {
   ### Enable Linux Random Number Generator
   if [ -n "$_lrng_enable" ]; then
     echo "Enabling Linux Random Number Generator ..."
+    echo "Enabling Linux Random Number Generator with pfkernel config..."
     scripts/config --enable CONFIG_LRNG
     scripts/config --enable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
     scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 64
@@ -413,6 +430,13 @@ prepare() {
     scripts/config --disable CONFIG_LTO_NONE
   fi
 
+  if [ -n "$_use_page_check" ]; then
+    echo "Enable Page Table Check"
+    scripts/config --enable ARCH_SUPPORTS_PAGE_TABLE_CHECK
+    scripts/config --enable CONFIG_PAGE_TABLE_CHECK
+    scripts/config --enable CONFIG_PAGE_TABLE_CHECK_ENFORCED
+  fi
+
   ### Selecting the ZSTD compression level
   if [ "$_zstd_level" = "ultra" ]; then
     echo "Enabling highest ZSTD compression ratio..."
@@ -452,8 +476,6 @@ prepare() {
     exit
   fi
 
-
-
   echo "Disabling TCP_CONG_CUBIC..."
   scripts/config --module CONFIG_TCP_CONG_CUBIC
   scripts/config --disable CONFIG_DEFAULT_CUBIC
@@ -482,12 +504,6 @@ prepare() {
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
   scripts/config --enable CONFIG_ANDROID_BINDERFS
   scripts/config --enable CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
-  echo "Enable NTFS"
-  scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-  scripts/config --enable CONFIG_NTFS3_FS
-  scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
-  scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
-  scripts/config --enable CONFIG_NLS_DEFAULT
 
 
   ### Optionally load needed modules for the make localmodconfig
@@ -505,7 +521,7 @@ prepare() {
 
   echo "Applying default config..."
   make ${BUILD_FLAGS[*]} olddefconfig
-  make ${BUILD_FLAGS[*]} -s kernelrelease > version
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 
   ### Running make nconfig
@@ -651,12 +667,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-
-md5sums=('b79700122766ccf561f032eb3c8da27e'
-         '0ac42c66359097d484fc67a1905008b0'
+md5sums=('5b04a1db6305c993d7f55db334a2b415'
+         'd97e86d9464dd34683f67de4d4a595c0'
          '25fe602949e5b92d08df96e55e418d7a'
          '2627c6fcd9760b0e7a3553500db0a7e1'
-         'aa41eead65d8c4d0958df278157e2729'
+         'e3fa8507aed6ef3ce37e62f18fe9b7e1'
+         '152706f6ebbe9917c6a5955cd5447344'
+         '4bfca774a71e7228f5b8bb31660521af'
          '4866d66f4cc1b10cccb520c22cbc71d7'
          '53f037488a66667220c263f92ded333d'
          '2a8097ba46be56fbbe3967e9c34c9a0b'
@@ -665,17 +682,19 @@ md5sums=('b79700122766ccf561f032eb3c8da27e'
          '67764a5824b567b49bcce19c01d4e1b3'
          '299b176cbfc1b386d74406387e9e2d6b'
          '5b9a009ab68ba548e9d06e0932ab967d'
-         '0b6d09bdd920f4c31c05fdeaa0740548'
+         '41887f2f959068e41756f4c39671ca79'
+         'b04c8a3f01b3dfba1410e2c26ec7d975'
          '8cf507777e20cd4d75a0627eef10c10d'
+         '2a13aa40945c9910f7ad20a429442793'
          '8c354c3d1962ec6785db7f0c3fbbab03'
          '9b6369bc4c58ad0d9195b5c204ed4b8a'
          'c6efda5716e4ff79ebdbc963bebd851a'
-         '408dfabb34f2b79aa2f5044b052703db'
          '08c84362cb916b30d9c77e35b1b3bc54'
          '56fdf3562b041c0408d9751b7e447977'
          'b09b84168822521426f197610727618b'
          '8cb0301d159b59727b7bdd09350e2a9f'
          'bc64b1d1a9c95b07c28457f7214ebf81'
+         '8d390345afa36c56fa15bf4f4edad9a2'
          '7530840f2eb439f64307dd3157beb28e'
          'f23b415ff37873ae7142aed31808b635'
          '507e61367296d14b88ac38a4aee03cdf'
