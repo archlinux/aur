@@ -1,4 +1,4 @@
-pkgbase = treefetch
+pkgbase = treefetch-bin
 	pkgdesc = A lightning-fast system fetch tool built with Rust.
 	pkgver = 1.2.1
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = treefetch
 	source = https://github.com/angelofallars/treefetch/releases/download/v1.2.1/treefetch
 	md5sums = SKIP
 
-pkgname = treefetch
+pkgname = treefetch-bin
