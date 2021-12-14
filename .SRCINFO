@@ -1,7 +1,7 @@
 pkgbase = beancount
 	pkgdesc = Double-Entry Accounting from Text Files
 	pkgver = 2.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://furius.ca/beancount/
 	arch = i686
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgbase = beancount
 	sha256sums = 2bf08ce6a95d98000f4d73395985cd1deb81c0d52ed5a76e610bac77d82f86c0
 
 pkgname = beancount
-
