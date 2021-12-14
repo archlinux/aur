@@ -6,30 +6,30 @@
 pkgbase=jack
 pkgname=(jack jack-docs)
 pkgver=0.125.0
-pkgrel=11
+pkgrel=12
 pkgdesc="A low-latency audio server"
-arch=('x86_64')
-license=('GPL' 'LGPL')
+arch=(x86_64)
 url="http://jackaudio.org/"
-makedepends=('alsa-lib' 'db' 'celt' 'doxygen' 'git' 'libffado' 'libsamplerate'
-'libsndfile' 'readline' 'zita-alsa-pcmi' 'zita-resampler')
+license=(GPL LGPL)
+makedepends=(alsa-lib db celt doxygen git libffado libsamplerate libsndfile
+readline zita-alsa-pcmi zita-resampler)
 source=(
   "$pkgname::git+https://github.com/jackaudio/${pkgname}1.git#tag=${pkgver}"
   "git+https://github.com/jackaudio/example-clients"
   "git+https://github.com/jackaudio/headers"
   "git+https://github.com/jackaudio/tools"
-  "${pkgname}-0.125.0-headers_cast.patch::https://github.com/jackaudio/headers/commit/018f44fcdbee86747fc96712e2da2b32e76d81a6.patch"
+  "${pkgname}-0.125.0-headers.patch::https://github.com/jackaudio/jack1/pull/111.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2134c949b2782c231eeeba46dba4e7d61526ab560ae57841ebf2139223df3df1571b7e0fc9fc7c581d42f0b7ac6821deb567b80c3f3a2d95df8fcbec70a70ca5')
+            '56a6f966df0950e5b8b0366721edb17fea96438abf3807115b9f1c3659858d8d5cb0759b4bedbc69f4460a238700be76b98c1628554f4c6e73b65b96de994250')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'f12264b77f5b0c4bec1c577f5082cbeed629205bb022ec5698cfccdbde2c01717dbdb91bb022ffef9619f89ff4b72e0e07aa545bd8f5ffb86211bdebb0c0cd28')
+        'd7caa45c5e926e66065a3c4578b73d369fc738a01092999ce79c1c14453cb3c387d49a6b9f2c9189c4e47b3a643270f1e77f10f1ba6bdfe056683b8e788786ad')
 
 prepare() {
   mv -v "${pkgname}" "${pkgname}-${pkgver}"
@@ -41,12 +41,19 @@ prepare() {
   git submodule update
 
   (
-  cd jack
-  # fix issue with type casting for jslist: https://github.com/jackaudio/jack1/issues/108
-  patch -Np1 -i ../../"${pkgname}-0.125.0-headers_cast.patch"
+    cd jack
+    # use more up-to-date headers so that we can have systemdeps.h
+    # https://github.com/jackaudio/headers/pull/11
+    # this also fixes issues with type casting for jslist:
+    # https://github.com/jackaudio/jack1/issues/108
+    git checkout 4e53c8f0a33e9ed87eac5ca6e578b7ee92a1fd3d
   )
 
-  autoreconf -vfi
+  # make sure to install all header files:
+  # https://github.com/jackaudio/jack1/pull/111
+  patch -Np1 -i ../"${pkgname}-0.125.0-headers.patch"
+
+  autoreconf -fiv
 }
 
 build() {
@@ -60,16 +67,18 @@ build() {
 }
 
 package_jack() {
-  depends=('db' 'gcc-libs' 'glibc' 'libasound.so' 'libreadline.so'
-  'libsndfile.so' 'libsamplerate.so' 'libzita-alsa-pcmi.so'
-  'libzita-resampler.so')
-  optdepends=('celt: NetJACK driver'
-              'jack-docs: for documentation'
-              'libffado: FireWire support'
-              'realtime-privileges: Acquire realtime privileges')
-  conflicts=('jack2')
-  provides=('jack2' 'libjack.so' 'libjackserver.so')
-  replaces=('jack2')
+  depends=(db gcc-libs glibc libasound.so libreadline.so
+  libsndfile.so libsamplerate.so libzita-alsa-pcmi.so
+  libzita-resampler.so)
+  optdepends=(
+    'celt: NetJACK driver'
+    'jack-docs: for documentation'
+    'libffado: FireWire support'
+    'realtime-privileges: Acquire realtime privileges'
+  )
+  conflicts=(jack2)
+  provides=(jack2 libjack.so libjackserver.so)
+  replaces=(jack2)
 
   cd "${pkgbase}-${pkgver}"
   make DESTDIR="$pkgdir" install
