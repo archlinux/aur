@@ -1,6 +1,6 @@
 pkgbase = python-matrix-reminder-bot
 	pkgdesc = Matrix bot to remind you about stuff.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 2
 	url = https://github.com/anoadragon453/matrix-reminder-bot
 	arch = any
@@ -14,12 +14,13 @@ pkgbase = python-matrix-reminder-bot
 	depends = python-readabledelta
 	depends = python-apscheduler
 	depends = python-pytz
+	depends = python-arrow
+	depends = python-pretty-cron
 	optdepends = python-psycopg2
 	backup = etc/matrix-reminder-bot/config.yaml
-	source = https://github.com/anoadragon453/matrix-reminder-bot/archive/v0.2.0.tar.gz
+	source = https://github.com/anoadragon453/matrix-reminder-bot/archive/v0.2.1.tar.gz
 	source = matrix-reminder-bot.service
-	sha256sums = bf346bdf5dfa17219f0cc06c24751404e4d0e0dbcc9a41391c87145032df45b5
+	sha256sums = 4cc8372e5ca5f814f0a71b2fa1cf28155475542da0e70b523b5bc85aaf1ef295
 	sha256sums = ed58a6cb4c10418dfd32a306eba2a22909858881c2bb73eb49cbf7ecaad7bf7e
 
 pkgname = python-matrix-reminder-bot
-
