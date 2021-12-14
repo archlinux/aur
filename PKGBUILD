@@ -4,9 +4,9 @@
 pkgname=libdri2-git
 _gitname=libdri2
 pkgver=r11.4f1eef3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for the DRI2 extension to the X Window System"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/robclark/libdri2"
 license=('MIT')
 depends=('libdrm' 'libxext')
@@ -25,9 +25,13 @@ pkgver() {
   )
 }
 
-build() {
+prepare() {
   cd "${srcdir}/${_gitname}"
   ./autogen.sh
+}
+
+build() {
+  cd "${srcdir}/${_gitname}"
   ./configure --prefix=/usr
   make
 }
