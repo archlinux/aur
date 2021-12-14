@@ -1,8 +1,8 @@
 # Maintainer: Aleksy Grabowski <hurufu+arch@gmail.com>
 
 pkgname=python-pynng-git
-pkgver=0.6.2.r17.g1a7ad77
-pkgrel=4
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='Ergonomic bindings for nanomsg next generation (nng), in Python'
 arch=(any)
 url='https://github.com/codypiersall/pynng'
@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
     licenses
     python-sniffio
+    python=3.10.1
 )
 makedepends=(
     git
