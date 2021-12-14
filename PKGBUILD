@@ -5,7 +5,7 @@
 _pyname=fontMath
 pkgname=python-${_pyname,,}
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A collection of objects that implement fast font, glyph, etc. math'
 arch=(any)
 url="https://github.com/robotools/$_pyname"
@@ -19,13 +19,12 @@ sha256sums=('39d71e8b7eeb33c0ddc25e94c1ae64bf29340aeea443f4327392f2be38175f54')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
 check() {
 	cd "$_archive"
-  PYTHONPATH=Lib pytest Lib/fontMath/test
+	PYTHONPATH=Lib pytest Lib/fontMath/test
 }
 
 package() {
