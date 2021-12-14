@@ -3,7 +3,7 @@
 # Contributorr: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=breitbandmessung
-pkgver=2.0.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('unknown')
 url="https://breitbandmessung.de/"
 options=('!strip')
 source=("breitbandmessung-${pkgver}.deb::https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb")
-sha256sums=("70c0f51dfe1ca189c8409699be21de40fb0afabc5353e217580ec7bdc03559b4")
+sha256sums=("05df727061449c3fbee47321a22b3477ed0487613bbb305318ea64f3a46460e9")
 depends=("net-tools")
 makedepends=("asar")
 
