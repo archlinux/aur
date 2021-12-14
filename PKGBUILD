@@ -1,40 +1,36 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=msieve
-_pkgrev=1034
-_srcrev=code-r${_pkgrev}-trunk
-pkgver=1.54r${_pkgrev}
-pkgrel=2
+pkgver=1.53
+pkgrel=1
 pkgdesc='Library for factoring large integers'
 url='https://sourceforge.net/projects/msieve/'
 license=('custom')
 arch=('x86_64')
 depends=('zlib' 'gmp-ecm')
-#source=("http://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v1.53/msieve153_src.tar.gz")
-#source=("https://sourceforge.net/code-snapshots/svn/m/ms/msieve/code/msieve-${_srcrev}.zip")
-
-# Static copy of the snapshot file since sourceforge regenerates it on demand.
-source=("https://arch.vesath.org/sources/msieve-${pkgver}/msieve-${_srcrev}.zip")
-sha256sums=('fb51b66376ba6fe31d98ab19958dd4323fff7fa1f5b285dac7688960eb91dd96')
+source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v$pkgver/msieve${pkgver//./}_src.tar.gz")
+sha512sums=('e50e8913d38ed4108f5f2ecdbb338968edd416c56c5b7a92d8598b81fc16014ce7c7df963101c65f5bc88d1c7b2d8dbaa572efbecf53d720430a327929c9ce12')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${_srcrev}"
-	sed \
-		-e 's/^CFLAGS =/CFLAGS +=/' \
-		-e "/^SVN_VERSION :=/s/=.*/= r${_pkgrev}/" \
-		-i Makefile
+  cd "$pkgname-$pkgver"
+  sed \
+    -e 's/^CFLAGS =/CFLAGS +=/' \
+    -i Makefile
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${_srcrev}"
-	CFLAGS+=' -fopenmp'
-	make all ECM=1
+  cd "$pkgname-$pkgver"
+  CFLAGS+=' -fopenmp'
+  make all ECM=1
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${_srcrev}"
-	install -Dm755 msieve "${pkgdir}"/usr/bin/msieve
-	install -Dm644 Readme "${pkgdir}"/usr/share/doc/msieve/Readme
-	install -d "${pkgdir}"/usr/share/licenses/msieve
-	ln -s /usr/share/doc/msieve/Readme "${pkgdir}"/usr/share/licenses/msieve/LICENSE
+  cd "$pkgname-$pkgver"
+  install -Dm755 msieve -t "$pkgdir/usr/bin/"
+  install -Dm644 Readme -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/doc/$pkgname/Readme "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:

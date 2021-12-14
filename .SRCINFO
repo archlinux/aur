@@ -1,14 +1,13 @@
 pkgbase = msieve
 	pkgdesc = Library for factoring large integers
-	pkgver = 1.54r1034
-	pkgrel = 2
+	pkgver = 1.53
+	pkgrel = 1
 	url = https://sourceforge.net/projects/msieve/
 	arch = x86_64
 	license = custom
 	depends = zlib
 	depends = gmp-ecm
-	source = https://arch.vesath.org/sources/msieve-1.54r1034/msieve-code-r1034-trunk.zip
-	sha256sums = fb51b66376ba6fe31d98ab19958dd4323fff7fa1f5b285dac7688960eb91dd96
+	source = msieve-1.53.tar.gz::https://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v1.53/msieve153_src.tar.gz
+	sha512sums = e50e8913d38ed4108f5f2ecdbb338968edd416c56c5b7a92d8598b81fc16014ce7c7df963101c65f5bc88d1c7b2d8dbaa572efbecf53d720430a327929c9ce12
 
 pkgname = msieve
-
