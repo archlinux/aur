@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=colorio
 pkgname=python-${_base}
-pkgdesc="Tools for color models"
+pkgdesc="Tools for color research"
 pkgver=0.10.0
 pkgrel=1
 arch=('x86_64')

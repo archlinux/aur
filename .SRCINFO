@@ -1,5 +1,5 @@
 pkgbase = python-colorio
-	pkgdesc = Tools for color models
+	pkgdesc = Tools for color research
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/nschloe/colorio
