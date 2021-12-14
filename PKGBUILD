@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=cpod-git
-pkgver=1.27.1.r72.g5600080
+pkgver=1.28.0.r5.g295b5d1
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app"
 arch=('x86_64')
@@ -34,6 +34,9 @@ build() {
   source /usr/share/nvm/nvm.sh
   nvm install $_nodejsver
   nvm use $_nodejsver
+
+  # Avoid "Unresolved node modules" error
+  export ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true
 
   yarn
   gulp
