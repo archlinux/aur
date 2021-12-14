@@ -1,7 +1,7 @@
 pkgbase = python-roguehostapd-git
 	pkgdesc = Hostapd fork including Wi-Fi attacks and providing Python bindings with ctypes
 	pkgver = r78.381b373
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wifiphisher/roguehostapd
 	arch = x86_64
 	license = BSD
@@ -11,4 +11,3 @@ pkgbase = python-roguehostapd-git
 	sha256sums = SKIP
 
 pkgname = python-roguehostapd-git
-
