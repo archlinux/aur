@@ -14,12 +14,11 @@ sha256sums=('179e1c377d9953b322ef4f150658b814f880f6c2303cb06c8993146c61b3e13f')
 source=("https://github.com/crashinvaders/gdx-texture-packer-gui/releases/download/${pkgver}/gdx-texturepacker-${pkgver}.zip")
 
 prepare() {
-	unzip -o gdx-texturepacker-${pkgver}.zip
-	printf "#\!/bin/sh\nexec /usr/bin/java -jar '/usr/share/java/${pkgname}/${pkgname}.jar' \"\$@\"" > ${pkgname}.sh
+	printf "#!/bin/sh\nexec /usr/bin/java -jar '/usr/share/java/${pkgname}/${pkgname}.jar'\n" > ${pkgname}.sh
 }
 
 package() {
-	install -Dm644 gdx-texturepacker.jar $pkgdir/usr/share/java/${pkgname}/${pkgname}.jar
-	install -Dm644 ${pkgname}.sh $pkgdir/usr/bin/${pkgname}
-	chmod +x $pkgdir/usr/bin/${pkgname}
+	install -Dm644 "${srcdir}/gdx-texturepacker.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+	install -Dm644 "${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
+	chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
