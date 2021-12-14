@@ -1,0 +1,18 @@
+pkgbase = pdh
+	pkgdesc = Pagerduty CLI for humans
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/mbovo/pdh
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-colorama
+	depends = python-rich
+	depends = python-pyaml
+	depends = python-textual
+	depends = python-pdpyras
+	source = https://files.pythonhosted.org/packages/source/p/pdh/pdh-0.2.2.tar.gz
+	sha256sums = cf893f52dd0162c31b36e063a8004d8b4c5f8397555ce9a712edff3958e0e665
+
+pkgname = pdh
