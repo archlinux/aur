@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo[@]gmail.com>
 pkgname=demjson
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 7159"
 arch=('any')
 url="https://github.com/dmeranda/demjson"
