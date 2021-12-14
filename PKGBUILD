@@ -3,7 +3,7 @@
 _base=rasterio
 pkgname=python-${_base}
 pkgver=1.3a2
-pkgrel=1
+pkgrel=2
 pkgdesc="Rasterio reads and writes geospatial raster datasets"
 url="https://github.com/${_base}/${_base}"
 license=('custom')

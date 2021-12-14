@@ -1,7 +1,7 @@
 pkgbase = python-rasterio
 	pkgdesc = Rasterio reads and writes geospatial raster datasets
 	pkgver = 1.3a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rasterio/rasterio
 	arch = x86_64
 	license = custom
