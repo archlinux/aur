@@ -2,7 +2,7 @@
 pkgname=exam-terminal
 pkgdesc="Terminal/console based exam, test, or quiz tool for educators and learners"
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ismet55555/${pkgname}"
 license=('Apache')
