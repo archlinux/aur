@@ -28,6 +28,7 @@ provides=(
   "liberica-jdk-lite-bin=$pkgver"
   "liberica-jre-bin=$pkgver"
   "liberica-jre-full-bin=$pkgver"
+  "liberica-jdk-17-full-bin=$pkgver"
 )
 install=$_jdkname.install
 
