@@ -2,7 +2,7 @@
 
 pkgname=resource-agents-git
 _pkgname=resource-agents
-pkgver=4.7.0rc1.r4.gef4ec184f
+pkgver=4.10.0.r28.g3dd140095
 pkgrel=1
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
@@ -26,6 +26,10 @@ prepare() {
   cd $pkgname
   sed -i -e '/^ExecStartPost=/s,^,#,;/^ExecStopPost=/s,^,#,' \
       ldirectord/systemd/ldirectord.service.in
+  sed -i -e '/size=%zu/s,devsize,(size_t)devsize,' \
+      tools/storage_mon.c
+  sed -i -e '/read %ld bytes/s,sizeof,(long)sizeof,' \
+      tools/storage_mon.c
   ./autogen.sh
 }
 
@@ -56,3 +60,4 @@ package() {
 }
 
 # vim: set sw=2 et:
+
