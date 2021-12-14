@@ -1,70 +1,81 @@
-# Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
+#!/bin/bash
+# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
+
+_pkgname=NBXplorer
+
 pkgname=nbxplorer
-pkgcaps=NBXplorer
-pkgdesc="A minimalist UTXO tracker for HD Cryptocurrency Wallets."
-pkgver='3.0.21'
-pkgpath="github.com/dgarage/${pkgname}"
-pkgrel=5
-arch=('any')
-url="https://${pkgpath}"
-license=(MIT)
-#makedepends=('dotnet-host' 'dotnet-runtime' 'dotnet-sdk' 'aspnet-runtime-2.1')
-makedepends=("dotnet-sdk-3.1")
-#depends=(${makedepends} 'bitcoin-daemon')
+pkgver=2.2.18
+# shellcheck disable=SC2034
+pkgrel=1
+# shellcheck disable=SC2034
+epoch=
+# shellcheck disable=SC2034
+pkgdesc="A minimalist UTXO tracker for HD wallets."
+# shellcheck disable=SC2034
+arch=("any")
+url="https://github.com/dgarage/${_pkgname}"
+# shellcheck disable=SC2034
+license=("MIT")
+# shellcheck disable=SC2034
+groups=()
+# shellcheck disable=SC2034
 depends=("aspnet-runtime-3.1" "bitcoin-daemon" "dotnet-sdk-3.1")
-#source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
-source=("https://github.com/dgarage/NBXplorer/archive/refs/tags/Client/v${pkgver}.tar.gz")
-build() {
-mv ${srcdir}/${pkgcaps}-Client-v${pkgver} ${srcdir}/${pkgname}
-cd ${srcdir}/${pkgname}
-./build.sh
-#set absolute path in run.sh
-echo -e '#!/bin/bash
-#launch nbxplorer
-dotnet run --no-launch-profile --no-build -c Release -p "/usr/lib/nbxplorer/NBXplorer/NBXplorer.csproj" -- $@
-' > run.sh
-chmod +x run.sh
+# shellcheck disable=SC2034
+makedepends=()
+# shellcheck disable=SC2034
+checkdepends=()
+# shellcheck disable=SC2034
+optdepends=()
+# shellcheck disable=SC2034
+provides=()
+# shellcheck disable=SC2034
+conflicts=()
+# shellcheck disable=SC2034
+replaces=()
+# shellcheck disable=SC2034
+backup=()
+# shellcheck disable=SC2034
+options=()
+# shellcheck disable=SC2034
+install=
+# shellcheck disable=SC2034
+changelog=
+# shellcheck disable=SC2034
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+# shellcheck disable=SC2034
+noextract=()
+# shellcheck disable=SC2034
+sha256sums=("617fd70f5a78c63011308b33924aaca880cfffca7518d8926cd586daba585fc6")
+# shellcheck disable=SC2034
+validpgpkeys=()
 
-#echo -e '#!/bin/bash
-##launch nbxplorer
-#nohup dotnet run --no-launch-profile --no-build -c Release -p "/usr/lib/nbxplorer/NBXplorer/NBXplorer.csproj" -- $@ > /dev/null 2>&1 &sleep 3
-#' > run1.sh
-#chmod +x run1.sh
-
-#echo -e '[Unit]
-#Description=NBXplorer
-#After=network.target
-#After=bitcoind.service
-
-#[Service]
-#Type=oneshot
-#ExecStart=/usr/bin/nbxplorer-nohup
-#RemainAfterExit=yes
-#Restart=on-failure
-#User=
-
-#[Install]
-#WantedBy=multi-user.target
-#' > nbxplorer.service
+build()
+{
+    # shellcheck disable=SC2154
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit
+    ./build.sh
 }
 
-package() {
-#create dir structure
-mkdir -p ${pkgdir}/usr/bin/
-mkdir -p ${pkgdir}/usr/lib/
-mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
-#mkdir -p ${pkgdir}/usr/lib/systemd/system/
-#putting the sources in /usr/lib/nbxplorer
-cp -r ${srcdir}/${pkgname}/ ${pkgdir}/usr/lib/
-#symlinking run.sh to /usr/bin/nbxplorer
-ln -rTsf $pkgdir/usr/lib/${pkgname}/run.sh ${pkgdir}/usr/bin/${pkgname}
-chmod 755 ${pkgdir}/usr/bin/${pkgname}
-#symlinking run1.sh to /usr/bin/nbxplorer-nohup
-#ln -rTsf $pkgdir/usr/lib/${pkgname}/run1.sh ${pkgdir}/usr/bin/${pkgname}-nohup
-#chmod 755 ${pkgdir}/usr/bin/${pkgname}-nohup
-#install systemd service
-#install -Dm644 ${pkgdir}/usr/lib/${pkgname}/nbxplorer.service ${pkgdir}/usr/lib/systemd/system/
-#install the lisence
-install -Dm644 ${pkgdir}/usr/lib/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+package()
+{
+    # Assure that the directories exist.
+    # shellcheck disable=SC2154
+    mkdir -p "${pkgdir}"/usr/bin/
+    mkdir -p "${pkgdir}"/usr/share/"${_pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
+
+    # Install the software.
+    cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/"${_pkgname}"/
+
+    ## Create an executable.
+    echo -e "#!/bin/bash
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
+    chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
+
+    # Install the documentation.
+    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+
+    # Install the license.
+    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
 }
