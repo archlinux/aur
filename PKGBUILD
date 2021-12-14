@@ -3,7 +3,7 @@
 _base=pydub
 pkgname=python-${_base}
 pkgver=0.25.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Manipulate audio with a simple and easy high level interface"
 url="https://${_base}.com"
 license=(MIT)

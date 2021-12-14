@@ -1,7 +1,7 @@
 pkgbase = python-pydub
 	pkgdesc = Manipulate audio with a simple and easy high level interface
 	pkgver = 0.25.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pydub.com
 	arch = any
 	license = MIT
