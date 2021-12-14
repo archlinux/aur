@@ -8,7 +8,7 @@ pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
 pkgver=95.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -30,7 +30,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 backup=('usr/lib/cachy-browser/cachy.cfg'
         'usr/lib/cachy-browser/distribution/policies.json')
-#groups=('cachyos')
+groups=('cachyos')
 options=(!emptydirs !strip !makeflags)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 # _common_tag="v90.0-1"
@@ -208,6 +208,7 @@ END
   msg2 "fix an URL in 'about' dialog"
   patch -Np1 -i ${_patches_dir}/fix-wayland.patch
 
+  patch -Np1 -i ${_patches_dir}/1745560-Add-missing-stub-for-wl_proxy_marshal_flags.patch
   #patch -Np1 -i ${_patches_dir}/use-mcpu-native-with-lto-pgo.patch
 
   # ui patches
