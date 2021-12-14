@@ -1,27 +1,27 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Michael M. Tung <mtung at mat dot upv dot es>
 
-_py_name=panflute
-pkgname=python-$_py_name
+_pyname=panflute
+pkgname=python-$_pyname
 pkgver=2.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 arch=(any)
-url="https://github.com/sergiocorreia/$_py_name"
+url="https://github.com/sergiocorreia/$_pyname"
 license=(BSD)
 _pydeps=(click
          yaml)
-depends=('pandoc>=2.12'
+depends=(pandoc
          python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-setuptools)
 _pycheckdeps=(pandocfilters
               pytest-cov)
 checkdepends=("${_pycheckdeps[@]/#/python-}")
-provides=("pandoc-$_py_name=$pkgver")
-conflicts=("pandoc-$_py_name")
-replaces=("pandoc-$_py_name")
-_archive="$_py_name-$pkgver"
+provides=("pandoc-$_pyname=$pkgver")
+conflicts=("pandoc-$_pyname")
+replaces=("pandoc-$_pyname")
+_archive="$_pyname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e8c4580f36277ae195dc1614e7cff239d5d3eb0c40ef7e1abb676f6aa2df127c')
 
