@@ -3,7 +3,7 @@
 
 pkgname=(zapret-{nfqws,tpws}-git)
 pkgbase=zapret-git
-pkgver=r202.089dccf
+pkgver=r221.1d8ab17
 pkgrel=1
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
