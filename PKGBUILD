@@ -1,15 +1,13 @@
 pkgname=treefetch
-pkgver="v1.1.0"
+pkgver="v1.2.0"
 pkgrel=1
-pkgdesc="treefetch"
+pkgdesc="treefetch -xmas"
 url="https://github.com/angelofallars/treefetch.git"
 arch=("x86_64")
 license=('MIT')
-md5sums=("78a66bcd9cb8c4b94960200ae65621aa")
+md5sums=("3dee14788296ddfa6ec0ea64b8db9fcf")
 source=("https://github.com/angelofallars/treefetch/releases/download/${pkgver}/treefetch")
 
 package() {
-  # install "${pkgdir}/usr/bin"
-  install -D "${srcdir}/treefetch" "${pkgdir}/usr/bin/${pkgname}"
-  # chmod +x "${pkgdir}/usr/bin/${pkgname}"
+  install -D "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
