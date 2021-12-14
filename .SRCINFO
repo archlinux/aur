@@ -1,7 +1,7 @@
 pkgbase = zfs_autobackup
 	pkgdesc = Automatic ZFS backup tool
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/psy0rz/zfs_autobackup
 	arch = any
 	license = GPL3
