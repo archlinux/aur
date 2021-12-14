@@ -12,7 +12,7 @@ noextract=("runnable-${pkgname}.jar")
 sha256sums=('7607bdb3a2ff68f7082f079211a86dab5c09c5daa64fa473ba0d6a30361afcc1')
 
 prepare() {
-	printf "#\!/bin/sh\nexec /usr/lib/jvm/java-8-openjdk/jre/bin/java -jar '/usr/share/java/${pkgname}/${pkgname}.jar'" > ${pkgname}.sh
+	printf "#!/bin/sh\nexec /usr/lib/jvm/java-8-openjdk/jre/bin/java -jar '/usr/share/java/${pkgname}/${pkgname}.jar'\n" > ${pkgname}.sh
 }
 
 package() {
