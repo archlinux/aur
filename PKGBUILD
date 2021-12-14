@@ -3,7 +3,7 @@
 _base=snuggs
 pkgname=python-${_base}
 pkgver=1.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Snuggs are s-expressions for Numpy"
 url="https://github.com/mapbox/${_base}"
 license=(MIT)
