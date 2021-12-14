@@ -1,7 +1,7 @@
 pkgbase = python-meshplex
 	pkgdesc = Compute interesting points, areas, and volumes in simplex meshes of any dimension
 	pkgver = 0.16.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/meshplex
 	arch = any
 	license = GPL3
