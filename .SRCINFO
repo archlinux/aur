@@ -1,7 +1,7 @@
 pkgbase = python-vulture
 	pkgdesc = Finds dead code in Python projects
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jendrikseipp/vulture/
 	arch = any
 	license = GPL3
@@ -11,4 +11,3 @@ pkgbase = python-vulture
 	md5sums = d55549b92ae52c99e492f393da94bc32
 
 pkgname = python-vulture
-

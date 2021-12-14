@@ -4,7 +4,7 @@
 _pkgname=vulture
 pkgname=python-vulture
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Finds dead code in Python projects"
 arch=('any')
 url="https://github.com/jendrikseipp/vulture/"
