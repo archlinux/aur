@@ -3,7 +3,7 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
@@ -21,17 +21,17 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
 cksums=('SKIP'
         'SKIP'
         'SKIP'
-        '679190767'
+        '3159732919'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '807843a0c88438eafe2dd653a10d66f6e1f3c162cc6c6e0507c3590436936795'
+            'edf70c9309978bad3acffe2b027d78cb2459e1cd915a3904b19b862d56b732ce'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
-        '7cbcce140a406301705f64b6d42f6121fe45990e024c7e9f7eecc426c505d422885bce964143ec1c0c6aff1555f1ea37d6c28931c3fbb600e32a1b2b677c09c8'
+        '6271339eff3dbafa71d836646946953522343bcf76ff06daafc92eab4a4c4bca9bfa9b5dde2263903d8048fe28e07e937e2aa5bcec68c158c52f0abaa4e603f5'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {

@@ -1,25 +1,25 @@
-From 9ca162d2fce0afffe7a98613e2305148ec8bf5c2 Mon Sep 17 00:00:00 2001
+From b76db6d80620b27ba2766a17c636e2b19ea80928 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 28 Nov 2021 16:48:29 +0100
 Subject: [PATCH] warnings: fix format-security warnings
 
 ---
- source/views/view_strings.cpp | 2 +-
+ plugins/builtin/source/content/views/view_strings.cpp | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/source/views/view_strings.cpp b/source/views/view_strings.cpp
-index 195d84d..ef39b26 100644
---- a/source/views/view_strings.cpp
-+++ b/source/views/view_strings.cpp
-@@ -128,7 +128,7 @@ namespace hex {
+diff --git a/plugins/builtin/source/content/views/view_strings.cpp b/plugins/builtin/source/content/views/view_strings.cpp
+index e2d51b7..f952246 100644
+--- a/plugins/builtin/source/content/views/view_strings.cpp
++++ b/plugins/builtin/source/content/views/view_strings.cpp
+@@ -133,7 +133,7 @@ namespace hex::plugin::builtin {
                          return 0;
                      }, this);
                      if (this->m_regex && !this->m_pattern_parsed) {
--                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "hex.view.strings.regex_error"_lang);
-+                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "%s", "hex.view.strings.regex_error"_lang);
+-                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "hex.builtin.view.strings.regex_error"_lang);
++                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "%s", "hex.builtin.view.strings.regex_error"_lang);
                      }
  
-                     if (ImGui::Button("hex.view.strings.extract"_lang))
+                     if (ImGui::Button("hex.builtin.view.strings.extract"_lang))
 -- 
 2.34.1
 
