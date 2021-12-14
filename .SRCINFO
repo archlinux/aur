@@ -13,7 +13,6 @@ pkgbase = pyradio-git
 	optdepends = mpv: as backend
 	optdepends = vlc: as backend
 	provides = pyradio
-	conflicts = pyradio-git
 	conflicts = pyradio
 	source = pyradio-git::git+https://github.com/coderholic/pyradio.git
 	sha256sums = SKIP

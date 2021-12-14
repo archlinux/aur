@@ -13,7 +13,7 @@ depends=('python-dnspython' 'python-requests')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%}"  "${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=($pkgname::git+https://github.com/coderholic/pyradio.git)
 sha256sums=('SKIP')
 
