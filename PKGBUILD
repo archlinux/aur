@@ -2,7 +2,7 @@
 _pkgname=f3d
 _pkgown=f3d-app
 pkgname=${_pkgname}-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=1
 pkgdesc='A fast and minimalist 3D viewer'
@@ -13,7 +13,7 @@ provides=('f3d')
 conflicts=('f3d')
 backup=("etc/$_pkgname/config.json")
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-Linux.tar.xz")
-sha256sums=('b062143fefb37de78aabf935fe0331c6b7a5558e71c69a814da772e6c14afbe7')
+sha256sums=('8f379cf0f01fc3860e3228b8fe4ebd98e52563a30fba843df4217b0d346cba9c')
 
 package() {
 	cd "$_pkgname-$pkgver-Linux"
