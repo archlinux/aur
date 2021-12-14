@@ -1,3 +1,4 @@
+# Maintainer: Elias Blume <mail at elias-blu.me>
 pkgname=moonlight-qt-bin
 pkgver=3.1.4
 pkgrel=1
