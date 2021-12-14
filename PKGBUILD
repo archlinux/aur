@@ -1,6 +1,6 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=ugene-git
-pkgver=38.1.r431.gb644c7c177
+pkgver=38.1.r485.g113d9908d0
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('x86_64')
@@ -29,13 +29,13 @@ build() {
   git checkout master
   CXXFLAGS="$CXXFLAGS -Wno-depreceated"
   OPENCL_INC_PATH=/usr/include/CL
-  qmake CONFIG+=x64 INSTALL_PREFIX=${pkgdir}/opt/ugene UGENE_OPENCL_DETECTED=1 UGENE_USE_SYSTEM_SQLITE=1 UGENE_USE_BUNDLED_ZLIB=0 -r
-  make all
+  qmake -r CONFIG+=x64 PREFIX=${pkgdir}/opt/ugene UGENE_OPENCL_DETECTED=1 UGENE_USE_SYSTEM_SQLITE=1 UGENE_USE_BUNDLED_ZLIB=0 .
+  make -j 4
 }
 
 package() {
   cd "${srcdir}"/ugene
-  make install
+  make PREFIX=${pkgdir}/opt/ugene install
   mkdir -p ${pkgdir}/usr/bin
   ln -s /opt/ugene/ugene ${pkgdir}/usr/bin/ugene
   mkdir -p ${pkgdir}/usr/share/applications
