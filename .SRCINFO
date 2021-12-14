@@ -1,7 +1,7 @@
 pkgbase = remarshal
 	pkgdesc = Convert between CBOR, JSON, MessagePack, TOML, and YAML
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dbohdan/remarshal
 	arch = any
 	license = MIT
