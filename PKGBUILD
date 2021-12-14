@@ -2,7 +2,7 @@
 
 pkgname=spolyrics
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays the lyrics to the currently playing song"
 arch=('any')
 url="https://github.com/glebliutsko/spolyrics"
