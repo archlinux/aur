@@ -5,7 +5,7 @@
 _base=pytest-pep8
 pkgname=python-${_base}
 pkgver=1.0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="pytest plugin to check PEP8 requirements"
 arch=('any')
 url="https://pypi.org/project/${_base}"
