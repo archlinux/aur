@@ -15,6 +15,7 @@ conflicts=("${pkgname%-bin}")
 sha256sums=('6ce30a2b1014f072b2462055b55b1f4367625423e69a62c962421bdda38990fd')
 
 prepare() {
+    # extract appimage
     chmod +x "${pkgname%-bin}-$pkgver.AppImage"
     ./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
 
