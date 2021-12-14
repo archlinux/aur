@@ -1,7 +1,7 @@
 pkgbase = nvidia-container-runtime-bin
 	pkgdesc = NVIDIA container runtime
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/nvidia-container-runtime
 	arch = x86_64
 	license = BSD
