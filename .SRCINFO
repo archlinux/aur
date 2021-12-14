@@ -1,7 +1,7 @@
 pkgbase = quicktile-git
 	pkgdesc = Adds window-tiling hotkeys to any X11 desktop
 	pkgver = 422.ca8105d
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/ssokolow/quicktile
 	arch = any
