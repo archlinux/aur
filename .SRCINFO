@@ -1,15 +1,14 @@
 pkgbase = perl-devel-smallprof
 	pkgdesc = Devel::SmallProf - Per-line Perl profiler
 	pkgver = 2.02
-	pkgrel = 3
-	url = http://search.cpan.org/dist/Devel-SmallProf/
+	pkgrel = 4
+	url = https://search.cpan.org/dist/Devel-SmallProf/
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	depends = perl>=5.10.0
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Devel-SmallProf-2.02.tar.gz
-	md5sums = 498704ed1b888fc62b0c7092f8b590f5
+	source = https://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Devel-SmallProf-2.02.tar.gz
+	sha256sums = 8cd514166c66c44ffbe2d0728583032d602b5786ef3a0b7e575f733cc5bd8b08
 
 pkgname = perl-devel-smallprof
-
