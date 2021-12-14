@@ -4,7 +4,7 @@ _pkgname=pyfuse3
 pkgbase=python-pyfuse3
 pkgname=(python-pyfuse3)
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Python 3 bindings for libfuse 3 with asynchronous API (Trio compatible)"
 url="https://github.com/libfuse/pyfuse3"
@@ -18,6 +18,11 @@ makedepends=('python-setuptools' 'cython')
 
 source=("https://github.com/libfuse/pyfuse3/archive/release-$pkgver.tar.gz")
 sha256sums=('686d202c2b37ef439bdb40827f80cbd3b5a7a64a275549ddf053ac781068b3ea')
+
+prepare() {
+	cd pyfuse3-release-$pkgver
+	rm -f MANIFEST.in  # disable developer mode
+}
 
 build() {
 	cd pyfuse3-release-$pkgver
