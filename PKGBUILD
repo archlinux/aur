@@ -16,7 +16,7 @@ source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 sha512sums=('e9c567fe2ffad196b9657c551d83f7607758f3704cad6cb407514bbe2bc765c16968997dc3a5bc92b9eb5900fa5bd6e7cebc92c81afff53339fca92891a5259d')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   ./configure \
     --prefix=/usr \
     --sbindir='${exec_prefix}/bin' \
@@ -27,9 +27,9 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make prefix="$pkgdir"/usr install
-  install -Dm644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
