@@ -1,24 +1,21 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-torchgan-git
-pkgver=0.0.4.r5.gfe86d7c
-pkgrel=1
-pkgdesc="Research Framework for easy and efficient training of GANs based on PyTorch"
-arch=(any)
-url="https://github.com/torchgan/torchgan"
+pkgver=0.1.0.r2.gf413953
+pkgrel=2
+pkgdesc='Research Framework for easy and efficient training of GANs based on PyTorch'
+arch=('any')
+url='https://github.com/torchgan/torchgan'
 license=('MIT')
 depends=(
-  'python-numpy'
-  'python-pillow'
-  'python-pytorch'
-  'python-torchvision'
+  python-numpy
+  python-pillow
+  python-pytorch
+  python-torchvision
 )
 makedepends=(
-  'git'
-  'python-setuptools'
-)
-checkdepends=(
-  'python-pytest'
+  git
+  python-setuptools
 )
 provides=(python-torchgan=${pkgver})
 conflicts=(python-torchgan)
@@ -35,17 +32,12 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${pkgname}"
 	python setup.py build
 }
 
-check() {
-  cd "${srcdir}/${pkgname}"
-  PYTHONPATH="${PWD}/build/lib pytest -v"
-}
-
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${pkgname}"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
  	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   # delete tests folder as they're installed in wrong place
