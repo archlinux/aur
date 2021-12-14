@@ -1,0 +1,12 @@
+pkgbase = bettergruvbox-gtk-theme
+	pkgdesc = An Elegant Dark Gruvbox GTK Theme, With a Green Accent
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SafwanLjd/BetterGruvbox
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	source = https://github.com/SafwanLjd/BetterGruvbox/releases/download/1.0/bettergruvbox-gtk-theme.tar.gz
+	sha1sums = 449763b0868f092b95d12c8f9571655d23a70418
+
+pkgname = bettergruvbox-gtk-theme
