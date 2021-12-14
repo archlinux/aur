@@ -1,7 +1,7 @@
 pkgbase = python-odo
 	pkgdesc = Data Migration for the Blaze Project
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blaze/odo
 	arch = any
 	license = BSD

@@ -3,7 +3,7 @@
 _base=odo
 pkgname=python-${_base}
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Data Migration for the Blaze Project"
 arch=('any')
 url="https://github.com/blaze/${_base}"
