@@ -1,17 +1,20 @@
-# Maintainer: Ilya Fedin <fedin-ilja2010@ya.ru>
+# Maintainer: solopasha <daron439 at gmail dot com>
+# Contributor: Ilya Fedin <fedin-ilja2010@ya.ru>
 # Contributor: Auteiy <dmitry@auteiy.me>
 pkgname=kotatogram-desktop
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Kotatogram – experimental Telegram Desktop fork'
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
+_tg_owt_commit=91d836dc84
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
-         'rnnoise' 'jemalloc' 'libtg_owt')
+         'rnnoise' 'jemalloc' 'abseil-cpp')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-            'extra-cmake-modules' 'webkit2gtk')
+             'extra-cmake-modules' 'webkit2gtk' 'unzip' 'protobuf' 'libxrandr' 'libxcomposite' 'openssl' 'glibc'
+             'ffmpeg' 'libva' 'opus' 'yasm' 'libjpeg-turbo' 'pipewire' 'libxtst')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin')
@@ -35,8 +38,16 @@ source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkg
         "${pkgname}-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
         "${pkgname}-lib_webview::git+https://github.com/desktop-app/lib_webview.git"
         "${pkgname}-lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git"
+        "${pkgname}-tg_owt::git+https://github.com/desktop-app/tg_owt.git#commit=${_tg_owt_commit}"
+        "libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
+        "libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git"
+        "pipewire::git+https://github.com/PipeWire/pipewire.git"
         "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch")
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -81,16 +92,30 @@ prepare() {
     git config submodule.Telegram/lib_webview.url "${srcdir}/${pkgname}-lib_webview"
     git config submodule.Telegram/lib_waylandshells.url "${srcdir}/${pkgname}-lib_waylandshells"
     git submodule update
-
-    patch -p1 < ${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
+    patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+    cd "${srcdir}/${pkgname}-tg_owt"
+    git submodule init
+    git config submodule.src/third_party/libvpx/source/libvpx.url "$srcdir"/libvpx
+    git config submodule.src/third_party/libyuv.url "$srcdir"/libyuv
+    git config submodule.src/third_party/pipewire.url "$srcdir"/pipewire
+    git submodule update
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    # kotatogram-desktop is incompatible with the latest community/libtg_owt, so bundle an older one.
+    cd "${srcdir}/${pkgname}-tg_owt"
+    cmake -B build -G Ninja . \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DTG_OWT_BUILD_AUDIO_BACKENDS=OFF \
+        -DBUILD_SHARED_LIBS=OFF
 
+    cmake --build build
+
+    cd "${srcdir}/${pkgname}"
     cmake -B build -G Ninja . \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
+        -Dtg_owt_DIR="${srcdir}/${pkgname}-tg_owt/build" \
         -DTDESKTOP_API_TEST=ON
 
     cmake --build build
