@@ -1,7 +1,7 @@
 pkgbase = python-perfplot
 	pkgdesc = Performance plots for Python code
 	pkgver = 0.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/perfplot
 	arch = x86_64
 	license = GPL3
