@@ -11,6 +11,7 @@ pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life clien
 arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
+options=(!strip)
 depends=(dbus-glib glu gtk3 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 optdepends=(
   'alsa-lib: ALSA support'
@@ -31,10 +32,6 @@ b2sums=('47b884af32fae38896f722df7dcd003c487748819827f8ebbd79ba911a8e1ecf60d1c8e
         'fbab51351cd1c427563fdaf8ffd35d1ca2aef3f4eaea03644cc35cd2063b0b3ea29fd96ca9cc774f21d6172584c195a79aafab4b37aa1108c9e47abef013f709')
 pkgver() {
   echo "${pkgver}"
-}
-strip() {
-  # package is already pre-stripped when desired
-  true
 }
 package() {
   mkdir -p "${pkgdir}"/usr/share/applications
