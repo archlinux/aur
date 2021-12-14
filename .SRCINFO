@@ -1,7 +1,7 @@
 pkgbase = python-viscm
 	pkgdesc = A tool for visualizing and designing colormaps using colorspacious and matplotlib
 	pkgver = 0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/matplotlib/viscm
 	arch = any
 	license = MIT
