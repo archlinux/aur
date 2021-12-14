@@ -3,3 +3,4 @@ src/
 *.tar.*
 !.SRCINFO
 !.gitignore
+!PKGBUILD

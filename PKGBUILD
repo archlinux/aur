@@ -6,13 +6,13 @@ _pkgbase=nvidia-settings
 _branch=470
 pkgname=lib32-libxnvctrl-470xx
 pkgver=470.94
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA NV-CONTROL X extension (470 legacy branch, 32-bit)'
 url='https://github.com/NVIDIA/nvidia-settings'
 arch=('x86_64')
 license=('GPL2')
 depends=('lib32-gcc-libs' 'lib32-libxext')
-provides=('libxnvctrl' 'libXNVCtrl.so')
+provides=('lib32-libxnvctrl' 'libXNVCtrl.so=0-32')
 conflicts=('lib32-libxnvctrl')
 makedepends=('git')
 source=("git+https://github.com/NVIDIA/nvidia-settings.git#branch=470"
