@@ -2,7 +2,7 @@
 # Contributor: Alex Forencich <alex@alexforencich.com>
 pkgname=python-pyvisa
 pkgver=1.11.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 arch=(any)
 url="https://github.com/pyvisa/pyvisa"
@@ -19,7 +19,7 @@ python-setuptools
 python-setuptools-scm
 python-pytest
 )
-source=("${pkgname}=${pkgver}.tar.gz::https://github.com/pyvisa/pyvisa/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pyvisa/pyvisa/archive/$pkgver.tar.gz")
 sha256sums=('8f8a309050a784b518a04b1506a06d34c69c630ee553e8a88d9d89cea4fd318a')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
@@ -35,7 +35,7 @@ build() {
 
 check(){
   cd pyvisa-${pkgver}
-  PYTHONPATH="${srcdir}/pyvisa-${pkgver}" python -m pytest --pyargs pyvisa 
+  PYTHONPATH="${srcdir}/pyvisa-${pkgver}" python -m pytest --pyargs pyvisa --ignore pyvisa/testsuite/test_cmd_line_tools.py
 }
 
 package(){
