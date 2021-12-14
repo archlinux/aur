@@ -1,7 +1,7 @@
 pkgbase = python-aabbtree
 	pkgdesc = Pure Python implementation of d-dimensional AABB tree
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kip-hart/AABBTree
 	arch = any
 	license = MIT
