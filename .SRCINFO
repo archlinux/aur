@@ -1,5 +1,5 @@
 pkgbase = ekho
-	pkgdesc = Chinese text-to-speech (TTS) software for Cantonese, Mandarin, Zhaoan Hakka, Tibetan, Ngangien and Korean
+	pkgdesc = Multilingual text-to-speech (TTS) software for Cantonese, Mandarin, Toisanese, Zhaoan Hakka, Tibetan, Ngangien, Korean and English
 	pkgver = 8.6
 	pkgrel = 1
 	url = https://www.eguidedog.net/ekho.php
