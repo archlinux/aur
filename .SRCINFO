@@ -1,7 +1,7 @@
 pkgbase = python-krypy
 	pkgdesc = Krylov subspace methods package for Python
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrenarchy/krypy
 	arch = x86_64
 	license = MIT
