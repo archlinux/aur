@@ -12,13 +12,13 @@ backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss nspr ttf-font libpulse
-        libwebp libvpx libjpeg zlib icu libevent pipewire aom harfbuzz
-        graphite dav1d kfiredragonhelper)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             rust ccache autoconf2.13 clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
-             xorg-server-xwayland python-pip)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
+         aom harfbuzz graphite libvpx libjpeg zlib icu libevent pipewire)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
+             rust xorg-server-xwayland xorg-server-xvfb
+             autoconf2.13 clang llvm jack nodejs cbindgen nasm
+             python-setuptools python-psutil python-zstandard git binutils
+             lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
@@ -63,7 +63,6 @@ prepare() {
   echo "---- Patching for KDE"
   patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
   patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
-  #patch -Np1 -i ${_patches_dir}/kde/firefox-kde.patch Currently broken with PGO
   
   # Ubuntu patches
   echo "---- Misc patches"
@@ -75,8 +74,14 @@ prepare() {
   # Gentoo patches
   echo "---- Gentoo patches"
   patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-
+  patch -Np1 -i ${_patches_dir}/gentoo/0026-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0022-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0027-Make-elfhack-use-toolchain.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0029-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0030-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
   # Use more system libs
   echo "---- Patching for system libs"
   patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
@@ -94,17 +99,11 @@ prepare() {
   # Debian patch to enable global menubar
   patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
-  # Custom link in about dialogue
-  patch -Np1 -i ${_patches_dir}/librewolf/about-dialog.patch
-
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
-
-  # Allow overriding the color scheme light/dark preference with RFP (deprecated, probably dropped soon)
-  # patch -Np1 -i ${_patches_dir}/librewolf/allow_dark_preference_with_rfp.patch
 
   # Remove Internal Plugin Certificates
   # => breaks profiled builds since 90.0, it seems
@@ -149,36 +148,30 @@ ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
-ac_add_options --enable-linker=lld
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --with-ccache
-export AR=llvm-ar
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 export CC='clang'
 export CXX='clang++'
-export MOZ_APP_REMOTINGNAME=$_pkgname
-export MOZ_REQUIRE_SIGNING=
-export NM=llvm-nm
-export OBJCOPY='/usr/bin/llvm-objcopy'
-export RANLIB=llvm-ranlib
-export STRIP=llvm-strip
 
 # Branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${pkgname}
-ac_add_options --with-app-basename='${_pkgname}'
-ac_add_options --with-branding=browser/branding/firedragon
+ac_add_options --with-app-basename=${_pkgname}
+ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
+export MOZ_REQUIRE_SIGNING=1
+export MOZ_ADDON_SIGNING=1
+export MOZ_APP_REMOTINGNAME=${pkgname}
 
 # System libraries
-ac_add_options --disable-libproxy
-ac_add_options --enable-system-pixman
-#ac_add_options --with-system-av1 breaks build as of 13.12.
-ac_add_options --with-system-ffi
-#ac_add_options --with-system-graphite2 breaks build as of 13.12
+#ac_add_options --with-system-av1
+#ac_add_options --with-system-graphite2
 ac_add_options --with-system-harfbuzz
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
@@ -186,19 +179,28 @@ ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --disable-crashreporter
+ac_add_options --disable-debug
+ac_add_options --disable-debug-js-modules
+ac_add_options --disable-debug-symbols
 ac_add_options --disable-gpsd
+ac_add_options --disable-ipdl-tests
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-rust-tests
+ac_add_options --disable-synth-speechd
 ac_add_options --disable-tests
+ac_add_options --disable-trace-logging
 ac_add_options --disable-updater
+ac_add_options --disable-warnings-as-errors
+ac_add_options --disable-webspeech
+ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-strip
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
@@ -249,33 +251,17 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MOZ_ENABLE_FULL_SYMBOLS=1
   export MACH_USE_SYSTEM_PYTHON=1
 
   # LTO needs more open files
   ulimit -n 4096
 
-  # -fno-plt with cross-LTO causes obscure LLVM errors
-  # LLVM ERROR: Function Import: link error
-  CFLAGS="${CFLAGS/-fno-plt/}"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
-
   # Do 3-tier PGO
   echo "Building instrumented browser..."
-
-if [[ $CARCH == 'aarch64' ]]; then
-
-  cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
-END
-
-else
 
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
-
-fi
 
   ./mach build
 
@@ -297,18 +283,6 @@ fi
 
   echo "Building optimized browser..."
 
-if [[ $CARCH == 'aarch64' ]]; then
-
-  cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-ac_add_options --enable-linker=lld
-END
-
-else
-
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
@@ -319,8 +293,6 @@ ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 END
 
-fi
-
   ./mach build
 
   echo "Building symbol archive..."
@@ -330,6 +302,7 @@ fi
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
+  rm "$pkgdir"/usr/lib/${pkgname}/pingsender
 
   install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
   
