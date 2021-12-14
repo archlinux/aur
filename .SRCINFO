@@ -1,13 +1,13 @@
 pkgbase = pin
 	pkgdesc = A tool for the dynamic instrumentation of programs
 	pkgver = 3.21.r98484
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html
 	arch = x86_64
 	license = custom
-	depends = gcc>=4.4.7
+	depends = gcc
 	depends = bash
-	depends = lib32-gcc-libs>=4.4.7
+	depends = lib32-gcc-libs
 	options = !strip
 	options = staticlibs
 	source = http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.21-98484-ge7cd811fd-gcc-linux.tar.gz

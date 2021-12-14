@@ -1,17 +1,18 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Jon Eyolfson <jon@eyolfson.com>
 # Contributor: Roni Choudhury <aichoudh@gmail.com>
 
 pkgname=pin
+# Remove kit number on 3.22
 pkgver=3.21.r98484
 _pkgver=3.21-98484-ge7cd811fd
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for the dynamic instrumentation of programs"
 arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html"
 license=('custom')
-groups=()
-depends=('gcc>=4.4.7' 'bash' 'lib32-gcc-libs>=4.4.7')
+depends=('gcc' 'bash' 'lib32-gcc-libs')
 options=('!strip' 'staticlibs')
 source=("http://software.intel.com/sites/landingpage/pintool/downloads/${pkgname}-${_pkgver}-gcc-linux.tar.gz"
         "pin.sh")
@@ -39,4 +40,7 @@ package() {
     cd "$srcdir"
     mkdir -p ${pkgdir}/etc/profile.d
     install pin.sh ${pkgdir}/etc/profile.d
+
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -r "${pkgdir}"/opt/pin/licensing "${pkgdir}/usr/share/licenses/${pkgname}"
 }
