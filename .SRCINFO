@@ -1,7 +1,7 @@
 pkgbase = python-lsq-ellipse
 	pkgdesc = Fitting an Ellipse using a Least Squares method, in Python
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/lsq-ellipse
 	arch = x86_64
 	license = MIT
