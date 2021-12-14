@@ -1,9 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -19,7 +18,7 @@ optdepends=('python-meshio: for creation mesh'
   'python-scipy: for curve fit support'
   'vtk: for create VTK hexahedron support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('68c3a7f020bbf788ab600cfedd7e92e8dad207ac68615424ce7add8741f898d42a0b133a9725675c4495aa502d091c692ef62998b0c1e28c94eec48e2130d908')
+sha512sums=('f95271b5fa91b28d7346b919a6243f2daefc9a2182f44fe27cc57ca608b2e56b5640f8eee16abb9768df3387ec15552100dca39dc7e83e7064512b0d61c73126')
 
 build() {
   cd "${_base}-${pkgver}"
