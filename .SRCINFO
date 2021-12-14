@@ -1,7 +1,7 @@
 pkgbase = pinta-gtk3-git
 	pkgdesc = Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users
-	pkgver = r2282.077ca6d2
-	pkgrel = 2
+	pkgver = r2357.8c4b93ae
+	pkgrel = 1
 	url = https://pinta-project.com
 	arch = x86_64
 	arch = i686
@@ -14,11 +14,11 @@ pkgbase = pinta-gtk3-git
 	depends = mono-addins
 	depends = yelp-tools
 	depends = intltool
-	depends = dotnet-runtime-5.0-bin
+	depends = dotnet-runtime
 	provides = pinta
 	conflicts = pinta
 	options = !makeflags
-	source = git+https://github.com/PintaProject/Pinta.git#branch=gtk3-v2
+	source = git+https://github.com/PintaProject/Pinta.git
 	md5sums = SKIP
 
 pkgname = pinta-gtk3-git
