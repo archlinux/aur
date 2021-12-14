@@ -1,7 +1,7 @@
 pkgbase = soundcloud-syncer
 	pkgdesc = Synchronize user's favorites tracks from soundcloud
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sliim/soundcloud-syncer
 	arch = any
 	license = GPL3

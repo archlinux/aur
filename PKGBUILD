@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=soundcloud-syncer
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize user's favorites tracks from soundcloud"
 url="https://github.com/sliim/${pkgname}"
 depends=(python-stagger python-pydub python-dateutil python-magic)
