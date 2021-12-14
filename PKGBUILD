@@ -3,7 +3,7 @@
 pkgname=mathics-scanner
 _pkgname=Mathics_Scanner
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Mathics' tokeniser or scanner portion for the Wolfram Language."
 arch=('any')
 url="https://mathics.org/"
