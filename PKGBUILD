@@ -3,7 +3,7 @@
 _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=2.0.1.r395.gea47ae66
+pkgver=2.7.1.r131.gb7acb7ed
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
@@ -35,7 +35,7 @@ conflicts=(
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
