@@ -1,7 +1,7 @@
 pkgbase = python-html2md
 	pkgdesc = HTML to Markdown converter
 	pkgver = 0.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davidcavazos/html2md
 	arch = any
 	license = Apache

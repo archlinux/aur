@@ -1,8 +1,9 @@
-# Maintainer: zhullyb <zhullyb@outlook.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: zhullyb <zhullyb@outlook.com>
 
 pkgname=python-html2md
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="HTML to Markdown converter"
 license=('Apache')
 arch=('any')
@@ -30,6 +31,7 @@ check() {
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "html2md-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
