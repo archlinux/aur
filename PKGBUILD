@@ -5,7 +5,7 @@
 # AUR Category: devel
 pkgname=tortoisehg
 pkgver=6.0
-pkgrel=3
+pkgrel=4
 #_pkgchangeset=1605d6fba195f02c0c689fe4aff5d7160aa2b15d
 pkgdesc="Graphical tools for Mercurial"
 url="https://foss.heptapod.net/mercurial/tortoisehg/thg"
@@ -36,9 +36,9 @@ package() {
 	install -Dm 644 "icons/svg/thg_logo.svg" "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
 
 	# already provided by hg
-	rm -f "${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__init__.py"
-	rm -f "${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__init__.pyc"
-	rm -rf "${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__pycache__/"
+	rm -f ${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__init__.py
+	rm -f ${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__init__.pyc
+	rm -rf ${pkgdir}/usr/lib/python*/site-packages/hgext3rd/__pycache__/
 }
 
 sha256sums=('db9b90da5945ffec2a746a6e9ff9f396f01fdbce8e2119a5654212674b331fa6')
