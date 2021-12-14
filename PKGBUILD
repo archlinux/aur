@@ -1,9 +1,9 @@
 # Maintainer: itsme <mymail@ishere.ru>
-# Maintainer: Christian Wieden <wiedenchr at gmail dot com>
+# Contributor: Christian Wieden <wiedenchr at gmail dot com>
 
 pkgname=hstr
-pkgver=2.3
-pkgrel=4
+pkgver=2.5
+pkgrel=1
 pkgdesc="Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history."
 arch=('x86_64')
 url="https://github.com/dvorka/hstr"
@@ -11,7 +11,7 @@ license=('Apache')
 makedepends=('readline' 'ncurses')
 depends=('readline')
 source=("https://github.com/dvorka/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('c7e7408671757b3f4be9c5a59b4e2d56e7a7b601ace2a94eb6b2b61f20ee890b')
+sha256sums=('7f5933fc07d55d09d5f7f9a6fbfdfc556d8a7d8575c3890ac1e672adabd2bec4')
 
 
 build() {
