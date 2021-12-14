@@ -4,7 +4,7 @@
 _pyname=orderedset
 pkgname=python-$_pyname
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An ordered set implementation in cython'
 arch=(x86_64)
 url=https://github.com/simonpercivall/$_pyname
@@ -18,7 +18,6 @@ sha256sums=('b2f5ccfb5a86e7b3b3ddf18b29779cc18b24653abf9d6da4bebecf33780a6e29')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
