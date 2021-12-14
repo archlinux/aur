@@ -7,15 +7,15 @@ pkgname=magics++
 Pkgname=Magics
 pkgver=4.9.4
 _attnum=3473464
-pkgrel=0
+pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
 arch=('i686' 'x86_64')
-url="https://software.ecmwf.int/wiki/display/MAGP"
+url="https://confluence.ecmwf.int/display/MAGP"
 license=('Apache')
 depends=('eccodes>=2.19.0' libgeotiff qt6-base pango python)
 optdepends=(ksh libaec odb_api)
 makedepends=(cmake gcc-fortran perl-xml-parser python-jinja swig)
-source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz
+source=(http://confluence.ecmwf.int/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz
         gcc11.patch)
 sha256sums=('2559c2a6d6aabb8c219e7039b08f8a8108c360969c61e703d5558729f8834cdc'
             'c0250ac473b4703e79c8f879f6271d1409e800a0f8a7a77b3793cc9ce9a85951')
@@ -40,6 +40,7 @@ build() {
     -DCMAKE_INSTALL_DATADIR=/usr/share \
     -DENABLE_METVIEW=ON \
     -DENABLE_GEOTIFF=ON \
+    -DGEOTIFF_DIR=/usr \
     -DENABLE_ODB=${has_odb}
 
   make -C build
@@ -48,4 +49,3 @@ build() {
 package() {
   make -C build DESTDIR="$pkgdir" install
 }
-
