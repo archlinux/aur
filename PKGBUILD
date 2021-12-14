@@ -3,7 +3,7 @@
 pkgname=mathics-django
 _pkgname=Mathics-Django
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Django front-end to Mathics."
 arch=('any')
 url="https://mathics.org/"
