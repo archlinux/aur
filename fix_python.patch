@@ -5,7 +5,7 @@
  # Change this variable to your python version (2.6, 2.7, 3.3, ...)
  win32:PYTHON_VERSION=27
 -unix:PYTHON_VERSION=2.7
-+unix:PYTHON_VERSION=3.9
++unix:PYTHON_VERSION=3.10
  
  macx {
    # for macx you need to have the Python development kit installed as framework
@@ -15,8 +15,8 @@
    
 -  unix:LIBS += $$system(python$${PYTHON_VERSION}-config --libs)
 -  unix:QMAKE_CXXFLAGS += $$system(python$${PYTHON_VERSION}-config --includes)
-+  system(/usr/bin/python3.9-config --embed --libs 2>/dev/null) {
-+    unix:LIBS += $$system(/usr/bin/python3.9-config --embed --libs)
-+  } else: unix:LIBS += $$system(/usr/bin/python3.9-config --libs)
-+  unix:QMAKE_CXXFLAGS += $$system(/usr/bin/python3.9-config --includes)
++  system(/usr/bin/python3.10-config --embed --libs 2>/dev/null) {
++    unix:LIBS += $$system(/usr/bin/python3.10-config --embed --libs)
++  } else: unix:LIBS += $$system(/usr/bin/python3.10-config --libs)
++  unix:QMAKE_CXXFLAGS += $$system(/usr/bin/python3.10-config --includes)
  }

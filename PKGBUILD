@@ -6,7 +6,7 @@
 
 pkgname=pythonqt
 pkgver=3.2
-pkgrel=8
+pkgrel=9
 pkgdesc='A dynamic Python binding for Qt applications'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
@@ -23,7 +23,7 @@ source=(
 )
 sha512sums=(
 	'1ee0f50f5035568b38e945108f5496ba64355c6357c1ea8dfc17ad90fa360540769f94e0b3e0e398176e8a21c8afe139607f0b5a2e82c63f1cbd40201a25e0f0'
-    '548252508347f58dc4ff0f23a85973d1e799c6f4ce96b434b1f845feb1538ac85715d7e86bcea756f08ec31c21d9911bc6cfa6b99223ed0b1b0e96cc414b412f'
+    'd11787ee228ad906b41799fcfcf2116b280621e5d23475fa8b9110c812cf96746cfd904ad22d1ac25178be4e8a63bd6ffd93cca39ebce3cfd48d95bf2607c4fe'
     '2b514b17f6bce129656e7e8cf56434eebc1fa557f854c7a757f6a0ba8c142a8c18d28e81f7fbe77a391f425b43f6cf52dc6fc9229b70739ddcb52180c675eaa0'
 )
 
@@ -35,6 +35,7 @@ prepare() {
 
     patch -p0 -i ../fix_python.patch
     patch -p0 -i ../fix_format_security.patch
+    sed -i "s=pydebug.h=cpython/pydebug.h=" src/PythonQt.cpp
 }
 
 build() {
