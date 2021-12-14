@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-make-git
 pkgver=r43.716c294
@@ -34,11 +34,11 @@ build() {
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-make.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-make.so" "$pkgdir/usr/share/nvim/runtime/parser/make.so"
+	install -Dm644 parser.so "$pkgdir/usr/lib/libtree-sitter-make.so"
+	install -d "$pkgdir/usr/share/nvim/runtime/pack/dist/start/$pkgname/parser/"
+	ln -s "/usr/lib/libtree-sitter-make.so" "$pkgdir/usr/share/nvim/runtime/pack/dist/start/$pkgname/parser/make.so"
 	cd "$pkgname"
-	install -Dvm 644 queries/highlights.scm -t "$pkgdir/usr/share/nvim/runtime/queries/make/"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 queries/highlights.scm -t "$pkgdir/usr/share/nvim/runtime/pack/dist/start/$pkgname/queries/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
