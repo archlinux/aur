@@ -1,7 +1,7 @@
 pkgbase = python-pyina
 	pkgdesc = MPI parallel map and cluster scheduling
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uqfoundation/pyina
 	arch = any
 	license = BSD
