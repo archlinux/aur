@@ -1,0 +1,18 @@
+pkgbase = napari-svg
+	pkgdesc = A plugin for writing svg files from napari.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/napari/napari-svg
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-imageio
+	depends = python-napari-plugin-engine
+	depends = python-numpy
+	depends = python-vispy
+	provides = python-napari-svg
+	source = https://files.pythonhosted.org/packages/source/n/napari-svg/napari-svg-0.1.5.tar.gz
+	sha256sums = 7b0c9dfb66d63a251f550c074e1b11d177aaea7a61dd19fcdaed87739c441bfd
+
+pkgname = napari-svg
