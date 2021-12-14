@@ -3,7 +3,7 @@
 _base=allure
 pkgname=python-${_base}-commons
 pkgver=2.9.45
-pkgrel=1
+pkgrel=2
 pkgdesc="Common module for integrate allure with python-based frameworks"
 arch=('any')
 url="https://github.com/${_base}-framework/${_base}-python"
