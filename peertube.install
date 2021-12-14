@@ -1,4 +1,4 @@
 post_install() {
-	mkdir -p /var/lib/peertube
+    mkdir -p /var/lib/peertube/storage/{avatars,bin,cache,captions,client-overrides,logs,plugins,previews,redundancy,streaming-playlists,thumbnails,tmp,torrents,videos}
     chown -R peertube:peertube /var/lib/peertube &>/dev/null
 }
