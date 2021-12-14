@@ -1,4 +1,4 @@
-# Maintainer: Carson Rueter <roachh at proton mail dot com>
+# Maintainer: Carson Rueter <swurl at swurl dot xyz>
 # Contributor: tinywrkb <tinywrkb@gmail.com>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Maxim Baz <rofi at maximbaz dot com>
@@ -11,7 +11,7 @@
 
 _gitname=rofi
 pkgname=rofi-lbonn-wayland
-pkgver=1.7.0+wayland1
+pkgver=1.7.1+wayland1
 _pkgver="${pkgver/_/-}"
 pkgrel=1
 pkgdesc='A window switcher, application launcher and dmenu replacement (Wayland fork)'
