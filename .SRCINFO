@@ -1,7 +1,7 @@
 pkgbase = python-optimesh
 	pkgdesc = Mesh optimization, mesh smoothing
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/optimesh
 	arch = any
 	license = GPL3
