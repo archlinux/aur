@@ -1,7 +1,7 @@
 pkgbase = python-npx
 	pkgdesc = Some useful extensions for NumPy
 	pkgver = 0.0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/npx
 	arch = x86_64
 	license = custom:BSD-3-clause
