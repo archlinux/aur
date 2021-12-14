@@ -52,7 +52,7 @@ validpgpkeys=()
 build()
 {
     # shellcheck disable=SC2154
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit
     ./build.sh
 }
 
@@ -66,7 +66,7 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
 
     # Install the software.
-    cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/"${_pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/"${_pkgname}"/
 
     ## Create an executable.
     echo -e "#!/bin/bash
@@ -74,8 +74,8 @@ dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}
     chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
 }
