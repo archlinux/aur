@@ -9,8 +9,8 @@ arch=(any)
 url="https://github.com/wick3dr0se/sysfetch"
 license=(GPL3)
 depends=('coreutils' 'bash' 'awk' 'sed' 'psmisc' 'grep' 'pacman')
-optdepends=('xorg-xprop: fallback for X session info'
-'pciutils: to detect gpu')
+optdepends=('xorg-xprop: X session info (fallback)'
+'pciutils: detect gpu')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')

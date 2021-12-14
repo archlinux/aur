@@ -13,8 +13,8 @@ pkgbase = sysfetch-git
 	depends = psmisc
 	depends = grep
 	depends = pacman
-	optdepends = xorg-xprop: fallback for X session info
-	optdepends = pciutils: to detect gpu
+	optdepends = xorg-xprop: X session info (fallback)
+	optdepends = pciutils: detect gpu
 	source = git+https://github.com/wick3dr0se/sysfetch
 	sha256sums = SKIP
 
