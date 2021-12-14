@@ -1,7 +1,7 @@
 pkgbase = python-fontpens
 	pkgdesc = A collection of classes implementing the pen protocol for manipulating glyphs.
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/robotools/$_pyname
 	arch = any
 	license = BSD

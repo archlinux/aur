@@ -9,7 +9,7 @@ BUILDENV+=(!check)
 _pyname=fontPens
 pkgname=python-${_pyname,,}
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A collection of classes implementing the pen protocol for manipulating glyphs.'
 arch=(any)
 url='https://github.com/robotools/$_pyname'
@@ -24,7 +24,6 @@ sha256sums=('a6d9a14573b3450f3313d69523f9006028c21fc7aef5d35333b87aab7f2b41fd')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
