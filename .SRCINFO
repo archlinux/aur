@@ -1,7 +1,7 @@
 pkgbase = python-microstructpy
 	pkgdesc = Microstructure modeling, mesh generation, analysis, and visualization
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kip-hart/microstructpy
 	arch = x86_64
 	license = MIT
