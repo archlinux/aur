@@ -1,7 +1,7 @@
 pkgbase = python-flake8-class-newline
 	pkgdesc = Flake8 lint for newline after class definitions
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AlexanderVanEck/flake8-class-newline
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 _base=flake8-class-newline
 pkgname=python-${_base}
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Flake8 lint for newline after class definitions"
 arch=('any')
 url="https://github.com/AlexanderVanEck/${_base}"
