@@ -2,7 +2,7 @@
 
 pkgname=refind-btrfs
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate rEFInd manual boot stanzas from Btrfs snapshots'
 url='https://github.com/Venom1991/refind-btrfs'
 arch=(any)
