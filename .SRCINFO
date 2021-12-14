@@ -104,11 +104,13 @@ pkgbase = sagemath-git
 	source = test-optional.patch
 	source = sagemath-lrcalc2.patch
 	source = sagemath-singular-4.2.1.p1.patch
+	source = sagemath-linbox-1.7.patch
 	sha256sums = SKIP
 	sha256sums = b2308f25c5e6ad330342fc365056d7aebfbba09b833e3be6fb6283061709b6a0
 	sha256sums = 2f310081357996b7d3bf813e63d07c0fc04d6724adbfbd1beeb554e9476e2e4c
 	sha256sums = d1310321bf07491658e83087a6ddb0011738fa17a1dc3275d6d5c6907eaf3df8
 	sha256sums = ede5e054c73eab9aa71285bb3a16c1f2f0e4fdc0d4645fe13912ff9489865bee
 	sha256sums = 1f0c44a4998ed239a3d77e3028b98b6f2c28a95e9bb4b8557523cc8f12ffba34
+	sha256sums = eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3
 
 pkgname = sagemath-git
