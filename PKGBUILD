@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mini
-pkgver=5.15.6
+pkgver=5.15.8
 pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
@@ -102,7 +102,7 @@ validpgpkeys=(
 )
 b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
         'SKIP'
-        'ed3eb640ae8617ae726b9d98f3b17ab1602f733e228970826e4a34cb7e466b61ead5371f51e6bc1fc75bb9e468cfeca66c6bca21731f25b53decc52eb59ecb3e'
+        '0f431804d406c4bbb09c44826fe1018b0bca94018337b73387d44ff3e25e6b90e2ec10cf9935847786e4dac6e1523e8e7daeaedb4f854d20a155bd13b29a0c72'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
         '4b6759fae0abc440292b310aed12bd12bbfbc172f968572ee9b8a9164c844b3f2a12f81b1fdf5ed86d75403f0c5be5d57933292e22c2973ef14f481bf78a3f7e')
 
