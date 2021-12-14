@@ -12,7 +12,7 @@ makedepends=('git' 'gulp' 'nvm' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=('cumulonimbus')
-source=($pkgname::git+$url.git)
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 # For the Node.js version used by CPod, see file .travis.yml ("dist:" and "node_js:")
