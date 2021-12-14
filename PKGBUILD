@@ -5,7 +5,7 @@ _project=ots-python
 _pyname=opentype-sanitizer
 pkgname=python-$_pyname
 pkgver=8.1.4.post3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wheels for the OpenType Sanitizer'
 arch=(any)
 url="https://github.com/googlefonts/$_project"
@@ -28,7 +28,6 @@ prepare () {
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
