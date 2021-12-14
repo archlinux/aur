@@ -8,7 +8,7 @@
 pkgname=mathics
 _pkgname=Mathics3
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
