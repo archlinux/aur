@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-make-git
 pkgver=r43.716c294
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Makefile grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/alemuller/tree-sitter-make"
