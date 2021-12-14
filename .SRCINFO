@@ -1,7 +1,7 @@
 pkgbase = python-gbinder
 	pkgdesc = Python bindings for libgbinder
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erfanoabdi/gbinder-python
 	arch = x86_64
 	arch = i686
