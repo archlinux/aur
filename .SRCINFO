@@ -1,7 +1,7 @@
 pkgbase = python-bluezero
 	pkgdesc = Python library for Bluetooth Low Energy (BLE) on Linux
 	pkgver = 0.6.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ukBaz/python-bluezero
 	arch = any
 	license = MIT
@@ -14,4 +14,3 @@ pkgbase = python-bluezero
 	sha256sums = d94f0672b1de3ff0040801538143fe9a42c501d8db79bcd183c9e051b8da83bc
 
 pkgname = python-bluezero
-

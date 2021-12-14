@@ -2,7 +2,7 @@
 pkgname=python-bluezero
 _pypi_pkgname=bluezero
 pkgver=0.6.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Python library for Bluetooth Low Energy (BLE) on Linux"
 arch=(any)
 url="https://github.com/ukBaz/python-bluezero"
