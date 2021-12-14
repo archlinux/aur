@@ -2,22 +2,22 @@
 
 _pkgname=avdump3
 pkgname=avdump3-bin
-pkgver=8188_beta
-pkgrel=2
+pkgver=8293_stable
+pkgrel=1
 pkgdesc='AniDB video/audio codec identification utility (command line version)'
 arch=('any')
 url='https://wiki.anidb.net/Avdump3'
 license=('MIT' 'unknown')
-depends=('dotnet-runtime-3.1')
+depends=('dotnet-runtime')
 makedepends=('unzip')
 provides=('avdump3')
 conflicts=('avdump3')
 options=('!strip')
-source=("http://static.anidb.net/client/${_pkgname}/${_pkgname}_${pkgver}.zip"
+source=("https://cdn.anidb.net/client/${_pkgname}/${_pkgname}_${pkgver}.zip"
         "${_pkgname}_LICENSE-MIT::https://raw.githubusercontent.com/DvdKhl/AVDump3/master/LICENSE"
         "${_pkgname}.sh")
 noextract=("${_pkgname}_${pkgver}.zip")
-sha256sums=('71eea7ca81733c2115eabe122c3b6105cc33419eefb0e45730039d00eae553dd'
+sha256sums=('6689420d7073c57d9faf19764e2a92f53c84d3ea66be402fd75e5419e2f0b38f'
             '97cb91cadbde7356e309613e2ed99cffcaf323197285d089e94dc5b6adbb603c'
             '3e3ebf6e5bfc3a1253b4248c1737063287c87b27d1ac2a93f9673bf32bae2991')
 
