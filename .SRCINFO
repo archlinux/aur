@@ -1,0 +1,20 @@
+pkgbase = freecad-weekly-appimage
+	pkgdesc = A general purpose 3D CAD modeler
+	pkgver = 0.20_26620
+	pkgrel = 1
+	url = https://www.freecadweb.org/
+	arch = x86_64
+	license = LGPL
+	depends = fuse2
+	provides = freecad
+	conflicts = freecad
+	noextract = freecad-0.20_26620.AppImage
+	options = !strip
+	source = freecad-0.20_26620.AppImage::https://github.com//FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-26620-Linux-Conda_glibc2.12-x86_64.AppImage
+	source = freecad.sh
+	source = freecad_conda.desktop.patch
+	sha256sums = SKIP
+	sha256sums = 0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674
+	sha256sums = 69a5439b5c24a6754d6b10a724aa8c0472d32010f9a8d8358a48df5d8be6a463
+
+pkgname = freecad-weekly-appimage
