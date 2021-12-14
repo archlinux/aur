@@ -5,7 +5,7 @@
 
 pkgname=pacemaker-git
 _pkgname=pacemaker
-pkgver=2.0.5.r0.gba59be712
+pkgver=2.1.2.r0.gada5c3b36
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('pssh: for use with some tools'
             'booth-git: for geo-clustering')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}")
-source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git#branch=2.0"
+source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git#branch=2.1"
         'crm_report.in')
 md5sums=('SKIP'
          '07f26ba3fff0749cc5bc5b4da154611d')
@@ -33,8 +33,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  autoreconf -fiv
-# ./autogen.sh
+  ./autogen.sh
 }
 
 build() {
@@ -57,7 +56,8 @@ build() {
     --with-cibsecrets \
     --without-profiling \
     --without-coverage \
-    --with-configdir=/etc/pacemaker
+    --with-configdir=/etc/pacemaker \
+    --with-initdir=/etc/init.d
 #   --with-nagios-plugin-dir=DIR
 #   --with-nagios-metadata-dir=DIR
   # Fight unused direct deps
@@ -68,9 +68,12 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="${pkgdir}" install
+  chown root.root "${pkgdir}"/etc/pacemaker
+  chmod 0755 "${pkgdir}"/etc/pacemaker
   cd "$srcdir"
   install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
   cat>"$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"<<-EOF
+		d /etc/pacemaker              0750 root      haclient
 		d /var/log/pacemaker          0755 hacluster haclient
 		d /var/lib/pacemaker          0770 hacluster haclient
 		d /var/lib/pacemaker/blackbox 0770 hacluster haclient
