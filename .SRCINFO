@@ -1,7 +1,7 @@
 pkgbase = python-dataclasses
 	pkgdesc = Implementation of PEP 557, Data Classes.
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/dataclasses/
 	arch = any
 	license = GPL

@@ -3,7 +3,7 @@
 pkgname=python-dataclasses
 _name=dataclasses
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Implementation of PEP 557, Data Classes."
 arch=('any')
 url="https://pypi.org/project/dataclasses/"
