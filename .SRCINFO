@@ -1,7 +1,7 @@
 pkgbase = python-datashader
 	pkgdesc = Quickly and accurately render even the largest data
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://datashader.org
 	arch = any
 	license = custom

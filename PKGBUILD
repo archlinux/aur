@@ -4,7 +4,7 @@
 _base=datashader
 pkgname=python-${_base}
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Quickly and accurately render even the largest data"
 arch=('any')
 url="https://${_base}.org"
