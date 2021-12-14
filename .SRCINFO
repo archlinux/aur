@@ -1,7 +1,7 @@
 pkgbase = python-yep
 	pkgdesc = A module for profiling compiled extensions
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/yep/
 	arch = any
 	license = BSD
