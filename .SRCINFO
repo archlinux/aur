@@ -1,7 +1,7 @@
 pkgbase = python-gmsh_interop
 	pkgdesc = Interoperability with Gmsh for Python
 	pkgver = 2021.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://documen.tician.de/gmsh_interop
 	arch = x86_64
 	license = MIT
