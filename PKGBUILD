@@ -5,7 +5,7 @@
 
 pkgname=python-pex
 pkgver=2.1.56
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc='Generates executable Python environments'
 url='https://github.com/pantsbuild/pex'

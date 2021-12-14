@@ -1,7 +1,7 @@
 pkgbase = python-pex
 	pkgdesc = Generates executable Python environments
 	pkgver = 2.1.56
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pantsbuild/pex
 	changelog = CHANGES.rst
 	arch = any
