@@ -9,8 +9,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.17.1_0.10.2-5"
-_minecraft_ver_latest="1.17.1"
+_ver="1.18.1_0.10.2-1"
+_minecraft_ver_latest="1.18.1"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
