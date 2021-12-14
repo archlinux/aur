@@ -1,7 +1,7 @@
 pkgbase = python-vapory
 	pkgdesc = Photo-realistic 3D rendering with Python and POV-Ray
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zulko/Vapory
 	arch = any
 	license = MIT
