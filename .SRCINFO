@@ -1,7 +1,7 @@
 pkgbase = spolyrics
 	pkgdesc = Displays the lyrics to the currently playing song
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glebliutsko/spolyrics
 	arch = any
 	license = MIT
@@ -18,4 +18,3 @@ pkgbase = spolyrics
 	md5sums = 7d831c4e18ffe6484d5817d250032b2d
 
 pkgname = spolyrics
-
