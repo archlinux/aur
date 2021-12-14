@@ -1,7 +1,7 @@
 pkgbase = python-outdated
 	pkgdesc = Check if a version of a PyPI package is outdated
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexmojaki/outdated
 	arch = any
 	license = MIT
