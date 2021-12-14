@@ -3,7 +3,7 @@
 
 pkgname=python-pyreadstat
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Reads sas, spss and stata files into Pandas data frames."
 license=('Apache' 'MIT')
 arch=('i686' 'x86_64')
