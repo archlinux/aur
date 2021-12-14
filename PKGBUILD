@@ -3,7 +3,7 @@
 _pyname=uharfbuzz
 pkgname=python-$_pyname
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Streamlined Cython bindings for the harfbuzz shaping engine'
 arch=(x86_64)
 url="https://github.com/harfbuzz/$_project"
@@ -28,6 +28,5 @@ package() {
 
 package() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
