@@ -1,7 +1,7 @@
 pkgbase = python-pyspotify
 	pkgdesc = A Python Spotify library
 	pkgver = 2.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pyspotify.mopidy.com/
 	arch = any
 	license = APACHE
@@ -15,4 +15,3 @@ pkgbase = python-pyspotify
 	sha256sums = 6765235cc6469c619689cdb051ad0e0c9077baaafc7cb156aae5cb14f1c43ff8
 
 pkgname = python-pyspotify
-
