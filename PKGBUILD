@@ -2,12 +2,12 @@
 #Contributor: Andrew Bueide <abueide@protonmail.com>
 pkgname="gdx-texture-packer-gui"
 pkgver=4.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A gui for the command line gdx-texturepacker"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/crashinvaders/gdx-texture-packer-gui"
 license=('Apache')
-depends=('java-runtime' 'unzip')
+depends=('java-runtime')
 
 sha256sums=('179e1c377d9953b322ef4f150658b814f880f6c2303cb06c8993146c61b3e13f')
 
