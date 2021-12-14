@@ -1,0 +1,20 @@
+pkgbase = moonlight-qt-bin
+	pkgdesc = moonlight-qt bin from appimage
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://github.com/moonlight-stream/moonlight-qt
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = ffmpeg
+	depends = sdl2_ttf
+	depends = hicolor-icon-theme
+	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs
+	provides = moonlight-qt
+	conflicts = moonlight-qt
+	source = moonlight-qt-3.1.4.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v3.1.4/Moonlight-3.1.4-x86_64.AppImage
+	sha256sums = 6ce30a2b1014f072b2462055b55b1f4367625423e69a62c962421bdda38990fd
+
+pkgname = moonlight-qt-bin
