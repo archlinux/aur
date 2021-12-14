@@ -2,7 +2,7 @@
 _base=spatialpandas
 pkgname=python-${_base}
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pandas extension arrays for spatial/geometric operations"
 arch=('any')
 url="https://github.com/holoviz/${_base}"

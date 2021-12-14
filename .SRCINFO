@@ -1,7 +1,7 @@
 pkgbase = python-spatialpandas
 	pkgdesc = Pandas extension arrays for spatial/geometric operations
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/holoviz/spatialpandas
 	arch = any
 	license = custom:BSD-2-clause
