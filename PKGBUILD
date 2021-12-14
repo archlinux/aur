@@ -13,7 +13,7 @@ depends=(python)
 makedepends=(python-pip)
 options=(!strip)
 _py=cp310
-_wheel="${_pkgname/-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+_wheel="${_pkgname/-/_}-$pkgver-$_py-$_py-manylinux_2_17_$CARCH.manylinux2014_$CARCH.whl"
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$_wheel")
 sha256sums=('f6b518fca15b4456ddf99062f334c0333a5165be976fb0c9e071af29128583f7')
 
