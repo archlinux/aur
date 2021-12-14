@@ -1,7 +1,7 @@
 pkgbase = python-mmdetection
 	pkgdesc = OpenMMLab Detection Toolbox and Benchmark
 	pkgver = 2.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-mmlab/mmdetection
 	arch = any
 	license = Apache
