@@ -3,7 +3,7 @@
 _base=flake8-builtins
 pkgname=python-${_base}
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Check for python builtins being used as variables or parameters"
 arch=('any')
 url="https://github.com/gforcada/${_base}"
