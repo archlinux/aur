@@ -1,7 +1,7 @@
 pkgbase = nwg-panel
 	pkgdesc = GTK3-based panel for sway window manager
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-panel
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = nwg-panel
 	depends = python-i3ipc
 	depends = python-netifaces
 	depends = python-psutil
-	depends = python-pybluez
+	depends = bluez-utils
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = light
