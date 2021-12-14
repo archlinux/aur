@@ -1,7 +1,7 @@
 pkgbase = python-pyfvm
 	pkgdesc = Finite volume discretization tools for Python
 	pkgver = 0.3.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nschloe/pyfvm
 	arch = x86_64
 	license = GPL3
