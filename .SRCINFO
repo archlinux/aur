@@ -1,22 +1,21 @@
 pkgbase = shortwave-bin-hack
-	pkgdesc = Find and listen to internet radio stations. This pkg uses the flatpak version and intercepts libc functions to make it work Currently it is broken
-	pkgver = 1570577
-	pkgrel = 5
+	pkgdesc = Find and listen to internet radio stations. This pkg uses a fork and some hacks to make it work, checkout (https://aur.archlinux.org/packages/shortwave-bin-hack/) for more infos.
+	pkgver = 1673135
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Shortwave/
 	arch = any
 	license = GPL
 	makedepends = cargo
-	makedepends = ostree
 	depends = gst-plugins-bad
 	depends = libadwaita
 	depends = libsoup
 	provides = shortwave
 	conflicts = shortwave
-	source = https://gitlab.gnome.org/World/Shortwave/-/jobs/1570577/artifacts/download?file_type=archive
+	source = https://gitlab.gnome.org/sigmaSd/Shortwave/-/jobs/1673135/artifacts/download
 	source = fix_flatpak.rs
 	source = shortwave
-	sha256sums = fefe532b4896b7d03ed0b2d2bab3aa429af19944ef4fb105490b8a0345cafbd9
-	sha256sums = c9f1bc05e916ab429ffa2b18cca2f63e7cad4ce2a5dfa9c99d19c6db3d4fb4de
-	sha256sums = bdd3140b737646d38e801d7cfa2092e47126b968e32ffe32250c9046ddc76a6a
+	sha256sums = c5a02e584f9152d0735d38174e0fa8c1e5a58d4a8f6517b20c846a95740c4c15
+	sha256sums = 10356a1c427c639ec94dece3ab0c0173b81c075df30b55c4b93347932f3b22f5
+	sha256sums = 58f061f909b6a8eff030ba1058a3c70c3ca3680ed13b865a118671388a3f3a9d
 
 pkgname = shortwave-bin-hack

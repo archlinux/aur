@@ -1,49 +1,46 @@
 # Maintainer: sigmasd
 
 pkgname=shortwave-bin-hack
-pkgver=1570577
-pkgrel=5
+pkgver=1673135
+pkgrel=1
 pkgdesc="Find and listen to internet radio stations.
-This pkg uses the flatpak version and intercepts libc functions to make it work
-Currently it is broken"
+This pkg uses a fork and some hacks to make it work, checkout (https://aur.archlinux.org/packages/shortwave-bin-hack/) for more infos."
 arch=(any)
 url="https://gitlab.gnome.org/World/Shortwave/"
 license=(GPL)
 provides=("shortwave")
 conflicts=("shortwave")
-makedepends=(cargo ostree)
+makedepends=(cargo)
 depends=('gst-plugins-bad' 'libadwaita' 'libsoup')
-source=("$url-/jobs/$pkgver/artifacts/download?file_type=archive" "fix_flatpak.rs" "shortwave")
-sha256sums=('fefe532b4896b7d03ed0b2d2bab3aa429af19944ef4fb105490b8a0345cafbd9'
-            'c9f1bc05e916ab429ffa2b18cca2f63e7cad4ce2a5dfa9c99d19c6db3d4fb4de'
-            'bdd3140b737646d38e801d7cfa2092e47126b968e32ffe32250c9046ddc76a6a')
+# use fork in order to comment out gtk4.6 usage
+source=("https://gitlab.gnome.org/sigmaSd/Shortwave/-/jobs/$pkgver/artifacts/download" "fix_flatpak.rs" "shortwave")
+
+sha256sums=('c5a02e584f9152d0735d38174e0fa8c1e5a58d4a8f6517b20c846a95740c4c15'
+            '10356a1c427c639ec94dece3ab0c0173b81c075df30b55c4b93347932f3b22f5'
+            '58f061f909b6a8eff030ba1058a3c70c3ca3680ed13b865a118671388a3f3a9d')
+
 
 prepare() {
     # Build flatpak-fix dylib
-    rustc --crate-type dylib fix_flatpak.rs
+    rustc -O --crate-type cdylib fix_flatpak.rs
 }
 
 package() {
-  # Extract flatpak
-  ostree init --repo=shortwave_repo
-  ostree --repo=shortwave_repo config set core.min-free-space-percent 0
-  ostree static-delta apply-offline --repo=shortwave_repo shortwave-dev.flatpak
-  commit=$(find -name "*commit" | cut -d/ --output-delimiter= -f4- | tr -d '\0' | xargs -i basename {} .commit)
-  ostree --repo=shortwave_repo checkout -U $commit shortwave_build
-
   # Entry point
-  install -Dm755 "$srcdir/shortwave_build/files/bin/shortwave" "$pkgdir/usr/share/shortwave/shortwave"
+  install -Dm755 "$srcdir/app/files/bin/shortwave" "$pkgdir/usr/share/shortwave/shortwave"
 
-  # Extra (desktop,icons)
-  rm -rf "$srcdir/shortwave_build/export/share/dbus-1"
-  sed -i "s/DBusActivatable=true//" "$srcdir/shortwave_build/export/share/applications/de.haeckerfelix.Shortwave.Devel.desktop"
-  cp -r "$srcdir/shortwave_build/export/share/" "$pkgdir/usr/"
+  # Cleanup pkg and install Extra (desktop,icons)
+  sed "s%Exec=/app%Exec=/usr%" -i "$srcdir/app/files/share/dbus-1/services/de.haeckerfelix.Shortwave.service"
+  rm "$srcdir/app/files/share/applications/mimeinfo.cache"
+  rm "$srcdir/app/files/share/glib-2.0/schemas/gschemas.compiled"
+  rm "$srcdir/app/files/share/icons/hicolor/icon-theme.cache"
+  cp -r "$srcdir/app/files/share/" "$pkgdir/usr/"
 
   # Actual program
-  install -m755 "$srcdir/shortwave_build/files/share/shortwave/de.haeckerfelix.Shortwave.Devel.gresource" "$pkgdir/usr/share/shortwave/"
   install -m755 "$srcdir/libfix_flatpak.so" "$pkgdir/usr/share/shortwave/"
+  install -m755 "$srcdir/app/files/lib/libshumate-0.0.so.0.0" "$pkgdir/usr/share/shortwave/libshumate-0.0.so.0"
   install -Dm755 "$srcdir/shortwave" "$pkgdir/usr/bin/shortwave"
 
   # Gschema
-  install -Dm755 "$srcdir/shortwave_build/files/share/glib-2.0/schemas/de.haeckerfelix.Shortwave.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/de.haeckerfelix.Shortwave.gschema.xml"
+  install -Dm755 "$srcdir/app/files/share/glib-2.0/schemas/de.haeckerfelix.Shortwave.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/de.haeckerfelix.Shortwave.gschema.xml"
 }

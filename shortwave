@@ -1,2 +1,2 @@
 #!/bin/bash
-LD_PRELOAD=/usr/share/shortwave/libfix_flatpak.so /usr/share/shortwave/shortwave
+LD_PRELOAD="/usr/share/shortwave/libfix_flatpak.so /usr/share/shortwave/libshumate-0.0.so.0" /usr/share/shortwave/shortwave
