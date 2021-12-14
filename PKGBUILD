@@ -1,5 +1,4 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=accupy
 pkgname=python-${_base}
 pkgdesc="Accurate sums and dot products for Python"
