@@ -1,7 +1,7 @@
 pkgbase = multimc-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances. Includes old name/icons and ability to sign in with a Microsoft account.
 	pkgver = 0.6.14.r4.g7d047f92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MultiMC/Launcher
 	arch = i686
 	arch = x86_64

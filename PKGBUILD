@@ -5,7 +5,7 @@
 _pkgname=multimc
 pkgname=${_pkgname}-git
 pkgver=0.6.14.r4.g7d047f92
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances. Includes old name/icons and ability to sign in with a Microsoft account."
 arch=('i686' 'x86_64')
 url="https://github.com/MultiMC/Launcher"
