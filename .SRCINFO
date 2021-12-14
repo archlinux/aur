@@ -1,7 +1,7 @@
 pkgbase = set-unicoderange
 	pkgdesc = automatically set OpenType OS/2 table Unicode range bit flags in fonts
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/source-foundry/set-unicoderange
 	arch = any
 	license = Apache
@@ -11,4 +11,3 @@ pkgbase = set-unicoderange
 	sha256sums = 330cc50d36558b86f685a6f3fbea1b3d31990bf06bb7c9e5ad9fadf64d649bd1
 
 pkgname = set-unicoderange
-
