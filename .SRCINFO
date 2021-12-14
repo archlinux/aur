@@ -1,0 +1,12 @@
+pkgbase = pyxis-manage
+	pkgdesc = The pyxis package manager
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/chordtoll/pyxis-manage
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = pyxis-manage-0.2.1.tar.gz::https://static.crates.io/crates/pyxis-manage/pyxis-manage-0.2.1.crate
+	sha256sums = f00a5eaa0bfa5165cda71b8057a204c12dba6de7dcc7a92b7590fb56e4fde613
+
+pkgname = pyxis-manage
