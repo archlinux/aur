@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay
-pkgver=2021.07.0
+pkgver=2021.07.1
 pkgrel=1
 pkgdesc="Flowee Payment solution"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('boost' 'cmake' 'flowee>=2021.06.0')
 provides=('flowee-pay')
 source=("https://gitlab.com/FloweeTheHub/pay/-/archive/$pkgver/pay-$pkgver.tar.gz"
     "https://flowee.org/products/pay/blockheaders")
-sha256sums=('0cd5c1d7717d6e1fa57492ed730523e682ac8e81af95cf9b8b54a1033b12696a'
+sha256sums=('cbf5c57fa84169f156f6e01daa05d37bcf3a7a03e40c5abd1c9499a993d864ef'
     '8c2dfde998b4472aea25daa1e4bfe7bcca0b765145ee740bd8cfb0152400abce')
 
 build() {
