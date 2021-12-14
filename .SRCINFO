@@ -1,7 +1,7 @@
 pkgbase = python-multiprocess
 	pkgdesc = better multiprocessing and multithreading in python
 	pkgver = 0.70.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uqfoundation/multiprocess
 	arch = any
 	license = BSD
