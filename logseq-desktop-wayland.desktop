@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.5
-Name=Logseq Desktop (Wayland)
-Comment=A privacy-first, open-source platform for knowledge sharing and management. (Wayland)
-Exec=logseq --enable-features=UseOzonePlatform --ozone-platform=wayland
-Terminal=false

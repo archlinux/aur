@@ -1,8 +1,8 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.4.5.r97.ebfb68f7
+pkgver=0.5.4.r1.d7b1ce51
 pkgrel=1
-pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (supports Wayland)"
+pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=("AGPL3")
@@ -14,12 +14,12 @@ source=(
     "${pkgname}::git+https://github.com/logseq/logseq"
     "build.patch"
     "logseq-desktop.desktop"
-    "logseq-desktop-wayland.desktop")
+)
 md5sums=(
     "SKIP"
     "101969068bcc8bc7806dc96428fcd2a1"
     "3a5ebb330fd33e59f1cc56690df1995d"
-    "724d351804bbe2074334a8e529462d0a")
+)
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -93,5 +93,4 @@ package() {
     cd "${srcdir}"
     mkdir -p "${pkgdir}/usr/share/applications"
     install -Dm644 "logseq-desktop.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "logseq-desktop-wayland.desktop" -t "${pkgdir}/usr/share/applications"
 }
