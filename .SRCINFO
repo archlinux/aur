@@ -1,7 +1,7 @@
 pkgbase = python-sockjs-tornado
 	pkgdesc = SockJS python server implementation on top of Tornado framework
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/mrjoes/sockjs-tornado/
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = python-sockjs-tornado
 	sha256sums = 02ff25466b3a46b1a7dbe477340b042770ac078de7ea475a6285a28a75eb1fab
 
 pkgname = python-sockjs-tornado
-
