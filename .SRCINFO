@@ -1,7 +1,7 @@
 pkgbase = python-pytest-codeblocks
 	pkgdesc = Test code blocks in your READMEs
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pytest-codeblocks
 	arch = any
 	license = MIT
