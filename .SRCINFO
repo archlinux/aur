@@ -1,7 +1,7 @@
 pkgbase = python-plum
 	pkgdesc = Pack/Unpack Memory
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plum-py.readthedocs.io/en/latest/
 	arch = any
 	license = MIT
