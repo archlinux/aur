@@ -1,7 +1,7 @@
 pkgbase = python-vttlib
 	pkgdesc = Dump, merge and compile Visual TrueType data in UFO3 with FontTools
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/daltonmaag/vttLib
 	arch = any
 	license = MIT
