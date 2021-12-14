@@ -3,7 +3,7 @@
 _name=termplotlib
 pkgname=python-${_name}
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Plotting on the command line"
 arch=('any')
 url="https://github.com/nschloe/${_name}"

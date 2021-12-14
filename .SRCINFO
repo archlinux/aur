@@ -1,7 +1,7 @@
 pkgbase = python-termplotlib
 	pkgdesc = Plotting on the command line
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/termplotlib
 	arch = any
 	license = GPL
