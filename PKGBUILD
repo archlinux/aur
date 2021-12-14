@@ -1,9 +1,9 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
-# shellcheck disable=SC2034,SC2164
+# shellcheck disable=SC2034,SC2164,SC2154
 
 pkgname=lando-bin
-pkgver=3.4.2
+pkgver=3.6.0
 pkgrel=2
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://docs.lando.dev/"
 license=('GPL')
 depends=('docker' 'docker-compose')
 source_x86_64=("$pkgname-$pkgver.deb::https://github.com/lando/lando/releases/download/v$pkgver/lando-x64-v$pkgver.deb")
-sha256sums_x86_64=('54463e75b2ff7d633882f5e40147024f9824bd652eb69bf85b9f992a09ff47fb')
+sha256sums_x86_64=('5a7dc66b89cfbfcf697833a708dc7a940791c3d5a4a0262a7b47db8e86681534')
 conflicts=("lando")
 provides=("lando")
 
