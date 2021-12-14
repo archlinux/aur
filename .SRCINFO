@@ -1,7 +1,7 @@
 pkgbase = python-codepy
 	pkgdesc = Generate and execute native code at run time, from Python
 	pkgver = 2019.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://documen.tician.de/codepy
 	arch = x86_64
 	license = MIT
