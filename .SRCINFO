@@ -1,7 +1,7 @@
 pkgbase = python-ufo-extractor
 	pkgdesc = Tools for extracting data from font binaries into UFO objects
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/robotools/extractor
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-ufo-extractor
 	makedepends = python-setuptools
 	depends = python
 	depends = python-fonttools
-	source = python-ufo-extractor-0.4.1.tar.gz::https://github.com/robotools/extractor/archive/0.4.1.tar.gz
+	source = extractor-0.4.1.tar.gz::https://github.com/robotools/extractor/archive/0.4.1.tar.gz
 	sha256sums = 80cdb49691cc7c6ee4c4571d45d7d8430188f9cb4566087de0927d1949d4e937
 
 pkgname = python-ufo-extractor
