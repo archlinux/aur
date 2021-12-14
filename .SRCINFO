@@ -1,7 +1,7 @@
 pkgbase = python-matadi
 	pkgdesc = Material Definition with Automatic Differentiation
 	pkgver = 0.0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adtzlr/matadi
 	arch = any
 	license = GPL3
