@@ -1,0 +1,24 @@
+pkgbase = pyload-ng
+	pkgdesc = The free and open-source Download Manager written in pure Python
+	pkgver = 0.5.0b2.dev9
+	pkgrel = 1
+	url = https://pyload.net/
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python-semver
+	depends = python-pycurl
+	depends = python-js2py
+	depends = python-filetype
+	depends = python-cryptography
+	depends = python-bitmath
+	depends = python-flask-themes2
+	depends = python-flask-session
+	depends = python-flask-compress
+	depends = python-flask-caching
+	depends = python-flask-babel
+	depends = python-cheroot
+	source = pyload-ng-0.5.0b2.dev9.tar.gz::https://files.pythonhosted.org/packages/source/p/pyload-ng/pyload-ng-0.5.0b2.dev9.tar.gz
+	sha256sums = d5696d660b666f0676d5fdcfbb0040346a46e1177539202b7ff8a39d3d247b2b
+
+pkgname = pyload-ng
