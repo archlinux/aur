@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Sandomirskii <complover116 at gmail dot com>
 pkgname=zfs_autobackup
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic ZFS backup tool"
 arch=('any')
 url="https://github.com/psy0rz/zfs_autobackup"
