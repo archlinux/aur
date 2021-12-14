@@ -5,7 +5,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+: "${_makenconfig:=""}"
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -15,7 +15,7 @@ _makenconfig=
 # This PKGBUILD reads the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+: "${_localmodcfg:=""}"
 
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
@@ -62,21 +62,21 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
-_subarch=
+: "${_subarch:=""}"
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
 # through the trouble of customizing your config options.  NOT recommended when
 # a new kernel is released, but again, convenient for package bumps.
-_use_current=
+: "${_use_current:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=220
+_minor=221
 _srcname=linux-${_major}
-_clr=${_major}.219-232
+_clr=${_major}.220-233
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -86,7 +86,7 @@ url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210914'
+_gcc_more_v='20211114'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -350,9 +350,9 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'c73bc8aca45d9c9dc42ab7901f1dd8ead981095226aac1f6dd66828cd1d391f0'
+            '04fdda7bb10b8e044602c5ea19c533aa5f876f4bee50ac2b9f076f8eaee188c2'
             'SKIP'
-            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611')
+            'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
