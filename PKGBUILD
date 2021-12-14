@@ -5,7 +5,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+: "${_makenconfig:=""}"
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -15,7 +15,7 @@ _makenconfig=
 # This PKGBUILD reads the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+: "${_localmodcfg:=""}"
 
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
@@ -62,13 +62,13 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
-_subarch=
+: "${_subarch:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=73
-_rtpatchver=54
+_minor=83
+_rtpatchver=58
 _clr=${_major}.59-83
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -80,7 +80,7 @@ url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210914'
+_gcc_more_v='20211114'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
@@ -324,11 +324,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('edb228032b23efa14077a68d968bc5b0d4026c1d1ef8bb958547a87ccb030e76'
+sha256sums=('ef259a43f33ddb56001283f4f4e50af29b8a48fa066aed7371a90ebf38c29b70'
             'SKIP'
-            'b3daf450079e9cf4d95a6700a380727015670342129618c0f9e9a6915caaf86b'
+            '3c795ad790b3622244f327c4c19607f8ec8ee9626017576369645ae8ff9132d8'
             'SKIP'
-            'b70720e7537a0b6455edaeb198d52151fb3b3c3a91631b8f43d2e71b694da611')
+            'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
