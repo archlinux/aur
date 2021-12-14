@@ -1,7 +1,7 @@
 pkgbase = dune-alugrid
 	pkgdesc = An adaptive, loadbalancing, unstructured implementation of the DUNE grid interface supporting either simplices or cubes
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dune-project.org/modules/dune-alugrid
 	arch = x86_64
 	license = GPL
