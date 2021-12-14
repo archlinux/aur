@@ -1,14 +1,13 @@
 pkgbase = geany-openscad
 	pkgdesc = Syntax highlighting and auto-completion for OpenSCAD files in Geany.
-	pkgver = 20140305
-	pkgrel = 2
+	pkgver = 20140503
+	pkgrel = 1
 	url = http://www.thingiverse.com/thing:263620
 	install = geany-openscad.install
 	arch = any
 	license = CCPL:by-sa
 	depends = geany
 	source = http://www.thingiverse.com/download:479705
-	md5sums = b97833567bdc0e084ae226ca7dc0a722
+	sha256sums = ceb2eb9dd54a879b93e6ba7645aecd668ff183d0705d07a9b863fdfa4560dac6
 
 pkgname = geany-openscad
-
