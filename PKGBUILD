@@ -5,7 +5,7 @@
 
 pkgname='python-yowsup'
 pkgdesc='The open source cross platform Whatsapp library powering Wazapp - Python 2'
-pkgver=3.2.3
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="The open source cross platform Whatsapp library powering Wazapp"
 url="https://github.com/tgalal/yowsup"
@@ -16,7 +16,7 @@ makedepends=('python-setuptools' 'python-six')
 provide=('python-yowsup')
 conflicts=('yowsup-client-git' 'python-yowsup-git')
 source=("${pkgname}-${pkgver}.tag.gz::https://github.com/tgalal/yowsup/archive/v${pkgver}.tar.gz")
-sha512sums=('a1be36df5dc632071385cf0e252a208efb8982df98966d2c5a7b7558c626112e1ac2688be25fb6de1db9e9e04d36ab96784e589aeb90fcc6c6770edac791e568')
+sha512sums=('304409f02aa3720b0f70a83fe4dbe288fa1c5659642878d7bd1354359524a66c39b9f5baa9899224497f61f974d9b64ba67e07d866fda2589413070bb9ef1aad')
 
 prepare() {
     sed -i "s/six==1.10/six>=1.10/" yowsup-${pkgver}/setup.py
