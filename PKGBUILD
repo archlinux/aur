@@ -5,14 +5,14 @@
 _pkgname=devlauncher
 pkgname=${_pkgname}-git
 pkgver=0.6.14.r4.g7d047f92
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/MultiMC/Launcher"
 license=('Apache')
 depends=('java-runtime' 'libgl' 'qt5-base' 'zlib')
 provides=('devlauncher')
-conflicts=('devlauncher')
+conflicts=('devlauncher' 'multimc')
 makedepends=('cmake' 'git' 'java-environment')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
