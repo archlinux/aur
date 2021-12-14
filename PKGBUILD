@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57964.a4067bf75ae
+pkgver=r59044.2fa799fc5d6
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -82,6 +82,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
+  cmake-fix-building-internal-spdlog.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/20674.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -106,7 +107,8 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '441123be124ad851efa30bda0d828a764ebaf79ba6692a6e5904000b33818e9de78c3a964037ac93ef562890980c58169141e55354dce86857c02bcd917150d6'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
+        'aef16c7f695daf71dfc70ecfdb5b0bb53c62576c5ce83194056b2037bc99d3812405f1ab4545b429d5bf65a1a69b93fe2517cf2477d7f545766bfda44052d9d8')
 
 pkgver() {
   cd "$_gitname"
@@ -120,6 +122,9 @@ prepare() {
   cd "$_gitname"
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+
+  # fix spdlog error
+  patch -Np1 -i ../cmake-fix-building-internal-spdlog.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
