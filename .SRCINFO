@@ -1,7 +1,7 @@
 pkgbase = dune-functions
 	pkgdesc = Abstractions for functions and discrete function space bases
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dune-project.org/modules/dune-functions
 	arch = x86_64
 	license = LGPL3
