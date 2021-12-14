@@ -2,7 +2,7 @@
 
 pkgname=shortwave-bin-hack
 pkgver=1673135
-pkgrel=2
+pkgrel=3
 pkgdesc="Find and listen to internet radio stations.
 This pkg uses a fork and some hacks to make it work, checkout (https://aur.archlinux.org/packages/shortwave-bin-hack/) for more infos."
 arch=(any)
@@ -16,7 +16,7 @@ depends=('gst-plugins-bad' 'libadwaita' 'libsoup')
 source=("https://gitlab.gnome.org/sigmaSd/Shortwave/-/jobs/$pkgver/artifacts/download" "fix_flatpak.rs" "shortwave")
 
 sha256sums=('c5a02e584f9152d0735d38174e0fa8c1e5a58d4a8f6517b20c846a95740c4c15'
-            '7fabb61c7bf97396ced87e1e45064c38cdf8fde2f3f1f52030706293132f6843'
+            'be5ebc6f13a7ac2558ca80c8dcaa89f7a1118e9eb7b68515d2fdec80b90f1818'
             '58f061f909b6a8eff030ba1058a3c70c3ca3680ed13b865a118671388a3f3a9d')
 
 

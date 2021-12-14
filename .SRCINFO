@@ -1,7 +1,7 @@
 pkgbase = shortwave-bin-hack
 	pkgdesc = Find and listen to internet radio stations. This pkg uses a fork and some hacks to make it work, checkout (https://aur.archlinux.org/packages/shortwave-bin-hack/) for more infos.
 	pkgver = 1673135
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/World/Shortwave/
 	arch = any
 	license = GPL
