@@ -53,12 +53,12 @@ prepare() {
   patch -p1 < "${srcdir}/mmc-brand.patch"
 
   pushd ${srcdir}/MultiMC/bin
-  local token_asm=$(objdump -j '.text' --no-show-raw-insn -C --disassemble='Secrets::getMSAClientID(unsigned char)' MultiMC)
-  local token="$(grep -oP '[a-z0-9]{2}(?=,%r[89]d)' <<< ${token_asm} | tac | tr -d '\n')$(grep -oP '(push.+0x)\K[a-z0-9]{2}' <<< ${token_asm} | tac | tr -d '\n')"
-  token="${token:0:8}-${token:8:4}-${token:12:4}-${token:16:4}-${token:20}"
+  local client_id_asm=$(objdump -j '.text' --no-show-raw-insn -C --disassemble='Secrets::getMSAClientID(unsigned char)' MultiMC)
+  local client_id="$(grep -oP '[a-z0-9]{2}(?=,%r[89]d)' <<< ${client_id_asm} | tac | tr -d '\n')$(grep -oP '(push.+0x)\K[a-z0-9]{2}' <<< ${client_id_asm} | tac | tr -d '\n')"
+  client_id="${client_id:0:8}-${client_id:8:4}-${client_id:12:4}-${client_id:16:4}-${client_id:20}"
   popd
 
-  sed -i 's/""/"'"${token}"'"/g' notsecrets/Secrets.cpp
+  sed -i 's/""/"'"${client_id}"'"/g' notsecrets/Secrets.cpp
 
   git checkout 6a4130c9149deb029b496c81e3b874ad834c54b7 -- launcher/resources/{{OSX,flat,iOS,multimc,pe_{blue,colored,dark,light}}/scalable/multimc.svg,multimc/{32x32,128x128}/instances/infinity.png}
 
@@ -66,6 +66,8 @@ prepare() {
   do
     mv "$f/multimc.svg" "$f/launcher.svg"
   done
+
+  cp launcher/resources/multimc/scalable/launcher.svg notsecrets/logo.svg
 
   git submodule init
   git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
@@ -95,7 +97,7 @@ check() {
 package() {
   cd "${srcdir}/Launcher/build"
   make install DESTDIR="${pkgdir}"
-  install -D "${srcdir}/Launcher/launcher/package/ubuntu/multimc/opt/multimc/icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+  install -D "${srcdir}/Launcher/launcher/resources/multimc/scalable/launcher.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
   install -D "${srcdir}/application.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -D "${srcdir}/Launcher/build/libLauncher_quazip.so" "${pkgdir}/usr/lib/libLauncher_quazip.so"
   install -D "${srcdir}/Launcher/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
