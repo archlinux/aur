@@ -1,0 +1,15 @@
+pkgbase = napari-plugin-engine
+	pkgdesc = Napari plugin engine, fork of pluggy.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/napari/napari-plugin-engine
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-importlib-metadata
+	provides = python-napari-plugin-engine
+	source = https://files.pythonhosted.org/packages/source/n/napari-plugin-engine/napari-plugin-engine-0.2.0.tar.gz
+	sha256sums = fa926f869d70e0d652c005661948cd0c7fee5508ae17d437937f34f5287590b3
+
+pkgname = napari-plugin-engine
