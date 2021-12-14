@@ -1,7 +1,7 @@
 pkgbase = python-accupy
 	pkgdesc = Accurate sums and dot products for Python
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/accupy
 	arch = x86_64
 	license = GPL3
