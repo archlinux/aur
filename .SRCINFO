@@ -6,6 +6,7 @@ pkgbase = kdeplasma-applets-supergfxctl
 	arch = x86_64
 	license = MPL2
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = plasma-framework
 	depends = hicolor-icon-theme
 	depends = supergfxctl

@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/Jhyub/supergfxctl-plasmoid"
 license=('MPL2')
 depends=('plasma-framework' 'hicolor-icon-theme' 'supergfxctl')
-makedepends=('cmake')
+makedepends=('cmake' 'extra-cmake-modules')
 source=(
     "https://gitlab.com/Jhyub/supergfxctl-plasmoid/-/archive/v$pkgver/supergfxctl-plasmoid-v$pkgver.tar.gz"
 )
