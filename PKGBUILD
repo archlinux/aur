@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picopt
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi format lossless image optimizer that uses external tools"
 url="https://github.com/ajslater/${pkgname}"
 depends=(python-pillow python-dateutil python-rarfile python-argparse optipng python-setuptools)
