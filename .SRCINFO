@@ -1,7 +1,7 @@
 pkgbase = python-felupe
 	pkgdesc = Finite Element Analysis
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adtzlr/felupe
 	arch = any
 	license = GPL3
