@@ -5,7 +5,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+: "${_makenconfig:=""}"
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
@@ -15,12 +15,12 @@ _makenconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+: "${_localmodcfg:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=257
+_minor=258
 _srcname=linux-${_major}
 _clr=${_major}.256-182
 pkgbase=linux-clear-lts2017
@@ -274,7 +274,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '524b305357b8ed3f1b212203f5576e6a183992770631fd032a56061faa7ddfc7'
+            '4755d20fb3bbb6017f281c835f143c5b29bb2f3cd678d913e569e5840a3472d5'
             'SKIP')
 
 validpgpkeys=(
