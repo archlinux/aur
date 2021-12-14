@@ -6,8 +6,8 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=google-cloud-sdk-app-engine-java
-pkgver=366.0.0
-pkgrel=2
+pkgver=367.0.0
+pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides the Java runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -20,7 +20,7 @@ depends=(
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha256sums=('55f4d7d509a6c804edfd75f08a7825a09f4fc735732dc613614fbd6161e4a02a')
+sha256sums=('2835bb9485e9b3458dfd2fe191fd5e16935285438be83b0fe926c4a44e8e168b')
 
 package() {
   # Install the component manifest file
