@@ -3,7 +3,7 @@
 pkgname=python-setuptools-git-ls-files
 _pyname=${pkgname#python-}
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A plugin for setuptools that finds all git tracked files, including submodules'
 arch=(any)
 url="https://github.com/anthrotype/${_pyname//-/_}"
@@ -16,7 +16,6 @@ sha256sums=('7d612087430dc912f0dca7a35c99bf791b2f86b7fa5a40c5a562192947c86efa')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
