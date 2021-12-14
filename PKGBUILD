@@ -1,8 +1,8 @@
 # Maintainer: li <lcj211@aihlp.com>
 
 pkgname=systemd-godns
-pkgver=1.0.0
-pkgrel=9
+pkgver=1.0.1
+pkgrel=10
 pkgdesc="systemd for godns"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -48,5 +48,5 @@ package() {
 install  -Dm644 godns@.service  "$pkgdir/usr/lib/systemd/system/godns@.service"
 }
 
-groups=(lcj-all lcj-desk lcj-vps lcj-route lcj-server)
+groups=(lcj-all lcj-desk  lcj-route lcj-server)
 
