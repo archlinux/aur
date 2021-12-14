@@ -2,7 +2,7 @@
 
 _pkgname=breath
 pkgname=breath-classic-theme-git
-pkgver=r183.007d5002
+pkgver=r185.617c21d0
 pkgrel=1
 pkgdesc="Classic Breath Plasma Look & Feel package by Manjaro Team (ex-Breath2)"
 provides=('breath-classic-icon-theme' 'breath-classic-wallpaper' 'plasma5-themes-breath-classic')
@@ -38,7 +38,4 @@ build() {
 package() {
   cd build
   make DESTDIR="${pkgdir}" install
-  # Move icons theme to resolve conflicts with Breath Legacy themes
-  mv -f ${pkgdir}/usr/share/icons/breath ${pkgdir}/usr/share/icons/breath-classic
-  mv -f ${pkgdir}/usr/share/icons/breath-dark ${pkgdir}/usr/share/icons/breath-classic-dark
 }
