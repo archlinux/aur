@@ -1,0 +1,13 @@
+pkgbase = python2-ptyprocess
+	pkgdesc = Run a subprocess in a pseudo terminal
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/pexpect/ptyprocess
+	arch = any
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-ptyprocess
+	source = https://files.pythonhosted.org/packages/source/p/ptyprocess/ptyprocess-0.7.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python2-ptyprocess
