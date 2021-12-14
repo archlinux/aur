@@ -9,7 +9,7 @@ license=('CCPL:by-sa')
 depends=('geany')
 install="$pkgname.install"
 source=('http://www.thingiverse.com/download:479705')
-md5sums=('b97833567bdc0e084ae226ca7dc0a722')
+sha256sums=('ceb2eb9dd54a879b93e6ba7645aecd668ff183d0705d07a9b863fdfa4560dac6')
 
 package() {
     install -Dm644 'download:479705' "$pkgdir/usr/share/geany/filedefs/filetypes.OpenSCAD.conf"
