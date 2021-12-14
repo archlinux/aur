@@ -1,7 +1,7 @@
 # Maintainer: Po-An, Yang (Antonio Yang) <yanganto at gmail.com>
 set -u
 pkgname='wasmedge'
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel='1'
 pkgdesc='WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime for cloud native, edge, and decentralized applications. It powers serverless apps, embedded functions, microservices, smart contracts, and IoT devices.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://wasmedge.org'
 license=('Apache')
 depends=('cmake' 'boost' 'openssl' 'pkgconf' 'ninja')
 source=("https://github.com/WasmEdge/WasmEdge/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d21fac6e213b438371d6ba12308bbc3bef5842f8a89d9965874a5785c4f970fc')
+sha256sums=('456b1463722e1a34e503d312263f2114430ab1b78dea7923d6e25e7ef7537cdc')
 
 package() {
   set -u
