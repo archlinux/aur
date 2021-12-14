@@ -1,16 +1,16 @@
-# Maintainer: Nicolas Quiénot <niQo @ aur>
+# Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 pkgname=python-pretty-cron
 _pkgname=pretty-cron
-pkgver=1.0.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Converts crontab expressions to human-readable descriptions."
 arch=('i686' 'x86_64')
 url="https://github.com/adamchainz/pretty-cron"
-license=('GPL')
+license=('MIT')
 depends=('python')
 makedepends=()
 source=("https://github.com/adamchainz/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('7c57e798a46844999fc3fbe1b6ef7c0e')
+md5sums=('8bd4ad0e16859cd7cfd41f77bc17575b')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
