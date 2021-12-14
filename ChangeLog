@@ -246,3 +246,24 @@ General Fixes
 - We fixed a possible crash sometimes occurring when creating a new event.
 - We improved the repositioning of the Morgen windows on Windows when disconnecting an external screen, and make the Alt+C toggling robust to fast switches.
 - We fixed an issue pushing events to some CalDAV providers.
+
+
+=== Morgen 2.4.0
+With release 2.4.0, we introduced native integrations with Microsoft Teams and Google Meet. You will be able to create ad-hoc rooms for newly-created events. Morgen will generate a one-time virtual room and attach it to your meeting. This works for events booked via Morgen Scheduling Links as well.
+
+You can still configure your permanent meeting rooms in Morgen settings. While this works best with Zoom, where the concept of a "waiting room" is well designed, Microsoft Teams and Google Meet work better with a one-off link generated for each meeting.
+
+To start with Google Meet and Microsoft Teams, visit the Integrations tab in Morgen settings.
+
+ 
+Improvement
+- on the Week, 2 Weeks, or Month view, you can now click on a date and jump into the Day view for that day
+- we gave the event details popup more space to visualize the event notes
+- we have changed the look and feel of this changelog, we are now using Headwayapp, and we love it!
+ 
+Fixes
+- we fixed an issue preventing the use of Morgen Scheduling Links with some CalDAV providers (namely Zoho and Fastmail)
+- the event widget popup was moving too much while editing an event, this is now fixed
+- the declining of events on Office 365 or Outlook was erroneously showing an error message, this is now fixed
+- we fixed a program that could have caused an infinite loop and related memory leaks in some rare cases
+- we fixed a problem preventing the re-scheduling of a task as all-day event
