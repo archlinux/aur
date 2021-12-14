@@ -1,6 +1,6 @@
 pkgname=mcg
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A covergrid for the Music Player Daemon."
 url="https://www.suruatoel.xyz/codes/mcg"
 arch=(any)
