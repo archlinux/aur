@@ -1,7 +1,7 @@
 pkgbase = python-dynd
 	pkgdesc = Python exposure of dynd
 	pkgver = 0.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://libdynd.org
 	arch = x86_64
 	groups = blaze-ecosystem

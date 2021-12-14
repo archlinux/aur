@@ -3,7 +3,7 @@
 _base=dynd
 pkgname=python-${_base}
 pkgver=0.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Python exposure of dynd"
 groups=('blaze-ecosystem')
 arch=('x86_64')
