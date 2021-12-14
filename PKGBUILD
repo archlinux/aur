@@ -4,7 +4,7 @@
 
 pkgname=python-yeelight
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 _commit=40c09bd4
 pkgdesc='Python library for controlling YeeLight RGB bulbs'
 arch=('any')
@@ -27,9 +27,9 @@ build() {
 package() {
   cd "$pkgname"
   PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 docs/build/man/yeelight.1 -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 docs/build/man/yeelight.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 # vim: ts=2 sw=2 et:
