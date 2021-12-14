@@ -17,4 +17,3 @@ pkgbase = brother-mfc-j6947dw
 	depends_x86_64 = lib32-gcc-libs
 
 pkgname = brother-mfc-j6947dw
-
