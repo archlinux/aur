@@ -1,7 +1,7 @@
 pkgbase = python-blaze
 	pkgdesc = NumPy and Pandas interface to Big Data
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blaze/blaze
 	arch = any
 	license = custom

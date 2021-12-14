@@ -3,7 +3,7 @@
 _base=blaze
 pkgname=python-${_base}
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NumPy and Pandas interface to Big Data"
 arch=('any')
 url="https://github.com/${_base}/${_base}"
