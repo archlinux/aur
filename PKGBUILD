@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-normalize
 pkgver=1.22.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
 url="https://github.com/slhck/ffmpeg-normalize"

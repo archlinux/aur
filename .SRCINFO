@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-normalize
 	pkgdesc = Audio normalization using ffmpeg.
 	pkgver = 1.22.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slhck/ffmpeg-normalize
 	arch = any
 	license = MIT
