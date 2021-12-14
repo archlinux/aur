@@ -1,0 +1,17 @@
+pkgbase = percetto-git
+	pkgdesc = minimal C wrapper for Perfetto SDK to enable app-specific tracing
+	pkgver = v0.1.5.r3.g992ad3f
+	pkgrel = 1
+	url = https://github.com/olvaffe/percetto
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = perfetto
+	provides = percetto
+	conflicts = percetto
+	source = git+https://github.com/olvaffe/percetto.git
+	md5sums = SKIP
+
+pkgname = percetto-git
