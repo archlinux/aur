@@ -1,7 +1,7 @@
 pkgbase = python-pretrainedmodels-git
 	pkgdesc = Pretrained ConvNets for PyTorch
 	pkgver = r154.8aae3d8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Cadene/pretrained-models.pytorch
 	arch = any
 	license = BSD
@@ -18,4 +18,3 @@ pkgbase = python-pretrainedmodels-git
 	md5sums = SKIP
 
 pkgname = python-pretrainedmodels-git
-
