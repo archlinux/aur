@@ -1,7 +1,7 @@
 pkgbase = dune-geometry
 	pkgdesc = Geometry Transformations, Reference Elements and Quadrature Rules
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dune-project.org/modules/dune-geometry
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
