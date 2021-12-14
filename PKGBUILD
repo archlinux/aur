@@ -3,7 +3,7 @@ pkgver=3.1.4
 pkgrel=1
 pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
-url="https://github.com/moonlight-stream/moonlight-qt"
+url="https://moonlight-stream.org"
 license=('GPL3')
 
 depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf' 'hicolor-icon-theme')
