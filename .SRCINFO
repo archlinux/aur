@@ -1,7 +1,7 @@
 pkgbase = u2o
 	pkgdesc = USFM to OSIS bible format converter
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adyeths/u2o
 	arch = any
 	license = Unlicense
