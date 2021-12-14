@@ -3,7 +3,7 @@
 pkgname=python-pyfastcopy
 _name=pyfastcopy
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module that monkey patches the shutil.copyfile function of Python standard library to internally use the sendfile system call."
 arch=('any')
 url="https://pypi.org/project/pyfastcopy/"
