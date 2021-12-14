@@ -1,7 +1,7 @@
 pkgbase = python-pyffmpeg
 	pkgdesc = FFmpeg wrapper for Python
 	pkgver = 2.0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deuteronomy-works/pyffmpeg
 	arch = any
 	license = Apache
