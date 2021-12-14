@@ -1,7 +1,7 @@
 pkgbase = dune-istl
 	pkgdesc = Iterative Solver Template Library
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dune-project.org/modules/dune-istl
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
