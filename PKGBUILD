@@ -3,7 +3,7 @@
 _base=holoviews
 pkgname=python-${_base}
 pkgver=1.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc="With Holoviews, your data visualizes itself"
 arch=('any')
 url="https://${_base}.org"
