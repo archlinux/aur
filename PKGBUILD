@@ -3,7 +3,7 @@
 _base=pywikibot
 pkgname=python-${_base}
 pkgver=6.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library that interfaces with the MediaWiki API"
 url="https://www.mediawiki.org/wiki/Manual:${_base}"
 license=(MIT)

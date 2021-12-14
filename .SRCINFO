@@ -1,7 +1,7 @@
 pkgbase = python-pywikibot
 	pkgdesc = Python library that interfaces with the MediaWiki API
 	pkgver = 6.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mediawiki.org/wiki/Manual:pywikibot
 	arch = any
 	license = MIT
