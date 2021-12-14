@@ -2,7 +2,7 @@
 
 pkgname=libfreenect
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenKinect/libfreenect"
@@ -16,6 +16,7 @@ sha512sums=('e232487fe62a81161e6e74d34a625d6e86ca56befc1692590ecf863ce6b96b9094b
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's/${GLUT_LIBRARY}/${GLUT_LIBRARIES}/g' examples/CMakeLists.txt wrappers/cpp/CMakeLists.txt
 }
 
 build() {
@@ -25,7 +26,8 @@ build() {
     -DPROJECT_INCLUDE_INSTALL_DIR='/usr/include' \
     -DBUILD_REDIST_PACKAGE=OFF \
     -DBUILD_OPENNI2_DRIVER=ON \
-    -DBUILD_PYTHON3=ON .
+    -DBUILD_PYTHON3=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND .
 
   make
 }
