@@ -7,7 +7,7 @@ pkgdesc="A gui for the command line gdx-texturepacker"
 arch=('any')
 url="https://github.com/crashinvaders/gdx-texture-packer-gui"
 license=('Apache')
-depends=('java-runtime')
+depends=('java-runtime' 'unzip')
 
 sha256sums=('179e1c377d9953b322ef4f150658b814f880f6c2303cb06c8993146c61b3e13f')
 
