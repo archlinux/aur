@@ -3,7 +3,7 @@
 _base=datatile
 pkgname=python-${_base}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for managing, validating, summarizing, and visualizing data"
 arch=('x86_64')
 url="https://github.com/polyaxon/${_base}"
