@@ -1,7 +1,7 @@
 pkgbase = python-pyserial-asyncio
 	pkgdesc = Asyncio extension package for pyserial
 	pkgver = 0.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/pyserial/pyserial-asyncio
 	arch = any
 	license = BSD
