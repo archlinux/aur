@@ -3,7 +3,7 @@
 pkgname=python-yandex-music-api
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Python library for the Yandex.Music API"
 arch=('any')
 url="https://github.com/MarshalX/yandex-music-api"

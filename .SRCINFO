@@ -1,7 +1,7 @@
 pkgbase = python-yandex-music-api
 	pkgdesc = Unofficial Python library for the Yandex.Music API
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MarshalX/yandex-music-api
 	arch = any
 	license = LGPL3
@@ -13,4 +13,3 @@ pkgbase = python-yandex-music-api
 	md5sums = 3fc0b3af5dafdcd304f4eb072e8894e1
 
 pkgname = python-yandex-music-api
-
