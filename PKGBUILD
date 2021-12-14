@@ -32,7 +32,7 @@ install=
 source=('sm64plus::git+https://github.com/MorsGames/sm64plus' sm64plus-wrapper.sh sm64plus.desktop file://baserom.us.z64)
 noextract=()
 sha1sums=('SKIP'
-          '1d5610570e9a715f08b3024db84b55c0f46d064e'
+          'cd724c8043248366903993a33e9e079fbfc5e88b'
           'd8b8b8065fac319ac095ec2248c0200a9b9d6eb4'
           '9bef1128717f958171a4afac3ed78ee2bb4e86ce')
 
@@ -53,7 +53,7 @@ build() {
 package() {
 	cd "$srcdir/sm64plus"
 	mkdir -p "$pkgdir/opt/sm64plus"
-	cp -r build/us_pc/gfx -t "$pkgdir/opt/sm64plus"
+	cp -r build/us_pc/textures -t "$pkgdir/opt/sm64plus"
 	install build/us_pc/sm64.us.f3dex2e "$pkgdir/opt/sm64plus"
 	install -D "$srcdir/sm64plus-wrapper.sh" "$pkgdir/usr/bin/sm64plus"
 	install -D "$srcdir/sm64plus.desktop" -t "$pkgdir/usr/share/applications"

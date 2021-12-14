@@ -17,7 +17,7 @@ pkgbase = sm64plus-git
 	source = sm64plus.desktop
 	source = file://baserom.us.z64
 	sha1sums = SKIP
-	sha1sums = 1d5610570e9a715f08b3024db84b55c0f46d064e
+	sha1sums = cd724c8043248366903993a33e9e079fbfc5e88b
 	sha1sums = d8b8b8065fac319ac095ec2248c0200a9b9d6eb4
 	sha1sums = 9bef1128717f958171a4afac3ed78ee2bb4e86ce
 
