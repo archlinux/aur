@@ -3,7 +3,7 @@
 
 pkgname=python-miio
 pkgver=0.5.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
 arch=('any')

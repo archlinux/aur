@@ -1,7 +1,7 @@
 pkgbase = python-miio
 	pkgdesc = Python library & console tool for controlling Xiaomi smart appliances
 	pkgver = 0.5.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rytilahti/python-miio
 	install = miio.install
 	arch = any
