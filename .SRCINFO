@@ -1,7 +1,7 @@
 pkgbase = python-orthopy
 	pkgdesc = Orthogonal polynomials in all shapes and sizes
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/orthopy
 	arch = x86_64
 	license = GPL3
