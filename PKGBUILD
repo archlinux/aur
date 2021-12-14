@@ -2,7 +2,7 @@
 
 pkgname=python-pyro-ppl
 _pypiname=${pkgname/python-/}
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A Python library for probabilistic modeling and inference"
 arch=('any')
@@ -17,8 +17,8 @@ optdepends=('flake8' 'python-isort' 'jupyter-nbformat' 'python-nbsphinx' 'python
   'python-pytest-benchmark' 'python-snakeviz')
 checkdepends=('python-nbval' 'python-pytest-cov' 'python-pytest' 'python-scipy')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/e1/b5/c9d13a46363102fc4da386ddb3f3006b991dadf3301d392e1b12c823db0b/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('a8ec6968fdfa34f140584b266099238f1ffeacbbaab3775de5c94c0e685d018a')
+source=("https://files.pythonhosted.org/packages/4c/bd/658eaf515f65905f1e63364917e98ce50bb3e53c8c6c125eea0e015206ee/${_pypiname}-${pkgver}.tar.gz")
+sha256sums=('68e4ea30f219227dd88e55de2550d3f8c20a20adbdb67ad1e13b50868bb2ac0c')
 
 build() {
   cd $srcdir/${_pypiname}-${pkgver}
