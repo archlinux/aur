@@ -3,7 +3,7 @@
 # Contributor: erm67 <erm67@yahoo.it>
 
 pkgname=cairo-dock-git
-pkgver=3.4.99.alpha1
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock'
 arch=('i686' 'x86_64')
