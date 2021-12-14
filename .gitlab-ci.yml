@@ -81,4 +81,3 @@ deploy-eccodes:
     - echo "Uploading to AUR..."
   rules:
     - if: *on_master
-      when: manual
