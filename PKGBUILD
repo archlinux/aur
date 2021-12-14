@@ -3,7 +3,7 @@
 
 pkgname=python-google-cloud-bigquery
 pkgver=2.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google BigQuery API client library"
 arch=('any')
 url="https://github.com/googleapis/python-bigquery"

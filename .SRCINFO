@@ -1,7 +1,7 @@
 pkgbase = python-google-cloud-bigquery
 	pkgdesc = Google BigQuery API client library
 	pkgver = 2.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/python-bigquery
 	changelog = CHANGELOG.md
 	arch = any
