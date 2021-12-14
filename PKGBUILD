@@ -1,4 +1,5 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Xyem <xyem@electricjungle.org>
+# Contributor: James An <james@jamesan.ca>
 pkgname=geany-openscad
 pkgver=20140503
 pkgrel=1
