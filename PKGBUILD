@@ -4,7 +4,7 @@
 pkgname=python-ufonormalizer
 _pyname=${pkgname#python-}
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool that will normalize XML and other data inside of a UFO'
 arch=(any)
 url="https://github.com/unified-font-object/ufoNormalizer"
@@ -23,7 +23,6 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
