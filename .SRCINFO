@@ -1,0 +1,13 @@
+pkgbase = hiero
+	pkgdesc = Bitmap Font Tool that saves in Angel Code font format
+	pkgver = 5
+	pkgrel = 1
+	url = https://github.com/libgdx/libgdx/wiki/Hiero
+	arch = any
+	license = Apache
+	depends = jre8-openjdk
+	noextract = runnable-hiero.jar
+	source = runnable-hiero.jar::https://libgdx.badlogicgames.com/ci/nightlies/runnables/runnable-hiero.jar
+	sha256sums = 7607bdb3a2ff68f7082f079211a86dab5c09c5daa64fa473ba0d6a30361afcc1
+
+pkgname = hiero
