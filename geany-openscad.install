@@ -19,6 +19,7 @@ post_install() {
   else
     sed -i "s/^\(${key}=.*;\)/\1${value};/" "${file}"
   fi
+
   sed -i "s/^\(${category}=.*\)/\1${key};/" "${file}"
 }
 
