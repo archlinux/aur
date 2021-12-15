@@ -1,16 +1,18 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.7.3
-_pkgver=10.07.p03
+pkgver=11.0.0
+_pkgver=v11.0.0
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
-depends=('cmake>=3.8'
+depends=('cmake>=3.16'
          'xerces-c>=3'
          'qt5-base'
          'glu'
          'openmotif'
          'soqt'
          'zlib'
+	 'python>=3'
+	 'boost'
         )
 conflicts=('geant4_devel')
 optdepends=('java-environment: for histogram visualizations and
@@ -34,10 +36,10 @@ arch=('x86_64')
 license=('custom: http://geant4.cern.ch/license/')
 options=('!emptydirs')
 install="${pkgname}.install"
-source=("http://cern.ch/geant4-data/releases/${pkgname}.${_pkgver}.tar.gz"
+source=("http://geant4-data.web.cern.ch/releases/${pkgname}-${_pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('de430e933c2255061210dcac8124f4becbba9340f041c64c91d06a6a0fb1949c'
-            '0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058')
+md5sums=('e77206ebe22b146b71e12a96940baf85'
+         'a6abacd078760aebda58316454d7e0c9')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
@@ -53,19 +55,19 @@ build() {
       PATH=/usr/bin \
       cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DGEANT4_BUILD_MULTITHREADED=ON \
       -DGEANT4_USE_G3TOG4=ON \
       -DGEANT4_USE_GDML=ON \
       -DGEANT4_USE_INVENTOR_QT=ON \
-      -DGEANT4_USE_QT=ON \
       -DGEANT4_USE_OPENGL_X11=ON \
+      -DGEANT4_USE_PYTHON=ON \
+      -DGEANT4_USE_QT=ON \
       -DGEANT4_USE_RAYTRACER_X11=ON \
+      -DGEANT4_USE_TOOLSSG=QT \
       -DGEANT4_USE_XM=ON \
       -DGEANT4_USE_SYSTEM_ZLIB=ON \
-      -DGEANT4_BUILD_CXXSTD=17 \
-      -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
       -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
-      ../${pkgname}.${_pkgver}
+      -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
+      ../${pkgname}-${_pkgver}
 
   G4VERBOSE=1 make
 
@@ -96,67 +98,68 @@ package() {
 echo ""
 : <<'EOF'
 
- From: http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/InstallationGuide/html/installguide.html#geant4-build-options
- Last revisited: 10.7
+ From: https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html#geant4-build-options
+ Last revisited: Dec 15, 2021. (11.0)
 
- |----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+----------------|
- | option                           | default                                                                                                                                          | set to         |
- |----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+----------------|
- | CMAKE_INSTALL_PREFIX             | /usr/local                                                                                                                                       | /usr           |
- | CMAKE_BUILD_TYPE                 | Release                                                                                                                                          |                |
- | GEANT4_BUILD_MULTITHREADED       | OFF                                                                                                                                              | ON             |
- | GEANT4_INSTALL_DATA              | OFF                                                                                                                                              |                |
- | GEANT4_INSTALL_DATADIR           | CMAKE_INSTALL_DATAROOTDIR                                                                                                                        |                |
- | GEANT4_USE_G3TOG4                | OFF                                                                                                                                              | ON             |
- | GEANT4_USE_GDML                  | OFF                                                                                                                                              | ON             |
- | GEANT4_USE_INVENTOR              | OFF                                                                                                                                              |                |
- | GEANT4_USE_INVENTOR_QT           | OFF                                                                                                                                              | ON             |
- | GEANT4_USE_OPENGL_WIN32          | OFF, Windows Only                                                                                                                                |                |
- | GEANT4_USE_OPENGL_X11            | OFF, Unix Only                                                                                                                                   | ON             |
- | GEANT4_USE_PYTHON                | OFF                                                                                                                                              | try this       |
- | GEANT4_USE_QT                    | OFF                                                                                                                                              | ON             |
- | GEANT4_USE_RAYTRACER_X11         | OFF, Unix only                                                                                                                                   | ON             |
- | GEANT4_USE_SYSTEM_CLHEP          | OFF                                                                                                                                              |                |
- | GEANT4_USE_SYSTEM_EXPAT          | ON                                                                                                                                               |                |
- | GEANT4_USE_SYSTEM_ZLIB           | OFF                                                                                                                                              | ON             |
- | GEANT4_USE_TBB                   | ON                                                                                                                                               |                |
- | GEANT4_USE_XM                    | OFF, Unix Only                                                                                                                                   | ON             |
- |----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+----------------|
- | BUILD_SHARED_LIBS                | ON                                                                                                                                               |                |
- | BUILD_STATIC_LIBS                | OFF                                                                                                                                              |                |
- | CMAKE_INSTALL_BINDIR             | bin                                                                                                                                              |                |
- | CMAKE_INSTALL_INCLUDEDIR         | include                                                                                                                                          |                |
- | CMAKE_INSTALL_LIBDIR             | lib(+?SUFFIX)                                                                                                                                    |                |
- | CMAKE_INSTALL_PYTHONDIR          | CMAKE_INSTALL_LIBDIR/python3.<PYMINOR>/site-packages                                                                                             |                |
- | CMAKE_INSTALL_DATAROOTDIR        | share                                                                                                                                            |                |
- | GEANT4_INSTALL_DATA_TIMEOUT      | 1500                                                                                                                                             |                |
- | GEANT4_INSTALL_EXAMPLES          | ON                                                                                                                                               |                |
- | GEANT4_BUILD_CXXSTD              | 11 (UNIX), 17 (Windows)                                                                                                                          | 14             |
- | GEANT4_BUILD_MSVC_MP             | OFF, Windows Only                                                                                                                                |                |
- | GEANT4_BUILD_TLS_MODEL           | initial-exec                                                                                                                                     | global-dynamic |
- | GEANT4_BUILD_STORE_TRAJECTORY    | ON                                                                                                                                               |                |
- | GEANT4_BUILD_VERBOSE_CODE        | ON                                                                                                                                               |                |
- | GEANT4_BUILD_BUILTIN_BACKTRACE   | OFF                                                                                                                                              |                |
- | GEANT4_BUILD_PHP_AS_HP           | OFF                                                                                                                                              | what's this?   |
- | GEANT4_USE_SMARTSTACK            | OFF                                                                                                                                              | what's this?   |
- | GEANT4_USE_SYSTEM_PTL            | OFF                                                                                                                                              |                |
- | GEANT4_ENABLE_TESTING            | OFF                                                                                                                                              |                |
- | GEANT4_USE_NETWORKDAWN           | OFF, Unix Only                                                                                                                                   |                |
- | GEANT4_USE_NETWORKVRML           | OFF, Unix Only                                                                                                                                   |                |
- | GEANT4_USE_FREETYPE              | OFF                                                                                                                                              |                |
- | GEANT4_USE_HDF5                  | OFF                                                                                                                                              |                |
- | GEANT4_USE_USOLIDS               | OFF                                                                                                                                              |                |
- | GEANT4_USE_TIMEMORY              | OFF                                                                                                                                              |                |
- | GEANT4_INSTALL_PACKAGE_CACHE     | ON                                                                                                                                               | OFF            |
- | GEANT4_INSTALL_DATASETS_TENDL    | OFF                                                                                                                                              |                |
- | CMAKE_PREFIX_PATH                | OFF                                                                                                                                              |                |
- | GEANT4_USE_SYSTEM_CLHEP_GRANULAR | OFF                                                                                                                                              |                |
- |----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+----------------|
- | CMAKE_CXX_FLAGS                  | -W -Wall -pedantic -Wno-non-virtual-dtor -Wno-long-long -Wwrite-strings -Wpointer-arith -Woverloaded-virtual -Wno-variadic-macros -Wshadow -pipe |                |
- |                                  | -ftls-model=initial-exec -pthread if  GEANT4_BUILD_MULTITHREADED=ON                                                                              |                |
- | CMAKE_CXX_FLAGS_RELEASE          | -O3 -DNDEBUG -fno-trapping-math -ftree-vectorize -fno-math-errno                                                                                 |                |
- | CMAKE_CXX_FLAGS_DEBUG            | -g                                                                                                                                               |                |
- | CMAKE_CXX_FLAGS_RELWITHDEBINFO   | -O2 -g                                                                                                                                           |                |
- |----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+----------------|
+ |----------------------------------+------------------------------------------------------+----------------|
+ | option                           | default                                              | set to         |
+ |----------------------------------+------------------------------------------------------+----------------|
+ | CMAKE_INSTALL_PREFIX             | /usr/local                                           | /usr           |
+ | CMAKE_BUILD_TYPE                 | Release                                              |                |
+ | GEANT4_BUILD_MULTITHREADED       | ON                                                   |                |
+ | GEANT4_INSTALL_DATA              | OFF                                                  |                |
+ | GEANT4_INSTALL_DATADIR           | CMAKE_INSTALL_DATAROOTDIR                            |                |
+ | GEANT4_USE_G3TOG4                | OFF                                                  | ON             |
+ | GEANT4_USE_GDML                  | OFF                                                  | ON             |
+ | GEANT4_USE_INVENTOR              | OFF                                                  |                |
+ | GEANT4_USE_INVENTOR_QT           | OFF                                                  | ON             |
+ | GEANT4_USE_OPENGL_WIN32          | OFF, Windows Only                                    |                |
+ | GEANT4_USE_OPENGL_X11            | OFF, Unix Only                                       | ON             |
+ | GEANT4_USE_PYTHON                | OFF                                                  | ON             |
+ | GEANT4_USE_QT                    | OFF                                                  | ON             |
+ | GEANT4_USE_RAYTRACER_X11         | OFF, Unix only                                       | ON             |
+ | GEANT4_USE_SYSTEM_CLHEP          | OFF                                                  |                |
+ | GEANT4_USE_SYSTEM_EXPAT          | ON                                                   |                |
+ | GEANT4_USE_SYSTEM_ZLIB           | OFF                                                  | ON             |
+ | GEANT4_USE_TOOLSSG               | OFF                                                  | QT             |
+ | GEANT4_USE_XM                    | OFF, Unix Only                                       | ON             |
+ |----------------------------------+------------------------------------------------------+----------------|
+ | BUILD_SHARED_LIBS                | ON                                                   |                |
+ | BUILD_STATIC_LIBS                | OFF                                                  |                |
+ | CMAKE_CXX_STANDARD               | 17                                                   |                |
+ | CMAKE_INSTALL_BINDIR             | bin                                                  |                |
+ | CMAKE_INSTALL_INCLUDEDIR         | include                                              |                |
+ | CMAKE_INSTALL_LIBDIR             | lib(+?SUFFIX)                                        |                |
+ | CMAKE_INSTALL_PYTHONDIR          | CMAKE_INSTALL_LIBDIR/python3.<PYMINOR>/site-packages |                |
+ | CMAKE_INSTALL_DATAROOTDIR        | share                                                |                |
+ | GEANT4_INSTALL_DATA_TIMEOUT      | 1500                                                 |                |
+ | GEANT4_INSTALL_EXAMPLES          | ON                                                   |                |
+ | GEANT4_INSTALL_PACKAGE_CACHE     | ON                                                   | OFF            |
+ | GEANT4_INSTALL_DATASETS_TENDL    | OFF                                                  |                |
+ | GEANT4_BUILD_MSVC_MP             | OFF, Windows Only                                    |                |
+ | GEANT4_BUILD_TLS_MODEL           | initial-exec                                         | global-dynamic |
+ | GEANT4_BUILD_STORE_TRAJECTORY    | ON                                                   |                |
+ | GEANT4_BUILD_VERBOSE_CODE        | ON                                                   |                |
+ | GEANT4_BUILD_BUILTIN_BACKTRACE   | OFF                                                  |                |
+ | GEANT4_BUILD_PHP_AS_HP           | OFF                                                  | what's this?   |
+ | GEANT4_USE_SMARTSTACK            | OFF                                                  | what's this?   |
+ | GEANT4_USE_SYSTEM_PTL            | OFF                                                  |                |
+ | GEANT4_USE_TBB                   | OFF                                                  |                |
+ | GEANT4_ENABLE_TESTING            | OFF                                                  |                |
+ | GEANT4_USE_FREETYPE              | OFF                                                  |                |
+ | GEANT4_USE_HDF5                  | OFF                                                  |                |
+ | GEANT4_USE_USOLIDS               | OFF                                                  |                |
+ | GEANT4_USE_TIMEMORY              | OFF                                                  |                |
+ | GEANT4_USE_VTK                   | OFF                                                  |                |
+ | CMAKE_PREFIX_PATH                | OFF                                                  |                |
+ |----------------------------------+------------------------------------------------------+----------------|
+
+ |--------------------------------+-----------------------------------------------------------------------------------------|
+ | CMAKE_CXX_FLAGS                | -W -Wall -pedantic -Wno-non-virtual-dtor -Wno-long-long -Wwrite-strings -Wpointer-arith |
+ |                                | -Woverloaded-virtual -Wno-variadic-macros -Wshadow -pipe                                |
+ | CMAKE_CXX_FLAGS_RELEASE        | -O3 -DNDEBUG -fno-trapping-math -ftree-vectorize -fno-math-errno                        |
+ | CMAKE_CXX_FLAGS_DEBUG          | -g                                                                                      |
+ | CMAKE_CXX_FLAGS_RELWITHDEBINFO | -O2 -g                                                                                  |
+ |--------------------------------+-----------------------------------------------------------------------------------------|
 EOF
 echo ""
