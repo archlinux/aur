@@ -1,0 +1,16 @@
+pkgbase = noise-suppression-for-voice-git
+	pkgdesc = A real-time noise suppression plugin for voice
+	pkgver = 0.91.r8.g6922453
+	pkgrel = 1
+	url = https://github.com/werman/noise-suppression-for-voice
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = noise-suppression-for-voice
+	conflicts = noise-suppression-for-voice
+	source = git+https://github.com/werman/noise-suppression-for-voice.git
+	sha256sums = SKIP
+
+pkgname = noise-suppression-for-voice-git
