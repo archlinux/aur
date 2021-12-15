@@ -1,21 +1,27 @@
 # Maintainers:
 # Jonas Gierer <jonas@gierer.xyz>
 # Ujjwal Sharma <ryzokuken@disroot.org>
+# Elias Blume <mail at elias-blu.me>
 pkgname=mdloader-bin
-_binname=mdloader
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Massdrop Firmware Loader"
 arch=('x86_64')
 depends=('glibc')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+makedepends=('unzip')
 license=('GPL')
 url="https://github.com/Massdrop/mdloader"
-source=('https://github.com/Massdrop/mdloader/releases/download/1.0.5/applet-mdflash.bin'
-        'https://github.com/Massdrop/mdloader/releases/download/1.0.5/mdloader_linux')
-md5sums=('c9a793fade06ef949bd426c2ad620367'
-         '77b25263f89fe3142a4bd016c5013cd9')
+source=("${pkgname%-bin}-$pkgver.zip::https://github.com/Massdrop/mdloader/releases/download/${pkgver}/mdloader-Linux.zip")
+md5sums=('f2856e4f70e6e34ff7e4b7daba6d7f88')
+
+prepare() {
+  # unzip
+  unzip ${pkgname%-bin}-$pkgver.zip
+
+}
 
 package() {
-  install "applet-mdflash.bin" -Dt $pkgdir/usr/bin
-  install -m0755 "mdloader_linux" -D $pkgdir/usr/bin/$_binname
+  install -m0755 ${pkgname%-bin} -D $pkgdir/usr/bin/${pkgname%-bin}
 }

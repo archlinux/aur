@@ -1,15 +1,15 @@
 pkgbase = mdloader-bin
 	pkgdesc = Massdrop Firmware Loader
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/Massdrop/mdloader
 	arch = x86_64
 	license = GPL
+	makedepends = unzip
 	depends = glibc
-	source = https://github.com/Massdrop/mdloader/releases/download/1.0.5/applet-mdflash.bin
-	source = https://github.com/Massdrop/mdloader/releases/download/1.0.5/mdloader_linux
-	md5sums = c9a793fade06ef949bd426c2ad620367
-	md5sums = 77b25263f89fe3142a4bd016c5013cd9
+	provides = mdloader
+	conflicts = mdloader
+	source = mdloader-1.0.6.zip::https://github.com/Massdrop/mdloader/releases/download/1.0.6/mdloader-Linux.zip
+	md5sums = f2856e4f70e6e34ff7e4b7daba6d7f88
 
 pkgname = mdloader-bin
-
