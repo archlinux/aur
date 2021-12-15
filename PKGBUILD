@@ -5,7 +5,7 @@
 _pyname=booleanOperations
 pkgname=python-${_pyname,,}
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Boolean operations on paths'
 arch=(any)
 url="https://github.com/typemytype/$_pyname"
@@ -24,13 +24,12 @@ sha256sums=('8cfa821c32ad374fa120d6b2e0b444ebeac57c91e6631528645fa19ac2a281b8')
 
 prepare() {
 	cd "$_archive"
-    # Upstream PR: https://github.com/typemytype/booleanOperations/pull/63
-    sed -i -e '/wheel$/d' setup.cfg
+	# Upstream PR: https://github.com/typemytype/booleanOperations/pull/63
+	sed -i -e '/wheel$/d' setup.cfg
 }
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
