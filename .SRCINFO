@@ -1,13 +1,12 @@
 pkgbase = ttf-sil-nuosu
 	pkgdesc = Unicode font for the standardized Yi script
-	pkgver = 2.1.1
-	pkgrel = 4
+	pkgver = 2.200
+	pkgrel = 1
 	url = https://software.sil.org/nuosu
 	arch = any
 	license = OFL
 	conflicts = ttf-sil-fonts<=6
-	source = http://software.sil.org/downloads/r/nuosu/NuosuSIL-2.1.1.zip
-	sha256sums = b1acb6da9b9ccaa921fea1f8e206c743928f84fb083dbeb77485e1824cdcf9e7
+	source = http://software.sil.org/downloads/r/nuosu/NuosuSIL-2.200.zip
+	sha256sums = db6db52db1eac2c1e89d4434504e4300238686773c2a69708cc233f893aefce4
 
 pkgname = ttf-sil-nuosu
-
