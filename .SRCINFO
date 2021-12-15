@@ -1,6 +1,6 @@
 pkgbase = gitty
 	pkgdesc = A smart little CLI helper for git projects
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/muesli/gitty
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gitty
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = https://github.com/muesli/gitty/archive/v0.3.0/gitty-0.3.0.tar.gz
-	sha256sums = e8e8438997fd7d5d3b8e3e1361172b90edc26f15f6614d1f08e50d99fd4ba120
+	source = https://github.com/muesli/gitty/archive/v0.4.0/gitty-0.4.0.tar.gz
+	sha256sums = c62fe8d72ff2e014b5e7b460fa2bc33c7ad7557d4d1eb680ac2755c462bd1a68
 
 pkgname = gitty
