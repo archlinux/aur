@@ -4,14 +4,15 @@
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
-pkgname=wine-stable
-pkgver=6.0.2
+pkgname=wine-stable-next
+_pkgver=7.0-rc1
+pkgver=${_pkgver/-/}
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/6.0/wine-$pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/7.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('176614736055892b7203313edc52e2926807c93b0bb97d59f65fbf284fd9cb138e4555fb7cd5a6c7c867367fdc50c89f12d7360ca0db947a7f04594f35f14775'
+b2sums=('b0170b6a9b0bac9a8a5f88df4f0b3bf4aec8b6fc72f175b0fdae118f73ef0d0932248ef1f8ec49f40b20ba522ed05636fb18486a6e644744902de33b1a91cec5'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
@@ -24,43 +25,97 @@ options=(staticlibs)
 license=(LGPL)
 install=wine.install
 
-depends=(desktop-file-utils faudio fontconfig freetype2 glu lcms2
-  libpcap libsm libxcursor libxdamage libxi libxml2 libxrandr
-  lib32-faudio lib32-fontconfig lib32-freetype2 lib32-gcc-libs
-  lib32-gettext lib32-glu lib32-lcms2 lib32-libpcap lib32-libsm
-  lib32-libxcursor lib32-libxdamage lib32-libxi lib32-libxml2
-  lib32-libxrandr)
+depends=(
+  desktop-file-utils
+  faudio                 lib32-faudio
+  fontconfig             lib32-fontconfig
+  freetype2              lib32-freetype2
+  gcc-libs               lib32-gcc-libs
+  gettext                lib32-gettext
+  glu                    lib32-glu
+  lcms2                  lib32-lcms2
+  libpcap                lib32-libpcap
+  libsm                  lib32-libsm
+  libxcursor             lib32-libxcursor
+  libxdamage             lib32-libxdamage
+  libxi                  lib32-libxi
+  libxml2                lib32-libxml2
+  libxrandr              lib32-libxrandr
+)
 
-makedepends=(alsa-lib fontforge giflib gnutls gsm
-  gst-plugins-base-libs libcups libgl libgphoto2 libldap libpng
-  libpulse libxcomposite libxinerama libxmu libxslt libxxf86vm mesa
-  mingw-w64-gcc mpg123 ncurses ocl-icd openal opencl-headers perl
-  samba sane sdl2 v4l-utils vkd3d vulkan-headers vulkan-icd-loader
-  lib32-alsa-lib lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs
-  lib32-libcups lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
-  lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
-  lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ncurses lib32-ocl-icd
-  lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
-  lib32-vulkan-icd-loader)
+makedepends=(
+  alsa-lib               lib32-alsa-lib
+  fontforge
+  giflib                 lib32-giflib
+  gnutls                 lib32-gnutls
+  gsm                    lib32-gsm
+  gst-plugins-base-libs  lib32-gst-plugins-base-libs
+  libcups                lib32-libcups
+  libgphoto2             lib32-libgphoto2
+  libjpeg-turbo          lib32-libjpeg-turbo
+  libldap                lib32-libldap
+  libpng                 lib32-libpng
+  libpulse               lib32-libpulse
+  libxcomposite          lib32-libxcomposite
+  libxinerama            lib32-libxinerama
+  libxmu                 lib32-libxmu
+  libxslt                lib32-libxslt
+  libxxf86vm             lib32-libxxf86vm
+  mesa                   lib32-mesa
+  mingw-w64-gcc
+  mpg123                 lib32-mpg123
+  ncurses                lib32-ncurses
+  ocl-icd                lib32-ocl-icd
+  openal                 lib32-openal
+  opencl-headers
+  perl
+  samba
+  sane
+  sdl2                   lib32-sdl2
+  v4l-utils              lib32-v4l-utils
+  vkd3d                  lib32-vkd3d
+  vulkan-headers
+  vulkan-icd-loader      lib32-vulkan-icd-loader
+)
 
-optdepends=(alsa-lib alsa-plugins dosbox giflib gnutls gsm
-  gst-plugins-base gst-plugins-base-libs gst-plugins-good libcups
-  libgphoto2 libjpeg-turbo libldap libpng libpulse libxcomposite
-  libxinerama libxslt mpg123 ncurses ocl-icd openal samba sane sdl2
-  v4l-utils vkd3d vulkan-icd-loader lib32-alsa-lib lib32-alsa-plugins
-  lib32-giflib lib32-gnutls lib32-gst-plugins-base
-  lib32-gst-plugins-base-libs lib32-gst-plugins-good lib32-libcups
-  lib32-libjpeg-turbo lib32-libldap lib32-libpng lib32-libpulse
-  lib32-libxcomposite lib32-libxinerama lib32-libxslt lib32-mpg123
-  lib32-ncurses lib32-ocl-icd lib32-openal lib32-sdl2 lib32-v4l-utils
-  lib32-vkd3d lib32-vulkan-icd-loader)
+optdepends=(
+  alsa-lib               lib32-alsa-lib
+  alsa-plugins           lib32-alsa-plugins
+  dosbox
+  giflib                 lib32-giflib
+  gnutls                 lib32-gnutls
+  gsm                    lib32-gsm
+  gst-plugins-base       lib32-gst-plugins-base
+  gst-plugins-base-libs  lib32-gst-plugins-base-libs
+  gst-plugins-good       lib32-gst-plugins-good
+  libcups                lib32-libcups
+  libgphoto2             lib32-libgphoto2
+  libjpeg-turbo          lib32-libjpeg-turbo
+  libldap                lib32-libldap
+  libpng                 lib32-libpng
+  libpulse               lib32-libpulse
+  libxcomposite          lib32-libxcomposite
+  libxinerama            lib32-libxinerama
+  libxslt                lib32-libxslt
+  mpg123                 lib32-mpg123
+  ncurses                lib32-ncurses
+  ocl-icd                lib32-ocl-icd
+  openal                 lib32-openal
+  samba
+  sane
+  sdl2                   lib32-sdl2
+  v4l-utils              lib32-v4l-utils
+  vkd3d                  lib32-vkd3d
+  vulkan-icd-loader      lib32-vulkan-icd-loader
+  wine-mono
+)
 
-provides=("wine=$pkgver")
-conflicts=("wine")
+provides=("wine=$pkgver" "wine-stable=$pkgver")
+conflicts=("wine" "wine-stable")
 
 prepare() {
   # Allow ccache to work
-  mv wine-$pkgver wine
+  mv wine-$_pkgver wine
 
   for patch in *.patch; do
     if [ ! -f "$patch" ]; then
@@ -75,6 +130,9 @@ prepare() {
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
+
+  # Fix openldap 2.5+ detection
+  sed 's/-lldap_r/-lldap/' -i wine/configure
 
   # Get rid of old build dirs
   rm -rf wine-{32,64}-build
