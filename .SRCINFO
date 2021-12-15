@@ -1,12 +1,14 @@
 pkgbase = dotnet-core-bin
 	pkgver = 6.0.1.sdk101
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
 	options = staticlibs
+	source = dotnet.sh
+	sha512sums = e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/ede8a287-3d61-4988-a356-32ff9129079e/bdb47b6b510ed0c4f0b132f7f4ad9d5a/dotnet-sdk-6.0.101-linux-x64.tar.gz
 	sha512sums_x86_64 = ca21345400bcaceadad6327345f5364e858059cfcbc1759f05d7df7701fec26f1ead297b6928afa01e46db6f84e50770c673146a10b9ff71e4c7f7bc76fbf709
 	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/72888385-910d-4ef3-bae2-c08c28e42af0/59be90572fdcc10766f1baf5ac39529a/dotnet-sdk-6.0.101-linux-arm.tar.gz
@@ -16,6 +18,8 @@ pkgbase = dotnet-core-bin
 
 pkgname = dotnet-host-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (binary)
+	depends = gcc-libs
+	depends = glibc
 	provides = dotnet-host
 	provides = dotnet-host=6.0.1
 	conflicts = dotnet-host
@@ -31,13 +35,13 @@ pkgname = aspnet-runtime-bin
 pkgname = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary)
 	depends = dotnet-host>=6.0.1
+	depends = gcc-libs
 	depends = glibc
 	depends = icu
-	depends = krb5
-	depends = libcurl.so
+	depends = libgssapi_krb5.so
 	depends = libunwind
-	depends = openssl
 	depends = zlib
+	depends = openssl
 	optdepends = lttng-ust: CoreCLR tracing
 	provides = dotnet-runtime=6.0.1
 	provides = dotnet-runtime-6.0
@@ -46,8 +50,9 @@ pkgname = dotnet-runtime-bin
 
 pkgname = dotnet-sdk-bin
 	pkgdesc = The .NET Core SDK (binary)
-	depends = dotnet-runtime-bin
 	depends = glibc
+	depends = gcc-libs
+	depends = dotnet-runtime-bin
 	depends = dotnet-targeting-pack-bin
 	depends = netstandard-targeting-pack-bin
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications

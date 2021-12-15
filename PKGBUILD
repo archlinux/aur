@@ -13,14 +13,16 @@ pkgname=(
 pkgver=6.0.1.sdk101
 _runtimever=6.0.1
 _sdkver=6.0.101
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
+source=('dotnet.sh')
 source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/72888385-910d-4ef3-bae2-c08c28e42af0/59be90572fdcc10766f1baf5ac39529a/dotnet-sdk-6.0.101-linux-arm.tar.gz')
 source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/d43345e2-f0d7-4866-b56e-419071f30ebe/68debcece0276e9b25a65ec5798cf07b/dotnet-sdk-6.0.101-linux-arm64.tar.gz')
 source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/ede8a287-3d61-4988-a356-32ff9129079e/bdb47b6b510ed0c4f0b132f7f4ad9d5a/dotnet-sdk-6.0.101-linux-x64.tar.gz')
+sha512sums=('e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf')
 sha512sums_armv7h=('f9e212dc4cccbe665d9aac23da6bdddce4957ae4e4d407cf3f1d6da7e79784ebd408c3a59b3ecc6ceaa930b37cf01a4a91c6b38517970d49227e96e50658cc46')
 sha512sums_aarch64=('04cd89279f412ae6b11170d1724c6ac42bb5d4fae8352020a1f28511086dd6d6af2106dd48ebe3b39d312a21ee8925115de51979687a9161819a3a29e270a954')
 sha512sums_x86_64=('ca21345400bcaceadad6327345f5364e858059cfcbc1759f05d7df7701fec26f1ead297b6928afa01e46db6f84e50770c673146a10b9ff71e4c7f7bc76fbf709')
@@ -28,6 +30,10 @@ sha512sums_x86_64=('ca21345400bcaceadad6327345f5364e858059cfcbc1759f05d7df7701fe
 package_dotnet-host-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (binary)'
   provides=("dotnet-host" "dotnet-host=${_runtimever}")
+  depends=(
+    'gcc-libs'
+    'glibc'
+  )
   conflicts=('dotnet-host')
 
   install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host}}
@@ -35,18 +41,20 @@ package_dotnet-host-bin() {
   cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host
   ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
   ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
+  install -Dm 644 "${srcdir}"/dotnet.sh -t "${pkgdir}"/etc/profile.d/
 }
 
 package_dotnet-runtime-bin() {
   pkgdesc='The .NET Core runtime (binary)'
-  depends=("dotnet-host>=${_runtimever}"
-           'glibc'
-           'icu' 
-           'krb5'
-           'libcurl.so'
-           'libunwind'
-           'openssl'
-           'zlib'
+  depends=(
+  	"dotnet-host>=${_runtimever}"
+    'gcc-libs'
+    'glibc'
+    'icu'
+    'libgssapi_krb5.so'
+    'libunwind'
+    'zlib'
+    'openssl'
   )
   optdepends=('lttng-ust: CoreCLR tracing')
   provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-6.0")
@@ -71,8 +79,9 @@ package_aspnet-runtime-bin() {
 package_dotnet-sdk-bin() {
   pkgdesc='The .NET Core SDK (binary)'
   depends=(
-    'dotnet-runtime-bin'
     'glibc'
+    'gcc-libs'
+    'dotnet-runtime-bin'
     'dotnet-targeting-pack-bin'
     'netstandard-targeting-pack-bin')
   optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
