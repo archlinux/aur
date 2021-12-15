@@ -4,7 +4,7 @@
 pkgname=python-ufo2ft
 _pyname=${pkgname#python-}
 pkgver=2.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A bridge from UFOs to FontTools objects'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -13,7 +13,7 @@ _pydeps=(booleanoperations
          cffsubr
          cu2qu
          defcon
-         'fonttools>=4.26.1'
+         fonttools
          fs) # for fonttools[ufo]
 depends=(python
          "${_pydeps[@]/#/python-}")
@@ -30,7 +30,6 @@ sha256sums=('41ade052a6bc4c6b192f627922b52053cab307295512724e8fad6f2b12c49e61')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
