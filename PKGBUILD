@@ -4,27 +4,27 @@ _binname=threema
 _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
-pkgver=1.0.3
-pkgrel=5
-_threema_web_ver=2.3.17 # Keep in sync with version used by threema-desktop
+pkgver=1.1.0
+pkgrel=1
+_threema_web_ver=2.3.18 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL')
 depends=(electron)
 makedepends=(npm)
 source=(
-  "threema-web-electron-v${pkgver}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/release-${pkgver}-latest.tar.gz"
+  "threema-web-electron-v${pkgver}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/release-${pkgver}.tar.gz"
   "threema-web-v${_threema_web_ver}.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v${_threema_web_ver}.tar.gz"
   "threema.desktop"
 )
 sha256sums=(
-  "5ddd3ec7e7ec422c624a744a230bf1fb3d35e96ee731ee9af70ab6e89024e094"
-  "15d80662188332d019ea82cf2486952b4deca39790b275b585a3c4178e7a8d54"
+  "82009ba929133192b69a18efacd21a79ad06bfa5ce5cc987233f0072af388f41"
+  "c5cb779246bae5eb2a3507c294ef3722294130a444c8f86ec01b515d45a04576"
   "ccfdae3416e2a1f096cfaf67fd8f8dacb0d8348582fc666ecc8b5b0d08ef5bf2"
 )
 
 build() {
-  cd "${srcdir}/threema-web-electron-release-${pkgver}-latest/"
+  cd "${srcdir}/threema-web-electron-release-${pkgver}/"
 
   # Copy threema-web source code (since threema-web-electron submodule
   # is not contained in GitHub export)
@@ -51,7 +51,7 @@ build() {
 package() {
   cd "${srcdir}/"
 
-  _app_root="${srcdir}/threema-web-electron-release-${pkgver}-latest"
+  _app_root="${srcdir}/threema-web-electron-release-${pkgver}"
 
   # Copy application
   mkdir -p "${pkgdir}/usr/lib/${pkgname}/resources/"
