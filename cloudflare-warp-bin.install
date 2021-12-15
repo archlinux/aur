@@ -1,13 +1,28 @@
 pkgname='cloudflare-warp-bin'
 
 post_install() {
+        setcap CAP_NET_ADMIN=+ei /usr/bin/warp-svc
+        echo ""
+        echo "==>"
+        echo "==> CAP_NET_ADMIN set on /usr/bin/warp-svc"
+        echo "==>"
 	echo "==> You need to start the WARP service before using it. To start once:"
 	echo "==> sudo systemctl start warp-svc.service"
 	echo "==> To start right now and automatically after startup:"
 	echo "==> sudo systemctl enable --now warp-svc.service"
+        echo "==>"
+        echo ""
 }
 
 post_remove() {
+        echo ""
+        echo "==>"
 	echo "==> If you have warp service set to run at startup, you should remove it by using the command below:"
 	echo "==> sudo systemctl disable warp-svc.service"
+        echo "==>"
+        echo ""
+}
+
+post_upgrade() {
+        post_install
 }
