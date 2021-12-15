@@ -5,14 +5,12 @@ pkgdesc='Reconnaissance tool for GitLab and GitHub organizations'
 arch=(x86_64 i686 armv7h)
 url='https://github.com/codeEmitter/gitrob'
 _branch='master'
-pkgver=3.4.1_beta
+pkgver=3.4.4_beta
 pkgrel=1
 license=('MIT')
 makedepends=(go)
 source=("${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('b70e44eabc4e3ded8f44bebbd65e98d23631b3be2e7f2ae08045a01ca3cddabb')
-sha512sums=('8f837a6d799ebc18f7574b06a41a65da5b2cb2d678af17b11fc9e3404d1a9ad696902d84bc71056c47b8a68fea38e3b7bec0a53cef5635a1630086e337c55194')
-b2sums=('542cc9cd6789009fe0cb8a1d222683c5feda7f777be707fccd66e370983fd0a8afb396866684a46c2961eefe5ed8fa9e7b906f945bc6b2829459cab69b663b19')
+b2sums=('9eb98407b385798254e3913da828c8ddb982e7463be5fbce1e80966c8ba8fd1127f4f09077ac6a89e86c1825bf21e90801034abe5c7c9566cab03d1eda6f26a1')
 provides=($pkgname)
 conflicts=($pkgname)
 
