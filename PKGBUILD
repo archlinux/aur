@@ -3,18 +3,19 @@
 _name=chomsky
 pkgbase=$_name-font
 pkgname=(otf-$_name)
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc='A font in the style of the New York Times masthead'
-arch=('any')
+arch=(any)
 url="https://github.com/ctrlcctrlv/$_name"
-license=('OFL')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e8218b6386788ee199c12431924a324e2e684be06ec77d2eaf518b0a04de09be')
+license=(OFL)
+_archive="$_name-$pkgver"
+source=("$_archive.tgz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('23198f26aa149112914c0487ce5180921fedb869a40b1175f308ad577085d532')
 
 package_otf-chomsky() {
     provides=("$pkgbase")
-    cd "$_name-$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" dist/*.otf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
+    cd "$_archive"
+    install -Dm0644 -t "$pkgdir/usr/share/fonts/OTF/" dist/*.otf
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
 }
