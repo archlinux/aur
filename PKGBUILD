@@ -1,5 +1,5 @@
 pkgname=zash
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Zash - A Zuper Awesome Shell'
 arch=('x86_64' 'aarch64')
