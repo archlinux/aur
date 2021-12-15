@@ -6,14 +6,12 @@ pkgdesc='A tool for managing Lokomotive clusters, components and updates.'
 arch=(x86_64)
 url='https://kinvolk.io/lokomotive-kubernetes/'
 _url='https://github.com/kinvolk/lokomotive'
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 license=('APACHE')
 makedepends=(go)
 source=("${_distribution}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c506402bc0426295c528fc58558830f10a05b55189c049990f3fa659df48d63f')
-sha512sums=('ddf7324ab3fa6029ca4354980a5d15fe6e373bafcb6b50dbb57e5e89b35206f702c501e78d7c000cb006c13863af3364f3547947b41732c18486ce72b315efd7')
-b2sums=('90d23ce061d9fdbcd6b0825327af337ae2fef2b61819952f3010badf36966c3a74be7de250bbe49bafb35639b5a14e86802ff1d67a18b8fa59e6f20cf6fbaa8b')
+b2sums=('3b3e107a4184912c019023a8f3179b51a4bfd898a837cf5ceb216bd239bbc74d56ae9db0039419646c1b8aa4be3556be73cdd2a5fe136431860bcef6ffb823c5')
 provides=($pkgname)
 conflicts=($pkgname)
 
