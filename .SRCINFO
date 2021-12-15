@@ -1,13 +1,14 @@
 pkgbase = trufont
 	pkgdesc = A streamlined and hackable font editor
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trufont.github.io
 	arch = any
 	license = GPL3
 	license = LGPL3
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
 	depends = python-appdirs
 	depends = python-booleanoperations
@@ -32,4 +33,3 @@ pkgbase = trufont
 	sha256sums = 0264939bfeb8b9b505f8cdb653faa67332724fadfa46b2b0898fd3c78468cd82
 
 pkgname = trufont
-
