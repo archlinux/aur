@@ -1,0 +1,18 @@
+pkgbase = plano-theme-git
+	pkgdesc = Flat GTK, xfwm4, Openbox theme
+	pkgver = r309.1eacc2b
+	pkgrel = 1
+	url = https://github.com/lassekongo83/plano-theme
+	arch = any
+	license = GPL3
+	makedepends = ninja
+	makedepends = meson
+	makedepends = sassc
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	provides = plano-theme
+	conflicts = plano-theme
+	source = plano-theme-git::git+https://github.com/lassekongo83/plano-theme
+	md5sums = SKIP
+
+pkgname = plano-theme-git
