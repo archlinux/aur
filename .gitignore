@@ -1,8 +1,10 @@
 falcon-sensor-*.pkg.tar.zst
-falcon-sensor_5.33.0-9808_amd64.deb
+falcon-sensor-*.pkg.tar.xz
+falcon-sensor*.deb
+falcon-sensor*.rpm
+ubuntu*.deb
+rhel6-*.rpm
 falcon-sensor-*.log
 PKGBUILD-namcap.log
 pkg/
 src/
-rhel6-centos6-4.15.6003.rpm
-ubuntu14-ubuntu16-4.15.6003.deb

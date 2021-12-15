@@ -1,17 +1,17 @@
 pkgbase = falcon-sensor
 	pkgdesc = Crowdstrike Falcon Sensor daemon and kernel modules
-	pkgver = 5.33.0_9808
+	pkgver = 6.33.0_13003
 	pkgrel = 1
 	url = https://crowdstrike.com
+	install = falcon-sensor.install
 	arch = x86_64
 	license = custom
 	depends = openssl
 	depends = libnl1
 	backup = etc/logrotate.d/falcon-sensor
-	source = manual://falcon-sensor_5.33.0-9808_amd64.deb
+	source = manual://falcon-sensor_6.33.0-13003_amd64.deb
 	source = LICENSE
-	sha256sums = 2d2914b3b5a3bca3eaa0cbb72fa255269c262422d4fbe555f095fb47930f6fcc
+	sha256sums = 8d577e824e88b97870251d0c61a70cd59dbfcc7c6f73b61d83610f704e1fd0c0
 	sha256sums = 76dbcf8027846d9a8c2fbd9ca2a163c171bbc75161b46a24f59bf64dd44fc6e9
 
 pkgname = falcon-sensor
-

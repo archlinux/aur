@@ -1,0 +1,13 @@
+post_install() {
+  echo ':: Add your customer id to falcon: '
+  echo "     sudo /opt/CrowdStrike/falconctl -s --cid=<CID>"
+  echo ':: Start and enable falcon-sensor through systemd:'
+  echo '     sudo systemctl enable --now falcon-sensor'
+}
+
+post_upgrade() {
+  echo ':: Add your customer id to falcon: '
+  echo "     sudo /opt/CrowdStrike/falconctl -s --cid=<CID>"
+  echo ':: Start and enable falcon-sensor through systemd:'
+  echo '     sudo systemctl enable --now falcon-sensor'
+}
