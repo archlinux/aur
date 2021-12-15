@@ -1,39 +1,6 @@
-diff -urN --color a/lib/googlecloudsdk/api_lib/run/condition.py b/lib/googlecloudsdk/api_lib/run/condition.py
---- a/lib/googlecloudsdk/api_lib/run/condition.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/lib/googlecloudsdk/api_lib/run/condition.py	2021-12-13 09:00:57.032196877 -0700
-@@ -20,6 +20,11 @@
- 
- import collections
- 
-+try:
-+  # Python 3.3 and above.
-+  collections_abc = collections.abc
-+except AttributeError:
-+  collections_abc = collections
- 
- _SEVERITY_ERROR = 'Error'
- _SEVERITY_WARNING = 'Warning'
-@@ -53,7 +58,7 @@
-   return messages
- 
- 
--class Conditions(collections.Mapping):
-+class Conditions(collections_abc.Mapping):
-   """Represents the status Conditions of a resource in a dict-like way.
- 
-   Resource means a Cloud Run resource, e.g: Configuration.
 diff -urN --color a/lib/googlecloudsdk/api_lib/run/k8s_object.py b/lib/googlecloudsdk/api_lib/run/k8s_object.py
 --- a/lib/googlecloudsdk/api_lib/run/k8s_object.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/lib/googlecloudsdk/api_lib/run/k8s_object.py	2021-12-13 08:58:28.408921930 -0700
-@@ -482,7 +482,7 @@
-     self._l.insert(i, v)
- 
- 
--class ListAsReadOnlyDictionaryWrapper(collections.Mapping):
-+class ListAsReadOnlyDictionaryWrapper(collections_abc.Mapping):
-   """Wraps repeated messages field with name in a dict-like object.
- 
-   This class is a simplified version of ListAsDictionaryWrapper for when there
 @@ -544,7 +544,7 @@
  
  
@@ -68,31 +35,6 @@ diff -urN --color a/lib/googlecloudsdk/api_lib/run/traffic.py b/lib/googleclouds
    """Wraps a repeated TrafficTarget message and provides dict-like access.
  
    The dictionary key is one of
-diff -urN --color a/lib/googlecloudsdk/core/console/progress_tracker.py b/lib/googlecloudsdk/core/console/progress_tracker.py
---- a/lib/googlecloudsdk/core/console/progress_tracker.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/lib/googlecloudsdk/core/console/progress_tracker.py	2021-12-13 09:17:48.945531775 -0700
-@@ -37,6 +37,12 @@
- 
- import six
- 
-+try:
-+  # Python 3.3 and above.
-+  collections_abc = collections.abc
-+except AttributeError:
-+  collections_abc = collections
-+
- 
- def ProgressTracker(
-     message=None,
-@@ -648,7 +654,7 @@
-   WARNING = 'warning'
- 
- 
--class _BaseStagedProgressTracker(collections.Mapping):
-+class _BaseStagedProgressTracker(collections_abc.Mapping):
-   """Base class for staged progress trackers.
- 
-   During each tick, the tracker checks if there is a stage being displayed by
 diff -urN --color a/lib/third_party/dns/namedict.py b/lib/third_party/dns/namedict.py
 --- a/lib/third_party/dns/namedict.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/lib/third_party/dns/namedict.py	2021-12-13 09:23:03.284939549 -0700
@@ -228,31 +170,6 @@ diff -urN --color a/lib/third_party/prompt_toolkit/styles/from_dict.py b/lib/thi
  __all__ = (
      'style_from_dict',
  )
-diff -urN --color a/platform/bq/bigquery_client.py b/platform/bq/bigquery_client.py
---- a/platform/bq/bigquery_client.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/platform/bq/bigquery_client.py	2021-12-13 09:02:54.668508160 -0700
-@@ -46,6 +46,12 @@
- # pylint: disable=unused-import
- import bq_flags
- 
-+try:
-+  # Python 3.3 and above.
-+  collections_abc = collections.abc
-+except AttributeError:
-+  collections_abc = collections
-+
- 
- # A unique non-None default, for use in kwargs that need to
- # distinguish default from None.
-@@ -6719,7 +6725,7 @@
-   def __init__(self, *unused_args, **unused_kwds):
-     raise NotImplementedError('Cannot instantiate static class ApiClientHelper')
- 
--  class Reference(collections.Mapping):
-+  class Reference(collections_abc.Mapping):
-     """Base class for Reference objects returned by apiclient."""
-     _required_fields = frozenset()
-     _optional_fields = frozenset()
 diff -urN --color a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
 --- a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py	2021-12-13 09:25:54.439990909 -0700
