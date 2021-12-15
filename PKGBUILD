@@ -1,18 +1,22 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Maintainer: Padraic Fanning <fanninpm AT miamioh DOT edu>
 
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
 depends=(
+	'gtk3'
+	'gtksourceview4'
 	'python-gaphas'
-	'python-typing_extensions'
 	'python-generic'
+	'python-jedi'
 	'python-tinycss2'
+	'python-typing_extensions'
 )
 makedepends=(
 	'python-pip'
