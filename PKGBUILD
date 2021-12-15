@@ -1,6 +1,6 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
-pkgver=r498.fb0e0d2
+pkgver=r526.277e3b1
 pkgrel=1
 pkgname=primenote-git
 pkgdesc="Fanciest sticky note-taking application"
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 makedepends=("git")
 depends=("python" "python-setuptools" "python-pyqt5" "python-requests" "qt5-svg")
 optdepends=("qtermwidget: support for console and Vim modes"
-            "vim: support for Vim mode")
+            "gvim: support for Vim mode")
 
 prepare() {
   git clone https://gitlab.com/william.belanger/${pkgname%-git}.git --single-branch
