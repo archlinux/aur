@@ -21,6 +21,11 @@ prepare() {
   sed -i 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' "contrib/$pkgname.service.example"
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  go test ./...
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
 
@@ -31,11 +36,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build -o build/ .
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-  go test ./...
 }
 
 package() {
