@@ -1,11 +1,11 @@
 pkgname=treefetch
-pkgver="v1.2.0"
+pkgver="v1.2.1"
 pkgrel=1
 pkgdesc="A lightning-fast system fetch tool built with Rust."
 url="https://github.com/angelofallars/treefetch.git"
 arch=("x86_64")
 license=('GPL3')
-md5sums=("3dee14788296ddfa6ec0ea64b8db9fcf")
+md5sums=("c767dbb7ef831d405b7374d3997bcbac")
 source=("https://github.com/angelofallars/treefetch/releases/download/${pkgver}/treefetch")
 
 package() {
