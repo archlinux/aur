@@ -1,7 +1,7 @@
 # Maintainer: Kookies <kookies@tutamail.com>
 _name=nxtik
 pkgname=$_name-git
-pkgver=a8090ef
+pkgver=v1.0.r0.gb01fa60
 pkgrel=1
 pkgdesc="A library and tool for parsing and outputting information about Switch tik files (git)"
 arch=(x86_64)
