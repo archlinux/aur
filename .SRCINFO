@@ -1,6 +1,6 @@
 pkgbase = vim-toml-git
 	pkgdesc = Vim syntax for TOML
-	pkgver = r75.717bd87
+	pkgver = r76.2c8983c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/cespare/vim-toml
