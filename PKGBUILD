@@ -20,7 +20,7 @@ pkgver() {
 package() {
 	cd Xnine
     mkdir -p "$pkgdir/usr/share/Xnine/"
-    install -Dm551 nine_sdl.so "$pkgdir/usr/share/Xnine/"
+    install -Dm755 nine_sdl.so "$pkgdir/usr/share/Xnine/"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/Xnine/LICENSE"
 }
 
