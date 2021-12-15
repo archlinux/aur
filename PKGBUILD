@@ -6,7 +6,7 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-git
-pkgver=4.17.5+3+g17ec6c93
+pkgver=4.17.7+66+gc710d268
 pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ license=('GPL')
 groups=('xfce4-devel')
 url='https://thunar.xfce.org'
 depends=('desktop-file-utils' 'exo>=4.17.0' 'gtk3' 'hicolor-icon-theme' 'libgudev'
-         'libexif' 'libnotify' 'libpng' 'libxfce4ui>=4.17.0' 'libxfce4util>=4.17.1')
+         'libexif' 'libnotify' 'libpng' 'libxfce4ui>=4.17.2' 'libxfce4util>=4.17.1')
 makedepends=('intltool' 'xfce4-panel' 'gtk-doc' 'gobject-introspection' 'xfce4-dev-tools' 'git')
 optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 	        'xfce4-panel: trash applet'

@@ -1,6 +1,6 @@
 pkgbase = thunar-git
 	pkgdesc = file manager for xfce
-	pkgver = 4.17.5+3+g17ec6c93
+	pkgver = 4.17.7+66+gc710d268
 	pkgrel = 1
 	url = https://thunar.xfce.org
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = thunar-git
 	depends = libexif
 	depends = libnotify
 	depends = libpng
-	depends = libxfce4ui>=4.17.0
+	depends = libxfce4ui>=4.17.2
 	depends = libxfce4util>=4.17.1
 	optdepends = gvfs: trash support, mounting with udisks, and remote filesystems
 	optdepends = xfce4-panel: trash applet
@@ -31,7 +31,7 @@ pkgbase = thunar-git
 	optdepends = thunar-volman: manages removable devices
 	optdepends = thunar-archive-plugin: create and deflate archives
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
-	provides = thunar=4.17.5+3+g17ec6c93
+	provides = thunar=4.17.7+66+gc710d268
 	conflicts = thunar
 	source = thunar::git+https://gitlab.xfce.org/xfce/thunar.git
 	sha256sums = SKIP
