@@ -1,7 +1,7 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=soniccd-git
-pkgver=r377.907d631
+pkgver=r423.f0d510c
 pkgrel=1
 pkgdesc='A full decompilation of Sonic CD 2011, based on the PC remake with
 improvements & tweaks from the mobile remakes.'
@@ -9,16 +9,14 @@ arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-CD-11-Decompilation'
 license=('custom:RSDKv3/4 Decompilation Source Code License v1')
 makedepends=('git')
-depends=('sdl2' 'libogg' 'libtheora' 'libvorbis')
+depends=('sdl2' 'libogg' 'libtheora' 'libvorbis' 'tinyxml2')
 provides=(soniccd)
 source=(
 	"git+${url}.git"
-	'git+https://github.com/leethomason/tinyxml2.git'
 	'soniccd-launcher'
 	'soniccd.desktop'
 )
 sha256sums=(
-	'SKIP'
 	'SKIP'
 	'b70b6526c137859385234a19d1935e089c3c6a71639f42f7d579135579e8243b'
 	'5ef3e25f5391707fdc461a8c25817ddde38a1d34d125dc5b3c43f706b889ed8a'
@@ -28,10 +26,6 @@ install=soniccd.install
 pkgver() {
 	cd "$srcdir/Sonic-CD-11-Decompilation"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	ln -sfn "$srcdir/tinyxml2" "$srcdir/Sonic-CD-11-Decompilation/dependencies/all/tinyxml2"
 }
 
 build() {
