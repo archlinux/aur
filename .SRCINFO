@@ -1,0 +1,14 @@
+pkgbase = apus-kde-git
+	pkgdesc = A dark lilac theme for KDE Plasma desktop
+	pkgver = r9.427a6e0
+	pkgrel = 1
+	url = https://gitlab.com/jomada/apus
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://gitlab.com/jomada/apus.git
+	sha256sums = SKIP
+
+pkgname = apus-kde-git
+	provides = apus-kde
