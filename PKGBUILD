@@ -1,7 +1,7 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=cloudflare-warp-bin
-pkgver=2021.10.0
-pkgrel=4
+pkgver=2021.12.0
+pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
 license=("unknown")
@@ -15,10 +15,10 @@ conflicts=('cloudflare-warp')
 changelog=$pkgname.changelog
 
 # in ubuntu focal: apt-get --print-uris install cloudflare-warp
-source=("https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2021_10_0_1_amd64_916ef55734_amd64.deb")
+source=("https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2021_12_0_1_amd64_2dae41e61d_amd64.deb")
 
-md5sums=('ececa6903c4d9d41b2514c6a6c79cf0c')
-sha256sums=('4e9b1cbff917f3b2c99ba866320b7896bc9f02c51fa82edb639b2b91165f6793')
+md5sums=('317c05891ead5d5c9eb1af092b58c8a0')
+sha256sums=('c7f1075b8a99fdbf40a3e6e849f93ed49e55aaae6418c3b5c2665ee7d347a682')
 install=$pkgname.install
 
 # The .deb package contains the md5sums of the individual files as well -- we'll extract
