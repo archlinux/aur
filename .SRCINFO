@@ -1,7 +1,7 @@
 pkgbase = volumeicon-gtk2
 	pkgdesc = Volume control for the system tray (gtk2)
 	pkgver = 0.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://softwarebakery.com/maato/volumeicon.html
 	install = volumeicon.install
 	arch = x86_64
@@ -12,14 +12,15 @@ pkgbase = volumeicon-gtk2
 	depends = alsa-lib
 	depends = gtk2
 	depends = libnotify
-	provides = volumeicon=0.5.1-4
+	provides = volumeicon=0.5.1-5
 	conflicts = volumeicon
-	source = http://softwarebakery.com/maato/files/volumeicon/volumeicon-0.5.1.tar.gz
+	source = volumeicon-gtk2::git+https://github.com/Maato/volumeicon.git#tag=0.5.1
+	source = volumeicon-notify.patch::https://github.com/Maato/volumeicon/commit/78a9c23775ebe12d3f3be93c0798144a6e732d90.patch
 	source = gtk2.patch
 	source = volumeicon.desktop
-	sha256sums = 24b8c1d0a81d708b201ce6e67301fc175d65588d892d01859f667b8db8a05da0
+	sha256sums = SKIP
+	sha256sums = f9d7d14e302f760815bb0da2af7f00ae3f2ef34da69e84863ae3e97e7302b8db
 	sha256sums = 7980d0eadfeea474b51d4e43aecde9c28c5c91729b8601acf9472300fb1bdc2a
 	sha256sums = 3f989bce3a080b2446af6d7ed7e8a22dfd3019f888a7b11a0759bf7cf704f975
 
 pkgname = volumeicon-gtk2
-
