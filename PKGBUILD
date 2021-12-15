@@ -4,12 +4,12 @@
 _pyname=agate-sql
 pkgname=python-$_pyname
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds SQL read/write support to agate'
 arch=(any)
 url="https://$_pyname.readthedocs.org"
 license=(MIT)
-_pydeps=('agate>=1.5.0'
+_pydeps=(agate
          sqlalchemy
          sphinx_rtd_theme)
 depends=(python
