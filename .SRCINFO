@@ -1,0 +1,12 @@
+pkgbase = dim-screen
+	pkgdesc = A screen dimmer bash script designed to work with xss-lock
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SafwanLjd/dim-screen
+	arch = any
+	license = GPL3
+	depends = xorg-xbacklight
+	source = https://github.com/SafwanLjd/dim-screen/releases/download/1.0/dim-screen.tar.gz
+	sha1sums = 652a7466db1f58b0338d1e9226eb4e535d1bb8d9
+
+pkgname = dim-screen
