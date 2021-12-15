@@ -78,7 +78,6 @@ pkgbase = kodi-git
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.12.0.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/libudfread-1.1.0.tar.gz
 	source = cheat-sse-build.patch
-	source = cmake-fix-building-internal-spdlog.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/20674.patch
 	b2sums = SKIP
 	b2sums = 283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da
 	b2sums = 7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355
@@ -91,7 +90,6 @@ pkgbase = kodi-git
 	b2sums = 441123be124ad851efa30bda0d828a764ebaf79ba6692a6e5904000b33818e9de78c3a964037ac93ef562890980c58169141e55354dce86857c02bcd917150d6
 	b2sums = e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e
 	b2sums = 6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0
-	b2sums = aef16c7f695daf71dfc70ecfdb5b0bb53c62576c5ce83194056b2037bc99d3812405f1ab4545b429d5bf65a1a69b93fe2517cf2477d7f545766bfda44052d9d8
 
 pkgname = kodi-git
 	pkgdesc = A software media player and entertainment hub for digital media (master branch)
