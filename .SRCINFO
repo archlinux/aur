@@ -10,6 +10,8 @@ pkgbase = python-river-git
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pandas
+	provides = python-river
+	conflicts = python-river
 	source = git://github.com/online-ml/river.git
 	sha512sums = SKIP
 
