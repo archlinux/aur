@@ -2,8 +2,8 @@
 
 pkgname=python-pypsrp
 _pkgname=pypsrp
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Python PowerShell Remoting Protocol Client Library"
 url="https://pypi.org/project/pypsrp/"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-six' 'python-cryptography' 'python-requests'
 	 'python-pyspnego' 'python-gssapi')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e4d13c84a5a150c75ec5bc8653059fa78e8421172049e0496d1df89ca24d9a6d')
+sha256sums=('d7144ad7c798a4dcded20a71c712d63eb4bfb32debe62f3a98f01481384a5558')
 
 package() {
   cd ${_pkgname}-${pkgver}
