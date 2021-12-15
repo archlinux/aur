@@ -1,6 +1,6 @@
 pkgbase = skanpage-git
 	pkgdesc = KDE image scanning application (git version)
-	pkgver = r157.c987d53
+	pkgver = r254.3bc6865
 	pkgrel = 1
 	url = https://invent.kde.org/utilities/skanpage
 	arch = i686
@@ -18,6 +18,8 @@ pkgbase = skanpage-git
 	depends = kconfig
 	depends = qt5-base
 	depends = qt5-declarative
+	provides = skanpage
+	conflicts = skanpage
 	source = git+https://invent.kde.org/utilities/skanpage.git
 	sha1sums = SKIP
 
