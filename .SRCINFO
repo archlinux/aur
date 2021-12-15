@@ -1,0 +1,16 @@
+pkgbase = nxtik-git
+	pkgdesc = A library and tool for parsing and outputting information about Switch tik files (git)
+	pkgver = a8090ef
+	pkgrel = 1
+	url = https://github.com/jam1garner/nxtik
+	arch = x86_64
+	license = unknown
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = nxtik
+	conflicts = nxtik
+	source = nxtik::git+https://github.com/jam1garner/nxtik
+	md5sums = SKIP
+
+pkgname = nxtik-git
