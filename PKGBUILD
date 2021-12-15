@@ -2,8 +2,8 @@
 # Maintainer: Mantas M. <grawity@gmail.com>
 pkgname=sssd-nosmb
 _pkgname=sssd
-pkgver=2.5.2
-pkgrel=1
+pkgver=2.6.1
+pkgrel=3
 pkgdesc="System Security Services Daemon"
 arch=('x86_64' 'i686')
 url="https://github.com/SSSD/sssd"
@@ -17,6 +17,7 @@ depends=(
   'libunistring'
   'nss'
 #  'smbclient'     # for libndr-nbt
+  'pcre2'
   'ldb'
   'cifs-utils'
   'dbus'
@@ -43,11 +44,9 @@ checkdepends=(
   'softhsm'
 )
 backup=('etc/logrotate.d/sssd')
-source=("https://github.com/SSSD/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc}
-        'fix-py-tests.patch')
-sha512sums=('a9bac7b2cc23022dce3bcda314c9c26a0a0914c448f6d5a51c5ba18670f04c1fd1a94cb20173235b6285df1dcc9251cb6b3f3e71a220037b4eb66668e6f33c48'
-            'SKIP'
-            '7570e1e67d6d23654a6be0307a1e9e0595447473f9783a70be0df7c8902833bc7f35e296b5006c6ae1e684452cd6e26d61be5e3f561b481c50d6edafaafa0698')
+source=("https://github.com/SSSD/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc})
+sha512sums=('5b35a66c37593de738f52d5ad2f7860067af4061bd11b2f5c4b701177ef1bc3091d3c3df573d751339e9c9bb07476988b0b030b91b6a33adcb663df16be80d81'
+            'SKIP')
 validpgpkeys=('E4E366758CA0716AAB8048671EC6AB7532E7BC25'
               '16F24229488E736048952737BA88000FE6398272'
               '1A41DC67505F89A330828B66AFFE75DDE8508E12')

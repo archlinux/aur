@@ -1,7 +1,7 @@
 pkgbase = sssd-nosmb
 	pkgdesc = System Security Services Daemon
-	pkgver = 2.5.2
-	pkgrel = 1
+	pkgver = 2.6.1
+	pkgrel = 3
 	url = https://github.com/SSSD/sssd
 	arch = x86_64
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = sssd-nosmb
 	depends = libnl
 	depends = libunistring
 	depends = nss
+	depends = pcre2
 	depends = ldb
 	depends = cifs-utils
 	depends = dbus
@@ -32,17 +33,15 @@ pkgbase = sssd-nosmb
 	depends = jansson
 	depends = libtevent.so
 	depends = libldb.so
-	provides = sssd=2.5.2-1
+	provides = sssd=2.6.1-3
 	conflicts = sssd
 	backup = etc/logrotate.d/sssd
-	source = https://github.com/SSSD/sssd/releases/download/2.5.2/sssd-2.5.2.tar.gz
-	source = https://github.com/SSSD/sssd/releases/download/2.5.2/sssd-2.5.2.tar.gz.asc
-	source = fix-py-tests.patch
+	source = https://github.com/SSSD/sssd/releases/download/2.6.1/sssd-2.6.1.tar.gz
+	source = https://github.com/SSSD/sssd/releases/download/2.6.1/sssd-2.6.1.tar.gz.asc
 	validpgpkeys = E4E366758CA0716AAB8048671EC6AB7532E7BC25
 	validpgpkeys = 16F24229488E736048952737BA88000FE6398272
 	validpgpkeys = 1A41DC67505F89A330828B66AFFE75DDE8508E12
-	sha512sums = a9bac7b2cc23022dce3bcda314c9c26a0a0914c448f6d5a51c5ba18670f04c1fd1a94cb20173235b6285df1dcc9251cb6b3f3e71a220037b4eb66668e6f33c48
+	sha512sums = 5b35a66c37593de738f52d5ad2f7860067af4061bd11b2f5c4b701177ef1bc3091d3c3df573d751339e9c9bb07476988b0b030b91b6a33adcb663df16be80d81
 	sha512sums = SKIP
-	sha512sums = 7570e1e67d6d23654a6be0307a1e9e0595447473f9783a70be0df7c8902833bc7f35e296b5006c6ae1e684452cd6e26d61be5e3f561b481c50d6edafaafa0698
 
 pkgname = sssd-nosmb
