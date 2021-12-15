@@ -1,0 +1,17 @@
+pkgbase = libinput-config-git
+	pkgdesc = Configuration system for libinput
+	pkgver = r56.ae90015
+	pkgrel = 1
+	url = https://gitlab.com/kirbykevinson/libinput-config
+	arch = any
+	license = custom
+	makedepends = gcc
+	makedepends = meson
+	depends = glibc
+	depends = libinput
+	provides = libinput-config
+	conflicts = libinput-config
+	source = libinput-config::git+https://gitlab.com/kirbykevinson/libinput-config.git
+	sha256sums = SKIP
+
+pkgname = libinput-config-git
