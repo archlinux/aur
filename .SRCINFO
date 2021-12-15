@@ -1,6 +1,6 @@
 pkgbase = matomo-git
 	pkgdesc = A powerful web analytics platform.
-	pkgver = latest_tag
+	pkgver = 4.6.2
 	pkgrel = 1
 	url = https://github.com/matomo-org/matomo
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = matomo-git
 	makedepends = composer
 	makedepends = curl
 	makedepends = git
-	makedepends = git-lfs
 	makedepends = gzip
 	depends = php
 	depends = php-fpm
@@ -19,7 +18,7 @@ pkgbase = matomo-git
 	optdepends = nginx: HTTP server
 	provides = matomo
 	conflicts = matomo
-	source = git+https://github.com/matomo-org/matomo.git
-	sha256sums = SKIP
+	source = matomo-git-v4.6.2.tar.gz::https://github.com/matomo-org/matomo/archive/refs/tags/v4.6.2.tar.gz
+	sha256sums = 6c83a093ad71b1b3b6bc27815287782787f05c2d9c15a2b01c8a1ee019599789
 
 pkgname = matomo-git

@@ -5,8 +5,7 @@ _pkgname=matomo
 
 # shellcheck disable=SC2034
 pkgname=matomo-git
-# shellcheck disable=SC2034
-pkgver=latest_tag
+pkgver=4.6.2
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -23,7 +22,7 @@ groups=()
 # shellcheck disable=SC2034
 depends=("php" "php-fpm" "php-gd")
 # shellcheck disable=SC2034
-makedepends=("composer" "curl" "git" "git-lfs" "gzip")
+makedepends=("composer" "curl" "git" "gzip")
 # shellcheck disable=SC2034
 checkdepends=()
 # shellcheck disable=SC2034
@@ -46,29 +45,21 @@ install=
 # shellcheck disable=SC2034
 changelog=
 # shellcheck disable=SC2034
-source=("git+${url}.git")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # shellcheck disable=SC2034
 noextract=()
 # shellcheck disable=SC2034
-sha256sums=("SKIP")
+sha256sums=("6c83a093ad71b1b3b6bc27815287782787f05c2d9c15a2b01c8a1ee019599789")
 # shellcheck disable=SC2034
 validpgpkeys=()
-
-pkgver()
-{
-    # shellcheck disable=SC2154
-    cd "${srcdir}"/"${_pkgname}"/ || exit
-    version=$(git describe --tags --abbrev=0)
-    printf "%s" "${version}" | sed "s/^v//;s/-/_/g;s/\//./g"
-}
 
 build()
 {
     # Information
     echo -e "\033[0;32mConfiguration is needed before the installation. For assistance, read the included \"README.md\".\033[0m"
 
-    cd "${srcdir}"/"${_pkgname}"/ || exit
-    git checkout tags/"$(git describe --tags --abbrev=0)"
+    # shellcheck disable=SC2154
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit
     git submodule update --init --merge --recursive
     composer install --no-dev
 }
@@ -82,7 +73,7 @@ package()
     mkdir -p "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
 
     # Install the software.
-    cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
+    cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
 
     ## GeoIP database
     current_year=$(date +"%Y")
@@ -124,5 +115,5 @@ ReadWritePaths = /usr/share/webapps/${_pkgname}/tmp/" > "${pkgdir}"/etc/systemd/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
 }
