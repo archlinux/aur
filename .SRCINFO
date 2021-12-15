@@ -21,7 +21,7 @@ pkgbase = devtools32-git
 	optdepends = btrfs-progs: btrfs support
 	provides = devtools=20210225.1
 	conflicts = devtools
-	source = devtools32-git::git+https://git.archlinux32.org/archlinux32/devtools32.git
+	source = devtools32-git::git+https://git.archlinux32.org/devtools32
 	md5sums = SKIP
 
 pkgname = devtools32-git

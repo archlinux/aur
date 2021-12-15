@@ -14,7 +14,7 @@ makedepends=('git' 'asciidoc')
 optdepends=('btrfs-progs: btrfs support')
 provides=($_pkgname=${pkgver%%.r*})
 conflicts=($_pkgname)
-source=("$pkgname::git+https://git.archlinux32.org/archlinux32/devtools32.git")
+source=("$pkgname::git+https://git.archlinux32.org/devtools32")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,11 +23,11 @@ pkgver() {
 }
 
 build() {
-	cd ${pkgname}
-	make PREFIX=/usr
+  cd ${pkgname}
+  make PREFIX=/usr
 }
 
 package() {
-	cd ${pkgname}
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
+  cd ${pkgname}
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
