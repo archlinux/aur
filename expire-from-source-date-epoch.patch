@@ -1,13 +1,20 @@
---- a/Gruntfile.js	2021-09-23 04:25:41.069024593 -0500
-+++ b/Gruntfile.js	2021-09-23 04:26:20.878766965 -0500
-@@ -171,9 +171,7 @@
-   });
+--- a/ts/scripts/get-expire-time.ts	2021-12-15 03:06:07.198974886 -0500
++++ b/ts/scripts/get-expire-time.ts	2021-12-15 03:07:10.951561856 -0500
+@@ -2,15 +2,12 @@
+ // SPDX-License-Identifier: AGPL-3.0-only
  
-   grunt.registerTask('getExpireTime', () => {
--    grunt.task.requires('gitinfo');
--    const gitinfo = grunt.config.get('gitinfo');
--    const committed = gitinfo.local.branch.current.lastCommitTime;
-+    const committed = parseInt(process.env.SOURCE_DATE_EPOCH, 10) * 1000;
-     const buildCreation = Date.parse(committed);
-     const buildExpiration = buildCreation + 1000 * 60 * 60 * 24 * 90;
-     grunt.file.write(
+ import { join } from 'path';
+-import { execSync } from 'child_process';
+ import { writeFileSync } from 'fs';
+ 
+ import { DAY } from '../util/durations';
+ 
+-const unixTimestamp = parseInt(
+-  execSync('git show -s --format=%ct').toString('utf8'),
+-  10
+-);
++const unixTimestamp = parseInt(process.env.SOURCE_DATE_EPOCH!.toString(), 10) * 1000;
++
+ const buildCreation = unixTimestamp * 1000;
+ 
+ const buildExpiration = buildCreation + DAY * 90;
