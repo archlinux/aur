@@ -3,7 +3,7 @@ _base=tiptop
 pkgname=${_base}-cli
 pkgdesc="Command-line system monitoring"
 pkgver=0.0.16
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
@@ -23,7 +23,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  PATH="${PWD}/tmp_install/usr/bin:$PATH" PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+  PATH="${PWD}/tmp_install/usr/bin:$PATH" PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks -k 'not README'
 }
 
 package() {
