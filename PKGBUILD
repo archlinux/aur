@@ -7,74 +7,38 @@ arch=(aarch64 armv6h x86_64)
 url='https://oauth2-proxy.github.io/oauth2-proxy/'
 _url='https://github.com/oauth2-proxy/oauth2-proxy'
 _branch='master'
-pkgver=7.1.3
+pkgver=7.2.0
 pkgrel=1
 license=('MIT')
 makedepends=(git go sed)
 source=("$_pkgname::git+$_url.git#branch=$_branch")
-source=("${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-amd64.tar.gz"
-        "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/LICENSE"
-        "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.service.example"
+source=("oauth2-proxy.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-amd64.tar.gz"
+        "LICENSE::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/LICENSE"
+        "oauth2-proxy.service::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/contrib/oauth2-proxy.cfg.example"
         "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
-source_aarch64=("${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-arm64.tar.gz"
-                "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/LICENSE"
-                "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.service.example"
-                "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
-source_armv6h=("${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-armv6.tar.gz"
-               "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/LICENSE"
-               "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.service.example"
-               "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
+source_aarch64=("oauth2-proxy.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-arm64.tar.gz"
+                "LICENSE::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/LICENSE"
+                "oauth2-proxy.service::https://github.com/oauth2-proxy/oauth2-proxy/blob/${pkgver}/contrib/oauth2-proxy.service.example"
+                "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/v${pkgver}/contrib/oauth2-proxy.cfg.example")
+source_armv6h=("oauth2-proxy.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-armv6.tar.gz"
+               "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/v${pkgbuild}/LICENSE"
+               "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/v${pkgbuild}/contrib/oauth2-proxy.service.example"
+               "oauth2-proxy.cfg::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/v${pkgbuild}/contrib/oauth2-proxy.cfg.example")
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-sha256sums=('a491ca18059848c356935fe2ca9e665faafe4bba3ee1ecbac5a5f5f193195a82'
-            'abfbab0511686490ea994857e61789e327b6e00f867d2fb8b3605746d19a8fda'
-            'ccc409e1b57dfef6fcfe42a227c334e1f86fb8645587194d3d7183d0d29d50dc'
-            '59b7f2f1877f3cec278be73e09dd44de0c7487d7d361d72ad25bb3e583e3a66e')
-sha256sums_aarch64=('69ff478370fddf815cc228728268089ab4552b128105cba69a05b84a3f38cd70'
-                    'abfbab0511686490ea994857e61789e327b6e00f867d2fb8b3605746d19a8fda'
-                    'ccc409e1b57dfef6fcfe42a227c334e1f86fb8645587194d3d7183d0d29d50dc'
-                    '59b7f2f1877f3cec278be73e09dd44de0c7487d7d361d72ad25bb3e583e3a66e')
-sha256sums_armv6h=('6d70c1a20d5bfecf6d28014c524c54563060cedd11e05cf1255e38618182f861'
-                   'abfbab0511686490ea994857e61789e327b6e00f867d2fb8b3605746d19a8fda'
-                   'ccc409e1b57dfef6fcfe42a227c334e1f86fb8645587194d3d7183d0d29d50dc'
-                   '59b7f2f1877f3cec278be73e09dd44de0c7487d7d361d72ad25bb3e583e3a66e')
-sha512sums=('15877cb6c58a00d64037f685ee1219bb51885522b428e88c5deda58daa10138e1d4c51b28b9ba2129142dd122923c29e1e5fa5b1ece7a8447b7e381e0f81ea71'
-            'db157b11d60e40c4ad70be9a80b2cf3cf972292867eb4becbb5d027446e12eeb4ff0d87836097b4da4b16ba10a1b7b3d505f406d36f5e457d6766d34d95e5b70'
-            '34f198cdc2a51c46c7689e3b34ef4c98f71ebad9feb66b8f0509d6a1f179d53d78f98d8d58fdbce2483c4d1e114f68cb13369df5957d68a84042d3fb72f025e7'
-            '75bee0675f78288ad11100e4b99ed3eeaddb4addd78aba3024997b1fa3e54f1857c1562ec5610010fdadcb6b5c27c8156bb4b2da372b3148e013082f0c40f6e1')
-sha512sums_aarch64=('3b316726c30366a302b29ee63d445bbdec75028248d94d9d95985fdac164886f7c782369a538704e3cc4be5b8c2d93b6cce813e83f65401257d9894bcbc7a778'
-                    'db157b11d60e40c4ad70be9a80b2cf3cf972292867eb4becbb5d027446e12eeb4ff0d87836097b4da4b16ba10a1b7b3d505f406d36f5e457d6766d34d95e5b70'
-                    '34f198cdc2a51c46c7689e3b34ef4c98f71ebad9feb66b8f0509d6a1f179d53d78f98d8d58fdbce2483c4d1e114f68cb13369df5957d68a84042d3fb72f025e7'
-                    '75bee0675f78288ad11100e4b99ed3eeaddb4addd78aba3024997b1fa3e54f1857c1562ec5610010fdadcb6b5c27c8156bb4b2da372b3148e013082f0c40f6e1')
-sha512sums_armv6h=('33332eb8bed88570790b453f5d22f5f5cc81fe07a337ee034635fed77aaf583845131b8b3dff6e76e052743fc0f868b96026d61efeae3083ee990db99e900ff4'
-                   'db157b11d60e40c4ad70be9a80b2cf3cf972292867eb4becbb5d027446e12eeb4ff0d87836097b4da4b16ba10a1b7b3d505f406d36f5e457d6766d34d95e5b70'
-                   '34f198cdc2a51c46c7689e3b34ef4c98f71ebad9feb66b8f0509d6a1f179d53d78f98d8d58fdbce2483c4d1e114f68cb13369df5957d68a84042d3fb72f025e7'
-                   '75bee0675f78288ad11100e4b99ed3eeaddb4addd78aba3024997b1fa3e54f1857c1562ec5610010fdadcb6b5c27c8156bb4b2da372b3148e013082f0c40f6e1')
-b2sums=('16a44a0903786b71318191f0b9a7bd2e8a705ed2bb2f2135c39410cfa9acd5dbb0fd5a7539c1ec4be6c7744765d755dede3f3542688113f30db2582251ac40c3'
-        '627af2ea1c83988fd234535aa8dfa265de69a3923912c734ce71919e8a2f289f41276d96e076dfe05e53e008ab7d11e4ae49e6cf7baba526a871bfc2d2355265'
-        'bd4be0c408aa41601101aa023330bc8d128887c057a04eeb29ab95c45fc674e08698bbed6bd0857b2618f5f94c199cd5c1bc5451b4c783ce7d17c4524449447d'
-        '3cedbae18e88acfa69f623d8e0826c3f96c5e21dae87dac68e00c4b18215d25adf0d2a314fa8a610738bfea94afd990cb55fac3bb7cb1582824a428d9ad06672')
-b2sums_aarch64=('4fc29058770efac02e4690f3da1df37fedf566390321b619972dc22474a54483b015e33065a201bf02d86ae857a5db14d507efa02c4da0e7879855a1de69c21f'
-                '627af2ea1c83988fd234535aa8dfa265de69a3923912c734ce71919e8a2f289f41276d96e076dfe05e53e008ab7d11e4ae49e6cf7baba526a871bfc2d2355265'
-                'bd4be0c408aa41601101aa023330bc8d128887c057a04eeb29ab95c45fc674e08698bbed6bd0857b2618f5f94c199cd5c1bc5451b4c783ce7d17c4524449447d'
-                '3cedbae18e88acfa69f623d8e0826c3f96c5e21dae87dac68e00c4b18215d25adf0d2a314fa8a610738bfea94afd990cb55fac3bb7cb1582824a428d9ad06672')
-b2sums_armv6h=('efdfe9e6e11c4b7ba6d8fecc2f6670043f99cd5225f975b2dcbe3be2636e90d050102fc60026d7c05ff605794fc43cff8b3bb479b2073ee7ac8cbb4705b40354'
-               '627af2ea1c83988fd234535aa8dfa265de69a3923912c734ce71919e8a2f289f41276d96e076dfe05e53e008ab7d11e4ae49e6cf7baba526a871bfc2d2355265'
-               'bd4be0c408aa41601101aa023330bc8d128887c057a04eeb29ab95c45fc674e08698bbed6bd0857b2618f5f94c199cd5c1bc5451b4c783ce7d17c4524449447d'
-               '3cedbae18e88acfa69f623d8e0826c3f96c5e21dae87dac68e00c4b18215d25adf0d2a314fa8a610738bfea94afd990cb55fac3bb7cb1582824a428d9ad06672')
-
-prepare() {
-  if [ -d "${_pkgname}-v${pkgver}.linux-amd64" ]; then
-    mv "${_pkgname}-v${pkgver}.linux-amd64" oauth2-proxy
-  elif [ -d "${_pkgname}-v${pkgver}.linux-arm64" ]; then
-    mv "${_pkgname}-v${pkgver}.linux-arm64" oauth2-proxy
-  else
-    mv "${_pkgname}-v${pkgver}.linux-armv6" oauth2-proxy
-  fi
-
-  sed -i 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' "oauth2-proxy.service"
-}
+b2sums=('1eee625fde1fb301b01d708f58b819e5b64a4e4d62b5ebba9e9f83fdd027704d9120d793a74735970384e90628c26974b3e6d8b113b693a72fd8fe06cee8c71f'
+        'fa5849073a77503437305af2be2affe8825ff09adbceeb5283f80c1dcfa4b4e5184c4ab2be04bdcdfd024608c81c5e78925054a0ddde5acf8c7e021149741b29'
+        'a21931d41c1693999c0dc815024050f976e7f9be1420c73ea811687650076ad3d173aaaeb5d565c2fab22daa67699c7b02c88198a5fb3a5a9573d2c65187096f'
+        '27917f1fc826e039da7dc7fa1abb88bb3ebe7933316562e5525722a05352268a4714daa67328e842dbaa7f489d2889781d0144f0aaf380ed5d0b040b7a9f06be')
+b2sums_aarch64=('1eee625fde1fb301b01d708f58b819e5b64a4e4d62b5ebba9e9f83fdd027704d9120d793a74735970384e90628c26974b3e6d8b113b693a72fd8fe06cee8c71f'
+                'fa5849073a77503437305af2be2affe8825ff09adbceeb5283f80c1dcfa4b4e5184c4ab2be04bdcdfd024608c81c5e78925054a0ddde5acf8c7e021149741b29'
+                'a21931d41c1693999c0dc815024050f976e7f9be1420c73ea811687650076ad3d173aaaeb5d565c2fab22daa67699c7b02c88198a5fb3a5a9573d2c65187096f'
+                '27917f1fc826e039da7dc7fa1abb88bb3ebe7933316562e5525722a05352268a4714daa67328e842dbaa7f489d2889781d0144f0aaf380ed5d0b040b7a9f06be')
+b2sums_armv6h=('1eee625fde1fb301b01d708f58b819e5b64a4e4d62b5ebba9e9f83fdd027704d9120d793a74735970384e90628c26974b3e6d8b113b693a72fd8fe06cee8c71f'
+               'fa5849073a77503437305af2be2affe8825ff09adbceeb5283f80c1dcfa4b4e5184c4ab2be04bdcdfd024608c81c5e78925054a0ddde5acf8c7e021149741b29'
+               'a21931d41c1693999c0dc815024050f976e7f9be1420c73ea811687650076ad3d173aaaeb5d565c2fab22daa67699c7b02c88198a5fb3a5a9573d2c65187096f'
+               '27917f1fc826e039da7dc7fa1abb88bb3ebe7933316562e5525722a05352268a4714daa67328e842dbaa7f489d2889781d0144f0aaf380ed5d0b040b7a9f06be')
 
 package() {
   install -Dm755 "$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
