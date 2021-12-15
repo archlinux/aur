@@ -19,6 +19,6 @@ build() {
 }
 
 package() {
-    cd "$_archive"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
