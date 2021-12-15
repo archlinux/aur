@@ -1,7 +1,7 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=cloudflare-warp-bin
 pkgver=2021.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
 license=("unknown")
@@ -28,11 +28,6 @@ prepare() {
     tar -xzOf control.tar.gz ./md5sums \
         | awk '{print $1, "'"${srcdir}"'/build/" $2}' \
         > ${srcdir}/md5sums
-
-    # Fix systemd unit
-    sed -i \
-        -e "s%ExecStart=/bin/warp-svc%ExecStart=/usr/bin/warp-svc%" \
-        "${srcdir}"/build/lib/systemd/system/warp-svc.service
 }
 
 # Prepares our source directory, all cloudflare expected output will be placed
@@ -69,4 +64,10 @@ check() {
 package() {
     mkdir ${pkgdir}/usr/ || true
     cp -R ${srcdir}/build/{bin,lib} ${pkgdir}/usr/
+
+    # Fix systemd unit
+    sed -i \
+        -e "s%ExecStart=/bin/warp-svc%ExecStart=/usr/bin/warp-svc%" \
+        "${pkgdir}"/usr/lib/systemd/system/warp-svc.service
+
 }
