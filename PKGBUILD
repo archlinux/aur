@@ -7,7 +7,7 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=11.9.0
+pkgver=11.9.1
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
@@ -28,12 +28,19 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'ninja' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
-source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2")
-sha256sums=('57dfc5e778a820a435baa050b4888f95cd968fdcb071d417c4c5453691b81f2e')
+source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2"
+	"fix-for-tbb-2021.patch")
+sha256sums=('2959f4bed5fa8b5aa7f86bcd518e74a65402fe21b91a8d125807117827731be6'
+            '7998432d57df6fc729f4289902b374c350363520f7a06bc808b437c904e26f59')
 
 prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   # Gazebo's CMake package file forces projects using it to use C++11 by default which screws over anyone wanting to use C++14 or newer
-  sed -i '/-std=c++11/d' "$srcdir"/$pkgname-$pkgver/cmake/gazebo-config.cmake.in
+  sed -i '/-std=c++11/d' cmake/gazebo-config.cmake.in
+
+  # Workaround for this issue: https://github.com/osrf/gazebo/issues/2867
+  patch -p1 < ../fix-for-tbb-2021.patch
 }
 
 build() {
