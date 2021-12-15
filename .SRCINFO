@@ -1,0 +1,18 @@
+pkgbase = stajl-theme-git
+	pkgdesc = A theme for GNOME based on Adwaita
+	pkgver = r100.2660577
+	pkgrel = 1
+	url = https://github.com/lassekongo83/stajl-theme
+	arch = any
+	license = GPL3
+	makedepends = ninja
+	makedepends = meson
+	makedepends = sassc
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	provides = stajl-theme
+	conflicts = stajl-theme
+	source = stajl-theme-git::git+https://github.com/lassekongo83/stajl-theme
+	md5sums = SKIP
+
+pkgname = stajl-theme-git
