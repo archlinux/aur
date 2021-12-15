@@ -28,6 +28,11 @@ prepare() {
     tar -xzOf control.tar.gz ./md5sums \
         | awk '{print $1, "'"${srcdir}"'/build/" $2}' \
         > ${srcdir}/md5sums
+
+    # Fix systemd unit
+    sed -i \
+        -e "s%ExecStart=/bin/warp-svc%ExecStart=/usr/bin/warp-svc%" \
+        "${srcdir}"/build/lib/systemd/system/warp-svc.service
 }
 
 # Prepares our source directory, all cloudflare expected output will be placed
