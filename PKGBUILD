@@ -3,9 +3,9 @@
 
 _rockname=copas
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=2.0.2
+pkgver=3.0.0
 _rockrel=1
-pkgrel=3
+pkgrel=1
 pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
 arch=('x86_64' 'i686')
 url="https://keplerproject.github.io/$_rockname"
@@ -13,7 +13,7 @@ license=('MIT')
 _lua_deps=('socket' 'coxpcall')
 makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::https://github.com/keplerproject/$_rockname/archive/$pkgver.tar.gz")
-sha256sums=('1469eaf987513f5a9a0bee345c040c8fa30ca6194bc75ad78171362f9904cf3e')
+sha256sums=('185f3816bf6c6460b9e813a49c9d165a44659e3069bd2020f86a66978160214e')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
