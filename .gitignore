@@ -1,3 +1,5 @@
 /test.py
 *.pkg.tar.xz
 python-mediapipe-git
+prepare.sh
+repo

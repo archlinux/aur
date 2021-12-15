@@ -1,6 +1,6 @@
 pkgbase = python-mediapipe-git
 	pkgdesc = MediaPipe offers cross-platform, customizable ML solutions for live and streaming media.
-	pkgver = v0.8.7.r0.g710fb3de
+	pkgver = v0.8.9.r0.ge6c19885
 	pkgrel = 1
 	url = https://github.com/google/mediapipe
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-mediapipe-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = bazel
-	makedepends = gcc10
+	makedepends = gcc
 	depends = ffmpeg
 	depends = absl-py
 	depends = python-attrs
