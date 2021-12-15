@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Bizzozzéro <nicolas.bizzozzero@protonmail.com>
 pkgname="python-river"
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Online machine learning in Python"
 arch=("x86_64")
 url="https://riverml.xyz"
