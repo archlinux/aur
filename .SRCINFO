@@ -7,6 +7,7 @@ pkgbase = digilent.adept.runtime
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = libusb
 	options = !strip
@@ -21,5 +22,7 @@ pkgbase = digilent.adept.runtime
 	sha256sums_armv6h = 0be9b03500f0e746829a54fceac3b10cca0d0d3c24563c7debcadd15e2d8a73b
 	source_armv7h = https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/2.21.3/digilent.adept.runtime_2.21.3-armhf.deb
 	sha256sums_armv7h = 0be9b03500f0e746829a54fceac3b10cca0d0d3c24563c7debcadd15e2d8a73b
+	source_aarch64 = https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/2.21.3/digilent.adept.runtime_2.21.3-arm64.deb
+	sha256sums_aarch64 = 94b2c6dcb7f55700af28c86968105cdafd64d96fe47d7304b02d460345f64d44
 
 pkgname = digilent.adept.runtime
