@@ -1,31 +1,29 @@
 # Mantainer: Dudemanguy <random342@airmail.cc>
 # Contributer: Vicente Reyes <vreyesvaldivieso@gmail.com>
 pkgname=vmn-git
-_pkgname=vmn
-pkgver=0.4_5_g0b31dfd
+pkgver=0.4.1
 pkgrel=1
-license=("GPL3")
 pkgdesc="Simplistic cli music player built on mpv and curses"
-makedepends=("meson")
-depends=("ffmpeg" "mpv" "ncurses")
-optdepends=("scdoc: for manpages")
-arch=("x86_64")
 url="https://github.com/Dudemanguy/vmn"
-source=("${_pkgname}::git+https://github.com/Dudemanguy/vmn.git")
+arch=(x86_64)
+license=(GPL3)
+depends=(ffmpeg mpv ncurses)
+makedepends=(git meson scdoc)
+_commit=302896226dcc41d83928385d26dd438b326e174c  # tags/0.4.1^0
+source=("git+https://github.com/Dudemanguy/vmn.git#commit=$_commit")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	printf "%s" "$(git describe --tags)" | sed s/-/_/g
+	cd vmn
+	git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-	cd "$_pkgname"
-	arch-meson --auto-features auto "$srcdir/build"
-	meson compile -C "$srcdir/build"
+	export CFLAGS="-Wno-format-security"
+	arch-meson vmn build
+	meson compile -C build
 }
 
 package() {
-	cd "$_pkgname"
-	DESTDIR="$pkgdir" meson install -C "$srcdir/build"
+	meson install -C build --destdir "$pkgdir"
 }
