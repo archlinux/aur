@@ -1,0 +1,22 @@
+pkgbase = python2-pytest
+	pkgdesc = Simple powerful testing with Python
+	pkgver = 4.6.11
+	pkgrel = 1
+	url = https://pytest.org/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools-scm
+	depends = python2-py
+	depends = python2-setuptools
+	depends = python2-pluggy
+	depends = python2-attrs
+	depends = python2-more-itertools
+	depends = python2-atomicwrites
+	depends = python2-wcwidth
+	depends = python2-funcsigs
+	depends = python2-pathlib2
+	depends = python2-importlib-metadata
+	source = python2-pytest-4.6.11.tar.gz::https://github.com/pytest-dev/pytest/archive/4.6.11.tar.gz
+	sha512sums = 2be8549c67573c8544366198ef94f74e0aacfa5b321705a7262c069de7e532f7d29ab93ee69be6cc83828aad91af23eb9b8b7cf01d02c0badf488ef841ee4880
+
+pkgname = python2-pytest
