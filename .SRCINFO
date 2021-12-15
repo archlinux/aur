@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 94.0.2
-	pkgrel = 2
+	pkgver = 95.0
+	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
 	arch = x86_64
@@ -32,6 +32,10 @@ pkgbase = librewolf
 	makedepends = binutils
 	makedepends = lld
 	makedepends = dump_syms
+	makedepends = wasi-compiler-rt
+	makedepends = wasi-libc
+	makedepends = wasi-libc++
+	makedepends = wasi-libc++abi
 	depends = gtk3
 	depends = libxt
 	depends = mime-types
@@ -51,17 +55,15 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/94.0.2/source/firefox-94.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/95.0/source/firefox-95.0.source.tar.xz
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v94.0.2-2
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=3.2
-	source = 0002-Bug-1735905-Upgrade-cubeb-pulse-to-fix-a-race-condit.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk/0002-Bug-1735905-Upgrade-cubeb-pulse-to-fix-a-race-condit.patch
-	sha256sums = 899ba1c806549034793d7e8ca53f4c845d783c810338f314f3d653d39649e575
+	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v95.0-1
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=4.0
+	sha256sums = 7fa3e43f6ec710b2ebba0e99db713a56d13d85f1f23c4a1399bb594fd74864de
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 744d3956ba60c63fed81903700a4cf66c13d2898944e4e86ac0d3b1e3f222fff
-	source_aarch64 = 94.0.2-2_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+	source_aarch64 = 95.0-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
 pkgname = librewolf
