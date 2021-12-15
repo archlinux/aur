@@ -1,0 +1,10 @@
+[Unit]
+Description=Service for managing warpd
+After=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/warpd -f
+Restart=always
+
+[Install]
+WantedBy=default.target
