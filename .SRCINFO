@@ -4,7 +4,7 @@ pkgbase = treefetch
 	pkgrel = 1
 	url = https://github.com/angelofallars/treefetch.git
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	source = https://github.com/angelofallars/treefetch/releases/download/v1.2.0/treefetch
 	md5sums = 3dee14788296ddfa6ec0ea64b8db9fcf
 
