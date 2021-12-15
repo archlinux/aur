@@ -2,7 +2,7 @@
 
 pkgname="rmm-git"
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="RimWorld Mod Manager"
 arch=("any")
 url="https://github.com/Spoons/rmm.git"
