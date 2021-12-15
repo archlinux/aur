@@ -1,8 +1,8 @@
 # Maintainer:  Oğuzhan Eroğlu <rohanrhu2@gmail.com>
 
 pkgname=gdb-frontend-bin
-pkgver=0.10.1.beta
-_pkgver=0.10.1-beta
+pkgver=0.10.2.beta
+_pkgver=0.10.2-beta
 pkgrel=2
 pkgdesc="An easy, flexible and extensionable GUI debugger"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('gdb-frontend' 'gdbfrontend')
 depends=('gdb' 'python' 'tmux')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/rohanrhu/gdb-frontend/archive/v${_pkgver}.tar.gz")
-sha256sums=('9761660c41fa209bb5cf967d98cf1678db477a03fb7f2aa1a816cf0f86d99676')
+sha256sums=('d37b84b387724499077de0c39ebbf44f31d4ef6d435a6ad70569d640474999e0')
 
 package() {
   install -d "${pkgdir}/opt/" "${pkgdir}/usr/bin/"
