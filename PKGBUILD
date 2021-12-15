@@ -4,7 +4,7 @@
 
 pkgname=libexosip2
 epoch=1
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="A library that hides the complexity of using SIP for multimedia session establishement"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=("libosip2>=${pkgver}" openssl)
 validpgpkeys=('34C3985D068879312FE23C8BB5902A3AD90A5421')
 source=(https://download.savannah.gnu.org/releases/exosip/libexosip2-$pkgver.tar.gz)
-sha256sums=('87256b45a406f3c038e1e75e31372d526820366527c2af3bb89329bafd87ec42')
+sha256sums=('5b7823986431ea5cedc9f095d6964ace966f093b2ae7d0b08404788bfcebc9c2')
 
 build() {
   cd "$srcdir/libexosip2-${pkgver}"
