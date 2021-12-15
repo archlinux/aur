@@ -12,7 +12,7 @@ source=("https://github.com/online-ml/river.git")
 sha512sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
