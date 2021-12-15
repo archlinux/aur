@@ -3,7 +3,7 @@
 # Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('powershell')
 options=(staticlibs !strip)
 install=powershell.install
 
-sha256sums=('9fcde25bbd7f537213e8ae34a9803c1ded59cfe1d41701816c424f9b33fd2bb3')
+sha256sums=('11756a6265bdc1ebd14d678ab08a6999c03e24157b26b2c2e40640e44cb46acd')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${pkgver}/powershell_${pkgver}-1.deb_amd64.deb")
 
 package() {
