@@ -1,6 +1,6 @@
 # Maintainer: Iamnotagenius <kazakk9@gmail.com>
 pkgname=bevm
-pkgver=1.8 # Версия проги
+pkgver=1.10 # Версия проги
 pkgrel=1 # Номер релиза
 pkgdesc="A God's basic evm"
 arch=('any')
