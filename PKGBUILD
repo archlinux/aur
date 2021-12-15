@@ -1,16 +1,16 @@
-# Maintainer:
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Eivind Eide <xenofil AT gmail DOT com>
 # Contributor: Anatol Pomozov <anatol DOT pomozov AT gmail DOT com>
 
 _gemname=gtk2
 pkgname=ruby-${_gemname}
 pkgver=3.4.3
-pkgrel=1
-pkgdesc='Ruby/GTK2 is a Ruby binding of GTK+-2.x.'
-arch=(x86_64)
+pkgrel=2
+pkgdesc='Ruby binding of GTK+-2.x.'
+arch=(x86_64 i686)
 url='http://ruby-gnome2.sourceforge.jp/'
-license=(LGPL2.1)
-depends=(ruby gtk2 ruby-atk=${pkgver} ruby-pango=${pkgver} ruby-gdk_pixbuf2=${pkgver})
+license=(LGPL)
+depends=(ruby gtk2 "ruby-atk>=${pkgver}" "ruby-pango>=${pkgver}" "ruby-gdk_pixbuf2>=${pkgver}")
 makedepends=(ruby-native-package-installer)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)

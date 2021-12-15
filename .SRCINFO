@@ -1,20 +1,20 @@
 pkgbase = ruby-gtk2
-	pkgdesc = Ruby/GTK2 is a Ruby binding of GTK+-2.x.
+	pkgdesc = Ruby binding of GTK+-2.x.
 	pkgver = 3.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ruby-gnome2.sourceforge.jp/
 	arch = x86_64
-	license = LGPL2.1
+	arch = i686
+	license = LGPL
 	makedepends = ruby-native-package-installer
 	depends = ruby
 	depends = gtk2
-	depends = ruby-atk=3.4.3
-	depends = ruby-pango=3.4.3
-	depends = ruby-gdk_pixbuf2=3.4.3
+	depends = ruby-atk>=3.4.3
+	depends = ruby-pango>=3.4.3
+	depends = ruby-gdk_pixbuf2>=3.4.3
 	noextract = gtk2-3.4.3.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/gtk2-3.4.3.gem
 	sha1sums = ad998d92030b2768d3f52e2b0c4364cd81017476
 
 pkgname = ruby-gtk2
-
