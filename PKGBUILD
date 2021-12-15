@@ -1,10 +1,9 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=cplot
 pkgname=python-${_base}
-pkgdesc="Color maps for complex-valued functions"
+pkgdesc="Plot complex functions"
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -19,11 +18,11 @@ build() {
   python -c "from setuptools import setup; setup();" build
 }
 
-check() {
-  cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
-}
+# check() {
+#   cd "${_base}-${pkgver}"
+#   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
+#   MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+# }
 
 package() {
   cd "${_base}-${pkgver}"

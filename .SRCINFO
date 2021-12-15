@@ -1,7 +1,7 @@
 pkgbase = python-cplot
-	pkgdesc = Color maps for complex-valued functions
+	pkgdesc = Plot complex functions
 	pkgver = 0.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nschloe/cplot
 	arch = x86_64
 	license = GPL3
