@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=notes-up-git
-pkgver=1.5.2.r9.g855d213
+pkgver=2.0.6.r0.g7c7e26a
 pkgrel=1
-pkgdesc="Notes Up is a notes manager written for elementary OS"
+pkgdesc='Write beautiful notes fast and easy using Markdown'
 arch=('x86_64')
 url="https://github.com/Philip-Scott/Notes-up"
 license=('GPL2')
-depends=('discount' 'gtksourceview3' 'gtkspell3' 'libgranite.so' 'webkit2gtk')
-makedepends=('cmake' 'git' 'vala>=0.39.0')
+depends=('discount' 'granite' 'gtksourceview4' 'gtkspell3' 'webkit2gtk')
+makedepends=('git' 'meson' 'vala')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+${url}.git")
@@ -20,19 +20,12 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../"${pkgname%-*}" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -Dnoele=1
-  make
+  arch-meson ${pkgname%-*} build
+  ninja -C build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" ninja -C build install
+  ln -s com.github.philip_scott.notes-up "$pkgdir/usr/bin/${pkgname%-*}"
 }

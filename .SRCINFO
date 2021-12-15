@@ -1,17 +1,17 @@
 pkgbase = notes-up-git
-	pkgdesc = Notes Up is a notes manager written for elementary OS
-	pkgver = 1.5.2.r9.g855d213
+	pkgdesc = Write beautiful notes fast and easy using Markdown
+	pkgver = 2.0.6.r0.g7c7e26a
 	pkgrel = 1
 	url = https://github.com/Philip-Scott/Notes-up
 	arch = x86_64
 	license = GPL2
-	makedepends = cmake
 	makedepends = git
-	makedepends = vala>=0.39.0
+	makedepends = meson
+	makedepends = vala
 	depends = discount
-	depends = gtksourceview3
+	depends = granite
+	depends = gtksourceview4
 	depends = gtkspell3
-	depends = libgranite.so
 	depends = webkit2gtk
 	provides = notes-up
 	conflicts = notes-up
@@ -19,4 +19,3 @@ pkgbase = notes-up-git
 	sha256sums = SKIP
 
 pkgname = notes-up-git
-
