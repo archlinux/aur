@@ -1,7 +1,7 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
 	pkgver = 1.32.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://networkmanager.dev/
 	arch = x86_64
 	license = GPL

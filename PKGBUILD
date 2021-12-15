@@ -11,7 +11,7 @@
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
 pkgver=1.32.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
@@ -43,7 +43,6 @@ build() {
     -D session_tracking_consolekit=false
     -D suspend_resume=systemd
     -D modify_system=true
-    -D polkit_agent=true
     -D selinux=false
 
     # features
