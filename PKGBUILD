@@ -15,13 +15,13 @@ sha512sums=("SKIP")
 
 
 build() {
-  cd "${srcdir}/river" 
+  cd "${srcdir}/river-${pkgver}" 
   python setup.py build
 }
 
 
 package() {
-  cd "${srcdir}/river"
+  cd "${srcdir}/river-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   
   install -m755 -d "${pkgdir}/usr/share/licenses/python-river-git"
