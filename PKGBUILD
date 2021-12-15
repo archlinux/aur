@@ -1,10 +1,10 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=intel-cpu-runtime
-_pkgver=2021.5.0
-pkgver=2022.0.0
-_pkgrel=707
-pkgrel=3623
+_pkgver=2021.4.0
+pkgver=2021.4.0
+_pkgrel=643
+pkgrel=3561
 pkgdesc="Intel(R) CPU Runtime for OpenCL(TM) Applications"
 arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/articles/opencl-runtime-release-notes.html"

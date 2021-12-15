@@ -1,7 +1,7 @@
 pkgbase = intel-cpu-runtime
 	pkgdesc = Intel(R) CPU Runtime for OpenCL(TM) Applications
-	pkgver = 2022.0.0
-	pkgrel = 3623
+	pkgver = 2021.4.0
+	pkgrel = 3561
 	url = https://software.intel.com/content/www/us/en/develop/articles/opencl-runtime-release-notes.html
 	arch = x86_64
 	license = custom
@@ -9,10 +9,10 @@ pkgbase = intel-cpu-runtime
 	depends = hwloc
 	provides = opencl-intel
 	provides = opencl-driver
-	noextract = intel-oneapi-runtime-tbb-2021.5.0-707_amd64.deb
-	noextract = intel-oneapi-runtime-opencl-2022.0.0-3623_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-tbb-2021.5.0-707_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-2022.0.0-3623_amd64.deb
+	noextract = intel-oneapi-runtime-tbb-2021.4.0-643_amd64.deb
+	noextract = intel-oneapi-runtime-opencl-2021.4.0-3561_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-tbb-2021.4.0-643_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-2021.4.0-3561_amd64.deb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
