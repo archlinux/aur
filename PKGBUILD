@@ -3,20 +3,21 @@
 _pkgname=padauk
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
-pkgver=4.000
-pkgrel=4
+pkgver=5.000
+pkgrel=1
 pkgdesc='Unicode font that supports the many diverse languages that use the Myanmar script'
-arch=('any')
+arch=(any)
 url="https://software.sil.org/$_pkgname"
-license=('OFL')
+license=(OFL)
 conflicts=('ttf-sil-fonts<=6')
-source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
-sha256sums=('dd5311eaf0204b75044a856dbb2176a5db2bfe8ad00276ac5ff89f72d9d211fc')
+_archive="$_fname-$pkgver"
+source=("http://software.sil.org/downloads/r/$_pkgname/$_archive.zip")
+sha256sums=('f2c0aed534c13315cdb7ba4211ca6cccf2a5cf644208a00c5c2cc485cc19d51b')
 
 package() {
-    cd "$_fname-$pkgver"
-    find -type f -name "$_fname*.ttf" -execdir \
-        install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" {} \;
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.txt FONTLOG.txt documentation/*.pdf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
+	cd "$_archive"
+	find -type f -name "$_fname*.ttf" -execdir \
+		install -Dm0644 -t "$pkgdir/usr/share/fonts/TTF/" {} \;
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt FONTLOG.txt documentation/*.pdf
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
 }
