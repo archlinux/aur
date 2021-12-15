@@ -3,7 +3,7 @@
 
 pkgname=audacium
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='telemetry free version of audacity'
 arch=(x86_64)
 url="https://github.com/SartoxOnlyGNU/$pkgname"
@@ -39,22 +39,22 @@ provides=(audacity)
 conflicts=(audacity)
 _archive="$pkgname-$pkgver-rel"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver-rel.tar.gz")
-md5sums=('SKIP')
+sha256sums=('7b8a98c349601b9a1248d906839f78396eefba051dddd8d63e1a7d6f416d02c8')
 
 build() {
 	cd "$_archive"
-	cmake -B build \
-		-S audacium \
+	cmake \
 		-G 'Unix Makefiles' \
 		-Daudacity_use_ffmpeg=loaded \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
+		-B build \
+		-S . \
 		..
 	make -C build
 }
 
 package() {
-	cd "$_archive"
-	cd build
+	cd "$_archive/build"
 	make DESTDIR="$pkgdir/" install
 }

@@ -1,7 +1,7 @@
 pkgbase = audacium
 	pkgdesc = telemetry free version of audacity
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SartoxOnlyGNU/audacium
 	arch = x86_64
 	license = GPL2
@@ -35,6 +35,6 @@ pkgbase = audacium
 	provides = audacity
 	conflicts = audacity
 	source = audacium-1.0.0-rel.tar.gz::https://github.com/SartoxOnlyGNU/audacium/archive/refs/tags/v1.0.0-rel.tar.gz
-	md5sums = SKIP
+	sha256sums = 7b8a98c349601b9a1248d906839f78396eefba051dddd8d63e1a7d6f416d02c8
 
 pkgname = audacium
