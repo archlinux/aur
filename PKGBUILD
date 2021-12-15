@@ -2,7 +2,7 @@
 
 pkgname="python-github3.py"
 pkgver="3.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive wrapper around the GitHub API (v3)"
 arch=("any")
 url="https://github.com/sigmavirus24/github3.py"
@@ -25,7 +25,7 @@ check() {
 }
 
 package() {
-    cd "github3.py-2.0.0"
+    cd "github3.py-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }

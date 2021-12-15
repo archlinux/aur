@@ -1,7 +1,7 @@
 pkgbase = python-github3.py
 	pkgdesc = A comprehensive wrapper around the GitHub API (v3)
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigmavirus24/github3.py
 	arch = any
 	license = custom:Modified BSD
