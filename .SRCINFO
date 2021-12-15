@@ -18,7 +18,7 @@ pkgbase = matomo-git
 	optdepends = nginx: HTTP server
 	provides = matomo
 	conflicts = matomo
-	source = matomo-git-v4.6.2.tar.gz::https://github.com/matomo-org/matomo/archive/refs/tags/v4.6.2.tar.gz
+	source = matomo-git-v4.6.2.tar.gz::https://github.com/matomo-org/matomo/archive/refs/tags/4.6.2.tar.gz
 	sha256sums = 6c83a093ad71b1b3b6bc27815287782787f05c2d9c15a2b01c8a1ee019599789
 
 pkgname = matomo-git
