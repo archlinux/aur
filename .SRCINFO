@@ -1,11 +1,11 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
-	pkgver = 2.8.3
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://github.com/iterative/dvc
 	arch = any
 	license = Apache
-	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-appdirs
 	depends = python-colorama
@@ -24,7 +24,6 @@ pkgbase = dvc
 	depends = python-yaml
 	depends = python-requests
 	depends = python-ruamel-yaml
-	depends = python-setuptools
 	depends = python-shortuuid
 	depends = python-tqdm
 	depends = python-treelib
@@ -41,9 +40,9 @@ pkgbase = dvc
 	optdepends = python-boto3: support for AWS S3 remote
 	optdepends = python-paramiko: support for SSH remote
 	optdepends = python-azure-storage: support for Azure remote
-	optdepends = python-oss2: support for Aliyun Object Storage Service (OSS)
+	optdepends = python-oss2: support for Aliyun Object Storage Service
 	optdepends = python-pyarrow: support for HDFS remote
-	source = git+https://github.com/iterative/dvc/#commit=4175f9ffa4948157436283bef11153a7233e90ca
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/d/dvc/dvc-2.9.2.tar.gz
+	sha256sums = 543257907a843952c44bdb1ea84f2ae33d8693584c1175eb49eb95da0c2a2e49
 
 pkgname = dvc
