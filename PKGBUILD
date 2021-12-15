@@ -7,7 +7,7 @@
 
 pkgname=google-earth-pro
 pkgver=7.3.4.8248
-pkgrel=1
+pkgrel=2
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
@@ -73,4 +73,7 @@ package() {
     do
         install -D -m644 "$_file" "${pkgdir}/usr/share/licenses/${pkgname}/${_file}"
     done
+
+    # Remove SGID
+    find "$pkgdir" -perm /2000 -exec chmod g-s {} \;
 }

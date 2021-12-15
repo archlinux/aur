@@ -1,7 +1,7 @@
 pkgbase = google-earth-pro
 	pkgdesc = 3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)
 	pkgver = 7.3.4.8248
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/earth/
 	install = google-earth-pro.install
 	arch = x86_64
