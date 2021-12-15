@@ -3,13 +3,14 @@
 pkgname=multimc-bin
 _pkgname=multimc
 pkgver=0.6.14.2998
-pkgrel=1
-pkgdesc="MultiMC binaries without the non-native download script."
+pkgrel=2
+pkgdesc="A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once."
 arch=('x86_64')
 url="https://multimc.org/"
 license=('Apache')
 depends=('zlib' 'libgl' 'qt5-base' 'java-runtime')
 provides=('multimc')
+replaces=('multimc-native')
 conflicts=('multimc')
 optdepends=('mcedit: Allows editing of minecraft worlds'
             'visualvm: Profiling support'
