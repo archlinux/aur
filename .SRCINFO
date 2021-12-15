@@ -1,0 +1,15 @@
+pkgbase = neo-matrix-git
+	pkgdesc = Simulates the digital rain from "The Matrix" (cmatrix clone with 32-bit color and Unicode support)
+	pkgver = r19.31391fd
+	pkgrel = 1
+	url = https://github.com/st3w/neo
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf-archive
+	provides = neo-matrix-git
+	options = !strip
+	source = git+https://github.com/st3w/neo.git
+	md5sums = SKIP
+
+pkgname = neo-matrix-git
