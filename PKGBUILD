@@ -16,21 +16,23 @@ options=('!strip')
 sha256sums=('SKIP')
 
 package() {
-  install -dm755 ${pkgdir}/opt/
-  install -dm755 ${pkgdir}/usr/bin/
-  
+
   _executable=$(basename "${source[0]}")
+  _opt_folder=bbndk
+
+  install -dm755 "${pkgdir}/opt/${_opt_folder}/"
+  install -dm755 "${pkgdir}/usr/bin/"  
 
   cd "${srcdir}"
   chmod +x "${_executable}"
 
   sed -i -e 's/^MS_PrintLicense$/\#MS_PrintLicense/' "./${_executable}"
 
-  yes | "./${_executable}" --keep --confirm --nox11 --target "${pkgdir}/opt/${_pkgname}"
+  yes | "./${_executable}" --keep --confirm --nox11 --target "${pkgdir}/opt/${_opt_folder}"
 
-  ln -s "${pkgdir}/opt/${_pkgname}/qde" "${pkgdir}/usr/bin/qde"
+  ln -s "${pkgdir}/opt/${_opt_folder}/qde" "${pkgdir}/usr/bin/qde"
 
-  echo "momentics is located at /opt/momentics"
+  echo "momentics is located at /opt/${_opt_folder}"
   echo "start momentics using /usr/bin/qde"
 
 }
