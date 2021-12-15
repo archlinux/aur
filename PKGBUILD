@@ -2,20 +2,20 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgbase=python-pyclipper
-_pkgname=pyclipper
-pkgname="python-$_pkgname"
-pkgver=1.3.0
-pkgrel=3
+_pyname=pyclipper
+pkgname="python-$_pyname"
+pkgver=1.3.0.post2
+pkgrel=1
 pkgdesc='Cython wrapper for the C++ translation of the Angus Johnson’s Clipper library'
-url="https://github.com/fonttools/$_pkgname"
+url="https://github.com/fonttools/$_pyname"
 arch=(x86_64 i686)
 license=(MIT)
 depends=(python)
 makedepends=(cython
              python-setuptools-scm)
-_archive="$_pkgname-$pkgver"
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.zip")
-sha256sums=('48a1b5c585aea10e5b9c0b82d6abe2642fafd9ef158b9921852bc4af815ca20c')
+_archive="$_pyname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
+sha256sums=('c096703dc32f2e4700a1f7054e8b58c29fe86212fa7a2c2adecb0102cb639fb2')
 
 build() {
 	cd "$_archive"
