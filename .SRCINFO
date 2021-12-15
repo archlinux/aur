@@ -1,7 +1,7 @@
 pkgbase = python-ffmpeg
 	pkgdesc = Python bindings for FFmpeg - with complex filtering support
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kkroening/ffmpeg-python
 	arch = any
 	license = Apache
@@ -16,4 +16,3 @@ pkgbase = python-ffmpeg
 	sha256sums = 01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1
 
 pkgname = python-ffmpeg
-
