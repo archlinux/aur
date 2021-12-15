@@ -1,0 +1,12 @@
+pkgbase = tdx
+	pkgdesc = CLI todo manager for iCalendar files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kkga/tdx
+	arch = x86_64
+	license = UNLICENSE
+	makedepends = go
+	source = https://github.com/kkga/tdx/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 04a033fae803ede456d9cc3a57040f046bfe97f395a44f6d6bac95625049620d
+
+pkgname = tdx
