@@ -5,12 +5,12 @@
 _pyname=agate-excel
 pkgname=python-$_pyname
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Adds read support for Excel files (xls and xlsx) to agate'
 arch=(any)
 url="https://$_pyname.readthedocs.org"
 license=(MIT)
-_pydeps=('agate>=1.5.0'
+_pydeps=(agate
          olefile
          openpyxl
          six
@@ -27,7 +27,6 @@ sha256sums=('aad17edcc99627106e990755cc54e6d8a77452f6f22b30768b35047fbb12c587')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 	python setup.py build_sphinx
 	local _rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
