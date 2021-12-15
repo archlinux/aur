@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ctree
-pkgver=1.0.1
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A Christmas tree right from your terminal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fc1fb777f15eb684be9d8c11868b56849cb4e3ac3ec8de52a713ab2028bb588d621c940f54d2f575bcda90480dad11f23186fe4fbf975e7dd8d62da5908f52b9')
+sha512sums=('d527493f4ff301a325ec439ca4d4d6061be8b84753bc032603f839ec9042dd578e35b8afec4c2b1715e2efce8b51fe18c6d148a98f0dc03ebdd0009c4adececb')
 
 build() {
   cd "$pkgname-$pkgver"
