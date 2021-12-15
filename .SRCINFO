@@ -1,10 +1,10 @@
 pkgbase = fontship
 	pkgdesc = A font development toolkit and collaborative work flow
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/theleagueof/fontship
 	arch = any
-	license = AGPL3
+	license = AGPL4
 	makedepends = cargo
 	makedepends = rust
 	depends = diffutils
