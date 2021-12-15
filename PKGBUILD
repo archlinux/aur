@@ -6,13 +6,13 @@ pkgver=r38.8148a16
 pkgrel=1
 pkgdesc="Kernel modules for Anbox or Waydroid (DKMS)"
 arch=(x86_64)
-url="https://github.com/choff/anbox-modules"
+url="https://github.com/choff/$_pkgname"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$_pkgname::git+$url#branch=master")
+source=("git+$url#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
