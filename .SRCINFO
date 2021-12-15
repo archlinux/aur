@@ -1,7 +1,7 @@
 pkgbase = webkitgtk-bin
 	pkgdesc = Legacy Web content engine for GTK+ 3 (precompiled).
 	pkgver = 2.4.11
-	pkgrel = 24
+	pkgrel = 26
 	epoch = 3
 	url = https://webkitgtk.org/
 	arch = x86_64
@@ -23,8 +23,7 @@ pkgbase = webkitgtk-bin
 	provides = webkitgtk=3:2.4.11
 	conflicts = webkitgtk
 	options = !emptydirs
-	source = https://github.com/frealgagu/archlinux.webkitgtk/releases/download/3_2.4.11-24/webkitgtk-3.2.4.11-24-x86_64.pkg.tar.zst
-	sha256sums = 926f1a81e8ef75ad66f19b7147d11155fb61b0a38b06267f47260fe621f53348
+	source = https://github.com/frealgagu/archlinux.webkitgtk/releases/download/3_2.4.11-26/webkitgtk-3.2.4.11-26-x86_64.pkg.tar.zst
+	sha256sums = 94617d1274ff00f38f04ff04023f0840202ad9c47231b7b5a7d0d87d9628bc1d
 
 pkgname = webkitgtk-bin
-
