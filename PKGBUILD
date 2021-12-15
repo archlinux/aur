@@ -3,8 +3,8 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.2.0rc2.r6472.c6fadb13
-pkgrel=2
+pkgver=3.2.0rc2.r6476.b5fa236a
+pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
 url="https://nicotine-plus.github.io/nicotine-plus"
@@ -20,9 +20,11 @@ checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
 source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git'
-        'org.nicotine_plus.Nicotine-gtk4.desktop')
+        'org.nicotine_plus.Nicotine-gtk4.desktop'
+        'org.nicotine_plus.Nicotine-gtk4-libadwaita.desktop')
 sha256sums=('SKIP'
-            'a9134a8afe1071f240e012105f721515cd5ad9ad538bb66a51937f06b2f04195')
+            'e92495dfede12d88797fe0bcaa03517399da6e0f8411b567005f65cb571aa97f'
+            '7d2c37f0c5e3572948a187c358e4011b9292a8d3f2d9b685c30bfc86aa098ccc')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -57,7 +59,7 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-  install -Dm644 "$srcdir/org.nicotine_plus.Nicotine-gtk4.desktop" -t \
+  install -Dm644 "$srcdir"/org.nicotine_plus.Nicotine{-gtk4.desktop,-gtk4-libadwaita.desktop} -t \
     "$pkgdir/usr/share/applications/"
 
   # Remove duplicate GPL license
