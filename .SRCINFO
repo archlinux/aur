@@ -1,0 +1,14 @@
+pkgbase = vramsteg-git
+	pkgdesc = A command line utility that provides shell scripts with a full-featured progress indicator.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mogaal/vramsteg
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = vramsteg
+	source = git+https://github.com/mogaal/vramsteg.git
+	md5sums = SKIP
+
+pkgname = vramsteg-git
