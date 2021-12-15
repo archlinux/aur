@@ -2,12 +2,13 @@
 
 pkgname=neo-matrix-git
 pkgver=r19.31391fd
-pkgrel=1
+pkgrel=2
 pkgdesc='Simulates the digital rain from "The Matrix" (cmatrix clone with 32-bit color and Unicode support)'
 arch=('any')
 url='https://github.com/st3w/neo'
 license=('GPL3')
 makedepends=('git' 'autoconf-archive')
+depends=('ttf-hanazono')
 provides=('neo-matrix-git')
 source=("git+https://github.com/st3w/neo.git")
 md5sums=('SKIP')
