@@ -1,23 +1,16 @@
 pkgbase = python-p4python
-	pkgdesc = Interface to Perforce API for Python
+	pkgdesc = Interface to Perforce API for Python 3
 	pkgver = 2018.2.1743033
 	pkgrel = 2
 	url = https://www.perforce.com/perforce/doc.current/manuals/p4script/03_python.html
 	arch = any
 	license = custom
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = openssl-1.0
+	depends = python
 	source = python-p4python-2018.2.1743033.tar.gz::https://files.pythonhosted.org/packages/36/5a/0a1b192cdecd31cb8bc0d0ba39c73ffd84ce823053d0004823a1fdbe1440/p4python-2018.2.1743033.tar.gz
 	source = http://ftp.perforce.com/perforce/r18.1/bin.linux26x86_64/p4api.tgz
 	sha256sums = caa37ea520566f50181b042a474eb8012ff8dcbcc0512874170ad34bea1ba0c0
-	sha256sums = 169ad6a504e03c45e74477e2f0e2d8e3d4f2db36311270663d6d0bad57f6426a
+	sha256sums = 331fad2257e4c427e1f864032f8125821865f2ecad3c643574cf4157f9ca7295
 
 pkgname = python-p4python
-	pkgdesc = Interface to Perforce API for Python 3
-	depends = python
-
-pkgname = python2-p4python
-	pkgdesc = Interface to Perforce API for Python 2
-	depends = python2
-
