@@ -2,8 +2,8 @@
 
 _pipname=plum
 pkgname=python-${_pipname,,}
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='Pack/Unpack Memory'
 arch=(any)
 url="https://$_pipname-py.readthedocs.io/en/latest/"
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-setuptools)
 _archive="$_pipname-$pkgver"
 source=("https://gitlab.com/dangass/$_pipname/-/archive/$pkgver/$_archive.tar.bz2")
-sha256sums=('ad3302aaddd76dba09a96c4006db1c899937c6c5b3ffbf495b69b1bb3bcc7701')
+sha256sums=('6b2863af4db754892d690563b8304b43c246e8d3a1124ad8aeab83f2fc86ffbc')
 
 build() {
 	cd "$_archive"
