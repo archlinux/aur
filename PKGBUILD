@@ -1,6 +1,6 @@
 packager='Aditya Mahajan <adityam at umich dot edu>'
 pkgname=luametatex
-pkgver=2020.12.04
+pkgver=2021.12.14
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -37,6 +37,20 @@ _zipfile=context-${_platform}.zip
 source=("http://${_lmtxserver}/install-lmtx/${_zipfile}")
 md5sums=('SKIP')
 
+# Manually add the modules that you want to download here
+modules=(
+         "https://mirrors.ctan.org/macros/context/contrib/context-filter.zip"
+         "https://mirrors.ctan.org/macros/context/contrib/context-vim.zip"
+         "https://mirrors.ctan.org/macros/context/contrib/context-visualcounter.zip"
+         "http://mirrors.ctan.org/install/graphics/pgf/base/pgf.tds.zip"
+         "http://mirrors.ctan.org/install/graphics/pgf/contrib/pgfplots.tds.zip"
+         "http://mirrors.ctan.org/install/graphics/pgf/contrib/circuitikz.tds.zip"
+         )
+
+module_names=("${modules[@]##*/}")
+
+module_count=${#modules[@]}
+
 _dest=/opt/luametatex
 
 # Font directories
@@ -67,33 +81,50 @@ prepare() {
  cp $srcdir/tex/texmf-${_platform}/bin/mtxrun $srcdir/bin
  cp $srcdir/tex/texmf-context/scripts/context/lua/{mtxrun.lua,mtx-install.lua} $srcdir/bin
 
+  echo "Installing $module_count modules ..."
+  mkdir -p $srcdir/tex/texmf-modules
+
+  # PKGBUILD doesn't seem to support brace expansion
+  declare -i count=0
+  while [ $count -lt $module_count ]
+  do
+      wget -O $srcdir/${module_names[$count]} ${modules[$count]}
+      unzip -o -d $srcdir/tex/texmf-modules $srcdir/${module_names[$count]}
+      count+=1
+  done
+
+  # pgfplots doesn't make all the files readable, so we manually correct the
+  # modes
+  chmod -R a+rx $srcdir/tex/texmf-modules
+
+
  # Generate a setuptex file
  cat <<- _EOF_ > $srcdir/tex/setuptex
 	_OLD_PS1=\$PS1
 	_OLD_PATH=\$PATH
 	TEXMFOS=${_dest}/texmf-${_platform}
 	export TEXMFOS
-	
+
 	TEXMFCACHE=\$HOME/.cache/luametatex
 	export TEXMFCACHE
-	
+
 	PATH=\$TEXMFOS/bin:\$PATH
 	export PATH
-	
+
 	PS1="(lmtx) \$PS1"
 	export PS1
-	
-	OSFONTDIR="$_userfontdir;$_osfontdir;" 
+
+	OSFONTDIR="$_userfontdir;$_osfontdir;"
 	export OSFONTDIR
 	resettex () {
 	    PATH=\$_OLD_PATH
 	    export PATH
 	    unset _OLD_PATH
-	    
+
 	    PS1=\$_OLD_PS1
 	    export PS1
 	    unset _OLD_PS1
-	    
+
 	    unset -f resettex
 }
 _EOF_
@@ -103,24 +134,12 @@ _EOF_
  then
    mkdir -p $srcdir/tex/texmf-fonts
    if [ -L $srcdir/tex/texmf-fonts/fonts ]
-   then 
+   then
      rm $srcdir/tex/texmf-fonts/fonts
    fi
    ln -s $_texlivefontdir $srcdir/tex/texmf-fonts/fonts
  fi
 
- # If context-minimal exists, use modules from minimals
- if [ -d $_contextmodulesdir ]
- then
-   if [ -L $srcdir/tex/texmf-modules ]
-   then 
-     rm $srcdir/tex/texmf-modules || return 1
-   elif [ -d $srcdir/tex/texmf-modules ]
-   then
-     rmdir $srcdir/tex/texmf-modules || return 1
-   fi
-   ln -s $_contextmodulesdir $srcdir/tex/texmf-modules || return 1
- fi 
 }
 
 
