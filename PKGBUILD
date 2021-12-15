@@ -40,7 +40,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 "scripts/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "misc/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
