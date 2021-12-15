@@ -11,6 +11,11 @@ makedepends=("git" "cython")
 source=("https://github.com/online-ml/river.git")
 sha512sums=("SKIP")
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
   cd "${srcdir}/river"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
