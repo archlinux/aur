@@ -3,8 +3,8 @@
 
 pkgname=python-strictyaml
 _pkgname=strictyaml
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='A type-safe YAML parser that parses a restricted subset of the YAML specificaton'
 arch=(any)
 url="http://hitchdev.com/$_pkgname"
@@ -15,7 +15,7 @@ depends=(python
 makedepends=(python-setuptools)
 _archive="$_pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('044ae3bec56f31e18dff8cfa62a2c9c028f4c7fe4c0f761e50761184d3b68eef')
+sha256sums=('688be16ee5d1a2f94aa4abdc6d881e8e254d173d724ac88725955fe66bdb63d4')
 
 build() {
 	cd "$_archive"
