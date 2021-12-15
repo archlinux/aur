@@ -6,10 +6,10 @@ pkgdesc="Online machine learning in Python"
 arch=("x86_64")
 url="https://riverml.xyz"
 license=('custom:BSD 3-clause')
-#provides=("python-river")
-#conflicts=("python-river")
+provides=("python-river")
+conflicts=("python-river")
 depends=("python" "python-numpy" "python-scipy" "python-pandas")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "cython")
 source=("https://github.com/online-ml/river/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=("SKIP")
 

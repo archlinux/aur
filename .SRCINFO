@@ -6,10 +6,13 @@ pkgbase = python-river
 	arch = x86_64
 	license = custom:BSD 3-clause
 	makedepends = python-setuptools
+	makedepends = cython
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pandas
+	provides = python-river
+	conflicts = python-river
 	source = https://github.com/online-ml/river/archive/refs/tags/0.9.0.tar.gz
 	sha512sums = SKIP
 
