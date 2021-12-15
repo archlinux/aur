@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termchat-git
-pkgver=1.3.0.r2.gbcfe60f
+pkgver=1.3.1.r0.gc8c2d5d
 pkgrel=1
 pkgdesc="Terminal chat through the LAN (git)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
