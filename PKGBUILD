@@ -3,7 +3,7 @@
 pkgname=python-pdpyras
 pkgver=4.3.0
 _name=pdpyras
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-level PagerDuty REST API Client in Python"
 arch=('any')
 url="https://github.com/PagerDuty/pdpyras"
@@ -15,7 +15,7 @@ sha256sums=('dd5f010f40b85282d8aabbd6b7aaee4018651667539f45b9055619ac40a5aefe')
 
 build() {
    cd "$srcdir/$_name-$pkgver"
-   python setup.py build
+   python -m setuptools.launch setup.py build
 }
 
 package() {

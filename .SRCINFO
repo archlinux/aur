@@ -1,7 +1,7 @@
 pkgbase = python-pdpyras
 	pkgdesc = Low-level PagerDuty REST API Client in Python
 	pkgver = 4.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PagerDuty/pdpyras
 	arch = any
 	license = MIT
