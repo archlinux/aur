@@ -1,6 +1,4 @@
 post_install() {
-  echo "Find additional documentation about scanner driver install at:"
-  echo "https://support.brother.com/g/s/id/linux/en/instruction_scn1.html"
   echo "For a network installation run the following as root:"
   echo "brsaneconfig5 -a name=\"FRIENDLYNAME\" model=\"YOURMODELHERE\" ip=YOUR.SCANNER.IP.HERE"
 }
