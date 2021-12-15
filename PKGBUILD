@@ -2,7 +2,7 @@
 
 pkgname='openastro'
 pkgver='1.1.57'
-pkgrel=3
+pkgrel=4
 pkgdesc='Open source fully-featured astrology software'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -12,17 +12,21 @@ makedepends=('python-setuptools')
 optdepends=()
 conflicts=('openastro-dev' 'swisseph_12' 'swisseph_18' 'swisseph-fixstars')
 source=(
-	"openastro.org_"$pkgver".orig.tar.gz::http://www.openastro.org/download.php?file=source&type=openastro"
-	"openastro.org-data_1.9.orig.tar.gz::http://openastro.org/download.php?file=source&type=data"
-	"sqlite.patch"
+    "openastro.org_"$pkgver".orig.tar.gz::http://www.openastro.org/download.php?file=source&type=openastro"
+    "openastro.org-data_1.9.orig.tar.gz::http://openastro.org/download.php?file=source&type=data"
+    "sqlite.patch"
+    "swiss.patch"
 	)
 md5sums=('4bb719ac3a22976d425f6337fd925d32'
          'bf9b6b2ba2ced1a532e16df11447d471'
-         'afa8144cc701ab7405b63193c788f820')
+         'afa8144cc701ab7405b63193c788f820'
+         'a6928c4007ae77d4bc137b2427e21cc6')
 
 prepare() {
     cd $srcdir"/openastro.org-"$pkgver
     patch -p0 < ../sqlite.patch
+    cd openastromod
+    patch -p0 < ../../swiss.patch
 }
 
 package() {

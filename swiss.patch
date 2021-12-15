@@ -1,0 +1,11 @@
+--- swiss.py	2021-12-15 22:11:47.682199908 +0100
++++ swiss.py	2021-12-15 22:11:51.802301860 +0100
+@@ -82,7 +82,7 @@
+ 
+ 		#compute a planet (longitude,latitude,distance,long.speed,lat.speed,speed)
+ 		for i in range(23):
+-			ret_flag = swe.calc_ut(self.jul_day_UT,i,iflag)
++			ret_flag, flag = swe.calc_ut(self.jul_day_UT,i,iflag)
+ 			for x in range(len(zodiac)):
+ 				deg_low=float(x*30)
+ 				deg_high=float((x+1)*30)
