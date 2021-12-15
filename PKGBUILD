@@ -3,8 +3,8 @@
 
 _pyname=panflute
 pkgname=python-$_pyname
-pkgver=2.1.1
-pkgrel=6
+pkgver=2.1.3
+pkgrel=1
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 arch=(any)
 url="https://github.com/sergiocorreia/$_pyname"
@@ -23,7 +23,7 @@ conflicts=("pandoc-$_pyname")
 replaces=("pandoc-$_pyname")
 _archive="$_pyname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e8c4580f36277ae195dc1614e7cff239d5d3eb0c40ef7e1abb676f6aa2df127c')
+sha256sums=('8e49cc658cdcdbfa66aab8a9e48a414d42b924d2aa2cc225d0215f8f9955568f')
 
 prepare() {
 	cd "$_archive"
