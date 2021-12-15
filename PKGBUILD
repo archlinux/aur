@@ -2,7 +2,7 @@
 
 pkgname=gnome-search-providers-jetbrains
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Add Jetbrains IDE projects to Gnome Search"
 arch=('x86_64')
 url="https://github.com/lunaryorn/gnome-search-providers-jetbrains"
@@ -17,5 +17,6 @@ sha512sums=('3db514db6cb0c998cdf24c0ae87296fc7933b418a14772a9809c0689465a0e89400
 package() {
 	cd "$pkgname-$pkgver"
 
+	export RUSTFLAGS='-A warnings'
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }

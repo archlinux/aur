@@ -1,7 +1,7 @@
 pkgbase = gnome-search-providers-jetbrains
 	pkgdesc = Add Jetbrains IDE projects to Gnome Search
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lunaryorn/gnome-search-providers-jetbrains
 	arch = x86_64
 	license = MPL2
