@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Brocchini <proc80@gmail.com>
 
 pkgname=rainlendar-lite
-pkgver=2.16.1
+pkgver=2.17.1
 pkgrel=1
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('x86_64')
@@ -13,15 +13,13 @@ license=('custom')
 depends=('gtk2' 'libcanberra' 'libsm')
 provides=('rainlendar2')
 conflicts=('rainlendar-pro')
-source=(http://www.rainlendar.net/download/Rainlendar-Lite-$pkgver-amd64.tar.bz2)
-sha256sums=('59a6d660d9fa8584b3099d7a09fb1976f08000f7a852e142f7e5627b775b9894')
+source=(https://www.rainlendar.net/download/Rainlendar-Lite-$pkgver-amd64.tar.bz2)
+sha256sums=('6d085031c0b59a122475be0fb97277f1f2609f22be10cb641fa6e7e1298f31cd')
 
 package() {
-  cd "${srcdir}"
-
-  install -d "${pkgdir}"/{opt,usr/bin,usr/share/licenses/$pkgname}
+  install -d "${pkgdir}"/{opt,usr/bin,usr/share/licenses/${pkgname}}
 
   cp -R "${srcdir}"/rainlendar2 "${pkgdir}"/opt
   ln -s /opt/rainlendar2/rainlendar2 "${pkgdir}"/usr/bin/rainlendar
-  ln -s /opt/rainlendar2/License.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  ln -s /opt/rainlendar2/License.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

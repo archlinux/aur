@@ -1,6 +1,6 @@
 pkgbase = rainlendar-lite
 	pkgdesc = A desktop Calendar, ToDo list and Event list
-	pkgver = 2.16.1
+	pkgver = 2.17.1
 	pkgrel = 1
 	url = http://www.rainlendar.net/
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = rainlendar-lite
 	depends = libsm
 	provides = rainlendar2
 	conflicts = rainlendar-pro
-	source = http://www.rainlendar.net/download/Rainlendar-Lite-2.16.1-amd64.tar.bz2
-	sha256sums = 59a6d660d9fa8584b3099d7a09fb1976f08000f7a852e142f7e5627b775b9894
+	source = https://www.rainlendar.net/download/Rainlendar-Lite-2.17.1-amd64.tar.bz2
+	sha256sums = 6d085031c0b59a122475be0fb97277f1f2609f22be10cb641fa6e7e1298f31cd
 
 pkgname = rainlendar-lite
-
