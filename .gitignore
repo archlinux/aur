@@ -1,0 +1,5 @@
+pkg
+src
+melvor-mod-manager/
+*.tar.zst
+*.tar.gz

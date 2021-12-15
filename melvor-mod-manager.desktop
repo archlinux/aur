@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.4
+Type=Application
+Name=Melvor Mod Manager
+Icon=melvor-mod-manager
+Exec=/usr/bin/melvor-mod-manager
+Comment=
+Categories=Utility;
+Terminal=false
+StartupWMClass=melvor-mod-manager
