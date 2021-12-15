@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-3.0-bin
-pkgver=3.0.211129.d2e608733507
+pkgver=3.0.211215.f1cca3055776
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -44,8 +44,8 @@ build() {
 	wget -nc "https://builder.blender.org/download/daily/$_full"
 	tar -xJ -f "$_full"
 	cd "${_full%.tar.xz}"
-	# Remove included Python installation, so system Python is used instead. (python 3.9) (working 2021-05-21)
-	rm -rf "$_upstreamversion/python"
+	# Remove included Python installation, so system Python is used instead. (python 3.10) (broken 2021-12-15)
+	#rm -rf "$_upstreamversion/python"
 	sed -i "s/=blender/=blender-$_upstreamversion/" blender.desktop
 	sed -i "s/=Blender/=Blender-$_upstreamversion/" blender.desktop
 	#for f in datafiles/icons/*/apps/blender.* ; do chmod 644 $f && mv $f "${f%.*}-$_upstreamversion.${f#*.}" ; done
