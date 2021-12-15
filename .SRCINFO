@@ -1,7 +1,7 @@
 pkgbase = ftcli
 	pkgdesc = A command line font editor
-	pkgver = 0.3.5
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/ftCLI/ftCLI
 	arch = any
 	license = MIT
@@ -12,10 +12,10 @@ pkgbase = ftcli
 	depends = python-colorama
 	depends = python-click
 	depends = python-brotli
-	depends = python-fonttools>=4.24.4
-	depends = python-skia-pathops>=0.6.0.post2
+	depends = python-fonttools
+	depends = python-skia-pathops
 	depends = python-zopfli
-	source = ftCLI-0.3.5.tar.gz::https://github.com/ftCLI/ftCLI/archive/v0.3.5.tar.gz
-	sha256sums = 8efe72499b781d5f231f7ff0fbba1d24e01329e2214ec49d345a2c435ce54933
+	source = ftCLI-0.5.1.tar.gz::https://github.com/ftCLI/ftCLI/archive/v0.5.1.tar.gz
+	sha256sums = eac1f3a6361957436c46e9c4d26cb16fe1e6df5c7ff060863e35227ac2edb9f6
 
 pkgname = ftcli
