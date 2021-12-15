@@ -7,8 +7,8 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=12.3.1
-pkgrel=2
+pkgver=13.0.0
+pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('x86_64')
 url="http://www.wolfram.com/mathematica/"
@@ -70,8 +70,8 @@ optdepends=(
     'tesseract'
     'zlib'
 )
-source=("local://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('7a192570cdcac6b40fed09cc7015b6bd')
+source=("local://Mathematica_${pkgver}_BNDL_LINUX.sh")
+md5sums=('e02f7c8926a51412a8d578de408e4b24')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -96,13 +96,13 @@ prepare() {
         exit 1
     fi
 
-    chmod +x ${srcdir}/Mathematica_${pkgver}_LINUX.sh
+    chmod +x ${srcdir}/Mathematica_${pkgver}_BNDL_LINUX.sh
 }
 
 package() {
     msg2 "Running Mathematica installer"
     # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
-    sh ${srcdir}/Mathematica_${pkgver}_LINUX.sh -- \
+    sh ${srcdir}/Mathematica_${pkgver}_BNDL_LINUX.sh -- \
              -execdir=${pkgdir}/usr/bin \
              -targetdir=${pkgdir}/opt/Mathematica \
              -auto
@@ -128,7 +128,7 @@ package() {
     mkdir -p ${srcdir}/WolframScript
     mkdir -p ${pkgdir}/usr/share/
     cd ${srcdir}/WolframScript
-    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.6.0+20210709241_amd64.deb data.tar.xz
+    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_*_amd64.deb data.tar.xz
     tar -xf data.tar.xz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
 
 
@@ -138,10 +138,10 @@ package() {
           ${pkgdir}/usr/share/desktop-directories \
           ${pkgdir}/usr/share/mime/packages
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
-    desktopFile='wolfram-mathematica12.desktop'
+    desktopFile='wolfram-mathematica13.desktop'
     sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
-    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica --name M-12.3 %F|g' $desktopFile
-    printf 'Categories=Science;Math;NumericalAnalysis;DataVisualization;\n' >> $desktopFile
+    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
+    printf 'Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;\n' >> $desktopFile
     printf 'StartupWMClass=Mathematica;\n' >> $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/
     cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
