@@ -1,8 +1,8 @@
 # Maintainer: second2050 <aur at second2050 dot me >
 
 pkgname='ttf-delugia-code'
-pkgver=2110.31.1
-pkgrel=2
+pkgver=2111.01
+pkgrel=1
 pkgdesc="Cascadia Code + Nerd Fonts, with some small differences."
 arch=('any')
 url='https://github.com/adam7/delugia-code'
@@ -12,12 +12,12 @@ source=("delugia-book-v$pkgver.zip::$url/releases/download/v$pkgver/delugia-book
         "delugia-mono-complete-v$pkgver.zip::$url/releases/download/v$pkgver/delugia-mono-complete.zip"
         "delugia-mono-powerline-$pkgver.zip::$url/releases/download/v$pkgver/delugia-mono-powerline.zip"
         "delugia-powerline-v$pkgver.zip::$url/releases/download/v$pkgver/delugia-powerline.zip"
-        "LICENSE::$url/raw/master/LICENSE")
-sha512sums=('3d172501120afc7e529a71ed12e2314de9c367326f8629355469c09d47173a05b4af4611b26b0373f595eb5f00275397854f70cf66ebda6c0e245246e6fc6baf'
-            '750f7bf2e6276e6f7807bae54110bb1c67867f37f59dccaf027829768ea637df0b941ebec350a68babd792975cd3819b33bf194d05eb579715e77034ca2e2092'
-            '4b2fdd862838150017f64b006bf4a1e8ed0b9703f3e19f0930a0e561c1516b2da7e90c06888e92aece3cadd149c067c50125f9e27447c7430a5440923c2670b4'
-            '1cfe9e3135793f56525b593d8963c3b6aa8c169198c2d93489aa6715461d362c734c55ec5dff85ff5ce8a7ea2d5470b12f811b36e7e1aa1fbe0f0790596e87e9'
-            'a6451cee3f4d81d731cebe7097c1a91b5b405068bd15e41d88d274ca471c1c89c849ad643b756e6bf7db9c9ba94f7a90c4856dc7742dbfdf75e31264a27db4d9'
+        "ttf-delugia-code-LICENSE::$url/raw/master/LICENSE")
+sha512sums=('94baa140ebc62d2155760586d43760dc34f650ce14d8ac01f420d702f4cac4b42cab43059998b2ebd36c67510c1fb5e80326e47ddb99c59d1a380e5795fe5f0d'
+            'dfb1dacc4f9c82f24aa5f56e5749a1a9e5a728bc8d05bf2b3697450dc01768e0b52032392a39821352883c747ee690c643e7188929f9051c0fd1f8992b57df64'
+            '7f316ff8a5d1b0ea97edc095a9cc2bb66e8d7284056c974139de4075fd1cd2427625439556a886dc1f4d9416743831d099d9af86980c429e515de8301ddf145f'
+            '694a84ec04e9e334cb80199b18a625cd98adfaea5a6be03ba624a428370321b73e4879f2b6f8458690dc5572bf21cd18f0667a6679586075d74800ff5d8ea02d'
+            '90bf147e2729340e8b55c230b8accb34db301687b79fc791f19c68a754391cc45adc22e93774fe6d049d7cdd4cbfbdc39f4b3499f2a838bc8ed0e04d9036f74a'
             'e8bd6f5cbf2e0c7684b41ad75a6df681fb8db4482592cae334f48efb45f70f091ebd9243df7872e60aaa0f1c7b0afce9a640879e930d71d836b7b3490ca7a7aa')
 
 package() {
@@ -59,5 +59,5 @@ package() {
     install -m644 delugia-powerline/DelugiaPLLight-Italic.ttf "$pkgdir/usr/share/fonts/TTF/"
     install -m644 delugia-powerline/DelugiaPLLight.ttf "$pkgdir/usr/share/fonts/TTF/"
     # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 ttf-delugia-code-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
