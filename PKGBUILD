@@ -5,13 +5,13 @@
 _pyname=agate-dbf
 pkgname=python-$_pyname
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Adds read support for dbf files to agate'
 arch=(any)
 url="https://$_pyname.readthedocs.org"
 license=(MIT)
-_pydeps=('agate>=1.5.0'
-         'dbfread>=2.0.5'
+_pydeps=(agate
+         dbfread
          sphinx_rtd_theme)
 depends=(python
          "${_pydeps[@]/#/python-}")
@@ -24,7 +24,6 @@ sha256sums=('5b60feb4bbb48dd4dcabef2b0248f2b8d4c3d42d60d50971c8067dbb5b01d5f6')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build
 	python setup.py build_sphinx
 	_rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
