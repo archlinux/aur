@@ -22,9 +22,9 @@ git describe --long --tags | cut -d'-' -f1
 
 package() {
 cd $srcdir/$pkg
-install -Dm 755 $pkg $pkgdir/usr/bin/$pkg
-install -m 755 -d "$pkgdir/usr/share/$pkg/sys"
-install -m 755 -d "$pkgdir/usr/share/$pkg/assets"
+install -dm 755 $pkgdir/usr/share/$pkg/sys
+install -dm 755 $pkgdir/usr/share/$pkg/assets
 install -m 755 sys/*.sh $pkgdir/usr/share/$pkg/sys
 install -m 755 assets/*.sh $pkgdir/usr/share/$pkg/assets
+install -Dm 755 $pkg $pkgdir/usr/bin/$pkg
 }
