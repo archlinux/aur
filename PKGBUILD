@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='Google Photos and Albums backup tool'
 arch=(any)
 url="https://github.com/gilesknap/$pkgname"
-license=('MIT')
+license=(MIT)
 _py_deps=(attrs
           appdirs
           exif
