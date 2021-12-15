@@ -7,7 +7,7 @@
 
 pkgname=google-cloud-sdk-app-engine-java
 pkgver=367.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A google-cloud-sdk component that provides the Java runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
