@@ -20,7 +20,7 @@ ERR() {
 [[ -d "$1" ]] && ERR "'$1' is a directory" 3; # File is a directory
 # Ensure the file is in a directory we can read
 [[ -d "`dirname $1`" ]] || ERR "'$1' is not in a directory we can read"
-[[ -w "`dirname $1`" ]] || ERR "'$1' is a directory you do not have permission to read"
+[[ -r "`dirname $1`" ]] || ERR "'$1' is a directory you do not have permission to read"
 
 # In the positive case, the file exists, and we check that anyone can read it and that it is owned by root. In the negative case, the file does not exist
 if [[ -e "$1" ]] ; then

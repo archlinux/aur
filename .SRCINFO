@@ -1,7 +1,7 @@
 pkgbase = doasedit
 	pkgdesc = Allow doas users to edit root-owned files by running an unpriviledged editor
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/magnustesshu/doasedit
 	arch = any
 	license = GPL
