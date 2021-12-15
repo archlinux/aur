@@ -1,7 +1,7 @@
 pkgname=treefetch
 pkgver="v1.2.0"
 pkgrel=1
-pkgdesc="treefetch -xmas"
+pkgdesc="A lightning-fast system fetch tool built with Rust."
 url="https://github.com/angelofallars/treefetch.git"
 arch=("x86_64")
 license=('GPL3')
