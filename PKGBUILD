@@ -5,7 +5,7 @@
 
 pkgname=lib32-polkit
 pkgver=0.120
-pkgrel=1
+pkgrel=3
 pkgdesc='Application development toolkit for controlling system-wide privileges'
 arch=(x86_64)
 license=(LGPL)
@@ -22,8 +22,12 @@ makedepends=(
   git
 )
 _tag=92b910ce2273daf6a76038f6bd764fa6958d4e8e
-source=(git+https://gitlab.freedesktop.org/polkit/polkit/#tag=${_tag})
-sha256sums=(SKIP)
+source=(
+  git+https://gitlab.freedesktop.org/polkit/polkit.git#tag=${_tag}
+  multilib.diff
+)
+sha256sums=('SKIP'
+            '7271f97282d22b58b74cf9089fa3a83c799cde184eb6e06a83164692362e50fe')
 
 pkgver() {
   cd polkit
@@ -32,22 +36,28 @@ pkgver() {
 }
 
 prepare() {
-  sed -e '/polkitbackend/d' -i polkit/src/meson.build -i polkit/test/meson.build
+  cd polkit
+
+  # Don't build the backend
+  git apply -3 ../multilib.diff
 }
 
 build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+  export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
 
-  meson build polkit \
-    --prefix=/usr \
+  arch-meson polkit build \
     --libdir=/usr/lib32 \
     -D session_tracking=libsystemd-login \
     -D os_type=redhat \
     -D tests=true \
     -D introspection=false
   meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs -t 3
 }
 
 package() {

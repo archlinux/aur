@@ -1,0 +1,33 @@
+diff --git i/meson.build w/meson.build
+index 858078d..50ae1ac 100644
+--- i/meson.build
++++ w/meson.build
+@@ -133,7 +133,6 @@ expat_dep = dependency('expat')
+ assert(cc.has_header('expat.h', dependencies: expat_dep), 'Can\'t find expat.h. Please install expat.')
+ assert(cc.has_function('XML_ParserCreate', dependencies: expat_dep), 'Can\'t find expat library. Please install expat.')
+ 
+-mozjs_dep = dependency('mozjs-78')
+ 
+ dbus_dep = dependency('dbus-1', required: false)
+ dbus_policydir = pk_prefix / pk_datadir / 'dbus-1/system.d'
+diff --git i/src/meson.build w/src/meson.build
+index 4073333..c7038f1 100644
+--- i/src/meson.build
++++ w/src/meson.build
+@@ -4,7 +4,6 @@ symbol_map = meson.current_source_dir() / 'symbol.map'
+ ldflags = cc.get_supported_link_arguments('-Wl,--version-script,@0@'.format(symbol_map))
+ 
+ subdir('polkit')
+-subdir('polkitbackend')
+ subdir('polkitagent')
+ subdir('programs')
+ 
+diff --git i/test/meson.build w/test/meson.build
+index 3f02d35..4fbb0ec 100644
+--- i/test/meson.build
++++ w/test/meson.build
+@@ -23,4 +23,3 @@ test_env.set('MOCK_NETGROUP', test_etc_dir / 'netgroup')
+ test_env.set('POLKIT_TEST_DATA', test_data_dir)
+ 
+ subdir('polkit')
+-subdir('polkitbackend')
