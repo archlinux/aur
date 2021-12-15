@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-git
-pkgver=2021.4.0.r0.gd5c0725
+pkgver=2022.0.1.r1.g43c3736
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library (git version)'
 arch=('x86_64')
@@ -26,6 +26,8 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_PYTHON_BINDING:BOOL='ON' \
+        -DBUILD_EXAMPLES:BOOL='OFF' \
+        -DINSTALL_EXAMPLE_CODE:BOOL='OFF' \
         -Wno-dev
     make -C build
 }
@@ -38,4 +40,7 @@ package() {
     local _pyver
     _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     mv "${pkgdir}/usr/lib/python"{,"$_pyver"}
+    mv "${pkgdir}/usr/bin"/{,vpl-}sample_decode
+    mv "${pkgdir}/usr/bin"/{,vpl-}sample_encode
+    mv "${pkgdir}/usr/bin"/{,vpl-}sample_multi_transcode
 }
