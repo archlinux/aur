@@ -1,7 +1,7 @@
  # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
@@ -34,7 +34,7 @@ source=(
 )
 
 md5sums=(
-    'e0f2b8bbab7a73c30653a4f571abe318'
+    'f93fc52e13ccdf3fa4b1b9ec251fe4a9'
     '82d75ad72aed6c6962f203f9c6f329d3'
     '7022b1fe2765112dae39285a286bcedb'
     '1fd9f85ce430fd7a49df0cdf212b7516'
