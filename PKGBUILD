@@ -8,7 +8,7 @@ url="https://riverml.xyz"
 license=('custom:BSD 3-clause')
 depends=("python-numpy" "python-scipy" "python-pandas")
 makedepends=("git" "cython")
-source=("https://github.com/online-ml/river.git")
+source=("https://github.com/online-ml/river")
 sha512sums=("SKIP")
 
 pkgver() {
