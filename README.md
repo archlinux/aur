@@ -23,55 +23,7 @@ gd:
 
 ### Nginx
 1. You can use any HTTP server. Instructions are given for Nginx.
-2. `sudo nano /etc/nginx/nginx.conf` and configure your Nginx server. You also need to create SSL keys.
-```
-http
-{
-    # Directives
-    ## SSL certificate
-    ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.me/privkey.pem;
-    ssl_certificate     /etc/letsencrypt/live/subdomain.domain.me/fullchain.pem;
-
-    server
-    {
-        listen          443 ssl;
-        listen          [::]:443 ssl;
-        server_name     subdomain.domain.me;
-        root            /path/to/website/;
-        index           index.php;
-
-        location ^~ /.git/
-        {
-            return 404;
-        }
-
-        location ^~ /config/
-        {
-            return 404;
-        }
-
-        location ^~ /lang/en.json
-        {
-            return 404;
-        }
-
-        location ^~ /tmp/
-        {
-            return 404;
-        }
-
-        location ~ \.php$
-        {
-            try_files       $uri =404;
-
-            # FastCGI
-            include         fastcgi.conf;
-            fastcgi_pass    unix:/run/php-fpm/php-fpm.sock;
-            fastcgi_index   index.php;
-        }
-    }
-}
-```
+2. `sudo nano /etc/nginx/nginx.conf` and configure your Nginx server. You also need to create SSL keys. Take a look at [these](https://github.com/matomo-org/matomo-nginx) instructions.
 
 ## Required services
 1. mariadb.service
