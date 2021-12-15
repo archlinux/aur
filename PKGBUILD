@@ -23,18 +23,18 @@ _ver=11.0.13
 _hgver=11_0_13
 _updatever=8
 _jbver1=1751
-_jbver2=19
+_jbver2=21
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jbr${_hgver}b${_jbver1}.${_jbver2}
-_jcef_commit=e6e5235
+_jcef_commit=6b21392
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 license=('custom')
 makedepends=('java-environment>=11' 'java-environment<12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-api2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
+             'libnet' 'bash' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
         git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         https://github.com/prehonor/myJetBrainsRuntime/raw/master/idea.patch

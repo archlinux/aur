@@ -1,5 +1,5 @@
 pkgbase = java11-jetbrains-imfix
-	pkgver = 11.0.13.b1751.19
+	pkgver = 11.0.13.b1751.21
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
@@ -30,8 +30,14 @@ pkgbase = java11-jetbrains-imfix
 	makedepends = ant
 	makedepends = git
 	makedepends = rsync
-	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jbr11_0_13b1751.19
-	source = git+https://github.com/JetBrains/jcef.git#commit=e6e5235
+	makedepends = cmake
+	makedepends = python
+	makedepends = at-spi2-atk
+	makedepends = libxkbcommon
+	makedepends = libxcomposite
+	makedepends = mesa
+	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jbr11_0_13b1751.21
+	source = git+https://github.com/JetBrains/jcef.git#commit=6b21392
 	source = https://github.com/prehonor/myJetBrainsRuntime/raw/master/idea.patch
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
@@ -60,7 +66,7 @@ pkgname = jre11-jetbrains-imfix
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=11
 	provides = java-runtime-jetbrains=11
-	provides = jre11-jetbrains=11.0.13.b1751.19-1
+	provides = jre11-jetbrains=11.0.13.b1751.21-1
 	conflicts = jre11-jetbrains
 	backup = etc/java11-jetbrains/logging.propertopenjdkies
 	backup = etc/java11-jetbrains/management/jmxremote.access
@@ -80,11 +86,11 @@ pkgname = jre11-jetbrains-imfix
 pkgname = jdk11-jetbrains-imfix
 	pkgdesc = JetBrains Java 11 development kit (With patch that allows allow the IME window follow the cursor)
 	install = install_jdk-jetbrains.sh
-	depends = jre11-jetbrains=11.0.13.b1751.19-1
+	depends = jre11-jetbrains=11.0.13.b1751.21-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	provides = java-environment=11
 	provides = java-environment-jetbrains=11
-	provides = jdk11-jetbrains=11.0.13.b1751.19-1
+	provides = jdk11-jetbrains=11.0.13.b1751.21-1
 	conflicts = jdk11-jetbrains
