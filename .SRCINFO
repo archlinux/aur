@@ -1,7 +1,7 @@
 pkgbase = python-weasyprint
 	pkgdesc = Convert web documents (HTML, CSS, SVG, ...) to PDF
-	pkgver = 53.3
-	pkgrel = 2
+	pkgver = 53.4
+	pkgrel = 1
 	url = https://weasyprint.org
 	arch = any
 	license = BSD
@@ -25,8 +25,8 @@ pkgbase = python-weasyprint
 	depends = python-tinycss2
 	depends = python-zopfli
 	depends = ttf-font
-	provides = weasyprint=53.3
-	source = https://files.pythonhosted.org/packages/source/w/weasyprint/weasyprint-53.3.tar.gz
-	sha256sums = eab32acf81d14b6626e5e180c7f03b925ece915a69b314ce3061a0f3ec6bf9da
+	provides = weasyprint=53.4
+	source = https://files.pythonhosted.org/packages/source/w/weasyprint/weasyprint-53.4.tar.gz
+	sha256sums = 10ccb17d55c73096bdf1edd3efe58cb855b07e4c307d9bad4ebc9a3f13ff4580
 
 pkgname = python-weasyprint
