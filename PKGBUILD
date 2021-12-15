@@ -2,7 +2,7 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb-bin"
-pkgver="5.0.4"
+pkgver="5.0.5"
 _basever="5.0"
 _basedist="focal"
 pkgrel="1"
@@ -12,7 +12,7 @@ url="https://www.mongodb.com/"
 license=("custom:SSPLv1" "Apache")
 depends=("curl")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities."
-			"mongosh: An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.")
+	    "mongosh-bin: An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.")
 provides=("mongodb=$pkgver")
 conflicts=("mongodb" "mongodb-shell-bin")
 backup=("etc/mongodb.conf")
@@ -44,13 +44,13 @@ sha256sums=('f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850'
             '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('72c27e4b071750be887afe7ff04067b47acee80400378e7434e6976b4ecb587f'
-                   'd2379af18b62d1d84d66b5953620be5f2e4533e04920c2571ce1b66b5cbabaca'
-                   '4d4072a4b3a891bd5aaa2e298a0d546097eab99e4c93e415fda6daae3ac26a82'
+sha256sums_x86_64=('786133365c2e3bf6ba67355b353ab2af087a0e05400f131ff3c0110c56b2ae9f'
+                   'f2ff512fc95500035a8043ac48e3e74e5a5409c329c6137c22cbdbbbe589f909'
+                   'b63578d7f4e78c5efb77f83857b3ae5ec1d5242dcd3d552dd60326b7b6ddd512'
 )
-sha256sums_aarch64=('629b4f62ae2f49563bc93fe26c4eac9e89a247d74a4973bd838017dcd400a16f'
-                    '24a191c43197945edf16fc906ee902fbd12a6b414e78e2f2bbbdf7cd7268d72c'
-                    '5a187bc61a2357f22551375681724021e6b6f96c8993e9e3e25eb69075ba8a55'
+sha256sums_aarch64=('0d811ca4c604b91f67b24b3aeece1f0ea9c24518aae7cfdcd34c2dbf2b8caae6'
+                    '42bf51c1ee6045ab89241db6236a0ed493c36cf3d545d1c8b012b571ee8b8bfd'
+                    'e4e1444032fa5dfbd5a16d448693c5b0bb0bdebf18befe69b9a6cddbab36426b'
 )
 prepare() {
   mkdir -p output
