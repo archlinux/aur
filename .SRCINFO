@@ -1,6 +1,6 @@
 pkgbase = around
 	pkgdesc = Video conferencing with AI-based camera framing.
-	pkgver = 0.56.12
+	pkgver = 0.57.12
 	pkgrel = 1
 	url = https://www.around.co/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = around
 	options = !strip
 	source = https://downloads.around.co/Around.AppImage
 	source = https://avatars.githubusercontent.com/u/62425723
-	sha256sums = 8c64e4e4925e9e7e1e0468f483cb4b7d6f7f7d13f6ccc783bd61826aca9e4b46
+	sha256sums = 80666c8da74da60abdd8ec467a8be44c2e0f87a15d2f87c200661f2e32472ec1
 	sha256sums = 4707fb49bf3a54dae37a2bd1ea9eb2b634db56ad896670c9255d49548a18a79b
 
 pkgname = around
