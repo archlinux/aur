@@ -1,0 +1,5 @@
+
+pre_remove() {
+    find /usr/lib/thinkfan-ui -type f -iname \*.pyc -delete
+    find /usr/lib/thinkfan-ui -type d -iname __pycache__ -delete
+}

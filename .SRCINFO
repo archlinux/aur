@@ -1,6 +1,6 @@
 pkgbase = thinkfan-ui
 	pkgdesc = A small gui app for Linux to control the fan speed and monitor temps on a ThinkPad
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/zocker-160/thinkfan-ui
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = thinkfan-ui
 	depends = python-pyqt5>=5.11
 	depends = lm_sensors
 	source = thinkfan-ui-0.7.tar.gz::https://github.com/zocker-160/thinkfan-ui/archive/refs/tags/0.7.tar.gz
-	sha256sums = 7726bf3e474fa35fcc349c6036145f1bccb4b01f16de36fd0f367b3f08755462
+	sha256sums = cdf7597e1906d09ad97153ac8907f848ba2d297f5991b54c4a51a9c628b13cbb
 
 pkgname = thinkfan-ui
