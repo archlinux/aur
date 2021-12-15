@@ -1,4 +1,4 @@
-# Maintainer: Ayrton Araujo <ayrton@riseup.net>
+# Maintainer: Ayrton Araujo <ayrton@linux.com>
 
 pkgname=pipelinit-bin
 pkgver=0.2.2
