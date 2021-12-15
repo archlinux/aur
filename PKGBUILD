@@ -8,16 +8,14 @@ arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation'
 license=('custom:RSDKv3/4 Decompilation Source Code License v1')
 makedepends=('git')
-depends=('sdl2' 'libogg' 'libvorbis' 'asio')
+depends=('sdl2' 'libogg' 'libvorbis' 'asio' 'tinyxml2')
 provides=(sonic2013)
 source=(
 	"git+${url}.git"
-	'git+https://github.com/leethomason/tinyxml2.git'
 	'git+https://github.com/nothings/stb.git'
 	'template-launcher'
 	'template.desktop')
 sha256sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'53ea1912492a15bf54f6dba1859aaf0f9ca0c01615f021faa8a3c67449b1fd55'
@@ -30,7 +28,6 @@ pkgver() {
 }
 
 prepare() {
-	ln -sfn "$srcdir/tinyxml2" "$srcdir/Sonic-1-2-2013-Decompilation/dependencies/all/tinyxml2"
 	ln -sfn "$srcdir/stb" "$srcdir/Sonic-1-2-2013-Decompilation/dependencies/all/stb-image"
 }
 
