@@ -5,7 +5,7 @@
 
 pkgname=fluent-bit
 
-pkgver=1.8.10
+pkgver=1.8.11
 pkgrel=1
 epoch=
 
@@ -72,5 +72,5 @@ package() {
     install -Dm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-sha512sums=('cf3d42d1930c79f49e9b0bdc3a5b201816a1f6d8b40fd9d3aadd3e590657588b2ca76ec63a69aba2952fc36dff895a28a5222098ab80d3f91c3a7fed5a9586e4')
-b2sums=('f9c9bec2ea9cda606e3a41a919dd1fde6d9746dbf503178176216c947c8a36dc2a1020a4be03725dbaec38a74e3d97cf4cfcb3bab22e776ad2cc0c9e4076c42d')
+sha512sums=('9402516821436e6e9884f77f668e88edf6af0a931bfabc410c2a0ca44a99a73a1be8bc2c36cffe2b585855f2430e12b7004caa6306e8961b4c5281717784ef88')
+b2sums=('0787fddaf59fd4d1466cc0a70505e5231f96e4c529fe256c0930359b2fab1c29fad84a776d1f63df6a78eab1a7ac0af9dfc95cdf7aad51fea3d618ed4f3b9733')
