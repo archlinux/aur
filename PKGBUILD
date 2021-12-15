@@ -1,8 +1,8 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=spyder-git
-pkgver=5.1.1.r252.g0a86dcdc5
-pkgrel=2
+pkgver=5.2.1.r345.gfad14a342
+pkgrel=1
 pkgdesc="The Scientific Python Development Environment"
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -17,10 +17,10 @@ depends=('jupyter-nbconvert'
          'python-intervaltree'
          'python-jedi'
          'python-keyring'
-         'python-language-server'
          'python-lsp-black'
          'python-lsp-server'
          'python-numpydoc'
+         'python-jsonschema'
          'python-paramiko'
          'python-parso'
          'python-pexpect'
