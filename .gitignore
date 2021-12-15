@@ -1,3 +1,6 @@
-kotatogram-desktop-*-full.tar.gz
+kotatogram-desktop*
+libvpx
+libyuv                                                                                                                                                                                        
+pipewire
 pkg/
 src/
