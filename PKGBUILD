@@ -1,25 +1,30 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
-pkgbase=warpd-git
 pkgname=warpd-git
-pkgver=0.9a
+pkgver=r73.f7d1202
+_gitname=warpd
 pkgrel=1
-pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen. The program was inspired by the mousekeys feature of Kaleidoscope, the firmware for the Keyboardio"
+pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
 url="https://github.com/rvaiya/warpd"
-license=('GPLV3')
+license=('MIT')
 arch=('x86_64')
 md5sums=('SKIP')
-depends=()
-conflicts=()
-makedepends=(git make libxinerama libxft libxfixes libxtst libx11)
+makedepends=(git)
+depends=(libxinerama libxft libxfixes libxtst libx11)
 provides=(warpd)
 source=("git+$url")
 
-package() {
-    cd warpd
-    make
+pkgver() {
+  cd ${_gitname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build () {
+  cd ${_gitname}
+  make
+}
 
-
-#vim: syntax=sh
+package () {
+  cd ${_gitname}
+  make install
+}

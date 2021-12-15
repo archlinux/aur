@@ -1,20 +1,18 @@
 pkgbase = warpd-git
-	pkgdesc = A small X program which facilitates recursively warping the pointer to different quadrants on the screen. The program was inspired by the mousekeys feature of Kaleidoscope, the firmware for the Keyboardio
-	pkgver = 0.9a
+	pkgdesc = A small X program which facilitates recursively warping the pointer to different quadrants on the screen.
+	pkgver = r73.f7d1202
 	pkgrel = 1
 	url = https://github.com/rvaiya/warpd
 	arch = x86_64
-	license = GPLV3
+	license = MIT
 	makedepends = git
-	makedepends = make
-	makedepends = libxinerama
-	makedepends = libxft
-	makedepends = libxfixes
-	makedepends = libxtst
-	makedepends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = libxfixes
+	depends = libxtst
+	depends = libx11
 	provides = warpd
 	source = git+https://github.com/rvaiya/warpd
 	md5sums = SKIP
 
 pkgname = warpd-git
-
