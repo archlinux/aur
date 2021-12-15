@@ -5,15 +5,16 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=95.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
-arch=(x86_64 x86_64_v3 aarch64)
+arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
-         aom harfbuzz graphite libvpx libjpeg zlib icu libevent pipewire)
+         aom harfbuzz libvpx libjpeg zlib icu libevent pipewire
+         kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
@@ -142,20 +143,26 @@ prepare() {
   echo "---- Fixing build with Wayland"
   # Needed patch to have build working
   patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
+  patch -Np1 -i ${_patches_dir}/misc/fix-wl_proxy_marshal_flags.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-ac_add_options --prefix=/usr
-ac_add_options --enable-release
-ac_add_options --enable-hardening
-ac_add_options --enable-rust-simd
-ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --enable-hardening
+ac_add_options --enable-linker=lld
+ac_add_options --enable-release
+ac_add_options --enable-rust-simd
+ac_add_options --prefix=/usr
+ac_add_options --with-ccache
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 export CC='clang'
 export CXX='clang++'
+export NM=llvm-nm
+export OBJCOPY='/usr/bin/llvm-objcopy'
+export RANLIB=llvm-ranlib
+export STRIP=llvm-strip
 
 # Branding
 ac_add_options --enable-update-channel=release
@@ -199,6 +206,7 @@ ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
+ac_add_options --enable-optimize
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-strip
 
@@ -212,34 +220,6 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # mk_add_options MOZ_MAKE_FLAGS="-j4"
 # ac_add_options --enable-linker=gold
 END
-
-if [[ $CARCH == 'aarch64' ]]; then
-  cat >>../mozconfig <<END
-# taken from manjaro build:
-ac_add_options --enable-optimize="-g0 -O2"
-# from ALARM
-# ac_add_options --disable-webrtc
-
-END
-
-  export MOZ_DEBUG_FLAGS=" "
-  export CFLAGS+=" -g0"
-  export CXXFLAGS+=" -g0"
-  export RUSTFLAGS="-Cdebuginfo=0"
-
-  # we should have more than enough RAM on the CI spot instances.
-  # ...or maybe not?
-  export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -Np1 -i ${_patches_dir}/librewolf/arm.patch
-  patch -Np1 -i ${_patches_dir}/arch/build-arm-libopus.patch
-
-else
-
-  cat >>../mozconfig <<END
-# probably not needed, enabled by default?
-ac_add_options --enable-optimize
-END
-fi
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
