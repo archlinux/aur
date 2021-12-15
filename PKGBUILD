@@ -2,8 +2,9 @@
 # Contributor: Vincent Bernardoff <vb AT luminar.eu.org>
 
 pkgname=mmc-utils-git
-pkgver=a1b233c
+pkgver=r88.a1b233c
 pkgrel=1
+epoch=1
 pkgdesc="Userspace tools for MMC/SD devices"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git"
@@ -16,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --always --dirty --tags | sed -e 's/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

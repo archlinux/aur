@@ -1,7 +1,8 @@
 pkgbase = mmc-utils-git
 	pkgdesc = Userspace tools for MMC/SD devices
-	pkgver = a1b233c
+	pkgver = r88.a1b233c
 	pkgrel = 1
+	epoch = 1
 	url = https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git
 	arch = x86_64
 	arch = i686
