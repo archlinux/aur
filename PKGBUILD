@@ -22,7 +22,7 @@ build() {
 
 check() {
   cd "${_base}-${pkgver}"
-  local _pyversion=$(python -c "import sys; print(sys.version[:3])")
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
   PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${_pyversion}:${PYTHONPATH}" python -m pytest tests
 }
 
