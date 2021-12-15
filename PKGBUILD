@@ -3,7 +3,7 @@
 _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=2.7.1.r131.gb7acb7ed
+pkgver=2.7.1.r149.g5eca0b98
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
@@ -14,10 +14,13 @@ source=(
 )
 md5sums=('SKIP')
 depends=(
+	'gtk3'
+	'gtksourceview4'
 	'python-gaphas'
-	'python-typing_extensions'
 	'python-generic'
+	'python-jedi'
 	'python-tinycss2'
+	'python-typing_extensions'
 )
 makedepends=(
 	'git'
