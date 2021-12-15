@@ -3,7 +3,7 @@
 
 pkgname=python-compreffor
 _pyname=${pkgname#python-}
-pkgver=0.5.1
+pkgver=0.5.1.post1
 pkgrel=1
 pkgdesc='A CFF table suroutinizer for FontTools'
 arch=(x86_64)
@@ -12,15 +12,16 @@ license=(Apache)
 depends=(python
          python-fonttools)
 makedepends=(cython
-             python-setuptools)
+             python-setuptools-git-ls-files
+             python-setuptools-scm
+             python-wheel)
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
-source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('5ee371aea1ba2db13884e2dec9a7bd2a51f87a9d06085e9321f58e5bde94c6c3')
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
+sha256sums=('66a89afb23f80e9e5534678cc2ffa3d3868d9bda15999da3b9e85b7c4cc37ce4')
 
 build() {
 	cd "$_archive"
-	export PYTHONHASHSEED=0
 	python setup.py build_ext --inplace
 	python setup.py build
 }
