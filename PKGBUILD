@@ -6,14 +6,14 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.71.r614.gd3a6d07e
+pkgver=2.71.r617.g6d686ea3
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="https://github.com/vectorgraphics/asymptote"
 license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'gsl' 'fftw' 'libsigsegv' 'boost-libs')
-makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'librsvg')
+makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'librsvg' 'rapidjson' 'glm')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'tix:               for the xasy GUI'
 	    'python-cson:       for the xasy GUI')
