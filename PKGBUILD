@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.3'
-pkgrel=8
+pkgrel=9
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -57,6 +57,7 @@ prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	export GNUNET_PREFIX='/usr/lib'
+	autoreconf -i
 
 }
 
