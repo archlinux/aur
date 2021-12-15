@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gftools
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -14,6 +14,7 @@ _py_deps=(babelfont
           fonttools
           fs # optdepends of fonttols required for [ufo]
           glyphslib
+          jinja
           opentype-sanitizer
           protobuf
           pyaml
@@ -33,7 +34,7 @@ depends=(absl-py
 makedepends=(python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('6d27e0f04432d730c2d857ce3444bcd1f39ab868dac1da159ba15edc30a91c72')
+sha256sums=('8a5e796dec92d43d04f0b11d10d4ff9510de4af9a9931e9abcdb3e35ba35df7d')
 
 prepare() {
 	cd "$_archive"
