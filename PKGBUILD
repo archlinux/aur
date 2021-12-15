@@ -2,7 +2,7 @@
 
 pkgname=sunshine
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="https://github.com/loki-47-6F-64/sunshine"
 arch=('x86_64' 'i686')
@@ -12,8 +12,10 @@ depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'l
 makedepends=('git' 'cmake' 'boost' 'make')
 
 source=("$pkgname::git+https://github.com/loki-47-6F-64/sunshine.git#tag=v$pkgver"
+        "systemd-user-config.patch"
         "udev.rules")
 sha256sums=('SKIP'
+            '1642eb8672b137e94aa16e4aadde37f68bf1920dfadd1325cca480d7731f38c9'
             '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0')
 install=sunshine.install
 
@@ -22,6 +24,8 @@ _assets_path=/usr/share/$pkgname
 prepare() {
     cd "$pkgname"
     git submodule update --recursive --init
+
+    patch -p1 < ../systemd-user-config.patch
 }
 
 build() {
