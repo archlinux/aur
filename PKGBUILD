@@ -21,8 +21,8 @@ _get_def() {
 
 pkgver() {
   cd "${pkgname%-svn}"
-  local major_ver=$(_get_def MSIEVE_MAJOR_VERSION include/msieve.h)
-  local minor_ver=$(_get_def MSIEVE_MINOR_VERSION include/msieve.h)
+  local major_ver="$(_get_def MSIEVE_MAJOR_VERSION include/msieve.h)"
+  local minor_ver="$(_get_def MSIEVE_MINOR_VERSION include/msieve.h)"
   # Note: if you modify the checkout, svnversion will append "M"
   local rev="$(svnversion)"
   printf "%s.%s.r%s" "${major_ver}" "${minor_ver}" "${rev//[[:alpha:]]}"
