@@ -1,7 +1,7 @@
 pkgbase = pdh
 	pkgdesc = Pagerduty CLI for humans
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbovo/pdh
 	arch = any
 	license = APACHE
