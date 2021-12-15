@@ -1,7 +1,7 @@
 pkgbase = mold
 	pkgdesc = Fast linker
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rui314/mold
 	arch = x86_64
 	license = AGPL3
@@ -10,7 +10,6 @@ pkgbase = mold
 	makedepends = xxhash
 	depends = mimalloc
 	depends = openssl
-	depends = tbb
 	depends = zlib
 	source = mold-1.0.0.tar.gz::https://github.com/rui314/mold/archive/refs/tags/v1.0.0.tar.gz
 	b2sums = 56ebc267370548a2f91a71ebeed87871cede6f564c29dc7d44a499b95fe570f6e9c8a717baf2d9e235c7057c41e735b315493bd23d3b44574d2a44b14aaf5ef8
