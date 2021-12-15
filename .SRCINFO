@@ -1,7 +1,7 @@
 pkgbase = enlightenment-dr13
 	pkgdesc = Enlightenment BETA 0.13.3.
 	pkgver = v0.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://enlightenment.org
 	arch = i686
 	arch = x86_64
