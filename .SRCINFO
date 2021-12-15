@@ -11,7 +11,7 @@ pkgbase = write_stylus
 	noextract = eula.docx
 	source = write_stylus-300.r421.tar.gz::http://www.styluslabs.com/write/write-latest.tar.gz
 	source = http://www.styluslabs.com/write/eula.docx
-	sha256sums = 7f226be9b0ecdbb4e9e254a52b06ee30685771fe9f8acd5e5a341d4944fcc267
+	sha256sums = 6c47d745e43325795325736389070ccf1df1646c3f6ab431230ad72824f7e7db
 	sha256sums = 637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e
 
 pkgname = write_stylus
