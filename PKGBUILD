@@ -5,7 +5,7 @@
 
 pkgname=syncplay
 pkgver=1.6.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc across many computers'
 arch=(any)
 url=http://syncplay.pl
@@ -16,7 +16,8 @@ optdepends=('pyside2: GUI'
             'python-service-identity: TLS'
             'python-certifi: TLS')
 backup=("etc/$pkgname/server.conf")
-source=("https://github.com/Syncplay/$pkgname/archive/v$pkgver.tar.gz"
+_archive="$pkgname-$pkgver"
+source=("$_archive.tar.gz::https://github.com/Syncplay/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname@.service"
         server.conf)
 sha256sums=('b4acaf009b816dcb3261d9b327aace9005494f0977944b65e3623d50eb465972'
@@ -24,8 +25,8 @@ sha256sums=('b4acaf009b816dcb3261d9b327aace9005494f0977944b65e3623d50eb465972'
             'df3c7656024d60c59664c79f4890f7780a2c5b8b537ac61b017e16b3d4420808')
 
 package() {
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$pkgname@.service"
-	install -Dm644 -t "$pkgdir/etc/$pkgname/" server.conf
-	cd "$pkgname-$pkgver"
+	install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" "$pkgname@.service"
+	install -Dm0644 -t "$pkgdir/etc/$pkgname/" server.conf
+	cd "$_archive"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
