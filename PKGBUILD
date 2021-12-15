@@ -7,12 +7,12 @@ pkgdesc="Choose Univariate Class Intervals"
 url="https://cran.r-project.org/package=classInt"
 license=("GPL (>= 2)")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=("r" "r-e1071")
 optdepends=("r-spdata" "r-units" "r-knitr" "r-rmarkdown")
-makedepends=()
+makedepends=("gcc-fortran")
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=("8222cf7fca6b824a51bababc18a86659")
