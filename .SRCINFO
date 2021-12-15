@@ -8,6 +8,7 @@ pkgbase = digilent.waveforms
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = desktop-file-utils
 	depends = digilent.adept.runtime
@@ -24,6 +25,7 @@ pkgbase = digilent.waveforms
 	sha256sums_armv6h = 0ae5eae3b9f35eca1a1087667a1f97ffb5c5f701ce82b6423d371d4dda09a084
 	source_armv7h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.16.3/digilent.waveforms_3.16.3_armhf.deb
 	sha256sums_armv7h = 0ae5eae3b9f35eca1a1087667a1f97ffb5c5f701ce82b6423d371d4dda09a084
+	source_aarch64 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.16.3/digilent.waveforms_3.16.3_arm64.deb
+	sha256sums_aarch64 = fb48478b7d30878ad9ad903717b79598830117b7e7c213195531787ddad822ae
 
 pkgname = digilent.waveforms
-
