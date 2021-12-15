@@ -1,7 +1,7 @@
 pkgbase = fenrir-git
 	pkgdesc = A user space console screen reader written in python3
 	pkgver = r2983.a5b7694e
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://linux-a11y.org/index.php?page=fenrir-screenreader
 	arch = any
@@ -33,4 +33,3 @@ pkgbase = fenrir-git
 	md5sums = 0c2d1bd344b53d1fa5de6c49455b5a4f
 
 pkgname = fenrir-git
-
