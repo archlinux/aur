@@ -1,20 +1,11 @@
 --- a/ts/scripts/get-expire-time.ts	2021-12-15 03:06:07.198974886 -0500
 +++ b/ts/scripts/get-expire-time.ts	2021-12-15 03:07:10.951561856 -0500
-@@ -2,15 +2,12 @@
- // SPDX-License-Identifier: AGPL-3.0-only
- 
- import { join } from 'path';
--import { execSync } from 'child_process';
- import { writeFileSync } from 'fs';
- 
+@@ -8,7 +8,7 @@
  import { DAY } from '../util/durations';
  
--const unixTimestamp = parseInt(
+ const unixTimestamp = parseInt(
 -  execSync('git show -s --format=%ct').toString('utf8'),
--  10
--);
-+const unixTimestamp = parseInt(process.env.SOURCE_DATE_EPOCH!.toString(), 10) * 1000;
-+
++  execSync('date +%s').toString('utf8'),
+   10
+ );
  const buildCreation = unixTimestamp * 1000;
- 
- const buildExpiration = buildCreation + DAY * 90;
