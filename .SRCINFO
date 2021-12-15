@@ -1,0 +1,20 @@
+pkgbase = lapce
+	pkgdesc = Lightning-fast and Powerful Code Editor
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/lapce/lapce
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = python
+	makedepends = cmake
+	depends = gcc-libs
+	depends = libxcb
+	depends = expat
+	depends = freetype2
+	depends = libxkbcommon
+	source = lapce-0.0.2.tar.gz::https://github.com/lapce/lapce/archive/v0.0.2.tar.gz
+	sha512sums = 32fe0562a4127e92534b9f4248a089e1872b835e80e2837ddee26f2271cb70246a03a09000eb279af937b781e4b9ecb8fb6707cb6db1b41e6bed4491faf1ebfb
+	b2sums = 44d0686041692957449e406bc077e94f1b82d24b714dc636c1eca6eab4cea8141e16a97edab976cf014f3611c63d7b1f39c9068f5c0fc5fb9938a1070dbe5018
+
+pkgname = lapce
