@@ -1,125 +1,123 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Co Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui@riseup.net>
+# Contributor: solopasha <daron439 at gmail dot com>
+# Contributor: Ilya Fedin <fedin-ilja2010@ya.ru>
+# Contributor: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
-pkgver=k1.4.12.g40df43998
-pkgrel=6
-pkgdesc="Kotatogram – experimental Telegram Desktop fork - Dev branch"
-arch=(x86_64)
-url="https://github.com/kotatogram/kotatogram-desktop"
-license=(GPL3)
-depends=(
-	qt5-imageformats
-	ffmpeg
-	openal
-  glibmm
-  kwayland
-	lz4
-	xxhash
-	minizip
-	libdbusmenu-qt5
-	hunspell
-)
-makedepends=(
-  cmake
-	git
-  ninja
-	python
-	range-v3
-	tl-expected
-  microsoft-gsl
-  libtg_owt
-  gtk3
-  webkit2gtk
-)
-optdepends=(
-	'ttf-opensans: default Open Sans font family'
-)
-conflicts=('kotatogram-desktop')
-provides=('kotatogram-desktop')
-source=(
-  "${_pkgname}::git+${url}.git#branch=dev"
-  "${_pkgname}-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
-  "${_pkgname}-rlottie::git+https://github.com/desktop-app/rlottie.git"
-  "${_pkgname}-lib_crl::git+https://github.com/desktop-app/lib_crl.git"
-  "${_pkgname}-lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
-  "${_pkgname}-lib_base::git+https://github.com/kotatogram/lib_base.git"
-  "${_pkgname}-codegen::git+https://github.com/desktop-app/codegen.git"
-  "${_pkgname}-lib_ui::git+https://github.com/kotatogram/lib_ui.git"
-  "${_pkgname}-lib_rlottie::git+https://github.com/desktop-app/lib_rlottie.git"
-  "${_pkgname}-lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
-  "${_pkgname}-lib_tl::git+https://github.com/desktop-app/lib_tl.git"
-  "${_pkgname}-lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck"
-  "${_pkgname}-lib_storage::git+https://github.com/desktop-app/lib_storage.git"
-  "${_pkgname}-cmake_helpers::git+https://github.com/kotatogram/cmake_helpers.git"
-  "${_pkgname}-QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator"
-  "${_pkgname}-lib_qr::git+https://github.com/desktop-app/lib_qr.git"
-  "${_pkgname}-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
-  "${_pkgname}-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
-  "${_pkgname}-lib_webview::git+https://github.com/kotatogram/lib_webview.git"
-  "${_pkgname}-mallocng::git+https://github.com/desktop-app/mallocng.git"
-  "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
-  "dlopen-gtk.patch"
-  "https://github.com/telegramdesktop/tdesktop/commit/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch"
-  "https://github.com/telegramdesktop/tdesktop/commit/a8807bc915f2439acc7c84f06d931d96d6ca602a.patch"
-  "https://github.com/telegramdesktop/tdesktop/commit/d87ea056c6166345d061fc3a69a6f95eceaab0a1.patch"
-  "https://github.com/telegramdesktop/tdesktop/commit/98180d3a9e994081a134196adad0023651d28bf3.patch"
-  "https://github.com/telegramdesktop/tdesktop/commit/383acf0ffc489990302797ff0f048519b3c7c9bf.patch"
-  "lib_base-gcc11-fix.patch"
-  "lib_base-gtk-loading-fix.patch"
-  "https://github.com/desktop-app/lib_webview/commit/8816639c74a4cb6d512cba8e2271aceb404b0492.patch"
-  "mallocng.patch"
-  "https://github.com/desktop-app/cmake_helpers/commit/5318ac7c54dbf33b17ccc4bd3281bb8b8db25e02.patch"
-  "https://github.com/desktop-app/cmake_helpers/commit/de65519132126db2c2166cdf5af5f12e61652419.patch"
-  "https://github.com/desktop-app/cmake_helpers/commit/45be9e321517f15378982bd0353f80ab884679eb.patch"
-  "https://github.com/desktop-app/cmake_helpers/commit/bcc0ac15f497513455aa144ffe4e658f7aca0e73.patch")
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '13357d081fb658c735bb2575360f5d48214e1cf5002719ba410405a2fe05c7c3d2379588c2ca3c2ca6a5e6ff64e01e6d1ff3aecdaee8f3dd0519a64f6ee94182'
-            '3a2cf87836153d2a184b18e8ede4a279e5b55c6c8023e2ac5234482c510c4a7aff58fade8f6fcb4d52fb76601afda11b676694d4eaf3029836101aeeee0007e7'
-            'cabdadddc7a6873c7c6fc8128ceddf2712c0c73d3316520482162e5c67937bda2a627ddb2f078558a52e812c2a876351196488a5a75381d84a43815b873bac5b'
-            'a88ceb0de04c8f895b804f6df4112553f083076cdd3caa39595f944fb523b3b03e0a33dc7f94d808f83183bcd525a86c6fa1f1375ae34a62d12db2167dec84a3'
-            '9dc2d75745c434d46b220cf44f4dfe2a96cee230f5a404e5e2ce8b1ce82dbcca9b4a22231722054f37a54af5030ab6575edad07d16c9fc4bfea88cfcf3ed6a62'
-            'a18bef9252ce9db64d0d47daafc1958aea448218062c82d4863c880e0c5767ccb3331f84a7f84648002c207ced66cb89c1de57e93939ddb8c270c8728c08e5d6'
-            'c7fa111149a0ee71c975c26ef942e96615c03f99a477c2abb2a1b67711a85706e7b2fdce626c01d2ba1fb43c1cc3e0cea0c53d47291a0d851e32fabfc7360330'
-            'ce364d20b9c3e8d65d4d0def6c2f025e16814c8782c78f720ee5e9891e0b296c6edca9f3a7fa46652516c6a748e29a8cdbbf5f7d1273e4e1a64c7216275c5cda'
-            '956cd39e5a488b8ce02eddbca75c3f05467dcd4ff0f62907a966a1ad36b7d9329130e48f570f2e3ee95c135a085106442ce87bd48e0288db3bf8d8f06821f28d'
-            'c82e41e9fab49d7eca4602327ebb10c795cf6db414a3c5fe91271af336c327fed5a5c67e3219734e20b7559ff7cbca220be8b94b3b551bf33c162c90370e5af3'
-            '12c6a439b3960cb5a25edd2b2b1959f96fdbba634f281890f5ec91420834a852a7bcfa5d11051dfdf4fe719137345b23ae77a8e48eb6b9444ad973a34574cb84'
-            '2f7c24851e9879b238366c82f35a046c5a69ec5059e6441ac6eae578450669f094bb659a63b79be635dcae93ddd388bc957e29a219cc3cfc0e6591f0f333d7e3'
-            '6bce17e6e763859a95a35ff759b56aa5e51b7ba7534d5502517ae3a970cb42d901b2f6a9862a4ef06adfa5ef85e6e3e517a16ce7ab516ee9f3e4c21c38bb8cdb'
-            '110654df22e36fc3185e8db05fd4cefcee30ade1a76f0640b97a15bcf532b8b560e8a9740f4e73be48accad4459487e5246d8f44d988a021b9f8024d27d29bfe'
-            'db3d5b53436a732ea2950c7772c9edec2e6879caefa2bfb6112e5bb12f464a33a11ca9d4f3d2699da99df97d6721fbcf958a8b2256e911fb9a18c8229e5b67fd')
+pkgver=k1.4.5.r550.gb9a479517
+pkgrel=7
+pkgdesc='Kotatogram – experimental Telegram Desktop fork - Dev branch'
+arch=('x86_64')
+url="https://kotatogram.github.io"
+license=('GPL3')
+provides=(kotatogram-desktop kotatogram-desktop-git)
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+         'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
+         'rnnoise' 'jemalloc')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
+            'extra-cmake-modules' 'webkit2gtk' 'unzip' 'protobuf' 'libxrandr' 'libxcomposite' 'openssl' 'glibc'
+             'ffmpeg' 'libva' 'opus' 'yasm' 'libjpeg-turbo' 'pipewire' 'libxtst' 'abseil-cpp')
+optdepends=('webkit2gtk: embedded browser features'
+            'xdg-desktop-portal: desktop integration')
+conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin' 'kotatogram-desktop')
+source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#branch=dev"
+        "${_pkgname}-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
+        "${_pkgname}-GSL::git+https://github.com/Microsoft/GSL.git"
+        "${_pkgname}-Catch::git+https://github.com/philsquared/Catch"
+        "${_pkgname}-xxHash::git+https://github.com/Cyan4973/xxHash.git"
+        "${_pkgname}-rlottie::git+https://github.com/desktop-app/rlottie.git"
+        "${_pkgname}-lz4::git+https://github.com/lz4/lz4.git"
+        "${_pkgname}-lib_crl::git+https://github.com/desktop-app/lib_crl.git"
+        "${_pkgname}-lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
+        "${_pkgname}-lib_base::git+https://github.com/desktop-app/lib_base.git"
+        "${_pkgname}-codegen::git+https://github.com/desktop-app/codegen.git"
+        "${_pkgname}-lib_ui::git+https://github.com/kotatogram/lib_ui.git"
+        "${_pkgname}-lib_rlottie::git+https://github.com/desktop-app/lib_rlottie.git"
+        "${_pkgname}-lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
+        "${_pkgname}-lib_tl::git+https://github.com/desktop-app/lib_tl.git"
+        "${_pkgname}-lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck.git"
+        "${_pkgname}-lib_storage::git+https://github.com/desktop-app/lib_storage.git"
+        "${_pkgname}-cmake_helpers::git+https://github.com/kotatogram/cmake_helpers.git"
+        "${_pkgname}-expected::git+https://github.com/TartanLlama/expected.git"
+        "${_pkgname}-QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator.git"
+        "${_pkgname}-lib_qr::git+https://github.com/desktop-app/lib_qr.git"
+        "${_pkgname}-libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
+        "${_pkgname}-hunspell::git+https://github.com/hunspell/hunspell.git"
+        "${_pkgname}-range-v3::git+https://github.com/ericniebler/range-v3.git"
+        "${_pkgname}-fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git"
+        "${_pkgname}-nimf::git+https://github.com/hamonikr/nimf.git"
+        "${_pkgname}-hime::git+https://github.com/hime-ime/hime.git"
+        "${_pkgname}-fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
+        "${_pkgname}-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
+        "${_pkgname}-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
+        "${_pkgname}-lib_webview::git+https://github.com/desktop-app/lib_webview.git"
+        "${_pkgname}-lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git"
+        "${_pkgname}-jemalloc::git+https://github.com/jemalloc/jemalloc.git"
+        "${_pkgname}-tg_owt::git+https://github.com/desktop-app/tg_owt.git"
+
+        "libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
+        "libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git"
+        "pipewire::git+https://github.com/PipeWire/pipewire.git"
+
+        "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+        "block-sponsored_messages.patch"
+        "lottie-fix.patch")
+
+
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        '462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264'
+        '1e2705008ea8cef1a5c46793a6115ba0f35f77529d18ea04a03e5a0e89980916d78d49a9aa86863b1a0b440debb650262ceb3c9d68600ffe6e5c98fd65804526'
+        '8feeb47ad0c238b32cb91788340b8794d6e58fa3a1c4027a57f7edcbd2c30d755cf27a778d446d59a4dbc07c255f3d0bcefdce4b5322ed2d00854c6e4a7831e0')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
-  git describe --tags --long | sed 's/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
     git submodule init
-    git config submodule.Telegram/ThirdParty/libtgvoip.url "${srcdir}/${_pkgname}-libtgvoip"
-    git config submodule.Telegram/ThirdParty/rlottie.url "${srcdir}/${_pkgname}-rlottie"
+
+    git config submodule.cmake.url "${srcdir}/${_pkgname}-cmake_helpers"
+
     git config submodule.Telegram/lib_crl.url "${srcdir}/${_pkgname}-lib_crl"
     git config submodule.Telegram/lib_rpl.url "${srcdir}/${_pkgname}-lib_rpl"
     git config submodule.Telegram/lib_base.url "${srcdir}/${_pkgname}-lib_base"
@@ -130,66 +128,69 @@ prepare() {
     git config submodule.Telegram/lib_tl.url "${srcdir}/${_pkgname}-lib_tl"
     git config submodule.Telegram/lib_spellcheck.url "${srcdir}/${_pkgname}-lib_spellcheck"
     git config submodule.Telegram/lib_storage.url "${srcdir}/${_pkgname}-lib_storage"
-    git config submodule.cmake.url "${srcdir}/${_pkgname}-cmake_helpers"
-    git config submodule.Telegram/ThirdParty/QR.url "${srcdir}/${_pkgname}-QR-Code-generator"
     git config submodule.Telegram/lib_qr.url "${srcdir}/${_pkgname}-lib_qr"
-    git config sumbodule.Telegram/lib_webrtc.url "${srcdir}/${_pkgname}-lib_webrtc"
-    git config sumbodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${_pkgname}-tgcalls"
+    git config submodule.Telegram/lib_webrtc.url "${srcdir}/${_pkgname}-lib_webrtc"
     git config submodule.Telegram/lib_webview.url "${srcdir}/${_pkgname}-lib_webview"
+    git config submodule.Telegram/lib_waylandshells.url "${srcdir}/${_pkgname}-lib_waylandshells"
+
+    git config submodule.Telegram/ThirdParty/libtgvoip.url "${srcdir}/${_pkgname}-libtgvoip"
+    git config submodule.Telegram/ThirdParty/GSL.url "${srcdir}/${_pkgname}-GSL"
+    git config submodule.Telegram/ThirdParty/Catch.url "${srcdir}/${_pkgname}-Catch"
+    git config submodule.Telegram/ThirdParty/xxHash.url "${srcdir}/${_pkgname}-xxHash"
+    git config submodule.Telegram/ThirdParty/rlottie.url "${srcdir}/${_pkgname}-rlottie"
+    git config submodule.Telegram/ThirdParty/lz4.url "${srcdir}/${_pkgname}-lz4"
+    git config submodule.Telegram/ThirdParty/expected.url "${srcdir}/${_pkgname}-expected"
+    git config submodule.Telegram/ThirdParty/QR.url "${srcdir}/${_pkgname}-QR-Code-generator"
+    git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "${srcdir}/${_pkgname}-libdbusmenu-qt"
+    git config submodule.Telegram/ThirdParty/hunspell.url "${srcdir}/${_pkgname}-hunspell"
+    git config submodule.Telegram/ThirdParty/range-v3.url "${srcdir}/${_pkgname}-range-v3"
+    git config submodule.Telegram/ThirdParty/fcitx-qt5.url "${srcdir}/${_pkgname}-fcitx-qt5"
+    git config submodule.Telegram/ThirdParty/nimf.url "${srcdir}/${_pkgname}-nimf"
+    git config submodule.Telegram/ThirdParty/hime.url "${srcdir}/${_pkgname}-hime"
+    git config submodule.Telegram/ThirdParty/fcitx5-qt.url "${srcdir}/${_pkgname}-fcitx5-qt"
+    git config submodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${_pkgname}-tgcalls"
+    git config submodule.Telegram/ThirdParty/jemalloc.url "${srcdir}/${_pkgname}-jemalloc"
+
     git submodule update
 
-    pushd cmake
-    # force webrtc link to libjpeg
-    echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
-    popd
+    #patches
+    patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+    patch -p1 < "${srcdir}/block-sponsored_messages.patch"
 
-    patch -p1 < ${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
-    # patch -p1 < ${srcdir}/dlopen-gtk.patch
+    cd "${srcdir}/${_pkgname}-tg_owt"
+    git submodule init
+    git config submodule.src/third_party/libvpx/source/libvpx.url "$srcdir"/libvpx
+    git config submodule.src/third_party/libyuv.url "$srcdir"/libyuv
+    git config submodule.src/third_party/pipewire.url "$srcdir"/pipewire
+    git submodule update
 
-    # some fixes
-    # patch -p1 < ${srcdir}/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch
-    patch -p1 < ${srcdir}/a8807bc915f2439acc7c84f06d931d96d6ca602a.patch
-    patch -p1 < ${srcdir}/d87ea056c6166345d061fc3a69a6f95eceaab0a1.patch
-    patch -p1 < ${srcdir}/98180d3a9e994081a134196adad0023651d28bf3.patch
-    patch -p1 < ${srcdir}/383acf0ffc489990302797ff0f048519b3c7c9bf.patch
-    pushd Telegram/lib_base
-    patch -p1 < ${srcdir}/lib_base-gcc11-fix.patch
-    patch -p1 < ${srcdir}/lib_base-gtk-loading-fix.patch
-    popd
-    pushd Telegram/lib_webview
-    patch -p1 < ${srcdir}/8816639c74a4cb6d512cba8e2271aceb404b0492.patch
-    popd
-
-    # backported mallocng usage
-    patch -p1 < ${srcdir}/mallocng.patch
-    pushd cmake
-    patch -p1 < ${srcdir}/5318ac7c54dbf33b17ccc4bd3281bb8b8db25e02.patch
-    patch -p1 < ${srcdir}/de65519132126db2c2166cdf5af5f12e61652419.patch
-    patch -p1 < ${srcdir}/45be9e321517f15378982bd0353f80ab884679eb.patch
-    patch -p1 < ${srcdir}/bcc0ac15f497513455aa144ffe4e658f7aca0e73.patch
-    popd
-    git submodule add "${srcdir}/${_pkgname}-mallocng" Telegram/ThirdParty/mallocng
-    pushd Telegram/ThirdParty/mallocng
-    git checkout cf3eabc443292aad8ee63491274d7865b5e0864c
-    popd
+    cd "${srcdir}/${_pkgname}/Telegram/lib_lottie/"
+    patch -p1 < $srcdir/lottie-fix.patch
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}/"
+    cd "${srcdir}/${_pkgname}-tg_owt"
+    cmake . \
+        -B build \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DTG_OWT_BUILD_AUDIO_BACKENDS=OFF \
+        -DBUILD_SHARED_LIBS=OFF
+    cmake --build build
 
-  cmake . \
-    -B build \
-    -G Ninja \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DTDESKTOP_API_TEST=ON
-
-  cmake --build build
+    cd "${srcdir}/${_pkgname}"
+    cmake . \
+        -B build \
+        -G Ninja  \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DDESKTOP_APP_QT6=off \
+        -Dtg_owt_DIR="${srcdir}/${_pkgname}-tg_owt/build" \
+        -DTDESKTOP_API_TEST=ON
+    cmake --build build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-
-  DESTDIR="$pkgdir" ninja -C build install
+    cd "${srcdir}/${_pkgname}"
+    DESTDIR="$pkgdir" cmake --install build
 }
-# vim:set ts=2 sw=2 et:
