@@ -1,7 +1,7 @@
 pkgbase = scribus-stable
 	pkgdesc = Desktop publishing program - old stable version
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scribus.net
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,12 @@ pkgbase = scribus-stable
 	depends = qt4
 	depends = hyphen
 	optdepends = lib2geom: for mesh distortion
-	provides = scribus-stable
+	provides = scribus
 	conflicts = scribus
 	options = !emptydirs
 	source = https://netix.dl.sourceforge.net/project/scribus/scribus/1.4.8/scribus-1.4.8.tar.gz
-	md5sums = 6246cadc3d0a6dfc0119926eb7e7dcda
+	source = gtdialogs.cpp_pointer.patch
+	sha1sums = a23f310e65a8ef305775f28e24e3e5166c2a257d
+	sha1sums = 079d88f13260793e803941cfc1f10faf0d65fc6e
 
 pkgname = scribus-stable

@@ -1,0 +1,11 @@
+--- scribus-1.4.8/scribus/gtdialogs.cpp.orig	2019-03-05 17:44:41.000000000 -0500
++++ scribus-1.4.8/scribus/gtdialogs.cpp	2021-12-14 12:09:30.731362735 -0500
+@@ -160,7 +160,7 @@
+ 	if (imp != "false")
+ 	{
+ 		res = imp;
+-		if (importers.contains(res) > 0)
++		if (importers.contains(res))
+ 			ok = true;
+ 	}
+ 	
