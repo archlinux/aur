@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Benoit Landrieu (ben@gresille.org)
-# Maintainer: Benoit Landrieu (ben@gresille.org)
+# Co-Maintainer: Clemmitt Sigler (cmsigler.online@gmail.com)
 
 pkgname=scribus-stable
 pkgver=1.4.8
