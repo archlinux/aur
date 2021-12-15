@@ -1,6 +1,6 @@
 pkgbase = python-pynng-git
 	pkgdesc = Ergonomic bindings for nanomsg next generation (nng), in Python
-	pkgver = 0.7.1
+	pkgver = 0.7.1.r4.g16e7b09
 	pkgrel = 1
 	url = https://github.com/codypiersall/pynng
 	arch = any
