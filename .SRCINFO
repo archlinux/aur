@@ -1,0 +1,15 @@
+pkgbase = momentics-bin
+	pkgdesc = Native SDK for BlackBerry 10 & Momentics IDE - qde
+	pkgver = 2.1.2
+	pkgrel = 201503050937
+	url = https://developer.blackberry.com/native/downloads
+	arch = x86_64
+	arch = x86
+	license = custom:BLACKBERRY SDK
+	provides = momentics
+	provides = qde
+	options = !strip
+	source = https://developer.blackberry.com/native/downloads/fetch/momentics-2.1.2-201503050937.linux.x86_64.run
+	sha256sums = SKIP
+
+pkgname = momentics-bin
