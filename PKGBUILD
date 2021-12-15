@@ -2,11 +2,12 @@ pkgbase='python-moviepy'
 pkgname=('python-moviepy')
 _module='moviepy'
 pkgver='1.0.3'
-pkgrel=3
+pkgrel=4
 pkgdesc="Video editing with Python"
 url="https://zulko.github.io/moviepy/"
-depends=('python' 'ffmpeg' 'imagemagick' 'opencv'
-         'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm' 'python-imageio' 'python-proglog' 'python-imageio-ffmpeg')
+depends=('python' 'ffmpeg' 'opencv'
+         'python-decorator' 'python-numpy' 'python-pillow' 'python-tqdm' 'python-imageio' 'python-proglog' 'python-imageio-ffmpeg')
+optdepends=('python-scikit-image' 'python-scipy' 'imagemagick')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
