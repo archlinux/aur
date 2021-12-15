@@ -1,7 +1,7 @@
 pkgbase = interrofont
 	pkgdesc = General purpose tool for investigating OTF/TTF information from the command line
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.corvelsoftware.co.uk/software/interrofont
 	arch = any
 	license = MIT

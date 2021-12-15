@@ -2,7 +2,7 @@
 
 pkgname=interrofont
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose tool for investigating OTF/TTF information from the command line'
 arch=(any)
 url="http://www.corvelsoftware.co.uk/software/$pkgname"
