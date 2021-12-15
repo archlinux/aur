@@ -1,0 +1,9 @@
+post_install() {
+  cat <<END
+>>> gcr contains /etc/security/limits.d/10-gcr.conf which sets the memlock limit
+    in order to allow GCR to lock private keys in memory. If you have configured
+    this limit differently before, please review your configuration.
+END
+}
+
+# vim:set ft=bash sw=2:

@@ -1,53 +1,53 @@
-# $Id: PKGBUILD 272552 2016-07-28 08:50:18Z heftig $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 
+_pkgname=gcr
 pkgname=gcr-nogtk
-pkgver=3.20.0
-pkgrel=2
+pkgver=3.41.0
+pkgrel=1
 pkgdesc="A library for bits of crypto UI and parsing (without GTK)"
-arch=(i686 x86_64)
-url="https://git.gnome.org/browse/gcr"
-license=('GPL2')
-depends=('dconf' 'libgcrypt' 'p11-kit')
-makedepends=('intltool' 'gobject-introspection' 'python' 'vala' 'libxslt')
-options=('!makeflags')
-source=(http://download.gnome.org/sources/gcr/${pkgver:0:4}/gcr-$pkgver.tar.xz
-        10-gcr.conf)
-sha256sums=('90572c626d8a708225560c42b4421f7941315247fa1679d4ef569bde7f4bb379'
-            '5f2eda7175ae9f23ee0e09d2beceb24fd2f6daafd7bddfcc1c1f5a3734eb60fc')
-provides=(gcr)
-conflicts=(gcr)
+url="https://gitlab.gnome.org/GNOME/gcr"
+arch=(x86_64 i686)
+license=(GPL2)
+depends=(dconf libgcrypt p11-kit openssh libsecret)
+makedepends=(gobject-introspection vala libxslt git gtk-doc meson)
+provides=(libgck-1.so libgcr-{base,ui}-3.so ${_pkgname}=${pkgver}-${pkgrel})
+_commit=f5026a8c9c7d78372b3efeca3412b0e40011ce11  # tags/3.41.0^0
+backup=(etc/security/limits.d/10-gcr.conf)
+install=gcr.install
+source=("git+https://gitlab.gnome.org/GNOME/gcr.git#commit=$_commit")
+sha256sums=('SKIP')
+conflicts=(${_pkgname})
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-  mkdir -p path
-  ln -f -s /usr/bin/python2 path/python
+  cd $_pkgname
 }
 
 build() {
-  cd "gcr-$pkgver"
-  ./configure --prefix=/usr \
-    --libexec=/usr/lib/gcr \
-    --disable-static \
-    --disable-update-mime \
-    --disable-schemas-compile \
-    --without-gtk
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson -D gtk=false -D gtk_doc=false $_pkgname build
+  meson compile -C build
 }
 
 check() {
-  cd "gcr-$pkgver"
-  PATH="$srcdir/path:$PATH" dbus-run-session make -k check || :
+  # Secure memory tests fail
+  dbus-run-session meson test -C build --print-errorlogs || :
 }
 
 package() {
-  cd "gcr-$pkgver"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 
   # gcr wants to lock some memory to prevent swapping out private keys
   # https://bugs.archlinux.org/task/32616
   # https://bugzilla.gnome.org/show_bug.cgi?id=688161
-  install -Dm644 ../10-gcr.conf "$pkgdir/etc/security/limits.d/10-gcr.conf"
+  install -Dm644 /dev/stdin "$pkgdir/etc/security/limits.d/10-gcr.conf" <<END
+@users - memlock 1024
+END
 }
 
 # vim:set ts=2 sw=2 et:
