@@ -2,7 +2,7 @@
 
 pkgname="freebsd-pkg"
 _pkgname="pkg"
-pkgver="1.17.2"
+pkgver="1.17.5"
 pkgrel="1"
 pkgdesc="Package management tool for FreeBSD."
 url="https://github.com/freebsd/pkg"
@@ -13,7 +13,7 @@ depends=("libarchive" "libbsd" "libelf")
 makedepends=("autoconf" "automake" "libtool" "pkgconf")
 
 source=("https://github.com/freebsd/pkg/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("daf56189d855781dc15d210fd264adc761591f86ffd4fcb7360015b004777061")
+sha256sums=("4ee22102c136898ec19e6359079a492dc898309bc284dd26e9ec9f5d8b5bae77")
 
 build() {
     cd "$_pkgname-$pkgver"
