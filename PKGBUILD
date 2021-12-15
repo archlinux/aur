@@ -3,8 +3,8 @@
 
 pkgname=python-cffsubr
 _pyname=${pkgname#python-}
-pkgver=0.2.8
-pkgrel=4
+pkgver=0.2.9.post1
+pkgrel=1
 pkgdesc='Standalone CFF subroutinizer based on AFDKO tx'
 arch=(x86_64)
 url="https://github.com/adobe-type-tools/$_pyname"
@@ -16,7 +16,7 @@ makedepends=(python-setuptools-git-ls-files
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('e24bd03c94944e1536ec8437ab83fb4ac38477412426c1ffd4e056dd16cde235')
+sha256sums=('6b31412dcf49c8fa84664bda867e2eddc55b6fe6fa696ff253c4f13a9ff2fc5c')
 
 build() {
 	cd "$_archive"
