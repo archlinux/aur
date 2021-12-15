@@ -1,5 +1,5 @@
 pkgbase = xnine-git
-	pkgdesc = Accelerate your Source -vulkan games.
+	pkgdesc = Native Direct3D9 driver for DXVK-Native games.
 	pkgver = r44.9481273
 	pkgrel = 2
 	url = https://github.com/zmike/Xnine
