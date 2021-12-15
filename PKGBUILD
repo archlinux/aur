@@ -1,5 +1,5 @@
-# Maintainer: Hollow Man <hollowman at hollowman dot ml>
-# Contributor: Hollow Man <hollowman at hollowman dot ml>
+# Maintainer: Hollow Man <hollowman at opensuse dot org>
+# Contributor: Hollow Man <hollowman at opensuse dot org>
 
 pkgname=ibus-theme-tools
 _pkgname=IBus-Theme-Tools
