@@ -1,0 +1,11 @@
+--- src/scopehal-apps/.gitmodules	2021-12-14 13:31:20.205388635 +0800
++++ src/scopehal-apps/2.gitmodules	2021-12-14 13:38:23.108470633 +0800
+@@ -1,6 +1,6 @@
+ [submodule "lib"]
+ 	path = lib
+-	url = ../scopehal.git
++	url = https://github.com/azonenberg/scopehal.git
+ [submodule "doc"]
+ 	path = doc
+-	url = ../scopehal-docs.git
++	url = https://github.com/azonenberg/scopehal-docs.git

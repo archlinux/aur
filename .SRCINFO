@@ -1,0 +1,24 @@
+pkgbase = scopehal-apps-git
+	pkgdesc = glscopeclient and other client applications for libscopehal
+	pkgver = 0.0.3323a0f
+	pkgrel = 1
+	url = https://github.com/azonenberg/scopehal-apps
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = glm
+	depends = gtkmm3
+	depends = libsigc++
+	depends = libyaml
+	depends = liblxi-git
+	depends = texlive-core
+	depends = texlive-fontsextra
+	depends = glew
+	depends = catch2
+	depends = clfft
+	source = git://github.com/azonenberg/scopehal-apps
+	source = modules.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = scopehal-apps-git
