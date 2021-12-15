@@ -1,11 +1,13 @@
 # Maintainer: Nicolas Bizzozzéro <nicolas.bizzozzero@protonmail.com>
 pkgname="python-river-git"
-pkgver=0.8.0
-pkgrel=1
+pkgver=0.9.0
+pkgrel=2
 pkgdesc="Online machine learning in Python"
 arch=("x86_64")
 url="https://riverml.xyz"
 license=('custom:BSD 3-clause')
+#provides=("python-river")
+#conflicts=("python-river")
 depends=("python-numpy" "python-scipy" "python-pandas")
 makedepends=("git" "cython")
 source=("git://github.com/online-ml/river.git")
