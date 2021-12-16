@@ -1,7 +1,7 @@
 pkgname=youtubemusic-git
 _pkgname=YoutubeMusicMusic-git
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="YoutubeMusic Music is a unofficial client to play your music."
 arch=('any')
 url="https://gitlab.com/youtube-music/application"
@@ -28,8 +28,9 @@ build() {
 
 package() {
     cd "$srcdir/application/YoutubeMusic"
-    install -dm755 "$pkgdir/opt/YoutubeMusic"
+    install -dm755 "$pkgdir/usr/share/pixmaps"
     cp -r ./ "$pkgdir/opt/YoutubeMusic"
+    cp -r "$pkgdir/opt/YoutubeMusic/youtubemusic.svg" "$pkgdir/usr/share/pixmaps"
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
