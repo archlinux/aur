@@ -40,13 +40,14 @@ build() {
 
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
+  _pyver="3.$(python -c 'import sys; print(sys.version_info.minor);')"
   mkdir -p $pkgdir/"$sitepackages"
   cp -r $srcdir/${pkgname%-git}/keyring-minimal/* $pkgdir/"$sitepackages"
-	sh -c "rm $pkgdir/usr/lib/python3.9/site-packages/keyring_minimal-*.dist-info/direct_url.json"
+	sh -c "rm $pkgdir/usr/lib/python${_pyver}/site-packages/keyring_minimal-*.dist-info/direct_url.json"
 
 	for f in "keyring-minimal-askpass"
 	do
 		install -Dm755 "$srcdir/${pkgname%-git}/$f" "$pkgdir/usr/bin/$f"
 	done
-	ln -sf /usr/lib/python3.9/site-packages/bin/keyring-minimal "$pkgdir/usr/bin/"
+	ln -sf /usr/lib/python${_pyver}/site-packages/bin/keyring-minimal "$pkgdir/usr/bin/"
 }
