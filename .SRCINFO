@@ -1,6 +1,6 @@
 pkgbase = portmod
 	pkgdesc = A cli tool to manage mods for OpenMW
-	pkgver = 2.1.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://gitlab.com/portmod/portmod
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = portmod
 	provides = portmod
 	conflicts = portmod
 	replaces = openmmm
-	source = https://gitlab.com/portmod/portmod/-/archive/v2.1.1/portmod-v2.1.1.tar.gz
-	sha512sums = 158eadafa65203cb988c8e2b8f5d011b2b1532d0dbbf116b49b8147f19186469d7be0fce567f205e42c11e8503282c42b8eda32cec7b6e5470097a0d8bf92f8a
+	source = https://gitlab.com/portmod/portmod/-/archive/v2.2.1/portmod-v2.2.1.tar.gz
+	sha512sums = 09a894fd62d7653c90ad4ee02e500e40052500946a219cf94d4ef2c79c4eab8683d437abdf131bc4f09bc98732f614f186c90f97ac03ebadabd18469f82d0791
 
 pkgname = portmod
