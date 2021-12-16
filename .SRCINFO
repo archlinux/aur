@@ -1,12 +1,13 @@
 pkgbase = python-pyclibrary
 	pkgdesc = C parser and bindings automation for Python
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatthieuDartiailh/pyclibrary
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pyparsing
+	depends = python-future
 	source = pyclibrary_sources::git+https://github.com/MatthieuDartiailh/pyclibrary.git#tag=0.1.7
 	md5sums = SKIP
 
