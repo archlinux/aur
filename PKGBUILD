@@ -1,4 +1,5 @@
-# Maintainer: Strykar <strykar@live.com>
+# Maintainer tam1m <tbacc+aur@pm.me>
+# Contributor Strykar <strykar@live.com>
 
 pkgname=nvidia-keylase-patch-git
 pkgver=7c26bc5
