@@ -5,7 +5,7 @@
 
 _pkgname=broot
 pkgname="${_pkgname}-git"
-pkgver=1.2.9.995.g914e6d9
+pkgver=1.7.5.1186.g5bf8703
 pkgrel=1
 pkgdesc='Fuzzy Search + tree + cd'
 arch=('x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {

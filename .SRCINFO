@@ -1,6 +1,6 @@
 pkgbase = broot-git
 	pkgdesc = Fuzzy Search + tree + cd
-	pkgver = 1.2.9.995.g914e6d9
+	pkgver = 1.7.5.1186.g5bf8703
 	pkgrel = 1
 	url = https://github.com/Canop/broot
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = broot-git
 	sha256sums = SKIP
 
 pkgname = broot-git
-
