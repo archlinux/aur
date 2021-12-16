@@ -1,8 +1,8 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=whoogle
-pkgver=0.6.0
-pkgrel=5
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/benbusby/whoogle-search/arc
         $pkgname
         $pkgname.conf
         $pkgname.service)
-sha256sums=('034827d32f7acf49bb53bf5c18b5a8a9926e613b7f52d2370cb7ba3d0b33cc10'
+sha256sums=('a1facbef5895ccaa1881ef83a0b022d8cf060503d07d5c1fa2478e1c191587e5'
             'e30ff5ecef199ce2a37b097709461c51ca07bdbbcc4609db74203834b62c60b1'
             '51cda92f3ad2166eb2cb63ff80561f48b39688a57b66291d2eee5e1c7fcd8ee3'
             'ab6256f3fdaac3ba58ddbb39bb5c24bde53312f0584ae4ed4ae74bc7752a07f4')
