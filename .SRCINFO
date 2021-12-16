@@ -1,19 +1,27 @@
 pkgbase = notekit-git
 	pkgdesc = A GTK3 hierarchical markdown notetaking application with tablet support.
-	pkgver = r56.1581970
+	pkgver = r208.844215a
 	pkgrel = 1
 	url = https://github.com/blackhole89/notekit
 	arch = x86_64
-	license = GPL3
-	makedepends = gcc
-	makedepends = make
-	makedepends = cmake
-	depends = gtkmm3>=3.2
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	arch = s390x
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = pkgconf
+	depends = fontconfig
+	depends = clatexmath
+	depends = gtkmm3
 	depends = gtksourceviewmm>=3.18
 	depends = jsoncpp
 	depends = zlib
-	source = git+https://github.com/blackhole89/notekit.git
+	provides = notekit
+	conflicts = notekit
+	conflicts = notekit-git
+	source = notekit::git+https://github.com/blackhole89/notekit.git
 	sha256sums = SKIP
 
 pkgname = notekit-git
-
