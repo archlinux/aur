@@ -1,7 +1,7 @@
 # Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
 pkgname=irony-mod-manager-bin
 pkgver=1.20.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod manager and launcher for paradox interactive games"
 arch=('x86_64')
 url="https://github.com/bcssov/IronyModManager"
@@ -11,14 +11,12 @@ source=("$pkgname-$pkgver.zip::https://github.com/bcssov/IronyModManager/release
         "$pkgname.png::https://raw.githubusercontent.com/bcssov/IronyModManager/v$pkgver/src/IronyModManager/Assets/logo.png"
         "$pkgname.desktop"
         "$pkgname.sh"
-        "$pkgname.README.md"
-        "fixed-jsons.diff")
+        "$pkgname.README.md")
 sha256sums=('6ff074e95bb7ae0a9e3518433ed20d9888b5d0313477c3582162d2f44944ba2b'
             '3986b286a65add808bcd9be696501e685c4ee712b2c25139449bb282263e7e47'
             '43c8454a1d74fa0f0d2bdeae41836c5a73c079d1fb915c3fd709086d119c87a7'
             'bf522e178388d52f959348e0a0406a37ff16181b50eb848398a753cd6ebe1237'
-            'acbb98b22127ec04aec858d1fd6767526eb78c6a10b3e091f040dfe503b29a8e'
-            '3876736797420f37f6609f413952682cfe26a021a74d566c1142f3cb61486e78')
+            'acbb98b22127ec04aec858d1fd6767526eb78c6a10b3e091f040dfe503b29a8e')
 noextract=("$pkgname-$pkgver.zip")
 
 prepare() {
@@ -28,9 +26,6 @@ prepare() {
 package() {
     mkdir -p "$pkgdir/opt/$pkgname"
     mkdir -p "$pkgdir/usr/bin"
-
-    cd "$srcdir/$pkgname-$pkgver/"
-    patch -p1 -i "$srcdir/fixed-jsons.diff"
 
     cp -R "$srcdir/$pkgname-$pkgver" -T "$pkgdir/opt/$pkgname/"
 
