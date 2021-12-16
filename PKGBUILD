@@ -23,7 +23,7 @@ depends=('glm'
 source=("$pkgname-$pkgver.zip::https://gitlab.com/solarus-games/solarus/-/jobs/$_jobId/artifacts/download")
 provides=('solarus')
 conflicts=('solarus')
-b2sums=('2211dce4e84d2bab95aa017484dd608dec49129f62bf70323f555b7dca6393715f22fee8f8edbd67a4d90d3a6d2dcea988a328227d14543e5537b4cc5d54718e')
+b2sums=('91f58b7d8204f211ba638d86ad9d8231874b9a60fa23e42ff07fb242c21159e92be558e440b35d99f60898ee4b2b06ebae15b3db47cf6eb469e87aacf5ea9cd3')
 
 package() {
   cd "$srcdir/staging"
