@@ -3,13 +3,13 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
 arch=('x86_64')
-depends=('glfw' 'capstone' 'mbedtls' 'libssh2'
+depends=('glfw' 'capstone' 'mbedtls' 'libssh2' 'capstone'
          'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme'
          'yara' 'fmt')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
@@ -21,17 +21,17 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
 cksums=('SKIP'
         'SKIP'
         'SKIP'
-        '3159732919'
+        '707577605'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'edf70c9309978bad3acffe2b027d78cb2459e1cd915a3904b19b862d56b732ce'
+            'a8c0f2357e156bea60fc80c35f1801ce2a549bd1294b83bd84c5b2616312f8b7'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
-        '6271339eff3dbafa71d836646946953522343bcf76ff06daafc92eab4a4c4bca9bfa9b5dde2263903d8048fe28e07e937e2aa5bcec68c158c52f0abaa4e603f5'
+        '34ac9a15ad8a29333ef5a6a3c6a2606ecf6f151d72a1c14c16e6ab1d8582fe472d6be5d704f41826088cfcd2870c1e64597850be788d640ee7361079ce90682e'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
@@ -41,7 +41,7 @@ prepare() {
   for name in nativefiledialog xdgpp; do
     git config submodule.external/$name.url "$srcdir/$name"
   done
-  for name in yara/yara fmt curl; do
+  for name in yara/yara fmt curl capstone; do
     git config --remove-section submodule.external/$name
   done
   git submodule update
@@ -62,6 +62,7 @@ build() {
     -D USE_SYSTEM_YARA=ON \
     -D USE_SYSTEM_FMT=ON \
     -D USE_SYSTEM_CURL=ON \
+    -D USE_SYSTEM_CAPSTONE=ON \
     -D USE_SYSTEM_NLOHMANN_JSON=ON \
     -D PROJECT_VERSION="$pkgver"
   cmake --build build

@@ -1,6 +1,6 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/WerWolv/ImHex
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = imhex
 	depends = capstone
 	depends = mbedtls
 	depends = libssh2
+	depends = capstone
 	depends = python
 	depends = freetype2
 	depends = file
@@ -22,7 +23,7 @@ pkgbase = imhex
 	depends = hicolor-icon-theme
 	depends = yara
 	depends = fmt
-	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.12.0
+	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.12.1
 	source = nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git
 	source = xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp
 	source = 0001-warnings-fix-format-security-warnings.patch
@@ -30,17 +31,17 @@ pkgbase = imhex
 	cksums = SKIP
 	cksums = SKIP
 	cksums = SKIP
-	cksums = 3159732919
+	cksums = 707577605
 	cksums = 4178124713
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = edf70c9309978bad3acffe2b027d78cb2459e1cd915a3904b19b862d56b732ce
+	sha256sums = a8c0f2357e156bea60fc80c35f1801ce2a549bd1294b83bd84c5b2616312f8b7
 	sha256sums = 72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 6271339eff3dbafa71d836646946953522343bcf76ff06daafc92eab4a4c4bca9bfa9b5dde2263903d8048fe28e07e937e2aa5bcec68c158c52f0abaa4e603f5
+	b2sums = 34ac9a15ad8a29333ef5a6a3c6a2606ecf6f151d72a1c14c16e6ab1d8582fe472d6be5d704f41826088cfcd2870c1e64597850be788d640ee7361079ce90682e
 	b2sums = 7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc
 
 pkgname = imhex
