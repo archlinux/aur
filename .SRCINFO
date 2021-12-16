@@ -1,7 +1,7 @@
 pkgbase = peazip-gtk2-bin
 	pkgdesc = PeaZip file manager and archiver (GTK 2)
-	pkgver = 8.3.0
-	pkgrel = 5
+	pkgver = 8.4.0
+	pkgrel = 1
 	url = https://peazip.github.io
 	changelog = changelog.txt
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = peazip-gtk2-bin
 	conflicts = peazip-qt5
 	conflicts = peazip-qt5-bin
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.LINUX.GTK2-1.x86_64.rpm
-	sha256sums = 9b962a64b61d7421a49884d25166ab4e56a038daee583c70b74151ea8924c307
+	source = https://github.com/peazip/PeaZip/releases/download/8.4.0/peazip-8.4.0.LINUX.GTK2-1.x86_64.rpm
+	sha256sums = fae19f23d2f35a3d338206d950efebd60dbb893cf636f822828d090d0998b823
 
 pkgname = peazip-gtk2-bin

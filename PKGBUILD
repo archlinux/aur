@@ -7,8 +7,8 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2-bin
-pkgver=8.3.0
-pkgrel=5
+pkgver=8.4.0
+pkgrel=1
 pkgdesc='PeaZip file manager and archiver (GTK 2)'
 arch=('x86_64')
 url='https://peazip.github.io'
@@ -24,7 +24,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-qt-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.${CARCH}.rpm")
-sha256sums=('9b962a64b61d7421a49884d25166ab4e56a038daee583c70b74151ea8924c307')
+sha256sums=('fae19f23d2f35a3d338206d950efebd60dbb893cf636f822828d090d0998b823')
 changelog=changelog.txt
 
 prepare() {
@@ -52,7 +52,6 @@ prepare() {
   chmod 755 usr && chmod 755 usr/bin
   chmod 755 usr/lib && chmod 755 usr/lib/peazip
   chmod 755 usr/lib/peazip/res && chmod -R 755 usr/lib/peazip/res/bin
-  chmod -x usr/lib/peazip/res/bin/7z/*.so
   chmod -x usr/lib/peazip/res/bin/7z/Codecs/*.so
   chmod 755 "${sharedUsr}"
   for subDir in "${sharedUsr}"/*; do chmod 755 "${subDir}"; done
