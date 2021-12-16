@@ -1,6 +1,6 @@
 pkgbase = haiti
-	pkgdesc = A CLI tool to identify the hash type of a given hash
-	pkgver = 1.1.1
+	pkgdesc = Hash type identifier (CLI & lib)
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://noraj.github.io/haiti/
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = haiti
 	depends = ruby
 	depends = ruby-paint
 	depends = ruby-docopt
-	noextract = haiti-hash-1.1.1.gem
+	noextract = haiti-hash-1.2.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/haiti-hash-1.1.1.gem
-	b2sums = 5c38b87f761aefbcf7ffc31e09a28cbb71b0949abda5142ea9199f7b3bb9d27209b8652f0c97feb39ae9d2d5a0cef8240ec1e2cfed345f7a81f60dbe695fd881
+	source = https://rubygems.org/downloads/haiti-hash-1.2.3.gem
+	b2sums = 72945dcc6a9c63ddadc4c93297cb1c16b1d9d8a4fe46a5083215806bd11ee15eaa3aa9617ea79d0b671d01c442d69bbd9b6e2b47f94afbe6aba6bf7ca5751e19
 
 pkgname = haiti
-
