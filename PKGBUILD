@@ -18,9 +18,9 @@ md5sums=("d3988dd4ee93bfcd7f6dd57293d324d1")
 package_chaos-driver-dkms() {
   cd ${pkgbase}-${pkgver}/driver
 
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/dkms.conf
 
-  cp -r * "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  cp -r * "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/
 }
 
 prepare() {
