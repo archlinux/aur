@@ -5,7 +5,7 @@
 pkgbase=python-scikit-image
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Image processing routines for SciPy"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ optdepends=('python-pyqt5: for imshow[x, fancy=True] and skivi'
             'python-pooch>=1.3.0')
 options=('!emptydirs')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('bcc79d06ca88ec081d1b0eacc0ae2ca3abbd993a5d89dc54fabe25f2480f0626')
+sha256sums=('48f00ee1e8ec2818ae6a152c72df15f4db7f566e839f5c34e1a0c3c9e5210138')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
