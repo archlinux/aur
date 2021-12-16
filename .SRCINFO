@@ -1,0 +1,11 @@
+pkgbase = bitedit
+	pkgdesc = useful for directly editing existing bitmap font files, like Linux psf console fonts
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://www.ledge.co.za/software/bitedit/bitedit.tar.gz
+	arch = x86_64
+	license = GPL
+	source = https://www.ledge.co.za/software/bitedit/bitedit.tar.gz
+	md5sums = SKIP
+
+pkgname = bitedit
