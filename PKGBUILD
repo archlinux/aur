@@ -8,8 +8,8 @@
 
 pkgname=python-neo4j
 _pypiname=neo4j
-_pypidir="ba/9c/96069a907f845ec74a5031d7a2fa2cacfa2f52ad2f312ee1e9ba45364ff7"
-pkgver=4.2.0
+_pypidir="de/7e/0ca5c25397604db33df4e45a13a5b6ae3d28f47f536bdf6e979bd30c18ba"
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Neo4j Bolt driver for Python"
 url="https://pypi.org/project/neo4j/"
@@ -18,7 +18,7 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/${_pypidir}/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('a346f7b1681e31100c7bb0b3e60e755582f6bd60bb39a9b4ca50fd25207ffa2e')
+sha256sums=('7fac86ecd4191248030a2bf7822547207648ed8e0ee38cf10bbd7c7dc6ca596f')
 
 package() {
 	  cd ${_pypiname}-${pkgver}
