@@ -1,0 +1,13 @@
+pkgbase = ttf-pixeled
+	pkgdesc = Pixeled font from http://www.dafont.com
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.dafont.com/es/pixeled.font
+	arch = any
+	license = unknown
+	depends = fontconfig
+	provides = ttf-font
+	source = ttf-pixeled.zip::http://dl.dafont.com/dl/?f=pixeled
+	md5sums = b8cea9e08d98d07d6225168037258d36
+
+pkgname = ttf-pixeled
