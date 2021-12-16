@@ -4,7 +4,7 @@ _target=aur
 
 pkgname=makedeb-beta
 pkgver=8.5.9
-pkgrel=2
+pkgrel=1
 pkgdesc="The modern packaging tool for Debian archives (${_release} release)"
 arch=('any')
 license=('GPL3')
