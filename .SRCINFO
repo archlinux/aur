@@ -1,0 +1,27 @@
+pkgbase = rider-projector
+	pkgdesc = Run JetBrains Rider as a headless service for use with Projector.
+	pkgver = 2021.3.1
+	pkgrel = 1
+	url = https://www.jetbrains.com/rider/
+	arch = x86_64
+	license = custom
+	makedepends = python>=3
+	makedepends = python-pip
+	makedepends = python-cryptography
+	makedepends = python-pyopenssl
+	depends = libxext
+	depends = libxrender
+	depends = libxtst
+	depends = freetype2
+	depends = libxi
+	depends = jre-jetbrains
+	optdepends = projector-bin: Native client for JetBrains Projector
+	options = !strip
+	source = rider-projector.service
+	source = run.sh.patch
+	source = git+https://github.com/JetBrains/projector-installer/#tag=v1.5.2
+	sha256sums = 101e4ea3a22c83cbe6e6ff257b2b79350f45c428dcb349903fa9dc773abd4efc
+	sha256sums = a36da8b7467ff4687410d3d032e4df8f0abe005e347f27ae9ebb4f38ff85d5b1
+	sha256sums = SKIP
+
+pkgname = rider-projector

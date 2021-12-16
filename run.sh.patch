@@ -1,0 +1,37 @@
+--- ./config/configs/rider/run.sh
++++ ./config/configs/rider/run.sh
+@@ -47,7 +47,7 @@
+ # Locate a JRE installation directory command -v will be used to run the IDE.
+ # Try (in order): $RIDER_JDK, .../rider.jdk, .../jbr, $JDK_HOME, $JAVA_HOME, "java" in $PATH.
+ # ---------------------------------------------------------------------
+-JRE=""
++JRE="/usr/lib/jvm/jre-jetbrains"
+ 
+ # shellcheck disable=SC2154
+ if [ -n "$RIDER_JDK" ] && [ -x "$RIDER_JDK/bin/java" ]; then
+@@ -142,6 +142,16 @@
+   CLASSPATH="$CLASSPATH:$RIDER_CLASSPATH"
+ fi
+ 
++if [ -z "$ORG_JETBRAINS_PROJECTOR_SERVER_PORT" ]
++then
++        ORG_JETBRAINS_PROJECTOR_SERVER_PORT=8887
++        while true
++        do
++                fuser -i "$ORG_JETBRAINS_PROJECTOR_SERVER_PORT/tcp" >/dev/null 2>/dev/null || break
++                ORG_JETBRAINS_PROJECTOR_SERVER_PORT=$(($ORG_JETBRAINS_PROJECTOR_SERVER_PORT + 1))
++        done
++fi
++
+ # ---------------------------------------------------------------------
+ # Run the IDE.
+ # ---------------------------------------------------------------------
+@@ -155,7 +165,7 @@
+   "-Djb.vmOptionsFile=${USER_VM_OPTIONS_FILE:-${VM_OPTIONS_FILE}}" \
+   ${IDE_PROPERTIES_PROPERTY} \
+   -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader -Didea.vendor.name=JetBrains -Didea.paths.selector=Rider2021.3 -Didea.platform.prefix=Rider -Dide.native.launcher=true -Didea.class.before.app=com.jetbrains.rider.protocol.EarlyBackendStarter -Didea.log.config.file=log.xml -Didea.show.customize.ide.wizard=true -Didea.jre.check=true -Dsplash=true \
+- -DORG_JETBRAINS_PROJECTOR_SERVER_PORT=9999 \
++ -DORG_JETBRAINS_PROJECTOR_SERVER_PORT=$ORG_JETBRAINS_PROJECTOR_SERVER_PORT \
+  -Dorg.jetbrains.projector.server.classToLaunch=com.intellij.idea.Main \
+   org.jetbrains.projector.server.ProjectorLauncher\
+   "$@"

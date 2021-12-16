@@ -1,0 +1,11 @@
+[Unit]
+Description=JetBrains Projector host for Rider .NET IDE
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rider-projector
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
