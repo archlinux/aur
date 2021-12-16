@@ -1,7 +1,7 @@
 # Maintainer: Hydral <hydraldev@gmail.com>
 # Co-maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
-_jobId=1651444089 
+_jobId=1804734803 
 pkgname=solarus-bin
 pkgver=1.7.0.dev.$_jobId
 pkgrel=1

@@ -1,6 +1,6 @@
 pkgbase = solarus-bin
 	pkgdesc = A lightweight, free and open-source game engine for Action-RPGs
-	pkgver = 1.7.0.dev.1651444089
+	pkgver = 1.7.0.dev.1804734803
 	pkgrel = 1
 	url = https://gitlab.com/solarus-games/solarus
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = solarus-bin
 	depends = sdl2_ttf
 	provides = solarus
 	conflicts = solarus
-	source = solarus-bin-1.7.0.dev.1651444089.zip::https://gitlab.com/solarus-games/solarus/-/jobs/1651444089/artifacts/download
+	source = solarus-bin-1.7.0.dev.1804734803.zip::https://gitlab.com/solarus-games/solarus/-/jobs/1804734803/artifacts/download
 	b2sums = 2211dce4e84d2bab95aa017484dd608dec49129f62bf70323f555b7dca6393715f22fee8f8edbd67a4d90d3a6d2dcea988a328227d14543e5537b4cc5d54718e
 
 pkgname = solarus-bin
