@@ -3,7 +3,7 @@
 _pkgbase=amqpstorm
 pkgname=python-$_pkgbase
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Thread-safe Python RabbitMQ Client & Management library."
 arch=('any')
 url="https://www.amqpstorm.io/"
