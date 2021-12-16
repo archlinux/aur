@@ -3,22 +3,25 @@
 
 pkgname=prusa-slicer-gtk2
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (built with GTK2)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
-depends=(boost-libs curl glew intel-tbb nlopt wxgtk2 qhull openvdb cgal imath)
+depends=(boost-libs curl glew tbb nlopt wxgtk2 qhull openvdb cgal imath)
 makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
 replaces=(slic3r-prusa3d)
 conflicts=('prusa-slicer')
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
-        prusa-slicer-openexr3.patch)
+        prusa-slicer-openexr3.patch
+        prusa-slicer-tbb-2021.patch)
 sha256sums=('deda209505f740ac3d6f59cb2a960f4df908269ee09bd30cd4edb9fc472d29ac'
-            '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b')
+            '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b'
+            '0aeb8a5e0413bb920735a3a5138b0d9801dacbb412bd3b52ee0fa60ec0b0b4e5')
 
 prepare() {
   patch -d PrusaSlicer-version_${pkgver} -p1 < prusa-slicer-openexr3.patch # Fix build with openEXR 3
+  patch -d PrusaSlicer-version_${pkgver} -p1 < prusa-slicer-tbb-2021.patch # Fix build with TBB 2021
 }
 
 build() {
