@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.1
+Name=mediarepo
+Path=/usr/bin
+Exec=mediarepo-ui
+Terminal=false
+Icon=mediarepo
+Categories=Multimedia

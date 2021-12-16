@@ -1,0 +1,15 @@
+pkgbase = mediarepo
+	pkgdesc = A tag based media management tool for images, videos, audio and more
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/trivernis/mediarepo-ui
+	arch = x86_64
+	license = GPL3
+	makedepends = curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 patchelf librsvg libvips clang cargo yarn nodejs
+	depends = mediarepo-daemon
+	options = !strip
+	source = mediarepo-0.9.0.tar.gz::https://github.com/Trivernis/mediarepo-ui/archive/v0.9.0.tar.gz
+	sha512sums = ed69dd3599508a8632904d253f2c579f82b4011bb7544b4f155e9be6a7472f281885ded55cf8be259d4096456e9a59d1db55c377669b85eca6cf1a056d214c93
+
+pkgname = mediarepo
+
