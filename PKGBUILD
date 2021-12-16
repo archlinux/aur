@@ -11,7 +11,7 @@ depends=("fontconfig" "clatexmath" "gtkmm3" "gtksourceviewmm>=3.18" "jsoncpp" "z
 makedepends=("git" "meson")
 provides=("${_basename}")
 conflicts=("${_basename}" "${_basename}-git")
-source=("${_basename}::git+https://github.com/blackhole89/notekit.git#commit=18b708d")
+source=("${_basename}::git+https://github.com/blackhole89/notekit.git")
 sha256sums=("SKIP")
 
 pkgver() {

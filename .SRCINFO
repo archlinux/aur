@@ -20,7 +20,7 @@ pkgbase = notekit-git
 	provides = notekit
 	conflicts = notekit
 	conflicts = notekit-git
-	source = notekit::git+https://github.com/blackhole89/notekit.git#commit=18b708d
+	source = notekit::git+https://github.com/blackhole89/notekit.git
 	sha256sums = SKIP
 
 pkgname = notekit-git
