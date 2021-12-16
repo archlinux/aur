@@ -1,4 +1,4 @@
-# Maintainer: Javier Fernández <WyRe12[at]gmail[dot]com>
+# Maintainer: Javier Fernández <jfernandz1290[at]gmail[dot]com>
 
 pkgname=pixeled-ttf
 pkgver=1.0
