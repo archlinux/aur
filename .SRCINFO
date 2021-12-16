@@ -1,0 +1,12 @@
+pkgbase = calicoctl-bin
+	pkgdesc = command line tool to manage Calico resources and perform administrative functions
+	pkgver = 3.21.2
+	pkgrel = 1
+	url = https://projectcalico.docs.tigera.io/getting-started/clis/calicoctl/install
+	arch = x86_64
+	license = Apache
+	provides = calicoctl
+	source = calicoctl-bin-3.21.2::https://github.com/projectcalico/calicoctl/releases/download/v3.21.2/calicoctl-linux-amd64
+	sha256sums = d495edfc254e00f008ef6872422a31ef5f442a1ff96bcb724dd2df86ef75b7e3
+
+pkgname = calicoctl-bin
