@@ -1,7 +1,7 @@
 # Maintainer: hiromi-mi <hiromi hyphen mi at cat dot zaq dot jp>
 pkgname=python-qulacs
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simulate quantum circuits for Python"
 arch=('x86_64')
 url="https://docs.qulacs.org/"
@@ -26,5 +26,5 @@ package() {
 
 check() {
     cd "qulacs-$pkgver"
-    PYTHONPATH="build/lib.linux-x86_64-3.9/" python python/test/test_qulacs.py
+    PYTHONPATH="build/lib.linux-x86_64-3.10/" python python/test/test_qulacs.py
 }
