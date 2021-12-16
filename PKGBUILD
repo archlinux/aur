@@ -1,5 +1,5 @@
 pkgname=skye-bin
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Modern and feature-rich web browser based on Electron - Powered by Innatical"
 arch=("x86_64")
