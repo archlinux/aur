@@ -1,6 +1,5 @@
-_tag=$(curl --silent "https://api.github.com/repos/skyebrowser/skye/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
 pkgname=skye-bin
-pkgver=${_tag:1}
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Modern and feature-rich web browser based on Electron - Powered by Innatical"
 arch=("x86_64")
@@ -28,13 +27,13 @@ makedepends=(
     "grep"
 )
 source=(
-    "skye-$pkgver.pacman::https://github.com/skyebrowser/skye/releases/download/$_tag/skye-$pkgver.pacman"
+    "skye-$pkgver.pacman::https://github.com/skyebrowser/skye/releases/download/v$pkgver/skye-$pkgver.pacman"
 )
 sha256sums=("SKIP")
 
 package() {
     cd "$srcdir"
-    tar xvf skye-${pkgver}.pacman -C "$pkgdir"
+    tar xf skye-${pkgver}.pacman -C "$pkgdir"
     rm -f "$pkgdir"/.PKGINFO "$pkgdir"/.MTREE $pkgdir/.INSTALL
 }
 

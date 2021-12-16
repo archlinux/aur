@@ -1,6 +1,6 @@
 pkgbase = skye-bin
 	pkgdesc = Modern and feature-rich web browser based on Electron - Powered by Innatical
-	pkgver = 6.3.2
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://skye.innatical.com/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = skye-bin
 	depends = libnotify
 	depends = libappindicator-gtk3
 	provides = skye
-	source = skye-6.3.2.pacman::https://github.com/skyebrowser/skye/releases/download/v6.3.2/skye-6.3.2.pacman
+	source = skye-6.4.0.pacman::https://github.com/skyebrowser/skye/releases/download/v6.4.0/skye-6.4.0.pacman
 	sha256sums = SKIP
 
 pkgname = skye-bin
