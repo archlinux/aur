@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-bin
 	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
-	pkgver = 91.4.0
+	pkgver = 91.4.1
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/organizations/
 	install = firefox-esr.install
@@ -14,7 +14,7 @@ pkgbase = firefox-esr-bin
 	depends = dbus-glib
 	depends = nss
 	provides = firefox=91
-	source = https://ftp.mozilla.org/pub/firefox/releases/91.4.0esr/linux-x86_64/en-US/firefox-91.4.0esr.tar.bz2
+	source = https://ftp.mozilla.org/pub/firefox/releases/91.4.1esr/linux-x86_64/en-US/firefox-91.4.1esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
 	sha512sums = e551c36ce63695ad6f1084058414f484134cac6baf26f1f1854a6552c84cf38094b2a0d9154a248e755736cbbb4fc754fc965b3143111dae5f90671c4f3fd111
