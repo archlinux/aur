@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=MultiMC
+GenericName=Minecraft Launcher
+Comment=Free, open source launcher and instance manager for Minecraft.
+Type=Application
+Terminal=false
+# not the best idea but...it works
+Exec=sh -c "multimc -d $HOME/.local/share/multimc"
+Icon=multimc
+Categories=Game
+Keywords=game;minecraft;

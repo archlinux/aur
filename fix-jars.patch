@@ -1,0 +1,14 @@
+diff '--color=auto' --unified --recursive --text --new-file Launcher0/launcher/Application.cpp Launcher1/launcher/Application.cpp
+--- Launcher0/launcher/Application.cpp	2021-12-13 06:20:23.475484553 +0000
++++ Launcher1/launcher/Application.cpp	2021-12-13 06:24:20.661422670 +0000
+@@ -524,6 +524,10 @@
+         FS::updateTimestamp(m_rootPath);
+ #endif
+ 
++#ifdef MULTIMC_JARS_LOCATION
++        m_jarsPath = TOSTRING(MULTIMC_JARS_LOCATION);
++#endif
++
+         qDebug() << BuildConfig.LAUNCHER_DISPLAYNAME << ", (c) 2013-2021 " << BuildConfig.LAUNCHER_COPYRIGHT;
+         qDebug() << "Version                    : " << BuildConfig.printableVersionString();
+         qDebug() << "Git commit                 : " << BuildConfig.GIT_COMMIT;

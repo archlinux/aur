@@ -1,0 +1,45 @@
+diff '--color=auto' -x '.*' --unified --recursive --text --new-file Launcher0/launcher/Application.cpp Launcher1/launcher/Application.cpp
+--- Launcher0/launcher/Application.cpp	2021-12-13 07:43:23.274019056 +0000
++++ Launcher1/launcher/Application.cpp	2021-12-13 07:50:33.016549365 +0000
+@@ -312,7 +312,7 @@
+         QString xdgDataHome = QFile::decodeName(qgetenv("XDG_DATA_HOME"));
+         if (xdgDataHome.isEmpty())
+             xdgDataHome = QDir::homePath() + QLatin1String("/.local/share");
+-        dataPath = xdgDataHome + "/devlauncher";
++        dataPath = xdgDataHome + "/multimc";
+         adjustedBy += "XDG standard " + dataPath;
+ #elif defined(Q_OS_MAC)
+         QDir foo(FS::PathCombine(applicationDirPath(), "../../Data"));
+diff '--color=auto' -x '.*' --unified --recursive --text --new-file Launcher0/launcher/resources/multimc/multimc.qrc Launcher1/launcher/resources/multimc/multimc.qrc
+--- Launcher0/launcher/resources/multimc/multimc.qrc	2021-12-13 06:20:23.494484805 +0000
++++ Launcher1/launcher/resources/multimc/multimc.qrc	2021-12-13 08:03:35.943090237 +0000
+@@ -282,6 +282,9 @@
+         <file>32x32/instances/herobrine.png</file>
+         <file>128x128/instances/herobrine.png</file>
+ 
++        <file>32x32/instances/infinity.png</file>
++        <file>128x128/instances/infinity.png</file>
++
+         <file>32x32/instances/magitech.png</file>
+         <file>128x128/instances/magitech.png</file>
+ 
+diff '--color=auto' -x '.*' --unified --recursive --text --new-file Launcher0/notsecrets/CMakeLists.txt Launcher1/notsecrets/CMakeLists.txt
+--- Launcher0/notsecrets/CMakeLists.txt	2021-12-13 06:20:23.524485203 +0000
++++ Launcher1/notsecrets/CMakeLists.txt	2021-12-13 06:37:14.725320153 +0000
+@@ -3,14 +3,14 @@
+ target_compile_definitions(secrets PUBLIC -DEMBED_SECRETS)
+ target_include_directories(secrets PUBLIC .)
+ 
+-set(Launcher_CommonName "DevLauncher")
++set(Launcher_CommonName "MultiMC")
+ 
+ set(Launcher_Copyright "MultiMC Contributors" PARENT_SCOPE)
+ set(Launcher_Domain "multimc.org" PARENT_SCOPE)
+ set(Launcher_Name "${Launcher_CommonName}" PARENT_SCOPE)
+ set(Launcher_DisplayName "${Launcher_CommonName} 5" PARENT_SCOPE)
+ set(Launcher_UserAgent "${Launcher_CommonName}/5.0" PARENT_SCOPE)
+-set(Launcher_ConfigFile "devlauncher.cfg" PARENT_SCOPE)
++set(Launcher_ConfigFile "multimc.cfg" PARENT_SCOPE)
+ set(Launcher_Git "https://github.com/MultiMC/Launcher" PARENT_SCOPE)
+ 
+ set(Launcher_Branding_ICNS "notsecrets/Launcher.icns" PARENT_SCOPE)
