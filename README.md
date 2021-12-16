@@ -30,13 +30,13 @@ http
     map $scheme $proxy_x_forwarded_ssl
     {
         default off;
-        https on;
+        https   on;
     }
 
     map $http_upgrade $proxy_connection
     {
         default upgrade;
-        "" close;
+        ""      close;
     }
 
     # Directives
@@ -46,9 +46,9 @@ http
 
     server
     {
-        listen          443 ssl;
-        listen          [::]:443 ssl;
-        server_name     subdomain.domain.me;
+        listen      443 ssl;
+        listen      [::]:443 ssl;
+        server_name subdomain.example.com;
 
         location /
         {
@@ -70,7 +70,7 @@ http
 ## Required services
 1. bitcoind.service
 
-## Usage
+# Usage
 * Finally, all software needs to be run. `lnd` requires some options. Alternatively, a config file can be created for it. The following shows how to run the software and its dependencies with `tmux`.
 * Start:
 ```
