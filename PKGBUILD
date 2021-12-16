@@ -1,5 +1,6 @@
-# Maintainer: MikeBreytenbach <mike.breyten.bach at gmail dot com>
-# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Maintainer: XavierCLL <xavier.corredor.llano at gmail.com>
+# Co-maintainer: MikeBreytenbach <mike.breyten.bach at gmail dot com>
+# Contributors: edacval
 
 pkgname=pycharm-professional
 pkgver=2021.3
@@ -21,7 +22,7 @@ sha256sums=('81426f86e1b3de0bd00488e037e9fdcaab4772f1f259ff551ac904d35fb4cd7c'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '039f0d1dc447fb26bb9df35b3a85145a47ce42193c8b2d56bf7bdf090fff0da9')
-makedepends=('python-setuptools' 'cython' 'lib32-gcc-libs')
+makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
             'python-setuptools: Packages manager for Python, for project interpreter'
@@ -39,7 +40,11 @@ build() {
     find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.so -o -name *.pyd \) -delete
     sed -i '1s/^/# cython: language_level=3\n/' pycharm-${pkgver}/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_cython.pxd
     python pycharm-${pkgver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
-    cd pycharm-${pkgver}/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac/; bash compile_linux.sh; cd -  # for attach debugger
+    
+    # for attach debugger
+    pushd pycharm-${pkgver}/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac
+    g++ -m64 -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
+    popd
 
     rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
     find pycharm-${pkgver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
