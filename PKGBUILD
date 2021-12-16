@@ -1,6 +1,6 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
-pkgver=r526.277e3b1
+pkgver=r530.94cc3eb
 pkgrel=1
 pkgname=primenote-git
 pkgdesc="Fanciest sticky note-taking application"
@@ -10,8 +10,8 @@ license=("GPL3")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-makedepends=("git")
-depends=("python" "python-setuptools" "python-pyqt5" "python-requests" "qt5-svg")
+makedepends=("git" "python-setuptools")
+depends=("python" "python-pyqt5" "qt5-svg" "python-requests")
 optdepends=("qtermwidget: support for console and Vim modes"
             "gvim: support for Vim mode")
 
