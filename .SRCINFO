@@ -1,7 +1,7 @@
 pkgbase = python-lvis-git
 	pkgdesc = Python API for LVIS Dataset
-	pkgver = 0.5.3.r17.031ac21
-	pkgrel = 1
+	pkgver = 0.5.3.r19.35f09cd
+	pkgrel = 2
 	url = https://github.com/lvis-dataset/lvis-api
 	arch = any
 	license = BSD
@@ -11,7 +11,7 @@ pkgbase = python-lvis-git
 	makedepends = cython
 	makedepends = python-pip
 	makedepends = python-setuptools
-	depends = opencv
+	depends = python-opencv
 	depends = python-cycler
 	depends = python-dateutil
 	depends = python-kiwisolver
@@ -26,4 +26,3 @@ pkgbase = python-lvis-git
 	sha512sums = SKIP
 
 pkgname = python-lvis-git
-

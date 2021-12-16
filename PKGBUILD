@@ -3,14 +3,14 @@
 pkgname=python-lvis-git
 _pkgname=lvis
 _pkgver=0.5.3
-pkgver=0.5.3.r17.031ac21
-pkgrel=1
+pkgver=0.5.3.r19.35f09cd
+pkgrel=2
 pkgdesc='Python API for LVIS Dataset'
 arch=('any')
 url='https://github.com/lvis-dataset/lvis-api'
 license=('BSD')
 depends=(
-  opencv
+  python-opencv
   python-cycler
   python-dateutil
   python-kiwisolver
