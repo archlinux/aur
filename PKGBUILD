@@ -1,27 +1,31 @@
 # Maintainer: katoitalia
 
 pkgname=neo-matrix-git
-pkgver=r19.31391fd
-pkgrel=2
+pkgver=r20.28cddfa
+pkgrel=3
 pkgdesc='Simulates the digital rain from "The Matrix" (cmatrix clone with 32-bit color and Unicode support)'
-arch=('any')
+arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url='https://github.com/st3w/neo'
 license=('GPL3')
+depends=('ncurses' 'ttf-hanazono')
 makedepends=('git' 'autoconf-archive')
-depends=('ttf-hanazono')
-provides=('neo-matrix-git')
+provides=('neo-matrix')
+conflicts=('neo-matrix')
 source=("git+https://github.com/st3w/neo.git")
 md5sums=('SKIP')
-options=(!strip)
 
 pkgver() {
   cd "${srcdir}/neo"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd "${srcdir}/neo"
   ./autogen.sh
+}
+
+build() {
+  cd "${srcdir}/neo"
   ./configure
   make
 }
