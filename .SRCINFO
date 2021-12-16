@@ -6,13 +6,10 @@ pkgbase = python-aigpy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
 	depends = python-requests
 	depends = python-colorama
 	depends = python-mutagen
-	source = https://pypi.org/packages/source/a/aigpy/aigpy-2021.9.10.3.tar.gz
-	source = https://raw.githubusercontent.com/yaronzz/AIGPY/master/LICENSE
+	source = https://files.pythonhosted.org/packages/source/a/aigpy/aigpy-2021.9.10.3.tar.gz
 	sha256sums = 838aaaf62efb2a48847f07948cce0dc1a209828807545b914065b25c4e50c38d
-	sha256sums = 83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c
 
 pkgname = python-aigpy
