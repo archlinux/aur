@@ -753,11 +753,10 @@ package_php81-dblib() {
     if ((_build_mssql)); then
         _install_module mssql
         provided+=("php${_phpbase}${_suffix}-mssql=${pkgver}")
-        _desc="pdo_dblib module for php${_phpbase}${_suffix}"
+        pkgdesc="pdo_dblib module for php${_phpbase}${_suffix}"
     else
-        _desc="mssql and pdo_dblib modules for php${_phpbase}${_suffix}"
+        pkgdesc="mssql and pdo_dblib modules for php${_phpbase}${_suffix}"
     fi
-    pkgdesc="${_desc}${_phpbase}${_suffix}"
 }
 
 package_php81-enchant() {
