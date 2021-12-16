@@ -3,7 +3,7 @@
 # Contributor: Xinzhao Xu <z2d@jifangcheng.com>
 
 pkgname=annie-git
-pkgver=0.10.3.r19.gabc3c9d
+pkgver=0.11.0.r20.g8b53403
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A fast, simple and clean video downloader written in Go"
@@ -18,7 +18,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd annie
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
+  # Upstream adds a 'v' in its version since 0.11
 }
 
 build(){
