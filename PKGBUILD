@@ -1,27 +1,31 @@
-# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Maintainer : Frikilinux <frikilinux@gmail.com>
+# Contributor : peeweep <peeweep at 0x0 dot ee>
 
 pkgname=tidal-dl
-_pkgname=Tidal-Media-Downloader
-pkgver=2021.7.6.2
+pkgver=2021.11.30.1
 pkgrel=1
-pkgdesc="Tidal Music Download"
+pkgdesc="Download music and videos from Tidal."
 arch=('any')
 url="https://github.com/yaronzz/Tidal-Media-Downloader"
 license=('Apache')
-depends=('python-aigpy' 'python-requests' 'python-libffmpeg' 'python-pycryptodome' 'python-prettytable' 'python-lyricsgenius')
+depends=(
+  'python-requests'
+  'python-aigpy'
+  'python-lyricsgenius'
+  'python-pycryptodome'
+  'python-pydub'
+  'python-prettytable'
+)
 makedepends=('python-setuptools')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('97fb5071481ebf972eb17fe3eeb12488bae5cdfbad39f68882ee6ab6264f58a9')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('8fd140f1ba05ff8c7c65b5eac0471e2d5ecf497c1c2364fb51891cd6936bcfe5')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/TIDALDL-PY"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/TIDALDL-PY"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  # install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
