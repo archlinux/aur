@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-scrollview
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Neovim plugin that displays interactive vertical scrollbars"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a2e88f6a069916950685149ad970456d194c470fc0a9e0dc94dc74a7b35e88dc')
+sha256sums=('ed639b013a6fba9349dff4a6758ca9689eb2afb75086d1c3a87217bc573b2f57')
 
 PURGE_TARGETS=('tags')
 
