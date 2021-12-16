@@ -1,0 +1,18 @@
+pkgbase = dida-nativefier
+	pkgdesc = 滴答清单 for Linux（使用 nativefier 构建）
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://dida365.com/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = pentium4
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = gendesk
+	depends = electron
+	source = press.zip::https://s3.cn-north-1.amazonaws.com.cn/appest-public/download/press.zip
+	sha256sums = 2dc9722cf147f53741fbe5e0de246b2f7c18397a619897cb0446a14d88d85020
+
+pkgname = dida-nativefier
