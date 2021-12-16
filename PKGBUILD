@@ -16,7 +16,7 @@ depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
          aom harfbuzz libvpx libjpeg zlib icu libevent pipewire
          kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust xorg-server-xwayland xorg-server-xvfb
+             rust xorg-server-xwayland xorg-server-xvfb python-pip
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils
              lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
@@ -32,7 +32,7 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags !strip !lto)
 conflicts=('firedragon-hg')
 install=$pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz

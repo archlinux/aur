@@ -20,6 +20,7 @@ pkgbase = firedragon
 	makedepends = rust
 	makedepends = xorg-server-xwayland
 	makedepends = xorg-server-xvfb
+	makedepends = python-pip
 	makedepends = autoconf2.13
 	makedepends = clang
 	makedepends = llvm
