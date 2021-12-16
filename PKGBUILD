@@ -1,40 +1,41 @@
-# Maintainer: Iru Dog <mytbk920423@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Iru Dog <mytbk920423@gmail.com>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=systemd-ui-git
-pkgver=3.2.g4e6ab2e
-pkgrel=1
-pkgdesc="Systemd Session and Startup Manager GUI (Git version)"
-arch=('i686' 'x86_64')
-url="https://github.com/systemd/systemd-ui"
-license=('GPL2')
-depends=('glib2' 'gtk3' 'libgee' 'libnotify')
-makedepends=('git' 'vala' 'docbook-xsl' 'libxslt')
-provides=('systemd-ui')
-conflicts=('systemd-ui')
-source=("git://anongit.freedesktop.org/systemd/systemd-ui.git")
-md5sums=('SKIP')
-_gitname="systemd-ui"
+_pkgname=systemd-ui
+pkgver=3.r2.g4e6ab2e4
+pkgrel=5
+pkgdesc="Graphical front-end for systemd"
+arch=('x86_64' 'i686')
+url="https://www.freedesktop.org/wiki/Software/systemd"
+license=('GPL')
+depends=('gtk3' 'libgee' 'libnotify')
+makedepends=('git' 'vala0.26' 'docbook-xsl' 'libxslt')
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
+source=("$pkgname::git+https://github.com/freedesktop/systemd-ui.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd ${_gitname}
-    git describe --long | sed 's/v//;s/-/./g'
+  cd $pkgname
+  git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
+}
+
+prepare() {
+  cd $pkgname
+  ./autogen.sh
 }
 
 build() {
-    cd ${_gitname}
-    msg2 "Starting autoreconf..."
-    autoreconf -f -i -s
-
-    msg2 "Starting configure..."
-    ./configure
-
-    msg2 "Starting make..."
-    make
+  cd $pkgname
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd ${_gitname}
-    msg2 "Starting make install..."
-    make DESTDIR="$pkgdir" install
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
 }
+
+# vim:set ts=2 sw=2 et:
