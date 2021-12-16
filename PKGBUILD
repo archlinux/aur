@@ -2,13 +2,13 @@
 
 pkgname=mediarepo-daemon
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon to manage a media repository'
 arch=(x86_64)
 url=https://github.com/trivernis/mediarepo-daemon
 license=(GPL3)
 depends=(ffmpeg)
-
+provides=('mediarepo-daemon=0.9.0')
 makedepends=(clang cargo)
 
 options=(!strip)
