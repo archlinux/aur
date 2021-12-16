@@ -36,11 +36,6 @@ elif [[ $CARCH == 'aarch64' ]]; then
   _parch=arm64
 fi
 
-prepare() {
-    cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
-    sed -i 's/-Werror/#-Werror/g' cmake/cef_variables.cmake
-}
-
 build() {
     cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
 
