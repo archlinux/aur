@@ -19,7 +19,7 @@ options=()
 install=com.officebox.spark.install
 changelog=
 source=(
-"http://dcstore.spark-app.store/store/office/com.officebox.spark/com.officebox.spark_3.0.8.spark1_i386.deb")
+"http://d.store.deepinos.org.cn/store/office/com.officebox.spark/com.officebox.spark_3.0.8.spark1_i386.deb")
 md5sums=('aab3cc5453fcfca2c9857059a8ff55b8')
 
 build() {
