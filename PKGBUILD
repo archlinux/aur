@@ -1,7 +1,7 @@
 # Maintainer: Joachim Desroches <joachim.desroches@epfl.ch>
 
 pkgname=cdist
-pkgver=6.9.7
+pkgver=6.9.8
 pkgrel=1
 pkgdesc='A usable configuration management system'
 arch=('any')
@@ -9,25 +9,22 @@ url='https://code.ungleich.ch/ungleich-public/cdist/'
 license=('GPL3')
 depends=('python' 'openssh')
 makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
-validpgpkeys=('69767822F3ECC3C349C1EFFFEFD2AE4EC36B6901') # ungleich GmbH (ungleich FOSS) <foss@ungleich.ch>'
-source=("https://code.ungleich.ch/ungleich-public/cdist/uploads/4c62574643cbb2669044fb23e1eac85d/cdist-6.9.7.tar.gz"
-	"https://code.ungleich.ch/ungleich-public/cdist/uploads/8e8d35619c5c0b18c9bbbc714d3a8f0c/cdist-6.9.7.tar.gz.asc")
-sha256sums=('657240ab52a00abbff13404035e43631b8db4dbe2bb14165d1479909a018ee6e'
-	    'SKIP')
+source=("https://code.ungleich.ch/ungleich-public/cdist/archive/6.9.8.tar.gz")
+sha256sums=('b6913ecf5953b2592bc0e6b357aaa8592f5ab8c28ba5921a3d0b9de88a8445b9')
 
 prepare() {
-	echo "VERSION = \"${pkgver}\"" > ${pkgname}-${pkgver}/cdist/version.py
+	echo "VERSION = \"${pkgver}\"" > ${pkgname}/cdist/version.py
 }
 
 build() {
-	cd ${pkgname}-${pkgver}/
+	cd ${pkgname}/
 
 	python setup.py build
 	make man
 }
 
 package() {
-	cd ${pkgname}-${pkgver}/
+	cd ${pkgname}/
 
 	python setup.py install --root="${pkgdir}"
 

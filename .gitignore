@@ -1,1 +1,3 @@
 cdist*
+src/
+*.tar.gz
