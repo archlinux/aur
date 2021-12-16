@@ -1,0 +1,14 @@
+pkgbase = python-lxc
+	pkgdesc = Python3 bindings for LXC
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/lxc/python3-lxc
+	arch = x86_64
+	license = LGPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = lxc
+	source = https://github.com/lxc/python3-lxc/archive/python3-lxc-3.0.4.tar.gz
+	sha512sums = 740a7fb0aa3b0c10e98a825642ea09f7c7f02061f4d5b88cb95985acd34ff5ceffdd3975a08c4592268a45dfda0f68c2d82626d5deb9075362fc7cc77ab8eeef
+
+pkgname = python-lxc
