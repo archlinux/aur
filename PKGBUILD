@@ -32,7 +32,7 @@ package() {
 	cd "$srcdir/$_pkgname/"
 	install -Dm644 anbox.conf -t "$pkgdir/usr/lib/modules-load.d/"
 	install -Dm644 99-anbox.rules -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -dm644 "$pkgdir/usr/src/"
+	install -dm755 "$pkgdir/usr/src/"
 	cp -rT ashmem "$pkgdir/usr/src/anbox-ashmem-$pkgver"
 	cp -rT binder "$pkgdir/usr/src/anbox-binder-$pkgver"
 }
