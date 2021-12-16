@@ -7,7 +7,7 @@
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
 pkgver=k1.4.5.r550.gb9a479517
-pkgrel=7
+pkgrel=8
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Dev branch'
 arch=('x86_64')
 url="https://kotatogram.github.io"
@@ -15,10 +15,14 @@ license=('GPL3')
 provides=(kotatogram-desktop kotatogram-desktop-git)
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
-         'rnnoise' 'jemalloc')
+         'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl' 'libx11' 'libvpx' 'libxcomposite'
+         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs' )
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-            'extra-cmake-modules' 'webkit2gtk' 'unzip' 'protobuf' 'libxrandr' 'libxcomposite' 'openssl' 'glibc'
-             'ffmpeg' 'libva' 'opus' 'yasm' 'libjpeg-turbo' 'pipewire' 'libxtst' 'abseil-cpp')
+             'extra-cmake-modules' 'webkit2gtk' 'unzip'
+             'yasm'
+
+             'protobuf' 'libva'
+             )
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin' 'kotatogram-desktop')
