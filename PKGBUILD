@@ -23,6 +23,6 @@ package() {
     cd "${srcdir}/${_gitname}"
 
     install -Dm 644 -t "${pkgdir}/usr/share/nvidia-keylase" drivers.json
-    install -Dm 644 -t "${pkgdir}/usr/share/nvidia-keylase" patch-fbc.sh
-    install -Dm 644 -t "${pkgdir}/usr/share/nvidia-keylase" patch.sh
+    install -Dm 744 -t "${pkgdir}/usr/share/nvidia-keylase" patch-fbc.sh
+    install -Dm 744 -t "${pkgdir}/usr/share/nvidia-keylase" patch.sh
 }
