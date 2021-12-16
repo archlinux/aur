@@ -1,5 +1,5 @@
 pkgbase = arping-th
-	pkgdesc = ARP Ping from Thomas Habets
+	pkgdesc = ARP Ping from Thomas Habets (aka Debian arping)
 	pkgver = 2.22
 	pkgrel = 1
 	url = https://www.habets.pp.se/synscan/programs_arping.html

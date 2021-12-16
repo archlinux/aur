@@ -1,7 +1,7 @@
 pkgname=arping-th
 pkgver=2.22
 pkgrel=1
-pkgdesc="ARP Ping from Thomas Habets"
+pkgdesc="ARP Ping from Thomas Habets (aka Debian arping)"
 arch=('i686' 'x86_64')
 url="https://www.habets.pp.se/synscan/programs_arping.html"
 license=('GPL')
