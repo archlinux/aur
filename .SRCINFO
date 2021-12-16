@@ -12,8 +12,8 @@ pkgbase = neovim-cmp-git-git
 	depends = neovim
 	optdepends = github-cli
 	optdepends = gitlab-glab
-	provides = neovim-cmp-git
-	conflicts = neovim-cmp-git
+	provides = cmp-git
+	conflicts = cmp-git
 	source = neovim-cmp-git-git::git+https://github.com/petertriho/cmp-git
 	md5sums = SKIP
 
