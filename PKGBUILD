@@ -1,7 +1,7 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 
 pkgname=python-pbar
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="A Python library to display customizable progress bars on the terminal easily."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python>=3.9')
 makedepends=('python-setuptools')
 _pypi_name=PBar2
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
-sha256sums=('f6c01f256f734c169a5d9c5b44180f70a60e2f76355b46b0556e17ebc9a2d4fa')
+sha256sums=('11fe350cbfeda9bebe2b6eb5e617a14068ccfa3045ab401b9297af4e22dce373')
 
 build() {
 	cd "$_pypi_name-$pkgver"
