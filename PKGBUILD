@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.11.r4461.ge6c5ae83e2
+pkgver=asm3.0.11.r7977.gcc06e8db3c
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
 )
 _gitname='FreeCAD'
 source=(
-    "git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3"
+    "git+https://github.com/realthunder/FreeCAD.git#branch=LinkDaily"
     'patch_std_gnupp14.patch'
 )
 sha256sums=(
@@ -54,7 +54,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-    git apply < "$srcdir/patch_std_gnupp14.patch"
+    # git apply < "$srcdir/patch_std_gnupp14.patch"
 }
 
 build() {
