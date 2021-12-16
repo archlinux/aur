@@ -38,7 +38,7 @@ build() {
     # about an unwritable directory.
     ant -Declipse.home=/usr/lib/eclipse -Declipse.dest=${TMPDIR} build
 
-    rm -rf ${TMPDIR}
+    rm -r ${TMPDIR}
 }
 
 package() {
@@ -56,22 +56,20 @@ package() {
     install -d "${pkgdir}/usr/share/doc/eclim"
     cp -r gh-pages/* "${pkgdir}/usr/share/doc/eclim/"
 
-    install -Dm644 "${srcdir}/${pkgname}_${pkgver}/copyright" \
-                   "${srcdir}/${pkgname}_${pkgver}/NOTICE"    \
-                   "${pkdir}/usr/share/licenses/eclim/"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/eclim/" \
+        "${srcdir}/${pkgname}_${pkgver}/copyright"          \
+        "${srcdir}/${pkgname}_${pkgver}/NOTICE"
 
     # Remove unecessary/junk files from docs
-    rm -rf "${pkdir}/usr/share/doc/eclim/.buildinfo"  \
-           "${pkdir}/usr/share/doc/eclim/.doctrees/"  \
-           "${pkdir}/usr/share/doc/eclim/objects.inv" \
-           "${pkdir}/usr/share/doc/eclim/.nojekyll"   \
-           "${pkdir}/usr/share/doc/eclim/CNAME"
+    rm -r "${pkgdir}/usr/share/doc/eclim/.doctrees/"  \
+          "${pkgdir}/usr/share/doc/eclim/objects.inv" \
+          "${pkgdir}/usr/share/doc/eclim/CNAME"
 
-    rm -rf "${pkdir}/plugin/org_eclim_${pkver}/nailgun/config.status" \
-           "${pkdir}/plugin/org_eclim_${pkver}/nailgun/config.log"    \
-           "${pkdir}/plugin/org_eclim_${pkver}/nailgun/Makefile"
+    rm "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/Makefile"   \
+       "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/config.log" \
+       "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/config.status"
 
     sed -e "s/${pkgdir}//g" \
-        -i $pkgdir/usr/lib/eclipse/plugins/org.eclim_$pkgver/plugin.properties \
-        -i $pkgdir/usr/lib/eclipse/plugins/org.eclim_$pkgver/bin/eclimd
+        -i "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/bin/eclimd" \
+        -i "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/plugin.properties"
 }
