@@ -1,6 +1,6 @@
 # Maintainer: ItzSelenux <zariepcommunication@gmail.com>
 pkgname=rofi-mint-themes
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc="Mint-Y based themes for Rofi"
 url="https://github.com/ItzSelenux/rofi-mint-themes"
@@ -9,7 +9,7 @@ license=("GPL3")
 depends=('rofi')
 provides=('rofi-mint-themes')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b7e6aaf6222709fdff22a2ae00cddc3f0cb6181942f8b9c88348476cb4bf1c75')
+sha256sums=('097550b2116a21dc7c8b857d8e61935816c6a5f9685b280a6e138ea607dc8428')
  
 package() {
   cd "$pkgname-$pkgver/themes/"
