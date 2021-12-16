@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xfel-git
-pkgver=v1.2.1.r0.gd118377
+pkgver=v1.2.3.r0.g5c7b552
 pkgrel=1
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
 arch=('any')
