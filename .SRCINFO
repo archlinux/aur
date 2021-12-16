@@ -1,0 +1,11 @@
+pkgbase = dirmap
+	pkgdesc = dirmap is a tool for generating a directory map.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/k1LoW/dirmap
+	arch = x86_64
+	license = MIT
+	source = https://github.com/k1LoW/dirmap/releases/download/v0.2.2/dirmap_v0.2.2_linux_amd64.tar.gz
+	sha256sums = c965de58b528bea88af19c381210b5e211743d14c4d8158af77d267e6e521637
+
+pkgname = dirmap
