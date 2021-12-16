@@ -3,7 +3,7 @@
 pkgname=cs-firewall-bouncer
 _altpkgname=crowdsec-firewall-bouncer
 pkgver=0.0.19
-pkgrel=8
+pkgrel=9
 pkgdesc="CrowdSec firewall bouncer fetches decisions via the CrowdSec API to add them in a blocklist used by supported firewalls."
 arch=('any')
 url="https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer"
