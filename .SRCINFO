@@ -1,15 +1,15 @@
-pkgbase = minisphere
+pkgbase = neosphere
 	pkgdesc = A fast, lightweight implementation of the Sphere game engine
-	pkgver = 5.6.3
+	pkgver = 5.7.0
 	pkgrel = 1
-	url = https://github.com/fatcerberus/sphere
-	arch = i686
+	url = https://github.com/fatcerberus/neosphere
 	arch = x86_64
 	license = BSD
 	depends = allegro
 	depends = libmng
 	depends = libChakraCore.so
-	source = https://github.com/fatcerberus/minisphere/archive/v5.6.3.tar.gz
-	sha256sums = 09b573552ed7f1410e432043ed75f75aa6909486ed5cadc8d5799dc1dac9a85e
+	replaces = minisphere
+	source = https://github.com/fatcerberus/neosphere/archive/v5.7.0.tar.gz
+	sha256sums = 5a8284fdedd3a57edb9c9ab12a7d1483f317919992802ca49efa434c125e3f16
 
-pkgname = minisphere
+pkgname = neosphere

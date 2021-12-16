@@ -1,21 +1,22 @@
 # Maintainer: Joshua Merrell <joshuamerrell@gmail.com>
-pkgname=minisphere
-pkgver=5.6.3
+pkgname=neosphere
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="A fast, lightweight implementation of the Sphere game engine"
-arch=('i686' 'x86_64')
-url="https://github.com/fatcerberus/sphere"
+arch=('x86_64')
+url="https://github.com/fatcerberus/neosphere"
 license=('BSD')
 depends=('allegro' 'libmng' 'libChakraCore.so')
+replaces=('minisphere')
 source=(https://github.com/fatcerberus/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('09b573552ed7f1410e432043ed75f75aa6909486ed5cadc8d5799dc1dac9a85e')
+sha256sums=('5a8284fdedd3a57edb9c9ab12a7d1483f317919992802ca49efa434c125e3f16')
 
 build() {
-  cd sphere-$pkgver
+  cd neosphere-$pkgver
   make
 }
 
 package() {
-  cd "sphere-$pkgver"
+  cd "neosphere-$pkgver"
   make DESTDIR="$pkgdir" install
 }
