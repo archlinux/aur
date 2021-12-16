@@ -26,5 +26,5 @@ build () {
 
 package () {
   cd ${_gitname}
-  make install
+  sudo make install
 }
