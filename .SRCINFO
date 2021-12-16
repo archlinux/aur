@@ -1,14 +1,14 @@
 pkgbase = python-isbntools
 	pkgdesc = Extract, clean, transform, hyphenate and metadata for ISBNs
-	pkgver = 4.3.25
-	pkgrel = 2
+	pkgver = 4.3.28
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/isbntools
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
 	depends = python
 	depends = python-isbnlib
-	source = isbntools-4.3.25.tar.gz::https://github.com/xlcnd/isbntools/archive/v4.3.25.tar.gz
-	sha256sums = 24a586e28d16b9342a9521a707319874f0e2e5e5c9c6d0ceddef66cee36ba5d8
+	source = isbntools-4.3.28.tar.gz::https://github.com/xlcnd/isbntools/archive/v4.3.28.tar.gz
+	sha256sums = 8d5dd48eca3056e9952420e141d2c1057792366f9814cce1fe5dbba486f804a6
 
 pkgname = python-isbntools
