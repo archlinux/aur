@@ -4,7 +4,7 @@
 pkgname=dump1090-fa-git
 _gitname=dump1090
 pkgver=7.2.r0.g849a3b73
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,8 +17,9 @@ makedepends=('git' 'pkgconf')
 source=('dump1090::git+https://github.com/flightaware/dump1090'
 	'dump1090.service'
 	'lighttpd.conf')
+backup=('usr/share/dump1090/html/config.js')
 md5sums=('SKIP'
-         'b962f038b01154df2e8c3fa65c0acccd'
+         '8e2bfa87e94587b6d995480ad85afa98'
          'c650e2c7ae3950099d4eabab0b2910a4')
 install='dump1090-fa.install'
  

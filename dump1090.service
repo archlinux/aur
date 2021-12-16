@@ -9,7 +9,7 @@ RestartSec=30
 RuntimeDirectory=dump1090
 RuntimeDirectoryMode=0755
 #PermissionsStartOnly=true
-ExecStart=/usr/bin/dump1090 --quiet --net --gain -10 --adaptive-range --write-json /var/run/dump1090
+ExecStart=/usr/bin/dump1090 --quiet --net --adaptive-range --write-json /var/run/dump1090
 RestartPreventExitStatus=64
 Nice=-5
 
