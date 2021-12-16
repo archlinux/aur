@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-asyncrun
-pkgver=2.8.9
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Vim plugin for executing shell commands asynchronously"
 arch=('any')
@@ -10,11 +10,13 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a60e2a0434302701019ed2b255e25c582aa85a1d03a8a51eab80762b2561d87f')
+sha256sums=('700c75786caf5ab378bce913dc24f37ab6809074cc368b0640b1ed75665e1890')
 
 package() {
 	cd "asyncrun.vim-$pkgver"
-	install -Dm644 plugin/asyncrun.vim -t "$pkgdir/usr/share/vim/vimfiles/plugin/"
+	find autoload plugin \
+		-type f \
+		-exec install -Dm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
 	install -Dm644 doc/asyncrun.txt -t "$pkgdir/usr/share/vim/vimfiles/doc/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README*.md -t "$pkgdir/usr/share/doc/$pkgname/"
