@@ -15,6 +15,6 @@ md5sums=('7b2874b4e67f6a018bba648031cfa6bc')
 package() {
 
   install -dm755 "$pkgdir/usr/share/fonts/TTF"
-  install -Dm644 "$srcdir/$pkgname/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 "$srcdir/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
 
 }
