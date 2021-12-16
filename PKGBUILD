@@ -10,18 +10,10 @@ license=('LGPL')
 conflicts=('freecad')
 depends=(
     # Copied from Freecad package
-    'boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf'
+    'boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'utf8cpp'
     'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative'
-    'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit' 'med' 'python-pivy'
-    'python-pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'     
-    # 'netgen-git'
-    # 'pybind11'
-    # 'calculix'
-    # 'coin'
-    # 'gmsh'
-    # 'vtk'
-    # 'python-shiboken2'
-
+    'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit' 'med' 
+    'python-pivy' 'python-pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'     
 )
 makedepends=(
     'cmake' 'ninja'
