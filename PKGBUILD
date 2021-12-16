@@ -7,8 +7,8 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=8.3.0
-pkgrel=2
+pkgver=8.4.0
+pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
 url='https://peazip.github.io'
@@ -24,7 +24,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
-sha256sums=('d67bd88040d70f350360aff156e049143f091997f5afe0294eac70fb19cbca18')
+sha256sums=('88d8a602d80e5044e73fff34efdc195220a0dc6892778054338f08445e67d286')
 changelog=changelog.txt
 
 prepare() {
@@ -54,7 +54,6 @@ prepare() {
   chmod 755 usr && chmod 755 usr/bin
   chmod 755 usr/lib && chmod 755 usr/lib/peazip
   chmod 755 usr/lib/peazip/res && chmod -R 755 usr/lib/peazip/res/bin
-  chmod -x usr/lib/peazip/res/bin/7z/*.so
   chmod -x usr/lib/peazip/res/bin/7z/Codecs/*.so
   chmod 755 "${sharedUsr}"
   for subDir in "${sharedUsr}"/*; do chmod 755 "${subDir}"; done

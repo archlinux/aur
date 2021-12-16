@@ -1,7 +1,7 @@
 pkgbase = peazip-qt-bin
 	pkgdesc = PeaZip file manager and archiver (Qt5)
-	pkgver = 8.3.0
-	pkgrel = 2
+	pkgver = 8.4.0
+	pkgrel = 1
 	url = https://peazip.github.io
 	changelog = changelog.txt
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = peazip-qt-bin
 	conflicts = peazip-qt5
 	conflicts = peazip-qt5-bin
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.LINUX.Qt5-1.x86_64.rpm
-	sha256sums = d67bd88040d70f350360aff156e049143f091997f5afe0294eac70fb19cbca18
+	source = https://github.com/peazip/PeaZip/releases/download/8.4.0/peazip-8.4.0.LINUX.Qt5-1.x86_64.rpm
+	sha256sums = 88d8a602d80e5044e73fff34efdc195220a0dc6892778054338f08445e67d286
 
 pkgname = peazip-qt-bin

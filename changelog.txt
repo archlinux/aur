@@ -1,3 +1,20 @@
+* Thu Dec 16 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.4.0-1
+  PeaZip 8.4.0 is the first release providing experimental native packages for Darwin/macOS
+  platform, built for aarch64 M1 Apple Silicon SoC, and Intel x86_64.
+  This release brings fixes, improvements in management of temporary files, option to stop
+  test batches only if errors are detected, and new language selection control.
+  A new alternative benchmark is available, based on integer and floating point arithmetic,
+  testing single core and multi core performances.
+  PeaZip now comes with updated backends: Pea 1.05, and 7z 21.06, which are now employed on
+  all platforms.
+  On Linux, 7z backend replaces p7zip, which is still fully supported as alternative.
+  New peazip-x.y.z.pack package is meant to help developers to create packages of PeaZip
+  for various package management systems (e.g. DEB, RPM), containing packages' directories
+  from last build.
+  It does not replaces or duplicates the function of sources package peazip-x.y.z.src, as
+  it is simply meant to help packaging the application for a specific distribution system,
+  rather than compiling and building the binaries of the application.
+
 * Sun Nov 21 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-2
   - Dropped KDE 4 support from the package (https://archlinux.org/news/dropping-plasma-4).
 
