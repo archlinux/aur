@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version = 1.0
+Type = Application
+Terminal = false
+Name = Google Colab
+Comment = Chromium webapp for Google Colab python cloud environment
+Exec = chromium --user-data-dir=$HOME/.config/colabapp --app=https://colab.research.google.com/ --enable-desktop-pwas-app-icon-shortcuts-menu-ui --force-app-mode
+Icon = googlecolab
+Categories = Science;Development;IDE;ArtificialIntelligence
+Keywords = python;jupyter
+StartupWMClass=colab.research.google.com

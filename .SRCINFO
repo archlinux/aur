@@ -1,0 +1,15 @@
+pkgbase = colab-chromium-desktop
+	pkgdesc = Desktop file for Google Colab as a Chromium WebApp
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://colab.research.google.com/
+	arch = any
+	license = Unlicense
+	makedepends = icoutils
+	depends = chromium
+	source = GoogleColab.desktop
+	source = https://colab.research.google.com/img/favicon.ico
+	sha256sums = SKIP
+	sha256sums = 52232ddc81832d3edc91776ac1bc587fc40c91dc633e00b5f911466ad1c67f3a
+
+pkgname = colab-chromium-desktop
