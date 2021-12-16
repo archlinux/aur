@@ -1,7 +1,8 @@
 pkgname=terminus-cyrillic
 _pkgname=terminus-font
-pkgver=4.48
-pkgrel=3
+_base=4.49
+pkgver=${_base}.1
+pkgrel=1
 pkgdesc='Terminus monospace bitmap font (for X11 and console) with patches dv1 and ij1 applied'
 arch=('any')
 url='http://sourceforge.net/projects/terminus-font/'
@@ -10,7 +11,7 @@ makedepends=('xorg-bdftopcf' 'python')
 provides=('terminus-font')
 conflicts=('terminus-font')
 install='terminus-cyrillic.install'
-source=("http://downloads.sourceforge.net/project/$_pkgname/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/project/$_pkgname/$_pkgname-${_base}/$_pkgname-$pkgver.tar.gz"
 "fix-75-yes-terminus.patch"
 )
 
@@ -67,3 +68,5 @@ package() {
 sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af'
             'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
 
+sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
+            'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
