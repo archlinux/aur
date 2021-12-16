@@ -4,14 +4,15 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.6.4
-pkgrel=3
+pkgver=2.7
+pkgrel=1
 pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
 url="https://github.com/metabrainz/picard"
 license=(GPL2)
 depends=(glibc hicolor-icon-theme python-dateutil python-discid
-python-fasteners python-markdown python-mutagen python-pyqt5)
+python-fasteners python-markdown python-mutagen python-pyjwt python-pyqt5
+python-yaml)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 optdepends=(
@@ -20,18 +21,12 @@ optdepends=(
   'qt5-translations: full UI translation'
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha512sums=('516a34746d83af61ca0524f95a79d5282feb81196376deb4cd2ad556f36476436182581ec76f7595e301d396c480e73c2413b24990c25e4d13ded0a5af314257'
+sha512sums=('9fc9c19db19a184fab6973ac442458c9d2cf24439eb7792e736aeacaf0882bcebc1e8ff899ad8fd93488aaad74cf558db85ae88995657ab25213aacbd7e6e328'
             'SKIP')
-b2sums=('b72a2710aba81254cd6f72d80f797e40bc417a75cbfd2fbced2ea23ba5165e668ae0126a9d8dbafdffae789841c1c6b8b675d4b803a437a45d6337cb4d25843f'
+b2sums=('2b52d2a5eae48712b21907531a0daae290bab8c0c80c59df41365c0a6d645b17e36717689a8339585584f43c869592a1b0390b219abbc7cf41774c9fc6aa2943'
         'SKIP')
 # NOTE: GPG signed tags and artifacts are being evaluated: https://tickets.metabrainz.org/browse/PICARD-1934
 validpgpkeys=('68990DD0B1EDC129B856958167997E14D563DA7C') # MusicBrainz Picard Developers <picard@metabrainz.org>
-
-prepare() {
-  # remove __pycache__ dirs that make the package unreproducible:
-  # https://tickets.metabrainz.org/browse/PICARD-2362
-  find "${pkgname}-${pkgver}" -type d -iname "*__pycache__*" -exec rm -frv {} +
-}
 
 build() {
   cd "${pkgname}-${pkgver}"
