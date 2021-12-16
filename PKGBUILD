@@ -3,7 +3,7 @@
 
 pkgname=python-aigpy
 _pkgname=aigpy
-pkgver=2021.9.10.3
+pkgver=2021.12.10.1
 pkgrel=1
 pkgdesc="Python Common Lib"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('838aaaf62efb2a48847f07948cce0dc1a209828807545b914065b25c4e50c38d')
+sha256sums=('acd8824d7034fe0e4a51df4681e9e6a1ca36f1cb04ac70a932c4b0d81227cd61')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
