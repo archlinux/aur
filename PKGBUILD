@@ -2,7 +2,7 @@
 # Contributor Strykar <strykar@live.com>
 
 pkgname=nvidia-keylase-patch-git
-pkgver=7c26bc5
+pkgver=r790.30d9435
 pkgrel=1
 pkgdesc='NVENC and NvFBC patches for Nvidia drivers by keylase'
 arch=('x86_64')
