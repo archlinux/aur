@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-startuptime-git
-pkgver=2.0.2.r3.gc622725
+pkgver=4.0.0.r1.g4c54bb5
 pkgrel=1
 pkgdesc="Vim plugin for profiling Vim's startup time"
 arch=('any')
@@ -13,16 +13,18 @@ makedepends=('git')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
-pkgver()  {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+PURGE_TARGETS=('tags')
+
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
-  cd "$pkgname"
-  install -Dvm 644 autoload/startuptime.vim -t "$pkgdir/usr/share/vim/vimfiles/autoload/"
-  install -Dvm 644 doc/startuptime.txt -t "$pkgdir/usr/share/vim/vimfiles/doc/"
-  install -Dvm 644 plugin/startuptime.vim -t "$pkgdir/usr/share/vim/vimfiles/plugin/"
-  install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$pkgname"
+	find autoload doc lua plugin \
+		-type f \
+		-exec install -Dm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
