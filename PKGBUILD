@@ -1,26 +1,28 @@
-# Maintainer: solopasha <daron439 at gmail dot com>
+# Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui@riseup.net>
+# Contributor solopasha <daron439 at gmail dot com>
 # Contributor: Ilya Fedin <fedin-ilja2010@ya.ru>
 
 pkgname=kotatogram-desktop-dynamic-bin
 _pkgname=kotatogram-desktop
 pkgver=1.4.5
-pkgrel=2
-_pkgrel=2
+pkgrel=3
+_pkgrel=3
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Precompiled package"
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
-         'rnnoise' 'jemalloc' 'abseil-cpp')
+         'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl' 'libx11' 'libvpx' 'libxcomposite'
+         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs' )
 optdepends=(
 	'webkit2gtk: embedded browser features'
 	'xdg-desktop-portal: desktop integration'
 )
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-bin')
 provides=('kotatogram-desktop')
-source=("https://github.com/solopasha/kotatogramAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst")
-sha512sums=('c5a52246c41132e01468bad560b8616462f8575577b99dfe0797e43944f2ef7bb1946ba9069334899378078d234d1b4c9712c7837121b2c5e7b240ea9a681ecf')
+source=("https://github.com/3JlOy-PYCCKUi/kotatogramAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst")
+b2sums=('a7baa428b37eba6e43ebd70b134b481ba8ffaec4912094d1a54267e43ac0970039c4eda76c96f47623bb7ed6082cd559abbf609da908c7cc32aa1458a7e49527')
 package() {
 	tar -xaf "$srcdir/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude=".*"
 }
