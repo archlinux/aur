@@ -1,0 +1,19 @@
+pkgbase = librnd3-svn
+	pkgdesc = free/open source, flexible, modular two-dimensional CAD engine
+	pkgver = r33757
+	pkgrel = 1
+	url = http://www.repo.hu/projects/librnd/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	optdepends = gtk2: GTK2 GUI, software render
+	optdepends = gtkglext: GTK2 GUI, opengl render
+	optdepends = openmotif: the lesstif gui
+	optdepends = libstroke: mouse gestures
+	optdepends = fungw: turing complete scripting
+	provides = librnd3
+	source = svn://svn.repo.hu/librnd/trunk
+	md5sums = SKIP
+
+pkgname = librnd3-svn
