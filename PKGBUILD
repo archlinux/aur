@@ -1,7 +1,7 @@
 pkgname=netflix-git
 _pkgname=Netflix-git
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Netflix desktop app."
 arch=('x86_64')
 url="https://gitlab.com/netflix-desktop"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm install "https://github.com/castlabs/electron-releases#v13.6.1-wvvmp" --save-dev
+    npm install "https://github.com/castlabs/electron-releases#v14.2.2-wvvmp" --save-dev
     npm --cache "$srcdir/npm-cache" i electron-context-menu@3.1.1
 }
 
@@ -28,6 +28,7 @@ package() {
     cd "$srcdir/application"
     install -dm755 "$pkgdir/opt/Netflix"
     cp -r ./ "$pkgdir/opt/Netflix"
+    cp -r netflix.svg "$pkgdir/usr/share/pixmaps"
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"

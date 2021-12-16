@@ -1,7 +1,7 @@
 pkgbase = netflix-git
 	pkgdesc = Unofficial Netflix desktop app.
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/netflix-desktop
 	arch = x86_64
 	license = GPL
