@@ -33,4 +33,5 @@ build() {
 package() {
   cd "${srcdir}/neo"
   install -Dm755 "${srcdir}/neo/src/neo" "${pkgdir}/usr/bin/neo-matrix"
+  install -Dm755 "${srcdir}/neo/doc/neo.6" "${pkgdir}/usr/share/man/man6s/neo-matrix.6"
 }
