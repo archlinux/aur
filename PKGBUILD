@@ -68,7 +68,7 @@ package() {
        "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/config.log" \
        "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/config.status"
 
-    sed -e "s/${pkgdir}//g" \
+    sed -e "s|${pkgdir}||g" \
         -i "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/bin/eclimd" \
         -i "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/plugin.properties"
 }
