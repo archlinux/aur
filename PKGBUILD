@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -28,6 +28,7 @@ build() {
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
     --docdir=/share/doc/cmake \
+    --datadir=/share/cmake \
     --sphinx-man \
     --system-libs \
     --qt-gui \
