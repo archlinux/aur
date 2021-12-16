@@ -1,0 +1,12 @@
+pkgbase = ttf-flexi-ibm-vga-false
+	pkgdesc = Scalable TrueType monospace font based on the VGA character set
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.ffonts.net/Flexi-IBM-VGA-False.font
+	arch = any
+	license = custom:Creative Commons Attribution-ShareAlike 4.0 International License
+	makedepends = unzip
+	source = ttf-flexi-ibm-vga-false-2.0.zip::https://www.ffonts.net/Flexi-IBM-VGA-False.font.zip
+	sha256sums = e4a74c61d9a52b135dd790699b27cf019c8801a2a3fd3f28968262fde276f70f
+
+pkgname = ttf-flexi-ibm-vga-false
