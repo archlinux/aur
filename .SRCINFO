@@ -1,6 +1,6 @@
 pkgbase = valabind-git
 	pkgdesc = Tool to parse vala or vapi files to transform them into swig interface files, C++ source files, GIR or GEAR
-	pkgver = 20150603.305.cd4051f
+	pkgver = 20211216.353.98f8315
 	pkgrel = 1
 	url = https://github.com/radare/valabind
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = valabind-git
 	provides = valabind
 	conflicts = valabind
 	conflicts = valabind-hg
-	source = valabind-git::git://github.com/radare/valabind.git
+	source = valabind-git::git+https://github.com/radare/valabind.git
 	md5sums = SKIP
 
 pkgname = valabind-git
-

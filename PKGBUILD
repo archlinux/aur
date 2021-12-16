@@ -3,7 +3,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=valabind-git
-pkgver=20150603.305.cd4051f
+pkgver=20211216.353.98f8315
 pkgrel=1
 pkgdesc="Tool to parse vala or vapi files to transform them into swig interface files, C++ source files, GIR or GEAR"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('vala' 'swig')
 conflicts=('valabind' 'valabind-hg')
 provides=('valabind')
 
-source=("$pkgname"::"git://github.com/radare/valabind.git")
+source=("$pkgname"::"git+https://github.com/radare/valabind.git")
 md5sums=('SKIP')
 
 pkgver () {
