@@ -3,7 +3,7 @@
 pkgbase=chaos-driver
 pkgname=(chaos-driver-dkms kchaos)
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module to inject error or latency inside the linux kernel"
 arch=('i686' 'x86_64')
 url="https://github.com/chaos-mesh/chaos-driver"
@@ -11,8 +11,8 @@ license=('GPL2' 'Apache')
 makedepends=('go')
 depends=('dkms')
 conflicts=("${pkgbase}")
-source=("${url}/archive/refs/tags/v0.1.0.tar.gz")
-md5sums=("d3988dd4ee93bfcd7f6dd57293d324d1")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+md5sume=("a80571eae3ebee13739d3905c83a2ab0")
 
 package_chaos-driver-dkms() {
   cd ${pkgbase}-${pkgver}/driver
