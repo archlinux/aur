@@ -1,7 +1,7 @@
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=python-keyring-minimal-git
 pkgver=r12.5c266c5
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal libsecret keyring in python that works with keepassxc."
 arch=(any)
 url="https://github.com/hrehfeld/python-keyring-minimal"
