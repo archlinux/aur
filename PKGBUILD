@@ -10,19 +10,14 @@ license=('unknown')
 depends=('fontconfig' 'xorg-font-utils' 'unzip')
 provides=('ttf-font')
 source=("$pkgname.zip::http://dl.dafont.com/dl/?f=pixeled")
-noextract=("$pkgname.zip")
 install=$pkgname.install
 md5sums=('b8cea9e08d98d07d6225168037258d36')
 
-prepare() {
-  unzip -o -j -LL -qq $pkgname.zip -d $srcdir/$pkgname/
-}
 
 package() {
   
   # Installing font
-  chmod 644 "$srcdir/$pkgname/"*.ttf
   install -dm755 "$pkgdir/usr/share/fonts/TTF"
-  cp -dpr --no-preserve=ownership "$srcdir/$pkgname/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 "$srcdir"/*.ttf "$pkgdir/usr/share/fonts/TTF/"
 
 }
