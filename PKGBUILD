@@ -5,11 +5,11 @@
 pkgname=wiki-js
 _pkgname=wiki-js
 pkgver=2.5.255
-pkgrel=1
+pkgrel=2
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
 arch=('any')
-depends=('nodejs>=10.12.0')
+depends=('nodejs>=10.12.0' 'nodejs<17.0.0')
 optdepends=('mariadb' 'postgresql')
 backup=('etc/wiki-js/config.yml')
 url='https://github.com/Requarks/wiki'
