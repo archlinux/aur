@@ -12,14 +12,11 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=22.0.0_devel.147902.c50bdacbda6
+pkgver=22.0.0_devel.148113.f7e63ec5d87
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python-mako' 'xorgproto'
-              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm-minimal-git')
-depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git')
+makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
+              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm-minimal-git' 'libdrm' 'libclc')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver' 'opencl-driver')
@@ -98,6 +95,9 @@ build () {
 }
 
 package() {
+    depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
+                        'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git')
+
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
     # remove script file from /usr/bin
