@@ -1,14 +1,14 @@
 pkgname=arping-th
-pkgver=2.19
+pkgver=2.22
 pkgrel=1
 pkgdesc="ARP Ping from Thomas Habets"
 arch=('i686' 'x86_64')
-url="http://www.habets.pp.se/synscan/programs.php?prog=arping"
+url="https://www.habets.pp.se/synscan/programs_arping.html"
 license=('GPL')
 depends=('libnet' 'libcap' 'libpcap')
 source=("http://www.habets.pp.se/synscan/files/arping-$pkgver.tar.gz"
         "http://www.habets.pp.se/synscan/files/arping-$pkgver.tar.gz.asc")
-sha256sums=('36e97b58076dcd478cf732682e828ec00026dd8ec8f63201d147960be25e6616'
+sha256sums=('cb40de7e146375063b2af674ef4d61d7aaf3ac2e0c3ad1cca46c6b4229ba533a'
             'SKIP')
 validpgpkeys=('990786988A24F52F1C2E87F639A49EEA460A0169') # Thomas Habets
 
