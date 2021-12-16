@@ -3,12 +3,12 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
 license=('ZLIB' 'custom')
-depends=('zlib' 'gcc-libs')
+depends=('zlib' 'gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis')
 makedepends=('mesa' 'clang')
 source=("https://github.com/assaultcube/AC/releases/download/v${pkgver}/AssaultCube_v${pkgver}_LockdownEdition.tar.bz2"
         'assaultcube'
@@ -33,6 +33,11 @@ prepare() {
 	FLAGS=${CLANG_CXXFLAGS:-}
 	check_option 'lto' 'y' && FLAGS+=' -flto'
 	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${FLAGS} -O3/" 'Makefile'
+	
+}
+
+build() {
+	cd "${_srcdir}/source/src"
 	make
 }
 
