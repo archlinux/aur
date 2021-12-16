@@ -1,7 +1,7 @@
 pkgbase = emote
 	pkgdesc = Emoji Picker for Linux written in GTK3
 	pkgver = 3.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tom-james-watson/Emote
 	arch = any
 	license = GPL3
