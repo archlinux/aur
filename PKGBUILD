@@ -1,6 +1,6 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 epoch=
 pkgdesc="Syncing dotfiles and more"
@@ -27,7 +27,7 @@ source=(
     "https://raw.githubusercontent.com/blurgyy/dt/v$pkgver/LICENSE-MIT"
 )
 sha256sums=(
-    "f4e40f48046d78be22ca157960cb3b6b131147feb8d32429b827755e022f6484"
+    "c4fc4ece5d42019b7b34059297db0837d399b82a46a01dbafdff09be02b835ad"
     "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
     "1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322"
 )
