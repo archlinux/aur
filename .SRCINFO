@@ -1,15 +1,14 @@
 pkgbase = hyphen-ru
 	pkgdesc = Russian hyphenation rules
 	pkgver = 20200604
-	pkgrel = 2
-	url = https://cgit.freedesktop.org/libreoffice/dictionaries/tree/ru_RU
+	pkgrel = 3
+	url = https://github.com/LibreOffice/dictionaries/tree/master/ru_RU
 	arch = any
 	license = custom
 	depends = hyphen
-	source = hyphen-ru.dic::https://cgit.freedesktop.org/libreoffice/dictionaries/plain/ru_RU/hyph_ru_RU.dic?id=12e591abdbc5565e5018ed9b8fbe6d635ade87d7
-	source = hyphen-ru-README.txt::https://cgit.freedesktop.org/libreoffice/dictionaries/plain/ru_RU/README_ru_RU.txt?id=12e591abdbc5565e5018ed9b8fbe6d635ade87d7
+	source = hyphen-ru.dic::https://github.com/LibreOffice/dictionaries/raw/12e591abdbc5565e5018ed9b8fbe6d635ade87d7/ru_RU/hyph_ru_RU.dic
+	source = hyphen-ru-README.txt::https://github.com/LibreOffice/dictionaries/raw/12e591abdbc5565e5018ed9b8fbe6d635ade87d7/ru_RU/README_ru_RU.txt
 	sha256sums = e9a6ae92765fc7e63d879f2ccf3f50f2b95bc8ed7618a6f31c34ce7d39844c83
 	sha256sums = 262af2f6ad70a61e5ee1332ff44fa8ee50edca819cf33207d8ad6ba6a0c9be52
 
 pkgname = hyphen-ru
-
