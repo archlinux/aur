@@ -1,14 +1,14 @@
 # Maintainer: Tharre <tharre3@gmail.com>
 
 pkgname=grokmirror
-pkgver=1.2.0
+pkgver=2.0.11
 pkgrel=1
 pkgdesc='Framework to smartly mirror git repositories'
 url='https://git.kernel.org/pub/scm/utils/grokmirror/grokmirror.git'
 arch=('any')
 license=('GPL3')
-depends=('python-setuptools' 'python-anyjson' 'python-gitpython'
-         'python-enlighten')
+depends=('python-requests' 'python-packaging')
+makedepends=('python-setuptools')
 source=(https://git.kernel.org/pub/scm/utils/grokmirror/grokmirror.git/snapshot/grokmirror-${pkgver}.tar.{gz,asc})
 validpgpkeys=('DE0E66E32F1FDD0902666B96E63EDCA9329DD07E') # Konstantin Ryabitsev
 sha256sums=('SKIP'
