@@ -3,10 +3,11 @@ pkgbase = gomp-git
 	pkgver = r196.0db49ca
 	pkgrel = 1
 	url = https://github.com/aditya-K2/gomp
-	arch = any
-	license = GPL
+	arch = x86_64
+	license = GPL3
+	makedepends = git
 	makedepends = go
-	source = git+https://github.com/aditya-K2/gomp/
+	source = gomp-git::git+https://github.com/aditya-K2/gomp
 	sha256sums = SKIP
 
 pkgname = gomp-git
