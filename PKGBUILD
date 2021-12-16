@@ -1,7 +1,7 @@
 pkgname=youtube-git
 _pkgname=Youtube-git
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('any')
 url="https://gitlab.com/youtube-desktop/application"
@@ -29,6 +29,9 @@ package() {
     cd "$srcdir/application/Youtube"
     install -dm755 "$pkgdir/opt/Youtube"
     cp -r ./ "$pkgdir/opt/Youtube"
+    install -dm755 "$pkgdir/usr/share/pixmaps"
+    cp -r ./ "$pkgdir/opt/Youtube"
+    cp -r "$pkgdir/opt/Youtube/youtube.svg" "$pkgdir/usr/share/pixmaps"    
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
