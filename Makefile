@@ -1,7 +1,7 @@
 # Helper make file
 BINARY:=gk6x-bin
 
-all: uninstall install clean
+all: clean build install
 
 .PHONY: clean
 clean:
