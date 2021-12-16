@@ -10,6 +10,8 @@ pkgbase = neovim-renamer-git
 	makedepends = git
 	depends = neovim
 	depends = neovim-plenary
+	provides = neovim-renamer
+	conflicts = neovim-renamer
 	source = neovim-renamer-git::git+https://github.com/filipdutescu/renamer.nvim
 	sha256sums = SKIP
 
