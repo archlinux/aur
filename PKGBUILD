@@ -9,7 +9,7 @@ license=('Apache')
 arch=('x86_64')
 depends=('gcc-libs')
 conflicts=("cfn-guard-git")
-source=("${pkgname}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-v2-ubuntu-latest.tar.gz")
+source=("${url}/releases/download/${pkgver}/${pkgname}-v2-ubuntu-latest.tar.gz")
 sha256sums=('6c0b737e0564a62554be065a3a05609a187720ce5ff3e32db9eec8eb6aa99372')
 
 package() {

@@ -7,7 +7,7 @@ pkgbase = cfn-guard
 	license = Apache
 	depends = gcc-libs
 	conflicts = cfn-guard-git
-	source = cfn-guard.tar.gz::https://github.com/aws-cloudformation/cloudformation-guard/releases/download/2.0.4/cfn-guard-v2-ubuntu-latest.tar.gz
+	source = https://github.com/aws-cloudformation/cloudformation-guard/releases/download/2.0.4/cfn-guard-v2-ubuntu-latest.tar.gz
 	sha256sums = 6c0b737e0564a62554be065a3a05609a187720ce5ff3e32db9eec8eb6aa99372
 
 pkgname = cfn-guard
