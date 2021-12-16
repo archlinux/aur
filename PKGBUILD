@@ -2,7 +2,7 @@
 
 pkgname=drawj2d
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Drawj2d creates technical line drawings using a descriptive language. It writes pdf, svg, eps, emf and dxf vector graphics or png images. It runs on all platforms that run Java. It is inspired by Asymptote but with a tcl-like syntax and 2D only."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://sourceforge.net/projects/$pkgname"
@@ -10,7 +10,7 @@ license=('GPLv2')
 depends=('java-runtime>=8')
 makedepends=(
     'ant'
-    'jdk11-openjdk=11.0.12.u7-1'
+    'jdk11-openjdk'
 )
 conflicts=('drawj2d')
 provides=('drawj2d')
