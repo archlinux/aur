@@ -2,7 +2,7 @@
 options=(!strip !buildflags debug)
 _name=trunk-recorder
 pkgname=${_name}-git
-pkgver=r1706.8072483
+pkgver=r1766.5e6cfe7
 pkgrel=1
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
