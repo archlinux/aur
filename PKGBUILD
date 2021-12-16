@@ -2,7 +2,7 @@
 
 _pkgbase=sse-starlette
 pkgname=python-$_pkgbase
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Server Sent Events for Starlette and FastAPI"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   python setup.py install --skip-build -O1 --root="$pkgdir"
 }
 
-sha256sums=('9a33b0c298591ba8c92b4c1a3009b6a478416dea489fa98d91ae18d50f68c647')
+sha256sums=('09cad2b83e680b41d0ecbcc5179c297f03a2a43567d30d31bd26ae7f75297950')
