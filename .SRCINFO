@@ -16,6 +16,7 @@ pkgbase = crawl-tiles
 	depends = zlib
 	depends = python-pyaml
 	depends = glu
+	depends = ttf-dejavu
 	provides = crawl
 	provides = stone-soup
 	conflicts = crawl

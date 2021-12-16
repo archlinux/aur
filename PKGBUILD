@@ -19,6 +19,7 @@ depends=(
 	'zlib'
 	'python-pyaml'
 	'glu'
+	'ttf-dejavu'
 )
 makedepends=('gendesk')
 checkdepends=()
