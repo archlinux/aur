@@ -1,6 +1,6 @@
 pkgname=youtube-git
 _pkgname=Youtube-git
-pkgver=1.0.7
+pkgver=e0b75da6
 pkgrel=3
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('any')
