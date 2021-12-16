@@ -22,7 +22,8 @@ depends=(
   'python-markdown'
   'wine' 
   'cabextract'
-  'webkit2gtk')
+  'webkit2gtk'
+  'xorg-xdpyinfo')
 optdepends=(
   'gvfs' 
   'vkd3d' 

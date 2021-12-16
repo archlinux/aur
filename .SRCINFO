@@ -21,6 +21,7 @@ pkgbase = bottles
 	depends = wine
 	depends = cabextract
 	depends = webkit2gtk
+	depends = xorg-xdpyinfo
 	optdepends = gvfs
 	optdepends = vkd3d
 	optdepends = lib32-vkd3d
