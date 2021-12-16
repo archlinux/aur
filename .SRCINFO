@@ -1,10 +1,12 @@
 pkgbase = worm
 	pkgdesc = A floating, tag-based window manager written in Nim
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/codic12/worm
 	install = worm.install
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = nimble
 	makedepends = nim
