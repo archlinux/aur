@@ -15,6 +15,7 @@ pkgbase = firefox-wayland-hg
 	makedepends = mesa
 	makedepends = imake
 	makedepends = inetutils
+	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
 	makedepends = rust
 	makedepends = clang

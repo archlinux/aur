@@ -18,7 +18,7 @@ depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libwebp libjpeg zlib icu libevent libpipewire02)
 makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             xorg-server-xvfb autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard lld dump_syms
              wasi-sdk-git)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -137,7 +137,7 @@ build() {
   # LTO/PGO needs more open files
   ulimit -n 4096
 
-  ./mach build
+  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }
 
