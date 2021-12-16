@@ -1,8 +1,8 @@
 # Maintainer: zoorat <zoorat [at] protonmail [dot] com>
 
 pkgname="mymonero"
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 
 pkgdesc="The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features."
 arch=('x86_64')
@@ -20,7 +20,7 @@ changelog="changelog.md"
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/mymonero/mymonero-app-js/releases/download/v${pkgver}/MyMonero-${pkgver}.AppImage"
 	"LICENSE::https://raw.githubusercontent.com/mymonero/mymonero-app-js/master/LICENSE.txt")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('57881b1c024acda80ef8fe0a29f555e4cc20ae4cecdf08f6cb8daf5801c298b14333e35c3d276111c7d03327541fe92b4626aaf7b6ea9abe0642589a6cb19cb9'
+b2sums=('30198bdf0b3b0349317dbe1e25296ae6619bfc767430533cf5970060be6635ef8e95416767a803bb75c0b5f89e30b847f5a738fd005a24229e062439ac73f27f'
 	'e15003acc9be63fd7b76a1021d86045f82fe19a63551c0f2ab1478d4e3e3be8a9bb7dc7f4f06b79fa1005995cebd73807259c3c5c36861f085ca7ad7959eef52')
 
 prepare() {
@@ -49,8 +49,6 @@ package() {
 
 	# Link entry point
 	install -vdm 755 "${pkgdir}/usr/bin"
-	rm -v "${pkgdir}/opt/${pkgname}/${pkgname}"
-	mv -v "${pkgdir}/opt/${pkgname}/${pkgname}.bin" "${pkgdir}/opt/${pkgname}/${pkgname}"
 	ln -vsf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# Copy icons files
