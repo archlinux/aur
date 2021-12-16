@@ -3,7 +3,6 @@ pkgbase = chaos-driver
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/chaos-mesh/chaos-driver
-	install = chaos-driver-dkms.install
 	arch = i686
 	arch = x86_64
 	license = GPL2

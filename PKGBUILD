@@ -11,7 +11,6 @@ license=('GPL2' 'Apache')
 makedepends=('go')
 depends=('dkms')
 conflicts=("${pkgbase}")
-install=${pkgname}.install
 source=("${url}/archive/refs/tags/v0.1.0.tar.gz")
 md5sums=("d3988dd4ee93bfcd7f6dd57293d324d1")
 
