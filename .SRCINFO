@@ -1,7 +1,7 @@
 pkgbase = superlu_dist
 	pkgdesc = Distributed memory, MPI based SuperLU
-	pkgver = 7.1.1
-	pkgrel = 2
+	pkgver = 7.2.0
+	pkgrel = 1
 	url = https://github.com/xiaoyeli/superlu_dist
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = superlu_dist
 	depends = lapack
 	depends = parmetis
 	options = staticlibs
-	source = superlu_dist-7.1.1::https://github.com/xiaoyeli/superlu_dist/archive/v7.1.1.tar.gz
-	sha512sums = b5e4c6a99a0f71bb81170f6f90e6300d584ada608dd31d43f8bb3aa5ad6e4ba00f75043bbe14899d6f8bdb597552ef6eeb3cc1db20e06798421de71d810b32ee
+	source = superlu_dist-7.2.0::https://github.com/xiaoyeli/superlu_dist/archive/v7.2.0.tar.gz
+	sha512sums = ecb5d382a1c5319992149ac267f14ececb1eca9f8039506a7bf6eecd32fce7f69e06fae81244030466abc125499f9d4f14948e5ae770a5f44f3be6738b78e7c6
 
 pkgname = superlu_dist

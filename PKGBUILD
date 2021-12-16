@@ -2,8 +2,8 @@
 # Maintainer: Gianluca Pettinello <g_pet at hotmail dot com>
 # Contributor: Christian Pfeiffer <cpfeiffer at live dot de>
 pkgname=superlu_dist
-pkgver=7.1.1
-pkgrel=2
+pkgver=7.2.0
+pkgrel=1
 pkgdesc="Distributed memory, MPI based SuperLU"
 arch=('x86_64')
 url="https://github.com/xiaoyeli/${pkgname}"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('lapack' 'parmetis')       # 'openblas' 'combblas'
 makedepends=('cmake' 'gcc-fortran') # 'ninja'
 source=(${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('b5e4c6a99a0f71bb81170f6f90e6300d584ada608dd31d43f8bb3aa5ad6e4ba00f75043bbe14899d6f8bdb597552ef6eeb3cc1db20e06798421de71d810b32ee')
+sha512sums=('ecb5d382a1c5319992149ac267f14ececb1eca9f8039506a7bf6eecd32fce7f69e06fae81244030466abc125499f9d4f14948e5ae770a5f44f3be6738b78e7c6')
 options=('staticlibs')
 
 # prepare() {
