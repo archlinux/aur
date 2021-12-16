@@ -1,0 +1,27 @@
+pkgbase = lib32-hwloc
+	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://www.open-mpi.org/projects/hwloc/
+	arch = x86_64
+	license = BSD
+	makedepends = lib32-cairo
+	makedepends = lib32-libxml2
+	makedepends = lib32-pciutils
+	makedepends = lib32-libx11
+	depends = hwloc
+	depends = lib32-glibc
+	depends = lib32-libtool
+	depends = lib32-libpciaccess
+	depends = lib32-systemd
+	optdepends = lib32-cairo
+	optdepends = lib32-libxml2
+	optdepends = lib32-pciutils
+	optdepends = lib32-libx11
+	options = !docs
+	source = https://download.open-mpi.org/release/hwloc/v2.6/hwloc-2.6.0.tar.bz2
+	sha512sums = 3f35ee685507469e2c7d4a2ab4c339eff24123b4bc21d96bc53fd2737a36bdd371f1e1e4440b410ecac6cf1881562187243bfbf846203cb3702a4c4c7be0d5df
+	b2sums = 96099ae3527e11a83adc068e07756752d2effa38b4bae174045e5142a3457af8790e9fd3d778ff2d91708101aaf6e108affed7688918195e0f2bdbd55235ad46
+
+pkgname = lib32-hwloc
+
