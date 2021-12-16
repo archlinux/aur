@@ -2,9 +2,9 @@
 
 pkgname=spigot-plugin-essentials
 epoch=1
-pkgver=2.19.0
-_build=69
-_commit=adef08a
+pkgver=2.19.3
+_build=1
+_commit=05ce11f
 pkgrel=1
 pkgdesc="Essentials offers about 100 commands useful on just about every server, initial kits, mob spawning, economy, warps along the map, houses, etc."
 arch=(any)

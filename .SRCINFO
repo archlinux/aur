@@ -1,24 +1,24 @@
 pkgbase = spigot-plugin-essentials
 	pkgdesc = Essentials offers about 100 commands useful on just about every server, initial kits, mob spawning, economy, warps along the map, houses, etc.
-	pkgver = 2.19.0
+	pkgver = 2.19.3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.spigotmc.org/resources/essentialsx.9089/
 	arch = any
 	license = GPLv3
 	depends = craftbukkit>=1.9
-	noextract = EssentialsX-2.19.0.jar
-	noextract = EssentialsXAntiBuild-2.19.0.jar
-	noextract = EssentialsXChat-2.19.0.jar
-	noextract = EssentialsXGeoIP-2.19.0.jar
-	noextract = EssentialsXProtect-2.19.0.jar
-	noextract = EssentialsXSpawn-2.19.0.jar
-	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsX-2.19.0-dev+69-adef08a.jar
-	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXAntiBuild-2.19.0-dev+69-adef08a.jar
-	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXChat-2.19.0-dev+69-adef08a.jar
-	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXGeoIP-2.19.0-dev+69-adef08a.jar
-	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXProtect-2.19.0-dev+69-adef08a.jar
-	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXSpawn-2.19.0-dev+69-adef08a.jar
+	noextract = EssentialsX-2.19.3.jar
+	noextract = EssentialsXAntiBuild-2.19.3.jar
+	noextract = EssentialsXChat-2.19.3.jar
+	noextract = EssentialsXGeoIP-2.19.3.jar
+	noextract = EssentialsXProtect-2.19.3.jar
+	noextract = EssentialsXSpawn-2.19.3.jar
+	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsX-2.19.3-dev+1-05ce11f.jar
+	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXAntiBuild-2.19.3-dev+1-05ce11f.jar
+	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXChat-2.19.3-dev+1-05ce11f.jar
+	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXGeoIP-2.19.3-dev+1-05ce11f.jar
+	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXProtect-2.19.3-dev+1-05ce11f.jar
+	source = https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXSpawn-2.19.3-dev+1-05ce11f.jar
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -27,4 +27,3 @@ pkgbase = spigot-plugin-essentials
 	md5sums = SKIP
 
 pkgname = spigot-plugin-essentials
-
