@@ -8,6 +8,7 @@ pkgbase = mun-bin
 	depends = zlib
 	depends = ncurses5-compat-libs
 	depends = libffi6
+    depends = libffi7
 	provides = mun
 	conflicts = mun
 	conflicts = mun-git
