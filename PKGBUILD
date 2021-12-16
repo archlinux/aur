@@ -61,9 +61,8 @@ package() {
         "${srcdir}/${pkgname}_${pkgver}/NOTICE"
 
     # Remove unecessary/junk files from docs
-    rm -r "${pkgdir}/usr/share/doc/eclim/.doctrees/"  \
-          "${pkgdir}/usr/share/doc/eclim/objects.inv" \
-          "${pkgdir}/usr/share/doc/eclim/CNAME"
+    rm "${pkgdir}/usr/share/doc/eclim/CNAME" \
+       "${pkgdir}/usr/share/doc/eclim/objects.inv"
 
     rm "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/Makefile"   \
        "${pkgdir}/usr/lib/eclipse/plugins/org.eclim_${pkgver}/nailgun/config.log" \
