@@ -1,11 +1,10 @@
-﻿
 # Maintainer: chenss <ufbycd@163.com>
 
 pkgname=eclipse-embedcpp
-pkgver=4.18
-_release=2020-12
+pkgver=4.22
+_release=2021-12
 _src=$pkgname-$_release-R-linux-gtk-x86_64.tar.gz
-pkgrel=2
+pkgrel=1
 pkgdesc="Embedded C/C++ Development Environment(Chinese Mirror)"
 arch=('x86_64')
 url="www.eclipse.org"
@@ -18,10 +17,9 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/$_release/R/$_src")
-#https://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-embedcpp-2020-12-R-linux-gtk-x86_64.tar.gz
-md5sums=('fec1a3813975f5474d93fbd2901d4783')
+md5sums=('6a6b91906b049d166d02cbd9e0a07016')
 
 prepare() {
     # remove jre
