@@ -2,7 +2,7 @@
 
 pkgname=sunamu-git
 _pkgname=sunamu
-pkgver=r73.71943da249
+pkgver=r148.fe6dd121a0
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Development version)"
 url="https://github.com/NyaomiDEV/Sunamu"
@@ -41,7 +41,7 @@ package() {
   dir=$(compgen -G "targets/linux*unpacked" | head -n1)
   cp -dr --no-preserve=ownership $dir/resources/* "${pkgdir}/usr/lib/$_pkgname/"
 
-  install -Dm644 assets/icon.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  install -Dm644 assets/icons/icon.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
