@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.29.6-beta.3'
+_pkgver='1.29.6-beta.4'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version - binary version'
@@ -20,7 +20,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
-sha512sums=('03d936849d2cf329ea9f128375f47f916d26d5e5a85e228c5488d74c28e7f6e824d137199d293fb565be5f35ae57eb0d3973f54281ffbb3e483e92965d3fc615')
+sha512sums=('ddbc08155fc2626e23d12747ae6c257d765a1ad2e25a7d3dc96c5ec62fd65b7d7955abbc602d9ea59609fd1f64feb07eccca728c04cf26facc5d48c6162035aa')
 
 package() {
 	cd "$srcdir/"
