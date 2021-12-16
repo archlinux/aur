@@ -2,7 +2,7 @@
 
 pkgname=grain
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern web staple. A new language that puts academic language features to work"
 arch=('x86_64')
 url="https://github.com/grain-lang/grain"
@@ -12,6 +12,5 @@ sha256sums=('3c536aa1351d21511b4ee6800e66332d5db2215c389adff8190d905c707f20b7')
 
 package() {
   cd "$srcdir"
-  install -dm 755 "$pkgdir/usr/bin"
-  install -Dm644 grain "$pkgdir/usr/bin/grain"
+  install -Dm755 grain "$pkgdir/usr/bin/grain"
 }
