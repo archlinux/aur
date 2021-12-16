@@ -1,6 +1,6 @@
 pkgbase = xorg-server-bug865
-	pkgver = 21.1.1
-	pkgrel = 3
+	pkgver = 21.1.2
+	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -36,18 +36,16 @@ pkgbase = xorg-server-bug865
 	makedepends = systemd
 	makedepends = meson
 	makedepends = git
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.1.tar.xz
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.1.tar.xz.sig
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.2.tar.xz
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.2.tar.xz.sig
 	source = xvfb-run
 	source = xvfb-run.1
-	source = 0001_revert_dpi_calculation.patch
 	source = freedesktop-bug-865.patch
 	validpgpkeys = FD0004A26EADFE43A4C3F249C6F7AE200374452D
-	sha512sums = 8608ed9c1537c95e8a3adea5e3e372a3c5eb841f8e27c84283093f22fb1909e16a800006510da684b13f8f237f33b8a4be3e2537f5f9ab9af4c5ad12770eef0d
+	sha512sums = 6d7a0d29d5be09f80ed505c4d6ae964795127525a0ab73a4eab4f601788ab3627033143e5aeb4c2565c6683dd3402084d13acab5554606fbd519c4aec0a79def
 	sha512sums = SKIP
 	sha512sums = 4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514
 	sha512sums = de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22
-	sha512sums = 28021ef9879d5313096c3e7e79a71a2e15be366652845acf32239d5c011c60aa5938c63c23b04bb0dee56df7b3762b7ca8d51d5925898c67c2ba83ec468fe782
 	sha512sums = c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf
 
 pkgname = xorg-server-bug865
@@ -70,7 +68,7 @@ pkgname = xorg-server-bug865
 	provides = X-ABI-XINPUT_VERSION=24.4
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
-	provides = xorg-server=21.1.1
+	provides = xorg-server=21.1.2
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
