@@ -1,4 +1,4 @@
-# Maintainer: FACT-Finder <ff-dev@omikron.net>
+# Maintainer: FACT-Finder <ff-dev@fact-finder.com>
 
 pkgname=snage-bin
 pkgver=0.5.7
