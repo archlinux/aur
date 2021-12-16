@@ -24,7 +24,9 @@ package() {
     for dir in YoutubeMusic-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
     cd $_pkgname
     install -dm755 "$pkgdir/opt/YoutubeMusic"
+    install -dm755 "$pkgdir/usr/share/pixmaps"
     cp -r ./ "$pkgdir/opt/YoutubeMusic"
+    cp -r "$pkgdir/opt/YoutubeMusic/resources/app/youtubemusic.svg" "$pkgdir/usr/share/pixmaps"    
 
 
     # Link to binary
