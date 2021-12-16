@@ -1,12 +1,12 @@
 pkgbase = gomp-git
 	pkgdesc = MPD client inspired by ncmpcpp written in GO.
-	pkgver = 0.1
+	pkgver = r196.0db49ca
 	pkgrel = 1
 	url = https://github.com/aditya-K2/gomp
 	arch = any
 	license = GPL
 	makedepends = go
-	source = https://github.com/aditya-K2/gomp/archive/refs/heads/master.zip
+	source = git+https://github.com/aditya-K2/gomp/
 	sha256sums = SKIP
 
 pkgname = gomp-git
