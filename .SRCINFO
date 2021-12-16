@@ -1,6 +1,6 @@
 pkgbase = python-colorio
 	pkgdesc = Tools for color research
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/nschloe/colorio
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-colorio
 	optdepends = python-pyvista: for creation unstructured grid and plotter
 	optdepends = python-scipy: for curve fit support
 	optdepends = vtk: for create VTK hexahedron support
-	source = https://pypi.org/packages/source/c/colorio/colorio-0.10.0.tar.gz
-	sha512sums = f95271b5fa91b28d7346b919a6243f2daefc9a2182f44fe27cc57ca608b2e56b5640f8eee16abb9768df3387ec15552100dca39dc7e83e7064512b0d61c73126
+	source = https://pypi.org/packages/source/c/colorio/colorio-0.10.1.tar.gz
+	sha512sums = ae916f34e4d311e5f3dfb7ff37622dcf526bc5102c850083f582d574a3fd5d3d42168d24dba3a0596c4e53753874eec84de48d95d9fc0ad35205581fd0b3672f
 
 pkgname = python-colorio
