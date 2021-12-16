@@ -214,7 +214,7 @@ _phpextensions_fpm="\
 
 
 makedepends=(
-    'libtool' 'autoconf' 'automake' 'patchelf' 'awk' 'sed' 'sh' 'python' 'libxml2' 'pam'
+    'libtool' 'autoconf' 'automake' 'patchelf' 'gawk' 'sed' 'bash' 'python' 'libxml2' 'pam'
     'openssl' 'openssl-1.0' 'argon2' 'libmcrypt' 'libsodium' 'libldap' 'libsasl' 'krb5'
     'libxslt'  'libzip' 'freetds' 'apache' 'aspell' 'c-client' 'db' 'enchant' 'readline'
     'gmp' 'icu' 'net-snmp' 'postgresql-libs' 'sqlite' 'systemd-libs' 'unixodbc' 'curl' 'ncurses'
