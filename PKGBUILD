@@ -9,7 +9,7 @@ url=https://github.com/trivernis/mediarepo-daemon
 license=(GPL3)
 depends=('ffmpeg')
 provides=('mediarepo-daemon=0.9.0')
-makedepends=('clang' 'rust')
+makedepends=('clang' 'rustup')
 
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/mediarepo-daemon/archive/v$pkgver.tar.gz)
@@ -17,6 +17,7 @@ sha512sums=('d0edc2e32a20add504f6a91565feac60e888a8941516ae2a90e84f24615cdd2d7e2
 
 prepare() {
   cd $pkgname-$pkgver
+  rustup default stable
 }
 
 build() {
