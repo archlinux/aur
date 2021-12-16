@@ -1,6 +1,6 @@
 pkgbase = charm-tool
 	pkgdesc = The Charm Cloud Tool
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/charmbracelet/charm
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = charm-tool
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/charmbracelet/charm/archive/v0.9.1/charm-0.9.1.tar.gz
-	sha256sums = 85134be63acd570696e4a4134e4c2fcdafc7ed797d79aede854c4e80ee7bf2be
+	source = https://github.com/charmbracelet/charm/archive/v0.9.2/charm-0.9.2.tar.gz
+	sha256sums = 13c692389b312830e051d146701fcdea9da22f4df678bd93e6c5b22f48f18e59
 
 pkgname = charm-tool
