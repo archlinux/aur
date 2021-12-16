@@ -2,8 +2,8 @@
 
 _channel=latest
 pkgname="tws-$_channel"
-_pkgver=10.11
-pkgver="$_pkgver.2f"
+_pkgver=10.12
+pkgver="$_pkgver.2c"
 pkgrel=1
 pkgdesc='IntereactiveBrokers Trader Workstation'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=()
 optdepends=()
 source=("https://download2.interactivebrokers.com/installers/tws/$_channel-standalone/$pkgname-standalone-linux-x64.sh")
-sha512sums=('64646cd42622607353bfbe46881edf98fcb3bc091836ba2ba374c4edef0fbcf069498cedf47b59c369eb6f7f617a396f2839505a973a11244dfc88c2e03f6885')
+sha512sums=('067ddb23e69b53412401e8bc19bf3815fe3cd832c8b8563377fedd6da7beacadd1e058205c8e4fbf270a8dc5f4dca1840a7f43b6e0875cfacddea409046383ad')
 
 prepare() {
     # unattended mode
