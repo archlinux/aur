@@ -12,7 +12,7 @@ makedepends=('go')
 depends=('dkms')
 conflicts=("${pkgbase}")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sume=("a80571eae3ebee13739d3905c83a2ab0")
+sha256sums=('e6460c49b6b51dae747717e262e0aa01e85e7d4883dff5f2063dc0610ad6a164')
 
 package_chaos-driver-dkms() {
   cd ${pkgbase}-${pkgver}/driver
