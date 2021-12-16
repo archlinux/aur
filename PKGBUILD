@@ -1,9 +1,9 @@
-# Maintainer: Brett Cornwall <ainola@archlinux.org>
+# Maintainer: prolletto64 <poiluonzo@mail.com>
 # Contributor: kozec
 
 pkgname=minecraft-technic-launcher
 # Find the latest version number at https://api.technicpack.net/launcher/version/stable4
-pkgver=4.706
+pkgver=4.707
 pkgrel=1
 pkgdesc='Choose from thousands of community-made Minecraft modpacks'
 arch=('any')
@@ -17,7 +17,7 @@ noextract=('TechnicLauncher.jar')
 source=("$pkgname-$pkgver.jar::http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
         "technic-launcher.desktop")
-sha256sums=('eb1b176cf44468a022999095fde2cd7a470b6eeb488b95a1e7fded1ca2d51fe0'
+sha256sums=('cda92a45547e0581528517dfa5a35cdd42c356d6fe52ae1bf588d1ae96aa10e5'
             '11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397'
             '221da85f9fb535951e490a3feda052c60839883ae0806d7d587b0c64337f3513')
 
