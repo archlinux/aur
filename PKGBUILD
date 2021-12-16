@@ -2,13 +2,13 @@
 
 pkgname=mediarepo
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tag based media management tool for images, videos, audio and more'
 arch=(x86_64)
 url=https://github.com/trivernis/mediarepo-ui
 license=(GPL3)
 optdepends=('mediarepo-daemon=0.9.0')
-makedepends=(curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 webkit2gtk patchelf libvips clang cargo yarn nodejs npm python node-gyp)
+makedepends=(curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 webkit2gtk patchelf libvips clang rustup yarn nodejs npm python node-gyp)
 
 options=(!strip)
 source=(
@@ -22,6 +22,7 @@ sha512sums=(
 
 prepare() {
   cd $pkgname-ui-$pkgver
+  rustup default stable
   yarn add -D @tauri-apps/cli
   yarn install
 }
