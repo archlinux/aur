@@ -1,0 +1,11 @@
+pkgbase = portmaster-openrc
+	pkgdesc = OpenRC portmaster init script
+	pkgver = 0.7.10.r1.312a55f
+	pkgrel = 1
+	url = https://github.com/FlabIt/portmaster-openrc.git
+	arch = any
+	license = MIT
+	source = portmaster-openrc-0.7.10.r1.312a55f-1.tar.gz::https://github.com/FlabIt/portmaster-openrc/releases/download/0.7.10.r1.312a55f/0.7.10.r1.312a55f.tar.gz
+	sha256sums = f5889bcaa094d70945a2f393fd27086e138fa19d63a19407f1d0897d9a92e443
+
+pkgname = portmaster-openrc
