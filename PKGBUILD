@@ -12,7 +12,7 @@ provides=('ttf-font')
 source=("$pkgname.zip::http://dl.dafont.com/dl/?f=pixeled")
 noextract=("$pkgname.zip")
 install=$pkgname.install
-md5sums=('4aeadb1eeb639b12a439647da4d591b9')
+md5sums=('b8cea9e08d98d07d6225168037258d36')
 
 prepare() {
   unzip -o -j -LL -qq $pkgname.zip -d $srcdir/$pkgname/
