@@ -1,8 +1,13 @@
 post_install() {
-    echo "If you want eclim to recognize the pydev and wst Eclipse features,"
-    echo "install those first, then rebuild and install eclim."
+    echo "NOTE: If you want eclim to recognize the pydev and wst Eclipse features,"
+    echo ">>>>> install those first, then rebuild and install eclim."
+
+    vim -e -u NONE --cmd "helptags /usr/share/vim/vimfiles/eclim/doc/" --cmd quit
+
 }
 post_upgrade() {
-    echo "If you want eclim to recognize the pydev and wst Eclipse features,"
-    echo "install those first, then rebuild and install eclim."
+    echo "NOTE: If you want eclim to recognize the pydev and wst Eclipse features,"
+    echo ">>>>> install those first, then rebuild and install eclim."
+
+    vim -e -u NONE --cmd "helptags /usr/share/vim/vimfiles/eclim/doc/" --cmd quit
 }

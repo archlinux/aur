@@ -24,9 +24,11 @@ prepare() {
     chmod +x org.eclim/nailgun/configure bin/sphinx
     sed -e '33d' -i doc/content/conf.py
 
-    echo &>2 "INFO: Make sure to set your Java Environment to the correct version"
-    echo &>2 "INFO: using archlinux-java or else build may fail. Currently known"
-    echo &>2 "INFO: to be able to build with Java 11 or lower."
+    echo >&2 "--------------------------- NOTE ------------------------------"
+    echo >&2 "Make sure to set your Java Environment to the correct version"
+    echo >&2 "using archlinux-java or else build may fail. Currently known"
+    echo >&2 "to be able to build with Java 11 or lower."
+    echo >&2 "---------------------------------------------------------------"
 }
 
 build() {
