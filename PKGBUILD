@@ -62,12 +62,12 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-_subarch=
+_subarch=36
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=131a17b2319e4d56f3d95a1a2fca183e86474225
+_arch_config_commit=2d07e5c725a31f0adcdffc3595a2db7b968e5e61
 _prjc_version=5.15-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20211114
@@ -85,28 +85,28 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/0948f6ce6d898c598f8fe88240954e578fdc8387.patch"
-  "0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch::https://github.com/archlinux/linux/commit/0bb6e4f104167b1e283269b46f3bbd30b2d979a7.patch"
-  "0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch::https://github.com/archlinux/linux/commit/32803dc7c2ffc29db15a46034d818f6e6c5775ef.patch"
-  "0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch::https://github.com/archlinux/linux/commit/aa7300919d0656a001fe0d526508b8c5958e7630.patch"
-  "0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/a6d4fb4f5e7fe795d9e3b28b261a0f86f1026d03.patch"
-  "0006-lg-laptop-Recognize-more-models.patch::https://github.com/archlinux/linux/commit/72edf8c167268bb68d701f46006ccfdfa5490db8.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/6716cb2cd1fada90a03003b7671a2c1be3bd5277.patch"
+  "0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch::https://github.com/archlinux/linux/commit/bc627264195d101bd7b64774365cc947c0ee68ae.patch"
+  "0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch::https://github.com/archlinux/linux/commit/4dbd5ca2edc4a8f5b518008bf08f3499823447b5.patch"
+  "0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch::https://github.com/archlinux/linux/commit/945c9e46f87ba9567219401dd8458bba38bbeb0c.patch"
+  "0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/a7302c9ae64983b2cbf74df4935ea7a1281ece24.patch"
+  "0006-lg-laptop-Recognize-more-models.patch::https://github.com/archlinux/linux/commit/6f2e1bad3744f4af2f1280bafc9d8469125e18d3.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('66894c8d2001bccfbfc9d31d2f68fef64826c088676df94136a4dcf158962c146cc668490d342c2e8bf914903be69f5b4fbc1cd264b844a8d966059bf34fac6f'
+b2sums=('e487a060254abee0939ed4643db64dc7f2f7bf132946ee0e79ea25c2b0797665545c878b399a62d140472ea3bef416cff996ead417e09f955328db8113d85ccb'
         'SKIP'
-        '4b6759fae0abc440292b310aed12bd12bbfbc172f968572ee9b8a9164c844b3f2a12f81b1fdf5ed86d75403f0c5be5d57933292e22c2973ef14f481bf78a3f7e'
+        '28f0bb1cba1ce9b5c92e3a140b57789474cb3de3c9ae16d1fbdd96ec0cd43bfdbc3273890cf26329eddc0b6d07e56c4b0920418886480e70619f84b8a67e692d'
         '110a03b5658200f7414922cf4ed361b6127c08d99359111209c86d951907626c92ff1e50f6906a0f56534e24aa2f35520dae11fa0d148ade488b93a401cb706f'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        'aaf94a986d39e1c4fdda1367579b1533b99ae736f77769c6390d404693a7449b3756291d03740f53fff16c1662f885afd0b497d7d1f46d7baa6fc1cf63722890'
-        '90feb4dd723569e03c896c15de01e5d9e3907b1c6576a70c63489a4e2861563558b194618116bf7de4fa6e64a67613d99de4f28db064987eab7076973c81086c'
-        'fb161996db076583e176dbd6c7f77fdaa8b5ac28d1520299a4953f757688a51496de45b43ed43edbb3db6169e0d9c1a662e318bbea66a70456ab0403603e88b3'
-        '3ce8f40c3067681a048891497d7add637777e9b5cadb66b9fba0935ec8aa2946d97d293bede895e0565090e8b0749bf675016ca31bde2ad026d9ff904a6ab773'
-        '91022cd9b52d339d78aaf4d010fb2df29ca1e72dd34327d98aaf0d2566f8c96048f41943cfcbbef5cb8f587ec4fcc30b11a91323330179be9627d3ad5741bd6c'
-        '215fb65c1827f100f42dc64b1db542fbbf1319039525b6258ae22f89b4cbdf7df6fa2240421e8ba11e63a64ce3b3eee38f5636e83a3a01bdf3a30b301aa48965')
+        '44b020666daef3a801199baa2587e956a77b7ed6e9c26768b685774a24307e50e961777e4b7b7c811e068218ce5ec107cea67e979c4ebdb237302e20aff80d8e'
+        '6a7bf29d647ec2d91860e29082eb2944959903e605a1f6865e8870f57f0f1a76b569d885ecda4f0be86819b9c9a256098596fb3b75629a0653eba9d91c085283'
+        '412d37210c6ddae2458bda9caaaa7b1abd445b63fe0f05a4864da6ce3a093ba229cb233894d615baf7caabe710c3e7b6cf87f7fdcd47c6f64a0c3099222f994d'
+        '8216e984df1a73f4df11562fdf194823008d0e5eb95dee40a804ff2b022b730d84d08d420a2d22005cfa6ef074a4bc180d85c074c46e9d47853c7995ac0211e9'
+        'c013eed350d173f39674475b7f5f23eefda3132bc22295c4ba40347fccbe1e674dd32e53d7b39cfe432b8ca6a61eee41a6ce7be1b60afc8e14d3a8080d765237'
+        '217723c8f22cc4f4d3806ccdad4abf1ec725e6c28642188d7866b4ac57af441b68504bf7c08f494e044c47c8ea0f49eaed94002a7f1d3f32a7d42e46af585032')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
