@@ -28,6 +28,9 @@ package() {
     cd "$srcdir/application"
     install -dm755 "$pkgdir/opt/Netflix"
     cp -r ./ "$pkgdir/opt/Netflix"
+    mkdir "$pkgdir/usr"
+    mkdir "$pkgdir/usr/share"
+    mkdir "$pkgdir/usr/share/pixmaps"
     cp -r netflix.svg "$pkgdir/usr/share/pixmaps"
 
     # Link to binary
