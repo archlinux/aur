@@ -1,20 +1,20 @@
 pkgbase = aliyundrive-wine
 	pkgdesc = Wine 阿里云盘
-	pkgver = 2.2.4
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = https://www.aliyundrive.com
 	install = aliyundrive-wine.install
 	arch = any
 	license = unknow
 	depends = wine
-	depends = wqy-zenhei
+	depends = wqy-microhei
 	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
 	provides = aliyundrive-wine
 	conflicts = aliyundrive-wine
 	options = !strip
-	source = aDrive.exe::https://yunpan.aliyun.com/downloads/apps/desktop/aDrive.exe
+	source = aDrive-2.2.8.exe::https://yunpan.aliyun.com/downloads/apps/desktop/aDrive.exe
 	source = aliyundrive-wine.install
-	sha256sums = d325f74bee6fbcd4277b619147ea978bb50cf137939115515a788dd3447b31fd
+	sha256sums = 5ac6ec57ede7c4b31aaeb4b193507f95cd3f6ac8bc51b78b9140aa4fd42dcb14
 	sha256sums = f5674719ec03e4f2d701241338f967d740b31f5c0173ba85882c3f1342350d63
 
 pkgname = aliyundrive-wine

@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aliyundrive-wine
-pkgver=2.2.4
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="Wine 阿里云盘"
 arch=('any')
@@ -10,21 +10,21 @@ license=('unknow')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=('wine' 'wqy-zenhei')
+depends=('wine' 'wqy-microhei')
 makedepends=()
 optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
 backup=()
 options=('!strip')
 install=${pkgname}.install
-source=("aDrive.exe::https://yunpan.aliyun.com/downloads/apps/desktop/aDrive.exe"
+source=("aDrive-${pkgver}.exe::https://yunpan.aliyun.com/downloads/apps/desktop/aDrive.exe"
         "${pkgname}.install")
-sha256sums=('d325f74bee6fbcd4277b619147ea978bb50cf137939115515a788dd3447b31fd'
+sha256sums=('5ac6ec57ede7c4b31aaeb4b193507f95cd3f6ac8bc51b78b9140aa4fd42dcb14'
             'f5674719ec03e4f2d701241338f967d740b31f5c0173ba85882c3f1342350d63')
 noextract=()
 
 prepare() {
 
-    _ftname="wqy-zenhei.ttc"
+    _ftname="wqy-microhei.ttc"
     install -Dm0644 /dev/stdin "${srcdir}/regpatch.reg" << EOF
 REGEDIT4
 
@@ -114,7 +114,7 @@ package() {
     install -dm0755 "${pkgdir}/${_aliyun}" \
                     "${pkgdir}/usr/share/pixmaps"
 
-    cp -rv "${srcdir}/${_drive}.exe" "${pkgdir}/${_aliyun}/${_drive}.exe"
+    cp -rv "${srcdir}/${_drive}-${pkgver}.exe" "${pkgdir}/${_aliyun}/${_drive}.exe"
     cp -r "${srcdir}/regpatch.reg" "${pkgdir}/${_aliyun}/regpatch.reg"
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
