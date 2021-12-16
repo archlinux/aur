@@ -1,7 +1,7 @@
 pkgbase = hyphen-ru
 	pkgdesc = Russian hyphenation rules
 	pkgver = 20210727
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LibreOffice/dictionaries/tree/master/ru_RU
 	arch = any
 	license = custom

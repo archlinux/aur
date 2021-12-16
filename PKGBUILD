@@ -2,7 +2,7 @@
 pkgname=hyphen-ru
 pkgver=20210727
 _commit=30dd499
-pkgrel=1
+pkgrel=2
 pkgdesc="Russian hyphenation rules"
 arch=('any')
 url='https://github.com/LibreOffice/dictionaries/tree/master/ru_RU'
@@ -15,9 +15,9 @@ sha256sums=('e9a6ae92765fc7e63d879f2ccf3f50f2b95bc8ed7618a6f31c34ce7d39844c83'
 
 package() {
   cd "$srcdir"
-  install -Dm644 "${pkgname}-README.txt" "${pkgdir}/usr/share/licenses/${pkgname}/README.txt"
+  install -Dm644 "${pkgname}-${_commit}-README.txt" "${pkgdir}/usr/share/licenses/${pkgname}/README.txt"
   install -dm755 "${pkgdir}/usr/share/hyphen"
   install -dm755 "${pkgdir}/usr/share/myspell/dicts"
-  install -Dm644 "${pkgname}.dic" "${pkgdir}/usr/share/hyphen/hyph_ru_RU.dic"
+  install -Dm644 "${pkgname}-${_commit}.dic" "${pkgdir}/usr/share/hyphen/hyph_ru_RU.dic"
   ln -sT "/usr/share/hyphen/hyph_ru_RU.dic" "${pkgdir}/usr/share/myspell/dicts/hyph_ru_RU.dic"
 }
