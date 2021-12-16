@@ -41,11 +41,11 @@ package() {
     install -Dm644 "assets/worm.desktop" "$pkgdir/usr/share/xsessions/worm.desktop"
     
     # docs
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "docs/wormc.md" "$pkgdir/usr/share/doc/$pkgname/WORMC.md"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgbase/README.md"
+    install -Dm644 "docs/wormc.md" "$pkgdir/usr/share/doc/$_pkgbase/WORMC.md"
     
     # examples
-    install -Dm755 "examples/rc" "$pkgdir/usr/share/doc/$pkgname/examples/rc"
-    install -Dm644 "examples/sxhkdrc" "$pkgdir/usr/share/doc/$pkgname/examples/sxhkdrc"
-    install -Dm755 "examples/jgmenu_run" "$pkgdir/usr/share/doc/$pkgname/examples/jgmenu_run"
+    install -Dm755 "examples/rc" "$pkgdir/usr/share/doc/$_pkgbase/examples/rc"
+    install -Dm644 "examples/sxhkdrc" "$pkgdir/usr/share/doc/$_pkgbase/examples/sxhkdrc"
+    install -Dm755 "examples/jgmenu_run" "$pkgdir/usr/share/doc/$_pkgbase/examples/jgmenu_run"
 }
