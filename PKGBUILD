@@ -4,8 +4,8 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.56
-pkgrel=3
+pkgver=2.1.57
+pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
 url='https://github.com/pantsbuild/pex'
