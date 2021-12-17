@@ -20,7 +20,7 @@
 
 _basename=czkawka
 pkgname=${_basename}-git
-pkgver=3.1.0.r7.g2cc4ae3
+pkgver=3.3.1.r35.g859e01b
 pkgrel=1
 pkgdesc="Multi functional app to find duplicates, empty folders etc."
 arch=(any)
@@ -57,5 +57,5 @@ package() {
 	ln -s $pkgdir/usr/bin/${_basename}_gui $pkgdir/usr/bin/${_basename}
 
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${_basename}/LICENSE
-	install -Dm644 pkgs/com.github.qarmin.czkawka.desktop -t $pkgdir/usr/share/applications/
+	install -Dm644 data/com.github.qarmin.czkawka.desktop -t $pkgdir/usr/share/applications/
 }
