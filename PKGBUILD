@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 
 pkgname=rash
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=4
 pkgdesc="Declarative shell scripting using Rust native bindings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ build() {
     cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
