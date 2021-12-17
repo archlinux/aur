@@ -1,13 +1,13 @@
 pkgbase = python-pacopy
 	pkgdesc = Numerical parameter continuation in Python
-	pkgver = 0.1.6
-	pkgrel = 2
+	pkgver = 0.1.7
+	pkgrel = 1
 	url = https://github.com/nschloe/pacopy
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/p/pacopy/pacopy-0.1.6.tar.gz
-	sha512sums = 99b2ba6ecf1dee7806f4e7b3edffde766ddeb5508f41f39cea7779fbf0a3906437e650a361c82d9e4beeafede7c7bb1087da00a383847bb8a1d4aacf70632e05
+	source = https://github.com/nschloe/pacopy/archive/v0.1.7.tar.gz
+	sha512sums = e0bd26f05a97b1e2d113bdee508ca82d9624904e1d46555bf442748ccc2d294bc856f0d0b1489482dfd595658dfe17e7ae3b6a65dc816bbde061168ac9ee1b69
 
 pkgname = python-pacopy

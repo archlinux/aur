@@ -2,16 +2,16 @@
 _base=pacopy
 pkgname=python-${_base}
 pkgdesc="Numerical parameter continuation in Python"
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python)
 makedepends=(python-setuptools)
-# checkdepends=(python-pytest-codeblocks python-matplotlib python-cplot python-meshplex python-meshzoo python-scipy python-pyfvm python-pykry)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('99b2ba6ecf1dee7806f4e7b3edffde766ddeb5508f41f39cea7779fbf0a3906437e650a361c82d9e4beeafede7c7bb1087da00a383847bb8a1d4aacf70632e05')
+# checkdepends=(python-pytest-codeblocks python-cplot python-krylov python-meshzoo python-pyfvm python-h5py) # python-meshio>5.1.2
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('e0bd26f05a97b1e2d113bdee508ca82d9624904e1d46555bf442748ccc2d294bc856f0d0b1489482dfd595658dfe17e7ae3b6a65dc816bbde061168ac9ee1b69')
 
 build() {
   cd "${_base}-${pkgver}"
