@@ -1,29 +1,23 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-linearmodels'
 _module='linearmodels'
-pkgver=4.23
+pkgver='4.25'
 pkgrel=1
 pkgdesc="Linear models in Python."
 url="https://bashtage.github.io/linearmodels/doc"
-depends=('python-pyhdfe'
+depends=('python-formulaic'
     'python-numpy'
     'python-pandas'
-    'python-patsy'
-    'python-scipy')
+    'python-property-cached'
+    'python-scipy'
+    'python-statsmodels')
 checkdepends=('python-mypy_extensions' 'python-pytest' 'python-xarray')
 optdepends=('python-xarray')
 makedepends=('cython' 'python-setuptools')
 license=('custom:University of Illinois/NCSA Open Source License')
 arch=('x86_64')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bashtage/linearmodels/archive/refs/tags/v${pkgver}.tar.gz"
-    "https://patch-diff.githubusercontent.com/raw/bashtage/linearmodels/pull/336.patch")
-sha256sums=('74e7e131b22e8817efe35b04d3d4193262ed4c17e3d2aefafc4209c69288d823'
-            '3e3c40a8cf95e5ec22b46758f9799a010e88f7fc124e916fbce689afb6258acd')
-
-prepare() {
-    cd "${_module}-${pkgver}"
-    patch -p1 -i ../336.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bashtage/linearmodels/archive/v${pkgver}.tar.gz")
+sha256sums=('7c79b5c941ce6a6bd2e9e58edb3fb0c36aeaedf61c955583345ca0ace66c359e')
 
 build() {
     cd "${_module}-${pkgver}"
