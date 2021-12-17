@@ -1,7 +1,7 @@
 pkgbase = python-keepkey
 	pkgdesc = Python library for communicating with KeepKey Hardware Wallet
-	pkgver = 6.6.0
-	pkgrel = 2
+	pkgver = 7.2.1
+	pkgrel = 1
 	url = https://github.com/keepkey/python-keepkey
 	arch = any
 	license = LGPL3
@@ -15,7 +15,7 @@ pkgbase = python-keepkey
 	provides = keepkeyctl
 	provides = python-keepkey
 	conflicts = keepkeyctl
-	source = https://github.com/keepkey/python-keepkey/releases/download/v6.6.0/keepkey-6.6.0.tar.gz
+	source = https://github.com/keepkey/python-keepkey/archive/refs/tags/v7.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-keepkey
