@@ -52,6 +52,13 @@ LTO="YES"         # Enable link-time optimization. Still experimental.
 
 MOLD="MOLD"       # Use the mold linker.
 
+JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
+                  # This compiles only performance critical elisp files.
+                  #
+                  # To compile all elisp on demand, add
+                  #    (setq comp-deferred-compilation t)
+                  # to your .emacs file.
+
 AOT="YES"         # Precompile all included elisp. It takes a long time.
                   # You still need to enable on-demand compilation
                   # for your own packages.
@@ -83,8 +90,6 @@ DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
                
 NOGZ="YES"        # Don't compress .el files.
-
-JIT="YES"         # Enable JIT compilation.
 ################################################################################
 
 ################################################################################
@@ -265,7 +270,7 @@ build() {
 # Good luck!
    --without-gconf
    --without-gsettings
-# Pure gtk, which will enable wayland support.
+# Pure gtk, which will enable Wayland support.
    --with-pgtk
   )
 
