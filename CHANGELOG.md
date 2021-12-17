@@ -1,10 +1,23 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.7.3] - 2021-12-12
+### Fixed
+- textDocument/completion
+  - fix error returned when computing completion items at the end of a COPY instruction with flags ([#258](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/258))
+  - fix error returned when computing completion items at the end of a ADD instruction with flags ([#259](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/259))
+- textDocument/formatting
+  - ignore heredoc content when formatting ([rcjsuen/dockerfile-utils#105](https://github.com/rcjsuen/dockerfile-utils/issues/105))
+- textDocument/onTypeFormatting
+  - ignore heredoc content when formatting ([rcjsuen/dockerfile-utils#105](https://github.com/rcjsuen/dockerfile-utils/issues/105))
+- textDocument/rangeFormatting
+  - ignore heredoc content when formatting ([rcjsuen/dockerfile-utils#105](https://github.com/rcjsuen/dockerfile-utils/issues/105))
+
 ## [0.7.2] - 2021-10-20
 ### Fixed
-- prevent infinite loop when calculating semantic tokens if an escape character is not followed by any actual content ([rcjsuen/dockerfile-language-service#95](https://github.com/rcjsuen/dockerfile-language-service/issues/95))
-- prevent infinite loop when calculating semantic tokens if an escape character is embedded within a variable ([rcjsuen/dockerfile-language-service#96](https://github.com/rcjsuen/dockerfile-language-service/issues/96))
+- textDocument/semanticTokens/full
+  - prevent infinite loop when calculating semantic tokens if an escape character is not followed by any actual content ([rcjsuen/dockerfile-language-service#95](https://github.com/rcjsuen/dockerfile-language-service/issues/95))
+  - prevent infinite loop when calculating semantic tokens if an escape character is embedded within a variable ([rcjsuen/dockerfile-language-service#96](https://github.com/rcjsuen/dockerfile-language-service/issues/96))
 
 ## [0.7.1] - 2021-09-21
 ### Fixed
@@ -644,7 +657,8 @@ All notable changes to this project will be documented in this file.
 - textDocument/formatting
 - textDocument/rangeFormatting
 
-[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.2...HEAD
+[Unreleased]: https://github.com/rcjsuen/dockerfile-utils/compare/v0.7.3...HEAD
+[0.7.3]: https://github.com/rcjsuen/dockerfile-utils/compare/v0.7.2...v0.7.3
 [0.7.2]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.6.0...v0.7.0

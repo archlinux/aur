@@ -1,6 +1,6 @@
 pkgbase = dockerfile-language-server
 	pkgdesc = Language server for Dockerfiles
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/rcjsuen/dockerfile-language-server-nodejs
 	changelog = CHANGELOG.md
@@ -10,8 +10,8 @@ pkgbase = dockerfile-language-server
 	depends = nodejs
 	replaces = dockerfile-language-server-bin
 	replaces = nodejs-dockerfile-language-server-nodejs
-	noextract = dockerfile-language-server-0.7.2.tgz
-	source = dockerfile-language-server-0.7.2.tgz::https://registry.npmjs.org/dockerfile-language-server-nodejs/-/dockerfile-language-server-nodejs-0.7.2.tgz
-	sha256sums = 4318de559b9dedd40f1dc6e181f59bd10a3c4a37a84e0260f14fa340aa3b0952
+	noextract = dockerfile-language-server-0.7.3.tgz
+	source = dockerfile-language-server-0.7.3.tgz::https://registry.npmjs.org/dockerfile-language-server-nodejs/-/dockerfile-language-server-nodejs-0.7.3.tgz
+	sha256sums = 66235a848feeee20e7e9e391e749f3ef38d0b12ef3f7c046ccdb73d664e5d9e2
 
 pkgname = dockerfile-language-server
