@@ -11,7 +11,7 @@ url='https://github.com/zebradil/pdfrrr'
 license=('MIT')
 
 source=(pdfrrr)
-sha256sums=('4e65f313bd2a9b0e22c6215b8757661e0479a61acb8a31ba8a5c8a05ab6c29b3')
+sha256sums=('afdfadfc679efd4289f8f95cdb6b1d5250f3d4b6a5e2730159611c224d34b472')
 
 package() {
     install -Dm755 "${srcdir}/pdfrrr" "${pkgdir}/usr/bin/pdfrrr"

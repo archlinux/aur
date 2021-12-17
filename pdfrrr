@@ -4,9 +4,14 @@ set -eou pipefail
 
 readonly PDF_FILE="${1?Specify PDF file}"
 
-if ! command -v sed &>/dev/null; then
-  echo "sed command not found"
+if [[ ! -f "${PDF_FILE}" ]]; then
+  echo "File not found: ${PDF_FILE}"
   exit 1
+fi
+
+if ! command -v sed &>/dev/null; then
+    echo "sed command not found"
+    exit 1
 fi
 
 if ! command -v tesseract >/dev/null 2>&1; then
