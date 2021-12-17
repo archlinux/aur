@@ -54,7 +54,7 @@ optdepends=(
   "python: Python scripting"
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
-  "decklink: Blackmagic Design DeckLink support"
+  #"libajantv2: AJA NTV 2 support"
 )
 provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
 conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
@@ -72,6 +72,10 @@ sha256sums=(
   "SKIP"
   "SKIP"
 )
+
+if [[ $CARCH == 'x86_64' ]]; then
+ optdepends+=("decklink: Blackmagic Design DeckLink support")
+fi
 
 prepare() {
   cd "$srcdir/obs-studio"
