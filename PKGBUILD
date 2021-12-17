@@ -110,7 +110,6 @@ build() {
         -DPLUGIN_STANDARD_QJSONRPC=ON
         -DPLUGIN_STANDARD_QMPLANE=ON
         -DEIGEN_ROOT_DIR=/usr/include/eigen3
-        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ # using clang, which is needed to compile with cgal
         
         
   )
