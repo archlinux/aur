@@ -4,7 +4,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=6.1.4.r32.gf76cf2be
+pkgver=6.1.5.r224.gffb9a463
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)

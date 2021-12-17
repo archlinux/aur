@@ -1,6 +1,6 @@
 pkgbase = easyeffects-git
 	pkgdesc = Audio Effects for Pipewire applications
-	pkgver = 6.1.4.r32.gf76cf2be
+	pkgver = 6.1.5.r224.gffb9a463
 	pkgrel = 1
 	url = https://github.com/wwmm/easyeffects
 	arch = x86_64
