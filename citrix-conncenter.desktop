@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Name=Citrix Connection Centre
+Name=Citrix Connection Center
 NoDisplay=false
 Categories=Application;Network;X-Red-Hat-Base;X-SuSE-Core-Internet;
 Icon=/opt/Citrix/ICAClient/icons/manager.png

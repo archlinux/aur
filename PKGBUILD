@@ -7,7 +7,7 @@
 
 pkgname=icaclient
 pkgver=21.12.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
@@ -26,16 +26,21 @@ _dl_urls="$(echo "$_dl_urls_" | grep -F "$pkgver.tar.gz?__gda__")"
 _source32=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
 _source64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
 _sourcearmhf=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
-source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh')
+source=('citrix-configmgr.desktop'
+        'citrix-conncenter.desktop'
+        'citrix-wfica.desktop'
+        'citrix-workspace.desktop'
+        'wfica.sh'
+        'wfica_assoc.sh')
 source_x86_64=("$pkgname-x64-$pkgver.tar.gz::$_source64")
 source_i686=("$pkgname-x86-$pkgver.tar.gz::$_source32")
 source_armv7h=("$pkgname-armhf-$pkgver.tar.gz::$_sourcearmhf")
 sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
-            'cf9aed0c471658665fdc8bc3b8e7583d78834ecb5066d1c287bbcf890d5d14b9'
-            'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
+            '446bfe50e5e1cb027415b264a090cede1468dfbdc8b55e5ce14e9289b6134119'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
-            'a3da4a2cdc6f8ef7f3f26fe3344f7e6b6ee5cbe1cded77aadd616adc7771adb8'
-            'a5b03c48f359cdb3667ca0721c6b4091b97300605d5c9ca959ce072580483c81')
+            'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
+            'fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f'
+            'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4')
 sha256sums_x86_64=('de81deab648e1ebe0ddb12aa9591c8014d7fad4eba0db768f25eb156330bb34d')
 sha256sums_i686=('3746cdbe26727f7f6fb85fbe5f3e6df0322d79bb66e3a70158b22cb4f6b6b292')
 sha256sums_armv7h=('3ca3572c1ebe10c926985e4d24ae804905c17b859d0b5f135bc3bd62824c4a19')
@@ -67,25 +72,14 @@ package() {
             PrimaryAuthManager ServiceRecord selfservice UtilDaemon wfica
 
     # copy directories
-    cp -r ./config/ "${pkgdir}$ICAROOT"
-    cp -r ./gtk/ "${pkgdir}$ICAROOT"
-    cp -r ./help/ "${pkgdir}$ICAROOT"
-    cp -r ./keyboard/ "${pkgdir}$ICAROOT"
-    cp -r ./keystore/ "${pkgdir}$ICAROOT"
-    cp -r ./lib/ "${pkgdir}$ICAROOT"
-    cp -r ./icons/ "${pkgdir}$ICAROOT"
-    cp -r ./nls/ "${pkgdir}$ICAROOT"
-    cp -r ./site/ "${pkgdir}$ICAROOT"
-    cp -r ./usb/ "${pkgdir}$ICAROOT"
-    cp -r ./util/ "${pkgdir}$ICAROOT"
+    cp -rt "${pkgdir}$ICAROOT" config gtk help icons keyboard keystore lib nls site usb util
     # fix permissions
     chmod -R a+r "${pkgdir}$ICAROOT"
 
     rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
 
     # Install License
-    install -m644 -D nls/en.UTF-8/eula.txt \
-            "${pkgdir}$ICAROOT/eula.txt"
+    install -m644 -D -t "${pkgdir}$ICAROOT" nls/en.UTF-8/eula.txt
 
     # Install Version
     install -m644 -D "${srcdir}/PkgId" "${pkgdir}$ICAROOT/pkginf/$PKGINF"
@@ -93,28 +87,17 @@ package() {
     # create /config/.server to enable user customization using ~/.ICACLient/ overrides. Thanks Tomek
     touch "${pkgdir}$ICAROOT/config/.server"
 
-    # Extract system ca-certificates and install in the Citrix cacerts directory
-    #cp /etc/ca-certificates/extracted/tls-ca-bundle.pem "${pkgdir}$ICAROOT/keystore/cacerts/"
-    #cd "${pkgdir}$ICAROOT/keystore/cacerts/"
-    #awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < tls-ca-bundle.pem
-
-    # The following 32-bit library causes false namcap errors
-    # rm util/libgstflatstm.32.so
-
     # Install wrapper script
     install -m755 "${srcdir}/wfica.sh" "${pkgdir}$ICAROOT/wfica.sh"
 
     ln -s gst_play1.0 "${pkgdir}/$ICAROOT/util/gst_play"
     ln -s gst_read1.0 "${pkgdir}/$ICAROOT/util/gst_read"
-    #mkdir -p "${pkgdir}/usr/lib/gstreamer-1.0"
-    #ln -s "$ICAROOT/util/libgstflatstm1.0.so" "${pkgdir}/usr/lib/gstreamer-1.0/libgstflatstm.so"
+
     # Dirty Hack
     # wfica expects {module,wfclient,apssrv}.ini in $ICAROOT/config
     # sadly these configs differ slightly by locale
     lang=${LANG%%_*}
-    if [[ ! -d "${pkgdir}/$ICAROOT/nls/$lang" ]]; then
-        lang='en'
-    fi
+    [[ -d "${pkgdir}/$ICAROOT/nls/$lang" ]] || lang='en'
     cp "${pkgdir}$ICAROOT/nls/$lang/module.ini" "${pkgdir}/$ICAROOT/config/"
     cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
     cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
@@ -122,22 +105,12 @@ package() {
     sed -i 's/Ceip=Enable/Ceip=Disable/g' "${pkgdir}$ICAROOT/config/module.ini"
     cd "${srcdir}"
     # install freedesktop.org files
-    install -Dm644 wfica.desktop "${pkgdir}/usr/share/applications/wfica.desktop"
-    install -Dm644 conncenter.desktop "${pkgdir}/usr/share/applications/conncentre.desktop"
-    install -Dm644 configmgr.desktop "${pkgdir}/usr/share/applications/configmgr.desktop"
-    install -Dm644 selfservice.desktop "${pkgdir}/usr/share/applications/wfcmgr.desktop"
+    install -Dm644 -t "$pkgdir"/usr/share/applications citrix-{configmgr,conncenter,workspace,wfica}.desktop
     # install scripts
-    install -Dm755 wfica.sh "${pkgdir}$ICAROOT"
-    install -Dm755 wfica_assoc.sh "${pkgdir}$ICAROOT"
-    chmod +x "${pkgdir}$ICAROOT/util/HdxRtcEngine"
-    chmod +x "${pkgdir}$ICAROOT/util/ctx_app_bind"
-    chmod +x "${pkgdir}$ICAROOT/util/ctxlogd"
-    chmod +x "${pkgdir}$ICAROOT/util/icalicense.sh"
-    chmod +x "${pkgdir}$ICAROOT/util/setlog"
+    install -Dm755 -t "${pkgdir}$ICAROOT" wfica.sh wfica_assoc.sh
+    chmod +x "${pkgdir}$ICAROOT"/util/{HdxRtcEngine,ctx_app_bind,ctxlogd,icalicense.sh,setlog}
 
     # make certificates available
     rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
     ln -s /etc/ssl/certs "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
-    #ln -s /usr/share/ca-certificates/trust-source/* "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
-    #c_rehash "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
 }
