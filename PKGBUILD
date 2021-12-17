@@ -7,62 +7,67 @@ pkgdesc="Free and open source software for video recording and live streaming. W
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
-depends=("ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
-         "pciutils"
+depends=(
+  "ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
+  "pciutils"
 
-         # "libxinerama" "qt5-svg" provided by "vlc-luajit"
-         # "libxkbcommon-x11" provided by "qt5-base"
-         # "jansson" "curl" provided by "ftl-sdk"
+  # "libxinerama" "qt5-svg" provided by "vlc-luajit"
+  # "libxkbcommon-x11" provided by "qt5-base"
+  # "jansson" "curl" provided by "ftl-sdk"
 
-         # Needed to use Qt on Wayland platform
-         "qt5-wayland"
+  # Needed to use Qt on Wayland platform
+  "qt5-wayland"
 
-         # Both needed to load linux-capture, so those two are no longer optional
-         "libxcomposite" "pipewire"
+  # Both needed to load linux-capture, so those two are no longer optional
+  "libxcomposite" "pipewire"
 
-         # Needed to use PipeWire capture
-         "xdg-desktop-portal"
+  # Needed to use PipeWire capture
+  "xdg-desktop-portal"
 
-         # Needed by obs-browser
-         "libxss" "libxrandr" "nss" "at-spi2-atk"
+  # Needed by obs-browser
+  "libxss" "libxrandr" "nss" "at-spi2-atk"
          
-         # AUR Packages
-         "vlc-luajit" "ftl-sdk")
+  # AUR Packages
+  "vlc-luajit" "ftl-sdk"
+)
+## About vlc-luajit
 # The official VLC package will make OBS crash when a VLC source is used.
 # The issue is that VLC and OBS are compiled with different lua version.
 # So I also created vlc-luajit, a VLC package compiled with the same lua as OBS.
 # But to make people unable to install VLC official package with obs-studio-tytan652.
 # I decided to make vlc-luajit a dependency of OBS rather than an optional one.
-makedepends=("cmake" "git" "libfdk-aac" "swig" "luajit" "python"
-             "sndio"
-             # AUR Packages
-             "cef-minimal-obs=87.1.14")
+makedepends=(
+  "cmake" "git" "libfdk-aac" "swig" "luajit" "python"
+  "sndio"
+  # AUR Packages
+  "cef-minimal-obs=87.1.14"
+)
 optdepends=(
-            "libfdk-aac: FDK AAC codec support"
-            "intel-media-driver: Hardware encoding (>= Broadwell)"
-            "libva-intel-driver: Hardware encoding (<= Haswell)"
-            "libva-mesa-driver: Hardware encoding"
-            "swig: Scripting"
-            "luajit: Lua scripting"
-            "python: Python scripting"
-            "sndio: Sndio input client"
-            "v4l2loopback-dkms: Virtual camera output"
+  "libfdk-aac: FDK AAC codec support"
+  "intel-media-driver: Hardware encoding (>= Broadwell)"
+  "libva-intel-driver: Hardware encoding (<= Haswell)"
+  "libva-mesa-driver: Hardware encoding"
+  "swig: Scripting"
+  "luajit: Lua scripting"
+  "python: Python scripting"
+  "sndio: Sndio input client"
+  "v4l2loopback-dkms: Virtual camera output"
 )
 provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
 conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
 source=(
-        "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
-        "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
-        "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
-        "obs-browser::git+https://github.com/obsproject/obs-browser.git"
-        "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
+  "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
+  "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
+  "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
+  "obs-browser::git+https://github.com/obsproject/obs-browser.git"
+  "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
 sha256sums=(
-        "SKIP"
-        "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
-        "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
-        "SKIP"
-        "SKIP"
+  "SKIP"
+  "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
+  "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
+  "SKIP"
+  "SKIP"
 )
 
 prepare() {
@@ -124,5 +129,3 @@ package() {
 
   make install DESTDIR="$pkgdir"
 }
-
-# vim: ts=2:sw=2:expandtab
