@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=solo-python
 pkgver=0.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools and Python library for SoloKeys."
 arch=('any')
 url="https://github.com/solokeys/solo-python"
