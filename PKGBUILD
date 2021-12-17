@@ -1,6 +1,6 @@
 # Maintainer: Odin Vex <https://aur.archlinux.org/account/OdinVex/>
 pkgname=mint-artwork
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 epoch=0
 pkgdesc="Linux Mint Artwork and Resources."
@@ -11,7 +11,7 @@ groups=("cinnamon")
 depends=("hicolor-icon-theme" "lightdm-settings" "lightdm-slick-greeter" "mint-backgrounds" "mint-x-icons" "mint-y-icons" "mint-themes")
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=("mint-themes-legacy: Legacy Mint themes")
 provides=()
 conflicts=("lightdm-gtk-greeter" "lightdm-gtk-greeter-settings" "mint-sounds")
 replaces=()
@@ -22,7 +22,7 @@ changelog=CHANGELOG
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
 noextract=()
 noupgrade=()
-md5sums=('9010bf15c3d7fb1ce99a053129345f53')
+md5sums=('0deedc6871001bc31453bb1cee75c7bd')
 validpgpkeys=()
 
 package() {
