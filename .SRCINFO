@@ -41,6 +41,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = python: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: Virtual camera output
+	optdepends = decklink: Blackmagic Design DeckLink support
 	provides = obs-studio=27.1.3
 	provides = obs-browser
 	provides = obs-vst

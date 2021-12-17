@@ -52,6 +52,7 @@ optdepends=(
   "python: Python scripting"
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
+  "decklink: Blackmagic Design DeckLink support"
 )
 provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
 conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
