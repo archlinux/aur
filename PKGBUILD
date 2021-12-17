@@ -2,13 +2,13 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
 depends=(
-  "ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
+  "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
   "pciutils"
 
   # "libxinerama" "qt5-svg" provided by "vlc-luajit"
@@ -28,7 +28,7 @@ depends=(
   "libxss" "libxrandr" "nss" "at-spi2-atk"
          
   # AUR Packages
-  "vlc-luajit" "ftl-sdk"
+  "ffmpeg-obs" "vlc-luajit" "ftl-sdk"
 )
 ## About vlc-luajit
 # The official VLC package will make OBS crash when a VLC source is used.
@@ -36,6 +36,8 @@ depends=(
 # So I also created vlc-luajit, a VLC package compiled with the same lua as OBS.
 # But to make people unable to install VLC official package with obs-studio-tytan652.
 # I decided to make vlc-luajit a dependency of OBS rather than an optional one.
+## About ffmpeg-obs
+# Read ffmpeg-obs PKGBUILD for more info
 makedepends=(
   "cmake" "git" "libfdk-aac" "swig" "luajit" "python"
   "sndio"
