@@ -1,8 +1,8 @@
 pkgbase = webmacs-git
 	pkgdesc = browser for keyboard-based web navigation
-	pkgver = r791.35f1743
-	pkgrel = 5
-	url = https://github.com/parkouss/webmacs
+	pkgver = r793.f2e85c3
+	pkgrel = 1
+	url = https://github.com/akshaybadola/webmacs
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
@@ -15,10 +15,9 @@ pkgbase = webmacs-git
 	depends = python-jinja
 	depends = python-pyqt5-webengine
 	depends = python-importlib-metadata
-	source = git+https://github.com/parkouss/webmacs
-	source = minibuffer.patch
+	source = git+https://github.com/akshaybadola/webmacs
+	source = remove_nouveau_exception.patch
 	md5sums = SKIP
-	md5sums = 32db2257938f42f94ca0183e02410125
+	md5sums = 327e3e0d82d5cd2d644948ff0f55c700
 
 pkgname = webmacs-git
-

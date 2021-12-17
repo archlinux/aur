@@ -1,0 +1,22 @@
+diff --git a/webmacs/application.py b/webmacs/application.py
+index d83c9bc..b71d655 100644
+--- a/webmacs/application.py
++++ b/webmacs/application.py
+@@ -122,17 +122,5 @@ class Application(QApplication):
+         self.__class__.INSTANCE = self
+         self.instance_name = instance_name
+
+-        if (version.opengl_vendor() == 'nouveau' and
+-            not (os.environ.get('LIBGL_ALWAYS_SOFTWARE') == '1'
+-                 or 'QT_XCB_FORCE_SOFTWARE_OPENGL' in os.environ)):
+-            sys.exit(
+-                "You are using the nouveau graphics driver but it"
+-                " has issues with multithreaded opengl. You must"
+-                " use another driver or set the variable environment"
+-                " QT_XCB_FORCE_SOFTWARE_OPENGL to force software"
+-                " opengl. Note that it might be slow, depending"
+-                " on your hardware."
+-            )
+-
+         if version.is_mac:
+             self.setAttribute(Qt.AA_MacDontSwapCtrlAndMeta)

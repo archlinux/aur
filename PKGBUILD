@@ -1,19 +1,19 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=webmacs-git
-pkgver=r791.35f1743
-pkgrel=5
-_pythonver=3.9
+pkgver=r793.f2e85c3
+pkgrel=1
+_pythonver=3.10
 pkgdesc="browser for keyboard-based web navigation"
 arch=('x86_64')
-url="https://github.com/parkouss/webmacs"
+url="https://github.com/akshaybadola/webmacs"
 license=('GPL3')
 depends=('python-pyqt5' 'qt5-webengine' 'python-dateparser' 'python-dateutil' 'python-jinja'
 	 'python-pyqt5-webengine' 'python-importlib-metadata')
 makedepends=('python-setuptools' 'python-sphinx' 'git')
-source=("git+https://github.com/parkouss/webmacs" minibuffer.patch)
+source=("git+https://github.com/akshaybadola/webmacs" remove_nouveau_exception.patch)
 md5sums=('SKIP'
-         '32db2257938f42f94ca0183e02410125')
+         '327e3e0d82d5cd2d644948ff0f55c700')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -26,7 +26,7 @@ prepare() {
   git config submodule.vendor.url "$srcdir"/vendor
   git config submodule.c.url "$srcdir"/c
   git submodule update
-  git apply "$srcdir"/minibuffer.patch
+  git apply "$srcdir"/remove_nouveau_exception.patch
 }
 
 build() {
