@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=yoyo-leaf-git
-pkgver=r5.87bb693
+pkgver=r8.9cf58d1
 pkgrel=1
 pkgdesc='An awesome command-line fuzzy finder'
 arch=('x86_64')
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-    install -Dm 755 "${srcdir}/Yoyo-leaf/build/leaf" \
+    install -Dm 755 "${srcdir}/Yoyo-leaf/build/yy" \
         "${pkgdir}/usr/bin/yy"
 }
 
