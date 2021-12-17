@@ -1,0 +1,22 @@
+diff -rupN ipbt-20211203.104f822/unix/ipbt.c ipbt-20211203.104f822b/unix/ipbt.c
+--- ipbt-20211203.104f822/unix/ipbt.c	2021-12-02 21:10:03.000000000 -0500
++++ ipbt-20211203.104f822b/unix/ipbt.c	2021-12-16 21:27:08.242594118 -0500
+@@ -16,17 +16,7 @@
+ 
+ #define _XOPEN_SOURCE_EXTENDED
+ 
+-#if CURSES_HAVE_NCURSES_CURSES_H
+-#  include <ncursesw/curses.h>
+-#elif CURSES_HAVE_NCURSES_CURSES_H
+-#  include <ncurses/curses.h>
+-#elif CURSES_HAVE_NCURSES_H
+-#  include <ncurses.h>
+-#elif CURSES_HAVE_CURSES_H
+-#  include <curses.h>
+-#else
+-#  error "SysV or X/Open-compatible Curses header file required"
+-#endif
++#include <ncurses.h>
+ 
+ #include <sys/time.h>
+ #include <sys/types.h>

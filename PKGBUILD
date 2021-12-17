@@ -4,20 +4,26 @@
 # Contributor: Angus Gibson <darthshrine@gmail.com>
 
 pkgname=ipbt
-pkgver=20210215.5a9cb02
+pkgver=20211203.104f822
 pkgrel=1
 pkgdesc='A high-tech ttyrec player'
 arch=('x86_64')
-url="http://www.chiark.greenend.org.uk/~sgtatham/${pkgname}"
+url="https://www.chiark.greenend.org.uk/~sgtatham/${pkgname}"
 license=('MIT')
 depends=('ncurses' 'perl')
-source=("${url}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0aeafaacbccb89d2aaf044d6c6582c71cb66f607847854f2df514a21f6a5cb70')
+source=("${url}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.patch")
+sha256sums=('631ee26dce8d4906e52963bbd7b579c91e9902d0f28903d90415d20ea5b730ba'
+            '022f7ef69806ca76aec68e7336b4fcffc37184e101159bb14a124ba0e136cc63')
+
+prepare() {
+  patch -p0 -i ../${pkgname}.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  ./configure
+  cmake -DCMAKE_INSTALL_PREFIX=/usr . 
   make
 }
 
