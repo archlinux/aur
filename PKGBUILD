@@ -73,10 +73,13 @@ package() {
 
   install -D -m 644 /dev/stdin \
                     "$pkgdir"/etc/telnetd-ssl/README <<EOF
-The TLS certificate and private key must both be installed to:
-"/etc/telnetd-ssl/telnetd.pem"
+For the Telnet server, both the TLS certificate and private key (i.e.
+fullchain.pem + privkey.pem) must be concatenated to a single file and
+installed to:
 
-This file must be accessible by the '_telnet' user.
+    /etc/telnetd-ssl/telnetd.pem
+
+This file must be readable by the '_telnetd' user.
 EOF
 }
 
