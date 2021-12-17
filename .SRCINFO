@@ -1,0 +1,25 @@
+pkgbase = hse
+	pkgdesc = Heterogeneous-memory storage engine
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://hse-project.github.io/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	depends = cjson
+	depends = curl
+	depends = libbsd
+	depends = libmicrohttpd
+	depends = liburcu
+	depends = libyaml
+	depends = lz4
+	depends = mongo-c-driver
+	depends = pmdk
+	depends = xxhash
+	source = git+https://github.com/hse-project/hse.git#tag=r2.1.0
+	sha256sums = SKIP
+
+pkgname = hse
