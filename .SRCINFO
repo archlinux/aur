@@ -1,6 +1,6 @@
 pkgbase = libzbd
 	pkgdesc = Zoned block device manipulation library and tools
-	pkgver = 1.5.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/westerndigitalcorporation/libzbd
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libzbd
 	makedepends = autoconf-archive
 	depends = glibc
 	optdepends = gtk3
-	source = libzbd-1.5.0.tar.gz::https://github.com/westerndigitalcorporation/libzbd/archive/refs/tags/v1.5.0.tar.gz
-	md5sums = 205d4b893a76da5a6604ccb5f9afee46
+	source = libzbd-2.0.2.tar.gz::https://github.com/westerndigitalcorporation/libzbd/archive/refs/tags/v2.0.2.tar.gz
+	md5sums = d89bbd1b056a2fa4b5a92b2d9b904787
 
 pkgname = libzbd
