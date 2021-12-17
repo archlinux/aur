@@ -3,7 +3,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=rccl
-pkgver=4.5.0
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('hip' 'rocm-smi-lib64')
 makedepends=('cmake' 'python' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f806f9f65c490abddc562cb4812e12701582bbb449e41cc4797d00e0dedf084e')
+sha256sums=('36de0d3f3ffad491758d89c208ef72c5be5e0db766053a9c766e9c5c6a33a487')
 _dirname="$(basename $url)-$(basename ${source[0]} .tar.gz)"
 
 build() {
