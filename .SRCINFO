@@ -1,0 +1,18 @@
+pkgbase = kwin-effects-blur-respect-rounded-decorations-git
+	pkgdesc = A fork of the kwin blur effect that solves the corners bug.
+	pkgver = r13.ab7cd99
+	pkgrel = 1
+	url = https://github.com/Alban-Boissard/kwin-effects-blur-respect-rounded-decorations
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = extra-cmake-modules
+	makedepends = kwin
+	source = kwin-effects-blur-respect-rounded-decorations-git::git+https://github.com/Alban-Boissard/kwin-effects-blur-respect-rounded-decorations.git
+	sha512sums = SKIP
+
+pkgname = kwin-effects-blur-respect-rounded-decorations-git
