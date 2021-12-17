@@ -4,27 +4,24 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 pkgname='ferdi'
-pkgver='5.6.3'
-_recipescommit='1e2a7c3ba221baa1bca04db8f9231a3a9d35e1a7'
-pkgrel='2'
+pkgver='5.6.4'
+_recipescommit='be4c5abcae4ef3d49bec8dba632381989af05311'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
 _electronpkg='electron15'
 depends=("$_electronpkg" 'libxkbfile')
-makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.1.0' 'pnpm' 'python')
+# We're depending on node v16 until https://github.com/nodejs/node-gyp/issues/2534 is fixed
+makedepends=('git' 'nodejs-lts-gallium' 'npm>=8.1.0' 'pnpm' 'python')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
-	"$pkgname-$pkgver-$pkgrel-fix-tray-icon-1.diff::https://github.com/get$pkgname/$pkgname/pull/2189.diff"
-	"$pkgname-$pkgver-$pkgrel-fix-tray-icon-2.diff::https://github.com/get$pkgname/$pkgname/pull/2234.diff"
 	'fix-autostart-path.diff'
 )
-sha512sums=('59336276878c51e4e96a50416ccc2cd9fb0dc783fbb0c1f24a3461dfae54f77d0fdb4c3f776e6318956d7f15ad467b6f87055d3e9d0a825d211319e213944be7'
-            '00b77d6828f93922e057a9c22d08535af9566a50c73180cae7ec698ec0a4998f2c395c0bfc971cc2a1a1c4927a234d09ebf3a1c4cf73010e6b41dbd97f2d1153'
-            '183231860430486f7403db50c57e906cee22460ec6538bc2ac3cbebacbcf9c6c8b884b3a714db565b64c35e2020aba28904401ce36edf2cc54aa31c59142615b'
-            '87d9accbda59107c3171f978d68b140a4cb35c1ee7ab9d4b1e67e570e7f38d98d7e2b99baa9c7bc84a0fd8ea2ded05f709b16e015a35655af417826db2162834'
+sha512sums=('2184d26e6c8ff9a4cd270617776c1328fcb2830fbd0c957de45c1b9936f8c5ac84875432eb14fba4832e929fb3d8802a63b8e01401d49e74bf68829ce547e10f'
+            'f5eacbf1ec637469d0b69c8a46ba9398755dd21987637525dbe902b312043830621956cf1a274549f2d0fd2ac564c91446f585f6414b0a8e5cd22a387301c1db'
             '5263a9e1f4f9e4435f857181e67eb6b3ed254a18371ab5430bdf614821831aea2474f385b3860e783119fed5eb0c5f0cc94c74b1510e2ae29da524cd0d77fee3')
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -59,10 +56,6 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
-
-	# Fix tray icon not opening the Ferdi window when clicked
-	patch --forward -p1 < "../$pkgname-$pkgver-$pkgrel-fix-tray-icon-1.diff"
-	patch --forward -p1 < "../$pkgname-$pkgver-$pkgrel-fix-tray-icon-2.diff"
 
 	# Prepare recipes
 	cd "$srcdir/$_sourcedirectory/recipes/"
