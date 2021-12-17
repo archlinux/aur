@@ -1,7 +1,7 @@
 pkgbase = evaltool
 	pkgdesc = Explore and test functionality of the Inertial Sense products in real-time
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.inertialsense.com/user-manual/software/evaltool/
 	arch = x86_64
 	license = MIT
