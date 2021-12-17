@@ -1,11 +1,12 @@
 pkgbase = python-shortuuid
 	pkgdesc = library that generates concise, unambiguous, URL-safe UUIDs
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skorokithakis/shortuuid
 	arch = any
 	license = BSD
 	checkdepends = python-django
+	makedepends = python-dephell
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
