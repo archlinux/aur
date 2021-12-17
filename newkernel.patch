@@ -1,0 +1,15 @@
+diff --git a/ntpclient.c b/ntpclient.c
+index fb89ffe..ce818fc 100644
+--- a/ntpclient.c
++++ b/ntpclient.c
+@@ -251,8 +251,8 @@ static void get_packet_timestamp(int usd, struct ntptime *udp_arrival_ntp)
+ {
+ #ifdef PRECISION_SIOCGSTAMP
+ 	struct timeval udp_arrival;
+-	if ( ioctl(usd, SIOCGSTAMP, &udp_arrival) < 0 ) {
+-		perror("ioctl-SIOCGSTAMP");
++	if ( ioctl(usd, SIOCGSTAMP_OLD, &udp_arrival) < 0 ) {
++		perror("ioctl-SIOCGSTAMP_OLD");
+ 		ntpc_gettime(&udp_arrival_ntp->coarse, &udp_arrival_ntp->fine);
+ 	} else {
+ 		udp_arrival_ntp->coarse = udp_arrival.tv_sec + JAN_1970;

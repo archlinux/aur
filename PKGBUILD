@@ -8,8 +8,15 @@ url='http://doolittle.icarus.com/ntpclient/'
 arch=(x86_64 i686)
 depends=(glibc)
 license=(GPL2)
-source=(http://doolittle.icarus.com/ntpclient/ntpclient_${pkgver/./_}.tar.gz)
-sha1sums=('7513df5b5b64797c5fac27d7c1161f53a4675b26')
+source=(http://doolittle.icarus.com/ntpclient/ntpclient_${pkgver/./_}.tar.gz
+        newkernel.patch)
+sha1sums=('7513df5b5b64797c5fac27d7c1161f53a4675b26'
+          '169d1938f31247d869cd09c42e50a2ffcca9ef7a')
+
+prepare() {
+  cd ntpclient-${pkgver%.*}
+  patch < ../newkernel.patch
+}
 
 build() {
   cd ntpclient-${pkgver%.*}
