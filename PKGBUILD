@@ -2,13 +2,13 @@
 
 _pkgname=pyVHDLModel
 pkgname=python-pyvhdlmodel-git
-pkgver=0.8.0.r4.g353b307
+pkgver=0.14.1.r0.gc6fe167
 pkgrel=1
 pkgdesc="An abstract VHDL language model written in Python"
 arch=(any)
 url="https://github.com/VHDL/pyVHDLModel"
 license=('Apache')
-depends=('python' 'python-pydecor')
+depends=('python' 'python-pytooling')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=("${pkgname%%-git}=$pkgver")
