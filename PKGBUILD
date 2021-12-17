@@ -60,7 +60,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib
         -DCMAKE_BUILD_TYPE=Release
         -DCCCORELIB_USE_CGAL=ON
-        -DCCCORELIB_USE_TBB=ON
+        -DCCCORELIB_USE_TBB=OFF
         -DPOISSON_RECON_WITH_OPEN_MP:BOOL=ON
         -DPLUGIN_EXAMPLE_GL:BOOL=OFF # no need to bundle examples
         -DPLUGIN_EXAMPLE_IO:BOOL=OFF
