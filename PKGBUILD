@@ -73,7 +73,7 @@ sha256sums=(
   "SKIP"
 )
 
-if [[ $CARCH == 'x86_64' ]]; then
+if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
  optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
 
