@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: GhibranAljabbar <ghibranresearch@gmail.com>
+# Maintainer: GhibranAljabbar <ghibranaljaur@gmail.com>
 pkgname=rgb-tui-git
 pkgver=1.1
 pkgrel=1
