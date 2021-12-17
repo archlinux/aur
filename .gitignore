@@ -4,3 +4,4 @@ pkg/
 *.tar.bz2
 *.t?z
 binkd/
+*.tar.*

@@ -1,5 +1,5 @@
 pkgname=binkd-git
-pkgver=1.1a.99.r2110.2165e9f
+pkgver=1.1a.113.r2161.9dbc1e7
 pkgrel=1
 pkgdesc="Binkley protocol daemon for transferring files between Fidonet systems"
 arch=('i686' 'x86_64')
