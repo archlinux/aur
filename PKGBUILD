@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=3.1.0.r56.bfc10c42
+pkgver=3.1.0.r89.e900ef04
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-git}")
 backup=('etc/tpm2-tss/fapi-config.json'
         'etc/tpm2-tss/fapi-profiles/P_ECCP256SHA256.json'
         'etc/tpm2-tss/fapi-profiles/P_RSA2048SHA256.json')
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 source=("git+$url.git")
 sha512sums=('SKIP')
 

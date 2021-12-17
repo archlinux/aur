@@ -1,6 +1,6 @@
 pkgbase = tpm2-tss-git
 	pkgdesc = Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)
-	pkgver = 3.1.0.r56.bfc10c42
+	pkgver = 3.1.0.r89.e900ef04
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tss
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = tpm2-tss-git
 	provides = libtss2-tctildr.so
 	conflicts = tpm2-tss
 	options = !emptydirs
+	options = !lto
 	backup = etc/tpm2-tss/fapi-config.json
 	backup = etc/tpm2-tss/fapi-profiles/P_ECCP256SHA256.json
 	backup = etc/tpm2-tss/fapi-profiles/P_RSA2048SHA256.json
