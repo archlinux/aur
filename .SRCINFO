@@ -1,6 +1,6 @@
 pkgbase = rocm-debug-agent
 	pkgdesc = ROCr Debug Agent Library
-	pkgver = 4.5.0
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/rocr_debug_agent
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rocm-debug-agent
 	depends = glibc
 	options = !staticlibs
 	options = strip
-	source = rocm-debug-agent-4.5.0.tar.gz::https://github.com/ROCm-Developer-Tools/rocr_debug_agent/archive/rocm-4.5.0.tar.gz
-	sha256sums = 6486b1a8515da4711d3c85f8e41886f8fe6ba37ca2c63664f00c811f6296ac20
+	source = rocm-debug-agent-4.5.2.tar.gz::https://github.com/ROCm-Developer-Tools/rocr_debug_agent/archive/rocm-4.5.2.tar.gz
+	sha256sums = 85c7f19485defd9a58716fffdd1a0e065ed7f779c3f124467fca18755bc634a6
 
 pkgname = rocm-debug-agent
