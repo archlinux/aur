@@ -1,18 +1,24 @@
 # Maintainer: Guoyi Zhang
+# contributor: FabioLolix
+
 pkgname=notekit
-commit=844215a
-pkgver=latest
+pkgver=r208.844215a
 pkgrel=1
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
 arch=("x86_64")
 url="https://github.com/blackhole89/notekit"
-license=("GPL-3.0")
+license=("GPL3")
 depends=("fontconfig" "clatexmath" "gtkmm3" "gtksourceviewmm>=3.18" "jsoncpp" "zlib")
 makedepends=("git" "meson")
-provides=("notekit")
-conflicts=("notekit-git")
-source=("git+https://github.com/blackhole89/notekit.git#commit=${commit}")
+_commit=844215a372e91f860830336ca1965ead3c2114ad
+source=("git+https://github.com/blackhole89/notekit.git#commit=${_commit}")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    #git describe --long --tags | sed 's/-/+/g' # latest+0+g844215a 
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
