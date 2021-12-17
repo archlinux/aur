@@ -2,9 +2,9 @@
 
 _target=arm-linux-gnueabi
 pkgname=$_target-gcc
-_pkgver=10.2.0
+_pkgver=11.2.0
 pkgver=$_pkgver
-_islver=0.22
+_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM GNU EABI little-endian target'
 arch=(x86_64 i686 armv7h)
@@ -14,7 +14,7 @@ depends=($_target-binutils libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig}
-        https://libisl.sourceforge.io//isl-$_islver.tar.bz2)
+        https://libisl.sourceforge.io/isl-$_islver.tar.bz2)
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
 
@@ -94,6 +94,6 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir/usr/share/"{man/man7,info}
 }
-sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'SKIP'
-            'b21d354acd613a91cb88328753ec3aaeb174d6af042d89c5fcf3bbcced370751')
+            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
