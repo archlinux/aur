@@ -26,11 +26,11 @@ pkgver() {
 }
 
 build() {
-    make -C "${srcdir}/${pkgname}-${pkgver}/sources/driver/uvc"
+    make -C "${srcdir}/${pkgname/-git}/sources/driver/uvc"
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname/-git}"
 
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 
