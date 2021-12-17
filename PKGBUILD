@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=2.4.7.r55.gfbb038b5
+pkgver=2.5.5.r0.g4f74c75c
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -48,8 +48,8 @@ package() {
   cd "${pkgname}"
 
   install -dm0755 "$pkgdir/usr/lib/$_pkgname/bin"
-  install -m0755 -t "$pkgdir/usr/lib/$_pkgname/bin" bin/Linux/$_pkgname
-  install -m0644 -t "$pkgdir/usr/lib/$_pkgname/bin" bin/Linux/main.lua
+  install -m0755 -t "$pkgdir/usr/lib/$_pkgname/bin" bin/$_pkgname
+  install -m0644 -t "$pkgdir/usr/lib/$_pkgname/bin" bin/main.lua
 
   install -m0644 -t "$pkgdir/usr/lib/$_pkgname" {debugger,main}.lua
   cp -r locale meta script "$pkgdir/usr/lib/$_pkgname"
