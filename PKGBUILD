@@ -2,7 +2,7 @@
 pkgname=pdns-cli-git
 pkgver=master
 pkgrel=1
-pkgdesc=""
+pkgdesc="A PowerDNS HTTPS API client implementation in Python"
 arch=("any")
 url="https://github.com/catalyst/pdns-cli"
 license=('GPL')
