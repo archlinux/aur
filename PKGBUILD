@@ -3,7 +3,7 @@
 
 pkgname=classifier-git
 pkgver=r129.09e958b
-pkgrel=1
+pkgrel=2
 url="https://github.com/bhrigu123/classifier"
 pkgdesc="Organize files in your directory instantly, by classifying them into different folders (git-version)"
 makedepends=('git')
