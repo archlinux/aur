@@ -1,0 +1,13 @@
+pkgbase = python-setupmeta
+	pkgdesc = Simplify your setup.py
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/codrsquad/setupmeta
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/setupmeta/setupmeta-3.3.0.tar.gz
+	sha256sums = 32914af4eeffb8bf1bd45057254d9dff4d16cb7ae857141e07698f7ac19dc960
+
+pkgname = python-setupmeta
