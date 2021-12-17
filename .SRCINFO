@@ -1,0 +1,15 @@
+pkgbase = python-interface-meta
+	pkgdesc = A convenient way to expose an API with enforced method signatures
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/matthewwardrop/interface_meta
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setupmeta
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/i/interface_meta/interface_meta-1.2.4.tar.gz
+	sha256sums = 4c7725dd4b80f97b7eecfb26023e1a8a7cdbb6d6a7207a8e93f9d4bfef9ee566
+
+pkgname = python-interface-meta
