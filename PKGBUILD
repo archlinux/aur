@@ -26,8 +26,8 @@ source=(
 )
 noextract=()
 sha256sums=('19efbe655edd36809566ffc901d3afdb05e30147ca3a337e7fcf22652266e30d'
-			'SKIP'
-            '572c76feb9f1a9a3a527479b4847bee4a0f6192df2871f971485105f4f311f52')
+            'SKIP'
+            '288b812af56cd584e6d8a01653ef5de0e56556667f20dc23f9496f1e9feb8dac')
 validpgpkeys=('C7E7849466FE2358343588377258734B41C31549')
 
 package() {
