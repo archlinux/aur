@@ -1,0 +1,14 @@
+post_install() {
+  /usr/bin/echo -e "\e[34mINFO:\e[39m Add the contents of \e[31m/opt/auto-root/auto-root-shrc\e[39m to your \e[31m~/.bashrc\e[39m or \e[31m~/.zshrc\e[39m file"
+}
+
+post_upgrade() {
+  /usr/bin/echo -e "\e[34mINFO:\e[39m Check if you need to update your \e[31m~/.bashrc\e[39m or \e[31m~/.zshrc\e[39m file with the contents of \e[31m/opt/auto-root/auto-root-shrc\e[39m"
+}
+
+post_remove() {
+  /usr/bin/echo -e "\e[34mINFO:\e[39m Remove from your \e[31m~/.bashrc\e[39m or \e[31m~/.zshrc\e[39m file everything between:\n\n"
+
+  /usr/bin/echo -e "\e[31m## auto root ##\n  ...\n## end auto root ##\e[39m"
+}
+

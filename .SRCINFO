@@ -1,0 +1,19 @@
+pkgbase = auto-root-git
+	pkgdesc = A script that automatically reruns your last command as root if you forgot it. Requires 'bash' or 'zsh'.
+	pkgver = r24.dbf039f
+	pkgrel = 1
+	url = https://github.com/Deckweiss/auto-root
+	install = auto-root.install
+	arch = any
+	license = GPLv3
+	depends = util-linux
+	depends = coreutils
+	optdepends = bash: either one of the two shells is required
+	optdepends = zsh: either one of the two shells is required
+	optdepends = sudo: you can use su instead
+	provides = auto-root
+	conflicts = auto-root
+	source = git+https://github.com/Deckweiss/auto-root.git
+	sha256sums = SKIP
+
+pkgname = auto-root-git
