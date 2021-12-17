@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly).
 	pkgver = 0.9.24.RC
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -49,7 +49,7 @@ pkgbase = bauh-staging
 	optdepends = util-linux: to install AUR packages as the root user
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/4c6d7ebb47fecbcf98e685b4603a751b026ba9c8.tar.gz
-	sha512sums = c2ba1de0cc8736da7281c5047c61c5ccc27dc5cdd140275f5210e2231163653bbc2a89c578ca1e8bf2dbd00f6a596ac57563ad5f9c19e3ead38e82d39f7732d3
+	source = https://github.com/vinifmor/bauh/archive/8c4c69963b7ff7c46dd65093719633da5873fd96.tar.gz
+	sha512sums = ec94675b762943025ac6ea5d6dd1509df9de54a8315c6a5d9766f12d7e87db097a7022134a0e60dd595d56bfeee4cb6619f1035584d2891680374024ed8d16d7
 
 pkgname = bauh-staging
