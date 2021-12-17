@@ -1,0 +1,16 @@
+pkgbase = yoyo-leaf-git
+	pkgdesc = An awesome command-line fuzzy finder
+	pkgver = r5.87bb693
+	pkgrel = 1
+	url = https://github.com/Yggdroot/Yoyo-leaf
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	provides = yoyo-leaf
+	provides = yy
+	conflicts = yoyo-leaf
+	conflicts = yy
+	source = git+https://github.com/Yggdroot/Yoyo-leaf
+	sha256sums = SKIP
+
+pkgname = yoyo-leaf-git
