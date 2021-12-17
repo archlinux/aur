@@ -1,12 +1,12 @@
 # Maintainer: edward-p <edward at edward-p dot xyz>
 pkgname=projector-bin
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='Common and client-related code for running Swing applications remotely.'
 arch=('x86_64')
 url='https://github.com/JetBrains/projector-client'
 license=('MIT')
-depends=('electron10')
+depends=('electron15')
 options=('!strip')
 conflicts=('projector')
 source_x86_64=(
@@ -17,8 +17,8 @@ source=(
   "projector.sh"
 )
 sha1sums=('9e5295435b2b5eef024a39a5a62fe1c3e81a4b0d'
-          'd07aa57d048686058f207836740f4763e7d3c845')
-sha1sums_x86_64=('e4c962fc4dd8b4a5845037c3f3f3904aca08b259')
+          '530cfc10f8d6198a24e5c98cdf39b386ed1733d0')
+sha1sums_x86_64=('e8e0720da73c87843653e8ee004a8550ce925d88')
 
 package() {
   cd "$srcdir/projector-linux-x64/resources/app"
