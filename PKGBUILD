@@ -2,7 +2,7 @@
 # Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
 
 pkgname=vagrant-vmware-utility
-pkgver=1.0.20
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="Plugin for vagrant vmware provider."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MPL')
 depends=('vagrant')
 source=("https://releases.hashicorp.com/${pkgname}/${pkgver}/${pkgname}_${pkgver}_x86_64.rpm")
 install=${pkgname}.install
-sha256sums=('2d2dd88991f086ea34731e42fd14610af5cfd93536ae98bd60d65918bd0e22eb')
+b2sums=('d53fbdf746908c35f2fb9534c846138fe624fa8c5c03d8814a237badeb81393ab7b98986e03a322390498f298ac0e9d781134f4ed0087e4fef6c298e048df361')
 
 prepare() {
   mkdir -p ${srcdir}/${pkgname}
