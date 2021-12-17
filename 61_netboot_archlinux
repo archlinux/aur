@@ -1,0 +1,20 @@
+#!/bin/sh
+
+. "$pkgdatadir/grub-mkconfig_lib"
+
+indent() {
+	sed 's/^/    /'
+}
+
+access=$(prepare_grub_to_access_device "${GRUB_DEVICE_BOOT}" | indent)
+kernel=$(make_system_path_relative_to_its_root /boot/ipxe-arch.lkrn)
+
+cat <<EOF
+
+menuentry "Arch Linux Netboot" {
+$access
+    linux16 $kernel
+}
+
+EOF
+

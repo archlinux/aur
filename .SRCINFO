@@ -1,0 +1,17 @@
+pkgbase = grub-netboot-archlinux
+	pkgdesc = Adds archlinux netboot entry to grub-mkconfig for easy boot
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://archlinux.org/releng/netboot/
+	arch = any
+	license = GPL
+	depends = grub
+	source = netboot-archlinux.lkrn::https://archlinux.org/static/netboot/ipxe-arch.7db2ebf431ea.lkrn
+	source = netboot-archlinux.lkrn.sig::https://archlinux.org/static/netboot/ipxe-arch.lkrn.612c3a5236b0.sig
+	source = 61_netboot_archlinux
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	sha256sums = 19efbe655edd36809566ffc901d3afdb05e30147ca3a337e7fcf22652266e30d
+	sha256sums = SKIP
+	sha256sums = 572c76feb9f1a9a3a527479b4847bee4a0f6192df2871f971485105f4f311f52
+
+pkgname = grub-netboot-archlinux
