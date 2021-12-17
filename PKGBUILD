@@ -14,7 +14,7 @@ source=(
 #       "https://github.com/liupan1890/aliyunpan/releases/download/v${pkgver}/Linux.v${pkgver}.zip"
         'aliyunpan-liupan1890.svg'
         'aliyunpan-liupan1890.desktop')
-sha256sums=('05085e46fa2cf197d4328da372fedfe46c7180bd140913c7382fe1bf6ed8baa6'
+sha256sums=('3a078faf72042b55779fb12fa825c218dc7b99459387923607885635df5e4349'
             'd2601a3d659348395a853ff3659a664b464dd82a841c0ee51462d2446d054cf4'
             'd66ea764845bf3f7619d447aef33c78b2b06470c855941f337d2b37e6de5a347')
 options=()

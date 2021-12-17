@@ -11,7 +11,7 @@ pkgbase = aliyunpan-liupan1890
 	source = https://d.store.deepinos.org.cn//store/network/liupan1890.github.aliyunpan/liupan1890.github.aliyunpan_2.11.29_all.deb
 	source = aliyunpan-liupan1890.svg
 	source = aliyunpan-liupan1890.desktop
-	sha256sums = 05085e46fa2cf197d4328da372fedfe46c7180bd140913c7382fe1bf6ed8baa6
+	sha256sums = 3a078faf72042b55779fb12fa825c218dc7b99459387923607885635df5e4349
 	sha256sums = d2601a3d659348395a853ff3659a664b464dd82a841c0ee51462d2446d054cf4
 	sha256sums = d66ea764845bf3f7619d447aef33c78b2b06470c855941f337d2b37e6de5a347
 
