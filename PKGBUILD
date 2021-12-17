@@ -7,7 +7,7 @@ _name="${pkgname%-git}"
 epoch=1
 pkgver() { git -C "$_name" describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'; }
 pkgver=4.10.r215.f1d2b8a
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Security auditing and social-engineering research tool'
 url="https://github.com/${_name}network/$_name"
@@ -16,9 +16,10 @@ license=('GPL3')
 
 makedepends=('git')
 depends=('bc' 'xterm' 'unzip' 'p7zip' 'openssl' 'net-tools' 'php-cgi' 'curl' 'dhcp' 'hostapd' 'lighttpd'
-         'iw' 'wireless_tools' 'nmap' 'dsniff' 'macchanger' 'aircrack-ng' 'cowpatty' 'mdk3' 'mdk4')
+         'iw' 'wireless_tools' 'nmap' 'dsniff' 'macchanger' 'aircrack-ng' 'cowpatty' 'mdk4')
 optdepends=('python: deauth-ng'
-            'python-pyric: deauth-ng')
+            'python-pyric: deauth-ng'
+            'mdk3')
 
 conflicts=("$_name")
 provides=("$_name")
@@ -30,21 +31,20 @@ sha256sums=('SKIP')
 options=('zipman')
 
 
-prepare() { sed -i 1s/python2/python/ "$_name/attacks/Captive Portal/deauth-ng.py"; }
+prepare() {
+  sed -i 1s/python2/python/ "$_name/attacks/Captive Portal/deauth-ng.py"
+  sed -i 's/"mdk3" //' "$_name/$_name.sh"
+}
 
 package() {
   cd "$_name"
-
   install -Dm755 "$_name.sh" -t"$pkgdir/usr/share/$_name/"
   cp -a --no-preserve=o attacks language lib logos misc preferences scripts "$pkgdir/usr/share/$_name/"
-
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_name" <<-EOF
 		#!/bin/sh
-
 		cd /usr/share/$_name
 		exec bash $_name.sh "\$@"
 	EOF
-
   install -Dm644 *.md -t"$pkgdir/usr/share/doc/$_name/"
   install -Dm644 "docs/man/$_name.1" -t"$pkgdir/usr/share/man/man1/"
 }
