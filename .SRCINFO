@@ -1,6 +1,6 @@
 pkgbase = harvey
 	pkgdesc = WCAG color contrast compliance checker
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/danrabbit/harvey
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = harvey
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	source = harvey-1.0.0.tar.gz::https://github.com/danrabbit/harvey/archive/1.0.0.tar.gz
-	sha256sums = 51d8e5d8e6eab405a713dcb635bfbff75c3187fdf8a0c5e16d5bec400a81a758
+	depends = libhandy
+	source = harvey-1.0.2.tar.gz::https://github.com/danrabbit/harvey/archive/1.0.2.tar.gz
+	sha256sums = c8f31ec6f1bb672a15a6687aaa4902c3610a7415bff5631574d8338ddee51932
 
 pkgname = harvey
-
