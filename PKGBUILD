@@ -1,8 +1,8 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 # Contributor: Daniel Peukert <dan.peukert@gmail.com>
 pkgname=ocaml-sedlex
-pkgver=2.3
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 pkgdesc='Unicode-friendly OCaml lexer generator'
 license=('MIT')
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('ocaml>=4.04'
 makedepends=('dune>=1.8.0')
 source=("https://github.com/alainfrisch/sedlex/archive/v${pkgver}.tar.gz")
 options=(!strip !makeflags)
-sha256sums=('f9b090eb5e583b40b0ce89f15b94e87bdc933b5652c7afc0b652a6ae227a0f58')
+sha256sums=('5b98dcf6db145c7749709858443f3d997fe4670c14be05831577cc0b0da038a5')
 
 build() {
     cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
