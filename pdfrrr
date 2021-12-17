@@ -82,6 +82,11 @@ for page in "${TMP_DIR}"/page-*.png; do
 done
 echo "" >&2
 
+if [[ -z "${rotations}" ]]; then
+    echo "No pages require rotation" >&2
+    exit 0
+fi
+
 echo "Rotating pages: ${rotations}" >&2
 TMP_PDF="${TMP_DIR}/rotated.pdf"
 readonly TMP_PDF
