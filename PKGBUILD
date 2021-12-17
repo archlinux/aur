@@ -4,14 +4,14 @@
 export GIT_LFS_SKIP_SMUDGE=1
 _name=f3d
 pkgname=$_name-git
-pkgver=v1.2.0.r0.gaaefc66
-pkgrel=1
+pkgver=v1.2.1.r46.g1567cce
+pkgrel=2
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_name-app/$_name"
 license=('BSD')
 depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade')
-makedepends=('git' 'git-lfs' 'cmake')
+makedepends=('git' 'git-lfs' 'cmake' 'fmt')
 provides=('f3d')
 conflicts=('f3d')
 source=("git+https://github.com/$_name-app/$_name.git")
