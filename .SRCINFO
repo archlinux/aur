@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta
 	pkgdesc = Beta version of standalone mail and news reader from mozilla.org
-	pkgver = 96.0b1
+	pkgver = 96.0b2
 	pkgrel = 1
 	url = https://www.thunderbird.net/channel/#beta
 	arch = x86_64
@@ -49,21 +49,23 @@ pkgbase = thunderbird-beta
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	optdepends = libcanberra: sound support
 	optdepends = libotr: OTR support for active one-to-one chats
-	provides = thunderbird=96.0b1
+	provides = thunderbird=96.0b2
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/96.0b1/source/thunderbird-96.0b1.source.tar.xz
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/96.0b1/source/thunderbird-96.0b1.source.tar.xz.asc
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/96.0b2/source/thunderbird-96.0b2.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/96.0b2/source/thunderbird-96.0b2.source.tar.xz.asc
 	source = install-dir.patch
-	source = metainfo.patch
+	source = 0001-Use-remoting-name-for-GDK-application-names.patch
+	source = add-missing-stub-for-wl_proxy_marshal_flags.patch
 	source = thunderbird-beta.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	validpgpkeys = 4360FE2109C49763186F8E21EBE41E90F6F12F6D
-	sha256sums = 0249d399c772c8d28fa1954015e1515e404d05156c750b5e0eae50d443fd853b
+	sha256sums = 32222dc4b2e32c559d700785287bbcf72280907499a91dfd4b6a322547031702
 	sha256sums = SKIP
 	sha256sums = c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b
-	sha256sums = a30df8772e9cec05debdcd02b83de6ea92db6fb7c2a43f24f0bc6ebb2c5484a5
-	sha256sums = 9f7eececd2426a13220a81eb8d34123311979e03aca40d5d4b79d0346beab5b5
+	sha256sums = 51cca2cab0fa9798f96b81ed24c238b2a7c98524f589ec500224bac9797b66fb
+	sha256sums = dd056c42b3a969cd57fc58be4d83491d806a087d86a2a8594de069d6de9fe04c
+	sha256sums = 336db628f428ea5efd2a58231fdb202db1521b604c8317b7151d1aa40793f3d3
 
 pkgname = thunderbird-beta

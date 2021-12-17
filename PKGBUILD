@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=96.0b1
+pkgver=96.0b2
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -26,8 +26,15 @@ options=(!emptydirs !makeflags !strip)
 provides=("thunderbird=$pkgver")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
         install-dir.patch
-        metainfo.patch
+        0001-Use-remoting-name-for-GDK-application-names.patch
+        add-missing-stub-for-wl_proxy_marshal_flags.patch
         "$pkgname".desktop)
+sha256sums=('32222dc4b2e32c559d700785287bbcf72280907499a91dfd4b6a322547031702'
+            'SKIP'
+            'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
+            '51cca2cab0fa9798f96b81ed24c238b2a7c98524f589ec500224bac9797b66fb'
+            'dd056c42b3a969cd57fc58be4d83491d806a087d86a2a8594de069d6de9fe04c'
+            '336db628f428ea5efd2a58231fdb202db1521b604c8317b7151d1aa40793f3d3')
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
   4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
@@ -149,9 +156,6 @@ app.distributor.channel=$pkgname
 app.partner.archlinux=archlinux
 END
 
-  install -Dvm644 comm/mail/branding/thunderbird/net.thunderbird.Thunderbird.appdata.xml \
-    "$pkgdir/usr/share/metainfo/net.thunderbird.Thunderbird.appdata.xml"
-
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 comm/mail/branding/thunderbird/default${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
@@ -160,7 +164,7 @@ END
   install -Dvm644 comm/mail/branding/thunderbird/content/about-logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dvm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
   install -Dvm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -181,9 +185,3 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 }
-
-sha256sums=('0249d399c772c8d28fa1954015e1515e404d05156c750b5e0eae50d443fd853b'
-            'SKIP'
-            'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
-            'a30df8772e9cec05debdcd02b83de6ea92db6fb7c2a43f24f0bc6ebb2c5484a5'
-            '9f7eececd2426a13220a81eb8d34123311979e03aca40d5d4b79d0346beab5b5')
