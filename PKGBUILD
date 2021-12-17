@@ -2,7 +2,7 @@
 # Maintainer: Liam Timms <timms5000@gmail.com>
 
 pkgname=python-nilearn
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Python library for fast and easy statistical learning on NeuroImaging data"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 optdepends=('python-matplotlib: Plotting library for fancy examples')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nilearn/nilearn/archive/${pkgver}.tar.gz")
-sha256sums=('21d5b190e92f75c061680f8688e18b5a16eb537856fd9d22be7aff11261fdee7')
+sha256sums=('d817b5cd5a88ec955abf41ebae91ee9270b5f91d803ed7b8817a5cfa51ad1392')
 
 build() {
   cd "$srcdir"/nilearn-$pkgver
