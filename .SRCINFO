@@ -1,6 +1,6 @@
 pkgbase = goverlay-git
 	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
-	pkgver = 0.7.r10.gf4e5a66
+	pkgver = 0.7.1.r2.g8985e1b
 	pkgrel = 2
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
@@ -16,6 +16,9 @@ pkgbase = goverlay-git
 	optdepends = vulkan-tools: Vulkan preview
 	optdepends = git: Clone reshade repository
 	optdepends = replay-sorcery: Instant replay solution
+	optdepends = ttf-dejavu: recommended font
+	optdepends = ttf-ubuntu-font-family: recommended font
+	optdepends = breeze: for Breeze style
 	provides = goverlay
 	conflicts = goverlay
 	source = git+https://github.com/benjamimgois/goverlay.git

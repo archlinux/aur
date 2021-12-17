@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.7.r10.gf4e5a66
+pkgver=0.7.1.r2.g8985e1b
 pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -13,7 +13,10 @@ optdepends=('vkbasalt: Configure vkBasalt'
             'glxgears: OpenGL preview'
             'vulkan-tools: Vulkan preview'
             'git: Clone reshade repository'
-            'replay-sorcery: Instant replay solution')
+            'replay-sorcery: Instant replay solution'
+            'ttf-dejavu: recommended font'
+            'ttf-ubuntu-font-family: recommended font'
+            'breeze: for Breeze style')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/benjamimgois/goverlay.git')
