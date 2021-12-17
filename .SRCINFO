@@ -1,0 +1,17 @@
+pkgbase = pdns-cli-git
+	pkgver = r47.d1a6d3c
+	pkgrel = 1
+	url = https://github.com/catalyst/pdns-cli
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-requests
+	depends = python-argcomplete
+	depends = python-toml
+	depends = python-colored
+	provides = pdns-cli
+	conflicts = pdns-cli
+	source = pdns-cli::git+https://github.com/dstengele/pdns-cli
+	md5sums = SKIP
+
+pkgname = pdns-cli-git
