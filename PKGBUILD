@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=hddfancontrol
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Regulate fan speed according to hard drive temperature'
 arch=('any')
 url="https://github.com/desbma/${pkgname}"
