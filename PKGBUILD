@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
              'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'pciutils')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=b45715a554968aa64448010ccaefe453a74cc328
+_filesrev=011ca923053e61cd9449fafc435607c0c28182ca
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g4-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
         "waterfox-g4.desktop::$_filesurl/waterfox-g4.desktop"
