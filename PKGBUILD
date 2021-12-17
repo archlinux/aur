@@ -2,7 +2,7 @@
 # Builds the pyshtools library (split file)
 # Maintainer: Roelof Rietbroek <roelof@wobbly.earth>
 pkgbase=python-shtools
-pkgname=(shtools-fortran python-shtools)
+pkgname=(shtools python-shtools)
 pkgver=4.9.1
 pkgrel=1
 pkgdesc="SHTOOLS: Tools for working with spherical harmonics"
@@ -10,7 +10,7 @@ arch=('any')
 url="https://shtools.oca.eu"
 license=('BSD 3-clause')
 depends=("fftw" "blas" "lapack")
-makedepends=("gcc-fortran")
+makedepends=("gcc-fortran" "python-setuptools")
 source=("https://github.com/SHTOOLS/SHTOOLS/archive/v$pkgver.tar.gz" "site.cfg" "Makefile.patch" )
 noextract=()
 sha256sums=('5c22064f9daf6e9aa08cace182146993aa6b25a6ea593d92572c59f4013d53c2'
@@ -30,14 +30,13 @@ package_python-shtools() {
    provides=(python-shtools)
    pkgdesc="Python interface for SHTOOLS (pyshtools)"
    depends+=( "python-numpy" "python-astropy" "python-pooch" "python-xarray" )
-   
    cd ${srcdir}/SHTOOLS-${pkgver}/
    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 
    cd ${_startdir}
 }
 
 
-package_shtools-fortran(){
+package_shtools(){
    provides=(shtools-fortran)
    pkgdesc="Fortran interface for SHTOOLS "
    cd ${srcdir}/SHTOOLS-${pkgver}/

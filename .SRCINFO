@@ -6,6 +6,7 @@ pkgbase = python-shtools
 	arch = any
 	license = BSD 3-clause
 	makedepends = gcc-fortran
+	makedepends = python-setuptools
 	depends = fftw
 	depends = blas
 	depends = lapack
@@ -16,7 +17,7 @@ pkgbase = python-shtools
 	sha256sums = 19a427bf02f65ffc062ad817c3fa1d56ded3b53a362c4d1258e3ed98c840cdb2
 	sha256sums = 579a7ee861ba3841969d4b2e7e7cced23ee819f46e86d2ce629737e7b1b8d55a
 
-pkgname = shtools-fortran
+pkgname = shtools
 	pkgdesc = Fortran interface for SHTOOLS
 	provides = shtools-fortran
 
