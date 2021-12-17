@@ -1,13 +1,14 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
-pkgver=0.10.1
-pkgrel=3
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
 	'python-magic-ahupp' 'python-commonmark' 'python-aiohttp' 'python-yarl'
-	'python-mautrix>=0.10.4' 'python-mautrix<0.11' 'python-telethon>=1.22'
-	'python-telethon<1.24' 'python-telethon-session-sqlalchemy')
+	'python-mautrix>=0.10.4' 'python-mautrix<0.13'
+	'python-telethon>=1.24' 'python-telethon<1.25'
+	'python-telethon-session-sqlalchemy')
 makedepends=('python-setuptools' 'python-pytest-runner')
 optdepends=('python-cryptg: faster encryption'
 	'python-cchardet: faster encoding detection'
@@ -25,7 +26,7 @@ optdepends=('python-cryptg: faster encryption'
 license=('AGPLv3')
 arch=('any')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('81376427d454b6c99c01b244027cd7609d19ef84653625d4027ba92fd5de0466'
+sha256sums=('6c55dd22d71dc8c78a3069acabcd66d8c181c795688f37bfc88fc461e99f5e25'
             'a419168bff80e469f2f4e26279afae77d92e6ae86c2457696e1ca9fc6ba1cb12'
             '83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9'
             '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
