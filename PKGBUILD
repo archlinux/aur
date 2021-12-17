@@ -33,11 +33,11 @@ prepare() {
   cd netkit-telnet-0.17
 
   for patch in $(grep '^[^#]' ../debian/patches/series); do
-    msg2 "Applying $patch"
+    echo "=> Applying $patch"
     patch -Np1 < ../debian/patches/"$patch"
   done
 
-  msg2 "Applying additional patches"
+  echo "=> Applying additional patches"
   patch -Np1 < ../netkit-telnet-ssl.arch.patch
 }
 
