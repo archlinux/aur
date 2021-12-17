@@ -1,7 +1,7 @@
 pkgname=toot
 _name=toot
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a Mastodon CLI client"
 depends=('python-requests' 'python-beautifulsoup4' 'python-wcwidth' 'python-urwid')
 license=('GPL3')

@@ -1,7 +1,7 @@
 pkgbase = toot
 	pkgdesc = a Mastodon CLI client
 	pkgver = 0.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ihabunek/toot
 	arch = any
 	license = GPL3
