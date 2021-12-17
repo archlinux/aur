@@ -1,17 +1,18 @@
 pkgname=libevent-git
-pkgver=2.1.5.beta.r27.g31c6d45
+pkgver=2.1.8.stable.r825.g2db55e43
 pkgrel=1
 pkgdesc="An event notification library"
 arch=('i686' 'x86_64')
 url="http://libevent.org/"
 license=('BSD')
 depends=('openssl')
+makedepends=('git')
 optdepends=('python2: to use event_rpcgen.py')
 provides=(libevent)
 conflicts=(libevent)
 replaces=(libevent)
 source=(git+https://github.com/libevent/libevent)
-md5sums=('SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
   cd libevent
