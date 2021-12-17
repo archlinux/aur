@@ -1,17 +1,17 @@
 pkgbase = mediawiki-extension-lockdown-git
 	pkgdesc = MediaWiki extension implementing per-namespace group permissions
-	pkgver = r171.2409546
-	pkgrel = 1
+	pkgver = r180.5d8ea76
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mediawiki.org/wiki/Extension:Lockdown
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = mediawiki>=1.36
-	depends = mediawiki<1.37
+	depends = mediawiki>=1.37
+	depends = mediawiki<1.38
 	provides = mediawiki-extension-lockdown
 	conflicts = mediawiki-extension-lockdown
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/Lockdown#branch=REL1_36
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/Lockdown#branch=REL1_37
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-lockdown-git
