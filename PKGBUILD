@@ -14,10 +14,7 @@ depends=($_target-binutils libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e'
-            'SKIP'
-            'fc2c9796979610dd51143dcefe4f5c989c4354571cc5a1fcc6b932fd41f42a54f6b43adfd289af61be7bd06f3a523fa6a7d7ee56680e32d8036beb4c188fa668')
+        https://libisl.sourceforge.io//isl-$_islver.tar.bz2)
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
 
@@ -97,3 +94,6 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir/usr/share/"{man/man7,info}
 }
+sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+            'SKIP'
+            'b21d354acd613a91cb88328753ec3aaeb174d6af042d89c5fcf3bbcced370751')
