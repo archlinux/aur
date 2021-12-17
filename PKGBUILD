@@ -3,13 +3,13 @@
 
 pkgname=f3d
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('BSD')
 depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade')
-makedepends=('cmake' 'help2man')
+makedepends=('cmake' 'help2man' 'fmt')
 source=("https://github.com/$pkgname-app/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0d72cc465af1adefdf71695481ceea95d4a94ee9e00125bc98c9f32b14ac2bf4')
 
