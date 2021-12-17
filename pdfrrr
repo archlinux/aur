@@ -83,7 +83,10 @@ done
 echo "" >&2
 
 echo "Rotating pages: ${rotations}" >&2
-pdftk "${PDF_FILE}" rotate ${rotations} output "${PDF_FILE}.rotated.pdf"
-mv "${PDF_FILE}.rotated.pdf" "${PDF_FILE}"
+TMP_PDF="${TMP_DIR}/rotated.pdf"
+readonly TMP_PDF
+# $rotations should not be doublequoted, it should be split to multiple arguments
+pdftk "${PDF_FILE}" rotate ${rotations} output "${TMP_PDF}"
+mv "${TMP_PDF}" "${PDF_FILE}"
 
 echo "Done" >&2
