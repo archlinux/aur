@@ -15,8 +15,6 @@
 #   native compiled by default.
 ################################################################################
 
-
-
 ################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
 #                enough rope to hang yourself, but by default it
@@ -35,23 +33,24 @@
 #
 # Where you read experimental, replace with foobar.
 # =================================================
-#
+
 ################################################################################
+USE_ALL_CPU_CORES="YES" # Do you want to use all CPU cores?
+
 CHECK=            # Run tests. May fail, this is developement after all.
 
-CLANG=            # Use clang.
+CLANG="YES"       # Use clang.
 
 GOLD=             # Use the gold linker.
 
-LTO="YES"         # Enable link-time optimization. Read emacs's INSTALL before
-                  # attempting to use it with clang.
-
-JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
+LTO="YES"         # Enable link-time optimization. Still experimental.
                   # This compiles only performance critical elisp files.
                   #
                   # To compile all elisp on demand, add
                   #    (setq comp-deferred-compilation t)
                   # to your .emacs file.
+
+MOLD="MOLD"       # Use the mold linker.
 
 AOT="YES"         # Precompile all included elisp. It takes a long time.
                   # You still need to enable on-demand compilation
@@ -59,7 +58,10 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
 
 CLI=              # CLI only binary.
 
+GPM="YES"         # Mouse support in Linux console using gmpd.
+
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
+                  # Bitmap fonts only, 1337!
                
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
@@ -70,8 +72,8 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # Xft, if you choose no toolkit or Lucid.
                   #
                
-GTK2=             # GTK2 support. Why would you?
-               
+ALSA="YES"             # Linux sound support.
+
 NOCAIRO=          # Disable here. 
                
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
@@ -80,35 +82,30 @@ DOCS_HTML=        # Generate and install html documentation.
                
 DOCS_PDF=         # Generate and install pdf documentation.
                
-MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
-                  # ImageMagick, like flash, won't die... 
-                  # -->>If you just *believe* you need ImageMagick, you don't.<<--
-               
 NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 
 ################################################################################
 if [[ $CLI == "YES" ]] ; then
-  pkgname="emacs-native-comp-git-enhanced-nox"
+  pkgname="emacs-nox-git"
 else
-  pkgname="emacs-native-comp-git-enhanced"
+pkgname="emacs-native-comp-git-enhanced"
 fi
-pkgver=29.0.50.152375
+pkgver=29.0.50.152957
 pkgrel=1
-pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
+pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
-depends_nox=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'gpm')
-depends=("${depends_nox[@]}" 'm17n-lib' 'libotf' 'harfbuzz')
+depends_nox=('gnutls' 'libxml2' 'jansson')
+depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git')
-provides=('emasc-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-conflicts=('emacs-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-replaces=('emacs-git' 'emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-# Use flatwhatson's branch
-# Use emacs's savannah repo (pgtk branch) if you have network issues
-#source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
-source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=feature/pgtk")
+provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/pgtk")
+# If Savannah fails for reasons, use Github's mirror
+#source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
@@ -127,6 +124,17 @@ elif [[ $GOLD == "YES" && $CLANG == "YES" ]]; then
   exit 1;
 fi
 
+if [[ $MOLD == "YES" && ! $CLANG == "YES" ]]; then
+  echo "";
+  echo "I don't recommend use mold with gcc...";
+  echo "";
+  exit 1;
+elif [[ $MOLD == "YES" && $CLANG == "YES" ]]; then
+  export LD=/usr/bin/mold
+  export CFLAGS+=" --ld-path=/usr/bin/mold";
+  export CXXFLAGS+=" --ld-path=/usr/bin/mold";
+fi
+
 if [[ $CLANG == "YES" ]]; then
   export CC="/usr/bin/clang" ;
   export CXX="/usr/bin/clang++" ;
@@ -134,19 +142,16 @@ if [[ $CLANG == "YES" ]]; then
   export LD="/usr/bin/lld" ;
   export AR="/usr/bin/llvm-ar" ;
   export AS="/usr/bin/llvm-as" ;
+if [[ $MOLD == "YES" ]]; then
+  export LD=/usr/bin/mold
+  export CFLAGS+=" --ld-path=/usr/bin/mold";
+  export CXXFLAGS+=" --ld-path=/usr/bin/mold";
+  makedepends+=( 'clang' 'mold' 'llvm') ;
+else
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
   makedepends+=( 'clang' 'lld' 'llvm') ;
 fi
-
-if [[ $LTO == "YES" ]]; then
-  if [[ $CLANG != "YES" ]]; then
-  CFLAGS+=" -flto -fuse-linker-plugin"
-  CXXFLAGS+=" -flto -fuse-linker-plugin"
-else
-  CFLAGS+=" -flto"
-  CXXFLAGS+=" -flto"
-  fi
 fi
 
 if [[ $JIT == "YES" ]]; then
@@ -165,20 +170,23 @@ elif [[ $NOTKIT == "YES" ]]; then
 elif [[ $LUCID == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' );
   makedepends+=( 'xorgproto' );
-elif [[ $GTK2 == "YES" ]]; then
-  depends+=( 'gtk2' 'lcms2' );
-  makedepends+=( 'xorgproto' );
 else
   depends+=( 'gtk3' );
   makedepends+=( 'xorgproto' );
 fi
 
-if [[ $MAGICK == "YES" ]]; then
-  depends+=( 'imagemagick'  'libjpeg-turbo' 'giflib' );
-elif [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
+if [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
 elif [[ $CLI == "YES" ]]; then
   depends+=();
+fi
+
+if [[ $ALSA == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'alsa-lib' );
+  else
+    depends+=( 'alsa-lib' );
+  fi
 fi
 
 if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] ; then
@@ -186,15 +194,23 @@ if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] ; then
 fi
 
 if [[ $XWIDGETS == "YES" ]]; then
-  if [[ $GTK2 == "YES" ]] || [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
+  if [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
     echo "";
     echo "";
-    echo "Xwidgets support *requires* gtk+3!!!";
+    echo "Xwidgets support **requires** GTK+3!!!";
     echo "";
     echo "";
     exit 1;
   else
     depends+=( 'webkit2gtk' );
+  fi
+fi
+
+if [[ $GPM == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'gpm' );
+  else
+    depends+=( 'gpm' );
   fi
 fi
 
@@ -239,6 +255,8 @@ build() {
     --with-gameuser=:games
     --with-sound=alsa
     --with-modules
+    --without-libotf
+    --without-m17n-flt
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings you set in ~/.emacs.
 # If you insist you'll need to read that bug report in *full*.
@@ -268,27 +286,31 @@ fi
 if [[ $CLI == "YES" ]]; then
   _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' '--without-jpeg' '--without-gif' '--without-tiff' '--without-png' );
 elif [[ $NOTKIT == "YES" ]]; then
-  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
+  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--without-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
-elif [[ $GTK2 == "YES" ]]; then
-  _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
 else
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
-fi
-
-if [[ $MAGICK == "YES" ]]; then
-  _conf+=( '--with-imagemagick');
-else
-  _conf+=();
 fi
 
 if [[ $NOCAIRO == "YES" || $CLI == "YES" ]]; then
   _conf+=( '--without-cairo' );
 fi
 
+if [[ $ALSA == "YES" ]]; then
+    _conf+=( '--with-sound=alsa' );
+else
+    _conf+=( '--with-sound=no' );
+fi
+
 if [[ $XWIDGETS == "YES" ]]; then
   _conf+=( '--with-xwidgets' );
+fi
+
+if [[ $GPM == "YES" ]]; then
+    true
+else
+  _conf+=( '--without-gpm' );
 fi
 
 if [[ $NOGZ == "YES" ]]; then
@@ -312,11 +334,19 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
+if [[ $USE_ALL_CPU_CORES == "YES" ]]; then
+   if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
+    make NATIVE_FULL_AOT=1 -j$(nproc)
+  else
+    make -j$(nproc)
+  fi 
+else
   if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
     make NATIVE_FULL_AOT=1
   else
     make
   fi
+fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
@@ -343,17 +373,15 @@ package() {
   if [[ $DOCS_PDF == "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
 
   # fix user/root permissions on usr/share files
-  # MOVED to install script
-  # find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
+  find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
 
   # fix permssions on /var/games
   mkdir -p "$pkgdir"/var/games/emacs
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
-  # MOVED to install script
-  # chown -R root:games "$pkgdir"/var/games
+  chown -R root:games "$pkgdir"/var/games
 
 }
 
 ################################################################################
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ft=bash ts=2 sw=2 et:
