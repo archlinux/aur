@@ -26,5 +26,6 @@ build () {
 
 package () {
   cd ${_gitname}
-  sudo make install
+  install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
+  install -Dm644 warpd.1.gz /usr/share/man/man1/
 }
