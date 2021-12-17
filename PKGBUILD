@@ -2,7 +2,7 @@
 # Contributor: Jarek Sedlacek <jareksedlacek@gmail.com>
 
 pkgname=pymetar
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="Downloads the weather report for a given station ID and decodes it"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://www.schwarzvogel.de/pkgs/$pkgname-$pkgver.tar.gz")
-md5sums=('e79d21699617cfd2377e1820f9204600')
+md5sums=('773d105c1c15cc0a09c7baaaba3d367d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
