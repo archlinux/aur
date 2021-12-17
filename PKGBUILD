@@ -11,8 +11,22 @@ license=('GPL')
 depends=('alsa-lib' 'gtk3' 'glib2' 'expat')
 makedepends=('make')
 
-source=("https://sourceforge.net/projects/gdigi/files/gdigi/$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('62084296b81d3f888a7aee26a5f44842')
+source=(
+	"https://sourceforge.net/projects/gdigi/files/gdigi/$pkgver/$pkgname-$pkgver.tar.bz2"
+	"gdigi.h.patch"
+)
+
+md5sums=(
+	"62084296b81d3f888a7aee26a5f44842"
+	"02d879d5581ab74524c6193b067fbbc0"
+)
+
+prepare()
+{
+	cd "$srcdir/$pkgname-$pkgver"
+
+	patch -p0 < "$srcdir/gdigi.h.patch"
+}
 
 build()
 {
