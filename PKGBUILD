@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=8.0.8
+pkgver=9.0.2
 pkgrel=1
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -20,7 +20,7 @@ depends=(
     'libarchive'
     'libldap'
 )
-makedepends=('vala')
+makedepends=('vala' 'go')
 conflicts=('seafile')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
@@ -30,7 +30,7 @@ source=(
     'seafile-tmpfiles.conf'
 )
 sha256sums=(
-    '50bdd1ddccbd982c5ed8e9ac88bfc4b23def7276d9c4df4ad68d0af176c9da4f'
+    '292257b584dcb775504fb22595e5b0903005abfee1990078527c7f9726548c8c'
     'c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930'
     'b09ab24829df0692e78b777802298b8cac23bdcdc31306e12ed3543833a7088e'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
@@ -39,17 +39,8 @@ sha256sums=(
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
-    # Remove scripts for tests and others OS
-    rm -rf "./scripts/"{build,upgrade/win32,*.bat,*.md} "./integration-tests"
-
-    # Apply patchs
+    sed -i 's|(DESTDIR)@prefix@|@prefix@|' './lib/libseafile.pc.in'
     patch -p1 -i "$srcdir/fix_seafile-controller_paths.diff"
-    sed -i "s|(DESTDIR)@prefix@|@prefix@|" "./lib/libseafile.pc.in"
-
-    # Fix paths to Gunicorn
-    sed -e 's|gunicorn_exe=.*|gunicorn_exe=/usr/bin/gunicorn|g' \
-        -e 's|thirdpart/bin/gunicorn|$gunicorn_exe|g' \
-        -i ./scripts/seahub.sh
 }
 
 build() {
@@ -63,6 +54,24 @@ build() {
         --enable-console \
         --enable-ldap
     make
+
+    # Goland file-server
+    export GOPATH="$srcdir"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export CGO_ENABLED=1
+
+    GOFLAGS='-buildmode=pie'
+    GOFLAGS+=' -trimpath'
+    GOFLAGS+=' -ldflags=-linkmode=external'
+    GOFLAGS+=' -mod=readonly'
+    GOFLAGS+=' -modcacherw'
+    export GOFLAGS
+
+    cd ./fileserver
+    go build .
 }
 
 package() {
@@ -70,13 +79,14 @@ package() {
     make DESTDIR="$pkgdir" install
 
     # Prepare directories layout for deploying
-    # These makes setup-seafile*.sh happy, whether we use them or not
     install -dm755 "$pkgdir/usr/share/$pkgname/"{runtime,seafile/docs}
     cp -p ./doc/*.doc "$pkgdir/usr/share/$pkgname/seafile/docs"
+    cp -rp ./scripts/* "$pkgdir/usr/share/$pkgname"
 
     # The scripts needs this bin directory.
     ln -s /usr/bin/ "$pkgdir/usr/share/$pkgname/seafile/bin"
-    cp -r -p "./scripts"/* "$pkgdir/usr/share/$pkgname/"
+
+    install -Dm755 ./fileserver/fileserver "$pkgdir/usr/bin/fileserver"
 
     # Systemd
     install -Dm644 \
