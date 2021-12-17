@@ -1,7 +1,7 @@
 pkgbase = python-simplebitcoinfuncs
 	pkgdesc = Simple and easy functions for common Bitcoin operations
 	pkgver = 0.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/maxweisspoker/simplebitcoinfuncs
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = python-simplebitcoinfuncs
 	sha256sums = SKIP
 
 pkgname = python-simplebitcoinfuncs
-
