@@ -2,7 +2,7 @@
 
 pkgname=stumpwm-ql
 _stumpver=20.11
-_qlver=2021_10_21
+_qlver=2021_12_09
 pkgver="${_stumpver}_${_qlver}"
 pkgrel=1
 pkgdesc='Stumpwm tiling window manager built with dependencies from quicklisp'
