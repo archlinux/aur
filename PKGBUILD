@@ -9,7 +9,7 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.5.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-click' 'python-networkx' 'python-nibabel' 'python-numpy' 'pytho
 makedepends=('python-sphinx' 'python-sphinxcontrib-napoleon')
 optdepends=('python-pybids' 'python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('9abb28642d54cf52072523f7a2f47139d97c09a17944de0ec4a7719e851e2b77')
+sha256sums=('2be7f3d27c2bc65c0f2ff9f4ff0e2d02cb85194b581a1dc26015311f8e684658')
 
 _setpaths(){
 

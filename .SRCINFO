@@ -1,6 +1,6 @@
 pkgbase = python-nipype
 	pkgdesc = Neuroimaging in python pipelines and interfaces
-	pkgver = 1.5.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/nipy/nipype
 	arch = any
@@ -36,8 +36,7 @@ pkgbase = python-nipype
 	optdepends = freesurfer
 	optdepends = fsl
 	optdepends = spm12
-	source = nipype-1.5.1.tar.gz::https://github.com/nipy/nipype/archive/1.5.1.tar.gz
-	sha256sums = 9abb28642d54cf52072523f7a2f47139d97c09a17944de0ec4a7719e851e2b77
+	source = nipype-1.7.0.tar.gz::https://github.com/nipy/nipype/archive/1.7.0.tar.gz
+	sha256sums = 2be7f3d27c2bc65c0f2ff9f4ff0e2d02cb85194b581a1dc26015311f8e684658
 
 pkgname = python-nipype
-
