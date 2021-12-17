@@ -2,7 +2,7 @@
 pkgbase=python-czml3
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python 3 library to write CZML"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'subversion' 'python-astropy' 'python-dateutil' 'python-w3lib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('cf69c76dc0fcdf480d42cb9dcc84623d')
+md5sums=('7b2ac265048162aac85e721803344e97')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
