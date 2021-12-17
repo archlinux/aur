@@ -4,7 +4,7 @@ pkgbase=python-sphinx-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sphinx plugin for generating documentation from ASDF schemas"
 arch=('any')
 url="https://github.com/spacetelescope/sphinx-asdf"
@@ -31,7 +31,7 @@ check() {
 }
 
 package() {
-    depends=('python-yaml' 'python-mistune' 'python-sphinx-bootstrap-theme')
+    depends=('python-yaml' 'python-mistune=0.8.4' 'python-sphinx-bootstrap-theme')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
