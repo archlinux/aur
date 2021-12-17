@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-cupy
 _pkgname=cupy
-pkgver=9.6.0
+pkgver=10.0.0
 _cubver=1.8.0
 _jitify_commit=60e9e7231fe7529ecfc76fa97b9c02b3033f4157
 pkgrel=1
@@ -16,7 +16,7 @@ optdepends=('libcutensor')
 source=("https://github.com/cupy/cupy/archive/v$pkgver.tar.gz"
         "https://github.com/NVIDIA/cub/archive/$_cubver.tar.gz"
         "https://github.com/NVIDIA/jitify/archive/$_jitify_commit.zip")
-md5sums=('2f252190f770b5bf86c162a2cf7312e7'
+md5sums=('925f5fe60507b1eadd8d0dd66b498963'
          '9203ea2499b56782601fddf8a12e9b08'
          '73cf45dcb46f20e27d16b23243fe9efe')
 
