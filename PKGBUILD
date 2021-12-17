@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=gitqlient-git
-pkgver=v1.3.2.r9.6b0a02f
+pkgver=v1.4.3.r31.5866f4e
 pkgrel=1
 pkgdesc="Development branch of GitQlient"
 arch=(x86_64)
@@ -9,9 +9,7 @@ license=('LGPL')
 depends=(git qt5-base qt5-webengine qt5-webchannel)
 provides=(gitqlient)
 conflicts=(gitqlient)
-# The branch master is for release and hotfix only
-# See https://aur.archlinux.org/packages/gitqlient/#comment-789034
-source=("git+https://github.com/francescmm/GitQlient#branch=develop")
+source=("git+https://github.com/francescmm/GitQlient#branch=master")
 sha256sums=(SKIP)
 _rootdir=GitQlient
 
