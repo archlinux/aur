@@ -1,12 +1,12 @@
 pkgbase = xsnow-bin
 	pkgdesc = Let it snow on your desktop
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/xsnow/
 	arch = x86_64
 	arch = i386
 	arch = armv7h
-	arch = arm64
+	arch = aarch64
 	license = GPL3
 	depends = atk
 	depends = cairo
@@ -22,7 +22,7 @@ pkgbase = xsnow-bin
 	sha256sums_i386 = 133966055aac7a971e6019e1a7460224c86747db0e80385afe92d883f505d677
 	source_armv7h = https://master.dl.sourceforge.net/project/xsnow/xsnow_3.4.1-1_armhf.deb
 	sha256sums_armv7h = 95a8acd9a68a7a29a3a905cadab8dcc4bc0460e86cd620ce98a1564801851441
-	source_arm64 = https://master.dl.sourceforge.net/project/xsnow/xsnow_3.4.1-1_arm64.deb
-	sha256sums_arm64 = 92d7e4cdecf43a46e269890e37ef05301be891aa5ad673610b5afc3ce5dc5be5
+	source_aarch64 = https://master.dl.sourceforge.net/project/xsnow/xsnow_3.4.1-1_arm64.deb
+	sha256sums_aarch64 = 92d7e4cdecf43a46e269890e37ef05301be891aa5ad673610b5afc3ce5dc5be5
 
 pkgname = xsnow-bin
