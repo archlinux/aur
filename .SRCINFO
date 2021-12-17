@@ -1,7 +1,7 @@
 pkgbase = electrum-nmc
 	pkgdesc = Namecoin port of Electrum client with name support
 	pkgver = 3.3.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/namecoin/electrum-nmc
 	arch = any
 	license = Custom: multiple open source
@@ -43,4 +43,3 @@ pkgbase = electrum-nmc
 	sha256sums = 8b21ba61e3792e1da592546379451f5a0d12ab30c357e2e90a1d3c5b3cd2ed67
 
 pkgname = electrum-nmc
-

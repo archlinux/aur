@@ -8,7 +8,7 @@
 
 pkgname=electrum-nmc
 pkgver=3.3.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Namecoin port of Electrum client with name support'
 
 arch=('any')
