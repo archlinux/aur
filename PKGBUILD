@@ -4,10 +4,10 @@
 # Co-maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=igv
-pkgver=2.11.6
+pkgver=2.11.7
 minor_pkgver=$(<<<$pkgver sed -E 's/^([0-9]+\.[0-9]+)\..*/\1/')
 _pkgver=${pkgver//_/-}   # currently not needed
-pkgrel=2
+pkgrel=1
 pkgdesc="High-performance visualization tool for interactive exploration of large, integrated genomic datasets. From Broad Institute."
 arch=('any')
 url="http://www.broadinstitute.org/software/igv/home"
@@ -21,7 +21,7 @@ source=("https://data.broadinstitute.org/igv/projects/downloads/${minor_pkgver}/
         "igv_hidpi.desktop"
         "${pkgname}-license-2020.txt::https://raw.githubusercontent.com/igvteam/igv/master/license.txt"
         "https://raw.githubusercontent.com/igvteam/igv/v${pkgver}/test/web/IGV_64.png")
-sha512sums=('c858fb87ff3cfb38fbbc11237cb8b2b5bc02c350115cd29bf6a02ba422fecc34e00bef3ad4e4f0640429836cd0e9b88b3a0519e81b1b756a61d11eadedf579e1'
+sha512sums=('c89685494f31ec0eb61ecfa60938805aa4c8e2ce43e2623981f95c753430ae82a9ff440f8618701e4c8ba1fcf9a317adf75ae0f5db306237bedd3a146a2f981c'
             '70de493d5188d6eedbd0bf7c74d41ce4829efab75e3a79b56f998326c209d0184f5d3624d6b85d01ad93f0462e785c314322ef4a9260ead6d747f1791ecbe649'
             '60c9c8c6f66259a4edafd1d58d1f1ebcda4450f7620d4c0fc987d5875c2fd531bc2a3159fcdb77975bf07002036e3544f4d301a31d1085ab24d576eea1f8adcb'
             'c6bd4fc8bb7e43ee0fe9a4709e716d015c678bdd8bcb897876c267ec48441e2383aebb26b80457d2238f79546537af3409aa698544dc0043ff2c921f18126662'
