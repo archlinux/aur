@@ -3,7 +3,7 @@
 
 pkgname='notejot-git'
 _appname='notejot'
-pkgver='r783.8e8c8af'
+pkgver='r791.8b9a588'
 pkgrel=1
 pkgdesc='A stupidly-simple sticky notes application for any type of short term notes or ideas'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('gtk3' 'gtksourceview3' 'json-glib' 'libgee' 'libadwaita')
 makedepends=('meson' 'vala')
 provides=('notejot')
-conflicts=('notejot-git')
+conflicts=('notejot')
 source=("git+https://github.com/lainsce/${_appname}.git")
 md5sums=('SKIP')
 

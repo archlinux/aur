@@ -1,6 +1,6 @@
 pkgbase = notejot-git
 	pkgdesc = A stupidly-simple sticky notes application for any type of short term notes or ideas
-	pkgver = r783.8e8c8af
+	pkgver = r791.8b9a588
 	pkgrel = 1
 	url = https://github.com/lainsce/notejot
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = notejot-git
 	depends = libgee
 	depends = libadwaita
 	provides = notejot
-	conflicts = notejot-git
+	conflicts = notejot
 	source = git+https://github.com/lainsce/notejot.git
 	md5sums = SKIP
 
