@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tools-git
-pkgver=5.0.r15.713c2ab5
+pkgver=5.2.r64.7fc5a005
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 tools based on tpm2-tss'
 arch=('x86_64')
@@ -14,6 +14,7 @@ checkdepends=('cmocka' 'expect' 'iproute2' 'python-yaml' 'swtpm' 'tpm2-abrmd' 'x
 optdepends=('tpm2-abrmd: user space resource manager')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
@@ -41,5 +42,5 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 doc/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 docs/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
