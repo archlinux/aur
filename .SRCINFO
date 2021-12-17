@@ -1,6 +1,6 @@
 pkgbase = coreboot-utils-git
 	pkgdesc = Tools and utilities to work with coreboot firmware
-	pkgver = 4.14.r376.gfb1858539f7
+	pkgver = 4.15.r553.g4aaea850440
 	pkgrel = 1
 	url = https://www.coreboot.org/
 	arch = x86_64
