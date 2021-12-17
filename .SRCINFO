@@ -1,6 +1,6 @@
 pkgbase = unpackerr
 	pkgdesc = A daemon that checks for completed downloads and extracts them so Radarr, Sonarr and/or Lidarr may import them.
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://github.com/davidnewhall/unpackerr
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = unpackerr
 	optdepends = deluge: torrent downloader
 	optdepends = rtorrent: torrent downloader
 	backup = etc/unpackerr/unpackerr.conf
-	source = unpackerr-0.9.8.tar.gz::https://github.com/davidnewhall/unpackerr/archive/v0.9.8.tar.gz
+	source = unpackerr-0.9.9.tar.gz::https://github.com/davidnewhall/unpackerr/archive/v0.9.9.tar.gz
 	source = unpackerr.service
 	source = unpackerr.sysusers
-	sha512sums = 784cd0e304acd0417e382090d86edaf3a74f9ce090e5c0f85b67597cd1af0b6cb663e55f9dba4ffc39784bd93b7b921c4ef7ad99149d3d874673e98b312edad8
+	sha512sums = 7258c5583e244dd7adb0b16e566d57d09c35b86219668ec8df8b68974d0f899ded2dde83306938669466c231f699013c15aef08898b86aa93ada78a20064b137
 	sha512sums = 54017fc67dc86233c01fcf9b6a46c9758509111442782e67c2356b8ec5fc062abf2a6a45df62abe13d789b9933a00e2bfedbfdb6ac9eb57c3e03b43334c96676
 	sha512sums = 1607677947bb788eb9a7bdc37e85c10632888d476d393493013dbdb3924f805adae9b6c6f31e60800ed95a9bed7c1e8ee8a48ebdaacd60c52e355054f62e0237
 
