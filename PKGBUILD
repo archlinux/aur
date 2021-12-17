@@ -1,5 +1,5 @@
 # Maintainer: scpketer <scpketer@krampus.pro>
-pkgname=recaf
+pkgname=recaf1
 pkgver=1.15.10
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
