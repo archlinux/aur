@@ -3,24 +3,23 @@
 # Contributor: Christian Pfeiffer <cpfeiffer at live dot de>
 pkgname=superlu_dist
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed memory, MPI based SuperLU"
 arch=('x86_64')
 url="https://github.com/xiaoyeli/${pkgname}"
 license=('custom')
-depends=('lapack' 'parmetis')       # 'openblas' 'combblas'
-makedepends=('cmake' 'gcc-fortran') # 'ninja'
+depends=(lapack parmetis)       # openblas combblas
+makedepends=(cmake gcc-fortran) # ninja
 source=(${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ecb5d382a1c5319992149ac267f14ececb1eca9f8039506a7bf6eecd32fce7f69e06fae81244030466abc125499f9d4f14948e5ae770a5f44f3be6738b78e7c6')
+sha512sums=('89d2480e2c200e4588171b24ce21c9f1556c3ba917a561bdb6ac89e88c73ea982ba133ffddba632494098b68d8ad59ca28ec215f2cb92da12c518e87a2e1d5f7')
 options=('staticlibs')
 
 # prepare() {
-#   # CombBLAS uses C++14 in its headers. Otherwise the code won't build
 #   sed -i "s/set(CMAKE_CXX_STANDARD 11)/set(CMAKE_CXX_STANDARD 14)/" "${pkgname}-${pkgver}/CMakeLists.txt"
 # }
 
 # -DTPL_ENABLE_COMBBLASLIB=ON \
-# -DTPL_COMBBLAS_INCLUDE_DIRS="/usr/include/CombBLAS;/usr/include/CombBLAS/BipartiteMatchings" \
+# -DTPL_COMBBLAS_INCLUDE_DIRS="/usr/include/CombBLAS;/usr/include/CombBLAS/Applications/BipartiteMatchings" \
 # -DTPL_COMBBLAS_LIBRARIES="/usr/lib/libCombBLAS.so" \
 # -DCMAKE_INSTALL_LIBDIR=lib \
 
@@ -32,9 +31,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_CXX_STANDARD=14 \
-    -DCMAKE_C_COMPILER=gcc \
-    -DCMAKE_CXX_COMPILER=g++ \
-    -DCMAKE_Fortran_COMPILER=gfortran \
+    -DCMAKE_C_COMPILER=mpicc \
+    -DCMAKE_CXX_COMPILER=mpicxx \
+    -DCMAKE_Fortran_COMPILER=mpifort \
     -DTPL_PARMETIS_INCLUDE_DIRS="/usr/include" \
     -DTPL_PARMETIS_LIBRARIES="/usr/lib/libparmetis.so" \
     -DTPL_ENABLE_INTERNAL_BLASLIB=OFF \
