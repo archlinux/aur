@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-lame
-pkgver=0.3.4
-pkgrel=2
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="OCaml bindings to the LAME mp3 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-lame"
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('f90b9e090b3fc27437b64dd05c15b92778f07cf4f3d82e0f8186299cb8e1102d')
+sha256sums=('cfa22d659a28967dd4efe5b0bcc974c59b4704cf8bce5336bd0748ce9a17773b')
