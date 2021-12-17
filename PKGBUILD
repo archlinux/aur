@@ -4,7 +4,7 @@
 
 pkgname="odoo"
 pkgver=15.0
-_pkgsubver=20211204
+_pkgsubver=20211217
 pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
@@ -16,6 +16,7 @@ makedepends=("python-setuptools")
 depends=("postgresql"
         #"sassc" # not needed
         "wkhtmltopdf-static"
+        "python<=3.9"
         "python-babel"
         "python-chardet"
         "python-decorator"
@@ -67,7 +68,7 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.$_pkgsu
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-sha256sums=('79a1796ff452cf3bf22d0bcb284588ab0f846b528c3b7ec3d816c51fa23e9f46'
+sha256sums=('b73dff47cff2aa05b5adba94d03382deb3620814b02c9acba22d5db50ee3e471'
             '33d3331e47ab31705e2122ee9cebf791bf2a23169767960fd949ff26e3fb420e'
             '0cfb2d663be2c23491be71ded73284a6a81460e44e5e1f3c37cfcdd73ee51c01'
             '949cfeb604af5425860cffa197b7464b9d87ab3999424d890b2210511823264f'
