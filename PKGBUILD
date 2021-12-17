@@ -3,7 +3,7 @@
 pkgname=sdrangel-bin
 pkgver=6.17.5
 _subver=1214
-pkgrel=1
+pkgrel=2
 conflicts=(sdrangel-git)
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 url="https://github.com/f4exb/sdrangel"
@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('GPL3')
 
 depends=('fftw' 'ffmpeg' 'pulseaudio' 'lz4'
-         'qt5-base' 'qt5-multimedia' 'qt5-websockets' 'qt5-location')
+         'qt5-base' 'qt5-multimedia' 'qt5-websockets' 'qt5-location' 'qt5-speech')
 optdepends=('mbelib: Required for Digital Speech Decoder (DSD) demodulator'
             'opencv: Required for ATV demodulator'
             'qt5-serialport: Required for GS-232 controller')
