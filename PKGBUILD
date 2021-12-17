@@ -1,64 +1,33 @@
 #!/bin/bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 _pkgname=matomo
 
-# shellcheck disable=SC2034
 pkgname=matomo-git
 pkgver=4.6.2
-# shellcheck disable=SC2034
 pkgrel=1
-# shellcheck disable=SC2034
-epoch=
-# shellcheck disable=SC2034
 pkgdesc="A powerful web analytics platform."
-# shellcheck disable=SC2034
 arch=("any")
 url="https://github.com/matomo-org/${_pkgname}"
-# shellcheck disable=SC2034
 license=("GPL3")
-# shellcheck disable=SC2034
-groups=()
-# shellcheck disable=SC2034
 depends=("php" "php-fpm" "php-gd")
-# shellcheck disable=SC2034
 makedepends=("composer" "curl" "git" "gzip")
-# shellcheck disable=SC2034
-checkdepends=()
-# shellcheck disable=SC2034
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
 "mariadb: Database"
 "nginx: HTTP server")
-# shellcheck disable=SC2034
 provides=("${_pkgname}")
-# shellcheck disable=SC2034
 conflicts=("matomo")
-# shellcheck disable=SC2034
-replaces=()
-# shellcheck disable=SC2034
-backup=()
-# shellcheck disable=SC2034
-options=()
-# shellcheck disable=SC2034
-install=
-# shellcheck disable=SC2034
-changelog=
-# shellcheck disable=SC2034
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-# shellcheck disable=SC2034
-noextract=()
-# shellcheck disable=SC2034
 sha256sums=("6c83a093ad71b1b3b6bc27815287782787f05c2d9c15a2b01c8a1ee019599789")
-# shellcheck disable=SC2034
-validpgpkeys=()
 
 build()
 {
     # Information
     echo -e "\033[0;32mConfiguration is needed before the installation. For assistance, read the included \"README.md\".\033[0m"
 
-    # shellcheck disable=SC2154
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit
     git submodule update --init --merge --recursive
     composer install --no-dev
@@ -67,7 +36,6 @@ build()
 package()
 {
     # Assure that the directories exist.
-    # shellcheck disable=SC2154
     mkdir -p "${pkgdir}"/etc/systemd/system/php-fpm.service.d/
     mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
