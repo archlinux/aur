@@ -4,20 +4,25 @@
 
 pkgname=anbox-modules-dkms
 _pkgname=anbox-modules
-pkgver=5
+pkgver=r38.8148a16
 arch="$(uname -r)"
 url='https://github.com/choff/anbox-modules'
-pkgrel=15
+pkgrel=1
 pkgdesc='Android kernel driver fork by @choff (binder/binderfs & ashmem) in DKMS format'
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL3')
 provides=("${pkgname}")
 depends=('dkms')
 makedepends=('git')
-source=("git+https://github.com/choff/${_pkgname}.git#branch=master"
+source=("git+https://github.com/choff/${_pkgname}.git#commit=8148a162755bf5500a07cf41a65a02c8f3eb0af9"
   "https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch")
 sha256sums=('SKIP'
   '7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
