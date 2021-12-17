@@ -23,7 +23,7 @@ sha256sums=("1bb43b9b8a2be1a7e9ece15ca28f19a133967e3cd1c704a9bbf821cfd09dfab9")
 
 build()
 {
-    dotnet build -c Release "${srcdir}"/"${_pkgname}"-"${pkgver}"/BTCPayServer/BTCPayServer.csproj
+    dotnet build -c Release "${srcdir}"/"${pkgname}"-"${pkgver}"/BTCPayServer/BTCPayServer.csproj
 }
 
 package()
