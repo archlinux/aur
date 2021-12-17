@@ -2,8 +2,8 @@
 
 _pkgname="fluent-reader"
 pkgname="$_pkgname-bin"
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 
 pkgdesc="Modern desktop RSS reader built with Electron, React, and Fluent UI."
 arch=('x86_64')
@@ -23,7 +23,7 @@ changelog="changelog.md"
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/yang991178/fluent-reader/releases/download/v${pkgver}/Fluent.Reader.${pkgver}.AppImage"
 	"LICENSE::https://raw.githubusercontent.com/yang991178/fluent-reader/master/LICENSE")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('5d1fda961ec2aceb39165dc449776a8f857297f4a404beb42b33d9a63c5f956fa1441839d77ed20e606b1d80b3db1de4b4f0eb6fbbc647dc35aaa944d7e74b7e'
+b2sums=('e2e3ff10d18fb715569cd1853026f9c381d2bb1f7186bd4acdda9844ccdbc9d13d7095a884f719dae83c8e74133e9388ac06fd8f842f89e2db6944a2b21e7a65'
 	'0a8e04b682d991c30efd88ff67147b221eaf09e12c7234a776a90897bbedeb8379f73c5d853121f1b37d54bb510ea1bf223b8ef0f480ad3156c4159cbd78f0ac')
 
 prepare() {
@@ -67,6 +67,6 @@ package() {
 
 	# Remove unused files
 	rm -vrf "${pkgdir}/opt/${pkgname}"/{usr,swiftshader,AppRun,${_pkgname}.{desktop,png}}
-	rm -vrf "${pkgdir}/opt/${pkgname}"/{libGLESv2.so,libEGL.so,libvk_swiftshader.so,libvulkan.so.1}
-	rm -vrf "${pkgdir}/opt/${pkgname}"/{locales,LICENSE*}
+	# rm -vrf "${pkgdir}/opt/${pkgname}"/{libGLESv2.so,libEGL.so,libvk_swiftshader.so,libvulkan.so.1}
+	rm -vrf "${pkgdir}/opt/${pkgname}"/LICENSE*
 }
