@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. "$pkgdatadir/grub-mkconfig_lib"
+
+indent() {
+	sed 's/^/    /'
+}
+
+access=$(prepare_grub_to_access_device "${GRUB_DEVICE_BOOT}" | indent)
+file=/boot/netboot-alpine.lkrn
+kernel=$(make_system_path_relative_to_its_root "$file")
+
+cat <<EOF
+
+menuentry "Alpine Netboot" {
+$access
+    linux16 $kernel
+}
+
+EOF
+

@@ -1,0 +1,14 @@
+pkgbase = grub-netboot-alpine
+	pkgdesc = Adds netboot alpine entry to grub-mkconfig for each boot
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://boot.alpinelinux.org/
+	arch = any
+	license = GPL
+	depends = grub
+	source = netboot-alpine.lkrn::https://boot.alpinelinux.org/alpine-ipxe/x86_64/ipxe.lkrn
+	source = 61_netboot_alpine
+	sha256sums = 576087813e14e3f737e753d765014cda0d335b6a007009cea51b5842dd655ebe
+	sha256sums = 140fcf9b26086acea655dafd0b8dd9fcea8da415cdf80d6e75b5af293149cb0e
+
+pkgname = grub-netboot-alpine
