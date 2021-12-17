@@ -12,7 +12,8 @@ pkgbase = gdigi
 	depends = glib2
 	depends = expat
 	source = https://sourceforge.net/projects/gdigi/files/gdigi/0.4.0/gdigi-0.4.0.tar.bz2
+	source = gdigi.h.patch
 	md5sums = 62084296b81d3f888a7aee26a5f44842
+	md5sums = 02d879d5581ab74524c6193b067fbbc0
 
 pkgname = gdigi
-

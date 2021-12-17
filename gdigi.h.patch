@@ -1,0 +1,20 @@
+--- gdigi.h	2021-12-17 15:57:52.485993711 +0100
++++ gdigi.h	2021-12-17 15:58:13.292751787 +0100
+@@ -42,7 +42,7 @@
+ #define GNX_CABINET_WARP 263
+ #define GNX_CHANNEL_FS_MODE 264
+ 
+-unsigned char product_id;
++extern unsigned char product_id;
+ 
+ enum {
+   GNX3K_WAH_TYPE_CRY = 129,
+@@ -1111,7 +1111,7 @@
+     GENETX_CHANNEL1_CUSTOM = 2,
+     GENETX_CHANNEL2_CUSTOM = 3,
+     GENETX_CHANNEL_CURRENT = 4
+-} ChannelBankIndex;
++};
+ 
+ typedef struct {
+     int version;
