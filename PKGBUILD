@@ -25,7 +25,7 @@ pkgname=(
   "${pkgbase}-tidy"
   "${pkgbase}-xsl"
 )
-pkgver=7.4.26
+pkgver=7.4.27
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -69,7 +69,7 @@ source=(
   'gd-2.3.3.patch'
 )
 sha256sums=(
-  'e305b3aafdc85fa73a81c53d3ce30578bc94d1633ec376add193a1e85e0f0ef8'
+  '3f8b937310f155822752229c2c2feb8cc2621e25a728e7b94d0d74c128c43d0c'
   'SKIP'
   'b4ea038f2863801175d6c4e74c685913feecdd5be3d49aff7d9b3fa92d8c4159'
   'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
