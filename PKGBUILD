@@ -3,9 +3,9 @@ _release=beta
 _target=aur
 
 pkgname=makedeb-beta
-pkgver=8.5.9
+pkgver=8.6.3
 pkgrel=1
-pkgdesc="The modern packaging tool for Debian archives (${_release} release)"
+pkgdesc="A simplicity-focused packaging tool for Debian archives (${_release} release)"
 arch=('any')
 license=('GPL3')
 depends=('awk' 'binutils' 'bzip2' 'coreutils' 'dpkg' 'fakeroot' 'file' 'findutils' 'gettext' 'gnupg' 'grep' 'gzip' 'libarchive' 'lsb-release' 'ncurses' 'sed' 'tar' 'xz')
