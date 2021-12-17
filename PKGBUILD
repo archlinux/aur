@@ -2,7 +2,7 @@
 # Contributor: sem.z <sem.z@protonmail.com>
 # Contributor: soulsuke <6tsukiyami9@gmail.com>
 pkgname=mcaselector
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="An external tool to export or delete selected chunks and regions from a world save of Minecraft Java Edition."
 arch=(any)
@@ -13,7 +13,7 @@ source=("mcaselector-${pkgver}.jar::https://github.com/Querz/mcaselector/release
 		"mcaselector.desktop"
 		"mcaselector.png"
 		"mcaselector")
-sha256sums=('831626d9a359b971675c8155e9fbf5af202d1482f37925000fcf16206110395b'
+sha256sums=('add588644a3ae9c40afd6d133aeb2edd3cf499d30d45b96c8c069e62aae6036f'
             '9f97cb7dbdfe2a5871223e7b529d0a621ac342120b53120eaf9d55c5ef9b5b4d'
             'c8aa867604c6eb3e31649cfec02d914aa0ab6cd30080cb7a4aecbecef2254837'
             'f0432cc9fbc63c2c9f5fac891e7a8547dcdf4be8460283e4fc17838de18eb9a4')
