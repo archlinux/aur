@@ -1,12 +1,12 @@
 pkgname=binkd
-pkgver=1.1a.99
+pkgver=1.1a.113
 pkgrel=1
 pkgdesc="Binkley protocol daemon for transferring files between Fidonet systems"
 arch=('i686' 'x86_64')
 url="https://github.com/pgul/binkd"
 license=('GPL')
 backup=("etc/binkd/binkd.conf")
-_pkgcommit=2165e9fcc1823682c2861cc61ed247685460d6cf
+_pkgcommit=9dbc1e709fb2f3060bdb4ae0d274d38823a90aab
 source=("git+https://github.com/pgul/binkd.git#commit=$_pkgcommit"
         "binkd.service"
         "binkd@.service"
