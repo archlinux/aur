@@ -27,5 +27,5 @@ build () {
 package () {
   cd ${_gitname}
   install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
-  install -Dm644 warpd.1.gz /usr/share/man/man1/
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ warpd.1.gz
 }
