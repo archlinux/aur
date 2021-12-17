@@ -1,16 +1,16 @@
 pkgbase = mediawiki-extension-magicnocache-git
 	pkgdesc = MediaWiki extension for selective cache disabling
-	pkgver = 1.4.0.r40.ga1b0a88
-	pkgrel = 1
+	pkgver = 1.4.0.r45.g07a1b94
+	pkgrel = 2
 	url = https://www.mediawiki.org/wiki/Extension:MagicNoCache
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = mediawiki>=1.36
-	depends = mediawiki<1.37
+	depends = mediawiki>=1.37
+	depends = mediawiki<1.38
 	provides = mediawiki-extension-magicnocache
 	conflicts = mediawiki-extension-magicnocache
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/MagicNoCache#branch=REL1_36
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/MagicNoCache#branch=REL1_37
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-magicnocache-git
