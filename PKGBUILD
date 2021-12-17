@@ -1,4 +1,4 @@
-# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 # Contributor: PedroHLC <root AT pedrohlc DOT com>
 
 pkgname='notejot-git'
