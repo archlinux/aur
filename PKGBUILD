@@ -7,6 +7,7 @@ pkgrel=1.1
 pkgdesc='An ElectronJS Dashboard App to show wallets balances from Chia and Forks in one convenient location.'
 arch=('x86_64')
 url='https://github.com/aaroncarpenter/fork-board'
+license=('MIT')
 depends=('gtk3' 'nss')
 makedepends=( 'git' 'npm' 'yarn')
 source=(${_pkgname_src}-${pkgver}.tar.gz::https://github.com/aaroncarpenter/fork-board/archive/refs/tags/v${pkgver}.tar.gz 
