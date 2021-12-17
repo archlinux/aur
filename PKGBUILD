@@ -1,6 +1,6 @@
 # Maintainer: Dennis Stengele <dennis@schuppentier.org>
 pkgname=pdns-cli-git
-pkgver=master
+pkgver=r47.d1a6d3c
 pkgrel=1
 pkgdesc="A PowerDNS HTTPS API client implementation in Python"
 arch=("any")
