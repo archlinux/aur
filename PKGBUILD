@@ -4,8 +4,8 @@
 
 _npmname=express
 pkgname=nodejs-express
-pkgver=4.17.1
-pkgrel=2
+pkgver=4.17.2
+pkgrel=1
 pkgdesc="Fast, unopinionated, minimalist web framework for node."
 arch=('any')
 url="https://github.com/expressjs/express"
@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('2600b551c4e3f56d1bd5e28505d4ecfe3e73e58cc3a0ad5be08c0bf395aa02a9')
+sha256sums=('aaf7dfe96778f72affd0645582a49590b79030259d7d259d9d0c1ed2e94e3fbf')
 
 package() {
     cd "$srcdir"

@@ -1,14 +1,14 @@
 pkgbase = nodejs-express
 	pkgdesc = Fast, unopinionated, minimalist web framework for node.
-	pkgver = 4.17.1
-	pkgrel = 2
+	pkgver = 4.17.2
+	pkgrel = 1
 	url = https://github.com/expressjs/express
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = express-4.17.1.tgz
-	source = https://registry.npmjs.org/express/-/express-4.17.1.tgz
-	sha256sums = 2600b551c4e3f56d1bd5e28505d4ecfe3e73e58cc3a0ad5be08c0bf395aa02a9
+	noextract = express-4.17.2.tgz
+	source = https://registry.npmjs.org/express/-/express-4.17.2.tgz
+	sha256sums = aaf7dfe96778f72affd0645582a49590b79030259d7d259d9d0c1ed2e94e3fbf
 
 pkgname = nodejs-express
