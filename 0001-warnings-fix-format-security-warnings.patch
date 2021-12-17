@@ -1,4 +1,4 @@
-From ae91f1da2b12d17e985e44fd8264892d81d1214d Mon Sep 17 00:00:00 2001
+From ddef2718ea1ecb7ceb473e6c259b03bd8e1e3f47 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 28 Nov 2021 16:48:29 +0100
 Subject: [PATCH] warnings: fix format-security warnings
@@ -8,7 +8,7 @@ Subject: [PATCH] warnings: fix format-security warnings
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/plugins/builtin/source/content/views/view_strings.cpp b/plugins/builtin/source/content/views/view_strings.cpp
-index e2d51b7..f952246 100644
+index e2d51b7..c250fec 100644
 --- a/plugins/builtin/source/content/views/view_strings.cpp
 +++ b/plugins/builtin/source/content/views/view_strings.cpp
 @@ -133,7 +133,7 @@ namespace hex::plugin::builtin {
@@ -16,7 +16,7 @@ index e2d51b7..f952246 100644
                      }, this);
                      if (this->m_regex && !this->m_pattern_parsed) {
 -                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "hex.builtin.view.strings.regex_error"_lang);
-+                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "%s", "hex.builtin.view.strings.regex_error"_lang);
++                        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "%s", static_cast<const char *>("hex.builtin.view.strings.regex_error"_lang));
                      }
  
                      if (ImGui::Button("hex.builtin.view.strings.extract"_lang))

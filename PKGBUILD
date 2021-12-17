@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
@@ -21,17 +21,17 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
 cksums=('SKIP'
         'SKIP'
         'SKIP'
-        '707577605'
+        '154827759'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'a8c0f2357e156bea60fc80c35f1801ce2a549bd1294b83bd84c5b2616312f8b7'
+            'bfa604de97d5204991c6055003c90f0e0296f7c41ccb2ab6bd114019d5e89d52'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
-        '34ac9a15ad8a29333ef5a6a3c6a2606ecf6f151d72a1c14c16e6ab1d8582fe472d6be5d704f41826088cfcd2870c1e64597850be788d640ee7361079ce90682e'
+        '5b44abe67644d3e3cd88818603235d30df720f40af7021d5ee32ded30171bbf9994461d4277edd0da9c3d92ff8393050bee16b9657b7e9892102ece8ac60eb03'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
@@ -56,8 +56,6 @@ build() {
     -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_SKIP_RPATH=ON \
-    -D CMAKE_C_COMPILER="gcc" \
-    -D CMAKE_CXX_COMPILER="g++" \
     -D USE_SYSTEM_LLVM=ON \
     -D USE_SYSTEM_YARA=ON \
     -D USE_SYSTEM_FMT=ON \
