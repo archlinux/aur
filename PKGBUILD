@@ -1,10 +1,11 @@
-# Maintainer: Jeff Henson <jeff@henson.io>
+# Maintainer: 10101000 <10101000_proton [at] pm.me>
+# Contributor: Jeff Henson <jeff [at] henson.io>
 # Contributor: Justin Settle <jus10 [at] partlycloudy.org>
 # Contributor: Kyle Keen <keenerd [at] gmail.com>, das-ich <das-ich [at] yandex.ru>
 
 pkgname=powerpanel
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/"
@@ -23,12 +24,12 @@ sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df'
 
 if [[ $CARCH = 'x86_64' ]]; then
   source+=("powerpanel_${pkgver}_x86_64.tar.gz::https://www.cyberpower.com/global/en/File/GetFileSampleByType?fileId=SU-18070001-08&fileType=Download%20Center&fileSubType=FileOriginal")
-  sha256sums+=('99804595dba623bead77e348ae9d89d982516175d81f7a6af8c41de26dd7e40d')
+  sha256sums+=('6240dae59202531df91ccf0655cf6c61120fe64dc14642c46579366ed0d8212d')
 fi
 
 if [[ $CARCH = 'i686' ]]; then
   source+=("powerpanel_${pkgver}_i686.tar.gz::https://www.cyberpower.com/global/en/File/GetFileSampleByType?fileId=SU-18070001-05&fileType=Download%20Center&fileSubType=FileOriginal")
-  sha256sums+=('15167da60043c00d72581310e50f5d1d0245f67bbda6a22214586c481e229150')
+  sha256sums+=('25921b474ae5795f7a905368dc06b37b9e49d328cd162a032bcb171a5954d7d1')
 fi
 
 package() {
