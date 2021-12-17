@@ -9,7 +9,7 @@ name=cloudcompare
 _fragment="#tag=v2.11.3"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
-pkgrel=5
+pkgrel=6
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -51,7 +51,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib
         -DCMAKE_BUILD_TYPE=Release
         -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
-        -DCOMPILE_CC_CORE_LIB_WITH_TBB=ON
+        -DCOMPILE_CC_CORE_LIB_WITH_TBB=OFF
         -DWITH_FFMPEG_SUPPORT:BOOL=ON
         -DFFMPEG_INCLUDE_DIR:PATH=/usr/include
         -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib
