@@ -3,7 +3,7 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -15,7 +15,7 @@ makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!strip) #to speed up build
 
-_tools_commit=fd715cfe991481ea1ec563afc51e3f362df9b8cb
+_tools_commit=4a2acd1b2052bbb9ced62a1da0f1514a32943928
 source=(
   "theia-electron.sh"
   "https://gitlab.com/ccorn/theia-packaging-tools/-/raw/$_tools_commit/make-package-json.sh"
