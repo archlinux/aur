@@ -1,25 +1,28 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Gokberk Yaltirakli <aur at gkbrk dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='hourglass'
-pkgver=1.2.3
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Simple clock application that provides stopwatches, alarms, and timers'
 arch=('x86_64')
 url='https://github.com/sgpthomas/hourglass'
 license=('GPL3')
-depends=('granite' 'libnotify')
+depends=('granite' 'libnotify' 'libhandy')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('37621049ff33ad10db9e1a7e011a9b47db4166ffeb3df3b0d6309961e5b8e798')
+sha256sums=('a4d9dcb95ab3b41b6e4f60d1fa5d83f70d5b533a5e1e579ba63e0830d55c4208')
 
-build() {
-  arch-meson "${pkgname}-${pkgver}" build
-  meson compile -C build
+build () {
+    cd "${pkgname}-${pkgver}"
+    meson build --prefix=/usr
+    cd build
+    ninja
 }
 
-package() {
-  DESTDIR="${pkgdir}" meson install -C build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}-${pkgver}/README.md"
+package () {
+    cd "${pkgname}-${pkgver}"
+    cd build
+    DESTDIR="${pkgdir}" ninja install
+    cp "${pkgdir}/usr/bin/com.github.sgpthomas.hourglass" "${pkgdir}/usr/bin/hourglass"
 }
-
-# vim: ts=2 sw=2 et:
