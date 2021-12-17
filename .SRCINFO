@@ -1,0 +1,21 @@
+pkgbase = flowtime-git
+	pkgdesc = Get what motivates you done, without losing concentration
+	pkgver = 1.1.0.r2.g5f29484
+	pkgrel = 1
+	url = https://github.com/Diego-Ivan/Flowtime
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = gtk4
+	depends = gstreamer
+	depends = libadwaita
+	provides = flowtime
+	conflicts = flowtime
+	source = git+https://github.com/Diego-Ivan/Flowtime.git
+	sha512sums = SKIP
+
+pkgname = flowtime-git
