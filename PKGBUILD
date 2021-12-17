@@ -19,18 +19,17 @@ _merge_requests_to_use=('1862' '2048')
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=41.1
-pkgrel=3
+pkgver=42.1
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gtk4
-         gnome-settings-daemon gnome-themes-extra gsettings-desktop-schemas
-         libcanberra-pulse libgdm libsecret mutter nm-connection-editor unzip
-         gstreamer libibus gnome-autoar gnome-disk-utility gst-plugin-pipewire
-         libsoup3)
+         gnome-settings-daemon gsettings-desktop-schemas libcanberra-pulse
+         libgdm libsecret mutter nm-connection-editor unzip gstreamer libibus
+         gnome-autoar gnome-disk-utility gst-plugin-pipewire libsoup3)
 makedepends=(gtk-doc gnome-control-center evolution-data-server
              gobject-introspection git meson sassc asciidoc bash-completion)
 checkdepends=(xorg-server-xvfb)
@@ -39,7 +38,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=a1b537eebf1b7cfb7249fa33c7fbb9ee6ac55b69  # tags/41.1^0
+_commit=618965fcd4a16255235dc6e27a88fe29118afd22  # tags/41.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'

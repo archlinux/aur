@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell
-	pkgver = 41.1
-	pkgrel = 3
+	pkgver = 42.1
+	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -25,7 +25,6 @@ pkgbase = gnome-shell-performance
 	depends = gnome-session
 	depends = gtk4
 	depends = gnome-settings-daemon
-	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas
 	depends = libcanberra-pulse
 	depends = libgdm
@@ -42,10 +41,10 @@ pkgbase = gnome-shell-performance
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
-	provides = gnome-shell=41.1
-	provides = gnome-shell=1:41.1
+	provides = gnome-shell=42.1
+	provides = gnome-shell=1:42.1
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=a1b537eebf1b7cfb7249fa33c7fbb9ee6ac55b69
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=618965fcd4a16255235dc6e27a88fe29118afd22
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -59,7 +58,6 @@ pkgname = gnome-shell-performance
 	depends = gnome-session
 	depends = gtk4
 	depends = gnome-settings-daemon
-	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas
 	depends = libcanberra-pulse
 	depends = libgdm
