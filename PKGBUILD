@@ -2,7 +2,7 @@
 
 pkgname=strace-with-colors
 _pkgname=strace
-pkgver=5.14
+pkgver=5.15
 pkgrel=1
 pkgdesc='A diagnostic, debugging and instructional userspace tracer (with colors)'
 arch=(x86_64)
