@@ -5,7 +5,7 @@
 
 pkgname=python-openai
 _pkgname=openai
-pkgver=0.10.2
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='convenient access to the OpenAI API from applications written in the Python language.'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python' 'python-requests' 'python-tqdm')
 makedepends=('python-setuptools')
 optdepends=()
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/openai/${_pkgname}-python/archive/v${pkgver}.tar.gz")
-sha512sums=('189a4f1719b432eab0a86696a52d44002626563aa023cdd619b62e61b985f21252ce529657e6498c0c4695d3839404a4154a02487b53187f4ae75609bc237443')
+sha512sums=('3ff446e1fbfb03e7c6cd9cd709e58f968dcc144fcb8316e6fc35c0825247c3a0fa9049bca07341f162c8d5368094b6e38028cf4bd10767c09ffe2b024bfdf56b')
 
 build()
 {
