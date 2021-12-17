@@ -2,15 +2,15 @@
 # Contributor: Archie <xMickael@ifrance.com>
 
 pkgname=tk-matchentry
-pkgver=0.4
-pkgrel=5
+pkgver=0.5
+pkgrel=1
 pkgdesc="Entry widget with advanced auto-completion capability"
 depends=('tk' 'perl-tk')
 arch=('any')
 license=('GPL')
-source=(http://search.cpan.org/CPAN/authors/id/W/WH/WHOM/Tk-MatchEntry-$pkgver.tar.gz)
-url="http://search.cpan.org/~whom/Tk-MatchEntry/"
-md5sums=('aad058937866810a67e973d24a8a8380')
+source=(https://cpan.metacpan.org/authors/id/A/AS/ASB/Tk-MatchEntry-${pkgver}.tar.gz)
+url="https://metacpan.org/pod/Tk::MatchEntry"
+md5sums=('51261a69f23067ac18d29a53d366f5d2')
 
 build() {
 	cd $srcdir/Tk-MatchEntry-$pkgver
