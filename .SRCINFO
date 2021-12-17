@@ -1,0 +1,23 @@
+pkgbase = python-tade-git
+	pkgdesc = A discussion/forum/link aggregator application - library only
+	pkgver = r472.2543902
+	pkgrel = 1
+	url = https://github.com/epilys/tade
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python-django
+	depends = python-linkify-it-py
+	depends = python-markdown-it-py
+	depends = python-matplotlib
+	depends = python-pdfminer.six
+	depends = python-pygraphviz
+	depends = python-igraph
+	depends = python-wand
+	provides = python-tade
+	provides = tade
+	options = !strip
+	source = python-tade-git::git+https://github.com/epilys/tade
+	sha256sums = SKIP
+
+pkgname = python-tade-git
