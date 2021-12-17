@@ -8,8 +8,8 @@
 # Since upstream uploads can happen at any time, there may be a time for this build to fail since the version has changed, but I aim to keep it updated at least once a week. I'll automate it later: to do.
 
 pkgname=firefox-kde-opensuse-rpm
-pkgver="95.0.953.3"
-_pkgver="95.0-953.3"
+pkgver="95.0.953.5"
+_pkgver="95.0-953.5"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
 arch=(x86_64)
@@ -21,7 +21,8 @@ makedepends=("gzip")
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
 source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
-sha512sums_x86_64=('3c1a5538e594dd49e7aea6054a8030f4ea71b810a6cd4621c06d346522ef3d6467ef05df0fe5755c5eab7be01938bbfdf93196466349b606087df0572093ec18')
+sha512sums_x86_64=('cdd92f8f5c1e9d31ae8abe45e94383f512e39d0502bea0ef3370521d325f0349f9b9ae8deff01d56c4b6a51490578cf8f25060f5e2f25fbc8b376dafdaa116da')
+
 prepare() {
     cd "usr"
     
@@ -45,3 +46,4 @@ package() {
     mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"  # Make file structure more in-line with Arch
     ln -sf "/usr/lib/firefox/firefox.sh" "${pkgdir}/usr/bin/firefox"
 }
+
