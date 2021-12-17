@@ -1,11 +1,11 @@
 pkgbase = stern-bin
 	pkgdesc = Multi pod and container log tailing for Kubernetes
-	pkgver = 1.20.1
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/stern/stern
 	arch = x86_64
 	license = apache
-	source = stern-1.20.1.tar.gz::https://github.com/stern/stern/releases/download/v1.20.1/stern_1.20.1_linux_amd64.tar.gz
-	sha256sums = a7c24a6804e4c7a1fcf5ed6db1cdaa6f8ff9c4a640939c2be00c84b116668094
+	source = stern-1.21.0.tar.gz::https://github.com/stern/stern/releases/download/v1.21.0/stern_1.21.0_linux_amd64.tar.gz
+	sha256sums = 18bb5afa0426d1ca2e975bee2a04037378d99ffdda6e3383a575ad28d5c2d04d
 
 pkgname = stern-bin
