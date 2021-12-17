@@ -2,7 +2,7 @@
 
 pkgname=gdigi
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="gdigi provides Digitech X-Edit functionality to Linux users"
 arch=('i686' 'x86_64')
