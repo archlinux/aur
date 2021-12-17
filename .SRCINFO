@@ -1,7 +1,7 @@
 pkgbase = mint-themes-legacy
 	pkgdesc = A collection of legacy mint themes.
-	pkgver = 1.8.9
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-themes-legacy
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = mint-themes-legacy
 	conflicts = mint-x-theme
 	conflicts = mint-y-theme
 	conflicts = mint-cinnamon-themes
-	source = mint-themes-legacy_1.8.9.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes-legacy/mint-themes-legacy_1.8.9.tar.xz
-	sha256sums = b92352e35ee482c0502f556f875939ea47e9b55d898411d9907ed8e5638a649a
+	source = mint-themes-legacy_1.9.0.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes-legacy/mint-themes-legacy_1.9.0.tar.xz
+	sha256sums = 73ec55313d2fe9a865598445c1aebd4a1f60fb29e0170507e280d708c85add25
 
 pkgname = mint-themes-legacy
