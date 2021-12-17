@@ -1,37 +1,35 @@
---- a/setup.py	2020-01-12 15:51:13.000000000 -0500
-+++ b/setup.py	2021-01-12 22:54:31.181954242 -0500
-@@ -150,7 +150,7 @@
-     return mb_tag
+diff -urN line_profiler-3.3.1-orig/setup.py line_profiler-3.3.1/setup.py
+--- line_profiler-3.3.1-orig/setup.py	2021-12-17 14:50:32.739504227 -0500
++++ line_profiler-3.3.1/setup.py	2021-12-17 14:50:41.046174297 -0500
+@@ -215,13 +215,16 @@
  
  
--USE_SKBUILD = True
-+USE_SKBUILD = False
- if USE_SKBUILD:
- 
-     if '--universal' in sys.argv:
-@@ -181,6 +181,7 @@
-     try:
-         from Cython.Distutils import build_ext
-+        from Cython.Build import cythonize
-         cmdclass = dict(build_ext=build_ext)
-         line_profiler_source = '_line_profiler.pyx'
-     except ImportError:
-         cmdclass = {}
-@@ -196,12 +197,13 @@
+ if __name__ == '__main__':
+-    if '--universal' in sys.argv:
+-        # Dont use scikit-build for universal wheels
+-        # if 'develop' in sys.argv:
+-        sys.argv.remove('--universal')
+-        from setuptools import setup  # NOQA
+-    else:
+-        from skbuild import setup
++    from setuptools import setup  # NOQA
++    from setuptools.extension import Extension
++    from Cython.Build import cythonize
++    extension = Extension('line_profiler._line_profiler',
++                          sources=["line_profiler/_line_profiler.pyx",
++                                   'line_profiler/timers.c',
++                                   'line_profiler/unset_trace.c'],
++                          depends=['python25.pxd'],
++                          extra_compile_args=["-DHAVE_GETTIMEOFDAY"])
++    extension = cythonize([extension])
      setupkw = dict(
-         cmdclass=cmdclass,
-         ext_modules=[
--            Extension('_line_profiler',
--                      sources=[line_profiler_source, 'timers.c', 'unset_trace.c'],
--                      depends=['python25.pxd']),
-+            Extension('line_profiler._line_profiler',
-+                      sources=["line_profiler/_line_profiler.pyx", 'line_profiler/timers.c', 'line_profiler/unset_trace.c'],
-+                      depends=['python25.pxd'],
-+                      extra_compile_args=["-DHAVE_GETTIMEOFDAY"]),
+         name=NAME,
+         version=VERSION,
+@@ -251,6 +254,7 @@
+             'Topic :: Software Development',
          ],
-     )
--
-+setupkw["ext_modules"] = cythonize(setupkw["ext_modules"])
- long_description = """\
- line_profiler will profile the time individual lines of code take to execute.
- The profiler is implemented in C via Cython in order to reduce the overhead of
+         # py_modules=find_packages(),
++        ext_modules=extension,
+         packages=list(find_packages()),
+         py_modules=['kernprof', 'line_profiler'],
+         entry_points={
