@@ -23,7 +23,7 @@ pkgbase = linux-pf-git
 	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.16
 	source = config
 	sha256sums = SKIP
-	sha256sums = 2054eeff3d6ec5b1eeae47404634bc9ad149c11d03a4aeb5ab7e70b676c3ee00
+	sha256sums = 6628349f4c27b26be1863ef131cfa2a7c30a77077f0acdcad6f1c172546a9245
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
