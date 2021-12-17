@@ -1,8 +1,8 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g4-kpe
-pkgver=0.4
-pkgrel=1
+pkgver=0.5
+pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
 license=('MPL')
@@ -30,7 +30,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
         "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
-        "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
+        "mozwayland-add-missing-stub.patch::$_filesurl/patches/mozwayland-add-missing-stub.patch"
         )
 sha256sums=('SKIP'
             '76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb'
@@ -47,7 +47,7 @@ sha256sums=('SKIP'
             '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             'c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4'
             'e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5'
-            '85c7287cd38d218305bf80dfb462db98ba27d55b13ba30275194e28b8fa03f48')
+            'c4f1cb819856e355d9d922dfc33ca1e5c4d261950708433999d3d1aea3bbd93f')
 
 prepare() {
 
@@ -67,7 +67,7 @@ prepare() {
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
   patch -Np1 -i ../fix-langpack-id.patch
-  patch -Np1 -i ../fix-wayland-build.patch
+  patch -Np1 -i ../mozwayland-add-missing-stub.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
