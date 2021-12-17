@@ -1,0 +1,14 @@
+pkgbase = python-pywttr-models
+	pkgdesc = Pydantic models for pywttr and aiopywttr
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/monosans/pywttr-models
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pydantic
+	source = https://files.pythonhosted.org/packages/source/p/pywttr-models/pywttr-models-0.1.1.tar.gz
+	sha256sums = 14999a73403213638c4eb4582901a8ce8cc3bcce85935d3cd4113e38bbd6ec0f
+
+pkgname = python-pywttr-models
