@@ -2,8 +2,8 @@
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git' 'gcc-fortran-multilib-git')
-pkgver=11.0.0.r176388.8415ced06ed
-_pkgver_base=11.0.0
+pkgver=12.0.0.r190435.840a22e0fee
+_pkgver_base=12.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')

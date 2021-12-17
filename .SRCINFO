@@ -1,6 +1,6 @@
 pkgbase = gcc-multilib-trunk-git
 	pkgdesc = The GNU Compiler Collection developmental snapshot
-	pkgver = 11.0.0.r176388.8415ced06ed
+	pkgver = 12.0.0.r190435.840a22e0fee
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = any
@@ -22,11 +22,11 @@ pkgname = gcc-multilib-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends for multilib
 	install = gcc.install
 	groups = multilib-devel
-	depends = gcc-libs-multilib-git=11.0.0.r176388.8415ced06ed-1
+	depends = gcc-libs-multilib-git=12.0.0.r190435.840a22e0fee-1
 	depends = binutils>=2.25
 	depends = libmpc
-	provides = gcc=11.0.0.r176388.8415ced06ed-1
-	provides = gcc-multilib=11.0.0.r176388.8415ced06ed-1
+	provides = gcc=12.0.0.r190435.840a22e0fee-1
+	provides = gcc-multilib=12.0.0.r190435.840a22e0fee-1
 	conflicts = gcc
 	options = staticlibs
 
@@ -34,9 +34,9 @@ pkgname = gcc-libs-multilib-git
 	pkgdesc = Runtime libraries shipped by GCC for multilib
 	install = gcc-libs.install
 	depends = glibc>=2.20
-	depends = lib32-gcc-libs-git=11.0.0.r176388.8415ced06ed-1
-	provides = gcc-libs=11.0.0.r176388.8415ced06ed-1
-	provides = gcc-libs-multilib=11.0.0.r176388.8415ced06ed-1
+	depends = lib32-gcc-libs-git=12.0.0.r190435.840a22e0fee-1
+	provides = gcc-libs=12.0.0.r190435.840a22e0fee-1
+	provides = gcc-libs-multilib=12.0.0.r190435.840a22e0fee-1
 	conflicts = gcc-libs
 	options = !emptydirs
 	options = !strip
@@ -44,22 +44,21 @@ pkgname = gcc-libs-multilib-git
 pkgname = lib32-gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC (32-bit)
 	depends = lib32-glibc>=2.20
-	provides = lib32-gcc-libs=11.0.0.r176388.8415ced06ed-1
+	provides = lib32-gcc-libs=12.0.0.r190435.840a22e0fee-1
 	conflicts = lib32-gcc-libs
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-objc-multilib-git
 	pkgdesc = Objective-C front-end for GCC for multilib
-	depends = gcc-multilib-git=11.0.0.r176388.8415ced06ed-1
-	provides = gcc-objc=11.0.0.r176388.8415ced06ed-1
+	depends = gcc-multilib-git=12.0.0.r190435.840a22e0fee-1
+	provides = gcc-objc=12.0.0.r190435.840a22e0fee-1
 	conflicts = gcc-objc
 
 pkgname = gcc-fortran-multilib-git
 	pkgdesc = Fortran front-end for GCC for multilib
-	depends = gcc-multilib-git=11.0.0.r176388.8415ced06ed-1
-	provides = gcc-fortran=11.0.0.r176388.8415ced06ed-1
+	depends = gcc-multilib-git=12.0.0.r190435.840a22e0fee-1
+	provides = gcc-fortran=12.0.0.r190435.840a22e0fee-1
 	conflicts = gcc-fortran
 	options = !emptydirs
 	options = !strip
-
