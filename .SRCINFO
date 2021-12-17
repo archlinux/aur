@@ -1,6 +1,6 @@
 pkgbase = restack
 	pkgdesc = Makes interactive Git rebase nicer.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/abhinav/restack
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = restack
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = restack-0.5.1.tar.gz::https://github.com/abhinav/restack/archive/v0.5.1.tar.gz
-	sha256sums = 0cd14ffccdaaa519a243951efaf7f4edac38655bc9d7f9f6e2db304a336da844
+	source = restack-0.5.2.tar.gz::https://github.com/abhinav/restack/archive/v0.5.2.tar.gz
+	sha256sums = 00985baca2f159478f015a74c653d747a02d6128b42b98c66b7bf9adef19a99e
 
 pkgname = restack
