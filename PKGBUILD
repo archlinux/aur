@@ -1,5 +1,5 @@
 # Contributor: Graziano Giuliani
-
+# Maintainer : Austin Cross <austincross@gmail.com>
 pkgname=g2clib
 pkgver=1.6.0
 pkgrel=2
@@ -8,7 +8,7 @@ url="http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2"
 license=("custom:NWS")
 arch=('i686' 'x86_64')
 provides=(g2clib)
-dependes=(jasper libpng)
+depends=(jasper libpng)
 options=('staticlibs')
 source=(http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2/${pkgname}-${pkgver}.tar
         NWS_license.txt)
