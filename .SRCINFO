@@ -1,6 +1,6 @@
 pkgbase = recaf
 	pkgdesc = A modern Java bytecode editor
-	pkgver = 2.21.5
+	pkgver = 2.21.7
 	pkgrel = 1
 	url = https://github.com/Col-E/Recaf
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = recaf
 	depends = java-runtime
 	depends = java-openjfx
 	depends = ttf-font
-	noextract = recaf-2.21.5-J8-jar-with-dependencies.jar
-	source = https://github.com/Col-E/Recaf/releases/download/2.21.5/recaf-2.21.5-J8-jar-with-dependencies.jar
-	source = https://raw.githubusercontent.com/Col-E/Recaf/2.21.5/LICENSE
-	sha256sums = 65023ad714f7e2b55a45738ce78e7b8ceba4c57d7d2fe097dd313444559eb824
+	noextract = recaf-2.21.7-J8-jar-with-dependencies.jar
+	source = https://github.com/Col-E/Recaf/releases/download/2.21.7/recaf-2.21.7-J8-jar-with-dependencies.jar
+	source = https://raw.githubusercontent.com/Col-E/Recaf/2.21.7/LICENSE
+	sha256sums = ea3f2bc4c6c77b5c3a03d38763101ea5c516ebb47da5028f7893b177d15efcad
 	sha256sums = a13cb1a246bc0986c7185510a7ea9880e9f8eaf6d3a0437e2f3f2e2e85e9abb5
 
 pkgname = recaf
