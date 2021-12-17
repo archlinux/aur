@@ -16,7 +16,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.40.r125.gbcd867f8
+pkgver=0.3.42.r26.g15ce86af
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -118,9 +118,7 @@ package_pipewire-full-git() {
 
   _pick v4l2 usr/bin/pw-v4l2 usr/lib/pipewire-$_ver/v4l2
 
-  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-zeroconf-discover.so
-  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-raop-discover.so
-  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-raop-sink.so
+  _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-{raop,zeroconf}-discover.so
 
   _pick gst usr/lib/gstreamer-1.0
 
