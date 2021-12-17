@@ -10,7 +10,7 @@ url=https://github.com/sdushantha/tmpmail
 license=(MIT)
 depends=(w3m curl jq)
 makedepends=(git)
-source=("git+$url.git#commit=$_commit")
+source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=(SKIP)
 
 package() {

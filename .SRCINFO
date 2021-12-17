@@ -9,7 +9,7 @@ pkgbase = tmpmail
 	depends = w3m
 	depends = curl
 	depends = jq
-	source = git+https://github.com/sdushantha/tmpmail.git#commit=0fdfe4955cfd0fff44a6c9073a4c30816e1cd615
+	source = tmpmail::git+https://github.com/sdushantha/tmpmail.git#commit=0fdfe4955cfd0fff44a6c9073a4c30816e1cd615
 	md5sums = SKIP
 
 pkgname = tmpmail
