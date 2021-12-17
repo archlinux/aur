@@ -83,6 +83,8 @@ DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
                
 NOGZ="YES"        # Don't compress .el files.
+
+JIT="YES"         # Enable JIT compilation.
 ################################################################################
 
 ################################################################################

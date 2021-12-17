@@ -15,6 +15,7 @@ pkgbase = emacs-native-comp-git-enhanced
 	depends = libxml2
 	depends = jansson
 	depends = harfbuzz
+	depends = libgccjit
 	depends = gtk3
 	depends = libjpeg-turbo
 	depends = giflib
