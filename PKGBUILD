@@ -1,9 +1,9 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=nhiicc
-# XXX: Upstream does not provide a version string :/
-pkgver=20200319
-pkgrel=5
+# XXX: Upstream does not provide a version string - use the last modified date
+pkgver=20211004
+pkgrel=1
 arch=(x86_64)
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
 license=(custom)
