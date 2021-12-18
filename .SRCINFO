@@ -1,7 +1,7 @@
 pkgbase = roonbridge
 	pkgdesc = The music player for music lovers
-	pkgver = 1.7.571
-	pkgrel = 2
+	pkgver = 1.8.880
+	pkgrel = 1
 	url = https://roonlabs.com/
 	install = roonbridge.install
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = roonbridge
 	sha256sums_aarch64 = SKIP
 
 pkgname = roonbridge
-
