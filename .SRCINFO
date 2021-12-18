@@ -10,6 +10,7 @@ pkgbase = recaf-git
 	depends = java-openjfx
 	depends = ttf-font
 	provides = recaf
+	conflicts = recaf
 	conflicts = recaf-bin
 	replaces = recaf
 	source = recaf::git+https://github.com/Col-E/Recaf#branch=master
