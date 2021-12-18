@@ -5,7 +5,7 @@ pkgname=${_appName}-dev
 _name=${pkgname}
 upstreamName="PyFunceble-dev"
 pkgver=4.0.2b7
-pkgrel=1
+pkgrel=2
 pkgdesc="The tool to check the availability or syntax of domain, IP or URL."
 arch=('any')
 url="https://pyfunceble.github.io"
@@ -29,6 +29,7 @@ depends=(
     'python-requests'
     'python-ruamel-yaml'
     'python-setuptools'
+    'python-shtab'
     'python-sqlalchemy'
     'python-toml'
     'python3'
