@@ -1,21 +1,33 @@
 --- 1/GNUmakef.def
 +++ 2/GNUmakef.def
-@@ -116,7 +116,7 @@
+@@ -159,10 +159,11 @@
+ LIBEXT=.a
+ CFLAGS+=-DHAVE_SNPRINTF -DHAVE_VSNPRINTF -DHAVE_STDARG_H
  ifeq ($(WIDE_NCURSES),1)
- LIBCURSES=-L/opt/csw/lib -lncursesw
- else
--LIBCURSES=-L/opt/csw/lib -lncurses
-+LIBCURSES=-L/opt/ncurses-nonwide/lib -lncurses
- endif
- else
- ifeq ($(PLATFORM),osx) # Mac OSX
-@@ -154,7 +154,8 @@
- CFLAGS+=-I/usr/include/ncursesw/
- LIBCURSES=-lncursesw
+-CFLAGS+=-I/usr/include/ncursesw/
+-LIBCURSES=-lncursesw
++LIBCURSES=-L../../ncurses/usr/lib/ncurses-golded/lib -lncursesw
++CFLAGS+=-I../../ncurses/usr/lib/ncurses-golded/include
  else
 -LIBCURSES=-lncurses
-+CFLAGS+=-D_GNU_SOURCE -D_DEFAULT_SOURCE -I/opt/ncurses-nonwide/include
-+LIBCURSES=-L/opt/ncurses-nonwide/lib -lncurses
++LIBCURSES=-L../../ncurses/usr/lib/ncurses-golded/lib -lncurses
++CFLAGS+=-I../../ncurses/usr/lib/ncurses-golded/include
  endif
  endif
  endif
+--- 1/GNUmakef.prg	2021-12-18 20:20:18.934724854 +0200
++++ 2/GNUmakef.prg	2021-12-18 20:20:24.094724915 +0200
+@@ -13,9 +13,10 @@
+ FGLIBS=$(addprefix $(FLIBPATH)/lib, $(addsuffix $(LIBEXT), $(GLIBS)))
+ 
+ $(TOP)/$(BIN)/$(SHORTTARGET)$(PLATFORM)$(EXEEXT): $(OBJS) $(FGLIBS) $(ADDS)
+-	@echo -n Linking $(TARGET)...
+-	@$(CXX) $(LNKFLAGS) -o $@ $(FOBJPATH)/*$(OBJEXT) $(ADDS) $(LIBS) -L$(FLIBPATH)
+-	@echo done
++	echo -n Linking $(TARGET)...
++	pwd
++	$(CXX) $(LNKFLAGS) -o $@ $(FOBJPATH)/*$(OBJEXT) $(ADDS) $(LIBS) -L$(FLIBPATH)
++	echo done
+ 
+ $(FGLIBS): $(GLIBS)
+ 
