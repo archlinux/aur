@@ -1,17 +1,16 @@
 pkgbase = xorg-rendercheck
 	pkgdesc = Suite of tests for the render extension
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = renderproto
+	makedepends = xorgproto
 	depends = libxrender
 	source = http://xorg.freedesktop.org//releases/individual/app/rendercheck-1.5.tar.gz
 	source = dst_color.diff
-	md5sums = 92ddef6d01f02529521af103f9b9bf60
-	md5sums = e317bac4cbb0a70d18f6951f661d55c0
+	sha256sums = 1553fef61c30f2524b597c3758cc8d3f8dc1f52eb8137417fa0667b0adc8a604
+	sha256sums = 096f2e14ce37ac62f221779335f6867bf7ecd4ce4132c4e8a018e762a9cbc7cb
 
 pkgname = xorg-rendercheck
-
