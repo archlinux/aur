@@ -1,7 +1,7 @@
 pkgbase = python-seabreeze
 	pkgdesc = Python module for oceanoptics spectrometers
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ap--/python-seabreeze
 	arch = x86_64
 	license = MIT
@@ -18,4 +18,3 @@ pkgbase = python-seabreeze
 	sha256sums = 2c62b399a3b3fa61a4c39c32c4242f1b1eaad9ba2a5810f5020d44959b5f9c8a
 
 pkgname = python-seabreeze
-

@@ -3,7 +3,7 @@
 
 pkgname=python-seabreeze
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for oceanoptics spectrometers"
 arch=(x86_64)
 url="https://github.com/ap--/python-seabreeze"
@@ -27,6 +27,8 @@ sha256sums=('6418dda3278274d006a9d2a86fda82c4160ade6c9b42fd66e419d56fd17810e3'
 
 prepare(){
   cd python-seabreeze-${pkgver}
+
+  curl --silent https://patch-diff.githubusercontent.com/raw/ap--/python-seabreeze/pull/143.patch | patch -p1
 
   # version it ourselves because we don't have a .git folder
   echo "[metadata]" > setup.cfg
