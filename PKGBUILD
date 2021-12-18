@@ -1,14 +1,13 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=chunghwa-post-webatm
-# peres -v ATMXHRService.exe | grep 'Product Version' | cut -f 2 -d : | sed 's# ##g'
-pkgver=1.2109.7.1
+pkgver=20210907
 pkgrel=1
 pkgdesc='WebATM plugin for Chunghwa Post (中華郵政 WebATM 元件)'
 arch=(any)
 url='https://webatm.post.gov.tw/'
 license=(unknown)
-depends=(wine-winscard lib32-gnutls)
+depends=(wine-winscard lib32-gnutls lib32-pcsclite)
 makedepends=(msitools gendesk pev imagemagick)
 source=("ATMSetup-$pkgver.msi"::"https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi"
         "$pkgname")
