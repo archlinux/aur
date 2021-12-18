@@ -8,7 +8,6 @@ pkgbase = pterodactyl-wings
 	license = MIT
 	makedepends = go
 	depends = docker
-	depends = pterodactyl-wings
 	conflicts = pterodactyl-daemon
 	source = pterodactyl-wings-1.5.3.tar.gz::https://github.com/pterodactyl/wings/archive/refs/tags/v1.5.3.tar.gz
 	source = pterodactyl-wings.service
