@@ -1,0 +1,12 @@
+pkgbase = plymouth-theme-hot-dog
+	pkgdesc = Plymouth Happy Hot Dog Theme
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://wwoods.fedorapeople.org/hot-dog/
+	arch = any
+	license = CC-BY-SA
+	depends = plymouth
+	source = https://wwoods.fedorapeople.org/hot-dog/plymouth-theme-hot-dog-0.4.tar.bz2
+	sha512sums = fbf75652e741e7780edfa66242498696f487fc406b8500b094d6693436e63e1f405f081656f86bb84b497823263e719272c798a4a853d4757f034eee710e834f
+
+pkgname = plymouth-theme-hot-dog
