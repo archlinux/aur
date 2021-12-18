@@ -293,6 +293,7 @@ package() {
         cd "${srcdir}/${i}/build-archlinux"
         make DESTDIR="$pkgdir" install
     done
+    rm -rf ${pkgdir}/usr/lib/*.a
 }
 
 md5sums=('a1abb8245e098573da0abf7735fc3840'
