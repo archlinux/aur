@@ -1,19 +1,20 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 _name=jupyter_kernel_test
 pkgname=python-$_name
-pkgver=0.2.2
-pkgrel=2
-pkgdesc=''
+pkgver=0.4.3
+pkgrel=1
+pkgdesc='A tool for testing Jupyter kernels'
 arch=('any')
 url="https://github.com/jupyter/$_name"
-license=('')
-depends=('python' 'jupyter' 'ipython' 'python-nose')  # ipython contains traitlets for some reason
-makedepends=('python-pip')
-_wheel="$_name-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")  # wtf?
+license=(BSD3)
+depends=(python jupyter)
+_wheel="$_name-$pkgver-py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
 noextract=("$_wheel")
-md5sums=('4cc7e539059c10681b2d67604f3fd302')
+sha256sums=('8c88b17bcfe63c2b670a27ef5585e6daf7b8090544af2d3741dfef971d022cec')
 
 package() {
-	pip install --compile --no-deps --root="$pkgdir" "$_wheel"
+	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
+	install -d "$site"
+	unzip "$_wheel" -d "$site"
 }
