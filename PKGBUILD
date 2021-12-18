@@ -7,8 +7,8 @@
 # Zach Ward & Beth Randall   They have been there from my best day to my worst
 # And everyone else who I did'nt mention by name    You are all important to me
 pkgname=radegast-ng
-pkgver=2.33.144
-pkgrel=1.5
+pkgver=2.37
+pkgrel=290
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
 url="http://radegast.org"
@@ -16,23 +16,25 @@ license=('BSD')
 depends=('mono')
 conflicts=('radegast' 'radegast-git')
 makedepends=('dos2unix' 'recode')
-source=(https://bitbucket.org/cinderblocks/radegast/downloads/Radegast-${pkgver}.tbz
+#https://github.com/cinderblocks/radegast/releases/download/2.37/Radegast_x64-2.37.290.tbz
+
+source=(https://github.com/cinderblocks/radegast/releases/download/2.37/Radegast_x64-${pkgver}.${pkgrel}.tbz
         radegast.desktop radegast)
-sha256sums=('91313f85cc0a215b0f6a47b95ed4e17fcf24f3ba19f41dbd169786bf75a3f5d5'
+sha256sums=('05f25196de6dba414f1385a41e317049796391aef4f63a6432fde42b43b74420'
             '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
 package() {
-  cd ../src/net471
+  cd ../src/Release/
   find . -type d -print0 | xargs -0 chmod 755
   find . -type f -print0 | xargs -0 chmod 644
   install -dm755 "${pkgdir}"/usr/share/Radegast
   cp -a -- * "${pkgdir}"/usr/share/Radegast
-  install -Dm644 ../net471/radegast.png "${pkgdir}"/usr/share/icons/radegast.png
+  install -Dm644 ../Release/radegast.png "${pkgdir}"/usr/share/icons/radegast.png
   install -Dm644 "${srcdir}"/radegast.desktop "${pkgdir}"/usr/share/applications/radegast.desktop
   install -Dm755 "${srcdir}"/radegast "${pkgdir}"/usr/bin/radegast
 
   install -dm755 "${pkgdir}"/usr/share/licenses/radegast
-  recode windows-1252..utf8 < ../net471/license.txt > "${pkgdir}"/usr/share/licenses/radegast/COPYING
+  recode windows-1252..utf8 < ../Release/license.txt > "${pkgdir}"/usr/share/licenses/radegast/COPYING
 }
 
 # vim:set ts=2 sw=2 et:
