@@ -1,7 +1,7 @@
 # maintainer: BrainDamage
 
 pkgname=rtl_433
-pkgver=21.05
+pkgver=21.12
 pkgrel=1
 pkgdesc="is a generic data receiver, mainly for the 433.92 MHz, 868 MHz (SRD), 315 MHz, 345 MHz, and 915 MHz ISM bands"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('rtl-sdr' 'soapysdr')
 makedepends=('gcc' 'cmake' 'doxygen')
 url="https://github.com/merbanan/rtl_433"
 source=("${pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d8b87535b4e65264018771b6b288259d81137482fc938d01e0c03ac071c03bd5')
+sha256sums=('b362ef3410adec64aee7ad8e6d4d74875f1b3d59ef6fb4856e96adc03876dc65')
 
 
 build() {
