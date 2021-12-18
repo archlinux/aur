@@ -7,7 +7,7 @@
 # Since I am lazy and am using this to write small scripts under /usr/local/bin sometimes, I also added a feature for myself to install with permissions already set if you are writing a new file and start it with a shebang.
 
 EDITOR=${EDITOR:-vi}
-doaseditfile="/tmp/doasediting"
+doasediting_file="/tmp/doasediting"
 
 ERR() {
     echo -e 'doasedit: '"$1";
@@ -17,7 +17,7 @@ ERR() {
 # Set shell options to fail if any variable expansion or final expression in a pipeline fails
 set -eu
 
-[[ $# == "0" ]] && ERR 'usage:\n\tdoasedit /file/owned/by/root\n\tdoasedit /new/file\t(starting a new file with "#!" will make it executable)' # Argument was passed
+[[ $# != "1" ]] && ERR 'usage:\n\tdoasedit /file/owned/by/root\n\tdoasedit /new/file\t(starting a new file with "#!" will make it executable)' # Argument was passed
 # Ensure this script is run as a user who has doas priviledges, editing a regular or nonexistent file
 [[ "$(id -u)" == "0" ]] && ERR "Do not run doasedit as root!"
 /sbin/doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer" # To allow doasedit, you must be allowed to run `doas doasedit`
@@ -36,23 +36,23 @@ if [[ -e "$1" ]] ; then
     [[ "$(stat -L -c "%u" "$1")" == "0" ]] || ERR "Can only edit root-owned files with this script, as copying the file back will make root the owner"
 
     # Preserves file permissions, amazingly
-    cp "$1" /tmp/doasediting || ERR "Cannot copy to /tmp/doasediting"
+    cp "$1" $doasediting_file || ERR "Cannot copy to $doasediting_file"
 else
     # Default permissions are 644
-    rm -f /tmp/doasediting || ERR "Cannot remove /tmp/doasediting"
-    touch /tmp/doasediting || ERR "Cannot touch /tmp/doasediting"
+    rm -f $doasediting_file || ERR "Cannot remove $doasediting_file"
+    touch $doasediting_file || ERR "Cannot touch $doasediting_file"
 fi
 
-$EDITOR /tmp/doasediting || ERR "The editor failed to exit successfully"
+$EDITOR $doasediting_file || ERR "The editor failed to exit successfully"
 
 # If the original file existed, don't update it if we did not make any modification to the temporary copy
-[[ -e "$1" ]] && cmp -s /tmp/doasediting "$1" && exit 0
+[[ -e "$1" ]] && cmp -s $doasediting_file "$1" && exit 0
 # If the original file did not exist, print a warning
 [[ -e "$1" ]] || echo "doasedit: File '$1' will be created, if this is not desireable press ctrl+C"
 
-[[ "/etc/doas.conf" == "$1" ]] && echo "$ doas -C /tmp/doasediting doasedit \"$1\"" && doas -C /tmp/doasediting doasedit \"$1\" || ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
+[[ "/etc/doas.conf" == "$1" ]] && echo "$ doas -C $doasediting_file doasedit \"$1\"" && doas -C $doasediting_file doasedit \"$1\" || ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
 
-doas cp /tmp/doasediting "$1" || ERR "You put your password in wrong. Manually run 'doas cp /tmp/doasediting $1'"
+doas cp $doasediting_file "$1" || ERR "You put your password in wrong. Manually run 'doas cp $doasediting_file $1'"
 
 # Change permissions if the file was empty and starts with a shebang
-[[ $fileperms != "" ]] || [[ `head -c 2 /tmp/doasediting` != "#!" ]] || { echo "doasedit: automatically running \`doas chmod +x '$1'\`" && doas chmod +x "$1" ; } || ERR "Cannot change permissions of '$1'"
+[[ $fileperms != "" ]] || [[ `head -c 2 $doasediting_file` != "#!" ]] || { echo "doasedit: automatically running \`doas chmod +x '$1'\`" && doas chmod +x "$1" ; } || ERR "Cannot change permissions of '$1'"
