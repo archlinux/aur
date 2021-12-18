@@ -3,7 +3,7 @@
 
 _name=scipy
 pkgname=python-scipy-git
-pkgver=v0.17pre.r11223.g114abf3c7c
+pkgver=v0.17pre.r12521.g9021bb77ae
 pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science and engineering. Git version"
 arch=('x86_64')
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cd scipy
+  git submodule update --init  
   python setup.py config_fc build
 }
 
@@ -32,7 +33,7 @@ check() {
   cd scipy
   python setup.py config_fc install \
     --prefix=/usr --root="$srcdir"/test --optimize=1
-  export PYTHONPATH="$srcdir"/test/usr/lib/python3.9/site-packages
+  export PYTHONPATH="$srcdir"/test/usr/lib/python3.10/site-packages
   cd ..
   python -c "from scipy import test; test('full')"
 }
