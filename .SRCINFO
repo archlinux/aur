@@ -1,10 +1,15 @@
 pkgbase = python-pacopy
 	pkgdesc = Numerical parameter continuation in Python
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pacopy
 	arch = x86_64
 	license = GPL3
+	checkdepends = python-pytest-codeblocks
+	checkdepends = python-cplot
+	checkdepends = python-krylov
+	checkdepends = python-meshzoo
+	checkdepends = python-pyfvm
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/nschloe/pacopy/archive/v0.1.7.tar.gz
