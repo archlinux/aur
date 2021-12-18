@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dbd-mock'
-pkgver='1.55'
+pkgver='1.59'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module DBD::Mock: Mock database driver for testing"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-exception>=0.31')
 url='https://metacpan.org/release/DBD-Mock'
 source=("http://search.cpan.org/CPAN/authors/id/J/JL/JLCOOPER/DBD-Mock-$pkgver.tar.gz")
-md5sums=('5f2306abe44e82cb0d9a5e37d29a8bc9')
-sha512sums=('70a85154e6295fccce275651e33a92275102d04ed1f733ad9ea13d7cb82cd17a0b5269ad92a8acc9e42a02e586c1db5f0145da88ed3a13b1baf06015e9bac751')
+md5sums=('666716574bf4f6c92b36c6c4344d746b')
+sha512sums=('c1ba954ae3f22df9d143e023c1ad5537315618e1d959120af8afdbfc69b13ad3a3ef153a6adbb7f853c204bfc2a3c789daf9de0830260f0687143eb68c31d11f')
 _distdir="DBD-Mock-$pkgver"
 
 build() {
