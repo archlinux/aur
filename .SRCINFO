@@ -1,11 +1,11 @@
 pkgbase = immuadmin
 	pkgdesc = immudb - world’s fastest immutable database
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://www.codenotary.com/technologies/immudb/
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/codenotary/immudb/releases/download/v1.1.0/immuadmin-v1.1.0-linux-amd64
-	sha256sums = 68023cda445139daf3ace0be4c31453f235b969fc748efc2e9dfda03e1fe592a
+	source = https://github.com/codenotary/immudb/releases/download/v1.2.1/immuadmin-v1.2.1-linux-amd64
+	sha256sums = 27de34932d4ccb1dd647d12b92f362612542006d0941e050d3556281b08aac09
 
 pkgname = immuadmin
