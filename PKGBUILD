@@ -1,9 +1,9 @@
-# Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
+# Maintainer: xuhcc <xuhcc@cryptolab.net>
 
 pkgname='beancount-exchangerates'
 pkgdesc='Price source for Beancount that loads data from https://exchangerate.host/'
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/xuhcc/beancount-exchangerates"
 license=('GPL')

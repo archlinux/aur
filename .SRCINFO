@@ -1,7 +1,7 @@
 pkgbase = beancount-exchangerates
 	pkgdesc = Price source for Beancount that loads data from https://exchangerate.host/
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xuhcc/beancount-exchangerates
 	arch = any
 	license = GPL
