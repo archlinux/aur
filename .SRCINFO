@@ -1,13 +1,11 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
-	pkgver = 1.7.2
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
 	makedepends = install-wheel-scripts
-	makedepends = python-setuptools-scm
-	makedepends = python-pytoml
 	depends = python-anndata>=0.7.4
 	depends = python-numpy>=1.17.0
 	depends = python-matplotlib>=3.1.2
@@ -24,18 +22,22 @@ pkgbase = scanpy
 	depends = python-natsort
 	depends = python-joblib
 	depends = python-numba>=0.41.0
-	depends = python-umap-learn>=0.3.0
-	depends = python-legacy-api-wrap
+	depends = python-umap-learn>=0.3.10
 	depends = python-packaging
 	depends = python-sinfo
-	optdepends = python-bbknn: Batch balanced KNN (batch correction)
-	optdepends = python-leidenalg: leiden community detection
-	optdepends = python-multicoretsne: Fast t-SNE
 	optdepends = python-louvain-igraph: Louvain clustering
+	optdepends = python-leidenalg: leiden community detection
+	optdepends = python-bbknn: Batch balanced KNN (batch correction)
+	optdepends = python-rapids: GPU-driven calculation of neighbors
+	optdepends = python-magic-impute: MAGIC imputation method
+	optdepends = python-skmisc: For seurat_v3 highly_variable_genes method
+	optdepends = python-harmonypy: Harmony dataset integration algorithm
+	optdepends = python-scanorama: Scanorama dataset integration algorithm
+	optdepends = python-scrublet: Cell doublet detection
 	provides = scanpy
 	provides = python-scanpy
-	noextract = scanpy-1.7.2-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.7.2-py3-none-any.whl
-	sha256sums = 68912549d9108d8f22fddada9f5deb51b5ec4637420fb80b9e15341bf03db650
+	noextract = scanpy-1.8.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.8.2-py3-none-any.whl
+	sha256sums = f8c8a07c2bce9923840a215a817d4a293e5a052791ffd2850f5f0b7cb33e21d0
 
 pkgname = scanpy

@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.7.2
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -25,21 +25,25 @@ depends=(
 	python-natsort
 	python-joblib
 	'python-numba>=0.41.0'
-	'python-umap-learn>=0.3.0'
-	python-legacy-api-wrap
+	'python-umap-learn>=0.3.10'
 	python-packaging
 	python-sinfo
 )
 optdepends=(
-	'python-bbknn: Batch balanced KNN (batch correction)'
-	'python-leidenalg: leiden community detection'
-	'python-multicoretsne: Fast t-SNE'
 	'python-louvain-igraph: Louvain clustering'
+	'python-leidenalg: leiden community detection'
+	'python-bbknn: Batch balanced KNN (batch correction)'
+	'python-rapids: GPU-driven calculation of neighbors'
+	'python-magic-impute: MAGIC imputation method'
+	'python-skmisc: For seurat_v3 highly_variable_genes method'
+	'python-harmonypy: Harmony dataset integration algorithm'
+	'python-scanorama: Scanorama dataset integration algorithm'
+	'python-scrublet: Cell doublet detection'
 )
-makedepends=(install-wheel-scripts python-setuptools-scm python-pytoml)
+makedepends=(install-wheel-scripts)
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('68912549d9108d8f22fddada9f5deb51b5ec4637420fb80b9e15341bf03db650')
+sha256sums=('f8c8a07c2bce9923840a215a817d4a293e5a052791ffd2850f5f0b7cb33e21d0')
 noextract=("$_wheel")
 
 package() {
