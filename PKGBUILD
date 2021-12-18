@@ -2,12 +2,13 @@ pkgname=husky-tosser-git
 _realpkg=husky
 pkgver=r3389.852e02a5
 pkgrel=1
-pkgdesc="Husky Fido Tosser"
 arch=('x86_64')
 license=('GPL')
 makedepends=('git')
 url="http://husky${_bld_lib}urceforge.net/hpt.html"
-conflicts=(husky-tosser husky-msged)
+pkgdesc="Husky Fido Tosser hpt: Complete bundle (except msged)"
+conflicts=("husky-git")
+
 source=(
   'bsopack.cmake' 'bsopack.patch'
   'hpt::git+https://github.com/huskyproject/hpt.git'
@@ -23,7 +24,6 @@ source=(
   'hptzip::git+https://github.com/huskyproject/hptzip.git'
   'htick::git+https://github.com/huskyproject/htick.git'
   'hptsqfix::git+https://github.com/huskyproject/hptsqfix.git'
-  'msged::git+https://github.com/huskyproject/msged.git'
 )
 
 _tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
@@ -284,63 +284,17 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
-
-
-    echo "BUILDING msged"
-    pushd msged
-    rm -rf build-archlinux
-    rm -rf huskylib smapi fidoconf hptzip
-    ln -s "../huskylib/huskylib" huskylib
-    ln -s "../smapi/smapi" smapi
-    ln -s "../fidoconf/fidoconf" fidoconf
-    ln -s "../hptzip/hptzip" hptzip
-    cp ../cvsdate.h ./
-    cmake \
-        -Bbuild-archlinux \
-        -DBUILD_SHARED_LIBS=OFF \
-        -Dcurses_LIB="/usr/lib/libcursesw.so" \
-        -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
-        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
-        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
-    cmake --build build-archlinux
-    popd
 }
 
-package_husky-all-git() {
-    pkgdesc="Husky Fido Tosser htp: Complete bundle"
-    provides=("husky-all=${pkgver}")
-    conflicts=("husky-all" "husky-tosser" "husky-tosser-git" "husky-msged-git" "husky-msged")
+package() {
     for i in $_tosserModules; do
         cd "${srcdir}/${i}/build-archlinux"
         make DESTDIR="$pkgdir" install
     done
-    cd "${srcdir}/msged/build-archlinux"
-    make DESTDIR="$pkgdir" install
-}
-
-package_husky-tosser-git() {
-    pkgdesc="Husky Fido Tosser hpt: complete bundle (without msged)"
-    provides=("husky-tosser=${pkgver}")
-    conflicts=("husky-all" "husky-tosser" "husky-all-git")
-    for i in $_tosserModules; do
-        cd "${srcdir}/${i}/build-archlinux"
-        make DESTDIR="$pkgdir" install
-    done
-}
-package_husky-msged-git() {
-    pkgdesc='Husky Fido Tosser: msged (message editor)'
-    provides=("husky-tosser=${pkgver}")
-    depends=('husky-tosser-git')
-    conflicts=("husky-all" "husky-msged" "husky-all-git")
-    cd "${srcdir}/msged/build-archlinux"
-    make DESTDIR="$pkgdir" install
 }
 
 md5sums=('a1abb8245e098573da0abf7735fc3840'
          'f4805667cd4f632139783d944c04b4f4'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
