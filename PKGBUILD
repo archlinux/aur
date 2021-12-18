@@ -1,7 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
 # Maintainer: GhibranAljabbar <ghibranaljaur@gmail.com>
 pkgname=rgb-tui-git
@@ -17,8 +13,8 @@ depends=()
 makedepends=(cmake make git)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=(rgb-tui)
+conflicts=(rgb-tui-bin)
 replaces=()
 backup=()
 options=()

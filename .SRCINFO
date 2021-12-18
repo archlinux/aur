@@ -8,6 +8,8 @@ pkgbase = rgb-tui-git
 	makedepends = cmake
 	makedepends = make
 	makedepends = git
+	provides = rgb-tui
+	conflicts = rgb-tui-bin
 	source = git+https://github.com/ArthurSonzogni/rgb-tui
 	md5sums = SKIP
 
