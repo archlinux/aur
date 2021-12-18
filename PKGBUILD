@@ -4,8 +4,8 @@
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
 pkgver=2.7.14
-pkgrel=1
-_pythonversion=3.9
+pkgrel=2
+_pythonversion=3.10
 pkgdesc='Gajim plugin for OMEMO Multi-End Message and Object Encryption.'
 arch=(any)
 url='https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin'
