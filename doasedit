@@ -16,7 +16,7 @@ ERR() {
 [[ $# == "0" ]] && ERR 'usage:\n\tdoasedit /file/owned/by/root\n\tdoasedit /new/file\t(starting a new file with "#!" will make it executable)' 4 # Argument was passed
 # Ensure this script is run as a user who has doas priviledges, editing a regular or nonexistent file
 [[ "$(id -u)" == "0" ]] && ERR "Do not run doasedit as root!" 1
-/sbin/doas -C /etc/doas.conf doasedit \"$1\" || ERR "You are not a doer" 2 # To allow doasedit, you must be allowed to run `doas doasedit`
+/sbin/doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer" 2 # To allow doasedit, you must be allowed to run `doas doasedit`
 [[ -d "$1" ]] && ERR "'$1' is a directory" 3; # File is a directory
 # Ensure the file is in a directory we can read
 [[ -d "`dirname $1`" ]] || ERR "'$1' is not in a directory we can read"
