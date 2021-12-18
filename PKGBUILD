@@ -1,7 +1,7 @@
 pkgname=mingw-w64-boost
-pkgver=1.76.0
+pkgver=1.78.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "context-cross.patch" "stacktrace-cross.patch")
-sha256sums=('f0397ba6e982c4450f27bf32a2a83292aba035b827a5623a14636ea583318c41'
+sha256sums=('8681f175d4bdb26c52222665793eef08490d7758529330f98d3b29dd0735bccc'
             '844e163845ea6e7ae1f8d26cb52f72c6e4645cdade1be081bc1d2cff5db0a918'
             '333791abd17ea192e0aa90185bfb8938e8e3dc102b284db316b061b2067e2fc2')
 
@@ -26,12 +26,6 @@ prepare() {
 
   # bypass libbacktrace detection
   patch -p1 -d libs/stacktrace -i "${srcdir}"/stacktrace-cross.patch
-
-  # enable thread_local with gcc 11.x
-  curl -L https://github.com/boostorg/config/pull/380.patch | patch -p2
-
-  # lowercase winternl.h
-  curl -L https://github.com/boostorg/process/pull/181.patch | patch -p2
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do
