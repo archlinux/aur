@@ -12,7 +12,7 @@ depends=('python-pyqt5' 'libxkbcommon-x11' 'xdg-utils')
 makedepends=('git')
 optdepends=('python-gobject: desktop notifications support'
             'xdotool: Thunar & PCmanFM to select file on path open')
-_commit=0aae19d6585e45fc741e332fc5f84e5fff15a612
+_commit=ad438249267fca36e5b88a778de54a10802a0afd
 source=("git+https://github.com/DoTheEvo/ANGRYsearch.git#commit=$_commit")
 #source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
