@@ -1,0 +1,55 @@
+ # Maintainer: okhsunrog <me@gornushko.com>
+
+pkgname=mako-no-blur-git
+_pkgname=mako
+pkgver=v1.6.r10.gfe7f494
+pkgrel=1
+license=('MIT')
+pkgdesc='Lightweight notification daemon for Wayland with HiDPI patches.'
+makedepends=("meson" "scdoc" "systemd" "wayland-protocols" "git")
+depends=(
+    "gdk-pixbuf2"
+    "pango"
+    "cairo"
+    "systemd-libs"
+    "wayland"
+)
+optdepends=("jq: support for 'makoctl menu'")
+arch=("x86_64")
+url='http://mako-project.org'
+source=(
+    "mako::git+https://github.com/lilydjwg/mako.git"
+    "mako.service"
+    "0001-Fix-DBus-service.patch"
+)
+sha1sums=('SKIP'
+          '688484d6bf677e6f6014c9311ff40fabae748bcc'
+          '64b8a3446fa1ddc3d876629a0c4a3d1d6bb0b20f')
+provides=('mako' 'mako-git')
+conflicts=('mako' 'mako-git')
+
+pkgver() {
+    cd "$_pkgname"
+    (
+        set -o pipefail
+        git describe --long 2> /dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+prepare() {
+    patch -Np1 -i "$srcdir/0001-Fix-DBus-service.patch" -d "$_pkgname"
+}
+
+build() {
+    cd "$_pkgname"
+    arch-meson -Dzsh-completions=true -Dsd-bus-provider=libsystemd build
+    ninja -C build
+}
+
+package() {
+    cd "$_pkgname"
+    DESTDIR="$pkgdir/" ninja -C build install
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
+    install -Dm0644 ../mako.service -t "$pkgdir"/usr/lib/systemd/user/
+}
