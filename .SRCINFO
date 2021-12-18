@@ -1,7 +1,7 @@
 pkgbase = kotatogram-dev-git
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Dev branch
-	pkgver = k1.4.5.r550.gb9a479517
-	pkgrel = 8
+	pkgver = k1.4.5.r559.gc214b376e
+	pkgrel = 1
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -55,6 +55,7 @@ pkgbase = kotatogram-dev-git
 	depends = xcb-util-keysyms
 	depends = libxcb
 	depends = gcc-libs
+	depends = rlottie-git
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = kotatogram-desktop
