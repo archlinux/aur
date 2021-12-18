@@ -9,8 +9,7 @@ pkgbase = ttf-economica
 	depends = fontconfig
 	depends = xorg-font-util
 	conflicts = otf-economica
-	source = http://dl.1001fonts.com/economica.zip
+	source = https://www.1001fonts.com/download/economica.zip
 	md5sums = SKIP
 
 pkgname = ttf-economica
-

@@ -10,7 +10,7 @@ url="https://www.fontsquirrel.com/fonts/economica"
 license=("custom:OFL")
 depends=("fontconfig" "xorg-font-util")
 conflicts=("otf-${_fontname}")
-source=("http://dl.1001fonts.com/${_fontname}.zip")
+source=("https://www.1001fonts.com/download/${_fontname}.zip")
 install=${pkgname}.install
 md5sums=('SKIP')
 
