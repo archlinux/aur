@@ -6,7 +6,7 @@ arch=('x86_64')
 license=('GPL')
 makedepends=('git')
 url="http://husky${_bld_lib}urceforge.net/hpt.html"
-pkgdesc="Husky Fido Tosser hpt: Complete bundle"
+pkgdesc="husky message editor"
 conflicts=("husky-git")
 
 source=(
