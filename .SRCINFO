@@ -1,6 +1,6 @@
 pkgbase = python-hickle
 	pkgdesc = Hickle - a HDF5 based version of pickle
-	pkgver = 4.0.3
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = http://github.com/telegraphic/hickle
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-hickle
 	depends = python-h5py
 	depends = python-numpy
 	depends = python-dill
-	source = https://github.com/telegraphic/hickle/archive/v4.0.3.tar.gz
-	sha256sums = 01a5a4fe26d50f32160493bcd41f2f2daf28069f0cd909ff242c1c88dc3c7383
+	source = https://github.com/telegraphic/hickle/archive/v5.0.0.tar.gz
+	sha256sums = e1114a351fba5a73fb78af90754d376c70a3dd1de9f0343bb14c5b5f7de9cd31
 
 pkgname = python-hickle
-
