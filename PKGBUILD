@@ -2,7 +2,7 @@
 # Contributor: Terin Stock <terinjokes@gmail.com>
 
 pkgname=archiver
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Easily create & extract archives, and compress & decompress files of various formats"
 arch=("x86_64")
@@ -11,7 +11,6 @@ license=("MIT")
 makedepends=("go")
 depends=("glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mholt/archiver/archive/v${pkgver}.tar.gz")
-sha256sums=('8f2e3ad68553f6b58bf99e8635ff0953f62ff0a7804da7658954ffaa7d0aaa0a')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -34,3 +33,4 @@ package() {
   install -Dm755 arc -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+sha256sums=('b69a76f837b6cc1c34c72ace16670360577b123ccc17872a95af07178e69fbe7')
