@@ -1,17 +1,16 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=cmake-modules-libr
-pkgver=1.1.411
+pkgver=1.4.1717
 pkgrel=1
-pkgdesc="CMake module for libR"
+pkgdesc='CMake module for libR (Extracted from rstudio)'
 arch=(any)
 url="https://github.com/rstudio/rstudio/blob/master/cmake/modules/FindLibR.cmake"
 license=('AGPL')
 depends=(cmake)
 source=("FindLibR-$pkgver.cmake::https://github.com/rstudio/rstudio/raw/v$pkgver/cmake/modules/FindLibR.cmake")
-md5sums=('7c8b013c5bd5574c1e56a2582c1d984b')
+sha256sums=('5e7623aad410fa1852d09bc21057263947e85a3003e596ad23932ba329e54452')
 
 package() {
-	cmake_version="$(cmake --version | head -n1 | cut -d ' ' -f 3 | cut -d . -f 1-2)"
-	install -Dm644 "$srcdir/FindLibR-$pkgver.cmake" "$pkgdir/usr/share/cmake-$cmake_version/Modules/FindLibR.cmake"
+	install -Dm644 "$srcdir/FindLibR-$pkgver.cmake" "$pkgdir/usr/share/cmake/Modules/FindLibR.cmake"
 }
