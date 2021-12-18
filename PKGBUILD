@@ -2,7 +2,7 @@
 
 pkgname='netbox'
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='IP address management (IPAM) and data center infrastructure management (DCIM) tool.'
 arch=('any')
 url='https://github.com/digitalocean/netbox'
@@ -14,6 +14,7 @@ depends=(
 	'python-django-cors-headers'
 	'python-django-debug-toolbar'
 	'python-django-filter'
+	'python-django-graphiql-debug-toolbar'
 	'python-django-mptt'
 	'python-django-pglocks'
 	'python-django-prometheus'
