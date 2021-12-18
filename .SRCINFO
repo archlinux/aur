@@ -1,29 +1,24 @@
 pkgbase = alacarte-xfce
 	pkgdesc = Menu editor for Xfce
-	pkgver = 3.11.91.r18.g40c8c60
-	pkgrel = 3
+	pkgver = 3.42.0
+	pkgrel = 1
 	url = http://www.gnome.org
 	install = alacarte.install
 	arch = any
 	groups = xfce4-goodies
 	license = LGPL
-	makedepends = intltool
-	makedepends = libxslt
-	makedepends = docbook-xsl
-	makedepends = git
 	makedepends = gnome-common
 	depends = gnome-menus
 	depends = hicolor-icon-theme
-	depends = python2-gobject
+	depends = python-gobject
 	depends = gtk3
-	provides = alacarte=3.11.91.r18.g40c8c60
+	provides = alacarte=3.42.0
 	conflicts = alacarte
 	conflicts = alacarte-git
 	conflicts = alacarte-xfce-devel
-	source = alacarte::git+https://gitlab.gnome.org/GNOME/alacarte.git
+	source = https://gitlab.gnome.org/GNOME/alacarte/-/archive/3.42.0/alacarte-3.42.0.tar.gz
 	source = unicode.patch
-	md5sums = SKIP
-	md5sums = 171d6819609a8e16d7950314dc78b352
+	sha256sums = 4b3958ce96c7ae85b0681223d4de1ecd28312d0cee37b6baa23c968053a3586d
+	sha256sums = 7bba758089ffb1c7e293cccef1de252f91f8951dd0b4a3558cef81fd1c4998a7
 
 pkgname = alacarte-xfce
-
