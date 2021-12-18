@@ -29,7 +29,8 @@ source=(
 
 _tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
 _prefix=/usr
-_wanna_shared=1
+# Coz libperl fails in shared mode :(
+_wanna_shared=0
 
 pkgver() {
     cd ${srcdir}/hpt/
