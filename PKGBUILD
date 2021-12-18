@@ -1,7 +1,7 @@
 # Maintainer: Marcos Ferreira <merkkp at gmail dot com>
 
 pkgname="phpbrew"
-pkgver=1.25.3
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="Brew & manage PHP versions in pure PHP at HOME"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=("git")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/raw/${pkgver}/phpbrew")
-md5sums=('4c4f0fc79b01c13970e75c75b4027639')
+md5sums=('f6b0a0ad070de7377a089eb4673b22db')
 
 package() {
   install -Dm755 phpbrew "${pkgdir}/usr/bin/phpbrew"
