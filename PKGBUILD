@@ -6,18 +6,16 @@
 _pkgbasename=nvidia-390xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-390xx-utils' 'lib32-opencl-nvidia-390xx')
-pkgver=390.144
+pkgver=390.147
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 #makedepends=('nvidia-libgl')  # To avoid conflict during installation in the build chroot
 license=('custom')
 options=('!strip')
-
-_arch='x86'
-_pkg="NVIDIA-Linux-${_arch}-${pkgver}"
-source=("https://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
-sha512sums=('d962c7e7b4b9c4635a887767d34a49c401a89e5975a5e57fa83366ca824ab70d5b8a81f3dce2e05e0528afddc72d70b2fcd69a216bd16d75e7b88ec704390546')
+_pkg="NVIDIA-Linux-x86_64-${pkgver}"
+source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
+sha512sums=('0d8bda32e916d71da2ea74bc12a4f3cb0a0c2ddda27511cf3c89bbf4aeb28db68f6b7261639d88dd1c0180b91213c09de930d233158268c5d9ab3b223510e964')
 
 create_links() {
     # create soname links
@@ -40,7 +38,7 @@ package_lib32-opencl-nvidia-390xx() {
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=('lib32-opencl-driver')
 
-    cd "${_pkg}"
+    cd "${_pkg}"/32
 
     # OpenCL
     install -D -m755 "libnvidia-compiler.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-compiler.so.${pkgver}"
@@ -55,22 +53,16 @@ package_lib32-opencl-nvidia-390xx() {
 package_lib32-nvidia-390xx-utils() {
     pkgdesc="NVIDIA drivers utilities (32-bit), 390xx legacy branch"
     depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' 'nvidia-390xx-utils')
-    conflicts=('lib32-nvidia-utils')
     optdepends=('lib32-opencl-nvidia-390xx: OpenCL support')
+    conflicts=('lib32-nvidia-utils')
     provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-390xx-libgl' 'lib32-nvidia-utils')
 
-    cd "${_pkg}"
+    cd "${_pkg}"/32
 
-    # GLX extension module for X - useless ?
-    install -D -m755 "libglx.so.${pkgver}" "${pkgdir}/usr/lib32/nvidia/xorg/modules/extensions/libglx.so.${pkgver}"
-    ln -s "libglx.so.${pkgver}" "${pkgdir}/usr/lib32/nvidia/xorg/modules/extensions/libglx.so"	# X doesn't find glx otherwise
+    # Check http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/README/installedcomponents.html
+    # for hints on what needs to be installed where.
+
     install -D -m755 "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libGLX_nvidia.so.${pkgver}"
-    # now in lib32-mesa driver
-    #ln -s "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
-
-    # Wayland stuff
-    install -D -m755 "libnvidia-egl-wayland.so.1.0.2" "${pkgdir}/usr/lib32/libnvidia-egl-wayland.so.1.0.2"
-    ln -s "libnvidia-egl-wayland.so.1.0.2" "${pkgdir}/usr/lib32/libnvidia-egl-wayland.so.1"
 
     # OpenGL libraries
     install -D -m755 "libEGL_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libEGL_nvidia.so.${pkgver}"
@@ -86,9 +78,7 @@ package_lib32-nvidia-390xx-utils() {
     install -D -m755 "libnvidia-ifr.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ifr.so.${pkgver}"
     install -D -m755 "libnvidia-fbc.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-fbc.so.${pkgver}"
     install -D -m755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-encode.so.${pkgver}"
-    install -D -m755 "libnvidia-cfg.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-cfg.so.${pkgver}"
     install -D -m755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ml.so.${pkgver}"
-    install -D -m755 "libnvidia-wfb.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-wfb.so.${pkgver}"
 
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/vdpau/libvdpau_nvidia.so.${pkgver}"
