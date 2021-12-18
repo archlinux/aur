@@ -4,9 +4,9 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=2.9.4
+pkgver=2.9.5
 _gitname="release-$pkgver-linux1"
-pkgrel=4
+pkgrel=1
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
@@ -22,7 +22,7 @@ depends=(curl
          unzip)
 optdepends=('github-cli: CLI interface for GitHub'
             'hub: CLI interface for GitHub')
-makedepends=('nodejs>=10.16.0'
+makedepends=(nodejs-lts-gallium
              npm
              python2
              xorg-server-xvfb
