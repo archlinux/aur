@@ -1,0 +1,18 @@
+pkgbase = physx
+	pkgdesc = NVIDIA PhysX SDK
+	pkgver = 4.1.2.29873463
+	pkgrel = 1
+	url = https://developer.nvidia.com/physx-sdk
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	source = physx-4.1.2.29873463.tar.gz::https://github.com/NVIDIAGameWorks/PhysX/archive/c3d5537bdebd6f5cd82fcaf87474b838fe6fd5fa.zip
+	source = fix-compiler-flag.patch
+	source = remove-werror.patch
+	sha256sums = 4791bcbbbdf4d6ab69a3de195bd0c0468f973280706a0c13dd6bb57db773ba47
+	sha256sums = 9dec29f4ba44e9f7fe3c661374123c181684f96084c77173adc1ba863451cc3a
+	sha256sums = 34b8b488604c198b8545101edef7e24a226e355da6992160271b90ce0a294b50
+
+pkgname = physx

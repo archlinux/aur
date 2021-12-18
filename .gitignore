@@ -1,0 +1,6 @@
+/src/
+/pkg/
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.src.tar.gz
+/physx-*.tar.gz
