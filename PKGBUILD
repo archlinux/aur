@@ -1,30 +1,32 @@
-# SPDX-FileCopyrightText: 2018-2020 Michael Picht
-#
-# SPDX-License-Identifier: GPL-3.0-or-later
-
-# Maintainer: Michael Picht <michael dot picht at ussenterprise dot de>
+# Maintainer: Michael Picht <mipi@fsfe.org>
 
 _pkgorg=gitlab.com/mipimipi
 pkgname=smsync-git
 _pkgname=smsync
-pkgver=3.4.0.r1.gc34ff52
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="smsync (Smart Music Sync) keeps huge music collections in sync and is takes care of conversions between different file formats. It's an easy-to-use command line application for Linux"
-arch=('x86_64' 'i686')
+arch=(x86_64)
 url="https://$_pkgorg/$_pkgname/"
-license=('GPL3')
-depends=('ffmpeg')
-makedepends=(
-    dep
-    git
-    go-pie
-)
+license=(GPL3)
 source=("git+https://$_pkgorg/$_pkgname.git")
+validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 sha256sums=('SKIP')
+depends=(ffmpeg)
+makedepends=(
+    bash
+    git
+    go
+    make
+)
+provides=(smsync)
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/$_pkgname"
+    ( set -o pipefail
+        git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
@@ -36,13 +38,11 @@ prepare() {
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_pkgorg/$_pkgname
-  make VERSION=$pkgver
+    cd "$srcdir/$_pkgname"
+    make
 }
 
 package() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_pkgorg/$_pkgname
-  make DESTDIR="$pkgdir" install
+    cd "$srcdir/$_pkgname"
+    make DESTDIR="$pkgdir" install
 }
