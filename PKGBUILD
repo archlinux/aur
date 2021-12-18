@@ -9,7 +9,7 @@ url="https://github.com/Col-E/Recaf"
 license=("MIT")
 depends=("java-runtime" "java-openjfx" "ttf-font")
 makedepends=("git")
-provides=("$_pkgname-bin")
+provides=("$_pkgname")
 conflicts=("$_pkgname-bin")
 replaces=("recaf")
 source=("recaf::git+https://github.com/Col-E/Recaf#branch=master")
@@ -32,9 +32,10 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname"
+	echo "$srcdir/$_pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm755 "target/$_pkgname-$(git describe --tags --abbrev=0)-J8-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
-  install -Dm644 "icons/logo.png" "$pkgdir/usr/share/pixmaps/recaf.png"
+  install -Dm644 "src/main/resources/icons/logo.png" "$pkgdir/usr/share/pixmaps/recaf.png"
   printf '#!/usr/bin/env bash\nexec java -cp "/usr/lib/jvm/default-runtime/lib/*:/usr/share/java/%s/%s.jar" "me.coley.recaf.Recaf" "$@"' "$_pkgname" "$_pkgname" > "recaf"
   printf "[Desktop Entry]\nType=Application\nVersion=1.0\nName=Recaf\nComment=%s\nPath=/usr/bin\nExec=recaf %%u\nIcon=recaf\nTerminal=false\nCategories=Development;Java" "$pkgdesc" > "recaf.desktop"
   install -Dm755 "recaf" "$pkgdir/usr/bin/recaf"
