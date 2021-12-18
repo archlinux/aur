@@ -2,7 +2,7 @@
 
 pkgname=lightdm-webkit2-theme-reactive
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Reactive, A Simple and fast lightdm webkit2 theme for linux"
 arch=('x86_64')
 url="https://github.com/gitneeraj/$pkgname"

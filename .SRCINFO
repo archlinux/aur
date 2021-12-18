@@ -1,12 +1,12 @@
 pkgbase = lightdm-webkit2-theme-reactive
 pkgdesc = Reactive, A Simple and fast lightdm webkit2 theme for linux
 pkgver = 0.4.5
-pkgrel = 2
+pkgrel = 3
 url = https://github.com/gitneeraj/lightdm-webkit2-theme-reactive
 arch = x86_64
 license = MIT
 depends = lightdm-webkit2-greeter
-source = https://github.com/gitneeraj/lightdm-webkit2-theme-reactive/releases/download/0.4.4/lightdm-webkit2-theme-reactive-0.4.4.tar.gz
+source = https://github.com/gitneeraj/lightdm-webkit2-theme-reactive/releases/download/0.4.5/lightdm-webkit2-theme-reactive-0.4.5.tar.gz
 sha512sums = aff84430926162d1ba019b37a37ce16f1c93fbec6b7e851bb48f9deb2a016096d33f4bee553a5216858c4c024cb9b85929a4dcba3ae430655d1cf66a522b7548
 
 pkgname = lightdm-webkit2-theme-reactive
