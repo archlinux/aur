@@ -30,7 +30,7 @@ source=(
 
 _tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
 _prefix=/usr
-_wanna_shared=0
+_wanna_shared=1
 
 pkgver() {
     cd ${srcdir}/hpt/
@@ -68,7 +68,7 @@ build() {
     rm -rf build-archlinux
     cmake \
         -Bbuild-archlinux -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build" \
+        -Dhusky_LIB="../huskylib/build-archlinux" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix} \
         -DCMAKE_INCLUDE_PATH:PATH=../huskylib
     cmake --build build-archlinux
