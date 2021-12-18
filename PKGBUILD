@@ -110,7 +110,7 @@ makedepends=('git')
 provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/pgtk")
+source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
 options=(!strip)
