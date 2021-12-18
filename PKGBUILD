@@ -1,6 +1,6 @@
 # Maintainer: Paris Oplopoios <parisoplop@gmail.com>
 pkgname="tkpemu"
-pkgver="0.1.1"
+pkgver="0.1.1_fix"
 pkgrel=1
 epoch=
 pkgdesc="A multi-purpose emulator with debugging functionality, currently only emulates gameboy"
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/OFFTKP/TKPEmu/archive/v0.1.1/TKPEmu-0.1.1.tar.gz")
+source=("https://github.com/OFFTKP/TKPEmu/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -32,4 +32,6 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 	mv ./build/TKPEmu $pkgdir/usr/bin/TKPEmu
 }
-sha256sums=('90281b191539eff0c7df0010aa04ea07c18e288aa77b16e16f6a56fa332bb416')
+
+
+sha256sums=('a8c7302fe434e14cc9a9b65b93271feb7f29e9ca8b923a14a8cbf39dbba13094')
