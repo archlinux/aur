@@ -2,10 +2,9 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
-pkgbase=wget
 pkgname=wget-xdg
 pkgver=1.21.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Network utility to retrieve files from the Web - but moving ~/.wget-hsts to $XDG_CACHE_HOME/wget/hsts'
 url='https://www.gnu.org/software/wget/wget.html'
 arch=('x86_64')
@@ -14,7 +13,7 @@ depends=('glibc' 'zlib' 'gnutls' 'libidn2' 'libidn2.so' 'util-linux-libs' 'libuu
          'libpsl' 'libpsl.so' 'pcre2' 'nettle' 'libnettle.so')
 optdepends=('ca-certificates: HTTPS downloads')
 backup=('etc/wgetrc')
-source=(https://ftp.gnu.org/gnu/${pkgbase}/${pkgbase}-${pkgver}.tar.lz
+source=(https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.lz
         xdg-compliant-wget-hsts-file.patch)
 sha256sums=('1727a330a86acacb3e57615ce268f5f29978bf7adec4abe6a30d370207bc91b3'
             'e7f03d1f253e4b66c38271f4a47ae8d849ac6241c60728b56be1a10b94611293')
@@ -25,7 +24,7 @@ provides=('wget')
 conflicts=('wget')
 
 prepare() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgname%-*}-${pkgver}
   patch -p1 -i ../xdg-compliant-wget-hsts-file.patch
   cat >> doc/sample.wgetrc <<EOF
 # default root certs location
@@ -34,7 +33,7 @@ EOF
 }
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgname%-*}-${pkgver}
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -46,7 +45,7 @@ build() {
 
 
 package() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgname%-*}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
 

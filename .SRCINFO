@@ -1,7 +1,7 @@
-pkgbase = wget
+pkgbase = wget-xdg
 	pkgdesc = Network utility to retrieve files from the Web - but moving ~/.wget-hsts to $XDG_CACHE_HOME/wget/hsts
 	pkgver = 1.21.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/wget/wget.html
 	arch = x86_64
 	license = GPL3
