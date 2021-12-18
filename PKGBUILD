@@ -2,12 +2,14 @@ pkgname=husky-git
 _realpkg=husky
 pkgver=r3389.852e02a5
 pkgrel=1
-pkgdesc="Husky Fido Tosser"
 arch=('x86_64')
 license=('GPL')
 makedepends=('git')
 url="http://husky${_bld_lib}urceforge.net/hpt.html"
-conflicts=(husky-tosser husky-msged)
+pkgdesc="Husky Fido Tosser hpt: Complete bundle"
+provides=("husky-tosser-git" "husky-msged-git")
+conflicts=("husky-tosser-git" "husky-msged-git")
+
 source=(
   'bsopack.cmake' 'bsopack.patch'
   'hpt::git+https://github.com/huskyproject/hpt.git'
@@ -308,10 +310,7 @@ build() {
     popd
 }
 
-package_husky-git() {
-    pkgdesc="Husky Fido Tosser hpt: Complete bundle"
-    provides=("husky-all=${pkgver}")
-    conflicts=("husky-tosser-git" "husky-msged-git")
+package() {
     for i in $_tosserModules; do
         cd "${srcdir}/${i}/build-archlinux"
         make DESTDIR="$pkgdir" install

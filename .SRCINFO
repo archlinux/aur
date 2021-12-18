@@ -1,13 +1,15 @@
 pkgbase = husky-git
-	pkgdesc = Husky Fido Tosser
+	pkgdesc = Husky Fido Tosser hpt: Complete bundle
 	pkgver = r3389.852e02a5
 	pkgrel = 1
 	url = http://huskyurceforge.net/hpt.html
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	conflicts = husky-tosser
-	conflicts = husky-msged
+	provides = husky-tosser-git
+	provides = husky-msged-git
+	conflicts = husky-tosser-git
+	conflicts = husky-msged-git
 	source = bsopack.cmake
 	source = bsopack.patch
 	source = hpt::git+https://github.com/huskyproject/hpt.git
@@ -42,7 +44,3 @@ pkgbase = husky-git
 	md5sums = SKIP
 
 pkgname = husky-git
-	pkgdesc = Husky Fido Tosser hpt: Complete bundle
-	provides = husky-all=r3389.852e02a5
-	conflicts = husky-tosser-git
-	conflicts = husky-msged-git
