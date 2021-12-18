@@ -2,7 +2,7 @@
 
 pkgname=python-matplotlib-pgfutils
 pkgdesc="Utilities for generating PGF figures from Matplotlib"
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 url="https://matplotlib-pgfutils.readthedocs.io/"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python-matplotlib')
 checkdepends=('python-pytest' 'python-pytest-cov' 'texlive-core')
 license=('BSD')
 source=("matplotlib-pgfutils-${pkgver}.tar.gz::https://github.com/bcbnz/matplotlib-pgfutils/archive/v${pkgver}.tar.gz")
-sha256sums=('3a2ed647758d2b9eedc36f9749293258c66cfcfe079eed23b1d10148d991af49')
+sha256sums=('019e1cab6e0b74a870ecb93ed5a8a04472118cdd5808da2909f52df62dd9cc23')
 
 build() {
     cd "matplotlib-pgfutils-${pkgver}"
