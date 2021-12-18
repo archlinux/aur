@@ -4,7 +4,7 @@ pkgver=10.0.4
 pkgrel=2
 pkgdesc="A modified version of yay with additional features, improvements and small bug fixes"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url="https://gitea.jojii.de/jojii/yayim"
+url="https://gitea.jojiiofficial.de/jojii/yayim"
 license=('GPL')
 depends=(
   'libalpm.so>=12'
@@ -16,7 +16,7 @@ makedepends=(
 )
 provides=("yay")
 conflicts=("yay")
-source=("${pkgname}-${pkgver}.tar.gz::https://gitea.jojii.de/jojii/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://gitea.jojiiofficial.de/jojii/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('a2ee5de9de306507d3595f1d98b88b459960d1f5f5e8b3430ffc966d7317f666')
 
 build() {

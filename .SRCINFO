@@ -2,7 +2,7 @@ pkgbase = yayim
 	pkgdesc = A modified version of yay with additional features, improvements and small bug fixes
 	pkgver = 10.0.4
 	pkgrel = 2
-	url = https://gitea.jojii.de/jojii/yayim
+	url = https://gitea.jojiiofficial.de/jojii/yayim
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -16,8 +16,7 @@ pkgbase = yayim
 	depends = git
 	provides = yay
 	conflicts = yay
-	source = yayim-10.0.4.tar.gz::https://gitea.jojii.de/jojii/yayim/archive/v10.0.4.tar.gz
+	source = yayim-10.0.4.tar.gz::https://gitea.jojiiofficial.de/jojii/yayim/archive/v10.0.4.tar.gz
 	sha256sums = a2ee5de9de306507d3595f1d98b88b459960d1f5f5e8b3430ffc966d7317f666
 
 pkgname = yayim
-
