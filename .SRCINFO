@@ -1,6 +1,6 @@
 pkgbase = gmsh
 	pkgdesc = An automatic 3D finite element mesh generator with pre and post-processing facilities.
-	pkgver = 4.9.0
+	pkgver = 4.9.1
 	pkgrel = 1
 	url = http://gmsh.info/
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = gmsh
 	makedepends = ann
 	makedepends = glu
 	options = !emptydirs
-	source = http://gmsh.info/src/gmsh-4.9.0-source.tgz
+	source = http://gmsh.info/src/gmsh-4.9.1-source.tgz
 	source = gmsh.desktop
 	source = gmsh.completion
-	sha256sums = b8ef133c9b66ffe12df1747e72d4acf19f1eb1e9cd95eb0f577cbc4081d9bea3
+	sha256sums = 617836aaab53cb1de2963799ba55d9af3377dd610cc8605aa57532be271074d5
 	sha256sums = 43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae
 	sha256sums = 11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef
 
