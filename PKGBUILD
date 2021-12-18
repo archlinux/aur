@@ -3,15 +3,15 @@
 
 pkgname='yandex-tank'
 pkgver='1.12.8'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Performance measurement tool'
 arch=('any')
 url="https://github.com/yandex/${pkgname}"
 license=('GPL')
-depends=('python2-pyopenssl' 'python2-cryptography'
-	 'python2-psutil' 'python2-numpy' 'python2-future'
-	 'python2-pandas' 'python2-paramiko' 'python2-requests' 'phantom')
-makedepends=('python2' 'python-setuptools' 'gzip')
+depends=('python-pyopenssl' 'python-cryptography'
+	 'python-psutil' 'python-numpy' 'python-future'
+	 'python-pandas' 'python-paramiko' 'python-requests' 'phantom')
+makedepends=('python' 'python-setuptools' 'gzip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('a34b9c75ff8e03b094798f389b3f8887db2f51766a35ef12cc5058736d14620d')
 
@@ -23,12 +23,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install -O1 --skip-build --root="${pkgdir}"
+  python setup.py install -O1 --skip-build --root="${pkgdir}"
   install -Dm0644 "data/load.conf.1.gz" "${pkgdir}/usr/share/man/man1/load.conf.1.gz"
   install -Dm0644 "data/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }

@@ -1,24 +1,23 @@
 pkgbase = yandex-tank
 	pkgdesc = Performance measurement tool
 	pkgver = 1.12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yandex/yandex-tank
 	arch = any
 	license = GPL
-	makedepends = python2
+	makedepends = python
 	makedepends = python-setuptools
 	makedepends = gzip
-	depends = python2-pyopenssl
-	depends = python2-cryptography
-	depends = python2-psutil
-	depends = python2-numpy
-	depends = python2-future
-	depends = python2-pandas
-	depends = python2-paramiko
-	depends = python2-requests
+	depends = python-pyopenssl
+	depends = python-cryptography
+	depends = python-psutil
+	depends = python-numpy
+	depends = python-future
+	depends = python-pandas
+	depends = python-paramiko
+	depends = python-requests
 	depends = phantom
 	source = yandex-tank-1.12.8.tar.gz::https://github.com/yandex/yandex-tank/archive/v1.12.8.tar.gz
 	sha256sums = a34b9c75ff8e03b094798f389b3f8887db2f51766a35ef12cc5058736d14620d
 
 pkgname = yandex-tank
-
