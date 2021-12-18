@@ -1,0 +1,77 @@
+--- 2/golded3/gearea.cpp
++++ 1/golded3/gearea.cpp
+@@ -474,8 +474,8 @@
+ void GPickArealist::print_line(uint idx, uint pos, bool isbar)
+ {
+ 
+-    vchar vbuf[256];
+-    char buf[256];
++    vchar vbuf[MAXCOL];
++    char buf[MAXCOL];
+ 
+     if(AL[idx]->isseparator())
+     {
+@@ -576,7 +576,7 @@
+     for(AL.item = AL.idx.begin(); AL.item != AL.idx.end(); AL.item++)
+         nummarks += (*AL.item)->Mark.Count();
+ 
+-    char buf[256];
++    char buf[MAXCOL];
+     gsprintf(PRINTF_DECLARE_BUFFER(buf), LNG->DropMarksInfo, longdotstr(nummarks));
+ 
+     w_info(buf);
+@@ -608,7 +608,7 @@
+     uint n;
+     uint x;
+     const char* adesc;
+-    char buf[256], tmp[256];
++    char buf[MAXCOL], tmp[MAXCOL];
+ 
+     int mode, changed, currno;
+ 
+--- 2/golded3/geedit.h
++++ 1/golded3/geedit.h
+@@ -71,8 +71,8 @@
+ //  ------------------------------------------------------------------
+ //  Defines
+ 
+-#define EDIT_BUFLEN           256
+-#define EDIT_PARABUFLEN       2048
++#define EDIT_BUFLEN           256*16
++#define EDIT_PARABUFLEN       4096*16
+ 
+ #define EDIT_UNDO_CHAR        0x00000010U
+ #define EDIT_UNDO_INS_CHAR    0x00000011U
+--- 2/golded3/geusrbse.cpp
++++ 1/golded3/geusrbse.cpp
+@@ -222,8 +222,8 @@
+ void guserbase::print_line(uint idx, uint pos, bool isbar)
+ {
+ 
+-    char buf[200];
+-    const size_t buflen=199;
++    char buf[MAXCOL];
++    const size_t buflen=MAXCOL;
+     buf[buflen]='\0';
+ //  char buf2[100];
+ //  const size_t buf2len=199;
+--- 2/golded3/gemlst.cpp
++++ 1/golded3/gemlst.cpp
+@@ -368,7 +368,7 @@
+         mattr_ = hattr;
+     }
+ 
+-    char buf[256];
++    char buf[MAXCOL];
+ 
+     if(AA->Msglistwidesubj())
+     {
+@@ -950,7 +950,7 @@
+ 
+ void GThreadlist::print_line(uint idx, uint pos, bool isbar)
+ {
+-    char buf[256];
++    char buf[MAXCOL];
+     ThreadEntry &t = treeEntryList[idx];
+     size_t tdlen = xlen - ((AA->Msglistdate() == MSGLISTDATE_NONE) ? 8 : 18);
+ 

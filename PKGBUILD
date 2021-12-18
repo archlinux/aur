@@ -1,13 +1,14 @@
 pkgname=golded-plus-git
-pkgver=r1544.2dfa780
+pkgver=r1548.9b28fa8
 pkgrel=1
 pkgdesc="golded-plus Fidonet Mail Reader/Editor"
 arch=('i686' 'x86_64')
 url="http://bbconf.sourceforge.net/"
 license=('GPL2')
-source=("${pkgname}::git+https://github.com/golded-plus/golded-plus.git"  "ncurses.diff" "geline.diff" "gedlnx" "widescreen.diff")
+source=("${pkgname}::git+https://github.com/golded-plus/golded-plus.git" 
+ "ncurses.patch" "addline.patch" "widescreen.patch")
 makedepends=('git' 'gcc' 'make' 'glibc' 'groff')
-depends=('screen' 'xorg-luit' 'ncurses-nonwide')
+depends=('screen' 'luit' 'ncurses-nonwide')
 provides=('golded-plus')
 
 build() {
@@ -23,10 +24,9 @@ build() {
 prepare() {
     cp "${pkgname}/golded3/mygolded.__h" "${pkgname}/golded3/mygolded.h"
     cd "${pkgname}"
-    #cp -rfv "${srcdir}/gclang.cpp" golded3/
-    patch -p0 -i "${srcdir}/ncurses.diff"
-    patch -p0 -i "${srcdir}/geline.diff"
-    patch -p0 -i "${srcdir}/widescreen.diff"
+    patch -p1 -i "${srcdir}/ncurses.patch"
+    patch -p1 -i "${srcdir}/addline.patch"
+    patch -p1 -i "${srcdir}/widescreen.patch"
 
     iconv -c -f cp866 -t utf8 docs/rusfaq.txt |  sed 2s/cp866/utf-8/ >docs/rusfaq.utf8
     iconv -c -f cp866 -t utf8 docs/notework.rus |  sed 2s/cp866/utf-8/ >docs/notework_rus.utf8
@@ -56,8 +56,7 @@ package() {
     mkdir -m 755 -p ${pkgdir}/usr/share/goldedplus/{docs,charset,colorset,config,template}
     install -d ${pkgdir}/usr/bin
     install bin/*lnx bin/golded ${pkgdir}/usr/bin/
-    mv ${pkgdir}/usr/bin/gedlnx ${pkgdir}/usr/bin/gedlnx.bin
-    cp ${srcdir}/gedlnx ${pkgdir}/usr/bin/
+    patchelf --set-rpath /opt/ncurses-nonwide/lib ${pkgdir}/usr/bin/gedlnx
     chmod 755 ${pkgdir}/usr/bin/gedlnx
     install -d ${pkgdir}/usr/man/man1
     install -m 644 docs/*.1 ${pkgdir}/usr/man/man1/
@@ -75,7 +74,6 @@ package() {
 }
 
 md5sums=('SKIP'
-         'd2936c6d185c1309b4741bfb9d57fe4b'
-         '808200388757918784f7ed1a64f9d89d'
-         '970bedc97a73656bf80da18e03af991d'
-         '86c1c88eb64ee281f1805f287735b0a6')
+         '101d41109a4d32a562142971de846219'
+         '5af9e7339bcfa4eb12736599b6ee266a'
+         '5c05574fdfa982acfefc1ca45f830d05')

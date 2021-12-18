@@ -1,0 +1,108 @@
+diff -ur 2/goldlib/gmb3/gmoezyc5.cpp 1/goldlib/gmb3/gmoezyc5.cpp
+--- 2/goldlib/gmb3/gmoezyc5.cpp
++++ 1/goldlib/gmb3/gmoezyc5.cpp
+@@ -90,7 +90,7 @@
+     AddLineF(line, "MsgLength: %u", _hdr.messagelength);
+     AddLineF(line, "UserRecno: %u (%s)", wide->userno, WideUsername[0]);
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     uint _count = 0;
+diff -ur 2/goldlib/gmb3/gmofido5.cpp 1/goldlib/gmb3/gmofido5.cpp
+--- 2/goldlib/gmb3/gmofido5.cpp
++++ 1/goldlib/gmb3/gmofido5.cpp
+@@ -181,7 +181,7 @@
+     }
+     AddLineF(line, "UserRecno: %u (%s)", wide->userno, WideUsername[0]);
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     int _count;
+diff -ur 2/goldlib/gmb3/gmohuds5.cpp 1/goldlib/gmb3/gmohuds5.cpp
+--- 2/goldlib/gmb3/gmohuds5.cpp
++++ 1/goldlib/gmb3/gmohuds5.cpp
+@@ -118,7 +118,7 @@
+                 );
+     }
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     int _count = 0;
+diff -ur 2/goldlib/gmb3/gmojamm5.cpp 1/goldlib/gmb3/gmojamm5.cpp
+--- 2/goldlib/gmb3/gmojamm5.cpp
++++ 1/goldlib/gmb3/gmojamm5.cpp
+@@ -182,7 +182,7 @@
+     throw_free(_subfield);
+ 
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     AddHexdump(line, _hdr, sizeof(JamHdr));
+diff -ur 2/goldlib/gmb3/gmopcbd5.cpp 1/goldlib/gmb3/gmopcbd5.cpp
+--- 2/goldlib/gmb3/gmopcbd5.cpp
++++ 1/goldlib/gmb3/gmopcbd5.cpp
+@@ -158,7 +158,7 @@
+         AddLineF(line, "Board %4u : %10u / %08Xh", n, dumplr[n], dumplr[n]);
+ 
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     char _buf[256];
+diff -ur 2/goldlib/gmb3/gmosmb1.cpp 1/goldlib/gmb3/gmosmb1.cpp
+--- 2/goldlib/gmb3/gmosmb1.cpp
++++ 1/goldlib/gmb3/gmosmb1.cpp
+@@ -1124,7 +1124,7 @@
+     }
+ 
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     int _count = 0;
+diff -ur 2/goldlib/gmb3/gmosqsh5.cpp 1/goldlib/gmb3/gmosqsh5.cpp
+--- 2/goldlib/gmb3/gmosqsh5.cpp
++++ 1/goldlib/gmb3/gmosqsh5.cpp
+@@ -139,7 +139,7 @@
+     AddLineF(line, "TotalLength    : %u", _frm.totsize);
+     AddLineF(line, "CtrlLength     : %u", _frm.ctlsize);
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     int _count = 0;
+diff -ur 2/goldlib/gmb3/gmowcat5.cpp 1/goldlib/gmb3/gmowcat5.cpp
+--- 2/goldlib/gmb3/gmowcat5.cpp
++++ 1/goldlib/gmb3/gmowcat5.cpp
+@@ -108,7 +108,7 @@
+     line = AddLine(line, "");
+     AddLineF(line, "UserRecno  : %u (%s)", wide->userno, WideUsername[0]);
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     int _count;
+diff -ur 2/goldlib/gmb3/gmoxbbs5.cpp 1/goldlib/gmb3/gmoxbbs5.cpp
+--- 2/goldlib/gmb3/gmoxbbs5.cpp
++++ 1/goldlib/gmb3/gmoxbbs5.cpp
+@@ -109,7 +109,7 @@
+     AddLineF(line, "ReplyidCrc      : %08Xh (%u)", idx->replycrc,      idx->replycrc);
+     AddLineF(line, "ReplyidSerialNo : %08Xh (%u)", idx->replyserialno, idx->replyserialno);
+     line = AddLine(line, "");
+-    AddLineF(line, lng_head);
++    AddLine(line, lng_head);
+     line = AddLine(line, "");
+ 
+     int _count;

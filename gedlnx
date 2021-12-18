@@ -1,2 +1,0 @@
-#!/bin/bash
-LD_PRELOAD=/opt/ncurses-nonwide/lib/libncurses.so.5 gedlnx.bin $@

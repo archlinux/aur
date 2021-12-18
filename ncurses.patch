@@ -1,5 +1,5 @@
---- GNUmakef.def
-+++ GNUmakef.def
+--- 1/GNUmakef.def
++++ 2/GNUmakef.def
 @@ -116,7 +116,7 @@
  ifeq ($(WIDE_NCURSES),1)
  LIBCURSES=-L/opt/csw/lib -lncursesw
