@@ -14,7 +14,7 @@ arch=('any')
 license=('LGPL')
 url="http://www.gnome.org"
 groups=('xfce4-goodies')
-depends=('gnome-menus' 'hicolor-icon-theme' 'python-gobject' 'gtk3')
+depends=('gnome-menus' 'gtk3' 'hicolor-icon-theme' 'python-cairo' 'python-gobject')
 makedepends=('gnome-common')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-xfce-devel")

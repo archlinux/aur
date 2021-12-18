@@ -9,9 +9,10 @@ pkgbase = alacarte-xfce
 	license = LGPL
 	makedepends = gnome-common
 	depends = gnome-menus
-	depends = hicolor-icon-theme
-	depends = python-gobject
 	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = python-cairo
+	depends = python-gobject
 	provides = alacarte=3.42.0
 	conflicts = alacarte
 	conflicts = alacarte-git
