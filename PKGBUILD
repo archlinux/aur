@@ -1,19 +1,18 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=meshzoo
 pkgname=python-${_base}
 pkgdesc="A collection of meshes for canonical domains"
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-numpy)
 makedepends=(python-setuptools)
-checkdepends=(python-pytest-codeblocks python-matplotlib python-pytest-randomly)
+checkdepends=(python-pytest-codeblocks python-matplotlib)
 optdepends=('python-matplotlib: for Matplotlib rendering in 2d')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9383c5b35d7d517f1c1baf9ee3462ff9a23cfa97a77bb755b270aea0504cd776e9ee2505b5964e3a0ef986cd6a5deeef35b2d56dd139107780a50f08ecef4232')
+sha512sums=('771fe9dc966d938f04d6a079611257cb3e5025a2e66bb7b089bf97505be6093993d4df00b5964b1a1f663c473f1ecfcf42f95d532390bc62a369924fbf2703ef')
 
 build() {
   cd "${_base}-${pkgver}"
