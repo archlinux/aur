@@ -1,6 +1,7 @@
 kotatogram-desktop*
 libvpx
-libyuv                                                                                                                                                                                        
+libyuv
 pipewire
+kotatogram-dev-git*
 pkg/
 src/
