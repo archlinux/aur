@@ -1,7 +1,7 @@
 pkgbase = beets-extrafiles-git
 	pkgdesc = A plugin for beets that copies additional files and directories during the import process.
 	pkgver = 0.0.7.r2.ga1d6ef9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Holzhaus/beets-extrafiles
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = beets-extrafiles-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = beets
+	depends = python-mediafile
 	provides = beets-extrafiles
 	conflicts = beets-extrafiles
 	source = git+https://github.com/Holzhaus/beets-extrafiles.git
