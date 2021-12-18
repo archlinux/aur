@@ -4,7 +4,7 @@
 
 pkgname=dlib
 pkgver=19.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://dlib.net"
@@ -18,8 +18,8 @@ depends=('cblas'
 optdepends=('giflib: for GIF support'
             'sqlite: for sqlite support')
 makedepends=('cmake' 'ninja')
-source=("http://dlib.net/files/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572')
+source=("https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v${pkgver}")
+sha256sums=('5f44b67f762691b92f3e41dcf9c95dd0f4525b59cacb478094e511fdacb5c096')
 
 build() {
     cd "${srcdir}"
