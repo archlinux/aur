@@ -1,16 +1,15 @@
 pkgbase = python-perfplot
-	pkgdesc = Performance plots for Python code
-	pkgver = 0.9.12
-	pkgrel = 3
+	pkgdesc = Performance analysis for Python snippets
+	pkgver = 0.9.13
+	pkgrel = 1
 	url = https://github.com/nschloe/perfplot
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-pytest-codeblocks
-	checkdepends = python-colorio
 	makedepends = python-setuptools
 	depends = python-matplotx
 	depends = python-rich
-	source = https://github.com/nschloe/perfplot/archive/v0.9.12.tar.gz
-	sha512sums = 2a6608e2317415fe997355a6c1e815cc57b6d37e330429d55b8c123037f33d505e55ec86410637abb877c1dbdeab91836417e87e983de5289986662005bfc723
+	source = https://github.com/nschloe/perfplot/archive/v0.9.13.tar.gz
+	sha512sums = f322c9be8de63fbdb33e45e895b1fe48b342fa4912895deb0da26c86eb7f753bb74066516f8a3b14f685ec12b05214f221231dfea0f3186931056f25d63f8e5b
 
 pkgname = python-perfplot
