@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=6
 pkgrel=1
-pkgver=7.0.0.r29283.aa645ebc7b29
+pkgver=8.0.0.r30507.07ac55628691
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ license=('GPL')
 depends=('fftw' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
 	 'gl2ps' 'qhull' 'graphicsmagick' 'mesa' 'julia' 'libsndfile'
 	 'suitesparse' 'qscintilla-qt5' 'termcap' 'qt5-tools'
-	 'qrupdate' 'portaudio' 'sundials')
+	 'qrupdate' 'portaudio')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
-	     'transfig' 'epstool' 'texlive-core' 'icoutils' 'git')
+	     'fig2dev' 'epstool' 'texlive-core' 'icoutils' 'git')
 optdepends=('texinfo: for help-support in octave'
 	    'gnuplot: alternative plotting')
 conflicts=('octave')
@@ -57,11 +57,6 @@ build() {
 	       --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
 	       --with-umfpack --disable-java --with-hdf5 --enable-docs 
   make
-}
-
-check() {
-  cd ${_hgrepo}/build
-  make test || true
 }
 
 package() {
