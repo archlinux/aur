@@ -1,16 +1,16 @@
 pkgbase = sensu-backend
 	pkgdesc = Sensu Go Backend
-	pkgver = 6.6.2
+	pkgver = 6.6.3
 	pkgrel = 0
 	url = https://sensu.io
 	install = sensu-backend.install
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	source = sensu-backend-6.6.2_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.6.2/sensu-go_6.6.2_linux_amd64.tar.gz
+	source = sensu-backend-6.6.3_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.6.3/sensu-go_6.6.3_linux_amd64.tar.gz
 	source = sensu-backend.service
 	source = backend.yml.example
-	sha256sums = b974f9d4751170eb560219c4564b14648842062fec4a351df9c7b1aa15188cfc
+	sha256sums = 9160a18f005be88f0919503247b263784e8c4949978b296d1d24e79dd29fddcf
 	sha256sums = 57c4e7835da2d58186e8e36518dc9e0b7cee93bd018619ec2a7210bf212d0d27
 	sha256sums = 29cf533a6b324ede8f2d774954bdbf879d0bf4470244cba5e7fbe1b935c1c4e9
 
