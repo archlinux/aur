@@ -1,0 +1,23 @@
+pkgbase = husky-msged-git
+	pkgdesc = Husky Fido Tosser hpt: Complete bundle
+	pkgver = r3389.852e02a5
+	pkgrel = 1
+	url = http://huskyurceforge.net/hpt.html
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	conflicts = husky-git
+	source = hpt::git+https://github.com/huskyproject/hpt.git
+	source = huskylib::git+https://github.com/huskyproject/huskylib.git
+	source = fidoconf::git+https://github.com/huskyproject/fidoconf.git
+	source = smapi::git+https://github.com/huskyproject/smapi.git
+	source = hptzip::git+https://github.com/huskyproject/hptzip.git
+	source = msged::git+https://github.com/huskyproject/msged.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = husky-msged-git
