@@ -1,15 +1,14 @@
-#Maintainer: xgdgsc<xgdgsc@gmail.com>
-#Co-Maintainer: Mohammadreza Abdollahzadeh<morealaz at gmail dot com>
+#Maintainer: npfeiler<npfeiler ät gmail.com>
 
 pkgname=cppreference-qt
-pkgver=20190607
+pkgver=20211127
 pkgrel=1
 pkgdesc="A complete reference for the features in the C++ Standard Library, for qt help."
 arch=('any')
-url="http://en.cppreference.com/"
+url="https://en.cppreference.com/w/Cppreference:Archives#Unofficial_Release"
 license=('CCPL:cc-by-sa')
-source=("http://upload.cppreference.com/mwiki/images/5/5a/qch_book_$pkgver.tar.xz")
-md5sums=('09f2c6eb8f99d4023445fda4bf757be3')
+source=("https://github.com/PeterFeicht/cppreference-doc/releases/download/v$pkgver/qch-book-$pkgver.tar.xz")
+md5sums=('7873442e1c66714105dcd55f7b353a44')
 
 package() {
     mkdir -p "$pkgdir/usr/share/doc/qt"
