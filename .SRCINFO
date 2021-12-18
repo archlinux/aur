@@ -1,7 +1,7 @@
 pkgbase = syncthingtray
 	pkgdesc = Tray application for Syncthing
 	pkgver = 1.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
 	arch = x86_64
