@@ -1,7 +1,7 @@
 pkgbase = beanprice
 	pkgdesc = Price quotes fetcher for Beancount
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beancount/beanprice
 	arch = any
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = beanprice
 	sha256sums = 42e8b8cca9ebf554a748c2871ce8e4a02ae94a9b27441dc41b14926de7f33731
 
 pkgname = beanprice
-

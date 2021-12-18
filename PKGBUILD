@@ -1,9 +1,9 @@
-# Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
+# Maintainer: xuhcc <xuhcc@cryptolab.net>
 
 pkgname='beanprice'
 pkgdesc='Price quotes fetcher for Beancount'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/beancount/beanprice"
 license=('GPL')
