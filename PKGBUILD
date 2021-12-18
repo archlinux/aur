@@ -3,7 +3,7 @@
 pkgname=python-pixcat
 _name=${pkgname#python-}
 pkgver=0.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="CLI and Python 3.6+ API to display images on a kitty terminal with optional resizing."
 arch=('any')
 url='https://github.com/mirukana/pixcat'
@@ -28,6 +28,6 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 
   # Fix permissions
-  find "$pkgdir/usr/lib/python3.9/site-packages/" -type f -exec chmod 644 '{}' +
+  find "$pkgdir/usr/lib/python3.10/site-packages/" -type f -exec chmod 644 '{}' +
 }
 # vim:set ts=2 sw=2 et:
