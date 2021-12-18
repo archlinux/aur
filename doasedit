@@ -7,6 +7,7 @@
 # Since I am lazy and am using this to write small scripts under /usr/local/bin sometimes, I also added a feature for myself to install with permissions already set if you are writing a new file and start it with a shebang.
 
 EDITOR=${EDITOR:-vi}
+doaseditfile="/tmp/doasediting"
 
 ERR() {
     echo -e 'doasedit: '"$1";
@@ -48,6 +49,8 @@ $EDITOR /tmp/doasediting || ERR "The editor failed to exit successfully"
 [[ -e "$1" ]] && cmp -s /tmp/doasediting "$1" && exit 0
 # If the original file did not exist, print a warning
 [[ -e "$1" ]] || echo "doasedit: File '$1' will be created, if this is not desireable press ctrl+C"
+
+[[ "/etc/doas.conf" == "$1" ]] && echo "$ doas -C /tmp/doasediting doasedit \"$1\"" && doas -C /tmp/doasediting doasedit \"$1\" || ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
 
 doas cp /tmp/doasediting "$1" || ERR "You put your password in wrong. Manually run 'doas cp /tmp/doasediting $1'"
 
