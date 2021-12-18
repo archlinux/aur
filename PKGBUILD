@@ -18,7 +18,7 @@
 
 _basename=clatexmath
 pkgname="${_basename}-git"
-pkgver=r267.52329bb
+pkgver=r484.dc32540
 pkgrel=1
 pkgdesc="A dynamic, cross-platform, and embeddable LaTeX rendering library"
 arch=("x86_64" "aarch64" "i686" "armv7h" "s390x")
@@ -47,4 +47,6 @@ build() {
 package() {
 	cd "${srcdir}/${_basename}"
 	DESTDIR="${pkgdir}" meson install -C _build
+	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+	sed -n '/The .* License/,/ SOFTWARE\./p' README.md > ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
