@@ -3,7 +3,7 @@
 pkgname=junction
 _pkgname=Junction
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
 url="https://github.com/sonnyp/Junction"
@@ -12,7 +12,7 @@ depends=('glib2' 'gtk4' 'libadwaita' 'gjs')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=('c3fe832e68871c9673d4bbb8b816d1ebbc75a8da9d739996eb324033fa4081f72b9793fcc8807d1f4b435da349798560a3642bbf0d4a59eb311e5553c19e36d1')
+b2sums=('cb7f5948c49d4ee4a326e6b19ed8b26be983253f9e048f4928b7dda5605739bb86cf8718f0bfb849fdd9c88c50aa445635676e5fa56855f0b07c35cdacc95b45')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build
