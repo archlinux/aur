@@ -31,7 +31,7 @@ validpgpkeys=()
 
 prepare() {
 	cd rgb-tui
-	cmake .
+	cmake -DCMAKE_BUILD_TYPE=Release .
 }
 
 build() {
