@@ -4,7 +4,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=etherpad-lite
-pkgver=1.8.15
+pkgver=1.8.16
 pkgrel=1
 epoch=1
 arch=(x86_64)
@@ -28,11 +28,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archiv
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('5ad0763ad2dc5281511d191312d8d60c64791e28ea8db96a5c65f7629cae28ad084336e3ab32fcdcb98937a068784f681d10425edb94b998a69b74677e713f9e'
+sha512sums=('3dac9ac557f6936641e80cbc7e4fe30ae6948fbc724a1c47b4da2c87dd4f66286ca9f9752d73316b326aa24ea8d5911ce001e64187668c69ec38043cbdaa36ec'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             'f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447'
             'db3f27c2bed7cc84910154da8851daf32ea248aeaca5026c9c4cf138841b921498a0c39d4f9b635d6686d13ac498399e4657563867d87d406ff6b8b6d9dd0d28')
-b2sums=('f049151ce073cdf3759acf9bd03f5e85e8cb46d2981de848d731e1435d25966e469ed8ce792f9d79709f8b3b5ebaa59feb1620226219fcd449ce1ad7a3792d6b'
+b2sums=('b82de8e4b4f9a5bff4a3c3209d79ba4e780ea96d0e2ba767052e5eb20666ea9558f792363090bdcabceec438236600e6bd8ae164542a6c84908b87095e9f17b3'
         'cb519b7d749982d899037445be36dc54754c523ee7aaa3f7d005b4cea4dd74c1596535b17bfdd6910923e4f723ee02c625d579966a601b84ca1b1eeb82fe932e'
         '88f0f7b9bbc64b853e3169cc9627b64c4b5aaef7238553ed110f82ebd40e1f8b0078d17a69adee6a37f6d59f6eb0871fc209a1fb6e4b71b7ac5239071db2eec7'
         '12c3be8037959b0613adc82a5632845a79c966a6c9ccbadffd103c30c5cb951c0d31e2cc8f2cfce5ebcaba847baf168584cd6dac4a76c0d14b0d534f1c82219b')
@@ -140,46 +140,33 @@ package() {
          -exec rm -rvf {} +
   find src -empty -type d -delete
   # install initialization file
-  install -vDm 644 "src/.ep_initialized" \
-    -t "${pkgdir}/usr/share/${pkgname}/src/"
+  install -vDm 644 "src/.ep_initialized" -t "${pkgdir}/usr/share/${pkgname}/src/"
   # node modules
   cp -av node_modules "${pkgdir}/usr/share/${pkgname}/"
   # protect configuration directory with restrictive permission
   install -vdm 755 "${pkgdir}/etc/${pkgname}"
   install -vdm 755 "${pkgdir}/etc/${pkgname}/no-skin"
   # custom js and css templates
-  install -vDm 644 "src/static/skins/no-skin/"*.{css,js} \
-    -t "${pkgdir}/etc/${pkgname}/no-skin"
+  install -vDm 644 "src/static/skins/no-skin/"*.{css,js} -t "${pkgdir}/etc/${pkgname}/no-skin"
   rm -rv src/static/skins/no-skin/
   # move sources
   cp -av src/* "${pkgdir}/usr/share/${pkgname}/src/"
   # symlink directory for custom css and js
-  ln -vs "/etc/${pkgname}/no-skin/" \
-    "${pkgdir}/usr/share/${pkgname}/src/static/skins/"
+  ln -vs "/etc/${pkgname}/no-skin/" "${pkgdir}/usr/share/${pkgname}/src/static/skins/"
   # configuration
-  install -vDm 640 settings.json.template \
-    "${pkgdir}/etc/${pkgname}/settings.json"
-  install -vDm 640 credentials.json \
-    -t "${pkgdir}/etc/${pkgname}"
-  install -vDm 640 {APIKEY,SESSIONKEY}.txt \
-    -t "${pkgdir}/etc/${pkgname}"
+  install -vDm 640 settings.json.template "${pkgdir}/etc/${pkgname}/settings.json"
+  install -vDm 640 credentials.json -t "${pkgdir}/etc/${pkgname}"
+  install -vDm 640 {APIKEY,SESSIONKEY}.txt -t "${pkgdir}/etc/${pkgname}"
   # symlink configuration files
-  ln -vs "/etc/${pkgname}/credentials.json" \
-    "${pkgdir}/usr/share/${pkgname}/credentials.json"
-  ln -vs "/etc/${pkgname}/SESSIONKEY.txt" \
-    "${pkgdir}/usr/share/${pkgname}/SESSIONKEY.txt"
-  ln -vs "/etc/${pkgname}/APIKEY.txt" \
-    "${pkgdir}/usr/share/${pkgname}/APIKEY.txt"
+  ln -vs "/etc/${pkgname}/credentials.json" "${pkgdir}/usr/share/${pkgname}/credentials.json"
+  ln -vs "/etc/${pkgname}/SESSIONKEY.txt" "${pkgdir}/usr/share/${pkgname}/SESSIONKEY.txt"
+  ln -vs "/etc/${pkgname}/APIKEY.txt" "${pkgdir}/usr/share/${pkgname}/APIKEY.txt"
   # systemd service
-  install -vDm 644 "${srcdir}/${pkgname}.service" \
-    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -vDm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   # systemd-sysusers
-  install -vDm 644 "${srcdir}/${pkgname}-sysusers.conf" \
-    "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -vDm 644 "${srcdir}/${pkgname}-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   # systemd-tmpfiles
-  install -vDm 644 "${srcdir}/${pkgname}-tmpfiles.conf" \
-    "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -vDm 644 "${srcdir}/${pkgname}-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   # docs
-  install -vDm 644 {CHANGELOG,CONTRIBUTING,README}.md \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -vDm 644 {CHANGELOG,CONTRIBUTING,README}.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
