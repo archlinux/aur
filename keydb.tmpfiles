@@ -1,1 +1,3 @@
 d /var/lib/keydb 0700 keydb keydb
+d /etc/keydb 0775 root keydb
+f /etc/keydb/sentinel.conf 0664 root keydb

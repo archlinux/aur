@@ -1,0 +1,5 @@
+post_upgrade() {
+    echo ""
+    echo "Note: The keydb config has been moved from /etc/keydb.conf to /etc/keydb/keydb.conf"
+    echo ""
+}

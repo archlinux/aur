@@ -1,5 +1,0 @@
-/var/log/keydb.log {
-   notifempty
-   copytruncate
-   missingok
-}

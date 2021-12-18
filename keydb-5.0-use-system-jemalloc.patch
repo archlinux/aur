@@ -1,6 +1,6 @@
---- Makefile	2020-03-27 18:36:35.000000000 +0000
-+++ Makefile-patched	2020-04-30 17:01:14.406126433 +0100
-@@ -184,9 +184,9 @@
+diff --git a/src/Makefile b/src/Makefile
+index 3bc9f11c0..a4b23d986 100644
+@@ -184,9 +184,9 @@ endif
  
  ifeq ($(MALLOC),jemalloc)
  	DEPENDENCY_TARGETS+= jemalloc
