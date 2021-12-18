@@ -1,6 +1,6 @@
 pkgname=husky-msged-git
 _realpkg=husky
-pkgver=r3389.852e02a5
+pkgver=r626.22c4c21
 pkgrel=1
 arch=('x86_64')
 license=('GPL')

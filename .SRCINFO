@@ -1,6 +1,6 @@
 pkgbase = husky-msged-git
 	pkgdesc = Husky Fido message editor
-	pkgver = r3389.852e02a5
+	pkgver = r626.22c4c21
 	pkgrel = 1
 	url = http://huskyurceforge.net/hpt.html
 	arch = x86_64
