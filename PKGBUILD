@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=viu-git
-pkgver=1.3.0.r0.g94ebd93
-pkgrel=2
+pkgver=1.4.0.r0.g3daaebe
+pkgrel=1
 pkgdesc="Simple terminal image viewer (git)"
 arch=('x86_64')
 url="https://github.com/atanunq/viu"
@@ -20,14 +20,19 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --frozen --release
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
