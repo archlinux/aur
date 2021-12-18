@@ -1,0 +1,13 @@
+pkgbase = rgb-tui-bin
+	pkgdesc = Create and get colors code from the terminal using a nice interface.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/ArthurSonzogni/rgb-tui
+	arch = x86_64
+	license = MIT
+	provides = rgb-tui
+	conflicts = rgb-tui-git
+	source = rgb-tui-bin-1.1.tar.gz::https://github.com/ArthurSonzogni/rgb-tui/releases/download/v1.1/rgb-tui-1.0.0-Linux.tar.gz
+	sha256sums = 9a0f0d04b2ce257ecb8e4b38e1edd3a1a5a643538cf4bca2a242c0c933e866bc
+
+pkgname = rgb-tui-bin
