@@ -1,5 +1,6 @@
 # Maintainer: Jordan Cook <JCook83@gmail.com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Philipp A. <flying-sheep@web.de>
 # Contributor: Benoit Pierre <benoit.pierre@gmail.com>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Aniket Pradhan <aniket17133[at]iiitd[dot]ac[dot]in>
