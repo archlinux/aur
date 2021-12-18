@@ -11,7 +11,7 @@ optdepends=('python-pillow' 'python-chardet')
 arch=('any')
 source=(
 	"https://github.com/DYefremov/$_pkgname/releases/download/$pkgver-b$pkgrel/$_pkgname-$pkgver-Beta.deb"
-  "https://raw.githubusercontent.com/DYefremov/DemonEditor/master/LICENSE"
+  "https://raw.githubusercontent.com/DYefremov/DemonEditor/$pkgver-b$pkgrel/LICENSE"
 )
 sha256sums=('f36cfe9560c166f94d96f3cd9c0020284cbebc60e6addc074b72236bbb92c330'
             '04d9540a8d545d279f7857fa54f90c5f79f3ff3db261410e9aa8329447b81500')
