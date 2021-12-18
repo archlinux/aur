@@ -3,7 +3,7 @@
 
 pkgname=nodejs-browser-sync
 pkgver=2.27.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Live CSS Reload & Browser Syncing"
 arch=('any')
 url="https://www.browsersync.io/"
