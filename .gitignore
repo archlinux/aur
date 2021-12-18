@@ -3,4 +3,5 @@ pkg/*
 *.tar.*
 *.t?z
 golded-plus-git/*
+*.log
 
