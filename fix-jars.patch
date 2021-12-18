@@ -1,7 +1,8 @@
-diff '--color=auto' --unified --recursive --text --new-file Launcher0/launcher/Application.cpp Launcher1/launcher/Application.cpp
---- Launcher0/launcher/Application.cpp	2021-12-13 06:20:23.475484553 +0000
-+++ Launcher1/launcher/Application.cpp	2021-12-13 06:24:20.661422670 +0000
-@@ -524,6 +524,10 @@
+diff --git a/launcher/Application.cpp b/launcher/Application.cpp
+index 2d0c81bb..74f250fb 100644
+--- a/launcher/Application.cpp
++++ b/launcher/Application.cpp
+@@ -524,6 +524,10 @@ Application::Application(int &argc, char **argv) : QApplication(argc, argv)
          FS::updateTimestamp(m_rootPath);
  #endif
  

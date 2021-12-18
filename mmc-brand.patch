@@ -1,18 +1,7 @@
-diff '--color=auto' -x '.*' --unified --recursive --text --new-file Launcher0/launcher/Application.cpp Launcher1/launcher/Application.cpp
---- Launcher0/launcher/Application.cpp	2021-12-13 07:43:23.274019056 +0000
-+++ Launcher1/launcher/Application.cpp	2021-12-13 07:50:33.016549365 +0000
-@@ -312,7 +312,7 @@
-         QString xdgDataHome = QFile::decodeName(qgetenv("XDG_DATA_HOME"));
-         if (xdgDataHome.isEmpty())
-             xdgDataHome = QDir::homePath() + QLatin1String("/.local/share");
--        dataPath = xdgDataHome + "/devlauncher";
-+        dataPath = xdgDataHome + "/multimc";
-         adjustedBy += "XDG standard " + dataPath;
- #elif defined(Q_OS_MAC)
-         QDir foo(FS::PathCombine(applicationDirPath(), "../../Data"));
-diff '--color=auto' -x '.*' --unified --recursive --text --new-file Launcher0/launcher/resources/multimc/multimc.qrc Launcher1/launcher/resources/multimc/multimc.qrc
---- Launcher0/launcher/resources/multimc/multimc.qrc	2021-12-13 06:20:23.494484805 +0000
-+++ Launcher1/launcher/resources/multimc/multimc.qrc	2021-12-13 08:03:35.943090237 +0000
+diff --git a/launcher/resources/multimc/multimc.qrc b/launcher/resources/multimc/multimc.qrc
+index 5b36cb3d..f2322279 100644
+--- a/launcher/resources/multimc/multimc.qrc
++++ b/launcher/resources/multimc/multimc.qrc
 @@ -282,6 +282,9 @@
          <file>32x32/instances/herobrine.png</file>
          <file>128x128/instances/herobrine.png</file>
@@ -23,10 +12,11 @@ diff '--color=auto' -x '.*' --unified --recursive --text --new-file Launcher0/la
          <file>32x32/instances/magitech.png</file>
          <file>128x128/instances/magitech.png</file>
  
-diff '--color=auto' -x '.*' --unified --recursive --text --new-file Launcher0/notsecrets/CMakeLists.txt Launcher1/notsecrets/CMakeLists.txt
---- Launcher0/notsecrets/CMakeLists.txt	2021-12-13 06:20:23.524485203 +0000
-+++ Launcher1/notsecrets/CMakeLists.txt	2021-12-13 06:37:14.725320153 +0000
-@@ -3,14 +3,14 @@
+diff --git a/notsecrets/CMakeLists.txt b/notsecrets/CMakeLists.txt
+index b5dd3cf8..3abd8002 100644
+--- a/notsecrets/CMakeLists.txt
++++ b/notsecrets/CMakeLists.txt
+@@ -3,14 +3,14 @@ target_link_libraries(secrets Qt5::Core)
  target_compile_definitions(secrets PUBLIC -DEMBED_SECRETS)
  target_include_directories(secrets PUBLIC .)
  

@@ -9,7 +9,7 @@ _pkgname=multimc
 pkgver=0.6.14
 _nbtplusplusver=dc72a20b7efd304d12af2025223fad07b4b78464
 _quazipver=b1a72ac0bb5a732bf887a535ab75c6f9bedb6b6b
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
@@ -39,9 +39,9 @@ sha512sums=('SKIP'
             'df53f8b13ceeddc7922b6553730f29fdf92662277d20c9fc97d56965df1fe2349dd724ad8f911b105b02653fad112785e72ffadbf5571458fa23a45daf473e11'
             'ede87db7e1ce67184409123720b48f65d35884bac5dfff34cc099c5d7520fd9173be00997df82ad29da4640928134a7199ffdd1cbaa83a72101dbed72736508b'
             'd0e3152b885ec73b019dc0269d46e1ce0c43211bbcf05776a1e97f10fdc29f442930cc2d5144c0f979133e6aec68bf68474b924c746d1fa6b8c7f604af6eb83f'
-            '1dc559a4b463bb9b0648d221df48a8ab562db186ea44fe0a3dba1af9c51306983faa27839abe7aea0478fb4d165fcf4af0db411fe063a18dcb9ca03c06196397'
-            '82f66f6aac1f7c09d2e242768b77af692216cfa99925585a7871fa71bec8197a246b66a3af7d9eab8856655ce80e4ced26a0fc331579a18badd8f86005b5bf53'
-            '07a7d3c13b418d18f96e3cf46b8608c69e7346554e8cc62c5d1b54b57c3b2be8ee4481f431b30b71795395c1b5ff5964f7403a6f77bf3ba316dcea3d472b0e8c')
+            'df077c24a235117cc391ac515dd1e28c10b2082093c80aac5dcf3d6d8feaf07acacc79bfd5f111e389e7972e6f0a3b6eb217202d13e362219ed22a5437cd49c7'
+            '1aeb819e1fc21f887e8f212f44eb22ccad320b9a1783ed9b55b8a2a9875103f079aaeb0a051b811f7ceb0708caf20f3c7b0c4ba21b5bb5dc25b0fec977dfc878'
+            'a7c4654dd5ee260c25e0eab2dba0d929f09bc38b9af1505408a55058e73eaf35986b4a0e6de7e1893ebf860c472df984011340b3989f996a9d170cbc37dfd691')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -75,11 +75,11 @@ build() {
 
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
-    -DMultiMC_UPDATER=OFF \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DMultiMC_LAYOUT=lin-system \
+    -DLauncher_LAYOUT=lin-system \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_SHARE_DEST_DIR="share/${_pkgname}" \
+    -DLauncher_LIBRARY_DEST_DIR="lib/${_pkgname}" \
     ..
   make
 }
