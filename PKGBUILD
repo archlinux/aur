@@ -2,7 +2,7 @@
 # Maintainer: So1ar <so1ar114514@gmail.com>
 
 pkgname=hmcl-bin
-pkgver=3.5.213
+pkgver=3.5.0.213
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
