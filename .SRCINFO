@@ -1,7 +1,7 @@
 pkgbase = tuxtype
 	pkgdesc = An educational typing tutorial game starring Tux
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tux4kids.com/tuxtyping.html
 	arch = x86_64
 	license = GPL2

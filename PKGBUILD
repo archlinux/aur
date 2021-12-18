@@ -5,7 +5,7 @@
 
 pkgname=tuxtype
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An educational typing tutorial game starring Tux"
 arch=('x86_64')
 url="https://www.tux4kids.com/tuxtyping.html"
@@ -24,6 +24,7 @@ build() {
 
   ./configure --prefix=/usr --localstatedir=/usr/share/games --sysconfdir=/etc --without-rsvg
   make
+  make update-gmo
 }
 
 package() {
@@ -31,7 +32,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-#icon + desktop files
+  #icon + desktop files
   install -vDm644 $pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.desktop
   install -vDm644 icon.png "${pkgdir}"/usr/share/pixmaps/$pkgname.png
 }
