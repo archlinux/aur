@@ -17,7 +17,7 @@ optdepends=('ipython: ipython-static'
             'python-pyqt6: pyqt6'
             'pyside2: pyside2'
             'pyside6: pyside6'
-            'pysdl2: sdl2'
+            'python-pysdl2: sdl2'
             'python-wxpython: wx')
 _pkgname=vispy
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz")
