@@ -1,14 +1,13 @@
 pkgbase = python-asyncore-wsgi
 	pkgdesc = Asynchronous WSGI and WebSocket server based on asyncore module.
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/romanvm/asyncore-wsgi
 	arch = any
 	license = MIT
 	depends = python
-	noextract = asyncore_wsgi-0.0.9-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/a/asyncore-wsgi/asyncore_wsgi-0.0.9-py2.py3-none-any.whl
-	sha256sums = de043ee1544ae1a2602ef6f8cde41b7bd9f9b29d459e1c1514fa1c655aa7c841
+	noextract = asyncore_wsgi-0.0.10-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/a/asyncore-wsgi/asyncore_wsgi-0.0.10-py2.py3-none-any.whl
+	sha256sums = 66c7cfcb209c5b0aa8bdfb48d7ebe3ef2dcd2b085c29fde2930073db2220157c
 
 pkgname = python-asyncore-wsgi
-

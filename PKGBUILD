@@ -2,7 +2,7 @@
 
 _name=asyncore-wsgi
 pkgname=python-$_name
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Asynchronous WSGI and WebSocket server based on asyncore module.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 _pyarch=py2.py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('de043ee1544ae1a2602ef6f8cde41b7bd9f9b29d459e1c1514fa1c655aa7c841')
+sha256sums=('66c7cfcb209c5b0aa8bdfb48d7ebe3ef2dcd2b085c29fde2930073db2220157c')
 noextract=("$_wheel")
 
 package() {
