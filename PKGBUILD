@@ -319,23 +319,22 @@ package() {
     done
     cd "${srcdir}/msged/build-archlinux"
     make DESTDIR="$pkgdir" install
-    rm -rf ${pkgdir/usr/lib/*.a
+    rm -rf ${pkgdir}/usr/lib/*.a
 }
-
-md5sums=('a1abb8245e098573da0abf7735fc3840'
-         'f4805667cd4f632139783d944c04b4f4'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+sha256sums=('73a603d930e184a1d094f53311916b4f8dcd8f7c31ea3373e236e797a3341a15'
+            'c5bb6b91f34b23cb1d2f9cff5d8d0956ce372cca3b602ada87ff3b4375498ea7'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
