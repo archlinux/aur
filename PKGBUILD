@@ -2,13 +2,14 @@
 
 pkgname='netbox'
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='IP address management (IPAM) and data center infrastructure management (DCIM) tool.'
 arch=('any')
 url='https://github.com/digitalocean/netbox'
 license=('Apache')
 depends=(
 	'gunicorn'
+	'python-graphene-django'
 	'python-django'
 	'python-django-cacheops'
 	'python-django-cors-headers'
@@ -32,7 +33,9 @@ depends=(
 	'python-pycryptodome'
 	'python-pyaml'
 	'python-redis'
+	'python-social-auth-app-django'
 	'python-svgwrite'
+	'python-text-unidecode'
 )
 install="$pkgname.install"
 conflicts=("$pkgname-git")
@@ -56,7 +59,7 @@ package() {
 	install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
 	install -d "$pkgdir/etc/$pkgname"
-	install -D -m644 $pkgname-$pkgver/$pkgname/$pkgname/configuration.example.py "$pkgdir/etc/netbox/configuration.py"
+	install -D -m644 $pkgname-$pkgver/$pkgname/$pkgname/configuration.example.py "$pkgdir/etc/netbox/configuration.py.new"
 	install -D -m755 upgrade.sh "$pkgdir/etc/netbox/upgrade.sh"
 	ln -s "/etc/netbox/configuration.py" "$pkgdir/var/lib/netbox/netbox/configuration.py"
 }
