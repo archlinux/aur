@@ -1,18 +1,17 @@
 pkgbase = sphobjinv
 	pkgdesc = Toolkit for manipulation and inspection of Sphinx objects.inv files
-	pkgver = 2.1b1
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/bskinn/sphobjinv
 	arch = any
 	license = MIT
 	makedepends = install-wheel-scripts
-	depends = python-attrs>=17.4
+	depends = python-attrs>=19.2
 	depends = python-certifi
-	depends = python-fuzzywuzzy>=0.3
-	depends = python-jsonschema>=2.0
-	noextract = sphobjinv-2.1b1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/sphobjinv/sphobjinv-2.1b1-py3-none-any.whl
-	sha256sums = c2b3bd06fcd37ee77a71e081551584a6cc38044c815253ac2396824a4d900bb9
+	depends = python-fuzzywuzzy>=0.8
+	depends = python-jsonschema>=3.0
+	noextract = sphobjinv-2.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/sphobjinv/sphobjinv-2.1-py3-none-any.whl
+	sha256sums = 24c0aa47fcea4f47dc9487ff83776d7dda2c03425927037d7d2a1b292b1c3323
 
 pkgname = sphobjinv
-
