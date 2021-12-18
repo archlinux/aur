@@ -3,18 +3,17 @@
 _base=matplotx
 pkgname=python-${_base}
 pkgdesc="Useful styles and extensions for Matplotlib"
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
 depends=(python-matplotlib)
 makedepends=(python-setuptools)
-checkdepends=(python-networkx python-colorio python-pytest-codeblocks)
-optdepends=('python-networkx: for creation of graphs'
-  'python-colorio: for duftify style')
+checkdepends=(python-networkx python-pytest-codeblocks)
+optdepends=('python-networkx: for creation of graphs')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d797272b6f95499916c2f520dc5a3e9f5f76b9c64f338552e025097dfbe91df86ee6f2e6e3bd3988ae89cfccce9858d2cd6017011d72768d441b4e884c28690c')
+sha512sums=('0b3c22db3adff9a30b6c1b4450a973998b8968fd3465ad82a417f8f7a68f34df74e25c555e08531ed1b5cb235d316e32d2b9a40add30efbd57c3c84f279adbe2')
 
 build() {
   cd "${_base}-${pkgver}"
