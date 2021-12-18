@@ -2,18 +2,18 @@
 
 _name=modulegraph
 pkgname=python-modulegraph
-pkgver=0.17
-pkgrel=3
+pkgver=0.19.2
+pkgrel=1
 pkgdesc='determines a dependency graph between Python modules primarily by bytecode analysis for import statements'
 arch=('any')
-url="https://bitbucket.org/ronaldoussoren/$_name"
-license=('MIT')
-depends=('python' 'python-altgraph')
+url="https://github.com/ronaldoussoren/$_name"
+license=(MIT)
+depends=(python python-altgraph)
 makedepends=(install-wheel-scripts)
 _pyarch=py2.py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('9991538487efaa2d77b78bded12f7ba223f1a143f8ad75ed6484afa70b3d47e1')
+sha256sums=('7985a8b3d97307b26e1872949973239b273602a041a3e2caedf80bc640909991')
 noextract=("$_wheel")
 
 package() {
