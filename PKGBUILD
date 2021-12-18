@@ -2,23 +2,23 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.15.3.21.realtime1
+pkgver=5.15.5.22.realtime1
 pkgrel=1
 pkgdesc='Linux RT'
-arch=('x86_64')
+arch=(x86_64)
 url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
 license=(GPL2)
 makedepends=(bc cpio git graphviz imagemagick kmod libelf pahole perl
 python-sphinx python-sphinx_rtd_theme tar xmlto)
-options=('!strip')
+options=(!strip)
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"
   config
 )
 sha512sums=('SKIP'
-            'fce39c87c33bd398667221eee3d830072d66e567b4c40ab04a4689cda1438e28cd9c904383cb1a9623a2e7eeb64650c116ceca9ee79701be74045f1179bd45a5')
+            '932da4dd92694dd53e6ce0913b0297308eebe6e70950a1c0e75e42c1b856f6961d9759856a2b37c64f23930f4ea8bb75ed9cfb0b7f3ba3ff13c1ef06156bec8d')
 b2sums=('SKIP'
-        '0a1b279ab4bad8afff9d3c3df67b73c08db9cfac1bb5ceff756f3da2d959ce0dc54f15feea4fcf38eb15efd3c2546015e8a020246e28f6a77d5bc2695b352cfc')
+        '9b370c3fda5babbf6748d80828bbb7f32c96f498d391693ac1d3b49fa26ae9da41bc2364140cf6c3054bb27dff32e1cb98e2d1ccecc11bc7c8ed7a3525620e75')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
