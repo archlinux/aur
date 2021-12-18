@@ -9,7 +9,7 @@ pkgname=metadata-cleaner1
 _pkgname=metadata-cleaner
 pkgdesc='Python GTK application to view and clean metadata in files, using mat2(GTK3 1.x version)'
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 provides=("metadata-cleaner=${pkgver}")
 conflicts=("metadata-cleaner")
 url='https://gitlab.com/rmnvgr/metadata-cleaner'
