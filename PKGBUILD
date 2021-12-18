@@ -22,6 +22,7 @@ source=(
   'nltools::git+https://github.com/huskyproject/nltools.git'
   'hptkill::git+https://github.com/huskyproject/hptkill.git'
   'hptzip::git+https://github.com/huskyproject/hptzip.git'
+  'hpt::git+https://github.com/huskyproject/hpt.git'  
   'htick::git+https://github.com/huskyproject/htick.git'
   'hptsqfix::git+https://github.com/huskyproject/hptsqfix.git'
 )
@@ -295,6 +296,7 @@ package() {
 
 md5sums=('a1abb8245e098573da0abf7735fc3840'
          'f4805667cd4f632139783d944c04b4f4'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
