@@ -1,6 +1,6 @@
 pkgbase = gulp-cli
 	pkgdesc = The streaming build system
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://gulpjs.com/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = gulp-cli
 	provides = gulp
 	conflicts = gulp
 	replaces = gulp
-	source = https://registry.npmjs.org/gulp-cli/-/gulp-cli-2.2.0.tgz
-	sha256sums = a19275b192a1d3e4323eb54c1dfbb02ff6380d41a066f7c8b4dd31683ef3c22a
+	source = https://registry.npmjs.org/gulp-cli/-/gulp-cli-2.3.0.tgz
+	sha256sums = 0a5a76e5be9856edf019fb5be0ed8501a8d815da1beeb9c6effca07a93873ba4
 
 pkgname = gulp-cli
-

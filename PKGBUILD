@@ -3,7 +3,7 @@
 # Contributor: Micha Alt <micha.tucker at gmail dot com>
 
 pkgname=gulp-cli
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='The streaming build system'
 arch=(any)
@@ -15,7 +15,7 @@ replaces=(gulp)
 provides=(gulp)
 conflicts=(gulp)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('a19275b192a1d3e4323eb54c1dfbb02ff6380d41a066f7c8b4dd31683ef3c22a')
+sha256sums=('0a5a76e5be9856edf019fb5be0ed8501a8d815da1beeb9c6effca07a93873ba4')
 
 build() {
 	cd "$srcdir/package"
@@ -42,5 +42,6 @@ package() {
 	install -Dm644 completion/fish "$pkgdir/usr/share/fish/completions/gulp.fish"
 	sed -i 's|#!/bin/zsh|#compdef gulp|; s/compdef \(_gulp_completion\) gulp/\1 "$@"/' completion/zsh
 	install -Dm644 completion/zsh "$pkgdir/usr/share/zsh/site-functions/_gulp"
-	#TODO powershell completions
+	# TODO powershell completions seem to be impossible since no profile.d type thing exists, only one file:
+	# https://docs.microsoft.com/de-de/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.2
 }
