@@ -1,0 +1,20 @@
+pkgbase = av-98-offline
+	pkgdesc = Fork of the command-line gemini client AV-98 with added add offline capabilities
+	pkgver = 1.0.4dev
+	pkgrel = 1
+	url = https://tildegit.org/ploum/AV-98-offline
+	arch = any
+	license = BSD
+	makedepends = coreutils
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-ansiwrap: support ANSI escape codes
+	optdepends = python-cryptography: better support of TOFU client certificates
+	provides = av-98
+	conflicts = av-98
+	noextract = AV-98-offline
+	source = git+https://tildegit.org/ploum/AV-98-offline/
+	sha256sums = SKIP
+
+pkgname = av-98-offline
