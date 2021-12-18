@@ -50,7 +50,12 @@ $EDITOR $doasediting_file || ERR "The editor failed to exit successfully"
 # If the original file did not exist, print a warning
 [[ -e "$1" ]] || echo "doasedit: File '$1' will be created, if this is not desireable press ctrl+C"
 
-[[ "/etc/doas.conf" == "$1" ]] && echo "$ doas -C $doasediting_file doasedit \"$1\"" && doas -C $doasediting_file doasedit \"$1\" || ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
+# Ensure if we edit '/etc/doas.conf' that permissons are correct
+[[ "/etc/doas.conf" == "$1" ]] && {
+	echo "$ doas -C $doasediting_file doasedit \"$1\"" &&
+	doas -C $doasediting_file doasedit \"$1\" ||
+	ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
+}
 
 doas cp $doasediting_file "$1" || ERR "You put your password in wrong. Manually run 'doas cp $doasediting_file $1'"
 
