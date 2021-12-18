@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=ddosify
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="High-performance load testing tool"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ddosify/ddosify"
 license=('AGPL3')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76227660cf11393860ce3dbe9c8b19c4cc1cf5cad1bc69b59ba957177a73bb25')
+sha256sums=('458a2dd14ffcb5d31e5fe2830c2fbb07f7448bbc6126a86759ec19834ae74979')
 
 prepare(){
   cd "$pkgname-$pkgver"
