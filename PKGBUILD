@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=qemu-guest-kernel
-pkgver=5.15.8
+pkgver=5.15.10
 pkgrel=1
 pkgdesc="Linux kernels for QEMU/KVM guests (direct kernel boot)"
 url="https://github.com/guest-kernel/qemu"
