@@ -1,7 +1,7 @@
 pkgbase = python-numpy-git
 	pkgdesc = Scientific tools for Python - git version
-	pkgver = v1.21.0.dev0.r814.g740a8cf8c1
-	pkgrel = 2
+	pkgver = v1.23.0.dev0.r229.g0302205105
+	pkgrel = 1
 	url = https://www.numpy.org/
 	arch = x86_64
 	license = custom:BSD 3-clause
@@ -23,4 +23,3 @@ pkgbase = python-numpy-git
 	sha512sums = SKIP
 
 pkgname = python-numpy-git
-

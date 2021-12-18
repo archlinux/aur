@@ -2,8 +2,8 @@
 
 pkgname=python-numpy-git
 _pkgname=numpy
-pkgver=v1.21.0.dev0.r814.g740a8cf8c1
-pkgrel=2
+pkgver=v1.23.0.dev0.r229.g0302205105
+pkgrel=1
 pkgdesc="Scientific tools for Python - git version"
 arch=('x86_64')
 license=('custom:BSD 3-clause')
@@ -25,19 +25,20 @@ pkgver() {
 
 prepare() {
   # https://github.com/numpy/numpy/issues/17390
-  sed -i '/error/a \    ignore:Module already imported so cannot be rewritten' ${srcdir}/numpy/pytest.ini
+    sed -i '/error/a \    ignore:Module already imported so cannot be rewritten' ${srcdir}/numpy/pytest.ini
 }
 
 build() {
-  cd ${srcdir}/numpy
-  python setup.py build
+    cd ${srcdir}/numpy
+    git submodule update --init
+    python setup.py build
 }
 
 check() {
   cd ${srcdir}/numpy
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.9/site-packages/:$PYTHONPATH" python -c 'import numpy; numpy.test()'
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.10/site-packages/:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 }
 
 package() {
