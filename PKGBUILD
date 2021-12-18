@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
 license=('MPL-2.0')
-depends=('java-runtime>=8' 'bash' 'xorg-xrandr')
+depends=('java-runtime' 'bash' 'xorg-xrandr')
 provides=('unciv')
 conflicts=('unciv')
 arch=('any')
