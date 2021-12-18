@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 
 pkgname=qtcreator-devel
-pkgver=6.0.0
+pkgver=6.0.1
 _clangver=13.0.0
 pkgrel=1
 pkgdesc='QtCreator Devel component, for build plugins'
