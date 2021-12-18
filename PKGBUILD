@@ -42,6 +42,6 @@ package() {
 
   # soft link
   install -dm 755 ${pkgdir}/usr/bin
-  ln -sf /opt/${_pkgname}/bin/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  ln -sf /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
 # vim: set sw=2 ts=2 et:
