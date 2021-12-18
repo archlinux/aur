@@ -4,7 +4,7 @@ _name=kapow
 _pkgname="${_name}bang"
 pkgname="${_pkgname}-bin"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='If you can script it, you can HTTP it.'
 arch=('x86_64' 'i686' 'aarch64' 'arm6h')
 url='https://github.com/BBVA/kapow'
@@ -16,10 +16,10 @@ source_x86_64=("${_name}_x86_64::${_source}_amd64")
 source_i686=("${_name}_i686::${_source}_386")
 source_aarch64=("${_name}_aarch64::${_source}_arm64")
 source_arm6h=("${_name}_arm6h::${_source}_armv6")
-sha512sums_x86_64=('81daf7e1c51baeaf210a5d0643f2332560a1bf1d943db7753f5be28e42693528860da5520751811d90145a56bab0d13b116b5d58fb2313928229d76f26ed37ee')
-sha512sums_i686=('9be1f21c8680ad88a811aeac55b9bd1ccf4924dc43aaaf9daeccf841329bc9c00348ae787ed494dfb77e4863a09d70aafc778451e3cd5ed8e1758ea46728192c')
-sha512sums_aarch64=('e094298b779e238bea7fbeee5f49851cd1805d93474ba777043b74e6cc887303e063b344465731eb8915e30bd8c31d8c9343e161a6aabfa0f90c382656498288')
-sha512sums_arm6h=('04567dbae2782b7f0bb9ffc37584fa6a70823f44067c44fd8fd13ab952150d961a55ab4074644d7cac73c4a1b9c7b68f0d0efe43e1caaacee4ea9a4182849beb')
+sha512sums_x86_64=('aada7d60522c8905418e619df6381c02ddcebf4bcbdfb9c9a1d27c3c469621cc1a254c7fe808a6693cc9d87ebdcf881808c0b79f3d576336e42467d6786eeb06')
+sha512sums_i686=('c9767b64f093e498c23d862fae45534e2c3148b5ca340fb2d44ac6e08ada0bc67cc0cab83d0a1c8de85b304039fd1e964bc8af24cacb70c1df196efa197112d4')
+sha512sums_aarch64=('b409d9e7bd8034ae021d0f5e20e2f405549a5196b3da26ec5418dc050fbc624e9100a72d67d28791b464772005710483e756b09e5550d3f0b1a62ef269e3f674')
+sha512sums_arm6h=('0b9f46cbba8f0434ec6346fbf9e89a5375e3425f45e8d528d94a0813b6220a9b18bf86bbfacd0c1919b687926ac775d7138172149ecd2b8c7051095203c08f43')
 
 package() {
 	install -Dm755 "${_name}_$CARCH"	"$pkgdir/usr/bin/${_name}"
