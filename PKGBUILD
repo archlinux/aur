@@ -1,8 +1,8 @@
 # Maintainer: Alexander Sulfrian <asulfrian at zedat dot fu-berlin dot de>
 
 pkgname=printer-driver-ptouch
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc='P-Touch PT-series and QL-series printer driver for Linux (under CUPS)'
 arch=('i686' 'x86_64')
 url='https://github.com/philpem/printer-driver-ptouch'
@@ -11,19 +11,11 @@ license=('GPL')
 depends=('ghostscript')
 makedepends=('autoconf' 'libcups' 'foomatic-db-engine')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/philpem/printer-driver-ptouch/archive/v$pkgver.tar.gz"
-        '0001-Add-support-for-Brother-PT-2430PC.patch')
-sha256sums=('92de714d5b0103a7216812b4a497edeb879405fa57acace65e2c7b226e9e71de'
-            'bf5da0201b05906c17c2c210fb1092c7ad5786d1941ba521cad6da208c11c7b9')
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    patch -p1 < "$srcdir/0001-Add-support-for-Brother-PT-2430PC.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/philpem/printer-driver-ptouch/archive/v$pkgver.tar.gz")
+sha256sums=('67d6ef706fd9680a4f6d50a7dae54a3afa98e8847c0013ae6a024ca88291ebb2')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/ptouch-driver-$pkgver"
 
     autoreconf --force
     ./configure --prefix=/usr
@@ -31,7 +23,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/ptouch-driver-$pkgver"
 
     make DESTDIR="$pkgdir/" install
 
