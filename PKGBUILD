@@ -1,8 +1,8 @@
 # Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
 
 pkgbase="zestginx"
-pkgver="1.21.3"
-pkgrel=2
+pkgver="1.21.4"
+pkgrel=1
 arch=("any")
 pkgname=("zestginx" "zestginx-src")
 pkgdesc="A modern, performant, and secure NGINX distribution packed with features."
