@@ -7,7 +7,7 @@ url="http://bbconf.sourceforge.net/"
 license=('GPL2')
 source=("${pkgname}::git+https://github.com/golded-plus/golded-plus.git" 
  "ncurses.patch" "addline.patch" "widescreen.patch")
-makedepends=('git' 'gcc' 'make' 'glibc' 'groff')
+makedepends=('git' 'gcc' 'make' 'glibc' 'groff' 'patchelf')
 depends=('screen' 'luit' 'ncurses-nonwide')
 provides=('golded-plus')
 
