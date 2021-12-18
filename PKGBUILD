@@ -8,10 +8,8 @@ arch=('any')
 url="https://astropy-helpers.readthedocs.io/"
 license=('BSD')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-${pkgver}.tar.gz"
-        'use_system_astropy_helpers.patch')
-md5sums=('e626e395b4eac6784acb45c5f56e6706'
-         'cc001e2567642396d2eebabc2c323c26')
+source=("https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-${pkgver}.tar.gz")
+md5sums=('e626e395b4eac6784acb45c5f56e6706')
 
 prepare() {
     cd ${srcdir}/astropy-helpers-${pkgver}
