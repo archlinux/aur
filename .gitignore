@@ -1,7 +1,6 @@
 src/
 pkg/
-*.tar.?z
-*.tar.bz2
+*.tar.?
 *.t?z
 *.zst
 areafix/
@@ -18,3 +17,4 @@ msged/
 nltools/
 smapi/
 sqpack/
+hptzip/

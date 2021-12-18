@@ -1,18 +1,15 @@
 pkgname=(husky-tosser-git husky-msged-git husky-all-git)
 _realpkg=husky
-pkgver=20200415
+pkgver=r3389.852e02a5
 pkgrel=1
 pkgdesc="Husky Fido Tosser"
 arch=('x86_64')
 license=('GPL')
-url="http://husky.sourceforge.net/hpt.html"
+makedepends=('git')
+url="http://husky${_bld_lib}urceforge.net/hpt.html"
 conflicts=(husky-tosser husky-msged)
-source=('huskymak.cfg'
-  'areastat_makefile'
-  'nltools_makefile'
-  'smapi_makefile'
-  'msged_makefile'
-  'msged_maps_makefile'
+source=(
+  'bsopack.cmake' 'bsopack.patch'
   'hpt::git+https://github.com/huskyproject/hpt.git'
   'huskylib::git+https://github.com/huskyproject/huskylib.git'
   'fidoconf::git+https://github.com/huskyproject/fidoconf.git'
@@ -23,36 +20,292 @@ source=('huskymak.cfg'
   'sqpack::git+https://github.com/huskyproject/sqpack.git'
   'nltools::git+https://github.com/huskyproject/nltools.git'
   'hptkill::git+https://github.com/huskyproject/hptkill.git'
+  'hptzip::git+https://github.com/huskyproject/hptzip.git'
   'htick::git+https://github.com/huskyproject/htick.git'
   'hptsqfix::git+https://github.com/huskyproject/hptsqfix.git'
   'msged::git+https://github.com/huskyproject/msged.git'
 )
+
 _tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
-_buildModules="${_tosserModules} msged"
-prepare() {
-    cp -f ${srcdir}/areastat_makefile ${srcdir}/areastat/Makefile
-    cp -f ${srcdir}/nltools_makefile ${srcdir}/nltools/Makefile
-    cp -f ${srcdir}/smapi_makefile ${srcdir}/smapi/Makefile
-    cp -f ${srcdir}/msged_makefile ${srcdir}/msged/Makefile
-    cp -f ${srcdir}/msged_maps_makefile ${srcdir}/msged/maps/makefile.husky
-}
+_prefix=/usr
+_wanna_shared=1
 
 pkgver() {
     cd ${srcdir}/hpt/
-    head -n 1 ./hpt.spec | awk '{print $3;}'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ..
 }
 
 build() {
-    export LD_BACKUP="$LD_LIBRARY_PATH"
-    export LD_LIBRARY_PATH="$LD_BACKUP:${srcdir}/huskylib:${srcdir}/fidoconf"
-    for i in $_buildModules; do
-         cd "${srcdir}/${i}"
-         # if more than -j1, then build fails. Say hello to upstream
-         make -j1
-    done
-    # We need original LD_LIBRARY_PATH for package() and further
-    export LD_LIBRARY_PATH="$LD_BACKUP"
-    export LD_BACKUP=""
+    if [[ _wanna_shared -eq 0 ]]; then
+        local _bld_shared=OFF
+        local _bld_lib=".a"
+    else
+        local _bld_shared=ON
+        local _bld_lib=".so"
+    fi
+    echo "char cvs_date[]=\"archlinux-git\";" > "cvsdate.h"
+
+
+    echo "BUILDING husky"
+    pushd huskylib
+    cp ../cvsdate.h ./
+    rm -rf build-archlinux
+    cmake  -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix} \
+        -DCMAKE_FIND_ROOT_PATH=../
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING smapi"
+    pushd "smapi"
+    rm -rf huskylib
+    ln -s "../huskylib/huskylib" huskylib
+    cp ../cvsdate.h ./
+    rm -rf build-archlinux
+    cmake \
+        -Bbuild-archlinux -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix} \
+        -DCMAKE_INCLUDE_PATH:PATH=../huskylib
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING fidoconf"
+    pushd "fidoconf"
+    rm -rf huskylib smapi
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    cp ../cvsdate.h ./
+    rm -rf build-archlinux
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING areafix"
+    pushd "areafix"
+    rm -rf build-archlinux
+    rm -rf huskylib smapi fidoconf
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/huskylib" \
+        -Dsmapi_LIB="../smapi/smapi" \
+        -Dfidoconfig_LIB="../fidoconf/fidoconf" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING hptzip"
+    pushd "hptzip"
+    rm -rf build-archlinux
+    rm -rf huskylib smapi fidoconf
+    ln -s "../huskylib/huskylib" huskylib
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cd build
+    make
+    cd ..
+    popd
+
+    echo "BUILDING hpt"
+    pushd "hpt"
+    rm -rf build-archlinux
+    rm -rf huskylib smapi fidoconf hptzip areafix
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    ln -s "../areafix/areafix" areafix
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dareafix_LIB="../areafix/build/libareafix${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cd build
+    make
+    cd ..
+    popd
+
+    echo "BUILDING areastat"
+    pushd areastat
+    rm -rf build-archlinux
+    cp ../cvsdate.h ./
+    rm -rf huskylib smapi fidoconf
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING hptsqfix"
+    pushd hptsqfix
+    rm -rf build-archlinux
+    cp ../cvsdate.h ./
+    cp ../cvsdate.h ./h/
+    rm -rf huskylib smapi fidoconf
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING htick"
+    pushd htick
+    rm -rf build-archlinux
+    cp ../cvsdate.h ./
+    rm -rf huskylib smapi fidoconf hptzip areafix
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    ln -s "../areafix/areafix" areafix
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dareafix_LIB="../areafix/build/libareafix${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING hptkill"
+    pushd hptkill
+    rm -rf build-archlinux
+    cp ../cvsdate.h ./
+    rm -rf huskylib smapi fidoconf hptzip
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING nltools"
+    pushd nltools
+    rm -rf build-archlinux
+    cp ../cvsdate.h ./
+    cp ../cvsdate.h ./h
+    rm -rf huskylib smapi fidoconf hptzip
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+    echo "BUILDING sqpack"
+    pushd sqpack
+    rm -rf build-archlinux
+    rm -rf huskylib smapi fidoconf hptzip
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+
+    echo "BUILDING bsopack"
+    cp bsopack.cmake bsopack/CMakeLists.txt
+    pushd bsopack
+    patch -p1 -i ../bsopack.patch
+    cp ../cvsdate.h ./
+    rm -rf build-archlinux
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=${_bld_shared} \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
+
+
+    echo "BUILDING msged"
+    pushd msged
+    rm -rf build-archlinux
+    rm -rf huskylib smapi fidoconf hptzip
+    ln -s "../huskylib/huskylib" huskylib
+    ln -s "../smapi/smapi" smapi
+    ln -s "../fidoconf/fidoconf" fidoconf
+    ln -s "../hptzip/hptzip" hptzip
+    cp ../cvsdate.h ./
+    cmake \
+        -Bbuild-archlinux \
+        -DBUILD_SHARED_LIBS=OFF \
+        -Dcurses_LIB="/usr/lib/libcursesw.so" \
+        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
+    cmake --build build-archlinux
+    popd
 }
 
 package_husky-all-git() {
@@ -60,9 +313,11 @@ package_husky-all-git() {
     provides=("husky-all=${pkgver}")
     conflicts=("husky-all" "husky-tosser" "husky-tosser-git" "husky-msged-git" "husky-msged")
     for i in $_tosserModules; do
-        cd "${srcdir}/${i}"
+        cd "${srcdir}/${i}/build-archlinux"
         make DESTDIR="$pkgdir" install
     done
+    cd "${srcdir}/msged/build-archlinux"
+    make DESTDIR="$pkgdir" install
 }
 
 package_husky-tosser-git() {
@@ -70,7 +325,7 @@ package_husky-tosser-git() {
     provides=("husky-tosser=${pkgver}")
     conflicts=("husky-all" "husky-tosser" "husky-all-git")
     for i in $_tosserModules; do
-        cd "${srcdir}/${i}"
+        cd "${srcdir}/${i}/build-archlinux"
         make DESTDIR="$pkgdir" install
     done
 }
@@ -79,16 +334,13 @@ package_husky-msged-git() {
     provides=("husky-tosser=${pkgver}")
     depends=('husky-tosser-git')
     conflicts=("husky-all" "husky-msged" "husky-all-git")
-    cd "${srcdir}/msged"
+    cd "${srcdir}/msged/build-archlinux"
     make DESTDIR="$pkgdir" install
 }
 
-md5sums=('e54eecdaef0be214f22dfd966cc5a297'
-         '0ec212f2bb31d149cd1717ab681f519a'
-         '48ba1f5f4ded114e500ef83ce1fe407a'
-         'c7238eec644bd1aeaf0a0c993f5dd8fc'
-         '0d09d7d863f9511d6ab9c49c636a8ad3'
-         '4c66c7fcb56605e9a691a085c85e1080'
+md5sums=('a1abb8245e098573da0abf7735fc3840'
+         'f4805667cd4f632139783d944c04b4f4'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'

@@ -1,0 +1,10 @@
+--- a/src/config.c
++++ b/src/config.c
+@@ -13,7 +13,6 @@
+ char *logFileName=NULL;
+ char *fidoConfigFile=NULL;
+ int fidocfg_in_env=0;
+-char *versionStr;
+ 
+ void Usage()
+ {

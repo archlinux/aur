@@ -1,18 +1,15 @@
 pkgbase = husky-tosser-git
 	pkgdesc = Husky Fido Tosser
-	pkgver = 20200415
+	pkgver = r3389.852e02a5
 	pkgrel = 1
-	url = http://husky.sourceforge.net/hpt.html
+	url = http://huskyurceforge.net/hpt.html
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	conflicts = husky-tosser
 	conflicts = husky-msged
-	source = huskymak.cfg
-	source = areastat_makefile
-	source = nltools_makefile
-	source = smapi_makefile
-	source = msged_makefile
-	source = msged_maps_makefile
+	source = bsopack.cmake
+	source = bsopack.patch
 	source = hpt::git+https://github.com/huskyproject/hpt.git
 	source = huskylib::git+https://github.com/huskyproject/huskylib.git
 	source = fidoconf::git+https://github.com/huskyproject/fidoconf.git
@@ -23,15 +20,13 @@ pkgbase = husky-tosser-git
 	source = sqpack::git+https://github.com/huskyproject/sqpack.git
 	source = nltools::git+https://github.com/huskyproject/nltools.git
 	source = hptkill::git+https://github.com/huskyproject/hptkill.git
+	source = hptzip::git+https://github.com/huskyproject/hptzip.git
 	source = htick::git+https://github.com/huskyproject/htick.git
 	source = hptsqfix::git+https://github.com/huskyproject/hptsqfix.git
 	source = msged::git+https://github.com/huskyproject/msged.git
-	md5sums = e54eecdaef0be214f22dfd966cc5a297
-	md5sums = 0ec212f2bb31d149cd1717ab681f519a
-	md5sums = 48ba1f5f4ded114e500ef83ce1fe407a
-	md5sums = c7238eec644bd1aeaf0a0c993f5dd8fc
-	md5sums = 0d09d7d863f9511d6ab9c49c636a8ad3
-	md5sums = 4c66c7fcb56605e9a691a085c85e1080
+	md5sums = a1abb8245e098573da0abf7735fc3840
+	md5sums = f4805667cd4f632139783d944c04b4f4
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -48,7 +43,7 @@ pkgbase = husky-tosser-git
 
 pkgname = husky-tosser-git
 	pkgdesc = Husky Fido Tosser: hpt (tosser) and netmail/echomail tools (git version)
-	provides = husky-tosser=20200415
+	provides = husky-tosser=r3389.852e02a5
 	conflicts = husky-all
 	conflicts = husky-tosser
 	conflicts = husky-all-git
@@ -56,17 +51,16 @@ pkgname = husky-tosser-git
 pkgname = husky-msged-git
 	pkgdesc = Husky Fido Tosser: msged (message editor) (git version)
 	depends = husky-tosser-git
-	provides = husky-tosser=20200415
+	provides = husky-tosser=r3389.852e02a5
 	conflicts = husky-all
 	conflicts = husky-msged
 	conflicts = husky-all-git
 
 pkgname = husky-all-git
 	pkgdesc = Husky Fido Tosser: Complete bundle (git version)
-	provides = husky-all=20200415
+	provides = husky-all=r3389.852e02a5
 	conflicts = husky-all
 	conflicts = husky-tosser
 	conflicts = husky-tosser-git
 	conflicts = husky-msged-git
 	conflicts = husky-msged
-
