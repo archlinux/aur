@@ -28,7 +28,7 @@ source=(
 
 _tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
 _prefix=/usr
-_wanna_shared=1
+_wanna_shared=0
 
 pkgver() {
     cd ${srcdir}/hpt/
@@ -82,8 +82,8 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -115,9 +115,9 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
-    cd build
+    cd build-archlinux
     make
     cd ..
     popd
@@ -135,13 +135,13 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dareafix_LIB="../areafix/build/libareafix${_bld_lib}" \
+        -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dareafix_LIB="../areafix/build-archlinux/libareafix${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
-    cd build
+    cd build-archlinux
     make
     cd ..
     popd
@@ -158,8 +158,8 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -177,9 +177,9 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -198,10 +198,10 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
-        -Dareafix_LIB="../areafix/build/libareafix${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
+        -Dareafix_LIB="../areafix/build-archlinux/libareafix${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -219,9 +219,9 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -240,10 +240,10 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -260,10 +260,10 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -278,9 +278,9 @@ build() {
     cmake \
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=${_bld_shared} \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
@@ -299,10 +299,10 @@ build() {
         -Bbuild-archlinux \
         -DBUILD_SHARED_LIBS=OFF \
         -Dcurses_LIB="/usr/lib/libcursesw.so" \
-        -Dhptzip_LIB="../hptzip/build/libhptzip${_bld_lib}" \
-        -Dhusky_LIB="../huskylib/build/libhusky${_bld_lib}" \
-        -Dfidoconfig_LIB="../fidoconf/build/libfidoconfig${_bld_lib}" \
-        -Dsmapi_LIB="../smapi/build/libsmapi${_bld_lib}" \
+        -Dhptzip_LIB="../hptzip/build-archlinux/libhptzip${_bld_lib}" \
+        -Dhusky_LIB="../huskylib/build-archlinux/libhusky${_bld_lib}" \
+        -Dfidoconfig_LIB="../fidoconf/build-archlinux/libfidoconfig${_bld_lib}" \
+        -Dsmapi_LIB="../smapi/build-archlinux/libsmapi${_bld_lib}" \
         -DCMAKE_INSTALL_PREFIX:PATH=${_prefix}
     cmake --build build-archlinux
     popd
