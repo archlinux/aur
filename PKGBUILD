@@ -1,7 +1,7 @@
 # Maintainer: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=rpm-builder
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Build rpms without a spec file. Pure Rust. No dependencies to librpm'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url=https://github.com/Richterrettich/rpm-builder
 license=('Apache 2.0')
 makedepends=('rustup')
 source=("https://codeload.github.com/Richterrettich/rpm-builder/tar.gz/v${pkgver}")
-sha512sums=('3aa746721274e48679f0bd4e961ef20f8bb00db16436f3141e434ccd3c97dbbe0f0e2a38ebead3d7875f83e70d8836e4232d0ad90bb9e38ab4f7f41485b1d6f6')
+sha512sums=('79161520466d8e5daec373a46fc5b76a3672add1981fbca3646e147ee234a60df52a8c81dab1840d6049882c983b9b4e2cb11388d17f5248f1d39261add82048')
 
 build() {
   make --directory "${srcdir}/${pkgname}-${pkgver}" build
