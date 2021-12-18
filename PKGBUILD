@@ -8,7 +8,7 @@
 # Contributor: Ike Devolder <ike.devolder+gmail+com>
 
 pkgname=nvidia-390xx
-pkgver=390.144
+pkgver=390.147
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
@@ -20,9 +20,6 @@ license=('custom')
 options=('!strip')
 
 build() {
-    #cd "${_pkg}"/kernel
-    #make SYSSRC=/usr/src/linux module
-
     _kernver=$(</usr/src/linux/version)
 
     fakeroot dkms build --dkmstree "${srcdir}" -m nvidia/${pkgver} -k ${_kernver}
@@ -33,16 +30,10 @@ package() {
 
     _kernver="$(</usr/src/linux/version)"
 
-    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 \
-        nvidia/${pkgver}/${_kernver}/${CARCH}/module/*
+    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 nvidia/${pkgver}/${_kernver}/${CARCH}/module/*
 
     # compress each module individually
     find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 
-    echo "blacklist nouveau" |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
-
-    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 \
-        /usr/share/licenses/nvidia-390xx-dkms/LICENSE
+    install -Dm644 /usr/share/licenses/nvidia-dkms/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
