@@ -1,0 +1,18 @@
+pkgbase = neovim-neogen-git
+	pkgdesc = Annotation generator for multiple languages and conventions
+	pkgver = r161.19a222a
+	pkgrel = 1
+	url = https://github.com/danymat/neogen
+	install = neogen.install
+	arch = any
+	groups = neovim-plugin
+	license = GPL3
+	makedepends = git
+	depends = neovim
+	depends = neovim-tree-sitter
+	provides = neovim-neogen
+	conflicts = neovim-neogen
+	source = neovim-neogen-git::git+https://github.com/danymat/neogen
+	md5sums = SKIP
+
+pkgname = neovim-neogen-git
