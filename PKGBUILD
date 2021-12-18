@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.14.0.r31.g46b4f0f
+pkgver=0.14.1.r31.gb3318b8
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 url='https://gitlab.gnome.org/World/Phosh/phosh'
@@ -22,7 +22,6 @@ makedepends=(
 )
 provides=(phosh)
 conflicts=(phosh)
-# checkdepends=(xorg-server-xvfb)
 source=(
 	"git+${url}.git"
 	"git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
@@ -46,12 +45,6 @@ build() {
 	arch-meson phosh build # -D gtk_doc=true
 	meson compile -C build
 }
-
-# check() {
-# 	dbus-run-session xvfb-run \
-# 		-s '-screen 0 1920x1080x24 -nolisten local' \
-# 		meson test -C build --print-errorlogs
-# }
 
 package() {
 	DESTDIR="${pkgdir}" meson install -C build
