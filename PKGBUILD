@@ -1,8 +1,8 @@
 # Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
 
 pkgname="keydb"
-pkgver="6.2.0"
-pkgrel=4
+pkgver="6.2.1"
+pkgrel=1
 arch=("aarch64" "i686" "x86_64")
 pkgdesc="A Multithreaded fork of Redis."
 url="https://keydb.dev"
