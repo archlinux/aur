@@ -11,8 +11,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('536' '786' '923' '1862' '2048')
-_merge_requests_to_use=('1862' '2048')
+# available MR: ('536' '786' '923' '1862')
+_merge_requests_to_use=('1862')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -20,7 +20,7 @@ _merge_requests_to_use=('1862' '2048')
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=42.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -144,16 +144,6 @@ prepare() {
   # Status: 1
   # Comment: Part 1 was in !1904 (merged)
   pick_mr '1862'
-
-  # Title: util: Wait for initial name owners in DBusSenderCheck before checking
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2048
-  # Type: 3
-  # Status: 1
-  # Comment: Otherwise an allowed caller might get rejected if the call is right
-  #          after a gnome-shell restart and the watcher has not finished running its
-  #          callbacks yet.
-  #          Fixes: #4813
-  pick_mr '2048'
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
