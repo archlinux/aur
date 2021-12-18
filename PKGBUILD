@@ -1,8 +1,8 @@
 
 _phpbase="81"
 _suffix=""
-pkgver="8.1.0"
-pkgrel="5"
+pkgver="8.1.1"
+pkgrel="1"
 pkgbase="php${_phpbase}${_suffix}"
 pkgdesc="PHP ${pkgver} compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -48,10 +48,10 @@ pkgname=(
 )
 
 source=(
-    "https://php.net/distributions/php-${pkgver}.tar.xz"
     "pear-config-patcher.php"
     "php-apache.conf"
-    "debian-php-8.1.0.patch"
+    "https://php.net/distributions/php-${pkgver}.tar.xz"
+    "debian-php-8.1.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.1.patch"
@@ -70,7 +70,7 @@ arch=(
 )
 
 _patches=(
-    "debian-php-8.1.0.patch"
+    "debian-php-8.1.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.1.patch"
@@ -978,9 +978,9 @@ package_php81-mysql() {
 }
 # End mysql
 
-sha256sums=('a1317eff0723a2b3d3122bbfe107a1158570ea2822dc35a5fb360086db0f6bbc'
-            '0201d0fa811b80614737424a72c7bb127125807e5d7eeec5e1578a0a58f77d2f'
+sha256sums=('0201d0fa811b80614737424a72c7bb127125807e5d7eeec5e1578a0a58f77d2f'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
+            '33c09d76d0a8bbb5dd930d9dd32e6bfd44e9efcf867563759eb5492c3aff8856'
             '0df807d84bc0cf948a6ed0cf453e98213d47fbc7fdedc2747855a619dc616b3c'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
