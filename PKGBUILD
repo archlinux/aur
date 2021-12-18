@@ -1,18 +1,18 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy-scripts
-pkgver=0.1.0.1
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc='Scripts for using scanpy from the command line'
 arch=(any)
 url='https://github.com/ebi-gene-expression-group/scanpy-scripts'
 license=(MIT)
-depends=(scanpy python-louvain-igraph)
+depends=(scanpy python-click)
 makedepends=(install-wheel-scripts)
 _pyarch=py3
 _wheel="${pkgname/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('a46e5cc76f40b0ce281d982a75d3c0030e276bb1645b931e5fc3e5cbde5625e5')
+sha256sums=('c3dddc6acb90cfc610fb87da9e0407b10541c904fc4d21a3850941a094604675')
 noextract=("$_wheel")
 
 package() {
