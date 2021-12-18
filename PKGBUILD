@@ -10,7 +10,7 @@ _majorver=17
 _minorver=0
 _securityver=1
 _updatever=12
-_openj9ver=0.29.0
+_openj9ver=0.29.1
 pkgrel=1
 pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}.u${_updatever}_openj9_${_openj9ver}
 arch=('x86_64')
@@ -20,17 +20,20 @@ makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'lib
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'numactl' 'nasm' 'cmake')
-source=(openj9-openjdk-jdk${_majorver}-v${_openj9ver}-release.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/v${_openj9ver}-release.tar.gz
-        https://github.com/eclipse/openj9/archive/openj9-${_openj9ver}.tar.gz
-        openj9-omr-${_openj9ver}.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-${_openj9ver}.tar.gz
+_openjdk_sha=fc67fbe50a0de9172d1aaac6e42464c8dc8e16ab
+_openj9_sha=7d055dfcb71452077db01fddfc3ccd845cd461d0
+_openj9omr_sha=e30892e2b525e89712747040b4186b9a055a93ce
+source=(openj9-openjdk-jdk${_majorver}-${_openjdk_sha:0:7}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/${_openjdk_sha}.tar.gz
+        openj9-${_openj9_sha:0:7}.tar.gz::https://github.com/eclipse/openj9/archive/${_openj9_sha}.tar.gz
+        openj9-omr-${_openj9omr_sha:0:7}.tar.gz::https://github.com/eclipse/openj9-omr/archive/${_openj9omr_sha}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop
         omr-omrstr-iconv-failure-overflow.patch
         omr-fam.patch)
-sha256sums=('d9998660b3ff0a806bfcdf2c419f00ed09a042b336e00f13464a8502d48c2a01'
-            'eb70d4aa0ffb1c941169c15c41a071063abd9484cb60862a296ce376c5d00f40'
-            '1b9a0b507b4716f73839e7d9a6bf9a4f72738c7021fbcb862952171dad258393'
+sha256sums=('bbcf5b61c4707abf52cd56d24501f99cfbc9cfd55f8193426682983c2125fb47'
+            '17ffc04db676c0e17affad822b07e5d0e9243273761de8ce340a0220a2b4ff9a'
+            '4662774fbe49421a6643759bc4565abdb3ae4bddb604618b805f1888623c94c9'
             '7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230'
             'bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd'
             'bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975'
@@ -60,10 +63,10 @@ prepare() {
   patch -d omr -p1 -i $srcdir/omr-omrstr-iconv-failure-overflow.patch
   patch -d omr -p1 -i $srcdir/omr-fam.patch
 
-  sed -i -e '/^OPENJDK_SHA :=/s/:=.*/:= __OPENJDK_SHA__/' \
-         -e '/^OPENJ9_SHA :=/s/:=.*/:= openj9-'${_openj9ver}/ \
-         -e '/^OPENJ9_TAG :=/s/:=.*/:= openj9-'${_openj9ver}/ \
-         -e '/^OPENJ9OMR_SHA :=/s/:=.*/:= openj9-'${_openj9ver}/ \
+  sed -i -e '/^OPENJDK_SHA :=/s/:=.*/:= '$_openjdk_sha/ \
+         -e '/^OPENJ9_SHA :=/s/:=.*/:= '$_openj9_sha/ \
+         -e '/^OPENJ9_TAG :=/s/:=.*/:= openj9-'$_openj9ver/ \
+         -e '/^OPENJ9OMR_SHA :=/s/:=.*/:= '$_openj9omr_sha/ \
          closed/OpenJ9.gmk
 
   find openj9/ omr/ -name CMakeLists.txt -exec sed -i -e '/set(OMR_WARNINGS_AS_ERRORS ON/s/ON/OFF/' {} + || die
