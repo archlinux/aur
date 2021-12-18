@@ -1,7 +1,7 @@
 pkgbase = python-django-prometheus
 	pkgdesc = Export Django monitoring metrics for Prometheus.io
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/korfuri/django-prometheus
 	arch = any
 	license = Apache

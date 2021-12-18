@@ -3,7 +3,7 @@
 pkgname=python-django-prometheus
 _name=${pkgname#python-}
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Export Django monitoring metrics for Prometheus.io'
 url='https://github.com/korfuri/django-prometheus'
 arch=('any')
