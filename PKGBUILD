@@ -2,12 +2,12 @@
 
 pkgname=beets-extrafiles-git
 pkgver=0.0.7.r2.ga1d6ef9
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for beets that copies additional files and directories during the import process."
 arch=('any')
 url="https://github.com/Holzhaus/beets-extrafiles"
 license=('MIT')
-depends=('beets')
+depends=('beets' 'python-mediafile')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
