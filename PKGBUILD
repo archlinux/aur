@@ -1,4 +1,4 @@
-pkgname=(husky-tosser-git husky-msged-git husky-all-git)
+pkgname=husky-tosser-git
 _realpkg=husky
 pkgver=r3389.852e02a5
 pkgrel=1
@@ -309,7 +309,7 @@ build() {
 }
 
 package_husky-all-git() {
-    pkgdesc="Husky Fido Tosser: Complete bundle (git version)"
+    pkgdesc="Husky Fido Tosser htp: Complete bundle"
     provides=("husky-all=${pkgver}")
     conflicts=("husky-all" "husky-tosser" "husky-tosser-git" "husky-msged-git" "husky-msged")
     for i in $_tosserModules; do
@@ -321,7 +321,7 @@ package_husky-all-git() {
 }
 
 package_husky-tosser-git() {
-    pkgdesc="Husky Fido Tosser: hpt (tosser) and netmail/echomail tools (git version)"
+    pkgdesc="Husky Fido Tosser hpt: complete bundle (without msged)"
     provides=("husky-tosser=${pkgver}")
     conflicts=("husky-all" "husky-tosser" "husky-all-git")
     for i in $_tosserModules; do
@@ -330,7 +330,7 @@ package_husky-tosser-git() {
     done
 }
 package_husky-msged-git() {
-    pkgdesc='Husky Fido Tosser: msged (message editor) (git version)'
+    pkgdesc='Husky Fido Tosser: msged (message editor)'
     provides=("husky-tosser=${pkgver}")
     depends=('husky-tosser-git')
     conflicts=("husky-all" "husky-msged" "husky-all-git")
