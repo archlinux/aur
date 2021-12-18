@@ -1,7 +1,7 @@
 pkgbase = av-98-offline
-	pkgdesc = Fork of the command-line gemini client AV-98 with added add offline capabilities
+	pkgdesc = Fork of the command-line gemini client AV-98 with added offline capabilities
 	pkgver = 1.0.4dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tildegit.org/ploum/AV-98-offline
 	arch = any
 	license = BSD
