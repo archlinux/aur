@@ -1,0 +1,15 @@
+pkgbase = python-graphene-django
+	pkgdesc = Graphene Django integration
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/graphql-python/graphene-django
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	depends = python-graphene
+	source = https://files.pythonhosted.org/packages/source/g/graphene-django/graphene-django-2.15.0.tar.gz
+	md5sums = dca5a9ef3976690d724fe1975bf49fe5
+
+pkgname = python-graphene-django
