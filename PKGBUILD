@@ -1,7 +1,7 @@
 # Maintainer: Hugh Gao <hughgao01 at gmail dot com>
 
 pkgname=dappy
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Secure browser and name system based on blockchain"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux' 'l
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=stable
-source=("https://github.com/fabcotech/dappy/releases/download/0.5.0/dappy-0.5.0-linux-amd64.deb"
+source=("https://github.com/fabcotech/dappy/releases/download/0.5.3/dappy-0.5.3-linux-amd64.deb"
         "https://raw.githubusercontent.com/fabcotech/dappy/master/LICENSE")
-sha256sums=('fdf69b5f415a909cfe93a65ee0a5f503c6f1dd082a8b73ababc33165b746acf2' 'SKIP')
+sha256sums=('da76dd9e577c21488f760ddc709611fde574f66efcefacc61608c4fbeb22a63f' 'SKIP')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
