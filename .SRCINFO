@@ -1,7 +1,7 @@
 pkgbase = python-anndata
 	pkgdesc = A data structure for rectangular numeric data and sample/variable annotations.
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theislab/anndata
 	arch = any
 	license = BSD

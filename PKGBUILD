@@ -3,7 +3,7 @@
 _name=anndata
 pkgname=python-$_name
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A data structure for rectangular numeric data and sample/variable annotations.'
 arch=(any)
 url="https://github.com/theislab/$_name"
