@@ -1,0 +1,14 @@
+pkgbase = python-django-graphiql-debug-toolbar
+	pkgdesc = Django Debug Toolbar for GraphiQL IDE.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/flavors/django-graphiql-debug-toolbar
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	source = https://files.pythonhosted.org/packages/source/d/django-graphiql-debug-toolbar/django-graphiql-debug-toolbar-0.2.0.tar.gz
+	md5sums = 6f559229718b700f1007231bd90b226a
+
+pkgname = python-django-graphiql-debug-toolbar
