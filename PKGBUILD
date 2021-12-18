@@ -31,7 +31,8 @@ source=(
 
 _tosserModules="huskylib fidoconf smapi areafix hpt areastat bsopack sqpack nltools hptkill hptsqfix htick"
 _prefix=/usr
-_wanna_shared=1
+# Coz libperl linking fails in dynamic mode :(
+_wanna_shared=0
 
 pkgver() {
     cd ${srcdir}/hpt/
@@ -318,6 +319,7 @@ package() {
     done
     cd "${srcdir}/msged/build-archlinux"
     make DESTDIR="$pkgdir" install
+    rm -rf ${pkgdir/usr/lib/*.a
 }
 
 md5sums=('a1abb8245e098573da0abf7735fc3840'
