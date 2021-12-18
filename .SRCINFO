@@ -1,7 +1,7 @@
 pkgbase = python-azure-multiapi-storage
 	pkgdesc = Azure Storage Data Plane SDK supporting multiple API versions
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-multiapi-storage-python
 	arch = any
 	license = MIT
@@ -10,4 +10,3 @@ pkgbase = python-azure-multiapi-storage
 	sha256sums = 649b8e0b2045cfdd4224bdfef387fc616b9c3e403c197dc418c9b7f76b2d0ce7
 
 pkgname = python-azure-multiapi-storage
-

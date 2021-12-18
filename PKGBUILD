@@ -3,7 +3,7 @@
 _name=azure-multiapi-storage
 pkgname=python-$_name
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Azure Storage Data Plane SDK supporting multiple API versions"
 arch=('any')
 url="https://github.com/Azure/azure-multiapi-storage-python"
@@ -21,6 +21,6 @@ package() {
   cd "$_name-python-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
 
-  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__init__.py
-  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__pycache__/__init__.*
+  rm "$pkgdir"/usr/lib/python*/site-packages/azure/__init__.py
+  rm "$pkgdir"/usr/lib/python*/site-packages/azure/__pycache__/__init__.*
 }
