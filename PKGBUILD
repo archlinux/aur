@@ -23,7 +23,7 @@ _prefix=/usr
 _wanna_shared=0
 
 pkgver() {
-    cd ${srcdir}/hpt/
+    cd ${srcdir}/msged/
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     cd ..
 }
