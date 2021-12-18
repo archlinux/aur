@@ -1,6 +1,6 @@
 pkgbase = angrysearch
 	pkgdesc = Linux file search, instant results as you type
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/DoTheEvo/ANGRYsearch
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = angrysearch
 	depends = xdg-utils
 	optdepends = python-gobject: desktop notifications support
 	optdepends = xdotool: Thunar & PCmanFM to select file on path open
-	source = git+https://github.com/DoTheEvo/ANGRYsearch.git#commit=00d8d0f24a30bbba231605a41add908f36e1ae81
+	source = git+https://github.com/DoTheEvo/ANGRYsearch.git#commit=8280de62976f12432cfd42d918828aa4aafc0a01
 	sha256sums = SKIP
 
 pkgname = angrysearch
