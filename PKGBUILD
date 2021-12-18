@@ -2,7 +2,7 @@
 # Contributor: Universebenzene <universebenzene at sina dot com>
 pkgname=('python-astropy-helpers')
 pkgver=4.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
 url="https://astropy-helpers.readthedocs.io/"
@@ -16,7 +16,9 @@ md5sums=('e626e395b4eac6784acb45c5f56e6706'
 prepare() {
     cd ${srcdir}/astropy-helpers-${pkgver}
 
-    patch -Np1 -i "${srcdir}/use_system_astropy_helpers.patch"
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    sed -e "/astropy_helpers/s:astropy_helpers:/usr/lib/python${_pyver}/site-packages/astropy_helpers:" \
+        -i "astropy_helpers/commands/build_sphinx.py"
 }
 
 package() {
