@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Exec=vdu_controls
+Name=VDU Controls
+GenericName=VDU controls
+Comment=Virtual Control Panel for externally connected VDU's
+Icon=preferences-desktop-display-color
+Categories=Settings
