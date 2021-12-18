@@ -2,7 +2,7 @@
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="An IPTV streaming application"
 arch=(any)
@@ -11,11 +11,14 @@ license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-gobject python-imdbpy python-requests python-setproctitle python-unidecode mpv xapp)
 optdepends=('yt-dlp: YouTube channel support')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-b2sums=('5a75078743cd12d1cc98f84b1c797961ea59d2ed4634dfe9f2d899569d29a184b2f9d851158f39cee861f58c5e7127e9d2ccd7ccfa1da32b735d34ae65a085ba')
+b2sums=('c495f0444e75672f16bd0ac5d58a4755071f39f42e14c67adaaeddb613e62f9669ce388ecb1488650758c03bbeeedf43f88958bbdca12da2b7ea3eb935c783dd')
 
 prepare() {
 	cd $pkgname-$pkgver
 	sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
+
+	# https://github.com/linuxmint/hypnotix/issues/184
+	rm usr/share/hypnotix/pictures/badges/irak.svg
 }
 
 build() {
@@ -34,6 +37,9 @@ package() {
 	install -Dm644 -t "$pkgdir"/usr/share/hypnotix/pictures usr/share/hypnotix/pictures/*.svg
 	install -Dm644 -t "$pkgdir"/usr/share/hypnotix/pictures/badges usr/share/hypnotix/pictures/badges/*
 	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps usr/share/icons/hicolor/scalable/apps/hypnotix.svg
+
+	# https://github.com/linuxmint/hypnotix/issues/184
+	ln -s iraq.svg "$pkgdir"/usr/share/hypnotix/pictures/badges/irak.svg
 
 	# Translations
 	cp -a usr/share/locale "$pkgdir"/usr/share/locale
