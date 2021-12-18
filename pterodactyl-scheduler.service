@@ -1,0 +1,9 @@
+[Unit]
+Description=Pterodactyl scheduler service
+
+[Service]
+User=http
+ExecStart=/usr/bin/php /usr/share/webapps/pterodactyl/artisan schedule:run
+
+[Install]
+WantedBy=multi-user.target

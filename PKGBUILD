@@ -1,62 +1,52 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Moses Narrow <moe_narrow@use.startmail.com>
 
-projectname=pterodactyl
-pkgname=pterodactyl-panel
-_pkgname=panel
-pkgdesc="Open-source game server management panel"
-pkgver=0.7.17
-pkgpath="github.com/${projectname}/${_pkgname}"
+pkgname="pterodactyl-panel"
+pkgver=1.6.6
 pkgrel=1
-arch=('any')
-url="https://${pkgpath}"
-license=()
-makedepends=()
-depends=(mariadb mariadb-clients php php-gd php-fpm redis composer dialog)
-source=("${url}/releases/download/v${pkgver}/${_pkgname}.tar.gz"
-pterodactyl.conf
-pterodactyl-panel.sh)
-sha256sums=('b3e37e5cf34b3fbcec73cab8947300dd55f1ba289a83501c76f198dd4e6c3750'
-            '9c412eb73baff0ba32cb15e8b86e52b40ec5a3fda5768e6b034b08ccbf2edc75'
-            '8ac1252a2357927bd95f5091502907e1b7d6a335b8809e9f49d8dbbce306f244')
+pkgdesc="An open-source game server management panel"
+url="https://pterodactyl.io/"
+license=("MIT")
+arch=("any")
+depends=("mariadb" "php" "php-gd" "redis")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/panel/releases/download/v$pkgver/panel.tar.gz"
+        "pterodactyl-queue.service"
+        "pterodactyl-scheduler.service"
+        "pterodactyl-scheduler.timer")
+sha256sums=('232a131448872837f29f285fa0f7be19b39062abf3a9ef617f4b985b03cc27a6'
+            '0f6e444671802f5fc162380a6c6116adf845156704e035170dcc3cea80307bc6'
+            '4e98afb6d923c1f74048e9fc633694702ed60c192550cd50693bebacab18e791'
+            'd627c8beb19d3203432958103c8565355b41f92bf2e34a2e11f4662d97996cf6')
+noextract=("$pkgname-$pkgver.tar.gz")
+backup=("etc/webapps/pterodactyl/config.env")
+options=("!strip")
 
-build() {
-cd ${srcdir}/${_pkgname}-${pkgver}
-cp .env.example .env
-composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
-cd ${srcdir}
-echo -e "# Pterodactyl Queue Worker File
-# ----------------------------------
-[Unit]
-Description=Pterodactyl Queue Worker
-After=redis-server.service
-
-[Service]
-# On some systems the user and group might be different.
-# Some systems use `apache` or `nginx` as the user and group.
-User=http
-Group=http
-Restart=always
-ExecStart=/usr/bin/php /var/www/pterodactyl/artisan queue:work --queue=high,standard,low --sleep=3 --tries=3
-
-[Install]
-WantedBy=multi-user.target" > ${srcdir}/pteroq.service
-
-cp ${srcdir}/${projectname}.conf ${srcdir}/${_pkgname}-${pkgver}/${projectname}.conf
-}
-
-package() {
-	#https://pterodactyl.io/daemon/installing.html#installing-daemon-software
-	mkdir -p ${pkgdir}/var/www/ #${pkgname}
-	mkdir -p ${pkgdir}/usr/lib/systemd/system/
-	mkdir -p ${pkgdir}/usr/bin
-	cp -r ${srcdir}/${_pkgname}-${pkgver} ${pkgdir}/var/www/${projectname}
-	cd ${pkgdir}/var/www/${projectname}
-	#tar --strip-components=1 -xzvf ${srcdir}/panel.tar.gz
-	chmod -R 755 ${pkgdir}/var/www/${projectname}/storage/* ${pkgdir}/var/www/${projectname}/bootstrap/cache/
-	chown -R http:http *
-	#cp ${pkgdir}/var/www/${projectname}/.env.example ${pkgdir}/var/www/${projectname}/.env
-	install -Dm644 ${srcdir}/pteroq.service ${pkgdir}/usr/lib/systemd/system/
-	install -Dm755 ${srcdir}/${pkgname}.sh  ${pkgdir}/var/www/${projectname}/${pkgname}.sh
-	ln -rTsf ${pkgdir}/var/www/${projectname}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+package(){
+ # extract the archive content in a dedicated folder
+ install -d "$pkgname-$pkgver"
+ tar -xf "$pkgname-$pkgver.tar.gz" -C "$pkgname-$pkgver"
+ cd "$pkgname-$pkgver"
+ # program files
+ install -d "$pkgdir/usr/share/webapps/pterodactyl"
+ cp -r * "$pkgdir/usr/share/webapps/pterodactyl"
+ # configuration
+ install -D -o root -g http -m 640 ".env.example" "$pkgdir/etc/webapps/pterodactyl/config.env"
+ ln -s "/etc/webapps/pterodactyl/config.env" "$pkgdir/usr/share/webapps/pterodactyl/.env"
+ # temporary cache
+ install -d "$pkgdir/var/cache/"
+ mv "$pkgdir/usr/share/webapps/pterodactyl/bootstrap/cache" "$pkgdir/var/cache/pterodactyl"
+ ln -s "/var/cache/pterodactyl" "$pkgdir/usr/share/webapps/pterodactyl/bootstrap/cache"
+ chown -R http: "$pkgdir/var/cache/pterodactyl"
+ chmod 750 "$pkgdir/var/cache/pterodactyl"
+ # persistent storage
+ install -d "$pkgdir/var/lib/"
+ mv "$pkgdir/usr/share/webapps/pterodactyl/storage" "$pkgdir/var/lib/pterodactyl"
+ ln -s "/var/lib/pterodactyl" "$pkgdir/usr/share/webapps/pterodactyl/storage"
+ chown -R http: "$pkgdir/var/lib/pterodactyl"
+ chmod 750 "$pkgdir/var/lib/pterodactyl"
+ # systemd files
+ install -D -m 644 "$srcdir/pterodactyl-queue.service" "$pkgdir/usr/lib/systemd/system/pterodactyl-queue.service"
+ install -D -m 644 "$srcdir/pterodactyl-scheduler.service" "$pkgdir/usr/lib/systemd/system/pterodactyl-scheduler.service"
+ install -D -m 644 "$srcdir/pterodactyl-scheduler.timer" "$pkgdir/usr/lib/systemd/system/pterodactyl-scheduler.timer"
 }
