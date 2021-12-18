@@ -1,0 +1,20 @@
+pkgbase = brother-hl-j6000dw
+	pkgdesc = Brother HL-J600DW CUPS driver.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=gb&lang=en&prod=hlj6000dw_eu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = sed
+	depends = grep
+	depends = file
+	source = https://download.brother.com/pub/com/linux/linux/packages/hlj6000dwpdrv-1.0.0-0.i386.rpm
+	md5sums = 538ccf15961574ccab44db49630224be
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-nss
+
+pkgname = brother-hl-j6000dw
