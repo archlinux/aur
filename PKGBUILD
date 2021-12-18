@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: DoTheEvolution <DoTheEvo@gmail.com>
 pkgname=angrysearch
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Linux file search, instant results as you type"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-pyqt5' 'libxkbcommon-x11' 'xdg-utils')
 makedepends=('git')
 optdepends=('python-gobject: desktop notifications support'
             'xdotool: Thunar & PCmanFM to select file on path open')
-_commit=8280de62976f12432cfd42d918828aa4aafc0a01
+_commit=0aae19d6585e45fc741e332fc5f84e5fff15a612
 source=("git+https://github.com/DoTheEvo/ANGRYsearch.git#commit=$_commit")
 #source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
