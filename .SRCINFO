@@ -1,7 +1,7 @@
 pkgbase = beancount-cryptoassets
 	pkgdesc = Price sources for Beancount that provide prices for various cryptoassets
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xuhcc/beancount-cryptoassets
 	arch = any
 	license = GPL
@@ -11,4 +11,3 @@ pkgbase = beancount-cryptoassets
 	sha256sums = ed27eb0c3ba009925d3e4e7bdd6590f7c296560a706c030135721b3fa3ff9f15
 
 pkgname = beancount-cryptoassets
-

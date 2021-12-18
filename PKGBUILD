@@ -1,9 +1,9 @@
-# Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
+# Maintainer: xuhcc <xuhcc@cryptolab.net>
 
 pkgname='beancount-cryptoassets'
 pkgdesc='Price sources for Beancount that provide prices for various cryptoassets'
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/xuhcc/beancount-cryptoassets"
 license=('GPL')
