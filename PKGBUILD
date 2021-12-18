@@ -10,7 +10,7 @@ license=('MIT')
 depends=('beets')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Holzhaus/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('977f8851b0c038ea78f7142d1d8dafbb9712182c2315973f3a24027eed2e4ee9')
+b2sums=('1b47be1553c3e3839192bdfa64754c3769f841263b6ef714a19e80bf3f978d7c8920cdb8e9d788fbb1c6e2805c48ab67e9ad69d4872e94c20d3d485f8aaff17e')
 
 build() {
     cd "$pkgname-$pkgver"
