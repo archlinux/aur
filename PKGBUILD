@@ -2,7 +2,7 @@
 
 _name="auto-root"
 pkgname="${_name}-git"
-pkgver=r24.dbf039f
+pkgver=r27.e436ed6
 pkgrel=1
 pkgdesc="A script that automatically reruns your last command as root if you forgot it. Requires 'bash' or 'zsh'."
 arch=('any')
