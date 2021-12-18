@@ -62,8 +62,8 @@ _minor=15
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=5
-_pfrel=3
+_unpatched_sublevel=7
+_pfrel=4
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -92,6 +92,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
+        'asus_zenith_ii_map.patch::https://bugzilla.kernel.org/attachment.cgi?id=294489'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'
 
@@ -103,6 +104,9 @@ prepare() {
   patch -Np1 < ${srcdir}/${_pfpatchname}
   patch -Np1 < ${srcdir}/${_projectcpatchname}
 
+
+  # Add port map for ASUS Zenith II
+  patch -p1 -i ${srcdir}/asus_zenith_ii_map.patch
 
   if [ "$CARCH" = "x86_64" ]; then
 	  cat "${startdir}/config.x86_64" >| .config
@@ -666,8 +670,9 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'ab1407647e26dee1e9d631ea51c0dc0dfc5ee170fa02492ac5075d6518fe780f'
             '8723eb2d5e3473db978bfa7e8d94c80efeac61d71e7fad2f1214ad55671a33a2'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'f6f061c41cad9619ea1d2d082987ba36e268ae63d0f76604886193a86fac3307'
+            '7a35d775af205d51ec8f8bec69dbb914fde6e3693d8a42ff069b350c8da931fd'
             '768239d739180c0199545b5c5cf2d78de6261aec769008e6a2b7e97c7477b756'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '67558840c3e1f1de229b23a54342cb126735282353a4d0a8cd10e4d582e6d9d6')
 # vim:set ts=2 sw=2 tw=0 et:
