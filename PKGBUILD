@@ -4,8 +4,8 @@
 # Contributor Sindwiller
 
 pkgname=pyspread
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Python based non-traditional spreadsheet application"
 arch=('any')
 url="https://pyspread.gitlab.io/"
@@ -21,7 +21,7 @@ optdepends=('python-matplotlib'
             'python-pip')
 options=(!emptydirs)
 source=("https://gitlab.com/pyspread/pyspread/-/archive/v${pkgver}/pyspread-v${pkgver}.tar.gz")
-sha512sums=('20ad8bd05943a7e5ca2520cc4324edf5589aab25826aac9101e68aa07f40311d6fe87982f52d3fbb8d1064eeafbedc96f5a0ab3b6dd5838a22f756bc42aeaadd')
+sha512sums=('2e3ce8796b1ea3e123440e36873c57ba4e143107cfd7d4d88419928d3ae78c14a5882c921bc150667cccdb4ee8fc47fcbccbad536e7daa324b3027682fb344e2')
 
 package() {  
   cd "${srcdir}/${pkgname}-v${pkgver}"
