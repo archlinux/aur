@@ -1,7 +1,7 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgbase=inpulse-to-talk
 pkgname=inpulse-to-talk
-pkgver=v2.1
+pkgver=v2.2
 pkgrel=1
 pkgdesc="Push-to-Talk with libinput + Pulseaudio"
 url="https://gitlab.com/somini/inpulse-to-talk"
