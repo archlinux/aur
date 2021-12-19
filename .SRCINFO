@@ -1,19 +1,20 @@
 pkgbase = faba-icon-theme-git
-	pkgdesc = This is the base icon set for Faba. It is designed with simplicity and compliance to standards in mind.
-	pkgver = 294.ab92a4c
-	pkgrel = 2
-	url = http://mokaproject.com/faba-icon-theme/
+	pkgdesc = A sexy and modern FreeDesktop icon set with Tango and elementary influences
+	pkgver = 4.3.r0.g6d7ebd2
+	pkgrel = 1
+	url = http://snwh.org/moka/
 	install = faba-icon-theme.install
 	arch = any
 	license = GPL3
+	license = CCPL:by-sa
 	makedepends = git
+	makedepends = meson
 	depends = gtk-update-icon-cache
 	provides = faba-icon-theme
 	conflicts = faba-icon-theme
 	replaces = faba-icon-theme
 	options = !strip
-	source = faba-icon-theme::git+https://github.com/moka-project/faba-icon-theme.git
+	source = git+https://github.com/snwh/faba-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = faba-icon-theme-git
-

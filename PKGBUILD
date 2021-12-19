@@ -1,31 +1,41 @@
-# Maintainer: Martin Wimpress <code@flexion.org>
+# Contributor: Eric Fung <loseurmarbles[AT]gmail[DOT]com>
+# Contributor: Martin Wimpress <code@flexion.org>
 
-_pkgname=faba-icon-theme
-pkgname=${_pkgname}-git
-pkgver=303.6f1cea3
+pkgname=faba-icon-theme-git
+_pkgname=${pkgname%-git}
+pkgver=4.3
 pkgrel=1
-pkgdesc="This is the base icon set for Faba. It is designed with simplicity and compliance to standards in mind."
+pkgdesc='A sexy and modern FreeDesktop icon set with Tango and elementary influences'
 arch=('any')
-url="http://snwh.org/moka/"
-license=('GPL3')
+url='http://snwh.org/moka/'
+license=('GPL3' 'CCPL:by-sa')
 depends=('gtk-update-icon-cache')
-makedepends=('git')
+makedepends=('git' 'meson')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 replaces=("${_pkgname}")
 options=(!strip)
-source=(${_pkgname}::"git+https://github.com/moka-project/${_pkgname}.git")
+source=("git+https://github.com/snwh/${_pkgname}.git")
 sha256sums=('SKIP')
 install=${_pkgname}.install
 
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    # Remove execute permission on files
+    chmod -R -x+X .
+}
+
 pkgver() {
-    cd ${srcdir}/${_pkgname}
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "${srcdir}/${_pkgname}"
+    meson --prefix=/usr --buildtype=plain "build"
 }
 
 package() {
-    install -d -m 755 "${pkgdir}"/usr/share/icons/Faba
-    cp -dr --no-preserve=ownership "${_pkgname}"/Faba "${pkgdir}"/usr/share/icons/
-    find "${pkgdir}"/usr/share/icons/ -type d -exec chmod 755 {} \;
-    find "${pkgdir}"/usr/share/icons/ -type f -exec chmod 644 {} \;
+    cd "${srcdir}/${_pkgname}"
+    DESTDIR="${pkgdir}" ninja -C "build" install
 }
