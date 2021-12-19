@@ -35,5 +35,5 @@ package() {
     # compress each module individually
     find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 
-    install -Dm644 /usr/share/licenses/nvidia-dkms/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 /usr/share/licenses/nvidia-390xx-dkms/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
