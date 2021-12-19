@@ -3,11 +3,11 @@
 
 pkgname=ocaml-samplerate
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml bindings for libsamplerate"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-samplerate"
-license=('LGPL2.1')
+license=('BSD')
 depends=('ocaml' 'libsamplerate')
 makedepends=('ocaml-findlib' 'dune')
 options=('!strip')

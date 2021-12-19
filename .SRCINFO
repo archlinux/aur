@@ -1,11 +1,11 @@
 pkgbase = ocaml-samplerate
 	pkgdesc = OCaml bindings for libsamplerate
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonet/ocaml-samplerate
 	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = BSD
 	makedepends = ocaml-findlib
 	makedepends = dune
 	depends = ocaml
