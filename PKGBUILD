@@ -3,7 +3,7 @@
 # Contributor: Johannes Wienke <languitar@semipol.de>
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
-pkgver=10.0.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery."
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ depends=('protobuf' 'protobuf-c' 'zeromq' 'ignition-msgs>=7' 'ignition-tools'
 makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
-source=("https://github.com/ignitionrobotics/ign-transport/archive/${pkgname}10_${pkgver}.tar.gz")
-sha256sums=('3c0ebe70a4343e5206bd145016350b925be3a0619a10e7dcb6e8d48326dda8f1')
+source=("https://github.com/ignitionrobotics/ign-transport/archive/${pkgname}11_${pkgver}.tar.gz")
+sha256sums=('b549f73751556ef30f38c35f8fd357da500313a41588c08efaca341cf8c0341f')
 
-_dir="ign-transport-${pkgname}10_${pkgver}"
+_dir="ign-transport-${pkgname}11_${pkgver}"
 
 build() {
   cd "${srcdir}/${_dir}"

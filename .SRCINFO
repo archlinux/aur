@@ -1,6 +1,6 @@
 pkgbase = ignition-transport
 	pkgdesc = The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery.
-	pkgver = 10.0.0
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/transport
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ignition-transport
 	depends = ignition-tools
 	depends = ignition-utils>=1
 	depends = libutil-linux
-	source = https://github.com/ignitionrobotics/ign-transport/archive/ignition-transport10_10.0.0.tar.gz
-	sha256sums = 3c0ebe70a4343e5206bd145016350b925be3a0619a10e7dcb6e8d48326dda8f1
+	source = https://github.com/ignitionrobotics/ign-transport/archive/ignition-transport11_11.0.0.tar.gz
+	sha256sums = b549f73751556ef30f38c35f8fd357da500313a41588c08efaca341cf8c0341f
 
 pkgname = ignition-transport
