@@ -3,7 +3,7 @@
 # Previous Contributor: Felix Serrano Blanco <felixseblanc@gmail.com>
 
 pkgname=libtd-git
-pkgver=1.7.0.r760.g445183e5
+pkgver=1.7.0.r1935.g4eaae330
 pkgrel=1
 pkgdesc='TDLib (Telegram Database library) is a cross-platform library for building Telegram clients (Git)'
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -22,6 +22,7 @@ pkgver() {
 }
 
 build() {
+  CXXFLAGS+=' -fpermissive'
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
   cmake --build build --config RelWithDebInfo
 }
