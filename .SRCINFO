@@ -1,7 +1,7 @@
 pkgbase = idesk
 	pkgdesc = gives users of minimal wm's (fluxbox, blackbox, openbox, windowmaker...) icons on their desktop
 	pkgver = 0.7.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://sourceforge.net/projects/idesk/
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,8 @@ pkgbase = idesk
 	depends = libxft
 	depends = gcc-libs
 	source = http://downloads.sourceforge.net/sourceforge/idesk/idesk-0.7.5.tar.bz2
+	source = imlib2-config.patch
 	sha256sums = d4b7ea5dcf6d49d83e2df9512d4c6388f11632a702b14f42a1bc6bffb617b3d3
+	sha256sums = a610f7be40e4540f8f557f739f44664cd773b060282d8c7051efde457a979e92
 
 pkgname = idesk
-

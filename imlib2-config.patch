@@ -1,0 +1,38 @@
+diff -up src/idesk-0.7.5/configure.in.orig src/idesk-0.7.5/configure.in
+--- src/idesk-0.7.5/configure.in.orig	2005-09-11 01:14:04.000000000 -0600
++++ src/idesk-0.7.5/configure.in	2021-12-19 00:06:11.240000000 -0700
+@@ -94,19 +94,22 @@ LIBS="$LIBS $Xext_lib"
+ 
+ dnl Imlib2 detection
+ 
+-AC_PATH_GENERIC(imlib2, , [
+-    AC_SUBST(IMLIB_LIBS)
+-   AC_SUBST(IMLIB_CXXFLAGS) ],
+-  AC_MSG_ERROR(Cannot find imlib2: Is imlib2-config in the path?
+-               You need Imlib2 to build Idesk.  Verify that you have Imlib2-dev))
+-
+-dnl the above doesn't work for some reason :/
+-IMLIB_LIBS=`imlib2-config --libs`
+-IMLIB_CFLAGS=`imlib2-config --cflags`
+-AC_SUBST(IMLIB_LIBS)
+-AC_SUBST(IMLIB_CXXFLAGS)
++PKG_CHECK_MODULES([IMLIB],[imlib2])
+ 
+-CXXFLAGS="$CXXFLAGS $IMLIB_CXXFLAGS"
++dnl AC_PATH_GENERIC(imlib2, , [
++dnl     AC_SUBST(IMLIB_LIBS)
++dnl    AC_SUBST(IMLIB_CXXFLAGS) ],
++dnl   AC_MSG_ERROR(Cannot find imlib2: Is imlib2-config in the path?
++dnl                You need Imlib2 to build Idesk.  Verify that you have Imlib2-dev))
++dnl 
++dnl dnl the above doesn't work for some reason :/
++dnl IMLIB_LIBS=`imlib2-config --libs`
++dnl IMLIB_CFLAGS=`imlib2-config --cflags`
++dnl AC_SUBST(IMLIB_LIBS)
++dnl AC_SUBST(IMLIB_CXXFLAGS)
++dnl 
++
++CXXFLAGS="$CXXFLAGS $IMLIB_CFLAGS"
+ LIBS="$LIBS $IMLIB_LIBS"
+ 
+ 
