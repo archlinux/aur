@@ -1,0 +1,18 @@
+pkgbase = python-present
+	pkgdesc = A terminal-based presentation tool with colors and effects.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/vinayak-mehta/present
+	arch = any
+	license = Apache 2.0
+	makedepends = python3
+	depends = python>=3.7
+	depends = python-asciimatics>=1.11.0
+	depends = python-click>=7.0
+	depends = python-mistune>=2.0
+	depends = python-pyfiglet>=0.8
+	depends = python-pyaml>=5.3
+	source = https://files.pythonhosted.org/packages/f9/1b/b0bed47dec0557a83ea0e475e52796d7c31f3ab83009b44b041af1526740/present-0.6.0.tar.gz
+	md5sums = a1e59b4c198b3c5b9f2d81df70f3d4a7
+
+pkgname = python-present
