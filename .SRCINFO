@@ -1,4 +1,4 @@
-pkgbase = flatcam_qt6
+pkgbase = flatcam-qt6
 	pkgdesc = Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG) [QT6 Fork]
 	pkgver = r4040.0e4eb263
 	pkgrel = 1
@@ -33,8 +33,8 @@ pkgbase = flatcam_qt6
 	depends = python-networkx
 	depends = python-pikepdf
 	depends = hicolor-icon-theme
-	provides = flatcam_qt6
-	conflicts = flatcam_qt6
+	provides = flatcam-qt6
+	conflicts = flatcam-git
 	source = git+https://bitbucket.org/marius_stanciu/flatcam_beta.git
 	source = flatcam_qt6.desktop
 	source = flatcam.xml
@@ -44,4 +44,4 @@ pkgbase = flatcam_qt6
 	md5sums = e4a7f457350aa2e1c62cbe43f3b23e90
 	md5sums = d1abc7ac742630ef04071137b9dca85b
 
-pkgname = flatcam_qt6
+pkgname = flatcam-qt6

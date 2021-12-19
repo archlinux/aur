@@ -1,6 +1,6 @@
 # Maintainer: Alfio Saitta <info.collateral@gmail.com>
 
-pkgname=flatcam_qt6
+pkgname=flatcam-qt6
 _pkgname=FlatCAM
 pkgver=r4040.0e4eb263
 pkgrel=1
