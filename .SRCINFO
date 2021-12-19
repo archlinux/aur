@@ -1,22 +1,23 @@
 pkgbase = sk1
-	pkgdesc = Professional quality illustration program
-	pkgver = 2.0rc4
-	pkgrel = 4
+	pkgdesc = Open source vector graphics editor for prepress
+	pkgver = 2.0rc5
+	pkgrel = 1
 	epoch = 1
 	url = https://sk1project.net/
 	arch = x86_64
 	license = GPL3
 	depends = lcms2
+	depends = cairo
 	depends = imagemagick
+	depends = pango
 	depends = python2-cairo
 	depends = python2-pillow
 	depends = python2-pycups
 	depends = python2-reportlab
 	depends = python2-wxpython3
-	source = https://downloads.sk1project.net/sk1/2.0rc4/sk1-2.0rc4.tar.gz
+	source = https://downloads.sk1project.net/sk1/sk1-2.0rc5.tar.gz
 	source = sk1.appdata.xml
-	sha256sums = 65ef0856389d3972e758d55eea33357a4bccec8b97d95eb8dc6be186a7956063
+	sha256sums = 1f70dd490a62aad97118454bd18f13c3459dcbd910823835404d6b639f7ef637
 	sha256sums = a42a6fd243f3866f03210b4d31c66451ff55b70948b52d7e656f3ca4447a675c
 
 pkgname = sk1
-
