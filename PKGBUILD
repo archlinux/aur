@@ -1,7 +1,7 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 # Contribuor: Bart Verhoeven <nepherte at archlinux dot us>
 pkgname=mbtserver
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="Memory-based tagger-generator and tagger server."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ options=(!libtool)
 url="https://languagemachines.github.io/mbt"
 _gituser="LanguageMachines"
 _gitname="mbtserver"
-source=(https://github.com/LanguageMachines/mbtserver/archive/v0.14.tar.gz)
-md5sums=(23506a15fdeef24d60aab79f4fac3509)
+source=(https://github.com/LanguageMachines/mbtserver/archive/v0.15.tar.gz)
+md5sums=(0b8a5a1ca0cdb0aa1b011a572c5ab72b)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
