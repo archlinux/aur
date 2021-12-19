@@ -1,11 +1,11 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=python-tikzplotlib-git
-pkgver=0.9.1.r5.gd9f636f
+pkgver=0.9.16.r2.g1e30229
 pkgrel=1
 pkgdesc="Convert matplotlib figures into TikZ/PGFPlots"
 url="https://github.com/nschloe/tikzplotlib"
-makedepends=('python')
-depends=('python' 'python-numpy' 'python-matplotlib' 'python-pillow')
+makedepends=(python-build)
+depends=(python python-matplotlib python-numpy python-pillow)
 replaces=('python-matplotlib2tikz')
 conflicts=('python-matplotlib2tikz')
 license=('MIT')
@@ -14,17 +14,21 @@ source=("tikzplotlib::git+https://github.com/nschloe/tikzplotlib.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd tikzplotlib
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/tikzplotlib"
+	git describe --long --tags | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
-    cd "$srcdir/tikzplotlib"
-    python setup.py build
+	cd "$srcdir/tikzplotlib"
+	python -m build
 }
 
 package() {
-    cd "$srcdir/tikzplotlib"
-    python setup.py install --root="$pkgdir" --optimize=1 
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
+	mkdir -p "$site"
+
+	cd "$srcdir/tikzplotlib"
+	local cleanver="$(git describe --tags --abbrev=0 | sed 's/^v//')"
+	unzip "dist/tikzplotlib-$cleanver-py3-none-any.whl" -d "$site"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
