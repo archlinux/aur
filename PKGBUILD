@@ -5,6 +5,7 @@
 pkgname=libresprite
 pkgver=1.0
 pkgrel=1
+epoch=1
 pkgdesc='fork of last GPL version of aseprite'
 arch=('x86_64' 'i686')
 url='https://github.com/LibreSprite/LibreSprite'
