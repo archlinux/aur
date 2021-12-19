@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="application/x-flatcam-project">
+    <comment>FlatCAM Project</comment>
+    <comment xml:lang="de">FlatCAM-Projekt</comment>
+    <glob pattern="*.FlatPrj"/>
+    <icon name="flatcam"/>
+  </mime-type>
+</mime-info>

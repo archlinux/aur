@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Development
+Exec=flatcam %U
+Comment=Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG) [QT6 Fork]
+Icon=flatcam
+MimeType=application/x-flatcam-project
+Name=FlatCAM QT6
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+
