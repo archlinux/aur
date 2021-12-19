@@ -4,7 +4,7 @@ _corpname=python-glaxnimate
 _pkgname='glaxnimate'
 pkgname=python-glaxnimate
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Glaxnimate."
 url="https://glaxnimate.mattbas.org/"
 license=('GPL3')
@@ -24,9 +24,10 @@ prepare() {
 	git submodule update --init --recursive
 }
 
+
 pkgver() {
 	cd "$srcdir/$_pkgname/"
-	git describe --tags | tr - _
+	git describe --tags | cut -d - -f 1
 }
 
 build() {
