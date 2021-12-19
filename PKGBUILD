@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=qqc2-breeze-style
-pkgver=5.23.2
+pkgver=5.23.4
 pkgrel=1
 pkgdesc="Breeze inspired QQC2 Style"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
