@@ -1,13 +1,13 @@
 # Maintainer: Prokop Randáček <prokop@randacek.dev>
 pkgname=libucw-git
-pkgver=v6.5.12.r0.03c6ca57
+pkgver=v6.5.12.r5.87735ccb
 pkgrel=1
 pkgdesc='General purpose library for the C language'
 arch=('any')
 url='http://www.ucw.cz/libucw/'
 license=('LGPL')
-depends=(perl bash pkg-config)
-makedepends=(coreutils perl gcc git pkg-config curl make bash asciidoc)
+depends=()
+makedepends=(perl bash pkg-config coreutils perl gcc git pkg-config curl make bash asciidoc)
 provides=(libucw)
 source=('libucw::git+git://git.ucw.cz/libucw.git')
 md5sums=('SKIP')
@@ -19,18 +19,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure
+	./configure PREFIX=/usr
 	make -j$(nproc)
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
-
-	# inform dynamic linker and pkg-config that there are libraries in `/usr/local/lib/`
-	mkdir -p $pkgdir/etc/ld.so.conf.d/
-	mkdir -p $pkgdir/etc/profile.d/
-	echo "/usr/local/lib/" > $pkgdir/etc/ld.so.conf.d/ucw.conf
-	echo 'export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"' > $pkgdir/etc/profile.d/ucw.sh
 }
 
