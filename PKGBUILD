@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=ems-flasher-git
-pkgver=r136.739c120
+pkgver=r139.b88640a
 pkgrel=1
 pkgdesc='Utility to flash ROM images to the EMS USB 64 mbit gameboy flash cart on Linux'
 url="https://github.com/mikeryan/ems-flasher"
