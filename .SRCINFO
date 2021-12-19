@@ -1,0 +1,14 @@
+pkgbase = eztex-git
+	pkgdesc = A CLI tool for quickly starting new LaTeX projects
+	pkgver = r26.dcb11ac
+	pkgrel = 1
+	url = https://github.com/RubixDev/eztex
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = eztex
+	conflicts = eztex
+	source = eztex::git+https://github.com/RubixDev/eztex.git
+	sha256sums = SKIP
+
+pkgname = eztex-git
