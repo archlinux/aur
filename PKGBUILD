@@ -5,7 +5,7 @@
 # Contributor: andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries - runtime libraries (32-bit)"
@@ -30,8 +30,10 @@ provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
           libboost_wave.so libboost_wserialization.so)
 options=('staticlibs')
 source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.gz
+        boost-b2-fix-lib-install.patch::https://github.com/bfgroup/b2/commit/78fd284a42ca.patch
         boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
-sha256sums=('7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca'
+sha256sums=('94ced8b72956591c4775ae2207a9763d3600b30d9d7446562c552f0a14a63be7'
+            'd233b16920ad7da8bb6e02bf5fb4e429592057b4f4db28d4babf3850e837a8db'
             'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
 
 # This version of lib32-boost-libs does not include support OpenMPI or the
@@ -39,10 +41,13 @@ sha256sums=('7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca'
 # them
 
 prepare() {
-   cd $_srcname
+  cd $_srcname
 
-   # https://github.com/boostorg/ublas/pull/97
-   patch -Np2 -i ../boost-ublas-c++20-iterator.patch
+  # https://github.com/bfgroup/b2/issues/104
+  patch -Np1 -d tools/build <../boost-b2-fix-lib-install.patch
+
+  # https://github.com/boostorg/ublas/pull/97
+  patch -Np2 -i ../boost-ublas-c++20-iterator.patch
 }
 
 build() {

@@ -3,4 +3,5 @@ pkg/
 
 *.tar.gz
 *.pkg.tar.*
+boost-b2-fix-lib-install.patch
 boost-ublas-c++20-iterator.patch
