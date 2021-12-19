@@ -1,13 +1,12 @@
 pkgbase = coan
 	pkgdesc = Modify C/C++ code using prepocessor statements
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://coan2.sourceforge.net
 	arch = any
 	license = BSD
 	makedepends = time
-	source = http://downloads.sourceforge.net/project/coan2/v6.0.1/coan-6.0.1.tar.gz
+	source = https://downloads.sourceforge.net/project/coan2/v6.0.1/coan-6.0.1.tar.gz
 	sha256sums = 84704f484129f7c6ab6dffb5a7fecaa4cae65b32422e2a4c010c8666810c04b4
 
 pkgname = coan
-
