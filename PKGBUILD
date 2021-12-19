@@ -2,7 +2,7 @@
 
 _name=anndata2ri
 pkgname=python-$_name
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Converter between Python’s AnnData and R’s SingleCellExperiment.'
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python-anndata python-rpy2 python-tzlocal)
 _wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
-sha256sums=('7b10501323ac29be1ee531100d12a3d4384e41551412c7e07e8e973a3ad24f8b')
+sha256sums=('371858384c3e87bd44438677a00e7c02df7e04a5c0fff9c6ce11076069bf2d07')
 noextract=("$_wheel")
 
 package() {

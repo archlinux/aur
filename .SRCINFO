@@ -1,6 +1,6 @@
 pkgbase = python-anndata2ri
 	pkgdesc = Converter between Python’s AnnData and R’s SingleCellExperiment.
-	pkgver = 1.0.4
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/theislab/anndata2ri
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = python-anndata2ri
 	depends = python-anndata
 	depends = python-rpy2
 	depends = python-tzlocal
-	noextract = anndata2ri-1.0.4-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/a/anndata2ri/anndata2ri-1.0.4-py3-none-any.whl
-	sha256sums = 7b10501323ac29be1ee531100d12a3d4384e41551412c7e07e8e973a3ad24f8b
+	noextract = anndata2ri-1.0.6-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/a/anndata2ri/anndata2ri-1.0.6-py3-none-any.whl
+	sha256sums = 371858384c3e87bd44438677a00e7c02df7e04a5c0fff9c6ce11076069bf2d07
 
 pkgname = python-anndata2ri
-
