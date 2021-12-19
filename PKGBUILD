@@ -47,6 +47,8 @@ GOLD=             # Use the gold linker.
 LTO=              # Enable link-time optimization. Still experimental.
 
 MOLD="YES"        # Use the mold linker.
+                  # This is the default linker.
+                  # Notice that it will always be used.
 
 JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   # This compiles only performance critical elisp files.
@@ -95,7 +97,7 @@ else
 pkgname="emacs-native-comp-git-enhanced"
 fi
 pkgver=29.0.50.152995
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -334,17 +336,18 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
+  # Always use mold to link.
 if [[ $USE_ALL_CPU_CORES == "YES" ]]; then
    if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
-    make NATIVE_FULL_AOT=1 -j$(nproc)
+    mold -run make NATIVE_FULL_AOT=1 -j$(nproc)
   else
-    make -j$(nproc)
+    mold -run make -j$(nproc)
   fi 
 else
   if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
-    make NATIVE_FULL_AOT=1
+    mold -run make NATIVE_FULL_AOT=1
   else
-    make
+    mold -run make
   fi
 fi
 
