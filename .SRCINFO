@@ -1,6 +1,6 @@
 pkgbase = proton-caller
 	pkgdesc = Run any Windows program through Proton
-	pkgver = 2.3.1
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/caverym/Proton-Caller/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = proton-caller
 	makedepends = rust
 	makedepends = gcc
 	conflicts = proton-caller-git
-	source = proton-caller-2.3.1.tar.gz::https://github.com/caverym/Proton-Caller/archive/2.3.1.tar.gz
-	sha256sums = 70e1464e132d6790b86e60e562f5eabce0e42db64e18c89102c63127547d01a2
+	source = proton-caller-3.0.1.tar.gz::https://github.com/caverym/Proton-Caller/archive/3.0.1.tar.gz
+	sha256sums = 5fb27cd1c76fcc0e1fca38f920a33f9d982fde625e08f844fd32fc2a89c3e310
 
 pkgname = proton-caller

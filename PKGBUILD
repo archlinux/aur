@@ -3,7 +3,7 @@
 _pkgname=proton-call
 pkgname=proton-caller
 __pkgname=Proton-Caller
-pkgver=2.3.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
@@ -13,16 +13,16 @@ makedepends=('rust' 'gcc')
 conflicts=(proton-caller-git)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
-sha256sums=('70e1464e132d6790b86e60e562f5eabce0e42db64e18c89102c63127547d01a2')
+sha256sums=('5fb27cd1c76fcc0e1fca38f920a33f9d982fde625e08f844fd32fc2a89c3e310')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo build --release --locked
+  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo build --release
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo test --release --locked
+  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo test --release
 }
 
 package() {
