@@ -1,23 +1,24 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=brltty-git
-pkgver=6.3.r412.gf23bc3295
+pkgver=6.4.r226.g92316edc9
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=('x86_64')
 url="https://brltty.app"
 license=('LGPL2.1')
 depends=('bluez-libs' 'expat' 'gcc-libs' 'glibc' 'liblouis' 'libspeechd' 'pcre'
-         'polkit' 'tcl')
+         'polkit')
 makedepends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'atk' 'cython' 'dbus'
              'dracut' 'espeak-ng' 'festival' 'git' 'glib2' 'gpm' 'icu'
-             'java-environment' 'libxaw' 'ncurses'
+             'java-environment' 'tcl' 'libxaw' 'ncurses'
              'ocaml-ctypes' 'ocaml-findlib' 'speech-dispatcher' 'systemd-libs')
 optdepends=('at-spi2-core: X11/GNOME Apps accessibility'
             'atk: ATK bridge for X11/GNOME accessibility'
             'dracut: initramfs support'
             'espeak-ng: espeak-ng driver'
             'java-runtime: Java support'
+            'tcl: tcl support'
             'libxaw: X11 support'
             'libxt: X11 support'
             'libx11: for xbrlapi'
