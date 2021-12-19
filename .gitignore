@@ -1,0 +1,7 @@
+kotatogram-desktop*
+libvpx
+libyuv
+pipewire
+tg_owt*
+pkg/
+src/
