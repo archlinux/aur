@@ -1,4 +1,4 @@
-_kernel_version=5.14.15-zen-ge9daa0e5f673-dirty
+_kernel_version=5.15.10-zen-gfe60d97e6d84-dirty
 
 _r="\033[00;31m"
 _y="\033[00;33m"
