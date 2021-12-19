@@ -1,13 +1,13 @@
 pkgbase = nincat-git
 	pkgdesc = This a simple script that loads an ASCII art centered in your terminal.
-	pkgver = 5.0
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/ninecath/nincat/
 	arch = any
 	license = GPL3
 	checkdepends = coreutils
-	checkdepends = c-lolcat
 	makedepends = git
+	optdepends = c-lolcat
 	provides = nincat
 	conflicts = nincat
 	source = nincat-git::git+https://github.com/ninecath/nincat/
