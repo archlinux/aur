@@ -1,7 +1,7 @@
 pkgbase = ytcc
 	pkgdesc = Command line tool to keep track of playlists
 	pkgver = 2.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/woefe/ytcc
 	arch = any
 	license = GPL3
