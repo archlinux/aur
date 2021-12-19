@@ -180,8 +180,7 @@ fi
   # allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
-  # remove search extensions (experimental)
-  patch -Np1 -i ${_patches_dir}/search-config.patch
+  cp "${srcdir}/librewolf-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
@@ -230,7 +229,7 @@ fi
   patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
 
   rm -f ${srcdir}/librewolf-common/source_files/mozconfig
-  cp -r ${srcdir}/librewolf-common/source_files/* ./
+  cp -r ${srcdir}/librewolf-common/source_files/browser ./
 }
 
 build() {
