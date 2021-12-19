@@ -1,11 +1,10 @@
 pkgbase = astronaut
 	pkgdesc = A Gemini browser for the terminal.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~adnano/astronaut/
 	arch = x86_64
 	license = GPL3
-	depends = git
 	depends = go
 	depends = scdoc
 	conflicts = astronaut-git
