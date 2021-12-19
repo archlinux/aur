@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-physics
-pkgver=4.2.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Abstract physics interface designed to support simulation and rapid
 development of robot applications."
@@ -11,10 +11,10 @@ license=('Apache')
 depends=('ignition-cmake' 'ignition-math' 'ignition-plugin' 'ignition-common'
          'libdart' 'sdformat')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-physics/archive/${pkgname}4_${pkgver}.tar.gz")
-sha256sums=('3c902441d919542aab5effc2f8a72e05b8e77b8821fe5bde7cc775c36ea009ff')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-physics/archive/${pkgname}5_${pkgver}.tar.gz")
+sha256sums=('8b83eacaaf83196fd3a3ff164cb36a5859d434e359299ecf9259a6d4aebd7280')
 
-_dir="ign-physics-${pkgname}4_${pkgver}"
+_dir="ign-physics-${pkgname}5_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
