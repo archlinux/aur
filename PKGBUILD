@@ -2,7 +2,7 @@
 
 pkgname=man-pages-sr-git
 _gitname=manpages-l10n
-pkgver=r16937.ba3ae0c9d8
+pkgver=r17158.92bb4e7147
 pkgrel=1
 pkgdesc="Serbian man pages (Git version)"
 arch=('any')
