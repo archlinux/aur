@@ -1,0 +1,84 @@
+--- src/GUI-QT/DRMPlot.h	2013-11-11 20:33:44.000000000 +0400
++++ src/GUI-QT/DRMPlot.h	2021-12-19 21:59:25.590485997 +0300
+@@ -58,10 +58,11 @@
+ #include <qwt_plot_layout.h>
+ #include <qwt_plot_marker.h>
+ #include <qwt_plot_picker.h>
+ #include <qwt_scale_draw.h>
+ #include <qwt_symbol.h>
++#include <qwt_text.h>
+ #if QWT_VERSION >= 0x060000
+ # include <qwt_picker_machine.h>
+ #endif
+ 
+ /* Other includes */
+--- src/GUI-QT/DRMPlot.cpp	2013-11-11 20:33:43.000000000 +0400
++++ src/GUI-QT/DRMPlot.cpp	2021-12-19 22:09:50.774375671 +0300
+@@ -567,11 +567,11 @@
+ 			im[i] = veccData[i].imag();
+ 		}
+ 		curve.SETDATA(&r[0], &im[0], size);
+ 	}
+ 	else
+-		curve.SETDATA(NULL, NULL, 0);
++		curve.SETDATA((float *)NULL, (float *)NULL, 0);
+ }
+ 
+ void CDRMPlot::SetData(CVector<_COMPLEX>& veccData)
+ {
+ 	SetData(curve1, veccData);
+@@ -598,19 +598,19 @@
+ 	curve5.detach();
+ 	hcurvegrid.detach();
+ 	vcurvegrid.detach();
+ 	main1curve.detach();
+ 	main2curve.detach();
+-	curve1.SETDATA(NULL, NULL, 0);
+-	curve2.SETDATA(NULL, NULL, 0);
+-	curve3.SETDATA(NULL, NULL, 0);
+-	curve4.SETDATA(NULL, NULL, 0);
+-	curve5.SETDATA(NULL, NULL, 0);
+-	hcurvegrid.SETDATA(NULL, NULL, 0);
+-	vcurvegrid.SETDATA(NULL, NULL, 0);
+-	main1curve.SETDATA(NULL, NULL, 0);
+-	main2curve.SETDATA(NULL, NULL, 0);
++	curve1.SETDATA((float *)NULL, (float *)NULL, 0);
++	curve2.SETDATA((float *)NULL, (float *)NULL, 0);
++	curve3.SETDATA((float *)NULL, (float *)NULL, 0);
++	curve4.SETDATA((float *)NULL, (float *)NULL, 0);
++	curve5.SETDATA((float *)NULL, (float *)NULL, 0);
++	hcurvegrid.SETDATA((float *)NULL, (float *)NULL, 0);
++	vcurvegrid.SETDATA((float *)NULL, (float *)NULL, 0);
++	main1curve.SETDATA((float *)NULL, (float *)NULL, 0);
++	main2curve.SETDATA((float *)NULL, (float *)NULL, 0);
+ #if QWT_VERSION < 0x060000
+ 	curve1.setSymbol(QwtSymbol());
+     curve2.setSymbol(QwtSymbol());
+ 	curve3.setSymbol(QwtSymbol());
+ #else
+@@ -796,11 +796,11 @@
+ 	if (bAudioDecoder)
+ 		plot->setTitle(tr("Audio Spectrum"));
+ 	else
+ 	{
+ 		plot->setTitle(tr("No audio decoding possible"));
+-		main1curve.SETDATA(NULL, NULL, 0);
++		main1curve.SETDATA((float *)NULL, (float *)NULL, 0);
+ 	}
+ 	plot->enableAxis(QwtPlot::yRight, FALSE);
+ 	plot->setAxisTitle(QwtPlot::xBottom, tr("Frequency [kHz]"));
+ 	plot->enableAxis(QwtPlot::yLeft, TRUE);
+ 	plot->setAxisTitle(QwtPlot::yLeft, "AS [dB]");
+@@ -1182,11 +1182,11 @@
+ 		dY[1] = MAX_VAL_INP_SPEC_Y_AXIS_DB;//MIN_VAL_INP_SPEC_Y_AXIS_DB;
+ 
+ 		curve2.SETDATA(dX, dY, 2);
+ 	}
+ 	else
+-		curve2.SETDATA(NULL, NULL, 0);
++		curve2.SETDATA((float *)NULL, (float *)NULL, 0);
+ }
+ 
+ void CDRMPlot::SetupInpSpecWaterf()
+ {
+ 	/* Init chart for waterfall input spectrum */
