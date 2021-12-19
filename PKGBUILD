@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=or-tools
-pkgver=9.1
+pkgver=9.2
 pkgrel=1
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://github.com/google/or-tools"
 license=('Apache')
 depends=('coin-or-cbc' 'protobuf')
 # abseil fixed version since it breaks stuff
-makedepends=('cmake' 'pkgconf' 'git' 'abseil-cpp=20210324.2')
+makedepends=('cmake' 'pkgconf' 'git' 'abseil-cpp=20211102.0')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha256sums=('b51ca3b08f768de5a0c1029f7127264640e50d9c7b83383a175109ef213bd307')
+sha256sums=('5337935ea1fa010bb62cf0fc8bedd6de07dda77bff3db7a0f6a36c84c7bd58db')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -33,7 +33,6 @@ build() {
     make
 }
 
-# https://github.com/google/or-tools/issues/2395
 # for testing also build examples
 # check() {
 #     cd "$pkgname-$pkgver/build"
@@ -44,5 +43,4 @@ package() {
     cmake --build "$pkgname-$pkgver/build" -- DESTDIR="$pkgdir" install
     install -d -m 755 "$pkgdir/usr/share/examples"
     cp -a "$pkgname-$pkgver/examples/cpp" "$pkgdir/usr/share/examples/cpp"
-    rm "$pkgdir"/usr/share/examples/cpp/{BUILD,CMakeLists.txt}
 }
