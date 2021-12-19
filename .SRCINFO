@@ -1,6 +1,6 @@
 pkgbase = python-psaw
 	pkgdesc = Pushshift.io API Wrapper for reddit.com public comment/submission search
-	pkgver = 0.0.12
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/dmarx/psaw
 	arch = any
@@ -9,9 +9,8 @@ pkgbase = python-psaw
 	depends = python
 	depends = python-requests
 	depends = python-click
-	noextract = psaw-0.0.12-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/p/psaw/psaw-0.0.12-py3-none-any.whl
-	sha256sums = cfbfdf1953ee5f31ca9d4ec6d471873ace960da9fbc7234b9d19a059d5cfa2d6
+	noextract = psaw-0.1.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/p/psaw/psaw-0.1.0-py3-none-any.whl
+	sha256sums = 0d62ad9964dfbe9943b2089b25d3e44a7604794491a24a009c4262b2397fed6b
 
 pkgname = python-psaw
-
