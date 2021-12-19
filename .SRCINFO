@@ -1,16 +1,19 @@
 pkgbase = faba-icon-theme
-	pkgdesc = Faba is a sexy and modern icon theme with Tango influences
+	pkgdesc = A sexy and modern FreeDesktop icon set with Tango and elementary influences
 	pkgver = 4.3
-	pkgrel = 2
-	url = https://snwh.org/moka
+	pkgrel = 3
+	url = https://snwh.org/moka/
+	install = faba-icon-theme.install
 	arch = any
-	license = LGPL3
-	license = CCPL
+	license = GPL3
+	license = CCPL:by-sa
 	makedepends = meson
 	depends = gtk-update-icon-cache
+	provides = faba-icon-theme
+	conflicts = faba-icon-theme
+	replaces = faba-icon-theme
 	options = !strip
-	source = faba-icon-theme-4.3.tar.gz::https://github.com/snwh/faba-icon-theme/archive/v4.3.tar.gz
+	source = faba-icon-theme-4.3.tar.gz::https://github.com/snwh/faba-icon-theme/archive/refs/tags/v4.3.tar.gz
 	sha256sums = c87ce7dae8df6b25228297baa1be96cfad06c5c109ff60fedf1f0343bb0196a2
 
 pkgname = faba-icon-theme
-
