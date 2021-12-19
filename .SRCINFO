@@ -1,6 +1,6 @@
 pkgbase = gien
 	pkgdesc = Export Github issue tracker and wiki contents to local email storage
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/2ion/gien
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = gien
 	sha256sums = 8986465917a7a275167b0f6cfe94951e3c8484a850ec29fdba521b25d2ff8fc5
 
 pkgname = gien
-
