@@ -44,7 +44,8 @@ package() {
     done
     # Shell Scripts
     for bin in inpulse-*; do
-        install -v -D -m755 "$bin" "$pkgdir/usr/bin/$bin"
+        echo "=> $bin"
+        install -D -m755 "$bin" "$pkgdir/usr/bin/$bin"
     done
     # Autostart Desktop File
     install -D -m644 contrib/inpulse-to-talk.desktop -t "$pkgdir/etc/xdg/autostart"
