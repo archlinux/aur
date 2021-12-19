@@ -1,5 +1,5 @@
 pkgname=rust-lolcat-git
-pkgver=r37.fcd8034
+pkgver=r54.aeef78a
 pkgrel=1
 pkgdesc="A rust implementation of lolcat"
 arch=('i686' 'x86_64')
