@@ -2,21 +2,13 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
-pkgbase=python-pytorch-rocm
-
-# Flags for building without/with cpu optimizations
-_build_no_opt=1
-_build_opt=1
-
-pkgname=()
-[ "$_build_no_opt" -eq 1 ] && pkgname+=("python-pytorch-rocm")
-[ "$_build_opt" -eq 1 ]    && pkgname+=("python-pytorch-opt-rocm")
-
+pkgname=python-pytorch-rocm
 _pkgname="pytorch"
-pkgver=1.9.0
-_pkgver=1.9.0
+pkgver=1.10.0
+_pkgver=1.10.0
 pkgrel=1
-pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
+_pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
+pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
@@ -49,26 +41,29 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
         "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
+        "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
+        "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
         "${pkgname}-tbb::git+https://github.com/01org/tbb"
-        "${pkgname}-XNNPACK::git+https://github.com/malfet/XNNPACK.git"
+        "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
         "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
         "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
+        "${pkgname}-breakpad::git+https://github.com/driazati/breakpad.git"
         "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
         "${pkgname}-googletest::git+https://github.com/google/googletest.git"
         "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
         "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
+        https://github.com/oneapi-src/oneDNN/commit/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch
+        fix_old_nnapi_lite_interpreter_config.patch
+        fix-jit-frontend-nullptr-deref.patch
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
-        benchmark-gcc11.patch
-        xnnpack-gcc11.patch
-        https://github.com/pytorch/pytorch/commit/c74c0c571880df886474be297c556562e95c00e0.patch
         fix_c10.patch
-        disable_non_x86_64.patch)
+        66219.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -104,17 +99,24 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '7728e99500d8034c837bbbe2b48b780d8563de4e56fff38a96766caad08cce05'
+            '21476edfa61573892a325cb8a91e13f601142e39b34e24e4575d2cdebb063b3f'
+            'c272684a4c747f034163fcfd9dbb7264d5fe821dd25a060f0b791760ad0083ae'
             '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
-            '689c76e89bcf403df1b4cf7ca784381967b6a6527ed6eb6d0ad6681cf789b738'
-            '278fecdb45df065343f51688cc7a1665153b5189f3341a741d546b0b518eac40'
-            '64833e96e47a22f88336381f25fcd73127208dc79e2074398295d88c4596c06a'
-            'ffb13bcd0186f3443a5b576b9fa32791a2ce915222df1d9609bcb0ef789ddd3b'
-            'ba801238afcfc58a35410e54d4ca6a638c447865c0c6b38ed16917fd6d507954'
-            'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
+            '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
+            '4d0d7da4a3fb099ed75f3007559fad04ac96eed87c523b274fb3bb6020e6b9b8'
+            'd86efbe915386989d75d313fc76785e6d9c5638b983f17e98cca32174ac1fcee')
+
+get_pyver () {
+  python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # generated using parse-submodules
   git submodule init
@@ -133,7 +135,7 @@ prepare() {
   git config submodule."third_party/NNPACK_deps/FP16".url "${srcdir}/${pkgname}"-FP16
   git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}/${pkgname}"-psimd
   git config submodule."third_party/zstd".url "${srcdir}/${pkgname}"-zstd
-  git config submodule."third-party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
+  git config submodule."third_party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
   git config submodule."third_party/python-enum".url "${srcdir}/${pkgname}"-enum34
   git config submodule."third_party/python-peachpy".url "${srcdir}/${pkgname}"-PeachPy
   git config submodule."third_party/python-six".url "${srcdir}/${pkgname}"-six
@@ -152,7 +154,10 @@ prepare() {
   git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
   git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
   git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
+  git config submodule."third_party/cudnn_frontend".url "${srcdir}/${pkgname}"-cudnn-frontend
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
+  git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
+  git config submodule."third_party/breakpad".url "${srcdir}/${pkgname}"-breakpad
 
   git submodule update --init --recursive
 
@@ -165,14 +170,23 @@ prepare() {
   # fix https://github.com/pytorch/vision/issues/3695
   patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
 
-  # GCC 11 fixes
-  patch -Np1 -d third_party/benchmark <../benchmark-gcc11.patch
-  patch -Np1 -d third_party/XNNPACK <../xnnpack-gcc11.patch
-
-  # cuda 11.4 fix
-  patch -Np1 <../c74c0c571880df886474be297c556562e95c00e0.patch
   # cuda 11.4.1 fix
   patch -Np1 -i "${srcdir}/fix_c10.patch"
+
+  # https://discuss.pytorch.org/t/about-build-android-sh-lite-and-nnapi/133581
+  patch -Np1 -i "${srcdir}/fix_old_nnapi_lite_interpreter_config.patch"
+
+  # fix nullptr dereference
+  patch -Np1 -i "${srcdir}/fix-jit-frontend-nullptr-deref.patch"
+
+  # disable vec tests
+  sed -e '/set(ATen_VEC_TEST_SRCS ${ATen_VEC_TEST_SRCS} PARENT_SCOPE)/d' -i aten/CMakeLists.txt
+
+  # https://github.com/pytorch/pytorch/issues/67153, https://github.com/pytorch/pytorch/pull/66219
+  patch -Np1 -i "${srcdir}/66219.patch" 
+
+  # fix ideep/mkl-dnn
+  patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch"
 
   # remove local nccl
   rm -rf third_party/nccl/nccl
@@ -182,17 +196,16 @@ prepare() {
   # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
   sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
 
-  cd ..
+  cd "${srcdir}"
 
-  [ "$_build_no_opt" -eq 1 ] && cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
-  [ "$_build_opt" -eq 1 ]    && cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-rocm"
+  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
 
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
   export PYTORCH_BUILD_NUMBER=1
 
   # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
-  export ATEN_NO_TEST=ON
+  export ATEN_NO_TEST=ON # do not build ATen tests
   export USE_MKLDNN=ON
   export BUILD_CUSTOM_PROTOBUF=OFF
   # export BUILD_SHARED_LIBS=OFF
@@ -211,6 +224,8 @@ prepare() {
   export CUDAHOSTCXX=/usr/bin/g++
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
+  # hide buildt-time CUDA devices
+  export CUDA_VISIBLE_DEVICES=""
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
@@ -219,40 +234,21 @@ prepare() {
 }
 
 build() {
-  if [ "$_build_no_opt" -eq 1 ]; then
-    echo "Building with rocm and without non-x86-64 optimizations"
-    export USE_CUDA=0
-    export USE_ROCM=1
-    cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
-    patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
-    echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  echo "Building with rocm and with non-x86-64 optimizations"
+  export USE_CUDA=0
+  export USE_ROCM=1
+  cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
+  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
 
-    # Apply changes needed for ROCm
-    python tools/amd_build/build_amd.py
+  # Apply changes needed for ROCm
+  python tools/amd_build/build_amd.py
 
-    # Fix so amdip64 library ending with a dash
-    python setup.py build --cmake-only
-    sed -E -i 's#opt/rocm/hip/lib/libamdhip64\.so\.[0-9.]+-#opt/rocm/hip/lib/libamdhip64.so#' build/build.ninja
+  # Fix so amdip64 library ending with a dash
+  python setup.py build --cmake-only
+  sed -E -i 's#opt/rocm/hip/lib/libamdhip64\.so\.[0-9.]+-#opt/rocm/hip/lib/libamdhip64.so#' build/build.ninja
 
-    python setup.py build
-  fi
-
-  if [ "$_build_opt" -eq 1 ]; then
-    echo "Building with rocm and with non-x86-64 optimizations"
-    export USE_CUDA=0
-    export USE_ROCM=1
-    cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
-    echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
-
-    # Apply changes needed for ROCm
-    python tools/amd_build/build_amd.py
-
-    # Fix so amdip64 library ending with a dash
-    python setup.py build --cmake-only
-    sed -E -i 's#opt/rocm/hip/lib/libamdhip64\.so\.[0-9.]+-#opt/rocm/hip/lib/libamdhip64.so#' build/build.ninja
-
-    python setup.py build
-  fi
+  # same horrible hack as above
+  python setup.py build
 }
 
 _package() {
@@ -263,7 +259,7 @@ _package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  pytorchpath="usr/lib/python3.9/site-packages/torch"
+  pytorchpath="usr/lib/python${get_pyver}/site-packages/torch"
   install -d "${pkgdir}/usr/lib"
 
   # put CMake files in correct place
@@ -287,22 +283,13 @@ _package() {
 }
 
 package_python-pytorch-rocm() {
-  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCM)"
+  pkgdesc="${_pkgdesc} (with ROCM and AVX2 CPU optimizations)"
   depends+=(rocm rocm-libs miopen)
+  replaces=(python-pytorch-opt-rocm)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
-  _package
-}
-
-package_python-pytorch-opt-rocm() {
-  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm rocm-libs miopen)
-  conflicts=(python-pytorch)
-  provides=(python-pytorch python-pytorch-rocm)
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
   _package
 }
 

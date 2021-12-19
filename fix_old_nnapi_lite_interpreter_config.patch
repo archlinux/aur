@@ -1,0 +1,33 @@
+# Relevant discussion: https://discuss.pytorch.org/t/about-build-android-sh-lite-and-nnapi/133581
+diff --git a/aten/src/ATen/CMakeLists.txt b/aten/src/ATen/CMakeLists.txt
+index baf9666f11..19f9a78443 100644
+--- a/aten/src/ATen/CMakeLists.txt
++++ b/aten/src/ATen/CMakeLists.txt
+@@ -130,7 +130,7 @@ add_subdirectory(quantized)
+ add_subdirectory(nnapi)
+ 
+ if(BUILD_LITE_INTERPRETER)
+-  set(all_cpu_cpp ${generated_cpp} ${core_generated_cpp} ${cpu_kernel_cpp})
++  set(all_cpu_cpp ${generated_cpp} ${core_generated_cpp} ${ATen_NNAPI_SRCS} ${cpu_kernel_cpp})
+   append_filelist("jit_core_sources" all_cpu_cpp)
+   append_filelist("aten_cpu_source_non_codegen_list" all_cpu_cpp)
+   append_filelist("aten_native_source_non_codegen_list" all_cpu_cpp)
+diff --git a/scripts/build_android.sh b/scripts/build_android.sh
+index daad46e8fb..211f5bb429 100755
+--- a/scripts/build_android.sh
++++ b/scripts/build_android.sh
+@@ -147,7 +147,11 @@ if [ "${ANDROID_DEBUG_SYMBOLS:-}" == '1' ]; then
+ fi
+ 
+ if [ -n "${USE_VULKAN}" ]; then
+-  CMAKE_ARGS+=("-DUSE_VULKAN=ON")
++  CMAKE_ARGS+=("-DUSE_VULKAN=${USE_VULKAN}")
++fi
++
++if [ -n "${USE_NNAPI}" ]; then
++  CMAKE_ARGS+=("-DUSE_NNAPI=${USE_NNAPI}")
+ fi
+ 
+ # Use-specified CMake arguments go last to allow overridding defaults
+
+
