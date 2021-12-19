@@ -1,0 +1,15 @@
+pkgbase = g-code-ripper
+	pkgdesc = G-Code Ripper is a g-code reading and manipulation program written in python.
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://scorchworks.com/Gcoderipper/gcoderipper.html
+	arch = any
+	license = GPL
+	depends = python
+	provides = g-code-ripper
+	conflicts = g-code-ripper
+	conflicts = g-code-ripper-git
+	source = https://scorchworks.com/Gcoderipper/G-Code_Ripper-0.22_src.zip
+	sha256sums = 238b653106b1adae5584f1b2c409879418c9d2c4998c65dd90c134b598b43258
+
+pkgname = g-code-ripper
