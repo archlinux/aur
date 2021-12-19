@@ -1,8 +1,8 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=filetovox
-pkgver=1.13
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="Tool for convert files into Magicavoxel file"
 url="https://github.com/Zarbuz/FileToVox"
 license=('MIT')
@@ -10,12 +10,12 @@ arch=('x86_64' 'armv7h' 'aarch64')
 depends=('libgdiplus')
 makedepends=('dotnet-sdk')
 source=("https://github.com/Zarbuz/FileToVox/archive/$pkgver.tar.gz")
-sha256sums=('6b72e73fd97926a244e28ba952a9305679b8a187bd60cad54f9c6abf4524bdf4')
+sha256sums=('187f790398da8b20ccd678eb2285dc9e7860589e5201767d77f24abf5af23b81')
 options=(!strip)
 
 build() {
     cd "$srcdir/FileToVox-$pkgver"
-    export DOTNET_CLI_TELEMETRY_OPTOUT=true
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
     ## Select runtime
     runtime="linux-x64"
     if [ "$CARCH" == "armv7h" ]; then
