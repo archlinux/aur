@@ -3,7 +3,7 @@
 
 pkgname=octave-hg
 epoch=6
-pkgrel=1
+pkgrel=2
 pkgver=8.0.0.r30511.1ec1f93ac16a
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('fftw' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
 	 'gl2ps' 'qhull' 'graphicsmagick' 'mesa' 'julia' 'libsndfile'
 	 'suitesparse' 'qscintilla-qt5' 'termcap' 'qt5-tools'
-	 'qrupdate' 'portaudio')
+	 'qrupdate' 'portaudio' 'glu')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
 	     'fig2dev' 'epstool' 'texlive-core' 'icoutils' 'git')
 optdepends=('texinfo: for help-support in octave'
