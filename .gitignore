@@ -1,0 +1,4 @@
+pkg/
+src/
+foreign-language-text-reader/
+*.pkg.tar.zst
