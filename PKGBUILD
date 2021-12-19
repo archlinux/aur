@@ -3,8 +3,8 @@
 # Contributor: Michael Helmling <michaelhelmling@posteo.de>
 _base=pytaglib
 pkgname=python-${_base}
-pkgver=1.4.6
-pkgrel=6
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Python audio tagging library"
 arch=(x86_64)
 url="https://github.com/supermihi/${_base}"
@@ -13,7 +13,7 @@ depends=(python taglib)
 makedepends=(python-setuptools cython)
 checkdepends=(python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4b438759440790b3c850cf165b553f7e6066bf0064e041cca3e46831046b12a87decd4429772ea0c50e1b27cbbd2c82ba709361bc01aa2e8ec3064458aeae0ff')
+sha512sums=('1be63e285980b140312aa780a56edf59467ad05aa49b3679d4140a856d07950842e9563ae7783010084e6d82c89b8776bbac94101326f67d041faa410f756556')
 
 build() {
   cd "${_base}-${pkgver}"
