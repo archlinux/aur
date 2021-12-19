@@ -1,13 +1,14 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
 pkgbase=git-credential-manager-core
 pkgname=("$pkgbase" "${pkgbase}-extras")
-pkgver=2.0.567
+pkgver=2.0.605
 pkgrel=1
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
 url="https://github.com/microsoft/Git-Credential-Manager-Core"
 license=('MIT')
-makedepends=(git dotnet-sdk dpkg)
+makedepends=(git dotnet-sdk dotnet-runtime dpkg)
+checkdepends=(dotnet-runtime-5.0)
 provides=($pkgname)
 conflicts=("${pkgname}-bin")
 replaces=(git-credential-manager)
