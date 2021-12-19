@@ -2,7 +2,7 @@
 
 pkgname=linux_install-git
 _reponame=linux_install
-pkgver=0.5.6.r0.ge292cbd
+pkgver=v0.5.8.r0.g7f05c8a
 pkgrel=1
 pkgdesc="Install various distros from Linux to any architecture."
 arch=('any')
@@ -30,7 +30,7 @@ prepare() {
 package() {
     cd "$srcdir/$_reponame" || exit 1
     rm -rf "_config.yml" "bin/debootstrap-debian" "custom" "tests" "bin/make_images"
-    for file in TODO README.md CHANGES.md; do
+    for file in TODO README.md CHANGES.md lib/distr/README.md auto_configs/README.md; do
         install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
         rm -rf "$file"
     done
