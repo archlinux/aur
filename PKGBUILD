@@ -9,7 +9,7 @@ url="https://gitlab.com/somini/inpulse-to-talk"
 depends=('libinput' 'pulseaudio-ctl')
 makedepends=('cargo')
 license=('GPL3')
-arch=('any')
+arch=('x86_64')
 source=(
     "$pkgname-$pkgver.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/$pkgver/inpulse-to-talk-$pkgver.tar.gz"
     )
