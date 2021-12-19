@@ -30,9 +30,13 @@ package() {
 
   yes | "./${_executable}" --keep --confirm --nox11 --target "${pkgdir}/opt/${_opt_folder}"
 
-  ln -s "${pkgdir}/opt/${_opt_folder}/qde" "${pkgdir}/usr/bin/qde"
+  chmod a+x "${pkgdir}/opt/${_opt_folder}/qde"
 
+  ln -s "/opt/${_opt_folder}/qde" "${pkgdir}/usr/bin/qde"
+  ln -s "/opt/${_opt_folder}/qde" "${pkgdir}/usr/bin/momentics"
+
+  echo "=== IMPORTANT: run momentics, select Help > Update API Levels ==="
   echo "momentics is located at /opt/${_opt_folder}"
-  echo "start momentics using /usr/bin/qde"
+  echo "start momentics using /usr/bin/qde or /usr/bin/momentics"
 
 }
