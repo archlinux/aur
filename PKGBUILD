@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 # Contributor: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype-libreoffice-extension
-pkgver=3.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Parlatype LibreOffice Extension"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libreoffice' 'parlatype=3.0')
 makedepends=('meson' 'gettext' 'appstream' 'appstream-glib')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4637f8b7e0a33f1a5dba8c78dc143c377cbeab1f3b27ae44da6dffafa0134194')
+sha256sums=('51ec1afb69c6bc0bafa28a2c2799aa75a161653cc22a8b2920c24d881437e618')
 
 build() {
 	cd "$pkgname-$pkgver"
