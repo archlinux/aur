@@ -1,6 +1,6 @@
 pkgbase = kweather
 	pkgdesc = Weather application for Plasma Mobile
-	pkgver = 21.08
+	pkgver = 21.12
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kweather
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = kweather
 	depends = kdbusaddons
 	depends = plasma-framework
 	depends = kweathercore
-	source = https://download.kde.org/stable/plasma-mobile/21.08/kweather-21.08.tar.xz
-	sha256sums = c5c572b38d6e74e15998273fcff9438711b0f6f550fe23908156f3a934973f2c
+	source = https://download.kde.org/stable/plasma-mobile/21.12/kweather-21.12.tar.xz
+	sha256sums = f2e4db4833d4751401075be447261cfc8d5996b55d090144fd79e903678e3b80
 
 pkgname = kweather
