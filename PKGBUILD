@@ -8,7 +8,7 @@ pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
 pkgver=95.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -180,8 +180,9 @@ END
   msg2  "allow SearchEngines option in non-ESR builds"
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
-  msg2  "remove search extensions (experimental)"
-  patch -Np1 -i ${_patches_dir}/search-config.patch
+  #msg2  "remove search extensions (experimental)"
+  #patch -Np1 -i ${_patches_dir}/search-config.patch
+  cp "${srcdir}/cachyos-browser-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   msg2  "stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
@@ -241,7 +242,7 @@ END
   patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
 
   rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
-  cp -r ${srcdir}/cachyos-browser-common/source_files/* ./
+  cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
 }
 
 
