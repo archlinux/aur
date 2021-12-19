@@ -2,7 +2,7 @@ pkgbase = yuicompressor
 	pkgdesc = CSS and Javascript compressor
 	pkgver = 2.4.8
 	pkgrel = 3
-	url = http://developer.yahoo.com/yui/compressor/
+	url = http://yui.github.io/yuicompressor/
 	arch = any
 	license = BSD
 	depends = java-runtime-headless
@@ -14,4 +14,3 @@ pkgbase = yuicompressor
 	sha1sums = 93278e24065a4595d1804eb6ed537258ff94c08c
 
 pkgname = yuicompressor
-
