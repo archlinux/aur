@@ -2,8 +2,8 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=1383.095536f
-pkgrel=3
+pkgver=1435.e5fd7d6
+pkgrel=1
 epoch=1
 pkgdesc="Open Source Spotify client library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
