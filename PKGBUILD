@@ -1,7 +1,7 @@
 
 # Maintaner: Dummerle
 pkgname=rare
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A GUI for legendary, an open source replacement for Epic Games Launcher"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/Dummerle/Rare"
 license=('GPL3')
 groups=()
 depends=("python-wheel" "python-setuptools" "python-pyqt5" "python-qtawesome" "python-requests" "python-psutil" "python-pypresence")
-makedepends=("git" "python-setuptools" "gendesk")
+makedepends=("git" "python-setuptools")
 checkdepends=()
 optdepends=("wine-staging: Run windows games")
 provides=()
