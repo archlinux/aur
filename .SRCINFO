@@ -1,0 +1,20 @@
+pkgbase = throttled-git
+	pkgdesc = Workaround for Intel throttling issues in Linux.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/erpalma/throttled
+	arch = any
+	license = MIT
+	depends = python-dbus
+	depends = python-psutil
+	depends = python-gobject
+	conflicts = lenovo-throttling-fix-git
+	conflicts = lenovo-throttling-fix
+	replaces = lenovo-throttling-fix
+	backup = etc/lenovo_fix.conf
+	source = git+https://github.com/erpalma/throttled.git
+	source = throttled.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = throttled-git
