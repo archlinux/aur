@@ -3,9 +3,9 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='https://assault.cubers.net/'
 license=('ZLIB' 'custom')
 depends=('zlib' 'gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis')
@@ -60,7 +60,7 @@ package_assaultcube-client() {
 	install -dm755 "${pkgdir}/usr/share/games/assaultcube"
 	install -Dm755 "${_srcdir}"/{assaultcube.sh,check_install.sh,install_or_remove_menuitem.sh} \
 		-t "${pkgdir}/usr/share/games/assaultcube"
-	install -Dm755 "${_srcdir}/bin_unix"/*_client -t "${pkgdir}/usr/share/games/assaultcube/bin_unix"
+	install -Dm755 "${_srcdir}/bin_unix"/*_client "${pkgdir}/usr/share/games/assaultcube/bin_unix/native_client"
 	cp -r "${_srcdir}"/{demos,mods,packages} "${pkgdir}/usr/share/games/assaultcube"
 	install -Dm644 "${_srcdir}/packages/misc/icon.png" "${pkgdir}/usr/share/pixmaps/assaultcube.png"
 	install -Dm644 'assaultcube.desktop' "${pkgdir}/usr/share/applications/assaultcube.desktop"
@@ -76,7 +76,7 @@ package_assaultcube-server() {
 	install -dm755 "${pkgdir}/usr/share/games/assaultcube/config"
 	install -Dm644 "${_srcdir}/config/servercmdline.txt" "${pkgdir}/etc/assaultcube/servercmdline.txt"
 	
-	install -Dm755 "${_srcdir}/bin_unix"/*_server -t "${pkgdir}/usr/share/games/assaultcube/bin_unix"
+	install -Dm755 "${_srcdir}/bin_unix"/*_server "${pkgdir}/usr/share/games/assaultcube/bin_unix/native_server"
 	install -Dm755 "${_srcdir}"/{server.sh,server_wizard.sh} -t "${pkgdir}/usr/share/games/assaultcube"
 	
 	install -Dm644 "${_srcdir}/systemd-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/assaultcube.conf"
