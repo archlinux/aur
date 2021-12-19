@@ -1,15 +1,14 @@
 pkgbase = tesseract-data-git
 	pkgdesc = Trained language data for tesseract OCR Engine
-	pkgver = 3.074c372
+	pkgver = 4.1.0.r0.g4767ea9
 	pkgrel = 1
 	url = https://github.com/tesseract-ocr/tessdata
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = tesseract-data-git
 	license = Apache
 	depends = tesseract
 	source = tessdata::git+https://github.com/tesseract-ocr/tessdata.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = tesseract-data-afr-git
 	provides = tesseract-data-afr
@@ -27,13 +26,13 @@ pkgname = tesseract-data-asm-git
 	provides = tesseract-data-asm
 	conflicts = tesseract-data-asm
 
-pkgname = tesseract-data-aze_cyrl-git
-	provides = tesseract-data-aze_cyrl
-	conflicts = tesseract-data-aze_cyrl
-
 pkgname = tesseract-data-aze-git
 	provides = tesseract-data-aze
 	conflicts = tesseract-data-aze
+
+pkgname = tesseract-data-aze_cyrl-git
+	provides = tesseract-data-aze_cyrl
+	conflicts = tesseract-data-aze_cyrl
 
 pkgname = tesseract-data-bel-git
 	provides = tesseract-data-bel
@@ -50,6 +49,10 @@ pkgname = tesseract-data-bod-git
 pkgname = tesseract-data-bos-git
 	provides = tesseract-data-bos
 	conflicts = tesseract-data-bos
+
+pkgname = tesseract-data-bre-git
+	provides = tesseract-data-bre
+	conflicts = tesseract-data-bre
 
 pkgname = tesseract-data-bul-git
 	provides = tesseract-data-bul
@@ -79,25 +82,33 @@ pkgname = tesseract-data-chr-git
 	provides = tesseract-data-chr
 	conflicts = tesseract-data-chr
 
+pkgname = tesseract-data-cos-git
+	provides = tesseract-data-cos
+	conflicts = tesseract-data-cos
+
 pkgname = tesseract-data-cym-git
 	provides = tesseract-data-cym
 	conflicts = tesseract-data-cym
-
-pkgname = tesseract-data-dan_frak-git
-	provides = tesseract-data-dan_frak
-	conflicts = tesseract-data-dan_frak
 
 pkgname = tesseract-data-dan-git
 	provides = tesseract-data-dan
 	conflicts = tesseract-data-dan
 
-pkgname = tesseract-data-deu_frak-git
-	provides = tesseract-data-deu_frak
-	conflicts = tesseract-data-deu_frak
+pkgname = tesseract-data-dan_frak-git
+	provides = tesseract-data-dan_frak
+	conflicts = tesseract-data-dan_frak
 
 pkgname = tesseract-data-deu-git
 	provides = tesseract-data-deu
 	conflicts = tesseract-data-deu
+
+pkgname = tesseract-data-deu_frak-git
+	provides = tesseract-data-deu_frak
+	conflicts = tesseract-data-deu_frak
+
+pkgname = tesseract-data-div-git
+	provides = tesseract-data-div
+	conflicts = tesseract-data-div
 
 pkgname = tesseract-data-dzo-git
 	provides = tesseract-data-dzo
@@ -131,9 +142,17 @@ pkgname = tesseract-data-eus-git
 	provides = tesseract-data-eus
 	conflicts = tesseract-data-eus
 
+pkgname = tesseract-data-fao-git
+	provides = tesseract-data-fao
+	conflicts = tesseract-data-fao
+
 pkgname = tesseract-data-fas-git
 	provides = tesseract-data-fas
 	conflicts = tesseract-data-fas
+
+pkgname = tesseract-data-fil-git
+	provides = tesseract-data-fil
+	conflicts = tesseract-data-fil
 
 pkgname = tesseract-data-fin-git
 	provides = tesseract-data-fin
@@ -150,6 +169,14 @@ pkgname = tesseract-data-frk-git
 pkgname = tesseract-data-frm-git
 	provides = tesseract-data-frm
 	conflicts = tesseract-data-frm
+
+pkgname = tesseract-data-fry-git
+	provides = tesseract-data-fry
+	conflicts = tesseract-data-fry
+
+pkgname = tesseract-data-gla-git
+	provides = tesseract-data-gla
+	conflicts = tesseract-data-gla
 
 pkgname = tesseract-data-gle-git
 	provides = tesseract-data-gle
@@ -187,6 +214,10 @@ pkgname = tesseract-data-hun-git
 	provides = tesseract-data-hun
 	conflicts = tesseract-data-hun
 
+pkgname = tesseract-data-hye-git
+	provides = tesseract-data-hye
+	conflicts = tesseract-data-hye
+
 pkgname = tesseract-data-iku-git
 	provides = tesseract-data-iku
 	conflicts = tesseract-data-iku
@@ -199,13 +230,13 @@ pkgname = tesseract-data-isl-git
 	provides = tesseract-data-isl
 	conflicts = tesseract-data-isl
 
-pkgname = tesseract-data-ita_old-git
-	provides = tesseract-data-ita_old
-	conflicts = tesseract-data-ita_old
-
 pkgname = tesseract-data-ita-git
 	provides = tesseract-data-ita
 	conflicts = tesseract-data-ita
+
+pkgname = tesseract-data-ita_old-git
+	provides = tesseract-data-ita_old
+	conflicts = tesseract-data-ita_old
 
 pkgname = tesseract-data-jav-git
 	provides = tesseract-data-jav
@@ -219,13 +250,13 @@ pkgname = tesseract-data-kan-git
 	provides = tesseract-data-kan
 	conflicts = tesseract-data-kan
 
-pkgname = tesseract-data-kat_old-git
-	provides = tesseract-data-kat_old
-	conflicts = tesseract-data-kat_old
-
 pkgname = tesseract-data-kat-git
 	provides = tesseract-data-kat
 	conflicts = tesseract-data-kat
+
+pkgname = tesseract-data-kat_old-git
+	provides = tesseract-data-kat_old
+	conflicts = tesseract-data-kat_old
 
 pkgname = tesseract-data-kaz-git
 	provides = tesseract-data-kaz
@@ -239,13 +270,17 @@ pkgname = tesseract-data-kir-git
 	provides = tesseract-data-kir
 	conflicts = tesseract-data-kir
 
+pkgname = tesseract-data-kmr-git
+	provides = tesseract-data-kmr
+	conflicts = tesseract-data-kmr
+
 pkgname = tesseract-data-kor-git
 	provides = tesseract-data-kor
 	conflicts = tesseract-data-kor
 
-pkgname = tesseract-data-kur-git
-	provides = tesseract-data-kur
-	conflicts = tesseract-data-kur
+pkgname = tesseract-data-kor_vert-git
+	provides = tesseract-data-kor_vert
+	conflicts = tesseract-data-kor_vert
 
 pkgname = tesseract-data-lao-git
 	provides = tesseract-data-lao
@@ -263,6 +298,10 @@ pkgname = tesseract-data-lit-git
 	provides = tesseract-data-lit
 	conflicts = tesseract-data-lit
 
+pkgname = tesseract-data-ltz-git
+	provides = tesseract-data-ltz
+	conflicts = tesseract-data-ltz
+
 pkgname = tesseract-data-mal-git
 	provides = tesseract-data-mal
 	conflicts = tesseract-data-mal
@@ -278,6 +317,14 @@ pkgname = tesseract-data-mkd-git
 pkgname = tesseract-data-mlt-git
 	provides = tesseract-data-mlt
 	conflicts = tesseract-data-mlt
+
+pkgname = tesseract-data-mon-git
+	provides = tesseract-data-mon
+	conflicts = tesseract-data-mon
+
+pkgname = tesseract-data-mri-git
+	provides = tesseract-data-mri
+	conflicts = tesseract-data-mri
 
 pkgname = tesseract-data-msa-git
 	provides = tesseract-data-msa
@@ -298,6 +345,10 @@ pkgname = tesseract-data-nld-git
 pkgname = tesseract-data-nor-git
 	provides = tesseract-data-nor
 	conflicts = tesseract-data-nor
+
+pkgname = tesseract-data-oci-git
+	provides = tesseract-data-oci
+	conflicts = tesseract-data-oci
 
 pkgname = tesseract-data-ori-git
 	provides = tesseract-data-ori
@@ -323,6 +374,10 @@ pkgname = tesseract-data-pus-git
 	provides = tesseract-data-pus
 	conflicts = tesseract-data-pus
 
+pkgname = tesseract-data-que-git
+	provides = tesseract-data-que
+	conflicts = tesseract-data-que
+
 pkgname = tesseract-data-ron-git
 	provides = tesseract-data-ron
 	conflicts = tesseract-data-ron
@@ -339,37 +394,45 @@ pkgname = tesseract-data-sin-git
 	provides = tesseract-data-sin
 	conflicts = tesseract-data-sin
 
-pkgname = tesseract-data-slk_frak-git
-	provides = tesseract-data-slk_frak
-	conflicts = tesseract-data-slk_frak
-
 pkgname = tesseract-data-slk-git
 	provides = tesseract-data-slk
 	conflicts = tesseract-data-slk
+
+pkgname = tesseract-data-slk_frak-git
+	provides = tesseract-data-slk_frak
+	conflicts = tesseract-data-slk_frak
 
 pkgname = tesseract-data-slv-git
 	provides = tesseract-data-slv
 	conflicts = tesseract-data-slv
 
-pkgname = tesseract-data-spa_old-git
-	provides = tesseract-data-spa_old
-	conflicts = tesseract-data-spa_old
+pkgname = tesseract-data-snd-git
+	provides = tesseract-data-snd
+	conflicts = tesseract-data-snd
 
 pkgname = tesseract-data-spa-git
 	provides = tesseract-data-spa
 	conflicts = tesseract-data-spa
 
+pkgname = tesseract-data-spa_old-git
+	provides = tesseract-data-spa_old
+	conflicts = tesseract-data-spa_old
+
 pkgname = tesseract-data-sqi-git
 	provides = tesseract-data-sqi
 	conflicts = tesseract-data-sqi
+
+pkgname = tesseract-data-srp-git
+	provides = tesseract-data-srp
+	conflicts = tesseract-data-srp
 
 pkgname = tesseract-data-srp_latn-git
 	provides = tesseract-data-srp_latn
 	conflicts = tesseract-data-srp_latn
 
-pkgname = tesseract-data-srp-git
-	provides = tesseract-data-srp
-	conflicts = tesseract-data-srp
+pkgname = tesseract-data-sun-git
+	provides = tesseract-data-sun
+	conflicts = tesseract-data-sun
 
 pkgname = tesseract-data-swa-git
 	provides = tesseract-data-swa
@@ -386,6 +449,10 @@ pkgname = tesseract-data-syr-git
 pkgname = tesseract-data-tam-git
 	provides = tesseract-data-tam
 	conflicts = tesseract-data-tam
+
+pkgname = tesseract-data-tat-git
+	provides = tesseract-data-tat
+	conflicts = tesseract-data-tat
 
 pkgname = tesseract-data-tel-git
 	provides = tesseract-data-tel
@@ -407,6 +474,10 @@ pkgname = tesseract-data-tir-git
 	provides = tesseract-data-tir
 	conflicts = tesseract-data-tir
 
+pkgname = tesseract-data-ton-git
+	provides = tesseract-data-ton
+	conflicts = tesseract-data-ton
+
 pkgname = tesseract-data-tur-git
 	provides = tesseract-data-tur
 	conflicts = tesseract-data-tur
@@ -423,13 +494,13 @@ pkgname = tesseract-data-urd-git
 	provides = tesseract-data-urd
 	conflicts = tesseract-data-urd
 
-pkgname = tesseract-data-uzb_cyrl-git
-	provides = tesseract-data-uzb_cyrl
-	conflicts = tesseract-data-uzb_cyrl
-
 pkgname = tesseract-data-uzb-git
 	provides = tesseract-data-uzb
 	conflicts = tesseract-data-uzb
+
+pkgname = tesseract-data-uzb_cyrl-git
+	provides = tesseract-data-uzb_cyrl
+	conflicts = tesseract-data-uzb_cyrl
 
 pkgname = tesseract-data-vie-git
 	provides = tesseract-data-vie
@@ -439,3 +510,6 @@ pkgname = tesseract-data-yid-git
 	provides = tesseract-data-yid
 	conflicts = tesseract-data-yid
 
+pkgname = tesseract-data-yor-git
+	provides = tesseract-data-yor
+	conflicts = tesseract-data-yor
