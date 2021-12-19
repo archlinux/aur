@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2128
+pkgver=1.7.2143
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -41,7 +41,8 @@ source=(git+https://github.com/PCSX2/pcsx2.git
 git+https://github.com/fmtlib/fmt.git
 git+https://github.com/jbeder/yaml-cpp.git
 git+https://github.com/rtissera/libchdr.git
-git+https://github.com/google/googletest.git)
+git+https://github.com/google/googletest.git
+git+https://github.com/mozilla/cubeb.git)
 sha256sums=(SKIP)
 
 pkgver()
@@ -58,6 +59,7 @@ prepare()
   git config submodule.https://github.com/jbeder/yaml-cpp.git.url yaml-cpp
   git config submodule.https://github.com/rtissera/libchdr.git.url libchdr
   git config submodule.https://github.com/google/googletest.git.url gtest
+  git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
   git submodule update
 
 }
@@ -85,6 +87,7 @@ package()
 
 # vim: ts=2 sw=2 et:
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
