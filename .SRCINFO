@@ -1,0 +1,21 @@
+pkgbase = rpi-clone-git
+	pkgdesc = A respberry backup utility that uses rsync
+	pkgver = 47.82b833c
+	pkgrel = 1
+	url = https://github.com/billw2/rpi-clone
+	arch = any
+	license = UNKNOWN
+	makedepends = git
+	depends = bsdmainutils
+	depends = dosfstools
+	depends = parted
+	depends = rsync
+	depends = util-linux
+	provides = rpi-clone
+	provides = rpi-clone-setup
+	conflicts = rpi-clone
+	conflicts = rpi-clone-setup
+	source = rpi-clone::git+git://github.com/billw2/rpi-clone.git
+	md5sums = SKIP
+
+pkgname = rpi-clone-git
