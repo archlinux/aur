@@ -19,8 +19,8 @@ _merge_requests_to_use=('1862')
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=41.1
-pkgrel=2
+pkgver=41.2
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
