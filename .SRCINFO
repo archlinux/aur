@@ -1,0 +1,15 @@
+pkgbase = graphite-kde-theme-git
+	pkgdesc = Graphite kde theme
+	pkgver = 2021.12.19.r0.g6e48d7d
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Graphite-kde-theme
+	arch = any
+	license = GPL2
+	makedepends = git
+	provides = graphite-kde-theme
+	conflicts = graphite-kde-theme
+	options = !strip
+	source = git+https://github.com/vinceliuice/Graphite-kde-theme.git
+	sha256sums = SKIP
+
+pkgname = graphite-kde-theme-git
