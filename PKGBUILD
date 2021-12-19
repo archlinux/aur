@@ -35,6 +35,7 @@
 # =================================================
 
 ################################################################################
+
 USE_ALL_CPU_CORES="YES" # Do you want to use all CPU cores?
 
 CHECK=            # Run tests. May fail, this is developement after all.
@@ -74,7 +75,7 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # Xft, if you choose no toolkit or Lucid.
                   #
                
-ALSA="YES"             # Linux sound support.
+ALSA="YES"        # Linux sound support.
 
 NOCAIRO=          # Disable here. 
                
@@ -93,7 +94,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-native-comp-git-enhanced"
 fi
-pkgver=29.0.50.152957
+pkgver=29.0.50.152995
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -127,10 +128,12 @@ elif [[ $GOLD == "YES" && $CLANG == "YES" ]]; then
 fi
 
 if [[ $MOLD == "YES" && ! $CLANG == "YES" ]]; then
-  echo "";
-  echo "I don't recommend use mold with gcc...";
-  echo "";
-  exit 1;
+  # Make sure mold is available in /usr/bin/mold, or
+  # you could specify another path to mold.
+  ln -s /usr/bin/mold ./ld
+  export LD=/usr/bin/mold
+  export CFLAGS+=" -B.";
+  export CXXFLAGS+=" -B."; 
 elif [[ $MOLD == "YES" && $CLANG == "YES" ]]; then
   export LD=/usr/bin/mold
   export CFLAGS+=" --ld-path=/usr/bin/mold";
@@ -144,16 +147,11 @@ if [[ $CLANG == "YES" ]]; then
   export LD="/usr/bin/lld" ;
   export AR="/usr/bin/llvm-ar" ;
   export AS="/usr/bin/llvm-as" ;
-if [[ $MOLD == "YES" ]]; then
-  export LD=/usr/bin/mold
-  export CFLAGS+=" --ld-path=/usr/bin/mold";
-  export CXXFLAGS+=" --ld-path=/usr/bin/mold";
-  makedepends+=( 'clang' 'mold' 'llvm') ;
-else
+  makedepends+=( 'clang' 'lld' 'llvm') ;
+  if [[ ! $MOLD == "YES" ]]; then
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
-  makedepends+=( 'clang' 'lld' 'llvm') ;
-fi
+  fi
 fi
 
 if [[ $JIT == "YES" ]]; then

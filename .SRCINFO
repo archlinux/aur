@@ -1,6 +1,6 @@
 pkgbase = emacs-native-comp-git-enhanced
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 29.0.50.152957
+	pkgver = 29.0.50.152995
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -8,7 +8,7 @@ pkgbase = emacs-native-comp-git-enhanced
 	license = GPL3
 	makedepends = git
 	makedepends = clang
-	makedepends = mold
+	makedepends = lld
 	makedepends = llvm
 	makedepends = xorgproto
 	depends = gnutls
