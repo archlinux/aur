@@ -5,19 +5,16 @@ _pkgname=qhue
 pkgbase=python-qhue
 pkgname='python-qhue'
 pkgdesc='A very lightweight Python wrapper to the Philips Hue API'
-pkgver=1.0.12
+pkgver=2.0.1
 pkgrel=1
 arch=('any')
 url='https://github.com/quentinsf/qhue'
 license=('GPL2')
-depends=('python' 'python-requests')
+depends=('python' 'python-requests' 'python-requests-oauthlib')
 makedepends=('python-setuptools')
 optdepends=('python-yaml: debug print API responses')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quentinsf/${_pkgname}/archive/${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/quentinsf/${_pkgname}/releases/download/${pkgver}/qhue-${pkgver}.tar.gz.asc")
-sha512sums=('11ea0f9853dd0e26ecae0d6bd22b45f68ba1b19e6bd01379b2a2c67fd80bd1c4f5db9a34d988248b6111b3ea5bba71eddcc5a8390aea16a09e05c4b749a019d0'
-            'SKIP')
-validpgpkeys=('36F2083F293ED4FD83847B8309328E8BF9464B5F')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quentinsf/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('bc35fd6388e1613e67af3c034bbfef6196fc0187d9c6d85aac924776c0e08dcd636f5bcc4ee46b3e429795e68843bd5145eb6e4978c3c84617ad851ce4a11a2d')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
