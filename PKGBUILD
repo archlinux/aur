@@ -1,7 +1,7 @@
 # Maintainer: Marat Bakeev <hawara@gmail.com>
 pkgname=pg_auto_failover
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="extension and service for PostgreSQL that monitors and manages automated failover for a Postgres cluster."
 arch=('x86_64')
 url="https://github.com/citusdata/pg_auto_failover"

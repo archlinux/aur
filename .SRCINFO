@@ -1,10 +1,12 @@
 pkgbase = pg_auto_failover
 	pkgdesc = extension and service for PostgreSQL that monitors and manages automated failover for a Postgres cluster.
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/citusdata/pg_auto_failover
 	arch = x86_64
 	license = custom:PostgreSQL License
+	makedepends = clang
+	makedepends = llvm
 	depends = postgresql
 	depends = ncurses
 	depends = openssl
