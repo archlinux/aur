@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-useless-gaps-git
+	pkgdesc = Useless Gaps is a GNOME Shell Extension which for aesthetic purposes adds 'useless gaps' around windows.
+	pkgver = r6.4bf7716
+	pkgrel = 1
+	url = https://github.com/mipmip/gnome-shell-extensions-useless-gaps
+	install = gnome-shell-extension-useless-gaps.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = glib2
+	makedepends = gettext
+	depends = gnome-shell>=40
+	provides = gnome-shell-extension-useless-gaps
+	conflicts = gnome-shell-extension-useless-gaps
+	source = gnome-shell-extension-useless-gaps::git+https://github.com/mipmip/gnome-shell-extensions-useless-gaps.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-useless-gaps-git
