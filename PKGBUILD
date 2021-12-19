@@ -2,7 +2,7 @@
 
 _name=sinfo
 pkgname=python-$_name
-pkgver=0.3.1
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='outputs version information for modules loaded in the current session, Python, and the OS.'
 arch=(any)
@@ -11,7 +11,7 @@ license=(BSD)
 depends=(python python-stdlib-list)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e1b2358808aded7b2ff00ea0cd4e6a2d978fb2a44ee9b15ac23d64a81bf62706')
+sha256sums=('81ea91c69a875de178e10bada9476d7300a1f712e1823dbd7714f43a10baba4d')
 
 package() {
 	cd "$srcdir/${_name//-/_}-$pkgver"

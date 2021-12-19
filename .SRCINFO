@@ -1,6 +1,6 @@
 pkgbase = python-sinfo
 	pkgdesc = outputs version information for modules loaded in the current session, Python, and the OS.
-	pkgver = 0.3.1
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://gitlab.com/joelostblom/sinfo
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-sinfo
 	makedepends = python-setuptools
 	depends = python
 	depends = python-stdlib-list
-	source = https://files.pythonhosted.org/packages/source/s/sinfo/sinfo-0.3.1.tar.gz
-	sha256sums = e1b2358808aded7b2ff00ea0cd4e6a2d978fb2a44ee9b15ac23d64a81bf62706
+	source = https://files.pythonhosted.org/packages/source/s/sinfo/sinfo-0.3.4.tar.gz
+	sha256sums = 81ea91c69a875de178e10bada9476d7300a1f712e1823dbd7714f43a10baba4d
 
 pkgname = python-sinfo
-
