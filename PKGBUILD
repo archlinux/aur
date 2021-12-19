@@ -1,10 +1,10 @@
 # Maintainer: BeyondMagic <koetemagie@gmail.com>
 pkgname=nincat-git
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
-pkgdesc="This a simple script that loads an ASCII art centered in your terminal."
+pkgdesc="This a simple, lightweight and fast script that loads an ASCII art that fits on your terminal."
 arch=(any)
-url="https://github.com/ninecath/nincat/"
+url="https://github.com/ninecath/nincat"
 license=('GPL3')
 makedepends=(git)
 checkdepends=(coreutils)
