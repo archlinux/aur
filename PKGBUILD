@@ -1,6 +1,6 @@
 pkgname=hostapd-wpe
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modified hostapd to facilitate AP impersonation attacks"
 arch=('i686' 'x86_64')
 url="https://w1.fi/hostapd"
