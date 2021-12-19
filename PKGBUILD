@@ -2,7 +2,7 @@
 
 pkgname=man-pages-da-git
 _gitname=manpages-l10n
-pkgver=r16937.ba3ae0c9d8
+pkgver=r17155.64caf13de2
 pkgrel=1
 pkgdesc="Danish man pages (Git version)"
 arch=('any')
