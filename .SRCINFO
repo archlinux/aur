@@ -1,5 +1,5 @@
 pkgbase = streamrecorder
-	pkgdesc = Simple web viewer and recorder
+	pkgdesc = Simple stream viewer and recorder
 	pkgver = 1.36
 	pkgrel = 1
 	url = https://github.com/sc44/Stream-Recorder
