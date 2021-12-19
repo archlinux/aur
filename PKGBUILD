@@ -43,14 +43,9 @@ CLANG="YES"       # Use clang.
 
 GOLD=             # Use the gold linker.
 
-LTO="YES"         # Enable link-time optimization. Still experimental.
-                  # This compiles only performance critical elisp files.
-                  #
-                  # To compile all elisp on demand, add
-                  #    (setq comp-deferred-compilation t)
-                  # to your .emacs file.
+LTO=              # Enable link-time optimization. Still experimental.
 
-MOLD="MOLD"       # Use the mold linker.
+MOLD="YES"        # Use the mold linker.
 
 JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   # This compiles only performance critical elisp files.
