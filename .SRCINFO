@@ -5,20 +5,19 @@ pkgbase = python-scvelo
 	url = https://github.com/theislab/scvelo
 	arch = any
 	license = BSD
-	depends = scanpy>=1.3.3
-	depends = python-anndata>=0.6.18
-	depends = python-numpy>=1.14
-	depends = python-pandas>=0.23.0
-	depends = python-matplotlib>=2.2
-	depends = python-umap-learn>=0.3.0
+	depends = python-typing_extensions
+	depends = python-anndata>=0.7.5
+	depends = scanpy>=1.5
 	depends = python-loompy>=2.0.12
-	depends = python-scipy>=1.0
+	depends = python-umap-learn>=0.3.10
+	depends = python-numba>=1.41.0
+	depends = python-numpy>=1.17
+	depends = python-scipy>=1.4.1
+	depends = python-pandas>=0.23.0
 	depends = python-scikit-learn>=0.21.2
-	depends = python-joblib
-	depends = python-setuptools
+	depends = python-matplotlib>=3.3.0
 	noextract = scvelo-0.1.25-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/s/scvelo/scvelo-0.1.25-py3-none-any.whl
 	sha256sums = 300b9eb8dcfc123960954659f8c0221b55772bc9c5e103411397217e5d2e3b6c
 
 pkgname = python-scvelo
-

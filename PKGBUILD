@@ -9,17 +9,17 @@ arch=(any)
 url="https://github.com/theislab/$_name"
 license=(BSD)
 depends=(
-	'scanpy>=1.3.3'
-	'python-anndata>=0.6.18'
-	'python-numpy>=1.14'
-	'python-pandas>=0.23.0'
-	'python-matplotlib>=2.2'
-	'python-umap-learn>=0.3.0'
+	python-typing_extensions
+	'python-anndata>=0.7.5'
+	'scanpy>=1.5'
 	'python-loompy>=2.0.12'
-	'python-scipy>=1.0'
+	'python-umap-learn>=0.3.10'
+	'python-numba>=1.41.0'
+	'python-numpy>=1.17'
+	'python-scipy>=1.4.1'
+	'python-pandas>=0.23.0'
 	'python-scikit-learn>=0.21.2'
-	'python-joblib'
-	'python-setuptools'
+	'python-matplotlib>=3.3.0'
 )
 _pyarch=py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
