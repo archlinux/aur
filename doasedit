@@ -9,6 +9,9 @@
 EDITOR=${EDITOR:-vi}
 doasediting_file="/tmp/doasediting"
 
+fileperms=""
+anyreadperm=""
+
 ERR() {
     echo -e 'doasedit: '"$1";
     exit 1
