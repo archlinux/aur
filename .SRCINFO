@@ -1,12 +1,12 @@
 pkgbase = fcitx5-pinyin-moegirl-rime
 	pkgdesc = Fcitx 5 Pinyin Dictionary from moegirl.org wiki for rime
-	pkgver = 20211116
-	pkgrel = 2
+	pkgver = 20211214
+	pkgrel = 3
 	url = https://github.com/outloudvi/mw2fcitx
 	arch = any
 	license = Unlicense 
         license = cc-by-nc-sa-3.0
-	source = https://github.com/outloudvi/mw2fcitx/releases/download/20211116/moegirl.dict.yaml
-	md5sums = 1a33799f53cd8162bcc24bfd08a3163d
+	source = https://github.com/outloudvi/mw2fcitx/releases/download/20211214/moegirl.dict.yaml
+	md5sums = 9ce05f74eb157426b8dde6b5d5b10402
 
 pkgname = fcitx5-pinyin-moegirl-rime
