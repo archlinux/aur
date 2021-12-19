@@ -2,7 +2,7 @@
 # Maintainer: So1ar <so1ar114514@gmail.com>
 
 pkgname=hmcl-bin
-pkgver=3.5.0.213
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
@@ -14,13 +14,13 @@ conflicts=('hmcl')
 source=("hmcl.desktop"
         "hmcl-launch-script"
         "craft_table.png"
-        "https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE"
-        "${pkgname}-${pkgver}-${pkgrel}.jar::https://ci.huangyuhui.net/job/HMCL/lastSuccessfulBuild/artifact/HMCL/build/libs/HMCL-${pkgver}.jar")
+        "LICENCE::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE"
+        "${pkgname}-${pkgver}-${pkgrel}.jar::https://cdn.jsdelivr.net/npm/hmcl-update-stable@${pkgver}/HMCL-${pkgver}.zip")
 sha1sums=('613a2483883028a52b369c27c1468fc8d31e2d5e'
           'ff8a9141b115ea7788111ce28cc462c8fd46c471'
           '635509ef81b82837fcd1f7d4b24a7d44241559c2'
           '31a3d460bb3c7d98845187c716a30db81c44b615'
-          '6942b8c6d33b78506f85c4a4eccee32db1606acd')
+          'edbc3ed9475e8b5836274d955e57cdf8879e1d6d')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
