@@ -1,9 +1,9 @@
 pkgbase = zsxd
-	pkgdesc = The Legend of Zelda XD: Mystery of Solarus - Parodic fangame
+	pkgdesc = Zelda: Mystery of Solarus XD - an open-source parodic fangame
 	pkgver = 1.12.2
-	pkgrel = 3
-	url = http://www.zelda-solarus.com/
-	changelog = zsxd.changelog
+	pkgrel = 4
+	url = https://https://www.solarus-games.org/en/games/the-legend-of-zelda-mystery-of-solarus-xd
+	changelog = zsxd.changelog.md
 	arch = any
 	license = GPL3
 	license = custom
@@ -14,4 +14,3 @@ pkgbase = zsxd
 	b2sums = 1cba628a427cae10e0b08498690b95ef5a60f62531b1b4c7635ccbd561201ff54511b5c32e8e5e3251625e08276466ef2faa81f62eb2b67669cc001b00b7f215
 
 pkgname = zsxd
-
