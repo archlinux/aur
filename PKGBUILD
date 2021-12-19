@@ -1,16 +1,17 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname="python-monero"
 _projname="monero-python"
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='A comprehensive Python module for handling Monero cryptocurrency'
 license=('BSD')
 arch=('any')
 url='https://github.com/monero-ecosystem/monero-python'
 makedepends=('python' 'python-distribute')
-depends=('python' 'python-requests' 'python-pycryptodomex' 'python-six')
+depends=('python' 'python-requests' 'python-pycryptodomex' 'python-six' 'python-ipaddress'
+        'python-varint')
 source=("https://github.com/emesik/${_projname}/archive/v${pkgver}.tar.gz")
-md5sums=('31805c33548e0e683057bf78b842560c')
+md5sums=('c707259870ad36b36be4b2bb2975ebcb')
 
 build() {
   cd "${srcdir}/${_projname}-${pkgver}"
