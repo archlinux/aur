@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-gazebo
-pkgver=5.1.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Open source robotics simulator."
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-tools' 'ignition-transport' 'ignition-gui' 'ignition-msgs'
          'sdformat' 'ignition-fuel_tools' 'ignition-sensors')
 makedepends=('cmake' 'ruby-ronn' 'doxygen')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gazebo/archive/${pkgname}5_${pkgver}.tar.gz")
-sha256sums=('74a093b93c6d9e4276ac5139ff5234800a604bff580f7c09bcd008646b8f02c9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gazebo/archive/${pkgname}6_${pkgver}.tar.gz")
+sha256sums=('17d16e7f43a67f050f5f94b3aeca04626c843c2351fb6928a187cf85f0afb7c8')
 
-_dir="ign-gazebo-${pkgname}5_${pkgver}"
+_dir="ign-gazebo-${pkgname}6_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
