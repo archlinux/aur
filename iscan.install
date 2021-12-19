@@ -1,0 +1,5 @@
+post_install() {
+  echo "==> In order to use the scanner most probably you have to install a specific"
+  echo "==> firmware for your device. See: https://wiki.archlinux.org/index.php/Sane"
+}
+
