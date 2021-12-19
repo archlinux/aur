@@ -1,6 +1,8 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Aleksandar Trifunovic akstrfn gmail.com
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
+
 pkgname=libosmium
-pkgver=2.17.1
+pkgver=2.17.2
 pkgrel=1
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="https://osmcode.org/libosmium/"
@@ -17,6 +19,7 @@ optdepends=('sparsehash: sparse-mem-table index map'
 conflicts=('libosmium-git')
 provides=('libosmium')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osmcode/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f30e37c28f37ca3857b8107a12e6d138a0719831eca52a836692909801c8b0bd')
 
 build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
@@ -40,4 +43,3 @@ package() {
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('6faa7952aa1210dcd9ae4ef83e7653a4f8eb880e6a4e5b37f87a5d4835f6327b')
