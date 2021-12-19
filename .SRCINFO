@@ -1,0 +1,20 @@
+pkgbase = streamrecorder
+	pkgdesc = Simple web viewer and recorder
+	pkgver = 1.36
+	pkgrel = 1
+	url = https://github.com/sc44/Stream-Recorder
+	arch = any
+	license = GPL3
+	depends = python
+	depends = tk
+	depends = ffmpeg
+	optdepends = mpv
+	optdepends = smplayer
+	optdepends = vlc
+	optdepends = celluloid
+	optdepends = mplayer
+	optdepends = gnome-mplayer
+	source = https://github.com/sc44/Stream-Recorder/archive/refs/tags/1.36.tar.gz
+	sha256sums = e3d5642c40245bb2c88c8800a1400ed682c4d79c58b66f4027c995d8a8bbc262
+
+pkgname = streamrecorder
