@@ -1,6 +1,6 @@
 pkgbase = qdre-git
-	pkgdesc = Qt Desktop Regular Environment (early development)
-	pkgver = cd3e93a
+	pkgdesc = Contains lightweight X11 compositor and image viewer
+	pkgver = 0.0.0.r55.gfdcd2eb
 	pkgrel = 1
 	url = https://gitlab.com/zaps166/qdre
 	arch = x86_64

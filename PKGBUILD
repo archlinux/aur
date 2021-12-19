@@ -1,9 +1,9 @@
 # Maintainer: zaps166 <spaz16 at wp dot pl>
 
 pkgname=qdre-git
-pkgver=cd3e93a
+pkgver=0.0.0.r55.gfdcd2eb
 pkgrel=1
-pkgdesc='Qt Desktop Regular Environment (early development)'
+pkgdesc='Contains lightweight X11 compositor and image viewer'
 arch=('x86_64')
 url='https://gitlab.com/zaps166/qdre'
 license=('MIT')
@@ -21,7 +21,7 @@ prepare() {
 
 pkgver() {
     cd qdre
-    git rev-parse --short HEAD
+    echo -n "0.0.0.r$(git rev-list --all --count).g$(git rev-parse --short HEAD)"
 }
 
 build() {
