@@ -1,6 +1,6 @@
 #Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=sdformat
-pkgver=11.3.0
+pkgver=12.3.0
 pkgrel=1
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
@@ -8,10 +8,10 @@ url="http://sdformat.org/"
 license=('Apache')
 depends=('boost' 'tinyxml2' 'ignition-math>=6' 'python-psutil' 'urdfdom')
 makedepends=('cmake' 'doxygen' 'ignition-cmake' 'ignition-utils' 'ignition-tools' 'ruby')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/${pkgname}/archive/${pkgname}11_${pkgver}.tar.gz")
-sha256sums=('7b4ea8b865b5d3befbd754ea55195f162469100e991c98d69d94f54fb99613e0')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/${pkgname}/archive/${pkgname}12_${pkgver}.tar.gz")
+sha256sums=('3e0ec16fcc261e08ff6b9bb751bfab3da56636ae95135cd5b88efb59bf8042ab')
 
-_dir="sdformat-${pkgname}11_${pkgver}"
+_dir="sdformat-${pkgname}12_${pkgver}"
 
 build() {
   cd "${srcdir}/${_dir}"
