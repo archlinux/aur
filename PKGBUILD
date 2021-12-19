@@ -1,7 +1,7 @@
 # Maintainer: iohzrd <iohzrd at gmail dot com>
 
 pkgname=packetcrypt
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="PacketCrypt implementation in Rust (Github binary release)"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=()
 provides=("packetcrypt")
 conflicts=("packetcrypt")
 source=("https://github.com/cjdelisle/packetcrypt_rs/releases/download/packetcrypt-v${pkgver}/packetcrypt-v${pkgver}-linux_amd64")
-sha256sums=("a7dfcf8e081e25ff6cfdb4d8bf0ddb686cc00979a313d80cb9acbe1b40ec1881")
+sha256sums=("53443070472d8677b34251a910c9a51d9b49a8a77b534411f09dbc3bd0780f7a")
 
 package() {
 	mkdir -p "$pkgdir"/usr/bin
