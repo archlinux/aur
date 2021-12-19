@@ -1,6 +1,6 @@
 pkgbase = toru
 	pkgdesc = Pacman wrapper with AUR support.
-	pkgver = 0.7.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/PryosCode/toru
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = toru
 	depends = sudo
 	depends = texinfo
 	depends = which
-	source = https://github.com/PryosCode/toru/archive/refs/tags/v0.7.0.tar.gz
+	source = https://github.com/PryosCode/toru/archive/refs/tags/v1.0.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = toru

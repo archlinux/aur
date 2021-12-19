@@ -1,6 +1,6 @@
 # Maintainer: PryosCode <info@pryoscode.net>
 pkgname="toru"
-pkgver="0.7.0"
+pkgver="1.0.0"
 pkgrel="1"
 pkgdesc="Pacman wrapper with AUR support."
 arch=("x86_64")
