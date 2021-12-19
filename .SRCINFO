@@ -1,7 +1,7 @@
 pkgbase = kallisto
 	pkgdesc = Quantify abundances of transcripts from RNA-Seq data
 	pkgver = 0.46.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pachterlab.github.io/kallisto/
 	arch = i686
 	arch = x86_64
