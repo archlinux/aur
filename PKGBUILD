@@ -6,7 +6,7 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=firebase-tools
-pkgver=9.23.2
+pkgver=9.23.3
 pkgrel=1
 pkgdesc="The Firebase Command Line Tools"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
 )
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('287bd1477c908411e53937788c978faf99849d42ff90f34a066089a94a06eb3c')
+sha256sums=('b0e35bc671423735e18c1725675b63928e9274edebfd61ff46f3d5b3138c9fea')
 
 package() {
   # We throw away output here to keep the build quieter; if issues are
