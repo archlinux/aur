@@ -1,6 +1,6 @@
 # Maintainer: James Hendrie <hendrie.james@gmail.com>
 pkgname=qytdl
-pkgver=1.4
+pkgver=1.41
 pkgrel=1
 epoch=
 pkgdesc="Basic PyQt5 frontend to Youtube-DL"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("http://www.someplacedumb.net/content/progs/$pkgname/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('3345e1fe32779df48a162ff57267b650')
+md5sums=('c4e18a3f0a364f3dc08041941839bb55')
 validpgpkeys=()
 
 package() {
