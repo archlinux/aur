@@ -15,6 +15,7 @@ optdepends=("gtk-engine-murrine")
 makedepends=("git" "sassc")
 source=("git+${url}.git")
 sha256sums=('SKIP')
+options=(!strip)
 
 pkgver(){
     cd "${srcdir}/${_reponame}"
