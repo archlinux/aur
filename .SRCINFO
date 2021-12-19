@@ -1,7 +1,7 @@
 pkgbase = ntfsprogs-ntfs3
 	pkgdesc = NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15
 	pkgver = 2021.8.22
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.tuxera.com/community/open-source-ntfs-3g/
 	arch = x86_64
 	license = GPL2
