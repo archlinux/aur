@@ -2,7 +2,7 @@
 
 pkgname=cpu_rec
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tool that recognizes cpu instructions in an arbitrary binary file. It can be used as a standalone tool, or as a plugin for binwalk"
 arch=('any')
 url='https://github.com/airbus-seclab/cpu_rec'
@@ -18,6 +18,7 @@ b2sums=('8dddb88c8a5166e4d64f38b7cdde12024e21efa652fc59987d3e26bebf4ee9884587622
 package() {
     install -Dm755 -t "${pkgdir}/usr/bin/" "${srcdir}/cpu_rec"
     cd "${pkgname}-${pkgver}"
+    sed -i 's/modulo is 4/modulo == 4/'  cpu_rec.py   # patch a wrong test syntax
     install -Dm755 -t "${pkgdir}/usr/share/${pkgname}/" "cpu_rec.py"
     for file in cpu_rec_corpus/*.xz
     do

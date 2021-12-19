@@ -1,7 +1,7 @@
 pkgbase = cpu_rec
 	pkgdesc = tool that recognizes cpu instructions in an arbitrary binary file. It can be used as a standalone tool, or as a plugin for binwalk
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/airbus-seclab/cpu_rec
 	arch = any
 	license = Apache 2.0
