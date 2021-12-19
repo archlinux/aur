@@ -1,7 +1,7 @@
 pkgbase = gxml
 	pkgdesc = GObject-based XML parser and writer library
-	pkgver = 0.18.2
-	pkgrel = 2
+	pkgver = 0.20.1
+	pkgrel = 1
 	url = https://wiki.gnome.org/GXml
 	arch = x86_64
 	license = LGPL
@@ -11,8 +11,7 @@ pkgbase = gxml
 	depends = glib2
 	depends = libgee
 	depends = libxml2
-	provides = libgxml-0.18.so=2.0.2-64
-	source = https://download.gnome.org/sources/gxml/0.18/gxml-0.18.2.tar.xz
-	sha256sums = fbe078b9a56dee1719ef266c6cc6f0c4191371294572c4d67304c828012fe19d
+	source = https://gitlab.gnome.org/GNOME/gxml/-/archive/0.20.1/gxml-0.20.1.tar.gz
+	sha256sums = a047e71b19a5eb159b8ffb4e0a944abf7a07544ad30a42eda9c71b410c3a8a19
 
 pkgname = gxml

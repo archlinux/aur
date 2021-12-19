@@ -1,19 +1,18 @@
-# Maintainer:
+# Maintainer: Fernando Fernández <fernando at softwareperonista dot com dot ar>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Balló György
 # Contributor: Artem Vorotnikov <artem at vorotnikov dot me>
 pkgname=gxml
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.20.1
+pkgrel=1
 pkgdesc="GObject-based XML parser and writer library"
 arch=('x86_64')
 url="https://wiki.gnome.org/GXml"
 license=('LGPL')
 depends=('glib2' 'libgee' 'libxml2')
-provides=('libgxml-0.18.so=2.0.2-64')
 makedepends=('gobject-introspection' 'meson' 'vala')
-source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
-sha256sums=('fbe078b9a56dee1719ef266c6cc6f0c4191371294572c4d67304c828012fe19d')
+source=("https://gitlab.gnome.org/GNOME/${pkgname}/-/archive/${pkgver}/gxml-${pkgver}.tar.gz")
+sha256sums=('a047e71b19a5eb159b8ffb4e0a944abf7a07544ad30a42eda9c71b410c3a8a19')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
