@@ -1,16 +1,17 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=python-tikzplotlib-git
 pkgver=0.9.16.r2.g1e30229
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert matplotlib figures into TikZ/PGFPlots"
 url="https://github.com/nschloe/tikzplotlib"
 makedepends=(python-build)
 depends=(python python-matplotlib python-numpy python-pillow)
-replaces=('python-matplotlib2tikz')
-conflicts=('python-matplotlib2tikz')
-license=('MIT')
-arch=('any')
-source=("tikzplotlib::git+https://github.com/nschloe/tikzplotlib.git")
+provides=("python-tikzplotlib=$pkgver")
+replaces=(python-matplotlib2tikz)
+conflicts=(python-matplotlib2tikz)
+license=(MIT)
+arch=(any)
+source=("tikzplotlib::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
