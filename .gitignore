@@ -1,4 +1,4 @@
-pkg
-src
-cinny-web
-*.pkg.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
