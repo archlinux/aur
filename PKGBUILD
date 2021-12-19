@@ -1,8 +1,8 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=tidal-hifi
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -11,7 +11,7 @@ depends=(libxss nss gtk3)
 makedepends=(nodejs-lts-gallium npm)
 source=("${pkgname}-${pkgver}.zip::https://github.com/Mastermindzh/tidal-hifi/archive/${pkgver}.zip"
         "tidal-hifi.desktop")
-md5sums=('a40f46926fc1e787b6dce836402a1c76'
+md5sums=('d92e9da27d68da00665f4757bd1bc091'
         '234e31f93ccbdeb67f425165efe9e938')
 
 prepare() {
