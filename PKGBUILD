@@ -39,7 +39,7 @@ fi
 
 pkgbase=linux-mt
 _major=5.15
-_minor=7
+_minor=10
 pkgver=${_major}.${_minor}
 _branch=5.x
 pkgrel=2
@@ -76,11 +76,11 @@ validpgpkeys=(
     #source+=("${_patch}::https://raw.gigthubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 #done
 
-sha256sums=('5d9050a839edc7480c5c8f7a284cd28bee6db07bec9e41c684f399192bbe5db1'
+sha256sums=('484fcf5df8d00ddc570af443ef33382a110b338239b1f47048974baa22455b4b'
             'SKIP'
             '380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d'
             'f0559045319db718af902f0f9f1ba183b63d89190a4d2dceb0d39d6a814156f7'
-            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586'
+            '6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63'
             '670d69688c0d745db13fd2116038d4644a41830511415399b7f2296c86099b9c')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
