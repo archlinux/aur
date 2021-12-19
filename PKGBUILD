@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-fuel_tools
-pkgver=6.0.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common>=3'
 makedepends=('ignition-cmake>=2')
 optdepends=('ruby')
 conflicts=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/${pkgname//_/-}6_${pkgver}.tar.gz")
-sha256sums=('7be5f00cab43127109b598e01ebe76f173e259e3ff4df2e1c220def19a9de9be')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/${pkgname//_/-}7_${pkgver}.tar.gz")
+sha256sums=('b963abcb8ba04f9ca3bc2ddbe3b0e6305c87171bdf4849d95c3921790cc667aa')
 
-_dir="ign-fuel-tools-${pkgname//_/-}6_${pkgver}"
+_dir="ign-fuel-tools-${pkgname//_/-}7_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
