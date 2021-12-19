@@ -1,15 +1,14 @@
 pkgbase = python-sqlalchemy-mixins
 	pkgdesc = Active Record, Django-like queries, nested eager load and beauty __repr__ for SQLAlchemy
-	pkgver = 1.2.1
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/absent1706/sqlalchemy-mixins
 	arch = any
 	license = MIT
 	depends = python-sqlalchemy>=1.0
 	depends = python-six
-	noextract = sqlalchemy_mixins-1.2.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/sqlalchemy-mixins/sqlalchemy_mixins-1.2.1-py3-none-any.whl
-	sha256sums = 97bc52ef5e5b5f226130c8d3d667d600c083cc1627e2a1417462c7b10f8f3cd5
+	noextract = sqlalchemy_mixins-1.5-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/sqlalchemy-mixins/sqlalchemy_mixins-1.5-py3-none-any.whl
+	sha256sums = c512f8393679d7e5effba742fb1b2d5e242d8c44d4d9e20abd0f3ba5136bc32d
 
 pkgname = python-sqlalchemy-mixins
-
