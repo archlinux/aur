@@ -1,7 +1,7 @@
 pkgbase = python-etebase
 	pkgdesc = Etebase Python library
 	pkgver = 0.31.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/etesync/etebase-py
 	arch = x86_64
 	license = BSD
