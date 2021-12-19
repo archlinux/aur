@@ -7,29 +7,17 @@ arch=('x86_64')
 url="https://github.com/citusdata/pg_auto_failover"
 license=('custom:PostgreSQL License')
 depends=('postgresql' 'ncurses' 'openssl')
-makedepends=()
+makedepends=('clang')
 options=('!buildflags')
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/citusdata/pg_auto_failover/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e5880fc21728faab791a025d9434993524e190918136f856d8dbb0c064e3e75b')
-# validpgpkeys=()
-
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
 
 build() {
 	cd "$pkgname-$pkgver"
-	# ./configure --prefix=/usr
 	make
 }
-
-# check() {
-# 	cd "$pkgname-$pkgver"
-# 	make -k check
-# }
 
 package() {
 	cd "$pkgname-$pkgver"
