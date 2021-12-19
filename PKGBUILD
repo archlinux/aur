@@ -1,18 +1,21 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-lsp-mypy
 _name=pylsp-mypy
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
 url="https://github.com/Richardk2n/pylsp-mypy"
 license=('MIT')
-depends=(python-lsp-server mypy)
+depends=(python-lsp-server mypy
+  # https://bugs.archlinux.org/task/73090
+  python-tomli
+)
 makedepends=(python-setuptools)
-checkdepends=(python-mock python-pytest python-pytest-cov)
+checkdepends=(python-pytest)
 options=(!strip)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ee141284b91f7e11485f1cc4972c93b0e6f479f6ab4fe6ae98a7b1b33e178b63')
+sha256sums=('f2a4324ee3d464942537005b63f1b2d54edb74e826deb83c5dac27938e7eb4c6')
 
 build() {
   cd "$_name-$pkgver"
@@ -21,7 +24,8 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  PYTHONPATH="$PWD" pytest
+  # https://github.com/Richardk2n/pylsp-mypy/commit/788c75af60998c922ff5c69e879a688bc14967fb
+  PYTHONPATH="$PWD" pytest --deselect=test/test_plugin.py::test_multiple_workspaces
 }
 
 package() {
