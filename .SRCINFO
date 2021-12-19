@@ -40,8 +40,8 @@ pkgbase = flatcam-qt6
 	source = flatcam.xml
 	source = flatcam.sh
 	md5sums = SKIP
-	md5sums = b37df8f8e53b6bfc7bc5cf3edcdc6e6c
+	md5sums = caf91275bd46d18a02598639c7bcf3d4
 	md5sums = e4a7f457350aa2e1c62cbe43f3b23e90
-	md5sums = d1abc7ac742630ef04071137b9dca85b
+	md5sums = 5b77a7a339068dce7a9064dca69d8525
 
 pkgname = flatcam-qt6
