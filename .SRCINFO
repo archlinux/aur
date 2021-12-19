@@ -1,20 +1,19 @@
 pkgbase = python-cyclonedx-lib
 	pkgdesc = Library for producing CycloneDX SBOM (Software Bill of Materials) files
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.12.3
+	pkgrel = 1
 	url = https://github.com/CycloneDX/cyclonedx-python-lib
 	arch = any
 	license = Apache
 	makedepends = python-dephell
 	depends = python-packageurl
-	depends = python-requirements-parser
 	depends = python-setuptools
 	depends = python-importlib-metadata
 	depends = python-toml
 	depends = python-typing-extensions
 	conflicts = python-cyclonedx-lib-git
 	options = !strip
-	source = cyclonedx-python-lib-0.11.1.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v0.11.1.tar.gz
-	sha512sums = cc22fc965e94868d7ff3021f3e2822aef6e5e2bf46250b379777db00d52273e2bb710102e6e2ca48206f370875ad05437959d346be12d2db6d6dcce314e1c9ff
+	source = cyclonedx-python-lib-0.12.3.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v0.12.3.tar.gz
+	sha512sums = 0898f257ead0c4a16d17df9e703f568c886e8750ef6169431645a7c8bf5369325265eab909a5f6accb83dbca073fe0b1e2c4b2210bcf91cca993f9ff148bd04e
 
 pkgname = python-cyclonedx-lib
