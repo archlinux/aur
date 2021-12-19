@@ -25,6 +25,7 @@ prepare() {
     cd "$_pkgname"
 
     case "$CARCH" in
+      armv6h) target=arm-unknown-linux-gnueabihf;;
       armv7h) target=armv7-unknown-linux-gnueabihf;;
       *)      target="$CARCH-unknown-linux-gnu";;
     esac
