@@ -1,0 +1,51 @@
+diff --git a/scripts/99-clash.rules b/scripts/99-clash.rules
+index a73d507..9d77338 100644
+--- a/scripts/99-clash.rules
++++ b/scripts/99-clash.rules
+@@ -1,2 +1,2 @@
+-SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="add",RUN+="/usr/lib/clash/setup-tun.sh"
+-SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="remove",RUN+="/usr/lib/clash/clean-tun.sh"
++SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="add",RUN+="/usr/share/clash/setup-tun.sh"
++SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="remove",RUN+="/usr/share/clash/clean-tun.sh"
+diff --git a/scripts/bypass-proxy b/scripts/bypass-proxy
+index 606c4f1..cab10be 100755
+--- a/scripts/bypass-proxy
++++ b/scripts/bypass-proxy
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+ 
+-bypass-proxy-pid $$ 2>&1 > /dev/null
++/usr/share/clash/bypass-proxy-pid $$ 2>&1 > /dev/null
+ 
+ exec "$@"
+diff --git a/scripts/clash-default b/scripts/clash-default
+index eca38ad..82a78dc 100644
+--- a/scripts/clash-default
++++ b/scripts/clash-default
+@@ -10,6 +10,6 @@ NETFILTER_MARK=114514
+ IPROUTE2_TABLE_ID=114
+ 
+ # dns redirect
+-FORWARD_DNS_REDIRECT=1.0.0.1:53
++FORWARD_DNS_REDIRECT=198.18.0.2:53
+ 
+ 
+diff --git a/scripts/clash.service b/scripts/clash.service
+index 552e56c..494069a 100644
+--- a/scripts/clash.service
++++ b/scripts/clash.service
+@@ -1,11 +1,11 @@
+ [Unit]
+ Description=A rule based proxy tunnel
+-After=network-online.target nftables.service iptabels.service
++After=network-online.target nftables.service
+ 
+ [Service]
+ Type=simple
+-ExecStartPre=+/usr/lib/clash/setup-cgroup.sh
+-ExecStart=/usr/bin/bypass-proxy /usr/bin/clash -d /srv/clash
++ExecStartPre=+/usr/share/clash/setup-cgroup.sh
++ExecStart=/usr/share/clash/bypass-proxy /usr/bin/clash -d /etc/clash
+ 
+ [Install]
+ WantedBy=multi-user.target
