@@ -4,13 +4,13 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=6.1.5.r224.gffb9a463
+pkgver=6.1.5.r231.gda287d7b
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
-depends=('fftw' 'glibmm-2.68' 'gtkmm-4.0' 'libbs2b' 'libebur128' 'libsamplerate' 'libsigc++-3.0' 'libsndfile'
+depends=('fftw' 'fmt' 'gtk4' 'libadwaita' 'libbs2b' 'libebur128' 'libsamplerate' 'libsigc++-3.0' 'libsndfile'
   'lilv' 'lv2' 'nlohmann-json' 'pipewire' 'rnnoise' 'rubberband' 'speexdsp' 'tbb' 'zita-convolver')
 makedepends=('appstream-glib' 'git' 'itstool' 'meson')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
