@@ -3,7 +3,7 @@
 pkgname=ntfsprogs-ntfs3
 _pkgname=ntfs-3g_ntfsprogs
 pkgver=2021.8.22
-pkgrel=6
+pkgrel=7
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://www.tuxera.com/community/open-source-ntfs-3g/'
 arch=('x86_64')
@@ -49,6 +49,7 @@ package() {
 
 exec mount -tntfs3 "$@"' >  "${pkgdir}"/usr/bin/mount.ntfs
 chmod +x "${pkgdir}"/usr/bin/mount.ntfs
- 
+echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' > "${pkgdir}"/etc/udev/rules.d/99-udisks2-ntfs.rules
+
 }
 
