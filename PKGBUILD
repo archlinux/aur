@@ -7,7 +7,7 @@
 
 pkgname=vhba-module-dkms-git
 _pkgname=vhba-module
-pkgver=20211023.r5.g6e831371
+pkgver=20211218.r0.gac8d4122
 pkgrel=1
 pkgdesc="Kernel module that emulates SCSI devices (DKMS, git master)"
 url="http://cdemu.sourceforge.net/"
