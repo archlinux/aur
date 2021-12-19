@@ -1,20 +1,18 @@
 pkgbase = faba-mono-icons-git
-	pkgdesc = The monochromatic panel icon sets for Faba.
-	pkgver = 94.560b521
+	pkgdesc = Supplementary theme to Faba Icon Theme - consists only of monochrome panel icons
+	pkgver = r106.2006c52
 	pkgrel = 1
-	url = http://mokaproject.com/faba-icon-theme/
+	url = https://snwh.org/moka
 	install = faba-mono-icons.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = faba-icon-theme-git
+	depends = faba-icon-theme
 	depends = gtk-update-icon-cache
 	provides = faba-mono-icons
 	conflicts = faba-mono-icons
-	replaces = faba-mono-icons
 	options = !strip
-	source = faba-mono-icons::git+https://github.com/moka-project/faba-mono-icons.git
+	source = git+https://github.com/snwh/faba-mono-icons.git
 	sha256sums = SKIP
 
 pkgname = faba-mono-icons-git
-

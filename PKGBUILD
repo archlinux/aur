@@ -1,31 +1,33 @@
 # Maintainer: Martin Wimpress <code@flexion.org>
 
-_pkgname=faba-mono-icons
-pkgname=${_pkgname}-git
-pkgver=94.560b521
+pkgname=faba-mono-icons-git
+_pkgname=${pkgname%-git}
+pkgver=r106.2006c52
 pkgrel=1
-pkgdesc="The monochromatic panel icon sets for Faba."
+pkgdesc="Supplementary theme to Faba Icon Theme - consists only of monochrome panel icons"
 arch=('any')
-url="http://mokaproject.com/faba-icon-theme/"
+url="https://snwh.org/moka"
 license=('GPL3')
-depends=('faba-icon-theme-git' 'gtk-update-icon-cache')
+depends=('faba-icon-theme' 'gtk-update-icon-cache')
 makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-replaces=("${_pkgname}")
 options=(!strip)
-source=(${_pkgname}::"git+https://github.com/moka-project/${_pkgname}.git")
+source=("git+https://github.com/snwh/${_pkgname}.git")
 sha256sums=('SKIP')
 install=${_pkgname}.install
 
 pkgver() {
-    cd ${srcdir}/${_pkgname}
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${srcdir}/${_pkgname}"
+    ./autogen.sh
 }
 
 package() {
-    install -d -m 755 "${pkgdir}"/usr/share/icons/{Faba-Mono,Faba-Mono-Dark}
-    cp -dr --no-preserve=ownership "${_pkgname}"/{Faba-Mono,Faba-Mono-Dark} "${pkgdir}"/usr/share/icons/
-    find "${pkgdir}"/usr/share/icons/ -type d -exec chmod 755 {} \;
-    find "${pkgdir}"/usr/share/icons/ -type f -exec chmod 644 {} \;
+    cd "${srcdir}/${_pkgname}"
+    DESTDIR="${pkgdir}" make install
 }
