@@ -1,22 +1,27 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maitainer: a821
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 
-_pyname=versioneer
-pkgname=python-$_pyname
-pkgver=0.19
+pkgname=python-versioneer
+_name=${pkgname#python-}
+pkgver=0.21
 pkgrel=1
 pkgdesc='Easy VCS-based management of project version strings'
 url="https://github.com/$pkgname/$pkgname"
-depends=(python-setuptools)
-optdepends=('python-cx_freeze: Executable generation support')
-makedepends=(python-pip)
+depends=('python-setuptools')
+optdepends=('python-cx-freeze: Executable generation support')
 license=('custom:Public Domain')
 arch=(any)
-_wheel="$_pyname-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_pyname::1}/$_pyname/$_wheel")
-sha256sums=('691e0ded8da37494f27197ccc1fb8a0bba370632dba820c09c240bc410161435')
-noextract=("$_wheel")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('64f2dbcbbed15f9a6da2b85f643997db729cf496cafdb97670fb2fa73a7d8e20')
+
+build() {
+    cd "${_name}-${pkgver}"
+    python setup.py build
+}
 
 package() {
-	cd "$srcdir"
-	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
+    cd "${_name}-${pkgver}"
+    python setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 }
+
+# vim: set ts=4 sw=4 et:
