@@ -1,7 +1,7 @@
 pkgbase = hostapd-wpe
 	pkgdesc = Modified hostapd to facilitate AP impersonation attacks
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://w1.fi/hostapd
 	install = install
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = hostapd-wpe
 	depends = sqlite
 	provides = hostapd-wpe
 	source = hostapd-2.9.tar.gz::https://w1.fi/releases/hostapd-2.9.tar.gz
-	source = hostapd-wpe.patch::https://raw.githubusercontent.com/aircrack-ng/aircrack-ng/master/patches/wpe/hostapd-wpe/hostapd-wpe.patch
+	source = hostapd-2.9-wpe.patch::https://raw.githubusercontent.com/aircrack-ng/aircrack-ng/master/patches/wpe/hostapd-wpe/hostapd-2.9-wpe.patch
 	md5sums = f188fc53a495fe7af3b6d77d3c31dee8
 	md5sums = SKIP
 
 pkgname = hostapd-wpe
-
