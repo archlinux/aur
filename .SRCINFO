@@ -1,7 +1,7 @@
 pkgbase = gnuradio38
 	pkgdesc = General purpose DSP and SDR toolkit. 3.8 branch.
-	pkgver = v3.8.4.0.r22.g9a2be0397
-	pkgrel = 1
+	pkgver = v3.8.4.0.r27.g1d110e076
+	pkgrel = 2
 	url = https://gnuradio.org
 	arch = x86_64
 	license = GPL

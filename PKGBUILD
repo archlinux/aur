@@ -1,7 +1,7 @@
 pkgbase=gnuradio38
 pkgname=(gnuradio38 gnuradio38-companion)
-pkgver=v3.8.4.0.r22.g9a2be0397
-pkgrel=1
+pkgver=v3.8.4.0.r27.g1d110e076
+pkgrel=2
 pkgdesc="General purpose DSP and SDR toolkit. 3.8 branch."
 arch=('x86_64')
 url="https://gnuradio.org"
@@ -41,7 +41,6 @@ zeromq
 
 source=(
   "git+https://github.com/gnuradio/gnuradio.git#branch=maint-3.8"
-  #"https://github.com/gnuradio/gnuradio/archive/refs/tags/v${pkgver}.tar.gz"
   gnuradio-bind-placeholders.patch
   21-fcd.rules
 )
@@ -58,7 +57,7 @@ prepare() {
   cd gnuradio
   patch -Np1 -i ../gnuradio-bind-placeholders.patch
   sed -i -e "s|GR_PKG_LIBEXEC_DIR|GR_RUNTIME_DIR|" grc/scripts/freedesktop/CMakeLists.txt
-  #sed -i -e "s|/qwt$|/qwt5|" -e "s| qwt | qwt5 |" cmake/Modules/FindQwt.cmake
+  sed "s|6.2.0|6.4.0|g" -i cmake/Modules/FindQwt.cmake
   sed -i -e "s| sphinx-build$| sphinx-build2|" cmake/Modules/FindSphinx.cmake
 }
 
@@ -68,9 +67,6 @@ build() {
   cmake \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D PYTHON_EXECUTABLE=$(which python3) \
-    -D PYTHON_INCLUDE_DIR=/usr/include/python3.9 \
-    -D PYTHON_LIBRARY=/usr/lib/libpython3.9.so \
-    -D GR_PYTHON_DIR=/usr/lib/python3.9/site-packages \
     -D ENABLE_INTERNAL_VOLK=OFF \
     -D ENABLE_GRC=ON \
     -D ENABLE_GR_QTGUI=ON \
@@ -83,9 +79,17 @@ build() {
 }
 
 package_gnuradio38() {
-  depends+=('libasound.so' 'libboost_filesystem.so'
-  'libboost_program_options.so' 'libboost_thread.so' 'libfftw3f.so'
-  'libfftw3f_threads.so' 'libjack.so' 'libportaudio.so' 'libzmq.so')
+  depends+=(
+    'libasound.so'
+    'libboost_filesystem.so'
+    'libboost_program_options.so'
+    'libboost_thread.so'
+    'libfftw3f.so'
+    'libfftw3f_threads.so'
+    'libjack.so'
+    'libportaudio.so'
+    'libzmq.so'
+    )
   optdepends=('boost: gr_modtool'
               'swig: gr_modtool'
               'cmake: gr_modtool'
@@ -120,8 +124,15 @@ package_gnuradio38() {
 
 package_gnuradio38-companion() {
   pkgdesc="GUI frontend for gnuradio and SDR."
-  depends=('gnuradio' 'qwt' 'python-lxml'
-           'python-opengl' 'python-cairo' 'python-gobject' 'python-pyqt5')
+  depends=(
+    'gnuradio'
+    'qwt'
+    'python-lxml'
+    'python-opengl'
+    'python-cairo'
+    'python-gobject'
+    'python-pyqt5'
+  )
   provides=(gnuradio-companion)
   conflicts=(gnuradio-companion)
   # Yup, nothing in the package except dependencies,
