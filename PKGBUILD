@@ -1,16 +1,15 @@
 pkgname=python-sphinxcontrib-sadisplay
 _name=sphinxcontrib_sadisplay
-pkgver=0.3.3.dev20180712
+pkgver=0.3.5.dev20210512
 pkgrel=1
 pkgdesc='Sphinx "sadisplay" extension'
 arch=(any)
 url='https://github.com/sphinx-contrib/sadisplay'
-license=('BSD')
-depends=('python-sphinx' 'python-sadisplay')
-makedepends=('unzip')
+license=(BSD)
+depends=(python-sphinx python-sadisplay)
 _wheel="$_name-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/3.6/${_name::1}/$_name/$_wheel")
-sha256sums=('9a9a99fdcc2f9790bb23242f725ab999a94ae52fa6bb32ec8d2c20a83b9cc6c7')
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
+sha256sums=('0f61e95f226349aff6b72d7c9faf2690107867adcc150f741856797e4bccae66')
 noextract=("$_wheel")
 
 package() {
