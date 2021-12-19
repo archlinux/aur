@@ -1,18 +1,19 @@
 pkgbase = asusctl
 	pkgdesc = Asus hardware control utilities
-	pkgver = 4.0.6
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
 	license = MPL2
 	makedepends = git
 	makedepends = rust
+	depends = hicolor-icon-theme
 	depends = libusb
 	depends = systemd
 	depends = power-profiles-daemon
 	optdepends = acpi_call: fan control
 	conflicts = asusctl-git
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=38d047cb8a4c6342dde6b78ff78302ebf8236a7b
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=ba40c3f739462a2488dd05c96ce7f81372311fd7
 	sha256sums = SKIP
 
 pkgname = asusctl
