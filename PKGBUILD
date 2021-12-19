@@ -2,7 +2,7 @@
 # Contributor: Ainola
 
 pkgname=imv-git
-pkgver=v4.1.0.r3.g04ef944
+pkgver=4.3.0.r17.gc7306a6
 pkgrel=1
 pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
 url="https://github.com/eXeC64/imv"
@@ -16,12 +16,12 @@ optdepends=(#wayland
             'libtiff' 'libpng' 'libjpeg-turbo' 'librsvg' 'libnsgif')
 provides=('imv')
 conflicts=('renameutils' 'imv')
-source=("git+https://github.com/eXeC64/imv.git")
+source=("git+https://git.sr.ht/~exec64/imv")
 sha1sums=('SKIP')
 
 pkgver() {
     cd imv
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
