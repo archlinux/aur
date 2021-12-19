@@ -1,13 +1,13 @@
 pkgbase = ignition-rendering
 	pkgdesc = C++ library designed to provide an abstraction for different rendering engines. It offers unified APIs for creating 3D graphics applications.
-	pkgver = 5.1.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/rendering
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	depends = ignition-plugin
-	source = ignition-rendering-5.1.0.tar.gz::https://github.com/ignitionrobotics/ign-rendering/archive/ignition-rendering5_5.1.0.tar.gz
-	sha256sums = a26fe32f2dd849bb2ae492fc65b73e730f830f5bf9d763c9e62b6d6672ccf02f
+	source = ignition-rendering-6.1.0.tar.gz::https://github.com/ignitionrobotics/ign-rendering/archive/ignition-rendering6_6.1.0.tar.gz
+	sha256sums = ca39bd98777c87ad4010a70f915e46b78baaa74e64a43f0b6468819f1aa20f1e
 
 pkgname = ignition-rendering

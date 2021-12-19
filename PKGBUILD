@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-rendering
-pkgver=5.1.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="C++ library designed to provide an abstraction for different rendering
 engines. It offers unified APIs for creating 3D graphics applications."
@@ -10,10 +10,10 @@ url="https://ignitionrobotics.org/libs/rendering"
 license=('Apache')
 depends=('ignition-plugin')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-rendering/archive/${pkgname}5_${pkgver}.tar.gz")
-sha256sums=('a26fe32f2dd849bb2ae492fc65b73e730f830f5bf9d763c9e62b6d6672ccf02f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-rendering/archive/${pkgname}6_${pkgver}.tar.gz")
+sha256sums=('ca39bd98777c87ad4010a70f915e46b78baaa74e64a43f0b6468819f1aa20f1e')
 
-_dir="ign-rendering-${pkgname}5_${pkgver}"
+_dir="ign-rendering-${pkgname}6_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
