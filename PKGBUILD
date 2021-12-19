@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=racon
-pkgver=1.4.21
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Ultrafast consensus module for raw de novo genome assembly"
 arch=('i686' 'x86_64')
@@ -9,12 +9,12 @@ url="https://github.com/lbcb-sci/racon"
 license=('MIT')
 depends=('gcc-libs' 'zlib')
 makedepends=('git' 'cmake')
-source=("https://github.com/lbcb-sci/racon/releases/download/$pkgver/racon-v$pkgver.tar.gz")
-sha256sums=('df99208ebef6a12e1da11a31dade2eafe13a4cd80b4917cce44d44d879b5aee4')
+source=("$pkgname-$pkgver-src.tar.gz::https://github.com/lbcb-sci/racon/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('41e362f71cc03b934f17d6e2c0d626e1b2997258261b14551586de006666424a')
 
 
 build() {
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname-$pkgver"
 
   cmake \
     -B "_build" \
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname-$pkgver"
 
   make -C "_build" DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/racon"
