@@ -1,14 +1,13 @@
 pkgbase = python-wheel-filename
 	pkgdesc = Parse wheel filenames
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/jwodder/wheel-filename
 	arch = any
 	license = MIT
 	depends = python
-	noextract = wheel_filename-1.2.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/w/wheel-filename/wheel_filename-1.2.0-py3-none-any.whl
-	sha256sums = 0aab092d824560d93d6b8999519bfa363743c27e00806131690577f03f5dbc8d
+	noextract = wheel_filename-1.3.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/w/wheel-filename/wheel_filename-1.3.0-py3-none-any.whl
+	sha256sums = a7aabf29e4ed4b798690fcf87f04754fb340aacb52798c6147949f0b81e55761
 
 pkgname = python-wheel-filename
-

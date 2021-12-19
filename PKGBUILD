@@ -2,7 +2,7 @@
 
 _name=wheel-filename
 pkgname=python-$_name
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Parse wheel filenames'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 _pyarch=py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('0aab092d824560d93d6b8999519bfa363743c27e00806131690577f03f5dbc8d')
+sha256sums=('a7aabf29e4ed4b798690fcf87f04754fb340aacb52798c6147949f0b81e55761')
 noextract=("$_wheel")
 
 package() {
