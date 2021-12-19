@@ -1,0 +1,18 @@
+pkgbase = systemd-boot-manager-git
+	pkgdesc = A simple tool to maintain systemd-boot & systemd-boot entries for Manjaro
+	pkgver = 0.9.r22.gb85534b
+	pkgrel = 1
+	url = https://gitlab.com/dalto.8/systemd-boot-manager
+	arch = any
+	license = GPL2
+	depends = systemd
+	depends = findutils
+	depends = grep
+	depends = gawk
+	provides = systemd-boot-manager
+	conflicts = systemd-boot-manager
+	backup = etc/sdboot-manage.conf
+	source = git+https://gitlab.com/dalto.8/systemd-boot-manager.git
+	sha256sums = SKIP
+
+pkgname = systemd-boot-manager-git
