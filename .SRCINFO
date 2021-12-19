@@ -6,7 +6,6 @@ pkgbase = pterodactyl-wings-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
 	depends = docker
 	provides = pterodactyl-wings
 	conflicts = pterodactyl-wings

@@ -9,7 +9,6 @@ url="https://pterodactyl.io/"
 license=("MIT")
 arch=("x86_64" "aarch64")
 depends=("docker")
-makedepends=("go")
 provides=("${pkgname/-bin/}")
 conflicts=("${pkgname/-bin/}" "pterodactyl-daemon")
 source_x86_64=("${pkgname/-bin/}-$CARCH::https://github.com/pterodactyl/wings/releases/download/v$pkgver/wings_linux_amd64")
