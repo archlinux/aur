@@ -2,11 +2,11 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname=parmetis-mpich
-pkgver=4.0.3.p6
-_pkgver=4.0.3-p6
-_pkgdirname=petsc-pkg-parmetis-475d8facbb32
+pkgver=4.0.3.p7
+_pkgver=4.0.3-p7
+_pkgdirname=petsc-pkg-parmetis-b787dbecbb80
 _prefix=/opt/mpich
-pkgrel=2
+pkgrel=1
 pkgdesc="A parallel graph partitioning library, built against MPICH"
 url="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=(mpich metis)
 makedepends=(cmake)
 replaces=(parmetis-mpich2)
 source=(https://bitbucket.org/petsc/pkg-parmetis/get/v${_pkgver}.tar.gz)
-sha256sums=('663a20f45066d94a2732e8f38742047e89cd2b159cec7b3c6a7d834ae59d8b1f')
+sha256sums=('ecb3404e54dcbe95a32c74144b7e6295efaf666e0c43a81730f20762c9fdf37a')
 
 # "Upstream" is unmaintained and does not reply or apply to critical patches
 #source=(http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/parmetis-$pkgver.tar.gz)
