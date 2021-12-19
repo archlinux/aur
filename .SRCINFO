@@ -1,7 +1,7 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files with various contents, using perceptual diff for pictures
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dupeguru.voltaicideas.net/
 	arch = any
 	license = GPL3
@@ -10,9 +10,9 @@ pkgbase = dupeguru
 	depends = python
 	depends = python-pyqt5
 	depends = python-polib
-	depends = python-send2trash
 	depends = python-hsaudiotag3k
 	depends = libxkbcommon-x11
+	depends = python-pip
 	provides = dupeguru
 	conflicts = dupeguru-git
 	conflicts = dupeguru-se
@@ -22,4 +22,3 @@ pkgbase = dupeguru
 	md5sums = a88af36a661c813874bb6a2b8d5becbc
 
 pkgname = dupeguru
-

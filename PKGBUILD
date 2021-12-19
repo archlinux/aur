@@ -3,25 +3,30 @@
 # Contributor: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Find duplicate files with various contents, using perceptual diff for pictures"
 arch=('any')
 url="https://dupeguru.voltaicideas.net/"
 license=('GPL3')
-depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-hsaudiotag3k'
-         'libxkbcommon-x11')
+depends=('python' 'python-pyqt5' 'python-polib' 'python-hsaudiotag3k'
+         'libxkbcommon-x11' 'python-pip')
 makedepends=('python-distro' 'python-sphinx')
 source=( https://github.com/arsenetar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz )
 md5sums=('a88af36a661c813874bb6a2b8d5becbc')
 provides=("dupeguru")
 conflicts=("dupeguru-git" "dupeguru-se" "dupeguru-pe" "dupeguru-me")
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i -E 's/polib.*/polib>=1.1.0/g' requirements.txt
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
   # Instead of doing the full ./bootstrap.sh
   python3 -m venv env --system-site-packages
   source env/bin/activate
-  python3 -m pip install --no-index --find-links=deps -r requirements.txt
+  python3 -m pip install -r requirements.txt
   msg "Starting build..."
   python build.py --clean
 }
