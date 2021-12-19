@@ -1,8 +1,8 @@
 # Maintainer: Rick van Lieshout <info@rickvanlieshout.com>
 
 pkgname=tidal-hifi-git
-pkgrel=2
-pkgver=2.5.0.r0.g662ef6a
+pkgrel=1
+pkgver=2.6.0.r0.g0dec967
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -22,15 +22,22 @@ getnvm() {
     then
         echo "nvm command found, using system version.."
     else
-        echo "nvm could not be found, installing"
-        unset npm_config_prefix
-        folderName=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 12)
-        git clone https://aur.archlinux.org/nvm.git "$folderName"
-        cd "$folderName"
-        makepkg -si --asdeps
-        source /usr/share/nvm/init-nvm.sh
-        cd ../
-        rm -rf "$folderName"
+
+        if test -f "/usr/share/nvm/init-nvm.sh"
+        then
+            echo "found init-nvm.sh in /usr/share/nvm, sourcing..."
+            source "/usr/share/nvm/init-nvm.sh"
+        else
+            echo "nvm could not be found, installing"
+            unset npm_config_prefix
+            folderName=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 12)
+            git clone https://aur.archlinux.org/nvm.git "$folderName"
+            cd "$folderName"
+            makepkg -si --asdeps
+            source /usr/share/nvm/init-nvm.sh
+            cd ../
+            rm -rf "$folderName"
+        fi
     fi
 }
 
