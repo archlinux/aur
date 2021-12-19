@@ -1,7 +1,7 @@
 pkgbase = qt5-jpegxl-image-plugin
 	pkgdesc = Qt5 plug-in to allow Qt5 and KDE based applications to read/write JXL images
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/novomesk/qt-jpegxl-image-plugin/
 	arch = x86_64
 	license = GPL3
@@ -11,9 +11,8 @@ pkgbase = qt5-jpegxl-image-plugin
 	makedepends = highway
 	depends = libjxl
 	depends = qt5-base
+	conflicts = kimageformats
 	source = https://github.com/novomesk/qt-jpegxl-image-plugin/archive/v0.3.2/qt-jpegxl-image-plugin-0.3.2.tar.gz
-	source = jpegxlthumbnail.desktop
 	sha256sums = 8343500ecb9b92fd1fad5dca74d824ce66991c3eac2ff64e1d5757ef98bfcae8
-	sha256sums = d57870099934ebd6fddfc38ca8c6420e891f072e7a3c1779496cc1ad75039315
 
 pkgname = qt5-jpegxl-image-plugin
