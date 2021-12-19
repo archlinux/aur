@@ -1,6 +1,6 @@
 # Maintainer: George Dietrich <george@dietrich.app>
 pkgname=oq-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A performant, and portable jq wrapper to facilitate the consumption and output of formats other than JSON; using jq filters to transform the data.'
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=('jq')
 conflicts=('oq')
 provides=('oq')
 source=("oq-$pkgver::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5bfb23b0c527f45eacd40485779c708b1a05dd36015b50b84df29c2ac3f6cdac')
+sha256sums=('a926c362a1c1aa3c50b5871b93a387f59166053f3ab611a373a9e9e44300be7f')
 source_x86_64=("$url/releases/download/v$pkgver/oq-v$pkgver-linux-$CARCH")
-sha256sums_x86_64=('fffee4b9a453e32798f1f4762faef887eb25a26573cc140051be725ab4e04da4')
+sha256sums_x86_64=('db82858ac047cbf0aea4d2cd07edd49e697c6b19b78ffc3456df5e827c117c47')
 
 package() {
   install -Dm755 "oq-v$pkgver-linux-$CARCH" "$pkgdir/usr/bin/oq"
