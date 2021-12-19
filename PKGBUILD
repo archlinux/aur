@@ -31,7 +31,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 pkgname=cctag
 pkgver=1.0.1
 _src_dir="CCTag-${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Detection of CCTag markers made up of concentric circles."
 arch=('i686' 'x86_64')
 url="https://github.com/alicevision/CCTag"
@@ -43,7 +43,13 @@ makedepends=(boost cmake eigen gcc10 ninja opencv)
 ((ENABLE_APPS)) && depends+=(devil2 qt5-base)
 ((ENABLE_DOC)) && makedepends+=(python-sphinx doxygen)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ae8a819bc978eb13bb1061a204c214da835e56c9b7dc775237ed6b2191011dec')
+source+=("tbb2021.patch::https://github.com/alicevision/CCTag/pull/178.patch")
+sha256sums=('ae8a819bc978eb13bb1061a204c214da835e56c9b7dc775237ed6b2191011dec'
+            'ae2a2d361a7f255fe87cf3e1ca0eca14a4ddcbe0122195cb3f713e59c9064a2b')
+
+prepare() {
+	patch -Np1 -i "${srcdir}"/tbb2021.patch -d "${srcdir}/${_src_dir}"
+}
 
 build() {
 	cmake -S "${srcdir}/${_src_dir}" -B build -G Ninja \
