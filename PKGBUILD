@@ -4,7 +4,7 @@
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=20211029.r42.g3429205b7
+pkgver=20211029.r144.gb77af0218
 pkgrel=1
 pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
