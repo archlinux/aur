@@ -13,7 +13,7 @@ arch=('any')
 source=(
     "$pkgname-$pkgver.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/$pkgver/inpulse-to-talk-$pkgver.tar.gz"
     )
-sha256sums=('d56827013e28cd9ac44b7a79c84813cdf931b69e47bcab51f7e48cab3703af7f')
+sha256sums=('4434a1346481d21fab231481f22a011cd61932897dae5e6e91f1573294e11d34')
 
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"

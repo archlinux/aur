@@ -1,6 +1,6 @@
 pkgbase = inpulse-to-talk
 	pkgdesc = Push-to-Talk with libinput + Pulseaudio
-	pkgver = v2.1
+	pkgver = v2.2
 	pkgrel = 1
 	url = https://gitlab.com/somini/inpulse-to-talk
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = inpulse-to-talk
 	makedepends = cargo
 	depends = libinput
 	depends = pulseaudio-ctl
-	source = inpulse-to-talk-v2.1.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/v2.1/inpulse-to-talk-v2.1.tar.gz
-	sha256sums = d56827013e28cd9ac44b7a79c84813cdf931b69e47bcab51f7e48cab3703af7f
+	source = inpulse-to-talk-v2.2.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/v2.2/inpulse-to-talk-v2.2.tar.gz
+	sha256sums = 4434a1346481d21fab231481f22a011cd61932897dae5e6e91f1573294e11d34
 
 pkgname = inpulse-to-talk
