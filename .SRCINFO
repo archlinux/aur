@@ -6,7 +6,9 @@ pkgbase = python-qhue
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
+	depends = python-requests
+	optdepends = python-yaml: debug print API responses
 	source = python-qhue-1.0.12.tar.gz::https://github.com/quentinsf/qhue/archive/1.0.12.tar.gz
 	source = python-qhue-1.0.12.tar.gz.asc::https://github.com/quentinsf/qhue/releases/download/1.0.12/qhue-1.0.12.tar.gz.asc
 	validpgpkeys = 36F2083F293ED4FD83847B8309328E8BF9464B5F
@@ -14,12 +16,3 @@ pkgbase = python-qhue
 	sha512sums = SKIP
 
 pkgname = python-qhue
-	depends = python
-	depends = python-requests
-	optdepends = python-yaml: debug print API responses
-
-pkgname = python2-qhue
-	depends = python2
-	depends = python2-requests
-	optdepends = python2-yaml: debug print API responses
-
