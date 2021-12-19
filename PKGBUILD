@@ -3,7 +3,7 @@ pkgname=casparcg-server
 pkgver=2.3.3
 _pkgver=$pkgver-lts-stable
 _cef_version=3.3578.1870.gc974488
-pkgrel=2
+pkgrel=3
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
@@ -17,6 +17,7 @@ source=("https://github.com/CasparCG/server/archive/refs/tags/v$_pkgver.tar.gz"
         "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1397.patch"
         "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1398.patch"
         "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1308.patch"
+        tbb-version-fix.patch
         "https://cef-builds.spotifycdn.com/cef_binary_${_cef_version}_linux64_minimal.tar.bz2"
         casparcg)
 sha256sums=('6d8e973949009e95bb5a6496e26cbe680efd77666936e131df0da569f8f7c7e1'
@@ -26,6 +27,7 @@ sha256sums=('6d8e973949009e95bb5a6496e26cbe680efd77666936e131df0da569f8f7c7e1'
             '153aea3dc15646db29c01ae4ee82517bbb024bf1d177ed1ea55bd080b525d06e'
             '8c417d204e98aa46328a2682bd197a44c479e9dc4ad498a29f57dc1b1f2fa1c6'
             '5c6f2a3007e3a8739bc1f3eaec3c694af9836aed1943217843a92acff80950c1'
+            '66247a03b2e902cad9d5e030e19f6b8f098246e962e36a86a80abb44034b5c36'
             'b7c5401f342917ece7be583566bfc48b5cc1a8ff9f6470d396130b4aca7dfb22'
             'ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2')
 
