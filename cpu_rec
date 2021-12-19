@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/share/cpu_rec/cpu_rec.py $@
+/usr/share/cpu_rec/cpu_rec.py "$@"
