@@ -3,7 +3,7 @@
 pkgbase='nvidia-merged'
 pkgname=('nvidia-merged' 'lib32-nvidia-merged-utils' 'lib32-opencl-nvidia-merged' 'nvidia-merged-dkms' 'nvidia-merged-settings' 'nvidia-merged-utils' 'opencl-nvidia-merged')
 pkgver=460.73.01
-pkgrel=9
+pkgrel=10
 arch=('x86_64')
 makedepends=('gcc' 'rust')
 url='https://krutavshah.github.io/GPU_Virtualization-Wiki/'
@@ -160,7 +160,7 @@ package_nvidia-merged-utils() {
                 'mdevctl: mediated device contfiguration tool'
                 'libvirt: virtualization engine control interface')
     conflicts=('nvidia-libgl')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-merged' 'vgpu_unlock')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils' 'vgpu_unlock')
     replaces=('nvidia-libgl' 'vgpu_unlock')
     backup=('etc/vgpu_unlock/profile_override.toml')
 

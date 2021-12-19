@@ -1,6 +1,6 @@
 pkgbase = nvidia-merged
 	pkgver = 460.73.01
-	pkgrel = 9
+	pkgrel = 10
 	url = https://krutavshah.github.io/GPU_Virtualization-Wiki/
 	arch = x86_64
 	groups = nvidia-merged
@@ -84,7 +84,7 @@ pkgname = nvidia-merged-utils
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
-	provides = nvidia-merged
+	provides = nvidia-utils
 	provides = vgpu_unlock
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
