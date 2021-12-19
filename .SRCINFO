@@ -6,6 +6,7 @@ pkgbase = obs-audio-monitor
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = git
 	makedepends = libfdk-aac
 	makedepends = libxcomposite
 	makedepends = x264

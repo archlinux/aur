@@ -10,7 +10,7 @@ license=("GPL2")
 depends=("obs-studio")
 # Need to compile plugin in OBS compilation process
 makedepends=(
-  'cmake' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python'
+  'cmake' 'git' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python'
   'luajit' 'ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
   'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
 )
