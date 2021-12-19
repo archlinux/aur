@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=wallabag-client
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for the self hosted read-it-later app Wallabag"
 arch=('any')
 url="https://github.com/artur-shaik/wallabag-client"
@@ -11,8 +11,8 @@ depends=('python-beautifulsoup4' 'python-pycryptodome' 'python-requests' 'python
  'python-click-repl' 'python-pyxdg' 'python-colorama' 'python-setuptools' 'python-delorean' 'python-tzlocal'
  'python-humanize' 'python-lxml' 'python-tabulate' 'python-packaging' 'python-babel' 'python-markdownify')
 options=(!emptydirs)
-source=(https://github.com/artur-shaik/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('ed2a2730ea5e097c9a7e871e35829c3bdb1616c0a0c8cd7ecbb81c19c2588ff60439f6b20f0788770289ca87f66af964b86558dc9de5622cc177a8118822386d')
+source=(https://pypi.io/packages/source/w/$pkgname/$pkgname-$pkgver.tar.gz)
+sha512sums=('bea109129bbdd6b577b86dc8256ce6119424fe288e7a0cce937f7377cf3f30e1f2904dcba5b5a1b74430698377ee4d40eb1d0de066569de8dac35afa4b8ad714')
 
 
 
