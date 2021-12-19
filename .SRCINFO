@@ -1,6 +1,6 @@
 pkgbase = primenote-git
 	pkgdesc = Fanciest sticky note-taking application
-	pkgver = r530.94cc3eb
+	pkgver = r533.f30b451
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/primenote
 	arch = any
