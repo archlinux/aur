@@ -73,8 +73,6 @@ _lrng_enable=y
 ### Enable DAMON
 _damon=
 
-_use_page_check=y
-
 ## Apply Kernel automatic Optimization
 _use_auto_optimization=y
 
@@ -124,13 +122,13 @@ else
   pkgbase=linux-cachyos-bore
 fi
 _major=5.15
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -151,7 +149,6 @@ source=(
   "${_patchsource}/bore/0001-bore-sched.patch"
   "${_patchsource}/0001-arch-patches.patch"
   "${_patchsource}/0001-cfi.patch"
-  "${_patchsource}/0001-page-table-check.patch"
   "${_patchsource}/0001-lru-patches.patch"
   "${_patchsource}/AMD/0001-amdpstate.patch"
   "${_patchsource}/AMD/amd-sched.patch"
@@ -420,14 +417,6 @@ prepare() {
     scripts/config --disable CONFIG_LTO_NONE
   fi
 
-  if [ -n "$_use_page_check" ]; then
-      echo "Enable Page Table Check"
-    scripts/config --enable ARCH_SUPPORTS_PAGE_TABLE_CHECK
-    scripts/config --enable CONFIG_PAGE_TABLE_CHECK
-    scripts/config --enable CONFIG_PAGE_TABLE_CHECK_ENFORCED
-
-  fi
-
   ### Selecting the ZSTD compression level
   if [ "$_zstd_level" = "ultra" ]; then
     echo "Enabling highest ZSTD compression ratio..."
@@ -660,12 +649,11 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('5b04a1db6305c993d7f55db334a2b415'
+md5sums=('b661040d70e3c6da4844dc4ecbf30555'
          'd97e86d9464dd34683f67de4d4a595c0'
          'bd7d37c1f6b7bd0bfec044046025cf93'
          '2627c6fcd9760b0e7a3553500db0a7e1'
          'e3fa8507aed6ef3ce37e62f18fe9b7e1'
-         '152706f6ebbe9917c6a5955cd5447344'
          '4bfca774a71e7228f5b8bb31660521af'
          '4b530f55cb9ce472fa539abc69299a17'
          'dccfe71705b24d3fb1f51aaf2016216d'
@@ -675,15 +663,15 @@ md5sums=('5b04a1db6305c993d7f55db334a2b415'
          '56ceaed8bfb44eca93298ccc5fe11ca7'
          '67764a5824b567b49bcce19c01d4e1b3'
          '299b176cbfc1b386d74406387e9e2d6b'
-         '6d0f581b0edcf0a11308f3e3cde5eeaf'
+         '68e3ce199650ac9530ca8a30c920da99'
          '41887f2f959068e41756f4c39671ca79'
          'b04c8a3f01b3dfba1410e2c26ec7d975'
          '8cf507777e20cd4d75a0627eef10c10d'
          '6038177c72982533035309fcd6df208a'
-         '2a13aa40945c9910f7ad20a429442793'
+         '8bda7327ae759b1b52e3b617952bd964'
          '8c354c3d1962ec6785db7f0c3fbbab03'
          '9b6369bc4c58ad0d9195b5c204ed4b8a'
-         'c6efda5716e4ff79ebdbc963bebd851a'
+         '480c6bb9db4842114787f66ad5a68404'
          '08c84362cb916b30d9c77e35b1b3bc54'
          '56fdf3562b041c0408d9751b7e447977'
          'b09b84168822521426f197610727618b'
