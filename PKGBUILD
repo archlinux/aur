@@ -3,7 +3,7 @@
 
 pkgname=hmcl-bin
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -14,7 +14,7 @@ conflicts=('hmcl')
 source=("hmcl.desktop"
         "hmcl-launch-script"
         "craft_table.png"
-        "LICENCE::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE"
+        "LICENSE::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://cdn.jsdelivr.net/npm/hmcl-update-stable@${pkgver}/HMCL-${pkgver}.zip")
 sha1sums=('613a2483883028a52b369c27c1468fc8d31e2d5e'
           'ff8a9141b115ea7788111ce28cc462c8fd46c471'
