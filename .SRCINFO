@@ -1,0 +1,20 @@
+pkgbase = riscv-none-embed-gcc
+	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V (The xPack GNU RISC-V Embedded GCC)
+	pkgver = 10.2.0_1.2
+	pkgrel = 1
+	url = https://github.com/xpack-dev-tools/riscv-none-embed-gcc-xpack
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	depends = libmpc
+	provides = xpack-riscv-none-embed-gcc
+	provides = riscv-none-embed-gdb
+	provides = riscv-none-embed-binutils
+	provides = riscv-none-embednewlib
+	options = !emptydirs
+	options = !strip
+	source = https://github.com/xpack-dev-tools/riscv-none-embed-gcc-xpack/releases/download/v10.2.0-1.2/xpack-riscv-none-embed-gcc-10.2.0-1.2-linux-x64.tar.gz
+	md5sums = 362f4eea39d4edd3c91294ca1ce3f5ea
+
+pkgname = riscv-none-embed-gcc
