@@ -1,6 +1,6 @@
 pkgbase = plasma-phonebook
 	pkgdesc = Phone book for Plasma Mobile
-	pkgver = 21.08
+	pkgver = 21.12
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/plasma-phonebook
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = plasma-phonebook
 	depends = kcontacts
 	depends = kpeoplevcard
 	depends = kirigami2
-	source = https://download.kde.org/stable/plasma-mobile/21.08/plasma-phonebook-21.08.tar.xz
-	sha256sums = 7512c450fae901f25d81cdbf2325e218d3b6595d4954b8cc34dd2bc8672df925
+	source = https://download.kde.org/stable/plasma-mobile/21.12/plasma-phonebook-21.12.tar.xz
+	sha256sums = 5811f7d20ef770eefc16046eb4861eecb9546ed3ff06a54572b92f6d328607e2
 
 pkgname = plasma-phonebook
