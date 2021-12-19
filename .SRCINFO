@@ -1,7 +1,7 @@
 pkgbase = bustd-git
 	pkgdesc = Process killer daemon for out-of-memory scenarios
 	pkgver = 0.1.0.b197ac1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vrmiguel/bustd
 	arch = any
 	license = MIT
