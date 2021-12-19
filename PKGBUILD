@@ -6,8 +6,8 @@
 # Contributor: Laszlo Papp <djszapi @ gmail at com>
 
 pkgname=neovim-nerdtree
-pkgver=6.5.0
-pkgrel=2
+pkgver=6.10.16
+pkgrel=1
 pkgdesc='Tree explorer plugin for navigating the filesystem'
 arch=('any')
 url='https://github.com/preservim/nerdtree'
@@ -17,7 +17,7 @@ groups=('neovim-plugins')
 install=nvim-doc.install
 source=("$pkgname-$pkgver.zip::https://github.com/preservim/nerdtree/archive/${pkgver}.zip"
         'COPYING')
-sha256sums=('f6a4e1481a97b1a8b71531950c99d843d55af2b80ec01a72fa7da6de906446c3'
+sha256sums=('8d851b06b460c26df5bc505ab25de0f67aff42effd35c70eaa52e1b5a0a844c8'
             '7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40')
 
 
