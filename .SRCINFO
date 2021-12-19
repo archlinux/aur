@@ -1,7 +1,7 @@
 pkgbase = python-cx-oracle
 	pkgdesc = Python interface to Oracle Database conforming to the Python DB API 2.0 specification
 	pkgver = 8.3.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://oracle.github.io/python-cx_Oracle
 	arch = x86_64
 	license = BSD
