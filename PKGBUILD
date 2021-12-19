@@ -10,7 +10,7 @@ pkgrel=1
 
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
-url="https://sourceforge.net/projects/$pkgname"
+url="https://$pkgname-scanner.github.io"
 license=('GPL')
 
 makedepends=('python-setuptools' 'python-pip')
