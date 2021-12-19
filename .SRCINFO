@@ -1,7 +1,7 @@
 pkgbase = python-drf-yasg
 	pkgdesc = Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code.
 	pkgver = 1.20.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/axnsan12/drf-yasg
 	arch = any
 	license = BSD
@@ -26,4 +26,3 @@ pkgname = python-drf-yasg
 	depends = python-uritemplate
 	depends = python-packaging
 	depends = python-django-rest-framework
-
