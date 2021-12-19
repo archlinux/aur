@@ -27,6 +27,7 @@ qt5-tools
 qt5-webkit
 qt5-x11extras
 qt5-xmlpatterns
+qt5-base
 shared-mime-info
 xerces-c
 vtk
