@@ -1,7 +1,8 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=omniawrite
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A next-generation cross-platform plain text editor engineered for creative writing"
 arch=('x86_64')
@@ -11,7 +12,7 @@ depends=('gtk3'
 license=("custom:${pkgname}")
 source=("${pkgname}-${pkgver}.rpm::https://external.omniawrite.com/download/rpm"
         'LICENSE')
-sha256sums=('85f139a4e4e45fe711e39ab316d6efab7a8c94615f97de8ed47dba7a00b4868b'
+sha256sums=('1990b66dfd48b1e6f5bcf14b12fa06bffa047ce486b6a5acfdb9b6845721f73c'
             'dbc3c7b9f55c9230e503fcafce4a0453fbbcfcca2e598f74e5fb29b538671402')
 
 package() {
