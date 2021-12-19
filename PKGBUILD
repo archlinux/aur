@@ -1,6 +1,6 @@
 # Maintainer: Jens John <jjohn@2ion.de>
 pkgname=gien
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Export Github issue tracker and wiki contents to local email storage"
 arch=('any')
