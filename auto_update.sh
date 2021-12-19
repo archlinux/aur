@@ -32,9 +32,9 @@ update_version() {
   file_url=$service_url/$filename
 
   # update PKGBUILD
-  replace_line "pkgver=\"$version\"" 4 PKGBUILD
-  replace_line "_chromiumver=\"$chromium_version\"" 6 PKGBUILD
-  replace_line "_pkgcommit=\"$build_hash\"" 5 PKGBUILD
+  replace_line "pkgver=\"$version\"" 5 PKGBUILD
+  replace_line "_pkgcommit=\"$build_hash\"" 6 PKGBUILD
+  replace_line "_chromiumver=\"$chromium_version\"" 7 PKGBUILD
 
   # update .SRCINFO
   replace_line "	pkgver = $version" 3 .SRCINFO
