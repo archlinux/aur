@@ -1,6 +1,6 @@
 # Maintainer: Ved Patil <vedpatil611@gmail.com>
 pkgname=low-battery-warning-git
-pkgver=0.1.r12f678230
+pkgver=0.1.1.r12f678230
 pkgrel=1
 epoch=
 pkgdesc="Light weight low battery warning notification"
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
+        cd "${_pkgname}"
 	printf "0.1.r%s%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -36,9 +36,6 @@ build() {
 
 package() {
 	cd low-battery-warning
-	mkdir -p ${pkgdir}/opt/${pkgname}
-	cp -rf * ${pkgdir}/opt/${pkgname}
-	sudo make DESTDIR="${pkgdir}" install
-	make clean
+	make prefix=/usr DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
