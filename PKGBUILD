@@ -1,10 +1,10 @@
-# Maintainer: japm48 <japm48gh@gmail.com>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 _pkgname=gnuradio-iio
 pkgname=gnuradio-iio-patched-3.8
 
 pkgver=r240.d6d1f6a
-pkgrel=1
+pkgrel=2
 
 _commit=d6d1f6ac7db5be3eb990ee8ef78bb65cf3a15dd7
 
@@ -13,7 +13,10 @@ pkgdesc="IIO blocks for GNU Radio (Patched for Gnuradio version 3.8, not compati
 url="https://github.com/analogdevicesinc/gr-iio"
 arch=(x86_64)
 license=(GPL3)
-depends=(gnuradio libad9361)
+depends=(
+gnuradio38
+libad9361
+)
 makedepends=(git cmake boost swig)
 
 provides=(gnuradio-iio)
@@ -23,8 +26,8 @@ source=(
   "$_pkgname::git+https://github.com/analogdevicesinc/gr-iio.git#commit=$_commit"
   0001-several-fixes.patch
 )
-md5sums=('SKIP'
-         '4eaf91573461c143b825e0462564244c')
+sha256sums=('SKIP'
+            '691af280cab551c50f6469632b6624c3957f6e9725998f45574e21abdec7965c')
 
 
 pkgver() {
