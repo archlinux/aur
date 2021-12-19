@@ -3,12 +3,14 @@
 pkgname=electron-cash-bin
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.2.6
-pkgrel=1
+pkgrel=2
 pkgbin=electron-cash
 url='http://www.electroncash.org/'
 arch=('x86_64')
 license=('MIT')
 depends=('ttf-bitstream-vera')
+provides=('electron-cash')
+conflicts=('electron-cash')
 
 github='https://github.com/Electron-Cash/Electron-Cash'
 appimage="Electron-Cash-${pkgver}-${arch}.AppImage"
