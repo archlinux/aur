@@ -4,7 +4,7 @@
 _base=pytaglib
 pkgname=python-${_base}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python audio tagging library"
 arch=(x86_64)
 url="https://github.com/supermihi/${_base}"
@@ -17,7 +17,7 @@ sha512sums=('1be63e285980b140312aa780a56edf59467ad05aa49b3679d4140a856d07950842e
 
 build() {
   cd "${_base}-${pkgver}"
-  PYTAGLIB_CYTHONIZE=1 python setup.py build
+  python setup.py build
 }
 
 check() {
