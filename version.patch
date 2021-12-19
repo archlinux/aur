@@ -1,10 +1,10 @@
---- a/setup.py	2021-07-08 23:43:57.186357788 +02:00
-+++ b/setup.py	2021-07-08 23:43:57.186357788 +02:00
+--- a/setup.py
++++ b/setup.py
 @@ -5,6 +5,7 @@
  
  setuptools.setup(
      name="Apycula",
-+    version="0.0.1a9",
++    version="0.2a1",
      author="Pepijn de Vos",
      author_email="pepijndevos@gmail.com",
      description="Open Source tools for Gowin FPGAs",
