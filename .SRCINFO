@@ -1,5 +1,5 @@
 pkgbase = libresprite
-	pkgdesc = fork of last GPL version of aseprite
+	pkgdesc = Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite
 	pkgver = 1.0
 	pkgrel = 1
 	epoch = 1
