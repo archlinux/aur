@@ -40,13 +40,13 @@ makedepends=('git')
 provides=("${pkgname%-qt6}")
 conflicts=("${pkgname%-git}")
 source=("git+https://bitbucket.org/marius_stanciu/flatcam_beta.git"
-        "$pkgname.desktop"
-        "${pkgname%_qt6}.xml"
-        "${pkgname%_qt6}.sh")
+        "${pkgname%-qt6}.desktop"
+        "${pkgname%-qt6}.xml"
+        "${pkgname%-qt6}.sh")
 md5sums=('SKIP'
-         'b37df8f8e53b6bfc7bc5cf3edcdc6e6c'
+         'caf91275bd46d18a02598639c7bcf3d4'
          'e4a7f457350aa2e1c62cbe43f3b23e90'
-         'd1abc7ac742630ef04071137b9dca85b')
+         '5b77a7a339068dce7a9064dca69d8525')
 
 prepare() {
     mv "$srcdir/flatcam_beta" "$srcdir/${pkgname%-beta}"
@@ -67,11 +67,11 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
-	ln -s "/opt/${pkgname%_qt6}/${pkgname%_qt6}" "$pkgdir/usr/bin/${pkgname%_qt6}"
-	install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%_qt6}.desktop"
-	install -D -m644 "${pkgname%_qt6}.xml" -t "$pkgdir/usr/share/mime/packages/"
-	install -D -m755 "${pkgname%_qt6}.sh" "$pkgdir/usr/bin/${pkgname%_qt6}"
-	cd "$srcdir/${pkgname%-qt6}"
+	ln -s "/opt/${pkgname%_qt6}/${pkgname%_qt6}" "$pkgdir/usr/bin/${pkgname%-qt6}"
+	install -D -m644 "${pkgname%-qt6}.desktop" "$pkgdir/usr/share/applications/${pkgname%-qt6}.desktop"
+	install -D -m644 "${pkgname%-qt6}.xml" -t "$pkgdir/usr/share/mime/packages/"
+	install -D -m755 "${pkgname%-qt6}.sh" "$pkgdir/usr/bin/${pkgname%_qt6}"
+	cd "$srcdir/${pkgname%_qt6}"
 	install -D -m644 "assets/linux/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/${pkgname%_qt6}.png"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 

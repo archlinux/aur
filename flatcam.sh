@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python /opt/flatcam/FlatCAM.py $@
+python /opt/flatcam-qt6/FlatCAM.py $@
 
