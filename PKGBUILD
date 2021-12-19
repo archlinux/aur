@@ -10,12 +10,12 @@ makedepends=("git")
 provides=("hostapd-wpe")
 install=install
 source=("hostapd-2.9.tar.gz::https://w1.fi/releases/hostapd-2.9.tar.gz"
-        "hostapd-wpe.patch::https://raw.githubusercontent.com/aircrack-ng/aircrack-ng/master/patches/wpe/hostapd-wpe/hostapd-wpe.patch")
+        "hostapd-2.9-wpe.patch::https://raw.githubusercontent.com/aircrack-ng/aircrack-ng/master/patches/wpe/hostapd-wpe/hostapd-2.9-wpe.patch")
 md5sums=("f188fc53a495fe7af3b6d77d3c31dee8" "SKIP")
 
 prepare() {
     cd "${srcdir}/hostapd-2.9"
-    patch -p1 -i ${srcdir}/hostapd-wpe.patch
+    patch -p1 -i ${srcdir}/hostapd-2.9-wpe.patch
 }
 
 build() {
