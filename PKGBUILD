@@ -1,39 +1,34 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
+# Contributor: Eric Fung <loseurmarbles[AT]gmail[DOT]com>
+# Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 # Contributor: Federico Quagliata (quaqo) <quaqo@despammed.com>
 
 pkgname=camorama
-pkgver=0.19
-pkgrel=7
-pkgdesc="Webcam application featuring various image filters"
-url="https://git.gnome.org/browse/archive/$pkgname"
+pkgver=0.20.7.r51.gcde678b
+pkgrel=1
+pkgdesc="GNOME 2 Webcam application featuring various image filters"
+url="https://github.com/mchehab/camorama"
 arch=('x86_64')
 license=('GPL2')
 depends=('libgnomeui')
-makedepends=('intltool')
-source=($pkgname-$pkgver.tar.xz::$url/snapshot/$pkgname-${pkgver/./-}.tar.xz
-        $pkgname.patch)
-md5sums=('803f057da811162104133883541fbcb0'
-         '03892e0cad8402f578579214fb9b054a')
+makedepends=('git' 'gnome-common' 'v4l-utils')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
-prepare() {
-  cd "$pkgname-${pkgver/./-}"
-  patch -p0 -i ../$pkgname.patch
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname-${pkgver/./-}"
-  sh ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/usr/share
+  cd "${srcdir}/${pkgname}"
+  ./autogen.sh --prefix=/usr
   make
 }
 
-check() {
-  cd "$pkgname-${pkgver/./-}"
-  make check
-}
-
 package() {
-  cd "$pkgname-${pkgver/./-}"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}"
+  DESTDIR="${pkgdir}" make install
 }
