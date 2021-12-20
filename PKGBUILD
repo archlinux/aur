@@ -7,7 +7,7 @@ _commit="95e19b8"
 _cefbranch="4638"
 _chromiumver="95.0.${_cefbranch}.69"
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}"
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio beta release in /opt/cef-obs"
 arch=("i686" "x86_64" "aarch64")
@@ -21,7 +21,7 @@ conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
 options=('!lto')
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2")
-sha256sums_x86_64=("3c7707b13ca99c220e1650381f3d301c016f5c6ed6f478b83223645031fb13b9")
+sha256sums_x86_64=("f639d8923be42730419d703259125a3dd5349c6eb2b4d6381dd7e766500629ef")
 
 
 # Kept for future-proofing, OBS now provide a custom CEF with some additions only for x86_64
