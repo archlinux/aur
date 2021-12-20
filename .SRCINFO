@@ -1,5 +1,5 @@
 pkgbase = qbittorrent-enhanced-ua
-	pkgdesc = An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition, original user-agent)
+	pkgdesc = An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition with original user-agent)
 	pkgver = 4.3.9.10
 	pkgrel = 1
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
