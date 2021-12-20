@@ -1,8 +1,8 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-lineedit
 _pkgname=${pkgname#python-}
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="a readline library based on prompt_toolkit which supports multiple modes"
 url="https://github.com/randy3k/lineedit/archive/v$pkgver.tar.gz"
 arch=('i686' 'x86_64')
