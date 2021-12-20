@@ -1,6 +1,6 @@
 pkgbase = ctr-entropy
 	pkgver = 2.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cutthroughrecordings.com/downloads
 	arch = x86_64
 	license = EULA
