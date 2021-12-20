@@ -4,9 +4,9 @@
 pkgname=jdk11-msopenjdk-bin
 _jdkver=11
 _jdkminor=0
-_jdkpatch=11
+_jdkpatch=13
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_buildvermajor=9
+_buildvermajor=8
 _buildvershort=${_buildvermajor}.1
 _buildver=${_buildvershort}-linux-x64
 pkgver=${_jdkfullver}b${_buildver//-/_}
@@ -28,7 +28,7 @@ provides=(
 options=(!strip)
 source=("https://aka.ms/download-jdk/microsoft-jdk-${_jdkfullver}.${_buildver}.tar.gz")
 
-sha256sums=('5f28bf80fc63e5706e798aad649104cc2dbfa68cb606ee15241353ec083d25c0')
+sha256sums=('f775d2625a3194e85522c9ac5af6e51e4f4b9c2669e11a1303a1981faf4ae449')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-msopenjdk
 
