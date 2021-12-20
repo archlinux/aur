@@ -3,7 +3,7 @@
 
 pkgname=victoriametrics
 _capname=VictoriaMetrics
-pkgver=1.64.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64')
@@ -15,9 +15,9 @@ backup=('etc/default/victoriametrics')
 source=("https://github.com/VictoriaMetrics/VictoriaMetrics/archive/v$pkgver.tar.gz"
         "victoriametrics.service"
         "victoriametrics.default")
-sha256sums=('52e5934ff6be03cd47fe9a86d9e9ecb4147d9bcb4daffce99b9fe64a4b9462a6'
-            '8b264a0843ef9ed06b144220b5607027014c7af459293eadd0a3ffcbc05251d2'
-            '0fc91310e2c3140bd90b2fad62f497d8e7432cf3a2a8ab3a034b45958e01012a')
+b2sums=('26e13624efb9ebcb780a84a67c950795f0f15146b9f5bb48a41c6523a005d2fbc5e1b1447630f01b3b7a53b03cdda78561de7864741426f478edb845c1f87bdc'
+        'dfe05a39758258ad3298332dc18f35544cbf40c3257208823321f9631581ab9bfc7465018eb02a9990d3df852887e4715478abe7816354effd781a9c13026168'
+        '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
 
 build() {
   cd "$_capname-$pkgver"
