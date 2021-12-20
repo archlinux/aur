@@ -22,7 +22,6 @@ package() {
     mkdir -p "$pkgdir/opt/Audio Assault/HellbeastV2"
     sh $srcdir/Hellbeast\ v2\ Installer\ Linux.sh --tar xf
     cp -rf $srcdir/HellbeastV2/{IRs,Presets} "$pkgdir/opt/Audio Assault/HellbeastV2/"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/HellbeastV2/
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/HellbeastV2/Hellbeast v2.so" "$pkgdir/usr/lib/vst/Hellbeast v2.so"
