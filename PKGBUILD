@@ -3,7 +3,7 @@ pkgname=helium-ledger-cli
 pkgdesc='Helium Application for Ledger'
 license=('Apache')
 url='https://github.com/helium/helium-ledger-cli'
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -14,7 +14,7 @@ makedepends=(
     'clang'
 )
 source=("https://github.com/helium/helium-ledger-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('23db5212800596616b65c4c9245ccf03cc5d28d5957e2e4068753cbb97cab8ab5ec60a0c8fb08bc199007749e5fa094169a080288e830c39088927dd6cf012ef')
+sha512sums=('f715329263b3d7af169637e632a11073c357277c59d5374492907bc49dd59b6be48b4e40c2e37c08f86bf3c4dd2171753c1b8003f2d23c03d1822a4c000f7e57')
 
 build() {
     cd ${pkgname}-${pkgver}
