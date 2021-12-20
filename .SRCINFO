@@ -1,8 +1,8 @@
 pkgbase = python-rst2ansi
 	pkgdesc = Python library to access B2 cloud storage.
 	pkgver = 0.1.5
-	pkgrel = 1
-	url = https://github.com/Backblaze/b2-sdk-python
+	pkgrel = 2
+	url = https://github.com/Snaipe/python-rst2ansi
 	arch = any
 	license = MIT
 	depends = python
@@ -11,4 +11,3 @@ pkgbase = python-rst2ansi
 	sha256sums = 1b17fb9a628d40f57933ad1a3aa952346444be069469508e73e95060da33fe6f
 
 pkgname = python-rst2ansi
-
