@@ -1,0 +1,13 @@
+pkgbase = xerox-phaser-6280
+	pkgdesc = Xerox Phaser 6280 laser printer driver
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://www.support.xerox.com/support/phaser-6280/downloads
+	arch = any
+	license = custom
+	makedepends = rpmextract
+	depends = cups
+	source = https://download.support.xerox.com/pub/drivers/6280/drivers/linux/en/6280_Linux.tar
+	sha256sums = f6146d23bc88c32636769daf730bb76c594cdd644c6dcff6118e4ab4da603555
+
+pkgname = xerox-phaser-6280
