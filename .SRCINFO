@@ -1,0 +1,19 @@
+pkgbase = tal-filter2
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://tal-software.com/products/tal-filter
+	arch = x86_64
+	license = EULA
+	source = https://tal-software.com/downloads/plugins/TAL-Filter-2_64_linux.zip
+	md5sums = b1285c7075d468a04f8f8803cceaaa22
+
+pkgname = tal-filter2-vst
+	pkgdesc = A Filter By TAL Software V2 (VST)
+	groups = pro-audiovst-plugins
+	conflicts = distrho-ports
+	replaces = distrho-ports
+
+pkgname = tal-filter2-vst3
+	pkgdesc = A Filter By TAL Software V2 (VST3)
+	groups = pro-audio
+	groups = vst3-plugins
