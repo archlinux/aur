@@ -1,0 +1,19 @@
+pkgbase = python-sphinxcontrib-confluencebuilder
+	pkgdesc = Include a full table of contents in your Sphinx HTML sidebar
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/fulltoc
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/sphinx-contrib/confluencebuilder/archive/refs/tags/v1.7.1.tar.gz
+	md5sums = fa3ad6a339fccb15b07cf023ba687b98
+
+pkgname = python-sphinxcontrib-confluencebuilder
+	depends = python
+	depends = python-sphinx
+
+pkgname = python2-sphinxcontrib-confluencebuilder
+	depends = python2
+	depends = python2-sphinx
