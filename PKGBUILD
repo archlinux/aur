@@ -1,12 +1,13 @@
 pkgname=grasp
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Create strong passwords using words that are easy for you to remember. A password manager that does not require any type of storage'
 arch=('x86_64')
 url="https://github.com/lucasepe/grasp"
 makedepends=("go" "git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('23cb977b5ee435c9a0540976c6fa82e9c282cf6dca0a37fc99303a88a83cd332')
+sha256sums=('8362d582a233a701c1e639377ce90a3b27f931009bb88b630cdb7990faa07ceb')
+
 
 build() {
     cd "${pkgname}-${pkgver}"
