@@ -1,6 +1,6 @@
 pkgbase = liborca-git
 	pkgdesc = orca discord bot framework
-	pkgver = r2202.96e36742
+	pkgver = r2208.2eb94a52
 	pkgrel = 1
 	url = https://github.com/cee-studio/orca
 	arch = x86_64
