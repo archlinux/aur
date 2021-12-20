@@ -1,11 +1,11 @@
---- gtg-0.5/GTG/plugins/meson.build.orig	2021-12-20 21:46:00.794846161 +0200
-+++ gtg-0.5/GTG/plugins/meson.build	2021-12-20 21:45:50.254746017 +0200
-@@ -23,8 +23,6 @@
-     install_dir: plugin_install_dir,
+--- gtg-0.5/GTG/plugins/meson.build.orig	2021-12-20 21:50:54.641517139 +0200
++++ gtg-0.5/GTG/plugins/meson.build	2021-12-20 21:51:01.010572919 +0200
+@@ -24,8 +24,6 @@
      type: 'desktop',
      args: ['--keyword=name', '--keyword=short-description', '--keyword=description'],
--    build_by_default: true,
+     build_by_default: true,
 -    build_always_stale: true
-     # build always because otherwise new translations won't be applied
+-    # build always because otherwise new translations won't be applied
    )
    subdir(plugin.underscorify())
+ endforeach
