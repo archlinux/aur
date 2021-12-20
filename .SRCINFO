@@ -1,24 +1,24 @@
 pkgbase = deepin-wine6-stable
 	pkgdesc = Deepin wine6 stable
-	pkgver = 6.0.0.18
+	pkgver = 6.0.0.19
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	noextract = deepin-wine6-stable_6.0.0.18-1_amd64.deb
-	noextract = deepin-wine6-stable-amd64_6.0.0.18-1_amd64.deb
-	noextract = deepin-wine6-stable-i386_6.0.0.18-1_i386.deb
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_6.0.0.18-1_amd64.deb
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-amd64_6.0.0.18-1_amd64.deb
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-i386_6.0.0.18-1_i386.deb
-	sha256sums = d18adf57e520b7c9e84e1158e4f69b64a0b93df3f0e6da591620a26f6a6a5d5f
-	sha256sums = 343fe98d981f5eb6396f85b1c1dbabcfc4025d6839ba358eb99c9674f21ff245
-	sha256sums = 58d0e0a96a09503905f464a4705cf4e5b8bc262ad01349c29ba6bdf2414225c8
+	noextract = deepin-wine6-stable_6.0.0.19-1_amd64.deb
+	noextract = deepin-wine6-stable-amd64_6.0.0.19-1_amd64.deb
+	noextract = deepin-wine6-stable-i386_6.0.0.19-1_i386.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_6.0.0.19-1_amd64.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-amd64_6.0.0.19-1_amd64.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-i386_6.0.0.19-1_i386.deb
+	sha256sums = e0c0b52b8467646d9a1e10a0feec20dfc98bc111efd999540619ba4ab1a2910f
+	sha256sums = c49e12504699f36836f138c035c1e6067278760c51843e3132f63581d74be817
+	sha256sums = 7456c846388676f568290601663afaa3ef75659d45c3d9f6df442f71e450ac2f
 
 pkgname = deepin-wine6-stable
-	depends = deepin-wine6-stable-i386=6.0.0.18
-	depends = deepin-wine6-stable-amd64=6.0.0.18
+	depends = deepin-wine6-stable-i386=6.0.0.19
+	depends = deepin-wine6-stable-amd64=6.0.0.19
 
 pkgname = deepin-wine6-stable-i386
 	depends = lib32-alsa-plugins

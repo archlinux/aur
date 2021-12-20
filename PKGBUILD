@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname=('deepin-wine6-stable' 'deepin-wine6-stable-i386' 'deepin-wine6-stable-amd64')
-pkgver=6.0.0.18
+pkgver=6.0.0.19
 pkgrel=1
 pkgdesc="Deepin wine6 stable"
 arch=('x86_64')
@@ -18,9 +18,9 @@ noextract=(
     "deepin-wine6-stable-amd64_${pkgver}-${pkgrel}_amd64.deb"
     "deepin-wine6-stable-i386_${pkgver}-${pkgrel}_i386.deb"
 )
-sha256sums=('d18adf57e520b7c9e84e1158e4f69b64a0b93df3f0e6da591620a26f6a6a5d5f'
-            '343fe98d981f5eb6396f85b1c1dbabcfc4025d6839ba358eb99c9674f21ff245'
-            '58d0e0a96a09503905f464a4705cf4e5b8bc262ad01349c29ba6bdf2414225c8')
+sha256sums=('e0c0b52b8467646d9a1e10a0feec20dfc98bc111efd999540619ba4ab1a2910f'
+            'c49e12504699f36836f138c035c1e6067278760c51843e3132f63581d74be817'
+            '7456c846388676f568290601663afaa3ef75659d45c3d9f6df442f71e450ac2f')
 
 package_deepin-wine6-stable() {
     depends=("deepin-wine6-stable-i386=$pkgver" "deepin-wine6-stable-amd64=$pkgver")
