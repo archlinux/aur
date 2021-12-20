@@ -5,17 +5,17 @@
 
 pkgname=libopenshot
 pkgver=0.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
-license=('LGPL3')
+license=(LGPL3)
 # TODO: package cppzmq and resvg
-depends=('gcc-libs' 'glibc' 'libmagick' 'opencv' 'protobuf' 'python' 'qt5-base'
-'qt5-multimedia' 'zeromq')
-makedepends=('catch2' 'cmake' 'doxygen' 'ffmpeg' 'jsoncpp' 'libopenshot-audio'
-'swig' 'unittestpp' 'x264')
-provides=('libopenshot.so')
+depends=(gcc-libs glibc libmagick opencv protobuf python qt5-base
+qt5-multimedia zeromq)
+makedepends=(catch2 cmake doxygen ffmpeg jsoncpp libopenshot-audio swig
+unittestpp x264)
+provides=(libopenshot.so)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz")
 sha512sums=('71cb0e4010d8f3ff453486c3da3c7019c6569066845dcc58f438049a08b1c8663f31c29a728ce5461e9d3a1ca550038b757d4528e62a26eeb45ecbe600353988')
 b2sums=('511ed214f0ecc43294a787e1c0119f036e274a1e8d051cb6e926bf7a9b5cea416325a2e051fca758d1f80ec2b9d746a4dd268e5ac5322fe8539fa2041a8c4d9d')
@@ -45,8 +45,8 @@ check() {
 }
 
 package() {
-  depends+=('libavcodec.so' 'libavformat.so' 'libavutil.so' 'libjsoncpp.so'
-  'libopenshot-audio.so' 'libswscale.so' 'libswresample.so' 'libx264.so')
+  depends+=(libavcodec.so libavformat.so libavutil.so libjsoncpp.so
+  libopenshot-audio.so libswscale.so libswresample.so libx264.so)
 
   cd "${pkgname}-${pkgver}"
   make VERBOSE=1 DESTDIR="${pkgdir}" install -C build
