@@ -3,9 +3,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=link-grammar-git
-pkgver=5.10.2.r63.gaa1b563c
+pkgver=5.10.2.r82.ga5a52cbf3
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="A Grammar Checking library"
 arch=('x86_64')
 url="http://www.abisource.com/projects/link-grammar/"
