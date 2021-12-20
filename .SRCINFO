@@ -1,7 +1,7 @@
 pkgbase = amplex-vst
-	pkgdesc = Amplex Guitar Amp
-	pkgver = 4.0
-	pkgrel = 2
+	pkgdesc = Amplex Guitar Amp (VST)
+	pkgver = 5.0
+	pkgrel = 1
 	url = https://nalexsoft.blogspot.com/2020/07/amplex-multiamp.html
 	arch = x86_64
 	groups = pro-audio
