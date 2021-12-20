@@ -1,7 +1,7 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
 	pkgver = 5.15.10.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux/linux/commits/v5.15.10-arch1
 	arch = x86_64
 	license = GPL2
@@ -31,7 +31,7 @@ pkgbase = linux-covolunablu-gaming
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = fe2b3e4994cdcda5df8bf2af4c16eef61f7db596626c934fe46ae917e9908816
+	sha256sums = 8638bbbc8e82465a4150ec1a1ae57c884e659825ec95c82549f9cdfec1969a24
 	sha256sums = f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d
 	sha256sums = c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97
 	sha256sums = 63a2ddf7ca9d3922f4eac3ac66bc37ffb10ad8b18b3e596832d3faa66b93dfa6
