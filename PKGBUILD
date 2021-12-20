@@ -4,7 +4,7 @@ pkgname=unciv-bin
 _pkgname=Unciv
 _pkgver=3.18.10-patch1
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
 license=('MPL-2.0')
@@ -13,13 +13,13 @@ provides=('unciv')
 conflicts=('unciv')
 arch=('any')
 source=(
-  "$_pkgname.jar::https://github.com/yairm210/$_pkgname/releases/download/$_pkgver/$_pkgname.jar"
+  "$_pkgname-$_pkgver.jar::https://github.com/yairm210/Unciv/releases/download/$_pkgver/Unciv.jar"
   "unciv-$_pkgver.png::https://raw.githubusercontent.com/yairm210/$_pkgname/$_pkgver/extraImages/Unciv%20icon%20v4.png"
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
 noextract=(
-	"Unciv.jar"
+	"$_pkgname-$_pkgver.jar"
 )
 md5sums=('68c2841a28c7892639659eb82e4e7138'
          '5aca7fc33f121fcf901fef14f784731a'
