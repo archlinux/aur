@@ -1,7 +1,7 @@
 pkgbase = libselinux
 	pkgdesc = SELinux library and simple utilities
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SELinuxProject/selinux
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = libselinux
 	depends = pcre
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libselinux=3.3-1
+	provides = selinux-usr-libselinux=3.3-2
 	conflicts = selinux-usr-libselinux
 	source = https://github.com/SELinuxProject/selinux/releases/download/3.3/libselinux-3.3.tar.gz
 	source = libselinux.tmpfiles.d
