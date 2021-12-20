@@ -22,7 +22,6 @@ package() {
     mkdir -p "$pkgdir/opt/Audio Assault/KLANK"
     sh $srcdir/KLANKInstallerLinux.sh --tar xf
     cp -rf $srcdir/KLANK/{IRs,Presets} "$pkgdir/opt/Audio Assault/KLANK/"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/KLANK/
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/KLANK/KLANK.so" "$pkgdir/usr/lib/vst/KLANK.so"
