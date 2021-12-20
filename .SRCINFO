@@ -1,6 +1,6 @@
 pkgbase = jdk11-msopenjdk-bin
 	pkgdesc = Microsoft openjdk11 (Preview)
-	pkgver = 11.0.11b9.1_linux_x64
+	pkgver = 11.0.13b8.1_linux_x64
 	pkgrel = 5
 	url = https://www.microsoft.com/openjdk
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = jdk11-msopenjdk-bin
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
 	options = !strip
-	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.11.9.1-linux-x64.tar.gz
-	sha256sums = 5f28bf80fc63e5706e798aad649104cc2dbfa68cb606ee15241353ec083d25c0
+	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.13.8.1-linux-x64.tar.gz
+	sha256sums = f775d2625a3194e85522c9ac5af6e51e4f4b9c2669e11a1303a1981faf4ae449
 
 pkgname = jdk11-msopenjdk-bin
-
