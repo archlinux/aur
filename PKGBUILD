@@ -9,6 +9,7 @@ depends=('python-formulaic'
     'python-numpy'
     'python-pandas'
     'python-property-cached'
+    'python-pyhdfe'
     'python-scipy'
     'python-statsmodels')
 checkdepends=('python-mypy_extensions' 'python-pytest' 'python-xarray')

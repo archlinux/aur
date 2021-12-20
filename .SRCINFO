@@ -14,6 +14,7 @@ pkgbase = python-linearmodels
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-property-cached
+	depends = python-pyhdfe
 	depends = python-scipy
 	depends = python-statsmodels
 	optdepends = python-xarray
