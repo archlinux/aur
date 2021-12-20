@@ -25,7 +25,6 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "/usr/lib/lockfocus/resources/app/node_modules/yallist/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "/usr/share/doc/lockfocus/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	install -D -m644 "${pkgdir}/usr/lib/lockfocus/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
