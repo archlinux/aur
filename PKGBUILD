@@ -97,14 +97,14 @@ else
 pkgname="emacs-native-comp-git-enhanced"
 fi
 pkgver=29.0.50.152995
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends_nox=('gnutls' 'libxml2' 'jansson')
 depends=("${depends_nox[@]}" 'harfbuzz')
-makedepends=('git')
+makedepends=('git' 'mold')
 provides=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 conflicts=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 replaces=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
