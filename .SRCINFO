@@ -1,7 +1,7 @@
 pkgbase = harrison-32c-vst
 	pkgdesc = Harrison Consoles 32C Console VST Plugins
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.1.1
+	pkgrel = 1
 	arch = x86_64
 	groups = vst-plugins
 	groups = pro-audio

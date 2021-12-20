@@ -1,7 +1,7 @@
 pkgbase=harrison-32c-vst
 pkgname=("harrison-32c-channel-vst" "harrison-32c-vip-vst")
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.1.1
+pkgrel=1
 pkgdesc="Harrison Consoles 32C Console VST Plugins"
 arch=('x86_64')
 license=('EULA')
@@ -10,12 +10,12 @@ depends=('glibc' 'libcurl-gnutls')
 makedepends=('xdg-user-dirs' 'unzip')
 
 ## Variables
-_archive="`xdg-user-dir DOWNLOAD`/Harrison-32C-Plugins-Linux-64bit-${pkgver}"
+_archive="`xdg-user-dir DOWNLOAD`/Harrison-32C-Plugins-Linux-64bit-${pkgver}.tar.gz"
 
 prepare () {
 	## Extract Harrison 32C Plugin Archive
-	ln -srf ${_archive}.tar.gz "$srcdir/`basename ${_archive}`.tar.gz"
-	tar -xvzf "$srcdir/`basename ${_archive}`.tar.gz"
+	ln -srf ${_archive} "$srcdir/`basename ${_archive}`"
+	tar -xvzf "$srcdir/`basename ${_archive}`"
 }
 
 package_harrison-32c-channel-vst() {
