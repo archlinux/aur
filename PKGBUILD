@@ -3,11 +3,11 @@
 pkgname=steamtools-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.6.1_301_ge8e64c1c
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
-depends=()
+depends=('dotnet-runtime>=6.0.1')
 makedepends=('git' 'dotnet-sdk>=6.0.1')
 checkdepends=('aspnet-runtime>=6.0.1')
 optdepends=('steam: need official or flatpak version of steam')
