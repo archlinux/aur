@@ -2,17 +2,25 @@
 
 pkgname=yabridge
 pkgver=3.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
-depends=('wine' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
+depends=('wine' 'boost' 'bitsery' 'function2' 'libxcb' 'tomlplusplus' 'lib32-boost-libs' 'lib32-libxcb')
 optdepends=('yabridgectl: utility for setting up and managing yabridge')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'ninja' 'cmake')
 install=yabridge.install
-source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
-sha256sums=('8ba302e68636cce8ede171f3b6497050814edefcd1d2591ce629e0f109ebc396')
+source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz"
+        "use-repo-dependencies.patch::https://github.com/robbert-vdh/yabridge/compare/5f08d989d6686c9094d960df131e34cd41879215..4cbcf79a8479bba9b13b6e5324dad568815e1d7d.patch")
+sha256sums=('8ba302e68636cce8ede171f3b6497050814edefcd1d2591ce629e0f109ebc396'
+            'c97fefa01d888e8b6f3519a10d6d2b27b3dc8c89e074d1fe6c2d80b4b98e9056')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  patch --strip=1 --input="$srcdir/use-repo-dependencies.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
