@@ -1,7 +1,7 @@
 pkgbase=harrison-ava
 pkgname=("${pkgbase}-bf-vst" "${pkgbase}-ds-vst" "${pkgbase}-legacyq-vst" "${pkgbase}-mc-vst" "${pkgbase}-me-vst" "${pkgbase}-sc-vst" "${pkgbase}-df-vst" "${pkgbase}-vf-vst")
 pkgver=$(date +%Y%m%d)
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
 license=('EULA')

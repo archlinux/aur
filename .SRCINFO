@@ -1,6 +1,6 @@
 pkgbase = harrison-ava
-	pkgver = 20210926
-	pkgrel = 1
+	pkgver = 20211220
+	pkgrel = 2
 	url = https://www.harrisonconsoles.com/site/ava-plugins.html
 	arch = x86_64
 	groups = pro-audio
