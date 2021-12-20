@@ -1,23 +1,23 @@
 pkgbase = python-justpy
-	pkgdesc = An object oriented high-level Python Web Framework that requires no front-end programming
-	pkgver = 0.1.4
-	pkgrel = 3
+	pkgdesc = An object oriented high-level Python Web Framework that requires no frontend programming.
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://justpy.io/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	makedepends = cython
 	depends = python
 	depends = python-starlette
 	depends = uvicorn
 	depends = python-itsdangerous
+	depends = python-websockets
 	depends = python-jinja
 	depends = python-addict
-	depends = python-demjson-git
+	depends = demjson
 	depends = python-httpx
 	depends = python-aiofiles
-	source = justpy-0.1.4.tar.gz::https://github.com/elimintz/justpy/archive/v0.1.4.tar.gz
-	sha512sums = 7572f8ea210357e13049229629394ac60fe44ec8772c2a65d99adaaa5bbd3b760eaff6acefad17a0c12e73744b0665878d81b2882d2757f8d98e7da13cb305d9
+	provides = python-justpy
+	source = https://files.pythonhosted.org/packages/source/j/justpy/justpy-0.2.2.tar.gz
+	sha256sums = da81d2aaa2006bf5b853b961d31d32bf43fe73dc01b30f0fdafed42af883cafa
 
 pkgname = python-justpy
-

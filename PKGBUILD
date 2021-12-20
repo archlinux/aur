@@ -1,23 +1,48 @@
 # Maintainer: Lorenzo Gaifas <brisvag@gmail.com>
 
-pkgname=python-justpy
-pkgver=0.1.4
-pkgrel=3
-pkgdesc="An object oriented high-level Python Web Framework that requires no front-end programming"
+_name='justpy'
+pkgname="python-${_name}"
+pkgver=0.2.2
+pkgrel=1
+pkgdesc="An object oriented high-level Python Web Framework that requires no frontend programming."
 arch=('any')
 license=('Apache')
 url="https://justpy.io/"
-depends=('python' 'python-starlette' 'uvicorn' 'python-itsdangerous' 'python-jinja' 'python-addict' 'python-demjson-git' 'python-httpx' 'python-aiofiles')
-makedepends=('python-setuptools' 'cython')
-source=("justpy-$pkgver.tar.gz::https://github.com/elimintz/justpy/archive/v$pkgver.tar.gz")
-sha512sums=('7572f8ea210357e13049229629394ac60fe44ec8772c2a65d99adaaa5bbd3b760eaff6acefad17a0c12e73744b0665878d81b2882d2757f8d98e7da13cb305d9')
+makedepends=(
+  'python-setuptools'
+)
+depends=(
+  'python'
+  'python-starlette'
+  'uvicorn'
+  'python-itsdangerous'
+  'python-websockets'
+  'python-jinja'
+  'python-addict'
+  'demjson'
+  'python-httpx'
+  'python-aiofiles'
+)
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('da81d2aaa2006bf5b853b961d31d32bf43fe73dc01b30f0fdafed42af883cafa')
+provides=("python-${_name}")
+
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
-  cd $srcdir/justpy-$pkgver
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd $srcdir/justpy-$pkgver
-  python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
+# vim:set ts=2 sw=2 et:<Paste>
