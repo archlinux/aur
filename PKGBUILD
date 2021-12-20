@@ -2,14 +2,14 @@
 
 pkgname=kibot
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
 url="https://github.com/INTI-CMNB/KiBot"
 license=('GPL-3.0')
 groups=()
-depends=('python')
+depends=('python' 'kibom' 'pcbdraw' 'kiauto' 'python-yaml')
 makedepends=("python-setuptools")
 checkdepends=()
 optdepends=()

@@ -1,12 +1,16 @@
 pkgbase = kibot
 	pkgdesc = KiCad automation utility
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/INTI-CMNB/KiBot
 	arch = any
 	license = GPL-3.0
 	makedepends = python-setuptools
 	depends = python
+	depends = kibom
+	depends = pcbdraw
+	depends = kiauto
+	depends = python-yaml
 	conflicts = kibot-git
 	options = !strip
 	source = kibot-0.11.0.tar.gz::https://ghproxy.com/https://github.com/INTI-CMNB/KiBot/archive/refs/tags/v0.11.0.tar.gz
