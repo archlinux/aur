@@ -6,7 +6,7 @@ pkgdesc="Pythonic bindings for FFmpeg"
 url="https://docs.mikeboers.com/pyav/"
 
 pkgver=8.0.3
-pkgrel=4
+pkgrel=5
 
 arch=("x86_64" "i686")
 license=("BSD")
@@ -28,7 +28,7 @@ depends=(
 
 # source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 # sha256sums=("521814309c91d526b6b5c9517018aef2dd12bc3d86351037db69aa67730692b8")
-source=("$_name-$pkgver::git+https://github.com/mikeboers/PyAV.git")
+source=("$_name-$pkgver::git+https://github.com/mikeboers/PyAV.git#tag=v8.0.3")
 sha256sums=("SKIP")
 
 build() {
