@@ -1,17 +1,18 @@
 pkgbase = licensure
 	pkgdesc = A software license header and copyright mangement tool
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/chasinglogic/licensure
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
-	source = licensure-0.1.3.tar.gz::https://github.com/chasinglogic/licensure/archive/v0.1.3.tar.gz
+	depends = openssl
+	source = licensure-0.2.0.tar.gz::https://github.com/chasinglogic/licensure/archive/0.2.0.tar.gz
 	source = Cargo.lock
-	sha512sums = b2daef0dabd562000f932ddbb1e54f840712e06fc9acdbf5fa64ce5d988f01dc0789c611b56d19ed6041933bdf51f9c09e48b99cc4b1b83ae956d77a6490c917
-	sha512sums = 9cc8b289406e3e0f2515c280732bdb08df865e312d500f3e5faa5ff8329887540792c532f952bbf065fcabb4d9f0513c86a63e5f5f1c056a8c05525787fa5da0
-	b2sums = 79217d914eb05959c2411e2db018b3e3379e4ad26c63d214ff754565da22c22415912c28978bd00727bea308701f23d349995c1f810915822d8da1f336256063
-	b2sums = 778bea5b826bb820d194e3ea2364911aaeac22f17831d2ea24a4237d1e764dcb64e8259673f662ca018bd48bdfb7b5c8248eb8436860e18848438b86da42774e
+	sha512sums = f5b7b1e50e27eb5607e40667c4a50ef3347cb59b1f8e9b1d179640338582c66e62bb3114b03a5372b4947c41af098f965ffeed38527c8ca8f921a96e259a17e2
+	sha512sums = 8ffb8c22f649f6232ce185c6c9d5d0b09426dac21bfad94bbbb7756c3b1d1988caf7305baa0c53c3342c4b7a3008835942a1b38e8de4b22ae1ea55551ee36a76
+	b2sums = 9f2106afbd07c47d343f47b5d68cdb28f9a84aa4acc8386f81ac25bca523fe4f1b419e623eca2465915897306c7f18ceb17852a366eb651b9bd577c489fc1868
+	b2sums = 92132bf8c40acaa542d858794ce917b02f292d58716b3d057ec623ad58ff8124f21dc102eb78fd7d2e6e3e73992b350731f97e5cb327ecff314e110ab4a4f74d
 
 pkgname = licensure
