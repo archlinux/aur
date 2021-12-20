@@ -1,0 +1,23 @@
+pkgbase = acmt-acm510a
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://www.acmt.co.uk/products/download-acm510a/index.html
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = acmt-acm510a-vst
+	pkgdesc = ACM510AA Channel Dynamics (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm510a-vst3
+	pkgdesc = ACM510AA Channel Dynamics (VST3)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm510a-docs
+	pkgdesc = ACM510AA Channel Dynamics (Documentation)
