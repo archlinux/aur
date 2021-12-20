@@ -6,7 +6,6 @@ pkgbase = read-it-later-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
