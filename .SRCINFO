@@ -1,7 +1,7 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
 	pkgver = 8.0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://docs.mikeboers.com/pyav/
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = python-av
 	makedepends = pkgconf
 	depends = python
 	depends = ffmpeg
-	source = av-8.0.3::git+https://github.com/mikeboers/PyAV.git#tag=v8.0.3
-	sha256sums = SKIP
+	source = av-8.0.3.tar.gz::https://github.com/PyAV-Org/PyAV/archive/refs/tags/v8.0.3.tar.gz
+	sha256sums = b13e1747f4a3d4d083084600f581406e4050c2885adb43fb012eff13010e49e1
 
 pkgname = python-av

@@ -6,7 +6,7 @@ pkgdesc="Pythonic bindings for FFmpeg"
 url="https://docs.mikeboers.com/pyav/"
 
 pkgver=8.0.3
-pkgrel=5
+pkgrel=6
 
 arch=("x86_64" "i686")
 license=("BSD")
@@ -26,10 +26,16 @@ depends=(
 # This hopefully is a temporary issue, hence no package rename
 # cf. https://github.com/PyAV-Org/PyAV/issues/820
 
-# source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-# sha256sums=("521814309c91d526b6b5c9517018aef2dd12bc3d86351037db69aa67730692b8")
-source=("$_name-$pkgver::git+https://github.com/mikeboers/PyAV.git#tag=v8.0.3")
-sha256sums=("SKIP")
+#source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://github.com/PyAV-Org/PyAV/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("b13e1747f4a3d4d083084600f581406e4050c2885adb43fb012eff13010e49e1")
+#source=("$_name-$pkgver::git+https://github.com/mikeboers/PyAV.git#tag=v8.0.3")
+#sha256sums=("SKIP")
+
+prepare() {
+    cd "${srcdir}"
+    mv "PyAV-${pkgver}" "${_name}-${pkgver}"
+}
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
