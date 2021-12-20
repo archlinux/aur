@@ -17,24 +17,16 @@ source=('git+https://gitlab.gnome.org/World/read-it-later.git')
 sha512sums=('SKIP')
 builddir=build
 
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  local srcversion="$(grep "version" Cargo.toml | head -n1 | cut -d '"' -f 2)"
-  printf "%s.r%s.%s" $srcversion "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-  cd "${srcdir}/${_pkgname}"
-  meson --prefix /usr $builddir
-  ninja -v -C $builddir
+  arch-meson "${srcdir}/${_pkgname}" "$builddir"
+  meson compile -C "$builddir"
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
-  ninja -C $builddir test
+  meson test -C "$builddir"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  DESTDIR="${pkgdir}" ninja -C $builddir install
+  DESTDIR="$pkgdir" meson install -C "$builddir"
 }
+
