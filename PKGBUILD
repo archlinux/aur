@@ -5,8 +5,8 @@
 
 pkgname=hmcl-dev
 _pkgname=hmcl
-pkgver=3.4.210
-_commit=83b4b58cb2b193e9cddd593a92a74fcf5ae34b54
+pkgver=3.5.0.214
+_commit=31568a580654f11eeca5ea139c5fff390e325e09
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)"
 arch=('any')
@@ -37,7 +37,7 @@ build() {
   cd HMCL
   _java=$(ls /usr/lib/jvm | grep 8-openjdk)
   export JAVA_HOME=/usr/lib/jvm/$_java
-  sh gradlew build
+  sh gradlew --no-daemon build
 }
 
 package() {
