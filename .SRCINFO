@@ -1,0 +1,23 @@
+pkgbase = acmt-acm510
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://www.acmt.co.uk/products/download-acm510/index.html
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = acmt-acm510-vst
+	pkgdesc = ACM510 Channel Compressor (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm510-vst3
+	pkgdesc = ACM510 Channel Compressor (VST3)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm510-docs
+	pkgdesc = ACM510 Channel Compressor (Documentation)
