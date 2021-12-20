@@ -2,12 +2,12 @@
 
 pkgname=infonotary-client-software
 pkgver=2.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager."
 arch=('i686' 'x86_64')
 url="http://www.infonotary.com/"
 license=('unknown')
-depends=(qt5-base qt5-xmlpatterns nss openssl)
+depends=(qt5-base qt5-xmlpatterns nss openssl libldap24)
 replaces=(infonotary-scardmanager)
 conflicts=(infonotary-scardmanager)
 optdepends=(

@@ -1,7 +1,7 @@
 pkgbase = infonotary-client-software
 	pkgdesc = InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager.
 	pkgver = 2.0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.infonotary.com/
 	install = infonotary-client-software.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = infonotary-client-software
 	depends = qt5-xmlpatterns
 	depends = nss
 	depends = openssl
+	depends = libldap24
 	optdepends = ccid: generic USB Chip/Smart Card Interface Devices driver
 	optdepends = omnikey_ifdokccid: driver for OmniKey smart card readers
 	optdepends = bit4id-ipki: driver for T&S DS/2048 (L) smart cards
@@ -23,4 +24,3 @@ pkgbase = infonotary-client-software
 	md5sums = 9bb7bfb150896794ca855b7828cbab82
 
 pkgname = infonotary-client-software
-
