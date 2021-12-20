@@ -1,16 +1,16 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 pkgname=libdecsync
-pkgver=2.1.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='libdecsync is a multiplatform library for synchronizing using DecSync.'
 arch=(x86_64 aarch64)
 url='https://github.com/39aldo39/libdecsync'
 license=('custom:LGPL2')
-depends=()
+depends=(gcc-libs)  # libdecsync.so depends on libgcc_s.so.1
 optdepends=()
 makedepends=(jre8-openjdk ncurses5-compat-libs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/39aldo39/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8bfda4e73efa61d316ee4b103b0193e2fc1fa19de9345191f5c99dc6c7956df6')
+sha256sums=('3e08b35efed3bafb079aa52a8dcd51217f6602cde64accba1a10cf5c25029d45')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
