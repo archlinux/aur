@@ -1,0 +1,24 @@
+pkgbase = aether-reverb-lv2
+	pkgdesc = Aether Algorithmic Reverb (LV2)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Dougal-s/Aether
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = MIT
+	makedepends = git
+	makedepends = libxinerama
+	makedepends = libxrender
+	makedepends = libxcursor
+	makedepends = lv2
+	makedepends = libgl
+	makedepends = meson
+	depends = freetype2
+	depends = alsa-lib
+	depends = libxext
+	depends = libglvnd
+	source = aether-reverb-lv2::git+https://github.com/Dougal-s/Aether.git#tag=v1.2.1
+	md5sums = SKIP
+
+pkgname = aether-reverb-lv2
