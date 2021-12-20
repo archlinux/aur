@@ -3,20 +3,20 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.4.21.r255.g6d81d49f7
+pkgver=1.4.23.r5.g40fa6bde6
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
 url='http://www.remmina.org/'
 license=('GPL')
-depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
+depends=('zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
 	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
 	'libsecret' 'webkit2gtk' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake' 'avahi'
-    'libxkbfile' 'freerdp' 'telepathy-glib' 'gobject-introspection'
+    'libxkbfile' 'freerdp' 'gobject-introspection'
     'spice' 'spice-gtk' 'spice-protocol' 'gnome-keyring' 'kwallet' 'gtk-vnc'
     'libgnome-keyring' 'docbook-xsl' 'libpulse' 'libappindicator-gtk3')
-optdepends=('avahi' 'libxkbfile' 'telepathy-glib' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol')
+optdepends=('avahi' 'libxkbfile' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol' 'pyhoca-cli')
 replaces=('remmina-plugins')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
 conflicts=('remmina' 'grdc')
@@ -52,6 +52,7 @@ build() {
         -DWITH_KF5WALLET=ON \
         -DWITH_PYTHONLIBS=OFF \
         -DWITH_GVNC=ON \
+        -DWITH_X2GO=ON \
 		.
 	make
 }
