@@ -5,7 +5,7 @@ Comment=A cross-platform Steam toolbox.
 Comment[zh_CN]=一个开源跨平台的多功能Steam工具箱。
 Type=Application
 Exec=/usr/bin/steam++
-Icon=steamtools
+Icon=steam++
 Categories=Network;Utility
 Keywords=Steam;Steam++
 

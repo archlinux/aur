@@ -16,7 +16,7 @@ options=('!strip')
 source=('steamtools.desktop' 'icon.png::https://github.com/BeyondDimension/SteamTools/raw/develop/resources/AppIcon/Logo_64.png')
 source_aarch64=("Steam++_${CARCH}.7z::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_arm64_v${pkgver}.7z")
 source_x86_64=("Steam++_${CARCH}.7z::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_x64_v${pkgver}.7z")
-sha256sums=('dca3028b4fd625ad9f6eb86b44f1ef2447ca212e0894211a65e83543932de417'
+sha256sums=('9d19a6f955cc212b7bbe71cd80c36d5d8286b5f5d7b9259b3c6b63b92f15fe97'
             'e22ef2d0ecb1f4bc9226de92c4de9e282a57bb27222838637dec776f06362ac6')
 sha256sums_x86_64=('a74ce35aefcc76487bcd8402311ff2f794b0075390dd426c86f1dadf1f30d782')
 sha256sums_aarch64=('a74ce35aefcc76487bcd8402311ff2f794b0075390dd426c86f1dadf1f30d782')
