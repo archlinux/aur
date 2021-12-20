@@ -1,0 +1,14 @@
+pkgbase = collab3-vst
+	pkgdesc = CollaB3 Tone Wheel Organ (VST)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://librewave.com/product/collab3/
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = collab3-vst
