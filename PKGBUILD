@@ -2,9 +2,8 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-_pkgver=3.18.11
-pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgver=3.18.11
+pkgrel=3
 pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
 license=('MPL-2.0')
@@ -13,13 +12,13 @@ provides=('unciv')
 conflicts=('unciv')
 arch=('any')
 source=(
-  "$_pkgname-$_pkgver.jar::https://github.com/yairm210/Unciv/releases/download/$_pkgver/Unciv.jar"
-  "$_pkgname-$_pkgver.png::https://raw.githubusercontent.com/yairm210/$_pkgname/$_pkgver/extraImages/Unciv%20icon%20v4.png"
+  "$_pkgname-$pkgver.jar::https://github.com/yairm210/Unciv/releases/download/$pkgver/Unciv.jar"
+  "$_pkgname-$pkgver.png::https://raw.githubusercontent.com/yairm210/$_pkgname/$pkgver/extraImages/Unciv%20icon%20v4.png"
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
 noextract=(
-	"$_pkgname-$_pkgver.jar"
+	"$_pkgname-$pkgver.jar"
 )
 md5sums=('fff6fce23b721722ffe3cc833848eca4'
          '5aca7fc33f121fcf901fef14f784731a'
@@ -29,6 +28,6 @@ md5sums=('fff6fce23b721722ffe3cc833848eca4'
 package() {
   install -Dm755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 $_pkgname-$_pkgver.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 $_pkgname-$_pkgver.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
+  install -Dm644 $_pkgname-$pkgver.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 $_pkgname-$pkgver.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
 }
