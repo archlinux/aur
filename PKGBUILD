@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.22.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
