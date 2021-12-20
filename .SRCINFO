@@ -1,0 +1,23 @@
+pkgbase = qbittorrent-enhanced-ua
+	pkgdesc = An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition, original user-agent)
+	pkgver = 4.3.9.10
+	pkgrel = 1
+	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
+	arch = x86_64
+	license = custom
+	license = GPL
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = libtorrent-rasterbar
+	depends = qt5-base
+	depends = qt5-svg
+	depends = hicolor-icon-theme
+	optdepends = python: needed for torrent search tab
+	provides = qbittorrent
+	conflicts = qbittorrent
+	source = qBittorrent-Enhanced-Edition-release-4.3.9.10.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-4.3.9.10.tar.gz
+	source = revert-ua.patch
+	sha256sums = 4b450edf5cf6c58c1f9d330891f0d76d47db6d61c6d09961c533529035d66ad0
+	sha256sums = 0008902d772eb4120276af7a3306a1ae5ec3475dcdba869c90041003da8afaec
+
+pkgname = qbittorrent-enhanced-ua
