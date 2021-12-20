@@ -1,0 +1,20 @@
+pkgbase = tal-vocoder
+	pkgver = 2.2.0
+	pkgrel = 3
+	url = https://tal-software.com/products/tal-vocoder
+	arch = x86_64
+	license = EULA
+	depends = libcurl-gnutls
+	depends = glibc
+	source = https://tal-software.com/downloads/plugins/TAL-Vocoder-2_64_linux.zip
+	md5sums = ad70ad7a038e4adc57e12f3bf03cb5d8
+
+pkgname = tal-vocoder-vst
+	pkgdesc = A Phase Vocoder By TAL Software (VST)
+	groups = pro-audiovst-plugins
+	conflicts = distrho-ports
+	replaces = distrho-ports
+
+pkgname = tal-vocoder-vst3
+	pkgdesc = A Phase Vocoder By TAL Software (VST3)
+	groups = pro-audiovst-plugins
