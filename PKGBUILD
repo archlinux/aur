@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-gnome-ui-tune-git
-pkgver=1.5.0.r1.ge8cd04d
+pkgver=1.5.0.r3.g9d75205
 pkgrel=2
 pkgdesc="Tunes the overview UI of GNOME 40"
 arch=('any')
@@ -21,20 +21,19 @@ pkgver() {
 build() {
   cd $srcdir/gnome-ui-tune
   make gettext
-  make schemas
   make dist
 }
 
 package() {
   cd $srcdir/gnome-ui-tune
   _uuid='gnome-ui-tune@itstime.tech'
-  _schema='org.gnome.shell.extensions.gnome-ui-tune.gschema.xml'
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
   bsdtar xvf "$_uuid.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 
-  install -d "$pkgdir/usr/share/glib-2.0/schemas"
-  ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/$_schema" \
+  install -Dm644 schemas/org.gnome.shell.extensions.gnome-ui-tune.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas"
+
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
 }
