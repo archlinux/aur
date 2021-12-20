@@ -4,7 +4,7 @@
 # Contributor: Frank Carlyle McLaughlin <frank@frankspace.com>
 
 pkgname=worker
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
@@ -14,8 +14,9 @@ depends=('avfs' 'gcc-libs' 'libx11' 'file' 'xorgproto')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2
         http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2.asc)
-sha512sums=('35b289f0e8e9a1a9e15101b6aea9a370e0fdd3b5f8a5af25712911c091bd262c30e9b21878e132c810ca6cb324b6f54e6820aed706d6942e4ab253b317d5543e'
-            'a1b7dd9649aa411514f46e47710ccd1a3c7adebc3be37dbe41302c765a6dc6a93168c61b6e3315db7ff1f2b1edd821adada1cab3dc3c1436389b8dd0275f028f')
+sha512sums=('0ebe567ff948c856f96d04a9d52ba7c0f0b988d08d0cbdfe77d86dbbec5cb7bcde13a46fbb5b4a19206fbccbf4033b32d8ccafb909a245a7475ad2b1da32d296'
+            'ff0c3ee4371be607d629850d3d098bbaa86e323668818296e00ae2a63b4164d86faeacaaf50be82d621c16e8a605eec42b6c11783bd7b9d513a43e76b30b530b')
+
 
 validpgpkeys=('F9299EE90A729029E71AF26B667132D0FBC52B37') # Ralf Hoffmann
 
