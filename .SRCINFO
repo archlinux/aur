@@ -6,6 +6,8 @@ pkgbase = nordic-wallpapers-git
 	arch = any
 	license = MIT
 	makedepends = git
+	provides = nordic-wallpapers
+	conflicts = nordic-wallpapers
 	source = nordic-wallpapers-git::git+https://github.com/linuxdotexe/nordic-wallpapers
 	md5sums = SKIP
 

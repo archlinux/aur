@@ -8,6 +8,8 @@ arch=('any')
 url="https://github.com/linuxdotexe/nordic-wallpapers"
 license=('MIT')
 makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
