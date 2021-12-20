@@ -1,6 +1,6 @@
 pkgname=gvst-vst
 pkgver=20210112
-pkgrel=2
+pkgrel=3
 pkgdesc="GVST Plugin Suite."
 arch=('x86_64')
 url="https://www.gvst.co.uk/portpage.htm"
@@ -22,14 +22,9 @@ prepare () {
 }
 
 package() {
-
 	## Install GVST
 	mkdir -p $pkgdir/usr/lib/vst	
 	cp $srcdir/*.so $pkgdir/usr/lib/vst
-
-	## Install GVST Manuals
-	mkdir -p $pkgdir/usr/share/doc/$pkgname
-	cp $srcdir/*.pdf $pkgdir/usr/share/doc/$pkgname
 	
 	## Install License
 	install -Dm644 "$srcdir/GVSTLicense.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
