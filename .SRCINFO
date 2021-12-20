@@ -1,13 +1,13 @@
 pkgbase = redis-rejson
 	pkgdesc = Redis module that implements ECMA-404 The JSON Data Interchange Standard as a native data type.
-	pkgver = 1.0.1
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/RedisLabsModules/rejson
 	arch = x86_64
 	license = AGPL-3.0
 	depends = redis
-	source = https://github.com/RedisLabsModules/rejson/archive/v1.0.1.tar.gz
-	sha512sums = 0513b8dd96ae4802da5e6fb5e41a4a615c6d4297c0c438ed49bd3c459c89f8ffabf9242e51b544f4a9bf9a026c9cfcae630c1122f0c6a33e7bb415cd51f65ca1
+	source = https://github.com/RedisLabsModules/rejson/archive/v2.0.5.tar.gz
+	sha512sums = 1aed71cd5f1d563b0d2607f9bcb44a81e35db64b9d249c710520737a924011ef2b04faeb79cdb39f57c35e23550cc2302109183d94c9b26f88c1e3aa743b5f4d
 
 pkgname = redis-rejson
 
