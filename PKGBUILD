@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-disconnect-wifi-git
-pkgver=28.r5.gdaa2ee9
+pkgver=29.r3.g31ce363
 pkgrel=2
 pkgdesc="Adds a disconnect option for Wifi in status menu"
 arch=('any')
@@ -17,16 +17,20 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-  _uuid='disconnect-wifi@kgshank.net'
-  _schema='org.gnome.shell.extensions.disconnect-wifi.gschema.xml'
-
+build() {
   cd $srcdir/gse-disconnect-wifi
-  rm "$_uuid"/{disconnect-wifi.pot,license}
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/"
-  cp -r "$_uuid/" "$pkgdir/usr/share/gnome-shell/extensions/"
+  make
+}
 
-  install -d "$pkgdir/usr/share/glib-2.0/schemas/"
-  ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/$_schema" \
+package() {
+  cd $srcdir/gse-disconnect-wifi
+  make INSTALL_DIR="$pkgdir/usr/share/gnome-shell/extensions/" install
+
+  _uuid='disconnect-wifi@kgshank.net'
+
+  install -Dm644 "$_uuid/schemas/org.gnome.shell.extensions.disconnect-wifi.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
+
+  rm "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"/{disconnect-wifi.pot,license}
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
 }
