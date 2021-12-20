@@ -21,7 +21,6 @@ package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault/HeadCrusherv2"
     cp -rf $srcdir/Head\ Crusher\ v2\ Linux/HeadCrusherv2/* "$pkgdir/opt/Audio Assault/HeadCrusherv2/"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/HeadCrusherv2/
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/Head Crusher v2 Linux/Head Crusher v2.so" "$pkgdir/usr/lib/vst/Head Crusher v2.so"
