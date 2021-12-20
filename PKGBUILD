@@ -4,7 +4,7 @@
 _pkgname='nb'
 pkgname="${_pkgname}-snapshot"
 pkgver=6.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line note-taking, bookmarking, archiving, and knowledge base application (snapshot)'
 arch=('any')
 url="https://github.com/xwmx/${_pkgname}"
@@ -54,10 +54,11 @@ package() {
     install -Dm0755 "$extra" "${pkgdir}/usr/share/$_pkgname/${extra##*/}"
   done
 
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
   install -Dm0644 etc/nb-completion.bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm0644 etc/nb-completion.zsh  "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
-
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # eof
