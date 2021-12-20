@@ -1,0 +1,247 @@
+diff --git a/src/sage/cpython/atexit.pyx b/src/sage/cpython/atexit.pyx
+index 5b0c6d1..3ba391b 100644
+--- a/src/sage/cpython/atexit.pyx
++++ b/src/sage/cpython/atexit.pyx
+@@ -144,43 +144,63 @@ cdef class restore_atexit:
+ 
+ from cpython.ref cimport PyObject
+ 
+-# Internal structures defined in the CPython source in
+-# Modules/atexitmodule.c and subject to (but unlikely to) change.  Watch
+-# https://bugs.python.org/issue32082 for a request to (eventually)
+-# re-expose more of the atexit module's internals to Python
+-ctypedef struct atexit_callback:
+-    PyObject* func
+-    PyObject* args
+-    PyObject* kwargs
+-
+-
+-ctypedef struct atexitmodule_state:
+-    atexit_callback** atexit_callbacks
+-    int ncallbacks
+-    int callback_len
+-
+-
+-cdef extern from "Python.h":
+-    void* PyModule_GetState(object module)
+-
++# Implement "_atexit_callbacks()" for each supported python version
++cdef extern from *:
++    """
++    #if PY_VERSION_HEX >= 0x030a0000
++    /********** Python 3.10 **********/
++    #define Py_BUILD_CORE
++    #undef _PyGC_FINALIZED
++    #include "internal/pycore_interp.h"
++    #include "internal/pycore_pystate.h"
++    static atexit_callback ** _atexit_callbacks(PyObject *self) {
++        PyInterpreterState *interp = _PyInterpreterState_GET();
++        struct atexit_state state = interp->atexit;
++        return state.callbacks;
++    }
++    #else
++    /********** Python < 3.10 **********/
++    /* Internal structures defined in the CPython source in
++     * Modules/atexitmodule.c and subject to (but unlikely to) change.  Watch
++     * https://bugs.python.org/issue32082 for a request to (eventually)
++     * re-expose more of the atexit module's internals to Python
++     * typedef struct
++     */
++    typedef struct {
++        PyObject *func;
++        PyObject *args;
++        PyObject *kwargs;
++    } atexit_callback;
++    typedef struct {
++        atexit_callback **atexit_callbacks;
++        int ncallbacks;
++        int callback_len;
++    } atexitmodule_state;
++    static atexit_callback ** _atexit_callbacks(PyObject *self) {
++        atexitmodule_state *state = PyModule_GetState(self);
++        return state->atexit_callbacks;
++    }
++    #endif
++    """
++    ctypedef struct atexit_callback:
++        PyObject* func
++        PyObject* args
++        PyObject* kwargs
++    atexit_callback** _atexit_callbacks(object module)
+ 
+ def _get_exithandlers():
+     """Return list of exit handlers registered with the atexit module."""
+-    cdef atexitmodule_state* state
++    cdef atexit_callback ** callbacks
+     cdef atexit_callback callback
+     cdef list exithandlers
+     cdef int idx
+     cdef object kwargs
+ 
+-    state = <atexitmodule_state*>PyModule_GetState(atexit)
+-
+-    if not state:
+-        raise RuntimeError("atexit module state missing or corrupt")
+-
+     exithandlers = []
++    callbacks = _atexit_callbacks(atexit)
+ 
+-    for idx in range(state.ncallbacks):
+-        callback = state.atexit_callbacks[idx][0]
++    for idx in range(atexit._ncallbacks()):
++        callback = callbacks[idx][0]
+         if callback.kwargs:
+             kwargs = <object>callback.kwargs
+         else:
+@@ -207,4 +227,5 @@ def _set_exithandlers(exithandlers):
+ 
+ def _clear_exithandlers():
+     """Clear the atexit module of all registered exit handlers."""
++
+     atexit._clear()
+diff --git a/src/sage/misc/sageinspect.py b/src/sage/misc/sageinspect.py
+index fb2073f..bd89233 100644
+--- a/src/sage/misc/sageinspect.py
++++ b/src/sage/misc/sageinspect.py
+@@ -1585,6 +1585,8 @@ def sage_getargspec(obj):
+         ....:     'class Foo:\n'
+         ....:     '    def __call__(self):\n'
+         ....:     '        return None\n'
++        ....:     '    def __module__(self):\n'
++        ....:     '        return "sage.misc.sageinspect"\n'
+         ....:     '    def _sage_src_(self):\n'
+         ....:     '        return "the source code string"')
+         sage: shell.run_cell('f = Foo()')
+diff --git a/src/sage/plot/colors.py b/src/sage/plot/colors.py
+index 6fdba0f..f46b736 100644
+--- a/src/sage/plot/colors.py
++++ b/src/sage/plot/colors.py
+@@ -918,12 +918,12 @@ class Color(object):
+ 
+             sage: Color(0.3, 0.5, 0.7, space='hls').hls()
+             (0.30000000000000004, 0.5, 0.7)
+-            sage: Color(0.3, 0.5, 0.7, space='hsl').hls()
++            sage: Color(0.3, 0.5, 0.7, space='hsl').hls() # abs tol 1e-15
+             (0.30000000000000004, 0.7, 0.5000000000000001)
+-            sage: Color('#aabbcc').hls()
++            sage: Color('#aabbcc').hls() # abs tol 1e-15
+             (0.5833333333333334, 0.7333333333333334, 0.25000000000000017)
+             sage: from sage.plot.colors import orchid
+-            sage: orchid.hls()
++            sage: orchid.hls() # abs tol 1e-15
+             (0.8396226415094339, 0.6470588235294117, 0.5888888888888889)
+         """
+         return tuple(map(float, rgb_to_hls(*self._rgb)))
+@@ -942,9 +942,9 @@ class Color(object):
+             sage: Color(1,0,0).hsl()
+             (0.0, 1.0, 0.5)
+             sage: from sage.plot.colors import orchid
+-            sage: orchid.hsl()
++            sage: orchid.hsl() # abs tol 1e-15
+             (0.8396226415094339, 0.5888888888888889, 0.6470588235294117)
+-            sage: Color('#aabbcc').hsl()
++            sage: Color('#aabbcc').hsl() # abs tol 1e-15
+             (0.5833333333333334, 0.25000000000000017, 0.7333333333333334)
+         """
+         h, l, s = tuple(map(float, rgb_to_hls(*self._rgb)))
+diff --git a/src/sage/rings/asymptotic/growth_group.py b/src/sage/rings/asymptotic/growth_group.py
+index ba7e684..a91ec31 100644
+--- a/src/sage/rings/asymptotic/growth_group.py
++++ b/src/sage/rings/asymptotic/growth_group.py
+@@ -5434,7 +5434,7 @@ class GrowthGroupFactory(UniqueFactory):
+             describing a growth group.
+             > *previous* ValueError: Cannot create a parent out of 'as'.
+             >> *previous* ValueError: unknown specification as
+-            >> *and* SyntaxError: unexpected EOF while parsing (<string>, line 1)
++            >> *and* SyntaxError: ... (<string>, line 1)
+             > *and* ValueError: Cannot create a parent out of 'df'.
+             >> *previous* ValueError: unknown specification df
+             >> *and* NameError: name 'df' is not defined
+diff --git a/src/sage/schemes/riemann_surfaces/riemann_surface.py b/src/sage/schemes/riemann_surfaces/riemann_surface.py
+index 3c3d387..f9d1e2b 100644
+--- a/src/sage/schemes/riemann_surfaces/riemann_surface.py
++++ b/src/sage/schemes/riemann_surfaces/riemann_surface.py
+@@ -1390,7 +1390,7 @@ class RiemannSurface(object):
+             sage: S = RiemannSurface(f)
+             sage: _ = S.homology_basis()
+             sage: g,d = S.make_zw_interpolator([(0,0),(1,0)]);
+-            sage: all(f(*g(i*0.1)).abs() < 1e-13for i in range(10))
++            sage: all(f(*g(i*0.1)).abs() < 1e-13 for i in range(10))
+             True
+             sage: abs((g(1)[0]-g(0)[0]) - d) < 1e-13
+             True
+diff --git a/src/sage/structure/unique_representation.py b/src/sage/structure/unique_representation.py
+index 9ead7a4..5d8d4ad 100644
+--- a/src/sage/structure/unique_representation.py
++++ b/src/sage/structure/unique_representation.py
+@@ -1221,7 +1221,7 @@ class UniqueRepresentation(CachedRepresentation, WithEqualityById):
+         sage: isinstance(GF(7), GF)
+         Traceback (most recent call last):
+         ...
+-        TypeError: isinstance() arg 2 must be a type or tuple of types
++        TypeError: isinstance() arg 2 must be a type...
+ 
+         sage: isinstance(GF, sage.structure.factory.UniqueFactory)
+         True
+diff --git a/src/sage/symbolic/callable.py b/src/sage/symbolic/callable.py
+index 5f3a7be..4b8efda 100644
+--- a/src/sage/symbolic/callable.py
++++ b/src/sage/symbolic/callable.py
+@@ -38,27 +38,27 @@ The arguments in the definition must be symbolic variables (:trac:`10747`)::
+     sage: f(1)=2
+     Traceback (most recent call last):
+     ...
+-    SyntaxError: can...t assign to function call
++    SyntaxError: can...t assign to function call...
+ 
+     sage: f(x,1)=2
+     Traceback (most recent call last):
+     ...
+-    SyntaxError: can...t assign to function call
++    SyntaxError: can...t assign to function call...
+ 
+     sage: f(1,2)=3
+     Traceback (most recent call last):
+     ...
+-    SyntaxError: can...t assign to function call
++    SyntaxError: can...t assign to function call...
+ 
+     sage: f(1,2)=x
+     Traceback (most recent call last):
+     ...
+-    SyntaxError: can...t assign to function call
++    SyntaxError: can...t assign to function call...
+ 
+     sage: f(x,2)=x
+     Traceback (most recent call last):
+     ...
+-    SyntaxError: can...t assign to function call
++    SyntaxError: can...t assign to function call...
+ """
+ 
+ import sage.rings.abc
+diff --git a/src/sage/tests/cmdline.py b/src/sage/tests/cmdline.py
+index 4f16b0e..ba5aa14 100644
+--- a/src/sage/tests/cmdline.py
++++ b/src/sage/tests/cmdline.py
+@@ -766,6 +766,7 @@ def test_executable(args, input="", timeout=100.0, pydebug_ignore_warnings=False
+             rfd.append(fderr)
+         if len(rfd) == 0:
+             break
++        timeout = float(timeout)
+         rlist = select.select(rfd, [], [], timeout)[0]
+ 
+         if len(rlist) == 0:
+diff --git a/src/setup.cfg.m4 b/src/setup.cfg.m4
+index 16f88f2..b8bd0c0 100644
+--- a/src/setup.cfg.m4
++++ b/src/setup.cfg.m4
+@@ -26,7 +26,7 @@ classifiers =
+     Topic :: Scientific/Engineering :: Mathematics
+ 
+ [options]
+-python_requires = >=3.7, <3.10
++python_requires = >=3.7, <3.11
+ install_requires =
+     sage_conf
+     esyscmd(`sage-get-system-packages install-requires \

@@ -46,7 +46,7 @@ optdepends=('cython: to compile cython code'
   'python-pip: to install optional packages with sage -pip'
   'sage-notebook-exporter: convert flask notebooks to Jupyter'
   'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases')
-makedepends=(cython boost ratpoints python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe primecount git)
+makedepends=(cython boost ratpoints python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git://git.sagemath.org/sage.git#branch=develop
@@ -55,14 +55,17 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-lrcalc2.patch
         sagemath-singular-4.2.1.p1.patch
-        sagemath-linbox-1.7.patch)
+        sagemath-linbox-1.7.patch
+        sagemath-python3.10.patch)
 sha256sums=('SKIP'
             'b2308f25c5e6ad330342fc365056d7aebfbba09b833e3be6fb6283061709b6a0'
             '2f310081357996b7d3bf813e63d07c0fc04d6724adbfbd1beeb554e9476e2e4c'
             'd1310321bf07491658e83087a6ddb0011738fa17a1dc3275d6d5c6907eaf3df8'
             'ede5e054c73eab9aa71285bb3a16c1f2f0e4fdc0d4645fe13912ff9489865bee'
             '1f0c44a4998ed239a3d77e3028b98b6f2c28a95e9bb4b8557523cc8f12ffba34'
-            'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3')
+            'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
+            '602bf5ff69b81cb72123e9f0b1ce7df1cec0c15b97273e93691c1f11b20cd545'
+            '93e563a167431357dde9b8948d3bfa2b7c17873013f80eed83d3c800f38bdcc2')
 options=(debug !strip)
 
 pkgver() {
@@ -80,6 +83,8 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.2.1.p1.patch
 # Fix build with linbox 1.7 https://trac.sagemath.org/ticket/32959
   patch -p1 -i ../sagemath-linbox-1.7.patch
+# Fix tests with Python 3.10 https://trac.sagemath.org/ticket/30766
+  patch -p1 -i ../sagemath-python3.10.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
