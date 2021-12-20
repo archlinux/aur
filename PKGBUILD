@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem [at] protonail [dot] ch>
 pkgname=cbqn-git
-pkgver=r704.0389eda
+pkgver=r752.3d5a92c
 pkgrel=1
 pkgdesc="A BQN implementation in C."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname%-git}::git+${url}.git"
         'rlwrap-shim')
 md5sums=('SKIP'
          'SKIP'
-         'f23b43c3c37457cdb830eb7794ee945f'
+         '4fd2c4b8b11b0f234482d3fa8056c039'
          '02cb8cb1a3f5832526614237a04de4de')
 
 pkgver() {
