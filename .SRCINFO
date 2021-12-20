@@ -8,8 +8,8 @@ pkgbase = spotify-ripper
 	makedepends = python-setuptools
 	makedepends = libspotify
 	depends = python
-	depends = python-spotify
-	depends = python-spotipy
+	depends = python-pyspotify>=2.1.3-4
+	depends = python-spotipy>=2.19.0-2
 	depends = python-mutagen
 	depends = python-colorama
 	depends = python-requests
@@ -29,4 +29,3 @@ pkgbase = spotify-ripper
 	md5sums = 433ec722cffccd32c7e31807262f1128
 
 pkgname = spotify-ripper
-
