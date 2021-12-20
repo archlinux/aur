@@ -1,0 +1,14 @@
+pkgbase = python-aioice
+	pkgdesc = asyncio-based Interactive Connectivity Establishment (RFC 5245)
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/aiortc/aioice
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-dnspython
+	depends = python-netifaces
+	source = aioice-0.7.5.tar.gz::https://github.com/aiortc/aioice/archive/refs/tags/0.7.5.tar.gz
+	sha512sums = b7c0a186b31b8cfc81aebf87ed9a291b393b4faf5ed49933a224849738106135c735ab2e23adc40cfa7008d586f033c19785b204a665826a49e0b42afd3c2987
+
+pkgname = python-aioice
