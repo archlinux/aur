@@ -1,6 +1,6 @@
 # Maintainer: loupzeur <loup@loupzeur.net>
 pkgname=speedify-bin
-_pkgver=11.7.0-10182
+_pkgver=11.8.0-10224
 pkgver=${_pkgver/-/.}
 pkgrel=3
 pkgdesc="Use multiple internet connections in parallel"
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=
 source=()
-source_x86_64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_amd64.deb)
-source_aarch64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_arm64.deb)
-source_armv7h=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_armhf.deb)
+source_x86_64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname%-bin}/${pkgname%-bin}_${_pkgver}_amd64.deb)
+source_aarch64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname%-bin}/${pkgname%-bin}_${_pkgver}_arm64.deb)
+source_armv7h=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname%-bin}/${pkgname%-bin}_${_pkgver}_armhf.deb)
 # TODO: i386 is also supported
 md5sums_x86_64=('SKIP')
 md5sums_aarch64=('SKIP')
