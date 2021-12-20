@@ -1,6 +1,6 @@
 pkgbase = ctr-epicpress
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cutthroughrecordings.com/downloads
 	arch = x86_64
 	license = EULA
