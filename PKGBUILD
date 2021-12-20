@@ -1,7 +1,7 @@
 # Maintainer: Adam Smith <adam at adamsm dot com>
 
 pkgname=instamancer
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Scrape Instagram's API with Puppeteer."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('npm' 'jq')
 install='instamancer.install'
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('ba696a6f19a014a6d1dbf80fe038ae3b943d1ccfa7cd1eb29ee74fb81d83e8d7')
+sha256sums=('b7e97d33f01ff2e7a3d1cb72a53239ed3b1b4ab87da7300defc48cef1cab7cd4')
 
 # Taken from https://wiki.archlinux.org/index.php/Node.js_package_guidelines
 package() {

@@ -1,6 +1,6 @@
 pkgbase = instamancer
 	pkgdesc = Scrape Instagram's API with Puppeteer.
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/scriptsmith/instamancer
 	install = instamancer.install
@@ -15,9 +15,8 @@ pkgbase = instamancer
 	depends = libxss
 	depends = libxtst
 	depends = nss
-	noextract = instamancer-3.3.0.tgz
-	source = https://registry.npmjs.org/instamancer/-/instamancer-3.3.0.tgz
-	sha256sums = ba696a6f19a014a6d1dbf80fe038ae3b943d1ccfa7cd1eb29ee74fb81d83e8d7
+	noextract = instamancer-3.3.1.tgz
+	source = https://registry.npmjs.org/instamancer/-/instamancer-3.3.1.tgz
+	sha256sums = b7e97d33f01ff2e7a3d1cb72a53239ed3b1b4ab87da7300defc48cef1cab7cd4
 
 pkgname = instamancer
-
