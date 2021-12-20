@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'bzip2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dprint/dprint/archive/$pkgver.tar.gz")
-sha256sums=('c4019e8d0fd5301bc2752ebc7dfea10de7410f77ce8c74e2ac5a7a0eafcd3772')
+sha256sums=('13d8e07d4998801b12dfd1a287f23b2f2600db16f310af1af90b1c7b4eb23d15')
 
 prepare() {
 	cd "$pkgname-$pkgver"
