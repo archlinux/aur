@@ -1,0 +1,19 @@
+pkgbase = python-aiortc
+	pkgdesc = WebRTC and ORTC implementation for Python using asyncio
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/aiortc/aiortc
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-aioice
+	depends = python-av
+	depends = python-cffi
+	depends = python-cryptography
+	depends = python-google-crc32c
+	depends = python-pyee
+	depends = python-pylibsrtp
+	source = aiortc-1.2.1.tar.gz::https://github.com/aiortc/aiortc/archive/refs/tags/1.2.1.tar.gz
+	sha512sums = 86c324140bac6dcf90a1dc0a36f9cb676c386c9c22319f3ad4f7c7deb74fee3a0fb3b61de0500e265d6e3e7c6ad5100617a4de5ee6d1ccddb293099f751f5714
+
+pkgname = python-aiortc
