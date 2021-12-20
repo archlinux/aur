@@ -1,6 +1,6 @@
 pkgbase = python-dnspython-git
 	pkgdesc = A DNS toolkit for Python
-	pkgver = v2.0.0.r195.674cdfc
+	pkgver = v2.1.0.r200.ab53090
 	pkgrel = 1
 	url = http://www.dnspython.org
 	arch = any
@@ -10,11 +10,13 @@ pkgbase = python-dnspython-git
 	checkdepends = python-trio
 	makedepends = python-setuptools
 	makedepends = python-pytest
+	makedepends = python-httpx
+	makedepends = python-h2
 	depends = python
 	optdepends = python-idna: support for update IDNA 2008
 	optdepends = python-cryptography: DNSSEC support
-	optdepends = python-requests: DNS-over-HTTPS support
-	optdepends = python-requests-toolbelt: DNS-over-HTTPS support
+	optdepends = python-httpx: DNS-over-HTTPS support
+	optdepends = python-h2: DNS-over-HTTPS support
 	optdepends = python-trio: async I/O backend
 	optdepends = python-curio: async I/O backend
 	optdepends = python-sniffio: async I/O
@@ -24,4 +26,3 @@ pkgbase = python-dnspython-git
 	md5sums = SKIP
 
 pkgname = python-dnspython-git
-
