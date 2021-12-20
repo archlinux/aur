@@ -1,4 +1,5 @@
 pkg
 src
 SteamTools
+Credentials-Public
 *.pkg.tar.*

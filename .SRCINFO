@@ -1,7 +1,7 @@
-pkgbase = steamtools-git
+pkgbase = steam++-git
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 2.6.1_301_ge8e64c1c
-	pkgrel = 3
+	pkgver = 2.6.1_302_gb947d6cd
+	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
@@ -11,12 +11,14 @@ pkgbase = steamtools-git
 	makedepends = dotnet-sdk>=6.0.1
 	depends = dotnet-runtime>=6.0.1
 	optdepends = steam: need official or flatpak version of steam
-	provides = steamtools
-	conflicts = steamtools
+	provides = steam++
+	conflicts = steam++
 	options = !strip
 	source = git+https://github.com/BeyondDimension/SteamTools
+	source = git+https://github.com/BeyondDimension/Credentials-Public
 	source = steamtools.desktop
 	sha256sums = SKIP
-	sha256sums = c5ad80f74cfbcf89f2285f15eb7987766313f2c6393d0b09dadc335979050746
+	sha256sums = SKIP
+	sha256sums = 8255faa817982a81ee3c12599e6ca4b10b39a21eb49b2dfd6d0ad09939a25d0b
 
-pkgname = steamtools-git
+pkgname = steam++-git
