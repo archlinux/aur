@@ -15,14 +15,13 @@ makedepends=('git')
 conflicts=('xdgurl')
 provides=('xdgurl')
 source=("git+$url.git#tag=release-$pkgver"
-	"new-version-format.patch")
+	"git+https://github.com/akiraohgaki/qtil.git#tag=v0.4.0")
 sha256sums=('SKIP'
-	    'c80a519c8caa7c1ebb9cc26374f25c7681f5740d64a4d88ffaf495e077e234fc')
+	    'SKIP')
 
 prepare() {
     cd $pkgname
-    patch --forward --strip=1 --input="${srcdir}/new-version-format.patch"
-    ./scripts/prepare
+    ln -s "$srcdir/qtil" lib/qtil
 }
 
 build() {

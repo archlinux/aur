@@ -13,9 +13,8 @@ pkgbase = ocs-url
 	provides = xdgurl
 	conflicts = xdgurl
 	source = git+https://www.opencode.net/dfn2/ocs-url.git#tag=release-3.1.0
-	source = new-version-format.patch
+	source = git+https://github.com/akiraohgaki/qtil.git#tag=v0.4.0
 	sha256sums = SKIP
-	sha256sums = c80a519c8caa7c1ebb9cc26374f25c7681f5740d64a4d88ffaf495e077e234fc
+	sha256sums = SKIP
 
 pkgname = ocs-url
-
