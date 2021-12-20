@@ -21,7 +21,6 @@ package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault"
     cp -rf "$srcdir/Linux $pkgver/Duality" "$pkgdir/opt/Audio Assault/Duality"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/Duality
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/Linux $pkgver/Duality Bass Studio.so" "$pkgdir/usr/lib/vst/Duality Bass Studio.so"
