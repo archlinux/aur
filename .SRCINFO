@@ -1,5 +1,5 @@
 pkgbase = mgba-git
-	pkgver = 0.10.0.r7087.9355def31
+	pkgver = 0.10.0.r7169.b5e94b0ab
 	pkgrel = 1
 	url = http://mgba.io/
 	arch = x86_64

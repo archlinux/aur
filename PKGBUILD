@@ -2,7 +2,7 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=0.10.0.r7087.9355def31
+pkgver=0.10.0.r7169.b5e94b0ab
 pkgrel=1
 arch=('x86_64')
 url='http://mgba.io/'
@@ -15,10 +15,10 @@ sha1sums=('SKIP')
 pkgver() {
     cd "$srcdir"/mgba
     for v in LIB_VERSION_MAJOR \
-    		 LIB_VERSION_MINOR \
-    		 LIB_VERSION_PATCH; do
-    	ver=$(grep -m 1 $v version.cmake | grep -o '[0-9]' | tr -d '\n')
-    	printf -v "$v" "%s" "$ver"
+             LIB_VERSION_MINOR \
+             LIB_VERSION_PATCH; do
+        ver=$(grep -m 1 $v version.cmake | grep -o '[0-9]' | tr -d '\n')
+        printf -v "$v" "%s" "$ver"
     done
 
     printf "%s.%s.%s.r%s.%s" \
@@ -51,7 +51,7 @@ package_libmgba-git() {
         -P build/cmake_install.cmake
 
     cmake -DCOMPONENT=mgba-dev mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
-    	-P build/cmake_install.cmake
+        -P build/cmake_install.cmake
 
     install -Dm644 mgba/LICENSE "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
 }
