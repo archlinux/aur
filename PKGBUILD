@@ -1,9 +1,10 @@
-# Maintainer: locked_sh <locked.sh@disroot.org>
+# Maintainer: Moses Narrow <moe-narrow@use.startmail.com>
+# Contributor: locked_sh <locked.sh@disroot.org>
 # Contributor: Nicholas Wang <me@nicho1as.wang>
 
 pkgname=emercoin
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64')
 url="https://emercoin.com/"
