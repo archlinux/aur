@@ -1,14 +1,14 @@
 # Maintainer: Paolo De Donato <dedonato95@hotmail.it>
 pkgname=stringsuite
-pkgver=2.1
+pkgver=3.0
 pkgrel=1
 pkgdesc="Suite to work with strings with different encodings"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Loara/StringSuite"
 license=('LGPL3')
 groups=()
 depends=()
-makedepends=('cmake>=3.20') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('cmake>=3.20')
 provides=()
 conflicts=()
 replaces=()
@@ -17,13 +17,13 @@ options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Loara/StringSuite/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('06a7d798954059f2eed160acb6aa99c4cd11c997b276d859a359a9abe206ce3e')
+sha256sums=('11d5af29891b44436a89225c9f054d04ce85076e1d261507d6d8809bb9dd9650')
 
-#  Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
+# Release already provides -O2 optimization
 
 build() {
-	cmake -S "$srcdir/StringSuite-${pkgver}/src" -B build
+	cmake -B build -S "StringSuite-${pkgver}/src"
+	cmake -DCMAKE_BUILD_TYPE="Release" build
 	cmake --build build
 }
 
