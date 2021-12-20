@@ -1,13 +1,14 @@
 pkgbase = python-simpy
 	pkgdesc = Event discrete, process based simulation for Python.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://simpy.readthedocs.org/en/latest/
 	arch = any
 	license = MIT
-	depends = python-setuptools
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
 	source = https://pypi.io/packages/source/s/simpy/simpy-4.0.1.tar.gz
 	sha256sums = b36542e2faab612f861c5ef4da17220ac1553f5892b3583c67281dbe4faad404
 
 pkgname = python-simpy
-
