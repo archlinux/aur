@@ -1,0 +1,7 @@
+post_install() {
+    echo "muslcc toolchain installed to /opt/muslcc/arm-linux-musleabi-cross/."
+    echo "The PATH variable will be updated on re-login. To immediately load it:"
+    echo ""
+    echo "  source /etc/profile.d/arm-linux-musleabi-cross.sh"
+    echo ""
+}
