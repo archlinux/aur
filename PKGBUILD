@@ -2,10 +2,10 @@
 
 pkgname=jucy
 pkgver=0.87.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Jucy is a client for the DirectConnect protocol.'
 arch=('i686' 'x86_64')
-url='http://jucy.eu'
+url='https://web.archive.org/web/20210516161142/http://www.jucy.eu/'
 license=('BSD')
 groups=()
 depends=('java-runtime')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=('!strip')
 
-source=(jucy.linux.gtk.x86_64.zip::${url}/download.php?filename=jucy.linux.gtk.x86_64.zip ${pkgname}.desktop ${pkgname}.sh)
+source=(jucy.linux.gtk.x86_64.zip::${url}download.php?filename=jucy.linux.gtk.x86_64.zip ${pkgname}.desktop ${pkgname}.sh)
 noextract=()
 
 md5sums=('6819fe2b6122eefbb54c0a88bb430712'

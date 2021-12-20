@@ -1,15 +1,15 @@
 pkgbase = jucy
 	pkgdesc = Jucy is a client for the DirectConnect protocol.
 	pkgver = 0.87.1
-	pkgrel = 1
-	url = http://jucy.eu
+	pkgrel = 2
+	url = https://web.archive.org/web/20210516161142/http://www.jucy.eu/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = imagemagick
 	depends = java-runtime
 	options = !strip
-	source = jucy.linux.gtk.x86_64.zip::http://jucy.eu/download.php?filename=jucy.linux.gtk.x86_64.zip
+	source = jucy.linux.gtk.x86_64.zip::https://web.archive.org/web/20210516161142/http://www.jucy.eu/download.php?filename=jucy.linux.gtk.x86_64.zip
 	source = jucy.desktop
 	source = jucy.sh
 	md5sums = 6819fe2b6122eefbb54c0a88bb430712
@@ -20,4 +20,3 @@ pkgbase = jucy
 	sha1sums = 61d44329ebc2d7f86a6e345c552f9cb9fdccf59c
 
 pkgname = jucy
-
