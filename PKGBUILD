@@ -21,7 +21,6 @@ package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault/Bulldog"
     cp -rf $srcdir/Bulldog\ Linux\ Install/Bulldog/* "$pkgdir/opt/Audio Assault/Bulldog/"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/Bulldog
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/Bulldog Linux Install/BULLDOGvst2.so" "$pkgdir/usr/lib/vst/BULLDOGvst2.so"
