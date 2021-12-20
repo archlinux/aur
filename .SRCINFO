@@ -1,0 +1,14 @@
+pkgbase = emacs-hcl-mode-git
+	pkgdesc = Emacs major mode for HashiCorp HCL language
+	pkgver = 0.03.3.gec27736
+	pkgrel = 1
+	url = https://github.com/syohex/emacs-hcl-mode
+	arch = any
+	license = MIT
+	depends = emacs
+	provides = emacs-hcl-mode
+	conflicts = emacs-hcl-mode
+	source = git+https://github.com/syohex/emacs-hcl-mode.git
+	sha256sums = SKIP
+
+pkgname = emacs-hcl-mode-git
