@@ -5,9 +5,9 @@ pkgname=('python-sphinxcontrib-confluencebuilder'
          'python2-sphinxcontrib-confluencebuilder')
 pkgver='1.7.1'
 pkgrel='1'
-pkgdesc="Include a full table of contents in your Sphinx HTML sidebar"
+pkgdesc="Sphinx extension to build Confluence® compatible markup format files and optionally publish them"
 arch=('any')
-url="https://github.com/sphinx-contrib/fulltoc"
+url="https://github.com/sphinx-contrib/confluencebuilder"
 makedepends=('python-setuptools'
              'python2-setuptools')
 license=('GPL')
