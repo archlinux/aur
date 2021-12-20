@@ -15,7 +15,7 @@ pkgbase = python-sparse
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-numba
-	source = python-sparse-0.13.0.tar.gz::https://github.com/pydata/sparse/archive/0.13.0.tar.gz
-	sha256sums = c1f37c2097dfb017789ade963cebd199151b015aa6a30eece2359eb4e3c545e1
+	source = python-sparse-0.13.0.tar.gz::https://files.pythonhosted.org/packages/source/s/sparse/sparse-0.13.0.tar.gz
+	sha256sums = 685dc994aa770ee1b23f2d5392819c8429f27958771f8dceb2c4fb80210d5915
 
 pkgname = python-sparse
