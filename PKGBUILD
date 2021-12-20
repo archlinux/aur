@@ -26,7 +26,6 @@ package() {
   cd "$srcdir/$_pkgname"
 
   _uuid="$_pkgname@spin83"
-  _schema="org.gnome.shell.extensions.$_pkgname.gschema.xml"
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/"
   cp -a "$_uuid/" "$pkgdir/usr/share/gnome-shell/extensions/"
