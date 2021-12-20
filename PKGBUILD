@@ -1,6 +1,6 @@
 pkgname=gvst-vst
 pkgver=20210112
-pkgrel=1
+pkgrel=2
 pkgdesc="GVST Plugin Suite."
 arch=('x86_64')
 url="https://www.gvst.co.uk/portpage.htm"

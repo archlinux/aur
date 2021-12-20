@@ -1,7 +1,7 @@
 pkgbase = gvst-vst
 	pkgdesc = GVST Plugin Suite.
 	pkgver = 20210112
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gvst.co.uk/portpage.htm
 	arch = x86_64
 	groups = pro-audio
