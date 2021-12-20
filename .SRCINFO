@@ -1,42 +1,8 @@
+generated-by = makedeb-makepkg
+
 pkgbase = makedeb-beta
-	pkgdesc = A simplicity-focused packaging tool for Debian archives (beta release)
-	pkgver = 8.6.3
+	pkgver = 1
 	pkgrel = 1
-	url = https://github.com/makedeb/makedeb
 	arch = any
-	license = GPL3
-	makedepends = asciidoctor
-	makedepends = git
-	makedepends = make
-	makedepends = jq
-	depends = awk
-	depends = binutils
-	depends = bzip2
-	depends = coreutils
-	depends = dpkg
-	depends = fakeroot
-	depends = file
-	depends = findutils
-	depends = gettext
-	depends = gnupg
-	depends = grep
-	depends = gzip
-	depends = libarchive
-	depends = lsb-release
-	depends = ncurses
-	depends = sed
-	depends = tar
-	depends = xz
-	provides = makedeb-makepkg
-	provides = makedeb-makepkg-beta
-	provides = makedeb-makepkg-alpha
-	conflicts = makedeb-makepkg
-	conflicts = makedeb-makepkg-beta
-	conflicts = makedeb-makepkg-alpha
-	replaces = makedeb-makepkg
-	replaces = makedeb-makepkg-beta
-	replaces = makedeb-makepkg-alpha
-	source = makedeb::git+https://github.com/makedeb/makedeb/#tag=v8.6.3-1-beta
-	sha256sums = SKIP
 
 pkgname = makedeb-beta
