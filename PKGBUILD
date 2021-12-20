@@ -187,11 +187,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-<<<<<<< HEAD
-  _ungoogled_repo="$srcdir/$pkgname-$pkgver-1"
-=======
   _ungoogled_repo="$srcdir/ungoogled-chromium-$pkgver-1"
->>>>>>> 0b33aae (A new start)
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # use fixed flags as system flags break build
