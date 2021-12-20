@@ -1,18 +1,20 @@
 pkgbase = ocaml-sqlite3
 	pkgdesc = SQLite3 bindings for OCaml
-	pkgver = 5.0.2
+	pkgver = 5.1.0
 	pkgrel = 1
-	url = https://github.com/mmottl/sqlite3-ocaml
+	url = https://mmottl.github.io/sqlite3-ocaml/
 	arch = x86_64
 	license = MIT
-	makedepends = ocaml-findlib
 	makedepends = dune
 	depends = ocaml
-	depends = ocaml-base
 	depends = ocaml-stdio
-	depends = sqlite3
-	source = ocaml-sqlite3-5.0.2.tar.gz::https://github.com/mmottl/sqlite3-ocaml/archive/5.0.2.tar.gz
-	sha256sums = 345811e9f6dc0478e0b5cc82bd75fc2859fab2a96e8fde424c95df23f4267f9c
+	depends = sqlite>=3
+	provides = sqlite3-ocaml
+	conflicts = sqlite3-ocaml
+	replaces = sqlite3-ocaml
+	options = !strip
+	options = staticlibs
+	source = https://github.com/mmottl/sqlite3-ocaml/releases/download/5.1.0/sqlite3-5.1.0.tbz
+	sha256sums = bb0db711691a8dfa24fe29ec4ecb6912444ad90e0f4c447af89831e6d1dffea5
 
 pkgname = ocaml-sqlite3
-
