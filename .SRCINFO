@@ -1,0 +1,13 @@
+pkgbase = linvst
+	pkgdesc = Windows VST2 wrapper that allows them to be used as Linux VST2s in compatible DAWs using Wine.
+	pkgver = 4.7.r11.g141e405
+	pkgrel = 1
+	url = https://github.com/osxmidi/LinVst
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = wine
+	source = linvst::git+https://github.com/osxmidi/LinVst.git
+	sha256sums = SKIP
+
+pkgname = linvst
