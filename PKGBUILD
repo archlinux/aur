@@ -9,7 +9,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-catalyst-controller-actionrole' 'perl-catalyst-runtime>=5.90013' 'perl-moose' 'perl-namespace-autoclean')
 makedepends=('perl-module-install')
-makedepends=('perl-perlio-utf8-strict')
+checkdepends=('perl-perlio-utf8-strict')
 url='http://search.cpan.org/dist/Catalyst-ActionRole-ACL'
 source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-ActionRole-ACL-0.07.tar.gz')
 md5sums=('e4296bf6ce02dcf07190cc8355a7b57c')

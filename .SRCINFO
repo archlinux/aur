@@ -6,7 +6,8 @@ pkgbase = perl-catalyst-actionrole-acl
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-perlio-utf8-strict
+	checkdepends = perl-perlio-utf8-strict
+	makedepends = perl-module-install
 	depends = perl-catalyst-controller-actionrole
 	depends = perl-catalyst-runtime>=5.90013
 	depends = perl-moose
