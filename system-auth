@@ -3,8 +3,8 @@
 auth       required                    pam_faillock.so      preauth
 # Optionally use requisite above if you do not want to prompt for the password
 # on locked accounts.
-auth       [success=2 default=ignore]  pam_unix.so          try_first_pass nullok
--auth      [success=1 default=ignore]  pam_systemd_home.so
+-auth      [success=2 default=ignore]  pam_systemd_home.so
+auth       [success=1 default=bad]     pam_unix.so          try_first_pass nullok
 auth       [default=die]               pam_faillock.so      authfail
 auth       optional                    pam_permit.so
 auth       required                    pam_env.so
@@ -21,6 +21,7 @@ account    required                    pam_time.so
 password   required                    pam_unix.so          try_first_pass nullok shadow sha512
 password   optional                    pam_permit.so
 
+-session   optional                    pam_systemd_home.so
 session    required                    pam_limits.so
 session    required                    pam_unix.so
 session    optional                    pam_permit.so

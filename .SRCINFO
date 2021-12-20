@@ -1,13 +1,13 @@
 pkgbase = pambase-selinux
 	pkgdesc = SELinux aware base PAM configuration for services
-	pkgver = 20211111
+	pkgver = 20211210
 	pkgrel = 1
 	url = https://www.archlinux.org
 	arch = any
 	groups = selinux
 	license = GPL
-	provides = pambase=20211111-1
-	provides = selinux-pambase=20211111-1
+	provides = pambase=20211210-1
+	provides = selinux-pambase=20211210-1
 	conflicts = pambase
 	conflicts = selinux-pambase
 	conflicts = pam-selinux<1.4.0
@@ -23,7 +23,7 @@ pkgbase = pambase-selinux
 	source = system-remote-login
 	source = system-services
 	source = other
-	sha256sums = e9aedc66bfe06aa0e62e4539525b23dcdf98e373e6930a2a8b2be06045355fee
+	sha256sums = d3f6c7465198415df7bc3b365595642c7255dd69f2d7db548eb071123f43164c
 	sha256sums = 005736b9bd650ff5e5d82a7e288853776d5bb8c90185d5774c07231c1e1c64a9
 	sha256sums = faa98a6c4c501d34709f46081f73f110473e93183ecebf21070c7590a4045d80
 	sha256sums = 005736b9bd650ff5e5d82a7e288853776d5bb8c90185d5774c07231c1e1c64a9
