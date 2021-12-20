@@ -4,12 +4,8 @@ Name[zh_CN]=Steam++工具箱
 Comment=A cross-platform Steam toolbox.
 Comment[zh_CN]=一个开源跨平台的多功能Steam工具箱。
 Type=Application
-Exec=/usr/bin/steamtools
+Exec=/usr/bin/steam++
 Icon=steamtools
 Categories=Network;Utility
-Keywords=Steam;Steam++;SteamTools
+Keywords=Steam;Steam++
 
-[Desktop Action Exit]
-Name=Exit
-Name[zh_CN]=退出
-Exec=killall steamtools
