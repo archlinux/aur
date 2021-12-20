@@ -1,6 +1,5 @@
 # Maintainer: Julia DeMille <me@jdemille.com>
-# Contributor: David <ottodavid@gmx.net>
-pkgname=linvst
+pkgname=linvst-git
 pkgver=4.7.r11.g141e405
 pkgrel=1
 license=('GPL3')
