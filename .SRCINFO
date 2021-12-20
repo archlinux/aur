@@ -1,7 +1,7 @@
 pkgbase = ultimate-chromium
-	pkgdesc = Chromium without the bullshit, better Wayland support and no google spyware
+	pkgdesc = Chromium without the bullshit, better Wayland support, no google spyware, and more to come
 	pkgver = 96.0.4664.110
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/ultimate-chromium
 	arch = x86_64
 	license = BSD
