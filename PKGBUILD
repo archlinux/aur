@@ -7,8 +7,8 @@ pkgdesc="Minimal R API for Python"
 url="https://github.com/randy3k/$_pkgname"
 arch=('any')
 license=('MIT')
-depends=('r>3.4.0' 'python-multipledispatch' 'python-cffi>=1.10.0')
-makedepends=('python-setuptools' 'python-six>=1.9.0')
+depends=('r>3.4.0' 'python-cffi>=1.10.0')
+makedepends=('python-setuptools' 'python-pip' 'python-six>=1.9.0')
 checkdepends=('python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d3895afc1f9ecbb7537029624dbc34418baa2f97b0e6be0faca53695dedb2691')

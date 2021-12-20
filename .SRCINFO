@@ -7,9 +7,9 @@ pkgbase = python-rchitect
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = python-pip
 	makedepends = python-six>=1.9.0
 	depends = r>3.4.0
-	depends = python-multipledispatch
 	depends = python-cffi>=1.10.0
 	source = rchitect-0.3.35.tar.gz::https://github.com/randy3k/rchitect/archive/v0.3.35.tar.gz
 	sha256sums = d3895afc1f9ecbb7537029624dbc34418baa2f97b0e6be0faca53695dedb2691
