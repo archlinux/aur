@@ -1,0 +1,25 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Link to the binary
+	ln -sf '/opt/linux-performance-control/linux-performance-control' '/usr/bin/linux-performance-control'
+
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 '/opt/linux-performance-control/chrome-sandbox' || true
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Delete the link to the binary
+	rm -f '/usr/bin/linux-performance-control'
+	update-desktop-database -q
+}

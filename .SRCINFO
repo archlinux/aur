@@ -1,0 +1,27 @@
+pkgbase = linux-performance-control
+	pkgdesc = Linux性能管理
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/xushengfeng/linux-performance-control#readme
+	install = linux-performance-control.install
+	arch = x86_64
+	groups = 
+	license = GPL3
+	depends = at-spi2-core
+	depends = clion
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = util-linux-libs
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source = https://hub.fastgit.org/xushengfeng/linux-performance-control/releases/download/v2.0.2/linux-performance-control_2.0.2_amd64.deb
+	sha512sums = d6c6a8bdd32efa61560e39d8a775cf98252a4cce81af317881f79acc509af75ab7c02f447876952364fa8d7530941abe6643c063591ff2a435d82246d74d296d
+
+pkgname = linux-performance-control
