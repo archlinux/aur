@@ -3,8 +3,8 @@
 
 pkgname=python-ipympl
 _pkgname="${pkgname#*-}"
-pkgver=0.8.2
-pkgrel=60
+pkgver=0.8.4
+pkgrel=1
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 depends=(
@@ -18,8 +18,8 @@ makedepends=(
   'python-jupyter_packaging')
 license=('BSD')
 arch=(any)
-source=("https://pypi.python.org/packages/8b/01/544cefd27f6b9b1d1722537bcd93f39035be136c18a268c743e0d51091aa/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('0878d8f0242c875a0bf258ca2718453afb83279a17660ff65f7d8c054fe0f34e83db99c8e450fe9c5b6c7e3621cccf8c4870a5ba1f49809e2e057c92969bcc10')
+source=("https://pypi.python.org/packages/a8/ad/835a71e225b5378979a4b1526f1f23948a19e57379f3cdc829b1f9a2dac2/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('6c878c06179895cfccb47b53817a64a5715545437031f77c33a37c3da868fd380111029f5318b3f3128913d76269250c7ea38dcc2b0deab74d0cd9ea5f165adf')
 
 build() {
   cd "${_pkgname}-${pkgver}"
