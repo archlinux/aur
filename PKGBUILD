@@ -84,7 +84,7 @@ else
 pkgname="emacs-git-native-compilation-pgtk"
 fi
 pkgver=29.0.50.153023
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch. native-compilation and pgtk enabled by default"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -110,8 +110,6 @@ b2sums=('SKIP')
 
 
 
-b2sums=('SKIP')
-b2sums=('SKIP')
 
 options=(!strip debug)
 ################################################################################
@@ -274,7 +272,7 @@ elif [[ $NOTKIT == "YES" ]]; then
 elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
 elif [[ $PGTK == "YES" ]]; then
-  _conf+=( '--with-pgtk3' '--without-xaw3d' );
+  _conf+=( '--with-x-toolkit=gtk3' '--with-pgtk' '--without-xaw3d' );
 else
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 fi
