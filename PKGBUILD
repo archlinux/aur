@@ -4,10 +4,10 @@
 
 pkgbase=linux-vfio-manjaro
 pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
-_kernelname=-MANJARO-VFIO
+_kernelname=-MANJARO
 _basekernel=5.15
 _basever=515
-pkgver=5.15.10
+pkgver=5.15.10.vfio
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
