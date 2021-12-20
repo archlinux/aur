@@ -34,7 +34,6 @@ package() {
     if [ -d "$srcdir/Extreme Metal" ]; then
         cp -rf $srcdir/Extreme\ Metal/*.preset "$pkgdir/opt/Audio Assault/Blacksun/Presets"
     fi
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/Blacksun/
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/Blacksun Linux/Blacksunvst2.so" "$pkgdir/usr/lib/vst/Blacksunvst2.so"
