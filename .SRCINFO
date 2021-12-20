@@ -1,0 +1,12 @@
+pkgbase = nordic-wallpapers-git
+	pkgdesc = Wallpaper collection using the Nord color palette
+	pkgver = r50.700ec61
+	pkgrel = 1
+	url = https://github.com/linuxdotexe/nordic-wallpapers
+	arch = any
+	license = MIT
+	makedepends = git
+	source = nordic-wallpapers-git::git+https://github.com/linuxdotexe/nordic-wallpapers
+	md5sums = SKIP
+
+pkgname = nordic-wallpapers-git
