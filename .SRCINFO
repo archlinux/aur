@@ -1,7 +1,7 @@
 pkgbase = python-datrie
 	pkgdesc = Fast, efficiently stored Trie for Python. Uses libdatrie
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytries/datrie
 	arch = x86_64
 	license = LGPL
@@ -15,4 +15,3 @@ pkgbase = python-datrie
 	sha256sums = 79d9a2960749903d632812fcc0edd09d991774933c8c332b8a82b70097721923
 
 pkgname = python-datrie
-

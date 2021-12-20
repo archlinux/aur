@@ -3,7 +3,7 @@
 pkgname=python-datrie
 _pkgname=datrie
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, efficiently stored Trie for Python. Uses libdatrie"
 arch=('x86_64')
 url="https://github.com/pytries/datrie"
