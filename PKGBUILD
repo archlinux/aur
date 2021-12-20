@@ -21,7 +21,6 @@ package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault"
     cp -rf "$srcdir/Linux $pkgver/aIR" "$pkgdir/opt/Audio Assault/aIR"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/aIR
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/Linux $pkgver/aIR Impulse Loader.so" "$pkgdir/usr/lib/vst/aIR Impulse Loader.so"
