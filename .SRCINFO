@@ -1,6 +1,6 @@
 pkgbase = python-orange
 	pkgdesc = Open source machine learning and data visualization
-	pkgver = 3.30.2
+	pkgver = 3.31.0
 	pkgrel = 1
 	url = https://orangedatamining.com/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = python-orange
 	depends = python-baycomp
 	optdepends = python-psycopg2: PostgreSQL database support
 	optdepends = python-pymssql: Microsoft SQL Server support
-	source = python-orange-3.30.2.tar.gz::https://github.com/biolab/orange3/archive/3.30.2.tar.gz
-	sha256sums = fc5f184793f892e27cce3a61f12a2b1d05fee54da1f0626ea26fb211b74fced4
+	source = python-orange-3.31.0.tar.gz::https://github.com/biolab/orange3/archive/3.31.0.tar.gz
+	sha256sums = 6de17dedae4b66e4fa7987675c234574369560491279da9052c95ff6bf2ad646
 
 pkgname = python-orange
