@@ -12,4 +12,3 @@ pkgbase = python-tensap
 	sha256sums = 4074eb9cb76460114c4e54a0558a948a6464a71dee53b384a0bf734f156986d3
 
 pkgname = python-tensap
-
