@@ -1,0 +1,19 @@
+pkgbase = kicad-pcb-diff
+	pkgdesc = This program generates a PDF file showing the changes between two KiCad PCB files.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/INTI-CMNB/kicad_pcb-diff
+	arch = any
+	license = GPL-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = kicad
+	depends = python-wxpython
+	depends = imagemagick
+	depends = poppler
+	depends = xdg-utils
+	options = !strip
+	source = kicad-pcb-diff-1.1.0.tar.gz::https://ghproxy.com/https://github.com/INTI-CMNB/kicad_pcb-diff/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 6904b04b913b4e22c0b9aca244456264b4cb0538f2dc80227fae6ce125246daf
+
+pkgname = kicad-pcb-diff
