@@ -10,7 +10,7 @@ _majorver=17
 _minorver=0
 _securityver=1
 _updatever=12
-pkgrel=1
+pkgrel=2
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -26,12 +26,14 @@ source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop
-        xdg-basedir-compliant-fontconfig.patch)
+        xdg-basedir-compliant-fontconfig.patch
+        xdg-basedir-compliant-userPrefs.patch)
 sha256sums=('8c076203a6f85ab916b3e54de1992bcbcc5ffe580c52b1ac8d52ca7afb9f02d1'
             '85c4742764590783160af74587a47269e6797fbdf17ec485c7644bd239adf61d'
             'abac1ab09a33a3654378bc69be5a7cf075263ab3ae9efec1eb25cf388e711bb7'
             'e7cce0ecf868f656d8dc2eb25ab82ab665526a0a28aba20f02632dd29962dac3'
-            'f0584c4224833c56340fe96c40e43ceee08c419bea6c8de483dda27df98f4c54')
+            '25860396475759236e0edf66711b842143b0ddee47eed61e080da158bbc58ce9'
+            '48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c')
 provides=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src' 'openjdk-doc')
 conflicts=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src' 'openjdk-doc')
 
@@ -52,12 +54,13 @@ _nonheadless=(lib/libawt_xawt.{so,debuginfo}
 prepare() {
   cd ${_jdkdir}
   patch -p1 -i ../xdg-basedir-compliant-fontconfig.patch
+  patch -p1 -i ../xdg-basedir-compliant-userPrefs.patch
 }
 
 build() {
   cd ${_jdkdir}
 
-  # export old flags to avoid zlist fail with hotspot agent
+  # export old flags to avoid zlist fail with hotspot agent (used in artix)
   export CPPFLAGS="-D_FORTIFY_SOURCE=2"
   export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
   export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"

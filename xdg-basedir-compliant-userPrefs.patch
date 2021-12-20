@@ -1,0 +1,38 @@
+# TODO: consider changing system-wide preferences
+#       consider removing dot in front of 'lock' files (both system and user)
+--- a/src/java.prefs/unix/classes/java/util/prefs/FileSystemPreferences.java
++++ b/src/java.prefs/unix/classes/java/util/prefs/FileSystemPreferences.java
+@@ -114,9 +114,30 @@
+     private static void setupUserRoot() {
+         AccessController.doPrivileged(new PrivilegedAction<Void>() {
+             public Void run() {
+-                userRootDir =
+-                      new File(System.getProperty("java.util.prefs.userRoot",
+-                      System.getProperty("user.home")), ".java/.userPrefs");
++                /* On Linux systems, put the userPrefs dir into
++                 * ${XDG_CONFIG_HOME:-$HOME/.config}/java/userPrefs in order to
++                 * follow the XDG Base Directory Specification.
++                 */
++                if (System.getProperty("os.name").equals("Linux")) {
++                    /* assume findable homedir, which the jvm already does */
++                    String xdgDefaultConfigHome = System.getenv("HOME") +
++                                                  "/.config";
++                    String xdgConfigHomeEnvVar = "XDG_CONFIG_HOME";
++                    String xdgConfigDir;
++
++                    String xdgSetConfigDir = System.getenv(xdgConfigHomeEnvVar);
++
++                    if (xdgSetConfigDir == null)
++                        xdgConfigDir = xdgDefaultConfigHome;
++                    else
++                        xdgConfigDir = xdgSetConfigDir;
++
++                    userRootDir = new File(xdgConfigDir, "java/userPrefs");
++                } else {
++                    userRootDir =
++                        new File(System.getProperty("java.util.prefs.userRoot",
++                        System.getProperty("user.home")), ".java/.userPrefs");
++                }
+                 // Attempt to create root dir if it does not yet exist.
+                 if (!userRootDir.exists()) {
+                     if (userRootDir.mkdirs()) {

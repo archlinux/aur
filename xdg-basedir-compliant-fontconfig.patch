@@ -24,7 +24,7 @@
 +                else
 +                    xdgConfigDir = xdgSetConfigDir;
 +
-+                dir = xdgSetConfigDir+"/java/fonts/"+version;
++                dir = xdgConfigDir+"/java/fonts/"+version;
 +            } else {
 +                dir = userDir+fs+".java"+fs+"fonts"+fs+version;
 +            }
