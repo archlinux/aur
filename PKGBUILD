@@ -58,9 +58,9 @@ _makenconfig=
 
 pkgbase=linux-xanmod-rt510
 _major=5.10
-pkgver=${_major}.83
+pkgver=${_major}.87
 _branch=5.x
-_rt=58
+_rt=59
 xanmod=1
 pkgrel=${xanmod}.${_rt}
 pkgdesc='Linux Xanmod real-time version'
@@ -91,7 +91,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '40f8c51b158882a87fae2c92709dd6d1c7577e30100ebdc6061f3e908a8451a1'
+            '7b3ff77f8eb2707b6c54e10f2ec379002c8b7fdc339d16509fd8b4793845c844'
             '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
