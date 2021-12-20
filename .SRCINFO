@@ -1,4 +1,4 @@
-pkgbase = linux515
+pkgbase = linux-vfio-manjaro
 	pkgver = 5.15.10
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -84,8 +84,8 @@ pkgbase = linux515
 	sha256sums = 035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef
 	sha256sums = b00dcd459248e57e1f1799e07d4c6aba9f147bb67b86b9f386e16e2268d89214
 
-pkgname = linux515
-	pkgdesc = The Linux515 kernel and modules
+pkgname = linux-vfio-manjaro
+	pkgdesc = The Linux-vfio-manjaro kernel and modules
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -95,8 +95,8 @@ pkgname = linux515
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux515-headers
-	pkgdesc = Header files and scripts for building modules for Linux515 kernel
+pkgname = linux-vfio-manjaro-headers
+	pkgdesc = Header files and scripts for building modules for Linux-vfio-manjaro kernel
 	depends = gawk
 	depends = python
 	depends = libelf

@@ -2,8 +2,8 @@
 #
 # This is original kernel of Manjaro Linux + ACS patch
 
-pkgbase=linux515
-pkgname=('linux515' 'linux515-headers')
+pkgbase=linux-vfio-manjaro
+pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
 _kernelname=-MANJARO-VFIO
 _basekernel=5.15
 _basever=515
@@ -151,7 +151,7 @@ build() {
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux515() {
+package_linux-vfio-manjaro() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -191,7 +191,7 @@ package_linux515() {
   depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 }
 
-package_linux515-headers() {
+package_linux-vfio-manjaro-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   depends=('gawk' 'python' 'libelf' 'pahole')
   provides=("linux-headers=$pkgver")
