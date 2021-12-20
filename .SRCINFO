@@ -1,6 +1,6 @@
 pkgbase = graphite-kde-theme-git
 	pkgdesc = Graphite kde theme
-	pkgver = 2021.12.19.r0.g6e48d7d
+	pkgver = 2021.12.19.r2.g6dca52d
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-kde-theme
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname=graphite-kde-theme-git
 _reponame='Graphite-kde-theme'
-pkgver=2021.12.19.r0.g6e48d7d
+pkgver=2021.12.19.r2.g6dca52d
 pkgrel=1
 pkgdesc='Graphite kde theme'
 arch=("any")
@@ -23,14 +23,14 @@ pkgver(){
 package() {
     cd "${srcdir}/${_reponame}"
     
-    mkdir -p "${pkgdir}/usr/share/"{aurorae/themes,color-schemes,plasma/desktoptheme,plasma/look-and-feel,Kvantum,wallpapers}
+    mkdir -p "${pkgdir}/usr/share/"{aurorae/themes,color-schemes,plasma/desktoptheme,plasma/look-and-feel,Kvantum,backgrounds}
 
     _AURORAE_DIR="${pkgdir}/usr/share/aurorae/themes"
     _SCHEMES_DIR="${pkgdir}/usr/share/color-schemes"
     _PLASMA_DIR="${pkgdir}/usr/share/plasma/desktoptheme"
     _LOOKFEEL_DIR="${pkgdir}/usr/share/plasma/look-and-feel"
     _KVANTUM_DIR="${pkgdir}/usr/share/Kvantum"
-    _WALLPAPER_DIR="${pkgdir}/usr/share/wallpapers"
+    _WALLPAPER_DIR="${pkgdir}/usr/share/backgrounds"
     
     cp -r aurorae/* ${_AURORAE_DIR}
     cp -r color-schemes/*.colors ${_SCHEMES_DIR}
@@ -40,8 +40,8 @@ package() {
     cp -r plasma/desktoptheme/* ${_PLASMA_DIR}
     cp color-schemes/GraphiteDark.colors ${_PLASMA_DIR}/Graphite-dark/colors
     cp color-schemes/GraphiteLight.colors ${_PLASMA_DIR}/Graphite-light/colors
-    cp -r plasma/look-and-feel/* ${LOOKFEEL_DIR}
-    cp -r wallpaper/* ${WALLPAPER_DIR}
+    cp -r plasma/look-and-feel/* ${_LOOKFEEL_DIR}
+    cp -r wallpaper/* ${_WALLPAPER_DIR}
 
     cd sddm
     mkdir -p "${pkgdir}/usr/share/sddm/themes"
