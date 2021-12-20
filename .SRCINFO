@@ -1,6 +1,6 @@
 pkgbase = nvidia-vpf-git
 	pkgdesc = NVIDIA Video Processing Framework (git version)
-	pkgver = 1.1.r14.g5e951e4
+	pkgver = 1.1.1.r1.g869316d
 	pkgrel = 1
 	url = https://github.com/NVIDIA/VideoProcessingFramework/
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = nvidia-vpf-git
 	conflicts = nvidia-vpf
 	options = !emptydirs
 	source = git+https://github.com/NVIDIA/VideoProcessingFramework.git
+	source = 010-nvidia-vpf-fix-pytorch-extension.patch
 	sha256sums = SKIP
+	sha256sums = 65630bb49c2180c0c8a42baf56d5ca3af502c32cd49e83dabff3b54abfd870eb
 
 pkgname = nvidia-vpf-git

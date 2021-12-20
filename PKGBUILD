@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=nvidia-vpf-git
-pkgver=1.1.r14.g5e951e4
+pkgver=1.1.1.r1.g869316d
 pkgrel=1
 pkgdesc='NVIDIA Video Processing Framework (git version)'
 arch=('x86_64')
@@ -12,11 +12,17 @@ makedepends=('git' 'cmake' 'nvidia-sdk' 'python-setuptools')
 provides=('nvidia-vpf')
 conflicts=('nvidia-vpf')
 options=('!emptydirs')
-source=('git+https://github.com/NVIDIA/VideoProcessingFramework.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/NVIDIA/VideoProcessingFramework.git'
+        '010-nvidia-vpf-fix-pytorch-extension.patch')
+sha256sums=('SKIP'
+            '65630bb49c2180c0c8a42baf56d5ca3af502c32cd49e83dabff3b54abfd870eb')
+
+prepare() {
+    patch -d VideoProcessingFramework -Np1 -i "${srcdir}/010-nvidia-vpf-fix-pytorch-extension.patch"
+}
 
 pkgver() {
-    git -C VideoProcessingFramework describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C VideoProcessingFramework describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^ver_//'
 }
 
 build() {
@@ -44,5 +50,6 @@ package() {
     mv "${pkgdir}/usr/bin"/Py{,torch}NvCodec"$(python-config --extension-suffix)" "${pkgdir}${_sitepkg}"
     mv "${pkgdir}/usr/bin"/*.so* "${pkgdir}/usr/lib"
     mv "${pkgdir}/usr/bin"/*.py "${pkgdir}/usr/share/nvidia-vpf/samples"
+    rm "${pkgdir}/usr/bin"/*.mp4
     chmod a+x "${pkgdir}/usr/share/nvidia-vpf/samples"/*.py
 }
