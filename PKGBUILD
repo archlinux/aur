@@ -1,6 +1,6 @@
 pkgname=ultimate-chromium
 pkgver=96.0.4664.110
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="Chromium without the bullshit, better Wayland support, no google spyware, and more to come"
@@ -123,7 +123,7 @@ prepare() {
   patch -Np1 -i ../wayland-egl.patch
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/$pkgname-$pkgver-1"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-$pkgver-1"
   _utils="${_ungoogled_repo}/utils"
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
   python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
