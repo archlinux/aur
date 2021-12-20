@@ -1,0 +1,12 @@
+acpi_call
+bbswitch
+broadcom-wl
+nvidia
+nvidia-390xx
+nvidia-470xx
+r8168
+rtl8723bu
+tp_smapi
+vhba-module
+virtualbox-modules
+zfs

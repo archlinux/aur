@@ -1,0 +1,12 @@
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 03b83aa91277..dfc6c7d1b0e7 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -4070,6 +4070,7 @@ static int btusb_setup_qca(struct hci_dev *hdev)
+ 	}
+ 	if (!info) {
+ 		bt_dev_err(hdev, "don't support firmware rome 0x%x", ver_rom);
++		if (ver_rom & ~0xffffU) return 0;
+ 		return -ENODEV;
+ 	}
+ 
