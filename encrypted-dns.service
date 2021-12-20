@@ -37,6 +37,7 @@ RuntimeDirectory=encrypted-dns
 StateDirectory=encrypted-dns
 LogsDirectory=encrypted-dns
 ExecStart=/usr/bin/encrypted-dns -c /etc/encrypted-dns/encrypted-dns.toml
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
