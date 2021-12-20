@@ -1,0 +1,23 @@
+pkgbase = acmt-acm5a
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://www.acmt.co.uk/products/download-acm-5a/index.html
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = acmt-acm5a-vst
+	pkgdesc = ACM-5A Mid-Range EQ (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm5a-vst3
+	pkgdesc = ACM-5A Mid-Range EQ (VST3)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm5a-docs
+	pkgdesc = ACM-5A Mid-Range EQ (Documentation)
