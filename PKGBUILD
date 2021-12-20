@@ -3,7 +3,7 @@
 _pkgname=glif
 pkgname=mfek-$_pkgname-git
 pkgver=1.1.0b2.r8.gc4f7fb0
-pkgrel=1
+pkgrel=2
 pkgdesc='A stand-alone glyph viewer and editor (from Modular Font Editor K)'
 arch=(x86_64)
 url="https://github.com/MFEK/$_pkgname"
@@ -15,6 +15,7 @@ makedepends=(cargo
              cmake
              git
              python)
+optdepends=('mfek-metadata: read and write font metadata')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")

@@ -1,7 +1,7 @@
 pkgbase = mfek-glif-git
 	pkgdesc = A stand-alone glyph viewer and editor (from Modular Font Editor K)
 	pkgver = 1.1.0b2.r8.gc4f7fb0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MFEK/glif
 	arch = x86_64
 	license = Apache
@@ -12,6 +12,7 @@ pkgbase = mfek-glif-git
 	depends = gtk3
 	depends = libxcb
 	depends = sdl2
+	optdepends = mfek-metadata: read and write font metadata
 	provides = mfek-glif=1.1.0b2.r8.gc4f7fb0
 	conflicts = mfek-glif
 	source = mfek-glif-git::git+https://github.com/MFEK/glif.git
