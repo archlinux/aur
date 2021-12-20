@@ -14,7 +14,7 @@ pkgbase = ksmbd-dkms
 	options = !strip
 	source = ksmbd-3.4.3.tar.gz::https://github.com/cifsd-team/ksmbd/archive/3.4.3.tar.gz
 	source = dkms.conf
-	sha256sums = 782252bc40fb63d33830da6df5c538236c18cde76040789d4dcf5e9b4d30d1ee
+	sha256sums = a910c55d9e6924775e00504eddd00b49788603af29d0772cb9fb6722c189f628
 	sha256sums = 1d844a3ced7c4b2227a71df1fcb48ffcb64c083a257715dd4afc193cf3f26240
 
 pkgname = ksmbd-dkms
