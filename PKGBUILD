@@ -51,7 +51,13 @@ package(){
     mkdir -p "${pkgdir}/usr/share/applications"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
     mkdir -p "${pkgdir}/usr/bin"
-    cd "${srcdir}/SteamTools/src/ST.Client.Desktop.Avalonia.App/bin/Release/Publish/linux-x64/"
+    if [ ${CARCH} == "aarch64" ]
+    then
+    	_arch=arm64
+    else
+	_arch=x64
+    fi
+    cd "${srcdir}/SteamTools/src/ST.Client.Desktop.Avalonia.App/bin/Release/Publish/linux-${_arch}/"
     cp -a * "${pkgdir}/opt/steam++"
     cd "${srcdir}/SteamTools/resources/AppIcon"
     for width in 16 24 32 48 64 96 128 256 512 1024
