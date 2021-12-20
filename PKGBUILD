@@ -2,7 +2,7 @@
 
 pkgname=date-git
 _pkgname=date
-pkgver=2.4.1.r140.gf43c39f
+pkgver=3.0.1.r21.g655b249
 pkgrel=1
 pkgdesc='A header-only library which builds upon <chrono>'
 arch=('any')

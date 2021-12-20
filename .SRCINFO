@@ -1,6 +1,6 @@
 pkgbase = date-git
 	pkgdesc = A header-only library which builds upon <chrono>
-	pkgver = 2.4.1.r140.gf43c39f
+	pkgver = 3.0.1.r21.g655b249
 	pkgrel = 1
 	url = https://github.com/HowardHinnant/date
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = date-git
 	sha256sums = SKIP
 
 pkgname = date-git
-
