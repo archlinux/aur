@@ -1,0 +1,21 @@
+pkgbase = libmxfpp
+	pkgdesc = libMXF++ is a C++ wrapper library for libMXF that supports reading and writing the SMPTE ST 377-1 MXF file format.
+	pkgver = 1.0.4.dd02a08
+	pkgrel = 1
+	url = https://sourceforge.net/p/bmxlib/libmxfpp/ci/master/tree/
+	arch = x86_64
+	license = BSD
+	makedepends = libmxf
+	makedepends = git
+	makedepends = fakeroot
+	makedepends = make
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	depends = libmxf>=1.0.4
+	provides = libmxfpp
+	conflicts = libmxfpp
+	source = git+https://git.code.sf.net/p/bmxlib/libmxfpp.git
+	sha256sums = SKIP
+
+pkgname = libmxfpp
