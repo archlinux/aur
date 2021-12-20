@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-tweaks-system-menu-git
 	pkgdesc = GNOME Shell Extension to put Gnome Tweaks in the system menu.
-	pkgver = 15.r0.ge3b04c7
-	pkgrel = 2
+	pkgver = 16.r10.g997e071
+	pkgrel = 1
 	url = https://github.com/F-i-f/tweaks-system-menu
 	arch = any
 	license = GPL3
