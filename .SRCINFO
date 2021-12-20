@@ -1,0 +1,14 @@
+pkgbase = librealsense-legacy
+	pkgdesc = Intel® RealSense™ SDK 1.2.x is a cross-platform API for Intel® RealSense™ F200, SR300, R200, LR200 and the ZR300
+	pkgver = 1.12.4
+	pkgrel = 1
+	url = https://github.com/IntelRealSense/librealsense
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = glfw-x11
+	depends = libusb
+	source = https://github.com/IntelRealSense/librealsense/archive/v1.12.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = librealsense-legacy
