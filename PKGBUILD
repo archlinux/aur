@@ -6,7 +6,7 @@
 # 2) Check that sqlpp11 doesn't have a date.h that will overwrite /usr/include/sqlpp11/date.h
 
 pkgname=sqlpp11
-pkgver=0.59
+pkgver=0.61
 pkgrel=1
 pkgdesc='A type safe embedded domain specific language for SQL queries and results in C++'
 arch=('any')
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('date')
 makedepends=('cmake')
 source=("https://github.com/rbock/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('ff5dd3e8e7f232f89889a134bf1b59bf49f4fe54a10b7abddcfefbc64d62d726')
+sha256sums=('d5a95e28ae93930f7701f517b1342ac14bcf33a9b1c5b5f0dff6aea5e315bb50')
 prepare() {
   rm -Rf build
   mkdir build
