@@ -2,8 +2,8 @@
 
 _pkgname=glif
 pkgname=mfek-$_pkgname
-pkgver=1.0.1a
-pkgrel=2
+pkgver=1.1.0b2
+pkgrel=1
 pkgdesc='A stand-alone glyph viewer and editor (from Modular Font Editor K)'
 arch=(x86_64)
 url="https://github.com/MFEK/$_pkgname"
@@ -11,12 +11,13 @@ license=(Apache)
 depends=(gtk3
          libxcb
          sdl2)
-makedepends=(cargo-nightly
+makedepends=(cargo
              cmake
              python)
+optdepends=('mfek-metadata: read and write font metadata')
 _archive="$_pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8903d229153e70a4c43018c219b7c498135811f4850c1d8067b2bf4e175652c0')
+sha256sums=('dacc23c9355bad3937fca0de265bc813d851c83875e331a7788f92183a37ebd5')
 
 prepare() {
 	cd "$_archive"
