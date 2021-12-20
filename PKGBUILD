@@ -1,7 +1,7 @@
 # Maintainer: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth-dev
 pkgver="0.5.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="System-wide Web3"
 arch=('x86_64')
 url='https://frame.sh'
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
 provides=('frame')
 conflicts=('frame-eth')
 install=$pkgname.install
-source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.7"
+source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.9"
         "$pkgname.desktop")
 sha256sums=('SKIP' 'SKIP')
 
@@ -24,6 +24,11 @@ _ensure_local_nvm() {
   # in ./.nvrc is not installed in $NVM_DIR
   # but nvm itself still gets loaded ok
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
+  _ensure_local_nvm
+  nvm install "$_node_ver"
 }
 
 build() {
