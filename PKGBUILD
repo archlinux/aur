@@ -7,7 +7,9 @@ pkgdesc='A set of tools for developing (New)GRFs'
 arch=('x86_64')
 url='https://github.com/OpenTTD/grfcodec'
 license=('GPL2')
+depends=('zlib' 'gcc-libs' 'glibc')
 provides=('grfcodec')
+conflicts=('grfcodec')
 source=('https://cdn.openttd.org/grfcodec-releases/6.0.6/grfcodec-6.0.6-linux-generic-amd64.tar.gz')
 md5sums=('f0cd2dfbdad7713b27d4e5d2a479bda4')
 

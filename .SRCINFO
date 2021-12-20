@@ -5,7 +5,11 @@ pkgbase = grfcodec-bin
 	url = https://github.com/OpenTTD/grfcodec
 	arch = x86_64
 	license = GPL2
+	depends = zlib
+	depends = gcc-libs
+	depends = glibc
 	provides = grfcodec
+	conflicts = grfcodec
 	source = https://cdn.openttd.org/grfcodec-releases/6.0.6/grfcodec-6.0.6-linux-generic-amd64.tar.gz
 	md5sums = f0cd2dfbdad7713b27d4e5d2a479bda4
 
