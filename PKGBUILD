@@ -2,10 +2,10 @@
 
 pkgname=networktablet
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux driver for Android GfxTablet input"
 arch=(x86_64 armv7h armv8)
-url="http://rfc2822.github.io/GfxTablet/"
+url="https://github.com/rfc2822/GfxTablet"
 license=('GPL3')
 source=("https://github.com/rfc2822/GfxTablet/archive/android-app-1.4-linux-driver-$pkgver.tar.gz"
         'networktablet.service')

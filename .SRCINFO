@@ -1,8 +1,8 @@
 pkgbase = networktablet
 	pkgdesc = Linux driver for Android GfxTablet input
 	pkgver = 1.5
-	pkgrel = 2
-	url = http://rfc2822.github.io/GfxTablet/
+	pkgrel = 3
+	url = https://github.com/rfc2822/GfxTablet
 	arch = x86_64
 	arch = armv7h
 	arch = armv8
@@ -13,4 +13,3 @@ pkgbase = networktablet
 	sha512sums = a13131f6fc19a437cb5173ad48dae2d26fc85036bc9181ebb680654060f7ef4ea908d198dc9a4939ba4207281cecf5bd877eb525cb7c82a6bc74dceca67eb4bb
 
 pkgname = networktablet
-
