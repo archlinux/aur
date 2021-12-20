@@ -42,5 +42,5 @@ package() {
   install -Dm644 "schemas/org.gnome.shell.extensions.$_gitname.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas"
 
-  rm -rf "$pkdgir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
 }
