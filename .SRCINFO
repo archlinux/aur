@@ -1,7 +1,7 @@
 pkgbase = python-bioservices
 	pkgdesc = Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cokelaer/bioservices
 	arch = any
 	license = GPL
