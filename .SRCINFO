@@ -1,20 +1,19 @@
 pkgbase = valinor
 	pkgdesc = Generate Project Files to Debug ELF files
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ARMmbed/valinor
 	arch = any
 	license = Apache
 	depends = python
 	depends = python-pip
-	depends = python-yaml
-	depends = python-jinja
 	depends = python-colorama
 	depends = pyocd
 	depends = project-generator
 	depends = python-pyelftools
 	source = https://github.com/ARMmbed/valinor/archive/v1.1.4.tar.gz
+	source = https://github.com/ARMmbed/valinor/commit/3c5f25f3bb6b05c35895a7a17f37d466011001b9.patch
 	sha512sums = 8adc22d5b1ab4d3260cd4838781a43e30b3ee8a9694c529790246b6f4c56ff70e3b233250616bbcb6177a8415905690b76146015f85eee0f72cf09b3cd641fda
+	sha512sums = 050d4026e30862505feae036246ecbacc1c120551bef81ce463d14576e9a9693f129d94de126e4b393e79b13fb8665c9bf2ec5fc3c8aeb30366d22e017145817
 
 pkgname = valinor
-
