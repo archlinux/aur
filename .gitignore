@@ -4,4 +4,5 @@ src
 *.xz
 *.zip
 *.pkg.*
+linvst-*.tar.gz
 linvst/
