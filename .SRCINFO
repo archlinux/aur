@@ -1,0 +1,11 @@
+pkgbase = pcmemtest
+	pkgdesc = Stand-alone memory tester for x86 and x86-64 architecture computers
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/martinwhitaker/pcmemtest
+	arch = x86_64
+	license = GPL2
+	source = pcmemtest-1.5.tar.gz::https://github.com/martinwhitaker/pcmemtest/archive/refs/tags/v1.5.tar.gz
+	sha256sums = 6c47972b94b6f5078341e5b8622ab3ce0e499515629480a2c8daf65e4547d65e
+
+pkgname = pcmemtest
