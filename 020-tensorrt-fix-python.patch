@@ -1,0 +1,29 @@
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -77,7 +77,7 @@ if (MSVC)
+     find_path(PY_LIB_DIR ${PYTHON_LIB_NAME}.lib HINTS ${WIN_EXTERNALS}/${PYTHON} ${EXT_PATH}/${PYTHON} PATH_SUFFIXES lib)
+     message(STATUS "PY_LIB_DIR: ${PY_LIB_DIR}")
+ else()
+-    find_path(PY_INCLUDE Python.h HINTS ${EXT_PATH}/${PYTHON} PATH_SUFFIXES include)
++    find_path(PY_INCLUDE Python.h HINTS /usr/lib PATH_SUFFIXES ${PYTHON})
+ endif()
+ 
+ message(STATUS "PY_INCLUDE: ${PY_INCLUDE}")
+@@ -97,7 +97,7 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_CONFIG_INCLUDE}")
+ # -------- GLOBAL COMPILE OPTIONS --------
+ 
+ include_directories(${TENSORRT_ROOT}/include ${PROJECT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/docstrings ${ONNX_INC_DIR} ${PYBIND11_DIR})
+-link_directories(${TENSORRT_BUILD})
++link_directories(${TENSORRT_BUILD} $ENV{TRT_NONOSS_ROOT}/lib)
+ 
+ if (MSVC)
+     include_directories(${MSVC_COMPILER_DIR}/include ${MSVC_COMPILER_DIR}/../ucrt/include ${NV_WDKSDK_INC}/um ${NV_WDKSDK_INC}/shared)
+@@ -126,7 +126,7 @@ endif()
+ 
+ # -------- START BUILD PROCESS --------
+ 
+-if (${CMAKE_BUILD_TYPE} STREQUAL Release)
++if (${CMAKE_BUILD_TYPE} STREQUAL Release OR ${CMAKE_BUILD_TYPE} STREQUAL None OR ${CMAKE_BUILD_TYPE} STREQUAL "")
+     message(STATUS "Building in Release mode")
+     if (ENABLE_INETWORK_SERIALIZE)
+         set(TRT_LIBS nvinfer nvonnxparser nvparsers nvinfer_plugin nvserialize)

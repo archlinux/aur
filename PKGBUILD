@@ -9,9 +9,9 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=8.0.3.4
-_tensorrt_tag=21.10
-_cudaver=11.3
+pkgver=8.2.1.8
+_tensorrt_tag=8.2.1
+_cudaver=11.4
 _cudnnver=8.2
 _protobuf_ver=3.17.3
 _onnx_tag=1.8.1
@@ -34,10 +34,9 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         'git+https://github.com/google/benchmark.git'
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
-        '020-tensorrt-fix-cub-deprecation-huge-warnings.patch'
-        '030-tensorrt-fix-python.patch')
+        '020-tensorrt-fix-python.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('3177435024ff4aa5a6dba8c1ed06ab11cc0e1bf3bb712dfa63a43422f41313f3'
+sha256sums=('3e9a9cc4ad0e5ae637317d924dcddf66381f4db04e2571f0f2e6ed5a2a51f247'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,8 +46,7 @@ sha256sums=('3177435024ff4aa5a6dba8c1ed06ab11cc0e1bf3bb712dfa63a43422f41313f3'
             'SKIP'
             '51cec99f108b83422b7af1170afd7aeb2dd77d2bcbb7b6bad1f92509e9ccf8cb'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
-            '053fdce602aa588a576964978c0d1e777fc8ce2ef6b76165a70f0b025e6c3dec'
-            'c12d9148b7d6fc436387e7eb7b16a0066358f69e32bbee8cc9ac066b1faa902a')
+            '87084c3ed1cf59cbfbcff73e225597e0f12f8881517d10d41933560c0894ebdf')
 
 prepare() {
     # tensorrt git submodules
@@ -78,8 +76,7 @@ prepare() {
     cp -a "protobuf-cpp-${_protobuf_ver}.tar.gz" build/third_party.protobuf/src
     
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
-    patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-cub-deprecation-huge-warnings.patch"
-    patch -d TensorRT -Np1 -i "${srcdir}/030-tensorrt-fix-python.patch"
+    patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
 }
 
 build() {
@@ -104,6 +101,8 @@ build() {
     export PYTHON_MINOR_VERSION="${_pyver#*.}"
     export TARGET_ARCHITECTURE="$CARCH"
     export TRT_OSSPATH="${srcdir}/TensorRT"
+    export CUDA_ROOT='/opt/cuda'
+    export ROOT_PATH="${srcdir}/TensorRT"
     export EXT_PATH="$srcdir"
     export TRT_NONOSS_ROOT="${srcdir}/TensorRT-${pkgver}"
     cd TensorRT/python
@@ -145,7 +144,6 @@ package_python-tensorrt() {
     
     local _pyver
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    export PYTHONHASHSEED='0'
     
     local _trt_major
     local _trt_minor
@@ -182,7 +180,6 @@ package_tensorrt-doc() {
     arch=('any')
     license=('custom:NVIDIA-SLA')
     
-    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Best-Practices.pdf"  -t "${pkgdir}/usr/share/doc/${pkgbase}"
     install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Developer-Guide.pdf" -t "${pkgdir}/usr/share/doc/${pkgbase}"
     install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Release-Notes.pdf"   -t "${pkgdir}/usr/share/doc/${pkgbase}"
     install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-Support-Matrix-Guide.pdf" -t "${pkgdir}/usr/share/doc/${pkgbase}"
