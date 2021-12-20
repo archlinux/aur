@@ -1,10 +1,9 @@
 pkgbase = igdm-bin
 	pkgdesc = Desktop application for Instagram DMs
-	pkgver = 3.0.1
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/ifedapoolarewaju/igdm
 	arch = x86_64
-	arch = i686
 	license = MIT
 	depends = gconf
 	depends = glibc
@@ -14,10 +13,7 @@ pkgbase = igdm-bin
 	conflicts = igdm
 	source = https://raw.githubusercontent.com/ifedapoolarewaju/igdm/master/LICENSE
 	sha256sums = cfe59b21a32217b32573315adbcc0f3621aeaa8dec634e54eb30a0cf260867cc
-	source_x86_64 = igdm-bin-3.0.1-x86_64.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v3.0.1/IGdm_3.0.1_amd64.deb
-	sha256sums_x86_64 = 632656c46579a674f6e7f4a97dc9d4de6ff6f136b982f82d92e8bfab53cc8236
-	source_i686 = igdm-bin-3.0.1-i686.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v3.0.1/IGdm_3.0.1_i386.deb
-	sha256sums_i686 = f194bb354b5da6d467107830f8f68e94463096cb969c8b0f4e8b5f5c5e7b2ec2
+	source_x86_64 = igdm-bin-3.0.3-x86_64.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v3.0.3/IGdm_3.0.3_amd64.deb
+	sha256sums_x86_64 = d46664f683edcd91ec10db807b7496691c30a85308a32451706bdad1aaa5a024
 
 pkgname = igdm-bin
-
