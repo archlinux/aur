@@ -1,7 +1,7 @@
 pkgbase=ctr-m4compressor
 pkgname=("${pkgbase}-lv2" "${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.cutthroughrecordings.com/downloads"
 license=('EULA')
