@@ -1,7 +1,7 @@
 pkgbase = selinux-python
 	pkgdesc = SELinux python tools and libraries
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = selinux-python
 	depends = python-ipy
 	depends = libsemanage>=3.3
 	depends = setools>=4.4.0
-	provides = sepolgen=3.3-1
+	provides = sepolgen=3.3-2
 	conflicts = sepolgen<2.7
 	conflicts = policycoreutils<2.7
 	source = https://github.com/SELinuxProject/selinux/releases/download/3.3/selinux-python-3.3.tar.gz
