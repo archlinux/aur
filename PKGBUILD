@@ -1,6 +1,6 @@
 pkgname=ultimate-chromium
 pkgver=96.0.4664.110
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="Chromium without the bullshit, better Wayland support, no google spyware, and more to come"
@@ -187,7 +187,11 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
+<<<<<<< HEAD
   _ungoogled_repo="$srcdir/$pkgname-$pkgver-1"
+=======
+  _ungoogled_repo="$srcdir/ungoogled-chromium-$pkgver-1"
+>>>>>>> 0b33aae (A new start)
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # use fixed flags as system flags break build
