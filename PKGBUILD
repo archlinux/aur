@@ -7,6 +7,7 @@ pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
 _kernelname=-MANJARO
 _basekernel=5.15
 _basever=515
+_pkgver=5.15.10
 pkgver=5.15.10.vfio
 pkgrel=1
 arch=('x86_64')
@@ -26,7 +27,7 @@ makedepends=('bc'
     'xz')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${_pkgver}.xz"
         'config'
         # ARCH Patches
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
@@ -105,7 +106,7 @@ prepare() {
 
   # add upstream patch
   msg "add upstream patch"
-  patch -p1 -i "../patch-${pkgver}"
+  patch -p1 -i "../patch-${_pkgver}"
 
   local src
   for src in "${source[@]}"; do
