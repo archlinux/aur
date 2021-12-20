@@ -1,8 +1,9 @@
+# Maintainer: a821
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-orange-canvas-core
-pkgver=0.1.23
-pkgrel=2
+pkgver=0.1.24
+pkgrel=1
 pkgdesc="Orange Canvas core workflow editor."
 arch=('i686' 'x86_64')
 url="https://orangedatamining.com"
@@ -11,7 +12,7 @@ makedepends=('python-setuptools')
 depends=('python-docutils' 'python-anyqt' 'python-pip' 'python-requests' 'python-cachecontrol'
          'python-dictdiffer' 'python-commonmark' 'python-lockfile' 'python-qasync')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/biolab/orange-canvas-core/archive/${pkgver}.tar.gz")
-sha256sums=('c9a53fa86b61b626cc5626607d83f94e213f90f8b8d5d2baf6866b0e46d74780')
+sha256sums=('e0765a7b6715d3f476357096a8e2648dea1dc04bf870231206025422f5c882a1')
 
 build() {
   cd "${srcdir}/orange-canvas-core-$pkgver"
