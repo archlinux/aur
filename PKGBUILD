@@ -22,12 +22,12 @@ source=("https://github.com/mmottl/sqlite3-ocaml/releases/download/${pkgver}/sql
 sha256sums=('bb0db711691a8dfa24fe29ec4ecb6912444ad90e0f4c447af89831e6d1dffea5')
 
 build() {
-    cd "${srcdir}/sqlite3-${pkver}"
+    cd "${srcdir}/sqlite3-${pkgver}"
     dune build @install
 }
 
 package() {
-    cd "${srcdir}/sqlite3-${pkver}"
+    cd "${srcdir}/sqlite3-${pkgver}"
 
     install -d "${pkgdir}/usr/share/doc"          \
         "${pkgdir}/usr/share/licenses/${pkgname}" \
