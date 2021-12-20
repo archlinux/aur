@@ -10,6 +10,7 @@ pkgbase = speedify-bin
 	depends = lsof
 	depends = net-tools
 	provides = speedify
+	conflicts = speedify
 	source_x86_64 = http://apt.connectify.me/pool/main/s/speedify/speedify_11.8.0-10224_amd64.deb
 	md5sums_x86_64 = SKIP
 	source_aarch64 = http://apt.connectify.me/pool/main/s/speedify/speedify_11.8.0-10224_arm64.deb
