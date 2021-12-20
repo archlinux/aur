@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=95.0
+pkgver=95.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -32,12 +32,15 @@ install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
-        "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}")
+        "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}"
+        ${_arch_git}/0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
+        )
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('7fa3e43f6ec710b2ebba0e99db713a56d13d85f1f23c4a1399bb594fd74864de'
+sha256sums=('c178cbf61979bd39a8daa9a09c6e03089da37baded692ad1f745ecfcaae74d64'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '8a893ae44955c90a0fb4a504134773293054ab57a41ba7931df98c8cf5449549')
 sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
@@ -125,6 +128,9 @@ fi
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   # patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
 
+  # Fix build with wayland 1.20
+  patch -Np1 -i ../0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
+
   # LibreWolf
 
   # Remove some pre-installed addons that might be questionable
@@ -152,7 +158,8 @@ fi
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
   # remove search extensions (experimental)
-  patch -Np1 -i ${_patches_dir}/search-config.patch
+  # patch -Np1 -i ${_patches_dir}/search-config.patch
+  cp "${srcdir}/common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
@@ -203,7 +210,7 @@ fi
   patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
-  cp -r ${srcdir}/common/source_files/* ./
+  cp -r ${srcdir}/common/source_files/browser ./
 }
 
 
