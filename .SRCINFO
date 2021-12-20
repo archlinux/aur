@@ -1,6 +1,6 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Lutris Wine Runner as system Wine and even better
-	pkgver = 0.51
+	pkgver = 0.51.r10.g7251aba
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lutris-wine
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = lutris-wine-git
 	makedepends = git
 	depends = lutris-git
 	depends = wget
+	depends = qt5-tools
 	depends = xterm
 	depends = xorg-fonts-100dpi
 	depends = xorg-fonts-75dpi
