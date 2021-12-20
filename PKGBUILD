@@ -2,7 +2,6 @@ pkgbase=tal-chorus-lx
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=1.6.0
 pkgrel=1
-pkgdesc="A Simple Algorithmic Chorus By TAL Software"
 arch=('x86_64')
 url="https://tal-software.com/products/tal-chorus-lx"
 license=('EULA')
