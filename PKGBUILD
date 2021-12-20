@@ -10,8 +10,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=96.0.4664.45
-pkgrel=3
+pkgver=96.0.4664.110
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
@@ -28,7 +28,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        chromium-launcher-$_launcher_ver.tar.gz::https://codeload.github.com/foutrelis/chromium-launcher/tar.gz/v$_launcher_ver
+        https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         unbundle-fix-visibility-of-build-config-freetype.patch
         sql-make-VirtualCursor-standard-layout-type.patch
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch)
-sha256sums=('488c6ad983ebf7781cb4d704f70496e8aa2165611b46656d7aa62f269c760407'
+sha256sums=('36a99d29c2e93a9975be53648f2cd3ffa4ee43730f217a2e7ed88c1901a671e8'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '090af7eab39aade15a1786273f2497d6b4abfaef24279fbf97ce0dd1c38c69aa'
             'd0b17162211dd49e3a58c16d1697e7d8c322dcfd3b7890f0c2f920b711f52293'
@@ -54,7 +54,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '8f74125ac735b727c557b2473f650cf540810dbe19944331fefc8020d98ad5dd'
+            '4d851d62d67391b6ab9bb1267a92c9d0a8279fe7f7b86bdbf0c8cff7b9bbdad5'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
@@ -111,6 +111,8 @@ prepare() {
   # custom function: https://github.com/FFmpeg/FFmpeg/commit/591b88e6787c4
   # https://crbug.com/1251779
   patch -Rp1 -i ../chromium-94-ffmpeg-roll.patch
+
+  # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
 
   # https://crbug.com/1207478
@@ -255,6 +257,8 @@ package() {
   local toplevel_files=(
     chrome_100_percent.pak
     chrome_200_percent.pak
+    chrome_crashpad_handler
+    chromedriver
     resources.pak
     v8_context_snapshot.bin
 
@@ -262,8 +266,9 @@ package() {
     libEGL.so
     libGLESv2.so
 
-    chromedriver
-    chrome_crashpad_handler
+    # SwiftShader ICD
+    libvk_swiftshader.so
+    vk_swiftshader_icd.json
   )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
