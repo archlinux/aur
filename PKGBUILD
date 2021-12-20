@@ -2,7 +2,7 @@
 pkgname=python-easydev
 _pkgname=${pkgname#python-}
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides utilities that are of general usage for the development of Python packages"
 arch=('any')
 license=('GPL')

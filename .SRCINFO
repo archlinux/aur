@@ -1,7 +1,7 @@
 pkgbase = python-easydev
 	pkgdesc = Provides utilities that are of general usage for the development of Python packages
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cokelaer/easydev
 	arch = any
 	license = GPL
