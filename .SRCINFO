@@ -1,0 +1,23 @@
+pkgbase = acmt-acm500
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.acmt.co.uk/products/download-acm500/index.html
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = acmt-acm500-vst
+	pkgdesc = ACM500 Channel EQ (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm500-vst3
+	pkgdesc = ACM500 Channel EQ (VST3)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm500-docs
+	pkgdesc = ACM500 Channel EQ (Documentation)
