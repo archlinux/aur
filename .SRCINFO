@@ -1,7 +1,7 @@
 generated-by = makedeb-makepkg
 
 pkgbase = makedeb-alpha
-	pkgver = 1
+	pkgver = 0
 	pkgrel = 1
 	arch = any
 
