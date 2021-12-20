@@ -1,25 +1,21 @@
 pkgbase = unagi
 	pkgdesc = Compositing manager for implementing effects with regular window managers.
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://projects.mini-dweeb.org/projects/unagi
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = pkgconfig
-	depends = libxcb>=1.4
-	depends = xcb-proto>=1.6
-	depends = xproto
+	makedepends = xorgproto
 	depends = confuse
-	depends = libxdg-basedir>=1.0.0
+	depends = libxdg-basedir
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = xcb-util-image
 	depends = libev
-	conflicts = unagi-git
 	source = http://projects.mini-dweeb.org/attachments/download/114/unagi-0.3.4.tar.gz
 	md5sums = 1f9373a69a1318d5a09f6144dfcf54a2
 
 pkgname = unagi
-
