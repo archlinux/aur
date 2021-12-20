@@ -4,7 +4,7 @@
 pkgname=zotero-beta
 _pkgver=5.0.97-beta.59+abe8c39c5
 pkgver="${_pkgver/-beta/beta}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64' 'i686')
 url="https://www.zotero.org/support/dev_builds"
@@ -42,8 +42,8 @@ depends=(
 source=('zotero-absolute-path-fix.patch'
         'zotero-disable-update.patch'
         'zotero-desktop-mimetype-fix.patch')
-source_x86_64=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${pkgver}/Zotero-${pkgver}_linux-x86_64.tar.bz2")
-source_i686=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${pkgver}/Zotero-${pkgver}_linux-x86_64.tar.bz2")
+source_x86_64=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
+source_i686=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
 sha256sums=('7b23d5238430701c1f5cc6f81dfd9b9f67cc643d506e42aa0e62aba5a58191fa'
             '94211568bbd206d10f1c1e0a2565905fcd27c8586835b7aef6458e657caa8213'
             '09752d833320d195ce5f8a65ef900edcda85816c3de210a572871fdfbb92e97a')
