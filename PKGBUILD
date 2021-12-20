@@ -1,6 +1,6 @@
 pkgname=vst2sdk
 pkgver=3.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Steinberg's VST2 SDK"
 arch=('any')
 url="http://www.steinberg.net/en/company/developers.html"

@@ -1,7 +1,7 @@
 pkgbase = vst2sdk
 	pkgdesc = Steinberg's VST2 SDK
 	pkgver = 3.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.steinberg.net/en/company/developers.html
 	arch = any
 	license = eula
