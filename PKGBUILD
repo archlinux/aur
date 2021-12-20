@@ -16,5 +16,5 @@ package() {
     install -dm755 $pkgdir/usr/share/Lynx/$pkgname/
     cp -r $srcdir/$pkgname-$pkgver/* $pkgdir/usr/share/Lynx/$pkgname/
     chmod a+x $pkgdir/usr/share/Lynx/$pkgname/nw
-    sudo ln -s /usr/share/Lynx/$pkgname/nw /bin/$pkgname 
+    sudo ln -sf /usr/share/Lynx/$pkgname/nw /bin/$pkgname 
 }
