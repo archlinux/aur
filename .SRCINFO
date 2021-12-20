@@ -1,14 +1,14 @@
 pkgbase = minetest-infinite-ikea
 	pkgdesc = Survival horror game based on SCP-3008.
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://content.minetest.net/packages/benrob0329/ikea/
 	arch = any
 	license = MIT
 	depends = minetest-common
-	noextract = ikea-0.0.4.zip
+	noextract = ikea-0.0.5.zip
 	options = !strip
-	source = ikea-0.0.4.zip::https://content.minetest.net/packages/benrob0329/ikea/releases/8184/download/
-	sha256sums = 809152f2009c13803ad968096e2814c0f0d495ffd8439985e9e7acce7aa2b4d6
+	source = ikea-0.0.5.zip::https://content.minetest.net/packages/benrob0329/ikea/releases/10088/download/
+	sha256sums = 2fe64cf96bf2a68bac8d4ea682e37b857c431fb39a4afc94e77ee279fda5a291
 
 pkgname = minetest-infinite-ikea

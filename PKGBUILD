@@ -2,12 +2,12 @@
 pkgname=minetest-infinite-ikea
 _pkgname=ikea
 _pkgauthor=benrob0329
-pkgver=0.0.4
-_cdbrel=8184
+pkgver=0.0.5
+_cdbrel=10088
 pkgrel=1
 pkgdesc="Survival horror game based on SCP-3008."
 license=("MIT")
-sha256sums=('809152f2009c13803ad968096e2814c0f0d495ffd8439985e9e7acce7aa2b4d6')
+sha256sums=('2fe64cf96bf2a68bac8d4ea682e37b857c431fb39a4afc94e77ee279fda5a291')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
