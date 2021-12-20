@@ -5,7 +5,7 @@ _ltspice_ver_roman="XVII"
 _ltspice_ver="17"
 
 pkgname=ltspice
-pkgver=17.20210604.1
+pkgver=17.20211219.4
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
