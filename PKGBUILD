@@ -1,11 +1,12 @@
 pkgname=ssmtp
 pkgver=2.64
-pkgrel=16
+pkgrel=17
 pkgdesc="Extremely simple MTA to get mail off the system to a mailhub (with Fedora patches)"
 arch=('i686' 'x86_64' 'armv7' 'aarch64' 'armv6h' 'armv7h')
 license=('GPL')
 url="https://packages.debian.org/stable/mail/ssmtp"
 depends=('openssl' 'inetutils')
+makedepends=('systemd') # Needed for sysusers.d to create the 'mail' group
 conflicts=('exim' 'smtp-forwarder')
 provides=('smtp-forwarder')
 backup=('etc/ssmtp/ssmtp.conf' 'etc/ssmtp/revaliases')
