@@ -1,0 +1,14 @@
+pkgbase = emacs-terraform-mode-git
+	pkgdesc = Emacs major mode for HashiCorp terraform
+	pkgver = 0.06.38.ge560caa
+	pkgrel = 1
+	url = https://github.com/emacsorphanage/terraform-mode
+	arch = any
+	license = MIT
+	depends = emacs
+	provides = emacs-terraform-mode
+	conflicts = emacs-terraform-mode
+	source = git+https://github.com/emacsorphanage/terraform-mode
+	sha256sums = SKIP
+
+pkgname = emacs-terraform-mode-git
