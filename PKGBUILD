@@ -1,24 +1,25 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
-# Contributor: Gökberk Yaltıraklı <aur at gkbrk dot com>
+# Maintainer: Gökberk Yaltıraklı <aur at gkbrk dot com>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=0.3.0.r178.gea2646f
+pkgver=0.6.0.r21.gbc593ac
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
-url='https://git.sr.ht/~sircmpwn/aerc'
+url='https://aerc-mail.org/'
 license=('MIT')
-depends=('w3m' 'dante' 'notmuch')
-makedepends=('git' 'go' 'scdoc')
+depends=('notmuch')
+makedepends=('go' 'git' 'scdoc')
+optdepends=('w3m: html viewer support' 'dante: proxy support')
 provides=('aerc')
 conflicts=('aerc')
-source=("$_pkgname::git+https://git.sr.ht/~sircmpwn/aerc")
+source=("${_pkgname}::git+https://git.sr.ht/~rjarry/${_pkgname}")
 sha512sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/$_pkgname"
+pkgver () {
+    cd "${srcdir}/${_pkgname}"
 
     ( set -o pipefail
       git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -26,8 +27,9 @@ pkgver() {
     )
 }
 
-build() {
-    cd "$srcdir/$_pkgname"
+
+build () {
+    cd "${srcdir}/${_pkgname}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -36,7 +38,8 @@ build() {
     make PREFIX=/usr VERSION="$(pkgver)"
 }
 
-package() {
-    cd "$srcdir/$_pkgname"
+package () {
+    cd "${srcdir}/${_pkgname}"
     make PREFIX=/usr DESTDIR=$pkgdir install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/aerc/"
 }
