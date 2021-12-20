@@ -1,14 +1,14 @@
-# Contributor: Jesse McClure <code@jessemcclure.org>
+# Maintainer: Jesse McClure <code at jessemcclure dot org>
 
 pkgname=weaver-fossil
-pkgver=r122.b34cf15181
+pkgver=r110.2a5e04de98
 pkgrel=1
-pkgdesc='socket-controlled qt5webengine browser w/ minimal UI'
+pkgdesc='qt6webengine browser w/ minimal UI'
 arch=('x86_64')
 license=('MIT')
-depends=(gcc-libs glibc qt5-base qt5-webengine)
+depends=(gcc-libs glibc qt6-base qt6-webengine)
 makedepends=(fossil)
-optdepends=('mkinitcpio-busybox: to use the default "nc"; otherwise edit your config.conf')
+optdepends=('qt6-wayland: run under wayland')
 url=https://code.jessemcclure.org/weaver
 source=(fossil+https://code.jessemcclure.org/weaver)
 sha256sums=(SKIP)
@@ -27,4 +27,3 @@ package() {
 	cd "${srcdir}/weaver"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
