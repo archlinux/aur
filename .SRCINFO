@@ -1,13 +1,13 @@
 pkgbase = blurlocker
 	pkgdesc = An i3lock-color Wrapper Script That Reads Colors Directly From Xresources
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/SafwanLjd/BlurLocker
 	arch = any
 	license = GPL3
 	depends = i3lock-color
 	depends = xgetres
-	source = https://github.com/SafwanLjd/BlurLocker/releases/download/1.0/blurlocker.tar.gz
-	sha1sums = 33e86b55b5ce8f67f61d72c5559a3c3c226bf6d8
+	source = https://github.com/SafwanLjd/BlurLocker/releases/download/1.1/blurlocker.tar.gz
+	sha1sums = 9f3e09fd102724b83a0c396e3ced16122847b08d
 
 pkgname = blurlocker
