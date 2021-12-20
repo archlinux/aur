@@ -2,7 +2,7 @@
 
 _pkgname=yet-another-spotify-tray
 pkgname=${_pkgname}-git
-pkgver=1.2.0
+pkgver=1.3.0.0233e2f
 pkgrel=1
 pkgdesc="Tray icon for Spotify Linux client application"
 arch=('x86_64')
