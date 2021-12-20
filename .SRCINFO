@@ -1,6 +1,6 @@
 pkgbase = openvpn-mbedtls
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the mbedtls library for crypto support.
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://openvpn.net/index.php/open-source.html
 	install = openvpn.install
@@ -19,9 +19,9 @@ pkgbase = openvpn-mbedtls
 	depends = mbedtls
 	optdepends = easy-rsa: easy CA and certificate handling
 	optdepends = pam: authenticate via PAM
-	provides = openvpn=2.5.4
+	provides = openvpn=2.5.5
 	conflicts = openvpn
-	source = git+https://github.com/OpenVPN/openvpn.git#tag=f2321d0255afe2b8d1f2bc4ebea498fb4d16415b?signed
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=6818587c014deea5d17f77396da09d9092c5e970?signed
 	source = 0001-unprivileged.patch
 	source = sysusers.conf
 	source = tmpfiles.conf
