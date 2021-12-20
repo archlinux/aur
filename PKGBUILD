@@ -1,8 +1,8 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=python-crochet
 _pkgname=${pkgname/python-/}
-pkgver=1.12.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Crochet is a library that makes it easier to use Twisted from regular blocking code'
 url="https://github.com/itamarst/crochet"
 depends=('python' 'python-twisted' 'python-wrapt')
@@ -11,7 +11,7 @@ optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/c/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('8fcbc64768813f50ee76b17a1e8d32a9f39206f8ab6766d50c885e07e7fb6fb1')
+sha256sums=('5f7f6c0d41ec418da16080f0202faac6b30f84a6fca9d8911e9db541f8e4e521')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
