@@ -5,7 +5,7 @@ _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
 pkgver=r120.6a4e9f4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='An Application Indicator showing various system parameters'
 arch=('any')
@@ -41,6 +41,7 @@ package_indicator-sysmonitor-budgie-git() {
 
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" installbudgie
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/indicator-sysmonitor-budgie-git/LICENSE"
 
   python -m compileall -d '/' "${pkgdir}/"
   python -O -m compileall -d '/' "${pkgdir}/"
@@ -54,6 +55,7 @@ package_indicator-sysmonitor-appindicator-git() {
 
   cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/indicator-sysmonitor-appindicator-git/LICENSE"
 
   python -m compileall -d '/' "${pkgdir}/"
   python -O -m compileall -d '/' "${pkgdir}/"
