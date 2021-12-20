@@ -11,7 +11,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=5.15
 ## Minor kernel version
-_minor=4
+_minor=10
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -30,6 +30,7 @@ options=('!strip')
 _srcname=linux-$pkgver
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.{xz,sign}
+  "git+https://github.com/hamadmarri/TT-CPU-Scheduler.git"
   "git+https://github.com/Frogging-Family/linux-tkg.git"
   "git+https://github.com/graysky2/kernel_compiler_patch.git"
   "choose-gcc-optimization.sh"
@@ -39,7 +40,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('549d0fb75e65f6158e6f4becc648f249d386843da0e1211460bde8b1ea99cbca'
+sha256sums=('484fcf5df8d00ddc570af443ef33382a110b338239b1f47048974baa22455b4b'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -66,13 +68,14 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex_waitv.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
+
+  msg2 "Apply TT CPU Scheduler..."
+  patch -Np1 < ${srcdir}/TT-CPU-Scheduler/patches/${_major}/tt-${_major}.patch
 
   msg2 "Apply GCC Optimization Patch..."
   patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.15+.patch
@@ -87,6 +90,35 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
+  ### Configure Kernel Compression
+  msg2 "Setting ZSTD Compression Globally..."
+  scripts/config --enable CONFIG_KERNEL_ZSTD
+
+  msg2 "Setting ZSTD Compression Level Globally..."
+  scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
+  scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+
+  ### Configure Kernel Module Compression
+  msg2 "Setting ZSTD Compression For Modules..."
+  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+
+  msg2 "Setting ZSTD Compression Level For Modules..."
+  scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+  scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
+
+  ## Optimize Kernel for Performance Using (GCC -O3)
+  msg2 "Setting Up A GCC -O3 Optimized Kernel"
+  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+
+  ### Disable NUMA Support
+  msg2 "Disable NUMA..."
+  scripts/config --disable CONFIG_NUMA
+
+  ### Protect Operations Under Memory Pressure
+  msg2 "Setting memory pressure to a higher value..."
+  scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 524288
+
   ### Set performance as default governor
   msg2 "Setting performance governor..."
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
@@ -97,7 +129,7 @@ prepare() {
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
 
   ### Set tickrate to 1000HZ
-  msg2 "Setting tick rate to 1k..."
+  msg2 "Setting tick rate to 1000HZ..."
   scripts/config --disable CONFIG_HZ_300
   scripts/config --enable CONFIG_HZ_1000
   scripts/config --set-val CONFIG_HZ 1000
@@ -117,9 +149,9 @@ prepare() {
   scripts/config --disable CONFIG_NO_HZ_IDLE
   scripts/config --enable CONFIG_NO_HZ_FULL
   scripts/config --disable CONFIG_NO_HZ
-  scripts/config --enable CONFIG_NO_HZ_COMMON
+  scripts/config --disable CONFIG_NO_HZ_COMMON
   
-  ### Enable Pre-emptation
+  ### Enable Preemptation
   msg2 "Enable PREEMPT..."
   scripts/config --disable CONFIG_PREEMPT_NONE
   scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
@@ -127,7 +159,7 @@ prepare() {
   scripts/config --enable CONFIG_PREEMPT_COUNT
   scripts/config --enable CONFIG_PREEMPTION
   scripts/config --enable CONFIG_PREEMPT_DYNAMIC
-  
+
   ### Disable Kernel Debugging
   msg2 "Disable Kernel Debugging For Smaller Builds"
   scripts/config --disable CONFIG_CONTEXT_TRACKING
