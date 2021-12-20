@@ -1,10 +1,10 @@
-# Maintainer: rhssk <rssk@protonmail.com>
-pkgname='kicost-git'
-_gitname='kicost'
-pkgver=r915.72c887d
+# Maintainer: rhssk <rhssk@posteo.eu>
+pkgname=kicost-git
+_remotename=KiCost
+pkgver=1.1.6.r1.227f246
 pkgrel=1
 pkgdesc="Build cost spreadsheet for a KiCad project"
-url="https://xesscorp.github.io/KiCost"
+url="https://github.com/hildogjr/KiCost"
 depends=(
     'python'
     'python-setuptools'
@@ -19,27 +19,27 @@ depends=(
     'python-requests'
 )
 makedepends=('git')
-provides=("${_gitname}")
-conflicts=("${_gitname}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 license=('MIT')
 arch=('any')
-source=('git+https://github.com/xesscorp/kicost.git')
+source=('git+https://github.com/hildogjr/KiCost.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
+    cd "$_remotename"
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 check() {
-    cd "$_gitname"
+    cd "$_remotename"
 
     python -m unittest tests.test_kicost
 }
 
 package() {
-    cd "$_gitname"
+    cd "$_remotename"
 
     python setup.py install --root="$pkgdir" --optimize=1
 }
