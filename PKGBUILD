@@ -5,7 +5,7 @@ pkgver=1.0_beta1
 pkgrel=1
 
 pkgdesc='Sway Floating Window taskBar'
-arch=(x86_64 i686)
+arch=('x86_64')
 url='https://github.com/LBCrion/sfwbar'
 license=('GPL3')
 depends=(
