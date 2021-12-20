@@ -3,7 +3,7 @@
 pkgname=steamtools-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.6.1_301_ge8e64c1c
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -36,7 +36,13 @@ build(){
     dotnet restore ./SteamToolsV2+.Linux.slnf
     dotnet build ./src/ST.Client.Desktop.Avalonia.App/ST.Client.Avalonia.App.csproj -c "Release"
     dotnet build ./src/ST.Tools.Publish/ST.Tools.Publish.csproj -c "Release"
-    dotnet publish ./src/ST.Client.Desktop.Avalonia.App/ST.Client.Avalonia.App.csproj -c "Release" -p:PublishProfile="linux-x64" -p:DeployOnBuild=true -p:ExtraDefineConstants="linux-x64" --nologo
+    if [ ${CARCH} == "aarch64" ]
+    then
+    	_arch=arm64
+    else
+        _arch=x64
+    fi
+    dotnet publish ./src/ST.Client.Desktop.Avalonia.App/ST.Client.Avalonia.App.csproj -c "Release" -p:PublishProfile="linux-${_arch}" -p:DeployOnBuild=true -p:ExtraDefineConstants="linux-${_arch}" --nologo
 }
 package(){
     mkdir -p "${pkgdir}/opt/steamtools"
