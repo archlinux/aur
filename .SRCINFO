@@ -1,0 +1,23 @@
+pkgbase = acmt-acm2a
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://www.acmt.co.uk/products/download-acm-2a/index.html
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = acmt-acm2a-vst
+	pkgdesc = ACM-2A Program EQ (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm2a-vst3
+	pkgdesc = ACM-2A Program EQ (VST3)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = acmt-acm2a-docs
+	pkgdesc = ACM-2A Program EQ (Documentation)
