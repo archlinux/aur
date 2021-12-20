@@ -4,10 +4,10 @@ pkgname=cncli
 pkgdesc='A community-based cardano-node CLI tool'
 license=('Apache')
 url='https://github.com/AndrewWestberg/cncli'
-pkgver=2.0.3
-pkgrel=2
+pkgver=4.0.4
+pkgrel=1
 arch=('x86_64')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 
 # Can't use source release because it attempts to fetch git submodules for libsodium :-/
 # "https://github.com/AndrewWestberg/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
