@@ -1,7 +1,8 @@
 # Maintainer: Phil A. <flying-sheep@web.de>
+# Contributor: Anthony Wang <ta180m@gmail.com>
 _name=jupyterlab-git
 pkgname=jupyterlab-extension-jupyterlab_git
-pkgver=0.30.1
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='Git extension for JupyterLab'
 arch=(any)
@@ -12,11 +13,13 @@ makedepends=(unzip)
 provides=(jupyterlab-extension-git python-jupyterlab-git)
 _wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('a596a293dc562f03ec1af48cb717b4f8a7f1c118a3e4cd13ea138e077674a638')
+sha256sums=('64a39f62d07b624b9e3fb4c2d5a03263812803d052164dadf22bee49ec272065')
 
 package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	install -d "$site"
 	unzip "$_wheel" -d "$site"
-	mv "$site/${_name/-/_}-$pkgver.data/data/"* "$pkgdir/usr/"
+	mv "$site/${_name/-/_}-$pkgver.data/data/share" "$pkgdir/usr/"
+	mv "$site/${_name/-/_}-$pkgver.data/data/etc" "$pkgdir/"
+	rmdir "$site/${_name/-/_}-$pkgver.data"{/data,}
 }
