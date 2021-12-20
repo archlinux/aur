@@ -1,15 +1,15 @@
 pkgbase = castnow-git
-	pkgdesc = A commandline chromecast player
-	pkgver = r180.05ddc3b
+	pkgdesc = Command-line utility used to play back media files on your Chromecast device
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/xat/castnow
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = nodejs
 	depends = npm
-	source = castnow-git::git://github.com/xat/castnow.git
-	md5sums = SKIP
+	provides = castnow
+	conflicts = castnow
+	source = castnow-git::git+https://github.com/xat/castnow.git
+	sha256sums = SKIP
 
 pkgname = castnow-git
-

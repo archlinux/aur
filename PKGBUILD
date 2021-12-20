@@ -1,34 +1,36 @@
-# Maintainer: David Birks <david@tellus.space>
+# Contributor: Eric Fung <loseurmarbles[AT]gmail[DOT]com>
+# Contributor: David Birks <david@tellus.space>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 pkgname=castnow-git
-pkgver=r199.4ccb1e0
+_pkgname=${pkgname%-git}
+pkgver=0.4.14.r79.g0e1746b
 pkgrel=1
-pkgdesc="A commandline chromecast player"
+pkgdesc="Command-line utility used to play back media files on your Chromecast device"
 arch=('any')
-makedepends=('git')
 url="https://github.com/xat/castnow"
 license=('MIT')
-depends=('nodejs' 'npm')
-source=($pkgname::git://github.com/xat/castnow.git)
-md5sums=(SKIP)
+depends=('npm')
+makedepends=('git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    npm pack
 }
 
 package() {
-    cd $pkgname
-    mkdir -p $pkgdir/usr
-    npm install --user root -g --prefix="$pkgdir/usr"
-    cd $pkgdir
-    cd usr/lib/node_modules/
-    rm castnow
-    mv ../../../../../src/castnow-git castnow
-    cd castnow
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-} 
+    cd "${srcdir}/${pkgname}"
+
+    install -d "${pkgdir}/usr"
+    npm install -g --prefix="${pkgdir}/usr" castnow-*.tgz
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
