@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 
 pkgver()
 {
+	cd $srcdir/injector
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
