@@ -1,6 +1,6 @@
 pkgbase = blackpearl
 	pkgdesc = Watch movies and series from The Pirate Bay in your terminal
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://www.npmjs.com/package/blackpearl
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = blackpearl
 	depends = npm
 	depends = mpv
 	options = !emptydirs
-	source = blackpearl::git+https://github.com/rainbowintheshell/blackpearl.git
-	md5sums = SKIP
+	source = https://registry.npmjs.org/blackpearl/-/blackpearl-0.0.6.tgz
+	md5sums = 9c437265c7458a10f0df8ddaba1f5a1d
 
 pkgname = blackpearl
-

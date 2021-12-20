@@ -1,7 +1,7 @@
-# Maintainer: Rainbow <rainbowtupperware@openmailbox.org>
+# Contributor: Rainbow <rainbowtupperware@openmailbox.org>
 
 pkgname=blackpearl
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Watch movies and series from The Pirate Bay in your terminal"
 arch=('any')
@@ -10,10 +10,13 @@ license=('WTFPL')
 depends=('nodejs' 'npm' 'mpv')
 makedepends=('npm')
 options=(!emptydirs)
-source=("$pkgname"::'git+https://github.com/rainbowintheshell/blackpearl.git')
-md5sums=('SKIP')
+source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+md5sums=('9c437265c7458a10f0df8ddaba1f5a1d')
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  npm install --user root -g --prefix "${pkgdir}/usr"
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "${pkgdir}"
 }
