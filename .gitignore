@@ -3,3 +3,4 @@ read-it-later/
 src/
 
 *.pkg.tar.xz
+*.pkg.tar.zst
