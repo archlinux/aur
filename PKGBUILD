@@ -2,15 +2,14 @@
 pkgname=python-pydstool
 _pkgname=PyDSTool
 pkgver=0.91.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simulation and analysis environment for dynamical systems"
 url="http://pydstool.sf.net/"
 license=('BSD')
 arch=('any')
-depends=('python-numpy' 'python-scipy')
+depends=('python<3.10' 'python-numpy' 'python-scipy')
 replaces=('python2-pydstool')
 makedepends=('dos2unix' 'python-setuptools')
-optdepends=('python-sloppycell')
 checkdepends=('python-pytest-mock' 'python-pytest-xdist')
 source=($_pkgname-$pkgver.tar.gz::https://github.com/robclewley/$_pkgname/archive/v$pkgver.tar.gz)
 options=('!emptydirs')
@@ -21,7 +20,7 @@ build() {
   python setup.py build
 }
 
-check_disabled() { # multiple python3 errors
+check() { # multiple python3 errors
   cd "${_pkgname,,}-$pkgver"
   python setup.py test
 }
