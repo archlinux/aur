@@ -1,7 +1,7 @@
 pkgbase=tal-reverb4
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://tal-software.com/tal-reverb-4"
 license=('EULA')

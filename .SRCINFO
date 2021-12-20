@@ -1,6 +1,6 @@
 pkgbase = tal-reverb4
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tal-software.com/tal-reverb-4
 	arch = x86_64
 	license = EULA
