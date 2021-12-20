@@ -3,3 +3,5 @@ pkg/
 src
 *.xz
 *.zip
+*.pkg.*
+linvst/
