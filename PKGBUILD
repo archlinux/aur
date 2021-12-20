@@ -24,7 +24,6 @@ package() {
     cp -rf $srcdir/RVXX\ v2\ Linux\ /InstallerData/RVXX/IRs/*.wav "$pkgdir/opt/Audio Assault/RVXX/IRs"
     mkdir -p "$pkgdir/opt/Audio Assault/RVXX/Presets"
     cp -rf $srcdir/RVXX\ v2\ Linux\ /InstallerData/RVXX/Presets/*.preset "$pkgdir/opt/Audio Assault/RVXX/Presets"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/RVXX
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/RVXX v2 Linux /InstallerData/RVXX/RVXX v2.so" "$pkgdir/usr/lib/vst/RVXX v2.so"
