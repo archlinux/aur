@@ -1,6 +1,6 @@
 pkgbase = weaver-fossil
-	pkgdesc = qt6webengine browser w/ minimal UI
-	pkgver = r110.2a5e04de98
+	pkgdesc = qt6-webengine browser w/ minimal UI
+	pkgver = r146.ec216dc060
 	pkgrel = 1
 	url = https://code.jessemcclure.org/weaver
 	arch = x86_64

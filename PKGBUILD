@@ -1,9 +1,9 @@
 # Maintainer: Jesse McClure <code at jessemcclure dot org>
 
 pkgname=weaver-fossil
-pkgver=r110.2a5e04de98
+pkgver=r146.ec216dc060
 pkgrel=1
-pkgdesc='qt6webengine browser w/ minimal UI'
+pkgdesc='qt6-webengine browser w/ minimal UI'
 arch=('x86_64')
 license=('MIT')
 depends=(gcc-libs glibc qt6-base qt6-webengine)
