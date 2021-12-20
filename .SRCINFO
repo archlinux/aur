@@ -1,7 +1,7 @@
 pkgbase = pulseeffects-legacy
 	pkgdesc = Audio Effects for Pulseaudio Applications, without pipewire
 	pkgver = 4.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
 	license = GPL3
