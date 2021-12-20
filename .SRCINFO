@@ -4,6 +4,7 @@ pkgbase = libretro-mgba-git
 	pkgrel = 1
 	url = https://mgba.io/
 	arch = x86_64
+	groups = libretro-unstable
 	license = custom:MPL2
 	makedepends = git
 	makedepends = cmake

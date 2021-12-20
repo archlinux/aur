@@ -7,6 +7,7 @@ pkgdesc='A Nintendo Gameboy Advance Emulator - Libretro Core'
 arch=('x86_64')
 url="https://mgba.io/"
 license=('custom:MPL2')
+groups=('libretro-unstable')
 depends=('libretro-core-info')
 makedepends=('git' 'cmake' 'mesa' 'ninja')
 conflicts=('libretro-mgba')
