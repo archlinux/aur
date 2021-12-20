@@ -1,0 +1,15 @@
+pkgbase = tumbler-stl-thumbnailer
+	pkgdesc = Custom STL thumbnails for Tumbler
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/j-james/thunar-stl-thumbnails
+	arch = any
+	license = BSD
+	depends = tumbler
+	depends = openscad
+	source = stl.thumbnailer
+	source = stl-thumbnailer.sh
+	sha256sums = fd4a8c44e4a35418e894241a3e6fefcab83279570b5e91296dde1f1179b0a0cc
+	sha256sums = 0b6a39b7facae2c7d036a0017010a86f6a3ebcb2a572312174d7d4cff1af8325
+
+pkgname = tumbler-stl-thumbnailer

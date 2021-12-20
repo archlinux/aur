@@ -1,0 +1,7 @@
+[Thumbnailer Entry]
+Version=1.0
+Encoding=UTF-8
+Type=X-Thumbnailer
+Name=STL Thumbnailer
+MimeType=model/stl;
+Exec=/usr/bin/stl-thumbnailer %i %o %s
