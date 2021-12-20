@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=nvidia-vpf
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='NVIDIA Video Processing Framework'
 arch=('x86_64')
 url='https://github.com/NVIDIA/VideoProcessingFramework/'
@@ -11,21 +11,12 @@ depends=('cuda' 'nvidia-utils' 'ffmpeg' 'python' 'python-pytorch-cuda')
 makedepends=('cmake' 'nvidia-sdk' 'python-setuptools')
 options=('!emptydirs')
 source=("https://github.com/NVIDIA/VideoProcessingFramework/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        '010-nvidia-vpf-add-missing-header.patch'::'https://github.com/NVIDIA/VideoProcessingFramework/commit/abba228ab1fe7c446efd52ed9949410ae2224fde.patch'
-        '020-nvidia-vpf-fix-a-type-initialization.patch'::'https://github.com/NVIDIA/VideoProcessingFramework/commit/4c817ab63038bbfba9de2ec4c22bfca3ef8828d0.patch'
-        '030-nvidia-vpf-fix-pytorch-extension.patch'::'https://github.com/NVIDIA/VideoProcessingFramework/commit/d56e4b98e80346f8c99a3c9ba3b1bfdab8ca0fbd.patch'
-        '040-nvidia-vpf-use-sysconfig-for-ext-suffix.patch'::'https://github.com/NVIDIA/VideoProcessingFramework/commit/5e951e48502e9c08080ed928453efaf998aad391.patch')
-sha256sums=('b844d58bb4345b8622624c9ee5c83b141ac4e8d7fbeb6e541717fefa485d9325'
-            'b350a5aa8d275ceddc8b712d34ed765ec60469a1a2cf7d1baf597cecabf36abe'
-            '570da8accabaeaabd2897c5a95f648afd6bfa68811ec03756a048fb1c8e65351'
-            '6bfa031cb81f6cd96ffff770c4474519529897a5e25dbad74c3872918fcc2172'
-            '4e378272e4110651ceb07224e91f581197c515a56e59f7e024a68b26a8162084')
+        '010-nvidia-vpf-fix-pytorch-extension.patch')
+sha256sums=('a41c03c2ba79e7b1d304d87453d8ce2182bad66b651566612de67cc8f0eb0dc5'
+            'bd5435a70892f1b262275ccefb51a1e4871fc585c4267e85a0994f1c703f8fc2')
 
 prepare() {
-    patch -d "VideoProcessingFramework-${pkgver}" -Np1 -i "${srcdir}/010-nvidia-vpf-add-missing-header.patch"
-    patch -d "VideoProcessingFramework-${pkgver}" -Np1 -i "${srcdir}/020-nvidia-vpf-fix-a-type-initialization.patch"
-    patch -d "VideoProcessingFramework-${pkgver}" -Np1 -i "${srcdir}/030-nvidia-vpf-fix-pytorch-extension.patch"
-    patch -d "VideoProcessingFramework-${pkgver}" -Np1 -i "${srcdir}/040-nvidia-vpf-use-sysconfig-for-ext-suffix.patch"
+    patch -d "VideoProcessingFramework-${pkgver}" -Np1 -i "${srcdir}/010-nvidia-vpf-fix-pytorch-extension.patch"
 }
 
 build() {
@@ -53,5 +44,6 @@ package() {
     mv "${pkgdir}/usr/bin"/Py{,torch}NvCodec"$(python-config --extension-suffix)" "${pkgdir}${_sitepkg}"
     mv "${pkgdir}/usr/bin"/*.so* "${pkgdir}/usr/lib"
     mv "${pkgdir}/usr/bin"/*.py "${pkgdir}/usr/share/nvidia-vpf/samples"
+    rm "${pkgdir}/usr/bin"/*.mp4
     chmod a+x "${pkgdir}/usr/share/nvidia-vpf/samples"/*.py
 }
