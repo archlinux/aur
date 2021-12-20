@@ -2,13 +2,13 @@
 
 pkgname=hut-git
 _pkgname=hut
-pkgver=r13.cdfbfc8
+pkgver=r22.0f6cad4
 pkgrel=1
 pkgdesc='A CLI tool for sr.ht'
 arch=('x86_64')
-url='https://git.sr.ht/~emersion/hut'
+url='https://sr.ht/~emersion/hut'
 license=('AGPL3')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'scdoc')
 provides=('hut')
 conflicts=('hut')
 source=("$_pkgname::git+https://git.sr.ht/~emersion/${_pkgname}")
@@ -31,10 +31,10 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    go build -o hut
+    make -e
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -Dm755 hut "$pkgdir/usr/bin/hut"
+    make PREFIX=/usr DESTDIR=$pkgdir install
 }

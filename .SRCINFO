@@ -1,12 +1,13 @@
 pkgbase = hut-git
 	pkgdesc = A CLI tool for sr.ht
-	pkgver = r13.cdfbfc8
+	pkgver = r22.0f6cad4
 	pkgrel = 1
-	url = https://git.sr.ht/~emersion/hut
+	url = https://sr.ht/~emersion/hut
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
 	makedepends = go
+	makedepends = scdoc
 	provides = hut
 	conflicts = hut
 	source = hut::git+https://git.sr.ht/~emersion/hut
