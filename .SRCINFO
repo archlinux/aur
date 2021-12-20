@@ -1,7 +1,7 @@
 pkgbase = harrison-xt-lv2
 	pkgdesc = Harrison Consoles LV2 XT Plugin Suite
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://harrisonconsoles.com/mixbus-plugins/
 	arch = x86_64
 	groups = lv2-plugins
