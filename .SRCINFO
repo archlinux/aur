@@ -1,0 +1,36 @@
+pkgbase = vitalium
+	pkgver = r601.9f93a196
+	pkgrel = 1
+	url = https://github.com/DISTRHO/DISTRHO-Ports
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = git
+	makedepends = libxinerama
+	makedepends = libxrender
+	makedepends = libxcursor
+	makedepends = steinberg-vst36
+	makedepends = ladspa
+	makedepends = libgl
+	makedepends = meson
+	depends = freetype2
+	depends = alsa-lib
+	depends = libxext
+	depends = libglvnd
+	provides = vitalium
+	conflicts = distrho-ports
+	conflicts = distrho-ports-lv2-git
+	conflicts = distrho-ports-vst-git
+	replaces = distrho-vst-git
+	source = vitalium::git+https://github.com/DISTRHO/DISTRHO-Ports.git
+	md5sums = SKIP
+
+pkgname = vitalium-lv2
+	pkgdesc = Open Source Variant of Vital Synth (LV2)
+
+pkgname = vitalium-vst
+	pkgdesc = Open Source Variant of Vital Synth (VST)
+
+pkgname = vitalium-vst3
+	pkgdesc = Open Source Variant of Vital Synth (VST3)
