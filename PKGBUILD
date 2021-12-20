@@ -21,7 +21,6 @@ package() {
     mkdir -p "$pkgdir/opt/Audio Assault/AHM5050"/{IRs,Presets}
     cp -rf $srcdir/AHM5050v3\ Linux/AHM5050/IRs/*.wav "$pkgdir/opt/Audio Assault/AHM5050/IRs"
     cp -rf $srcdir/AHM5050v3\ Linux/AHM5050/Presets/*.preset "$pkgdir/opt/Audio Assault/AHM5050/Presets/"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/AHM5050/
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/AHM5050v3 Linux/AHM 5050 v3 vst2.so" "$pkgdir/usr/lib/vst/AHM 5050 v3 vst2.so"
