@@ -21,7 +21,6 @@ package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault"
     cp -rf "$srcdir/ReAmp Studio v1.1b/Linux v1.1/ReAmp Studio Data" "$pkgdir/opt/Audio Assault/ReAmp Studio Data"
-    chmod -R 777 $pkgdir/opt/Audio\ Assault/ReAmp\ Studio\ Data
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/ReAmp Studio v1.1b/Linux v1.1/ReAmp Studio.so" "$pkgdir/usr/lib/vst/ReAmp Studio.so"
