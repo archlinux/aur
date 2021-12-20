@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xd-torrent
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='An I2P BitTorrent client'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/majestrate/XD/archive/v${pkgver}/${pkgname}-${pkgver
         'xd-torrent.sysusers'
         'xd-torrent.tmpfiles'
         'xd.conf')
-sha256sums=('078fd7a0cb7f1f490499b09d54a2dae1137ef0d381ec6f01ca129a9d25840167'
+sha256sums=('77490f37ea979d559490611f874acbb618072e3685f15d7b6254bedfe31a0b03'
             '0eb00a6df35028549286fce92cb158d3c84ec49fad72e1e437de5b5e309719d2'
             '6b3d959b55623c3f907be0e1c53c7092e9328cb0b10c336102d012d716438a14'
             '77f50344dc028eac9ee229faf2fcda4807b5fbe4872a23513c271dd0e4964e53'
