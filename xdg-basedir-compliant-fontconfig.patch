@@ -1,0 +1,33 @@
+--- a/src/java.desktop/unix/classes/sun/font/FcFontConfiguration.java
++++ b/src/java.desktop/unix/classes/sun/font/FcFontConfiguration.java
+@@ -352,7 +352,29 @@
+             String userDir = System.getProperty("user.home");
+             String version = System.getProperty("java.version");
+             String fs = File.separator;
+-            String dir = userDir+fs+".java"+fs+"fonts"+fs+version;
++            String dir;
++
++            /* On Linux systems, put the font config into 
++             * ${XDG_CONFIG_HOME:-$HOME/.config}/java/fonts in order to follow
++             * the XDG Base Directory Specification.
++             */
++            if (System.getProperty("os.name").equals("Linux")) {
++                /* assume homedir can be found, which the jvm already does */
++                String xdgDefaultConfigHome = System.getenv("HOME")+"/.config";
++                String xdgConfigHomeEnvVar = "XDG_CONFIG_HOME";
++                String xdgConfigDir;
++
++                String xdgSetConfigDir = System.getenv(xdgConfigHomeEnvVar);
++
++                if (xdgSetConfigDir == null)
++                    xdgConfigDir = xdgDefaultConfigHome;
++                else
++                    xdgConfigDir = xdgSetConfigDir;
++
++                dir = xdgSetConfigDir+"/java/fonts/"+version;
++            } else {
++                dir = userDir+fs+".java"+fs+"fonts"+fs+version;
++            }
+             Locale locale = SunToolkit.getStartupLocale();
+             String lang = locale.getLanguage();
+             String country = locale.getCountry();
