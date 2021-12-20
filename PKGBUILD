@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor:	Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=1.2.82
+pkgver=1.2.90
 pkgrel=1
 pkgdesc="Financial data interface library"
 arch=('any')
@@ -35,7 +35,7 @@ makedepends=(
 	'python-recommonmark')
 changelog=changelog.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akfamily/akshare/archive/v$pkgver.tar.gz")
-sha256sums=('ae37c5cc811f6f696f83939c89f9bb3156829f4e36b6f03601d71a623c8bb515')
+sha256sums=('f43f21baae92aa8b3a09df25e4b5f2957fa3d653831966d79c9b246ebd89d534')
 
 prepare() {
 	cd "akshare-$pkgver"

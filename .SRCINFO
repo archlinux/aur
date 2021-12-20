@@ -1,6 +1,6 @@
 pkgbase = python-akshare
 	pkgdesc = Financial data interface library
-	pkgver = 1.2.82
+	pkgver = 1.2.90
 	pkgrel = 1
 	url = https://www.akshare.xyz
 	changelog = changelog.md
@@ -29,7 +29,7 @@ pkgbase = python-akshare
 	depends = python-tabulate
 	depends = python-decorator
 	depends = python-pyminiracer
-	source = python-akshare-1.2.82.tar.gz::https://github.com/akfamily/akshare/archive/v1.2.82.tar.gz
-	sha256sums = ae37c5cc811f6f696f83939c89f9bb3156829f4e36b6f03601d71a623c8bb515
+	source = python-akshare-1.2.90.tar.gz::https://github.com/akfamily/akshare/archive/v1.2.90.tar.gz
+	sha256sums = f43f21baae92aa8b3a09df25e4b5f2957fa3d653831966d79c9b246ebd89d534
 
 pkgname = python-akshare
