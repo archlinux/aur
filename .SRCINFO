@@ -1,7 +1,7 @@
 pkgbase = eigenpy
 	pkgdesc = Bindings between numpy and eigen using boost::python
 	pkgver = 2.6.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stack-of-tasks/eigenpy
 	arch = i686
 	arch = x86_64
