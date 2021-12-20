@@ -6,19 +6,20 @@ pkgrel=1
 pkgdesc="Build cost spreadsheet for a KiCad project"
 url="https://github.com/hildogjr/KiCost"
 depends=(
-    'python'
-    'python-setuptools'
-    'python-beautifulsoup4'
-    'python-xlsxwriter'
-    'python-future'
-    'python-lxml'
-    'python-yattag'
-    'python-tqdm'
-    'python-currencyconverter'
-    'python-pycountry'
-    'python-requests'
+    python
+    python-beautifulsoup4
+    python-lxml
+    python-xlsxwriter
+    python-tqdm
+    python-requests
+    python-validators
+    python-wxpython
+    python-colorama
 )
-makedepends=('git')
+makedepends=(
+    git
+    python-setuptools
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 license=('MIT')
