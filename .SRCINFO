@@ -7,6 +7,7 @@ pkgbase = wakapi
 	license = GPL-3.0
 	makedepends = go
 	provides = wakapi
+	conflicts = wakapi-bin
 	source = https://github.com/muety/wakapi/archive/refs/tags/1.30.3.tar.gz
 	sha256sums = bb4aa359f721d3aadea9dcfeb4f99e4e645835bb83dd34dba29bdbe76828ddf7
 
