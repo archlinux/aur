@@ -3,12 +3,12 @@
 pkgname=steam++-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.6.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
 depends=('dotnet-runtime>=6.0.1')
-makedepends=('git' 'p7zip')
+makedepends=('p7zip')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steamt++')
 conflicts=('steam++')
