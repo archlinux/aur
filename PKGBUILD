@@ -2,7 +2,7 @@
 # Contributor: XavierCLL <xavier.corredor.llano at gmail dot com>
 
 pkgname=spotify-ripper
-pkgver=2.17
+pkgver=2.18
 pkgrel=1
 pkgdesc='Command-line ripper for Spotify, with a workaround for playlist emptying'
 arch=('any')
@@ -13,10 +13,10 @@ optdepends=('flac: Rip songs to lossless FLAC encoding' 'opus-tools: Rip songs t
             'vorbis-tools: Rip songs to Ogg Vorbis encoding' 'faac: Rip songs to AAC format with FreeAAC' 
             'libav-git-no-libs: Rip songs to Apple Lossless format' 'fdkaac: Rip songs to MP4/M4A format with Fraunhofer FDK AAC codec')
 makedepends=('python-setuptools' 'libspotify')
-source=("https://github.com/iRet/spotify-ripper/archive/${pkgver}.tar.gz"
+source=("https://github.com/scaronni/spotify-ripper/archive/${pkgver}.tar.gz"
         "setup.py" "requirements.txt")
-md5sums=('84da50eba2fe16433673c65b388ba820'
-         'f0bb6c10b14365ead3fc0084197ada64'
+md5sums=('74f11d4cebc0b3d0a479531eaae40c8a'
+         '0cf83405e3b811277e3f3a11b01f7426'
          '433ec722cffccd32c7e31807262f1128')
 
 package() {
