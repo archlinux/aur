@@ -1,0 +1,19 @@
+pkgbase = libmxf
+	pkgdesc = libMXF is a low-level C library for reading and writing the SMPTE ST 377-1 MXF file format.
+	pkgver = 1.0.4.9b9860d
+	pkgrel = 1
+	url = https://sourceforge.net/p/bmxlib/libmxf/ci/master/tree/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = fakeroot
+	makedepends = make
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	provides = libmxf
+	conflicts = libmxf
+	source = git+https://git.code.sf.net/p/bmxlib/libmxf.git
+	sha256sums = SKIP
+
+pkgname = libmxf
