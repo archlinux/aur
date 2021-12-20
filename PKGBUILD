@@ -7,13 +7,14 @@
 
 pkgname=ocaml-pcre
 pkgver=7.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl compatible regular expressions for OCaml"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64')
 url="http://mmottl.github.io/pcre-ocaml"
 license=('custom:LGPL2.1 with linking exception')
-depends=('ocaml' 'pcre')
-makedepends=('dune' 'ocaml-base')
+depends=('ocaml' 'ocaml-base' 'pcre')
+makedepends=('dune')
+provides=('pcre-ocaml')
 replaces=('pcre-ocaml')
 conflicts=('pcre-ocaml')
 options=('!strip' 'staticlibs')
@@ -23,7 +24,7 @@ sha256sums=('671142f40b6d86171cbc067253faadf903019161d57488bd0fb6c5456c2cbd1a')
 build() {
     cd "${srcdir}/pcre-${pkgver}"
 
-    dune build
+    dune build @install
 }
 
 package() {
