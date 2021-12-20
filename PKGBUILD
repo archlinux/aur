@@ -1,6 +1,6 @@
 # Maintainer: turret. <turret@duck.com>
 pkgname=liborca-git
-pkgver=r2208.2eb94a52
+pkgver=r2211.a3f7baa5
 pkgrel=1
 pkgdesc="orca discord bot framework"
 arch=(x86_64)
