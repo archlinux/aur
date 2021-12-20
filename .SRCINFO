@@ -1,0 +1,11 @@
+pkgbase = lynx-nw
+	pkgdesc = Lynx NW.js bins - Binarios de NW para LynxOS
+	pkgver = 91.0.4472.114
+	pkgrel = 1
+	url = https://gitlab.com/LynxOS/lynx-nw
+	arch = any
+	license = GPL
+	source = https://gitlab.com/LynxOS/lynx-nw/-/archive/91.0.4472.114/lynx-nw-91.0.4472.114.tar.gz
+	md5sums = 72a515d6f498ae22b4a6e63a24adef48
+
+pkgname = lynx-nw
