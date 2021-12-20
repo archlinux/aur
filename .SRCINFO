@@ -14,4 +14,3 @@ pkgbase = python-injector-git
 	sha256sums = SKIP
 
 pkgname = python-injector-git
-
