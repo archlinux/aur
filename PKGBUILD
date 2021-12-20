@@ -1,6 +1,6 @@
 pkgname=ultimate-chromium
 pkgver=96.0.4664.110
-pkgrel=3
+pkgrel=4
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="Chromium without the bullshit, better Wayland support, no google spyware, and more to come"
