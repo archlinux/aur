@@ -5,17 +5,16 @@ arch=('x86_64')
 url="https://github.com/ByteDream/docker4ssh"
 license=('AGPL3')
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 
 makedepends=(
   'go'
   'rustup'
   'sqlite3'
-  'make'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ByteDream/docker4ssh/archive/v${pkgver}.tar.gz")
-sha256sums=('c895e5bdf1f05fb93e07775a3776384ec2cc5472fbaa859dc092820ec7a6f955')
+sha256sums=('fbcc69f8f40beb4376739d2ecb0878addc88ddf29fc2c510348b586a64fc7e51')
 
 build() {
   rustup target add x86_64-unknown-linux-musl
