@@ -1,0 +1,14 @@
+pkgbase = kazbek-vst
+	pkgdesc = Kazbek Woodwinds (VST)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://librewave.com/product/kazbek/
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = kazbek-vst
