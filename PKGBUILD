@@ -1,7 +1,7 @@
 
 # Maintaner: Dummerle
 pkgname=rare
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A GUI for legendary, an open source replacement for Epic Games Launcher"
 arch=('any')
