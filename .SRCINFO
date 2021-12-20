@@ -1,0 +1,15 @@
+pkgbase = sigma-amp-vst
+	pkgdesc = Modern High Gain Amp Simulator (VST Plugin)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://audioassault.mx/products/sigma
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = sigma-amp-vst
