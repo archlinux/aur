@@ -1,6 +1,6 @@
 pkgbase = indicator-sysmonitor-git
-	pkgdesc = An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status
-	pkgver = r117.b99cc39
+	pkgdesc = An Application Indicator showing various system parameters
+	pkgver = r120.6a4e9f4
 	pkgrel = 1
 	url = https://github.com/fossfreedom/indicator-sysmonitor
 	arch = any
@@ -9,13 +9,14 @@ pkgbase = indicator-sysmonitor-git
 	depends = curl
 	depends = python-gobject
 	depends = python-psutil
+	optdepends = libayatana-appindicator
 	provides = indicator-sysmonitor
 	conflicts = indicator-sysmonitor
 	source = git+https://github.com/fossfreedom/indicator-sysmonitor.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = indicator-sysmonitor-budgie-git
-	pkgdesc = An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status; budgie-panel version
+	pkgdesc = An Application Indicator showing various system parameters; budgie-desktop version
 	depends = curl
 	depends = python-gobject
 	depends = python-psutil
@@ -26,7 +27,7 @@ pkgname = indicator-sysmonitor-budgie-git
 	conflicts = indicator-sysmonitor-budgie
 
 pkgname = indicator-sysmonitor-appindicator-git
-	pkgdesc = An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status; appindicator version
+	pkgdesc = An Application Indicator showing various system parameters; appindicator version
 	depends = curl
 	depends = python-gobject
 	depends = python-psutil
@@ -35,4 +36,3 @@ pkgname = indicator-sysmonitor-appindicator-git
 	provides = indicator-sysmonitor-appindicator
 	conflicts = indicator-sysmonitor
 	conflicts = indicator-sysmonitor-appindicator
-

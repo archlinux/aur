@@ -4,18 +4,29 @@
 _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
-pkgver=r117.b99cc39
+pkgver=r120.6a4e9f4
 pkgrel=1
-pkgdesc='An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status'
+epoch=
+pkgdesc='An Application Indicator showing various system parameters'
 arch=('any')
 url='https://github.com/fossfreedom/indicator-sysmonitor'
 license=('GPL3')
-conflicts=('indicator-sysmonitor')
-provides=('indicator-sysmonitor')
+groups=()
 depends=('curl' 'python-gobject' 'python-psutil')
 makedepends=('git')
+checkdepends=()
+optdepends=('libayatana-appindicator')
+provides=('indicator-sysmonitor')
+conflicts=('indicator-sysmonitor')
+replaces=()
+backup=()
+options=()
+install=
+changelog=
 source=('git+https://github.com/fossfreedom/indicator-sysmonitor.git')
-sha256sums=('SKIP')
+noextract=()
+validpgpkeys=()
+b2sums=('SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
@@ -23,7 +34,7 @@ pkgver() {
 }
 
 package_indicator-sysmonitor-budgie-git() {
-  pkgdesc+="; budgie-panel version"
+  pkgdesc+="; budgie-desktop version"
   depends+=('budgie-desktop')
   conflicts+=('indicator-sysmonitor-budgie')
   provides+=('indicator-sysmonitor-budgie')
