@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=textpieces
-pkgver=2.3.3
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Small tool for quick text transformations such as hashes, encoding, decoding and so on'
 arch=(x86_64 aarch64)
@@ -18,10 +18,10 @@ makedepends=(
 	vala
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a6147fa2a1e3dd70b774d8e7b126642d5604791d295dae131823c0e3f8c27b17')
+sha256sums=('4a142104325e07aabfaf85b63e4f9e1f0c17a1b79fcc195803948151bcec9079')
 
 build() {
-	arch-meson textpieces-${pkgver} build -Dtests=false
+	arch-meson textpieces-${pkgver} build
 	meson compile -C build
 }
 

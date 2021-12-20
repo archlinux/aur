@@ -1,6 +1,6 @@
 pkgbase = textpieces
 	pkgdesc = Small tool for quick text transformations such as hashes, encoding, decoding and so on
-	pkgver = 2.3.3
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/liferooter/textpieces
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = textpieces
 	depends = gtksourceview5
 	depends = libadwaita
 	depends = python
-	source = textpieces-2.3.3.tar.gz::https://github.com/liferooter/textpieces/archive/refs/tags/v2.3.3.tar.gz
-	sha256sums = a6147fa2a1e3dd70b774d8e7b126642d5604791d295dae131823c0e3f8c27b17
+	source = textpieces-3.0.2.tar.gz::https://github.com/liferooter/textpieces/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = 4a142104325e07aabfaf85b63e4f9e1f0c17a1b79fcc195803948151bcec9079
 
 pkgname = textpieces
