@@ -1,11 +1,12 @@
 pkgbase = python-elasticsearch-dsl
 	pkgdesc = Python client for Elasticsearch
 	pkgver = 7.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elastic/elasticsearch-dsl-py
 	arch = any
 	license = Apache2
 	checkdepends = python-pytest
+	checkdepends = python-mock
 	makedepends = python-setuptools
 	makedepends = python-sphinx_rtd_theme
 	depends = python-elasticsearch

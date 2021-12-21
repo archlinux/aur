@@ -4,14 +4,14 @@
 _base=elasticsearch-dsl
 pkgname=python-${_base}
 pkgver=7.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python client for Elasticsearch"
 arch=(any)
 url="https://github.com/elastic/${_base}-py"
 license=(Apache2)
 depends=(python-elasticsearch python-dateparser)
 makedepends=(python-setuptools python-sphinx_rtd_theme)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest python-mock)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('80f292ea79f2dd6d32e6036b7913d92fe03892b5cea4bb0d998f0a3e2f15cb16e2c1975ee0d4e52e64cbf42d337dc9de1bd46b046b40efa855ec2321ebcd26f2')
 
