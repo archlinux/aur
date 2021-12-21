@@ -1,7 +1,7 @@
 pkgbase = powercord-electron-git
 	pkgdesc = A lightweight discord client mod focused on simplicity and performance.
-	pkgver = r1339.1d2318bc
-	pkgrel = 3
+	pkgver = r1340.b64b1449
+	pkgrel = 1
 	url = https://github.com/powercord-org/powercord
 	arch = any
 	license = custom:Porkord
@@ -13,7 +13,7 @@ pkgbase = powercord-electron-git
 	depends = jq
 	provides = powercord
 	conflicts = powercord
-	source = git+https://github.com/powercord-org/powercord.git
+	source = git+https://github.com/powercord-org/powercord.git#branch=v2
 	source = powercord.sh
 	source = powercord.desktop
 	source = powercord.png
@@ -25,7 +25,7 @@ pkgbase = powercord-electron-git
 	md5sums = c84562562db227fda13210a9befc32f3
 	md5sums = ed7e42f11938c61e00c8c07cd1a96427
 	md5sums = 567d9d8abddefa0417035759348230d1
-	md5sums = 01743ddc5e6db17c72df762d6b7e0b48
+	md5sums = 63b1a3b7097e89f695be3e51b6bfc071
 	md5sums = d2a25c91f0f31b461756b1204c5c5318
 	md5sums = 926745d0ebfda9de7337e99e776bdd51
 	md5sums = 4370ed3647d62b1f1cb0e791d960f253
