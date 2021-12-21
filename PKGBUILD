@@ -2,18 +2,18 @@
 # Contributor: acxz <akashpatel at yahoo dot com>
 
 pkgname=miopen-opencl
-pkgver=4.5.0
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (OpenCL backend)"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
 license=('MIT')
-depends=('ocl-icd' 'rocblas' 'llvm-amdgpu')
+depends=('ocl-icd' 'rocblas' 'rocm-llvm')
 makedepends=('opencl-headers' 'rocm-cmake' 'cmake' 'miopengemm')
 provides=('miopen')
 conflicts=('miopen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('be2f5ce962e15e62d427978422498c0ddf821b91fd40777a1ba915a2794d6fda')
+sha256sums=('cb49bdf215ed9881755239b6312d72f829c1a0edf510e6d1fbb206c41f5406fc')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
