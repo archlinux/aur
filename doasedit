@@ -28,7 +28,6 @@ set -eu
 doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer" # To allow doasedit, you must be allowed to run `doas doasedit`
 [[ -d "$1" ]] && ERR "'$1' is a directory" # File is a directory
 # Ensure the file is in a directory we can read
-[[ -d "`dirname $1`" ]] || ERR "'$1' is not in a directory we can read"
 [[ -r "`dirname $1`" ]] || ERR "'$1' is a directory you do not have permission to read"
 # The file we create to edit does not already exist
 [ -f "$doasediting_file" ] && echo -e "File '$1' is already being edited by user '$(stat -c %U $doasediting_file)'\n(the file $doasediting_file exists)" && exit 1
