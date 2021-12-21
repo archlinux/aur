@@ -1,20 +1,15 @@
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=mongars
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Count inbox emails using Gnome Online Accounts"
 arch=('any')
 url="https://github.com/chmouel/mongars"
 license=('Apache')
 depends=('python-gobject' 'evolution-data-server')
-source=( https://github.com/chmouel/${pkgname}/archive/refs/tags/${pkgver}.tar.gz )
-sha256sums=('7e7fcc4af39315f61ab7ec95f563fab238e208c4f23f899257c97bf5312e60a1')
-makedepends=("python-setuptools" "python-dephell")
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    dephell deps convert --from pyproject.toml --to setup.py
-}
+source=( https://github.com/chmouel/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz )
+sha256sums=('0f44576121a99d3119449ececb059a2ca886df0b570ad5733c69b93361f98fc9')
+makedepends=("python-setuptools")
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
