@@ -1,10 +1,11 @@
 # Maintainer: t-ask <t-ask-aur at cixera.com>
 
 pkgname=substance-sampler
-pkgver=3.0.1
+pkgver=3.1.2
 pkgrel=1
-_build=rc.3-95
-_tag=72835aa4
+_rc=rc.2
+_build=1068
+_tag=033aea86
 pkgdesc="Transform a real-life picture into a photorealistic surface or HDR environment."
 arch=('x86_64')
 url='https://www.adobe.com/products/substance3d-sampler.html'
@@ -12,9 +13,8 @@ license=('custom')
 depends=('libicu50' 'fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
 replaces=('substance-alchemist')
-source=("https://download.substance3d.com/adobe-substance-3d-sampler/3.x/Adobe_Substance_3D_Sampler-${pkgver}-${_build}-linux-x64-standard-Release-${_tag}.rpm")
-
-sha256sums=('18c755b7cd414a6cf4db8bec67bdd7665c282b6cc647f6a65a79b307a01c7bfb')
+source=("https://download.substance3d.com/adobe-substance-3d-sampler/3.x/Adobe_Substance_3D_Sampler-${pkgver}-${_rc}-${_build}-linux-x64-standard-Release-${_tag}.rpm")
+sha256sums=('367546e16807e3ca80d9f2593acb54a651d05e0f87e183513bbd4a81b36065e4')
 
 validpgpkeys=()
 
