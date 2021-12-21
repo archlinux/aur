@@ -1,7 +1,7 @@
 pkgbase = python-meshpy
 	pkgdesc = 2D/3D simplicial mesh generator interface for Python (Triangle, TetGen, gmsh)
 	pkgver = 2020.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://documen.tician.de/meshpy
 	arch = x86_64
 	license = MIT

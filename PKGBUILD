@@ -3,7 +3,7 @@ _base=meshpy
 pkgname=python-${_base}
 pkgdesc="2D/3D simplicial mesh generator interface for Python (Triangle, TetGen, gmsh)"
 pkgver=2020.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
@@ -22,7 +22,7 @@ build() {
 
 check() {
   cd "${_base}"
-  local _pyversion=$(python -c "import sys; print(sys.version[:3])")
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
   PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${_pyversion}:${PYTHONPATH}" python test/test_meshpy.py
 }
 
