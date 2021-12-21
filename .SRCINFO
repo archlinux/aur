@@ -1,6 +1,6 @@
 pkgbase = python-pymssql
 	pkgdesc = A simple database interface for Python that builds on top of FreeTDS to provide a Python DB-API (PEP-249) interface to Microsoft SQL Server
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/pymssql/pymssql
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-pymssql
 	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = freetds
-	source = pymssql-2.2.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pymssql/pymssql-2.2.2.tar.gz
-	sha512sums = 6344331f3d4df24a3ae1f7cc9acd8392d124befbfa2592b4649f69fc8a28af4d5a0624671fecb5c77268a2154b21e8030ca5c1eb78da5337df00742161ed9e2a
+	source = pymssql-2.2.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pymssql/pymssql-2.2.3.tar.gz
+	sha512sums = 10b9b976c7bfaa4c8433e08d256a580354181d41b08b1ced2648f8b4f864d1c83ee46a2d240f394d2c87cd4b494ccd51c0adf923e88de41c4cab30f2a0bae2d9
 
 pkgname = python-pymssql
