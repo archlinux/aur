@@ -1,5 +1,5 @@
 diff --git a/src/Powercord/managers/styles.js b/src/Powercord/managers/styles.js
-index 65b97b7..ab4ac64 100644
+index 65b97b7f..ab4ac64c 100644
 --- a/src/Powercord/managers/styles.js
 +++ b/src/Powercord/managers/styles.js
 @@ -13,10 +13,12 @@ const ErrorTypes = Object.freeze({
@@ -17,7 +17,7 @@ index 65b97b7..ab4ac64 100644
  
      if (!window.__SPLASH__) {
 diff --git a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
-index 8aa39d1..c126c58 100644
+index 8aa39d1e..c126c58a 100644
 --- a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
 +++ b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
 @@ -5,6 +5,7 @@ const { Button, Tooltip, ContextMenu, Divider, Icons: { Overflow } } = require('
@@ -37,3 +37,25 @@ index 8aa39d1..c126c58 100644
            },
            {
              type: 'button',
+diff --git a/src/Powercord/plugins/pc-moduleManager/index.js b/src/Powercord/plugins/pc-moduleManager/index.js
+index 0cd00cdd..63c31899 100644
+--- a/src/Powercord/plugins/pc-moduleManager/index.js
++++ b/src/Powercord/plugins/pc-moduleManager/index.js
+@@ -5,7 +5,7 @@ const { PopoutWindow } = require('powercord/components');
+ const { inject, uninject } = require('powercord/injector');
+ const { findInReactTree } = require('powercord/util');
+ const { Plugin } = require('powercord/entities');
+-const { SpecialChannels: { CSS_SNIPPETS } } = require('powercord/constants');
++const { SpecialChannels: { CSS_SNIPPETS }, SETTINGS_FOLDER } = require('powercord/constants');
+ const { join } = require('path');
+ 
+ const commands = require('./commands');
+@@ -48,7 +48,7 @@ module.exports = class ModuleManager extends Plugin {
+     });
+ 
+     this._quickCSS = '';
+-    this._quickCSSFile = join(__dirname, 'quickcss.css');
++    this._quickCSSFile = join(SETTINGS_FOLDER, 'themes', 'quickcss.css');
+     this._loadQuickCSS();
+     this._injectSnippets();
+     this.loadStylesheet('scss/style.scss');
