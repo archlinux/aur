@@ -1,0 +1,16 @@
+pkgbase = diagon-git
+	pkgdesc = cli text diagram generator
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/ArthurSonzogni/diagon
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = util-linux-libs
+	source = git+https://github.com/ArthurSonzogni/diagon.git
+	sha256sums = SKIP
+
+pkgname = diagon-git
