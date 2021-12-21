@@ -1,7 +1,7 @@
 pkgbase = clash-premium-script
 	pkgdesc = Simple clash premium core script for Linux.
 	pkgver = r11.e729951
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kr328/clash-premium-installer
 	install = clash-premium-script.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = clash-premium-script
 	depends = iproute2
 	backup = etc/clash/config.yaml
 	backup = etc/default/clash
-	source = git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
+	source = git+https://github.com/Kr328/clash-premium-installer.git
 	source = arch.patch
 	source = config.yaml
 	sha256sums = SKIP
