@@ -1,0 +1,12 @@
+pkgbase = iscan-data
+	pkgdesc = EPSON Image Scan! data files
+	pkgver = 1.39.2.1
+	pkgrel = 1
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = GPL2
+	depends = libxslt
+	source = http://support.epson.net/linux/src/scanner/iscan/iscan-data_1.39.2-1.tar.gz
+	sha256sums = 6a62bc6e84257714785d99316a017b8444207e3dcf56d35d0ce13f292d855824
+
+pkgname = iscan-data
