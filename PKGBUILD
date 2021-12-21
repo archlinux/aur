@@ -2,12 +2,12 @@
 
 pkgname=dream
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A software radio for AM and Digital Radio Mondiale (DRM)"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/drm"
 license=(GPL2)
-depends=(fftw opus libsndfile speexdsp hamlib libpulse qwt qt5-webkit qt5-svg qt5-base)
+depends=(faad2 libpcap libpulse fftw opus libsndfile speexdsp hamlib libpulse qwt qt5-webkit qt5-svg qt5-base)
 makedepends=(gcc patch)
 source=("https://sourceforge.net/projects/drm/files/dream/${pkgver}/${pkgname}-${pkgver}-svn808.tar.gz"
         "fix_qwttext.patch")
