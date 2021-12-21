@@ -1,23 +1,20 @@
-# Maintainer: Blooser <blooser@protonmail.com>
-pkgname=lyra
-pkgver=1.7.1
-pkgrel=1
-pkgdesc="3D cryptocurrency analyzer with real-time price tracker."
-arch=('x86_64')
-md5sums=('c382b3be9000f14e8212a2875c093ba9')
-url="https://github.com/blooser/lyra"
-license=('MIT')
-depends=('python3')
-makedepends=('python-setuptools')
+# Maintainer: Louise <louise dot aur at mailbox dot org>
 
-source=("https://github.com/blooser/lyra/archive/v${pkgver}.tar.gz")
+pkgname=lyra
+pkgver=1.6
+pkgdesc="A simple to use, composable, command line parser for C++ 11 and beyond"
+pkgrel=1
+arch=('any')
+source=("https://github.com/bfgroup/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=("919e92a9c02fea3f365a3a7bdccd8b306311a28a7f2044dac8e7651106d7b644")
+makedpends=('cmake')
 
 build() {
-	cd $pkgname-$pkgver
-	sudo python setup.py install	
+    cd Lyra-${pkgver}
+    cmake .
 }
 
 package() {
-	sudo rm -rf $pkgname-$pkgver	
+    cd Lyra-${pkgver}
+    make DESTDIR="${pkgdir}" install
 }
-
