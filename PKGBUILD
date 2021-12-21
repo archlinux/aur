@@ -1,33 +1,24 @@
 # Maintainer: Pierre Lalet <pl@ivre.rocks>
 
 pkgbase=ivre
-pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre' 'python2-ivre')
-pkgver=0.9.16
-pkgrel=3
-pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
+pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre')
+pkgver=0.9.17
+pkgrel=1
+pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
-makedepends=('python' 'python2')
+makedepends=('python')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/ivre/$pkgname/v$pkgver/pkg/apache/ivre.conf")
-sha512sums=('0fc0c1bf614805ccbf656916c89f175fd2cf26d3acd89c3865615214360953f6a068796280154b5bab5c06bae4b33e1f572ebc0fbff2926cd1af47acc6c86ef2'
+sha512sums=('6bb852080c54c490450b9904717fdf93ce9750d560c9c4a70824ab7a2cdaaa46553156dac3a17798c17acbc47e701afe04b257602949088b72bf33d8af06c247'
             '9db82963976ed0134c88ca779ab2d8ac92fdaf5eff8f6e6c47014b56f92cb78313acd6b6ddee8de13de6c3ae8a2988f216a659496f16b756836475a9b774b0c5')
-
-prepare() {
-  cp -a $pkgbase-$pkgver{,-py2}
-}
 
 build() {
   (
     cd "$srcdir/$pkgbase-$pkgver"
 
     python setup.py build
-  )
-  (
-    cd "$srcdir/$pkgbase-$pkgver-py2"
-
-    python2 setup.py build
   )
 }
 
@@ -123,31 +114,3 @@ package_python-ivre() {
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
-
-package_python2-ivre() {
-  depends=('python2' 'python2-pymongo' 'python2-future' 'python2-pyopenssl' 'python2-cryptography')
-  optdepends=('python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
-              'python2-psycopg2: experimental PostgreSQL backend'
-              'python2-elasticsearch: experimental Elasticsearch backend'
-              'python2-elasticsearch-dsl: experimental Elasticsearch backend'
-              'python2-tinydb: experimental file-based backend (no DB server)'
-              'python2-pillow: trim screenshots on insertion'
-              'tesseract: extract words from screenshots on insertion'
-              'python2-scapy: parse PCAP files for ARP inspection (flow analysis)'
-              'python2-matplotlib: create graphs from command line tools'
-              'python2-dbus: 3D traceroute graphs'
-              'mongodb: database server'
-              'postgresql: database server (experimental backend)')
-  pkgdesc+=' (library)'
-
-  cd "$srcdir/$pkgbase-$pkgver-py2"
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-
-  rm -r "$pkgdir/usr/bin" \
-     "$pkgdir/usr/share" \
-     "$pkgdir/etc/bash_completion.d"
-
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
-}
-
