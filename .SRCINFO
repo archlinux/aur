@@ -1,12 +1,12 @@
 pkgbase = python-pyminizip
 	pkgdesc = Create a password encrypted zip file in python
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/smihica/pyminizip
 	arch = x86_64
 	license = custom
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyminizip/pyminizip-0.2.5.tar.gz
-	sha256sums = 95c3cb3ad838e1374534c8c3a4408e44eccc06598730c095de338d814fe09ccf
+	source = https://files.pythonhosted.org/packages/source/p/pyminizip/pyminizip-0.2.6.tar.gz
+	sha256sums = 0a954dd2a65fd72c8b827b83fb806fb4f301075a6ec43e207d3345ab15843a7a
 
 pkgname = python-pyminizip
