@@ -39,3 +39,16 @@ index 390517b..a2ae9d8 100644
  require.main.filename = join(discordPath, 'app_bootstrap/index.js');
  
  const electron = require('electron');
+diff --git a/src/browserWindow.js b/src/browserWindow.js
+index d3b54676..b68346bf 100644
+--- a/src/browserWindow.js
++++ b/src/browserWindow.js
+@@ -34,7 +34,7 @@ class PatchedBrowserWindow extends BrowserWindow {
+       if (opts.webPreferences.nativeWindowOpen) {
+         // Discord Client
+         opts.webPreferences.preload = join(__dirname, './preload.js');
+-        opts.webPreferences.contextIsolation = false; // shrug
++        // opts.webPreferences.contextIsolation = false; // shrug
+       } else {
+         // Splash Screen on macOS (Host 0.0.262+) & Windows (Host 0.0.293 / 1.0.17+)
+         opts.webPreferences.preload = join(__dirname, './preloadSplash.js');
