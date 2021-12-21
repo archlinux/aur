@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-bluetooth-battery-indicator-git
-pkgver=r34.f5f6f51
-pkgrel=1
+pkgver=r36.c793f90
+pkgrel=2
 pkgdesc="Gnome-Shell extension displaying battery percentage for bluetooth devices"
 arch=('any')
 url="https://github.com/MichalW/gnome-bluetooth-battery-indicator"
@@ -44,12 +44,12 @@ package() {
   bsdtar xvf "$_uuid.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
 
-  install -d "$pkgdir/usr/share/glib-2.0/schemas/"
-  ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/$_schema" \
+  install -Dm644 schemas/org.gnome.shell.extensions.bluetooth_battery.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
 
   # Remove unnecessary files
   find "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/Bluetooth_Headset_Battery_Level" \
     -type f ! -name '*.py' -delete
   rm "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/LICENSE"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
 }
