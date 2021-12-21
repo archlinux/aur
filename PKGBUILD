@@ -2,7 +2,7 @@
 
 pkgbase=yopass
 pkgname=(yopass yopass-server)
-pkgver=11.2.0
+pkgver=11.3.1
 pkgrel=1
 pkgdesc="Secure sharing for secrets, passwords and files"
 url="https://yopass.se"
@@ -10,7 +10,7 @@ arch=("x86_64")
 license=("Apache")
 makedepends=("go")
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/jhaals/yopass/archive/$pkgver.tar.gz")
-sha512sums=('7c301b5d250ec15933b205e156c862bb174b541dd83494a235c96c373e33741638cfdbbe12ef2e1361df30cfc2961c65a916fa34b14d459e5a64fb762dea2574')
+sha512sums=('15d69f576674a13d3519fb059b153358671bedc279a6ddd93466663497a720c90ea4b9d9a96d32a40eef317a1b344626415d8b1ce6112cce82de9e6bef49931e')
 changelog="CHANGELOG.md"
 
 check() {

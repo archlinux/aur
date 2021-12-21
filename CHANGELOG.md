@@ -1,3 +1,43 @@
+## 11.3.1 (2021-12-08)
+
+## What's Changed
+* Log request using zap by @boekkooi-lengoo in https://github.com/jhaals/yopass/pull/1130
+
+* build(deps): bump react-router-dom from 5.3.0 to 6.0.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1129
+* build(deps-dev): bump @types/react-dom from 17.0.10 to 17.0.11 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1122
+* build(deps-dev): bump eslint-plugin-import from 2.25.2 to 2.25.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1139
+* build(deps): bump react-i18next from 11.13.0 to 11.14.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1138
+* build(deps-dev): bump @types/node from 16.11.6 to 16.11.7 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1137
+* build(deps): bump @emotion/react from 11.5.0 to 11.6.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1134
+* build(deps): bump i18next from 21.4.0 to 21.4.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1132
+* build(deps): bump @emotion/styled from 11.3.0 to 11.6.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1141
+* build(deps-dev): bump cypress from 8.7.0 to 9.0.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1136
+* build(deps): bump @mui/styles from 5.0.2 to 5.1.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1143
+* build(deps): bump openpgp from 5.0.0 to 5.0.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1151
+* build(deps-dev): bump @types/react from 17.0.34 to 17.0.36 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1149
+* build(deps-dev): bump @types/node from 16.11.7 to 16.11.9 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1148
+* build(deps-dev): bump @types/file-saver from 2.0.3 to 2.0.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1145
+* build(deps-dev): bump @types/jest from 27.0.2 to 27.0.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1147
+* build(deps): bump i18next from 21.4.2 to 21.5.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1146
+* build(deps-dev): bump @types/node from 16.11.9 to 16.11.10 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1161
+* build(deps): bump @emotion/react from 11.6.0 to 11.7.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1160
+* build(deps-dev): bump cypress from 9.0.0 to 9.1.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1163
+* build(deps): bump i18next from 21.5.2 to 21.5.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1164
+* build(deps-dev): bump prettier from 2.4.1 to 2.5.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1165
+* build(deps): bump @mui/styles from 5.1.1 to 5.2.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1162
+* build(deps): bump react-i18next from 11.14.2 to 11.14.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1169
+* build(deps-dev): bump @types/react from 17.0.36 to 17.0.37 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1158
+* build(deps): bump github.com/gofrs/uuid from 4.1.0+incompatible to 4.2.0+incompatible by @dependabot in https://github.com/jhaals/yopass/pull/1156
+* build(deps-dev): bump cypress from 9.1.0 to 9.1.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1175
+* build(deps): bump swr from 1.0.1 to 1.1.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1174
+* build(deps-dev): bump prettier from 2.5.0 to 2.5.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1173
+* build(deps-dev): bump @types/node from 16.11.10 to 16.11.11 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1171
+* build(deps): bump @mui/styles from 5.1.1 to 5.2.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1170
+* build(deps): bump i18next from 21.5.2 to 21.5.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1166
+
+
+**Full Changelog**: https://github.com/jhaals/yopass/compare/11.3.0...11.3.1
+
 ## 11.2.0 (2021-09-16)
 
 Notable changes:
