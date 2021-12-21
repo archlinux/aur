@@ -1,0 +1,12 @@
+diff --unified --recursive --text a/setup.py b/setup.py
+--- a/setup.py	2020-04-06 01:00:12.000000000 +0300
++++ b/setup.py	2021-12-21 13:16:56.179333538 +0200
+@@ -139,7 +139,7 @@
+     distclass=PyrobufDistribution,
+     name="pyrobuf",
+     version=VERSION,
+-    packages=find_packages(),
++    packages=[package for package in find_packages() if package[:5] != "tests"],
+     include_package_data=True,
+     cmdclass={'clean': clean},
+     entry_points={

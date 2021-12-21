@@ -1,18 +1,19 @@
 pkgbase = python-pyrobuf
 	pkgdesc = An alternative to Google's Python Protobuf library.
 	pkgver = 0.9.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/appnexus/pyrobuf
 	arch = x86_64
 	license = Apache
 	makedepends = python-pip
-	makedepends = python-pytest-runner
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = cython
 	depends = python
 	depends = python-jinja
 	source = https://files.pythonhosted.org/packages/source/p/pyrobuf/pyrobuf-0.9.3.tar.gz
+	source = dont-install-tests-module.patch
 	sha256sums = 9cca7f992c674645522247e23cf6c4d81cca42e5a65e4ae1d05f3967b0c07a80
+	sha256sums = 3f01d4af07f3baa260151cf787b4f68c75a7c0551f1f8332bb68578a0bb9a619
 
 pkgname = python-pyrobuf
