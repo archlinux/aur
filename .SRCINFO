@@ -1,6 +1,6 @@
 pkgbase = python-meshio
 	pkgdesc = Input/output for many mesh formats
-	pkgver = 5.2.0
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = https://github.com/nschloe/meshio
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = python-meshio
 	makedepends = python-build
 	makedepends = python-pip
 	depends = python-numpy
-	depends = python-npx
+	depends = python-rich
 	optdepends = python-netcdf4
 	optdepends = python-h5py
-	source = python-meshio-5.2.0.tar.gz::https://github.com/nschloe/meshio/archive/v5.2.0.tar.gz
-	sha256sums = 54cf6f057e5494963403fef4f9f48d3b440c734cc1a15e34915beed8f69a9896
+	source = python-meshio-5.2.2.tar.gz::https://github.com/nschloe/meshio/archive/v5.2.2.tar.gz
+	sha256sums = 68d7d9fe0e20c3556e1599fc5a9e1bca035fadf359be91a642df963950b172a5
 
 pkgname = python-meshio
