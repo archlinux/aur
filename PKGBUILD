@@ -1,29 +1,35 @@
+#!/bin/hint/bash
 # Maintainer: Jeremy Attali <contact@jtheoof.me>
-# Contributor: Fredrick Brennan <copypaste@kittens.ph>
-# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Based on blender-git with wayland build flags
 
-# Configuration.
-_fragment=${FRAGMENT:-#branch=master}
-[[ -v CUDA_ARCH ]] && _CUDA_ARCH=(${CUDA_ARCH})
-((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
+#Configuration:
+#Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+#Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+#Use: aurutils --margs=VAR1=0,VAR2=1
+#Use: VAR1=0 VAR2=1 pamac
+
+# Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
+_fragment="${FRAGMENT:-#branch=master}"
+
+# Use CUDA_ARCH to build for specific GPU architecture
+# Supports: single arch (sm_52) and list of archs (sm_52;sm_60)
+[[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 #some extra, unofficially supported stuff goes here:
-_CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-wayland-git
-pkgver=2.93.r103725.g80a8df72be9
+pkgver=3.1.r111319.g5457b663011
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
+depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
             'optix=7.1.0: OptiX support in Cycles'
-            'usd=20.05: USD export Scene'
+            'usd=21.05: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 provides=('blender')
@@ -41,14 +47,16 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
+        openexr3.patch #fix build against openexr:3
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
-            '6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f')
+            '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
+            'ab353b7a9fdb5e9a87fefdade6915f44660299b67446735a9720833aa45f6be8'
+            '5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -63,37 +71,35 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-  git apply -v "${srcdir}"/{embree,usd_python}.patch
+  git apply -v "${srcdir}"/{embree,usd_python,openexr3}.patch
 }
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+  msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
-    if [[ -v _CUDA_ARCH ]]; then
-      _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_CUDA_ARCH[*]}";)" )
-    fi
+                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
   fi
 
   # check for optix
-  _OPTIX_PKG=`pacman -Qq optix 2>/dev/null` || true
+  _OPTIX_PKG=$(pacman -Qq optix 2>/dev/null) || true
   if [ "$_OPTIX_PKG" != "" ]; then
       _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON
                       -DOPTIX_ROOT_DIR=/opt/optix )
   fi
 
   # check for open image denoise
-  _OIDN_PKG=`pacman -Qq openimagedenoise 2>/dev/null` || true
+  _OIDN_PKG=$(pacman -Qq openimagedenoise 2>/dev/null) || true
   if [ "$_OIDN_PKG" != "" ]; then
       _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
   fi
 
   # check for universal scene descriptor
-  _USD_PKG=`pacman -Qq usd=20.05 2>/dev/null` || true
+  _USD_PKG=$(pacman -Qq usd=21.02 2>/dev/null) || true
   if [ "$_USD_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_USD=ON
                     -DUSD_ROOT=/usr )
@@ -107,6 +113,7 @@ build() {
         -DWITH_SYSTEM_GLEW=OFF \
         -DWITH_PYTHON_INSTALL=OFF \
         -DWITH_GHOST_WAYLAND=ON \
+        -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
   ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}

@@ -54,4 +54,4 @@ index 2316800e21e..591841152e2 100644
 +
  set(ADDON_FILES
    addon/__init__.py
-   addon/engine.py
+   addon/camera.py
