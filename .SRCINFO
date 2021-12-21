@@ -1,0 +1,16 @@
+pkgbase = code-hide-notifications
+	pkgdesc = Hide the annyoing bottom right notification toasts in Code OSS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	install = code-hide-notifications.install
+	arch = any
+	license = unknown
+	depends = code
+	depends = sed
+	source = code-hide-notifications.hook
+	source = patch.sh
+	md5sums = cc326c6aa4f04f9ae73601b2b27179d2
+	md5sums = 7dca8b52b37913aaacc0d77b5f2e424d
+
+pkgname = code-hide-notifications

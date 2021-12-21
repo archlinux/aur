@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = /usr/lib/code/out/vs/workbench/workbench.desktop.main.css
+
+[Action]
+Description = [code-hide-notifications] Patching workbench.desktop.main.css...
+Exec = /usr/share/code-hide-notifications/patch.sh
+When = PostTransaction

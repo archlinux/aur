@@ -1,0 +1,15 @@
+post_install() {
+  /usr/share/code-hide-notifications/patch.sh
+}
+
+pre_upgrade() {
+  /usr/share/code-hide-notifications/patch.sh -R
+}
+
+post_upgrade() {
+  /usr/share/code-hide-notifications/patch.sh
+}
+
+pre_remove() {
+  /usr/share/code-hide-notifications/patch.sh -R
+}
