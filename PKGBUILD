@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 pkgname=abyss-engine-git
-pkgver=r161.3867346
+pkgver=r221.79be7ba
 pkgrel=1
 pkgdesc="A game engine designed to run games similar to 2000's style ARPGs such as Diablo II"
 arch=('i686' 'x86_64')
 url="https://github.com/AbyssEngine/AbyssEngine"
 license=('GPL3')
-depends=('ffmpeg' 'lua' 'sdl2_ttf')
+depends=('cppzmq' 'ffmpeg' 'lua' 'sdl2_ttf' 'spdlog' 'sol2')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}" "opendiablo2-git")
 conflicts=("${pkgname%-git}" "opendiablo2-git")
@@ -37,7 +37,8 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname%-git}"
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
