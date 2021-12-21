@@ -1,6 +1,6 @@
 pkgbase = clapper
 	pkgdesc = A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Rafostar/clapper
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = clapper
 	provides = clapper
 	provides = libgstclapper-1.0
 	conflicts = clapper
-	source = clapper-0.4.0::https://github.com/Rafostar/clapper/archive/0.4.0.tar.gz
-	md5sums = a33ee58d8ad248ae6f606f3eeba13d0a
+	source = clapper-0.4.1::https://github.com/Rafostar/clapper/archive/0.4.1.tar.gz
+	md5sums = e6c61dadeb7745c09d9ae1f7225a4e20
 
 pkgname = clapper
