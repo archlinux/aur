@@ -1,7 +1,7 @@
 pkgbase = gestures
 	pkgdesc = Modern, minimal GUI app for libinput-gestures
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cunidev/gestures
 	arch = any
 	license = GPL3
