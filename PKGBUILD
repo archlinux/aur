@@ -42,6 +42,10 @@ sha256sums=('SKIP'
 prepare() {
   cd ${_pkgname}
 
+  git cherry-pick -n \
+    '79bfcc672343ddbc348e040ad899d61a0bafc050' \
+    'fc94c8c365ebeb038af6052bf4ea0506c1220559'
+    
   # patch mpv with the PipeWire audio backend
   #https://github.com/Oschowa/mpv/commit/fddb143282fa74425a8a6f29c9566e51777759d0
   patch -Np1 -i ../01-Add-PipeWire-audio-backend-by-Oschowa.patch
