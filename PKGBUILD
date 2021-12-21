@@ -1,14 +1,15 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=ntop
 pkgver=5.0.1
-pkgrel=12
+pkgrel=13
 pkgdesc='A network traffic probe that shows the network usage.'
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url='https://www.ntop.org/'
 license=('GPL')
-depends=('libevent' 'libpcap' 'gd' 'glibc' 'libxml2' 'openssl' 'rrdtool' 'pcre' 'geoip' 'lua' 'python2')
+depends=('libevent' 'libpcap' 'gd' 'rrdtool' 'geoip' 'lua' 'python2')
 makedepends=('subversion' 'wget' 'ca-certificates')
 options=('!makeflags')
 install='ntop.install'
@@ -19,30 +20,43 @@ sha512sums=('f52c40e6c00c8d2f46b68078c5f9aef8ed78670f92a0a81f66f2f44c71d41bc4c00
             '3532acc6e54a1abdefeba42b3adb68cba1a0d1d2d6422e5b33fb9823b48481bb83696f097e65288c5811a6dd65ce20bff6d285d152776156b0690610d4026245')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
 
   # Python2 fix
   find . -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
-  sed -i 's/python-config/python2-config/' configure.in
+  sed -i -e 's/python-config/python2-config/' \
+    -e 's,-shared -flat_namespace,-shared,' \
+    configure.in
 
   # Fix build with rrdtool 1.6 (Fedora)
   patch -p1 -i ../ntop-rrdtool-1.6.0.patch
+
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
 
   ./autogen.sh --prefix=/usr --sysconfdir=/usr/share --localstatedir=/var/lib --disable-snmp
-  make
+  # Fight unused direct deps
+  sed -i -e "s/ -shared / $LDFLAGS\0 /g" libtool
+  make -j1 -C plugins libnetflowPlugin.la librrdPlugin.la libsflowPlugin.la
+  make -j1
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
 
-  make DESTDIR="${pkgdir}" install-recursive
+  make DESTDIR="${pkgdir}" install
 
-  install -dm0755 -o nobody -g nobody "${pkgdir}/var/lib/ntop"
-  install -dm0755 -o nobody -g nobody "${pkgdir}/var/lib/ntop/rrd"
+  install -dm0755 "${pkgdir}"/usr/lib/tmpfiles.d
+
+  cat >"${pkgdir}"/usr/lib/tmpfiles.d/ntop.conf <<-EOF
+	d /var/lib/ntop 755 nobody nobody
+	d /var/lib/ntop/rdd 755 nobody nobody
+EOF
+
+  rm -fr "${pkgdir}"/usr/lib/plugins
+  rm -fr "${pkgdir}"/usr/lib/ntop
 
   for _f in "${pkgdir}/usr/lib/ntop/plugins/"*.so; do
     _plug="$(basename ${_f})"
