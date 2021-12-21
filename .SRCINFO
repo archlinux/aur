@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
-	pkgver = 7.0rc2.GE.1
-	pkgrel = 1
+	pkgver = 6.21.GE.2
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -207,7 +207,7 @@ pkgbase = proton-ge-custom
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=7.0rc2-GE-1
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=6.21-GE-2
 	source = wine::git+https://github.com/wine-mirror/wine.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -223,7 +223,6 @@ pkgbase = proton-ge-custom
 	source = dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
 	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
 	source = vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
 	source = ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
@@ -265,12 +264,11 @@ pkgbase = proton-ge-custom
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = 8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94
 	sha256sums = b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014
 	sha256sums = 2a047893f047b4f0f5b480f1947b7dda546cee3fec080beb105bf5759c563cd3
 	sha256sums = 9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215
-	sha256sums = 42e5382ccd6686810dc54aafe391ffb00e874923bd1937b4993ada675e8f7265
+	sha256sums = 05aedbc85eaa37df22f9bca7d9a1a51e064cf4a2522cb453325a865b4219a276
 	sha256sums = 27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489
 	sha256sums = 242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2
 
