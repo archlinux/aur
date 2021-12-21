@@ -1,15 +1,15 @@
 pkgbase = spotify-ripper
-	pkgdesc = Command-line ripper for Spotify, with a workaround for playlist emptying
+	pkgdesc = CLI Spotify ripper
 	pkgver = 2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scaronni/spotify-ripper
+	install = spotify-ripper.install
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = libspotify
-	depends = python
-	depends = python-pyspotify>=2.1.3-4
-	depends = python-spotipy>=2.19.0-2
+	depends = python-pyspotify
+	depends = python-spotipy
 	depends = python-mutagen
 	depends = python-colorama
 	depends = python-requests
@@ -21,11 +21,9 @@ pkgbase = spotify-ripper
 	optdepends = faac: Rip songs to AAC format with FreeAAC
 	optdepends = libav-git-no-libs: Rip songs to Apple Lossless format
 	optdepends = fdkaac: Rip songs to MP4/M4A format with Fraunhofer FDK AAC codec
-	source = https://github.com/scaronni/spotify-ripper/archive/2.18.tar.gz
-	source = setup.py
-	source = requirements.txt
-	md5sums = 74f11d4cebc0b3d0a479531eaae40c8a
-	md5sums = 0cf83405e3b811277e3f3a11b01f7426
-	md5sums = 433ec722cffccd32c7e31807262f1128
+	source = spotify-ripper-2.18.tar.gz::https://github.com/scaronni/spotify-ripper/archive/2.18.tar.gz
+	source = 001-setup.py.patch
+	sha256sums = 2536ec8a8b395f594a47e6f9aee1412d03109b6c06d43ee4563e45550138f950
+	sha256sums = 527eaeed0947406598f215fae3bb6fe150dbdeb3599e98f15807f519dbdff7b9
 
 pkgname = spotify-ripper

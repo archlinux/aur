@@ -1,0 +1,3 @@
+post_install() {
+	echo ':: This package requires manual setup. Check documentation for more information.'
+}
