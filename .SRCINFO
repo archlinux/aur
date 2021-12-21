@@ -1,6 +1,6 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
-	pkgver = 5.15.10.lqx1
+	pkgver = 5.15.10.lqx2
 	pkgrel = 1
 	url = https://liquorix.net/
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = linux-lqx
 	options = !strip
 	source = https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.xz
 	source = https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.sign
-	source = https://github.com/damentz/liquorix-package/archive/5.15-11.tar.gz
+	source = https://github.com/damentz/liquorix-package/archive/5.15-12.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = d25ad40b5bcd6a4c6042fd0fd84e196e7a58024734c3e9a484fd0d5d54a0c1d87db8a3c784eff55e43b6f021709dc685eb0efa18d2aec327e4f88a79f405705a
 	sha512sums = SKIP
-	sha512sums = 734d1aa3b8b99c79d5781eda2b211eb24ec5a45e5a3aafec5dc690803353856dd1981f95072d87004468c61bd3d1241a7ce4dc246ccf01802bda535a024ce63d
+	sha512sums = 4136159954b6f02b183dcae8cc342d0d6e80cc25548b74b4a330d6578773c50c38771b20caaa8305ca9b99d3b33c77fbf6f79bc190e564ca29f33ca72fea205e
 
 pkgname = linux-lqx
 	pkgdesc = The Linux Liquorix kernel and modules
