@@ -11,7 +11,7 @@ url="https://www.xmind.net/"
 license=('custom')
 depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3')
 provides=('xmind' "$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname" 'xmind-2021')
 source=("https://dl3.xmind.net/XMind-for-Linux-x86-64bit-$pkgver-202111151820.rpm"
         'xmind-2020.xml')
 
