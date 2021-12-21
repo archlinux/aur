@@ -2,19 +2,24 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=cmakew
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="CMake wrapper CLI tool"
 arch=('any')
 url="https://github.com/thombashi/${pkgname}"
 license=(MIT)
-depends=(python-logbook python-six python-subprocrunner python-typepy)
-makedepends=(python-setuptools)
-source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('5576877252e2ef2e3e0638eaa921f97e1a713b406061fcf4bda1b1703e8fd95ef858c1cba3d8951a1f09990128ba6b382b30dacffc6f808fc8f2f86f5c16578f')
+depends=(python-logbook python-subprocrunner python-typepy) # python-six
+makedepends=(python-setuptools python-wheel git)
+source=("${pkgname}-${pkgver}::git+${url}.git?signed#tag=v${pkgver}")
+validpgpkeys=('ACEC3954F31619D7288C17B07BAC46763C91BB7A') # Tsuyoshi Hombashi <tsuyoshi.hombashi@gmail.com>
+sha512sums=('SKIP')
 
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
 }
 
 package() {
