@@ -1,13 +1,15 @@
 pkgbase = python-meshplex
 	pkgdesc = Compute interesting points, areas, and volumes in simplex meshes of any dimension
 	pkgver = 0.16.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nschloe/meshplex
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-meshio
+	depends = python-npx
 	optdepends = python-matplotlib: for Matplotlib rendering
+	optdepends = python-scipy: for analyze the connected components of a sparse graph
 	optdepends = vtk: for create polygonal sphere
 	source = https://pypi.org/packages/source/m/meshplex/meshplex-0.16.7.tar.gz
 	sha512sums = ab59159aaa4e4cbb28fa201074a856c9fb1d637b6d29d126b052df27f79fec94a8086ed6b298b2ab9864b50298b3e12ca86daefccd27f2e13496b64091abcef0
