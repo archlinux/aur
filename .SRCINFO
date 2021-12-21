@@ -1,6 +1,6 @@
 pkgbase = pyfunceble-dev
 	pkgdesc = The tool to check the availability or syntax of domain, IP or URL.
-	pkgver = 4.0.2b7
+	pkgver = 4.1.0b2
 	pkgrel = 1
 	url = https://pyfunceble.github.io
 	arch = any
@@ -20,14 +20,15 @@ pkgbase = pyfunceble-dev
 	depends = python-requests
 	depends = python-ruamel-yaml
 	depends = python-setuptools
+	depends = python-shtab
 	depends = python-sqlalchemy
 	depends = python-toml
 	depends = python3
-	provides = pyfunceble=4.0.2b7
+	provides = pyfunceble=4.1.0b2
 	conflicts = pyfunceble
-	source = https://files.pythonhosted.org/packages/source/p/pyfunceble-dev/PyFunceble-dev-4.0.2b7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pyfunceble-dev/PyFunceble-dev-4.1.0b2.tar.gz
 	source = https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE
-	sha256sums = a088d129d9001ebe7b89cfb479250bd1cb6a3a5f1eb1592ff5c883b7a76fa889
+	sha256sums = f90b631ada10c41725224bc6e78af861bf5e962db065be13a2fd05f22fcdc985
 	sha256sums = 69e9c471f1cd9c0dd18f32588c8fffa81f53c54d8d04a1af8603e50a8d35e19d
 
 pkgname = pyfunceble-dev
