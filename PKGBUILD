@@ -1,10 +1,10 @@
 pkgname=python-anyqt
 pkgver=0.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="PyQt4/PyQt5 compatibility layer"
 url="https://github.com/ales-erjavec/anyqt"
 arch=(any)
-license=('GPL')
+license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python-pyqt5')
 source=("https://pypi.io/packages/source/A/AnyQt/AnyQt-${pkgver}.tar.gz")
@@ -18,7 +18,6 @@ build() {
 package() {
     cd AnyQt-$pkgver
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: set ts=4 sw=4 et:
