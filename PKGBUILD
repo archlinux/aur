@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aliyundrive-wine
-pkgver=2.2.8
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Wine 阿里云盘"
 arch=('any')
@@ -114,7 +114,7 @@ package() {
     install -dm0755 "${pkgdir}/${_aliyun}" \
                     "${pkgdir}/usr/share/pixmaps"
 
-    cp -rv "${srcdir}/${_drive}-${pkgver}.exe" "${pkgdir}/${_aliyun}/${_drive}.exe"
+    install -Dm0755 "${srcdir}/${_drive}-${pkgver}.exe" "${pkgdir}/${_aliyun}/${_drive}.exe"
     cp -r "${srcdir}/regpatch.reg" "${pkgdir}/${_aliyun}/regpatch.reg"
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
