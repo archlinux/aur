@@ -1,0 +1,74 @@
+From 38291fa86c00e1d3ee37612c9215b0c15da89051 Mon Sep 17 00:00:00 2001
+From: Jocelyn Falempe <jfalempe@redhat.com>
+Date: Fri, 17 Dec 2021 10:18:25 +0100
+Subject: [PATCH 2/2] xf86/logind: fix missing call to vtenter if the platform
+ device is not paused
+
+If there is one platform device, which is not paused nor resumed,
+systemd_logind_vtenter() will never get called.
+This break suspend/resume, and switching to VT on system with Nvidia
+proprietary driver.
+This is a regression introduced by f5bd039633fa83
+
+So now call systemd_logind_vtenter() if there are no paused
+platform devices.
+
+Closes: https://gitlab.freedesktop.org/xorg/xserver/-/issues/1271
+Fixes: f5bd0396 - xf86/logind: fix call systemd_logind_vtenter after receiving drm device resume
+
+Signed-off-by: Jocelyn Falempe <jfalempe@redhat.com>
+Tested-by: Olivier Fourdan <ofourdan@redhat.com>
+Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Laurent Carlier <lordheavym@gmail.com>
+---
+ hw/xfree86/os-support/linux/systemd-logind.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/hw/xfree86/os-support/linux/systemd-logind.c b/hw/xfree86/os-support/linux/systemd-logind.c
+index f6a223a55..dbb00cd85 100644
+--- a/hw/xfree86/os-support/linux/systemd-logind.c
++++ b/hw/xfree86/os-support/linux/systemd-logind.c
+@@ -316,6 +316,7 @@ void systemd_logind_drop_master(void)
+             dbus_int32_t major, minor;
+             struct systemd_logind_info *info = &logind_info;
+ 
++            xf86_platform_devices[i].flags |= XF86_PDEV_PAUSED;
+             major = xf86_platform_odev_attributes(i)->major;
+             minor = xf86_platform_odev_attributes(i)->minor;
+             systemd_logind_ack_pause(info, minor, major);
+@@ -323,6 +324,16 @@ void systemd_logind_drop_master(void)
+     }
+ }
+ 
++static Bool are_platform_devices_resumed(void) {
++    int i;
++    for (i = 0; i < xf86_num_platform_devices; i++) {
++        if (xf86_platform_devices[i].flags & XF86_PDEV_PAUSED) {
++            return FALSE;
++        }
++    }
++    return TRUE;
++}
++
+ static DBusHandlerResult
+ message_filter(DBusConnection * connection, DBusMessage * message, void *data)
+ {
+@@ -416,13 +427,11 @@ message_filter(DBusConnection * connection, DBusMessage * message, void *data)
+ 
+         if (pdev) {
+             pdev->flags &= ~XF86_PDEV_PAUSED;
+-            systemd_logind_vtenter();
+         } else
+             systemd_logind_set_input_fd_for_all_devs(major, minor, fd,
+                                                      info->vt_active);
+-
+-        /* Always call vtenter(), only if there are only legacy video devs */
+-        if (!xf86_num_platform_devices)
++        /* Call vtenter if all platform devices are resumed, or if there are no platform device */
++        if (are_platform_devices_resumed())
+             systemd_logind_vtenter();
+     }
+     return DBUS_HANDLER_RESULT_HANDLED;
+-- 
+2.34.1
+

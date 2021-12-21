@@ -5,7 +5,7 @@ pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
 pkgver=21.1.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -20,16 +20,24 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
 source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.xz{,.sig}
         xvfb-run # with updates from FC master
         xvfb-run.1
+        0001-xf86-logind-Fix-compilation-error-when-built-without.patch
+        0002-xf86-logind-fix-missing-call-to-vtenter-if-the-platf.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('FD0004A26EADFE43A4C3F249C6F7AE200374452D') # Povilas Kanapickas <povilas@radix.lt>
 sha512sums=('6d7a0d29d5be09f80ed505c4d6ae964795127525a0ab73a4eab4f601788ab3627033143e5aeb4c2565c6683dd3402084d13acab5554606fbd519c4aec0a79def'
             'SKIP'
             '4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
+            'f4f04d4bf98104bf22861f1e0f7434a3c2aedf6a67ce0fe39ed7b4186f162a03979ae6659c40d6e6816c735801c0691e5362375250a58c742ca089d35513297d'
+            '906d13faf041cfb0e27923edcea134d33836f798ba3ee5f815cb3da8e219f5a10f25e05255552366a30e267bb14c6d1fdc02ed678ce3a6fcaaf7a63cd3057f3b'
             'c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf')
 
 prepare() {
   cd "xorg-server-${pkgver}"
+
+  # FS#73075 - merged in trunk
+  patch -Np1 -i ../0001-xf86-logind-Fix-compilation-error-when-built-without.patch
+  patch -Np1 -i ../0002-xf86-logind-fix-missing-call-to-vtenter-if-the-platf.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
