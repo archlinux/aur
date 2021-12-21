@@ -13,6 +13,7 @@ pkgbase = xmind-2020
 	provides = xmind
 	provides = xmind-2020
 	conflicts = xmind-2020
+	conflicts = xmind-2021
 	source = https://dl3.xmind.net/XMind-for-Linux-x86-64bit-11.1.2-202111151820.rpm
 	source = xmind-2020.xml
 	sha256sums = SKIP
