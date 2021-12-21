@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=Lovers in a Dangerous Spacetime
+Comment=Explore a neon galaxy in your very own battleship in Lovers in a Dangerous Spacetime, a thrilling 1- to 4-player couch co-op adventure.
+Path=/opt/lovers-in-a-dangerous-spacetime
+Exec=/opt/lovers-in-a-dangerous-spacetime/LoversInADangerousSpacetime.x86_64
+Icon=lovers-in-a-dangerous-spacetime
+Terminal=false
+Categories=Game;

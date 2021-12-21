@@ -1,0 +1,17 @@
+pkgbase = lovers-in-a-dangerous-spacetime-bin
+	pkgdesc = Explore a neon galaxy in your very own battleship in Lovers in a Dangerous Spacetime, a thrilling 1- to 4-player couch co-op adventure.
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://www.loversinadangerousspacetime.com/
+	changelog = CHANGELOG.md
+	arch = x86_64
+	license = nonfree
+	conflicts = lovers-in-a-dangerous-spacetime
+	source = local://LoversInADangerousSpacetime-1.4.5_Linux.zip
+	source = com.loversinadangerousspacetime.LoversInADangerousSpacetime.desktop
+	source = lovers-in-a-dangerous-spacetime.png
+	sha256sums = 67dbe65e9da012c87bff1c18320ff267de817847ce89815f944507fd9afad4ea
+	sha256sums = 89e4e7cd7874bf7f36474246e98f410426e7d50f0e5365b01e016d767460b79a
+	sha256sums = f9d5e4279d1163714f5e15a2355f00c5a187b7c76f031440d0989ceb3c0388f3
+
+pkgname = lovers-in-a-dangerous-spacetime-bin
