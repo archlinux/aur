@@ -7,14 +7,16 @@
 # Since I am lazy and am using this to write small scripts under /usr/local/bin sometimes, I also added a feature for myself to install with permissions already set if you are writing a new file and start it with a shebang.
 
 EDITOR=${EDITOR:-vi}
-doasediting_file="/tmp/doasediting"
+real_path=$(readlink -f "$1")
+doasediting_file="/tmp/doasedit${real_path//\//.}" # While there are collisions with some dumb filenames, no harm can come from it
 
 fileperms=""
 anyreadperm=""
 
 ERR() {
-    echo -e 'doasedit: '"$1";
-    exit 1
+	echo -e "doasedit: $1";
+	[[ -f "$doasediting_file" ]] && echo "(Leaving behind file $doasediting_file)"
+	exit 1
 }
 
 # Set shell options to fail if any variable expansion or final expression in a pipeline fails
@@ -28,39 +30,48 @@ doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer" # 
 # Ensure the file is in a directory we can read
 [[ -d "`dirname $1`" ]] || ERR "'$1' is not in a directory we can read"
 [[ -r "`dirname $1`" ]] || ERR "'$1' is a directory you do not have permission to read"
+# The file we create to edit does not already exist
+[ -f "$doasediting_file" ] && echo -e "File '$1' is already being edited by user '$(stat -c %U $doasediting_file)'\n(the file $doasediting_file exists)" && exit 1
 
 # In the positive case, the file exists, and we check that anyone can read it and that it is owned by root. In the negative case, the file does not exist
 if [[ -e "$1" ]] ; then
-    fileperms=$(stat -L -c "%a" "$1")
-    anyreadperm=${fileperms:3:1} # With sticky bit
-    [[ ${#fileperms} == "3" ]] && anyreadperm=${fileperms:2:1} # without sticky bit
-    [[ $anyreadperm -ge "4" ]] || ERR "file '$1' is not world-readable (since security is hard, this is a sacrifice doasedit makes for ease of implementation)"
-    [[ -r "$1" ]] || ERR "file '$1' is world-readable but is not readable by your user, what are you doing?"
-    [[ "$(stat -L -c "%u" "$1")" == "0" ]] || ERR "Can only edit root-owned files with this script, as copying the file back will make root the owner"
+	fileperms=$(stat -L -c "%a" "$1")
+	anyreadperm=${fileperms:3:1} # With sticky bit
+	[[ ${#fileperms} == "3" ]] && anyreadperm=${fileperms:2:1} # without sticky bit
+	[[ $anyreadperm -ge "4" ]] || ERR "file '$1' is not world-readable (since security is hard, this is a sacrifice doasedit makes for ease of implementation)"
+	[[ -r "$1" ]] || ERR "file '$1' is world-readable but is not readable by your user, what are you doing?"
+	[[ "$(stat -L -c "%u" "$1")" == "0" ]] || ERR "Can only edit root-owned files with this script, as copying the file back will make root the owner"
 
-    # Preserves file permissions, amazingly
-    cp "$1" $doasediting_file || ERR "Cannot copy to $doasediting_file"
+	# Preserves file permissions, amazingly
+	cp "$1" "$doasediting_file" || ERR "Cannot copy to $doasediting_file"
 else
-    # Default permissions are 644
-    rm -f $doasediting_file || ERR "Cannot remove $doasediting_file"
-    touch $doasediting_file || ERR "Cannot touch $doasediting_file"
+	# Default permissions are 644
+	rm -f "$doasediting_file" || ERR "Cannot remove $doasediting_file"
+	touch "$doasediting_file" || ERR "Cannot touch $doasediting_file"
 fi
 
-$EDITOR $doasediting_file || ERR "The editor failed to exit successfully"
+$EDITOR "$doasediting_file" || ERR "The editor failed to exit successfully"
 
 # If the original file existed, don't update it if we did not make any modification to the temporary copy
-[[ -e "$1" ]] && cmp -s $doasediting_file "$1" && exit 0
+[[ -e "$1" ]] && cmp -s "$doasediting_file" "$1" && rm "$doasediting_file" && exit 0
 # If the original file did not exist, print a warning
 [[ -e "$1" ]] || echo "doasedit: File '$1' will be created, if this is not desireable press ctrl+C"
 
-# Ensure if we edit '/etc/doas.conf' that permissons are correct
+# Ensure if we edit '/etc/doas.conf' that we didn't create a syntax error or other mistake
 [[ "/etc/doas.conf" == "$1" ]] && {
-	echo "$ doas -C $doasediting_file doasedit \"$1\"" &&
-	doas -C $doasediting_file doasedit \"$1\" ||
-	ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
+	echo "$ doas -C "$doasediting_file" doasedit \"$1\"" &&
+	doas -C "$doasediting_file" doasedit \"$1\" || {
+		# We probably have a syntax error. Move the file so we can re-run doasedit to edit it again
+		mv -f "$doasediting_file" "$doasediting_file".backup
+		ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
+	}
 }
 
-doas cp $doasediting_file "$1" || ERR "You put your password in wrong. Manually run 'doas cp $doasediting_file $1'"
+doas cp "$doasediting_file" "$1" || ERR "You put your password in wrong. Manually run 'doas cp "$doasediting_file" $1'"
+
+# Remove the temporary file now that it has been copied successfully back into place. We do this here rather than with `trap` because if an error occurs, we don't necessarily want to overwrite the user's changes to that file
+rm "$doasediting_file"
 
 # Change permissions if the file was empty and starts with a shebang
 [[ $fileperms != "" ]] || [[ `head -c 2 $doasediting_file` != "#!" ]] || { echo "doasedit: automatically running \`doas chmod +x '$1'\`" && doas chmod +x "$1" ; } || ERR "Cannot change permissions of '$1'"
+
