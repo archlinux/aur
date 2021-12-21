@@ -1,6 +1,6 @@
 pkgbase = quadlet
 	pkgdesc = An opinionated tool for easily running podman system containers under systemd
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/containers/quadlet
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = quadlet
 	makedepends = git
 	depends = systemd
 	depends = podman
-	source = quadlet::git+https://github.com/containers/quadlet.git#tag=0.2.1
+	source = quadlet::git+https://github.com/containers/quadlet.git#tag=0.2.2
 	sha512sums = SKIP
 
 pkgname = quadlet
