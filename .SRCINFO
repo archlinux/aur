@@ -8,7 +8,7 @@ pkgbase = dbf
 	license = GPL
 	makedepends = unzip
 	depends = libdbf
-	source = dbf-core-0.9.0.src.zip::https://sourceforge.net/projects/dbf/files/dbf%20-%20dBASE%20Reader/dbf-0.9.0/dbf-core-0.9.0.src.zip/download
-	md5sums = fb5c016d9e45a95c1956d959792a5063
+	source = https://downloads.sourceforge.net/project/dbf/dbf%20-%20dBASE%20Reader/dbf-0.9.0/dbf-core-0.9.0.src.zip
+	sha512sums = f22a81038b44b9d8004c1ec058d00326dca76ee835718358faf15da91ed2716d6d77c2841cd8fb682791f59c6156be157bf02c448b0348fb4e98ebb6826b165a
 
 pkgname = dbf
