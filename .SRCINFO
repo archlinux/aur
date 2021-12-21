@@ -1,5 +1,5 @@
 pkgbase = windscribe-git
-	pkgdesc = Windscribe's GUI desktop client (git release)
+	pkgdesc = Windscribe's GUI desktop client
 	pkgver = 2.3.11_beta
 	pkgrel = 1
 	url = https://github.com/Windscribe/desktop-v2
@@ -27,7 +27,6 @@ pkgbase = windscribe-git
 	depends = desktop-file-utils
 	depends = icu67
 	provides = windscribe
-	conflicts = windscribe-bin
 	source = desktop-v2::git+https://github.com/Windscribe/desktop-v2#branch=master
 	source = patch_installqt
 	source = patch_sourcechanges
