@@ -1,14 +1,9 @@
 pkgbase = lyra
-	pkgdesc = 3D cryptocurrency analyzer with real-time price tracker.
-	pkgver = 1.7.1
+	pkgdesc = A simple to use, composable, command line parser for C++ 11 and beyond
+	pkgver = 1.6
 	pkgrel = 1
-	url = https://github.com/blooser/lyra
-	arch = x86_64
-	license = MIT
-	makedepends = python-setuptools
-	depends = python3
-	source = https://github.com/blooser/lyra/archive/v1.7.1.tar.gz
-	md5sums = c382b3be9000f14e8212a2875c093ba9
+	arch = any
+	source = https://github.com/bfgroup/lyra/archive/refs/tags/1.6.tar.gz
+	sha256sums = 919e92a9c02fea3f365a3a7bdccd8b306311a28a7f2044dac8e7651106d7b644
 
 pkgname = lyra
-
