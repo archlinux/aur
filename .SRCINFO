@@ -1,7 +1,7 @@
 pkgbase = tex2page-git
 	pkgdesc = Lisp program for making Web pages from TeX documents
-	pkgver = 20200131
-	pkgrel = 1
+	pkgver = 20201115
+	pkgrel = 2
 	url = https://github.com/ds26gte/tex2page
 	arch = any
 	license = custom
@@ -12,9 +12,8 @@ pkgbase = tex2page-git
 	makedepends = texlive-core
 	makedepends = ttf-ubuntu-font-family
 	depends = bash
-	depends = guile
+	depends = sbcl
 	source = git+https://github.com/ds26gte/tex2page
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = tex2page-git
-

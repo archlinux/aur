@@ -1,17 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20200131
-pkgrel=1
+pkgver=20201115
+pkgrel=2
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
 url="https://github.com/ds26gte/tex2page"
 license=('custom')
-depends=('bash' 'guile')
+depends=('bash' 'sbcl')
 makedepends=('git' 'ghostscript' 'texlive-formatsextra' 'texlive-bibtexextra' 'texlive-core' 'ttf-ubuntu-font-family')
-source=("git+https://github.com/ds26gte/tex2page")
-md5sums=('SKIP')
-
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -20,7 +19,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --dialect=guile --prefix=/usr
+  ./configure --dialect=sbcl --prefix=/usr
   # creating the documentation
   yes "s"|luatex index || true
   mpost lambda.mp
@@ -34,7 +33,7 @@ build() {
 check() {
   cd "${pkgname%-git}"
   # run the generated program to build html-docs, also a good test
-  export GUILE_AUTO_COMPILE=0
+
   ./${pkgname%-git} index
   ./${pkgname%-git} index
 }
