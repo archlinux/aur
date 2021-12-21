@@ -1,16 +1,16 @@
 pkgname=carla-bridges-win32
 pkgver=2.4.1
 pkgrel=1
-pkgdesc="Carla win32 bridge (Stable)"
-arch=('i686' 'x86_64')
+pkgdesc="Carla Windows VST 32-Bit Bridge (Stable)"
+arch=('x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
-conflicts=('carla-bridges-win32-git')
+conflicts=('carla-bridges-win32' 'carla-bridges-win')
 provides=('carla-bridges-win32')
 depends=('mingw-w64-crt' 'mingw-w64-winpthreads' 'wine' 'carla')
-makedepends=('mingw-w64-gcc' 'gcc-multilib')
-source=("https://github.com/falkTX/Carla/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bbb188a672ea8871b11648d36770ba013497d03407ca9c73ed68429016f7536f')
+makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'gcc-multilib')
+source=("$pkgname"::"git://github.com/falkTX/Carla.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
   _path=$PATH
   _cflags=$CFLAGS
@@ -23,7 +23,7 @@ sha256sums=('bbb188a672ea8871b11648d36770ba013497d03407ca9c73ed68429016f7536f')
   _win32=$WIN32
 
 build() {
-  cd "$srcdir/Carla-${pkgver}"
+  cd "$srcdir/$pkgname"
   export PATH=/usr/i686-w64-mingw32/bin:$PATH
   export AR=i686-w64-mingw32-ar
   export CC=i686-w64-mingw32-gcc
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Carla-${pkgver}"
+  cd "$srcdir/$pkgname"
   mkdir -p "$pkgdir/usr/lib/carla"
   cp bin/*.exe "$pkgdir/usr/lib/carla/"
   cp bin/*.dll "$pkgdir/usr/lib/carla/"
