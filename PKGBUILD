@@ -1,22 +1,25 @@
+# Contributor: Eric Fung <loseurmarbles [AT] gmail [DOT] com>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 # Contributor: Michael Lass <bevan@bi-co.net>
-# Maintainer: David Rosenstrauch <darose@darose.net>
+# Contributor: David Rosenstrauch <darose@darose.net>
  
 pkgname=eclipse-subclipse
-pkgver=4.2.2
+_pkgname=subclipse
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="Subversion integration for the Eclipse platform"
 arch=('any')
 url="https://github.com/subclipse/subclipse"
 license=('EPL')
+provides=('subclipse')
 depends=('eclipse' 'subversion')
-source=(https://dl.bintray.com/subclipse/releases/subclipse/subclipse-4.2.2.zip)
-md5sums=('ebbc91a86b898c466dbde43dc499dfa1')
+source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.zip")
+sha256sums=('0d670315ab0db3d0ff29390bd55f5e5f9336c2aa07f8f660a2108448b692f9fc')
 
 package() {
-  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  _dest="${pkgdir}/usr/lib/eclipse/dropins/${_pkgname}/eclipse"
 
   cd ${srcdir}
 
