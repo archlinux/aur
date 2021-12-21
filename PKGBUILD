@@ -1,16 +1,17 @@
-# Maintainer: librewish <librewish@gmail.com>
+# Maintainer: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
+# Contributor: librewish <librewish@gmail.com
 # Contributor:  Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: feanor1397 <feanor1397@gmail.com>
 
 pkgname=rtw88-dkms-git
 _pkgname=rtw88
 pkgver=r1.029812e
-pkgrel=1
+pkgrel=2
 pkgdesc='Newest Realtek rtlwifi codes'
 arch=('any')
 url='https://github.com/lwfinger/rtw88'
 depends=('dkms')
-makedepends=('git')
+makedepends=('git' 'gcc' 'make')
 provides=('rtlwifi_new-dkms')
 conflicts=('rtlwifi_new-dkms')
 provides=('rtlwifi_new-dkms' 'rtlwifi_new-extended-dkms-git' 'rtlwifi_new-rtw88-dkms')
@@ -19,8 +20,6 @@ replaces=('rtlwifi_new-extended-dkms-git' 'rtlwifi_new-rtw88-dkms-git')
 install=${pkgname}.install
 source=("git+https://github.com/lwfinger/rtw88.git")
 sha256sums=('SKIP')
-
-
 
 pkgver() {
 	cd "${_pkgname}"

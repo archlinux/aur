@@ -1,11 +1,13 @@
 pkgbase = rtw88-dkms-git
 	pkgdesc = Newest Realtek rtlwifi codes
 	pkgver = r1.029812e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lwfinger/rtw88
 	install = rtw88-dkms-git.install
 	arch = any
 	makedepends = git
+	makedepends = gcc
+	makedepends = make
 	depends = dkms
 	provides = rtlwifi_new-dkms
 	provides = rtlwifi_new-extended-dkms-git
@@ -19,4 +21,3 @@ pkgbase = rtw88-dkms-git
 	sha256sums = SKIP
 
 pkgname = rtw88-dkms-git
-
