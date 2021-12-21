@@ -4,8 +4,8 @@
 # from: git
 
 pkgname=anbox-image-nocsd
-pkgver=r7.5052c81c
-pkgrel=1
+pkgver=r8.bc49df8d
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with no-csd patch and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -14,20 +14,29 @@ makedepends=('curl' 'lzip' 'squashfs-tools' 'unzip')
 provides=('anbox-image')
 conflicts=('anbox-image')
 
-_anbox_rel="$(curl --config /dev/null -o /dev/null -Ls https://github.com/thdaemon/anbox/releases/latest -w '%{url_effective}\n'|xargs basename)"
+_anbox_rel="$(
+  curl --config /dev/null -o /dev/null -Ls https://github.com/thdaemon/anbox/releases/latest -w '%{url_effective}\n' \
+  | xargs basename
+)"
+_bromite_release="$(
+  curl --config /dev/null -o /dev/null -Ls https://github.com/bromite/bromite/releases/latest -w '%{url_effective}\n' \
+  | xargs basename
+)"
 source=(
   "android_amd64.img::https://github.com/thdaemon/anbox/releases/download/$_anbox_rel/android.img"
   "houdini_y.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
   "houdini_z.sfs::https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
+  "BromiteSystemWebview.apk::https://github.com/bromite/bromite/releases/download/$_bromite_release/x64_SystemWebView.apk"
   "media_codecs.xml"
   "media_codecs_google_video.xml"
   "media_codecs_google_audio.xml"
   "media_codecs_google_telephony.xml"
 )
-
+noextract=('BromiteSystemWebview.apk')
 md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '7ebf618b1af94a02322d9f2d2610090b'
          '5ca37e1629edb7d13b18751b72dc98ad'
+         '3e1f57dc93b9cd4071fd95d3ee8eadca'
          '360c6d7b14a538c8034b282b0371be9b'
          '2c96f31ead428ee2d1fbd2a65dd6962d'
          '9f0dd33e444d816ab62fe8e8514a0c0e'
@@ -38,7 +47,7 @@ pkgver () {
   _pkgver=$(( $(echo $pkgver|sed -En 's/r([[:digit:]]+)\..*/\1/p') + 1))
   _sha=$(echo $pkgver|sed -En 's/r[[:digit:]]+\.(.*)/\1/p')
   __sha=$(
-    printf '%s\n%s\n' "$_anbox_rel" | \
+    printf '%s\n%s\n' "$_anbox_rel" "$_bromite_release" | \
       sha256sum - | cut -c1-8
   )
   if [ "$_sha" = "$__sha" ];then
@@ -114,6 +123,8 @@ build () {
 
   # install media codecs
   cp media_codec*.xml ./squashfs-root/system/etc/
+  rm -rv ./squashfs-root/system/app/webview/*
+  cp BromiteSystemWebview.apk ./squashfs-root/system/app/webview/webview.apk
 }
 
 package() {
