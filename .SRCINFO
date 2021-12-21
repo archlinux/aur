@@ -1,6 +1,6 @@
 pkgbase = lightning-terminal-bin
 	pkgdesc = Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity.
-	pkgver = 0.5.2_alpha
+	pkgver = 0.6.1_alpha
 	pkgrel = 1
 	url = https://github.com/lightninglabs/lightning-terminal
 	arch = any
@@ -11,13 +11,13 @@ pkgbase = lightning-terminal-bin
 	optdepends = loop
 	optdepends = pool
 	provides = litd
-	source = lightning-terminal-linux-amd64-v0.5.2-alpha.tar.gz::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.5.2-alpha/lightning-terminal-linux-amd64-v0.5.2-alpha.tar.gz
-	source = manifest-v0.5.2-alpha.txt.sig::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.5.2-alpha/manifest-v0.5.2-alpha.txt.sig
-	source = manifest-v0.5.2-alpha.txt::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.5.2-alpha/manifest-v0.5.2-alpha.txt
+	source = lightning-terminal-linux-amd64-v0.6.1-alpha.tar.gz::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.6.1-alpha/lightning-terminal-linux-amd64-v0.6.1-alpha.tar.gz
+	source = manifest-v0.6.1-alpha.txt.sig::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.6.1-alpha/manifest-v0.6.1-alpha.sig
+	source = manifest-v0.6.1-alpha.txt::https://github.com/lightninglabs/lightning-terminal/releases/download/v0.6.1-alpha/manifest-v0.6.1-alpha.txt
 	validpgpkeys = F4FC70F07310028424EFC20A8E4256593F177720
 	validpgpkeys = E4D85299674B2D31FAA1892E372CBD7633C61696
-	sha256sums = 3bd788b5f9ff0eebab673f9da455c0f76203b01bf7d3b808e61d95ade4a2320c
+	sha256sums = 24abf452ee63efcd996e3b8b1b0ac6299df51841bd9551db4b3e492f200eea85
 	sha256sums = SKIP
-	sha256sums = 6e1939a6f1d9a52451c5164638a9bb05ef879ee137a766073f8ea767518ac94c
+	sha256sums = ff10f6fa5e9d848f95b3b0dc82aa8ed170b8686ff9a333076b5418d72bf55163
 
 pkgname = lightning-terminal-bin
