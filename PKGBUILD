@@ -100,9 +100,6 @@ prepare() {
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
-  # Remove search extensions (experimental)
-  patch -Np1 -i ${_patches_dir}/search-config.patch
-
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
