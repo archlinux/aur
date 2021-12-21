@@ -1,7 +1,7 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=cxbqn
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='BQN virtual machine.'
 arch=('x86_64')
 url='https://github.com/ashermancinelli/cxbqn'
@@ -10,8 +10,15 @@ conflicts=('cbqn'{,-git} "${pkgname}-git")
 depends=('gcc-libs' 'glibc' 'readline')
 makedepends=('clang' 'cmake' 'git')
 optdepends=('ttf-bqn386: BQN and APL-compatible font')
-source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+        'CMakeLists.txt.patch')
+sha256sums=('SKIP'
+            '2863d73f44562e340d30c00d0660526f6c07170ecbcb1f66ae19bddfd043a063')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch --strip=1 < ../CMakeLists.txt.patch
+}
 
 build() {
   mkdir "${pkgname}-${pkgver}/build"
