@@ -1,0 +1,17 @@
+pkgbase = lynx-dock
+	pkgdesc = Lynx Desktop Environment - Escritorio Oficial de LynxOS
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/LynxOS/lynx-dock
+	arch = any
+	license = GPL
+	depends = lynx-nw
+	depends = nodejs
+	depends = npm
+	depends = gnome-menus
+	depends = python-dbus
+	depends = python-gobject
+	source = https://gitlab.com/LynxOS/lynx-dock/-/archive/0.0.1/lynx-dock-0.0.1.tar.gz
+	md5sums = c29fc4b3a449dd9eefae4ff8e39dbc08
+
+pkgname = lynx-dock
