@@ -53,7 +53,7 @@ pkgbase = java-openjdk-xdg
 	sha256sums = 48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c
 
 pkgname = jre-openjdk-headless-xdg
-	pkgdesc = OpenJDK Java 17 headless runtime environment - with improved Support for the XDG Base Directory Specification - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 17 headless runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -89,7 +89,7 @@ pkgname = jre-openjdk-headless-xdg
 	backup = etc/java-openjdk-xdg/sound.properties
 
 pkgname = jre-openjdk-xdg
-	pkgdesc = OpenJDK Java 17 full runtime environment - with improved Support for the XDG Base Directory Specification - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 17 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
 	depends = jre17-openjdk-headless=17.0.1.u12-2
 	depends = giflib
@@ -105,7 +105,7 @@ pkgname = jre-openjdk-xdg
 	provides = jre17-openjdk=17.0.1.u12-2
 
 pkgname = jdk-openjdk-xdg
-	pkgdesc = OpenJDK Java 17 development kit - with improved Support for the XDG Base Directory Specification - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 17 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
 	depends = jre17-openjdk=17.0.1.u12-2
 	depends = java-environment-common=3

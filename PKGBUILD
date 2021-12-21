@@ -127,7 +127,7 @@ check() {
 }
 
 package_jre-openjdk-headless-xdg() {
-  pkgdesc="OpenJDK Java ${_majorver} headless runtime environment - with improved Support for the XDG Base Directory Specification - with improved Support for the XDG Base Directory Specification"
+  pkgdesc="OpenJDK Java ${_majorver} headless runtime environment - with improved Support for the XDG Base Directory Specification"
   depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
            'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
            'glibc' 'gcc-libs')
@@ -188,7 +188,7 @@ package_jre-openjdk-headless-xdg() {
 }
 
 package_jre-openjdk-xdg() {
-  pkgdesc="OpenJDK Java ${_majorver} full runtime environment - with improved Support for the XDG Base Directory Specification - with improved Support for the XDG Base Directory Specification"
+  pkgdesc="OpenJDK Java ${_majorver} full runtime environment - with improved Support for the XDG Base Directory Specification"
   depends=("jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}" 'giflib' 'libgif.so'
            'glibc' 'gcc-libs' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
@@ -211,7 +211,7 @@ package_jre-openjdk-xdg() {
 }
 
 package_jdk-openjdk-xdg() {
-  pkgdesc="OpenJDK Java ${_majorver} development kit - with improved Support for the XDG Base Directory Specification - with improved Support for the XDG Base Directory Specification"
+  pkgdesc="OpenJDK Java ${_majorver} development kit - with improved Support for the XDG Base Directory Specification"
   depends=("jre${_majorver}-openjdk=${pkgver}-${pkgrel}" 'java-environment-common=3'
            'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs')
   provides=("java-environment=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
