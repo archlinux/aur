@@ -8,8 +8,8 @@
 
 pkgname="python-pdfminer.six"
 _name="${pkgname#python-}"
-pkgver=20201018
-pkgrel=2
+pkgver=20211012
+pkgrel=1
 pkgdesc="Community maintained fork of pdfminer"
 url="https://pdfminersix.readthedocs.io/"
 arch=("any")
@@ -19,7 +19,7 @@ makedepends=("python-setuptools")
 provides=("python-pdfminer")
 conflicts=("python-pdfminer")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha384sums=("608fd8a810ef2e85add322ba68f167101a700f4a597c1c7deb3e3ad95bad50fd151798872f5290294c808cb128c89304")
+sha256sums=('0351f17d362ee2d48b158be52bcde6576d96460efd038a3e89a043fba6d634d7')
 
 package(){
  cd "${_name}-${pkgver}"
