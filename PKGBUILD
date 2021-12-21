@@ -38,13 +38,15 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
+_arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _repo=https://hg.mozilla.org/mozilla-unified
 install=$__pkgname.install
 source=("hg+$_repo#revision=autoland"
         $__pkgname.desktop
         "git+https://gitlab.com/vnepogodin/librewolf-common.git"
         "git+https://gitlab.com/dr460nf1r3/common.git"
-        "git+https://gitlab.com/dr460nf1r3/settings.git")
+        "git+https://gitlab.com/dr460nf1r3/settings.git"
+        "0001-Use-remoting-name-for-GDK-application-names.patch::${_arch_git}/0001-Use-remoting-name-for-GDK-application-names.patch")
 
 sha512sums=('SKIP'
             '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
@@ -66,6 +68,10 @@ prepare() {
 
   local _patches_dir="${srcdir}/librewolf-common/patches"
   local __patches_dir="${srcdir}/common/patches-hg"
+
+  # Upstream Arch fix
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
 
   # Gentoo patches
   echo "---- Gentoo patches"
@@ -119,18 +125,17 @@ prepare() {
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-ac_add_options --enable-hardening
-ac_add_options --enable-release
-ac_add_options --enable-rust-simd
 ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-hardening
+ac_add_options --enable-rust-simd
 ac_add_options --with-ccache
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 export CC='clang'
 export CXX='clang++'
 
-# Wasi SDK
+# wasi sdk
 ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
-export WASI_CC=/opt/wasi-sdk/bin/clang
 export WASM_CC=/opt/wasi-sdk/bin/clang
 export WASM_CXX=/opt/wasi-sdk/bin/clang++
 
@@ -178,9 +183,6 @@ ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-strip
 
-# This seems to be required since 96 as the build wouldn't succeed
-ac_add_options --without-wasm-sandboxed-libraries
-
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
 mk_add_options MOZ_DATA_REPORTING=0
@@ -194,11 +196,8 @@ END
 
 if [[ $CARCH == 'aarch64' ]]; then
   cat >>../mozconfig <<END
-# Taken from manjaro build:
+# taken from manjaro build:
 ac_add_options --enable-optimize="-g0 -O2"
-# from ALARM
-# ac_add_options --disable-webrtc
-
 END
 
   export MOZ_DEBUG_FLAGS=" "
@@ -209,8 +208,8 @@ END
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
   export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -p1 -i ${_patches_dir}/librewolf/arm.patch
-  patch -p1 -i ${_patches_dir}/arch/build-arm-libopus.patch
+  # patch -Np1 -i ${_patches_dir}/arm.patch # not required anymore?
+  patch -Np1 -i ${_patches_dir}/build-arm-libopus.patch
 
 else
 
@@ -243,38 +242,34 @@ build() {
   # Do 3-tier PGO
 #  echo "Building instrumented browser..."
 
-#if [[ $CARCH == 'aarch64' ]]; then
+if [[ $CARCH == 'aarch64' ]]; then
 
-#  cat >.mozconfig ../mozconfig - <<END
+  cat >.mozconfig ../mozconfig - <<END
 #ac_add_options --enable-profile-generate
-#END
+END
 
-#else
+else
 
-#  cat >.mozconfig ../mozconfig - <<END
+  cat >.mozconfig ../mozconfig - <<END
 #ac_add_options --enable-profile-generate=cross
-#END
+END
 
-#fi
+fi
 
 #  ./mach build
 
 #  echo "Profiling instrumented browser..."
 #  ./mach package
-# LLVM_PROFDATA=llvm-profdata \
+#  LLVM_PROFDATA=llvm-profdata \
 #    JARLOG_FILE="$PWD/jarlog" \
 #    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
 #    ./mach python build/pgo/profileserver.py
 
-#  if [[ ! -s merged.profdata ]]; then
-#    echo "No profile data produced."
-#    return 1
-#  fi
+#  stat -c "Profile data found (%s bytes)" merged.profdata
+#  test -s merged.profdata
 
-#  if [[ ! -s jarlog ]]; then
-#    echo "No jar log produced."
-#    return 1
-#  fi
+#  stat -c "Jar log found (%s bytes)" jarlog
+#  test -s jarlog
 
 #  echo "Removing instrumented browser..."
 #  ./mach clobber
@@ -300,6 +295,7 @@ ac_add_options --enable-lto=cross
 #ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
+ac_add_options --disable-bootstrap
 END
 
 fi
@@ -313,11 +309,9 @@ fi
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
-  
-  install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
-  
+
   rm "$pkgdir"/usr/lib/${__pkgname}/pingsender
-  
+  install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
   _vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END
@@ -374,8 +368,9 @@ END
     "$pkgdir/usr/lib/$__pkgname/$__pkgname-bin"
 
   # Delete unneeded things from settings repo
-  rm "$pkgdir/usr/lib/firedragon/tabliss.json"
-  rm "$pkgdir/usr/lib/firedragon/home.png"
+  rm "$pkgdir/usr/lib/firedragon/LICENSE.txt"
   rm "$pkgdir/usr/lib/firedragon/about.png"
   rm "$pkgdir/usr/lib/firedragon/firedragon.psd"
+  rm "$pkgdir/usr/lib/firedragon/home.png"
+  rm "$pkgdir/usr/lib/firedragon/tabliss.json"
 }
