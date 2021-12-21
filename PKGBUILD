@@ -56,7 +56,5 @@ package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
 
-    # pyrobuf installs files into /usr/lib/python-x.xx/site-packages/tests/
-
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
