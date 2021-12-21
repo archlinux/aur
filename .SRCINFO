@@ -10,14 +10,14 @@ pkgbase = acmt-acm210
 	depends = glibc
 
 pkgname = acmt-acm210-vst
-	pkgdesc = ACM210 Channel EQ (VST)
+	pkgdesc = ACM210 Graphical EQ (VST)
 	groups = pro-audio
 	groups = vst-plugins
 
 pkgname = acmt-acm210-vst3
-	pkgdesc = ACM210 Channel EQ (VST3)
+	pkgdesc = ACM210 Graphical EQ (VST3)
 	groups = pro-audio
 	groups = vst-plugins
 
 pkgname = acmt-acm210-docs
-	pkgdesc = ACM210 Channel EQ (Documentation)
+	pkgdesc = ACM210 Graphical EQ (Documentation)

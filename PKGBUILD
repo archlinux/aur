@@ -17,19 +17,19 @@ prepare () {
 
 package_acmt-acm210-vst() {
 	groups=('pro-audio' 'vst-plugins')
-	pkgdesc="ACM210 Channel EQ (VST)"
+	pkgdesc="ACM210 Graphical EQ (VST)"
 	install -Dm755 ${srcdir}/plugin-binaries/VST/ACM210.so ${pkgdir}/usr/lib/vst/ACM210.so
 }
 
 package_acmt-acm210-vst3() {
 	groups=('pro-audio' 'vst-plugins')
-	pkgdesc="ACM210 Channel EQ (VST3)"
+	pkgdesc="ACM210 Graphical EQ (VST3)"
 	mkdir -p ${pkgdir}/usr/lib/vst3
 	rm -r ${srcdir}/plugin-binaries/VST3/ACM210.vst3/Contents/Resources
 	cp -r ${srcdir}/plugin-binaries/VST3/ACM210.vst3 ${pkgdir}/usr/lib/vst3/ACM210.vst3
 }
 
 package_acmt-acm210-docs () {
-	pkgdesc="ACM210 Channel EQ (Documentation)"
+	pkgdesc="ACM210 Graphical EQ (Documentation)"
 	install -Dm644 ${srcdir}/ACM210/manual.pdf ${pkgdir}/usr/share/doc/${pkgbase}/manual.pdf
 }
