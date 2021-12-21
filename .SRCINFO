@@ -1,0 +1,13 @@
+pkgbase = python-art
+	pkgdesc = ASCII art library for Python
+	pkgver = 5.3
+	pkgrel = 1
+	url = https://github.com/sepandhaghighi/art/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/sepandhaghighi/art/archive/v5.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-art
