@@ -1,7 +1,7 @@
 
 _pkgname=minq_stopwatch
 pkgname="${_pkgname}-git"
-pkgver=r21.292500f5f7837440e4fcff617794cd151c24a460
+pkgver=r22.04bac2eb0877557ec362ec529c84e4eb735d3d01
 pkgrel=1
 epoch=
 pkgdesc="A terminal based timer that remembers where you left off"
@@ -9,8 +9,8 @@ arch=(x86_64 i686)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
 groups=()
-depends=(python)
-makedepends=(git python python-pip)
+depends=(python python-art)
+makedepends=(git python)
 checkdepends=()
 optdepends=()
 provides=("${_pkgname}")
@@ -41,12 +41,10 @@ build() {
 check() {
 	cd "${_pkgname}"
 	python3 --version
-	pip3 --version
 }
 
 package() {
 	cd "${_pkgname}"
-	pip3 install art
 	mkdir -p "${pkgdir}/opt/${pkgname}"
 	cp -rf * "${pkgdir}/opt/${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
