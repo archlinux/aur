@@ -1,7 +1,7 @@
 # Maintainer: Joaquim Monteiro <joaquim.monteiro@protonmail.com>
 
 pkgname=mvt
-pkgver=1.2.14
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Collection of utilities to simplify and automate the process of gathering forensic traces helpful to identify a potential compromise of Android and iOS devices"
 arch=(any)
@@ -11,8 +11,8 @@ depends=('libusb' 'python' 'python-adb_shell' 'python-click' 'python-iosbackup' 
 makedepends=('python-setuptools')
 source=("mvt-${pkgver}.tar.gz"::"https://github.com/mvt-project/mvt/archive/refs/tags/v${pkgver}.tar.gz"
         deps.patch)
-sha512sums=('4e5be5249be499391211d13c3fc546204371dda5f2cba62c42cd0499147f8532fe992abb5a0051a1832849552f530b82cea2a0ea22a395ac8324886b706cd172'
-            '47ca5fa43e5a48703c617a1a707434638788d9fe21605b892872b1f03c25c18b8b0868f8195ce6d553e3796d26cdd692cb5102a09fe361f2a2c826f946ff4070')
+sha512sums=('a878536b70543dd29db5ca8ca50eecd17b58b29d2e055a6870f46a788c8db35d5168790f6dcc7d7a1893b6c88c6d9f7b347ca88edb7e339a3823e7ed50cfe5ac'
+            'a58446d6d969e1f64c972a3c4bef50cef22be2f7d5a1b3032ec8beb1dd46e24836a337ceb895caaa3ceac8f7fd7cb118538833abb47fba98427a904eb8407b49')
 
 prepare() {
     cd "mvt-${pkgver}"
