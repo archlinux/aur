@@ -1,0 +1,22 @@
+pkgbase = python-py-cord-git
+	pkgdesc = Pycord is a maintained fork of discord.py, a python wrapper for the Discord API - git version for development
+	pkgver = v1.7.0.r1745.gdad90219
+	pkgrel = 1
+	url = https://github.com/Pycord-Development/pycord
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-aiohttp
+	optdepends = python-pynacl: Voice support
+	optdepends = libffi: Voice support
+	provides = python-discord
+	provides = python-py-cord
+	provides = python-pycord
+	conflicts = python-discord
+	conflicts = python-py-cord
+	source = pycord::git+https://github.com/Pycord-Development/pycord.git
+	sha256sums = SKIP
+
+pkgname = python-py-cord-git
