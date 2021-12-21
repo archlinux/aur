@@ -3,7 +3,7 @@ _base=islpy
 pkgname=python-${_base}
 pkgdesc="Python wrapper for isl, an integer set library"
 pkgver=2021.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
@@ -31,7 +31,7 @@ build() {
 # --use-barvinok \
 check() {
   cd "${_base}"
-  local _pyversion=$(python -c "import sys; print(sys.version[:3])")
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
   PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${_pyversion}:${PYTHONPATH}" python test/test_isl.py
 }
 

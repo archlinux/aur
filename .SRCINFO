@@ -1,7 +1,7 @@
 pkgbase = python-islpy
 	pkgdesc = Python wrapper for isl, an integer set library
 	pkgver = 2021.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://documen.tician.de/islpy
 	arch = x86_64
 	license = MIT
