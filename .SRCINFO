@@ -1,6 +1,6 @@
 pkgbase = xe-guest-utilities-xcp-ng
 	pkgdesc = XenServer Tools, XCP-NG fork version
-	pkgver = 7.20.0.8.2.0
+	pkgver = 7.22.0
 	pkgrel = 1
 	url = https://github.com/xcp-ng/xe-guest-utilities
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = xe-guest-utilities-xcp-ng
 	makedepends = go-pie
 	depends = lsb-release
 	conflicts = xe-guest-utilities
-	source = https://github.com/xcp-ng/xe-guest-utilities/archive/v7.20.0-8.2.0.tar.gz
+	source = https://github.com/xcp-ng/xe-guest-utilities/archive/v7.22.0.tar.gz
 	source = xe-linux-distribution.service
 	source = 001-go1.16.patch
-	sha256sums = 5b38f0bd94b51d6312a306ce9cd4944c22ddbeebd11d5c057ae5d37a528a1b79
+	sha256sums = f1ef8445b11e5c03e9c8f347e243da06d54b09d407b835d2a16db08964ee9f55
 	sha256sums = a5f725a26140fb4e2d3ec60c32be78ab224a6cc1f7f176fafa65529175b7d731
 	sha256sums = c4cba12a7bf65021625f2591ee3905e6e6c29428c8d28eae406d64e8551cd2ab
 
@@ -22,4 +22,3 @@ pkgname = xe-guest-utilities-xcp-ng
 
 pkgname = xenstore-xcp-ng
 	conflicts = xenstore
-
