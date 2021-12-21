@@ -1,6 +1,6 @@
 pkgbase = gestures
 	pkgdesc = Modern, minimal GUI app for libinput-gestures
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/cunidev/gestures
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = gestures
 	depends = python
 	depends = python-gobject
 	optdepends = xdotool: Simulate keyboard input or mouse activity
-	source = https://gitlab.com/cunidev/gestures/-/archive/0.2.6/gestures-0.2.6.tar.gz
-	sha256sums = 283fb84d25cf17978330bf9955d5f49b0da112de49bddaeb326ddcfd473caf26
+	source = https://gitlab.com/cunidev/gestures/-/archive/0.3.0/gestures-0.3.0.tar.gz
+	sha256sums = 08a3cea9f39abf5fa14be2234926b7e84f0d59da6f3cc95fc42722016d1867eb
 
 pkgname = gestures
-
