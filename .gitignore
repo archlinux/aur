@@ -1,0 +1,5 @@
+nco-*.tar.gz
+src
+pkg
+nco-*.pkg.tar*
+*.log

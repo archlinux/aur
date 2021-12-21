@@ -1,34 +1,37 @@
+#  Maintainer: Blair Bonnett <blair.bonnett at gmail>
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
-# Maintainer:  Graziano Giuliani <graziano.giuliani@gmail.com>
+# Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
+
 pkgname=nco
-pkgver=4.9.2
-pkgrel=2
+pkgver=5.0.4
+pkgrel=1
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
 license=("GPL")
 depends=('netcdf' 'udunits' 'gsl')
 makedepends=('antlr2')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 options=('!libtool')
-source=(https://github.com/nco/nco/archive/$pkgver.tar.gz)
-md5sums=('366a949084d404b0380af7426ed94648')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/nco/nco/archive/$pkgver.tar.gz"
+)
+sha256sums=(
+  '91c9d191db8c7132489d86727b195c04577f034adf168f9d341ec63b55ea4353'
+)
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  sed -i configure -e 's/runantlr/runantlr2/g'
-  sed -i src/nco/ncap_lex.l -e 's/yy_size_t yyget_leng/int yyget_leng/'
-  ./configure --prefix=/usr \
-      --enable-netcdf4 \
-      --enable-gsl \
-      --enable-ncoxx \
-      --enable-udunits2 \
-      --enable-optimize-custom
-  make CXXFLAGS+="-fpermissive -fPIC" CFLAGS+="-fPIC -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H"
-  # make check || return 1
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make check
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install install-html
 }
 # vim:set ts=2 sw=2 et:
