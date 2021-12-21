@@ -1,6 +1,6 @@
 pkgbase = chaos-driver
 	pkgdesc = A kernel module to inject error or latency inside the linux kernel
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 2
 	url = https://github.com/chaos-mesh/chaos-driver
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = chaos-driver
 	makedepends = go
 	depends = dkms
 	conflicts = chaos-driver
-	source = https://github.com/chaos-mesh/chaos-driver/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = e6460c49b6b51dae747717e262e0aa01e85e7d4883dff5f2063dc0610ad6a164
+	source = https://github.com/chaos-mesh/chaos-driver/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = f1da5ff1809145625d7681331b3b25edd1fb299cbecc1f925b042812c21a452d
 
 pkgname = chaos-driver-dkms
 
