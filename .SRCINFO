@@ -1,0 +1,16 @@
+pkgbase = xsnow-wv
+	pkgdesc = Let it snow on your desktop
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xsnow/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = gtk3
+	depends = libxpm
+	conflicts = xsnow
+	conflicts = xsnow-bin
+	source = https://nav.dl.sourceforge.net/project/xsnow/xsnow-3.4.2.tar.gz
+	sha256sums = c618d7a73cef7070755f38ddc3665487afa8c71a9c82ae9055723e594a62fd9e
+
+pkgname = xsnow-wv
