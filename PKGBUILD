@@ -1,7 +1,7 @@
 # Maintainer: HRKings <hrkings@***.com>
 pkgname=gitgudcli-git
 _pkgname=gitgud-cli
-pkgver=2.0.0.r3.g0fc86a6
+pkgver=2.1.0.r0.g76ced69
 pkgrel=1
 pkgdesc="An easy to use CLI for the GitGud modular Git model."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/HRKings/gitgud-cli.git"
 license=('unknown')
 makedepends=('git' 'go')
 provides=(gitgudcli)
-source=("git+${url}")
+source=("git+${url}#branch=stable")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,9 +19,6 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-
-  # Move to the stable branch
-	git checkout stable
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
