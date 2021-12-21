@@ -107,19 +107,19 @@ _use_current=
 _makenconfig=
 
 if [ -n "$_use_llvm_lto" ]; then
-pkgbase=linux-cachyos-rc-lto
+  pkgbase=linux-cachyos-rc-lto
 else
-pkgbase=linux-cachyos-rc
+  pkgbase=linux-cachyos-rc
 fi
 _major=5.16
 _minor=0
-_minorc=$((_minor+1))
-_rcver=rc5
+#_minorc=$((_minor+1))
+_rcver=rc6
 pkgver=${_major}.${_minorc}
 _stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
 _srcname=linux-${_stablerc}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-CachyOS Kernel-RC by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/cachyos/linux-cachyos"
@@ -133,35 +133,37 @@ fi
 if [ -n "$_use_llvm_lto" ]; then
   depends+=(clang llvm lld python)
 fi
-
-
 _caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.16"
 source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
   "config"
   #  "${_caculepatches}/v5.16/0001-cacULE-5.16-full.patch"
-  "${_patchsource}/0001-bore-5.16.patch"
+#  "${_patchsource}/0001-bore-sched.patch"
+  "${_patchsource}/0001-amdpstate.patch"
+  #  "${_patchsource}/0001-le9.patch"
   "${_patchsource}/0001-bbr2.patch"
-  "${_patchsource}/0001-amd-patches.patch"
-  "${_patchsource}/0001-block.patch"
   "${_patchsource}/0001-lrng.patch"
   "${_patchsource}/0001-cpu.patch"
+  "${_patchsource}/0001-clearlinux.patch"
+  "${_patchsource}/0001-ksmbd.patch"
+  "${_patchsource}/0001-misc.patch"
   "${_patchsource}/0001-fixes.patch"
   "${_patchsource}/0001-futex.patch"
   "${_patchsource}/0001-hwmon.patch"
-  "${_patchsource}/0001-clearlinux.patch"
-  "${_patchsource}/0001-zstd-patches.patch"
   "${_patchsource}/0001-ksm.patch"
-  "${_patchsource}/0001-pte-marker.patch"
+  "${_patchsource}/0001-zstd-patches.patch"
   "${_patchsource}/0001-zen-patches.patch"
+  "${_patchsource}/0001-v4l2loopback.patch"
   "auto-cpu-optimization.sh"
 )
 if [ -n "$_use_llvm_lto" ]; then
-  BUILD_FLAGS=(
-    LLVM=1
-    LLVM_IAS=1
-  )
+  LLVMOPTS="LLVM=1 LLVM_IAS=1"
+  CLANGOPTS="CC=clang LD=ld.lld"
+else
+  LLVMOPTS=""
+  CLANGOPTS=""
 fi
+
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -244,11 +246,6 @@ prepare() {
     echo "Enable Fsync support"
     scripts/config --enable CONFIG_FUTEX
     scripts/config --enable CONFIG_FUTEX_PI
-  fi
-
-  if [ -n "$_futex2" ]; then
-    echo "Enable Futex2 support"
-    scripts/config --enable CONFIG_FUTEX2
   fi
 
   if [ -n "$_winesync" ]; then
@@ -380,6 +377,7 @@ prepare() {
   ### Selecting the ZSTD module compression level
   if [ "$_zstd_module_level" = "ultra" ]; then
     echo "Enabling highest ZSTD module compression ratio..."
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
     scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
     scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
     scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22
@@ -404,10 +402,7 @@ prepare() {
   scripts/config --enable CONFIG_TCP_CONG_BBR2
   scripts/config --enable CONFIG_DEFAULT_BBR2
   scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
-  echo "Enabling FULLCONENAT..."
-  scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
-  scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
-  echo "Enable AMD PSTATE v2 driver"
+  echo "Enable AMD PSTATE driver"
   scripts/config --enable CONFIG_X86_AMD_PSTATE
 
   ### Optionally use running kernel's config
@@ -430,19 +425,19 @@ prepare() {
   if [ -n "$_localmodcfg" ]; then
     if [ -e $HOME/.config/modprobed.db ]; then
       echo "Running Steven Rostedt's make localmodconfig now"
-      make ${BUILD_FLAGS[*]} LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make $LLVMOPTS LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       echo "No modprobed.db data found"
       exit
     fi
   fi
 
-  make ${BUILD_FLAGS[*]} olddefconfig
+  make $LLVMOPTS olddefconfig
 
-  make ${BUILD_FLAGS[*]} -s kernelrelease > version
+  make $LLVMOPTS -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 
-  [[ -z "$_makenconfig" ]] || make ${BUILD_FLAGS[*]} nconfig
+  [[ -z "$_makenconfig" ]] || make $LLVMOPTS nconfig
 
   ### Save configuration for later reuse
   cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
@@ -452,7 +447,7 @@ prepare() {
 build() {
   cd $_srcname
 
-  make ${BUILD_FLAGS[*]} -j$(nproc) all
+  make $LLVMOPTS -j$(nproc) all
 }
 
 _package() {
@@ -470,13 +465,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make $CLANGOPTS -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make $CLANGOPTS INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -498,12 +493,10 @@ _package-headers() {
 
   # add objtool for external module building and enabled VALIDATION_STACK option
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-  # add resolve_btfids
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
+  install -Dt "$builddir"/tools/bpf/resolve_btfids tools/bpf/resolve_btfids/resolve_btfids
   echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
@@ -572,21 +565,20 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('fc8324c20772b997ef37de8cfebd489f'
-         '0ac42c66359097d484fc67a1905008b0'
-         '7df4edf28f486873807f15c9ed0216a0'
-         '15ffc9a58dbdfff5aa77bc085d2b335a'
-         'b9b7f287edd8804118c9eda03574ab8b'
-         'aa5b31d6f9600ec3b1664cd4e5839b75'
-         '08d66bbba34a98e3a2d83e2bd89aa257'
-         'db445bd5650d7e0ce2552704bb944752'
-         'c840895ea0da5c49cbc62e08d3646ee0'
+md5sums=('ff0a2b8a7b14d6ca738e22cd498e19b2'
+         '4b7ed503a56bfea3a7afed88668a8126'
+         '3aaa8d1bc993d4173aa1bb79ade16fb7'
+         '621bd031ffb6ce291b26e15bbf7e0aeb'
+         '978153c745ba777574ad6689a0c9f283'
+         'd4c38ce51fb9a69aa92ad9b9e0199122'
+         'd78bb31569440421e0e76d9a8c0a14fc'
+         '40ee531b73183ad62eabb0b2b801b589'
+         '299b176cbfc1b386d74406387e9e2d6b'
          'f574f1c40fa2d07602e77418b863e144'
          '2458d1c5d00d10709922e686c5d1e97f'
-         'c9a168a620a6a95247447ee5fd8de8b4'
-         'd78bb31569440421e0e76d9a8c0a14fc'
-         'bf58290793d3a095ef95fb1fac2de89a'
+         '2160aabf2b9798907d36c4d246937d71'
          '5bbccd18de800b0b54652bee0b76da0a'
-         '99771ace6973c3f9ae60c858d7b5e59a'
+         'bf58290793d3a095ef95fb1fac2de89a'
          'de6db1147385c058b2e94df3c1739fdf'
+         'cb9384ce179d08be6c90df6d0a0977a1'
          '21c98f19e883879dd3336c1fa143fd31')
