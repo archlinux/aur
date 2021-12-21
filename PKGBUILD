@@ -7,28 +7,24 @@ pkgname='ros-noetic-laser-geometry'
 pkgver='1.6.7'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-angles
 	ros-noetic-cmake-modules
 	ros-noetic-catkin
-	ros-noetic-tf
-	ros-noetic-roscpp
-	ros-noetic-sensor-msgs
+    ros-noetic-tf2-geometry-msgs
 )
 
 makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	boost
-	eigen
 )
 
 ros_depends=(
 	ros-noetic-tf
+	ros-noetic-tf2
 	ros-noetic-angles
 	ros-noetic-sensor-msgs
 	ros-noetic-roscpp
