@@ -1,6 +1,6 @@
 pkgbase = miopen-hip
 	pkgdesc = AMD's Machine Intelligence Library (HIP backend)
-	pkgver = 4.5.0
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/MIOpen
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = miopen-hip
 	depends = hip
 	provides = miopen
 	conflicts = miopen
-	source = miopen-hip-4.5.0.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-4.5.0.tar.gz
-	sha256sums = be2f5ce962e15e62d427978422498c0ddf821b91fd40777a1ba915a2794d6fda
+	source = miopen-hip-4.5.2.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-4.5.2.tar.gz
+	sha256sums = cb49bdf215ed9881755239b6312d72f829c1a0edf510e6d1fbb206c41f5406fc
 
 pkgname = miopen-hip
