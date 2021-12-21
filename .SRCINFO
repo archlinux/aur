@@ -1,0 +1,13 @@
+pkgbase = thesauromatic-git
+	pkgdesc = A static, offline, command-line thesaurus.
+	pkgver = v0.0.3.r27.gb5fdfd2
+	pkgrel = 1
+	url = https://github.com/cjrh/thesauromatic
+	arch = any
+	license = AGPL
+	makedepends = rust
+	provides = thesauromatic
+	source = git+https://github.com/cjrh/thesauromatic
+	sha256sums = SKIP
+
+pkgname = thesauromatic-git
