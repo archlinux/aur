@@ -1,5 +1,6 @@
-# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
-# Maintainer: silentnoodle <lonnqvistben at gmail dot com>
+# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
+# Previous maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Previous maintainer: silentnoodle <lonnqvistben at gmail dot com>
 # Previous maintainer:  agnotek <agnostic.sn [at]gmail.com>
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
