@@ -3,10 +3,10 @@
 
 pkgname=astrodmx-capture
 pkgver=1.3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
-url="https://www.linux-astro-imaging.uk/"
+url="https://www.astrodmx-capture.org.uk/"
 # No licence file available in package, see https://www.linux-astro-imaging.uk/linux/astronomy/linux-downloads
 # for details.
 license=(custom)
