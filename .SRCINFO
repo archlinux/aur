@@ -1,6 +1,6 @@
 pkgbase = fastiv-git
 	pkgdesc = Fast image viewer
-	pkgver = r152.666bfc0
+	pkgver = r241.b35590a
 	pkgrel = 1
 	url = https://git.janouch.name/p/fastiv
 	arch = i686
@@ -17,6 +17,9 @@ pkgbase = fastiv-git
 	optdepends = gdk-pixbuf2
 	optdepends = libxcursor
 	optdepends = libtiff
+	optdepends = libheif
+	optdepends = libwebp
+	optdepends = perl-image-exiftool
 	provides = fastiv
 	conflicts = fastiv
 	source = git+https://git.janouch.name/p/fastiv.git
