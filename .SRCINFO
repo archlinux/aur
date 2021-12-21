@@ -1,0 +1,21 @@
+pkgbase = python-legume-git
+	pkgdesc = Differentiable plane-wave and guided-mode expansion for photonic crystals
+	pkgver = 0.1.2.r39.g6e44e38
+	pkgrel = 1
+	url = https://github.com/fancompute/legume
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	optdepends = python-autograd: for computing gradients of all output values with respect to all input parameters
+	source = git+https://github.com/fancompute/legume.git
+	sha256sums = SKIP
+
+pkgname = python-legume-git
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
