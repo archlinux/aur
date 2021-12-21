@@ -1,15 +1,14 @@
 pkgbase = gitgudcli-git
 	pkgdesc = An easy to use CLI for the GitGud modular Git model.
-	pkgver = 1.1.0
+	pkgver = 2.0.0.r3.g0fc86a6
 	pkgrel = 1
-	url = https://github.com/HRKings/GitGudCLI.git
+	url = https://github.com/HRKings/gitgud-cli.git
 	arch = any
 	license = unknown
 	makedepends = git
-	makedepends = dotnet-sdk
+	makedepends = go
 	provides = gitgudcli
-	options = !strip
-	source = git+https://github.com/HRKings/GitGudCLI.git
+	source = git+https://github.com/HRKings/gitgud-cli.git
 	md5sums = SKIP
 
 pkgname = gitgudcli-git
