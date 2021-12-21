@@ -1,0 +1,9 @@
+post_install() {
+  echo "================================================"
+  echo "Jade hardware wallet uses serial ports over USB"
+  echo "You need to add the wallet users"
+  echo "to the uucp group to access the serial ports:"
+  echo "sudo gpasswd -a <user> uucp"
+  echo "You will need to log out->log in to take effect"
+  echo "================================================"
+}
