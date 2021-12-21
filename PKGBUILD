@@ -63,8 +63,9 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
 
 CLI=              # CLI only binary.
 
-XINPUT2="YES"     # Use Xinput2 support.
+XINPUT2=          # Use Xinput2 support.
                   # https://www.x.org/releases/X11R7.7/doc/inputproto/XI2proto.txt
+                  # This is useless with pgtk.
 
 GPM="YES"         # Mouse support in Linux console using gmpd.
 
@@ -103,7 +104,7 @@ else
 pkgname="emacs-native-comp-git-enhanced"
 fi
 pkgver=29.0.50.153049
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
