@@ -1,6 +1,6 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname='toit'
-pkgver='0.10.4'
+pkgver='0.10.5'
 pkgrel=1
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(
 	'go'
 )
 source=("https://github.com/toitlang/toit/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4dc0e270c209a47ba92f8a55ab6aa6a2eed562be96e19bc97653e418287516df')
+sha256sums=('bba1dfbd222f2a97b8ac70a7f5f9adbdbfe900836eb4ae45b17022f3799536f8')
 
 prepare() {
 	cd "$pkgname-$pkgver"
