@@ -1,6 +1,6 @@
 pkgbase = grpcui
 	pkgdesc = An interactive web UI for gRPC, along the lines of postman
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/fullstorydev/grpcui
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = grpcui
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/fullstorydev/grpcui/archive/v1.1.0.tar.gz
-	sha256sums = 1a7c0eac76805350ccf38d6db77ed959a04f7a4a76c60897decca21a2ff49933
+	source = https://github.com/fullstorydev/grpcui/archive/v1.2.0.tar.gz
+	sha256sums = 20d109dc9f91ad2ca8e185ac60e9d36ece56282dd65ee9cf735322471ca0fe40
 
 pkgname = grpcui
-
