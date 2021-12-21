@@ -8,8 +8,7 @@ pkgdesc="Windows VST2 wrapper that allows them to be used as Linux VST2s in comp
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
 depends=('wine')
-makedepends=('git')
-source=('linvst-4.7.tar.gz::https://github.com/osxmidi/LinVst/archive/refs/tags/4.7.tar.gz')
+source=('${pkgname}-${pkgver}.tar.gz::https://github.com/osxmidi/LinVst/archive/refs/tags/${pkgver}.tar.gz')
 sha256sums=('96cf075eebb9db4d23f6fe7327b70496320f3d751e5ec24b7ffa3e29c750c8d1')
 
 build() {
