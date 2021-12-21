@@ -2,7 +2,7 @@
 
 _name=bespokesynth
 pkgname=bespokesynth-git
-pkgver=1.1.0.r33.g8c3f5c2
+pkgver=1.1.0.r42.gf93ce26
 pkgrel=1
 pkgdesc="A software modular synth"
 arch=(x86_64)
