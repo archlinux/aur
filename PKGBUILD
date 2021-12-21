@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-statusbar
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Top status bar of CutefishOS"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('cutefish')
 depends=('fishui' 'libcutefish' 'libdbusmenu-qt5' 'qt5-svg')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/statusbar/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('6e2786808ca003fc3bc06ca52bcfb29a8c46a590afbde99c85ecf70a79c47f32bd998598e18fee656e025a1710082fb2cb5e9d135b8c0f7821c2afc162757389')
+sha512sums=('69356b15085ff696f69fc2b9c8b7c07c57cd9c44ece59f68295aef3cccf8f53e089f62d9e72951713c6d55bb57e8369d954e2fd639a6fca507a70d285d3a4cab')
 
 build() {
   cd statusbar-$pkgver
