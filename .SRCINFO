@@ -1,6 +1,6 @@
 pkgbase = rocm-hip-sdk
 	pkgdesc = Develop applications using HIP and libraries for AMD platforms
-	pkgver = 4.5.0
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
