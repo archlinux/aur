@@ -1,13 +1,12 @@
 pkgbase = stb
 	pkgdesc = single-file public domain (or MIT licensed) libraries for C/C++
-	pkgver = 20210401
+	pkgver = 20210910
 	pkgrel = 1
 	url = https://github.com/nothings/stb
 	arch = any
 	license = public domain
 	license = MIT
-	source = https://github.com/nothings/stb/archive/c9064e317699d2e495f36ba4f9ac037e88ee371a.tar.gz
-	md5sums = 8e7885efdb5a346ceef0e462da1744e9
+	source = https://github.com/nothings/stb/archive/af1a5bc352164740c1cc1354942b1c6b72eacb8a.tar.gz
+	sha224sums = aad3aafb8b16da1c22b007fd2fb32b6db62f2b972b6f89915312ba91
 
 pkgname = stb
-
