@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://unity.com/"
 license=('custom')
 depends=('nss' 'gtk3')
+optdepends=('libappindicator-gtk3: The DEB says this an optional dependency')
 provides=('unityhub')
 source=(
   "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3Beta.0.0-beta.7.deb"
