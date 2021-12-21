@@ -1,6 +1,6 @@
 pkgbase = aria2p
 	pkgdesc = Command-line tool and library to interact with an aria2c daemon process with JSON-RPC
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://pawamoy.github.io/showcase/aria2p
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = aria2p
 	makedepends = python-build
 	makedepends = python-install
 	makedepends = python-pdm-pep517
-	makedepends = python-wheel
 	depends = python-appdirs
 	depends = python-loguru
 	depends = python-requests
@@ -17,7 +16,7 @@ pkgbase = aria2p
 	optdepends = aria2: aria2c daemon
 	optdepends = python-asciimatics: interactive interface support
 	optdepends = python-pyperclip: interactive interface support
-	source = https://files.pythonhosted.org/packages/source/a/aria2p/aria2p-0.11.0.tar.gz
-	sha256sums = 63df0f4245b9424457c2a8002732c21c13d4e29712f8e865e02dac60476e93f4
+	source = https://files.pythonhosted.org/packages/source/a/aria2p/aria2p-0.11.1.tar.gz
+	sha256sums = 826c2b237057b2e481fede4959f1397996e789f181d90dfca706f28f0ef5bbef
 
 pkgname = aria2p
