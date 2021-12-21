@@ -35,11 +35,11 @@ doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer" # 
 
 # In the positive case, the file exists, and we check that anyone can read it and that it is owned by root. In the negative case, the file does not exist
 if [[ -e "$1" ]] ; then
+	[[ -r "$1" ]] || ERR "file '$1' is world-readable but is not readable by your user, what are you doing?"
 	fileperms=$(stat -L -c "%a" "$1")
 	anyreadperm=${fileperms:3:1} # With sticky bit
 	[[ ${#fileperms} == "3" ]] && anyreadperm=${fileperms:2:1} # without sticky bit
 	[[ $anyreadperm -ge "4" ]] || ERR "file '$1' is not world-readable (since security is hard, this is a sacrifice doasedit makes for ease of implementation)"
-	[[ -r "$1" ]] || ERR "file '$1' is world-readable but is not readable by your user, what are you doing?"
 	[[ "$(stat -L -c "%u" "$1")" == "0" ]] || ERR "Can only edit root-owned files with this script, as copying the file back will make root the owner"
 
 	# Preserves file permissions, amazingly
@@ -61,7 +61,7 @@ $EDITOR "$doasediting_file" || ERR "The editor failed to exit successfully"
 [[ "/etc/doas.conf" == "$1" ]] && {
 	echo "$ doas -C "$doasediting_file" doasedit \"$1\"" &&
 	doas -C "$doasediting_file" doasedit \"$1\" || {
-		# We probably have a syntax error. Move the file so we can re-run doasedit to edit it again
+		# There probably is a syntax error. Move the file so we can re-run doasedit to edit it again
 		mv -f "$doasediting_file" "$doasediting_file".backup
 		ERR "Replacing '/etc/doas.conf' would mean you no longer have permissions to edit it any further.\nIf you do not know what you're doing, you had a syntax error, so see the above output and try again."
 	}
@@ -73,5 +73,4 @@ doas cp "$doasediting_file" "$1" || ERR "You put your password in wrong. Manuall
 rm "$doasediting_file"
 
 # Change permissions if the file was empty and starts with a shebang
-[[ $fileperms != "" ]] || [[ `head -c 2 $doasediting_file` != "#!" ]] || { echo "doasedit: automatically running \`doas chmod +x '$1'\`" && doas chmod +x "$1" ; } || ERR "Cannot change permissions of '$1'"
-
+[[ $fileperms != "" ]] || [[ `head -c 2 "$1"` != "#!" ]] || { echo "doasedit: automatically running \`doas chmod +x '$1'\`" && doas chmod +x "$1" ; } || ERR "Cannot change permissions of '$1'"
