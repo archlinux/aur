@@ -1,0 +1,3 @@
+*.tar*
+
+/ev3dev-lang-python

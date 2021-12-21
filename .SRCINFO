@@ -1,0 +1,15 @@
+pkgbase = python-ev3dev2
+	pkgdesc = A Python3 library implementing an interface for ev3dev devices
+	pkgver = 2.0.0beta1
+	pkgrel = 1
+	url = https://github.com/ev3dev/ev3dev-lang-python
+	arch = any
+	license = mit
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	source = https://github.com/ev3dev/ev3dev-lang-python/archive/refs/tags/2.0.0beta1.tar.gz
+	sha256sums = cef1008855426555e35030885cf39b33f415810675721f3ab42d8a3e824d80f7
+
+pkgname = python-ev3dev2
