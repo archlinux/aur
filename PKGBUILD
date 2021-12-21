@@ -14,11 +14,6 @@ prepare () {
 	_archive=`xdg-user-dir DOWNLOAD`/AllGVSTLinux64.zip
 	ln -srf ${_archive} "$srcdir/`basename ${_archive}`"
 	unzip "$srcdir/`basename ${_archive}`"
-
-	## Extract GVST Manuals
-	_pdfdocs=`xdg-user-dir DOWNLOAD`/AllGVSTManuals.zip
-	ln -srf $_pdfdocs "$srcdir/`basename ${_pdfdocs}`"
-	unzip "$srcdir/`basename ${_pdfdocs}`"
 }
 
 package() {
