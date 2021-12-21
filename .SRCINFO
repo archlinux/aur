@@ -1,12 +1,12 @@
 pkgbase = betterbird-de-bin
 	pkgdesc = GERMAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
 	pkgver = 91.4.1_bb23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
 	provides = betterbird=91.4.1_bb23
-	source = https://www.betterbird.eu/downloads/betterbird-91.4.1-bb23.de.linux-x86_64.tar.bz2
+	source = https://www.betterbird.eu/downloads/betterbird-91.4.1-bb23build2.de.linux-x86_64.tar.bz2
 	source = betterbird.desktop
 	sha256sums = 473a0fe323ab92ec8d833661aa3d3ecb82903932cfb204924b4ba8296a6e5c7b
 	sha256sums = c99879de5ec8e8f98c2436bf414c7c167762c06df0846b42bb51195d6c8a3031

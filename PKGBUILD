@@ -2,8 +2,8 @@
 pkgname=betterbird-de-bin
 _pkgname=betterbird
 pkgver=91.4.1_bb23
-_build=
-pkgrel=1
+_build=build2
+pkgrel=2
 pkgdesc="GERMAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
