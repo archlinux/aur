@@ -63,6 +63,9 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
 
 CLI=              # CLI only binary.
 
+XINPUT2="YES"     # Use Xinput2 support.
+                  # https://www.x.org/releases/X11R7.7/doc/inputproto/XI2proto.txt
+
 GPM="YES"         # Mouse support in Linux console using gmpd.
 
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
@@ -82,7 +85,10 @@ ALSA="YES"        # Linux sound support.
 NOCAIRO=          # Disable here. 
                
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
+                  # Xwidgets are not supported by pgtk, for now.
                
+PGTK="YES"        # Wayland is awesome!
+
 DOCS_HTML=        # Generate and install html documentation.
                
 DOCS_PDF=         # Generate and install pdf documentation.
@@ -96,7 +102,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-native-comp-git-enhanced"
 fi
-pkgver=29.0.50.152995
+pkgver=29.0.50.153049
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -124,7 +130,7 @@ if [[ $GOLD == "YES" && ! $CLANG == "YES" ]]; then
   export CXXFLAGS+=" -fuse-ld=gold";
 elif [[ $GOLD == "YES" && $CLANG == "YES" ]]; then
   echo "";
-  echo "Clang rather uses its own linker.";
+  echo "Clang rather uses its own linker or mold.";
   echo "";
   exit 1;
 fi
@@ -132,27 +138,30 @@ fi
 if [[ $MOLD == "YES" && ! $CLANG == "YES" ]]; then
   # Make sure mold is available in /usr/bin/mold, or
   # you could specify another path to mold.
+  makedepends+=( 'mold' )
   ln -s /usr/bin/mold ./ld
   export LD=/usr/bin/mold
   export CFLAGS+=" -B.";
   export CXXFLAGS+=" -B."; 
-elif [[ $MOLD == "YES" && $CLANG == "YES" ]]; then
-  export LD=/usr/bin/mold
-  export CFLAGS+=" --ld-path=/usr/bin/mold";
-  export CXXFLAGS+=" --ld-path=/usr/bin/mold";
 fi
 
 if [[ $CLANG == "YES" ]]; then
   export CC="/usr/bin/clang" ;
   export CXX="/usr/bin/clang++" ;
   export CPP="/usr/bin/clang -E" ;
-  export LD="/usr/bin/lld" ;
   export AR="/usr/bin/llvm-ar" ;
   export AS="/usr/bin/llvm-as" ;
-  makedepends+=( 'clang' 'lld' 'llvm') ;
+  makedepends+=( 'clang' 'llvm') ;
   if [[ ! $MOLD == "YES" ]]; then
+  makedepends+=( 'mold' )
+  export LD="/usr/bin/lld" ;
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
+  export CFLAGS+=" --ld-path=/usr/bin/mold";
+  export CXXFLAGS+=" --ld-path=/usr/bin/mold";
+  else
+  makedepends+=( 'lld' )
+  export LD="/usr/bin/lld" ;
   fi
 fi
 
@@ -167,14 +176,17 @@ fi
 if [[ $CLI == "YES" ]]; then
   depends=("${depends_nox[@]}");
 elif [[ $NOTKIT == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' 'libxi');
   makedepends+=( 'xorgproto' );
 elif [[ $LUCID == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' 'libxi');
   makedepends+=( 'xorgproto' );
-else
+elif [[ $GTK3 == "YES" ]]; then
   depends+=( 'gtk3' );
-  makedepends+=( 'xorgproto' );
+  makedepends+=( 'xorgproto' 'libxi' );
+elif [[ $PGTK == "YES" ]]; then
+  depends+=( 'gtk3' );
+  makedepends+=( 'xorgproto' 'libxi' );
 fi
 
 if [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
@@ -191,7 +203,7 @@ if [[ $ALSA == "YES" ]]; then
   fi
 fi
 
-if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] ; then
+if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] && [[ ! $PGTK == "YES" ]]; then
   depends+=( 'cairo' );
 fi
 
@@ -255,7 +267,6 @@ build() {
     --localstatedir=/var
     --mandir=/usr/share/man
     --with-gameuser=:games
-    --with-sound=alsa
     --with-modules
     --without-libotf
     --without-m17n-flt
@@ -265,8 +276,6 @@ build() {
 # Good luck!
    --without-gconf
    --without-gsettings
-# Pure gtk, which will enable Wayland support.
-   --with-pgtk
   )
 
 ################################################################################
@@ -281,6 +290,11 @@ if [[ $LTO == "YES" ]]; then
   _conf+=( '--enable-link-time-optimization' );
 fi
 
+if [[ $XINPUT2 == "YES" ]]; then
+  _conf+=( '--with-xinput2' );
+fi
+
+
 if [[ $JIT == "YES" ]]; then
   _conf+=( '--with-native-compilation' );
 fi
@@ -291,11 +305,13 @@ elif [[ $NOTKIT == "YES" ]]; then
   _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--without-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
-else
+elif [[ $GTK3 == "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
+elif [[ $PGTK == "YES" ]]; then
+  _conf+=( '--with-pgtk' '--without-xaw3d' );
 fi
 
-if [[ $NOCAIRO == "YES" || $CLI == "YES" ]]; then
+if [[ $NOCAIRO == "YES" || $CLI == "YES" || $NOTKIT == "YES" || $LUCID == "YES" ]]; then
   _conf+=( '--without-cairo' );
 fi
 
