@@ -3,7 +3,7 @@
 
 pkgname=xmind-2020
 # the versin is from deb package
-pkgver=11.0.1
+pkgver=11.1.2
 pkgrel=0
 pkgdesc="XMind - The most popular mind mapping software"
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=('custom')
 depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3')
 provides=('xmind' "$pkgname")
 conflicts=("$pkgname")
-source=("https://dl3.xmind.net/XMind-for-Linux-x86-64bit-$pkgver-202106220606.rpm"
+source=("https://dl3.xmind.net/XMind-for-Linux-x86-64bit-$pkgver-202111151820.rpm"
         'xmind-2020.xml')
 
 sha256sums=('SKIP'

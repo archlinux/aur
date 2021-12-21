@@ -1,6 +1,6 @@
 pkgbase = xmind-2020
 	pkgdesc = XMind - The most popular mind mapping software
-	pkgver = 11.0.1
+	pkgver = 11.1.2
 	pkgrel = 0
 	url = https://www.xmind.net/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = xmind-2020
 	provides = xmind
 	provides = xmind-2020
 	conflicts = xmind-2020
-	source = https://dl3.xmind.net/XMind-for-Linux-x86-64bit-11.0.1-202106220606.rpm
+	source = https://dl3.xmind.net/XMind-for-Linux-x86-64bit-11.1.2-202111151820.rpm
 	source = xmind-2020.xml
 	sha256sums = SKIP
 	sha256sums = 833f6f1a7ddd73ea2487a21390e16b57c3fa817a560f385a034efdd1ed754a8d
