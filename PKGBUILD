@@ -2,7 +2,7 @@
 
 pkgname=buildcache
 pkgver=0.27.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
 url="https://github.com/mbitsnbites/buildcache"
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cmake')
 optdepends=('lua')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mbitsnbites/buildcache/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('08ee6e41d2fbbd7c4f169e6df20ecdbfb5c464e60668d1ee52bdfc92f4170f13')
+sha256sums=('ad804ba05c7785186fc6e4fc2872d02b55b19a67a257fb3b556942f96aebc613')
 
 
 build() {
