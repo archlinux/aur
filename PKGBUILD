@@ -1,6 +1,6 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=rocm-hip-libraries
-pkgver=4.5.0
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Develop applications using HIP and libraries for AMD platforms"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('rocm-core' 'rocm-hip-runtime'
 makedepends=()
 source=()
 sha256sums=()
-_magic_bit=56
+_magic_bit=164
 
 package() {
 	mkdir -p "${pkgdir}/opt/rocm/.info"
