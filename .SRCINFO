@@ -1,0 +1,14 @@
+pkgbase = python-argostranslate-git
+	pkgdesc = Open source neural machine translation in Python. Designed to be used either as a Python library or desktop application. Uses OpenNMT for translations and PyQt for GUI.
+	pkgver = r434.c97f52519d8d55524bee092ed2bd0cde7d542f68
+	pkgrel = 1
+	url = https://github.com/argosopentech/argos-translate/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-argostranslate
+	source = git+https://github.com/argosopentech/argos-translate/
+	sha256sums = SKIP
+
+pkgname = python-argostranslate-git
