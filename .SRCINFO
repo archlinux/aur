@@ -1,17 +1,16 @@
 pkgbase = python-wxnatpy
 	pkgdesc = wxnatpy is a wxPython widget which allows users to browse the contents of a XNAT repository. It is built on top of wxPython and xnatpy.
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/pauldmccarthy/wxnatpy
 	arch = any
 	license = Apache
 	depends = python
-	depends = wxpython
-	depends = python-xnatpy>=0.3.21
+	depends = python-wxpython
+	depends = python-xnatpy>=0.3.28
 	replaces = wxnatpy
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/w/wxnatpy/wxnatpy-0.3.2.tar.gz
-	sha256sums = 252c07d63caaca94beb3a73016a65eb6807d92387b6f396e061bf0408801ac82
+	source = https://files.pythonhosted.org/packages/source/w/wxnatpy/wxnatpy-0.4.0.tar.gz
+	sha256sums = d7d6b27c07b3351e85a7ac55abc119817620e2709d5965c7ef335403148bc586
 
 pkgname = python-wxnatpy
-
