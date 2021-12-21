@@ -1,9 +1,10 @@
-# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Joan Figueras <ffigue at gmail dot com>
 
 pkgname=glade-perl
 _cpanname=Gtk2-GladeXML
 pkgver=1.007
-pkgrel=18.1
+pkgrel=18.2
 pkgdesc="Gtk2-GladeXML perl bindings for glade 2.x"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
