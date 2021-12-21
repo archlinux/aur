@@ -7,8 +7,8 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
-pkgver=19.0.0
-pkgrel=2
+pkgver=19.1.0
+pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://www.asterisk.org'
@@ -40,7 +40,7 @@ source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$pkgname
         "$pkgname.sysusers"
         "$pkgname.logrotated"
         "$pkgname.tmpfile")
-sha256sums=('8fd2871d686dd9270c6abe5f3c3809b2b3a6248e2560b2c2354f2244119ff92b'
+sha256sums=('3c2755e9c037f2b8e25e7ccee22c51e7353968bf9f845fcbf0dafef0850986dd'
             'fc2e42f79e1672cc25b9b8ad2ba99616fbba0047641c986d30718655d0e7d4d8'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
