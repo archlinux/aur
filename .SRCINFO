@@ -1,7 +1,7 @@
 pkgbase = ntop
 	pkgdesc = A network traffic probe that shows the network usage.
 	pkgver = 5.0.1
-	pkgrel = 13
+	pkgrel = 14
 	url = https://www.ntop.org/
 	install = ntop.install
 	arch = x86_64

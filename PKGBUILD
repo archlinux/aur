@@ -4,7 +4,7 @@
 
 pkgname=ntop
 pkgver=5.0.1
-pkgrel=13
+pkgrel=14
 pkgdesc='A network traffic probe that shows the network usage.'
 arch=('x86_64' 'i686')
 url='https://www.ntop.org/'
@@ -56,7 +56,7 @@ package() {
 EOF
 
   rm -fr "${pkgdir}"/usr/lib/plugins
-  rm -fr "${pkgdir}"/usr/lib/ntop
+  rm -fr "${pkgdir}"/var/lib/ntop
 
   for _f in "${pkgdir}/usr/lib/ntop/plugins/"*.so; do
     _plug="$(basename ${_f})"
