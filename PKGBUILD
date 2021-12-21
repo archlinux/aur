@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.21-GE-2
+_srctag=7.0rc2-GE-1
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.0.0
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -121,6 +121,7 @@ source=(
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
     vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
@@ -168,6 +169,7 @@ prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
     # Install it from pip in a virtualenv
+    [ -d build_venv ] && rm -rf build_venv
     virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
     source build_venv/bin/activate
     pip install --no-cache-dir meson==0.59.3
@@ -202,6 +204,7 @@ prepare() {
         dxvk-nvapi
         SPIRV-Headers
         Vulkan-Headers
+        Vulkan-Loader
         vkd3d-zfigura::vkd3d
         wine-staging
         ffmpeg-meson::ffmpeg
@@ -275,13 +278,30 @@ build() {
         --no-proton-sdk \
         --build-name="${pkgname}"
 
-    # Export CFLAGS used by upstream
-    # -O2 is adjusted to -O3 since AVX is disabled
-    # This overrides CFLAGS from makepkg.conf, if you comment these you are on your own
-    # If you want the "best" possbile optimizations for your system you can use
+    # Filter known bad flags before applying optimizations
+    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
+    # https://github.com/Joshua-Ashton/d9vk/issues/476
+    export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
+    export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
+    # From wine-staging PKGBUILD
+    # Doesn't compile with these flags in MingW so remove them.
+    # They are also filtered in Wine PKGBUILDs so remove them
+    # for winelib versions too.
+    # Doesn't compile without remove these flags as of 4.10
+    export CFLAGS="${CFLAGS/ -fno-plt/}"
+    export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
+    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    # MingW Wine builds fail with relro
+    export LDFLAGS="${LDFLAGS/,-z,relro/}"
+
+    # By default export FLAGS used by proton and ignore makepkg
+    # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
+    # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    # `-O2` is adjusted to `-O3` since AVX is disabled
+    export CFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+    export CXXFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+    export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
@@ -295,25 +315,8 @@ build() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    export CFLAGS+=" -mno-avx -mno-avx2"
-    export CXXFLAGS+=" -mno-avx -mno-avx2"
-    # Filter known bad flags before applying optimizations
-    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
-    # https://github.com/Joshua-Ashton/d9vk/issues/476
-    #export CFLAGS+=" -fno-stack-protector"
-    export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    #export CXXFLAGS+=" -fno-stack-protector"
-    export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    # From wine-staging PKGBUILD
-    # Doesn't compile with these flags in MingW so remove them.
-    # They are also filtered in Wine PKGBUILDs so remove them
-    # for winelib versions too.
-    # Doesn't compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/ -fno-plt/}"
-    export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
-    # MingW Wine builds fail with relro
-    export LDFLAGS="${LDFLAGS/,-z,relro/}"
+    #export CFLAGS+=" -mno-avx -mno-avx2"
+    #export CXXFLAGS+=" -mno-avx -mno-avx2"
 
     export WINEESYNC=0
     export WINEFSYNC=0
@@ -381,10 +384,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '2a047893f047b4f0f5b480f1947b7dda546cee3fec080beb105bf5759c563cd3'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '05aedbc85eaa37df22f9bca7d9a1a51e064cf4a2522cb453325a865b4219a276'
+            '42e5382ccd6686810dc54aafe391ffb00e874923bd1937b4993ada675e8f7265'
             '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
