@@ -1,7 +1,7 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
 	pkgver = 5.15.10.arch1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/archlinux/linux/commits/v5.15.10-arch1
 	arch = x86_64
 	license = GPL2
@@ -23,22 +23,20 @@ pkgbase = linux-covolunablu-gaming
 	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.10-arch1
 	source = config
 	source = bfq-default.patch
-	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/ba636511f4862466b11ea69264cab70b7ccb3459/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch
-	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/ba636511f4862466b11ea69264cab70b7ccb3459/linux-tkg-patches/5.15/0007-v5.15-fsync1_via_futex_waitv.patch
-	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/ba636511f4862466b11ea69264cab70b7ccb3459/linux-tkg-patches/5.15/0007-v5.15-winesync.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/64f7cf7ff3174a30cca539d181afb47872ffb188/linux-tkg-patches/5.15/0007-v5.15-fsync1_via_futex_waitv.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/64f7cf7ff3174a30cca539d181afb47872ffb188/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 8638bbbc8e82465a4150ec1a1ae57c884e659825ec95c82549f9cdfec1969a24
+	sha256sums = 6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63
 	sha256sums = f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d
-	sha256sums = c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97
 	sha256sums = 63a2ddf7ca9d3922f4eac3ac66bc37ffb10ad8b18b3e596832d3faa66b93dfa6
-	sha256sums = a71ea523f0a7bcd24e2ad144ff12160aa03dc3f0c64daceac8dc1aae523d4491
+	sha256sums = c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97
 
 pkgname = linux-covolunablu-gaming
-	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler and Valve futex2 patches. Thanks to linux-tkg for the futex patches.
+	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler and Valve futex patches (from linux-tkg).
 	depends = coreutils
 	depends = kmod
 	depends = initramfs

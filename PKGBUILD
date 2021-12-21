@@ -4,10 +4,10 @@
 
 pkgbase=linux-covolunablu-gaming
 pkgver=5.15.10.arch1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
-_linux_tkg_commit="ba636511f4862466b11ea69264cab70b7ccb3459"
+_linux_tkg_commit="64f7cf7ff3174a30cca539d181afb47872ffb188"
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -22,9 +22,8 @@ source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
-  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch"
   "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-fsync1_via_futex_waitv.patch"
-  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-winesync.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,13 +32,11 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '8638bbbc8e82465a4150ec1a1ae57c884e659825ec95c82549f9cdfec1969a24'
+            '6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63'
             # -- covolunablu-gaming patches --
             'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d'
-            'c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97'
             '63a2ddf7ca9d3922f4eac3ac66bc37ffb10ad8b18b3e596832d3faa66b93dfa6'
-            'a71ea523f0a7bcd24e2ad144ff12160aa03dc3f0c64daceac8dc1aae523d4491'
-)
+            'c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97')
 
 export KBUILD_BUILD_HOST=covolunablu
 export KBUILD_BUILD_USER=$pkgbase
@@ -77,7 +74,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and Valve futex2 patches. Thanks to linux-tkg for the futex patches."
+  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and Valve futex patches (from linux-tkg)."
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
