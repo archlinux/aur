@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lame-svn
-pkgver=r6425
+pkgver=r6507
 pkgrel=1
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder"
 arch=('i686' 'x86_64')
 url="https://lame.sourceforge.io/"
 license=('LGPL')
-depends=('glibc' 'ncurses')
+depends=('glibc' 'mpg123' 'ncurses')
 makedepends=('subversion' 'nasm')
 provides=('lame')
 conflicts=('lame')
@@ -26,7 +26,9 @@ pkgver() {
 build() {
   cd "trunk/lame"
 
-  ./configure --prefix="/usr" --enable-nasm
+  ./configure \
+    --prefix="/usr" \
+    --enable-nasm
   make
 }
 
