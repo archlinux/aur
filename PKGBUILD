@@ -5,19 +5,21 @@
 
 pkgname=libxml2
 pkgver=2.9.12
-pkgrel=5
+pkgrel=6
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
 license=(MIT)
 depends=(zlib readline ncurses xz icu)
-makedepends=(python2 python git)
+makedepends=(python git)
 _commit=b48e77cf4f6fa0792c5f4b639707a2b0675e461b  # tags/v2.9.12^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
+        no-fuzz.patch # Do not run fuzzing tests
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
 sha256sums=('SKIP'
             '37eb81a8ec6929eed1514e891bff2dd05b450bcf0c712153880c485b7366c17c'
+            '163655aba312c237a234a82d64b71a65bd9d1d901e176d443e3e3ac64f3b1b32'
             '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
 pkgver() {
@@ -26,7 +28,11 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build-py{2,3}
+  mkdir build
+
+  # Use xmlconf from conformance test suite
+  ln -s xmlconf build/xmlconf
+
   cd $pkgname
 
   # Work around lxml API abuse
@@ -45,47 +51,38 @@ prepare() {
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+    git apply -3 "../$src"
   done
 
-  sed -e '/cd fuzz; /d' -e 's/fuzz //g' -i Makefile.am
   autoreconf -fiv
 }
 
-_build() (
-  cd build-py$1
+build() (
+  cd build
+
   ../$pkgname/configure \
     --prefix=/usr \
     --with-threads \
     --with-history \
-    --with-python=/usr/bin/python$1 \
+    --with-python=/usr/bin/python \
     --with-icu
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   make
+
   find doc -type f -exec chmod 0644 {} +
 )
 
-build() {
-  _build 2
-  _build 3
-}
-
 check() {
-  cd build-py3
-  ln -s ../xmlconf
-  make check
+  make -C build check
 }
 
 package() {
-  make -C build-py2 DESTDIR="$pkgdir" install
-  make -C build-py3/python DESTDIR="$pkgdir" install
-  install -Dm 644 build-py2/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+  make -C build DESTDIR="$pkgdir" install
   
-  #Disabled for now, as I don't want to introduce file conflicts during a security update 
-  #python2 -m compileall -d /usr/lib/python2.7 "$pkgdir/usr/lib/python2.7"
-  #python2 -O -m compileall -d /usr/lib/python2.7 "$pkgdir/usr/lib/python2.7"
-  #python -m compileall -d /usr/lib/python3.10 "$pkgdir/usr/lib/python3.10"
-  #python -O -m compileall -d /usr/lib/python3.10 "$pkgdir/usr/lib/python3.10" 
+  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
+  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib" 
+
+  install -Dm 644 build/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
