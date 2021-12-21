@@ -4,9 +4,10 @@
 # Contributor: sudokode <sudokode@gmail.com>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Zariel <c.bannister@gmail.com>
+# Contributor: Gabriel M. Dutra <0xdutra@gmail.com>
 
 pkgname=irssi-git
-pkgver=1.3.dev.r9.g26d96a7b
+pkgver=1.3.dev.r495.ge31d42b3
 pkgrel=1
 pkgdesc="Modular text mode IRC client with Perl scripting"
 arch=('i686' 'x86_64')

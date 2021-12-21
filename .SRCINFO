@@ -1,6 +1,6 @@
 pkgbase = irssi-git
 	pkgdesc = Modular text mode IRC client with Perl scripting
-	pkgver = 1.3.dev.r9.g26d96a7b
+	pkgver = 1.3.dev.r495.ge31d42b3
 	pkgrel = 1
 	url = http://irssi.org/
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = irssi-git
 	sha256sums = SKIP
 
 pkgname = irssi-git
-
