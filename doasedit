@@ -20,7 +20,7 @@ ERR() {
 # Set shell options to fail if any variable expansion or final expression in a pipeline fails
 set -eu
 
-# Single rgument was passed
+# Single argument was passed
 [[ $# != "1" ]] && ERR 'usage:\n\tdoasedit /file/owned/by/root\n\tdoasedit /new/file\t(starting a new file with "#!" will make it executable)'
 # Ensure this script is run as a user who has doas priviledges, editing a regular or nonexistent file
 [[ "$(id -u)" == "0" ]] && ERR "Do not run doasedit as root!"
@@ -34,7 +34,8 @@ doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer"
 
 # Now that we know the file is in a real directory, we can readlink it to create a temporary file
 real_path=$(readlink -f "$1")
-doasediting_file="/tmp/doasedit${real_path//\//.}" # While there are collisions with some dumb filenames, no harm can come from it
+# While there are collisions with some dumb filenames, no harm can come from it and we inform the user why even if they do have a `/usr.bin` regular file for example
+doasediting_file="/tmp/doasedit${real_path//\//.}"
 # Ensure the file we create to edit does not already exist
 [ -f "$doasediting_file" ] && echo -e "File '$1' is already being edited by user '$(stat -c %U $doasediting_file)'\n(the file $doasediting_file exists)" && exit 1
 
