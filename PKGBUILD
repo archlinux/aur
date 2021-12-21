@@ -4,7 +4,7 @@
 
 pkgname=gimp-brush-max-512
 _pkgname=gimp
-pkgver=2.10.28
+pkgver=2.10.30
 pkgrel=1
 pkgdesc='Gimp with easy-to-handle tool sizes'
 url='https://www.gimp.org/'
@@ -26,7 +26,7 @@ install=gimp.install
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2
         0001-no-check-update.patch
         linux.gpl)
-sha256sums=('4f4dc22cff1ab5f026feaa2ab55e05775b3a11e198186b47bdab79cbfa078826'
+sha256sums=('88815daa76ed7d4277eeb353358bafa116cd2fcd2c861d95b95135c1d52b67dc'
             'ac3e8b44cf391f4ab3050652f2cc1f146f451fb25178d5a596d905f5bad13fcf'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
