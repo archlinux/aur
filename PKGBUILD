@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-screenlocker
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="CutefishOS system screen locker"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('cutefish')
 depends=('fishui' 'libcutefish')
 makedepends=('extra-cmake-modules' 'qt5-tools')
 source=("https://github.com/cutefishos/screenlocker/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a1504a073f7d6e1e279710a2639d74765663b224f8e76f2c8e2f3e0137695bcd25b29d07c8d890932047d982c7157529afe31adad654b6149406587069eec5b8')
+sha512sums=('7b5c2064afe74ff036a840cb73ea51a0b203d4abd2756d983bd160b670374813d851a9b0f8fd0028d3dc3340c1947b8edd153ce4c9cd966d480f4e65fb9f8f76')
 
 build() {
   cd screenlocker-$pkgver
