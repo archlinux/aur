@@ -3,24 +3,27 @@
 _base=pyamg
 pkgname=python-${_base}
 pkgdesc="Algebraic Multigrid Solvers in Python"
-pkgver=4.1.0
-pkgrel=2
-arch=('any')
+_gitcommit=e013dbfbc14ff8b5816fb1622f22752557421d95
+pkgver=4.2.1
+pkgrel=1
+arch=('x86_64')
 url="https://github.com/${_base}/${_base}"
 license=(MIT)
 depends=(python-scipy python-pytest)
-makedepends=(python-setuptools pybind11)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('43bb22a03023a3be101bec88f13528095847fdc4a1b8b669ff9583de2184982673c63ef869bded3599f2aa81d8746914cc01ddff9c7307c5598d0e17da5e9000')
+makedepends=(python-setuptools-scm pybind11 git) # python-matplotlib
+source=("${_base}-${pkgver}::git+${url}.git?signed#commit=${_gitcommit}")
+validpgpkeys=('4DDCC34E24417C71C667DC2850BBE7E24BA62FF7') # Luke Olson <luke.olson@gmail.com>
+sha512sums=('SKIP')
 
+# https://bbs.archlinux.org/viewtopic.php?id=249188
 build() {
   cd "${_base}-${pkgver}"
   python setup.py build
 }
 
 check() {
-  cd "${_base}-${pkgver}"
-  python setup.py test
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  PYTHONPATH="${srcdir}/${_base}-${pkgver}/build/lib.linux-${CARCH}-${_pyversion}:${PYTHONPATH}" python -c "import pyamg; pyamg.test()"
 }
 
 package() {
