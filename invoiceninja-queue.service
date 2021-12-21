@@ -1,0 +1,10 @@
+[Unit]
+Description=Invoice Ninja queue service
+After=redis.service
+
+[Service]
+User=http
+ExecStart=/usr/bin/php /usr/share/webapps/invoiceninja/artisan queue:work --stop-when-empty
+
+[Install]
+WantedBy=multi-user.target

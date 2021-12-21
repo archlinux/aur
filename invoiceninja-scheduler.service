@@ -1,0 +1,9 @@
+[Unit]
+Description=Invoice Ninja scheduler service
+
+[Service]
+User=http
+ExecStart=/usr/bin/php /usr/share/webapps/invoiceninja/artisan schedule:run
+
+[Install]
+WantedBy=multi-user.target
