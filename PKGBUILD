@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=95.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -99,9 +99,6 @@ prepare() {
 
   # Debian patch to enable global menubar
   patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
-
-  # Disabling Pocket
-  patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
