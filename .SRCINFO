@@ -1,17 +1,17 @@
 pkgbase = vassal
 	pkgdesc = Game engine for building and playing online adaptations of board games and card games.
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = http://www.vassalengine.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = java-runtime>=11
-	source = https://github.com/vassalengine/vassal/releases/download/3.6.1/VASSAL-3.6.1-linux.tar.bz2
+	source = https://github.com/vassalengine/vassal/releases/download/3.6.2/VASSAL-3.6.2-linux.tar.bz2
 	source = VASSAL-256x256.png
 	source = vassal.sh
 	source = vassal.desktop
-	md5sums = 47338f1ca5acb231b20ea1612a1a003b
+	md5sums = c2b23dde1e02f4ed2cb3507e137b61fa
 	md5sums = 4a4ec11bdbd7dbbf56e6f1d533f69a7e
 	md5sums = SKIP
 	md5sums = SKIP
