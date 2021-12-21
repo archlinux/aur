@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 6.3.8
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
@@ -203,7 +203,7 @@ pkgbase = proton
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-6.3-8
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-6.3-8c
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git

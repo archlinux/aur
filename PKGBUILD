@@ -4,13 +4,14 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_srctag=6.3-8
+_srctag=6.3-8c
 _commit=
 pkgver=${_srctag//-/.}
+pkgver=6.3.8
 _geckover=2.47.2
 _monover=6.4.1
 _asyncver=1.9.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -167,6 +168,7 @@ prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
     # Install it from pip in a virtualenv
+    [ -d build_venv ] && rm -rf build_venv
     virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
     source build_venv/bin/activate
     pip install --no-cache-dir meson==0.59.3
@@ -282,28 +284,6 @@ build() {
         --no-proton-sdk \
         --build-name="${pkgname}"
 
-    # Export CFLAGS used by upstream
-    # -O2 is adjusted to -O3 since AVX is disabled
-    # This overrides CFLAGS from makepkg.conf, if you comment these you are on your own
-    # If you want the "best" possbile optimizations for your system you can use
-    # `-march=native` and remove the `-mtune=core-avx2` option.
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Disabling AVX (and AVX2 as a side-effect).
-    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
-    # crashing with AVX regardless, but 64bit applications worked just fine.
-    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
-    # AVX2 seems to degrade performance. So disregard the above.
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
-    export CFLAGS+=" -mno-avx -mno-avx2"
-    export CXXFLAGS+=" -mno-avx -mno-avx2"
     # Filter known bad flags before applying optimizations
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
@@ -319,6 +299,30 @@ build() {
     export LDFLAGS="${LDFLAGS/,-z,now/}"
     # MingW Wine builds fail with relro
     export LDFLAGS="${LDFLAGS/,-z,relro/}"
+
+    # By default export FLAGS used by proton and ignore makepkg
+    # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
+    # If you want the "best" possible optimizations for your system you can use
+    # `-march=native` and remove the `-mtune=core-avx2` option.
+    # `-O2` is adjusted to `-O3` since AVX is disabled
+    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game can cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling AVX (and AVX2 as a side-effect).
+    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
+    # crashing with AVX regardless, but 64bit applications worked just fine.
+    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # AVX2 seems to degrade performance. So disregard the above.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    #export CFLAGS+=" -mno-avx -mno-avx2"
+    #export CXXFLAGS+=" -mno-avx -mno-avx2"
 
     export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
@@ -338,10 +342,6 @@ package() {
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
         "$pkgdir/usr/share/licenses/${pkgname}"
-
-    cd "$_compatdir/${pkgname}"
-    # Add old tool name in compatibilitytool.vdf
-    patch -p1 -i "$srcdir"/proton-proton_native_transition.patch
 
     cd "$_compatdir/${pkgname}/dist"
     i686-w64-mingw32-strip --strip-unneeded \
@@ -364,6 +364,10 @@ package() {
     x86_64-w64-mingw32-strip --strip-unneeded \
         "$_monodir"/lib/x86_64/*.dll \
         $(find "$_monodir" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
+
+    cd "$_compatdir/${pkgname}"
+    # Add old tool name in compatibilitytool.vdf
+    patch -p1 -i "$srcdir"/proton-proton_native_transition.patch
 }
 
 sha256sums=('SKIP'
