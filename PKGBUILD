@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Explore and test functionality of the Inertial Sense products in real-time"
 arch=('x86_64')
 url="https://docs.inertialsense.com/user-manual/software/evaltool/"
-license=('MIT')
+license=('unknow')
 depends=('qt5-charts-ubuntu-ver')
 
 source=("https://github.com/inertialsense/inertial-sense-sdk/releases/download/${pkgver}/EvalTool_${pkgver}.deb")
