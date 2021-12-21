@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-xnatpy
 _name=xnat
-pkgver=0.3.25
+pkgver=0.3.28
 pkgrel=1
 pkgdesc="A new XNAT client that exposes XNAT objects/functions as python objects/functions."
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('37b30a98a72fe4c7e636cd6a433da9fd6edfd7dee109f185849c78e9dc54effd')
+sha256sums=('365777c16278d17f42c07a8beb58fd5b1d9bac19262f0b11052845894ae6c460')
 
 package() {
   cd "$srcdir"/$_name-$pkgver
