@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=6.3-20211124
+_srctag=6.3-20211220
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -115,7 +115,7 @@ source=(
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
     gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
-    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
+    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
@@ -163,6 +163,7 @@ prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
     # Install it from pip in a virtualenv
+    [ -d build_venv ] && rm -rf build_venv
     virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
     source build_venv/bin/activate
     pip install --no-cache-dir meson==0.59.3
@@ -192,7 +193,7 @@ prepare() {
         gst-plugins-base
         gst-plugins-good
         gst-orc
-        vkd3d-proton
+        vkd3d-valve::vkd3d-proton
         OpenXR-SDK
         dxvk-nvapi
         SPIRV-Headers
@@ -279,28 +280,6 @@ build() {
         --no-proton-sdk \
         --build-name="${pkgname}"
 
-    # Export CFLAGS used by upstream
-    # -O2 is adjusted to -O3 since AVX is disabled
-    # This overrides CFLAGS from makepkg.conf, if you comment these you are on your own
-    # If you want the "best" possbile optimizations for your system you can use
-    # `-march=native` and remove the `-mtune=core-avx2` option.
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Disabling AVX (and AVX2 as a side-effect).
-    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
-    # crashing with AVX regardless, but 64bit applications worked just fine.
-    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
-    # AVX2 seems to degrade performance. So disregard the above.
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
-    export CFLAGS+=" -mno-avx -mno-avx2"
-    export CXXFLAGS+=" -mno-avx -mno-avx2"
     # Filter known bad flags before applying optimizations
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
@@ -316,6 +295,30 @@ build() {
     export LDFLAGS="${LDFLAGS/,-z,now/}"
     # MingW Wine builds fail with relro
     export LDFLAGS="${LDFLAGS/,-z,relro/}"
+
+    # By default export FLAGS used by proton and ignore makepkg
+    # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
+    # If you want the "best" possible optimizations for your system you can use
+    # `-march=native` and remove the `-mtune=core-avx2` option.
+    # `-O2` is adjusted to `-O3` since AVX is disabled
+    export CFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+    export CXXFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+    export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game can cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling AVX (and AVX2 as a side-effect).
+    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
+    # crashing with AVX regardless, but 64bit applications worked just fine.
+    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # AVX2 seems to degrade performance. So disregard the above.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    #export CFLAGS+=" -mno-avx -mno-avx2"
+    #export CXXFLAGS+=" -mno-avx -mno-avx2"
 
     export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
