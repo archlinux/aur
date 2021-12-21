@@ -1,15 +1,14 @@
 pkgbase = dbf
 	pkgdesc = Command line tool to show and convert the content of dBASE III, IV, and 5.0 files
 	pkgver = 0.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/dbf
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
 	depends = libdbf
-	source = http://ftp.mirrorservice.org/sites/download.sourceforge.net/pub/sourceforge/d/db/dbf.berlios/dbf-core-0.9.0.src.zip
+	source = dbf-core-0.9.0.src.zip::https://sourceforge.net/projects/dbf/files/dbf%20-%20dBASE%20Reader/dbf-0.9.0/dbf-core-0.9.0.src.zip/download
 	md5sums = fb5c016d9e45a95c1956d959792a5063
 
 pkgname = dbf
-
