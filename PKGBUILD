@@ -7,8 +7,8 @@ pkgrel=2
 pkgdesc='Simple ssh-agent that loads keys stored from Moolticute'
 arch=('x86_64')
 url="https://github.com/raoulh/$pkgname"
-license=('GPL')
-makedepends=('go')
+license=('GPL3')
+makedepends=('git','go')
 source=("$pkgname"::"git://github.com/raoulh/$pkgname")
 sha256sums=('SKIP')
 
