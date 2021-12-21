@@ -1,0 +1,12 @@
+pkgbase = genxrdb
+	pkgdesc = a tool that generates xresources from toml
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/RaafatTurki/genxrdb
+	arch = x86_64
+	makedepends = git
+	makedepends = rust
+	source = git+https://github.com/RaafatTurki/genxrdb
+	cksums = SKIP
+
+pkgname = genxrdb
