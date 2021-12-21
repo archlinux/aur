@@ -2,7 +2,7 @@
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
-_pkgver='1.29.5'
+_pkgver='1.29.6'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
@@ -20,7 +20,7 @@ source=(
 	'browserslist.diff'
 
 )
-sha512sums=('81837c6d860b4d71c486b0faea54efdd6c8d1ef04a1739b28164ea7ccbb613696d1114fdb5ad9d466550f6a6e48fae57733ee7942b9745465f6b446aa0fb25ba'
+sha512sums=('4edd57ec6b940be582e738ba37b2b9cb3116e1e3fc7310eeb23ac5f260506419dccda04f72dae2da19457512b5aa3e21249248f8fcf27cb491a22b993189dee6'
             '03b766834ce0c85abca10fe98ab4aa12a20d1110a4afb11b85c06e7e34ceec1163933be51d7a1881fd576d2cef01118319c856e9bcac92aaefb95084dc2a97f9'
             'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
 
