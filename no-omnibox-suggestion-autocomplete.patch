@@ -1,0 +1,29 @@
+# Add options '1' and '2' in the flag #omnibox-ui-max-autocomplete-matches.
+# Setting '1' effectively disables autocompletion in the url bar (called
+# 'omnibox' in chromium internally). This is way easier than diabling all
+# history internally, but still allowing to get rid of shoulder surfing.
+
+--- a/chrome/browser/about_flags.cc
++++ b/chrome/browser/about_flags.cc
+@@ -1254,6 +1254,10 @@
+     {"15", kMaxZeroSuggestMatches15, base::size(kMaxZeroSuggestMatches15),
+      nullptr}};
+ 
++const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches1[] = {
++    {OmniboxFieldTrial::kUIMaxAutocompleteMatchesParam, "1"}};
++const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches2[] = {
++    {OmniboxFieldTrial::kUIMaxAutocompleteMatchesParam, "2"}};
+ const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches3[] = {
+     {OmniboxFieldTrial::kUIMaxAutocompleteMatchesParam, "3"}};
+ const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches4[] = {
+@@ -1275,6 +1279,10 @@
+ 
+ const FeatureEntry::FeatureVariation
+     kOmniboxUIMaxAutocompleteMatchesVariations[] = {
++        {"1 matches", kOmniboxUIMaxAutocompleteMatches1,
++         base::size(kOmniboxUIMaxAutocompleteMatches1), nullptr},
++        {"2 matches", kOmniboxUIMaxAutocompleteMatches2,
++         base::size(kOmniboxUIMaxAutocompleteMatches2), nullptr},
+         {"3 matches", kOmniboxUIMaxAutocompleteMatches3,
+          base::size(kOmniboxUIMaxAutocompleteMatches3), nullptr},
+         {"4 matches", kOmniboxUIMaxAutocompleteMatches4,

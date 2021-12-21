@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=96.0.4664.110
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
@@ -36,7 +36,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-94-ffmpeg-roll.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch
-        xdg-basedir.patch)
+        xdg-basedir.patch
+        no-omnibox-suggestion-autocomplete.patch)
 sha256sums=('36a99d29c2e93a9975be53648f2cd3ffa4ee43730f217a2e7ed88c1901a671e8'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '090af7eab39aade15a1786273f2497d6b4abfaef24279fbf97ce0dd1c38c69aa'
@@ -46,7 +47,8 @@ sha256sums=('36a99d29c2e93a9975be53648f2cd3ffa4ee43730f217a2e7ed88c1901a671e8'
             '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-            'c332af43f4afb120c749319f3f2b1bcb38715ac5d9dbb376475702bd9ef95686')
+            'cd844867b5b2197ad097662fee32579a7091dfba1d46cb438c4c7e696690440a'
+            'a0aae463d3190c358b018922aa25ef8b0d4dabf46d4e1a29437e983a2ea125c6')
 provides=('chromium')
 conflicts=('chromium')
 source=(${source[@]}
@@ -114,6 +116,11 @@ prepare() {
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
+
+  # You can now set '1' in the flag #omnibox-ui-max-autocomplete-matches to
+  # effectively disable autocompletion in the url bar (and therefore the so-
+  # called 'shoulder surfing').
+  patch -p1 -i ../no-omnibox-suggestion-autocomplete.patch
 
   # https://crbug.com/1207478
   patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch

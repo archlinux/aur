@@ -1,6 +1,9 @@
-diff -ruN a/base/nix/xdg_util.cc b/base/nix/xdg_util.cc
---- a/base/nix/xdg_util.cc	2021-10-01 03:36:37.000000000 +0200
-+++ b/base/nix/xdg_util.cc	2021-10-11 23:38:26.553638013 +0200
+# Move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki on linux
+# builds to follow the XDG Base Directory Specification. For details, refer to
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+
+--- a/base/nix/xdg_util.cc
++++ b/base/nix/xdg_util.cc
 @@ -29,6 +29,8 @@
  const char kXdgConfigHomeEnvVar[] = "XDG_CONFIG_HOME";
  const char kXdgCurrentDesktopEnvVar[] = "XDG_CURRENT_DESKTOP";
@@ -11,9 +14,8 @@ diff -ruN a/base/nix/xdg_util.cc b/base/nix/xdg_util.cc
  FilePath GetXDGDirectory(Environment* env, const char* env_name,
                           const char* fallback_dir) {
 
-diff -ruN a/base/nix/xdg_util.h b/base/nix/xdg_util.h
---- a/base/nix/xdg_util.h	2021-10-11 23:57:48.607012470 +0200
-+++ b/base/nix/xdg_util.h	2021-10-12 00:04:46.457027239 +0200
+--- a/base/nix/xdg_util.h
++++ b/base/nix/xdg_util.h
 @@ -37,6 +37,12 @@
  // The XDG session type environment variable.
  BASE_EXPORT extern const char kXdgSessionTypeEnvVar[];
@@ -28,9 +30,8 @@ diff -ruN a/base/nix/xdg_util.h b/base/nix/xdg_util.h
  // |env_name| is the name of an environment variable that we want to use to get
  // a directory path. |fallback_dir| is the directory relative to $HOME that we
 
-diff -ruN a/crypto/nss_util.cc b/crypto/nss_util.cc
---- a/crypto/nss_util.cc	2021-10-01 03:36:49.000000000 +0200
-+++ b/crypto/nss_util.cc	2021-10-12 12:45:52.235119130 +0200
+--- a/crypto/nss_util.cc
++++ b/crypto/nss_util.cc
 @@ -30,6 +30,9 @@
  #include "build/chromeos_buildflags.h"
  #include "crypto/nss_crypto_module_delegate.h"
