@@ -3,6 +3,7 @@ pkgbase = unityhub-beta
 	pkgver = 3.0.0beta.7
 	pkgrel = 1
 	url = https://unity.com/
+	install = unityhub.install
 	arch = x86_64
 	license = custom
 	depends = nss

@@ -1,7 +1,7 @@
 # Maintainer: Nobbele <realnobbele@gmail.com>
 pkgname=unityhub-beta
 pkgver=3.0.0beta.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Unity Hub beta"
 arch=('x86_64')
 url="https://unity.com/"
@@ -9,6 +9,7 @@ license=('custom')
 depends=('nss' 'gtk3')
 optdepends=('libappindicator-gtk3: The DEB says this an optional dependency')
 provides=('unityhub')
+install='unityhub.install'
 source=(
   "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3Beta.0.0-beta.7.deb"
   'license.txt'
@@ -25,9 +26,4 @@ package() {
   ln -sf '/opt/unityhub/unityhub' "$pkgdir/usr/bin/unityhub"
 
   install -Dm644 "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-}
-
-post_install() {
-  update-mime-database /usr/share/mime
-  update-desktop-database /usr/share/applications
 }
