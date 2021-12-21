@@ -1,7 +1,7 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=moe-nim
 _pkgname=${pkgname%-nim}
-pkgver=0.2.8.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A command line based editor inspired by vim. Written in Nim.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 makedepends=('git' 'nim' 'nimble')
 conflicts=("$_pkgname")
 source=("${pkgname}-${pkgver}.tar.gz::${_gh}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('61343feb1fa451a3e7a505052c14bc33da5bbd6ab5cf6ae2b0289e70b5389b63')
+sha256sums=('e0ccdeb1e3902b6248150ad140bdfce28c3a5c5444ba2e715a8c2f6263f8e09f')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
