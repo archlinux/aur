@@ -1,8 +1,8 @@
 pre_install() {
-    printf "\nNOTE: pdfplumber technically requires python-pdfplumber.six==20200517.\n"
-    printf "While most things still work with python-pdfplumber.six>=20200517,\n"
+    printf "\nNOTE: pdfplumber technically requires python-pdfplumber.six==20211012.\n"
+    printf "While most things still work with python-pdfplumber.six>=20211012,\n"
     printf "in case you want to make sure every single feature works as intended\n"
-    printf "please install version 20200517 of pdfplumber.six instead.\n"
+    printf "please install version 20211012 of pdfplumber.six instead.\n"
     printf "For more information, see:\n"
     printf "https://aur.archlinux.org/packages/python-pdfplumber/#comment-841109\n\n"
 }
