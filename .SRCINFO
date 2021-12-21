@@ -1,0 +1,11 @@
+pkgbase = lynx-base-css
+	pkgdesc = Lynx CSS Base - CSS Base para Lynx
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/LynxOS/lynx-base-css
+	arch = any
+	license = GPL
+	source = https://gitlab.com/LynxOS/lynx-base-css/-/archive/0.0.1/lynx-base-css-0.0.1.tar.gz
+	md5sums = 8518e2efdb8fa8aafea9aed90c8f200e
+
+pkgname = lynx-base-css
