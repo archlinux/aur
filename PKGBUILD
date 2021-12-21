@@ -1,13 +1,14 @@
 # Maintainer: David Foucher <dev@tyjak.net>
 pkgname=proxyman-git
 pkgrel=1
-pkgver=r186.1bd3dfc
+pkgver=r187.c38b13e
 pkgdesc='Configuring proxy made so simple on Linux'
 arch=('any')
 url='https://github.com/himanshub16/ProxyMan'
 license=('unknown')
 source=("${pkgname}"::"git+https://github.com/himanshub16/ProxyMan.git")
 sha512sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
 	cd "$pkgname"
