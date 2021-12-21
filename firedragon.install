@@ -1,29 +1,9 @@
-msg() {
-    ALL_OFF="\e[1;0m"
-    BOLD="\e[1;1m"
-    RED="${BOLD}\e[1;31m"
-	local mesg=$1; shift
-	printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
-}
-
 post_install() {
-    msg "Firejail profiles are already present in firejail-git."
-    echo ""
-    msg "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
-    echo ""
-    msg "If you prefer strict hardened settings execute 'mkdir ~/.firedragon && cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
-    echo ""
-    msg "Enjoy the Firedragon 🔥🐉"
-    echo ""
+    echo "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
+    echo "If you prefer strict hardened settings execute 'mkdir ~/.firedragon && cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
 }
 
 post_upgrade() {
-    msg "Firejail profiles are already present in firejail."
-    echo ""
-    msg "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
-    echo ""
-    msg "If you prefer strict hardened settings execute 'cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
-    echo ""
-    msg "Enjoy the Firedragon 🔥🐉"
-    echo ""
+    echo "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
+    echo "If you prefer strict hardened settings execute 'cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
 }
