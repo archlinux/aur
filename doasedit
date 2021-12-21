@@ -7,29 +7,35 @@
 # Since I am lazy and am using this to write small scripts under /usr/local/bin sometimes, I also added a feature for myself to install with permissions already set if you are writing a new file and start it with a shebang.
 
 EDITOR=${EDITOR:-vi}
-real_path=$(readlink -f "$1")
-doasediting_file="/tmp/doasedit${real_path//\//.}" # While there are collisions with some dumb filenames, no harm can come from it
 
 fileperms=""
 anyreadperm=""
 
 ERR() {
 	echo -e "doasedit: $1";
-	[[ -f "$doasediting_file" ]] && echo "(Leaving behind file $doasediting_file)"
+	[[ -v doasediting_file ]] && [[ -f "$doasediting_file" ]] && echo "(Leaving behind file $doasediting_file)"
 	exit 1
 }
 
 # Set shell options to fail if any variable expansion or final expression in a pipeline fails
 set -eu
 
-[[ $# != "1" ]] && ERR 'usage:\n\tdoasedit /file/owned/by/root\n\tdoasedit /new/file\t(starting a new file with "#!" will make it executable)' # Argument was passed
+# Single rgument was passed
+[[ $# != "1" ]] && ERR 'usage:\n\tdoasedit /file/owned/by/root\n\tdoasedit /new/file\t(starting a new file with "#!" will make it executable)'
 # Ensure this script is run as a user who has doas priviledges, editing a regular or nonexistent file
 [[ "$(id -u)" == "0" ]] && ERR "Do not run doasedit as root!"
-doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer" # To allow doasedit, you must be allowed to run `doas doasedit`
+# To allow doasedit, you must be allowed to run `doas doasedit`
+doas -C /etc/doas.conf doasedit \"$1\" >/dev/null || ERR "You are not a doer"
 [[ -d "$1" ]] && ERR "'$1' is a directory" # File is a directory
 # Ensure the file is in a directory we can read
 [[ -r "`dirname $1`" ]] || ERR "'$1' is a directory you do not have permission to read"
-# The file we create to edit does not already exist
+# Ensure that the filepath is in a directory, as the above does not guarantee the directory is not actually a file
+[[ -d "`dirname $1`" ]] || ERR "'`dirname $1`' is a file, not a directory"
+
+# Now that we know the file is in a real directory, we can readlink it to create a temporary file
+real_path=$(readlink -f "$1")
+doasediting_file="/tmp/doasedit${real_path//\//.}" # While there are collisions with some dumb filenames, no harm can come from it
+# Ensure the file we create to edit does not already exist
 [ -f "$doasediting_file" ] && echo -e "File '$1' is already being edited by user '$(stat -c %U $doasediting_file)'\n(the file $doasediting_file exists)" && exit 1
 
 # In the positive case, the file exists, and we check that anyone can read it and that it is owned by root. In the negative case, the file does not exist
