@@ -1,3 +1,30 @@
+## 11.4.1 (2021-12-21)
+
+## What's Changed
+* Reduce makeStyles in favour of sx prop by @jhaals in https://github.com/jhaals/yopass/pull/1177
+* Bump typescript to 4.5.2 by @jhaals in https://github.com/jhaals/yopass/pull/1178
+* Remove makeStyles usages by @jhaals in https://github.com/jhaals/yopass/pull/1179
+* build(deps): bump github.com/spf13/viper from 1.9.0 to 1.10.0 by @dependabot in https://github.com/jhaals/yopass/pull/1188
+* build(deps): bump @emotion/react from 11.7.0 to 11.7.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1187
+* build(deps-dev): bump @types/node from 16.11.11 to 16.11.12 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1184
+* build(deps): bump react-i18next from 11.14.3 to 11.15.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1182
+* build(deps-dev): bump typescript from 4.5.2 to 4.5.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1185
+* build(deps): bump swr from 1.1.0 to 1.1.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1183
+* build(deps): bump i18next from 21.5.4 to 21.6.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1180
+* build(deps): bump react-router-dom from 6.0.2 to 6.1.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1181
+* build(deps): bump github.com/spf13/viper from 1.10.0 to 1.10.1 by @dependabot in https://github.com/jhaals/yopass/pull/1192
+* build(deps-dev): bump @types/node from 16.11.12 to 17.0.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1200
+* build(deps): bump i18next from 21.6.0 to 21.6.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1199
+* build(deps): bump react-router-dom from 6.1.1 to 6.2.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1193
+* build(deps): bump react-i18next from 11.15.0 to 11.15.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1197
+* build(deps-dev): bump typescript from 4.5.3 to 4.5.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1196
+* build(deps): bump @mui/material from 5.2.3 to 5.2.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1194
+* build(deps): bump react-scripts from 4.0.3 to 5.0.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1195
+* build(deps): bump ansi-regex from 5.0.0 to 5.0.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1201
+
+
+**Full Changelog**: https://github.com/jhaals/yopass/compare/11.3.1...11.4.1
+
 ## 11.3.1 (2021-12-08)
 
 ## What's Changed
