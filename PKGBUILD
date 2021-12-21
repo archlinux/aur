@@ -2,8 +2,8 @@
 _base=pytest-codeblocks
 pkgname=python-${_base}
 pkgdesc="Test code blocks in your READMEs"
-pkgver=0.12.1
-pkgrel=2
+pkgver=0.12.2
+pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
@@ -11,7 +11,7 @@ depends=(python-pytest)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-cov)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0eb31a89df4fc4475e22f2abdc27b508ccf59882ca16b25ef44733c1934dff5bebc49fd6972be954a2dc7823632f0049021ecafa25c1882ad4732c19262113cc')
+sha512sums=('d69819106b389ce3cd2d04a1385e49f2bdf4eb70ea334175e6ba5e2921d77266ac2e69b22ce5a42880846555dd271e5b7dc25bda838b9238ad5d14add9389681')
 
 build() {
   cd "${_base}-${pkgver}"
