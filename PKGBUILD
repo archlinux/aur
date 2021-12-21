@@ -1,5 +1,3 @@
-# Maintainer: ItzSelenux <zariepcommunication@gmail.com>
-# Maintainer: yochananmarqos
 pkgname=papirus-folders-gui
 pkgver=1.5
 pkgrel=1
@@ -7,12 +5,23 @@ pkgdesc="A graphical user interface for papirus-folders"
 url="https://github.com/ItzSelenux/papirus-folders-gui"
 arch=('x86_64')
 license=('GPL2')
-depends=('papirus-folders' 'qt5-base')
-optdepends=('mate-polkit: Polkit Authentication agent, not required on most DE')
-source=("https://github.com/ItzSelenux/papirus-folders-gui/releases/download/1.5/papirus-folders-gui" "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('85738b3e6e9b94c9bb51ad9a1ffab4f03cc77125d288cc8d2ff26a9ba01516a8' 'c24246fc1f8af443e9f0e8f3e8138af4ac39caaa62ed05f22438039592ed0c0a') 
+depends=('papirus-folders' 'polkit' 'qt5-base')
+makedepends=('cmake' 'qt5-tools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c24246fc1f8af443e9f0e8f3e8138af4ac39caaa62ed05f22438039592ed0c0a')
+ 
+build() {
+  cmake -B build -S "$pkgname-$pkgver" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  cmake --build build
+}
+ 
 package() {
-  install -Dm755 "papirus-folders-gui" -t "$pkgdir/usr/bin"
-  cd "papirus-folders-gui-1.5"
+  install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin"
+ 
+  cd "$pkgname-$pkgver"
   install -Dm644 papirus.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 folder-logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 }
