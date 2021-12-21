@@ -1,21 +1,20 @@
 pkgbase = gatling-stress-tool
 	pkgdesc = Open-source load testing framework based on Scala, Akka and Netty
-	pkgver = 3.6.0
+	pkgver = 3.7.3
 	pkgrel = 1
 	url = http://gatling.io
 	arch = any
 	license = apache
 	depends = java-environment-common
-	backup = usr/share/java/gatling-stress-tool/conf/application.conf
 	backup = usr/share/java/gatling-stress-tool/conf/gatling.conf
 	backup = usr/share/java/gatling-stress-tool/conf/recorder.conf
 	backup = usr/share/java/gatling-stress-tool/conf/logback.xml
-	source = https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.6.0/gatling-charts-highcharts-bundle-3.6.0-bundle.zip
-	source = https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.6.0/gatling-charts-highcharts-bundle-3.6.0-bundle.zip.sha1
+	source = https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.7.3/gatling-charts-highcharts-bundle-3.7.3-bundle.zip
+	source = https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.7.3/gatling-charts-highcharts-bundle-3.7.3-bundle.zip.sha1
 	source = gatling
 	source = gatling-recorder
-	sha256sums = b359e915c1b8ecdd241f20d412cb315a2b5e17c7ebc9202c2d5c3ada1d15333c
-	sha256sums = f3f8781d60ea832eb4291c3cf520d7b3d34f5803ca7691dc65c42c81a0d32c09
+	sha256sums = 2d6c8f00ad9c4c190e16447361b5aebde103454ca8efceccbda32f6574775643
+	sha256sums = 2fe0f518eaccdc398dd2fd5b8342787901e97ee39bf8affe2d6bd6c388764f06
 	sha256sums = b537f7c31f0fe66b291f30e05498c7412e01bf4572abaea0a07823b2cf4f07d9
 	sha256sums = 6124d91ec20c2d495cf9b2867027251c12db478da4429982d7794a356d56aebf
 

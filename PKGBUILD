@@ -2,24 +2,25 @@
 # Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 
-pkgname=gatling-stress-tool # Name collision with https://aur.archlinux.org/packages.php?ID=7159
+# Name collision with https://aur.archlinux.org/packages.php?ID=7159
+pkgname=gatling-stress-tool
 _pkgname=gatling
-pkgver=3.6.0
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="Open-source load testing framework based on Scala, Akka and Netty"
 arch=(any)
 url="http://gatling.io"
 license=('apache')
 depends=('java-environment-common')
-backup=(usr/share/java/${pkgname}/conf/{application,gatling,recorder}.conf
+backup=(usr/share/java/${pkgname}/conf/{gatling,recorder}.conf
         usr/share/java/${pkgname}/conf/logback.xml)
 source=("https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${pkgver}/gatling-charts-highcharts-bundle-${pkgver}-bundle.zip"
         "https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${pkgver}/gatling-charts-highcharts-bundle-${pkgver}-bundle.zip.sha1"
         "gatling"
         "gatling-recorder")
 
-sha256sums=('b359e915c1b8ecdd241f20d412cb315a2b5e17c7ebc9202c2d5c3ada1d15333c'
-            'f3f8781d60ea832eb4291c3cf520d7b3d34f5803ca7691dc65c42c81a0d32c09'
+sha256sums=('2d6c8f00ad9c4c190e16447361b5aebde103454ca8efceccbda32f6574775643'
+            '2fe0f518eaccdc398dd2fd5b8342787901e97ee39bf8affe2d6bd6c388764f06'
             'b537f7c31f0fe66b291f30e05498c7412e01bf4572abaea0a07823b2cf4f07d9'
             '6124d91ec20c2d495cf9b2867027251c12db478da4429982d7794a356d56aebf')
 
@@ -47,7 +48,7 @@ package() {
   install -dm 644 "${pkgdir}/usr/share/java/${pkgname}/results"
 
   install -Dm 644 "${srcbase}/user-files/resources/search.csv" "${pkgdir}/usr/share/java/${pkgname}/user-files/resources/search.csv"
-  install -Dm 644 "${srcbase}/user-files/simulations/computerdatabase/BasicSimulation.scala" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/BasicSimulation.scala"
+  install -Dm 644 "${srcbase}/user-files/simulations/computerdatabase/BasicSimulation.java" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/BasicSimulation.java"
   scala_files=$(ls "${srcbase}/user-files/simulations/computerdatabase/advanced/")
   for scala_file in $scala_files; do
     install -Dm 644 "${srcbase}/user-files/simulations/computerdatabase/advanced/${scala_file}" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/advanced/${scala_file}"
