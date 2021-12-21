@@ -1,0 +1,14 @@
+pkgbase = michaelas-harp-vst
+	pkgdesc = Michaelas Celtic Harp (VST)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://librewave.com/product/michaelas-harp/
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = michaelas-harp-vst
