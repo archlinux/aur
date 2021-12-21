@@ -15,8 +15,8 @@ url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
          aom harfbuzz libvpx libjpeg zlib icu libevent pipewire
          kfiredragonhelper)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust xorg-server-xwayland xorg-server-xvfb python-pip
+makedepends=(unzip zip diffutils yasm mesa imake inetutils
+             rust xorg-server-xwayland xorg-server-xvfb ccache
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils
              lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
@@ -53,7 +53,7 @@ prepare() {
 
   local _patches_dir="${srcdir}/common/patches"
 
-  sed -i 's/\"BrowserApplication\"\, \"firefox\"/\"BrowserApplication\"\, \"firedragon\"/g' ${_patches_dir}/kde/firefox-kde.patch
+  # Prepare KDE patch
   sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/kde/mozilla-kde.patch
   
   # Arch patches
@@ -102,10 +102,6 @@ prepare() {
 
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
-
-  # Remove Internal Plugin Certificates
-  # => breaks profiled builds since 90.0, it seems
-  # patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
 
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
