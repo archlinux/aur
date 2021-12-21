@@ -5,11 +5,11 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_wine_commit=be0684dad50ffbc93b3ded4fbfebf1d1e4690589
-_stag_commit=a9aa06c58eea77c66417b48669a00d7b32b70c99
+_wine_commit=2f5f8b4bd4cb5771223d1ee96a55002d18ad01eb
+_stag_commit=8f579c4eed5fa8114f277f93b915cf455d7837c9
 
 pkgname=wine-ge-custom
-_srctag=6.21-GE-1
+_srctag=7.0rc2-GE-1
 pkgver=${_srctag//-/.}
 pkgrel=2
 
@@ -165,12 +165,15 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-  export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+  export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+  export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+
   # Disable AVX instead of using 02, same as dxvk, the rest are from Proton
-  export CFLAGS+=" -mno-avx -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
-  export CXXFLAGS+=" -mno-avx -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
+  export CFLAGS+=" -mno-avx -mno-avx2"
+  export CXXFLAGS+=" -mno-avx -mno-avx2"
+  export CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
+  export CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
 
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
