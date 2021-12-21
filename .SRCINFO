@@ -1,6 +1,6 @@
 pkgbase = gtk3-typeahead
 	pkgdesc = GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget
-	pkgver = 3.24.30+90+g20be04f7ac
+	pkgver = 3.24.31
 	pkgrel = 1
 	url = https://www.gtk.org/
 	install = gtk3.install
@@ -44,7 +44,7 @@ pkgbase = gtk3-typeahead
 	depends = libcloudproviders
 	depends = tracker3
 	depends = gtk-update-icon-cache
-	provides = gtk3=3.24.30+90+g20be04f7ac
+	provides = gtk3=3.24.31
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -52,7 +52,7 @@ pkgbase = gtk3-typeahead
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=20be04f7ac4a2081ce34768397873b7551e17c69
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=ab45bde94c7bbd140b12fa0dd6203f7b98d1a715
 	source = gtk-query-immodules-3.0.hook
 	source = typeahead.patch
 	sha256sums = SKIP
