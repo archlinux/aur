@@ -11,7 +11,7 @@ license=('MPL2')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
-    "https://www.betterbird.eu/downloads/${_pkgname}-${pkgver//_/}-${_build}.de.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/${_pkgname}-${pkgver//_/-}-${_build}.de.linux-x86_64.tar.bz2"
     "betterbird.desktop"
 )
 
@@ -31,6 +31,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('473a0fe323ab92ec8d833661aa3d3ecb82903932cfb204924b4ba8296a6e5c7b'
+sha256sums=('b2d8058d73a387370bea85f708747dd422d2ce512ad2358e2d41707d1d1779ed'
             'c99879de5ec8e8f98c2436bf414c7c167762c06df0846b42bb51195d6c8a3031')
 
