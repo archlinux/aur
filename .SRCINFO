@@ -1,0 +1,11 @@
+pkgbase = ttf-cinecaption
+	pkgdesc = A cinematic Japanese font
+	pkgver = 2.27
+	pkgrel = 1
+	url = https://cute-freefont.flop.jp/sinecaption.html
+	arch = any
+	license = custom
+	source = https://cute-freefont.flop.jp/dl/cinecaption2.27.zip
+	sha256sums = 0daef05b0027d3ccdec5c140fdf559f3e74d6997270d622d5e3e6242246476e8
+
+pkgname = ttf-cinecaption
