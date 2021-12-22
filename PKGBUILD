@@ -50,7 +50,7 @@ pkgbase=linux-bfq-dev
 _major=5.15
 _minor=11
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -81,12 +81,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0006-lg-laptop-Recognize-more-models.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0006-lg-laptop-Recognize-more-models.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0007-HID-holtek-fix-mouse-probing.patch"
          # the main kernel config files
         'config')
 
@@ -338,12 +339,13 @@ sha512sums=('5abe52981a9f493174afb908bc1c1a4901bc522c38c2da7ba15d5b907f06f9c4a68
             'SKIP'
             '4a2752c45d8a264ec7632831690ac6ecf7e65c5aa09f34b2d6a04456bb635499f6d8d04fa6b98e24110bdd280ba01cae7d4426c2a9b32383ef901f6b6f6a11fa'
             '53fa9b8a6fa451a7d57846d261f9af2de24e6442d2f318dfef899580d85e9cc54fa17267803a4f064eecab8ba3739062bfdf185de0afe119a1c86fe71cf3c711'
-            'fa5eabd0ec3e9661e0aab19eb20030944518ccc2cf31df889115db5b3c18a3846ae157d077ac90d8f3e4e332984c24cabcc470b9190c91e3d382ce67a3ed989c'
-            '0c00b7760ed6daa5506aa032893ac76722061bb140699bd1a0ded8589d1301b3e1b857bd5ad3c344db4a35c3915902a196e67147d238857d7e0c740e109a8da1'
-            '2bf1a3c1eafa6e485ed5e0517641220dbce6ccc0fef242abb74b00a9b7f32fe5350011fdbdf959a61672e81c76a414c4358bd1fbaf28d33c3f4964aade3b4983'
-            '9b14bede21e9979f843b624d0aaca389df93f388fdff9f1361d132aebca31e19b2e47dd1b4e83af0bbaae3a1884ac09a3605d3373cfd48eab0c49a8b11d0165a'
-            '8f2f6e1e3ee9cd58217daf6bf5385865732f2521bd084925d923d5477a294cbadfa60f3955b745c0a33bb97bb7fb0f3b829724930601354551caafbc76544fab'
-            'da2a99e0c6bc593e4e873c9ec7ce99cf31f12100efa6375805d935b2f0e7618d8a22d46929a7f5ff5cc86ed89309b292e698a28a7d288f95448f264f80bb7012'
+            '8bf46624ed55e37337fefdfbeefbf74dd550bd1862ad8670058e2609f8d1a9d11f38cc5b332c70583ef99af64b6aed1b001b13f03d3275d569e7f9745ffaebdc'
+            '8a06eeac9b7d8f6012c17a25ac7e6a1e8c18f385530352685b3dd34ef9bbdf5de339ed38006514e04d67532a60845915db29ab972820ff98595b2e13ebfc902f'
+            '9d3c6a075acf35bb656e6689d99aea6d643858fac9ea73e603af6a66531ac0329e3966940d54f2e0609f91f1243de63d056f610c7094f8697fb2235e6243359f'
+            '609ba540c4998ae52f8cb7e2b3d3d5e32960ef3a882d2e99ee1e216580de913d5732caeca36aacee2583989c3af94e3e4769b0698f96c0e555c631ccb1634796'
+            '1392ea51f1955fd76ce2f012251266b5b5a53d234b21e580a078dcb6cc405750e563c0c6962ccfa0872d28e2efe9b1c1b902fc02e4477fd489c40fd8d2723d5e'
+            '6890b27de152044061942fc40580c24c66ca8d78bb34a87b2d6effbd762a59f89d059155388d980c3b5a2d3b54497def157567af0154aaa51e99559b64436c9f'
+            '7c094d6ee142a0f04a3b298ffdbe6a5531e4f7cb1a1b1824b6433e3e5bbaeee7987d58b7b95c66a2c90810a65b68572f69d5e23d031594045060c3d5ac273c03'
             'ab34ce680ed2ac861a143da3eea9519d9f5a7016a4cf992aac03467eb4bbab1638a10e13040eeaf7c82673e9cd83f90a3065b3cfb05e34040ff7cd6d140f6f9a')
 
 validpgpkeys=(
