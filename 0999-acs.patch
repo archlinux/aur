@@ -16,8 +16,8 @@
  		noioapicquirk	[APIC] Disable all boot interrupt quirks.
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
---- quirks.c	2021-02-10 11:29:23.000000000 +0300
-+++ quirks.c	2021-12-22 09:34:35.789754039 +0300
+--- a/drivers/pci/quirks.c	2021-02-10 11:29:23.000000000 +0300
++++ b/drivers/pci/quirks.c	2021-12-22 09:34:35.789754039 +0300
 @@ -192,6 +192,106 @@
  }
  fs_initcall_sync(pci_apply_final_quirks);
