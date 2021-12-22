@@ -1,5 +1,0 @@
-z /srv/cuberite 2775 cuberite cuberite - -
-d /srv/cuberite/logs 2755 cuberite cuberite -
-z /srv/cuberite/logs - cuberite cuberite - -
-d /srv/cuberite/backup 2755 cuberite cuberite -
-z /srv/cuberite/backup - cuberite cuberite - -
