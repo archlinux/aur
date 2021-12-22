@@ -14,7 +14,6 @@ pkgbase = vscodium-bin-features
 	source = vscodium-bin-features.hook
 	source = patch.sh
 	md5sums = 9c0fcfdb3427f4a7705114eedbd3b6b8
-	md5sums = b2ca3af4b1e16d7344e6fb0a5aad56bd
+	md5sums = 486c3bf8ef2c355330cbad53609f6b1e
 
 pkgname = vscodium-bin-features
-
