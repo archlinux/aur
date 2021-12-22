@@ -5,8 +5,8 @@
 
 pkgname=python-aioxmpp
 _pkgname=${pkgname#python-}
-pkgver=0.12.2
-pkgrel=3
+pkgver=0.13.1
+pkgrel=1
 pkgdesc="An XMPP library for use with Python 3.5+ asyncio"
 arch=('any')
 url="https://github.com/horazont/aioxmpp"
@@ -24,9 +24,9 @@ depends=('libxml2'
          'python-sortedcollections'
          'python-tzlocal')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/horazont/aioxmpp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('81c7111d026cd73afdc9d3782f49c9cabaac3698158d733d7e92c8f2e3817f17')
+sha256sums=('c237a760de6826072d66775f7c70f162a946a84de3e33860610d3765cdd3e0e8')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
