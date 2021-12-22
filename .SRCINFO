@@ -1,6 +1,6 @@
 pkgbase = polynote
 	pkgdesc = An experimental polyglot notebook environment for Scala (and more)
-	pkgver = 0.4.2
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/polynote/polynote
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = polynote
 	depends = python-jedi
 	depends = python-jep
 	optdepends = apache-spark
-	source = polynote-0.4.2.tgz::https://github.com/polynote/polynote/releases/download/0.4.2/polynote-dist.tar.gz
-	md5sums = 84aa75e46ef75189080517a16b59c2e1
+	source = polynote-0.4.4.tgz::https://github.com/polynote/polynote/releases/download/0.4.4/polynote-dist.tar.gz
+	md5sums = 97b8b44a4b078139b53f24d866e508c9
 
 pkgname = polynote
-

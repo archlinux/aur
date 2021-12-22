@@ -1,7 +1,7 @@
 # Maintainer: Austin Keller <austin474@gmail.com>
 
 pkgname=polynote
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="An experimental polyglot notebook environment for Scala (and more)"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 optdepends=('apache-spark')
 source=("$pkgname-$pkgver.tgz::https://github.com/polynote/polynote/releases/download/$pkgver/polynote-dist.tar.gz")
-md5sums=('84aa75e46ef75189080517a16b59c2e1')
+md5sums=('97b8b44a4b078139b53f24d866e508c9')
 
 package() {
   cd "$srcdir"
