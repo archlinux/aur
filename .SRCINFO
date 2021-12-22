@@ -2,7 +2,7 @@ pkgbase = dlt-viewer-git
 	pkgdesc = Diagnostic Log and Trace viewing program
 	pkgver = 2.21.2.r0.g6b336ee
 	pkgrel = 1
-	url = https://github.com/GENIVI/dlt-viewer
+	url = https://github.com/COVESA/dlt-viewer
 	arch = x86_64
 	license = MPL2
 	makedepends = git
@@ -10,8 +10,7 @@ pkgbase = dlt-viewer-git
 	depends = qt5-serialport
 	provides = dlt-viewer
 	conflicts = dlt-viewer
-	source = dlt-viewer::git+https://github.com/GENIVI/dlt-viewer
+	source = dlt-viewer::git+https://github.com/COVESA/dlt-viewer
 	sha256sums = SKIP
 
 pkgname = dlt-viewer-git
-
