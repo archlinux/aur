@@ -1,12 +1,12 @@
 pkgbase = python-publicsuffixlist
 	pkgdesc = Public Suffix List parser implementation
-	pkgver = 0.7.10
-	pkgrel = 2
+	pkgver = 0.7.11
+	pkgrel = 1
 	url = https://github.com/ko-zu/psl
 	arch = any
 	license = custom:MPL2
 	makedepends = python-setuptools
-	source = https://pypi.io/packages/source/p/publicsuffixlist/publicsuffixlist-0.7.10.tar.gz
-	sha256sums = ad6e3b95ac9a835587ad906fd18b25b68f6a55b7514bf75f3722f035ec7ee521
+	source = https://pypi.io/packages/source/p/publicsuffixlist/publicsuffixlist-0.7.11.tar.gz
+	sha256sums = 27ab1ab44887a06a0b0f7cd92b49fc40dad46a662baa8887aec7703cf314e62b
 
 pkgname = python-publicsuffixlist
