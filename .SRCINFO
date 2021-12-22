@@ -1,0 +1,15 @@
+pkgbase = celoterminal-bin
+	pkgdesc = Celo Terminal (AppImage version)
+	pkgver = 1.11.8
+	pkgrel = 1
+	url = https://github.com/zviadm/celoterminal
+	arch = x86_64
+	license = MIT
+	provides = celoterminal
+	conflicts = celoterminal
+	source = Celo-Terminal-1.11.8-linux-x86_64.AppImage::https://github.com/zviadm/celoterminal/releases/download/v1.11.8/Celo-Terminal-1.11.8-linux-x86_64.AppImage
+	source = LICENSE::https://github.com/zviadm/celoterminal/blob/v1.11.8/LICENSE
+	sha512sums = 8870d7558a05d993bcaabde9802397b772b288b3e7fc56c57b4bbec8e1784a664816245a27646181dd8429d85b27fe54ee7b95230d370557ce1f5b7047f8a857
+	sha512sums = f5f1d470f22362084562a00d3a37d8ad2df7870440f7bc225cbdfb722b40801839c27267bdea255f7183dfb64eb8e4024fe3456905e5d973a8cce0f9f1543e96
+
+pkgname = celoterminal-bin
