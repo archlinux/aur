@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libvpx
 	pkgdesc = VP8 and VP9 codec (android)
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = http://www.webmproject.org/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = android-armv7a-eabi-libvpx
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/webmproject/libvpx/archive/v1.10.0.tar.gz
-	md5sums = cded283be38dc0078c3fbe751722efc5
+	source = https://github.com/webmproject/libvpx/archive/v1.11.0.tar.gz
+	md5sums = 82e5e527336b41281a582204db1f3457
 
 pkgname = android-armv7a-eabi-libvpx
