@@ -1,3 +1,0 @@
-z /srv/papermc 2775 papermc papermc - -
-d /srv/papermc/logs 2755 papermc papermc -
-z /srv/papermc/logs - papermc papermc - -
