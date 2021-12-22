@@ -3,7 +3,7 @@
 
 pkgname=ca-certificates-dnie
 pkgver=20211113
-pkgrel=1
+pkgrel=2
 pkgdesc="Spanish DNIE root certificates"
 arch=('any')
 url='http://www.dnielectronico.es'
@@ -14,20 +14,20 @@ depends=('ca-certificates-utils'
 # makedepends=('unzip-iconv')
 source=(
         # Autoridad de Certificación Raíz del DNIe
-        'https://www.dnielectronico.es/ZIP/ACRAIZ-DNIE2.zip'
-        'https://www.dnielectronico.es/ZIP/ACRAIZ-SHA2.zip'
+        "ACRAIZ-DNIE2_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACRAIZ-DNIE2.zip"
+        "ACRAIZ-SHA2_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACRAIZ-SHA2.zip"
 
         # Autoridades de Certificación, AC Subordinadas
-        'https://www.dnielectronico.es/ZIP/ACDNIE001.crt.zip'
-        'https://www.dnielectronico.es/ZIP/ACDNIE002.crt.zip'
-        'https://www.dnielectronico.es/ZIP/ACDNIE003.crt.zip'
-        'https://www.dnielectronico.es/ZIP/ACDNIE004.crt.zip'
-        'https://www.dnielectronico.es/ZIP/ACDNIE005.crt.zip'
-        'https://www.dnielectronico.es/ZIP/ACDNIE006.crt.zip'
+        "ACDNIE001.crt_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACDNIE001.crt.zip"
+        "ACDNIE002.crt_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACDNIE002.crt.zip"
+        "ACDNIE003.crt_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACDNIE003.crt.zip"
+        "ACDNIE004.crt_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACDNIE004.crt.zip"
+        "ACDNIE005.crt_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACDNIE005.crt.zip"
+        "ACDNIE006.crt_${pkgver}.zip::https://www.dnielectronico.es/ZIP/ACDNIE006.crt.zip"
         # Autoridad de Validación AV DNIE FNMT
-        'AV_DNIE_FNMT_SHA2.zip::https://www.dnielectronico.es/descargas/certificados/Certificados_OCSP_Responder_FNMT.zip'
+        "Certificados_OCSP_Responder_FNMT_${pkgver}.zip::https://www.dnielectronico.es/descargas/certificados/Certificados_OCSP_Responder_FNMT.zip"
         # Autoridad de Validación AV DNIE MINHAP
-        'AV_DNIE_MINHAP_SHA2.zip::https://www.dnielectronico.es/descargas/certificados/AVDNIEMINHAP_SHA2.zip'
+        "AV_DNIE_MINHAP_SHA2_${pkgver}.zip::https://www.dnielectronico.es/descargas/certificados/AVDNIEMINHAP_SHA2.zip"
 
         )
 sha256sums=('6e0235376d543d19c7fa765b66ec14fab785e0fb6076b16682649eb3934655bd'
@@ -45,7 +45,7 @@ makedepends=('convmv')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare() {
-  convmv -f cp437 -t utf-8 -r --notest "Certificados OCSP Responder_FNMT_Renovaci"*
+  convmv -f cp437 -t utf-8 -r --notest --replace "Certificados OCSP Responder_FNMT_Renovaci"*
 }
 
 package() {
