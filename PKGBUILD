@@ -1,8 +1,8 @@
-# Maintainer: Pavers_Career <pavers_career_0d@icloud.com>
+# Maintainer: Pavers_Career <pavers_career_0d AT icloud DOT com>
 pkgname="hornet-git"
 _pkgname="hornet"
 _branch="mainnet"
-_pkgver="1.1.0"
+_pkgver="1.1.1"
 pkgver=1.1.0.r0.g1f6e0ee2
 pkgrel=1
 pkgdesc="HORNET is a powerful IOTA fullnode software"
