@@ -3,7 +3,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libvpx
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="VP8 and VP9 codec (android)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config' 'yasm')
 source=(https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz)
-md5sums=('cded283be38dc0078c3fbe751722efc5')
+md5sums=('82e5e527336b41281a582204db1f3457')
 
 prepare() {
     source android-env ${_android_arch}
@@ -41,22 +41,32 @@ build() {
     target=${target/x86-/x86_}
     target=${target}-android-gcc
 
-    ./configure \
-        --target=${target} \
-        --prefix=${ANDROID_PREFIX} \
-        --libdir=${ANDROID_PREFIX_LIB} \
-        --enable-static \
-        --disable-install-bins \
-        --disable-docs \
-        --disable-install-docs \
-        --disable-install-srcs \
-        --enable-pic \
-        --enable-postproc \
-        --enable-vp8 \
-        --enable-vp9 \
-        --enable-vp9-highbitdepth \
-        --enable-vp9-temporal-denoising
+    configue_opts="
+        --target=${target}
+        --prefix=${ANDROID_PREFIX}
+        --libdir=${ANDROID_PREFIX_LIB}
+        --enable-static
+        --disable-install-bins
+        --disable-docs
+        --disable-install-docs
+        --disable-install-srcs
+        --enable-pic
+        --enable-postproc
+        --enable-vp8
+        --enable-vp9
+        --enable-vp9-highbitdepth
+        --enable-vp9-temporal-denoising"
 
+    case "$_android_arch" in
+        armv7a-eabi)
+             configue_opts+="
+                 --disable-neon_asm"
+            ;;
+        *)
+            ;;
+    esac
+
+    ./configure ${configue_opts}
     make $MAKEFLAGS
 }
 
