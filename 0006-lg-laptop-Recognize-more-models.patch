@@ -1,7 +1,7 @@
-From 72edf8c167268bb68d701f46006ccfdfa5490db8 Mon Sep 17 00:00:00 2001
+From 178abfbb402588b9b50c9b10560aa0b153ed3406 Mon Sep 17 00:00:00 2001
 From: Matan Ziv-Av <matan@svgalib.org>
 Date: Tue, 23 Nov 2021 22:14:55 +0200
-Subject: [PATCH 6/7] lg-laptop: Recognize more models
+Subject: [PATCH 6/8] lg-laptop: Recognize more models
 
 LG uses 5 instead of 0 in the third digit (second digit after 2019) of the year string to indicate newer models in the same year. Handle this case as well.
 

@@ -1,7 +1,7 @@
-From 0bb6e4f104167b1e283269b46f3bbd30b2d979a7 Mon Sep 17 00:00:00 2001
+From c259e0e3f384d0f2a99e888b01baf831b087bfe1 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
 Date: Thu, 18 Nov 2021 22:53:31 +0100
-Subject: [PATCH 2/7] PCI: Add more NVIDIA controllers to the MSI masking quirk
+Subject: [PATCH 2/8] PCI: Add more NVIDIA controllers to the MSI masking quirk
 
 For: https://bugs.archlinux.org/task/72734
 For: https://bugs.archlinux.org/task/72777

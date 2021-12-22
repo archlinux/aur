@@ -1,7 +1,7 @@
-From a6d4fb4f5e7fe795d9e3b28b261a0f86f1026d03 Mon Sep 17 00:00:00 2001
+From b0b3ccddaedefa14547c8d01162986030640d31d Mon Sep 17 00:00:00 2001
 From: Kiran K <kiran.k@intel.com>
 Date: Wed, 13 Oct 2021 13:35:11 +0530
-Subject: [PATCH 5/7] Bluetooth: btintel: Fix bdaddress comparison with garbage
+Subject: [PATCH 5/8] Bluetooth: btintel: Fix bdaddress comparison with garbage
  value
 
 Intel Read Verision(TLV) data is parsed into a local structure variable
