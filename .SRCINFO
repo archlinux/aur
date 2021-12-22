@@ -5,7 +5,7 @@ pkgbase = r-ps
 	url = https://cran.r-project.org/package=ps
 	arch = i686
 	arch = x86_64
-	license = BSD3
+	license = MIT
 	depends = r>=3.1
 	optdepends = r-callr
 	optdepends = r-covr
@@ -20,4 +20,3 @@ pkgbase = r-ps
 	sha256sums = 89ad7ddc5e0818bccacfd0673ddf2da0892ac2a3b4d3a821e40884ab1e96bf31
 
 pkgname = r-ps
-
