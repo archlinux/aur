@@ -1,5 +1,5 @@
 pkgbase = libctru-git
-	pkgdesc = Library for Nintendo 3DS homebrew development
+	pkgdesc = Nintendo 3DS userland library. (git)
 	pkgver = v2.0.1.11.g5f13628
 	pkgrel = 1
 	epoch = 1
