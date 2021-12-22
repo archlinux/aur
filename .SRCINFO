@@ -1,12 +1,12 @@
 pkgbase = dk
 	pkgdesc = A tiling window manager in the vein of dwm, bspwm, and xmonad.
-	pkgver = 1.2
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://bitbucket.org/natemaia/dk
 	install = dk.install
 	arch = x86_64
 	license = MIT
-	depends = git
+	makedepends = git
 	depends = xcb-proto
 	depends = xcb-util
 	depends = xcb-util-wm
@@ -15,7 +15,7 @@ pkgbase = dk
 	optdepends = sxhkd: keybind support [recommended]
 	optdepends = st: example rc files default terminal
 	optdepends = dmenu: example rc files default launcher
-	source = git+https://bitbucket.org/natemaia/dk.git#tag=v1.2
+	source = git+https://bitbucket.org/natemaia/dk.git#tag=v1.4
 	sha256sums = SKIP
 
 pkgname = dk
