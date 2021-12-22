@@ -1,8 +1,8 @@
 pkgbase = lynx-desktop-settings
-	pkgdesc = Archivos de configuracion de LynxOS
-	pkgver = 0.0.5
-	pkgrel = 2
-	url = https://gitlab.com/LynxOS/lds
+	pkgdesc = Lynx Desktop Settings - Configuracion basica del Escritorio
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://gitlab.com/LynxOS/lynx-desktop-settings
 	arch = any
 	license = GPL
 	makedepends = git
@@ -11,15 +11,12 @@ pkgbase = lynx-desktop-settings
 	depends = dunst
 	depends = qt5ct
 	depends = polkit-gnome
-	depends = sxhkd-git
 	depends = lynx-menu-data
 	depends = lynx-gtk-theme
-	depends = gala
-	depends = tint2
-	depends = pavucontrol
-	depends = pa-applet-git
-	source = https://gitlab.com/LynxOS/lds/-/archive/0.0.5/lds-0.0.5.tar.gz
-	md5sums = 8025122d48aa84b2366dabb0c2b7ca42
+	depends = compiz
+	depends = compiz-fusion-plugins-extra
+	depends = compiz-fusion-plugins-main
+	source = https://gitlab.com/LynxOS/lynx-desktop-settings/-/archive/0.0.8/lynx-desktop-settings-0.0.8.tar.gz
+	md5sums = c91e4f0d0f668922eea3e883c92c3ed1
 
 pkgname = lynx-desktop-settings
-

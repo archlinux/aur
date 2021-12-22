@@ -1,28 +1,26 @@
 # Maintainer: Joaquin (Pato) Decima <https://patojad.com.ar/>
 
 pkgname=lynx-desktop-settings
-pkgver=0.0.5
-pkgrel=2
-pkgdesc="Archivos de configuracion de LynxOS"
+pkgver=0.0.8
+pkgrel=1
+pkgdesc="Lynx Desktop Settings - Configuracion basica del Escritorio"
 arch=('any')
-url="https://gitlab.com/LynxOS/lds"
+url="https://gitlab.com/LynxOS/$pkgname"
 license=('GPL')
 makedepends=('git')
-source=("$url/-/archive/$pkgver/lds-$pkgver.tar.gz")
-md5sums=('8025122d48aa84b2366dabb0c2b7ca42')
+source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('c91e4f0d0f668922eea3e883c92c3ed1')
 depends=(
         'dex'
         'qt5-styleplugins'
         'dunst'
         'qt5ct'
         'polkit-gnome'
-        'sxhkd-git'
         'lynx-menu-data'
         'lynx-gtk-theme'
-        'gala'
-        'tint2'
-        'pavucontrol'
-        'pa-applet-git'
+        'compiz'
+        'compiz-fusion-plugins-extra'
+        'compiz-fusion-plugins-main'
         )
 
 package() {
@@ -31,10 +29,10 @@ package() {
     install -dm755 $pkgdir/usr/share/glib-2.0/schemas
     install -dm755 $pkgdir/etc/lynx
     install -d ${pkgdir}/etc/dconf
-    cp -vr $srcdir/lds-$pkgver/etc/dconf/* $pkgdir/etc/dconf
-    cp $srcdir/lds-$pkgver/etc/lynx/session.yaml $pkgdir/etc/lynx/session.yaml
-    cp -r $srcdir/lds-$pkgver/etc/skel $pkgdir/etc
-    cp -r $srcdir/lds-$pkgver/usr $pkgdir/
+    cp -vr $srcdir/$pkgname-$pkgver/etc/dconf/* $pkgdir/etc/dconf
+    cp $srcdir/$pkgname-$pkgver/etc/lynx/session.yaml $pkgdir/etc/lynx/session.yaml
+    cp -r $srcdir/$pkgname-$pkgver/etc/skel $pkgdir/etc
+    cp -r $srcdir/$pkgname-$pkgver/usr $pkgdir/
     chmod a+x $pkgdir/usr/bin/lynx-session
-    cp $srcdir/lds-$pkgver/schemas/* $pkgdir/usr/share/glib-2.0/schemas
+    cp $srcdir/$pkgname-$pkgver/schemas/* $pkgdir/usr/share/glib-2.0/schemas
 }
