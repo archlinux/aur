@@ -8,7 +8,7 @@ pkgdesc="Lynx Desktop Environment - Escritorio Oficial de LynxOS"
 url="https://gitlab.com/LynxOS/$pkgname"
 depends=(
         'lynx-nw'
-        'lynx-desktop-services'
+        'lynx-desktop-service'
         'lynx-dock'
         'gnome-menus'
         'python-dbus'
