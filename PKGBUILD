@@ -13,17 +13,14 @@ license=(MIT)
 depends=(r)
 optdepends=(r-unix r-spelling r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('8648c35f0ff460481f88fc5e2c81ab8f')
+sha256sums=('17f88fbaf222f1f8fd07919461093dac0e7175ae3c3b3264b88470617afd0487')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }

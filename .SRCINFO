@@ -11,7 +11,6 @@ pkgbase = r-sys
 	optdepends = r-spelling
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/sys_3.4.tar.gz
-	md5sums = 8648c35f0ff460481f88fc5e2c81ab8f
+	sha256sums = 17f88fbaf222f1f8fd07919461093dac0e7175ae3c3b3264b88470617afd0487
 
 pkgname = r-sys
-
