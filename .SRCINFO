@@ -1,6 +1,6 @@
 pkgbase = python-yappi
 	pkgdesc = Yet Another Python Profiler, but this time thread&coroutine aware.
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/sumerc/yappi
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = python-yappi
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
-	source = yappi-release::git+https://github.com/sumerc/yappi.git#commit=c256f28d3ccc2bc1692a5a090dc8f774c4933c16
+	source = yappi-release::git+https://github.com/sumerc/yappi.git#commit=e991cdf92052d8c647412b07dddcea58b478f957
 	source = skip-test.patch
 	sha256sums = SKIP
 	sha256sums = ca2a65fb92709b4ff48d8cf45592bb839c9ea2df3a19380fbc56bfe7ae937ea5
 
 pkgname = python-yappi
-

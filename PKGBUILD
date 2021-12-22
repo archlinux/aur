@@ -1,8 +1,8 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 
 pkgname=python-yappi
-pkgver=1.3.2
-_commit=c256f28d3ccc2bc1692a5a090dc8f774c4933c16
+pkgver=1.3.3
+_commit=e991cdf92052d8c647412b07dddcea58b478f957
 pkgrel=1
 pkgdesc='Yet Another Python Profiler, but this time thread&coroutine aware.'
 url='https://github.com/sumerc/yappi'
