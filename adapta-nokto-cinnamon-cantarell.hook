@@ -9,4 +9,4 @@ Description = Changing Adapta Nokto Cinnamon font to Cantarell...
 When = PostTransaction
 Depends = patch
 
-Exec = /usr/bin/patch -d/ -p0 -Nr- -i /usr/share/adapta-nokto-cinnamon-cantarell/cinnamon.css.patch
+Exec = /usr/bin/patch -d /usr/share/themes/Adapta-Nokto/cinnamon -p0 -Nr- -i /usr/share/adapta-nokto-cinnamon-cantarell/cinnamon.css.patch
