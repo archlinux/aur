@@ -1,6 +1,6 @@
 pkgbase = tal-reverb2
 	pkgver = 2.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tal-software.com/products/tal-reverb-4
 	arch = x86_64
 	license = EULA
@@ -12,8 +12,6 @@ pkgbase = tal-reverb2
 pkgname = tal-reverb2-vst
 	pkgdesc = A Simple Algorithmic Reverb V2 By TAL Software (VST)
 	groups = pro-audiovst-plugins
-	conflicts = distrho-ports
-	replaces = distrho-ports
 
 pkgname = tal-reverb2-vst3
 	pkgdesc = A Simple Algorithmic Reverb V2 By TAL Software (VST3)
