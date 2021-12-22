@@ -2,14 +2,20 @@
 # Helpful url: https://prowlarr.servarr.com/v1/update/develop?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="prowlarr-nightly"
-pkgver=0.1.8.1259
+pkgver=0.1.8.1265
 pkgrel=1
-pkgdesc="Movie download automation for usenet and torrents."
+pkgdesc="Usenet and torrent aggregator, similar to nzbhydar2 and jackett."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Prowlarr/Prowlarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
 depends=('sqlite')
+optdepends=(
+  'sonarr: automatically adds and remove indexers/trackers'
+  'radarr: automatically adds and remove indexers/trackers'
+  'lidarr: automatically adds and remove indexers/trackers'
+  'readarr: automatically adds and remove indexers/trackers'
+)
 provides=('prowlarr')
 conflicts=('prowlarr')
 
@@ -28,9 +34,9 @@ sha512sums=('53b19cabb99b436867f8a95d94a5c4bdd924207c22c7b9f3df153c672ee87a69c87
             '9159ceda0955f2ebc495dd470c9d6234d8534a120ab81fa58fefae94a8ecfdc8fe883fb1287bc10429e7b4f35ac59d36232d716c161a242a4bfcdff768f1b9a2'
             '6ebd6f268e5aa7446e3c77540f5c95b3237959892e8800f5f380a0f979c71ec0d6f7664c1a58f7d10a255bc21a19bad0fef8609b02b4d5e15f340e66364017d2'
             '473f38f922c1c24987bc77bb687739e3de0eed5c567407c690e0e9ac1604479bbe4f606ccb804067dbe97a100a748b4c2e05a11e30835d42e67ec65177a4f42a')
-sha512sums_x86_64=('30a7f5c00ea830b848c74fc46f213cc60c495967f8614d7ae3afcb865b65d5b791c31d8ea0a888b10b95844b5f53978eabf8ebba1e073a0ec30ac5c6b10c96db')
-sha512sums_aarch64=('fdd213575c8a1d237a3ba8ede39ecc93388557876ba297ad7eed68ad82da1ff48e9996aa6122becbe7ea9593ccf07683ed2ddd18c4597fb35e7d5319a08337ca')
-sha512sums_armv7h=('6a9434d41e9de28ae0ff5c0fd97b36d98c7ecb5b982e948ee97e16895c16821d2d430625db13fec21f554dda2a1da926a11cf9e93898d82481737558edaefb04')
+sha512sums_x86_64=('acc13978a0899d1c55a87ae3e5c02b4702e7840a10facc1f2cd743c437e8facfeb97d656d5c7951acdfbe2106de6be030a3baa329ced79858dd028e09f397de9')
+sha512sums_aarch64=('84ac2de85f2535d21efb848b28c34fe232e536df951d52cca31be4ace103783cc3747b53d57a2dc38f7f322e0b32a168d9af02eff9a0c4a7667280b1b49acbef')
+sha512sums_armv7h=('c74949dc6f91dcf5d3bc463bf4ad7c0d6372751a16b5033ca9a0cddd6ce71bee07a5dafaf4addee399065b18d4d1fd2e909406ddf0b444da5665308e2830d6c0')
 
 
 package() {
