@@ -1,6 +1,6 @@
 pkgbase = android-x86-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (android)
-	pkgver = 4.4
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = http://ffmpeg.org/
 	arch = any
@@ -24,9 +24,9 @@ pkgbase = android-x86-ffmpeg
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://ffmpeg.org/releases/ffmpeg-4.4.tar.xz
+	source = http://ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz
 	source = configure.patch
-	md5sums = 7b9d5b652d20e8c5405304ad72636d4a
+	md5sums = 41a1ca8693acc56088e8eaf3899b91ea
 	md5sums = c1851376794c16bcb37cfa8918e10cba
 
 pkgname = android-x86-ffmpeg
