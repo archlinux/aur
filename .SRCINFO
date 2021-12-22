@@ -5,15 +5,12 @@ pkgbase = morphoj
 	url = https://morphometrics.uk/MorphoJ_page.html
 	arch = x86_64
 	license = Apache License version 2
-	depends = jre-openjdk-headless
-	depends = jre-openjdk
-	depends = jdk-openjdk
-	depends = openjdk-doc
-	depends = openjdk-src
-	source = https://github.com/starsareintherose/morphoj/releases/download/1.07a/MorphoJ.zip
+	depends = java-runtime
+	source = https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-installer_Unix_Linux.jar
 	source = MorphoJ.desktop
-	sha256sums = aec7f66e29b0f0171a1e8e585c8720a0b60c4833ffb42066c3cf9e6e0ebf2209
-	sha256sums = 67df0def6fc1832b1fb5ddaa0c9dbfe1ab4d4aac0f1833b6c2bbb51e3f259630
+	source = MorphoJ
+	sha256sums = 73c2555706842eb0a8885c11acce09042feee292a53afe6c9ba74724c6fc5bc4
+	sha256sums = 8d8446303b264ec7da0d8453d80a4ed4310a36248dbe1b5c6a98b174746263c5
+	sha256sums = 06398e7d78d84b6a6a9412379613600fe014cbf2950a0f8aff50e9e90f361165
 
 pkgname = morphoj
-

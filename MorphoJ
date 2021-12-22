@@ -1,0 +1,3 @@
+#! /bin/sh
+# shell script for launching MorphoJ
+java -Xms128m -Xmx512m -jar /usr/share/morphoj/MorphoJ.jar 
