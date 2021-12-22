@@ -1,6 +1,6 @@
 pkgbase = sysit-bin
 	pkgdesc = System Sit! Check on the system with a quick glance.
-	pkgver = 0.6.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/crodjer/sysit
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = sysit-bin
 	license = GPL-3.0-or-later
 	provides = sysit
 	conflicts = sysit
-	source_x86_64 = https://github.com/crodjer/sysit/releases/download/v0.6.0/sysit-v0.6.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 835f74d8d5802f73b6dededf75a52cc3a9fed665b7dfece10b46e7bf0ad7795c
-	source_aarch64 = https://github.com/crodjer/sysit/releases/download/v0.6.0/sysit-v0.6.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9b17e7146fcda389e4422844d77bbb01dc3540ad0fa8d99ece682ed74c6c6b2b
-	source_armv7 = https://github.com/crodjer/sysit/releases/download/v0.6.0/sysit-v0.6.0-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7 = 2c69afb59f0362587716652510250c294e361a9d4b09db0cb203ff0cd79f8fc2
+	source_x86_64 = https://github.com/crodjer/sysit/releases/download/v0.8.1/sysit-v0.8.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f59c7bf986f6e4887eb44752d23e83c83877a5e933cdb1053c06905df561a2fd
+	source_aarch64 = https://github.com/crodjer/sysit/releases/download/v0.8.1/sysit-v0.8.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = cba4425b3c0a5167f0cabdbd145cb5e495c7b9fcee27a6a01694996b783fc68a
+	source_armv7 = https://github.com/crodjer/sysit/releases/download/v0.8.1/sysit-v0.8.1-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7 = 683719358700e5c4fe710dfee11875853485191459336dd19166791042cd4ca9
 
 pkgname = sysit-bin
