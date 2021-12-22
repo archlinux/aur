@@ -1,6 +1,6 @@
 pkgbase = cwtch-bin
 	pkgdesc = UI for A decentralized, privacy-preserving, multi-party messaging protocol client (binary distribution)
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://cwtch.im
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cwtch-bin
 	conflicts = cwtch
 	conflicts = cwtch-git
 	conflicts = libcwtch-go
-	source_x86_64 = https://cwtch.im/releases/cwtch-v1.4.1/cwtch-v1.4.1.tar.gz
-	sha512sums_x86_64 = 81273391f6ab92e6c23301776b7d797640ef990a05bf23d75b659cbb190e68f5f80742336fa38b63053ac6841e020c464890b0e4ffdf0e19ac628e0cdf541dd5
+	source_x86_64 = https://cwtch.im/releases/cwtch-v1.5.1/cwtch-v1.5.1.tar.gz
+	sha512sums_x86_64 = 0c8b05d887b1755c60c2feebcc16d26b57bb86364c37e40444a8d8f934aa219717d66763cbcc17ea41fd29bd402e3a1b0fbd1b16bf80d90a9a83ceea03787c39
 
 pkgname = cwtch-bin
