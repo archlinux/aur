@@ -12,4 +12,3 @@ pkgbase = r-assertthat
 	sha256sums = 85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f
 
 pkgname = r-assertthat
-
