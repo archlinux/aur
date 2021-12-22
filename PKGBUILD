@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='dvm-bin'
-pkgver='1.4.7'
+pkgver='1.5.0'
 pkgrel='1'
 pkgdesc='Deno Version Manager - Easy way to manage multiple active deno versions'
 provides=('dvm')
