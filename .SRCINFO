@@ -1,0 +1,13 @@
+pkgbase = smartreboot
+	pkgdesc = Reboot a machine without interrupting ongoing work.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/BrenekH/smartreboot#readme
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = glibc
+	source = smartreboot-0.0.1.tar.gz::https://github.com/BrenekH/smartreboot/archive/0.0.1.tar.gz
+	sha256sums = f10d40e34e68acec372b1674e5568cde6c5f925b8421d3a67ce6ffbc4b93c8ac
+
+pkgname = smartreboot
