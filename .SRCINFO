@@ -1,6 +1,6 @@
 pkgbase = python-ezdxf
 	pkgdesc = Python interface to DXF
-	pkgver = 0.15b2
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://ezdxf.mozman.at/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = python-ezdxf
 	makedepends = cython
 	depends = python
 	depends = python-pyparsing
-	source = python-ezdxf-0.15b2.tar.gz::https://github.com/mozman/ezdxf/archive/v0.15b2.tar.gz
-	sha256sums = b95b73893827da05ad619171e20d3bc21080d892a5eecf1b0a9d77ea3dc77c1a
+	source = python-ezdxf-0.17.1.tar.gz::https://github.com/mozman/ezdxf/archive/v0.17.1.tar.gz
+	sha256sums = ad2fca7b9faabd3298ecc723b880a257d68088070ac956b9a87a7bf6ee22457b
 
 pkgname = python-ezdxf
-
