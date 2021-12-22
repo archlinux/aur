@@ -2,7 +2,7 @@ pkgbase = brother-mfc-l8850cdw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-L8850CDW
 	pkgver = 1.1.3
 	pkgrel = 1
-	url = https://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcl8850cdw_us_eu_as
 	install = brother-mfc-l8850cdw.install
 	arch = i686
 	arch = x86_64
