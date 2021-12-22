@@ -1,7 +1,7 @@
 pkgbase = connective-http
 	pkgdesc = Connective -- Lightweight Java HTTP Server
 	pkgver = 1.0.0
-	pkgrel = 30
+	pkgrel = 31
 	install = main.install
 	arch = any
 	groups = connective-server
