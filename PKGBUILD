@@ -1,14 +1,15 @@
 # Maintainer: Harry Jeffery <me@harry.pm>
 
 pkgname=libgrapheme-git
-pkgver=r48.f128a91
+pkgver=r87.39d896e
 pkgrel=1
 pkgdesc="grapheme cluster utility library"
-url="https://git.suckless.org/libgrapheme/log.html"
+url="https://libs.suckless.org/libgrapheme/"
 license=("ISC")
 arch=("x86_64")
 makedepends=("git")
 provides=("libgrapheme")
+conflicts=("libgrapheme")
 source=("libgrapheme-git::git://git.suckless.org/libgrapheme")
 sha256sums=("SKIP")
 
