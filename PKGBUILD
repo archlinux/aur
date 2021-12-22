@@ -5,7 +5,7 @@
 pkgname=matcha-gtk-theme
 _pkgver=2021-11-29
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat design theme for GTK 3, GTK 2 and GNOME Shell"
 arch=('any')
 url="https://vinceliuice.github.io/theme-matcha.html"
@@ -22,7 +22,7 @@ sha256sums=('cab96ac447561d5dc8e97945dbc44521876e3f708aa5c1541301258f4543a5ca')
 package() {
   cd "Matcha-gtk-theme-$_pkgver"
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -d "$pkgdir/usr/share/themes"
+  ./install.sh -s new -d "$pkgdir/usr/share/themes"
 
   # Plank theme
   install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Matcha"

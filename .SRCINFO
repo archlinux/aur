@@ -1,7 +1,7 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design theme for GTK 3, GTK 2 and GNOME Shell
 	pkgver = 2021.11.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vinceliuice.github.io/theme-matcha.html
 	install = matcha-gtk-theme.install
 	arch = any
