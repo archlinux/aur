@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 _pkgname=WhiteSur-gtk-theme
-_pkgver=2021-10-21
+_pkgver=2021-12-04
 
 pkgname=whitesur-gtk-theme
 pkgver="${_pkgver//-/.}"
@@ -11,7 +11,7 @@ pkgdesc="A macOS BigSur-like theme for your GTK apps"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
 license=('MIT')
-makedepends=('sassc')
+makedepends=('sassc' 'which')
 optdepends=(
   'gtk-engine-murrine: GTK2 theme support'
   'gtk-engines: GTK2 theme support'
@@ -24,7 +24,7 @@ source=(
   "${pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
 sha256sums=(
-  '13508b65b8cfc70023a4425944340cff4814106edfeadd9336bfbcb787b8320f'
+  '9d77fd7c3204d862177f0d46df7a8a2d2518f3429ca9194a1275672f902ca7f9'
 )
 
 package() {
