@@ -133,10 +133,11 @@ prepare() {
   # Add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
   patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
 
-  echo "---- Fixing build with Wayland"
+  echo "---- Fixing build issues"
   # Needed patch to have build working
   patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
   patch -Np1 -i ${_patches_dir}/misc/fix-wl_proxy_marshal_flags.patch
+  patch -Np1 -i ${_patches_dir}/misc/firefox-95-diable-pip-check.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
