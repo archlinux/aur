@@ -1,4 +1,5 @@
-# Maintainer: Spencer Muise <smuise@spencermuise.ca>
+# Maintainer: Fredrik Engstrand <fredrik@engstrand.nu>
+# Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=python-pywalfox
 _name=pywalfox
