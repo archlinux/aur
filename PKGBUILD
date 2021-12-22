@@ -135,7 +135,7 @@ _srcname=linux-${pkgver}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux CacULE scheduler Kernel by CachyOS and with some other patches and other improvements'
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -161,8 +161,6 @@ source=(
   "${_patchsource}/AMD/amd-sched.patch"
   "${_patchsource}/AMD/0001-amd64-patches.patch"
   "${_patchsource}/0001-bbr2.patch"
-  "${_patchsource}/misc/0010-ELF.patch"
-  #  "${_patchsource}/0001-bitmap.patch"
   "${_patchsource}/0001-block-patches.patch"
   "${_patchsource}/0001-cpu-patches.patch"
   "${_patchsource}/0001-misc.patch"
@@ -175,8 +173,8 @@ source=(
   "${_patchsource}/0001-futex-wait.v-fsync-winesync.patch"
   "${_patchsource}/0001-hwmon-patches.patch"
   "${_patchsource}/0001-ksmbd-patches.patch"
-  #  "${_patchsource}/0001-damon-patches.patch"
   "${_patchsource}/0001-pf-patches.patch"
+  "${_patchsource}/0001-page-table-check.patch"
   "${_patchsource}/0001-lqx-patches.patch"
   "${_patchsource}/0001-lrng-patches.patch"
   "${_patchsource}/0001-v4l2loopback.patch"
@@ -186,7 +184,6 @@ source=(
   "${_patchsource}/0001-zstd.patch"
   "${_patchsource}/0001-xanmod-patches.patch"
   "${_patchsource}/0001-net-patches.patch"
-  "${_patchsource}/0001-xfs-backport.patch"
   "auto-cpu-optimization.sh"
 )
 
@@ -668,16 +665,15 @@ done
 
 
 md5sums=('7fcbea316f8439d092040996295c8f9d'
-         'b1674b6cc65f404efb6a5dd6bf46ec68'
+         '290dfcba7649509c39c23281aa75e56c'
          'afdbe964cd00357ef7248553ab9db091'
          '2627c6fcd9760b0e7a3553500db0a7e1'
          'e3fa8507aed6ef3ce37e62f18fe9b7e1'
-         '4bfca774a71e7228f5b8bb31660521af'
+         '1f3becd94390729d940a60b1e9b872b1'
          '3aaa8d1bc993d4173aa1bb79ade16fb7'
          'dccfe71705b24d3fb1f51aaf2016216d'
          '53f037488a66667220c263f92ded333d'
          '2a8097ba46be56fbbe3967e9c34c9a0b'
-         'a05b47e1970509a27f36501534751a9b'
          '56ceaed8bfb44eca93298ccc5fe11ca7'
          '67764a5824b567b49bcce19c01d4e1b3'
          '299b176cbfc1b386d74406387e9e2d6b'
@@ -691,6 +687,7 @@ md5sums=('7fcbea316f8439d092040996295c8f9d'
          '349c88a39ec553aa3c9caf886b44c7ab'
          '480c6bb9db4842114787f66ad5a68404'
          '08c84362cb916b30d9c77e35b1b3bc54'
+         '595687f36a42f5ca4a3ff054bdc83b98'
          '56fdf3562b041c0408d9751b7e447977'
          'b09b84168822521426f197610727618b'
          'd9a892f66631615a72bdc93ee7397afa'
@@ -700,5 +697,4 @@ md5sums=('7fcbea316f8439d092040996295c8f9d'
          '8a7c7cf90dcad3f655491b21c35f36b3'
          '102fd2533e85eaecb4255df77d3e2901'
          '0153cfcb6feab5a108c269fff9f47cb3'
-         'adfbf046639eb80e94769c4f4d0bc478'
          '21c98f19e883879dd3336c1fa143fd31')
