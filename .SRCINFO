@@ -1,7 +1,7 @@
 pkgbase = android-meson
 	pkgdesc = Meson wrapper for Android (android)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mesonbuild.com/
 	arch = any
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = android-meson
 	sha256sums = SKIP
 
 pkgname = android-meson
-
