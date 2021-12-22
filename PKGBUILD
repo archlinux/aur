@@ -16,14 +16,11 @@ source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
 sha256sums=('9f95987c964039834f770ecda2d5f7e3d3a9de553c89db2a5926c4219bf4b9d8')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
