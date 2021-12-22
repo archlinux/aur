@@ -4,10 +4,11 @@
 
 pkgbase=linux-vfio-manjaro
 pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
-_kernelname=-MANJARO.VFIO
+_kernelname=-MANJARO
 _basekernel=5.15
 _basever=515
-pkgver=5.15.10
+_pkgver=5.15.10
+pkgver=5.15.10.vfio
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -26,7 +27,7 @@ makedepends=('bc'
     'xz')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${_pkgver}.xz"
         'config'
         # ARCH Patches
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
@@ -98,14 +99,14 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
             '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
-            '993f41d181c619be897f0b3b6713a771c5c38a0813b7b400a1346e7be5655085')
+            'fa6e25c201aba840e050352cbc6dcfb1798e7cd626212f0d17921cebb402e116')
 
 prepare() {
   cd "linux-${_basekernel}"
 
   # add upstream patch
   msg "add upstream patch"
-  patch -p1 -i "../patch-${pkgver}"
+  patch -p1 -i "../patch-${_pkgver}"
 
   local src
   for src in "${source[@]}"; do
@@ -171,10 +172,9 @@ package_linux-vfio-manjaro() {
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_kernver}/pkgbase"
-  echo "${_basekernel}-${CARCH}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_kernver}/kernelbase"
 
   # add kernel version
-  echo "${pkgver}-${pkgrel}-MANJARO.VFIO x64" > "${pkgdir}/boot/${pkgbase}-${CARCH}.kver"
+  echo "${pkgver}-${pkgrel}-MANJARO x64" > "${pkgdir}/boot/${pkgbase}-${CARCH}.kver"
 
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname:--MANJARO}"

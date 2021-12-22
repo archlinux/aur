@@ -1,5 +1,5 @@
 pkgbase = linux-vfio-manjaro
-	pkgver = 5.15.10
+	pkgver = 5.15.10.vfio
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -82,7 +82,7 @@ pkgbase = linux-vfio-manjaro
 	sha256sums = 27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc
 	sha256sums = 60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d
 	sha256sums = 035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef
-	sha256sums = 993f41d181c619be897f0b3b6713a771c5c38a0813b7b400a1346e7be5655085
+	sha256sums = fa6e25c201aba840e050352cbc6dcfb1798e7cd626212f0d17921cebb402e116
 
 pkgname = linux-vfio-manjaro
 	pkgdesc = The Linux-vfio-manjaro kernel and modules
@@ -91,7 +91,7 @@ pkgname = linux-vfio-manjaro
 	depends = kmod
 	depends = mkinitcpio>=27
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.15.10
+	provides = linux=5.15.10.vfio
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
@@ -101,4 +101,4 @@ pkgname = linux-vfio-manjaro-headers
 	depends = python
 	depends = libelf
 	depends = pahole
-	provides = linux-headers=5.15.10
+	provides = linux-headers=5.15.10.vfio

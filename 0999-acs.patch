@@ -16,9 +16,9 @@
  		noioapicquirk	[APIC] Disable all boot interrupt quirks.
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
---- a/drivers/pci/quirks.c	2021-02-10 11:29:23.000000000 +0300
-+++ b/drivers/pci/quirks.c	2021-12-22 09:34:35.789754039 +0300
-@@ -192,6 +192,106 @@
+--- b/drivers/pci/quirks.c	2021-12-22 14:43:04.649945123 +0300
++++ b/drivers/pci/quirks.c	2021-12-22 14:59:48.424363746 +0300
+@@ -193,6 +193,106 @@
  }
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -125,3 +125,11 @@
  /*
   * Decoding should be disabled for a PCI device during BAR sizing to avoid
   * conflict. But doing so may cause problems on host bridge and perhaps other
+@@ -4950,6 +5050,8 @@
+        { PCI_VENDOR_ID_NXP, 0x8d9b, pci_quirk_nxp_rp_acs },
+        /* Zhaoxin Root/Downstream Ports */
+        { PCI_VENDOR_ID_ZHAOXIN, PCI_ANY_ID, pci_quirk_zhaoxin_pcie_ports_acs },
++       /* allow acs for any */
++       { PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
+        { 0 }
+ };
