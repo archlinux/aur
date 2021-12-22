@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='duplicatefinder'
-_upstreamver='0.0.11'
+_upstreamver='0.0.13'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='PaulLereverend/NextcloudDuplicateFinder'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_nextcloud_appname}.tar.gz")
-sha512sums=('6df5ac701b390e942b9b4a7f4556cdebabcc4b87bcbb2e56e1abcd3a5cefb7f2aedd225e4d92f77de31e11c068a85820f841de2b1ac8cd00658918b650cc979d')
+sha512sums=('8d070102e26e660e407e1e62c23938240887edddfb6d00dfbebd2bee3fa5ca500982b32ec3df7616bdbb19996c99d4caa5954b68bcb8222a82abad12f5d77243')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
