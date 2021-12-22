@@ -1,6 +1,6 @@
 pkgbase = tal-vocoder
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tal-software.com/products/tal-vocoder
 	arch = x86_64
 	license = EULA
@@ -12,8 +12,6 @@ pkgbase = tal-vocoder
 pkgname = tal-vocoder-vst
 	pkgdesc = A Phase Vocoder By TAL Software (VST)
 	groups = pro-audiovst-plugins
-	conflicts = distrho-ports
-	replaces = distrho-ports
 
 pkgname = tal-vocoder-vst3
 	pkgdesc = A Phase Vocoder By TAL Software (VST3)

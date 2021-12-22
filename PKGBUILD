@@ -1,7 +1,7 @@
 pkgbase=tal-vocoder
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://tal-software.com/products/tal-vocoder"
 license=('EULA')
@@ -11,12 +11,8 @@ md5sums=('ad70ad7a038e4adc57e12f3bf03cb5d8')
 
 package_tal-vocoder-vst() {
   groups=('pro-audio''vst-plugins')
-  conflicts=("distrho-ports")
-  replaces=("distrho-ports")
   pkgdesc="A Phase Vocoder By TAL Software (VST)"
-  mkdir -p $pkgdir/usr/lib/vst
-  cp -r ${srcdir}/libTAL-Vocoder-2.so ${pkgdir}/usr/lib/vst/TAL-Vocoder-2.so
-  chmod +x ${pkgdir}/usr/lib/vst/TAL-Vocoder-2.so
+  install -Dm755 ${srcdir}/libTAL-Vocoder-2.so ${pkgdir}/usr/lib/vst/libTAL-Vocoder-2.so
 }
 
 package_tal-vocoder-vst3() {
