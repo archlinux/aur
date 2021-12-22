@@ -1,0 +1,19 @@
+pkgbase = tabby-arch-bin
+	pkgdesc = A terminal for a more modern age (formerly Terminus), native Pacman version
+	pkgver = 1.0.168
+	pkgrel = 1
+	url = https://tabby.sh/
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	optdepends = gnome-keyring
+	provides = tabby
+	conflicts = tabby
+	conflicts = terminus-terminal
+	conflicts = terminus-terminal-git
+	conflicts = tabby-bin
+	replaces = tabby
+	source = https://github.com/Eugeny/tabby/releases/download/v1.0.168/tabby-1.0.168-linux.pacman
+	sha256sums = 87b5cdd87a01bd9cd3b8b1df041bdb9192789d0bb3ada70774304f2b25702467
+
+pkgname = tabby-arch-bin
