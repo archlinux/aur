@@ -2,10 +2,10 @@
 
 pkgname=cdktf-cli
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud Development Kit for Terraform"
 arch=('any')
-url='https://www.npmjs.com/package/cdktf'
+url="https://github.com/hashicorp/terraform-cdk"
 license=('MPL2')
 depends=('python' 'nodejs' 'terraform')
 makedepends=('npm' 'jq')
