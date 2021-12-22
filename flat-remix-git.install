@@ -1,0 +1,11 @@
+post_install() {
+    gtk-update-icon-cache -q -f /usr/share/icons/Flat-Remix-*
+}
+
+post_update() {
+    post_install
+}
+
+post_remove() {
+    gkt-update-icon-cache -q -t -f /usr/share/icons
+}

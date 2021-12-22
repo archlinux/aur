@@ -1,27 +1,28 @@
-# Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Contributor: Eric Fung <loseurmarbles [at] gmail [dot] com>
+# Contributor: Alireza Ayinmehr <alireza dot darksun at gmail dot com>
+# Contributor: Daniel Ruiz de Alegria <daniruizdealegria at gmail dot com>
 
-pkgname="flat-remix-git"
-pkgver="r753.af8ddf0c"
+pkgname=flat-remix-git
+pkgver=20211214.r0.g5711425af
 pkgrel=1
-pkgdesc="Flat remix is a pretty simple icon theme inspired on material design."
+pkgdesc='An icon theme inspired by material design.'
 arch=('any')
 options=('!strip')
-url="https://drasite.com/flat-remix"
+url='https://drasite.com/flat-remix'
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'gtk-update-icon-cache')
 provides=('flat-remix')
 conflicts=('flat-remix')
+install=$pkgname.install
 source=("${pkgname}::git+https://github.com/daniruiz/flat-remix.git")
 sha256sums=('SKIP')
 
 pkgver () {
-	cd "${srcdir}/${pkgname}/"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${srcdir}/${pkgname}"
+        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "${srcdir}/${pkgname}/"
-	install -dm755 "${pkgdir}/usr/share/icons"
-	cp -a "Flat-Remix"* "${pkgdir}/usr/share/icons/"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/${pkgname}"
+        DESTDIR="${pkgdir}" make install
 }
