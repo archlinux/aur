@@ -12,8 +12,8 @@ generate:
 
 .ONESHELL:
 specificrelease:
-	@export VER=0.9.0
-	@export SHA256=a26a9439b686c658c547db508af5c1187781eb3014964f3f312ab94042480cfa
+	@export VER=0.0.2
+	@export SHA256=a0b93ce71d03eb98b5f8106a1596540606ce1295c0cb1db6e459276e5df51269
 	@make generate srcinfo
 
 .ONESHELL:
