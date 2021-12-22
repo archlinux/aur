@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='integration_gitlab'
-_upstreamver='v1.0.1'
+_upstreamver='v1.0.3'
 _upstreamver_regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='nextcloud/integration_gitlab'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_nextcloud_appname}-${pkgver}.tar.gz")
-sha512sums=('5b7d70b03a832bbf4ba2023ef8062945aaeb9cc8058a9120e13870843f99b2efd551c395d4ad4e9714cd14236fe4f545c4e1e9e0a64267135c37d58618402fb3')
+sha512sums=('1d47aa63b69908f099406fa92063422074e36d062484bbbedbf1d587de8e55d9a7f5943c0461e09b6f9b8d924c33f969d8417420bae48f44cfe63ce4d0c62d96')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
