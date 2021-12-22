@@ -14,7 +14,7 @@ install="INSTALL.sh"
 changelog="CHANGELOG.md"
 source=("https://gitlab.com/lagru/pacautomation/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 # Update with updpkgsums
-sha256sums=('defd68acb445947e638672300ce4a3495a82bb8ffdfbd1ff086639a77f2cddbd')
+sha256sums=('ae3b3989235184efb1ef5e0178976b6f7c4a2cec4d9f08fcf91dbfe16dd11374')
 
 build() {
     cd "pacautomation-v${pkgver}/src"
