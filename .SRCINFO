@@ -1,6 +1,6 @@
 pkgbase = pgloader
 	pkgdesc = A data loading tool for PostgreSQL, using the COPY command.
-	pkgver = 3.6.2
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = http://pgloader.io/
 	arch = x86_64
@@ -14,10 +14,9 @@ pkgbase = pgloader
 	depends = zlib
 	options = !strip
 	options = !makeflags
-	source = https://github.com/dimitri/pgloader/archive/v3.6.2.tar.gz
+	source = https://github.com/dimitri/pgloader/archive/v3.6.3.tar.gz
 	source = LICENSE
-	sha256sums = 33f87df9cb8f9a36f9836cd691ad6dfa72ae76200a12fe01ee89584f3b771ae7
+	sha256sums = 9dae3ebd29923f62967f734dc60599fafb451e778cd5e5e92f95ec229892bc4c
 	sha256sums = b34067e89373e1a47367b454862f43061ad1680542b39b6d95ed29c354473e15
 
 pkgname = pgloader
-
