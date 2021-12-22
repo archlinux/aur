@@ -4,7 +4,7 @@ _pkgname=dooble
 _repourl="https://github.com/textbrowser/dooble"
 
 pkgname=dooble-bin
-pkgver=2021.11.05
+pkgver=2021.12.05
 pkgrel=1
 pkgdesc="Dooble is the scientific browser"
 arch=('x86_64')
@@ -12,14 +12,15 @@ url="https://textbrowser.github.io/dooble/"
 license=('BSD')
 conflicts=('dooble')
 options=('!strip')
-depends=('alsa-lib' 'fontconfig' 'libgl' 'libxcomposite' 'libxkbcommon' 'libxrandr' 'nss')
+depends=('alsa-lib' 'fontconfig' 'libgl' 'libxcomposite' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr' 'nss'
+	 'xcb-util-cursor' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm')
 source=(
   "https://github.com/textbrowser/dooble/releases/download/${pkgver}/Dooble-${pkgver}_amd64.deb"
   "LICENSE-${pkgver}::${_repourl}/raw/${pkgver}/LICENSE"
 )
 noextract=("Dooble-${pkgver}_amd64.deb")
 sha256sums=(
-  'f0a34443b42efb5d21d4bae856fb760c6c54864c6688d5a0644c738f751cc9cb'
+  '0ca27f7f26934a8914e4b00ea6f60b587fff9736b330c81a026935dd71837adf'
   'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
 )
 
