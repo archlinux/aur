@@ -1,153 +1,54 @@
-# Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
+# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Contributor: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
+
 pkgname=i8086emu-git
 pkgver=0.9.2.r35.1143f09
-pkgrel=3
-epoch=1
-pkgdesc="cross-platform emulator for the Intel 8086 microprocessor"
-arch=($CARCH)
-url=http://${pkgname%-*}.sourceforge.net/
-license=(GPL2)
-depends=(gtk2 beep) # shared-mime-info # namcap: W: unneeded dependency on a package run when needed by hooks.
-makedepends=(cmake desktop-file-utils git nasm)
-provides=(${pkgname%-*})
-conflicts=(${pkgname%-*})
+pkgrel=4
+pkgdesc='Cross-platform emulator for the Intel 8086 microprocessor'
+arch=('x86_64')
+url='http://i8086emu.sourceforge.net/'
+license=('GPL')
+depends=('gtk2')
+makedepends=('git' 'nasm' 'beep')
+optdepends=('beep: PC-speaker access via asm')
+provides=('i8086emu')
+conflicts=('i8086emu')
 
-# (A)
-# source=(file:///dev/null)
-# md5sums=(SKIP)
-
-# (B)
-source=(
-
-  # 503 Service Unavailable
-  # https://downforeveryoneorjustme.com/i8086emu.sourceforge.net?proto=http
-  # https://www.isitdownrightnow.com/i8086emu.sourceforge.net.html
-  # http://${pkgname%-*}.sourceforge.net/dl/i8086.pdf
-
-  ${pkgname%-*}::git+https://git.code.sf.net/p/i8086emu/git
-  # https://sourceforge.net/p/i8086emu/patches/9/
-  https://sourceforge.net/p/${pkgname%-*}/patches/9/attachment/extern.patch
-  # https://developer.gnome.org/gtk2/stable/GtkMessageDialog.html#gtk-message-dialog-new
-  # https://sourceforge.net/p/i8086emu/patches/10/
-  https://sourceforge.net/p/${pkgname%-*}/patches/_discuss/thread/5e30f26d55/b83c/attachment/fmt.patch
-
-  ${pkgname%-*}.xml
-  net.sourceforge.${pkgname%-*}."${pkgname%emu*}"{gui,text}.desktop
-
-)
-sha1sums=(
-
-  # 11d730bde4fc248fb2ae37785af564e884c62b66
-
-  SKIP
-  a5c1091422a1f9454a6fa161107781854f387896
-  d6781a90dcfcec1e9164a3c7223253a556fa858e
-
-  d3667ed6dc769ba4d7054a5eb4736f118c02bcc2
-  cb75fe18ded8ed3f86ef159d08309b62e8739a11 48d414d51f66852c70e37d3c69d9613bb88eacac
-
-)
-
-prepare() {
-
-  # (A)
-  # cp -a ~/i8086emu.git/ ./
-
-  # (B)
-  # patch -d ${pkgname%-*} -i - -p1 --verbose <extern.patch # --dry-run
-  # git -C ${pkgname%-*} apply --verbose ./extern.patch # error: can't open patch './extern.patch': No such file or directory
-  git -C ${pkgname%-*} apply --verbose - <./extern.patch
-  git -C ${pkgname%-*} apply --verbose - <./fmt.patch
-
-  # cd ${pkgname%-*}/${pkgname%-*}/src
-
-  # https://unix.stackexchange.com/a/450857
-  # Insert text blob w/ sed in case any whitespace get messed up
-  # diff -u {x,y}.c | sed -i -e '/^INSERT_TEXT_BLOB/{r /dev/stdin' -e 'd;}' ~/.cache/yay/i8086emu-git/PKGBUILD
-
-  # echo
-  # { for h in i8086gui.h i8086gui_paint.h i8086gui_emufuncs.h i8086gui_util.h; do
-  #   echo "patch --verbose $h <<\"EOP\""
-  #   diff -u "$h" ~/.cache/yay/i8086emu-git/src/i8086emu/i8086emu/src
-  #   echo "EOP"
-  #   echo
-  # done } | sed -i -e '/^SED_BLOB/{r /dev/stdin' -e 'd;}' ~/.cache/yay/i8086emu-git/PKGBUILD
-
-}
+source=('i8086emu::git+https://git.code.sf.net/p/i8086emu/git.git'
+        'i8086emu.desktop'
+        'https://sourceforge.net/p/i8086emu/patches/9/attachment/extern.patch'
+        'https://sourceforge.net/p/i8086emu/patches/_discuss/thread/5e30f26d55/b83c/attachment/fmt.patch')
+sha512sums=('SKIP'
+            'c0501f63012b74fb8e48cdef3c27ac52546308b82cf6a97527e36ef2ea6cee0ff874c804745252b678d13932e0e1aeaa48812189c5d7599a36484a30d453d81e'
+            '05c6354741db54ed335bb0f4519b4693add6d2c0780170311f773b05207e28fcb0ce8aadd4d1160429752d94e8d5afe13e1175478421ea1624571801d96f948a'
+            'b3cd89c20c38c581c12ebad5ae09f4f48fbd4eeef0e80c37be774b0156a06eb435483e7e1563796d60a06112d80383d0b2a146bf24246d7701577da44bf989d3')
 
 pkgver() {
-  cd ${pkgname%-*}
-  # cutting off 'v' prefix that presents in the git tag
-  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	cd i8086emu
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd i8086emu
+	patch --forward --strip=1 --input="${srcdir}/extern.patch"
+	patch --forward --strip=1 --input="${srcdir}/fmt.patch"
+	cd i8086emu/src
+	sed -i 's/"@usegtk@" != "0"/"0" == "0"/g' Makefile.in
 }
 
 build() {
-
-  cd "${pkgname%-*}/${pkgname%-*}"
-  export CFLAGS="-fPIC $CFLAGS"
-
-  # i8086text
-  # ./configure --help | less; echo; pwd; echo; return 1
-  # i8086emu-git W: ELF file ('usr/bin/i8086text') lacks FULL RELRO, check LDFLAGS.
-  # i8086emu-git W: ELF file ('usr/lib/i8086emu/i8086beep.so') lacks FULL RELRO, check LDFLAGS.
-  # i8086emu-git W: ELF file ('usr/lib/i8086emu/i8086pic.so') lacks FULL RELRO, check LDFLAGS.
-  # i8086emu-git W: ELF file ('usr/lib/i8086emu/i8086pit.so') lacks FULL RELRO, check LDFLAGS.
- ./configure \
-    \
-    --prefix=/usr \
-    --exec-prefix=/usr \
-    \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/${pkgname%-*} \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --infodir=/usr/share/doc \
-    --mandir=/usr/share/man \
-    usegtk=1
-  # gcc -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -shared -fPIC devices/i8086pic.c i8086error.o i8086messages.o i8086util.o -o devices/i8086pic.so
-  # /usr/bin/ld: i8086messages.o: warning: relocation against `msgFuncs' in read-only section `.text'
-  # /usr/bin/ld: i8086messages.o: relocation R_X86_64_PC32 against symbol `criticalSection' can not be used when making a shared object; recompile with -fPIC
-  # make CFLAGS="-fPIC $CFLAGS"
-  make
-
-  # i8086gui
-  cmake -B cmake_build_gui -S . \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_VERBOSE_MAKEFILE=ON
-  # ccmake -B cmake_build_gui -S .; echo; pwd; echo; return 1
-  make -C cmake_build_gui
-  # make -C cmake_build_gui -j1 VERBOSE=1
-
+	cd i8086emu/i8086emu
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--infodir=/usr/share/info \
+	CFLAGS="$CFLAGS -fPIC $LDFLAGS" LDFLAGS="$LDFLAGS" usegtk=1
+	make
 }
 
-# makepkg --noextract --holdver --repackage
 package() {
+	cd i8086emu/i8086emu
+	make DESTDIR="${pkgdir}" install
 
-  cd "${pkgname%-*}/${pkgname%-*}"
-
-  # i8086text
-  make DESTDIR="$pkgdir" install
-  rm -v \
-    "$pkgdir/usr/bin/i8086text" \
-    "$pkgdir/usr/lib/i8086emu/i8086beep.so" \
-    "$pkgdir/usr/lib/i8086emu/i8086pic.so" \
-    "$pkgdir/usr/lib/i8086emu/i8086pit.so"
-  rmdir -v "$pkgdir/usr/lib/i8086emu"
-
-  # only stub dirs remain
-  [ -z "$(ls -A "$pkgdir/usr/bin")" ]
-  [ -z "$(ls -A "$pkgdir/usr/lib")" ]
-
-  # i8086gui
-  install -vDm755 cmake_build_gui/bin/* "$pkgdir/usr/bin/"
-  install -vDm755 cmake_build_gui/lib/*.so "$pkgdir/usr/lib/"
-  install -vDm644 cmake_build_gui/lib/*.a "$pkgdir/usr/lib/"
-
-  cd "$srcdir"
-  [ -z "$(desktop-file-validate *.desktop 2>&1)" ]
-  install -vdm755 "$pkgdir/usr/share/applications/"; install -vDm644 *.desktop "$_/"
-  install -vDm644 {,"$pkgdir/usr/share/mime/packages/"}${pkgname%-*}.xml
-
+	install -dm755 "${pkgdir}/usr/share/applications"
+	install -Dm644 "${srcdir}/i8086emu.desktop" "${pkgdir}/usr/share/applications/i8086emu.desktop"
 }

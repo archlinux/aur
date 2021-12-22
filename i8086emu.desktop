@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=i8086gui
+GenericName=Emulator
+Comment=Cross-platform emulator for the Intel 8086 microprocessor
+Icon=/usr/share/pixmaps/i8086icon.png
+TryExec=i8086gui
+Exec=i8086gui
+Categories=System;Development;Emulator;
+Keywords=8086;asm;assembly;emulator;gtk;x86;
