@@ -1,0 +1,20 @@
+pkgbase = remotebox-gtk2
+	pkgdesc = Open Source VirtualBox Client with Remote Management (GTK2)
+	pkgver = 2.8
+	pkgrel = 1
+	url = http://remotebox.knobgoblin.org.uk/
+	install = remotebox.install
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-soap-lite
+	depends = gtk2-perl
+	optdepends = rdesktop
+	provides = remotebox=2.8-1
+	conflicts = remotebox
+	source = http://remotebox.knobgoblin.org.uk/downloads/RemoteBox-2.8.tar.bz2
+	source = remotebox.desktop
+	md5sums = 36aa25b860452d2ac699dbed6c268908
+	md5sums = b64b16d198471f9868ce7ed018295296
+
+pkgname = remotebox-gtk2

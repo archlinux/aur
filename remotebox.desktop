@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Remotebox
+GenericName=Remotebox
+Comment=A client for the virtualization tool VirtualBox
+Icon=remotebox.png
+Exec=remotebox
+Categories=System

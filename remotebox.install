@@ -1,0 +1,24 @@
+post_install() {
+  echo '-----------------------------------------------------------'
+  echo 'For start-up see /usr/share/doc/remotebox/'
+  echo
+  echo 'If you want to connect to guests running Windows also install'
+  echo ' * rdesktop'
+  echo '-----------------------------------------------------------'
+
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
+
