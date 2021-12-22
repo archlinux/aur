@@ -1,6 +1,6 @@
 pkgbase = minq_simple_https_file_hoster-git
 	pkgdesc = Host files easily
-	pkgver = r4.dfd726bba959d7fbe8dddfd0d173fa598118f0b9
+	pkgver = r5.df9983497f765b3e3464aa1d2472d62d889a79fd
 	pkgrel = 1
 	url = https://github.com/kuche1/minq_simple_https_file_hoster.git
 	arch = x86_64
