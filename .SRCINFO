@@ -5,7 +5,8 @@ pkgbase = distrobox
 	url = https://github.com/89luca89/distrobox
 	arch = any
 	license = GPL3
-	depends = podman
+	optdepends = docker: enable docker usage
+	optdepends = podman: enable podman usage
 	source = distrobox-1.2.4.tar.gz::https://github.com/89luca89/distrobox/archive/1.2.4.tar.gz
 	sha256sums = d11aa2909823170743d640e0615875215d436a476165d3d8e8dfc42ace4ef55e
 

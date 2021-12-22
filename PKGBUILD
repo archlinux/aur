@@ -7,7 +7,10 @@ pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
 url="https://github.com/89luca89/distrobox"
 license=('GPL3')
-depends=('podman')
+optdepends=(
+  'docker: enable docker usage'
+  'podman: enable podman usage'
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 
 package() {
