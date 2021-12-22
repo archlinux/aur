@@ -2,7 +2,7 @@
 
 _gemname=benchmark
 pkgname=ruby-benchmark
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A performance benchmarking library"
 arch=("any")
@@ -12,7 +12,7 @@ noextract=($_gemname-$pkgver.gem)
 license=("MIT")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=("86a5c212232bea5bec7d9cdff8a11931eb21693c39c42ca5d8673b00c8a179cb")
+sha256sums=("5f7087b794613abdd3ac9c13f4351f65b164bcb15ced2ad29508e365f9b28c77")
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

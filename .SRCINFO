@@ -1,15 +1,14 @@
 pkgbase = ruby-benchmark
 	pkgdesc = A performance benchmarking library
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ruby/benchmark
 	arch = any
 	license = MIT
 	makedepends = rubygems
-	noextract = benchmark-0.1.1.gem
+	noextract = benchmark-0.2.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/benchmark-0.1.1.gem
-	sha256sums = 86a5c212232bea5bec7d9cdff8a11931eb21693c39c42ca5d8673b00c8a179cb
+	source = https://rubygems.org/downloads/benchmark-0.2.0.gem
+	sha256sums = 5f7087b794613abdd3ac9c13f4351f65b164bcb15ced2ad29508e365f9b28c77
 
 pkgname = ruby-benchmark
-
