@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-text-editor-git
-pkgver=41.0.r56.g3d37366
+pkgver=42.alpha1.r30.g3cbb331
 pkgrel=1
 pkgdesc='Simple text editor that focuses on session management'
 url='https://gitlab.gnome.org/GNOME/gnome-text-editor'
@@ -11,8 +11,8 @@ provides=(gnome-text-editor)
 conflicts=(gnome-text-editor)
 depends=(
 	enchant
-	'glib2>=2.70.0'
-	gtksourceview5
+	glib2
+	'gtksourceview5>=5.3.0'
 	libadwaita
 )
 makedepends=(
