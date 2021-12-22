@@ -19,27 +19,27 @@ provides=("${_gitname}")
 replaces=("${_gitname}-svn")
 sha512sums=('SKIP')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-pkgver=p1.0.r99.g7ecfe48
+pkgver=v1.2.r552.gea0ae153
 pkgrel=1
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+  cd "${srcdir}/${_gitname}"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
-	make
+  cd "${srcdir}/${_gitname}"
+  arch-meson ../build
+  ninja -v -C ../build
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
-	make PREFIX="${pkgdir}/usr" install
-	mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim:set et sw=2 sts=2 tw=80:
