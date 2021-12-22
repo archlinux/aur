@@ -1,10 +1,9 @@
 pkgbase = python-ccdproc
 	pkgdesc = Affiliated package for the AstroPy package for basic data reductions of CCD images
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://ccdproc.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	checkdepends = python-pytest-astropy
 	checkdepends = python-memory-profiler
@@ -14,18 +13,17 @@ pkgbase = python-ccdproc
 	makedepends = python-reproject
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/c/ccdproc/ccdproc-2.2.0.tar.gz
-	md5sums = e6e537e801d195e15e15c3f7fca98372
+	source = https://files.pythonhosted.org/packages/source/c/ccdproc/ccdproc-2.3.0.tar.gz
+	md5sums = 8337509bac890be35c465926517a52b3
 
 pkgname = python-ccdproc
 	depends = python>=3.7
 	depends = python-scipy
-	depends = python-astropy>=4.0.5
+	depends = python-astropy>=4.0.6
 	depends = python-scikit-image
-	depends = python-astroscrappy
+	depends = python-astroscrappy>=1.0.8
 	depends = python-reproject>=0.7
 	optdepends = python-ccdproc-doc: Documentation for CCDPROC
 
 pkgname = python-ccdproc-doc
 	pkgdesc = Documentation for Python CCDPROC module
-

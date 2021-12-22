@@ -2,16 +2,16 @@
 pkgbase=python-ccdproc
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Affiliated package for the AstroPy package for basic data reductions of CCD images"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://ccdproc.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools-scm' 'python-scikit-image' 'python-astroscrappy' 'python-reproject' 'python-sphinx-astropy' 'graphviz')
 checkdepends=('python-pytest-astropy' 'python-memory-profiler')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e6e537e801d195e15e15c3f7fca98372')
+md5sums=('8337509bac890be35c465926517a52b3')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,7 +29,7 @@ check() {
 }
 
 package_python-ccdproc() {
-    depends=('python>=3.7' 'python-scipy' 'python-astropy>=4.0.5' 'python-scikit-image' 'python-astroscrappy' 'python-reproject>=0.7')
+    depends=('python>=3.7' 'python-scipy' 'python-astropy>=4.0.6' 'python-scikit-image' 'python-astroscrappy>=1.0.8' 'python-reproject>=0.7')
     optdepends=('python-ccdproc-doc: Documentation for CCDPROC')
     cd ${srcdir}/${_pyname}-${pkgver}
 
