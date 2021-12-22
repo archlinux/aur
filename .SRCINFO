@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = python-photutils
 	makedepends = python-scikit-image
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.2.0.tar.gz
-	md5sums = a7ddb176fcce5a4bbb38d5426d3bfc9d
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.3.0.tar.gz
+	md5sums = ba383cb09f2e2c46be2a4054dbc37247
 
 pkgname = python-photutils
 	depends = python>=3.7
@@ -29,6 +29,8 @@ pkgname = python-photutils
 	optdepends = python-matplotlib>=2.2: To power a variety of plotting features (e.g. plotting apertures
 	optdepends = python-gwcs>=0.12: Used in make_gwcs to create a simple celestial gwcs object
 	optdepends = python-photutils-doc: Documentation for python-photutils
+	optdepends = python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values
 
 pkgname = python-photutils-doc
 	pkgdesc = Documentation for Python Photutils module
+	arch = any
