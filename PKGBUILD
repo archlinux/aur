@@ -2,7 +2,7 @@
 
 pkgname=dosbox-staging
 pkgver=0.77.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
