@@ -1,6 +1,6 @@
 # Maintainer: Sigmasd
 pkgname=bustd-git
-pkgver=r79.b197ac1
+pkgver=r81.caab293
 pkgrel=1
 pkgdesc="Process killer daemon for out-of-memory scenarios"
 url="https://github.com/vrmiguel/bustd"
@@ -26,8 +26,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cd "$srcdir/bustd"
-  #cargo build --frozen --release --all-features(Disabled till upstream fix)
-  cargo build --frozen --release
+  cargo build --frozen --release --all-features
 }
 
 package() {
