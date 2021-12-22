@@ -1,6 +1,6 @@
 pkgbase = picosnitch
 	pkgdesc = Protect your privacy, see which processes make remote network connections
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://elesiuta.github.io/picosnitch/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = picosnitch
 	depends = dbus-python
 	depends = python-psutil
 	depends = python-requests
-	source = picosnitch-0.8.0.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v0.8.0/picosnitch.tar.gz
-	sha256sums = 31238ef069d6d53f6c2feda7148b037b74b3fb5c289ed29d0e398ac059b43612
+	source = picosnitch-0.8.1.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v0.8.1/picosnitch.tar.gz
+	sha256sums = 9a5708a92340f9f793036142f7c978fb0411e9c5c1b0b1e22690fc553195e3a7
 
 pkgname = picosnitch
