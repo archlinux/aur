@@ -1,13 +1,13 @@
 # Maintainer: Lars Grüter <lagru+pacautomation@mailbox.org>
 
 pkgname="pacautomation"
-pkgver="0.15.1"
+pkgver="0.16.0"
 pkgrel="1"
 pkgdesc="Background download of package upgrades and cache cleaning."
 arch=("any")
 url="https://gitlab.com/lagru/pacautomation"
 license=("GPL")
-depends=("python>=3.9" "hicolor-icon-theme")
+depends=("python>=3.10" "hicolor-icon-theme")
 optdepends=("breeze-icons: icons for desktop notifications")
 backup=("etc/pacautomation.conf")
 install="INSTALL.sh"
