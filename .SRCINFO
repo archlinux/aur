@@ -4,7 +4,7 @@ pkgbase = r-forcats
 	pkgrel = 1
 	url = https://cran.r-project.org/package=forcats
 	arch = any
-	license = GPL3
+	license = MIT
 	depends = r>=3.2
 	depends = r-ellipsis
 	depends = r-magrittr
@@ -21,4 +21,3 @@ pkgbase = r-forcats
 	sha256sums = c4fb96e874e2bedaa8a1aa32ea22abdee7906d93b5c5c7b42c0894c0c5b6a289
 
 pkgname = r-forcats
-
