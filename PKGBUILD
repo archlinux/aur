@@ -29,7 +29,7 @@ conflicts=(gnome-shell)
 
 prepare() {
   cd $pkgname
-  git checkout $pkgver
+  git checkout $pkgver-$pkgrel
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
