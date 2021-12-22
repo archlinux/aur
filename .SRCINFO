@@ -1,0 +1,14 @@
+pkgbase = qtcreator-xmake-project-manager
+	pkgdesc = QtCreator XMake project support plugin
+	pkgver = 6.0.1
+	pkgrel = 1
+	url = https://github.com/Arthapz/xmake-project-manager
+	arch = x86_64
+	license = GPL3
+	makedepends = qtcreator-devel
+	makedepends = cmake
+	depends = qtcreator
+	source = git+https://github.com/Arthapz/xmake-project-manager.git
+	sha256sums = SKIP
+
+pkgname = qtcreator-xmake-project-manager
