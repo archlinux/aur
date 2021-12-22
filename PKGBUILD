@@ -8,11 +8,11 @@ pkgrel=1
 pkgdesc="A Simple S3 Class for Representing Vectors of Binary Data ('BLOBS')"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL3)
+license=(MIT)
 depends=(r r-rlang 'r-vctrs>=0.2.1')
 optdepends=(r-covr r-crayon r-pillar r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('a2f4ee73cf7fc11fd808e6c5657b897d')
+sha256sums=('4976053c65994c769a4c22b4553bea0bd9c623b3b991dbaf023d2a164770c7fa')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"

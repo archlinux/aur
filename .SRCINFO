@@ -4,7 +4,7 @@ pkgbase = r-blob
 	pkgrel = 1
 	url = https://cran.r-project.org/package=blob
 	arch = any
-	license = GPL3
+	license = MIT
 	depends = r
 	depends = r-rlang
 	depends = r-vctrs>=0.2.1
@@ -13,6 +13,6 @@ pkgbase = r-blob
 	optdepends = r-pillar
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/blob_1.2.2.tar.gz
-	md5sums = a2f4ee73cf7fc11fd808e6c5657b897d
+	sha256sums = 4976053c65994c769a4c22b4553bea0bd9c623b3b991dbaf023d2a164770c7fa
 
 pkgname = r-blob
