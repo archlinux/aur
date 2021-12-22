@@ -6,10 +6,8 @@ pkgbase = r-tmvnsim
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = gcc
 	depends = r
 	source = https://cran.r-project.org/src/contrib/tmvnsim_1.0-2.tar.gz
-	md5sums = 50a38f2142ee328060aca7d2672b5dcf
+	sha256sums = 97f63d0bab3b240cc7bdbe6e6e74e90ad25a4382a345ee51a26fe3959edeba0f
 
 pkgname = r-tmvnsim
-
