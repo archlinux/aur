@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=r7.5.2.beta.4.gbd7c196
+pkgver=r7.5.2.beta.5.g2f7d9da7
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -41,9 +41,12 @@ git+https://github.com/CadQuery/pywrap.git
 sha256sums=('SKIP'
             'SKIP')
 
+# needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
+_n_parallel_build_jobs=2
+
 # pick where the opencascade is installed
-export _opencascade_install_prefix="/opt/opencascade-cadquery/usr"
-#export _opencascade_install_prefix="/usr"
+_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
+#_opencascade_install_prefix="/usr"
 
 pkgver() {
   cd OCP
@@ -56,9 +59,9 @@ prepare(){
   git config submodule.pywrap.url "${srcdir}"/pywrap
   #git submodule update -q  # use the submodule commit hashes specified
   git submodule update --remote --merge -q  # use the latest commit(s)
-  
+
   sed "s,^libs_linux = .*,libs_linux = prefix_linux.glob('**/libTK*.so')," -i dump_symbols.py
-  
+
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
   rm -rf opencascade
@@ -95,8 +98,9 @@ build() {
   find -maxdepth 1 -name '*.dat' -exec ln -sf ../{} pywrap/{} \;
 
   msg2 "Generating bindings..."
-  CONDA_PREFIX="/usr" PYTHONPATH=pywrap python -m bindgen -v \
+  CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen -v \
     --clean \
+    --njobs ${_n_parallel_build_jobs} \
     --libclang /usr/lib/libclang.so \
     --include "$(clang -print-resource-dir)"/include \
     --include "/usr/include/vtk" \
@@ -104,13 +108,12 @@ build() {
   msg2 "Bindings generated."
 
   msg2 "Setting up OCP build..."
-  CONDA_PREFIX="/usr" cmake -B build_dir -S OCP -W no-dev -G Ninja \
+  CONDA_PREFIX=/usr cmake -B build_dir -S OCP -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_FIND_ROOT_PATH="${_opencascade_install_prefix}" \
     -D OPENCASCADE_INCLUDE_DIR="${_opencascade_install_prefix}"/include/opencascade/
 
   msg2 "Building OCP..."
-  _n_parallel_build_jobs=1  # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB
   cmake --build build_dir -j${_n_parallel_build_jobs}
   msg2 "OCP built."
 }
@@ -132,3 +135,4 @@ package(){
   install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP.*.so
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
+
