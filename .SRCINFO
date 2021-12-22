@@ -9,7 +9,6 @@ pkgbase = r-rematch
 	optdepends = r-covr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/rematch_1.0.1.tar.gz
-	md5sums = 5271666295e232931f21499522489dd3
+	sha256sums = a409dec978cd02914cdddfedc974d9b45bd2975a124d8870d52cfd7d37d47578
 
 pkgname = r-rematch
-
