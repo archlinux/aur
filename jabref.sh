@@ -8,11 +8,9 @@
 ROOT=/usr/share/java/jabref
 
 /usr/bin/archlinux-java-run -a 14 -- \
---add-modules javafx.controls,javafx.fxml,javafx.swing,javafx.web \
 --add-exports javafx.controls/com.sun.javafx.scene.control=org.controlsfx.controls \
 --add-exports org.controlsfx.controls/impl.org.controlsfx.skin=org.jabref \
 --add-exports javafx.controls/com.sun.javafx.scene.control.behavior=org.controlsfx.controls \
---add-exports com.oracle.truffle.regex/com.oracle.truffle.regex=org.graalvm.truffle \
 --add-exports javafx.graphics/com.sun.javafx.scene=org.controlsfx.controls \
 --add-exports javafx.graphics/com.sun.javafx.scene.traversal=org.controlsfx.controls \
 --add-exports javafx.graphics/com.sun.javafx.css=org.controlsfx.controls \
