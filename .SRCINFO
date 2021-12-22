@@ -1,6 +1,6 @@
 pkgbase = mosdns-cn-bin
 	pkgdesc = A DNS forwarder
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/IrineSistiana/mosdns-cn
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = mosdns-cn-bin
 	optdepends = v2ray-rules-dat-git: geosite.dat & geoip.dat
 	provides = mosdns-cn
 	conflicts = mosdns-cn
-	source_x86_64 = mosdns-cn-bin-1.1.3.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v1.1.3/mosdns-cn-linux-amd64.zip
-	sha256sums_x86_64 = 53fe80ef1c8fc0d0373e0f8ada20f3fc012b42a177abc7568a24b85965a4d6c4
-	source_armv7h = mosdns-cn-bin-1.1.3.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v1.1.3/mosdns-cn-linux-arm-7.zip
-	sha256sums_armv7h = 69e834d6d7a572b5d8d28789d3489d6c1b66cb8f0fe19bd849a2b50b503d38d7
-	source_aarch64 = mosdns-cn-bin-1.1.3.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v1.1.3/mosdns-cn-linux-arm64.zip
-	sha256sums_aarch64 = acdd35cc990fe78c7fa6ea9bd7d9459ebbd8dde70265d58306c972cbb56355ab
+	source_x86_64 = mosdns-cn-bin-1.1.4.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v1.1.4/mosdns-cn-linux-amd64.zip
+	sha256sums_x86_64 = 36f4334b0aadb7aaf0895f9ce81df887e6a5aae93af91718274eeea0825b3473
+	source_armv7h = mosdns-cn-bin-1.1.4.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v1.1.4/mosdns-cn-linux-arm-7.zip
+	sha256sums_armv7h = d97cfa0e6c1caf8101aba7f32cc35d5deef7f509baf5dd4ff5971eb6661720a3
+	source_aarch64 = mosdns-cn-bin-1.1.4.zip::https://github.com/IrineSistiana/mosdns-cn/releases/download/v1.1.4/mosdns-cn-linux-arm64.zip
+	sha256sums_aarch64 = e850d06d22b99d472bb6a064937cf55f288ce9310f2ee50096617dbcf3f88abc
 
 pkgname = mosdns-cn-bin
