@@ -30,11 +30,11 @@ pkgbase = r-dbplyr
 	optdepends = r-rmariadb
 	optdepends = r-rmarkdown
 	optdepends = r-rpostgres
-	optdepends = r-rpostgresqlr-rsqlite
+	optdepends = r-rpostgresql
+	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	source = https://cran.r-project.org/src/contrib/dbplyr_2.1.1.tar.gz
 	sha256sums = aba4cf47b85ab240fd3ec4cd8d512f6e1958201e151577c1a2ebc3d6ebc5bc08
 
 pkgname = r-dbplyr
-
