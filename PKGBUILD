@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='checksum'
-_upstreamver='v1.1.2'
+_upstreamver='v1.1.3'
 _upstreamver_regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='westberliner/checksum'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_nextcloud_appname}.tar.gz")
-sha512sums=('743e06c538b6f723090c38810e4c3fb0990e1542c8a5ac877a64044afb5fc82b73d59fd0ed3f4b6cafa80537244b3efa2043caa1acd451afe6d1c6d29b031b58')
+sha512sums=('2d2db9550d3b3855b5555c9eee3f8d69a434fbc102811076694f0dc1e79e0e060325f8e4542f0256a811cebb15be86caa8d4fd159573e61915b41af5111ea6c2')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
