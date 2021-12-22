@@ -1,8 +1,8 @@
 pkgbase = audacium-git
 	pkgdesc = telemetry free version of audacity
-	pkgver = 2.4.1.r1709.g4b88a97c1
+	pkgver = 1.0.0.r29.ga823ce5dc
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/SartoxOnlyGNU/audacium
 	arch = x86_64
 	license = GPL2

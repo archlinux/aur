@@ -1,8 +1,8 @@
 # Maintainer: silverhikari
 pkgname=audacium-git
-pkgver=2.4.1.r1709.g4b88a97c1
+pkgver=1.0.0.r29.ga823ce5dc
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="telemetry free version of audacity"
 arch=(x86_64)
 url="https://github.com/SartoxOnlyGNU/audacium"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "audacium"
-  git describe --long | sed 's/^Audacity.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/rel.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
