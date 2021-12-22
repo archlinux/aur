@@ -1,11 +1,11 @@
 pkgbase = cwtch
 	pkgdesc = UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cwtch.im/
 	arch = x86_64
 	license = MIT
-	makedepends = flutter-dev
+	makedepends = flutter
 	makedepends = ninja
 	depends = libcwtch-go
 	conflicts = cwtch-bin
