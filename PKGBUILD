@@ -10,7 +10,7 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=(r 'r-ggplot2>=3.3.5')
-optdepends=(r-testthat r-knitr r-rmarkdown r-spelling r-vdiffr)
+optdepends=(r-knitr r-rmarkdown r-spelling r-testthat r-vdiffr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('ca8545b25590e531512a90a18449a2cbab945f7434a1d60188c41f7d1839a7a9')
 
