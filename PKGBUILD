@@ -3,9 +3,9 @@
 pkgname=grapejuice-git
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
-pkgver=3.65.16
-pkgrel=2
-pkgdesc='Simple Wine+Roblox management tool'
+pkgver=4.0.0
+pkgrel=1
+pkgdesc='A Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
 makedepends=('git')
@@ -26,8 +26,12 @@ depends=(
     'shared-mime-info'
     'lib32-gnutls'
     'lib32-openssl'
+    'mesa-utils'
 )
-optdepends=('wine: Required to run Roblox Studio, but left out of depends to let the user decide on custom builds')
+optdepends=(
+    'wine: Required to run Roblox, but left out of depends to let the user decide on custom builds'
+    'xorg-xrandr: Required for PRIME systems running XOrg, where XRandR based profiling is desired'
+)
 provides=("${_pkgname}")
 license=('GPL3')
 source=("${_pkgname}"::git+"${_repository}")
