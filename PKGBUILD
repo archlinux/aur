@@ -1,16 +1,16 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=gobeansproxy
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='A proxy for GoBeansDB'
 url='https://github.com/douban/gobeansproxy'
-makedepends=('go>=1.11')
+makedepends=('go>=1.11.0')
 options=('!strip' '!emptydirs')
 arch=('x86_64')
 license=('BSD-3-Clause')
 source=("https://github.com/douban/gobeansproxy/archive/v${pkgver}.tar.gz")
-sha256sums=('e8ecec548450e8d138d3b4fb7c8599be5b927f5af668ed7452bba80d465b541d')
+sha256sums=('a52a8f6891620b20d1c8a57181993df2d132f8d2334a0fe82d3aeb03f3783710')
 
 prepare() {
   cd "${srcdir}"
@@ -21,14 +21,17 @@ prepare() {
 
     rm -rf "${srcdir}/goext"
   fi
+
+  # Fix version
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i "s/Version\ =\ \"v1.0.2\"/Version\ =\ \"v${pkgver}\"/g" config/config.go
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   export GOPATH="${srcdir}/goext"
-  #export GO111MODULE=on
-
+  go mod vendor
   go install ./
 }
 
