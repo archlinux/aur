@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='breezedark'
-_upstreamver='v22.0.1'
+_upstreamver='v23.0.0'
 _upstreamver_regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='mwalbeck/nextcloud-breeze-dark'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_nextcloud_appname}.tar.gz")
-sha512sums=('6b87514ad91b66dade8046ac4850f3ab7a8f876d4be9fd01cb7be4ec79c17eb3e39046c44002984982f9923e4d14fc05b67da1e4491f2fe789af8b9b579cf7a4')
+sha512sums=('81c8f7c7e73d79dbfbfca77ab8250ae94f96b247861625a5b9d386510c2a46283731f2b9bda2b510fc5b6b7fe91d12d853ae55fee8bdae77c674e2227f42a63f')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
