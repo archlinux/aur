@@ -1,23 +1,22 @@
 pkgbase = cowdancer
 	pkgdesc = Copy-on-write wrapper for pbuilder
-	pkgver = 0.88
+	pkgver = 0.89
 	pkgrel = 1
 	url = https://packages.debian.org/sid/cowdancer
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = quilt
-	depends = pbuilder-ubuntu
+	depends = pbuilder
 	depends = ncurses
 	depends = ncurses5-compat-libs
 	optdepends = qemu: if you want to use qemubuilder
 	optdepends = bash-completion: bash autocomplete support
-	source = http://httpredir.debian.org/debian/pool/main/c/cowdancer/cowdancer_0.88.tar.xz
+	source = http://httpredir.debian.org/debian/pool/main/c/cowdancer/cowdancer_0.89.tar.xz
 	source = series
 	source = makedev_glibc_fix.patch
-	sha256sums = dde81583dfeae0919f63aa6c557b36a15b926936f820ffc75efd8a8e27f187e6
+	sha256sums = 9c55432561b67e493bd48eba131ed871cd6c30e64537496af48cc2ae47bd5be3
 	sha256sums = c7345323ff3cf9f3e7f7339319f06b14a001dd75fc7720ad4e58ae99db2a62ea
 	sha256sums = ef983677d8218b3301f194129d9b97f39abf9a4463aa5b6da7b4c376b5b20ed1
 
 pkgname = cowdancer
-
