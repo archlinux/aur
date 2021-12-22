@@ -1,7 +1,7 @@
 pkgbase = steam++-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
 	pkgver = 2.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = steam++-bin
 	source = icon.png::https://github.com/BeyondDimension/SteamTools/raw/develop/resources/AppIcon/Logo_64.png
 	sha256sums = 9d19a6f955cc212b7bbe71cd80c36d5d8286b5f5d7b9259b3c6b63b92f15fe97
 	sha256sums = e22ef2d0ecb1f4bc9226de92c4de9e282a57bb27222838637dec776f06362ac6
-	source_x86_64 = Steam++_x86_64.7z::https://github.com/BeyondDimension/SteamTools/releases/download/2.6.3/Steam++_linux_x64_v2.6.3.7z
+	source_x86_64 = Steam++_aarch64.7z::https://github.com/BeyondDimension/SteamTools/releases/download/2.6.3/Steam++_linux_x64_v2.6.3.7z
 	sha256sums_x86_64 = a74ce35aefcc76487bcd8402311ff2f794b0075390dd426c86f1dadf1f30d782
 	source_aarch64 = Steam++_x86_64.7z::https://github.com/BeyondDimension/SteamTools/releases/download/2.6.3/Steam++_linux_arm64_v2.6.3.7z
-	sha256sums_aarch64 = a74ce35aefcc76487bcd8402311ff2f794b0075390dd426c86f1dadf1f30d782
+	sha256sums_aarch64 = 86d3bec887f1fc7ce6cd744a8710e208eb0a49a14ea4633ff937df007aecc91a
 
 pkgname = steam++-bin
