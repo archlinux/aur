@@ -1,0 +1,15 @@
+pkgbase = grobid
+	pkgdesc = A machine learning software for extracting information from scholarly documents
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/kermitt2/grobid
+	arch = any
+	license = Apache
+	depends = java-runtime<=11
+	depends = archlinux-java-run
+	provides = grobid
+	conflicts = grobid-git
+	source = https://github.com/kermitt2/grobid/archive/0.7.0.zip
+	sha256sums = 31c48f63d013e7be6731cbc3fa5c872af82d9c9b871ed422bbc5d9fca512297a
+
+pkgname = grobid
