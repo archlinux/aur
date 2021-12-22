@@ -1,0 +1,20 @@
+pkgbase = nym-wallet
+	pkgdesc = The next generation of privacy infrastructure (Nym wallet)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://nymtech.net/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = patchelf
+	depends = openssl
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = librsvg
+	source = https://github.com/nymtech/nym/archive/refs/tags/v0.12.0.tar.gz
+	sha512sums = 29e8fe735d9b60b1a0207e1591e08aff4d51fd4e82aaf76898aedbfacae1dbf68c81230a9fbb24385db91f72a0d870bb5bb1f7e0e15c13e6425302b9492a8235
+
+pkgname = nym-wallet
