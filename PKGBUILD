@@ -25,7 +25,7 @@ conflicts=(mutter)
 
 prepare() {
   cd $pkgname
-  git checkout $pkgver
+  git checkout $pkgver-$pkgrel
 }
 
 build() {
