@@ -1,10 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Claudio Sabattoli <gasherbrum3@alice.it>
+# Contributor: Ole Ernst <olebowle@gmx.com>
 
 pkgname=idesk
 pkgver=0.7.5
-pkgrel=9
+pkgrel=10
 pkgdesc="gives users of minimal wm's (fluxbox, blackbox, openbox, windowmaker...) icons on their desktop"
 arch=('x86_64' 'i686')
 url="https://sourceforge.net/projects/idesk/"
@@ -22,6 +23,7 @@ prepare() {
     -e '1,1i#include <sys/stat.h>' \
     -e '1,1i#include <sys/types.h>' \
     src/DesktopConfig.cpp
+  sed -i 's/return iconConfigList\[++iterCtr\];/return ++iterCtr < iconConfigList.size() ? iconConfigList\[iterCtr\] : NULL;/' src/AbstractClasses.h
   sed -i 's#usr/local#usr#' examples/default.lnk
   patch -Np2 -b -z .orig <../imlib2-config.patch
   autoreconf -fiv

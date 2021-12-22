@@ -1,7 +1,7 @@
 pkgbase = idesk
 	pkgdesc = gives users of minimal wm's (fluxbox, blackbox, openbox, windowmaker...) icons on their desktop
 	pkgver = 0.7.5
-	pkgrel = 9
+	pkgrel = 10
 	url = https://sourceforge.net/projects/idesk/
 	arch = x86_64
 	arch = i686
