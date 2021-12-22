@@ -1,6 +1,6 @@
 pkgbase = r-dbi
 	pkgdesc = R Database Interface
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DBI
 	arch = any
@@ -9,20 +9,21 @@ pkgbase = r-dbi
 	depends = r>=3.0.0
 	optdepends = r-blob
 	optdepends = r-covr
+	optdepends = r-dbitest
 	optdepends = r-dbplyr
+	optdepends = r-downlit
 	optdepends = r-dplyr
 	optdepends = r-glue
 	optdepends = r-hms
 	optdepends = r-knitr
 	optdepends = r-magrittr
+	optdepends = r-rmariadb
 	optdepends = r-rmarkdown
 	optdepends = r-rprojroot
-	optdepends = r-rmariadb
 	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/DBI_1.1.1.tar.gz
-	sha256sums = 572ab3b8a6421d0ac3e7665c4c842826f1723af98fca25d4f43edb419e771344
+	source = https://cran.r-project.org/src/contrib/DBI_1.1.2.tar.gz
+	sha256sums = 56ec377d471c76ac234ddfd313bd01a050c99fb6fa5f704f5333b34a5d714f58
 
 pkgname = r-dbi
-
