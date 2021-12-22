@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-fribidi
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (android)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-meson')
 source=("https://github.com/fribidi/fribidi/archive/v${pkgver}.tar.gz")
-sha256sums=('3ebb19c4184ed6dc324d2e291d7465bc6108a20be019f053f33228e07e879c4f')
+md5sums=('2acb412d284f5918de3638c1052160dd')
 
 build() {
     cd "${srcdir}"/fribidi-${pkgver}
