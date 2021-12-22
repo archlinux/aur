@@ -13,7 +13,6 @@ pkgbase = r-ggsci
 	optdepends = r-gridextra
 	optdepends = r-reshape2
 	source = https://cran.r-project.org/src/contrib/ggsci_2.9.tar.gz
-	md5sums = 8d96ac0575cb6264d1b748d2ae9efe8e
+	sha256sums = 4af14e6f3657134c115d5ac5e65a2ed74596f9a8437c03255447cd959fe9e33c
 
 pkgname = r-ggsci
-

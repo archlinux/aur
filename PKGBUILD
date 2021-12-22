@@ -12,7 +12,7 @@ license=(GPL3)
 depends=('r>=3.0.2' r-scales 'r-ggplot2>=2.0.0')
 optdepends=(r-knitr r-rmarkdown r-gridextra r-reshape2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('8d96ac0575cb6264d1b748d2ae9efe8e')
+sha256sums=('4af14e6f3657134c115d5ac5e65a2ed74596f9a8437c03255447cd959fe9e33c')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
