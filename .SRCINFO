@@ -1,0 +1,14 @@
+pkgbase = mrmodeltest
+	pkgdesc = C program for selecting DNA substitution models using PAUP*
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/nylander/MrModeltest2
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = glibc
+	provides = mrmodeltest
+	source = https://github.com/nylander/MrModeltest2/archive/refs/tags/v.2.4.zip
+	sha256sums = d510abcd982add185225b400db530ffadb17ca0773bae9b2505411aaf1b72944
+
+pkgname = mrmodeltest
