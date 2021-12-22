@@ -1,0 +1,23 @@
+pkgbase = bootmap
+	pkgdesc = Integrated EFI image generator and system snapshotter
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/pbs3141/bootmap
+	arch = x86_64
+	license = GPL3
+	makedepends = asciidoc
+	depends = gcc-libs
+	depends = util-linux-libs
+	depends = libpipeline
+	depends = libinih
+	depends = btrfs-progs
+	depends = bash
+	depends = perl
+	depends = sbsigntools
+	depends = systemd
+	backup = etc/bootmap.conf
+	backup = etc/kernel/cmdline
+	source = https://gitlab.com/pbs3141/bootmap/-/archive/0.9/bootmap-0.9.tar.gz
+	sha256sums = 7639e7fa9cb5300aa391373d4715bed28c9c6ceb0bf91f1bdc34d4025464584a
+
+pkgname = bootmap
