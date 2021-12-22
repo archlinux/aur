@@ -10,10 +10,10 @@ pre_upgrade() {
 		echo "> hornet$    - /var/lib/hornet/config.json.pacnew"
 		echo "> hornet$ 2. The old database files are incompatible."
 		echo "> hornet$    Restart Hornet with an empty database folder."
-	elif (( $(vercmp $2 1.0.6) < 0 )); then
+	elif (( $(vercmp $2 1.1.2) < 0 )); then
 		echo "> hornet$ The hornet configuration has changed and must be updated."
 		echo "> hornet$ A template configuration can be found in"
 		echo "> hornet$ /var/lib/hornet/config.json.pacnew"
-		echo "> hornet$ https://github.com/gohornet/hornet/releases/tag/v1.1.1"
+		echo "> hornet$ https://github.com/gohornet/hornet/releases/tag/v1.1.2"
 	fi
 }
