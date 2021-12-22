@@ -1,0 +1,12 @@
+[Unit]
+Description=Cuttlefish host support package
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/cuttlefish-common start
+ExecStop=/usr/bin/cuttlefish-common stop
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
