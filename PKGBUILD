@@ -16,7 +16,7 @@ sha256sums=('731a337e218d57877a0e21afa3b9e528d0a93b458d0dedf6f96aefc7c0b376ae')
 
 package() {
   mkdir -p $pkgdir/usr/lib
-	cp -a $srcdir/usr/lib/jspeak $pkgdir/usr/lib/jspeak
+	cp -a $srcdir/usr/lib/JSpeak.jar $pkgdir/usr/lib/JSpeak.jar
 
   mkdir -p $pkgdir/usr
 	cp -a $srcdir/usr/bin $pkgdir/usr/bin
@@ -25,7 +25,7 @@ package() {
   mkdir -p $pkgdir/usr/share/applications
   cp -a $srcdir/usr/share/applications/jspeak.desktop $pkgdir/usr/share/applications/jspeak.desktop
 
-  mkdir -p $pkgdir/usr/share/piximaps
-  cp -a $srcdir/usr/share/piximaps/jspeak.png $pkgdir/usr/share/piximaps/jspeak.png
+  mkdir -p $pkgdir/usr/share/pixmaps
+  cp -a $srcdir/usr/share/pixmaps/jspeak.png $pkgdir/usr/share/pixmaps/jspeak.png
 }
 
