@@ -1,6 +1,6 @@
 pkgbase = hornet-git
 	pkgdesc = HORNET is a powerful IOTA fullnode software
-	pkgver = 1.1.0.r0.g1f6e0ee2
+	pkgver = 1.1.1.r0.gd7f72a66
 	pkgrel = 1
 	url = https://github.com/gohornet/hornet
 	install = hornet.install
