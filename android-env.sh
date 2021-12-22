@@ -51,33 +51,30 @@ export ANDROID_PKGCONFIG=android-${_android_arch}-pkg-config
 case "$_android_arch" in
     aarch64)
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/aarch64-linux-android${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/aarch64-linux-android-
         export ANDROID_ABI=arm64-v8a
         ;;
     armv7a-eabi)
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/armv7a-linux-androideabi${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/arm-linux-androideabi-
         export ANDROID_ABI=armeabi-v7a
         ;;
     x86)
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/i686-linux-android${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/i686-linux-android-
         export ANDROID_ABI=x86
         ;;
     x86-64)
         export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/x86_64-linux-android${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/x86_64-linux-android-
         export ANDROID_ABI=x86_64
         ;;
 esac
 
 export ANDROID_CC=${ANDROID_TOOLS_COMPILER_PREFIX}clang
 export ANDROID_CXX=${ANDROID_TOOLS_COMPILER_PREFIX}clang++
+export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/llvm-
 export ANDROID_AR=${ANDROID_TOOLS_PREFIX}ar
 export ANDROID_AS=${ANDROID_TOOLS_PREFIX}as
 export ANDROID_NM=${ANDROID_TOOLS_PREFIX}nm
 export ANDROID_RANLIB=${ANDROID_TOOLS_PREFIX}ranlib
-export ANDROID_STRIP=${ANDROID_CROSS_PREFIX}/llvm-strip
+export ANDROID_STRIP=${ANDROID_TOOLS_PREFIX}strip
 export ANDROID_PREFIX=/opt/android-libs/${_android_arch}
 export ANDROID_PREFIX_USR=${ANDROID_PREFIX}/usr
 export ANDROID_PREFIX_BIN=${ANDROID_PREFIX}/bin
