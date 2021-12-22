@@ -12,7 +12,7 @@ provides=('switch')
 install=switcher.install
 source=("https://github.com/danielfoehrKn/kubeswitch/archive/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('f21564f66105a6a7038a46383b49dd4058642026edb45d541f130159b045b8dc')
+sha256sums=('f8d38bcce75a909b46c4e7c6b2454a5879e98f04fad603db6cf603f33668cd61')
 
 build() {
   cd "${pkgname}-${pkgver}"
