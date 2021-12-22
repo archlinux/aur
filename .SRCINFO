@@ -25,6 +25,7 @@ pkgbase = r-readr
 	optdepends = r-spelling
 	optdepends = r-stringi
 	optdepends = r-testthat
+	optdepends = r-tzdb
 	optdepends = r-waldo
 	optdepends = r-withr
 	optdepends = r-xml2
