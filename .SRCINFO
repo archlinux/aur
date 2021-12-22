@@ -6,12 +6,10 @@ pkgbase = r-askpass
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	depends = r
 	depends = r-sys>=2.1
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/askpass_1.1.tar.gz
-	md5sums = a00d6599ff99f501534c1d965a1fd3b4
+	sha256sums = db40827d1bdbb90c0aa2846a2961d3bf9d76ad1b392302f9dd84cc2fd18c001f
 
 pkgname = r-askpass
-
