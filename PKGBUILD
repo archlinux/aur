@@ -5,7 +5,7 @@
 
 pkgname=mutter-perf
 pkgver=41.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)

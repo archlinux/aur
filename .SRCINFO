@@ -1,7 +1,7 @@
 pkgbase = mutter-perf
 	pkgdesc = A window manager for GNOME
 	pkgver = 41.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
