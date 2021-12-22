@@ -5,6 +5,7 @@ _pkgver=1.12.2
 _commit=1be14eb
 pkgver="${_pkgver}c1_${_commit}"
 pkgrel=1
+_mng_ver=1.0.0
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
@@ -33,13 +34,7 @@ source=("git+https://github.com/cuberite/cuberite#commit=${_commit}"
 	"git+https://github.com/fmtlib/fmt"
 	"git+https://github.com/grafi-tt/lunajson"
 	"git+https://github.com/cuberite/libdeflate"
-	"${pkgname}-backup.service"
-	"${pkgname}-backup.timer"
-	"${pkgname}.service"
-	"${pkgname}.sysusers"
-	"${pkgname}.tmpfiles"
-	"${pkgname}.conf"
-	"${pkgname}.sh")
+	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 # FIXME Including "git+https://github.com/cuberite/polarssl#commit=193f373" yields a ref-error
 sha512sums=('SKIP'
             'SKIP'
@@ -58,13 +53,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '4b4161558343dd2ec4d6b2be41b958e061df2a41961d9476ac1d38f28530043f99735d20115ba65bdbdc04003582f3ab8beb00b19623aae72ecab81797eb05dc'
-            '2ae834c75dfc299e823308bcb500e028020f1ac47675c645c4a7832ae225f63e9f7d22c08cd1bbb754388db7cf57ab3d4c359615be70f8d234e82013c148b024'
-            'afc35227b91bc302e095c84c30ee85114e4b97220e8ee6acf8e7250306bee969e2cd4d57b4d2afd1e43298b32fc7ecaa543bdf6fead8c0f218cfc37aa51b524e'
-            '0e82acfe3e907f3976e96aebb146d12f076a26e4478f3330d4f0ded44956624094abc35e56402f6a994fb5852fbc7e901e4e2b8f1ae31f3e82224e6bc15eba0b'
-            '09047f4df9591b2d61885c842cbd9abde590b0069945f2e10fd402ad93f0f0abd3c2557e61200388038708960f5d82e22d332efe83cf1acf0895f56dd2e5d5d0'
-            '9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f'
-            '0fa68f55a223f6db0fec0bebf815988400b5f69a7806b25d49d4cade4e22718dfb4a3c5df28acc1c33338a5d4970582db85169e93e26c2cdacd4234a9c71cf7e')
+            'e315277da81cb28de338e870f477dc58dc9d8f8542594431ab5321150c92ff5634ace2be8c6778d1edb718fdeb6850d7021bffcbd3cae2a00f20e3a64caa3d92')
 
 _game="cuberite"
 _server_root="/srv/cuberite"
@@ -107,18 +96,28 @@ build() {
 		-DCMAKE_CXX_FLAGS"${CXXFLAGS}"
 
 	make
+
+	make -C "${srcdir}/minecraft-server-${_mng_ver}" clean
+
+	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
+		GAME=${_game} \
+		MYNAME=${_game} \
+		SERVER_ROOT=${_server_root} \
+		BACKUP_PATHS="world world_nether world_the_end" \
+		GAME_USER=${_game} \
+		MAIN_EXECUTABLE=Cuberite \
+		SERVER_START_CMD="./Cuberite" \
+		all
 }
 
 package() {
-	make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
+	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
+		DESTDIR="${pkgdir}" \
+		GAME=${_game} \
+		MYNAME=${_game} \
+		install
 
-	install -Dm644 ${_game}.conf              "${pkgdir}/etc/conf.d/${_game}"
-	install -Dm755 ${_game}.sh                "${pkgdir}/usr/bin/${_game}"
-	install -Dm644 ${_game}.service           "${pkgdir}/usr/lib/systemd/system/${_game}.service"
-	install -Dm644 ${_game}-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}-backup.service"
-	install -Dm644 ${_game}-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}-backup.timer"
-	install -Dm644 ${_game}.sysusers          "${pkgdir}/usr/lib/sysusers.d/${_game}.conf"
-	install -Dm644 ${_game}.tmpfiles          "${pkgdir}/usr/lib/tmpfiles.d/${_game}.conf"
+	make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
 
 	# Copy files from the archive to the server destination and create some dirs
 	install -dm2755 "${pkgdir}/${_server_root}/backup"
