@@ -1,0 +1,25 @@
+pkgbase = gstreamer-gtuber-git
+	pkgdesc = A C library to fetch media info from websites.
+	pkgver = r211.53a21a2
+	pkgrel = 1
+	url = https://github.com/Rafostar/gtuber
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = gobject-introspection
+	depends = libsoup
+	depends = gstreamer-git
+	depends = gst-plugins-base-git
+	depends = json-glib
+	depends = gtk-doc
+	provides = gstreamer-gtuber
+	conflicts = gstreamer-gtuber
+	source = gstreamer-gtuber::git+https://github.com/Rafostar/gtuber.git#branch=main
+	md5sums = SKIP
+
+pkgname = gstreamer-gtuber-git
