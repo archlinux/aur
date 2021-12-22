@@ -26,7 +26,6 @@ pkgbase = r-ggpubr
 	optdepends = r-rcolorbrewer
 	optdepends = r-gtable
 	source = https://cran.r-project.org/src/contrib/ggpubr_0.4.0.tar.gz
-	md5sums = 707ceb412fe745c5a98260b51763131d
+	sha256sums = abb21ec0b1ae3fa1c58eedca2d59b9b009621b30e3660f1247b3880c5fa50675
 
 pkgname = r-ggpubr
-

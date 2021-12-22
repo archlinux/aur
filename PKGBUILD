@@ -12,7 +12,7 @@ license=(GPL2)
 depends=('r>=3.1.0' r-ggplot2 r-ggrepel r-ggsci r-tidyr r-purrr 'r-dplyr>=0.7.1' r-cowplot r-ggsignif r-scales r-gridextra r-glue r-polynom r-rlang 'r-rstatix>=0.6.0' r-tibble r-magrittr)
 optdepends=(r-knitr r-rcolorbrewer r-gtable)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('707ceb412fe745c5a98260b51763131d')
+sha256sums=('abb21ec0b1ae3fa1c58eedca2d59b9b009621b30e3660f1247b3880c5fa50675')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
