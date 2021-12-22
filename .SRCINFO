@@ -1,7 +1,7 @@
 pkgbase = python-scikit-fem
 	pkgdesc = Simple finite element assemblers
 	pkgver = 5.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kinnala/scikit-fem
 	arch = x86_64
 	license = custom:BSD-3-clause
