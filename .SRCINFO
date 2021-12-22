@@ -16,7 +16,6 @@ pkgbase = r-cowplot
 	optdepends = r-forcats
 	optdepends = r-gridgraphics
 	optdepends = r-knitr
-	optdepends = r-lattice
 	optdepends = r-magick
 	optdepends = r-maps
 	optdepends = r-paswr
@@ -31,4 +30,3 @@ pkgbase = r-cowplot
 	sha256sums = c7dce625b456dffc59ba100c816e16226048d12fdd29a7335dc1f6f6e12eed48
 
 pkgname = r-cowplot
-

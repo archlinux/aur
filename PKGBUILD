@@ -10,7 +10,7 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=('r>=3.5.0' 'r-ggplot2>=2.2.1' r-gtable r-rlang r-scales)
-optdepends=(r-cairo r-covr r-dplyr r-forcats r-gridgraphics r-knitr r-lattice r-magick r-maps r-paswr r-patchwork r-rmarkdown r-ragg r-testthat r-tidyr r-vdiffr r-venndiagram)
+optdepends=(r-cairo r-covr r-dplyr r-forcats r-gridgraphics r-knitr r-magick r-maps r-paswr r-patchwork r-rmarkdown r-ragg r-testthat r-tidyr r-vdiffr r-venndiagram)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('c7dce625b456dffc59ba100c816e16226048d12fdd29a7335dc1f6f6e12eed48')
 
