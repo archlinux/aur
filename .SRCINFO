@@ -1,12 +1,12 @@
 pkgbase = abinit
 	pkgdesc = Full-featured atomic-scale first-principles simulation software.
-	pkgver = 9.4.2
+	pkgver = 9.6.2
 	pkgrel = 1
 	url = https://www.abinit.org/
 	arch = i686
 	arch = x86_64
 	license = GPLv3
-	makedepends = gcc8-fortran
+	makedepends = gcc-fortran
 	makedepends = perl
 	depends = lapack
 	depends = blas
@@ -15,7 +15,7 @@ pkgbase = abinit
 	depends = netcdf-fortran
 	depends = hdf5
 	depends = libxc
-	source = https://www.abinit.org/sites/default/files/packages/abinit-9.4.2.tar.gz
-	sha512sums = 35417e8bff9b0ff06471b994625e43b8d6e35bb32771a38b60c0f4f07946853e9e6a1189b36b548011a93d54008a4ebbdcabf318a654e46ee6e6e2664be7f4cb
+	source = https://www.abinit.org/sites/default/files/packages/abinit-9.6.2.tar.gz
+	sha512sums = 63c565362f03b7015ba2326213102f4ea9421756d3b4076debf5384057f6c7855afe3cab35160b18fceba8fddc864847ec351995cbf485077a2dc7b932b49631
 
 pkgname = abinit
