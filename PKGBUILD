@@ -1,6 +1,6 @@
 # Maintainer: Carson Rueter <roachh at proton mail dot com>
 pkgname=vscodium-bin-features
-pkgver=1.56.0
+pkgver=1.63.2
 pkgrel=1
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
@@ -18,5 +18,5 @@ md5sums=('9c0fcfdb3427f4a7705114eedbd3b6b8'
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
-  install -Dm 755 "${srcdir}/patch.sh" "${pkgdir}/usr/share/${pkgname}/patch.sh"
+  install -Dm 755 "${srcdir}/patch.sh" "${pkgdir}/opt/${pkgname}/patch.sh"
 }
