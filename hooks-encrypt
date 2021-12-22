@@ -162,7 +162,7 @@ _mnt_dev() {
 
 _verify_checksum() {
     local _status
-    cd "/run/archiso/bootmnt/${archisobasedir}/${arch}" || exit 1
+    cd "${bootmnt}/${archisobasedir}/${arch}" || exit 1
     sha512sum -c airootfs.sha512 >/tmp/checksum.log 2>&1
     _status=$?
     cd -- "${OLDPWD}" || exit 1
@@ -172,14 +172,14 @@ _verify_checksum() {
 _verify_signature() {
     local _status
     local sigfile="${1}"
-    cd "/run/archiso/bootmnt/${archisobasedir}/${arch}" || exit 1
+    cd "${bootmnt}/${archisobasedir}/${arch}" || exit 1
     gpg --homedir /gpg --status-fd 1 --verify "${sigfile}" 2>/dev/null | grep -qE '^\[GNUPG:\] GOODSIG'
     _status=$?
     cd -- "${OLDPWD}" || exit 1
     return ${_status}
 }
 
-_archiso_device() {
+_archisodevice() {
 
     # This is a custom handler to search iso9660 block device
 
@@ -189,28 +189,52 @@ _archiso_device() {
       then
         for device in /dev/disk/by-id/*;
           do
-
             dev_label=$(blkid -s LABEL -o value "${device}")
             dev_type=$(blkid -s TYPE -o value "${device}")
-
             if [ "${dev_label}" = "${archisolabel}" ] && [ "${dev_type}" = "iso9660" ];
               then
                   archisodevice="${device}"
                   break
             fi
-          done
+        done
+
+	# Give priority to images on USB devices
+        for device in /dev/disk/by-id/*;
+          do
+            dev_label=$(blkid -s LABEL -o value "${device}")
+            dev_type=$(blkid -s TYPE -o value "${device}")
+	    dev_bus=$(udevadm info --query=all --name="${device}" | /usr/bin/grep ID_BUS)
+            if [ "${dev_label}" = "${archisolabel}" ] && [ "${dev_type}" = "iso9660" ] && [ "${dev_bus}" = "E: ID_BUS=usb" ];
+              then
+                  archisodevice="${device}"
+                  break
+            fi
+        done
+    fi
+}
+
+_arch() {
+    arch="$(uname -m)"
+    if [ "${arch}" = 'i686' ]; then
+        for img_arch_avail in "${bootmnt}/arch"/*; do
+	    arch_avail=$(basename "${img_arch_avail}")
+	    if [ "${arch_avail}" = 'pentium4' ]; then
+                arch="pentium4"
+		break
+	    fi
+	done
     fi
 }
 
 run_hook() {
-    [ -z "${arch}" ] && arch="$(uname -m)"
+    [ -z "${bootmnt}" ] && bootmnt="/run/archiso/bootmnt"
     [ -z "${copytoram_size}" ] && copytoram_size="75%"
     [ -z "${archisobasedir}" ] && archisobasedir="arch"
     [ -z "${dm_snap_prefix}" ] && dm_snap_prefix="arch"
     # shellcheck disable=SC2154
     # defined via initcpio's parse_cmdline()
-    [ -z "${archisodevice}" ] && _archiso_device
-    [ -z "${cow_spacesize}" ] && cow_spacesize="256M"
+    [ -z "${archisodevice}" ] && _archisodevice
+    [ -z "${cow_spacesize}" ] && cow_spacesize="1024M"
     # shellcheck disable=SC2154
     # defined via initcpio's parse_cmdline()
     if [ -n "${cow_label}" ]; then
@@ -238,19 +262,21 @@ archiso_mount_handler() {
     local sigfile
 
     # Debug criptazione
-    # See _archiso_device for $archisodevice
+    # See _archisodevice for $archisodevice
 
-    if ! mountpoint -q "/run/archiso/bootmnt"; then
-        _mnt_dev "${archisodevice}" "/run/archiso/bootmnt" "-r" "defaults"
+    if ! mountpoint -q "${bootmnt}"; then
+        _mnt_dev "${archisodevice}" "${bootmnt}" "-r" "defaults"
         if [ "${copytoram}" != "y" ]; then
             readlink -f "${archisodevice}" >>/run/archiso/used_block_devices
         fi
     fi
 
+    [ -z "${arch}" ] && _arch
+
     # shellcheck disable=SC2154
     # defined via initcpio's parse_cmdline()
     if [ "${checksum}" = "y" ]; then
-        if [ -f "/run/archiso/bootmnt/${archisobasedir}/${arch}/airootfs.sha512" ]; then
+        if [ -f "${bootmnt}/${archisobasedir}/${arch}/airootfs.sha512" ]; then
             msg -n ":: Self-test requested, please wait..."
             if _verify_checksum; then
                 msg "done. Checksum is OK, continue booting."
@@ -268,10 +294,10 @@ archiso_mount_handler() {
     # shellcheck disable=SC2154
     # defined via initcpio's parse_cmdline()
     if [ "${verify}" = "y" ]; then
-        if [ -f "/run/archiso/bootmnt/${archisobasedir}/${arch}/airootfs.sfs.sig" ]; then
+        if [ -f "${bootmnt}/${archisobasedir}/${arch}/airootfs.sfs.sig" ]; then
             sigfile="airootfs.sfs.sig"
 
-        elif [ -f "/run/archiso/bootmnt/${archisobasedir}/${arch}/airootfs.erofs.sig" ]; then
+        elif [ -f "${bootmnt}/${archisobasedir}/${arch}/airootfs.erofs.sig" ]; then
             sigfile="airootfs.erofs.sig"
         fi
         if [ -n "${sigfile}" ]; then
@@ -306,11 +332,11 @@ archiso_mount_handler() {
     mkdir -p "/run/archiso/cowspace/${cow_directory}"
     chmod 0700 "/run/archiso/cowspace/${cow_directory}"
 
-    if [ -f "/run/archiso/bootmnt/${archisobasedir}/${arch}/airootfs.sfs" ]; then
-        _mnt_sfs "/run/archiso/bootmnt/${archisobasedir}/${arch}/airootfs.sfs" "/run/archiso/airootfs"
+    if [ -f "${bootmnt}/${archisobasedir}/${arch}/airootfs.sfs" ]; then
+        _mnt_sfs "${bootmnt}/${archisobasedir}/${arch}/airootfs.sfs" "/run/archiso/airootfs"
 
-    elif [ -f "/run/archiso/bootmnt/${archisobasedir}/${arch}/airootfs.erofs" ]; then
-        _mnt_erofs "/run/archiso/bootmnt/${archisobasedir}/${arch}/airootfs.erofs" "/run/archiso/airootfs"
+    elif [ -f "${bootmnt}/${archisobasedir}/${arch}/airootfs.erofs" ]; then
+        _mnt_erofs "${bootmnt}/${archisobasedir}/${arch}/airootfs.erofs" "/run/archiso/airootfs"
     fi
 
     if [ -f "/run/archiso/airootfs/airootfs.img" ]; then
@@ -320,8 +346,8 @@ archiso_mount_handler() {
     fi
 
     if [ "${copytoram}" = "y" ]; then
-        umount -d /run/archiso/bootmnt
-        rmdir /run/archiso/bootmnt
+        umount -d "${bootmnt}"
+        rmdir "${bootmnt}"
     fi
 }
 

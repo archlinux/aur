@@ -4,25 +4,30 @@
 
 _pkgname=cryptsetup
 pkgname=$_pkgname-archiso
-pkgver=2.4.1
-pkgrel=1
+pkgver=2.4.0
+pkgrel=2
 pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt'
-arch=(x86_64)
+arch=('i686' 'pentium4' 'x86_64')
 license=('GPL')
 url='https://gitlab.com/cryptsetup/cryptsetup/'
-depends=('device-mapper' 'libdevmapper.so' 'openssl' 'popt' 'util-linux-libs'
-         'libuuid.so' 'json-c' 'libjson-c.so' 'argon2' 'libargon2.so')
+depends=('device-mapper'
+         'openssl'
+         'popt'
+         'util-linux-libs'
+         'json-c'
+         'argon2')
 makedepends=('util-linux')
-provides=('libcryptsetup.so' 'cryptsetup')
-conflicts=('cryptsetup')
-replaces=('cryptsetup')
+provides=('libcryptsetup.so=12-32'
+          'libcryptsetup.so'
+          "${_pkgname}=$pkgver")
+conflicts=("${_pkgname}")
 options=('!emptydirs')
 validpgpkeys=('2A2918243FDE46648D0686F9D9B0577BD93E98FC') # Milan Broz <gmazyland@gmail.com>
 source=("https://www.kernel.org/pub/linux/utils/cryptsetup/v${pkgver%.*}/${_pkgname}-${pkgver}.tar."{xz,sign}
         'hooks-encrypt'
         'install-encrypt'
         'install-sd-encrypt')
-sha256sums=('a356a727a83a464ade566e95239622a22dbe4e0f482b198fdb04ab0d3a5a9c5f'
+sha256sums=('c5c8bda31159a9c010ea72e708053cc4252cf5eebdca520e150abc0609287ff8'
             'SKIP'
             'SKIP'
             'd325dc239ecc9a5324407b0782da6df2573e8491251836d6c4e65fa61339ce57'
