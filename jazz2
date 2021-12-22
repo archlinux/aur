@@ -1,0 +1,4 @@
+#!/bin/sh
+pushd /opt/jazz2-bin/
+	mono Jazz2.exe
+popd

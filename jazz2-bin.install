@@ -1,0 +1,7 @@
+post_install() {
+	echo "	Use /usr/bin/jazz2import with root permissions to import Jazz Jackrabbit 2 asssets."
+}
+
+post_remove() {
+	echo "	Game assets at /opt/jazz2-bin/Content were not removed."
+}
