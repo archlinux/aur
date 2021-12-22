@@ -1,0 +1,10 @@
+diff --git a/build-aux/clippy.sh b/build-aux/clippy.sh
+index f60004b..22bdf6a 100644
+--- a/build-aux/clippy.sh
++++ b/build-aux/clippy.sh
+@@ -8,4 +8,4 @@ if [[ $OFFLINE = "true" ]]; then
+     export CARGO_HOME="$SRC"/cargo
+ fi
+ 
+-cargo clippy --manifest-path "$SRC"/Cargo.toml -- -D warnings -A clippy::module_inception -A clippy::new_without_default
++cargo clippy --manifest-path "$SRC"/Cargo.toml -- -D warnings -A clippy::module_inception -A clippy::new_without_default -A dead-code -A clippy::large-enum-variant -A clippy::redundant-closure -A clippy::derivable-impls
