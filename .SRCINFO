@@ -1,0 +1,13 @@
+pkgbase = profile-sync-daemon-librewolf
+	pkgdesc = LibreWolf browser support for profile-sync-daemon
+	pkgver = 2021.12.22
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = profile-sync-daemon
+	optdepends = librewolf
+	optdepends = librewolf-bin
+	source = librewolf
+	md5sums = ea39ab0db834b0f61cc7cb0a92fe71e7
+
+pkgname = profile-sync-daemon-librewolf
