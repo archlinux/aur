@@ -1,46 +1,32 @@
-# Maintainer: Sebastian Bøe <sebastianbooe@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Sebastian Bøe <sebastianbooe@gmail.com>
+
 pkgname=icestorm-git
-pkgver=r170.da6ad20
+pkgver=r788.83b8ef9
 pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
-arch=('x86_64')
-url="http://www.clifford.at/icestorm/"
-license=('custom:ISC')
-depends=('python' 'libftdi-compat')
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/cliffordwolf/icestorm.git')
-md5sums=('SKIP')
-_prefix="/usr"
+arch=(x86_64)
+url="https://github.com/YosysHQ/icestorm"
+license=(ISC)
+depends=(python libftdi-compat)
+makedepends=(git clang)
+provides=(icestorm)
+conflicts=(icestorm)
+source=("git+https://github.com/YosysHQ/icestorm.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${srcdir}/icestorm"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-
-    # Icestorm defaults to clang. We prefer to use gcc because it is
-    # more widespread on Arch (gcc is in base-devel).
-    CXX=gcc
-
-    make \
-        CXX=$CXX \
-        PREFIX=$_prefix
+	cd "${srcdir}/icestorm"
+	make PREFIX="/usr"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-
-	# Move the license file into place
-	install -dm 755        "$pkgdir/usr/share/licenses/$pkgname"
-	install -m  644 README "$pkgdir/usr/share/licenses/$pkgname"
-
-	# Install the package
-	make \
-      DESTDIR="$pkgdir" \
-      PREFIX=$_prefix \
-      install
+	cd "${srcdir}/icestorm"
+	make PREFIX="/usr" DESTDIR="${pkgdir}" install
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
