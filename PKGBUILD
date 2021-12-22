@@ -2,7 +2,7 @@
 
 pkgname=sshpass-svn
 pkgver=r77
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for non-interactivly performing password authentication"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/sshpass/"
@@ -11,7 +11,6 @@ depends=('glibc' 'openssh')
 makedepends=('subversion')
 provides=('sshpass')
 conflicts=('sshpass')
-options=('staticlibs')
 source=("svn+https://svn.code.sf.net/p/sshpass/code/trunk")
 sha256sums=('SKIP')
 
