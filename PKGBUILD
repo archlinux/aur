@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=rbspy-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Sampling profiler for Ruby"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "rbspy-v${pkgver}-x86_64-musl.tar.gz::https://github.com/rbspy/rbspy/releases/download/v${pkgver}/rbspy-x86_64-musl.tar.gz"
 )
 sha256sums=(
-  '42a8e236ef2f6bf8887ea4d9d7540b6297ed9c8d08a1fcfe401a90b193fac40f'
+  '7aa909998bfd6035362388d1e6302e6863f54f476977b74fffb06b77b5996566'
 )
 
 package() {
