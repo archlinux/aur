@@ -1,0 +1,12 @@
+pkgbase = fq-bin
+	pkgdesc = Tool, language and decoders for inspecting binary data.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/wader/fq
+	arch = x86_64
+	license = custom
+	provides = fq
+	source = fq-0.0.2-1.tgz::https://github.com/wader/fq/releases/download/v0.0.2/fq_.tar.gz
+	sha256sums = a0b93ce71d03eb98b5f8106a1596540606ce1295c0cb1db6e459276e5df51269
+
+pkgname = fq-bin
