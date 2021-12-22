@@ -1,15 +1,14 @@
 pkgbase = ruby-unicode-display_width
 	pkgdesc = [Unicode 13.0.0] Determines the monospace display width of a string using EastAsianWidth.txt, Unicode general category, and other data
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/unicode-display_width
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = unicode-display_width-2.0.0.gem
+	noextract = unicode-display_width-2.1.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/unicode-display_width-2.0.0.gem
-	sha256sums = 55ec39f2a0bb8c8c3f0480200b28edbedd70473c27b84c5359531a89985d34ae
+	source = https://rubygems.org/downloads/unicode-display_width-2.1.0.gem
+	sha256sums = b6ff8c329fdbfcf67e4e6de642ba3df0f5e1e05935be9a2203333a0875aa5233
 
 pkgname = ruby-unicode-display_width
-
