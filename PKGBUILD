@@ -1,8 +1,8 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast
-pkgver=0.25.0
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -14,18 +14,11 @@ backup=('etc/default/snapserver' 'etc/default/snapclient' 'etc/snapserver.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive/v${pkgver}.tar.gz"
         "snapcast.sysusers"
         "snapcast.tmpfiles"
-        "snapcast.install"
-	"gcc11-fix.patch")
-sha256sums=('c4e449cb693e091261727421f4965492be049632537e034fa9c59c92d091a846'
+        "snapcast.install")
+sha256sums=('166353267a5c461a3a0e7cbd05d78c4bfdaebeda078801df3b76820b54f27683'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
-            '98cfdc3221270e3243f7dd0ca32f8c4b271258f32fc04fdb52a286f0986d7350'
-            '2416cb7ea68482df8a4e7b1005f95a54421741060ae0a1d7da829ab813b3e5a0')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/gcc11-fix.patch"
-}
+            '98cfdc3221270e3243f7dd0ca32f8c4b271258f32fc04fdb52a286f0986d7350')
 
 build() {
     cd "${pkgname}-${pkgver}"
