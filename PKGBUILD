@@ -1,7 +1,7 @@
 pkgbase=tal-reverb3
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://tal-software.com/products/tal-reverb-4"
 license=('EULA')
@@ -11,12 +11,8 @@ md5sums=('fc584bf672bd98ed07226a86b7aef303')
 
 package_tal-reverb3-vst() {
   groups=('pro-audio''vst-plugins')
-  conflicts=("distrho-ports")
-  replaces=("distrho-ports")
   pkgdesc="A Simple Algorithmic Reverb V3 By TAL Software (VST)"
-  mkdir -p $pkgdir/usr/lib/vst
-  cp -r ${srcdir}/libTAL-Reverb-3.so ${pkgdir}/usr/lib/vst/TAL-Reverb-3.so
-  chmod +x ${pkgdir}/usr/lib/vst/TAL-Reverb-3.so
+  install -Dm755 ${srcdir}/libTAL-Reverb-3.so ${pkgdir}/usr/lib/vst/libTAL-Reverb-3.so
 }
 
 package_tal-reverb3-vst3() {
