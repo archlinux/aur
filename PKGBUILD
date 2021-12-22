@@ -13,14 +13,14 @@ pkgdesc="Graphical Java application for managing BibTeX and biblatex (.bib) data
 arch=(any)
 url="https://www.jabref.org/"
 license=(MIT)
-depends=('archlinux-java-run>=7' 'java-runtime>=14')
-makedepends=('gradle' 'java-environment>=14')
+depends=('archlinux-java-run>=7' 'java-runtime>=16')
+makedepends=('gradle' 'java-environment>=16')
 options=(!strip !emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JabRef/jabref/archive/v${pkgver}.tar.gz
         jabref.sh
         jabref.desktop)
 sha256sums=('dd5b0b567065f65fb958875d9474eb854af1983dcbe98614fdeefdab55d06caf'
-            '3e611a4972bd1b336c6b6e98b1f19bb67672ab81b9db784b6326dffb40b1f9cd'
+            '52f6b327c2019d0f0a57ecd9a5401ae04dde9a80a58490b43f8000caf724e5dd'
             'c6c95fc980630bc72bd4adcc93c710702fe4fced3fcb26c3067eea0f3aad5c68')
 
 # Note on supported Java versions:
@@ -44,7 +44,7 @@ build() {
   mkdir -p "${srcdir}"/gradle
   export GRADLE_USER_HOME=${srcdir}/gradle
 
-  export JAVA_HOME=$(archlinux-java-run -a 14 -f jdk -j)
+  export JAVA_HOME=$(archlinux-java-run -a 16 -f jdk -j)
   echo "Using JDK from $JAVA_HOME to build JabRef."
 
   # ./gradlew \
