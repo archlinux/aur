@@ -1,15 +1,15 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-pak192.comic
-pkgver=0.6.RC1
+pkgver=0.6.RC2
 pkgrel=1
-pkgdesc="High resolution graphics set for Simutrans, with a comic style"
+pkgdesc='High resolution graphics set for Simutrans, with a comic style'
 arch=('any')
-url="https://www.simutrans.com/"
+url='https://www.simutrans.com/'
 license=('CC-BY-SA')
 provides=('simutrans-pak192.comic')
-source=(https://github.com/Flemmbrav/Pak192.Comic/releases/download/2021-V0.6-RC1/pak192.comic.0.6.RC1.with_addons.zip)
-sha256sums=('fccae14d2e37508b5532137b5a3b69b20cf1dc9132e123d0a04222b1a402f064')
+source=('https://github.com/Flemmbrav/Pak192.Comic/releases/download/2021-V0.6-RC2/pak192.comic.0.6.RC2.with_addons.zip')
+sha256sums=('a39b56bf485621ef9325772c07a6cd4bbc5101e29879fb0638974bdd556e6166')
 
 package() {
   cd "$srcdir"
