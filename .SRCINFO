@@ -1,0 +1,15 @@
+pkgbase = kast-bin
+	pkgdesc = Cast videos (with subtitles) straight from your PC.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/massultidev/kast/
+	arch = x86_64
+	license = MIT
+	makedepends = coreutils
+	makedepends = tar
+	provides = kast
+	options = !strip
+	source = https://bitbucket.org/massultidev/kast/downloads/setup_kast_1.1.0.bash
+	sha256sums = 465e6998748d3f3b7cf10cdf91db2734abd37e3a74360fbe489fa2bb2e66c725
+
+pkgname = kast-bin
