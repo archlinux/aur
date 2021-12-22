@@ -1,6 +1,6 @@
 pkgbase = cryptonose
 	pkgdesc = A free and open source desktop application that keeps track of significant price changes within small time periods (5 minutes, 30 minutes) on cryptocurrency markets
-	pkgver = 2.22.0
+	pkgver = 2.22.4
 	pkgrel = 1
 	url = https://dawidm.github.io/cryptonose2
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = cryptonose
 	depends = libxrender
 	depends = freetype2
 	depends = alsa-lib
-	source = cryptonose-2.22.0.deb::https://github.com/dawidm/cryptonose2/releases/download/v2.22.0/cryptonose_2.22.0-1_amd64.deb
-	sha256sums = 992d4e35ad9f8c7e6d688cffbb857851c2d0b942cc30d40b7e3a65009604bbbd
+	source = cryptonose-2.22.4.deb::https://github.com/dawidm/cryptonose2/releases/download/v2.22.4/cryptonose_2.22.4-1_amd64.deb
+	sha256sums = a67afec819b4b37db95245f626d0d793e7fb6a82a9b440452fef1babc96c2106
 
 pkgname = cryptonose
 
