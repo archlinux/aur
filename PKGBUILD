@@ -1,40 +1,39 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: maz-1 <ohmygod19993@gmail.com>
 
-pkgname=('qt5-heif-git')
-pkgbase=qt-heif-image-plugin
-pkgver=0.3.3.r4.g671166e
-pkgrel=4
-pkgdesc="Enables HEIF support in Qt applications"
+_pkgname=qt-heif-image-plugin
+pkgname=qt-heif-image-plugin-git
+pkgver=0.3.3.r6.g3ab3539
+pkgrel=2
+pkgdesc='Qt plugin for HEIF images'
 arch=('x86_64')
-url="https://github.com/jakar/qt-heif-image-plugin"
-license=('LGPL')
-depends=('libheif')
-makedepends=('cmake' 'qt5-base')
-provides=('qt5-heif')
-conflicts=('qt5-heif')
-source=('git+https://github.com/jakar/qt-heif-image-plugin.git' 'imagethumbnail-heif.desktop')
-sha256sums=('SKIP'
-            'e2810903300af8ff1689112faf6aa062c6112f387b0a643bf35082cd5ab8d14c')
+url='https://github.com/jakar/qt-heif-image-plugin'
+license=('LGPL3')
+depends=('qt5-base' 'libheif')
+makedepends=('cmake' 'git')
+provides=('qt5-heif-image-plugin')
+conflicts=('qt5-heif-image-plugin')
+source=('git+https://github.com/jakar/qt-heif-image-plugin.git'
+        'imagethumbnail-heif.desktop')
+sha512sums=('SKIP'
+            '68b0ad060322b3826ef12affc9615026f812a658227c3ff2ba178fb82683edb9a2286d0a30f15e64fdc241055a10d6732acf6b1f5f1ea5d6a43a31009c7b23d0')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
-  # cutting off 'v' prefix that presents in the git tag
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   mkdir -p build-qt5
   cd build-qt5
-  cmake "$srcdir/$pkgbase" -DCMAKE_INSTALL_PREFIX="/usr" -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5
+  cmake "../${_pkgname}" -DCMAKE_INSTALL_PREFIX="/usr" -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5
   make
 }
 
-package_qt5-heif-git() {
-  depends+=('qt5-base')
-
+package() {
   cd build-qt5
   make DESTDIR=$pkgdir install
-	
-  install -Dm755 "${srcdir}/imagethumbnail-heif.desktop" "${pkgdir}/usr/share/kservices5/imagethumbnail-heif.desktop"
+
+  install -Dm755 ../imagethumbnail-heif.desktop "${pkgdir}/usr/share/kservices5/imagethumbnail-heif.desktop"
 }
