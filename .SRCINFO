@@ -6,7 +6,6 @@ pkgbase = r-readxl
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
 	depends = r
 	depends = r-cellranger
 	depends = r-rcpp>=0.12.18
@@ -18,7 +17,6 @@ pkgbase = r-readxl
 	optdepends = r-rprojroot
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/readxl_1.3.1.tar.gz
-	md5sums = 2face1053adb5104f8347fcd1897d7ad
+	sha256sums = 24b441713e2f46a3e7c6813230ad6ea4d4ddf7e0816ad76614f33094fbaaaa96
 
 pkgname = r-readxl
-
