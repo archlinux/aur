@@ -1,6 +1,6 @@
 # Maintainer: Alexander Praehauser <ahprae@protonmail.com>
-_pkgbasename=om-sharp-bin
-pkgname=${_pkgbasename}
+_pkgbasename=om-sharp
+pkgname=${_pkgbasename-bin}
 pkgver=1.5
 pkgrel=1
 pkgdesc="Offshoot and inofficial successor to the OpenMusic composition software"
