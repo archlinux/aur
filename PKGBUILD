@@ -74,9 +74,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=87
+_minor=88
 _srcname=linux-${_major}
-_clr=${_major}.84-35
+_clr=${_major}.87-38
 pkgbase=linux-clear-lts2020
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -349,7 +349,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '393a3e5cb139f090798be70a69f6c56afb4d8116d86a2946ff93e0f9d24232f6'
+            'bfdd891c3ea96366269bbeb8dd4ba1eea61f0f050f623305ed519170cea260a5'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
