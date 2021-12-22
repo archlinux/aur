@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
 	pkgver = 4.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -85,7 +85,7 @@ pkgbase = ffmpeg-obs
 	provides = libswscale.so
 	conflicts = ffmpeg
 	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
-	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2021-11-15
+	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2021-12-22
 	source = vmaf-model-path.patch
 	sha256sums = SKIP
 	sha256sums = SKIP

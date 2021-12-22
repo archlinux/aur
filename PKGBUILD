@@ -57,7 +57,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=4.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -143,7 +143,7 @@ provides=(
 )
 conflicts=(ffmpeg)
 _tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
-_deps_tag=2021-11-15 # Yes, they made the tag wrong, it was made on 2021-12-15
+_deps_tag=2021-12-22
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
@@ -387,11 +387,6 @@ prepare() {
   cd ffmpeg
 
   ### Arch Linux changes
-
-  ## To fix nvenc on older gpus
-  # avcodec/nvenc: fix lossless tuning logic 
-  # https://github.com/FFmpeg/FFmpeg/commit/988f2e9eb063db7c1a678729f58aab6eba59a55b
-  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b
 
   ## Change default vmaf model path to Arch defaults
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
