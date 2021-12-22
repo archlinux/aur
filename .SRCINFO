@@ -7,6 +7,7 @@ pkgbase = r-desolve
 	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = gcc-fortran
 	depends = r>=3.3.0
 	optdepends = r-scatterplot3d
 	optdepends = r-fme
