@@ -53,7 +53,7 @@ _override_max_perf=
 pkgname=nvidia-tweaks
 pkgdesc="A collection of tweaks and improvements to the NVIDIA driver"
 pkgver=495
-pkgrel=3
+pkgrel=4
 license=('custom')
 url='https://www.nvidia.com/'
 depends=('NVIDIA-MODULE' 'nvidia-utils')
@@ -68,7 +68,7 @@ source=('nvidia.conf'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch-fbc.sh'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh')
 sha256sums=('038b1170ac750b0dbcd59f2758e8fa12bc807e87b39c079c0396e33d0f83b37f'
-            'e4a738f89b28d24283d65a04c975a863af88ea9caba90f80dd71e485d682170b'
+            'db6ec617e27de2872fc56ea0e04da3f75d07f0ed9022dce89aa36fa01f4b3ea9'
             '81464bfeda86b9683a6f739a1cec1a2fe37717af5480671be70fe43f51fba420'
             'b4bde9eecd90fc9498a8d47c7bb7edfe877ae64ea9e7069c405710a76c749144'
             'c8fd71e3885b18c88c800cc9693112846d1889a008ae7dc6cbc9bb6fadd67ec6'
