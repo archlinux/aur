@@ -6,7 +6,7 @@
 pkgbase=tsmclient
 pkgname=(tsmclient-service tsmclient-dkms)
 pkgver=8.1.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="IBM Tivoli Storage Manager Client"
 arch=('x86_64')
 url="http://www-03.ibm.com/software/products/en/tivostormana/"
@@ -37,9 +37,9 @@ source=(
 	jbb_version.h
 )
 
-sha1sums=('5fed2e5105b262623744d44f9c81b6496ac34c63'
-          '9ebfc76be666a44675f0d8e25a37dbe36242c725'
-          '46b7b0a46ee50a49d33fd23e0b0a682f162eda65')
+sha256sums=('a42eec3384929e63648ea82904dfdb0d69d627f85653e5eca1d32cfd75e0cbdc'
+	    '6ae5ff0c4c23138573ec8254cfc45c7f0883f43dbcede57ded5831ae9d233bf3'
+	    'b47806d7307fc955469f5b46b9f23cad24f72725a204380d369013c8d9fde88d')
 
 prepare() {
 	cd "$srcdir/"
