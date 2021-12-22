@@ -1,5 +1,5 @@
-#Maintainer: max-k <max-k AT post DOT com>
-#Contributor: BoBeR182 <aur AT nullvoid DOT me>
+#Maintainer: BoBeR182 <aur AT nullvoid DOT me>
+#Contributor: max-k <max-k AT post DOT com>
 pkgname=ampache
 pkgver=5.2.0
 pkgrel=1
