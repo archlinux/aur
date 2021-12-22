@@ -1,7 +1,7 @@
 pkgbase = opencascade-cadquery
 	pkgdesc = Opencascade for python-cadquery
 	pkgver = 7.5.3p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.opencascade.org/
 	arch = x86_64
 	license = LGPL
@@ -19,8 +19,10 @@ pkgbase = opencascade-cadquery
 	source = opencascade-cadquery-7.5.3p1.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_5_3p1;sf=tgz
 	source = vtk9.patch
 	source = cmake.patch
+	source = opencascade-tbb-2021.patch
 	sha256sums = 0425c0aac2c77935f422791ab4e29adae3f7f3443a18835d52843df21309f356
 	sha256sums = ae24da8eac8b57af8f612c872c8ec1962b6e5243758aa39c92e805223fdfe157
 	sha256sums = b3a2583fd21576d454952894f92a2a9e710015051403a3759b4a2ccbfc78a048
+	sha256sums = b0c4601fd9b2905e4b3bc3ed8af1493960c80bfe10332a0c562c59786efd57a2
 
 pkgname = opencascade-cadquery
