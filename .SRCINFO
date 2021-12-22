@@ -1,7 +1,7 @@
 pkgbase = tsmclient
 	pkgdesc = IBM Tivoli Storage Manager Client
 	pkgver = 8.1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www-03.ibm.com/software/products/en/tivostormana/
 	arch = x86_64
 	license = proprietary

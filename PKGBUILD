@@ -6,7 +6,7 @@
 pkgbase=tsmclient
 pkgname=(tsmclient-service tsmclient-dkms)
 pkgver=8.1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Tivoli Storage Manager Client"
 arch=('x86_64')
 url="http://www-03.ibm.com/software/products/en/tivostormana/"
@@ -60,7 +60,8 @@ package_tsmclient-service() {
 
 	#cp -r "$srcdir/etc" "$pkgdir/"
 	cp -r "$srcdir/opt" "$pkgdir/"
-	cp -r "$srcdir/usr" "$pkgdir/"
+	install -d "$pkgdir"/usr
+	cp -r "$srcdir"/usr/{bin,lib64,local} "$pkgdir"/usr
         mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 
 	ln -s "/opt/tivoli/tsm/client/lang/EN_US" "$pkgdir/opt/tivoli/tsm/client/ba/bin/EN_US"
