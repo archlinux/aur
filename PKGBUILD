@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/ddosify/ddosify"
 license=('AGPL3')
 makedepends=('go' 'git')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('225f51f1e21c5ea27f4ebf963a143a122f6f62c340b4bccc495d76ccf4d2c73c')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b100d81bb8f6f7968fa32c8fdd51638e4b3416231ce71d3a7aab8cd6cfa3b938')
 
 prepare(){
   cd "$pkgname-$pkgver"
