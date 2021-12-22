@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='integration_dropbox'
-_upstreamver='v1.0.2'
+_upstreamver='v1.0.4'
 _upstreamver_regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='eneiluj/integration_dropbox'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_nextcloud_appname}-${pkgver}.tar.gz")
-sha512sums=('dbe1ea827ba9d6016dbe38799ac146055a184260e15d5e93008a63c5a753e16bdcd69b8d3ceb3d112ed7f403d9648049b022b302f64afe8a03ef17bb92f25783')
+sha512sums=('6e4117a3aad4a93555e3c7ab352b6d844724b52a41dfeff0cec0b03cf3e5670a099155db1251d66a1c356d75ac421268e4e020b30a5d98ffa2249791ec8cf1de')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"

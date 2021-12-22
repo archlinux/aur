@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-integration-dropbox
 	pkgdesc = Dropbox integration into Nextcloud
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/eneiluj/integration_dropbox
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = integration_dropbox-v1.0.2.tar.gz::https://github.com/eneiluj/integration_dropbox/releases/download/v1.0.2/integration_dropbox-1.0.2.tar.gz
-	sha512sums = dbe1ea827ba9d6016dbe38799ac146055a184260e15d5e93008a63c5a753e16bdcd69b8d3ceb3d112ed7f403d9648049b022b302f64afe8a03ef17bb92f25783
+	source = integration_dropbox-v1.0.4.tar.gz::https://github.com/eneiluj/integration_dropbox/releases/download/v1.0.4/integration_dropbox-1.0.4.tar.gz
+	sha512sums = 6e4117a3aad4a93555e3c7ab352b6d844724b52a41dfeff0cec0b03cf3e5670a099155db1251d66a1c356d75ac421268e4e020b30a5d98ffa2249791ec8cf1de
 
 pkgname = nextcloud-app-integration-dropbox
