@@ -3,7 +3,7 @@
 
 pkgname=icestorm-git
 pkgver=r788.83b8ef9
-pkgrel=1
+pkgrel=2
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
 arch=(x86_64)
 url="https://github.com/YosysHQ/icestorm"
@@ -16,17 +16,17 @@ source=("git+https://github.com/YosysHQ/icestorm.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/icestorm"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/icestorm"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/icestorm"
-	make PREFIX="/usr"
+  cd "${srcdir}/icestorm"
+  make PREFIX="/usr"
 }
 
 package() {
-	cd "${srcdir}/icestorm"
-	make PREFIX="/usr" DESTDIR="${pkgdir}" install
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/icestorm"
+  make PREFIX="/usr" DESTDIR="${pkgdir}" install
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
