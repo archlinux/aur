@@ -1,6 +1,6 @@
 pkgbase = spot-client-git
 	pkgdesc = Gtk/Rust native Spotify client - git version
-	pkgver = 0.2.0.r14.g2a591fe
+	pkgver = 0.2.2.r36.g899a46b
 	pkgrel = 1
 	url = https://github.com/xou816/spot
 	arch = x86_64
@@ -28,6 +28,8 @@ pkgbase = spot-client-git
 	provides = spot-client
 	conflicts = spot-client
 	source = spot-client-git::git+https://github.com/xou816/spot
+	source = clippy.diff
 	sha512sums = SKIP
+	sha512sums = 8051c21a00c981eef8f0b08f30b369f28cd08d9d8d13b9f05df61b8365fc8ea91534aea7f21fcad6f14b41577fdfc9eaaf64dbd720d051e302fc7222d8aaf599
 
 pkgname = spot-client-git

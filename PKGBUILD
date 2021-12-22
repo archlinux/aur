@@ -2,7 +2,7 @@
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 _projectname='spot'
 pkgname="$_projectname-client-git"
-pkgver='0.2.0.r14.g2a591fe'
+pkgver='0.2.2.r36.g899a46b'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,11 +14,22 @@ makedepends=('cargo' 'git' 'meson>=0.50.0')
 checkdepends=('appstream-glib')
 provides=("$_projectname-client")
 conflicts=("$_projectname-client")
-source=("$pkgname::git+$url")
-sha512sums=('SKIP')
+source=(
+	"$pkgname::git+$url"
+	'clippy.diff'
+)
+sha512sums=('SKIP'
+            '8051c21a00c981eef8f0b08f30b369f28cd08d9d8d13b9f05df61b8365fc8ea91534aea7f21fcad6f14b41577fdfc9eaaf64dbd720d051e302fc7222d8aaf599')
 
 _sourcedirectory="$pkgname"
 _builddirectory='build'
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Until they're fixed upstream, ignore some newly thrown errors from clippy 1.57
+	patch --forward -p1 < "$srcdir/clippy.diff"
+}
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
