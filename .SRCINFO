@@ -1,6 +1,6 @@
 pkgbase = ffmulticonverter-git
 	pkgdesc = Convert audio, video, image and document files between all popular formats
-	pkgver = 1.7.2.r26.g582403d
+	pkgver = 1.8.0.r2.gc47d47a
 	pkgrel = 1
 	url = https://sites.google.com/site/ffmulticonverter/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = ffmulticonverter-git
 	optdepends = imagemagick: for image conversions
 	optdepends = unoconv: for document conversions
 	conflicts = ffmulticonverter
-	source = ffmulticonverter-git::git+https://github.com/Ilias95/FF-Multi-Converter.git
+	source = ffmulticonverter-git::git+https://github.com/ilstam/FF-Multi-Converter.git
 	sha256sums = SKIP
 
 pkgname = ffmulticonverter-git
-

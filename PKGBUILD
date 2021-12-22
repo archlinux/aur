@@ -2,7 +2,7 @@
 # Contributor: Panagiotis Mavrogiorgos (pmav99) <> (gmail)
 
 pkgname=ffmulticonverter-git
-pkgver=1.7.2.r26.g582403d
+pkgver=1.8.0.r2.gc47d47a
 pkgrel=1
 pkgdesc="Convert audio, video, image and document files between all popular formats"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('ffmpeg: for video conversions'
             'unoconv: for document conversions')
 makedepends=('git')
 conflicts=('ffmulticonverter')
-source=("${pkgname}::git+https://github.com/Ilias95/FF-Multi-Converter.git")
+source=("${pkgname}::git+https://github.com/ilstam/FF-Multi-Converter.git")
 sha256sums=('SKIP')
 
 pkgver() {
