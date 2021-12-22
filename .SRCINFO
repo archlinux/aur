@@ -9,9 +9,9 @@ pkgbase = r-mnormt
 	license = GPL3
 	makedepends = gcc-fortran
 	depends = r>=2.2.0
+	depends = gcc-fortran
 	depends = r-tmvnsim>=1.0.2
 	source = https://cran.r-project.org/src/contrib/mnormt_2.0.2.tar.gz
 	sha256sums = 5c6aa036d3f1035ffe8f9a8e95bb908b191b126b016591cf893c50472851f334
 
 pkgname = r-mnormt
-
