@@ -1,6 +1,6 @@
 pkgbase = android-x86-libxml2
 	pkgdesc = XML parsing library, version 2 (android)
-	pkgver = 2.9.10
+	pkgver = 2.9.12
 	pkgrel = 1
 	url = http://www.xmlsoft.org/
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = android-x86-libxml2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
-	sha256sums = aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f
+	source = http://xmlsoft.org/sources/libxml2-2.9.12.tar.gz
+	md5sums = f433a39be087a9f0b197eb2307ad9f75
 
 pkgname = android-x86-libxml2
-
