@@ -82,7 +82,7 @@ pkgbase = linux-vfio-manjaro
 	sha256sums = 27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc
 	sha256sums = 60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d
 	sha256sums = 035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef
-	sha256sums = fa6e25c201aba840e050352cbc6dcfb1798e7cd626212f0d17921cebb402e116
+	sha256sums = ff3f6f1044aeaec1aa204eea81e0869b9440a3ef1ba1cb00045c7269d43ae99f
 
 pkgname = linux-vfio-manjaro
 	pkgdesc = The Linux-vfio-manjaro kernel and modules
