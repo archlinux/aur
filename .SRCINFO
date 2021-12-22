@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-cli
 	pkgdesc = The Mullvad VPN CLI client
 	pkgver = 2021.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = mullvad-vpn-cli
 	depends = iputils
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
+	options = !lto
 	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2021.6?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=19a97997b188855d0ba5aedb7419683df45d93bc?signed
 	source = override.conf
