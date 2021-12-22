@@ -7,8 +7,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=jabref
-pkgver=5.3
-pkgrel=3
+pkgver=5.4
+pkgrel=1
 pkgdesc="Graphical Java application for managing BibTeX and biblatex (.bib) databases"
 arch=(any)
 url="https://www.jabref.org/"
@@ -19,7 +19,7 @@ options=(!strip !emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JabRef/jabref/archive/v${pkgver}.tar.gz
         jabref.sh
         jabref.desktop)
-sha256sums=('a75f471304d39bc2a8eb6fa99b4d249b6d71d9243b453e3baa60fde71cf93705'
+sha256sums=('dd5b0b567065f65fb958875d9474eb854af1983dcbe98614fdeefdab55d06caf'
             '4b2744dce0640db52891cbd55e2548650a79a88bf9770c2ae460f9ed577fddcd'
             'c6c95fc980630bc72bd4adcc93c710702fe4fced3fcb26c3067eea0f3aad5c68')
 
