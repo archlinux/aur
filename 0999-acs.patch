@@ -125,7 +125,7 @@
  /*
   * Decoding should be disabled for a PCI device during BAR sizing to avoid
   * conflict. But doing so may cause problems on host bridge and perhaps other
-@@ -4949,6 +5049,8 @@
+@@ -4949,6 +4949,8 @@
         { PCI_VENDOR_ID_NXP, 0x8d9b, pci_quirk_nxp_rp_acs },
         /* Zhaoxin Root/Downstream Ports */
         { PCI_VENDOR_ID_ZHAOXIN, PCI_ANY_ID, pci_quirk_zhaoxin_pcie_ports_acs },
