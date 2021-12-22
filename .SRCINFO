@@ -1,7 +1,7 @@
 pkgbase = proton-caller
 	pkgdesc = Run any Windows program through Proton
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caverym/Proton-Caller/
 	arch = x86_64
 	license = MIT

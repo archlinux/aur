@@ -4,7 +4,7 @@ _pkgname=proton-call
 pkgname=proton-caller
 __pkgname=Proton-Caller
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
 url="https://github.com/caverym/Proton-Caller/"
@@ -29,5 +29,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 target/release/proton-call "$pkgdir"/usr/bin/proton-call
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 proton.conf "pkgdir"/usr/share/proton-caller/example.conf
+  install -Dm755 proton.conf "$pkgdir"/usr/share/proton-caller/example.conf
 }
