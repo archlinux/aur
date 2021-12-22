@@ -2,7 +2,7 @@
 # Past maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=ruby-progressbar
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A text progress bar library for Ruby"
 arch=(any)
@@ -13,7 +13,7 @@ provides=("ruby-ruby-progressbar")
 conflicts=("ruby-ruby-progressbar")
 makedepends=(rubygems)
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
-sha256sums=("ee23400615f91c2ce6bc1e3bfa98392302ef38cbba8ad6de1bc26a4e1a88e7cc")
+sha256sums=("cc127db3866dc414ffccbf92928a241e585b3aa2b758a5563e74a6ee0f57d50a")
 noextract=($pkgname-$pkgver.gem)
 
 package() {
