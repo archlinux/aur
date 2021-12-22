@@ -5,11 +5,11 @@ pkgdesc='Celo Terminal'
 license=('MIT')
 url='https://github.com/zviadm/celoterminal'
 pkgver=1.11.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 # Need nodejs v12 for better-sqlite3 v7.1.2 :(
-depends=('nodejs')
-makedepends=('nodejs-lts-erbium' 'yarn' 'python2')
+depends=('libusb')
+makedepends=('nodejs-lts-erbium' 'yarn' 'python2' 'git' 'systemd' 'nss' 'gtk3' 'gdk-pixbuf2')
 
 _pkgsrc="Celo Terminal-${pkgver}-linux-x86_64.AppImage"
 

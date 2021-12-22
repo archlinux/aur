@@ -1,14 +1,19 @@
 pkgbase = celoterminal
 	pkgdesc = Celo Terminal
 	pkgver = 1.11.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zviadm/celoterminal
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs-lts-erbium
 	makedepends = yarn
 	makedepends = python2
-	depends = nodejs
+	makedepends = git
+	makedepends = systemd
+	makedepends = nss
+	makedepends = gtk3
+	makedepends = gdk-pixbuf2
+	depends = libusb
 	source = https://github.com/zviadm/celoterminal/archive/refs/tags/v1.11.8.tar.gz
 	sha512sums = f9764b53449e34609236ae3412e2cc7a4ed1d051990218753929ee9e534f06de6b670b8a77c5e7ea411951faff0dfe1b2892f4b300ae9cd7a71945d8eb278cb9
 
