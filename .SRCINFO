@@ -1,6 +1,6 @@
 pkgbase = caddy-cloudflare
 	pkgdesc = Caddy web server
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = any
