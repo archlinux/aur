@@ -1,6 +1,6 @@
 pkgbase = hornet-bin
 	pkgdesc = Powerful, community driven IOTA fullnode software written in Go (official precompiled binary)
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/gohornet/hornet
 	install = hornet.install
@@ -20,9 +20,9 @@ pkgbase = hornet-bin
 	source = hornet.tmpfiles
 	sha256sums = a3f57844e655d3691814a8c181594f9ea2a8948f730a7493a0538856e895e6dc
 	sha256sums = a4019c885241329bfe5e091d0698cce1303a0ec8ce404f2e2dccbd5516c829c5
-	source_x86_64 = https://github.com/gohornet/hornet/releases/download/v1.1.0/hornet_1.1.0_amd64.deb
-	sha256sums_x86_64 = 603d51712c21b1bb5b4e0528a56346b853b2b40badf2ff6c912b5538a38f8f67
-	source_aarch64 = https://github.com/gohornet/hornet/releases/download/v1.1.0/hornet_1.1.0_arm64.deb
-	sha256sums_aarch64 = 8ae1278f220d0999fa92bed63c07758663d0acb0de3943a204569c19828176e7
+	source_x86_64 = https://github.com/gohornet/hornet/releases/download/v1.1.1/hornet_1.1.1_amd64.deb
+	sha256sums_x86_64 = ccb5857cb48c0c76a5ba2467001255d8ffedd3a704d37b1272f77d1598851bed
+	source_aarch64 = https://github.com/gohornet/hornet/releases/download/v1.1.1/hornet_1.1.1_arm64.deb
+	sha256sums_aarch64 = abc2cf2b4e4361fc4758e565c04ae951c11fe83abfbe6559da7920a97ba855a2
 
 pkgname = hornet-bin
