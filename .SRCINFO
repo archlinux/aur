@@ -9,7 +9,7 @@ pkgbase = r-loo
 	depends = r-checkmate
 	depends = r-matrixstats>=0.52
 	depends = pandoc>=1.12.3
-	depends = pandoc-citeproc
+	depends = haskell-citeproc
 	optdepends = r-bayesplot
 	optdepends = r-brms
 	optdepends = r-ggplot2
@@ -24,4 +24,3 @@ pkgbase = r-loo
 	sha256sums = bc21fb6b4a93a7e95ee1be57e4e787d731895fb8b4743c26b30b43adee475b50
 
 pkgname = r-loo
-
