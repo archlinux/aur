@@ -20,4 +20,3 @@ pkgbase = r-processx
 	sha256sums = ed6f2d1047461c6061e6ed58fb6de65a289b56009867892abad76c6bba46fc2b
 
 pkgname = r-processx
-
