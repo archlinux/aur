@@ -1,0 +1,21 @@
+pkgbase = om-sharp-bin
+	pkgdesc = Offshoot and inofficial successor to the OpenMusic composition software
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://cac-t-u-s.github.io/
+	arch = x86_64
+	license = GPL3
+	makedepends = rsync
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = portmidi
+	depends = libsndfile
+	optdepends = jack: JACK audio support
+	optdepends = libsamplerate: speed up audio-waveform drawing
+	provides = om-sharp-bin
+	conflicts = om-sharp-bin
+	options = !strip
+	source = https://github.com/cac-t-u-s/om-sharp/releases/download/v1.5/om-sharp-bin-1.5-1.deb
+	sha256sums = 49de7fec06b8f3d44f0abff0275fea8c6906b6fa3f97d84eb01eb52414686165
+
+pkgname = om-sharp-bin
