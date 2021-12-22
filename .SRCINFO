@@ -1,0 +1,16 @@
+pkgbase = clementeyene
+	pkgdesc = simple bash script that gets Clementine Music Player status over dbus
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://git.envs.net/Slips/clementeyene
+	arch = i386
+	arch = x86_64
+	license = GPL3
+	depends = clementine
+	depends = dbus
+	depends = gawk
+	depends = sed
+	source = https://github.com/Slips-PC/clementeyene/releases/download/v1.1.0/clementeyene-v1.1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = clementeyene
