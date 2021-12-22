@@ -3,7 +3,7 @@
 
 pkgname=vscodium-bin-marketplace
 pkgver=1.56.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Enable vscode marketplace in vscodium-bin'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
@@ -12,8 +12,8 @@ depends=('vscodium-bin' 'sed')
 install="${pkgname}.install"
 source=('vscodium-bin-marketplace.hook'
         'patch.sh')
-md5sums=('c021871847b6b57c373285243c155927'
-         '9953b36f67bee0466c28a07e1faf090e')
+sha256sums=('bd53744ef5bd5b0521af26f9f0774e92f39d37a19d3fb76ed764e591e8052c00'
+         '891ff64322af487b247e12548042ab24aa21236e383011787260093d6ae5500a')
 package() {
   install -Dm 644 "${srcdir}"/vscodium-bin-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/vscodium-bin-marketplace.hook
   install -Dm 755 "${srcdir}"/patch.sh "${pkgdir}"/opt/vscodium-bin/resources/app/patch.sh
