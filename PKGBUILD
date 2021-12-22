@@ -1,6 +1,6 @@
 # Maintainer: Slips slipfox_xyz@riseup.net>
 pkgname=clementeyene
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="simple bash script that gets Clementine Music Player status over dbus"
