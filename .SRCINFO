@@ -1,6 +1,6 @@
 pkgbase = deckmaster
 	pkgdesc = An application to control your Elgato Stream Deck
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/muesli/deckmaster
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = deckmaster
 	makedepends = git
 	makedepends = go
 	depends = ttf-roboto
-	source = https://github.com/muesli/deckmaster/archive/v0.5.1/deckmaster-0.5.1.tar.gz
-	sha256sums = 9a31cfabdc2a8596513adf994a39ce91e2af78e949a009639e886357b321549f
+	source = https://github.com/muesli/deckmaster/archive/v0.6.0/deckmaster-0.6.0.tar.gz
+	sha256sums = 7f091e3cf9b792f4a36029eb6d487ee79a81c2f09fdf902e6d2a58db040a30e1
 
 pkgname = deckmaster
