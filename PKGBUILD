@@ -14,17 +14,15 @@ sha512sums=('SKIP')
 prepare() {
   cd qwt-6.2
   
-  sed -e '/^\s*QWT_INSTALL_PREFIX/ s|=.*|= /usr|' \
-      -e '/^QWT_INSTALL_DOCS/ s|/doc|/share/doc/qwt|' \
-      -e '/^QWT_INSTALL_HEADERS/ s|include|&/qwt|' \
-      -e '/^QWT_INSTALL_PLUGINS/ s|plugins/designer|lib/qt/&|' \
-      -e '/^QWT_INSTALL_FEATURES/ s|features|lib/qt/mkspecs/&|' \
-      -i qwtconfig.pri
+  patch --forward -p1 -i ${srcdir}/../001-qwtconfig-arch.patch
+  sed -e '/^TARGET/ s|(qwt)|(qwt-qt$${QT_MAJOR_VERSION})|' \
+      -e '/^\s*QWT_SONAME/ s|libqwt|&-qt$${QT_MAJOR_VERSION}|' \
+      -i src/src.pro
 }
 
 build() {
   cd qwt-6.2
-  qmake-qt6 qwt.pro
+  qmake6 qwt.pro
   make
 }
 
@@ -32,6 +30,5 @@ package() {
   cd qwt-6.2
   make INSTALL_ROOT="${pkgdir}" install
 
-  mv "${pkgdir}/usr/share/doc/qwt/man" "${pkgdir}/usr/share"
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
