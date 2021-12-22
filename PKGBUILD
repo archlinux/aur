@@ -3,7 +3,7 @@ pkgname=base16
 pkgver=20170315
 pkgrel=1
 pkgdesc="base16 (hex) encode/decode data and print to standard output"
-url="https://github.com/mindfuckup/Scripts/blob/master/base16"
+url="https://github.com/emanuelduss/Scripts/blob/master/base16"
 license=('custom')
 source=('https://raw.githubusercontent.com/mindfuckup/Scripts/master/base16'
         'https://raw.githubusercontent.com/mindfuckup/Scripts/master/LICENSE')
