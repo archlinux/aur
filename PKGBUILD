@@ -19,8 +19,6 @@ depends=(
         'lynx-menu-data'
         'lynx-gtk-theme'
         'compiz'
-        'compiz-fusion-plugins-extra'
-        'compiz-fusion-plugins-main'
         )
 
 package() {

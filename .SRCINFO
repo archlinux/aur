@@ -14,8 +14,6 @@ pkgbase = lynx-desktop-settings
 	depends = lynx-menu-data
 	depends = lynx-gtk-theme
 	depends = compiz
-	depends = compiz-fusion-plugins-extra
-	depends = compiz-fusion-plugins-main
 	source = https://gitlab.com/LynxOS/lynx-desktop-settings/-/archive/0.0.8/lynx-desktop-settings-0.0.8.tar.gz
 	md5sums = c91e4f0d0f668922eea3e883c92c3ed1
 
