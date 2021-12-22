@@ -4,9 +4,10 @@ pkgbase = r-hms
 	pkgrel = 1
 	url = https://cran.r-project.org/package=hms
 	arch = any
-	license = GPL3
+	license = MIT
 	depends = r
 	depends = r-ellipsis>=0.3.2
+	depends = r-lifecycle
 	depends = r-pkgconfig
 	depends = r-rlang
 	depends = r-vctrs>=0.3.8
