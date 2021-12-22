@@ -2,7 +2,7 @@
 
 _pkgname=cwtch-server
 pkgname=cwtch-server-git
-pkgver=1.3.4.r0.ge6c184d
+pkgver=1.4.2.r0.gb9ca357
 pkgrel=1
 pkgdesc="Server for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)"
 arch=('x86_64')
