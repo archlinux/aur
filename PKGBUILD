@@ -12,7 +12,7 @@ license=(GPL2)
 depends=(r)
 optdepends=(r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('a76b0d9b5e1c2eb9cf960cb3b0f95b40')
+sha256sums=('c5b788b26f7118a18d5d8e7ba93a0abf3efa6603fa48603c70ed63c038d3d4dd')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
