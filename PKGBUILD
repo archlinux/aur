@@ -8,8 +8,8 @@ pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
-depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth' 'libpng')
-optdepends=('ncurses' 'munt: mt32 support')
+depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth' 'libpng' 'munt')
+optdepends=('ncurses')
 makedepends=('meson' 'ninja' 'gcc' 'gzip')
 provides=("dosbox")
 conflicts=("dosbox")
@@ -22,7 +22,7 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  meson setup --prefix /usr -Dbuildtype=release -Ddefault_library=static build
+  meson setup --prefix /usr -Dbuildtype=release build
 }
 
 build() {
