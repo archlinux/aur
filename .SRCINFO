@@ -1,0 +1,16 @@
+pkgbase = dh-golang
+	pkgdesc = debhelper add-on for packaging software written in Go
+	pkgver = 1.53
+	pkgrel = 1
+	url = https://salsa.debian.org/go-team/packages/dh-golang
+	arch = any
+	license = GPL
+	makedepends = perl-module-install
+	depends = perl>=5.10.0
+	depends = debhelper
+	depends = dpkg
+	options = !emptydirs
+	source = https://salsa.debian.org/go-team/packages/dh-golang/-/archive/debian/1.53/dh-golang-debian-1.53.tar.bz2
+	sha512sums = c17496c68c48e6d792bfef9d83aeb147be3f5cfc9e28ff746dbe584983905257925483a7323eb72a1119abc48a7a13fe114e82b9c2f55772c4a3379d8f3d5d51
+
+pkgname = dh-golang
