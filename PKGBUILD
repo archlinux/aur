@@ -3,7 +3,7 @@
 pkgname=pinephone-toolkit-git
 _pkgname=pinephone-toolkit
 pkgver=r9.0107cf9
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of tools and utility apps for the PINE64 PinePhone.'
 arch=(aarch64)
 url='https://github.com/Dejvino/pinephone-toolkit'
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	meson -Dprefix="$pkgdir/usr/bin" build
+	meson -Dprefix="$pkgdir/usr" build
 	cd build
 	ninja
 }
