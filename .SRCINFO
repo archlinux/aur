@@ -1,6 +1,6 @@
 pkgbase = dlt-viewer-git
 	pkgdesc = Diagnostic Log and Trace viewing program
-	pkgver = 2.21.2.r0.g6b336ee
+	pkgver = 2.21.2.r23.ga3c77c3
 	pkgrel = 1
 	url = https://github.com/COVESA/dlt-viewer
 	arch = x86_64

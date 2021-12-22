@@ -1,6 +1,6 @@
 # Maintainer: Ben Brown <benjamb at pm dot me>
 pkgname=dlt-viewer-git
-pkgver=2.21.2.r0.g6b336ee
+pkgver=2.21.2.r23.ga3c77c3
 pkgrel=1
 pkgdesc="Diagnostic Log and Trace viewing program"
 url="https://github.com/COVESA/dlt-viewer"
