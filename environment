@@ -1,4 +1,4 @@
-# Set the command-line arguments to pass to the server.
+# See https://livepeer.org/docs/video-miners/reference/configuration
 ARGS="-v 4 \
 	-nvidia all \
 	-transcoder \
