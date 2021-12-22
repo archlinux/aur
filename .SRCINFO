@@ -1,14 +1,13 @@
 pkgbase = cif2cell
 	pkgdesc = A command-line tool to generate the geometrical setup for various electronic structure codes from a CIF format file.
-	pkgver = 2.0.0a1
+	pkgver = 2.0.0a3
 	pkgrel = 1
 	url = https://cif2cell.sourceforge.io/
 	arch = any
 	license = GPLv3
 	depends = python3
 	depends = python-pycifrw
-	source = https://files.pythonhosted.org/packages/66/26/d1bd4f5af12adce87ea1a72bf54ec376f2a3cea3e89f1b433b9e3fe5eb8f/cif2cell-2.0.0a1.tar.gz
-	sha256sums = 7c0e4084afff9b00c4de10d240610ace4289138238408018f619ad19fe82cf56
+	source = https://files.pythonhosted.org/packages/0d/a4/ef5cfc41320afa99610f8693901df0f827fd774543140bcaed6c8a636475/cif2cell-2.0.0a3.tar.gz
+	sha256sums = 4875c0bc45caca743327b1245bdf63d902a980e0f09799c9671609126134719d
 
 pkgname = cif2cell
-
