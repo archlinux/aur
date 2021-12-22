@@ -2,9 +2,9 @@
 # Contributor: Radoslaw Mejer <radmen@radmen.info>
 
 pkgname=contentful-cli
-pkgver=1.9.41
+pkgver=1.9.43
 pkgrel=1
-pkgdesc="Official Contentful command line interface"
+pkgdesc="Official Contentful CLI"
 arch=('any')
 license=('MIT')
 url="https://github.com/contentful/contentful-cli"
@@ -13,7 +13,7 @@ makedepends=('npm')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('2f98eac5bcfaca36c976b2cb36edb6c0c9c68ff7eab3fc10d1194750a94459ed')
+sha256sums=('e112a9e48769fc8d92870b67e6d8b8eee1c36fbb539ef33ecb1764b2983f242f')
 
 PURGE_TARGETS=(*.1 *.1.txt info package.json)
 
