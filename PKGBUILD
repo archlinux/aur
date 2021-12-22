@@ -1,7 +1,7 @@
 
 _pkgname=minq_simple_https_file_hoster
 pkgname="${_pkgname}-git"
-pkgver=r2.7a67189d01d0bcdf5da842def65cf274fa9b76d9
+pkgver=r4.dfd726bba959d7fbe8dddfd0d173fa598118f0b9
 pkgrel=1
 epoch=
 pkgdesc="Host files easily"
