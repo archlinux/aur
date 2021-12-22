@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WoWs Monitor
+Comment=Matchmaking Monitor for World of Warships
+Path=/usr/share/wows-monitor
+Exec=/usr/share/wows-monitor/wows-monitor
+Icon=/usr/share/wows-monitor/resources/favicon-tray.png
+Categories=Game;Monitor;
+StartupNotify=true
+Terminal=false

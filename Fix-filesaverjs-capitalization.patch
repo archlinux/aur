@@ -1,0 +1,13 @@
+diff --git a/angular.json b/angular.json
+index 5ae2e00..77dea74 100644
+--- a/angular.json
++++ b/angular.json
+@@ -54,7 +54,7 @@
+               "fast-xml-parser"
+             ],
+             "scripts": [
+-              "node_modules/file-saver/dist/filesaver.js"
++              "node_modules/file-saver/dist/FileSaver.js"
+             ],
+             "customWebpackConfig": {
+               "path": "./angular.webpack.js"

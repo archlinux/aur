@@ -1,0 +1,14 @@
+diff --git a/electron-builder.json b/electron-builder.json
+index c4156e5..7959378 100644
+--- a/electron-builder.json
++++ b/electron-builder.json
+@@ -63,8 +63,7 @@
+     "category": "Utility.Monitor",
+     "icon": "dist/desktop/assets/icons",
+     "target": [
+-      "deb",
+-      "snap"
++      "dir"
+     ]
+   }
+ }

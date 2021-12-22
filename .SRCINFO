@@ -1,0 +1,22 @@
+pkgbase = wows-monitor-git
+	pkgdesc = Matchmaking Monitor for World of Warships
+	pkgver = 1.2.1.r350
+	pkgrel = 1
+	url = https://wows-monitor.com/
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	provides = wows-monitor
+	conflicts = wows-monitor
+	source = wows-monitor::git+https://github.com/SakuraIsayeki/wows-monitor-linux.git#branch=master
+	source = Fix-filesaverjs-capitalization.patch
+	source = Avoid-building-unnecessary-packages.patch
+	source = wows-monitor.desktop
+	sha512sums = SKIP
+	sha512sums = 039a304efaccafeeffb8b20a44b6ea1aa620c7372f339aa97ac425e8f860f217a5935bfb2f9033a5052a82abbdee14e01122b39c1d890db7dd4883d3c52e6fea
+	sha512sums = 89aa27ace75ac9e12b17a46007c82e6d4afc3f9e36711c3479d9f4916238c8581a832cf83970dfc4b05f289d91220c635db6106981d42d93a04f33c3462d5a17
+	sha512sums = b3e0739aecd40f93a360d9272997e7465e7831278be1b794367f0e4e994c61ffb9699c01ff11f2727adeead0adc1fd29f065cd996feddf85d35a6555bef0b43c
+
+pkgname = wows-monitor-git
