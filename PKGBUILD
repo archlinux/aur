@@ -7,7 +7,7 @@ pkgdesc="Jazz² Resurrection: An open-source reimplementation of Jazz Jackrabbit
 arch=('x86_64')
 url="http://deat.tk/jazz2/"
 license=('GPL3')
-depends=(mono)
+depends=(mono openal)
 options=("!strip")
 install="${pkgname}.install"
 
