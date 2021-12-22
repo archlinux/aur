@@ -4,7 +4,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='drawio'
-_upstreamver='v.1.0.1'
+_upstreamver='v.1.0.2'
 _upstreamver_regex='^v\.[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='pawelrojek/nextcloud-drawio'
@@ -22,8 +22,8 @@ depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/${_upstreamver}/${_nextcloud_appname}-v${pkgver}.tar.gz")
 
-md5sums=('f5428d4881d12e32126fb881e5776e39')
-sha256sums=('db62c7184b7506516e633ff97b11e7ed3ebcda2ca1df88d4b41c1062bbc93a29')
+md5sums=('6c7e16fd70dc8075adc74936fcc01986')
+sha256sums=('f54337ad70f882acf1d0344f1dfe51a5ae81cff886f26b833e69f861874a4484')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
