@@ -4,12 +4,20 @@
 pkgname="prowlarr"
 pkgver=0.1.8.1231
 pkgrel=1
-pkgdesc="Movie download automation for usenet and torrents."
+
+
+pkgdesc="Usenet and torrent aggregator, similar to nzbhydar2 and jackett."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Prowlarr/Prowlarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
 depends=('sqlite')
+optdepends=(
+  'sonarr: automatically adds and remove indexers/trackers'
+  'radarr: automatically adds and remove indexers/trackers'
+  'lidarr: automatically adds and remove indexers/trackers'
+  'readarr: automatically adds and remove indexers/trackers'
+)
 
 source_x86_64=("prowlarr.develop.${pkgver}.linux-core-x64.tar.gz::https://prowlarr.servarr.com/v1/update/develop/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=x64") 
 source_aarch64=("prowlarr.develop.${pkgver}.linux-core-arm64.tar.gz::https://prowlarr.servarr.com/v1/update/develop/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm64") 
