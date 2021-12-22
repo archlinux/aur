@@ -33,6 +33,6 @@ pkgver() {
 package() {
     cd "${pkgname}"
     DESTDIR="$pkgdir" zig build install --prefix "/usr"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
