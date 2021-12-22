@@ -1,7 +1,7 @@
 pkgbase=tal-noisemaker
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=5.0.4
-pkgrel=2
+pkgrel=4
 arch=('x86_64')
 url="https://tal-software.com/products/tal-noisemaker"
 license=('EULA')
@@ -11,12 +11,8 @@ md5sums=('e2ab5f4553642ceea796ce2895fd3c47')
 
 package_tal-noisemaker-vst() {
   groups=('pro-audio''vst-plugins')
-  conflicts=("distrho-ports")
-  replaces=("distrho-ports")
   pkgdesc="A Free Soft Synth By TAL Software (VST)"
-  mkdir -p $pkgdir/usr/lib/vst
-  cp -r ${srcdir}/libTAL-NoiseMaker.so ${pkgdir}/usr/lib/vst/TAL-NoiseMaker.so
-  chmod +x ${pkgdir}/usr/lib/vst/TAL-NoiseMaker.so
+  install -Dm755 ${srcdir}/libTAL-NoiseMaker.so ${pkgdir}/usr/lib/vst/libTAL-NoiseMaker.so
 }
 
 package_tal-noisemaker-vst3() {
