@@ -1,7 +1,7 @@
 pkgbase = python-pyqt-qwt
 	pkgdesc = Python PyQt wrapper for Qwt 6
-	pkgver = 1.02.02
-	pkgrel = 2
+	pkgver = 1.02.02.20210915
+	pkgrel = 1
 	url = https://github.com/GauiStori/PyQt-Qwt
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = python-pyqt-qwt
 	depends = python-pyqt5
 	depends = qwt>=6.1.4
 	optdepends = python-numpy: required for some of the provided Qt 5 examples
-	source = python-pyqt-qwt-1.02.02.tar.gz::https://github.com/GauiStori/PyQt-Qwt/archive/v1.02.02.tar.gz
-	sha256sums = aac4730ab28f2b7af661775672e32129615ca0e7909a555f297c5f1f2fbc750c
+	source = python-pyqt-qwt-1.02.02.20210915.tar.gz::https://github.com/piannucci/PyQt-Qwt/archive/d98d49904765c03c11c400b9d7fc4e52a2418cdd.tar.gz
+	sha256sums = 4dd561a7eb3458ce869f3f5a8bda198ca3ddd06a1c6889d795fc3d20f5f5a161
 
 pkgname = python-pyqt-qwt
