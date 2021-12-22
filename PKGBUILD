@@ -26,8 +26,6 @@ package() {
     install -dm755 $pkgdir/etc
     install -dm755 $pkgdir/usr/share/glib-2.0/schemas
     install -dm755 $pkgdir/etc/lynx
-    install -d ${pkgdir}/etc/dconf
-    cp -vr $srcdir/$pkgname-$pkgver/etc/dconf/* $pkgdir/etc/dconf
     cp $srcdir/$pkgname-$pkgver/etc/lynx/session.yaml $pkgdir/etc/lynx/session.yaml
     cp -r $srcdir/$pkgname-$pkgver/etc/skel $pkgdir/etc
     cp -r $srcdir/$pkgname-$pkgver/usr $pkgdir/
