@@ -1,43 +1,46 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Michael Straube <michael_straube@web.de>
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
 pkgname=ampl-mp
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source library for mathematical programming"
-arch=('i686' 'x86_64')
-url="http://ampl.github.io"
+arch=('x86_64')
+url="https://github.com/${pkgname/-//}"
 license=('custom')
-makedepends=('cmake')
+# depends=()
+makedepends=(cmake ninja) # unixodbc
 options=('!emptydirs')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ampl/mp/archive/${pkgver}.tar.gz")
-sha256sums=('587c1a88f4c8f57bef95b58a8586956145417c8039f59b1758365ccc5a309ae9')
-
-_modules=""
-
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('f23bdf37d42ac93b48e00f929afcce0a848956c9a0c1182413ee04dfcab12e8cd1af93e3924a5a6e9669a8d6841d1b8874a15a7252cf2365eb6077ab580a4447')
+prepare() {
+  # https://github.com/fmtlib/fmt/issues/398#issue-183946005
+  sed -i -- 's/CHAR_WIDTH/CHAR_SIZE/g' "mp-${pkgver}/include/mp/format.h"
+}
+# _modules="" # cplex gecode ilogcp jacop localsolver path smpswriter sulum gsl
+# -DBUILD=${_modules} -DBUILD=all
 build() {
-  mkdir -p build
-  cd build
-
-  cmake ../mp-${pkgver} \
+  cmake \
+    -S "mp-${pkgver}" \
+    -B build \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD=${_modules}
-  make
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_C_COMPILER=gcc \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -DMP_VARIADIC_TEMPLATES=OFF \
+    -DBUILD=no \
+    -Wno-dev
+  cmake --build build
 }
 
 check() {
-  cd build
-
-  make test
+  cmake --build build --target test
 }
 
 package() {
-  cd build
-
-  make DESTDIR="${pkgdir}" install
-
-  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
-  mv "${pkgdir}"/usr/share/mp/LICENSE.rst \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  install -Dm 644 "mp-${pkgver}/LICENSE.rst" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
