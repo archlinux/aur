@@ -1,6 +1,6 @@
 pkgbase = tal-filter2
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://tal-software.com/products/tal-filter
 	arch = x86_64
 	license = EULA
@@ -10,8 +10,6 @@ pkgbase = tal-filter2
 pkgname = tal-filter2-vst
 	pkgdesc = A Filter By TAL Software V2 (VST)
 	groups = pro-audiovst-plugins
-	conflicts = distrho-ports
-	replaces = distrho-ports
 
 pkgname = tal-filter2-vst3
 	pkgdesc = A Filter By TAL Software V2 (VST3)

@@ -1,7 +1,7 @@
 pkgbase=tal-filter2
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=3.1.0
-pkgrel=1
+pkgrel=4
 arch=('x86_64')
 url="https://tal-software.com/products/tal-filter"
 license=('EULA')
@@ -10,12 +10,8 @@ md5sums=('b1285c7075d468a04f8f8803cceaaa22')
 
 package_tal-filter2-vst() {
   groups=('pro-audio''vst-plugins')
-  conflicts=("distrho-ports")
-  replaces=("distrho-ports")
   pkgdesc="A Filter By TAL Software V2 (VST)"
-  mkdir -p $pkgdir/usr/lib/vst
-  cp -r ${srcdir}/libTAL-Filter-2.so ${pkgdir}/usr/lib/vst/TAL-Filter-2.so
-  chmod +x ${pkgdir}/usr/lib/vst/TAL-Filter-2.so
+  install -Dm755 ${srcdir}/libTAL-Filter-2.so ${pkgdir}/usr/lib/vst/libTAL-Filter-2.so
 }
 
 package_tal-filter2-vst3() {
