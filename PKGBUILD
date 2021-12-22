@@ -3,7 +3,7 @@
 # Contributor: der_fenix <derfenix@gmail.com>
 
 pkgname=rhvoice-git
-pkgver=1.4.2.r8.159f2372
+pkgver=1.6.0.r0.8cc907d7
 pkgrel=1
 pkgdesc="Free and open source speech synthesizer for Russian and other languages. (development version)"
 arch=('x86_64')
@@ -25,8 +25,16 @@ source=(${pkgname%-git}::'git+https://github.com/RHVoice/RHVoice.git'
           'git+https://github.com/rhvoice/aleksandr-hq-rus.git'
           'git+https://github.com/rhvoice/yuriy-rus.git'
           'git+https://github.com/rhvoice/volodymyr-ukr.git'
-          'git+https://github.com/rhvoice/tatiana-rus.git')
+          'git+https://github.com/rhvoice/tatiana-rus.git'
+          'git+https://github.com/rhvoice/mikhail-rus.git'
+          'git+https://github.com/rhvoice/marianna-ukr.git'
+          'git+https://github.com/rhvoice/lyubov-eng.git'
+          'git+https://github.com/rhvoice/vitaliy-rus.git')
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -50,6 +58,10 @@ prepare() {
 	git config submodule.data/voices/yuriy.url "$srcdir/yuriy-rus"
 	git config submodule.data/voices/volodymyr.url "$srcdir/volodymyr-ukr"
 	git config submodule.data/voices/tatiana.url "$srcdir/tatiana-rus"
+	git config submodule.data/voices/mikhail.url "$srcdir/mikhail-rus"
+	git config submodule.data/voices/marianna.url "$srcdir/marianna-ukr"
+	git config submodule.data/voices/lyubov.url "$srcdir/lyubov-eng"
+	git config submodule.data/voices/vitaliy.url "$srcdir/vitaliy-rus"
 	git config submodule.external/libs/sonic.active false
 	git config submodule.src/third-party/cldr.active false
 	git config submodule.cmake/thirdparty/sanitizers.active false
@@ -58,16 +70,16 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	export SCONSFLAGS="$MAKEFLAGS"
+	jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*') || true
 	scons prefix="/usr" sysconfdir="/etc" CPPFLAGS="$CPPFLAGS" CCFLAGS="$CFLAGS" \
-	      LINKFLAGS="$LDFLAGS"
+	      LINKFLAGS="$LDFLAGS" $jobs
 }
 
 package() {
 	cd "${pkgname%-git}"
-	export SCONSFLAGS="$MAKEFLAGS"
+	jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*') || true
 	scons install DESTDIR="${pkgdir}" prefix="/usr" sysconfdir="/etc" \
-	      CPPFLAGS="$CPPFLAGS" CCFLAGS="$CFLAGS" LINKFLAGS="$LDFLAGS"
+	      CPPFLAGS="$CPPFLAGS" CCFLAGS="$CFLAGS" LINKFLAGS="$LDFLAGS" $jobs
 	install -vDm0644 licenses/gpl-3.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -vDm0644 licenses/by-nc-nd-4.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/by-nc-nd-4.0"
 	install -vDm0644 licenses/by-sa-4.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/by-sa-4.0"
