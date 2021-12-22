@@ -1,6 +1,6 @@
 # Maintainer: Ícar N. S. <personal@icarns.xyz>
-pkgname=gstreamer-gtuber-git
-pkgver=r211.53a21a2
+pkgname=gtuber-git
+pkgver=r212.90df019
 pkgrel=1
 pkgdesc="A C library to fetch media info from websites."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('glib2' 'glibc' 'gobject-introspection' 'libsoup' 'gstreamer-git' 'gst-
 makedepends=('git' 'gcc' 'meson' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('gstreamer-gtuber::git+https://github.com/Rafostar/gtuber.git#branch=main')
+source=('gtuber::git+https://github.com/Rafostar/gtuber.git#branch=main')
 md5sums=('SKIP')
 
 pkgver() {
