@@ -1,6 +1,6 @@
 pkgbase = python-django-colorfield
 	pkgdesc = Simple color field for models with a nice color-picker in the admin
-	pkgver = 0.4.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/fabiocaccamo/django-colorfield
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-django-colorfield
 	makedepends = python-setuptools
 	depends = python-django
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/django-colorfield/django-colorfield-0.4.1.tar.gz
-	sha256sums = 63a542c417b72d0dac898a0f61a2a00aed3c9aabc2f5057c926efccf421f7887
+	source = https://files.pythonhosted.org/packages/source/d/django-colorfield/django-colorfield-0.6.0.tar.gz
+	sha256sums = aee0ad2d1f7cac2da205a5a0b9d2e5f2303f378d79ad846448d4c18fd262adc9
 
 pkgname = python-django-colorfield
-
