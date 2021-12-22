@@ -2,12 +2,14 @@
 
 _pkgname=lynx-desktop
 pkgname=${_pkgname,}
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Lynx Desktop Environment - Escritorio Oficial de LynxOS"
-url="https://gitlab.com/LynxOS/lde"
+url="https://gitlab.com/LynxOS/$pkgname"
 depends=(
-        'lynx-ldk'
+        'lynx-nw'
+        'lynx-desktop-services'
+        'lynx-dock'
         'gnome-menus'
         'python-dbus'
         'python-gobject'
@@ -16,15 +18,13 @@ depends=(
         )
 license=('GPL')
 arch=('any')
-md5sums=('3641cdbd7a36a8ef5e68fea1a2c7e9e8')
-source=("$url/-/archive/$pkgver/lde-$pkgver.tar.gz")
+md5sums=('be9eaf1018f21d767d0cf1cefd1104bf')
+source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 
 package() {
-    cd lde-$pkgver
-    install -dm755 $pkgdir/usr
-    cp -r $srcdir/lde-$pkgver/usr/* $pkgdir/usr
-    install -dm755 $pkgdir/usr/share/Lynx/lde/
-    cp -r $srcdir/lde-$pkgver/src/* $pkgdir/usr/share/Lynx/lde/
-    chmod a+x $pkgdir/usr/share/Lynx/lde/lynx-desktop
-    chmod a+x $pkgdir/usr/share/Lynx/lde/exit-menu
+    cd $pkgname-$pkgver
+    install -dm755 $pkgdir/usr/share/Lynx/$pkgname/
+    cp -r $srcdir/$pkgname-$pkgver/* $pkgdir/usr/share/Lynx/$pkgname/
+    chmod a+x $pkgdir/usr/share/Lynx/$pkgname/$pkgname
+    sudo ln -sf /usr/share/Lynx/$pkgname/$pkgname /bin/$pkgname 
 }

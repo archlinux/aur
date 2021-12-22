@@ -1,18 +1,19 @@
 pkgbase = lynx-desktop
 	pkgdesc = Lynx Desktop Environment - Escritorio Oficial de LynxOS
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://gitlab.com/LynxOS/lde
+	url = https://gitlab.com/LynxOS/lynx-desktop
 	arch = any
 	license = GPL
-	depends = lynx-ldk
+	depends = lynx-nw
+	depends = lynx-desktop-services
+	depends = lynx-dock
 	depends = gnome-menus
 	depends = python-dbus
 	depends = python-gobject
 	depends = lynx-desktop-settings
 	depends = libxkbcommon-x11
-	source = https://gitlab.com/LynxOS/lde/-/archive/0.1.1/lde-0.1.1.tar.gz
-	md5sums = 3641cdbd7a36a8ef5e68fea1a2c7e9e8
+	source = https://gitlab.com/LynxOS/lynx-desktop/-/archive/0.2.1/lynx-desktop-0.2.1.tar.gz
+	md5sums = be9eaf1018f21d767d0cf1cefd1104bf
 
 pkgname = lynx-desktop
-
