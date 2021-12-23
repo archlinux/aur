@@ -1,0 +1,19 @@
+pkgbase = gitgudcli-bin
+	pkgdesc = An easy to use CLI for the GitGud modular Git model.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/HRKings/gitgud-cli
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = unknown
+	provides = gitgudcli
+	conflicts = gitgudcli
+	source_aarch64 = https://github.com/HRKings/gitgud-cli/releases/download/2.2.0/gitgud_v2.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ef116929555035cfc463de583a31935e3e8ce6b820b69fca3eb93b48e4dbebf
+	source_i686 = https://github.com/HRKings/gitgud-cli/releases/download/2.2.0/gitgud_v2.2.0_linux_386.tar.gz
+	sha256sums_i686 = 627a2686cf7209e649b76cb5fa81fa8612db189ea2bc41b5cfc82586a76531b9
+	source_x86_64 = https://github.com/HRKings/gitgud-cli/releases/download/2.2.0/gitgud_v2.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = eab110a4e45fce221b00b143797abb50e3771703ab4541ba25cfbd374a59b5af
+
+pkgname = gitgudcli-bin

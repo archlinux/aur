@@ -1,0 +1,7 @@
+gitgud-cli/
+*.tar.*
+*.pkg.tar.*
+src/
+srcdir/
+pkg/
+pkgdir/
