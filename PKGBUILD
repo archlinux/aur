@@ -5,8 +5,10 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.55
-_arduinover=1.8.16
+pkgver=1.56
+_arduinover=1.8.19
+_pkgname_loader="teensy_loader_cli"
+_pkgver_loader=2.2
 pkgrel=1
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('x86_64')
@@ -21,7 +23,7 @@ conflicts=('arduino' 'teensy-loader' 'teensy-loader-cli' 'teensy-loader-cli-git'
 install="teensyduino.install"
 source=('arduino.xml'
         'teensy-loader.desktop'
-        "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=9dbbfa3b367b6c37e91e8a42dae3c6edfceccc4d"
+        "$_pkgname_loader-$_pkgver_loader.tar.gz::https://github.com/PaulStoffregen/$_pkgname_loader/archive/$_pkgver_loader.tar.gz"
         "https://www.pjrc.com/teensy/00-teensy.rules"
         'LICENSE'
         "http://downloads.arduino.cc/arduino-${_arduinover}-linux64.tar.xz"
@@ -29,11 +31,11 @@ source=('arduino.xml'
 
 sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             '837a865ab3bf81163c95a8a5898f9d5f0de7740a4207949bc331409cbb40faba'
-            'SKIP'
+            '103c691f412d04906c4f46038c234d3e5f78322c1b78ded102df9f900724cd54'
             '17f56b63603271e2cdae291fed347b66dfbdfd089b2847cf0b4383c877ffacfb'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3'
-            '54af92925db18ea3d660410ab750822f0059471a3245f610dffeb40727a7f69a'
-            '0f2a426c29b844a6209c5251c281f23e1b7a7451b8f18bd633847310374913a5')
+            'eb68bddc1d1c0120be2fca1350a03ee34531cf37f51847b21210b6e70545bc9b'
+            'e036e19a662bc7eac20690eb605682d00f3c42ff5411e3654009058b7cc0b2d9')
 
 build() {
   echo "Installing Teensyduino"
@@ -43,7 +45,7 @@ build() {
 
   echo "Building Teensy Loader command line"
 
-  cd teensy_loader_cli
+  cd $_pkgname_loader-$_pkgver_loader
   make
 }
 
@@ -82,5 +84,5 @@ package() {
   install -m644 "${srcdir}/teensy-loader.desktop" "${pkgdir}/usr/share/applications/"
 
   # install command-line teensy loader
-  install -m755 "${srcdir}/teensy_loader_cli/teensy_loader_cli" "${pkgdir}/usr/bin/teensy-loader-cli"
+  install -m755 "${srcdir}/$_pkgname_loader-$_pkgver_loader/$_pkgname_loader" "${pkgdir}/usr/bin/$_pkgname_loader"
 }
