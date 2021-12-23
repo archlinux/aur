@@ -1,0 +1,16 @@
+pkgbase = python-asdf_coordinates_schemas
+	pkgdesc = ASDF schemas for coordinates
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/asdf-format/asdf-coordinates-schemas
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-asdf
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/asdf_coordinates_schemas/asdf_coordinates_schemas-0.1.0.tar.gz
+	md5sums = f446e656c78dbb66e24010211e3a9979
+
+pkgname = python-asdf_coordinates_schemas
+	depends = python>=3.7
+	depends = python-asdf>=2.8.0
