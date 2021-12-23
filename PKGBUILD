@@ -3,7 +3,7 @@
 pkgname=hamsket-bin
 _pkgname=hamsket
 pkgver=0.6.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Forked Free and Open Source messaging and emailing app that combines common web applications into one'
 arch=('x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'libnotify' 'libxtst' 'libxss' 'nss')
