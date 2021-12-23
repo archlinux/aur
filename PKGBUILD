@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r33.17.gee00fd4
+pkgver=r33.20.gae1d799
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
@@ -31,6 +31,10 @@ depends=('vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-hqdn3d-git'
          'vapoursynth-plugin-fluxsmooth'
          'vapoursynth-plugin-awarpsharp2-git'
+         'vapoursynth-plugin-temporalsoften2-git'
+         'vapoursynth-plugin-cas-git'
+         'vapoursynth-plugin-ctmf-git'
+         'vapoursynth-plugin-f3kdb-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
