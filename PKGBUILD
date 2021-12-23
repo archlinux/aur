@@ -3,21 +3,30 @@
 
 pkgname=qt5-webchannel
 _qtver=5.15.2
-pkgver=${_qtver/-/}
+pkgver=5.15.2+kde+r5
 pkgrel=1
+_commit=fa8b07105b5e274daaa8adcc129fa4aa0447f9f7
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients'
 depends=('qt5-declarative')
-makedepends=()
+makedepends=('git')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('127fe79c43b386713f151ed7d411cd81e45e29f9c955584f29736f78c9303ec1')
+_pkgfqn=qtwebchannel
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
 
 prepare() {
   mkdir -p build
+
+  cd $_pkgfqn
+  git revert -n 0159fb80446f2fc472a2391de9fc83f55ca2d50e # Revert version bump
 }
 
 build() {
