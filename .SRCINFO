@@ -10,7 +10,9 @@ pkgbase = obs-vkcapture-git
 	makedepends = vulkan-headers
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-vulkan-icd-loader
+	makedepends = lib32-libgl
 	depends = vulkan-icd-loader
+	depends = libgl
 	depends = obs-studio>=27
 	source = obs-vkcapture::git+https://github.com/nowrep/obs-vkcapture
 	sha512sums = SKIP
@@ -23,5 +25,6 @@ pkgname = obs-vkcapture-git
 pkgname = lib32-obs-vkcapture-git
 	pkgdesc = OBS Linux Vulkan/OpenGL game capture (32-bit)
 	depends = lib32-vulkan-icd-loader
+	depends = lib32-libgl
 	provides = lib32-obs-vkcapture
 	conflicts = lib32-obs-vkcapture
