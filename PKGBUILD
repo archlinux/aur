@@ -1,7 +1,7 @@
 # Maintainer: Sigmasd
 pkgname=bustd-git
 pkgver=r81.caab293
-pkgrel=1
+pkgrel=2
 pkgdesc="Process killer daemon for out-of-memory scenarios"
 url="https://github.com/vrmiguel/bustd"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=(bustd)
 conflicts=(bustd)
 source=('git+https://github.com/vrmiguel/bustd.git' bustd.service)
-sha256sums=('SKIP' '9478439a970d865cf29523f297fa3c2a6ce9aa4fd04b1c2ab1ccbde9a320333f')
+sha256sums=('SKIP' 'df0a067a5bd09dbd46753e0df3d5db227d083712a3a88cfe34a3a2a986c38553')
 
 prepare() {
   cd "$srcdir/bustd"
