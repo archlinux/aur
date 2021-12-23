@@ -1,11 +1,11 @@
 # maintainer: libele <libele@disroot.org>
+# maintainer: Beej <beej@beej.us>
 
-# contributor: Odel <odelvidyascape@gmail.com>
 # contributor: Alessandro Schillaci < http://slade.altervista.org >
 
 pkgname=inform
-pkgver=6.35.r6
-_ifrel="6.35-r6"
+pkgver=6.35.r7
+_ifrel="6.35-r7"
 pkgrel=1
 pkgdesc="Interactive fiction compiler"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
@@ -15,7 +15,7 @@ depends=('glibc')
 groups=(inform)
 source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_ifrel}.tar.gz")
 
-md5sums=('7bd10f96a624dcc819cdfeb9fa9b0561')
+md5sums=('d089d77e002c6378c77e90ed34f96b95')
 
 build() {
   cd "${srcdir}/${pkgname}-${_ifrel}"
