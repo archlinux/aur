@@ -2,7 +2,7 @@
 
 _pkgname=libshumate
 pkgname=${_pkgname}-git
-pkgver=r262.ec65526
+pkgver=r270.5c08c3a
 pkgrel=1
 pkgdesc="GTK4 widget to display maps (git version)"
 arch=(x86_64)
