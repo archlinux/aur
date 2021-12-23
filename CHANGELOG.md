@@ -1,3 +1,7 @@
+# 1.4.5-2 (2021-12-23)
+
+- Add missing dependencies.
+
 # 1.4.5-1 (2021-12-21)
 
 - Initial AUR package.

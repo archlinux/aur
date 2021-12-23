@@ -1,11 +1,16 @@
 pkgbase = lovers-in-a-dangerous-spacetime-bin
 	pkgdesc = Explore a neon galaxy in your very own battleship in Lovers in a Dangerous Spacetime, a thrilling 1- to 4-player couch co-op adventure.
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.loversinadangerousspacetime.com/
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = nonfree
+	depends = gtk2
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libxcursor
+	depends = libxrandr
 	conflicts = lovers-in-a-dangerous-spacetime
 	source = local://LoversInADangerousSpacetime-1.4.5_Linux.zip
 	source = com.loversinadangerousspacetime.LoversInADangerousSpacetime.desktop
