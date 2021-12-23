@@ -1,8 +1,9 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgbase='python-common-ta-lib'
 pkgname=("python-ta-lib" "python2-ta-lib")
-pkgver=0.4.19
+pkgver=0.4.22
 pkgrel=1
 pkgdesc="Python wrapper for TA-Lib"
 url="https://github.com/mrjbq7/ta-lib"
@@ -11,12 +12,14 @@ makedepends=('python-setuptools' 'python-numpy' 'cython' 'ta-lib'
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/T/TA-Lib/TA-Lib-$pkgver.tar.gz")
-sha256sums=('5303227898f8f08baecb4d3b8767c85891b65b21f481a3ecbaa6e901c3531db5')
+sha256sums=('9a46706873826435318ad9d5ff62cb0453836f1b133c3265527dcd125d4f00dc')
 
 prepare() {
     sed -r 's/raise.*build_ext overridden.*/return/' -i TA-Lib-$pkgver/setup.py
 
     cp -r TA-Lib-$pkgver{,-py2}
+
+    sed -r "s/, encoding='utf-8'//" -i TA-Lib-$pkgver-py2/setup.py
 }
 
 build() {
