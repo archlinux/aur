@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=phan
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Static analyzer for PHP that prefers to minimize false-positives."
 url="https://github.com/phan/phan/wiki"
