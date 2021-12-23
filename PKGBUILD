@@ -2,7 +2,7 @@
 
 pkgbase=kicad-library-nightly
 pkgname=('kicad-library-nightly' 'kicad-library-3d-nightly')
-pkgver=6.0.0_rc2_16_g160328abc7
+pkgver=6.99.0
 pkgrel=1
 pkgdesc='KiCAD component and footprint libraries'
 arch=('any')
