@@ -38,4 +38,3 @@ pkgbase = remmina-appindicator
 	sha512sums = ebd589b4237c59b11ac0ca349654177752f11ca221afa761247a1f49c6224c1e7cb51db40b87233ab2a724fb0ef76162db0d7c743becd41a2b8524eafe108f7f
 
 pkgname = remmina-appindicator
-
