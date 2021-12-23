@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=drminfo
-pkgver=7.1
+pkgver=8.1
 pkgrel=1
 pkgdesc="print drm device information"
 arch=('i686' 'x86_64')
 url="https://www.kraxel.org/cgit/drminfo/"
 license=('GPLv2')
 source=("https://www.kraxel.org/cgit/drminfo/snapshot/drminfo-${pkgver/./-}.tar.gz")
-sha256sums=('b9af9f5f3d86e04a36c57a2c14b903b490a9f36f3eda22c08375c5870dabb8cb')
+sha256sums=('0d6b182e63cb4a47a9dcddb0402aa8aa58c93e0aaaf8bc2f1cec8c98a9bdd3be')
 depends=('libdrm' 'mesa' 'libepoxy' 'cairo' 'pixman' 'gtk3')
 makedepends=('meson')
 checkdepends=('python-avocado')
