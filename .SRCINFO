@@ -1,6 +1,6 @@
 pkgbase = python-sqlalchemy-git
 	pkgdesc = Python SQL toolkit and Object Relational Mapper
-	pkgver = 1.4.0b1.rc13273.91e14cc42
+	pkgver = 2.0.0b1.rc14697.79e047806
 	pkgrel = 1
 	url = http://www.sqlalchemy.org
 	arch = i686
@@ -16,11 +16,5 @@ pkgbase = python-sqlalchemy-git
 
 pkgname = python-sqlalchemy-git
 	depends = python
-	provides = python-sqlalchemy=1.4.0b1.rc13273.91e14cc42
+	provides = python-sqlalchemy=2.0.0b1.rc14697.79e047806
 	conflicts = python-sqlalchemy
-
-pkgname = python2-sqlalchemy-git
-	depends = python2
-	provides = python2-sqlalchemy=1.4.0b1.rc13273.91e14cc42
-	conflicts = python2-sqlalchemy
-
