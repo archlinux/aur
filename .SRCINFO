@@ -1,36 +1,36 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = The LTS Linux kernel and modules | repackaged with a unique package name for each version
 	pkgver = 5.10.88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
-	noextract = linux-lts-5.10.88-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-headers-5.10.88-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-docs-5.10.88-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-5.10.88-2-x86_64.pkg.tar.zst
+	noextract = linux-lts-headers-5.10.88-2-x86_64.pkg.tar.zst
+	noextract = linux-lts-docs-5.10.88-2-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-5.10.88-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-headers-5.10.88-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-docs-5.10.88-1-x86_64.pkg.tar.zst
-	sha256sums = 2435ca854b0f0b137205c3f711f7440439ed4205f174921102e0df1774756347
-	sha256sums = 22a79b9d9413cd5d93f69b100450d0d753876cd4339f04bdd979344cec549c56
-	sha256sums = 721cd9d195ecacb87e5e1cf8434ab12daaa9573ad61b3a2ad9d85c04e30215a3
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-5.10.88-2-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-headers-5.10.88-2-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-docs-5.10.88-2-x86_64.pkg.tar.zst
+	sha256sums = d08481d22fa201ca467dc2350d937129cca18a73ab571408e7547510bc43f892
+	sha256sums = fd5f6d652196c093b0710c1212bd92ab78a8dffe0528df0e5ac7f0fdf869cfef
+	sha256sums = 25f16d3a2a0426e7b8987c3a27cacf723c13a2524d584980b7672eba40538997
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Dummy package depending on linux5.10.88-1-lts-bin
-	depends = linux5.10.88-1-lts-bin
+	pkgdesc = Dummy package depending on linux5.10.88-2-lts-bin
+	depends = linux5.10.88-2-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.10.88-1-lts-headers-bin
-	depends = linux5.10.88-1-lts-headers-bin
+	pkgdesc = Dummy package depending on linux5.10.88-2-lts-headers-bin
+	depends = linux5.10.88-2-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.10.88-1-lts-docs-bin
-	depends = linux5.10.88-1-lts-docs-bin
+	pkgdesc = Dummy package depending on linux5.10.88-2-lts-docs-bin
+	depends = linux5.10.88-2-lts-docs-bin
 
-pkgname = linux5.10.88-1-lts-bin
-	pkgdesc = The LTS Linux kernel and modules, version 5.10.88-1-lts
+pkgname = linux5.10.88-2-lts-bin
+	pkgdesc = The LTS Linux kernel and modules, version 5.10.88-2-lts
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -41,10 +41,10 @@ pkgname = linux5.10.88-1-lts-bin
 	conflicts = linux-lts
 	replaces = wireguard-lts
 
-pkgname = linux5.10.88-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.88-1-lts
+pkgname = linux5.10.88-2-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.88-2-lts
 	conflicts = linux-lts-headers
 
-pkgname = linux5.10.88-1-lts-docs-bin
-	pkgdesc = Documentation for the LTS Linux kernel 5.10.88-1-lts
+pkgname = linux5.10.88-2-lts-docs-bin
+	pkgdesc = Documentation for the LTS Linux kernel 5.10.88-2-lts
 	conflicts = linux-lts-docs
