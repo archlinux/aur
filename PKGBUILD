@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.5.4.r1.d7b1ce51
+pkgver=0.5.4.r153.c74fc2002
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
     "SKIP"
-    "101969068bcc8bc7806dc96428fcd2a1"
+    "aad20b738ccd8965d7fd22cb5f34a6e1"
     "3a5ebb330fd33e59f1cc56690df1995d"
 )
 
@@ -28,9 +28,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-
-    # force clojure to download git-based dependencies to this location
-    export GITLIBS="${srcdir}/${pkgname}/.gitlib"
 
     # this patch make the build process use system's electron
     patch -p1 -i "${srcdir}/build.patch"
@@ -54,9 +51,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-
-    # force clojure to use git-based dependencies at this location
-    export GITLIBS="${srcdir}/${pkgname}/.gitlib"
 
     # build
     yarn cljs:release

@@ -1,22 +1,12 @@
-diff --git a/deps.edn b/deps.edn
-index 274db7b4..d1bbb10e 100755
---- a/deps.edn
-+++ b/deps.edn
-@@ -1,4 +1,5 @@
- {:paths ["src/main" "src/workspaces" "templates"]
-+ :mvn/local-repo ".m2/repository"
-  :deps
-  {org.clojure/clojure         {:mvn/version "1.10.0"}
-   cheshire/cheshire {:mvn/version "5.10.0"}
 diff --git a/shadow-cljs.edn b/shadow-cljs.edn
-index 325f66c1..4d5af9c7 100644
+index 05e05805d..9b40653fe 100644
 --- a/shadow-cljs.edn
 +++ b/shadow-cljs.edn
 @@ -1,6 +1,7 @@
  ;; shadow-cljs configuration
- {:deps     true
-  :nrepl        {:port 8701}
+ {:deps  true
+  :nrepl {:port 8701}
 + :parallel-build true
  
-  :builds
-  {:app
+  ;; "." for /static
+  :dev-http {3001 ["public" "."]
