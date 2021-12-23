@@ -16,6 +16,7 @@ pkgbase = beamerpresenter-git
 	optdepends = gst-libav: show videos
 	optdepends = gst-plugins-good: show videos
 	optdepends = hicolor-icon-theme: icons
+	optdepends = qt6-svg
 	conflicts = beamerpresenter
 	backup = etc/xdg/beamerpresenter/beamerpresenter.conf
 	backup = etc/xdg/beamerpresenter/gui.json

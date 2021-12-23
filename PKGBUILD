@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.1_575.9e8efa7
+pkgver=0.2.1_579.7799e03
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -14,14 +14,17 @@ url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3')
 # depends and makedepends will be filled based on the variables defined at the beginning.
 depends=()
+optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: icons')
 makedepends=('cmake' 'git')
 
 if [ ${_qt_version_major} -eq 5 ]
 then
-    depends=( ${depends[@]} 'qt5-multimedia>=5.9.0' )
+    depends+=('qt5-multimedia>=5.9.0')
+    optdepends+=('qt5-svg')
 elif [ ${_qt_version_major} -eq 6 ]
 then
-    depends=( ${depends[@]} 'qt6-multimedia>=6.2.0' )
+    depends+=('qt6-multimedia>=6.2.0')
+    optdepends+=('qt6-svg')
 else
     echo "FATAL ERROR: invalid Qt version: ${_qt_version_major}"
     exit 1
@@ -41,7 +44,6 @@ then
     depends=( ${depends[@]} "poppler-qt${_qt_version_major}" )
 fi
 
-optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: icons')
 conflicts=('beamerpresenter')
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
 install=beamerpresenter.install
