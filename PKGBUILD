@@ -1,12 +1,12 @@
 # Maintainer: Leo <i@setuid0.dev>
 
-_rr_ver=2.6.0
-_binary_ver=2.6.4
-_plugins_ver=2.6.4
+_rr_ver=2.6.2
+_binary_ver=2.6.6
+_plugins_ver=2.6.7
 
 pkgname=roadrunner
 pkgver=$_rr_ver
-pkgrel=3
+pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -16,14 +16,14 @@ makedepends=("go>=1.16" "composer")
 source=(
 	"$pkgname-$_rr_ver.tar.gz::https://github.com/spiral/$pkgname/archive/v$_rr_ver.tar.gz"
 	"$pkgname-binary-$_binary_ver.tar.gz::https://github.com/spiral/$pkgname-binary/archive/v$_binary_ver.tar.gz"
-	"$pkgname-plugins-$_plugins_ver.tar.gz::https://github.com/spiral/$pkgname-plugins/archive/v$_binary_ver.tar.gz"
+	"$pkgname-plugins-$_plugins_ver.tar.gz::https://github.com/spiral/$pkgname-plugins/archive/v$_plugins_ver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	'dd6a42513252480e749b45fb99b118cfdc01be1ff393820f954c236227ffd191'
-	'a53d7d276aba16427462943a2f1e3ca2338e7bbd2ce129ef10d8b8dc2b666daf'
-	'46fa6889b5d512ade1a5fdb7ffbd5d76677d10b26f78d5996308cccce9383090'
+	'963371760f2346fb3a8775a4a389a239a6c74d38cd623a761083921a958e2dd0'
+	'6aed8ca0b8eca5789734b26db1716a71c95fec6f16b7407c7a3a320d81e362b8'
+	'1a0e31f5d147491f63a77b91da47e429c2a4b2af081b18830ba98c7019329e89'
 	SKIP
 	SKIP
 )
