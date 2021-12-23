@@ -2,12 +2,13 @@
 name=getting-over-it-with-bennett-foddy
 pkgname=$name-bin
 pkgver=1.5861
-pkgrel=1
+pkgrel=2
 pkgdesc="A game I made for a certain kind of person. To hurt them."
 arch=("x86_64")
 url="http://www.foddy.net/2017/09/getting-over-it/"
-license=('nonfree')
+license=('custom:commercial')
 makedepends=()
+depends=('gtk2')
 conflicts=("$name")
 source=("local://GettingOverIt_Linux_$pkgver.zip"
         "$name.png"

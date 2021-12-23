@@ -1,10 +1,11 @@
 pkgbase = getting-over-it-with-bennett-foddy-bin
 	pkgdesc = A game I made for a certain kind of person. To hurt them.
 	pkgver = 1.5861
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.foddy.net/2017/09/getting-over-it/
 	arch = x86_64
-	license = nonfree
+	license = custom:commercial
+	depends = gtk2
 	conflicts = getting-over-it-with-bennett-foddy
 	source = local://GettingOverIt_Linux_1.5861.zip
 	source = getting-over-it-with-bennett-foddy.png
