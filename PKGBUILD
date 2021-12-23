@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=buildcache
-pkgver=0.27.4
+pkgver=0.27.5
 pkgrel=1
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cmake')
 optdepends=('lua')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mbitsnbites/buildcache/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e7877e762cb1c6709add8a24703ee8326116be3ce2690ca90b29e8e6bd1b42b8')
+sha256sums=('75bbe4679e56659ed566a166bcc058976fb3657ab2bde11dffb2a5491f4b611c')
 
 
 build() {
