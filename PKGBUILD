@@ -64,6 +64,10 @@ package() {
   # remove bundled java to use system's java environment
   rm -rf "${pkgdir}/usr/share/arduino/java"
 
+  # remove bundled arduino boards; they can be downloaded later in the board manager
+  rm -rf "${pkgdir}/usr/share/arduino/hardware/arduino"
+  rm -rf "${pkgdir}/usr/share/arduino/hardware/tools/avr"
+
   # desktop icon
   cp -a lib/icons/* "${pkgdir}/usr/share/icons/hicolor"
   rm -rf "${pkgdir}/usr/share/arduino/lib/icons"
