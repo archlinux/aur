@@ -1,7 +1,7 @@
 pkgbase = gdb-multiarch
 	pkgdesc = The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
 	pkgver = 11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gdb-multiarch
 	depends = ncurses
 	depends = expat
 	depends = python
-	depends = guile2.2
+	depends = guile
 	depends = gdb-common
 	options = !emptydirs
 	source = https://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz
