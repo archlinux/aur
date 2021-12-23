@@ -10,7 +10,7 @@
 pkgname=snort
 _pkgname=snort3
 _openappid=21442
-pkgver=3.1.18.0
+pkgver=3.1.19.0
 pkgrel=1
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
@@ -61,7 +61,7 @@ package() {
 
 }
 
-sha256sums=('6e45c16b1815d832b5d6edcd2b705e7838e25c76bfd54b3e86c55ecba6de420a'
+sha256sums=('60ee32f423fcef72500ffb8514c1ae44398fc48407de6ec12ca2572486d48dfb'
             '089239113a2da6471c2f2a65835110acfddb2db8ef5ddec7f4f6782f8d1c9759'
             '9fa50b961c034a694d840036c5682b21bcfe55bf9faf17602878d7db719299da'
             '1be3b4e25138a3696be07929d455ca84bb4eddbee5f596ae636188d49309c7f6'
