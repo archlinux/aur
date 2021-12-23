@@ -1,0 +1,10 @@
+--- src/desktop-v2/tools/vars/stunnel.yml	2021-12-20 20:41:26.612068164 -0600
++++ stunnel.yml	2021-12-22 23:10:09.092993804 -0600
+@@ -3,6 +3,6 @@
+ # Copyright (c) 2020-2021, Windscribe Limited. All rights reserved.
+ # ------------------------------------------------------------------------------
+ variables:
+-  VERSION_STUNNEL: '5.60'
++  VERSION_STUNNEL: '5.61'
+   BUILDROOT_STUNNEL: 'build-libs/stunnel'
+   ARTIFACT_STUNNEL: 'stunnel.zip'
