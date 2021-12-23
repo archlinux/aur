@@ -1,6 +1,6 @@
 pkgbase = across
 	pkgdesc = The next GUI client for v2ray core
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ArkToria/ACross
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = across
 	optdepends = v2ray: use system v2ray core.
 	optdepends = noto-fonts: default display fonts
 	provides = across
-	source = across-0.1.1.tar.gz::https://github.com/ArkToria/ACross/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 7477ab8a9551373d4f0d237856a4730c4c8854304df1f041afe1d64b0a14b924
+	source = across-0.1.2.tar.gz::https://github.com/ArkToria/ACross/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 6e5c15bbc55e38204852011096f2afc09c35f1c1682f45da3cc85a005a5eaa3e
 
 pkgname = across
