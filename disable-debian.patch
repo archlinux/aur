@@ -1,32 +1,11 @@
-diff -cr cbftp-r1011.o/Makefile.inc cbftp-r1011/Makefile.inc
-*** cbftp-r1011.o/Makefile.inc	2019-03-17 04:15:01.000000000 -0500
---- cbftp-r1011/Makefile.inc	2019-03-31 21:46:53.009762000 -0500
-***************
-*** 38,42 ****
-  ifeq ($(UNAME_S),Darwin)
-  LINKFLAGS+=-lncurses
-  else
-! LINKFLAGS+=-lncursesw
-  endif
---- 38,42 ----
-  ifeq ($(UNAME_S),Darwin)
-  LINKFLAGS+=-lncurses
-  else
-! LINKFLAGS+=-lncurses
-  endif
-diff -cr cbftp-r1011.o/src/ui/ncurseswrap.h cbftp-r1011/src/ui/ncurseswrap.h
-*** cbftp-r1011.o/src/ui/ncurseswrap.h	2019-03-17 04:15:01.000000000 -0500
---- cbftp-r1011/src/ui/ncurseswrap.h	2019-03-31 22:05:16.467017954 -0500
-***************
-*** 4,8 ****
-  #ifdef __APPLE__
-  #include <ncurses.h>
-  #else
-! #include <ncursesw/curses.h>
-  #endif
---- 4,8 ----
-  #ifdef __APPLE__
-  #include <ncurses.h>
-  #else
-! #include <ncurses.h>
-  #endif
+--- src/ui/ncurseswrap.h	2021-12-23 14:30:57.292928343 -0500
++++ src/ui/ncurseswrap.h	2021-12-23 14:35:43.500147277 -0500
+@@ -2,7 +2,7 @@
+ #define _XOPEN_SOURCE_EXTENDED
+ #endif
+ #ifndef NO_NCURSESW
+-#include <ncursesw/curses.h>
++#include <ncurses.h>
+ #else
+ #include <ncurses.h>
+ #endif
