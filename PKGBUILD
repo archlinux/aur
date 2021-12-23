@@ -1,9 +1,9 @@
-# Maintainer: Simon Perry <aur [at] sanxion [dot] net>
+# Maintainer: Mike Pento <mjpento@verizon.net>
 pkgname=axmud
 _relname="Axmud"
 _relpkg="Games-$_relname"
-pkgver=1.2.041
-pkgrel=2
+pkgver=1.3.019
+pkgrel=1
 pkgdesc="GTK3 Multi-User Dungeon (MUD) client"
 arch=('any')
 url="https://axmud.sourceforge.io/"
@@ -13,7 +13,7 @@ optdepends=('sox' 'timidity++')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/project/$pkgname/$_relname-$pkgver/$_relpkg-$pkgver.tar.gz")
 
-sha256sums=('ab6216e608f308fd0cb07e5864e9856006ba01a53df2c8997736ca72790c24b0')
+sha256sums=('0919325465652ed001c9b3427e5f6ed75d7f7996495658fa2616c7285e3a0c82')
 
 build() {
   cd "$srcdir/$_relpkg-$pkgver"
