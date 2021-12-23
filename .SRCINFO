@@ -8,8 +8,9 @@ pkgbase = ibus-theme-tools
 	license = GPL-3.0+
 	makedepends = python-setuptools
 	depends = python
+	depends = python-tinycss2
+	depends = gettext
 	source = https://github.com/openSUSE/IBus-Theme-Tools/archive/f98a61660b7ac5df0941a2bf26f53135713d7697/IBus-Theme-Tools-f98a61660b7ac5df0941a2bf26f53135713d7697.tar.gz
 	sha512sums = SKIP
 
 pkgname = ibus-theme-tools
-

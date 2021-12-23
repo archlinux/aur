@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/openSUSE/${_pkgname}"
 license=('GPL-3.0+')
 makedepends=("python-setuptools")
-depends=("python")
+depends=('python' 'python-tinycss2' 'gettext')
 source=("https://github.com/openSUSE/${_pkgname}/archive/${_commit}/${_pkgname}-${_commit}.tar.gz")
 sha512sums=('SKIP')
 package() {
