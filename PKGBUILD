@@ -1,5 +1,5 @@
 pkgname=fheroes2
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="Free Heroes of Might and Magic II (fheroes2) is a recreation of HoMM2 game engine"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,7 +15,7 @@ source=(
   $pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz
 )
 md5sums=(
-  'fed0c50a9f04dcd4c4e915cecbfb691a'
+  '7a17b1336e3cfd32e0f70754b8475b45'
 )
 
 build() {

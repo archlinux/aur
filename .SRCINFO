@@ -1,6 +1,6 @@
 pkgbase = fheroes2
 	pkgdesc = Free Heroes of Might and Magic II (fheroes2) is a recreation of HoMM2 game engine
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = https://ihhub.github.io/fheroes2/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = fheroes2
 	optdepends = unzip: unpack demo version files
 	conflicts = fheroes2-git
 	conflicts = fheroes2-svn
-	source = fheroes2-0.9.10.tar.gz::https://github.com/ihhub/fheroes2/archive/0.9.10.tar.gz
-	md5sums = fed0c50a9f04dcd4c4e915cecbfb691a
+	source = fheroes2-0.9.11.tar.gz::https://github.com/ihhub/fheroes2/archive/0.9.11.tar.gz
+	md5sums = 7a17b1336e3cfd32e0f70754b8475b45
 
 pkgname = fheroes2
