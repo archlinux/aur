@@ -1,9 +1,9 @@
 # Maintainer: btstream<btstream@hotmail.com>
 pkgname=betterbird-bin
 _pkgname=betterbird
-pkgver=91.4.0_bb22
-_build=
-pkgrel=1
+pkgver=91.4.1_bb23
+_build=-build2
+pkgrel=2
 pkgdesc="Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -31,5 +31,5 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('8ff17c05bdf46bfa9663479c77898deb55cb9da9f19ab014757845c636c95bd4'
+sha256sums=('be453158e9764545726d49e3fb8179630dc7508b6a348f088b594e4214b9d8bb'
             'c613467d1c0826d663b406b6fe37e44127eb8c0cae23748aa8ca43a16dd32cbf')
