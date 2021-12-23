@@ -8,7 +8,7 @@
 _pkgname=msedgedriver
 _channel=dev
 pkgname=${_pkgname}-${_channel}-bin
-pkgver=96.0.1028.0
+pkgver=98.0.1100.3
 pkgrel=1
 pkgdesc="Standalone server that implements the W3C WebDriver standard (for microsoft edge)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=(
     # "${_pkgname}-dev-bin"
 )
 source=("${_pkgname}_${pkgver}_linux64.zip::https://msedgedriver.azureedge.net/${pkgver}/edgedriver_linux64.zip")
-sha512sums=('afa924f07d863ddf33ae61d184e2a42ac87abddf740776507e927cb25ea39b0ee03cbbff9bf21092bd4510e0d814f69708fb88e01cc5d8c5036656e9827f51a7')
+sha512sums=('a52d49d78ddc7f5dc35681d7098fd074f974c27d0c145e5f84c79d009e70545192cffeb20155fbf3517d96d9bd4222135498087badbcb691d8572df10c41ebc7')
 
 package() {    
     install -Dm755 "${srcdir}/${_pkgname}" -t "${pkgdir}/usr/bin/"
