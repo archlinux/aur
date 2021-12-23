@@ -2,7 +2,7 @@
 
 pkgname=python-podman
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Podman's RESTful API"
 arch=('any')
 url="https://github.com/containers/podman-py"
