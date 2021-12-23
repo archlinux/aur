@@ -4,11 +4,11 @@
 
 pkgbase=linux-vfio-manjaro
 pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
-_kernelname=-MANJARO
+_kernelname=-VFIO-MANJARO
 _basekernel=5.15
 _basever=515
 _pkgver=5.15.10
-pkgver=5.15.10.vfio
+pkgver=5.15.10
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -134,9 +134,6 @@ prepare() {
   msg "set extraversion to pkgrel"
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
-  # set patchlevel to 14
-  #sed -ri "s|^(PATCHLEVEL =).*|\1 14|" Makefile
-
   msg "don't run depmod on 'make install'"
   # We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -177,7 +174,7 @@ package_linux-vfio-manjaro() {
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_kernver}/pkgbase"
 
   # add kernel version
-  echo "${pkgver}-${pkgrel}-MANJARO x64" > "${pkgdir}/boot/${pkgbase}-${CARCH}.kver"
+  echo "${pkgver}-${pkgrel}${_kernelname} x64" > "${pkgdir}/boot/${pkgbase}-${CARCH}.kver"
 
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname:--MANJARO}"
