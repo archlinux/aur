@@ -1,6 +1,6 @@
 pkgbase = unityx
 	pkgdesc = A modern and functional DE
-	pkgver = 10.0.rc5.r5.g6017803
+	pkgver = 10.0dev6.r1.gaaa5122
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -28,6 +28,8 @@ pkgbase = unityx
 	depends = arandr
 	depends = xorg-server-xephyr
 	depends = plotinus-unityx-git
+	depends = tint2
+	depends = hicolor-icon-theme
 	source = unityx::git+https://gitlab.com/ubuntu-unity/unity-x/unityx.git
 	sha256sums = SKIP
 
