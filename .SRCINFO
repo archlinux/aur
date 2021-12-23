@@ -8,9 +8,7 @@ pkgbase = r-catools
 	license = GPL3
 	depends = r>=3.6.0
 	depends = r-bitops
-	optdepends = r-rpart
 	source = https://cran.r-project.org/src/contrib/caTools_1.18.2.tar.gz
 	sha256sums = 75d61115afec754b053ed1732cc034f2aeb27b13e6e1932aa0f26bf590cf0293
 
 pkgname = r-catools
-
