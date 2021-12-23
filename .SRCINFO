@@ -1,0 +1,16 @@
+pkgbase = cross-code-bin
+	pkgdesc = A retro-inspired 2D Action RPG set in the distant future. CrossCode combines 16-bit SNES-style graphics with butter-smooth physics, a fast-paced combat system, and engaging puzzle mechanics, served with a gripping sci-fi story.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.cross-code.com
+	arch = x86_64
+	license = nonfree
+	conflicts = cross-code
+	source = local://CrossCode_1.3.linux64.zip
+	source = cross-code.png
+	source = com.cross-code.CrossCode.desktop
+	sha256sums = 782ea2a2e5882e387238b60a0ef4971041d4c4f752864c98cb1124089aeba077
+	sha256sums = da79d285e53d909b4c4dbd4182a9ff9ea5b8677f37f0a3187b475a703219c5e2
+	sha256sums = 6ec25f16376182c0868754f195514f93e85d31d60ab7a229c1defb2521789238
+
+pkgname = cross-code-bin
