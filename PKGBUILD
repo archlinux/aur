@@ -8,12 +8,12 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libupnp' 'libarchive' 'freetype2' 'fribidi' 'harfbuzz'
@@ -96,10 +96,12 @@ replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
+        caca-fix-to-newer-version.patch
         vlc-3.0.11.1-srt_1.4.2.patch
         vlc-live-media-2021.patch)
 sha512sums=('35cdf191071224d0cf1b5a83c00773ff87b9e5bfcf0f5523f7edd53f75b23eda6b27bb49ffa97d69a1d176b8fe4786d959aeeb00d4380beab71c9f7e6b7c7298'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
+            'ef479a246dc98f882a05ca56a1c2872cc67ced154c625790070b887858ddc250d55b1295db82c9122e5ecd3c2c9c712ec9718e28d0a9d21ff6a230eb6c5010ce'
             '7d776bdcb566ab6eb0b4aeefa5e7ba09505588ae19b6292e4df9aeeda52af66e67e77f968ee219b0987530c6f25ce2551d8216c1eeb53addea82a8e514d7e5ab'
             'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
 
@@ -108,6 +110,7 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}/vlc-3.0.11.1-srt_1.4.2.patch"
+  patch -Np1 < "${srcdir}/caca-fix-to-newer-version.patch"
   patch -Np1 < "${srcdir}/vlc-live-media-2021.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
@@ -120,8 +123,9 @@ build() {
   export CFLAGS+=" -I/usr/include/samba-4.0"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++11"
-  export LUAC=/usr/bin/luac
-  export LUA_LIBS="$(pkg-config --libs lua)"
+  # upstream does not support lua 5.3/5.4 yet: https://trac.videolan.org/vlc/ticket/25036
+  export LUAC=/usr/bin/luac5.2
+  export LUA_LIBS="$(pkg-config --libs lua5.2)"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
