@@ -1,31 +1,46 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-sphinx-jinja
-pkgver=1.1.1
-pkgrel=5
+pkgver=1.2.1
+# curl https://api.github.com/repos/tardyp/sphinx-jinja/git/ref/tags/$pkgver | jq -r .object.sha
+_tag=8ac1d0a217e768ce944ad68fcce3d9d65b9dc781
+pkgrel=1
 pkgdesc='A sphinx extension to include jinja based templates based documentation into a sphinx doc'
 arch=(any)
 url='https://github.com/tardyp/sphinx-jinja'
 license=(MIT)
 depends=(python python-docutils python-jinja python-sphinx)
-makedepends=(python-setuptools python-pbr)
-checkdepends=(python-nose python-sphinx-testing)
-source=("https://files.pythonhosted.org/packages/source/s/sphinx-jinja/sphinx-jinja-$pkgver.tar.gz")
-sha256sums=('372406fe557be7c3f000ddd0ff130e7bb2d83f47df02e255fd24fe62d81ee143')
+makedepends=(git python-build python-install python-poetry-core)
+checkdepends=(python-pytest)
+# tests are no longer included in PyPI source tarballs after upstream switched to poetry
+source=("git+https://github.com/tardyp/sphinx-jinja.git?signed#tag=$_tag")
+sha256sums=('SKIP')
+validpgpkeys=(
+  '390EB159056ED56F66AB1092AECD456B4D2531FC'  # https://github.com/tardyp.gpg
+)
+
+prepare() {
+  cd sphinx-jinja
+  rm -v sphinxcontrib/__init__.py
+}
+
+pkgver() {
+  cd sphinx-jinja
+  git describe --tags | sed 's/^v//'
+}
 
 build() {
-  cd sphinx-jinja-$pkgver
-  python setup.py build
+  cd sphinx-jinja
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd sphinx-jinja-$pkgver
-  # Running tests with 'nosetests' fails with issues around namespace packages
-  python -m nose -v
+  cd sphinx-jinja
+  pytest
 }
 
 package() {
-  cd sphinx-jinja-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd sphinx-jinja
+  python -m install --optimize 0 1 --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
