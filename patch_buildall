@@ -1,11 +1,9 @@
---- /home/daniel/Documents/desktop-v2/tools/build_all.py	2021-11-21 17:29:26.531768535 -0600
-+++ build_all.py	2021-11-20 00:18:17.000000000 -0600
-@@ -600,7 +600,7 @@
+@@ -669,7 +669,7 @@
    UpdateVersionInDebianControl(os.path.join(dest_package_path, "DEBIAN", "control"))
  
-   # create and sign .deb with dest_package 
+   # create .deb with dest_package 
 -  iutl.RunCommand(["fakeroot", "dpkg-deb", "--build", dest_package_path])
 +  iutl.RunCommand(["dpkg-deb", "--build", dest_package_path])
-   if not NO_SIGN_LINUX:
-     CodeSignLinux(dest_package_name + ".deb", TEMP_INSTALLER_DIR, TEMP_INSTALLER_DIR)
  
+   # create RPM from deb
+   # msg.Info("Creating RPM package...")

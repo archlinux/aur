@@ -1,6 +1,6 @@
 pkgbase = windscribe-git
 	pkgdesc = Windscribe's GUI desktop client
-	pkgver = 2.3.11_beta
+	pkgver = 2.3.15_beta
 	pkgrel = 1
 	url = https://github.com/Windscribe/desktop-v2
 	install = windscribe-git.install
@@ -31,13 +31,11 @@ pkgbase = windscribe-git
 	provides = windscribe
 	source = desktop-v2::git+https://github.com/Windscribe/desktop-v2#branch=master
 	source = patch_installqt
-	source = patch_sourcechanges
 	source = patch_buildall
 	source = patch_stunnel
 	sha512sums = SKIP
-	sha512sums = f15f459d1bce294bbd706b07d040ec21eebfdc1cf71f3e384be9fe9ebf089b154d9e6528077e168db161e7ade945eaa1f9d6515aefc5490b1703bd8e1b13fdf8
-	sha512sums = 231765d8ebd14cccfc2a6f80c48672c3c8baa35101ee21c20c8d877955e23d3090856100fffd1964010344f3479e2fac8843301f315dc8d9a660fb97012a1481
-	sha512sums = 3d0f6e821967a3c639a86f511a06c321448730b1f485b0b9bf4597ca0a2538d8fa3fb383c9cd55862edbab959598994616e2ff1bb74c853214666870fda90e65
-	sha512sums = 78c2d6070b943432930f256508bfe96d461a8201527f2a5249638d1f6d5f9eabefa0d9fcc938974f27fc1fc13f3b10627e506458a92b18c91d9238fc997f021f
+	sha512sums = 0dcac3f6297e7ecd2bf116099ab170869befc1fda164d78276eaf4fe3ea91fb589fcbb353b3a2c7e4643d7e659146555c4becace1f4ed89ef7ce0bf182aa6a60
+	sha512sums = 4020705917b3bbac6ddf8fcddbce8896f263d2823825e5d5fa06b35c9eb0ab6085c378bad237870c01b6f015d5d20c183e19c60fc3038a98c1f1997fdc3bc9fb
+	sha512sums = 3cff8fbd8f42af15400201143c1077797c3c02b6a2dc9edeee6c46801187c3bc2adfdf010d858cd45df2f55772da175d630a95f04cf965f789737c89999985d9
 
 pkgname = windscribe-git
