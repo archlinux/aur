@@ -1,15 +1,15 @@
 pkgbase = clonedigger
 	pkgdesc = Tool for finding clones in software written in Python.
-	pkgver = 1.0.11beta
-	pkgrel = 5
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = http://clonedigger.sourceforge.net/
 	arch = any
 	license = GPL
+	makedepends = python2-setuptools
 	depends = python2
 	options = !emptydirs
 	options = !strip
-	source = http://pypi.python.org/packages/source/c/clonedigger/clonedigger-1.0.11-beta.tar.gz
-	md5sums = 681a3e4693e941b89fbffb876b3e2790
+	source = https://pypi.python.org/packages/source/c/clonedigger/clonedigger-1.1.0.tar.gz
+	md5sums = 0bf30b2de988f15d4dd57fd78e1e302f
 
 pkgname = clonedigger
-
