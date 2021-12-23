@@ -1,0 +1,18 @@
+pkgbase = icytower
+	pkgdesc = Harold the Homeboy and his friends have decided to climb a huge tower they found the other day. It's up to you to help them get as high as possible without falling down, and collect extra points by doing cool moves on the way.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = pentium4
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = wget
+	depends = wine
+	depends = wine-gecko
+	depends = wine-mono
+	depends = unzip
+	depends = zenity
+	source = git+https://gitlab.com/icytower/icytower-launch-script
+	sha256sums = SKIP
+
+pkgname = icytower
