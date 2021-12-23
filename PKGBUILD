@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: farseerfc <farseerfc@gmail.com>
 pkgname=glmark2
-pkgver=2021.02
+pkgver=2021.12
 pkgrel=1
 pkgdesc="An OpenGL 2.0 and ES 2.0 benchmark"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glmark2/glmark2"
-license=('GPL' 'custom')
+license=('GPL3' 'custom')
 depends=('egl-wayland' 'libjpeg-turbo' 'libpng' 'libx11' 'mesa' 'systemd-libs')
 makedepends=('meson' 'systemd' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('bebadb78c13aea5e88ed892e5563101ccb745b75f1dc86a8fc7229f00d78cbf1')
+sha256sums=('9f111284b2ef1d3fce91928e249e6ca00796a036831b063a549a0f3b03557a95')
 
 build() {
   arch-meson "$pkgname-$pkgver" build \
@@ -24,7 +24,7 @@ build() {
 #}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   cd "$pkgname-$pkgver"
   install -Dm644 COPYING.SGI -t "$pkgdir/usr/share/licenses/$pkgname"

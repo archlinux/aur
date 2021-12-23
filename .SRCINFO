@@ -1,11 +1,11 @@
 pkgbase = glmark2
 	pkgdesc = An OpenGL 2.0 and ES 2.0 benchmark
-	pkgver = 2021.02
+	pkgver = 2021.12
 	pkgrel = 1
 	url = https://github.com/glmark2/glmark2
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = GPL3
 	license = custom
 	makedepends = meson
 	makedepends = systemd
@@ -16,7 +16,7 @@ pkgbase = glmark2
 	depends = libx11
 	depends = mesa
 	depends = systemd-libs
-	source = glmark2-2021.02.tar.gz::https://github.com/glmark2/glmark2/archive/2021.02.tar.gz
-	sha256sums = bebadb78c13aea5e88ed892e5563101ccb745b75f1dc86a8fc7229f00d78cbf1
+	source = glmark2-2021.12.tar.gz::https://github.com/glmark2/glmark2/archive/2021.12.tar.gz
+	sha256sums = 9f111284b2ef1d3fce91928e249e6ca00796a036831b063a549a0f3b03557a95
 
 pkgname = glmark2
