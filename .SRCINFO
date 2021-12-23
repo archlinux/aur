@@ -1,0 +1,15 @@
+pkgbase = tutel
+	pkgdesc = a minimalist todo app
+	pkgver = 0.2.0
+	pkgrel = 1
+	epoch = 1
+	url = https://www.github.com/InvalidName662/tutel
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = tutel::git+https://github.com/InvalidName662/tutel.git#tag=v0.2.0
+	md5sums = SKIP
+
+pkgname = tutel
