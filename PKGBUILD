@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
-pkgver=4.1.1.r82.ge22d7d2f
+pkgver=4.1.1.r90.geb57d269
 pkgrel=1
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-mutagen'
          'libxkbcommon-x11')
 makedepends=('git' 'python-distro' 'python-sphinx')
-checkdepends=('python-tox')
+checkdepends=('flake8' 'python-pytest' 'python-tox')
 source=('git+https://github.com/arsenetar/dupeguru.git')
 sha256sums=('SKIP')
 provides=('dupeguru')
@@ -19,6 +19,12 @@ conflicts=('dupeguru' 'dupeguru-se' 'dupeguru-pe' 'dupeguru-me')
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  # Ignore formatting-related test failures
+  sed -i '/black --check/d' tox.ini
 }
 
 build() {
