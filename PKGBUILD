@@ -57,7 +57,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=4.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -117,6 +117,7 @@ depends=(
   zlib
 )
 makedepends=(
+  git
   amf-headers
   avisynthplus
   clang
