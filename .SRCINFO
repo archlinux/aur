@@ -7,15 +7,7 @@ pkgbase = python-amply
 	license = EPL
 	makedepends = python-pip
 	makedepends = python-wheel
-	makedepends = python2-pip
-	makedepends = python2-wheel
 	source = https://files.pythonhosted.org/packages/source/a/amply/amply-0.1.4.tar.gz
 	b2sums = 78ae51f18355968c7713351267fe8a60adc797c9e0e37092f538935026898b51413f346a0faecc748a290f3fd3e4c313cfab6d0ddacfe34f76ecdb4ecd562ffb
 
 pkgname = python-amply
-	depends = python-docutils
-	depends = python-pyparsing
-
-pkgname = python2-amply
-	depends = python2-docutils
-	depends = python2-pyparsing
