@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
-pkgname=waynergy-git
-pkgver=r124.4ead8fb
+pkgname=waynergy
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Synergy client for wlroots wayland compositors"
 arch=(x86_64)
@@ -10,26 +10,18 @@ license=('MIT')
 depends=('wayland' 'libxkbcommon' 'libretls')
 makedepends=(git meson ninja)
 optdepends=('wl-clipboard: Clipboard synchronization support')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/r-c-f/waynergy.git')
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/r-c-f/waynergy/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('f960b7b43885b06479aed44d364f9c77')
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname}-${pkgver}"
 	arch-meson build
 	cd build
 	ninja
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
+	cd "$srcdir/${pkgname}-${pkgver}/build"
 	DESTDIR="$pkgdir" ninja install
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
