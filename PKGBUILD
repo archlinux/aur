@@ -2,7 +2,7 @@
 # Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-powershell
 _name=${pkgname:7}
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="An extension for colcon-core to provide PowerShell scripts."
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('351d4bd1a8be45857d79cc2575d1c71346501a56f2e5546e348134c64b59e289')
+sha256sums=('886b4ab34a6863a3c51e1cb5918bc921c2f4d2a36d07e5a345674cc8c7f02ed7')
 
 
 package() {
