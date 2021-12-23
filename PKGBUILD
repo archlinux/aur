@@ -66,7 +66,7 @@ _major=5.15
 pkgver=${_major}.8
 _branch=5.x
 _rt=23
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
 url="http://www.xanmod.org/"
@@ -100,7 +100,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '4ee54b78aa5dec4707412ee488f5279228f298aed0380fd0675c2f6943439e03'
+            '356c0c9df9377c6128c63980d26cf4932f672060891c80f425ce008b897a6d3d'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}

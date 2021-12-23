@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-rt
 	pkgdesc = Linux Xanmod real-time version
 	pkgver = 5.15.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -15,13 +15,13 @@ pkgbase = linux-xanmod-rt
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.15.8-rt23-xanmod1/patch-5.15.8-rt23-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/5.15.8-rt23-xanmod2/patch-5.15.8-rt23-xanmod2.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8
 	sha256sums = SKIP
-	sha256sums = 4ee54b78aa5dec4707412ee488f5279228f298aed0380fd0675c2f6943439e03
+	sha256sums = 356c0c9df9377c6128c63980d26cf4932f672060891c80f425ce008b897a6d3d
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
 
 pkgname = linux-xanmod-rt
