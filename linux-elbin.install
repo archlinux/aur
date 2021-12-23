@@ -3,7 +3,7 @@ post_install() {
 	echo 'WARNING!'
 	echo
 	echo '    Enterprise Linux 8 has very limited support for file systems.'
+	echo '    XFS and ext4 are the only options for local FS.'
 	echo '    Check Red Hat’s documentation for details.'
-	echo '    https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/overview-of-available-file-systems_managing-file-systems'
 	echo
 }
