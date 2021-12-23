@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=Getting Over It With Bennett Foddy
+Comment=A game I made for a certain kind of person. To hurt them.
+Path=/opt/getting-over-it-with-bennett-foddy
+Exec=/opt/getting-over-it-with-bennett-foddy/GettingOverIt.x86_64
+Icon=getting-over-it-with-bennett-foddy
+Terminal=false
+Categories=Game;
