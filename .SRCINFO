@@ -1,7 +1,7 @@
 pkgbase = python-podman-git
 	pkgdesc = Python bindings for Podman's RESTful API
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/containers/podman-py
 	arch = any
 	license = Apache
