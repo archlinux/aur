@@ -1,6 +1,6 @@
 pkgbase = drminfo-git
 	pkgdesc = print drm device information
-	pkgver = 7.1+75.g4904426309
+	pkgver = 8.1
 	pkgrel = 1
 	url = https://www.kraxel.org/cgit/drminfo/
 	arch = i686
@@ -13,10 +13,9 @@ pkgbase = drminfo-git
 	depends = libepoxy
 	depends = pixman
 	depends = gtk3
-	provides = drminfo=7.1
+	provides = drminfo=8.1
 	conflicts = drminfo
 	source = git://git.kraxel.org/drminfo
 	sha256sums = SKIP
 
 pkgname = drminfo-git
-
