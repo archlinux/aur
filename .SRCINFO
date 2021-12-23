@@ -1,17 +1,16 @@
 pkgbase = mingw-w64-sdl_net
 	pkgdesc = A small sample cross-platform networking library (mingw-w64)
 	pkgver = 1.2.8
-	pkgrel = 5
-	url = http://libsdl.org/projects/SDL_net
-	arch = any
-	license = zlib
+	pkgrel = 6
+	url = https://www.libsdl.org/projects/SDL_net/
+	arch = x86_64
+	license = custom
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-sdl
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://libsdl.org/projects/SDL_net/release/SDL_net-1.2.8.tar.gz
-	md5sums = 20e64e61d65662db66c379034f11f718
+	source = https://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.8.tar.gz
+	sha256sums = 5f4a7a8bb884f793c278ac3f3713be41980c5eedccecff0260411347714facb4
 
 pkgname = mingw-w64-sdl_net
-
