@@ -1,8 +1,8 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=cxbqn
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
-pkgdesc='BQN virtual machine.'
+pkgdesc='BQN VM written in C++.'
 arch=('x86_64')
 url='https://github.com/ashermancinelli/cxbqn'
 license=('GPL3')
@@ -20,17 +20,20 @@ build() {
 }
 
 package() {
-  install -Dm755 build/BQN "${pkgdir}/usr/bin/bqn"
+  make -C build DESTDIR="${pkgdir}" install
 
+  # License
   cd "${pkgname}-${pkgver}"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
+  # BQN reference documentation
   cd ext/bqn
   install -Dm644 community/README.md "${pkgdir}/usr/share/doc/${pkgname}/community.md"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/*.md
   install -Dm644 editors/README.md "${pkgdir}/usr/share/doc/${pkgname}/editors.md"
   mv tutorial "${pkgdir}/usr/share/doc/${pkgname}"
 
+  # Methods to input BQN symbols
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" editors/{inputrc,XCompose}
   install -Dm644 -t "${pkgdir}/usr/share/X11/xkb/symbols" editors/bqn
 }
