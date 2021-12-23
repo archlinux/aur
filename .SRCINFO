@@ -1,0 +1,12 @@
+pkgbase = profilesalertd
+	pkgdesc = Desktop notifications about changes to Linux platform_profile
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/t-8ch/profilesalertd/
+	arch = x86_64
+	license = GPL3
+	depends = systemd
+	source = profilesalertd-0.1.0.tar.gz::https://github.com/t-8ch/profilesalertd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9990fad71450d9c2ada725ee1c2cdd65b20613c9ca844b77b0e46aa2f36800e7
+
+pkgname = profilesalertd
