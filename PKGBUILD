@@ -3,8 +3,8 @@
 
 pkgname=indicator-sysmonitor-bzr
 pkgver=0.8.2
-pkgrel=0
-pkgdesc="An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status."
+pkgrel=1
+pkgdesc="An Application Indicator showing various system parameters (deprecated)"
 arch=('any')
 url="https://launchpad.net/indicator-sysmonitor"
 license=('GPL3')

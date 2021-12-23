@@ -1,7 +1,7 @@
 pkgbase = indicator-sysmonitor-bzr
-	pkgdesc = An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status.
+	pkgdesc = An Application Indicator showing various system parameters (deprecated)
 	pkgver = 0.8.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://launchpad.net/indicator-sysmonitor
 	arch = any
 	license = GPL3
@@ -12,4 +12,3 @@ pkgbase = indicator-sysmonitor-bzr
 	depends = python
 
 pkgname = indicator-sysmonitor-bzr
-
