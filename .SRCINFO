@@ -22,4 +22,3 @@ pkgbase = r-multcomp
 	sha256sums = 41509d8457cfad9ce579115e6e0ed1f7c0244455a8639cbd38a6d755d338fb0b
 
 pkgname = r-multcomp
-
