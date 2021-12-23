@@ -1,6 +1,6 @@
 pkgbase = python-colcon-ros
 	pkgdesc = An extension for colcon-core to support ROS packages.
-	pkgver = 0.3.21
+	pkgver = 0.3.22
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-ros/
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = python-colcon-ros
 	depends = python-colcon-python-setup-py
 	depends = python-pyparsing
 	depends = python-catkin_pkg
-	source = https://files.pythonhosted.org/packages/source/c/colcon-ros/colcon-ros-0.3.21.tar.gz
-	sha256sums = 9dccfa4bce1a18a06e1edcd589aa287e1807afc853af26c25e716830a8b6eaa3
+	source = https://files.pythonhosted.org/packages/source/c/colcon-ros/colcon-ros-0.3.22.tar.gz
+	sha256sums = c22124e018930427ae66faaa77777adddbb5e8d7790e60711f012b3a43ceda01
 
 pkgname = python-colcon-ros
-
