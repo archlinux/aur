@@ -42,12 +42,12 @@ index f1705b46fc8898..b9055a3e61ed76 100644
 +			set_bit(HCI_QUIRK_INVALID_BDADDR, &hdev->quirks);
 +		}
  	}
- 
+
  	btintel_get_fw_name_tlv(ver, fwname, sizeof(fwname), "sfi");
 @@ -2303,6 +2305,10 @@ static int btintel_setup_combined(struct hci_dev *hdev)
  		goto exit_error;
  	}
- 
+
 +	/* memset ver_tlv to start with clean state as few fields are exclusive
 +	 * to bootloader mode and are not populated in operational mode
 +	 */
