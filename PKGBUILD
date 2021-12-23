@@ -26,10 +26,8 @@ package() {
 
   # Install the executable and jar file.
   mkdir -p "${pkgdir}/usr/bin"
-  echo """
-#!/usr/bin/env sh
-java -jar /usr/share/java/splitter/splitter.jar "$@"
-""" > "${pkgdir}/usr/bin/${pkgname}"
+  echo """#!/usr/bin/env sh
+java -jar /usr/share/java/splitter/splitter.jar \$@""" > "${pkgdir}/usr/bin/${pkgname}"
   chmod a+x "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${pkgname}.jar" \
     "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
