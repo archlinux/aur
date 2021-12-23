@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-useless-gaps-git
 pkgver=r14.672d14e
-pkgrel=1
+pkgrel=2
 pkgdesc="Useless Gaps is a GNOME Shell Extension which for aesthetic purposes adds 'useless gaps' around windows."
 arch=(any)
 url="https://github.com/mipmip/gnome-shell-extensions-useless-gaps"
