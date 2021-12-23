@@ -1,10 +1,11 @@
 pkgbase = pipelinit-bin
 	pkgdesc = Automatically generates pipelines for your project.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pipelinit/pipelinit-cli
 	arch = x86_64
 	license = MIT
+	options = !strip
 	source = https://github.com/pipelinit/pipelinit-cli/releases/download/v0.3.0/pipelinit-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
 	source = https://raw.githubusercontent.com/pipelinit/pipelinit-cli/main/LICENSE.txt
 	sha256sums = cbb08a4d8a39527f65ed38602ba8d0ce104fe0b768187cc4626b8f155e681040
