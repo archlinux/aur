@@ -1,15 +1,15 @@
-# Maintainer: Volker Schatz <arch@my-name-without-hyphen.com>
+# Contributor: Volker Schatz <arch@my-name-without-hyphen.com>
 pkgname='perl-net-smtp-tls'
 _cpanname='Net-SMTP-TLS'
 pkgver='0.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Perl SMTP client supporting TLS and AUTH'
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-digest-hmac' 'perl-io-socket-ssl' 'perl-net-ssleay')
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-0.12.tar.gz"
+source=("https://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-0.12.tar.gz"
         "tls-fixes.diff")
 md5sums=('a845eba3670e56a197ecd37f571d153a'
          '6bd41774da31f07c7b60a28db6247922')

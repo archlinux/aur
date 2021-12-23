@@ -1,7 +1,7 @@
 pkgbase = perl-net-smtp-tls
 	pkgdesc = Perl SMTP client supporting TLS and AUTH
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-SMTP-TLS
 	arch = any
 	license = GPL
@@ -11,10 +11,9 @@ pkgbase = perl-net-smtp-tls
 	depends = perl-io-socket-ssl
 	depends = perl-net-ssleay
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-0.12.tar.gz
+	source = https://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-0.12.tar.gz
 	source = tls-fixes.diff
 	md5sums = a845eba3670e56a197ecd37f571d153a
 	md5sums = 6bd41774da31f07c7b60a28db6247922
 
 pkgname = perl-net-smtp-tls
-
