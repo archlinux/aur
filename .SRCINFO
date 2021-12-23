@@ -1,0 +1,18 @@
+pkgbase = lynx-menu
+	pkgdesc = Lynx Menu - Menu Oficial de LynxOS
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/LynxOS/lynx-menu
+	arch = any
+	license = GPL
+	depends = lynx-nw
+	depends = lynx-bootstrap
+	depends = nodejs
+	depends = npm
+	depends = gnome-menus
+	depends = python-dbus
+	depends = python-gobject
+	source = https://gitlab.com/LynxOS/lynx-menu/-/archive/0.0.1/lynx-menu-0.0.1.tar.gz
+	md5sums = f888666d798203d680e91e9b9defb0f7
+
+pkgname = lynx-menu
