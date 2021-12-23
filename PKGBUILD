@@ -3,10 +3,10 @@
 pkgname=python-exchange_calendars
 _pkgname=${pkgname#python-}
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Calendars for various securities exchanges"
 arch=('any')
-depends=('python-numpy' 'python-pandas' 'python-dateutil' 'python-pytz' 'python-pyluach' 'python-toolz')
+depends=('python-numpy' 'python-pandas' 'python-dateutil' 'python-pytz' 'python-pyluach' 'python-toolz' 'python-korean_lunar_calendar')
 makedepends=('python-setuptools')
 url="https://github.com/gerrymanoim/$_pkgname"
 license=('APACHE')

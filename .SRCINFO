@@ -1,7 +1,7 @@
 pkgbase = python-exchange_calendars
 	pkgdesc = Calendars for various securities exchanges
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gerrymanoim/exchange_calendars
 	arch = any
 	license = APACHE
@@ -12,6 +12,7 @@ pkgbase = python-exchange_calendars
 	depends = python-pytz
 	depends = python-pyluach
 	depends = python-toolz
+	depends = python-korean_lunar_calendar
 	source = https://files.pythonhosted.org/packages/source/e/exchange_calendars/exchange_calendars-3.5.tar.gz
 	sha256sums = 1c132a9cf744ce27ce1e70c631810bbb881a64cbb1c28a166b984e383d434e41
 
