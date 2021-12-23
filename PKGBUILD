@@ -4,25 +4,25 @@
 # Contributor: Chris Allison <daemon@cca.me.uk>
 
 pkgname=ccextractor
-pkgver=0.93
+pkgver=0.94
 pkgrel=1
 pkgdesc="A fast closed captions extractor for MPEG files."
 arch=('i686' 'x86_64')
 url="https://www.ccextractor.org"
 license=('GPL')
-depends=('gcc-libs' 'tesseract' 'leptonica' 'ffmpeg')
+depends=('gcc-libs' 'tesseract' 'leptonica' 'ffmpeg' 'rust' 'clang')
 source=(
-   https://github.com/CCExtractor/ccextractor/archive/v$pkgver.tar.gz
+  https://github.com/CCExtractor/ccextractor/releases/download/v$pkgver/ccextractor_minimal.tar.gz
 )
-sha512sums=('1c6cf58b4231a5db0f58f6dc3bd46a88cbc4e69ba3b15629a4dfbc819c82d55d16ab2f8297d52ed042a055ec53918f5bbce857ddab024e99084c7163e7d2bddc')
+sha512sums=('35ddcfb540f2b9a9354b81885c31c4fedd4385700401f71db59048a855f74bff045de8787e13dc8d772e1d3bf7d75ae8732c2d97a8148475502f0e0586b47aa9')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/linux"
+  cd "$srcdir/$pkgname/linux"
   ./build_hardsubx
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/linux"
+  cd "$srcdir/$pkgname/linux"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
