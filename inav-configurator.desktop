@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=INAV Configurator
 Comment=Crossplatform configuration tool for the INAV flight control system
