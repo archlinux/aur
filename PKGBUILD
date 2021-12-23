@@ -1,7 +1,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='nfpm'
-pkgver=v2.11.1
+pkgver=v2.11.2
 pkgrel=1
 pkgdesc='A simple deb and rpm packager written in Go '
 url='https://github.com/goreleaser/nfpm'
@@ -14,7 +14,7 @@ makedepends=()
 _basedownloadurl="${url}/releases/download/v${pkgver#v}"
 
 source=("${_basedownloadurl}/${pkgname}_${pkgver#v}_linux_${arch}.tar.gz")
-sha256sums=('5b0c0c74ee166d1837b9add9fb4bb1821baa49372e77e21279db66d95ebbd5fc')
+sha256sums=('7c279b30f720087f9780c2943b8618333437bc80ccf3d01e3964f6d4382d1629')
 
 package() {
 	# Bin
