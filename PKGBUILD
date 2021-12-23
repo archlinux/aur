@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=3.1.0.20711.857cd86de
+pkgver=3.1.0.20713.7f124ca95
 pkgrel=1
 epoch=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
@@ -18,8 +18,8 @@ makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'au
 provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
 source=("git+https://gitlab.gnome.org/World/AbiWord.git"
-	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword' 
-	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword' null.patch)
+	'aiksaurus-plugin.m4' 
+	'command-plugin.m4' null.patch)
 sha256sums=('SKIP'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
             '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be'

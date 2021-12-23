@@ -1,6 +1,6 @@
 pkgbase = abiword-git
 	pkgdesc = Fully-featured word processor from official gnome gitlab mirror
-	pkgver = 3.1.0.20711.857cd86de
+	pkgver = 3.1.0.20713.7f124ca95
 	pkgrel = 1
 	epoch = 1
 	url = http://www.abisource.com
@@ -33,8 +33,8 @@ pkgbase = abiword-git
 	conflicts = abiword
 	conflicts = abiword-plugins
 	source = git+https://gitlab.gnome.org/World/AbiWord.git
-	source = aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword
-	source = command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword
+	source = aiksaurus-plugin.m4
+	source = command-plugin.m4
 	source = null.patch
 	sha256sums = SKIP
 	sha256sums = 5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1
