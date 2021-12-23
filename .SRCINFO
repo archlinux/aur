@@ -1,6 +1,6 @@
 pkgbase = polychromatic
 	pkgdesc = RGB lighting management front-end application for OpenRazer
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/polychromatic/polychromatic
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = polychromatic
 	depends = libappindicator-gtk3
 	depends = python-gobject
 	optdepends = python-openrazer
-	source = polychromatic-v0.7.2.tar.gz::https://github.com/polychromatic/polychromatic/archive/v0.7.2.tar.gz
-	sha512sums = da45a0c2865c5c2a8e341b5329d7256b411903926eefa01aafa652201f8bd9fd20363233ab0ac36e50051dfcd9011a6518f1a848f29788446da3084473fbd6df
+	source = polychromatic-v0.7.3.tar.gz::https://github.com/polychromatic/polychromatic/archive/v0.7.3.tar.gz
+	sha512sums = bdd816fcbae8ce2e12367afd455941afb754f7ddb9f6337c6b675a3059c1dc6d64b1a7809efce9b909b8aee2025b496dc0b870d2e56a09da7fde7f8b5d733c5f
 
 pkgname = polychromatic
