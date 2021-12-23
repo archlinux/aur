@@ -32,7 +32,7 @@ build() {
     --with-system-readline \
     --disable-nls \
     --with-python=/usr/bin/python \
-    --with-guile=guile-2.0 \
+    --with-guile=guile-2.2 \
     --with-system-gdbinit=/etc/gdb/gdbinit
 
   make
