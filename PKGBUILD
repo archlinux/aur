@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.28.1
+pkgver=1.28.3
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   'libselinux'
 )
 checkdepends=('qemu-headless')
-validpgpkeys=('F7774FB1AD074A7E8C8767EA91738F73E1B768A0')
+validpgpkeys=('F7774FB1AD074A7E8C8767EA91738F73E1B768A0' '71C2CC22B1C4602927D2F3AAA7A16B4A2527436A')
 _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
@@ -60,5 +60,5 @@ check() {
   make check
 }
 
-sha256sums=('389a5f02f92de409055ef2eb2be727f4c9fdbedd7317c37b15d1f6ed3ea1b988'
+sha256sums=('33bb4caed3545881810959e13aeabc62f1832000352e1c253b696fac933d5473'
             'SKIP')
