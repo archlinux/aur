@@ -9,31 +9,31 @@ arch=('any')
 url='https://www.sede.fnmt.gob.es'
 license=('unknown')
 depends=('ca-certificates-utils')
-source=('https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-RCM_SHA256.cer'
+source=("AC_Raiz_FNMT-RCM_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-RCM_SHA256.cer"
 
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_FNMT_Usuarios.cer'
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Representacion.cer'
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Administracion_Publica_SHA256.cer'
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Componentes_Informaticos_SHA256.cer'
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Sector_Publico.cer'
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Unidades_Sellado_Tiempo.cer'
+        "AC_FNMT_Usuarios_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_FNMT_Usuarios.cer"
+        "AC_Representacion_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Representacion.cer"
+        "AC_Administracion_Publica_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Administracion_Publica_SHA256.cer"
+        "AC_Componentes_Informaticos_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Componentes_Informaticos_SHA256.cer"
+        "AC_Sector_Publico_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Sector_Publico.cer"
+        "AC_Unidades_Sellado_Tiempo_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Unidades_Sellado_Tiempo.cer"
 
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-RCM-SS.cer'
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Servidores_Seguros_Tipo1.cer'
-        'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Servidores_Seguros_Tipo2.cer'
+        "AC_Raiz_FNMT-RCM-SS_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-RCM-SS.cer"
+        "AC_Servidores_Seguros_Tipo1_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Servidores_Seguros_Tipo1.cer"
+        "AC_Servidores_Seguros_Tipo2_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Servidores_Seguros_Tipo2.cer"
 
-        'OCSP_AC_FNMT_Usuarios.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_FNMT_Usuarios'
-        'OCSP_AC_Representacion.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_Representacion'
-        'OCSP_AP.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AP'
-        'OCSP_AC_Componentes_Informaticos.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_Componentes_Informaticos'
-        'OSCP_SP.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SP'
-        'OCSP_ACRAIZ_FNMTRCM.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_ACRAIZ_FNMTRCM'
+        "OCSP_AC_FNMT_Usuarios_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_FNMT_Usuarios"
+        "OCSP_AC_Representacion_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_Representacion"
+        "OCSP_AP_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AP"
+        "OCSP_AC_Componentes_Informaticos_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_Componentes_Informaticos"
+        "OSCP_SP_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SP"
+        "OCSP_ACRAIZ_FNMTRCM_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_ACRAIZ_FNMTRCM"
 
-        'qets.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qets'
-        'qtsa.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qtsa'
-        'tsa.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/tsa'
+        "qets_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qets"
+        "qtsa_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qtsa"
+        "tsa_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/tsa"
 
-#         'https://www.sede.fnmt.gob.es/documents/10445900/10526749/FNMTClase2CA.cer'
+#         "FNMTClase2CA_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10526749/FNMTClase2CA.cer"
         )
 sha256sums=('ebc5570c29018c4d67b1aa127baf12f703b4611ebc17b7dab5573894179b93fa'
             '601293ca20b09a03295d196256c6953ff9eba811db8e3ce140413c1bffe9a869'
@@ -47,8 +47,8 @@ sha256sums=('ebc5570c29018c4d67b1aa127baf12f703b4611ebc17b7dab5573894179b93fa'
             '9ff23cb9387b9e0083bd5aa1954eeddf792890aa8e67cd4d38dd28af4a439ad8'
             'c508f0fb0492d9acc8390b39bb6cfe281ce5e6e39e1f648feffe90339d6d7ec6'
             'c08b06f3f23bad4e95ca1ecf8dcb12908e5b558711f0518039b7cfa436925f0c'
-            'd6d1a026461ddb4c25849affe0881f1eea2e67e33e30636b5e0c68bcc3972690'
-            'd74ee6a47cb2dae6003288857a2d7d135ba1e21e7eac8d145d8cc96b5a7b280f'
+            '4c7d254f258cb71db48d17f6134e7e8d8b47a5f886bd85f397bd47a2750297f2'
+            '855639e3b4412f4a011a745ae440fa2c32d6d7ae01d3dd10d98a8434a6e937d4'
             '5f570d2f3fbb3c423e13b8087653ec06af9cf166d635668f661644eefed71860'
             '3eaceda37914ccd4b454f0449dbc3857198b8e6da4cd022778ddcf37d1e20581'
             'b03f7cc682d2f0a7c1d195692cc0de4c35ad017294955d35f6eb743fe78595f3'
@@ -59,28 +59,28 @@ sha256sums=('ebc5570c29018c4d67b1aa127baf12f703b4611ebc17b7dab5573894179b93fa'
             )
 
 package() {
-  install -Dm644 AC_Raiz_FNMT-RCM_SHA256.cer            "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Raiz_FNMT-RCM_SHA256.cer"
-  install -Dm644 AC_FNMT_Usuarios.cer                   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_FNMT_Usuarios.cer"
-  install -Dm644 AC_Representacion.cer                  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Representacion.cer"
-  install -Dm644 AC_Administracion_Publica_SHA256.cer   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Administracion_Publica_SHA256.cer"
-  install -Dm644 AC_Componentes_Informaticos_SHA256.cer "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Componentes_Informaticos_SHA256.cer"
-  install -Dm644 AC_Sector_Publico.cer                  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Sector_Publico.cer"
-  install -Dm644 AC_Unidades_Sellado_Tiempo.cer         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Unidades_Sellado_Tiempo.cer"
+  install -Dm644 "AC_Raiz_FNMT-RCM_${pkgver}.cer"                   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Raiz_FNMT-RCM_SHA256.cer"
+  install -Dm644 "AC_FNMT_Usuarios_${pkgver}.cer"                   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_FNMT_Usuarios.cer"
+  install -Dm644 "AC_Representacion_${pkgver}.cer"                  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Representacion.cer"
+  install -Dm644 "AC_Administracion_Publica_${pkgver}.cer"          "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Administracion_Publica.cer"
+  install -Dm644 "AC_Componentes_Informaticos_${pkgver}.cer"        "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Componentes_Informaticos.cer"
+  install -Dm644 "AC_Sector_Publico_${pkgver}.cer"                  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Sector_Publico.cer"
+  install -Dm644 "AC_Unidades_Sellado_Tiempo_${pkgver}.cer"         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Unidades_Sellado_Tiempo.cer"
 
-  install -Dm644 AC_Raiz_FNMT-RCM-SS.cer                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Raiz_FNMT-RCM-SS.cer"
-  install -Dm644 AC_Servidores_Seguros_Tipo1.cer        "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Servidores_Seguros_Tipo1.cer"
-  install -Dm644 AC_Servidores_Seguros_Tipo2.cer        "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Servidores_Seguros_Tipo2.cer"
+  install -Dm644 "AC_Raiz_FNMT-RCM-SS_${pkgver}.cer"                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Raiz_FNMT-RCM-SS.cer"
+  install -Dm644 "AC_Servidores_Seguros_Tipo1_${pkgver}.cer"        "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Servidores_Seguros_Tipo1.cer"
+  install -Dm644 "AC_Servidores_Seguros_Tipo2_${pkgver}.cer"        "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_Servidores_Seguros_Tipo2.cer"
 
-  install -Dm644 OCSP_AC_FNMT_Usuarios.cer              "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_FNMT_Usuarios.cer"
-  install -Dm644 OCSP_AC_Representacion.cer             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_Representacion.cer"
-  install -Dm644 OCSP_AP.cer                            "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AP.cer"
-  install -Dm644 OCSP_AC_Componentes_Informaticos.cer   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_Componentes_Informaticos.cer"
-  install -Dm644 OSCP_SP.cer                            "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_SP.cer"
-  install -Dm644 OCSP_ACRAIZ_FNMTRCM.cer                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_ACRAIZ_FNMTRCM.cer"
+  install -Dm644 "OCSP_AC_FNMT_Usuarios_${pkgver}.cer"              "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_FNMT_Usuarios.cer"
+  install -Dm644 "OCSP_AC_Representacion_${pkgver}.cer"             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_Representacion.cer"
+  install -Dm644 "OCSP_AP_${pkgver}.cer"                            "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AP.cer"
+  install -Dm644 "OCSP_AC_Componentes_Informaticos_${pkgver}.cer"   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_Componentes_Informaticos.cer"
+  install -Dm644 "OSCP_SP_${pkgver}.cer"                            "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_SP.cer"
+  install -Dm644 "OCSP_ACRAIZ_FNMTRCM_${pkgver}.cer"                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_ACRAIZ_FNMTRCM.cer"
 
-  install -Dm644 qets.cer                               "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qets.cer"
-  install -Dm644 qtsa.cer                               "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qtsa.cer"
-  install -Dm644 tsa.cer                                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/tsa.cer"
+  install -Dm644 "qets_${pkgver}.cer"                               "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qets.cer"
+  install -Dm644 "qtsa_${pkgver}.cer"                               "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qtsa.cer"
+  install -Dm644 "tsa_${pkgver}.cer"                                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/tsa.cer"
 
-#   install -Dm644 FNMTClase2CA.cer                       "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/FNMTClase2CA.cer"
+#   install -Dm644 "FNMTClase2CA_${pkgver}.cer"                       "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/FNMTClase2CA.cer"
 }
