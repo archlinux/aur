@@ -2,24 +2,16 @@
 # Contributor: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 
 pkgname=pan
-pkgver=0.148
+pkgver=0.149
 pkgrel=1
 pkgdesc='A powerful Newsgroup Article reader'
 arch=(x86_64)
 url='http://pan.rebelbase.com/'
 license=(GPL2)
 depends=(gtkspell3 gmime3)
-source=(https://pan.rebelbase.com/download/releases/$pkgver/source/pan-$pkgver.tar.gz
-        pan-enchant-2.patch)
-sha256sums=('95798df5b5428d1134b41b7e0554d67131842706cd042605f50c79189cb5a28c'
-            '1e4928c3cd555d0e4dc8b880e14e1409fe0647035addcc93359fb1800c4e7cfd')
-
-prepare() {
-  cd pan-$pkgver
-  sed -e '/gtk+-2.0/d' -i configure.ac
-  patch -p1 -i ../pan-enchant-2.patch # Fix build with enchant 2
-  NOCONFIGURE=1 ./autogen.sh
-}
+makedepends=(itstool)
+source=(https://pan.rebelbase.com/download/releases/$pkgver/source/pan-$pkgver.tar.gz)
+sha256sums=('2445252125bc56d022dda1236adf80ae85274b41e5002c5667b0e032725b32b7')
 
 build() {
   cd pan-$pkgver
