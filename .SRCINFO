@@ -1,6 +1,6 @@
 pkgbase = cxbqn
 	pkgdesc = BQN VM written in C++.
-	pkgver = 0.9.1
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/ashermancinelli/cxbqn
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cxbqn
 	conflicts = cbqn
 	conflicts = cbqn-git
 	conflicts = cxbqn-git
-	source = cxbqn-0.9.1::git+https://github.com/ashermancinelli/cxbqn#tag=v0.9.1
+	source = cxbqn-0.10.1::git+https://github.com/ashermancinelli/cxbqn#tag=v0.10.1
 	sha256sums = SKIP
 
 pkgname = cxbqn

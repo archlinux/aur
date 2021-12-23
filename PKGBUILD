@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=cxbqn
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='BQN VM written in C++.'
 arch=('x86_64')
@@ -15,26 +15,11 @@ sha256sums=('SKIP')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr .. \
-    -DCXBQN_READLINE=ON -DCXBQN_FFI=ON
-  make -C build -j12
+    -DDOCTEST_NO_INSTALL=ON -DCXBQN_READLINE=ON
+  make -C build -j 12
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib/cmake" "${pkgdir}/usr/include/doctest"
-
-  # License
-  cd "${pkgname}-${pkgver}"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-
-  # BQN reference documentation
-  cd ext/bqn
-  install -Dm644 community/README.md "${pkgdir}/usr/share/doc/${pkgname}/community.md"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/*.md
-  install -Dm644 editors/README.md "${pkgdir}/usr/share/doc/${pkgname}/editors.md"
-  mv tutorial "${pkgdir}/usr/share/doc/${pkgname}"
-
-  # Methods to input BQN symbols
-  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" editors/{inputrc,XCompose}
-  install -Dm644 -t "${pkgdir}/usr/share/X11/xkb/symbols" editors/bqn
+  make -C build DESTDIR="${pkgdir}" install/fast
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}-${pkgver}/LICENSE"
 }
