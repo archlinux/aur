@@ -5,8 +5,8 @@
 # Contributor: SanskritFritz
 
 pkgname=tupitube
-pkgver=0.2.17
-pkgrel=2
+pkgver=0.2.18
+pkgrel=1
 pkgdesc='Design and authoring tool for digital artists interested in 2D animation'
 arch=('x86_64')
 url='https://tupitube.com/'
@@ -15,16 +15,13 @@ depends=('ffmpeg' 'qt5-multimedia' 'qt5-svg' 'quazip')
 makedepends=('ruby-rexml')
 replaces=('tupitube.desk')
 source=("https://downloads.sourceforge.net/tupi2d/$pkgname.desk-$pkgver.tar.gz"
-        'tupitube.appdata.xml'
-        'qt-5.15.patch')
-sha256sums=('e266490757a38a02dfa37405e4704993238f8af3060163e17830a85b22d9ba15'
-            '99fbafe0b359130d53278db3cada052f8245c325dcb82ce33997322dd750707a'
-            'afb563345a62034f523dcc558aee83efb466c863feb39e6a8d5744c974b979ce')
+        'tupitube.appdata.xml')
+sha256sums=('b765e39426531c383cc88cda62c5331efe5f965d02ec079e55eddd077749a4aa'
+            '99fbafe0b359130d53278db3cada052f8245c325dcb82ce33997322dd750707a')
 
 prepare() {
   cd $pkgname.desk
-  patch -p1 -i ../qt-5.15.patch
-  sed -i 's|quazip/|QuaZip-Qt5-1.1/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
+  sed -i 's|quazip/|QuaZip-Qt5-1.2/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
   sed -i 's|quazip-qt5|quazip1-qt5|' qonf/test.rb
   sed -i 's|/share/pixmaps|/share/icons/hicolor/128x128/apps|' qonf/makefile.rb
   sed -i '/require .os/d' qonf/configure.rb
