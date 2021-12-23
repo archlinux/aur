@@ -1,0 +1,17 @@
+pkgbase = python-asdf_transform_schemas
+	pkgdesc = ASDF schemas for transforms
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/asdf-format/asdf-transform-schemas
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-asdf
+	makedepends = python-setuptools-scm
+	source = https://files.pythonhosted.org/packages/source/a/asdf_transform_schemas/asdf_transform_schemas-0.2.0.tar.gz
+	md5sums = a0af2f29a54c0c0d9a0387c1c22c5462
+
+pkgname = python-asdf_transform_schemas
+	depends = python>=3.7
+	depends = python-asdf>=2.8.0
+	depends = python-importlib_resources>=3
