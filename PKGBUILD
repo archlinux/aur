@@ -1,16 +1,16 @@
 # Maintainer: trougnouf (Benoit Brummer) < trougnouf at gmail dot com >
 _name='datasets'
 pkgname="python-${_name}"
-pkgver=1.11.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Library providing one-line dataloaders for many public datasets and efficient data pre-processing"
 arch=('i686' 'x86_64')
 url="https://github.com/huggingface/${_name}"
 license=('Apache')
-depends=('python-pyarrow' 'python-dill' 'python-pandas' 'python-xxhash' 'python-multiprocess' 'python-aiohttp' 'python-huggingface-hub')
+depends=('python-pyarrow' 'python-dill' 'python-pandas' 'python-xxhash' 'python-multiprocess' 'python-aiohttp' 'python-huggingface-hub' 'python-fsspec')
 makedepends=('python-setuptools')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e605b04f6793864e9fd691722a4bace5b6350861dc0d6839b3d28f18e495a918')
+sha256sums=('0d8c98c9a91c164e6e550d1262d317cc240f4c748b026b32cfc8d777d2ac0ab7')
 
 build() {
     cd ${srcdir}/${_name}-${pkgver}
