@@ -2,7 +2,7 @@
 
 pkgname=olive-git
 _pkgname=${pkgname%-*}
-pkgver=continuous.r1409.gcf1bd65b1
+pkgver=continuous.r1444.ge902507e4
 pkgrel=1
 arch=('pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
@@ -30,12 +30,9 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  # Fixes for OpenTimelineIO integration
+  # The OpenTimelineIO library requires some features of C++17 standard.
+  # Olive uses C++14 by default, preventing the compilation of modules that use OpenTimelineIO.
   sed -i "s/CXX_STANDARD 14/CXX_STANDARD 17/" CMakeLists.txt
-  sed -i "s/(es/(es.outcome/g" \
-          app/task/project/loadotio/loadotio.cpp
-  sed -i "s/(es/(es.outcome/g" \
-          app/task/project/saveotio/saveotio.cpp
 
   # Currently the build crashes in the "ffmpegdecoder.cpp" file (-Werror=stringop-overflow).
   # The build completes normally when this warning is disabled.
