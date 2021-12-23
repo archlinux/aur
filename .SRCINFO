@@ -30,4 +30,3 @@ pkgbase = r-covr
 	sha256sums = a54cfc3623ea56084158ac5d7fe33f216f45191f6dcddab9c9ed4ec1d9d8ac6c
 
 pkgname = r-covr
-
