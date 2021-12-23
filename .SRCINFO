@@ -1,6 +1,6 @@
 pkgbase = atuin-git
 	pkgdesc = Magical shell history (git)
-	pkgver = 0.7.2.r6.gb549095d
+	pkgver = 0.8.0.r3.g7fa3e1c0
 	pkgrel = 1
 	url = https://github.com/ellie/atuin
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = atuin-git
 	depends = gcc-libs
 	provides = atuin
 	conflicts = atuin
+	options = !lto
 	source = git+https://github.com/ellie/atuin
 	sha256sums = SKIP
 
