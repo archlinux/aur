@@ -17,6 +17,6 @@ sha512sums=('18a4debc447cf958e45f96c083a94ee64b6f92c4761f0310f67f665a253e5884b2a
 package() {
 	cd "$pkgname-$pkgver"
 
-	export RUSTFLAGS='-A warnings'
+	export RUSTFLAGS='--cap-lints=allow'
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
