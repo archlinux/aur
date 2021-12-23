@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributorr: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=modeltools
 _cranver=0.2-23
@@ -11,19 +11,14 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=(r)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('954e3f72a5fd9086f070f7fcc41a08f1')
+sha256sums=('6b3e8d5af1a039db5c178498dbf354ed1c5627a8cea9229726644053443210ef')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
-
-

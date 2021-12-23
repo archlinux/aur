@@ -7,7 +7,6 @@ pkgbase = r-modeltools
 	license = GPL2
 	depends = r
 	source = https://cran.r-project.org/src/contrib/modeltools_0.2-23.tar.gz
-	md5sums = 954e3f72a5fd9086f070f7fcc41a08f1
+	sha256sums = 6b3e8d5af1a039db5c178498dbf354ed1c5627a8cea9229726644053443210ef
 
 pkgname = r-modeltools
-
