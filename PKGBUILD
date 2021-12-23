@@ -1,6 +1,6 @@
 _npmname=termcolors
 pkgname=nodejs-termcolors
-pkgver=0.2.16
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Convert terminal color schemes"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('a68a0058c4dad32cab3e45684eae14fc14f45eb6d981f86e839bf837a46163f9')
+sha256sums=('fea0b9ce40e2c3df329d53ee1e418bfc0abab9bfe94596ac571b7f2748ed16e9')
 
 package() {
   cd $srcdir

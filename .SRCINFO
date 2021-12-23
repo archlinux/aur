@@ -1,15 +1,14 @@
 pkgbase = nodejs-termcolors
 	pkgdesc = Convert terminal color schemes
-	pkgver = 0.2.16
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/stayradiated/termcolors
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = termcolors-0.2.16.tgz
-	source = http://registry.npmjs.org/termcolors/-/termcolors-0.2.16.tgz
-	sha256sums = a68a0058c4dad32cab3e45684eae14fc14f45eb6d981f86e839bf837a46163f9
+	noextract = termcolors-0.7.3.tgz
+	source = http://registry.npmjs.org/termcolors/-/termcolors-0.7.3.tgz
+	sha256sums = fea0b9ce40e2c3df329d53ee1e418bfc0abab9bfe94596ac571b7f2748ed16e9
 
 pkgname = nodejs-termcolors
-
