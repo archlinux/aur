@@ -1,14 +1,14 @@
-# Maintainer: Justin Williams <justin@justinandyadi.com>
-pkgname=workman-git
-_gitname=Workman
-pkgver=107.7d3dcaa
+# Maintainer: Parsarch <parsarch@riseup.net>
+pkgname=ir-parsarch-git
+_gitname=ir-parsarch
+pkgver=10.cac341e
 pkgrel=1
-pkgdesc="The Workman Keyboard Layout created by OJ Bucao."
-url="https://workmanlayout.org/"
+pkgdesc="Persian layout created by Parsarch"
+url="https://github.com/parsarch"
 arch=('any')
 license=('unknown')
 depends=()
-source=("git://github.com/workman-layout/Workman.git")
+source=("git://github.com/parsarch/ir-parsarch.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -17,12 +17,7 @@ pkgver() {
 }
 
 package() {
-  cd ${srcdir}/${_gitname}/xorg/
-  install -Dm644 workman  ${pkgdir}/usr/share/X11/xkb/symbols/workman
-  install -Dm644 workman-p  ${pkgdir}/usr/share/X11/xkb/symbols/workman-p
-
-  cd ${srcdir}/${_gitname}/linux_console/
-  install -Dm644 workman.iso15.kmap ${pkgdir}/usr/share/kbd/keymaps/i386/workman/workman.map
-  install -Dm644 workman-p.iso15.kmap ${pkgdir}/usr/share/kbd/keymaps/i386/workman/workman-p.map
+  cd ${srcdir}/${_gitname}/Xorg/
+  install -Dm644 ir-parsarch  ${pkgdir}/usr/share/X11/xkb/symbols/ir-parsarch
 }
 

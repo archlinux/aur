@@ -1,12 +1,11 @@
-pkgbase = workman-git
-	pkgdesc = The Workman Keyboard Layout created by OJ Bucao.
-	pkgver = 107.7d3dcaa
+pkgbase = ir-parsarch-git
+	pkgdesc = Persian layout created by Parsarch
+	pkgver = 10.cac341e
 	pkgrel = 1
-	url = https://workmanlayout.org/
+	url = https://github.com/parsarch
 	arch = any
 	license = unknown
-	source = git://github.com/workman-layout/Workman.git
+	source = git://github.com/parsarch/ir-parsarch.git
 	sha256sums = SKIP
 
-pkgname = workman-git
-
+pkgname = ir-parsarch-git
