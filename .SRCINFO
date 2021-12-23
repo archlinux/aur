@@ -11,4 +11,3 @@ pkgbase = python-colcon-devtools
 	sha256sums = 6ed3f29052c44e021b64106d5ae338e2b8936ba58c9f1c0496478327973d3f7b
 
 pkgname = python-colcon-devtools
-
