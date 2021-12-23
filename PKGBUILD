@@ -2,12 +2,17 @@
 name=cross-code
 pkgname=$name-bin
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A retro-inspired 2D Action RPG set in the distant future. CrossCode combines 16-bit SNES-style graphics with butter-smooth physics, a fast-paced combat system, and engaging puzzle mechanics, served with a gripping sci-fi story."
 arch=("x86_64")
 url="https://www.cross-code.com"
-license=('nonfree')
+license=('custom:commercial')
 makedepends=()
+depends=('gtk3'
+         'libxss'
+         'java-runtime'
+         'lib32-gcc-libs'
+         'nss')
 conflicts=("$name")
 source=("local://CrossCode_$pkgver.linux64.zip"
         "$name.png"
