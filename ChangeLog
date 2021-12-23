@@ -256,14 +256,33 @@ You can still configure your permanent meeting rooms in Morgen settings. While t
 To start with Google Meet and Microsoft Teams, visit the Integrations tab in Morgen settings.
 
  
-Improvement
+Improvements
 - on the Week, 2 Weeks, or Month view, you can now click on a date and jump into the Day view for that day
 - we gave the event details popup more space to visualize the event notes
 - we have changed the look and feel of this changelog, we are now using Headwayapp, and we love it!
  
-Fixes
+Bug Fixes
 - we fixed an issue preventing the use of Morgen Scheduling Links with some CalDAV providers (namely Zoho and Fastmail)
 - the event widget popup was moving too much while editing an event, this is now fixed
 - the declining of events on Office 365 or Outlook was erroneously showing an error message, this is now fixed
 - we fixed a program that could have caused an infinite loop and related memory leaks in some rare cases
 - we fixed a problem preventing the re-scheduling of a task as all-day event
+
+
+=== Morgen 2.4.1
+New Features
+- Landing page: You can now organize your Morgen links in a public page accessible at book.morgen.so/<your-name>. You can decide which links should be visible on your personal booking page, and which ones should stay private (only accessible with a direct link). You can also personalize your booking page title and welcome message, as well as the look and feel with your name, company, and logo.
+- Email reminders for Morgen Links: We know how easy it is to forget an appointment and we don't want this to happen to your attendees. You can now set Morgen to send email reminders to both you and your attendees for all meetings scheduled through a Morgen link. You can add multiple reminders that will be delivered timely before the start of the appointment.
+- White Labeling: Morgen Pro users can now customize the appearance of Morgen link pages, as well as the one of all the emails that are sent to the meeting attendees on your behalf. It is now possible to change your company logo, brand color, and hide references to Morgen.
+
+Improvements
+- It is now possible to embed a Morgen link into your web page
+- Everyone booking a meeting with you with a Morgen link will now receive an additional confirmation by email, including buttons to add the appointment to the calendar
+- The Morgen links are now customizable to look more friendly
+- You can now assign a custom name for each of your calendars. This is handy when you have multiple accounts and some of the calendars have the same name
+- The attendee autocompletion now also relies on the person's name (before it was only looking at the email address)
+
+Bug Fixes
+- We fixed an issue on the Morgen link widget preventing the correct navigation through months
+- We fixed an issue that could sometimes cause events to disappear from the calendar view
+
