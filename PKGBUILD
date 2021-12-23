@@ -13,9 +13,6 @@ conflicts=("${pkgname%-git}")
 source=("git+https://github.com/gertvv/${pkgname%-git}")
 md5sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
