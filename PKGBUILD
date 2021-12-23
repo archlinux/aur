@@ -60,6 +60,8 @@ prepare() {
 }
 
 build() {
+    getnvm
+
     cd "${srcdir}/${pkgname%-git}"
 
     # We are not using the systems Electron as we need castlab's Electron.
