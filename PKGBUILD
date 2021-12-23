@@ -1,4 +1,4 @@
-# Maintainer: Pavers_Career <pavers_career_0d@icloud.com>
+# Maintainer: Pavers_Career <pavers_career_0d AT icloud DOT com>
 
 pkgname=gerbera-mysql
 pkgver=1.9.2
@@ -13,7 +13,6 @@ optdepends=('sqlite')
 makedepends=('cmake')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-replaces=("$_pkgbase")
 install=gerbera.install
 options=('emptydirs')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/gerbera/gerbera/archive/v$pkgver.tar.gz"

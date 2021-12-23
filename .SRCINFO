@@ -24,7 +24,6 @@ pkgbase = gerbera-mysql
 	optdepends = sqlite
 	provides = gerbera
 	conflicts = gerbera
-	replaces = gerbera
 	options = emptydirs
 	source = gerbera-1.9.2.tar.gz::https://github.com/gerbera/gerbera/archive/v1.9.2.tar.gz
 	source = gerbera.sysusers
