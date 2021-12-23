@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer
-pkgver=2.3.57.7
+pkgver=2.3.57.8
 _pkgtag=$pkgver
 pkgrel=1
 epoch=1
@@ -19,7 +19,7 @@ source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
         "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch"
         "tbb-2021.patch"
         "FindTBB.cmake")
-sha512sums=('d9a92366ed426dab77a5d49cddd7c7f37f2a0e026574bcbff342e579c555aefb19aaea8de7b5180bb87ab2749ba0cef96e870d808914fdbc58f3ddf04e1a4a65'
+sha512sums=('33109e8b99e13ec341815eca591246bdffba8964fabd2ae13c15791af1042b469f4a2fd8b5091fb1f4eb3c29b0cba36f562cd2cbb38843c3f97c3e42ee3f0a1a'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98'
             '6a00fa9eb13b2485aed493e96b49e1ef345d8fcf6adf2719c2336e4b07e4e7c1461ee288d77a9c45f3bac5e68507d54da00816817ef17023e6e0aa9d0fb36348'
