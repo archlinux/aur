@@ -9,8 +9,6 @@ arch=(x86_64)
 url=https://wiki.gnome.org/Apps/Calendar
 license=(GPL)
 depends=(
-    cinnamon
-    cinnamon-control-center
     evolution-data-server
     geoclue
     gnome-online-accounts
@@ -31,7 +29,7 @@ makedepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 groups=(gnome)
-_commit=59ad10ba3aaed69c96c5e7f710b3f2c6b35131ae  # tags/41.1^0
+_commit=deb9ff18302457b91fb8013f98880c8e3a548c19  # tags/41.2^0
 source=(
     "git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
     "linuxmint_gcal_window.patch"
@@ -43,7 +41,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -58,8 +56,8 @@ prepare() {
 }
 
 build() {
-  arch-meson $_pkgname build
-  ninja -C build
+  arch-meson $pkgname build
+  meson compile -C build
 }
 
 check() {
@@ -67,5 +65,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }

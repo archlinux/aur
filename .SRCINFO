@@ -9,8 +9,6 @@ pkgbase = gnome-calendar-linuxmint
 	makedepends = appstream-glib
 	makedepends = git
 	makedepends = meson
-	depends = cinnamon
-	depends = cinnamon-control-center
 	depends = evolution-data-server
 	depends = geoclue
 	depends = gnome-online-accounts
@@ -22,7 +20,7 @@ pkgbase = gnome-calendar-linuxmint
 	optdepends = evolution: ICS file import
 	provides = gnome-calendar
 	conflicts = gnome-calendar
-	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=59ad10ba3aaed69c96c5e7f710b3f2c6b35131ae
+	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=deb9ff18302457b91fb8013f98880c8e3a548c19
 	source = linuxmint_gcal_window.patch
 	source = linuxmint_gcal_new_calendar_page.patch
 	sha256sums = SKIP
