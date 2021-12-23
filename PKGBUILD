@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g4-bin
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=0
 pkgdesc="Fourth generation of customizable privacy-conscious web browser."
 arch=('x86_64')
@@ -58,4 +58,4 @@ END
 }
 
 sha256sums=('76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb'
-            'e2180f7706cc54d062fff126998babfdce5e181bbef2c40f11323ffc04a1f8ac')
+            '1743ae16be601876fa2462ea402a0a0b58e3b4c448fd9a713fd7235006308beb')
