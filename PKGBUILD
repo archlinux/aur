@@ -56,7 +56,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgname build
+  arch-meson $_pkgname build
   meson compile -C build
 }
 
