@@ -49,7 +49,7 @@ pkgbase = linux-vfio-manjaro
 	source = 0411-bootsplash.patch
 	source = 0412-bootsplash.patch
 	source = 0413-bootsplash.gitpatch
-	source = 0999-acs.patch
+	source = 0999-acs.gitpatch
 	sha256sums = 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8
 	sha256sums = bdb35ece2dd0f6d8225947b63539e70c8fc16bd28f03395d590515d8187f03c4
 	sha256sums = ccbfb721030426bbd148602f99c88aaf226b7a6641a9c8c56973dd25a3f1df94
@@ -82,7 +82,7 @@ pkgbase = linux-vfio-manjaro
 	sha256sums = 27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc
 	sha256sums = 60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d
 	sha256sums = 035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef
-	sha256sums = e1a5de2aa63b042c5392b4f78052549df2d3e47b2ae6cee261636ab8a544705e
+	sha256sums = 6d6b327ec7c7798f628f98ab964f4457d3cf043bad2632eb8f27548478a83cc1
 
 pkgname = linux-vfio-manjaro
 	pkgdesc = The Linux-vfio-manjaro kernel and modules

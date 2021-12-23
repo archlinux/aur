@@ -66,7 +66,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0411-bootsplash.patch'
         '0412-bootsplash.patch'
         '0413-bootsplash.gitpatch'
-        '0999-acs.patch')
+        '0999-acs.gitpatch')
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'bdb35ece2dd0f6d8225947b63539e70c8fc16bd28f03395d590515d8187f03c4'
             'ccbfb721030426bbd148602f99c88aaf226b7a6641a9c8c56973dd25a3f1df94'
@@ -99,7 +99,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
             '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
-            'e1a5de2aa63b042c5392b4f78052549df2d3e47b2ae6cee261636ab8a544705e')
+            '6d6b327ec7c7798f628f98ab964f4457d3cf043bad2632eb8f27548478a83cc1')
 
 prepare() {
   cd "linux-${_basekernel}"
@@ -119,6 +119,9 @@ prepare() {
 
   msg2 "0513-bootsplash"
   git apply -p1 < "../0413-bootsplash.gitpatch"
+
+  msg2 "0999-acs"
+  git apply -p1 < "../0999-acs.gitpatch"
 
   msg2 "add config"
   cat "../config" > ./.config
