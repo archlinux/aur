@@ -121,7 +121,7 @@ prepare() {
   git apply -p1 < "../0413-bootsplash.gitpatch"
 
   msg2 "0999-acs"
-  git apply -p1 < "../0999-acs.gitpatch"
+  patch --ignore-whitespace --fuzz 3 -p1 < "../0999-acs.gitpatch"
 
   msg2 "add config"
   cat "../config" > ./.config
