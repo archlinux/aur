@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=python-pycobertura
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Code coverage diff tool for Cobertura reports"
 arch=(x86_64)
 url="https://github.com/aconrad/pycobertura"
 license=(MIT)
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('5eaa1ebcf9ca4b3c6679b74ac850da406c9b5cdec11d8e71fed59f70819d5d14')
+sha256sums=('aef34514f89fa45f8e416a7695fcb6e802b9d10081c8532f40b4335830e0854b')
 depends=(python python-{click,colorama,jinja,lxml,tabulate})
 makedepends=(python-setuptools)
 
