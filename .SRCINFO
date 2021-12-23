@@ -1,0 +1,13 @@
+pkgbase = python-motor
+	pkgdesc = The async Python driver for MongoDB and Tornado or asyncio
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/mongodb/motor
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pymongo
+	source = motor-2.5.1.tar.gz::https://github.com/mongodb/motor/archive/refs/tags/2.5.1.tar.gz
+	sha512sums = 6aad292f083e7121f11a85b021f5da143f4df1a9fcc06e19bed9ee6c470c6579765e5a39f2a0232f07feef3d9fe83e77c25045d4e981d0df18cbf972bac77588
+
+pkgname = python-motor
