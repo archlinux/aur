@@ -26,25 +26,29 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  # Compiling translations...
-  for po in locale/*/LC_MESSAGES/*.po; do
-    msgfmt -cv -o ${po%.po}.mo $po;
-  done
-  glib-compile-schemas --targetdir=src/schemas src/schemas
-  rm -Rf build
   mkdir build
-  cp -r src/* locale build/
+  gnome-extensions pack src \
+  --force \
+  --podir="../po" \
+  --extra-source="ui.js" \
+  --extra-source="../LICENSE" \
+  --extra-source="../CHANGELOG.md" \
+  --out-dir=build
+
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}/build"
+  cd "${srcdir}/${pkgname%-git}/src"
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
+  cd "${srcdir}/${pkgname%-git}/build"
+  bsdtar -xf "${srcdir}/${pkgname%-git}/build/${uuid}.shell-extension.zip" \
+    -C "${srcdir}/${pkgname%-git}/build"
+  rm "${srcdir}/${pkgname%-git}/build/${uuid}.shell-extension.zip"
   install -dm755 "${destdir}"
-  find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|mo|compiled)$" -exec\
-     install -Dm 644 {} ${destdir}/{} \;
-  install -Dm644 "${srcdir}/${pkgname%-git}/build/schemas/${schema}" \
+  cp -r * "${destdir}"
+  install -Dm644 "schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
 }
 
