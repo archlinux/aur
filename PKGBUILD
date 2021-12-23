@@ -1,4 +1,5 @@
-# Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Jamie Nguyen <jamie AT tomoyolinux.co.uk>
@@ -8,7 +9,7 @@ pkgname=webalizer
 _geodbver=20210401
 pkgver=2.23.08.${_geodbver}
 _pkgver=2.23-08
-pkgrel=4
+pkgrel=5
 pkgdesc="A web server log file analysis program producing HTML reports"
 arch=('i686' 'x86_64')
 url="http://www.webalizer.com/"

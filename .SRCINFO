@@ -1,7 +1,7 @@
 pkgbase = webalizer
 	pkgdesc = A web server log file analysis program producing HTML reports
 	pkgver = 2.23.08.20210401
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.webalizer.com/
 	install = webalizer.install
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = webalizer
 	sha512sums = 538b7cf51303581df7d1710073d55563fda4c64841a6d7dac8d47e0b037975b9ad4ad4973db5807226480ecea0e0783c445400bd53b60d0d7308559946ce3b4a
 
 pkgname = webalizer
-
