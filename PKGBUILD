@@ -1,6 +1,6 @@
 # Maintainer: Slips slipfox_xyz@riseup.net>
 pkgname=clementeyene
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="simple bash script that gets Clementine Music Player status over dbus"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/Slips-PC/clementeyene/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
 noextract=()
-md5sums=("SKIP")
+md5sums=("9e01566f11f52c91ff38dd8a0a1b81af31e5ee72da86badc25342ffcf2c772d8")
 validpgpkeys=()
 
 package() {
