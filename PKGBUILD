@@ -8,7 +8,7 @@
 
 pkgname=subtitlecomposer
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Video subtitle editor'
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
@@ -22,7 +22,6 @@ makedepends+=('pocketsphinx')
 
 # For consistency, also enable/disable the corresponding optdepends
 optdepends=('pocketsphinx: Pocketsphinx speech recognition backend'
-            'kross-interpreters: Ruby and Python scripting support'
             'ruby: scripting'
             'python: scripting')
 

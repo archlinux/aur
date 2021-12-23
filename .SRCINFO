@@ -1,7 +1,7 @@
 pkgbase = subtitlecomposer
 	pkgdesc = Video subtitle editor
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/multimedia/
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,6 @@ pkgbase = subtitlecomposer
 	depends = ffmpeg
 	depends = openal
 	optdepends = pocketsphinx: Pocketsphinx speech recognition backend
-	optdepends = kross-interpreters: Ruby and Python scripting support
 	optdepends = ruby: scripting
 	optdepends = python: scripting
 	source = https://download.kde.org/stable/subtitlecomposer/subtitlecomposer-0.7.1.tar.xz
