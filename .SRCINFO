@@ -5,7 +5,6 @@ pkgbase = ripasso-cursive
 	url = https://github.com/cortex/ripasso/
 	arch = x86_64
 	license = GPL3
-	makedepends = libgit2
 	makedepends = gettext
 	makedepends = rust
 	depends = openssl

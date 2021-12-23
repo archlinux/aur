@@ -8,7 +8,7 @@ url="https://github.com/cortex/ripasso/"
 arch=('x86_64')
 license=("GPL3")
 depends=('openssl' 'libxcb' 'libgpg-error' 'zlib' 'gpgme' 'libgit2')
-makedepends=('libgit2' 'gettext' 'rust')
+makedepends=('gettext' 'rust')
 source=("https://github.com/cortex/ripasso/archive/release-$pkgver.tar.gz")
 conflicts=('ripasso-git')
 md5sums=()
@@ -36,6 +36,7 @@ package() {
     install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/man-page/cursive/ripasso-cursive.1.gz" "$pkgdir/usr/share/man/man1/"
     install -Dm0555 "$srcdir/$_pkgrelname-release-$pkgver/target/release/ripasso-cursive" "$pkgdir/usr/bin/$_pkgrelname-cursive"
 
+    install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/translations/cursive/de.mo" "$pkgdir/usr/share/ripasso/"
     install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/translations/cursive/fr.mo" "$pkgdir/usr/share/ripasso/"
     install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/translations/cursive/it.mo" "$pkgdir/usr/share/ripasso/"
     install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/translations/cursive/nb.mo" "$pkgdir/usr/share/ripasso/"
