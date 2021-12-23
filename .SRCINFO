@@ -1,6 +1,6 @@
 pkgbase = gitgudcli-git
 	pkgdesc = An easy to use CLI for the GitGud modular Git model.
-	pkgver = 2.1.0.r0.g76ced69
+	pkgver = VERSION
 	pkgrel = 1
 	url = https://github.com/HRKings/gitgud-cli.git
 	arch = any
