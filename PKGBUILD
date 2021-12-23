@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -106,6 +106,12 @@ prepare() {
 
   ## obs-ffmpeg: Set DRI devices and their name persistently (https://github.com/obsproject/obs-studio/commit/4623a6b4bc4c89ceb5db684e2e7fbd57d01129aa)
   git cherry-pick --no-commit 4623a6b4bc4c89ceb5db684e2e7fbd57d01129aa
+
+  ## libobs: Add API to get encoder frame size  (https://github.com/obsproject/obs-studio/commit/d1b87e1642ad5e485244f3594d331ce648b3353a)
+  git cherry-pick --no-commit d1b87e1642ad5e485244f3594d331ce648b3353a
+
+  ## obs-ffmpeg: Set frame_size for audio codec parameter (https://github.com/obsproject/obs-studio/commit/685f8297e406a4ef56e5be2f06268c9526c2cb3c)
+  git cherry-pick --no-commit 685f8297e406a4ef56e5be2f06268c9526c2cb3c
 
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
