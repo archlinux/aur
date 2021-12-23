@@ -1,12 +1,14 @@
 # Maintainer: Donald Webster (fryfrog@gmail.com)
+# Contributor: Torben Nehmer (torben+aur-unifi-video at nehmer dot net)
 
 pkgname=unifi-video
 pkgver=3.10.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Centralized management system for Ubiquiti UniFi surveillance cameras."
 arch=('x86_64')
 url="https://www.ubnt.com/"
 license=('custom')
+makedepends=('zip')
 depends=(
   'mongodb'
   'java-runtime>=8'
@@ -36,6 +38,11 @@ package() {
 
     cd "${pkgdir}/usr/bin"
     patch -N < "${srcdir}/unifi-video.patch"
+
+    # see also: https://logging.apache.org/log4j/2.x/security.html
+    echo "Fixing Log4j JNDI Lookup vulnerability by removing JndiLookup.class (CVE-2021-45046)"
+    cd "${pkgdir}/usr/lib/unifi-video/lib"
+    zip -v -q -d log4j-core-*.jar org/apache/logging/log4j/core/lookup/JndiLookup.class
 
     install -D -m 644 "${srcdir}/unifi-video.service" "${pkgdir}/usr/lib/systemd/system/unifi-video.service"
     install -D -m 644 "${srcdir}/unifi-video.sysusers" "${pkgdir}/usr/lib/sysusers.d/unifi-video.conf"
