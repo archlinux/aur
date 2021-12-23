@@ -2,13 +2,13 @@
 pkgname=libdigidocpp
 pkgver=3.14.7.1412
 _rls_tag=v3.14.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL')
-depends=('xml-security-c' 'minizip')
-makedepends=('cmake' 'xsd' 'xxd' 'git')
+depends=('minizip' 'openssl' 'xalan-c' 'xml-security-c')
+makedepends=('cmake' 'git' 'xsd' 'xxd')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=$_rls_tag"
         "open-eid-cmake::git+https://github.com/open-eid/cmake.git")
 sha256sums=("SKIP" "SKIP")
@@ -24,6 +24,8 @@ prepare() {
     git submodule init
     git config submodule.cmake.url $srcdir/open-eid-cmake
     git submodule update
+    # openssl 1.1.1m https://github.com/open-eid/libdigidocpp/pull/453
+    git checkout 692b310f69636b020a75ffd60b11dbf6495f7a12 src/crypto/TS.cpp
 }
 
 build() {
