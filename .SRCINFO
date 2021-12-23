@@ -1,0 +1,21 @@
+pkgbase = dune-curvedgeometry
+	pkgdesc = Implementation of curved dune geometries by lagrange parametrization
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://dune-project.org/modules/dune-curvedgeometry
+	arch = x86_64
+	groups = dune-iwr
+	license = LGPL3
+	license = custom:GPL2 with runtime exception
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = dune-geometry>=2.8.0
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	optdepends = dune-localfunctions: for Lagrange local finite elements
+	optdepends = dune-grid: for create YaspGrid mesh
+	optdepends = dune-vtk: for write VTK files
+	source = https://gitlab.com/iwr/dune-curvedgeometry/-/archive/releases/2.8/dune-curvedgeometry-releases-2.8.tar.gz
+	sha512sums = ea3aff59674d90bba0240eafe8a099b16bbcd35113821aced3d7ddd2d9343a2c3dd74e2567da7af497c6fed61ada8407b00dde2c65078f23d40e76c239a58ff1
+
+pkgname = dune-curvedgeometry
