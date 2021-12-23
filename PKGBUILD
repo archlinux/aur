@@ -1,7 +1,7 @@
 # Maintainer: HRKings <hrkings@***.com>
 pkgname=gitgudcli-git
 _pkgname=gitgud-cli
-pkgver=2.2.0.r0.g59a6362
+pkgver=2.2.1.r0.g4e4b573
 pkgrel=1
 pkgdesc="An easy to use CLI for the GitGud modular Git model."
 arch=(any)
