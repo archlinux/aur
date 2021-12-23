@@ -6,12 +6,8 @@ pkgbase = python-pulp
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python-amply
 	source = https://files.pythonhosted.org/packages/source/P/PuLP/PuLP-2.5.1.tar.gz
 	b2sums = ace8e52eac3d911039ea9c81417de615c1cb7b2ef136c206bdc2fc01657d67379168617148718156314b1d45f27cc099e226a08e561b297b7d2991b5effe9735
 
 pkgname = python-pulp
-	depends = python-amply
-
-pkgname = python2-pulp
-	depends = python2-amply
