@@ -3,7 +3,7 @@
 _pkgname=diagon
 pkgname="${_pkgname}-git"
 pkgver=0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='cli text diagram generator'
 url='https://github.com/ArthurSonzogni/diagon'
@@ -29,7 +29,7 @@ prepare () {
 
 build () {
     cd "$_pkgname"/build
-    make -j4
+    make
 }
 
 package () {

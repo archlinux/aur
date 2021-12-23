@@ -1,7 +1,7 @@
 pkgbase = diagon-git
 	pkgdesc = cli text diagram generator
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArthurSonzogni/diagon
 	arch = i686
 	arch = x86_64
