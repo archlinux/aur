@@ -21,6 +21,7 @@ build() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib/cmake" "${pkgdir}/usr/include/doctest"
 
   # License
   cd "${pkgname}-${pkgver}"
