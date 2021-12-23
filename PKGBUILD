@@ -3,7 +3,7 @@
 
 pkgbase=pomerium-bin
 pkgname=(pomerium-bin pomerium-cli-bin)
-pkgver=0.15.8
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Identity-aware access proxy'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,18 +11,18 @@ url='https://www.pomerium.io'
 license=('Apache')
 source=('pomerium.sysusers')
 source_x86_64=("pomerium-server-${pkgver}-x86_64.deb::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium_${pkgver}-1_amd64.deb"
-               "pomerium-cli-${pkgver}-x86_64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-amd64.tar.gz")
-source_armv6h=("pomerium-cli-${pkgver}-armv6h.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-armv6.tar.gz")
-source_armv7h=("pomerium-cli-${pkgver}-armv7h.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-armv7.tar.gz")
+               "pomerium-cli-${pkgver}-x86_64.tar.gz::https://github.com/pomerium/cli/releases/download/v${pkgver}/pomerium-cli-linux-amd64.tar.gz")
+source_armv6h=("pomerium-cli-${pkgver}-armv6h.tar.gz::https://github.com/pomerium/cli/releases/download/v${pkgver}/pomerium-cli-linux-armv6.tar.gz")
+source_armv7h=("pomerium-cli-${pkgver}-armv7h.tar.gz::https://github.com/pomerium/cli/releases/download/v${pkgver}/pomerium-cli-linux-armv7.tar.gz")
 source_aarch64=("pomerium-server-${pkgver}-aarch64.deb::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium_${pkgver}-1_arm64.deb"
-                "pomerium-cli-${pkgver}-aarch64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-arm64.tar.gz")
+                "pomerium-cli-${pkgver}-aarch64.tar.gz::https://github.com/pomerium/cli/releases/download/v${pkgver}/pomerium-cli-linux-arm64.tar.gz")
 sha256sums=('36b44da89f922a8017d5b26ac6fd71215e4d82525d94161f999aba6e223fd111')
-sha256sums_x86_64=('4a1a2e6b344991b08d7174361b34d738e057f3558c61a8bc2e143d6f5597b20d'
-                   '7657f6a40c375b64e5c214f46236e6759652dd7ac97063065fdcc401ddb98501')
-sha256sums_armv6h=('f5f41d3e5a9f104991c1540b1c09f2cd0a147f3ff16110c5ce96c4144e6c831d')
-sha256sums_armv7h=('f3e7d77316c0cd4f2519d4507c9d0f4dc0d20ba7593f426f517ac3b78a09a5a2')
-sha256sums_aarch64=('5bb56045b9c31a38ab97f425a0a283644636fc4ecc8899853e0b3565148c7f57'
-                    'ffe85ef9fc0496b19d072b5dabea08a6e199bc9e99ea5e8ac8cfb0e990e0ff59')
+sha256sums_x86_64=('ae13adaabf79246a53e0c5c8853be022e3f4b09cbff6437b1ef59f3092c6890a'
+                   '648c2d96333224aa08f5019056f205bf138dd5705fb1049357f43f4e4b4adcf4')
+sha256sums_armv6h=('7e4d739bfa8ed723ca9aa71ae5c4beabef7ca90b576b2984191dd2a430a0b266')
+sha256sums_armv7h=('db9b5214f2adc9742764329ff580fe0ae05620c8e7e33e30bee0b8130f1550ed')
+sha256sums_aarch64=('4c51c5ed3182fd6ef4b6a117b4a3be9e51e183e2ae07b913935a2ef1a7a8c9e9'
+                    '6cc9bd42f376d9d721b09357d4bceca0852fbda3acd13e826fdf40aed4713f91')
 
 prepare() {
 	mkdir dump
