@@ -1,6 +1,6 @@
 pkgbase = pixbufloader-qoi-git
 	pkgdesc = GdkPixbuf loader for the Quite Ok Image format
-	pkgver = 0.1.0.r4.00dc4ec
+	pkgver = 0.1.0.r5.97377b7
 	pkgrel = 1
 	url = https://git.sr.ht/~fabrixxm/pixbufloader-qoi
 	arch = x86_64
