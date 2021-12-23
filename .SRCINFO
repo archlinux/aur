@@ -1,18 +1,21 @@
 pkgbase = python-sphinx-automodapi
 	pkgdesc = Sphinx extension for generating API documentation.
-	pkgver = 0.13
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://sphinx-automodapi.readthedocs.io
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
-	checkdepends = python-sphinx
 	checkdepends = graphviz
-	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-automodapi/sphinx-automodapi-0.13.tar.gz
-	sha256sums = e1019336df7f7f0bcbf848eff7b84e7bef71691a57d8b5bda9107a2a046a226a
+	makedepends = python-setuptools-scm
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-automodapi/sphinx-automodapi-0.14.0.tar.gz
+	sha256sums = 6fadf79954920f5686da434032239296209d4598316e8548cd62b5d2098ec6d7
 
 pkgname = python-sphinx-automodapi
-	depends = python-sphinx>=1.7
+	depends = python-sphinx>=2
 	optdepends = python-sphinx-automodapi-doc: Documentation for sphinx-automodapi
 
+pkgname = python-sphinx-automodapi-doc
+	pkgdesc = Documentation for sphinx-automodapi
