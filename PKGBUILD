@@ -1,9 +1,13 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
-# I don't know if those options are useful but I give you the possibility to try out
+### I don't know if those options are useful but I give you the possibility to try out
+### NOTE: Some AUR helper may not like to change it just before building, so you can set those variables in your makepkg config.
+### Related wiki page: https://wiki.archlinux.org/title/Makepkg#Configuration
 
 ## Build dlib with CUDA
-ENABLE_CUDA=OFF
+if [[ -z "$OBS_FT_ENABLE_CUDA" ]]; then
+  OBS_FT_ENABLE_CUDA=OFF
+fi
 
 ## Build dlib with which Basic Linear Algebra Subprograms
 ## Choice:
@@ -14,10 +18,12 @@ ENABLE_CUDA=OFF
 ##
 ## dlib seems to indicate that OpenBLAS or IntelMKL will make your code run faster
 ## So I default it to OpenBLAS
-USE_AS_BLAS=OpenBLAS
+if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
+  OBS_FT_USE_AS_BLAS=OpenBLAS
+fi
 
 pkgname=obs-face-tracker
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
@@ -36,15 +42,15 @@ sha256sums=(
   "SKIP"
 )
 
-if [[ $ENABLE_CUDA == 'ON' ]]; then
+if [[ $OBS_FT_ENABLE_CUDA == 'ON' ]]; then
   depends+=('cudnn')
 fi
 
-if [[ $USE_AS_BLAS == 'BLAS' ]]; then
+if [[ $OBS_FT_USE_AS_BLAS == 'BLAS' ]]; then
   depends+=('cblas' 'lapack')
-elif [[ $USE_AS_BLAS == 'OpenBLAS' ]]; then
+elif [[ $OBS_FT_USE_AS_BLAS == 'OpenBLAS' ]]; then
   depends+=('openblas' 'cblas' 'lapack')
-elif [[ $USE_AS_BLAS == 'IntelMKL' ]]; then
+elif [[ $OBS_FT_USE_AS_BLAS == 'IntelMKL' ]]; then
   depends+=('intel-mkl')
 fi
 
@@ -62,7 +68,7 @@ build() {
   cd "$pkgname"
   cmake -B build \
   -DCMAKE_INSTALL_PREFIX='/usr' \
-  -DDLIB_USE_CUDA=$ENABLE_CUDA
+  -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA
   make -C build
 }
 
