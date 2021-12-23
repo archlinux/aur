@@ -3,7 +3,7 @@
 pkgbase='nvidia-merged'
 pkgname=('nvidia-merged' 'lib32-nvidia-merged-utils' 'lib32-opencl-nvidia-merged' 'nvidia-merged-dkms' 'nvidia-merged-settings' 'nvidia-merged-utils' 'opencl-nvidia-merged')
 pkgver=460.73.01
-pkgrel=11
+pkgrel=12
 arch=('x86_64')
 makedepends=('git' 'rust')
 url='https://krutavshah.github.io/GPU_Virtualization-Wiki/'
@@ -14,7 +14,7 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-grid-vgpu-kvm-v5"
 _vgpuver=460.73.02
 source=('nvidia-drm-outputclass.conf' 'nvidia-smi' 'nvidia-vgpu.conf' 'vgpu_unlock-rs.conf' 'twelve.patch' 'fourteen.patch' '99-nvidia-ignoreabi.conf'
     "${_pkg}.run::gdrive://1dCyUteA2MqJaemRKqqTu5oed5mINu9Bw"
-    'git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=3ca0999')
+    'git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=6541af7')
 sha256sums=('be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             '20676096714ac00d9fc993901ab275e4b0fa3f2eddc937dae395c8f4e8cb543e'
             '5ea0d9edfcf282cea9b204291716a9a4d6d522ba3a6bc28d78edf505b6dc7949'
@@ -163,7 +163,6 @@ package_nvidia-merged-utils() {
     conflicts=('nvidia-libgl')
     provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils' 'vgpu_unlock')
     replaces=('nvidia-libgl' 'vgpu_unlock')
-    backup=('etc/vgpu_unlock/profile_override.toml')
 
     cd "${_pkg}"
 
