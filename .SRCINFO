@@ -1,0 +1,22 @@
+pkgbase = nerd-fonts-cozette-ttf
+	pkgdesc = Cozette Font, patched with the Nerd Fonts Patcher
+	pkgver = _2.1.0
+	pkgrel = 1
+	url = https://github.com/slavfox/cozette/
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	makedepends = p7zip
+	makedepends = python
+	makedepends = fontforge
+	makedepends = subversion
+	source = https://github.com/slavfox/Cozette/releases/download/v.1.13.0/CozetteVector.ttf
+	source = font-patcher-2.1.0::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.1.0/font-patcher
+	source = allow-glyphdir.diff
+	source = svn+https://github.com/ryanoasis/nerd-fonts/tags/v2.1.0/src/glyphs
+	sha256sums = b2a0d2694844ce8fab8686c5be38396f8ff26a5d175269424c21a60417d5129c
+	sha256sums = 3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859
+	sha256sums = 6fad8dead6215b1d8cedbbce3d1bc1fc7c1b0bb06ea70518334bd443a7ba543f
+	sha256sums = SKIP
+
+pkgname = nerd-fonts-cozette-ttf
