@@ -33,7 +33,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  cat "$_name"/desktop/tech.woooo.bitwave.svg
   install -Dm644 "$_name"/desktop/BitWave.desktop "$pkgdir"/usr/share/applications/BitWave.desktop
   install -Dm644 "$_name"/desktop/tech.woooo.bitwave.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/tech.woooo.bitwave.svg
 }
