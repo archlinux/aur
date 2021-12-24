@@ -1,6 +1,6 @@
 pkgbase = grml-iso
 	pkgdesc = add the grml ISO image to the grub2 boot menu
-	pkgver = 2020.06
+	pkgver = 2021.07
 	pkgrel = 1
 	url = http://wiki.grml.org/doku.php?id=rescueboot
 	install = grml-iso.install
@@ -8,9 +8,9 @@ pkgbase = grml-iso
 	license = GPL
 	depends = grub
 	depends = grml-rescueboot>=0.5.0
-	noextract = grml64-full_2020.06.iso
-	source = http://download.grml.org/grml64-full_2020.06.iso
-	md5sums = c55810b3a30807a7fd54d607f95ae91a
+	noextract = grml64-full_2021.07.iso
+	source = http://download.grml.org/grml64-full_2021.07.iso
+	sha256sums = 7cec5cb3816edd55164d8d1cdfc315ecdda1ea26e5daa52fc8462f8d5bdd888d
 
 pkgname = grml-iso
 
