@@ -10,6 +10,7 @@ pkgbase = phoc
 	makedepends = libhandy
 	makedepends = meson
 	makedepends = vala
+	makedepends = wayland-protocols
 	depends = mutter
 	depends = wlroots
 	source = https://gitlab.gnome.org/World/Phosh/phoc/-/archive/v0.11.0/phoc-v0.11.0.tar.gz
