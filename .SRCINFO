@@ -1,7 +1,7 @@
 pkgbase = strawberry-qt5
 	pkgdesc = A music player aimed at audio enthusiasts and music collectors (Qt5 version)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://strawberrymusicplayer.org/
 	arch = x86_64
 	license = GPL3

@@ -2,7 +2,7 @@
 # Maintainer: Thomas Bork <sudoBash418@gmail.com>
 pkgname=strawberry-qt5
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors (Qt5 version)"
 arch=(x86_64)
 url="https://strawberrymusicplayer.org/"
