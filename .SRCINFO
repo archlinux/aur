@@ -1,0 +1,25 @@
+pkgbase = python-piecash
+	pkgdesc = A Python library providing a simple and pythonic interface to GnuCash files stored in SQL.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/piecash/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	makedepends = python-setuptools
+	depends = python
+	depends = python-sqlalchemy1.3
+	depends = python-sqlalchemy-utils
+	depends = python-pytz
+	depends = python-tzlocal
+	depends = python-click
+	optdepends = gnucash: to create, view and edit GnuCash files
+	optdepends = python-pandas: view data in Pandas DataFrame
+	optdepends = python-psycopg2: postgresql support
+	optdepends = python-pymysql: MySQL support
+	optdepends = python-requests: retrieve quotes/prices from Yahoo Finance
+	source = https://files.pythonhosted.org/packages/source/p/piecash/piecash-1.2.0.tar.gz
+	sha256sums = 89639f0661d492242783f39c8d147ea45c321dc4111f93eca2979f070f5f176d
+
+pkgname = python-piecash
