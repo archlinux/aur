@@ -1,7 +1,7 @@
 # Maintainer: Mitchell Augustin <mitchell@mitchellaugustin.com>
 pkgname=spiral-notebook-bin
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Free-form notebook software with 'click anywhere to type' functionality, rich-text and image support, and a notebook-based file structure"
 arch=('x86_64')
@@ -26,7 +26,6 @@ validpgpkeys=()
 
 prepare() {
 	cd "spiral-aur-${pkgver}"
-	./install.sh
 }
 
 check() {
@@ -38,4 +37,7 @@ package() {
 	install -Dm 755 Spiral.desktop "$pkgdir"/usr/share/applications/Spiral.desktop
 	install -Dm 755 spiral "$pkgdir"/usr/bin/spiral
 	install -Dm 755 spiral.png "$pkgdir"/usr/share/pixmaps/spiral.png
+	mkdir -p "$pkgdir"/usr/share/spiral
+	install -Dm 755 Demo.snb "$pkgdir"/usr/share/spiral/Demo.snb
+	install -Dm 755 session.json "$pkgdir"/usr/share/spiral/session.json
 }
