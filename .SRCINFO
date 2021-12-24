@@ -1,13 +1,14 @@
 pkgbase = mmixware
 	pkgdesc = MMIX assembler and simulator
 	pkgver = 20160804
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mmix.cs.hm.edu/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = texlive-core
 	noextract = mmix-20160804.tgz
+	options = !buildflags
 	source = http://mmix.cs.hm.edu/src/mmix-20160804.tgz
 	source = LICENSE
 	b2sums = 8bbde51921fe23f016e35bd51346e6445d530815e5e87bff44cf17e081c6b8e55dd6bd24f1ce1621851d2eac309fa44d71aa33d93d3ddfce5213c6643181d38c
@@ -22,4 +23,3 @@ pkgname = mmixware-docs
 pkgname = mmixware-src
 	pkgdesc = MMIX sources
 	arch = any
-
