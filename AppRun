@@ -2,8 +2,7 @@
 
 APPDIR="/opt/BadlionClient"
 export PATH="${APPDIR}:${PATH}"
-export XDG_DATA_DIRS="/usr/share/gnome:/usr/local/share/:/usr/share/:${XDG_DATA_DIRS}"
 export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"
-export XDG_DATA_DIRS="${XDG_DATA_DIRS}":/usr/share/gnome/:/usr/local/share/:/usr/share/
+export XDG_DATA_DIRS="/usr/share/gnome:/usr/local/share:/usr/share:${XDG_DATA_DIRS}":/usr/share/gnome:/usr/local/share:/usr/share
 
 exec "$APPDIR/BadlionClient" "$@"
