@@ -35,10 +35,12 @@ validpgpkeys=(
 )
 
 prepare() {
-    curl -fLso "$srcdir/$_pkgname-manifest-v$_pkgver.txt" "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
+    manifestfile="$srcdir/$_pkgname-manifest-v$_pkgver.txt"
+
+    curl -fLso $manifestfile "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
 
     # Check the binaries match the manifest
-    cat "$srcdir/$_pkgname-manifest-v$_pkgver.txt" \
+    cat "$manifestfile" \
         | grep "^[0-9a-f]\{64\}  $_pkgname-linux-amd64-v$__pkgver\(\.tar\.gz\|/lnd\|/lncli\)$" \
         | sha256sum -c -
 
@@ -59,21 +61,18 @@ prepare() {
 
     for maintainer in ${maintainers[@]}; do
         # Try to get the signature for this maintainer, skip if doesn't exist
-        curl -fLso "$srcdir/$_pkgname-manifest-$maintainer-v$_pkgver.txt.sig" \
+        signaturefile="$srcdir/$_pkgname-manifest-$maintainer-v$_pkgver.txt.sig"
+        curl -fLso "$signaturefile" \
             "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-$maintainer-v$_pkgver.sig" \
             || continue
 
         echo "[32mFound signature from $maintainer[0m"
 
-        # Verify the signature and output the fingerprint used
-        fingerprint=$(\
-            gpg --status-fd=1 --trust-model=always --verify \
-                "$_pkgname-manifest-$maintainer-v$_pkgver.txt.sig" \
-                "$_pkgname-manifest-v$_pkgver.txt" \
-            | awk '{ if ($2 == "VALIDSIG") {print $12} }' \
-        )
+        # Verify the signature
+        gpgoutput=$(gpg --status-fd=1 --verify "$signaturefile" "$manifestfile")
 
         # Check if fingerprint in whitelisted array
+        fingerprint=$(echo "$gpgoutput" | awk '{ if ($2 == "VALIDSIG") {print $12} }')
         if [[ ! " ${validpgpkeys[*]} " =~ " ${fingerprint} " ]]; then
             echo "[33mSignature not from a whitelisted key, ignoring[0m"
             continue
