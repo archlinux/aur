@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=reflex
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Run a command when files change"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cespare/reflex/archive/v${pkgver}.tar.gz")
-sha256sums=('cadb2d439bedc81df0f14e33ef14e3dfc088b95965bf7a6b2e880eb5220a39d5')
+sha256sums=('efe3dc7bc64b5a978c6e7f790e3d210aed16bd7e43c7fbc2713fe4b16a7a183e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
