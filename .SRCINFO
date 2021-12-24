@@ -1,0 +1,23 @@
+pkgbase = bitwave-git
+	pkgdesc = A simple media player based on Qt and MPV.
+	pkgver = v0.1dev.r0.g4a00a3f
+	pkgrel = 1
+	url = https://github.com/Reverier-Xu/BitWave
+	arch = x86_64
+	license = MPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	depends = qt5-translations
+	depends = qt5-wayland
+	depends = ffmpeg
+	depends = mpv
+	depends = qt5-x11extras
+	provides = BitWave
+	source = git+https://github.com/Reverier-Xu/BitWave.git
+	md5sums = SKIP
+
+pkgname = bitwave-git
