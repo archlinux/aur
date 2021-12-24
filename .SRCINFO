@@ -1,0 +1,15 @@
+pkgbase = ttml2srt-git
+	pkgdesc = Timed Text Markup Language (TTML) to SubRib (SRT) converter
+	pkgver = r23.9dbda9d
+	pkgrel = 1
+	url = https://github.com/ivartj/ttml2srt.git
+	arch = any
+	license = UNKNOWN
+	makedepends = git
+	makedepends = cmake
+	provides = ttml2srt
+	conflicts = ttml2srt
+	source = git+https://github.com/ivartj/ttml2srt.git
+	md5sums = SKIP
+
+pkgname = ttml2srt-git
