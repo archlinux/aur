@@ -1,7 +1,7 @@
-# Maintainer: fabbe <fabbe@carajo.no>
+# Maintainer: f <f@localhost>
 
 pkgname=postgrest-bin
-pkgver=8.0.0
+pkgver=9.0.0
 pkgrel=1
 epoch=
 pkgdesc="REST API for any Postgres database"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/PostgREST/postgrest"
 license=('MIT')
 groups=()
-depends=('postgresql-libs>=9.5')
+depends=('postgresql-libs>=9.6')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/PostgREST/postgrest/releases/download/v$pkgver/postgrest-v$pkgver-linux-x64-static.tar.xz")
+source=("https://github.com/PostgREST/postgrest/releases/download/v$pkgver/postgrest-v$pkgver-linux-static-x64.tar.xz")
 noextract=()
-sha512sums=('23a4652439035d791981c3c27c8fa7e2f88bc59b20e2874b036b6d2e5146221952ca3de2bb40d6c8839cd89b68078d5a0e50512345b41400933fe863745a1ecb')
+sha512sums=('92feb782fbb9373a326afb85c66080bc764be19fcf6b28c82980aaaf6f9a4efb32c1edae188c64e503807eb32cfb4a8925c0ce5403b411c91b0af6a12b1ea94d')
 validpgpkeys=()
 
 package() {
