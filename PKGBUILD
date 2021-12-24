@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r2245.181779c6
+pkgver=r2659.24046fc2
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64')
@@ -39,11 +39,13 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/Distrotech/ucl.git'
         'git+https://github.com/gabomdq/SDL_GameControllerDB'
         'git+https://github.com/herumi/xbyak'
-        'git+https://github.com/nicolasnoble/zep'
+        'git+https://github.com/grumpycoders/zep'
         'git+https://github.com/mackron/miniaudio.git'
+        'git+https://github.com/capstone-engine/capstone.git'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -93,6 +95,7 @@ prepare() {
   git config submodule.third_party/xbyak.url "$srcdir/xbyak"
   git config submodule.third_party/zep.url "$srcdir/zep"
   git config submodule.third_party/miniaudio.url "$srcdir/miniaudio"
+  git config submodule.third_party/capstone.url "$srcdir/capstone"
 
   git submodule update third_party/imgui \
                        third_party/imgui_club \
@@ -112,7 +115,8 @@ prepare() {
                        third_party/SDL_GameControllerDB \
                        third_party/xbyak \
                        third_party/zep \
-                       third_party/miniaudio
+                       third_party/miniaudio \
+                       third_party/capstone
 
   cd third_party/luv
   git submodule init
