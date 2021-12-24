@@ -1,6 +1,6 @@
 pkgbase = python-echo
 	pkgdesc = Callback Properties in Python
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://echo.readthedocs.io
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = python-echo
 	makedepends = python-numpydoc
 	makedepends = python-qtpy
 	makedepends = python-pyqt5
-	source = https://files.pythonhosted.org/packages/source/e/echo/echo-0.5.tar.gz
+	source = https://files.pythonhosted.org/packages/source/e/echo/echo-0.6.tar.gz
 	source = fix_sphinx-doc_link.patch
-	md5sums = ca4de86da2a113db50ac0f4ec6f044ee
+	md5sums = 3e6c13ff65d07010acc031aa5ae6f494
 	md5sums = b6441be6fa18db4f59a7784b1fcc67a6
 
 pkgname = python-echo
@@ -26,4 +26,3 @@ pkgname = python-echo
 
 pkgname = python-echo-doc
 	pkgdesc = Documentation for Python echo module
-

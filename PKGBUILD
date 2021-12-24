@@ -2,7 +2,7 @@
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools-scm' 'python-numpy' 'python-sphinx-automodapi' '
 checkdepends=('python-pytest-cov')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('ca4de86da2a113db50ac0f4ec6f044ee'
+md5sums=('3e6c13ff65d07010acc031aa5ae6f494'
          'b6441be6fa18db4f59a7784b1fcc67a6')
 
 prepare() {
