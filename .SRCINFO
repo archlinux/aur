@@ -1,4 +1,4 @@
-pkgbase = python-ipyparallel
+pkgbase = ipython-ipyparallel
 	pkgdesc = Interactive Parallel Computing in Python
 	pkgver = 8.1.0
 	pkgrel = 1
