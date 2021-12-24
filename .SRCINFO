@@ -1,0 +1,46 @@
+pkgbase = python-paddlepaddle
+	pkgdesc = PArallel Distributed Deep LEarning: Machine Learning Framework from Industrial Practice
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://www.paddlepaddle.org
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = cuda
+	makedepends = cudnn
+	makedepends = git
+	makedepends = nccl
+	makedepends = patchelf
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = swig
+	makedepends = wget
+	depends = blas
+	depends = python-astor
+	depends = python-decorator
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-protobuf
+	depends = python-requests
+	depends = python-six
+	source = Paddle::git+https://github.com/PaddlePaddle/Paddle.git#tag=v2.2.1
+	sha512sums = SKIP
+
+pkgname = python-paddlepaddle
+
+pkgname = python-paddlepaddle-cuda
+	pkgdesc = PArallel Distributed Deep LEarning: Machine Learning Framework from Industrial Practice (with CUDA)
+	depends = blas
+	depends = python-astor
+	depends = python-decorator
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-protobuf
+	depends = python-requests
+	depends = python-six
+	depends = cuda
+	depends = cudnn
+	depends = nccl
+	provides = python-paddlepaddle
+	conflicts = python-paddlepaddle
