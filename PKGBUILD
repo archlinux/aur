@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termusic
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Music Player TUI written in Rust"
 arch=('x86_64')
@@ -11,10 +11,12 @@ license=('MIT' 'GPL3')
 depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
 optdepends=('ueberzug: display album covers'
             'youtube-dl: download mp3'
+            'yt-dlp: download mp3'
             'ffmpeg: download mp3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('310c384461e7e249f243708b07fb2a3ae46aefb1f71226bfc9a3aa0236de49612c606ef79a415909794e42ccc2bb8980ba7c0ed19defd440d26984abe4db4029')
+sha512sums=('b29a250329df241baf0a34d7b63ad615598df0c1d66abd22cc1781a5095ab99dbdeb899b9fc5d6e0f5c497cd19603ca63edea650291fad0cc4946b10dfe9942d')
+options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -23,12 +25,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+  cargo build --release --frozen --features yt-dlp
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen
+  cargo test --frozen --features yt-dlp
 }
 
 package() {
