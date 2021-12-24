@@ -1,17 +1,15 @@
 pkgbase = python-language-tags
-	pkgdesc = Dealing with IANA language tags in Python.
-	pkgver = 1.0.0
+	pkgdesc = This Python API offers a way to validate and lookup languages tags.
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/language-tags
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/l/language_tags/language_tags-1.0.0.tar.gz
+	depends = python>=3
+	source = https://files.pythonhosted.org/packages/source/l/language_tags/language_tags-1.1.0.tar.gz
 	source = https://raw.githubusercontent.com/OnroerendErfgoed/language-tags/master/LICENSE
-	md5sums = 255ab209f923ffdf4a8f6b1bbae43f06
-	md5sums = SKIP
+	md5sums = c6343ef05e290184193705c99a5fda23
+	md5sums = 1a7fd91902bbb2161822216d652f018e
 
 pkgname = python-language-tags
-
