@@ -1,7 +1,8 @@
 # Maintainer: Mitchell Augustin <mitchell@mitchellaugustin.com>
+# Maintainer: Levi Pinkard <levipinkard@gmail.com>
 pkgname=spiral-notebook-bin
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Free-form notebook software with 'click anywhere to type' functionality, rich-text and image support, and a notebook-based file structure"
 arch=('x86_64')
