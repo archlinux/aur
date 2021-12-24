@@ -1,8 +1,8 @@
 pkgbase = linux-zen-g14
 	pkgdesc = Linux ZEN
-	pkgver = 5.15.10.zen1
+	pkgver = 5.15.11.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.15.10-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.15.11-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,11 +20,11 @@ pkgbase = linux-zen-g14
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel#tag=v5.15.10-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel#tag=v5.15.11-zen1
 	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config
 	source = git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.15
 	sha256sums = SKIP
-	sha256sums = a8eaf6eb21cca77aa470443c8a0d07577023edee3d589c4de6e7d0f66eebbc99
+	sha256sums = b668d0dbb3bc0d9003c670914d0d31ee0755fdcb2e01f424b951a5d52060c296
 	sha256sums = SKIP
 
 pkgname = linux-zen-g14
