@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-lspconfig-git
-pkgver=r1547.4569e14
+pkgver=0.1.0.r0.g428f785
 pkgrel=1
 pkgdesc="Quickstart configurations for the Neovim LSP client"
 arch=('any')
@@ -19,8 +19,7 @@ md5sums=('SKIP')
 PURGE_TARGETS=('tags')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
