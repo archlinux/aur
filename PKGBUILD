@@ -2,7 +2,7 @@
 
 pkgname=libnest2d
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='2D irregular bin packaging and nesting library written in modern C++'
 arch=(x86_64)
 url='https://github.com/tamasmeszaros/libnest2d'
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
   cd ${pkgname}/build
+  export CXXFLAGS+=" -ffat-lto-objects"
   cmake .. -DLIBNEST2D_HEADER_ONLY=OFF -DCMAKE_INSTALL_PREFIX=/usr
 }
 
