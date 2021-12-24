@@ -1,13 +1,15 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=lprint-git
-pkgver=190_1.0b2_r0_ge93501a
+pkgver=240_1.1.0_r0_gdccfbc4
 pkgrel=1
 pkgdesc="A Label Printer Application"
 arch=('i686' 'x86_64')
 url="https://github.com/michaelrsweet/lprint"
 license=('apache')
-depends=('avahi' 'cups' 'libpng' 'libusb')
+depends=('avahi' 'libcups' 'libpng' 'libusb' 'pappl')
+provides=('lprint')
+conflicts=('lprint')
 makedepends=('git')
 source=(git+"${url}.git")
 md5sums=('SKIP')
@@ -33,6 +35,7 @@ package() {
   cd ${pkgname%-git}
 
   make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}/usr/etc" "${pkgdir}/usr/lib"
 }
 
 # vim:set ts=2 sw=2 et:
