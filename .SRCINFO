@@ -1,6 +1,6 @@
-pkgbase = astro-git
+pkgbase = astro
 	pkgdesc = A Gemini web browser using shell script
-	pkgver = r84_9506566
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/blmayer/astro
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = astro-git
 	depends = sed
 	depends = less
 	depends = openssl
-	source = astro-git_src::git+https://github.com/blmayer/astro.git
+	source = astro_src::git+https://github.com/blmayer/astro.git#tag=v0.13.0
 	sha256sums = SKIP
 
-pkgname = astro-git
+pkgname = astro

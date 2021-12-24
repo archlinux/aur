@@ -1,19 +1,14 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
-pkgname=astro-git
-pkgver=r84_9506566
+pkgname=astro
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A Gemini web browser using shell script"
 arch=('any')
 url="https://github.com/blmayer/astro"
 license=('MIT')
 depends=('sed' 'less' 'openssl')
-source=("${pkgname}_src::git+https://github.com/blmayer/astro.git")
+source=("${pkgname}_src::git+https://github.com/blmayer/astro.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/${pkgname}_src"
-	printf "r%s_%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
