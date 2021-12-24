@@ -1,13 +1,13 @@
 pkgbase = notesnook
-	pkgdesc = A simple & easy to use private note-taking app that encrypts everything on the client side.
-	pkgver = 1.5.5
+	pkgdesc = Take private notes, capture ideas, make lists & sync them anywhere
+	pkgver = 1.6.12
 	pkgrel = 1
 	url = https://notesnook.com/
 	arch = x86_64
 	license = Unknown
 	depends = gtk3
 	depends = nss
-	source = notesnook_1.5.5_amd64.deb::https://github.com/streetwriters/notesnook/releases/download/v1.5.5/notesnook_amd64.deb
-	sha256sums = 8c0331cd397bd6feae27123aba6612b2abbdfb120ca1948bdfa0f21539db2afa
+	source = notesnook_1.6.12_amd64.deb::https://github.com/streetwriters/notesnook/releases/download/v1.6.12/notesnook_amd64.deb
+	sha256sums = 00d7398482b3e583d0b69aa7f7bc64e96ae03d3390fa5f9addae079c148b48fc
 
 pkgname = notesnook
