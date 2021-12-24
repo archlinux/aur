@@ -1,0 +1,11 @@
+pkgbase = alacritty-xwayland
+	pkgdesc = workaround for #4739 without providing alacritty
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	makedepends = desktop-file-utils
+	depends = alacritty
+	source = alacritty-xwayland.desktop
+	md5sums = cfcf9cdd3683ddfc3e9798b3465595e0
+
+pkgname = alacritty-xwayland
