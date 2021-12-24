@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname=('deepin-wine5-stable' 'deepin-wine5-stable-i386' 'deepin-wine5-stable-amd64')
-pkgver=5.0.33
+pkgver=5.0.34
 pkgrel=1
 pkgdesc="Deepin Wine5 stable"
 arch=('x86_64')
@@ -18,9 +18,9 @@ noextract=(
     "deepin-wine5-stable-amd64_${pkgver}-${pkgrel}_amd64.deb"
     "deepin-wine5-stable-i386_${pkgver}-${pkgrel}_i386.deb"
 )
-sha256sums=('d6930a3def67f4d40eb22885bce13aed1e247f921f922a98f2902df45d139bb1'
-            'bd14d3756d2328759d6cd83f1177f0046d5d2d255b92b9faefbff5a25c0812d5'
-            '49cdaa65b237900b431c1c7b2c11bf1f6460d904bba42bf6697f638a69d054b5')
+sha256sums=('40e0371d64102295ec3426e9058df9743e3419505a1eb4ec675b6305ddd0f02e'
+            'dbb69bbecbc3e758500c92dc4656936c54f20c84e31c5a105ab29326d04375a6'
+            '6366441e1f2017e7f0fbdf287983b21fd44c2be0e97a3b6e36081f45a5550c12')
 
 package_deepin-wine5-stable() {
     depends=("deepin-wine5-stable-i386=$pkgver" "deepin-wine5-stable-amd64=$pkgver")

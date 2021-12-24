@@ -1,24 +1,24 @@
 pkgbase = deepin-wine5-stable
 	pkgdesc = Deepin Wine5 stable
-	pkgver = 5.0.33
+	pkgver = 5.0.34
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	noextract = deepin-wine5-stable_5.0.33-1_amd64.deb
-	noextract = deepin-wine5-stable-amd64_5.0.33-1_amd64.deb
-	noextract = deepin-wine5-stable-i386_5.0.33-1_i386.deb
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable_5.0.33-1_amd64.deb
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable-amd64_5.0.33-1_amd64.deb
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable-i386_5.0.33-1_i386.deb
-	sha256sums = d6930a3def67f4d40eb22885bce13aed1e247f921f922a98f2902df45d139bb1
-	sha256sums = bd14d3756d2328759d6cd83f1177f0046d5d2d255b92b9faefbff5a25c0812d5
-	sha256sums = 49cdaa65b237900b431c1c7b2c11bf1f6460d904bba42bf6697f638a69d054b5
+	noextract = deepin-wine5-stable_5.0.34-1_amd64.deb
+	noextract = deepin-wine5-stable-amd64_5.0.34-1_amd64.deb
+	noextract = deepin-wine5-stable-i386_5.0.34-1_i386.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable_5.0.34-1_amd64.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable-amd64_5.0.34-1_amd64.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable-i386_5.0.34-1_i386.deb
+	sha256sums = 40e0371d64102295ec3426e9058df9743e3419505a1eb4ec675b6305ddd0f02e
+	sha256sums = dbb69bbecbc3e758500c92dc4656936c54f20c84e31c5a105ab29326d04375a6
+	sha256sums = 6366441e1f2017e7f0fbdf287983b21fd44c2be0e97a3b6e36081f45a5550c12
 
 pkgname = deepin-wine5-stable
-	depends = deepin-wine5-stable-i386=5.0.33
-	depends = deepin-wine5-stable-amd64=5.0.33
+	depends = deepin-wine5-stable-i386=5.0.34
+	depends = deepin-wine5-stable-amd64=5.0.34
 
 pkgname = deepin-wine5-stable-i386
 	depends = lib32-alsa-plugins
