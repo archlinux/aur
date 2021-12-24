@@ -1,0 +1,18 @@
+pkgbase = sinsy-isengaara-git
+	pkgdesc = fork of sinsy made to use with qtau
+	pkgver = 0.9.6rc0.r3.g036c33a
+	pkgrel = 1
+	url = https://notabug.org/isengaara/sinsy
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = hts-engine-api-git
+	depends = sekai-git
+	depends = boost-libs
+	provides = sinsy-isengaara-git
+	conflicts = sinsy-isengaara-git
+	source = git+https://notabug.org/isengaara/sinsy
+	md5sums = SKIP
+
+pkgname = sinsy-isengaara-git
