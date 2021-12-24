@@ -2,7 +2,7 @@ pkgbase = dnd-tools
 	pkgdesc = Interactive CLI tools for Dungeons and Dragons 5e
 	pkgver = r36.baefb9e
 	pkgrel = 1
-	url = https://github.com/savagezen/dnd-tools
+	url = https://gitlab.com/savagezen/dnd-tools
 	arch = i686
 	arch = x86_64
 	license = AGPLv3
@@ -11,7 +11,7 @@ pkgbase = dnd-tools
 	depends = python
 	provides = dnd-tools
 	conflicts = dnd-tools
-	source = git://github.com/savagezen/dnd-tools.git
+	source = git://gitlab.com/savagezen/dnd-tools.git
 	sha256sums = SKIP
 
 pkgname = dnd-tools
