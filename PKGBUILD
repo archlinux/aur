@@ -1,9 +1,9 @@
 # Maintainer: candroid_man <candroid_man@protonmail.com>
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
-pkgname='notesnook'
+pkgname='notesnook-bin'
 pkgver=1.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
 arch=('x86_64')
 url="https://notesnook.com/"
