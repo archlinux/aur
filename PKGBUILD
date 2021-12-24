@@ -22,16 +22,16 @@ sha512sums=(
 
 # List of maintainer pubkeys, see https://github.com/lightningnetwork/lnd/tree/master/scripts/keys
 validpgpkeys=(
-    'E97A1AB6C77A1D2B72F50A6F90E00CCB1C74C611' # Harsha Goli
-    '9FC6B0BFD597A94DBF09708280E5375C094198D8' # Andras Banki-Horvath
-    '15E7ECF257098A4EF91655EB4CA7FE54A6213C91' # carlakirkcohen
-    '9C8D61868A7C492003B2744EE7D737B67FA592C7' # Conner Fromknecht
-    '7E81EF6B9989A9CC93884803118759E83439A9B1' # eugene siegel
-    'F4FC70F07310028424EFC20A8E4256593F177720' # Oliver Gugger
-    '7AB3D7F5911708842796513415BAADA29DA20D26' # Johan T Halseth
-    'EB13A98091E8D67CDD7FC5A7E9FE7FE00AD163A4' # Jordi Montes
-    'E4D85299674B2D31FAA1892E372CBD7633C61696' # Olaoluwa Osuntokun
-    '729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1' # Wilmer Paulino
+    'E97A1AB6C77A1D2B72F50A6F90E00CCB1C74C611' # arshbot
+    '9FC6B0BFD597A94DBF09708280E5375C094198D8' # bhandras
+    '15E7ECF257098A4EF91655EB4CA7FE54A6213C91' # carlaKC
+    '9C8D61868A7C492003B2744EE7D737B67FA592C7' # cfromknecht
+    '7E81EF6B9989A9CC93884803118759E83439A9B1' # Crypt-iQ
+    'F4FC70F07310028424EFC20A8E4256593F177720' # guggero
+    '7AB3D7F5911708842796513415BAADA29DA20D26' # halseth
+    'EB13A98091E8D67CDD7FC5A7E9FE7FE00AD163A4' # positiveblue
+    'E4D85299674B2D31FAA1892E372CBD7633C61696' # roasbeef
+    '729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1' # wpaulino
 )
 
 prepare() {
@@ -43,14 +43,16 @@ prepare() {
         | sha256sum -c -
 
     maintainers=(
-        "arshbot"
-        "bhandras"
-        "carlaKC"
-        "Crypt-iQ"
-        "eugene_"
-        "guggero"
-        "positiveblue"
-        "roasbeef"
+        'arshbot'
+        'bhandras'
+        'carlaKC'
+        'cfromknecht'
+        'Crypt-iQ'
+        'guggero'
+        'halseth'
+        'positiveblue'
+        'roasbeef'
+        'wpaulino'
     )
 
     numsigs=0
