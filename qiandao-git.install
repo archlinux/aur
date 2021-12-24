@@ -1,0 +1,9 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+
+post_install() {
+    cat << EOF
+    NOTE: Make sure the SQLite database path is /var/lib/qiandao/database.db.
+EOF
+}
+

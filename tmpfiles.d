@@ -1,1 +1,1 @@
-d /var/lib/qiandao 0755 qiandao qiandao
+d /var/lib/qiandao 0750 qiandao qiandao

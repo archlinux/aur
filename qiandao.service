@@ -1,14 +1,24 @@
 [Unit]
 Description=Qiandao - An automatic check-in framework base on an HAR editor
 After=syslog.target network.target
+StartLimitIntervalSec=20
+StartLimitBurst=5
 
 [Service]
 Type=simple
 User=qiandao
 Group=qiandao
 DynamicUser=yes
+RestartSec=2
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+NoNewPrivileges=true
 ReadWritePaths=/var/lib/qiandao
-ExecStart=/usr/bin/qiandao
+ExecStart=/usr/bin/qiandao-run
 
 [Install]
 WantedBy=multi-user.target

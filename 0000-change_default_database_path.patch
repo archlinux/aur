@@ -1,37 +1,13 @@
 diff --git a/config.py b/config.py
-index 70bfe41..60a90d4 100644
+index 04163d1..bf44ce2 100644
 --- a/config.py
 +++ b/config.py
-@@ -18,6 +18,7 @@ cookie_days = 5
- mysql_url = urlparse.urlparse(os.getenv('JAWSDB_MARIA_URL', ''))
- redis_url = urlparse.urlparse(os.getenv('REDISCLOUD_URL', ''))
+@@ -43,7 +43,7 @@ class mysql(object):
+     passwd = mysql_url.password or None                                     # 用户名对应的密码
  
-+
- class mysql(object):
-     host = mysql_url.hostname or 'localhost'
-     port = mysql_url.port or '3306'
-@@ -25,18 +26,23 @@ class mysql(object):
-     user = mysql_url.username or 'qiandao'
-     passwd = mysql_url.password or None
- 
-+
  class sqlite3(object):
--    path = './database.db'
-+    path = '/var/lib/qiandao/database.db'
-+
+-    path = './config/database.db'                                           # Sqlite3数据库文件地址
++    path = '/var/lib/qiandao/database.db'                                           # Sqlite3数据库文件地址
  
- # 数据库类型，修改 sqlite3 为 mysql 使用 mysql
- db_type = os.getenv('DB_TYPE', 'sqlite3')
- 
-+
- # redis 连接参数，可选
- class redis(object):
-     host = redis_url.hostname or 'localhost'
-     port = redis_url.port or 6379
-     passwd = redis_url.password or None
-     db = int(os.getenv('REDIS_DB_INDEX', 1))
-+
-+
- evil = 100
- 
- pbkdf2_iterations = 400
+ # 数据库类型, 修改 sqlite3 为 mysql 使用 mysql
+ db_type = os.getenv('DB_TYPE', 'sqlite3')                                   # 默认为Sqlite3, 需要使用MySQL时设置为'mysql'
