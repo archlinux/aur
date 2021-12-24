@@ -1,6 +1,6 @@
 pkgbase = php-swoole
 	pkgdesc = Event-driven asynchronous and concurrent networking engine with high performance for PHP.
-	pkgver = 4.8.4
+	pkgver = 4.8.5
 	pkgrel = 1
 	url = https://github.com/swoole/swoole-src
 	install = php-swoole.install
@@ -10,7 +10,7 @@ pkgbase = php-swoole
 	depends = php
 	provides = php-swoole
 	backup = etc/php/conf.d/swoole.ini
-	source = php-swoole-4.8.4.src.tar.gz::https://github.com/swoole/swoole-src/archive/v4.8.4.tar.gz
-	sha256sums = 07845c2af6e25cbbf73b7e9aedbc5212e0be6cf93fec8274310ccb8b0ff41594
+	source = php-swoole-4.8.5.src.tar.gz::https://github.com/swoole/swoole-src/archive/v4.8.5.tar.gz
+	sha256sums = 369f1ee8705eb38cf20030a65d7017056e51a0f24fe06397740a76eed8f6a707
 
 pkgname = php-swoole
