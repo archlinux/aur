@@ -1,0 +1,14 @@
+pkgbase = python-pyaudio-skeh-git
+	pkgdesc = Python audio library. Fixed version.
+	pkgver = r124.f749f2187e232217f8ac112a1226b3af11f008e3
+	pkgrel = 1
+	url = https://git.skeh.site/skeh/pyaudio
+	arch = any
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pyaudio
+	conflicts = python-pyaudio
+	source = git+https://git.skeh.site/skeh/pyaudio
+	sha256sums = SKIP
+
+pkgname = python-pyaudio-skeh-git
