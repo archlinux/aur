@@ -3,7 +3,7 @@
 pkgname=raspmgr
 _pkgname=Rasp-Manager
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple server manager for local network (especially for Raspberry Pi)"
 arch=('any')
 url="https://github.com/PiyushXCoder/${_pkgname}"

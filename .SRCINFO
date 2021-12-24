@@ -1,7 +1,7 @@
 pkgbase = raspmgr
 	pkgdesc = A simple server manager for local network (especially for Raspberry Pi)
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PiyushXCoder/Rasp-Manager
 	arch = any
 	license = GPL3
