@@ -7,7 +7,7 @@ _CUDA_ARCH_LIST="60;61;62;70;72;75;80;86"
 _pkgname=Paddle
 pkgname=('python-paddlepaddle' 'python-paddlepaddle-cuda')
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PArallel Distributed Deep LEarning: Machine Learning Framework from Industrial Practice'
 arch=('x86_64')
 url='http://www.paddlepaddle.org'
@@ -37,6 +37,10 @@ makedepends=(
 )
 source=("${_pkgname}::git+https://github.com/PaddlePaddle/Paddle.git#tag=v${pkgver}")
 sha512sums=('SKIP')
+
+get_pyver() {
+  python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
 
 prepare() {
   # improve the file descriptors limit to avoid "Too many open files" error
@@ -101,10 +105,20 @@ package_python-paddlepaddle-cuda() {
 
   PIP_CONFIG_FILE=/dev/null find "${srcdir}/build-cuda" -type f -name "*.whl" -exec pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps {} \;
   python -O -m compileall "${pkgdir}"
+  # remove unneeded libs
+  rm -rfv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/paddle/libs"
+  rm -vf ${pkgdir}/usr/lib/python$(get_pyver)/site-packages/_foo.*
+  # remove rpath
+  find "${pkgdir}/usr/lib" -type f -name "*.so" -exec patchelf --remove-rpath {} \;
 }
 
 package_python-paddlepaddle() {
   PIP_CONFIG_FILE=/dev/null find "${srcdir}/build" -type f -name "*.whl" -exec pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps {} \;
   python -O -m compileall "${pkgdir}"
+  # remove unneeded libs
+  rm -rfv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/paddle/libs"
+  rm -vf ${pkgdir}/usr/lib/python$(get_pyver)/site-packages/_foo.*
+  # remove rpath
+  find "${pkgdir}/usr/lib" -type f -name "*.so" -exec patchelf --remove-rpath {} \;
 }
 # vim:set ts=2 sw=2 et:
