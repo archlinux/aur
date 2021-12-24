@@ -18,23 +18,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${pkgname}"
-  sed -i 's|/usr/local|/usr|' config.mk
-}
-
 build() {
   cd "${pkgname}"
-  make all
+  make PREFIX=/usr all
 }
 
 check() {
   cd "${pkgname}"
-  make test
+  make PREFIX=/usr test
 }
 
 package() {
   cd "${pkgname}"
-  DESTDIR="$pkgdir" make install
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
