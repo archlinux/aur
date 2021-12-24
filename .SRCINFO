@@ -1,7 +1,7 @@
 pkgbase = mips64-linux-gnu-gcc-bootstrap
 	pkgdesc = The GNU Compiler Collection - bootstrap/stage1 cross compiler for the MIPS64 target (for the toolchain with GNU C library and multilib ABI)
 	pkgver = 11.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	license = GPL
