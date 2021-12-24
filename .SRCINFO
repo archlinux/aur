@@ -1,5 +1,5 @@
 pkgbase = kate-root
-	pkgver = 21.08.3
+	pkgver = 21.12.0
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
@@ -15,16 +15,14 @@ pkgbase = kate-root
 	makedepends = ktexteditor
 	makedepends = kactivities
 	makedepends = kuserfeedback
-	source = https://download.kde.org/stable/release-service/21.08.3/src/kate-21.08.3.tar.xz
-	source = https://download.kde.org/stable/release-service/21.08.3/src/kate-21.08.3.tar.xz.sig
-	source = https://invent.kde.org/utilities/kate/-/commit/8328b53f.patch
+	source = https://download.kde.org/stable/release-service/21.12.0/src/kate-21.12.0.tar.xz
+	source = https://download.kde.org/stable/release-service/21.12.0/src/kate-21.12.0.tar.xz.sig
 	source = 0001-Defuse-root-block.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = e23eb09a06e29c273332dedc95f79abb9d070ec749cf9de2178a0c383b07bfbd
+	sha256sums = b4122e7c7078a853bde82a4177f19148d2c1cb952dca0636c07f741989146f7b
 	sha256sums = SKIP
-	sha256sums = 082c4a0c985b07e0f6976f0e183c28be290b796978f362e46e3917c24d9ca4b1
 	sha256sums = 6d61580de90efa53eb52077353097d66fb823965c0a70176a47bf5524603aa57
 
 pkgname = kwrite-root
