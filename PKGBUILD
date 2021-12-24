@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=5.15.10.zen1
-_kernver=5.15.10
+_pkgver=5.15.11.zen1
+_kernver=5.15.11
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux ZEN kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/zen-kernel/zen-kernel/commits/v5.15.10-zen1"
+url="https://github.com/zen-kernel/zen-kernel/commits/v5.15.11-zen1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('357c05204c237218e9289baa549185b6d73f751d040248a0ab26e70a4a482c1a'
-            '9ed6e70cbe084c8fb9b1660a56b017bb5ebb029a1117cf99a7a61506d70e137d'
-            '52507796f9c067c8d9fb497528f94af504d107b808485417a1b9e1e57a03f63f')
+sha256sums=('c937481f93726265cb2b72403e1a66f79b155296871f0c67fab10dfd48c3b8b4'
+            'ff8810bb34c85b8aeb3bcb14ca6a32fa9cfc85fdfb08620dfe095dc806799ea6'
+            'f698cc5b89e11462a8e108649f3d7ed53137542430855f1a073441c1c9477a7a')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.15.10.zen1-1-zen-bin() {
+package_linux5.15.11.zen1-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -80,7 +80,7 @@ package_linux5.15.10.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.15.10.zen1-1-zen-headers-bin() {
+package_linux5.15.11.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -89,7 +89,7 @@ package_linux5.15.10.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.15.10.zen1-1-zen-docs-bin() {
+package_linux5.15.11.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
