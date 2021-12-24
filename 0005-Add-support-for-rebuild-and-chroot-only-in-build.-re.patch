@@ -1,0 +1,50 @@
+From faedd24d1c1f0ad21cb7950364886b22b766bb51 Mon Sep 17 00:00:00 2001
+From: Marko Lemmetty <marko.lemmetty@jollamobile.com>
+Date: Fri, 15 May 2020 15:04:41 +0300
+Subject: [PATCH 5/7] Add support for --rebuild and --chroot-only in build.
+ --rebuild sends --skip-prep to build and rpm to skip the %prep phase. This is
+ useful in conjunction with the --rsync* options to enable rapid rebuilds in
+ the clean rpmbuild environment.
+
+    --chroot-only creates a chroot without doing a build - this can be used to
+    build scratchbox2 targets
+---
+ osc/build.py       | 6 ++++++
+ osc/commandline.py | 4 ++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/osc/build.py b/osc/build.py
+index 5e09e652..fecc0555 100644
+--- a/osc/build.py
++++ b/osc/build.py
+@@ -643,6 +643,12 @@ def main(apiurl, opts, argv):
+         buildargs.append('--norootforbuild')
+     if opts.clean:
+         buildargs.append('--clean')
++    if opts.rebuild:
++        if not opts.rsyncsrc or not opts.rsyncdest:
++            print >>sys.stderr, 'Warning: --rebuild option is usually used with both --rsync-src and --rsync-dest'
++        buildargs.append('--skip-prep')
++    if opts.chroot_only:
++        buildargs.append('--chroot-only')
+     if opts.nochecks:
+         buildargs.append('--no-checks')
+     if not opts.no_changelog:
+diff --git a/osc/commandline.py b/osc/commandline.py
+index e8166115..4aec544d 100644
+--- a/osc/commandline.py
++++ b/osc/commandline.py
+@@ -6517,6 +6517,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+                   help='Copy overlay filesystem to buildroot after installing all RPMs .')
+     @cmdln.option('--noinit', '--no-init', action='store_true',
+                   help='Skip initialization of build root and start with build immediately.')
++    @cmdln.option('--rebuild', action='store_true',
++                  help='During build, skip the %%prep and %%clean phases; requires --rsync options')
++    @cmdln.option('--chroot-only', action='store_true',
++                  help='Only initialise build root and skip build.')
+     @cmdln.option('--nochecks', '--no-checks', action='store_true',
+                   help='Do not run build checks on the resulting packages.')
+     @cmdln.option('--no-verify', '--noverify', action='store_true',
+-- 
+2.34.1
+
