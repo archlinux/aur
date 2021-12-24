@@ -1,7 +1,8 @@
 pkgbase = neovim-hybrid
 	pkgdesc = A dark color scheme for Neovim
 	pkgver = r46.cc58baa
-	pkgrel = 3
+	pkgrel = 4
+	url = https://github.com/w0ng/vim-hybrid
 	arch = any
 	groups = neovim-plugins
 	license = MIT
