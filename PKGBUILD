@@ -13,7 +13,7 @@ makedepends=('git')
 groups=('vim-plugins')
 url="https://github.com/cespare/vim-toml"
 license=('MIT')
-source=(${pkgname%-git}::git+https://github.com/cespare/vim-toml#branch=main)
+source=("${pkgname%-git}::git+https://github.com/cespare/vim-toml#branch=main")
 sha256sums=('SKIP')
 provides=('vim-toml')
 conflicts=('vim-toml')
