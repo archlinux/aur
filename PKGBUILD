@@ -6,7 +6,7 @@ pkgname="${_target}-gcc"
 pkgver=11.2.0
 _islver=0.24
 _majorver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for the MIPS64 target (for the toolchain with GNU C library and with multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
@@ -55,8 +55,13 @@ build() {
     
     # using -pipe causes spurious test-suite failures
     # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-    export CFLAGS="${CFLAGS/-pipe/}"
-    export CXXFLAGS="${CXXFLAGS/-pipe/}"
+    
+    local _opt
+    for _opt in '-pipe' '-Werror=format-security' '-fstack-clash-protection' '-fcf-protection'
+    do
+        export CFLAGS="${CFLAGS/"$_opt"/}"
+        export CXXFLAGS="${CXXFLAGS/"$_opt"/}"
+    done
     
     # position independent code (PIE) is troublesome in MIPS, as
     # it can cause this error when building software with gcc:
