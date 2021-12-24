@@ -1,13 +1,13 @@
 pkgbase = raspmgr
 	pkgdesc = A simple server manager for local network (especially for Raspberry Pi)
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/PiyushXCoder/Rasp-Manager
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = cargo
-	source = Rasp-Manager-2.0.2.tar.gz::https://github.com/PiyushXCoder/Rasp-Manager/archive/V2.0.2.tar.gz
+	source = Rasp-Manager-2.0.3.tar.gz::https://github.com/PiyushXCoder/Rasp-Manager/archive/V2.0.3.tar.gz
 	sha256sums = 76df28aa278424420914737567085a358eddbbe23840103e72d59f2749d26838
 
 pkgname = raspmgr

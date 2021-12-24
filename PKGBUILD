@@ -2,7 +2,7 @@
 
 pkgname=raspmgr
 _pkgname=Rasp-Manager
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A simple server manager for local network (especially for Raspberry Pi)"
 arch=('any')
