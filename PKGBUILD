@@ -1,6 +1,6 @@
-# Maintainer: Sameer Puri <purisame@spuri.io>
+# Maintainer: Sameer Puri <aur@purisa.me>
 pkgname=python-or-tools
-pkgver=9.0
+pkgver=9.2
 pkgrel=1
 pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip'
 optdepends=('cplex: CPLEX solver support')
 options=(!emptydirs)
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha512sums=('7cc453c3d32841232a089a26db6c93003d1254f3929069a4aa58375ecf043edfaf469936ca5793a009530506f0b2dc8d75c62c454a773be416f0dce8de787596')
+b2sums=('acfdc58991dcfc476ea7a448788a2a32250b0e8dcc9017e082746f12a06b203859b8d2f55c14542f58798c9fbecfc2daa3dd4f3b9d7c9557974469a273698afa')
 
 build() {
     cd "${srcdir}/or-tools-${pkgver}"
