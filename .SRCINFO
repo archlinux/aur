@@ -1,0 +1,15 @@
+pkgbase = hts-engine-api-git
+	pkgdesc = api to synthesize speech waveform from HMMs trained by the HMM-based speech synthesis system forked by r9y9
+	pkgver = 1.0.9.r38.g3df2613
+	pkgrel = 1
+	url = https://github.com/r9y9/hts_engine_API
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	provides = hts-engine-api
+	conflicts = hts-engine-api
+	source = git+https://github.com/r9y9/hts_engine_API
+	md5sums = SKIP
+
+pkgname = hts-engine-api-git
