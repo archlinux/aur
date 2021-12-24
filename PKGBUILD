@@ -1,7 +1,7 @@
 pkgname=twitch-git
 _pkgname=Twitch-git
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial Twitch desktop application."
 arch=('any')
 url="https://gitlab.com/twitch-application/application"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@15.2.0 electron-context-menu@3.1.1 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron electron-context-menu electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in Twitch-linux-*/ ; do mv "${dir}" "Twitch" ;done
 }
