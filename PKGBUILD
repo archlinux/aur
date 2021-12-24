@@ -31,6 +31,9 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver.src/build"
 
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
+
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
