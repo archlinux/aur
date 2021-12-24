@@ -1,7 +1,7 @@
 pkgname=twitch-bin
 _pkgname=Twitch-bin
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -23,7 +23,9 @@ package() {
     for dir in Twitch-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
     cd $_pkgname
     install -dm755 "$pkgdir/opt/Twitch"
+    install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/Twitch"
+    cp -r "$pkgdir/opt/Youtube/resources/app/twitch.svg" "$pkgdir/usr/share/pixmaps"     
 
 
     # Link to binary
