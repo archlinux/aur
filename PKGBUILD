@@ -4,11 +4,11 @@
 
 _pkgname=plasma-thunderbolt
 pkgname=${_pkgname}-git
-pkgver=5.20.90.r7.4641eef
+pkgver=5.22.90.r18.d4afb3d
 pkgrel=1
-pkgdesc="Plasma integration for controlling Thunderbolt devices"
+pkgdesc='Plasma integration for controlling Thunderbolt devices'
 arch=(x86_64)
-url="https://kde.org/plasma-desktop"
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 groups=(plasma)
 depends=(bolt systemsettings)

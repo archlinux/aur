@@ -1,8 +1,8 @@
 pkgbase = plasma-thunderbolt-git
 	pkgdesc = Plasma integration for controlling Thunderbolt devices
-	pkgver = 5.20.90.r7.4641eef
+	pkgver = 5.22.90.r18.d4afb3d
 	pkgrel = 1
-	url = https://kde.org/plasma-desktop
+	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
 	license = LGPL
@@ -16,4 +16,3 @@ pkgbase = plasma-thunderbolt-git
 	sha256sums = SKIP
 
 pkgname = plasma-thunderbolt-git
-
