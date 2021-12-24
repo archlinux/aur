@@ -1,0 +1,9 @@
+.*.sw[a-z]
+.sw[a-z]
+*.py[co]
+*.tar.xz
+*.tar.gz
+*.tar.zst
+*.zip
+pkg/
+src/
