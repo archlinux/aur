@@ -1,0 +1,22 @@
+pkgbase = qtau-git
+	pkgdesc = open source utau music editor
+	pkgver = 0.5.5.r0.g453cc85
+	pkgrel = 1
+	url = https://notabug.org/isengaara/qtau
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = jack
+	depends = libsmf
+	depends = qt5-base
+	depends = libsamplerate
+	depends = hts-engine-api-git
+	depends = sekai-git
+	depends = sinsy-isengaara-git
+	provides = qtau
+	conflicts = qtau
+	source = git+https://notabug.org/isengaara/qtau
+	md5sums = SKIP
+
+pkgname = qtau-git
