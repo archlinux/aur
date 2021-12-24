@@ -4,13 +4,13 @@
 
 pkgname=ashuffle-git
 pkgver=3.13.0.r2.gfccccdd
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic library-wide shuffle for mpd. (git)"
 url="https://github.com/joshkunz/ashuffle"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(MIT)
 
-depends=("libmpdclient")
+depends=("libmpdclient" "yaml-cpp")
 makedepends=("git" "meson" "cmake")
 
 provides=("${pkgname%-git}")
