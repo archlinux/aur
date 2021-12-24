@@ -7,9 +7,9 @@
 pkgname=bind-development
 _pkgname=bind
 pkgver=9.17.21
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete, highly portable implementation of the DNS protocol (development version)'
-url='https://www.isc.org/software/bind/'
+url='https://www.isc.org/bind/'
 license=('MPL2')
 arch=('x86_64')
 options=('!emptydirs')
@@ -23,6 +23,7 @@ depends=(
   'bash'
   'dnssec-anchors'
   'e2fsprogs'
+  'fstrm'
   'glibc'
   'icu'
   'jemalloc'
@@ -38,6 +39,7 @@ depends=(
   'libxml2'
   'lmdb'
   'openssl'
+  'protobuf-c'
   'readline'
   'xz'
   'zlib'
