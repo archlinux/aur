@@ -1,0 +1,16 @@
+pkgbase = when-git
+	pkgdesc = A timezone utility for the command line
+	pkgver = 0.4.0.r9.g98a2e62
+	pkgrel = 1
+	url = https://github.com/mitsuhiko/when
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = when-git::git+https://github.com/mitsuhiko/when/#branch=main
+	source = when-data::git+https://github.com/mitsuhiko/when-data/#branch=main
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = when-git
