@@ -8,7 +8,7 @@ _pkgname=Paddle
 pkgname=('python-paddlepaddle-git' 'python-paddlepaddle-cuda-git')
 _pkgver=2.2.1
 pkgver=2.2.1.r33234.8da9eff4e49
-pkgrel=1
+pkgrel=2
 pkgdesc='PArallel Distributed Deep LEarning: Machine Learning Framework from Industrial Practice'
 arch=('x86_64')
 url='http://www.paddlepaddle.org'
@@ -108,6 +108,11 @@ package_python-paddlepaddle-cuda-git() {
   )
   PIP_CONFIG_FILE=/dev/null find "${srcdir}/build-cuda" -type f -name "*.whl" -exec pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps {} \;
   python -O -m compileall "${pkgdir}"
+  # remove unneeded libs
+  rm -rfv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/paddle/libs"
+  rm -vf ${pkgdir}/usr/lib/python$(get_pyver)/site-packages/_foo.*
+  # remove rpath
+  find "${pkgdir}/usr/lib" -type f -name "*.so" -exec patchelf --remove-rpath {} \;
 }
 
 package_python-paddlepaddle-git() {
@@ -119,5 +124,10 @@ package_python-paddlepaddle-git() {
   )
   PIP_CONFIG_FILE=/dev/null find "${srcdir}/build" -type f -name "*.whl" -exec pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps {} \;
   python -O -m compileall "${pkgdir}"
+  # remove unneeded libs
+  rm -rfv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/paddle/libs"
+  rm -vf ${pkgdir}/usr/lib/python$(get_pyver)/site-packages/_foo.*
+  # remove rpath
+  find "${pkgdir}/usr/lib" -type f -name "*.so" -exec patchelf --remove-rpath {} \;
 }
 # vim:set ts=2 sw=2 et:
