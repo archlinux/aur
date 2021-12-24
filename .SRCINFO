@@ -1,6 +1,6 @@
 pkgbase = python2-taskw
 	pkgdesc = Python bindings for your taskwarrior database
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://github.com/ralphbean/taskw
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-taskw
 	makedepends = python-setuptools
 	makedepends = python2
 	makedepends = python2-setuptools
-	source = python2-taskw-1.3.0.tar.gz::https://github.com/ralphbean/taskw/archive/1.3.0.tar.gz
-	sha256sums = f51f9893945b7131e468619335d967b48f3dacf03d90995b31e7cc724465a472
+	source = python2-taskw-1.3.1.tar.gz::https://github.com/ralphbean/taskw/archive/1.3.1.tar.gz
+	sha256sums = 811218b490a69560f8673b3d1946b45d3ad43abff4ebd4aa9409569bb6b41dd1
 
 pkgname = python-taskw
 	depends = python
@@ -25,4 +25,3 @@ pkgname = python2-taskw
 	depends = python2-pytz
 	depends = python2-dateutil
 	depends = python2-kitchen
-
