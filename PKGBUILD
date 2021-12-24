@@ -1,4 +1,4 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 
 pkgname=reflex
 pkgver=0.3.1
