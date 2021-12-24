@@ -1,0 +1,14 @@
+pkgbase = dag
+	pkgdesc = A command line tool to download assets from GitHub releases
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/devmatteini/dag
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	options = !lto
+	source = dag-0.1.0.tar.gz::https://github.com/devmatteini/dag/archive/0.1.0.tar.gz
+	sha512sums = 8f93d8e2666590c262dcc0d2e983b74a6d33090b4041d17cba29e7b8b6d01b35c5ea171d2d04f6a62b8341774f656fab7c2395375433800c9998ae12e036cdba
+
+pkgname = dag
