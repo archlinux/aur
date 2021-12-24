@@ -1,0 +1,14 @@
+pkgbase = fcitx5-fbterm-git
+	pkgdesc = fcitx-fbterm refactor for fcitx5. Fbterm support for fcitx
+	pkgver = r3.6d3c949
+	pkgrel = 1
+	url = https://github.com/duzhaokun123/fcitx5-fbterm
+	arch = x86_64
+	license = GPL3
+	depends = fcitx5
+	depends = fcitx5-gtk
+	optdepends = fbterm: fbterm to use fcitx5-fbterm
+	source = git+https://github.com/duzhaokun123/fcitx5-fbterm
+	sha512sums = SKIP
+
+pkgname = fcitx5-fbterm-git
