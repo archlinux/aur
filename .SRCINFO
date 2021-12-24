@@ -1,0 +1,13 @@
+pkgbase = ttf-squadaone
+	pkgdesc = A bold presence and geometric, condensed typeface. It can be used at any size while still maintaining clarity and smoothness.
+	pkgver = 20211224
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Squada+One
+	arch = any
+	license = custom:SIL Open Font License
+	source = https://github.com/google/fonts/raw/${_gitver}/ofl/${_fontname}/SquadaOne-Regular.ttf
+	source = https://github.com/google/fonts/raw/${_gitver}/ofl/${_fontname}/OFL.txt
+	sha256sums = dbbc06a0735155910c05d5f65878cab3dca009a3c43b7bb837c6385c09c83eec
+	sha256sums = 8c409bf0d41e4cee2d8256595c09cd1f760507a76d6a4431ca8a2815bb091618
+
+pkgname = ttf-squadaone
