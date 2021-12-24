@@ -1,6 +1,6 @@
 pkgbase = blivet-gui
 	pkgdesc = GUI tool for storage configuration
-	pkgver = 2.3.0.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/storaged-project/blivet-gui
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = blivet-gui
 	depends = python-gobject
 	depends = python-pid
 	depends = adwaita-icon-theme
-	source = blivet-gui-2.3.0.1.tar.gz::http://github.com/storaged-project/blivet-gui/archive/2.3.0-1.tar.gz
+	source = blivet-gui-2.3.0.tar.gz::http://github.com/storaged-project/blivet-gui/archive/2.3.0.tar.gz
 	sha512sums = cf13480e076355e340198d83ea77b04338803e8fb1a5d2a942ae7754f28c5e6e48cbadef500ff053e2c3a0b795c8a0f4757c1da5e728f557ae7f551a0d6f5746
 
 pkgname = blivet-gui

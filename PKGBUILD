@@ -3,7 +3,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=blivet-gui
-_realver=2.3.0-1
+_realver=2.3.0
 _tag="${_realver}"
 pkgver=${_realver/-/.}
 pkgrel=1
