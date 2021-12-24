@@ -1,13 +1,13 @@
 pkgbase = mangadesk
 	pkgdesc = Terminal client for MangaDex
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.7.3
+	pkgrel = 1
 	url = https://github.com/darylhjd/mangadesk
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/darylhjd/mangadesk/archive/refs/tags/v0.7.0.tar.gz
-	sha512sums = dbb7874d960266f2e8e9a19e88d8df5db141cb87dfab6d3a98eb1d231b778826415e40e23a3f383e1de2baa4b74226bd472c191a14dc8c7c3360f5ae7142b9a2
+	source = https://github.com/darylhjd/mangadesk/archive/refs/tags/v0.7.3.tar.gz
+	sha512sums = e03108e8848b14bca9c90000b34f07538e7f5dcea0d05878914256c00218d3a113520a93f5ec2994c48a8272634670960d60295625439e79d65f332b5ef77f2b
 
 pkgname = mangadesk
