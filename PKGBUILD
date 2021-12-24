@@ -2,8 +2,8 @@
 
 pkgname=python-tangled-up-in-unicode
 _pkgname=tangled-up-in-unicode
-pkgver=0.0.6
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc='Access to the Unicode Character Database (UCD)'
 arch=('any')
 url='https://github.com/dylan-profiler/tangled-up-in-unicode'
@@ -13,15 +13,15 @@ depends=(
 )
 makedepends=(python-setuptools)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/dylan-profiler/tangled-up-in-unicode/archive/v${pkgver}.tar.gz")
-sha512sums=('1e6e2251184ab02bf257c988bb499f2de59c451b41b1244454888bdab8d84e4379a07527c10be3421de9588632405da27e81adbbd4cd677ced3e272bf289ddd5')
+sha512sums=('a8c8c82dfddd81d170961eea558f0238a3e76ec73590dccfc221842a6dd475846930327dc35412a234b0cd2909fac81217a23e2838e728cac7ad1ecd8495abbd')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
