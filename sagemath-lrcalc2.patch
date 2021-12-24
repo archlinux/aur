@@ -1,5 +1,5 @@
 diff --git a/build/pkgs/lrcalc/checksums.ini b/build/pkgs/lrcalc/checksums.ini
-index 7a0e6a1..8b8620b 100644
+index 7a0e6a1b96..8b8620ba52 100644
 --- a/build/pkgs/lrcalc/checksums.ini
 +++ b/build/pkgs/lrcalc/checksums.ini
 @@ -1,4 +1,5 @@
@@ -13,7 +13,7 @@ index 7a0e6a1..8b8620b 100644
 +cksum=2250996027
 +upstream_url=https://sites.math.rutgers.edu/~asbuch/lrcalc/lrcalc-VERSION.tar.gz
 diff --git a/build/pkgs/lrcalc/package-version.txt b/build/pkgs/lrcalc/package-version.txt
-index 92ab342..879b416 100644
+index 92ab3427e8..879b416e60 100644
 --- a/build/pkgs/lrcalc/package-version.txt
 +++ b/build/pkgs/lrcalc/package-version.txt
 @@ -1 +1 @@
@@ -21,7 +21,7 @@ index 92ab342..879b416 100644
 +2.1
 diff --git a/build/pkgs/lrcalc/patches/includes.patch b/build/pkgs/lrcalc/patches/includes.patch
 deleted file mode 100644
-index 707da17..00000000
+index 707da176a6..0000000000
 --- a/build/pkgs/lrcalc/patches/includes.patch
 +++ /dev/null
 @@ -1,90 +0,0 @@
@@ -116,11 +116,14 @@ index 707da17..00000000
 -2.1.1.1.g1fb337f
 -
 diff --git a/build/pkgs/lrcalc/spkg-configure.m4 b/build/pkgs/lrcalc/spkg-configure.m4
-index f2f8b74..da66e31 100644
+index f2f8b74f8f..b8171ce23f 100644
 --- a/build/pkgs/lrcalc/spkg-configure.m4
 +++ b/build/pkgs/lrcalc/spkg-configure.m4
-@@ -2,8 +2,7 @@ SAGE_SPKG_CONFIGURE([lrcalc], [
-     AC_CHECK_HEADERS([lrcalc/schublib.h], [
+@@ -1,9 +1,10 @@
+ SAGE_SPKG_CONFIGURE([lrcalc], [
+-    AC_CHECK_HEADERS([lrcalc/schublib.h], [
++    AC_LANG_PUSH([C])
++    AC_CHECK_HEADERS([lrcalc/schublib.h] [lrcalc/lrcoef.h], [
            AC_SEARCH_LIBS([mult_poly_schubert], [lrcalc], [], [sage_spkg_install_lrcalc=yes])
      ], [sage_spkg_install_lrcalc=yes],
 -    [[#ifndef _HASHTAB_H
@@ -129,9 +132,10 @@ index f2f8b74..da66e31 100644
 +    [[#ifndef _IVECTOR_H
 +      #include <lrcalc/ivector.h>
        #endif]])
++    AC_LANG_POP
  ])
 diff --git a/build/pkgs/lrcalc/spkg-install.in b/build/pkgs/lrcalc/spkg-install.in
-index d6665bf..a863950 100644
+index d6665bfb42..a863950189 100644
 --- a/build/pkgs/lrcalc/spkg-install.in
 +++ b/build/pkgs/lrcalc/spkg-install.in
 @@ -1,9 +1,5 @@
@@ -146,7 +150,7 @@ index d6665bf..a863950 100644
  sdh_make_install
 diff --git a/build/pkgs/lrcalc_python/SPKG.rst b/build/pkgs/lrcalc_python/SPKG.rst
 new file mode 100644
-index 00000000..cff9d7d
+index 0000000000..3a98d556ca
 --- /dev/null
 +++ b/build/pkgs/lrcalc_python/SPKG.rst
 @@ -0,0 +1,22 @@
@@ -163,7 +167,7 @@ index 00000000..cff9d7d
 +License
 +-------
 +
-+GNU General Public License V2+
++GNU General Public License V3
 +
 +
 +Upstream Contact
@@ -174,7 +178,7 @@ index 00000000..cff9d7d
 +https://bitbucket.org/asbuch/lrcalc
 diff --git a/build/pkgs/lrcalc_python/checksums.ini b/build/pkgs/lrcalc_python/checksums.ini
 new file mode 100644
-index 00000000..bdfef87
+index 0000000000..bdfef8711e
 --- /dev/null
 +++ b/build/pkgs/lrcalc_python/checksums.ini
 @@ -0,0 +1,5 @@
@@ -185,7 +189,7 @@ index 00000000..bdfef87
 +upstream_url=https://pypi.io/packages/source/l/lrcalc/lrcalc-VERSION.tar.gz
 diff --git a/build/pkgs/lrcalc_python/dependencies b/build/pkgs/lrcalc_python/dependencies
 new file mode 100644
-index 00000000..63e5177
+index 0000000000..63e5177ae0
 --- /dev/null
 +++ b/build/pkgs/lrcalc_python/dependencies
 @@ -0,0 +1,5 @@
@@ -196,45 +200,45 @@ index 00000000..63e5177
 +It is copied by SAGE_ROOT/build/make/install into SAGE_ROOT/build/make/Makefile.
 diff --git a/build/pkgs/lrcalc_python/install-requires.txt b/build/pkgs/lrcalc_python/install-requires.txt
 new file mode 100644
-index 00000000..8b44d97
+index 0000000000..8b44d97f4b
 --- /dev/null
 +++ b/build/pkgs/lrcalc_python/install-requires.txt
 @@ -0,0 +1 @@
 +lrcalc ~=2.1
 diff --git a/build/pkgs/lrcalc_python/package-version.txt b/build/pkgs/lrcalc_python/package-version.txt
 new file mode 100644
-index 00000000..879b416
+index 0000000000..879b416e60
 --- /dev/null
 +++ b/build/pkgs/lrcalc_python/package-version.txt
 @@ -0,0 +1 @@
 +2.1
 diff --git a/build/pkgs/lrcalc_python/spkg-install.in b/build/pkgs/lrcalc_python/spkg-install.in
 new file mode 100644
-index 00000000..deba1bb
+index 0000000000..deba1bb42b
 --- /dev/null
 +++ b/build/pkgs/lrcalc_python/spkg-install.in
 @@ -0,0 +1 @@
 +cd src && sdh_pip_install .
 diff --git a/build/pkgs/lrcalc_python/type b/build/pkgs/lrcalc_python/type
 new file mode 100644
-index 00000000..a6a7b9c
+index 0000000000..a6a7b9cd72
 --- /dev/null
 +++ b/build/pkgs/lrcalc_python/type
 @@ -0,0 +1 @@
 +standard
 diff --git a/build/pkgs/sagelib/dependencies b/build/pkgs/sagelib/dependencies
-index 53b78ff..e2bfab0 100644
+index 1ba845c8f2..cb57fe3859 100644
 --- a/build/pkgs/sagelib/dependencies
 +++ b/build/pkgs/sagelib/dependencies
 @@ -1,4 +1,4 @@
--FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
-+FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc_python libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
+-FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount primecountpy pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
++FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc_python libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount primecountpy pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
  
  ----------
  All lines of this file are ignored except the first.
 diff --git a/src/sage/libs/lrcalc/lrcalc.pxd b/src/sage/libs/lrcalc/lrcalc.pxd
 deleted file mode 100644
-index 10b88db..00000000
+index 10b88db93f..0000000000
 --- a/src/sage/libs/lrcalc/lrcalc.pxd
 +++ /dev/null
 @@ -1,77 +0,0 @@
@@ -316,7 +320,10 @@ index 10b88db..00000000
 -cdef extern from "lrcalc/schublib.h":
 -    hashtab* mult_schubert_c "mult_schubert"(vector *sh1, vector *sh2, int rank)
 diff --git a/src/sage/libs/lrcalc/lrcalc.pyx b/src/sage/libs/lrcalc/lrcalc.py
-index b591081..65db959 100644
+similarity index 65%
+rename from src/sage/libs/lrcalc/lrcalc.pyx
+rename to src/sage/libs/lrcalc/lrcalc.py
+index b591081ec4..65db959944 100644
 --- a/src/sage/libs/lrcalc/lrcalc.pyx
 +++ b/src/sage/libs/lrcalc/lrcalc.py
 @@ -187,180 +187,24 @@ AUTHORS:

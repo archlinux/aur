@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.5.beta8.r0.gd6d0edce10
+pkgver=9.5.beta9.r0.gc5af19568c
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=(palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpyl
   python-matplotlib python-scipy python-sympy python-networkx python-pplpy python-sphinx python-ipywidgets python-memory-allocator
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt singular linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
-  iml giac libhomfly libbraiding symmetrica threejs-sage primecount)
+  iml giac libhomfly libbraiding symmetrica threejs-sage python-primecountpy)
 optdepends=('cython: to compile cython code'
   'python-pkgconfig: to compile cython code'
   'jmol: alternative 3D plot engine'
@@ -58,14 +58,13 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-linbox-1.7.patch
         sagemath-python3.10.patch)
 sha256sums=('SKIP'
-            'b2308f25c5e6ad330342fc365056d7aebfbba09b833e3be6fb6283061709b6a0'
+            'eee5fa15d8c7be7e009166dbde3ea24bb10d7793dc12880516f278f86b1a6694'
             '2f310081357996b7d3bf813e63d07c0fc04d6724adbfbd1beeb554e9476e2e4c'
             'd1310321bf07491658e83087a6ddb0011738fa17a1dc3275d6d5c6907eaf3df8'
-            'ede5e054c73eab9aa71285bb3a16c1f2f0e4fdc0d4645fe13912ff9489865bee'
+            '8534700f78690a9f1b07df25b281138ed870fdfb70ab4df3818df79d5468ec9f'
             '1f0c44a4998ed239a3d77e3028b98b6f2c28a95e9bb4b8557523cc8f12ffba34'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
-            '602bf5ff69b81cb72123e9f0b1ce7df1cec0c15b97273e93691c1f11b20cd545'
-            '93e563a167431357dde9b8948d3bfa2b7c17873013f80eed83d3c800f38bdcc2')
+            'b9ca4fb0e3083e73560df5f0aca7e87d7aa8c05eca3eea49c704bcee102919c7')
 options=(debug !strip)
 
 pkgver() {
