@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=astro-git
-pkgver=r80_a1cae9b
+pkgver=r84_9506566
 pkgrel=1
 pkgdesc="A Gemini web browser using shell script"
 arch=('any')

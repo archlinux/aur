@@ -1,6 +1,6 @@
 pkgbase = astro-git
 	pkgdesc = A Gemini web browser using shell script
-	pkgver = r80_a1cae9b
+	pkgver = r84_9506566
 	pkgrel = 1
 	url = https://github.com/blmayer/astro
 	arch = any
