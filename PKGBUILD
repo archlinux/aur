@@ -1,14 +1,14 @@
 #Maintainer: Doommsatic <keniscoolu@gmail.com>
 pkgname=libretro-easyrpg-player
-pkgver=0.6.2.3
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (libretro core)"
 arch=('x86_64')
 url="https://easyrpg.org/"
 license=('GPL3')
-depends=("liblcf>=${pkgver:0:5}" 'sdl2_mixer' 'pixman' 'freetype2' 'libvorbis' 'mpg123' 'libsndfile' 'speexdsp' 'wildmidi' 'libretro-core-info' )
+depends=("liblcf>=${pkgver:0:5}" 'pixman' 'freetype2' 'libvorbis' 'mpg123' 'libsndfile' 'speexdsp' 'wildmidi' 'libretro-core-info' )
 makedepends=('git' 'cmake')
-_commit=4dd00a6e1ec4b12174019f39624d268619bb3776
+_commit=281be71fee034ea789308919b2a77c92b7446c20
 source=($pkgname::git+https://github.com/EasyRPG/Player.git#commit=${_commit})
 sha256sums=(SKIP)
 
