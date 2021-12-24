@@ -1,6 +1,6 @@
 # Maintainer: arthur <mr.x-important@gmx.de>
 pkgname=tutel
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 epoch=1
 pkgdesc="a minimalist todo app for terminal enthusiasts"
