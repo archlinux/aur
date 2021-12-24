@@ -1,7 +1,7 @@
 # Maintainer: Daniel Quinn <archlinux at danielquinn dot org>
 
 pkgname="python-aletheia"
-pkgver=3.2.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Fight fake news with cryptography & human nature"
 _name=${pkgname#python-}
@@ -19,7 +19,7 @@ depends=('ffmpeg'
 'python-requests'
 'python-termcolor')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('8b39832126ca0d00ae1e37925b6366efc37d28e4ae81759eb275e82480cd201a57a8acd7858178d0ac946bc4c4627ef7feb543b4a8f460bb45830e0980a8205b')
+sha512sums=('abd4ea3f3ae58fdd93286637cf066dac1585baaf0118742d2a0dca9478a86ee00de5df916a11a7f65f252e8c82ef6f3399d3b5d9f21dc8e42b13c95584680fa7')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
