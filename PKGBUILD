@@ -2,8 +2,8 @@
 
 pkgname=wayward-git
 _realname=wayward
-pkgver=0.9.0
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Fast GTK shell and compositor for wayland and weston."
 arch=('x86_64')
 license=('GPL')
@@ -21,11 +21,11 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_realname/source"
-	sh build.sh
+	cd "$srcdir/$_realname/source/source"
+	sh "build.sh"
 }
 
 package() {
-	cd "$srcdir/$_realname/source"
-	sh install.sh "$pkgdir"
+	cd "$srcdir/$_realname/source/source"
+	sh "install.sh" "$pkgdir"
 }
