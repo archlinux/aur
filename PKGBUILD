@@ -2,7 +2,7 @@
 
 pkgname=jupyterlab-plotly
 _name=${pkgname#jupyterlab-}
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='Jupyter Extension for Plotly.py.'
 arch=(any)
@@ -10,7 +10,7 @@ url=https://pypi.org/project/${_name}/
 license=(MIT)
 depends=(python jupyterlab jupyter-nbformat)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('735d50738c760ecbf3a38e2336b8c1b119bff2d857096e4f68af31089b798161')
+sha256sums=('20b8a1a0f0434f9b8d10eb7caa66e947a9a1d698e5a53d40d447bbc0d2ae41f0')
 
 package() {
   cd $srcdir/$_name-$pkgver
