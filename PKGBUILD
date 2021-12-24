@@ -2,7 +2,7 @@
 # from: git
 
 pkgname=plots-git
-pkgver=0.6.1.r148.g37cfe19
+pkgver=0.6.1.r158.gd9018c9
 pkgrel=1
 pkgdesc="A graph plotting app for GNOME"
 arch=('any')
