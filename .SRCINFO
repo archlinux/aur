@@ -1,0 +1,14 @@
+pkgbase = iscan-plugin-gt-x830
+	pkgdesc = iscan plugin for Epson GT-X830 Scanner
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	install = gt-x830.install
+	arch = x86_64
+	license = custom
+	depends = iscan>=2.21
+	source = https://download2.ebz.epson.net/iscan/plugin/gt-x830/rpm/x64/iscan-gt-x830-bundle-2.30.4.x64.rpm.tar.gz
+	md5sums = 6b827f5484e066d2302f540dbcac591d
+	sha256sums = 3d792c25db38d6cac50fe9026f64fb89a8a20f512d4b6d555b20c64623ee5e52
+
+pkgname = iscan-plugin-gt-x830

@@ -1,0 +1,9 @@
+post_install() {
+    echo 'Registering gt-x830 plugins/firmware with iscan'
+    iscan-registry -a 'interpreter' 'usb' '0x04b8' '0x0153' '/usr/lib/iscan/libiscan-plugin-gt-x830' '/usr/share/iscan/Esfw0111.bin'
+}
+
+pre_remove() {
+    echo 'Unregistering gt-x830 plugins/firmware with iscan'
+    iscan-registry -r 'interpreter' 'usb' '0x04b8' '0x0153' '/usr/lib/iscan/libiscan-plugin-gt-x830' '/usr/share/iscan/Esfw0111.bin'
+}
