@@ -1,7 +1,7 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.9.24
+pkgver=0.9.25
 pkgrel=1
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=('flatpak: required for Flatpak support'
             'util-linux: to install AUR packages as the root user')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('3062d4d732cd2fa9c20535d5180ad885356aba6b2e04ffd3008e7523ebfcd7409bda8d6e83406a45e0049245786c5fd71ff4f68376bb7e320ac31a34a5327c82')
+sha512sums=('4095249677d46e2d2330aa89f91a6cc2a9356b84330372858e4fd364c38d7e6d8d97d10073c93e97664fac6141a7ea3f07e3d9cfb52aa0e09cfcf52a5f6f3f23')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
