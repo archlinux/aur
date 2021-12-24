@@ -1,11 +1,13 @@
 pkgbase = ledger-autosync-git
 	pkgdesc = Pull down transactions from your bank and create ledger transactions for them
-	pkgver = 1.0.1.r41.g01f98aa
+	pkgver = 1.0.3.r7.g69f30ea
 	pkgrel = 1
 	url = https://gitlab.com/egh/ledger-autosync
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-poetry
 	depends = python
 	depends = ofxclient-git
 	depends = ofxparse-git
@@ -16,4 +18,3 @@ pkgbase = ledger-autosync-git
 	md5sums = SKIP
 
 pkgname = ledger-autosync-git
-
