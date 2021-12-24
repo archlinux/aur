@@ -3,8 +3,8 @@
 
 _pkgname=qtermwidget
 pkgname=$_pkgname-git
-pkgver=0.17.0.23.g68a019e
-pkgrel=1
+pkgver=1.0.0.2.g56ed3a7
+pkgrel=2
 pkgdesc="A terminal widget for Qt, used by QTerminal"
 arch=("x86_64")
 url="https://github.com/lxqt/qtermwidget"
@@ -31,7 +31,7 @@ build() {
   cd build
   cmake "$srcdir/$_pkgname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQTERMWIDGET_BUILD_PYTHON_BINDING=ON
+    -DQTERMWIDGET_BUILD_PYTHON_BINDING=OFF
   make
 }
 
