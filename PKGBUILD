@@ -4,6 +4,7 @@
 # Co-Maintainer: Specter119 <specter119 AT gmail DOT com>
 
 pkgname=python-ipyparallel
+pkgbase=ipython-ipyparallel
 _name=${pkgname#python-}
 pkgver=8.1.0
 pkgrel=1
