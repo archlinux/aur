@@ -1,11 +1,10 @@
 pkgbase = germanium
 	pkgdesc = Generate image from source code
-	pkgver = 0.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/matsuyoshi30/germanium
 	arch = x86_64
-	source = https://github.com/matsuyoshi30/germanium/releases/download/v0.2.0/germanium_0.2.0_linux_x86_64.tar.gz
-	md5sums = 0a6ab1ee15c1d92943fb450720281ec2
+	source = https://github.com/matsuyoshi30/germanium/releases/download/v1.2.2/germanium_1.2.2_linux_x86_64.tar.gz
+	md5sums = 54560e4a0f7dc5539f3035ae65a3912d
 
 pkgname = germanium
-
