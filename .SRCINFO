@@ -1,0 +1,15 @@
+pkgbase = nba
+	pkgdesc = A highly accurate Nintendo Game Boy Advance emulator.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/nba-emu/NanoBoyAdvance
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = glew
+	source = nba-1.4::git+https://github.com/nba-emu/NanoBoyAdvance.git#commit=809981ba3bdeb2e6ebc1ae0ea8b3c071896688f3
+	sha256sums = SKIP
+
+pkgname = nba
