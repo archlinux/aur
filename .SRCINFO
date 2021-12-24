@@ -44,6 +44,7 @@ pkgname = python-paddlepaddle-cuda-git
 	depends = cuda
 	depends = cudnn
 	depends = nccl
+	provides = python-paddlepaddle=2.2.1
 	provides = python-paddlepaddle-cuda=2.2.1
 	conflicts = python-paddlepaddle
 	conflicts = python-paddlepaddle-cuda

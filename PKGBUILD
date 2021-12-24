@@ -52,7 +52,7 @@ prepare() {
   # to make sure which protobuf git commit is used
   _protobuf_version=$(protoc --version|cut -f 2 -d ' ')
   sed -i "s,9f75c5aa851cd877fb0d93ccc31b8567a6706546,v${_protobuf_version}," "${_pkgname}/cmake/external/protobuf.cmake"
-# set CUDA_HOME for dgc building
+  # set CUDA_HOME for dgc building
   sed -i 's,BUILD_COMMAND make -j $(nproc),BUILD_COMMAND make CUDA_HOME=/opt/cuda,' "${_pkgname}/cmake/external/dgc.cmake"
   # fix std::move error, see also https://github.com/PaddlePaddle/Paddle/issues/26878
   find "${_pkgname}" -type f -name CMakeLists.txt -exec sed -i -e '$aset(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=pessimizing-move")' {} \;
@@ -82,7 +82,6 @@ build() {
     -DCUDA_ARCH_NAME="Manual" \
     -DWITH_GPU=ON
   make -C "${srcdir}/build-cuda"
-  
 
   # building without CUDA
   cmake -B "${srcdir}/build" \
@@ -100,6 +99,7 @@ package_python-paddlepaddle-cuda-git() {
     nccl
   )
   provides=(
+    python-paddlepaddle=${_pkgver}
     python-paddlepaddle-cuda=${_pkgver}
   )
   conflicts=(
