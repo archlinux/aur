@@ -1,7 +1,7 @@
 pkgbase = mips64el-linux-gnu-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)
 	pkgver = 11.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	license = GPL
