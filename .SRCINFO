@@ -1,0 +1,20 @@
+pkgbase = journey-cloud
+	pkgdesc = Your private diary, journal & companion.
+	pkgver = 2.14.6
+	pkgrel = 1
+	url = https://journey.cloud/
+	arch = x86_64
+	license = unknown
+	makedepends = squashfs-tools
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	optdepends = libappindicator-gtk3: tray icon support
+	provides = journey
+	conflicts = journey
+	conflicts = journey-bin
+	conflicts = journey-git
+	source = https://api.snapcraft.io/api/v1/snaps/download/TWwObnuGiM3Urabc9hR2Xg2bJs6J8f2Y_23.snap
+	sha256sums = 94286dc928e8d9cdf8b2d3897b70f009089838b7f45680172d366fc8a9cfd885
+
+pkgname = journey-cloud
