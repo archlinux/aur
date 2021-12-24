@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.22.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -22,6 +22,7 @@ build() {
     --docdir=/share/doc/cmake \
     --datadir=/share/cmake \
     --sphinx-man \
+    --sphinx-html \
     --system-libs \
     --qt-gui \
     --parallel=$(/usr/bin/getconf _NPROCESSORS_ONLN)
@@ -32,9 +33,7 @@ package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  emacs -batch -f batch-byte-compile \
-    "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
-
-  install -Dm644 Copyright.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  rm -r "$pkgdir"/usr/share/doc/cmake/html/_sources
+  emacs -batch -f batch-byte-compile "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
+  install -Dm644 Copyright.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
