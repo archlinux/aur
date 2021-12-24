@@ -2,7 +2,7 @@
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=river
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
 	'mesa' 'wlroots>=0.15.0' 'wayland' 'wayland-protocols' 'libxkbcommon'
 	'libevdev' 'pixman' 'xorg-xwayland' 'polkit'
 )
-makedepends=('zig=0.8.1' 'git' 'scdoc')
+makedepends=('zig=0.9.0' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
 conflicts=('river-bin' 'river-git' 'river-noxwayland-git')
 source=(
@@ -20,7 +20,7 @@ source=(
 	'river.desktop'
 )
 sha256sums=(
-	'2a0bcd4670ed9ebd39c279f2bf10803fc65c9f3ee2307ce40728df23ce914d18'
+	'02f426b8c90905a9423333daf35d7d713e8d09617c16cb22878b60301f28f4b4'
 	'6ccc55e95666904cbdeeeeed841a16f728cbae2609646130a4c53785e588e4b0'
 )
 
