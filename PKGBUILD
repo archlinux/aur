@@ -5,12 +5,13 @@
 
 pkgname=ccextractor
 pkgver=0.94
-pkgrel=1
-pkgdesc="A fast closed captions extractor for MPEG files."
+pkgrel=2
+pkgdesc="A closed captions and teletext subtitles extractor for video streams."
 arch=('i686' 'x86_64')
 url="https://www.ccextractor.org"
 license=('GPL')
-depends=('gcc-libs' 'tesseract' 'leptonica' 'ffmpeg' 'rust' 'clang')
+depends=('gcc-libs' 'tesseract' 'ffmpeg')
+makedepends=('rust' 'clang')
 source=(
   https://github.com/CCExtractor/ccextractor/releases/download/v$pkgver/ccextractor_minimal.tar.gz
 )
