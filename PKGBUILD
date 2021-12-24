@@ -25,7 +25,7 @@ package() {
     install -dm755 "$pkgdir/opt/Twitch"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/Twitch"
-    cp -r "$pkgdir/opt/Youtube/resources/app/twitch.svg" "$pkgdir/usr/share/pixmaps"     
+    cp -r "$pkgdir/opt/Twitch/resources/app/twitch.svg" "$pkgdir/usr/share/pixmaps"     
 
 
     # Link to binary
