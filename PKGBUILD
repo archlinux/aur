@@ -2,33 +2,27 @@
 
 pkgname=libgrapheme
 pkgver=1
-pkgrel=1
-pkgdesc="grapheme cluster utility library"
+pkgrel=2
+pkgdesc="unicode string library"
 url="https://libs.suckless.org/libgrapheme/"
 license=("ISC")
 arch=("x86_64")
-makedepends=("git")
 conflicts=("libgrapheme")
 source=("https://dl.suckless.org/libgrapheme/libgrapheme-${pkgver}.tar.gz")
 sha256sums=("8622df5150ce941d5c4665d0e09a1d42c2c25f628a27f48ca1e669576162d0f6")
 
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  sed -i 's|/usr/local|/usr|' config.mk
-}
-
 build() {
   cd "${pkgname}-${pkgver}"
-  make all
+  make PREFIX=/usr all
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  make test
+  make PREFIX=/usr test
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  DESTDIR="$pkgdir" make install
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

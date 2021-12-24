@@ -1,11 +1,10 @@
 pkgbase = libgrapheme
-	pkgdesc = grapheme cluster utility library
+	pkgdesc = unicode string library
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libs.suckless.org/libgrapheme/
 	arch = x86_64
 	license = ISC
-	makedepends = git
 	conflicts = libgrapheme
 	source = https://dl.suckless.org/libgrapheme/libgrapheme-1.tar.gz
 	sha256sums = 8622df5150ce941d5c4665d0e09a1d42c2c25f628a27f48ca1e669576162d0f6
