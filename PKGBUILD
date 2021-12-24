@@ -80,7 +80,6 @@ build() {
     -DCUDA_ARCH_NAME="Manual" \
     -DWITH_GPU=ON
   make -C "${srcdir}/build-cuda"
-  
 
   # building without CUDA
   cmake -B "${srcdir}/build" \
