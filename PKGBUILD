@@ -1,39 +1,44 @@
-# Maintainer: Vresod <lukebinkofsky@gmail.com>
+# Maintainer: Posi <posi1981@gmail.com>
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor: adambot <adambot@gmail.com>
+# Contributor: boscowitch <boscowitch@boscowitch.de>
+
+_pkgname=coreutils
+_commit=8e1c0d4f8a255091c59cf187a43a06cd264dc273
 pkgname=advcpmv
 pkgver=9.0
 pkgrel=3
-pkgdesc="Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on"
-arch=( "any" )
-url="https://github.com/jarun/advcpmv"
-license=("GPL3")
-source=( "http://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz" "https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.9-$pkgver.patch" "mv.1.gz" "cp.1.gz" )
+pkgdesc="'cp' and 'mv' utilities with progress bar patches"
+arch=('x86_64')
+license=('GPL3')
+url='https://www.gnu.org/software/coreutils/'
+depends=('glibc' 'acl' 'attr')
+provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
+source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+        "${pkgname}-${pkgver}-${pkgrel}.patch::https://raw.githubusercontent.com/jarun/advcpmv/${_commit}/advcpmv-0.9-${pkgver}.patch")
+validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce'
-            'b41f03d01c6e51db2ab491758bee594034cc02a815c87f4c19a4fafdfdfc9bd6'
-            '6ab6916b1ea86be2c669c8c99dbd2b08848f19cd719b68aaf27a9d460ca2dd83'
-            '82054540db3ca04f62d95ef4a45ef79809c2c94df5bbfc2458a4970e9a862409')
-depends=( )
-optdepends=( )
-makedepends=( "xz" )
+            'SKIP'
+            '889b1b1d0dbcd2b99e05daf2d53feff9002720eb1232968eb3c60983f76c7b72')
 
 prepare() {
-	tar xvJf "coreutils-$pkgver.tar.xz"
-	cd coreutils-$pkgver
-	mv ../advcpmv-0.9-$pkgver.patch .
-	patch -p1 -i advcpmv-0.9-$pkgver.patch
-	./configure
-	cd ..
+    cd "${_pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch"
 }
 
 build() {
-	cd coreutils-$pkgver
-	make
-	cd ..
-	
+    cd "${_pkgname}-${pkgver}"
+    ./configure --prefix=/usr \
+                --libexecdir=/usr/lib
+    make
 }
 
 package() {
-	install -Dm755 "coreutils-$pkgver/src/cp"  "$pkgdir"/usr/bin/advcp
-	install -Dm755 "coreutils-$pkgver/src/mv"  "$pkgdir"/usr/bin/advmv
-	install -Dm644 "mv.1.gz"                   "$pkgdir"/usr/share/man/man1/advmv.1.gz
-	install -Dm644 "cp.1.gz"                   "$pkgdir"/usr/share/man/man1/advcp.1.gz
+    cd "${_pkgname}-${pkgver}"
+    install -D src/cp "${pkgdir}/usr/bin/advcp"
+    ln -s advcp "${pkgdir}/usr/bin/acp"
+    ln -s advcp "${pkgdir}/usr/bin/cpg"
+    install -D src/mv "${pkgdir}/usr/bin/advmv"
+    ln -s advmv "${pkgdir}/usr/bin/amv"
+    ln -s advmv "${pkgdir}/usr/bin/mvg"
 }
