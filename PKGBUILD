@@ -16,6 +16,7 @@ makedepends=(
 	libhandy
 	meson
 	vala
+	wayland-protocols
 )
 source=("${url}/-/archive/v${pkgver}/phoc-v${pkgver}.tar.gz")
 sha256sums=('237ce471bdf01a14259f33725632deceaf429353766205beeb9d96a3fb921de1')
