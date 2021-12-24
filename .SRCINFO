@@ -1,5 +1,5 @@
 pkgbase = alacritty-xwayland
-	pkgdesc = workaround for #4739 without providing alacritty
+	pkgdesc = workaround for #4739
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
