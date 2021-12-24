@@ -63,8 +63,8 @@ build() {
     link=shared,static \
     toolset=gcc \
     python=3.10 \
-    cflags="$CPPFLAGS $CFLAGS -fPIC -O3" \
-    cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3" \
+    cflags="$CPPFLAGS $CFLAGS -fPIC -O3 -ffat-lto-objects" \
+    cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3 -ffat-lto-objects" \
     linkflags="$LDFLAGS" \
     --layout=system \
     $JOBS \
