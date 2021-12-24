@@ -5,20 +5,21 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.5.9
+pkgver=1.9.6.0
 _version=${pkgver}-1
-pkgrel=2
+_dataversion=${pkgver}
+pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.eternal-lands.com/"
-depends=('sdl2_net' 'sdl2_image' 'sdl2_ttf' 'openal' 'cal3d' 'libvorbis' 'glu')
+depends=('sdl2_net' 'sdl2_image' 'sdl2_ttf' 'openal' 'cal3d' 'libvorbis' 'glu' 'openssl')
 makedepends=('unzip' 'cmake')
 optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=("https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${_version}.tar.gz" "https://github.com/raduprv/Eternal-Lands/releases/download/${_version}/eternallands-data_${_version}.zip")
-md5sums=('745a75f442d6afea31df5d388450082a' '82c0b5601faed923fb30d01906e25ca3')
+source=("https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${_version}.tar.gz" "https://github.com/raduprv/Eternal-Lands/releases/download/${_dataversion}/eternallands-data_${_dataversion}.zip")
+md5sums=('0330e98eaddf616cc1eb7c9f2d21a86e' '6b8dcee000b150d7c1d84ca17f5cbae4')
 
 build()
 {

@@ -1,3 +1,8 @@
+2021-12-24 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Added openssl to the depends array
+
 2021-07-27 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD:
