@@ -1,0 +1,22 @@
+#/bin/sh
+#Like sl but with nani (and it can open nano)!
+#TODO:
+#Sound & ASCII art (use mpv?), SIXEL detection, imagemagick popup for manga panels?, config files (open nano, no sound, only text, custom files, priorities, easter eggs like "you are already dead" in japanese and other jojo lines, count how often nani was used, special season/holiday variants, random amount of ！, soundboard functionality, turn it into an actual japanese learnig  tool: Display lessions before nano start: quick remimbers; tasks users has to acomplish; gui stuff; voice input.).
+#Rewrite in C or Rust when I feel like it cause this sucks:
+number=$(awk -v min=0 -v max=2 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
+case $number in
+	0) 
+		echo "NANI!?"
+
+	;;
+	1)
+		echo "なに"
+	;;
+	2)
+		echo "なにイーツ！"
+	;;
+	*)
+		echo "Somebody was too dumb to count. Report it to @derberg:matrix.org"
+esac
+sleep 3
+nano $1
