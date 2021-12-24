@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+FastGit="https://hub.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/latest"
+GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
+JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release"
+CfCDN="https://cfgit.cern.ga/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
+
+download_files() {
+  echo "Fetching rules.zip"
+  curl -LO "${1}/rules.zip{,.sha256sum}"
+  sha256sum --check "rules.zip.sha256sum"
+
+  bsdtar -xf ./rules.zip
+  
+  rm -vf $(find . -maxdepth 1 -type f ! -name "geo*.dat")
+#  cp -vf --reflink=auto *.dat /usr/share/v2ray/
+#  echo /usr/share/v2ray/ /usr/share/xray/ | xargs -n 1 cp -vf --reflink *.dat
+}
+
+case "${1}" in
+"fastgit" | "fg")
+  download_files $FastGit
+  ;;
+"jsdelivr" | "js")
+  download_files $JsDelivr
+  ;;
+"cfcdn" | "cf")
+  download_files $CfCDN
+  ;;
+*)
+  download_files $GitHub
+  ;;
+esac

@@ -1,0 +1,8 @@
+post_install() {
+  systemctl enable --now v2ray-rules-dat-autoupdate.timer
+}
+
+pre_remove() {
+  systemctl disable v2ray-rules-dat-autoupdate.timer
+}
+

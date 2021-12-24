@@ -1,0 +1,3 @@
+g  v2ray-rules-dat  -  -
+u  v2ray-rules-dat  -  "account for v2ray-rules-dat autoupdate"  /var/lib/v2ray-rules-dat
+m  v2ray-rules-dat  v2ray-rules-dat
