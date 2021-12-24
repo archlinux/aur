@@ -3,22 +3,31 @@
 
 pkgname=qt5-connectivity
 _qtver=5.15.2
-pkgver=${_qtver/-/}
+pkgver=5.15.2+kde+r5
 pkgrel=1
+_commit=5e9ca5d36d65dadb98ef90013a1dcf15fbd7ae26
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides access to Bluetooth hardware'
 depends=('qt5-base' 'bluez-libs')
-makedepends=('qt5-declarative')
+makedepends=('qt5-declarative' 'git')
 optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('0380327871f76103e5b8c2a305988d76d352b6a982b3e7b3bc3cdc184c64bfa0')
+_pkgfqn=qtconnectivity
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
 
 prepare() {
   mkdir -p build
+
+  cd $_pkgfqn
+  git revert -n 69a87a9b831e36a578594a0a13130c384ad03121 # Revert version bump
 }
 
 build() {
