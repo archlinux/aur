@@ -1,7 +1,7 @@
 pkgbase = python-lottie
 	pkgdesc = A Python framework to work with Lottie files and Telegram animated stickers.
 	pkgver = 0.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/lottie
 	arch = any
 	groups = efb

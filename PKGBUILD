@@ -3,7 +3,7 @@
 pkgname=python-lottie
 _name=${pkgname//python-}
 pkgver=0.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python framework to work with Lottie files and Telegram animated stickers.'
 arch=(any)
 url=https://pypi.org/project/lottie
