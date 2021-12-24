@@ -7,14 +7,14 @@ license=('MIT')
 makedepends=()
 groups=('neovim-plugins')
 pkgver=r46.cc58baa
-pkgrel=1
+pkgrel=2
 pkgdesc='A dark color scheme for Neovim'
 source=("https://github.com/w0ng/vim-hybrid/archive/$_commit.zip")
 sha256sums=('50b496f0a2e94b2d05066344ba08af60d490aa4ce9edc9976c90ccd6796d63c3')
 
 prepare() {
     cd "vim-hybrid-$_commit"
-    tail -24 colors/hybrid.vim | head -23 | cut -b3- > LICENSE
+    tail -28 colors/hybrid.vim | head -26 | cut -b3- > LICENSE
 }
 
 package() {
