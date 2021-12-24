@@ -1,6 +1,6 @@
 pkgbase = zenv
 	pkgdesc = Dotenv (.env) loader written in rust
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/numToStr/zenv
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = zenv
 	license = GPL
 	provides = zenv
 	conflicts = zenv
-	source_x86_64 = https://github.com/numToStr/zenv/releases/download/v0.7.1/zenv-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/numToStr/zenv/releases/download/0.8.0/zenv-0.8.0-x86_64-unknown-linux-gnu.tar.gz
 	md5sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/numToStr/zenv/releases/download/v0.7.1/zenv-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/numToStr/zenv/releases/download/0.8.0/zenv-0.8.0-aarch64-unknown-linux-gnu.tar.gz
 	md5sums_aarch64 = SKIP
-	source_armv7 = https://github.com/numToStr/zenv/releases/download/v0.7.1/zenv-armv7-unknown-linux-gnueabihf.tar.gz
+	source_armv7 = https://github.com/numToStr/zenv/releases/download/0.8.0/zenv-0.8.0-armv7-unknown-linux-gnueabihf.tar.gz
 	md5sums_armv7 = SKIP
 
 pkgname = zenv
