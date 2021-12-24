@@ -1,0 +1,14 @@
+pkgbase = spiral-notebook-bin
+	pkgdesc = Free-form notebook software with 'click anywhere to type' functionality, rich-text and image support, and a notebook-based file structure
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://mitchellaugustin.com/spiral/
+	arch = x86_64
+	license = GPL
+	depends = qt5-base>=5.9.0,
+	depends = qt5-declarative>=5.9.0
+	optdepends = qt5-styleplugins
+	source = https://mitchellaugustin.com/spiral/versions/spiral-aur-1.5.tar.gz
+	md5sums = SKIP
+
+pkgname = spiral-notebook-bin
