@@ -5,7 +5,7 @@
 
 _pkgname=pdm
 pkgname=python-pdm
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=3
 pkgdesc="A modern Python package manager with PEP 582 support."
 arch=("any")
@@ -30,7 +30,7 @@ _pkgname_prefix="${_pkgname:0:1}"
 _pkgname_underscored="${_pkgname//-/_}"
 _pkgurl="https://files.pythonhosted.org/packages/py3/$_pkgname_prefix/$_pkgname/$_pkgname_underscored-$pkgver-py3-none-any.whl"
 source=("$_pkgurl")
-sha512sums=('d6aaa82aed60c196e0ef4103c687699f4aa2218deacfc9000085f44e1a46f1082a3d9fd269cfe7ad8b3fef3038e4ccc25ea9df5fc20a9011fcfe5eba5e6b2402')
+sha512sums=('54e62fad2d53c52708b05daec9cd7fada3e9d941040c7ae477566070e90d02d3e6b872567dfe24baf1b63ab3642ec87882d8d32096481b352ea42e2cab98a520')
 
 package() {
   cd "$srcdir" || exit
