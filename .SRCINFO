@@ -3,19 +3,12 @@ pkgbase = python-stsci_rtd_theme
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/spacetelescope/stsci_rtd_theme/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	checkdepends = python-sphinx
-	checkdepends = python2-sphinx
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/stsci_rtd_theme/stsci_rtd_theme-0.0.2.tar.gz
 	md5sums = d04f43974914985dcc4312ba1cce6322
 
 pkgname = python-stsci_rtd_theme
 	depends = python-sphinx>=1.3
-
-pkgname = python2-stsci_rtd_theme
-	depends = python2-sphinx>=1.3
-
