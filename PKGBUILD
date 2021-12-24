@@ -22,7 +22,7 @@ package() {
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/pixmaps"
-    ln -s "/opt/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
     cp -r "$pkgname.png" "$pkgdir/usr/share/pixmaps"
 
     # Desktop Entry
