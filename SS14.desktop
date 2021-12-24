@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Space Station 14
+Version=<VERSION>
+Type=Application
+Icon=spacestation14
+Comment=Spacestation 14 Launcher
+Categories=Game;
+Keywords=gaming;launcher;
+Terminal=false
+Exec=env spacestation14-launcher %u

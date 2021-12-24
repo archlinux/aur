@@ -2,7 +2,7 @@
 
 pkgname=spacestation14-launcher-bin
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Space Station 14 launcher"
 url="https://spacestation14.io/"
 license=(MIT)
@@ -12,11 +12,13 @@ options=(!strip staticlibs)
 _source_name="SS14.launcher.v${pkgver}.zip" 
 source=(
     "${_source_name}::https://github.com/space-wizards/SS14.Launcher/releases/download/v${pkgver}/SS14.Launcher_Linux.zip"
-    "spacestation14.svg::https://spacestation14.io/images/main/icon.svg")
+    "spacestation14.svg::https://spacestation14.io/images/main/icon.svg"
+    "SS14.desktop")
 noextract=("${_source_name}")
 
 sha256sums=('2ccaf7a50346e8308887be1e9e29373e50d0c499c909736d52951bf18268c7aa'
-            'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5')
+            'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5'
+            SKIP)
 
 prepare() {
     cd "${srcdir}"
@@ -34,7 +36,7 @@ package() {
     ln -s "/opt/SS14/SS14.Launcher" "${pkgdir}/usr/bin/spacestation14-launcher"
 
     mkdir -p "${pkgdir}/usr/share/applications"
-    ln -s "/opt/SS14/SS14.desktop" "${pkgdir}/usr/share/applications/SS14.desktop"
+    sed "s/<VERSION>/${pkgver}/" "${srcdir}/SS14.desktop" > "${pkgdir}/usr/share/applications/SS14.desktop"
 
     mkdir -p "${pkgdir}/usr/share/pixmaps"
     cp "${srcdir}/spacestation14.svg" "${pkgdir}/usr/share/pixmaps"
