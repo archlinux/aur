@@ -1,6 +1,6 @@
 pkgbase = rvgl-io-tracks-circuit
 	pkgdesc = Additional RVGL tracks used for drifting and other special events.
-	pkgver = 21.0308
+	pkgver = 21.1218
 	pkgrel = 1
 	url = https://re-volt.io/online/tracks
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = rvgl-io-tracks-circuit
 	depends = rvgl-bin
 	optdepends = rvgl-io-loadlevel: custom load screens
 	optdepends = rvgl-io-music: extra music
-	source = rvgl_io_tracks_circuit::git+https://gitlab.com/re-volt/rvio/circuit_tracks.git#tag=21.0308
+	source = rvgl_io_tracks_circuit::git+https://gitlab.com/re-volt/rvio/circuit_tracks.git#tag=21.1218
 	sha256sums = SKIP
 
 pkgname = rvgl-io-tracks-circuit
-
