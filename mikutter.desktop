@@ -3,6 +3,6 @@ Name=mikutter
 Type=Application
 Categories=Network
 GenericName=mikutter
-Icon=/usr/share/icons/mikutter.png
+Icon=/opt/mikutter/core/skin/data/icon.png
 Exec=/usr/bin/mikutter
 Terminal=false

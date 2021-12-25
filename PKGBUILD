@@ -3,35 +3,48 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=4.1.7
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
+depends=('gobject-introspection-runtime' 'gtk3' 'ruby-bundler')
+makedepends=('gobject-introspection')
 optdepends=('alsa-utils: sound notification support'
             'libnotify: notify support')
-options=(!strip)
-appimage=$pkgname-$pkgver-x86_64.AppImage
 source=(
-https://mikutter.hachune.net/bin/$appimage
+http://mikutter.hachune.net/bin/$pkgname-$pkgver.tar.gz
 mikutter.desktop
 )
+_gemdir="vendor/bundle/ruby/`ruby -e'print Gem.dir.match(/^.+\/(.+?)$/)[1]'`"
 
-package() {
-  chmod a+x $appimage
-  ./$appimage --appimage-extract
+build() {
+  cd "$pkgname-$pkgver"
 
-  mkdir -p $pkgdir/usr/share/icons
-  cp squashfs-root/mikutter.png $pkgdir/usr/share/icons
+  gem install --no-document --no-user-install -i $_gemdir rake
+  bundle config --local path "vendor/bundle"
+  bundle config --local without "test"
+  bundle install
 
-  mkdir -p $pkgdir/usr/bin
-  cp $appimage $pkgdir/usr/bin/mikutter
-
-  mkdir -p $pkgdir/usr/share/applications
-  cp $srcdir/mikutter.desktop $pkgdir/usr/share/applications
-  chmod a+x $pkgdir/usr/share/applications/mikutter.desktop
+  rm -rf $_gemdir/{build_info,cache,doc}
 }
 
-md5sums=('310fd03b13331bf10ff75c05508ef04b'
-         'be88935513f84d6287cc084e1c50cd88' )
+package() {
+  mkdir "$pkgdir/opt"
+  cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/mikutter"
+
+  mkdir -p "$pkgdir/usr/bin"
+  cat <<'EOF' > "$pkgdir/usr/bin/mikutter"
+#!/bin/sh
+BUNDLE_GEMFILE=/opt/mikutter/Gemfile bundle exec ruby /opt/mikutter/mikutter.rb $@
+EOF
+  chmod a+x "$pkgdir/usr/bin/mikutter"
+
+  mkdir -p $pkgdir/usr/share/applications
+  cp "$srcdir/mikutter.desktop" "$pkgdir/usr/share/applications"
+  chmod +x $pkgdir/usr/share/applications/mikutter.desktop
+}
+
+md5sums=('aa6b69e8bd00c05607e47482dda7cc13'
+         '3bc1c65e13b6182a9c989835eefc8810')
