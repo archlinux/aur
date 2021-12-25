@@ -1,13 +1,13 @@
 pkgbase = blades-bin
 	pkgdesc = Blazing fast dead simple static site generator
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://www.getblades.org
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = blades
 	options = strip
-	source = https://github.com/grego/blades/releases/download/v0.2.0/blades-0.2.0-x86_64.tar.gz
-	sha256sums = 9068952660a5a30e13796a6f8ae1925c82900fef31e83cecc3c7369c2f8f3d2f
+	source = https://github.com/grego/blades/releases/download/v0.3.0/blades-0.3.0-x86_64.tar.gz
+	sha256sums = ed58bdca9d34eae77a223e9f1b12201f0791236848d343fae6d122e2adf6f340
 
 pkgname = blades-bin
