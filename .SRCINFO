@@ -1,6 +1,6 @@
 pkgbase = openfx-gmic
 	pkgdesc = OpenFX wrapper for the G'MIC framework
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-gmic
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = openfx-gmic
 	depends = libgl
 	depends = libpng
 	conflicts = openfx-gmic-git
-	source = openfx-gmic-Natron-2.4.1.tar.gz::https://github.com/NatronGitHub/openfx-gmic/archive/refs/tags/Natron-2.4.1.tar.gz
-	source = openfx-Natron-2.4.1.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.1.tar.gz
-	sha512sums = 1e182858e36db278d94b1ebc16855d88bca8f2fa91cb1d5050d73f834086a896b84f218cf56d7b7f1daa8577e8816454ed42b4661d5acce17fd88346e228a501
-	sha512sums = 0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5
+	source = openfx-gmic-Natron-2.4.2.tar.gz::https://github.com/NatronGitHub/openfx-gmic/archive/refs/tags/Natron-2.4.2.tar.gz
+	source = openfx-Natron-2.4.2.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.2.tar.gz
+	sha512sums = a9135ccd3283b49085d760d4bf5772e16d108b1c5cc25181da70ad093fa4b02ffba0908cd7398c3afcef81c6bc9e6731d3da111e1e661cb4f2f4246d17c9cbe8
+	sha512sums = 624530af417821d759358ccfc45ba7ba10890fd115bbfef3e3fa61f486414fe61f39bfce8593f7ab84ee3d5ed3db05149d614f1407735fd8d6529894996103fa
 
 pkgname = openfx-gmic
