@@ -1,7 +1,7 @@
 pkgbase = coretime
 	pkgdesc = A time related task manager from the C Suite.
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/coretime
 	arch = x86_64
 	arch = aarch64
@@ -12,8 +12,7 @@ pkgbase = coretime
 	depends = qt5-base
 	depends = libcprime>=2.7.1
 	depends = qt5-multimedia
-	source = https://gitlab.com/cubocore/coreapps/coretime/-/archive/v4.2.0/coretime-v4.2.0.tar.gz
-	md5sums = 2b86bc055ec57cadd94eccbc5c92308e
+	source = https://gitlab.com/cubocore/coreapps/coretime/-/archive/v4.3.0/coretime-v4.3.0.tar.gz
+	md5sums = ffe871d1205026b001c0befc3941063e
 
 pkgname = coretime
-
