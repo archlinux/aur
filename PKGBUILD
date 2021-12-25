@@ -5,8 +5,8 @@ _skinname_lowercase="${_skinname,,}"
 _pkgname_base="mediawiki-skin-${_skinname_lowercase}"
 
 pkgname="${_pkgname_base}-git"
-pkgver=1.1.0.r23.g9441ca6
-pkgrel=1
+pkgver=1.2.6.r2.g7aaf732
+pkgrel=2
 pkgdesc="MediaWiki skin based on Twitter's Bootstrap"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Skin:${_skinname}"
@@ -40,5 +40,8 @@ package()
 	local skin_dir="/usr/share/webapps/mediawiki/skins/${_skinname}"
 
 	install -d -m755 "${pkgdir}${skin_dir}"
-	cp -a "$_skinname"/* "${pkgdir}${skin_dir}/"
+	cd "${_skinname}"
+	find . -mindepth 1 -maxdepth 1 -regextype posix-extended \
+		\! -regex './\.git(|ignore|review)' \
+		-exec cp -RP '{}' "${pkgdir}${skin_dir}/" \;
 }
