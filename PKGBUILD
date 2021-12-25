@@ -77,6 +77,7 @@ package()
     echo -e "[Service]
 ReadWritePaths = /usr/share/webapps/${_pkgname}/config/
 ReadWritePaths = /usr/share/webapps/${_pkgname}/matomo.js
+ReadWritePaths = /usr/share/webapps/${_pkgname}/matomo/js
 ReadWritePaths = /usr/share/webapps/${_pkgname}/misc/user/
 ReadWritePaths = /usr/share/webapps/${_pkgname}/plugins/
 ReadWritePaths = /usr/share/webapps/${_pkgname}/tmp/" > "${pkgdir}"/etc/systemd/system/php-fpm.service.d/override_matomo.conf
