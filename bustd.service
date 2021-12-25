@@ -3,8 +3,6 @@ Description = Process killer daemon for out-of-memory scenarios
 
 [Service]
 ExecStart = /usr/bin/bustd -n
-# Prevent bustd from killing high privileged process (like pacman)
-CapabilityBoundingSet=CAP_IPC_LOCK
 
 [Install]
 WantedBy = multi-user.target
