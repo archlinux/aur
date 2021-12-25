@@ -1,7 +1,7 @@
 pkgbase = mediawiki-extension-lockdown-git
 	pkgdesc = MediaWiki extension implementing per-namespace group permissions
 	pkgver = r180.5d8ea76
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.mediawiki.org/wiki/Extension:Lockdown
 	arch = any
