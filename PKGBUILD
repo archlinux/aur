@@ -7,7 +7,7 @@ _SequenceParsing_commit=103c528347ebb2dd0ff5d79b5cee24bbcf938ce0
 _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=openfx-arena
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
@@ -28,10 +28,10 @@ source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "lodepng-${_lodepng_commit}.tar.gz::https://github.com/lvandeve/lodepng/archive/${_lodepng_commit}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
         "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('bf6095cc409470a1f7a18dd0865e4ebc324f09a58d25bdb5d2ecccc2c81ed6ccf029d7781f9af97446f252752eb24d1769cfc2b8892cb526b15523a08642d699'
-            '0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5'
-            '564ef1d0f6b9ddb052eda862e68f10212fe3700d4d5c7e6d6907837fc6341ea925ef74bc1b48060e0528c4cc0ef534fb780e113bcfc823ef9af54e34250d54a4'
-            'a8125170a3d3e9a4ee659be104063ff40781f5bf6e6c37e8d7ff7ff9500a4134e40c70bfa98a5013d93b8bd4bc163ca8505f460d00b81a77554b2307ebeb1072'
+sha512sums=('5adf3719419eab776d4bde1332d5da90c720aa87bbc70b2c3e953236fc3cccb887f235bea3ded8464db56174ed2f494020908969b22f5ed912d27ed91e838025'
+            '624530af417821d759358ccfc45ba7ba10890fd115bbfef3e3fa61f486414fe61f39bfce8593f7ab84ee3d5ed3db05149d614f1407735fd8d6529894996103fa'
+            '12ba4d52f5712dee30db94bd5d382d899c58f61e68e30268d8c45baa40a9a13281ae2d88b56160547e0feaa0cc28f6f43c40f95d825cf47f082d071b6dda2535'
+            'b3d6672287824b3f61c32156618040ed4892c7748a496688369eca95a4c0d562b53e573b22a38f59445d96e4e54a34ea20164a1495d8780338c6dcc945c804c9'
             'SKIP'
             'SKIP'
             'SKIP')
