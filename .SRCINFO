@@ -1,6 +1,6 @@
 pkgbase = natron-bin
 	pkgdesc = Node-graph video compositor
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://natrongithub.github.io
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = natron-bin
 	depends = hicolor-icon-theme
 	provides = natron
 	conflicts = natron
-	noextract = natron-2.4.1.tar.xz
+	noextract = natron-2.4.2.tar.xz
 	options = !strip
-	source = natron-2.4.1.tar.xz::https://github.com/NatronGitHub/Natron/releases/download/v2.4.1/Natron-2.4.1-Linux-x86_64-no-installer.tar.xz
-	sha512sums = 409fe45572aafddc319b4b3bc20399c1178aca790004ed6d46e9c7baaf6100438863ac908ba5aabe7c3f38454eff7b3712811dd8ac24414e2491239ad6d79058
+	source = natron-2.4.2.tar.xz::https://github.com/NatronGitHub/Natron/releases/download/v2.4.2/Natron-2.4.2-Linux-x86_64-no-installer.tar.xz
+	sha512sums = a07f3aface36442d8695c39051454abc9c427e0f5ad00592ccdb99090eb50b730742cd947d44a9c12b74dc883570a52b288451a427c39fcbf6685e85f401630b
 
 pkgname = natron-bin
