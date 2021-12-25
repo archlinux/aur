@@ -2,7 +2,7 @@
 # Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-devtools
 _name=${pkgname:7}
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="An extension for colcon-core to provide information about the plugin system."
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('6ed3f29052c44e021b64106d5ae338e2b8936ba58c9f1c0496478327973d3f7b')
+sha256sums=('3a141bdbe44acef74ad1286673856846bc0fe840e6e00b3b38a5a2fe9324f2a2')
 
 
 package() {
