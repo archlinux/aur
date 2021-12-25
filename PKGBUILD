@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.10.0
 _pkgver=1.10.0
-pkgrel=6
+pkgrel=7
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -110,6 +110,7 @@ sha256sums=('SKIP'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
             '4d0d7da4a3fb099ed75f3007559fad04ac96eed87c523b274fb3bb6020e6b9b8'
             'd86efbe915386989d75d313fc76785e6d9c5638b983f17e98cca32174ac1fcee')
+options=(!lto)
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
