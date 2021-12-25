@@ -1,0 +1,14 @@
+pkgbase = minetest-moontest
+	pkgdesc = Moon Habitat Simulator
+	pkgver = 2021.12.22
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Droog71/moontest/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	noextract = moontest-2021.12.22.zip
+	options = !strip
+	source = moontest-2021.12.22.zip::https://content.minetest.net/packages/Droog71/moontest/releases/10180/download/
+	sha256sums = 6a161f1683790d9ba3baa154b380baf45647f77475cf53f715fe46b7e61335fc
+
+pkgname = minetest-moontest
