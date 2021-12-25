@@ -6,7 +6,7 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=1.2.0.132
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://gov.dingtalk.com"
@@ -49,8 +49,10 @@ package(){
     # desktop enrty
     install -Dm644 ${_pkgname2}.desktop -t ${pkgdir}/usr/share/applications/
     
-    # icons 
-    install -Dm644 opt/apps/${_pkgname2}/files/logo.ico ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.ico
+    # icons
+    # extract single image of size 48x48
+    icotool -x -i 3 opt/apps/${_pkgname2}/files/logo.ico -o .
+    install -Dm644 logo_3_48x48x32.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
     # license
     install -Dm644 service-terms-zh ${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html

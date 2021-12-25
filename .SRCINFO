@@ -1,7 +1,7 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 1.2.0.132
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gov.dingtalk.com
 	arch = x86_64
 	license = custom
