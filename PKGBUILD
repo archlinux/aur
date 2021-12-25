@@ -43,7 +43,7 @@ package()
     mkdir -p "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
 
     # Install the software.
-    cp -r "${srcdir}"/"${_pkgname}"/* "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
 
     ## GeoIP database
     current_year=$(date +"%Y")
