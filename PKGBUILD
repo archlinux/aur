@@ -1,6 +1,6 @@
 # Maintainer: Shago Pavel <shgpavel@yandex.ru>
 
-pkgname=geth-git
+pkgname=go-etherium-latest
 pkgver=1.10.14
 pkgrel=1
 _commit=1.10.14-11a3a350
