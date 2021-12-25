@@ -1,0 +1,14 @@
+pkgbase = minetest-grand-theft-box
+	pkgdesc = Grand Theft Box!
+	pkgver = 10176
+	pkgrel = 1
+	url = https://content.minetest.net/packages/jamiebearcub/grand_theft_box/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = grand_theft_box-10176.zip
+	options = !strip
+	source = grand_theft_box-10176.zip::https://content.minetest.net/packages/jamiebearcub/grand_theft_box/releases/10176/download/
+	sha256sums = 3725ec840215b7955e4652c28fe497d54c31ab66d51fc5cd4340f77bb158d526
+
+pkgname = minetest-grand-theft-box
