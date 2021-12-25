@@ -1,5 +1,5 @@
 pkgbase = motivewave
-	pkgdesc = A trading platform to fit any trader or market analyst
+	pkgdesc = Advanced trading and charting application.
 	pkgver = 6.5.12
 	pkgrel = 1
 	url = https://www.motivewave.com
