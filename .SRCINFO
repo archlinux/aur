@@ -1,6 +1,6 @@
 pkgbase = rvgl-io-tracks
 	pkgdesc = Additional RVGL tracks used for official events.
-	pkgver = 21.0622
+	pkgver = 21.1223
 	pkgrel = 1
 	url = https://re-volt.io/online/tracks
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = rvgl-io-tracks
 	optdepends = rvgl-io-music: extra music
 	conflicts = rvgl-tracks
 	replaces = rvgl-tracks
-	source = rvgl_io_tracks::git+https://gitlab.com/re-volt/rvio/tracks.git#tag=21.0622
+	source = rvgl_io_tracks::git+https://gitlab.com/re-volt/rvio/tracks.git#tag=21.1223
 	sha256sums = SKIP
 
 pkgname = rvgl-io-tracks
