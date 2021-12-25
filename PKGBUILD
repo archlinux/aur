@@ -19,6 +19,7 @@ sha512sums=('34d7698960e45b837e40e3208642fdd93e4a4214f16d8f58b0f5dd7c9ffa17eb19e
 build() {
   cd tldr-python-client-$pkgver
   python setup.py build
+  make -C docs
 }
 
 check() {
