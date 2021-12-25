@@ -1,0 +1,14 @@
+pkgbase = minetest-lazarr
+	pkgdesc = Laser puzzle game
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Wuzzy/lazarr/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	noextract = lazarr-1.2.zip
+	options = !strip
+	source = lazarr-1.2.zip::https://content.minetest.net/packages/Wuzzy/lazarr/releases/10174/download/
+	sha256sums = 650c293155d33050c07d982b2f906902fe5d409aaadfb3f53956edfdbfca2dbf
+
+pkgname = minetest-lazarr
