@@ -1,0 +1,14 @@
+pkgbase = minetest-blockbomber
+	pkgdesc = Battle your friends for power-ups and be the last blocker standing! A Multiplayer Bomberman clone.
+	pkgver = 2021.12.22
+	pkgrel = 1
+	url = https://content.minetest.net/packages/MisterE/blockbomber/
+	arch = any
+	license = LGPLv3
+	depends = minetest-common
+	noextract = blockbomber-2021.12.22.zip
+	options = !strip
+	source = blockbomber-2021.12.22.zip::https://content.minetest.net/packages/MisterE/blockbomber/releases/10182/download/
+	sha256sums = 5b08c1e25442ab5535052683d61a1b458e678f0f1153a6e9a3262b0f0c280298
+
+pkgname = minetest-blockbomber
