@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-msrv
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Find the minimum supported Rust version (MSRV) for your project"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3532d6c532b97c4955f8237b54d25f3bdeb7cd2cdb1a64f579d51bac6a3bd8cd')
+sha256sums=('7f214d8d373e09468dcf415c2bc9cac32f3c79e9cdcdebee9f99c0c0aa262f7f')
 
 prepare() {
   cd "$pkgname-$pkgver"
