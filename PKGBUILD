@@ -2,7 +2,7 @@
 
 pkgname=badlion-client
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft client with anti-cheat protection"
 url="https://client.badlion.net"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=('BadlionClient::https://client-updates-cdn77.badlion.net/BadlionClient'
 'AppRun'
 'BadlionClient.desktop')
 sha256sums=('ed02961e3942deda403d63ad60205d40384fb412aa04ef7db5ac5f728573ec2c'
-            '7f18c33247cae96d268fd92c9e3a7e2d8ae9b3870f7d7f1b856186f95770e493'
+            '5baab55280a92c293b2453c22a67fd40cf3e10855cda217ddce50abec1df6816'
             '3f5730cff2f8d1f0d36b14ebf6dd83ea25548fdc287c448716a3533e6f2d0885')
 
 prepare() {
