@@ -1,16 +1,15 @@
 pkgbase = ruby-faraday-detailed_logger
 	pkgdesc = A detailed request and response logger for Faraday.
-	pkgver = 2.3.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/envylabs/faraday-detailed_logger
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-faraday
-	noextract = faraday-detailed_logger-2.3.0.gem
+	noextract = faraday-detailed_logger-2.4.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/faraday-detailed_logger-2.3.0.gem
-	sha1sums = 3799d0356f715535e0fa76eb24293c82770f7fab
+	source = https://rubygems.org/downloads/faraday-detailed_logger-2.4.2.gem
+	sha1sums = c4a645d9cfe5f4e6a0112c9f7439a364d9d0233a
 
 pkgname = ruby-faraday-detailed_logger
-

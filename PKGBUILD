@@ -2,7 +2,7 @@
 
 _gemname=faraday-detailed_logger
 pkgname=ruby-$_gemname
-pkgver=2.3.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A detailed request and response logger for Faraday.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-faraday)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3799d0356f715535e0fa76eb24293c82770f7fab')
+sha1sums=('c4a645d9cfe5f4e6a0112c9f7439a364d9d0233a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
