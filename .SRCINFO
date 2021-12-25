@@ -1,13 +1,12 @@
 pkgbase = xfwm-axiom-theme
 	pkgdesc = Inspired by the metacity theme "fresh". Two xfwm themes are included, axiom for bright themes and axiomd for dark themes.
 	pkgver = 1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.xfce-look.org/content/show.php/axiom?content=90145
 	arch = any
 	license = GPL
 	depends = xfwm4
-	source = https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE0NjE3Njc3MzYiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjA2MzA0NmE2MGE2NzhkM2MxNjg2ODFlMzU5NDY3ZDdhNDMwMGUyODQ2YzdmOWFmZWNhNjhhZmRmMDg5ZDYyNTFlYzE1NTVkNWI5YjE2ZTc2MmRiNmZmY2E4ODg3NjVmOTQyY2I4NGM3M2I3MTYzYmM1MGEzOTE4MWI0ODIzZTkwIiwidCI6MTU5MDMzMjU4NSwic3RmcCI6IjZlMTRkMGM1NWEwMmJiMmFmOWQyNjcyOWI4MDMzYzNiIiwic3RpcCI6IjE4Ny4xOTAuMjA5Ljk3In0.j7KFMCn0SQdt0Q08yV-o47CX1K8gd9krL0BIBqxhVts/90145-axiom.tar.gz
+	source = https://dllb.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE0NjE3Njc3MzYiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjA0YmU2NGRjZDgwZTZkYWQyMzcwODA1M2I1MzI3NzYwZDcyZjY5ZGQxOTcwZWRiN2IxOTVhOWFkYzQwNTFhZTcwMTJkNGFkMzJhYjIwMjI1OTI5OGJiNjI4MzRjNzUzZGRhODRmNTg3ZjBhYjBiNjA0YWRiODY0NjQ1MjQzMjg0IiwidCI6MTY0MDQ2OTcxNSwic3RmcCI6IjJmNTU3NmNhOTFlMGViYTk5Y2VkOGE0ODhjNTQ3ZDJjIiwic3RpcCI6IjI4MDY6MmYwOjEwMDE6MzkwMDpkMzg1OjQ5ZTE6OWE1MjpkNGNmIn0.L9FAV_dwkRCD3qBCxMGrM3mrNYG87q4OxtanVZHWR8M/90145-axiom.tar.gz
 	md5sums = e9fd9f41f671afa17b3efbf43f0008de
 
 pkgname = xfwm-axiom-theme
-
