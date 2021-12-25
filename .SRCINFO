@@ -1,0 +1,14 @@
+pkgbase = minetest-solar-plains-invector
+	pkgdesc = A karting game with built in track editor
+	pkgver = 10219
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Jordach/invector/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	noextract = invector-10219.zip
+	options = !strip
+	source = invector-10219.zip::https://content.minetest.net/packages/Jordach/invector/releases/10219/download/
+	sha256sums = b466d7fca93e19233cd46523dd1ec61e37cb2915d7529fc929f588fb17b7f2ff
+
+pkgname = minetest-solar-plains-invector
