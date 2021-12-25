@@ -1,7 +1,7 @@
 pkgbase = corekeyboard
 	pkgdesc = A virtual keyboard for X11 from the C Suite
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corekeyboard
 	arch = x86_64
 	arch = aarch64
@@ -14,8 +14,7 @@ pkgbase = corekeyboard
 	depends = qt5-x11extras
 	depends = libxtst
 	depends = libx11
-	source = https://gitlab.com/cubocore/coreapps/corekeyboard/-/archive/v4.2.0/corekeyboard-v4.2.0.tar.gz
-	md5sums = ad677ad725ee46b6aca98027fa846a34
+	source = https://gitlab.com/cubocore/coreapps/corekeyboard/-/archive/v4.3.0/corekeyboard-v4.3.0.tar.gz
+	md5sums = 8b30d75279f24c1af5215bb8e8660b01
 
 pkgname = corekeyboard
-
