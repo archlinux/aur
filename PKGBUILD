@@ -1,7 +1,7 @@
 # Maintainer: BlitGaming <blitgaming1007@mail.ru>
 pkgname=reactgame
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A simple reaction training game written in C# (.NET 6.0)"
 url="https://github.com/BlitGaming/ReactGame"
 arch=("x86_64")
