@@ -4,10 +4,10 @@ pkgdesc="ROS - Contains nodelets for processing depth images such as those produ
 url='https://wiki.ros.org/depth_image_proc'
 
 pkgname='ros-noetic-depth-image-proc'
-pkgver='1.15.3'
+pkgver='1.16.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -49,7 +49,7 @@ depends=(
 
 _dir="image_pipeline-${pkgver}/depth_image_proc"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
-sha256sums=('66ad6365b6f5c29a38ccde889381f50709ff273a1725e813843655f198d4b48b')
+sha256sums=('310004d402930a059bb2c4811301e6f8aabc517143d094662de7e047e6e2b429')
 
 build() {
 	# Use ROS environment variables.
