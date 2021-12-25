@@ -15,7 +15,7 @@ source=("git+$url"
         "nodbus-exit-code.patch"
         "dns-priority.patch")
 sha256sums=('SKIP'
-            '87476c48894273f1e71b3231fe9a5d25e1acc341adcaa331b3c93da52b99f75e'
+            '7471249a65fa1cb1c41a5a33c3a7d368d74f61ba91d4dc3e39be6afafc7ec6c0'
             '2da4f2905390604b6dd0881cf874f2ee2c3898a24f86d380d1d403b2bb74c50d'
             '2347cbf69ad32c33eae11546865355a2fc3b0a2ae747c70057e1ca142957edf3'
             'b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82'
