@@ -5,19 +5,18 @@ pkgname=dune-pdelab
 _tarver=2.7
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=2
+pkgrel=3
 pkgdesc="New generalized discretization module for a wide range of discretization methods"
 arch=('x86_64')
 url="https://www.dune-project.org/modules/${pkgname}"
 license=('LGPL3' 'custom:GPL2 with runtime exception')
 depends=('dune-functions>=2.7' 'dune-alugrid>=2.7' 'superlu' 'arpackpp' 'suitesparse' 'dune-alugrid>=2.8.0' 'parmetis' 'scotch')
-makedepends=('doxygen' 'graphviz' 'eigen' 'petsc')
+makedepends=('doxygen' 'graphviz' 'eigen')
 optdepends=(
   'texlive-core: Type setting system'
   'biber: A Unicode-capable BibTeX replacement for biblatex users'
   'doxygen: Generate the class documentation from C++ sources'
   'eigen: Lightweight C++ template library for vector and matrix math'
-  'petsc: Portable, extensible toolkit for scientific computation'
   'dune-alugrid: for creation ALUGrid from gmsh file'
   'dune-multidomaingrid: for Multiple-Domain Grid Function Space test for Poisson')
 source=(https://gitlab.dune-project.org/pdelab/${pkgname}/-/archive/releases/${_tar})
@@ -47,5 +46,7 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
   install -Dm644 ${pkgname}-releases-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgdir}/usr/share/dune/cmake/modules"
+  rm CorrectWindowsPaths.cmake FindPETSc.cmake FindPackageMultipass.cmake ResolveCompilerPaths.cmake
   find "${pkgdir}" -type d -empty -delete
 }

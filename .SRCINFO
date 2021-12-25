@@ -1,7 +1,7 @@
 pkgbase = dune-pdelab
 	pkgdesc = New generalized discretization module for a wide range of discretization methods
 	pkgver = 2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dune-project.org/modules/dune-pdelab
 	arch = x86_64
 	license = LGPL3
@@ -9,7 +9,6 @@ pkgbase = dune-pdelab
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = eigen
-	makedepends = petsc
 	depends = dune-functions>=2.7
 	depends = dune-alugrid>=2.7
 	depends = superlu
@@ -22,7 +21,6 @@ pkgbase = dune-pdelab
 	optdepends = biber: A Unicode-capable BibTeX replacement for biblatex users
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = eigen: Lightweight C++ template library for vector and matrix math
-	optdepends = petsc: Portable, extensible toolkit for scientific computation
 	optdepends = dune-alugrid: for creation ALUGrid from gmsh file
 	optdepends = dune-multidomaingrid: for Multiple-Domain Grid Function Space test for Poisson
 	source = https://gitlab.dune-project.org/pdelab/dune-pdelab/-/archive/releases/2.7/dune-pdelab-releases-2.7.tar.gz
