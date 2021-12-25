@@ -1,0 +1,14 @@
+pkgbase = minetest-alter
+	pkgdesc = A challenging puzzle game in a dystopian future.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://content.minetest.net/packages/yaman/alter/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	noextract = alter-0.1.2.zip
+	options = !strip
+	source = alter-0.1.2.zip::https://content.minetest.net/packages/yaman/alter/releases/10148/download/
+	sha256sums = a8b1c39a896f6e7ab92d79b5ce6d44c631211ee9e35c4fdecd0112bc599fd380
+
+pkgname = minetest-alter
