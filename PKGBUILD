@@ -6,7 +6,7 @@
 _pkgname=matomo
 
 pkgname=matomo-git
-pkgver=4.6.2
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="A powerful web analytics platform."
 arch=("any")
@@ -20,15 +20,17 @@ optdepends=("apache: HTTP server"
 "nginx: HTTP server")
 provides=("${_pkgname}")
 conflicts=("matomo")
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("6c83a093ad71b1b3b6bc27815287782787f05c2d9c15a2b01c8a1ee019599789")
+source=("git+${url}.git")
+sha256sums=("SKIP")
 
 build()
 {
     # Information
     echo -e "\033[0;32mConfiguration is needed before the installation. For assistance, read the included \"README.md\".\033[0m"
 
-    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit
+    cd "${srcdir}"/"${_pkgname}"/ || exit
+    git checkout vue-ajax-form
+    git checkout tags/"${pkgver}"
     git submodule update --init --merge --recursive
     composer install --no-dev
 }
@@ -41,7 +43,7 @@ package()
     mkdir -p "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
 
     # Install the software.
-    cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"/* "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
 
     ## GeoIP database
     current_year=$(date +"%Y")
@@ -83,5 +85,5 @@ ReadWritePaths = /usr/share/webapps/${_pkgname}/tmp/" > "${pkgdir}"/etc/systemd/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
 }
