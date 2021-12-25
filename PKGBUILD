@@ -2,8 +2,8 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-loadlevel
-pkgver=18.0326
-pkgrel=2
+pkgver=21.1218
+pkgrel=1
 pkgdesc="Loading screens for RVGL community tracks."
 url='https://re-volt.io/downloads/packs'
 arch=('any')
@@ -21,9 +21,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_loadlevel"
-
-    # Remove conflicting files present in tracks pack
-    rm -r levels/industry
-
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }

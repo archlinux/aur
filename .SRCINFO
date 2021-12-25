@@ -1,7 +1,7 @@
 pkgbase = rvgl-io-loadlevel
 	pkgdesc = Loading screens for RVGL community tracks.
-	pkgver = 18.0326
-	pkgrel = 2
+	pkgver = 21.1218
+	pkgrel = 1
 	url = https://re-volt.io/downloads/packs
 	arch = any
 	groups = rvgl-community
@@ -13,8 +13,7 @@ pkgbase = rvgl-io-loadlevel
 	optdepends = rvgl-io-tracks-circuit: circuit tracks
 	conflicts = rvgl-loadlevel
 	replaces = rvgl-loadlevel
-	source = rvgl_io_loadlevel::git+https://gitlab.com/re-volt/rvio/loadlevel.git#tag=18.0326
+	source = rvgl_io_loadlevel::git+https://gitlab.com/re-volt/rvio/loadlevel.git#tag=21.1218
 	sha256sums = SKIP
 
 pkgname = rvgl-io-loadlevel
-
