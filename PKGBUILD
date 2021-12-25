@@ -1,15 +1,17 @@
 # Maintainer: Guillaume Hayot ghayot@postblue.info
 pkgname=emulationstation
 _gitname=EmulationStation
-pkgver=2.9.4
-pkgrel=2
+# v2.10.0 didn't have a release package made, use commit
+_gitcommit=c8056701b61b15ac1081e2d01e586e3f48ba8d6a
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/RetroPie/EmulationStation"
 license=('MIT')
 install=emulationstation.install
 depends=('vlc' 'alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'curl' 'libraw' 'libcec' 'rapidjson' 'pugixml')
-makedepends=('cmake' 'boost' 'freetype2' 'eigen' 'curl' 'git')
+makedepends=('cmake' 'boost' 'freetype2' 'curl' 'git')
 optdepends=('ttf-droid: Fallback fonts for Chinese/Japanese/Korean characters'
             'dolphin-emu: GameCube and Wii support'
             'mupen64plus: Nintendo 64 support'
@@ -19,38 +21,52 @@ optdepends=('ttf-droid: Fallback fonts for Chinese/Japanese/Korean characters'
             'ppsspp-headless: PSP support'
             'steam: Steam support')
 conflicts=(emulationstation-git)
-source=("https://github.com/RetroPie/$_gitname/archive/v$pkgver.tar.gz"
-        "https://patch-diff.githubusercontent.com/raw/RetroPie/$_gitname/pull/618.patch"
-        "https://gist.githubusercontent.com/omgitsaheadcrab/9fae969ebad3ee44a52f5ef72037569d/raw/9cf5642e6a20a5d4899f20435d0f51200bc36b28/pugixml.patch"
+source=("git+${url}.git#commit=${_gitcommit}"
+        "install.patch"
+        "pugixml.patch"
         "emulationstation.desktop"
         "emulationstation.png")
-sha256sums=('79452f6c1e8aaebe98c19708b3587a0a45330bf20b3301d556285d5cd756fa4a'
-            '0dcb7fbaf2d17ac109f2e4de1fb9dbd4226278dba9351be90df26c5c931de284'
-            'ca468dcfc59c4c56d84da1823fdcaa33277debb91195d7feffbf74650996233e'
-            '5564803e0a82e132ab507b9cd341b32d1ce5b8be527996fbe13607d90f1dde2c'
+sha256sums=('SKIP'
+            '2608b7de63be4d4d117c2712517e3c40df872f6619f08ac9356f13bdc8c179ab'
+            'e6cb6a134117cb734c69ed86eecd31cfe29b5d52aa3e00b71a614809c1d7e0fe'
+            '56a68a60577d015224d721ab169f1439d1545a0fdcf1c23eeee599dc49ea51c6'
             'ac589d9da5c258226f8de76e99afe2b07ac86030ced90d284d31b51193057f9c')
 
-
 prepare() {
-        rm -rf "${_gitname}-${pkgver}/external/pugixml"
-        rm -rf "${_gitname}-${pkgver}/.gitmodules"
-        patch -d "${_gitname}-${pkgver}" -Np1 -i "${srcdir}/618.patch"
-        patch -d "${_gitname}-${pkgver}" -Np1 -i "${srcdir}/pugixml.patch"
+    cd "${_gitname}"
+    git clean -f
+    git submodule update --init --recursive
+
+    cd "${srcdir}"
+    patch -d "${_gitname}" -Np1 -i "${srcdir}/install.patch"
+    patch -d "${_gitname}" -Np1 -i "${srcdir}/pugixml.patch"
 }
 
 build() {
-    cmake -B "${_gitname}-${pkgver}/build" \
-        -S "${_gitname}-${pkgver}" \
+    # Default to using desktop GL
+    _cmakeflags='-DGL:BOOL=ON'
+
+    if [[ "${CARCH}" = 'armv6h' ]]; then
+        # Raspberry Pi Model 1 only supports embedded GLES
+        _cmakeflags='-DGLES:BOOL=ON -DRPI:BOOL=ON'
+    elif [[ "${CARCH}" == 'armv7h' || "${CARCH}" = 'aarch64' ]]; then
+        # Raspberry Pi Model 2 and up use mesa drivers
+        _cmakeflags='-DUSE_MESA_GLES:BOOL=ON -DRPI:BOOL=ON'
+    fi
+
+    cmake -B "${_gitname}/build" \
+        -S "${_gitname}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        ${_cmakeflags} \
         -Wno-dev -Wno-deprecated \
     ..
-    make -C "${_gitname}-${pkgver}/build" all
+    make -C "${_gitname}/build" all
 }
 
 package() {
-    make -C "${_gitname}-${pkgver}/build" DESTDIR="${pkgdir}" install
-    mv ${pkgdir}/usr/share/EmulationStation/resources/resources/* ${pkgdir}/usr/share/EmulationStation/resources/
-    rmdir ${pkgdir}/usr/share/EmulationStation/resources/resources
+    make -C "${_gitname}/build" DESTDIR="${pkgdir}" install
+    install -Dm644 "$srcdir/emulationstation.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/emulationstation.png"
+    install -Dm644 "$srcdir/emulationstation.desktop" "$pkgdir/usr/share/applications/emulationstation.desktop"
 }
