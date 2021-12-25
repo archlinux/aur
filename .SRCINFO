@@ -1,7 +1,7 @@
 pkgbase = mediawiki-extension-pluggableauth-git
 	pkgdesc = MediaWiki extension providing a framework for creating authentication and authorization extensions
 	pkgver = 5.7.r59.g5757eca
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.mediawiki.org/wiki/Extension:PluggableAuth
 	arch = any
