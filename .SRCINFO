@@ -3,23 +3,13 @@ pkgbase = python-stsci.distutils
 	pkgver = 0.3.7
 	pkgrel = 1
 	url = http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	checkdepends = python2-pytest
-	checkdepends = python2-nose
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = python-d2to1
-	makedepends = python2-d2to1
 	source = https://files.pythonhosted.org/packages/source/s/stsci.distutils/stsci.distutils-0.3.7.tar.gz
 	md5sums = 65c866c0444f6a8effe2d41688606a0c
 
 pkgname = python-stsci.distutils
 	depends = python
 	optdepends = python-stsci.distutils-doc: Documentation for STScI Distutils
-
-pkgname = python2-stsci.distutils
-	depends = python2>=2.7
-	optdepends = python-stsci.distutils-doc: Documentation for STScI Distutils
-
