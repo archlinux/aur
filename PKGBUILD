@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -19,10 +19,11 @@ pkgver() {
 }
 
 build() {
-    mkdir -p build
-    cd build
-    cmake ../zig -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DZIG_PREFER_CLANG_CPP_DYLIB=ON
-    make DESTDIR=.
+    cmake -B build -S zig \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DZIG_PREFER_CLANG_CPP_DYLIB=ON
+    cmake --build build
 }
 
 check() {
@@ -32,5 +33,5 @@ check() {
 
 package() {
     install -Dm644 zig/LICENSE "$pkgdir/usr/share/licenses/$provides/LICENSE"
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
