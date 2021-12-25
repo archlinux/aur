@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-music
-pkgver=21.0609
+pkgver=21.1218
 pkgrel=1
 pkgdesc="Extra music for RVGL community tracks."
 url='https://re-volt.io/downloads/packs'
