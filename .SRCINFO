@@ -1,6 +1,6 @@
 pkgbase = rvgl-io-cars
 	pkgdesc = Additional RVGL cars used for official events.
-	pkgver = 21.0622
+	pkgver = 21.1218
 	pkgrel = 1
 	url = https://re-volt.io/online/cars
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = rvgl-io-cars
 	conflicts = rvgl-superpros
 	replaces = rvgl-cars
 	replaces = rvgl-superpros
-	source = rvgl_io_cars::git+https://gitlab.com/re-volt/rvio/cars.git#tag=21.0622
+	source = rvgl_io_cars::git+https://gitlab.com/re-volt/rvio/cars.git#tag=21.1218
 	sha256sums = SKIP
 
 pkgname = rvgl-io-cars
