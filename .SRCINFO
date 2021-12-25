@@ -8,6 +8,7 @@ pkgbase = matomo-git
 	makedepends = composer
 	makedepends = curl
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = gzip
 	depends = php
 	depends = php-fpm

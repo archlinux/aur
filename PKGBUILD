@@ -13,7 +13,7 @@ arch=("any")
 url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
 depends=("php" "php-fpm" "php-gd")
-makedepends=("composer" "curl" "git" "gzip")
+makedepends=("composer" "curl" "git" "git-lfs" "gzip")
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
 "mariadb: Database"
