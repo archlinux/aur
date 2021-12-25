@@ -1,11 +1,11 @@
 pkgbase = cajviewer
 	pkgdesc = Document Viewer for TEB, CAJ, NH, KDH and PDF format
 	pkgver = 1.0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cajviewer.cnki.net/
 	arch = x86_64
 	license = custom
-	options = !strip
+	depends = qt5-base
 	source = https://download.cnki.net/cajviewer_1.0.3.0_amd64.deb
 	source = cajviewer.sh
 	source = cajviewer.desktop
