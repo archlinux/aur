@@ -1,13 +1,13 @@
 pkgbase = git-delete-merged-branches
 	pkgdesc = Command-line tool to delete merged Git branches.
 	pkgver = 6.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/git-delete-merged-branches/
 	arch = any
 	license = GPL3
 	checkdepends = python-parameterized
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.7.0
 	depends = python-colorama
 	depends = python-prompt-toolkit
 	source = git-delete-merged-branches-6.4.0.tar.gz::https://github.com/hartwork/git-delete-merged-branches/archive/6.4.0.tar.gz

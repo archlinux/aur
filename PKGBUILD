@@ -2,12 +2,12 @@
 
 pkgname=git-delete-merged-branches
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool to delete merged Git branches."
 arch=('any')
 url="https://pypi.org/project/git-delete-merged-branches/"
 license=('GPL3')
-depends=('python' 'python-colorama' 'python-prompt-toolkit')
+depends=('python>=3.7.0' 'python-colorama' 'python-prompt-toolkit')
 makedepends=('python-setuptools')
 checkdepends=('python-parameterized')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hartwork/$pkgname/archive/$pkgver.tar.gz")
