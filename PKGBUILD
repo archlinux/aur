@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-600-gc5a59056
-_version=2.1+600+gc5a59056
+_tag=2.1-601-g28cdd301
+_version=2.1+601+g28cdd301
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
