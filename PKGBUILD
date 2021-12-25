@@ -2,7 +2,7 @@
 pkgname=v2ray-rules-dat-autoupdate
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
@@ -44,9 +44,10 @@ package() {
   install -Dm644 "./geoip.dat" "${pkgdir}/var/lib/${_pkgname}/geoip.dat"
   install -Dm644 "./geosite.dat" "${pkgdir}/var/lib/${_pkgname}/geosite.dat"
 
-  mkdir -p "${pkgdir}/usr/share/"
-  ln -sf "/var/lib/${_pkgname}" "${pkgdir}/usr/share/v2ray"
-  ln -sf "/var/lib/${_pkgname}" "${pkgdir}/usr/share/xray"
+  mkdir -p "${pkgdir}/usr/share/"{v2ray,xray}
+
+  ln -sf "/var/lib/${_pkgname}/"*.dat "${pkgdir}/usr/share/v2ray/"
+  ln -sf "/var/lib/${_pkgname}/"*.dat "${pkgdir}/usr/share/xray/"
 
   install -Dm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "./${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"

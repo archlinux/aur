@@ -1,6 +1,6 @@
 pkgbase = v2ray-rules-dat-autoupdate
 	pkgdesc = Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/v2ray-rules-dat
 	install = v2ray-rules-dat-autoupdate.install
@@ -31,7 +31,7 @@ pkgbase = v2ray-rules-dat-autoupdate
 	source = v2ray-rules-dat-autoupdate.tmpfiles
 	source = v2ray-rules-dat-autoupdate.service
 	source = v2ray-rules-dat-autoupdate.timer
-	sha256sums = fa954de1d86de38ffec91fed6ee0b958ad3fbb42892c6dd6ceeff7db8e3a30c0
+	sha256sums = 171b60ed73b282980460177fb6722ccc2dd80d89bb1aee41e3a4a530a680306d
 	sha256sums = 1fd7c4f89bb0b89520b1615a5d6e1372a90a3b13ecb1c6669825c44cc52169b4
 	sha256sums = d5deeb9e02b2cf6e233da4369bb7d74e06054bd54ee9e62875f3342d7c931dbd
 	sha256sums = 5d0fac85c93516f45281f3e45071f4f98c4a9eadfbd72602129c888c823b79ef
