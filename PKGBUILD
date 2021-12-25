@@ -3,7 +3,7 @@ pkgbase=python-stsci.image
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Image array manipulation functions"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools-scm' 'python-numpy')
 #'python-stsci.sphinxext')
 checkdepends=('python-pytest' 'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6f0fda6eb310c66af83dba23d7a5e1f1')
+md5sums=('34f9a03645fcbbe06f8882ff01aa53d3')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -41,6 +41,7 @@ package_python-stsci.image() {
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__init__.py"
     rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__pycache__"/*
 }
