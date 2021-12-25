@@ -10,7 +10,7 @@ _branch="REL${_mediawiki_mainver/./_}"
 
 pkgname="${_pkgname_base}-git"
 pkgver=1.4.0.r45.g07a1b94
-pkgrel=2
+pkgrel=3
 pkgdesc="MediaWiki extension for selective cache disabling"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Extension:${_extname}"
@@ -34,5 +34,8 @@ package()
 	local ext_dir="/usr/share/webapps/mediawiki/extensions/${_extname}"
 
 	install -d -m755 "${pkgdir}${ext_dir}"
-	cp -a "$_extname"/* "${pkgdir}${ext_dir}/"
+	cd "${_extname}"
+	find . -mindepth 1 -maxdepth 1 -regextype posix-extended \
+		\! -regex './\.git(|ignore|review)' \
+		-exec cp -RP '{}' "${pkgdir}${ext_dir}/" \;
 }
