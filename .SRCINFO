@@ -1,7 +1,7 @@
 pkgbase = multimc5
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 0.6.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://multimc.org/
 	arch = i686
 	arch = x86_64

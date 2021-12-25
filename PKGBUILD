@@ -9,7 +9,7 @@ _pkgname=multimc
 pkgver=0.6.14
 _nbtplusplusver=dc72a20b7efd304d12af2025223fad07b4b78464
 _quazipver=b1a72ac0bb5a732bf887a535ab75c6f9bedb6b6b
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
@@ -79,7 +79,6 @@ build() {
     -DLauncher_LAYOUT=lin-system \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_SHARE_DEST_DIR="share/${_pkgname}" \
-    -DLauncher_LIBRARY_DEST_DIR="lib/${_pkgname}" \
     ..
   make
 }
