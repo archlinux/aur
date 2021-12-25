@@ -1,0 +1,14 @@
+pkgbase = minetest-builda-city
+	pkgdesc = Your job is to build a city, so that you can supply it with electricity! Press I ingame for help.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Splizard/buildacity/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	noextract = buildacity-0.3.2.zip
+	options = !strip
+	source = buildacity-0.3.2.zip::https://content.minetest.net/packages/Splizard/buildacity/releases/10209/download/
+	sha256sums = 1fd094996c4992c6e870478c888fbc46384c8bea0f89c17fd2a39065ee4361cf
+
+pkgname = minetest-builda-city
