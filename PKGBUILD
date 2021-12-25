@@ -2,12 +2,12 @@
 pkgname=minetest-proxima-survival
 _pkgname=proxima_survival
 _pkgauthor=debiankaios
-pkgver=0.7
-_cdbrel=9964
+pkgver=0.7.1
+_cdbrel=10242
 pkgrel=1
 pkgdesc="Survival on Proxima Centauri B. Work in Progress! "
 license=("GPLv3")
-sha256sums=('a84bc61b464561ad2d25087760b6924f835840554943829aee185e6a5209dd4e')
+sha256sums=('68d706c59b85535946dec1e0a9c1ff9da1f960a98a75995e151806b5368af0b9')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
