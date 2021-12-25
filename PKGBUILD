@@ -10,7 +10,7 @@ _SequenceParsing_commit=103c528347ebb2dd0ff5d79b5cee24bbcf938ce0
 _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=natron-compositor
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
@@ -36,17 +36,15 @@ source=("${_pkgname}.tar.gz::${_url}/${_pkgname%-*}/archive/refs/tags/v${pkgver}
         "google-mock-${_google_mock_commit}.tar.gz::${_url}/google-mock/archive/${_google_mock_commit}.tar.gz"
         "google-test-${_google_test_commit}.tar.gz::${_url}/google-test/archive/${_google_test_commit}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
-        "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz"
-        "config.pri")
-sha512sums=('e0cb8a28a90b66201e5ab098561fbdfe131e49aa2034e08a928639eaab84d6e9b1ca60e7a987f89f2365d13d31516911ae696df6813f759f8d288ded95413dc0'
-            '0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5'
+	"tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
+sha512sums=('e8382ea04d6fe7b4484d2405b6fef32f21cce37d6a4b50c89db4205b91a19490530008efe90c4373ff3e580d696f258c413e47873cad6a4840a3221ecc27096f'
+            '624530af417821d759358ccfc45ba7ba10890fd115bbfef3e3fa61f486414fe61f39bfce8593f7ab84ee3d5ed3db05149d614f1407735fd8d6529894996103fa'
             '1e2c20a2ccc597aec8c69352f2b0533f75afcceda427247346b64752ce0de82631ab89f47ff182c326e12d3fce2efda8ee846d6768cb8cfcb27e3da6e2399e78'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
+	    'SKIP')
 
 prepare() {
   mv "OpenColorIO-Configs-Natron-v${pkgver%.*}/" \
@@ -66,8 +64,10 @@ prepare() {
   tar -xzf "openfx-${_pkgname}.tar.gz" --strip 1 \
       -C   "${_pkgname}/libs/OpenFX/"
 
-  mv "config.pri" \
-     "${_pkgname}/config.pri"
+#  mv "config.pri" \
+#     "${_pkgname}/config.pri"
+  mv "${_pkgname}/build-configs/arch-linux/config.pri" \
+     "${_pkgname}"
 }
 
 build() {
