@@ -4,7 +4,7 @@ pkgdesc="ROS - camera_calibration allows easy calibration of monocular or stereo
 url='https://wiki.ros.org/camera_calibration'
 
 pkgname='ros-noetic-camera-calibration'
-pkgver='1.15.3'
+pkgver='1.16.0'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -34,7 +34,7 @@ depends=(
 
 _dir="image_pipeline-${pkgver}/camera_calibration"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
-sha256sums=('66ad6365b6f5c29a38ccde889381f50709ff273a1725e813843655f198d4b48b')
+sha256sums=('310004d402930a059bb2c4811301e6f8aabc517143d094662de7e047e6e2b429')
 
 build() {
 	# Use ROS environment variables.
