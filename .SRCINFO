@@ -1,11 +1,11 @@
 pkgbase = otf-etbb
 	pkgdesc = An expansion of Edward Tufte’s ET-Bembo family
-	pkgver = 1.054
+	pkgver = 1.055
 	pkgrel = 1
 	url = https://www.ctan.org/pkg/etbb
 	arch = any
 	license = MIT
 	source = http://mirrors.ctan.org/fonts/etbb.zip
-	sha256sums = a2c45a35ce97e7137cbd2bb1655fd25583012751509ddcc52d6a6af3d7b465d2
+	sha256sums = bd75cd0db6bceb6d7e7284f12bfa66e017cbe37cd2d2b46a866e5eea80776897
 
 pkgname = otf-etbb
