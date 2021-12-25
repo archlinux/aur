@@ -1,8 +1,8 @@
 # Maintainer: Trivernis <trivernis+aur at protonmail dot com>
 
 pkgname=mediarepo
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='A tag based media management tool for images, videos, audio and more'
 arch=(x86_64)
 url=https://github.com/trivernis/mediarepo-ui
@@ -16,7 +16,7 @@ source=(
   mediarepo.desktop
 )
 sha512sums=(
-  'ed69dd3599508a8632904d253f2c579f82b4011bb7544b4f155e9be6a7472f281885ded55cf8be259d4096456e9a59d1db55c377669b85eca6cf1a056d214c93'
+  '23f39392ac030405a36cedb7ee8425e2666442588118674c08ff7d1f504f82e3d9932c198783382e36fb8557cc6044da89ebf98396a1dee8e2f9fde1cd0bc2b7'
   'adc16e145735f69a2ff11ca96eae8cff5d21272ba889344757503c3615650d6a05da74d2416d684aa7663d438d2c0ddbe692730abed633ea16fa2f3b6bc296c4'
 )
 
