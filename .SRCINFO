@@ -1,7 +1,7 @@
 pkgbase = chatterino2-7tv-git
 	pkgdesc = A fork of Chatterino2 with built-in support for 7tv emotes
-	pkgver = r3358.31e6ea46
-	pkgrel = 1
+	pkgver = r3459.29c731c2
+	pkgrel = 2
 	url = https://github.com/SevenTV/chatterino7
 	install = chatterino2-7tv-git.install
 	arch = any
