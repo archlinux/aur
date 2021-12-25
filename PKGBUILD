@@ -1,7 +1,7 @@
 # Maintainer: Cleber Matheus <clebermatheus@outlook.com>
 
 pkgname=vpncloud
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/dswd/vpncloud/archive/re
 		vpncloud@.service)
 backup=(etc/vpncloud/example.net.disabled)
 noextract=()
-sha256sums=('a53a320105563597fabdfba5e623afe86d10a1e1c9c967da8f8ac6ea155a2919'
+sha256sums=('b1f3ee63458899d43ca3515322246ad8a2a5a5de6cc9da84927f486e110d9789'
             '5f6bc9bd69535ed4c7786cfc6b385ab1c01cffafa4f57d34619247b225c4f13f')
 
 prepare() {
