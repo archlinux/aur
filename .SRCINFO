@@ -1,0 +1,14 @@
+pkgbase = minetest-balloonair
+	pkgdesc = A hot air balloon game created for the 2021 Minetest GAME JAM.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://content.minetest.net/packages/NO11/balloonair/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	noextract = balloonair-1.0.0.zip
+	options = !strip
+	source = balloonair-1.0.0.zip::https://content.minetest.net/packages/NO11/balloonair/releases/10150/download/
+	sha256sums = 0baf7a142884f181db87d87a7eec7c0daeccbf21467e2ffc2bfd0a8b928dc3af
+
+pkgname = minetest-balloonair
