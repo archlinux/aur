@@ -5,8 +5,8 @@ pkgbase = ttf-squadaone
 	url = https://fonts.google.com/specimen/Squada+One
 	arch = any
 	license = custom:SIL Open Font License
-	source = https://github.com/google/fonts/raw/${_gitver}/ofl/${_fontname}/SquadaOne-Regular.ttf
-	source = https://github.com/google/fonts/raw/${_gitver}/ofl/${_fontname}/OFL.txt
+	source = https://github.com/google/fonts/raw/633ebadbf5280a439a49ee831ab9446093b27f62/ofl/squadaone/SquadaOne-Regular.ttf
+	source = https://github.com/google/fonts/raw/633ebadbf5280a439a49ee831ab9446093b27f62/ofl/squadaone/OFL.txt
 	sha256sums = dbbc06a0735155910c05d5f65878cab3dca009a3c43b7bb837c6385c09c83eec
 	sha256sums = 8c409bf0d41e4cee2d8256595c09cd1f760507a76d6a4431ca8a2815bb091618
 
