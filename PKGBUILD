@@ -1,6 +1,6 @@
 # Maintainer: Leo <i@setuid0.dev>
 
-_rr_ver=2.6.2
+_rr_ver=2.6.3
 _binary_ver=2.6.6
 _plugins_ver=2.6.7
 
@@ -21,7 +21,7 @@ source=(
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	'963371760f2346fb3a8775a4a389a239a6c74d38cd623a761083921a958e2dd0'
+	'e0c29b8eb3f05721f4483594e7c735253a6cb118bc97e10c4c6b6ddba58ba501'
 	'6aed8ca0b8eca5789734b26db1716a71c95fec6f16b7407c7a3a320d81e362b8'
 	'1a0e31f5d147491f63a77b91da47e429c2a4b2af081b18830ba98c7019329e89'
 	SKIP
