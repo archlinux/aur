@@ -13,10 +13,10 @@ case $number in
 		echo "なに"
 	;;
 	2)
-		echo "なにイーツ！"
+		echo "なにイーツ！！"
 	;;
 	*)
 		echo "Somebody was too dumb to count. Report it to @derberg:matrix.org"
 esac
 sleep 3
-nano $1
+nano "$@"
