@@ -1,7 +1,7 @@
 pkgbase = python-can
 	pkgdesc = Python library to access CAN bus via SocketCAN, Kvaser's CANLIB, or CAN over Serial
 	pkgver = 3.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/python-can
 	arch = any
 	license = LGPLv3
@@ -13,4 +13,3 @@ pkgbase = python-can
 	sha512sums = cc4084c0348e1e0ef2372ebd863f2dfc85cae7315beb15d68f6e7d9531f05318d4307624bca13b3ae711ce219d3434183cd14d758d6073bf03db69d347eb7e6c
 
 pkgname = python-can
-
