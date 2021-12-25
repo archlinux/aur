@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.15.4 Kernel Configuration
+# Linux/um 5.15.11 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -1065,7 +1065,6 @@ CONFIG_HID_APPLE=y
 # CONFIG_HID_AUREAL is not set
 CONFIG_HID_BELKIN=y
 CONFIG_HID_CHERRY=y
-CONFIG_HID_CHICONY=y
 # CONFIG_HID_COUGAR is not set
 # CONFIG_HID_MACALLY is not set
 # CONFIG_HID_CMEDIA is not set
@@ -1106,7 +1105,6 @@ CONFIG_HID_MONTEREY=y
 # CONFIG_HID_PLAYSTATION is not set
 # CONFIG_HID_PRIMAX is not set
 # CONFIG_HID_SAITEK is not set
-# CONFIG_HID_SAMSUNG is not set
 # CONFIG_HID_SEMITEK is not set
 # CONFIG_HID_SPEEDLINK is not set
 # CONFIG_HID_STEAM is not set

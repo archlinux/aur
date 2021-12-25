@@ -1,6 +1,6 @@
 pkgbase = linux-usermode-nokmod
 	pkgdesc = User mode Linux kernel, without modules
-	pkgver = 5.15.4
+	pkgver = 5.15.11
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = linux-usermode-nokmod
 	makedepends = bc
 	makedepends = inetutils
 	depends = coreutils
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.4.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.4.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.11.tar.sign
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 549d0fb75e65f6158e6f4becc648f249d386843da0e1211460bde8b1ea99cbca
+	sha256sums = c1178b7e7e12d91292e670191268e3fe9a3563faf899eef43e468577e973a1ce
 	sha256sums = SKIP
-	sha256sums = b8081bd08abd333b5a41077ccef43c201f565c4bb6fa705392a05f49a6d21bd0
+	sha256sums = 425fcbf244998ad63cb9dd27513ffad955f82d9912a03dfe1f7a8ab5df1c78fc
 
 pkgname = linux-usermode-nokmod
