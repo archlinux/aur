@@ -1,0 +1,14 @@
+pkgbase = minetest-towerdefense
+	pkgdesc = WIP Tower Defense Game
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Aurailus/lexa/
+	arch = any
+	license = CC-BY-4.0
+	depends = minetest-common
+	noextract = lexa-0.0.4.zip
+	options = !strip
+	source = lexa-0.0.4.zip::https://content.minetest.net/packages/Aurailus/lexa/releases/10216/download/
+	sha256sums = de9c60fc83ef1a11425e3c909ecad395f1797654e42c16070c2b1b07b00bcbf4
+
+pkgname = minetest-towerdefense
