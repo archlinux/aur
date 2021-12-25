@@ -1,0 +1,14 @@
+pkgbase = minetest-holiday-horrors
+	pkgdesc = Survive the holidays!
+	pkgver = 2021.12.22
+	pkgrel = 1
+	url = https://content.minetest.net/packages/sunnysideup/holidayhorrors/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	noextract = holidayhorrors-2021.12.22.zip
+	options = !strip
+	source = holidayhorrors-2021.12.22.zip::https://content.minetest.net/packages/sunnysideup/holidayhorrors/releases/10179/download/
+	sha256sums = e5c7de01b11966aae6efc32e4ae8e27c979f592b2ce1d77d44807bcb870d4f1c
+
+pkgname = minetest-holiday-horrors
