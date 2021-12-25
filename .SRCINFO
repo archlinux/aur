@@ -1,0 +1,14 @@
+pkgbase = minetest-modular-portals
+	pkgdesc = Explore a strange hall filled with portals
+	pkgver = 10101
+	pkgrel = 1
+	url = https://content.minetest.net/packages/UnbrokenUnworn/modular_portals/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	noextract = modular_portals-10101.zip
+	options = !strip
+	source = modular_portals-10101.zip::https://content.minetest.net/packages/UnbrokenUnworn/modular_portals/releases/10101/download/
+	sha256sums = 8f76e2f76b93d43615080ab5b763aeff698f8ebf71eb578982eef162d999a80d
+
+pkgname = minetest-modular-portals
