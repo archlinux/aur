@@ -1,7 +1,7 @@
 pkgbase = corerenamer
 	pkgdesc = A batch file renamer from the C Suite
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corerenamer
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,7 @@ pkgbase = corerenamer
 	makedepends = ninja
 	depends = qt5-base
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/coreapps/corerenamer/-/archive/v4.2.0/corerenamer-v4.2.0.tar.gz
-	md5sums = b00e4e1d2f151aa10ade6c862ca408b6
+	source = https://gitlab.com/cubocore/coreapps/corerenamer/-/archive/v4.3.0/corerenamer-v4.3.0.tar.gz
+	md5sums = 20b53feeabd956a0e3be74fbfbf53bfe
 
 pkgname = corerenamer
-
