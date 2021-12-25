@@ -1,7 +1,7 @@
 pkgbase = mediawiki-extension-ldapprovider-git
 	pkgdesc = MediaWiki extension to provide an LDAP infrastructure
-	pkgver = r142.155fa9b
-	pkgrel = 3
+	pkgver = r208.8fa6a15
+	pkgrel = 2
 	url = https://www.mediawiki.org/wiki/Extension:LDAPProvider
 	arch = any
 	license = GPL
@@ -13,4 +13,3 @@ pkgbase = mediawiki-extension-ldapprovider-git
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-ldapprovider-git
-
