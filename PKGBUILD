@@ -5,7 +5,7 @@ _ltspice_ver_roman="XVII"
 _ltspice_ver="17"
 
 pkgname=ltspice
-pkgver=17.20211219.4
+pkgver=17.20211222.2
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("$pkgname.sh"
         "$pkgname-help.sh")
 sha256sums=('7b73449a9b7de53b65d132a40fdee3c8706181a7b699c362e399e67c92bedc58'
             'ff14cff95172bbf685bc39801910edd70ee9499dee450270529c043946cc591c')
-_curl_opts="--silent --connect-timeout 60 --retry 3 --retry-delay 1"
+_curl_opts="-s --connect-timeout 60 --retry 3 --retry-delay 1"
 
 _download_file() {
     file=$1
@@ -54,7 +54,7 @@ _download_file() {
         # download uncompressed file if compressed was not found
         if [ ! -s "$output" ]; then
             url="${_update_url}/${file}"
-            curl $_curl_opts $url > $output && curlcode=$? || curlcode=$?
+            curl  $_curl_opts -S $url > $output && curlcode=$? || curlcode=$?
         fi
 
         if [ ! -s "$output" ] || [ $curlcode -ne 0 ]; then
