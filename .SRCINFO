@@ -1,6 +1,6 @@
 pkgbase = rvgl-io-cars-bonus
 	pkgdesc = Additional RVGL cars used for special events.
-	pkgver = 21.0622
+	pkgver = 21.1223
 	pkgrel = 1
 	url = https://re-volt.io/online/cars
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = rvgl-io-cars-bonus
 	optdepends = rvgl-io-skins-bonus: additional car skins
 	conflicts = rvgl-cars-bonus
 	replaces = rvgl-cars-bonus
-	source = rvgl_io_cars_bonus::git+https://gitlab.com/re-volt/rvio/bonus_cars.git#tag=21.0622
+	source = rvgl_io_cars_bonus::git+https://gitlab.com/re-volt/rvio/bonus_cars.git#tag=21.1223
 	sha256sums = SKIP
 
 pkgname = rvgl-io-cars-bonus

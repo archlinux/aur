@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-cars-bonus
-pkgver=21.0622
+pkgver=21.1223
 pkgrel=1
 pkgdesc="Additional RVGL cars used for special events."
 url='https://re-volt.io/online/cars'
@@ -19,14 +19,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_cars_bonus"
-
-    # Remove conflicting files present in cars pack
-    rm -r cars/badbis
-    rm -r cars/dromechamp
-    rm -r cars/kyarus
-    rm -r cars/lib13c_hotknife
-    rm -r cars/lib9a_ignit
-    rm -r cars/reliance
-
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
