@@ -2,7 +2,7 @@ pkgdesc="ROS - rqt_topic provides a GUI plugin for displaying debug information 
 url='https://wiki.ros.org/rqt_topic'
 
 pkgname='ros-noetic-rqt-topic'
-pkgver='0.4.12'
+pkgver='0.4.13'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -32,7 +32,7 @@ depends=(
 
 _dir="rqt_topic-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_topic/archive/${pkgver}.tar.gz")
-sha256sums=('4fed90cac465351061a4439cdfee217ed15cd65ee4b7662aa35e7fe16ed01402')
+sha256sums=('069b862dca74bdf5f45f767134e8c633af13d220490ca54a1add5ab9e15606b8')
 
 build() {
     # Use ROS environment variables.
