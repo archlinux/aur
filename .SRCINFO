@@ -1,6 +1,6 @@
 pkgbase = tela-icon-theme
 	pkgdesc = A flat colorful design icon theme.
-	pkgver = 2021.11.05
+	pkgver = 2021.12.25
 	pkgrel = 1
 	url = https://www.pling.com/p/1279924
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = tela-icon-theme
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	options = !strip
-	source = tela-icon-theme-2021-11-05.tar.gz::https://github.com/vinceliuice/Tela-icon-theme/archive/2021-11-05.tar.gz
-	sha256sums = 6948f2ee1d2ea6f5d248e5cf158f1dbdf6f3f7f86bf5883e478e0b01d452ebc2
+	source = tela-icon-theme-2021-12-25.tar.gz::https://github.com/vinceliuice/Tela-icon-theme/archive/2021-12-25.tar.gz
+	sha256sums = c627ec4265a2a907ef5cefbd38f8bee2a229446fc07b7245cbbe8749e8b64169
 
 pkgname = tela-icon-theme
