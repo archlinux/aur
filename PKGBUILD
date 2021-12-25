@@ -3,13 +3,14 @@
 pkgname=gnome-console
 _pkgname=console
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple user-friendly terminal emulator for the GNOME desktop"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/console"
 license=('GPL3')
-depends=('glib2' 'gtk3' 'libgtop' 'libhandy' 'vte3')
-makedepends=('meson')
+depends=('libgtop' 'libhandy' 'vte3')
+makedepends=('meson' 'sassc')
+optdepends=('libnautilus-extension')
 checkdepends=('appstream-glib')
 conflicts=('kgx')
 replaces=('kgx')
