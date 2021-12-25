@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
 _LLL_VER=5.15
-_LLL_SUBVER=4
+_LLL_SUBVER=11
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -93,7 +93,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'c33801f2d4ae027b5cb6ba49ff7daacc1ac25243cefcc0a4e6e358f5d36dca5b'
+            'bdb35ece2dd0f6d8225947b63539e70c8fc16bd28f03395d590515d8187f03c4'
             '4f49c13241ad455a77593b927c40704029354f405e56dd0a0bb014b71391524c'
             'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c'
             '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
@@ -199,7 +199,11 @@ prepare() {
   fi
 
   if [ "$_Bisect_debug" != "off" ]; then
-    make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    if [ x"$USER" == x"builduser" ]; then
+        SUDO_USER=builduser modprobed-db
+        SUDO_USER=builduser modprobed-db store # for makechrootpkg
+    fi
+    yes "" | make LSMOD=$HOME/.config/modprobed.db localmodconfig
   fi
 
   # rewrite configuration
