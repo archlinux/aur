@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=CAJViewer 7.2
-Exec=/usr/bin/cajviewer
 Type=Application
-StartupNotify=true
+Name=CAJViewer
+Comment=CAJViewer for Linux
 Icon=cajviewer
-StartupWMClass=cajvieweru.exe
-
+Categories=Office;
+MimeType=application/caj;application/kdh;application/nh;application/teb;
+# Exec=/opt/cajviewer/bin/start.sh %f
+Exec=cajviewer %f
