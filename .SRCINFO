@@ -1,0 +1,14 @@
+pkgbase = minetest-luckydude
+	pkgdesc = Can you guess which cube to hit last?
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://content.minetest.net/packages/xenonca/luckydude/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = luckydude-1.3.zip
+	options = !strip
+	source = luckydude-1.3.zip::https://content.minetest.net/packages/xenonca/luckydude/releases/10139/download/
+	sha256sums = 2382fec964b96069daf84ec9828d864abdcc6a17e1b0f6a5b38236c9f50ce0bc
+
+pkgname = minetest-luckydude
