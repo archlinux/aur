@@ -1,0 +1,14 @@
+pkgbase = minetest-snake-3d
+	pkgdesc = The classical Snake game extended to 3 dimensions.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://content.minetest.net/packages/cx384/snake_3d/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = snake_3d-1.1.zip
+	options = !strip
+	source = snake_3d-1.1.zip::https://content.minetest.net/packages/cx384/snake_3d/releases/10140/download/
+	sha256sums = d25d81192f7140a73196affe4d052ec8d47d7228d1cdc3be3d678f06a07f7673
+
+pkgname = minetest-snake-3d
