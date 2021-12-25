@@ -1,0 +1,14 @@
+pkgbase = minetest-parkour
+	pkgdesc = Parkour game!
+	pkgver = 10197
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Emojiminetest/parkour/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = parkour-10197.zip
+	options = !strip
+	source = parkour-10197.zip::https://content.minetest.net/packages/Emojiminetest/parkour/releases/10197/download/
+	sha256sums = 7b8843be82ed5fb90d5e39d9ea411034f6219d069c5169ab79fa48ee767039c0
+
+pkgname = minetest-parkour
