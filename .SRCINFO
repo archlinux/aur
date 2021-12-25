@@ -1,7 +1,7 @@
 pkgbase = corestuff
 	pkgdesc = An activity viewer from the C Suite
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corestuff
 	arch = x86_64
 	arch = aarch64
@@ -15,8 +15,7 @@ pkgbase = corestuff
 	depends = libcsys>=2.7.1
 	depends = libcprime>=2.7.1
 	replaces = corebox
-	source = https://gitlab.com/cubocore/coreapps/corestuff/-/archive/v4.2.0/corestuff-v4.2.0.tar.gz
-	md5sums = 728ee1f869955c3bd25811d89b2bfb12
+	source = https://gitlab.com/cubocore/coreapps/corestuff/-/archive/v4.3.0/corestuff-v4.3.0.tar.gz
+	md5sums = bbcbfa3b8f9f085fe9232f8f81ab53b3
 
 pkgname = corestuff
-
