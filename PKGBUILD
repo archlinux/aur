@@ -4,7 +4,7 @@
 
 pkgname=dev86
 pkgver=0.16.21
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple C compiler to generate 8086 code"
 arch=('x86_64')
 url='https://v3.sk/~lkundrak/dev86/'
@@ -19,18 +19,24 @@ sha256sums=('234b110e6df9b7f6843e2ee53473127c2211243a16748f229fc0127845f68d94'
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
+
   patch -p1 <"$srcdir"/mandir.patch
 }
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
+
+  export CFLAGS+=' -ffat-lto-objects'
+
   make PREFIX=/usr DIST="$pkgdir"
 }
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
+
   mkdir -p "$pkgdir"/usr/share/man/man1
   make install-all DIST="$pkgdir"
+
   # remove all the stuff supplied by bin86
   rm "$pkgdir"/usr/bin/{as,ld,nm,objdump,size}86
   rm "$pkgdir"/usr/share/man/man1/{as,ld}86.1
