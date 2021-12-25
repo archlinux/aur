@@ -1,6 +1,6 @@
 pkgbase = obs-source-dock
 	pkgdesc = Plugin for OBS Studio allowing you to create a Dock for a source, which lets you interact, see audio levels, change volume and control media
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/source-dock.1317/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = obs-source-dock
 	makedepends = git
 	makedepends = libxcomposite
 	depends = obs-studio>=27.1.1
-	source = obs-source-dock::git+https://github.com/exeldro/obs-source-dock#commit=0f36012cf7bdafba6af7e6bc30a8d52ad242ff3e
+	source = obs-source-dock::git+https://github.com/exeldro/obs-source-dock#commit=153efbaaf1b9e0986cee6cc5ec2e97eed4c48ee7
 	source = obs-studio-27.1.1.tar.gz::https://github.com/obsproject/obs-studio/archive/27.1.1.tar.gz
 	sha256sums = SKIP
 	sha256sums = 2bbc0ea21138280b6d38369b259e2a383b2e0628723da191259488aa4c8625b5
