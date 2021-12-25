@@ -17,8 +17,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/ReactGame/publish"
-
-	mv ReactGame reactgame
-	install -Dm755 reactgame "$pkgdir/usr/bin/reactgame"
+	cd "$srcdir/ReactGame"
+	make install DESTDIR="$pkgdir/usr/bin"
 }
