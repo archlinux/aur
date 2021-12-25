@@ -21,6 +21,7 @@ license=('GPL')
 depends=(
     'dconf'
     'gtk3'
+    'libb2'
     'nettle'
 )
 
