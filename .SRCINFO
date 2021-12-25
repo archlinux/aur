@@ -1,0 +1,14 @@
+pkgbase = minetest-coconut-collection
+	pkgdesc = A game heavily inspired by Coconut Hut for the Ouya.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://content.minetest.net/packages/MCL/coconut_collection/
+	arch = any
+	license = GPLv2
+	depends = minetest-common
+	noextract = coconut_collection-1.0.0.zip
+	options = !strip
+	source = coconut_collection-1.0.0.zip::https://content.minetest.net/packages/MCL/coconut_collection/releases/10193/download/
+	sha256sums = 17cfd26515c63f093761a468af565f9eff3684c60dee1bf45e38f223bcdf154e
+
+pkgname = minetest-coconut-collection
