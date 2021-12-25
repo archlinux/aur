@@ -2,7 +2,7 @@
 pkgname=syphon-bin
 _pkgname=syphon
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Privacy-centric Matrix client"
 arch=('x86_64')
 url="https://github.com/syphon-org/syphon"
@@ -14,8 +14,9 @@ sha256sums=('9c9f4c09ad1e0484c87ac83302c476513c92383b4afba3a2452cc23822359368')
 
 package() {
     install -d ${pkgdir}/opt/${_pkgname}
-    install -d ${pkgdir}/usr/bin
+    install -d ${pkgdir}/usr/{bin,lib}
     cp -r ${srcdir}/{data,lib,syphon} ${pkgdir}/opt/${_pkgname}
+    cp ${srcdir}/lib/libjsoncpp.so.1* ${pkgdir}/usr/lib/
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/bin/sh
 exec /opt/${_pkgname}/${_pkgname} "\$@"
