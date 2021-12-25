@@ -1,4 +1,4 @@
-pkgbase = geth-git
+pkgbase = go-etherium-latest
 	pkgdesc = Official Go implementation of the Ethereum protocol
 	pkgver = 1.10.14
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = geth-git
 	source = https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.14-11a3a350.tar.gz
 	sha256sums = SKIP
 
-pkgname = geth-git
+pkgname = go-etherium-latest
