@@ -1,7 +1,7 @@
 pkgbase = gerbera-git
 	pkgdesc = UPnP Media Server (Based on MediaTomb)
 	pkgver = 1.9.2.133+r4771.20211106.984c14d9
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/gerbera/gerbera
 	install = gerbera.install
