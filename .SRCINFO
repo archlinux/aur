@@ -1,7 +1,7 @@
 pkgbase = canonical-multipass
 	pkgdesc = Multipass is a lightweight VM manager for Linux, Windows and macOS.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://multipass.run
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,7 @@ pkgbase = canonical-multipass
 	source = git+https://github.com/Skycoder42/QHotkey.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/pocoproject/poco.git
+	source = multipassd.service
 	source = libssh-static.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -29,6 +30,7 @@ pkgbase = canonical-multipass
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59
 	sha256sums = 8cc982b96a800c9779134a00e741c472da7c8e11183931ec30b184c314364dde
 
 pkgname = canonical-multipass

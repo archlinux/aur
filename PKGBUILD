@@ -3,7 +3,7 @@
 pkgname=canonical-multipass
 _realname=multipass
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
 url="https://multipass.run"
@@ -21,10 +21,9 @@ source=("git+https://github.com/canonical/${_realname}.git#tag=v${pkgver}"
         git+https://github.com/Skycoder42/QHotkey.git
         git+https://github.com/fmtlib/fmt.git
         git+https://github.com/pocoproject/poco.git
+        multipassd.service
         libssh-static.patch
 )
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-    "8cc982b96a800c9779134a00e741c472da7c8e11183931ec30b184c314364dde")
 
 prepare() {
   cd "${srcdir}/${_realname}"
@@ -63,4 +62,18 @@ package() {
   make DESTDIR="$pkgdir" install
   # not needed in package
   rm "$pkgdir"/usr/lib/libssh.a
+  install -Dm644 "$srcdir"/multipassd.service "$pkgdir"/usr/lib/systemd/system/multipassd.service
 }
+
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59'
+            '8cc982b96a800c9779134a00e741c472da7c8e11183931ec30b184c314364dde')

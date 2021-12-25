@@ -1,0 +1,14 @@
+[Unit]
+Description=Multipass is a mini-cloud on your workstation using native hypervisors
+
+[Service]
+Type=exec
+StateDirectory=multipassd
+Environment=HOME=/var/lib/multipassd
+Environment=DAEMON_CONFIG_HOME=/var/lib/multipassd
+ExecStart=/usr/bin/multipassd
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
