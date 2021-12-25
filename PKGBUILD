@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins
-pkgver=21.0609
+pkgver=21.1223
 pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
 url='https://re-volt.io/downloads/packs'
@@ -19,11 +19,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_skins"
-
-    # Remove conflicting files present in cars pack
-    rm cars/phim_calcure/cardansno.bmp
-    rm cars/phim_calcure/cardansno2.bmp
-    rm cars/phim_calcure/careu54.bmp
-
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
