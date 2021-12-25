@@ -1,6 +1,6 @@
 pkgbase = zeal-git
 	pkgdesc = A simple documentation browser
-	pkgver = 0.6.1.r191.g803db6a
+	pkgver = 0.6.1.r228.g763edca
 	pkgrel = 1
 	url = https://zealdocs.org/
 	arch = aarch64
@@ -20,4 +20,3 @@ pkgbase = zeal-git
 	sha1sums = SKIP
 
 pkgname = zeal-git
-
