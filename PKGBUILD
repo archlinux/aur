@@ -4,9 +4,9 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='https://wiki.ros.org/cv_bridge'
 
 pkgname='ros-noetic-cv-bridge'
-pkgver='1.15.0'
+pkgver='1.16.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -40,7 +40,7 @@ depends=(
 
 _dir="vision_opencv-${pkgver}/cv_bridge"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
-sha256sums=('dc7faaefeb6dfacbea9479e074a544c9f4df690e0b6910155df8542507b5604c')
+sha256sums=('7b78547be0967814c06fb395d8453e53ddf505bb973adcf801237cca0e1adb07')
 
 build() {
 	# Use ROS environment variables.

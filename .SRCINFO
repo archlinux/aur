@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-cv-bridge
 	pkgdesc = ROS - This contains CvBridge, which converts between ROS Image messages and OpenCV images.
-	pkgver = 1.15.0
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://wiki.ros.org/cv_bridge
 	arch = i686
 	arch = x86_64
@@ -24,8 +24,7 @@ pkgbase = ros-noetic-cv-bridge
 	depends = boost
 	depends = opencv
 	depends = python
-	source = ros-noetic-cv-bridge-1.15.0.tar.gz::https://github.com/ros-perception/vision_opencv/archive/1.15.0.tar.gz
-	sha256sums = dc7faaefeb6dfacbea9479e074a544c9f4df690e0b6910155df8542507b5604c
+	source = ros-noetic-cv-bridge-1.16.0.tar.gz::https://github.com/ros-perception/vision_opencv/archive/1.16.0.tar.gz
+	sha256sums = 7b78547be0967814c06fb395d8453e53ddf505bb973adcf801237cca0e1adb07
 
 pkgname = ros-noetic-cv-bridge
-
