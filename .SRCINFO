@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-image-rotate
 	pkgdesc = ROS - Contains a node that rotates an image stream in a way that minimizes the angle between a vector in some arbitrary frame and a vector in the camera frame.
-	pkgver = 1.15.3
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://wiki.ros.org/image_rotate
 	arch = i686
@@ -30,8 +30,7 @@ pkgbase = ros-noetic-image-rotate
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-tf2
 	depends = ros-noetic-image-transport
-	source = ros-noetic-image-rotate-1.15.3.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.15.3.tar.gz
-	sha256sums = 66ad6365b6f5c29a38ccde889381f50709ff273a1725e813843655f198d4b48b
+	source = ros-noetic-image-rotate-1.16.0.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.16.0.tar.gz
+	sha256sums = 310004d402930a059bb2c4811301e6f8aabc517143d094662de7e047e6e2b429
 
 pkgname = ros-noetic-image-rotate
-
