@@ -1,15 +1,14 @@
 pkgbase = nodejs-ember-cli
 	pkgdesc = The ember command line interface
-	pkgver = 3.17.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = http://www.ember-cli.com/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = ember-cli-3.17.0.tgz
-	source = https://registry.npmjs.org/ember-cli/-/ember-cli-3.17.0.tgz
-	sha256sums = 4f20ec551e9197d731d3455cc272f71012a1a78fbec4f66da308beb9c140d579
+	noextract = ember-cli-4.0.1.tgz
+	source = https://registry.npmjs.org/ember-cli/-/ember-cli-4.0.1.tgz
+	sha256sums = 2d02343b1294ccd686ebc875ec78591b25d0d6c14cc3653b0bd999623f163c8c
 
 pkgname = nodejs-ember-cli
-
