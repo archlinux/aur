@@ -1,7 +1,7 @@
 pkgbase = mongrel2
 	pkgdesc = Application, language, and network architecture agnostic web server
-	pkgver = 1.12.2
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://mongrel2.org/
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = mongrel2
 	makedepends = git
 	depends = sqlite3
 	depends = zeromq
-	source = https://github.com/mongrel2/mongrel2/releases/download/v1.12.2/mongrel2-v1.12.2.tar.bz2
-	source = extern-m2program.patch
-	sha256sums = 3bffeae198c37a1efc9c12f77d5f1eb61cdf62b35d661babc2527dd030aa7d8f
-	sha256sums = 3a7a592fb6691e8d0a360cf17fe4af7abf779cb36250cb7b2a2b466d3c723a23
+	depends = libbsd
+	source = https://github.com/mongrel2/mongrel2/releases/download/v1.13.0/mongrel2-v1.13.0.tar.bz2
+	sha256sums = b6f1f50c9f65b605342d8792b1cc8a1c151105339030313b9825b6a68d400c10
 
 pkgname = mongrel2
-
