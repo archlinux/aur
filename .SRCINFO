@@ -1,7 +1,7 @@
 pkgbase = corepins
 	pkgdesc = A bookmarking app from the C Suite
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corepins
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,7 @@ pkgbase = corepins
 	makedepends = ninja
 	depends = qt5-base
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/coreapps/corepins/-/archive/v4.2.0/corepins-v4.2.0.tar.gz
-	md5sums = 8cdf674966cdfe2b11338e931e6f62ea
+	source = https://gitlab.com/cubocore/coreapps/corepins/-/archive/v4.3.0/corepins-v4.3.0.tar.gz
+	md5sums = 6298fc729bf2c4a104f9206fa3f0cbe2
 
 pkgname = corepins
-
