@@ -1,0 +1,14 @@
+pkgbase = minetest-spmeter
+	pkgdesc = game jam submission
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://content.minetest.net/packages/crabycowman123/spmeter/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	noextract = spmeter-0.1.1.zip
+	options = !strip
+	source = spmeter-0.1.1.zip::https://content.minetest.net/packages/crabycowman123/spmeter/releases/10172/download/
+	sha256sums = 3c4ad26586279ffee5dd41e4593fed9a994815dd408c677b78ed667dd38bed30
+
+pkgname = minetest-spmeter
