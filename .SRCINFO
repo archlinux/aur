@@ -1,0 +1,14 @@
+pkgbase = cate-gms2-bin
+	pkgdesc = funny jinx the cat game where you click the cat, a gamemaker studio 2 remake by Skirlez of the scratch game "cate remix remix remix remix remix remix" about the big-footed cat named jinx
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/Skirlez/cate-gms2
+	arch = x86_64
+	license = custom
+	depends = wine
+	source_x86_64 = https://github.com/Skirlez/cate-gms2/releases/download/1.4/cate-gms2.zip
+	source_x86_64 = https://raw.githubusercontent.com/Skirlez/cate-gms2/main/cate-gms2/options/windows/icons/icon.ico
+	sha256sums_x86_64 = 1100f6c41108f689f94fd9688e898ef8c3ba9edd10cc4fc24a8c451f752c2b86
+	sha256sums_x86_64 = 337f3d6572960f32ef1ff492a9530dceac573be989395f9002f0e635af5bd25d
+
+pkgname = cate-gms2-bin
