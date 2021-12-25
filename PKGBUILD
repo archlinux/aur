@@ -1,14 +1,16 @@
-# Maintainer: Tommy Li <ttoo74@gmail.com>
+# Maintainer: Anthony Wang <ta180m@pm.me>
+# Contributor: Tommy Li <ttoo74@gmail.com>
+
 pkgname=python-certipy
 _name=${pkgname#python-}
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple python tool for creating certificate authorities and certificates on the fly"
 arch=(any)
 url="https://github.com/LLNL/certipy"
 license=('BSD')
 depends=("python" "python-pyopenssl")
-makedepends=("python-pypandoc")
+makedepends=("python-pypandoc" "python-setuptools")
 checkdepends=()
 optdepends=()
 options=()
