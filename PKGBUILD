@@ -3,7 +3,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
@@ -21,9 +21,9 @@ _url=${url%/${pkgname}}
 source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-supportext-${_natron_ver}.tar.gz::${_url}/openfx-supportext/archive/${_natron_ver}.tar.gz")
-sha512sums=('34a050e9cd9fd9c7206d364b841d251a8879a4b75b3dcec8c9eb4ec3bc45d157415b76299a8229401e4e31571ec215c59a8f49c393ab8fc13c2decf679c873cd'
-            '0559401414508bdf14a785d1d43aeb0e40744a54b18ed33f9fca7bd577713ecc1841c1d4dbf14b7ad8ca5e413c1511668d16ee57c166341ab9ac45b87f2295f5'
-            'a8125170a3d3e9a4ee659be104063ff40781f5bf6e6c37e8d7ff7ff9500a4134e40c70bfa98a5013d93b8bd4bc163ca8505f460d00b81a77554b2307ebeb1072')
+sha512sums=('f03aaef24e5ffc897651a5d22996be42c4f34563e214790b27b5797318f0cd92edf2f858fa75d6499ef95a73cebe617e803c38b1acc49e4b4f38d4e79a9a847e'
+            '624530af417821d759358ccfc45ba7ba10890fd115bbfef3e3fa61f486414fe61f39bfce8593f7ab84ee3d5ed3db05149d614f1407735fd8d6529894996103fa'
+            'b3d6672287824b3f61c32156618040ed4892c7748a496688369eca95a4c0d562b53e573b22a38f59445d96e4e54a34ea20164a1495d8780338c6dcc945c804c9')
 
 prepare() {
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
