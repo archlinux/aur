@@ -2,9 +2,9 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='https://wiki.ros.org/laser_filters'
 
 pkgname='ros-noetic-laser-filters'
-pkgver='1.8.11'
+pkgver='1.9.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -44,7 +44,7 @@ depends=(
 
 _dir="laser_filters-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_filters/archive/${pkgver}.tar.gz")
-sha256sums=('8c81c29f6e48daa6c120ddc72088b7a84d9753f91cb5027e745b0a94f9fd41fb')
+sha256sums=('e9e58f4e6e22717973e4a187e1472c5b6d11247b96e03f8080f339e0077e37b8')
 
 prepare() {
     sed -i '4s/11/17/' ${_dir}/CMakeLists.txt
