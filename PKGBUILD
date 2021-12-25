@@ -10,8 +10,8 @@ url="https://fonts.google.com/specimen/Squada+One"
 _gitver='633ebadbf5280a439a49ee831ab9446093b27f62'
 source=("https://github.com/google/fonts/raw/${_gitver}/ofl/squadaone/SquadaOne-Regular.ttf"
 	"https://github.com/google/fonts/raw/${_gitver}/ofl/squadaone/OFL.txt")
-sha256sums=('dbbc06a0735155910c05d5f65878cab3dca009a3c43b7bb837c6385c09c83eec'
-            '8c409bf0d41e4cee2d8256595c09cd1f760507a76d6a4431ca8a2815bb091618')
+sha256sums=('5b34a1633dbc48db3835d8a847bc475e6e0267121d3435854729ba4b407a05df'
+            'd2f9c74aba2716333b0a3d283083f9fdc93b2e060c5ae094c79e97e8cba9d7e6')
 	
 package() {
 	install -Dm644 "SquadaOne-Regular.ttf" "${pkgdir}/usr/share/fonts/TTF/SquadaOne-Regular.ttf"
