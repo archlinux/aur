@@ -2,8 +2,8 @@
 # Contributor: Brandon Mulcahy <brandon@jangler.info>
 
 pkgname=schismtracker
-pkgver=20210525
-pkgrel=2
+pkgver=20211116
+pkgrel=1
 pkgdesc='An oldschool sample-based music composition tool'
 arch=('i686' 'pentium4' 'x86_64' 'armv7h')  # and probably other ARMs
 url='http://schismtracker.org/'
@@ -12,7 +12,7 @@ depends=('libxv' 'sdl')
 makedepends=('python')
 conflicts=('schismtracker-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('1f20535e4e3b5175ceea803a45b7286a99cab248829c39d11bc85780bc63e0e26c49ad78997a13e290fb4ad2c292d15eeb494a975d53fbe25dec80499e675b16')
+sha512sums=('5f666995ac2f0785c3f39077dbd39d6549b9d0d5b9ee85dc72b3bbc1e77d5d7d2465df9f64cff77ee2896c148f8c4166ed6eb88efc1e7121736017bc56a00026')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
