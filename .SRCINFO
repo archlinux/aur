@@ -1,0 +1,13 @@
+pkgbase = fw-ectool-git
+	pkgdesc = ectool for the Framework laptop.
+	pkgver = r21603.35580ec63
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/platform/ec
+	arch = x86_64
+	license = BSD
+	makedepends = inetutils
+	provides = ectool
+	source = git+https://github.com/DHowett/fw-ectool
+	sha1sums = SKIP
+
+pkgname = fw-ectool-git
