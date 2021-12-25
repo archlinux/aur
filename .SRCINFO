@@ -1,0 +1,14 @@
+pkgbase = minetest-stella
+	pkgdesc = You start on a small island and your goal is to enlarge it.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://content.minetest.net/packages/1248/stella/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = stella-1.0.0.zip
+	options = !strip
+	source = stella-1.0.0.zip::https://content.minetest.net/packages/1248/stella/releases/10125/download/
+	sha256sums = ca1aaa618e4f3572c602e4ff3043324c20061894117b20bdcc6d77288c7c9b3a
+
+pkgname = minetest-stella
