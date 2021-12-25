@@ -1,7 +1,7 @@
 # Maintainer: Zoe Eisendle <zoe.pkgbuild@astech.hu>
 pkgname=mptcpd
 pkgver=0.8
-pkgrel=1
+pkgrel=0
 pkgdesc="Multipath TCP daemon"
 url="https://github.com/intel/mptcpd"
 arch=('any')

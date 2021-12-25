@@ -1,13 +1,12 @@
 pkgbase = mptcpd
 	pkgdesc = Multipath TCP daemon
-	pkgver = 0.5
-	pkgrel = 1
+	pkgver = 0.8
+	pkgrel = 0
 	url = https://github.com/intel/mptcpd
 	arch = any
 	license = GPL2
 	depends = ell
-	source = https://github.com/intel/mptcpd/releases/download/v0.5/mptcpd-0.5.tar.gz
-	sha512sums = e56f0e46292f8a75c98c6a064cf9c8982ed048fc1ea7748427662e0ea407f3abb59f3fcfe483b90db5e830bbb6eef27677eb323493789e91065741475da768bf
+	source = https://github.com/intel/mptcpd/releases/download/v0.8/mptcpd-0.8.tar.gz
+	sha512sums = acbbc9d42f8d233ea62276f20034a602395945a95b189c123a222d0312840693872b450233e254b3f2a32dae9265c32f5cd5a1de8c2093755f670aba4d267936
 
 pkgname = mptcpd
-
