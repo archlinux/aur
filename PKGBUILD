@@ -1,7 +1,7 @@
 # Maintainer: Amritpal Singh  - sysgrammer@protonmail.com
 pkgname=perfmode
-pkgver=3.1.2
-pkgrel=5
+pkgver=3.2.2
+pkgrel=6
 pkgdesc="A fan-control utility for ASUS TUF Gaming series of Laptops"
 arch=('x86_64')
 url="https://github.com/icebarf/perfmode"
@@ -27,4 +27,4 @@ package(){
     mkdir -p "$pkgdir/usr/bin"
     make DESTDIR="$pkgdir/usr/bin/" install
 }
-sha256sums=('0dadd8b439d09e21a523064fa28dd320e1fa33bbfc6757c15bc5951e9b7a710f')
+sha256sums=('63b028ff72b66a38cb273ab8b23d6bb5a2f54b397b7f16691ac2985361dd8054')
