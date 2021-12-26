@@ -1,8 +1,8 @@
 pkgbase = linux-cpu-opt
 	pkgdesc = Linux (with CPU optimizations patch)
-	pkgver = 5.14.15.arch1
+	pkgver = 5.15.11.arch2
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.14.15-arch1
+	url = https://github.com/archlinux/linux/commits/v5.15.11-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,14 +20,14 @@ pkgbase = linux-cpu-opt
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.15-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.11-arch2
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = f5d3635520c9eb9519629f6df0d9a58091ed4b1ea4ddb1acd5caf5822d91a060
+	sha256sums = 6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63
 
 pkgname = linux-cpu-opt
 	pkgdesc = The Linux (with CPU optimizations patch) kernel and modules

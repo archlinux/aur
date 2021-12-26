@@ -26,7 +26,11 @@ function configure_arch() {
     echo -e "\nCONFIG_M${_config_param_name}=y" >> .config
     sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
   fi
+
+  cat <<-EOF >> .config
+	CONFIG_FSCACHE_STATS=y
+	CONFIG_FSCACHE_HISTOGRAM=y
+	CONFIG_FSCACHE_DEBUG=y
+EOF
+
 }
-
-
-
