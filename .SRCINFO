@@ -1,6 +1,6 @@
 pkgbase = vala-language-server-git
 	pkgdesc = Language Server for Vala
-	pkgver = 0.48.2.r40.572e0589
+	pkgver = 0.48.4.r0.6ae81e85
 	pkgrel = 1
 	url = https://github.com/prince781/vala-language-server
 	arch = x86_64
