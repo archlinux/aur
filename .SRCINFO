@@ -1,0 +1,18 @@
+pkgbase = opencl-amd-ncurses5
+	pkgdesc = System V Release 4.0 curses emulation library, ABI 5
+	pkgver = 6.3
+	pkgrel = 1
+	url = http://invisible-island.net/ncurses/ncurses.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = sh
+	provides = libtinfo5
+	conflicts = libtinfo5
+	conflicts = ncurses5-compat-libs
+	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.3.tar.gz
+	sha256sums = 97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059
+
+pkgname = opencl-amd-ncurses5
