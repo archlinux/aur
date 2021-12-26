@@ -1,6 +1,6 @@
 pkgbase = xde-theme-dishes
 	pkgdesc = Communications dish theme pack for XDE
-	pkgver = 1.2.2
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = http://www.unexicon.com/
 	arch = any

@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="Communications dish theme pack for XDE"
 pkgname=xde-theme-dishes
-pkgver=1.2.2
+pkgver=1.2.5
 pkgrel=1
 url="http://www.unexicon.com/"
 license=('CCPL:by-nc-nd')
