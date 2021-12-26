@@ -1,6 +1,6 @@
 pkgbase = python-speechbrain-git
 	pkgdesc = All-in-one speech toolkit in pure Python and Pytorch
-	pkgver = 0.5.10
+	pkgver = 0.5.11
 	pkgrel = 1
 	url = https://github.com/speechbrain/speechbrain
 	arch = any
