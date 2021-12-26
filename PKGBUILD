@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="Archlinux theme pack for XDE"
 pkgname=xde-theme-archlinux
-pkgver=1.1.4
+pkgver=1.2.5
 pkgrel=1
 url="http://www.unexicon.com/"
 license=('CCPL:by-nc-nd')
