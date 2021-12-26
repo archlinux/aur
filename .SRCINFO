@@ -1,6 +1,6 @@
 pkgbase = beataroni-bin
 	pkgdesc = A graphical Beat Saber mod installer for Linux
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/geefr/beatsaber-linux-goodies
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = beataroni-bin
 	provides = beataroni
 	conflicts = beataroni
 	options = !strip
-	source = https://github.com/geefr/beatsaber-linux-goodies/releases/download/1.2.2/Beataroni-linux64-1.2.2.tar.gz
+	source = https://github.com/geefr/beatsaber-linux-goodies/releases/download/1.3/Beataroni-linux64-1.3.tar.gz
 	source = beataroni.desktop
 	source = beataroni.png
-	sha256sums = 4d1a81ae320b6f4aec902a659e8b4fd994e540228508b3c2915cb613c0221075
+	sha256sums = 7b34a68f50c82674910aee2b641bae162e669debb97db3aefcc83d05459ff9eb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
