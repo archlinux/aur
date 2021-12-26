@@ -1,7 +1,7 @@
 pkgbase = ibus-mozc
 	pkgdesc = Mozc module for IBus
 	pkgver = 2.26.4596.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache
@@ -17,7 +17,7 @@ pkgbase = ibus-mozc
 	depends = mozc=2.26.4596.102
 	conflicts = ibus-mozc-ut2
 	conflicts = ibus-mozc-ut-united
-	conflicts = ibus-mozc-ut
+	replaces = ibus-mozc-ut
 	source = ibus-mozc-git::git+https://github.com/google/mozc.git#commit=3735608
 	sha256sums = SKIP
 
