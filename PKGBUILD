@@ -1,14 +1,14 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=lxi-tools-git
-pkgver=r333.b1f257a
+pkgver=r372.992043a
 pkgrel=1
 pkgdesc="LXI Tools is a collection of software tools for controlling LXI instruments"
 arch=('i686' 'x86_64')
-url="https://github.com/lxi/liblxi"
+url="https://github.com/lxi/lxi-tools"
 license=('BSD-3')
 provides=('lxi-tools')
 conflicts=('lxi-tools')
-depends=('liblxi-git' 'lua')
+depends=('liblxi-git' 'lua52' 'gtk4')
 source=("$pkgname::git+https://github.com/lxi/lxi-tools")
 md5sums=('SKIP')
 
@@ -19,15 +19,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  meson --prefix=/usr --buildtype=plain -Dgui=true . build
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
