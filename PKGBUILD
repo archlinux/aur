@@ -2,13 +2,13 @@
 _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color research"
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
-license=('GPL3')
-depends=('python-matplotlib' 'python-npx')
-makedepends=('python-setuptools')
+license=(GPL3)
+depends=(python-matplotlib python-npx)
+makedepends=(python-setuptools)
 # checkdepends=('python-pytest-codeblocks' 'python-perfplot' 'gmsh' 'python-colorspacious' 'python-colour-science' 'python-pyvista' 'python-optimesh')
 optdepends=('python-meshio: for creation mesh'
   'python-meshzoo: for creation triangle and cube mesh'
@@ -18,7 +18,7 @@ optdepends=('python-meshio: for creation mesh'
   'python-scipy: for curve fit support'
   'vtk: for create VTK hexahedron support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('ae916f34e4d311e5f3dfb7ff37622dcf526bc5102c850083f582d574a3fd5d3d42168d24dba3a0596c4e53753874eec84de48d95d9fc0ad35205581fd0b3672f')
+sha512sums=('08e727b5abafe6c482c8db1b320361bced6ec546d1d68627e5bbd79d561e476257e2ac22f2cd0e359cf6f02e997a093ec04ae1f75fca6949f799817a1192d4bf')
 
 build() {
   cd "${_base}-${pkgver}"
