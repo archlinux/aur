@@ -1,12 +1,11 @@
 pkgbase = liblxi-git
 	pkgdesc = LXI library
-	pkgver = r130.8b43290
-	pkgrel = 2
+	pkgver = r143.5045bf2
+	pkgrel = 1
 	url = https://github.com/lxi/liblxi
 	arch = i686
 	arch = x86_64
 	license = BSD-3
-	depends = rpcsvc-proto
 	depends = libxml2
 	depends = avahi
 	optdepends = lxi-tools
@@ -16,4 +15,3 @@ pkgbase = liblxi-git
 	md5sums = SKIP
 
 pkgname = liblxi-git
-
