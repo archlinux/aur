@@ -12,7 +12,7 @@ license=('GPL')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AdguardTeam/AdGuardHome/archive/v$pkgver.tar.gz"
   "$_pkgname.service" sysusers.conf tmpfiles.conf
 )
-makedepends=(go nodejs npm yarn git)
+makedepends=(go nodejs-lts-gallium npm yarn git)
 install=readme.install
 b2sums=('6b2ae43c8bd25293ac39371de792f9fec1fba440d18807ec90aa881942237acce04b2b08e25e8b713992cc6c707c3236e90465f76538003e7336ec1d30dac411'
         '6221c78867c502db943e74104ade432ba11ea779bb431eb642ee0d8c5f84e73d01dfac2aea4babd1dcce181d68f92f7fb7976f16db43f7effd718a46a83ed403'
