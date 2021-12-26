@@ -85,7 +85,7 @@ pkgbase = linux-vfio-manjaro
 	sha256sums = 6d6b327ec7c7798f628f98ab964f4457d3cf043bad2632eb8f27548478a83cc1
 
 pkgname = linux-vfio-manjaro
-	pkgdesc = The Linux-vfio-manjaro kernel and modules with ACS patch
+	pkgdesc = The Linux Manjaro standart kernel and modules with ACS patch
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -96,7 +96,7 @@ pkgname = linux-vfio-manjaro
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-vfio-manjaro-headers
-	pkgdesc = Header files and scripts for building modules for Linux-vfio-manjaro kernel
+	pkgdesc = Headers and scripts for building modules for the Linux Manjaro standart kernel with ACS patch
 	depends = gawk
 	depends = python
 	depends = libelf

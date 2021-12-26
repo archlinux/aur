@@ -153,7 +153,7 @@ build() {
 }
 
 package_linux-vfio-manjaro() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ACS patch"
+  pkgdesc="The Linux Manjaro standart kernel and modules with ACS patch"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
@@ -192,7 +192,7 @@ package_linux-vfio-manjaro() {
 }
 
 package_linux-vfio-manjaro-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for the Linux Manjaro standart kernel with ACS patch"
   depends=('gawk' 'python' 'libelf' 'pahole')
   provides=("linux-headers=$pkgver")
 
