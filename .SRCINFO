@@ -1,6 +1,6 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
@@ -8,21 +8,19 @@ pkgbase = zettlr
 	license = custom
 	makedepends = git
 	makedepends = yarn
+	makedepends = nodejs-lts-gallium
 	depends = electron
-	depends = nodejs>=14.0.0
 	optdepends = pandoc: For exporting to various format
 	optdepends = texlive-bin: For Latex support
 	optdepends = ttf-lato: Display output in a more comfortable way
 	options = !strip
-	source = zettlr-2.0.3.tar.gz::https://github.com/Zettlr/Zettlr/archive/v2.0.3.tar.gz
+	source = zettlr-2.1.0.tar.gz::https://github.com/Zettlr/Zettlr/archive/v2.1.0.tar.gz
 	source = 0001-Do-not-download-pandoc.patch
-	source = locales-2.0.3-1.zip::https://github.com/citation-style-language/locales/archive/d5ee85de8e74d4109509014758b6f496a968ff03.zip
-	source = chicago-author-date-2.0.3-1.csl::https://github.com/citation-style-language/styles/raw/ccb71844fdafb2b7a48cccb364f4b4c03d3cdce6/chicago-author-date.csl
-	source = https://github.com/jgm/pandoc/releases/download/2.16.1/pandoc-2.16.1-linux-amd64.tar.gz
-	sha256sums = e3c7b3e12b43c3749ec7ad8b33ed453fcabbf03e9741f817ba093e91fd87a1f5
+	source = locales-2.1.0-1.zip::https://github.com/citation-style-language/locales/archive/c38205618f1a23eb80e8c5f33c8086648ca3874b.zip
+	source = chicago-author-date-2.1.0-1.csl::https://github.com/citation-style-language/styles/raw/ccb71844fdafb2b7a48cccb364f4b4c03d3cdce6/chicago-author-date.csl
+	sha256sums = edbd806804da93db8db7e81551de50bf1ec2a4a115aa8995238a4dd69ab09367
 	sha256sums = a0fe981dade0ce52be190d8e8a2fd7f6c05c32c7d44d96c63f6f494460d483ef
-	sha256sums = 6e6d0ff9e0d62d25606475752a6db8ee6143f735d5c95400b8f55bff523de182
+	sha256sums = 275fc80a391b4002b52182deb12997a1408118b7753977ea69ef5256c6f3ff47
 	sha256sums = 1455e57b314fd13ba155f4ab93f061e3e6393c13cd0f16380adb9d73614f7930
-	sha256sums = 3fe3d42179af289d4f5452b9317d2bc9cd139a4f33a37f68d70e128f1d415aa4
 
 pkgname = zettlr

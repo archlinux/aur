@@ -6,29 +6,29 @@
 _bundle_pandoc=false
 
 pkgname=zettlr
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
-depends=(electron 'nodejs>=14.0.0')
-makedepends=(git yarn)
+depends=(electron)
+makedepends=(git yarn nodejs-lts-gallium) # check .github/workflows/build.yml for NODE_VERSION
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-_csl_locale_commit=d5ee85de8e74d4109509014758b6f496a968ff03 # Oct 20, 2021
+_csl_locale_commit=c38205618f1a23eb80e8c5f33c8086648ca3874b # Dec 23, 2021
 _csl_style_commit=ccb71844fdafb2b7a48cccb364f4b4c03d3cdce6  # Sep 19, 2021
-_pandoc_binary_ver=2.16.1 # check scripts/get-pandoc.sh for update
+_pandoc_binary_ver=2.16.2 # check scripts/get-pandoc.sh for update
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
         '0001-Do-not-download-pandoc.patch'
         # citation style
         "locales-${pkgver}-${pkgrel}.zip::https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         "chicago-author-date-${pkgver}-${pkgrel}.csl::https://github.com/citation-style-language/styles/raw/${_csl_style_commit}/chicago-author-date.csl")
-sha256sums=('e3c7b3e12b43c3749ec7ad8b33ed453fcabbf03e9741f817ba093e91fd87a1f5'
+sha256sums=('edbd806804da93db8db7e81551de50bf1ec2a4a115aa8995238a4dd69ab09367'
             'a0fe981dade0ce52be190d8e8a2fd7f6c05c32c7d44d96c63f6f494460d483ef'
-            '6e6d0ff9e0d62d25606475752a6db8ee6143f735d5c95400b8f55bff523de182'
+            '275fc80a391b4002b52182deb12997a1408118b7753977ea69ef5256c6f3ff47'
             '1455e57b314fd13ba155f4ab93f061e3e6393c13cd0f16380adb9d73614f7930')
 if ${_bundle_pandoc} ; then
     # pandoc binary source
@@ -38,7 +38,8 @@ fi
 
 prepare() {
     cd "Zettlr-${pkgver}"
-    
+
+    # Use pacman mechanism to download pandoc binary instead of using upstream script
     patch -Np1 -i $srcdir/0001-Do-not-download-pandoc.patch
 
     # csl:refresh from package.json
@@ -52,7 +53,7 @@ if ${_bundle_pandoc} ; then
     cp "${srcdir}/pandoc-${_pandoc_binary_ver}/bin/pandoc" resources/pandoc-linux-x64
     ln -sf pandoc-linux-x64 resources/pandoc
 else
-    # Using Arch's pandoc, need to fake a link
+    # Using Arch's pandoc, need to fake a link, otherwise npm/yarn complains
     ln -sf /usr/bin/pandoc resources/pandoc-linux-x64
     ln -sf /usr/bin/pandoc resources/pandoc
 fi
@@ -126,7 +127,8 @@ END
             "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/Zettlr.png"
     done
 
-    # generate freedesktop entry files, aligned with description in package.json and forge.config.js
+    # Generate desktop entry file
+    # Based on descriptions in package.json and forge.config.js
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/Zettlr.desktop" <<END
 [Desktop Entry]
 Name=Zettlr
@@ -140,7 +142,8 @@ MimeType=text/markdown;
 Categories=Office;
 END
 
-    # generate mimetype configuration file to associate with zettlr
+    # Generate mimetype configuration file to associate with zettlr
+    # Based on electron-builder.yml
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/mime/packages/Zettlr.xml" <<END
 <?xml version="1.0" encoding="utf-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
