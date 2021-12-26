@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
-pkgver=0.2.8
-pkgrel=4
+pkgver=0.2.9
+pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
@@ -9,9 +9,10 @@ license=('GPL')
 depends=('leptonica' 'pyside2' 'python-importlib-metadata' 'python-importlib_resources'
          'python-jeepney' 'python-tesserocr' 'tesseract-data-eng')
 makedepends=('python-pip' 'python-poetry')
-source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
+#        "https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('12cc81b31da0a43c50faa50bfe8f244e85a83c42937efc422f5018f7ca253d9d'
+sha256sums=('28677c414195f7cc3ba70968db73766064517fd2acb0dde5d799e9c04a52e31e'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
 prepare() {
