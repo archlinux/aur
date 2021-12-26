@@ -50,7 +50,7 @@ conflicts=(audacity audacity-git audacity3-gtk3)
 source=(
   "https://github.com/$_pkgname/$_pkgname/releases/download/Audacity-$pkgver/$_pkgname-$pkgver-source.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('fd8ecdc3d29b3be3bb5cbc01a77806dd59fbec2ad86854924c339811427f2aa1')
 
 build() {
   cd $srcdir/Audacity-$pkgver-Source
