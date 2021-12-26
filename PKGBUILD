@@ -2,16 +2,16 @@
 # Contributor: Masoud <mpoloton@gmail.com>
 
 pkgname=python-gimmik
-pkgver=2.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc='Generator of Matrix Multiplication Kernels'
 arch=('any')
 url="https://github.com/pyfr/gimmik"
 license=('BSD')
-depends=('python-numpy>=1.7' 'python-mako')
+depends=('python-numpy' 'python-mako')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ed8d90e99ff13b5dd796709abc42f880e3022af98591ed8254aa3e0f89b9bc0e')
+sha256sums=('d5363667cd204c5a72eaa9c999a0465f0b84cde446e07d83b168a3496ae567dc')
 
 build() {
 	cd "GiMMiK-$pkgver"
@@ -21,6 +21,6 @@ build() {
 package() {
 	cd "GiMMiK-$pkgver"
 	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.rst AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"
 }
