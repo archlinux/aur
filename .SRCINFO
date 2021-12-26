@@ -1,6 +1,6 @@
 pkgbase = pdudaemon-git
 	pkgdesc = Daemon for controlling PDUs (Power Distribution Units)
-	pkgver = r168.1f34626
+	pkgver = r176.e6b47d5
 	pkgrel = 1
 	url = https://github.com/pdudaemon/pdudaemon
 	arch = any
@@ -27,4 +27,3 @@ pkgbase = pdudaemon-git
 	sha256sums = fc725d7ffe871d08e53c36ec1495e602dc0e5595f94f0ecec6c097987c78b411
 
 pkgname = pdudaemon-git
-
