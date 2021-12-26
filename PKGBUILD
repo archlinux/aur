@@ -23,6 +23,7 @@ optdepends=('cython: to compile cython code'
   'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
   'sagemath-doc: HTML documentation'
   'python-igraph: igraph backend for graph theory'
+  'bliss: bliss backend for graph theory'
   'sage-numerical-backends-coin: COIN mixed integer linear programming backend'
   'sage-numerical-backends-gurobi: Gurobi mixed integer linear programming backend'
   'coin-or-csdp: for computing Lovász theta-function of graphs'
@@ -56,7 +57,8 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-lrcalc2.patch
         sagemath-singular-4.2.1.p1.patch
         sagemath-linbox-1.7.patch
-        sagemath-python3.10.patch)
+        sagemath-python3.10.patch
+        sagemath-bliss-0.77.patch)
 sha256sums=('SKIP'
             'eee5fa15d8c7be7e009166dbde3ea24bb10d7793dc12880516f278f86b1a6694'
             '2f310081357996b7d3bf813e63d07c0fc04d6724adbfbd1beeb554e9476e2e4c'
@@ -64,8 +66,8 @@ sha256sums=('SKIP'
             '8534700f78690a9f1b07df25b281138ed870fdfb70ab4df3818df79d5468ec9f'
             '1f0c44a4998ed239a3d77e3028b98b6f2c28a95e9bb4b8557523cc8f12ffba34'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
-            'b9ca4fb0e3083e73560df5f0aca7e87d7aa8c05eca3eea49c704bcee102919c7')
-options=(debug !strip)
+            'b9ca4fb0e3083e73560df5f0aca7e87d7aa8c05eca3eea49c704bcee102919c7'
+            '49ede468b8e1e7b8d7a390aab9ff1a6e899a0c5e487632cbf76902d80c637505')
 
 pkgver() {
   cd sage
@@ -84,6 +86,8 @@ prepare(){
   patch -p1 -i ../sagemath-linbox-1.7.patch
 # Fix tests with Python 3.10 https://trac.sagemath.org/ticket/30766
   patch -p1 -i ../sagemath-python3.10.patch
+# Fix build with bliss 0.77 https://trac.sagemath.org/ticket/33010
+  patch -p1 -i ../sagemath-bliss-0.77.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
