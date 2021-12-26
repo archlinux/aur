@@ -4,12 +4,12 @@
 
 _pkgname=cinnamon-menus
 pkgname=${_pkgname}-git
-pkgver=27.50310b1
+pkgver=5.2.0.r0.g1d7cb63f
 pkgrel=1
 pkgdesc="Cinnamon menu specifications"
 arch=('i686' 'x86_64')
-depends=('glib2')
-makedepends=('intltool' 'gobject-introspection')
+depends=(glib2)
+makedepends=(gobject-introspection meson samurai)
 conflicts=(${_pkgname})
 provides=(${_pkgname})
 license=('GPL' 'LGPL')
@@ -19,19 +19,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  ./autogen.sh \
-      --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var  --disable-static \
-      --sbindir=/usr/bin
-  make
+  arch-meson cinnamon-menus build
+  samu -C build
 }
 
 package(){
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }

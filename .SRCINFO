@@ -1,14 +1,15 @@
 pkgbase = cinnamon-menus-git
 	pkgdesc = Cinnamon menu specifications
-	pkgver = 27.50310b1
+	pkgver = 5.2.0.r0.g1d7cb63f
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-menus
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = intltool
 	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = samurai
 	depends = glib2
 	provides = cinnamon-menus
 	conflicts = cinnamon-menus
@@ -16,4 +17,3 @@ pkgbase = cinnamon-menus-git
 	sha256sums = SKIP
 
 pkgname = cinnamon-menus-git
-
