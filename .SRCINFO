@@ -1,32 +1,39 @@
 pkgbase = artwork-breath
-	pkgver = 0.4.0
+	pkgver = 21.2.0
 	pkgrel = 2
 	url = https://gitlab.manjaro.org/artwork/themes/breath
 	arch = any
 	license = LGPL
+	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = git
 	makedepends = plasma-framework
-	source = breath-0.4.0-2.tar.gz::https://gitlab.manjaro.org/artwork/themes/breath/-/archive/master/breath-970d907b9682236caa176c737f86b42972140dc3.tar.gz
-	sha256sums = e5128df5f907e04cf658c8c52cfe70ea738d954634fecddb9fc979081c53660e
+	source = git+https://gitlab.manjaro.org/artwork/themes/breath.git#commit=cb3a79366ac13dddd4454fdc5511b8d374e71de9
+	sha256sums = SKIP
 
-pkgname = breath-icon-theme
-	pkgdesc = breath icon theme
-
-pkgname = breath-dark-icon-theme
-	pkgdesc = breath dark icon theme
+pkgname = plasma5-themes-breath-migration
+	pkgdesc = Breath theme migration routine for kconf_update
+	arch = x86_64
+	arch = aarch64
 
 pkgname = plasma5-themes-breath
-	pkgdesc = breath theme for KDE Plasma 5
+	pkgdesc = Breath theme for KDE Plasma 5
 	depends = breeze
-	optdepends = breath-icon-theme: light icon theme
-	optdepends = breath-dark-icon-theme: dark icon theme
-	replaces = breath-themes
+	depends = plasma5-themes-breath-migration
+	conflicts = plasma5-themes-breath2
+	conflicts = breath2-icon-themes
+	replaces = plasma5-themes-breath2
+	replaces = breath2-icon-themes
+
+pkgname = plasma5-themes-breath-extra
+	pkgdesc = Additional Breath colors for KDE Plasma 5
+
+pkgname = breath-wallpapers
+	pkgdesc = Breath wallpapers
 
 pkgname = sddm-breath-theme
-	pkgdesc = breath theme for SDDM
+	pkgdesc = Breath theme for SDDM
 	depends = plasma-framework
 	depends = plasma-workspace
-
-pkgname = breath-wallpaper
-	pkgdesc = breath wallpaper
-
+	conflicts = sddm-breath2-theme-dev
+	replaces = sddm-breath2-theme

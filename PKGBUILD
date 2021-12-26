@@ -1,84 +1,95 @@
-# Maintainer: Ramon Buldó <ramon@manjaro.org>
+# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
+# Maintainer: Bogdan Covaciu <bogdan@manjaro.org
 
 pkgbase=artwork-breath
-pkgname=('breath-icon-theme' 'breath-dark-icon-theme' 'plasma5-themes-breath' 'sddm-breath-theme' 'breath-wallpaper')
-pkgver=0.4.0
+pkgname=(
+    'plasma5-themes-breath-migration'
+    'plasma5-themes-breath'
+    'plasma5-themes-breath-extra'
+    'breath-wallpapers'
+    'sddm-breath-theme')
+pkgver=21.2.0
 pkgrel=2
-_gitcommit=970d907b9682236caa176c737f86b42972140dc3
-url=https://gitlab.manjaro.org/artwork/themes/breath
+_commit=cb3a79366ac13dddd4454fdc5511b8d374e71de9
 arch=('any')
+url="https://gitlab.manjaro.org/artwork/themes/breath"
 license=('LGPL')
-makedepends=('extra-cmake-modules' 'plasma-framework')
-
-source=("breath-$pkgver-$pkgrel.tar.gz::$url/-/archive/master/breath-$_gitcommit.tar.gz")
-sha256sums=('e5128df5f907e04cf658c8c52cfe70ea738d954634fecddb9fc979081c53660e')
-
-prepare() {
-  mv $srcdir/breath-master-$_gitcommit $srcdir/breath
-  mkdir -p build
-}
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'plasma-framework')
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-  cd build
-  cmake ../breath \
+
+  echo "Building plasma5-themes-breath-migration..."
+  cmake -B build-breath-migration -S breath \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_MIGRATION=ON
+  make -C build-breath-migration
+
+  echo "Building plasma5-themes-breath..."
+  cmake -B build-breath -S breath \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_PLASMA_THEMES=ON
+  make -C build-breath
+
+  echo "Building plasma5-themes-breath-extra..."
+  cmake -B build-breath-extra -S breath \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_EXTRA_COLORS=ON
+  make -C build-breath-extra
+
+  echo "Building sddm-breath-theme..."
+  cmake -B build-sddm -S breath \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_SDDM_THEME=ON
+  make -C build-sddm
 }
 
-package_breath-wallpaper() {
-  pkgdesc='breath wallpaper'
-  install -D ${srcdir}/breath/wallpapers/Breath/contents/images/1920x1080.png ${pkgdir}/usr/share/backgrounds/breath.png
-}
+package_plasma5-themes-breath-migration() {
+  pkgdesc='Breath theme migration routine for kconf_update'
+  arch=('x86_64' 'aarch64')
 
-package_breath-icon-theme() {
-  pkgdesc='breath icon theme'
-  cd build
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/share/color-schemes"
-  rm -rf "${pkgdir}/usr/share/icons/breath-dark"
-  rm -rf "${pkgdir}/usr/share/kservices5"
-  rm -rf "${pkgdir}/usr/share/metainfo"
-  rm -rf "${pkgdir}/usr/share/plasma"
-  rm -rf "${pkgdir}/usr/share/sddm"
-  rm -rf "${pkgdir}/usr/share/wallpapers"
-}
-
-package_breath-dark-icon-theme() {
-  pkgdesc='breath dark icon theme'
-  cd build
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/share/color-schemes"
-  rm -rf "${pkgdir}/usr/share/icons/breath"
-  rm -rf "${pkgdir}/usr/share/kservices5"
-  rm -rf "${pkgdir}/usr/share/metainfo"
-  rm -rf "${pkgdir}/usr/share/plasma"
-  rm -rf "${pkgdir}/usr/share/sddm"
-  rm -rf "${pkgdir}/usr/share/wallpapers"
+  make -C build-breath-migration DESTDIR="${pkgdir}" install
 }
 
 package_plasma5-themes-breath() {
-  pkgdesc='breath theme for KDE Plasma 5'
-  depends=('breeze')
-  optdepends=('breath-icon-theme: light icon theme'
-              'breath-dark-icon-theme: dark icon theme')
-  replaces=('breath-themes')
-  cd build
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/share/sddm"
-  rm -rf "${pkgdir}/usr/share/icons"
+  pkgdesc='Breath theme for KDE Plasma 5'
+  depends=('breeze' 'plasma5-themes-breath-migration')
+  conflicts=('plasma5-themes-breath2' 'breath2-icon-themes')
+  replaces=('plasma5-themes-breath2' 'breath2-icon-themes')
+
+  make -C build-breath DESTDIR="${pkgdir}" install
+}
+
+package_plasma5-themes-breath-extra() {
+  pkgdesc='Additional Breath colors for KDE Plasma 5'
+
+  make -C build-breath-extra DESTDIR="${pkgdir}" install
+}
+
+package_breath-wallpapers() {
+  pkgdesc='Breath wallpapers'
+
+  cd "${srcdir}/breath/wallpapers"
+  install -Dm644 Bamboo/contents/images/5120x2880.png \
+    ${pkgdir}/usr/share/backgrounds/bamboo.png
+  install -Dm644 Bamboo\ at\ Night/contents/images/5120x2880.png \
+    ${pkgdir}/usr/share/backgrounds/bambooatnight.png
 }
 
 package_sddm-breath-theme() {
-  pkgdesc="breath theme for SDDM"
+  pkgdesc="Breath theme for SDDM"
   depends=('plasma-framework' 'plasma-workspace')
-  cd build
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/share/color-schemes"
-  rm -rf "${pkgdir}/usr/share/icons"
-  rm -rf "${pkgdir}/usr/share/kservices5"
-  rm -rf "${pkgdir}/usr/share/metainfo"
-  rm -rf "${pkgdir}/usr/share/plasma"
-  rm -rf "${pkgdir}/usr/share/wallpapers"
+  conflicts=('sddm-breath2-theme-dev')
+  replaces=('sddm-breath2-theme')
+
+  make -C build-sddm DESTDIR="${pkgdir}" install
 }
