@@ -1,6 +1,6 @@
 pkgbase = rofi-rbw
 	pkgdesc = Rofi frontend for Bitwarden
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/fdw/rofi-rbw
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = rofi-rbw
 	depends = python-configargparse
 	optdepends = xdotool: for autofill on X11
 	optdepends = wtype: for autofill on Wayland
-	source = https://github.com/fdw/rofi-rbw/releases/download/0.4.1/rofi_rbw-0.4.1-py3-none-any.whl
-	sha256sums = 532153ea97b3d5ebebc030a28bdef41bbbbcd83a8fb656ea1f276ae8d2f5bd2e
+	source = https://github.com/fdw/rofi-rbw/releases/download/0.5.0/rofi_rbw-0.5.0-py3-none-any.whl
+	sha256sums = ed3a30c4bc69e3ee321a172a3106bca68fae86735b5d284d10726ce958f0abe8
 
 pkgname = rofi-rbw
