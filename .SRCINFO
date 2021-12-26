@@ -1,6 +1,6 @@
 pkgbase = dune-fem
 	pkgdesc = A discretization module providing an implementation of mathematical abstractions to solve PDEs on parallel computers including local grid adaptivity, dynamic load balancing, and higher order discretization schemes
-	pkgver = v2.8.0.5
+	pkgver = 2.8.0.5
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-fem
 	arch = x86_64
