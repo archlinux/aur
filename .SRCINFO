@@ -1,7 +1,7 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
 	pkgver = 6.17.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = sdrangel-bin
 	depends = qt5-websockets
 	depends = qt5-location
 	depends = qt5-speech
+	depends = qt5-graphicaleffects
 	optdepends = mbelib: Required for Digital Speech Decoder (DSD) demodulator
 	optdepends = opencv: Required for ATV demodulator
 	optdepends = qt5-serialport: Required for GS-232 controller
