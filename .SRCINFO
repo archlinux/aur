@@ -1,0 +1,16 @@
+pkgbase = gxhk-git
+	pkgdesc = Hotkey daemon for X, configurable like bspwm
+	pkgver = 1.0.0.r0.g52ab692
+	pkgrel = 1
+	url = https://github.com/ALEX11BR/gxhk
+	arch = x86_64
+	license = Unlicense
+	makedepends = go
+	makedepends = git
+	optdepends = sh: For default config file
+	provides = gxhk
+	conflicts = gxhk
+	source = git+https://github.com/ALEX11BR/gxhk
+	sha256sums = SKIP
+
+pkgname = gxhk-git
