@@ -1,14 +1,14 @@
 # Maintainer: benwaffle <vala@iofel.me>
 # Maintainer: Prince781 <princetonferro@gmail.com>
 pkgname=vala-language-server-git
-pkgver=0.48.4.r0.6ae81e85
+pkgver=0.48.4.r1.3bc375fc
 pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
 url="https://github.com/prince781/vala-language-server"
 license=('LGPL-2.1')
 depends=('libgee' 'jsonrpc-glib' 'vala' 'meson')
-makedepends=('git')
+makedepends=('git' 'scdoc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+${url}.git)
