@@ -1,6 +1,6 @@
 # Maintainer: Paul Makles <paulmakles@gmail.com>
 pkgname=revolt-desktop-git
-pkgver=37.6ac8bf6
+pkgver=1.0.2.r10.g6ac8bf6
 pkgrel=1
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/desktop"
-    echo "$(git rev-list HEAD --count).$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
