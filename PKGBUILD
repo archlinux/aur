@@ -1,41 +1,73 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Mantainer: Daniele Basso <daniele05 dot bass at gmail dot com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
-
 pkgname=audacity3
-pkgver=3.0.2
+_pkgname=audacity
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://www.audacityteam.org/"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile
-         libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
-makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg jack nasm)
-# can't find system lame portmidi
+depends=(
+  alsa-lib
+  expat
+  flac
+  gtk4
+  libid3tag
+  libmad
+  libsndfile
+  libsoxr
+  libvorbis
+  lilv
+  lv2
+  portaudio
+  portsmf
+  soundtouch
+  suil
+  twolame
+  vamp-plugin-sdk
+  zlib
+)
+makedepends=(
+  cmake
+  conan
+  ffmpeg
+  gcc
+  git
+  gst-plugins-bad-libs
+  gstreamer
+  jack
+  libnotify
+  libsoup
+  nasm
+  sdl2
+)
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
-conflicts=(audacity)
-source=("git+https://github.com/audacity/audacity.git#tag=Audacity-${pkgver}")
+conflicts=(audacity audacity-git audacity3-gtk3)
+source=(
+  "https://github.com/$_pkgname/$_pkgname/releases/download/Audacity-$pkgver/$_pkgname-$pkgver-source.tar.gz"
+)
 sha256sums=('SKIP')
 
 build() {
-  mkdir audacity/build
-  cd audacity/build
-  CC=clang cmake \
+  cd $srcdir/Audacity-$pkgver-Source
+  mkdir build && cd build
+  CC=gcc cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxBUILD_TOOLKIT:STRING=gtk3 \
+    -DwxBUILD_TOOLKIT:STRING=gtk4 \
     -Daudacity_use_wxwidgets=local \
-    audacity_use_ffmpeg:STRING=loaded \
+    -Daudacity_use_ffmpeg:STRING=loaded \
+    -Daudacity_lib_preference=system \
     ..
   cmake --build .
-  make .
 }
 
 package() {
-  cd audacity/build
+  cd $srcdir/Audacity-$pkgver-Source/build
   make DESTDIR="${pkgdir}" install
 }
