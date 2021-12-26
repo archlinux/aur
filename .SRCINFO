@@ -1,6 +1,6 @@
 pkgbase = auto-cpufreq
 	pkgdesc = Automatic CPU speed & power optimizer
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq.install
@@ -13,7 +13,9 @@ pkgbase = auto-cpufreq
 	depends = dmidecode
 	optdepends = cpufreqctl: CPU Power Manager
 	optdepends = gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell
-	source = auto-cpufreq-1.8.2.tar.gz::https://github.com/AdnanHodzic/auto-cpufreq/archive/v1.8.2.tar.gz
-	b2sums = a1c113132edf11ed38cb835df6aeaf22da787095d1d3f8b9c8a75b45954d372b641777fb6f4bcf305b285577325147ce5bf55a167d618dff49fbc6e3adc03d18
+	source = auto-cpufreq-1.9.0.tar.gz::https://github.com/AdnanHodzic/auto-cpufreq/archive/v1.9.0.tar.gz
+	source = auto-cpufreq.service
+	b2sums = d68fff094430e95804e3fa9761746dfdaf19f0f2a00350f3d680700dec7c15c3875a426c7586e0ce7577aec88a576ac3e8835544f57cd283e19ffe82fd0ad30e
+	b2sums = 90d9a6e0a86d01803527462e0ed0ce93d04d245c2c99ab773f31e1eb46dd86b209f98af50967bbdb6627563b0aae0ca4bbc861c812576a243b07c40a483c37db
 
 pkgname = auto-cpufreq
