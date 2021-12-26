@@ -1,16 +1,16 @@
 pkgbase = mediarepo-daemon
 	pkgdesc = Daemon to manage a media repository
-	pkgver = 0.9.0
-	pkgrel = 3
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/trivernis/mediarepo-daemon
 	arch = x86_64
 	license = GPL3
-	provides = mediarepo-daemon=0.9.0
+	provides = mediarepo-daemon=0.10.0
 	makedepends = clang
 	makedepends = rustup
 	options = !strip
-	source = mediarepo-daemon-0.9.0.tar.gz::https://github.com/Trivernis/mediarepo-daemon/archive/v0.9.0.tar.gz
-	sha512sums = d0edc2e32a20add504f6a91565feac60e888a8941516ae2a90e84f24615cdd2d7e27a8370e5ce6599055acaad2f8a35a50a969ed3b6489dbed9dc3d82d25cc2b
+	source = mediarepo-daemon-0.10.0.tar.gz::https://github.com/Trivernis/mediarepo-daemon/archive/v0.10.0.tar.gz
+	sha512sums = 6d2a548a25c1fe512ed409df9063d7cab8873df264f44454968f219ff2ae9a3f456b8d69425294527d424bc3cc9e8c53e75c78cc947e671f426f202f019c5c48
 
 pkgname = mediarepo-daemon
 
