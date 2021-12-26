@@ -5,7 +5,7 @@ _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -19,7 +19,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
-             'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
+             'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
@@ -140,7 +140,7 @@ build() {
   cd ${_name}-${_vlcver}
 
   export CFLAGS+=" -I/usr/include/samba-4.0"
-  export CPPFLAGS+=" -I/usr/include/samba-4.0"
+  export CPPFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CXXFLAGS+=" -std=c++11"
   # OBS Studio use luajit which is a drop-in for lua5.1
   # So lets build VLC with luajit and luac5.1 rather than lua5.2 and luac5.2
