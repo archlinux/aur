@@ -1,7 +1,7 @@
 # Maintainer: Michael Koloberdin <michael@koloberdin.com>
 pkgname=odcread-git
-pkgver=0.2.r0.g6b9dd81
-pkgrel=2
+pkgver=0.2.r5.g9c09cc9
+pkgrel=1
 pkgdesc="Reader/converter for 'Oberon compound document' binary format used by the Black Box Component Builder"
 arch=('x86_64')
 url="https://github.com/ComdivByZero/${pkgname%-git}"
@@ -19,11 +19,12 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make
+	cmake -B build -S "$srcdir/${pkgname%-git}" \
+		-DCMAKE_BUILD_TYPE='Release' \
+		-DCMAKE_INSTALL_PREFIX='/usr'
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 }
