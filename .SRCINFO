@@ -1,7 +1,7 @@
 pkgbase = openvr-git
 	pkgdesc = API and runtime that allows access to VR hardware from multiple vendors.
 	pkgver = 1.16.8.r0.g4c85abc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ValveSoftware/openvr
 	arch = x86_64
 	license = custom
@@ -33,4 +33,3 @@ pkgbase = openvr-git
 	md5sums = ac790ec12a558931895504f1ca92c364
 
 pkgname = openvr-git
-
