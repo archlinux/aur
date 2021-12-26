@@ -23,7 +23,7 @@ build() {
    cd $srcdir/suite3270-${pkgver:0:3} 
    ./configure --enable-unix --enable-c3270 --prefix=/usr --bindir=/usr/bin --sysconfdir=/etc --with-fontdir=/usr/share/fonts/3270
 
-   make all || return 1
+   make -j$(grep processor -c /proc/cpuinfo) all || return 1
 
  }
  package() {
