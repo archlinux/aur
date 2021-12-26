@@ -1,15 +1,14 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: AlphaJack <alphajack at tuta dot io>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname=xsnow
+pkgname="xsnow"
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Let it snow on your desktop"
 url="https://sourceforge.net/projects/xsnow/"
 license=("GPL3")
-arch=(x86_64 i686)
-conflicts=(xsnow-bin)
-depends=(gtk3 libxpm)
+arch=("x86_64" "i386" "armv7h" "aarch64")
+conflicts=("xsnow-bin" "xsnow-legacy" "xsnow-comp-patch-git")
+depends=("atk" "cairo" "gtk3" "libx11" "libxpm" "libxml2")
 source=("https://nav.dl.sourceforge.net/project/xsnow/xsnow-$pkgver.tar.gz")
 sha256sums=('c618d7a73cef7070755f38ddc3665487afa8c71a9c82ae9055723e594a62fd9e')
 
