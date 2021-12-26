@@ -3,13 +3,13 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://assault.cubers.net/'
 license=('ZLIB' 'custom')
-depends=('zlib' 'gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis')
-makedepends=('mesa' 'clang')
+depends=('zlib' 'gcc-libs')
+makedepends=('mesa' 'clang' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 source=("https://github.com/assaultcube/AC/releases/download/v${pkgver}/AssaultCube_v${pkgver}_LockdownEdition.tar.bz2"
         'assaultcube'
         'assaultcube-server'
@@ -29,11 +29,11 @@ prepare() {
 	cd "${_srcdir}"
 	sed -i 's/libSDL-1.2/libSDL-2.0/' 'check_install.sh'
 	sed -i 's|CUBE_OPTIONFILE=-Cconfig/servercmdline.txt|CUBE_OPTIONFILE=-C/etc/assaultcube/servercmdline.txt|' 'server.sh'
+	rm -rf 'source/include'
 	cd 'source/src'
 	FLAGS=${CLANG_CXXFLAGS:-}
 	check_option 'lto' 'y' && FLAGS+=' -flto'
 	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${FLAGS} -O3/" 'Makefile'
-	
 }
 
 build() {
@@ -55,7 +55,7 @@ package_assaultcube-common() {
 }
 
 package_assaultcube-client() {
-	depends=('assaultcube-common' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis')
+	depends=('assaultcube-common' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 	
 	install -dm755 "${pkgdir}/usr/share/games/assaultcube"
 	install -Dm755 "${_srcdir}"/{assaultcube.sh,check_install.sh,install_or_remove_menuitem.sh} \
