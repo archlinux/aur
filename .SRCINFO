@@ -1,6 +1,6 @@
 pkgbase = minq_xvideos-git
 	pkgdesc = Explore xvideos in your terminal! Videos can be either played in the terminal or in any external video player. Undesirable videos can be blocked.
-	pkgver = r25.7290dc99a6e636880a29e01cfb4ec13b4e972fad
+	pkgver = r31.550fa9be1a00551e3b59b4107b5f23737c8c251b
 	pkgrel = 1
 	url = https://github.com/kuche1/minq_xvideos.git
 	arch = x86_64
