@@ -43,7 +43,7 @@ pkgname = nautilus-typeahead
 	depends = gst-plugins-base-libs
 	depends = libhandy
 	depends = libportal-gtk3
-	depends = libnautilus-extension.so
+	depends = libnautilus-extension-typeahead
 	provides = nautilus
 	conflicts = nautilus
 

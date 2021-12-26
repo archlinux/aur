@@ -70,7 +70,7 @@ _pick() {
 }
 
 package_nautilus-typeahead() {
-  depends+=(libnautilus-extension.so)
+  depends+=(libnautilus-extension-typeahead)
   conflicts=(nautilus)
   provides=(nautilus)
   groups=(gnome)
