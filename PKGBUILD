@@ -1,45 +1,39 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
-# Based on original PKGBUILD by: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 
-## The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
-
-
-## Helpful internal stuff
-_commit=01306d0c67c5faa203994bab281c515b9d1248fa
-_mozcver=2.26.4577.102
-_utdicver=20211205
-
 pkgname='fcitx5-mozc-ut'
-pkgver=${_mozcver}.${_utdicver}
+pkgver=2.26.4596.102
 pkgrel=1
-pkgdesc='Mozc module for Fcitx5 bundled with the UT dictionary'
-arch=('i686' 'x86_64')
-url='https://github.com/fcitx/fcitx5'
-license=('custom')
-depends=('fcitx5' 'mozc-ut-common')
+pkgdesc='Mozc module for Fcitx5'
+arch=('x86_64')
+url='https://github.com/fcitx/mozc'
+license=('Apache' 'BSD' 'LGPL' 'custom')
+depends=('fcitx5' 'mozc=2.26.4596.102')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 optdepends=('fcitx5-configtool')
-conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
-           'fcitx-mozc-ut' 'fcitx5-mozc' 'fcitx5-mozc-git')
-provides=("fcitx5-mozc=${_mozcver}")
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
+conflicts=('fcitx-mozc' 'fcitx-mozc-ut' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
+           'fcitx5-mozc' 'fcitx5-mozc-git')
+provides=('fcitx5-mozc=2.26.4596.102')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=3735608"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            '93538498b6cd7262772e85362823134a0060ea06b71ca5983ee2f303852d81cd')
+            '142121a6d81139dd516508360237dfbfed5e50ffe343b16fcfa83ac49b5004f2')
 
 prepare() {
     cd ${pkgname}-git
 
     git submodule update --init --recursive
 
-    # Patch in the out-of-source fcitx5 target (found at https://github.com/fcitx/mozc)
+    # Patch in the out-of-source fcitx5 target (pulled from https://github.com/fcitx/mozc)
     patch -Np1 -i ${srcdir}/fcitx5.patch
 
+    cd src
+
     # Fix the Qt5 include path
-    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' src/config.bzl
+    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
 }
 
 build() {
@@ -51,8 +45,8 @@ build() {
 package() {
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/mozc/fcitx5-mozc
-    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/mozc/fcitx5-mozc-submodules
+    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/fcitx5-mozc/LICENSE
+    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/fcitx5-mozc/credits_en.html
 
     install -Dm755 bazel-bin/unix/fcitx5/fcitx5-mozc.so         ${pkgdir}/usr/lib/fcitx5/fcitx5-mozc.so
     install -Dm644 unix/fcitx5/mozc-addon.conf                  ${pkgdir}/usr/share/fcitx5/addon/mozc.conf
