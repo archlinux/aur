@@ -17,7 +17,7 @@ pkgver() {
 }
 
 package_chicago95-sddm-theme-git() {
-    provides=('chicago95-sddm-theme-git')
+    provides=('chicago95-sddm-theme')
 
     cd $_pkgname
 
