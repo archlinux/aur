@@ -1,6 +1,6 @@
 pkgbase = imgbrd-grabber-bin
 	pkgdesc = Unofficial binary installer for ImgBrd Grabber
-	pkgver = 7.6.2
+	pkgver = 7.7.0
 	pkgrel = 4
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = imgbrd-grabber-bin
 	depends = krb5
 	conflicts = imgbrd-grabber-git
 	options = !strip
-	source = imgbrd-grabber.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v7.6.2/Grabber_v7.6.2.tar.gz
+	source = imgbrd-grabber.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v7.7.0/Grabber_v7.7.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = imgbrd-grabber-bin
