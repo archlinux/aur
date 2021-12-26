@@ -1,0 +1,17 @@
+pkgbase = ctcontainer
+	pkgdesc = A container manager which enable you to experience otherlinux distro with xorg/xwayland and pulseaudio support
+	pkgver = 6
+	pkgrel = 6
+	url = https://ruzhtw.top/pages/projects/CenterLinux/ctcontainer
+	arch = x86_64
+	license = GPL-3.0 License
+	depends = fish
+	depends = sudo
+	depends = util-linux
+	depends = xorg-xhost
+	depends = pulseaudio
+	provides = ctcontainer
+	source = https://cdngit.ruzhtw.top/ctcontainer/ctcontainer
+	sha256sums = SKIP
+
+pkgname = ctcontainer
