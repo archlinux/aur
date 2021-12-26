@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgname=msamanda
 _name=MSAmanda2.0_Standalone_Linux
-pkgver=2.0.0.17442
+pkgver=2.0.0.18350
 pkgrel=1
 pkgdesc="A scoring system to identify peptides out of tandem mass spectrometry data using a database of known proteins"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mono')
 options=()
 source=("http://ms.imp.ac.at/index.php?file=msamanda/${_name}_${pkgver}.tar.gz"
         "msamanda")
-md5sums=('69d8c5a876d274af052fe1ac20d8a4e5'
+md5sums=('35a7d7f623040239ae9ef2ca18e1301f'
          'a870877935f5aed33fd0a7ec73e5abca')
 
 package() {

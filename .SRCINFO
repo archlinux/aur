@@ -1,15 +1,14 @@
 pkgbase = msamanda
 	pkgdesc = A scoring system to identify peptides out of tandem mass spectrometry data using a database of known proteins
-	pkgver = 2.0.0.17442
+	pkgver = 2.0.0.18350
 	pkgrel = 1
 	url = http://ms.imp.ac.at/index.php?action=ms-amanda
 	arch = any
 	license = custom
 	depends = mono
-	source = http://ms.imp.ac.at/index.php?file=msamanda/MSAmanda2.0_Standalone_Linux_2.0.0.17442.tar.gz
+	source = http://ms.imp.ac.at/index.php?file=msamanda/MSAmanda2.0_Standalone_Linux_2.0.0.18350.tar.gz
 	source = msamanda
-	md5sums = 69d8c5a876d274af052fe1ac20d8a4e5
+	md5sums = 35a7d7f623040239ae9ef2ca18e1301f
 	md5sums = a870877935f5aed33fd0a7ec73e5abca
 
 pkgname = msamanda
-
