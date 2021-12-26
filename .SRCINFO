@@ -1,9 +1,10 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
-	pkgver = 3.7.1
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	install = rocketchat-desktop.install
+	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	makedepends = node-gyp
@@ -11,10 +12,10 @@ pkgbase = rocketchat-desktop
 	makedepends = asar
 	depends = electron
 	depends = nodejs>=14.17.0
-	source = rocketchat-desktop-3.7.1.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/3.7.1/rocketchat-desktop-3.7.1.tar.gz
+	source = rocketchat-desktop-3.7.2.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/3.7.2/rocketchat-desktop-3.7.2.tar.gz
 	source = rocketchat-desktop
 	source = rocketchat-desktop.desktop
-	sha256sums = 6800c888c891a206dba4178f7caf35794ce3f1bcec566f1260dd4eb388bdfb28
+	sha256sums = c0d7bcf5cc54dc0eee3df26265b857813bc2ed2c2eea16ba46dc36b6019073f2
 	sha256sums = 5fe8f552b4ac1917a1bb08e86f957e9b892220a2aab59b88e8256e2e092e1b1c
 	sha256sums = 31fae4f98a61a774f84030fd43d2ef92c7633740dc5aa55967a21d0e29ea621a
 
