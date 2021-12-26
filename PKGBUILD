@@ -2,7 +2,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-server
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="Python PyPi staging server and release tool"
 arch=('any')
@@ -34,7 +34,7 @@ source=(
   'devpi-server.service'
   'devpi-server.sysusers'
   'devpi-server.tmpfiles')
-sha256sums=('48f20f9becbb6340ab786c3223b91023a38ebdaa70b19ac05094a69da86262aa'
+sha256sums=('e133dc6974d65664e4cc62eb5bdeea577a3b27748ebdf9c83eb98b4c5ac551e9'
             '1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95'
             '4327d0e72b277ef7b05dfb4b3bac6ab4c70d55a96c9ad114a90ebb00c954bd48'
             'bcd2321ff41bebcf08392ca02dbfaa0ac2693eba3432f0e5793ff384753ce0f1')
