@@ -1,3 +1,6 @@
+# Maintainer: Carson Rueter <roachh at proton mail dot com>
+# Co-Maintainer: George Sofianos
+
 # Release notes https://rocmdocs.amd.com/en/latest/Current_Release_Notes/Current-Release-Notes.html
 major='21.40.2'
 minor='1350682'
@@ -14,15 +17,15 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=${major}.${minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
-depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl' 'opencl-amd-ncurses5')
+depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl')
 conflicts=('rocm-opencl-runtime')
 provides=('opencl-driver')
-optdepends=('clinfo' 'opencl-amd-dev')
+optdepends=('clinfo' 'opencl-amd-dev' 'opencl-amd-ncurses5' 'ncurses5-compat-libs')
 
 source=(
 "https://repo.radeon.com/rocm/apt/4.5.2/pool/main/r/rocm-core/rocm-core_4.5.2.40502-164_amd64.deb"
@@ -141,6 +144,9 @@ package() {
 	exz "${srcdir}/rocm-gdb_11.1.40502-164_amd64.deb"	
 	exz "${srcdir}/opencl-legacy-amdgpu-pro-icd_21.40.2-1350682_amd64.deb"
 
+	cd ${srcdir}/${amdgpu_pro}
+	sed -i "s|libdrm_amdgpu|libdrm_amdgpo|g" libamdocl-orca64.so
+
 	cd ${srcdir}/${amdgpu}
 	rm "libdrm_amdgpu.so.1"
 	mv "libdrm_amdgpu.so.1.0.0" "libdrm_amdgpo.so.1.0.0"
@@ -165,5 +171,6 @@ package() {
 	echo libamdocl-orca64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl-orca64.icd"
 
 	mkdir -p ${pkgdir}/etc/ld.so.conf.d
-	echo /opt/rocm-4.5.2/opencl/lib > "$pkgdir/etc/ld.so.conf.d/opencl-amd.conf"	
+	echo /opt/rocm-4.5.2/opencl/lib > "$pkgdir/etc/ld.so.conf.d/opencl-amd.conf"
+	echo /opt/rocm-4.5.2/lib >> "$pkgdir/etc/ld.so.conf.d/opencl-amd.conf"
 }
