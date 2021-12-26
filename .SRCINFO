@@ -1,0 +1,14 @@
+pkgbase = progynosh
+	pkgdesc = A dev manager for dev fish shell script eaiser
+	pkgver = 6
+	pkgrel = 6
+	url = https://ruzhtw.top/pages/projects/progynosh
+	arch = x86_64
+	license = GPL-3.0 License
+	depends = fish
+	depends = sudo
+	provides = progynosh
+	source = https://raw.githubusercontent.com/happyeggchen/Progynosh/main/progynosh
+	sha256sums = SKIP
+
+pkgname = progynosh
