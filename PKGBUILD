@@ -2,7 +2,7 @@
 pkgbase=dune-mmesh
 pkgname=(${pkgbase} python-${pkgbase})
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MMesh is a grid implementation based on CGAL triangulations"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
@@ -49,7 +49,7 @@ package_dune-mmesh() {
 }
 
 package_python-dune-mmesh() {
-  depends=('dune-mmesh>=2.8.0' 'python-dune-fem>=2.8.0')
+  depends=('dune-mmesh>=1.3.1' 'python-dune-fem>=2.8.0')
   pkgdesc+=" (python bindings)"
   cd "build-cmake/python"
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
