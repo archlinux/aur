@@ -2839,4 +2839,32 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.2.89 fix: fix futures_index_cscidx interface
 
 1.2.90 fix: fix stock_board_industry_index_ths interface
+
+1.2.91 fix: fix fund_etf_hist_sina interface
+
+1.2.92 fix: fix futures_zh_spot interface
+
+1.2.93 fix: fix fund_manager interface
+
+1.2.94 fix: fix fund_em_new_found interface
+
+1.2.95 add: add stock_individual_info_em interface
+
+1.2.96 add: add match_main_contract interface
+
+1.2.97 fix: fix stock_profit_forecast interface
+
+1.2.98 fix: fix futures_spot_stock interface
+
+1.2.99 fix: fix PYPI info
+
+1.3.1 fix: fix option_shfe_daily interface
+
+1.3.2 fix: remove github interface
+
+1.3.3 fix: fix stock_em_ztb interface
+
+1.3.4 fix: fix stock_em_hsgt_stock_statistics interface
+
+1.3.5 fix: update QQ info
 ```
