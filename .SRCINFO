@@ -1,7 +1,7 @@
 pkgbase = mediaelch-git
 	pkgdesc = MediaElch is a MediaManager for Kodi
 	pkgver = 2.8.12.r81.g1b44628f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Komet/MediaElch
 	arch = x86_64
 	license = LGPL3
