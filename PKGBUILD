@@ -1,11 +1,11 @@
-#Maintainer: VerruckteFuchs <derverrucktefuchs@gmail.com>
+# Maintainer: Cole Deck <cole at deck dot sh>
 pkgname=fw-ectool-git
-_gitname=fw-ectool
+_gitname=ectool
 pkgver=r21603.35580ec63
 pkgrel=1
 pkgdesc="ectool for the Framework laptop."
 arch=(x86_64)
-url="https://chromium.googlesource.com/chromiumos/platform/ec"
+url="https://www.howett.net/posts/2021-12-framework-ec/#software"
 provides=('ectool')
 depends=()
 makedepends=('inetutils')
@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd "$srcdir/fw-ectool"
-  install -Dm755 "$srcdir/fw-ectool/build/bds/util/ectool" "$pkgdir/usr/bin/ectool"
+  install -Dm755 build/bds/util/ectool "$pkgdir/usr/bin/ectool"
   printf "#!/bin/bash\n/usr/bin/ectool --interface=fwk \$@" > "$pkgdir/usr/bin/fw-ectool"
   chmod +x "$pkgdir/usr/bin/fw-ectool"
   # install license
