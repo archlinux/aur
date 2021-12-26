@@ -1,0 +1,7 @@
+src
+pkg
+*.zst
+*.asar
+*.xz
+*.tar
+AltServer-*
