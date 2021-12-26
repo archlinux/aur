@@ -1,6 +1,6 @@
 pkgbase = dt-cli
-	pkgdesc = Syncing dotfiles and more
-	pkgver = 0.5.2
+	pkgdesc = $HOME, $HOME everywhere
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://dt.cli.rs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = dt-cli
 	provides = dt-cli
 	conflicts = dt-cli-git
 	conflicts = dt-cli-bin
-	source = https://github.com/blurgyy/dt/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = adb6b79bf9bd5100964cce8c14cb5bd0a1284f8eb6d439d677e582b3b9b44dc2
+	source = https://github.com/blurgyy/dt/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 57fa1775acd0b4644f3b460981097f6daf0c1dbcf9498842bd0c87ddb0c07394
 
 pkgname = dt-cli

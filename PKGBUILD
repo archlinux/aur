@@ -1,9 +1,9 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 epoch=
-pkgdesc="Syncing dotfiles and more"
+pkgdesc="\$HOME, \$HOME everywhere"
 arch=("any")
 url="https://dt.cli.rs"
 license=('MIT OR Apache 2.0')
@@ -23,7 +23,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("adb6b79bf9bd5100964cce8c14cb5bd0a1284f8eb6d439d677e582b3b9b44dc2")
+sha256sums=("57fa1775acd0b4644f3b460981097f6daf0c1dbcf9498842bd0c87ddb0c07394")
 noextract=()
 validpgpkeys=()
 
