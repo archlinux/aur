@@ -1,0 +1,34 @@
+diff --color --unified --recursive --text src/siyuan-1.5.4-linux/resources/app/electron/main.js src-new/siyuan-1.5.4-linux/resources/app/electron/main.js
+--- src/siyuan-1.5.4-linux/resources/app/electron/main.js	2021-11-28 22:50:54.000000000 +0800
++++ src-new/siyuan-1.5.4-linux/resources/app/electron/main.js	2021-12-26 11:08:16.719726672 +0800
+@@ -158,7 +158,7 @@
+   })
+ 
+   mainWindow.webContents.on('did-finish-load', () => {
+-    if ('win32' === process.platform) {
++    if ('linux' === process.platform || 'win32' === process.platform) {
+       siyuanOpenURL = process.argv.find((arg) => arg.startsWith('siyuan://'))
+     }
+     if (siyuanOpenURL) {
+@@ -341,11 +341,20 @@
+     })
+   })
+ 
+-  if ('win32' === process.platform) {
++  if ('linux' === process.platform || 'win32' === process.platform) {
+     // 系统托盘
+     tray = new Tray(path.join(appDir, 'stage', 'icon.png'))
+     tray.setToolTip('SiYuan')
+     const trayMenuTemplate = [
++      { //Modified
++        label: 'Show',
++        click: () => {
++            if (mainWindow.isMinimized()) {
++                mainWindow.restore()
++            }
++            mainWindow.show()
++        }
++      },
+       {
+         label: 'Quit',
+         click: () => {

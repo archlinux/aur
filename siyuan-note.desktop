@@ -8,4 +8,5 @@ Icon=siyuan-note
 StartupWMClass=siyuan
 Comment=A local-first personal knowledge management system
 Categories=Utility;
-Keywords=siyuan-note
+MimeType=x-scheme-handler/siyuan;
+Keywords=siyuan-note;siyuan
