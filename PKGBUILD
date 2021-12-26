@@ -2,7 +2,7 @@
 
 pkgbase=linux-git-rtw89
 pkgver=5.16rc6.r192.g438645193e59
-pkgrel=1
+pkgrel=2
 pkgdesc='A copy of the linux-git package with the RTW89 driver enabled as a module.'
 url="https://www.kernel.org"
 arch=(x86_64)
@@ -11,6 +11,7 @@ makedepends=(
   bc kmod libelf git pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
+conflicts=('linux-git' 'linux-git-docs' 'linux-git-headers')
 options=('!strip')
 _srcname=linux
 source=(
