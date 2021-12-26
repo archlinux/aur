@@ -20,11 +20,12 @@ pkgver() {
   git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname%-git}"
-  sed 's|quazip5/|QuaZip-Qt5-1.1/quazip/|g' -i src/*/*.cpp src/*/*.h
-  sed 's|quazip5|quazip1-qt5|g' -i */CMakeLists.txt */*/CMakeLists.txt MediaElch.pro
-}
+#prepare() {
+#  cd "${srcdir}/${pkgname%-git}"
+#No submodule-trickery. Use QuaZip (quazip-1-2) from system
+#  sed 's|quazip5/|QuaZip-Qt5-1.2/quazip/|g' -i src/*/*.cpp src/*/*.h
+#  sed 's|quazip5|quazip1-qt5|g' -i */CMakeLists.txt */*/CMakeLists.txt MediaElch.pro
+#}
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
