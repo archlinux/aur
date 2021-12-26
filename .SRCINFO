@@ -1,0 +1,24 @@
+pkgbase = emacs-mozc
+	pkgdesc = Mozc module for Emacs
+	pkgver = 2.26.4596.102
+	pkgrel = 1
+	url = https://github.com/google/mozc
+	arch = x86_64
+	license = Apache
+	license = BSD
+	license = LGPL
+	license = custom
+	makedepends = bazel
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = python-six
+	makedepends = qt5-base
+	depends = emacs
+	depends = mozc=2.26.4596.102
+	conflicts = emacs-mozc-ut2
+	conflicts = emacs-mozc-ut-united
+	conflicts = emacs-mozc-ut
+	source = emacs-mozc-git::git+https://github.com/google/mozc.git#commit=3735608
+	sha256sums = SKIP
+
+pkgname = emacs-mozc
