@@ -8,8 +8,7 @@ arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
 license=('GPL3')
 makedepends=('dune-fem>=2.8.0' 'boost' 'texlive-core' 'doxygen' 'graphviz' 'python-setuptools')
-optdepends=('openmpi: for mpi support'
-  'vc: C++ Vectorization library'
+optdepends=('vc: C++ Vectorization library'
   'texlive-core: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
