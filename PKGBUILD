@@ -2,13 +2,13 @@
 
 pkgname="xsnow-bin"
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Let it snow on your desktop"
 url="https://sourceforge.net/projects/xsnow/"
 license=("GPL3")
 arch=("x86_64" "i386" "armv7h" "aarch64")
 provides=("xsnow")
-conflicts=("xsnow")
+conflicts=("xsnow" "xsnow-legacy" "xsnow-comp-patch-git")
 depends=("atk" "cairo" "gtk3" "libx11" "libxpm" "libxml2")
 source_x86_64=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_amd64.deb")
 source_i386=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_i386.deb")
@@ -28,10 +28,8 @@ package(){
  install -d 755 "usr/share/doc/licenses/xsnow"
  mv "usr/games/xsnow" "usr/bin"
  rm -r "usr/games"
-
  gunzip -f "usr/share/doc/xsnow/changelog.gz"
  rm "usr/share/doc/xsnow/changelog.Debian.gz"
  mv "usr/share/doc/xsnow/copyright" "usr/share/doc/licenses/xsnow/LICENSE"
-
  cp -r "usr" "$pkgdir"
 }
