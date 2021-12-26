@@ -1,14 +1,14 @@
 pkgbase = docker4ssh
 	pkgdesc = Docker containers and more via ssh
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ByteDream/docker4ssh
 	arch = x86_64
 	license = AGPL3
 	makedepends = go
 	makedepends = rustup
-	makedepends = sqlite3
-	source = docker4ssh-0.1.1.tar.gz::https://github.com/ByteDream/docker4ssh/archive/v0.1.1.tar.gz
-	sha256sums = fbcc69f8f40beb4376739d2ecb0878addc88ddf29fc2c510348b586a64fc7e51
+	makedepends = sqlite
+	source = docker4ssh-0.1.2.tar.gz::https://github.com/ByteDream/docker4ssh/archive/v0.1.2.tar.gz
+	sha256sums = 5a4b3ec49c697147b2cbe504c4bc6057a30fa8cb2e2465d83f75cd4895f8b534
 
 pkgname = docker4ssh
