@@ -1,17 +1,18 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Co-Maintainer: AlphaJack <alphajack at tuta dot io>
+# Co-Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname="xsnow-legacy"
 pkgver=1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Display snow, Santa and his reindeers on the root window"
 url="https://janswaal.home.xs4all.nl/Xsnow/"
 license=("custom")
 arch=("x86_64" "i686")
 depends=("libxpm")
 makedepends=("imake")
-conflicts=("xsnow" "xsnow-bin")
+provides=("xsnow")
+conflicts=("xsnow" "xsnow-bin" "xsnow-comp-patch-git")
 source=("https://janswaal.home.xs4all.nl/Xsnow/xsnow-$pkgver.tar.gz"
         "LICENSE")
 sha256sums=("d0d7c8f1fb91ca096995b1c30797e8f443c2e97d6f1e5f574b31318ed05d561a"
