@@ -2,9 +2,9 @@
 
 pkgname=mediaelch-git
 pkgver=2.8.12.r81.g1b44628f
-pkgrel=1
+pkgrel=2
 pkgdesc='MediaElch is a MediaManager for Kodi'
-url='https://www.mediaelch.de/mediaelch/'
+url='https://github.com/Komet/MediaElch'
 arch=('x86_64')
 license=('LGPL3')
 depends=('glibc' 'gcc-libs' 'libmediainfo' 'qt5-declarative' 'qt5-multimedia'
@@ -12,9 +12,8 @@ depends=('glibc' 'gcc-libs' 'libmediainfo' 'qt5-declarative' 'qt5-multimedia'
 makedepends=('cmake' 'ninja' 'qt5-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/Komet/MediaElch.git")
+source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
-
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -29,7 +28,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
- cmake -B build \
+  cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DDISABLE_UPDATER=ON \
@@ -43,4 +42,3 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
   DESTDIR="${pkgdir}" ninja -C build install
 }
-
