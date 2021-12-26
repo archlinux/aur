@@ -1,11 +1,11 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=4.5.1_1
-_commit=3ac39a56e407d19e8d9d193fad14a75b10b40799
+pkgver=4.6.0
+_commit=ba4b4791c12b7e3d97148f413dfd3c549e73c335
 _db_version=6.2.23
 _db_sha256_hash=47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7
-pkgrel=2
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
