@@ -1,13 +1,13 @@
 pkgbase = vim-asyncrun
 	pkgdesc = Vim plugin for executing shell commands asynchronously
-	pkgver = 2.9.5
+	pkgver = 2.9.7
 	pkgrel = 1
 	url = https://github.com/skywind3000/asyncrun.vim
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	depends = vim-plugin-runtime
-	source = vim-asyncrun-2.9.5.tar.gz::https://github.com/skywind3000/asyncrun.vim/archive/refs/tags/2.9.5.tar.gz
-	sha256sums = 147fbb382873f836b99df96111b4d2c68c831c18b6e896a2fad96affe45cedb1
+	source = vim-asyncrun-2.9.7.tar.gz::https://github.com/skywind3000/asyncrun.vim/archive/refs/tags/2.9.7.tar.gz
+	sha256sums = 1bb2b459d8485dd416ddc0cd286e941baedf86342283cf81d00a8697305fb97e
 
 pkgname = vim-asyncrun
