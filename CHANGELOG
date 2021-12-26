@@ -1,11 +1,41 @@
 x.y.z
 =====
 
+Release date:
+
 New features:
 
 Bug fixes:
 
 Other:
+
+3.1.0
+=====
+
+Release date:
+
+Fri, 24 Dec 2021 12:47:41 +0200
+
+New features:
+
+* Option to automatically snap existing nodes to grid
+
+* Option for dashed lines in the edge context menu
+
+Bug fixes:
+
+* Fix GitHub Issue #186: Icon is installed in /usr/share/icons/hicolor/64x64 but actual size is 256x256
+
+* Fix GitHub Issue #188: Double-clicking on a large node zooms in incorrectly
+
+* Fix GitHub Issue #189: Export to PNG breaks zoom out
+
+* Fix GitHub Issue #190: Export to PNG works only once
+  - Fixes the same issue with SVG export, too
+
+Other:
+
+* Simplify edge context menu
 
 3.0.0
 =====
@@ -22,9 +52,7 @@ New features:
 
 Bug fixes:
 
-* Fix autosave not triggering immediately on file operations
-
-Other:
+* Fix auto save not triggering immediately on file operations
 
 2.8.0
 =====

@@ -3,7 +3,7 @@
 # Contributor: davedatum <ask at davedatum dot com>
 
 pkgname=heimer
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Cross-platform mind map, diagram, and note-taking tool written in Qt"
 arch=("x86_64")
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'qt5-svg')
 makedepends=('cmake' 'qt5-tools')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f4bd37c9f92366546d3c4b278cbf38c2842617d8e980ce71248115181795f46b')
+sha256sums=('fe1331ba03a60e1ba6a8a8c42f281e109939a4eeb26632f84610a9a524397beb')
 
 build() {
 	cmake \
@@ -28,5 +28,5 @@ build() {
 package() {
 	DESTDIR="$pkgdir/" make install -C build
 	cd "Heimer-$pkgver"
-	install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
