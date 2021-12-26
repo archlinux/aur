@@ -1,15 +1,14 @@
 pkgbase = python-flynt
 	pkgdesc = automatically convert old string literal formatting to f-strings
 	pkgver = 0.69
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/ikamensh/flynt
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-astor
-	source = flynt-0.69.tar.gz::https://github.com/ikamensh/flynt/archive/refs/tags/0.69.tar.gz
+	source = python-flynt-0.69.tar.gz::https://github.com/ikamensh/flynt/archive/refs/tags/0.69.tar.gz
 	b2sums = f456b83b0b2ca2a8c2ab9fc2d7bb3ab8b4bcf0c348d521da43c4dc599544620bc513632634c24571fa0b6ae339fabdc8377793b4603af5ca41c9f90050700292
 
 pkgname = python-flynt
