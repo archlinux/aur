@@ -3,7 +3,7 @@
 pkgname=jadx-bin
 _pkgname=jadx
 _pkgguiname=jadx-gui
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Command line and GUI tools to produce Java source code from Android Dex and APK files"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('unzip' 'gendesk')
 provides=('jadx')
 conflicts=('jadx')
 source=(https://github.com/skylot/jadx/releases/download/v$pkgver/jadx-$pkgver.zip)
-sha256sums=('29c831c49f53df86c65b5d0c94b8335c7cf78b64b42cc222c6ce9b73ebc6d731')
+sha256sums=('0774347530fa5a008dcc10e3b55f03a72141dd34ffd7e5addee18db06d0a151f')
 
 prepare() {
     gendesk -f -n \
