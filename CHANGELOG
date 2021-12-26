@@ -1,5 +1,12 @@
 jellex changelog
 
+20211212 v0.5.1
+- Fix exception handling
+
+20211212 v0.5.0
+- Add a Schema viewer window above the Status window
+- Strip leading and trailing whitespace from the query text on exit
+
 20210730 v0.4.0
 - Include CHANGELOG in source distribution
 - Add automatic completions for current list indicies and key names
