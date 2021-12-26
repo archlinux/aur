@@ -1,16 +1,16 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python-social-auth-app-django
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Python Social Auth Django component'
 arch=('any')
 url='https://github.com/python-social-auth/social-app-django'
 license=('BSD')
-depends=('python-social-auth-core')
+depends=('python-social-auth-core>=4.1.0')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('5c030bf14c101b26a9039aa4395507b03f70be3a1ba1001f49c550108d0b51d1')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('ce4ff34d1dfba4678a4c96b8bae854a8a3d509dbb511340363ec3d5f690de71a')
 
 build() {
 
