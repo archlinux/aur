@@ -1,13 +1,13 @@
 # Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=ftba
-pkgver=202111051727_fc8797cf31_release
+pkgver=202112101445_bdf8bdbaca_release
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(any)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb" "ftbapp.desktop")
-sha256sums=('35aa61ff538eda02bbc98f68fbeb21e8ff2cd7de035a91206474663206e19487'
+sha256sums=('ea26381dfd15c61bb756f7b9335e58d8cb38b2746528a92322d591bf4a27b182'
             '72e6e0b01e790e416ab1ac215b7179f968156d10be5b36fad656a4f084778db6')
 license=("LGPL2")
 depends=("java-runtime=8" "java-runtime=11" "avahi") # Crashes without libavahi-common.so.3
