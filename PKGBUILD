@@ -24,6 +24,7 @@ package() {
 Name=Syphon
 Type=Application
 Comment=Privacy-focused Matrix client
+Exec=syphon
 Icon=syphon
 END
     ln -s ${pkgdir}/usr/lib/libjsoncpp.so.1.* ${pkgdir}/usr/lib/libjsoncpp.so.1
