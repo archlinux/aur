@@ -22,7 +22,6 @@ pkgbase = linux-git-rtw89
 	sha256sums = 6c10c09e0c1fcca36b632c479a2fda15c883643f80731777c536685ed88152fd
 
 pkgname = linux-git-rtw89
-	pkgdesc = The linux-git-rtw89 kernel and modules.
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
