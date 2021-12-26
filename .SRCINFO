@@ -1,6 +1,6 @@
 pkgbase = dt-cli-git
-	pkgdesc = Syncing dotfiles and more
-	pkgver = v0.5.2
+	pkgdesc = $HOME, $HOME everywhere
+	pkgver = git
 	pkgrel = 1
 	url = https://dt.cli.rs
 	arch = any

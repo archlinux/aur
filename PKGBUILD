@@ -1,9 +1,9 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-git
-pkgver=v0.5.2
+pkgver=git
 pkgrel=1
 epoch=
-pkgdesc="Syncing dotfiles and more"
+pkgdesc="\$HOME, \$HOME everywhere"
 arch=("any")
 url="https://dt.cli.rs"
 license=('MIT OR Apache 2.0')
