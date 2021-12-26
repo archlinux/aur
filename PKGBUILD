@@ -4,7 +4,7 @@
 
 
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.1.47913.d316ca1665
+pkgver=6.5.1.47926.7ae250d510
 pkgrel=1
 _branch="${AL_GIT_BRANCH:=main}"
 pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - git version"
@@ -62,7 +62,7 @@ build() {
         fi
     fi
     pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-    autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=ON -DVIEWER_CHANNEL="Alchemy Test"
+    autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=$(grep -cq '[^!]lto' <<< $OPTIONS && echo 'ON' || echo 'OFF') -DVIEWER_CHANNEL="Alchemy Test"
 
   cd "build-linux-64" || exit 1
   if ninja -j"$(nproc)"; then
