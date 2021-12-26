@@ -2,13 +2,13 @@
 
 pkgname=vpncloud
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
 url="https://vpncloud.ddswd.de/"
 license=('GPL')
 groups=()
-makedepends=('rust' 'cargo' 'git' 'asciidoctor')
+makedepends=('cargo' 'git' 'asciidoctor')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/dswd/vpncloud/archive/refs/tags/v${pkgver}.tar.gz
 		vpncloud@.service)
 backup=(etc/vpncloud/example.net.disabled)

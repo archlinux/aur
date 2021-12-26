@@ -1,11 +1,10 @@
 pkgbase = vpncloud
 	pkgdesc = Peer-to-peer VPN
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vpncloud.ddswd.de/
 	arch = x86_64
 	license = GPL
-	makedepends = rust
 	makedepends = cargo
 	makedepends = git
 	makedepends = asciidoctor
