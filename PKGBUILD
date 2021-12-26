@@ -1,12 +1,13 @@
 pkgname=rdis-git
 pkgrel=1
-pkgver=20140126
+pkgver=20200602
 pkgdesc="A graphic binary analysis tool. Check rdis-lua for some scripts that improve its functionality. "
 arch=(x86_64)
 url="https://github.com/endeav0r/rdis"
 license=('GPL3')
 depends=('gtk3' 'luajit' 'jansson' 'udis86')
-source=("git+http://github.com/endeav0r/rdis.git")
+makedepends=('git')
+source=("git+https://github.com/endeav0r/rdis.git")
 md5sums=('SKIP')
 
 pkgver() {
