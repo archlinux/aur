@@ -1,14 +1,14 @@
 # Maintainer: Funami
 pkgname=cargo-clone
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A cargo subcommand to fetch the source code of a Rust crate"
 arch=('x86_64')
 url="https://github.com/JanLikar/cargo-clone"
 license=('APACHE' 'MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('780cf44ecfc22974e6f7bf17ad98893450780f5cf47b86dbe47cda4eb12c212a')
+sha256sums=('c4f88e55208ca93c21a8fdd1cd2be16004e1e2ab4ca4aa3d57acb832e749fdd9')
 
 prepare() {
   cd "$pkgname-$pkgver"
