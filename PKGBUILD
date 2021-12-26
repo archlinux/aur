@@ -6,7 +6,7 @@ pkgver=0.6.r17.ge27581d
 pkgrel=4
 pkgdesc="Prometheus exporter for S.M.A.R.T. metrics using smartctl"
 arch=(x86_64)
-url="https://github.com/Sheridan/smartctl_exporter"
+url="https://github.com/prometheus-community/smartctl_exporter"
 license=(LGPL3)
 depends=(smartmontools)
 makedepends=(go git)
@@ -33,9 +33,9 @@ prepare() {
   go mod vendor
   mkdir -p build
 
-  # patch for https://github.com/Sheridan/smartctl_exporter/pull/18
+  # patch for https://github.com/prometheus-community/smartctl_exporter/pull/18
   patch -Np1 < "../${_pkgname}_return_cached_value.patch"
-  # patch for https://github.com/Sheridan/smartctl_exporter/pull/28
+  # patch for https://github.com/prometheus-community/smartctl_exporter/pull/28
   patch -Np1 < "../${_pkgname}_skip_vendor_specific_stats.patch"
 }
 
