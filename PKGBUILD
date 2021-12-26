@@ -3,19 +3,19 @@
 
 pkgname=tableplus
 pkgver=0.1.178
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64')
 url='https://tableplus.com/'
 license=('custom')
-depends=('gtksourceview3' 'libgee' 'gnome-keyring')
+depends=('gtksourceview3' 'libgee'  'gnome-keyring')
 source=('LICENSE'
-        "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb")
+        "tableplus_${pkgver}_${pkgrel}_amd64.deb::https://deb.tableplus.com/debian/21/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb")
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            '700e3b01fb87c6f9563da38bf0a8ed473f5176eb6abc6ed70d10ed1f3d05fb7f')
+            'e45ac2d97bd8852c0a0eaa9b7c8c90225696d37777ba4853b83cd5b1cf2996cc')
 
 prepare() {
-    tar -xf "${srcdir}/data.tar.xz"
+    tar -xf "${srcdir}/data.tar.zst"
 }
 
 package() {
