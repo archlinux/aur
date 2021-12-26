@@ -17,6 +17,7 @@ pkgbase = dune-fem
 	optdepends = graphviz: Graph visualization software
 	optdepends = eigen: Lightweight C++ template library for vector and matrix math
 	optdepends = papi: for events supported
+	optdepends = dune-spgrid: for implement structured, parallel grid
 	optdepends = dune-polygongrid: for implement DUNE grid consisting of polygons
 	source = https://gitlab.dune-project.org/dune-fem/dune-fem/-/archive/v2.8.0.5/dune-fem-v2.8.0.5.tar.gz
 	sha512sums = 13f3fb74c2a9e98c6d28a6e57c5f767d636a9f1d59ad5953bc80da70f0e0e83231c581b182d96f785b058387ecc47d5238201ae8106d2629a479b7f04856c6fe

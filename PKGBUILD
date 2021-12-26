@@ -14,7 +14,7 @@ optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
   'eigen: Lightweight C++ template library for vector and matrix math'
   'papi: for events supported'
-  # 'dune-spgrid: for '
+  'dune-spgrid: for implement structured, parallel grid'
   'dune-polygongrid: for implement DUNE grid consisting of polygons')
 source=(https://gitlab.dune-project.org/${pkgbase}/${pkgbase}/-/archive/${_tar})
 sha512sums=('13f3fb74c2a9e98c6d28a6e57c5f767d636a9f1d59ad5953bc80da70f0e0e83231c581b182d96f785b058387ecc47d5238201ae8106d2629a479b7f04856c6fe')
