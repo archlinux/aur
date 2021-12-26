@@ -123,7 +123,7 @@ download_check (){
 }
 
 uninstall (){
-	rm -r $INSTALL_PARENT
+	rm -r $INSTALL_PATH
 	delete_cache
 }
 
@@ -159,7 +159,7 @@ Actual File checksum: $(getfilechecksignature)"
 }
 
 mkdir -p $DOWNLOAD_PATH
-cd $DOWNLOAD_PATH
+cd $DOWNLOAD_PATH || exit
 case $1 in
 	'install'| 'reinstall')
 		download_check
