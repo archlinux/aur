@@ -1,5 +1,5 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
-# Based on original PKGBUILD by: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
@@ -7,26 +7,21 @@
 ## The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 
-## Helpful internal stuff
-_commit=01306d0c67c5faa203994bab281c515b9d1248fa
-_mozcver=2.26.4577.102
-_utdicver=20211205
-
 pkgname='mozc-ut-common'
-pkgver=${_mozcver}.${_utdicver}
+pkgver=2.26.4596.102.20211226
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
 url='https://github.com/google/mozc'
-license=('custom')
+license=('Apache' 'BSD' 'LGPL' 'custom')
 depends=('qt5-base')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six')
-conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
-provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/37/37279/mozcdic-ut-${_utdicver}.tar.bz2")
+conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-ut-united' 'mozc-neologd-ut+ut2')
+provides=('mozc=2.26.4596.102')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=3735608"
+        "https://osdn.net/downloads/users/37/37414/mozcdic-ut-20211226.tar.bz2")
 sha256sums=('SKIP'
-            '20c54170391e8e5037310ede7f0bf335e44d6e7471f485e468365ef382c72685')
+            'ad770a81714efe4c4b380a0eae8f32139d24af90a4fe5ab5a726d651b280e488')
 
 prepare() {
     cd ${pkgname}-git
@@ -39,7 +34,7 @@ prepare() {
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
 
     # Add the UT dictionary
-    cat ${srcdir}/mozcdic-ut-${_utdicver}/mozcdic-ut-${_utdicver}.txt >> data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-20211226/mozcdic-ut-20211226.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
@@ -49,12 +44,12 @@ build() {
 }
 
 package() {
-    #install -Dm644 mozcdic-ut-${_utdicver}/COPYING              ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
+    install -Dm644 mozcdic-ut-20211226/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/mozc/mozc
-    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/mozc/mozc-submodules
+    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/mozc/LICENSE
+    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/mozc/credits_en.html
 
     install -Dm755 bazel-bin/server/mozc_server                 ${pkgdir}/usr/lib/mozc/mozc_server
     install -Dm755 bazel-bin/gui/tool/mozc_tool                 ${pkgdir}/usr/lib/mozc/mozc_tool
