@@ -1,0 +1,14 @@
+pkgbase = opencl-amd-dev
+	pkgdesc = OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack.
+	pkgver = 21.40.2.1350682
+	pkgrel = 1
+	url = http://www.amd.com
+	arch = x86_64
+	license = custom:AMD
+	makedepends = wget
+	depends = opencl-amd
+	conflicts = rocm-opencl-runtime
+	source = https://repo.radeon.com/rocm/apt/4.5.2/pool/main/r/rocm-llvm/rocm-llvm_13.0.0.21432.40502_amd64.deb
+	sha256sums = abf2fff149b37fcd7deeac89124ba519d5efe77bb989d79e09020deb07d2feb3
+
+pkgname = opencl-amd-dev
