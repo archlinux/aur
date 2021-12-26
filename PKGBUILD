@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2151
+pkgver=1.7.2163
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -28,21 +28,26 @@ depends=(
   soundtouch
   wxgtk3
   wayland
+  rapidyaml-git # only exists in the AUR
 )
 makedepends=(
   cmake
   git
   xorgproto
   ninja
+  swig
+  python-setuptools
+  python-setuptools-scm
+  python-cmake-build-extension
 )
 provides=(pcsx2)
 conflicts=(pcsx2)
 source=(git+https://github.com/PCSX2/pcsx2.git
 git+https://github.com/fmtlib/fmt.git
-git+https://github.com/jbeder/yaml-cpp.git
 git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git
-git+https://github.com/mozilla/cubeb.git)
+git+https://github.com/mozilla/cubeb.git
+)
 sha256sums=(SKIP)
 
 pkgver()
@@ -56,11 +61,16 @@ prepare()
   cd $srcdir/pcsx2/3rdparty
   git submodule init
   git config submodule.https://github.com/fmtlib/src/fmt.git.url fmt
-  git config submodule.https://github.com/jbeder/yaml-cpp.git.url yaml-cpp
   git config submodule.https://github.com/rtissera/libchdr.git.url libchdr
   git config submodule.https://github.com/google/googletest.git.url gtest
   git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
+  git config submodule.https://github.com/biojppm/rapidyaml.git rapidyaml
   git submodule update
+
+  # Restore when rapidyaml isn't borked
+  #git clone https://aur.archlinux.org/rapidyaml-git.git
+  #cd rapidyaml-git
+  #makepkg -i
 
 }
 
@@ -72,6 +82,7 @@ build()
   cmake ../pcsx2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_SYSTEM_YAML=TRUE \
     -DWAYLAND_API=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
@@ -87,7 +98,6 @@ package()
 
 # vim: ts=2 sw=2 et:
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
