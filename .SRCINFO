@@ -1,0 +1,37 @@
+pkgbase = dune-fem
+	pkgdesc = A discretization module providing an implementation of mathematical abstractions to solve PDEs on parallel computers including local grid adaptivity, dynamic load balancing, and higher order discretization schemes
+	pkgver = v2.8.0.5
+	pkgrel = 1
+	url = https://dune-project.org/modules/dune-fem
+	arch = x86_64
+	license = GPL2
+	makedepends = dune-alugrid>=2.8.0
+	makedepends = suitesparse
+	makedepends = dune-istl>=2.8.0
+	makedepends = dune-localfunctions>=2.8.0
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-ufl
+	makedepends = python-setuptools
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	optdepends = eigen: Lightweight C++ template library for vector and matrix math
+	optdepends = papi: for events supported
+	optdepends = dune-polygongrid: for implement DUNE grid consisting of polygons
+	source = https://gitlab.dune-project.org/dune-fem/dune-fem/-/archive/v2.8.0.5/dune-fem-v2.8.0.5.tar.gz
+	sha512sums = 13f3fb74c2a9e98c6d28a6e57c5f767d636a9f1d59ad5953bc80da70f0e0e83231c581b182d96f785b058387ecc47d5238201ae8106d2629a479b7f04856c6fe
+
+pkgname = dune-fem
+	depends = dune-alugrid>=2.8.0
+	depends = dune-istl>=2.8.0
+	depends = dune-localfunctions>=2.8.0
+	depends = superlu
+	depends = suitesparse
+
+pkgname = python-dune-fem
+	pkgdesc = A discretization module providing an implementation of mathematical abstractions to solve PDEs on parallel computers including local grid adaptivity, dynamic load balancing, and higher order discretization schemes (python bindings)
+	depends = dune-fem>=2.8.0
+	depends = python-dune-alugrid>=2.8.0
+	depends = python-dune-istl>=2.8.0
+	depends = python-dune-localfunctions>=2.8.0
+	depends = python-ufl
