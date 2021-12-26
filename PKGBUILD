@@ -156,7 +156,9 @@ package_linux-vfio-manjaro() {
   pkgdesc="The Linux Manjaro standart kernel and modules with ACS patch"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules wireguard)
+#  provides=("linux=${pkgver}${pkgrel}${_kernelname}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd "linux-${_basekernel}"
 
@@ -194,7 +196,8 @@ package_linux-vfio-manjaro() {
 package_linux-vfio-manjaro-headers() {
   pkgdesc="Headers and scripts for building modules for the Linux Manjaro standart kernel with ACS patch"
   depends=('gawk' 'python' 'libelf' 'pahole')
-  provides=("linux-headers=$pkgver")
+#  provides=("")
+#  provides=("linux-headers=${pkgver}${pkgrel}${_kernelname}")
 
   cd "linux-${_basekernel}"
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -260,7 +263,7 @@ package_linux-vfio-manjaro-headers() {
     esac
   done < <(find "${_builddir}" -type f -perm -u+x ! -name vmlinux -print0 2>/dev/null)
   strip $STRIP_STATIC "${_builddir}/vmlinux"
-  
+
   # remove unwanted files
   find ${_builddir} -name '*.orig' -delete
 }

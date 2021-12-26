@@ -91,9 +91,10 @@ pkgname = linux-vfio-manjaro
 	depends = kmod
 	depends = mkinitcpio>=27
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.15.11
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules
+	replaces = wireguard
 
 pkgname = linux-vfio-manjaro-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Manjaro standart kernel with ACS patch
@@ -101,4 +102,3 @@ pkgname = linux-vfio-manjaro-headers
 	depends = python
 	depends = libelf
 	depends = pahole
-	provides = linux-headers=5.15.11
