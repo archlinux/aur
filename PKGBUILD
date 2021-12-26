@@ -11,7 +11,7 @@ license=('LGPL-2.1')
 depends=('libgee' 'jsonrpc-glib' 'vala' 'meson')
 makedepends=('scdoc')
 source=("https://github.com/prince781/vala-language-server/archive/$_pkgver.tar.gz")
-sha256sums=('4715b42770d477e085c42fa8303fa2b1b220e3ade587295caabfc236812e6fa9')
+sha256sums=('9de5d476a3d3b5d4f22f50af6c2417abd44066ab4231cbc00628e9fdab735100')
  
 #prepare() {
 #	cd "$pkgname"
