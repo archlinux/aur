@@ -5,6 +5,7 @@ pkgbase = qpasm
 	url = https://github.com/synio-wesley/qpasm
 	arch = x86_64
 	license = LGPL
+	makedepends = cmake
 	depends = qt6-base
 	depends = qt6-svg
 	provides = qpasm

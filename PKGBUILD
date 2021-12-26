@@ -7,6 +7,7 @@ arch=("x86_64")
 url="https://github.com/synio-wesley/qpasm"
 license=('LGPL')
 depends=("qt6-base" "qt6-svg")
+makedepends=(cmake)
 provides=("qpasm")
 source=("https://github.com/synio-wesley/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=("59c57a0862bd7f48df09d6e9cfc6e8c0684520edd48d8477cbe981c8a9f59ea69a2a7da0760ce1084a93afeb7832890e34728824e7d928950de0bc3012140ffc")
