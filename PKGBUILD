@@ -2,8 +2,8 @@
 _base=gmsh_interop
 pkgname=python-${_base}
 pkgdesc="Interoperability with Gmsh for Python"
-pkgver=2021.1
-pkgrel=2
+pkgver=2021.1.1
+pkgrel=1
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)

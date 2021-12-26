@@ -1,7 +1,7 @@
 pkgbase = python-gmsh_interop
 	pkgdesc = Interoperability with Gmsh for Python
-	pkgver = 2021.1
-	pkgrel = 2
+	pkgver = 2021.1.1
+	pkgrel = 1
 	url = https://documen.tician.de/gmsh_interop
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-gmsh_interop
 	makedepends = git
 	depends = python-pytools
 	depends = gmsh
-	source = git+https://github.com/inducer/gmsh_interop.git?signed#tag=v2021.1
+	source = git+https://github.com/inducer/gmsh_interop.git?signed#tag=v2021.1.1
 	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
 	sha512sums = SKIP
 
