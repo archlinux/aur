@@ -1,6 +1,6 @@
 pkgbase = google-raiden-mod-git
 	pkgdesc = Kernel module for Google ChromeOS Suzy-Q programmator
-	pkgver = r4231.5dde472
+	pkgver = r21667.6989ff9053e
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/platform/ec/
 	install = raiden.install
@@ -12,4 +12,3 @@ pkgbase = google-raiden-mod-git
 	md5sums = SKIP
 
 pkgname = google-raiden-mod-git
-

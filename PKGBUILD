@@ -1,5 +1,5 @@
 pkgname=google-raiden-mod-git
-pkgver=r4231.5dde472
+pkgver=r21667.6989ff9053e
 pkgrel=1
 pkgdesc='Kernel module for Google ChromeOS Suzy-Q programmator'
 arch=(i686 x86_64)
