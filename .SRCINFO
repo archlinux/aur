@@ -1,11 +1,12 @@
 pkgbase = odcread-git
 	pkgdesc = Reader/converter for 'Oberon compound document' binary format used by the Black Box Component Builder
 	pkgver = 0.2.r5.g9c09cc9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ComdivByZero/odcread
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	provides = odcread
 	conflicts = odcread
 	source = git+https://github.com/ComdivByZero/odcread

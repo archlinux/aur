@@ -1,13 +1,13 @@
 # Maintainer: Michael Koloberdin <michael@koloberdin.com>
 pkgname=odcread-git
 pkgver=0.2.r5.g9c09cc9
-pkgrel=1
+pkgrel=2
 pkgdesc="Reader/converter for 'Oberon compound document' binary format used by the Black Box Component Builder"
 arch=('x86_64')
 url="https://github.com/ComdivByZero/${pkgname%-git}"
 license=('GPL')
 depends=()
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/ComdivByZero/${pkgname%-git}")
