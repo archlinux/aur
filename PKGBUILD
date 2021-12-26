@@ -1,8 +1,8 @@
 # Maintainer: Vinícius Moreira <vinicius_fmoreira@hotmail.com>
 
 pkgname=guapow
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="On-demand and auto performance optimizer for Linux applications"
 arch=('any')
 url="https://github.com/vinifmor/guapow"
@@ -12,7 +12,7 @@ optdepends=('inxi: required for guessing the window compositor',
             'unclutter: required for hiding the mouse cursor')
 makedepends=('git' 'python' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('e226682a6f41ae9f5a2ec1303d345a39214453f8d42573c2949692519116aeb07418ba14dddb085cd205434071a7d6870c9bc58ae887c84246f37b970fc8fdd2')
+sha512sums=('fdc2c67cfc4e556cc26f7fcac821c9f1b728a69c5f27173fe48b20b8ce928ee9050dd4c87ffa6f7a6b5809bdb7e46024f28f178c4338cefdcce1780665438d94')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
