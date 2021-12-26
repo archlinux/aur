@@ -19,7 +19,8 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs' 'libexif'
-         'xorg-server-xwayland' 'bluez' 'pulseaudio' 'connman' 'bc')
+         'xorg-server-xwayland' 'bluez' 'pulseaudio' 'connman' 'bc'
+         'xcb-util-keysyms' 'hicolor-icon-theme' 'ttf-font' 'pam')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'ccache' 'wayland-protocols')
 optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
             'gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
