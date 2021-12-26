@@ -1,29 +1,32 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Eric Bélanger <eric@archlinux.org>
+# Contributor: AlphaJack <alphajack at tuta dot io>
 
 pkgname=xsnow
-pkgver=1.42
-pkgrel=8
-pkgdesc="Display snow, Santa and his reindeers on the root window"
-arch=('x86_64' 'i686')
-url="https://janswaal.home.xs4all.nl/Xsnow/"
-license=('custom')
-depends=('libxpm')
-makedepends=('imake')
-source=(https://janswaal.home.xs4all.nl/Xsnow/xsnow-$pkgver.tar.gz LICENSE)
-sha1sums=('d63987560dac9c6341e50d270089e40d17031ce3'
-          'c93e236bed35a2d5dc23202c1c615d4e146fba49')
+pkgver=3.4.2
+pkgrel=2
+pkgdesc="Let it snow on your desktop"
+url="https://sourceforge.net/projects/xsnow/"
+license=("GPL3")
+arch=(x86_64 i686)
+conflicts=(xsnow-bin)
+depends=(gtk3 libxpm)
+source=("https://nav.dl.sourceforge.net/project/xsnow/xsnow-$pkgver.tar.gz")
+sha256sums=('c618d7a73cef7070755f38ddc3665487afa8c71a9c82ae9055723e594a62fd9e')
 
-build() {
-  cd ${pkgname}-${pkgver}
-  xmkmf
-  make depend
-  make
+build(){
+ cd $pkgname-$pkgver
+ ./configure
+ make
 }
 
-package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install install.man
-  chmod 644 "${pkgdir}/usr/share/man/man1/xsnow.1x"
-  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package(){
+ cd $pkgname-$pkgver
+ install -D -m 755 "src/xsnow" "$pkgdir/usr/bin/xsnow"
+ install -D -m 644 "data/xsnow.appdata.xml" "$pkgdir/usr/share/metainfo/xsnow.appdata.xml"
+ install -D -m 644 "data/xsnow.desktop" "$pkgdir/usr/share/applications/xsnow.desktop"
+ install -D -m 644 "src/Pixmaps/xsnow.svg" "$pkgdir/usr/share/pixmaps/xsnow.svg"
+ install -d "$pkgdir/usr/share/man/man6"
+ gzip -c "src/xsnow.6" > "$pkgdir/usr/share/man/man6/xsnow.6.gz"
 }
+
+
