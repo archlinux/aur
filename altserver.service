@@ -1,0 +1,10 @@
+[Unit]
+Description=AltServer for Linux over USB
+Documentation=https://github.com/NyaMisty/AltServer-Linux
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/altserver
+
+[Install]
+WantedBy=multi-user.target

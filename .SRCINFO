@@ -1,0 +1,14 @@
+pkgbase = altserver-bin
+	pkgdesc = AltServer for Linux
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/NyaMisty/AltServer-Linux
+	arch = x86_64
+	license = AGPL3
+	provides = altserver
+	source = altserver.service
+	source = AltServer-0.0.2::https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.2/AltServer
+	sha256sums = 3d5b1c66a9959aa42eea5db7222768236b8a52f6a9caa3bbad7a5404506ffa4e
+	sha256sums = 523b501904742fed3cb347dca65fcc78f8d25d079c7f2ea45ec61ff50b481653
+
+pkgname = altserver-bin
