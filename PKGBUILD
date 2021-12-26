@@ -2,9 +2,9 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-_pkgver=3.18.11
+_pkgver=3.18.12
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=0
 pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
 license=('MPL-2.0')
@@ -21,7 +21,7 @@ source=(
 noextract=(
 	"$_pkgname-$_pkgver.jar"
 )
-md5sums=('fff6fce23b721722ffe3cc833848eca4'
+md5sums=('995743849550efd259953ff9245acaaa'
          '5aca7fc33f121fcf901fef14f784731a'
          'b5c3190a1616e545df32536920e07c98'
          '42d5f7ea8ee48d2d643d070786f039ba')
