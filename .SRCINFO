@@ -1,6 +1,6 @@
 pkgbase = python-pyro5
 	pkgdesc = Distributed object middleware for Python (RPC), Version 5
-	pkgver = 5.12
+	pkgver = 5.13.1
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/irmen/Pyro5
@@ -8,12 +8,11 @@ pkgbase = python-pyro5
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python>=3.6
-	depends = python-serpent>=1.27
+	depends = python>=3.7
+	depends = python-serpent>=1.40
 	optdepends = python-msgpack>=0.5.2
 	conflicts = python-pyro5-git
-	source = git+https://github.com/irmen/Pyro5#tag=v5.12
+	source = git+https://github.com/irmen/Pyro5#tag=v5.13.1
 	sha256sums = SKIP
 
 pkgname = python-pyro5
-

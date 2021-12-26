@@ -4,7 +4,7 @@
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.br> (from python-pyro)
 
 pkgname=python-pyro5
-pkgver=5.12
+pkgver=5.13.1
 pkgrel=1
 epoch=0
 pkgdesc='Distributed object middleware for Python (RPC), Version 5'
@@ -13,7 +13,7 @@ arch=(any)
 license=(MIT)
 makedepends=('git' 'python-setuptools')
 optdepends=('python-msgpack>=0.5.2')
-depends=('python>=3.6' 'python-serpent>=1.27')
+depends=('python>=3.7' 'python-serpent>=1.40')
 conflicts=('python-pyro5-git')
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
