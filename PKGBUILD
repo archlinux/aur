@@ -1,8 +1,9 @@
-# Maintainer: FichteFoll <fichtefoll2@googlemail.com>
+# Maintainer: Funami
+# Contributor: FichteFoll <fichtefoll2@googlemail.com>
 
 pkgname=aegisub-dependency-control
-pkgver=0.6.3
-pkgrel=4
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Package manager for scripts for the Aegisub subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/TypesettingTools/DependencyControl"
@@ -11,19 +12,19 @@ depends=('aegisub' 'libcurl.so')
 makedepends=('moonscript' 'meson')
 
 _depctrlver=${pkgver}-alpha
-_ffiexpver=e8d9c915390aaa8ffa1d220f4696f4fe2ca6ae6e # requireffi=0.1.2 PreciseTimer=0.1.6 BadMutex=0.1.3 DownloadManager=0.5.0
+_ffiexpver=b8897ead55b84ec4148e900882bff8336b38f939 # requireffi=0.1.2 PreciseTimer=0.1.6 BadMutex=0.1.3 DownloadManager=0.5.0
 _luajsonver=1.3.3
 source=("DependencyControl-${_depctrlver}.tar.gz::https://github.com/TypesettingTools/DependencyControl/archive/v${_depctrlver}.tar.gz" # github strips the 'v' in the actual archive
         "ffi-experiments-${_ffiexpver}.tar.gz::https://github.com/TypesettingTools/ffi-experiments/archive/${_ffiexpver}.tar.gz"
         "luajson-${_luajsonver}.tar.gz::https://github.com/harningt/luajson/archive/${_luajsonver}.tar.gz")
-sha256sums=('ac845ee6152db94c42ae80e2ccbede6571c27342c22819efa68c648327cdfdc2'
-            'd48c3f3375e480daf3e7ab2a657a1daec208d086173116168363d5bd0bb372b4'
+sha256sums=('b4ba3da034be85d2394d4ec7de4192a76be45f900a60dd484a0d1af3d6671c71'
+            'ab7933a087260cd114a49f42ad553f63b32268e69f05ebcee3cfc91324370535'
             '6a986efa210a912a04c8e6cae8f3b5e72172c02f974152e14818af6598a5e2db')
 
 build() {
     cd "${srcdir}/ffi-experiments-${_ffiexpver}"
     meson build
-    ninja -C build all lua
+    meson compile -C build
 }
 
 package() {
