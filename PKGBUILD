@@ -10,7 +10,6 @@ pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=(x86_64)
 url="https://www.audacityteam.org/"
 license=(GPL2 CCPL)
-groups=(pro-audio)
 depends=(
   alsa-lib
   expat
