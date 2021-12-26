@@ -2,8 +2,8 @@
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
  
 pkgname=wargus-git
-pkgver=3.1.3.r2697.6079ff28_20211202
-pkgrel=2
+pkgver=3.2.1.r2703.4baf466c_20211226
+pkgrel=1
 pkgdesc="Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine (dev version)"
 arch=("i686" "x86_64")
 url="https://github.com/Wargus/wargus"
@@ -31,7 +31,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
-	dev_cycle=3.1.3
+	dev_cycle=3.2.1
 	printf "%s.r%s.%s_%s" "${dev_cycle}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" "$(date +%Y%m%d)"
 }
 
