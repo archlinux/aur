@@ -1,6 +1,6 @@
 pkgname=trellium-kde-git
 _pkgname=trellium
-pkgver=r74.cd9c4d0
+pkgver=r123.73603b69
 pkgrel=1
 pkgdesc="A theme suite for LXQt/KDE (Aurorae/Kvantum/LXQt/Plasma/sddm/xfwm4)"
 arch=(any)
