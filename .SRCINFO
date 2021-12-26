@@ -8,7 +8,6 @@ pkgbase = palemoon
 	license = MPL
 	license = GPL
 	license = LGPL
-	makedepends = git
 	makedepends = python2
 	makedepends = autoconf2.13
 	makedepends = unzip
