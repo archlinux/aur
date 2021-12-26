@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="Airforce theme pack for XDE"
 pkgname=xde-theme-airforce
-pkgver=1.2.2
+pkgver=1.2.5
 pkgrel=1
 url="http://www.unexicon.com/"
 license=('CCPL:by-nc-nd')
@@ -14,13 +14,17 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags|sed 's,[-_],.,g;s,\.g.*$,,'
+  ./configure --version|head -1|awk '{print$3}'
+}
+
+prepare() {
+  cd $pkgname
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure
   make
 }
 
