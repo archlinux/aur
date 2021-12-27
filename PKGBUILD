@@ -164,8 +164,9 @@ package_joplin-desktop() {
   msg2 "Using Electron Version ${electron_version}"
   # Current version of electron does not work
   USE_HARD_LINKS=false yarn run dist -- --publish=never  --linux  --x64 \
-    --dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
-    #--dir="dist/"
+    --dir="dist/"
+      # FIXME: Using packaged electron breaks the interface
+    #--dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
 
   # TODO: Cleanup app.asar file
   cd dist/linux-unpacked/
