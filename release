@@ -1,0 +1,15 @@
+#! /usr/bin/bash
+
+
+makepkg --printsrcinfo > .SRCINFO
+
+pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
+pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
+pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
+
+commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel" 
+
+git add PKGBUILD .SRCINFO
+git commit -m "$commit_msg"
+git push aur master
+git status

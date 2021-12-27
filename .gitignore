@@ -1,0 +1,6 @@
+biscuit*
+Biscuit*
+pkg/
+src/
+*.AppImage
+*.tar.*
