@@ -5,7 +5,7 @@
 pkgname=audacity-gtk4
 _pkgname=audacity
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that lets you manipulate digital audio waveforms - GTK 4"
 arch=(x86_64)
 url="https://www.audacityteam.org/"
@@ -46,7 +46,7 @@ makedepends=(
 )
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
-conflicts=(audacity audacity-git audacity3-gtk3)
+conflicts=(audacity)
 source=(
   "https://github.com/$_pkgname/$_pkgname/releases/download/Audacity-$pkgver/$_pkgname-$pkgver-source.tar.gz"
 )
