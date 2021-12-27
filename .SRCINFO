@@ -1,7 +1,7 @@
 pkgbase = msamanda
 	pkgdesc = A scoring system to identify peptides out of tandem mass spectrometry data using a database of known proteins
 	pkgver = 2.0.0.18350
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ms.imp.ac.at/index.php?action=ms-amanda
 	arch = any
 	license = custom
