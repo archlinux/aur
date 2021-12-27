@@ -1,6 +1,6 @@
 pkgbase = minimap2-bin
 	pkgdesc = Aligner for genomic and spliced nucleotide sequences
-	pkgver = 2.23
+	pkgver = 2.24
 	pkgrel = 1
 	url = https://lh3.github.io/minimap2/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = minimap2-bin
 	depends = zlib
 	provides = minimap2
 	conflicts = minimap2
-	source_x86_64 = https://github.com/lh3/minimap2/releases/download/v2.23/minimap2-2.23_x64-linux.tar.bz2
-	sha256sums_x86_64 = a9ff45e3a5f5faf2b3837a28f228d7568baab60729c9d041f6e8b33ea25cf270
+	source_x86_64 = https://github.com/lh3/minimap2/releases/download/v2.24/minimap2-2.24_x64-linux.tar.bz2
+	sha256sums_x86_64 = c6e35534b219caaf3d9bbebf7123876e68d317cf90060c0c0607bee4d4f43286
 
 pkgname = minimap2-bin
