@@ -8,7 +8,7 @@
 
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
-pkgver=2.4.12
+pkgver=2.6.10
 groups=('joplin')
 pkgrel=1
 install="joplin.install"
@@ -16,16 +16,17 @@ depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss'
          'nss' 'orc' 'rsync' )
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64' 'i686')
-makedepends=('git' 'npm' 'python2' 'rsync' 'jq' 'electron')
+makedepends=('git' 'yarn' 'python2' 'rsync' 'jq' 'electron')
 url="https://joplinapp.org/"
 license=('MIT')
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
-        "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz")
+  "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
+  "joplin-patches.tar.xz")
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
             'dc1236767ee055ea1d61f10e5266a23e70f3e611b405fe713ed24ca18ee9eeb5'
-            '0887038e9ff500af6f2b153c0e811e70986b14a1fbc0fb3d5634a8e92d68dbec')
-
+            '1994cf5a32cf72f60f0455ad8204ff1d5ebb70933ad50ade78431fa359b561c6'
+            '43f86e589f20141d7a2478fd12b4aa2dc73c6a52d7037137515358f4cd65616f')
 
 # local npm cache directory
 _npm_cache="npm-cache"
@@ -45,6 +46,12 @@ prepare() {
   msg2 "Disabling husky (git hooks)"
   sed -i '/"husky": ".*"/d' "${srcdir}/joplin-${pkgver}/package.json"
 
+  msg2 "Appliying patches..."
+  cd "${srcdir}/joplin-${pkgver}"
+  tar xvJf "${srcdir}/joplin-patches.tar.xz"
+  patch -p1 < "${srcdir}/0005-All-Fixed-issue-where-synchroniser-would-try-to-upda.patch"
+  patch -p1 < "${srcdir}/0007-Tools-Use-Yarn-3-to-manage-monorepo-5833.patch"
+
   msg2 "Tweaking lerna.json"
   local tmp_json="$(mktemp --tmpdir="$srcdir")"
   local lerna_json="${srcdir}/joplin-${pkgver}/lerna.json"
@@ -55,7 +62,7 @@ prepare() {
         \"packages/lib\", \"packages/renderer\", \"packages/tools\",
         \"packages/turndown\", \"packages/turndown-plugin-gfm\"
         ] |
-      . += {\"npmClient\": \"npm\", \"npmClientArgs\": [\"--cache $cache\"]}" \
+      . += {\"npmClient\": \"yarn\", \"npmClientArgs\": [\"--cache $cache\", \"--no-optional\"]}" \
     "$lerna_json" > "$tmp_json"
   cat "$tmp_json" > "$lerna_json"
   rm "$tmp_json"
@@ -72,7 +79,8 @@ build() {
   export LANG=en_US.utf8
 
   msg2 "Installing dependencies through Lerna"
-  npm install --cache "$cache"
+  # FSevents is on the optinal dependencies and its Mac Only
+  yarn install --cache "$cache" --no-optional
 
 }
 
@@ -93,7 +101,7 @@ package_joplin() {
 
   msg2 "Building CLI"
   cd "${srcdir}/joplin-${pkgver}/packages/app-cli"
-  npm run build
+  yarn run build
 
   msg2 "Packaging CLI"
   cd "${srcdir}/joplin-${pkgver}/packages/app-cli/build"
@@ -155,9 +163,9 @@ package_joplin-desktop() {
   electron_version=$(cat /usr/lib/electron/version)
   msg2 "Using Electron Version ${electron_version}"
   # Current version of electron does not work
-  USE_HARD_LINKS=false npm run dist -- --publish=never  --linux  --x64 \
-    --dir="dist/"
-    #--dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
+  USE_HARD_LINKS=false yarn run dist -- --publish=never  --linux  --x64 \
+    --dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
+    #--dir="dist/"
 
   # TODO: Cleanup app.asar file
   cd dist/linux-unpacked/
