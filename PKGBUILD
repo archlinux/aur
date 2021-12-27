@@ -4,7 +4,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.70.1
+pkgver=2.70.2
 pkgrel=1
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glib2
 	pkgdesc = Low level core library (mingw-w64)
-	pkgver = 2.70.1
+	pkgver = 2.70.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mingw-w64-glib2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.70.1
+	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.70.2
 	source = 0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
 	source = glib-prefer-constructors-over-DllMain.patch
 	validpgpkeys = 923B7025EE03C1C59F42684CF0942E894B2EAFA0
