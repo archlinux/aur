@@ -2,9 +2,9 @@
 
 _name="auto-root"
 pkgname="${_name}-git"
-pkgver=r27.e436ed6
+pkgver=1.0.30
 pkgrel=1
-pkgdesc="A script that automatically reruns your last command as root if you forgot it. Requires 'bash' or 'zsh'."
+pkgdesc="A script that automatically reruns your last command as root if you forgot it. Will ALWAYS prompt for the password. Requires 'bash' or 'zsh'. Add /opt/auto-root/auto-root-shrc to your *rc file on first install."
 arch=('any')
 url="https://github.com/Deckweiss/${_name}"
 license=('GPLv3')
@@ -26,7 +26,7 @@ install=$_name.install
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.%s" "$(git rev-list --count HEAD)"
 }
 
 package() {
