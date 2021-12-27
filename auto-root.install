@@ -1,4 +1,9 @@
 post_install() {
+  tempfilesPath="$(findmnt -cfn -o TARGET tmpfs)/auto-root"
+  bashrcTempfilesPathString="autoRootTempFileDir=\"$tempfilesPath\""
+
+  sed -i "/autoRootTempFileDir/c\    ${bashrcTempfilesPathString}" /opt/auto-root/auto-root-shrc
+
   /usr/bin/echo -e "\e[34mINFO:\e[39m Add the contents of \e[31m/opt/auto-root/auto-root-shrc\e[39m to your \e[31m~/.bashrc\e[39m or \e[31m~/.zshrc\e[39m file"
 }
 

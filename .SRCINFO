@@ -1,7 +1,7 @@
 pkgbase = auto-root-git
 	pkgdesc = A script that automatically reruns your last command as root if you forgot it. Will ALWAYS prompt for the password. Requires 'bash' or 'zsh'. Add /opt/auto-root/auto-root-shrc to your *rc file on first install.
 	pkgver = 1.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Deckweiss/auto-root
 	install = auto-root.install
 	arch = any

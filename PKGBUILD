@@ -3,7 +3,7 @@
 _name="auto-root"
 pkgname="${_name}-git"
 pkgver=1.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A script that automatically reruns your last command as root if you forgot it. Will ALWAYS prompt for the password. Requires 'bash' or 'zsh'. Add /opt/auto-root/auto-root-shrc to your *rc file on first install."
 arch=('any')
 url="https://github.com/Deckweiss/${_name}"
