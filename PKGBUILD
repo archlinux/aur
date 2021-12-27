@@ -65,7 +65,6 @@ prepare()
   git config submodule.https://github.com/rtissera/libchdr.git.url libchdr
   git config submodule.https://github.com/google/googletest.git.url gtest
   git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
-  git config submodule.https://github.com/biojppm/rapidyaml.git rapidyaml
   git submodule update
 
   pip install cmake
