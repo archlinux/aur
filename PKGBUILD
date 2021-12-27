@@ -1,5 +1,6 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 # Contributor: Filip Brcic <brcha@gna.org>
-# Updated by ant32 <antreimer@gmail.com>
+# Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-termcap
 pkgver=1.3.1
@@ -11,9 +12,9 @@ makedepends=(mingw-w64-configure)
 options=(!strip !buildflags staticlibs)
 license=(GPL LGPL)
 groups=('mingw-w64')
-url="ftp://ftp.gnu.org/gnu/termcap/"
-source=("http://ftp.gnu.org/gnu/termcap/termcap-${pkgver}.tar.gz")
-md5sums=('ffe6f86e63a3a29fa53ac645faaabdfa')
+url="https://ftp.gnu.org/gnu/termcap/"
+source=("https://ftp.gnu.org/gnu/termcap/termcap-${pkgver}.tar.gz")
+sha256sums=('91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
