@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 pkgname=pavumeter-gtk3
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GTK volume meter for the PulseAudio sound server (GTK3)"
 arch=(i686 x86_64)
 url="http://git.0pointer.de/pavumeter.git"
@@ -24,14 +24,14 @@ md5sums=('SKIP'
          '2d784d472cd22dfc5320c30112e1e59d')
 
 build() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname%-gtk3}
   ./autogen.sh
   CXXFLAGS="$CXXFLAGS -std=c++11" ./configure --prefix=/usr
   make || return 1
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname%-gtk3}
   make DESTDIR=${pkgdir} install
 
   install -Dm644 ${srcdir}/pavumeter.desktop \
