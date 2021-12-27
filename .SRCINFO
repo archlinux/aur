@@ -1,18 +1,14 @@
 pkgbase = libwebm
 	pkgdesc = WebM video file parser
-	pkgver = 1.0.0.27
+	pkgver = 1.0.0.28
 	pkgrel = 1
 	url = https://www.webmproject.org/
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	depends = glibc
-	source = https://github.com/webmproject/libwebm/archive/libwebm-1.0.0.27.tar.gz
-	source = missing_includes.patch
+	source = https://github.com/webmproject/libwebm/archive/libwebm-1.0.0.28.tar.gz
 	source = cmake_install.patch
-	sha256sums = 1332f43742aeae215fd8df1be6e363e753b17abb37447190e789299fe3edec77
-	sha256sums = 05a78fbba1d55d7d6cd10961841dd130111d8efb380bb30ed33f78335a0d4193
-	sha256sums = 6870b711d6dc389959429240901cdaf32005d22c8a056d202059fecef6ea727c
+	sha256sums = 4df11d93260d3cd9f17c3697b0828d38400a8f87082183368df6a1ae7a9fc635
+	sha256sums = 708e0868cc32ff92ac418879f1ac409562047373b5a6ccfc4f8344279a763f0e
 
 pkgname = libwebm
-

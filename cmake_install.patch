@@ -1,33 +1,47 @@
 diff -rupN a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2021-03-05 09:48:21.956029900 -0800
-+++ b/CMakeLists.txt	2021-03-05 09:50:02.526984700 -0800
-@@ -12,7 +12,7 @@ include("${CMAKE_CURRENT_SOURCE_DIR}/bui
- set(LIBWEBM_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+--- a/CMakeLists.txt	2021-04-23 16:34:08.000000000 -0700
++++ b/CMakeLists.txt	2021-12-27 15:34:25.764905166 -0800
+@@ -330,6 +330,43 @@ add_library(webm ${libwebm_common_source
+             $<TARGET_OBJECTS:mkvmuxer>
+             $<TARGET_OBJECTS:mkvparser>)
  
- # Libwebm section.
--add_library(webm STATIC
-+add_library(webm
-             "${LIBWEBM_SRC_DIR}/mkvmuxer.cpp"
-             "${LIBWEBM_SRC_DIR}/mkvmuxer.hpp"
-             "${LIBWEBM_SRC_DIR}/mkvmuxertypes.hpp"
-@@ -62,3 +62,20 @@ add_executable(webm2pes
-                "${LIBWEBM_SRC_DIR}/webm2pes.cc"
-                "${LIBWEBM_SRC_DIR}/webm2pes.h")
- target_link_libraries(webm2pes LINK_PUBLIC webm)
-+
-+install(TARGETS webm
-+        RUNTIME DESTINATION bin
-+        ARCHIVE DESTINATION lib
-+        LIBRARY DESTINATION lib)
-+
 +install(
 +  FILES
-+    "mkvmuxer.hpp"
-+    "mkvmuxertypes.hpp"
-+    "mkvmuxerutil.hpp"
-+    "mkvparser.hpp"
-+    "mkvreader.hpp"
-+    "mkvwriter.hpp"
-+    "webmids.hpp"
++    mkvmuxer.hpp
++    mkvmuxertypes.hpp
++    mkvmuxerutil.hpp
++    mkvparser.hpp
++    mkvreader.hpp
++    mkvwriter.hpp
++    webmids.hpp
 +  DESTINATION
-+    "include/libwebm")
++    include/libwebm
++)
++
++install(
++  DIRECTORY mkvmuxer/
++  DESTINATION include/libwebm/mkvmuxer
++  FILES_MATCHING PATTERN "*.h"
++)
++
++install(
++  DIRECTORY mkvparser/
++  DESTINATION include/libwebm/mkvparser
++  FILES_MATCHING PATTERN "*.h"
++)
++
++install(
++  DIRECTORY webvtt/
++  DESTINATION include/libwebm/webvtt
++  FILES_MATCHING PATTERN "*.h"
++)
++
++install(
++  DIRECTORY common/
++  DESTINATION include/libwebm/common
++  FILES_MATCHING PATTERN "*.h"
++)
++
+ if (WIN32)
+   # Use libwebm and libwebm.lib for project and library name on Windows (instead
+   # webm and webm.lib).
