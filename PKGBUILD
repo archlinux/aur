@@ -1,5 +1,5 @@
 pkgname=vk-layer-flimes-gui-git
-pkgver=1.5.1.r0.gda5dfa4
+pkgver=1.5.2.r0.g778cb0b
 pkgrel=1
 pkgdesc="GUI for vk-layer-flimes external control"
 arch=('x86_64')
