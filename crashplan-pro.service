@@ -8,11 +8,8 @@ Type=forking
 PIDFile=/opt/crashplan/Code42Service.pid
 EnvironmentFile=/opt/crashplan/bin/run.conf
 WorkingDirectory=/opt/crashplan
-ExecStartPre=/usr/bin/chattr -i /opt/crashplan/conf/tmp
-ExecStart=/opt/crashplan/bin/CrashPlanEngine start
-ExecStartPost=/usr/bin/chattr +i /opt/crashplan/upgrade
-ExecStartPost=/usr/bin/chattr +i /opt/crashplan/conf/tmp
-ExecStop=/opt/crashplan/bin/CrashPlanEngine stop
+ExecStart=/opt/crashplan/bin/service.sh start
+ExecStop=/opt/crashplan/bin/service.sh stop
 Restart=always
 
 [Install]

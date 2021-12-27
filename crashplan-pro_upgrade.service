@@ -1,0 +1,11 @@
+[Unit]
+Description=CrashPlanPRO Backup Engine Upgrade
+After=network.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/opt/crashplan/bin/run.conf
+WorkingDirectory=/opt/crashplan
+ExecStart=/opt/crashplan/bin/upgrade.sh
+Restart=no
+

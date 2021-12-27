@@ -1,0 +1,9 @@
+[Unit]
+Description="File monitor for updates from the Crashplan Daemon"
+
+[Path]
+DirectoryNotEmpty=/opt/crashplan/upgrade
+Unit=crashplan-pro_upgrade.service
+
+[Install]
+WantedBy=multi-user.target
