@@ -1,7 +1,7 @@
 pkgbase = audacity-gtk4
 	pkgdesc = A program that lets you manipulate digital audio waveforms - GTK 4
 	pkgver = 3.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.audacityteam.org/
 	arch = x86_64
 	license = GPL2
@@ -39,8 +39,6 @@ pkgbase = audacity-gtk4
 	optdepends = ffmpeg: additional import/export capabilities
 	provides = audacity
 	conflicts = audacity
-	conflicts = audacity-git
-	conflicts = audacity3-gtk3
 	source = https://github.com/audacity/audacity/releases/download/Audacity-3.1.3/audacity-3.1.3-source.tar.gz
 	sha256sums = fd8ecdc3d29b3be3bb5cbc01a77806dd59fbec2ad86854924c339811427f2aa1
 
