@@ -1,6 +1,6 @@
 # Maintainer: Jolly Roberts jolly.development@gmail.com
 pkgname="umtp-responder-gui"
-pkgver="v0.4.2"
+pkgver="v0.5.0"
 _shortname="umtprd"
 _viv_pkgname="uMTP-Responder-umtprd"
 _viv_pkgver="1.3.6"
@@ -9,14 +9,14 @@ pkgdesc="GTK App to control the Viveris uMTP-Responder"
 arch=('any')
 url="https://gitlab.com/JollyDevelopment/umtp-responder-gui"
 license=('GPLv3')
-depends=('python>=3.0' 'gtk3')
+depends=('python>=3.0' 'gtk4' 'libadwaita')
 source=(
 	"https://github.com/viveris/uMTP-Responder/archive/refs/tags/umtprd-${_viv_pkgver}.tar.gz"
 	"https://gitlab.com/JollyDevelopment/umtp-responder-gui/-/archive/${pkgver}/umtp-responder-gui-${pkgver}.tar.gz"
 )
 md5sums=(
 	"26bddcafca129b656fb81b100035a9c1"
-	"3dd3daa676377e0b49b97a5c30f80c0e"
+	"ecf9d137a1e337a7b951322d59f7f10e"
 )
 build(){
   cd $srcdir/$_viv_pkgname-$_viv_pkgver
@@ -37,5 +37,5 @@ package(){
   install -Dm644 assets/net.jollydevelopment.umtp-responder-gui.desktop -t $pkgdir/usr/share/applications
   install -Dm644 assets/net.jollydevelopment.umtp-responder-gui.policy -t $pkgdir/usr/share/polkit-1/actions
   install -Dm755 app/umtp-responder-gui -t $pkgdir/opt/umtp-responder-gui
-  cp -r app/templates app/ui app/utils $pkgdir/opt/umtp-responder-gui
+  cp -r app/ui $pkgdir/opt/umtp-responder-gui
 }
