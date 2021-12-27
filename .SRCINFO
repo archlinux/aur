@@ -1,6 +1,6 @@
 pkgbase = mpd-pulse
 	pkgdesc = Allows MPD output to go to a different Pulse Audio sink than your default.
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/matt-h/mpd-pulse
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = mpd-pulse
 	depends = libpulse
 	depends = mpc
 	backup = etc/mpd-pulse.conf
-	source = mpd-pulse-0.2.1.tar.gz::https://github.com/matt-h/mpd-pulse/archive/0.2.1.tar.gz
-	sha256sums = eaa000180fbe6221942962cdfba2ef942b8a4a62b9c0f00c965631d3c2edc45e
+	source = mpd-pulse-0.3.0.tar.gz::https://github.com/matt-h/mpd-pulse/archive/0.3.0.tar.gz
+	sha256sums = 960c7241118890b430335a98bb25e4e0775d81d40a942cdb68c530998e02901f
 
 pkgname = mpd-pulse
-
