@@ -1,22 +1,26 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=libss7
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='userspace library for providing SS7 protocol services to applications'
-arch=('i686' 'x86_64')
-url='http://www.asterisk.org/'
-license=('GPL')
-depends=('dahdi')
-source=("https://downloads.asterisk.org/pub/telephony/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5af00853cfb2bc6bcf050947804db132ae6872db0cd2ab24b5378828f78eda52')
+arch=(x86_64)
+url=http://www.asterisk.org
+license=(GPL)
+depends=(glibc)
+_archive="$pkgname-$pkgver"
+source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"{,.asc})
+validpgpkeys=('F2FC93DB7587BD1FB49E045A5D984BE337191CE7')
+sha256sums=('091f1c14dcf13a094021334218cde363041816fa5b5037caee38719e4e6891c7'
+            'SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make
+	cd "$_archive"
+	make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install 
+	cd "$_archive"
+	make DESTDIR="$pkgdir" install
 }
