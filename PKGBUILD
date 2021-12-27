@@ -33,15 +33,15 @@ source_armv5h=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgv
 
 noextract=()
 md5sums_x86_64=('c8f1e8803c67745038ec34d698899963'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
+                'fa672977e621324c4dd65fb9d2506c20')
 md5sums_aarch64=('7a91fa13fc780f0de59b450036f6cc85'
-                 '9e60adc6ce38e57eeb00663a8ecdc01a')
+                 'fa672977e621324c4dd65fb9d2506c20')
 md5sums_armv7h=('12ca1e0256538438930b7d3de6f7ded4'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
+                'fa672977e621324c4dd65fb9d2506c20')
 md5sums_armv6h=('de44344cadbaf4eeb513f8ec35e92249'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
+                'fa672977e621324c4dd65fb9d2506c20')
 md5sums_armv5h=('7e4fabd6ffcfee5a09adb468b5738b5c'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
+                'fa672977e621324c4dd65fb9d2506c20')
 validpgpkeys=()
 backup=('etc/mchfuse.conf' 
 )
