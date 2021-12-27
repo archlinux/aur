@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xr-hardware
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Udev rules for accessing XR (VR and AR) hardware devices'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python' 'python-attrs')
 checkdepends=('flake8')
 provides=('oculus-udev' 'osvr-udev' 'psvr-udev' 'vive-udev')
 source=("https://gitlab.freedesktop.org/monado/utilities/xr-hardware/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ee49e96c81b91758fc3b0d8f7bc4c83980ce815a38baff2f914a16670800303c')
+sha256sums=('6e0b708f225471f80d6159d7ddd58d1a200bd9bbc07eee576ec2d627365b3f77')
 
 build() {
     make -C "${pkgname}-${pkgver}" clean_package all
