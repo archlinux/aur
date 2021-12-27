@@ -1,0 +1,9 @@
+post_install() {
+cat << EOF
+This plugin uses glyphs from a patched NERDfont, So you should install a NERDfont and set it as the default font for your terminal.
+Then execute the following command:
+    mkdir ~/.config/ranger/plugins
+    ln -sf /usr/share/ranger/plugins/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+    echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
+EOF
+}
