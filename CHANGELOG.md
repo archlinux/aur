@@ -1,6 +1,6 @@
-## Release 0.16.0 on 2021-12-22
+## Release 0.16.1 on 2021-12-27
 
-- Add the command line option `--config` with which the default config file
-  location can be overridden.
-- Use less memory while handling packages (requires dataclass's `slots` keyword
-  in Python 3.10).
+- Fix internal error which caused the script to fail if an orphaned package was
+  found.
+- Fix version comparison between packages; was only relevant for ordering the
+  package order in the log and command line.
