@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 _pkgname=WhiteSur-gtk-theme
-_pkgver=2021-12-04
+_pkgver=2021-12-28
 
 pkgname=whitesur-gtk-theme
 pkgver="${_pkgver//-/.}"
@@ -24,7 +24,7 @@ source=(
   "${pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
 sha256sums=(
-  '9d77fd7c3204d862177f0d46df7a8a2d2518f3429ca9194a1275672f902ca7f9'
+  'ea35444396b28aef8c105175c02d1ee75b89f040351bfc31d738bf35e8452c3b'
 )
 
 package() {
