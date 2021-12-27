@@ -1,17 +1,14 @@
 pkgbase = yt-watch
 	pkgdesc = Search/Watch/Download/Convert YouTube Videos on mpv using yt-dlp/YouTube API.
-	pkgver = 1.0
+	pkgver = 1.8
 	pkgrel = 1
-	url = https://github.com/zone-linux/zone-pkgbuild/tree/master/local_pkgbuild/yt-watch
+	url = https://github.com/Kungger-git/yt-watch
 	arch = any
-	license = MIT
+	license = GPL3
 	depends = jq
 	depends = mpv
 	depends = curl
 	depends = xclip
 	depends = yt-dlp
-	provides = yt-watch
-	options = !strip
-	options = !emptydirs
 
 pkgname = yt-watch
