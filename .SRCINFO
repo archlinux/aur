@@ -1,6 +1,6 @@
 pkgbase = vk-layer-flimes-git
 	pkgdesc = Vulkan frame limiter
-	pkgver = 1.1.0.r0.g74b074d
+	pkgver = 1.1.1.r0.g471dd7a
 	pkgrel = 1
 	url = https://github.com/zaps166/vk-layer-flimes
 	arch = x86_64
