@@ -1,18 +1,19 @@
 pkgbase = chirp-daily
-	pkgdesc = Latest build for GUI tool for programming ham radios
-	pkgver = 20210724
+	pkgdesc = GUI tool for programming ham radios, built from daily build
+	pkgver = 20211221
 	pkgrel = 1
-	url = http://chirp.danplanet.com/
+	url = https://chirp.danplanet.com/
+	install = chirp-daily.install
 	arch = any
 	license = GPL3
 	depends = python2-lxml
 	depends = python2-pyserial
 	depends = pygtk
-	optdepends = hamradio-menus
+	optdepends = hamradio-menus: XDG menus for ham radio software
 	provides = chirp
 	conflicts = chirp
 	options = !emptydirs
-	source = https://trac.chirp.danplanet.com/chirp_daily/daily-20210724/chirp-daily-20210724.tar.gz
-	sha256sums = 6b793a155c3639ffa2bfe34042fffce7d64a8bccd54aba375a85827c34fdad71
+	source = https://trac.chirp.danplanet.com/chirp_daily/daily-20211221/chirp-daily-20211221.tar.gz
+	sha1sums = 9133d3a590aa8b2775a8b843011d0b9155817e72
 
 pkgname = chirp-daily

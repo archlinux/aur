@@ -1,28 +1,33 @@
-# Maintainer: Erez Raviv (erezraviv@gmail.com)
-# Maintainer: Ashley Roll (ash@digitalnemesis.com)
+# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Contributor: Ashley Roll (ash@digitalnemesis.com)
+# Contributor: Erez Raviv (erezraviv@gmail.com)
+
 pkgname=chirp-daily
-pkgver=20210724
+pkgver=20211221
 pkgrel=1
-pkgdesc="Latest build for GUI tool for programming ham radios"
+pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
-url="http://chirp.danplanet.com/"
+url="https://chirp.danplanet.com/"
 license=('GPL3')
 depends=('python2-lxml' 'python2-pyserial' 'pygtk')
-optdepends=('hamradio-menus')
+optdepends=('hamradio-menus: XDG menus for ham radio software')
 options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
-install=
-sha256sums=('6b793a155c3639ffa2bfe34042fffce7d64a8bccd54aba375a85827c34fdad71')
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+install=$pkgname.install
 source=("https://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/chirp-daily-$pkgver.tar.gz")
+# Checksum: https://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/SHA1SUM
+sha1sums=('9133d3a590aa8b2775a8b843011d0b9155817e72')
 
 build() {
-  tar xvf $pkgname-$pkgver.tar.gz
+  cd "$pkgname-$pkgver"
+  python2 setup.py build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
+
+# vim:set ts=2 sw=2 et:
 
