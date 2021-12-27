@@ -3,15 +3,17 @@
 
 pkgname=(python-pymilter python2-pymilter)
 _pkgname=pymilter
-pkgver=1.0.4
-pkgrel=4
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Python bindings for libmilter API"
 arch=('x86_64')
-url="https://github.com/sdgathman/pymilter"
+url="https://github.com/sdgathman/${_pkgname}"
 license=('GPL')
-makedepends=('libmilter' 'python-setuptools' 'python2-setuptools')
+makedepends=('libmilter'
+			 'python-setuptools' 
+			 'python2-setuptools')
 source=("${url}/archive/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f871e29d2bb4bb192e9d9a1f205278f55cb0092a6c8c84ab698171924e4d2a2c')
+sha256sums=('8093032829ddd53261dbe2991959514156767f3785dfb095ed9b17f3fba965e1')
 
 prepare() {
   # Fix bad extract naming
