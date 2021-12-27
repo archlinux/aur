@@ -1,0 +1,12 @@
+pkgbase = dracut-numlock
+	pkgdesc = A dracut module which enables numlock in the early boot
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/bouteillerAlan/dracut-numlock
+	arch = any
+	license = MIT
+	depends = sh
+	source = https://github.com/bouteillerAlan/dracut-numlock/releases/download/dracut-numlock-v1.0.1/dracut-numlock-v1.0.1.tar.gz
+	sha256sums = 74e9b5e4d58acff8835c4fd4503618afc035f5b29b02794be2463f8018eed39f
+
+pkgname = dracut-numlock
