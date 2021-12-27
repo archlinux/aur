@@ -9,6 +9,7 @@ md5sums=("c8e706fa3e2397299ef860d06e0ac5cf")
 url="https://github.com/sleepyfran/itunespy"
 license=('MIT')
 depends=(python python-requests python-pycountry)
+makedepends=(python-setuptools)
 build() {
     cd $srcdir/itunespy-$pkgver
     python setup.py build
