@@ -8,7 +8,7 @@ pkgdesc='userspace library for providing SS7 protocol services to applications'
 arch=(x86_64)
 url=http://www.asterisk.org
 license=(GPL)
-depends=(dahdi
+depends=(dahdi-linux
          glibc)
 _archive="$pkgname-$pkgver"
 source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"{,.asc})
