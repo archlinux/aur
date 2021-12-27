@@ -1,7 +1,7 @@
 # Maintainer: Samuel "scrufulufugus" Monson <smonson at irbash dot net>
 # Original PKGBUILD Contributor: "PedroHLC"
 pkgname="gamescope"
-pkgver=3.9.5
+pkgver=3.10.3
 pkgrel=1
 pkgdesc="The micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -15,15 +15,15 @@ provides=('steamcompmgr' 'libliftoff=0.0.0')
 conflicts=('gamescope-git' 'libliftoff')
 replaces=('steamcompmgr')
 
-_libliftver=b7a6958bcacdedf6e451d8821c807299943ef150 # libliftoff commit version
-_wlrootsver=9579d62a160821a107763325a515d3aee0a1e158 # wlroots commit version
+_libliftver=2e1dd93b60224e77f6a49ad8fb36d184e3a9a3bc # libliftoff commit version
+_wlrootsver=3e801d68f2c6c64567b1f24c6d03893f32c81197 # wlroots commit version
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "libliftoff-${_libliftver:0:7}.tar.gz::https://github.com/emersion/libliftoff/archive/${_libliftver}.tar.gz"
-        "wlroots-${_wlrootsver:0:7}.tar.gz::https://github.com/swaywm/wlroots/archive/${_wlrootsver}.tar.gz")
-sha256sums=('b49c407f6db1bde0765fdab5b8aaa424cc962b8608f2fbd98873de6e3e820eab'
-            'f9b7969e2f33270b8d7df1f15741cffaf8022fe80548975f823b1ce3e5df495c'
-            '878970564de649c81365cd3e34384309b35a848c117821837102f1ac9094c5d6')
+        "libliftoff-${_libliftver:0:7}.tar.gz::https://gitlab.freedesktop.org/emersion/libliftoff/-/archive/${_libliftver}/libliftoff.tar.gz"
+        "wlroots-${_wlrootsver:0:7}.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/${_wlrootsver}/wlroots.tar.gz")
+sha256sums=('41ee8f27e6ad84079ec5d9a1b5f7e9bef4e2150ffd159044dfbd9703cb536d27'
+            '487a09a299b178797d93fd1938a4513f02f7d562cdc534dd44561d4751300daf'
+            '97365d66f40fd79d565ad4ab06fb6da7edf5728a202fbb154866b84ddc7fd55f')
 
 prepare() {
   mkdir -p '_build'
