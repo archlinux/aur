@@ -1,6 +1,6 @@
 pkgbase = castnow-git
 	pkgdesc = Command-line utility used to play back media files on your Chromecast device
-	pkgver = 0.6.0
+	pkgver = 0.4.14.r79.g0e1746b
 	pkgrel = 1
 	url = https://github.com/xat/castnow
 	arch = any
