@@ -1,6 +1,6 @@
 pkgbase=msl
 pkgname=('msl')
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc='Shader language based off GLSL that allows compiling multiple shaders into modules.'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ build() {
 	mkdir MSL && cd MSL
 	git clone https://github.com/akb825/ModularShaderLanguage .
 	git checkout v${pkgver}
-	./update-submodules.sh
+	git submodule update --init --recursive
 	mkdir build && cd build
 	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_SKIP_RPATH=TRUE -DMSL_BUILD_DOCS=OFF -DMSL_BUILD_TESTS=OFF -DMSL_SHARED=ON
