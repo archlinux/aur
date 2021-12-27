@@ -1,13 +1,13 @@
 # Maintainer: Trivernis <trivernis+aur at protonmail dot com>
 
 pkgname=mediarepo
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A tag based media management tool for images, videos, audio and more'
 arch=(x86_64)
 url=https://github.com/trivernis/mediarepo-ui
 license=(GPL3)
-optdepends=('mediarepo-daemon=0.10.0: backend for local repositories')
+optdepends=('mediarepo-daemon=0.11.0: backend for local repositories')
 makedepends=(curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 webkit2gtk patchelf libvips clang rustup yarn nodejs npm python node-gyp)
 
 options=(!strip)
@@ -16,7 +16,7 @@ source=(
   mediarepo.desktop
 )
 sha512sums=(
-  '8f78f29fb5365088175ddf70993d25e5af0a8ec2c136886639ac57af26eb1581bf92a2630c346b51b22a3b05b4e89c8d5a2dfec50408e07376b63fa22e03846b'
+  '94a5e285f3c1a6ee63924d5d5419a4cc952dce7d23d631c2b18d1e7a2323be0c841b23b546c99957b719ac8a7a0498c6c1475b81561ce7367690fe29aea29785'
   'be877fb4e9571ca174e1fb38eb87e4d2fd2aac95938aa19466f7f5677da1957607a75acc5c1b2c2ae0bd76d389f9958ff4e0563339233e8f33e834ba4a8d398b'
 )
 
