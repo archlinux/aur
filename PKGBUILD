@@ -3,12 +3,13 @@
 
 pkgname=libss7
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='userspace library for providing SS7 protocol services to applications'
 arch=(x86_64)
 url=http://www.asterisk.org
 license=(GPL)
-depends=(glibc)
+depends=(dahdi
+         glibc)
 _archive="$pkgname-$pkgver"
 source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"{,.asc})
 validpgpkeys=('F2FC93DB7587BD1FB49E045A5D984BE337191CE7')
