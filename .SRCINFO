@@ -1,7 +1,8 @@
 pkgbase = wterm-git
 	pkgdesc = xterm for wayland (simple wayland st suckless terminal)
-	pkgver = 18864b6d
+	pkgver = 20210302
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/majestrate/wterm
 	arch = x86_64
 	license = MIT
@@ -18,4 +19,3 @@ pkgbase = wterm-git
 	md5sums = SKIP
 
 pkgname = wterm-git
-
