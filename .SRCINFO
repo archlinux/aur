@@ -1,12 +1,11 @@
 pkgbase = systemd-boot-pacman-hook
 	pkgdesc = Pacman hook to upgrade systemd-boot after systemd upgrade.
-	pkgver = 2
-	pkgrel = 2
+	pkgver = 3
+	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = systemd
 	source = systemd-boot.hook
-	md5sums = 13c7893e3e8b34479c42795d8f9e1ad3
+	md5sums = cd8b1e530ce6f239923362492fda3f4f
 
 pkgname = systemd-boot-pacman-hook
-
