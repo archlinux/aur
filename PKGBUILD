@@ -2,7 +2,7 @@
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang 
 pkgname=logseq-desktop
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
@@ -10,7 +10,7 @@ license=('AGPL3')
 makedepends=("git" "yarn" "npm" "clojure" "nodejs")
 provides=("logseq-desktop")
 conflicts=("logseq-desktop-git" "logseq-desktop-bin")
-source=("${pkgname}::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
+source=("${pkgname}-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
       "build.patch"
       "${pkgname}.desktop")
 sha256sums=('d98b8a4b738a07c8e25ed38400ae6db96b53a29d614314297f0bcf0c3594fff1'
@@ -20,10 +20,8 @@ sha256sums=('d98b8a4b738a07c8e25ed38400ae6db96b53a29d614314297f0bcf0c3594fff1'
 prepare() {
     cd "$srcdir/logseq-${pkgver}"
 
-    # this patch make the build process use system's electron
-    patch -p1 -i "${srcdir}/build.patch"
-
     # patch :parallel-build true in shadow-cljs.edn
+    patch -p1 -i "${srcdir}/build.patch"
 
     # download required js modules
     yarn install
@@ -69,7 +67,7 @@ package() {
     ln -s "/opt/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # install readme and additional license file (the top-level AGPL3)
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/logseq-${pkgver}"
     install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
