@@ -1,7 +1,7 @@
 
 _pkgname=minq_nhentai
 pkgname="${_pkgname}-git"
-pkgver=r5.966664f5c845bf6fc6034ab6848e76bb73052137
+pkgver=r8.938c1db11847bf0fcca466cc276232e30c79055d
 pkgrel=1
 epoch=
 pkgdesc="Search for hentai in nhentai based on specified tags"
@@ -9,7 +9,7 @@ arch=(x86_64 i686)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
 groups=()
-depends=(python python-beautifulsoup4)
+depends=(python python-beautifulsoup4 viu)
 makedepends=(git)
 checkdepends=()
 optdepends=()
