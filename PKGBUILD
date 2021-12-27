@@ -2,14 +2,14 @@
 pkgname=owl
 pkgdesc='Parser generator for visibly pushdown languages.'
 pkgver=4
-pkgrel=1
-url='https://github.com/ianh/owl'
+pkgrel=2
+url=https://github.com/ianh/owl
 arch=(x86_64)
 license=(custom)
 depends=(glibc)
 makedepends=(make lowdown)
 source=("${url}/archive/${pkgname}.v${pkgver}.tar.gz")
-sha512sums=('13fb588bf015827fd9311e5e115c861b875e4eefa0723e410e665c530b0a2f2922f0951debd5f378a2f7e9b39de65e942b5d2cc0c50acd957e8bf609059b0611')
+b2sums=('f983f229b33f4e0abcb0def610ede958303d88fd6dd05abdf86bee21b766d84bf2d78ce6c1708d995f2d39b179ba02c88b5dec0dbdc5a4ba963e6b08b52eb162')
 
 build () {
 	cd "${pkgname}-${pkgname}.v${pkgver}"
@@ -18,8 +18,7 @@ build () {
 	local mdfile
 	for mdfile in doc/*.md *.md ; do
 		echo "Rendering ${mdfile}..."
-		lowdown -e autolink -e fenced -e strike -e tables -E smarty \
-			-s -o "${mdfile%.md}.html" "${mdfile}"
+		lowdown -Thtml -s -o "${mdfile%.md}.html" "${mdfile}"
 	done
 }
 
