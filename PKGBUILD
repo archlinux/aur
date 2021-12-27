@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-botorch
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Bayesian Optimization in PyTorch'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-setuptools-scm' 'python-sphinx')
 checkdepends=('python-pytest')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/botorch/botorch-$pkgver.tar.gz")
-sha256sums=('fa0f6ad582f3d3320d6b59315cd859ccba6ffab44a0d9a7681b92af89c2490bd')
+sha256sums=('e8d4c2c7187c20b12251f7b791b964ce311ed8cdca28b8bb7ebbedf745f92987')
 
 prepare() {
 	cd "botorch-$pkgver"
