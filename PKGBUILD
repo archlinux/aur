@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Schlabach <Techcable at techcable dot net>
 pkgname=zls-bin
 pkgver="0.9.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Zig Language Server, or zls, is a language server for Zig. Pre-compiled official binary."
 arch=('x86_64')
 url="https://github.com/zigtools/zls"

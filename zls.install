@@ -1,11 +1,11 @@
 post_install() {
-    echo "Consider runing `zls config` to setup initial configuration"
+    echo "Consider runing 'zls config' to setup initial configuration"
     echo ""
     echo "This is not required, but it is highly recommended"
 }
 
 post_upgrade() {
-    echo "Consider re-running `zls config` to reconfigure the language server"
+    echo "Consider re-running 'zls config' to reconfigure the language server"
     echo ""
     echo "Some options may have changed when upgrading from $2 -> $1"
     echo ""
