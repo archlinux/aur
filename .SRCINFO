@@ -1,0 +1,17 @@
+pkgbase = neovim-sidebar-git
+	pkgdesc = Generic and modular sidebar
+	pkgver = r115.2df6838
+	pkgrel = 1
+	url = https://github.com/sidebar-nvim/sidebar.nvim
+	install = sidebar.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim
+	provides = neovim-sidebar
+	conflicts = neovim-sidebar
+	source = neovim-sidebar-git::git+https://github.com/sidebar-nvim/sidebar.nvim
+	md5sums = SKIP
+
+pkgname = neovim-sidebar-git
