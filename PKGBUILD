@@ -1,7 +1,7 @@
 # Maintainer: Andy Alt <andy400-dev at yahoo dot com>
 
 pkgname=canfigger
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="simple configuration file parser library"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
@@ -13,7 +13,7 @@ provides=('canfigger' 'libcanfigger.so')
 options=('staticlibs')
 
 source=("https://github.com/andy5995/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e497111b96d8c66f105cdec9382a48fe73f9c87d7e653b29a7e5c8658ef239e7')
+sha256sums=('0ad25da1ca70b3e0e3d6d15ccddd47898f777cf7adeeb7f98dbe9c909f51f6d2')
 
 build() {
   arch-meson $pkgname-$pkgver build
