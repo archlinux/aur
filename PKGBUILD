@@ -1,14 +1,14 @@
 # Maintainer: Wouter Wijsman <wwijsman@live.nl>
 
 pkgname=dosbox-staging
-pkgver=0.77.1
-pkgrel=5
+pkgver=0.78.0
+pkgrel=1
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
-depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth' 'libpng' 'munt')
+depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth' 'libpng' 'munt' 'libslirp')
 optdepends=('ncurses')
 makedepends=('meson' 'ninja' 'gcc' 'gzip')
 provides=("dosbox")
@@ -16,9 +16,7 @@ conflicts=("dosbox")
 source=(
   "https://github.com/dosbox-staging/${pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=(
-	'85359efb7cd5c5c0336d88bdf023b7b462a8233490e00274fef0b85cca2f5f3c'
-)
+sha256sums=('2e6dcfc45d7345b2d89287911718c93f30463f1d58a9bfdc3a353000520cbbf8')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
