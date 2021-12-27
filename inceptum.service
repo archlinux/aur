@@ -1,0 +1,13 @@
+[Unit]
+Description=Inceptum Executor
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=simple
+User=inceptum
+WorkingDirectory=/srv/inceptum
+Environment="INCEPTUM_BASE=/srv/inceptum"
+ExecStart=/usr/bin/inceptum batch /etc/conf.d/inceptum
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+pkgbase = inceptum-git
+	pkgdesc = An advanced minecraft launcher written in java
+	pkgver = 0.1.0.r3.gc3de25b
+	pkgrel = 1
+	url = https://gitlab.com/JFronny/inceptum
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = java-environment=17
+	makedepends = gradle
+	depends = java-runtime>=17
+	depends = bash
+	source = git+https://gitlab.com/JFronny/inceptum.git
+	source = inceptum.desktop
+	source = inceptum.sh
+	source = inceptum.service
+	source = inceptum.sysusers
+	source = inceptum.conf
+	sha256sums = SKIP
+	sha256sums = 70a6ac8d2cb1c29699aa740b49fac05b2efca85f8de3c8f0b290ee5e077ec726
+	sha256sums = 6867e8476c9eb04cb303f40a4949db227c0c92e94b864d667a2d5a1f1c3d77da
+	sha256sums = 034407520261b79175f0011a5cf1523ef077dad55341c39753501ae4730cb870
+	sha256sums = d982ba99cabef051cf95e1d58646205588727d32351de340a1fcfbb2ebd6f8bb
+	sha256sums = 41ae84877dd3ce346a7d97fc7f493c8e9dcacfa67ce6974ace56baecee9a8411
+
+pkgname = inceptum-git
