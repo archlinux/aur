@@ -1,0 +1,22 @@
+pkgbase = python-erdpy
+	pkgdesc = Elrond Smart Contracts Tools and Python SDK.
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://docs.elrond.com/sdk-and-tools/erdpy/erdpy/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python>=3.6.8
+	depends = python-toml>=0.10.2
+	depends = python-bottle
+	depends = python-requests
+	depends = python-pynacl
+	depends = python-pycryptodomex
+	depends = python-cryptography>=3.2
+	depends = python-prettytable
+	depends = python-ledgercomm
+	depends = python-semver
+	source = https://github.com/ElrondNetwork/elrond-sdk-erdpy/archive/refs/tags/v1.0.21.tar.gz
+	sha256sums = 473fcb8548c928aacb0666a075c4e680735ccf589fa4a4bc0750d76afd87c2a9
+
+pkgname = python-erdpy
