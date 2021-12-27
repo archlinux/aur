@@ -1,7 +1,7 @@
 # Maintainer: Aaron Barany <akb825@gmail.com>
 
 pkgname=('cuttlefish-tool')
-pkgver=2.5.2
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='Texture converter tool and library'
 arch=('i686' 'x86_64')
@@ -16,8 +16,7 @@ build() {
 	mkdir Cuttlefish && cd Cuttlefish
 	git clone https://github.com/akb825/Cuttlefish.git .
 	git checkout v${pkgver}
-	git submodule init
-	git submodule update
+	git submodule update --init
 	mkdir build && cd build
 	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
 		-DCUTTLEFISH_BUILD_DOCS=OFF -DCUTTLEFISH_BUILD_TESTS=OFF
