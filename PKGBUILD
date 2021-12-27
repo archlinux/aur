@@ -1,5 +1,6 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=taskade
+pkgbase=taskade-appimage
 pkgver=4.1.2
 pkgrel=1.0
 pkgdesc='Get things done with task lists, workflow automation, and real-time collaboration.'

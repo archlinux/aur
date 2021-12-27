@@ -1,4 +1,4 @@
-pkgbase = taskade
+pkgbase = taskade-appimage
 	pkgdesc = Get things done with task lists, workflow automation, and real-time collaboration.
 	pkgver = 4.1.2
 	pkgrel = 1.0
