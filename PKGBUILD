@@ -1,47 +1,43 @@
 # Maintainer: Nicholas Schlabach <Techcable at techcable dot net>
 pkgname=zls-bin
-pkgver="0.1.0"
-pkgrel=2
+pkgver="0.9.0"
+pkgrel=1
 pkgdesc="Zig Language Server, or zls, is a language server for Zig. Pre-compiled official binary."
 arch=('x86_64')
 url="https://github.com/zigtools/zls"
 license=('MIT')
 depends=('zig')
-# Used to update the `zls.json` file with the path to our build runner.
-# See: https://github.com/zigtools/zls/blob/master/README.md#configuration-options
-# I could use `jq` but I think python is more prevalent (although jq seems
-# surprisingly common, just look at the reverse dependencies for `jq-git`)
-makedepends=('python>=3.6')
 provides=('zls')
 conflicts=('zls' 'zls-git')
 replaces=('zls' 'zls-git')
-# This is the location of the ZLS config :)
-# If the user makes changes they should be preserved
+# Gives a friendly recomendation to run `zls config`
+install="zls.install"
+# The MIT is considered a "custom" license, because it has a unique copyright line
 #
-# Of course ideally, the user would make changes locally
-# in ~/.config instead of globally
-backup=('usr/bin/zls.json')
-source_x86_64=("https://github.com/zigtools/zls/releases/download/${pkgver}/x86_64-linux.tar.xz")
-sha256sums_x86_64=("1318a785e6982ef86d1d0242403b20cec34ce209c64eee339512f8267e9a5ccb")
-# Technically, our python script is a "source"
-source=("update_config.py")
-sha256sums=("f55e83f8510c50d55d7f37fa6dfa4d0f9a99061099829b350fa58892bc828a57")
-
-prepare() {
-    python3 "${srcdir}/update_config.py" "${srcdir}/$CARCH-linux/zls.json"
-}
+# See the wiki for more info: https://wiki.archlinux.org/title/PKGBUILD#license
+source=("zls-LICENSE.txt::https://raw.githubusercontent.com/zigtools/zls/0.9.0/LICENSE")
+noextract=("zls-LICENSE.txt")
+# This is the actual binary (everything except the license)
+source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/zigtools/zls/releases/download/${pkgver}/${CARCH}-linux.tar.xz")
+sha256sums=('39d99dfbe269e3daf483652bd925f4955e3b2a3d11fd737b538d366ef358c3ce')
+sha256sums_x86_64=('f001967764565ab72e38c9320309fbbaf45f122ba01c80a2433b400f942bd18d')
 
 package() {
-    _output="${srcdir}/$CARCH-linux"
-    install -Dm755 "${_output}/zls" "${pkgdir}/usr/bin/zls"
-    # Unfortunately, this config needs to sit alongside
-    # the `zls` executable in order to be found :(
-    install -Dm644 "${_output}/zls.json" "${pkgdir}/usr/bin/zls.json"
+    _output="${srcdir}"
+    install -Dm755 "${_output}/bin/zls" "${pkgdir}/usr/bin/zls"
 
-    # Install `build_runner.zig` (this is the reason we have to customize `zls.json`)
-    install -Dm644 "${_output}/build_runner.zig" "${pkgdir}/usr/share/zls/build_runner.zig"
+
+    # Install `build_runner.zig into the /usr/bin directory, alongside the executable.
+    #
+    # According to the README.md file, this is the default location.
+    #
+    # Prior versions of zls-bin manually modified the zls.json configuration to
+    # move build_runner.zig into /usr/share instead of /usr/bin
+    #
+    # This was IMO not worth the complexity. We'll just keep it in /usr/bin
+    install -Dm644 "${_output}/bin/build_runner.zig" "${pkgdir}/usr/bin/build_runner.zig"
+
     install -Dm644 "${_output}/README.md" "${pkgdir}/usr/share/zls/README.md"
-
-    # License
-    install -Dm644 "${_output}/LICENSE.md" "${pkgdir}/usr/share/zls/LICENSE.md"
+    # Install license file
+    install -Dm644 "${_output}/zls-LICENSE.txt" "${pkgdir}/usr/share/licenses/zls-bin/LICENSE"
 }

@@ -1,6 +1,8 @@
 # Ignore all the tarballs
 *.tar.xz
-zls-bin-*pkg.tar.*
+zls-bin-*.tar.*
+# License file
+zls-LICENSE.txt
 
 # Arch Build System
 src
