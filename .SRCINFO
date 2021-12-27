@@ -1,7 +1,7 @@
 pkgbase = kasts
 	pkgdesc = Kirigami-based podcast player
 	pkgver = 21.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/kasts
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = kasts
 	makedepends = qt5-tools
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols2
+	depends = qtkeychain-qt5
 	depends = purpose
 	depends = kirigami2
 	depends = ki18n
@@ -22,6 +23,7 @@ pkgbase = kasts
 	depends = kcoreaddons
 	depends = ki18n
 	depends = syndication
+	depends = taglib
 	source = https://download.kde.org/stable/plasma-mobile/21.12/kasts-21.12.tar.xz
 	sha256sums = 601719980e3b9853f8ca136cd48395874c0ecb4eed36b8ee14376129fb85d5e6
 
