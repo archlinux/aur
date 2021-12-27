@@ -1,18 +1,15 @@
 # Maintainer: Gabriel Matthews <matthewriel63@gmail.com>
 
-pkgname=yt-watch
-_destname1="/usr/bin"
-pkgver=1.0
+pkgname='yt-watch'
+pkgver=1.2
 pkgrel=1
 pkgdesc="Search/Watch/Download/Convert YouTube Videos on mpv using yt-dlp/YouTube API."
 arch=('any')
-url="https://github.com/zone-linux/zone-pkgbuild/tree/master/local_pkgbuild/yt-watch"
-license=('MIT')
+url="https://github.com/Kungger-git/yt-watch"
+license=('GPL3')
 depends=('jq' 'mpv' 'curl' 'xclip' 'yt-dlp')
-provides=("${pkgname}")
-options=(!strip !emptydirs)
 
 package() {
-	install -dm755 ${pkgdir}${_destname1}
-	install -Dm 755 ../yt-watch ${pkgdir}${_destname1}
+	install -dm755 ${pkgdir}/usr/bin
+	install -Dm 755 ../yt-watch ${pkgdir}/usr/bin
 }
