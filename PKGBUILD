@@ -14,13 +14,13 @@ source=("https://github.com/LedgerHQ/${_name}/archive/refs/tags/${pkgver}.tar.gz
 sha256sums=('7c8ad124d6f2438c46a2ab3725b8e6fd3e12a8e36df259f605f77207033d70a6')
 
 build() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	python setup.py build
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	python setup.py install \
-		--root="$pkgdir" \
-		--optimize=1
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install \
+    --root="$pkgdir" \
+    --optimize=1
 }
