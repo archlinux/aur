@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for developing artificial inteligence and deep learning applications
 	pkgver = 2021.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openvinotoolkit.org/
 	arch = x86_64
 	license = Apache
@@ -15,7 +15,6 @@ pkgbase = openvino
 	makedepends = python
 	makedepends = cython
 	makedepends = shellcheck
-	depends = protobuf
 	depends = numactl
 	depends = libxml2
 	optdepends = intel-compute-runtime: for GPU (clDNN) plugin
@@ -38,7 +37,7 @@ pkgbase = openvino
 	options = !emptydirs
 	source = git+https://github.com/openvinotoolkit/openvino.git#tag=2021.4.2
 	source = git+https://github.com/opencv/ade.git
-	source = git+https://github.com/openvinotoolkit/oneDNN.git
+	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = googletest-openvinotoolkit::git+https://github.com/openvinotoolkit/googletest.git
 	source = git+https://github.com/gflags/gflags.git
 	source = git+https://github.com/herumi/xbyak.git

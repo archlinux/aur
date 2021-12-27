@@ -2,12 +2,12 @@
 
 pkgname=openvino
 pkgver=2021.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
 license=('Apache')
-depends=('protobuf' 'numactl' 'libxml2')
+depends=('numactl' 'libxml2')
 # GPU (clDNN) plugin: only Intel GPUs are supported:
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
@@ -32,7 +32,7 @@ _tbbver=2020_20200415 # inference-engine/cmake/dependencies.cmake
 _tbbbind_ver=2_4_static_lin_v2 # inference-engine/cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'git+https://github.com/opencv/ade.git'
-        'git+https://github.com/openvinotoolkit/oneDNN.git'
+        'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
         'googletest-openvinotoolkit'::'git+https://github.com/openvinotoolkit/googletest.git'
         'git+https://github.com/gflags/gflags.git'
         'git+https://github.com/herumi/xbyak.git'
@@ -80,7 +80,7 @@ prepare() {
     
     git -C openvino submodule init
     git -C openvino config --local submodule.inference-engine/thirdparty/ade.url "${srcdir}/ade"
-    git -C openvino config --local submodule.inference-engine/thirdparty/mkl-dnn.url "${srcdir}/oneDNN"
+    git -C openvino config --local submodule.inference-engine/thirdparty/mkl-dnn.url "${srcdir}/oneDNN-openvinotoolkit"
     git -C openvino config --local submodule.inference-engine/tests/ie_test_utils/common_test_utils/gtest.url "${srcdir}/googletest-openvinotoolkit"
     git -C openvino config --local submodule.inference-engine/samples/thirdparty/gflags.url "${srcdir}/gflags"
     git -C openvino config --local submodule.thirdparty/xbyak.url "${srcdir}/xbyak"
@@ -99,9 +99,7 @@ prepare() {
 
 build() {
     local _ocvmaj
-    local _pyver
     _ocvmaj="$(opencv_version | awk -F'.' '{ print $1 }')"
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
     export IE_PATH_TO_DEPS="$srcdir"
     export OpenCV_DIR="/usr/lib/cmake/opencv${_ocvmaj}"
@@ -114,13 +112,10 @@ build() {
         -DENABLE_AVX512F:BOOL='OFF' \
         -DENABLE_PROFILING_ITT:BOOL='OFF' \
         -DENABLE_PYTHON:BOOL='ON' \
-        -DPYTHON_EXECUTABLE='/usr/bin/python' \
-        -DPYTHON_LIBRARY="/usr/lib/libpython${_pyver}.so" \
-        -DPYTHON_INCLUDE_DIR="/usr/include/python${_pyver}" \
         -DENABLE_SPEECH_DEMO:BOOL='OFF' \
         -DENABLE_OPENCV:BOOL='OFF' \
         -DNGRAPH_UNIT_TEST_ENABLE:BOOL='FALSE' \
-        -DNGRAPH_USE_SYSTEM_PROTOBUF:BOOL='ON' \
+        -DNGRAPH_USE_SYSTEM_PROTOBUF:BOOL='OFF' \
         -DTREAT_WARNING_AS_ERROR:BOOL='OFF' \
         -Wno-dev
     make -C build
