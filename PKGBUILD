@@ -4,7 +4,7 @@
 
 pkgname='dynamic-wallpaper-editor-git'
 _pkgname='dynamic-wallpaper-editor'
-pkgver=r261.531c2b5
+pkgver=r278.2b4a336
 pkgrel=1
 pkgdesc="A little utility for creation or edition of GNOME desktop's XML wallpapers"
 changelog='CHANGELOG'
@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/maoschanz/${_pkgname}"
 license=('GPL3')
 depends=('python' 'hicolor-icon-theme' 'dconf')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'itstool')
 provides=("${_pkgname%-git}")
 conflicts=("${_pkgname%-git}")
 source=(git+$url.git)

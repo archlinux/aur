@@ -1,6 +1,6 @@
 pkgbase = dynamic-wallpaper-editor-git
 	pkgdesc = A little utility for creation or edition of GNOME desktop's XML wallpapers
-	pkgver = r261.531c2b5
+	pkgver = r278.2b4a336
 	pkgrel = 1
 	url = https://github.com/maoschanz/dynamic-wallpaper-editor
 	changelog = CHANGELOG
@@ -8,6 +8,7 @@ pkgbase = dynamic-wallpaper-editor-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
+	makedepends = itstool
 	depends = python
 	depends = hicolor-icon-theme
 	depends = dconf
