@@ -1,7 +1,7 @@
 pkgbase = zls-bin
 	pkgdesc = Zig Language Server, or zls, is a language server for Zig. Pre-compiled official binary.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zigtools/zls
 	install = zls.install
 	arch = x86_64
