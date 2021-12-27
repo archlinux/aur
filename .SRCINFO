@@ -1,7 +1,7 @@
 pkgbase = python-astroquery
 	pkgdesc = Set of tools for querying astronomical web forms and databases
-	pkgver = 0.4.4
-	pkgrel = 2
+	pkgver = 0.4.5
+	pkgrel = 1
 	url = http://astroquery.readthedocs.org/en/latest/
 	arch = x86_64
 	license = BSD
@@ -18,7 +18,7 @@ pkgbase = python-astroquery
 	optdepends = python-astropy-healpix: required for the full functionality of the cds module
 	optdepends = python-regions: required for the full functionality of the cds module
 	optdepends = python-boto3: required for the full functionality of the mast module
-	source = https://files.pythonhosted.org/packages/source/a/astroquery/astroquery-0.4.4.tar.gz
-	sha512sums = b8d96cacb901c3bab00103408d24694fad31f3fefa73c9c33accef671e6b7e253ea69912a3e3bd71c98a0fe5125fd6cfe4c5c52086b61a4fe4c864e9012f81a6
+	source = https://files.pythonhosted.org/packages/source/a/astroquery/astroquery-0.4.5.tar.gz
+	sha512sums = 428f465c49ea4a366489fbab7482caa1110c3556f2db1034eef73b1ccca284cfc5e2ec4d9b32222e05564cb0c84e670f0f4bfe4f2bf62f5600ed7567c65ca92f
 
 pkgname = python-astroquery
