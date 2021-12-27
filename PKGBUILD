@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2163
+pkgver=1.7.2166
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -36,6 +36,7 @@ makedepends=(
   xorgproto
   ninja
   swig
+  python
   python-setuptools
   python-setuptools-scm
   python-cmake-build-extension
@@ -67,10 +68,12 @@ prepare()
   git config submodule.https://github.com/biojppm/rapidyaml.git rapidyaml
   git submodule update
 
-  # Restore when rapidyaml isn't borked
-  #git clone https://aur.archlinux.org/rapidyaml-git.git
-  #cd rapidyaml-git
-  #makepkg -i
+  pip install cmake
+  pip install cmake-build-extension
+
+  git clone https://aur.archlinux.org/rapidyaml-git.git
+  cd rapidyaml-git
+  makepkg -i
 
 }
 
