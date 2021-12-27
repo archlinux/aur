@@ -8,6 +8,7 @@ pkgbase = justgrep-git
 	makedepends = git
 	makedepends = go
 	provides = irc2json
+	provides = justgrep
 	options = zipman
 	source = justgrep::git://github.com/Mm2PL/justgrep.git
 	sha256sums = SKIP
