@@ -5,6 +5,7 @@ pkgbase = python-itunespy
 	url = https://github.com/sleepyfran/itunespy
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
 	depends = python-pycountry
@@ -12,4 +13,3 @@ pkgbase = python-itunespy
 	md5sums = c8e706fa3e2397299ef860d06e0ac5cf
 
 pkgname = python-itunespy
-
