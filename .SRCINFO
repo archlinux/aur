@@ -31,6 +31,7 @@ pkgbase = pcsx2-git
 	depends = rapidyaml-git
 	provides = pcsx2
 	conflicts = pcsx2
+	options = !lto
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/rtissera/libchdr.git

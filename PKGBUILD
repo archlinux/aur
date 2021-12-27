@@ -17,6 +17,8 @@ license=(
 
 install=dev9.install
 
+options=(!lto)
+
 depends=(
   libaio
   libjpeg-turbo
@@ -66,14 +68,6 @@ prepare()
   git config submodule.https://github.com/google/googletest.git.url gtest
   git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
   git submodule update
-
-  pip install cmake
-  pip install cmake-build-extension
-
-  git clone https://aur.archlinux.org/rapidyaml-git.git
-  cd rapidyaml-git
-  makepkg -i
-
 }
 
 build()
