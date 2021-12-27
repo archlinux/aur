@@ -1,6 +1,6 @@
 pkgbase = joplin
 	pkgver = 2.6.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://joplinapp.org/
 	install = joplin.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = joplin
 	makedepends = electron
 	makedepends = libgsf
 	makedepends = node-gyp>=8.4.1
+	makedepends = libvips
 	depends = electron
 	depends = gtk3
 	depends = libexif
@@ -26,6 +27,7 @@ pkgbase = joplin
 	depends = nss
 	depends = orc
 	depends = rsync
+	depends = libvips
 	optdepends = libappindicator-gtk3: for tray icon
 	source = joplin.desktop
 	source = joplin-desktop.sh
