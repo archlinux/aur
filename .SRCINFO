@@ -1,6 +1,6 @@
 pkgbase = projectm-git
 	pkgdesc = Music visualizer which uses 3D accelerated iterative image based rendering (git version)
-	pkgver = 2193.844678472
+	pkgver = 2219.bb1f06d65
 	pkgrel = 1
 	url = https://github.com/projectM-visualizer/projectm
 	arch = x86_64

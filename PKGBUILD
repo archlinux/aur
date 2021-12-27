@@ -8,7 +8,7 @@
 
 _gitname=projectm
 pkgname=projectm-git
-pkgver=2193.844678472
+pkgver=2219.bb1f06d65
 pkgrel=1
 conflicts=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
 provides=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
@@ -31,7 +31,7 @@ build() {
   cd "${_gitname}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_PULSEAUDIO=ON -DQT_VERSION=5 ../
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_PULSEAUDIO=ON -DQT_VERSION=5 ../
   make
 }
 
