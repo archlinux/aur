@@ -7,14 +7,12 @@ pkgbase = rare
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-wheel
-	depends = python-setuptools
 	depends = python-pyqt5
 	depends = python-qtawesome
 	depends = python-requests
 	depends = python-psutil
-	depends = python-pypresence
 	optdepends = wine-staging: Run windows games
+	optdepends = python-pypresence: Use Discord RPC
 	conflicts = rare-git
 	source = rare-1.8.3::git+https://github.com/Dummerle/Rare#tag=1.8.3
 	sha256sums = SKIP
