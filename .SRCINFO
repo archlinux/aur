@@ -19,6 +19,8 @@ pkgbase = telegram-tdlib-purple-git
 	depends = libwebp
 	depends = telegram-tdlib
 	depends = libtgvoip
+	provides = telegram-tdlib-purple=0.7.9.r496.80a9163
+	conflicts = telegram-tdlib-purple
 	source = telegram-tdlib-purple-git::git+https://github.com/ars3niy/tdlib-purple
 	sha256sums = SKIP
 
