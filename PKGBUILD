@@ -43,15 +43,10 @@ md5sums_armv6h=('de44344cadbaf4eeb513f8ec35e92249'
 md5sums_armv5h=('7e4fabd6ffcfee5a09adb468b5738b5c'
                 'fa672977e621324c4dd65fb9d2506c20')
 validpgpkeys=()
-backup=('etc/mchfuse.conf' 
-)
+backup=('etc/mchfuse.conf')
 
 package() {
-    tar -xf ${_pkgname}_${pkgver}_Linux_x86_64.tar.gz
     install -Dm 655 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm 600 "${_pkgname}.conf" "${pkgdir}/etc/mchfuse/${_pkgname}.conf"
+    install -Dm 600 "${_pkgname}.conf" "${pkgdir}/etc/${_pkgname}.conf"
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname-bin}/LICENSE
-    install -dm777 "${pkgdir}/mnt/mch"
-    echo "Edit /etc/mchfuse.conf with your username and password"
-    echo "Edit /etc/fstab as per documentation"
 }
