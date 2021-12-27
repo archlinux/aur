@@ -1,14 +1,13 @@
 pkgbase = python2-rasterio
 	pkgdesc = Fast and direct raster I/O for use with Numpy and SciPy (Python 2)
-	pkgver = 1.0.24
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/mapbox/rasterio
 	arch = x86_64
 	license = BSD
-	makedepends = python2-setuptools
 	makedepends = cython2
 	depends = python2-affine
-	depends = python2-cligj
+	depends = python2-cligj>=0.5
 	depends = python2-numpy
 	depends = python2-snuggs
 	depends = python2-attrs
@@ -17,12 +16,11 @@ pkgbase = python2-rasterio
 	depends = python2-enum34
 	depends = python2-setuptools
 	depends = gdal
-	optdepends = ipython2: Alternative inspector interpreter (rio insp --ipython)
+	optdepends = ipython2: Alternative inspector interpreter (rio2 insp --ipython)
 	optdepends = python2-boto3: AWS S3 raster access
-	optdepends = python2-matplotlib: plt object (rio insp), rasterio.plot module
+	optdepends = python2-matplotlib: plt object (rio2 insp), rasterio.plot module
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/57/84/be5689470a73f5f8988cf44b81cb3493ebb8abbbebb69768c8fc86fccdd5/rasterio-1.0.24.tar.gz
-	sha256sums = 4839479621045211f66868ec49625979693450bc2e476f23e7e8ac4804eaf452
+	source = https://files.pythonhosted.org/packages/73/2d/3e1bc56d75bf7c4cd5df51536992b3420197f2aa5ddd4d93e12100715dff/rasterio-1.1.8.tar.gz
+	sha256sums = f7cac7e2ecf65b4b1eb78c994c63bd429b67dc679b0bc0ecfe487d3d5bf88fd5
 
 pkgname = python2-rasterio
-
