@@ -1,6 +1,6 @@
 pkgbase = crema-git
 	pkgdesc = Manage (remote) custom repositories
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/crema
 	arch = x86_64
