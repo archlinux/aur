@@ -1,6 +1,6 @@
 pkgbase = quake3e-git
 	pkgdesc = Improved Quake III Arena Engine
-	pkgver = 2020.08.08.r43.g521c2fbf
+	pkgver = r2146.3fb70d37
 	pkgrel = 1
 	url = https://github.com/ec-/Quake3e
 	install = quake3e-git.install

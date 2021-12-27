@@ -1,7 +1,7 @@
 # Maintainer: zoidby
 
 pkgname=quake3e-git
-pkgver=2020.08.08.r43.g521c2fbf
+pkgver=r2146.3fb70d37
 pkgrel=1
 provides=('quake3')
 pkgdesc="Improved Quake III Arena Engine"
