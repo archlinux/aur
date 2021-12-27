@@ -1,6 +1,6 @@
 pkgbase = joplin
 	pkgver = 2.6.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://joplinapp.org/
 	install = joplin.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = joplin
 	makedepends = jq
 	makedepends = electron
 	makedepends = libgsf
+	makedepends = node-gyp>=8.4.1
 	depends = electron
 	depends = gtk3
 	depends = libexif

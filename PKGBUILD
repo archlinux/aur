@@ -10,13 +10,13 @@ pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
 pkgver=2.6.10
 groups=('joplin')
-pkgrel=2
+pkgrel=3
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
          'nss' 'orc' 'rsync' )
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64' 'i686')
-makedepends=('git' 'yarn' 'python2' 'rsync' 'jq' 'electron' 'libgsf' )
+makedepends=('git' 'yarn' 'python2' 'rsync' 'jq' 'electron' 'libgsf' 'node-gyp>=8.4.1' )
 url="https://joplinapp.org/"
 license=('MIT')
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
