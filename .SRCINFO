@@ -1,6 +1,6 @@
 pkgbase = python2-cligj
 	pkgdesc = Click params for commmand line interfaces to GeoJSON (Python 2.7)
-	pkgver = 0.4.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/mapbox/cligj
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = python2-cligj
 	makedepends = python2-setuptools
 	depends = python2-click
 	options = !emptydirs
-	source = https://pypi.python.org/packages/fc/53/b89c392f33aa48b3063ad49e4dab70e424659d1fc4103b28b183f477f476/cligj-0.4.0.tar.gz#md5=b1be9e2e9a083e8ab114901645a83826
-	source = https://raw.githubusercontent.com/mapbox/cligj/0.4.0/LICENSE
-	md5sums = b1be9e2e9a083e8ab114901645a83826
-	md5sums = 4059ec060d17347f4fbdd59fb7029f09
+	source = https://pypi.python.org/packages/ea/0d/837dbd5d8430fd0f01ed72c4cfb2f548180f4c68c635df84ce87956cff32/cligj-0.7.2.tar.gz
+	source = https://raw.githubusercontent.com/mapbox/cligj/0.7.2/LICENSE
+	sha256sums = a4bc13d623356b373c2c27c53dbd9c68cae5d526270bfa71f6c6fa69669c6b27
+	sha256sums = 5902d716544ddf9a34849b345c391abaf7c21ca16ed22706d6ac2f5503712594
 
 pkgname = python2-cligj
-
