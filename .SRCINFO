@@ -1,6 +1,6 @@
 pkgbase = silo-fossil
 	pkgdesc = Launcher menu with explosive potential (wayland or x11)
-	pkgver = 0
+	pkgver = r24.78ba44abe8
 	pkgrel = 1
 	url = https://code.jessemcclure.org/silo
 	arch = x86_64

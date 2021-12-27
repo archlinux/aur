@@ -1,7 +1,7 @@
 # Maintainer: Jesse McClure <code at jessemcclure dot org>
 pkgname=silo-fossil
 #pkgname=silo-nowayland-fossil
-pkgver=0
+pkgver=r24.78ba44abe8
 pkgrel=1
 pkgdesc='Launcher menu with explosive potential (wayland or x11)'
 arch=('x86_64')
