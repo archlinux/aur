@@ -4,14 +4,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-pkgver=5.15.2+kde+r263
+pkgver=5.15.2+kde+r268
 pkgrel=1
-_commit=7c6c0030cf80ef7b9ace42996b0e0c3a72f76860
+_commit=edb0f568ca1380623325cb18365b0af81cbf65bf
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework - headless build, no QtGui or QtWidgets'
-groups=('qt' 'qt5')
 depends=('sqlite' 'libproxy' 'double-conversion')
 makedepends=('mariadb-libs' 'unixodbc' 'postgresql-libs' 'dbus' 'systemd' 'md4c' 'git')
 optdepends=('postgresql-libs: PostgreSQL driver'
@@ -21,13 +20,13 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'shared-mime-info: Freedesktop.org Shared MIME Info')
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
-options=(!lto)
+groups=('qt' 'qt5')
 _pkgfqn=qtbase
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-base-cflags.patch
         qt5-base-nostrip.patch)
 sha256sums=('SKIP'
-            'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
+            '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 pkgver() {
@@ -78,7 +77,10 @@ build() {
     -no-linuxfb \
     -no-xcb \
     -no-evdev \
-    -no-strip
+    -no-strip \
+    -ltcg
+# No configure flag for fat static libs with lto
+  bin/qmake CONFIG+=fat-static-lto -- -redo
   make
 }
 
