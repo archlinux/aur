@@ -2,7 +2,7 @@
 
 pkgname=oscclip
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for managing the clipboard using OSC52'
 arch=(any)
 url="https://codeberg.org/rumpelsepp/oscclip"

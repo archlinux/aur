@@ -1,7 +1,7 @@
 pkgbase = oscclip
 	pkgdesc = Utilities for managing the clipboard using OSC52
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/rumpelsepp/oscclip
 	arch = any
 	license = GPLv3
