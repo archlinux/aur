@@ -39,9 +39,6 @@ makedepends=(
   ninja
   swig
   python
-  python-setuptools
-  python-setuptools-scm
-  python-cmake-build-extension
 )
 provides=(pcsx2)
 conflicts=(pcsx2)
