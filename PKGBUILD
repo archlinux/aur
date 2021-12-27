@@ -3,7 +3,7 @@
 # Contributor: CountMurphy <spartan1086 at gmail>
 
 pkgname=phpsysinfo
-pkgver=3.3.4
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="PHP script that displays information about the host being accessed."
 arch=('any')
@@ -14,7 +14,7 @@ backup=(etc/webapps/phpsysinfo/phpsysinfo.ini
 depends=('php')
 optdepends=('lm_sensors: for providing temperature')
 source=("https://github.com/rk4an/phpsysinfo/archive/v$pkgver.tar.gz")
-md5sums=('d3a29ea4ce66fec0967adc211ff4aba2')
+md5sums=('d776be7660def918cb3710265bae8b80')
 
 package() {
 
