@@ -1,6 +1,7 @@
 # Maintainer: Paragoumba <paragoumba@protonmail.com>
 # Contributor: Mario Ray MahardhikZza <leledumbo_cool@yahoo.co.id>
 
+_package=net.downloadhelper.coapp
 pkgname=vdhcoapp-bin
 pkgver=1.6.3
 pkgrel=1
@@ -21,12 +22,17 @@ sha256sums=('d866b1ade5a24cf050810305f9be50f7a7848905322409922ad4d863d3a34756'
 prepare() {
   rm control.tar.xz
   rm debian-binary
-  mkdir -p ${srcdir}/${pkgname}
-  tar xf data.tar.xz -C ${pkgname}
+  mkdir -p "${srcdir}/${pkgname}"
+  tar xf data.tar.xz -C "${pkgname}"
+  rm -r "${pkgname}/opt/${_package}/converter"
 }
 
 package() {
-  cp -Rfp ${srcdir}/${pkgname}/* ${pkgdir}/
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s /opt/net.downloadhelper.coapp/bin/net.downloadhelper.coapp-linux-64 ${pkgdir}/usr/bin/vdhcoapp
+  cp -Rfp "${srcdir}/${pkgname}/"* "${pkgdir}/"
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/opt/${_package}/converter/build/linux/64/"
+  ln -s /usr/bin/ffmpeg "${pkgdir}/opt/${_package}/converter/build/linux/64/ffmpeg"
+  ln -s /usr/bin/ffprobe "${pkgdir}/opt/${_package}/converter/build/linux/64/ffprobe"
+  ln -s /usr/bin/ffplay "${pkgdir}/opt/${_package}/converter/build/linux/64/ffplay"
+  ln -s "/opt/${_package}/bin/net.downloadhelper.coapp-linux-64" "${pkgdir}/usr/bin/vdhcoapp"
 }
