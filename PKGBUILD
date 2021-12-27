@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
-pkgver=4.5.4
+pkgver=4.5.5
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -11,14 +11,12 @@ depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapacke')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.tar.gz"
   "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
-  "opencv-lapack-3.10.patch"
   "0105-wechat-iconv-dependency.patch"
   "0012-make-header-usable-with-C-compiler.patch"
   "0008-mingw-w64-cmake-lib-path.patch"
   "0010-find-libpng-header.patch")
-sha256sums=('c20bb83dd790fc69df9f105477e24267706715a9d3c705ca1e7f613c7b3bad3d'
-  'ad74b440b4539619dc9b587995a16b691246023d45e34097c73e259f72de9f81'
-  'b952ef047a9c7ca89857dc530c2f68c375639f48be1763d23aa03aa90119fcbe'
+sha256sums=('a1cfdcf6619387ca9e232687504da996aaa9f7b5689986b8331ec02cb61d28ad'
+  'a97c2eaecf7a23c6dbd119a609c6d7fae903e5f9ff5f1fe678933e01c67a6c11'
   '3cf6a17b234ddf4f20e042acce329823e970aa06873d63652fa132c46ee56739'
   '9f918a974e9d5227fce3702b1f38716a7fb79586dda9256b5df44dcc0f858c3b'
   '7398e66f80be37382bd427b5eb3a1201a23113c14e71435a44df8779ea1b8a34'
@@ -48,15 +46,14 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
             '-DWITH_VTK=OFF'
             '-DWITH_IPP=OFF'
             '-DWITH_DSHOW=OFF'
+            '-DWITH_EIGEN=ON'
             '-DOPENCV_GENERATE_PKGCONFIG=ON'
             '-DOPENCV_GENERATE_SETUPVARS=OFF')
 
 prepare() {
-  patch -d $srcdir/opencv-$pkgver -p1 < opencv-lapack-3.10.patch 
   patch -d $srcdir/opencv-$pkgver -p1 < 0008-mingw-w64-cmake-lib-path.patch
   patch -d $srcdir/opencv-$pkgver -p1 < 0010-find-libpng-header.patch 
   patch -d $srcdir/opencv-$pkgver -p1 < 0012-make-header-usable-with-C-compiler.patch 
-  
   patch -d $srcdir/opencv_contrib-$pkgver -p1 < 0105-wechat-iconv-dependency.patch 
 }
 
@@ -71,6 +68,7 @@ build() {
       -DLAPACK_LIBRARIES="/usr/${_arch}/bin/liblapack.dll;/usr/${_arch}/bin/libblas.dll;/usr/${_arch}/bin/libcblas.dll" \
       -DLAPACK_CBLAS_H="/usr/${_arch}/include/cblas.h" \
       -DLAPACK_LAPACKE_H="/usr/${_arch}/include/lapacke.h" \
+      -DEIGEN_INCLUDE_PATH="/usr/${_arch}/include/eigen3" \
       ..
     make
     popd
@@ -81,6 +79,7 @@ build() {
       -DLAPACK_LIBRARIES="/usr/${_arch}/bin/liblapack.dll;/usr/${_arch}/bin/libblas.dll;/usr/${_arch}/bin/libcblas.dll" \
       -DLAPACK_CBLAS_H="/usr/${_arch}/include/cblas.h" \
       -DLAPACK_LAPACKE_H="/usr/${_arch}/include/lapacke.h" \
+      -DEIGEN_INCLUDE_PATH="/usr/${_arch}/include/eigen3" \
       -DOPENCV_GENERATE_PKGCONFIG=ON \
       ..
     make
