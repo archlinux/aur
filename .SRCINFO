@@ -1,12 +1,12 @@
 pkgbase = dooble
 	pkgdesc = Web browser based on QtWebEngine
-	pkgver = 2021.11.05
+	pkgver = 2021.12.05
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble/
 	arch = x86_64
 	license = BSD
 	depends = qt5-webengine
-	source = dooble-2021.11.05.tar.gz::https://github.com/textbrowser/dooble/archive/2021.11.05.tar.gz
-	sha256sums = 9ca2d4348a0828a60ab8877c4e379d6985b80c68b65cddf3cf833bd9a16cf116
+	source = dooble-2021.12.05.tar.gz::https://github.com/textbrowser/dooble/archive/2021.12.05.tar.gz
+	sha256sums = d2b32319f4b5ceb2c3df2636303f6a566d61dc5842e6dff7e8d102df7c10ae7d
 
 pkgname = dooble
