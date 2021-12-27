@@ -1,0 +1,76 @@
+pkgbase = postgresql15
+	pkgdesc = Sophisticated object-relational DBMS
+	pkgver = 15.0
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
+	makedepends = python2
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	makedepends = openssl>=1.0.0
+	makedepends = pam
+	makedepends = zlib
+	makedepends = icu
+	makedepends = systemd
+	makedepends = libldap
+	makedepends = llvm
+	makedepends = clang
+	makedepends = libxslt
+	source = https://ftp.postgresql.org/pub/source/v15.0/postgresql-15.0.tar.bz2
+	source = postgresql-run-socket.patch
+	source = postgresql-perl-rpath.patch
+	source = postgresql.service
+	source = postgresql-check-db-dir
+	source = postgresql.sysusers
+	source = postgresql.tmpfiles
+	source = pgenv.sh
+	sha256sums = 4d3c101ea7ae38982f06bdc73758b53727fb6402ecd9382006fa5ecc7c2ca41f
+	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
+	sha256sums = af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb
+	sha256sums = 5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6
+	sha256sums = e0445d31cbafe6a06af38224d4e6ff976cc8977d140adadc99a2e11f2152a485
+	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
+	sha256sums = 665c692161edee50ca0d8c3aae4a39a39c96ce2878cab30dbac4c6f4443c0cbc
+	sha256sums = c0e84a98a6241fad578ea6e862e24637fec1ed9e820ce1f3826af1c2869ba55d
+
+pkgname = postgresql15-libs
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	depends = zlib
+	depends = libldap
+	provides = postgresql15-client
+	provides = libpq.so
+	provides = libecpg.so
+	provides = libecpg_compat.so
+	provides = libpgtypes.so
+	conflicts = postgresql15-client
+
+pkgname = postgresql15-docs
+	pkgdesc = HTML documentation for PostgreSQL
+	options = docs
+
+pkgname = postgresql15
+	pkgdesc = Sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql15-libs>=15.0
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = icu
+	depends = systemd-libs
+	depends = libldap
+	depends = llvm-libs
+	depends = libxslt
+	optdepends = python2: for PL/Python 2 support
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	options = staticlibs
