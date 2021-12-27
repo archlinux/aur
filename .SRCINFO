@@ -1,6 +1,6 @@
 pkgbase = aegisub-japan7-git
 	pkgdesc = A fork of aegisub including tap-to-time feature and custom user scripts
-	pkgver = 3.3.3.r69.0d03097a4
+	pkgver = 3.3.3.r290.1b821bbd4
 	pkgrel = 1
 	url = https://github.com/odrling/Aegisub
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = aegisub-japan7-git
 	makedepends = boost
 	makedepends = git
 	makedepends = intltool
-	makedepends = lua
 	makedepends = mesa
 	makedepends = meson
 	depends = alsa-lib
@@ -23,6 +22,7 @@ pkgbase = aegisub-japan7-git
 	depends = libffms2.so
 	depends = libgl
 	depends = libpulse
+	depends = luajit-2.1-lua52-git
 	depends = openssl
 	depends = uchardet
 	depends = wxgtk3
@@ -33,4 +33,3 @@ pkgbase = aegisub-japan7-git
 	sha256sums = SKIP
 
 pkgname = aegisub-japan7-git
-

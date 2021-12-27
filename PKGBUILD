@@ -1,7 +1,7 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 # Contributor: odrling <florianbadie@odrling.xyz>
 pkgname=aegisub-japan7-git
-pkgver=3.3.3.r69.0d03097a4
+pkgver=3.3.3.r290.1b821bbd4
 pkgrel=1
 pkgdesc='A fork of aegisub including tap-to-time feature and custom user scripts'
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
   libffms2.so
   libgl
   libpulse
+  luajit-2.1-lua52-git
   openssl
   uchardet
   wxgtk3
@@ -31,7 +32,6 @@ makedepends=(
   boost
   git
   intltool
-  lua
   mesa
   meson
 )
@@ -55,7 +55,7 @@ pkgver() {
 prepare() {
   cd aegisub
 
-  arch-meson builddir -Dportaudio=disabled -Dopenal=disabled
+  arch-meson builddir -Dportaudio=disabled -Dopenal=disabled -Dtests=false
 }
 
 build() {
@@ -72,3 +72,4 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
+
