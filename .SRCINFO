@@ -1,0 +1,25 @@
+pkgbase = hypr-git
+	pkgdesc = Hypr is a Linux tiling window manager for Xorg. It's written in XCB with modern C++ and aims to provide easily readable and expandable code.
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/vaxerski/Hypr
+	arch = x86_64
+	license = BSD
+	depends = cairo
+	depends = gdb
+	depends = ninja
+	depends = gcc
+	depends = cmake
+	depends = libxcb
+	depends = xcb-proto
+	depends = xcb-util
+	depends = xcb-util-cursor
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = gtkmm
+	depends = gtk4
+	depends = gtkmm3
+	source = hypr-git::git+https://github.com/vaxerski/Hypr
+	sha256sums = SKIP
+
+pkgname = hypr-git
