@@ -4,8 +4,8 @@ pkgname=crashplan-pro
 _pkgname=crashplan
 pkgver=8.8.1
 _pkgtimestamp=1525200006881
-_pkgbuild=33
-pkgrel=0
+_pkgbuild=36
+pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
@@ -18,9 +18,9 @@ install=crashplan-pro.install
 source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha1sums=('2aa31e565deb0c1fa15ee76c033568e3f47d5713'
+sha1sums=('8afc06a75f35be5b6eec68abddd32fb8c8a80871'
           'c6bf34f1b0ba0bd8d9eb04f6b300112e3c053f84'
-          'f01486b90dafe714a69d20aaa873153ce069af13')
+          'ad5a293e832dec5e7f6ef6ba02d4a8a5a1da8941')
 options=(!strip)
 build() {
   cd $srcdir/code42-install
