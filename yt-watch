@@ -28,14 +28,17 @@ listQueries() {
     printf "${c_red}Your search history:${c_reset}\n\n"
     formatPrint "$queries_file"
 
-    printf "\n${c_red}Enter Choice:${c_reset} "
-    read -r choice
-    [ "$choice" -eq "$choice" ] 2>/dev/null || die "${c_red}Invalid Number Entered.${c_reset}\n"
-    [[ $(wc -l ${queries_file} | awk '{print $1}') -lt "$choice" ]] || [[ "$choice" -lt 0 ]] || [[ "$choice" -eq 0 ]] && die "${c_red}Invalid choice range.${c_reset}\n"
+    if [ -n "$1" ]; then
+        printf "\n${c_red}Enter Choice:${c_reset} "
+        read -r choice
+        [ "$choice" -eq "$choice" ] 2>/dev/null || die "${c_red}Invalid Number Entered.${c_reset}\n"
+        [[ $(wc -l ${queries_file} | awk '{print $1}') -lt "$choice" ]] || [[ "$choice" -lt 0 ]] || [[ "$choice" -eq 0 ]] && die "${c_red}Invalid choice range.${c_reset}\n"
   
-    selected=$(awk -v choice="$choice" '{if(NR==choice) print $0}' "$queries_file")
-    echo "$selected" | xclip -selection clipboard
-    printf "\n${c_green}\"$selected\"${c_reset} has been copied to your clipboard.\n"
+        selected=$(awk -v choice="$choice" '{if(NR==choice) print $0}' "$queries_file")
+        echo "$selected" | xclip -selection clipboard
+        printf "\n${c_green}\"$selected\"${c_reset} has been copied to your clipboard.\n"
+    fi
+    
 }
 
 formatPrint(){
@@ -248,6 +251,7 @@ helpScreen() {
   ${c_red}-h, --history${c_reset}                 ${c_blue}Lists out the query results of your latest search.${c_reset}
   ${c_red}-k, --kill${c_reset}                    ${c_blue}Kills mpv${c_reset}
   ${c_red}-q, --queries${c_reset}                 ${c_blue}Lists out all of your search history.${c_reset}
+  ${c_red}-qc, --query-copy${c_reset}             ${c_blue}Lists out search history, select & it copies it.${c_reset}
   "
 }
 
@@ -290,9 +294,12 @@ elif [[ "$1" == "-k" || "$1" == "--kill" ]]; then
     pkill mpv
 
 # Lists your search.
-# You can select one and it auto copies it for you.
 elif [[ "$1" == "-q" || "$1" == "--queries" ]]; then
     listQueries
+
+# Lists out your search history, select & it copies it for you.
+elif [[ "$1" == "-qc" || "$1" == "--query-copy" ]]; then
+    listQueries " "
 
 # Clear search history :)
 elif [[ "$1" == "--clear-history" ]]; then
