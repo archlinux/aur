@@ -2,13 +2,13 @@
 
 pkgname=mediarepo
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tag based media management tool for images, videos, audio and more'
 arch=(x86_64)
 url=https://github.com/trivernis/mediarepo-ui
 license=(GPL3)
 optdepends=('mediarepo-daemon=0.11.0: backend for local repositories')
-makedepends=(curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 webkit2gtk patchelf libvips clang rustup yarn nodejs npm python node-gyp)
+makedepends=(curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 webkit2gtk patchelf libvips clang rustup yarn nodejs-lts-gallium npm python node-gyp)
 
 options=(!strip)
 source=(
