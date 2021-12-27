@@ -1,10 +1,10 @@
 
 _pkgname=minq_nhentai
 pkgname="${_pkgname}-git"
-pkgver=r8.938c1db11847bf0fcca466cc276232e30c79055d
+pkgver=r13.b5c74aa2360421845db0c19e00c3a972a558281e
 pkgrel=1
 epoch=
-pkgdesc="Search for hentai in nhentai based on specified tags"
+pkgdesc='Browse hnehtai in your terminal. Sixel support for full image resolution (your terminal needs to support sixel).'
 arch=(x86_64 i686)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
@@ -12,7 +12,7 @@ groups=()
 depends=(python python-beautifulsoup4 viu)
 makedepends=(git)
 checkdepends=()
-optdepends=()
+optdepends=("wezterm: an example terminal that supports sixel, for full image resolution")
 provides=("${_pkgname}")
 conflicts=()
 replaces=()

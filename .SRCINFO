@@ -1,6 +1,6 @@
 pkgbase = minq_nhentai-git
-	pkgdesc = Search for hentai in nhentai based on specified tags
-	pkgver = r8.938c1db11847bf0fcca466cc276232e30c79055d
+	pkgdesc = Browse hnehtai in your terminal. Sixel support for full image resolution (your terminal needs to support sixel).
+	pkgver = r13.b5c74aa2360421845db0c19e00c3a972a558281e
 	pkgrel = 1
 	url = https://github.com/kuche1/minq_nhentai.git
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = minq_nhentai-git
 	depends = python
 	depends = python-beautifulsoup4
 	depends = viu
+	optdepends = wezterm: an example terminal that supports sixel, for full image resolution
 	provides = minq_nhentai
 	source = git+https://github.com/kuche1/minq_nhentai.git
 	md5sums = SKIP
