@@ -1,0 +1,35 @@
+pkgbase = folks-telepathy-git
+	pkgdesc = Library to aggregates people into metacontacts. Variant of 'folks' with telepathy backend compiled in. Latest git checkout.
+	pkgver = 0.15.3.7+r2985.20211116.69285b88
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Folks
+	arch = x86_64
+	arch = i686
+	license = LGPL2.1
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = python-dbusmock
+	makedepends = vala
+	depends = evolution-data-server
+	depends = libgee
+	depends = libxml2
+	depends = telepathy-glib
+	provides = folks=0.15.3.7+r2985.20211116.69285b88
+	provides = folks-telepathy=0.15.3.7+r2985.20211116.69285b88
+	provides = folks-git=0.15.3.7+r2985.20211116.69285b88
+	provides = libfolks.so=0.15.3.7+r2985.20211116.69285b88
+	provides = libfolks-dummy.so=0.15.3.7+r2985.20211116.69285b88
+	provides = libfolks-eds.so=0.15.3.7+r2985.20211116.69285b88
+	provides = libfolks-telepathy.so=0.15.3.7+r2985.20211116.69285b88
+	conflicts = folks
+	conflicts = folks-telepathy
+	conflicts = libfolks.so
+	conflicts = libfolks-dummy.so
+	conflicts = libfolks-eds.so
+	conflicts = libfolks-telepathy.so
+	source = folks::git+https://gitlab.gnome.org/GNOME/folks.git
+	sha256sums = SKIP
+
+pkgname = folks-telepathy-git
