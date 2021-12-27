@@ -6,6 +6,8 @@ pkgname=vdhcoapp-bin
 pkgver=1.6.3
 pkgrel=1
 pkgdesc="Companion application for Video DownloadHelper browser add-on, precompiled binary version"
+provides=("vdhcoapp=${pkgver}")
+conflicts=('vdhcoapp')
 arch=('i686' 'x86_64')
 url="https://github.com/mi-g/vdhcoapp"
 license=('GPL2')

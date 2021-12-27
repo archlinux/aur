@@ -8,6 +8,8 @@ pkgbase = vdhcoapp-bin
 	license = GPL2
 	depends = ffmpeg
 	depends = orc
+	provides = vdhcoapp=1.6.3
+	conflicts = vdhcoapp
 	options = !strip
 	source = https://github.com/mi-g/vdhcoapp/releases/download/v1.6.3/net.downloadhelper.coapp-1.6.3-1_amd64.deb
 	source = vdhcoapp-install.hook
