@@ -1,7 +1,7 @@
 pkgbase = makepasswd
 	pkgdesc = Generates true random passwords with the emphasis on security over pronounceability (Debian version)
-	pkgver = 1.10_10
-	pkgrel = 2
+	pkgver = 1.10_13
+	pkgrel = 1
 	url = http://packages.qa.debian.org/m/makepasswd.html
 	arch = any
 	license = GPL2
@@ -10,9 +10,8 @@ pkgbase = makepasswd
 	depends = perl-bytes-random-secure
 	depends = perl-crypt-random-seed
 	source = http://ftp.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10.orig.tar.gz
-	source = http://ftp.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10-10.diff.gz
+	source = http://ftp.debian.org/debian/pool/main/m/makepasswd/makepasswd_1.10-13.diff.gz
 	sha256sums = 41491f361d810f9bb3e08b40df3c3034faec306d434dab15534e19023f91a75c
-	sha256sums = f552c468789c8ed326fd1506c93f04378085a198e332ac206539367948c4ad93
+	sha256sums = a18d52759e5318d413fc210c4aabba612113c80559117d81726d1b5827392ddd
 
 pkgname = makepasswd
-
