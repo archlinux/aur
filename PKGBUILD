@@ -1,6 +1,6 @@
 pkgbase=vfc
 pkgname=('vfc')
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Library and tool for converting vertex formats for use in real-time rendering.'
 arch=('i686' 'x86_64')
@@ -14,8 +14,7 @@ build() {
 	mkdir VFC && cd VFC
 	git clone https://github.com/akb825/VertexformatConvert .
 	git checkout v${pkgver}
-	git submodule init
-	git submodule update
+	git submodule update --init
 	mkdir build && cd build
 	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_SKIP_RPATH=TRUE -DVFC_BUILD_DOCS=OFF -DVFC_BUILD_TESTS=OFF -DVFC_SHARED=ON
