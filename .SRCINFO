@@ -1,6 +1,6 @@
 pkgbase = yaml-bindings-git
 	pkgdesc = Tooling for devicetree validation using YAML and jsonschema
-	pkgver = r529.0227e71
+	pkgver = r591.ce55bbb
 	pkgrel = 1
 	url = https://github.com/devicetree-org/dt-schema
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = yaml-bindings-git
 	sha1sums = SKIP
 
 pkgname = yaml-bindings-git
-
