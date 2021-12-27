@@ -3,10 +3,10 @@ pkgname=v2ray-rules-dat-autoupdate
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
-#tag=$(git ls-remote --tags --refs --sort="version:refname" "$url".git | awk -F/ 'END{print$NF}')
+tag=$(git ls-remote --tags --refs --sort="version:refname" "$url".git | awk -F/ 'END{print$NF}')
 license=('GPL')
 
 provides=('xray-domain-list-community' 'xray-geoip' 'v2ray-domain-list-community' 'v2ray-geoip' 'v2ray-domain-list-custom' 'v2ray-geoip-custom' 'v2ray-rules-dat-git' 'vxray-rules-dat-git')
@@ -17,7 +17,7 @@ depends=('curl')
 
 install="${pkgname}.install"
 
-source=("${url}/releases/latest/download/rules.zip"
+source=("rules-${tag}.zip"::"${url}/releases/download/${tag}/rules.zip"
         "${pkgname}"
         "${pkgname}.install"
         "${pkgname}.sysusers"
@@ -25,7 +25,7 @@ source=("${url}/releases/latest/download/rules.zip"
         "${pkgname}.service"
         "${pkgname}.timer")
   
-sha256sums=($(curl -sL ${url}/releases/latest/download/rules.zip.sha256sum | awk '{print $1}')
+sha256sums=($(curl -sL "${url}/releases/download/${tag}/rules.zip.sha256sum" | awk '{print $1}')
             '1fd7c4f89bb0b89520b1615a5d6e1372a90a3b13ecb1c6669825c44cc52169b4'
             'd5deeb9e02b2cf6e233da4369bb7d74e06054bd54ee9e62875f3342d7c931dbd'
             '5d0fac85c93516f45281f3e45071f4f98c4a9eadfbd72602129c888c823b79ef'
