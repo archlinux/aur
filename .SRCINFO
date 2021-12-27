@@ -1,9 +1,10 @@
 pkgbase = spt
 	pkgdesc = Simple pomodoro timer that doubles your efficiency
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pickfire/spt
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = libnotify
 	source = https://github.com/pickfire/spt/archive/0.6/spt-0.6.tar.gz
