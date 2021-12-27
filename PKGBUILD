@@ -1,7 +1,8 @@
-pkgname=luajit-2.1-git
-pkgver=2.1.0.beta3.r230.gec6edc5c
+# Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
+pkgname=luajit-2.1-lua52-git
+pkgver=2.1.0.beta3.r360.ga91d0d9d
 pkgrel=1
-pkgdesc='Just-in-time compiler and drop-in replacement for Lua (v2.1 branch)'
+pkgdesc='Just-in-time compiler and drop-in replacement for Lua (v2.1 branch, Lua 5.2 support)'
 arch=('i686' 'x86_64')
 url='https://luajit.org/'
 license=('MIT')
@@ -19,7 +20,7 @@ pkgver() {
 
 build() { 
   cd luajit-2.0
-  make amalg PREFIX=/usr
+  make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT PREFIX=/usr
 }
 
 package() {
