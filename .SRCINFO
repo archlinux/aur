@@ -1,6 +1,6 @@
 pkgbase = yt-watch-git
 	pkgdesc = Search/Watch/Download/Convert YouTube Videos on mpv using yt-dlp/YouTube API.
-	pkgver = r5.39af252
+	pkgver = r6.70a45d5
 	pkgrel = 1
 	url = https://github.com/Kungger-git/yt-watch
 	arch = any
