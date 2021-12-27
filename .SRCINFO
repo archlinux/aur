@@ -1,0 +1,14 @@
+pkgbase = python-m2r
+	pkgdesc = Markdown to reStructuredText converter
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/miyakogi/m2r
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-mistune1
+	depends = python-docutils
+	source = python-m2r-0.2.1.tar.gz::https://github.com/miyakogi/m2r/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 9286c1a5d7548f34b0a12017444e4c441781bef4b71f321f723e314b76b6c498
+
+pkgname = python-m2r
