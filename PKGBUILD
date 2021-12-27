@@ -9,7 +9,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.18.1_0.10.2-1"
+_ver="1.18.1_0.10.2-2"
 _minecraft_ver_latest="1.18.1"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
@@ -103,6 +103,4 @@ package() {
 	# Give the group write permissions and set user or group ID on execution
 	chmod g+ws "${_server_root}"
 	
-	# the server needs to be owned by fabric user and group
-	chown -R fabric:fabric "${_server_root}"
 }
