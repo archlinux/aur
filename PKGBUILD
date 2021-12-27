@@ -8,8 +8,8 @@ pkgdesc="Kirigami-based podcast player"
 url="https://invent.kde.org/plasma-mobile/kasts"
 license=('GPL2')
 depends=('qt5-multimedia' 'qt5-quickcontrols2' 'purpose' 'kirigami2'
-         'ki18n' 'kconfig' 'kcoreaddons' 'ki18n' 'syndication')
-makedepends=('extra-cmake-modules' 'git' 'qt5-svg' 'qt5-tools')
+         'ki18n' 'kconfig' 'kcoreaddons' 'ki18n' 'syndication' 'taglib')
+makedepends=('extra-cmake-modules' 'git' 'qt5-svg' 'qt5-tools' 'qtkeychain-qt5')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}.git")

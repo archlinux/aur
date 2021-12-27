@@ -13,6 +13,7 @@ pkgbase = kasts-git
 	makedepends = git
 	makedepends = qt5-svg
 	makedepends = qt5-tools
+	makedepends = qtkeychain-qt5
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols2
 	depends = purpose
@@ -22,10 +23,10 @@ pkgbase = kasts-git
 	depends = kcoreaddons
 	depends = ki18n
 	depends = syndication
+	depends = taglib
 	provides = kasts
 	conflicts = kasts
 	source = git+https://invent.kde.org/plasma-mobile/kasts.git
 	sha256sums = SKIP
 
 pkgname = kasts-git
-
