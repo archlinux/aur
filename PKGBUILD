@@ -3,7 +3,7 @@
 _pkgname=rapidyaml
 pkgbase=$_pkgname-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.1.0.r74.g92766c5
+pkgver=0.2.3.r21.gefc8b0e
 pkgrel=1
 pkgdesc="A library to parse and emit YAML, and do it fast."
 url="https://github.com/biojppm/rapidyaml"
@@ -28,6 +28,8 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
+
+	sed -i -e 's/-git//' setup.py
 
 	git submodule init
 	git config submodule.extern/c4core.url "$srcdir/c4core"
