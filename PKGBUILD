@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 # Contributor: Ramana Kumar <firstname@member.fsf.org>
 pkgname=firefox-sync
-pkgver=20180623
+pkgver=20200819
 pkgrel=1
 pkgdesc="Speed up Firefox using tmpfs"
 arch=('i686' 'x86_64')

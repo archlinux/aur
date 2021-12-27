@@ -23,7 +23,7 @@ EOF
 exit 0
 }
 
-while getopts dhpr: options
+while getopts dhp:r: options
 do
 case $options in
   d) echo "default profile directory is ~/.mozilla/firefox/$LINK"
