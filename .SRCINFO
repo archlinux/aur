@@ -1,0 +1,17 @@
+pkgbase = sworkstyle-git
+	pkgdesc = Swayest Workstyle - This tool will rename workspaces to the icons configured. Mainly meant for Sway WM
+	pkgver = 1.2.2.r1.gcb83ad2
+	pkgrel = 1
+	url = https://github.com/Lyr-7D1h/swayest_workstyle
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = otf-font-awesome
+	source = sworkstyle-git::git+https://github.com/Lyr-7D1h/swayest_workstyle
+	source = sworkstyle.man
+	sha256sums = SKIP
+	sha256sums = 94b1c145d40a135897dd49e4652dce52a33172894815f88e942809491f8bc07b
+
+pkgname = sworkstyle-git
