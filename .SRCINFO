@@ -1,12 +1,15 @@
 pkgbase = cargo-clone
 	pkgdesc = A cargo subcommand to fetch the source code of a Rust crate
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JanLikar/cargo-clone
 	arch = x86_64
 	license = APACHE
 	license = MIT
 	makedepends = cargo
+	makedepends = libssh2
+	depends = libgit2
+	depends = curl
 	source = cargo-clone-0.2.0.tar.gz::https://static.crates.io/crates/cargo-clone/cargo-clone-0.2.0.crate
 	sha256sums = c4f88e55208ca93c21a8fdd1cd2be16004e1e2ab4ca4aa3d57acb832e749fdd9
 
