@@ -1,6 +1,6 @@
 pkgbase = minq_nhentai-git
 	pkgdesc = Browse hnehtai in your terminal. Sixel support for full image resolution (your terminal needs to support sixel).
-	pkgver = r14.4fbac5f50f10bfe9f6d0c51308703cf52ae77e83
+	pkgver = r16.0fbb80776553ab47b5c41063f5c64cabd8c6f162
 	pkgrel = 1
 	url = https://github.com/kuche1/minq_nhentai.git
 	arch = x86_64
