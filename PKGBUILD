@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <ramana at member dot fsf dot org>
 pkgname=polyml-fixes-git
-pkgver=5.7.1r3215.44b7b88e
+pkgver=5.9r4498.39d96a2d
 pkgrel=1
 pkgdesc="Poly/ML implementation of Standard ML (latest release + fixes)"
 arch=('i686' 'x86_64')
@@ -15,13 +15,13 @@ replaces=("${pkgname%-fixes-git}-svn")
 backup=()
 options=('staticlibs')
 install=
-source=('git+https://github.com/polyml/polyml.git#branch=fixes-5.7.1')
+source=('git+https://github.com/polyml/polyml.git#branch=fixes-5.9')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-fixes-git}"
-	printf "5.7.1r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "5.9r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
