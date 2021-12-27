@@ -1,5 +1,6 @@
 # Maintainer : Barfin
-# Pevious Maintainer: Jack Lupino <alemswaj@tutanota.com>
+# Packager :  Alem swaj <alemswaj@tutanota.com>
+# Pevious Maintainer: Jack Lupino 
 pkgname=lelivrescolaire
 pkgver='2.2.1'
 pkgrel=1
