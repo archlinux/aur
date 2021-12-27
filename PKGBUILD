@@ -1,9 +1,9 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
-pkgbase=postgresql
+pkgbase=postgresql14
 pkgver=14.1
 _majorver=${pkgver%.*}
-pkgname=("postgresql${_majorver}-libs" "postgresql${_majorver}-docs" "postgresql${_majorver}")
+pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
@@ -37,7 +37,7 @@ prepare() {
 build() {
   cd postgresql-${pkgver}
   local options=(
-    --prefix=/opt/postgresql${_majorver}
+    --prefix=/opt/${pkgbase}
     --sysconfdir=/etc
     --with-gssapi
     --with-libxml
@@ -95,13 +95,13 @@ check() {
 package_postgresql14-libs() {
   pkgdesc="Libraries for use with PostgreSQL"
   depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0' 'zlib' 'libldap')
-  provides=("postgresql${_majorver}-client" 'libpq.so' 'libecpg.so' 'libecpg_compat.so' 'libpgtypes.so')
-  conflicts=("postgresql${_majorver}-client")
+  provides=("${pkgbase}-client" 'libpq.so' 'libecpg.so' 'libecpg_compat.so' 'libpgtypes.so')
+  conflicts=("${pkgbase}-client")
 
-  cd postgresql-${pkgver}
+  pushd postgresql-${pkgver}
 
   # install license
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/postgresql${_majorver}/share/licenses/${pkgname}"
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/${pkgbase}/share/licenses/${pkgname}"
 
   
 
@@ -112,30 +112,30 @@ package_postgresql14-libs() {
 
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
       clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
-    install -Dm 644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/opt/postgresql${_majorver}/share/man/man1/${util}.1
+    install -Dm 644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/opt/${pkgbase}/share/man/man1/${util}.1
   done
 
   cd src/include
 
-  install -d "${pkgdir}"/opt/postgresql${_majorver}/include/{libpq,postgresql/internal/libpq}
+  install -d "${pkgdir}"/opt/${pkgbase}/include/{libpq,postgresql/internal/libpq}
 
   # these headers are needed by the public headers of the interfaces
-  install -m 644 pg_config.h "${pkgdir}/opt/postgresql${_majorver}/include"
-  install -m 644 pg_config_os.h "${pkgdir}/opt/postgresql${_majorver}/include"
-  install -m 644 pg_config_ext.h "${pkgdir}/opt/postgresql${_majorver}/include"
-  install -m 644 postgres_ext.h "${pkgdir}/opt/postgresql${_majorver}/include"
-  install -m 644 libpq/libpq-fs.h "${pkgdir}/opt/postgresql${_majorver}/include/libpq"
-  install -m 644 pg_config_manual.h "${pkgdir}/opt/postgresql${_majorver}/include"
+  install -m 644 pg_config.h "${pkgdir}/opt/${pkgbase}/include"
+  install -m 644 pg_config_os.h "${pkgdir}/opt/${pkgbase}/include"
+  install -m 644 pg_config_ext.h "${pkgdir}/opt/${pkgbase}/include"
+  install -m 644 postgres_ext.h "${pkgdir}/opt/${pkgbase}/include"
+  install -m 644 libpq/libpq-fs.h "${pkgdir}/opt/${pkgbase}/include/libpq"
+  install -m 644 pg_config_manual.h "${pkgdir}/opt/${pkgbase}/include"
 
   # these he aders are needed by the not-so-public headers of the interfaces
-  install -m 644 c.h "${pkgdir}/opt/postgresql${_majorver}/include/postgresql/internal"
-  install -m 644 port.h "${pkgdir}/opt/postgresql${_majorver}/include/postgresql/internal"
-  install -m 644 postgres_fe.h "${pkgdir}/opt/postgresql${_majorver}/include/postgresql/internal"
-  install -m 644 libpq/pqcomm.h "${pkgdir}/opt/postgresql${_majorver}/include/postgresql/internal/libpq"
+  install -m 644 c.h "${pkgdir}/opt/${pkgbase}/include/postgresql/internal"
+  install -m 644 port.h "${pkgdir}/opt/${pkgbase}/include/postgresql/internal"
+  install -m 644 postgres_fe.h "${pkgdir}/opt/${pkgbase}/include/postgresql/internal"
+  install -m 644 libpq/pqcomm.h "${pkgdir}/opt/${pkgbase}/include/postgresql/internal/libpq"
 
   # this utility is to be sourced in order to find proper libs and bins
-  cd postgresql-${pkgver}
-  install -m 755 ../pgenv.sh "${pkgdir}/opt/postgresql${_majorver}/bin"
+  popd
+  install -m 755 ../pgenv.sh "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_postgresql14-docs() {
@@ -144,20 +144,20 @@ package_postgresql14-docs() {
 
   cd postgresql-${pkgver}
 
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/postgresql${_majorver}/share/licenses/${pkgname}"
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/${pkgbase}/share/licenses/${pkgname}"
 
   make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
-  chown -R root:root "${pkgdir}/opt/postgresql${_majorver}/share/doc/html"
+  chown -R root:root "${pkgdir}/opt/${pkgbase}/share/doc/html"
 
   # clean up
-  rmdir "${pkgdir}"/opt/postgresql${_majorver}/share/man/man{1,3,7}
-  rmdir "${pkgdir}"/opt/postgresql${_majorver}/share/man
+  rmdir "${pkgdir}"/opt/${pkgbase}/share/man/man{1,3,7}
+  rmdir "${pkgdir}"/opt/${pkgbase}/share/man
 }
 
 package_postgresql14() {
   pkgdesc='Sophisticated object-relational DBMS'
   # backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql${_majorver}-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0'
+  depends=("${pkgbase}-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0'
            'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs' 'libxslt')
   optdepends=('python2: for PL/Python 2 support'
               'python: for PL/Python 3 support'
@@ -166,7 +166,7 @@ package_postgresql14() {
   options=('staticlibs')
   install=postgresql.install
 
-  cd postgresql-${pkgver}
+  pushd postgresql-${pkgver}
 
   # install
   make DESTDIR="${pkgdir}" install
@@ -187,26 +187,26 @@ package_postgresql14() {
   done
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
       clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
-    rm "${pkgdir}"/opt/postgresql${_majorver}/share/man/man1/${util}.1
+    rm "${pkgdir}"/opt/${pkgbase}/share/man/man1/${util}.1
   done
 
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/postgresql${_majorver}/share/licenses/${pkgname}"
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/${pkgbase}/share/licenses/${pkgname}"
 
-  cd "${srcdir}"
-  install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/opt/postgresql${_majorver}/bin"
+  popd
+  install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/opt/${pkgbase}/bin"
 
-  #install -Dm 644 ${pkgbase}.pam "${pkgdir}/etc/pam.d/${pkgname}"
+  #install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/${pkgname}"
 
-  install -Dm 644 ${pkgbase}.service  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm 644 ${pkgbase}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm 644 ${pkgbase}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm 644 postgresql.service  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm 644 postgresql.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm 644 postgresql.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # clean up unneeded installed items
-  rm -rf "${pkgdir}/opt/postgresql${_majorver}/include/internal"
-  rm -rf "${pkgdir}/opt/postgresql${_majorver}/include/informix"
-  rm -rf "${pkgdir}/opt/postgresql${_majorver}/include/libpq"
-  find "${pkgdir}//opt/postgresql${_majorver}/include" -maxdepth 1 -type f -execdir rm {} +
-  rmdir "${pkgdir}/opt/postgresql${_majorver}/share/doc/html"
+  rm -rf "${pkgdir}/opt/${pkgbase}/include/internal"
+  rm -rf "${pkgdir}/opt/${pkgbase}/include/informix"
+  rm -rf "${pkgdir}/opt/${pkgbase}/include/libpq"
+  find "${pkgdir}//opt/${pkgbase}/include" -maxdepth 1 -type f -execdir rm {} +
+  rmdir "${pkgdir}/opt/${pkgbase}/share/doc/html"
 }
 
 # vim: ts=2 sw=2 et:

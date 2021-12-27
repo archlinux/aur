@@ -1,4 +1,4 @@
-pkgbase = postgresql
+pkgbase = postgresql14
 	pkgdesc = Sophisticated object-relational DBMS
 	pkgver = 14.1
 	pkgrel = 1
