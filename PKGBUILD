@@ -3,55 +3,91 @@
 
 pkgname=scratch3
 pkgver=3.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("any")
 url="https://scratch.mit.edu"
 license=("custom:BSD-3-Clause")
-depends=(electron11)
-makedepends=(p7zip)
-source=("https://downloads.scratch.mit.edu/desktop/Scratch%20$pkgver%20Setup.exe"
-        "https://raw.githubusercontent.com/LLK/scratch-desktop/develop/LICENSE"
-        "${pkgname}.sh"
+depends=()
+makedepends=('npm' 'patch')
+source=("https://github.com/LLK/scratch-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.xml"
-        "$pkgname-icons.tar.gz")
-noextract=("Scratch%20$pkgver%20Setup.exe")
-sha512sums=('e4fdf649f1c9256b00e9d6eb07b4b9850799fcad2bf2e1ea5d1e0033b3f9ecc0de9a61931d9b85789c5f7a38710ef7ed97c6a6bc8fb1e5acf093d5c1a0bf1716'
-			'4922e4903b96b7f1e6286110bb64256201702ca0921cbd5ecbe462db3ac9f6e7213ca0495d0ccb66cd8ba90a1e137f4581c7a35e4cad689edbe2cfe8144384c0'
-			'6cc5ab074b5e26361a6b80b0b98fe8a7804544577f11ec8b59c76b6d52b8c2916ac3f7eb09b8767a21915f7de91da220b55d9b50ceb32432c2d02969175d97f9'
-			'5396e2052cabe4e9843d4f4bdfded59074775d12f80111df90da35bb8c450dbbce4f0314cba7efc602b4dcc1b22ad7ab2559e1c64d134d3f111b95ebd3cd656a'
-			'389a65bb69d457e02b41621d88a52a3c1d52b0040a1c30a0bf2df6d30dd45a1ec1708ff0bc31c90a003be300315af253f5e0eb203bf45b6c362e4f3cdfda96d1'
-			'97f392577c8bc7508d290e6775743fb40f4e492ce244fe8f93983d6d9a1160a0ab6e217790a0f2adcec46455f0e07357b472a499343ca6beb8c3dd7d740e2515')
+        "$pkgname-icons.tar.gz"
+        "$pkgname-patches.tar.gz")
+sha256sums=('0bb89f64bc933a00a56fd87a3a27b2106b42d0dc1ba61cf1a9f3f19beae5cec8'
+			'0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
+			'86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
+			'326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
+			'634768e6774d4a4794370e13d9326333935b57fe0a41e87d48148ba4aa9d207a')
 
 prepare() {
-   cd "$srcdir/"
-## Extract files from "Scratch%20$pkgver%20Setup.exe" with 7za
-## in order to get only the needed files.
-   7za x -aoa -y "Scratch%20$pkgver%20Setup.exe" resources/ -o$pkgname/
+   cd "$srcdir"
 
-## Adjust folder's attributes
-   chmod 755 $pkgname/resources/{,static/{,assets/}}
+#  Copy patch files to be able to compile on Linux platform
+#  and with our own electron version (13.6.3)
+   cp package-json.patch scratch-desktop-${pkgver}/
+   cp electron-builder-yaml.patch scratch-desktop-${pkgver}/
+   cp electron-builder-wrapper-js.patch scratch-desktop-${pkgver}/scripts/
+   cp index-js.patch scratch-desktop-${pkgver}/src/main/
 
-## Copy the electron files needed for scratch.
-   cp -rf /usr/lib/electron11/* $srcdir/$pkgname/
+   cd "scratch-desktop-${pkgver}"
+   patch < package-json.patch
+   patch < electron-builder-yaml.patch
 
-## This file is useless
-   rm $pkgname/resources/default_app.asar
+   cd scripts
+   patch < electron-builder-wrapper-js.patch
 
-## We don't need, if any, windows/dos file executables, remove them.
-   find $srcdir/$pkgname/ -type f -name "*.exe" -delete
-   find $srcdir/$pkgname/ -type f -name "*.dll" -delete
+   cd ../src/main/
+   patch < index-js.patch
+   cd ../..
+
+#  Dependencies installation & application compilation
+   npm install
+   npm run clean && npm run compile && npm run fetch
+
+#  Remove all refs to $srcdir in dist/main/main.js and dist/renderer/renderer.js
+#  in order to avoid warnings at package error research.
+
+   cd dist/renderer
+   rmString="/\*! ${srcdir}/scratch-desktop-3.27.0/src/renderer/index.js \*/"
+   sed -e "s|${rmString}||" renderer.js > renderer2.js
+   mv renderer2.js renderer.js
+
+   cd ../main
+   rmString="/\*! ${srcdir}/scratch-desktop-3.27.0/src/main/index.js \*/"
+   sed -e "s|${rmString}||" main.js > main2.js
+   mv main2.js main.js
+   cd ../..
+
+#  File generation
+   npx electron-builder --linux
+
+#  To avoid the default Electron icon to be used
+   cp ../icon256.png dist/linux-unpacked/resources/icon.png
+
+#  Copy/move all license files in src folder
+   cp LICENSE ../
+   cp TRADEMARK ../
+   mv dist/linux-unpacked/LICENSE* ../
+
+#  And the icon file in SVG format
+   cp src/icon/ScratchDesktop.svg ../$pkgname.svg
 }
 
 package() {
-   install -Dm755 "${pkgname}.sh" $pkgdir/usr/bin/$pkgname
+   cd "$srcdir"
+   install -dm755 ${pkgdir}/usr/bin
+   ln -sf /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
    install -Dm644 "${pkgname}.desktop" $pkgdir/usr/share/applications/${pkgname}.desktop
    install -Dm644 "${pkgname}.xml" $pkgdir/usr/share/mime/packages/${pkgname}.xml
-   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-   install -Dm644 "sd3.svg" $pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
-   install -Dm644 "ch3.svg" $pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-scratch3-sprite.svg
-
+   install -Dm644 "$pkgname.svg" $pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
+#  Scratch3 can generate SPRITE3 files: using "cat's head" in SVG format (color: orange) as icon file.
+#  Note: Scratch3 can properly load these files on Windows platform but not on my system.
+   install -Dm644 "cathead.svg" $pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-scratch3-sprite.svg
+   install -Dm644 TRADEMARK "$pkgdir/usr/share/licenses/$pkgname/TRADEMARK"
+   install -Dm644 LICENS* -t "$pkgdir/usr/share/licenses/$pkgname"
    install -dm755 "${pkgdir}/usr/share/$pkgname"
-   cp -r $srcdir/$pkgname -t "$pkgdir/usr/share"
+   cd "scratch-desktop-${pkgver}/dist/linux-unpacked"
+   cp -r * -t "$pkgdir/usr/share/$pkgname"
 }
