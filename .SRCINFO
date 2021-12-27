@@ -1,6 +1,6 @@
 pkgbase = python2-snuggs
 	pkgdesc = Provide s-expressions for Numpy, for Python 2.7
-	pkgver = 1.4.2
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/mapbox/snuggs
 	arch = any
@@ -10,10 +10,9 @@ pkgbase = python2-snuggs
 	depends = python2-numpy
 	depends = python2-pyparsing
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/07/d9/284b51b951fe2d56266be31f2d5c788b5e8251fdafe5121721d9d36940e1/snuggs-1.4.2.tar.gz
-	source = https://raw.githubusercontent.com/mapbox/snuggs/1.4.2/LICENSE
-	sha256sums = 8d56182fc83e1a1893284f69abd35751ce30e8f0a33794c2802e7e5d6547e1f1
+	source = https://files.pythonhosted.org/packages/93/19/0d11ab370735dde61076a0e41644e5593821776e69e3b0344626cfa0e56a/snuggs-1.4.7.tar.gz
+	source = https://raw.githubusercontent.com/mapbox/snuggs/1.4.7/LICENSE
+	sha256sums = 501cf113fe3892e14e2fee76da5cd0606b7e149c411c271898e6259ebde2617b
 	sha256sums = 29460627842ca33c406297d8b9b2805d8faeb22de7a145358509533b4eca4599
 
 pkgname = python2-snuggs
-
