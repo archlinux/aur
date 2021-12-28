@@ -1,6 +1,6 @@
 pkgbase = owon-vds-tiny
 	pkgdesc = OWON VDS1022(I)/VDS2052 oscilloscope application
-	pkgver = 1.0.33.cf11
+	pkgver = 1.0.33.cf13
 	pkgrel = 1
 	url = https://github.com/ceres-c/OWON-VDS1022
 	install = owon-vds-tiny.install
@@ -10,6 +10,10 @@ pkgbase = owon-vds-tiny
 	license = unknown
 	depends = libusb-compat
 	depends = java-runtime>=8
+	optdepends = python-bokeh: python apis
+	optdepends = python-pandas: python apis
+	optdepends = python-matplotlib: python apis
+	optdepends = python-streamz: python apis
 	provides = owon-vds-tiny
 	source = git+https://github.com/ceres-c/OWON-VDS1022.git
 	source = owon-vds-tiny
@@ -17,10 +21,9 @@ pkgbase = owon-vds-tiny
 	source = owon-vds-tiny.desktop
 	source = owon-vds-tiny.appdata.xml
 	sha256sums = SKIP
-	sha256sums = 537790e2d6b2be3f7bad3144fb55fb5fb761c9f8006130d1aa92c23444ee765f
+	sha256sums = 9f2135f9aa746a99ea02afb04551075c9b94869c700eaa7d79f091c7b271d3c6
 	sha256sums = 9ccda99bdeeb8c5f1406f57d16e7c20acc4649acce9abf09a9028319172e6fef
 	sha256sums = c4636ba5a29afdea5b414f13ad96159d58a1a9c1b21a349107832b3c04260579
 	sha256sums = 13643b2d958e27de8cb635784cdf9bc83629b086474b780617c7726bb11f2843
 
 pkgname = owon-vds-tiny
-
