@@ -1,0 +1,13 @@
+Index: globdef.h
+===================================================================
+--- globdef.h	(revision 993)
++++ globdef.h	(revision 994)
+@@ -438,7 +438,7 @@
+ // Structure for printing time stamps on waterfall graphs
+ typedef struct {
+ int line;
+-char text[10];
++char text[12];
+ }WATERF_TIMES;
+ 
+ // *******************************************
