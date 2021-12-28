@@ -1,6 +1,6 @@
-diff --color --unified --recursive --text src/siyuan-1.5.4-linux/resources/app/electron/main.js src-new/siyuan-1.5.4-linux/resources/app/electron/main.js
---- src/siyuan-1.5.4-linux/resources/app/electron/main.js	2021-11-28 22:50:54.000000000 +0800
-+++ src-new/siyuan-1.5.4-linux/resources/app/electron/main.js	2021-12-26 11:08:16.719726672 +0800
+diff --color --unified --recursive --text src/siyuan-1.5.5-linux/resources/app/electron/main.js src-new/siyuan-1.5.5-linux/resources/app/electron/main.js
+--- src/siyuan-1.5.5-linux/resources/app/electron/main.js	2021-12-26 22:09:00.000000000 +0800
++++ src-new/siyuan-1.5.5-linux/resources/app/electron/main.js	2021-12-28 22:03:23.279244268 +0800
 @@ -158,7 +158,7 @@
    })
  
@@ -10,7 +10,7 @@ diff --color --unified --recursive --text src/siyuan-1.5.4-linux/resources/app/e
        siyuanOpenURL = process.argv.find((arg) => arg.startsWith('siyuan://'))
      }
      if (siyuanOpenURL) {
-@@ -341,11 +341,20 @@
+@@ -343,11 +343,20 @@
      })
    })
  
