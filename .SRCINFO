@@ -1,15 +1,14 @@
 pkgbase = python-pytest-astropy-header
 	pkgdesc = Pytest plugin to add diagnostic information to the header of the test output
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/astropy/pytest-astropy-header
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	depends = python-pytest>=2.8
-	source = https://files.pythonhosted.org/packages/source/p/pytest-astropy-header/pytest-astropy-header-0.1.2.tar.gz
-	md5sums = 053712da9315b52dfc7346dc3f5fc312
+	checkdepends = python-numpy
+	makedepends = python-setuptools-scm
+	depends = python-pytest>=4.6
+	source = https://files.pythonhosted.org/packages/source/p/pytest-astropy-header/pytest-astropy-header-0.2.0.tar.gz
+	md5sums = 66eaf720c56fb7b0b0b32308864d1b82
 
 pkgname = python-pytest-astropy-header
-
