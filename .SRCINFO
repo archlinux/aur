@@ -1,0 +1,14 @@
+pkgbase = hfsprescue
+	pkgdesc = hfsprescue is a program to recover files from a HFS+ formatted partition
+	pkgver = 3.5
+	pkgrel = 2
+	url = https://www.plop.at/en/hfsprescue/index.html
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	provides = hfsprescue
+	conflicts = hfsprescue-bin
+	source = https://download.plop.at/hfsprescue/hfsprescue-3.5.tar.gz
+	sha256sums = 3dd589c518021f8eed2ab4b9d983381897f9ed4450d44361e1eaf599e3fdaf83
+
+pkgname = hfsprescue
