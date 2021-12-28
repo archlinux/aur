@@ -2,8 +2,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=dehelper
-pkgver=12.6.5
-_date=2021-08-19
+pkgver=12.6.7
+_date=2021-09-29
 _lang=de
 _flang=German
 pkgrel=1
@@ -18,7 +18,7 @@ depends=(
          )
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha512sums=('72ba6314067c0ba47e754de3e1153ae233174c0f217231e55fbc0623e2dd7093c5b4ace816fb8420117df847da2baa500c168421970926e62a2c39725b0254f8')
+sha512sums=('2cd5d32f32bd8cda2a400d90323289ae898a04921fa8f9bdc3674103b5559bc2ad3bd719019581f6f76074d9f0f4853551bf8f617e8884b115bf1f72696a57d6')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
