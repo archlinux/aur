@@ -43,15 +43,15 @@ sha256sums=('20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4')
 build() {
   cd gtkhash-$pkgver
 
-  ./configure --prefix=/usr \ 
-              --disable-schemas-compile \ 
+  ./configure --prefix=/usr \
+              --disable-schemas-compile \
               --enable-gtkhash \
-              --enable-linux-crypto \ 
+              --enable-linux-crypto \
               --enable-nettle \
-              --disable-blake2 \ 
+              --disable-blake2 \
               --with-gtk=3.0 \
               --enable-nemo \
-              --enable-nautilus \ 
+              --enable-nautilus \
               --enable-thunar \
               --enable-caja \
   make
