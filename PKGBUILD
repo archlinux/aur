@@ -1,6 +1,4 @@
-# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=libslink
 pkgver=2.6
 pkgrel=1
@@ -8,7 +6,6 @@ pkgdesc="A SeedLink client library written in C."
 arch=("x86_64")
 url="https://ds.iris.edu/ds/nodes/dmc/services/seedlink/"
 license=('Apache-2.0')
-depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://ds.iris.edu/pub/programs/SeedLink/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('98e7be4bb6604ffd32b755cacc8c238128da91e3465517acdd42869de5ff15f4')
 

@@ -5,7 +5,6 @@ pkgbase = libslink
 	url = https://ds.iris.edu/ds/nodes/dmc/services/seedlink/
 	arch = x86_64
 	license = Apache-2.0
-	depends = glibc
 	source = libslink-2.6.tar.gz::https://ds.iris.edu/pub/programs/SeedLink/libslink-2.6.tar.gz
 	sha256sums = 98e7be4bb6604ffd32b755cacc8c238128da91e3465517acdd42869de5ff15f4
 
