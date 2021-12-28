@@ -10,8 +10,8 @@ license=('GPL')
 depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
 makedepends=('cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja' 'tar' 'gzip')
 optdepends=(
-	'kicad-library: for footprints and symbols'
-	'kicad-library-3d: for 3d models of components'
+	'kicad6-library: for footprints and symbols'
+	'kicad6-library-3d: for 3d models of components'
 )
 conflicts=('kicad')
 source=(
