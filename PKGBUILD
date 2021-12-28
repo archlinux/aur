@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=transfer.sh
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=2
 pkgdesc='Easy and fast file sharing from the command-line'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://transfer.sh/'
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/dutchcoders/transfer.sh/archive/v${pkgver}.tar.gz")
-sha256sums=('e77122a88339873408700c569834613bda38ec7a810cd98ae488c2edda23c4e3')
+sha512sums=('728cc46b202e2a4f33c319f19f8426f853539c45d92d656a6486d03272f0eb821f20ccfeb665d61eab3c9c881a7645f58a486562ff75a3c821e860e47ec44ea1')
 
 build() {
   cd transfer.sh-$pkgver
