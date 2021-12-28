@@ -11,7 +11,7 @@ pkgbase = archlinux32-keyring
 	source = https://sources.archlinux32.org/sources/archlinux32-keyring-v20210429.tar.gz
 	source = https://sources.archlinux32.org/sources/archlinux32-keyring-v20210429.tar.gz.sig
 	validpgpkeys = DE9F7688CACF04FEB81A6C590AEEC90755DA7B5A
-	sha512sums = a29345e5ecb9fd14f2afc43dfdc5190c7c84d94a29e3487d6541c0cfcb52a71b3935382939fce7fcf5241437846793b0e9c21ce52fb3f26f508a5e6e2d51518c
+	sha512sums = 57704496ced0fcccb16e9bb1fb54524387f98cac67e84a8080a8bf540e802e9763bc27c29f5f2e50a8f74e4965a47cf43032e8b15ee86f21a1733e1a588a9c65
 	sha512sums = SKIP
 
 pkgname = archlinux32-keyring
