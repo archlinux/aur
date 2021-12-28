@@ -24,6 +24,7 @@ build() {
 
 package() {
   conflicts=("${_pkgname}")
+  provides=("${_pkgname}")
   cd "${srcdir}/${_pkgname}"
   install -Dvm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
   install -Dvm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

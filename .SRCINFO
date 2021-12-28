@@ -11,4 +11,5 @@ pkgbase = masscanned-git
 	sha512sums = SKIP
 
 pkgname = masscanned-git
+	provides = masscanned
 	conflicts = masscanned
