@@ -1,7 +1,7 @@
 pkgbase = cgit-vcs-git
 	pkgdesc = A fast github clone tool in China
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/killf/cgit
 	arch = x86_64
 	arch = i686

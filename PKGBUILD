@@ -3,7 +3,7 @@
 
 pkgname=cgit-vcs-git
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast github clone tool in China"
 arch=('x86_64' 'i686' 'aarch64')
 url='https://gitee.com/killf/cgit'
@@ -21,7 +21,7 @@ pkgver(){
 prepare(){
     mkdir -p "${srcdir}/cgit/build"
     cd "${srcdir}/cgit/build"
-    cmake  --install-prefix "${pkgdir}/usr" ..
+    cmake --install-prefix=/usr ..
 }
 build(){
     cd "${srcdir}/cgit/build"
@@ -29,5 +29,5 @@ build(){
 }
 package(){
     cd "${srcdir}/cgit/build"
-    make install
+    make DESTDIR="${pkgdir}" install
 }
