@@ -1,7 +1,7 @@
 pkgbase = python-defcon
 	pkgdesc = A set of UFO based objects for use in font editing applications
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/robotools/defcon
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-defcon
 	depends = python-unicodedata2
 	optdepends = python-fontpens
 	optdepends = python-lxml: enables faster UFO parsing
-	source = https://files.pythonhosted.org/packages/source/d/defcon/defcon-0.9.0.zip
-	sha256sums = 140f51da51e9630a9fa11dfd34376c4e29785fdb0bddc2e371df5b36bec17b76
+	source = https://files.pythonhosted.org/packages/source/d/defcon/defcon-0.10.0.zip
+	sha256sums = a009862a0bc3f41f2b1a1b1f80d6aeedb3a17ed77d598da09f5a1bd93e970b3c
 
 pkgname = python-defcon
