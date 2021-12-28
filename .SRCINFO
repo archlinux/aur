@@ -1,6 +1,6 @@
 pkgbase = ruby-xz
 	pkgdesc = These are simple Ruby bindings for the liblzma library
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://rubygems.org/gems/ruby-xz
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = ruby-xz
 	depends = ruby
 	depends = ruby-ffi
 	depends = ruby-io-like
-	noextract = ruby-xz-1.0.0.gem
-	source = https://rubygems.org/downloads/ruby-xz-1.0.0.gem
-	sha256sums = a1e028fcf436df631d0cd00bb448eccedc8890b58cd70eecf5f9541739ea236e
+	noextract = ruby-xz-1.0.2.gem
+	source = https://rubygems.org/downloads/ruby-xz-1.0.2.gem
+	sha256sums = 4c5042ae5bca1eaaf1d6cff8e11e07b6753d43abc1b221b9ea107bf9eba8af67
 
 pkgname = ruby-xz
-
