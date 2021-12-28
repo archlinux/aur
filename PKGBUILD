@@ -1,8 +1,8 @@
 # Maintainer: Justus Tartz <aur at jrtberlin dot de>
 pkgname=beataroni-bin
 pkgver=1.3.0
-pkgrel=1
-_archivename="Beataroni-linux64-1.3"
+pkgrel=2
+_archivename="Beataroni-linux64-${pkgver}"
 pkgdesc="A graphical Beat Saber mod installer for Linux"
 arch=('x86_64')
 url="https://github.com/geefr/beatsaber-linux-goodies"
