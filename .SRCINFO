@@ -1,6 +1,6 @@
 pkgbase = doh-client
 	pkgdesc = doh-client is a DNS over HTTPS client
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/LinkTed/doh-client
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = doh-client
 	conflicts = dns-over-https
 	conflicts = dns-over-https-git
 	conflicts = dns-over-https-client-git
-	source = git+https://github.com/LinkTed/doh-client.git#tag=v3.1.0
+	source = git+https://github.com/LinkTed/doh-client.git#tag=v3.1.1
 	md5sums = SKIP
 
 pkgname = doh-client
