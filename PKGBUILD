@@ -3,7 +3,7 @@
 
 pkgname=dataloader
 pkgver=53.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
 url="https://developer.salesforce.com/page/Data_Loader"
@@ -11,12 +11,13 @@ license=("GPL2")
 depends=('java-runtime>=11' 'gtk2' 'gtk-update-icon-cache' 'swt')
 makedepends=('git' 'maven' 'java-runtime>=11')
 install=dataloader.install
-source=(dataloader.desktop dataloader.install dataloader.svg)
+source=(dataloader.desktop dataloader.install dataloader.svg dataloader.sh)
 source_i686=(git+https://github.com/forcedotcom/dataloader.git)
 source_x86_64=(git+https://github.com/forcedotcom/dataloader.git)
 md5sums=('b519f96b515793fa80cd820e25d70d68'
          '94f2b99bb9af44899cd4d2ded981fd54'
-         '0b9294d4865f364681a79fbbc73dd88a')
+         '0b9294d4865f364681a79fbbc73dd88a'
+         'b5ee3f35fe3e8475520e76cc58e2f674')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 
@@ -44,16 +45,15 @@ package() {
   swt_jar="$(readlink --canonicalize /usr/share/java/swt.jar)"
 
   cp -r "$srcdir/$pkgname" "$pkgdir/opt/"
+  cp "${srcdir}/dataloader.sh" "${pkgdir}/opt/${pkgname}/"
   cp "$srcdir/dataloader.svg" "$pkgdir/usr/share/icons/hicolor/48x48/apps/dataloader.svg"
   cp "${swt_jar}" "${pkgdir}/opt/${pkgname}/swt.jar"
 
+  chmod +x "/opt/$pkgname/dataloader.sh"
   chmod g+x "${pkgdir}/opt/${pkgname}/swt.jar"
   chmod o+x "${pkgdir}/opt/${pkgname}/swt.jar"
 
-  touch "$pkgdir/opt/$pkgname/dataloader.sh"
-  chmod +x "$pkgdir/opt/$pkgname/dataloader.sh"
-  echo "#!/bin/bash" >> "$pkgdir/opt/$pkgname/dataloader.sh"
-  echo "java -classpath /opt/$pkgname/swt.jar \"-Dsalesforce.config.dir=\${HOME}/.config/dataloader/\" -jar \"/opt/$pkgname/target/dataloader-$pkgver-uber.jar\"" >> "$pkgdir/opt/$pkgname/dataloader.sh"
+
   ln -s "/opt/$pkgname/dataloader.sh" "$pkgdir/usr/bin/dataloader"
 
   install -m 644 "$srcdir/dataloader.desktop" "$pkgdir/usr/share/applications/"
