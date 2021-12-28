@@ -2,15 +2,16 @@
 
 pkgname=msieve-svn
 pkgver=1.54.r1043
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for factoring large integers'
-url='https://sourceforge.net/projects/msieve/'
+url='https://sourceforge.net/projects/msieve'
 license=('custom')
 arch=('x86_64')
 depends=('zlib' 'gmp-ecm')
 makedepends=('subversion')
+provides=('msieve')
 conflicts=('msieve')
-source=("${pkgname%-svn}::svn+svn://svn.code.sf.net/p/msieve/code/trunk/")
+source=("${pkgname%-svn}::svn+svn://svn.code.sf.net/p/msieve/code/trunk")
 sha512sums=('SKIP')
 
 # Find line(s) beginning with "#define $1 " in file $2 and output the remainder
@@ -47,6 +48,8 @@ package() {
   install -Dm644 Readme* Changes -t "$pkgdir/usr/share/doc/$pkgname/"
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   ln -s /usr/share/doc/$pkgname/Readme "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  ln -sr "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/share/doc/${pkgname%-svn}"
+  ln -sr "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/share/licenses/${pkgname%-svn}"
 }
 
 # vim:set ts=2 sw=2 et:
