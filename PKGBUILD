@@ -1,47 +1,28 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
-_electronversion=11
-_nodeversion=15
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/OrangeDrangon/android-messages-desktop"
 license=('MIT')
-depends=("electron${_electronversion}")
-makedepends=('git' 'nvm' 'yarn')
+depends=('electron')
+makedepends=('git' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('c5c7aca59cc84a3dd1a42c3cc2e574d30c02db1ac360805c4fef04b51d6b6c3e'
-            '5d4a885c7a4cf6330df5b00b39f51da85af38c715ed72233286bd296f2bb2c57'
+sha256sums=('0467dae2aa47b02f8d89782176275ff80bd2b75cd55cc4e7cb4567b19b2de4c9'
+            'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
-
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
-prepare() {
-  _ensure_local_nvm
-  nvm install "$_nodeversion"
-}
 
 build() {
   cd "$pkgname-$pkgver"
   electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
-  _ensure_local_nvm
   yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
-  yarn build
-  ./node_modules/.bin/electron-builder --linux --x64 --dir \
+  yarn webpack --mode=production
+  yarn electron-builder --linux --x64 --dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
