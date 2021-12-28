@@ -1,11 +1,12 @@
 pkgbase = unifi-video
 	pkgdesc = Centralized management system for Ubiquiti UniFi surveillance cameras.
 	pkgver = 3.10.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ubnt.com/
 	install = unifi-video.install
 	arch = x86_64
 	license = custom
+	makedepends = zip
 	depends = mongodb
 	depends = java-runtime>=8
 	depends = java-jsvc
@@ -24,4 +25,3 @@ pkgbase = unifi-video
 	sha256sums = 9e04a0ffe891fbda0ae0f7a7f3edbcc59118dfc4bd4fea19c1b44954579a3952
 
 pkgname = unifi-video
-
