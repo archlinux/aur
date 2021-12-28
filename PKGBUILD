@@ -1,7 +1,7 @@
 # Maintainer: Asthowen <contact@asthowen.fr>
 
 pkgname='python-alphacodersdownloader'
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A script for download backgrounds on https://alphacoders.com written in Python."
 arch=('any')
