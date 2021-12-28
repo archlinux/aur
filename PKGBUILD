@@ -5,8 +5,7 @@
 
 _pkgname=librime
 pkgname=$_pkgname-sbxlm-git
-pkgver=1.4.0.r278.g619f836
-_librimecommit=619f836fe3532da1361ae1c4c41921e34af5b7aa
+pkgver=1.4.0.r304.g0f7970c
 _octagramcommit=f92e083052b9983ee3cbddcda5ed60bb3c068e24
 _luacommit=d45a41af2f9d731e3c1516a191cc3160e3cb8377
 _charcodecommit=b569184772b12965e3ebe1dfd431026951fed81c
@@ -21,7 +20,7 @@ makedepends=('cmake' 'boost' 'git' 'gtest' 'ninja')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("0001-fix-build.patch"
-        "git://github.com/sbxlmdsl/librime.git#commit=${_librimecommit}"
+        "git://github.com/sbxlmdsl/librime.git"
         "https://github.com/lotem/librime-octagram/archive/$_octagramcommit/librime-octagram-$_octagramcommit.tar.gz"
         "https://github.com/hchunhui/librime-lua/archive/$_luacommit/librime-lua-$_luacommit.tar.gz")
 sha512sums=('SKIP'
