@@ -1,23 +1,39 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=cargo-deb
-pkgver=1.30.0
+pkgver=1.34.0
 pkgrel=1
 
 pkgdesc="Cargo subcommand that generates Debian packages."
 arch=('any')
-url="https://github.com/mmstick/${pkgname}"
+url="https://github.com/kornelski/${pkgname}"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('724e69fe9dbc9ec6bd8c2c00ce289966c39822e80648463acb2eb76c2a0bd2f0')
+sha256sums=('7590998debeaf61df2df5f25d44db529b4ccfdbafe81147e5ccd760d0c996113')
 
-build() {
+prepare() {
 	cd "${pkgname}-${pkgver}"
-	cargo build --release --locked
+	cargo fetch --locked
 }
 
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --frozen --all-features
+}
+
+#check() {
+#	cd "${srcdir}/${pkgname}-${pkgver}"
+#
+#	export RUSTUP_TOOLCHAIN=stable
+#	cargo test --frozen --all-features
+#}
+
 package() {
-	cd "${pkgname}-${pkgver}"
-	cargo install --no-track --locked --all-features --root "$pkgdir/usr/" --path .
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
