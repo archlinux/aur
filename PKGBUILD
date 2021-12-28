@@ -3,27 +3,27 @@ pkgrel=1
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
-pkgver=0.4.0.alpha.r1131.g4f95d98d1
+pkgver=0.5.3.alpha2.r6.g9737816cc
 pkgver() {
   cd  ${_pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-_gradlever='6.8'
+_gradlever='7.0.2'
 
 arch=('any')
 pkgdesc='A Remake of "The Settlers III" for Windows, Linux, Mac and Android - forked by paulwedeck'
 url='https://github.com/paulwedeck/settlers-remake'
 license=('MIT')
 provides=(${_pkgname})
-depends=('java-runtime=8' 'sh')
+depends=('java-runtime>=8' 'sh')
 optdepends=('settlers3-demo-data')
-makedepends=('java-environment=8' 'unzip')
+makedepends=('jdk8-openjdk' 'unzip')
 install=${pkgname}'.install'
 source=("jsettlers::git+https://github.com/paulwedeck/settlers-remake.git"
         "https://services.gradle.org/distributions/gradle-${_gradlever}-all.zip")
 noextract=("gradle-${_gradlever}-all.zip")
 sha512sums=('SKIP'
-            '148fb99ae3ab028bf9152145663faa3c9c0261e3d15f614f30a1fb583fca652b40efd6087285d5df446fa294ff6bbeeeb944e9e8a9840511c1727c3e09a2fcf5')
+            'd849d272b36b931f77befe54d16ae81e753ecf62499db1d67897f98594158a444c670e290dc77c6d550937b6eaa4144a269b729812979d800afda5b1bf53463d')
 
 prepare() {
   # prepare gradle to use downloaded zip
