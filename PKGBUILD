@@ -9,7 +9,8 @@ pkgver=2.0.10
 pkgrel=1
 pkgdesc="Rename your TV-Series using TheTVDB"
 arch=('x86_64')
-conflicts=('renamemytvseries-qt-bin' 'renamemytvseries-gtk-bin')
+provides=('renamemytvseries')
+conflicts=('renamemytvseries')
 url="https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/"
 license=('custom')
 

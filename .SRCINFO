@@ -5,6 +5,8 @@ pkgbase = renamemytvseries-bin
 	url = https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/
 	arch = x86_64
 	license = custom
+	provides = renamemytvseries
+	conflicts = renamemytvseries
 	source = LICENSE
 	source = RenameMyTVSeries.sh
 	source = RenameMyTVSeries.desktop
@@ -15,4 +17,3 @@ pkgbase = renamemytvseries-bin
 	md5sums = SKIP
 
 pkgname = renamemytvseries-bin
-
