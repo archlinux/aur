@@ -2,7 +2,7 @@
 
 pkgname=provola
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for quick development/test cycle in any language'
 arch=(x86_64)
 url='https://github.com/alepez/provola'
