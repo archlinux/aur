@@ -3,8 +3,8 @@
 # Contributor: Lucas de Vries <lucas@glacicle.org>
 _pkgname=cortex
 pkgname=${_pkgname}-git
-pkgver=31
-pkgrel=2
+pkgver=r59.ff10ff8
+pkgrel=1
 pkgdesc="An ncurses reddit browser and monitor"
 license=('MIT/X11')
 arch=('any')
@@ -13,6 +13,11 @@ depends=('python')
 makedepends=('git')
 source=('git+https://github.com/GGLucas/cortex.git')
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd $_pkgname

@@ -1,7 +1,7 @@
 pkgbase = cortex-git
 	pkgdesc = An ncurses reddit browser and monitor
-	pkgver = 31
-	pkgrel = 2
+	pkgver = r59.ff10ff8
+	pkgrel = 1
 	url = http://cortex.glacicle.org/
 	arch = any
 	license = MIT/X11
@@ -11,4 +11,3 @@ pkgbase = cortex-git
 	md5sums = SKIP
 
 pkgname = cortex-git
-
