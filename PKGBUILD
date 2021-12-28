@@ -2,7 +2,7 @@
 _name=elrond-sdk-erdpy
 pkgname=python-erdpy
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Elrond Smart Contracts Tools and Python SDK."
 arch=('any')
 url="https://docs.elrond.com/sdk-and-tools/erdpy/erdpy/"
@@ -18,8 +18,15 @@ depends=('python>=3.6.8'
          'python-ledgercomm'
          'python-semver')
 makedepends=('python-setuptools')
-source=("https://github.com/ElrondNetwork/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('473fcb8548c928aacb0666a075c4e680735ccf589fa4a4bc0750d76afd87c2a9')
+source=("https://github.com/ElrondNetwork/${_name}/archive/refs/tags/v${pkgver}.tar.gz"
+        '01-use-xdg-paths.patch')
+sha256sums=('473fcb8548c928aacb0666a075c4e680735ccf589fa4a4bc0750d76afd87c2a9'
+            '8ea349df6745db6a01873b5c43f29457428fdfcd7b2003d15fdd6cde064f91aa')
+
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  patch -p1 -i "${srcdir}/01-use-xdg-paths.patch"
+}
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"

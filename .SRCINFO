@@ -1,7 +1,7 @@
 pkgbase = python-erdpy
 	pkgdesc = Elrond Smart Contracts Tools and Python SDK.
 	pkgver = 1.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.elrond.com/sdk-and-tools/erdpy/erdpy/
 	arch = any
 	license = GPL3
@@ -17,6 +17,8 @@ pkgbase = python-erdpy
 	depends = python-ledgercomm
 	depends = python-semver
 	source = https://github.com/ElrondNetwork/elrond-sdk-erdpy/archive/refs/tags/v1.0.21.tar.gz
+	source = 01-use-xdg-paths.patch
 	sha256sums = 473fcb8548c928aacb0666a075c4e680735ccf589fa4a4bc0750d76afd87c2a9
+	sha256sums = 8ea349df6745db6a01873b5c43f29457428fdfcd7b2003d15fdd6cde064f91aa
 
 pkgname = python-erdpy

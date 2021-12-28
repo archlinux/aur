@@ -1,0 +1,32 @@
+diff --color -Nur a/erdpy/config.py b/erdpy/config.py
+--- a/erdpy/config.py	2021-11-01 07:22:05.000000000 -0400
++++ b/erdpy/config.py	2021-12-28 15:30:41.482159586 -0500
+@@ -7,7 +7,7 @@
+ 
+ ROOT_FOLDER_NAME = "elrondsdk"
+ LOCAL_CONFIG_PATH = os.path.join(os.getcwd(), "erdpy.json")
+-GLOBAL_CONFIG_PATH = os.path.expanduser("~/elrondsdk/erdpy.json")
++GLOBAL_CONFIG_PATH = os.path.expanduser("~/.config/elrondsdk/erdpy.json")
+ 
+ DEFAULT_GAS_PRICE = 1000000000
+ GAS_PER_DATA_BYTE = 1500
+@@ -192,6 +192,7 @@
+ 
+ def write_file(data: Dict[str, Any]):
+     config_path = resolve_config_path()
++    utils.ensure_folder(os.path.dirname(config_path))
+     utils.write_json_file(config_path, data)
+ 
+ 
+diff --color -Nur a/erdpy/workstation.py b/erdpy/workstation.py
+--- a/erdpy/workstation.py	2021-11-01 07:22:05.000000000 -0400
++++ b/erdpy/workstation.py	2021-12-28 15:30:10.212101404 -0500
+@@ -5,7 +5,7 @@
+ 
+ 
+ def get_tools_folder():
+-    folder = Path.home() / config.ROOT_FOLDER_NAME
++    folder = Path.home() / ".config" / config.ROOT_FOLDER_NAME
+     utils.ensure_folder(folder)
+     return folder
+ 
