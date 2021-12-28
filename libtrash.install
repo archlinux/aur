@@ -1,6 +1,6 @@
 post_install() {
   echo ">> To enable libtrash:"
-  echo ">>   export LD_PRELOAD=/usr/lib/libtrash.sh"
+  echo ">>   export LD_PRELOAD=/usr/lib/libtrash.so"
   echo ">> To disable libtrash:"
   echo ">>   unset LD_PRELOAD"
   echo ">> WARNING: a few programs might not work while libtrash is enable"

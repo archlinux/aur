@@ -8,7 +8,7 @@
 _pkgname=libtrash
 pkgname="${_pkgname}"
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A shared, preloaded library that implements a trash can under Linux"
 arch=('i686' 'x86_64')
 url="http://pages.stern.nyu.edu/~marriaga/software/libtrash/"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
   'e8396a2781e9febc14634df36e1cd6eced4bd5d220d5638d0b20a96108136642'
-  'a99eb9d5f761e2f26185ed2057ce2ff06b670af260e05857b0f64ee9ae6d64db'
+  '64fa677e8ee51caf6030283304bd8f437615adaf8a318db9f7ff4a31a435d13a'
 )
 
 prepare() {
