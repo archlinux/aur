@@ -3,7 +3,7 @@
 set -u
 pkgname='fdpp'
 #pkgname+='-git'
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=(
   #"${url//https/git}"
   "${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz"
 )
-md5sums=('5181a1bbb49bd6307757fab36eed2d66')
-sha256sums=('b3ca757942b2bbf1b369ce361367349d92be4fc494d78a8decd830c944de9f10')
-b2sums=('272f0ec8c8f3edbcc4920971ba9d51d9afe74df91d1a01f292f381fe263d829a8522d3bc692d798708ea260a2795a0da221f92a763d4e4ff5c3e0591dcb1157d')
+md5sums=('58a08524b95364236df12dbeb020d939')
+sha256sums=('5df1e6db0385e0fe87307b8174a424afaf6c55cd6da21d20d4bf4ac223e7520b')
+b2sums=('e791c08b0074b7ba5430413fb6950a94a6e67af39590c64022d6bf157075f184bd1b5cfe125c11df6b82d691a3b8aedf1cc3ec8f418d9b9c2a5ff47ec70810ed')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   source[0]="git+${url}.git"
