@@ -1,14 +1,14 @@
 pkgbase = cyberdropdownloader-bin
 	pkgdesc = Unofficial binary installer for CyberDrop Mass Gallery Downloader
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
 	arch = x86_64
 	license = GPL
 	depends = python
 	depends = python-pip
 	options = !strip
-	source = cyberdropdownloader.tar.gz::https://github.com/Jules-WinnfieldX/CyberDropDownloader/archive/refs/tags/2.1.5.tar.gz
+	source = cyberdropdownloader2.1.5.tar.gz::https://github.com/Jules-WinnfieldX/CyberDropDownloader/archive/refs/tags/2.1.5.tar.gz
 	source = cyberdrop-downloader
 	sha512sums = SKIP
 	sha512sums = ad1df81d2b36efadd84425a889d66336fbdeba4762373bb3ee3139c3a3639d3b74eb55d24cf4b9c11bc5ad9dbc8d8d3a5dcde0feff21077bde68d9c4fb9f566f
