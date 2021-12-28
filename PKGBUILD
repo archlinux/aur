@@ -1,15 +1,15 @@
-# Maintainer: Benedikt Rumpf <beru@posteo.de> 
-# Maintainer: Egidio Caprino <me@egidiocaprino.it>
+# Maintainer: Benedikt Rumpf <beru@posteo.de>
+# Maintainer: Egidio Caprino <egidio.caprino@gmail.com>
 
 pkgname=dataloader
-pkgver=53.0.0
+pkgver=53.0.2
 pkgrel=1
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
 url="https://developer.salesforce.com/page/Data_Loader"
 license=("GPL2")
-depends=('java-runtime>=1.11' 'gtk2' 'gtk-update-icon-cache')
-makedepends=('git' 'maven' 'java-environment>=11')
+depends=('java-runtime>=11' 'gtk2' 'gtk-update-icon-cache' 'swt')
+makedepends=('git' 'maven' 'java-runtime>=11')
 install=dataloader.install
 source=(dataloader.desktop dataloader.install dataloader.svg)
 source_i686=(git+https://github.com/forcedotcom/dataloader.git)
@@ -30,7 +30,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  sudo archlinux-java set java-11-openjdk
+  latest_version="$(archlinux-java status | grep "java-[0-9][0-9]" | sort --reverse | head --lines 1 | sed 's/(.*)//g')"
+  sudo archlinux-java set "${latest_version}"
   mvn clean package -D skipTests -D targetOS=linux_x86_64
 }
 
@@ -40,13 +41,19 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps"
 
+  swt_jar="$(readlink --canonicalize /usr/share/java/swt.jar)"
+
   cp -r "$srcdir/$pkgname" "$pkgdir/opt/"
   cp "$srcdir/dataloader.svg" "$pkgdir/usr/share/icons/hicolor/48x48/apps/dataloader.svg"
+  cp "${swt_jar}" "${pkgdir}/opt/${pkgname}/swt.jar"
+
+  chmod g+x "${pkgdir}/opt/${pkgname}/swt.jar"
+  chmod o+x "${pkgdir}/opt/${pkgname}/swt.jar"
 
   touch "$pkgdir/opt/$pkgname/dataloader.sh"
   chmod +x "$pkgdir/opt/$pkgname/dataloader.sh"
   echo "#!/bin/bash" >> "$pkgdir/opt/$pkgname/dataloader.sh"
-  echo "java \"-Dsalesforce.config.dir=\${HOME}/.config/dataloader/\" -jar \"/opt/$pkgname/target/dataloader-$pkgver-uber.jar\"" >> "$pkgdir/opt/$pkgname/dataloader.sh"
+  echo "java -classpath /opt/$pkgname/swt.jar \"-Dsalesforce.config.dir=\${HOME}/.config/dataloader/\" -jar \"/opt/$pkgname/target/dataloader-$pkgver-uber.jar\"" >> "$pkgdir/opt/$pkgname/dataloader.sh"
   ln -s "/opt/$pkgname/dataloader.sh" "$pkgdir/usr/bin/dataloader"
 
   install -m 644 "$srcdir/dataloader.desktop" "$pkgdir/usr/share/applications/"
