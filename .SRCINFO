@@ -1,0 +1,15 @@
+pkgbase = mseedindex
+	pkgdesc = A Simple program for synchronizing a miniSEED file with a database.
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/iris-edu/mseedindex
+	arch = x86_64
+	license = GPL3
+	depends = libmseed
+	depends = postgresql-libs
+	depends = sqlite
+	optdepends = postgresql: for using PostgreSQL database
+	source = mseedindex-2.7.1.tar.gz::https://github.com/iris-edu/mseedindex/archive/v2.7.1.tar.gz
+	sha256sums = 223bc89a6eff75fed86f0b730504a35a2d96241db72eb5c558aa5b251a799da9
+
+pkgname = mseedindex
