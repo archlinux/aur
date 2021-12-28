@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.4.3+106+g4859c2d5e
+pkgver=3.4.4+320+gba4a134a4
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
@@ -44,34 +44,13 @@ prepare() {
   git config libgd.url "${srcdir}/libgd"
   git config libglnx.url "${srcdir}/lbglnx"
   git submodule update
-
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-    cd $pkgname
-    ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib/rhythmbox \
-    --disable-browser-plugin \
-    --disable-static \
-    --disable-more-warnings \
-    --enable-daap \
-    --enable-gtk-doc \
-    --enable-python \
-    --enable-vala \
-
-    # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
+    arch-meson $pkgname build
+    meson compile -C build
 }
 
 package() {
-    cd $pkgname
-    make DESTDIR="$pkgdir" install
-    rm -r "$pkgdir/usr/lib/rhythmbox/sample-plugins"
-    rm -r "$pkgdir/usr/lib/rhythmbox/plugins/rbzeitgeist"
+    meson install -C build --destdir "$pkgdir"
 }
