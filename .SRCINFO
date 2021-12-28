@@ -1,6 +1,6 @@
 pkgbase = hypr-git
 	pkgdesc = Hypr is a Linux tiling window manager for Xorg. It's written in XCB with modern C++ and aims to provide easily readable and expandable code.
-	pkgver = 0.0
+	pkgver = 0.0.r255.fa20d13
 	pkgrel = 1
 	url = https://github.com/vaxerski/Hypr
 	arch = x86_64
