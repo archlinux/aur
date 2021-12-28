@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=8.2.3582
+pkgver=8.2.3890
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
@@ -25,14 +25,11 @@ conflicts=('vim' 'gvim' 'vim-minimal' 'vim-python3')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-python3' 'vim-plugin-runtime')
 replaces=('vim' 'vim-python3' 'vim-minimal' 'gvim')
 source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
-sha256sums=('363a90e45eb93c73340a711223c7ce5e564432f9eb34624e1a545f4fd57dd49d')
-sha512sums=('f476f24390807b71a0e02729f1815b3743b6b42cdd28a414e9ceaf0aa3fd4cab91e3550a669b1c64b4cd83207515cfe2b4acf2358a6def60e216e101c979037e')
-
-_vimrun_ver=$(pacman -Q vim-runtime | awk '{print $2}')
+sha512sums=('4fe4973198c1ec5cf0d5783d9cb0a7472cf954815678583318665bfe28ad40be3051f5583f73bbf332d928844752b9cc959c266776d2700dbc8748dac36e1a04')
 
 prepare() {
   cd vim-${pkgver}/src
-  # define the place for the global (g)vimrc file (set to /etc/vimrc)
+  # define the place for the global vimrc file (set to /etc/vimrc)
   sed -E 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' -i feature.h
   sed -E 's|^.*(#define VIMRC_FILE.*").*$|\1|g' -i feature.h
   autoconf
