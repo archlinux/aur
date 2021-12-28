@@ -1,21 +1,19 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=7-zip
-pkgver=21.06
+pkgver=21.07
 pkgrel=1
 pkgdesc="File archiver with a high compression ratio"
 url="https://www.7-zip.org"
 license=(LGPL)
 arch=(x86_64)
 makedepends=(uasm)
-source=(https://7-zip.org/a/7z2106-src.7z)
-sha256sums=('675eaa90de3c6a3cd69f567bba4faaea309199ca75a6ad12bac731dcdae717ac')
+source=(https://7-zip.org/a/7z2107-src.7z)
+sha256sums=('d1074d56f415aab99d99e597a7b66dc455dba6349ae8a4c89df76475b6a1284c')
 
 prepare() {
-	sed -i 's|CFLAGS_WARN_WALL = -Wall -Werror -Wextra|CFLAGS_WARN_WALL = -Wall -Wextra|g' CPP/7zip/7zip_gcc.mak
 	sed -i 's|MY_ASM = asmc|MY_ASM = uasm|g' CPP/7zip/7zip_gcc.mak
-	sed -i '1iOPTION FRAMEPRESERVEFLAGS:ON\nOPTION PROLOGUE:NONE\nOPTION EPILOGUE:NONE' Asm/x86/LzFindOpt.asm
-	sed -i 's|$(CXX) -o $(PROGPATH) -s $(MY_ARCH_2) $(LDFLAGS) $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)|$(CXX) -o $(PROGPATH) -s $(MY_ARCH_2) $(LDFLAGS) -Wl,-z,noexecstack $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)|g' CPP/7zip/7zip_gcc.mak
+	sed -i 's|LFLAGS_ALL = -s $(MY_ARCH_2) $(LDFLAGS) $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)|LFLAGS_ALL = -s $(MY_ARCH_2) $(LDFLAGS) -Wl,-z,noexecstack $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)|g' CPP/7zip/7zip_gcc.mak
 }
 
 build() {
