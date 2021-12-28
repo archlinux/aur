@@ -1,31 +1,23 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-dbutils
-pkgver=2.0.2
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Suite of Python modules allowing to connect in a safe and efficient way between a threaded Python application and a database"
-url="https://cito.github.io/w4py/"
+url="https://github.com/WebwareForPython/DBUtils"
 license=('MIT')
 depends=('python')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/D/DBUtils/DBUtils-$pkgver.tar.gz"
-        "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/Cito/DBUtils/Release-1_2/LICENSE")
-sha256sums=('4edbdb2fc17e5d5df8f6b1a29a4286145eed77705230e36d72ff2a4a9aff88b1'
-            '09281f86418aa02de8683d9a2b82ec3cdf8d6ff182b612ee874a003c683b6ee1')
-
-prepare() {
-	cd "$srcdir/DBUtils-$pkgver"
-	sed "s/'DBUtils.Examples', //g" -i setup.py
-	rm -rf DBUtils/{Docs,Examples}
-}
+source=("https://github.com/WebwareForPython/DBUtils/archive/refs/tags/Release-${pkgver//./_}/DBUtils-$pkgver.tar.gz")
+sha256sums=('a0d03ee52e9c3b215ea74802d7bcdd5c76646f534316548f989da971bf49b0d5')
 
 build() {
-	cd "$srcdir/DBUtils-$pkgver"
+	cd "$srcdir/DBUtils-Release-${pkgver//./_}"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/DBUtils-$pkgver"
+	cd "$srcdir/DBUtils-Release-${pkgver//./_}"
 	python setup.py install -O1 --skip-build --root="$pkgdir"
-	install -Dm0644 "$srcdir/$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
