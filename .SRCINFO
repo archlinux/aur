@@ -1,14 +1,14 @@
 pkgbase = nodejs-livescript
 	pkgdesc = LiveScript is a language which compiles to JavaScript
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
-	url = http://livescript.net/
+	url = https://livescript.net/
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
-	noextract = livescript-1.6.0.tgz
-	source = http://registry.npmjs.org/livescript/-/livescript-1.6.0.tgz
-	sha1sums = 5c4e3860109640bb6a4a0441e4dd13f4eb0e7f0a
+	noextract = 1.6.1.tar.gz
+	source = https://github.com/gkz/LiveScript/archive/1.6.1.tar.gz
+	sha1sums = 6a23a82623c1c2a50dffc5c0aa576600503ee7a7
 
 pkgname = nodejs-livescript
-
