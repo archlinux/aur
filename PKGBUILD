@@ -3,7 +3,7 @@
 pkgname=talosctl
 pkgver=0.14.0
 _commit=675dee0e73bb4b866d2a07b9b2f0a54fb7f3b575
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
 url='https://github.com/talos-systems/talos'
@@ -35,6 +35,7 @@ build() {
     -modcacherw \
     .
   ./talosctl completion bash > bashcompletion
+  ./talosctl completion fish > fishcompletion
   ./talosctl completion zsh > zshcompletion
 }
 
@@ -42,5 +43,6 @@ package() {
   cd talos/cmd/talosctl
   install -Dm755 talosctl "${pkgdir}"/usr/bin/talosctl
   install -Dm644 bashcompletion "${pkgdir}"/usr/share/bash-completion/completions/talosctl
+  install -Dm644 fishcompletion "${pkgdir}"/usr/share/fish/completions/talosctl.fish
   install -Dm644 zshcompletion "${pkgdir}"/usr/share/zsh/site-functions/_talosctl
 }

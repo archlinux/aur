@@ -1,7 +1,7 @@
 pkgbase = talosctl
 	pkgdesc = CLI for Talos - A modern OS for Kubernetes
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/talos-systems/talos
 	arch = x86_64
 	license = MPL2
