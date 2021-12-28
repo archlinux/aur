@@ -1,0 +1,15 @@
+pkgbase = weffe-git
+	pkgdesc = Lightweight CLI for video effects on webcams
+	pkgver = 1.0.0.r0.g1f05786
+	pkgrel = 1
+	url = https://github.com/intermezzio/weffe.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ffmpeg
+	depends = v4l2loopback-dkms>=0.12.5-1
+	provides = weffe
+	source = git+https://github.com/intermezzio/weffe.git
+	md5sums = SKIP
+
+pkgname = weffe-git
