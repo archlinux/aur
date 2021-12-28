@@ -1,9 +1,8 @@
 # Maintainer: hamki <hamki.do2000@gmail.com>
-# Contributor: Will Crosswhite <will.r.crosswhite@gmail.com>
+# Contributor: Will Crosswhite <will dot R dot lastname gmail-com>
 pkgname=nordic-darker-theme
 pkgver=2.1.0
 pkgrel=1
-epoch=
 pkgdesc="Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete."
 arch=('any')
 url="https://github.com/EliverLara/Nordic"
