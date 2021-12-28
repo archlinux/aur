@@ -3,4 +3,5 @@
 !.SRCINFO
 !package.json
 !PKGBUILD
-!tidal-hifi-desktop
+!tidal-hifi.desktop
+!src/tidal-hifi.desktop

@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi-git
 pkgrel=1
-pkgver=2.6.0.r0.g0dec967
+pkgver=2.7.0.r0.gd51d5cd
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -26,6 +26,7 @@ getnvm() {
         if test -f "/usr/share/nvm/init-nvm.sh"
         then
             echo "found init-nvm.sh in /usr/share/nvm, sourcing..."
+            unset npm_config_prefix
             source "/usr/share/nvm/init-nvm.sh"
         else
             echo "nvm could not be found, installing"
