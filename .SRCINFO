@@ -1,0 +1,17 @@
+pkgbase = provola
+	pkgdesc = A tool for quick development/test cycle in any language
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/alepez/provola
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = rust
+	makedepends = libxcb
+	source = git+https://github.com/alepez/provola#commit=3adf9233e3b1e0f58cd7111d5ca410119e3999b8
+	b2sums = SKIP
+
+pkgname = provola
