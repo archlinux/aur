@@ -1,7 +1,7 @@
 
 _pkgname=minq_nhentai
 pkgname="${_pkgname}-git"
-pkgver=r22.7836826de82d08916111e4e900fa816f6ba4970b
+pkgver=r31.230fdfef4115244deb27650047589c3e00dabcca
 pkgrel=1
 epoch=
 pkgdesc='Browse hnehtai in your terminal. Sixel support for full image resolution (your terminal needs to support sixel).'
