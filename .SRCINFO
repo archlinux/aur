@@ -1,0 +1,14 @@
+pkgbase = python-demjson
+	pkgdesc = Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 7159
+	pkgver = 2.2.4
+	pkgrel = 3
+	url = https://github.com/dmeranda/demjson
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python
+	conflicts = nodejs-jsonlint
+	source = python-demjson-2.2.4.tar.gz::https://github.com/dmeranda/demjson/archive/refs/tags/release-2.2.4.tar.gz
+	sha256sums = 654ac60df2f809acb0970f8ec475b16a973243065ba4cb32a6a363feb71156ee
+
+pkgname = python-demjson
