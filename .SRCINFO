@@ -1,6 +1,6 @@
 pkgbase = bark-server
 	pkgdesc = Backend of Bark
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/Finb/bark-server
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = bark-server
 	depends = go
 	depends = make
 	backup = etc/nginx/conf.d/bark-server.conf
-	source = bark-server.tar.gz::https://github.com/Finb/bark-server/archive/refs/tags/v2.0.2.tar.gz
+	source = bark-server-2.0.3.tar.gz::https://github.com/Finb/bark-server/archive/refs/tags/v2.0.3.tar.gz
 	source = bark-server.conf
-	sha512sums = e812923568685f91f563e0a1af143866fb84ba1ff67643b0152a5757508c535a5ec7f84da1ce8c60a95f84d8ce0ff4f5cdf174760876dac8719be6280f848342
+	sha512sums = 3a416a55435d7587f5e1ba534d2539729adce0b9380109357bb86a0cba4a4649a5ad356834f2b2d18a9cb48d545a945a86adf52c93d9246a785a65a40757cc88
 	sha512sums = 977ea6e0a6d4052181353f015beb72ea448e365c886e49b898865bae2cd70f53ed20a610b2ce637b78da3767bdbb9cacb0d64cdad4d3034bd1895617d8592e2e
 
 pkgname = bark-server
