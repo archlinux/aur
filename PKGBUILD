@@ -5,7 +5,6 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light-pulse
-epoch=1
 _tag='79b4060a573e83ae42d51d995bca1ccf80690997' # git rev-parse v${pkgver}
 pkgver=0.34.0
 pkgrel=1
