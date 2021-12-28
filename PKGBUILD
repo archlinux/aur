@@ -4,8 +4,9 @@
 # https://github.com/michaellass/AUR
 
 pkgname=qt-dab
-_pkgname=Qt-DAB
-pkgver=4.1
+pkgver=4.1.1
+_prefix=qt-dab- # name of tarball and contents change from release to release
+_pkgver=4.11    # official versioning not compatible with pacman
 pkgrel=1
 pkgdesc="Software DAB decoder for use with various SDR devices"
 arch=(x86_64)
@@ -18,11 +19,11 @@ optdepends=('airspy: Support for Airspy'
             'libad9361: Support for Pluto'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
-source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('782ca6cbcb2861f588896228ec88f62694ce9dc8a980d2f400d793632f495e37')
+source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_pkgver}.tar.gz")
+sha256sums=('8f664ae37d40d5cf1f36d2dbb48e285bbb0d62257d257622f34d617c7c009594')
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_prefix}${pkgname}-${_pkgver}"
 
 	# The program is officially called Qt-DAB.
 	sed -i 's/Qt_DAB/Qt-DAB/g' dab-maxi/${pkgname}.desktop
@@ -42,14 +43,14 @@ build() {
 		-DHACKRF=ON \
 		-DPLUTO=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		../$pkgname-$pkgver/dab-maxi
+		../${_prefix}${pkgname}-${_pkgver}/dab-maxi
 
 	make
 }
 
 package() {
-	install -Dm 755 build-maxi/${pkgname}-${pkgver} "${pkgdir}"/usr/bin/${pkgname}
-	install -Dm 644 ${pkgname}-${pkgver}/dab-maxi/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
-	install -Dm 644 ${pkgname}-${pkgver}/dab-maxi/${pkgname}.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-	install -Dm 644 ${pkgname}-${pkgver}/docs/${pkgname}.pdf "${pkgdir}"/usr/share/doc/${pkgname}/${pkgname}.pdf
+	install -Dm 755 build-maxi/${pkgname}-${_pkgver} "${pkgdir}"/usr/bin/${pkgname}
+	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/dab-maxi/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/dab-maxi/${pkgname}.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
+	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/docs/${pkgname}.pdf "${pkgdir}"/usr/share/doc/${pkgname}/${pkgname}.pdf
 }
