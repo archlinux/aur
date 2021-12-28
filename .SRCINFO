@@ -1,0 +1,19 @@
+pkgbase = potatopresenter-appimage
+	pkgdesc = Tool to create presentation slides that can be exported as PDF.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thgier/PotatoPresenter
+	arch = x86_64
+	license = LGPL2.1
+	provides = potatopresenter
+	conflicts = potatopresenter
+	noextract = potatopresenter-appimage-1.0.0.AppImage
+	options = !strip
+	source = potatopresenter-appimage-1.0.0.AppImage::https://github.com/thgier/PotatoPresenter/releases/download/v1.0.0/Potato_Presenter-v1.0.0-x86_64.AppImage
+	source = potatopresenter.desktop
+	source = https://raw.githubusercontent.com/thgier/PotatoPresenter/master/potato_logo.svg
+	sha256sums = 64cb3486a1a3f4cd6488410b74ad1dc282ff530e5ef58186d1d6e07aa709ddd2
+	sha256sums = 030597070eefe827d1895f3736cf2c70753e2ca13812350610122193976a2a7c
+	sha256sums = d96b384a4e8ba5365785f9be8cd77e2f54d0ae767de7ae4c2f2f52c9de0e083b
+
+pkgname = potatopresenter-appimage

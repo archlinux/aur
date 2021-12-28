@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Potato Presenter
+Version=1.0
+Comment=Tool to create presentation slides
+Exec=potatopresenter
+Icon=/usr/share/potatopresenter/logo.svg
+Categories=Office;
