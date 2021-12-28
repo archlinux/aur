@@ -1,7 +1,7 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=task-git
-pkgver=stable.r414.g4bbde50d9
+pkgver=v2.6.1.r44.g4fa1c0bcf
 pkgrel=1
 pkgdesc="A command-line todo list manager"
 arch=('i686' 'x86_64')
@@ -17,10 +17,10 @@ optdepends=('bash-completion'
  'rsync: synchronisation via rsync'
  'curl: synchronisation via http(s)/ftp'
  'openssh: synchronisation via ssh')
-provides=('task=2.6.0')
+provides=('task=2.6.1')
 conflicts=('task')
 install="task.install"
-source=("$pkgname"::'git+https://github.com/GothenburgBitFactory/taskwarrior.git#branch=2.6.0')
+source=("$pkgname"::'git+https://github.com/GothenburgBitFactory/taskwarrior.git#branch=develop')
 md5sums=('SKIP')
 
 build() {
@@ -35,7 +35,7 @@ build() {
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --match "[1-9vs]*" | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags --match "[1-9vs]*" | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
