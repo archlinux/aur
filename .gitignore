@@ -3,4 +3,4 @@ pkg/
 *.log
 *.log.*
 *.tar.xz
-*.tar.zstd
+*.tar.zst
