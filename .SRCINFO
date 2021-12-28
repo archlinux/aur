@@ -1,11 +1,12 @@
 pkgbase = python-vtr-xml-utils-git
 	pkgdesc = Utilities for working with VtR XML Files
 	pkgver = r86.d6ba1f1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SymbiFlow/vtr-xml-utils
 	arch = any
 	license = ISC
 	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
@@ -16,4 +17,3 @@ pkgbase = python-vtr-xml-utils-git
 	sha256sums = SKIP
 
 pkgname = python-vtr-xml-utils-git
-

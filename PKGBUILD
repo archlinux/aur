@@ -3,14 +3,14 @@
 _pkgname=vtr-xml-utils
 pkgname="python-$_pkgname-git"
 pkgver=r86.d6ba1f1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for working with VtR XML Files"
 arch=(any)
 url="https://github.com/SymbiFlow/vtr-xml-utils"
 license=('ISC')
 depends=('python' 'python-lxml')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-pytest-runner')
 provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}")
 source=("git+$url.git")
