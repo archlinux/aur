@@ -1,16 +1,15 @@
 pkgbase = python-matplotx
 	pkgdesc = Useful styles and extensions for Matplotlib
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/nschloe/matplotx
 	arch = any
 	license = MIT
-	checkdepends = python-networkx
-	checkdepends = python-pytest-codeblocks
 	makedepends = python-setuptools
 	depends = python-matplotlib
 	optdepends = python-networkx: for creation of graphs
-	source = https://github.com/nschloe/matplotx/archive/v0.2.8.tar.gz
-	sha512sums = 0b3c22db3adff9a30b6c1b4450a973998b8968fd3465ad82a417f8f7a68f34df74e25c555e08531ed1b5cb235d316e32d2b9a40add30efbd57c3c84f279adbe2
+	optdepends = python-purepng: for iterator support
+	source = https://pypi.org/packages/source/m/matplotx/matplotx-0.3.0.tar.gz
+	sha512sums = c69cdf18668c30c25db859bb94ee5032f73f1d7a72c1f601fc8f735075bb9ad2169f1722f81fd23a4cc0492ca1098c8f9119447100f5b3e12fc40a51bfcd3686
 
 pkgname = python-matplotx
