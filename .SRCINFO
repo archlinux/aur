@@ -1,23 +1,24 @@
 pkgbase = heli-x
-	pkgdesc = HELI-X RC Flight Simulator
-	pkgver = 5
+	pkgdesc = Professional R/C Flight Simulator
+	pkgver = 10.0.2465
 	pkgrel = 1
-	url = http://www.heli-x.info
-	install = heli-x.install
+	url = https://www.heli-x.info
 	arch = i686
 	arch = x86_64
-	license = unknown
-	depends = java-runtime>=6
-	source = http://www.heli-x.info/1405/HELI-X5.tar.gz
+	license = custom
+	makedepends = icoutils
+	depends = java-runtime=11
+	depends = hicolor-icon-theme
+	options = !strip
+	source = heli-x-10.0.2465.tar.gz::https://www.heli-x.info/2465/HELI-X10.tar.gz
+	source = heli-x-10.0.2465-manual_de.pdf::https://www.heli-x.info/help10/BedienungsanleitungV10.pdf
+	source = heli-x-10.0.2465-manual_en.pdf::https://www.heli-x.info/help10/UsersManualV10.pdf
+	source = heli-x-wrapper.sh
 	source = heli-x.desktop
-	source = heli-x.png
-	source = heli-x.install
-	source = heli-x
-	md5sums = 954c7c4123800c1bc9247294f5b2b791
-	md5sums = a7f340949236c7c4afa3851b313efc4b
-	md5sums = 30af503bd32a62decb15f8ca5e03d90e
-	md5sums = c58fca72b0c1b257196ea6d15e5c11c2
-	md5sums = a359f2c641c60a732e62da8d39a9be55
+	sha512sums = 22e2323e71396dc38d94142ef6235b1002fec094ab00fbdc5dae59fd5863c5692ab4c8491f21af7c0a48588c368d339d6019f0fe91ade57fa790b55d13ddcb87
+	sha512sums = b8d49650284a8b7b05bc65aaed1c2bc3219cfa448165fb90b5953e2ad92a716a7543d1fb9da258162bf3541e116a7d59fc9235fdada263e8b5ff878cc4a35f31
+	sha512sums = 32cca4e3a8fcdee8553931b82bf867bfdf20594b02cce8125ad8967ed56f5d10405490dc9c12f50a4a37f8c280f4dfd843a228e09cf7ec7250ae7724de207b5b
+	sha512sums = 4ae798d67237fd088917731174077712a190fa40ba92ff6e750757f3ee01a9ced2f95ef74fbb7ba908274b7911d3a25afe6309b309965bcbbf3626a55a15ef14
+	sha512sums = dd2ac99931247e7ec4eabbc9107a2cf54ff088b859c674d43e18ee999127298e5ae3d4272b3c1a03d29092f9b7d86d84a0c7be073e30976fb7ba9474dccad0f5
 
 pkgname = heli-x
-
