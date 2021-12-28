@@ -1,0 +1,22 @@
+pkgbase = dumpifs-git
+	pkgdesc = Dirty hack dumpifs. Modified to be compiled on most platform without QNX SQP.
+	pkgver = 5.15
+	pkgrel = 1
+	url = https://github.com/askac/dumpifs
+	arch = i686
+	arch = x86_64
+	license = custom:BLACKBERRY SDK
+	depends = clang
+	provides = dumpifs
+	provides = fixdecifs
+	provides = fixencifs
+	provides = uuu
+	provides = zzz
+	provides = exMifsLzo
+	provides = exMifsLz4
+	source = git+https://github.com/askac/dumpifs.git
+	source = https://github.com/askac/dumpifs/commit/eb6c695e1a2a79967935b4cea07695141ba60336.patch
+	md5sums = SKIP
+	md5sums = 316c7cfd59026430ba124755ef1e0d0b
+
+pkgname = dumpifs-git
