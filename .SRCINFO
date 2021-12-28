@@ -1,7 +1,7 @@
 pkgbase = python-pglast
 	pkgdesc = PostgreSQL Languages AST and statements prettifier
-	pkgver = 3.7
-	pkgrel = 2
+	pkgver = 3.8
+	pkgrel = 1
 	url = https://github.com/lelit/pglast
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = python-pglast
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
-	source = git+https://github.com/lelit/pglast#commit=8b13001685794d5996b2a5a1cb8f51d5d1e05597
+	source = git+https://github.com/lelit/pglast#commit=b2f17dcd85d00818a767b8dced19247e68aa0909
 	md5sums = SKIP
 
 pkgname = python-pglast
