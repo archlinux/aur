@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=cxbqn
-pkgver=0.10.2
+pkgver=0.10.4
 pkgrel=1
 pkgdesc='BQN VM written in C++.'
 arch=('x86_64')
