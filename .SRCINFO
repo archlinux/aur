@@ -1,6 +1,6 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Lutris Wine Runner as system Wine and even better
-	pkgver = 0.52.r0.g79e1d73
+	pkgver = 0.53.r0.g60d5810
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lutris-wine
 	arch = any
@@ -115,6 +115,7 @@ pkgbase = lutris-wine-git
 	optdepends = vulkan-swrast
 	optdepends = llvm
 	optdepends = lib32-llvm
+	optdepends = replay-sorcery
 	provides = lutris-wine
 	conflicts = lutris-wine
 	source = git+https://github.com/VHSgunzo/lutris-wine.git
