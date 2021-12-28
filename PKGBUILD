@@ -2,7 +2,7 @@
 # Contributor: Will Crosswhite <will dot R dot lastname gmail-com>
 pkgname=nordic-darker-theme
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete."
 arch=('any')
 url="https://github.com/EliverLara/Nordic"
