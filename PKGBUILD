@@ -1,13 +1,14 @@
-# Maintainer: Fredrick Brennan <copypaste@kittens.ph>
-# Maintainer: Andrew Bueide <abueide@protonmail.com>
-# Maintainer: rouhannb <rouhannb@protonmail.com>
+# Maintainer: Imperator Storm <30777770+ImperatorStorm@users.noreply.github.com>
+# Contributor: Fredrick Brennan <copypaste@kittens.ph>
+# Contributor: Andrew Bueide <abueide@protonmail.com>
+# Contributor: rouhannb <rouhannb@protonmail.com>
 # Contributor: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 # Contributor: Benoit Favre <benoit.favre@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.27
+pkgver=1.2.30
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -22,7 +23,7 @@ source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/$
 v${pkgver}-Source.zip"
 "${pkgname}.desktop"
 "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
-"git+https://github.com/${pkgname}/skia.git#branch=${pkgname}-m81"
+"git+https://github.com/${pkgname}/skia.git#branch=${pkgname}-m96"
 "${pkgname}-buildtools.tar.gz::https://chromium.googlesource.com/chromium/buildtools.git/+archive/\
 505de88083136eefd056e5ee4ca0f01fe9b33de8.tar.gz"
 "${pkgname}-common.tar.gz::https://skia.googlesource.com/common.git/+archive/\
@@ -85,39 +86,39 @@ ea3ba903faac98b64b2bf8de5e98cd97b335a474.tar.gz"
 )
 _gitsrc=("${source[@]:4:29}")
 noextract=("${_gitsrc[@]%%::*}")
-sha256sums=('541a5c561fe7481cfb6aec80ecc9a8435d8387325ba30c9e3116c3c76ef539d7'
+sha256sums=('9f4b098fe2327f2e9d73eb9f2aeebecad63e87ff2cf6fb6eeeee3c0778bb8874'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            '23594f876b7f29555999d2f9aa2058e6ae1ece4fb720cdd0292c639c693694d6'
+            'bbdd106ac79d31f42ba80b1286b7a4c1cbae7cac12725786d664db7c255957c2'
+            'd928ac40fee155edf1cf823d57ce559786ff9f2c3dda7e83a857132ab545ed06'
+            '59957d0753ecf327c9f66b3009a908505f38d672637bf4d0c4ee0141e8bdd17a'
+            '75b7fd8c6351b0c51f866d3defefe0266c27e1b593e1ba5cded546376431b09b'
+            'ca6f81ccc155144fbf2d168d596a71d254fc18738e0702a82f68974bd4e839e2'
+            'ad256da64e2beca4f49ef02a39146f4f73d89d160eabf8b0eb8fce6cb8d606e4'
+            'ff369316b724ced12280be18398a3600d4e2c2a581ec425180cc5b47a3e1d02a'
+            'ff8bc5c39d0a2db4b81501a693e91427d97200e88d2940ddbfb5df13677cde56'
+            'c1f69fa10880cfce79480c7b7f4b968c116e04c942c7d12a0f68fdd94484e9d4'
+            '4678c9a24079f601abc7a4299009465fe65c60fd67c243532ece674bd2e16ada'
+            '1ebf59f258299728962612b0c0d91caa2d0b66f60402792445b6ca1cac82e147'
+            '7f9e63d4ba3610698add3556455086173605957a8e9fa59ebcc4804cbdcff047'
+            'bc31921c8bd1af7015657846d21498c665b9094bac8984d903dac273c3d9323e'
+            'cb1856e3c77b6d26ce3e8de648ba657418e289203e7f8f99a9f6a581ad6af93e'
+            'bf24eb0dccd631d5752f60ee3076c6102198d636655a929c5708aa61918d43a9'
+            '82c778de66817b8b96f3bbd8447b2bca429761d7e9de4d59158bec7ce33031e2'
+            'ca9a80bb352c65caf62a9a08c3737bea5c4e6c836bd89d25e311c36620fb1b9e'
+            'f4f79c84ccc4de73ac7e8aa08f9ff47c5bfbab01b79889917b9f1ffa3bdb19df'
+            'f625e848d0fc137703efbbb5592e76b44e95332bc65acc67485b9855ffbc56fc'
+            '86e43c39de644ff66ca02feeee144aa3a9654cf1bd59e186952fc75885d0edb5'
+            '618ce44921ddac4add337829f1b314388f5feedbc563a897b9c766c900b5e170'
+            'cfa961a45b62689aef775456075cb2d1440d58d78d6b0874f361fcf7b768b021'
+            '2d26bf7a01cc69271b07971162c648a2da55308c65fe300ec93356cba9fe1b2f'
+            'd9c642324328b376a34ed01058af5b6fae3c2a8d7736300551227ee6335e439f'
+            '4cc0cdf2d707ce3edc846fcaf516caea45ea6baafb4077d043660b91ee91b3aa'
+            '34294532feba98c460721117ffb18a6c5584f7c48823ccc58109abd1bf2c7c45'
+            'fcd29d69245483da000d6b162caccf0607b58dc06b77a5c79ad64403730f47e8'
+            '6280ed3515504fd9b64ce6f9fdedfcc49316dd56466726797fb80db0599be074'
             'c8c2d617f1a33d6eb27f25ebcc30bd8ba1e6a0aa980cada21dda2ad1401fa4a2')
 
 prepare() {
