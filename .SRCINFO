@@ -11,7 +11,7 @@ pkgbase = provola
 	makedepends = git
 	makedepends = rust
 	makedepends = libxcb
-	source = git+https://github.com/alepez/provola#commit=3adf9233e3b1e0f58cd7111d5ca410119e3999b8
+	source = git+https://github.com/alepez/provola#commit=dd7f67fe7dbef94c2a439453ec23000b102cddad
 	b2sums = SKIP
 
 pkgname = provola
