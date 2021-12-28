@@ -1,6 +1,6 @@
 pkgbase = python-pytooling-terminalui
 	pkgdesc = A set of helpers to implement a text user interface (TUI) in a terminal
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/pyTooling/pyTooling.TerminalUI
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pytooling-terminalui
 	depends = python
 	depends = python-colorama
 	depends = python-pytooling
-	source = python-pytooling-terminalui-1.5.5.tar.gz::https://github.com/pyTooling/pyTooling.TerminalUI/archive/v1.5.5.tar.gz
-	sha256sums = f18189ae69339aa209739864a819ebd5320e87205997824f8a9c1e97e05ae251
+	source = python-pytooling-terminalui-1.5.6.tar.gz::https://github.com/pyTooling/pyTooling.TerminalUI/archive/v1.5.6.tar.gz
+	sha256sums = 014b63736d4b50a909562a16d4da81b57babea69de93f65263d73d12b360b66f
 
 pkgname = python-pytooling-terminalui
