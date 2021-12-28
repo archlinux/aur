@@ -5,8 +5,8 @@
 
 pkgbase=etlegacy32-git
 pkgname=('etlegacy32-git' 'etlegacy32-mod-git')
-pkgver=2.76.1197.gbd08cd4be
-pkgrel=2
+pkgver=2.79.0.1.g2d013e38e
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3')
@@ -97,12 +97,12 @@ package_etlegacy32-git() {
 
     # doc
     mkdir -p $pkgdir/usr/share/doc/$_gitname
-    mv $pkgdir/usr/lib/$_gitname/INSTALL.txt $pkgdir/usr/share/doc/$_gitname/
+#    mv $pkgdir/usr/lib/$_gitname/INSTALL.txt $pkgdir/usr/share/doc/$_gitname/
     install -m 644 docs/game/anticheat.html $pkgdir/usr/share/doc/$_gitname/
 
     # license
     mkdir -p $pkgdir/usr/share/licenses/$_gitname
-    mv $pkgdir/usr/lib/$_gitname/COPYING.txt $pkgdir/usr/share/licenses/$_gitname/
+#    mv $pkgdir/usr/lib/$_gitname/COPYING.txt $pkgdir/usr/share/licenses/$_gitname/
 
     # systemd
     mkdir -p $pkgdir/etc/xdg/$_gitname/etmain

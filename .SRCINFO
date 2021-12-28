@@ -1,6 +1,6 @@
 pkgbase = etlegacy32-git
-	pkgver = 2.76.1197.gbd08cd4be
-	pkgrel = 2
+	pkgver = 2.79.0.1.g2d013e38e
+	pkgrel = 1
 	url = http://www.etlegacy.com/
 	arch = i686
 	arch = x86_64
@@ -78,4 +78,3 @@ pkgname = etlegacy32-mod-git
 	provides = etlegacy-mod
 	conflicts = etlegacy32-mod
 	conflicts = etlegacy-mod
-
