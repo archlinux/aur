@@ -2,6 +2,7 @@ pkgbase = osu-handler
 	pkgdesc = Provides a handler for osu! file formats
 	pkgver = 0.3.0
 	pkgrel = 4
+	url = https://github.com/openglfreak/osu-handler-wine
 	install = osu-handler.install
 	arch = any
 	license = GPL3

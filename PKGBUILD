@@ -6,6 +6,7 @@ pkgver=0.3.0
 pkgrel=4
 arch=(any)
 license=(GPL3)
+url='https://github.com/openglfreak/osu-handler-wine'
 depends=(osu-mime glib2)
 makedepends=(meson)
 install='osu-handler.install'
