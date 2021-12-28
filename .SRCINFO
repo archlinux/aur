@@ -1,13 +1,14 @@
 pkgbase = r-fs
 	pkgdesc = Cross-Platform File System Operations Based on 'libuv'
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=fs
 	arch = i686
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testthat
 	depends = r
+	depends = libuv
 	optdepends = r-testthat
 	optdepends = r-covr
 	optdepends = r-pillar

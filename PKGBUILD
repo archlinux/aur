@@ -6,12 +6,12 @@ _cranname=fs
 _cranver=1.5.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform File System Operations Based on 'libuv'"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=(r)
+depends=(r libuv)
 checkdepends=(r-testthat)
 optdepends=(
     r-testthat
@@ -29,6 +29,14 @@ source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
 sha256sums=('35cad1781d6d17c1feb56adc4607079c6844b63794d0ce1e74bb18dbc11e1987'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
+
+prepare() {
+  # build against system libuv
+  sed -e 's#PKG_LIBS = ./$(LIBUV)/.libs/libuv.a#PKG_LIBS = -luv#' \
+      -e 's#-I./$(LIBUV)/include ##' \
+      -e '/$(SHLIB):/d' \
+      -i "${_cranname}/src/Makevars"
+}
 
 build() {
   mkdir -p build
