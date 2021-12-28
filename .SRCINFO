@@ -1,6 +1,6 @@
 pkgbase = gstarcad-bin
 	pkgdesc = 浩辰 CAD
-	pkgver = 20210719
+	pkgver = 20211020
 	pkgrel = 1
 	url = https://www.gstarcad.com/cad_linux/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = gstarcad-bin
 	depends = hicolor-icon-theme
 	optdepends = deepin-qt5integration: deepin DE integration
 	provides = gstarcad
-	source_x86_64 = gstarcad-bin-20210719-x86_64.deb::https://hccad.gstarcad.cn/linux2021/V2.1/com.gstarcad.cad_21sp-5_amd64_210719.deb
-	sha512sums_x86_64 = 236ce39ce1f0f4f35e241d73f00628451b2cfa88deb212dc7e106cccf32a59432eed166ac6af372865b38b4b5fd12ef4cc1093dbb5dfce220d7f35cc8643291a
-	source_aarch64 = gstarcad-bin-20210719-x86_64.deb::https://hccad.gstarcad.cn/linux2021/V2.1/com.gstarcad.cad_21sp-5_arm64_210719.deb
-	sha512sums_aarch64 = 236ce39ce1f0f4f35e241d73f00628451b2cfa88deb212dc7e106cccf32a59432eed166ac6af372865b38b4b5fd12ef4cc1093dbb5dfce220d7f35cc8643291a
+	source_x86_64 = gstarcad-bin-20211020-x86_64.deb::https://hccad.gstarcad.cn/linux2022/v2.3/uos/com.gstarcad.cad_22sp_amd64.deb
+	sha512sums_x86_64 = 0fc458dcd349d4b2400a17e7d9ae858df9b42f453975d33c24bc654cbd6c695780a6b83faa7b17bd4604bcc3637dcea588a5c738ce1fd4d9f5976080ad01705a
+	source_aarch64 = gstarcad-bin-20211020-x86_64.deb::https://hccad.gstarcad.cn/linux2022/v2.3/uos/com.gstarcad.cad_22sp_arm64.deb
+	sha512sums_aarch64 = 9a4c35d23b108c4bd2e550acaf6d15d8f4ef9c53e173042d3d53bfdd7f45129e54f4145c66b58151fbdc9f43035fb95bdf8c4948716f4390be0c2941a1dab59f
 
 pkgname = gstarcad-bin
