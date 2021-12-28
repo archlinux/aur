@@ -35,7 +35,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
 sha256sums=('SKIP'
             '76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
-            'b9458af82a1e67497f1a42b69cb69b7a86a87727c35004a4089d207d10c7c2b4'
+            '6cfde5b71c2e25d2e032b2b20cde346decf4d60689e1465eb90e4235296dc4e0'
             '37ff7802cddae42f9c13fef5ce83f07858a22076b701b623412e5422636c35ee'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             '15cbfd8812c2396ab9cae6ad5a388b71fece7782fffe4b50b707b04b7221bb76'
