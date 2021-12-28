@@ -1,6 +1,6 @@
 pkgbase = bandwidth
 	pkgdesc = Benchmark memory bandwidth
-	pkgver = 1.10.4
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = http://zsmith.co/bandwidth.php
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = bandwidth
 	makedepends = nasm
 	options = !makeflags
 	options = !debug
-	source = https://zsmith.co/archives/bandwidth-1.10.4.tar.gz
-	sha256sums = 7bf78fdab03b12516b876678a93cd1191fdcc58d5423ab3e2d0f4e835c78ebf2
+	source = https://zsmith.co/archives/bandwidth-1.11.1.tar.gz
+	sha256sums = b68ace5697330f305a8a718025d67a6710f87dc70610a357e6fdc13ff64b6ed1
 
 pkgname = bandwidth
