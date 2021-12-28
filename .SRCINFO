@@ -1,0 +1,11 @@
+pkgbase = onlykey-udev
+	pkgdesc = OnlyKey udev rules
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://onlykey.io/
+	arch = x86_64
+	license = unknown
+	source = https://raw.githubusercontent.com/trustcrypto/trustcrypto.github.io/master/49-onlykey.rules
+	sha256sums = aa3398b13113c48a9214bdfe625e55317b06da8b1ce3d0c701e43470218949de
+
+pkgname = onlykey-udev
