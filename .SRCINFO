@@ -1,6 +1,6 @@
 pkgbase = python-pyattributes
 	pkgdesc = Implementations of .NET-like attributes realized with Python decorators
-	pkgver = 2.3.4
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/pyTooling/pyAttributes
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pyattributes
 	depends = python
 	depends = python-argcomplete
 	depends = python-pytooling
-	source = python-pyattributes-2.3.4.tar.gz::https://github.com/pyTooling/pyAttributes/archive/v2.3.4.tar.gz
-	sha256sums = d54240740967ae73e6066a8ff184a48e4ae5a25220d821b14f195d4e136c6513
+	source = python-pyattributes-2.5.0.tar.gz::https://github.com/pyTooling/pyAttributes/archive/v2.5.0.tar.gz
+	sha256sums = 47ab3f4765483805acca31a6376e66a4741fe04d1f77c3c565d6b763004f729c
 
 pkgname = python-pyattributes
