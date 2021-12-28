@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=frhelper
-pkgver=12.6.5
-_date=2021-08-19
+pkgver=12.6.7
+_date=2021-09-29
 _lang=fr
 _flang=French
 pkgrel=1
@@ -17,7 +17,7 @@ depends=(
          )
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha512sums=('a24d2ad7b3662b2153194f7c043a23fcac312bf21e5a0a1825fbc44f044be594c29cd70d7f046c622ea6b80d17b02f5d886ddd7a1f858343f7a106ca9a4560a5')
+sha512sums=('15c22531b4a11f4864bc4fd32ae4ca1f2c20446b7291177321b8c16016d6608d6a0b7a4640362ca5ccb41168e2116062c6f8379e86d48fb37704c2319429b9a0')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
