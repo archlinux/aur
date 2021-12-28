@@ -1,0 +1,127 @@
+Only in src.orig/k2pdfopt_v2.53/willuslib/: ansi.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: array.c
+diff -ua src.orig/k2pdfopt_v2.53/willuslib/bmp.c src.changes/willuslib/bmp.c
+--- src.orig/k2pdfopt_v2.53/willuslib/bmp.c	2020-07-11 11:58:35.000000000 -0700
++++ src.changes/willuslib/bmp.c	2021-12-25 01:02:16.157767301 -0800
+@@ -37,7 +37,7 @@
+ #include <jpeglib.h>
+ #endif
+ #ifdef HAVE_JASPER_LIB
+-#include <jasper.h>
++#include <jasper/jasper.h>
+ #endif
+ 
+ #define BOUND(x,xmin,xmax)  if ((x)<(xmin)) (x)=(xmin); else { if ((x)>(xmax)) (x)=(xmax); }
+diff -ua src.orig/k2pdfopt_v2.53/willuslib/bmpdjvu.c src.changes/willuslib/bmpdjvu.c
+--- src.orig/k2pdfopt_v2.53/willuslib/bmpdjvu.c	2020-06-15 13:58:45.000000000 -0700
++++ src.changes/willuslib/bmpdjvu.c	2021-12-25 03:27:26.072106793 -0800
+@@ -23,7 +23,7 @@
+ #include "willus.h"
+ 
+ #ifdef HAVE_DJVU_LIB
+-#include <djvu.h>
++#include <libdjvu/ddjvuapi.h>
+ 
+ static void handle(int wait,ddjvu_context_t *ctx);
+ static void djvu_add_page_info(char *buf,ddjvu_document_t *doc,int page,int npages);
+Only in src.orig/k2pdfopt_v2.53/willuslib/: bmpmupdf.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: CMakeLists.txt
+Only in src.orig/k2pdfopt_v2.53/willuslib/: dtcompress.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: filelist.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: fontdata.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: fontrender.c
+diff -ua src.orig/k2pdfopt_v2.53/willuslib/gslpolyfit.c src.changes/willuslib/gslpolyfit.c
+--- src.orig/k2pdfopt_v2.53/willuslib/gslpolyfit.c	2012-09-12 06:37:20.000000000 -0700
++++ src.changes/willuslib/gslpolyfit.c	2021-12-27 00:46:49.667145276 -0800
+@@ -24,7 +24,7 @@
+ #include <stdlib.h>
+ #include "willus.h"
+ #ifdef HAVE_GSL_LIB
+-#include <gsl.h>
++#include <gsl/gsl_multifit.h>
+ #endif
+ 
+ void gslpolyfit(double *x,double *y0,int n,int d,double *c0)
+Only in src.orig/k2pdfopt_v2.53/willuslib/: linux.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: math.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: mem.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: ocr.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: ocrgocr.c
+diff -ua src.orig/k2pdfopt_v2.53/willuslib/ocrtess.c src.changes/willuslib/ocrtess.c
+--- src.orig/k2pdfopt_v2.53/willuslib/ocrtess.c	2020-06-19 18:49:17.000000000 -0700
++++ src.changes/willuslib/ocrtess.c	2021-12-27 01:02:22.092401580 -0800
+@@ -25,10 +25,12 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <locale.h>
+-#include <leptonica.h>
+-#include <tesseract.h>
+ #include "willus.h"
+ 
++#ifdef HAVE_TESSERACT_LIB
++#include <leptonica/allheaders.h>
++#include <tesseract.h>
++
+ char *ocrtess_langnames[] =
+     {
+     "af","afr","Afrikaans",
+@@ -1080,3 +1082,4 @@
+             }
+     return(langname);
+     }
++#endif /* HAVE_TESSERACT_LIB */
+Only in src.orig/k2pdfopt_v2.53/willuslib/: pdfwrite.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: point2d.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: render.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: strbuf.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: string.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: token.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wfile.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wgs.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wgui.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: willus.h
+Only in src.orig/k2pdfopt_v2.53/willuslib/: willusversion.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: winbmp.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: win.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wincomdlg.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wininet.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: winmbox.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: winshell.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: winshellwapi.c
+diff -ua src.orig/k2pdfopt_v2.53/willuslib/wleptonica.c src.changes/willuslib/wleptonica.c
+--- src.orig/k2pdfopt_v2.53/willuslib/wleptonica.c	2018-12-06 20:07:14.000000000 -0800
++++ src.changes/willuslib/wleptonica.c	2021-12-27 01:32:01.045884896 -0800
+@@ -23,7 +23,7 @@
+ #include "willus.h"
+ 
+ #ifdef HAVE_LEPTONICA_LIB
+-#include <leptonica.h>
++#include <leptonica/allheaders.h>
+ 
+ static void wlept_pix_from_bmp(PIX **pixptr,WILLUSBITMAP *bmp);
+ static void wlept_bmp_from_pix(WILLUSBITMAP *bmp,PIX *pix);
+@@ -135,7 +135,7 @@
+     dew1=dewarpCreate(pixb,1);
+     pixDestroy(&pixb);
+     dewarpaInsertDewarp(dewa,dew1);
+-    dewarpBuildPageModel_ex(dew1,debug,fit_order);
++    dewarpBuildPageModel(dew1,debug);
+     if (bmp1!=NULL)
+         {
+         PIX *pix2,*pix2d;
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wmupdf.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wmupdfinfo.c
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wpdf.c
+diff -ua src.orig/k2pdfopt_v2.53/willuslib/wsys.c src.changes/willuslib/wsys.c
+--- src.orig/k2pdfopt_v2.53/willuslib/wsys.c	2020-05-31 14:53:34.000000000 -0700
++++ src.changes/willuslib/wsys.c	2021-12-27 02:41:30.321026174 -0800
+@@ -570,7 +570,7 @@
+     if (value[0]=='\0')
+         {
+         estr=getenv(varname);
+-        if (estr==NULL);
++        if (estr==NULL)
+             assign=0;
+         }
+     if (assign)
+Only in src.orig/k2pdfopt_v2.53/willuslib/: wzfile.c

@@ -1,0 +1,78 @@
+--- src.orig/k2pdfopt_v2.53/CMakeLists.txt	2020-05-31 15:34:34.000000000 -0700
++++ src.changes/CMakeLists.txt	2021-12-27 16:31:35.514052382 -0800
+@@ -57,6 +57,7 @@
+ include(FindJasper)
+ if(JASPER_FOUND)
+   set(HAVE_JASPER_LIB 1)
++  set(K2PDFOPT_LIB ${K2PDFOPT_LIB} ${JASPER_LIBRARY})
+ endif(JASPER_FOUND)
+ 
+ # paths from willuslib/wgs.c
+@@ -73,21 +74,27 @@
+ 
+ # willus.h
+ # HAVE_GSL_LIB
+-
++pkg_check_modules(GSL gsl)
++if(GSL_FOUND)
++  set(HAVE_GSL_LIB 1)
++  include_directories(SYSTEM ${GSL_INCLUDEDIR})
++  set(K2PDFOPT_LIB ${K2PDFOPT_LIB} ${GSL_LDFLAGS})
++endif(GSL_FOUND)
+ 
+ # libfreetype6 (>= 2.3.9), libjbig2dec0, libjpeg8 (>= 8c), libx11-6, libxext6, zlib1g (>= 1:1.2.0)
+ # MUPDF_STATIC_LDFLAGS misses mupdf-js-none, and doubles libs ...
+ 
+-pkg_check_modules(MUPDF mupdf)
+-if(MUPDF_FOUND)
+-  set(HAVE_MUPDF_LIB 1) 
+-  # (includes jbig2dec, openjpeg, freetype)
+-  include_directories(SYSTEM ${MUPDF_INCLUDEDIR})
+-  message(STATUS "mupdf libraries: ${MUPDF_LDFLAGS}")
+-  set(K2PDFOPT_LIB ${K2PDFOPT_LIB} ${MUPDF_LDFLAGS} 
+-    -lmupdf-js-none -lopenjpeg -ljbig2dec -ljpeg -lfreetype
+-  )
+-endif(MUPDF_FOUND)
++# DISABLE MUPDF
++#pkg_check_modules(MUPDF mupdf)
++#if(MUPDF_FOUND)
++#  set(HAVE_MUPDF_LIB 1) 
++#  # (includes jbig2dec, openjpeg, freetype)
++#  include_directories(SYSTEM ${MUPDF_INCLUDEDIR})
++#  message(STATUS "mupdf libraries: ${MUPDF_LDFLAGS}")
++#  set(K2PDFOPT_LIB ${K2PDFOPT_LIB} ${MUPDF_LDFLAGS} 
++#    -lmupdf-js-none -lopenjpeg -ljbig2dec -ljpeg -lfreetype
++#  )
++#endif(MUPDF_FOUND)
+ 
+ pkg_check_modules(DJVU ddjvuapi)
+ if(DJVU_FOUND)
+@@ -105,12 +112,13 @@
+   include_directories(SYSTEM ${LEPT_INCLUDEDIR})
+ endif(LEPT_FOUND)
+ 
+-pkg_check_modules(TESSERACT tesseract)
+-if(TESSERACT_FOUND)
+-  set(HAVE_TESSERACT_LIB 1)
+-  set(K2PDFOPT_LIB ${K2PDFOPT_LIB} ${TESSERACT_LDFLAGS})
+-  include_directories(SYSTEM ${TESSERACT_INCLUDEDIR})
+-endif(TESSERACT_FOUND)
++# DISABLE TESSERACT
++#pkg_check_modules(TESSERACT tesseract)
++#if(TESSERACT_FOUND)
++#  set(HAVE_TESSERACT_LIB 1)
++#  set(K2PDFOPT_LIB ${K2PDFOPT_LIB} ${TESSERACT_LDFLAGS})
++#  include_directories(SYSTEM ${TESSERACT_INCLUDEDIR})
++#endif(TESSERACT_FOUND)
+ 
+ # ---- Describe project
+ 
+@@ -129,7 +137,7 @@
+ # ms
+ add_executable(k2pdfopt k2pdfopt.c)
+ target_link_libraries (k2pdfopt k2pdfoptlib willuslib ${K2PDFOPT_LIB} pthread)
+-
++install(TARGETS k2pdfopt RUNTIME)
+ 
+ message("")
+ message("-- Summary --")

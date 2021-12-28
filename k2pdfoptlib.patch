@@ -1,0 +1,101 @@
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: bmpregion.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: CMakeLists.txt
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: devprofile.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2bmp.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2file.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2files.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2gui.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2gui_cbox.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2gui_osdep.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2gui_overlay.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2mark.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2master.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2mem.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2menu.c
+diff -ua src.orig/k2pdfopt_v2.53/k2pdfoptlib/k2ocr.c src.changes/k2pdfoptlib/k2ocr.c
+--- src.orig/k2pdfopt_v2.53/k2pdfoptlib/k2ocr.c	2020-07-10 13:41:00.000000000 -0700
++++ src.changes/k2pdfoptlib/k2ocr.c	2021-12-25 03:22:59.757055543 -0800
+@@ -41,16 +41,16 @@
+     int ni;
+     char initstr[256];
+     } OCRTESSINITINFO;
+-#endif
+ static void k2ocr_show_envvar(char *buf,char *color,char *var);
+ static void k2ocr_status_line(char *buf,char *color,char *label,char *string);
+ static void k2ocr_tesslang_init(char *lang,int assume_yes);
++#endif
+ static void k2ocr_ocrwords_add_subregion_to_queue(MASTERINFO *masterinfo,OCRWORDS *words,
+                                         BMPREGION *region,K2PDFOPT_SETTINGS *k2settings);
+ #endif /* HAVE_OCR_LIB */
+ 
+ /* Functions to support extracting text from PDF using MuPDF lib */
+-#ifdef HAVE_MUPDF_LIB
++#if (defined(HAVE_MUPDF_LIB) || defined(HAVE_DJVU_LIB))
+ static void k2ocr_ocrwords_get_from_ocrlayer(MASTERINFO *masterinfo,OCRWORDS *words,
+                                              BMPREGION *region,K2PDFOPT_SETTINGS *k2settings);
+ static int ocrword_map_to_bitmap(OCRWORD *word,MASTERINFO *masterinfo,BMPREGION *region,
+@@ -425,6 +425,7 @@
+ void k2ocr_showlog(void)
+ 
+     {
++#ifdef HAVE_TESSERACT_LIB
+     static char *funcname="k2ocr_showlog";
+ 
+     if (k2ocr_tess_status<0 && k2ocr_logfile!=NULL && wfile_status(k2ocr_logfile)==1
+@@ -468,6 +469,7 @@
+         k2printf(header,divider,"End","\n");
+         willus_mem_free((double **)&bigbuf,funcname);
+         }
++#endif
+     }
+             
+ 
+@@ -724,9 +726,11 @@
+ void k2ocr_multithreaded_ocr(OCRWORDS *words,K2PDFOPT_SETTINGS *k2settings)
+ 
+     {
++#ifdef HAS_TESSERACT_LIB
+     ocr_cpu_time_secs += ocrwords_multithreaded_ocr(words,ocrtess_api,maxthreads,
+                                                     k2settings->dst_ocr,
+                                                     k2settings->ocr_dpi);
++#endif
+     }
+ 
+ 
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2parsecmd.c
+diff -ua src.orig/k2pdfopt_v2.53/k2pdfoptlib/k2pdfopt.h src.changes/k2pdfoptlib/k2pdfopt.h
+--- src.orig/k2pdfopt_v2.53/k2pdfoptlib/k2pdfopt.h	2020-07-11 12:00:19.000000000 -0700
++++ src.changes/k2pdfoptlib/k2pdfopt.h	2021-12-25 23:01:30.732238720 -0800
+@@ -107,7 +107,7 @@
+ #endif
+ */
+ 
+-#if (defined(HAVE_MUPDF) || defined(HAVE_GOCR_LIB) || defined(HAVE_TESSERACT_LIB) || defined(HAVE_DJVU_LIB))
++#if (defined(HAVE_MUPDF_LIB) || defined(HAVE_GOCR_LIB) || defined(HAVE_TESSERACT_LIB) || defined(HAVE_DJVU_LIB))
+ #if (!defined(HAVE_OCR_LIB))
+ #define HAVE_OCR_LIB
+ #endif
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2proc.c
+diff -ua src.orig/k2pdfopt_v2.53/k2pdfoptlib/k2publish.c src.changes/k2pdfoptlib/k2publish.c
+--- src.orig/k2pdfopt_v2.53/k2pdfoptlib/k2publish.c	2020-07-11 06:45:32.000000000 -0700
++++ src.changes/k2pdfoptlib/k2publish.c	2021-12-23 04:37:28.275383328 -0800
+@@ -104,7 +104,7 @@
+ #else
+     ocrwords=NULL;
+     nocr=0;
+-    queue_page=0;
++    queue_pages_only=0;
+ #endif
+ #if (WILLUSDEBUGX2==3)
+ aprintf(ANSI_GREEN "\n   SRC PAGE %d, nocr=%d, queue=%d, threads=%d\n\n" ANSI_NORMAL,masterinfo->pageinfo.srcpage,nocr,queue_pages_only,k2ocr_max_threads());
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2settings2cmd.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2settings.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2sys.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2usage.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: k2version.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: pagelist.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: pageregions.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: textrows.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: textwords.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: userinput.c
+Only in src.orig/k2pdfopt_v2.53/k2pdfoptlib/: wrapbmp.c

@@ -1,47 +1,48 @@
-# Maintainer: Jose Riha <jose 1711 gmail com>
+# Contributor: Eric Fung <loseurmarbles[AT]gmail[DOT]com>
+# Contributor: Jose Riha <jose 1711 gmail com>
 # Contributor: Facundo Tuesca <facutuesca at gmail dot com>
 
-_tesseract_version=4.0.0
-
 pkgname=k2pdfopt
-pkgver=2.51
+pkgver=2.53
 pkgrel=1
-pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
+pkgdesc='Tool for optimizing PDF/DJVU files for mobile e-readers and smartphones.'
 arch=('i686' 'x86_64')
-url="http://www.willus.com/k2pdfopt/"
+url='http://www.willus.com/k2pdfopt'
 license=('GPL3')
 makedepends=('cmake')
-depends=('mupdf>=1.14'
-	'djvulibre>=3.5.25.3'
-	'netpbm>=10.61.02'
-	'leptonica>=1.74.4'
-	'jasper')
-source=("http://www.willus.com/k2pdfopt/src/${pkgname}_v${pkgver}_src.zip"
-	"http://deb.debian.org/debian/pool/main/k/k2pdfopt/k2pdfopt_2.51+ds-1.debian.tar.xz"
-	"jasper.patch")
-md5sums=('97bd96b21c7ee2680a9bfe12060992ba'
-         '9075edbbef77506cb18e2a4479d71ec4'
-         'aa38a1626c75962385bb3a0f5123a297')
+depends=('libpng' 'libjpeg-turbo' 'djvulibre')
+optdepends=('ghostscript: PostScript support'
+            'jasper: JPEG 2000 bitmap support'
+            'gsl: polynomial fit for spline interpolation feature'
+            'leptonica: OCR support')
+source=("${url}/src/${pkgname}_v${pkgver}_src.zip"
+        'CMakeLists.txt.patch'
+        'k2pdfoptlib.patch'
+        'willuslib.patch')
+sha256sums=('58c1b0647be5237570c110b0bb77eb78fab384282a2648edb59eac673070959b'
+            '6569d3f15c288f1297ebc0f239a5d58bd3040e0521a22981a176d86b376cb6e3'
+            '32db8cf1012b3626d397023c7ecd08b711136700bca9f37b18e056f4c367e392'
+            'c0ae18681871385ab4b10a0c129661cf7318e2d86837c2d092c77fe362cb9512')
 
 prepare() {
-	cd "${srcdir}/${pkgname}_v${pkgver}"
-	for i in ../debian/patches/*.patch
-	do
-	  patch -p1 -i "$i"
-	done
-        patch -p2 -i "${srcdir}/jasper.patch"
+    cd "${srcdir}/${pkgname}_v${pkgver}"
+    patch < ../CMakeLists.txt.patch
+    patch -p2 < ../k2pdfoptlib.patch
+    patch -p2 < ../willuslib.patch
 }
 
 build() {
-	cd "${srcdir}/${pkgname}_v${pkgver}"
-        [ -d build ] && rm -r build
-        mkdir build
-        cd build
-        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+    cd "${srcdir}/${pkgname}_v${pkgver}"
+    [ -d '_build' ] && rm -r '_build'
+    mkdir '_build'
+    cd '_build'
+    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ..
+    cmake --build .
 }
 
 package() {
-	cd "${srcdir}/${pkgname}_v${pkgver}/build"
-	make DESTDIR="$pkgdir" install
+    cd "${srcdir}/${pkgname}_v${pkgver}"
+    cd '_build'
+    install -d "${pkgdir}/usr/bin"
+    cmake --install .
 }
