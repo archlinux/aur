@@ -1,0 +1,16 @@
+pkgbase = valdo
+	pkgdesc = Create new Vala projects from templates
+	pkgver = 2021.08.31
+	pkgrel = 1
+	url = https://github.com/prince781/valdo
+	arch = any
+	license = LGPL-2.1
+	makedepends = vala
+	makedepends = meson
+	depends = glib2
+	depends = json-glib>=1.4.4
+	optdepends = git: for creating a new git repo
+	source = https://github.com/prince781/valdo/archive/2021.08.31.tar.gz
+	sha256sums = 424a1e1b8afeae1576a99b06f12ad44ff587166b070542c4835a3393d73d3594
+
+pkgname = valdo
