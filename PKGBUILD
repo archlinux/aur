@@ -3,8 +3,8 @@
 pkgbase=ivre
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre')
 pkgver=0.9.17
-pkgrel=1
-pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,...'
+pkgrel=2
+pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
@@ -15,11 +15,8 @@ sha512sums=('6bb852080c54c490450b9904717fdf93ce9750d560c9c4a70824ab7a2cdaaa46553
             '9db82963976ed0134c88ca779ab2d8ac92fdaf5eff8f6e6c47014b56f92cb78313acd6b6ddee8de13de6c3ae8a2988f216a659496f16b756836475a9b774b0c5')
 
 build() {
-  (
-    cd "$srcdir/$pkgbase-$pkgver"
-
-    python setup.py build
-  )
+  cd "$srcdir/$pkgbase-$pkgver"
+  python setup.py build
 }
 
 package_ivre() {
