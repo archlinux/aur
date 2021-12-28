@@ -1,0 +1,11 @@
+pkgbase = bech32-cli-bin
+	pkgdesc = Haskell implementation of the Bech32 address format (BIP 0173)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/input-output-hk/bech32
+	arch = x86_64
+	provides = bech32-cli
+	source = https://github.com/input-output-hk/bech32/releases/download/v1.1.2/bech32-v1.1.2-linux64.tar.gz
+	sha256sums = f6301a7451dda76535f5015302bbe3bf5b5ae6d4456520d5db4298f5158985b2
+
+pkgname = bech32-cli-bin
