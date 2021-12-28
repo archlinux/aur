@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-onnx-tensorflow
-pkgver=1.6.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Open Neural Network Exchange Tensorflow Backend'
 arch=('x86_64')
@@ -42,7 +42,6 @@ package() {
   cd "${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  rm -r "${pkgdir}/usr/lib/python3.8/site-packages/test"
 
 }
 # vim:set ts=2 sw=2 et:
