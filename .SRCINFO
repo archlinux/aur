@@ -1,7 +1,7 @@
 pkgbase = asfa-bin
 	pkgdesc = share files by upload via ssh and generation of a non-guessable link (pre-built)
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/obreitwi/asfa
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = asfa-bin
 	depends = zlib
 	provides = asfa
 	conflicts = asfa
-	source = https://github.com/obreitwi/asfa/releases/download/v0.9.0/asfa-v0.9.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 22e18371253f92b0c28e3614c00f850fe73f1f41346a5d77be8398a303cbdad5
+	source = https://github.com/obreitwi/asfa/releases/download/v0.9.1/asfa-v0.9.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 654e8512cadc7ab87f1524e3175340c503b4af15622a7cc133f42e6ae9d68d9d
 
 pkgname = asfa-bin
