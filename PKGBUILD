@@ -8,7 +8,7 @@ arch=(x86_64)
 url='https://github.com/alepez/provola'
 license=(APACHE MIT)
 makedepends=(clang cmake git rust libxcb)
-source=("git+$url#commit=3adf9233e3b1e0f58cd7111d5ca410119e3999b8")
+source=("git+$url#commit=dd7f67fe7dbef94c2a439453ec23000b102cddad")
 b2sums=('SKIP')
 
 build() {
