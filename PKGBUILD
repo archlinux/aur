@@ -1,6 +1,6 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 pkgname=lesana
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Manage collection inventories throught yaml files"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('python-dateutil' 'python-jinja' 'python-ruamel-yaml' 'python-xapian' '
 makedepends=('python-setuptools')
 provides=(lesana)
 source=("https://git.sr.ht/~valhalla/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('01661874bca5fb478850f46189b46f19')
+md5sums=('d9ed6884728f5d47977ae21e8e2fc634')
 
 prepare() {
   cd "${pkgname}-v${pkgver}"

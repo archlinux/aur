@@ -1,6 +1,6 @@
 pkgbase = lesana
 	pkgdesc = Manage collection inventories throught yaml files
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://lesana.trueelena.org/
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = lesana
 	depends = python-xapian
 	depends = python-gitpython
 	provides = lesana
-	source = https://git.sr.ht/~valhalla/lesana/archive/v0.8.1.tar.gz
-	md5sums = 01661874bca5fb478850f46189b46f19
+	source = https://git.sr.ht/~valhalla/lesana/archive/v0.9.0.tar.gz
+	md5sums = d9ed6884728f5d47977ae21e8e2fc634
 
 pkgname = lesana
-
