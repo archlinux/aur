@@ -13,6 +13,7 @@ optdepends=(
 	'kicad-library: for footprints and symbols'
 	'kicad-library-3d: for 3d models of components'
 )
+conflicts=('kicad')
 source=(
 	"https://gitlab.com/kicad/code/kicad/-/archive/$pkgver/kicad-$pkgver.tar.bz2"
 )
@@ -41,6 +42,6 @@ build()
 
 package()
 {
-	cd "$srcdir/kicad/build"
+	cd "$srcdir/kicad-$pkgver/build"
 	DESTDIR="$pkgdir" ninja install
 }

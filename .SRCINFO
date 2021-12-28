@@ -24,6 +24,7 @@ pkgbase = kicad6
 	depends = python-wxpython
 	optdepends = kicad-library: for footprints and symbols
 	optdepends = kicad-library-3d: for 3d models of components
+	conflicts = kicad
 	source = https://gitlab.com/kicad/code/kicad/-/archive/6.0.0/kicad-6.0.0.tar.bz2
 	sha256sums = 9738daf54bb536d8264f58340c53fbe3df74eeef45d2b20fc3e6fd8786d76dec
 
