@@ -1,6 +1,6 @@
 pkgbase = koka-bin
 	pkgdesc = Koka: a function-oriented language with effect inference
-	pkgver = 2.3.6
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://github.com/koka-lang/koka
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = koka-bin
 	optdepends = mono: for C# target
 	provides = koka
 	conflicts = koka
-	noextract = koka-v2.3.6-linux-x64.tar.gz
+	noextract = koka-v2.3.8-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/koka-lang/koka/releases/download/v2.3.6/koka-v2.3.6-linux-x64.tar.gz
-	sha256sums = 17aff37c891a3be355b347344918f2a375e85f393ad4f532619dbc5dc4ddc8af
+	source = https://github.com/koka-lang/koka/releases/download/v2.3.8/koka-v2.3.8-linux-x64.tar.gz
+	sha256sums = 2a2acf61187ab36e5c425ca871f23a79a22bdf0c5862feae2837ff0626154fc1
 
 pkgname = koka-bin
