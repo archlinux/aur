@@ -3,6 +3,9 @@
 pkgname=talosctl
 pkgver=0.14.0
 _commit=675dee0e73bb4b866d2a07b9b2f0a54fb7f3b575
+# https://github.com/talos-systems/talos/blob/master/Makefile#L16
+_pkgs='v0.10.0-alpha.0-4-g2779c3f'
+_extras='v0.8.0-alpha.0'
 pkgrel=3
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
@@ -27,8 +30,14 @@ build() {
   go build \
     -buildmode=pie \
     -trimpath \
-    -ldflags "-X github.com/talos-systems/talos/pkg/version.Tag=v${pkgver} \
+    -ldflags "-X github.com/talos-systems/talos/pkg/version.Name=Talos \
               -X github.com/talos-systems/talos/pkg/version.SHA=${_commit} \
+              -X github.com/talos-systems/talos/pkg/version.Tag=v${pkgver} \
+              -X github.com/talos-systems/talos/pkg/version.PkgsVersion=${_pkgs} \
+              -X github.com/talos-systems/talos/pkg/version.ExtrasVersion=${_extras} \
+              -X github.com/talos-systems/talos/pkg/images.Username=talos-systems \
+              -X github.com/talos-systems/talos/pkg/images.Registry=ghcr.io \
+              -X ggithub.com/talos-systems/talos/cmd/talosctl/pkg/mgmt/helpers.ArtifactsPath=_out \
               -linkmode=external \
               -extldflags ${LDFLAGS}" \
     -mod=readonly \
