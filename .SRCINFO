@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = 7.0rc2_GE_1
+	pkgver = 7.0rc3_GE_1
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
@@ -27,14 +27,14 @@ pkgbase = proton-ge-custom-bin
 	optdepends = xboxdrv: gamepad driver service
 	optdepends = python-cef: generic splash dialog support
 	provides = proton
-	provides = proton-ge-custom=7.0rc2.GE_1
+	provides = proton-ge-custom=7.0rc3.GE_1
 	conflicts = proton-ge-custom-stable-bin
 	conflicts = proton-ge-custom
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = proton-ge-custom-7.0rc2-GE-1_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/7.0rc2-GE-1/Proton-7.0rc2-GE-1.tar.gz
+	source = proton-ge-custom-7.0rc3-GE-1_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/7.0rc3-GE-1/Proton-7.0rc3-GE-1.tar.gz
 	source = supplementary.tar.zst
-	sha512sums = 1608e4ec11e1822b28a4183b14895890d265eb713121f304e36ccdd62d00cfe2fc986498d56c8ea74b8b024aa8e0483d4e4e6264214d07ecd8a790f0c9e3f5de
+	sha512sums = e4e5e019023ea233341ddcdf62efd6f5396ef8aa7920602403d7bdd5af40e779252369a3f979d83dcd9424642b399b67cb710531ec6cf9066ae843f00756872b
 	sha512sums = 9925a9972a9bed9b9e71c2aa169db03eeb72307336c3ed004434397deb379b55eb13b249ca9c0b28f48dd5ea728a1ad32685b84e2dcab881ba428c2acb7bc58d
 
 pkgname = proton-ge-custom-bin
