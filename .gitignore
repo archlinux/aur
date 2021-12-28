@@ -1,0 +1,5 @@
+/pkg
+/src
+
+/garbage-*-any.pkg.tar.zst
+/v*.tar.gz
