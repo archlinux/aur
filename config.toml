@@ -1,0 +1,10 @@
+dir = "/var/lib/immudb"
+network = "tcp"
+address = "0.0.0.0"
+port = 3322
+pidfile = "/var/lib/immudb/immudb.pid"
+logfile = "/var/log/immudb/immudb.log"
+mtls = false
+auth = true
+pgsql-server = false
+devmode = false

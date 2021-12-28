@@ -1,0 +1,21 @@
+[Unit]
+Description=immudb database daemon
+Documentation=https://github.com/codenotary/immudb
+Documentation=https://docs.immudb.io/master/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=immu
+Group=immu
+PIDFile=/var/lib/immudb/immudb.pid
+ExecStartPre=/bin/rm -f /var/lib/immudb/immudb.pid
+ExecStart=/usr/bin/immudb --config /etc/immudb/immudb.toml
+WorkingDirectory=/var/lib/immudb
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target
