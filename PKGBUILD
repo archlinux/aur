@@ -2,7 +2,7 @@
 # Contributor: DanManN <dnahimov@gmail.com>
 
 pkgname=python-thinc-git
-pkgver=8.0.6.r0.g2cdd3d28
+pkgver=8.0.14.dev0.r2.g7b54f728
 pkgrel=1
 pkgdesc='Practical Machine Learning for NLP'
 arch=(x86_64 aarch64)
@@ -32,8 +32,8 @@ makedepends=(
 )
 provides=(python-thinc)
 conflicts=(python-thinc)
-source=("git+https://github.com/explosion/thinc.git")
-sha256sums=('SKIP')
+source=("git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd thinc
