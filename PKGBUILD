@@ -4,8 +4,8 @@
 _ARCHS=('generic' 'ice40' 'ecp5' 'nexus' 'gowin')
 
 pkgname=nextpnr-git
-pkgver=r3780.95845b47
-pkgrel=2
+pkgver=r3957.fdeb8680
+pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
 url='https://github.com/YosysHQ/nextpnr'
@@ -25,7 +25,7 @@ for _arch in ${_ARCHS[@]}; do
       _CONFIG+=('-DICESTORM_INSTALL_PREFIX=/usr')
       ;;
     ecp5)
-      makedepends+=('prjtrellis' 'prjtrellis-db')
+      makedepends+=('prjtrellis>1.1' 'prjtrellis-db')
       _CONFIG+=('-DTRELLIS_INSTALL_PREFIX=/usr')
       ;;
     nexus)
