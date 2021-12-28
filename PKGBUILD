@@ -1,8 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
-# Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname="among-us-dumpy-gif-maker"
-_pkgver="4.1.0"
+_pkgver="4.2.0"
 _jar="Among-Us-Dumpy-Gif-Maker-${_pkgver}-all.jar"
 
 pkgname="${_pkgname}"
