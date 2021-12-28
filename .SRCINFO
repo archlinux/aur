@@ -1,7 +1,7 @@
 pkgbase = provola
 	pkgdesc = A tool for quick development/test cycle in any language
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alepez/provola
 	arch = x86_64
 	license = APACHE
