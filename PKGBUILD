@@ -53,7 +53,7 @@ build() {
               --enable-nemo \
               --enable-nautilus \
               --enable-thunar \
-              --enable-caja \
+              --enable-caja
   make
 }
 
