@@ -11,7 +11,7 @@ depends=('fuse2' 'pcsclite')
 makedepends=('cargo')
 optdepends=('bash-completion: Bash completion')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6f4271cb546e8af46f26c806b186bd91282f4c20e76afbb6b8dae9b21cc12b9f')
+sha512sums=('f9456ca6b4301932ead6fa7d56ef3e6b394be57d761a22f784116140f508ca690ebc46b54ecede0fd2d53211b1f5c1652de2c9301688a0b61db4673a1bd05451')
 
 _sourcedirectory="$_pkgname-$pkgver"
 
