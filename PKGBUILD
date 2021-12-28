@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='rage'
 pkgname="rust-$_pkgname"
-pkgver='0.7.0'
+pkgver='0.7.1'
 pkgrel='1'
 pkgdesc='Rust implementation of the age encryption tool'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('fuse2' 'pcsclite')
 makedepends=('cargo')
 optdepends=('bash-completion: Bash completion')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7ad46753ea665eba866a7982522f815585119c62db7d46e56e28ff59414df793')
+sha256sums=('6f4271cb546e8af46f26c806b186bd91282f4c20e76afbb6b8dae9b21cc12b9f')
 
 _sourcedirectory="$_pkgname-$pkgver"
 
