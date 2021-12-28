@@ -5,11 +5,11 @@
 
 pkgname=renamemytvseries-gtk-bin
 _pgmname=RenameMyTVSeries
-pkgver=2.1.6
+pkgver=2.1.61
 pkgrel=1
 _build=b23
 pkgdesc="Rename your TV-Series using TheTVDB (GTK version)"
-depends=('ffmpeg')
+depends=('ffmpeg' 'gtk2' 'libnotify' 'sqlite')
 conflicts=('renamemytvseries-bin' 'renamemytvseries-qt-bin')
 arch=('x86_64')
 url="https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/"
