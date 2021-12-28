@@ -3,7 +3,7 @@
 
 _pyname=fontParts
 pkgname=python-${_pyname,,}
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='The replacement for RoboFab'
 arch=(any)
@@ -22,7 +22,7 @@ depends=(python
 makedepends=(python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('882d0b2498db155adb1d77e5ce79574a045b6af3eafb5bfba74ba8b9736953b6')
+sha256sums=('794ada47e19ba41ef39b59719be312b127672bcb56bb7208dd3234d2bb3e8218')
 
 build() {
 	cd "$_archive"
@@ -31,8 +31,7 @@ build() {
 
 check() {
 	cd "$_archive/Lib"
-	# Tests fail on Python 3.10, but library seems to work...
-	# PYTHONPATH=. python "$_pyname/fontshell/test.py"
+	PYTHONPATH=. python "$_pyname/fontshell/test.py"
 }
 
 package() {
