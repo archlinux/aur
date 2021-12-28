@@ -4,7 +4,7 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
-pkgver=92.0.4515.159
+pkgver=95.0.4638.69
 _ubuver=0ubuntu0
 _ubudist=18.04.1
 pkgrel=1
@@ -26,12 +26,12 @@ source_armv6h=("$source_arm")
 source_armv7h=("$source_arm")
 source_aarch64=("http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-${_ubuver}.${_ubudist}_arm64.deb")
 sha256sums=('a0983819ab143f2ea414cdb9a49d508b111aa6d5a4a365c8cb8f7c102239ca22')
-sha256sums_x86_64=('f88fb1c4e3e367a77eb7efb81ea52c570155f0a3f919d8e86030f894caa38381')
-sha256sums_i686=('5516291c2d07e4e175615757fc3695d5817477be4e4b6a27225df0e2b6d6df86')
-sha256sums_arm=('686061772188e30c1f2f8471f5d9e9f1040649bb914967673c4788ce38e46f7a')
-sha256sums_armv6h=('686061772188e30c1f2f8471f5d9e9f1040649bb914967673c4788ce38e46f7a')
-sha256sums_armv7h=('686061772188e30c1f2f8471f5d9e9f1040649bb914967673c4788ce38e46f7a')
-sha256sums_aarch64=('365d2cdcd19398fe2605d869676ee5488ce49b8eec6e99d31e6ae89908d8e4da')
+sha256sums_x86_64=('f887848aa100046f674a39e10ff181ba8eabf17fe25ebcf7ae3a9b3b474b4548')
+sha256sums_i686=('e084feefe257e73498652f6435f87d55182faf25057b8546a9df3e471827ae30')
+sha256sums_arm=('291c4ca92ed9b03c0de0af139cf382cd45dd010806d4dcd27a2f7af7f5169f0e')
+sha256sums_armv6h=('291c4ca92ed9b03c0de0af139cf382cd45dd010806d4dcd27a2f7af7f5169f0e')
+sha256sums_armv7h=('291c4ca92ed9b03c0de0af139cf382cd45dd010806d4dcd27a2f7af7f5169f0e')
+sha256sums_aarch64=('a464f571c8f9801b21c1fe6c9cc967a750daad75016b764f20fd03fa04849635')
 
 prepare() {
   tar -xJf data.tar.xz
