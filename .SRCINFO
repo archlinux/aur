@@ -1,0 +1,12 @@
+pkgbase = msi
+	pkgdesc = A general purpose tool for parsing miniSEED records (miniSEED inspector).
+	pkgver = 3.8
+	pkgrel = 1
+	url = https://github.com/iris-edu/msi
+	arch = x86_64
+	license = GPL3
+	depends = libmseed
+	source = msi-3.8.tar.gz::https://github.com/iris-edu/msi/archive/v3.8.tar.gz
+	sha256sums = e1018936832346868307a9934d82083e77894c0e356aab03e0a7e0146bbb6fec
+
+pkgname = msi
