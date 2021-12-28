@@ -2,18 +2,22 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-appimage
-pkgver=4.4.8
-pkgrel=3
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Edit and paint images"
 arch=('x86_64')
 url="https://krita.org"
 license=('GPL3')
 provides=('krita')
 conflicts=('krita')
-source=("https://download.kde.org/stable/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}-${arch}.appimage"
-        ${_pkgname}.sh)
-md5sums=('ac7bf56f4d9df0129172a2aa2c7175b6'
-         'SKIP')
+source=(
+	"https://download.kde.org/stable/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}-${arch}.appimage"
+	"${_pkgname}.sh"
+)
+sha256sums=(
+	'93f352cd22161c19ce75414fca868ef04bf8141bc2d4fb84277029fea1ed73c1'
+	'SKIP'
+)
 options=(!strip)
 _filename=./${_pkgname}-${pkgver}-${arch}.appimage
 
