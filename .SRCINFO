@@ -1,0 +1,12 @@
+pkgbase = masscanned
+	pkgdesc = A low-interaction focused on network scanners and bots. It integrates very well with IVRE to build a self-hosted alternative to GreyNoise.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://ivre.rocks/
+	arch = any
+	license = GPL3
+	makedepends = rust
+	source = https://github.com/ivre/masscanned/archive/refs/tags/v0.2.0.tar.gz
+	sha512sums = a7d3fcc1fd7ef5df16eea30db0309c3b8c21deb20feae0ef4386c79b4f11bd560ec0d8a37b2fc195743a220b6d7d65b251efcaf04fb6e5e8a6e9c90b6347a7f3
+
+pkgname = masscanned
