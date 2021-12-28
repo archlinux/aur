@@ -1,0 +1,14 @@
+pkgbase = movies-dl-git
+	pkgdesc = The python program that lets you download movies for free.
+	pkgver = r74.24fad55
+	pkgrel = 1
+	url = https://github.com/Kungger-git/movies-dl
+	install = post.install
+	arch = any
+	license = GPL3
+	depends = qbittorrent
+	depends = qbittorrent-nox
+	source = movies-dl::git+https://github.com/Kungger-git/movies-dl.git
+	md5sums = SKIP
+
+pkgname = movies-dl-git
