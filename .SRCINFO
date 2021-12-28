@@ -1,6 +1,6 @@
 pkgbase = vim-aquarium-git
 	pkgdesc = Vibrant dark colorscheme
-	pkgver = 0.0.3.3.r5.gffc3007
+	pkgver = 0.3.7.r0.g737778b
 	pkgrel = 1
 	url = https://github.com/frenzyexists/aquarium-vim
 	arch = any

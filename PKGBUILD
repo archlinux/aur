@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-aquarium-git
-pkgver=0.0.3.3.r5.gffc3007
+pkgver=0.3.7.r0.g737778b
 pkgrel=1
 pkgdesc="Vibrant dark colorscheme"
 arch=('any')
@@ -30,7 +30,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find autoload colors lua -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find autoload colors lua -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
