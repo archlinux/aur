@@ -21,7 +21,7 @@ _zlib=1.2.3
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.15.1
+pkgver=4.16.0
 pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor'
 arch=('x86_64')
@@ -72,8 +72,8 @@ _stubdom_source=(
 
 # from cheap hack known as break_out_sums.sh
 _sha512sums=(
-        "8d3cbdf708f46477e32ee7cbd16a490c82efa855cecd84ee712b8680df4d69c987ba9ab00ff3851f627b98a8ebbc5dab71f92f142ed958ee2bc538bc792cd4b9" # xen-4.15.1.tar.gz
-        "SKIP" # xen-4.15.1.tar.gz.sig
+        "2869ed90d1779c9754d7f2397f5fc67a655304d9c32953ac20655ef96cb154521d8fce9f23915ac0c91f984dc54f72c67e5e619e2da318b5997748f44cf21b87" # xen-4.16.0.tar.gz
+        "SKIP" # xen-4.16.0.tar.gz.sig
         "1bbcbcd9fb8344a207409ec9f0064a45b726416f043f902ca587f5e4fa58497a759be4ffd584fa32318e960aa478864cc05ec026c444e8d27ca8e3248bd67420" # efi-xen.cfg
         "ccaa2ff82e4203b11e5dec9aeccac2e165721d8067e0094603ecaa7a70b78c9eb9e2287a32687883d26b6ceae6f8d2ad7636ddf949eb658637b3ceaa6999711b" # xen.conf
         "53ba61587cc2e84044e935531ed161e22c36d9e90b43cab7b8e63bcc531deeefacca301b5dff39ce89210f06f1d1e4f4f5cf49d658ed5d9038c707e3c95c66ef" # tmpfiles.conf
@@ -128,6 +128,8 @@ fi
 
 if [ "${_build_qemu}" == "true" ]; then
 	_config_qemu=""
+	# qemu needs ninja to build as of 4.16.0
+	makedepends+=('ninja')
 else
 	_config_qemu="--with-system-qemu=/usr/bin/qemu-system-x86_64"
 fi
