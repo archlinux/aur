@@ -2,7 +2,7 @@
 
 _appname=cyberdropdownloader
 pkgname="${_appname}-bin"
-pkgver=1.4.2
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Unofficial binary installer for CyberDrop Mass Gallery Downloader"
 arch=("x86_64")
