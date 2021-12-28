@@ -2,8 +2,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=eshelper
-pkgver=12.6.5
-_date=2021-08-19
+pkgver=12.6.7
+_date=2021-09-29
 _lang=es
 _flang=Spanish
 pkgrel=1
@@ -18,7 +18,7 @@ depends=(
          )
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha256sums=('03dfeacebd4fa9b741528aded5be3381754080add1d62e17339f72c8f06ac132')
+sha256sums=('292b356cd6d53b6f450d783ad14b165f8f8fa75b6511e0f8241340f8a4a08f98')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
