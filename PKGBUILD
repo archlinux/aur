@@ -2,9 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gauche-git
-pkgver=0.9.10.r12887
+pkgver=0.9.11.r13830
 pkgrel=1
-epoch=4
+epoch=5
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
 url='http://practical-scheme.net/gauche/index.html'
