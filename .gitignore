@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# Ignore everything even if they are in subdirectories
+!*/
+
+# But not these files
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
+# If the files to be tracked are in subdirectories
+# !*/a/b/file1.txt
+# !*/a/b/c/*
