@@ -1,6 +1,6 @@
 pkgbase = ntfysh-bin
 	pkgdesc = Send push notifications to your phone or desktop using PUT/POST
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/binwiederhier/ntfy
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ntfysh-bin
 	conflicts = ntfy
 	backup = etc/ntfy/server.yml
 	backup = etc/ntfy/client.yml
-	source = https://github.com/binwiederhier/ntfy/releases/download/v1.9.0/ntfy_1.9.0_linux_x86_64.tar.gz
+	source = https://github.com/binwiederhier/ntfy/releases/download/v1.10.0/ntfy_1.10.0_linux_x86_64.tar.gz
 	source = ntfy.sysusers
-	sha256sums = 19d4b6d6db75856f28a4c568c3492873c5f852af9d23cc0b6acd871735058f79
+	sha256sums = cbd7ddadef4e879afe4edd21ab272603b1b14616ae91c0d2bc8bdee6798ee15d
 	sha256sums = 0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f
 
 pkgname = ntfysh-bin
