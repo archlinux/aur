@@ -2,7 +2,7 @@
 
 pkgname=kicad6
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad.org/'
@@ -34,7 +34,6 @@ build()
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DKICAD_USE_OCC=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
-		-DKICAD_DATA=/usr/share/kicad-nightly \
 		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
 		-Wno-dev
 	ninja

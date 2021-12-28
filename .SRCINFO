@@ -1,7 +1,7 @@
 pkgbase = kicad6
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kicad.org/
 	arch = x86_64
 	license = GPL
