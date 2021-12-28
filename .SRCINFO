@@ -1,7 +1,7 @@
 pkgbase = transfer.sh
 	pkgdesc = Easy and fast file sharing from the command-line
 	pkgver = 1.3.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://transfer.sh/
 	arch = x86_64
 	license = MIT
