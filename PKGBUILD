@@ -13,7 +13,7 @@ url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt5-base' 'zlib')
 provides=('polymc')
-conflicts=('polymc')
+conflicts=('polymc' 'multimc')
 makedepends=('cmake' 'git' 'java-environment')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'

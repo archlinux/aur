@@ -19,6 +19,7 @@ pkgbase = polymc-git
 	optdepends = xorg-xrandr: for older minecraft versions
 	provides = polymc
 	conflicts = polymc
+	conflicts = multimc
 	source = git+https://github.com/PolyMC/PolyMC
 	source = git+https://github.com/MultiMC/libnbtplusplus
 	source = git+https://github.com/PolyMC/quazip
