@@ -1,0 +1,18 @@
+pkgbase = protocol-tool-git
+	pkgdesc = 一款可配置的协议解析工具
+	pkgver = 6a21a5a
+	pkgrel = 1
+	url = https://gitee.com/mzy2364/protocol-tool
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = qt5-script
+	makedepends = qt5-tools
+	depends = qt5-script
+	provides = ProtocolTool
+	conflicts = protocol-tool
+	options = !strip
+	source = protocol-tool::git+https://gitee.com/mzy2364/protocol-tool.git
+	sha256sums = SKIP
+
+pkgname = protocol-tool-git
