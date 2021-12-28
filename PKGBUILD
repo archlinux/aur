@@ -1,5 +1,5 @@
 pkgname=mock-core-configs
-pkgver=36.3
+pkgver=36.4
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -7,9 +7,9 @@ pkgdesc="Mock core config files basic chroots"
 url="https://github.com/rpm-software-management/mock"
 arch=('any')
 license=('GPL2')
-depends=('distribution-gpg-keys>=1.55')
+depends=('distribution-gpg-keys>=1.60')
 source=("$url/archive/$_pkgtag.tar.gz")
-sha256sums=('699468482d5a1eb3962f2034676156b298ffc564cc4b027b531d875c02700372')
+sha256sums=('25213ef6e6a988f372556396180d33393fbd252033b6a5289455c732d3ea2df1')
 
 # Uncomment to not package configs for EOLed versions of distributions
 #_without_eol=1
