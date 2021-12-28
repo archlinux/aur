@@ -5,7 +5,7 @@
 
 _basename=gst-libav
 pkgname=lib32-gst-libav
-pkgver=1.18.4
+pkgver=1.18.5
 pkgrel=1
 pkgdesc="Multimedia graph framework - libav plugin (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -14,7 +14,7 @@ license=(GPL)
 depends=(bzip2 lib32-gst-plugins-base-libs lib32-libffmpeg gst-libav)
 makedepends=(python git meson)
 provides=("lib32-gst-ffmpeg=$pkgver-$pkgrel")
-_commit=e896aabe3c3d278510fb567712c4a55ed0eae075 # tags/1.18.4^0
+_commit=9db917cab4c20e72e53ed962406a0d94636a2a39 # tags/1.18.5^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -44,5 +44,5 @@ check() {
 }
 
 package() {
-    DESTDIR="$pkgdir" meson install -C build
+    meson install -C build --destdir "$pkgdir"
 }
