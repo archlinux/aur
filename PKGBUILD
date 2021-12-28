@@ -1,9 +1,10 @@
-# Maintainer: Guillaume Hayot ghayot@postblue.info
+# Maintainer: bkacjios < blackops7799 at gmail dot com >
+# Contributor: Guillaume Hayot < ghayot at postblue dot info >
 pkgname=emulationstation
 _gitname=EmulationStation
 # v2.10.0 didn't have a release package made, use commit
-_gitcommit=c8056701b61b15ac1081e2d01e586e3f48ba8d6a
-pkgver=2.10.0
+_gitcommit=c9d905c31acf4b92d0a76b76c5cdf49e2b266d43
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -47,11 +48,11 @@ build() {
     _cmakeflags='-DGL:BOOL=ON'
 
     if [[ "${CARCH}" = 'armv6h' ]]; then
-        # Raspberry Pi Model 1 only supports embedded GLES
+        # Raspberry Pi Model 1 only supports embedded GLES, also enable omxplayer
         _cmakeflags='-DGLES:BOOL=ON -DRPI:BOOL=ON'
     elif [[ "${CARCH}" == 'armv7h' || "${CARCH}" = 'aarch64' ]]; then
         # Raspberry Pi Model 2 and up use mesa drivers
-        _cmakeflags='-DUSE_MESA_GLES:BOOL=ON -DRPI:BOOL=ON'
+        _cmakeflags='-DUSE_MESA_GLES:BOOL=ON'
     fi
 
     cmake -B "${_gitname}/build" \
