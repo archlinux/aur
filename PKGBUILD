@@ -1,10 +1,10 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=openxcom-extended
-pkgver=7.1.10
+pkgver=7.2.2
 # Repo doesn't use tags, so set which commit this version corresponds to in
 # https://github.com/MeridianOXC/OpenXcom/commits/oxce-plus/src/version.h
-_commit=1abbbf5706796f9f37ee0fe8ac7603f4e89ff597
+_commit=e4216f93ef742f08b24f597c31c7f003aefbd280
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE)"
 arch=('i686' 'x86_64')
@@ -17,18 +17,13 @@ optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
 provides=('openxcom' 'openxcom-git')
 conflicts=('openxcom')
 install="${pkgname}.install"
-source=(openxcom-extended::git+"https://github.com/MeridianOXC/OpenXcom.git#commit=${_commit}"
-        8e27756e07c8c260fcee847d8f3851181d9e3200.patch)
-md5sums=('SKIP'
-         '4d6d63b47ed6a58d4503582d65c789e8')
-sha1sums=('SKIP'
-          'c1f10485519b6f47af7c36404a2cdd2f8ca2c3a6')
+source=(openxcom-extended::git+"https://github.com/MeridianOXC/OpenXcom.git#commit=${_commit}")
+md5sums=('SKIP')
+sha1sums=('SKIP')
 
 prepare() {
   mkdir -p openxcom-extended/build
   sed -i 's:openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man6):openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man6):' openxcom-extended/docs/CMakeLists.txt
-  cd openxcom-extended
-  patch -p1 -i "${srcdir}/8e27756e07c8c260fcee847d8f3851181d9e3200.patch"
 }
 
 build() {
