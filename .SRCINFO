@@ -1,6 +1,6 @@
 pkgbase = wiznote-electron
 	pkgdesc = A powerful note-taking tool.
-	pkgver = 0.1.58
+	pkgver = 0.1.60
 	pkgrel = 1
 	url = https://www.wiz.cn/zh-cn
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = wiznote-electron
 	makedepends = p7zip
 	depends = electron
 	provides = wiznote
-	source = wiznote-0.1.58.AppImage::https://wizteam-generic.pkg.coding.net/client/wiznote-autoupdate/wiznote-desktop-0.1.58-linux-x86_64.AppImage
+	source = wiznote-0.1.60.AppImage::https://wizteam-generic.pkg.coding.net/client/wiznote-autoupdate/wiznote-desktop-0.1.60-linux-x86_64.AppImage
 	source = wiznote.sh
-	sha256sums = c5e796c89fb00c4177ab57b8cdb9df172a046b949dc3acd8b6cd6a56aef3d949
+	sha256sums = df33033ec2a21d684dae2e4e681a64887406fd92286d81d0afb24dda9d83c299
 	sha256sums = ba433c18cd2c82e234d1921ed125c46d6a8ab6a20688e10181834bdbd5650bb1
 
 pkgname = wiznote-electron
