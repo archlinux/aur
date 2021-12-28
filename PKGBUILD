@@ -6,8 +6,8 @@ pkgdesc="fcitx-fbterm refactor for fcitx5. Fbterm support for fcitx"
 arch=("x86_64")
 depends=("fcitx5" "fcitx5-gtk")
 license=("GPL3")
-source=("git+https://github.com/duzhaokun123/$reponame")
-url="https://github.com/duzhaokun123/$reponame"
+source=("git+https://github.com/fcitx/$reponame")
+url="https://github.com/fcitx/$reponame"
 sha512sums=("SKIP")
 optdepends=("fbterm: fbterm to use fcitx5-fbterm")
 
@@ -30,5 +30,5 @@ build() {
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
-    cp "$reponame/build/fcitx5-fbterm" "${pkgdir}/usr/bin"
+    cp "$reponame/build/src/fcitx5-fbterm" "${pkgdir}/usr/bin"
 }
