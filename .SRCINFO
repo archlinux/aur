@@ -1,6 +1,6 @@
 pkgbase = stretchly-git
 	pkgdesc = The break time reminder app
-	pkgver = 960.86c901e
+	pkgver = 1044.88b2476
 	pkgrel = 1
 	url = https://github.com/hovancik/stretchly/
 	arch = any

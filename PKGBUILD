@@ -2,7 +2,7 @@
 
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=960.86c901e
+pkgver=1044.88b2476
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 _ensure_local_nvm() {
-    if type nvm >/dev/null; then
+    if type nvm &>/dev/null; then
         nvm deactivate
         nvm unload
     fi
@@ -35,32 +35,33 @@ prepare() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
     _node_version=$(jq -r '.engines.node' package.json)
-    nvm ls "$_node_version" &>/dev/null || nvm install "$_node_version"
-    nvm exec "$_node_version" npm install \
+    # ` || false` is a workaround until this upstream fix is released:
+    # https://github.com/nvm-sh/nvm/pull/2698
+    nvm ls "$_node_version" &>/dev/null ||
+        nvm install "$_node_version" || false
+    nvm use "$_node_version"
+    npm install \
         electron@"$(cat /usr/lib/electron/version)"
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
+    nvm use "$_node_version"
     # electron-builder only generates /usr/share/* assets for target package
     # types 'apk', 'deb', 'freebsd', 'p5p', 'pacman', 'rpm' and 'sh', so build a
     # pacman package and unpack it
-    local _unpackdir=${srcdir}/${_pkgname}.unpacked _outfile
-    rm -Rf "${_unpackdir}"
-    mkdir -p "${_unpackdir}"
+    local _outfile _appname _electron _unpackdir=${srcdir}/${_pkgname}.unpacked
     _outfile=dist/$(jq -r '"\(.name)-\(.version)"' package.json).pacman
-    nvm exec "$_node_version" npx electron-builder build --linux pacman \
-        -c.electronDist=/usr/lib/electron \
-        -c.electronVersion="$(cat /usr/lib/electron/version)"
-    tar -C "${_unpackdir}" -Jxf "${_outfile}"
-}
-
-package() {
-    cd "${srcdir}/${_pkgname}"
-    local _unpackdir=${srcdir}/${_pkgname}.unpacked _appname _electron
     _appname=$(jq -r .name package.json)
     _electron=${_unpackdir}/opt/${_appname}/${_pkgname}
+    rm -Rf "${_unpackdir}"
+    mkdir -p "${_unpackdir}"
+    ./node_modules/.bin/electron-builder build \
+        -c.electronDist=/usr/lib/electron \
+        -c.electronVersion="$(cat /usr/lib/electron/version)" \
+        --linux pacman
+    tar -C "${_unpackdir}" -Jxf "${_outfile}"
     echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
     rm -v "$_electron"
     # Replace absolute path in desktop entry
@@ -70,9 +71,11 @@ package() {
     install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
     cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
 #!/bin/sh
-exec electron /opt/$(printf '%q' "${_appname}")/resources/app.asar "\$@"
+exec electron '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
 EOF
-    # Move everything into place
-    mv "${_unpackdir}/"{usr,opt} "${pkgdir}"
-    install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package() {
+    mv "${srcdir}/${_pkgname}.unpacked/"{usr,opt} "${pkgdir}"
+    install -D -m 0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
