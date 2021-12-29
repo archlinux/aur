@@ -1,3 +1,6 @@
+v1.10.0
+- Not a "release" but fixes 5.15 kernel builds
+
 v1.9.1
 - Add support for 5.11 and 5.12 kernels
 
