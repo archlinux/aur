@@ -3,7 +3,7 @@
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64')
 url="https://github.com/PufferPanel/PufferPanel"
@@ -20,7 +20,7 @@ source=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver//
                https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/config.linux.json)
 b2sums=('ba9de04c7932332a4a48b04a60015cb1f35c3c85da6dce2cc9f60bff9f03617edf02c9de33b157054a2a6ba54e7666cc7b333f6bb17a80bdd40e50a0eb116e3f'
         'ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141'
-        '8e71e40eab92d6d49d7c71998256a849aa1027142cc3d8a9d8e418b6a7f66cac5eeff4f6e8d73ff8389746513ef7d74b2b0ef6b42b4e857c1906ce21a4d14f81')
+        '87d5cbcd6652209913527fc595ec457659ff05c759b6b4ff4d0154e856adc2056640b4dceff9216b0a118751e24bf1b43b80ff6fe3ad74e0ce45f5c82bc59f7e')
 package() {
   export pkg=pufferpanel
   install -D "${srcdir}/pufferpanel" "${pkgdir}/usr/bin/pufferpanel" 
