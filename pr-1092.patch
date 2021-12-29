@@ -1,0 +1,78 @@
+From cc3f4ab2f8eeddeee6ce9740b940c8c07e4031bf Mon Sep 17 00:00:00 2001
+From: Jon Beniston <jon@beniston.com>
+Date: Tue, 28 Dec 2021 11:31:15 +0000
+Subject: [PATCH] Fix for #1087. Support compilation with Boost >= 1.77
+
+---
+ plugins/channelrx/noisefigure/noisefigure.cpp         |  9 ++++++++-
+ .../channelrx/noisefigure/noisefigureenrdialog.cpp    | 11 ++++++++++-
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/channelrx/noisefigure/noisefigure.cpp b/plugins/channelrx/noisefigure/noisefigure.cpp
+index a6a08d413..646fbf065 100644
+--- a/plugins/channelrx/noisefigure/noisefigure.cpp
++++ b/plugins/channelrx/noisefigure/noisefigure.cpp
+@@ -16,6 +16,7 @@
+ // along with this program. If not, see <http://www.gnu.org/licenses/>.          //
+ ///////////////////////////////////////////////////////////////////////////////////
+ 
++#include <boost/version.hpp>
+ #include <boost/math/interpolators/barycentric_rational.hpp>
+ 
+ #include "noisefigure.h"
+@@ -41,6 +42,12 @@
+ #include "channel/channelwebapiutils.h"
+ #include "maincore.h"
+ 
++#if BOOST_VERSION < 107700
++using namespace boost::math;
++#else
++using namespace boost::math::interpolators;
++#endif
++
+ MESSAGE_CLASS_DEFINITION(NoiseFigure::MsgConfigureNoiseFigure, Message)
+ MESSAGE_CLASS_DEFINITION(NoiseFigure::MsgPowerMeasurement, Message)
+ MESSAGE_CLASS_DEFINITION(NoiseFigure::MsgNFMeasurement, Message)
+@@ -180,7 +187,7 @@ double NoiseFigure::calcENR(double frequency)
+         else
+         {
+             int order = size - 1;
+-            boost::math::barycentric_rational<double> interpolant(std::move(x), std::move(y), order);
++            barycentric_rational<double> interpolant(std::move(x), std::move(y), order);
+             enr = interpolant(frequency);
+         }
+     }
+diff --git a/plugins/channelrx/noisefigure/noisefigureenrdialog.cpp b/plugins/channelrx/noisefigure/noisefigureenrdialog.cpp
+index 1200fe989..e51afe232 100644
+--- a/plugins/channelrx/noisefigure/noisefigureenrdialog.cpp
++++ b/plugins/channelrx/noisefigure/noisefigureenrdialog.cpp
+@@ -17,11 +17,20 @@
+ 
+ #include <QDebug>
+ 
++#include <array>
++
++#include <boost/version.hpp>
+ #include <boost/math/interpolators/barycentric_rational.hpp>
+ 
+ #include "noisefigureenrdialog.h"
+ #include "util/interpolation.h"
+ 
++#if BOOST_VERSION < 107700
++using namespace boost::math;
++#else
++using namespace boost::math::interpolators;
++#endif
++
+ NoiseFigureENRDialog::NoiseFigureENRDialog(NoiseFigureSettings *settings, QWidget* parent) :
+     QDialog(parent),
+     m_settings(settings),
+@@ -153,7 +162,7 @@ void NoiseFigureENRDialog::plotChart()
+             y[i] = points[i][1];
+         }
+         int order = size - 1;
+-        boost::math::barycentric_rational<double> interpolant(std::move(x), std::move(y), order);
++        barycentric_rational<double> interpolant(std::move(x), std::move(y), order);
+ 
+         x.resize(size);
+         y.resize(size);
