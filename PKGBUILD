@@ -3,7 +3,7 @@
 
 pkgname=k3sup-bin
 _pkgname=k3sup
-pkgver=0.9.7
+pkgver=0.11.1
 pkgrel=1
 epoch=1
 pkgdesc='k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s on any local or remote VM.'
@@ -11,7 +11,6 @@ arch=(x86_64)
 url='https://github.com/alexellis/k3sup/'
 license=(MIT)
 depends=('openssh')
-#depends=('docker')
 optdepends=('k3s'
             'kubernetes-bin'
             'helm'
@@ -20,20 +19,13 @@ optdepends=('k3s'
             'aws-cli: cli for Amazon Web Services'
             'google-cloud-sdk: gcloud - command-line tools for the Google Cloud Platform')
 provides=('k3sup')
-#makedepends=('go')
 _OWNER=alexellis
 _suffix=""
 source=("$pkgname-$pkgver::https://github.com/${_OWNER}/${_pkgname}/releases/download/${pkgver}/${provides}${_suffix}")
-sha256sums=('9bde60a27364e5cdd6021b03b3f6bad7d385e6651c9956a280fe86f6e4e8e678')
+sha256sums=('569b1f16f68937ace7cce42f3ba54979e1fcc784cfac5e0399e2753506e3ac63')
 
 package() {  
-  #mkdir -p "${pkgdir}/opt"
-  install -Dm 755 "$srcdir/$pkgname-$pkgver" "${pkgdir}/usr/local/bin/${provides}"
-
-  # mkdir -p "${pkgdir}/usr/local/bin"
-  # ln -nfs /opt/${pkgname}/${provides} "${pkgdir}"/usr/local/bin/${provides}
-
-  # Add command completion
+  install -Dm 755 "$srcdir/$pkgname-$pkgver" "${pkgdir}/usr/bin/${provides}"
   # install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
   # install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
   # "$pkgdir/usr/bin/provides" completion bash > "$pkgdir/usr/share/bash-completion/completions/provides"
