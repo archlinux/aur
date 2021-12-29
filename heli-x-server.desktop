@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=HELI-X Server
+Comment=Professional R/C Flight Simulator (Server)
+Exec=heli-x server
+Icon=heli-x
+Terminal=true
+Categories=Game;

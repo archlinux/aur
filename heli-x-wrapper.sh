@@ -24,5 +24,8 @@ else
   fi
 fi
 
-# execute the heli-x application
+# execute the heli-x application or server script
+if [ "$1" == "server" ]; then
+  APP_EXECUTABLE=${APP_EXECUTABLE/.sh/-Server.sh}
+fi
 exec $APP_EXECUTABLE

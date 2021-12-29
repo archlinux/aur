@@ -3,7 +3,7 @@
 
 pkgname=heli-x
 pkgver=10.0.2465
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional R/C Flight Simulator"
 arch=('i686' 'x86_64')
 url="https://www.heli-x.info"
@@ -15,12 +15,14 @@ source=("$pkgname-$pkgver.tar.gz::$url/${pkgver##*.}/HELI-X${pkgver%%.*}.tar.gz"
         "$pkgname-$pkgver-manual_de.pdf::$url/help${pkgver%%.*}/BedienungsanleitungV${pkgver%%.*}.pdf"
         "$pkgname-$pkgver-manual_en.pdf::$url/help${pkgver%%.*}/UsersManualV${pkgver%%.*}.pdf"
         "$pkgname-wrapper.sh"
-        "$pkgname.desktop")
+        "$pkgname.desktop"
+        "$pkgname-server.desktop")
 sha512sums=('22e2323e71396dc38d94142ef6235b1002fec094ab00fbdc5dae59fd5863c5692ab4c8491f21af7c0a48588c368d339d6019f0fe91ade57fa790b55d13ddcb87'
             'b8d49650284a8b7b05bc65aaed1c2bc3219cfa448165fb90b5953e2ad92a716a7543d1fb9da258162bf3541e116a7d59fc9235fdada263e8b5ff878cc4a35f31'
             '32cca4e3a8fcdee8553931b82bf867bfdf20594b02cce8125ad8967ed56f5d10405490dc9c12f50a4a37f8c280f4dfd843a228e09cf7ec7250ae7724de207b5b'
-            'bc194ecf020df709780e33e22f625952483ca89beee8502b74c2a4c4242bb5b601d51b680ed1d0f3d8f6830f1128cdfa4360a492b0379c6f7171f3d368930f36'
-            'dd2ac99931247e7ec4eabbc9107a2cf54ff088b859c674d43e18ee999127298e5ae3d4272b3c1a03d29092f9b7d86d84a0c7be073e30976fb7ba9474dccad0f5')
+            'b834a975473b499b6924f0dd9b5ee6d463e94d2bc5232dd08e35b72bca0d862db44ca03bd64efee875e61f3b14162280f6daf79ed8c4c48a4e528e3e017cd33a'
+            'dd2ac99931247e7ec4eabbc9107a2cf54ff088b859c674d43e18ee999127298e5ae3d4272b3c1a03d29092f9b7d86d84a0c7be073e30976fb7ba9474dccad0f5'
+            '1ebeec6920e830d703aeb87d57f0a27533a3ea5fe869acbe14a3c51ab9e2fcf7774588cf0e702b8c1a6327633e88e02823183753c4d76b65101130ac8a31dfd2')
 
 prepare() {
   cd "HELI-X${pkgver%%.*}"
@@ -47,7 +49,7 @@ package() {
   done
 
   install -Dm755 $pkgname-wrapper.sh "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 $pkgname*.desktop -t "$pkgdir/usr/share/applications/"
 
   install -Dm644 $pkgname-$pkgver-manual_en.pdf "$pkgdir/usr/share/doc/$pkgname/manual_en.pdf"
   install -Dm644 $pkgname-$pkgver-manual_de.pdf "$pkgdir/usr/share/doc/$pkgname/manual_de.pdf"
