@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-audio-output-switcher-git
 	pkgdesc = Adds a switch for choosing audio output to the system menu.
-	pkgver = r32.b8f48c1
-	pkgrel = 1
+	pkgver = r7.4358343
+	pkgrel = 2
 	url = https://github.com/adaxi/audio-output-switcher
 	arch = any
 	license = BSD
@@ -11,4 +11,3 @@ pkgbase = gnome-shell-extension-audio-output-switcher-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-audio-output-switcher-git
-

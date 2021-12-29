@@ -1,8 +1,9 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
+# Maintainer: Kenneth Stier <kenny at trenta dot io>
+# Contributor: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=gnome-shell-extension-audio-output-switcher-git
-pkgver=r32.b8f48c1
-pkgrel=1
+pkgver=r7.4358343
+pkgrel=2
 pkgdesc="Adds a switch for choosing audio output to the system menu."
 arch=('any')
 url="https://github.com/adaxi/audio-output-switcher"
@@ -25,10 +26,6 @@ package() {
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
   install -m644 "extension.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/extension.js"
-  install -m644 "utils.js" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/utils.js"
-  install -Dm644 "schemas/org.gnome.shell.extensions.audio-output-switcher.gschema.xml" \
-    "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.audio-output-switcher.gschema.xml"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
