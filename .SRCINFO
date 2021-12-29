@@ -1,7 +1,7 @@
 pkgbase = lilac-git
 	pkgdesc = The build bot for archlinuxcn
-	pkgver = r842.6ce9582
-	pkgrel = 3
+	pkgver = r874.b991d69
+	pkgrel = 2
 	url = https://github.com/archlinuxcn/lilac
 	arch = any
 	license = GPL3
@@ -19,13 +19,12 @@ pkgbase = lilac-git
 	depends = python-requests
 	depends = python-lxml
 	depends = python-yaml
-	depends = python-tomli
-	depends = python-sqlalchemy
+	depends = python-toml
 	depends = pyalpm
 	depends = python-structlog
 	depends = python-prctl
 	optdepends = smtp-forwarder: for sending error reports
-	provides = lilac=r842.6ce9582
+	provides = lilac=r874.b991d69
 	conflicts = lilac
 	source = git+https://github.com/archlinuxcn/lilac.git
 	sha256sums = SKIP

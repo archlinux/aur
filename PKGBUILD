@@ -3,14 +3,14 @@
 
 _pkgname=lilac
 pkgname=$_pkgname-git
-pkgver=r842.6ce9582
-pkgrel=3
+pkgver=r874.b991d69
+pkgrel=2
 pkgdesc='The build bot for archlinuxcn'
 arch=(any)
 url='https://github.com/archlinuxcn/lilac'
 license=(GPL3)
 depends=(python git devtools nvchecker gnupg pid_children fakeroot bubblewrap pacman-contrib
-         python-requests python-lxml python-yaml python-tomli python-sqlalchemy pyalpm
+         python-requests python-lxml python-yaml python-toml pyalpm
          python-structlog python-prctl)
 makedepends=(python-setuptools-scm)
 optdepends=(
