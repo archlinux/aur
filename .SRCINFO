@@ -1,7 +1,7 @@
 pkgbase = openbazaar
 	pkgdesc = Front-end Electron application for talking with the OpenBazaar daemon
 	pkgver = 2.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenBazaar/openbazaar-desktop
 	install = openbazaar.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = openbazaar
 	depends = electron6
 	optdepends = openbazaard: server daemon occasionally needed by front-end
 	options = !strip
-	source = https://github.com/OpenBazaar/openbazaar-desktop/archive/v2.4.10.tar.gz
+	source = https://github.com/OpenBazaar/openbazaar-desktop/archive/refs/tags/v2.4.10.tar.gz
 	source = openbazaar.js
 	source = openbazaar.desktop
 	sha256sums = 64d5249403887f06bb02b2c4c634f1cba11bd0c90523ab834505e5923efcdadc
@@ -19,4 +19,3 @@ pkgbase = openbazaar
 	sha256sums = ad0d0f577425e194d3da6db5d5cd262302a88e3937d8d2e6545d7295847255e5
 
 pkgname = openbazaar
-
