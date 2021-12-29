@@ -8,7 +8,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -22,10 +22,12 @@ depends=(
 source=(
     "ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210716"
     "google_benchmark_vendor.patch"
+    "rviz_assimp_vendor.patch"
 )
 sha256sums=(
     'SKIP'
     "609a5260736192608582c0f0a0fd4da09a9185d95d452a92d9527af38d720f6a"
+    "1c097a78a023956fcf877e53ca35e2949a7956045deaf5f7b049a2b237fb391c"
 )
 install=ros2-galactic.install
 
@@ -56,6 +58,9 @@ prepare() {
     git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
     ## rcl_logging
     git -C $srcdir/ros2/src/ros2/rcl_logging cherry-pick 77b5b2a6c948a6db1986501edc83f12ceadedba3
+    ## rviz_assimp_vendor
+    git -C $srcdir/ros2/src/ros2/rviz checkout .
+    git -C $srcdir/ros2/src/ros2/rviz apply $srcdir/rviz_assimp_vendor.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = ros2-galactic
 	pkgdesc = A set of software libraries and tools for building robot applications
 	pkgver = 2021.07.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://docs.ros.org/en/galactic/
 	install = ros2-galactic.install
 	arch = any
@@ -12,7 +12,9 @@ pkgbase = ros2-galactic
 	depends = sip4
 	source = ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210716
 	source = google_benchmark_vendor.patch
+	source = rviz_assimp_vendor.patch
 	sha256sums = SKIP
 	sha256sums = 609a5260736192608582c0f0a0fd4da09a9185d95d452a92d9527af38d720f6a
+	sha256sums = 1c097a78a023956fcf877e53ca35e2949a7956045deaf5f7b049a2b237fb391c
 
 pkgname = ros2-galactic
