@@ -2,9 +2,9 @@
 
 pkgname=python2-lxml
 pkgver=4.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Python2 binding for the libxml2 and libxslt libraries"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://lxml.de/"
 license=('BSD' 'custom')
 depends=('python2' 'libxslt')

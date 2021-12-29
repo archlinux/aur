@@ -1,9 +1,10 @@
 pkgbase = python2-lxml
 	pkgdesc = Python2 binding for the libxml2 and libxslt libraries
 	pkgver = 4.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lxml.de/
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = BSD
 	license = custom
 	makedepends = python2-setuptools
