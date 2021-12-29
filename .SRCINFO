@@ -5,6 +5,7 @@ pkgbase = phoronix-test-suite-milestone
 	url = http://www.phoronix-test-suite.com/
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = php
 	optdepends = php-gd
 	optdepends = sqlite3: required when running a Phoromatic server.
@@ -18,9 +19,9 @@ pkgbase = phoronix-test-suite-milestone
 	provides = phoronix-test-suite
 	conflicts = phoronix-test-suite
 	options = !strip
-	source = phoronix-test-suite-milestone-10.4.0m1.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.4.0m1.tar.gz
+	source = git+https://github.com/phoronix-test-suite/phoronix-test-suite.git#tag=v10.4.0m1
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch
-	sha256sums = 469d477f9756d303c3365517f125f06e52e451a61ed91bd349e213fde144157b
+	sha256sums = SKIP
 	sha256sums = 577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d
 
 pkgname = phoronix-test-suite-milestone
