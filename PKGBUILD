@@ -2,7 +2,7 @@
 
 pkgname=openvino
 pkgver=2021.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
@@ -21,10 +21,10 @@ optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
             'opencv: for benchmark and cross_check tools')
 makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 'opencv'
              'python' 'cython' 'shellcheck')
-options=('!emptydirs')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
 replaces=('intel-openvino')
+options=('!emptydirs')
 # supported firmwares: VPU_SUPPORTED_FIRMWARES in inference-engine/cmake/vpu_dependencies.cmake
 _firmware_ver=1875 # FIRMWARE_PACKAGE_VERSION in inference-engine/cmake/vpu_dependencies.cmake
 _gnaver=03.00.00.1377 # GNA_VERSION (GNA2) in inference-engine/cmake/dependencies.cmake
@@ -127,6 +127,16 @@ package() {
     install -D -m644 openvino.conf -t "${pkgdir}/etc/ld.so.conf.d"
     install -D -m755 openvino.sh -t "${pkgdir}/etc/profile.d"
     install -D -m755 setupvars.sh -t "${pkgdir}/opt/intel/openvino/bin"
+    
+    local _gnasover
+    local _gnasover_full
+    local _gnadir="${pkgdir}/opt/intel/openvino/deployment_tools/inference_engine/external/gna/lib"
+    _gnasover="$(find "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
+    _gnasover_full="$(find "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
+    
+    rm "${_gnadir}/libgna.so"{,".${_gnasover}"}
+    ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/libgna.so.${_gnasover}"
+    ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
     
     cp -dr --no-preserve='ownership' "openvino/inference-engine/temp/gna_${_gnaver}/include" \
         "${pkgdir}/opt/intel/openvino/deployment_tools/inference_engine/external/gna"
