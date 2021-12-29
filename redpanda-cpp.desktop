@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RedPanda Dev-C++
+Comment=A light-weight C/C++ IDE based on Qt
+Icon=redpanda-cpp
+Exec=redpanda-cpp
+Terminal=false
+Categories=Development;IDE;
