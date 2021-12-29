@@ -1,10 +1,11 @@
 pkgbase = phoronix-test-suite
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
-	pkgver = 10.6.1
+	pkgver = 10.8.0
 	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = php
 	optdepends = php-gd
 	optdepends = sqlite3: required when running a Phoromatic server.
@@ -16,9 +17,9 @@ pkgbase = phoronix-test-suite
 	optdepends = mesa-demos: required for universe-cli test suite
 	optdepends = openmpi: required for universe-cli test suite
 	options = !strip
-	source = phoronix-test-suite-10.6.1.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.6.1.tar.gz
+	source = git+https://github.com/phoronix-test-suite/phoronix-test-suite.git#tag=v10.8.0
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch
-	sha256sums = 136d875a7ad9ec97b437638694fc25818b9262c90017c317d7a16c2255a9492f
+	sha256sums = SKIP
 	sha256sums = 577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d
 
 pkgname = phoronix-test-suite
