@@ -24,13 +24,17 @@ sha512sums=('22e2323e71396dc38d94142ef6235b1002fec094ab00fbdc5dae59fd5863c5692ab
 
 prepare() {
   cd "HELI-X${pkgver%%.*}"
+  local s="[[:space:]]"
 
-  # Use installed java runtime
+  # Use an installed java runtime engine instead of the provided one
   rm -rf Java
-  sed -i 's|^./Java/jre11/bin/java|java|' runHELI-X.sh runHELI-X-Server.sh
+  sed -i "s|./Java/jre11/bin/java|java|" runHELI-X.sh runHELI-X-Server.sh
 
-  # Use a local writable config directory in the home folder
-  sed -i '/^java\ /{s|\(.*\)\ |\1\ -DheliX.path.home=\"\$HOME/.heli-x\"\ |}' runHELI-X.sh runHELI-X-Server.sh
+  # Use a local writable home path for config files and resources
+  sed -i \
+    -e "/java$s*-/{s/$s*$//}" \
+    -e "/java$s*-/{s|\(.*\)$s|\1 -DheliX.path.home=\"\$HOME/.heli-x\" |}" \
+    runHELI-X.sh runHELI-X-Server.sh
 }
 
 package() {
