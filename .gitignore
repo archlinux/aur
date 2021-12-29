@@ -1,0 +1,8 @@
+minemap
+src
+pkg
+*.pkg.tar.*
+*~
+*.tmp
+*.swp
+*.tar.*

@@ -1,0 +1,14 @@
+pkgbase = minemap
+	pkgdesc = Converter for Minecraft Map Items
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/cthbleachbit/minemap
+	arch = x86_64
+	license = LGPLv3
+	depends = nbtp
+	depends = imagemagick
+	depends = zlib
+	source = minemap-0.4.5.tar.gz::https://github.com/cthbleachbit/minemap/archive/refs/tags/v0.4.5.tar.gz
+	sha512sums = 32313e4146097563a037ea57f9aafe1978363798d8f88762c9c7de555196ef420cfe201f9f0b1b223fa605ece92cffce5002b568ae604864bd6662a2718ea3f7
+
+pkgname = minemap
