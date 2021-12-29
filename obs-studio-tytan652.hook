@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = obs-studio-tytan652
+
+[Action]
+Description = Warn Manjaro user about rebuild
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/obs-studio-tytan652.sh

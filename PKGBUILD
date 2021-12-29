@@ -1,18 +1,26 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
+DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
+
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=11
+pkgrel=12
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+_mbedtlsver=0
+_pythonver=0
+else
 _mbedtlsver=2.28
 _pythonver=3.10
+fi
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils"
 
   # To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
+  # For Manjaro user this feature is disabled
   # Also OBS will need a patch when mbedtls 3 is on the repo
   "mbedtls>=$_mbedtlsver" "mbedtls<3.0.0"
 
@@ -44,9 +52,10 @@ depends=(
 ## About ffmpeg-obs
 # Read ffmpeg-obs PKGBUILD for more info
 makedepends=(
-  "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio"
+  "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
 
   # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
+  # For Manjaro user this feature is disabled
   "python>=$_pythonver"
 
   # AUR Packages
@@ -80,6 +89,17 @@ sha256sums=(
   "SKIP"
   "SKIP"
 )
+
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+source+=(
+  "$pkgname.hook"
+  "$pkgname.sh"
+)
+sha256sums+=(
+  "486b8297a7cabccd552a4d49f994b231f87860d32d4535906abf776eee2a377b"
+  "4fb9dcb408f9481127546db0c5287e1f1b274d14cf8975b0f02c1bafb23a4c37"
+)
+fi
 
 if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
@@ -149,4 +169,11 @@ package() {
   cd obs-studio/build
 
   make install DESTDIR="$pkgdir"
+
+  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+    mkdir -p "${pkgdir}"/usr/share/libalpm/hooks/
+    mkdir -p "${pkgdir}"/usr/share/libalpm/scripts/
+    install -D -m644 "$srcdir/$pkgname.hook" "${pkgdir}"/usr/share/libalpm/hooks/
+    install -D -m755 "$pkgname.sh" "${pkgdir}"/usr/share/libalpm/scripts/
+  fi
 }
