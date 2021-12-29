@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility
 	pkgver = 27.1.3
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = obs-studio-rc
 	makedepends = swig
 	makedepends = luajit
 	makedepends = sndio
+	makedepends = lsb-release
 	makedepends = python>=3.10
 	makedepends = cef-minimal-obs=87.1.14
 	depends = jack
