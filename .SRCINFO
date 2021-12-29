@@ -1,22 +1,15 @@
 pkgbase = vim-denops
-	pkgver = 2.1.2
+	pkgdesc = Vim ecosystem for writing plugins in Deno
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/vim-denops/denops.vim
 	arch = any
+	groups = vim-plugins
 	license = MIT
-	depends = deno>=1.14.0
-	source = vim-denops-2.1.2.tar.gz::https://github.com/vim-denops/denops.vim/archive/v2.1.2.tar.gz
-	sha256sums = 86c0e9911e857963dd2a7953eda0c8fabbd219f0639bc28fa5d4776a5b955032
+	depends = deno
+	depends = vim-plugin-runtime
+	replaces = neovim-denops
+	source = vim-denops-2.2.0.tar.gz::https://github.com/vim-denops/denops.vim/archive/v2.2.0.tar.gz
+	sha256sums = 8a9e9e5a11c3418f1a93f0bbdf23c2f1642e7d32eaae77c0dd7dbb58861a3040
 
 pkgname = vim-denops
-	pkgdesc = Vim ecosystem for writing plugins in Deno
-	groups = vim-plugins
-	depends = deno>=1.14.0
-	depends = vim>=8.2.3081
-
-pkgname = neovim-denops
-	pkgdesc = Neovim ecosystem for writing plugins in Deno
-	groups = neovim-plugins
-	depends = deno>=1.14.0
-	depends = neovim>=0.5.0
-	conflicts = vim-denops
