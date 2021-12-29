@@ -30,7 +30,8 @@ Because I **REALLY** had nothing better to do with my life.
   - Keys you replace through your compositor (example: `caps:swapescape`) will
     require you to use the original key
 - Originally made for Sway, GNOME needs to manually makepkg the `libdecoration`
-  branch for GNOME specific fixes (until a new GLFW version releases. See steps for Gnome on Arch below.)
+  branch for GNOME specific fixes or download an unofficial package listed below
+  (until a new GLFW version releases)
   - I haven't received any bug reports from KDE, so it'll (probably) work
 
 ## Step 1: Setting up MultiMC to use the system GLFW
@@ -49,12 +50,20 @@ can try waiting for someone else to write a guide I guess.
 
 ### Option 1: Use the AUR
 
-Install the `glfw-wayland-minecraft-libdecoration` package from the AUR.
+Install the `glfw-wayland-minecraft` package from the AUR.
+
+If you're using GNOME, try using the **unofficial**
+`glfw-wayland-minecraft-libdecoration` package, which packages the
+`libdecoration` branch of this repository to the AUR.
 
 ### Option 2: Build the PKGBUILD manually
 
 `git clone` this repository to somewhere, and run `makepkg -si` inside. It will
 ask you to replace your existing GLFW package if already installed.
+
+If you're using GNOME, consider running `git checkout libdecoration` before
+running `makepkg -si`. This is a (probably) slightly unstable version that works
+better on GNOME.
 
 ### Option 3: Install the Fedora package
 
