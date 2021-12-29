@@ -2,13 +2,13 @@
 
 _pkgname=itk
 pkgname=$_pkgname-git
-pkgver=4.10rc02.25.gbf3f02c
+pkgver=5.3rc02.220.g6682f865b3
 pkgrel=1
 pkgdesc='Open-source, cross-platform C++ toolkit for segmentation and registration'
 arch=('i686' 'x86_64')
 url='https://www.itk.org'
 license=('Apache')
-depends=('hdf5-cpp-fortran' 'gdcm-git' 'libjpeg-turbo' 'libpng' 'libtiff')
+depends=('eigen' 'gdcm-git' 'gtest' 'hdf5-openmpi')
 makedepends=('git' 'cmake')
 provides=("$_pkgname" "insight-toolkit"{,-git})
 conflicts=("$_pkgname" "insight-toolkit"{,-git})
