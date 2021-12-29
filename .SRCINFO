@@ -1,7 +1,7 @@
 pkgbase = creddit-git
 	pkgdesc = CLI Reddit client written in C.
 	pkgver = r214.aa129b9c9b2a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cotix/cReddit
 	arch = x86_64
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = creddit-git
 	makedepends = git
 	depends = ncurses
 	depends = curl
-	provides = creddit-git
-	conflicts = creddit-git
-	source = creddit-git::git+https://github.com/Cotix/cReddit.git
+	provides = creddit
+	conflicts = creddit
+	source = creddit::git+https://github.com/Cotix/cReddit.git
 	source = 01-ncursesw-is-default-ncurses.patch
 	md5sums = SKIP
-	md5sums = 9b475cc98d0319356772d8472b602c67
+	md5sums = f61218a4235e342f7b094d8aac189683
 
 pkgname = creddit-git
