@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r545.g2b5e77c
+pkgver=0.3.7.r736.gba1932b0
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -11,16 +11,19 @@ license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gtest'
              'java-environment' 'python' 'asciidoc' 'doxygen' 'graphviz'
-             'xdg-utils' 'highway')
+             'xdg-utils' 'highway-git')
+options=('!lto')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
-        'git+https://github.com/lvandeve/lodepng.git'
         'git+https://github.com/mm2/Little-CMS.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
-        'git+https://github.com/google/highway.git')
+        'git+https://github.com/google/highway.git'
+        'git+https://github.com/glennrp/libpng.git'
+        'git+https://github.com/madler/zlib.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,12 +35,13 @@ sha256sums=('SKIP'
 prepare() {
     git -C libjxl submodule init
     git -C libjxl config --local submodule.third_party/brotli.url "${srcdir}/brotli"
-    git -C libjxl config --local submodule.third_party/lodepng.url "${srcdir}/lodepng"
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
     git -C libjxl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
     git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
     git -C libjxl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
     git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
+    git -C libjxl config --local submodule.third_party/libpng.url "${srcdir}/libpng"
+    git -C libjxl config --local submodule.third_party/zlib.url "${srcdir}/zlib"
     git -C libjxl submodule update
 }
 
@@ -61,6 +65,7 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
+        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
         -Wno-dev
     make -C build all doc
 }
@@ -70,15 +75,10 @@ check() {
 }
 
 package_libjxl-git() {
-    depends=('brotli')
+    depends=('brotli' 'giflib' 'gperftools' 'libjpeg-turbo' 'libpng' 'openexr')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
-                'giflib: for CLI tools'
                 'gimp: for gimp plugin'
-                'gperftools: for CLI tools'
-                'java-runtime: for JNI bindings'
-                'libjpeg-turbo: for CLI tools'
-                'libpng: for CLI tools'
-                'openexr: for CLI tools')
+                'java-runtime: for JNI bindings')
     provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_threads.so')
     conflicts=('libjxl' 'libjpeg-xl-git')
     replaces=('libjpeg-xl-git')
