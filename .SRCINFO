@@ -1,6 +1,6 @@
 pkgbase = python-datalad
 	pkgdesc = Keep code, data, containers under control with git and git-annex
-	pkgver = 0.15.3
+	pkgver = 0.15.4
 	pkgrel = 1
 	url = https://github.com/datalad/datalad
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-datalad
 	depends = python-iso8601
 	depends = python-humanize
 	depends = python-fasteners
+	depends = python-packaging
 	depends = patool
 	depends = python-tqdm
 	depends = python-wrapt
@@ -35,7 +36,7 @@ pkgbase = python-datalad
 	optdepends = python-exifread: EXIF metadata
 	optdepends = python-xmp-toolkit: XMP metadata
 	optdepends = python-pillow: generic image metadata
-	source = datalad-0.15.3.tar.gz::https://github.com/datalad/datalad/archive/0.15.3.tar.gz
-	sha512sums = 728d1951aca8aa642b20f643097304c0a9a6ec94b6af19780f664cf7f24441f6748dd5142c10965963ab8af1d1c04854199c38804429cb0d7499aae2a9e7607a
+	source = datalad-0.15.4.tar.gz::https://github.com/datalad/datalad/archive/0.15.4.tar.gz
+	sha512sums = d08342b2dac42799e56631664644c05844f203a33601ae681d735f64beb9d390b62074ccd19ef76814959d7a0febaab974cb29587d02e22f2536c6f033b253ab
 
 pkgname = python-datalad
