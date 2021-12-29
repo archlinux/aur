@@ -4,7 +4,7 @@
 pkgname=sudo-git
 _pkgname=sudo
 pkgrel=1
-pkgver=1.9.8p2.r11299.g7baee707b
+pkgver=1.9.9.r11348.gdabd8d80a
 pkgdesc="Give certain users the ability to run some commands as root - git version"
 arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
@@ -77,7 +77,7 @@ package() {
 
   install -Dm644 "$srcdir/sudo.pam" "$pkgdir/etc/pam.d/sudo"
 
-  install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/sudo/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/sudo/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
