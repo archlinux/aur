@@ -1,5 +1,5 @@
 pkgname=python-assimulo
-pkgver=3.2.8
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="A package for solving ordinary differential equations and differential algebraic equations"
 url="http://www.jmodelica.org/assimulo"
@@ -8,13 +8,15 @@ license=('LGPL')
 makedepends=('python-setuptools' 'cython' 'gcc-fortran')
 depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
 source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz")
-sha256sums=('4f99515d959add3dffa0d28808e3f3490aa13c648b0f372cd05f22c1afb78931')
+sha256sums=('41b685f7306c38932f2fa1327eb19e2d9a6cfc57d1c8c5a4815dcd32d54289ef')
 
 prepare() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
 
   # use shared lib
   sed -i "s|BLASname_t+'.a'|BLASname_t+'.so'|g" setup.py
+
+  curl -L https://github.com/modelon-community/Assimulo/pull/33.patch | patch -p1
 }
 
 build() {
@@ -23,6 +25,6 @@ build() {
 
 package() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
-  python setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --lapack-home=/usr --extra-fortran-compile-flags="-fallow-argument-mismatch"
+  python setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --lapack-home=/usr --extra-fortran-compile-flags="-fallow-argument-mismatch" --extra-c-flags="-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION"
 }
 
