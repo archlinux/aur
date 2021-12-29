@@ -1,17 +1,12 @@
 pkgbase = xmind-electron
 	pkgdesc = XMind - The most popular mind mapping software
-	pkgver = 10.1.2
+	pkgver = 11.1.2
 	pkgrel = 1
-	url = https://www.xmind.net/xmind2020/
+	url = https://www.xmind.net/desktop/
 	arch = x86_64
 	license = custom: XMind
-	depends = electron5
-	provides = xmind-zen-electron
-	conflicts = xmind-zen-electron
-	source = xmind-electron-10.1.2-202004142327.orig.rpm::https://dl3.xmind.net/XMind-2020-for-Linux-x86-64bit-10.1.2-202004142327.rpm
-	source = xmind.xml
-	sha256sums = 13b4111fef6ccaef65b773c8a98aafec6cea2ce82ebe40de778dc37d9cd1cd47
-	sha256sums = 40ed6060985702daffc36682ab01fb40fab49d676b7505e16b644baca2d39508
+	depends = electron13
+	source = xmind-electron-11.1.2-202111151820.orig.rpm::https://dl3.xmind.net/XMind-for-Linux-x86-64bit-11.1.2-202111151820.rpm
+	sha256sums = 7aa30e4d8e5c9cd1e4e48f88fdccaaebba4befd700969da57ee776a9c4244a00
 
 pkgname = xmind-electron
-
