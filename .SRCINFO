@@ -1,45 +1,26 @@
 pkgbase = gtkhash
 	pkgdesc = A GTK+ utility for computing message digests or checksums
 	pkgver = 1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tristanheaven/gtkhash
 	arch = x86_64
 	license = GPL
-	makedepends = caja
 	makedepends = dconf
 	makedepends = gtk3
 	makedepends = intltool
-	makedepends = libnautilus-extension
 	makedepends = librsvg
-	makedepends = nemo
 	makedepends = nettle
-	makedepends = thunar
 	makedepends = xdg-utils
 	depends = dconf
 	depends = gtk3
 	depends = libb2
 	depends = nettle
+	provides = gtkhash
+	conflicts = gtkhash-caja
+	conflicts = gtkhash-nautilus
+	conflicts = gtkhash-nemo
+	conflicts = gtkhash-thunar
 	source = https://github.com/tristanheaven/gtkhash/releases/download/v1.4/gtkhash-1.4.tar.xz
 	sha256sums = 20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4
 
 pkgname = gtkhash
-
-pkgname = gtkhash-caja
-	pkgdesc = A GTK+ utility for computing message digests or checksums (Caja filemanager plugin)
-	depends = gtkhash
-	depends = caja
-
-pkgname = gtkhash-nautilus
-	pkgdesc = A GTK+ utility for computing message digests or checksums (Nautilus filemanager plugin)
-	depends = gtkhash
-	depends = nautilus
-
-pkgname = gtkhash-nemo
-	pkgdesc = A GTK+ utility for computing message digests or checksums (Nemo filemanager plugin)
-	depends = gtkhash
-	depends = nemo
-
-pkgname = gtkhash-thunar
-	pkgdesc = A GTK+ utility for computing message digests or checksums (Thunar filemanager plugin)
-	depends = gtkhash
-	depends = thunar
