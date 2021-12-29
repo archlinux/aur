@@ -11,7 +11,7 @@ url="https://stardustxr.org/"
 license=('GPL2')
 
 provides=('stardust-xr')
-depends=('openxr>=1.0.16' 'fontconfig' 'libegl' 'libgl' 'flatbuffers>=1.12.0' 'libstardustxr')
+depends=('openxr>=1.0.16' 'fontconfig' 'libegl' 'libgl' 'flatbuffers>=1.12.0' 'libstardustxr' 'wayland-protocols')
 makedepends=('git' 'meson>=0.55.0' 'ninja' 'cmake')
 
 source=(git+https://github.com/StardustXR/stardust-xr.git#branch=dev)

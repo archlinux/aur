@@ -17,6 +17,7 @@ pkgbase = stardust-xr-git
 	depends = libgl
 	depends = flatbuffers>=1.12.0
 	depends = libstardustxr
+	depends = wayland-protocols
 	provides = stardust-xr
 	source = git+https://github.com/StardustXR/stardust-xr.git#branch=dev
 	sha256sums = SKIP
