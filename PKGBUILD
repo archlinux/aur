@@ -2,7 +2,7 @@
 
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-pkgver=2.12.06
+pkgver=2.13.04
 pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
@@ -24,14 +24,14 @@ backup=()
 options=()
 install=
 changelog=
-source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/$pkgname-$pkgver-qt5.deb)
-source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
-source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
-source_aarch64=(${pkgname}_${pkgver}-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/${pkgname}_${pkgver}-debian-stretch-stable_arm64.deb)
-sha256sums_x86_64=('9d879651fb9120a1906171e2916322962b64e5fe21f0b801c31483919450ba5f')
-sha256sums_armv6h=('b3ffc4c749257ee35e46d11d6aeda0e2a7c925dd47a292a9939bb14381ff4f80')
-sha256sums_armv7h=('b3ffc4c749257ee35e46d11d6aeda0e2a7c925dd47a292a9939bb14381ff4f80')
-sha256sums_aarch64=('5141054449d4c3565436aa583b072d1b97cd215522f2af75ee240cb86608f38b')
+source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/$pkgname-$pkgver-qt5.deb)
+source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
+source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
+source_aarch64=(${pkgname}_${pkgver}-debian-buster-beta_arm64.deb::https://deconz.dresden-elektronik.de/debian/beta/${pkgname}_${pkgver}-debian-buster-beta_arm64.deb)
+sha256sums_x86_64=('2c2ff7d9c9c19d29779f80713a47c95fdc45113f1b12c01706cb447de9a81949')
+sha256sums_armv6h=('745f2dec5d175d5465f1e7b55109d0e1750ae4e050b5275f33ae8a9909d15f8c')
+sha256sums_armv7h=('745f2dec5d175d5465f1e7b55109d0e1750ae4e050b5275f33ae8a9909d15f8c')
+sha256sums_aarch64=('51e65dbf52ae49902ce76fcaa4483c913118b9c9d7220ed48acf9711fd748821')
 noextract=()
 
 package() {
