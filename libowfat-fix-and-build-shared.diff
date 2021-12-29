@@ -1,0 +1,133 @@
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -4,16 +4,18 @@
+ # in /opt/diet, where they are in the default search path for my diet libc
+ # work but don't conflict with anything there.  YMMV.
+ 
+-prefix=/opt/diet
++prefix=/usr
+ LIBDIR=${prefix}/lib
+ INCLUDEDIR=${prefix}/include
+-MAN3DIR=${prefix}/man/man3
++MAN3DIR=${prefix}/share/man/man3
+ 
+ LIBS=byte.a fmt.a scan.a str.a uint.a open.a stralloc.a unix.a socket.a \
+ buffer.a mmap.a taia.a tai.a dns.a case.a mult.a array.a io.a \
+ textcode.a cdb.a critbit.a
+ 
+-all: headers ent $(LIBS) libowfat.a libsocket t
++SONAME=libowfat.so.0
++
++all: $(SONAME)
+ 
+ pic pie:
+ 	$(MAKE) CC="gcc -fPIC" LDFLAGS="-fpie"
+@@ -41,7 +43,7 @@ OPT_PLUS=-O3 $(NATIVE)
+ 
+ DEFINE=-D_REENTRANT
+ 
+-CFLAGS=-pipe $(WARN) $(DEFINE) $(OPT_REG)
++CFLAGS+=-fPIC
+ CFLAGS_OPT=-pipe $(WARN) $(DEFINE) $(OPT_PLUS)
+ 
+ #CFLAGS=-pipe -Os -march=pentiumpro -mcpu=pentiumpro -fomit-frame-pointer -fschedule-insns2 -Wall
+@@ -181,7 +183,7 @@ CFLAGS+=-I.
+ CFLAGS_OPT+=-I.
+ 
+ %.o: byte/%.c
+-	$(DIET) $(CCC) -c $< $(CFLAGS_OPT)
++	$(DIET) $(CCC) -c $< $(CFLAGS)
+ 
+ %.o: %.c
+ 	$(DIET) $(CCC) -c $< $(CFLAGS)
+@@ -224,15 +226,16 @@ install-inc:
+ 	install -d $(DESTDIR)$(INCLUDEDIR)/libowfat
+ 	install -m 644 $(INCLUDES) $(DESTDIR)$(INCLUDEDIR)/libowfat
+ 
+-install-lib: libowfat.a
++install-lib: $(SONAME)
+ 	install -d $(DESTDIR)$(LIBDIR)
+-	install -m 644 libowfat.a $(DESTDIR)$(LIBDIR)
++	install -m 755 $< $(DESTDIR)$(LIBDIR)
++	ln -sf $< $(DESTDIR)$(LIBDIR)/libowfat.so
+ 
+ install-man:
+ 	install -d $(DESTDIR)$(MAN3DIR)
+ 	install -m 644 $(wildcard */*.3) $(DESTDIR)$(MAN3DIR)
+ 
+-install: headers install-inc install-man install-lib
++install: install-inc install-man install-lib
+ 
+ uninstall:
+ 	rm -f $(patsubst %.h,$(INCLUDEDIR)/%.h,$(INCLUDES))
+@@ -423,3 +426,6 @@ check2: haveuint128.h haveinline.h entities.h
+ 	for i in $(UNITTESTS); do $(CC) -Wall -fprofile-arcs -ftest-coverage -g -o t -DUNITTEST $$i -I. $(LDFLAGS) && ./t || echo FAIL $$i ; done
+ 
+ check: haveuint128.h haveinline.h $(TESTS)
++
++$(SONAME): $(ALL_OBJS)
++	$(CC) -shared -Wl,-soname=$(SONAME) $(LDFLAGS) $^ -o $@
+--- a/buffer/buffer_0small.c
++++ b/buffer/buffer_0small.c
+@@ -6,7 +6,7 @@ static ssize_t b0read(int fd,char* buf, size_t len) {
+   return read(fd,buf,len);
+ }
+ 
+-char buffer_0_space[128];
+-static buffer it = BUFFER_INIT_READ(b0read,0,buffer_0_space,sizeof buffer_0_space);
++char buffer_0small_space[128];
++static buffer it = BUFFER_INIT_READ(b0read,0,buffer_0small_space,sizeof buffer_0small_space);
+ buffer *buffer_0small = &it;
+ 
+--- a/buffer/buffer_1small.c
++++ b/buffer/buffer_1small.c
+@@ -1,7 +1,7 @@
+ #include <unistd.h>
+ #include "buffer.h"
+ 
+-char buffer_1_space[128];
+-static buffer it = BUFFER_INIT(write,1,buffer_1_space,sizeof buffer_1_space);
++char buffer_1small_space[128];
++static buffer it = BUFFER_INIT(write,1,buffer_1small_space,sizeof buffer_1small_space);
+ buffer *buffer_1small = &it;
+ 
+--- a/socket/socket_accept4_makenonblocking_setcloseonexec.c
++++ b/socket/socket_accept4_makenonblocking_setcloseonexec.c
+@@ -7,6 +7,6 @@
+ #include "windoze.h"
+ #include "socket.h"
+ 
+-int socket_accept4_makenonblocking(int s,char ip[4],uint16 *port) {
++int socket_accept4_makenonblocking_setcloseonexec(int s,char ip[4],uint16 *port) {
+   return socket_accept4_flags(s,ip,port,SOCKET_NONBLOCK | SOCKET_CLOEXEC);
+ }
+--- a/socket/socket_accept4_setcloseonexec.c
++++ b/socket/socket_accept4_setcloseonexec.c
+@@ -7,6 +7,6 @@
+ #include "windoze.h"
+ #include "socket.h"
+ 
+-int socket_accept4_makenonblocking(int s,char ip[4],uint16 *port) {
++int socket_accept4_setcloseonexec(int s,char ip[4],uint16 *port) {
+   return socket_accept4_flags(s,ip,port,SOCKET_CLOEXEC);
+ }
+--- a/socket/socket_accept6_makenonblocking_setcloseonexec.c
++++ b/socket/socket_accept6_makenonblocking_setcloseonexec.c
+@@ -7,6 +7,6 @@
+ #include "windoze.h"
+ #include "socket.h"
+ 
+-int socket_accept6_makenonblocking(int s,char ip[16],uint16 *port,uint32* scope_id) {
++int socket_accept6_makenonblocking_setcloseonexec(int s,char ip[16],uint16 *port,uint32* scope_id) {
+   return socket_accept6_flags(s,ip,port,scope_id,SOCKET_NONBLOCK | SOCKET_CLOEXEC);
+ }
+--- a/socket/socket_accept6_setcloseonexec.c
++++ b/socket/socket_accept6_setcloseonexec.c
+@@ -7,6 +7,6 @@
+ #include "windoze.h"
+ #include "socket.h"
+ 
+-int socket_accept6_makenonblocking(int s,char ip[16],uint16 *port,uint32* scope_id) {
++int socket_accept6_setcloseonexec(int s,char ip[16],uint16 *port,uint32* scope_id) {
+   return socket_accept6_flags(s,ip,port,scope_id,SOCKET_CLOEXEC);
+ }
