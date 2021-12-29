@@ -1,10 +1,13 @@
 pkgbase = potatopresenter-appimage
 	pkgdesc = Tool to create presentation slides that can be exported as PDF.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thgier/PotatoPresenter
 	arch = x86_64
 	license = LGPL2.1
+	optdepends = texlive-latexextra: for LaTeX formular support
+	optdepends = texlive-fontsextra: for LaTeX formular support
+	optdepends = texlive-science: for LaTeX formular support
 	provides = potatopresenter
 	conflicts = potatopresenter
 	noextract = potatopresenter-appimage-1.0.0.AppImage
