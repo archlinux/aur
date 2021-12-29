@@ -1,7 +1,8 @@
-# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: prg <prg@xannode.com>
+# Old Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-px68k-git
-pkgver=332.1f86ae4
+pkgver=388.b309941
 pkgrel=1
 pkgdesc="Portable SHARP X68000 Emulator for PSP, Android and other platforms"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -14,7 +15,6 @@ makedepends=('git')
 _libname=px68k_libretro
 _gitname=px68k-libretro
 source=("git+https://github.com/libretro/${_gitname}.git")
-# source=("git+https://github.com/libretro/${_gitname}.git#commit=c36fafd35094df918f037bea333d7707e656128a")
 sha256sums=('SKIP')
 
 pkgver() {
