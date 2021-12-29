@@ -14,7 +14,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=pppconfig
-pkgver=2.3.25
+pkgver=2.3.26
 pkgrel=1
 pkgdesc="A text menu based utility for configuring ppp."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ license=('GPL2')
 url="http://httpredir.debian.org/debian/pool/main/p/pppconfig"
 depends=('ppp' 'dialog' 'perl')
 source=("http://httpredir.debian.org/debian/pool/main/p/pppconfig/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('6874b93ae34edb2a0ba06a669d930f5023a3eae38b6d10a78179eb69990a8280d41ebc2049461b54b03bd19904d13d2ebb57997599ed650660d0b34c958ad977')
+sha512sums=('a99c5fa52a6d4b13000e00de4be50e1755314c2f0fee3aaa35c9d337eae6198aff083b5a883bd98de10686eb90a47c73d7ecc6baa07d9698fa07d6b40344c8d9')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
