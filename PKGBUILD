@@ -1,6 +1,6 @@
 # Maintainer: PBS <pbs3141 at gmail dot com>
 pkgname=bootmap
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Integrated EFI image generator and system snapshotter"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs' 'util-linux-libs' 'libpipeline' 'libinih' 'btrfs-progs' 'bash' 'perl' 'sbsigntools' 'systemd')
 makedepends=('asciidoc')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7639e7fa9cb5300aa391373d4715bed28c9c6ceb0bf91f1bdc34d4025464584a')
+sha256sums=('c5dac92078772cbd2d55b33c9a01e0b1cb233de08b867dddcbd71a538ee80da9')
 backup=('etc/bootmap.conf' 'etc/kernel/cmdline')
 
 build() {
