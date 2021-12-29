@@ -1,7 +1,7 @@
 pkgbase = monailabel
 	pkgdesc = An intelligent open source image labeling and learning tool
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/Project-MONAI/MONAILabel
 	arch = any
 	license = Apache
@@ -50,7 +50,7 @@ pkgbase = monailabel
 	optdepends = python-psutil
 	optdepends = python-transformers
 	optdepends = tensorboard
-	source = MONAILabel-0.3.0.tar.gz::https://github.com/Project-MONAI/MONAILabel/archive/refs/tags/0.3.0.tar.gz
-	sha512sums = 4527178b1f06939bb74790f233241050912f7f503c05aefffcab4444a1c475707402484f70aaf10c9392ba4fe0ad4d756717935639cfba6a23f255f5abe8b654
+	source = MONAILabel-0.3.1.tar.gz::https://github.com/Project-MONAI/MONAILabel/archive/refs/tags/0.3.1.tar.gz
+	sha512sums = bfd4c430b6b25f1b7ba4ecd6f75bdf9f9e0af44f54d3de3cf47e13542d8a4bcab200aec819f8d8fd4521113a027ef44f9957c96741fbf2bd2d6e56ade4627324
 
 pkgname = monailabel
