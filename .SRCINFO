@@ -1,7 +1,7 @@
 pkgbase = foreign-language-text-reader-git
 	pkgdesc = FLTR: A java program to read text in different languages to learn those languages
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magnus-ISU/foreign-language-text-reader
 	arch = x86_64
 	license = MIT
