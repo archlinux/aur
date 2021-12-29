@@ -1,6 +1,6 @@
 pkgbase = metamask
 	pkgdesc = Chrome extension that enables browsing Ethereum blockchain enabled websites
-	pkgver = 10.6.4
+	pkgver = 10.8.2
 	pkgrel = 1
 	url = https://github.com/MetaMask/metamask-extension
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = metamask
 	makedepends = yarn
 	depends = chromium
 	depends = typescript
-	source = metamask::git+https://github.com/MetaMask/metamask-extension.git#tag=v10.6.4
+	source = metamask::git+https://github.com/MetaMask/metamask-extension.git#tag=v10.8.2
 	source = metamask_policy.json
 	sha512sums = SKIP
 	sha512sums = 912bc9a9ac604b8603bbc34bbc7793caaad4b796ecd3fe59dea2e2e53e22de9573fb9f84e5b2e3601bf2d9193d71f858b066e4a086a8818d9a97cb8fc8d141e4
