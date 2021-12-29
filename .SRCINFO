@@ -1,6 +1,6 @@
 pkgbase = liquidsoap
 	pkgdesc = A swiss-army knife for multimedia streaming, notably used for netradios and webtvs
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://www.liquidsoap.info
 	install = liquidsoap.install
@@ -61,10 +61,10 @@ pkgbase = liquidsoap
 	conflicts = liquidsoap-git
 	conflicts = liquidsoap-full
 	options = !makeflags
-	source = https://github.com/savonet/liquidsoap/releases/download/v2.0.1/liquidsoap-2.0.1.tar.bz2
+	source = https://github.com/savonet/liquidsoap/releases/download/v2.0.2/liquidsoap-2.0.2.tar.bz2
 	source = liquidsoap.service
 	source = liquidsoap.tmpfilesd
-	sha256sums = 11f93adacfb0b469a5355a1126dc67219902e54f6b89440e9d72ba95b2952217
+	sha256sums = 4e74e158a949430d3b46d160176bff9375b4f6a940cbdfd19e64fdafc72635a7
 	sha256sums = df6d2cec1be47a57a02ed04a1f527c0349221fad39d8d152aca13734d3808661
 	sha256sums = 9f286958af0c751c2a43d74614cdd1c4629c0583d619875385c09417a5383675
 
