@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
         spack.env.sh.patch
       )
 sha256sums=(
-        '93df99256a892ceefb153d48e2080c01d18e58e27773da2c2a469063d67cb582'
+        '96850f750c5a17675275aa059eabc2ae09b7a8c7b59c5762d571925b6897acfb'
         'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
         'db0cc4a4ab32e6ee2e5c32898c69a0f0ce05b4e3c605beb024b5463c46e3710f'
         '1f2c4c6b8841d927fa4056206b8e5603719c0d829586ff0937efaa935d054376'
