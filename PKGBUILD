@@ -2,8 +2,8 @@
 # Contributor: Guillaume Dollé < dolle dot guillaume at gmail dot com >
 # Contributor: Lucas H. Gabrielli
 pkgname=mumps-par
-pkgver=5.3.1
-pkgrel=3
+pkgver=5.4.1
+pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination, with parmetis implementation"
 url="http://mumps.enseeiht.fr"
 license=("custom")
