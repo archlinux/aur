@@ -3,7 +3,7 @@
 
 pkgname=arkade-bin
 _pkgname=arkade
-pkgver=0.6.15
+pkgver=0.8.11
 pkgrel=1
 epoch=1
 pkgdesc='Your one-stop CLI for Kubernetes. provides a simple CLI with strongly-typed flags to install charts and apps to your cluster in one command.'
@@ -25,7 +25,7 @@ provides=('arkade')
 _OWNER=alexellis
 
 case "${CARCH}" in
-  x86_64)    _CARCH=''        && sha256sums=('2888a4d77dec2bca29dddcc6d24603183bf78479d363b89fb47a29fba21f8d0d');;
+  x86_64)    _CARCH=''        && sha256sums=('6eb47fa70180d79623accd24e92fc8de68c061fb9957a848c1e32abf91d4ad8b');;
   aarch64)   _CARCH='-arm64'  && sha256sums=('SKIP');;
   arm*)      _CARCH='-armhf'  && sha256sums=('SKIP');;
 esac
@@ -33,13 +33,8 @@ esac
 source=("$pkgname-$pkgver::https://github.com/${_OWNER}/${_pkgname}/releases/download/${pkgver}/${provides}${_CARCH}")
 
 package() {  
-  #mkdir -p "${pkgdir}/opt"
-  install -Dm 755 "$srcdir/$pkgname-$pkgver" "${pkgdir}/usr/local/bin/${provides}"
+  install -Dm 755 "$srcdir/$pkgname-$pkgver" "${pkgdir}/usr/bin/${provides}"
 
-  # mkdir -p "${pkgdir}/usr/local/bin"
-  # ln -nfs /opt/${pkgname}/${provides} "${pkgdir}"/usr/local/bin/${provides}
-
-  # Add command completion
   # install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
   # install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
   # "$pkgdir/usr/bin/provides" completion bash > "$pkgdir/usr/share/bash-completion/completions/provides"
