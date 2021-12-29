@@ -1,13 +1,14 @@
 pkgbase = xde-theme-blackbirds
 	pkgdesc = SR-71 Blackbird theme pack for XDE
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = http://www.unexicon.com/
 	arch = any
 	groups = xde
 	license = CCPL:by-nc-nd
+	makedepends = git
 	depends = xde-styles
-	source = xde-theme-blackbirds-1.2.4.tar.gz::https://github.com/bbidulock/xde-theme-blackbirds/archive/refs/tags/1.2.4.tar.gz
-	md5sums = 928a714279a3b6849932c55c7ff0c0e5
+	source = xde-theme-blackbirds::git+https://github.com/bbidulock/xde-theme-blackbirds.git#commit=cdd1bc552200892e36d68fc25f1d3d63dba01e40
+	md5sums = SKIP
 
 pkgname = xde-theme-blackbirds
