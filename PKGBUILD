@@ -3,7 +3,7 @@
 # Maintainer: Zhuo FENG <fenprace.i@gmail.com>
 
 pkgname=mosdns-cn
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A DNS forwarder"
 license=("GPL3")
@@ -18,9 +18,8 @@ conflicts=("mosdns-cn")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/IrineSistiana/mosdns-cn/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
-  export GOPATH="$srcdir/gopath"
   cd "$pkgname-$pkgver"
-  go build .
+  GOPATH="$srcdir/gopath" go build -trimpath -ldflags "-s -w -X main.version=$pkgver" .
 }
 
 package() {
@@ -28,4 +27,4 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-sha256sums=('a213de8c624438a066042ad9ed0eb0d419ce919f8a3d0d8dcc4eceb3f9181c9a')
+sha256sums=('2da016e063512ae4e2dfb05671c8f791a41de408fa6236a3c401cab9b2041ecb')

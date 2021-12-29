@@ -1,6 +1,6 @@
 pkgbase = mosdns-cn
 	pkgdesc = A DNS forwarder
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/IrineSistiana/mosdns-cn
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mosdns-cn
 	optdepends = v2ray-rules-dat-git: geosite.dat & geoip.dat
 	provides = mosdns-cn
 	conflicts = mosdns-cn
-	source = mosdns-cn-1.1.4.tar.gz::https://github.com/IrineSistiana/mosdns-cn/archive/refs/tags/v1.1.4.tar.gz
-	sha256sums = a213de8c624438a066042ad9ed0eb0d419ce919f8a3d0d8dcc4eceb3f9181c9a
+	source = mosdns-cn-1.1.5.tar.gz::https://github.com/IrineSistiana/mosdns-cn/archive/refs/tags/v1.1.5.tar.gz
+	sha256sums = 2da016e063512ae4e2dfb05671c8f791a41de408fa6236a3c401cab9b2041ecb
 
 pkgname = mosdns-cn
