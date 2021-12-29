@@ -1,4 +1,4 @@
-pkgname="tldr-page"
+pkgname="tldr-page-git"
 _pkgname="tldr-page-creator"
 pkgrel=1
 pkgver=1.4.r4.gcc42370
@@ -16,11 +16,11 @@ pkgver() {
 
 build(){
     cd ${_pkgname}
-    go build -o ${pkgname} ./${pkgname}.go
+    go build -o tldr-page ./tldr-page.go
 }
 
 package(){
     cd ${_pkgname}
-    install -Dm755 ${pkgname} "${pkgdir}/usr/bin/tldr-page"
+    install -Dm755 tldr-page "${pkgdir}/usr/bin/tldr-page"
 }
 sha256sums=('SKIP')
