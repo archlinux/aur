@@ -1,12 +1,13 @@
 pkgbase = ros2-foxy
 	pkgdesc = A set of software libraries and tools for building robot applications
 	pkgver = 2020.12.11
-	pkgrel = 5
+	pkgrel = 6
 	url = https://docs.ros.org/en/foxy/
 	install = ros2-foxy.install
 	arch = any
 	license = Apache
 	depends = ros2-arch-deps
+	depends = ros2-pyqt5-sip-compat
 	depends = gmock
 	depends = sip4
 	source = ros2::git+https://github.com/ros2/ros2#tag=release-foxy-20201211

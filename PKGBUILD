@@ -4,12 +4,13 @@
 
 pkgname=ros2-foxy
 pkgver=2020.12.11
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/foxy/"
 arch=('any')
 license=('Apache')
 depends=('ros2-arch-deps'
+         'ros2-pyqt5-sip-compat'
          'gmock'
          'sip4')
 source=("ros2::git+https://github.com/ros2/ros2#tag=release-foxy-20201211"
@@ -27,11 +28,6 @@ prepare() {
 
       exit 1;
     fi
-
-    # Create required symlinks (see https://wiki.archlinux.org/index.php/ROS)
-    sudo mkdir -p /usr/share/sip
-    sudo ln -sf /usr/lib/python3.9/site-packages/PyQt5 /usr/share/sip/.
-    sudo ln -sf /usr/lib/python3.9/site-packages/PyQt5/bindings/* /usr/share/sip/PyQt5/.
 
     # Clone the repos
     rm -rf $srcdir/ros2/src
