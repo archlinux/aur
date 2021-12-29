@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=scene-notes-dock
 pkgname=obs-$_pluginname
-pkgver=0.0.1
+pkgver=0.0.2
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="Plugin for OBS Studio allowing you to create a Dock for showing and editing notes for the current active scene"
@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=bd73ace5ec35c17d8734b9595c2b910572a3bc0d"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=126e24d0ccb163ec18f40fa647a6d147885dd226"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(

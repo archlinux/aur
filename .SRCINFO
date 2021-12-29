@@ -1,6 +1,6 @@
 pkgbase = obs-scene-notes-dock
 	pkgdesc = Plugin for OBS Studio allowing you to create a Dock for showing and editing notes for the current active scene
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/scene-notes-dock.1398/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = obs-scene-notes-dock
 	makedepends = git
 	makedepends = libxcomposite
 	depends = obs-studio>=27.0.0
-	source = obs-scene-notes-dock::git+https://github.com/exeldro/obs-scene-notes-dock#commit=bd73ace5ec35c17d8734b9595c2b910572a3bc0d
+	source = obs-scene-notes-dock::git+https://github.com/exeldro/obs-scene-notes-dock#commit=126e24d0ccb163ec18f40fa647a6d147885dd226
 	source = obs-studio-27.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.0.0.tar.gz
 	sha256sums = SKIP
 	sha256sums = c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e
