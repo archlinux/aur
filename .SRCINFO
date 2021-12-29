@@ -1,6 +1,6 @@
 pkgbase = boca-git
 	pkgdesc = A component library used by the fre:ac audio converter
-	pkgver = 1.0.5.r0.g4b041e7f
+	pkgver = 1.0.5.r26.ga3e81393
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/enzo1982/BoCA
