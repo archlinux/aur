@@ -2,51 +2,54 @@
 
 pkgname=prometheus-nut-exporter
 _pkgname=nut_exporter
-pkgver=2.2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Prometheus exporter for Network UPS Tools metrics"
 arch=('x86_64')
 url="https://github.com/DRuggeri/nut_exporter"
 license=('Apache')
-makedepends=('go')
+depends=('glibc')
+makedepends=('go' 'git')
 optdepends=('nut: for monitoring a local NUT server')
+_commit='bc355546a6498934d785aff53ee608a5ec330b6a'
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "$pkgname::git+$url.git#commit=$_commit"
   'systemd.service'
   'sysusers.conf'
 )
-b2sums=('464d1b0a51d281dc45519f074ba14bbf774291425d02164d22dae047c92fada00b5a9211c18d2613a8f44e467bdb6825a836549eca264047c9e8b0d2bcba496e'
+b2sums=('SKIP'
         'c37fea15866ccc283ca0aca7ac47edf746b3281bbdc9bb92edde41d110b459d55272aff30b963cda5d3165c9ea27f2cc82b48b0f340900531cc125dd0d719c97'
         'f14c79da6b3efeb0843853e5772bcc021bd6041b76a39952ad45638ce27f143b41f6a491d528992250db9b2d9fd133b76ad8f6f6da9df4c6fb0865766d49d991')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's/^[vV]//;s/-/+/g'
+}
+
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
   # create folder for build output
   mkdir build
 
   # download dependencies
-  go mod vendor
+  go mod download
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
   go build -v \
     -buildmode=pie \
     -trimpath \
-    -mod=vendor \
+    -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
-    -X github.com/prometheus/common/version.Version=$pkgver \
-    -X github.com/prometheus/common/version.Revision=$pkgver \
-    -X github.com/prometheus/common/version.Branch=tarball \
-    -X github.com/prometheus/common/version.BuildUser=someone@builder \
-    -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)" \
+    -X main.Version=$pkgver" \
     -o build .
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
   # ensure tests have access to built binary
   PATH="$(pwd)/build:$PATH" go test ./...
 }
@@ -57,5 +60,5 @@ package() {
   install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "$_pkgname-$pkgver/build/$_pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin" "$pkgname/build/$_pkgname"
 }

@@ -1,16 +1,18 @@
 pkgbase = prometheus-nut-exporter
 	pkgdesc = Prometheus exporter for Network UPS Tools metrics
-	pkgver = 2.2.3
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/DRuggeri/nut_exporter
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = git
+	depends = glibc
 	optdepends = nut: for monitoring a local NUT server
-	source = prometheus-nut-exporter-2.2.3.tar.gz::https://github.com/DRuggeri/nut_exporter/archive/v2.2.3.tar.gz
+	source = prometheus-nut-exporter::git+https://github.com/DRuggeri/nut_exporter.git#commit=bc355546a6498934d785aff53ee608a5ec330b6a
 	source = systemd.service
 	source = sysusers.conf
-	b2sums = 464d1b0a51d281dc45519f074ba14bbf774291425d02164d22dae047c92fada00b5a9211c18d2613a8f44e467bdb6825a836549eca264047c9e8b0d2bcba496e
+	b2sums = SKIP
 	b2sums = c37fea15866ccc283ca0aca7ac47edf746b3281bbdc9bb92edde41d110b459d55272aff30b963cda5d3165c9ea27f2cc82b48b0f340900531cc125dd0d719c97
 	b2sums = f14c79da6b3efeb0843853e5772bcc021bd6041b76a39952ad45638ce27f143b41f6a491d528992250db9b2d9fd133b76ad8f6f6da9df4c6fb0865766d49d991
 
