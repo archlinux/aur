@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.15.11
+pkgver=5.15.12
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -91,7 +91,6 @@ source=(
   0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
   0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
   0006-lg-laptop-Recognize-more-models.patch
-  0007-HID-holtek-fix-mouse-probing.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
