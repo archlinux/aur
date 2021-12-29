@@ -1,6 +1,6 @@
 pkgbase = godotpcktool-bin
 	pkgdesc = Standalone tool for extracting and creating Godot .pck files
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/hhyyrylainen/GodotPckTool
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = godotpcktool-bin
 	depends = glibc
 	provides = godotpcktool
 	conflicts = godotpcktool
-	source = godotpcktool-1.6::https://github.com/hhyyrylainen/GodotPckTool/releases/download/v1.6/godotpcktool
+	source = godotpcktool-1.7::https://github.com/hhyyrylainen/GodotPckTool/releases/download/v1.7/godotpcktool
 	source = godotpcktool-bin-LICENSE::https://raw.githubusercontent.com/hhyyrylainen/GodotPckTool/master/LICENSE
-	sha256sums = 10de843a7b4fcc8a36c90bb92aa784d84894526ee223f46f273ab3342e446f94
+	sha256sums = 63df6d6b12dff85329702a14a40ca3cf97f7a872bcc105643918636de83da7a3
 	sha256sums = 00de469d52a421d6a9cbfc3d5c23d1fe1c873d72e97762eab794940c193892f7
 
 pkgname = godotpcktool-bin
