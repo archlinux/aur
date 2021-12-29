@@ -1,0 +1,18 @@
+pkgbase = orca-desktop-git
+	pkgdesc = Electron GUI for the Orca live-coding environment
+	pkgver = r1370.61a3731
+	pkgrel = 1
+	url = https://github.com/hundredrabbits/Orca
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	optdepends = pilot-git
+	provides = orca-desktop
+	conflicts = orca-desktop
+	conflicts = orca-desktop-bin
+	source = orca-desktop::git+https://github.com/hundredrabbits/Orca.git
+	sha256sums = SKIP
+
+pkgname = orca-desktop-git
