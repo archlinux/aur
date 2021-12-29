@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=svu
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Semantic Version Util'
 arch=('x86_64')
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d5eba8f1b7bd57f1231e706f674c07bc69713f9190b2d2474c7e0a075842f802')
+sha256sums=('fcf9865836b257117f90c5d3b3bfa41a0cde21d124136c603b69a9359796186b')
+_go_flags=(-ldflags "-linkmode=external -X main.version=v$pkgver")
 
 build() {
   cd "$pkgname-$pkgver"
@@ -19,12 +20,12 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
-  go build -o "$pkgname" -ldflags "-linkmode=external -X main.version=v$pkgver"
+  go build -o "$pkgname" "${_go_flags[@]}" main.go
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  go test -v -short .
+  go test -v -short "${_go_flags[@]}" .
 }
 
 package() {
