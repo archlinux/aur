@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cadquery-git
-pkgver=2.1.r305.g9ceea9c
+pkgver=2.1.r311.g9ef08d6
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC built from git"
 arch=(x86_64)
@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd cadquery
-  curl --silent https://patch-diff.githubusercontent.com/raw/CadQuery/cadquery/pull/937.patch | patch -p1
+  #curl --silent https://patch-diff.githubusercontent.com/raw/CadQuery/cadquery/pull/937.patch | patch -p1
 }
 
 build() {
