@@ -2,7 +2,7 @@
 # Contributor: promach
 _gitname=SymbiYosys
 pkgname="${_gitname,,}-git"
-pkgver=r180.23f8901
+pkgver=r284.ac9001b
 pkgrel=1
 pkgdesc="A front-end driver program for Yosys-based formal hardware verification flows"
 arch=('any')
@@ -10,6 +10,8 @@ url="https://github.com/YosysHQ/${_gitname}.git"
 license=('custom:ISC')
 depends=('python3' 'yosys')
 makedepends=('git')
+provides=('symbiyosys')
+conflicts=('symbiyosys')
 optdepends=('yices: solving using yices2'
             'z3: solving using z3'
             'boolector: solving using boolector')

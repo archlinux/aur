@@ -1,6 +1,6 @@
 pkgbase = symbiyosys-git
 	pkgdesc = A front-end driver program for Yosys-based formal hardware verification flows
-	pkgver = r180.23f8901
+	pkgver = r284.ac9001b
 	pkgrel = 1
 	url = https://github.com/YosysHQ/SymbiYosys.git
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = symbiyosys-git
 	optdepends = yices: solving using yices2
 	optdepends = z3: solving using z3
 	optdepends = boolector: solving using boolector
+	provides = symbiyosys
+	conflicts = symbiyosys
 	source = git+https://github.com/YosysHQ/SymbiYosys.git
 	source = LICENSE
 	sha512sums = SKIP
 	sha512sums = a3202289ff7828c55d3ec3e22d23ed78a34fcae165a7c666d71d3cedd9abe06f638a09750d8c2d43dfca5781f1b32a616f439c3713a12265c02473f88c0f426d
 
 pkgname = symbiyosys-git
-
