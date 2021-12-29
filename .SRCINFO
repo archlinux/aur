@@ -1,0 +1,18 @@
+pkgbase = python-vosk-bin
+	pkgdesc = Offline open source speech recognition API based on Kaldi and Vosk
+	pkgver = 0.3.32
+	pkgrel = 1
+	url = https://github.com/alphacep/vosk-api
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	depends = python-cffi
+	depends = python-pycparser
+	provides = python-vosk
+	noextract = vosk-0.3.32-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+	noextract = vosk-0.3.32-py3-none-linux_aarch64.whl
+	noextract = vosk-0.3.32-py3-none-linux_armv7l.whl
+
+pkgname = python-vosk-bin
