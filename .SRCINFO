@@ -1,7 +1,7 @@
 pkgbase = lumi
 	pkgdesc = A Desktop App that offers a collection of tools to create, edit and share digital content with your class.
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lumi.education
 	arch = x86_64
 	license = GPL3
