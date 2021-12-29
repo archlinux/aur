@@ -1,0 +1,131 @@
+From a6af4cbe1c55527719976b6353a4d7ad610e6767 Mon Sep 17 00:00:00 2001
+From: Marcus Hoffmann <bubu@bubu1.eu>
+Date: Wed, 29 Dec 2021 23:20:51 +0100
+Subject: [PATCH] go back to pyparsing2
+
+---
+ weblate/checks/parser.py | 11 +++--------
+ weblate/utils/search.py  | 24 ++++++++++++------------
+ 2 files changed, 15 insertions(+), 20 deletions(-)
+
+diff --git a/weblate/checks/parser.py b/weblate/checks/parser.py
+index f92dffcf99..456a0656d5 100644
+--- a/weblate/checks/parser.py
++++ b/weblate/checks/parser.py
+@@ -45,17 +45,12 @@ def multi_value_flag(func, minimum=1, maximum=None, modulo=None):
+ 
+     return parse_values
+ 
+-
+ class RawQuotedString(QuotedString):
+-    def __init__(self, quote_char, esc_char="\\"):
+-        super().__init__(quote_char, esc_char=esc_char, convert_whitespace_escapes=True)
++    def __init__(self, quoteChar, escChar="\\"):
++        super().__init__(quoteChar, escChar=escChar, convertWhitespaceEscapes=True)
+         # unlike the QuotedString this replaces only escaped quotes and not all chars
+         self.escCharReplacePattern = (
+-            re.escape(esc_char)
+-            + "(["
+-            + re.escape(quote_char)
+-            + re.escape(esc_char)
+-            + "])"
++            re.escape(escChar) + "([" + re.escape(quoteChar) + re.escape(escChar) + "])"
+         )
+ 
+ 
+diff --git a/weblate/utils/search.py b/weblate/utils/search.py
+index f565cfb44b..6136e4ac4a 100644
+--- a/weblate/utils/search.py
++++ b/weblate/utils/search.py
+@@ -30,12 +30,12 @@ from django.utils.translation import gettext as _
+ from jellyfish import damerau_levenshtein_distance
+ from pyparsing import (
+     CaselessKeyword,
+-    OpAssoc,
+     Optional,
+     Regex,
+     Word,
+-    infix_notation,
+-    one_of,
++    infixNotation,
++    oneOf,
++    opAssoc,
+ )
+ 
+ from weblate.checks.parser import RawQuotedString
+@@ -112,7 +112,7 @@ OR = Optional(CaselessKeyword("OR"))
+ NOT = CaselessKeyword("NOT")
+ 
+ # Search operator
+-OPERATOR = one_of(OPERATOR_MAP.keys())
++OPERATOR = oneOf(OPERATOR_MAP.keys())
+ 
+ # Field name, explicitely exlude URL like patters
+ FIELD = Regex(r"""(?!http|ftp|https|mailto)[a-zA-Z_]+""")
+@@ -133,23 +133,23 @@ TERM = (FIELD + OPERATOR + (RANGE | STRING)) | STRING
+ 
+ # Multi term with or without operator
+ QUERY = Optional(
+-    infix_notation(
++    infixNotation(
+         TERM,
+         [
+             (
+                 NOT,
+                 1,
+-                OpAssoc.RIGHT,
++                opAssoc.RIGHT,
+             ),
+             (
+                 AND,
+                 2,
+-                OpAssoc.LEFT,
++                opAssoc.LEFT,
+             ),
+             (
+                 OR,
+                 2,
+-                OpAssoc.LEFT,
++                opAssoc.LEFT,
+             ),
+         ],
+     )
+@@ -163,7 +163,7 @@ class RegexExpr:
+         self.expr = tokens[1]
+ 
+ 
+-REGEX_STRING.add_parse_action(RegexExpr)
++REGEX_STRING.addParseAction(RegexExpr)
+ 
+ 
+ class RangeExpr:
+@@ -172,7 +172,7 @@ class RangeExpr:
+         self.end = tokens[3]
+ 
+ 
+-RANGE.add_parse_action(RangeExpr)
++RANGE.addParseAction(RangeExpr)
+ 
+ 
+ class TermExpr:
+@@ -453,7 +453,7 @@ class TermExpr:
+         return self.field_extra(field, query, match)
+ 
+ 
+-TERM.add_parse_action(TermExpr)
++TERM.addParseAction(TermExpr)
+ 
+ 
+ def parser_to_query(obj, context: Dict):
+@@ -484,7 +484,7 @@ def parser_to_query(obj, context: Dict):
+ def parse_string(text):
+     if "\x00" in text:
+         raise ValueError("Invalid query string.")
+-    return QUERY.parse_string(text, parse_all=True)
++    return QUERY.parseString(text, parseAll=True)
+ 
+ 
+ def parse_query(text, **context):
+-- 
+2.34.1
+
