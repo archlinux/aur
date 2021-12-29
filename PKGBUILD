@@ -1,8 +1,8 @@
 # Maintainer: Maxr1998 <max.rumpf1998@gmail.com>
 _pkgname=ki-shell
 pkgname=ki-shell-bin
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Kotlin Language Interactive Shell"
 arch=('any')
 url='https://github.com/Kotlin/kotlin-interactive-shell'
@@ -11,7 +11,7 @@ depends=('bash' 'java-runtime>=8')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://repo1.maven.org/maven2/org/jetbrains/kotlinx/$_pkgname/$pkgver/$_pkgname-$pkgver-archive.zip")
-md5sums=('3644c712f0ad0a1e3453f2507be39e1c')
+md5sums=('7b967da29f95154f32f35a5b1b1f23a3')
 
 prepare() {
 	cd "ki"
