@@ -85,8 +85,8 @@ ALSA="YES"        # Linux sound support.
 
 NOCAIRO=          # Disable here. 
                
-XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
-                  # Xwidgets are not supported by pgtk, for now.
+XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
+                  # Thanks to Po Lu, xwidgets supports pgtk now!
                
 PGTK="YES"        # Wayland is awesome!
 

@@ -22,6 +22,7 @@ pkgbase = emacs-native-comp-git-enhanced
 	depends = libjpeg-turbo
 	depends = giflib
 	depends = alsa-lib
+	depends = webkit2gtk
 	depends = gpm
 	provides = emacs
 	provides = emacs-git
