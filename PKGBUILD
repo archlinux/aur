@@ -1,18 +1,18 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=adwaita-icon-theme-git
-pkgver=41.0.r4.g911b66ad
+pkgver=41.0.r49.g4df2a833
 pkgrel=1
 pkgdesc='GNOME standard icons'
-url='https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
 arch=(any)
+url='https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
 license=(LGPL3 CCPL:by-sa)
 depends=(hicolor-icon-theme gtk-update-icon-cache librsvg)
 makedepends=(git gtk3)
 provides=(adwaita-icon-theme)
 conflicts=(adwaita-icon-theme)
 source=("git+${url}.git")
-sha256sums=(SKIP)
+b2sums=(SKIP)
 
 pkgver() {
 	cd adwaita-icon-theme
