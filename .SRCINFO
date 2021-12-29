@@ -1,6 +1,6 @@
 pkgbase = soapysdr-git
 	pkgdesc = Vendor and platform neutral SDR support library
-	pkgver = 0.7.2.r70.g4a04dd5
+	pkgver = 0.8.1.r14.g6f97389
 	pkgrel = 1
 	epoch = 3
 	url = https://github.com/pothosware/SoapySDR
@@ -32,4 +32,3 @@ pkgbase = soapysdr-git
 	sha256sums = SKIP
 
 pkgname = soapysdr-git
-

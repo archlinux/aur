@@ -5,7 +5,7 @@
 
 _pkgname=SoapySDR
 pkgname=soapysdr-git
-pkgver=0.7.2.r70.g4a04dd5
+pkgver=0.8.1.r14.g6f97389
 pkgrel=1
 epoch=3
 pkgdesc='Vendor and platform neutral SDR support library'
@@ -51,5 +51,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -dm 755 "$pkgdir"/usr/share/doc/$_pkgname
-  cp -r -a --no-preserve=ownership docs/html "$pkgdir"/usr/share/doc/$_pkgname
+  cp -r -a --no-preserve=ownership docs/doxygen/html "$pkgdir"/usr/share/doc/$_pkgname
 }
