@@ -9,7 +9,7 @@ url="https://nice.freedesktop.org"
 arch=(x86_64)
 license=(LGPL)
 depends=(lib32-gstreamer lib32-gupnp-igd libnice)
-makedepends=(git gobject-introspection meson)
+makedepends=(git meson)
 _commit=55b71d47f2b427b3baa8812818ed3f059acc748d  # tags/0.1.18^0
 source=("git+https://gitlab.freedesktop.org/libnice/libnice.git#commit=$_commit")
 sha256sums=('SKIP')

@@ -6,7 +6,6 @@ pkgbase = lib32-libnice
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = gobject-introspection
 	makedepends = meson
 	depends = lib32-gstreamer
 	depends = lib32-gupnp-igd
@@ -15,4 +14,3 @@ pkgbase = lib32-libnice
 	sha256sums = SKIP
 
 pkgname = lib32-libnice
-
