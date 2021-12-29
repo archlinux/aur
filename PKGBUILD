@@ -3,8 +3,8 @@
 _pkgname=amaranth
 pkgname="python-$_pkgname-git"
 pkgver=0.3.r1.gaa74956
-pkgrel=1
-pkgdesc="A modern hardware definition language and toolchain based on Python"
+pkgrel=2
+pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen)"
 arch=(any)
 url="https://github.com/amaranth-lang/amaranth"
 license=('BSD')
