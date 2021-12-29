@@ -2,7 +2,7 @@
 
 pkgname=php-ev
 _extname=ev
-pkgver=1.1.2
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="PHP extension for interface to libev library"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
 packager="Daniil Gentili <daniil@daniil.it>"
 
-sha512sums=('a2cbc774b099666a4f4c73f1ded900b15e974d5f3e138cc1b7452aee0655aa50b790ca820a3603dbe8c82077fdfbce73970e6fc7709f70a178dc94dd82ebb384')
+sha512sums=('7033dc28ff63eca2d0aee44ce0f46da24aa78da4e4f74d3a44e7967bf00fdfcbd6c2fcfce42b8028441bef600267024e5c65955d90aa22578b0850c60c95be6e')
 
 build() {
 	cd "$srcdir/$_extname-$pkgver"
