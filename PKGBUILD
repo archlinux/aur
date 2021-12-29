@@ -13,5 +13,6 @@ sha512sum=('7bf02914cbf50f93960dfd035e6155eb4521d18b480a825505e06e37f46616a12e37
 source=("https://github.com/ZaViBiS/Percentage-difference/releases/download/$pkgver/pd")
 
 package() {
+  mv pd ppd
   install -D "$srcdir/$pkgname" "$pkgdir/usr/bin/ppd"
 }
