@@ -69,7 +69,6 @@ optdepends=(
   "libva-mesa-driver: Hardware encoding"
   "swig: Scripting"
   "luajit: Lua scripting"
-  "python>=$_pythonver: Python scripting"
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
   #"libajantv2: AJA NTV 2 support"
