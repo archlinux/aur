@@ -1,6 +1,6 @@
 pkgbase = freqtrade
 	pkgdesc = Free, open source crypto trading bot
-	pkgver = 2020.12
+	pkgver = 2021.11
 	pkgrel = 1
 	url = https://github.com/freqtrade/freqtrade
 	arch = any
@@ -37,8 +37,9 @@ pkgbase = freqtrade
 	depends = python-ccxt
 	depends = python-certifi
 	depends = python-aiohttp
-	source = https://github.com/freqtrade/freqtrade/archive/2020.12/freqtrade-2020.12.tar.gz
-	sha256sums = fa89a4b112434bf9d56b4a8dd9677f796fc752bafce4cb41e80cc53260a08356
+	depends = python-technical
+	source = https://github.com/freqtrade/freqtrade/archive/2020.12/freqtrade-2021.11.tar.gz
+	sha256sums = e258c325cb9686afdc95d7ef827e2524457aa269745cb4202672ab4539a9aa41
 
 pkgname = freqtrade
 
