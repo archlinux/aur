@@ -171,9 +171,7 @@ package() {
   make install DESTDIR="$pkgdir"
 
   if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    mkdir -p "${pkgdir}"/usr/share/libalpm/hooks/
-    mkdir -p "${pkgdir}"/usr/share/libalpm/scripts/
-    install -D -m644 "$srcdir/$pkgname.hook" "${pkgdir}"/usr/share/libalpm/hooks/
-    install -D -m755 "$srcdir/$pkgname.sh" "${pkgdir}"/usr/share/libalpm/scripts/
+    install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/
+    install -D -m755 "$srcdir/$pkgname.sh" -t "${pkgdir}"/usr/share/libalpm/scripts/
   fi
 }
