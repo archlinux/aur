@@ -1,0 +1,11 @@
+pkgbase = python-pandas-ta
+	pkgdesc = Pandas TA - A Technical Analysis Library in Python 3
+	pkgver = 0.3.14
+	pkgrel = 1
+	url = https://github.com/twopirllc/pandas-ta
+	arch = x86_64
+	license = MIT
+	source = https://github.com/twopirllc/pandas-ta/archive/refs/tags/0.3.14.zip
+	sha256sums = ae3fea05a3c6afee9e02eb417037a6c7990acc2b5ee7815a5697f7696a9b6b26
+
+pkgname = python-pandas-ta
