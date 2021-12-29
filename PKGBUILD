@@ -1,4 +1,4 @@
-# Maintainer: Guilherme Rugai Freire <gui.rugai.freire at gmail dot com>
+# Maintainer: Guilherme Rugai Freire <dev at grfreire dot com>
 
 _appname_=sxiv
 pkgname=${_appname_}-grfreire
