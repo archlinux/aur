@@ -1,0 +1,17 @@
+pkgbase = python-siosocks
+	pkgdesc = sans-io socks proxy client/server with couple io backends
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pohmelie/siosocks
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-trio
+	checkdepends = python-trio
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/siosocks/siosocks-0.2.0.tar.gz
+	md5sums = 8f5eee2cdc80261a7a9560b9dcb0345f
+
+pkgname = python-siosocks
+	depends = python>=3.6
+	optdepends = python-trio: trio
