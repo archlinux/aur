@@ -1,7 +1,7 @@
 pkgbase = python-amaranth-git
 	pkgdesc = A modern hardware definition language and toolchain based on Python (formerly nMigen)
 	pkgver = 0.3.r1.gaa74956
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/amaranth-lang/amaranth
 	arch = any
 	license = BSD
@@ -24,6 +24,7 @@ pkgbase = python-amaranth-git
 	provides = python-amaranth=0.3.r1.gaa74956
 	conflicts = python-nmigen
 	conflicts = python-amaranth
+	replaces = python-nmigen-git
 	source = git+https://github.com/amaranth-lang/amaranth.git
 	sha256sums = SKIP
 

@@ -3,7 +3,7 @@
 _pkgname=amaranth
 pkgname="python-$_pkgname-git"
 pkgver=0.3.r1.gaa74956
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen)"
 arch=(any)
 url="https://github.com/amaranth-lang/amaranth"
@@ -17,6 +17,7 @@ optdepends=('python-pyvcd: for amaranth.pysim'
 checkdepends=('python-pytest' 'python-pyvcd' 'python-jinja' 'yosys' 'symbiyosys-git' 'yices')
 provides=("python-nmigen=$pkgver" "python-$_pkgname=$pkgver")
 conflicts=('python-nmigen' "python-$_pkgname")
+replaces=('python-nmigen-git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
