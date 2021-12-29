@@ -1,21 +1,16 @@
 pkgbase = popt-deb
 	pkgdesc = popt with debian patches (mostly to avoid double free)
-	pkgver = 1.16.10
+	pkgver = 1.18
 	pkgrel = 1
-	url = https://github.com/azat/popt
+	url = https://github.com/rpm-software-management/popt
 	arch = x86_64
-	license = GPL
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = gcc
-	makedepends = git
-	makedepends = libtool
-	makedepends = make
+	license = custom
 	provides = popt
 	conflicts = popt
 	options = staticlibs
-	source = git+https://github.com/azat/popt#branch=patched
-	md5sums = SKIP
+	source = https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-1.18.tar.gz
+	source = https://deb.debian.org/debian/pool/main/p/popt/popt_1.18-3.debian.tar.xz
+	sha256sums = 5159bc03a20b28ce363aa96765f37df99ea4d8850b1ece17d1e6ad5c24fdc5d1
+	sha256sums = 6bb1de379eb2bf0a3a9e25ce26a4dd111878699c35116fa4d45d4814280f0bc9
 
 pkgname = popt-deb
-
