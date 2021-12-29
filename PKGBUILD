@@ -9,7 +9,6 @@ url="https://github.com/${_base/py/}/python-bindings"
 license=(LGPL3)
 depends=(precice python-mpi4py)
 makedepends=(python-setuptools cython)
-checkdepends=(python-argparse)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('0b0447a9cb9989ae5035919439f3e73401dab2a4cda49d298a10f55842c197239c1d43ca6271ddbf5ef03bda4cf075020c18142a6d4c6d26103f75d332cba822')
 
