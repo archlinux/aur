@@ -10,6 +10,7 @@ pkgbase = shiny-mirrors
 	makedepends = git
 	makedepends = pandoc
 	depends = gcc-libs
+	options = !lto
 	backup = etc/shiny-mirrors.conf
 	source = git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=5c87e979dad8eec9342a53b1d8eaa7254dbdbf31?signed
 	validpgpkeys = E2C998FA1F7B651E45B20CDC56AA2C2801F619D7

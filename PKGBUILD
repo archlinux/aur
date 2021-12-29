@@ -13,6 +13,7 @@ _commit=5c87e979dad8eec9342a53b1d8eaa7254dbdbf31
 source=("git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('E2C998FA1F7B651E45B20CDC56AA2C2801F619D7' '93F4694364C3E688BA33E3E41CBE6B7A2B054E06')
+options=(!lto)
 
 pkgver() {
   cd "$srcdir/$pkgname"
