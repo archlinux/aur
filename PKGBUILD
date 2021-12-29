@@ -1,8 +1,8 @@
 # Maintainer: BTD Master <btdmaster at disroot dot org>
 pkgname=syphon-bin
 _pkgname=syphon
-pkgver=0.2.5
-pkgrel=5
+pkgver=0.2.6
+pkgrel=1
 pkgdesc="Privacy-centric Matrix client"
 arch=('x86_64')
 url="https://github.com/syphon-org/syphon"
