@@ -1,0 +1,12 @@
+pkgbase = tldr-page
+	pkgdesc = Generate tldr-pages using Go
+	pkgver = 1.4.r4.gcc42370
+	pkgrel = 1
+	url = https://github.com/CleanMachine1/tldr-page-creator
+	arch = any
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/CleanMachine1/tldr-page-creator
+	sha256sums = SKIP
+
+pkgname = tldr-page
