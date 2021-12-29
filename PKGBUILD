@@ -1,6 +1,6 @@
 pkgname="tldr-page"
 _pkgname="tldr-page-creator"
-pkgver="1.3"
+pkgver="1.4"
 pkgrel="1"
 pkgdesc="Generate tldr-pages using Go"
 url="https://github.com/CleanMachine1/tldr-page-creator"
@@ -19,4 +19,4 @@ package(){
     cd ${_pkgname}-${pkgver}
     install -Dm755 ${pkgname} "${pkgdir}/usr/bin/tldr-page"
 }
-sha256sums=('927314b4b199f32aeb68bf39ae9ba8c24b188fd0bd829cc86d1c3cc6cb56ee98')
+sha256sums=('f7de171ed532bb1ea443454b55bd6818b2b723c19effcbaa370029dced7a06c1')
