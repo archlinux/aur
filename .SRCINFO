@@ -1,6 +1,6 @@
 pkgbase = gnome-text-editor-git
 	pkgdesc = Simple text editor that focuses on session management
-	pkgver = 42.alpha1.r30.g3cbb331
+	pkgver = 42.alpha1.r50.g25a284f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-text-editor
 	arch = x86_64
@@ -16,6 +16,6 @@ pkgbase = gnome-text-editor-git
 	provides = gnome-text-editor
 	conflicts = gnome-text-editor
 	source = git+https://gitlab.gnome.org/GNOME/gnome-text-editor.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = gnome-text-editor-git

@@ -1,12 +1,12 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-text-editor-git
-pkgver=42.alpha1.r30.g3cbb331
+pkgver=42.alpha1.r50.g25a284f
 pkgrel=1
 pkgdesc='Simple text editor that focuses on session management'
+arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/GNOME/gnome-text-editor'
 license=('GPL3')
-arch=(x86_64 aarch64)
 provides=(gnome-text-editor)
 conflicts=(gnome-text-editor)
 depends=(
@@ -21,7 +21,7 @@ makedepends=(
 	meson
 )
 source=("git+${url}.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd gnome-text-editor
