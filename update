@@ -42,7 +42,7 @@ else
   sed -i "s/pkgrel=.*/pkgrel=1/" PKGBUILD
   # Next line from https://bugs.archlinux.org/task/15051
   { rm PKGBUILD; awk '$0 ~ /^sha256sums/ {i = 1; system("makepkg -g 2>/dev/null")}; !i {print}; $0 ~ /\)/ {i = 0}' > PKGBUILD; } < PKGBUILD
-  makepkg -rs
+  makepkg -rs --sign
   if ! ls *.zst &> /dev/null ; then
     echo "Package creation failure"
     sed -i "s/pkgver=.*/pkgver=INVALID/" PKGBUILD
