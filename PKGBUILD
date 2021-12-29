@@ -139,6 +139,6 @@ package() {
     mkdir -p "${pkgdir}"/usr/share/libalpm/hooks/
     mkdir -p "${pkgdir}"/usr/share/libalpm/scripts/
     install -D -m644 "$srcdir/$pkgname.hook" "${pkgdir}"/usr/share/libalpm/hooks/
-    install -D -m755 "$pkgname.sh" "${pkgdir}"/usr/share/libalpm/scripts/
+    install -D -m755 "$srcdir/$pkgname.sh" "${pkgdir}"/usr/share/libalpm/scripts/
   fi
 }
