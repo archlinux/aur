@@ -7,7 +7,7 @@ arch=('any')
 license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
-depends=('python-sqlalchemy' 'python-cachetools' 'python-technical' 'python-cachetools'
+depends=('python-sqlalchemy' 'python-cachetools'
          'python-arrow' 'python-requests' 'ta-lib' 'python-pip' 'python-tests'
          'python-urllib3' 'python-wrapt' 'python-pandas' 'python-scikit-learn'
          'python-scipy' 'python-jsonschema' 'python-numpy' 'python-technical'

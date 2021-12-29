@@ -19,6 +19,7 @@ pkgbase = freqtrade
 	depends = python-scipy
 	depends = python-jsonschema
 	depends = python-numpy
+	depends = python-technical
 	depends = python-pytest
 	depends = python-pytest-mock
 	depends = python-pytest-cov
@@ -37,7 +38,6 @@ pkgbase = freqtrade
 	depends = python-ccxt
 	depends = python-certifi
 	depends = python-aiohttp
-	depends = python-technical
 	source = https://github.com/freqtrade/freqtrade/archive/2020.12/freqtrade-2021.11.tar.gz
 	sha256sums = e258c325cb9686afdc95d7ef827e2524457aa269745cb4202672ab4539a9aa41
 
