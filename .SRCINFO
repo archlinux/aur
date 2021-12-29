@@ -1,12 +1,12 @@
 pkgbase = rsop
 	pkgdesc = Simple, fast & configurable tool to open and preview files
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/desbma/rsop
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = rsop-1.1.1.tar.gz::https://github.com/desbma/rsop/archive/1.1.1.tar.gz
-	sha512sums = fb2bdd30fd0d0fab3106dd717d42bc62e3f365042a4b56d747cae2d9d03a6451bd40312a34e23183349b5b96a1f2747fffc876777970c21d3959297653d6a034
+	source = rsop-1.1.2.tar.gz::https://github.com/desbma/rsop/archive/1.1.2.tar.gz
+	sha512sums = 6674066cbe3f2d46a2535f8a09c7813f025ad1aaf254934b56d834553e1581167836f742e3c45a3f8cd29c8ac10080f56e6ecf28e36ef038ff1175ce7fc89658
 
 pkgname = rsop
