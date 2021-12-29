@@ -1,0 +1,24 @@
+diff -ruN a/Programs/Makefile.in b/Programs/Makefile.in
+--- a/Programs/Makefile.in	2021-09-24 17:51:55.000000000 +0200
++++ b/Programs/Makefile.in	2021-12-28 18:50:08.104123921 +0100
+@@ -1120,7 +1120,7 @@
+ install-xbrlapi: xbrlapi$X install-program-directory install-x11-autostart-directory install-gdm-autostart-directory
+ 	$(INSTALL_PROGRAM) xbrlapi$X $(INSTALL_PROGRAM_DIRECTORY) 
+ 	$(INSTALL_DATA) $(BLD_TOP)$(DOC_DIR)/xbrlapi.1 $(INSTALL_MAN1_DIRECTORY)
+-	$(INSTALL_DATA) $(BLD_TOP)Autostart/X11/$(XBRLAPI_X11_AUTOSTART_FILE) $(INSTALL_X11_AUTOSTART_DIRECTORY)
++	$(INSTALL_PROGRAM) $(BLD_TOP)Autostart/X11/$(XBRLAPI_X11_AUTOSTART_FILE) $(INSTALL_X11_AUTOSTART_DIRECTORY)
+ 	$(INSTALL_DATA) $(SRC_TOP)Autostart/gdm/$(XBRLAPI_GDM_AUTOSTART_FILE) $(INSTALL_GDM_AUTOSTART_DIRECTORY)
+ 
+ install-tables: $(INSTALL_TEXT_TABLES) $(INSTALL_CONTRACTION_TABLES) $(INSTALL_ATTRIBUTES_TABLES) install-keyboard-tables install-input-tables
+diff -ruN a/common.mk b/common.mk
+--- a/common.mk	2021-09-02 11:07:57.000000000 +0200
++++ b/common.mk	2021-12-28 18:46:33.618469544 +0100
+@@ -121,7 +121,7 @@
+ install-apisoc-directory:
+ 	-$(INSTALL_DIRECTORY) -m 1777 $(INSTALL_APISOC_DIRECTORY)
+ 
+-INSTALL_X11_AUTOSTART_DIRECTORY = $(INSTALL_ROOT)$(sysconfdir)/X11/Xsession.d
++INSTALL_X11_AUTOSTART_DIRECTORY = $(INSTALL_ROOT)$(sysconfdir)/X11/xinit/xinitrc.d
+ install-x11-autostart-directory:
+ 	-$(INSTALL_DIRECTORY) $(INSTALL_X11_AUTOSTART_DIRECTORY)
+ 
