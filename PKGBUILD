@@ -6,10 +6,10 @@
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
-epoch=1
-pkgver=6.3.8.rc5
-_pkgver='6.3-8-rc5'
-pkgrel=1
+epoch=2
+pkgver=6.3.8c
+_pkgver='6.3-8c'
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
 url='https://github.com/ValveSoftware/wine.git'
@@ -86,7 +86,8 @@ options=('staticlibs')
 install="$pkgname.install"
 source=("https://github.com/ValveSoftware/wine/archive/proton-wine-${_pkgver}.tar.gz"
         '30-win32-aliases.conf'
-        'wine-binfmt.conf')
+        'wine-binfmt.conf'
+        'ldap.patch')
 
 if [ "$CARCH" = 'i686' ] 
 then
@@ -109,6 +110,7 @@ prepare() {
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+    patch -p1 < ../ldap.patch
 }
 
 build() {
@@ -208,6 +210,7 @@ package() {
     done
 }
 
-sha256sums=('7c480a300fe0f772fc2500cfc5bd6878426b36b22200c927a857fb1ad76b1e3f'
+sha256sums=('c300742c0be0d577ac3f46713bc3f8faff9aa9c424f43e61a93c8784e87caf50'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
+            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
+            'd672957ab0c315b226ba529b1ef8c39b2c881cbe051d358e1904cb2ca36c27eb')

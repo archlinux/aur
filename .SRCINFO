@@ -1,8 +1,8 @@
 pkgbase = wine-valve
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
-	pkgver = 6.3.8.rc5
-	pkgrel = 1
-	epoch = 1
+	pkgver = 6.3.8c
+	pkgrel = 2
+	epoch = 2
 	url = https://github.com/ValveSoftware/wine.git
 	install = wine-valve.install
 	arch = i686
@@ -132,10 +132,10 @@ pkgbase = wine-valve
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=6.3.8.rc5
-	provides = bin32-wine=6.3.8.rc5
-	provides = wine-wow64=6.3.8.rc5
-	provides = wine-valve=6.3.8.rc5
+	provides = wine=6.3.8c
+	provides = bin32-wine=6.3.8c
+	provides = wine-wow64=6.3.8c
+	provides = wine-valve=6.3.8c
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -143,12 +143,14 @@ pkgbase = wine-valve
 	conflicts = wine-wow64
 	replaces = bin32-wine
 	options = staticlibs
-	source = https://github.com/ValveSoftware/wine/archive/proton-wine-6.3-8-rc5.tar.gz
+	source = https://github.com/ValveSoftware/wine/archive/proton-wine-6.3-8c.tar.gz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	sha256sums = 7c480a300fe0f772fc2500cfc5bd6878426b36b22200c927a857fb1ad76b1e3f
+	source = ldap.patch
+	sha256sums = c300742c0be0d577ac3f46713bc3f8faff9aa9c424f43e61a93c8784e87caf50
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
+	sha256sums = d672957ab0c315b226ba529b1ef8c39b2c881cbe051d358e1904cb2ca36c27eb
 
 pkgname = wine-valve
 	depends = sdl2
