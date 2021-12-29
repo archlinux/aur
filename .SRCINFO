@@ -1,0 +1,16 @@
+pkgbase = fq-git
+	pkgdesc = Tool, language and decoders for inspecting binary data (git)
+	pkgver = 0.0.2.r11.g12c45683
+	pkgrel = 1
+	url = https://github.com/wader/fq
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = fq
+	conflicts = fq
+	source = git+https://github.com/wader/fq
+	sha256sums = SKIP
+
+pkgname = fq-git
