@@ -1,17 +1,17 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=libliftoff-git
-pkgver=0.1.0.r26.ge777229
+pkgver=0.1.0.r31.g2e1dd93
 pkgrel=1
 pkgdesc="Lightweight KMS plane library"
 arch=(x86_64)
-url="https://github.com/emersion/libliftoff"
+url="https://gitlab.freedesktop.org/emersion/libliftoff"
 license=("custom:MIT")
 depends=("libdrm")
 makedepends=("git" "meson" "ninja")
 provides=("libliftoff")
 conflicts=("libliftoff")
-source=("$pkgname::git+https://github.com/emersion/libliftoff.git")
+source=("$pkgname::git+https://gitlab.freedesktop.org/emersion/libliftoff.git")
 sha512sums=('SKIP')
 
 
