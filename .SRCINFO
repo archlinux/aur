@@ -1,7 +1,7 @@
 pkgbase = tome4
 	pkgdesc = An open-source, single-player, role-playing roguelike game set in the world of Eyal.
-	pkgver = 1.7.3
-	pkgrel = 1
+	pkgver = 1.7.4
+	pkgrel = 2
 	url = http://tome.te4.org/
 	arch = i686
 	arch = x86_64
@@ -21,14 +21,13 @@ pkgbase = tome4
 	conflicts = tome4-nomusic
 	options = !makeflags
 	options = emptydirs
-	source = http://te4.org/dl/t-engine/t-engine4-src-1.7.3.tar.bz2
-	source = aur-tome4-1.7.3-1.patch
+	source = http://te4.org/dl/t-engine/t-engine4-src-1.7.4.tar.bz2
+	source = aur-tome4.patch
 	source = tome4
 	source = tome4.desktop
-	sha256sums = df45376225956a2160e6c49429277ef776e0643760354d481a98be00f20933e6
+	sha256sums = c3534f33f48c9cf027025eb3f44e97b23de612a66d5f315ed4830f9a52abf2a4
 	sha256sums = 8e1821d1fe4bd2b48115179a83d71eaefa8b6bda70de77ca75d122d5d3053410
 	sha256sums = 3a1e4901337f91697bcfaf095f488c447c27ccc2484a543e31f024d5aefb61a0
 	sha256sums = 80e663d9eb2d41c6d9c0a6b4b5b52eb33b0872c3412a617530777fd137c0baa1
 
 pkgname = tome4
-
