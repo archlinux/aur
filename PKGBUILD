@@ -1,18 +1,21 @@
-# Maintainer: Jens Heremans <jensheremans[at]gmail[dot]com>
-# Contributor: Ryan Eschinger <ryanesc[at]gmail[dot]com>
+# Maintainer: Ayrton Araujo <ayrton@linux.com>
 
 pkgname=argocd-bin
-pkgver=1.6.2
+_pkgname=argocd
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="Declarative continuous deployment for Kubernetes."
+pkgdesc="Argo CD: Declarative continuous deployment for Kubernetes."
 arch=('x86_64')
-url="https://github.com/argoproj/argo-cd"
+url="https://github.com/argoproj/argo-workflows"
 license=('Apache')
-source=("argocd_$pkgver::https://github.com/argoproj/argo-cd/releases/download/v$pkgver/argocd-linux-amd64")
-sha256sums=('30a205ce67ae0e4774f91d1805e6fa9e0f8bb91854c4520bafc60fe3795eda27')
+source=("${_pkgname}_${pkgver}::https://github.com/argoproj/argo-cd/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 
 package() {
-  install -Dm755 "argocd_$pkgver" "$pkgdir/usr/bin/argocd"
-  "$pkgdir/usr/bin/argocd" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/argocd"
-  "$pkgdir/usr/bin/argocd" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_argocd"	
+  install -Dm755 "${_pkgname}_$pkgver" "$pkgdir/usr/bin/${_pkgname}"
+  $pkgdir/usr/bin/${_pkgname} completion zsh > ${_pkgname}.zsh
+  $pkgdir/usr/bin/${_pkgname} completion bash > ${_pkgname}.bash
+  install -Dm644 ${_pkgname}.zsh "$pkgdir/usr/share/zsh/site-functions/_${_pgkname}"
+  install -Dm644 ${_pkgname}.bash "$pkgdir/usr/share/bash-completion/completions/_${_pkgname}"
 }
+
+sha256sums=('08a899143120724be4694e1760c984b281448125debf7f7725ce021772f84cdf')
