@@ -1,15 +1,25 @@
 pkgbase = scratch3-bin
-	pkgdesc = Create and share your own interactive stories, games, and animations with others
-	pkgver = 3.21.0
+	pkgdesc = Scratch 3.0 as a self-contained desktop application
+	pkgver = 3.27.0
 	pkgrel = 1
-	url = https://github.com/LLK/scratch-desktop
+	url = https://scratch.mit.edu
 	arch = x86_64
-	license = BSD-3-Clause
-	depends = electron11
-	provides = scratch3
+	license = custom:BSD-3-Clause
+	makedepends = electron13
+	makedepends = p7zip
+	makedepends = asar
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	conflicts = scratch3
-	source = https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/scratch3-bin.tar.zst
-	md5sums = 01aa01a704b7376d1de079c9d543320d
+	noextract = Scratch%203.27.0%20Setup.exe
+	source = https://downloads.scratch.mit.edu/desktop/Scratch%203.27.0%20Setup.exe
+	source = https://raw.githubusercontent.com/LLK/scratch-desktop/develop/LICENSE
+	source = scratch3.desktop
+	source = scratch3-icons.tar.gz
+	source = scratch3.xml
+	sha256sums = 343135e697db089a7ce6e8736950c4693b418d7cbc41151e33a45cac4ecc89db
+	sha256sums = 8d7c41e0bba6db4070714002851a5d16edc08f3918ed8badb510b4ce9246da8f
+	sha256sums = 0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da
+	sha256sums = 1445107a18b05cee3db8d6cd59e57b9a0468f70d9aceffefd0a1f24196f8b2da
+	sha256sums = 86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf
 
 pkgname = scratch3-bin
-

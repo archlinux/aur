@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-scratch3-project">
+        <comment>Scratch 3 project</comment>
+        <comment xml:lang="de">Scratch 3 Projekt</comment>
+        <comment xml:lang="es">proyecto de Scratch 3</comment>
+        <comment xml:lang="fr">projet Scratch 3</comment>
+        <comment xml:lang="gr">έργο Scratch 3</comment>
+        <comment xml:lang="hu">Scratch 3 projekt</comment>
+        <comment xml:lang="it">Progetto Scratch 3</comment>
+        <comment xml:lang="ru">проект Scratch 3</comment>
+        <comment xml:lang="sr">Скрач 3 пројекат</comment>
+        <comment xml:lang="sv">Scratch 3 projekt</comment>
+        <generic-icon name="scratch3"/>
+        <sub-class-of type="application/zip"/>
+        <glob pattern="*.sb3"/>
+    </mime-type>
+    <mime-type type="application/x-scratch3-sprite">
+        <comment>Scratch 3 sprite</comment>
+        <comment xml:lang="de">Scratch 3 Figur</comment>
+        <comment xml:lang="es">objeto Scratch 3</comment>
+        <comment xml:lang="fr">sprite Scratch 3</comment>
+        <comment xml:lang="hu">Scratch 3 szereplő</comment>
+        <comment xml:lang="it">Sprite Scratch 3</comment>
+        <comment xml:lang="ru">спрайт Scratch 3</comment>
+        <comment xml:lang="sr">Скрач 3 лик</comment>
+        <comment xml:lang="sv">Scratch 3 sprajt</comment>
+        <icon name="x-scratch3-sprite" />
+        <sub-class-of type="application/zip"/>
+        <glob-deleteall/>
+        <glob pattern="*.sprite3"/>
+    </mime-type>
+</mime-info>
