@@ -1,0 +1,13 @@
+diff --git a/app/package.json b/app/package.json
+index c5af81c..dd7a966 100644
+--- a/app/package.json
++++ b/app/package.json
+@@ -22,7 +22,7 @@
+     "lastfmapi": "^0.1.1",
+     "metaflac-js2": "^1.0.7",
+     "nedb": "^1.8.0",
+-    "nodeezcryptor": "git+https://git.freezer.life/exttex/nodeezcryptor.git",
++    "nodeezcryptor": "git+https://gitea.dusansimic.me/dusan/nodeezcryptor.git",
+     "sanitize-filename": "^1.6.3",
+     "socket.io": "^4.1.2",
+     "winston": "^3.3.3"

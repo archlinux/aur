@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Freezer
+GenericName=Misc Player
+Comment=Free music streaming client for Deezer based on the Deezloader/Deemix "bug"
+Icon=freezer-electron
+Exec=freezer-electron
+Categories=GTK;Music;Player;
+StartupNotify=true

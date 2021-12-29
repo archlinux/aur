@@ -1,0 +1,25 @@
+diff --git a/package.json b/package.json
+index b303f9e..8040267 100644
+--- a/package.json
++++ b/package.json
+@@ -31,8 +31,7 @@
+     ],
+     "win": {
+       "target": [
+-        "portable",
+-        "nsis"
++        "dir"
+       ],
+       "icon": "build/icon.ico",
+       "asarUnpack": [
+@@ -79,9 +78,7 @@
+       ],
+       "synopsis": "Free audio streaming client for Deezer",
+       "target": [
+-        "AppImage",
+-        "deb",
+-        "tar.xz"
++        "dir"
+       ]
+     },
+     "appImage": {

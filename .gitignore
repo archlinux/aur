@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!freezer-electron.js
+!freezer-electron.desktop
+!nodeezcryptor_repo.patch
+!target.patch
