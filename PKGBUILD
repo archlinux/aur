@@ -4,25 +4,15 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=12
+pkgrel=13
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-_mbedtlsver=0
-_pythonver=0
-else
 _mbedtlsver=2.28
 _pythonver=3.10
-fi
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils"
-
-  # To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
-  # For Manjaro user this feature is disabled
-  # Also OBS will need a patch when mbedtls 3 is on the repo
-  "mbedtls>=$_mbedtlsver" "mbedtls<3.0.0"
 
   # "libxinerama" "qt5-svg" provided by "vlc-luajit"
   # "libxkbcommon-x11" provided by "qt5-base"
@@ -43,6 +33,14 @@ depends=(
   # AUR Packages
   "ffmpeg-obs" "vlc-luajit" "ftl-sdk"
 )
+# To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
+# For Manjaro user this feature is disabled
+# Also OBS will need a patch when mbedtls 3 is on the repo
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  depends+=("mbedtls<3.0.0")
+else
+  depends+=("mbedtls>=$_mbedtlsver" "mbedtls<3.0.0")
+fi
 ## About vlc-luajit
 # The official VLC package will make OBS crash when a VLC source is used.
 # The issue is that VLC and OBS are compiled with different lua version.
@@ -54,13 +52,16 @@ depends=(
 makedepends=(
   "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
 
-  # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
-  # For Manjaro user this feature is disabled
-  "python>=$_pythonver"
-
   # AUR Packages
   "cef-minimal-obs=87.1.14"
 )
+# To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
+# For Manjaro user this feature is disabled
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  makedepends+=('python')
+else
+  makedepends+=("python>=$_pythonver")
+fi
 optdepends=(
   "libfdk-aac: FDK AAC codec support"
   "intel-media-driver: Hardware encoding (>= Broadwell)"
@@ -73,6 +74,13 @@ optdepends=(
   "v4l2loopback-dkms: Virtual camera output"
   #"libajantv2: AJA NTV 2 support"
 )
+# To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
+# For Manjaro user this feature is disabled
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  optdepends+=("python: Python scripting")
+else
+  optdepends+=("python>=$_pythonver: Python scripting")
+fi
 provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
 conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
 source=(
