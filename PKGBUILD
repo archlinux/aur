@@ -2,8 +2,8 @@
 pkgname="hornet-git"
 _pkgname="hornet"
 _branch="mainnet"
-_pkgver="1.1.2"
-pkgver=1.1.2.r0.g54e09772
+_pkgver="1.1.3"
+pkgver=1.1.3.r0.g1d93f0b7
 pkgrel=1
 pkgdesc="HORNET is a powerful IOTA fullnode software"
 arch=('x86_64')
