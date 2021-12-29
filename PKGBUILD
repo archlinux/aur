@@ -34,6 +34,7 @@ prepare() {
         -Daudacity_use_ffmpeg=loaded \
         -Daudacity_use_zlib=system \
         -Daudacity_use_curl=system \
+        -Daudacity_use_wxwidgets=local \
         ..
 }
 
