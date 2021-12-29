@@ -1,7 +1,7 @@
 pkgbase = libbaseencode
 	pkgdesc = C library for encoding/decoding base32 and base64 data (RFC-4648)
-	pkgver = 1.0.11
-	pkgrel = 2
+	pkgver = 1.0.12
+	pkgrel = 1
 	url = https://github.com/paolostivanin/libbaseencode
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,10 @@ pkgbase = libbaseencode
 	license = APACHE
 	makedepends = cmake
 	depends = glibc
-	source = libbaseencode-1.0.11.tar.gz::https://github.com/paolostivanin/libbaseencode/archive/v1.0.11.tar.gz
-	source = libbaseencode-1.0.11.tar.gz.asc::https://github.com/paolostivanin/libbaseencode/releases/download/v1.0.11/v1.0.11.tar.gz.asc
+	source = libbaseencode-1.0.12.tar.gz::https://github.com/paolostivanin/libbaseencode/archive/v1.0.12.tar.gz
+	source = libbaseencode-1.0.12.tar.gz.asc::https://github.com/paolostivanin/libbaseencode/releases/download/v1.0.12/v1.0.12.tar.gz.asc
 	validpgpkeys = 060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64
-	sha256sums = 645329236992ee85f05569475da2af0f0d81aaccd4aebc8d0b8603e54a320935
+	sha256sums = ee9d4cc198d48365633274f41bd1b0eae12f9bef49182ea20050aa68f60e09b6
 	sha256sums = SKIP
 
 pkgname = libbaseencode
-
