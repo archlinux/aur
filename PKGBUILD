@@ -1,19 +1,18 @@
 # Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
-# Manual download of '${pkgname}-linux-gcc-${pkgver}-${_pkgrel}.tar.gz'  required from upstream
-# Manual download of '${pkgname}-linux-aocc-${pkgver}-${_pkgrel}.tar.gz' required from upstream
+# Manual download of 'aocl-linux-aocc-${pkgver}.tar.gz' required from upstream
+# Manual download of 'aocl-linux-gcc-${pkgver}.tar.gz'  required from upstream
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
-pkgver=3.0
-_pkgrel=6
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
 url="https://developer.amd.com/amd-aocl/"
 source=(
-	"local://${pkgbase}-linux-aocc-${pkgver}-${_pkgrel}.tar.gz"
-	"local://${pkgbase}-linux-gcc-${pkgver}-${_pkgrel}.tar.gz"
+	"local://${pkgbase}-linux-aocc-${pkgver}.tar.gz"
+	"local://${pkgbase}-linux-gcc-${pkgver}.tar.gz"
 	"local://${pkgbase}-aocc.install"
 	"local://${pkgbase}-gcc.install"
 	"local://modulefile"
@@ -21,8 +20,8 @@ source=(
 options=('staticlibs' '!strip')
 optdepends=('env-modules')
 sha256sums=(
-	"c1f0dd73ad0bfb1ede823cdd681c2834f2b7c88b8e7423c4c4412d6cc624ce39"
-	"294e63fbceee8d993c4a98d51e008f81ffe4159b5b163db316ddd93fccc04b52"
+	"1881ea77e3addff90a064ff300f15a611a0f1208ceedea39aba328de7ed2c8e7"
+	"84d1848350f545140c3caf18bfdb28ab74c8c7eb4732e5fb17eb43ad28f850d7"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -35,15 +34,16 @@ package_aocl-aocc() {
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
-	cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver}-${_pkgrel}
+	cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver}
 
-	cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
+	#cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
 
-	./install.sh -t ${prefix}
+	# Option: set '-i ilp64' for ILP64 libraries as default
+	./install.sh -t ${prefix} -i lp64
 
 	# strip unneeded directories
-	mv ${prefix}/${pkgver}-${_pkgrel}/* ${prefix}
-	rm -r ${prefix}/${pkgver}-${_pkgrel}
+	mv ${prefix}/${pkgver}/* ${prefix}
+	rm -r ${prefix}/${pkgver}
 
 	# fix amd-libs.cfg containing ${pkgdir}
 	sed -e "s:=.*/opt:=/opt:g" -i ${prefix}/amd-libs.cfg
@@ -61,15 +61,16 @@ package_aocl-gcc() {
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
-	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}-${_pkgrel}
+	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}
 
-	cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
+	#cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
 
-	./install.sh -t ${prefix}
+	# Option: set '-i ilp64' for ILP64 libraries as default
+	./install.sh -t ${prefix} -i lp64
 
 	# strip unneeded directories
-	mv ${prefix}/${pkgver}-${_pkgrel}/* ${prefix}
-	rm -r ${prefix}/${pkgver}-${_pkgrel}
+	mv ${prefix}/${pkgver}/* ${prefix}
+	rm -r ${prefix}/${pkgver}
 
 	# fix amd-libs.cfg containing ${pkgdir}
 	sed -e "s:=.*/opt:=/opt:g" -i ${prefix}/amd-libs.cfg

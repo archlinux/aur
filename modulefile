@@ -5,7 +5,7 @@
 
 set MODULE      "aocl-aocc"
 set BASE_DIR    "/opt"
-set VERSION     "3.0-6"
+set VERSION     "3.1.0"
 set MODULE_ROOT "${BASE_DIR}/${MODULE}"
 set MODULE_TEXT "AMD Optimizing CPU Libraries (AOCL)"
 
