@@ -15,7 +15,7 @@ optdepends=('python-matplotlib>=3.4.3: required only for plotting'
             'python-imagecodecs>=2021.8.26: required only for encoding or decoding LZW, JPEG, etc'
             'python-lxml>=4.6.3: required only for validating and printing XML'
             'python-zarr>=2.6.1: required only for opening zarr storage')
-#checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-fsspec')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 sha256sums=('153e31fa1d892f482fabb2ae9f2561fa429ee42d01a6f67e58cee13637d9285b')
 
@@ -25,11 +25,23 @@ build() {
     python setup.py build
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    PYTHONPATH="build/lib" pytest
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    # From Gentoo's ebuild
+    PYTHONPATH="build/lib" pytest \
+        --deselect=tests/test_tifffile.py::test_class_omexml \
+        --deselect=tests/test_tifffile.py::test_class_omexml_fail \
+        --deselect=tests/test_tifffile.py::test_class_omexml_modulo \
+        --deselect=tests/test_tifffile.py::test_class_omexml_attributes \
+        --deselect=tests/test_tifffile.py::test_class_omexml_multiimage \
+        --deselect=tests/test_tifffile.py::test_write_ome \
+        --deselect=tests/test_tifffile.py::test_write_ome_manual \
+        --deselect=tests/test_tifffile.py::test_write_3gb \
+        --deselect=tests/test_tifffile.py::test_write_bigtiff \
+        --deselect=tests/test_tifffile.py::test_write_imagej_raw \
+        --deselect=tests/test_tifffile.py::test_write_predictor || warning "Tests failed"
+}
 
 package() {
     cd ${srcdir}/${_pyname}-${pkgver}

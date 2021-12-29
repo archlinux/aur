@@ -5,6 +5,8 @@ pkgbase = python-tifffile
 	url = https://github.com/cgohlke/tifffile
 	arch = any
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-fsspec
 	makedepends = python-setuptools
 	depends = python-numpy>=1.21
 	optdepends = python-matplotlib>=3.4.3: required only for plotting
