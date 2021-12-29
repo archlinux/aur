@@ -1,8 +1,8 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang 
 pkgname=logseq-desktop
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
@@ -13,7 +13,7 @@ conflicts=("logseq-desktop-git" "logseq-desktop-bin")
 source=("${pkgname}-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
       "build.patch"
       "${pkgname}.desktop")
-sha256sums=('d98b8a4b738a07c8e25ed38400ae6db96b53a29d614314297f0bcf0c3594fff1'
+sha256sums=('0943f0b6910ea2ad2e43aed410f1dbc9dd59bbc049d0e447e7d12058106de942'
             'b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2'
             '6e834466132551c721ba2ffe92fc0f81056b3151fe6b5f0f469ece937f9b7e84')
 
