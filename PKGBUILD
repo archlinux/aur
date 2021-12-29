@@ -1,8 +1,9 @@
 # Maintainer: ondoho <buababg-tvguho@cbfgrb.qr(rot13)>
 # Contributor: ondoho <buababg-tvguho@cbfgrb.qr(rot13)>
 pkgname=opennic-resolve-git
-pkgver=1
+pkgver=20210110185748
 pkgrel=2
+epoch=1
 pkgdesc="OpenNIC DNS updater"
 arch=('any')
 url="https://notabug.org/ohnonot/${pkgname%-git}"
@@ -18,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git log -1 --format="%cd" --date="format:%Y%m%d%H%M%S"
 }
 
 package() {

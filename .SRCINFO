@@ -1,7 +1,8 @@
 pkgbase = opennic-resolve-git
 	pkgdesc = OpenNIC DNS updater
-	pkgver = 1
+	pkgver = 20210110185748
 	pkgrel = 2
+	epoch = 1
 	url = https://notabug.org/ohnonot/opennic-resolve
 	arch = any
 	license = GPL3
@@ -18,4 +19,3 @@ pkgbase = opennic-resolve-git
 	sha256sums = SKIP
 
 pkgname = opennic-resolve-git
-
