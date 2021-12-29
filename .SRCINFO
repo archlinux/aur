@@ -1,13 +1,19 @@
 pkgbase = makedumpfile
 	pkgdesc = A tool to generate smaller dumpfiles from kdump memory dumps
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/makedumpfile/makedumpfile
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = zstd
+	makedepends = lzo
+	makedepends = snappy
 	depends = perl
 	depends = elfutils
+	optdepends = zstd: for zstd compression
+	optdepends = lzo: for lzo compression
+	optdepends = snappy: for snappy compression
 	source = https://github.com/makedumpfile/makedumpfile/releases/download/1.7.0/makedumpfile-1.7.0.tar.gz
 	sha256sums = 8985f8df249087ea68c6051dec6dac3ef0703fe2aa87d0266f3951f93aa8da5e
 
