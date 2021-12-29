@@ -1,0 +1,14 @@
+pkgbase = nbtp
+	pkgdesc = NBT parsing library
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://git.cth451.me/cth451/nbtp
+	arch = x86_64
+	license = LGPLv3
+	depends = fmt
+	depends = pybind11
+	depends = python3
+	source = nbtp-v0.3.2.tar.gz::https://git.cth451.me/cth451/nbtp/-/archive/v0.3.2/nbtp-v0.3.2.tar.gz
+	sha512sums = 7d5b48c799f59e6066086c5ffda59246758f78c554b87791ca8d13710a224cdc0cfdf360feb83dd2d11e90666b054849e033fded1a4e7f424666ae5feaf46d6d
+
+pkgname = nbtp
