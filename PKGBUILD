@@ -12,7 +12,7 @@ makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=(
-    "$pkgname::git+http://github.com/Cotix/cReddit.git"
+    "$pkgname::git+https://github.com/Cotix/cReddit.git"
     '01-ncursesw-is-default-ncurses.patch'
 )
 md5sums=('SKIP'
