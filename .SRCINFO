@@ -1,0 +1,18 @@
+pkgbase = p-insurgence-bin
+	pkgdesc = Pokemon Insurgence is a fan game for the Pokemon series based in a new region with new mechanics
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://p-insurgence.com
+	arch = any
+	license = none
+	depends = wine
+	depends = sh
+	options = !strip
+	source = https://p-insurgence.com/releases/1.2.7/Pokemon%20Insurgence%201.2.7%20Core.zip
+	source = Insurgence.desktop
+	source = p-insurgence.sh
+	sha256sums = 1c7144958d92897e61a137b441029bd65dbfa44e705e977b85c1ac795956c2e3
+	sha256sums = 4888262200800ac9beadbfdd99da793f1163d79fe514d4ab30fb61f3ac412946
+	sha256sums = e1745c4e01e95e7afcc7112329c40d3002dbdb41b054e9854a78551ed863b917
+
+pkgname = p-insurgence-bin

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Insurgence
+Exec=wine Game.exe
+Type=Application
+StartupNotify=true
+Path=/opt/p-insurgence
+Icon=3B04_Game.0
+StartupWMClass=p-insurgence
