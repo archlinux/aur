@@ -1,8 +1,8 @@
 pkgbase = argocd-bin
 	pkgdesc = Argo CD: Declarative continuous deployment for Kubernetes.
 	pkgver = 2.2.1
-	pkgrel = 1
-	url = https://github.com/argoproj/argo-workflows
+	pkgrel = 2
+	url = https://github.com/argoproj/argo-cd
 	arch = x86_64
 	license = Apache
 	source = argocd_2.2.1::https://github.com/argoproj/argo-cd/releases/download/v2.2.1/argocd-linux-amd64
