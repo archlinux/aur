@@ -1,0 +1,17 @@
+[Unit]
+Description=Add analysis to SGF files using KataGo
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=katago-analyze-sgf
+Group=katago-analyze-sgf
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/katago-analyze-sgf
+WorkingDirectory=/var/lib/katago-analyze-sgf
+ExecStart=/usr/bin/katago-analyze-sgf-daemon $KATAGO_ANALYSIS_CONFIG_PATH --katago-path $KATAGO_PATH --port $KATAGO_ANALYZE_SGF_PORT --source-dir $KATAGO_ANALYZE_SGF_SOURCE_DIR --destination-dir $KATAGO_ANALYZE_SGF_DESTINATION_DIR
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
