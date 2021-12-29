@@ -1,0 +1,16 @@
+pkgbase = python-pyicumessageformat
+	pkgdesc = An unopinionated parser for ICU MessageFormat.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/pyicumessageformat/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	depends = python
+	depends = python-setuptools
+	depends = python-pip
+	depends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/p/pyicumessageformat/pyicumessageformat-1.0.0.tar.gz
+	sha256sums = b3e97c0ed10c2b103f0f3a701aa6529700ea0ab66e0f3b23dc8e4aee181fc840
+
+pkgname = python-pyicumessageformat
