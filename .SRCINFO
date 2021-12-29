@@ -7,8 +7,6 @@ pkgbase = creddit-git
 	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
 	depends = ncurses
 	depends = curl
 	provides = creddit-git
@@ -19,4 +17,3 @@ pkgbase = creddit-git
 	md5sums = 9b475cc98d0319356772d8472b602c67
 
 pkgname = creddit-git
-
