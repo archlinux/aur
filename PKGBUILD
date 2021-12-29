@@ -3,7 +3,7 @@
 pkgbase=metamask
 pkgname=("${pkgbase}-chrome" "${pkgbase}-firefox")
 _addon_id="2e742fd4-1e66-4604-89a2-b99cc03f171a"
-pkgver=10.6.4
+pkgver=10.8.2
 pkgrel=1
 pkgdesc='Chrome extension that enables browsing Ethereum blockchain enabled websites'
 url='https://github.com/MetaMask/metamask-extension'
