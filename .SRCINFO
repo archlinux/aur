@@ -1,6 +1,6 @@
 pkgbase = qupath-bin
 	pkgdesc = Bioimage analysis & digital pathology
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://qupath.github.io
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = qupath-bin
 	depends = libxml2
 	depends = sqlite
 	optdepends = ttf-droid: font for CJK characters
-	provides = qupath=0.3.0
+	provides = qupath=0.3.1
 	conflicts = qupath
-	source = qupath-bin-0.3.0.tar.xz::https://github.com/qupath/qupath/releases/download/v0.3.0/QuPath-0.3.0-Linux.tar.xz
-	sha512sums = 3050814ec431860c93552666af56ceafa6cc6693d71b535df596496992a7b34575e7931306792bd9c1ff14688947b73d941f321504b919bc24be07ba57e8fa50
+	source = qupath-bin-0.3.1.tar.xz::https://github.com/qupath/qupath/releases/download/v0.3.1/QuPath-0.3.1-Linux.tar.xz
+	sha512sums = c96e9059ce09e759bfa135dcf625465b606b447c1f3fee9821b82a8ca330b17e8e75ff2b2e14ad5a970a560421b5f1b9b043bacc8b36831b9c8c077670f7ca2b
 
 pkgname = qupath-bin
