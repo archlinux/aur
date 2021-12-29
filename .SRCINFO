@@ -1,0 +1,18 @@
+pkgbase = python-demjson3
+	pkgdesc = Fork of demjson to purely support Python 3. Python module for JSON data encoding, including jsonlint.
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://github.com/nielstron/demjson3
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python
+	provides = demjson
+	provides = python-demjson
+	conflicts = demjson
+	conflicts = python-demjson
+	conflicts = nodejs-jsonlint
+	source = https://files.pythonhosted.org/packages/source/d/demjson3/demjson3-3.0.5.tar.gz
+	sha256sums = ab9aabdd85695f3684fc296f39766a2730f6c8de81d23f7048073dfe2f616d80
+
+pkgname = python-demjson3
