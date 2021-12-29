@@ -1,7 +1,7 @@
 pkgbase = libargparse-git
 	pkgdesc = A C++ command-line parsing library
-	pkgver = r65.1315fd7
-	pkgrel = 3
+	pkgver = r69.ee74d1b
+	pkgrel = 1
 	url = https://github.com/kmurray/libargparse
 	arch = x86_64
 	license = MIT
