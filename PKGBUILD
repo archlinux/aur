@@ -3,7 +3,7 @@
 _basename=libnice
 pkgname=lib32-libnice
 pkgver=0.1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of the IETF's draft ICE (for p2p UDP data streams) (32-bit)"
 url="https://nice.freedesktop.org"
 arch=(x86_64)
