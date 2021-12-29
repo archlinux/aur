@@ -1,47 +1,46 @@
 # Maintainer: Erhad Husovic <xdaemonx[at]protonmail[dot]ch>
+# Maintainer: Jose Lopes <josemslopes at gmail dot com>
 
+_pkgname=blink-qt
 pkgname=blink
-pkgver=3.2.0
-pkgrel=4
-pkgdesc='A state of the art, easy to use SIP client'
-arch=('any')
-url='http://icanblink.com'
-license=('GPL3' 'FreeBSD')
-depends=('icu'
-         'libvncserver'
-         'python2-application'
-         'python2-gmpy2'
-         'python2-gnutls'
-         'python2-google-api-python-client'
-         'python2-pyqt5'
-         'python2-sipsimple>=3.1'
-         'python2-zope-interface'
-         'python2-oauth2client'
-         'python2-service-identity'
-         'qt5-webkit'
-         'qt5-svg')
-optdepends=('python2-service-identity: for TLS certificate hostname verification'
-            'x11vnc: for screen sharing')
-
-	  # https://github.com/AGProjects/blink-qt/archive/release-3.2.0.tar.gz
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AGProjects/blink-qt/archive/release-${pkgver}.tar.gz")
-sha256sums=('911d5232beb2b8638d26314ef9ab0831c67731bd5bd219c84668f30f3c849b4b')
-
+pkgver=5.1.1
+pkgrel=1
+pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
+arch=('aarch64' 'x86_64')
+url='https://icanblink.com'
+license=('GPL-3+')
+depends=(
+  'icu'
+  'libvncserver'
+  'python-gevent'
+  'python-gmpy2'
+  'python-google-api-python-client'
+  'python-oauth2client'
+  'python-pyopenssl'
+  'python-pyqt5'
+  'python-service-identity'
+  'python-sipsimple'
+  'qt5-svg'
+  'qt5-webkit'
+  )
+optdepends=('x11vnc: for screen sharing')
+source=("https://github.com/AGProjects/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('711bd3e544f60604b274ed08ba540649d5060f383265e5d957b1491ff14cac0aa06c1b520c31b9369a14736428b890bc10ec4b4537b0d4cf9f1d913be5234066')
 
 build() {
-  cd "${srcdir}/${pkgname}-qt-release-${pkgver}"
-  python2 setup.py build
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-qt-release-${pkgver}"
-  python2 setup.py install --root="${pkgdir}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   # license
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # desktop file
-  install -Dm644 "${srcdir}/${pkgname}-qt-release-${pkgver}/debian/${pkgname}.desktop" \
+  install -Dm644 "debian/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
