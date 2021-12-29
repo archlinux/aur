@@ -1,6 +1,6 @@
 pkgbase = system-monitoring-center
 	pkgdesc = System performance and usage monitoring tool
-	pkgver = 0.3.1.beta1
+	pkgver = 0.3.2.beta1
 	pkgrel = 1
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = system-monitoring-center
 	depends = python-opengl
 	depends = systemd
 	depends = util-linux
-	source = system-monitoring-center-0.3.1.beta1.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v0.3.1-beta1.tar.gz
-	sha256sums = 623bd4f560d62f9629287a83a9db48108f6d631d3d84db05dc0f2388af73337e
+	source = system-monitoring-center-0.3.2.beta1.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v0.3.2-beta1.tar.gz
+	sha256sums = c081f0297d826895a426ec10da308326831bd824f9f8551fd090924a9be245a7
 
 pkgname = system-monitoring-center
