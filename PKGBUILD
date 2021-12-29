@@ -1,4 +1,4 @@
-# Maintainer: Guilherme Rugai Freire <gui.rugai.freire at gmail dot com>
+# Maintainer: Guilherme Rugai Freire <dev at grfreire dot com>
 
 _pkgname=sowon
 pkgname="${_pkgname}-git"
