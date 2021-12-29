@@ -1,6 +1,6 @@
 pkgbase = smooth-git
 	pkgdesc = An object oriented C++ class library
-	pkgver = 0.9.8.r1.g1813dcf2
+	pkgver = 0.9.8.r17.g4d48e854
 	pkgrel = 1
 	url = http://www.smooth-project.org
 	arch = x86_64
