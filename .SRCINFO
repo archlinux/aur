@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes.
 	pkgver = 27.1.3
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -12,15 +12,16 @@ pkgbase = obs-studio-tytan652
 	makedepends = libfdk-aac
 	makedepends = swig
 	makedepends = luajit
-	makedepends = python
 	makedepends = sndio
+	makedepends = python>=3.10
 	makedepends = cef-minimal-obs=87.1.14
-	depends = mbedtls
 	depends = jack
 	depends = gtk-update-icon-cache
 	depends = x264
 	depends = rnnoise
 	depends = pciutils
+	depends = mbedtls>=2.28
+	depends = mbedtls<3.0.0
 	depends = qt5-wayland
 	depends = libxcomposite
 	depends = pipewire
@@ -38,7 +39,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = libva-mesa-driver: Hardware encoding
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
-	optdepends = python: Python scripting
+	optdepends = python>=3.10: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: Virtual camera output
 	optdepends = decklink: Blackmagic Design DeckLink support
