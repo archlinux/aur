@@ -4,7 +4,7 @@
 
 pkgname=ocaml-mm
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml multimedia library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-mm"
@@ -29,4 +29,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('aca2fdfe0e3d8f0224d96b1bd14eebc47384db305ca3d6f420186f37ac6194b2')
+sha256sums=('77c1ef216fef74db9829ef419c8bbdd353ade6a48133bdff2f3c4c8c570d531a')

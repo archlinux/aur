@@ -1,7 +1,7 @@
 pkgbase = ocaml-mm
 	pkgdesc = OCaml multimedia library
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonet/ocaml-mm
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = ocaml-mm
 	depends = ffmpeg
 	options = !strip
 	source = https://github.com/savonet/ocaml-mm/archive/v0.7.2.tar.gz
-	sha256sums = aca2fdfe0e3d8f0224d96b1bd14eebc47384db305ca3d6f420186f37ac6194b2
+	sha256sums = 77c1ef216fef74db9829ef419c8bbdd353ade6a48133bdff2f3c4c8c570d531a
 
 pkgname = ocaml-mm
