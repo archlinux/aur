@@ -114,12 +114,12 @@ fi
 _major=5.16
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc6
-pkgver=${_major}.${_minorc}
+_rcver=rc7
+pkgver=${_major}.${_minor}
 _stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
 _srcname=linux-${_stablerc}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CachyOS Kernel-RC by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/cachyos/linux-cachyos"
@@ -138,19 +138,20 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.
 source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
   "config"
   #  "${_caculepatches}/v5.16/0001-cacULE-5.16-full.patch"
-#  "${_patchsource}/0001-bore-sched.patch"
+  "${_patchsource}/0001-bore-sched.patch"
+  "${_patchsource}/0001-block-perf.patch"
   "${_patchsource}/0001-amdpstate.patch"
-  #  "${_patchsource}/0001-le9.patch"
+  "${_patchsource}/0001-pte-marker.patch"
+  "${_patchsource}/0001-sched-perf-fix.patch"
+  "${_patchsource}/0001-page-table-check.patch"
   "${_patchsource}/0001-bbr2.patch"
   "${_patchsource}/0001-lrng.patch"
   "${_patchsource}/0001-cpu.patch"
   "${_patchsource}/0001-clearlinux.patch"
-  "${_patchsource}/0001-ksmbd.patch"
   "${_patchsource}/0001-misc.patch"
   "${_patchsource}/0001-fixes.patch"
   "${_patchsource}/0001-futex.patch"
   "${_patchsource}/0001-hwmon.patch"
-  "${_patchsource}/0001-ksm.patch"
   "${_patchsource}/0001-zstd-patches.patch"
   "${_patchsource}/0001-zen-patches.patch"
   "${_patchsource}/0001-v4l2loopback.patch"
@@ -565,19 +566,22 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('ff0a2b8a7b14d6ca738e22cd498e19b2'
-         '4b7ed503a56bfea3a7afed88668a8126'
-         '3aaa8d1bc993d4173aa1bb79ade16fb7'
+md5sums=('ce9f9c812f847ff18494f4e3cddf4505'
+         '9cc698af4174326d44e8c8fda942c4d2'
+         '7c16734e93e8f371441ea1844736a02a'
+         'fa93f9a728a712cf5f73181ec971d3d4'
+         'ef446a32fe115b59710a122009bb1d49'
+         'd98c7ebc9432a24724b10416e3103540'
+         '1262001a6a1e72fa271481cf897ac6d1'
+         '7d28f804d6b74f9a22ad30d67af5a669'
          '621bd031ffb6ce291b26e15bbf7e0aeb'
          '978153c745ba777574ad6689a0c9f283'
          'd4c38ce51fb9a69aa92ad9b9e0199122'
          'd78bb31569440421e0e76d9a8c0a14fc'
-         '40ee531b73183ad62eabb0b2b801b589'
-         '299b176cbfc1b386d74406387e9e2d6b'
+         '2fdd66a2e6731a63cc34a9202e39d810'
          'f574f1c40fa2d07602e77418b863e144'
          '2458d1c5d00d10709922e686c5d1e97f'
          '2160aabf2b9798907d36c4d246937d71'
-         '5bbccd18de800b0b54652bee0b76da0a'
          'bf58290793d3a095ef95fb1fac2de89a'
          'de6db1147385c058b2e94df3c1739fdf'
          'cb9384ce179d08be6c90df6d0a0977a1'
