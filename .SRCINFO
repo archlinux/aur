@@ -1,0 +1,12 @@
+pkgbase = slarchive
+	pkgdesc = A SeedLink client for archiving data streams.
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://ds.iris.edu/ds/nodes/dmc/software/downloads/slarchive/
+	arch = x86_64
+	license = GPL3
+	depends = libslink
+	source = slarchive-2.2.tar.gz::http://www.iris.edu/pub/programs/SeedLink/slarchive-2.2.tar.gz
+	sha256sums = d73c5d8865f0104984b229dfc626068dadce8332f7e034598dc8988125818573
+
+pkgname = slarchive
