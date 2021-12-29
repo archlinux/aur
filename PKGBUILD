@@ -1,7 +1,7 @@
 # Maintainer: Trivernis <trivernis+aur at protonmail dot com>
 
 pkgname=mediarepo-daemon
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Daemon to manage a media repository'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=('clang' 'rustup')
 
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/mediarepo-daemon/archive/v$pkgver.tar.gz)
-sha512sums=('ba8f01d15f77c5a160be9cbc15417de4f26dcee673f6355c59d3eaf4703ed6d7c6b035cf2105467c160cda7a4985066c44aa81f05d25b1ae53ef51fcefb50bd0')
+sha512sums=('c1ac1015d2e557f3fad68f6e0a2560d99a8990e8f96e4d8601530aa0117143392562024eb3e4e847bdbf917c5db2a752272b19e133bc078aacc365831715828b')
 
 prepare() {
   cd $pkgname-$pkgver
