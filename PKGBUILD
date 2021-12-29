@@ -38,7 +38,7 @@ prepare() {
 }
 
 package() {
-  install -d -m755 $pkgdir/usr/share/
+  install -d -m755 "$pkgdir/usr/share/"
   cp -R HELI-X${pkgver%%.*} "$pkgdir/usr/share/$pkgname"
 
   icotool -x HELI-X${pkgver%%.*}/runHeli-X.ico
