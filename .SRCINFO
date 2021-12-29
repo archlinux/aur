@@ -24,4 +24,3 @@ pkgbase = python-astroslam
 	md5sums = SKIP
 
 pkgname = python-astroslam
-
