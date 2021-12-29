@@ -1,17 +1,17 @@
 pkgbase = lib32-libcdio
 	pkgdesc = GNU Compact Disc Input and Control Library (32-bit)
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://www.gnu.org/software/libcdio/
 	arch = x86_64
 	license = GPL3
 	depends = lib32-gcc-libs
+	depends = lib32-ncurses
 	depends = libcdio
-	source = https://ftp.gnu.org/gnu/libcdio/libcdio-2.0.0.tar.gz
-	source = https://ftp.gnu.org/gnu/libcdio/libcdio-2.0.0.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2
+	source = https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2.sig
 	validpgpkeys = DAA63BC2582034A02B923D521A8DE5008275EC21
-	sha256sums = 1b481b5da009bea31db875805665974e2fc568e2b2afa516f4036733657cf958
-	sha256sums = 1ca33fe6e86266f7829f0d4cdef36e0268144484c86090d6608fa53da782e8ac
+	sha256sums = 8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b
+	sha256sums = SKIP
 
 pkgname = lib32-libcdio
-
