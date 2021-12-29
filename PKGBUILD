@@ -1,5 +1,5 @@
 pkgname=freqtrade
-pkgver=2021.11
+pkgver=2021.12
 pkgrel=1
 pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
@@ -17,7 +17,7 @@ depends=('python-sqlalchemy' 'python-cachetools'
          'python-hyperopt' 'python-coinmarketcap' 'python-ccxt' 'python-certifi' 'python-aiohttp')
 
 source=(https://github.com/freqtrade/freqtrade/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('e258c325cb9686afdc95d7ef827e2524457aa269745cb4202672ab4539a9aa41')
+sha256sums=('8067c72131c3d23b58b6e92c1a11f5f24201fea3db286d878a8f200883643378')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,5 +27,8 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
+  rm -rf tests
   python setup.py install -O1 --skip-build --root="$pkgdir"
+  rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests 
+
 }
