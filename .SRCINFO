@@ -1,7 +1,7 @@
 pkgbase = iproute2-selinux
 	pkgdesc = IP Routing Utilities with SELinux support
 	pkgver = 5.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = iproute2-selinux
 	optdepends = libcap: tipc
 	optdepends = linux-atm: ATM support
 	provides = iproute
-	provides = iproute2=5.15.0-1
+	provides = iproute2=5.15.0-2
 	conflicts = iproute2
 	options = staticlibs
 	backup = etc/iproute2/ematch_map

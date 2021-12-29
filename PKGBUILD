@@ -8,7 +8,7 @@
 
 pkgname=iproute2-selinux
 pkgver=5.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -48,6 +48,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+
+  export CFLAGS+=' -ffat-lto-objects'
 
   # ./configure auto-detects SELinux as a build dependency for "ss":
   # https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/tree/configure?h=v5.14.0#n373
