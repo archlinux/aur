@@ -1,15 +1,14 @@
 pkgbase = redis-plus-plus
 	pkgdesc = A C++ client for Redis based on hiredis written in C++ 11 / C++ 17
-	pkgver = 1.2.1
-	pkgrel = 3
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://github.com/sewenew/redis-plus-plus
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	depends = gcc-libs
 	depends = hiredis
-	source = redis-plus-plus-1.2.1.tar.gz::https://github.com/sewenew/redis-plus-plus/archive/1.2.1.tar.gz
-	sha256sums = f09c9fcc362955edb887632cd008102887278c94934d7e8c9d0acb8707671902
+	source = redis-plus-plus-1.3.3.tar.gz::https://github.com/sewenew/redis-plus-plus/archive/1.3.3.tar.gz
+	sha256sums = 23689059b7ba50fcd8fa673c5dbb7bdb010b896b14abad5aa80a5ec48eb64f26
 
 pkgname = redis-plus-plus
-
