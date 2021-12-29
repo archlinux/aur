@@ -1,6 +1,6 @@
 pkgbase = confy-git
 	pkgdesc = Conferences schedule viewer for GNOME
-	pkgver = 0.5.4.r2.g456a787
+	pkgver = 0.6.3.r1.g3ecc143
 	pkgrel = 1
 	url = https://confy.kirgroup.net/
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = confy-git
 	sha256sums = SKIP
 
 pkgname = confy-git
-
