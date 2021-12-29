@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=icon-library-git
-pkgver=0.0.8.r80.g5d20f7b
+pkgver=0.0.9.r38.g44e0d9e
 pkgrel=1
 pkgdesc='Find the right symbolic icon to use on your GNOME application'
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ checkdepends=(appstream-glib)
 provides=(icon-library)
 conflicts=(icon-library)
 source=("git+${url}.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd icon-library
