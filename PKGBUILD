@@ -2,7 +2,7 @@
 
 pkgname=python-sqlmodel
 _pkgname="${pkgname#python-}"
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="SQL databases in Python, designed for simplicity, compatibility, and robustness"
 arch=('any')
@@ -20,8 +20,8 @@ makedepends=(
   'python-install'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tiangolo/sqlmodel/archive/$pkgver.tar.gz")
-sha512sums=('ce70137877d01015b29374ca96198a4dc718fbffc4f12e15eb8773703871a3bb3ede71ef961a6a43e578130f5da2fdbb6552d75ea25118d32debc06afbce2dda')
-b2sums=('dee991122da4a799db91648455fb7595ed14eca6fed857c149ca54c0eeaf0c568adcbbb165ec3c394c34a5b7a3ee70908c5e40b87dafd82c458aa6b622202552')
+sha512sums=('729cd74a806f3e035e6eae8c2083dc8fbbd89675d1827767bb319d9898ec03e915eb53807e0675ce3b78c83ba95a052e082807a1905ca7a35b7bdf969b231732')
+b2sums=('5cce28a29e4372685158e64e581fedef091f2ea5fbd307871965beefa79a50f912765cd98a2d13e8c454ea1df292d31367fc99e3846783ecbcd0e4c423aec19f')
 
 build() {
   cd "$_pkgname-$pkgver"
