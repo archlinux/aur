@@ -65,6 +65,6 @@ package() {
 	chmod 777 "${pkgdir}/opt/vita3k/data"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-	install -Dm644 "data/image/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 "data/image/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
 	install -Dm644 "${srcdir}/vita3k.desktop" "${pkgdir}/usr/share/applications/vita3k.desktop"
 }
