@@ -2,7 +2,6 @@
 Description=Matrix-Telegram hybrid puppeting/relaybot bridge
 
 [Service]
-ExecStartPre=alembic -c /usr/share/mautrix-telegram/alembic.ini -x config=/etc/mautrix-telegram/config.yaml upgrade head
 ExecStart=python -m mautrix_telegram -b /usr/share/mautrix-telegram/example-config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml
 Restart=on-failure
 User=mautrix-telegram

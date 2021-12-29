@@ -1,6 +1,6 @@
 pkgbase = mautrix-telegram
 	pkgdesc = A Matrix-Telegram hybrid puppeting/relaybot bridge.
-	pkgver = 0.10.2
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/tulir/mautrix-telegram
 	install = mautrix-telegram.install
@@ -9,17 +9,15 @@ pkgbase = mautrix-telegram
 	makedepends = python-setuptools
 	makedepends = python-pytest-runner
 	depends = python
-	depends = python-sqlalchemy
-	depends = python-alembic
+	depends = python-asyncpg
 	depends = python-ruamel-yaml
 	depends = python-magic-ahupp
 	depends = python-commonmark
 	depends = python-aiohttp
 	depends = python-yarl
-	depends = python-mautrix>=0.10.4
-	depends = python-mautrix<0.13
-	depends = python-telethon>=1.24
-	depends = python-telethon<1.25
+	depends = python-mautrix>=0.14.0
+	depends = python-mautrix<0.15
+	depends = python-telethon
 	depends = python-telethon-session-sqlalchemy
 	optdepends = python-cryptg: faster encryption
 	optdepends = python-cchardet: faster encoding detection
@@ -28,20 +26,20 @@ pkgbase = mautrix-telegram
 	optdepends = python-pillow: webp conversion and qr code login
 	optdepends = python-qrcode: qr code login
 	optdepends = python-moviepy: high quality thumbnails
+	optdepends = python-phonenumbers: formatted numbers
 	optdepends = python-prometheus_client: metrics upload
-	optdepends = python-psycopg2: postgresql database support
-	optdepends = python-asyncpg: end-to-bridge encryption support
 	optdepends = python-olm: end-to-bridge encryption support
 	optdepends = python-pycryptodome: end-to-bridge encryption support
 	optdepends = python-unpaddedbase64: end-to-bridge encryption support
+	optdepends = python-aiosqlite: sqlite database support
 	backup = etc/mautrix-telegram/config.yaml
 	backup = etc/mautrix-telegram/registration.yaml
-	source = mautrix-telegram-0.10.2::https://github.com/tulir/mautrix-telegram/archive/v0.10.2.tar.gz
+	source = mautrix-telegram-0.11.0::https://github.com/tulir/mautrix-telegram/archive/v0.11.0.tar.gz
 	source = mautrix-telegram.service
 	source = mautrix-telegram.sysusers
 	source = mautrix-telegram.tmpfiles
-	sha256sums = 6c55dd22d71dc8c78a3069acabcd66d8c181c795688f37bfc88fc461e99f5e25
-	sha256sums = a419168bff80e469f2f4e26279afae77d92e6ae86c2457696e1ca9fc6ba1cb12
+	sha256sums = ad3e3a83e0eec0acb2a4f7af54fa7ba2ff0b89a9112fd34d7a40e02def43caad
+	sha256sums = 278ebd5fc931bbf87e442c774cb8e5f4d17ef8b553066531a3d66810d76a471e
 	sha256sums = 83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9
 	sha256sums = 2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5
 

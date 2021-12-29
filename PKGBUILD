@@ -1,14 +1,13 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
-depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
+depends=('python' 'python-asyncpg' 'python-ruamel-yaml'
 	'python-magic-ahupp' 'python-commonmark' 'python-aiohttp' 'python-yarl'
-	'python-mautrix>=0.10.4' 'python-mautrix<0.13'
-	'python-telethon>=1.24' 'python-telethon<1.25'
-	'python-telethon-session-sqlalchemy')
+	'python-mautrix>=0.14.0' 'python-mautrix<0.15'
+	'python-telethon' 'python-telethon-session-sqlalchemy')
 makedepends=('python-setuptools' 'python-pytest-runner')
 optdepends=('python-cryptg: faster encryption'
 	'python-cchardet: faster encoding detection'
@@ -17,17 +16,17 @@ optdepends=('python-cryptg: faster encryption'
 	'python-pillow: webp conversion and qr code login'
 	'python-qrcode: qr code login'
 	'python-moviepy: high quality thumbnails'
+	'python-phonenumbers: formatted numbers'
 	'python-prometheus_client: metrics upload'
-	'python-psycopg2: postgresql database support'
-	'python-asyncpg: end-to-bridge encryption support'
 	'python-olm: end-to-bridge encryption support'
 	'python-pycryptodome: end-to-bridge encryption support'
-	'python-unpaddedbase64: end-to-bridge encryption support')
+	'python-unpaddedbase64: end-to-bridge encryption support'
+	'python-aiosqlite: sqlite database support')
 license=('AGPLv3')
 arch=('any')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('6c55dd22d71dc8c78a3069acabcd66d8c181c795688f37bfc88fc461e99f5e25'
-            'a419168bff80e469f2f4e26279afae77d92e6ae86c2457696e1ca9fc6ba1cb12'
+sha256sums=('ad3e3a83e0eec0acb2a4f7af54fa7ba2ff0b89a9112fd34d7a40e02def43caad'
+            '278ebd5fc931bbf87e442c774cb8e5f4d17ef8b553066531a3d66810d76a471e'
             '83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9'
             '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
 backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/registration.yaml")
@@ -68,9 +67,6 @@ package() {
 	# install the original requirements file, useful as documentation
 	install -Dvm 644 "${srcdir}/requirements.txt.orig" "$(find ${pkgdir} -name 'requires.txt' -printf '%h')"
 	install -Dvm 644 "${srcdir}/optional-requirements.txt.orig" "$(find ${pkgdir} -name 'requires.txt' -printf '%h')"
-
-	# adjust alembic script dir location so that by using an abs path it can be used in CWD
-	sed -i -e "s|script_location = alembic|script_location = ${_shared_dir}/alembic/|" "${pkgdir}${_shared_dir}/alembic.ini"
 
 	install -Dvm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 	install -Dvm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
