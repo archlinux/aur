@@ -1,6 +1,6 @@
 pkgbase = blink
 	pkgdesc = Fully featured, easy to use SIP client with a Qt based UI
-	pkgver = 5.1.1
+	pkgver = 5.1.8
 	pkgrel = 1
 	url = https://icanblink.com
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = blink
 	depends = qt5-svg
 	depends = qt5-webkit
 	optdepends = x11vnc: for screen sharing
-	source = https://github.com/AGProjects/blink-qt/archive/5.1.1.tar.gz
-	sha512sums = 711bd3e544f60604b274ed08ba540649d5060f383265e5d957b1491ff14cac0aa06c1b520c31b9369a14736428b890bc10ec4b4537b0d4cf9f1d913be5234066
+	source = blink-5.1.8.tar.gz::https://github.com/AGProjects/blink-qt/archive/a54013c11bee521a224c81c021e1bf453320ca79.tar.gz
+	b2sums = 7b0feab275f4c2abecb86784ce134aad7ef0129fc61aad7ef3ceb4ead61f1f7b0959e13faa4bfcb0705341e3d101034371f7714a14996e046ceffc96a3bbc878
 
 pkgname = blink
