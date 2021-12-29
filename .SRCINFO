@@ -1,14 +1,14 @@
 pkgbase = mongodb-tools
 	pkgdesc = The MongoDB tools provide import, export, and diagnostic capabilities.
-	pkgver = 4.2.8
+	pkgver = 4.2.18_rc0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/mongodb/mongo-tools
 	arch = x86_64
 	license = Apache
 	makedepends = go-pie
 	depends = libpcap
-	source = mongodb-tools-4.2.8.tar.gz::https://github.com/mongodb/mongo-tools/archive/r4.2.8.tar.gz
-	sha512sums = c0fca14c60e5f399934f4dfad5be832684d2c1a1145967a4c395b246774f73f71e506bff902a634b7f08f7133304c09f14eb56a1a6fc8585608f537e59d9c899
+	source = mongodb-tools-4.2.18_rc0.tar.gz::https://github.com/mongodb/mongo-tools/archive/refs/tags/r4.2.18-rc0.tar.gz
+	sha256sums = 2a7380f582419396888e95c01e35262a37e6ad36eb149788adb844c005ad8d35
 
 pkgname = mongodb-tools
-
