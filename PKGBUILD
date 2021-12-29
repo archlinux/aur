@@ -1,6 +1,6 @@
 # Maintainer: MelianMiko <mikigaru@zohomail.com>
 pkgname=mibandpreview-git
-pkgver=0.8.3
+pkgver=0.9
 pkgrel=1
 pkgdesc="Simple preview tool for Mi Band 4-6 watchfaces"
 arch=(any)
