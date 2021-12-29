@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=solarmeter
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Read energy from ABB Aurora inverter"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
