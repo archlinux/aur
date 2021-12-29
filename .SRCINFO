@@ -1,13 +1,13 @@
 pkgbase = i-nex-git
 	pkgdesc = System information tool like hardinfo, sysinfo
 	pkgver = 7.6.1.r0.gcd1b78d
-	pkgrel = 2
+	pkgrel = 4
 	url = http://i-nex.linux.pl/
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
-	makedepends = gambas3-devel
+	makedepends = gambas3-dev-tools
 	makedepends = gcc
 	makedepends = imagemagick
 	depends = gambas3-runtime
@@ -44,4 +44,3 @@ pkgbase = i-nex-git
 	sha256sums = fb286cf3bc0b1104e59219e0ba9a236129b20db52b70cd44d65f578404a93cbe
 
 pkgname = i-nex-git
-
