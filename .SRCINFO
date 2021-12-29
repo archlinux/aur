@@ -1,14 +1,14 @@
-pkgbase = python-nmigen-git
-	pkgdesc = A refreshed Python toolbox for building complex digital hardware
-	pkgver = 0.2.r241.g09de190
+pkgbase = python-amaranth-git
+	pkgdesc = A modern hardware definition language and toolchain based on Python
+	pkgver = 0.3.r1.gaa74956
 	pkgrel = 1
-	url = https://github.com/nmigen/nmigen
+	url = https://github.com/amaranth-lang/amaranth
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-pyvcd
 	checkdepends = python-jinja
-	checkdepends = yosys>=0.9+3468
+	checkdepends = yosys
 	checkdepends = symbiyosys-git
 	checkdepends = yices
 	makedepends = git
@@ -17,13 +17,14 @@ pkgbase = python-nmigen-git
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest
 	depends = python
-	optdepends = python-pyvcd: for nmigen.pysim
-	optdepends = python-jinja: for nmigen.build
+	optdepends = python-pyvcd: for amaranth.pysim
+	optdepends = python-jinja: for amaranth.build
 	optdepends = python-paramiko: for remote builds
-	provides = python-nmigen=0.2.r241.g09de190
+	provides = python-nmigen=0.3.r1.gaa74956
+	provides = python-amaranth=0.3.r1.gaa74956
 	conflicts = python-nmigen
-	source = git+https://github.com/nmigen/nmigen.git
+	conflicts = python-amaranth
+	source = git+https://github.com/amaranth-lang/amaranth.git
 	sha256sums = SKIP
 
-pkgname = python-nmigen-git
-
+pkgname = python-amaranth-git

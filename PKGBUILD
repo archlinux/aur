@@ -1,22 +1,22 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
-_pkgname=nmigen
+_pkgname=amaranth
 pkgname="python-$_pkgname-git"
-pkgver=0.2.r241.g09de190
+pkgver=0.3.r1.gaa74956
 pkgrel=1
-pkgdesc="A refreshed Python toolbox for building complex digital hardware"
+pkgdesc="A modern hardware definition language and toolchain based on Python"
 arch=(any)
-url="https://github.com/nmigen/nmigen"
+url="https://github.com/amaranth-lang/amaranth"
 license=('BSD')
 depends=('python')
 makedepends=('git' 'python-wheel' 'python-setuptools' 'python-setuptools-scm' 'python-pytest')
-optdepends=('python-pyvcd: for nmigen.pysim'
-            'python-jinja: for nmigen.build'
+optdepends=('python-pyvcd: for amaranth.pysim'
+            'python-jinja: for amaranth.build'
             'python-paramiko: for remote builds')
 # FIXME: symbiyosys
-checkdepends=('python-pytest' 'python-pyvcd' 'python-jinja' 'yosys>=0.9+3468' 'symbiyosys-git' 'yices')
-provides=("python-nmigen=$pkgver")
-conflicts=('python-nmigen')
+checkdepends=('python-pytest' 'python-pyvcd' 'python-jinja' 'yosys' 'symbiyosys-git' 'yices')
+provides=("python-nmigen=$pkgver" "python-$_pkgname=$pkgver")
+conflicts=('python-nmigen' "python-$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
