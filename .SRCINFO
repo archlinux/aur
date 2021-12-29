@@ -1,0 +1,15 @@
+pkgbase = leave
+	pkgdesc = program to remind you when to leave from Debian based on NetBSD sources
+	pkgver = 1.12_2.1
+	pkgrel = 1
+	url = http://ftp.de.debian.org/debian/pool/main/l/leave/
+	arch = x86_64
+	license = BSD
+	makedepends = bmake
+	depends = glibc
+	source = http://ftp.de.debian.org/debian/pool/main/l/leave/leave_1.12.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/l/leave/leave_1.12-2.1.diff.gz
+	sha256sums = de30529de8abf49004da4120ca352d5c588a657f8845e44d5e83a4860e6bbe1f
+	sha256sums = 5e05d20357881e73c907b66716865e351b6e4e0e80eef472ff0dbe306abe19b5
+
+pkgname = leave
