@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mascillaro <amascillaro@gmail.com>
 pkgname=weffe-git
-pkgver=1.0.0.r0.g1f05786
+pkgver=1.0.0.r1.g449d0db
 pkgrel=1
 pkgdesc="Lightweight CLI for video effects on webcams"
 arch=('any')
@@ -22,7 +22,7 @@ package() {
   cd "${pkgname%-git}"
   mkdir -p "$pkgdir/usr/share/$pkgname/static"
   install -Dm755 ./weffe "$pkgdir/usr/share/$pkgname/weffe"
-  install -Dm644 ./help.md "$pkgdir/usr/share/man/${pkgname}"
+  install -Dm644 ./help.md "$pkgdir/usr/share/$pkgname"
   mkdir -p "$pkgdir/usr/share/$pkgname"
   install -t "$pkgdir/usr/share/$pkgname/static" static/*.png
 
