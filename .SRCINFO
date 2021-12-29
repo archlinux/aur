@@ -1,6 +1,6 @@
 pkgbase = netlogo
 	pkgdesc = A multi-agent programmable modeling environment.
-	pkgver = 6.2.0
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = http://ccl.northwestern.edu/netlogo/
 	install = netlogo.install
@@ -14,10 +14,9 @@ pkgbase = netlogo
 	optdepends = libnet
 	optdepends = gtk2
 	optdepends = gcc-libs-multilib
-	source = http://ccl.northwestern.edu/netlogo/6.2.0/NetLogo-6.2.0-64.tgz
+	source = http://ccl.northwestern.edu/netlogo/6.2.2/NetLogo-6.2.2-64.tgz
 	source = netlogo.png
-	md5sums = 3a1d615b26b5d6d05efeddc05e602ea2
+	md5sums = 594b32c27d9dbf77cba44d649792a87a
 	md5sums = SKIP
 
 pkgname = netlogo
-
