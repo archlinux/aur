@@ -8,7 +8,7 @@ pkgdesc="The break time reminder app"
 arch=('any')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'electron')
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
@@ -40,8 +40,8 @@ prepare() {
     nvm ls "$_node_version" &>/dev/null ||
         nvm install "$_node_version" || false
     nvm use "$_node_version"
-    npm install \
-        electron@"$(cat /usr/lib/electron/version)"
+    npm install --no-audit --no-progress --no-fund \
+        electron@"$(</usr/lib/electron/version)"
 }
 
 build() {
@@ -57,10 +57,12 @@ build() {
     _electron=${_unpackdir}/opt/${_appname}/${_pkgname}
     rm -Rf "${_unpackdir}"
     mkdir -p "${_unpackdir}"
+    local i686=ia32 x86_64=x64
     ./node_modules/.bin/electron-builder build \
+        --linux pacman \
+        --"${!CARCH}" \
         -c.electronDist=/usr/lib/electron \
-        -c.electronVersion="$(cat /usr/lib/electron/version)" \
-        --linux pacman
+        -c.electronVersion="$(</usr/lib/electron/version)"
     tar -C "${_unpackdir}" -Jxf "${_outfile}"
     echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
     rm -v "$_electron"
