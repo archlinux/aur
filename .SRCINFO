@@ -5,6 +5,7 @@ pkgbase = fdroidserver-git
 	url = https://gitlab.com/fdroid/fdroidserver
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-babel
 	depends = python

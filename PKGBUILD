@@ -10,7 +10,7 @@ pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$_pkgname"
 license=('GPL3')
 depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml' 'python-ruamel-yaml' 'java-environment' 'python-pillow' 'python-vagrant' 'python-gitpython' 'python-androguard' 'python-paramiko' 'python-qrcode')
-makedepends=('python-setuptools' 'python-babel')
+makedepends=('git' 'python-setuptools' 'python-babel')
 optdepends=(
      'android-sdk: Build apps from source'
      'android-sdk-build-tools: Work with apks in the repository'
