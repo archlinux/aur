@@ -10,5 +10,7 @@ pkgbase = yt-watch
 	depends = curl
 	depends = xclip
 	depends = yt-dlp
+	source = yt-watch
+	sha256sums = a163847d4ae4e0db0aeffe7929b4a8c06df5a58603e137477bff13a17d87ad13
 
 pkgname = yt-watch
