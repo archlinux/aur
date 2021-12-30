@@ -1,0 +1,22 @@
+pkgbase = r-pingr
+	pkgdesc = Check if a Remote Computer is Up
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pingr
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = r-testthat
+	depends = iputils
+	depends = r
+	depends = r-processx
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/pingr_2.0.1.tar.gz
+	source = ping-fix.patch::https://github.com/r-lib/pingr/commit/9baf94948afefa869a707d30330fb9d29e227d7e.patch
+	source = R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	sha256sums = d49653e705e99ed6ff950d305777ffc18da09b1a79a3091622eeef5df25f7221
+	sha256sums = e0d5dd08d99fdefc0cb401383c9ec1516c9a2ceee1dd58a6f1a56fbde5480d3c
+	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
+
+pkgname = r-pingr
