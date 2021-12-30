@@ -10,6 +10,7 @@ tmp_file="/tmp/yt.json"
 search_file="/tmp/yt-script-search"
 queries_file="${XDG_CONFIG_HOME:-$HOME}/.yt-queries"
 
+headless=false
 
 clearHistory() {
   if [[ ! -f "$queries_file" ]]; then
@@ -71,7 +72,14 @@ playVideo() {
         pkill mpv
     fi
 
-    setsid -f mpv "$link" --loop 2>/dev/null 1>&2
+    if [ "$headless" == "false" ]; then
+        echo "not headless" > ~/.headless-or-not
+        setsid -f mpv "$link" --loop 2>/dev/null 1>&2
+
+    elif [ "$headless" == "true" ]; then
+        echo "headless" > ~/.headless-or-not
+        setsid -f mpv --no-video "$link" 2>/dev/null 1>&2
+    fi
 }
 
 searchHistory() {
@@ -242,6 +250,7 @@ helpScreen() {
 
   ${c_green}OPTIONS:${c_reset}
   ${c_red}--help${c_reset}                        ${c_blue}This help screen${c_reset}
+
   ${c_red}None${c_reset}                          ${c_blue}Uses the YouTube link from your clipboard.${c_reset}
   ${c_red}-l, --link${c_reset}                    ${c_blue}Play YouTube video from link. (--link \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")${c_reset}
   ${c_red}-dv, --download-mp4${c_reset}           ${c_blue}Download YouTube video & converts it to '.mp4' format. (--download-mp4 \"dQw4w9WgXcQ\")${c_reset}
@@ -252,8 +261,20 @@ helpScreen() {
   ${c_red}-k, --kill${c_reset}                    ${c_blue}Kills mpv${c_reset}
   ${c_red}-q, --queries${c_reset}                 ${c_blue}Lists out all of your search history.${c_reset}
   ${c_red}-qc, --query-copy${c_reset}             ${c_blue}Lists out search history, select & it copies it.${c_reset}
+
+  ${c_red}--headless${c_reset}                    ${c_blue}Plays YouTube video content, but with no video.${c_reset}
   "
 }
+
+
+# headless setting
+if [[ "$2" == "--headless" || "$3" == "--headless" ]]; then
+    headless=true
+
+elif [[ "$1" == "--headless" ]]; then
+    headless=true
+    notify "Playing" "$(xclip -o)" && playVideo "$(xclip -o)"
+fi
 
 # Play youtube video link from clipboard
 if [[ "$1" == "" ]]; then
