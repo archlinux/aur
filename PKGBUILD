@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-externalplayer
 pkgver=0.3.5
-_vdrapi=2.4.7
-pkgrel=3
+_vdrapi=2.6.0
+pkgrel=4
 pkgdesc="use external players in VDR"
 url="https://www.uli-eckhardt.de/vdr/external.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
