@@ -1,0 +1,19 @@
+pkgbase = obs-scene-collection-manager
+	pkgdesc = Plugin for OBS Studio allowing you to create a Dock for showing and editing notes for the current active scene
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://obsproject.com/forum/resources/scene-notes-dock.1398/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libxcomposite
+	depends = obs-studio>=27.0.0
+	source = obs-scene-collection-manager::git+https://github.com/exeldro/obs-scene-collection-manager#commit=fce0b629a9ec5030c699cfaea0b4f72f077e01b3
+	source = obs-studio-27.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.0.0.tar.gz
+	sha256sums = SKIP
+	sha256sums = c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e
+
+pkgname = obs-scene-collection-manager
