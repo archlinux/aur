@@ -8,6 +8,7 @@ pkgbase = nscde-git
 	makedepends = xorgproto
 	makedepends = autoconf
 	makedepends = automake
+	makedepends = git
 	depends = libxext
 	depends = libx11
 	depends = libxpm
