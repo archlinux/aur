@@ -1,6 +1,6 @@
 pkgbase = python-numpy-openblas
 	pkgdesc = Scientific tools for Python - built with openblas
-	pkgver = 1.21.3
+	pkgver = 1.21.5
 	pkgrel = 1
 	url = http://numpy.org/
 	arch = i686
@@ -19,12 +19,12 @@ pkgbase = python-numpy-openblas
 	depends = cython
 	depends = openblas-lapack
 	optdepends = python-nose: testsuite
-	provides = python3-numpy=1.21.3
-	provides = python-numpy=1.21.3
+	provides = python3-numpy=1.21.5
+	provides = python-numpy=1.21.5
 	conflicts = python3-numpy
 	conflicts = python-numpy
 	options = staticlibs
-	source = python-numpy-1.21.3.tar.gz::https://github.com/numpy/numpy/releases/download/v1.21.3/numpy-1.21.3.tar.gz
-	sha256sums = d0bba24083c01ae43457514d875f10d9ce4c1125d55b1e2573277b2410f2d068
+	source = python-numpy-1.21.5.tar.gz::https://github.com/numpy/numpy/releases/download/v1.21.5/numpy-1.21.5.tar.gz
+	sha256sums = 1a7ee0ffb35dc7489aebe5185a483f4c43b0d2cf784c3c9940f975a7dde56506
 
 pkgname = python-numpy-openblas
