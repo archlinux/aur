@@ -5,7 +5,7 @@
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=wofi-calc
-pkgver=1.0.r16.5e7024b
+pkgver=1.0
 pkgrel=1
 epoch=
 pkgdesc="A simple calculator for wofi, inspired in rofi-calc."
@@ -18,7 +18,7 @@ makedepends=(wofi libqalculate)
 checkdepends=()
 optdepends=()
 provides=(wofi-calc)
-conflicts=(wofi-calc)
+conflicts=(wofi-calc-git)
 replaces=()
 backup=()
 options=()
@@ -29,12 +29,7 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-  cd "${_pkgname}"
-  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-    cp "${srcdir}"/wofi-calc/wofi-calc.sh ~/.local/bin/wofi-calc
-    chmod u+x ~/.local/bin/wofi-calc
+  cp "${srcdir}"/wofi-calc/wofi-calc.sh ~/.local/bin/wofi-calc
+  chmod u+x ~/.local/bin/wofi-calc
 }
