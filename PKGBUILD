@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Sandomirskii <complover116 at gmail dot com>
 pkgname=zfs_autobackup
-pkgver=3.1
+pkgver=3.1.1
 pkgrel=2
 pkgdesc="Automatic ZFS backup tool"
 arch=('any')
@@ -19,7 +19,7 @@ options=()
 # changelog=
 source=(https://github.com/psy0rz/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
 noextract=()
-sha256sums=('987e22becd4359932b9027d3b3b6a779bfcbaeb09e5ea05ad28a0006ee099829')
+sha256sums=('50fb80a147d13aaf499a210f333895f088560ad973a06f87eb6944f863d3444d')
 
 build() {
 	cd $pkgname-$pkgver
