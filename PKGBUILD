@@ -23,64 +23,64 @@ source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/$
 v${pkgver}-Source.zip"
 "${pkgname}.desktop"
 "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
-"git+https://github.com/${pkgname}/skia.git#branch=${pkgname}-m96"
-"${pkgname}-buildtools.tar.gz::https://chromium.googlesource.com/chromium/buildtools.git/+archive/\
+"git+https://github.com/${pkgname}/skia.git#branch=${pkgname}-m81"
+"${pkgname}-${pkgver}-buildtools.tar.gz::https://chromium.googlesource.com/chromium/buildtools.git/+archive/\
 505de88083136eefd056e5ee4ca0f01fe9b33de8.tar.gz"
-"${pkgname}-common.tar.gz::https://skia.googlesource.com/common.git/+archive/\
+"${pkgname}-${pkgver}-common.tar.gz::https://skia.googlesource.com/common.git/+archive/\
 9737551d7a52c3db3262db5856e6bcd62c462b92.tar.gz"
-"${pkgname}-angle2.tar.gz::https://chromium.googlesource.com/angle/angle.git/+archive/\
+"${pkgname}-${pkgver}-angle2.tar.gz::https://chromium.googlesource.com/angle/angle.git/+archive/\
 ee07cb317579dfda40dabb5d6d9c209e0e9e0643.tar.gz"
-"${pkgname}-dawn.tar.gz::https://dawn.googlesource.com/dawn.git/+archive/\
+"${pkgname}-${pkgver}-dawn.tar.gz::https://dawn.googlesource.com/dawn.git/+archive/\
 604072bc2ed01018eb03bcbbf9d94042f679af63.tar.gz"
-"${pkgname}-dng_sdk.tar.gz::https://android.googlesource.com/platform/external/dng_sdk.git/\
+"${pkgname}-${pkgver}-dng_sdk.tar.gz::https://android.googlesource.com/platform/external/dng_sdk.git/\
 +archive/c8d0c9b1d16bfda56f15165d39e0ffa360a11123.tar.gz"
-"${pkgname}-egl-registry.tar.gz::https://skia.googlesource.com/external/github.com/KhronosGroup\
+"${pkgname}-${pkgver}-egl-registry.tar.gz::https://skia.googlesource.com/external/github.com/KhronosGroup\
 /EGL-Registry/+archive/a0bca08de07c7d7651047bedc0b653cfaaa4f2ae.tar.gz"
-"${pkgname}-expat.tar.gz::https://android.googlesource.com/platform/external/expat.git/+archive/\
+"${pkgname}-${pkgver}-expat.tar.gz::https://android.googlesource.com/platform/external/expat.git/+archive/\
 e5aa0a2cb0a5f759ef31c0819dc67d9b14246a4a.tar.gz"
-"${pkgname}-freetype.tar.gz::https://skia.googlesource.com/third_party/freetype2.git/+archive/\
+"${pkgname}-${pkgver}-freetype.tar.gz::https://skia.googlesource.com/third_party/freetype2.git/+archive/\
 0a3d2bb99b45b72e1d45185ab054efa993d97210.tar.gz"
-"${pkgname}-harfbuzz.tar.gz::https://chromium.googlesource.com/external/github.com/harfbuzz/\
+"${pkgname}-${pkgver}-harfbuzz.tar.gz::https://chromium.googlesource.com/external/github.com/harfbuzz/\
 harfbuzz.git/+archive/3a74ee528255cc027d84b204a87b5c25e47bff79.tar.gz"
-"${pkgname}-icu.tar.gz::https://chromium.googlesource.com/chromium/deps/icu.git/+archive/\
+"${pkgname}-${pkgver}-icu.tar.gz::https://chromium.googlesource.com/chromium/deps/icu.git/+archive/\
 dbd3825b31041d782c5b504c59dcfb5ac7dda08c.tar.gz"
-"${pkgname}-imgui.tar.gz::https://skia.googlesource.com/external/github.com/ocornut/imgui.git\
+"${pkgname}-${pkgver}-imgui.tar.gz::https://skia.googlesource.com/external/github.com/ocornut/imgui.git\
 /+archive/d38d7c6628bebd02692cfdd6fa76b4d992a35b75.tar.gz"
-"${pkgname}-libgifcodec.tar.gz::https://skia.googlesource.com/libgifcodec/+archive/\
+"${pkgname}-${pkgver}-libgifcodec.tar.gz::https://skia.googlesource.com/libgifcodec/+archive/\
 38d9c73f49b861bb4a9829371ac311544b120023.tar.gz"
-"${pkgname}-libjpeg-turbo.tar.gz::https://skia.googlesource.com/external/github.com/libjpeg-turbo\
+"${pkgname}-${pkgver}-libjpeg-turbo.tar.gz::https://skia.googlesource.com/external/github.com/libjpeg-turbo\
 /libjpeg-turbo.git/+archive/574f3a772c96dc9db2c98ef24706feb3f6dbda9a.tar.gz"
-"${pkgname}-libpng.tar.gz::https://skia.googlesource.com/third_party/libpng.git/+archive/\
+"${pkgname}-${pkgver}-libpng.tar.gz::https://skia.googlesource.com/third_party/libpng.git/+archive/\
 386707c6d19b974ca2e3db7f5c61873813c6fe44.tar.gz"
-"${pkgname}-libwebp.tar.gz::https://chromium.googlesource.com/webm/libwebp.git/+archive/\
+"${pkgname}-${pkgver}-libwebp.tar.gz::https://chromium.googlesource.com/webm/libwebp.git/+archive/\
 0fe1a89dbf1930fc2554dbe76adad5d962054ead.tar.gz"
-"${pkgname}-lua.tar.gz::https://skia.googlesource.com/external/github.com/lua/lua.git/+archive/\
+"${pkgname}-${pkgver}-lua.tar.gz::https://skia.googlesource.com/external/github.com/lua/lua.git/+archive/\
 e354c6355e7f48e087678ec49e340ca0696725b1.tar.gz"
-"${pkgname}-microhttpd.tar.gz::https://android.googlesource.com/platform/external/libmicrohttpd\
+"${pkgname}-${pkgver}-microhttpd.tar.gz::https://android.googlesource.com/platform/external/libmicrohttpd\
 /+archive/748945ec6f1c67b7efc934ab0808e1d32f2fb98d.tar.gz"
-"${pkgname}-opencl-lib.tar.gz::https://skia.googlesource.com/external/github.com/GPUOpen-Tools/\
+"${pkgname}-${pkgver}-opencl-lib.tar.gz::https://skia.googlesource.com/external/github.com/GPUOpen-Tools/\
 common-lib-amd-APPSDK-3.0/+archive/4e6d30e406d2e5a65e1d65e404fe6df5f772a32b.tar.gz"
-"${pkgname}-opencl-registry.tar.gz::https://skia.googlesource.com/external/github.com/\
+"${pkgname}-${pkgver}-opencl-registry.tar.gz::https://skia.googlesource.com/external/github.com/\
 KhronosGroup/OpenCL-Registry/+archive/932ed55c85f887041291cef8019e54280c033c35.tar.gz"
-"${pkgname}-opengl-registry.tar.gz::https://skia.googlesource.com/external/github.com/\
+"${pkgname}-${pkgver}-opengl-registry.tar.gz::https://skia.googlesource.com/external/github.com/\
 KhronosGroup/OpenGL-Registry/+archive/14b80ebeab022b2c78f84a573f01028c96075553.tar.gz"
-"${pkgname}-piex.tar.gz::https://android.googlesource.com/platform/external/piex.git/+archive/\
+"${pkgname}-${pkgver}-piex.tar.gz::https://android.googlesource.com/platform/external/piex.git/+archive/\
 bb217acdca1cc0c16b704669dd6f91a1b509c406.tar.gz"
-"${pkgname}-sdl.tar.gz::https://skia.googlesource.com/third_party/sdl/+archive/\
+"${pkgname}-${pkgver}-sdl.tar.gz::https://skia.googlesource.com/third_party/sdl/+archive/\
 5d7cfcca344034aff9327f77fc181ae3754e7a90.tar.gz"
-"${pkgname}-sfntly.tar.gz::https://chromium.googlesource.com/external/github.com/googlei18n/\
+"${pkgname}-${pkgver}-sfntly.tar.gz::https://chromium.googlesource.com/external/github.com/googlei18n/\
 sfntly.git/+archive/b55ff303ea2f9e26702b514cf6a3196a2e3e2974.tar.gz"
-"${pkgname}-spirv-cross.tar.gz::https://chromium.googlesource.com/external/github.com/\
+"${pkgname}-${pkgver}-spirv-cross.tar.gz::https://chromium.googlesource.com/external/github.com/\
 KhronosGroup/SPIRV-Cross/+archive/53ab2144b90abede33be5161aec5dfc94ddc3caf.tar.gz"
-"${pkgname}-spirv-headers.tar.gz::https://skia.googlesource.com/external/github.com/KhronosGroup/\
+"${pkgname}-${pkgver}-spirv-headers.tar.gz::https://skia.googlesource.com/external/github.com/KhronosGroup/\
 SPIRV-Headers.git/+archive/29c11140baaf9f7fdaa39a583672c556bf1795a1.tar.gz"
-"${pkgname}-spirv-tools.tar.gz::https://skia.googlesource.com/external/github.com/KhronosGroup\
+"${pkgname}-${pkgver}-spirv-tools.tar.gz::https://skia.googlesource.com/external/github.com/KhronosGroup\
 /SPIRV-Tools.git/+archive/0c4feb643b89d1792b02f7cbef315e9d95633bd7.tar.gz"
-"${pkgname}-swiftshader.tar.gz::https://swiftshader.googlesource.com/SwiftShader/+archive/\
+"${pkgname}-${pkgver}-swiftshader.tar.gz::https://swiftshader.googlesource.com/SwiftShader/+archive/\
 430def835f9f85d52f4a96db9b715cd9a7403c9c.tar.gz"
-"${pkgname}-wuffs.tar.gz::https://skia.googlesource.com/external/github.com/google/wuffs.git\
+"${pkgname}-${pkgver}-wuffs.tar.gz::https://skia.googlesource.com/external/github.com/google/wuffs.git\
 /+archive/4080840928c0b05a80cda0d14ac2e2615f679f1a.tar.gz"
-"${pkgname}-zlib.tar.gz::https://chromium.googlesource.com/chromium/src/third_party/zlib/+archive/\
+"${pkgname}-${pkgver}-zlib.tar.gz::https://chromium.googlesource.com/chromium/src/third_party/zlib/+archive/\
 ea3ba903faac98b64b2bf8de5e98cd97b335a474.tar.gz"
 "gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74"
 )
@@ -90,35 +90,35 @@ sha256sums=('9f4b098fe2327f2e9d73eb9f2aeebecad63e87ff2cf6fb6eeeee3c0778bb8874'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'SKIP'
             'SKIP'
-            '23594f876b7f29555999d2f9aa2058e6ae1ece4fb720cdd0292c639c693694d6'
-            'bbdd106ac79d31f42ba80b1286b7a4c1cbae7cac12725786d664db7c255957c2'
-            'd928ac40fee155edf1cf823d57ce559786ff9f2c3dda7e83a857132ab545ed06'
-            '59957d0753ecf327c9f66b3009a908505f38d672637bf4d0c4ee0141e8bdd17a'
-            '75b7fd8c6351b0c51f866d3defefe0266c27e1b593e1ba5cded546376431b09b'
-            'ca6f81ccc155144fbf2d168d596a71d254fc18738e0702a82f68974bd4e839e2'
-            'ad256da64e2beca4f49ef02a39146f4f73d89d160eabf8b0eb8fce6cb8d606e4'
-            'ff369316b724ced12280be18398a3600d4e2c2a581ec425180cc5b47a3e1d02a'
-            'ff8bc5c39d0a2db4b81501a693e91427d97200e88d2940ddbfb5df13677cde56'
-            'c1f69fa10880cfce79480c7b7f4b968c116e04c942c7d12a0f68fdd94484e9d4'
-            '4678c9a24079f601abc7a4299009465fe65c60fd67c243532ece674bd2e16ada'
-            '1ebf59f258299728962612b0c0d91caa2d0b66f60402792445b6ca1cac82e147'
-            '7f9e63d4ba3610698add3556455086173605957a8e9fa59ebcc4804cbdcff047'
-            'bc31921c8bd1af7015657846d21498c665b9094bac8984d903dac273c3d9323e'
-            'cb1856e3c77b6d26ce3e8de648ba657418e289203e7f8f99a9f6a581ad6af93e'
-            'bf24eb0dccd631d5752f60ee3076c6102198d636655a929c5708aa61918d43a9'
-            '82c778de66817b8b96f3bbd8447b2bca429761d7e9de4d59158bec7ce33031e2'
-            'ca9a80bb352c65caf62a9a08c3737bea5c4e6c836bd89d25e311c36620fb1b9e'
-            'f4f79c84ccc4de73ac7e8aa08f9ff47c5bfbab01b79889917b9f1ffa3bdb19df'
-            'f625e848d0fc137703efbbb5592e76b44e95332bc65acc67485b9855ffbc56fc'
-            '86e43c39de644ff66ca02feeee144aa3a9654cf1bd59e186952fc75885d0edb5'
-            '618ce44921ddac4add337829f1b314388f5feedbc563a897b9c766c900b5e170'
-            'cfa961a45b62689aef775456075cb2d1440d58d78d6b0874f361fcf7b768b021'
-            '2d26bf7a01cc69271b07971162c648a2da55308c65fe300ec93356cba9fe1b2f'
-            'd9c642324328b376a34ed01058af5b6fae3c2a8d7736300551227ee6335e439f'
-            '4cc0cdf2d707ce3edc846fcaf516caea45ea6baafb4077d043660b91ee91b3aa'
-            '34294532feba98c460721117ffb18a6c5584f7c48823ccc58109abd1bf2c7c45'
-            'fcd29d69245483da000d6b162caccf0607b58dc06b77a5c79ad64403730f47e8'
-            '6280ed3515504fd9b64ce6f9fdedfcc49316dd56466726797fb80db0599be074'
+            '519c6cb4c9848d0d264199ffa1cf0db1f54801d73761f7154eb234da59938336'
+            'aa24de5def12a7fdce55fed1597f8963e0b0a53edee80cf4ebf948cb67f85cba'
+            'bbd7ea3cd967cef781c9c9d21e0ee669c7b295d4a5b970db4fb3458f667e722a'
+            'fb5ea8819605873837820d2fc8e918f63f0563ce5909887418327b2135d7abc8'
+            '24de65063315ace8a576deddc899c7f39cd1e203d343b6e50930235bd276f37d'
+            '576f3b2bafa98b2c1bbaf62240c3caf797d9e1844e9ce13e5047564f6351cdb8'
+            '1495e9d046e52cdfd1fc984e1d88dfcc1f9632f67f33352192711104c704d730'
+            'ec5e7d646bc1971bd3ac93518b2b2d29feef579f7becd4f9d9b81a6a0a03e532'
+            'c4db4e9f64dbbb4fd4dec253550912937a1e1a1668534f631eb37903fb923fc7'
+            '5e029fc50628fd5749b6fd901dd1cac7c4f92a3a9db2431b4306b1bbcff5aec5'
+            '0d237fea0d5dcb5dbfeeff6109980cea2ac58e2c10727147684356719f8c5de6'
+            'c0fdfb263bcc12c7fb6eafec55f0d1fd8383c37c3b1e4eb4596748214ffed093'
+            'e7fed969dd5bf83d1269ad73fbc189aead42fb4f32b2f4ddee2cb46affaa2155'
+            '6a5ec5804d3bc49ea79acce95a8ca36720842b83f15a368e2f98503d354b3dac'
+            '152f67d21ba8765d16d8b8470879054a3a06e9185b9fadefe4853954642cc0ed'
+            '4278b14776b9a09d85a91ebbb4af6b02df964f888ef33b2691164365bb82398f'
+            '7515a68210b87d67c2919dac25ccf88f6a1da7a903b84951481e3a6f3f13f01b'
+            'e5c9cbcd367c5b2d2ac3e6c90ec987d0aa55b82f17077af328751a6a9bac30c9'
+            '6cebe18d357122853914b9fc3c13e0a221e2da19312d9745b41bf0042cc87310'
+            '23d27a0ebe16b795e9733caa4a6fdc25089ced37556a9af0d21c6d13aa18f691'
+            'e8f7ed6ca96d34235eb0ad427ff947e6f21d5d5a39f06e14bdc6473a40a06cf4'
+            'dc783398daf21f2c66fb791f61a3e92547851fd841059a5a39912396b1e0f1ac'
+            '823dc6115a2749dc69e8f6e5afb0deca15ee8851cb36168cf2cca131b5201455'
+            '8d68986e51a55daa8ff196e83cb45fd05f7444bc1b7ce8dc380bdd45a070d256'
+            '7a1c9d0118e24ca68f48260129cee9bf610ec0319928ccfc19d173132ca75d93'
+            'a007a25eb9f274f30082e4186f1f69bddea55ce7ac61f87215ad1865a16c49ce'
+            'fcd7aee8e452bfad434abdb3dfcaac2021184b16f43e26261cdc022e668b4ec0'
+            '59889d07c504160a2320d4f95454e7bf53fa1d6543239d1160f4161afc7dd842'
+            '274759bdd39d1c20da4144128d9246e50a3c5dc8570ae4b7689c840daece7746'
             'c8c2d617f1a33d6eb27f25ebcc30bd8ba1e6a0aa980cada21dda2ad1401fa4a2')
 
 prepare() {
@@ -130,7 +130,7 @@ prepare() {
   for _dep in buildtools common
   do
     mkdir --parents --verbose "skia/${_dep}"
-    tar --verbose --extract --file "${pkgname}-${_dep}.tar.gz" --directory "skia/${_dep}"
+    tar --verbose --extract --file "${pkgname}-${pkgver}-${_dep}.tar.gz" --directory "skia/${_dep}"
   done
 
   for _dep in angle2 dawn dng_sdk egl-registry expat freetype harfbuzz icu imgui opencl-registry \
@@ -138,7 +138,7 @@ prepare() {
               sdl sfntly spirv-cross spirv-headers spirv-tools swiftshader zlib wuffs
   do
     mkdir --parents --verbose "skia/third_party/externals/${_dep}"
-    tar --verbose --extract --file "${pkgname}-${_dep}.tar.gz" --directory \
+    tar --verbose --extract --file "${pkgname}-${pkgver}-${_dep}.tar.gz" --directory \
       "skia/third_party/externals/${_dep}"
   done
 
