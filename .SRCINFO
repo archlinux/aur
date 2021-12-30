@@ -1,6 +1,6 @@
 pkgbase = nfauthenticationkey
 	pkgdesc = create a Netflix authentican Key, which can be used for the Neflix Kodi addon or somewhere else.
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 2
 	url = https://github.com/CastagnaIT/NFAuthenticationKey/tree/linux
 	arch = any
@@ -9,12 +9,10 @@ pkgbase = nfauthenticationkey
 	depends = python
 	depends = python-pycryptodomex
 	depends = python-websocket-client
-	depends = chromium
 	optdepends = chromium
 	optdepends = google-chrome
 	optdepends = brave
-	source = NFAuthenticationKey-Linux-1.1.3.tar.gz::https://github.com/CastagnaIT/NFAuthenticationKey/archive/eef806798f0b211dd87cdb1f949956801a812eb7.tar.gz
-	sha512sums = 639203cf05bb2c71b7ad7aa21e129b01b89ac91578aa59ad2aa31a8601b07ceb82854201207b2cc501e4a0c16ee188b61f2e1b507e63b72ca55f75ccd991730d
+	source = NFAuthenticationKey-Linux-1.1.4.tar.gz::https://github.com/CastagnaIT/NFAuthenticationKey/archive/2d6303539eda0befccee294942e9489c33770f20.tar.gz
+	sha512sums = fcc0d38dcfc7ec306e23a1ddc44544d844e0e0d6ee2672e6ae58f72b2e40899552f3609ac20a8dd0d565a988d7b319bdd38e79469c14b6740eb982d398be60ae
 
 pkgname = nfauthenticationkey
-
