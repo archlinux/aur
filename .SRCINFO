@@ -1,0 +1,14 @@
+pkgbase = python-hexutil
+	pkgdesc = Classes and functions to deal with hexagonal grids
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/stephanh42/hexutil
+	arch = any
+	license = mit
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/47/2e/7ecab7ecf2c9c97b0307086426aaf6213fb577b515f6dd3177add520d73c/hexutil-0.2.2.tar.gz
+	sha256sums = 64e0de4d0ed52f75ada204b6878a837d095521c0086410f9dbcfe30c640cba6f
+
+pkgname = python-hexutil
