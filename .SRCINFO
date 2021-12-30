@@ -9,7 +9,8 @@ pkgbase = sentinel-client-cli-git
 	makedepends = make
 	depends = openresolv
 	depends = wireguard-tools
-	provides = sentinelcli
+	provides = sentinel-client-cli
+	conflicts = sentinel-client-cli
 	source = sentinel-client-cli::git+https://github.com/sentinel-official/cli-client
 	sha256sums = SKIP
 
