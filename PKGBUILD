@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Matthews <matthewriel63@gmail.com>
 
 pkgname='yt-watch'
-pkgver=1.8
+pkgver=2.0
 pkgrel=1
 pkgdesc="Search/Watch/Download/Convert YouTube Videos on mpv using yt-dlp/YouTube API."
 arch=('any')
