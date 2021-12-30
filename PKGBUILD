@@ -2,8 +2,8 @@
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhdcuvid vdr-softhdvaapi vdr-softhddrm)
 pkgver=3.5
-_vdrapi=2.4.7
-pkgrel=1
+_vdrapi=2.6.0
+pkgrel=2
 pkgdesc="VDR output plugin with CUDA and Opengl"
 url="https://github.com/jojo61/vdr-plugin-softhdcuvid"
 arch=('x86_64')
