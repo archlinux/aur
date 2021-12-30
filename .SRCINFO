@@ -1,7 +1,7 @@
 pkgbase = otf-fira-go
 	pkgdesc = An independent Open Source typeface — FiraGO
 	pkgver = 1.001
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bBoxType/FiraGO
 	arch = any
 	license = OFL
