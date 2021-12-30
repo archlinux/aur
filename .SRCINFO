@@ -5,6 +5,7 @@ pkgbase = rutilt-bin
 	arch = x86_64
 	arch = i386
 	license = GPL
+	depends = gtk2
 	provides = rutilt-bin
 	conflicts = rutilt-bin
 	options = !strip
@@ -18,4 +19,3 @@ pkgbase = rutilt-bin
 	sha256sums_i386 = SKIP
 
 pkgname = rutilt-bin
-
