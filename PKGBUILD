@@ -2,8 +2,8 @@
 
 pkgname=jamtaba
 _pkgname=JamTaba
-pkgver=2.1.15
-pkgrel=2
+pkgver=2.1.16
+pkgrel=1
 pkgdesc="Ninjam online music jamsession client."
 arch=('i686' 'x86_64')
 url="https://jamtaba-music-web-site.appspot.com/"
@@ -16,7 +16,7 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/elieserdejesus/JamTaba/archive/v${pkgver}.tar.gz"
     "package.patch"
 )
-sha256sums=('00d68b4207e87bd3311275ed221c041bd1b082149287d274c0f6a6058ee5bb2a' 'd4bc9cbc29332af16328a04f75ee6693e3858eac21545cdba38fd536113f0bdc')
+sha256sums=('85877308bdb8f01b8001b3b803d10f7b7b10f7f6dfb428dfda64a4f0a427e0e7' 'd4bc9cbc29332af16328a04f75ee6693e3858eac21545cdba38fd536113f0bdc')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"

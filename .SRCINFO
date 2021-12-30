@@ -1,7 +1,7 @@
 pkgbase = jamtaba
 	pkgdesc = Ninjam online music jamsession client.
-	pkgver = 2.1.15
-	pkgrel = 2
+	pkgver = 2.1.16
+	pkgrel = 1
 	url = https://jamtaba-music-web-site.appspot.com/
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,9 @@ pkgbase = jamtaba
 	depends = qt5-websockets
 	depends = qt5-multimedia
 	provides = jamtaba
-	source = JamTaba-2.1.15.tar.gz::https://github.com/elieserdejesus/JamTaba/archive/v2.1.15.tar.gz
+	source = JamTaba-2.1.16.tar.gz::https://github.com/elieserdejesus/JamTaba/archive/v2.1.16.tar.gz
 	source = package.patch
-	sha256sums = 00d68b4207e87bd3311275ed221c041bd1b082149287d274c0f6a6058ee5bb2a
+	sha256sums = 85877308bdb8f01b8001b3b803d10f7b7b10f7f6dfb428dfda64a4f0a427e0e7
 	sha256sums = d4bc9cbc29332af16328a04f75ee6693e3858eac21545cdba38fd536113f0bdc
 
 pkgname = jamtaba
-
