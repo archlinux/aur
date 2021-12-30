@@ -7,8 +7,9 @@ pkgbase = dymo-cups-drivers
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	makedepends = wget
 	depends = libcups
-	source = http://download.dymo.com/Software/Linux/dymo-cups-drivers-1.4.0.tar.gz
+	source = https://download.dymo.com/Software/Linux/dymo-cups-drivers-1.4.0.tar.gz
 	source = cups-ppd-header.patch
 	source = cups-2.6-api.patch
 	sha256sums = c60797e7e986ca329f46e9a6ab1cb6382383952b15685ed69fd91f3c7ed64f71
@@ -16,4 +17,3 @@ pkgbase = dymo-cups-drivers
 	sha256sums = d256baf5b651c97df1031fde666f9b3e44afbf7df06d42f9f20ae5eaf30d1afe
 
 pkgname = dymo-cups-drivers
-
