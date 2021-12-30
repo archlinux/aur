@@ -1,7 +1,7 @@
 pkgbase = vault-kv-search
 	pkgdesc = Recursively search Hashicorp Vault for a substring.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xbglowx/vault-kv-search
 	arch = x86_64
 	license = Mozilla Public License Version 2.0
