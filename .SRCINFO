@@ -1,6 +1,6 @@
 pkgbase = rider-projector
 	pkgdesc = Run JetBrains Rider as a headless service for use with Projector.
-	pkgver = 2021.3.1
+	pkgver = 2021.3.2
 	pkgrel = 1
 	url = https://www.jetbrains.com/rider/
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Erin Allison <erin@eallison.us>
 
 pkgname=rider-projector
-pkgver=2021.3.1
+pkgver=2021.3.2
 _projectorver=1.5.2
 pkgrel=1
 pkgdesc='Run JetBrains Rider as a headless service for use with Projector.'
