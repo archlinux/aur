@@ -1,0 +1,65 @@
+--- ./usr/lib/python3.10/site-packages/quodlibet/packages/raven/context.py.old	2021-12-30 15:21:07.624928093 +0100
++++ ./usr/lib/python3.10/site-packages/quodlibet/packages/raven/context.py	2021-12-30 15:23:39.434095049 +0100
+@@ -7,7 +7,7 @@
+ """
+ from __future__ import absolute_import
+ 
+-from collections import Mapping, Iterable
++from collections.abc import Mapping, Iterable
+ from threading import local
+ from weakref import ref as weakref
+ 
+--- ./usr/lib/python3.10/site-packages/quodlibet/player/gstbe/util.py.old	2021-12-30 15:34:06.933985011 +0100
++++ ./usr/lib/python3.10/site-packages/quodlibet/player/gstbe/util.py	2021-12-30 15:34:49.063753826 +0100
+@@ -6,7 +6,7 @@
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ 
+-import collections
++from collections import abc
+ import subprocess
+ from enum import Enum
+ from typing import Iterable, Tuple
+@@ -183,7 +183,7 @@
+     return pipe, pipeline_desc
+ 
+ 
+-class TagListWrapper(collections.Mapping):
++class TagListWrapper(abc.Mapping):
+     def __init__(self, taglist, merge=False):
+         self._list = taglist
+         self._merge = merge
+--- ./usr/lib/python3.10/site-packages/quodlibet/util/collection.py.old	2021-12-30 15:20:53.901670066 +0100
++++ ./usr/lib/python3.10/site-packages/quodlibet/util/collection.py	2021-12-30 15:21:42.868068032 +0100
+@@ -24,7 +24,7 @@
+                                       AudioFile)
+ from quodlibet.formats._audio import PEOPLE as _PEOPLE
+ from quodlibet.pattern import Pattern
+-from collections import Iterable
++from collections.abc import Iterable
+ 
+ from quodlibet.util import is_windows
+ from quodlibet.util.path import escape_filename, unescape_filename, limit_path
+--- ./usr/lib/python3.10/site-packages/quodlibet/util/collections.py.old	2021-12-30 15:27:18.032895500 +0100
++++ ./usr/lib/python3.10/site-packages/quodlibet/util/collections.py	2021-12-30 15:27:58.639339341 +0100
+@@ -9,7 +9,8 @@
+ 
+ from __future__ import absolute_import
+ 
+-from collections import MutableSequence, defaultdict
++from collections import defaultdict
++from collections.abc import MutableSequence
+ 
+ from .misc import total_ordering
+ 
+--- ./usr/lib/python3.10/site-packages/quodlibet/util/http.py.old	2021-12-30 15:28:35.722469182 +0100
++++ ./usr/lib/python3.10/site-packages/quodlibet/util/http.py	2021-12-30 15:28:49.855724960 +0100
+@@ -7,7 +7,7 @@
+ # (at your option) any later version.
+ 
+ import json
+-from collections import Callable
++from collections.abc import Callable
+ from typing import Optional, Any
+ 
+ from gi.repository import Soup, Gio, GLib, GObject
