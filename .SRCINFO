@@ -1,16 +1,14 @@
 pkgbase = tarojs-cli
 	pkgdesc = Standard tooling for tarojs development
 	pkgver = 3.3.19
-	pkgrel = 1
-	url = https://taro.zone
+	pkgrel = 2
+	url = https://github.com/nervjs/taro
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	conflicts = nodejs-taro-cli
-	conflicts = taro-cli
-	noextract = tarojs-cli-3.3.19.tar.gz
-	source = tarojs-cli-3.3.19.tar.gz::https://registry.npmjs.org/@tarojs/cli/-/cli-3.3.19.tgz
-	sha256sums = SKIP
+	noextract = tarojs-cli-3.3.19.tgz
+	source = tarojs-cli-3.3.19.tgz::https://registry.npmjs.org/@tarojs/cli/-/cli-3.3.19.tgz
+	sha256sums = 5d09bebd36001e1c8eefabd633ef8db62c06e8682ac5681cab2efadad6c1763d
 
 pkgname = tarojs-cli
