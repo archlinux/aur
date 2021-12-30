@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-armadillo
 	pkgdesc = C++ linear algebra library (mingw-w64)
-	pkgver = 9.870.2
+	pkgver = 10.7.5
 	pkgrel = 1
 	url = http://arma.sourceforge.net/
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = mingw-w64-armadillo
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-9.870.2.tar.xz
-	sha256sums = 541b5fee4c1c412d0a508791611583fcd4e8ff67c0da0536833e694e700cf756
+	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-10.7.5.tar.xz
+	sha256sums = 5d0d9fd6b34efcba6a6fceff54c0d2d13fcbe915d7af8a30c5e72cf317d2094f
 
 pkgname = mingw-w64-armadillo
-
