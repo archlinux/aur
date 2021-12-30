@@ -16,7 +16,7 @@ conflicts=('schildichat-desktop')
 source=("https://github.com/SchildiChat/schildichat-desktop/releases/download/v${_pkgver}/schildichat-desktop_${_pkgver}_amd64.deb"
         "schildichat-desktop.sh")
 sha256sums=('984d657aeb1ecd9d32c3a43c594b112fca44ab8add5f8b3b48559791dea4541c'
-            'fbc7d9a5480a66e2623dbf05c0c51deee39bf35289d5b79325bfc4b87fa2a609')
+            '560220747aa96f858b8a6a23b53aead434d71633f9078cbd7ff945ddc3990a7c')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
