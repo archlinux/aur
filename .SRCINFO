@@ -1,7 +1,7 @@
 pkgbase = svix-cli
 	pkgdesc = The Svix CLI (webhooks as a service)
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.svix.com
 	arch = x86_64
 	license = GPL
