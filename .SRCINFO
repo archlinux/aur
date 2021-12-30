@@ -1,0 +1,12 @@
+pkgbase = autorandr-launcher-git
+	pkgdesc = Listens to X server screen change events and launches autorandr after an event occurs.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/phillipberndt/autorandr
+	arch = any
+	license = GPL3
+	depends = autorandr
+	source = autorandr-launcher-git::git+https://github.com/phillipberndt/autorandr.git
+	sha512sums = SKIP
+
+pkgname = autorandr-launcher-git
