@@ -1,0 +1,24 @@
+pkgbase = sane-scan-pdf-git
+	pkgdesc = Sane scanning bash script with OCR and deskew support.
+	pkgver = 20211022
+	pkgrel = 1
+	url = https://github.com/rocketraman/sane-scan-pdf
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = netpbm
+	depends = ghostscript
+	depends = poppler
+	depends = units
+	depends = imagemagick
+	optdepends = unpaper: for software deskew
+	optdepends = util-linux: for properly ordered verbose logs
+	optdepends = tesseract: to make searchable PDFs
+	optdepends = parallel: to constrain resource usage during page processing
+	optdepends = bc: whitepage detection percentage calculations
+	provides = sane-scan-pdf
+	source = sane-scan-pdf-git::git+https://github.com/rocketraman/sane-scan-pdf
+	md5sums = SKIP
+
+pkgname = sane-scan-pdf-git
