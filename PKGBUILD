@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit-git
 pkgver=VERSION
-pkgrel=3
+pkgrel=4
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -13,6 +13,7 @@ makedepends=(
 	'ninja'
 	'go'
 )
+provides=('toit')
 conflicts=('toit')
 source=('git+https://github.com/toitlang/toit')
 noextract=()
@@ -20,7 +21,11 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	echo "include(tools/gitversion.cmake)" > print_version.cmake
+	echo "compute_git_version(TOIT_GIT_VERSION)" >> print_version.cmake
+	echo "execute_process(COMMAND \${CMAKE_COMMAND} -E echo \${TOIT_GIT_VERSION})" >> print_version.cmake
+	cmake -P print_version.cmake
+	rm print_version.cmake
 }
 
 prepare() {

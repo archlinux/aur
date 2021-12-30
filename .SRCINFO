@@ -1,7 +1,7 @@
 pkgbase = toit-git
 	pkgdesc = Toit programming language SDK
 	pkgver = VERSION
-	pkgrel = 3
+	pkgrel = 4
 	url = https://toitlang.org
 	arch = x86_64
 	license = LGPL
@@ -10,6 +10,7 @@ pkgbase = toit-git
 	makedepends = ninja
 	makedepends = go
 	depends = gcc-libs
+	provides = toit
 	conflicts = toit
 	source = git+https://github.com/toitlang/toit
 	md5sums = SKIP
