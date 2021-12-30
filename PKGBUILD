@@ -7,7 +7,7 @@
 # Contributor: Julien Duponchelle <julien@gns3.net>
 
 pkgname=python-cx-freeze
-pkgver=6.8.2
+pkgver=6.8.3
 pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
@@ -21,7 +21,7 @@ replaces=('python-cx_freeze')
 provides=('python-cx_freeze')
 conflicts=('python-cx_freeze')
 source=("https://github.com/marcelotduarte/cx_Freeze/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('f7cd5550c64d58d25b1dd5fe64f1e529959308157b94e7935043e8f63b16699fff287ce4fc6f453d54f18635a497f2f1fb6bd242afbd36e4363f34b92986a945')
+sha512sums=('09ae6f8ee7c9fb85dbb6110a29070899790c90400e1780438512924910ac463ace8e1ebca0f80221793d5f6f11a34e150c2a1bd8dfc2ae74e2ce440b24a3950c')
 
 build() {
   cd cx_Freeze-$pkgver
