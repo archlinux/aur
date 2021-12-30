@@ -3,32 +3,37 @@
 # Contributor: Siôn le Roux <sinisterstuf@gmail.com>
 
 pkgname=wakatime
-pkgver=13.1.0
-pkgrel=3
+epoch=1
+pkgver='1.30.5'
+pkgrel=1
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
-arch=('any')
-url="https://github.com/${pkgname}/${pkgname}"
+arch=('x86_64')
+url="https://github.com/${pkgname}/${pkgname}-cli"
 license=('BSD')
-depends=('python')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
-        'literal_comparison.patch')
-sha256sums=('910c252ff86f649e6e10f88e937062257a3dd71606db728eff49397524b34863'
-            'ef526daab8b9656b33893bbeb43d9e9d96ad81a01446bbe0d3035170a7b80163')
+depends=('glibc')
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}-cli/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ed7a27e0ac841980b5b89574da99f7e0cb915d8dd9dd7c176a11703f974ad54e')
 
 prepare () {
-  cd "$srcdir/legacy-python-cli-$pkgver"
-  patch -Np1 -i "${srcdir}/literal_comparison.patch"
+  cd "${srcdir}/${pkgname}-cli-${pkgver}"
+  mkdir -p build  # create build dir
 }
 
 build () {
-  cd "$srcdir/legacy-python-cli-$pkgver"
-  python setup.py build
+  cd "${srcdir}/${pkgname}-cli-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  go build -o build/"${pkgname}" ./main.go
 }
 
 package() {
-  cd "$srcdir/legacy-python-cli-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/
+  cd "${srcdir}/${pkgname}-cli-${pkgver}"
+  install -Dm755 build/"${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
+  install -d "${pkgdir}"/usr/share/licenses/"${pkgname}"
+  install LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
