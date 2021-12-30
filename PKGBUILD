@@ -1,10 +1,10 @@
-# Maintainer: Bruno Miguel
+# Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=q-dns-git
 pkgdesc='A tiny command line DNS client with support for UDP, DoT, DoH, DoQ and ODoH.'
 arch=(x86_64)
 url='https://github.com/natesales/q'
-pkgrel=1
+pkgrel=2
 license=('GPL-3.0')
 makedepends=('go' 'git')
 source=('git+https://github.com/natesales/q')

@@ -1,7 +1,7 @@
 pkgbase = q-dns-git
 	pkgdesc = A tiny command line DNS client with support for UDP, DoT, DoH, DoQ and ODoH.
 	pkgver = 0.4.2.r7.g969a234
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/natesales/q
 	arch = x86_64
 	license = GPL-3.0
