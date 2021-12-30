@@ -1,6 +1,6 @@
 pkgbase = python-freqtrade-git
 	pkgdesc = Free, open source crypto trading bot
-	pkgver = 0.14.3.r12324.g90ad17893
+	pkgver = 0.14.3.r12618.g96f99699e
 	pkgrel = 1
 	url = https://github.com/freqtrade/freqtrade
 	arch = any
