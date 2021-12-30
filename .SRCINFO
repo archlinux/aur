@@ -1,0 +1,14 @@
+pkgbase = vault-kv-search
+	pkgdesc = Recursively search Hashicorp Vault for a substring.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xbglowx/vault-kv-search
+	arch = x86_64
+	license = Mozilla Public License Version 2.0
+	depends = glibc
+	optdepends = vault: in order to interact more with vault,
+	source = vault-kv-search-0.1.0-src.tar.gz::https://github.com/xbglowx/vault-kv-search/releases/download/v0.1.0/vault-kv-search-0.1.0.linux-amd64.tar.gz
+	validpgpkeys = SKIP
+	sha256sums = 0ee31ab1dc5e9ef0e0aa66e75f1cba86676d0c99010196947fdfb0a73b35e547
+
+pkgname = vault-kv-search
