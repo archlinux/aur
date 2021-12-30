@@ -3,18 +3,18 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Contributor: crov
 pkgname=vdr-chanman
-pkgver=0.0.12
-_vdrapi=2.4.7
-pkgrel=2
+pkgver=0.0.13
+_vdrapi=2.6.0
+pkgrel=1
 pkgdesc="Change channel with a multi level choice"
 url="https://github.com/vdr-projects/vdr-plugin-chanman"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-chanman/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-chanman/archive/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('625631a7a9ac09a9ba2bd4b880f8d5fd27649c3266a9bfa7d2ce87c311766489')
+sha256sums=('054c03452bb8971d743ed8a6da99e68d12f116e2a8874fbca3df9869de9e098d')
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
