@@ -2,7 +2,7 @@
 
 pkgname=flatcam-qt6
 _pkgname=FlatCAM
-pkgver=r4040.0e4eb263
+pkgver=r4043.f3d379e4
 pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG) [QT6 Fork]"
 arch=('any')
@@ -23,7 +23,7 @@ depends=('tk'
         'python-reportlab'
         'python-svglib'
         'python-vispy'
-        'python-rasterio'
+        'python-rasterio>=1.3a2-2'
         'python-ezdxf'
         'python-dill'
         'python-freetype-py'
