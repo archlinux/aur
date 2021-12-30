@@ -1,7 +1,7 @@
 # Maintainer: Alesh Slovak <aleshslovak@gmail.com>
 
 pkgname=chimera
-pkgver=0.12.5
+pkgver=0.12.6
 pkgrel=1
 pkgdesc="Configure and manage games in Steam"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('steam-tweaks' 'steam-buddy')
 depends=('python' 'python-bottle' 'python-pyftpdlib' 'python-yaml' 'python-vdf' 'python-inotify-simple' 'python-requests' 'python-beaker' 'python-pygame' 'python-bcrypt' 'python-psutil' 'retroarch' 'libretro-genesis-plus-gx' 'libretro-mgba' 'libretro-nestopia' 'libretro-snes9x' 'libretro-mupen64plus-next' 'libretro-beetle-pce-fast' 'libretro-flycast' 'libretro-beetle-psx-hw' 'libretro-play' 'libretro-kronos' 'libretro-dolphin' 'retroarch-autoconfig-udev-git' 'flatpak' 'xdotool' 'ponymix' 'libretro-picodrive' 'legendary' 'ttf-dejavu' 'wyvern' 'innoextract')
 optdepends=('libretro-mame-git' 'libretro-stella2014-git' 'libretro-opera-git' 'srt-live-server') # compiling cores takes a long time, so make them optional
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chimeraos/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('7ee5681d8ef2a2b368004ee2c25a4473')
+md5sums=('b5cf431dbfae4b200d5bf149d6bc338c')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
