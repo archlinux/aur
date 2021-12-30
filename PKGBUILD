@@ -3,9 +3,9 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=27.1.3
+_pkgver=27.2.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=5
+pkgrel=1
 epoch=1
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility"
 arch=("i686" "x86_64" "aarch64")
@@ -14,7 +14,7 @@ license=("GPL2")
 _mbedtlsver=2.28
 _pythonver=3.10
 depends=(
-  "jack" "gtk-update-icon-cache" "x264" "rnnoise" #"pciutils"
+  "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils"
 
   # "libxinerama" "qt5-svg" provided by "vlc-luajit"
   # "libxkbcommon-x11" provided by "qt5-base"
@@ -55,7 +55,7 @@ makedepends=(
   "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
 
   # AUR Packages
-  "cef-minimal-obs=87.1.14"
+  "libajantv2"
 )
 # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
@@ -73,6 +73,7 @@ optdepends=(
   "luajit: Lua scripting"
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
+  "libajantv2: AJA NTV 2 support"
 )
 # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
@@ -81,8 +82,8 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   optdepends+=("python>=$_pythonver: Python scripting")
 fi
-provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
-conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
+provides=("obs-studio=$pkgver" "obs-vst")
+conflicts=("obs-studio" "obs-vst")
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
@@ -109,17 +110,20 @@ if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
 
+if [[ $CARCH == 'x86_64' ]]; then
+  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69")
+  provides+=("obs-browser")
+  conflicts+=("obs-linuxbrowser" "obs-browser")
+  _browser=ON
+else
+  _browser=OFF
+fi
+
 prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
-
-  ## UI: Link python when obs-scripting python is enabled (https://github.com/obsproject/obs-studio/commit/1017cd5430602f695713f191ef8f5fa9940baee6)
-  git cherry-pick --no-commit 1017cd5430602f695713f191ef8f5fa9940baee6
-
-  ## UI: Update python linkage for older compilers (https://github.com/obsproject/obs-studio/commit/293b7951ed5a22529ffb214029de9233190a6f2f)
-  git cherry-pick --no-commit 293b7951ed5a22529ffb214029de9233190a6f2f
 }
 
 build() {
@@ -130,7 +134,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_BROWSER=ON \
+    -DBUILD_BROWSER=$_browser \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$_pkgver-$pkgrel" ..
 
