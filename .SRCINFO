@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-soundtouch
+	pkgdesc = An audio processing library (mingw-w64)
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://www.surina.net/soundtouch/
+	arch = any
+	license = LGPL2.1
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://codeberg.org/soundtouch/soundtouch/archive/2.3.1.tar.gz
+	sha256sums = 42633774f372d8cb0a33333a0ea3b30f357c548626526ac9f6ce018c94042692
+
+pkgname = mingw-w64-soundtouch
