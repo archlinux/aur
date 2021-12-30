@@ -2,7 +2,7 @@
 
 pkgname=katago-analyze-sgf
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Add analysis to SGF files using KataGo'
 url='https://github.com/kevinsung/katago-analyze-sgf'
