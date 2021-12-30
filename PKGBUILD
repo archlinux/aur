@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kevinsung/katago-analyze-sg
 
 sha256sums=('026aac1c919d6a52a01a2f5a80b200cd0b780618063ce236646dc4ddc01e9831'
             'b4225a1ecab44c28fd07ed8cd958462dbe0792b867169d14dde038288c87bf2d'
-            '41d543b322ecc5b8a47b112a6c985c3c85080abd2db0d609dfeeb341fd69f69d'
+            'a8e9ae8f18176b6efb34053f1339412712cd3aa9cbbd779bc1bc0da5f86e1824'
             'd7d652a7e4329e777c5c5fbedad84c243ac5721e980a8adc8c10ad51fad54c0e'
             '1e3699842af258b6af3747bca815773f7b338116320d7d98ae9a304bebff439d')
 
