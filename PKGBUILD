@@ -2,7 +2,7 @@
 # Contributor: Serge K <arch@phnx47.net>
 
 pkgname=prey-node-client
-pkgver=1.9.14
+pkgver=1.9.15
 pkgrel=1
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
@@ -19,8 +19,8 @@ source_x86_64=("https://downloads.preyproject.com/prey-client-releases/node-clie
 source_i686=("https://downloads.preyproject.com/prey-client-releases/node-client/$pkgver/prey-linux-$pkgver-x86.zip")
 sha256sums=('bfe1cd56443eb3e4dd49974e955ffe8ad33b5a7ec749e53cc2682bde82dceb80'
             '41f29d334e7671b07cfdc848b2752ccc51710471285e8ebe61c07faa0d36160d')
-sha256sums_x86_64=('28576b5f8b30fa7c7bddd1db634767b60f9ede502c9594be515a25a4e8979d7b')
-sha256sums_i686=('38c2fa8546242353f5db1027efcaae2fd172763ff52cb2f9e33549db753fcbc1')
+sha256sums_x86_64=('2ea216b24d44590fd2adde982c349d36110bf5c6a7cea9f93f3d767d2fd02249')
+sha256sums_i686=('531d7b11738948503f687c143a374e26bfc3cbbf0562038d11fbe518eb8159b3')
 
 package() {
   cd "$srcdir/prey-$pkgver"
