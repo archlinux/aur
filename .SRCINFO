@@ -7,6 +7,7 @@ pkgbase = abricotine-git
 	license = GPL3
 	makedepends = npm
 	makedepends = python2
+	makedepends = git
 	depends = libxss
 	provides = abricotine
 	conflicts = abricotine
@@ -16,4 +17,3 @@ pkgbase = abricotine-git
 	sha256sums = 164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c
 
 pkgname = abricotine-git
-

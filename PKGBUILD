@@ -11,7 +11,7 @@ arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
 depends=('libxss')
-makedepends=('npm' 'python2')
+makedepends=('npm' 'python2' 'git')
 source=("abricotine::git+https://github.com/brrd/abricotine"
         "abricotine.desktop")
 sha256sums=('SKIP'
