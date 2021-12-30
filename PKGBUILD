@@ -9,7 +9,7 @@
 pkgname=lilypond-devel
 _pkgname=lilypond
 pkgver=2.23.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Music engraving program (development version)"
 arch=('x86_64')
 url="https://lilypond.org"
@@ -25,7 +25,7 @@ optdepends=(
   'tex-gyre-fonts: for extra fonts'
   'ttf-dejavu: for extra fonts'
 )
-provides=('lilypond')
+provides=('lilypond=2.23.5')
 conflicts=('lilypond')
 source=("https://lilypond.org/downloads/sources/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz")
 sha512sums=('eee5563d6a0ab6ba8aea6113c9c121681a6f9b005b266091dcce5412e366652d16c23bef600e7a33a0c0e4f4e67cb8d8c549a1213cbabd7877d7a9ecbc82af68')
