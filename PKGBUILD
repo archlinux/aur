@@ -1,11 +1,11 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=kibi-git
-pkgver=0.1.2.r33.ga224173
+pkgver=0.2.2.r41.gbbf58ed
 pkgrel=1
 pkgdesc="A tiny text editor, written in Rust"
 url="https://github.com/ilai-deutel/kibi"
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 depends=('gcc-libs')
 conflicts=('kibi')
 provides=('kibi')
@@ -20,15 +20,23 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$pkgname"
-  cargo build --release --locked --all-features
+  cargo fetch --locked
 }
 
-# check() {
-#   cd "$pkgname"
-#   cargo test --release --locked
-# }
+build() {
+  cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
+
+check() {
+  cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --release --locked
+}
 
 package() {
   cd "$pkgname"
@@ -42,4 +50,7 @@ package() {
 
   # Install license
   install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  # Install desktop file
+  install -Dm644 kibi.desktop -t "$pkgdir/usr/share/applications"
 }
