@@ -1,6 +1,6 @@
 pkgbase = kibi-git
 	pkgdesc = A tiny text editor, written in Rust
-	pkgver = 0.2.2.r41.gbbf58ed
+	pkgver = 0.2.2.r44.g6fd5b66
 	pkgrel = 1
 	url = https://github.com/ilai-deutel/kibi
 	arch = x86_64
