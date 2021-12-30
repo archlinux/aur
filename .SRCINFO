@@ -1,0 +1,27 @@
+pkgbase = chatterino2-dankerino-bin
+	pkgdesc = Dankerino is a fork of Chatterino 2.
+	pkgver = 608965e
+	pkgrel = 1
+	url = https://github.com/Mm2PL/dankerino/
+	arch = x86_64
+	license = MIT
+	depends = qt5-multimedia
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-imageformats
+	depends = boost-libs
+	depends = openssl
+	optdepends = streamlink: For piping streams to video players
+	optdepends = pulseaudio: For audio output
+	optdepends = gst-plugins-good: For audio output
+	provides = chatterino
+	conflicts = chatterino2-git
+	conflicts = chatterino2-appimage
+	conflicts = chatterino2-nightly-appimage
+	conflicts = chatterino2-7tv-git
+	conflicts = chatterino2-dankerino-git
+	options = !strip
+	source = https://github.com/Mm2PL/dankerino/releases/download/nightly-build/Chatterino-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = chatterino2-dankerino-bin
