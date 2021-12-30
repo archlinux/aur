@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!CHANGELOG.md
+!.gitignore
+!.SRCINFO
