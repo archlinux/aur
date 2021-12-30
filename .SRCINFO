@@ -1,6 +1,6 @@
 pkgbase = nvidia-merged
 	pkgver = 460.73.01
-	pkgrel = 13
+	pkgrel = 14
 	url = https://krutavshah.github.io/GPU_Virtualization-Wiki/
 	arch = x86_64
 	groups = nvidia-merged

@@ -3,7 +3,7 @@
 pkgbase='nvidia-merged'
 pkgname=('nvidia-merged' 'lib32-nvidia-merged-utils' 'lib32-opencl-nvidia-merged' 'nvidia-merged-dkms' 'nvidia-merged-settings' 'nvidia-merged-utils' 'opencl-nvidia-merged')
 pkgver=460.73.01
-pkgrel=13
+pkgrel=14
 arch=('x86_64')
 makedepends=('git' 'rust')
 url='https://krutavshah.github.io/GPU_Virtualization-Wiki/'
@@ -113,6 +113,8 @@ package_nvidia-merged-dkms() {
     provides=('NVIDIA-MODULE' 'nvidia-dkms')
 
     cd "${_pkg}"
+
+    install -D -m644 "${srcdir}/nvidia-merged-blacklist-nouveau.conf" "/etc/modprobe.d/nvidia-merged-blacklist-nouveau.conf"
 
     install -dm 755 "${pkgdir}"/usr/src
     cp -dr --no-preserve='ownership' kernel "${pkgdir}/usr/src/nvidia-${pkgver}"
