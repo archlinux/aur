@@ -1,6 +1,6 @@
 pkgbase = evolution-decsync
 	pkgdesc = An Evolution plugin which synchronizes contacts and calendars using DecSync.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/39aldo39/Evolution-DecSync
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = evolution-decsync
 	depends = evolution-data-server
 	depends = evolution
 	depends = libdecsync
-	source = https://github.com/39aldo39/Evolution-DecSync/archive/v2.0.0-evolution-3.40.tar.gz
-	source = use-format-string.patch
-	sha256sums = 8772a8fcaf07cffe15163cf4d0b598d2cb8806bea4ddaa9ddfe150771da1679b
-	sha256sums = 4c2e04a0e2352f22197db66f416670c0eb3da44f4520195e660e804b820388fc
+	source = https://github.com/39aldo39/Evolution-DecSync/archive/v2.0.1-evolution-3.40.tar.gz
+	sha256sums = 1b97ca43abf423550f9fa7ff35cc17315461478c8c3920f90e20ed97e690fb37
 
 pkgname = evolution-decsync
