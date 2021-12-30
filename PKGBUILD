@@ -1,8 +1,8 @@
-# Maintainer: Bruno Miguel <bruno@userrepository.eu>
+# Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=userrepository-mirrors
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Userrepository.eu mirror list for pacman"
 arch=('any')
 url="https://github.com/brunomiguel/userrepository-mirrorlist"
