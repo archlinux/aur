@@ -1,0 +1,24 @@
+pkgbase = citbx4gitlab
+	pkgdesc = CI toolbox for Gitlab
+	pkgver = 8.1.1
+	pkgrel = 1
+	url = https://gitlab.com/mbedsys/citbx4gitlab
+	arch = any
+	license = GPL3
+	license = APACHE
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = docker
+	depends = gawk
+	depends = git
+	depends = jq
+	depends = python-yaml
+	depends = sed
+	optdepends = git-lfs: large file system support
+	source = citbx4gitlab-8.1.1.tar.xz::https://gitlab.com/api/v4/projects/mbedsys%2fcitbx4gitlab/packages/generic/ci-toolbox/8.1.1/ci-toolbox-8.1.1.tar.xz
+	source = archlinux.patch
+	sha256sums = 026c41d0c3388f3e60dc43acd0a5a22ae57628a4f8a37b74b208eeb7b5068b07
+	sha256sums = ad8a8ba83e8c2b9631bb94062a72020ed7bfa1df3f6d48fdc6e885324f2f7f8a
+
+pkgname = citbx4gitlab
