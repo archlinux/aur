@@ -18,8 +18,8 @@ pkgname=(
   uwsgi-fix-plugin-notfound
 )
 pkgver=2.0.20
-pkgrel=2
-pkgdesc="A full stack for building hosting services"
+pkgrel=3
+pkgdesc="A full stack for building hosting services with last patches."
 arch=(x86_64)
 url="https://uwsgi-docs.readthedocs.io/en/latest/"
 license=(GPL2)
