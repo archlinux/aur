@@ -2,7 +2,7 @@
 
 pkgname='yt-watch-git'
 _pkgname='yt-watch'
-pkgver=r7.eec568c
+pkgver=r8.ec6946b
 pkgrel=1
 pkgdesc="Search/Watch/Download/Convert YouTube Videos on mpv using yt-dlp/YouTube API."
 arch=('any')
@@ -14,11 +14,11 @@ source=("yt-watch::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-        cd "$srcdir/${_pkgname}"
+        cd ${srcdir}/${_pkgname}
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-        cd "$srcdir/${_pkgname%-VCS}"
-        install -Dm755 ./yt-watch "$pkgdir/usr/bin/yt-watch"
+        cd ${srcdir}/${_pkgname}
+        install -Dm 755 ./yt-watch ${pkgdir}/usr/bin/yt-watch
 }
