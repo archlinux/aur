@@ -4,13 +4,13 @@ pkgname=jupyterlab-language-pack-no-no
 _pypi=jupyterlab-language-pack-no-NO
 pkgdesc='Norwegian Bokmål (Norway) language pack for JupyterLab'
 url="https://github.com/jupyterlab/language-packs/tree/master/language-packs/$_pypi"
-pkgver=3.2.post4
+pkgver=3.2.post5
 pkgrel=1
 arch=('any')
 license=('BSD')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/j/$_pypi/$_pypi-$pkgver.tar.gz")
-sha256sums=('aff86067816fd11cfa4897c01c97e5062ebc6ceb891b6c3adc4ef62cae34ae57')
+sha256sums=('c928511a350141ffe2e79558dcdaf809a388b32d3e98691b510db755ea3933a1')
 
 build() {
   cd "$_pypi-$pkgver"
