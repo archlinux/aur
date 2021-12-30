@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
 depends=('qt5-webkit')
-makedepends=('cmake' 'mesa' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-tools')
+makedepends=('cmake')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('241021e24b0e2cdbc4bdf516d41ddfd23675a5a098bdaa0f7564d866cd292659')
 
