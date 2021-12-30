@@ -1,6 +1,6 @@
 pkgbase = joystickwake
 	pkgdesc = A joystick-aware screen waker
-	pkgver = 0.2.5
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/foresto/joystickwake
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = joystickwake
 	depends = python
 	depends = python-pyudev
 	conflicts = joystickwake-git
-	source = https://github.com/foresto/joystickwake/archive/v0.2.5.tar.gz
-	sha256sums = c2f0357d0c9de10b3d3293cfba91c1d6d606eb3f1bc5be5aad780f08b0d40746
+	source = https://github.com/foresto/joystickwake/archive/v0.3.tar.gz
+	sha256sums = 1b15e7f5a62a6df78af52fbbd707747ca45326da65a5e3c394d06b90acb77e91
 
 pkgname = joystickwake
