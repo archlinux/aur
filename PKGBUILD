@@ -11,7 +11,7 @@ license=('GPL')
 depends=('gtk3')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
         "free42.desktop")
-md5sums=('066d6c647d5912f61fe70ab3d0b18189'
+md5sums=('4f3b81ab07d0bb2ac0f7d342499f7e77'
          '9e1af9bfd8ce5eb2ad107f63ea446a55')
 
 build() {
