@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-rapidyaml
+	pkgdesc = A library to parse and emit YAML, and do it fast (mingw-w64)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/biojppm/rapidyaml
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/biojppm/rapidyaml.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = mingw-w64-rapidyaml
