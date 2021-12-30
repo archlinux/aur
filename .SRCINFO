@@ -1,6 +1,6 @@
 pkgbase = phylonium
 	pkgdesc = Fast and Accurate Estimation of Evolutionary Distances
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/evolbioinf/phylonium/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = phylonium
 	license = GPL3
 	checkdepends = glib2
 	depends = libdivsufsort
-	source = https://github.com/EvolBioInf/phylonium/releases/download/v1.5/phylonium-1.5.tar.gz
-	sha256sums = a84d738ba7a265d0da0d8178255810923f4aa76bf50253e727c46961805ca6a4
+	source = https://github.com/EvolBioInf/phylonium/releases/download/v1.6/phylonium-1.6.tar.gz
+	sha256sums = 5618819e12141c2e9005e1d6e83426c05bd9f035289a65b0f3199bbcbb8f632c
 
 pkgname = phylonium

@@ -1,6 +1,6 @@
 # Maintainer: Fabian Klötzl <fabian-aur@kloetzl.info>
 pkgname=phylonium
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Fast and Accurate Estimation of Evolutionary Distances"
 url="https://github.com/evolbioinf/phylonium/"
@@ -9,7 +9,7 @@ depends=("libdivsufsort")
 arch=("i686" "x86_64")
 checkdepends=("glib2")
 source=("https://github.com/EvolBioInf/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a84d738ba7a265d0da0d8178255810923f4aa76bf50253e727c46961805ca6a4')
+sha256sums=('5618819e12141c2e9005e1d6e83426c05bd9f035289a65b0f3199bbcbb8f632c')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
