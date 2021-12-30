@@ -1,7 +1,7 @@
 # Maintainer: michaelkuc6 <michaelkuc6 at gmail dot com>
 _pkgname=fractorium
 pkgname=${_pkgname}-git
-pkgver=r912.f476afa
+pkgver=r915.ee7ca70
 pkgrel=1
 pkgdesc="A Qt-based fractal flame editor which uses a C++ re-write of the flam3 algorithm named Ember and a GPU capable version named EmberCL which implements a portion of the cuburn algorithm in OpenCL."
 arch=('x86_64')
@@ -18,9 +18,7 @@ makedepends=(
 )
 depends=(
 	'ocl-icd'
-	'intel-tbb'
 	'openexr>=3.0'
-	'qt5-base'
 	'qt5-3d'
 )
 provides=("${_pkgname}")
@@ -28,12 +26,10 @@ conflicts=()
 epoch=1
 source=(
 	"${_pkgname}::git+https://bitbucket.org/mfeemster/fractorium.git"
-	defaults.pri.patch
 )
 
 sha256sums=(
 	'SKIP'
-	'860dc7eda9d2654b67c785c069ac1166fcec35b05068d912c3b5f7fde187f486'
 )
 
 pkgver() {
@@ -44,8 +40,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	patch -p0 < ../defaults.pri.patch
-
 	export QT_SELECT=qt5
 	qmake main.pro -r -spec linux-g++-64 CONFIG+="release native"
 }
