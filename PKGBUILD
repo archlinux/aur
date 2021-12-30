@@ -1,7 +1,7 @@
 # Maintainer: Daniel Ruiz de Alegria <daniel@drasite.com>
 
 pkgname="skeuos-gtk"
-pkgver=20211208
+pkgver=20211230
 pkgrel=1
 pkgdesc="Light and Dark window themes based on a Skeuomorphic design."
 arch=('any')
