@@ -1,18 +1,18 @@
 pkgbase = mpdevil
 	pkgdesc = A simple music browser for MPD
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/mpdevil
 	arch = any
 	license = GPL3
-	makedepends = python-distutils-extra
+	makedepends = meson
 	depends = python-mpd2
 	depends = gtk3
 	depends = libnotify
 	depends = python-gobject
 	depends = python-requests
 	depends = python-beautifulsoup4
-	source = mpdevil-1.4.1.tar.gz::https://github.com/SoongNoonien/mpdevil/archive/v1.4.1.tar.gz
-	sha256sums = 6402fbc18dcefdd2e967f45690ea325112760cf9a87c644f3880ae14a654441d
+	source = mpdevil-1.5.0.tar.gz::https://github.com/SoongNoonien/mpdevil/archive/v1.5.0.tar.gz
+	sha256sums = a55c9d4aca13fba8477e698ae1266b4e4ffaee8bedb340da8d10d2a624716599
 
 pkgname = mpdevil
