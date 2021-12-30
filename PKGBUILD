@@ -1,6 +1,6 @@
 # Maintainer: Markus Moser<marmoser@wu.ac.at>
 pkgname=naviserver-postgres-connector
-pkgver=4.99.22
+pkgver=4.99.23
 pkgrel=1
 pkgdesc="Naviserver postgres connector"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://bitbucket.org/naviserver/naviserver/"
 license=('MPL')
 depends=('tcllib>=1.17' 'tcl>=8.5.18' 'postgresql>=9.4' 'naviserver>=4.99.22')
 source=("http://download.sourceforge.net/sourceforge/naviserver/naviserver-${pkgver}-modules.tar.gz")
-md5sums=("b25c092922f2c1f7d4974dbd92d4c3cd")
+md5sums=("7627e4d1cadc8976f3d8641561f8b720")
 
 build() {
     cd modules/nsdbpg
