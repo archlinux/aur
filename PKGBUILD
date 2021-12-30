@@ -6,8 +6,8 @@ pkgbase=vdr-streamdev
 pkgname=(vdr-streamdev-{client,server})
 pkgver=0.6.1.r36.ge2a9b97
 _gitver=e2a9b979d3fb92967c7a6a8221e674eb7e55c813
-_vdrapi=2.4.7
-pkgrel=5
+_vdrapi=2.6.0
+pkgrel=6
 pkgdesc="implementation of the VTP (Video Transfer Protocol)"
 url="http://projects.vdr-developer.org/projects/show/plg-streamdev"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -33,6 +33,11 @@ pkgver() {
   else
     printf "%s" $_last_release
   fi
+}
+
+prepare() {
+  cd "${srcdir}/vdr-plugin-$_plugname"
+  sed -i 's/cDevice::SetCurrentChannel(CurrentChannel);/cDevice::SetCurrentChannel(CurrentChannel->Number());/' server/connectionVTP.c
 }
 
 build() {
