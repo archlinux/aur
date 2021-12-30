@@ -1,7 +1,7 @@
 pkgbase = openrgb-bin
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	install = openrgb-bin.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = openrgb-bin
 	depends = hidapi
 	depends = mbedtls
 	optdepends = i2c-tools: Motherboard & RAM access
-	optdepend = openrazer-driver-dkms: OpenRazer support
+	optdepends = openrazer-driver-dkms: OpenRazer support
 	provides = openrgb
 	conflicts = openrgb
 	options = !strip
