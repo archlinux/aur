@@ -1,32 +1,31 @@
-From 75320b9620b5240cda2c9d92cde394fb68ff97b6 Mon Sep 17 00:00:00 2001
+From 2b2e1a16be8e53ee7120e696aa918cbdaa4761f2 Mon Sep 17 00:00:00 2001
 From: Lukas1818 <git@lukas1818.de>
-Date: Sat, 11 Dec 2021 14:54:22 +0100
+Date: Thu, 30 Dec 2021 12:40:16 +0100
 Subject: [PATCH] fixs for tbb21 based on
  https://github.com/archlinux/svntogit-community/blob/packages/prusa-slicer/trunk/prusa-slicer-tbb-2021.patch
 
 ---
- src/libslic3r/Print.cpp                     |   6 +-
- src/libslic3r/PrintBase.cpp                 |   2 +-
- src/libslic3r/PrintBase.hpp                 |  40 +-
- src/libslic3r/PrintObject.cpp               |   1 -
- src/libslic3r/SLA/Concurrency.hpp           |   5 +-
- src/libslic3r/SLA/SupportTree.cpp           |   3 -
- src/libslic3r/SLAPrint.cpp                  |  10 +-
- src/libslic3r/SupportMaterial.cpp           |   1 -
- src/libslic3r/Thread.cpp                    |  10 +-
- src/libslic3r/pchheader.hpp                 |   3 -
- src/libslic3r/utils.cpp                     |   6 +-
- src/slic3r/GUI/BackgroundSlicingProcess.cpp |   6 +-
- src/slic3r/GUI/BackgroundSlicingProcess.hpp |   2 +-
- src/slic3r/GUI/InstanceCheck.hpp            |   2 +-
- src/slic3r/GUI/Mouse3DController.cpp        |  38 +-
- src/slic3r/GUI/Mouse3DController.hpp        |  10 +-
- src/slic3r/GUI/RemovableDriveManager.cpp    |  24 +-
- src/slic3r/GUI/RemovableDriveManager.hpp    |   6 +-
- 19 files changed, 543 insertions(+), 395 deletions(-)
+ src/libslic3r/Print.cpp                     |  6 ++--
+ src/libslic3r/PrintBase.cpp                 |  2 +-
+ src/libslic3r/PrintBase.hpp                 | 40 ++++++++++-----------
+ src/libslic3r/SLA/Concurrency.hpp           |  5 +--
+ src/libslic3r/SLA/SupportTree.cpp           |  3 --
+ src/libslic3r/SLAPrint.cpp                  | 10 +++---
+ src/libslic3r/SupportMaterial.cpp           |  1 -
+ src/libslic3r/Thread.cpp                    | 10 +++---
+ src/libslic3r/pchheader.hpp                 |  3 --
+ src/libslic3r/utils.cpp                     |  6 ++--
+ src/slic3r/GUI/BackgroundSlicingProcess.cpp |  6 ++--
+ src/slic3r/GUI/BackgroundSlicingProcess.hpp |  2 +-
+ src/slic3r/GUI/InstanceCheck.hpp            |  2 +-
+ src/slic3r/GUI/Mouse3DController.cpp        | 38 ++++++++++----------
+ src/slic3r/GUI/Mouse3DController.hpp        | 10 +++---
+ src/slic3r/GUI/RemovableDriveManager.cpp    | 24 ++++++-------
+ src/slic3r/GUI/RemovableDriveManager.hpp    |  6 ++--
+ 17 files changed, 80 insertions(+), 94 deletions(-)
 
 diff --git a/src/libslic3r/Print.cpp b/src/libslic3r/Print.cpp
-index 87c2cc2b3..07c7d00e6 100644
+index 1132af8dd9..ae64b970d0 100644
 --- a/src/libslic3r/Print.cpp
 +++ b/src/libslic3r/Print.cpp
 @@ -37,7 +37,7 @@ template class PrintState<PrintObjectStep, posCount>;
@@ -38,7 +37,7 @@ index 87c2cc2b3..07c7d00e6 100644
      // The following call should stop background processing if it is running.
      this->invalidate_all_steps();
  	for (PrintObject *object : m_objects)
-@@ -349,7 +349,7 @@ bool Print::is_step_done(PrintObjectStep step) const
+@@ -353,7 +353,7 @@ bool Print::is_step_done(PrintObjectStep step) const
  {
      if (m_objects.empty())
          return false;
@@ -47,7 +46,7 @@ index 87c2cc2b3..07c7d00e6 100644
      for (const PrintObject *object : m_objects)
          if (! object->is_step_done_unguarded(step))
              return false;
-@@ -702,7 +702,7 @@ Print::ApplyStatus Print::apply(const Model &model, DynamicPrintConfig new_full_
+@@ -706,7 +706,7 @@ Print::ApplyStatus Print::apply(const Model &model, DynamicPrintConfig new_full_
          update_apply_status(false);
  
      // Grab the lock for the Print / PrintObject milestones.
@@ -57,10 +56,10 @@ index 87c2cc2b3..07c7d00e6 100644
      // The following call may stop the background processing.
      if (! print_diff.empty())
 diff --git a/src/libslic3r/PrintBase.cpp b/src/libslic3r/PrintBase.cpp
-index e4a0b45cc..b62fca38f 100644
+index 5ca0198d54..beabfb76b1 100644
 --- a/src/libslic3r/PrintBase.cpp
 +++ b/src/libslic3r/PrintBase.cpp
-@@ -139,7 +139,7 @@ void PrintBase::status_update_warnings(ObjectID object_id, int step, PrintStateB
+@@ -141,7 +141,7 @@ void PrintBase::status_update_warnings(ObjectID object_id, int step, PrintStateB
      	printf("%s warning: %s\n", (object_id == this->id()) ? "print" : "print object", message.c_str());
  }
  
@@ -70,7 +69,7 @@ index e4a0b45cc..b62fca38f 100644
  	return print->state_mutex();
  }
 diff --git a/src/libslic3r/PrintBase.hpp b/src/libslic3r/PrintBase.hpp
-index a2db978fc..8d138137f 100644
+index a2db978fc7..8d138137fe 100644
 --- a/src/libslic3r/PrintBase.hpp
 +++ b/src/libslic3r/PrintBase.hpp
 @@ -6,12 +6,8 @@
@@ -118,7 +117,7 @@ index a2db978fc..8d138137f 100644
          return this->state_with_timestamp(step, mtx).state == DONE;
      }
  
-@@ -121,8 +117,8 @@ public:
+@@ -121,8 +117,8 @@ class PrintState : public PrintStateBase
      // This is necessary to block until the Print::apply() updates its state, which may
      // influence the processing step being entered.
      template<typename ThrowIfCanceled>
@@ -129,7 +128,7 @@ index a2db978fc..8d138137f 100644
          // If canceled, throw before changing the step state.
          throw_if_canceled();
  #ifndef NDEBUG
-@@ -154,8 +150,8 @@ public:
+@@ -154,8 +150,8 @@ class PrintState : public PrintStateBase
      // 		Timestamp when this stepentered the DONE state.
      // 		bool indicates whether the UI has to update the slicing warnings of this step or not.
  	template<typename ThrowIfCanceled>
@@ -140,7 +139,7 @@ index a2db978fc..8d138137f 100644
          // If canceled, throw before changing the step state.
          throw_if_canceled();
          assert(m_state[step].state == STARTED);
-@@ -266,9 +262,9 @@ public:
+@@ -266,9 +262,9 @@ class PrintState : public PrintStateBase
      // Return value:
      // 		Current milestone (StepType).
      // 		bool indicates whether the UI has to be updated or not.
@@ -152,7 +151,7 @@ index a2db978fc..8d138137f 100644
          assert(m_step_active != -1);
          StateWithWarnings &state = m_state[m_step_active];
          assert(state.state == STARTED);
-@@ -314,7 +310,7 @@ protected:
+@@ -314,7 +310,7 @@ class PrintObjectBase : public ObjectBase
      PrintObjectBase(ModelObject *model_object) : m_model_object(model_object) {}
      virtual ~PrintObjectBase() {}
      // Declared here to allow access from PrintBase through friendship.
@@ -161,7 +160,7 @@ index a2db978fc..8d138137f 100644
  	static std::function<void()>        cancel_callback(PrintBase *print);
  	// Notify UI about a new warning of a milestone "step" on this PrintObjectBase.
  	// The UI will be notified by calling a status callback registered on print.
-@@ -473,7 +469,7 @@ protected:
+@@ -473,7 +469,7 @@ class PrintBase : public ObjectBase
  	friend class PrintObjectBase;
      friend class BackgroundSlicingProcess;
  
@@ -170,7 +169,7 @@ index a2db978fc..8d138137f 100644
      std::function<void()>  cancel_callback() { return m_cancel_callback; }
  	void				   call_cancel_callback() { m_cancel_callback(); }
  	// Notify UI about a new warning of a milestone "step" on this PrintBase.
-@@ -498,7 +494,7 @@ protected:
+@@ -498,7 +494,7 @@ class PrintBase : public ObjectBase
      status_callback_type                    m_status_callback;
  
  private:
@@ -179,7 +178,7 @@ index a2db978fc..8d138137f 100644
  
      // Callback to be evoked to stop the background processing before a state is updated.
      cancel_callback_type                    m_cancel_callback = [](){};
-@@ -506,7 +502,7 @@ private:
+@@ -506,7 +502,7 @@ class PrintBase : public ObjectBase
      // Mutex used for synchronization of the worker thread with the UI thread:
      // The mutex will be used to guard the worker thread against entering a stage
      // while the data influencing the stage is modified.
@@ -188,20 +187,8 @@ index a2db978fc..8d138137f 100644
  };
  
  template<typename PrintStepEnum, const size_t COUNT>
-diff --git a/src/libslic3r/PrintObject.cpp b/src/libslic3r/PrintObject.cpp
-index 3fbe51b3b..b65f38ff8 100644
---- a/src/libslic3r/PrintObject.cpp
-+++ b/src/libslic3r/PrintObject.cpp
-@@ -19,7 +19,6 @@
- #include <float.h>
- 
- #include <tbb/parallel_for.h>
--#include <tbb/atomic.h>
- 
- #include <Shiny/Shiny.h>
- 
 diff --git a/src/libslic3r/SLA/Concurrency.hpp b/src/libslic3r/SLA/Concurrency.hpp
-index 300024c76..6b609da00 100644
+index 300024c76d..6b609da00c 100644
 --- a/src/libslic3r/SLA/Concurrency.hpp
 +++ b/src/libslic3r/SLA/Concurrency.hpp
 @@ -1,12 +1,13 @@
@@ -229,7 +216,7 @@ index 300024c76..6b609da00 100644
      template<class Fn, class It>
      static IteratorOnly<It, void> loop_(const tbb::blocked_range<It> &range, Fn &&fn)
 diff --git a/src/libslic3r/SLA/SupportTree.cpp b/src/libslic3r/SLA/SupportTree.cpp
-index e09735fdc..e934843ee 100644
+index e09735fdc5..e934843eec 100644
 --- a/src/libslic3r/SLA/SupportTree.cpp
 +++ b/src/libslic3r/SLA/SupportTree.cpp
 @@ -16,9 +16,6 @@
@@ -243,7 +230,7 @@ index e09735fdc..e934843ee 100644
  
  //! macro used to mark string used at localization,
 diff --git a/src/libslic3r/SLAPrint.cpp b/src/libslic3r/SLAPrint.cpp
-index a24bdf8aa..d5a1f8421 100644
+index a24bdf8aa7..d5a1f84217 100644
 --- a/src/libslic3r/SLAPrint.cpp
 +++ b/src/libslic3r/SLAPrint.cpp
 @@ -19,8 +19,6 @@
@@ -292,7 +279,7 @@ index a24bdf8aa..d5a1f8421 100644
          if (! object->is_step_done_unguarded(step))
              return false;
 diff --git a/src/libslic3r/SupportMaterial.cpp b/src/libslic3r/SupportMaterial.cpp
-index 71f734cd3..4160e3fed 100644
+index 71f734cd35..4160e3fedb 100644
 --- a/src/libslic3r/SupportMaterial.cpp
 +++ b/src/libslic3r/SupportMaterial.cpp
 @@ -13,7 +13,6 @@
@@ -304,7 +291,7 @@ index 71f734cd3..4160e3fed 100644
  #include <tbb/task_group.h>
  
 diff --git a/src/libslic3r/Thread.cpp b/src/libslic3r/Thread.cpp
-index bd44bc4f5..15a5928cc 100644
+index bd44bc4f56..15a5928cc3 100644
 --- a/src/libslic3r/Thread.cpp
 +++ b/src/libslic3r/Thread.cpp
 @@ -9,10 +9,10 @@
@@ -345,7 +332,7 @@ index bd44bc4f5..15a5928cc 100644
  				// The calling thread runs the 0'th task.
  				//assert(range.begin() == 0);
 diff --git a/src/libslic3r/pchheader.hpp b/src/libslic3r/pchheader.hpp
-index 0135fd712..98c55bf37 100644
+index 0135fd7120..98c55bf379 100644
 --- a/src/libslic3r/pchheader.hpp
 +++ b/src/libslic3r/pchheader.hpp
 @@ -93,12 +93,9 @@
@@ -362,7 +349,7 @@ index 0135fd712..98c55bf37 100644
  #include <Eigen/Dense>
  #include <Eigen/Geometry>
 diff --git a/src/libslic3r/utils.cpp b/src/libslic3r/utils.cpp
-index ef77f2263..1f1add200 100644
+index ef77f22632..1f1add2003 100644
 --- a/src/libslic3r/utils.cpp
 +++ b/src/libslic3r/utils.cpp
 @@ -43,7 +43,7 @@
@@ -386,7 +373,7 @@ index ef77f2263..1f1add200 100644
  
  static std::string g_var_dir;
 diff --git a/src/slic3r/GUI/BackgroundSlicingProcess.cpp b/src/slic3r/GUI/BackgroundSlicingProcess.cpp
-index 638e5f39b..fd3f6d948 100644
+index 638e5f39b8..fd3f6d948b 100644
 --- a/src/slic3r/GUI/BackgroundSlicingProcess.cpp
 +++ b/src/slic3r/GUI/BackgroundSlicingProcess.cpp
 @@ -519,7 +519,7 @@ void BackgroundSlicingProcess::schedule_export(const std::string &path, bool exp
@@ -417,10 +404,10 @@ index 638e5f39b..fd3f6d948 100644
  	}
  }
 diff --git a/src/slic3r/GUI/BackgroundSlicingProcess.hpp b/src/slic3r/GUI/BackgroundSlicingProcess.hpp
-index 814ed33f7..95c5e462f 100644
+index 814ed33f73..95c5e462fe 100644
 --- a/src/slic3r/GUI/BackgroundSlicingProcess.hpp
 +++ b/src/slic3r/GUI/BackgroundSlicingProcess.hpp
-@@ -230,7 +230,7 @@ private:
+@@ -230,7 +230,7 @@ class BackgroundSlicingProcess
      std::shared_ptr<UITask>     m_ui_task;
  
      PrintState<BackgroundSlicingProcessStep, bspsCount>   	m_step_state;
@@ -430,7 +417,7 @@ index 814ed33f7..95c5e462f 100644
  	void                set_step_done(BackgroundSlicingProcessStep step);
  	bool 				is_step_done(BackgroundSlicingProcessStep step) const;
 diff --git a/src/slic3r/GUI/InstanceCheck.hpp b/src/slic3r/GUI/InstanceCheck.hpp
-index 9fb74b0a9..23a75edc5 100644
+index 9fb74b0a94..23a75edc59 100644
 --- a/src/slic3r/GUI/InstanceCheck.hpp
 +++ b/src/slic3r/GUI/InstanceCheck.hpp
 @@ -13,7 +13,7 @@
@@ -443,7 +430,7 @@ index 9fb74b0a9..23a75edc5 100644
  #endif // __linux__
  
 diff --git a/src/slic3r/GUI/Mouse3DController.cpp b/src/slic3r/GUI/Mouse3DController.cpp
-index 692ae7f1b..541345194 100644
+index 692ae7f1ba..5413451949 100644
 --- a/src/slic3r/GUI/Mouse3DController.cpp
 +++ b/src/slic3r/GUI/Mouse3DController.cpp
 @@ -66,7 +66,7 @@ void update_maximum(std::atomic<T>& maximum_value, T const& value) noexcept
@@ -599,7 +586,7 @@ index 692ae7f1b..541345194 100644
  	    }
  	    m_device_str.clear();
 diff --git a/src/slic3r/GUI/Mouse3DController.hpp b/src/slic3r/GUI/Mouse3DController.hpp
-index af131992c..f648efa6e 100644
+index af131992ce..f648efa6e6 100644
 --- a/src/slic3r/GUI/Mouse3DController.hpp
 +++ b/src/slic3r/GUI/Mouse3DController.hpp
 @@ -10,12 +10,12 @@
@@ -650,7 +637,7 @@ index af131992c..f648efa6e 100644
      // This is a database of parametes of all 3DConnexion devices ever connected.
      // This database is loaded from AppConfig on application start and it is stored to AppConfig on application exit.
 diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
-index 59a202beb..8de684e2e 100644
+index 59a202beb7..8de684e2ef 100644
 --- a/src/slic3r/GUI/RemovableDriveManager.cpp
 +++ b/src/slic3r/GUI/RemovableDriveManager.cpp
 @@ -84,7 +84,7 @@ void RemovableDriveManager::eject_drive()
@@ -756,7 +743,7 @@ index 59a202beb..8de684e2e 100644
  }
  
 diff --git a/src/slic3r/GUI/RemovableDriveManager.hpp b/src/slic3r/GUI/RemovableDriveManager.hpp
-index f707b40c3..29363647c 100644
+index f707b40c32..29363647c8 100644
 --- a/src/slic3r/GUI/RemovableDriveManager.hpp
 +++ b/src/slic3r/GUI/RemovableDriveManager.hpp
 @@ -5,7 +5,7 @@
@@ -768,7 +755,7 @@ index f707b40c3..29363647c 100644
  #include <condition_variable>
  
  // Custom wxWidget events
-@@ -111,9 +111,9 @@ private:
+@@ -111,9 +111,9 @@ class RemovableDriveManager
  	// m_current_drives is guarded by m_drives_mutex
  	// sorted ascending by path
  	std::vector<DriveData> 	m_current_drives;
@@ -780,5 +767,3 @@ index f707b40c3..29363647c 100644
  
  	// Returns drive path (same as path in DriveData) if exists otherwise empty string.
  	std::string 			get_removable_drive_from_path(const std::string& path);
--- 
-2.34.1
