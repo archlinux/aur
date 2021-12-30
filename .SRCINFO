@@ -1,6 +1,6 @@
 pkgbase = mqtt-sm-git
 	pkgdesc = MQTT System Monitor, compatible with Home Assistant
-	pkgver = r78.f7f428b
+	pkgver = r5.45d68c0
 	pkgrel = 1
 	url = https://github.com/cmargiotta/MQTT-System-Monitor
 	arch = any

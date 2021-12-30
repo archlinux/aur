@@ -1,6 +1,6 @@
 # Maintainer: Carmine Margiotta <car.margiotta@icloud.com>
 pkgname='mqtt-sm-git'
-pkgver=r78.f7f428b
+pkgver=r5.45d68c0
 pkgrel=1
 pkgdesc="MQTT System Monitor, compatible with Home Assistant"
 arch=('any')
