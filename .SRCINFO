@@ -1,6 +1,6 @@
 pkgbase = zfs_autobackup
 	pkgdesc = Automatic ZFS backup tool
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 2
 	url = https://github.com/psy0rz/zfs_autobackup
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = zfs_autobackup
 	depends = zfs-utils
 	depends = python-colorama
 	optdepends = mbuffer: rate limiting and data send/recv buffer support
-	source = https://github.com/psy0rz/zfs_autobackup/archive/refs/tags/v3.1.tar.gz
-	sha256sums = 987e22becd4359932b9027d3b3b6a779bfcbaeb09e5ea05ad28a0006ee099829
+	source = https://github.com/psy0rz/zfs_autobackup/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = 50fb80a147d13aaf499a210f333895f088560ad973a06f87eb6944f863d3444d
 
 pkgname = zfs_autobackup
