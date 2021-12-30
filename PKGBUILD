@@ -1,7 +1,7 @@
 # Maintainer: Ben Mitchell <bjosephmitchell@gmail.com>
 _pkgname=pacext
 pkgname="${_pkgname}-git"
-pkgver=r17.8687cd8
+pkgver=r18.d09d04b
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
