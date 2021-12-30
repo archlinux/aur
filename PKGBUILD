@@ -14,10 +14,10 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=213.6461.48
+_buildver=213.6461.79
 _veryear=2021
 _verrelease=3
-_verextra=
+_verextra=1
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
@@ -27,9 +27,9 @@ url="http://www.jetbrains.com/idea/nextversion"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-    _archive=("ideaIC-${_buildver}-${_JBR}.tar.gz")
+    _archive=("ideaIC-${_veryear}.${_verrelease}.${_verextra}-${_JBR}.tar.gz")
 else
-    _archive=("ideaIC-${_buildver}.tar.gz")
+    _archive=("ideaIC-${_veryear}.${_verrelease}.${_verextra}.tar.gz")
 fi
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ce-eap.desktop")
