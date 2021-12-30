@@ -2,7 +2,7 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=lziprecover
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc="A data recovery tool and decompressor for files in the lzip compressed data format"
 url="http://www.nongnu.org/lzip/lziprecover.html"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 arch=('i686' 'x86_64')
 install=lziprecover.install
 source=(http://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-${pkgver}.tar.gz{,.sig})
-sha256sums=('a2317bd6da78d49d8f9aadd00bd93c2dac7b280b26fbf900563e90efd0179c24'
+sha256sums=('fd958a0975f7729c44f3b784e566891f736c3dc68374dbd2149ee692a16d0862'
             'SKIP')
 validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742')
 
