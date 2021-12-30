@@ -6,8 +6,8 @@
 #       may fail if make uses more than one job.
 
 pkgname=calculix
-pkgver=2.17
-pkgrel=3
+pkgver=2.19
+pkgrel=1
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
@@ -21,18 +21,16 @@ checkdepends=('perl')
 source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.test.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.fluidtest.tar.bz2"
-        "http://www.dhondt.de/ccx_${pkgver}.fluidtestfem.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.structest.tar.bz2"
       	"http://www.dhondt.de/cgx_${pkgver}.all.tar.bz2"
         "calculix_${pkgver}_archlinux.patch")
 
-sha256sums=('ca708ad4aa729d9f84a9faba343c1bcc0b7cc84ed372616ebb55c8e6fa8f6e50'
-            '798f94e536197bb10a74bae096f2a29a5111239020e7d10f93e1ad3d90c370cf'
-            '5126de5f8543cb4f4c3355612d4df41541b278c3e505e7f2191fd90190eac4f7'
-            'dab62ed58b1e5c1035360b59942593bf952af151fb9c9d32701cc028ee1683e3'
-            'e7cd0e71a9764955bf5096c849e8bb818d35040e8c4909b2168ce4d29b41d8be'
-            '01b32864714d7ed7c760567e3a04077f3e41fe171d1804b305c96c344b0e4d2e'
-            'd6bbe96457d6a773958a9eb5a783ae630c8c2ea38ebaa0c6a799f3384e85d84f')
+sha256sums=('c75a69685811e7996c9428b491c82f0eff777cc9a0999f469d10156d75f26d07'
+            'e7376881f7a7e5f0730e2aaa9fd518665ba380cc9fae7140919050e7752cdc01'
+            '12a525137c98ddde703b06dbd57f9e54d785bfe775cf7bded9d3b94f971e64a4'
+            'b8f0f5e685bf6635bac6f28246f3526e17ac0d645737d50abf165871f9fc8d19'
+            '598121372373b679a228c85d25c7e549489a38535d82f025acb750f831afe546'
+            '3faaa3b48d2e7a59f443c71fee48689caee4d1a7936086c04efd44c753dedbc0')
 
 prepare()
 {
@@ -64,7 +62,7 @@ check()
   tests=('beamp' 'ball' 'pipe' 'pipe2' 'planestress'
          'gap' 'gap2' 'capacitor' 'carbonseal' 'beamptied1'
          'beamp1rotate' 'beamp2' 'beamp2rotate' 'beamf' 'beamhf'
-         'cou' 'furnace' 'gaspipe1' 'gaspipe1-oil' 'gaspipe2'
+         'furnace' 'gaspipe1' 'gaspipe1-oil' 'gaspipe2'
          'gaspipe3' 'gaspipe4' 'gaspipe5' 'gaspipe6' 'gaspipe7'
          'gaspipe8' 'gaspipe-cfd-pressure' 'gaspipe8-cfd-pressure'
          'gaspipe8-cfd-massflow' 'gaspipe8-cfd-pressure'
@@ -72,7 +70,7 @@ check()
          'green4' 'hinge' 'hueeber1' 'hueeber2' 'induction' 'induction2'
          'inistrain' 'largerot1' 'linearnet' 'mass1' 'mass2' 'mass3'
          'massflow_percent_ccx' 'membrane1' 'metalforming' 'modelchel'
-         'multistage' 'networkmpc' 'oneel' 'pendel' 'resstress1'
+         'networkmpc' 'oneel' 'pendel' 'resstress1'
          'restrictor' 'segment' 'sensitivity_I' 'shell1'
          'shellbeam' 'shellf' 'simplebeam' 'slant' 'spring1' 'spring2'
          'small_pressure_gradient' 'square' 'substructure' 'swing'
@@ -126,14 +124,7 @@ check()
     OMP_NUM_THREADS=4 ../src/ccx_${pkgver} ${test_name} &> ${log_file} ||\
         error_status=1 warning "check $(pwd)/${log_file}"
   done
-  
-  cd ${srcdir}/CalculiX/ccx_${pkgver}/fluidtestfem  
-  for test_name in ./*.inp ; do
-    msg2 "testing ${test_name}"
-    OMP_NUM_THREADS=4 ../src/ccx_${pkgver} ${test_name} &> ${log_file} ||\
-        error_status=1 warning "check $(pwd)/${log_file}"
-  done
-  
+    
   cd ${srcdir}/CalculiX/ccx_${pkgver}/structest  
   for test_name in ./*.inp ; do
     msg2 "testing ${test_name}"
