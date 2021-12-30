@@ -1,0 +1,16 @@
+pkgbase = pipectl-git
+	pkgdesc = a simple named pipe management utility (git version)
+	pkgver = 0.1.1.r0.ga31f43c
+	pkgrel = 1
+	url = https://github.com/Ferdi265/pipectl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	provides = pipectl=0.1.1
+	conflicts = pipectl
+	source = git+https://github.com/Ferdi265/pipectl
+	sha256sums = SKIP
+
+pkgname = pipectl-git
