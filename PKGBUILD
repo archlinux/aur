@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.15
-_minor=11
+_minor=12
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,13 +72,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0006-lg-laptop-Recognize-more-models.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0007-HID-holtek-fix-mouse-probing.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0006-lg-laptop-Recognize-more-models.patch"
          # the main kernel config files
         'config')
 
@@ -318,17 +317,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('5abe52981a9f493174afb908bc1c1a4901bc522c38c2da7ba15d5b907f06f9c4a684a47436697d79df8f598e166064d46add5661632a48275e0268411563f6b2'
+sha512sums=('8b79f30c26a865578d771b0c1a8273ecbf19135e4844210cb31c81784311601b8f7adfe1b3a9bc75c6bed99dcad9a5ff5e1976494b64f0de45be3a6570336890'
             'SKIP'
             '4c901fe38e197b0397702ec46329fac6cdd5b7ff6e2601f76f0cbabcf452581936c58028c3a93471782541ad3045b10d1030fad4b25121f35d091495d17fd308'
             '53fa9b8a6fa451a7d57846d261f9af2de24e6442d2f318dfef899580d85e9cc54fa17267803a4f064eecab8ba3739062bfdf185de0afe119a1c86fe71cf3c711'
-            '8bf46624ed55e37337fefdfbeefbf74dd550bd1862ad8670058e2609f8d1a9d11f38cc5b332c70583ef99af64b6aed1b001b13f03d3275d569e7f9745ffaebdc'
-            '8a06eeac9b7d8f6012c17a25ac7e6a1e8c18f385530352685b3dd34ef9bbdf5de339ed38006514e04d67532a60845915db29ab972820ff98595b2e13ebfc902f'
-            '9d3c6a075acf35bb656e6689d99aea6d643858fac9ea73e603af6a66531ac0329e3966940d54f2e0609f91f1243de63d056f610c7094f8697fb2235e6243359f'
-            '609ba540c4998ae52f8cb7e2b3d3d5e32960ef3a882d2e99ee1e216580de913d5732caeca36aacee2583989c3af94e3e4769b0698f96c0e555c631ccb1634796'
-            '1392ea51f1955fd76ce2f012251266b5b5a53d234b21e580a078dcb6cc405750e563c0c6962ccfa0872d28e2efe9b1c1b902fc02e4477fd489c40fd8d2723d5e'
-            '6890b27de152044061942fc40580c24c66ca8d78bb34a87b2d6effbd762a59f89d059155388d980c3b5a2d3b54497def157567af0154aaa51e99559b64436c9f'
-            '7c094d6ee142a0f04a3b298ffdbe6a5531e4f7cb1a1b1824b6433e3e5bbaeee7987d58b7b95c66a2c90810a65b68572f69d5e23d031594045060c3d5ac273c03'
+            '0ef9de1a78ef703a08d079f517e60fb399f5f32703a70a209b06fafa1398a5aa04c45375569db0006d4168abe2a85497fc85c6faa42f9dbef44dfd2e9797bcf7'
+            '46ced42b6a0f73b06db3d8ff7e19ee11fad25a83f76f60e72374ae91e5d41b604cd45c5cb21359c1f8c9e185eaa62cba3f7b76000793a94e762e6ec1a8a2a903'
+            '469b0cafdacc16917ff49b59fd227b0c6a28c171857b2bac2cfa93f97bde75f26bba6b82e6c56c920fb1d5bf992b7f975b3128da2a546b969b0cc1d0c6336f88'
+            'cad9cf6b2ee00ba80ff164b4f4a26c02b009de524d2e4188e6d3cb7aa026bb2aee387d87d9bc04b237b132e390f3dd0a61bc6c19f33c4c2f5da89f693d20dab8'
+            '0ac500cc0dddaa1f6ed889e74b23279918e822c61f7e18786b9c99461e9754aab72c2f9c0e0d559c284dfc57fd6c85e3af83b07000432a5a5594231612daa956'
+            'daeb8dae170a0bee9ac57d237fb8e5824b07a7a9f5e043ead4559178ede658de6019342be2958ecba049a927c2419069851e0c6c9f3ed1ab8373ee9cd7eae16f'
             '331a7304afaa9ba3698ee9509084d6174d919165782c92c6a4f68329a4546f84f2091edd208bfdbc091748b66268da0786fa299db2ccdbd49b2f60ca9f186b71')
 
 validpgpkeys=(
