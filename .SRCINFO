@@ -1,7 +1,7 @@
 pkgbase = xminesweeper
 	pkgdesc = A minesweeper game for the X Window System
 	pkgver = 2.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.babafou.eu.org/xdemineur/
 	arch = i686
 	arch = x86_64
