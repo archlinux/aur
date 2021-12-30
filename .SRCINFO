@@ -1,6 +1,6 @@
 pkgbase = f2fs-tools-progress-patch-git
 	pkgdesc = Tools for Flash-Friendly File System (F2FS) with progress feedback
-	pkgver = 794.git.27bf6c7
+	pkgver = 1.13.0.r142.g27bf6c7
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/
 	arch = x86_64

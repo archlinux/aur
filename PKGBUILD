@@ -6,7 +6,7 @@
 # Contributor: vinibali <vinibali1 at gmail.com>
 
 pkgname=f2fs-tools-progress-patch-git
-pkgver=794.git.27bf6c7
+pkgver=1.13.0.r142.g27bf6c7
 pkgrel=1
 pkgdesc='Tools for Flash-Friendly File System (F2FS) with progress feedback'
 arch=('x86_64')
@@ -21,10 +21,8 @@ source=("$pkgname::git+https://gitlab.lesviallon.fr/aviallon/f2fs-tools.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $srcdir/$pkgname
-    no=$(git rev-list --count HEAD)
-    hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
-    printf "${no}.git.${hash}"
+	cd "$pkgname"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
