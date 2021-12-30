@@ -19,14 +19,36 @@ post_install() {
 	echo
 	echo 'Do not forget to add your user to the `gnunet` group, with'
 	echo
-	echo '    sudo usermod -aG gnunet YOUR-USERNAME'
+	echo '    sudo usermod -aG gnunet "$(whoami)"'
 	echo
 	echo 'If later you want to remove your user from the group, launch'
 	echo
-	echo '    sudo gpasswd --delete YOUR-USERNAME gnunet'
+	echo '    sudo gpasswd --delete "$(whoami)" gnunet'
 	echo
 	echo 'For information on how to use GNUnet plaese refer to the GNUnet article in the'
 	echo 'ArchWiki (https://wiki.archlinux.org/title/GNUnet).'
+	echo
+
+}
+
+post_remove() {
+
+	echo
+	echo 'The home directory of the `gnunet` user (`/var/lib/gnunet/`) is left after'
+	echo 'uninstalling GNUnet. If you are sure that you are never going to use GNUnet'
+	echo 'ever again, launch:'
+	echo
+	echo '    for username in $(getent group gnunet | cut -d: -f4 | tr '\'','\'' '\'' '\''); do \'
+	echo '        sudo gpasswd --delete "${username}" gnunet; done'
+	echo '    sudo userdel -r gnunet'
+	echo '    sudo groupdel gnunetdns'
+	echo
+	echo '**Warning** The identity and all the information about the network'
+	echo 'cumulatively stored by the current peer will be destroyed - this will not'
+	echo 'affect files explicitly downloaded in other paths.'
+	echo
+	echo 'For further information plaese refer to the GNUnet article in the ArchWiki'
+	echo '(https://wiki.archlinux.org/title/GNUnet).'
 	echo
 
 }
