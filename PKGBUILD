@@ -1,7 +1,7 @@
 # Maintainer: Lucas Declercq <lucas dot declercq at mailbox dot org>
 
 pkgname="conduktor"
-pkgver=2.18.5
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="A Kafka Desktop Client"
 url="https://www.conduktor.io"
