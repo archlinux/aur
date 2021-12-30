@@ -19,9 +19,10 @@ build() {
 package() { 
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py -q install --root="${pkgdir}" --optimize=1
-  mkdir -p ${pkgdir}/usr/share/{${pkgname},applications,icons/hicolor/scalable/apps}
+  mkdir -p ${pkgdir}/usr/share/${pkgname}
   cp -a data/images ${pkgdir}/usr/share/${pkgname}/
-  cp data/desktop/${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -m0644 -D data/desktop/icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg
-  install -m0644 -D config.sample.yaml ${pkgdir}/usr/share/docs/${pkgname}
+  install -Dp -m644 data/desktop/com.chmouel.gnomeNextMeetingApplet.appdata.xml ${pkgdir}/usr/share/metainfo
+  install -Dp -m644 data/desktop/com.chmouel.gnomeNextMeetingApplet.desktop ${pkgdir}/usr/share/applications/
+  install -m0644 -Dp data/desktop/icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg
+  install -m0644 -Dp config.sample.yaml ${pkgdir}/usr/share/docs/${pkgname}
 }
