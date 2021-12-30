@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+#set -e
 
 # Begin Checking for Dependencies
 declare -a dependencies=(yt-dlp mpv jq curl xclip)
