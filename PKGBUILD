@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tbb
-pkgver=2020.3
+pkgver=2021.5.0
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -12,21 +12,23 @@ arch=('any')
 url='https://github.com/oneapi-src/oneTBB'
 license=('APACHE')
 source=(https://github.com/oneapi-src/oneTBB/archive/v$pkgver.tar.gz)
-sha256sums=('ebc4f6aa47972daed1f7bf71d100ae5bf6931c2e3144cf299c8cc7d041dca2f3')
+sha256sums=('e5b57537c741400cf6134b428fc1689a649d7d38d9bb9c1b6d64f092ea28178a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/oneTBB-${pkgver}
-  curl -L https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt -o CMakeLists.txt
-  curl -L https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in -o build/version_string.ver.in
+  curl -L https://github.com/oneapi-src/oneTBB/pull/608.patch | patch -p1
+  curl -L https://github.com/oneapi-src/oneTBB/pull/609.patch | patch -p1
+  curl -L https://github.com/oneapi-src/oneTBB/pull/618.patch | patch -p1
+  curl -L https://github.com/oneapi-src/oneTBB/pull/679.patch | patch -p1
 }
 
 build() {
   cd "$srcdir"/oneTBB-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DTBB_BUILD_TESTS=OFF ..
+    ${_arch}-cmake -DTBB_TEST=OFF ..
     make
     popd
   done
