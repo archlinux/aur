@@ -1,6 +1,6 @@
 pkgbase = mqtt-sm-git
 	pkgdesc = MQTT System Monitor, compatible with Home Assistant
-	pkgver = r77.da21f58
+	pkgver = r78.f7f428b
 	pkgrel = 1
 	url = https://github.com/cmargiotta/MQTT-System-Monitor
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = mqtt-sm-git
 	depends = lua
 	provides = msm
 	conflicts = msm
+	backup = etc/msm/sensors/*
+	backup = usr/lib/systemd/system/msm.service
 	source = mqtt-sm-git::git+https://github.com/cmargiotta/MQTT-System-Monitor
 	sha256sums = SKIP
 
-pkgname = mqtt-sm-git 
+pkgname = mqtt-sm-git

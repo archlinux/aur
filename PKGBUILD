@@ -1,6 +1,6 @@
 # Maintainer: Carmine Margiotta <car.margiotta@icloud.com>
 pkgname='mqtt-sm-git'
-pkgver=r77.da21f58
+pkgver=r78.f7f428b
 pkgrel=1
 pkgdesc="MQTT System Monitor, compatible with Home Assistant"
 arch=('any')
@@ -27,7 +27,10 @@ conflicts=(
 	'msm'
 )
 replaces=()
-backup=()
+backup=(
+	etc/msm/sensors/*
+	usr/lib/systemd/system/msm.service
+)
 options=()
 install=
 changelog=
