@@ -16,6 +16,7 @@ pkgbase = scopehal-apps-git
 	depends = glew
 	depends = catch2
 	depends = clfft
+	depends = ffts-git
 	source = git://github.com/azonenberg/scopehal-apps
 	source = modules.patch
 	md5sums = SKIP
