@@ -1,71 +1,57 @@
-# Contributor: Patrick McCarty <pnorcks at gmail dot com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: lis
+# Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
+# Contributor: William Rea <sillywilly@gmail.com>
+# Contributor: Robert Emil Berge <filoktetes@linuxophic.org>
 
 pkgname=lilypond-devel
-pkgver=2.19.84
+_pkgname=lilypond
+pkgver=2.23.5
 pkgrel=1
-pkgdesc="An automated music engraving system (development version)"
-arch=('i686' 'x86_64')
-url="http://lilypond.org/"
-license=('GPL')
-depends=('fontconfig'
-         'freetype2'
-         'guile1.8'
-         'pango'
-	 'glib2'
-         'python2')
-makedepends=('fontforge'
-             'gsfonts'
-             't1utils'
-	     'ghostscript'
-             'texlive-core'
-	     'tex-gyre-fonts'
-	     'texlive-langcyrillic'
-	     'dblatex')
-optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
-	   'tk: for the gui')
-provides=("lilypond=$pkgver")
+pkgdesc="Music engraving program (development version)"
+arch=('x86_64')
+url="https://lilypond.org"
+license=('FDL1.3' 'GPL3' 'custom:OFL')
+groups=('pro-audio')
+# NOTE: use guile only with 2.24.x
+depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile1.8')
+makedepends=('fontconfig' 'fontforge' 'freetype2' 'glib2' 'imagemagick' 'pango'
+'python' 'rsync' 't1utils' 'texinfo' 'texlive-core' 'tex-gyre-fonts'
+'texlive-langcyrillic' 'zip')
+optdepends=(
+  'python: for lilypond-book and other scripts'
+  'tex-gyre-fonts: for extra fonts'
+  'ttf-dejavu: for extra fonts'
+)
+provides=('lilypond')
 conflicts=('lilypond')
-source=("http://lilypond.org/downloads/sources/v2.19/lilypond-${pkgver}.tar.gz" "no_fontforge-versioncheck.patch")
-sha256sums=('94dcc66447f24966f28eda72c79e1ec16143b8ea4a537cc9f97d017cc0c0dd11'
-            'e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817')
+source=("https://lilypond.org/downloads/sources/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz")
+sha512sums=('eee5563d6a0ab6ba8aea6113c9c121681a6f9b005b266091dcce5412e366652d16c23bef600e7a33a0c0e4f4e67cb8d8c549a1213cbabd7877d7a9ecbc82af68')
+b2sums=('3e16e83a71c167621209a9f31bdfb9d3a2bac13e1fff8ec97d3b81b80afbacf22deded8a9a81291af7b6658146db79f67c3e1dd9ce3175b3e29bae64e7bcdd29')
 
 prepare() {
-  cd lilypond-$pkgver
-
-  # python2 fix
-  for file in $(find . -name '*.py' -print); do
-    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-  done
-  
-  patch -Np1 < $srcdir/no_fontforge-versioncheck.patch
-  rm -rf python/out/
+  cd "$_pkgname-$pkgver"
+  autoconf --force --verbose
 }
 
 build() {
-  cd lilypond-$pkgver
-
-  export PYTHON="python2"
-  export PYTHON_CONFIG="python2-config"
-  export GUILE=/usr/bin/guile1.8
-  export GUILE_CONFIG=/usr/bin/guile-config1.8
-
-  ./autogen.sh --noconfigure
-  [[ -d build ]] || mkdir build
-  cd build
-  ../configure --prefix=/usr \
-               --disable-documentation 
-	        
-  # FIXME: the extra LDFLAG should not be needed;
-  # this is a regression somewhere
+  cd "$_pkgname-$pkgver"
+  export GUILE=guile1.8
+  ./configure --prefix=/usr \
+              --disable-texi2html
   make
 }
 
 package() {
-  cd lilypond-$pkgver/build
-  make DESTDIR="$pkgdir/" \
-       vimdir="/usr/share/vim/vimfiles" install
-
-  rm -rf "$pkgdir"/usr/share/man
+  depends+=('libfontconfig.so' 'libfreetype.so' 'libglib-2.0.so'
+  'libgobject-2.0.so' 'libpangoft2-1.0.so' 'libpango-1.0.so')
+  cd "$_pkgname-$pkgver"
+  make DESTDIR="$pkgdir" vimdir="/usr/share/vim/vimfiles" install
+  install -vDm 644 LICENSE.OFL -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -vDm 644 {AUTHORS,NEWS}.txt README.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  # delete copied fonts, they are relied upon as optdepends
+  rm "${pkgdir}/usr/share/lilypond/${pkgver}/fonts/otf/"{C059,Nimbus,texgyre}*.otf
 }
