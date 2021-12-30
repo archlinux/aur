@@ -9,7 +9,9 @@ pkgdesc="Official Dymo supplied Linux Cups drivers for LabelWriter series"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('libcups')
-source=(http://download.dymo.com/Software/Linux/${pkgname}-${_archive_ver}.tar.gz
+makedepends=('wget')
+DLAGENTS=('https::/usr/bin/wget -U Mozilla %u')
+source=(https://download.dymo.com/Software/Linux/${pkgname}-${_archive_ver}.tar.gz
        cups-ppd-header.patch cups-2.6-api.patch)
 sha256sums=('c60797e7e986ca329f46e9a6ab1cb6382383952b15685ed69fd91f3c7ed64f71'
             '3a11eaffc5295e4811721b1bd1e51d79ed5e2c5e7665d4be7fc9ce0579fd2a17'
