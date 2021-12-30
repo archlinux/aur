@@ -7,7 +7,7 @@ pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
 _kernelname=-VFIO-MANJARO
 _basekernel=5.15
 _basever=515
-pkgver=5.15.11
+pkgver=5.15.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -65,7 +65,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0413-bootsplash.gitpatch'
         '0999-acs.gitpatch')
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            'ad0392a077fab3781cfa6084a84de35364068ae46f58e8463db7826933778260'
+            '161deb7c6bd10e7c530a3ee83793e2e135f93a5afd73d8b16e251c708ade0b1b'
             '7c65b68bd250de8726c3dd5befa556cde515393c871dd0e0b599f40a5c33ac41'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'df5843818f1571841e1a8bdbe38d7f853d841f38de46d6a6a5765de089495578'
@@ -158,7 +158,6 @@ package_linux-vfio-manjaro() {
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules wireguard)
-#  provides=("linux=${pkgver}${pkgrel}${_kernelname}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd "linux-${_basekernel}"
 
@@ -196,8 +195,6 @@ package_linux-vfio-manjaro() {
 package_linux-vfio-manjaro-headers() {
   pkgdesc="Headers and scripts for building modules for the Linux Manjaro standart kernel with ACS patch"
   depends=('gawk' 'python' 'libelf' 'pahole')
-#  provides=("")
-#  provides=("linux-headers=${pkgver}${pkgrel}${_kernelname}")
 
   cd "linux-${_basekernel}"
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
