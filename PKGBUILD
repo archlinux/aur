@@ -1,5 +1,5 @@
 pkgname=python-ccxt
-pkgver=1.56.41
+pkgver=1.65.76
 pkgrel=1
 pkgdesc="A JavaScript / Python / PHP cryptocurrency trading library with support for 130+ exchanges"
 arch=(any)
@@ -8,7 +8,7 @@ license=(MIT)
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://pypi.python.org/packages/source/c/ccxt/ccxt-$pkgver.tar.gz")
-sha256sums=('928e6f4e9a515d219dea6257eec16f7e0b8762a205e88042693c73dc4610b220')
+sha256sums=('eb8ab64bace00d12fcea8666f48125adde3fe14e409384b4b12f8b69758fa9b0')
 
 prepare() {
   cd "$srcdir"/ccxt-$pkgver
