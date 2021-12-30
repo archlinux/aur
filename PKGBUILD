@@ -45,11 +45,6 @@ prepare() {
  	git submodule update
 }
 
-check() {
-	cd "$srcdir"
-	ninja -C build test
-}
-
 build() {
 	arch-meson "$pkgname" build
 	meson compile -C build
