@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=cxbqn
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='BQN VM written in C++.'
 arch=('x86_64')
@@ -23,6 +23,5 @@ build() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install/fast
-  chmod 755 "${pkgdir}/usr/bin/cxbqn-config"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}-${pkgver}/LICENSE"
 }
