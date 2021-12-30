@@ -1,9 +1,10 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Andreas 'Segaja' Schleifer <segaja at archlinux dot org>
 
 _gemname=cairo-gobject
 pkgname=ruby-$_gemname
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/CairoGObject is a Ruby binding of cairo-gobject'
 arch=(x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
@@ -16,6 +17,12 @@ sha1sums=('e7594d9bd753c0c8a10d8725fc64d96b8e5e176a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  local _platform="$(gem env platform | cut -d':' -f2)"
+  local _extension_api_version="$(ruby -e'puts Gem.extension_api_version')"
   gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem" \
+      "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/gem_make.out" \
+      "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/mkmf.log" \
+      "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/cairo-gobject/rb-cairo-gobject.o" \
+      "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/cairo-gobject/Makefile"
 }
