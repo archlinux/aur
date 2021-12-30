@@ -1,6 +1,6 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=liblxi-git
-pkgver=r143.5045bf2
+pkgver=r148.23388f6
 pkgrel=1
 pkgdesc="LXI library"
 arch=('i686' 'x86_64')
@@ -9,6 +9,7 @@ license=('BSD-3')
 provides=('liblxi')
 conflicts=('liblxi')
 depends=('libxml2' 'avahi')
+makedepends=('git' 'meson')
 optdepends=('lxi-tools')
 source=("$pkgname::git+https://github.com/lxi/liblxi")
 md5sums=('SKIP')
