@@ -6,7 +6,7 @@ _cranname=fs
 _cranver=1.5.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-Platform File System Operations Based on 'libuv'"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -45,7 +45,7 @@ build() {
 
 check() {
   cd "${_cranname}/tests"
-  R_LIBS="${srcdir}/build" R --vanilla -q -f testthat.R
+  R_LIBS="${srcdir}/build" NOT_CRAN=true R --vanilla -q -f testthat.R
 }
 
 package() {

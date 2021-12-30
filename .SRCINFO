@@ -1,7 +1,7 @@
 pkgbase = r-fs
 	pkgdesc = Cross-Platform File System Operations Based on 'libuv'
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=fs
 	arch = i686
 	arch = x86_64
