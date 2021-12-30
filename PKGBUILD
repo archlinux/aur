@@ -2,7 +2,7 @@
 
 pkgname=oci-cli
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line interface for Oracle Cloud Infrastructure'
 arch=('x86_64')
 url="https://github.com/oracle/${pkgname}"
@@ -16,6 +16,7 @@ sha256sums=('83a91af1bc881f203edfb522e123576395e9d02ed04373cbb22a1ab0d7cebb2e')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
+  sed -i 's/profile == Sentinel(DEFAULT_PROFILE)/profile == str(Sentinel(DEFAULT_PROFILE))/' src/oci_cli/cli_root.py
   sed -i -r "s/(==|>|<).*'/'/g" setup.py
   sed -i '/configparser/d' setup.py
 }

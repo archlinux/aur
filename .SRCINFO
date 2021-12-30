@@ -1,7 +1,7 @@
 pkgbase = oci-cli
 	pkgdesc = Command line interface for Oracle Cloud Infrastructure
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oracle/oci-cli
 	arch = x86_64
 	license = Apache
