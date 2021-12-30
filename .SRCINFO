@@ -1,6 +1,6 @@
 pkgbase = nanoboyadvance-git
 	pkgdesc = Accuracy-focused Game Boy Advance emulator.
-	pkgver = 1.3.r57.g6299f4b
+	pkgver = 1.4.r4.g9b08775e
 	pkgrel = 1
 	url = https://github.com/fleroviux/NanoboyAdvance
 	arch = x86_64
@@ -8,16 +8,20 @@ pkgbase = nanoboyadvance-git
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	depends = sdl
-	depends = glew
+	makedepends = imagemagick
 	source = git+https://github.com/fleroviux/NanoBoyAdvance.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/ToruNiina/toml11.git
 	source = NanoBoyAdvance.sh
+	source = NanoBoyAdvance-Qt.sh
+	source = NanoBoyAdvance.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 3a61b7b4cbece463119ea84a54293ba4
+	md5sums = 66a11acbf54f009b0d54e208e9b71aa2
+	md5sums = 5ba7183c24bdf63a9c4638f92d26b04b
+	md5sums = 4f1b46e13ebab49bd45e8c49e1bf7685
 
 pkgname = nanoboyadvance-git
 
+pkgname = nanoboyadvance-qt-git

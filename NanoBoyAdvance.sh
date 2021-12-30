@@ -14,4 +14,4 @@ cd "$confdir"
 [[ ! -f config.toml ]] && cp /usr/share/NanoBoyAdvance/config.toml .
 [[ ! -f keymap.toml ]] && cp /usr/share/NanoBoyAdvance/keymap.toml .
 
-exec /usr/lib/ld-linux-x86-64.so.2 --argv0 "$confdir/NanoBoyAdvance" /usr/lib/NanoBoyAdvance "$@"
+exec -a "$confdir/NanoBoyAdvance" /usr/lib/NanoBoyAdvance "$@"
