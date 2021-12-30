@@ -1,5 +1,5 @@
---- ./src/ucon64-2.2.1-src/src/ucon64_misc.orig.c	2020-11-09 19:10:46.000000000 +0100
-+++ ./src/ucon64-2.2.1-src/src/ucon64_misc.c	2020-12-16 15:58:02.323205228 +0100
+--- ucon64-2.2.2-src/src/ucon64_misc.orig.c	2021-12-30 13:29:17.245449059 +0100
++++ ucon64-2.2.2-src/src/ucon64_misc.c	2021-12-30 13:31:00.574081756 +0100
 @@ -58,6 +58,7 @@
  
  
@@ -8,7 +8,7 @@
  #ifdef  DLOPEN
  #include "misc/dlopen.h"
  
-@@ -1232,11 +1233,21 @@
+@@ -1229,11 +1230,21 @@
  #elif   defined __APPLE__                       // Mac OS X actually
                         PROPERTY_MODE_DIR ("ucon64") "discmage.dylib",
  #elif   defined __unix__ || defined __BEOS__
