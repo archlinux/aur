@@ -1,14 +1,14 @@
 # Maintainer: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=1.4.1.r6.gfac7a3f
+pkgver=1.4.1.r9.gd5f643e
 pkgrel=1
 pkgdesc="A simple music browser for MPD (git version)"
 arch=('any')
 license=('GPL3')
 url="https://github.com/SoongNoonien/mpdevil"
 depends=('python-mpd2' 'gtk3' 'libnotify' 'python-gobject' 'python-requests' 'python-beautifulsoup4')
-makedepends=('git' 'meson' 'intltool')
+makedepends=('git' 'meson')
 provides=('mpdevil')
 conflicts=('mpdevil')
 source=('git+https://github.com/SoongNoonien/mpdevil.git')

@@ -1,13 +1,12 @@
 pkgbase = mpdevil-git
 	pkgdesc = A simple music browser for MPD (git version)
-	pkgver = 1.4.1.r6.gfac7a3f
+	pkgver = 1.4.1.r9.gd5f643e
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/mpdevil
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	makedepends = intltool
 	depends = python-mpd2
 	depends = gtk3
 	depends = libnotify
