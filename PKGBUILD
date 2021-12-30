@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/cmargiotta/MQTT-System-Monitor"
 license=('GPL')
 groups=()
+
 depends=(
 	'paho-mqtt-c'
 	'openssl'

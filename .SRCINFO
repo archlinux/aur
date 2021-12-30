@@ -16,4 +16,4 @@ pkgbase = mqtt-sm-git
 	source = mqtt-sm-git::git+https://github.com/cmargiotta/MQTT-System-Monitor
 	sha256sums = SKIP
 
-pkgname = mqtt-sm-git
+pkgname = mqtt-sm-git 
