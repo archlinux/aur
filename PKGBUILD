@@ -1,8 +1,8 @@
-# Maintainer: Bruno Miguel <bruno@userrepository.eu>
+# Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=otf-fira-go
 pkgver=1.001
-pkgrel=2
+pkgrel=3
 _commit=715cd3e8b59179822cd5b86933ecfc254cd1e74e
 pkgdesc="An independent Open Source typeface — FiraGO"
 arch=('any')
