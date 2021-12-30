@@ -1,0 +1,14 @@
+pkgbase = acalc-git
+	pkgdesc = A simple calculator.
+	pkgver = r4.cfa306d
+	pkgrel = 1
+	url = https://github.com/aramshur/acalc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = acalc
+	source = git+https://github.com/aramshur/acalc
+	md5sums = SKIP
+
+pkgname = acalc-git
