@@ -4,7 +4,7 @@
 _gemname=cairo
 pkgname=ruby-$_gemname
 pkgver=1.17.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64')
 url='https://cairographics.org/rcairo'
@@ -21,6 +21,6 @@ package() {
   local _platform="$(gem env platform | cut -d':' -f2)"
   local _extension_api_version="$(ruby -e'puts Gem.extension_api_version')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm -r "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem" "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/gem_make.out" "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext" "${pkgdir}/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext"
+  rm -r "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem" "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/gem_make.out" "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/cairo/Makefile" "${pkgdir}/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
