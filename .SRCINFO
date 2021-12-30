@@ -1,15 +1,15 @@
 pkgbase = kubectl-minio
 	pkgdesc = Minio plugin for kubectl
-	pkgver = 4.3.8
+	pkgver = 4.3.9
 	pkgrel = 1
 	url = https://github.com/minio/operator
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
 	depends = kubectl
-	source_x86_64 = https://github.com/minio/operator/releases/download/v4.3.8/kubectl-minio_4.3.8_linux_amd64
-	sha256sums_x86_64 = bf0ac4ce4b6008b16d65aafe3e12ef627ef0906486e2c92fcb6a776bf9e6040f
-	source_aarch64 = https://github.com/minio/operator/releases/download/v4.3.8/kubectl-minio_4.3.8_linux_arm64
-	sha256sums_aarch64 = 37d2809e1724907e01d98b978779e2dbe38712a944e39deccece7741da477a4d
+	source_x86_64 = https://github.com/minio/operator/releases/download/v4.3.9/kubectl-minio_4.3.9_linux_amd64
+	sha256sums_x86_64 = f6ec594af94045e8bb354c41885bde60542f4828cb77965820795d72a489ed6c
+	source_aarch64 = https://github.com/minio/operator/releases/download/v4.3.9/kubectl-minio_4.3.9_linux_arm64
+	sha256sums_aarch64 = ddb7207c60b361046660d347737f43aafbad6e0669bb2595684c1a0fc56e8d0c
 
 pkgname = kubectl-minio
