@@ -9,7 +9,8 @@ pkgdesc="The official ${_basename} CLI client"
 arch=('x86_64')
 url="https://github.com/${_basename}-official/cli-client"
 license=('Apache')
-provides=("${_basename}cli")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=(
 	'openresolv'
 	'wireguard-tools'
