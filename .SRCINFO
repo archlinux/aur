@@ -1,0 +1,16 @@
+pkgbase = sentinel-client-cli-git
+	pkgdesc = The official Sentinel CLI client
+	pkgver = 0.2.0.rc0.r1.g83beda2
+	pkgrel = 1
+	url = https://github.com/sentinel-official/cli-client
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = make
+	depends = openresolv
+	depends = wireguard-tools
+	provides = sentinelcli
+	source = sentinel-client-cli::git+https://github.com/sentinel-official/cli-client
+	sha256sums = SKIP
+
+pkgname = sentinel-client-cli-git
