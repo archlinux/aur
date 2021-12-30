@@ -3,33 +3,26 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 pkgname=openrgb-bin
-pkgver=0.6
+pkgver=0.7
 pkgrel=2
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
-depends=('qt5-base' 'libusb' 'hidapi')
-optdepends=('i2c-tools: Motherboard & RAM access')
+depends=('qt5-base' 'libusb' 'hidapi' 'mbedtls')
+optdepends=('i2c-tools: Motherboard & RAM access' 'openrazer-driver-dkms: OpenRazer support')
 conflicts=('openrgb')
 provides=('openrgb')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_i686=("https://openrgb.org/releases/release_0.6/openrgb_0.6_i386_405ff7f.deb")
-source_x86_64=("https://openrgb.org/releases/release_0.6/openrgb_0.6_amd64_405ff7f.deb")
-sha512sums_i686=('5f2c3a4720ed34d475f22a50b684814cb36409e453080a0a08b6c784ced618a6f14d042c2fed7a5d115ebf901c8d627bfb7e9c4442b31ca24c0b5645c3eccf1f')
-sha512sums_x86_64=('c5fda84c723d044ee68309a44cb7080f86dd2fce9b424ed3dbc2634759ddd7137c605bc6e6e10a85dd4042e86f22d38fa153871db8cc8cd3668f2fa8f218e12e')
+source_i686=("https://openrgb.org/releases/release_0.7/openrgb_0.7_i386_bullseye_6128731.deb")
+source_x86_64=("https://openrgb.org/releases/release_0.7/openrgb_0.7_amd64_bullseye_6128731.deb")
+sha512sums_i686=('8c3795a46e68b753e06c5705aea8b670cddf1a8ba489fa5cc391624b2fbf192e07566a993b3047dd24ab222d0e3521b3d4791dae4e60d9d884dda4671bc05831')
+sha512sums_x86_64=('dccad61b85bcbf3e19dc154704b5223ad3f72d35e786604175f67cf5327914491d846fc3a8a9f97dbea907f79edef80f00f24753a337a73b5c95ee06aafe6813')
 
 package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-	# Fix directory structure differences
-	cd "${pkgdir}"
-
-	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
-
-	cd ..
 
 }
