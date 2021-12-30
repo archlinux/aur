@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-jsoncpp
 	pkgdesc = A C++ library for interacting with JSON (mingw-w64)
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/open-source-parsers/jsoncpp
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = mingw-w64-jsoncpp
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = jsoncpp-1.9.4.tar.gz::https://github.com/open-source-parsers/jsoncpp/archive/1.9.4.tar.gz
-	sha256sums = e34a628a8142643b976c7233ef381457efad79468c67cb1ae0b83a33d7493999
+	source = jsoncpp-1.9.5.tar.gz::https://github.com/open-source-parsers/jsoncpp/archive/1.9.5.tar.gz
+	sha256sums = f409856e5920c18d0c2fb85276e24ee607d2a09b5e7d5f0a371368903c275da2
 
 pkgname = mingw-w64-jsoncpp
-
