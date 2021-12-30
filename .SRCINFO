@@ -1,5 +1,5 @@
 pkgbase = lsi-sas2ircu
-	pkgdesc = LSI cfggen utility for 2004 chipset based LSI Fusion MPT SAS devices
+	pkgdesc = LSI cfggen utility for 2004/2008 chipset based LSI Fusion MPT SAS devices
 	pkgver = 20.00.00.00
 	pkgrel = 11
 	url = http://www.lsi.com

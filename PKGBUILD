@@ -2,7 +2,7 @@
 pkgname=lsi-sas2ircu
 pkgver=20.00.00.00
 pkgrel=11
-pkgdesc="LSI cfggen utility for 2004 chipset based Avago / LSI Fusion MPT2 SAS devices."
+pkgdesc="LSI cfggen utility for 2004/2008 chipset based Avago / LSI Fusion MPT2 SAS devices."
 url="http://www.lsi.com"
 arch=('x86_64' 'i686')
 license=('none')
