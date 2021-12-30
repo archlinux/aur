@@ -1,13 +1,13 @@
 # Maintainer: Yarmo Mackenbach <yarmo@yarmo.eu>
 pkgname=wowncast
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Owncast terminal client"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://codeberg.org/yarmo/$pkgname"
 license=("GPL3")
 
-makedepends=("git" "dart")
+makedepends=("dart")
 optdepends=("mpv: for watching streams"
             "vlc: for watching streams")
 OPTIONS=(!strip !docs !libtool !staticlibs emptydirs zipman purge !debug)

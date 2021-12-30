@@ -1,14 +1,13 @@
 pkgbase = wowncast
 	pkgdesc = Owncast terminal client
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/yarmo/wowncast
 	changelog = CHANGELOG.md
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = git
 	makedepends = dart
 	optdepends = mpv: for watching streams
 	optdepends = vlc: for watching streams
