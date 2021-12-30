@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=gitty-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Contextual information about your git projects, right on the command-line"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
@@ -16,11 +16,11 @@ source_aarch64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux
 source_armv6h=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_armv6.tar.gz")
 source_armv7h=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_armv7.tar.gz")
 
-sha256sums_x86_64=('315d1b41015d9568ee029d1761c6ae23a851dd75abde749942639d54818e071e')
-sha256sums_i686=('4292b28020b857182f162d8cad0ff9255ab6271d0cc24e172ac653a8a3c324dd')
-sha256sums_aarch64=('9bc0b08f291766ea5bb25daff5b1849eb6b8fc40c87e0ed68cd97e1b36caf8bd')
-sha256sums_armv6h=('356f63f10007e05f02d19734899ce01693b720af56424866337305b9f2b96b04')
-sha256sums_armv7h=('493fe86ea63d7da540264f0e0151f105e5f44585ed2113330616b0a37a207b73')
+sha256sums_x86_64=('a970dedb1398f44e7d358f30e631a15670079c1b0c696137f77a0dfb3c99f8a4')
+sha256sums_i686=('ae4ecab4f5a20438d84b69023f3dc712bef77bea3883cf7743999c9b5b63911e')
+sha256sums_aarch64=('96dd1917f694078dfa957f04d9826e6858fa018110c866c50143569da7a00226')
+sha256sums_armv6h=('787c0f6e6ccf85cf555d5f9671846423bffae5c8f5da4243e9a40a313d1949d1')
+sha256sums_armv7h=('3830ba76406a9c4d7468f3733a66c134cae70b7371f8d96361b36692a13bc896')
 
 package() {
     install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
