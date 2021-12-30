@@ -4,9 +4,9 @@ pkgname=obs-$_pluginname
 pkgver=0.0.2
 _obsver=27.0.0
 pkgrel=1
-pkgdesc="Plugin for OBS Studio allowing you to create a Dock for showing and editing notes for the current active scene"
+pkgdesc="Plugin for OBS Studio to add a Scene Collection Manager"
 arch=("i686" "x86_64" "aarch64")
-url="https://obsproject.com/forum/resources/scene-notes-dock.1398/"
+url="https://obsproject.com/forum/resources/scene-collection-manager.1434/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")

@@ -1,8 +1,8 @@
 pkgbase = obs-scene-collection-manager
-	pkgdesc = Plugin for OBS Studio allowing you to create a Dock for showing and editing notes for the current active scene
+	pkgdesc = Plugin for OBS Studio to add a Scene Collection Manager
 	pkgver = 0.0.2
 	pkgrel = 1
-	url = https://obsproject.com/forum/resources/scene-notes-dock.1398/
+	url = https://obsproject.com/forum/resources/scene-collection-manager.1434/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
