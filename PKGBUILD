@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-css3
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="CSS3 syntax support for Vim's built-in syntax/css.vim"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('704f2ae9cabc2a3567e3679f47b14d6d5dfc35f9043c9972122ebfbb3ea71d41')
+sha256sums=('6ac98547115c378590c7d3494708049bf0500161bce622004c84aa917ce05485')
 
 package() {
 	cd "vim-css3-syntax-$pkgver"
