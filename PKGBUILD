@@ -4,7 +4,7 @@
 
 pkgname=pycharm-professional
 pkgver=2021.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
 url='https://www.jetbrains.com/pycharm/'
@@ -21,7 +21,7 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
 sha256sums=('cdb4ad432963db1b68108af93e26303f9c3140a31813571f2a81c300e5af6918'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
-            'ef3e95568f5acfc55f81f39d825896a45e9e3eeadf05612124a4cc41a87682de')
+            '039f0d1dc447fb26bb9df35b3a85145a47ce42193c8b2d56bf7bdf090fff0da9')
 makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
