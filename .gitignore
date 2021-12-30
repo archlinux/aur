@@ -1,0 +1,5 @@
+dbus-inspect-*.tar.gz
+dbus-inspect-*.pkg.tar.*
+dbus-inspect/
+pkg/
+src/
