@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 pkgname=virustotal
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line client for virustotal.com'
 arch=('any')
 url="https://github.com/shibumi/virustotal"
