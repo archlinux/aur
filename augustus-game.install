@@ -9,8 +9,8 @@ into the root of your Caesar III installation.
 If you are in your Caesar III installation folder
 you can copy & paste the following lines to symlink them (depending on your shell):
 
+  ln -s /opt/augustus-game/res/assets .
   ln -s /opt/augustus-game/res/maps .
-  ln -s /opt/augustus-game/assets .
 
 
 For further information and how to add high-quality MP3 music/sounds to your installation see:
@@ -21,10 +21,15 @@ For further information and how to add high-quality MP3 music/sounds to your ins
 post_upgrade() {
    echo "
 Augustus renamed the 'mods' folder to 'assets', please check your Caesar III installation.
+If there is an 'mods' folder, please unlink it and link the assets folder from /opt into it.
 
-If there is an 'mods' folder, please unlink it and link the assets folder from /opt into it:
+Augustus also changed the default directory for the assets (from /assets to /res/assets)
+starting with commit 7e04d9ae5b.
 
-  ln -s /opt/augustus-game/assets .
+To ensure that Augustus uses the correct directory, please remove the old assets dir and
+re-symlink it from the /opt directory:
+
+  ln -s /opt/augustus-game/res/assets .
 "
 }
 
