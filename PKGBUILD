@@ -5,8 +5,8 @@
 pkgbase=dfatmo
 pkgname=('dfatmo' 'vdr-dfatmo' 'kodi-addon-dfatmo')
 pkgver=0.5.0
-_vdrapi=2.4.7
-pkgrel=8
+_vdrapi=2.6.0
+pkgrel=9
 epoch=1
 url="https://github.com/durchflieger/${pkgbase}"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
