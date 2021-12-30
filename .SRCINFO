@@ -1,4 +1,4 @@
-pkgbase = notesnook-bin
+pkgbase = notesnook
 	pkgdesc = Take private notes, capture ideas, make lists & sync them anywhere
 	pkgver = 1.7.0
 	pkgrel = 2
