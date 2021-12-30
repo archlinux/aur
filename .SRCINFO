@@ -1,13 +1,13 @@
 pkgbase = lsi-sas2ircu
 	pkgdesc = LSI cfggen utility for 2004 chipset based LSI Fusion MPT SAS devices
-	pkgver = 5.00.00.00
-	pkgrel = 2
+	pkgver = 20.00.00.00
+	pkgrel = 11
 	url = http://www.lsi.com
 	arch = x86_64
 	arch = i686
 	license = none
-	source = https://copy.com/D1X42Cf78kCl/public/packages/lsi-sas2ircu-5.00.00.00.zip
-	md5sums = 010f2534ed0deef34da211be18203fa3
+	source = https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_6g_p20/SAS2IRCU_P20.zip
+	md5sums = 57e7ffd2b3221c5d7b471b23ec429b8b
 
 pkgname = lsi-sas2ircu
 

@@ -1,7 +1,7 @@
-# Maintainer: Vincent Olivier <vincent@up4.com> 
+# Maintainer: Audun-Marius Gangstø <audun@gangsto.org>
 pkgname=lsi-sas2ircu
-pkgver=P20
-pkgrel=3
+pkgver=20.00.00.00
+pkgrel=11
 pkgdesc="LSI cfggen utility for 2004 chipset based Avago / LSI Fusion MPT2 SAS devices."
 url="http://www.lsi.com"
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("http://docs.avagotech.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_6g_p20/SAS2IRCU_${pkgver}.zip")
-md5sums=('6f9999e093b6b4b56c54427c8f6fd674')
+source=("https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_6g_p20/SAS2IRCU_P20.zip")
+md5sums=('57e7ffd2b3221c5d7b471b23ec429b8b')
 
 package() {
 	cd "${srcdir}"
