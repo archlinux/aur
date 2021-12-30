@@ -18,6 +18,7 @@ arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
 license=('GPL3')
 depends=('java-runtime>=10' 'bash' 'hicolor-icon-theme')
+makedepends=('java-environment>=10')
 source=("${_name}-${pkgver}.jar::https://github.com/reds-heig/logisim-evolution/releases/download/v${pkgver}/logisim-evolution-${pkgver}-all.jar"
     'logisim-evolution.desktop'
     'logisim-evolution.sh'

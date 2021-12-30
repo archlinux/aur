@@ -5,6 +5,7 @@ pkgbase = logisim-evolution-bin
 	url = https://github.com/reds-heig/logisim-evolution
 	arch = any
 	license = GPL3
+	makedepends = java-environment>=10
 	depends = java-runtime>=10
 	depends = bash
 	depends = hicolor-icon-theme
