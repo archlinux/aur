@@ -1,0 +1,19 @@
+pkgbase = grume-git
+	pkgdesc = A 3D Action RPG by Paul Wortmann.
+	pkgver = r2540.b1062dea
+	pkgrel = 1
+	url = https://github.com/Paul-Wortmann/grume
+	arch = x86_64
+	license = GPL2
+	depends = assimp
+	depends = glfw
+	depends = glm
+	depends = openal
+	depends = mesa
+	depends = physfs
+	depends = libvorbis
+	conflicts = grume
+	source = git+https://github.com/Paul-Wortmann/grume.git
+	sha256sums = SKIP
+
+pkgname = grume-git
