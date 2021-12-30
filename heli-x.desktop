@@ -1,7 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=HELI-X
-Comment=Professional R/C Flight Simulator
+GenericName=Professional R/C Flight Simulator
+GenericName[de]=Professioneller Modell-Flugsimulator
 Exec=heli-x
 Icon=heli-x
 Terminal=false
