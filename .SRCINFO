@@ -1,6 +1,6 @@
 pkgbase = lumina-desktop-git
-	pkgdesc = A Lightweight QT5 Desktop for FreeBSD -- git version
-	pkgver = 1.6.0.r102.ge38d5fe4
+	pkgdesc = A Lightweight QT5 Desktop for FreeBSD
+	pkgver = 1.6.2.r0.g92360ecb
 	pkgrel = 1
 	url = https://lumina-desktop.org/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = lumina-desktop-git
 	provides = lumina-desktop
 	conflicts = lumina-desktop
 	conflicts = insight-fm
-	source = git+https://github.com/lumina-desktop/lumina
+	source = git+https://github.com/lumina-desktop/lumina.git
 	md5sums = SKIP
 
 pkgname = lumina-desktop-git
