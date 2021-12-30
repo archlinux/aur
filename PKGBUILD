@@ -1,9 +1,9 @@
 # Maintainer: Yarmo Mackenbach <yarmo@yarmo.eu>
 pkgname=wowncast
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Owncast terminal client"
-arch=("any")
+arch=("x86_64" "armv7h" "aarch64")
 url="https://codeberg.org/yarmo/$pkgname"
 license=("GPL3")
 

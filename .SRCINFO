@@ -1,10 +1,12 @@
 pkgbase = wowncast
 	pkgdesc = Owncast terminal client
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/yarmo/wowncast
 	changelog = CHANGELOG.md
-	arch = any
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = dart
