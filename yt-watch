@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+# Begin Checking for Dependencies
+declare -a dependencies=(yt-dlp mpv jq curl xclip)
+for dependency in ${dependencies[@]}; do
+    if ! command -v ${dependency} &> /dev/null; then
+        die "${c_red}\"$dependency\" is not installed.${c_reset}\n"
+    fi
+done
+# End Checking for Dependencies
+
+
 c_red="\033[1;31m"
 c_green="\033[1;32m"
 c_blue="\033[1;34m"
@@ -98,10 +108,6 @@ searchHistory() {
 
 ## Begin With API Functions
 searchQueryWithAPI() {
-    if ! command -v jq &> /dev/null; then
-        die "jq is not installed\n"
-    fi
-
     tput reset
 
     printf "${c_red}Search YouTube:${c_reset} "
@@ -160,16 +166,6 @@ searchQuery() {
     query_fmt="${query// /+}"
     tput reset
 
-  # Begin Checking for Dependencies
-    if ! command -v yt-dlp &> /dev/null; then
-        die "yt-dlp is not installed\n"
-    fi
-
-    if ! command -v mpv &> /dev/null; then
-        die "mpv is not installed\n"
-    fi
-  # End Checking for Dependencies
-
     if [ -n "$1" ]; then
         search_length="$1"
     else
@@ -187,7 +183,7 @@ searchQuery() {
 	    url=$( echo $line | sed 's/.*"webpage_url": "\(.*\)", "categories.*/\1/g')
 	    echo "${uploader} --> ${title} ${url}" >> "$search_file"
     done < "$tmp_file"
-  
+
     searchVideo
 }
 
@@ -213,10 +209,6 @@ searchVideo() {
 
 ## Begin Download Functions
 downloadVideo() {
-    if ! command -v yt-dlp &> /dev/null; then
-        die "yt-dlp is not installed\n"
-    fi
-
     local id="$1"
     notify "Downloading Video" "$id"
 
@@ -224,10 +216,6 @@ downloadVideo() {
 }
 
 downloadMp3() {
-    if ! command -v yt-dlp &> /dev/null; then
-        die "yt-dlp is not installed\n"
-    fi
-
     local id="$1"
     notify "Converting To Mp3" "$id"
 
