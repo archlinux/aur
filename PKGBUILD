@@ -2,15 +2,15 @@
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname='notesnook-bin'
-pkgver=1.6.12
+pkgver=1.7.0
 pkgrel=2
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
 arch=('x86_64')
 url="https://notesnook.com/"
 license=('Unknown')
 depends=('gtk3' 'nss')
-source=("notesnook_${pkgver}_amd64.deb"::"https://github.com/streetwriters/$pkgname/releases/download/v$pkgver/${pkgname}_amd64.deb")
-sha256sums=('00d7398482b3e583d0b69aa7f7bc64e96ae03d3390fa5f9addae079c148b48fc')
+source=("notesnook_${pkgver}_amd64.deb"::"https://github.com/streetwriters/notesnook/releases/download/v$pkgver/notesnook_amd64.deb")
+sha256sums=('5db2d80cbb8255bd726d7dedfbc05491a7a4b6fdcfca6fcbd8c7aab3d97a2ded')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir"
