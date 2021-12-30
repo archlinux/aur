@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-plex
 pkgver=0.4.0
-_vdrapi=2.4.7
-pkgrel=6
+_vdrapi=2.6.0
+pkgrel=7
 pkgdesc="Plex plugin for Linux VDR"
 url="https://github.com/chriszero/vdr-plugin-plex"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
