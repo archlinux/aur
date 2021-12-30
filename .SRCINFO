@@ -1,15 +1,15 @@
 pkgbase = edges
 	pkgdesc = Command-line tool to set up hot-corners
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/MichaelStraube/edges
 	arch = x86_64
-	license = GPL3
-	makedepends = libxfixes
-	depends = libx11
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
 	depends = libxi
 	depends = libxrandr
-	source = https://github.com/MichaelStraube/edges/archive/2.0.2/edges-2.0.2.tar.gz
-	sha512sums = 92bb030ce9ad06b3b99672f7efe360afa9020f5918cbfb3e22efa09042a0bba79502b492d3101d8e1cc9831d4c8794cf7d2b80273ed2f548526c6f3a613914e2
+	source = https://github.com/MichaelStraube/edges/archive/3.0.0/edges-3.0.0.tar.gz
+	sha512sums = 27462a539f578e9707f464ad41853b74cf743d15ddde36811955f802404f375ecf0e1620f2d310de82c1eb4898b5cb2962541181d59a627c91913435cad840c1
 
 pkgname = edges
