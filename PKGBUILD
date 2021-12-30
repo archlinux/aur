@@ -32,7 +32,7 @@ install=
 changelog=
 source=("$pkgname::git+https://github.com/cmargiotta/MQTT-System-Monitor")
 noextract=()
-sha256sums=('SKIP') 
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
@@ -46,7 +46,7 @@ prepare() {
 }
 
 check() {
-	cd "$pkgname"
+	cd "$srcdir"
 	ninja -C build test
 }
 
