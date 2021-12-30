@@ -2,7 +2,7 @@
 # Contributor: Eschwartz <eschwartz93@gmail.com>
 
 pkgname=winetricks-git
-pkgver=20210825.r5.g53b4a7d5
+pkgver=20211230.r0.gb458acf7
 pkgrel=1
 pkgdesc='Script to install various redistributable runtime libraries in Wine.'
 url='http://wiki.winehq.org/winetricks'
@@ -19,7 +19,7 @@ source=("$pkgname::git+https://github.com/Winetricks/winetricks.git")
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed -r 's/-([0-9]+)-/.r\1./'
+  git describe --long --tags | sed -r 's/-([0-9]+)-/.r\1./' | sed -r 's/-test//'
 }
 
 package() {
