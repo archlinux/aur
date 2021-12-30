@@ -6,16 +6,16 @@ pkgname=("${pkgbase}"
          "${pkgbase}-host"
          "obs-plugin-${pkgbase}")
 epoch=2
-pkgver=B4
-pkgrel=2
+pkgver=B5.0.1
+pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('cmake' 'fontconfig' 'spice-protocol' 'wayland-protocols'
-             'libxss' 'libxi' 'obs-studio')
+             'libxss' 'libxi' 'libxpresent' 'obs-studio')
 source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.io/artifact/${pkgver}/source")
-sha512sums=('800b89438719dba1794db9e0b97fa1271ad0410cb92c62e8b680f73db948325c98afebd7cd26c05dd8c3a8c0c8565b5625409ce26797a1c635aaf4be01e509c8')
+sha512sums=('bb3a2a6887f5d3f283b5bd4ebbead669331b9e87421ae2af00d730aba89bed8b04c4d5883eeee16898eb2f3222201ea0ececf3b4970560e34d73b49ed6c505d6')
 
 _lgdir="${pkgbase}-${pkgver}"
 
@@ -32,7 +32,8 @@ build() {
 
 package_looking-glass() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('libgl' 'libegl' 'nettle' 'fontconfig' 'libxss' 'libxi' 'libxinerama')
+	depends=('libgl' 'libegl' 'nettle' 'fontconfig' 'libxss' 'libxi'
+	         'libxinerama' 'libxcursor' 'libxpresent' 'libxkbcommon')
 
 	cd "${srcdir}/${_lgdir}/client/build"
 	make DESTDIR="${pkgdir}" install
