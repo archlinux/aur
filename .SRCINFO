@@ -1,0 +1,16 @@
+pkgbase = git-remote-rclone
+	pkgdesc = Git remote helper for rclone-supported services
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/datalad/git-remote-rclone
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = git
+	depends = rclone
+	depends = p7zip
+	options = !strip
+	source = git-remote-rclone-0.1.tar.gz::https://github.com/datalad/git-remote-rclone/archive/refs/tags/0.1.tar.gz
+	sha256sums = 23a6608027f7399d882485502961d6a91f950157f8b4fccf3278492010c339f1
+
+pkgname = git-remote-rclone
