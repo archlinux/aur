@@ -14,4 +14,4 @@ Categories=GTK;System;Settings;Network;
 Version=1.0
 StartupNotify=false
 Icon=rutilt
-Exec= env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /usr/bin/rutilt
+Exec=/usr/bin/rutilt

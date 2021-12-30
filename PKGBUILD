@@ -3,7 +3,7 @@
 
 pkgname=rutilt-bin
 pkgver=0.18.0
-pkgrel=5
+pkgrel=6
 pkgdesc="a Gtk+ program designed to set up any wireless network interface, find and connect to networks in range and get some information such as the quality of association etc that is primally written for Ralink devices"
 arch=('x86_64' 'i386')
 url=""
