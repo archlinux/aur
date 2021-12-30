@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
@@ -12,16 +12,25 @@ conflicts=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=$pkgver"
         'git+https://github.com/ThePBone/EELEditor.git'
+        'git+https://github.com/ThePBone/GraphicEQWidget.git'
+        'git+https://github.com/ThePBone/FlatTabWidget.git'
+        'git+https://github.com/ThePBone/LiquidEqualizerWidget.git'
         'jamesdsp.desktop')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'c6496e6981471aa3f8d1593673991e422d243ff3efe595b3230de713588599c3')
 
 prepare() {
   cd "$srcdir/JDSP4Linux"
-  git submodule init src/subprojects/EELEditor
-  git config submodule.EELEditor.url "$srcdir/EELEditor"
-  git submodule update
+
+  for submodule in EELEditor GraphicEQWidget FlatTabWidget LiquidEqualizerWidget; do
+    git submodule init
+    git config submodule.src/subprojects/"$submodule".url "$srcdir/$submodule"
+    git submodule update
+  done
 
   mkdir -p build
 }

@@ -1,6 +1,6 @@
 pkgbase = jamesdsp
 	pkgdesc = An audio effect processor for PipeWire clients
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/Audio4Linux/JDSP4Linux
 	arch = x86_64
@@ -15,9 +15,15 @@ pkgbase = jamesdsp
 	replaces = jdsp4linux
 	replaces = jdsp4linux-gui
 	replaces = gst-plugin-jamesdsp
-	source = git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=2.2
+	source = git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=2.3
 	source = git+https://github.com/ThePBone/EELEditor.git
+	source = git+https://github.com/ThePBone/GraphicEQWidget.git
+	source = git+https://github.com/ThePBone/FlatTabWidget.git
+	source = git+https://github.com/ThePBone/LiquidEqualizerWidget.git
 	source = jamesdsp.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = c6496e6981471aa3f8d1593673991e422d243ff3efe595b3230de713588599c3
