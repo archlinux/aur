@@ -3,8 +3,8 @@
 
 _pkgname=potatopresenter
 pkgname="${_pkgname}"-appimage
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Tool to create presentation slides that can be exported as PDF."
 arch=('x86_64')
 url="https://github.com/thgier/PotatoPresenter"
@@ -16,11 +16,11 @@ provides=('potatopresenter')
 conflicts=('potatopresenter')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source=("$_appimage::$url/releases/download/v${pkgver}/Potato_Presenter-v${pkgver}-x86_64.AppImage"
+source=("$_appimage::$url/releases/download/v${pkgver}/PotatoPresenter-v${pkgver}.AppImage"
         "potatopresenter.desktop"
         "https://raw.githubusercontent.com/thgier/PotatoPresenter/master/potato_logo.svg")
 noextract=("$_appimage")
-sha256sums=('64cb3486a1a3f4cd6488410b74ad1dc282ff530e5ef58186d1d6e07aa709ddd2'
+sha256sums=('29146cb6631d8343118b5273977b3834f8ac8b2de9e8ea83fbd96aaf402d721e'
             '030597070eefe827d1895f3736cf2c70753e2ca13812350610122193976a2a7c'
             'd96b384a4e8ba5365785f9be8cd77e2f54d0ae767de7ae4c2f2f52c9de0e083b')
 
