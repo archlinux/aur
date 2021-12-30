@@ -1,10 +1,10 @@
 # Maintainer: Nathan Robinson <nrobinson2000@me.com>
 pkgname=adapta-nokto-cinnamon-cantarell
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=('any')
 license=('GPL2')
-depends=('cantarell-fonts' 'adapta-gtk-theme')
+optdepends=('cantarell-fonts' 'adapta-gtk-theme')
 
 pkgdesc="Pacman hook to change Adapta Nokto Cinnamon font to Cantarell"
 

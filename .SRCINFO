@@ -1,11 +1,11 @@
 pkgbase = adapta-nokto-cinnamon-cantarell
 	pkgdesc = Pacman hook to change Adapta Nokto Cinnamon font to Cantarell
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	arch = any
 	license = GPL2
-	depends = cantarell-fonts
-	depends = adapta-gtk-theme
+	optdepends = cantarell-fonts
+	optdepends = adapta-gtk-theme
 	source = adapta-nokto-cinnamon-cantarell.hook
 	source = cinnamon.css.patch
 	sha256sums = c582a944c1468593c4d0f6fe408ef91fd3d627cee77b0633f4dffbf8fe093389
