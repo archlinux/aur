@@ -1,4 +1,4 @@
-# Maintainer: Bruno Miguel <bruno@userrepository.eu>
+# Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=poddr-bin
 pkgver=2.0.0
 pkgrel=2
