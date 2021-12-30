@@ -2,7 +2,7 @@
 # Contributor: Jason Wood <jwood@startmail.com>
 
 pkgname=headlines
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="GTK4 Reddit client"
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=(
 makedepends=('cmake' 'boost')
 replaces=('gtkeddit')
 source=("$pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/Headlines-$pkgver.tar.bz2")
-sha256sums=('dafcf7dd7908b4c348470cac2597b7639bd31b63839d8afdd9a9ab3c9e8eabf6')
+sha256sums=('791f4ea1a145201d5a15e8e6116a89d3ea2df83ac28a0b7a66d17a91e323a34c')
 
 build() {
 	cmake \

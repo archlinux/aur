@@ -1,6 +1,6 @@
 pkgbase = headlines
 	pkgdesc = GTK4 Reddit client
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://gitlab.com/caveman250/headlines
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = headlines
 	depends = xdg-utils
 	depends = libsecret
 	replaces = gtkeddit
-	source = headlines-0.5.1.tar.bz2::https://gitlab.com/caveman250/headlines/-/archive/0.5.1/Headlines-0.5.1.tar.bz2
-	sha256sums = dafcf7dd7908b4c348470cac2597b7639bd31b63839d8afdd9a9ab3c9e8eabf6
+	source = headlines-0.5.2.tar.bz2::https://gitlab.com/caveman250/headlines/-/archive/0.5.2/Headlines-0.5.2.tar.bz2
+	sha256sums = 791f4ea1a145201d5a15e8e6116a89d3ea2df83ac28a0b7a66d17a91e323a34c
 
 pkgname = headlines
