@@ -9,6 +9,7 @@ pkgbase = nfauthenticationkey
 	depends = python
 	depends = python-pycryptodomex
 	depends = python-websocket-client
+	depends = chromium
 	optdepends = chromium
 	optdepends = google-chrome
 	optdepends = brave
