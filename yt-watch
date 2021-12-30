@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # Begin Checking for Dependencies
 declare -a dependencies=(yt-dlp mpv jq curl xclip)
@@ -20,7 +21,10 @@ tmp_file="/tmp/yt.json"
 search_file="/tmp/yt-script-search"
 queries_file="${XDG_CONFIG_HOME:-$HOME}/.yt-queries"
 
+# Arguments
 headless=false
+loop=false
+
 
 clearHistory() {
   if [[ ! -f "$queries_file" ]]; then
@@ -61,7 +65,7 @@ formatPrint(){
             printf "${c_green}[$count]: $line${c_reset}\n"
         fi
         count=$((count+1))
-    done  < $1
+    done < "$1"
 }
 
 die() { printf "$*" 1>&2 ; exit 1; }
@@ -74,6 +78,23 @@ notify() {
                 -t 5000 "$action:" "$title"
 }
 
+arguments() {
+    args=""
+
+    # argument setting
+    if [[ "$headless" == "true" && "$loop" != "true" ]]; then
+        args="--no-video"
+    fi
+
+    if [[ "$loop" == "true" && "$headless" != "true" ]]; then
+        args="--loop"
+    fi
+
+    if [[ "$headless" == "true" && "$loop" == "true" ]]; then
+        args="--no-video --loop"
+    fi
+}
+
 playVideo() {
     local link="$1"
 
@@ -82,14 +103,8 @@ playVideo() {
         pkill mpv
     fi
 
-    if [ "$headless" == "false" ]; then
-        echo "not headless" > ~/.headless-or-not
-        setsid -f mpv "$link" --loop 2>/dev/null 1>&2
-
-    elif [ "$headless" == "true" ]; then
-        echo "headless" > ~/.headless-or-not
-        setsid -f mpv --no-video "$link" 2>/dev/null 1>&2
-    fi
+    arguments
+    setsid -f mpv ${args} "$link" 2>/dev/null 1>&2
 }
 
 searchHistory() {
@@ -249,20 +264,39 @@ helpScreen() {
   ${c_red}-k, --kill${c_reset}                    ${c_blue}Kills mpv${c_reset}
   ${c_red}-q, --queries${c_reset}                 ${c_blue}Lists out all of your search history.${c_reset}
   ${c_red}-qc, --query-copy${c_reset}             ${c_blue}Lists out search history, select & it copies it.${c_reset}
-
+ 
+  ${c_green}ADDITIONAL ARGUMENTS:${c_reset}
   ${c_red}--headless${c_reset}                    ${c_blue}Plays YouTube video content, but with no video.${c_reset}
+  ${c_red}--loop${c_reset}                        ${c_blue}Loops the YouTube content.${c_reset}
+
+  ${c_green}EXAMPLE:${c_reset}
+  ${c_red}-sl 25 --loop --headless${c_reset}      ${c_blue}Lists out 25 results of your query. Selected Video will loop but not have video playback.${c_reset}
   "
 }
 
 
 # headless setting
-if [[ "$2" == "--headless" || "$3" == "--headless" ]]; then
+arg_h="--headless"
+if [[ "$2" == "$arg_h" || "$3" == "$arg_h" || "$4" == "$arg_h" ]]; then
     headless=true
 
-elif [[ "$1" == "--headless" ]]; then
+elif [[ "$1" == "$arg_h" ]]; then
     headless=true
     notify "Playing" "$(xclip -o)" && playVideo "$(xclip -o)"
+
 fi
+
+# loop setting
+arg_l="--loop"
+if [[ "$2" == "$arg_l" || "$3" == "$arg_l" || "$4" == "$arg_l" ]]; then
+    loop=true
+
+elif [[ "$1" == "$arg_l" ]]; then
+    loop=true
+    notify "Playing" "$(xclip -o)" && playVideo "$(xclip -o)"
+
+fi
+
 
 # Play youtube video link from clipboard
 if [[ "$1" == "" ]]; then
