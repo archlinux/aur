@@ -5,16 +5,18 @@
 pkgname=av-98-offline
 _pkgname='av-98'
 pkgver=1.0.4dev
-pkgrel=3
+pkgrel=4
 pkgdesc='Fork of the command-line gemini client AV-98 with added offline capabilities'
 arch=(any)
 url='https://tildegit.org/ploum/AV-98-offline'
 license=('BSD')
-depends=('python')
+depends=(
+  'python'
+  'python-magic'
+)
 makedepends=(
   'coreutils'
   'git'
-  'python-magic'
   'python-setuptools'
 )
 optdepends=(
