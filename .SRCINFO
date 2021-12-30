@@ -1,14 +1,14 @@
 pkgbase = python-apycula
 	pkgdesc = Open Source tools for Gowin FPGAs
-	pkgver = 0.0.1a12
+	pkgver = 0.2a2
 	pkgrel = 1
 	url = https://github.com/YosysHQ/apicula
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/A/Apycula/Apycula-0.0.1a12.tar.gz
-	sha256sums = 4c56f50b519a3002be72411e5c3c52c8ed82831e5d9aaeb675aa129c08801662
+	source = https://files.pythonhosted.org/packages/source/A/Apycula/Apycula-0.2a2.tar.gz
+	sha256sums = a5c568606061a7d8f2b96049fd1a62f1c8f00e03e3849d4facf6e58f90d04e99
 
 pkgname = python-apycula
 	depends = python
