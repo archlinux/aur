@@ -5,10 +5,9 @@ pkgbase = virustotal
 	url = https://github.com/shibumi/virustotal
 	arch = any
 	license = BSD
-	depends = python
+	depends = python2
 	backup = etc/virustotal.conf
 	source = virustotal-1.3.tar,gz::https://github.com/shibumi/virustotal/archive/1.3.tar.gz
 	sha512sums = 90ab565c537765bb6463591bd3635c91f3fceca4fd6450883250551275f818132287e08e6d05617a838da7f6fa353cf09ae9f4e593d4a1f77a45f265ff92cf9c
 
 pkgname = virustotal
-
