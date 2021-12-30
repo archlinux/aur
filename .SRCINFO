@@ -1,6 +1,6 @@
 pkgbase = pacext-git
 	pkgdesc = Pacman extensions with more convenient syntax
-	pkgver = r18.d09d04b
+	pkgver = r19.2654f67
 	pkgrel = 1
 	url = https://github.com/CRISPYricePC/pacext
 	arch = any
