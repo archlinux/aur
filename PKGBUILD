@@ -4,9 +4,9 @@
 pkgname=vdr-vnsiserver
 pkgver=1.8.0.r13.g47a90dd
 _gitver=47a90dd9298753083a9a6482bb9990ea9a88aa7a
-_vdrapi=2.4.7
+_vdrapi=2.6.0
 epoch=2
-pkgrel=2
+pkgrel=3
 url="https://github.com/mdre77/vdr-plugin-vnsiserver"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
