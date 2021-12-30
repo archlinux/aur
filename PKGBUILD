@@ -4,7 +4,7 @@
 
 _pkgname=sdrangel
 pkgname=$_pkgname-git
-pkgver=6.17.6.r7.5c742a873
+pkgver=6.17.6.r9.60c0e3117
 pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -41,9 +41,8 @@ optdepends=('ffmpeg: DATV demodulator'
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+$url" "pr-1092.patch")
-sha512sums=('SKIP'
-            '4b749458458d6b9b89f50c7fdc250fdab1320d44693a7c9c168c46277d3ec50da58043d1625d6cfefa32ba9280c0cfe9b927bc016f3b7deedce97e88f2eeca18')
+source=("git+$url")
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
@@ -53,7 +52,6 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 
-	patch -p1 < "$srcdir/pr-1092.patch"
 }
 
 build() {
