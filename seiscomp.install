@@ -1,0 +1,8 @@
+post_install() {
+	echo "  ->----------------------------------------------------------------<-"
+	echo "  -> Before using seiscomp for first time you need to do following:"
+	echo "  -> - Add your user to 'seiscomp' group:"
+	echo "  ->   sudo gpasswd -a $USERNAME seiscomp"
+	echo "  -> - Restart your system or logout and login again."
+	echo "  ->----------------------------------------------------------------<-"
+}
