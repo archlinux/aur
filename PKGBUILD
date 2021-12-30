@@ -67,7 +67,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.15.11
+pkgver=5.15.12
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=556ebd971af7d78961d759048391d337f08ee0d8
+_arch_config_commit=81bac472ed1928c8f88dfed4c73b68f38742b35b
 _prjc_version=5.15-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20211114
@@ -91,15 +91,14 @@ source=(
   "0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch::https://github.com/archlinux/linux/commit/f11ec07fb3823d7f8a2c51c69e4799456e60ee5e.patch"
   "0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/b0b3ccddaedefa14547c8d01162986030640d31d.patch"
   "0006-lg-laptop-Recognize-more-models.patch::https://github.com/archlinux/linux/commit/178abfbb402588b9b50c9b10560aa0b153ed3406.patch"
-  "0007-HID-holtek-fix-mouse-probing.patch::https://github.com/archlinux/linux/commit/b2d8dd6455350d10e35533fe209e7c11170f8deb.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('37a264e50069e5b195b99a355944893e42c6fc05eb5fef7907855de4d31c693421e6fc578575ed141534b52ab9105dfd7697bdfec238cfa88e16a6c41f138ebd'
+b2sums=('6e201ffe5832a998b9bc8f63e9fcbf7f0384d4e4abb1a68c2299b8362b51ddcfbc35639bfc836a84202bec3705f5bca1616396c16daa05d778659d286f63b6a8'
         'SKIP'
-        'ec063945ed23c80185636c5573ca561fa99543a2295dd194bcb838aa511c6ec68b9a01e1f23aa13130a95139425a5233caa197ed09f5e0ce8d5d7e45603c27d9'
+        '28540af4732569d0638c4b2525cbc3701aec60330d8ac4b081a62145a20226725c1444521cd750ae9cd18ff0f469ce40f8db451588ba0d85c6e0d388f1d82c3b'
         '110a03b5658200f7414922cf4ed361b6127c08d99359111209c86d951907626c92ff1e50f6906a0f56534e24aa2f35520dae11fa0d148ade488b93a401cb706f'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
         '93fda125a3c7959120ee25d7dcdeef82bf7d813d0fd27224695071fa95cc4ffe0783ccb6c0f34d2c6b3a77bc6667f3099f56ceb37951df39ec211daacfb076d2'
@@ -107,8 +106,7 @@ b2sums=('37a264e50069e5b195b99a355944893e42c6fc05eb5fef7907855de4d31c693421e6fc5
         'e7dc41fa9c67fdcc72e22711091cc8335344e66d939b16d7ab23bd4461fb6f42b96506b9788d9f08370cb5d9ed2fd5bb81d4bafb870aeafd3e84ccd378c9308f'
         '4079bc42bc0dc8c8f0cd87757ed6ec2f957112758db5bef2a357bdaa4ad26a00aec7f6160701849fc7fcc7e4ef99fa39145e82693f9ff87c706331fe39267982'
         'a61d0401577640a59149ebb9ded6321ac95ca8e2d104f632d70fea24d8c43a119341a7bc1c096f8a4cb9e376ad466a1e3f8e8760574aa2c2f81867f7342d8c1f'
-        'd176856d95329005b7573e4f77077781e479cda3141c4ae0f4fc71873643ab995e048ac44da7e4e8bd3fdcee158527885223d99769b21b9cc56fa75b5f796fd9'
-        '192422db138aa8557a7d807e7e739419e4e4cb098632bc1bfb64ac1a10f7e49baba5ff413d0d880377102fbc1962f5a7dd4736bb6ac04c469afa5484096c4199')
+        'd176856d95329005b7573e4f77077781e479cda3141c4ae0f4fc71873643ab995e048ac44da7e4e8bd3fdcee158527885223d99769b21b9cc56fa75b5f796fd9')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
