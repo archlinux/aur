@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=pdfquirk
-pkgver=0.93
-pkgrel=2
+pkgver=0.95
+pkgrel=1
 pkgdesc="Creating PDFs from images or scanner made easy"
 arch=('x86_64')
 url="https://dragotin.github.io/quirksite"
 license=(GPL3)
-depends=(hicolor-icon-theme imagemagick qt5-base)
+depends=(imagemagick qt5-tools)
 makedepends=(extra-cmake-modules glu)
 optdepends=('sane: scanning support')
 source=("https://github.com/dragotin/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('30c8c6073616f7536acaa6cb5bc9039bfcb6bbb662d01b10688b28666bb29520f94c1d97fd02d524aeed3de005a0f8ff06941576c0552421a944e7619af78a93')
+sha512sums=('e202ee2a43ffad1d8c9404d1568ed3578bf8a2763854ae6dd654866fb8635686594069911adb4bbc8bc75e433db0098b88ce242ba37c90ded2c5f534fa8b83c4')
 
 build() {
   cmake \
