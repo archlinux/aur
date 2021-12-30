@@ -1,7 +1,7 @@
 pkgbase = uwsgi-fix
 	pkgdesc = A full stack for building hosting services
 	pkgver = 2.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uwsgi-docs.readthedocs.io/en/latest/
 	arch = x86_64
 	license = GPL2
@@ -74,24 +74,28 @@ pkgname = uwsgi-fix
 	depends = openssl
 	depends = pcre
 	depends = zlib
+	conflicts = uwsgi
 	backup = etc/uwsgi/emperor.ini
 
 pkgname = uwsgi-fix-plugin-rack
 	pkgdesc = Ruby rack plugin
 	depends = glibc
 	depends = ruby
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-rack
 
 pkgname = uwsgi-fix-plugin-psgi
 	pkgdesc = A full stack for building hosting services (Perl psgi plugin)
 	depends = glibc
 	depends = perl
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-psgi
 
 pkgname = uwsgi-fix-plugin-cgi
 	pkgdesc = A full stack for building hosting services (CGI plugin)
 	depends = glibc
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-cgi
 
 pkgname = uwsgi-fix-plugin-python
 	pkgdesc = A full stack for building hosting services (Python plugin)
@@ -99,49 +103,58 @@ pkgname = uwsgi-fix-plugin-python
 	depends = python
 	depends = python-gevent
 	depends = python-greenlet
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-python
 
 pkgname = uwsgi-fix-plugin-pypy
 	pkgdesc = A full stack for building hosting services (PyPy plugin)
 	depends = glibc
 	depends = pypy
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-pypy
 
 pkgname = uwsgi-fix-plugin-php
 	pkgdesc = A full stack for building hosting services (PHP plugin)
 	depends = glibc
 	depends = php-embed
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-php
 
 pkgname = uwsgi-fix-plugin-php7
 	pkgdesc = A full stack for building hosting services (PHP7 plugin)
 	depends = glibc
 	depends = php7-embed
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-php7
 
 pkgname = uwsgi-fix-plugin-lua51
 	pkgdesc = A full stack for building hosting services (LUA plugin)
 	depends = glibc
 	depends = lua51
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-lua51
 
 pkgname = uwsgi-fix-plugin-mono
 	pkgdesc = A full stack for building hosting services (mono plugin)
 	depends = glibc
 	depends = mono
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-mono
 
 pkgname = uwsgi-fix-plugin-webdav
 	pkgdesc = A full stack for building hosting services (WebDav plugin)
 	depends = glibc
 	depends = libxml2
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-webdav
 
 pkgname = uwsgi-fix-plugin-zabbix
 	pkgdesc = A full stack for building hosting services (zabbix plugin)
 	depends = glibc
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-zabbix
 
 pkgname = uwsgi-fix-plugin-notfound
 	pkgdesc = A full stack for building hosting services (notfound plugin)
-	depends = uwsgi
+	depends = uwsgi-fix
+	conflicts = uwsgi-plugin-notfound
