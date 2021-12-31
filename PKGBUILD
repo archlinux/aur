@@ -2,9 +2,10 @@
 # Maintainer: Demir Yerli demiryerli@gmail.com
 pkgname="asudo-bin"
 pkgver="2.1.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Another version of sudo"
 url="https://github.com/GOseUser/ASudo"
+depends=("util-linux>=2.0.0")
 arch=("x86_64")
 source=("asudo.sh")
 sha512sums=("SKIP")

@@ -1,9 +1,10 @@
 pkgbase = asudo-bin
 	pkgdesc = Another version of sudo
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GOseUser/ASudo
 	arch = x86_64
+	depends = util-linux>=2.0.0
 	source = asudo.sh
 	sha512sums = SKIP
 
