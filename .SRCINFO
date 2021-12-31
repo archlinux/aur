@@ -1,6 +1,6 @@
 pkgbase = thextech-supermariobrosx
 	pkgdesc = The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with SMBX 1.3 game assets.
-	pkgver = 1.3.5.2
+	pkgver = 1.3.5.3
 	pkgrel = 1
 	url = https://github.com/Wohlstand/TheXTech
 	install = thextech-supermariobrosx.install
@@ -16,10 +16,10 @@ pkgbase = thextech-supermariobrosx
 	depends = desktop-file-utils
 	provides = thextech
 	source = git://github.com/Wohlstand/TheXTech
-	source = http://wohlsoft.ru/projects/TheXTech/_downloads/thextech-smbx13-assets-full.7z
+	source = https://wohlsoft.ru/projects/TheXTech/_downloads/thextech-smbx13-assets-full.7z
 	source = thextech-supermariobrosx.desktop
 	sha256sums = SKIP
-	sha256sums = 73fbd497a60ce13525121a8d1a43ae3fd9205f6f4c64335787e06544d67cb4a9
-	sha256sums = 9b2f13d4f9078eae7e5346c48ed7467536f22068dbfa941fe2c1daf00d78923d
+	sha256sums = SKIP
+	sha256sums = 5fd5af376176f4e1d466020da57e0ccff73abb4f52a30e6e429b0eb52b1887b3
 
 pkgname = thextech-supermariobrosx

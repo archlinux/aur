@@ -1,6 +1,6 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=thextech-supermariobrosx
-pkgver=1.3.5.2
+pkgver=1.3.5.3
 pkgrel=1
 pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with SMBX 1.3 game assets."
 arch=('i386' 'x86_64' 'aarch64')
