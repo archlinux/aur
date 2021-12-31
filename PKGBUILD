@@ -6,8 +6,8 @@ pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage 
 arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/Wohlstand/TheXTech"
 license=('GPL')
-depends=('desktop-file-utils')
-makedepends=('git' 'cmake' 'sdl2' 'libpng' 'libjpeg-turbo')
+depends=('desktop-file-utils' 'sdl2' 'libjpeg-turbo' 'libpng')
+makedepends=('git' 'cmake')
 optdepends=()
 provides=('thextech')
 install=${pkgname}.install
@@ -29,7 +29,7 @@ build() {
 	cd "${srcdir}/TheXTech"
 	mkdir build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DUSE_SYSTEM_SDL2=OFF -DUSE_SYSTEM_LIBS=OFF -DUSE_STATIC_LIBC=ON -DPGE_SHARED_SDLMIXER=OFF -DTHEXTECH_FIXED_ASSETS_PATH=/usr/share/games/thextech-aod -DTHEXTECH_USER_DIR_NAME=.thextech-aod ..
+    cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DUSE_FREEIMAGE_SYSTEM_LIBS=ON -DUSE_SYSTEM_SDL2=ON -DUSE_SYSTEM_LIBS=OFF -DUSE_STATIC_LIBC=ON -DPGE_SHARED_SDLMIXER=OFF -DTHEXTECH_FIXED_ASSETS_PATH=/usr/share/games/thextech-aod -DTHEXTECH_USER_DIR_NAME=.thextech-aod ..
     CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2  -fstack-clash-protection -fcf-protection" CXXFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS" make
 }
 
