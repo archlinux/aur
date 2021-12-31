@@ -1,0 +1,8 @@
+Z /etc/blendnet 0755 root blendnet
+d /var/lib/blendnet 0755
+Z /var/lib/blendnet - blendnet blendnet
+L /var/lib/blendnet/agent.json - - - - /etc/blendnet/agent.json
+L /var/lib/blendnet/manager.json - - - - /etc/blendnet/manager.json
+L /var/lib/blendnet/server.crt - - - - /etc/blendnet/server.crt
+L /var/lib/blendnet/ca.crt - - - - /etc/blendnet/server.crt
+L /var/lib/blendnet/server.key - - - - /etc/blendnet/server.key

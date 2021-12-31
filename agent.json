@@ -1,0 +1,8 @@
+{
+    "%comment%": "Remove the header _ from the configuration keys to enable them",
+
+    "_auth_user": "<AGENT USER>",
+    "_auth_password": "<AGENT PASSWORD>",
+    "_listen_host": "",
+    "_listen_port": 9443
+}

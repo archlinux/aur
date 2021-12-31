@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$1" != "agent" -a "$1" != "manager" ]; then
+    echo "This is a validation script for the blendnet configuration files, it is used by the blendnet-manager.service and blendnet-agent.service systemd units."
+    echo "See the wiki for info on how to use blendnet: https://github.com/state-of-the-art/BlendNet/wiki"
+    exit 1
+fi
+
+if grep -q '"_auth_password' "/etc/blendnet/$1.json"; then
+    echo "Please specify a custom username and password in /etc/blendnet/$1.json"
+    exit 1
+fi
+if grep -q '"_agent_auth_password' "/etc/blendnet/$1.json"; then
+    echo "Please specify a custom username and password in /etc/blendnet/$1.json"
+    exit 1
+fi

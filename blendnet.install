@@ -1,0 +1,30 @@
+post_install() {
+    if [ ! -f /etc/blendnet/server.key ]; then
+        echo
+        echo "Generating openssl certificate with default validity period of 10 years..."
+        openssl req -x509 -nodes -newkey rsa:4096 \
+            -keyout /etc/blendnet/server.key -out /etc/blendnet/server.crt \
+            -subj "/C=US/ST=N/L=N/O=N/OU=N/CN=blendnet-service"
+    fi
+    
+    echo
+    echo "If this is a Manager machine:"
+    echo "- Copy our /etc/blendnet/server.key to all Agent and Addon machines, to /etc/blendnet/server.key"
+    echo "- Edit /etc/blendnet/manager.json, adding a manager username and password"
+    echo "- Edit /etc/blendnet/manager.json, adding an agent username and password"
+    echo
+    echo "If this is an Agent machine:"
+    echo "- Edit /etc/blendnet/agent.json, adding the same agent username and password used in the Manager"
+    echo
+    echo "If this is an Addon machine:"
+    echo "- The CA certificate is in /etc/blendnet/server.crt"
+    echo "- Restart Blender"
+    echo '- Enable the BlendNet plugin in Preferences -> Add-ons -> Enable "Render: BlendNet"'
+    echo "- Configure the plugin with the manager/agent user and password"
+    echo "- Follow instructions in the wiki: https://github.com/state-of-the-art/BlendNet/wiki/HOWTO%3A-Setup-provider%3A-Your-own-render-farm-%28local%29---for-Linux-users#5-setup-addon-and-add-agent-to-the-manager"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}

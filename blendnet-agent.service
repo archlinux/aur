@@ -1,0 +1,20 @@
+[Unit]
+Description=Blendnet Agent
+After=syslog.target
+After=network.target
+
+[Service]
+User=blendnet
+Group=blendnet
+Type=simple
+KillSignal=SIGKILL
+WorkingDirectory=~
+ConfigurationDirectory=blendnet
+StateDirectory=blendnet
+ExecStartPre=/usr/share/blender/3.0/scripts/addons/blendnet/blendnet-validate agent
+ExecStart=/usr/bin/blender -b -noaudio -P /usr/share/blender/3.0/scripts/addons/blendnet/agent.py
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=multi-user.target

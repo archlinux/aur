@@ -1,0 +1,17 @@
+{
+    "%comment%": "Remove the header _ from the configuration keys to enable them",
+
+    "name": "Arch Linux Blendnet Manager",
+    "_auth_user": "<MANAGER USER>",
+    "_auth_password": "<MANAGER PASSWORD>",
+
+    "_agent_auth_user": "<AGENT USER, same as auth_user in agent.json>",
+    "_agent_auth_password": "<AGENT PASSWORD, same as auth_password in agent.json>",
+
+    "_ip": "<IP OR NS TO OVERRIDE THE resources Manager IP>",
+    "_internal_ip": "<IP OR NS TO OVERRIDE THE resources Manager INTERNAL_IP>",
+    "_listen_host": "",
+    "_listen_port": 8443,
+    "_agent_listen_port": 9443,
+    "_agent_upload_workers": 4
+}
