@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxo-cg-git
-pkgver=1.2.3.r0.g8dc5348
+pkgver=1.2.4.r0.gd0e3667
 pkgrel=1
 pkgdesc="ODL (Object Definition Language) Compiler/Generator"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
