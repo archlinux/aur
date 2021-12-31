@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("rustfolio")
 conflicts=("rustfolio")
-source=("https://github.com/Melesar/rustfolio/releases/download/v$pkgver/rustfolio-$pkgver-x86_64.tar.gz")
+source=("https://github.com/Melesar/rustfolio/releases/download/$pkgver/rustfolio-$pkgver-x86_64.tar.gz")
 sha256sums=("6ec5516fb3452502cf0a35ea46a6d4b480344c53b9fe14a1c00d712517c7eb15")
 
 package() {
