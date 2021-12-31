@@ -3,7 +3,7 @@
 
 pkgname=nb
 pkgver=6.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -49,4 +49,6 @@ package() {
   # Completions
   install -Dm644 etc/nb-completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm644 etc/nb-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  # Plugins
+  install -Dm644 -t "${pkgdir}/usr/share/nb/plugins/" plugins/*
 }
