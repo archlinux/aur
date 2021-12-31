@@ -1,0 +1,13 @@
+pkgbase = dotref
+	pkgdesc = Simple tool to manage dotfiles
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ovk/dotref
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git+https://github.com/ovk/dotref.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = dotref
