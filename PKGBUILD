@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Matthews <matthewriel63@gmail.com>
 
 pkgname='yt-watch'
-pkgver=2.7
+pkgver=3.0
 pkgrel=1
 pkgdesc="Search/Watch/Download/Convert YouTube Videos on mpv using yt-dlp/YouTube API."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('jq' 'mpv' 'curl' 'xclip' 'yt-dlp')
 
 source=('yt-watch')
-sha256sums=('373be46eb24dbbfd2ccf73332d069c24162b90dc0c50d85964ff507d8c28d955')
+sha256sums=('5f9ce96c4df8f032f5425a0aabcc95324e9b846ff9e1f7cf8a617e8f7d9f4ea7')
 
 package() {
 	install -dm755 ${pkgdir}/usr/bin
