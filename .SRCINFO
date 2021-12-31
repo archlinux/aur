@@ -1,18 +1,20 @@
 pkgbase = dose
 	pkgdesc = Traffic light/signal/semaphore GUI for test driven development (TDD)
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/danilobellini/dose
 	arch = any
 	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = flake8
 	makedepends = python-setuptools
 	depends = python-watchdog
 	depends = python-colorama
 	depends = python-docutils
 	depends = python-wxpython
 	options = !emptydirs
-	source = https://github.com/danilobellini/dose/archive/v1.2.1.tar.gz
-	sha256sums = 72db407366d223782d0499d7f169599f191beb4afb5e6dc38c747dd09c471c63
+	source = dose-v1.2.2.tar.gz::https://github.com/danilobellini/dose/archive/v1.2.2.tar.gz
+	sha256sums = e2e69fbbe656862065aee13cb63aea2a7aeb95df0af7c4137f88f0ccfa11502d
 
 pkgname = dose
-
