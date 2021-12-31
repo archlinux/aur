@@ -3,7 +3,7 @@
 pkgname=windterm-git
 _pkgname=windterm
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
 arch=('x86_64')
 depends=('openssh' 'qt5-base' 'gtk3')
@@ -27,6 +27,6 @@ package (){
 	chmod 0755 ${pkgdir}/opt/${pkgname}/WindTerm
     install -Dm755 ${srcdir}/windterm.png ${pkgdir}/usr/share/icons/
     install -Dm755 ${srcdir}/windterm.desktop ${pkgdir}/usr/share/applications/
-    ln -s ${pkgdir}/opt/${pkgname}/WindTerm ${pkgdir}/usr/bin/windterm
+    install -Dm755 ${srcdir}/windterm ${pkgdir}/usr/bin/windterm
 }
 
