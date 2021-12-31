@@ -1,4 +1,4 @@
-pkgbase = makepkg-optimize
+pkgbase = makepkg-optimize-mold
 	pkgdesc = Supplemental build and packaging optimizations for makepkg
 	pkgver = 19
 	pkgrel = 1
@@ -57,4 +57,4 @@ pkgbase = makepkg-optimize
 	sha1sums = 5d0cde13b50641371e4ec4d813d6b2dfae493889
 	sha1sums = 67801619b39ea4542829a4b715034a9f7ac7cf2c
 
-pkgname = makepkg-optimize
+pkgname = makepkg-optimize-mold

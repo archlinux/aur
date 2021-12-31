@@ -2,7 +2,7 @@
 # Contributor: Que Quotion ( quequotion@bugmenot.com )
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
-pkgname=makepkg-optimize
+pkgname=makepkg-optimize-mold
 pkgver=19
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
