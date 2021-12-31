@@ -1,16 +1,17 @@
 pkgbase = abnt2-ext
 	pkgdesc = ABNT2 extended keyboard
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/kugland/abnt2-ext-arch
+	install = abnt2-ext.install
 	arch = any
 	license = GPL
 	depends = xkeyboard-config
 	depends = python-lxml
-	source = abnt2_ext
+	source = abnt2ext
 	source = patch_evdev.py
 	source = abnt2-patch-evdev.hook
-	sha256sums = c5f1cfe3cabb17c0912409fa9c283a360a7d1ae9407751b484b5c2b7f8f48c01
+	sha256sums = 1cb4058afc71968999b188ddd99813a9faaa0baf38cacd7e81f5e048186dfb67
 	sha256sums = 74194d63c9bde72e8cd9a4c05d2711cda99a2208bc0ce43b0d6973aaae5edee3
 	sha256sums = cc2b039de1cf0f6e179a3fdb9c6c9959626e9378343388aadf63e05a3f2fc93a
 

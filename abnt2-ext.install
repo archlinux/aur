@@ -1,0 +1,10 @@
+post_install() {
+    echo "To activate the keymap, run (as root):"
+    echo ""
+    echo "  localectl set-x11-keymap --no-convert abnt2ext"
+    echo ""
+}
+
+post_upgrade() {
+    post_install "$@"
+}
