@@ -2,7 +2,7 @@
 _phpbase="81"
 _suffix=""
 pkgver="8.1.1"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php${_phpbase}${_suffix}"
 pkgdesc="PHP ${pkgver} compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -95,6 +95,7 @@ _build_per_sapi="0"
 _build_phpdbg="1"
 _build_recode="0"
 _build_shared_gd="1"
+_build_shared_mysqlnd="0"
 _build_sodium="1"
 _build_static_pdo="0"
 _build_uses_autoconf="1"
@@ -133,7 +134,6 @@ _phpextensions="\
     --enable-sysvsem=shared \
     --enable-sysvshm=shared \
     --enable-tokenizer=shared \
-    --enable-mysqlnd=shared \
     --enable-mysqlnd-compression-support \
     --with-mysqli=shared,mysqlnd \
     --with-pdo-mysql=shared,mysqlnd \
@@ -166,6 +166,7 @@ _phpextensions="\
     --with-ldap-sasl \
     --with-pdo-sqlite=shared,/usr \
     --with-sqlite3=shared \
+    --enable-mysqlnd \
     --enable-gd=shared \
     --with-external-gd=/usr \
     --with-jpeg \
@@ -219,6 +220,7 @@ makedepends=(
     'libxslt'  'libzip' 'freetds' 'apache' 'aspell' 'c-client' 'db' 'enchant' 'readline'
     'gmp' 'icu' 'net-snmp' 'postgresql-libs' 'sqlite' 'systemd-libs' 'unixodbc' 'curl' 'ncurses'
     'freetds' 'pcre' 'tidy' 'libfbclient' 'oniguruma' 'gd'  'recode' 'bzip2' 'gdbm' 'zlib'
+    'systemd' 'systemd-libs'
 )
 arch=('i686' 'x86_64')
 checkdepends=('procps-ng')
@@ -433,9 +435,9 @@ build() {
 }
 
 check() {
-    pushd "php-${pkgver}"
+    pushd "build"
     # Check if sendmail was configured correctly (FS#47600)
-    ../build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
+    sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
 
     export REPORT_EXIT_STATUS=1
     export NO_INTERACTION=1
@@ -443,10 +445,10 @@ check() {
     export SKIP_SLOW_TESTS=1
 
     if ((_phpbase <= 54)); then
-        TEST_PHP_EXECUTABLE="../build/sapi/cli/php" \
-            ../build/sapi/cli/php -n run-tests.php -n {tests,Zend}
+        TEST_PHP_EXECUTABLE="sapi/cli/php" \
+            sapi/cli/php -n run-tests.php -n {tests,Zend}
     elif ((_phpbase >= 55 && _phpbase < 73)); then
-        ../build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
+        sapi/cli/php -n run-tests.php -n -P {tests,Zend}
     elif ((73 == _phpbase)); then
         export TESTS='tests Zend'
         make test
@@ -969,7 +971,9 @@ package_php81-interbase() {
 package_php81-mysql() {
     pkgdesc="MySQL modules for php${_phpbase}${_suffix}"
     depends=("php${_phpbase}${_suffix}")
-    _install_module mysqlnd
+    if ((_build_shared_mysqlnd)); then
+        _install_module mysqlnd
+    fi
     _install_module mysqli
     _install_module pdo_mysql
     if ((_build_outdated_mysql)); then
