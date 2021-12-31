@@ -1,43 +1,42 @@
-# Maintainer: Kazuki Sawada <kazuki@6715.jp>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kazuki Sawada <kazuki@6715.jp>
 # Contributor: Lalit Maganti <laitmaganti@gmail.com>
 # Contributor: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=s3ql
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/s3ql/s3ql/"
 license=('GPL3')
 depends=(
-  'python'
-  'python-cryptography'
-  'python-defusedxml'
-  'python-apsw'
-  'python-trio'
-  'python-pyfuse3'
-  'python-dugong'
-  'python-systemd'
-  'python-requests'
-  'python-google-auth'
-  'python-google-auth-oauthlib'
-)
-makedepends=('gcc')
-install="s3ql.install"
-source=(https://github.com/s3ql/s3ql/releases/download/release-$pkgver/s3ql-$pkgver.tar.bz2)
-md5sums=('ef7062f834dd8ee0614b78cb6382e9a0')
+	'python-cryptography'
+	'python-defusedxml'
+	'python-apsw'
+	'python-trio'
+	'python-pyfuse3'
+	'python-dugong'
+	'python-systemd'
+	'python-requests'
+	'python-google-auth'
+	'python-google-auth-oauthlib')
+install=s3ql.install
+changelog=CHANGELOG
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/releases/download/release-$pkgver/$pkgname-$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.asc::$url/releases/download/release-$pkgver/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('bc5e05b6d929c0cde12b9966f426d7eae20d6f6137aa9291dec8873154b49631'
+            'SKIP')
+validpgpkeys=('ED31791B2C5C1613AF388B8AD113FCAC3C4E599F') # Nikolaus Rath
+
+build() {
+	cd "$pkgname-$pkgver"
+	python setup.py build
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  python setup.py install --root="$pkgdir" --optimize=1
-
-  install -d -m 755 "$pkgdir/usr/share/doc/$pkgname"
-  install    -m 744 doc/manual.pdf "$pkgdir/usr/share/doc/$pkgname/manual.pdf"
-
-  # Install the text versions of the docs and contrib. These can be recursive, so
-  # `install' isn't particularly useful.
-  cp -r contrib rst "$pkgdir/usr/share/doc/$pkgname/"
-  chown -R root:root "$pkgdir/usr/share/doc/$pkgname/"
-  find "$pkgdir/usr/share/doc/$pkgname" -type f -exec chmod 'g-w,g+r,o-w,o+r' '{}' ';'
+	export PYTHONHASHSEED=0
+	cd "$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
