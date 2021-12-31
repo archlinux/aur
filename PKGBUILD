@@ -4,7 +4,7 @@
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 pkgname=openrgb-bin
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"

@@ -17,6 +17,12 @@ post_install() {
 	    echo
 	fi
 	update-desktop-database -q
+
+	# creating required symlinks
+	ln -sf /usr/lib/libmbedx509.so /usr/lib/libmbedx509.so.0
+	ln -sf /usr/lib/libmbedx509.so /usr/lib/libmbedx509.so.12
+	ln -sf /usr/lib/libmbedcrypto.so /usr/lib/libmbedcrypto.so.3
+	ln -sf /usr/lib/libmbedtls.so /usr/lib/libmbedtls.so.12
 }
 
 post_upgrade() {

@@ -1,7 +1,7 @@
 pkgbase = openrgb-bin
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	install = openrgb-bin.install
 	arch = i686
