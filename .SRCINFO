@@ -1,7 +1,7 @@
 pkgbase = bandcamp-dl-git
 	pkgdesc = download audio from BandCamp.com
-	pkgver = v0.0.8.12.r4.g4a5e14b
-	pkgrel = 2
+	pkgver = v0.0.12.r0.gd35c7ed
+	pkgrel = 1
 	url = https://github.com/iheanyi/bandcamp-dl
 	arch = any
 	license = Unlicense
@@ -9,7 +9,7 @@ pkgbase = bandcamp-dl-git
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-chardet
-	depends = python-demjson-git
+	depends = python-demjson
 	depends = python-docopt
 	depends = python-mock
 	depends = python-mutagen
@@ -23,4 +23,3 @@ pkgbase = bandcamp-dl-git
 	sha512sums = SKIP
 
 pkgname = bandcamp-dl-git
-

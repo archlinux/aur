@@ -2,8 +2,8 @@
 
 _pyname=bandcamp-dl
 pkgname=bandcamp-dl-git
-pkgver=v0.0.8.12.r4.g4a5e14b
-pkgrel=2
+pkgver=v0.0.12.r0.gd35c7ed
+pkgrel=1
 pkgdesc="download audio from BandCamp.com"
 arch=('any')
 url="https://github.com/iheanyi/bandcamp-dl"
@@ -13,7 +13,7 @@ depends=(
   'python'
   'python-beautifulsoup4'
   'python-chardet'
-  'python-demjson-git'
+  'python-demjson'
   'python-docopt'
   'python-mock'
   'python-mutagen'
