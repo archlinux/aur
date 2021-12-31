@@ -1,9 +1,9 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 pkgname=lesana
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage collection inventories throught yaml files"
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://lesana.trueelena.org/"
 license=(GPL3)
 depends=('python-dateutil' 'python-jinja' 'python-ruamel-yaml' 'python-xapian' 'python-gitpython')

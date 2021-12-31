@@ -1,10 +1,9 @@
 pkgbase = lesana
 	pkgdesc = Manage collection inventories throught yaml files
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lesana.trueelena.org/
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-dateutil
