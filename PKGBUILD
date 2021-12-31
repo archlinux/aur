@@ -8,6 +8,7 @@ url="http://pc.weixin.qq.com/"
 license=('ISC')
 options=('!strip')
 depends=(
+    'gtk3' 'nss' 'libxss' 'libnotify'
 )
 source=(
     "https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/${pkgname}_${pkgver}_amd64.deb"
@@ -18,4 +19,5 @@ md5sums=(
 
 package() {
     tar -xf data.tar.xz -C ${pkgdir}
+    sed -i 's/StartupWMClass=微信/StartupWMClass=weixin/' ${pkgdir}/usr/share/applications/weixin.desktop
 }
