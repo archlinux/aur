@@ -7,7 +7,7 @@ pkgbase = rustfolio-bin
 	license = MIT
 	provides = rustfolio
 	conflicts = rustfolio
-	source = https://github.com/Melesar/rustfolio/releases/download/v1.0.0/rustfolio-1.0.0-x86_64.tar.gz
+	source = https://github.com/Melesar/rustfolio/releases/download/1.0.0/rustfolio-1.0.0-x86_64.tar.gz
 	sha256sums = 6ec5516fb3452502cf0a35ea46a6d4b480344c53b9fe14a1c00d712517c7eb15
 
 pkgname = rustfolio-bin
