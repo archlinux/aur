@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+#
+#   mold.sh - Compile with the fast mold linker
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_MOLD_SH" ]] && return
+LIBMAKEPKG_BUILDENV_MOLD_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('mold')
+buildenv_functions+=('buildenv_mold')
+
+buildenv_mold() {
+  if check_buildoption "mold" "y"; then
+    moldflags=" -fuse-ld=mold"
+    CFLAGS+="$moldflags"
+    CFLAGS+="$moldflags"
+    CLAGS+="$moldflags"
+  fi
+}

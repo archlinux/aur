@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+#
+#   svgo.sh - Confirm presence of svgo executable
+#
+
+[[ -n "$LIBMAKEPKG_EXECUTABLE_SVGO_SH" ]] && return
+LIBMAKEPKG_EXECUTABLE_SVGO_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/option.sh"
+
+executable_functions+=('executable_svgo')
+
+executable_svgo() {
+  if check_option "svgo" "y"; then
+    if ! type -p svgo >/dev/null; then
+      error "$(gettext "Cannot find the %s binary required for optimizing SVG image files.")" "svgo"
+      ret=1
+    fi
+  fi
+}

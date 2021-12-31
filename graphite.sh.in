@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+#
+#   graphite.sh - Compile with polyhedral model optimization
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_GRAPHITE_SH" ]] && return
+LIBMAKEPKG_BUILDENV_GRAPHITE_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('graphite' 'polly')
+buildenv_functions+=('buildenv_graphite')
+
+buildenv_graphite() {
+  if check_buildoption "graphite" "y" || check_buildoption "polly" "y"; then
+    graphiteflags=" -lgomp -mllvm -polly -mllvm -polly-num-threads=$(getconf _NPROCESSORS_ONLN) -mllvm -polly-parallel"
+    check_buildoption "graphite" "y" && \
+      graphiteflags=" -fgraphite-identity -floop-interchange -floop-nest-optimize -floop-parallelize-all -ftree-loop-distribution -ftree-parallelize-loops=$(getconf _NPROCESSORS_ONLN) -ftree-vectorize"
+
+    CFLAGS+="$graphiteflags"
+    CXXFLAGS+="$graphiteflags"
+  fi
+}

@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+#
+#   optipng.sh - Confirm presence of optipng executable
+#
+
+[[ -n "$LIBMAKEPKG_EXECUTABLE_OPTIPNG_SH" ]] && return
+LIBMAKEPKG_EXECUTABLE_OPTIPNG_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/option.sh"
+
+executable_functions+=('executable_optipng')
+
+executable_optipng() {
+  if check_option "optipng" "y"; then
+    if ! type -p optipng >/dev/null; then
+      error "$(gettext "Cannot find the %s binary required for optimizing PNG image files.")" "optipng"
+      ret=1
+    fi
+  fi
+}
