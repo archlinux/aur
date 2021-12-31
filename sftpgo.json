@@ -19,6 +19,7 @@
     "max_per_host_connections": 20,
     "defender": {
       "enabled": false,
+      "driver": "memory",
       "ban_time": 30,
       "ban_time_increment": 50,
       "threshold": 15,
@@ -211,7 +212,8 @@
         "tls_cipher_suites": [],
         "proxy_allowed": [],
         "hide_login_url": 0,
-        "render_openapi": true
+        "render_openapi": true,
+        "web_client_integrations": []
       }
     ],
     "templates_path": "/usr/share/sftpgo/templates",
@@ -236,7 +238,7 @@
     }
   },
   "telemetry": {
-    "bind_port": 10000,
+    "bind_port": 0,
     "bind_address": "127.0.0.1",
     "enable_profiler": false,
     "auth_user_file": "",
