@@ -1,0 +1,10 @@
+pkgbase = aurhelper-bin
+	pkgdesc = Program that helps you with AUR updating
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GOseUser
+	arch = x86_64
+	source = aurhelper.sh
+	sha512sums = SKIP
+
+pkgname = aurhelper-bin
