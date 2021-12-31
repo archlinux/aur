@@ -15,7 +15,6 @@ pkgbase = nvidia-merged
 	source = twelve.patch
 	source = fourteen.patch
 	source = 99-nvidia-ignoreabi.conf
-	source = nvidia-merged-blacklist-nouveau.conf
 	source = NVIDIA-Linux-x86_64-460.73.01-grid-vgpu-kvm-v5.run::gdrive://1dCyUteA2MqJaemRKqqTu5oed5mINu9Bw
 	source = git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=6541af7
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
@@ -25,7 +24,6 @@ pkgbase = nvidia-merged
 	sha256sums = 8c374e9e6053c20b0bcf71faf33adfa2659c1020ce1f38d469b42dd2bbda9749
 	sha256sums = affb0b2fde720ee7963746bc7a4eda459b1dd1a8a5650b4ae2de64c9e6cf54f1
 	sha256sums = a5caf3ce59fea2f99643be73412224cf27846bc10f09ba3a4758b05bbbf5fb1d
-	sha256sums = b3dbf277d507c2a3659775968d3e57bd211b58927a62787706e0e1952e959dac
 	sha256sums = 0bc28cf13c1a4d8845c7f8987974e04bd52734321bb8db526c6938530ad12c71
 	sha256sums = SKIP
 
