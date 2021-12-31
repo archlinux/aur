@@ -15,6 +15,7 @@ package() {
   install -Dm644 extension.xpi "${pkgdir}/usr/lib/librewolf/browser/extensions/plasma-browser-integration@kde.org.xpi"
 
   # https://librewolf.net/docs/faq/#how-do-i-get-native-messaging-to-work
+  mkdir ${pkgdir}/usr/lib/librewolf
   ln -s /usr/lib/mozilla/native-messaging-hosts "${pkgdir}/usr/lib/librewolf/native-messaging-hosts"
 }
 
