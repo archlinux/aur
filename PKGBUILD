@@ -3,7 +3,7 @@
 _author="cbrnix"
 _gitname="Newaita-reborn"
 pkgname=newaita-reborn-icons-git
-pkgver=r61.66fd815
+pkgver=r63.cf202ee
 pkgrel=1
 pkgdesc="Remaster Newaita icon theme"
 arch=("any")
