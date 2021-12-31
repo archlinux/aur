@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Unruh <freaxmate@protonmail.com>
 pkgname=mate-layouts
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="a simple panel layout switching application for the MATE Desktop"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('brisk-menu: for Manjaro panel layout'
             'plank: for Cupertino panel layout'
             'vala-panel-appmenu-mate: for Mutiny,Cupertino')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreaxMATE/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('ffd2e6ae4bd22a2a15744fc8bfac252816f19c4bfb301714fb55fa41589c789626fd60e6bf53d7cc732d3b444d5433aae8de4288ee4630890b64dd93f5ae8c04')
+sha512sums=('0c8c33d3bf75e1b330f849dec01e7d6bc9f0490017b3bbbd611c464edd85d4ac42c378d56364790ac34cf3886e4c7a7b1e0c689d1a53cb5c85ff2b9254f2c80a')
 
 build() {
   cd "$pkgname-$pkgver"
