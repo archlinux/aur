@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname/Plugin"
-    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
+    cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
     make -C build CHOWTapeModel_Standalone CHOWTapeModel_VST3 CHOWTapeModel_LV2
 }
 
