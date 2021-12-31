@@ -7,7 +7,7 @@
 _pkgname=SoapySDR
 pkgname=soapysdr-git
 pkgver=0.8.1.r14.g6f97389
-pkgrel=2
+pkgrel=3
 epoch=3
 pkgdesc='Vendor and platform neutral SDR support library'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -41,6 +41,10 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
 
   make -C build
+}
+
+check() {
+  make -C build test
 }
 
 package() {
