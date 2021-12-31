@@ -1,7 +1,7 @@
 # Maintainer: Kondrachuk Andrii andriy.kondrachuk@gmail.com
 # Maintainer: Demir Yerli demiryerli@gmail.com
 pkgname="asudo-bin"
-pkgver="2.0.0"
+pkgver="2.1.0"
 pkgrel="1"
 pkgdesc="Another version of sudo"
 arch=("x86_64")
