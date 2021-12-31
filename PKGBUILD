@@ -2,7 +2,7 @@
 _pkgname=pyocd-pemicro
 pkgname=python-$_pkgname
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP"
 url="https://github.com/pyocd/pyocd-pemicro"
 depends=('python'
@@ -11,8 +11,8 @@ depends=('python'
 makedepends=('python-setuptools')
 license=('BSD-3-Clause')
 arch=('any')
-source=("https://github.com/pyocd/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('7a9e6aca278d7c60d11836364d28b1a87d22779d0e31e40d108ce1b444b82c42f728c339735e8c327dbc513eb3617c4411280fb904bee29004567b6a6c0c117f')
+source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('1cb09b299436d4784523b77f66ec5c1d1114d38a71159ab73331c9530e7a77870f17dd9940f4bdcc7e1884139d4d3c987b48c92092e06ed57fe6938e40123384')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
