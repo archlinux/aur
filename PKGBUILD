@@ -1,6 +1,6 @@
 # Maintainer: Demir Yerli demiryerli@gmail.com
 pkgname='yah'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=1
 pkgdesc='Yes, another AUR helper'
@@ -28,5 +28,7 @@ package() {
 	sudo cp yah.dll $pkgdir
 	sudo cp yah.deps.json $pkgdir
 	sudo cp yah.runtimeconfig.json $pkgdir
-    sudo ln -s $pkgdir/yah /usr/bin
+	sudo cp yahcd.sh $pkgdir
+	sudo cp yahmkpkg.sh $pkgdir
+    	sudo ln -s $pkgdir/yah /usr/bin
 }

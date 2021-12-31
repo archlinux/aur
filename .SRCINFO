@@ -1,6 +1,6 @@
 pkgbase = yah
 	pkgdesc = Yes, another AUR helper
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Bultek/yah
