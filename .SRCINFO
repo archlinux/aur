@@ -9,11 +9,10 @@ pkgbase = bubbles-git
 	makedepends = git
 	depends = libx11
 	depends = libxft
-	optdepends = libxinerama
+	optdepends = libxrandr
 	optdepends = libxfixes
 	provides = bubbles
 	source = git+https://git.263.nu/f/bubbles
 	md5sums = SKIP
 
 pkgname = bubbles-git
-
