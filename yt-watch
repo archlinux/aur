@@ -20,21 +20,32 @@ api_file="${XDG_CONFIG_HOME:-$HOME/.config}/.yt-api"
 tmp_file="/tmp/yt.json"
 search_file="/tmp/yt-script-search"
 queries_file="${XDG_CONFIG_HOME:-$HOME}/.yt-queries"
+history_file="${XDG_CONFIG_HOME:-$HOME}/.yt-history"
 
 # Arguments
 headless=false
 loop=false
 
-
-clearHistory() {
+## Begin Removing History Functions
+clearSearchHistory() {
   if [[ ! -f "$queries_file" ]]; then
       die "${c_red}Your search history is already cleared.${c_reset}\n"
   fi
 
-  rm -rf "$queries_file" && die "${c_green}History cleared. You're safe now. ;)${c_reset}"
+  rm -rf "$queries_file" && die "${c_green}Search History cleared. You're safe now. ;)${c_reset}"
 }
 
-listQueries() {
+clearWatchHistory() {
+  if [[ ! -f "$history_file" ]]; then
+      die "${c_red}Your watch history is already cleared.${c_reset}\n"
+  fi
+
+  rm -rf "$history_file" && die "${c_green}Watch History cleared. You're safe now. ;)${c_reset}"
+}
+## End Removing History Functions 
+
+## BeginSearch & Watch History
+listSearchHistory() {
     if [[ ! -f "$queries_file" ]]; then
         die "${c_red}You don't have a search history.${c_reset}\n"
     fi
@@ -52,9 +63,36 @@ listQueries() {
         selected=$(awk -v choice="$choice" '{if(NR==choice) print $0}' "$queries_file")
         echo "$selected" | xclip -selection clipboard
         printf "\n${c_green}\"$selected\"${c_reset} has been copied to your clipboard.\n"
-    fi
-    
+    fi 
 }
+
+listWatchHistory() {
+    if [[ ! -f "$history_file" ]]; then
+        die "${c_red}You don't have a watch history.${c_reset}\n"
+    fi
+
+    tput reset
+    printf "${c_red}Your watch history:${c_reset}\n\n"
+    formatPrint "$history_file"
+
+    if [ -n "$1" ]; then
+        printf "\n${c_red}Enter Choice:${c_reset} "
+        read -r choice
+        [ "$choice" -eq "$choice" ] 2>/dev/null || die "${c_red}Invalid Number Entered.${c_reset}\n"
+        [[ $(wc -l ${history_file} | awk '{print $1}') -lt "$choice" ]] || [[ "$choice" -lt 0 ]] || [[ "$choice" -eq 0 ]] && die "${c_red}Invalid choice range.${c_reset}\n"
+  
+        video=$(awk -v choice="$choice" '{if(NR==choice) print $0}' "$history_file")
+        videourl=$(printf "%s" "$video" | awk '{ print $NF }')
+        videotitle=$(printf "%s" "$video" | sed 's/^[^-]*--> //g' | sed 's/ http.*//g')
+
+        # append to watch history file
+        echo "$video" >> "$history_file"
+
+        notify "Playing Video" "$videotitle" && playVideo "$videourl"
+        tput reset
+    fi
+}
+## End Search & Watch History
 
 formatPrint(){
     count=1
@@ -107,7 +145,7 @@ playVideo() {
     setsid -f mpv ${args} "$link" 2>/dev/null 1>&2
 }
 
-searchHistory() {
+recentSearchHistory() {
     if [[ ! -f "$search_file" ]]; then
         die "${c_red}You don't have recent results history.${c_reset}\n"
     fi
@@ -132,6 +170,7 @@ searchQueryWithAPI() {
         die "No query term specified\n"
     fi
 
+    # append to search history file
     echo "$query" >> "$queries_file"
 
     query_fmt="${query// /+}"
@@ -157,6 +196,9 @@ searchVideoWithAPI() {
     video=$(awk -v choice="$choice" '{if(NR==choice) print $0}' ${search_file})
     videourl=$(printf "%s" "$video" | awk '{ print $NF }')
     videotitle=$(printf "%s" "$video" | sed 's/^[^-]*--> //g' | sed 's/ http.*//g')
+
+    # append to watch history file
+    echo "$video" >> "$history_file"
 
     notify "Playing Video" "$videotitle" && playVideo "$videourl"
     tput reset
@@ -216,6 +258,9 @@ searchVideo() {
     videourl=$(echo "$video"|awk '{print $NF}')  
     format_title=$(echo "$video"|sed 's/^.*--> \(.*\) https:\/\/.*/\1/')
 
+    # append to watch history file
+    echo "$video" >> "$history_file"
+
     notify "Playing Youtube Video" "$format_title" && playVideo "$videourl"
     tput reset
 }
@@ -252,22 +297,30 @@ helpScreen() {
   ${c_blue}Usage:${c_reset} ${c_green}yt-watch${c_reset} [${c_red}OPTION${c_reset}]
 
   ${c_green}OPTIONS:${c_reset}
-  ${c_red}--help${c_reset}                        ${c_blue}This help screen${c_reset}
+  ${c_red}-h, --help${c_reset}                    ${c_blue}This help screen${c_reset}
 
   ${c_red}None${c_reset}                          ${c_blue}Uses the YouTube link from your clipboard.${c_reset}
   ${c_red}-l, --link${c_reset}                    ${c_blue}Play YouTube video from link. (--link \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")${c_reset}
-  ${c_red}-dv, --download-mp4${c_reset}           ${c_blue}Download YouTube video & converts it to '.mp4' format. (--download-mp4 \"dQw4w9WgXcQ\")${c_reset}
-  ${c_red}-dm, --download-mp3${c_reset}           ${c_blue}Downloads & converts Video to '.mp3' format. (--download-mp3 \"dQw4w9WgXcQ\")${c_reset}
   ${c_red}-s, --search${c_reset}                  ${c_blue}Lets you enter a search query and uses youtube API/yt-dlp.${c_reset}
   ${c_red}-sl, --search-length${c_reset}          ${c_blue}Customize the result length of your search query. (--search-length 20)${c_reset}
-  ${c_red}-h, --history${c_reset}                 ${c_blue}Lists out the query results of your latest search.${c_reset}
   ${c_red}-k, --kill${c_reset}                    ${c_blue}Kills mpv${c_reset}
-  ${c_red}-q, --queries${c_reset}                 ${c_blue}Lists out all of your search history.${c_reset}
-  ${c_red}-qc, --query-copy${c_reset}             ${c_blue}Lists out search history, select & it copies it.${c_reset}
  
+  ${c_green}DOWNLOADING MEDIA:${c_reset}
+  ${c_red}-dv, --download-mp4${c_reset}           ${c_blue}Download YouTube video & converts it to '.mp4' format. (--download-mp4 \"dQw4w9WgXcQ\")${c_reset}
+  ${c_red}-dm, --download-mp3${c_reset}           ${c_blue}Downloads & converts Video to '.mp3' format. (--download-mp3 \"dQw4w9WgXcQ\")${c_reset}
+  
   ${c_green}ADDITIONAL ARGUMENTS:${c_reset}
   ${c_red}--headless${c_reset}                    ${c_blue}Plays YouTube video content, but with no video.${c_reset}
   ${c_red}--loop${c_reset}                        ${c_blue}Loops the YouTube content.${c_reset}
+
+  ${c_green}HISTORIES:${c_reset}
+  ${c_red}--recent-search-history${c_reset}       ${c_blue}Lists out the query results of your latest search.${c_reset}
+  ${c_red}--clear-search-history${c_reset}        ${c_blue}Deletes all your search history.${c_reset}
+  ${c_red}--clear-watch-history${c_reset}         ${c_blue}Deletes all your watch history.${c_reset}
+  ${c_red}-q, --queries${c_reset}                 ${c_blue}Lists out all of your search history.${c_reset}
+  ${c_red}-qc, --query-copy${c_reset}             ${c_blue}Lists out search history, select & it copies it.${c_reset}
+  ${c_red}-v, --videos${c_reset}                  ${c_blue}Lists out all of your watch history.${c_reset}
+  ${c_red}-vc, --video-play${c_reset}             ${c_blue}Lists out watch history, select & it plays it.${c_reset}
 
   ${c_green}EXAMPLE:${c_reset}
   ${c_red}-sl 25 --loop --headless${c_reset}      ${c_blue}Lists out 25 results of your query. Selected Video will loop but not have video playback.${c_reset}
@@ -329,8 +382,8 @@ elif [[ "$1" == "-sl" || "$1" == "--search-length" ]]; then
     searchQuery "$2"
 
 # Uses recent results from recent search query. 
-elif [[ "$1" == "-h" || "$1" == "--history" ]]; then
-    searchHistory
+elif [[ "$1" == "--recent-search-history" ]]; then
+    recentSearchHistory
 
 # Stops the video from playing
 elif [[ "$1" == "-k" || "$1" == "--kill" ]]; then
@@ -338,18 +391,30 @@ elif [[ "$1" == "-k" || "$1" == "--kill" ]]; then
 
 # Lists your search.
 elif [[ "$1" == "-q" || "$1" == "--queries" ]]; then
-    listQueries
+    listSearchHistory
 
 # Lists out your search history, select & it copies it for you.
 elif [[ "$1" == "-qc" || "$1" == "--query-copy" ]]; then
-    listQueries " "
+    listSearchHistory " "
+
+# Lists your watch history.
+elif [[ "$1" == "-v" || "$1" == "--videos" ]]; then
+    listWatchHistory
+
+# Lists out your watch history, select & it plays it for you.
+elif [[ "$1" == "-vc" || "$1" == "--video-play" ]]; then
+    listWatchHistory " "
 
 # Clear search history :)
-elif [[ "$1" == "--clear-history" ]]; then
-    clearHistory
+elif [[ "$1" == "--clear-search-history" ]]; then
+    clearSearchHistory
+
+# Cleanr watch history :)
+elif [[ "$1" == "--clear-watch-history" ]]; then
+    clearWatchHistory
 
 # Help screen
-elif [[ "$1" == "--help" ]]; then
+elif [[ "$1" == "-h" || "$1" == "--help" ]]; then
     helpScreen
 
 fi
