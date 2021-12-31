@@ -1,0 +1,15 @@
+pkgbase = firebase-tools-bin
+	pkgdesc = The Firebase Command Line Tools (bundled official standalone binary)
+	pkgver = 10.0.1
+	pkgrel = 1
+	url = https://github.com/firebase/firebase-tools
+	arch = x86_64
+	license = MIT
+	conflicts = firebase-tools
+	options = !strip
+	source = https://github.com/firebase/firebase-tools/releases/download/v10.0.1/firebase-tools-linux
+	source = https://github.com/firebase/firebase-tools/raw/v10.0.1/LICENSE
+	md5sums = 64dd4eb456d4cc4b60e1b9bffb051c18
+	md5sums = 6ea8f4d1de9a164d33ffe95483a58af4
+
+pkgname = firebase-tools-bin
