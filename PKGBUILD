@@ -5,6 +5,7 @@ pkgver='v1.0.0'
 pkgrel='1'
 pkgdesc='Beautiful Cursors themes'
 arch=('any')
+url='https://github.com/wo2ni/Oxygen-Cursors'
 license=('GPL3')
 depends=('lxappearance' 'libx11' 'libxcursor' 'libpng')
 source=("https://github.com/wo2ni/Oxygen-Cursors/releases/download/${pkgver}/${pkgname}.tar.bz2"

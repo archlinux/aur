@@ -2,6 +2,7 @@ pkgbase = oxygen-cursors
 	pkgdesc = Beautiful Cursors themes
 	pkgver = v1.0.0
 	pkgrel = 1
+	url = https://github.com/wo2ni/Oxygen-Cursors
 	arch = any
 	license = GPL3
 	depends = lxappearance
