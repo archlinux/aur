@@ -1,8 +1,9 @@
 pkgbase = librewolf-extension-plasma-integration
 	pkgdesc = Plasma browser integration addon for Librewolf
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/
+	install = librewolf-extension-plasma-integration.install
 	arch = any
 	groups = librewolf-addons
 	license = GPLV3
