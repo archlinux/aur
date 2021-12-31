@@ -1,6 +1,6 @@
 # Maintainer: Demir Yerli demiryerli@gmail.com
 pkgname='yah'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=1
 pkgdesc='Yes, another AUR helper'
@@ -23,7 +23,7 @@ build() {
 }
 package() {
 	sudo cp yahcd.sh $pkgdir
-	sudp cp yahmkpkg.sh $pkgdir
+	sudo cp yahmkpkg.sh $pkgdir
 	cd bin/Debug/net6.0
 	sudo chmod +x yah
 	sudo cp yah $pkgdir
