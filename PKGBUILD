@@ -9,12 +9,12 @@ source=("asudo.sh")
 sha512sums=("SKIP")
 
 prepear() {
-sudo rm -rf $pkgdir/asudo.sh
-sudo rm -rf /usr/bin/asudo
+rm -rf ${pkgdir}/asudo.sh
+rm -rf /usr/bin/asudo
 }
 
 package() {
-sudo mkdir -p "${pkgdir}/usr/bin"
-sudo cp "${srcdir}/asudo.sh" "${pkgdir}/usr/bin/asudo"
-sudo chmod +x "${pkgdir}/usr/bin/asudo"
+mkdir -p "${pkgdir}/usr/bin"
+cp "${srcdir}/asudo.sh" "${pkgdir}/usr/bin/asudo"
+chmod +x "${pkgdir}/usr/bin/asudo"
 }
