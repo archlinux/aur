@@ -2,24 +2,26 @@
 # Contributor: relrel <relrelbachar at gmail dot com>
 
 pkgname=scratch3
+conflicts=("scratch3-bin")
 pkgver=3.27.0
 pkgrel=3
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
-arch=("any")
+arch=("x86_64")
 url="https://scratch.mit.edu"
 license=("custom:BSD-3-Clause")
-depends=()
-makedepends=('npm' 'patch')
+depends=("nss" "gtk3")
+optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
+makedepends=('npm' 'patch' 'sed')
 source=("https://github.com/LLK/scratch-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.xml"
         "$pkgname-icons.tar.gz"
         "$pkgname-patches.tar.gz")
 sha256sums=('0bb89f64bc933a00a56fd87a3a27b2106b42d0dc1ba61cf1a9f3f19beae5cec8'
-			'0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
-			'86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
-			'326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
-			'634768e6774d4a4794370e13d9326333935b57fe0a41e87d48148ba4aa9d207a')
+            '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
+            '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
+            '326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
+            'd8e403d2a994e315dbe5a7d910710387dcf45fa49c5f1d3c988fbdde2d97b4b2')
 
 prepare() {
    cd "$srcdir"
@@ -78,16 +80,15 @@ prepare() {
 package() {
    cd "$srcdir"
    install -dm755 ${pkgdir}/usr/bin
-   ln -sf /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+   ln -sf /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
    install -Dm644 "${pkgname}.desktop" $pkgdir/usr/share/applications/${pkgname}.desktop
    install -Dm644 "${pkgname}.xml" $pkgdir/usr/share/mime/packages/${pkgname}.xml
    install -Dm644 "$pkgname.svg" $pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
-#  Scratch3 can generate SPRITE3 files: using "cat's head" in SVG format (color: orange) as icon file.
-#  Note: Scratch3 can properly load these files on Windows platform but not on my system.
+#  Scratch3 can generate SPRITE3 files.
    install -Dm644 "cathead.svg" $pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-scratch3-sprite.svg
    install -Dm644 TRADEMARK "$pkgdir/usr/share/licenses/$pkgname/TRADEMARK"
    install -Dm644 LICENS* -t "$pkgdir/usr/share/licenses/$pkgname"
-   install -dm755 "${pkgdir}/usr/share/$pkgname"
+   install -dm755 "${pkgdir}/opt/$pkgname"
    cd "scratch-desktop-${pkgver}/dist/linux-unpacked"
-   cp -r * -t "$pkgdir/usr/share/$pkgname"
+   cp -r * -t "$pkgdir/opt/$pkgname"
 }
