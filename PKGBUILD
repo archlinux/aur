@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
-arch=(x86_64)
+arch=(x86_64 aarch64 armv7h)
 url='https://fluentbit.io/'
 license=('Apache')
 groups=()
