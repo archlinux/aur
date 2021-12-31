@@ -1,7 +1,7 @@
-diff --git i/nitter.conf w/nitter.conf
-index d6d860b..877b270 100644
---- i/nitter.conf
-+++ w/nitter.conf
+diff --git a/nitter.conf b/nitter.conf
+index 93526b4..c11e819 100644
+--- a/nitter.conf
++++ b/nitter.conf
 @@ -1,11 +1,11 @@
  [Server]
 -address = "0.0.0.0"
@@ -19,7 +19,7 @@ index d6d860b..877b270 100644
  
  [Cache]
  listMinutes = 240  # how long to cache list info (not the tweets, so keep it high)
-@@ -19,8 +17,8 @@ redisMaxConnections = 30
+@@ -20,8 +20,8 @@ redisMaxConnections = 30
  # you receive tons of requests per second
  
  [Config]
@@ -27,19 +27,21 @@ index d6d860b..877b270 100644
 -base64Media = false # use base64 encoding for proxied media urls
 +hmacKey = "43179cf305cda132874f7a4d3fa4831a01528e516780157bebd564b0ca0297c2" # Regenerate e.g. `head -c 25 </dev/urandom | sha256sum`
 +base64Media = true # use base64 encoding for proxied media urls
- tokenCount = 10
- # minimum amount of usable tokens. tokens are used to authorize API requests,
- # but they expire after ~1 hour, and have a limit of 187 requests.
-@@ -30,9 +28,9 @@ tokenCount = 10
+ enableRSS = true  # set this to false to disable RSS feeds
+ proxy = "" # proxy type http/https
+ proxyAuth = ""
+@@ -34,10 +34,10 @@ tokenCount = 10
  
  # Change default preferences here, see src/prefs_impl.nim for a complete list
  [Preferences]
 -theme = "Nitter"
 -replaceTwitter = "nitter.net"
 -replaceYouTube = "piped.kavin.rocks"
+-replaceReddit = "teddit.net"
 +theme = "twitter_dark"  # Change this?
 +replaceTwitter = "nitter.net"  # Use the same "hostname" as above
 +replaceYouTube = ""  # Default: piped.kavin.rocks
++replaceReddit = ""   # Default: teddit.net
  replaceInstagram = ""
  proxyVideos = true
  hlsPlayback = false
