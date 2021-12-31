@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=WindTerm
+Comment=A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.
+GenericName=Connect Client
+Exec=/usr/bin/windterm
+Type=Application
+Icon=windterm
+StartupNotify=false
+StartupWMClass=Code
+Categories=Application;Development
+Actions=new-empty-window
+Keywords=windterm
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Icon=windterm
+Exec=/usr/bin/windterm
+
