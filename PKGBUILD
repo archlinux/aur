@@ -3,7 +3,7 @@
 pkgbase='nvidia-merged'
 pkgname=('nvidia-merged' 'lib32-nvidia-merged-utils' 'lib32-opencl-nvidia-merged' 'nvidia-merged-dkms' 'nvidia-merged-settings' 'nvidia-merged-utils' 'opencl-nvidia-merged')
 pkgver=460.73.01
-pkgrel=14
+pkgrel=15
 arch=('x86_64')
 makedepends=('git' 'rust')
 url='https://krutavshah.github.io/GPU_Virtualization-Wiki/'
