@@ -1,6 +1,6 @@
 # Maintainer: Carmine Margiotta <car.margiotta@icloud.com>
 pkgname='mqtt-sm-git'
-pkgver=r6.3a67977
+pkgver=r103.b35ef81
 pkgrel=1
 pkgdesc="MQTT System Monitor, compatible with Home Assistant"
 arch=('any')
@@ -44,7 +44,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson "$pkgname" build
+	meson --prefix /usr "$pkgname" build
 	meson compile -C build
 }
 
