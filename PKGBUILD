@@ -6,7 +6,7 @@
 pkgname=fluent-bit
 
 pkgver=1.8.11
-pkgrel=1
+pkgrel=2
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
