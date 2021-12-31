@@ -1,0 +1,15 @@
+pkgbase = vim-lastplace-git
+	pkgdesc = Intelligently reopen files at your last edit position
+	pkgver = 3.2.1.r6.gd522829
+	pkgrel = 1
+	url = https://github.com/farmergreg/vim-lastplace
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-lastplace
+	conflicts = vim-lastplace
+	source = vim-lastplace-git::git+https://github.com/farmergreg/vim-lastplace
+	md5sums = SKIP
+
+pkgname = vim-lastplace-git
