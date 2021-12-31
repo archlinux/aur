@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=little-brother
-pkgver=0.4.11
+pkgver=0.4.12
 pkgrel=1
 pkgdesc="Parental controls for children"
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=('python-setuptools')
 changelog=CHANGES.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.sysusers")
-sha256sums=('dfdc79c16016307b47977a069a31ec84fade7276936b91ddc3286f818ea9e39e'
+sha256sums=('2fe8d3fe846193d2917c52d85e8f3c3a782357654d796fcb9957be4328fda0ee'
             '2d4477508d5562bf47cf382f1530175808a3034329daa11a62a5276a709d9b35')
 
 prepare() {
