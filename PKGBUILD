@@ -2,7 +2,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-no-axrgb-assert-git
-pkgver=0.14.0.r330.g0855cdac
+pkgver=0.15.0.r5182.0855cdac
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='wlroots-git, with argb/xrgb8888 assert removed to make nvidia driver work'
@@ -24,6 +24,7 @@ depends=(
 	xcb-util-wm
 	seatd
 	vulkan-icd-loader
+	vulkan-validation-layers
 	xorg-xwayland)
 makedepends=(
 	git
@@ -38,11 +39,8 @@ sha512sums=('SKIP'
 
 pkgver () {
 	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	printf "%sr%s.%s" $(awk '/version:/ {print $2}' meson.build |head -1| tr -d \' | tr , .) \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

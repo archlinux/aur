@@ -1,6 +1,6 @@
 pkgbase = wlroots-no-axrgb-assert-git
 	pkgdesc = wlroots-git, with argb/xrgb8888 assert removed to make nvidia driver work
-	pkgver = 0.14.0.r330.g0855cdac
+	pkgver = 0.15.0.r5182.0855cdac
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
@@ -22,11 +22,12 @@ pkgbase = wlroots-no-axrgb-assert-git
 	depends = xcb-util-wm
 	depends = seatd
 	depends = vulkan-icd-loader
+	depends = vulkan-validation-layers
 	depends = xorg-xwayland
 	provides = libwlroots.so
 	provides = wlroots
 	provides = wlroots-git
-	provides = wlroots=0.14.0
+	provides = wlroots=0.15.0
 	conflicts = wlroots
 	conflicts = wlroots-git
 	options = debug
