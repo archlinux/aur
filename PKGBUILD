@@ -1,6 +1,6 @@
 # Maintainer: Carmine Margiotta <car.margiotta@icloud.com>
 pkgname='mqtt-sm-git'
-pkgver=r5.45d68c0
+pkgver=r6.3a67977
 pkgrel=1
 pkgdesc="MQTT System Monitor, compatible with Home Assistant"
 arch=('any')
@@ -41,12 +41,6 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	echo "r$(git rev-list --count HEAD).$(git describe --always)"
-}
-
-prepare() {
-	cd "$pkgname"
-	git submodule init
- 	git submodule update
 }
 
 build() {
