@@ -51,6 +51,7 @@ source=(
     "pear-config-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
+    "php74-module-order.patch"
     "debian-php-8.1.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -70,6 +71,7 @@ arch=(
 )
 
 _patches=(
+    "php74-module-order.patch"
     "debian-php-8.1.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -95,7 +97,7 @@ _build_per_sapi="0"
 _build_phpdbg="1"
 _build_recode="0"
 _build_shared_gd="1"
-_build_shared_mysqlnd="0"
+_build_shared_mysqlnd="1"
 _build_sodium="1"
 _build_static_pdo="0"
 _build_uses_autoconf="1"
@@ -166,7 +168,7 @@ _phpextensions="\
     --with-ldap-sasl \
     --with-pdo-sqlite=shared,/usr \
     --with-sqlite3=shared \
-    --enable-mysqlnd \
+    --enable-mysqlnd=shared \
     --enable-gd=shared \
     --with-external-gd=/usr \
     --with-jpeg \
@@ -443,20 +445,11 @@ check() {
     export NO_INTERACTION=1
     export SKIP_ONLINE_TESTS=1
     export SKIP_SLOW_TESTS=1
-
-    if ((_phpbase <= 54)); then
-        TEST_PHP_EXECUTABLE="sapi/cli/php" \
-            sapi/cli/php -n run-tests.php -n {tests,Zend}
-    elif ((_phpbase >= 55 && _phpbase < 73)); then
-        sapi/cli/php -n run-tests.php -n -P {tests,Zend}
-    elif ((73 == _phpbase)); then
-        export TESTS='tests Zend'
-        make test
-    elif ((_phpbase > 73)); then
+    export TESTS='tests Zend'
+    if ((_phpbase > 73)); then
         export TEST_PHP_ARGS="-j$(nproc)"
-        export TESTS='tests Zend'
-        make test
     fi
+    make test
     popd
 }
 
@@ -985,6 +978,7 @@ package_php81-mysql() {
 sha256sums=('0201d0fa811b80614737424a72c7bb127125807e5d7eeec5e1578a0a58f77d2f'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '33c09d76d0a8bbb5dd930d9dd32e6bfd44e9efcf867563759eb5492c3aff8856'
+            'e853815d7c7d67186f1d21f56ea63d7998d4649cc987677d4e3b6e0ac4b2caf3'
             '0df807d84bc0cf948a6ed0cf453e98213d47fbc7fdedc2747855a619dc616b3c'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'

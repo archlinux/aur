@@ -1,0 +1,13 @@
+--- a/build/php.m4
++++ b/build/php.m4
+@@ -826,6 +826,10 @@
+ 
+   if test "x$5" = "xyes"; then
+     PHP_ZEND_EX="$PHP_ZEND_EX \$(phplibdir)/$1.$suffix"
++  elif test "x$1" = "xxml"; then
++    PHP_MODULES="\$(phplibdir)/$1.$suffix $PHP_MODULES"
++  elif test "x$1" = "xmysqlnd"; then
++    PHP_MODULES="\$(phplibdir)/$1.$suffix $PHP_MODULES"
+   else
+     PHP_MODULES="$PHP_MODULES \$(phplibdir)/$1.$suffix"
+   fi
