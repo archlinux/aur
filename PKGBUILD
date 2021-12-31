@@ -2,7 +2,7 @@
 _modulename=cobaya
 pkgname=python-$_modulename
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for Bayesian Analysis in Cosmology"
 arch=(any)
 url="https://github.com/CobayaSampler/$_modulename"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6b2102d98d0c65c168c73e3d0f662cd16823b66a49f9646c4addaa66b037b344')
+sha256sums=('885b9ebb7f53556bd885102434274c2e15ad77d3ec30e5fc3b99078fcea06463')
 package() {
   cd "$srcdir/$_modulename-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
