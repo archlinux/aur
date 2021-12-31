@@ -2,7 +2,7 @@
 pkgname=com.tencent.weixin
 pkgver=2.1.1
 pkgrel=2
-pkgdesc="微信官方原生桌面版"
+pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64')
 url="http://pc.weixin.qq.com/"
 license=('ISC')
