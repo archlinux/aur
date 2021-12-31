@@ -1,6 +1,6 @@
 pkgbase = python-interruptingcow
 	pkgver = 0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bitbucket.org/evzijst/interruptingcow
 	arch = any
 	license = MIT
@@ -16,4 +16,3 @@ pkgname = python-interruptingcow
 pkgname = python2-interruptingcow
 	pkgdesc = Python2 interruptingcow library
 	depends = python2
-
