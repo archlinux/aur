@@ -17,7 +17,7 @@ source=(
     "wechat.sh"
 )
 md5sums=('d9fb99271b4d2279a9c0eaefee9b59b2'
-         'b457602e322cc39a361c1cd8dcfcd295'
+         '42259e3cd8efb2dc01c5a4fca68d4c9f'
          '10aa2e700bc73c5b5e53de5b38c6a425')
 
 package() {
