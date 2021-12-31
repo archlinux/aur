@@ -35,7 +35,6 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20210726'
     '0001-arch-aur-pachtes.patch'
-    '0002-asprintf-exists.patch'
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=4.0.2'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
@@ -86,7 +85,6 @@ options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
-    ( cd swift-corelibs-foundation && patch -p1 -i "$srcdir/0002-asprintf-exists.patch" )
 }
 
 pkgver() {

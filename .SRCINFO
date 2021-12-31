@@ -41,7 +41,6 @@ pkgbase = swift-language-git
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main
 	source = llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20210726
 	source = 0001-arch-aur-pachtes.patch
-	source = 0002-asprintf-exists.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
 	source = yams::git+https://github.com/jpsim/Yams#commit=4.0.2
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
