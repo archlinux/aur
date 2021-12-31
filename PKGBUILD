@@ -1,6 +1,6 @@
 # Maintainer: Kondrachuk Andrii andriy.kondrachuk@gmail.com
 pkgname="aurhelper-bin"
-pkgver="1.0.1"
+pkgver="1.1.0"
 pkgrel="1"
 pkgdesc="Program that helps you with AUR uploading"
 url="https://github.com/GOseUser"
