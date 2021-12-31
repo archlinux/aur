@@ -2,7 +2,7 @@
 
 pkgname=cavalcade
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Python GUI wrapper for CAVA utility"
 arch=('any')
 url="https://github.com/worron/cavalcade"
