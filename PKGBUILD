@@ -1,28 +1,24 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=nhiicc
-# XXX: Upstream does not provide a version string - use the last modified date
-pkgver=20211004
+epoch=1
+pkgver=20210824.02
 pkgrel=1
 arch=(x86_64)
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
 license=(custom)
 pkgdesc='台灣健保卡網路註冊憑證元件 (National Health Insurance IC Card)'
 # sed is for commands in nhiicc.install
-depends=(openssl-1.0 pcsclite sed)
+depends=(pcsclite sed)
 optdepends=(
   'lib32-pcsclite: for using card readers with 32-bit driver only'
 )
-source=("https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.Ubuntu.zip"
+source=("https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.$pkgver.U64.gz"
         nhiicc.service)
 # See https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm for MD5 sums
-md5sums=('52eacb7ca2b4d0a5a869df01079bf4d6'
+md5sums=('05b34bb5df19c0b8270ab37416225d78'
          '616a69724e3bc4dab688ca4bc5298c41')
 install=nhiicc.install
-
-prepare() {
-  tar xf mLNHIICC_Setup.tar.gz
-}
 
 package() {
   # XXX: upstream binary appears to hard-code /usr/local/share/NHIICC :/
