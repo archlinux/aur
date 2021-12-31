@@ -1,0 +1,12 @@
+pkgbase = com.tencent.weixin
+	pkgdesc = 微信桌面版
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://pc.weixin.qq.com/
+	arch = x86_64
+	license = ISC
+	options = !strip
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_2.1.1_amd64.deb
+	md5sums = d9fb99271b4d2279a9c0eaefee9b59b2
+
+pkgname = com.tencent.weixin
