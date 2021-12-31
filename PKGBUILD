@@ -1,7 +1,7 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 pkgname=lesana
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Manage collection inventories throught yaml files"
 arch=('x86_64' 'aarch64')
 url="https://lesana.trueelena.org/"
@@ -11,14 +11,12 @@ optdepends=('python-argcomplete: support for bash autocompletion')
 makedepends=('python-setuptools')
 provides=(lesana)
 source=("https://git.sr.ht/~valhalla/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('d9ed6884728f5d47977ae21e8e2fc634')
+md5sums=('f0d166c71c5f9baa03b1815bd0d27d7a')
 
 prepare() {
   cd "${pkgname}-v${pkgver}"
   # exclude tests from package
   sed -i.bpk "s/find_packages()/find_packages(exclude=['tests',])/" setup.py
-  # fix data
-  sed -i.bkp "s/'': \['\*\.yaml'\]/'': ['*.yaml', 'post-checkout']/" setup.py
 }
 
 build() {
