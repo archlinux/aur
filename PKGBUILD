@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=fgivenx
 pkgname=python-$_modulename
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Functional Posterior Plotter"
 arch=(any)
@@ -17,8 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ac929ae2aca3f18bed0592e4d3ea50515a8d7a9d692780b11e5c0f36eb135b74')
-
+sha256sums=('a42586754a0af5520d34eb8343ce8453996f9d0e391028268a3d2bf4347fd685')
 package() {
   cd "$srcdir/$_modulename-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
