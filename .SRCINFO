@@ -1,6 +1,6 @@
 pkgbase = python-pytradfri
 	pkgdesc = Python class to communicate with the IKEA Trådfri Gateway
-	pkgver = 7.2.1
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/home-assistant-libs/pytradfri
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-pytradfri
 	depends = libcoap-dtls-git
 	optdepends = python-aiocoap: for asynchronous applications
 	optdepends = python-dtlssocket: for asynchronous applications
-	source = https://github.com/ggravlingen/pytradfri/archive/7.2.1.tar.gz
-	sha256sums = 42fccfe662008bf3fb2edb9248fa3b319741961bb38377f2f76d0f88ecab8356
+	source = https://github.com/ggravlingen/pytradfri/archive/8.0.0.tar.gz
+	sha256sums = b359cac3416263c6f1c7b2540ba9d45be145bac875fb6e7c828051224bd77df6
 
 pkgname = python-pytradfri
