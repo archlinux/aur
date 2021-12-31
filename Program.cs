@@ -53,8 +53,12 @@ namespace YesAnotherAurHelper {
                 string Installer = "sudo";
                 Process PackageStartInfo = new Process();
                 PackageStartInfo.StartInfo.FileName = Installer;
-                PackageStartInfo.StartInfo.Arguments = "pacman -S --needed "+Package;
-                PackageStartInfo.Start();
+                PackageStartInfo.StartInfo.Arguments = "pacman -S --needed --noconfirm "+Package;
+                Console.WriteLine("Are you sure? (y/n)");
+                string sanswer = Console.ReadLine();
+                if (sanswer=="n" || sanswer=="no") Console.WriteLine("Operation was aborted by user");  
+                else { PackageStartInfo.Start();
+                PackageStartInfo.WaitForExit(); }
             } 
             else if (IsAUR){
             Process PackageStartInfo = new Process();

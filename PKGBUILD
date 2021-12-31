@@ -1,6 +1,6 @@
 # Maintainer: Demir Yerli demiryerli@gmail.com
 pkgname='yah'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 epoch=2
 pkgdesc='Yes, another AUR helper'

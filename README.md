@@ -8,3 +8,5 @@ Yes, another AUR helper
   * ```yah install aur runasunified```
   * ```yah install pacman nano```
   * ```yah remove git```
+  * ```yah help```
+  * ```yah search glibc```
