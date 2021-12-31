@@ -3,7 +3,7 @@
 
 pkgname=nb
 pkgver=6.7.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -36,8 +36,8 @@ optdepends=(
   'python-pygments'
   'ranger'
   'readability-cli'
-  'ripgreg-all'
-  'termpdf'
+  'ripgrep-all'
+  'termpdf.py-git'
   'vifm'
 )
 sha512sums=('310e3043fd0ed9dd5f792bf830320b09059db833514264cfae6716625e3262416ea5d0660f1703d2152a883364f9f34a70354efe17befd419e8976770802e821')
