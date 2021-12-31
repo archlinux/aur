@@ -1,26 +1,31 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=hydrapaper
-pkgver=3.2.0
+pkgver=3.2.0+14+g760e06f
 pkgrel=1
 pkgdesc="A Gtk utility to set different backgrounds for each monitor on GNOME"
 arch=('any')
 url="https://hydrapaper.gabmus.org"
 license=('GPL3')
 depends=('gtk4' 'libadwaita' 'dbus-python' 'python-gobject' 'python-pillow')
-makedepends=('git' 'gobject-introspection' 'meson' 'pandoc')
+makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson' 'pandoc')
 checkdepends=('appstream')
-#_commit=593f6946c36339ac8c4d0703637185c2a96fe252
-#source=("git+https://gitlab.gnome.org/GabMus/HydraPaper.git#commit=$_commit")
-source=("https://gitlab.gnome.org/GabMus/HydraPaper/-/archive/$pkgver/HydraPaper-$pkgver.tar.gz")
-sha256sums=('d3340e3c9d2db0055c36848329742be6e77ceddc9d425ce32b79ab7d1813044f')
+_commit=760e06f7cd2910fe70cdd31a736e016a21549c91
+source=("git+https://gitlab.gnome.org/GabMus/HydraPaper.git#commit=$_commit")
+#source=("https://gitlab.gnome.org/GabMus/HydraPaper/-/archive/$pkgver/HydraPaper-$pkgver.tar.gz")
+sha256sums=('SKIP')
 
-#pkgver() {
-#  cd "$srcdir/HydraPaper"
-#  git describe --tags | sed 's/-/+/g'
-#}
+pkgver() {
+  cd "$srcdir/HydraPaper"
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd "$srcdir/HydraPaper"
+  sed -i 's/1.0.0.alpha.3/1.0.0/g' meson.build
+}
 
 build() {
-  arch-meson HydraPaper-$pkgver build
+  arch-meson HydraPaper build
   meson compile -C build
 }
 
