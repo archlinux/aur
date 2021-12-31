@@ -9,8 +9,8 @@ url="https://equi4.com/metakit/"
 license=('MIT')
 optdepends=('tcl: Tcl bindings')
 makedepends=('cmake' 'tcl')
-source=("$pkgname-$pkgver.tar.gz::https://git.jeelabs.org/jcw/metakit/archive/$pkgver.tar.gz")
-sha256sums=('a496db77628766766600585ff3f8f98eabd770e003bf1f32a60644e8e835d621')
+source=("$pkgname-$pkgver.zip::https://github.com/jcw/jcw.github.io/raw/main/zips/metakit-2015-06-20.zip")
+sha256sums=('1c5b630af7c09fb894f22956a683ce8347fce6c4fbef7e42f50b921402561ed4')
 
 prepare() {
     cd $pkgname

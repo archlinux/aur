@@ -9,8 +9,7 @@ pkgbase = metakit
 	makedepends = cmake
 	makedepends = tcl
 	optdepends = tcl: Tcl bindings
-	source = metakit-2.4.9.8.tar.gz::https://git.jeelabs.org/jcw/metakit/archive/2.4.9.8.tar.gz
-	sha256sums = a496db77628766766600585ff3f8f98eabd770e003bf1f32a60644e8e835d621
+	source = metakit-2.4.9.8.zip::https://github.com/jcw/jcw.github.io/raw/main/zips/metakit-2015-06-20.zip
+	sha256sums = 1c5b630af7c09fb894f22956a683ce8347fce6c4fbef7e42f50b921402561ed4
 
 pkgname = metakit
-
