@@ -1,6 +1,6 @@
 pkgbase = python-yadisk-async
 	pkgdesc = Yandex.Disk REST API client library for Python with async/await support
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/ivknv/yadisk-async
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-yadisk-async
 	makedepends = python-pip
 	depends = python>=3.6.0
 	depends = python-aiohttp
-	source = https://files.pythonhosted.org/packages/source/y/yadisk-async/yadisk-async-1.3.2.tar.gz
-	sha256sums = e64c9bc2b05541221d7467c120758e678f3377101b2c8b2760df8607b70b515b
+	source = https://files.pythonhosted.org/packages/source/y/yadisk-async/yadisk-async-1.3.3.tar.gz
+	sha256sums = 855bebceeaf76e54b52116486d2c79eff452f4bbf25ea4863a8b44d3b9fb221b
 
 pkgname = python-yadisk-async
