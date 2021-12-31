@@ -1,0 +1,16 @@
+pkgbase = worldql-server-git
+	pkgdesc = The spatial message broker and database for real-time multiplayer experiences.
+	pkgver = r3.cd18230
+	pkgrel = 1
+	url = https://github.com/WorldQL/worldql_server
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = zeromq
+	provides = worldql-server
+	conflicts = worldql-server
+	source = worldql-server-git::git+https://github.com/WorldQL/worldql_server.git
+	sha256sums = SKIP
+
+pkgname = worldql-server-git
