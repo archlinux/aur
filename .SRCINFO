@@ -20,6 +20,6 @@ pkgbase = thextech-adventuresofdemo
 	source = thextech-adventuresofdemo.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 06970c41b9e4b35a975c4d9352525d2b1b444b2b5d7d9dd8dcb6a4802a1e201e
+	sha256sums = 46731b984b5c278528b85d0293c9aea1c85685c96cd3771b1e726c919e17de32
 
 pkgname = thextech-adventuresofdemo

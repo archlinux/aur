@@ -16,7 +16,7 @@ source=("git://github.com/Wohlstand/TheXTech"
 "thextech-adventuresofdemo.desktop")
 sha256sums=("SKIP"
 "SKIP"
-"06970c41b9e4b35a975c4d9352525d2b1b444b2b5d7d9dd8dcb6a4802a1e201e")
+"46731b984b5c278528b85d0293c9aea1c85685c96cd3771b1e726c919e17de32")
 noextract=()
 
 prepare() {
