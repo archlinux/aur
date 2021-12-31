@@ -1,6 +1,6 @@
 pkgbase = polymc-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 1.0.0.r0.g4435665d
+	pkgver = 1.0.2.r0.g30f899f3
 	pkgrel = 1
 	url = https://github.com/PolyMC/PolyMC
 	arch = i686
@@ -23,10 +23,8 @@ pkgbase = polymc-git
 	source = git+https://github.com/PolyMC/PolyMC
 	source = git+https://github.com/MultiMC/libnbtplusplus
 	source = git+https://github.com/PolyMC/quazip
-	source = application.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 15c3157b2e56ec5af6e8c079bbf4da6ac6e5552659906beff3dbddc79463e667
 
 pkgname = polymc-git
