@@ -4,7 +4,7 @@
 
 pkgname=python-pycaption
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to read/write popular video caption formats"
 arch=('any')
 url="https://github.com/pbs/pycaption"
@@ -19,6 +19,9 @@ prepare() {
 	cd "pycaption-$pkgver"
 	sed -i "/packages=/s/()/(exclude=('tests*',))/" setup.py
 	sed -i '/recursive-include/d' MANIFEST.in
+	## fix for python3.10, thanks to nikonaum
+	sed -i 's/collections.Callable/collections.abc.Callable/g' \
+		pycaption/scc/specialized_collections.py
 }
 
 build() {
