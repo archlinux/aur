@@ -4,7 +4,7 @@ pkgbase = asudo-bin
 	pkgrel = 2
 	url = https://github.com/GOseUser/ASudo
 	arch = x86_64
-	depends = util-linux>=2.0.0
+	depends = util-linux
 	source = asudo.sh
 	sha512sums = SKIP
 
