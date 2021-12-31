@@ -1,5 +1,5 @@
 pkgbase = pyromaths-git
-	pkgdesc = French program to create mathematical exercises and models
+	pkgdesc = French program to create mathematical exercises and models, cli version
 	pkgver = 21.8.2.r89.gecb2a1c
 	pkgrel = 1
 	arch = any
