@@ -16,10 +16,8 @@ source=(
   "git+https://github.com/opensearch-project/dashboards-visualizations.git#tag=${pkgver}"
   "git+https://github.com/opensearch-project/OpenSearch-Dashboards.git#tag=${_dashboardsver}"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
   nodeVersion="$(node -v)"
