@@ -9,7 +9,7 @@ url='https://core.telegram.org/tdlib'
 license=('Boost')
 depends=('openssl' 'zlib')
 makedepends=('make' 'gcc' 'cmake' 'gperf' 'git')
-provides=('telegram-tdlib')
+provides=('telegram-tdlib=${pkgver}' 'telegram-tdlib')
 conflicts=('telegram-tdlib')
 source=("git+https://github.com/tdlib/td.git")
 sha256sums=('SKIP')
