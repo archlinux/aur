@@ -12,6 +12,8 @@ pkgbase = python-application
 	conflicts = python3-application
 	replaces = python3-application
 	source = https://github.com/AGProjects/python3-application/archive/3.0.3.tar.gz
+	source = fix_MutableMapping.patch
 	sha512sums = 5fd9bd0df4312a912534e38ed8a20116134efa4008641399cffc0d16d581bcdb799135290c88f11572903e8b76702f312dc01776814edbede3b38aa8f8006cc0
+	sha512sums = 580221215f8c94afa1b73f029964feecbb646882cdae8feb333ee7fef0034bcd584b0d0b2c883bd2aa07bc541da36e6e596901a14365b7d6cf6cbdb669e14a52
 
 pkgname = python-application

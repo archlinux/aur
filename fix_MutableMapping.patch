@@ -1,0 +1,12 @@
+--- python3-application-3.0.3/application/python/weakref.py.orig	2021-12-20 11:18:34.299809379 +0000
++++ python3-application-3.0.3/application/python/weakref.py	2021-12-20 11:19:15.189960853 +0000
+@@ -1,7 +1,8 @@
+ 
+ import weakref
+ 
+-from collections import MutableMapping, deque
++from collections.abc import MutableMapping
++from collections import deque
+ from copy import deepcopy
+ from threading import local
+ 
