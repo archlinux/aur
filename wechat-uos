@@ -1,6 +1,0 @@
-#!/bin/bash -e
-bwrap --dev-bind / / \
-      --bind /opt/wechat-uos/crap/uos-release /etc/os-release \
-      --bind /opt/wechat-uos/crap/uos-lsb /etc/lsb-release \
-      --bind /opt/wechat-uos/crap/uos-lsblk /usr/bin/lsblk \
-      /opt/wechat-uos/wechat

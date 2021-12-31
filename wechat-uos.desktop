@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=微信
-Comment=微信 (UOS 魔改版)
-GenericName=微信
-Exec=/usr/bin/wechat-uos %U
-Icon=wechat
-Type=Application
-StartupNotify=true
-Categories=Application;chat;
