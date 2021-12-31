@@ -1,7 +1,7 @@
 # Maintainer: Victor Bayas <victorsbayas at gmail dot com>
 
 pkgname=envycontrol
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Easy GPU switching for Nvidia Optimus laptops under Linux"
 arch=(any)
