@@ -1,0 +1,4 @@
+post_install() {
+    echo "To get native messaging to work, create the following symlink:"
+    echo "ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts"
+}
