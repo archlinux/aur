@@ -1,6 +1,6 @@
 pkgbase = ledfx-git
 	pkgdesc = Make your LEDs dance in sync to the music
-	pkgver = v0.10.5.r50.gb8e68bea
+	pkgver = v0.10.7.r2.g138c2eb1
 	pkgrel = 1
 	url = https://github.com/LedFx/LedFx
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = ledfx-git
 	depends = ffmpeg
 	depends = avahi
 	depends = pulseaudio
+	depends = python-pyaudio-git
 	provides = ledfx
 	conflicts = ledfx
 	source = ledfx-git::git+https://github.com/LedFx/LedFx.git

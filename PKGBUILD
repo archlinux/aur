@@ -1,12 +1,12 @@
 # Maintainer: Janis Jansons <aur@janhouse.lv>
 pkgname=ledfx-git
-pkgver=v0.10.5.r50.gb8e68bea
+pkgver=v0.10.7.r2.g138c2eb1
 pkgrel=1
 pkgdesc="Make your LEDs dance in sync to the music"
 arch=('any')
 url="https://github.com/LedFx/LedFx"
 license=('MIT')
-depends=('ffmpeg' 'avahi' 'pulseaudio')
+depends=('ffmpeg' 'avahi' 'pulseaudio' 'python-pyaudio-git')
 provides=('ledfx')
 conflicts=('ledfx')
 makedepends=('git' 'python-setuptools' 'portaudio' 'ffmpeg')
