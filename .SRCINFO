@@ -1,7 +1,7 @@
 pkgbase = python-application
 	pkgdesc = Basic building blocks for Python applications
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AGProjects/python3-application
 	arch = aarch64
 	arch = x86_64

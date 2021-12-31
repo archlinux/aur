@@ -3,7 +3,7 @@
 _pkgname=python3-application
 pkgname=python-application
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic building blocks for Python applications"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
