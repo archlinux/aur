@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=stow-cm
 pkgver=nightly
-pkgrel=6
+pkgrel=1
 pkgdesc="config manager (simple impl of gun-stow)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/stow"
@@ -9,8 +9,13 @@ license=('GPL2')
 depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=('stow')
-source=("stow-$pkgver.tar.gz::https://github.com/someoneonsmile/stow/archive/refs/tags/$pkgver.tar.gz")
+source=("${pkgname}::git+https://github.com/someoneonsmile/stow.git")
 sha512sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname}"
+    printf "nightly-%s.%s" "$(git rev-list --count nightly)" "$(git rev-parse --short nightly)"
+}
 
 build() {
   cd "stow-$pkgver"
