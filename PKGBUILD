@@ -3,7 +3,7 @@
 
 _gemname=asciidoctor-pdf
 pkgname=asciidoctor-pdf
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='translate asciidoctor directly to pdf'
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=('ruby-rouge: syntax highlight'
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('f3da5d4f2ec564ddbce1e4356e0ed028d50a84c9817cdcfc8c259b1e8d72a39d')
+sha256sums=('04385376cbc8d4d26e814b655e50189e58ecdeec2a4fa3ce9282943a3d3bd4c6')
 package() {
     local _gemdir="$(ruby -e 'puts Gem.default_dir')"
     gem install --ignore-dependencies --no-user-install --verbose \
