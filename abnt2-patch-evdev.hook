@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = xkeyboard-config
+Target = abnt2-ext
+
+[Action]
+Description = Patch evdev.xml to add abnt2-ext keymap...
+Depends = python-lxml
+When = PostTransaction
+Exec = /bin/sh -c 'python /usr/share/abnt2-ext/patch_evdev.py'
