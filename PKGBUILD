@@ -1,7 +1,7 @@
 # Maintainer: Jove Yu <yushijun110@126.com>
 pkgname=com.tencent.weixin
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64')
 url="http://pc.weixin.qq.com/"
