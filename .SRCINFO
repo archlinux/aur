@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork
-	pkgver = 1.4.5
-	pkgrel = 3
+	pkgver = 1.4.8
+	pkgrel = 1
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -55,6 +55,7 @@ pkgbase = kotatogram-desktop
 	depends = xcb-util-keysyms
 	depends = libxcb
 	depends = gcc-libs
+	depends = rlottie-git
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = kotatogram-desktop
@@ -62,7 +63,7 @@ pkgbase = kotatogram-desktop
 	conflicts = kotatogram-desktop-dynamic-bin
 	conflicts = kotatogram-dev-git
 	conflicts = kotatogram-desktop-git
-	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.4.5
+	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.4.8
 	source = kotatogram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = kotatogram-desktop-GSL::git+https://github.com/Microsoft/GSL.git
 	source = kotatogram-desktop-Catch::git+https://github.com/philsquared/Catch
@@ -95,11 +96,17 @@ pkgbase = kotatogram-desktop
 	source = kotatogram-desktop-lib_webview::git+https://github.com/desktop-app/lib_webview.git
 	source = kotatogram-desktop-lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git
 	source = kotatogram-desktop-jemalloc::git+https://github.com/jemalloc/jemalloc.git
+	source = tg_owt::git+https://github.com/desktop-app/tg_owt.git#commit=6708e0d31a73e64fe12f54829bf4060c41b2658e
+	source = tg_owt-libvpx::git+https://chromium.googlesource.com/webm/libvpx.git
+	source = tg_owt-libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git
+	source = tg_owt-pipewire::git+https://github.com/PipeWire/pipewire.git
 	source = 0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
-	source = kotatogram-desktop-tg_owt::git+https://github.com/desktop-app/tg_owt.git#commit=91d836dc84
-	source = libvpx::git+https://chromium.googlesource.com/webm/libvpx.git
-	source = libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git
-	source = pipewire::git+https://github.com/PipeWire/pipewire.git
+	source = block-sponsored_messages.patch
+	source = lottie-fix.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -134,9 +141,7 @@ pkgbase = kotatogram-desktop
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = 1e2705008ea8cef1a5c46793a6115ba0f35f77529d18ea04a03e5a0e89980916d78d49a9aa86863b1a0b440debb650262ceb3c9d68600ffe6e5c98fd65804526
+	b2sums = 8feeb47ad0c238b32cb91788340b8794d6e58fa3a1c4027a57f7edcbd2c30d755cf27a778d446d59a4dbc07c255f3d0bcefdce4b5322ed2d00854c6e4a7831e0
 
 pkgname = kotatogram-desktop

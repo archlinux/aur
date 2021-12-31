@@ -1,6 +1,5 @@
 kotatogram-desktop*
-libvpx
-libyuv                                                                                                                                                                                        
+tg_owt*
 pipewire
 pkg/
 src/

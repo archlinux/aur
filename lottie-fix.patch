@@ -1,0 +1,22 @@
+diff --git a/lottie/details/lottie_frame_provider_direct.cpp b/lottie/details/lottie_frame_provider_direct.cpp
+index 4c3cad3..e5f5d6f 100644
+--- a/lottie/details/lottie_frame_provider_direct.cpp
++++ b/lottie/details/lottie_frame_provider_direct.cpp
+@@ -30,7 +30,8 @@ int GetLottieFrameIndex(not_null<rlottie::Animation*> animation, Quality quality
+ 	return (quality == Quality::Default && rate == 60) ? (index * 2) : index;
+ }
+ 
+-[[nodiscard]] rlottie::FitzModifier MapModifier(SkinModifier modifier) {
++#ifndef DESKTOP_APP_USE_PACKAGED_RLOTTIE
++[nodiscard]] rlottie::FitzModifier MapModifier(SkinModifier modifier) {
+ 	using Result = rlottie::FitzModifier;
+ 	switch (modifier) {
+ 	case SkinModifier::None: return Result::None;
+@@ -42,6 +43,7 @@ int GetLottieFrameIndex(not_null<rlottie::Animation*> animation, Quality quality
+ 	}
+ 	Unexpected("Unexpected modifier in MapModifier.");
+ }
++#endif
+ 
+ } // namespace
+ 

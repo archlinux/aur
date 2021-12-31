@@ -3,18 +3,18 @@
 # Contributor: Ilya Fedin <fedin-ilja2010@ya.ru>
 # Contributor: Auteiy <dmitry@auteiy.me>
 pkgname=kotatogram-desktop
-pkgver=1.4.5
-pkgrel=3
+pkgver=1.4.8
+pkgrel=1
 pkgdesc='Kotatogram – experimental Telegram Desktop fork'
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
 provides=(kotatogram-desktop)
-_tg_owt_commit=91d836dc84
+_tg_owt_commit=6708e0d31a73e64fe12f54829bf4060c41b2658e
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl' 'libx11' 'libvpx' 'libxcomposite'
-         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs' )
+         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs' 'rlottie-git' )
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
              'extra-cmake-modules' 'webkit2gtk' 'unzip'
              'yasm'
@@ -57,12 +57,15 @@ source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkg
         "${pkgname}-lib_webview::git+https://github.com/desktop-app/lib_webview.git"
         "${pkgname}-lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git"
         "${pkgname}-jemalloc::git+https://github.com/jemalloc/jemalloc.git"
-        "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+        "tg_owt::git+https://github.com/desktop-app/tg_owt.git#commit=${_tg_owt_commit}"
 
-        "${pkgname}-tg_owt::git+https://github.com/desktop-app/tg_owt.git#commit=${_tg_owt_commit}"
-        "libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
-        "libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git"
-        "pipewire::git+https://github.com/PipeWire/pipewire.git")
+        "tg_owt-libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
+        "tg_owt-libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git"
+        "tg_owt-pipewire::git+https://github.com/PipeWire/pipewire.git"
+
+        "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+        "block-sponsored_messages.patch"
+        "lottie-fix.patch")
 
 
 b2sums=('SKIP'
@@ -98,11 +101,13 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         '462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+        '1e2705008ea8cef1a5c46793a6115ba0f35f77529d18ea04a03e5a0e89980916d78d49a9aa86863b1a0b440debb650262ceb3c9d68600ffe6e5c98fd65804526'
+        '8feeb47ad0c238b32cb91788340b8794d6e58fa3a1c4027a57f7edcbd2c30d755cf27a778d446d59a4dbc07c255f3d0bcefdce4b5322ed2d00854c6e4a7831e0')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -147,18 +152,21 @@ prepare() {
 
     #patches
     patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+    patch -p1 < "${srcdir}/block-sponsored_messages.patch"
 
-    cd "${srcdir}/${pkgname}-tg_owt"
+    cd "${srcdir}/tg_owt"
     git submodule init
-    git config submodule.src/third_party/libvpx/source/libvpx.url "$srcdir"/libvpx
-    git config submodule.src/third_party/libyuv.url "$srcdir"/libyuv
-    git config submodule.src/third_party/pipewire.url "$srcdir"/pipewire
+    git config submodule.src/third_party/libvpx/source/libvpx.url "$srcdir"/tg_owt-libvpx
+    git config submodule.src/third_party/libyuv.url "$srcdir"/tg_owt-libyuv
+    git config submodule.src/third_party/pipewire.url "$srcdir"/tg_owt-pipewire
     git submodule update
+
+    cd "${srcdir}/${pkgname}/Telegram/lib_lottie/"
+    patch -p1 < $srcdir/lottie-fix.patch
 }
 
 build() {
-    # kotatogram-desktop is incompatible with the latest community/libtg_owt, so bundle an older one.
-    cd "${srcdir}/${pkgname}-tg_owt"
+    cd "${srcdir}/tg_owt"
     cmake . \
         -B build \
         -G Ninja \
@@ -174,7 +182,8 @@ build() {
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -Dtg_owt_DIR="${srcdir}/${pkgname}-tg_owt/build" \
+        -DDESKTOP_APP_QT6=off \
+        -Dtg_owt_DIR="${srcdir}/tg_owt/build" \
         -DTDESKTOP_API_TEST=ON
 
     cmake --build build
