@@ -1,0 +1,12 @@
+--- blink-git/blink/chatwindow.py.orig	2021-12-20 11:46:36.793749556 +0000
++++ blink-git/blink/chatwindow.py	2021-12-20 11:47:01.243794043 +0000
+@@ -18,7 +18,8 @@
+ from application.python.descriptor import WriteOnceAttribute
+ from application.python.types import MarkerType
+ from application.system import makedirs
+-from collections import MutableSet, deque
++from collections.abc import MutableSet
++from collections import deque
+ from datetime import datetime, timedelta
+ from itertools import count
+ from lxml import etree, html
