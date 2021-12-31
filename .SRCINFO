@@ -1,6 +1,6 @@
 pkgbase = python-spherical_geometry
 	pkgdesc = Python based tools for spherical geometry
-	pkgver = 1.2.20
+	pkgver = 1.2.21
 	pkgrel = 1
 	url = http://www.stsci.edu/resources/software_hardware/stsci_python
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = python-spherical_geometry
 	makedepends = qd>=2.3.7
 	makedepends = python-sphinx-automodapi
 	makedepends = python-numpydoc
-	source = https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-1.2.20.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-1.2.21.tar.gz
 	source = fix_typo.patch
 	source = fix_doc_warning.patch
-	md5sums = 9c9013c8f6b89d641e39008eff81c5b1
+	md5sums = 76fc6423af7cdd99bf98de58820b9c4e
 	md5sums = 376f76ebdf3c52048a113c386c091210
 	md5sums = fed5395d45a2275ccd5e0d63956ecddf
 
@@ -29,4 +29,4 @@ pkgname = python-spherical_geometry
 
 pkgname = python-spherical_geometry-doc
 	pkgdesc = Documentation for Python Spherical Geometry Toolkit
-
+	arch = any

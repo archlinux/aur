@@ -2,7 +2,7 @@
 pkgbase=python-spherical_geometry
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.2.20
+pkgver=1.2.21
 pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ checkdepends=('python-pytest' 'python-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_typo.patch'
         'fix_doc_warning.patch')
-md5sums=('9c9013c8f6b89d641e39008eff81c5b1'
+md5sums=('76fc6423af7cdd99bf98de58820b9c4e'
          '376f76ebdf3c52048a113c386c091210'
          'fed5395d45a2275ccd5e0d63956ecddf')
 
@@ -37,9 +37,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     cp "build/lib.linux-${CARCH}-${_pyver}/${_pyname}/math_util.cpython-${_pyver/./}-${CARCH}-linux-gnu.so" \
 "${_pyname}"
-    pytest || warning "Tests failed"
+    PYTHONPATH="build/lib.linux-${CARCH}-${_pyver}" pytest \
+        --deselect=spherical_geometry/tests/test_union.py::test_difficult_unions || warning "Tests failed"
 }
 
 package_python-spherical_geometry() {
@@ -55,6 +57,7 @@ package_python-spherical_geometry() {
 
 package_python-spherical_geometry-doc() {
     pkgdesc="Documentation for Python Spherical Geometry Toolkit"
+    arch=('any')
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" ../../licenses/*
