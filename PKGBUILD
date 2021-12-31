@@ -2,7 +2,7 @@
 
 _gemname=regexp_property_values
 pkgname=ruby-${_gemname}
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Inspect property values supported by Ruby's regex engine"
 arch=(x86_64)
