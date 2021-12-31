@@ -1,0 +1,16 @@
+pkgbase = python-pyaudio-git
+	pkgdesc = Python bindings for PortAudio (Fork to fix PY_SSIZE_T_CLEAN error)
+	pkgver = v0.2.11.r2.gf749f21
+	pkgrel = 1
+	url = https://git.skeh.site/skeh/pyaudio
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = portaudio
+	depends = python
+	provides = python-pyaudio
+	conflicts = python-pyaudio
+	source = python-pyaudio-git::git+https://git.skeh.site/skeh/pyaudio.git
+	md5sums = SKIP
+
+pkgname = python-pyaudio-git
