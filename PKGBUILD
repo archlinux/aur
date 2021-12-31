@@ -1,14 +1,14 @@
 # Maintainer: Demir Yerli demiryerli@gmail.com
 pkgname='yah'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 epoch=2
 pkgdesc='Yes, another AUR helper'
 arch=('x86_64')
 url="https://github.com/Bultek/yah"
 license=('AGPLv3')
-makedepends=('dotnet-sdk-6.0' 'sudo')
-depends=('runasunified' 'bash' 'git')
+makedepends=('dotnet-sdk-6.0' 'bash')
+depends=('sudo' 'bash' 'git')
 source=('Program.cs' 'yahcd.sh' 'yahmkpkg.sh' 'yah.csproj' 'dotpublish.sh')
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')

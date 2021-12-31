@@ -1,14 +1,14 @@
 pkgbase = yah
 	pkgdesc = Yes, another AUR helper
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Bultek/yah
 	arch = x86_64
 	license = AGPLv3
 	makedepends = dotnet-sdk-6.0
-	makedepends = sudo
-	depends = runasunified
+	makedepends = bash
+	depends = sudo
 	depends = bash
 	depends = git
 	source = Program.cs
