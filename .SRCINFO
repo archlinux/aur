@@ -1,0 +1,9 @@
+pkgbase = dotnetpublisher
+	pkgdesc = Compile .NET file for GNU/Linux easily
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	source = dotnetpublisher.sh
+	sha512sums = SKIP
+
+pkgname = dotnetpublisher-bin
