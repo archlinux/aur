@@ -1,5 +1,5 @@
 pkgbase = com.tencent.weixin
-	pkgdesc = 微信桌面版
+	pkgdesc = 微信官方原生桌面版
 	pkgver = 2.1.1
 	pkgrel = 2
 	url = http://pc.weixin.qq.com/
@@ -10,6 +10,8 @@ pkgbase = com.tencent.weixin
 	depends = libxss
 	depends = libnotify
 	depends = bubblewrap
+	provides = wechat
+	provides = weixin
 	options = !strip
 	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_2.1.1_amd64.deb
 	source = license.tar.gz
