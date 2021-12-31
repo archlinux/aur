@@ -18,5 +18,6 @@ package() {
   install -Dm644 extension.xpi "${pkgdir}/usr/lib/firedragon/browser/extensions/plasma-browser-integration@kde.org.xpi"
 
   # https://librewolf.net/docs/faq/#how-do-i-get-native-messaging-to-work
-  ln -s /usr/lib/mozilla/native-messaging-hosts "${pkgdir}/usr/lib/librewolf/native-messaging-hosts"
+  mkdir ${pkgdir}/usr/lib/firedragon
+  ln -s /usr/lib/mozilla/native-messaging-hosts "${pkgdir}/usr/lib/firedragon/native-messaging-hosts"
 }
