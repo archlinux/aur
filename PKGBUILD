@@ -2,7 +2,7 @@
 
 pkgname=openring-git
 _pkgname=openring
-pkgver=r12.gf13edb5
+pkgver=r13.51c8a2e1
 pkgrel=1
 pkgdesc="A webring for static site generators"
 arch=('x86_64')
@@ -28,5 +28,5 @@ build() {
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSES"/* -t "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES"
 }

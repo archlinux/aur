@@ -1,6 +1,6 @@
 pkgbase = openring-git
 	pkgdesc = A webring for static site generators
-	pkgver = r12.gf13edb5
+	pkgver = r13.51c8a2e1
 	pkgrel = 1
 	url = https://sr.ht/~sircmpwn/openring/
 	arch = x86_64
