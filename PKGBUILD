@@ -3,7 +3,7 @@
 
 pkgname=nb
 pkgver=6.7.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -12,12 +12,12 @@ license=('AGPL3')
 depends=('bash' 'git')
 optdepends=(
   # Recommended
-  'bat'
-  'nmap' # For ncat
-  'pandoc'
-  'ripgrep'
-  'tig'
-  'w3m'
+  'bat: recommended'
+  'nmap: for ncat, recommended' # For ncat
+  'pandoc: recommended'
+  'ripgrep: recommended'
+  'tig: recommended'
+  'w3m: recommended'
   # Additional
   'ack'
   'the_silver_searcher'
