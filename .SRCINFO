@@ -1,6 +1,6 @@
 pkgbase = amxrt-git
 	pkgdesc = Ambiorix application runtime
-	pkgver = 1.3.1.r0.gaa13bd6
+	pkgver = 1.3.3.r0.g683d5ea
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git
 	arch = x86_64
