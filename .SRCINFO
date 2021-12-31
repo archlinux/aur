@@ -1,7 +1,7 @@
 pkgbase = bgrm-git
 	pkgdesc = A utility for removing backgrounds from a webcam and returning a virtual webcam for use in applications like Teams, OBS, etc
-	pkgver = 21.1023
-	pkgrel = 1350
+	pkgver = 21.1231
+	pkgrel = 2
 	url = https://www.github.com/blueOkiris/bgrm
 	install = bgrm.install
 	arch = any
