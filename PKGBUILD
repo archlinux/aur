@@ -1,9 +1,9 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=pipectl-git
-pkgver=0.1.1.r0.ga31f43c
+pkgver=0.2.0.r2.g29b36f2
 pkgrel=1
-pkgdesc=" a simple named pipe management utility (git version)"
+pkgdesc="a simple named pipe management utility (git version)"
 url="https://github.com/Ferdi265/pipectl"
 arch=('i686' 'x86_64')
 license=('GPL3')
