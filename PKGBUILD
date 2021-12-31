@@ -16,7 +16,7 @@ source=("git://github.com/Wohlstand/TheXTech"
 "thextech-supermariobrosx.desktop")
 sha256sums=("SKIP"
 "SKIP"
-"5fd5af376176f4e1d466020da57e0ccff73abb4f52a30e6e429b0eb52b1887b3")
+"f46693ed08b59d6beba12c324e5c2384a09b77b76c02dda22846ddca7e808043")
 noextract=()
 
 prepare() {
