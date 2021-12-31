@@ -6,7 +6,7 @@
 
 pkgname=opensearch
 _pkgname=OpenSearch
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Search and analytics suite derived from Apache 2.0 licensed elasticsearch"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   opensearch.default
   remove-systemd-distribution-check.patch
 )
-sha256sums=('91c20afd7fdc305b1367a2dee80196e888cd7dbc63194dd23a05555e86d36f13'
+sha256sums=('d2d0133a1eabaa9ab39fcea2cfec3fdcd787330d125daa406acdaf1fd8783bf6'
             'ede02faa5d4f635e15c02653be37d0140f425ec18c2357e94d477b7ddd7f0c6b'
             'c749a2f8cd597a085bfa45089df125cbfdc0382c499c12542837b2e16f14c999'
             '097de1fc6ef1f12e99d2b3def9c9803cf0dd8609aeace608048d599a2cb85c5c'
