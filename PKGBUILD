@@ -2,8 +2,8 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _modulename=scholarly
 pkgname=python-$_modulename
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Retrieve author and publication information from Google Scholar in a friendly, Pythonic way"
 arch=(any)
 url="https://github.com/OrganicIrradiation/scholarly"
@@ -20,7 +20,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('395c1e68387c7c85cfeb740afac90b75c40e8c906c54f79c7fab0b1edf82a837')
+sha256sums=('c71da5e8733e497ca16a8e058180e5c4a9b527235ea3c8a39c91c3b5fb56220d')
 
 package() {
   cd "$srcdir/$(tar -tf v${pkgver}.tar.gz | head -n1)"
