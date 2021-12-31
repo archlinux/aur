@@ -1,0 +1,19 @@
+pkgbase = pyromaths-git
+	pkgdesc = French program to create mathematical exercises and models
+	pkgver = 21.8.2.r89.gecb2a1c
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-lxml
+	depends = texlive-pstricks
+	depends = texlive-latexextra
+	depends = texlive-fontsextra
+	depends = texlive-pictures
+	provides = pyromaths
+	conflicts = pyromaths
+	source = pyromaths::git+https://framagit.org/pyromaths/pyromaths.git
+	sha256sums = SKIP
+
+pkgname = pyromaths-git
