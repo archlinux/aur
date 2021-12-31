@@ -19,11 +19,12 @@ pkgbase = lilac-git
 	depends = python-requests
 	depends = python-lxml
 	depends = python-yaml
-	depends = python-toml
+	depends = python-tomli
 	depends = pyalpm
 	depends = python-structlog
 	depends = python-prctl
 	optdepends = smtp-forwarder: for sending error reports
+	optdepends = python-sqlalchemy: for recording build results in a database
 	provides = lilac=r874.b991d69
 	conflicts = lilac
 	source = git+https://github.com/archlinuxcn/lilac.git
