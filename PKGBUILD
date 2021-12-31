@@ -2,7 +2,7 @@
 pkgname=syphon-bin
 _pkgname=syphon
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-centric Matrix client"
 arch=('x86_64')
 url="https://github.com/syphon-org/syphon"
