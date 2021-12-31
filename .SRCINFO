@@ -1,7 +1,7 @@
 pkgbase = nb
 	pkgdesc = A command line note-taking, bookmarking, archiving, and knowledge base application
 	pkgver = 6.7.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xwmx/nb
 	arch = any
 	license = AGPL3
