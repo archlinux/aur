@@ -4,7 +4,7 @@
 
 pkgname=rustfolio-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool for monitoring an investment portfolio"
 url="https://github.com/Melesar/rustfolio"
 license=("MIT")
