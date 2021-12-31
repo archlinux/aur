@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino-git
-pkgver=2021.4.2.r2142.gf565e0f854
+pkgver=2021.4.2.r2181.g738a571742
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 
 provides=('openvino' 'intel-openvino-git')
 conflicts=('openvino' 'intel-openvino-git')
 replaces=('intel-openvino-git')
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 source=('git+https://github.com/openvinotoolkit/openvino.git'
         'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
         'git+https://github.com/herumi/xbyak.git'
@@ -144,7 +144,16 @@ package() {
     install -D -m644 openvino.conf -t "${pkgdir}/etc/ld.so.conf.d"
     
     local _gnaver
-    _gnaver="$(find openvino/temp -type d -name 'gna_*' | sed 's/.*_//')"
+    local _gnasover
+    local _gnasover_full
+    local _gnadir="${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
+    _gnaver="$(find openvino/temp -maxdepth 1 -type d -name 'gna_*' | sed 's/.*_//')"
+    _gnasover="$(find "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
+    _gnasover_full="$(find "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
+    
+    rm "${_gnadir}/libgna.so"{,".${_gnasover}"}
+    ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/libgna.so.${_gnasover}"
+    ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
     
     cp -dr --no-preserve='ownership' "openvino/temp/gna_${_gnaver}/include" \
         "${pkgdir}/opt/intel/openvino/runtime/include/gna"
