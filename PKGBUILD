@@ -2,18 +2,25 @@
 # Contributor: Nabil Freij <nabil.freij@gmail.com>
 
 pkgbase=python-glymur
-_pyname=Glymur
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}")
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
 url="https://glymur.readthedocs.org"
 license=('MIT')
-makedepends=('python-setuptools' 'python-numpydoc' 'python-sphinx_rtd_theme')
-checkdepends=('python-pytest' 'subversion' 'python-lxml' 'python-numpy' 'openjpeg2' 'python-gdal' 'python-scikit-image')
+makedepends=('python-dephell' 'python-numpydoc' 'python-sphinx_rtd_theme')
+checkdepends=('python-pytest' 'openjpeg2' 'python-numpy' 'python-lxml' 'python-scikit-image' 'python-gdal')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7d641cce63bc3adcddf4d3f389488232')
+md5sums=('a9cc0e9891d7c8193ebebe8e6d292f4c')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -28,7 +35,11 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   svn export https://github.com/quintusdias/glymur/trunk/tests/data tests/data
-    pytest || warning "Tests failed"
+#   Three fits files are missing in pypi package
+    pytest \
+    --deselect=tests/test_jp2box_uuid.py::TestSuite::test__printing__geotiff_uuid__xml_sidecar \
+    --deselect=tests/test_jp2k.py::TestJp2k::test_dtype_inconsistent_bitdetph \
+    --deselect=tests/test_jp2k.py::TestJp2k::test_dtype_j2k_uint16 || warning "Tests failed"
 }
 
 package_python-glymur() {
