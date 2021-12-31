@@ -2,7 +2,7 @@
 
 pkgname='yt-watch-git'
 _pkgname='yt-watch'
-pkgver=r10.eb33c93
+pkgver=r11.ee9153b
 pkgrel=1
 pkgdesc="Search/Watch/Download/Convert YouTube Videos on mpv using yt-dlp/YouTube API."
 arch=('any')
