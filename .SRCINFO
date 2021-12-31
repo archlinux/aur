@@ -1,0 +1,14 @@
+pkgbase = openring
+	pkgdesc = A webring for static site generators
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://sr.ht/~sircmpwn/openring/
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	provides = openring
+	conflicts = openring
+	source = https://git.sr.ht/~sircmpwn/openring/archive/1.0.1.tar.gz
+	sha256sums = 9df83d980473fc85d5e8df8bf55e509a90751d6be32500a304216108da4d17ca
+
+pkgname = openring
