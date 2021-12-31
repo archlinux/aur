@@ -1,0 +1,12 @@
+pkgbase = monique-monosynth-git
+	pkgdesc = Monique is a monophonic synth from Thomas Arndt
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/surge-synthesizer/monique-monosynth
+	arch = x86_64
+	license = GPLv3 or MIT
+	makedepends = git
+	source = git+https://github.com/surge-synthesizer/monique-monosynth
+	md5sums = SKIP
+
+pkgname = monique-monosynth-git
