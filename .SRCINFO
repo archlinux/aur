@@ -1,0 +1,16 @@
+pkgbase = arch-deployer-git
+	pkgdesc = A script to bulk download an Arch Linux package with all its dependencies
+	pkgver = r11.3eaa86a
+	pkgrel = 1
+	url = https://github.com/ivan-hc/Arch-Deployer
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = exo
+	provides = arch-deployer
+	conflicts = arch-deployer
+	source = git+https://github.com/ivan-hc/Arch-Deployer.git
+	sha256sums = SKIP
+
+pkgname = arch-deployer-git
