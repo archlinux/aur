@@ -1,0 +1,4 @@
+/pam_sqlite-git
+/src
+/pkg
+/*.pkg.tar.*

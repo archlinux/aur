@@ -1,0 +1,16 @@
+pkgbase = pam_sqlite-git
+	pkgdesc = PAM module to provide authentication against SQLite tables
+	pkgver = 1.0.1.7
+	pkgrel = 1
+	url = https://github.com/HormyAJP/pam_sqlite3
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = pam
+	depends = sqlite
+	source = pam_sqlite-git::git+https://github.com/HormyAJP/pam_sqlite3
+	md5sums = SKIP
+
+pkgname = pam_sqlite-git
