@@ -1,6 +1,6 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility
-	pkgver = 27.2.0_beta1
+	pkgver = 27.2.0_beta2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/obsproject/obs-studio
@@ -46,14 +46,14 @@ pkgbase = obs-studio-rc
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = python: Python scripting
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=27.2.0_beta1
+	provides = obs-studio=27.2.0_beta2
 	provides = obs-vst
 	provides = obs-browser
 	conflicts = obs-studio
 	conflicts = obs-vst
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.0-beta1
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.0-beta2
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
 	sha256sums = SKIP
