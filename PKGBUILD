@@ -1,7 +1,7 @@
 # Maintainer: Jove Yu <yushijun110@126.com>
 pkgname=com.tencent.weixin
 pkgver=2.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64')
 url="http://pc.weixin.qq.com/"
@@ -22,13 +22,14 @@ md5sums=('d9fb99271b4d2279a9c0eaefee9b59b2'
 
 package() {
     tar -xf data.tar.xz -C ${pkgdir}
+    rm ${pkgdir}/usr/lib/license/libuosdevicea.so
+
     sed -i 's/StartupWMClass=微信/StartupWMClass=weixin/' ${pkgdir}/usr/share/applications/weixin.desktop
     sed -i 's_Exec=/opt/apps/com.tencent.weixin/files/weixin/weixin_Exec=/opt/apps/com.tencent.weixin/files/weixin/weixin.sh_' ${pkgdir}/usr/share/applications/weixin.desktop
 
     cp -r license ${pkgdir}/opt/apps/com.tencent.weixin/
     install -m755 wechat.sh ${pkgdir}/opt/apps/com.tencent.weixin/files/weixin/weixin.sh
 
-    install -d ${pkgdir}/usr/lib/license
     install -d ${pkgdir}/var/uos
     install -d ${pkgdir}/var/lib/uos-license
 }
