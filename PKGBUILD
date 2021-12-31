@@ -23,4 +23,5 @@ pkgver() {
 
 package() {
   install -m0644 -D "$srcdir/$gitname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  chmod +x $pkgdir/usr/bin/$_pkgname
 }
