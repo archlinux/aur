@@ -2,7 +2,7 @@
 
 _pkgbase='mines'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='A mine sweeping game for the console'
 arch=('any')
