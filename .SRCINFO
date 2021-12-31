@@ -1,6 +1,6 @@
 pkgbase = mod_sahtrace-git
 	pkgdesc = Ambiorix module for sahtrace
-	pkgver = 0.0.9.r0.g0656055
+	pkgver = 0.0.9.r1.ged1ec2e
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/modules/mod-sahtrace.git
 	arch = x86_64
