@@ -1,6 +1,6 @@
 pkgbase = vsce
 	pkgdesc = Visual Studio Code extension manager
-	pkgver = 2.5.1
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode-vsce
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = vsce
 	makedepends = typescript
 	makedepends = yarn
 	depends = nodejs
-	source = https://registry.npmjs.org/vsce/-/vsce-2.5.1.tgz
-	sha256sums = febe48e36c40fb239bd562abfae84531d2de519bf4a7f41d9963c7d1d25ee5d6
+	source = https://registry.npmjs.org/vsce/-/vsce-2.5.3.tgz
+	sha256sums = e0bec2407909e055ea9ce3c9e28a5450f6f01d0957a70e6179f2414a0419bdc0
 
 pkgname = vsce
