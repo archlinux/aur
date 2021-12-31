@@ -9,6 +9,7 @@ url="https://github.com/feeluown/feeluown-ytmusic"
 license=('GPL3')
 depends=('feeluown' 'python-pydantic' 'python-cachetools' 'python-pytube' 'python-ytmusicapi')
 makedepends=('python-setuptools' 'python-pip')
+optdepends=('feeluown-netease: Lyric source')
 source=(
 	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
