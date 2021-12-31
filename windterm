@@ -1,7 +1,7 @@
-#!/bin/bash -e
-export XDG_RUNTIME_DIR=/opt/WindTerm/lib
-export _USER_PATH="${HOME}/.local/share"
+#!/bin/bash
 export _pkgname='WindTerm'
+export _USER_PATH="${HOME}/.local/share"
+export XDG_RUNTIME_DIR="${_USER_PATH}/${_pkgname}/lib"
 export RUNLEVEL=3
 chmod -R 0755 ${_USER_PATH}/${_pkgname}
 chown -R ${USER}:${USER} ${_USER_PATH}/${_pkgname}
