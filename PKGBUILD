@@ -9,7 +9,6 @@ pkgdesc='A script to bulk download an Arch Linux package with all its dependenci
 arch=(x86_64 aarch64)
 url="https://github.com/ivan-hc/$gitname"
 license=(GPL3)
-depends=(exo)
 makedepends=(git)
 provides=($_pkgname)
 conflicts=($_pkgname)
