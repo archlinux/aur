@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=cobaya
 pkgname=python-$_modulename
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Code for Bayesian Analysis in Cosmology"
 arch=(any)
