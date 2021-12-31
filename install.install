@@ -1,0 +1,3 @@
+post_install() {
+	rm -rf /opt/windterm-bin-2.2.2-x86_64.tar.gz
+}
