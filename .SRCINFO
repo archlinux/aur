@@ -1,6 +1,6 @@
 pkgbase = stacks-wallet.mainnet-bin
 	pkgdesc = Stacks Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://github.com/blockstack/stacks-wallet
 	install = stacks-wallet.mainnet-bin.install
@@ -11,7 +11,7 @@ pkgbase = stacks-wallet.mainnet-bin
 	depends = libsecret
 	depends = nss
 	depends = nodejs
-	source = https://github.com/blockstack/stacks-wallet/releases/download/v4.6.0/stacks-wallet.mainnet.v4.6.0.deb
-	md5sums = a54646c5d8f815ccb9d04e5584ecd376
+	source = https://github.com/blockstack/stacks-wallet/releases/download/v4.6.1/stacks-wallet.mainnet.v4.6.1.deb
+	md5sums = 6380873c22a5735e0d89eef4735bc8fe
 
 pkgname = stacks-wallet.mainnet-bin
