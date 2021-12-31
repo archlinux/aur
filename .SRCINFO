@@ -10,6 +10,7 @@ pkgbase = com.tencent.weixin
 	depends = libxss
 	depends = libnotify
 	depends = bubblewrap
+	depends = lsb-release
 	provides = wechat
 	provides = weixin
 	options = !strip

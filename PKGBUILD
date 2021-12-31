@@ -9,7 +9,7 @@ license=('ISC')
 options=('!strip' 'emptydirs')
 provides=('wechat' 'weixin')
 depends=(
-    'gtk3' 'nss' 'libxss' 'libnotify' 'bubblewrap'
+    'gtk3' 'nss' 'libxss' 'libnotify' 'bubblewrap' 'lsb-release'
 )
 source=(
     "https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/${pkgname}_${pkgver}_amd64.deb"
