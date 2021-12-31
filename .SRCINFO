@@ -1,18 +1,20 @@
 pkgbase = digilent.adept.utilities
 	pkgdesc = Digilent Adept Utilities.
-	pkgver = 2.4.1
+	pkgver = 2.7.1
 	pkgrel = 1
-	url = https://reference.digilentinc.com/digilent_adept_2
+	url = https://digilent.com/reference/software/adept/start
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	depends = digilent.adept.runtime>=2.21.2
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://digilent.s3.amazonaws.com/Software/AdeptUtilities/2.4.1/digilent.adept.utilities_2.4.1-i386.deb
-	sha256sums_i686 = fa4b2f7c9c08c302e177142162497487d3b27cbc7136010f012cb3e3e9c1edc3
-	source_x86_64 = https://digilent.s3.amazonaws.com/Software/AdeptUtilities/2.4.1/digilent.adept.utilities_2.4.1-amd64.deb
-	sha256sums_x86_64 = a05d2c13df1639e92aa96f4532b1990ef1166059bd361da0259d5b0cca3c7be6
+	source_i686 = https://digilent.s3.amazonaws.com/Software/AdeptUtilities/2.7.1/digilent.adept.utilities_2.7.1-i386.deb
+	sha256sums_i686 = 954ef56e3e702dde125a404336ecc886e02b3b8fe0adea30608b14745feef4e9
+	source_x86_64 = https://digilent.s3.amazonaws.com/Software/AdeptUtilities/2.7.1/digilent.adept.utilities_2.7.1-amd64.deb
+	sha256sums_x86_64 = efbfc97b69fa6d6dc465991492dceb308ef9ea220e185bcfd12f0b7494465842
+	source_aarch64 = https://digilent.s3.amazonaws.com/Software/AdeptUtilities/2.7.1/digilent.adept.utilities_2.7.1-arm64.deb
+	sha256sums_aarch64 = f8dc86b30c456a83ed0e588a9f719a3a3d1b4bf7a27e8ef729c00387b875e261
 
 pkgname = digilent.adept.utilities
-
