@@ -7,13 +7,12 @@
 
 pkgname=insight-toolkit4
 pkgver=4.13.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis (legacy version 4, installed under /opt)'
 arch=('x86_64')
 url='http://www.itk.org/'
 license=('APACHE')
 depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5' 'gtest')
-provides=("insight-toolkit=${pkgver}")
 makedepends=('cmake')
 source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz")
 sha256sums=('b8ea18a5c97c62972c00c4679ff5a224eb393a766c334bd20884b379ca2b34ce')
