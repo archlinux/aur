@@ -1,7 +1,7 @@
 pkgbase = blendnet
-	pkgdesc = Make your Blender distributed!
+	pkgdesc = Distribute your Blender renders (with CUDA CPU+GPU support!)
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	install = blendnet.install
 	arch = any
 	license = Apache
@@ -17,6 +17,7 @@ pkgbase = blendnet
 	source = blendnet.tmpfiles
 	source = blendnet.install
 	source = blender-v3.patch
+	source = cuda.patch
 	source = manager.json
 	sha512sums = 0cbe17f60a34d72408e83d065ba35849e6faf31a3243c8d9d43a45e99800625e64032402a78a64901c3e8678c8c0714193168ff2cf4a88d1efa3607136406c56
 	sha512sums = 27129424d46a54ee86bf4d614600cfe6cb302ebce8dd54625d7cb0a443c65696d6629e93d943ec686705211dece022e852cd949600e6618d1c532f6b607b92a4
@@ -27,6 +28,7 @@ pkgbase = blendnet
 	sha512sums = e4943047b1e3e22ab77f7d464ffaef70c4864adc5e17583daf5932282334fe1d329d0f8b6bf0ba95ba3c97c3e867f7c921648e1200c6935a2b4c9ca7c9c0a0aa
 	sha512sums = c8f63cf9b1cf0de2b2155ac2909ebe2aabfbf8bc2e2451da4bae51cea77136171d0ac122bb3261101d143a0a29afed102c369716b5cb10b44ab6149216f6e420
 	sha512sums = dedcc94ea5d4a5cfaad600c8111f93650f87d53f622a2bdfa43af6f2eae7a6ed6a1628856e02587509a5b252624ee139539d4040e2b3d1de64b618aebd7cc9a3
+	sha512sums = d045be0b99899a0b4ad955ace2f4242522d051acd47e570cef2059f5449c2c9e15b70f4076f0145c545ddea2c4b0a22731f6e61c907f08ccacc4266f888147d2
 	sha512sums = 946bd9bfb21ccd3e8cbbfff4a26aa5533046c32683a1689611f774ca8f23ac1428de095b68c3814a6c54e9adee9c89300ca7b2680392a323ebbc8fd3026739d3
 
 pkgname = blendnet

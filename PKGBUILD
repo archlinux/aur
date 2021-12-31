@@ -2,9 +2,9 @@
 
 _pkgname=BlendNet
 pkgname=blendnet
-pkgdesc="Make your Blender distributed!"
+pkgdesc="Distribute your Blender renders (with CUDA CPU+GPU support!)"
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('Apache')
 depends=('blender')
@@ -19,6 +19,7 @@ source=(
   "${pkgname}.tmpfiles"
   "${pkgname}.install"
   "blender-v3.patch"
+  "cuda.patch"
   "manager.json"
 )
 sha512sums=('0cbe17f60a34d72408e83d065ba35849e6faf31a3243c8d9d43a45e99800625e64032402a78a64901c3e8678c8c0714193168ff2cf4a88d1efa3607136406c56'
@@ -30,6 +31,7 @@ sha512sums=('0cbe17f60a34d72408e83d065ba35849e6faf31a3243c8d9d43a45e99800625e640
             'e4943047b1e3e22ab77f7d464ffaef70c4864adc5e17583daf5932282334fe1d329d0f8b6bf0ba95ba3c97c3e867f7c921648e1200c6935a2b4c9ca7c9c0a0aa'
             'c8f63cf9b1cf0de2b2155ac2909ebe2aabfbf8bc2e2451da4bae51cea77136171d0ac122bb3261101d143a0a29afed102c369716b5cb10b44ab6149216f6e420'
             'dedcc94ea5d4a5cfaad600c8111f93650f87d53f622a2bdfa43af6f2eae7a6ed6a1628856e02587509a5b252624ee139539d4040e2b3d1de64b618aebd7cc9a3'
+            'd045be0b99899a0b4ad955ace2f4242522d051acd47e570cef2059f5449c2c9e15b70f4076f0145c545ddea2c4b0a22731f6e61c907f08ccacc4266f888147d2'
             '946bd9bfb21ccd3e8cbbfff4a26aa5533046c32683a1689611f774ca8f23ac1428de095b68c3814a6c54e9adee9c89300ca7b2680392a323ebbc8fd3026739d3')
 
 install="${pkgname}.install"
@@ -42,6 +44,7 @@ backup=(
 prepare() {
   cd "${_pkgname}-${pkgver}"
   patch -Np1 -i ${srcdir}/blender-v3.patch
+  patch -Np1 -i ${srcdir}/cuda.patch
 }
 
 package() {

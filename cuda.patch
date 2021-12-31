@@ -1,0 +1,26 @@
+diff --git a/BlendNet/script-render.py b/BlendNet/script-render.py
+index 3bf5347..434f9d0 100644
+--- a/BlendNet/script-render.py
++++ b/BlendNet/script-render.py
+@@ -47,7 +47,20 @@ scene.render.use_sequencer = False # No need for still images
+ # Switch to use maximum threads possible on the worker
+ scene.render.threads_mode = 'AUTO'
+ 
+-scene.cycles.device = 'CPU' # The only one supported right now
++eprint('---------------   CUDA, DEVICES & GPU   ------------------')
++
++eprint('INFO: Enable CUDA to nvidia driver')
++bpy.context.preferences.addons['cycles'].preferences.compute_device_type = 'CUDA'
++
++eprint('INFO: Enable and list all devices, or optionally disable CPU')
++for device in bpy.context.preferences.addons['cycles'].preferences.get_devices_for_type('CUDA'):
++    device.use = True
++    #if device.type == 'CPU':
++    #    device.use = False
++    eprint("Device '{}' type {} : {}" . format(device.name, device.type, device.use))
++
++eprint('INFO: Set Scene Devices as GPU for Cycles')
++scene.cycles.device = 'GPU'
+ 
+ if hasattr(scene.cycles, 'use_square_samples'):
+     # For blender < 3.0.0
