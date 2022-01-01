@@ -17,6 +17,7 @@ pkgbase = gtkhash-caja
 	depends = gtk3
 	depends = libb2
 	depends = nettle
+	provides = gtkhash
 	provides = gtkhash-caja
 	conflicts = gtkhash
 	conflicts = gtkhash-nautilus
