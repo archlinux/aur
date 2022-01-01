@@ -1,15 +1,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=galaxy2
-pkgver=1.6
-pkgrel=5
+pkgver=1.7
+pkgrel=1
 pkgdesc="Stellar Simulation"
 url="http://www.kornelix.net/galaxy2/galaxy2.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('2b56e6c28a762ce1494ebed9d877859d1473397a34b4d1f717ef8b7366d074b0')
+sha256sums=('e93e8cce16a8bd26c1959d5b1b0ea20c3668433348c3bef550c9ef6e38e8570a')
 options=('!emptydirs')
 
 build() {
