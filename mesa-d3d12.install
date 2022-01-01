@@ -1,0 +1,10 @@
+post_upgrade() {
+	echo
+	echo '    `extra/mesa` has enabled Gallium D3D12 backend since 21.3.3-2.'
+	echo '    You can now switch to `extra/mesa`.'
+	echo
+}
+
+post_install() {
+	post_upgrade
+}
