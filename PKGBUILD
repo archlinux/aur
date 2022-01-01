@@ -1,11 +1,11 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
 pkgver=2.11.4
 _upstr_pkgrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -50,6 +50,7 @@ build() {
                        -gencode=arch=compute_86,code=sm_86 \
                        -gencode=arch=compute_86,code=compute_86"
 
+  export CXXFLAGS+=" -ffat-lto-objects"
   make CUDA_HOME=/opt/cuda PREFIX=/usr src.build
 }
 
