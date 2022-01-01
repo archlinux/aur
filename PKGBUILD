@@ -28,7 +28,10 @@ makedepends=(
     'thunar'
     'xdg-utils'
 )
-provides=(${pkgname})
+provides=(
+  gtkhash
+  ${pkgname}
+)
 conflicts=(
   gtkhash 
   gtkhash-caja

@@ -17,6 +17,7 @@ pkgbase = gtkhash-thunar
 	depends = libb2
 	depends = nettle
 	depends = thunar
+	provides = gtkhash
 	provides = gtkhash-thunar
 	conflicts = gtkhash
 	conflicts = gtkhash-caja
