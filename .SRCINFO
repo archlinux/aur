@@ -1,7 +1,7 @@
 pkgbase = ctcontainer
 	pkgdesc = A container manager which enable you to experience otherlinux distro with xorg/xwayland and pulseaudio support
-	pkgver = 8
-	pkgrel = 8
+	pkgver = 22
+	pkgrel = 22
 	url = https://ruzhtw.top/pages/projects/CenterLinux/ctcontainer
 	arch = x86_64
 	license = GPL-3.0 License
