@@ -1,24 +1,25 @@
 # Maintainer: Firegem <mrfiregem [at] protonail [dot] ch>
 pkgname=cbqn-git
-pkgver=r752.3d5a92c
+pkgver=r764.0690ae1
 pkgrel=1
 pkgdesc="A BQN implementation in C."
 arch=('x86_64')
 url="https://github.com/dzaima/CBQN"
 license=('GPL3' 'custom:ISC')
-depends=('glibc' 'rlwrap')
-optdepends=('ttf-bqn386: BQN and APL compatible font')
+depends=('glibc')
+optdepends=('ttf-bqn386: BQN and APL compatible font'
+            'rlwrap: Use readline in the REPL')
 makedepends=('git' 'clang')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git"
-        "bqn-ref::git+https://github.com/mlochbaum/BQN.git"
+        'BQN-ref::git+https://github.com/mlochbaum/BQN.git'
         'makefile.patch'
         'rlwrap-shim')
 md5sums=('SKIP'
          'SKIP'
          '4fd2c4b8b11b0f234482d3fa8056c039'
-         '02cb8cb1a3f5832526614237a04de4de')
+         '58280661e07591c6d8a5d399fc2e1f94')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -27,30 +28,28 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
-  patch --forward --strip=1 --input="${srcdir}/makefile.patch"
+  patch -p1 -i "${srcdir}/makefile.patch"
 }
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  make PIE='-pie' o3
-  ./BQN genRuntime "${srcdir}/bqn-ref"
-  make PIE='-pie' o3
+  make CC='clang' PIE='-pie' LDFLAGS="${LDFLAGS}" \
+    t='aur' f='-O2' c
 }
 
 check() {
   cd "${srcdir}/${pkgname%-git}"
-  ./BQN "${srcdir}/bqn-ref/test/this.bqn"
+  ./BQN "${srcdir}/BQN-ref/test/this.bqn"
 }
 
 package() {
-  install -Dm755 ./rlwrap-shim "${pkgdir}/usr/bin/bqn"
+  install -Dm755 ./rlwrap-shim "${pkgdir}/usr/bin/BQN"
 
   cd "${srcdir}/${pkgname%-git}"
-  install -Dm755 ./BQN "${pkgdir}/usr/share/${pkgname}/bqn"
-  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cbqn"
+  install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" BQN
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CBQN"
 
-  cd "$srcdir/bqn-ref"
-  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-bqn"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" ./tutorial/*.{md,bqn}
-  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" ./editors/inputrc
+  cd "${srcdir}/BQN-ref"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-BQN"
+  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" editors/inputrc
 }
