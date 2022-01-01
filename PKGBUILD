@@ -3,6 +3,7 @@
 
 pkgname=dktools
 pkgver=4.31.3
+pkgver=4.31.4
 pkgrel=1
 pkgdesc="Collection of tools by Dirk Krause, including converters, daemons, Perl modules, development tools, administration tools and printing tools."
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ makedepends=('wxgtk3') # also optional runtime dependency for wxbmpp, wxdkct and
 optdepends=('wxgtk3: for wxbmpp, wxdkct and wximgsz'
 	    'mariadb-libs: for itadmin')
 source=(http://sourceforge.net/projects/dktools/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('0570dbcb10693785115b6b7f58aa8fa427e92890e45b12f4c5b070195056c54b')
+sha256sums=('135c2d8e7cd64fa841d6b2187b32d4655fd05a444abb871a8cbf9bd4374dea5e')
 
 build() {
   cd $pkgname-$pkgver
