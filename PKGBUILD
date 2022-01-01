@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-editdistance
-pkgver=0.5.3
-pkgrel=6
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Fast implementation of the edit distance(Levenshtein distance)"
 arch=('x86_64')
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aflc/editdistance/archive/v$pkgver.tar.gz"
         LICENSE)
-sha512sums=('e870967383a7b6f0f6994b0c5123907da1b50e4c7ee9f3cdc958dc1ba5e92501a427dbd0d3e8a3e7f1fecc562659f3a952a47669f2037d2e4cad09654b33d31f'
+sha512sums=('1b2b0a23edc752564ddb19f7625e227fc7ea5b6e838da014effdec0edbcca2f2ad02460817638e7ea6d5857f71e3eb8af6fd94d936e6d26fe1d7dcad446ea573'
             '590232c1e7fa5aaaaa77573c4ea23533522177ca0ac07a0ce7f00e446d47467df2e19936ecb5e057fddc664d1daca39e2217cb5f6e3192ef5edf49b1f73e0f10')
 
 build() {
