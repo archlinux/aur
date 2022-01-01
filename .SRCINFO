@@ -1,11 +1,11 @@
 pkgbase = dt-cli
 	pkgdesc = $HOME, $HOME everywhere
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dt.cli.rs
 	arch = any
 	license = MIT OR Apache 2.0
-	makedepends = cargo
+	makedepends = rustup
 	makedepends = curl
 	provides = dt-cli
 	conflicts = dt-cli-git

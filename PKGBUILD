@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="\$HOME, \$HOME everywhere"
 arch=("any")
@@ -10,7 +10,7 @@ license=('MIT OR Apache 2.0')
 groups=()
 depends=()
 makedepends=(
-    cargo
+    rustup
     curl
 )
 checkdepends=()
