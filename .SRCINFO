@@ -1,0 +1,12 @@
+pkgbase = chromium-bypass-paywalls-clean-git
+	pkgdesc = Chromium extension to bypass paywalls
+	pkgver = 1283.5e32942
+	pkgrel = 1
+	url = https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean
+	arch = any
+	license = unknown
+	makedepends = git
+	source = git+https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean.git
+	sha512sums = SKIP
+
+pkgname = chromium-bypass-paywalls-clean-git
