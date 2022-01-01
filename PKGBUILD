@@ -1,7 +1,7 @@
 # Maintainer: TeaHouseLab(aka. Tsingkwai) <tsingkwai at ruzh dot top>
 pkgname="progynosh"
-pkgver="6"
-pkgrel="6"
+pkgver="7"
+pkgrel="7"
 pkgdesc="A dev manager for dev fish shell script eaiser"
 arch=("x86_64")
 url="https://ruzhtw.top/pages/projects/progynosh"
