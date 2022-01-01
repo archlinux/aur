@@ -3,7 +3,7 @@
 
 pkgname=python310
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 _pybasever=3.10
 _pymajver=3
 pkgdesc="Major release 3.10 of the Python high-level programming language"
@@ -19,7 +19,7 @@ validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
 )
-provides=('python')
+provides=("python=$pkgver")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
