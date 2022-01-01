@@ -4,7 +4,7 @@
 
 pkgname=goneovim-bin
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Neovim GUI written in Golang, using a Golang qt backend'
 arch=(x86_64)
 url='https://github.com/akiyosi/goneovim'
@@ -14,12 +14,24 @@ depends=(expat
          freetype2
          gcc-libs
          glibc
+         gtk3
          libglvnd
+         libspeechd
          libx11
          libxcb
          neovim
          nspr
          nss
+         postgresql-libs
+         qt5-declarative
+         qt5-quickcontrols2
+         qt5-sensors
+         qt5-speech
+         qt5-svg
+         qt5-tools
+         qt5-wayland
+         qt5-webengine
+         qt5-websockets
          zlib)
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=(${pkgname%-bin})
