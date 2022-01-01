@@ -21,10 +21,10 @@ package() {
     cd "$pkgname-$pkgver"
 
     # Final executable
-    install -Dm700 target/release/pe "$pkgdir/usr/bin/pe"
+    install -Dm755 target/release/pe "$pkgdir/usr/bin/pe"
 
     # License file
-    install -Dm600 LICENSE "$pkgdir/usr/share/doc/pero-editor/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/doc/pero-editor/LICENSE"
 
     # HTML documentation
     cp --recursive docs "$pkgdir/usr/share/doc/pero-editor/html"
