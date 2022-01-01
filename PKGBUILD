@@ -3,7 +3,7 @@ pkgname=sbuild
 _tag=debian/0.81.2
 pkgver=${_tag##*/}
 _srcname=$pkgname-${_tag/\//-}
-pkgrel=1
+pkgrel=2
 epoch=
 arch=(any)
 url="https://salsa.debian.org/debian/sbuild"
@@ -34,6 +34,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$_srcname"
+	sed -ie 's,PERL_MODULE_DIR=.*,PERL_MODULE_DIR="${datadir}/perl5/vendor_perl",g' configure.ac
 	autoupdate
 }
 

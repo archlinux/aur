@@ -1,7 +1,7 @@
 pkgbase = sbuild
 	pkgdesc = Tool for building Debian binary packages from Debian sources
 	pkgver = 0.81.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/debian/sbuild
 	arch = any
 	license = GPL2
