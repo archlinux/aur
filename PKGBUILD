@@ -1,9 +1,9 @@
 # Maintainer: Firegem <mrfiregem [at] protonail [dot] ch>
 pkgname=cbqn-git
-pkgver=r764.0690ae1
-pkgrel=2
+pkgver=r765.ff4573f
+pkgrel=1
 pkgdesc="A BQN implementation in C."
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64' 'arm')
 url="https://github.com/dzaima/CBQN"
 license=('GPL3' 'custom:ISC')
 depends=('glibc')
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  make CC='clang' PIE='-pie' LDFLAGS="${LDFLAGS}" \
+  make PIE='-pie' LDFLAGS="${LDFLAGS}" \
     t='aur' f='-O2' c
 }
 

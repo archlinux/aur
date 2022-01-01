@@ -1,9 +1,12 @@
 pkgbase = cbqn-git
 	pkgdesc = A BQN implementation in C.
-	pkgver = r764.0690ae1
-	pkgrel = 2
+	pkgver = r765.ff4573f
+	pkgrel = 1
 	url = https://github.com/dzaima/CBQN
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = arm
 	license = GPL3
 	license = custom:ISC
 	makedepends = git
