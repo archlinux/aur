@@ -2,7 +2,7 @@
 
 _pluginname=gradient-source
 pkgname=obs-$_pluginname
-pkgver=0.2.0
+pkgver=0.3.0
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="Gradient Source for OBS studio"
@@ -12,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=fe42abcc8d3fbb2fec82ca85b741ea70f37ab45f"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=ff6c915204d31a45f576f1f43875bfef18c71f04"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
