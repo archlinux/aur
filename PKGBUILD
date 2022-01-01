@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r59044.2fa799fc5d6
+pkgver=r59259.8726f9260c2
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -62,13 +62,14 @@ _libdvdcss_version="1.4.2-Leia-Beta-5"
 _libdvdnav_version="6.0.0-Leia-Alpha-3"
 _libdvdread_version="6.0.0-Leia-Alpha-3"
 _ffmpeg_version="4.4-N-Alpha1"
-_fmt_version="6.1.2"
-_spdlog_version="1.5.0"
+_fmt_version="8.0.1"
+_spdlog_version="1.9.2"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
-_flatbuffers_version="1.12.0"
+_flatbuffers_version="2.0.0"
 _libudfread_version="1.1.0"
 
+options=(!lto)
 source=(
   "git://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
@@ -100,11 +101,11 @@ b2sums=('SKIP'
         '7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355'
         '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
         '2c45778e36167a8740f8f724dc8a66ea2491d8343b1f2546027c4dd1a711aa7a8b830defc439006402e141f264532cbc623758dd066b45fc8a09f67ffdc0f9b8'
-        '36e7451a8732c62dcbf47e6d287ea582827b6196a468b8648803ea1bc9a37a5f681d87488f748d749183d97783ac7fb47a3f2aeed64fc6a684f9ee85b67ae28d'
-        'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
+        'b64a4686050a9edb4e5d3ec28a3727a847105ae0b12a89461841e14d6c9c442e391cdcfbca39b2d141d04cdb10d00516ecc8bf605867c792b7d2d6bc99c7b2bc'
+        '8e4cce17887509512c0d3a63485f9271098bdf7f853c2a07adb8d46459c1039d93d16d05cb60963c1bbc754f6af6ba3af1a66c69bc421bf234f676231c8c1315'
         'e6f1f495adf541102e3b5ac11dfd14b770a52e23ef9d613bc6204f6493ff4df4da9ba290ad6c3a7e5c7fcf159cafdf355bfe668a4ddceb4329df934c65966d19'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
-        '441123be124ad851efa30bda0d828a764ebaf79ba6692a6e5904000b33818e9de78c3a964037ac93ef562890980c58169141e55354dce86857c02bcd917150d6'
+        'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
