@@ -2,7 +2,7 @@
 # Contributor: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=python-pynput
 _name=${pkgname#python-}
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-xlib' 'python-six' 'python-evdev')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
         'setup.patch')
-sha256sums=('e6b7926dd162a883ff16f38e01720a930bbf2509146c9f1cdcecddd25288fb6e'
+sha256sums=('3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c'
             'c519290a88baa3e15be4bb6cff4d665a020b9e0c8c1241749670d58a48b07e2c')
 
 prepare() {
