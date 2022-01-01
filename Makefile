@@ -1,7 +1,7 @@
 USER = wfxr
 REPO = csview
 PKGDESC = A high performance csv viewer with cjk/emoji support
-PKGVER = 0.3.8
+PKGVER = 0.3.11
 PKGREL = 1
 
 MAINTAINER = $(shell git config user.name) <$(shell git config user.email)>
