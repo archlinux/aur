@@ -1,6 +1,6 @@
 pkgbase = vnote
 	pkgdesc = A Vim-inspired note-taking application, especially for Markdown.
-	pkgver = 3.10.1
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://vnotex.github.io/vnote/en_us/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vnote
 	makedepends = git
 	depends = qt5-webengine
 	depends = qt5-svg
-	source = git+https://github.com/vnotex/vnote.git#tag=v3.10.1
+	source = git+https://github.com/vnotex/vnote.git#tag=v3.11.0
 	source = vnotex-vtextedit::git+https://github.com/vnotex/vtextedit
 	source = vnotex-syntax-highlighting::git+https://github.com/vnotex/syntax-highlighting
 	source = vnotex-hunspell::git+https://github.com/vnotex/hunspell
