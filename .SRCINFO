@@ -9,6 +9,7 @@ pkgbase = tlauncher-org
 	depends = jdk8-openjdk
 	depends = jre8-openjdk
 	depends = jre8-openjdk-headless
+	conflicts = tlauncher-bin
 	replaces = tlauncher-bin
 	source = tlauncher-org-2.839.zip::https://dl2.tlauncher.org/f.php?f=files%2FTLauncher-2.839.zip
 	source = tlauncher.desktop
