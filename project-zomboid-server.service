@@ -1,0 +1,38 @@
+[Unit]
+Description=Project Zomboid dedicated server
+
+[Service]
+Type=simple
+User=zomboid
+Group=zomboid
+
+Environment=LD_LIBRARY_PATH="/opt/project-zomboid-server/linux64:/opt/project-zomboid-server/natives:/opt/project-zomboid-server/:${LD_LIBRARY_PATH}"
+EnvironmentFile=/etc/project-zomboid/server.conf
+# These variables need to be changed from the default value in the EnvironmentFile
+ExecCondition=/usr/bin/test "${ADMIN_PASSWORD}" != "CHANGE_ME"
+ExecCondition=/usr/bin/test "${RCON_PASSWORD}" != "CHANGE_ME"
+ExecStart=/opt/project-zomboid-server/ProjectZomboid64 $JVM_ARGS -- -adminpassword "${ADMIN_PASSWORD}" -servername "${NAME}" $SERVER_ARGS
+ExecStop=/usr/bin/rcon -a "127.0.0.1:${RCON_PORT}" -p "${RCON_PASSWORD}" -t rcon quit
+# Quitting / saving is aysnc, and doesn't have a good way to be wrapped by systemd
+# use timeout + tail to try and give the process some time to exit
+ExecStop=/usr/bin/timeout 60s /usr/bin/tail --pid="${MAINPID}" -f /dev/null
+ExecReload=/usr/bin/rcon -a "127.0.0.1:${RCON_PORT}" -p "${RCON_PASSWORD}" -t rcon reloadoptions
+
+WorkingDirectory=/opt/project-zomboid-server
+ReadWritePaths=/opt/project-zomboid-server
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+RestrictNamespaces=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target

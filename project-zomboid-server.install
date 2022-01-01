@@ -1,0 +1,17 @@
+## arg 1:  the new package version
+post_install() {
+   echo "CHANGE THE PASSWORDS IN /etc/project-zomboid/server.conf BEFORE STARTING THE SERVICE"
+   echo "UDP ports 16261 and 8766 need to be open in your firewall for users to connect."
+   echo "RCON password needs to be updated in the game settings to enable graceful service shutdown."
+   echo "Settings can be configured via:"
+   echo "    Passwords & launch args: /etc/project-zomboid/server.conf"
+   echo "    Server & game settings (made on start): /opt/project-zomboid-server/Zomboid/Server/servertest*"
+   echo "    JVM settings (RAM): /opt/project-zomboid-server/ProjectZomboid64.json"
+   echo "By default, saves will be stored in /opt/project-zomboid-server/Zomboid/Saves/Multiplayer/"
+   echo "Start project-zomboid-server.service to create a default world."
+}
+
+## arg 1:  the old package version
+post_remove() {
+    echo "Game saves, settings, and mods may left in /opt/project-zomboid-server/"
+}

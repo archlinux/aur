@@ -1,0 +1,4 @@
+#Type    Path                                   Mode    User       Group   Age   Argument
+d        /opt/project-zomboid-server            0755    zomboid    zomboid
+# Zomboid Server needs to be able to write mods to the steamapps folder
+d        /opt/project-zomboid-server/steamapps  0755    zomboid    zomboid

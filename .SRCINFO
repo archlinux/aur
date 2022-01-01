@@ -1,0 +1,26 @@
+pkgbase = project-zomboid-server
+	pkgdesc = Dedicated server for the game Project Zomboid
+	pkgver = 41.65
+	pkgrel = 1
+	url = https://projectzomboid.com
+	install = project-zomboid-server.install
+	arch = x86_64
+	license = custom:PZLicense
+	makedepends = steamcmd
+	depends = java-runtime-headless
+	depends = lib32-glibc
+	depends = libxext
+	depends = gcc-libs
+	depends = libsm
+	depends = rcon-cli
+	backup = etc/project-zomboid/server.conf
+	source = project-zomboid-server.service
+	source = project-zomboid-server.conf
+	source = project-zomboid-server.sysusers
+	source = project-zomboid-server.tmpfiles
+	sha256sums = 1eb16b0d67aca6b112b1bfaead24fb3851c9b351b7e8804e334fb4f08906b891
+	sha256sums = 6d7163af00d1521c1802bbbf304eb62e8578ca7c7f9c3a1618f8ed5584c08591
+	sha256sums = 561f21c7cc53dc4a14eae829c04050e917d668649a1fffab630647c62f94bb08
+	sha256sums = b9bbddb77573ce3f4fde792114ac7685292caee07e7d6f1fc993db4f32013098
+
+pkgname = project-zomboid-server
