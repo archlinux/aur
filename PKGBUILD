@@ -1,30 +1,36 @@
-#Maintainer: William Aass Dahlen <cznk@protonmail.com> 
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: William Aass Dahlen <cznk@protonmail.com>
 
 pkgname=azure-kubelogin
-pkgver=0.0.9
+_pkgname=kubelogin
+pkgver=0.0.10
 pkgrel=1
-pkgdesc='A Kubernetes credential (exec) plugin implementing azure authentication'
+pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=('x86_64')
-license=('MIT')
 url="https://github.com/Azure/kubelogin"
-makedepends=(
-    "go"
-    "git"
-)
-source=(
-    "git+https://github.com/Azure/kubelogin.git#tag=v$pkgver"
-    )
+license=('MIT')
+makedepends=('git' 'go')
+conflicts=('kubelogin')
 
-md5sums=('SKIP')
+source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
-build(){
-    cd kubelogin
-    make
+build() {
+  cd "$pkgname-$pkgver"
+
+  make
 }
 
-package(){
+check() {
+  cd "$pkgname-$pkgver"
 
-    cd kubelogin/bin/linux_amd64/
-    install -Dm755 kubelogin $pkgdir/usr/bin/kubelogin
-    
+  make test
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  binary_dir="bin/$(go env GOOS)_$(go env GOARCH)"
+  install -Dm755 "$binary_dir/kubelogin" $pkgdir/usr/bin/kubelogin
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
