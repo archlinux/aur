@@ -1,7 +1,7 @@
 # Maintainer: krazykirby99999 krazykirby99999-at-gmail-dot-com
 # Contributor: ajbura, hbarsaiyan
 pkgname=cinny-desktop-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Unofficial Build of the Cinny Desktop Client. Repackages hbarsaiyan/cinny-tauri .deb package to an Arch-Compatible format."
 arch=('x86_64')
