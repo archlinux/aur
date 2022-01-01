@@ -1,0 +1,16 @@
+pkgbase = tailwindcss
+	pkgdesc = Standalone version of Tailwind CLI
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = https://tailwindcss.com
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs-lts-gallium
+	makedepends = npm
+	depends = gcc-libs
+	options = !strip
+	source = tailwindcss-3.0.8.tar.gz::https://github.com/tailwindlabs/tailwindcss/archive/v3.0.8.tar.gz
+	sha512sums = bf58526d7f193edecb75decd59f920b75b942f298134945eea767611c61e1598f880953d97bd66d7adee449f42d15763372e3f739ac56ebcd8d954fdd6df30bf
+	b2sums = 91bb564c0185fd80d9aeee22813330ba32b31ac7d55a86b4a22722d4fd9b7a27ee8b892d87c1e13d45577f0604829fb09f514af29063a1c4540540a0a293563d
+
+pkgname = tailwindcss
