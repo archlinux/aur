@@ -13,7 +13,7 @@ options=('!strip')
 _url="https://github.com/project-slippi/$pkgname/releases"
 _package="Slippi-Launcher-$pkgver-$arch.AppImage"
 source=("$_package::$_url/download/v$pkgver/$_package")
-md5sums=('c4a82375f24513cbc1e9b4fbb72a6ca8')
+md5sums=('8da40cd72d3e9a9b4bd33f72ffa1e337')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
