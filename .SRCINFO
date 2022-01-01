@@ -1,0 +1,15 @@
+pkgbase = dida-bin
+	pkgdesc = Official Dida client, a todo list.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://dida365.com/home
+	arch = any
+	license = BSD
+	depends = electron
+	provides = dida
+	source = dida_0.0.1-any.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-0.0.1-amd64.deb
+	source = dida.sh
+	sha512sums = 69252b386afc3b719df9a3635feb912e21f65770f12858e2ee4c30efe3332c828c446febc37e4d26c9334c707268edb281f5d970280ea9d13e1fd5fd9f5b0d1d
+	sha512sums = d4051b2f7bedd263a80b2d8e4a05bba59806f35f7b3072a8a9fc3026eade0c2f06cd9e8eea9343292db30636a71f9ae6e44a9b1c9b5871ece2d2590cdb564e72
+
+pkgname = dida-bin
