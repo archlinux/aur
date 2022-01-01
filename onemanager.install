@@ -1,0 +1,3 @@
+ post_install(){
+    echo "You have to set your domain in /etc/nginx/conf.d/onemanger.conf manually."
+ }

@@ -1,0 +1,21 @@
+pkgbase = onemanager-php-git
+	pkgdesc = An index & manager of Onedrive based on serverless.
+	pkgver = 3.4.r40.gd99ee1d
+	pkgrel = 1
+	url = https://github.com/qkqpttgf/OneManager-php
+	install = onemanager.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = nginx
+	depends = php-fpm
+	optdepends = certbot: Enable https for site automatically.
+	provides = onemanager
+	provides = onemanager-php
+	backup = var/www/onemanager/web.config
+	backup = etc/nginx/conf.d/onemanager.conf
+	backup = var/www/onemanager/.data/config.php
+	source = onemanager::git+https://github.com/qkqpttgf/OneManager-php.git
+	sha512sums = SKIP
+
+pkgname = onemanager-php-git
