@@ -1,11 +1,13 @@
 [Unit]
 Description=Shadowsocks-Rust Server Service
 After=network.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-User=nobody
-ExecStart=/usr/bin/ssserver-rust -c /etc/shadowsocks/%i.json --log-without-time
+DynamicUser=yes
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ExecStart=/usr/bin/ssserver-rust -c /etc/shadowsocks-rust/%i.json
 
 [Install]
 WantedBy=multi-user.target
