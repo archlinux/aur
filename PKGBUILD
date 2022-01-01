@@ -2,7 +2,7 @@
 
 pkgname=wxbase-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc="wxWidgets base libraries for no X install (3.x branch development version)" 
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/wxWidgets
+  git submodule update --init 3rdparty/catch
   ./configure \
  	  --prefix=/usr \
 	  --libdir=/usr/lib \
