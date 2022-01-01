@@ -4,12 +4,14 @@
 # Contributor: Wes Brewer <brewerw@gmail.com>
 
 pkgname=extract-xiso-git
-pkgver=2.7.1.r35.b154a15
+pkgver=r38.28a5f72
 pkgrel=1
+epoch=1
 pkgdesc="xdvdfs (xbox iso) file creation and extraction utility (git package)"
 arch=('x86_64')
 url="https://github.com/XboxDev/extract-xiso"
 license=('custom')
+depends=('lib32-gcc-libs' 'lib32-glibc')
 makedepends=('cmake' 'ninja' 'git')
 conflicts=('extract-xiso')
 provides=('extract-xiso')
@@ -18,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}"/extract-xiso
-    printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags | sed 's/v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
