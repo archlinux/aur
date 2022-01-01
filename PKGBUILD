@@ -3,7 +3,7 @@
 
 pkgname=python36
 pkgver=3.6.15
-pkgrel=1
+pkgrel=2
 _pybasever=3.6
 _pymajver=3
 pkgdesc="Major release 3.6 of the Python high-level programming language"
@@ -15,7 +15,7 @@ makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
 sha256sums=('6e28d7cdd6dd513dd190e49bca3972e20fcf455090ccf2ef3f1a227614135d91')
-provides=('python')
+provides=("python=$pkgver")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
