@@ -1,0 +1,15 @@
+pkgbase = winestreamproxy
+	pkgdesc = Forwards data between a Wine named pipe and a Unix domain socket.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/openglfreak/winestreamproxy
+	arch = x86_64
+	license = MPL2
+	makedepends = mingw-w64-gcc
+	depends = sh
+	depends = wine
+	backup = etc/xdg/winestreamproxy/settings.conf
+	source = https://github.com/openglfreak/winestreamproxy/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = acccd8bc9e90909b13f156ef7573144dcc11a4564e4fdf94178cf7e4f5b46821
+
+pkgname = winestreamproxy
