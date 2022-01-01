@@ -8,7 +8,6 @@ pkgrel=3
 pkgdesc="Spotify client for the terminal written in Rust"
 arch=('x86_64')
 url='https://github.com/Rigellute/spotify-tui'
-changelog="Changelog"
 license=('MIT')
 depends=(openssl libxcb)
 provides=('spotify-tui')
