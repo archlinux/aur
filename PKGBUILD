@@ -8,7 +8,7 @@ pkgdesc="Monique is a monophonic synth from Thomas Arndt"
 arch=('x86_64')
 url="https://github.com/surge-synthesizer/monique-monosynth"
 license=('GPLv3 or MIT')
-makedepends=('git' 'cmake' 'ninja')
+makedepends=('git' 'cmake')
 source=("git+$url")
 md5sums=('SKIP')
 
@@ -20,8 +20,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-  ninja -C build
+  cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+  make -C build
 }
 
 package() {
