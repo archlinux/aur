@@ -4,7 +4,7 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.63
-pkgrel=2
+pkgrel=3
 pkgdesc="A new multiboot USB solution"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.ventoy.net"
@@ -69,7 +69,7 @@ package() {
   cd "${pkgname%-bin}-$pkgver"
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/boot/"            boot/*
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/${pkgname%-bin}/" "${pkgname%-bin}"/*
-  install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/"            tool/*.{cer,json,sh,xz}
+  install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/"            tool/*.{cer,glade,json,sh,xz}
   install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/$CARCH/"     tool/$CARCH/*
   install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/"                 *.sh
   cp --no-preserve=o -avt "$pkgdir/opt/${pkgname%-bin}/"                 plugin WebUI
