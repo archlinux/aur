@@ -1,6 +1,6 @@
 pkgbase = filebrowser
 	pkgdesc = Standalone web file manager
-	pkgver = 2.19.0
+	pkgver = 2.20.1
 	pkgrel = 1
 	url = https://filebrowser.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = filebrowser
 	makedepends = go.rice
 	depends = glibc
 	options = emptydirs
-	source = git+https://github.com/filebrowser/filebrowser.git#tag=v2.19.0
+	source = git+https://github.com/filebrowser/filebrowser.git#tag=v2.20.1
 	source = filebrowser@.service
 	sha512sums = SKIP
 	sha512sums = 0846815afbb3c5ccbb097a5361461ca0ada69e04246935afb123f4609d09cd61f9e3fe50e3b6698b3e4c1f335cbb0aa3d998cae13b422e2989aad62ed7ce4682
