@@ -1,11 +1,12 @@
 pkgbase = qpasm
 	pkgdesc = pseudo-assembler interpreter
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/synio-wesley/qpasm
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
+	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-svg
 	provides = qpasm
