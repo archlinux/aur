@@ -13,7 +13,7 @@
 # Contributor: @holos
 
 pkgname=gnupg23
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=0
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
@@ -22,14 +22,14 @@ arch=($CARCH)
 # checkdepends=(openssh fig2dev)
 makedepends=(git libldap libusb-compat pcsclite fig2dev)
 conflicts=(${pkgname%23})
-provides=(${pkgname%23})
+provides=(${pkgname%23}=${pkgver})
 depends=(npth libgpg-error libgcrypt libksba libassuan pinentry libbz2.so readline libreadline.so gnutls sqlite zlib)
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
 source=("https://gnupg.org/ftp/gcrypt/${pkgname%23}/${pkgname%23}-${pkgver}.tar.bz2"{,.sig}
 	"drop-import-clean.patch")
-sha256sums=('5789b86da6a1a6752efb38598f16a77af51170a8494039c3842b085032e8e937'
+sha256sums=('f3468ecafb1d7f9ad7b51fd1db7aebf17ceb89d2efa8a05cf2f39b4d405402ae'
             'SKIP'
             '2d573d1a5a0d0272b0be0d70e6dabf2d8c7897e873ace4ce7fffd6e96599a30a')
 install=gnupg23.install
