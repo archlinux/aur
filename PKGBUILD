@@ -28,7 +28,10 @@ makedepends=(
     'nettle'
     'xdg-utils'
 )
-provides=(${pkgname})
+provides=(
+  gtkhash
+  ${pkgname}
+)
 conflicts=(
   gtkhash 
   gtkhash-caja
