@@ -2,7 +2,7 @@
 
 _pyname=os-ken
 pkgname=python-$_pyname
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A component-based software defined networking framework for OpenStack."
 arch=(any)
@@ -39,9 +39,9 @@ checkdepends=(
 	python-ncclient
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('06f8b0b63d9728567b21b1752642e49a')
-sha256sums=('604dfadaf66657880962990d138df0685cd84428842a8daa7b3bf60f54c92f08')
-sha512sums=('9e8e1ad506bcf44b28af64a7771773097ba338abf5dc19c3bf8299227bbcbb5b745aec38e585f5be6ae9f5426a0c32499f56bafdd2615846939bbdd2eac6c527')
+md5sums=('a111c05123c30ac879d8f417494b6476')
+sha256sums=('9eb24c72b66aeb928ab505332a037ba070d902b434c4366701eb40914e628fbe')
+sha512sums=('7e71b0c25f9e5a9b9a14fff913d796349e2c8a6630956ed6cc069eb008fec702dfde41b3a6751d05d683948e75e170c432ffb8c19b0e2ebf95f5a19f9b2a6f17')
 
 export PBR_VERSION=$pkgver
 
