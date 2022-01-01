@@ -1,0 +1,13 @@
+pkgbase = cabbage-bin
+	pkgdesc = Framework for developing audio plugins with the Csound programming language.
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://cabbageaudio.com/
+	arch = x86_64
+	license = GPL
+	depends = csound
+	provides = cabbage
+	source_x86_64 = https://github.com/rorywalsh/cabbage/releases/download/v2.8.0/Cabbage-2.8-DEB.zip
+	sha512sums_x86_64 = 80097bc27c5813fe94ca598726b35b00990f58e73b0544e1eaad6bb4dc38403d6a7d792fa23e916ac8ca3b8c537ea951bf9f340a25bf2d656bd4e4f60ebbe009
+
+pkgname = cabbage-bin
