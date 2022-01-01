@@ -4,7 +4,7 @@
 # Contributor: Wes Brewer <brewerw@gmail.com>
 
 pkgname=extract-xiso-git
-pkgver=2.7.1.r37.0a18705
+pkgver=2.7.1.r35.b154a15
 pkgrel=1
 pkgdesc="xdvdfs (xbox iso) file creation and extraction utility (git package)"
 arch=('x86_64')
@@ -28,7 +28,8 @@ prepare() {
 
 build() {
     cd "${srcdir}"/build
-    cmake ../extract-xiso -G Ninja -DCMAKE_BUILD_TYPE=Release
+    #build as 32-bit because 64-bit builds are broken and produce corrupt ISO's.
+    cmake ../extract-xiso -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS=-m32
     ninja
 }
 
