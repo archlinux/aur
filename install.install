@@ -1,4 +1,0 @@
-post_remove(){
-echo -e "\e[1;31m ===> \e[0m Please remove the dir ~/.local/share/WindTerm."
-rm -rf ~/.local/share/WindTerm
-}
