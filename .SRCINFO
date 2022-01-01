@@ -1,7 +1,7 @@
 pkgbase = wl-mirror-git
 	pkgdesc = a simple Wayland output mirror client (git version)
-	pkgver = 0.5.0.r0.ge2fc209
-	pkgrel = 2
+	pkgver = 0.8.0.r2.g1b82934
+	pkgrel = 1
 	url = https://github.com/Ferdi265/wl-mirror
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wl-mirror-git
 	makedepends = cmake
 	depends = libglvnd
 	depends = wayland
-	provides = wl-mirror=0.5.0
+	provides = wl-mirror=0.8.0
 	conflicts = wl-mirror
 	source = git+https://github.com/Ferdi265/wl-mirror
 	source = git+https://gitlab.freedesktop.org/wayland/wayland-protocols
