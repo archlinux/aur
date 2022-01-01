@@ -1,11 +1,12 @@
 pkgbase = qmidiplayer
 	pkgdesc = A cross-platform midi file player based on libfluidsynth and Qt.
-	pkgver = 0.8.6
-	pkgrel = 1
+	pkgver = 0.8.7
+	pkgrel = 2
 	url = https://chrisoft.org/QMidiPlayer/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-quickcontrols
 	depends = rtmidi
@@ -16,11 +17,11 @@ pkgbase = qmidiplayer
 	depends = libpng
 	depends = glfw
 	depends = glew
-	provides = qmidiplayer
-	source = qmidiplayer-0.8.6-src.zip::https://github.com/chirs241097/QMidiPlayer/archive/master.zip
-	source = qmidiplayer-0.8.6-src_smelt.zip::https://github.com/BearKidsTeam/SMELT/archive/master.zip
+	depends = openal
+	depends = devil
+	source = qmidiplayer-0.8.7-2.tar.gz::https://github.com/chirs241097/QMidiPlayer/archive/0.8.7-2.tar.gz
+	source = smelt-gd572329.zip::https://github.com/BearKidsTeam/SMELT/archive/d57232938d0c538922154e9223bf994e78c6b069.zip
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = qmidiplayer
-
