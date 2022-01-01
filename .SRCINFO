@@ -1,0 +1,13 @@
+pkgbase = rustfilt
+	pkgdesc = Demangle Rust symbol names
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/luser/rustfilt
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	depends = gcc-libs
+	source = rustfilt-0.2.1.tar.gz::https://github.com/luser/rustfilt/archive/0.2.1.tar.gz
+	sha256sums = f09bb822c8b22c4c89bf63cc64f8f85a053e1850a70cad4b7308e00871527496
+
+pkgname = rustfilt
