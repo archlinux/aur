@@ -1,0 +1,2 @@
+SUBSYSTEMS=="input", ATTRS{name}=="Keychron K6", RUN+="/bin/sh -c 'echo 1 > /sys/module/hid_apple/parameters/fnmode'"
+SUBSYSTEMS=="input", ATTRS{name}=="Keychron K2", RUN+="/bin/sh -c 'echo 1 > /sys/module/hid_apple/parameters/fnmode'"

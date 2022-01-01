@@ -1,0 +1,11 @@
+pkgbase = keychron-udev
+	pkgdesc = udev rules for keychron keyboards
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kurgol/keychron
+	arch = any
+	license = ISC
+	source = 80-keychron.rules
+	sha256sums = 994fdeae38cbc30ca946dcb3ddb71ebfeb1f27c2238fd5165e9281d2704be429
+
+pkgname = keychron-udev
