@@ -3,13 +3,13 @@
 pkgbase=vibrant-git
 pkgname=(libvibrant-git vibrant-cli-git)
 pkgver=1.0.3.r18.g2100c09
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
-url="https://github.com/Vibrance-org/libvibrant"
+url="https://github.com/libvibrant/libvibrant"
 license=("GPL3" "custom:MIT")
 makedepends=("git" "cmake" "check" "libxrandr" "libxnvctrl")
-source=("${pkgbase}::git+https://github.com/Vibrance-org/libvibrant.git")
+source=("${pkgbase}::git+https://github.com/libvibrant/libvibrant.git")
 sha512sums=('SKIP')
 
 
