@@ -28,7 +28,7 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -d "$pkgdir/usr/lib/security" "$pkgdir/usr/share/doc/pam_sqlite"
-    install -t "$pkgdir/usr/share/doc/pam_sqlite" CHANGELOG CREDITS LICENSE NEWS README pam_sqlite3.conf.example
+    install -d "$pkgdir/usr/lib/security"
+    install -Dm644 -t "$pkgdir/usr/share/doc/pam_sqlite" CHANGELOG CREDITS LICENSE NEWS README pam_sqlite3.conf.example
     make ROOTDIR="$pkgdir/usr" install
 }
