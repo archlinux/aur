@@ -5,7 +5,7 @@ set -e
 FastGit="https://hub.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/latest/"
 GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
 JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/"
-CfCDN="https://cfgit.cern.ga/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
+GHProxy="https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
 
 download_files() {
   echo "Fetching geoip.dat"
@@ -20,8 +20,6 @@ download_files() {
 
   rm -v "geosite.dat.sha256sum" "geoip.dat.sha256sum"
   cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/xray/geoip.dat && cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/v2ray/geoip.dat && cp -f /var/lib/vxray-rules-dat/geosite.dat /usr/share/xray/geosite.dat && cp -f /var/lib/vxray-rules-dat/geosite.dat /usr/share/v2ray/geosite.dat
-  ##support for QV2Ray3.0
-  #cp -f /usr/bin/xray /usr/bin/v2ray
 }
 
 case "${1}" in
@@ -31,8 +29,8 @@ case "${1}" in
 "jsdelivr" | "js")
   download_files $JsDelivr
   ;;
-"cfcdn" | "cf")
-  download_files $CfCDN
+"ghproxy" | "gh")
+  download_files $GHProxy
   ;;
 *)
   download_files $GitHub
