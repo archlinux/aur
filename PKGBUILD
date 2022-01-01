@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57338.dcec5f49743
+pkgver=r57549.e27fbfb257f
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -69,6 +69,7 @@ _fstrcmp_version="0.7.D001"
 _flatbuffers_version="1.12.0"
 _libudfread_version="1.1.0"
 
+options=(!lto)
 source=(
   "git://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
@@ -163,6 +164,7 @@ build() {
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
     -DAPP_RENDER_SYSTEM=gl
+    -DCORE_PLATFORM_NAME="x11 wayland gbm"
   )
 
   echo "building kodi"
