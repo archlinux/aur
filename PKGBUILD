@@ -3,7 +3,7 @@
 
 pkgname=python38
 pkgver=3.8.12
-pkgrel=1
+pkgrel=2
 _pybasever=3.8
 _pymajver=3
 pkgdesc="Major release 3.8 of the Python high-level programming language"
@@ -22,7 +22,7 @@ sha256sums=('b1d3a76420375343b5e8a22fceb1ac65b77193e9ed27146524f0a9db058728ea'
             'SKIP'
             '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c')
 validpgpkeys=('E3FF2839C048B25C084DEBE9B26995E310250568')
-provides=('python')
+provides=("python=$pkgver")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"

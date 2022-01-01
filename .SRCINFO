@@ -1,7 +1,7 @@
 pkgbase = python38
 	pkgdesc = Major release 3.8 of the Python high-level programming language
 	pkgver = 3.8.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python38
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
-	provides = python
+	provides = python=3.8.12
 	source = https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tar.xz
 	source = https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tar.xz.asc
 	source = mpdecimal-2.5.1.patch
