@@ -17,6 +17,7 @@ pkgbase = gtkhash-nemo
 	depends = libb2
 	depends = nemo
 	depends = nettle
+	provides = gtkhash
 	provides = gtkhash-nemo
 	conflicts = gtkhash
 	conflicts = gtkhash-caja
