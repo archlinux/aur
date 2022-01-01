@@ -1,6 +1,6 @@
 pkgbase = rpcs3
 	pkgdesc = Open-source Sony PlayStation 3 Emulator
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://rpcs3.net
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = rpcs3
 	depends = zlib
 	depends = curl
 	options = !emptydirs
-	source = git+https://github.com/RPCS3/rpcs3.git#tag=v0.0.19
+	source = git+https://github.com/RPCS3/rpcs3.git#tag=v0.0.20
 	source = rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
 	source = rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
 	source = rpcs3-yaml-cpp::git+https://github.com/RPCS3/yaml-cpp.git
@@ -49,6 +49,8 @@ pkgbase = rpcs3
 	source = git+https://github.com/libusb/libusb.git
 	source = git+https://github.com/wolfSSL/wolfssl.git
 	source = git+https://github.com/zeux/pugixml.git
+	source = git+https://github.com/mozilla/cubeb.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

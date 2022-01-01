@@ -2,7 +2,7 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.19
+pkgver=0.0.20
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
@@ -26,9 +26,11 @@ source=(
     git+https://github.com/libusb/libusb.git
     git+https://github.com/wolfSSL/wolfssl.git
     git+https://github.com/zeux/pugixml.git
+    git+https://github.com/mozilla/cubeb.git
 )
 
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -45,7 +47,7 @@ md5sums=('SKIP'
 
 prepare() {
     cd "$pkgname"
-    git submodule init llvm 3rdparty/{asmjit/asmjit,hidapi/hidapi,yaml-cpp/yaml-cpp,xxHash,FAudio,flatbuffers,glslang/glslang,SPIRV/SPIRV-{Headers,Tools},libusb/libusb,wolfssl,pugixml}
+    git submodule init llvm 3rdparty/{asmjit/asmjit,hidapi/hidapi,yaml-cpp/yaml-cpp,xxHash,FAudio,flatbuffers,glslang/glslang,SPIRV/SPIRV-{Headers,Tools},libusb/libusb,wolfssl,pugixml,cubeb/cubeb}
     echo $_args | xargs -n 1 -- git submodule init
     git config submodule."3rdparty/hidapi".url "$srcdir"/rpcs3-hidapi
     git config submodule."llvm".url "$srcdir"/rpcs3-llvm
@@ -60,7 +62,8 @@ prepare() {
     git config submodule."3rdparty/libusb".url "$srcdir"/libusb
     git config submodule."3rdparty/wolfssl".url "$srcdir"/wolfssl
     git config submodule."3rdparty/pugixml".url "$srcdir"/pugixml
-    git submodule update llvm 3rdparty/{asmjit/asmjit,hidapi/hidapi,yaml-cpp/yaml-cpp,xxHash,FAudio,flatbuffers,glslang/glslang,SPIRV/SPIRV-{Headers,Tools},libusb/libusb,wolfssl,pugixml}
+    git config submodule."3rdparty/cubeb/cubeb".url "$srcdir"/cubeb
+    git submodule update llvm 3rdparty/{asmjit/asmjit,hidapi/hidapi,yaml-cpp/yaml-cpp,xxHash,FAudio,flatbuffers,glslang/glslang,SPIRV/SPIRV-{Headers,Tools},libusb/libusb,wolfssl,pugixml,cubeb/cubeb}
 }
 
 build() {
