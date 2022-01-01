@@ -14,7 +14,7 @@ pkgbase = lsi-msm
 	source = ld.so.lsi-msm.conf
 	source = ld.so.lsi-msm-snmp.conf
 	source = https://docs.broadcom.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf
-	source = MegaRAID_SAS_Software_User_Guide-rev2.8.pdf::https://docs.broadcom.com/docs/pub-005110
+	source = MegaRAID_SAS_Software_User_Guide-rev2.8.pdf::https://docs.broadcom.com/wcs-public/user-guide/products/design--reference-guides/user-guide/574/208/pub-005110_db15-001199-08_2017-06-09_mr-6.14-sw-ug.pdf
 	source = 17.05.02.01_Linux-x64_MSM.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/17.05.02.01_MSM_Linux-x64.zip
 	sha256sums = aff9c7ed8e55eb3441911183db1b0912cf74f24ce3027b3aebe3560db69d3a1d
 	sha256sums = 605adcb662fb457609e81fb8916da7e88541e81dd0c112a8bb569d84df189bff
@@ -23,7 +23,7 @@ pkgbase = lsi-msm
 	sha256sums = 9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95
 	sha256sums = 9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95
 	sha256sums = 9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3
-	sha256sums = 43295d6aacfbaed1b5c1bfa177f1909faa24425eac1dd25c56941c14f5cd0ab2
+	sha256sums = 5e56870338353877803225250607539d07da32c0b455461cfb9fbddc66e93519
 	sha256sums = 8f9e7c1a9468cfb95159e27d4df0978faf7e0e1303bf0ae6999a897d33a21414
 
 pkgname = lsi-msm
