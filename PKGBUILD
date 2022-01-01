@@ -2,10 +2,10 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-bar')
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3-based button bar for sway and other wlroots-based compositors"
 arch=('x86_64')
-url="https://github.com/nwg-piotr/nwg-dock"
+url="https://github.com/nwg-piotr/nwg-bar"
 license=('MIT')
 provides=('nwg-bar')
 conflicts=('nwg-bar-git' 'nwg-bar-bin')
