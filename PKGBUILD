@@ -1,11 +1,11 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r1011.7b9c6c5
+pkgver=r1069.9d7baa1
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
-license=('GPLv3')
+license=('GPL3')
 depends=(klipper
          python-tornado
          python-pillow
@@ -19,6 +19,7 @@ depends=(klipper
          python-pycurl
          python-zeroconf
          libgpiod)
+makedepends=(git)
 optdepends=("python-preprocess-cancellation: enables exclude object processing")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
