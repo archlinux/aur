@@ -3,14 +3,14 @@
 
 pkgname=vibrantlinux
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automate managing your screen's saturation depending on what programs are running"
 arch=(x86_64)
-url="https://github.com/zee-mzha/vibrantLinux"
+url="https://github.com/libvibrant/vibrantLinux"
 license=('MIT')
 depends=("qt5-base" "libvibrant")
 makedepends=("git")
-source=("${pkgname}::git+https://github.com/zee-mzha/vibrantLinux.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://github.com/libvibrant/vibrantLinux.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 
