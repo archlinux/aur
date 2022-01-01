@@ -1,4 +1,5 @@
 # Maintainer: Nomz <nomzisnice@yahoo.com>
+# Contributor: Twann <twann@ctemplar.com>
 
 pkgname=tlauncher-bin
 pkgver=2.839
