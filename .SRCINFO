@@ -1,0 +1,16 @@
+pkgbase = protodata-git
+	pkgdesc = Protodata is a language for describing binary data, originally written for prototyping and reverse engineering binary file formats.
+	pkgver = r125.51de27b
+	pkgrel = 1
+	url = https://github.com/evincarofautumn/protodata
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	provides = protodata
+	conflicts = protodata
+	source = protodata::git+https://github.com/evincarofautumn/protodata.git
+	source = nested_exception.h.patch
+	sha256sums = SKIP
+	sha256sums = 96cffa0a1da8f5a1a0942e52fda7526b6b2c1dc142fd164460b6671323fbb16b
+
+pkgname = protodata-git

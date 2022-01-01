@@ -1,0 +1,13 @@
+*** protodata/nested_exception.h	2022-01-01 20:32:02.599943765 +0000
+--- nested_exception.h	2022-01-01 20:36:10.573871803 +0000
+***************
+*** 1,6 ****
+--- 1,8 ----
+  #ifndef PROTODATA_NESTED_EXCEPTION_H
+  #define PROTODATA_NESTED_EXCEPTION_H
+  
++ #include <exception>
++ 
+  // Partial implementation of 'std::nested_exception' because
+  // the version shipped with G++ 4.6 was missing a 'throw()'.
+  // In C++ we're in the habit of reinventing wheels.
