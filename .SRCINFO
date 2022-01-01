@@ -1,10 +1,11 @@
 pkgbase = cinelerra-gg
 	pkgdesc = Professional video editing and compositing environment
-	pkgver = 5.1.20201031
+	pkgver = 2021.12
 	pkgrel = 1
 	url = https://www.cinelerra-gg.org
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = cmake
 	makedepends = ctags
 	makedepends = libxml2
@@ -37,8 +38,7 @@ pkgbase = cinelerra-gg
 	depends = openexr
 	depends = opus
 	conflicts = cin
-	source = https://www.cinelerra-gg.org/download/pkgs/src/cin_5.1.20201031-src.tgz
-	sha256sums = b60daa268899961a0084659c1f7dfdff01d9184fea79ed26ac9f7cee1afb92f7
+	source = cinelerra-gg::git://git.cinelerra-gg.org/goodguy/cinelerra.git#tag=2021-12
+	sha256sums = SKIP
 
 pkgname = cinelerra-gg
-
