@@ -1,6 +1,6 @@
 # Maintainer: Jon Ribeiro <contact@jonathas.com>
 pkgname=x11-keyboard-flags
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="X11 Keyboard layout indicator as country flags"
@@ -11,7 +11,7 @@ groups=()
 depends=('python' 'xkeyboard-config')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/jonathas/x11-keyboard-flags/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('5054e4e22f6af4e46a41376960f4caee69d4f3627e47dff088699f710c296ebaf7013ca15b514677f9bcf463927c25aae0528e6fbe4d1854d33023478adc1ade')
+sha512sums=('7b00feabb3009a27c48d52b350502eb6ce6944c54a76f2fdb31b8c7f8b7ad3e9cd15203050e77802bf7f870316669099a427c3ca84fc4a48c9e6bd98837b0432')
 
 package() {
     cd $srcdir/$pkgname-$pkgver
