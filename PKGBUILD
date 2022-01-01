@@ -8,19 +8,24 @@
 _base=requests-cache
 pkgname=python-${_base}
 pkgdesc="Transparent persistent cache for http://python-requests.org library"
-pkgver=0.8.1
-pkgrel=4
+pkgver=0.9.0
+pkgrel=1
 arch=('any')
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
-depends=(python-requests python-url-normalize python-cattrs python-appdirs)
+depends=(python-requests python-appdirs python-cattrs python-url-normalize)
 makedepends=(python-build python-install python-poetry)
 optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
+  'python-botocore: Interface for Amazon Web Services'
+  'python-pymongo: Cache backend for MongoDB database'
   'python-redis: Cache backend for Redis cache'
-  'python-pymongo: Cache backend for MongoDB database')
+  'python-bson: for BSON codec'
+  'python-itsdangerous: for pass trusted data to untrusted environments'
+  'python-yaml: for bindings yaml support'
+  'python-ujson: for JSON serializer for improved performance')
 checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('245ee7059afab50f32af9c8831fe11c14d5bd53fe6bbf02e5844974e0e5ea6c33e005f234485f245ee418ae03277c6e2cc41046a385ff138e58785cf37b119ea')
+sha512sums=('1f4879ddae34a10f014deb31c62fbe18c3d6a30ea10823d122aec4920ea4024eaf86c0b1a6f369b71f827ee87f049a5c2dad9fabe61aa6a5a62093fb08fa4a7c')
 
 build() {
   cd "${_base}-${pkgver}"
