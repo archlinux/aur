@@ -1,24 +1,28 @@
-# Maintainer: Laramy Black <laramy2020@gmail.com>
+# Maintainer:
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Laramy Black <laramy2020@gmail.com>
 
-pkgname=nuvola-app-bbc-iplayer
-pkgver=1.5
+_nuvola=bbc-iplayer
+pkgname=nuvola-app-${_nuvola}
+pkgver=1.7
 pkgrel=1
-pkgdesc="bbc iplayer integration for Nuvola Player."
-arch=("any")
-url="https://github.com/tiliado/nuvola-app-bbc-iplayer"
-license=('custom:BSD')
-depends=('nuvolaruntime' 'imagemagick')
-makedepends=('nuvolasdk' 'scour')
-source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('07758fa010ab6c3bc6ecb87bbe04e04e8f9edeba604fc52fc4d9f73a1e4d0d14')
+pkgdesc="BBC iPlayer integration for Nuvola Player"
+arch=(any)
+url="https://github.com/tiliado/nuvola-app-${_nuvola}"
+license=(BSD)
+depends=(nuvolaruntime)
+makedepends=(python-nuvolasdk scour)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiliado/nuvola-app-${_nuvola}/archive/${pkgver}.tar.gz")
+sha256sums=('fb32275b51bb394eed2f18f95d7e02d4e03a945bfba52039fb8fdd41d9682183')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    ./configure --prefix=/usr 
-    make all
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make all
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
