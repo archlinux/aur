@@ -7,6 +7,6 @@ pkgbase = jrobo
 	license = GPL3
 	depends = java-runtime>=16
 	source = https://github.com/BullShark/JRobo/releases/download/2022.01.01-1/JRobo.tbz
-	sha256sums = ('b9b4d81422be5bd76286689005719b97824413351dff06a6f54ea7af7d5dc4fd')
+	sha256sums = ('SKIP')
 
 pkgname = jrobo

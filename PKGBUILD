@@ -11,7 +11,7 @@ depends=('java-runtime>=16')
 optdepends=()
 validpgpkeys=('031F7104E932F7BD7416E7F6D2845E1305D6E801')
 source=("https://github.com/BullShark/$_pkgname/releases/download/$pkgver-$pkgrel/$_pkgname.tbz")
-sha256sums=('65B8A639EF71CB8266213DF6A61C5FC2503AC12E')
+sha256sums=('SKIP')
 
 package() {
   mkdir -p $pkgdir/usr/lib
