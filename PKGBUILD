@@ -2,7 +2,7 @@
 
 _pkgname=winestreamproxy
 pkgname=winestreamproxy-git
-pkgver=2.0.1.r0.gd0a8fa3
+pkgver=2.0.1.r8.g0482365
 pkgrel=1
 pkgdesc="Forwards data between a Wine named pipe and a Unix domain socket (Git version)."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-gcc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=('etc/xdg/winestreamproxy/settings.conf')
-source=("git+https://github.com/openglfreak/winestreamproxy.git")
+source=("git+https://github.com/openglfreak/winestreamproxy.git#branch=next")
 sha256sums=('SKIP')
 
 pkgver() {
