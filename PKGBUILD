@@ -2,14 +2,14 @@
 
 pkgname="kubectl-df-pv"
 _pkgname="df-pv"
-pkgver="0.2.7"
+pkgver="0.3.0"
 pkgrel=1
 pkgdesc="kubectl plugin - giving admins df (disk free) like utility for persistent volumes"
 arch=('x86_64')
 url="https://github.com/yashbhutwala/kubectl-df-pv"
 license=('Apache-2.0')
 source=("https://github.com/yashbhutwala/${pkgname}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_amd64.tar.gz")
-sha256sums=('40388f2d0f8fad43ca2028f677400c71abc6dcb27a8bbc055d8a26461364285b')
+sha256sums=('afc9890e169caa97597a028ee87be9e8fe9a9b7db58912e23253faf383ef8e5d')
 
 package() {
   mkdir -p "${pkgdir}/usr/local/bin"
