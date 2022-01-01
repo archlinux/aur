@@ -2,7 +2,7 @@
 
 pkgname=monique-monosynth-git
 _pkgname=monique-monosynth
-pkgver=1
+pkgver=Nightly.r25.g53ebe655
 pkgrel=1
 pkgdesc="Monique is a monophonic synth from Thomas Arndt"
 arch=('x86_64')
@@ -11,6 +11,11 @@ license=('GPLv3 or MIT')
 makedepends=('git' 'cmake')
 source=("git+$url")
 md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "$srcdir/$_pkgname"
