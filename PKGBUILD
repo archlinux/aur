@@ -38,7 +38,7 @@ prepare() {
 }
 
 build() {
-    cmake -B build -S "$srcdir/wl-mirror" -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -S "$srcdir/wl-mirror" -DINSTALL_EXAMPLE_SCRIPTS=ON -DCMAKE_INSTALL_PREFIX=/usr
     make -C build
 }
 
