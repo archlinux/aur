@@ -1,0 +1,12 @@
+pkgbase = r-asioheaders
+	pkgdesc = 'Asio' C++ Header Files
+	pkgver = 1.16.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=AsioHeaders
+	arch = any
+	license = Boost
+	depends = r
+	source = https://cran.r-project.org/src/contrib/AsioHeaders_1.16.1-1.tar.gz
+	sha256sums = 9862ec4849ddb326d346d73247125371c670b5986956b10b39e61017cd46e042
+
+pkgname = r-asioheaders
