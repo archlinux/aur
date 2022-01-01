@@ -3,7 +3,7 @@
 _pyname=ovs-wrapper
 pkgname=python-$_pyname
 pkgver=2.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Open vSwitch library wrapper"
 arch=(any)
 url="http://www.openvswitch.org/"
@@ -14,7 +14,7 @@ options=(!emptydirs)
 source=()
 
 package(){
-	local _pydir="$pkgdir/usr/lib/python3.9/site-packages"
+	local _pydir="$pkgdir/usr/lib/python3.10/site-packages"
 	local _ovsdir="/usr/share/openvswitch/python"
 	mkdir -p "${_pydir}"
 	cd "${_pydir}"
