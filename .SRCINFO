@@ -1,8 +1,8 @@
 pkgbase = linux-x32
 	pkgdesc = Linux with x32 ABI
-	pkgver = 5.15.10.arch1
+	pkgver = 5.15.12.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.15.10-arch1
+	url = https://github.com/archlinux/linux/commits/v5.15.12-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-x32
 	makedepends = xz
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.10-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.12-arch1
 	source = config
 	source = x32.config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -23,7 +23,7 @@ pkgbase = linux-x32
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63
+	sha256sums = 6ab7a66895804f832f1b9594b682be0e2e6982455a8fc3f7e87111e1c7dff866
 	sha256sums = ef2be62540e48cc1d2343c619b9c8b7791db5e2f966e1a0bb8c86f5c7de74562
 
 pkgname = linux-x32
