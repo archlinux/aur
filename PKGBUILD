@@ -3,7 +3,7 @@
 _pkgname=fractal
 pkgname=fractal-next
 pkgver=r370.fbc867e0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4 client for Matrix written in Rust (fractal-next branch)"
 arch=(x86_64)
 url="https://wiki.gnome.org/Apps/Fractal"
@@ -24,8 +24,14 @@ pkgver() {
   )
 }
 
+prepare() {
+    cd "$srcdir/fractal"
+# Let's fix this while we wait upstream to fix it
+    sed -i "s/'libadwaita-1', version: '>= 1.0.0-alpha.1'/'libadwaita-1', version: '>= 1.0.0'/g" meson.build
+}
+
 build() {
-    cd ${_pkgname}
+    cd "${_pkgname}"
     arch-meson . _build
     meson compile -C _build
 }
