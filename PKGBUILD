@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=wasm-pack
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Your favorite rust -> wasm workflow tool!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo')
 options=()
 source=("https://github.com/rustwasm/wasm-pack/archive/v${pkgver}.tar.gz")
-sha384sums=('1d76ad08a53a2e691fd503012c1f829442c3cffaf03c76f286b7ce4dff0d7d5431905ca05474386e14ed21d6be2e3a7e')
+sha384sums=('61886496539a75489bad879980d9e129bf04843bdca6c1368861048a740815526300c2daae0d5f6b4a44cce02ca9f21a')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
