@@ -1,14 +1,14 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=fluidd-git
 _pkgname="${pkgname%-git}"
-pkgver=r1022.a5c5ba1
+pkgver=r1026.ec6ab04
 pkgrel=1
 pkgdesc="Klipper web frontend"
 arch=(any)
 url="https://docs.fluidd.xyz/"
-license=('GPLv3')
+license=('GPL3')
 depends=()
-makedepends=('npm' 'nodejs-lts-fermium')
+makedepends=('git' 'npm' 'nodejs-lts-fermium')
 optdepends=('nginx: serve via HTTP'
             'ustreamer: webcam streaming support')
 provides=("$_pkgname")

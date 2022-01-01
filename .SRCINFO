@@ -1,10 +1,11 @@
 pkgbase = fluidd-git
 	pkgdesc = Klipper web frontend
-	pkgver = r1022.a5c5ba1
+	pkgver = r1026.ec6ab04
 	pkgrel = 1
 	url = https://docs.fluidd.xyz/
 	arch = any
-	license = GPLv3
+	license = GPL3
+	makedepends = git
 	makedepends = npm
 	makedepends = nodejs-lts-fermium
 	optdepends = nginx: serve via HTTP
