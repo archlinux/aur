@@ -1,6 +1,6 @@
 pkgbase = cbqn-git
 	pkgdesc = A BQN implementation in C.
-	pkgver = r765.ff4573f
+	pkgver = r767.79d5731
 	pkgrel = 1
 	url = https://github.com/dzaima/CBQN
 	arch = x86_64
@@ -18,11 +18,9 @@ pkgbase = cbqn-git
 	conflicts = cbqn
 	source = cbqn::git+https://github.com/dzaima/CBQN.git
 	source = BQN-ref::git+https://github.com/mlochbaum/BQN.git
-	source = makefile.patch
 	source = rlwrap-shim
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 4fd2c4b8b11b0f234482d3fa8056c039
 	md5sums = 7f5146ad32f69dc96844ee495e4f6e83
 
 pkgname = cbqn-git
