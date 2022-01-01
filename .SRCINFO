@@ -1,12 +1,12 @@
 pkgbase = garbage
 	pkgdesc = Command-line interface to the FreeDesktop Trash can
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://sr.ht/~iptq/garbage
 	arch = any
 	license = GPL3
 	depends = cargo
-	source = https://git.sr.ht/~iptq/garbage/archive/v0.3.2.tar.gz
-	sha256sums = 54ccd01f9692e31295d6e123a0a885182b845d487d95ed69a5a79ff0eb14f39d
+	source = https://git.sr.ht/~iptq/garbage/archive/v0.3.3.tar.gz
+	sha256sums = 98edb72373f7835f07c2026ee76b37f8d2503cc0566c3dfe713c65a3abc0e3d6
 
 pkgname = garbage
