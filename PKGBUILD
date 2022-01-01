@@ -10,14 +10,14 @@
 
 pkgname=python37
 pkgver=3.7.12
-pkgrel=4
+pkgrel=5
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
 arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
-provides=("python")
+provides=("python=$pkgver")
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl' 'libxcrypt')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('sqlite'

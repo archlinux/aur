@@ -1,7 +1,7 @@
 pkgbase = python37
 	pkgdesc = Major release 3.7 of the Python high-level programming language
 	pkgver = 3.7.12
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -21,7 +21,7 @@ pkgbase = python37
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	provides = python
+	provides = python=3.7.12
 	source = https://www.python.org/ftp/python/3.7.12/Python-3.7.12.tar.xz
 	source = https://www.python.org/ftp/python/3.7.12/Python-3.7.12.tar.xz.asc
 	source = dont-make-libpython-readonly.patch
