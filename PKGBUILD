@@ -2,7 +2,7 @@
 
 pkgname=pero-editor
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple text-editor written in rust"
 url=https://pero-editor.perosar.tech
 license=("MIT")
