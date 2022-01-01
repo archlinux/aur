@@ -1,6 +1,6 @@
 pkgbase = endlessh-git
 	pkgdesc = A tarpit to lock up SSH clients
-	pkgver = r97.4cb4fc6
+	pkgver = r100.dfe44eb
 	pkgrel = 1
 	url = https://github.com/skeeto/endlessh
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = endlessh-git
 	sha256sums = 9aa763197e6920fb04f084407c267863b9da2827d785015f65c876c2315f783d
 
 pkgname = endlessh-git
-
