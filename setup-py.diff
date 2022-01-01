@@ -1,13 +1,12 @@
 diff --git a/setup.py b/setup.py
-index e171310..ed56487 100644
+index 96c2ec4..4da0879 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -47,7 +47,7 @@ setup(
+@@ -47,7 +47,6 @@ setup(
      packages=find_packages(include=["metno_locationforecast", "metno_locationforecast.*"]),
      package_data={"metno_locationforecast": ["py.typed"]},
      python_requires=">=3.6",
--    install_requires=["requests~=2.20.0"],
-+    install_requires=["requests"],
+-    install_requires=["requests>=2.20.0"],
      extras_require={
          "dev": [
              "black==19.10b0",
