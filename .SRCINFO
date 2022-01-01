@@ -1,6 +1,6 @@
 pkgbase = sane-scan-pdf-git
 	pkgdesc = Sane scanning bash script with OCR and deskew support.
-	pkgver = 20211022
+	pkgver = 1.2.r29.g5bb8cd9
 	pkgrel = 1
 	url = https://github.com/rocketraman/sane-scan-pdf
 	arch = any

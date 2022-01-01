@@ -1,6 +1,6 @@
 # Maintainer: Philipp Kühn <p dot kuehn at posteo dot de>
 pkgname=sane-scan-pdf-git
-pkgver=20211022
+pkgver=1.2.r29.g5bb8cd9
 pkgrel=1
 pkgdesc="Sane scanning bash script with OCR and deskew support."
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/sane-scan-pdf-git"
-	git log -1 --format="%cd" --date=short | sed 's|-||g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
