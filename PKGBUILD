@@ -2,13 +2,13 @@
 
 pkgname="python-spectree"
 _pkgname="spectree"
-pkgver="0.6.7"
+pkgver="0.6.8"
 pkgrel=1
 pkgdesc="API spec validator and OpenAPI document generator for Python web frameworks."
 arch=("any")
 url="https://github.com/0b01001001/spectree"
 source=("https://github.com/0b01001001/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("c132543caf8a0e60637e22f2115e509f6f9fb90b1a2a554ca7087cf23632b998")
+sha256sums=("b1bb52a94bc0f75286af4f0948c18c4219dbef4ca537ef3bda0fc1bb269119a5")
 license=("Apache-2.0")
 depends=("python")
 makedepends=("python-setuptools")
