@@ -1,30 +1,36 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 _pkgname=inquirer
-pkgname="python-${_pkgname}"
-pkgver=2.8.0
+pkgname="python-$_pkgname"
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Collection of common interactive command line user interfaces, based on Inquirer.js"
 arch=('any')
-url="https://pypi.org/project/${_pkgname}"
+url="https://pypi.org/project/$_pkgname"
 license=('MIT')
 depends=('python' 'python-blessed' 'python-readchar' 'python-editor')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/magmax/python-inquirer/archive/${pkgver}.tar.gz")
-sha256sums=('11272d019970b054b09834d048792ce06ebff21d8a5b200d865d1e18bc8a88e7')
-b2sums=('c30276d37ba84e339bdce7d6316d3b08c528f68ce40bef9295c5bd8272b55487f75d2e0fc69a11c4a451aa1a9f6794445bcaf9da251912c3f136de8d0b1b90b1')
+makedepends=('python-setuptools' 'python-dephell')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/magmax/python-inquirer/archive/v$pkgver.tar.gz")
+sha256sums=('5daa3b37003677b826e29635a4b741324436a70772f503cbf9530e35f0be6c40')
+b2sums=('ee6531420b8d5bd6fed667cec440e1800f6d40d2fc458c4a2892006304af90c5834aa16a2b1975ebe9159ad7894003035e93c499a469e128acccefff22627d5e')
+
+prepare() {
+  cd "python-inquirer-$pkgver"
+
+  dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
-  cd "python-inquirer-${pkgver}"
+  cd "python-inquirer-$pkgver"
 
   python setup.py build
 }
 
 package() {
-  cd "python-inquirer-${pkgver}"
+  cd "python-inquirer-$pkgver"
 
-  python setup.py install --root="${pkgdir}" --optimize=1
-  rm -rf "${pkgdir}/usr/lib"/python*/"site-packages/tests"
+  python setup.py install --root="$pkgdir" --optimize=1
+  rm -rf "$pkgdir/usr/lib"/python*/"site-packages/tests"
 
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
