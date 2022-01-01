@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=wl-mirror-git
-pkgver=0.8.0.r2.g1b82934
+pkgver=0.8.1.r0.gfe4bc8f
 pkgrel=1
 pkgdesc="a simple Wayland output mirror client (git version)"
 url="https://github.com/Ferdi265/wl-mirror"
@@ -11,6 +11,12 @@ provides=("wl-mirror=${pkgver%%.r*}")
 conflicts=('wl-mirror')
 depends=('libglvnd' 'wayland')
 makedepends=('git' 'cmake')
+optdepends=(
+    'pipectl: named pipe manager, for wl-present script'
+    'slurp: selecting regions and outputs, for wl-present script'
+    'rofi: interactively selecting options, for wl-present script'
+    'dmenu: interactively selecting options, alternative, for wl-present script'
+)
 source=(
     "git+https://github.com/Ferdi265/wl-mirror"
     "git+https://gitlab.freedesktop.org/wayland/wayland-protocols"
