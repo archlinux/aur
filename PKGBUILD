@@ -1,9 +1,9 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 # Maintainer: Yichao Zhou <broken.zhou@gmail.com>
 pkgname=texlive-upstream
-pkgver=1
+pkgver=2
 pkgrel=1
-pkgdesc="If you install TeXLive by hand, this package provides fake distribution packages and replaces some AUR conflicts."
+pkgdesc="If you install TeXLive by hand, this package REPLACES the distro packages and replaces some AUR conflicts."
 url="http://www.tug.org/texlive/"
 arch=('any')
 license=('GPL')

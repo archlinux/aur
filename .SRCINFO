@@ -1,6 +1,6 @@
 pkgbase = texlive-upstream
-	pkgdesc = If you install TeXLive by hand, this package provides fake distribution packages and replaces some AUR conflicts.
-	pkgver = 1
+	pkgdesc = If you install TeXLive by hand, this package REPLACES the distro packages and replaces some AUR conflicts.
+	pkgver = 2
 	pkgrel = 1
 	url = http://www.tug.org/texlive/
 	arch = any
@@ -76,4 +76,3 @@ pkgbase = texlive-upstream
 	replaces = texlive-langkorean
 
 pkgname = texlive-upstream
-
