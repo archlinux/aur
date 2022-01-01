@@ -3,7 +3,7 @@
 
 pkgname=python311
 pkgver=3.11.0a3
-pkgrel=1
+pkgrel=2
 _pyver=3.11.0
 _pybasever=3.11
 _pymajver=3
@@ -20,7 +20,7 @@ validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
 )
-provides=('python')
+provides=("python=$_pyver")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
