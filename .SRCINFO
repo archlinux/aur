@@ -1,14 +1,13 @@
 pkgbase = rbmenu-bin
 	pkgdesc = Rust Bookmark (d)Menu ; Pre compiled binary
-	pkgver = 0.4.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/DevHyperCoder/rbmenu
 	arch = x86_64
 	license = GPL
 	provides = rbmenu-bin
 	conflicts = rbmenu-bin
-	source = https://github.com/DevHyperCoder/rbmenu/releases/download/v0.4.0/rbmenu-0.4.0.zip
+	source = https://github.com/DevHyperCoder/rbmenu/releases/download/v0.6.1/rbmenu-0.6.1.zip
 	md5sums = SKIP
 
 pkgname = rbmenu-bin
-

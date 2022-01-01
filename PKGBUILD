@@ -2,8 +2,8 @@
 
 _pkgname=rbmenu
 pkgname=$_pkgname-bin
-pkgver=0.4.0
-pkgrel=1
+pkgver=0.6.1
+pkgrel=2
 pkgdesc="Rust Bookmark (d)Menu ; Pre compiled binary"
 arch=('x86_64')
 url="https://github.com/DevHyperCoder/rbmenu"
