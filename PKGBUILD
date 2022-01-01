@@ -77,7 +77,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.15.10
+pkgver=5.15.12
 pkgrel=1
 _major=5.15
 arch=(x86_64)
@@ -110,7 +110,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,s
         "0008-bbr2.patch::${_patches_url}/bbr2-patches/0001-bbr2-${_major}-introduce-BBRv2.patch"
         "0009-lru.patch::${_patches_url}/lru-patches-pf-v4/0001-lru-patches.patch"
         "0010-block.patch::${_patches_url}/block-patches-v2/0001-block-patches.patch"
-        "0011-btrfs.patch::${_patches_url}/btrfs-patches-v5/0001-btrfs-patches.patch"
+        "0011-btrfs.patch::${_patches_url}/btrfs-patches-v10/0001-btrfs-patches.patch"
 )
 
 validpgpkeys=(
@@ -118,9 +118,9 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 
-b2sums=('a21e5a965c0a4fe2e014961a6cc8f4c621fd9313a4b170f97fd3f77ae2494e721bf579e68d5836c167ed9fb6674784b20722501f6adc44d634073e74a82da765'
+b2sums=('6e201ffe5832a998b9bc8f63e9fcbf7f0384d4e4abb1a68c2299b8362b51ddcfbc35639bfc836a84202bec3705f5bca1616396c16daa05d778659d286f63b6a8'
         'SKIP'
-        '8f59eadada7e05d9d5c4ec84d02d82e08ebae8abd4ed2e772cbd6a7363964549b78ebf2682d507d573974095d15ea911f1498b070d8567db4decf5669fa2fe38'
+        'f28074511e1a26285298b713e51eed529d25defbc65e056bbb775d86d43a88936bd89c5656c6851f6de70b72fec066f330e657d4df73d385327c4df0a997a0a0'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
         'cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e'
         '4e8607f63c08ccb80e27de7af7eda49fb74212f2900d62d0b1dc67100c720ed6f4bd5423d71198a790e92bdc49998d78dd8bbb1cf25f449ada38c00ae1318467'
@@ -133,7 +133,7 @@ b2sums=('a21e5a965c0a4fe2e014961a6cc8f4c621fd9313a4b170f97fd3f77ae2494e721bf579e
         'e83b6ae58a6906f97e1ada7369b6dad8ccfb0264537b128e6815d2f47493b20b682c6852621fba75f5a23e92d7c0590bffb7dd7f0960bd33b23434477dde7079'
         'd2faeab363dd0f3f6d778d3967c3aef77a900247fd9e2ca7bbb94953c79cc8e37bf0dbc4c9d060dadcdaf6883b61f14439ecf63c97b50a1b762eb77b8b61b1a7'
         'defd550aa7b67834fdf2fce402e3ce260bdaa8a2778d31d6c9d2674e43d0ee5fc609df156752fb7482c7453d34725e6edca9764a183f5011a198f8dc10fc6459'
-        '038c7dcacb9758290bcdf143259e9a319ec2583d0f2d075f672400552a52f9e6d7ae6b76bc361fd52cc7bcfd3f5558c9a3d6604521e4827d64c21719975deb92')
+        'dcdd7573488185dc5e516f128e606efe407ccb7026d92bb56998c79a8cd276f79abc2bca1f403fc173a10a13766c079ea63623768f1e7603110ca9751ee9ab70')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
