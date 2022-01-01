@@ -1,0 +1,8 @@
+post_install() {
+	echo '######## WARNING ########'
+	echo
+	echo 'THIS PACKAGE DOES NOT WORK WITH PYTHON 3.10 YET.'
+	echo 'PROCEED AT YOUR OWN RISK.'
+	echo
+	echo '#########################'
+}

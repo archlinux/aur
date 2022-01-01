@@ -1,0 +1,130 @@
+CHANGES
+-------
+
+0.9.0 (2020-01-25)
+^^^^^^^^^^^^^^^^^^
+
+* Support Python 3.7 and 3.8
+
+0.8.0 (2016-12-07)
+^^^^^^^^^^^^^^^^^^
+
+* Respect `events_backlog` parameter in zmq stream creation #86
+
+0.7.1 (2015-09-20)
+^^^^^^^^^^^^^^^^^^
+
+* Fix monitoring events implementation
+
+* Make the library compatible with Python 3.5
+
+0.7.0 (2015-07-31)
+^^^^^^^^^^^^^^^^^^
+
+* Implement monitoring ZMQ events #50
+
+* Do deeper lookup for inhereted classes #54
+
+* Relax endpont check #56
+
+* Implement monitoring events for stream api #52
+
+0.6.1 (2015-05-19)
+^^^^^^^^^^^^^^^^^^
+
+* Dynamically get list of pyzmq socket types
+
+0.6.0 (2015-02-14)
+^^^^^^^^^^^^^^^^^^
+
+* Process asyncio specific exceptions as builtins.
+
+* Add repr(exception) to rpc server call logs if any
+
+* Add transport.get_write_buffer_limits() method
+
+* Add __repr__ to transport
+
+* Add zmq_type to tr.get_extra_info()
+
+* Add zmq streams
+
+0.5.2 (2014-10-09)
+^^^^^^^^^^^^^^^^^^
+
+* Poll events after sending zmq message for eventless transport
+
+0.5.1 (2014-09-27)
+^^^^^^^^^^^^^^^^^^
+
+* Fix loopless transport implementation.
+
+0.5.0 (2014-08-23)
+^^^^^^^^^^^^^^^^^^
+
+* Support zmq devices in aiozmq.rpc.serve_rpc()
+
+* Add loopless 0MQ transport
+
+0.4.1 (2014-07-03)
+^^^^^^^^^^^^^^^^^^
+
+* Add exclude_log_exceptions parameter to rpc servers.
+
+0.4.0 (2014-05-28)
+^^^^^^^^^^^^^^^^^^
+
+* Implement pause_reading/resume_reading methods in ZmqTransport.
+
+0.3.0 (2014-05-17)
+^^^^^^^^^^^^^^^^^^
+
+* Add limited support for Windows.
+
+* Fix unstable test execution, change ZmqEventLoop to use global
+  shared zmq.Context by default.
+
+* Process cancellation on rpc servers and clients.
+
+0.2.0 (2014-04-18)
+^^^^^^^^^^^^^^^^^^
+
+* msg in msg_received now is a list, not tuple
+
+* Allow to send empty msg by trsansport.write()
+
+* Add benchmarks
+
+* Derive ServiceClosedError from aiozmq.rpc.Error, not Exception
+
+* Implement logging from remote calls at server side (log_exceptions parameter).
+
+* Optimize byte counting in ZmqTransport.
+
+0.1.3 (2014-04-10)
+^^^^^^^^^^^^^^^^^^
+
+* Function default values are not passed to an annotaion.
+  Add check for libzmq version (should be >= 3.0)
+
+0.1.2 (2014-04-01)
+^^^^^^^^^^^^^^^^^^
+
+* Function default values are not passed to an annotaion.
+
+0.1.1 (2014-03-31)
+^^^^^^^^^^^^^^^^^^
+
+* Rename plural module names to single ones.
+
+0.1.0 (2014-03-30)
+^^^^^^^^^^^^^^^^^^
+
+* Implement ZmqEventLoop with *create_zmq_connection* method which operates
+  on zmq transport and protocol.
+
+* Implement ZmqEventLoopPolicy.
+
+* Introduce ZmqTransport and ZmqProtocol.
+
+* Implement zmq.rpc with RPC, PUSHPULL and PUBSUB protocols.
