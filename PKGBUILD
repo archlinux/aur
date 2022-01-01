@@ -1,4 +1,4 @@
-# Maintainer: lafruit <toxyxd@riseup.net>
+# Maintainer: lafruit <toxyxd@riseup.net> 
 # Contributor: Simon Hauser <Simon-Hauser@outlook.de>
 # Contributor: Rodrigo Gryzinski <rogryza@gmail.com>
 
