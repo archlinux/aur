@@ -2,7 +2,7 @@
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko
-pkgver=0.7.23c
+pkgver=0.7.24
 pkgrel=1
 pkgdesc="Free implementation of the card game Doppelkopf"
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=("https://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.src.zip"
         "https://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.Linux.zip"
         "freedoko-install-directories.patch")
 noextract=("FreeDoko_$pkgver.Linux.zip")
-sha512sums=('0aa25ed80e250ddd6269fe1d42a6f439eb3203430c56304ed5502159085e264b7f0fc1a374dbbbe67bcdc7af846fc4cdf94d337c94a8d68ea73f828b0c19eeea'
-            'c285b3e2e556b2434d5cf2daf9d277a51b07739221dcd23a34529fbe4856035a1ace9953d223884234c91531ef1877da8a8a8d942b8bf7fdcd031f7d7d7e4f46'
+sha512sums=('215323465e7944f63bfc70c522015a2f691fe65fb262f89cdbbca538426409bd341b9dbc8bb287aa0e2cc629b9f1c89bf78426990cf9fe55534964afa4254b1b'
+            '82d12391f045d8e6c59eaea2919ea4b4678686589a498fb43345d9d778c1d0200152ece2282ea3880078c84e902325bffbf8d90edcdf3f841bfde441d253a3e4'
             '602f53bfd4c4c49824400a36e4655dc6f6d5692b7277489f8e5f9f9d9d4d90eb086a4d142736e76edc2c8864430d8cbf5fa403bb25497b2c6a510a1979fe7650')
 
 prepare() {
