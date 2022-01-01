@@ -1,30 +1,31 @@
 pkgname=mold-git
-pkgver=r2562.6319135
+pkgver=v1.0.1_11_g4ccbd24c
 pkgrel=1
-pkgdesc="Fast linker"
+pkgdesc="A Modern Linker"
 arch=(x86_64)
 url="https://github.com/rui314/mold"
-license=("unknown")
-depends=(xxhash mimalloc gcc-libs openssl zlib)
-makedepends=(clang cmake git)
+license=("AGPL3")
+depends=("gcc-libs" "mimalloc" "openssl" "tbb" "zlib")
+makedepends=("clang" "xxhash")
 source=("mold::git+https://github.com/rui314/mold")
 sha256sums=("SKIP")
 reponame="mold"
+MKFLAGS=" PREFIX=/usr LTO=1 SYSTEM_MIMALLOC=1 SYSTEM_TBB=1 SYSTEM_XXHASH=1"
+
+prepare() {
+	cd "$reponame"
+	sed -i "s/libexec/lib/" Makefile
+}
 
 pkgver() {
-	cd $srcdir/$reponame
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$reponame"
+	git describe --long --tags | sed "s/-/_/g"
 }
 
 build() {
-	cd $reponame
-	make -C "${srcdir}/${reponame}" -j "$(nproc)" LTO=1 SYSTEM_MIMALLOC=1
+	make -C "${reponame}" PREFIX=/usr LTO=1 SYSTEM_MIMALLOC=1 SYSTEM_TBB=1 SYSTEM_XXHASH=1 -j `nproc`
 }
 
 package() {
-	cd $reponame
-	make -C "${srcdir}/${reponame}" LTO=1 SYSTEM_MIMALLOC=1 DESTDIR="${pkgdir}" install
-	ln -snf mold "${pkgdir}/usr/bin/ld.mold"
-	# Mold checks for the lib alongside itself, which is rather silly
-	cp "${pkgdir}/usr/lib/mold/mold-wrapper.so" "${pkgdir}/usr/bin"
+	make -C "${reponame}" PREFIX=/usr LTO=1 SYSTEM_MIMALLOC=1 SYSTEM_TBB=1 SYSTEM_XXHASH=1 DESTDIR="${pkgdir}" install
 }
