@@ -1,6 +1,6 @@
 pkgbase = qemu-guest-kernel
 	pkgdesc = Linux kernels for QEMU/KVM guests (direct kernel boot)
-	pkgver = 5.15.10
+	pkgver = 5.15.12
 	pkgrel = 1
 	url = https://github.com/guest-kernel/qemu
 	install = archpkg.install
@@ -19,7 +19,7 @@ pkgbase = qemu-guest-kernel
 	makedepends = lld
 	makedepends = llvm
 	options = !strip
-	source = stable-linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git?signed#tag=v5.15.10
+	source = stable-linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git?signed#tag=v5.15.12
 	source = filesystem.config
 	source = systemd.config
 	source = arch_x86.config
