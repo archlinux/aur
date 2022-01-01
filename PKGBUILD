@@ -7,8 +7,8 @@ arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~mil/mepo"
 license=('GPL3')
 depends=('dmenu' 'jq' 'xdotool' 'curl')
-makedepends=('zig>=0.8.1' 'sdl2' 'sdl2_image' 'sdl2_ttf')
-checkdepends=('zig>=0.8.1')
+makedepends=('zig=0.8.1' 'sdl2' 'sdl2_image' 'sdl2_ttf')
+checkdepends=('zig=0.8.1')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('23e052b00e106598a80c357f6e565da8d8ad334efeda3873b27f86f6aa87c8979f17f3f800424fd6eabd533d6cf99b2047dcd07dd6046a004554fa287c8c0394')
