@@ -4,7 +4,7 @@ _gecko_id='{2d0ade95-bf3c-4868-b877-71ccd038e11b}'
 _plugin_name='hohser'
 pkgname="firefox-extension-${_plugin_name}"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Highlight or hide search engine results'
 arch=('any')
 url='https://github.com/pistom/hohser'
@@ -24,7 +24,14 @@ sha512sums=(
 
 build() {
   cd "${srcdir}/${_plugin_name}-v.${pkgver}"
-  yarn install --non-interactive
+  # Compatibility with nodejs 17
+  yarn upgrade \
+    css-loader@^6.5.1 \
+    node-sass@^7.0.1 \
+    postcss@^8.4.5 \
+    sass-loader@^12.4.0
+
+  yarn install
   yarn build
 }
 

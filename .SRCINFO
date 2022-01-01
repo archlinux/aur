@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-hohser
 	pkgdesc = Highlight or hide search engine results
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pistom/hohser
 	arch = any
 	groups = firefox-addons
