@@ -1,8 +1,8 @@
 pkgbase = i3a
 	pkgdesc = a set of scripts used for automation of i3 and sway window manager layouts
 	pkgver = 2.0.1
-	pkgrel = 2
-	url = https://goral.net.pl/post/i3a/
+	pkgrel = 3
+	url = https://pypi.org/project/i3a
 	arch = any
 	groups = i3
 	license = GPL

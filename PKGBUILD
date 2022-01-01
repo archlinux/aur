@@ -1,10 +1,10 @@
 # Maintainer: Thiago Perrotta <tbperrotta@gmail.com>
 pkgname=i3a
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a set of scripts used for automation of i3 and sway window manager layouts"
 arch=('any')
-url="https://goral.net.pl/post/i3a/"
+url="https://pypi.org/project/i3a"
 license=('GPL')
 groups=('i3')
 depends=('python-i3ipc')
