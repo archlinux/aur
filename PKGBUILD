@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=sticky
-pkgver=1.5
+pkgver=1.8
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gtk3' 'gspell' 'python-gobject' 'python-xapp' 'xapp')
 provides=("sticky")
 conflicts=("sticky-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6db1e86fe47ed39145b55fba5f9b78514e0069775108e1bffcce7d60f10b9c24')
+sha256sums=('f96a108a5c4dceee02e631b075e6e260dedb15a0d0506660c158e4b62d8a1486')
 
 prepare() {
   cd "$pkgname-$pkgver"
