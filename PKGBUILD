@@ -2,7 +2,7 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=cinelerra-gg-git
-pkgver=5.1.2021.12.r0.g1075f679
+pkgver=2021.12.r0.g1075f679
 pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
 arch=(x86_64)
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/cinelerra-gg/cinelerra-5.1"
-  echo 5.1.$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
