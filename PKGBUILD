@@ -4,16 +4,13 @@
 
 pkgname=ventoy-bin
 pkgver=1.0.63
-pkgrel=1
+pkgrel=2
 pkgdesc="A new multiboot USB solution"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.ventoy.net"
 license=('GPL3')
 depends=('bash' 'util-linux' 'xz' 'dosfstools')
-optdepends=('gtk2: GTK2 GUI'
-            'libxml2: GTK2 GUI'
-            'gtk3: GTK3 GUI'
-            'glib2: GTK3 GUI'
+optdepends=('gtk3: GTK3 GUI'
             'qt5-base: Qt5 GUI'
             'polkit: run GUI from application menu')
 provides=("${pkgname%-bin}")
@@ -72,7 +69,7 @@ package() {
   cd "${pkgname%-bin}-$pkgver"
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/boot/"            boot/*
   install -Dm644 -vt      "$pkgdir/opt/${pkgname%-bin}/${pkgname%-bin}/" "${pkgname%-bin}"/*
-  install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/"            tool/*.{cer,glade,json,sh,xz}
+  install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/"            tool/*.{cer,json,sh,xz}
   install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/tool/$CARCH/"     tool/$CARCH/*
   install -Dm755 -vt      "$pkgdir/opt/${pkgname%-bin}/"                 *.sh
   cp --no-preserve=o -avt "$pkgdir/opt/${pkgname%-bin}/"                 plugin WebUI
@@ -87,4 +84,7 @@ package() {
   done
 
   install -Dm755 "$srcdir/${pkgname%-bin}"{,gui,web,plugson,-{,extend-}persistent} -vt "$pkgdir"/usr/bin/
+
+  # Remove Gtk 2 files
+  rm "$pkgdir/opt/${pkgname%-bin}/tool/$CARCH/Ventoy2Disk.gtk2"
 }
