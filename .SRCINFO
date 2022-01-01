@@ -6,6 +6,8 @@ pkgbase = monique-monosynth-git
 	arch = x86_64
 	license = GPLv3 or MIT
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
 	source = git+https://github.com/surge-synthesizer/monique-monosynth
 	md5sums = SKIP
 

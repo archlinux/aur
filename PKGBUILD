@@ -8,7 +8,7 @@ pkgdesc="Monique is a monophonic synth from Thomas Arndt"
 arch=('x86_64')
 url="https://github.com/surge-synthesizer/monique-monosynth"
 license=('GPLv3 or MIT')
-makedepends=('git')
+makedepends=('git' 'cmake' 'ninja')
 source=("git+$url")
 md5sums=('SKIP')
 
@@ -27,4 +27,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   sudo cp -r build/MoniqueMonosynth_artefacts/Release/VST3/MoniqueMonosynth.vst3/ /usr/lib/vst3/
+  sudo cp -r build/MoniqueMonosynth_artefacts/Release/Standalone/MoniqueMonosynth /usr/bin/
 }
