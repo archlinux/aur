@@ -1,15 +1,14 @@
 pkgbase = rbmenu
 	pkgdesc = Rust Bookmark (d)Menu
-	pkgver = 0.4.0
-	pkgrel = 1
+	pkgver = 0.6.1
+	pkgrel = 2
 	url = https://github.com/DevHyperCoder/rbmenu
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/DevHyperCoder/rbmenu/archive/v0.4.0.zip
+	source = https://github.com/DevHyperCoder/rbmenu/archive/v0.6.1.zip
 	md5sums = SKIP
 
 pkgname = rbmenu
-
