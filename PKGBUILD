@@ -1,18 +1,19 @@
-pkgname=key-mapper-git
-pkgver=1.2.1
-pkgrel=2
+# Maintainer: sezanzeb proxima@seanzeb.de
+pkgname=input-remapper-git
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="A tool to change and program the mapping of your input device buttons."
 arch=('any')
-url="https://github.com/sezanzeb/key-mapper/"
+url="https://github.com/sezanzeb/input-remapper/"
 license=('GPL3')
 depends=('python-gobject' 'python-pydbus' 'python-evdev' 'gtk3' 'python-setuptools')
 makedepends=('git' 'fakeroot' 'python-setuptools')
-provides=('key-mapper')
+provides=('input-remapper')
 conflicts=('key-mapper')
-install=key-mapper-git.install
-source=("git+https://github.com/sezanzeb/key-mapper.git")
+install=input-remapper-git.install
+source=("git+https://github.com/sezanzeb/input-remapper.git")
 md5sums=('SKIP')
-_gitname="key-mapper"
+_gitname="input-remapper"
 
 pkgver() {
 	cd "$srcdir"/"$_gitname"
