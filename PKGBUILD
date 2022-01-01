@@ -2,7 +2,7 @@
 
 pkgname=ftx-nativefier
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FTX Client built with nodejs-nativefier (electron)"
 arch=("arm64" "armv7l" "i686" "x86_64")
 url="https://ftx.com/"
