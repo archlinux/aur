@@ -1,11 +1,11 @@
 pkgbase = plank-theme-monterey
 	pkgdesc = Monterey Theme for Plank
-	pkgver = 1.0.1
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1565552
 	arch = any
 	license = cc-by-sa
-	source = https://github.com/MMcQueenGNU/plank-theme-monterey/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 1b4b2c9718d19d9f51a51a01b7065b92190e477a3016fa63e1db43388e2c586f
+	source = https://github.com/MMcQueenGNU/plank-theme-monterey/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 9c9abb2dbd0a20da293ba4c4939aff847f2f02ecdb8d7222ae6feebdf6fe2d74
 
 pkgname = plank-theme-monterey
