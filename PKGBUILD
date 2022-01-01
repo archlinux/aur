@@ -11,7 +11,7 @@ groups=()
 depends=()
 makedepends=(
     git
-    cargo
+    rustup
 )
 checkdepends=()
 optdepends=()
