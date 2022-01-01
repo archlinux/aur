@@ -1,0 +1,19 @@
+pkgbase = x11-keyboard-flags
+	pkgdesc = X11 Keyboard layout indicator as country flags
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jonathas/x11-keyboard-flags
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = xkeyboard-config
+	source = x11-keyboard-flags-1.0.0.tar.gz::https://github.com/jonathas/x11-keyboard-flags/archive/refs/tags/1.0.0.tar.gz
+	sha512sums = 5054e4e22f6af4e46a41376960f4caee69d4f3627e47dff088699f710c296ebaf7013ca15b514677f9bcf463927c25aae0528e6fbe4d1854d33023478adc1ade
+
+pkgname = x11-keyboard-flags
