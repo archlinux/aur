@@ -1,0 +1,16 @@
+pkgbase = vim-switch-git
+	pkgdesc = Switches segments of text with predefined replacements
+	pkgver = 0.3.0.r128.g900c5d3
+	pkgrel = 1
+	url = https://github.com/andrewradev/switch.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-switch
+	conflicts = vim-switch
+	source = vim-switch-git::git+https://github.com/andrewradev/switch.vim
+	md5sums = SKIP
+
+pkgname = vim-switch-git
