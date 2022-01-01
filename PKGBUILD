@@ -4,7 +4,7 @@ _pkgbase=loop-aes
 pkgname=loop-aes-dkms
 _pkgname=loop-AES
 pkgver=3.7v
-pkgrel=4
+pkgrel=5
 pkgdesc="loop Linux kernel module that has AES,Twofish,Blowfish,Serpent cipher built-in (DKMS version)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -45,8 +45,8 @@ package() {
   install -D -m 0644 loop-aes-keygen.1 "${pkgdir}/usr/share/man/man1/loop-aes-keygen.1"
   install -m 0644 ChangeLog README "${pkgdir}/usr/share/doc/${pkgname}"
 
-  echo "blacklist loop" >> "${pkgdir}/usr/lib/modprobe.d/loop.conf"
-  echo "alias loop loop-aes" > "${pkgdir}/usr/lib/modprobe.d/loop.conf"
+  echo "blacklist loop" > "${pkgdir}/usr/lib/modprobe.d/loop.conf"
+  echo "alias loop loop-aes" >> "${pkgdir}/usr/lib/modprobe.d/loop.conf"
   echo "loop-aes" > "${pkgdir}/usr/lib/modules-load.d/loop.conf"
   echo "loop_serpent" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"
   echo "loop_twofish" >> "${pkgdir}/usr/lib/modules-load.d/loop.conf"

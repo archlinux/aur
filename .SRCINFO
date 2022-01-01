@@ -1,7 +1,7 @@
 pkgbase = loop-aes-dkms
 	pkgdesc = loop Linux kernel module that has AES,Twofish,Blowfish,Serpent cipher built-in (DKMS version)
 	pkgver = 3.7v
-	pkgrel = 4
+	pkgrel = 5
 	url = https://loop-aes.sourceforge.net
 	install = loop-aes-dkms.install
 	arch = i686
