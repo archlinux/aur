@@ -6,3 +6,4 @@ sudo setcap cap_net_raw=ep ./sa2
 "Best" version is SDL2 one. QT version is slower.
 
 EOF
+}
