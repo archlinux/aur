@@ -2,8 +2,8 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=prusa-slicer-gtk2
-pkgver=2.3.3
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (built with GTK2)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -13,15 +13,12 @@ makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
 replaces=(slic3r-prusa3d)
 conflicts=('prusa-slicer')
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
-        prusa-slicer-openexr3.patch
-        prusa-slicer-tbb-2021.patch)
-sha256sums=('deda209505f740ac3d6f59cb2a960f4df908269ee09bd30cd4edb9fc472d29ac'
-            '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b'
-            '0aeb8a5e0413bb920735a3a5138b0d9801dacbb412bd3b52ee0fa60ec0b0b4e5')
+    prusa-slicer-openexr3.patch)
+sha256sums=('906d0acf0d0e064ae3cbaa16ba1a2e24dd9c32ceb2121464cb4d5951c09e66c2'
+    'ab1531f25db4b35294585d37fb43fd7f377f230390cc74278fbaebebc1d65e13')
 
 prepare() {
   patch -d PrusaSlicer-version_${pkgver} -p1 < prusa-slicer-openexr3.patch # Fix build with openEXR 3
-  patch -d PrusaSlicer-version_${pkgver} -p1 < prusa-slicer-tbb-2021.patch # Fix build with TBB 2021
 }
 
 build() {
@@ -43,14 +40,4 @@ check() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
-
-  # Desktop files
-  mv "${pkgdir}"/usr/share/{PrusaSlicer/,}applications
-
-  # Desktop icons
-  for i in 32 128 192 ; do
-    mkdir -p "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/
-    ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer_${i}px.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/PrusaSlicer.png
-    ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer-gcodeviewer_${i}px.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/PrusaSlicer-gcodeviewer.png
-  done
 }

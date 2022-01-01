@@ -1,12 +1,11 @@
-diff --git a/cmake/modules/FindOpenVDB.cmake b/cmake/modules/FindOpenVDB.cmake
-index 02420fed8..4b93111ab 100644
---- a/cmake/modules/FindOpenVDB.cmake
-+++ b/cmake/modules/FindOpenVDB.cmake
-@@ -326,28 +326,10 @@ macro(just_fail msg)
+diff '--color=auto' --unified --recursive --text --color a/cmake/modules/FindOpenVDB.cmake b/cmake/modules/FindOpenVDB.cmake
+--- a/cmake/modules/FindOpenVDB.cmake	2022-01-01 14:01:42.715765537 +0100
++++ b/cmake/modules/FindOpenVDB.cmake	2022-01-01 13:59:49.291560790 +0100
+@@ -347,28 +347,10 @@
    return()
  endmacro()
  
--find_package(IlmBase QUIET COMPONENTS Half)
+-find_package(IlmBase QUIET)
 -if(NOT IlmBase_FOUND)
 -  pkg_check_modules(IlmBase QUIET IlmBase)
 -endif()
@@ -32,7 +31,7 @@ index 02420fed8..4b93111ab 100644
  
  # Use GetPrerequisites to see which libraries this OpenVDB lib has linked to
  # which we can query for optional deps. This basically runs ldd/otoll/objdump
-@@ -398,7 +380,7 @@ foreach(PREREQUISITE ${_OPENVDB_PREREQUISITE_LIST})
+@@ -419,7 +401,7 @@
      set(OpenVDB_USES_LOG4CPLUS ON)
    endif()
  
@@ -41,7 +40,7 @@ index 02420fed8..4b93111ab 100644
    if(NOT ${_HAS_DEP} EQUAL -1)
      set(OpenVDB_USES_ILM ON)
    endif()
-@@ -429,11 +411,7 @@ if(OpenVDB_USES_LOG4CPLUS)
+@@ -450,11 +432,7 @@
    find_package(Log4cplus ${_quiet} ${_required})
  endif()
  
@@ -54,7 +53,7 @@ index 02420fed8..4b93111ab 100644
    find_package(OpenEXR ${_quiet} ${_required})
  endif()
  
-@@ -450,7 +428,7 @@ endif()
+@@ -471,7 +449,7 @@
  set(_OPENVDB_VISIBLE_DEPENDENCIES
    Boost::iostreams
    Boost::system
@@ -63,7 +62,7 @@ index 02420fed8..4b93111ab 100644
  )
  
  set(_OPENVDB_DEFINITIONS)
-@@ -460,10 +438,7 @@ endif()
+@@ -481,10 +459,7 @@
  
  if(OpenVDB_USES_EXR)
    list(APPEND _OPENVDB_VISIBLE_DEPENDENCIES
