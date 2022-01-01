@@ -5,6 +5,7 @@ pkgbase = mpv-mpvacious
 	url = https://github.com/Ajatt-Tools/mpvacious
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = mpv
 	optdepends = xclip: clipboard autocopy
 	optdepends = wl-clipboard: clipboard autocopy on wayland

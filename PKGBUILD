@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/Ajatt-Tools/mpvacious"
 license=('GPL3')
 depends=('mpv')
+makedepends=('git')
 optdepends=('xclip: clipboard autocopy' 'wl-clipboard: clipboard autocopy on wayland')
 source=("mpv-mpvacious::git+https://github.com/Ajatt-Tools/mpvacious")
 md5sums=('SKIP')
