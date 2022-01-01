@@ -55,16 +55,24 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
   FFMPEG_OBS_VULKAN=OFF
 fi
 
+# Version checks will only be added for the default package deps
+DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
+
 pkgname=ffmpeg-obs
 pkgver=4.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
 license=(GPL3)
+_aomver=3
+_libristver=0.2.6
+_libvpxsover=7
+_libx264ver=163
+_libx265ver=199
+_srtver=1.4.3
 depends=(
   alsa-lib
-  aom
   bzip2
   fontconfig
   fribidi
@@ -95,11 +103,8 @@ depends=(
   libvidstab.so
   libvorbisenc.so
   libvorbis.so
-  libvpx.so
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
@@ -111,18 +116,35 @@ depends=(
   opus
   sdl2
   speex
-  srt
   v4l-utils
   xz
   zlib
 )
+# To manage dependency rebuild easily, this will prevent you to rebuild FFmpeg on non-updated system
+# For Manjaro user this feature is disabled
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  depends+=(
+    'aom'
+    'libvpx.so'
+    'libx264.so'
+    'libx265.so'
+    'srt'
+  )
+else
+  depends+=(
+    "aom>=$_aomver"
+    "libvpx.so>=$_libvpxsover"
+    "libx264.so>=$_libx264ver"
+    "libx265.so>=$_libx265ver"
+    "srt>=$_srtver"
+  )
+fi
 makedepends=(
   git
   amf-headers
   avisynthplus
   clang
   ffnvcodec-headers
-  git
   ladspa
   nasm
 )
@@ -144,7 +166,7 @@ provides=(
 )
 conflicts=(ffmpeg)
 _tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
-_deps_tag=2021-12-22
+_deps_tag=15072cd42722d87c6b3ed1636b22e98c08575f20
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
@@ -155,6 +177,17 @@ sha256sums=(
   'SKIP'
   '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
 )
+
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+source+=(
+  "$pkgname.hook"
+  "$pkgname.sh"
+)
+sha256sums+=(
+  "39820f085e4366cfa24b7bf632d331d3bfa6e9f62f47df55892901218636a2fc"
+  "195ad5f134f02666d330342d04561c12a10e0522b3ace80cd36531d4092e1e4d"
+)
+fi
 
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   FFMPEG_OBS_DEBUG=ON
@@ -240,7 +273,13 @@ _args+=(
 
 ## Add OBS Studio needed feature
 _args+=(--enable-librist)
-depends+=('librist')
+# To manage dependency rebuild easily, this will prevent you to rebuild FFmpeg on non-updated system
+# For Manjaro user this feature is disabled
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  depends+=('librist')
+else
+  depends+=("librist>=$_libristver")
+fi
 
 ## Add upstream feature for x86_64 build
 if [[ $CARCH == 'x86_64' ]]; then
@@ -419,6 +458,9 @@ prepare() {
   #     https://patchwork.ffmpeg.org/project/ffmpeg/patch/20211117141929.1164334-2-gijs@peskens.net/
   patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-4.4.1-librist.patch
 
+  ## This patch applies a fix on AOM encoder
+  patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-4.4.1-libaomenc.patch
+
   # Fix "error: unknown type name ‘bool’" made by the patch because stdbool.h is only added through librist from version 0.2.7
   sed -i '49 a #if FF_LIBRIST_VERSION < FF_LIBRIST_VERSION_42\n#include <stdbool.h>\n#endif' libavformat/librist.c
 
@@ -457,7 +499,12 @@ package() {
   make DESTDIR="${pkgdir}" -C ffmpeg install install-man
   install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
 
-if [[ $_nonfree_enabled == 'ON' ]]; then
-  install -D -m644 license_if_nonfree_enabled.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-fi
+  if [[ $_nonfree_enabled == 'ON' ]]; then
+    install -D -m644 license_if_nonfree_enabled.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
+
+  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+    install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/
+    install -D -m755 "$srcdir/$pkgname.sh" -t "${pkgdir}"/usr/share/libalpm/scripts/
+  fi
 }

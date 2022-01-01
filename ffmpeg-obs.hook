@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = ffmpeg-obs
+
+[Action]
+Description = Warn Manjaro user about rebuild
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/ffmpeg-obs.sh
