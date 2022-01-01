@@ -1,15 +1,15 @@
 pkgbase = kindleunpack
-	pkgdesc = Extract text, images and metadata from Kindle/Mobi files
-	pkgver = 0.82
+	pkgdesc = Extract text, images, and metadata from Kindle/Mobi files
+	pkgver = 0.83
 	pkgrel = 2
-	url = http://www.mobileread.com/forums/showthread.php?t=61986
+	url = https://github.com/kevinhendricks/KindleUnpack
 	arch = any
 	license = GPL3
 	depends = python-setuptools
 	depends = tk
-	source = kindleunpack-0.82.tar.gz::https://github.com/kevinhendricks/KindleUnpack/archive/v082.tar.gz
+	source = https://github.com/kevinhendricks/KindleUnpack/archive/v083/KindleUnpack-083.tar.gz
 	source = Installing-with-setuptools.diff
-	sha256sums = a012099043581f924820de77971f3bfcf443ad75e4d124fbc805c1cf983a191d
-	sha256sums = d413733017f7a658a5e3ab6e67d0ca28703632a23c34d0d286ac57bf6376f691
+	sha256sums = cd7a539573dedd1d78a6b49606446aa5a51acb520b4ee0ccb9f5b30deaddad2e
+	sha256sums = 4c4eb18f9716875d90cf6c6b781ece9cbb316e2dcecebd2e89caec142bd25505
 
 pkgname = kindleunpack

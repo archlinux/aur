@@ -55,7 +55,7 @@ diff -Naur KindleUnpack-0.80/setup.py KindleUnpack/setup.py
 +    # Versions should comply with PEP440.  For a discussion on single-sourcing
 +    # the version across setup.py and the project code, see
 +    # https://packaging.python.org/en/latest/single_source_version.html
-+    version='0.82',
++    version='0.83',
 +
 +    description='Extract text, images and metadata from Kindle/Mobi files',
 +
