@@ -1,6 +1,6 @@
 # Maintainer: Kars Mulder <devmail@karsmulder.nl>
 pkgname=evsieve
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A utility for mapping events from Linux event devices."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("GPL2" "MIT")
 depends=("libevdev" "gcc-libs")
 makedepends=("rust")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('65a13c723667b095e6054ef5ed43de671102a372db2e796e3dd3dca14650e177')
+sha256sums=('3571152bcbcadd2e8db4461031aa3ef607ee8eba8d9911a2c1749965246b2dc2')
 
 
 prepare() {
