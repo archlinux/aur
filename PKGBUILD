@@ -1,7 +1,7 @@
 # Maintainer: beeender <chenmulong@gmail.com>
 pkgname=('glrnvim')
 _pkgname="glrnvim"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=0
 arch=('x86_64' 'i686')
 url='https://github.com/beeender/glrnvim'
@@ -20,7 +20,7 @@ package_glrnvim() {
 	env CARGO_INCREMENTAL=0 cargo build --release
 
 	install -Dm755 "$srcdir/$_pkgname/target/release/glrnvim" "$pkgdir/usr/bin/glrnvim"
-    install -Dm644 $srcdir/$_pkgname/glrnvim.yml "$pkgdir/usr/share/doc/glrnvim/example/glrnvim.yml"
+    install -Dm644 $srcdir/$_pkgname/config.yml "$pkgdir/usr/share/doc/glrnvim/example/config.yml"
     install -Dm644 $srcdir/$_pkgname/glrnvim.desktop "$pkgdir/usr/share/applications/glrnvim.desktop"
     install -Dm644 $srcdir/$_pkgname/glrnvim.svg "$pkgdir/usr/share/icons/glrnvim.svg"
 }
