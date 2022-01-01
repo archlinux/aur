@@ -1,6 +1,6 @@
 pkgbase = shiny-mirrors
 	pkgdesc = An alternative to reflector, written in Rust! A tool to find the best mirrors for you!
-	pkgver = r162.5c87e97
+	pkgver = r169.282cff6
 	pkgrel = 1
 	url = https://gitlab.com/Arisa_Snowbell/shiny-mirrors
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = shiny-mirrors
 	depends = gcc-libs
 	options = !lto
 	backup = etc/shiny-mirrors.conf
-	source = git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=5c87e979dad8eec9342a53b1d8eaa7254dbdbf31?signed
+	source = git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=282cff6628269bbcaecd4634a5ecddfcd500ff6c?signed
 	validpgpkeys = E2C998FA1F7B651E45B20CDC56AA2C2801F619D7
 	validpgpkeys = 93F4694364C3E688BA33E3E41CBE6B7A2B054E06
 	sha256sums = SKIP
