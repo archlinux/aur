@@ -1,7 +1,7 @@
 # Maintainer: robiot <me@robiot.dev>
 
 pkgname=xclicker
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A blazing fast gui autoclicker for linux'
 arch=('x86_64' 'aarch64')
