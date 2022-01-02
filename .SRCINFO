@@ -1,6 +1,6 @@
 pkgbase = ego
 	pkgdesc = Alter Ego: run Linux desktop applications under a different local user
-	pkgver = 1.1.2
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/intgr/ego
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = ego
 	makedepends = cargo
 	depends = acl
 	optdepends = xdg-desktop-portal-gtk: improved desktop integration
-	source = ego-1.1.2.tar.gz::https://crates.io/api/v1/crates/ego/1.1.2/download
-	sha512sums = 52e9be2de6158998e3fcc341837250ba9144d8bad078cf9a7f772b52ed56f3b8f23d1caea99e339948502718daa7bff429bb3ad21611030121286880dd1631fb
+	source = ego-1.1.5.tar.gz::https://crates.io/api/v1/crates/ego/1.1.5/download
+	sha512sums = 8a10e0bc8adc6578ef8de3dd48c895214dfc2f659deb06e9a4a2d672917f14eba42fb0c729b05151094b59627f8b1c2724baed867eb75bb4b75fe60326784f8a
 
 pkgname = ego
-
