@@ -1,6 +1,6 @@
-pkgbase = wlroots-git
-	pkgdesc = Modular Wayland compositor library (git version)
-	pkgver = 0.14.0.r439.g0fcc8422
+pkgbase = wlroots-asan-git
+	pkgdesc = Modular Wayland compositor library (git version, with address sanitizer)
+	pkgver = 0.15.0.r9.g9988eb33
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
@@ -25,10 +25,11 @@ pkgbase = wlroots-git
 	depends = vulkan-validation-layers
 	depends = xorg-xwayland
 	provides = libwlroots.so
-	provides = wlroots=0.14.0
+	provides = wlroots=0.15.0
+	provides = wlroots-git=0.15.0.r9.g9988eb33
 	conflicts = wlroots
 	options = debug
-	source = wlroots-git::git+https://gitlab.freedesktop.org/wlroots/wlroots
+	source = wlroots-asan-git::git+https://gitlab.freedesktop.org/wlroots/wlroots
 	sha512sums = SKIP
 
-pkgname = wlroots-git
+pkgname = wlroots-asan-git

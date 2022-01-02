@@ -1,13 +1,13 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=wlroots-git
-pkgver=0.14.0.r439.g0fcc8422
+pkgname=wlroots-asan-git
+pkgver=0.15.0.r9.g9988eb33
 pkgrel=1
 license=(custom:MIT)
-pkgdesc='Modular Wayland compositor library (git version)'
+pkgdesc='Modular Wayland compositor library (git version, with address sanitizer)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
-provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
+provides=("libwlroots.so" "wlroots=${pkgver%%.r*}" "wlroots-git=${pkgver}")
 conflicts=(wlroots)
 options=(debug)
 depends=(
@@ -44,7 +44,7 @@ pkgver () {
 }
 
 build () {
-	arch-meson \
+	CFLAGS="$CFLAGS -fsanitize=address,undefined" arch-meson \
 		--buildtype=debug \
 		-Dwerror=false \
 		-Dexamples=false \
