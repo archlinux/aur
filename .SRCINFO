@@ -1,7 +1,7 @@
-pkgbase = uwsgi-fix
-	pkgdesc = A full stack for building hosting services with last patches.
+pkgbase = uwsgi-ng
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch)
 	pkgver = 2.0.20
-	pkgrel = 3
+	pkgrel = 1
 	url = https://uwsgi-docs.readthedocs.io/en/latest/
 	arch = x86_64
 	license = GPL2
@@ -61,7 +61,7 @@ pkgbase = uwsgi-fix
 	b2sums = 0068763ca5a2f1b60782f53070cbff8cf930e1463d9199b156b02413026bcdb3d923bffcbba063a26d620b8e734bdbd26a4c22776532546ad8c8e5c0c73bd7d6
 	b2sums = 7ac0b4dd838a072349269c529de7cb6c347957652d65f7213b8f9d7a310644b287af5ed62fd7920cf18b4b7572c363fa1cccfa4eb62ed15df5dcd38495e53adc
 
-pkgname = uwsgi-fix
+pkgname = uwsgi-ng
 	install = uwsgi.install
 	depends = glibc
 	depends = jansson
@@ -77,84 +77,84 @@ pkgname = uwsgi-fix
 	conflicts = uwsgi
 	backup = etc/uwsgi/emperor.ini
 
-pkgname = uwsgi-fix-plugin-rack
+pkgname = uwsgi-ng-plugin-rack
 	pkgdesc = Ruby rack plugin
 	depends = glibc
 	depends = ruby
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-rack
 
-pkgname = uwsgi-fix-plugin-psgi
-	pkgdesc = A full stack for building hosting services with last patches. (Perl psgi plugin)
+pkgname = uwsgi-ng-plugin-psgi
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (Perl psgi plugin)
 	depends = glibc
 	depends = perl
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-psgi
 
-pkgname = uwsgi-fix-plugin-cgi
-	pkgdesc = A full stack for building hosting services with last patches. (CGI plugin)
+pkgname = uwsgi-ng-plugin-cgi
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (CGI plugin)
 	depends = glibc
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-cgi
 
-pkgname = uwsgi-fix-plugin-python
-	pkgdesc = A full stack for building hosting services with last patches. (Python plugin)
+pkgname = uwsgi-ng-plugin-python
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (Python plugin)
 	depends = glibc
 	depends = python
 	depends = python-gevent
 	depends = python-greenlet
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-python
 
-pkgname = uwsgi-fix-plugin-pypy
-	pkgdesc = A full stack for building hosting services with last patches. (PyPy plugin)
+pkgname = uwsgi-ng-plugin-pypy
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (PyPy plugin)
 	depends = glibc
 	depends = pypy
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-pypy
 
-pkgname = uwsgi-fix-plugin-php
-	pkgdesc = A full stack for building hosting services with last patches. (PHP plugin)
+pkgname = uwsgi-ng-plugin-php
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (PHP plugin)
 	depends = glibc
 	depends = php-embed
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-php
 
-pkgname = uwsgi-fix-plugin-php7
-	pkgdesc = A full stack for building hosting services with last patches. (PHP7 plugin)
+pkgname = uwsgi-ng-plugin-php7
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (PHP7 plugin)
 	depends = glibc
 	depends = php7-embed
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-php7
 
-pkgname = uwsgi-fix-plugin-lua51
-	pkgdesc = A full stack for building hosting services with last patches. (LUA plugin)
+pkgname = uwsgi-ng-plugin-lua51
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (LUA plugin)
 	depends = glibc
 	depends = lua51
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-lua51
 
-pkgname = uwsgi-fix-plugin-mono
-	pkgdesc = A full stack for building hosting services with last patches. (mono plugin)
+pkgname = uwsgi-ng-plugin-mono
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (mono plugin)
 	depends = glibc
 	depends = mono
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-mono
 
-pkgname = uwsgi-fix-plugin-webdav
-	pkgdesc = A full stack for building hosting services with last patches. (WebDav plugin)
+pkgname = uwsgi-ng-plugin-webdav
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (WebDav plugin)
 	depends = glibc
 	depends = libxml2
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-webdav
 
-pkgname = uwsgi-fix-plugin-zabbix
-	pkgdesc = A full stack for building hosting services with last patches. (zabbix plugin)
+pkgname = uwsgi-ng-plugin-zabbix
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (zabbix plugin)
 	depends = glibc
-	depends = uwsgi-fix
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-zabbix
 
-pkgname = uwsgi-fix-plugin-notfound
-	pkgdesc = A full stack for building hosting services with last patches. (notfound plugin)
-	depends = uwsgi-fix
+pkgname = uwsgi-ng-plugin-notfound
+	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch) (notfound plugin)
+	depends = uwsgi-ng
 	conflicts = uwsgi-plugin-notfound
