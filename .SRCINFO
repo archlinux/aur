@@ -5,6 +5,7 @@ pkgbase = webtorrent-cli
 	url = https://webtorrent.io
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = npm
 	depends = nodejs
 	provides = webtorrent
