@@ -21,7 +21,7 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
 
-    export GOPATH="$HOME/go/bin"
+    export GOPATH="$HOME/go"
     mkdir -p "$GOPATH"
 
 	chmod +x install.sh
