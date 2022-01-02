@@ -8,7 +8,7 @@ url='http://tmrh20.github.io/RF24/'
 license=('GPL2')
 depends=('boost-libs' 'python' 'rf24')
 makedepends=('boost' 'python-setuptools')
-source=('https://github.com/nRF24/RF24/archive/v${pkgver}.tar.gz')
+source=("https://github.com/nRF24/RF24/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9db34ecb1775a56b492f514a599a81a38b7626c9f260d033b425168c2aa458f4')
 
 build() {
