@@ -1,12 +1,13 @@
 pkgbase = rxargs-git
 	pkgdesc = Regex argument substitution for command-line wizardry
-	pkgver = 0.2.0.r1.673a18b
+	pkgver = 0.2.1.r0.51f2833
 	pkgrel = 1
 	url = https://github.com/dyeo/rxargs
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-argparse-manpage
 	depends = python
 	provides = rxargs
 	source = git+https://github.com/dyeo/rxargs.git

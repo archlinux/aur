@@ -1,14 +1,14 @@
 # Maintainer: Dan Yeomans <dan@dyeo.net>
 
 pkgname=rxargs-git
-pkgver=0.2.0.r1.673a18b
+pkgver=0.2.1.r0.51f2833
 pkgrel=1
 pkgdesc="Regex argument substitution for command-line wizardry"
 arch=('x86_64')
 url="https://github.com/dyeo/rxargs"
 license=('MIT')
 depends=('python')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-argparse-manpage')
 optdepends=()
 provides=('rxargs')
 source=('git+https://github.com/dyeo/rxargs.git')
@@ -21,11 +21,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py build
+  make build
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  make install
+  make man
   install -Dm644 "man/rxargs.1" "$pkgdir/usr/share/man/man1/rxargs.1"
 }
