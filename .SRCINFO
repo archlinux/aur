@@ -1,6 +1,6 @@
 pkgbase = alacritty-ligatures
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
-	pkgver = 0.6.0.1663.g693de26
+	pkgver = 0.8.0.1772.g3ed0430
 	pkgrel = 1
 	url = https://github.com/alacritty/alacritty
 	arch = x86_64
@@ -23,8 +23,7 @@ pkgbase = alacritty-ligatures
 	depends = libxrandr
 	provides = alacritty
 	conflicts = alacritty
-	source = alacritty::git+https://github.com/zenixls2/alacritty.git#branch=ligature
+	source = alacritty-ligatures::git+https://github.com/zenixls2/alacritty.git#commit=3ed0430
 	sha256sums = SKIP
 
 pkgname = alacritty-ligatures
-

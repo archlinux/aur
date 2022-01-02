@@ -1,6 +1,6 @@
 pkgname='alacritty-ligatures'
 _pkgname="alacritty"
-pkgver=0.6.0.1663.g693de26
+pkgver=0.8.0.1772.g3ed0430
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/alacritty/alacritty"
@@ -11,37 +11,36 @@ makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/zenixls2/alacritty.git#branch=ligature")
+source=("$pkgname::git+https://github.com/zenixls2/alacritty.git#commit=3ed0430")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname/alacritty
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd $pkgname/alacritty
+  echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build(){
-  cd "$_pkgname"
+  cd "$pkgname"
   git submodule update --init
   env CARGO_INCREMENTAL=0 cargo build --release --locked
 }
 
 check(){
-  cd "$_pkgname"
+  cd "$pkgname"
   env CARGO_INCREMENTAL=0 cargo test --release
 }
 
 package_alacritty-ligatures() {
-
-	cd $_pkgname
-
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
-
-	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
-	install -D -m644 "extra/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
-	install -D -m644 "extra/linux/io.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/io.alacritty.Alacritty.appdata.xml"
-	install -D -m644 "alacritty.yml" "$pkgdir/usr/share/doc/alacritty/example/alacritty.yml"
-	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
-	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
-	install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
-	install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
+  cd $pkgname
+  
+  desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$pkgname/extra/linux/Alacritty.desktop"
+  
+  install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
+  install -D -m644 "extra/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
+  install -D -m644 "extra/linux/io.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/io.alacritty.Alacritty.appdata.xml"
+  install -D -m644 "alacritty.yml" "$pkgdir/usr/share/doc/alacritty/example/alacritty.yml"
+  install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
+  install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
+  install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
+  install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
 }
