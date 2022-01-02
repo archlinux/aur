@@ -1,6 +1,6 @@
 pkgbase = libabbaurora
 	pkgdesc = A C++ library for the ABB Aurora protocol used by inverters and other devices
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://ahpohl.github.io/libabbaurora/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libabbaurora
 	arch = armv7h
 	license = GPL3
 	makedepends = git
-	source = libabbaurora-0.2.0::git+https://github.com/ahpohl/libabbaurora.git#tag=v0.2.0
+	source = libabbaurora-0.2.1::git+https://github.com/ahpohl/libabbaurora.git#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = libabbaurora
