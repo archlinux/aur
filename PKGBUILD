@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=distrobox
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
