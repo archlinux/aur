@@ -1,11 +1,13 @@
 pkgbase = python-parsita
 	pkgdesc = Parser combinator library for Python.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/parsita
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = python-dephell
 	depends = python
 	source = python-parsita-1.7.0.tar.gz::https://github.com/drhagen/parsita/archive/refs/tags/v1.7.0.tar.gz
 	sha256sums = 080f72c24250d2efbca2a10a388fb9ae6d040ef7bdf62cbd448fd39540ec55a0
