@@ -1,7 +1,7 @@
 # Maintainer: Kyle Yasuda <ksyasuda at umich dot edu>
 pkgname=aniwrapper-git
 _pkgname=aniwrapper
-pkgver=r127.ef105c5
+pkgver=r131.9cf1c21
 pkgrel=1
 pkgdesc="A rofi wrapper around a modified ani-cli: a cli to browse and watch anime"
 arch=('any')
