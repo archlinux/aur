@@ -11,22 +11,6 @@ if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
 
-## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
-## Archlinux and Xanmod enable it by default.
-## Set variable "use_numa" to: n to disable (possibly increase performance)
-##                             y to enable  (stock default)
-if [ -z ${use_numa+x} ]; then
-  use_numa=y
-fi
-
-## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled. 
-## Set variable "use_tracers" to: n to disable (possibly increase performance)
-##                                y to enable  (stock default)
-if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
-fi
-
 ## Choose between GCC and CLANG config (default is GCC)
 if [ -z ${_compiler+x} ]; then
   _compiler=gcc
@@ -39,11 +23,11 @@ fi
 
 pkgbase=linux-mt
 _major=5.15
-_minor=10
+_minor=12
 pkgver=${_major}.${_minor}
-_branch=5.x
-pkgrel=2
-pkgdesc='Linux kernel with personal customizations.'
+pkgrel=1
+pkgdesc='Linux zen kernel with personal customizations.'
+_srctag=v${pkgver}-zen1
 url="https://kernel.org/"
 arch=(x86_64)
 license=(GPL2)
@@ -53,35 +37,26 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname="linux-${pkgver}-cpu-optimized${pkgrel}"
+_srcname="zen-kernel"
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.${_minor}.tar."{xz,sign}
+  "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.15+.patch"
   choose-gcc-optimization.sh
-  "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/linux/trunk/config" # Config file to edit
-  linux-mt-prepare.sh
+  "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config" # Config file
+
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
+  'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D'  # Steven Barrett <steven@liquorix.net>
 )
 
-# Archlinux patches
-#_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
-#_patches=()
-#for _patch in ${_patches[@]}; do
-    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
-    #source+=("${_patch}::https://raw.gigthubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
-#done
-
-sha256sums=('484fcf5df8d00ddc570af443ef33382a110b338239b1f47048974baa22455b4b'
-            'SKIP'
+sha256sums=('SKIP'
             '380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d'
             'f0559045319db718af902f0f9f1ba183b63d89190a4d2dceb0d39d6a814156f7'
-            '6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63'
-            '670d69688c0d745db13fd2116038d4644a41830511415399b7f2296c86099b9c')
+            'de0f863e315ab2de7671ce512f6755ae14b58a64f21e48bd2b0158d719533011')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -107,40 +82,12 @@ prepare() {
   
   echo "Setting config..."
   cp ../config .config
-  cp ../linux-mt-prepare.sh linux-mt-prepare.sh
-  ./linux-mt-prepare.sh
   make olddefconfig
   diff -u ../config .config || :
-  
-  # Set the timer to 1000.
-  scripts/config --enable CONFIG_HZ_1000
-
-  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-  scripts/config --enable CONFIG_STACK_VALIDATION
-
-  # Enable IKCONFIG following Arch's philosophy
-  scripts/config --enable CONFIG_IKCONFIG \
-                 --enable CONFIG_IKCONFIG_PROC
-
-  # User set. See at the top of this file
-  if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
-    if [ "${_compiler}" = "gcc" ]; then
-      scripts/config --disable CONFIG_FUNCTION_TRACER \
-                     --disable CONFIG_STACK_TRACER
-    fi
-  fi
-
-  if [ "$use_numa" = "n" ]; then
-    msg2 "Disabling NUMA..."
-    scripts/config --disable CONFIG_NUMA
-  fi
-
-  # Compress modules by default (following Arch's kernel)
-  if [ "$_compress_modules" = "y" ]; then
-    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-  fi
-
+ 
+  # Enable NO_HZ_FULL like Fedora
+  scripts/config --enable CONFIG_NO_HZ_FULL
+ 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 

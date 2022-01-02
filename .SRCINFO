@@ -1,7 +1,7 @@
 pkgbase = linux-mt
-	pkgdesc = Linux kernel with personal customizations.
-	pkgver = 5.15.10
-	pkgrel = 2
+	pkgdesc = Linux zen kernel with personal customizations.
+	pkgver = 5.15.12
+	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -20,22 +20,19 @@ pkgbase = linux-mt
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.10.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.10.tar.sign
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.15.12-zen1
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.15+.patch
 	source = choose-gcc-optimization.sh
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/master/linux/trunk/config
-	source = linux-mt-prepare.sh
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
-	sha256sums = 484fcf5df8d00ddc570af443ef33382a110b338239b1f47048974baa22455b4b
+	validpgpkeys = C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D
 	sha256sums = SKIP
 	sha256sums = 380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d
 	sha256sums = f0559045319db718af902f0f9f1ba183b63d89190a4d2dceb0d39d6a814156f7
-	sha256sums = 6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63
-	sha256sums = 670d69688c0d745db13fd2116038d4644a41830511415399b7f2296c86099b9c
+	sha256sums = de0f863e315ab2de7671ce512f6755ae14b58a64f21e48bd2b0158d719533011
 
 pkgname = linux-mt
 	pkgdesc = The linux-mt kernel and modules
