@@ -19,11 +19,11 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
 
-    export GOPATH="$HOME/go"
-    mkdir -p "$GOPATH"
+    export GOPATH="${srcdir}"
+    export PATH="${PATH}:${GOPATH}/bin"
 
-	chmod +x install.sh
+    chmod +x install.sh
     ./install.sh
 }
