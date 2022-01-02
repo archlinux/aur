@@ -1,8 +1,8 @@
 # Maintainer: siphr <archlinux@techtum.dev>
 pkgname=urdu-digit
 pkgver=0.2
-pkgrel=1
-pkgdesc="Retrieve package info for an aur package."
+pkgrel=2
+pkgdesc="Convert English digit to Urdu."
 depends=(python)
 arch=(x86_64)
 source=("https://github.com/siphr/urdu-digit.git")
