@@ -1,0 +1,14 @@
+pkgbase = ctpkg
+	pkgdesc = A bridge for different package managers , and a userland package manager included , written in progynosh(fish)
+	pkgver = 31
+	pkgrel = 31
+	url = https://ruzhtw.top/pages/projects/CenterLinux/ctpm
+	arch = x86_64
+	license = GPL-3.0 License
+	depends = fish
+	depends = sudo
+	provides = ctpkg
+	source = https://raw.githubusercontent.com/TeaHouseLab/ctpkg/main/app
+	sha256sums = SKIP
+
+pkgname = ctpkg
