@@ -7,15 +7,10 @@ arch=(any)
 licence=(GPLv3)
 
 makedepends=('git')
-source=("git+https://github.com/andyrichardson/simply-workspaces.git")
+source=("git+https://github.com/andyrichardson/simply-workspaces.git#tag=$pkgver")
 sha256sums=('SKIP')
 provides+=("$pkgname=$pkgver")
 conflicts+=("$pkgname")
-
-prepare() {
-  git fetch origin $pkgver
-  git checkout $pkver
-}
 
 package() {
   cd simply-workspaces
