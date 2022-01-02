@@ -1,7 +1,7 @@
 pkgbase = kmonad-bin
 	pkgdesc = An advanced keyboard manager - static binary version
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kmonad/kmonad
 	arch = x86_64
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = kmonad-bin
 	md5sums = SKIP
 
 pkgname = kmonad-bin
-

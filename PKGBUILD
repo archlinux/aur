@@ -1,7 +1,7 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 pkgname=kmonad-bin
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced keyboard manager - static binary version"
 arch=('x86_64')
 url="https://github.com/kmonad/kmonad"
@@ -20,4 +20,12 @@ package() {
 	cd "$srcdir"
 	install -Dm755 "${pkgname%-bin}-$pkgver-linux" "$pkgdir/usr/bin/${pkgname%-bin}"
 	install -Dm644 "${pkgname%-bin}-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "${pkgname%-bin}-$pkgver/doc/faq.md" "$pkgdir/usr/share/doc/$pkgname/faq.md"
+
+	install -Dm755 "${pkgname%-bin}-$pkgver/keymap/tutorial.kbd" "$pkgdir/usr/share/doc/$pkgname/keymap/tutorial.kbd"
+
+	for file in "${pkgname%-bin}-$pkgver/keymap/template/"*.kbd; do
+	  install -Dm755 "$file" -t "$pkgdir/usr/share/doc/$pkgname/keymap/template"
+	done
 }
+
