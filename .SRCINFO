@@ -1,7 +1,7 @@
 pkgbase = rustywind
 	pkgdesc = CLI for organizing Tailwind CSS classes
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/avencera/rustywind
 	arch = x86_64
 	license = Apache
