@@ -1,6 +1,6 @@
 pkgbase = lsx-git
 	pkgdesc = Navigate through terminal like a pro
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 2
 	url = https://github.com/souvikinator/lsx
 	arch = x86_64
