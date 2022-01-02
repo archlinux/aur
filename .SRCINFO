@@ -1,0 +1,12 @@
+pkgbase = libczech
+	pkgdesc = The czech library for C. Why? Because we could, of course!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Toaster192/czech.h
+	install = libczech.install
+	arch = any
+	license = MIT
+	source = https://raw.githubusercontent.com/Toaster192/czech.h/master/czech.h
+	sha256sums = 5b7ce4614ee26a48a591f1ab629765848347239e0d19df38d071f3e7e16837a6
+
+pkgname = libczech
