@@ -1,8 +1,8 @@
 _name='papirus-icon-theme'
 pkgname="${_name}-stripped-git"
-pkgver=20211201.r3.g3bdf382
+pkgver=20220101.r1.g3518f91
 pkgrel=1
-pkgdesc="Papirus icon theme, stripped to only base variations."
+pkgdesc="Papirus icon theme, stripped to only base (default + dark) variations."
 url="https://github.com/PapirusDevelopmentTeam/${_name}"
 arch=('any')
 license=('GPL3')

@@ -1,6 +1,6 @@
 pkgbase = papirus-icon-theme-stripped-git
-	pkgdesc = Papirus icon theme, stripped to only base variations.
-	pkgver = 20211201.r3.g3bdf382
+	pkgdesc = Papirus icon theme, stripped to only base (default + dark) variations.
+	pkgver = 20220101.r1.g3518f91
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 	arch = any
