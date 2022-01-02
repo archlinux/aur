@@ -1,0 +1,23 @@
+pkgbase = v4l-utils-git
+	pkgdesc = Userspace tools and conversion library for Video 4 Linux
+	pkgver = 1.22.1.r46.gd4b70174
+	pkgrel = 1
+	url = https://linuxtv.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = alsa-lib
+	makedepends = qt5-base
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libjpeg-turbo
+	depends = sysfsutils
+	provides = v4l-utils
+	conflicts = v4l-utils
+	options = staticlibs
+	source = git+https://git.linuxtv.org/v4l-utils.git
+	sha256sums = SKIP
+
+pkgname = v4l-utils-git
