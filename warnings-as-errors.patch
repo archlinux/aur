@@ -1,0 +1,61 @@
+Fixed Typo: not_anonymous <nmlibertarian@gmail.com>
+Author: tony mancill <tmancill@debian.org>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=997190
+Forwarded: no
+
+--- qrq.c
++++ qrq.c
+@@ -259,7 +259,7 @@
+ 	printw("\nReading callsign database... ");
+ 	nrofcalls = read_callbase();
+ 
+-	printw("done. %d calls read.\n\n", nrofcalls);
++	printw("done. %ld calls read.\n\n", nrofcalls);
+ 	printw("Press any key to continue...");
+ 
+ 	refresh();
+@@ -763,7 +763,7 @@
+ 					"                  u", (unlimitedattempt ? "yes" : "no"));
+ 	if (!callnr) {
+ 		mvwprintw(conf_w,11,2, "Callsign database:     %-15s"
+-					"      d (%d)", basename(cbfilename),nrofcalls);
++					"      d (%ld)", basename(cbfilename),nrofcalls);
+ 	}
+ #ifdef OSS
+ 	mvwprintw(conf_w,12,2, "DSP device:            %-15s"
+@@ -1070,7 +1070,7 @@
+     }
+ 
+ 	mvwprintw(mid_w,13,1, " Written detailled summary of this attempt to:");
+-	mvwprintw(mid_w,14,2, filename);
++	mvwprintw(mid_w,14,2, "%s", filename);
+     wrefresh(mid_w);
+ 
+ }
+@@ -1083,7 +1083,7 @@
+ 		mvwprintw(top_w, 1, 27, "%6d", score);	
+ 	}
+ 	else {
+-		mvwprintw(top_w, 1, 27, "[training mode]", score);	
++		mvwprintw(top_w, 1, 27, "[training mode]");
+ 	}
+ 	mvwprintw(top_w, 2, 27, "%3d", speed);	
+ 	mvwprintw(top_w, 2, 35, "%3d", speed/5);	
+@@ -1392,7 +1392,7 @@
+ 			}
+ 			tmp[i]='\0';
+ 			samplerate = atoi(tmp);
+-			printw("  line  %2d: sample rate: %d\n", line, samplerate);
++			printw("  line  %2d: sample rate: %ld\n", line, samplerate);
+ 		}
+ 	}
+ 
+@@ -1894,7 +1894,7 @@
+ 					exit(EXIT_FAILURE);
+ 				}
+ 				printw("Files copied. You might want to edit "
+-						"qrqrc according to your needs.\n", homedir);
++						"qrqrc according to your needs.\n");
+ 				strcpy(rcfilename, homedir);
+ 				strcat(rcfilename, "/.qrq/qrqrc");
+ 				strcpy(tlfilename, homedir);
