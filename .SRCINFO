@@ -1,6 +1,6 @@
 pkgbase = emane
 	pkgdesc = Extendable Mobile Ad-hoc Network Emulator
-	pkgver = 1.2.6
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/adjacentlink/emane
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = emane
 	depends = python-lxml
 	optdepends = python: Python bindings
 	options = !libtool
-	source = https://github.com/adjacentlink/emane/archive/v1.2.6.tar.gz
-	md5sums = 28e0178b352d3d74a12dcbde1b0d6d06
+	source = https://github.com/adjacentlink/emane/archive/v1.3.3.tar.gz
+	sha512sums = c8fa1d19de41bb3362ad2db2560b92ecd96f6590edaf007ee1ad49ad0fe376e0419a8d0c05a310991cfba0c1d28ca5a877c197e4f430cbea8d2f302e72542e18
 
 pkgname = emane
-
