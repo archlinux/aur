@@ -1,9 +1,9 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=waynergy-git
-pkgver=r126.60a3d91
+pkgver=r176.aa06553
 pkgrel=1
-pkgdesc="Synergy client for wlroots wayland compositors"
+pkgdesc="Synergy client for wayland compositors"
 arch=(x86_64 armv7h)
 url="https://github.com/r-c-f/waynergy"
 license=('MIT')

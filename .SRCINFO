@@ -1,6 +1,6 @@
 pkgbase = waynergy-git
-	pkgdesc = Synergy client for wlroots wayland compositors
-	pkgver = r126.60a3d91
+	pkgdesc = Synergy client for wayland compositors
+	pkgver = r176.aa06553
 	pkgrel = 1
 	url = https://github.com/r-c-f/waynergy
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = waynergy-git
 	md5sums = SKIP
 
 pkgname = waynergy-git
-
