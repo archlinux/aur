@@ -24,6 +24,8 @@ package() {
     export GOPATH="${srcdir}"
     export PATH="${PATH}:${GOPATH}/bin"
 
+    echo "Installing in: $GOPATH"
+
     chmod +x install.sh
     ./install.sh
 }
