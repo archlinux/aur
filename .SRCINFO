@@ -1,6 +1,6 @@
 pkgbase = makedeb-alpha
 	pkgdesc = A simplicity-focused packaging tool for Debian archives (alpha release)
-	pkgver = 8.6.3
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = https://github.com/makedeb/makedeb
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = makedeb-alpha
 	replaces = makedeb-makepkg
 	replaces = makedeb-makepkg-beta
 	replaces = makedeb-makepkg-alpha
-	source = makedeb::git+https://github.com/makedeb/makedeb/#tag=v8.6.3-1-alpha
+	source = makedeb::git+https://github.com/makedeb/makedeb/#tag=v8.7.0-1-alpha
 	sha256sums = SKIP
 
 pkgname = makedeb-alpha
