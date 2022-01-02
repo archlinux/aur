@@ -3,13 +3,14 @@
 
 pkgname=shadowsocks-rust
 pkgver=1.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
 license=('MIT')
 depends=('openssl')
 makedepends=('cargo-nightly' 'libsodium')
+options=('!lto')
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
     'shadowsocks-rust@.service'
