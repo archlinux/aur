@@ -2,14 +2,14 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-devel
-pkgver=0.3.1
+pkgver=4.17.0
 pkgrel=1
 pkgdesc="D-Bus service for applications to request thumbnails"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://www.xfce.org/"
+url="https://docs.xfce.org/xfce/tumbler/start"
 license=('GPL2' 'LGPL')
 groups=('xfce4-devel')
-depends=('gdk-pixbuf2')
+depends=('gdk-pixbuf2' 'libxfce4util>=4.17.1')
 makedepends=('intltool' 'python' 'ffmpegthumbnailer' 'poppler-glib' 'libgsf'
              'libopenraw' 'freetype2' 'libgepub')
 optdepends=('ffmpegthumbnailer: for video thumbnails'
@@ -20,15 +20,11 @@ optdepends=('ffmpegthumbnailer: for video thumbnails'
             'libgepub: for epub thumbnails')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('e4a30f3c0656b5b29fcd4a2450293f20f283a95b7fb0754a947c55427784c454')
-
-prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
-}
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('bb34efefd8263396b8f1306528ba8fb1df5e51ccb7e974f05f509e487a435fa5')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -41,6 +37,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
