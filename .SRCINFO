@@ -1,6 +1,6 @@
 pkgbase = python-embit
 	pkgdesc = A minimal bitcoin library for MicroPython and Python3 focusing on embedded systems
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/diybitcoinhardware/embit
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-embit
 	makedepends = python-setuptools
 	depends = python3
 	optdepends = libsecp256k1
-	source = python-embit-0.4.10.tar.gz::https://github.com/diybitcoinhardware/embit/archive/v0.4.10.tar.gz
-	sha256sums = fe0e857e7f0b34bc54923b4f34ae77275cfb484bdb9b2680230c5034f06756ea
+	source = python-embit-0.4.11.tar.gz::https://github.com/diybitcoinhardware/embit/archive/v0.4.11.tar.gz
+	sha256sums = 23a402738439b8bb6dbd4a589c92e4e70adde8e3d7d259beef2d1bf41bedd79e
 
 pkgname = python-embit
