@@ -1,12 +1,12 @@
-# Maintainer: Moses Narrow <moe-narrow@use.startmail.com>
+# Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 # Contributor: locked_sh <locked.sh@disroot.org>
 # Contributor: Nicholas Wang <me@nicho1as.wang>
 
 pkgname=emercoin
 pkgver=0.7.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital currency and blockchain service platform"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://emercoin.com/"
 license=('GPL')
 depends=('boost-libs' 'miniupnpc' 'qt5-base' 'protobuf' 'qrencode' 'libevent')
@@ -23,7 +23,7 @@ sha256sums=('e65a0fd9c6a932dc08b9819a21180ff42bb62fc588243f1023c4aa42bd64ff93'
 prepare() {
 	cd "${pkgname}-${pkgver}emc"
 	patch -Np1 -i ${srcdir}/Fix-missing-include.patch #See https://doc.qt.io/Qt-5/qintvalidator.html for more details
-	#patch -Np1 -i ${srcdir}/Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch #See https://bugs.archlinux.org/task/60235 and https://github.com/bitcoin/bitcoin/issues/14273#issuecomment-424905851 for more details
+#	patch -Np1 -i ${srcdir}/Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch #See https://bugs.archlinux.org/task/60235 and https://github.com/bitcoin/bitcoin/issues/14273#issuecomment-424905851 for more details
 }
 
 build() {
@@ -34,12 +34,14 @@ build() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}emc"
-	make DESTDIR="${pkgdir}/" install
+	cd ${pkgname}-${pkgver}emc
+	make DESTDIR=${pkgdir}/ install
 	install -Dm644 ${srcdir}/emercoin-qt.desktop ${pkgdir}/usr/share/applications/emercoin.desktop
 	install -Dm644 src/qt/res/icons/emercoin.png ${pkgdir}/usr/share/pixmaps/emercoin.png
-#	install -Dm644 contrib/debian/emercoin.conf "$pkgdir/etc/emercoin.conf"
-#	install -Dm644 contrib/debian/emercoind.service	"$pkgdir/usr/lib/systemd/system/emercoind.service"
+#	install -Dm644 contrib/debian/emercoin.conf \
+#		"$pkgdir/etc/emercoin.conf"
+#	install -Dm644 contrib/debian/emercoind.service \
+#		"$pkgdir/usr/lib/systemd/system/emercoind.service"
 	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
-  rm -rf ${pkgdir}/usr/share/man/man1 #bitcoin conflict
+  mv  ${pkgdir}/usr/share/man/man1 ${pkgdir}/usr/share/man/man2
 }
