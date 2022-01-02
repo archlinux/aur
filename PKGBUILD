@@ -2,8 +2,8 @@
 # Based on the PKGBUILD for gdlauncher.
 pkgname="gdlauncher-beta"
 _pkgname="gdlauncher"
-pkgver="1.1.20"
-_pkgver="1.1.20"
+pkgver="1.1.21"
+_pkgver="1.1.21"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -15,7 +15,7 @@ conflicts=('gdlauncher' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlauncher-
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${_pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
-md5sums=('4aea6eb0dadc828ac1bad2b64a05550a'
+md5sums=('5cb1174a425a3fe0064456d420857078'
          '68c75869fe0898c54699b9a5eb667d7b')
 
 prepare() {
