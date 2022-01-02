@@ -1,37 +1,34 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-
-pkgname=qilin-bin
-_pkgver=0.4.0-alpha
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+_base=qilin
+pkgname=${_base}-bin
 pkgver=0.4.0.alpha
 pkgrel=1
-pkgdesc="Fully hackable text editor developed for exact sciences with built-in KaTeX and AsciiMath support. Extensible via plugins and themes. Exportable as HTML, PDF and GFM"
+pkgdesc="Fully hackable text editor developed for exact sciences with built-in KaTeX and AsciiMath support"
 arch=('x86_64')
-url='https://github.com/qilin-editor/qilin-app'
-license=('MIT')
-provides=("${pkgname%-bin}")
-depends=('gconf'
-         'gtk3'
-         'libxss'
-         'nss')
-source=("${pkgname}-${pkgver}.zip::https://github.com/qilin-editor/qilin-app/releases/download/v${_pkgver}/qilin-linux.zip"
-        'LICENSE::https://github.com/qilin-editor/qilin-app/raw/development/LICENSE'
-        'qilin.jpg')
-sha256sums=('ecbece01202b798b302888c90afc1f17a724724e7a2804c7b6099a2878e146b9'
-            'ec0396128f95d9c57076bbcc334684707c145530bc799ce5c55abdd903935bfe'
-            'SKIP')
+url="https://github.com/${_base}-editor/${_base}-app"
+license=(MIT)
+provides=("${_base}")
+depends=(gconf gtk3 libxss nss)
+makedepends=(gendesk)
+source=(${url}/releases/download/v${pkgver/.alpha/-alpha}/${_base}-linux.zip
+  ${_base}.jpg)
+sha512sums=('6487a63a2b2a8e1d94d1eb9847ab1112e80019aee999a0cdf3461ebdd719e6e7f3b5b1f0016adfd8f7158c50d4675b15e6c9a388023f156fff4a54f281d96c7f'
+  'SKIP')
 
 package() {
+  rm linux64/.DS_Store
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
   cp -vR linux64 "${pkgdir}/opt/Qilin"
-  ln -s /opt/Qilin/me.laniewski.qilin "${pkgdir}/usr/bin/qilin"
-  gendesk -f -n --pkgname "${pkgname}" \
-          --pkgdesc "$pkgdesc" \
-          --name "Qilin Editor" \
-          --comment "$pkgdesc" \
-          --exec "${pkgname}" \
-          --categories 'Utility;Application;' \
-          --icon "${pkgname}"
-  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  ln -s "${pkgdir}/opt/Qilin/me.laniewski.qilin" "${pkgdir}/usr/bin/qilin"
+  gendesk -f -n \
+    --pkgname "${_base}" \
+    --pkgdesc "${pkgdesc}" \
+    --name "Qilin Editor" \
+    --comment "${pkgdesc}" \
+    --exec "${pkgname}" \
+    --categories 'Utility;Application;' \
+    --icon "${pkgname}"
+  install -Dm644 "${_base}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 qilin.jpg -t "${pkgdir}/usr/share/pixmaps/"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
