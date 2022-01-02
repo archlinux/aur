@@ -10,6 +10,7 @@ pkgbase = sprunge
 	depends = python
 	optdepends = xclip: default Xorg clipboard functionality
 	optdepends = wl-clipboard: default Wayland clipboard functionality
+	depends = python-requests
 	conflicts = sprunge-git
 	source = https://github.com/kevr/sprunge/archive/refs/tags/0.7.tar.gz
 	sha256sums = 3c2186a63824e19bdf04fc4d9cc8790eb316d79278b909e7ae947f8c79a37c9d
