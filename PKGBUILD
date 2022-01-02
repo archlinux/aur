@@ -1,25 +1,25 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
-pkgbase=uwsgi-fix
+pkgbase=uwsgi-ng
 _pkgbase=uwsgi
 pkgname=(
-  uwsgi-fix
-  uwsgi-fix-plugin-rack
-  uwsgi-fix-plugin-psgi
-  uwsgi-fix-plugin-cgi
-  uwsgi-fix-plugin-python
-  uwsgi-fix-plugin-pypy
-  uwsgi-fix-plugin-php
-  uwsgi-fix-plugin-php7
-  uwsgi-fix-plugin-lua51
-  uwsgi-fix-plugin-mono
-  uwsgi-fix-plugin-webdav
-  uwsgi-fix-plugin-zabbix
-  uwsgi-fix-plugin-notfound
+  uwsgi-ng
+  uwsgi-ng-plugin-rack
+  uwsgi-ng-plugin-psgi
+  uwsgi-ng-plugin-cgi
+  uwsgi-ng-plugin-python
+  uwsgi-ng-plugin-pypy
+  uwsgi-ng-plugin-php
+  uwsgi-ng-plugin-php7
+  uwsgi-ng-plugin-lua51
+  uwsgi-ng-plugin-mono
+  uwsgi-ng-plugin-webdav
+  uwsgi-ng-plugin-zabbix
+  uwsgi-ng-plugin-notfound
 )
 pkgver=2.0.20
-pkgrel=3
-pkgdesc="A full stack for building hosting services with last patches."
+pkgrel=1
+pkgdesc="Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch)"
 arch=(x86_64)
 url="https://uwsgi-docs.readthedocs.io/en/latest/"
 license=(GPL2)
@@ -114,7 +114,7 @@ build() {
   python uwsgiconfig.py --verbose --plugin plugins/php7 archlinux php7
 }
 
-package_uwsgi-fix() {
+package_uwsgi-ng() {
   depends=('glibc' 'jansson' 'libcap.so' 'libcrypt.so' 'libpam.so' 'libxml2'
   'libsystemd.so' 'libuuid.so' 'openssl' 'pcre' 'zlib')
   conflicts=('uwsgi')
@@ -123,6 +123,7 @@ package_uwsgi-fix() {
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 "${_pkgbase}" -t "$pkgdir/usr/bin/"
+  install -vDm 755 "${_pkgbase}" -t "$pkgdir/etc/uwsgi/vassals/"
   install -vDm 644 ../uwsgi_at.service "$pkgdir"/usr/lib/systemd/system/uwsgi@.service
   install -vDm 644 ../uwsgi_at.socket "$pkgdir"/usr/lib/systemd/system/uwsgi@.socket
   install -vDm 644 ../emperor.uwsgi.service "$pkgdir"/usr/lib/systemd/system/emperor.uwsgi.service
@@ -133,17 +134,17 @@ package_uwsgi-fix() {
   install -vDm 644 ../uwsgi.sysusers "$pkgdir"/usr/lib/sysusers.d/uwsgi.conf
 }
 
-package_uwsgi-fix-plugin-cgi() {
+package_uwsgi-ng-plugin-cgi() {
   pkgdesc+=" (CGI plugin)"
-  depends=('glibc' 'uwsgi-fix')
+  depends=('glibc' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-cgi')
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 cgi_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-rack() {
-  depends=('glibc' 'ruby' 'uwsgi-fix')
+package_uwsgi-ng-plugin-rack() {
+  depends=('glibc' 'ruby' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-rack')
   pkgdesc="Ruby rack plugin"
 
@@ -151,20 +152,20 @@ package_uwsgi-fix-plugin-rack() {
   install -vDm 755 {rack,fiber,rbthreads}_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-psgi() {
+package_uwsgi-ng-plugin-psgi() {
   pkgdesc+=" (Perl psgi plugin)"
-  depends=('glibc' 'perl' 'uwsgi-fix')
+  depends=('glibc' 'perl' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-psgi')
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 psgi_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-python() {
+package_uwsgi-ng-plugin-python() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   pkgdesc+=" (Python plugin)"
-  depends=('glibc' 'python' 'python-gevent' 'python-greenlet' 'uwsgi-fix')
+  depends=('glibc' 'python' 'python-gevent' 'python-greenlet' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-python')
 
   cd "$_pkgbase-$pkgver"
@@ -174,9 +175,9 @@ package_uwsgi-fix-plugin-python() {
   python -O -m compileall "${pkgdir}${site_packages}"
 }
 
-package_uwsgi-fix-plugin-pypy() {
+package_uwsgi-ng-plugin-pypy() {
   pkgdesc+=" (PyPy plugin)"
-  depends=('glibc' 'pypy' 'uwsgi-fix')
+  depends=('glibc' 'pypy' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-pypy')
 
   cd "$_pkgbase-$pkgver"
@@ -186,36 +187,36 @@ package_uwsgi-fix-plugin-pypy() {
   pypy -O -m compileall "$pkgdir"/opt/pypy/site-packages/
 }
 
-package_uwsgi-fix-plugin-lua51() {
+package_uwsgi-ng-plugin-lua51() {
   pkgdesc+=" (LUA plugin)"
-  depends=('glibc' 'lua51' 'uwsgi-fix')
+  depends=('glibc' 'lua51' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-lua51')
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 lua_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-php() {
+package_uwsgi-ng-plugin-php() {
   pkgdesc+=" (PHP plugin)"
-  depends=('glibc' 'php-embed' 'uwsgi-fix')
+  depends=('glibc' 'php-embed' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-php')
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 php_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-php7() {
+package_uwsgi-ng-plugin-php7() {
   pkgdesc+=" (PHP7 plugin)"
-  depends=('glibc' 'php7-embed' 'uwsgi-fix')
+  depends=('glibc' 'php7-embed' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-php7')
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 php7_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-mono() {
+package_uwsgi-ng-plugin-mono() {
   pkgdesc+=" (mono plugin)"
-  depends=('glibc' 'mono' 'uwsgi-fix')
+  depends=('glibc' 'mono' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-mono')
 
   cd "$_pkgbase-$pkgver"
@@ -223,27 +224,27 @@ package_uwsgi-fix-plugin-mono() {
   install -vDm 755 mono_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-webdav() {
+package_uwsgi-ng-plugin-webdav() {
   pkgdesc+=" (WebDav plugin)"
-  depends=('glibc' 'libxml2' 'uwsgi-fix')
+  depends=('glibc' 'libxml2' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-webdav')
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 webdav_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-zabbix() {
+package_uwsgi-ng-plugin-zabbix() {
   pkgdesc+=" (zabbix plugin)"
-  depends=('glibc' 'uwsgi-fix')
+  depends=('glibc' 'uwsgi-ng')
   conflicts=('uwsgi-plugin-zabbix')
 
   cd "$_pkgbase-$pkgver"
   install -vDm 755 zabbix_plugin.so -t "$pkgdir"/usr/lib/uwsgi/
 }
 
-package_uwsgi-fix-plugin-notfound() {
+package_uwsgi-ng-plugin-notfound() {
   pkgdesc+=" (notfound plugin)"
-  depends=('uwsgi-fix')
+  depends=('uwsgi-ng')
   conflicts=('uwsgi-plugin-notfound')
 
   cd "$_pkgbase-$pkgver"
