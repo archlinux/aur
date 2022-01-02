@@ -8,31 +8,25 @@ pkgdesc='A modern frontend for Neovim'
 arch=('x86_64')
 url='https://github.com/rohit-px2/nvui'
 license=('MIT')
-depends=(
-    'boost'
-    'fmt'
-    'msgpack-cxx'
-    'qt5-base'
-    'qt5-svg'
-    'hicolor-icon-theme'
-)
-makedepends=(
-    'git'
-    'cmake'
-    'ninja'
-    'catch2'
-)
+depends=('boost'
+         'fmt'
+         'msgpack-cxx'
+         'qt5-base'
+         'qt5-svg'
+         'hicolor-icon-theme')
+makedepends=('git'
+             'cmake'
+             'ninja'
+             'catch2')
 source=(
     "$pkgname::git+$url.git"
     nvui.desktop
     nvui.sh
 )
 conflict=('nvui')
-sha256sums=(
-	'SKIP'
-	'529e087f9ea5d212c05e1cfd7da51f5e5718acc186a1925f937707c641ebd509'
-	'987f46b07c32efbb5f1ef4783204d15b6d8be32833cb7732d4752eb4fb5b9a08'
-)
+sha256sums=('SKIP'
+            '529e087f9ea5d212c05e1cfd7da51f5e5718acc186a1925f937707c641ebd509'
+            '5c46fe8a031fb2a72285e01ed5bbcad94a44d5347ed4827c8fe0cdcbd0807733')
 
 pkgver() {
   cd "$pkgname"
