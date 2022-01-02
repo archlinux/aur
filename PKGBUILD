@@ -6,7 +6,7 @@
 
 _pkgname=wireplumber
 pkgname="${_pkgname}-git"
-pkgver=0.4.4.r19.g4d5f959
+pkgver=0.4.5.r46.ge04acbd
 pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'lua' 'libgio-2.0.so' 'libglib-2.0.so'
   'libgmodule-2.0.so' 'libgobject-2.0.so' 'libpipewire-0.3.so')
 makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire'
-  'hotdoc' 'doxygen' 'glib2'  'python-breathe' 'python-sphinx_rtd_theme'
+  'doxygen' 'glib2'  'python-breathe' 'python-sphinx_rtd_theme'
   'python-sphinx' 'systemd' 'git')
 checkdepends=('pipewire-alsa' 'pipewire-jack' 'pipewire-pulse')
 install='wireplumber.install'
