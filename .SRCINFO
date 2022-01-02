@@ -5,7 +5,7 @@ pkgbase = onivim2-git
 	url = https://github.com/onivim/oni2
 	install = onivim2.install
 	arch = x86_64
-	license = custom:OutrunLabsEULA
+	license = MIT
 	makedepends = git
 	makedepends = esy
 	makedepends = ragel
@@ -45,4 +45,3 @@ pkgbase = onivim2-git
 	b2sums = d6e0ad8b9755f1e809d5ffc0a23a5f53455468cfed80a2946f9a1901cc3b31b79250b1b418f6cfffe6f14a521f0eaef3370f06e1babeafb84358e7906becbc44
 
 pkgname = onivim2-git
-

@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
 arch=('x86_64')
 url='https://github.com/onivim/oni2'
-license=('custom:OutrunLabsEULA')
+license=('MIT')
 makedepends=('git' 'esy' 'ragel' 'nodejs' 'wget' 'bzip2' 'esy' 'fontconfig' 'fuse2' 'git' 'glu' 'gtk3' 'harfbuzz'
               'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxinerama' 'libxrandr'
               'libxt' 'libxxf86vm' 'm4' 'nasm' 'python2' 'clang' 'node-gyp')
