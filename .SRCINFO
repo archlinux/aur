@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-svg-static
 	pkgdesc = Classes for displaying the contents of SVG files (mingw-w64)
-	pkgver = 5.15.2+kde+r7
+	pkgver = 5.15.2+kde+r14
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-svg-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtsvg#commit=cfc616978b52a396b2ef6900546f7fc086d7cab3
+	source = git+https://invent.kde.org/qt/qt/qtsvg#commit=5b9285c34731e67f9f1d61ec804740991f2a0380
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-svg-static
