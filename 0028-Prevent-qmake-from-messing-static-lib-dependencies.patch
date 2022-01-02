@@ -1,4 +1,4 @@
-From 87e93f22eb181ef34e5a655ccdb112152174b118 Mon Sep 17 00:00:00 2001
+From e7b960e2af57c99d6843be5b8a59f8b72ce426a7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
 Subject: [PATCH 28/32] Prevent qmake from messing static lib dependencies
@@ -41,5 +41,5 @@ index 03732df4a8..602f7609f5 100644
      int libidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 -- 
-2.33.0
+2.34.1
 
