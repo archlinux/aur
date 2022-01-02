@@ -4,23 +4,24 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-git
-pkgver=0.3.1+0+g7a67abf
+pkgver=4.17.0+1+gb38db8a
 pkgrel=1
-pkgdesc="Thumbnail generator for Thunar GIO branches - git checkout"
+pkgdesc="D-Bus service for applications to request thumbnails (git checkout)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-url='https://gitlab.xfce.org/xfce/tumbler/-/blob/master/README'
+url="https://docs.xfce.org/xfce/tumbler/start"
 license=(GPL2)
 groups=('xfce4-git')
-depends=('gdk-pixbuf2')
-makedepends=('ffmpegthumbnailer' 'freetype2' 'git' 'libgsf' 'libopenraw' 'poppler-glib' 'xfce4-dev-tools' 'libgepub')
+depends=('gdk-pixbuf2' 'libxfce4util>=4.17.1')
+makedepends=('ffmpegthumbnailer' 'freetype2' 'libgsf' 'libopenraw' 'poppler-glib'
+             'libgepub' 'xfce4-dev-tools' 'git')
 optdepends=('ffmpegthumbnailer: for video thumbnails'
             'poppler-glib: for PDF thumbnails'
             'libgsf: for ODF thumbnails'
             'libopenraw: for RAW thumbnails'
             'freetype2: for font thumbnails'
             'libgepub: for epub thumbnails')
-provides=(${_pkgname}=$pkgver)
-conflicts=(${_pkgname})
+provides=("${_pkgname}=${pkgver%%+*}")
+conflicts=("${_pkgname}")
 source=(${_pkgname}::git+https://gitlab.xfce.org/xfce/tumbler.git)
 sha256sums=('SKIP')
 

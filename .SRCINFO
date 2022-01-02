@@ -1,8 +1,8 @@
 pkgbase = tumbler-git
-	pkgdesc = Thumbnail generator for Thunar GIO branches - git checkout
-	pkgver = 0.3.1+0+g7a67abf
+	pkgdesc = D-Bus service for applications to request thumbnails (git checkout)
+	pkgver = 4.17.0+1+gb38db8a
 	pkgrel = 1
-	url = https://gitlab.xfce.org/xfce/tumbler/-/blob/master/README
+	url = https://docs.xfce.org/xfce/tumbler/start
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -11,23 +11,23 @@ pkgbase = tumbler-git
 	license = GPL2
 	makedepends = ffmpegthumbnailer
 	makedepends = freetype2
-	makedepends = git
 	makedepends = libgsf
 	makedepends = libopenraw
 	makedepends = poppler-glib
-	makedepends = xfce4-dev-tools
 	makedepends = libgepub
+	makedepends = xfce4-dev-tools
+	makedepends = git
 	depends = gdk-pixbuf2
+	depends = libxfce4util>=4.17.1
 	optdepends = ffmpegthumbnailer: for video thumbnails
 	optdepends = poppler-glib: for PDF thumbnails
 	optdepends = libgsf: for ODF thumbnails
 	optdepends = libopenraw: for RAW thumbnails
 	optdepends = freetype2: for font thumbnails
 	optdepends = libgepub: for epub thumbnails
-	provides = tumbler=0.3.1+0+g7a67abf
+	provides = tumbler=4.17.0
 	conflicts = tumbler
 	source = tumbler::git+https://gitlab.xfce.org/xfce/tumbler.git
 	sha256sums = SKIP
 
 pkgname = tumbler-git
-
