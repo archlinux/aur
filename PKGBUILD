@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=6
 pkgrel=1
-pkgver=8.0.0.r30546.85c0a085ded7
+pkgver=8.0.0.r30587.5d379d2ad903
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ build() {
   cd build
   ../configure QCOLLECTIONGENERATOR=qhelpgenerator-qt5 CXXFLAGS="$CXXFLAGS -fcommon" \
 	       --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
-	       --with-umfpack --disable-java --with-hdf5 --enable-docs 
+	       --with-umfpack --disable-java --with-hdf5 --disable-docs 
   make
 }
 
