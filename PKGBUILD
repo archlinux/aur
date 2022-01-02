@@ -11,7 +11,7 @@ pkgdesc="Flashrom is a utility which can be used to detect, read, erase, or writ
 url="https://github.com/${_gitauthor}/${_gitname}"
 license=('GPL')
 source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
-depends=('libftdi' 'libusb' 'pciutils')
+depends=('libftdi' 'pciutils')
 makedepends=('git' 'meson')
 optdepends=("dmidecode: for SMBIOS/DMI table decoder support")
 conflicts=("${_gitname}")
@@ -19,7 +19,7 @@ provides=("${_gitname}")
 replaces=("${_gitname}-svn")
 sha512sums=('SKIP')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-pkgver=v1.2.r562.g50720a4b
+pkgver=v1.2.r564.gdda19339
 pkgrel=1
 
 pkgver() {
