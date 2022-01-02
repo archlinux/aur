@@ -1,0 +1,15 @@
+pkgbase = rxargs-git
+	pkgdesc = Regex argument substitution for command-line wizardry
+	pkgver = 0.1.0.r0.891e55e
+	pkgrel = 1
+	url = https://github.com/dyeo/rxargs
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = rxargs
+	source = git+https://github.com/dyeo/rxargs.git
+	md5sums = SKIP
+
+pkgname = rxargs-git
