@@ -1,13 +1,13 @@
 pkgbase = toml2json
 	pkgdesc = A very small CLI for converting TOML to JSON
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/woodruffw/toml2json
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = toml2json-1.2.0.tar.gz::https://github.com/woodruffw/toml2json/archive/v1.2.0.tar.gz
-	sha256sums = 6641cc5c6a72ba5692f20388df147898d9b93645237dcb035b33869c17346e1f
+	source = toml2json-1.3.0.tar.gz::https://github.com/woodruffw/toml2json/archive/v1.3.0.tar.gz
+	sha256sums = fcd5fa3cb72bc108f0ad133ac53e793f407e373adfec07de07f62da77a787c50
 
 pkgname = toml2json
