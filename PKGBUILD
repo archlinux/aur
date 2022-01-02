@@ -18,6 +18,11 @@ sha512sums=('SKIP'
             'SKIP')
 validpgpkeys=('DE9F7688CACF04FEB81A6C590AEEC90755DA7B5A')
 
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
 package() {
     cd ${_pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
