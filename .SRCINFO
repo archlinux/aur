@@ -1,19 +1,14 @@
 pkgbase = python-fastmat
-	pkgdesc = fastmat is a python package for fast lineare transforms
-	pkgver = 0.1.1
+	pkgdesc = fast linear transforms in Python
+	pkgver = 0.2.post0
 	pkgrel = 1
-	url = https://github.com/EMS-TU-Ilmenau/fastmat
+	url = https://pypi.org/project/fastmat
 	arch = x86_64
-	license = Apache
+	license = Apache2
 	makedepends = cython
-	makedepends = gcc
-	makedepends = python-numpy
-	makedepends = python-scipy
 	makedepends = python-setuptools
-	depends = python-numpy
 	depends = python-scipy
-	source = https://github.com/EMS-TU-Ilmenau/fastmat/archive/0.1.1.zip
-	sha256sums = cf5d5a4cb869a79ed5ce748cd0e267caa7a0d6690cd836cc35b437924f339f7f
+	source = https://pypi.org/packages/source/f/fastmat/fastmat-0.2.post0.tar.gz
+	sha512sums = a1735f92e7088a915f352480beece7b95e4efd6d75062fbaabc727b28fe0927e70aecf37f592a0e43320ab7536d2602835ddc17524ae24b2d89c309ffd3aea66
 
 pkgname = python-fastmat
-

@@ -1,25 +1,26 @@
-# Maintainer: Labello < seb.semper at gmail >
-
-pkgname=('python-fastmat')
-pkgver=0.1.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Labello <sebastian.semper@tu-ilmenau.de>
+_base=fastmat
+pkgname=python-${_base}
+pkgver=0.2.post0
 pkgrel=1
-pkgdesc="fastmat is a python package for fast lineare transforms"
+pkgdesc="fast linear transforms in Python"
 arch=('x86_64')
-url="https://github.com/EMS-TU-Ilmenau/fastmat"
-license=('Apache')
-makedepends=('cython' 'gcc' 'python-numpy' 'python-scipy' 'python-setuptools')
-depends=('python-numpy' 'python-scipy')
-source=(
-	"https://github.com/EMS-TU-Ilmenau/fastmat/archive/${pkgver}.zip"
-)
-sha256sums=(
-	cf5d5a4cb869a79ed5ce748cd0e267caa7a0d6690cd836cc35b437924f339f7f
-)
+url="https://pypi.org/project/${_base}"
+license=(Apache2)
+depends=(python-scipy)
+makedepends=(cython python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('a1735f92e7088a915f352480beece7b95e4efd6d75062fbaabc727b28fe0927e70aecf37f592a0e43320ab7536d2602835ddc17524ae24b2d89c309ffd3aea66')
+
 build() {
-	cd fastmat-${pkgver}
-	make compile
+  cd ${_base}-${pkgver}
+  make compile
 }
+
 package() {
-	cd fastmat-${pkgver}
-	python setup.py install --root="$pkgdir/" --optimize=1
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
