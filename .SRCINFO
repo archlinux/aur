@@ -1,15 +1,12 @@
 pkgbase = anonip
 	pkgdesc = Anonip is a tool to anonymize IP-addresses in log-files.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/DigitaleGesellschaft/Anonip
 	arch = any
 	license = BSD
 	depends = python
-	source = https://github.com/DigitaleGesellschaft/Anonip/archive/v1.0.0.tar.gz
-	source = LICENSE
-	sha256sums = ee34c76817d32aa97cf96451a9005948bddbdaaa0dc93b3583d1fa1ace61d454
-	sha256sums = bfb9e7ead9baa5171df9f9fe24e93a917cd9903cc9e0bcc3cdf948f33bbb89ad
+	source = https://github.com/DigitaleGesellschaft/Anonip/archive/v1.1.0.tar.gz
+	sha256sums = 3511892021367165a13fffcb4483b4fc85a004d888708e2e365b514554779012
 
 pkgname = anonip
-
