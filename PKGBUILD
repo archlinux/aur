@@ -5,8 +5,8 @@
 
 pkgname=hmcl-dev
 _pkgname=hmcl
-pkgver=3.5.2.215
-_commit=ebe880bd39825efc0cbfb1a2a78e4b55c09d188e
+pkgver=3.5.2.216
+_commit=836c7769f6a5142cf3c39cf925480580f78b75ec
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)"
 arch=('any')
