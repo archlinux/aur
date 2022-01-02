@@ -1,0 +1,6 @@
+/gnulib
+/grub-extras
+/grub
+/pkg
+/src
+*.pkg.*
