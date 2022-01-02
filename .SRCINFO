@@ -1,0 +1,13 @@
+pkgbase = harulake
+	pkgdesc = HaruLake - Help you pack a ctpkg
+	pkgver = 2
+	pkgrel = 2
+	url = https://ruzhtw.top/2022/01/02/How-to-make-a-ctpm-package
+	arch = x86_64
+	license = GPL-3.0 License
+	depends = fish
+	provides = harulake
+	source = https://raw.githubusercontent.com/TeaHouseLab/harulake/main/app
+	sha256sums = SKIP
+
+pkgname = harulake
