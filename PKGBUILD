@@ -79,10 +79,10 @@
 _major=5.15
 _minor=12
 _srcname=linux-${_major}
-_clr=${_major}.11-1110
+_clr=${_major}.12-1113
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
