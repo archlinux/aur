@@ -2,8 +2,8 @@
 pkgname=minetest-colour-hop
 _pkgname=colourhop
 _pkgauthor=talas
-pkgver=1.0.2
-_cdbrel=10151
+pkgver=1.1.2
+_cdbrel=10402
 pkgrel=1
 pkgdesc="Help the jumping blobs defeat the evil dragons and bring colour back to the world."
 license=("GPLv3")
