@@ -35,7 +35,6 @@ prepare() {
   sed -i "/MFTranscodeContainerType_MPEG4/d" VTK/IO/Movie/vtkMP4Writer.cxx
   # We have a patched libharu
   sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
-  sed -i "18i#undef STRICT" VTK/ThirdParty/libproj/vtk_libproj.h.in
 }
 
 build() {
