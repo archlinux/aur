@@ -7,6 +7,7 @@ pkgbase = xrdp
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7l
 	arch = aarch64
 	license = Apache
 	makedepends = nasm
