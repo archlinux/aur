@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r413.ge2622fe45
+pkgver=1.4.0.development.snapshot.006.r420.gad83b4b57
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -47,13 +47,11 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  _release_id=$(scripts/mumble-version.py -f version)
 
   cmake \
     -B build \
     -DCMAKE_BUILD_TYPE:STRING='None' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DRELEASE_ID:STRING="$_release_id" \
     -Dwarnings-as-errors:BOOL='OFF' \
     -Dclient:BOOL='ON' \
     -Dserver:BOOL='OFF' \

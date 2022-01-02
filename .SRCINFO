@@ -1,6 +1,6 @@
 pkgbase = mumble-git
 	pkgdesc = An Open Source, low-latency, high quality voice chat software (git version)
-	pkgver = 1.4.0.development.snapshot.006.r413.ge2622fe45
+	pkgver = 1.4.0.development.snapshot.006.r420.gad83b4b57
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mumble.info
