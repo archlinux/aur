@@ -1,7 +1,7 @@
-pkgbase = oil
+pkgbase = oil-search
 	pkgdesc = Search-as-you-type cli frontend for the buku bookmarks manager using peco.
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AndreiUlmeyda/oil
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = oil
 	depends = peco
 	depends = jq
 	depends = xsel
-	source = https://github.com/AndreiUlmeyda/oil/archive/refs/tags/0.3.2.tar.gz
+	source = oil-search-0.3.2.tar.gz::https://github.com/AndreiUlmeyda/oil/archive/refs/tags/0.3.2.tar.gz
 	sha256sums = 065f4bdcff8ef6642cb1b5fe9c8e95844be26e9a4935859672528b0f76d08adb
 
-pkgname = oil
+pkgname = oil-search
