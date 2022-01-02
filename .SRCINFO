@@ -1,0 +1,14 @@
+pkgbase = python-jsonstream
+	pkgdesc = Load multiple delimited JSON documents from a single string or file-like object
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Dunes/json_stream
+	arch = any
+	license = mit
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/10/51/711ce898fe7d9f489cdb0e8a71f577ea00a4adbdb32d4e0bf9b4e0cc6bf8/jsonstream-0.0.1.tar.gz
+	sha256sums = 1fde9fd4ee3a8ad028bbe91489c4544980c930974289f2409d964e35a5623543
+
+pkgname = python-jsonstream
