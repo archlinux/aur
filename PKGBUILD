@@ -3,7 +3,7 @@
 _base=qilin
 pkgname=${_base}-bin
 pkgver=0.4.0.alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully hackable text editor developed for exact sciences with built-in KaTeX and AsciiMath support"
 arch=('x86_64')
 url="https://github.com/${_base}-editor/${_base}-app"
@@ -20,7 +20,7 @@ package() {
   rm linux64/.DS_Store
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
   cp -vR linux64 "${pkgdir}/opt/Qilin"
-  ln -s "${pkgdir}/opt/Qilin/me.laniewski.qilin" "${pkgdir}/usr/bin/qilin"
+  ln -s /opt/Qilin/me.laniewski.qilin "${pkgdir}/usr/bin/qilin"
   gendesk -f -n \
     --pkgname "${_base}" \
     --pkgdesc "${pkgdesc}" \

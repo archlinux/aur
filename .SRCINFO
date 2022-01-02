@@ -1,7 +1,7 @@
 pkgbase = qilin-bin
 	pkgdesc = Fully hackable text editor developed for exact sciences with built-in KaTeX and AsciiMath support
 	pkgver = 0.4.0.alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qilin-editor/qilin-app
 	arch = x86_64
 	license = MIT
