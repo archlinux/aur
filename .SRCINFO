@@ -1,6 +1,6 @@
 pkgbase = virtio-win
-	pkgdesc = virtio drivers for Windows (2000, XP, Vista, 7, 8, 10) guests
-	pkgver = 0.1.208.1
+	pkgdesc = virtio drivers for Windows 7 and newer guests
+	pkgver = 0.1.208.2
 	pkgrel = 1
 	url = https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
 	changelog = virtio-win.changelog
