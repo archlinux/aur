@@ -1,0 +1,15 @@
+pkgbase = rbmenu-tui
+	pkgdesc = Terminal User Interface for RBMenu
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = https://github.com/DevHyperCoder/rbmenu-tui
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = rbmenu
+	source = https://github.com/DevHyperCoder/rbmenu-tui/archive/v0.6.1.zip
+	md5sums = SKIP
+
+pkgname = rbmenu-tui
