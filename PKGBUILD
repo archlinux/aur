@@ -1,7 +1,7 @@
 pkgname=tribler
 _pkgname=tribler
-pkgver=7.10.0
-pkgrel=2
+pkgver=7.11.0
+pkgrel=1
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
 url="http://tribler.org"
@@ -34,13 +34,15 @@ python-service-identity
 python-twisted
 python-yaml
 python-sentry_sdk
-python-yappi)
+python-yappi
+python-pydantic
+python-anyio)
 source=(
 https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler-v$pkgver.tar.xz
 https://github.com/G-P-L/AUR/raw/master/Tribler/Tribler.desktop
 https://github.com/G-P-L/AUR/raw/master/Tribler/tribler.sh)
 
-sha256sums=('09564e54e592d1fbdf835c838961516b8bf84e9ce5f11315050eb3d086f885f4'
+sha256sums=('7d66df1bced7dad9758fd60478bbffd211541f55fb898350562a1eb22043d039'
             '6b7ae61a0679a468860e5cc735f30185883088b1668c4193fcc05382cdd5173f'
             'b357229d5decc3ff3d0e5ec25907258b2372a5ee93462950e4283c664cdcc776')
 
