@@ -1,6 +1,6 @@
 pkgbase = podman-compose-git
 	pkgdesc = A script to run docker-compose.yml using podman
-	pkgver = 0.1.6dev.r41.efcbc75
+	pkgver = 1.0.3.r17.0bd493f
 	pkgrel = 1
 	url = https://github.com/containers/podman-compose
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = podman-compose-git
 	makedepends = python-setuptools
 	depends = podman
 	depends = python-yaml
+	depends = python-dotenv
+	optdepends = podman-dnsname: the containers will be able to resolve each other if they are on the same CNI network
 	provides = podman-compose
 	conflicts = podman-compose
 	source = podman-compose::git+https://github.com/containers/podman-compose#branch=devel
 	sha256sums = SKIP
 
 pkgname = podman-compose-git
-
