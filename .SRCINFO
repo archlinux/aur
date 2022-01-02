@@ -1,7 +1,7 @@
 pkgbase = ted
 	pkgdesc = Lightweight RTF text processor
 	pkgver = 2.23
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.nllgg.nl/Ted/
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = ted
 	depends = libxpm
 	depends = pcre
 	depends = zlib
-	options = !buildflags
+	options = !makeflags
 	source = https://ftp.nluug.nl/pub/editors/ted/ted-2.23.src.tar.gz
 	source = https://ftp.nluug.nl/pub/editors/ted/ted_nl_NL.tar.gz
 	source = https://ftp.nluug.nl/pub/editors/ted/ted_en_GB.tar.gz

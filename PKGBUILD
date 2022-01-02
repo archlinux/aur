@@ -4,14 +4,14 @@
 
 pkgname=ted
 pkgver=2.23
-pkgrel=10
+pkgrel=11
 pkgdesc="Lightweight RTF text processor"
 arch=('x86_64')
 url="https://www.nllgg.nl/Ted/"
 depends=('freetype2' 'ghostscript' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
 license=('GPL')
 makedepends=('inetutils' 'lsb-release')    # hostname and lsb_release commands
-options=(!buildflags)
+options=(!makeflags)
 source=(https://ftp.nluug.nl/pub/editors/$pkgname/$pkgname-$pkgver.src.tar.gz
         https://ftp.nluug.nl/pub/editors/ted/ted_nl_NL.tar.gz
         https://ftp.nluug.nl/pub/editors/ted/ted_en_GB.tar.gz
@@ -65,16 +65,16 @@ md5sums=('4199df0deb82a90450135ec3f2b7d915'
 
 build() {
   cd Ted-$pkgver
-  make
-  make package
+  make -j1
+  make package -j1
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/share/Ted"
-  install -m644 TedDocument-*_*.rtf "$pkgdir/usr/share/Ted/"
+  install -dm755                    "$pkgdir/usr/share/Ted"
+  install -m644 TedDocument-*_*.rtf "$pkgdir/usr/share/Ted"
 
   cd Ted-$pkgver/tedPackage
-  DESTDIR="$pkgdir" make install
+  DESTDIR="$pkgdir" make -j1 install
 
   cd "$pkgdir"
   for _file in "$srcdir/"ted_*_*.tar.gz; do
