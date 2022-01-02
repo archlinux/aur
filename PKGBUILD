@@ -4,7 +4,7 @@
 pkgname=gtkglarea1
 _pkgname=gtkglarea
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL context provider for GTK+"
 arch=('i686' 'x86_64')
 url="http://www.mono-project.com/GtkGLArea"
@@ -30,6 +30,9 @@ _optimal_make_jobs() {
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
+
+	# Solve compilation error
+	sed -i 's/g_print(info_str);/g_print("%s", info_str);/' ./examples/simple.c
 
 	msg 'Running configure...'
 	./configure --prefix=/usr

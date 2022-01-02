@@ -1,7 +1,7 @@
 pkgbase = gtkglarea1
 	pkgdesc = OpenGL context provider for GTK+
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mono-project.com/GtkGLArea
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = gtkglarea1
 	md5sums = 44f6804c1a9db61393e18680c81ae602
 
 pkgname = gtkglarea1
-
