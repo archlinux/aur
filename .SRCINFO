@@ -1,14 +1,13 @@
 pkgbase = python-srt
 	pkgdesc = A tiny library for parsing, modifying, and composing SRT files
-	pkgver = 3.4.1
+	pkgver = 3.5.0
 	pkgrel = 1
-	url = https://pypi.org/project/srt/3.4.1
+	url = https://pypi.org/project/srt/3.5.0
 	arch = any
 	license = MIT
 	provides = python-srt
 	conflicts = python-pysrt
-	source = https://files.pythonhosted.org/packages/source/s/srt/srt-3.4.1.tar.gz
-	sha256sums = aa507439bf593adb1b207d21c5975c9774263da97489f8b90d8a016bfa67ee94
+	source = https://files.pythonhosted.org/packages/source/s/srt/srt-3.5.0.tar.gz
+	sha256sums = 9378e67fcc7c110eca7ec12bdb17a174085f67e3b371f7e586a4c68a0dda245b
 
 pkgname = python-srt
-
