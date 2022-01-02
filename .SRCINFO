@@ -21,8 +21,6 @@ pkgbase = renderdoc-git
 	provides = renderdoc=1.17
 	conflicts = renderdoc
 	source = https://github.com/baldurk/renderdoc
-	source = renderdoc.desktop
 	sha256sums = SKIP
-	sha256sums = eab4941dc17fbbdcb9e34a698c3b304d212be54956daeb0c3b1cf5b7f2b00984
 
 pkgname = renderdoc-git

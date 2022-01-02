@@ -10,10 +10,8 @@ url="https://github.com/baldurk/renderdoc"
 license=("MIT")
 makedepends=("cmake" "ninja" "python")
 depends=("wayland" "libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
-source=("git+https://github.com/baldurk/renderdoc"
-        "renderdoc.desktop")
-sha256sums=('SKIP'
-            'eab4941dc17fbbdcb9e34a698c3b304d212be54956daeb0c3b1cf5b7f2b00984')
+source=("git+https://github.com/baldurk/renderdoc")
+sha256sums=('SKIP')
 conflicts=('renderdoc')
 provides=("renderdoc=${pkgver%+*}")
 
@@ -36,7 +34,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-
-  install -Dm644 "${srcdir}"/renderdoc.desktop "$pkgdir/usr/share/applications/renderdoc.desktop"
-  install -Dm644 "${srcdir}"/renderdoc/docs/imgs/logo.png "$pkgdir/usr/share/icons/renderdoc.png"
 }
