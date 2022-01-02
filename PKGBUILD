@@ -1,8 +1,8 @@
 # Maintainer: midnightix <midnightix@protonmail.com>
 
 pkgname=clash-premium-tun
-pkgver=2021.12.07
-pkgrel=2
+pkgver=2022.01.02
+pkgrel=1
 pkgdesc="A rule-based tunnel in Go for Linux with TUN"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Dreamacro/clash"
@@ -26,12 +26,12 @@ source_arm=("clash-linux-arm-${pkgver}.gz::https://github.com/Dreamacro/clash/re
 source_armv6h=("clash-linux-armv6h-${pkgver}.gz::https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-armv6-${pkgver}.gz")
 source_armv7h=("clash-linux-armv7h-${pkgver}.gz::https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-armv7-${pkgver}.gz")
 source_aarch64=("clash-linux-aarch64-${pkgver}.gz::https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-armv8-${pkgver}.gz")
-sha512sums_i686=('34cf1056f71fa7e830fe50b84deca889dd71d1bffe1c0ba15cce83e4b839dca9ed640ae5c14a5227ccd8bd0388c8ae06f750c0b7c997a192a628e51bb91bffdb')
-sha512sums_x86_64=('460a8cc50042ccffa0ce56aac4f33568496a163f234ead2cbec2e923f917e946e425ff3d4d170455bb6d583f484f1f010ba1b444757a9540d18560b3f317c4f0')
-sha512sums_arm=('40a0af3df3591b2c0b1a5e339ca68f662adbef2defdeeb55bd0bb0502268e5c5d5a9896083072c65e32a50aead51c5679214a4e206b1e620c8495cc972d31a6b')
-sha512sums_armv6h=('03f417d86dea709d084e8638bf2058cc8e54c3efcce876db64b453562b55edb31c5d6f0237575e2abdc73cf765868868c520b85940b8a2acf07d68fc39fcd809')
-sha512sums_armv7h=('3e2386b6ca14a8f887db00851cf963cd393de2d1bd15836a808a845077e2893d26206187985fc3988341493e507e42dd1b363f5a0c2f5a219d99eb1f68908277')
-sha512sums_aarch64=('637139496b9e166e3dcc1d64e6b3a5ce24aaa6991be5d88e9b61ad36a4650f2f24df7ee623db43091cf4e21d71c3ed8c90919d39c8944eeb1b5f2be763f60325')
+sha512sums_i686=('83e885159b334517985c3b839b6672333ab0b2006cf18cb00876bdf94cc15ca83554db15970629aac68f8c210961914c8f5b2a3762ceeef033753835d6036d7f')
+sha512sums_x86_64=('e81e961a11baa6a3a2bfe71bd52667b86d5e85833100c6f25ac3f36321bdda235e457735380dedb12ced580968a5c2a2394ebd512c208495c738674880ddcadd')
+sha512sums_arm=('956248ce67f6071def37015881ce002684691ca7eae22c572b8f34a4e488f595ff4eba5c4ad048ba7ef8e31e7c02f77a153220800ec521d9c5cf6e2cf5645a29')
+sha512sums_armv6h=('04def0e7e19bae0fe3e8711e0257d9c2992a879300e19a0961120acba9969ba4e21d42377031d807cd15c5490b3dbc374695e778356101c4d6dde2c70f27596f')
+sha512sums_armv7h=('ff2186876f987448476ec388631fe57d240f243fbf76b01adab0d4f0adad17ceeff41060cfd2cd4d136ff41cc20c0ef8916f2b6825cf3aad17b965b09dab4e8b')
+sha512sums_aarch64=('4d8f3a8e3e44ca3eaa171caaf77c2175a3f40d48a5ee28841ac5f76ea9b36a43bc06da39c1c0bc13f664fc6eac3408c57f0d89536519a9524f95082836dce99c')
 
 prepare() {
     cd "${srcdir}"/clash-premium-installer/
