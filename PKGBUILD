@@ -6,7 +6,7 @@ pkgdesc="Navigate through terminal like a pro"
 arch=('x86_64')
 url="https://github.com/souvikinator/lsx"
 license=('MIT')
-depends=()
+depends=('go')
 optdepends=()
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -21,5 +21,5 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
 	chmod +x install.sh
-    sudo install.sh
+    ./install.sh
 }
