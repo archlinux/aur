@@ -29,7 +29,6 @@ build() {
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc-git" \
         -DBUILD_VERSION_DIST_NAME="Arch" \
         -DBUILD_VERSION_DIST_VER="${pkgver}" \
-        -D ENABLE_WAYLAND=true \
         -S renderdoc -B build \
         -G Ninja
   ninja -C build
