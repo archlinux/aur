@@ -1,14 +1,13 @@
 pkgbase = tuptime
 	pkgdesc = Report the historical and statistical running time of system
-	pkgver = 4.1.0
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/rfrail3/tuptime
 	install = tuptime.install
 	arch = any
 	license = GPL
 	depends = python
-	source = tuptime-4.1.0.tar.gz::https://github.com/rfrail3/tuptime/archive/4.1.0.tar.gz
-	sha256sums = d8161cd56b627894fbfa4cdfa5a2f7414d0969d4486ec3c9d3e27cd091c6a86e
+	source = tuptime-5.0.2.tar.gz::https://github.com/rfrail3/tuptime/archive/5.0.2.tar.gz
+	sha256sums = b7b5a47fd0935b03d2768beaf4542c9512b389c844c0a78795bcba38978099f2
 
 pkgname = tuptime
-

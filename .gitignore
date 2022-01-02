@@ -1,2 +1,5 @@
 tuptime-*.tar
 tuptime-*.tar.gz
+pkg/
+src/
+tuptime-*.tar.zst
