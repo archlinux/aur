@@ -1,13 +1,14 @@
 pkgbase = pacmanfile
 	pkgdesc = Manage your pacman packages declaratively
 	pkgver = 0.0.8
-	pkgrel = 1
-	url = https://github.com/mastertinner/pacmanfile
+	pkgrel = 2
+	url = https://github.com/cloudlena/pacmanfile
 	arch = x86_64
 	arch = i686
 	license = Apache
+	depends = grep
 	provides = pacmanfile
-	source = https://github.com/mastertinner/pacmanfile/archive/refs/tags/v0.0.8.tar.gz
+	source = https://github.com/cloudlena/pacmanfile/archive/refs/tags/v0.0.8.tar.gz
 	sha256sums = 0a61d3fa2455f6d0b2d8647acd578cd27c822d35297e070b79bb8e8492c63642
 
 pkgname = pacmanfile
