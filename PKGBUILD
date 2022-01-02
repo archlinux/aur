@@ -25,7 +25,9 @@ build () {
 
 package() {
   cd glr-dmenu
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -rf * "${pkgdir}/opt/${pkgname}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pgkname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pgkname}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
