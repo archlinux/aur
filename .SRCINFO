@@ -1,7 +1,7 @@
 pkgbase = uwsgi-ng
 	pkgdesc = Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch)
 	pkgver = 2.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uwsgi-docs.readthedocs.io/en/latest/
 	arch = x86_64
 	license = GPL2

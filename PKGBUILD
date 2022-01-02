@@ -18,7 +18,7 @@ pkgname=(
   uwsgi-ng-plugin-notfound
 )
 pkgver=2.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch)"
 arch=(x86_64)
 url="https://uwsgi-docs.readthedocs.io/en/latest/"
