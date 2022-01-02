@@ -2,12 +2,12 @@
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-git
 _pkgname=xrdp
-pkgver=0.9.16.r19.gd126a310
+pkgver=0.9.17.r105.ga8375d68
 pkgrel=1
 epoch=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/$_pkgname"
-arch=('i686' 'x86_64' 'armv6h')
+arch=(i686 x86_64 armv6h armv7l aarch64)
 license=('Apache')
 makedepends=('git' 'nasm')
 depends=('tigervnc' 'libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg')
