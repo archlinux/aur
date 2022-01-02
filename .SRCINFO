@@ -1,7 +1,7 @@
 pkgbase = heliocron
 	pkgdesc = Execute tasks relative to sunset, sunrise and other such solar events
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mfreeborn/heliocron
 	arch = x86_64
 	license = Apache

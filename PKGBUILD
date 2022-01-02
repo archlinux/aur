@@ -2,7 +2,7 @@
 
 pkgname=heliocron
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Execute tasks relative to sunset, sunrise and other such solar events'
 arch=('x86_64')
 url=https://github.com/mfreeborn/heliocron
@@ -14,7 +14,7 @@ b2sums=('93d5b0a0b2ad6141bbb8d893bff3f894382c77a0e79e35adaa09607dddc6eb155720c4f
 
 prepare() {
   cd $pkgname-$pkgver
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  cargo test --release --locked --offline --features integration-test
+  cargo test --locked --offline --features integration-test
 }
 
 package() {
