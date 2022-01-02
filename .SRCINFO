@@ -1,6 +1,6 @@
 pkgbase = dialect-git
 	pkgdesc = A translation app for GNOME.
-	pkgver = 1.4.1.r38.ge6b077d
+	pkgver = 1.4.1.r49.ge0e33b6
 	pkgrel = 1
 	url = https://apps.gnome.org/app/com.github.gi_lom.dialect
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = dialect-git
 	depends = gtk4
 	depends = libadwaita
 	depends = python-gobject
-	depends = python-googletrans<4.0.0rc1
+	depends = python-googletrans
 	depends = python-gtts
-	depends = python-httpx>=0.17.1
+	depends = python-httpx
 	provides = dialect
 	conflicts = dialect
 	conflicts = gnabel
