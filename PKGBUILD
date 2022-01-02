@@ -1,5 +1,5 @@
 pkgname=ocaml-csv
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="OCaml CSV parsing library"
 arch=('i686' 'x86_64')
@@ -8,8 +8,7 @@ license=('GPL')
 depends=('ocaml')
 makedepends=('ocaml' 'ocaml-findlib' 'ocamlbuild' 'ocaml-lwt' 'opam' 'ocaml-uutf' 'dune')
 source=(https://github.com/Chris00/ocaml-csv/archive/$pkgver.tar.gz)
-md5sums=('1d2e565c0f7214254efe3dfde566c048')
-sha256sums=('e795287c086997ab3ca57e3d8e0c2fdbf6d5c977bef54249943432f1c932ad81')
+sha256sums=('14b1173d2a64053e06571cbe4a86fa4be4b48ea190d1f0c389ce34fd9800c665')
 options=(!libtool !strip zipman)
 
 build() {
