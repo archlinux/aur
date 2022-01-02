@@ -1,14 +1,14 @@
 pkgbase = minetest-nodeverse
 	pkgdesc = A procedurally generated space exploration game
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://content.minetest.net/packages/aerkiaga/nodeverse/
 	arch = any
 	license = GPLv3
 	depends = minetest-common
-	noextract = nodeverse-0.1.4.zip
+	noextract = nodeverse-0.1.5.zip
 	options = !strip
-	source = nodeverse-0.1.4.zip::https://content.minetest.net/packages/aerkiaga/nodeverse/releases/9172/download/
-	sha256sums = 94059613ae1926bff44e5a29dc94ff71186ca7e8ee10b77fe23667082b32a13d
+	source = nodeverse-0.1.5.zip::https://content.minetest.net/packages/aerkiaga/nodeverse/releases/10324/download/
+	sha256sums = 71e4101229b062b4b1ef753d014f5102c3b508190e98d0cf137ea19431abc98b
 
 pkgname = minetest-nodeverse
