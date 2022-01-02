@@ -1,0 +1,8 @@
+pkgbase = linux-firmware-empty
+	pkgdesc = Empty linux-firmware package to solve dependency
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	provides = linux-firmware
+
+pkgname = linux-firmware-empty
