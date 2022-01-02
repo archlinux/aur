@@ -1,0 +1,24 @@
+pkgbase = jdk8-dragonwell-bin
+	pkgdesc = Alibaba Dragonwell, as a downstream version of OpenJDK, is the OpenJDK implementation at Alibaba optimized for online e-commerce, financial, logistics applications running on 100,000+ servers.
+	pkgver = 8.9.10
+	pkgrel = 1
+	url = https://github.com/alibaba/dragonwell8
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	depends = ca-certificates-utils
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = nss
+	provides = java-environment=8
+	provides = java-environment-openjdk=8
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	source_x86_64 = jdk8-dragonwell-bin-8.9.10-x86_64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-8.9.10_jdk8u312-ga/Alibaba_Dragonwell_8.9.10_x64_linux.tar.gz
+	sha256sums_x86_64 = 2e1dfdacfe64a6b2f797cffd7ff8ee8cf6424d29fa594376a6916b1686a38433
+	source_aarch64 = jdk8-dragonwell-bin-8.9.10-aarch64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-8.9.10_jdk8u312-ga/Alibaba_Dragonwell_8.9.10_aarch64_linux.tar.gz
+	sha256sums_aarch64 = 8f4a5fb7d2f0e633b1280c41e89a1bef325346679feda912b21b368c1df4f5df
+
+pkgname = jdk8-dragonwell-bin
