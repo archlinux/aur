@@ -3,7 +3,7 @@
 _pkgname=assimp
 pkgname=mingw-w64-${_pkgname}
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)"
 arch=('any')
 license=('BSD')
@@ -11,7 +11,7 @@ depends=('mingw-w64-zlib' 'mingw-w64-boost' 'mingw-w64-minizip')
 makedepends=('mingw-w64-cmake')
 url='http://www.assimp.org/'
 source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-options=('!strip' '!buildflags' 'staticlibs')
+options=('!strip' '!buildflags' 'staticlibs' '!lto')
 sha256sums=('d62b58ed3b35c20f89570863a5415df97cb1b301b444d39687140fc883717ced')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -23,11 +23,6 @@ prepare ()
 {
 	cd "${_srcdir}"
 	sed -i "s/5.1.4/${pkgver}/" 'CMakeLists.txt'
-	# master is ok
-	#sed -i 's|set(sharedLibraryName "libassimp\${ASSIMP_LIBRARY_SUFFIX}@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")|set(sharedLibraryName "libassimp.dll.a")|g' assimpTargets-release.cmake.in
-	#sed -i 's|IMPORTED_LOCATION_RELEASE|IMPORTED_LOCATION|g' assimpTargets-release.cmake.in
-	#sed -i 's|set(sharedLibraryName "libassimp\${ASSIMP_LIBRARY_SUFFIX}@CMAKE_DEBUG_POSTFIX@@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")|set(sharedLibraryName "libassimp.dll.a")|g' assimpTargets-debug.cmake.in
-	#sed -i 's|IMPORTED_LOCATION_DEBUG|IMPORTED_LOCATION|g' assimpTargets-debug.cmake.in
 }
 
 build()
