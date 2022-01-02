@@ -1,0 +1,10 @@
+pkgbase = urdu-digit
+	pkgdesc = Retrieve package info for an aur package.
+	pkgver = 0.2
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = https://github.com/siphr/urdu-digit.git
+
+pkgname = urdu-digit
