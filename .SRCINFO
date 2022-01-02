@@ -1,6 +1,6 @@
 pkgbase = cnijfilter2
 	pkgdesc = Canon IJ Printer Driver for Linux
-	pkgver = 6.20
+	pkgver = 6.30
 	pkgrel = 1
 	url = https://www.canon.com.au/home-printers
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = cnijfilter2
 	provides = cnijlgmon3
 	conflicts = cnijfilter
 	conflicts = cnijfilter-mg3600
-	source = https://gdlp01.c-wss.com/gds/7/0100011057/01/cnijfilter2-source-6.20-1.tar.gz
-	md5sums = b191a33b924d5a9afe8027b9688cb62a
+	source = https://gdlp01.c-wss.com/gds/9/0100011319/01/cnijfilter2-source-6.30-1.tar.gz
+	md5sums = f29bd241467f1e4bbe8b2c9c19923c8e
 
 pkgname = cnijfilter2
