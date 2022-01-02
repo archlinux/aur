@@ -4,7 +4,7 @@
 pkgname=scratch3
 conflicts=("scratch3-bin")
 pkgver=3.27.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "aarch64")
 url="https://scratch.mit.edu"
@@ -21,7 +21,7 @@ sha256sums=('0bb89f64bc933a00a56fd87a3a27b2106b42d0dc1ba61cf1a9f3f19beae5cec8'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
             '326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
-            'd8e403d2a994e315dbe5a7d910710387dcf45fa49c5f1d3c988fbdde2d97b4b2')
+            '60c7088f464303b8bf9c17ba456f386da1f1ebf4d2c91e6662e3864e5b41ee42')
 
 appOutputDir="linux-unpacked"
 
@@ -44,7 +44,7 @@ esac
 ## In any case, please give a feedback to the maintainer, thanks.
 
 prepare() {
-   cd "$srcdir"
+   cd "$srcdir/"
 
 #  Copy patch files to be able to compile on Linux platform
 #  and with our own electron version (13.6.3)
@@ -53,16 +53,17 @@ prepare() {
    cp electron-builder-wrapper-js.patch scratch-desktop-${pkgver}/scripts/
    cp index-js.patch scratch-desktop-${pkgver}/src/main/
 
-   cd "scratch-desktop-${pkgver}"
+   cd "scratch-desktop-${pkgver}/"
    patch < package-json.patch
    patch < electron-builder-yaml.patch
 
-   cd scripts
+   cd "scripts/"
    patch < electron-builder-wrapper-js.patch
 
-   cd ../src/main/
+   cd "$srcdir/scratch-desktop-${pkgver}/src/main/"
    patch < index-js.patch
-   cd ../..
+
+   cd "$srcdir/scratch-desktop-${pkgver}/"
 
 #  Dependencies installation & application compilation
    npm install
@@ -71,22 +72,23 @@ prepare() {
 #  Remove all refs to $srcdir in dist/main/main.js and dist/renderer/renderer.js
 #  in order to avoid warnings at package error research.
 
-   cd dist/renderer
+   cd "$srcdir/scratch-desktop-${pkgver}/dist/renderer/"
    rmString="/\*! ${srcdir}/scratch-desktop-3.27.0/src/renderer/index.js \*/"
    sed -e "s|${rmString}||" renderer.js > renderer2.js
    mv renderer2.js renderer.js
 
-   cd ../main
+   cd "$srcdir/scratch-desktop-${pkgver}/dist/main/"
    rmString="/\*! ${srcdir}/scratch-desktop-3.27.0/src/main/index.js \*/"
    sed -e "s|${rmString}||" main.js > main2.js
    mv main2.js main.js
-   cd ../..
+   
+   cd "$srcdir/scratch-desktop-${pkgver}/"
 
 #  File generation
    npx electron-builder --linux
 
 #  To avoid the default Electron icon to be used
-   cp ../icon256.png dist/${appOutputDir}/resources/icon.png
+   cp ../icon256.png "dist/${appOutputDir}/resources/icon.png"
 
 #  Copy/move all license files in one single place ($srcdir)
    cp LICENSE ../

@@ -1,7 +1,7 @@
 pkgbase = scratch3
 	pkgdesc = Scratch 3.0 as a self-contained desktop application
 	pkgver = 3.27.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://scratch.mit.edu
 	arch = x86_64
 	arch = aarch64
@@ -22,6 +22,6 @@ pkgbase = scratch3
 	sha256sums = 0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da
 	sha256sums = 86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf
 	sha256sums = 326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001
-	sha256sums = d8e403d2a994e315dbe5a7d910710387dcf45fa49c5f1d3c988fbdde2d97b4b2
+	sha256sums = 60c7088f464303b8bf9c17ba456f386da1f1ebf4d2c91e6662e3864e5b41ee42
 
 pkgname = scratch3
