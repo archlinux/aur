@@ -1,0 +1,21 @@
+pkgbase = sparselizard
+	pkgdesc = C++ FEM library | user-friendly | multi-physics | hp-adaptive | HPC
+	pkgver = 2021.11
+	pkgrel = 1
+	url = https://www.sparselizard.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = gcc
+	depends = cblas
+	depends = metis
+	depends = mumps
+	depends = openmpi
+	depends = petsc
+	depends = slepc
+	depends = gmsh
+	source = https://github.com/halbux/sparselizard/archive/refs/tags/v.2021.11.tar.gz
+	sha256sums = d72882473d7bf23ac7aa833b5283ad8bb9ba498ace1b6c0eda2e6ee396248c5d
+
+pkgname = sparselizard
