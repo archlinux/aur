@@ -22,7 +22,7 @@ source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}emc.tar.gz"
         "Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch"
         "emercoin-qt.desktop"
 )
-sha256sums=('e65a0fd9c6a932dc08b9819a21180ff42bb62fc588243f1023c4aa42bd64ff93'
+sha256sums=('78d11b9308d67e53552d596269ae3be881ee6f88c8fb531a08ec9b77e9f7d024'
             '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87'
             '1b339af10cbd8e003ce7c44f28b9d2eaf23e01d094078f96f21fa45d1679edef'
             '06645c91c499215866a506e409a8f4a80d77dbb85fdfc0bd9d1db75e2687a508')
