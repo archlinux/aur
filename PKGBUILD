@@ -19,4 +19,4 @@ package() {
   ./install -p "${pkgdir}/usr/bin"
 }
 
-sha256sums=('a39a54e63c104caf5a72609cbb13dd52af25980b804bcbc20e17ecf6e8d98cea')
+sha256sums=('643c3e91a8e687d2887b4d3ab7d061165eb1f690434abbde4150840e37b2b194')
