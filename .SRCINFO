@@ -1,7 +1,7 @@
 pkgbase = urdu-digit
-	pkgdesc = Retrieve package info for an aur package.
+	pkgdesc = Convert English digit to Urdu.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = MIT
 	depends = python
