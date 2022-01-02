@@ -1,7 +1,7 @@
 pkgbase = ansiwave-bin
-	pkgdesc = The FLARE team's open-source tool to identify capabilities in executable files
+	pkgdesc = Client for ANSIWAVE BBS
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansiwave/ansiwave
 	arch = x86_64
 	license = unlicense

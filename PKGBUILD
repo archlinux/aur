@@ -3,8 +3,8 @@
 pkgname=ansiwave-bin
 _pkg=ansiwave
 pkgver=1.2.2
-pkgrel=1
-pkgdesc="The FLARE team's open-source tool to identify capabilities in executable files"
+pkgrel=2
+pkgdesc="Client for ANSIWAVE BBS"
 url="https://github.com/ansiwave/ansiwave"
 arch=('x86_64')
 license=('unlicense')
