@@ -1,7 +1,7 @@
 pkgbase = stylua
 	pkgdesc = Code formatter for Lua
 	pkgver = 0.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JohnnyMorganz/StyLua
 	arch = any
 	license = MPL2
