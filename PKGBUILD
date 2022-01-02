@@ -1,11 +1,12 @@
 # Maintainer: siphr <archlinux@techtum.dev>
 pkgname=urdu-digit
 pkgver=0.2
-pkgrel=2
-pkgdesc="Convert English digit to Urdu."
+pkgrel=3
+pkgdesc="Convert English digits to Urdu ones."
 depends=(python)
 arch=(x86_64)
 source=("https://github.com/siphr/urdu-digit.git")
+url=https://www.techtum.dev/work-urdu-digit-211001.html
 license=('MIT')
 
 build() {
