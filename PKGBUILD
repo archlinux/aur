@@ -22,6 +22,6 @@ package() {
     cd "$srcdir/$pkgname"
 
     chmod +x install.sh
-    export GOPATH="$srcdir"
+    export GOPATH="$srcdir/$pkgname"
     ./install.sh
 }
