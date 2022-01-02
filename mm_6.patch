@@ -1,0 +1,81 @@
+---
+ grub-core/kern/efi/mm.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/grub-core/kern/efi/mm.c b/grub-core/kern/efi/mm.c
+index ced3ee5e7..f3d2e2b99 100644
+--- a/grub-core/kern/efi/mm.c
++++ b/grub-core/kern/efi/mm.c
+@@ -482,7 +482,8 @@ static grub_err_t
+ add_memory_regions (grub_efi_memory_descriptor_t *memory_map,
+ 		    grub_efi_uintn_t desc_size,
+ 		    grub_efi_memory_descriptor_t *memory_map_end,
+-		    grub_efi_uint64_t required_pages)
++		    grub_efi_uint64_t required_pages,
++		    unsigned int flags)
+ {
+   grub_efi_memory_descriptor_t *desc;
+ 
+@@ -496,6 +497,10 @@ add_memory_regions (grub_efi_memory_descriptor_t *memory_map,
+ 
+       start = desc->physical_start;
+       pages = desc->num_pages;
++
++      if (pages < required_pages && (flags & GRUB_MM_ADD_REGION_CONSECUTIVE))
++	continue;
++
+       if (pages > required_pages)
+ 	{
+ 	  start += PAGES_TO_BYTES (pages - required_pages);
+@@ -559,7 +564,7 @@ print_memory_map (grub_efi_memory_descriptor_t *memory_map,
+ #endif
+ 
+ static grub_err_t
+-grub_efi_mm_add_regions (grub_efi_uint64_t required_bytes)
++grub_efi_mm_add_regions (grub_efi_uint64_t required_bytes, unsigned int flags)
+ {
+   grub_efi_memory_descriptor_t *memory_map;
+   grub_efi_memory_descriptor_t *memory_map_end;
+@@ -614,7 +619,8 @@ grub_efi_mm_add_regions (grub_efi_uint64_t required_bytes)
+   /* Allocate memory regions for GRUB's memory management.  */
+   err = add_memory_regions (filtered_memory_map, desc_size,
+ 			    filtered_memory_map_end,
+-			    BYTES_TO_PAGES (required_bytes));
++			    BYTES_TO_PAGES (required_bytes),
++			    flags);
+   if (err != GRUB_ERR_NONE)
+     return err;
+ 
+@@ -641,8 +647,9 @@ grub_efi_mm_add_regions (grub_efi_uint64_t required_bytes)
+ void
+ grub_efi_mm_init (void)
+ {
+-  if (grub_efi_mm_add_regions (DEFAULT_HEAP_SIZE) != GRUB_ERR_NONE)
++  if (grub_efi_mm_add_regions (DEFAULT_HEAP_SIZE, GRUB_MM_ADD_REGION_NONE) != GRUB_ERR_NONE)
+     grub_fatal ("%s", grub_errmsg);
++  grub_mm_add_region_fn = grub_efi_mm_add_regions;
+ }
+ 
+ #if defined (__aarch64__) || defined (__arm__) || defined (__riscv)
+-- 
+2.32.0
+
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEF9hrgiFbCdvenl/rVbJhu7ckPpQFAmEY9eoACgkQVbJhu7ck
+PpSFbQ//Y5G9FkVKWEwCrB7KhbF9pcmTobET1Q7lvrVtK+XArMuZQn/aDTxjoXM/
+87qMkF2OTko79/z1nzveDODPtR1E48jqR41+Qz7CICOH+8oG2Ur+MZt5J2T2M/Gf
+JsqJ26Fk36A86IoZHZ73yfHCWgtQo4+jckOLJkGbTmlriOWSOCfvCKIt7aF0Z2Wf
+SkfEt0UMV6i81HKkZ6v+nPJJQmZQp+pTpOWr7hrjx/6nUT1QadVQoVL8YYKKxHcX
+zMkT7hAg+D6vAVJhfOSt/VoMcBJeBK8Or2OD5gDOKcqZ19nixa1u3r6NnkkG10OH
+PyVL35svdUMMiIC2LXy2YCf7hbrOCOuCk10sT8Q05TrDvFpkvOn6QcGhvcSXtzmB
+5wju6EVqCtIrrcSYl3Y2bWjrKFZXL3w1vOUnObF3yae2soR2h3Nvgyg98J3Qoee+
+7dNYGs3WmDb3wF9p/0TY54g89ZotKwZUEuaVu7qtcp3y6HpmcZ1XbnA8Y3aWmdmm
+EeiUKAMSacyqxt1QBWciQTs7BaXWwxj8hI8xDjpCEMVFCux4nxdw6aXQXqocAaor
+mDhjjriqmwTRNpZnUlUkScwczSJuh5WqnLWj5RKC01drUlcbnJjvdsaU1VAvzEju
+24KGNqanC+jc1ZqKcx4eeCQHF21x8+xgsmgjYJZ8PGptT0bg/Xc=
+=PvkK
+-----END PGP SIGNATURE-----
+
+

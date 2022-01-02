@@ -1,0 +1,99 @@
+---
+ grub-core/kern/efi/mm.c | 35 +++--------------------------------
+ 1 file changed, 3 insertions(+), 32 deletions(-)
+
+diff --git a/grub-core/kern/efi/mm.c b/grub-core/kern/efi/mm.c
+index 9838fb2f5..4d276bc87 100644
+--- a/grub-core/kern/efi/mm.c
++++ b/grub-core/kern/efi/mm.c
+@@ -38,9 +38,8 @@
+    a multiplier of 4KB.  */
+ #define MEMORY_MAP_SIZE	0x3000
+ 
+-/* The minimum and maximum heap size for GRUB itself.  */
+-#define MIN_HEAP_SIZE	0x100000
+-#define MAX_HEAP_SIZE	(1600 * 0x100000)
++/* The default heap size for GRUB itself in bytes.  */
++#define DEFAULT_HEAP_SIZE	0x100000
+ 
+ static void *finish_mmap_buf = 0;
+ static grub_efi_uintn_t finish_mmap_size = 0;
+@@ -478,23 +477,6 @@ filter_memory_map (grub_efi_memory_descriptor_t *memory_map,
+   return filtered_desc;
+ }
+ 
+-/* Return the total number of pages.  */
+-static grub_efi_uint64_t
+-get_total_pages (grub_efi_memory_descriptor_t *memory_map,
+-		 grub_efi_uintn_t desc_size,
+-		 grub_efi_memory_descriptor_t *memory_map_end)
+-{
+-  grub_efi_memory_descriptor_t *desc;
+-  grub_efi_uint64_t total = 0;
+-
+-  for (desc = memory_map;
+-       desc < memory_map_end;
+-       desc = NEXT_MEMORY_DESCRIPTOR (desc, desc_size))
+-    total += desc->num_pages;
+-
+-  return total;
+-}
+-
+ /* Add memory regions.  */
+ static void
+ add_memory_regions (grub_efi_memory_descriptor_t *memory_map,
+@@ -583,8 +565,6 @@ grub_efi_mm_init (void)
+   grub_efi_memory_descriptor_t *filtered_memory_map_end;
+   grub_efi_uintn_t map_size;
+   grub_efi_uintn_t desc_size;
+-  grub_efi_uint64_t total_pages;
+-  grub_efi_uint64_t required_pages;
+   int mm_status;
+ 
+   /* Prepare a memory region to store two memory maps.  */
+@@ -624,22 +604,13 @@ grub_efi_mm_init (void)
+   filtered_memory_map_end = filter_memory_map (memory_map, filtered_memory_map,
+ 					       desc_size, memory_map_end);
+ 
+-  /* By default, request a quarter of the available memory.  */
+-  total_pages = get_total_pages (filtered_memory_map, desc_size,
+-				 filtered_memory_map_end);
+-  required_pages = (total_pages >> 2);
+-  if (required_pages < BYTES_TO_PAGES (MIN_HEAP_SIZE))
+-    required_pages = BYTES_TO_PAGES (MIN_HEAP_SIZE);
+-  else if (required_pages > BYTES_TO_PAGES (MAX_HEAP_SIZE))
+-    required_pages = BYTES_TO_PAGES (MAX_HEAP_SIZE);
+-
+   /* Sort the filtered descriptors, so that GRUB can allocate pages
+      from smaller regions.  */
+   sort_memory_map (filtered_memory_map, desc_size, filtered_memory_map_end);
+ 
+   /* Allocate memory regions for GRUB's memory management.  */
+   add_memory_regions (filtered_memory_map, desc_size,
+-		      filtered_memory_map_end, required_pages);
++		      filtered_memory_map_end, BYTES_TO_PAGES (DEFAULT_HEAP_SIZE));
+ 
+ #if 0
+   /* For debug.  */
+-- 
+2.32.0
+
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEF9hrgiFbCdvenl/rVbJhu7ckPpQFAmEY9d0ACgkQVbJhu7ck
+PpQn3w//WJu1uNsOVPLPU6TPLWVvEuPApH97bUrMjNnvzNYbPlR82ym+u+zMGoJ7
+Es77CEqgMDhCOxdD3oEi9PMZtXASgnw7uGKJycdGZOObzGBu4IZ4ZWQdWVfwlIZp
+4Qlc+ROTQoEWyLWpB/mJwrcXX8ILOdeRSX071zfHhJNcauEWMKEE88M/HH0VxCeT
+ZHGrmSzBE9gu3HQ8kir9wibroBeI4siW1feR5PWDmp/3R96z5MKN2xyy6BkH3Z0M
+sbl7zrlSu+NSnsmLzcH8oyfCBI+2soXgmGHQ1QCY8v8rbNx77sXKxTZniK7lH70Z
+X+0pcRm8aEYaT4ReWAxqJFykMn/9zfX4XRqEUBXTK/vWzSB4/5v0RLiUftvLfl7A
+Du8w+mocoOELAwCi4+VydHO9jUMnHJAlR+HAazd2jifi9jWsU7gxkD7FO+zFlble
+Eq5XFRgKzYmDHzPbD3udEH1+8792eGa0BjXwmIGpvFYfHpo4Jm24obykVVpH2m6j
+be99L+9A7PIxUg3GB6RAerR2Lc6a+nPRC47Jrp63BGtQ7SHPKCY7lzvw7q0nv0d+
+FmlcXQvOoeQeUNUzCaEmHaRP/WKSeeKL86Rp6pUIOXho6ON5llwSexJYEJlWA6rj
+p9wPIz8BA0iHFMix/Ch9DmUg1BNIE2vGaf+qhPmPNMF1ZFonbl8=
+=L7Ky
+-----END PGP SIGNATURE-----
+
+

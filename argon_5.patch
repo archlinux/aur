@@ -1,0 +1,96 @@
+---
+ Makefile.util.def           |  6 +++++-
+ grub-core/Makefile.core.def |  2 +-
+ grub-core/disk/luks2.c      | 13 +++++++++++--
+ 3 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.util.def b/Makefile.util.def
+index f8b356cc1..39fe9cb7c 100644
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -3,7 +3,7 @@ AutoGen definitions Makefile.tpl;
+ library = {
+   name = libgrubkern.a;
+   cflags = '$(CFLAGS_GNULIB)';
+-  cppflags = '$(CPPFLAGS_GNULIB) -I$(srcdir)/grub-core/lib/json';
++  cppflags = '$(CPPFLAGS_GNULIB) -I$(srcdir)/grub-core/lib/json -I$(srcdir)/grub-core/lib/argon2';
+ 
+   common = util/misc.c;
+   common = grub-core/kern/command.c;
+@@ -36,6 +36,10 @@ library = {
+   common = grub-core/kern/misc.c;
+   common = grub-core/kern/partition.c;
+   common = grub-core/lib/crypto.c;
++  common = grub-core/lib/argon2/argon2.c;
++  common = grub-core/lib/argon2/core.c;
++  common = grub-core/lib/argon2/ref.c;
++  common = grub-core/lib/argon2/blake2/blake2b.c;
+   common = grub-core/lib/json/json.c;
+   common = grub-core/disk/luks.c;
+   common = grub-core/disk/luks2.c;
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 3a004e88c..e5e5b216b 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1197,7 +1197,7 @@ module = {
+   common = disk/luks2.c;
+   common = lib/gnulib/base64.c;
+   cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
+-  cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB) -I$(srcdir)/lib/json';
++  cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB) -I$(srcdir)/lib/json -I$(srcdir)/lib/argon2';
+ };
+ 
+ module = {
+diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
+index 02822c777..2ec0d4116 100644
+--- a/grub-core/disk/luks2.c
++++ b/grub-core/disk/luks2.c
+@@ -27,6 +27,7 @@
+ #include <grub/partition.h>
+ #include <grub/i18n.h>
+ 
++#include <argon2.h>
+ #include <base64.h>
+ #include <json.h>
+ 
+@@ -448,8 +449,16 @@ luks2_decrypt_key (grub_uint8_t *out_key,
+     {
+       case LUKS2_KDF_TYPE_ARGON2I:
+       case LUKS2_KDF_TYPE_ARGON2ID:
+-	ret = grub_error (GRUB_ERR_BAD_ARGUMENT, "Argon2 not supported");
+-	goto err;
++	ret = argon2_hash (k->kdf.u.argon2.time, k->kdf.u.argon2.memory, k->kdf.u.argon2.cpus,
++			   passphrase, passphraselen, salt, saltlen, area_key, k->area.key_size,
++			   k->kdf.type == LUKS2_KDF_TYPE_ARGON2I ? Argon2_i : Argon2_id,
++			   ARGON2_VERSION_NUMBER);
++        if (ret)
++	  {
++	    grub_dprintf ("luks2", "Argon2 failed: %s\n", argon2_error_message (ret));
++	    goto err;
++	  }
++        break;
+       case LUKS2_KDF_TYPE_PBKDF2:
+ 	hash = grub_crypto_lookup_md_by_name (k->kdf.u.pbkdf2.hash);
+ 	if (!hash)
+-- 
+2.32.0
+
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEF9hrgiFbCdvenl/rVbJhu7ckPpQFAmEP4yQACgkQVbJhu7ck
+PpSm3g//WJHea428olgraKZcMWFBq4CpJJUYtaDq/Sxdy/VubY42Or3s90mKTFPw
+xiu3/r/WQXnzR5QnwhsVsk7eQNz2oxR5Bpw8XvNBFhMvMrCc8T+RhUeytsCFSjCg
+koW7Bub3TLhUnzPH/qHaXtK8inKk3G49fUi+iUFhj6YcMZFIKbiKX5B/SseswUwm
+9hJeA2aqgflOQT2ucEKxNJ7VQoqdn7QE0dxWd/7wUPoirBvePa3NcYcp/+QJ+gfr
+77N8Sb4hPhU63apnTbzkq72jLyng4h1LTnQMFvcfs1ktUPHWOKHnDxYgLAVEAMKR
+nKpfDyEGaAXtO1s2outPHykBnNzQYFiz06vFMoLfXr986m2/5I6XSBIKhEC3XUbO
+ZO2Kbys5u/T+O5j9KNlTKX2/9+XhCQwGZP+UXtz2KxTUQm1ZKKjJvNa7LLe6qm0c
+ps3YV20jXp5bI7Nsw0MN6+Vu67UXHcr0reCwhI4A/oUrNAVG3DYqaxQAbpKDcIlk
+FtVrmwAC3gOw2vjT6Z5T5CGD3jwLX1zN50G8GiSIMzYN7o0S8fU1AEdNpkfZAG8h
++CgCuSBwBY0wfDX1SKWczhVcodJ+E6hoPaXNhk4f31cvNFYuq0IUPKJ4WxNU3NJI
+56TdrKzrS322Pb16CC3GX7MgSlTvv3LcbX3Akv2SOpeOxsyc3OI=
+=Vrqy
+-----END PGP SIGNATURE-----
+
+

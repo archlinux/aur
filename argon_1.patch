@@ -1,0 +1,56 @@
+---
+ grub-core/kern/dl.c           | 3 ++-
+ util/grub-module-verifierXX.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/kern/dl.c b/grub-core/kern/dl.c
+index 48f8a7907..7d395096f 100644
+--- a/grub-core/kern/dl.c
++++ b/grub-core/kern/dl.c
+@@ -467,7 +467,8 @@ grub_dl_check_license (grub_dl_t mod, El
+
+   if (grub_strcmp ((char *) e + s->sh_offset, "LICENSE=GPLv3") == 0
+       || grub_strcmp ((char *) e + s->sh_offset, "LICENSE=GPLv3+") == 0
+-      || grub_strcmp ((char *) e + s->sh_offset, "LICENSE=GPLv2+") == 0)
++      || grub_strcmp ((char *) e + s->sh_offset, "LICENSE=GPLv2+") == 0
++      || grub_strcmp ((char *) e + s->sh_offset, "LICENSE=CC0") == 0)
+     return GRUB_ERR_NONE;
+
+   return grub_error (GRUB_ERR_BAD_MODULE,
+diff --git a/util/grub-module-verifierXX.c b/util/grub-module-verifierXX.c
+index ceb24309a..284f9026e 100644
+--- a/util/grub-module-verifierXX.c
++++ b/util/grub-module-verifierXX.c
+@@ -157,7 +157,8 @@ check_license (const char * const filena
+   Elf_Shdr *s = find_section (arch, e, ".module_license");
+   if (s && (strcmp ((char *) e + grub_target_to_host(s->sh_offset), "LICENSE=GPLv3") == 0
+ 	    || strcmp ((char *) e + grub_target_to_host(s->sh_offset), "LICENSE=GPLv3+") == 0
+-	    || strcmp ((char *) e + grub_target_to_host(s->sh_offset), "LICENSE=GPLv2+") == 0))
++	    || strcmp ((char *) e + grub_target_to_host(s->sh_offset), "LICENSE=GPLv2+") == 0
++	    || strcmp ((char *) e + grub_target_to_host(s->sh_offset), "LICENSE=CC0") == 0))
+     return;
+   grub_util_error ("%s: incompatible license", filename);
+ }
+--
+2.32.0
+
+
+The original PGP Signature. I had to modify the patch to apply it to the latest grub source code.
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEF9hrgiFbCdvenl/rVbJhu7ckPpQFAmEP4xMACgkQVbJhu7ck
+PpRSTxAAo3leEk7U47GFerE4CBrrC3CZpkpXjoNdcYuEbvy8rhhZrFzt4+g+8s5w
+z9BvXArf1G85XY4bvk61oeaLO7A52WOg5qpK3dKfcv6wZheq/MbjrE/JjcDNiLLc
+yOW/dipv23hXDNRU4xWHchWw792lBcTfO5QqTDhQczTfaze4LLYFt0W7ySuV39ir
+Q6FIZSLQPJFpH/lAjRJf5CjmDGzkuc6xg+km5NBQIKh695jKUv+H3oBGzmUfcd36
+Smv9cM7R7HuyU0y+Uc3nV6IU77H2+gGelvdodHpMPABiKrcsqiU3e347itmjTFRT
+7Yy9iThh3biPO6dxzdVGw9BwKeM9fH0Dvja6rQxx1+NkeuM7YGBAlYIe6JV8kYRo
+TtdjOUtixlfNuqwdYjFMwkAdQWaq0wCebQ9MvF9r0BuiH009u1dmGHHwen3yhzyO
+xxvk1bsC0B4yjy+Wq5I2r3DZSfr10RensKYxuKyWMDKRSbI2mUk/5/JJDiZlfW+r
+EIV73GAjURBM/kSS7Bo1MZmjuNcH5oXSJk4PfEOypK7xFbgPX0GM1hilJB1MZQC7
+T6EJwe1+WyHkAB5nVFqiPbUM7/xWw4LwQctjLBtJ9JW/+5n/rCAtkUIGOrQIedZg
+r/lckIxn6ujrKwIu5Rh03eqTIrG5PZ7Uy8LdMut0IOALp25zO7o=
+=w8r3
+-----END PGP SIGNATURE-----
+
+

@@ -1,0 +1,263 @@
+diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
+index ccfacb63a..1aaac1da6 100644
+--- a/grub-core/disk/luks2.c
++++ b/grub-core/disk/luks2.c
+@@ -350,8 +350,15 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
+ {
+   grub_cryptodisk_t cryptodisk;
+   grub_luks2_header_t header;
++  grub_luks2_keyslot_t keyslot;
++  grub_luks2_digest_t digest;
++  grub_luks2_segment_t segment;
++  char *json_header = NULL, *ptr;
++  grub_size_t candidate_key_len = 0, json_idx, size;
+   char uuid[sizeof (header.uuid) + 1];
+   grub_size_t i, j;
++  grub_err_t ret;
++  grub_json_t *json = NULL, keyslots;
+
+   if (cargs->check_boot)
+     return NULL;
+@@ -361,6 +368,157 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
+       grub_errno = GRUB_ERR_NONE;
+       return NULL;
+     }
++    json_header = grub_zalloc (grub_be_to_cpu64 (header.hdr_size) - sizeof (header));
++  if (!json_header)
++      return GRUB_ERR_OUT_OF_MEMORY;
++
++  /* Read the JSON area. */
++  ret = grub_disk_read (disk, 0, grub_be_to_cpu64 (header.hdr_offset) + sizeof (header),
++			grub_be_to_cpu64 (header.hdr_size) - sizeof (header), json_header);
++  if (ret)
++      goto err;
++
++  ptr = grub_memchr (json_header, 0, grub_be_to_cpu64 (header.hdr_size) - sizeof (header));
++  if (!ptr)
++    goto err;
++
++  ret = grub_json_parse (&json, json_header, grub_be_to_cpu64 (header.hdr_size));
++  if (ret)
++    {
++      ret = grub_error (GRUB_ERR_BAD_ARGUMENT, "Invalid LUKS2 JSON header");
++      goto err;
++    }
++
++  if (grub_json_getvalue (&keyslots, json, "keyslots") ||
++      grub_json_getsize (&size, &keyslots))
++    {
++      ret = grub_error (GRUB_ERR_BAD_ARGUMENT, "Could not get keyslots");
++      goto err;
++    }
++
++  if (grub_disk_native_sectors (disk) == GRUB_DISK_SIZE_UNKNOWN)
++    {
++      /* FIXME: Allow use of source disk, and maybe cause errors in read. */
++      grub_dprintf ("luks2", "Source disk %s has an unknown size, "
++			     "conservatively returning error\n", disk->name);
++      ret = grub_error (GRUB_ERR_BUG, "Unknown size of luks2 source device");
++      goto err;
++    }
++
++  cryptodisk = grub_zalloc (sizeof (*cryptodisk));
++  if (!cryptodisk)
++    return NULL;
++
++
++  /* Try all keyslot */
++  for (json_idx = 0; json_idx < size; json_idx++)
++    {
++      char indexstr[21]; /* log10(2^64) ~ 20, plus NUL character. */
++      typeof (disk->total_sectors) max_crypt_sectors = 0;
++
++      grub_errno = GRUB_ERR_NONE;
++      ret = luks2_get_keyslot (&keyslot, &digest, &segment, json, json_idx);
++      if (ret)
++	goto err;
++      if (grub_errno != GRUB_ERR_NONE)
++	  grub_dprintf ("luks2", "Ignoring unhandled error %d from luks2_get_keyslot\n", grub_errno);
++
++      if (keyslot.priority == 0)
++	{
++	  grub_dprintf ("luks2", "Ignoring keyslot \"%" PRIuGRUB_UINT64_T "\" due to priority\n", keyslot.idx);
++	  continue;
++	}
++
++      grub_dprintf ("luks2", "Trying keyslot \"%" PRIuGRUB_UINT64_T "\"\n", keyslot.idx);
++
++      /* Sector size should be one of 512, 1024, 2048, or 4096. */
++      if (!(segment.sector_size == 512 || segment.sector_size == 1024 ||
++	    segment.sector_size == 2048 || segment.sector_size == 4096))
++	{
++	  grub_dprintf ("luks2", "Segment \"%" PRIuGRUB_UINT64_T "\" sector"
++				 " size %" PRIuGRUB_UINT64_T " is not one of"
++				 " 512, 1024, 2048, or 4096\n",
++				 segment.idx, segment.sector_size);
++	  continue;
++	}
++
++      /* Set up disk according to keyslot's segment. */
++      cryptodisk->offset_sectors = grub_divmod64 (segment.offset, segment.sector_size, NULL);
++      cryptodisk->log_sector_size = grub_log2ull (segment.sector_size);
++      /* Set to the source disk/partition size, which is the maximum we allow. */
++      max_crypt_sectors = grub_disk_native_sectors (disk);
++      max_crypt_sectors = grub_convert_sector (max_crypt_sectors, GRUB_DISK_SECTOR_BITS,
++					       cryptodisk->log_sector_size);
++
++      if (max_crypt_sectors < cryptodisk->offset_sectors)
++	{
++	  grub_dprintf ("luks2", "Segment \"%" PRIuGRUB_UINT64_T "\" has offset"
++				 " %" PRIuGRUB_UINT64_T " which is greater than"
++				 " source disk size %" PRIuGRUB_UINT64_T ","
++				 " skipping\n", segment.idx, cryptodisk->offset_sectors,
++				 max_crypt_sectors);
++	  continue;
++	}
++
++      if (grub_strcmp (segment.size, "dynamic") == 0)
++	cryptodisk->total_sectors = max_crypt_sectors - cryptodisk->offset_sectors;
++      else
++	{
++	  grub_errno = GRUB_ERR_NONE;
++
++	  /* Convert segment.size to sectors, rounding up to nearest sector */
++	  cryptodisk->total_sectors = grub_strtoull (segment.size, NULL, 10);
++
++	  if (grub_errno == GRUB_ERR_NONE)
++	    {
++	      cryptodisk->total_sectors = ALIGN_UP (cryptodisk->total_sectors,
++					       1 << cryptodisk->log_sector_size);
++	      cryptodisk->total_sectors >>= cryptodisk->log_sector_size;
++	    }
++	  else if (grub_errno == GRUB_ERR_BAD_NUMBER)
++	    {
++	      grub_dprintf ("luks2", "Segment \"%" PRIuGRUB_UINT64_T "\" size"
++				     " \"%s\" is not a parsable number,"
++				     " skipping keyslot\n",
++				     segment.idx, segment.size);
++	      continue;
++	    }
++	  else if (grub_errno == GRUB_ERR_OUT_OF_RANGE)
++	    {
++	      /*
++	       * There was an overflow in parsing segment.size, so disk must
++	       * be very large or the string is incorrect.
++	       *
++	       * TODO: Allow reading of at least up max_crypt_sectors. Really,
++	       * its very unlikely one would be booting from such a large drive
++	       * anyway. Use another smaller LUKS2 boot device.
++	       */
++	      grub_dprintf ("luks2", "Segment \"%" PRIuGRUB_UINT64_T "\" size"
++				     " %s overflowed 64-bit unsigned integer,"
++				     " skipping keyslot\n", segment.idx, segment.size);
++	      continue;
++	    }
++	}
++
++      if (cryptodisk->total_sectors == 0)
++	{
++	  grub_dprintf ("luks2", "Segment \"%" PRIuGRUB_UINT64_T "\" has zero"
++				 " sectors, skipping\n", segment.idx);
++	  continue;
++	}
++      else if (max_crypt_sectors < (cryptodisk->offset_sectors + cryptodisk->total_sectors))
++	{
++	  grub_dprintf ("luks2", "Segment \"%" PRIuGRUB_UINT64_T "\" has last"
++				 " data position greater than source disk size,"
++				 " the end of the crypto device will be"
++				 " inaccessible\n", segment.idx);
++
++	  /* Allow decryption up to the end of the source disk. */
++	  cryptodisk->total_sectors = max_crypt_sectors - cryptodisk->offset_sectors;
++	}
++
++      break;
++    }
+
+   for (i = 0, j = 0; i < sizeof (header.uuid); i++)
+     if (header.uuid[i] != '-')
+@@ -373,15 +531,16 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
+       return NULL;
+     }
+
+-  cryptodisk = grub_zalloc (sizeof (*cryptodisk));
+-  if (!cryptodisk)
+-    return NULL;
+-
+   COMPILE_TIME_ASSERT (sizeof (cryptodisk->uuid) >= sizeof (uuid));
+   grub_memcpy (cryptodisk->uuid, uuid, sizeof (uuid));
+
+   cryptodisk->modname = "luks2";
+   return cryptodisk;
++err:
++  grub_free (json_header);
++  grub_json_free (json);
++  grub_errno = ret;
++  return NULL;
+ }
+
+ static grub_err_t
+diff --git a/grub-core/osdep/devmapper/getroot.c b/grub-core/osdep/devmapper/getroot.c
+index 9ba5c9865..9ae1780c9 100644
+--- a/grub-core/osdep/devmapper/getroot.c
++++ b/grub-core/osdep/devmapper/getroot.c
+@@ -141,7 +141,12 @@ grub_util_get_dm_abstraction (const char *os_dev)
+   if (strncmp (uuid, "CRYPT-LUKS1-", 12) == 0)
+     {
+       grub_free (uuid);
+-      return GRUB_DEV_ABSTRACTION_LUKS;
++      return GRUB_DEV_ABSTRACTION_LUKS1;
++    }
++  if (strncmp (uuid, "CRYPT-LUKS2-", 12) == 0)
++    {
++      grub_free (uuid);
++      return GRUB_DEV_ABSTRACTION_LUKS2;
+     }
+
+   grub_free (uuid);
+@@ -179,7 +184,7 @@ grub_util_pull_devmapper (const char *os_dev)
+ 	  grub_util_pull_device (subdev);
+ 	}
+     }
+-  if (uuid && strncmp (uuid, "CRYPT-LUKS1-", sizeof ("CRYPT-LUKS1-") - 1) == 0
++  if (uuid && (strncmp (uuid, "CRYPT-LUKS1-", sizeof ("CRYPT-LUKS1-") - 1) == 0 || strncmp (uuid, "CRYPT-LUKS2-", sizeof ("CRYPT-LUKS2-") - 1) == 0)
+       && lastsubdev)
+     {
+       char *grdev = grub_util_get_grub_dev (lastsubdev);
+@@ -249,7 +254,8 @@ grub_util_get_devmapper_grub_dev (const char *os_dev)
+ 	return grub_dev;
+       }
+
+-    case GRUB_DEV_ABSTRACTION_LUKS:
++    case GRUB_DEV_ABSTRACTION_LUKS1:
++    case GRUB_DEV_ABSTRACTION_LUKS2:
+       {
+ 	char *dash;
+
+diff --git a/include/grub/emu/getroot.h b/include/grub/emu/getroot.h
+index 73fa2d34a..1a27faf28 100644
+--- a/include/grub/emu/getroot.h
++++ b/include/grub/emu/getroot.h
+@@ -29,7 +29,8 @@ enum grub_dev_abstraction_types {
+   GRUB_DEV_ABSTRACTION_NONE,
+   GRUB_DEV_ABSTRACTION_LVM,
+   GRUB_DEV_ABSTRACTION_RAID,
+-  GRUB_DEV_ABSTRACTION_LUKS,
++  GRUB_DEV_ABSTRACTION_LUKS1,
++  GRUB_DEV_ABSTRACTION_LUKS2,
+   GRUB_DEV_ABSTRACTION_GELI,
+ };
+
+diff --git a/util/getroot.c b/util/getroot.c
+index a5eaa64fd..76d86c174 100644
+--- a/util/getroot.c
++++ b/util/getroot.c
+@@ -100,7 +100,8 @@ grub_util_pull_device (const char *os_dev)
+     case GRUB_DEV_ABSTRACTION_LVM:
+       grub_util_pull_lvm_by_command (os_dev);
+       /* Fallthrough - in case that lvm-tools are unavailable.  */
+-    case GRUB_DEV_ABSTRACTION_LUKS:
++    case GRUB_DEV_ABSTRACTION_LUKS1:
++    case GRUB_DEV_ABSTRACTION_LUKS2:
+       grub_util_pull_devmapper (os_dev);
+       return;
