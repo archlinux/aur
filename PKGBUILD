@@ -3,6 +3,7 @@
 pkgname=podman-compose-git
 pkgver=1.0.3.r17.0bd493f
 pkgrel=1
+epoch=1
 pkgdesc="A script to run docker-compose.yml using podman"
 arch=('any')
 url="https://github.com/containers/podman-compose"
