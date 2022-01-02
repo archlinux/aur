@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd rust-u2f/linux
-  cargo build --release
+  env CARGO_INCREMENTAL=0 cargo build --release --locked --offline
   sed -i 's,/libexec/,/lib/,' *-daemon/softu2f.service
 }
 
