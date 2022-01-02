@@ -1,14 +1,14 @@
 pkgbase = minetest-easytest
 	pkgdesc = A game that changes much of MTG's gameplay and adds new features.
-	pkgver = 0.0.4
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://content.minetest.net/packages/mooD_Slayer/ksurvive/
 	arch = any
 	license = LGPLv2.1
 	depends = minetest-common
-	noextract = ksurvive-0.0.4.zip
+	noextract = ksurvive-0.0.7.zip
 	options = !strip
-	source = ksurvive-0.0.4.zip::https://content.minetest.net/packages/mooD_Slayer/ksurvive/releases/8713/download/
-	sha256sums = db97dbedce52dbcf840f11972f206b238dd2897bb67fa041c8e7d7a410980ef5
+	source = ksurvive-0.0.7.zip::https://content.minetest.net/packages/mooD_Slayer/ksurvive/releases/10346/download/
+	sha256sums = adcb7d611b6ec8cc29a8cb4df5217df396aa47e5da64adb26ac8d9bcfe7071e8
 
 pkgname = minetest-easytest
