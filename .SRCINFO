@@ -11,6 +11,7 @@ pkgbase = surfshark-vpn-gui-git
 	depends = gtk3
 	depends = python-requests
 	depends = wxgtk3
+	depends = python-wx
 	provides = surfsharkvpngui
 	conflicts = surfshark-vpn-gui
 	source = surfshark-vpn-gui-git::git+https://github.com/jakeday/SurfShark-VPN-GUI.git
