@@ -1,6 +1,6 @@
 pkgbase = obfs4-git
 	pkgdesc = The obfourscator - a pluggable transport proxy written in Go
-	pkgver = 182.40245c4
+	pkgver = 189.cbf3f3c
 	pkgrel = 1
 	url = https://gitweb.torproject.org/pluggable-transports/obfs4.git/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = obfs4-git
 	optdepends = tor: you need tor to use this package
 	provides = obfs4proxy
 	conflicts = obfs4proxy
-	source = git+https://git.torproject.org/pluggable-transports/obfs4.git
+	source = git+https://gitlab.com/yawning/obfs4.git
 	sha256sums = SKIP
 
 pkgname = obfs4-git
