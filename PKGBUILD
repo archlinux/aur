@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
 pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=('any')
 url="https://www.openssl.org"
@@ -17,7 +17,7 @@ depends=('mingw-w64-zlib')
 makedepends=('mingw-w64-gcc'
              'mingw-w64-environment'
              'perl')
-options=('!strip' 'staticlibs' '!buildflags')
+options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})
 sha256sums=('f89199be8b23ca45fc7cb9f1d8d3ee67312318286ad030f5316aca6462db6c96'
             'SKIP')
