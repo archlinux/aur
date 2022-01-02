@@ -1,13 +1,14 @@
 pkgbase = xplorer-bin
 	pkgdesc = Xplorer, a customizable, modern file manager
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://xplorer.vercel.app
+	url = https://xplorer.space
 	arch = any
 	license = custom
-	source = https://github.com/kimlimjustin/xplorer/releases/download/v0.2.0/xplorer_0.2.0_amd64.deb
+	depends = webkit2gtk
+	source = https://github.com/kimlimjustin/xplorer/releases/download/v0.3.0/xplorer_0.3.0_amd64.deb
 	source = https://raw.githubusercontent.com/kimlimjustin/xplorer/master/LICENSE
-	sha256sums = 401a819ade2795cde936dd8b5762b29b219831c92211e44a2de8c223bd88c32d
+	sha256sums = 48f302db523c60bd6a4dac90672ae9bb74d7f01d083551906da81d30abc0a7b7
 	sha256sums = 35b1ad3c63571b825b1bf9ccb0134df153c8ed8d0d29f0cefa898f5ea220669c
 
 pkgname = xplorer-bin
