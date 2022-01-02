@@ -35,7 +35,7 @@ index ceb24309a..284f9026e 100644
 2.32.0
 
 
-The original PGP Signature. I had to modify the patch to apply it to the latest grub source code.
+MESSAGE FROM AUR PACKAGE AUTHOR: This signature is invalid. I had to recreate the patch manually because the original wouldn't apply properly
 -----BEGIN PGP SIGNATURE-----
 
 iQIzBAABCgAdFiEEF9hrgiFbCdvenl/rVbJhu7ckPpQFAmEP4xMACgkQVbJhu7ck
