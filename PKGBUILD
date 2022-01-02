@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=94.0.2
+pkgver=95.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=f41e1b2623e162339286610070c059afe5106c25
+_patchrev=7c17f3c4df7423951b09c407183c30ba47c60cd5
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -103,6 +103,15 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix_csd_window_buttons.patch
         # Workaround #14
         fix-wayland-build.patch
+        # Fix build against current Dav1D tagged version #18
+        revert_dav1d_changes.patch.xz
+        # WR/Gnome+KDE Wayland/AMD: Firefox 95 locked to 120 fps,
+        # unsmooth scrolling
+        # https://bugzilla.mozilla.org/show_bug.cgi?id=1744896
+        mozilla-bmo1744896.patch
+        # Firefox 91.4 fails to build against wayland 1.20
+        # https://bugzilla.mozilla.org/show_bug.cgi?id=1745560
+        mozilla-bmo1745560.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -166,6 +175,15 @@ prepare() {
   # Workaround #14
   patch -Np1 -i "$srcdir"/fix-wayland-build.patch
 
+  # Fix build against current Dav1D tagged version
+  xzcat "$srcdir"/revert_dav1d_changes.patch.xz | patch -Np1
+
+  # WR/Gnome+KDE Wayland/AMD: Firefox 95 locked to 120 fps,
+  # unsmooth scrolling
+  patch -Np1 -i "$srcdir"/mozilla-bmo1744896.patch
+
+  # Firefox 91.4 fails to build against wayland 1.20
+  patch -Np1 -i "$srcdir"/mozilla-bmo1745560.patch
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -276,15 +294,15 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '72724b401217f1d0b380b4ee2872ad82'
+         '9530b0395a095c0b47ee42d0996ec163'
          'a26a061efb4def6572d5b319d657f1d6'
          '4c23d9c0a691d70919beb1dafbbecbd3'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'b386ac38ffb7e545b9473e516455a25f'
          '1d5e9215530ef6778299b67dc6dba65e'
-         'b4906a478eaee31383db763b16285cce'
+         '01329185574709cb420f2c4531597d37'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         '4efeed2b6084e16b4946379c54ddf9c8'
+         '512c6c55c637fd2fee7a5e71f38dd54c'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          '350c258cdaeef99b4638c5181fda3ad2'
@@ -299,4 +317,7 @@ md5sums=('SKIP'
          '31f950a94966287bfa6ccf03030781cc'
          'a59f137deca1da83de10a122984457d7'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
-         '2cf74781f6b742d6b7e6f7251f49311a')
+         '2cf74781f6b742d6b7e6f7251f49311a'
+         'd633782c58cd8b8b165e32940ec7cb46'
+         'c8593df8bc18e8cacfa4f36cdc31649f'
+         'e9ce01b511ca4e5f37278d7748b8b723')

@@ -1,0 +1,62 @@
+
+# HG changeset patch
+# User Robert Mader <robert.mader@posteo.de>
+# Date 1640087004 0
+# Node ID 620f6d66f586a8f0efad2f58f7cb5db67f6b318b
+# Parent  71184b9b6cb5f44580492b8f508b9363251111d3
+Bug 1744896 - Create WaylandVsyncSource on window creation, r=stransky, a=dsmith
+
+Previously we created the `WaylandVsyncSource` when calling
+`WaylandStartVsync()` for the first time. Over a couple of refactorings,
+this moved from `Create()` to happen much later in the process,
+eventually racing with the content process which triggeres `VsyncParent`
+to call `GetVsyncSource()`.
+If the race went badly, `GetVsyncSource()` would return a `nullptr` and
+the tab(s) in question would stick to the global software vsync source.
+
+To avoid that, create the `WaylandVsyncSource` in `Create()` again.
+
+Differential Revision: https://phabricator.services.mozilla.com/D134253
+
+diff -up a/widget/gtk/nsWindow.cpp.1744896 b/widget/gtk/nsWindow.cpp
+--- a/widget/gtk/nsWindow.cpp.1744896	2021-12-23 11:54:31.522539340 +0100
++++ b/widget/gtk/nsWindow.cpp	2021-12-23 11:55:56.070270174 +0100
+@@ -5765,6 +5765,17 @@ nsresult nsWindow::Create(nsIWidget* aPa
+       }
+     }
+ #endif
++#ifdef MOZ_WAYLAND
++  // Initialize the window specific VsyncSource early in order to avoid races
++  // with BrowserParent::UpdateVsyncParentVsyncSource().
++  // Only use for toplevel windows for now, see bug 1619246.
++  if (GdkIsWaylandDisplay() &&
++      StaticPrefs::widget_wayland_vsync_enabled_AtStartup() &&
++      mWindowType == eWindowType_toplevel) {
++    mWaylandVsyncSource = new WaylandVsyncSource();
++    MOZ_RELEASE_ASSERT(mWaylandVsyncSource);
++  }
++#endif
+ 
+     // We create input contexts for all containers, except for
+     // toplevel popup windows
+@@ -6077,19 +6088,12 @@ void nsWindow::ResumeCompositorFromCompo
+ 
+ void nsWindow::WaylandStartVsync() {
+ #ifdef MOZ_WAYLAND
+-  // only use for toplevel windows for now - see bug 1619246
+-  if (!GdkIsWaylandDisplay() ||
+-      !StaticPrefs::widget_wayland_vsync_enabled_AtStartup() ||
+-      mWindowType != eWindowType_toplevel) {
++  if (!mWaylandVsyncSource) {
+     return;
+   }
+ 
+   LOG("nsWindow::WaylandStartVsync() [%p]\n", (void*)this);
+ 
+-  if (!mWaylandVsyncSource) {
+-    mWaylandVsyncSource = new WaylandVsyncSource();
+-  }
+-
+   WaylandVsyncSource::WaylandDisplay& display =
+       static_cast<WaylandVsyncSource::WaylandDisplay&>(
+           mWaylandVsyncSource->GetGlobalDisplay());
