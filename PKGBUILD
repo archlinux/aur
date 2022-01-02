@@ -2,14 +2,13 @@
 
 pkgname=unicorn-cal
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Enhanced CLI calendar"
 arch=('x86_64' 'aarch64')
 url="http://unicorn.us.com/cal.html";
 license=('custom:public domain')
 source=("http://unicorn.us.com/pub/cal41.zip")
 sha256sums=('96318b738970237832e4594cb363058f4243f54e86a5f1e06737fb5d02e6c298')
-makedepends=('unzip')
 
 build() {
 	cd "cal41/src"
