@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='JUnit XML Formatter for flake8'
 arch=('any')
 license=('MIT')
-url='https://github.com/jarshwah/flake8_formatter_abspath'
+url='https://github.com/astj/flake8-formatter-junit-xml'
 makedepends=('python-setuptools' 'python2-setuptools' 'git')
 source=("git+https://github.com/astj/flake8-formatter-junit-xml.git#tag=v$pkgver")
 md5sums=('SKIP')
