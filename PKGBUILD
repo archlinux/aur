@@ -3,7 +3,7 @@
 
 pkgname=shadowsocks-rust
 pkgver=1.12.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -17,8 +17,8 @@ source=(
     'shadowsocks-rust-server@.service')
 
 sha512sums=('43f047f9c957c7a1a201df126041d3152fe679d751bdaeb1b71a728bc6ba92951bee0d2d478f78175f03ccc5a850c5fd627f3f31daa9ddf413e2f735e560392a'
-            '0f714e3f085406ee011155daabe4a69514b5bd5d0587a3d7ebc5be459565d4c090b0fd6977fc8af7ba681e876b0d38859aa7e39f51a984de66cc9a623375e736'
-            '6292de41dd0da9b70a1f060a19e4d9acdb66e67f8b41e84d31b331d012296c29c59c63cfb02763538dd46931412243be1098876bc93078b8cb92573be2a32b24')
+            'da9f2636af124d57d4540b42bc35721118e1610bbeb71d59e9f45e979bb1b7e33f9071ba104e2c9c2a76c79343298e0a603773578ff8f20d14cf963d58ec5dc0'
+            'f911eda6f01620807bcad0d0d71536db2be840b516b23cb9b81012a4696e651e93231ab3ad82c92bd85bddb68f59030cb524195da75b034d9a39e6a585de7291')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"

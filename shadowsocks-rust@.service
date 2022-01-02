@@ -7,7 +7,7 @@ Wants=network-online.target
 Type=simple
 DynamicUser=yes
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-ExecStart=/usr/bin/sslocal-rust -c /etc/shadowsocks-rust/%i.json
+ExecStart=/usr/bin/ssservice local -c /etc/shadowsocks-rust/%i.json
 
 [Install]
 WantedBy=multi-user.target
