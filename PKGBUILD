@@ -1,7 +1,7 @@
 # Maintainer: Dan Yeomans <dan@dyeo.net>
 
 pkgname=scrotre-git
-pkgver=0.2.1.r52.03de67c
+pkgver=1.1.0.r0.8c6c9e3
 pkgrel=1
 pkgdesc="Screen capture using pygtk, inspired by scrot, forked from escrotum"
 arch=('x86_64')

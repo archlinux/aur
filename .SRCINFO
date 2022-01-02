@@ -1,6 +1,6 @@
 pkgbase = scrotre-git
 	pkgdesc = Screen capture using pygtk, inspired by scrot, forked from escrotum
-	pkgver = 0.2.1.r54.8c6c9e3
+	pkgver = 1.1.0.r0.8c6c9e3
 	pkgrel = 1
 	url = https://github.com/dyeo/scrotre
 	arch = x86_64
