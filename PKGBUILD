@@ -1,11 +1,11 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=sway-git
+pkgname=sway-asan-git
 _pkgname=sway
-pkgver=r6506.1be66c98
-pkgrel=2
+pkgver=r6843.eaeb173a
+pkgrel=1
 license=("MIT")
-pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
+pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)"
 makedepends=(
 	"git"
 	"meson"
@@ -40,11 +40,11 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+source=("${pkgname%-asan-*}::git+https://github.com/swaywm/sway.git"
 	50-systemd-user.conf)
 sha512sums=("SKIP"
             "57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e")
-provides=("sway")
+provides=("sway" "sway-git=${pkgver}")
 conflicts=("sway")
 options=(debug)
 
@@ -55,7 +55,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	meson \
+	CFLAGS="$CFLAGS -fsanitize=address,undefined" meson \
 		-Dwerror=false \
 		--prefix /usr \
 		"$srcdir/build"
