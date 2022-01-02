@@ -3,7 +3,7 @@
 _name=StyLua
 pkgname=stylua
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Code formatter for Lua'
 arch=('any')
 url=https://github.com/JohnnyMorganz/StyLua
@@ -15,7 +15,7 @@ b2sums=('1656958c11a4d4e4a35b935d9b0f4253c50955d8f2d1a955f6c214554df60c612d9b765
 
 prepare() {
   cd $_name-$pkgver
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd $_name-$pkgver
-  cargo test --release --locked --offline
+  cargo test --locked --offline
 }
 
 package() {
