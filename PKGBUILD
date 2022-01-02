@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=neoleo-git
-pkgver=11.0.r9.g33b25b4
-pkgrel=3
+pkgver=12.0
+pkgrel=1
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
 arch=('i686' 'x86_64')
 url="https://github.com/blippy/neoleo"
@@ -12,19 +12,13 @@ provides=(${pkgname%-git})
 license=('GPL')
 depends=('ncurses')
 makedepends=('git')
-source=("git+$url.git" io-curses.patch)
+source=("git+$url.git")
 options=('!makeflags')
-sha256sums=('SKIP'
-            'b1c89e5b4f9eaf887c8bdb9d0a54d2b150869c71a6018fae700f119ca43a0983')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
   git describe --tags | sed 's+-+.r+' |tr - . | cut -c2-
-}
-
-prepare() {
-  cd ${pkgname%-git}
-  git apply "$srcdir"/io-curses.patch
 }
 
 build() {
