@@ -1,6 +1,6 @@
 pkgbase = clash-user
 	pkgdesc = A rule-based tunnel in Go
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash
 	arch = x86_64
@@ -8,17 +8,17 @@ pkgbase = clash-user
 	makedepends = go
 	depends = clash-geoip
 	depends = glibc
-	provides = clash=1.8.0
+	provides = clash=1.9.0
 	conflicts = clash
 	backup = etc/clash/config.yaml
-	source = clash-1.8.0.tar.gz::https://github.com/Dreamacro/clash/archive/v1.8.0.tar.gz
+	source = clash-1.9.0.tar.gz::https://github.com/Dreamacro/clash/archive/v1.9.0.tar.gz
 	source = clash-user-1.3.5.patch
 	source = config.yaml
 	source = clash.sysusers
 	source = clash.tmpfiles
 	source = clash.service
 	source = clash@.service
-	sha256sums = e1bae0ba88a0e2ba36702f95fe95fdc8fee58db4751b5b108ea600563c36a972
+	sha256sums = a276b1e7247e847fe44fe336a67bdecbb442748a1e7fa01d9c1ce0d52f9168ef
 	sha256sums = 511abd285aedc6dda651b1bf3d7fd84f51060fa313a12beb3ce68d916c2fc173
 	sha256sums = 62ed4460cd2ed4b400193ad04b0cccb76d7558f87c377a0033041841a73f7945
 	sha256sums = 149c6448a5630af1065ea230707331ac12663128568d6cf0e9d5480e94d1d104
