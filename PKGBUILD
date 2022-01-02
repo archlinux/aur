@@ -23,14 +23,19 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
+prepare() {
+  cd ${pkgname%-git}
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd ${pkgname%-git}
-  cargo build --release --locked
+  cargo build --release --locked --offline
 }
 
 check() {
   cd ${pkgname%-git}
-  cargo test --release --locked
+  cargo test --locked --offline
 }
 
 package() {
