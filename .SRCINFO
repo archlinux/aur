@@ -6,6 +6,7 @@ pkgbase = renderdoc-git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
