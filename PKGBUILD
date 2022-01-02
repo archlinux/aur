@@ -18,7 +18,7 @@ pkgname=(
   uwsgi-ng-plugin-notfound
 )
 pkgver=2.0.20
-pkgrel=3
+pkgrel=4
 pkgdesc="Fork of uWSGI fast-tracking the latest patches (including Python 3.10 patch)"
 arch=(x86_64)
 url="https://uwsgi-docs.readthedocs.io/en/latest/"
@@ -132,7 +132,7 @@ package_uwsgi-ng() {
   install -vDm 644 ../uwsgi.logrotate "$pkgdir"/etc/logrotate.d/uwsgi
   install -vDm 644 ../uwsgi.sysusers "$pkgdir"/usr/lib/sysusers.d/uwsgi.conf
 
-  mkdir /etc/uwsgi/vassals
+  mkdir "$pkgdir"/etc/uwsgi/vassals/
 }
 
 package_uwsgi-ng-plugin-cgi() {
