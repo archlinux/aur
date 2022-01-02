@@ -3,7 +3,7 @@
 _name=selene
 pkgname=selene-linter
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Blazing-fast modern Lua linter written in Rust'
 arch=('x86_64')
 url=https://github.com/Kampfkarren/selene
@@ -15,7 +15,7 @@ b2sums=('b18764d28691a1977041cdd35c5ba34efb52f5c0582e904309edc3820dc5626416f1d22
 
 prepare() {
   cd $_name-$pkgver
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd $_name-$pkgver
-  cargo test --release --locked --offline
+  cargo test --locked --offline
 }
 
 package() {

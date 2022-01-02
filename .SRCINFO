@@ -1,7 +1,7 @@
 pkgbase = selene-linter
 	pkgdesc = Blazing-fast modern Lua linter written in Rust
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kampfkarren/selene
 	arch = x86_64
 	license = MPL2
