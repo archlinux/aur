@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-simply-workspaces-git
 	pkgdesc = Gnome 3 workspace indicator with an i3/polybar style.
 	pkgver = v5
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	makedepends = git
 	provides = gnome-shell-extension-simply-workspaces-git=v5
 	conflicts = gnome-shell-extension-simply-workspaces-git
-	source = git+https://github.com/andyrichardson/simply-workspaces.git
+	source = git+https://github.com/andyrichardson/simply-workspaces.git#tag=v5
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-simply-workspaces-git
