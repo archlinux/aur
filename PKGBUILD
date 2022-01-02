@@ -2,8 +2,8 @@
 # Based on the PKGBUILD for gdlauncher-bin
 pkgname="gdlauncher-beta-bin"
 _pkgname="gdlauncher"
-pkgver="1.1.20"
-_pkgver="1.1.20"  # Upstream version, used in the download url.
+pkgver="1.1.21"
+_pkgver="1.1.21"  # Upstream version, used in the download url.
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -14,7 +14,7 @@ depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk
 provides=('gdlauncher')
 conflicts=('gdlauncher' 'gdlauncher-beta' 'gdlauncher-bin' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-classic')
 source_x86_64=("GDLauncher-${pkgver}.deb::https://github.com/gorilla-devs/GDLauncher/releases/download/v${_pkgver}/GDLauncher-linux-setup.deb")
-md5sums_x86_64=('6bad4a57c4c4396e6a1cdd33fc756b7e')
+md5sums_x86_64=('08114e054d2cee4d9bfc4d0356025520')
 
 package() {
     # Extract data folder from .deb archive
