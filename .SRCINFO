@@ -1,7 +1,7 @@
 pkgbase = windscribe-v2-bin
 	pkgdesc = Windscribe GUI tool for Linux
 	pkgver = 2.3.15_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://windscribe.com/guides/linux
 	install = windscribe-v2-bin.install
 	arch = x86_64
