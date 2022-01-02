@@ -24,6 +24,7 @@ fi
 pkgbase=linux-mt
 _major=5.15
 _minor=12
+_branch=5.x
 pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux zen kernel with personal customizations.'
@@ -38,9 +39,10 @@ makedepends=(
 )
 options=('!strip')
 _srcname="zen-kernel"
-source=(
-  "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.15+.patch"
+source=(  
+  "https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.${_minor}.tar."{xz,sign} # kernel package
+  "https://github.com/zen-kernel/zen-kernel/releases/download/v5.15.12-zen1/${_srctag}.patch."{xz,xz.sig} # zen patches
+  "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.15+.patch" # cpu optimizations patch
   choose-gcc-optimization.sh
   "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config" # Config file
 
@@ -53,7 +55,10 @@ validpgpkeys=(
   'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D'  # Steven Barrett <steven@liquorix.net>
 )
 
-sha256sums=('SKIP'
+sha256sums=('7de919772b62647591527e904e3b3583783381a29d812404f58a222484e751a0'
+            'SKIP'
+            '621b0752de444144126bd04a70a5d8d976f55eaa17734ebcf87bc0d731028a78'
+            'SKIP'
             '380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d'
             'f0559045319db718af902f0f9f1ba183b63d89190a4d2dceb0d39d6a814156f7'
             'de0f863e315ab2de7671ce512f6755ae14b58a64f21e48bd2b0158d719533011')
