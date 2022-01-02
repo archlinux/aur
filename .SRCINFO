@@ -1,6 +1,6 @@
 pkgbase = arc-gtk-theme-git
 	pkgdesc = A flat theme suite with transparent elements.
-	pkgver = 20211018.r31.gfa2c5a1f
+	pkgver = 20220102.r0.gf8f674df
 	pkgrel = 1
 	url = https://github.com/jnsh/arc-theme
 	arch = any
