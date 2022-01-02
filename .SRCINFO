@@ -1,7 +1,7 @@
 pkgbase = python-briar-wrapper
 	pkgdesc = A wrapper for the Briar headless API.
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.briarproject.org/briar/python-briar-wrapper
 	arch = any
 	license = GNU Affero GPL
@@ -20,4 +20,3 @@ pkgbase = python-briar-wrapper
 	sha256sums = dff2e1645420e76c543065d3bedcfe17fc4669bb01627f6ba43a66c225b52f18
 
 pkgname = python-briar-wrapper
-
