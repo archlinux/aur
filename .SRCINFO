@@ -1,6 +1,6 @@
 pkgbase = gamescope-session-git
 	pkgdesc = Steam Big Picture Mode session based on gamescope for ChimeraOS
-	pkgver = r14.a1a7a18
+	pkgver = r21.850ada5
 	pkgrel = 1
 	url = https://github.com/Samsagax/gamescope-session
 	install = gamescope-session.install
