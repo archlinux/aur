@@ -20,6 +20,6 @@ pkgver() {
 }
 package() {
 	cd "$srcdir/$pkgname"
-	chmod u+x install.sh
+	chmod +x install.sh
     sudo install.sh
 }
