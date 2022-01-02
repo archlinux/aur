@@ -1,14 +1,14 @@
 pkgbase = minetest-berzerkpt
 	pkgdesc = Action game in ancient Egypt.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://content.minetest.net/packages/carlos_rupp/berzerkpt/
 	arch = any
 	license = MIT
 	depends = minetest-common
-	noextract = berzerkpt-1.0.1.zip
+	noextract = berzerkpt-1.0.2.zip
 	options = !strip
-	source = berzerkpt-1.0.1.zip::https://content.minetest.net/packages/carlos_rupp/berzerkpt/releases/10248/download/
-	sha256sums = b7c529b687c258b3d6ccec82e462e900c8af022f996eb084b15a83b9a2df0c2c
+	source = berzerkpt-1.0.2.zip::https://content.minetest.net/packages/carlos_rupp/berzerkpt/releases/10305/download/
+	sha256sums = 3ae71801491ab5a493af7a8497f2372a1b1c9f4063b2ebf504856b35c002cf98
 
 pkgname = minetest-berzerkpt

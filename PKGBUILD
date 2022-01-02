@@ -2,12 +2,12 @@
 pkgname=minetest-berzerkpt
 _pkgname=berzerkpt
 _pkgauthor=carlos_rupp
-pkgver=1.0.1
-_cdbrel=10248
+pkgver=1.0.2
+_cdbrel=10305
 pkgrel=1
 pkgdesc="Action game in ancient Egypt."
 license=("MIT")
-sha256sums=('b7c529b687c258b3d6ccec82e462e900c8af022f996eb084b15a83b9a2df0c2c')
+sha256sums=('3ae71801491ab5a493af7a8497f2372a1b1c9f4063b2ebf504856b35c002cf98')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
