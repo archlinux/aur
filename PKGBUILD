@@ -17,7 +17,8 @@ _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${CARCH}" == "x86_64" ]] && [[ "${_ia32_efi_in_arch_x64}" == "1" ]] && _build_platforms+=" i386-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
-pkgname="grub-improved-luks2-git"
+_pkgname="grub"
+pkgname="${_pkgname}-improved-luks2-git"
 pkgver=2.06.r92.g246d69b7e
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
@@ -39,8 +40,8 @@ if [[ "${_grub_emu_build}" == "1" ]]; then
     optdepends+=('libusb: For grub-emu USB support')
 fi
 
-provides=("grub")
-conflicts=("grub")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 backup=('etc/default/grub'
         'etc/grub.d/40_custom')
 install="${pkgname}.install"
