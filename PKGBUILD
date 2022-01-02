@@ -1,5 +1,5 @@
 pkgname='sprunge'
-release='0.6'
+release='0.7'
 pkgver="${release}.0"
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
@@ -9,10 +9,13 @@ url='https://github.com/kevr/sprunge'
 arch=('i686' 'x86_64' 'armv6h')
 depends=('python')
 conflicts=("${pkgname}-git")
-optdepends=('xclip: default --clip-command')
-source=("${url}/archive/${release}.tar.gz")
+optdepends=(
+    'xclip: default Xorg clipboard functionality'
+    'wl-clipboard: default Wayland clipboard functionality'
+)
+source=("${url}/archive/refs/tags/${release}.tar.gz")
 sha256sums=(
-    '64a0d2ce9697da413fbcedcd8bff94569a05b92c5941fecff0c7bd30e0961f3b'
+    '3c2186a63824e19bdf04fc4d9cc8790eb316d79278b909e7ae947f8c79a37c9d'
 )
 
 package()
