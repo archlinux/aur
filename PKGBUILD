@@ -1,16 +1,16 @@
 # Maintainer Willy Reinhardt <dev@kurdy.ch>
 
 pkgname=r-sha3sum
-pkgver=0.1.5
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="sha3 cli (buid using Rust): Print or check SHA3 digests. Commands and options are similar to the GNU Linux command shaXXXsum."
-url="https://bitbucket.org/kurdy/sha3sum/src/master/"
+pkgdesc="sha3 cli (build using Rust): Print or check SHA3 digests. Commands and options are similar to the GNU Linux command shaXXXsum."
+url="https://gitlab.com/kurdy/sha3sum"
 license=('GPL-3.0-or-later')
-source=("${pkgname}-v${pkgver}.tar.gz::https://bitbucket.org/kurdy/sha3sum/get/AUR_v0.1.5.tar.gz")
-sha256sums=('f416534dfd0add02c7f2be44e40e6da6bfd5ae9727db0a95b5172fe93fa26901')
+source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/kurdy/sha3sum/-/archive/V1.0.0/sha3sum-V1.0.0.tar.gz")
+sha256sums=('9ac68db84441c628cb6e2149513431c939a1ca2ce22f3512e5bbc4c697faf85f')
 arch=('any')
 _srcpath='kurdy-sha3sum-6de72ad187a8'
-makedepends=('cargo')
+makedepends=('rust')
 checkdepends=()
 provides=('sha3sum')
 conflicts=('sha3sum')
