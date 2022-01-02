@@ -1,0 +1,24 @@
+pkgbase = jdk17-dragonwell-bin
+	pkgdesc = Alibaba Dragonwell, as a downstream version of OpenJDK, is the OpenJDK implementation at Alibaba optimized for online e-commerce, financial, logistics applications running on 100,000+ servers.
+	pkgver = 17.0.1.0.1
+	pkgrel = 1
+	url = https://github.com/alibaba/dragonwell17
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	depends = ca-certificates-utils
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = nss
+	provides = java-environment=17
+	provides = java-environment-openjdk=17
+	provides = java-runtime=17
+	provides = java-runtime-openjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	source_x86_64 = jdk17-dragonwell-bin-17.0.1.0.1-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-17.0.1.0.1+12_jdk-17.0.1-ga/Alibaba_Dragonwell_17.0.1.0.1+12_x64_linux.tar.gz
+	sha256sums_x86_64 = 9070ba1e70edb984d4a270bf21114a0b388f84a76b500e0c168540892b3399b2
+	source_aarch64 = jdk17-dragonwell-bin-17.0.1.0.1-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-17.0.1.0.1+12_jdk-17.0.1-ga/Alibaba_Dragonwell_17.0.1.0.1+12_aarch64_linux.tar.gz
+	sha256sums_aarch64 = 150ebfc4e2a34e5abe9069a82eef95daf4771c9e18ab2a1af629a4e2a0007f85
+
+pkgname = jdk17-dragonwell-bin
