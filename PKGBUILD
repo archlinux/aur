@@ -2,23 +2,21 @@
 
 _name="cclib"
 pkgname="python-${_name}-git"
-pkgver=1.6.3.r2939.8ecf965c
-pkgrel=2
+pkgver=1.7.2.r3755.5a881638
+pkgrel=1
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages. (git version)"
 arch=("any")
 url="http://cclib.github.io"
 license=("BSD-3-Clause")
 makedepends=("python-setuptools" "git")
-depends=("python-numpy" "python-packaging" "python-periodictable")
+depends=("python-packaging" "python-periodictable" "python-scipy")
 optdepends=('python-openbabel: for generating `OBMol`s of results'
             'python-biopython: for generating `BioPython.Atom`s of parsed results'
-            'python-pandas: for generating DataFrames of parsed results'
-            'python-scipy: for calculating properties of nuclear configurations')
+            'python-pandas: for generating DataFrames of parsed results')
 provides=("python-${_name}")
 conflicts=("python-${_name}")
 source=("git+https://github.com/${_name}/${_name}")
-md5sums=('SKIP')
-
+sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}/${_name}"
