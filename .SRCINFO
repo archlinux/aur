@@ -1,7 +1,7 @@
 pkgbase = i3a
 	pkgdesc = a set of scripts used for automation of i3 and sway window manager layouts
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/i3a
 	arch = any
 	groups = i3
@@ -11,6 +11,7 @@ pkgbase = i3a
 	makedepends = python-wheel
 	depends = python-i3ipc
 	optdepends = i3-wm: for X11 setup
+	optdepends = xprop: for X11 setup
 	optdepends = sway: for Wayland setup
 	source = https://files.pythonhosted.org/packages/source/i/i3a/i3a-2.0.1.tar.gz
 	sha256sums = da4d4762d809efaa972ef5fa4663922ad30c83e2bbdb69fc53d62604036f42f1

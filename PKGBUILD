@@ -1,7 +1,7 @@
 # Maintainer: Thiago Perrotta <tbperrotta@gmail.com>
 pkgname=i3a
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="a set of scripts used for automation of i3 and sway window manager layouts"
 arch=('any')
 url="https://pypi.org/project/i3a"
@@ -11,6 +11,7 @@ depends=('python-i3ipc')
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 optdepends=(
   'i3-wm: for X11 setup'
+  'xprop: for X11 setup'
   'sway: for Wayland setup'
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
