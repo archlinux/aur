@@ -1,15 +1,15 @@
 # Maintainer: DevHyperCoder <arduinoleo88 at gmail dot com>
 
 pkgname=rbmenu-tui
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.1.0
+pkgrel=3
 pkgdesc="Terminal User Interface for RBMenu"
 arch=('x86_64')
 url="https://github.com/DevHyperCoder/rbmenu-tui"
 license=('GPL')
 groups=()
-depends=()
-makedepends=('git' 'rust' 'cargo' 'rbmenu') 
+depends=('rbmenu')
+makedepends=('git' 'rust' 'cargo') 
 source=("${url}/archive/v${pkgver}.zip")
 noextract=()
 md5sums=('SKIP')
