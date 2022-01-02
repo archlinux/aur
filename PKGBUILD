@@ -7,7 +7,7 @@ _pkgname=mpv
 pkgname=${_pkgname}-light-pulse
 _tag='79b4060a573e83ae42d51d995bca1ccf80690997' # git rev-parse v${pkgver}
 pkgver=0.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source, and cross-platform media player – with selection of features (pulse, dvd and cd support)."
 arch=(i686 x86_64)
 # We link against libraries that are licensed GPLv3 explicitly, so our
@@ -19,7 +19,8 @@ makedepends=(git python-docutils wayland-protocols wayland vulkan-headers waf)
 optdepends=('yt-dlp: for video-sharing websites playback'
             'youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')
-provides=('libmpv.so')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
 source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed")
 sha256sums=(SKIP)
