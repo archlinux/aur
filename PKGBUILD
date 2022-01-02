@@ -21,5 +21,5 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
 	chmod u+x install.sh
-    ./install.sh
+    sudo ./install.sh
 }
