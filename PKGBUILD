@@ -1,8 +1,8 @@
 pkgname=python-briar-wrapper-git
 _pkgname=python-briar-wrapper
 conflicts=('python-briar-wrapper')
-pkgver=0.0.7.r0.g8a59c71
-pkgrel=1
+pkgver=0.0.7.r1.gf188420
+pkgrel=2
 pkgdesc='A wrapper for the Briar headless API.'
 arch=('any')
 url='https://code.briarproject.org/briar/python-briar-wrapper'
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  python -m flit build
+  python -m flit build --setup-py
 
   tar -xvf dist/*.tar.gz --wildcards --no-anchored '*/setup.py' --strip=1
 
