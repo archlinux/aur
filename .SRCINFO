@@ -1,6 +1,6 @@
 pkgbase = python-downwards
 	pkgdesc = Read Wikipedia pages as manpages
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/noqqe/downwards/
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = python-downwards
 	depends = python-regex
 	depends = python-wcwidth
 	depends = python-mako
-	source = python-downwards-1.3.0.tar.gz::https://github.com/noqqe/downwards/archive/v1.3.0.tar.gz
-	sha512sums = af1af63880a956ea1ae8d8c2e52038f7b2c589f443075bdbc44062d03d56d8dcd36b8082295a25a1a5259178dc30a2e9fd1648d05012a17e439b91109b65d664
+	source = python-downwards-1.3.1.tar.gz::https://files.pythonhosted.org/packages/source/d/downwards/downwards-1.3.1.tar.gz
+	sha512sums = 56762a54307950d76cf046d9f2f1a066733e685c632264f566368429c3d8311dc158232f053c9a65f9d75f04769e2302e91b81ee301cda5f0c52dcbc3bc6071f
 
 pkgname = python-downwards
-
