@@ -1,0 +1,14 @@
+pkgbase = voltmc
+	pkgdesc = Install Minecraft Forge mods via a GUI
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Interfiber/volt
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = arm
+	depends = rust
+	source = https://github.com/Interfiber/volt/archive/refs/heads/main.zip
+	sha256sums = c226344f87a64c4f2bb7225e9beb3f7dce2f3d8244026aabb6b399758ff67aa1
+
+pkgname = voltmc
