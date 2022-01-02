@@ -5,31 +5,31 @@
 
 pkgname=xf86-video-nouveau-git
 _pkgname=xf86-video-nouveau
-pkgver=1.0.16+0+gec2b45d
-pkgrel=2
-pkgdesc="Open Source 3D acceleration driver for nVidia cards"
-arch=('i686' 'x86_64')
-url="http://nouveau.freedesktop.org/"
+pkgver=1.0.17.r2.g3ee7cbc
+pkgrel=1
+pkgdesc='Open Source 3D acceleration driver for nVidia cards (git version)'
+arch=('x86_64')
+url="https://nouveau.freedesktop.org/"
 license=('GPL')
 depends=('systemd-libs' 'mesa')
-makedepends=('xorg-server-devel' 'git' 'systemd')
+makedepends=('git' 'xorg-server-devel' 'xorg-server' 'systemd')
 conflicts=('xf86-video-nouveau')
 groups=('xorg-drivers')
-source=('git://anongit.freedesktop.org/nouveau/xf86-video-nouveau')
+source=("${pkgname}::git://anongit.freedesktop.org/nouveau/xf86-video-nouveau")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long | sed 's/xf86-video-nouveau-//' | sed 's/-/+/g'
+  cd "${pkgname}"
+  git describe --long | sed 's/^xf86-video-nouveau-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
@@ -42,7 +42,12 @@ build() {
   make
 }
 
+check() {
+  cd "${pkgname}"
+  make check
+}
+
 package() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
   make DESTDIR="${pkgdir}" install
 }
