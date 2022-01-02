@@ -8,7 +8,7 @@
 # Maintainer: Suvojit Ghosh <ghoshsuvojit2012@gmail.com>
 # Developer: Ronak Sanpui
 pkgname=senpahe-git
-pkgver=r50.7ea4895
+pkgver=r54.820fcd2
 pkgrel=1
 epoch=
 pkgdesc="Stream and download anime from animepahe right from the terminal!"
@@ -16,7 +16,7 @@ arch=(x86_64)
 url="https://gitlab.com/TGS963/senpahe-git"
 license=('GPL')
 groups=()
-depends=(mpv openssl ffmpeg curl)
+depends=(mpv openssl ffmpeg curl aria2)
 makedepends=(git python python-pip)
 checkdepends=()
 optdepends=()
