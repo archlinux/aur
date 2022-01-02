@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.9.1.r7.gbccab87a
+pkgver=0.9.1.r73.g1c83ce1e
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64" "aarch64")
@@ -11,7 +11,7 @@ url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
 depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "qtkeychain-qt5" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugin-qmlgl" "libnice" "libolm" "spdlog" "curl" "libevent")
-makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json")
+makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json" "asciidoc")
 optdepends=("qt-jdenticon")
 provides=("nheko")
 conflicts=("nheko")
@@ -49,6 +49,9 @@ package() {
     # Desktop launcher
     install -Dm644 "$srcdir/$pkgname/resources/nheko-256.png" "$pkgdir/usr/share/pixmaps/nheko.png"
     install -Dm644 "$srcdir/$pkgname/resources/nheko.desktop" "$pkgdir/usr/share/applications/nheko.desktop"
+
+    # Man entry
+    install -Dm644 "$srcdir/$pkgname/build/man/nheko.1" "$pkgdir/usr/share/man/man1/nheko.1"
 
     # Icons
     local icon_size icon_dir
