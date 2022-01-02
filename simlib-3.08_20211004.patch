@@ -1,33 +1,23 @@
---- src/Makefile.generic
-+++ src/Makefile.generic
-@@ -227,11 +227,6 @@ install: all
+--- src/Makefile.generic	2021-10-04 19:04:40.000000000 +0200
++++ src/Makefile.generic.new	2022-01-02 15:22:06.878241846 +0100
+@@ -227,11 +227,6 @@
  	install -m0644 $(SIMLIB_HEADERS) $(PREFIX)/include
  	install -m0644 $(LIBNAME).a      $(PREFIX)/lib/lib$(LIBNAME).a
  	install -m0644 $(LIBNAME).so     $(PREFIX)/lib/lib$(LIBNAME).so
 -	@if ! grep '^'$(PREFIX)/lib'$$' /etc/ld.so.conf >/dev/null; then \
--	  echo "Add $(PREFIX)/lib to /etc/ld.so.conf ";  \
+-	  echo "Please add $(PREFIX)/lib to /etc/ld.so.conf ";  \
 -	fi
--	@echo "This should be run as root"
+-	@echo "This should be run as root:"
 -	ldconfig # update dynamic linker cache
  
  #############################################################################
  # Uninstall library
-@@ -240,8 +235,6 @@ uninstall:
+@@ -240,8 +235,6 @@
  	$(RM) $(foreach headerfile, $(SIMLIB_HEADERS), $(PREFIX)/include/$(headerfile))
  	$(RM) $(PREFIX)/lib/lib$(LIBNAME).a
  	$(RM) $(PREFIX)/lib/lib$(LIBNAME).so
--	@echo "This should be run as root"
+-	@echo "This should be run as root:"
 -	ldconfig # update dynamic linker cache
  
  #############################################################################
  # Basic test of functionality
---- src/_test_.cc
-+++ src/_test_.cc
-@@ -2,6 +2,7 @@
- //! \file  _test_.cc  Simple test model.
- 
- #define SIMLIB_DEBUG
-+#define I_REALLY_KNOW_HOW_TO_USE_WAITUNTIL
- 
- #include "simlib.h"
- 

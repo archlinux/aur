@@ -1,6 +1,6 @@
 # Maintainer: Matej Postolka <matej@postolka.net>
 pkgname=simlib
-pkgver=3.06_20181003
+pkgver=3.08_20211004
 pkgrel=1
 pkgdesc="A simple SIMulation LIBrary for the C++ programming language"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('gcc-libs-multilib')
 install="$pkgname.install"
 source=("http://www.fit.vutbr.cz/~peringer/SIMLIB/source/$pkgname-${pkgver//_/-}.tar.gz"
 	"$pkgname-$pkgver.patch")
-sha256sums=("3624d870bca8303f14b3824dbe59db426bbc0e687586038710ef0edfcdc85012"
-	    "84f1b11e4a4031885250d4254e4090fb7ad96f8cf9287d4221c2f8d8026d66b7")
+sha256sums=("82dc2c232b19e4b40185d72726f61a17c444b77ae983c139606c2e9127892932"
+	    "3b3033fe357eb5676e54084e158dd948b07d4a961b281e74503dd9b181b91ac0")
 
 prepare() {
 	cd "$pkgname"
