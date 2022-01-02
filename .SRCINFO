@@ -1,6 +1,6 @@
 pkgbase = nvimpager-git
 	pkgdesc = Use nvim as a pager to view manpages, diffs, etc with nvim's syntax highlighting
-	pkgver = 0.10.2.r8.g499f43c
+	pkgver = 0.10.4.r17.g095e29a
 	pkgrel = 1
 	url = https://github.com/lucc/nvimpager
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = nvimpager-git
 	depends = bash
 	provides = nvimpager
 	conflicts = nvimpager
-	source = git+https://github.com/lucc/nvimpager.git
+	source = git+https://github.com/lucc/nvimpager.git#branch=main
 	sha256sums = SKIP
 
 pkgname = nvimpager-git

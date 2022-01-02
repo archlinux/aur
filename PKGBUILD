@@ -1,7 +1,7 @@
 # Maintainer: Pascal Mehnert <gargoil@posteo.de>
 
 pkgname=nvimpager-git
-pkgver=0.10.2.r8.g499f43c
+pkgver=0.10.4.r17.g095e29a
 pkgrel=1
 pkgdesc="Use nvim as a pager to view manpages, diffs, etc with nvim's syntax highlighting"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('neovim>=0.4.0' 'bash')
 makedepends=('git' 'scdoc')
 conflicts=('nvimpager')
 provides=('nvimpager')
-source=('git+https://github.com/lucc/nvimpager.git')
+source=('git+https://github.com/lucc/nvimpager.git#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {
