@@ -1,15 +1,14 @@
 pkgbase = passwd-gen-cli
 	pkgdesc = Command line application to generate passwords or a phrase composed of several words. It is possible to use one or more collections as source to create them.
-	pkgver = 1.0.0rc.1
+	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://bitbucket.org/kurdy/passwd-gen-cli/src/master/
+	url = https://gitlab.com/kurdy/passwd-gen-cli
 	arch = any
 	license = MIT
 	makedepends = dart
 	provides = passwd_gen
 	conflicts = passwd_gen
-	source = passwd-gen-cli-v1.0.0rc.1.tar.gz::https://bitbucket.org/kurdy/passwd-gen-cli/get/v1.0.0-rc.1.tar.gz
-	sha256sums = 41ca9f19b171851be53d76ee84a2afb3925d36b333194213780fac51432081e9
+	source = passwd-gen-cli-v1.0.2.tar.gz::https://gitlab.com/kurdy/passwd-gen-cli/-/archive/V1.0.2/passwd-gen-cli-V1.0.2.tar.gz
+	sha256sums = f150c2060b8058df40cb276df7c5a3610e4186059d87d8c5ec2a122457fcab3c
 
 pkgname = passwd-gen-cli
-
