@@ -121,9 +121,10 @@ package_uwsgi-ng() {
   backup=('etc/uwsgi/emperor.ini')
   install=uwsgi.install
 
+  mkdir -p /etc/uwsgi/vassals
+
   cd "$_pkgbase-$pkgver"
   install -vDm 755 "${_pkgbase}" -t "$pkgdir/usr/bin/"
-  install -vDm 755 "${_pkgbase}" -t "$pkgdir/etc/uwsgi/vassals/"
   install -vDm 644 ../uwsgi_at.service "$pkgdir"/usr/lib/systemd/system/uwsgi@.service
   install -vDm 644 ../uwsgi_at.socket "$pkgdir"/usr/lib/systemd/system/uwsgi@.socket
   install -vDm 644 ../emperor.uwsgi.service "$pkgdir"/usr/lib/systemd/system/emperor.uwsgi.service
