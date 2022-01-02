@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Rasteli <archgabr@tutanota.com>
 pkgname=glr-st-git
-pkgver=0.8.r11.a7513da
+pkgver=0.8.r12.8c69b77
 pkgrel=1
 pkgdesc="My personal build of st."
 arch=(x86_64)
@@ -25,7 +25,9 @@ build () {
 
 package() {
   cd glr-st
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -rf * "${pkgdir}/opt/${pkgname}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pgkname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pgkname}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

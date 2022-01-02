@@ -1,6 +1,6 @@
 pkgbase = glr-st-git
 	pkgdesc = My personal build of st.
-	pkgver = 0.8.r11.a7513da
+	pkgver = 0.8.r12.8c69b77
 	pkgrel = 1
 	url = https://gitlab.com/glr01/glr-st.git
 	arch = x86_64
