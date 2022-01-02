@@ -1,0 +1,6 @@
+/src/
+/pkg/
+
+PipeControl*.tar.gz
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
