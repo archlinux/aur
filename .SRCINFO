@@ -1,7 +1,7 @@
 pkgbase = python-control
 	pkgdesc = Implements basic operations for analysis and design of feedback control systems in Python
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/python-control/python-control
 	arch = any
 	license = BSD
@@ -14,10 +14,9 @@ pkgbase = python-control
 	depends = python-matplotlib
 	optdepends = python-slycot: matrix equation support, model simplification tools, and state feedback
 	options = staticlibs
-	source = https://github.com/python-control/python-control/archive/0.9.0.tar.gz
+	source = https://github.com/python-control/python-control/archive/0.9.1.tar.gz
 	source = LICENSE
-	md5sums = 281767e8b97cb99c803be610e51aa86a
+	md5sums = 76d257f1e02c861aa46a6af00268f2c4
 	md5sums = 5e21e2b8826c3345f50711d5634bc975
 
 pkgname = python-control
-
