@@ -21,10 +21,8 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
 
-    export GOPATH="${srcdir}"
+    export GOPATH="$HOME/.local"
     export PATH="${PATH}:${GOPATH}/bin"
-
-    echo "Installing in: $GOPATH"
 
     chmod +x install.sh
     ./install.sh
