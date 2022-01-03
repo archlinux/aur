@@ -1,5 +1,5 @@
 pkgbase = photon-rss-git
-	pkgdesc = Fast RSS reader as light as a photon
+	pkgdesc = RSS reader as light as a photon with terminal + sixel frontend
 	pkgver = r132.066f732
 	pkgrel = 1
 	url = https://git.sr.ht/~ghost08/photon
@@ -14,7 +14,7 @@ pkgbase = photon-rss-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	optdepends = youtube-dl: A command-line program to download videos from YouTube.com and a few more sites
+	optdepends = yt-dlp: A youtube-dl fork with additional features and fixes
 	optdepends = mpv: a free, open source, and cross-platform media player
 	optdepends = imv: Image viewer for Wayland and X11
 	provides = photon-rss

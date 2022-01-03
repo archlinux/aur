@@ -1,16 +1,16 @@
-# Maintainer: Vladimir Magyar <vladimi at mgyar dot me>
+# Maintainer: Vladimir Magyar <vladimir at mgyar dot me>
 
 pkgname=photon-rss-git
-pkgver=r132.066f732
+pkgver=r54.e85a2d4
 pkgrel=1
-pkgdesc="Fast RSS reader as light as a photon"
+pkgdesc="RSS reader as light as a photon with terminal + sixel frontend"
 arch=("i686" "pentium4" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://git.sr.ht/~ghost08/photon"
 license=("GPL3")
 depends=('glibc')
 makedepends=('git' 'go')
 optdepends=(
-	"youtube-dl: A command-line program to download videos from YouTube.com and a few more sites"
+	"yt-dlp: A youtube-dl fork with additional features and fixes"
 	"mpv: a free, open source, and cross-platform media player"
 	"imv: Image viewer for Wayland and X11"
 )
@@ -32,7 +32,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	go build -tags nox11
+	go build
 }
 
 check() {
@@ -50,5 +50,5 @@ package() {
 	cd "$pkgname"
 	install -Dm 755 photon -t "$pkgdir/usr/bin/"
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	#install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
