@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/OFFTKP/TKPEmu/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/OFFTKP/TKPEmu/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -34,4 +34,5 @@ package() {
 }
 
 
+sha256sums=('c41dcece6e15a9c4548a08b87c342ad917515beefb29aad5e974eab9f1cc57b7')
 sha256sums=('c41dcece6e15a9c4548a08b87c342ad917515beefb29aad5e974eab9f1cc57b7')
