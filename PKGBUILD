@@ -3,10 +3,10 @@
 
 pkgname=freewb
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Jidian Wubi for Linux"
 arch=("x86_64")
-url="http://arm-ai.org/forum.php?mod=viewthread&tid=93"
+url="http://www.freewb.org/"
 license=("custom")
 depends=("fcitx" "fcitx-qt5" "fcitx-configtool")
 
