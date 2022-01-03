@@ -1,22 +1,58 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=declarative
 pkgname=ruby-$_gemname
-pkgver=0.0.10
-pkgrel=3
-pkgdesc='DSL for nested schemas.'
+pkgver=0.0.20
+pkgrel=1
+pkgdesc="DSL for nested schemas"
 arch=(any)
-url=''
+url=https://github.com/apotonick/declarative
 license=(MIT)
 depends=(ruby)
+makedepends=(rubygems ruby-rdoc)
+checkdepends=(ruby-bundler ruby-rake ruby-minitest)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha1sums=('02a9c341c8c9f3442d25a903a2003a17ddf7ad6f')
+source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('1b42ebe9d9173683cd40ac291706fc48e4756bab4158ebafcc7b1c9be8765cdc')
+
+prepare() {
+  cd $_gemname-$pkgver
+
+  # we use an archive not a git checkout
+  sed -i 's|git ls-files -z|find -print0|' ${_gemname}.gemspec
+  sed -i 's/%r{^(test)\/}/%r{^\\.\/(test)\/}/' ${_gemname}.gemspec
+
+  # we don't need minitest-line to run the test suite
+  sed -i '/minitest-line/d' ${_gemname}.gemspec
+}
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname-$pkgver
+  rake
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 CHANGES.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
+
+# vim: set ts=2 sw=2 et:

@@ -1,14 +1,18 @@
 pkgbase = ruby-declarative
-	pkgdesc = DSL for nested schemas.
-	pkgver = 0.0.10
-	pkgrel = 3
+	pkgdesc = DSL for nested schemas
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/apotonick/declarative
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-minitest
+	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = declarative-0.0.10.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/declarative-0.0.10.gem
-	sha1sums = 02a9c341c8c9f3442d25a903a2003a17ddf7ad6f
+	source = https://github.com/apotonick/declarative/archive/v0.0.20/declarative-0.0.20.tar.gz
+	sha256sums = 1b42ebe9d9173683cd40ac291706fc48e4756bab4158ebafcc7b1c9be8765cdc
 
 pkgname = ruby-declarative
-
