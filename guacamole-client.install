@@ -2,6 +2,7 @@
 colorize
 
 post_upgrade() {
-	msg "War deployed to /var/lib/tomcat8/webapps/guacamole.war"
-        warning "Since version 1.0.0, webapp is named \'guacamole\'. Change your URI accordingly."
+	msg "NOTE 1: War by default is not deployed anymore. You can find the war here: /usr/share/guacamole/guacamole.war"
+        msg "        You can make a symbolic link to your tomcat installation, for example: ln -s /usr/share/guacamole/guacamole.war /var/lib/tomcat9/webapps/"
+        msg "NOTE2: Now, this package provides default configuration files (GUACAMOLE_HOME) in /etc/guacamole directory. Remember to check your setup."
 }
