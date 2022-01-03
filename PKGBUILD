@@ -15,6 +15,7 @@ depends=(
   'python-setuptools'
 	'python-bitstring'
 	'python-netifaces'
+  'python-ifaddr'
 )
 conflicts=()
 source=("${_pkgname}::git+${url}.git")
