@@ -1,6 +1,6 @@
 pkgbase = jbang
 	pkgdesc = Unleash the (scripting) power of Java
-	pkgver = 0.84.2
+	pkgver = 0.86.0
 	pkgrel = 1
 	url = https://www.jbang.dev
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = jbang
 	depends = bash
 	depends = java-environment>=8
 	optdepends = java-environment>=9: jshell support
-	source = https://github.com/jbangdev/jbang/releases/download/v0.84.2/jbang-0.84.2.tar
-	source = https://raw.githubusercontent.com/jbangdev/jbang/v0.84.2/LICENSE
-	sha256sums = e5a65255d104608c5a140605839287c397b5367070effcce5af5d4bb66d0efd4
+	source = https://github.com/jbangdev/jbang/releases/download/v0.86.0/jbang-0.86.0.tar
+	source = https://raw.githubusercontent.com/jbangdev/jbang/v0.86.0/LICENSE
+	sha256sums = 06c2790f4afb4c412e9e343c305016eb4b73eb686066ad90bb01634e9cc7831f
 	sha256sums = 7c1797962764ae89b1774c44b7ad449e6eaaa83a8e4e4804d965978fe7231d9c
 
 pkgname = jbang
