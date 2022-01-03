@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.10.88
+pkgver=5.10.89
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  xmlto python-sphinx python-sphinx_rtd_theme python-six graphviz imagemagick
 )
 options=('!strip')
 _srcname=linux-$pkgver
@@ -25,9 +25,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('6f8631b6c382a2b0cfeff1e5f8805c8e1cfbe8d714b6e65f5bb79733c99068eb'
+sha256sums=('92218b1a4a18f1cb9ec07d2b7fce41577452aa552c54c25b6d5fe9b4b543bb30'
             'SKIP'
-            '259196906a6e3c3c4fcbacd083094b3e3d4e2b75cfb7a18382381a88a07399be'
+            '1ff827ae7e126db427077490dee130222225a3da86c63a41ff3846c4799ceba2'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '1c621f67bbf9efef610d1b2d1afd727fca9ceaa298f807bd0348b59ec6ce9562')
