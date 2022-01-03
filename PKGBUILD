@@ -22,6 +22,13 @@ pkgver()	{
 }
 
 build()	{
+  export GOPATH="$srcdir"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   cd "${srcdir}/${_gitname}"
   GOPATH="${srcdir}/go" go build -o obfs4proxy/obfs4proxy ./obfs4proxy
 }
@@ -34,4 +41,4 @@ package()	{
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-## vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
