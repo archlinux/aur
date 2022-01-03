@@ -1,6 +1,6 @@
 pkgbase = exatorrent
 	pkgdesc = Self-hostable, easy-to-use, lightweight, and feature-rich torrent client written in Go
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/varbhat/exatorrent
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = exatorrent
 	makedepends = go
 	makedepends = npm
 	depends = gcc-libs
-	source = exatorrent-0.0.9.tar.gz::https://github.com/varbhat/exatorrent/archive/v0.0.9.tar.gz
-	sha256sums = 7fbb40fd47ef8e95ff687c07dc877c3666ee22fdad378457663feaf63719baa1
+	source = exatorrent-0.0.10.tar.gz::https://github.com/varbhat/exatorrent/archive/v0.0.10.tar.gz
+	sha256sums = 95abf1bbbfa5a5319c52b4fd8fe7abfb9775d75e617bd38edf939082b8cf50de
 
 pkgname = exatorrent
