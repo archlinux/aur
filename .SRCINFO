@@ -1,7 +1,7 @@
 pkgbase = grub-improved-luks2-git
 	pkgdesc = GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support
 	pkgver = 2.06.r92.g246d69b7e
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.gnu.org/software/grub/
 	install = grub-improved-luks2-git.install
 	arch = x86_64
