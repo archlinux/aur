@@ -1,6 +1,6 @@
 # Maintainer: Paris Oplopoios <parisoplop@gmail.com>
 pkgname="tkpemu"
-pkgver="0.1.2"
+pkgver="0.1.3"
 pkgrel=1
 epoch=
 pkgdesc="A multi-purpose emulator with debugging functionality, currently only emulates gameboy"
@@ -33,4 +33,5 @@ package() {
 	mv ./build/TKPEmu $pkgdir/usr/bin/TKPEmu
 }
 
-sha256sums=('8350366451237e35edcae660dfc32554f9e5f9580221a8c8170348e8872b27d3')
+
+sha256sums=('c41dcece6e15a9c4548a08b87c342ad917515beefb29aad5e974eab9f1cc57b7')
