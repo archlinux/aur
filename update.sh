@@ -131,7 +131,6 @@ sha1sums=(
 $(sha1sum "$_xml" | awk "{print \"    '\" \$1 \"'\"}" &&
     jq -r '.sha1 | @sh | "    \(.)"' <"$_json")
 )
-noextract=("\${source[@]%%::*}")
 
 # Use --remote-time to retain image timestamps
 DLAGENTS=(
@@ -140,11 +139,11 @@ DLAGENTS=(
 )
 
 prepare() {
-    local count image images=("\${source[@]:1}") i=-1
+    local count image images=("\${source[@]:1}") i=0
     install -d "\$srcdir/\$pkgname"
     echo "Resampling \${count:=\${#images[@]}} images..." >&2
     for image in "\${images[@]%%::*}"; do
-        ((++i)) || continue
+        ((++i))
         echo "-> (\$i/\$count) \$image" >&2
         file=\$srcdir/\$pkgname/\$image
         if [ -f "\$file" ]; then
@@ -160,10 +159,10 @@ prepare() {
 }
 
 package() {
-    local image images=("\${source[@]:1}") i=-1 file
+    local image images=("\${source[@]:1}") i=0 file
     install -d "\$pkgdir/usr/share/backgrounds/\$pkgname"
     for image in "\${images[@]%%::*}"; do
-        ((++i)) || continue
+        ((++i))
         file=\$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \\
             "\$pkgdir" "\$pkgname" "\$i" "\$image")
         image=\$srcdir/\$pkgname/\$image

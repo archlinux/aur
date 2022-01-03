@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
 pkgver=2020
-pkgrel=1
+pkgrel=2
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -215,7 +215,6 @@ sha1sums=(
     '894c590d8adbd11c06a227ef509addde99deead4'
     '675aad1e2d232dd65ea062934c9531d9605bc74a'
 )
-noextract=("${source[@]%%::*}")
 
 # Use --remote-time to retain image timestamps
 DLAGENTS=(
@@ -224,11 +223,11 @@ DLAGENTS=(
 )
 
 prepare() {
-    local count image images=("${source[@]:1}") i=-1
+    local count image images=("${source[@]:1}") i=0
     install -d "$srcdir/$pkgname"
     echo "Resampling ${count:=${#images[@]}} images..." >&2
     for image in "${images[@]%%::*}"; do
-        ((++i)) || continue
+        ((++i))
         echo "-> ($i/$count) $image" >&2
         file=$srcdir/$pkgname/$image
         if [ -f "$file" ]; then
@@ -244,10 +243,10 @@ prepare() {
 }
 
 package() {
-    local image images=("${source[@]:1}") i=-1 file
+    local image images=("${source[@]:1}") i=0 file
     install -d "$pkgdir/usr/share/backgrounds/$pkgname"
     for image in "${images[@]%%::*}"; do
-        ((++i)) || continue
+        ((++i))
         file=$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \
             "$pkgdir" "$pkgname" "$i" "$image")
         image=$srcdir/$pkgname/$image
