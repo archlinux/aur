@@ -1,7 +1,7 @@
 pkgbase = perl-class-xsaccessor
 	pkgdesc = Generate fast XS accessors without runtime compilation
 	pkgver = 1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Class-XSAccessor
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = perl-class-xsaccessor
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Class-XSAccessor-1.19.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Class-XSAccessor-1.19.tar.gz
 	md5sums = 5c5dea74f00ad37c5119dd22b28a5563
 	sha512sums = 58855bb2108b60cc90ae1d1c4d6a011da7bac2d063c7c953ff8610ae164ba60731a664f0fbddf148e1eabb60042913a17633a9c9a8936a23a59130b381bf63f8
 
 pkgname = perl-class-xsaccessor
-
