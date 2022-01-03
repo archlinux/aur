@@ -2,14 +2,14 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=naml-bin
-pkgver=0.3.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Not another markup language. Framework for replacing Kubernetes YAML with Go."
 arch=('x86_64')
 url="https://github.com/kris-nova/naml"
 license=('Apache')
 source=("https://github.com/kris-nova/naml/releases/download/v${pkgver}/naml-linux-amd64")
-sha256sums=('ed5aada513f1b28d218fce27fc6e9b44cae997618eb6aa009766b2878704031c')
+sha256sums=('7a75c25a78ad311dcbdeea838021435813909386da19445a308ca9f7f8ff4d3e')
 options=(!strip)
 
 package() {
