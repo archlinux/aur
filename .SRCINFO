@@ -7,6 +7,7 @@ pkgbase = firefox-extension-accept-language-per-site
 	groups = firefox-addons
 	license = custom:MIT
 	makedepends = jq
+	makedepends = zip
 	depends = firefox
 	options = !strip
 	source = firefox-extension-accept-language-per-site-0.2.3.zip::https://github.com/sorz/accept-language-per-site/archive/refs/tags/v0.2.3.zip

@@ -1,4 +1,5 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: daregakimeta <daregakimeta@mailbox.org>
 
 _plugin_name='accept-language-per-site'
 pkgname="firefox-extension-${_plugin_name}"
@@ -10,7 +11,7 @@ url='https://github.com/sorz/accept-language-per-site'
 license=('custom:MIT')
 groups=('firefox-addons')
 depends=('firefox')
-makedepends=('jq')
+makedepends=('jq' 'zip')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.zip::https://github.com/sorz/accept-language-per-site/archive/refs/tags/v${pkgver}.zip")
