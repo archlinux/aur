@@ -10,7 +10,7 @@ pkgbase = paspio-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = paspio-git::git+https://git.sr.ht/~grtcdr/paspio.git
+	source = paspio-git::git+https://git.sr.ht/~grtcdr/paspio
 	md5sums = SKIP
 
 pkgname = paspio-git

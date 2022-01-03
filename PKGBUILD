@@ -12,7 +12,7 @@ license=('MIT')
 
 depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'cargo' 'git')
-source=("$pkgname::git+${url}.git")
+source=("$pkgname::git+${url}")
 md5sums=('SKIP')
 
 
