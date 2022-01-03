@@ -14,6 +14,7 @@ pkgbase = python-rocker-git
 	depends = python-empy
 	depends = python-packaging
 	depends = python-pexpect
+	depends = docker
 	provides = python-rocker
 	conflicts = python-rocker
 	source = PKGBUILD_EXTRAS

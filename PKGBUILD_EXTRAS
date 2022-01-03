@@ -1,1 +1,2 @@
 makedepends+=(pkgfile)
+depends+=(docker)
