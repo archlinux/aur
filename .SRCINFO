@@ -1,14 +1,13 @@
 pkgbase = python-piwikapi
 	pkgdesc = Python implementation of the Piwik tracking and the analytics API
-	pkgver = 0.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://piwikapi.readthedocs.org
 	arch = any
 	license = BSD
 	depends = python
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/piwikapi/piwikapi-0.3.tar.gz
-	sha256sums = cdd80c48450336911f28f0828167d7f7f33cc20e2f358d7160457c89432d37a5
+	source = https://github.com/matomo-org/piwik-python-api/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 0e4ee69c3e98337a742fc485f35af2e71f74ed637af3678b1f6eee964f6043ef
 
 pkgname = python-piwikapi
-
