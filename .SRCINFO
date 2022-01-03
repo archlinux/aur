@@ -1,7 +1,7 @@
 pkgbase = wiki-loves-earth-wallpapers
 	pkgdesc = Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop
 	pkgver = 2020
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wikilovesearth.org
 	arch = any
 	license = CCPL

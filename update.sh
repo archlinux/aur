@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+export LC_ALL=C
+
 _dir=$(realpath "$(dirname "$BASH_SOURCE")")
 _pkgname=wiki-loves-earth-wallpapers
 _pkgver=0
@@ -164,7 +166,7 @@ package() {
     for image in "\${images[@]%%::*}"; do
         ((++i))
         file=\$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \\
-            "\$pkgdir" "\$pkgname" "\$i" "\$image")
+            "\$pkgdir" "\$pkgname" "\$i" "\${image#image-}")
         image=\$srcdir/\$pkgname/\$image
         install -p "\$image" "\$file"
     done
