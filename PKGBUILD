@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=mani
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A CLI tool that helps you manage multiple repositories"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('glibc')
 makedepends=('go' 'git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alajmo/mani/archive/v$pkgver.tar.gz")
-sha512sums=('c6ab00faa363dff0b3788753e7a88869448a62401c6238a1fde930d87a989691c8a01d0d39c823a01b19987c56ee01575371a5fdfb09f64f7ca092901d740487')
-b2sums=('ed7f9b8cb4204c9a131d1ef5e48897ac76cf9f645deb0b03a80857e81b9b0f0976200341093b1730fff09beffb6bf4dd5838768234716bbbda590a7cf02c92f6')
+sha512sums=('fcc64d367068ef7e3c2d29b4dbf6ec208e01899ce2ad2ba693e46ae7f6eb10ceddb9f1793a229d2d9ccab0dae015445d0ecf5e562a10fed1f3d702c1636822d1')
+b2sums=('a6cb607c718eef90ea7073c03ffe60691926e4c3f6da0270065b0601b7f691f3a66b1ea26c8513937ba69f0201a39277ec052116eaf03f4c6362acf6ffe834b6')
 
 prepare() {
   cd "$pkgname-$pkgver"
