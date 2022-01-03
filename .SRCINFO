@@ -1,6 +1,6 @@
 pkgbase = rxargs-git
 	pkgdesc = Regex argument substitution for command-line wizardry
-	pkgver = 0.2.1.r0.51f2833
+	pkgver = 0.2.2.r0.5240b5e
 	pkgrel = 1
 	url = https://github.com/dyeo/rxargs
 	arch = x86_64

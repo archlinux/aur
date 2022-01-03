@@ -1,7 +1,7 @@
 # Maintainer: Dan Yeomans <dan@dyeo.net>
 
 pkgname=rxargs-git
-pkgver=0.2.1.r0.51f2833
+pkgver=0.2.2.r0.5240b5e
 pkgrel=1
 pkgdesc="Regex argument substitution for command-line wizardry"
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make install
+  make DESTDIR="$pkgdir/" install
   make man
   install -Dm644 "man/rxargs.1" "$pkgdir/usr/share/man/man1/rxargs.1"
 }
