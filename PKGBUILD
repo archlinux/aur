@@ -5,7 +5,7 @@
 pkgname=emercoin-git
 _pkgname=emercoin
 pkgver=0.7.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -39,8 +39,8 @@ build() {
 }
 
 package() {
-	cd ${pkgname}-${pkgver}emc
-	make DESTDIR=${pkgdir}/ install
+	cd ${srcdir}/${_pkgname}
+  make DESTDIR=${pkgdir}/ install
 	install -Dm644 ${srcdir}/emercoin-qt.desktop ${pkgdir}/usr/share/applications/emercoin.desktop
 	install -Dm644 src/qt/res/icons/emercoin.png ${pkgdir}/usr/share/pixmaps/emercoin.png
 #	install -Dm644 contrib/debian/emercoin.conf \
