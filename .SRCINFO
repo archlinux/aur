@@ -1,8 +1,8 @@
 pkgbase = truckersmp-cli
 	pkgdesc = A simple launcher for TruckersMP to play ATS or ETS2 in multiplayer.
-	pkgver = 0.7.3
+	pkgver = 0.8.1
 	pkgrel = 1
-	url = https://github.com/lhark/truckersmp-cli/
+	url = https://github.com/truckersmp-cli/truckersmp-cli
 	arch = x86_64
 	license = MIT
 	makedepends = mingw-w64-gcc
@@ -13,7 +13,7 @@ pkgbase = truckersmp-cli
 	optdepends = python-setuptools: get version information
 	optdepends = steam: possibility to use proton
 	optdepends = wine: possibility to use wine
-	source = truckersmp-cli-0.7.3.src.tar.gz::https://github.com/lhark/truckersmp-cli/archive/0.7.3.tar.gz
-	sha512sums = af6fb2323328acf0b43138847f1b3f650e80cd6da0f7488cf585b7ecac5595be264fa70506b209268a482a1d9b12860b3ff139ec9d9286c9abd3ff0e5a229a3d
+	source = truckersmp-cli-0.8.1.src.tar.gz::https://github.com/lhark/truckersmp-cli/archive/0.8.1.tar.gz
+	sha512sums = d26ed1fe37dd9fe7c6991231bdfd86e39733df37f1c587cdbbf12d36e41293d28b2f11902df2c2478ef2eb70b3316ef806bc15a12efd48c62e65a49906737a8c
 
 pkgname = truckersmp-cli

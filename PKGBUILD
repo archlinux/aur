@@ -1,15 +1,16 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
-# shellcheck disable=SC2034,2154,2148
+# shellcheck shell=bash
+# shellcheck disable=2034,2154
 
 pkgname=truckersmp-cli
-pkgver=0.7.3
+pkgver=0.8.1
 pkgrel=1
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/lhark/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('af6fb2323328acf0b43138847f1b3f650e80cd6da0f7488cf585b7ecac5595be264fa70506b209268a482a1d9b12860b3ff139ec9d9286c9abd3ff0e5a229a3d')
+sha512sums=('d26ed1fe37dd9fe7c6991231bdfd86e39733df37f1c587cdbbf12d36e41293d28b2f11902df2c2478ef2eb70b3316ef806bc15a12efd48c62e65a49906737a8c')
 
 pkgdesc="A simple launcher for TruckersMP to play ATS or ETS2 in multiplayer."
 arch=('x86_64')
-url="https://github.com/lhark/truckersmp-cli/"
+url="https://github.com/truckersmp-cli/truckersmp-cli"
 license=('MIT')
 depends=('python' 'sdl2')
 optdepends=('python-vdf: automatic steam account detection'
