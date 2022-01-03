@@ -1,6 +1,6 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono
-pkgver=3.4
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
@@ -38,11 +38,11 @@ build() {
     git checkout ${pkgver}-stable
 
     #Build temporary binaries to generate needed files for mono support
-    scons platform=x11 tools=yes module_mono_enabled=yes mono_glue=no
+    scons -j$(nproc) platform=x11 tools=yes module_mono_enabled=yes mono_glue=no
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.x11.tools.64.mono --generate-mono-glue modules/mono/glue
 
     # Build normal binaries
-    scons platform=x11 target=release_debug tools=yes module_mono_enabled=yes bits=64
+    scons -j$(nproc) platform=x11 target=release_debug tools=yes module_mono_enabled=yes bits=64
 }
 
 package() {
