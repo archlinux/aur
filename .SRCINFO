@@ -5,6 +5,7 @@ pkgbase = latencyflex-git
 	url = https://github.com/ishitatsuyuki/LatencyFleX
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = cmake
 	makedepends = meson
 	makedepends = vulkan-headers
