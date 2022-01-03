@@ -6,6 +6,7 @@ arch=('x86_64')
 url='https://addons.mozilla.org/en-US/firefox/addon/kde_connect/'
 license=('GPLV3')
 depends=('firefox' 'kdeconnect')
+makedepends=('expect')
 groups=('firefox-addons')
 source=('extension.xpi::https://addons.mozilla.org/firefox/downloads/file/805784/kde_connect-${pkgver}-an+fx-linux.xpi'
         "https://github.com/pdf/kdeconnect-chrome-extension/releases/download/v${pkgver}/kdeconnect-chrome-extension-v${pkgver}-linux_amd64.tar.xz")

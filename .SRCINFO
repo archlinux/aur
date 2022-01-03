@@ -6,6 +6,7 @@ pkgbase = firefox-extension-kdeconnect
 	arch = x86_64
 	groups = firefox-addons
 	license = GPLV3
+	makedepends = expect
 	depends = firefox
 	depends = kdeconnect
 	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/805784/kde_connect-${pkgver}-an+fx-linux.xpi
