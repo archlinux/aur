@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Rasteli <archgabr@tutanota.com>
 pkgname=glr-st-git
-pkgver=0.8.r12.8c69b77
+pkgver=0.8.r13.5dad6e0
 pkgrel=1
 pkgdesc="My personal build of st."
 arch=(x86_64)
