@@ -1,6 +1,6 @@
 pkgbase = notflix-git
 	pkgdesc = Bugswriter's tool which search magnet links and streams one with webtorrent
-	pkgver = 1
+	pkgver = 1.01.r0.g2eb7ba2
 	pkgrel = 0
 	url = https://github.com/Bugswriter/notflix
 	arch = any
