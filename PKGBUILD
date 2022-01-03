@@ -19,11 +19,6 @@ pkgver() {
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-clean() {
-    # Clean up symlink
-    rm -f "${srcdir}/src"
-}
-
 build () {
     cd "${srcdir}/${pkgname}"
     export GOPATH="${srcdir}"
@@ -40,4 +35,9 @@ package () {
     cd "${srcdir}/${pkgname}"
     install -Dm755 "${srcdir}/bin/ls-x" "${pkgdir}/usr/bin/ls-x"
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    echo "Now you need to source in your .bashrc/.zshrc"
+    echo "source ~/.config/lsx/lsx.sh"
+    echo "For more info:"
+    echo "https://github.com/souvikinator/lsx#step-2"
 }
