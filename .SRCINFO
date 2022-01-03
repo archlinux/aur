@@ -1,6 +1,6 @@
 pkgbase = mednaffe
 	pkgdesc = front-end (GUI) for mednafen emulator
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/AmatCoder/mednaffe
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = mednaffe
 	makedepends = git
 	depends = mednafen
 	depends = gtk3
-	source = git+https://github.com/AmatCoder/mednaffe.git#commit=1d87c53c66d1cbd2017c6d3ca0c61c0486d3787d
+	source = git+https://github.com/AmatCoder/mednaffe.git#commit=907f0fd7e49876c52ed230a2bf40f4bf2f21c440
 	sha1sums = SKIP
 
 pkgname = mednaffe
-
