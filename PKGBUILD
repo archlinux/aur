@@ -1,49 +1,41 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgbase=python-cryptoparser-git
 pkgname=('python-cryptoparser-git' 'python2-cryptoparser-git')
-pkgver=r78.85ff825
+pkgver=0.7.3.r0.g4c34996
 pkgrel=1
-pkgdesc='A cryptographic protocol parser'
+pkgdesc='Cryptographic protocol parser'
 arch=('any')
 url='https://gitlab.com/coroner/cryptoparser'
 license=('MPL2')
-provides=('python-cryptoparser' 'python2-cryptoparser')
-conflicts=('python-cryptoparser' 'python2-cryptoparser')
-makedepends=('python-setuptools')
-source=("python-cryptoparser::git+${url}")
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd python-cryptoparser
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short   HEAD)"
+  git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-build_python2-cryptoparser-git() {
-  cd python-cryptoparser
-  python2 setup.py build
-}
-
-build_python-cryptoparser-git() {
-  cd python-cryptoparser
-  python setup.py build
+prepare() {
+  git clone "$pkgname" "${pkgname/python/python2}"
 }
 
 package_python2-cryptoparser-git() {
-  depends=('python2-attrs'
-           'python2-six')
-  cd python-cryptoparser
-  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  cp -avR cryptoparser "${pkgdir}/usr/lib/python2.7/site-packages/"
+  depends=('python2-asn1crypto' 'python2-attrs' 'python2-dateutil' 'python2-six')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd "$pkgname"
+  PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python-cryptoparser-git() {
-  depends=('python-attrs'
-           'python-six')
-  cd python-cryptoparser
-  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  cp -avR cryptoparser "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/"
+  depends=('python-asn1crypto' 'python-attrs' 'python-dateutil' 'python-six')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd "$pkgname"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1
 }
+
 # vim:set ts=2 sw=2 et:
