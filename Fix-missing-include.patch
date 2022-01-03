@@ -1,0 +1,13 @@
+diff --git a/src/qt/askpassphrasedialog.cpp b/src/qt/askpassphrasedialog.cpp
+index 8d68f85c4..c9d318bdc 100644
+--- a/src/qt/askpassphrasedialog.cpp
++++ b/src/qt/askpassphrasedialog.cpp
+@@ -18,6 +18,8 @@
+ #include <QMessageBox>
+ #include <QPushButton>
+ 
++#include <QIntValidator>
++
+ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent) :
+     QDialog(parent),
+     ui(new Ui::AskPassphraseDialog),

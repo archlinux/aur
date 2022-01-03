@@ -1,0 +1,37 @@
+pkgbase = emercoin-git
+	pkgdesc = Digital currency and blockchain service platform
+	pkgver = 0.7.11
+	pkgrel = 1
+	url = https://github.com/emercoin/emercoin
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv8
+	arch = armv7
+	arch = armv7l
+	arch = armv7h
+	arch = armv6h
+	arch = armhf
+	arch = armel
+	arch = arm
+	license = GPL
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = miniupnpc
+	depends = qt5-base
+	depends = protobuf
+	depends = qrencode
+	depends = libevent
+	provides = emercoin
+	conflicts = emercoin
+	source = git+https://github.com/emercoin/emercoin.git#branch=0.7.11
+	source = Fix-missing-include.patch
+	source = Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch
+	source = emercoin-qt.desktop
+	sha256sums = SKIP
+	sha256sums = 75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87
+	sha256sums = 1b339af10cbd8e003ce7c44f28b9d2eaf23e01d094078f96f21fa45d1679edef
+	sha256sums = 06645c91c499215866a506e409a8f4a80d77dbb85fdfc0bd9d1db75e2687a508
+
+pkgname = emercoin-git
