@@ -13,7 +13,7 @@ pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' '
 _tag='9c8279cdd5d0bc256b8cc0ced2312e27e069a214' # git rev-parse v${_tag_name}
 _tag_name=250
 pkgver="${_tag_name/-/}"
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -71,6 +71,9 @@ sha512sums=('SKIP'
 _backports=(
   # chrattr-util: return EOPNOTSUPP from chrattr_full if no other failure was observed
   '7c3b51c469140cdbc1b7e9a232af3f250fea3884'
+
+  # manager: always close idle pipe when sending ready notification
+  '9c1b17c3dc1541df02118ee3aaf6dd5dd540cdc2'
 )
 
 _reverts=(
