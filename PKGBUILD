@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage <braindamage springlobby.info>
 
 pkgname=eqonomize
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Efficient and easy accounting for the small household economy'
 arch=('x86_64')
