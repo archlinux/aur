@@ -6,5 +6,5 @@ post_install() {
     # NOTE: The home directory has to actually exist (sysusers doesn't do this)
     mkdir -p /var/lib/dis4irc || exit 1
     chown dis4irc -R /etc/dis4irc || exit 1
-    chown dis4irc -R /var/lib/dis4irc
+    chown dis4irc -R /var/lib/dis4irc || exit 1
 }

@@ -1,7 +1,7 @@
 pkgbase = dis4irc
 	pkgdesc = A modern Discord <-> IRC bridge
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zachbr/Dis4IRC
 	install = dis4irc.install
 	arch = any

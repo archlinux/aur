@@ -7,7 +7,7 @@
 
 pkgname=dis4irc
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Discord <-> IRC bridge"
 arch=('any') # Java :)
 url="https://github.com/zachbr/Dis4IRC"
@@ -55,7 +55,7 @@ package() {
     # We install the "default" config into /etc/dis4irc/config.hocon
     install -Dm644 "$srcdir/default-config.hocon" "$pkgdir/etc/dis4irc/config.hocon"
 
-    install -Dm644 dis4irc.service "$pkgdir/usr/lib/systemd/system/dis4irc.service"
-    install -Dm644 dis4irc.sysusers "$pkgdir/usr/lib/sysusers.d/dis4irc.conf"
+    install -Dm644 "$srcdir/dis4irc.service" "$pkgdir/usr/lib/systemd/system/dis4irc.service"
+    install -Dm644 "$srcdir/dis4irc-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/dis4irc.conf"
     install -Dm644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/dis4irc/LICENSE.md"
 }
