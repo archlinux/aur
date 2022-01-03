@@ -6,7 +6,6 @@ pkgdesc="The essential to control music from your SONOS devices on Linux platfor
 arch=('x86_64' 'armv7h')
 url="https://janbar.github.io/noson-app"
 license=('GPL3')
-groups=('base-devel')
 depends=('cmake' 'qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'libpulse' 'flac')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/janbar/noson-app.git#tag=4.5.0")
