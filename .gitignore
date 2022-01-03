@@ -3,3 +3,5 @@ src/*
 *.xz
 *.gz
 *.zip
+betaflight-configurator-bin-*
+

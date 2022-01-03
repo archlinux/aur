@@ -3,7 +3,7 @@
 pkgname=betaflight-configurator-bin
 _pkgname=betaflight-configurator
 pkgver=10.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
@@ -12,6 +12,7 @@ sha256sums=('98c8f2ed57bbc0498fc64026bb1d166a152027ceb29675993f8b260d9781b3c4')
 options=(!strip)
 license=('GPL3')
 conflicts=('betaflight-configurator')
+install=$pkgname.install
 
 package() {
   mkdir -p "$pkgdir/opt/betaflight"
@@ -19,6 +20,5 @@ package() {
   install -Dm644 "$srcdir/Betaflight Configurator/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   cp -dpr --no-preserve=ownership "$srcdir/Betaflight Configurator" "$pkgdir/opt/betaflight/betaflight-configurator"
   ln -s "/opt/betaflight/betaflight-configurator/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-
-  echo 'Dont forget to add your user into dialout group "sudo usermod -aG dialout YOUR_USERNAME" for serial access'
 }
+

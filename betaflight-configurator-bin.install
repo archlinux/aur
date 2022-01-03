@@ -1,0 +1,8 @@
+post_install() {
+    echo 'Add your user into uucp group with "sudo gpasswd -a $USER uucp" for serial access!'
+}
+
+post_upgrade() {
+    post_install
+}
+
