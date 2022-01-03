@@ -1,24 +1,25 @@
 diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
-index ccfacb63a..1aaac1da6 100644
+index 4ee5aeaad..e3eca68ca 100644
 --- a/grub-core/disk/luks2.c
 +++ b/grub-core/disk/luks2.c
-@@ -350,8 +350,15 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
+@@ -353,8 +353,16 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
  {
    grub_cryptodisk_t cryptodisk;
    grub_luks2_header_t header;
 +  grub_luks2_keyslot_t keyslot;
 +  grub_luks2_digest_t digest;
 +  grub_luks2_segment_t segment;
-+  char *json_header = NULL, *ptr;
++  char cipher[32], *json_header = NULL, *ptr;
 +  grub_size_t candidate_key_len = 0, json_idx, size;
    char uuid[sizeof (header.uuid) + 1];
    grub_size_t i, j;
 +  grub_err_t ret;
++  gcry_md_spec_t *hash = NULL;
 +  grub_json_t *json = NULL, keyslots;
 
    if (cargs->check_boot)
      return NULL;
-@@ -361,6 +368,157 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
+@@ -364,6 +372,175 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
        grub_errno = GRUB_ERR_NONE;
        return NULL;
      }
@@ -171,12 +172,30 @@ index ccfacb63a..1aaac1da6 100644
 +	  cryptodisk->total_sectors = max_crypt_sectors - cryptodisk->offset_sectors;
 +	}
 +
-+      break;
++      /* Set up disk hash. */
++      if (keyslot.kdf.type == LUKS2_KDF_TYPE_PBKDF2)
++      {
++        hash = grub_crypto_lookup_md_by_name (keyslot.kdf.u.pbkdf2.hash);
++	      if (!hash)
++	      {
++	        ret = grub_error (GRUB_ERR_FILE_NOT_FOUND, "Couldn't load %s hash",
++			      keyslot.kdf.u.pbkdf2.hash);
++	        goto err;
++	      }
++	      if (cryptodisk->hash)
++	      {
++          if (grub_strcmp(hash->name, cryptodisk->hash->name)) {
++	          ret = grub_error (GRUB_ERR_NOT_IMPLEMENTED_YET, "LUKS2 Module does not support using multiple SHA versions.");
++	          goto err;
++          }
++	      } else
++          cryptodisk->hash = hash;
++      }
 +    }
 
    for (i = 0, j = 0; i < sizeof (header.uuid); i++)
      if (header.uuid[i] != '-')
-@@ -373,15 +531,16 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
+@@ -376,15 +553,39 @@ luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
        return NULL;
      }
 
@@ -187,6 +206,29 @@ index ccfacb63a..1aaac1da6 100644
    COMPILE_TIME_ASSERT (sizeof (cryptodisk->uuid) >= sizeof (uuid));
    grub_memcpy (cryptodisk->uuid, uuid, sizeof (uuid));
 
++  hash = grub_crypto_lookup_md_by_name (digest.hash);
++  if (cryptodisk->hash) {
++    if (grub_strcmp(hash->name, cryptodisk->hash->name)) {
++	    ret = grub_error (GRUB_ERR_NOT_IMPLEMENTED_YET, "LUKS2 Module does not support using multiple SHA versions.");
++	    goto err;
++    }
++  } else
++    cryptodisk->hash = hash;
++
++  /* Set up disk cipher. */
++  grub_strncpy (cipher, segment.encryption, sizeof (cipher));
++  ptr = grub_memchr (cipher, '-', grub_strlen (cipher));
++  if (!ptr) {
++      ret = grub_error (GRUB_ERR_BAD_ARGUMENT, "Invalid encryption");
++      goto err;
++  }
++  *ptr = '\0';
++
++  ret = grub_cryptodisk_setcipher (cryptodisk, cipher, ptr + 1);
++  if (ret)
++    goto err;
++
++
    cryptodisk->modname = "luks2";
    return cryptodisk;
 +err:
