@@ -33,6 +33,4 @@ package() {
 	mv ./build/TKPEmu $pkgdir/usr/bin/TKPEmu
 }
 
-
-sha256sums=('c41dcece6e15a9c4548a08b87c342ad917515beefb29aad5e974eab9f1cc57b7')
-sha256sums=('c41dcece6e15a9c4548a08b87c342ad917515beefb29aad5e974eab9f1cc57b7')
+sha256sums=('64fea5a091d1974e03d6f650706397c0532eaa86125274d9bf373ce8c226ec88')
