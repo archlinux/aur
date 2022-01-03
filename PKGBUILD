@@ -4,12 +4,13 @@
 # Original Darcula patch from https://digmi.org/2019/03/26/ghidracula/
 
 pkgname=ghidra-darcula
-_darcula=08c13c5f1a12624f4d8df8723b39061e11c93241
+_darcula=5f401c27dc0710575d45e13c2c255d78dbe0a4ab
 _darcula_version=2019.09
-pkgver=10.0.4
+pkgver=10.1.1
 pkgrel=1
 pkgdesc='Software reverse engineering framework (with dark theme)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
+options=(!strip)
 url='https://ghidra-sre.org'
 license=(Apache)
 provides=('ghidra')
@@ -20,25 +21,29 @@ conflicts=(
 )
 depends=(
   'bash'
-  'java-environment>=11'
+  'java-environment=11'
   'polkit'
 )
 makedepends=(
+  'fop'
   'git'
   'gradle'
-  'java-environment=11'
   'unzip'
 )
 source=(
   "git+https://github.com/NationalSecurityAgency/ghidra#tag=Ghidra_${pkgver}_build"
   "git+https://github.com/encounter/darcula-laf.git#commit=${_darcula}"
   ghidra.desktop
+  ghidra-root.desktop
+  ghidra.policy
   darcula.patch
 )
 sha512sums=(
   'SKIP'
   'SKIP'
   '4cf019d5bfde5265d667400111fb0c2473caa2457756c9c73e33d6128da3b116bf8d1b8cbb4092bbe27ea65ea5ab46f922e05a1e53ff36b90f76d8fcc4bfc1e7'
+  'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
+  '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
   '833fc176889f7682028f167b3093d1828b79805aa58d7f8ed8387b4baeeec1da2f30e5d607aebdb460580b939ea9dceb35e4aabf03b0a0f29f328efaa58e2f82'
 )
 _pkgname="${pkgname/-*/}"
@@ -95,8 +100,6 @@ prepare() {
 
 build() {
   cd "$srcdir"/darcula-laf
-  echo -e "${_prefix}Patching darcula-laf for Gradle-7.0"
-  sed -i "s/apply plugin: 'maven'/apply plugin: 'maven-publish'/" build.gradle
   echo -e "${_prefix}Building darcula-laf"
   gradle --parallel jar
   mkdir -p "$srcdir/$_pkgname"/flatRepo
@@ -116,7 +119,7 @@ package() {
   echo -e "${_prefix}Extracting the zip archive"
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  unzip -u build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux64.zip -d "$pkgdir"/opt
+  unzip -u build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux_*.zip -d "$pkgdir"/opt
 
   echo -e "${_prefix}Setting up a versionless directory name"
   mv "$pkgdir"/opt/ghidra{_"${_appver}_${_relname}",}
@@ -125,9 +128,13 @@ package() {
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-headless
 
-  echo -e "${_prefix}Setting up desktop shortcut"
+  echo -e "${_prefix}Setting up desktop shortcuts"
   install -Dm 644 ../ghidra.desktop -t "$pkgdir"/usr/share/applications
+  install -Dm 644 ../ghidra-root.desktop -t "$pkgdir"/usr/share/applications
 
   echo -e "${_prefix}Setting up desktop icon"
   install -Dm 644 Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon256.png "$pkgdir"/usr/share/pixmaps/ghidra.png
+
+  echo -e "${_prefix}Setting up policy file for the \"run as root\" desktop shortcut"
+  install -Dm 644 ../ghidra.policy -t "$pkgdir"/usr/share/polkit-1/actions
 }
