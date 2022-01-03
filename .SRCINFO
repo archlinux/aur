@@ -5,7 +5,6 @@ pkgbase = ringcentral-bin
 	url = https://www.ringcentral.com
 	install = ringcentral-bin.install
 	arch = x86_64
-	groups = 
 	license = MIT
 	depends = alsa-lib
 	depends = atk
