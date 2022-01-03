@@ -6,7 +6,7 @@ pkgname=emercoin-git
 _pkgname=emercoin
 pkgver=0.7.11
 _pkgver=${pkgver}
-pkgrel=3
+pkgrel=5
 _pkgrel=${pkgrel}
 pkgdesc="Digital currency and blockchain service platform - debian package"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
@@ -17,7 +17,7 @@ depends=()
 #depends=('boost-libs' 'miniupnpc' 'qt5-base' 'protobuf' 'qrencode' 'libevent')
 _debdeps="libboost-filesystem1.74.0 (>= 1.74.0), libc6 (>= 2.30), libdb5.3++, libevent-2.1-7 (>= 2.1.8-stable), libevent-pthreads-2.1-7 (>= 2.1.8-stable), libgcc-s1 (>= 3.0), libleveldb1d, libminiupnpc17 (>= 1.9.20140610), libqrencode4 (>= 3.2.0), libqt5core5a (>= 5.15.1), libqt5dbus5 (>= 5.0.2), libqt5gui5 (>= 5.14.1) | libqt5gui5-gles (>= 5.14.1), libqt5network5 (>= 5.0.2), libqt5widgets5 (>= 5.15.1), libsqlite3-0 (>= 3.7.15), libstdc++6 (>= 9), libzmq5 (>= 4.0.1+dfsg)"
 makedepends=('boost' 'qt5-tools' 'dpkg')
-source=("git+${url}.git#branch=${BRANCH:-0.7.11}"
+source=("git+${url}.git" #branch=${BRANCH:-0.7.11}"
         "Fix-missing-include.patch"
         #"Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch"
         "emercoin-qt.desktop"
@@ -33,9 +33,10 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+  cd ${srcdir}/${_pkgname}
   #git pull -f
-  #git pull --tags -f
+  git checkout ${pkgver}
+  git pull --tags -f
 	./autogen.sh
 	./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no --disable-dependency-tracking --disable-tests --disable-util-tx --disable-gui-tests --enable-bip70 --disable-hardening --disable-debug
 	make

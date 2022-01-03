@@ -5,7 +5,7 @@
 pkgname=emercoin-git
 _pkgname=emercoin
 pkgver=0.7.11
-pkgrel=3
+pkgrel=5
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -14,7 +14,7 @@ depends=('boost-libs' 'miniupnpc' 'qt5-base' 'protobuf' 'qrencode' 'libevent')
 makedepends=('boost' 'qt5-tools')
 provides=('emercoin')
 conflicts=('emercoin')
-source=("git+${url}.git#branch=${BRANCH:-0.7.11}"
+source=("git+${url}.git" #branch=${BRANCH:-0.7.11}"
         "Fix-missing-include.patch"
 #        "Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch"
         "emercoin-qt.desktop"
@@ -30,9 +30,10 @@ prepare() {
 }
 
 build() {
-	cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}
   #git pull -f
-  #git pull --tags -f
+  git checkout ${pkgver}
+  git pull --tags -f
 	./autogen.sh
   ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no --disable-dependency-tracking --disable-tests --disable-util-tx --disable-gui-tests --enable-bip70 --disable-hardening --disable-debug
 	make

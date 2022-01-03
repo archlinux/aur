@@ -1,7 +1,7 @@
 pkgbase = emercoin-git
 	pkgdesc = Digital currency and blockchain service platform
 	pkgver = 0.7.11
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/emercoin/emercoin
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = emercoin-git
 	depends = libevent
 	provides = emercoin
 	conflicts = emercoin
-	source = git+https://github.com/emercoin/emercoin.git#branch=0.7.11
+	source = git+https://github.com/emercoin/emercoin.git
 	source = Fix-missing-include.patch
 	source = emercoin-qt.desktop
 	sha256sums = SKIP
