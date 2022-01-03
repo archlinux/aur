@@ -1,13 +1,13 @@
 pkgbase = python-uritools
 	pkgdesc = RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse
-	pkgver = 3.0.2
-	pkgrel = 3
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/uritools
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/tkem/uritools/archive/v3.0.2.tar.gz
-	sha256sums = 4f38ec758a08965558b517bb4a5a2e3473faa591d6d355f738bb84cfa4a8da22
+	source = https://github.com/tkem/uritools/archive/v4.0.0.tar.gz
+	sha256sums = 234d428d606b0cd9633bd0ee53f7c8450aec9240e456b677d1dff833e755066b
 
 pkgname = python-uritools
