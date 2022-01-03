@@ -3,13 +3,15 @@
 _gitname=ton
 pkgname=ton-git
 pkgver=r205.9875f02
-pkgrel=2
+pkgrel=3
 pkgdesc='The next gen network to unite all blockchains and the existing Internet'
 arch=('any')
 url='https://github.com/newton-blockchain/ton'
 license=('GPL')
 depends=()
-makedepends=('git')
+makedepends=('git'
+             'cmake'
+             'gsl')
 provides=('ton')
 conflicts=('ton')
 source=('git://github.com/newton-blockchain/ton.git'
