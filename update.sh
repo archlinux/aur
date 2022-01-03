@@ -12,7 +12,9 @@ git checkout -q packages/linux
 git pull -q
 c_ver=`grep ^pkgver= repos/core-x86_64/PKGBUILD | cut -d= -f2`
 
-if [[ $c_ver < $l_ver || $c_ver == $l_ver ]] ; then
+n_ver=`echo -e "$c_ver\n$l_ver" | sort -rV | head -n 1`
+
+if [ $n_ver = $l_ver ] ; then
     exit
 fi
 
@@ -30,7 +32,11 @@ sed -i -e '/^_package-docs() {/,/^}/d' PKGBUILD
 sed -i -e '/^pkgname=/s/ "$pkgbase-docs"//' PKGBUILD
 
 echo "Building package"
-time (makepkg --skippgpcheck -CcL >/dev/null)
+if [ "$1" = "--cron" ] ; then
+    time (makepkg --skippgpcheck -CcLm > $s_dir/build.log)
+else
+    time (makepkg --skippgpcheck -CcLm | tee $s_dir/build.log)
+fi
 
 for p in *.pkg.tar.zst; do
     mv $p repo
