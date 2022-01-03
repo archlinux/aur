@@ -2,14 +2,13 @@ pkgbase = dfu-convert-git
 	pkgdesc = Tool that converts RAW binary firmware into DFU format and back
 	pkgver = r8.e2b1c1c
 	pkgrel = 1
-	url = https://github.com/plietar/dfuse-tool
+	url = https://github.com/dsavinkin/dfuse-tool
 	arch = any
 	license = unknown
 	makedepends = git
-	depends = python2
-	depends = python2-intelhex
+	depends = python
+	depends = python-intelhex
 	source = git://github.com/plietar/dfuse-tool
 	sha512sums = SKIP
 
 pkgname = dfu-convert-git
-
