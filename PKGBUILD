@@ -3,11 +3,11 @@
 # Contributor: Erez Raviv (erezraviv@gmail.com)
 
 pkgname=chirp-daily
-pkgver=20211221
+pkgver=20220103
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
-url="https://chirp.danplanet.com/"
+url="https://chirp.danplanet.com"
 license=('GPL3')
 depends=('python2-lxml' 'python2-pyserial' 'pygtk')
 optdepends=('hamradio-menus: XDG menus for ham radio software')
@@ -17,7 +17,7 @@ provides=(chirp)
 install=$pkgname.install
 source=("https://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/chirp-daily-$pkgver.tar.gz")
 # Checksum: https://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/SHA1SUM
-sha1sums=('9133d3a590aa8b2775a8b843011d0b9155817e72')
+sha1sums=('31a9dc2861dc614246dd462630bd95fdc7209f0c')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -30,4 +30,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
