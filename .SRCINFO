@@ -1,6 +1,6 @@
 pkgbase = python-fbs
 	pkgdesc = Python and Qt-based lightweight alternative to Electron
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://build-system.fman.io/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-fbs
 	optdepends = pyside2: PySide Qt5 Python bindings
 	optdepends = python-sentry_sdk: upload errors that occur in your app to Sentry
 	optdepends = python-boto3: AWS support
-	source = fbs-1.0.1.tar.gz::https://github.com/mherrmann/fbs/archive/v1.0.1.tar.gz
-	sha256sums = 8d14dadd7e34db091692baacba58fef5d63a85c38e1b9f3083e556bbcb3ccd89
-	sha512sums = 2f71ffb7283642c5477520a38d79078afdbf6f9d5dac13502431f3856161f2df831564f4b51d308d1ccd66d1e82b406c51648c87959fe2d7c0ad260c1f1e46c2
+	source = fbs-1.0.3.tar.gz::https://github.com/mherrmann/fbs/archive/v1.0.3.tar.gz
+	sha256sums = 8e1f533e098eda319a2cfe824a193cd24e465ac8bfbfe86fb09d969af235e760
+	sha512sums = 338ce2447d7c9d2ea67d631c62c3e9f635689e9c6e7ddff05d9d9dbbf09b81a03a5b8f616e3a5f47a5a9a80479c06b23ba264683e1aa8f44b650c5982552ce64
 
 pkgname = python-fbs
