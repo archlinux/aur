@@ -1,0 +1,14 @@
+pkgbase = python-txzmq
+	pkgdesc = Twisted bindings for ZeroMQ
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/txZMQ
+	arch = any
+	license = MPL2
+	makedepends = python-setuptools
+	depends = python-twisted
+	depends = python-pyzmq
+	source = https://pypi.io/packages/source/t/txZMQ/txZMQ-1.0.0.tar.gz
+	sha256sums = 8d607d0bf09ca94600b8e42f0721dbe43ee53a0470182344ac7ace7e58dc6177
+
+pkgname = python-txzmq
