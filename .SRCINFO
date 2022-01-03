@@ -1,13 +1,14 @@
 pkgbase = neovim-registers
 	pkgdesc = Neovim plugin to preview the contents of the registers
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/tversteeg/registers.nvim
 	arch = any
 	groups = neovim-plugins
 	license = GPL3
+	checkdepends = neovim-plenary
 	depends = neovim
-	source = neovim-registers-1.4.0.tar.gz::https://github.com/tversteeg/registers.nvim/archive/v1.4.0.tar.gz
-	sha256sums = ea3f741c35fa3b82201f477e2b65279016d8ce992b556fa81a0ba696b586ce82
+	source = neovim-registers-1.4.1.tar.gz::https://github.com/tversteeg/registers.nvim/archive/v1.4.1.tar.gz
+	sha256sums = 1253b7fd7f1d5d90c04c17534c7a85c899c10de186829f103ac7533dba8958c7
 
 pkgname = neovim-registers
