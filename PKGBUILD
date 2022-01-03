@@ -4,8 +4,8 @@
 # contributor: Alessandro Schillaci < http://slade.altervista.org >
 
 pkgname=inform
-pkgver=6.35.r7
-_ifrel="6.35-r7"
+pkgver=6.35.r8
+_ifrel="6.35-r8"
 pkgrel=1
 pkgdesc="Interactive fiction compiler"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
@@ -15,7 +15,7 @@ depends=('glibc')
 groups=(inform)
 source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_ifrel}.tar.gz")
 
-md5sums=('d089d77e002c6378c77e90ed34f96b95')
+md5sums=('9634cef85c7b7b5c8865c68b1f9367bc')
 
 build() {
   cd "${srcdir}/${pkgname}-${_ifrel}"
