@@ -1,0 +1,15 @@
+pkgbase = pointwise
+	pkgdesc = Pointwise is the choice for CFD (computational fluid dynamics) mesh generation, covering all of preprocessing from geometry model import to flow solver export.
+	pkgver = 18.5R1
+	pkgrel = 1
+	url = https://pointwise.com/
+	arch = x86_64
+	options = !strip
+	source = pointwise.desktop
+	source = pointwise.ico
+	source = https://www.pointwise.com/downloads/pw-V18.5R1-linux_x86_64-jre.sh
+	sha256sums = 2508104477e93b7f32c80f248b01e527d6a85a1e18e6b27199b7b617289a2bd7
+	sha256sums = f0fb928f4e5be67b8bc7b2084ed96f84f1e235b6dd9ea60ae5cd3fc4da75f083
+	sha256sums = 648bbb3dad0f138a78c16fc95dcb8e80feacccb90cf8287fa4daabbca1bb1c78
+
+pkgname = pointwise

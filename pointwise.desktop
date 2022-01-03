@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Pointwise 
+Exec=/opt/pointwise/pointwise
+Icon=/usr/share/pixmaps/pointwise.ico
+Categories=Application;
