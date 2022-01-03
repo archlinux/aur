@@ -2,7 +2,7 @@
 
 _pkgname=yt-dlg
 pkgname=$_pkgname
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('git' 'python-polib' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname youtube-dl-gui)
 source=(https://github.com/oleksis/youtube-dl-gui/archive/refs/tags/v"${pkgver}".tar.gz)
-sha512sums=('0871f1944e9a81570f02c040d43f6dd06c883f27451d57b697f277a9be0fb21655c757bcbe961a04ed16e9329f3502cbe740d7734842a0031af9bb3156d7fbc7')
+sha512sums=('c231f4f615cb9331ed7dd6ad8f850596e04e5d6759d18b25704a1605ce47697a3f28f3eb1d64bf35e2d66ea05ea3ed256c20c80fd83c2ddb66689975fdda446f')
 
 package() {
   cd youtube-dl-gui-"${pkgver}"
