@@ -17,6 +17,7 @@ pkgbase = fractal-next
 	depends = gtksourceview5
 	depends = gspell
 	depends = libadwaita
+	depends = pipewire
 	optdepends = org.freedesktop.secrets: password storage
 	provides = fractal
 	conflicts = fractal
