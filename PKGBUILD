@@ -4,10 +4,10 @@ _pkgname=colourhop
 _pkgauthor=talas
 pkgver=1.1.2
 _cdbrel=10402
-pkgrel=1
+pkgrel=2
 pkgdesc="Help the jumping blobs defeat the evil dragons and bring colour back to the world."
 license=("GPLv3")
-sha256sums=('9de1d3280f7cef1b911a92b95ad9daca8bd30f97ce5b1fca73754ca32b50742b')
+sha256sums=('d67c01c6e0299d9823e34b79e89661dd28919bbaefc2792981d924e487b54da7')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
