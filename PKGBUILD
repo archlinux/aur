@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Rasteli <archgabr@tutanota.com>
 pkgname=glr-dmenu-git
-pkgver=5.0.r17.4ee1570
+pkgver=5.0.r20.055568c
 pkgrel=1
 pkgdesc="My personal build of dmenu."
 arch=(x86_64)
