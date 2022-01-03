@@ -7,14 +7,14 @@
 
 pkgname=ovito
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Visualization Tool"
 url="http://www.ovito.org"
 arch=('x86_64')
 license=('GPL')
-depends=('fftw' 'python' 'netcdf' 'ffmpeg' 'qt5-base')
+depends=('netcdf' 'ffmpeg' 'qt5-base')
 makedepends=('cmake' 'boost' 'qscintilla-qt5' 'qt5-svg' 'libxslt' 'git'
-             'python-sphinx_rtd_theme')
+             'python-sphinx_rtd_theme' 'vulkan-icd-loader' 'vulkan-headers')
 conflicts=("$pkgname-git")
 source=("https://gitlab.com/stuko/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2"
         "https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png"
@@ -34,7 +34,8 @@ build() {
       -DOpenGL_GL_PREFERENCE=GLVND \
       -DOVITO_BUILD_DOCUMENTATION=ON \
       -DOVITO_QT_MAJOR_VERSION=Qt5 \
-      -DOVITO_BUILD_PLUGIN_VULKAN=ON
+      -DOVITO_BUILD_PLUGIN_VULKAN=ON \
+      -DVulkan_INCLUDE_DIR=/usr/include
   make
 }
 
