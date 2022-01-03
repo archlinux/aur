@@ -23,7 +23,7 @@ if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
 fi
 
 pkgname=obs-face-tracker
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
@@ -67,7 +67,7 @@ prepare() {
 build() {
   cd "$pkgname"
   cmake -B build \
-  -DCMAKE_INSTALL_PREFIX='/usr' \
+  -DCMAKE_INSTALL_PREFIX=/usr \
   -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA
   make -C build
 }
