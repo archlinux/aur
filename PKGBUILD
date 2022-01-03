@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=mani
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A CLI tool that helps you manage multiple repositories"
 arch=('x86_64')
@@ -9,9 +9,10 @@ url="https://manicli.com"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alajmo/mani/archive/v$pkgver.tar.gz")
-sha512sums=('13ab299abe4c085b5c96eb1f58037e213f2f8f98d33869ad7d1269997b5735d90c264063f7c25ee7086a4a6c02ea95830175fce1f1639c4eea4e5e962a97c518')
-b2sums=('dae0eeec02646061f345b5b7b5383da724828c9c5cce1de781822543d90bdb11dde8cf28483c1934266f742cb8bbb22a22b337812d271649f4200959bcff2131')
+sha512sums=('c6ab00faa363dff0b3788753e7a88869448a62401c6238a1fde930d87a989691c8a01d0d39c823a01b19987c56ee01575371a5fdfb09f64f7ca092901d740487')
+b2sums=('ed7f9b8cb4204c9a131d1ef5e48897ac76cf9f645deb0b03a80857e81b9b0f0976200341093b1730fff09beffb6bf4dd5838768234716bbbda590a7cf02c92f6')
 
 prepare() {
   cd "$pkgname-$pkgver"
