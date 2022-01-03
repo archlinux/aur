@@ -6,8 +6,8 @@
 # Maintainer: Martin Zeller <mz DOT bremerhaven AT gmail DOT com>
 pkgname=grgen
 _pkgname=GrGenNET
-pkgver=4.4.5
-_pkgdate=2016-02-14
+pkgver=6.1.1
+_pkgdate=2021-08-28
 pkgrel=1
 pkgdesc="transformation of structures made easy"
 arch=('x86' 'x86_64')
@@ -20,7 +20,7 @@ source=( "http://www.info.uni-karlsruhe.de/software/$pkgname/${_zipname}.tar.bz2
 		 "GrShell"
 		 "yComp"
        )
-md5sums=('69e9c78c8c8b9573657ff52ff12273c5'
+md5sums=('965c2ffdf7a6eb0fb7c176774ff7d7ad'
          '695171fa276683633b7dfaab8ac26004'
          '6d4ff6d37659028c4f370b9446b391d8'
          '941a530ada35ef0f7bce7ae3bfff61f5')
