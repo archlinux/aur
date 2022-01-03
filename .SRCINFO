@@ -1,20 +1,20 @@
 pkgbase = admbrowser-git
-	pkgdesc = A web browser for kiosk systems.
+	pkgdesc = Web browser for kiosks and digital signage
 	pkgver = r155.da7b945
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alandmoore/admbrowser
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-pyqt5
 	depends = python-pyqt5-webengine
-	depends = python-setuptools
 	depends = python-yaml
 	depends = qt5-webkit
 	provides = admbrowser
+	conflicts = admbrowser
 	backup = etc/admbrowser.yaml
-	source = git+https://github.com/alandmoore/admbrowser
+	source = admbrowser-git::git+https://github.com/alandmoore/admbrowser
 	md5sums = SKIP
 
 pkgname = admbrowser-git
-
