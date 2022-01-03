@@ -1,42 +1,59 @@
 # Author: futpib <futpib@gmail.com>
-# Inspired by `cask' AUR package by Sebastien Duthil <duthils@duthils.net>
 
-pkgname=cask-git
-pkgver=r882.d731e96
-pkgrel=2
-pkgdesc="Project management tool for Emacs"
+_gitname=ton
+pkgname=ton-git
+pkgver=r205.9875f02
+pkgrel=1
+pkgdesc='The next gen network to unite all blockchains and the existing Internet'
 arch=('any')
-url='https://github.com/cask/cask'
+url='https://github.com/newton-blockchain/ton'
 license=('GPL')
-depends=('emacs' 'python')
+depends=()
 makedepends=('git')
-provides=('cask')
-conflicts=('cask')
-source=("git://github.com/cask/cask.git")
-sha256sums=('SKIP')
+provides=('ton')
+conflicts=('ton')
+source=('git://github.com/newton-blockchain/ton.git'
+        'git://github.com/abseil/abseil-cpp.git'
+        'git://github.com/google/crc32c.git'
+        'git://github.com/ton-blockchain/libRaptorQ.git'
+        'git://github.com/facebook/rocksdb.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-    cd "$srcdir/cask"
+    cd "$srcdir/$_gitname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$_gitname"
+
+    git submodule init
+    git config submodule."third-party/crc32c".url "$srcdir/crc32c"
+    git config submodule."third-party/abseil-cpp".url "$srcdir/abseil-cpp"
+    git config submodule."third-party/libraptorq".url "$srcdir/libRaptorQ"
+    git config submodule."third-party/rocksdb".url "$srcdir/rocksdb"
+    git submodule update
+
+    sed -i 's/find_package(Threads REQUIRED)/\0\nfind_package(GSL REQUIRED)/' ./CMakeLists.txt
+    sed -i 's/find_package(LATEX)//' ./CMakeLists.txt
+    sed -i 's/#include <array>/\0\n#include <stdexcept>\n#include <limits>/' ./third-party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
+
+    mkdir -p build
+}
+
+build() {
+    cd build
+
+    cmake "../$_gitname" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release
+    make -j $(nproc)
+}
+
 package() {
-    cd "$srcdir/cask"
+    cd build
 
-    # cask executable needs to be one directory deeper than cask-cli.el
-    __prefix="${pkgdir}/usr/share/cask"
-    install -d "${__prefix}"
-    install -Dm644 *.el "${__prefix}/"
-    install -d "${__prefix}/bin"
-    install -Dm755 "bin/cask" "${__prefix}/bin"
-    install -d "${__prefix}/templates"
-    install -Dm644 templates/* "${__prefix}/templates/"
-    touch "${__prefix}/.no-upgrade"  # Stop cask performing self-upgrades.
-
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/usr/share/cask/bin/cask" "${pkgdir}/usr/bin/"
-
-    __site_lisp="${pkgdir}/usr/share/emacs/site-lisp/cask"
-    install -d "${__site_lisp}"
-    ln -s "/usr/share/cask/"cask{,-bootstrap}.el "${__site_lisp}/"
+    make install
 }

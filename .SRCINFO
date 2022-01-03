@@ -1,17 +1,22 @@
-pkgbase = cask-git
-	pkgdesc = Project management tool for Emacs
-	pkgver = r882.d731e96
-	pkgrel = 2
-	url = https://github.com/cask/cask
+pkgbase = ton-git
+	pkgdesc = The next gen network to unite all blockchains and the existing Internet
+	pkgver = r205.9875f02
+	pkgrel = 1
+	url = https://github.com/newton-blockchain/ton
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = emacs
-	depends = python
-	provides = cask
-	conflicts = cask
-	source = git://github.com/cask/cask.git
+	provides = ton
+	conflicts = ton
+	source = git://github.com/newton-blockchain/ton.git
+	source = git://github.com/abseil/abseil-cpp.git
+	source = git://github.com/google/crc32c.git
+	source = git://github.com/ton-blockchain/libRaptorQ.git
+	source = git://github.com/facebook/rocksdb.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = cask-git
-
+pkgname = ton-git
