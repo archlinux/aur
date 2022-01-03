@@ -1,0 +1,5 @@
+post_install() {
+	echo "LatencyFleX is now installed for the system Wine."
+	echo "To use it with Proton, read https://github.com/ishitatsuyuki/LatencyFleX#latencyflex-wine-extensions-required-for-proton-reflex-integration and copy the respective files from your root filesystem to the Proton installation directory."
+	echo "You also need to install DXVK-NVAPI dlls from the fork for a functioning Reflex integration."
+}

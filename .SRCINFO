@@ -1,0 +1,31 @@
+pkgbase = latencyflex-git
+	pkgdesc = Vendor and game agnostic latency reduction middleware
+	pkgver = r24.514fed6
+	pkgrel = 1
+	url = https://github.com/ishitatsuyuki/LatencyFleX
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = meson
+	makedepends = vulkan-headers
+	makedepends = vulkan-validation-layers
+	makedepends = wine
+	source = git+https://github.com/ishitatsuyuki/LatencyFleX.git
+	source = git+https://github.com/kubo/funchook.git
+	source = git+https://github.com/gdabah/distorm.git
+	source = latencyflex-wine.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 30861957636eed47ee70461dc377e8dcd23b1acfa8b7bb570196e1347d121bb6
+
+pkgname = latencyflex-git
+	depends = 
+	provides = latencyflex
+	conflicts = latencyflex
+
+pkgname = latencyflex-wine-git
+	install = latencyflex-wine.install
+	depends = latencyflex-git
+	provides = latencyflex-wine
+	conflicts = latencyflex-wine
