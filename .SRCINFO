@@ -1,7 +1,7 @@
 pkgbase = rapiddisk-dkms
 	pkgdesc = Advanced Linux RAM Drive and Caching kernel modules
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rapiddisk.org/
 	install = rapiddisk-dkms.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = rapiddisk-dkms
 	depends = dkms
 	depends = zlib
 	depends = cryptsetup
+	depends = libmicrohttpd
 	source = git+https://github.com/pkoutoupis/rapiddisk#commit=ed071a6
 	md5sums = SKIP
 

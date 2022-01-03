@@ -6,14 +6,15 @@ _vermajor=8
 _verminor=0
 _verrevision=1
 pkgver=${_vermajor}.${_verminor}.${_verrevision}
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Linux RAM Drive and Caching kernel modules"
 arch=('i686' 'x86_64')
 url="http://www.rapiddisk.org/"
 license=('GPL2')
 depends=('dkms'
          'zlib'
-         'cryptsetup')
+         'cryptsetup'
+         'libmicrohttpd')
 makedeps=('jansson')
 install=${pkgname}.install
 _gitcommit=ed071a6
