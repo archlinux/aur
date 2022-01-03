@@ -3,7 +3,7 @@
 
 pkgname=freewb
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Jidian Wubi for Linux"
 arch=("x86_64")
 url="http://arm-ai.org/forum.php?mod=viewthread&tid=93"
