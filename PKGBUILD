@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.34.0
+pkgver=0.34.1
 pkgrel=1
 _wafver=2.0.20
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
@@ -28,7 +28,7 @@ conflicts=('mpv')
 options=('!emptydirs')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz"
         "https://waf.io/waf-${_wafver}")
-sha256sums=('f654fb6275e5178f57e055d20918d7d34e19949bc98ebbf4a7371902e88ce309'
+sha256sums=('32ded8c13b6398310fa27767378193dc1db6d78b006b70dbcbd3123a1445e746'
             'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f')
 
 prepare() {
