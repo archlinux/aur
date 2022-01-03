@@ -7,6 +7,7 @@ pkgbase = dis4irc
 	arch = any
 	license = MIT
 	depends = java-runtime>=8
+	noextract = Dis4IRC-1.4.2.jar
 	options = !strip
 	backup = etc/dis4irc/config.hocon
 	source = https://github.com/zachbr/Dis4IRC/releases/download/v1.4.2/Dis4IRC-1.4.2.jar
