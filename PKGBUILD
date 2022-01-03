@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-rocker
 epoch=
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=00
 pkgdesc='A tool to run docker containers with customized extras'
 arch=(any)
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/be/fb/1cf822517c117b067e627d10168f89b10316081c39bd15305d15cdede9ab/rocker-0.2.6-py3-none-any.whl)
-md5sums+=(816c35bbd222923c197379252e80f608)
-noextract+=(rocker-0.2.6-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/fe/9e/8ee072b29ca2ce517f195ba44ef077e046ec3ef86d517e0cc5eec0875d39/rocker-0.2.7-py3-none-any.whl)
+md5sums+=(f6622895fc940995a1c4826883964d15)
+noextract+=(rocker-0.2.7-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(3b83ef96387f14655fc854ddc3c6bd57)
 
