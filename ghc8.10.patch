@@ -1,0 +1,12 @@
+diff --git a/cabal.project b/cabal.project
+index 17a1aa6ad..26a139318 100644
+--- a/cabal.project
++++ b/cabal.project
+@@ -1,5 +1,7 @@
+ index-state: 2021-09-15T00:00:00Z
+ 
++with-compiler: ghc-8.10
++
+ packages:
+     cardano-api
+     cardano-cli

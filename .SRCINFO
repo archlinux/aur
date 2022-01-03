@@ -1,12 +1,12 @@
 pkgbase = cardano-node
 	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain.
-	pkgver = 1.30.1
-	pkgrel = 2
+	pkgver = 1.32.1
+	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-node
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = cabal-install-bin
+	makedepends = cabal-install
 	makedepends = ghc>=8.10.4
 	depends = libsodium
 	backup = etc/conf.d/cardano-node
@@ -14,7 +14,7 @@ pkgbase = cardano-node
 	backup = var/lib/cardano-node/config/mainnet-topology.json
 	backup = var/lib/cardano-node/config/testnet-config.json
 	backup = var/lib/cardano-node/config/testnet-topology.json
-	source = git+https://github.com/input-output-hk/cardano-node.git#tag=1.30.1
+	source = git+https://github.com/input-output-hk/cardano-node.git#tag=1.32.1
 	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-config.json
 	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-byron-genesis.json
 	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-shelley-genesis.json
@@ -31,6 +31,7 @@ pkgbase = cardano-node
 	source = cardano-node.confd
 	source = cardano-node-testnet.service
 	source = cardano-node-testnet.confd
+	source = ghc8.10.patch
 	sha256sums = SKIP
 	sha256sums = 1dc62fc62669e9c991d09e85c884f2aceaff486b6cb9037af8400a1bda950b68
 	sha256sums = 4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa
@@ -48,5 +49,6 @@ pkgbase = cardano-node
 	sha256sums = 7e2e7a8422b8da7b82919752ca96904e84d130425495e647d648793218644f38
 	sha256sums = ec16edc07aa35dccd5fb6894b964ab304cd7a8c1cc65eed22aa569e9105c7982
 	sha256sums = 07a3dde7fb51f3f84bb51e7c15993dfefa337571ed509cc3588e73c54f606282
+	sha256sums = 67e938f286c2f7e01dc2be7031dca37b42f9ee98dccd4ec440422ce5faba4b14
 
 pkgname = cardano-node

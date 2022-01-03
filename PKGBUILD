@@ -1,17 +1,17 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
-pkgver=1.30.1
-pkgrel=2
+pkgver=1.32.1
+pkgrel=1
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
 arch=('any')
 url='https://github.com/input-output-hk/cardano-node'
-_ghc_version="`ghc --numeric-version`"
+_ghc_version="`ghc-8.10 --numeric-version`"
 # NOTE: The build process includes resolution, download and compilation of required libraries.
 # However, if you have corresponding haskell-* packages present in the system, the build
 # will most likely fail trying to use the installed lib.
 # This is probably configurable but I'm not experienced in Haskell. Suggestions are welcome.
-makedepends=('git' 'cabal-install-bin' 'ghc>=8.10.4')
+makedepends=('git' 'cabal-install' 'ghc>=8.10.4')
 depends=('libsodium')
 #
 # The latest build is reachable via the following redirection link:
@@ -39,7 +39,8 @@ source=("git+https://github.com/input-output-hk/${pkgname}.git#tag=${pkgver}"
         "cardano-node.service"
         "cardano-node.confd"
         "cardano-node-testnet.service"
-        "cardano-node-testnet.confd")
+        "cardano-node-testnet.confd"
+        "ghc8.10.patch")
 sha256sums=('SKIP'
             '1dc62fc62669e9c991d09e85c884f2aceaff486b6cb9037af8400a1bda950b68'
             '4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa'
@@ -56,10 +57,12 @@ sha256sums=('SKIP'
             '6db0b3bb81063f410499a6688a1abbbc5d63af165310ef709924985e5c0d1c4d'
             '7e2e7a8422b8da7b82919752ca96904e84d130425495e647d648793218644f38'
             'ec16edc07aa35dccd5fb6894b964ab304cd7a8c1cc65eed22aa569e9105c7982'
-            '07a3dde7fb51f3f84bb51e7c15993dfefa337571ed509cc3588e73c54f606282')
+            '07a3dde7fb51f3f84bb51e7c15993dfefa337571ed509cc3588e73c54f606282'
+            '67e938f286c2f7e01dc2be7031dca37b42f9ee98dccd4ec440422ce5faba4b14')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  patch -p1 < ${srcdir}/ghc8.10.patch
   cabal configure
   echo "package cardano-crypto-praos" >> ${srcdir}/${pkgname}/cabal.project.local
   echo "  flags: -external-libsodium-vrf" >> ${srcdir}/${pkgname}/cabal.project.local
@@ -78,7 +81,7 @@ package() {
   install -D -m0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -D -m0644 "${srcdir}/${pkgname}.confd" "${pkgdir}/etc/conf.d/${pkgname}"
 
-  install -D -m0644 "mainnet-config.json" "${pkgdir}/var/lib/cardano-node/config/mainnet-config.json"
+  install -D -m0644 "mainnet-config.json" "${pkgdir}/var/lib/${pkgname}/config/mainnet-config.json"
   install -D -m0644 "mainnet-byron-genesis.json" "${pkgdir}/var/lib/${pkgname}/config/mainnet-byron-genesis.json"
   install -D -m0644 "mainnet-shelley-genesis.json" "${pkgdir}/var/lib/${pkgname}/config/mainnet-shelley-genesis.json"
   install -D -m0644 "mainnet-alonzo-genesis.json" "${pkgdir}/var/lib/${pkgname}/config/mainnet-alonzo-genesis.json"
