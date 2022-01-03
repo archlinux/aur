@@ -1,0 +1,17 @@
+pkgbase = otf-mplus-git
+	pkgdesc = A little nifty font family for everyday usage
+	pkgver = r235.a126863
+	pkgrel = 1
+	url = https://mplusfonts.github.io/
+	arch = any
+	license = OFL
+	makedepends = git
+	provides = otf-mplus
+	conflicts = otf-mplus
+	conflicts = ttf-mplus
+	conflicts = mplus-font
+	conflicts = ttf-mplus-git
+	source = otf-mplus::git+https://github.com/coz-m/MPLUS_FONTS.git#branch=master
+	sha256sums = SKIP
+
+pkgname = otf-mplus-git
