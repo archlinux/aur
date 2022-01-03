@@ -23,7 +23,6 @@ prepare() {
   # setuptools 58 removed support for 2to3
   sed -i "s/'use_2to3': True,//" setup.py
   sed -i 's/from setuptools.command.build_py import Mixin2to3/from distutils.util import Mixin2to3/' setup3lib.py
-  sed -i 's/except ImportError:/except IOError:/' setup.py
 }
 
 build() {
