@@ -1,0 +1,20 @@
+[Unit]
+Description="A modern Discord <-> IRC bridge"
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar "/usr/share/java/dis4irc/Dis4IRC.jar" --config "/etc/dis4irc/config.hocon"
+User=dis4irc
+WorkingDirectory=/var/lib/dis4irc
+# Give a little time to shutdown
+TimeoutStopSec=30s
+# NOTE: Dis4IRC handles SIGTERM correctly and cleanly exists (saving any data in the process)
+#
+# See here: https://github.com/zachbr/Dis4IRC/blob/v1.4.2/src/main/kotlin/io/zachbr/dis4irc/Dis4IRC.kt#L110-L117
+# 
+# As such, if it exits with a SIGTERM, then we consider it a success..
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

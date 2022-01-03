@@ -1,0 +1,10 @@
+post_install() {
+    # pacman does this automatically, but we need to do it first
+    #
+    # because otherwise chown will fail
+    systemd-sysusers dis4irc.conf
+    # NOTE: The home directory has to actually exist (sysusers doesn't do this)
+    mkdir -p /var/lib/dis4irc || exit 1
+    chown dis4irc -R /etc/dis4irc || exit 1
+    chown dis4irc -R /var/lib/dis4irc
+}

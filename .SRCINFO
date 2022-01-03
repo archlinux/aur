@@ -1,0 +1,21 @@
+pkgbase = dis4irc
+	pkgdesc = A modern Discord <-> IRC bridge
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/zachbr/Dis4IRC
+	install = dis4irc.install
+	arch = any
+	license = MIT
+	depends = java-runtime>=8
+	options = !strip
+	backup = etc/dis4irc/config.hocon
+	source = https://github.com/zachbr/Dis4IRC/releases/download/v1.4.2/Dis4IRC-1.4.2.jar
+	source = https://raw.githubusercontent.com/zachbr/Dis4IRC/master/LICENSE.md
+	source = dis4irc-sysusers.conf
+	source = dis4irc.service
+	sha256sums = 48edcc18204b4528f23c44cb5cd2008a0dce36103422b619a95492e1a11f7ee6
+	sha256sums = c32266a724ab7bf258627950a7f66563aebef1a0e1aa9ea9296b95cc900a823e
+	sha256sums = d8c07815db79c8e9e6d9dec5fe2bca2fe3d1ed11470f4eb232c0bce7c87e2a4d
+	sha256sums = 76d6b4d777da06de04b4cc82f5c2fba651d839e05fbdc68a9c75b4219c27d691
+
+pkgname = dis4irc

@@ -1,0 +1,10 @@
+# PKGBUILD
+pkg
+src
+# Finalized packages
+*.pkg.tar.zst
+
+
+# Downloded files
+*.jar
+LICENSE.md
