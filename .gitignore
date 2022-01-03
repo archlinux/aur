@@ -1,3 +1,4 @@
 fujprog-*
 src
 pkg
+*.log
