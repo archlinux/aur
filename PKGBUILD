@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=httpuv
 _cranver=1.6.4
@@ -9,7 +9,7 @@ pkgdesc="HTTP and WebSocket Server Library"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=('r>=2.15.1' 'r-rcpp>=1.0.7' r-r6 r-promises 'r-later>=0.8.0')
+depends=('r>=2.15.1' 'r-rcpp>=1.0.7' r-r6 r-promises 'r-later>=0.8.0' zlib)
 makedepends=(make)
 optdepends=(r-testthat r-callr r-curl r-websocket)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
