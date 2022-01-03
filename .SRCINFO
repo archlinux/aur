@@ -1,6 +1,6 @@
 pkgbase = dool-git
 	pkgdesc = A versatile resource statistics tool
-	pkgver = 0.7.4.562.6b89f2d
+	pkgver = 1.0.0.r1.g34a3244
 	pkgrel = 1
 	url = https://github.com/scottchiefbaker/dool
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = dool-git
 	sha512sums = SKIP
 
 pkgname = dool-git
-

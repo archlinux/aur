@@ -3,7 +3,7 @@
 
 pkgname=dool-git
 _pkgname=dool
-pkgver=0.7.4.562.6b89f2d
+pkgver=1.0.0.r1.g34a3244
 pkgrel=1
 pkgdesc="A versatile resource statistics tool"
 arch=('any')
@@ -19,7 +19,7 @@ sha512sums=(SKIP)
 
 pkgver() {
   cd "$_pkgname"
-  printf "0.7.4.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
