@@ -2,7 +2,7 @@
 
 pkgname=lifxlan-git
 _pkgname="lifxlan"
-pkgver=386.ba51118
+pkgver=411.0db5772
 pkgrel=1
 pkgdesc="Python library for accessing LIFX devices locally using the official LIFX LAN protocol"
 arch=(any)
