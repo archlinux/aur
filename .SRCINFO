@@ -1,6 +1,6 @@
 pkgbase = python-pyxelate
 	pkgdesc = A Python class that downsamples images into 8-bit pixel arts
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/sedthh/pyxelate
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-pyxelate
 	depends = python-numba
 	depends = python-scikit-image
 	depends = python-scikit-learn
-	source = git+https://github.com/sedthh/pyxelate#commit=75f88eb6c63d917766871e633c93a26ad1598e2f
+	source = git+https://github.com/sedthh/pyxelate#commit=a4ae371c86de8d9619d2360376cb9e63ec9a04be
 	sha256sums = SKIP
 
 pkgname = python-pyxelate
-

@@ -2,7 +2,7 @@
 
 _pkgname=pyxelate
 pkgname=python-$_pkgname
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A Python class that downsamples images into 8-bit pixel arts"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/sedthh/pyxelate"
 license=('MIT')
 depends=('python-numba' 'python-scikit-image' 'python-scikit-learn')
 makedepends=('git' 'python-setuptools')
-source=("git+$url#commit=75f88eb6c63d917766871e633c93a26ad1598e2f")
+source=("git+$url#commit=a4ae371c86de8d9619d2360376cb9e63ec9a04be")
 sha256sums=('SKIP')
 
 build() {
@@ -21,11 +21,5 @@ build() {
 package() {
     cd $_pkgname
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-    #mkdir -p "$pkgdir/usr/bin"
-    #ln -rs "$pkgdir/$(python -c "import site; print(site.getsitepackages()[0])")/pyx.py" \
-    #    "$pkgdir/usr/bin/pyx"
-    #chmod 755 "$pkgdir/usr/bin/pyx"
-
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
