@@ -1,6 +1,6 @@
 pkgbase = neovim-git-blame-git
-	pkgdesc = A git-blame plugin for Neovim
-	pkgver = r47.bba913f
+	pkgdesc = Git-blame plugin for Neovim
+	pkgver = r49.5bf6b1b
 	pkgrel = 1
 	url = https://github.com/f-person/git-blame.nvim
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = neovim-git-blame-git
 	sha256sums = SKIP
 
 pkgname = neovim-git-blame-git
-
