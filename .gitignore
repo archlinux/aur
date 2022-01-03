@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!wiki-loves-earth-wallpapers.xml
+
+!update.sh
