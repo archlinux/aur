@@ -8,6 +8,7 @@ pkgbase = coin-or-hsl
 	makedepends = gcc
 	makedepends = metis
 	makedepends = gcc-fortran
+	depends = openblas-lapack
 	optdepends = openmp
 	optdepends = coin-or-ipopt
 	source = ThirdParty-HSL::git+https://github.com/coin-or-tools/ThirdParty-HSL.git
@@ -16,4 +17,3 @@ pkgbase = coin-or-hsl
 	sha256sums = 95ce1160f0b013151a3e25d40337775c760a8f3a79d801a1d190598bf4e4c0c3
 
 pkgname = coin-or-hsl
-
