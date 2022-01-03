@@ -1,3 +1,5 @@
+// clinic bubbleprof -- node test_server.js
+
 const http = require('http')
 
 http.createServer(handler).listen(45678)
