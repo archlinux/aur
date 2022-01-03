@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=freshrss
-pkgver=1.18.1
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='A free, self-hostable aggregator…'
 arch=('any')
@@ -15,8 +15,8 @@ optdepends=('apache: Web server to run FreshRSS'
             'postgresql: Database server to run FreshRSS'
             'sqlite: Database server to run FreshRSS')
 install="$pkgname.install"
-source=("https://github.com/FreshRSS/FreshRSS/archive/$pkgver.tar.gz")
-sha256sums=('162b0be7bdc0e51022061c895b46e7a8f229588d530b196f06ddd8d9aaaf248a')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/FreshRSS/FreshRSS/archive/$pkgver.tar.gz")
+sha256sums=('32fd540e12380f755cf9e169f8bb405fcd1033b96e78460a29d00948e3a7029c')
 
 
 prepare(){
@@ -38,7 +38,7 @@ package() {
 
 
   #new location for datadir
-  install -dm 700 "$pkgdir/var/lib/webapps/freshrss"
+  install -dm 755 "$pkgdir/var/lib/webapps/freshrss"
   mv "$pkgdir/usr/share/webapps/freshrss/data" "$pkgdir/var/lib/webapps/freshrss/data"
 }
 
