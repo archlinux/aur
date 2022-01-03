@@ -2,7 +2,7 @@
 
 _gemname=rubocop-performance
 pkgname=ruby-${_gemname}
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="An extension of RuboCop focused on code performance checks"
 arch=(any)
@@ -13,7 +13,7 @@ url=https://docs.rubocop.org/rubocop-performance
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/${_gemname}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('8bb78cdee7c7a98ffb755e93bf5fd3a8900254352a7b08d0530cb1f77600f41b')
+sha256sums=('fd51b67a7f740c4c108417fe22e05a2ebae035a4cdd5ff3cf334adda14f28998')
 
 prepare() {
   cd $_gemname-$pkgver
