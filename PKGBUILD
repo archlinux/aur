@@ -2,25 +2,34 @@
 
 _gemname=regexp_property_values
 pkgname=ruby-${_gemname}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Inspect property values supported by Ruby's regex engine"
 arch=(x86_64)
 depends=(ruby)
-makedepends=(git rubygems ruby-rdoc)
+makedepends=(rubygems ruby-rdoc)
 url=https://github.com/jaynetics/regexp_property_values
 license=(MIT)
 options=(!emptydirs)
-source=(git+https://github.com/jaynetics/regexp_property_values.git?tag=v${pkgver})
-sha256sums=('SKIP')
+source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('4ce0ac93f73e78d5016e1401d7fa4b3e26f6fc4c83e4e6d463f3252cdf31ebcd')
+
+prepare() {
+  cd $_gemname-$pkgver
+
+  # we use an archive not a git checkout
+  sed -i 's|git ls-files -z|find -print0|' ${_gemname}.gemspec
+  sed -i 's/%r{^(test|spec|features)\/}/%r{^\\.\/(test|spec|features)\/}/' \
+    ${_gemname}.gemspec
+}
 
 build() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   gem build ${_gemname}.gemspec
 }
 
 package() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   local _gemdir="$(gem env gemdir)"
 
   gem install \
