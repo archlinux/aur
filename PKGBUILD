@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=llama-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Terminal file manager"
 arch=('x86_64' 'i686' 'arm')
@@ -15,9 +15,9 @@ source_x86_64=("llama-$pkgver-x86_64::$url/releases/download/v$pkgver/llama_linu
 source_i686=("llama-$pkgver-i686::$url/releases/download/v$pkgver/llama_linux_386")
 source_arm=("llama-$pkgver-arm::$url/releases/download/v$pkgver/llama_linux_arm")
 sha256sums=('d63a8c4f17dde022f8d1f96a4b2c744821f65bcae926b4de4ee77230a70cdee4')
-sha256sums_x86_64=('6ca0a14a026c08abeb30c354a64f6c108a45046ae2141f77ea3a80cce9e3bfb5')
-sha256sums_i686=('59bb8c9ffe01fc01d21eb4b6ad90a91f64ba6662a92b3abd30741af8a42aa325')
-sha256sums_arm=('b64ec5cb64e87e9a719e09159c5e7bb9f432e33778eca086c5e1875dffe55764')
+sha256sums_x86_64=('e4939e659bb18d4b17f209164dde1cf5fe9d9919e83d9441d8abcb6912a6be2e')
+sha256sums_i686=('b92a52fc9f36e4c64c09842a773a9cb9c8d79b5c791c18933884c7863b449070')
+sha256sums_arm=('5e1781c3bd040811f2c489cee91d878780a032b8dcd03f904ae36805dfc4fcf7')
 
 package() {
    install -D "llama-$pkgver-$CARCH" "$pkgdir/usr/bin/llama"
