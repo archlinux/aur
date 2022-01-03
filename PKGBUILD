@@ -2,16 +2,16 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r736.gba1932b0
+pkgver=0.3.7.r746.g61f9ed04
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
-             'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gtest'
-             'java-environment' 'python' 'asciidoc' 'doxygen' 'graphviz'
-             'xdg-utils' 'highway-git')
+             'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gflags'
+             'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
+             'graphviz' 'xdg-utils' 'highway-git')
 options=('!lto')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
@@ -21,8 +21,10 @@ source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://skia.googlesource.com/skcms.git'
         'git+https://github.com/google/highway.git'
         'git+https://github.com/glennrp/libpng.git'
-        'git+https://github.com/madler/zlib.git')
+        'git+https://github.com/madler/zlib.git'
+        'git+https://github.com/gflags/gflags.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -42,6 +44,7 @@ prepare() {
     git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
     git -C libjxl config --local submodule.third_party/libpng.url "${srcdir}/libpng"
     git -C libjxl config --local submodule.third_party/zlib.url "${srcdir}/zlib"
+    git -C libjxl config --local submodule.third_party/gflags.url "${srcdir}/gflags"
     git -C libjxl submodule update
 }
 
@@ -66,6 +69,7 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
+        -DJPEGXL_BUNDLE_GFLAGS='NO' \
         -Wno-dev
     make -C build all doc
 }
