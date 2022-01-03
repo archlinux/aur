@@ -1,0 +1,14 @@
+pkgbase = pop-metacity-theme
+	pkgdesc = System76 Pop Metacity Theme
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://github.com/FreaxMATE/pop-metacity-theme
+	arch = any
+	license = GPL3
+	makedepends = meson
+	optdepends = pop-gtk-theme: for Pop GTK Theme
+	optdepends = pop-icon-theme: for Pop Icon Theme
+	source = pop-metacity-theme-5.3.1.tar.gz::https://github.com/FreaxMATE/pop-metacity-theme/archive/v5.3.1.tar.gz
+	sha512sums = a9026aa0811697e33c235ba48341f62734d730f4f705c8ed866449bf689774f37c84d3596aed5a81691fec4165397caa46171cebdd69b54c4faf9549c19fac75
+
+pkgname = pop-metacity-theme
