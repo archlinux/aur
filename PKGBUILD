@@ -2,7 +2,7 @@
 # Contributor: Nicolas Pouillard http://nicolaspouillard.fr
 
 pkgname=spiped
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Secure pipe daemon"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ source=(http://www.tarsnap.com/$pkgname/$pkgname-$pkgver.tgz)
 url="http://www.tarsnap.com/spiped.html"
 license=('BSD')
 depends=('openssl')
-sha256sums=('8d7089979db79a531a0ecc507b113ac6f2cf5f19305571eff1d3413e0ab33713')
+sha256sums=('05d4687d12d11d7f9888d43f3d80c541b7721c987038d085f71c91bb06204567')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
