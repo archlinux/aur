@@ -5,7 +5,7 @@
 pkgname=emercoin-git
 _pkgname=emercoin
 pkgver=0.7.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -15,12 +15,12 @@ makedepends=('boost' 'qt5-tools')
 provides=('emercoin')
 conflicts=('emercoin')
 source=("git+${url}.git" #branch=${BRANCH:-0.7.11}"
-        "Fix-missing-include.patch"
+#        "Fix-missing-include.patch"
 #        "Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch"
         "emercoin-qt.desktop"
 )
 sha256sums=('SKIP'
-            '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87'
+#            '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87'
 #            '1b339af10cbd8e003ce7c44f28b9d2eaf23e01d094078f96f21fa45d1679edef'
             '06645c91c499215866a506e409a8f4a80d77dbb85fdfc0bd9d1db75e2687a508')
 prepare() {
