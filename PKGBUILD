@@ -4,7 +4,7 @@ _pyname=zstd
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
 pkgver=1.5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ZSTD Bindings for Python"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/sergey-dryabzhinsky/python-zstd"
@@ -15,6 +15,9 @@ makedepends=(
 	python-setuptools
 	python2
 	python2-setuptools
+)
+checkdepends=(
+	python-pytest
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
 md5sums=('fe5e894d6925ee1ff13b824eababf13b')
@@ -39,9 +42,9 @@ check(){
 	pushd $_pyname-$pkgver
 	PYTHONPATH="$(realpath build/lib.linux-*)" python -m pytest
 	popd
-	pushd $_pyname-$pkgver-py2
-	PYTHONPATH="$(realpath build/lib.linux-*)" python2 -m pytest
-	popd
+	#pushd $_pyname-$pkgver-py2
+	#PYTHONPATH="$(realpath build/lib.linux-*)" python2 -m pytest
+	#popd
 }
 
 _package_python(){

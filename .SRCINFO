@@ -1,7 +1,7 @@
 pkgbase = python-zstd
 	pkgdesc = ZSTD Bindings for Python
 	pkgver = 1.5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sergey-dryabzhinsky/python-zstd
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = python-zstd
 	arch = armv7h
 	arch = aarch64
 	license = BSD
+	checkdepends = python-pytest
 	makedepends = zstd
 	makedepends = python
 	makedepends = python-setuptools
