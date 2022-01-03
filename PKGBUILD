@@ -1,6 +1,6 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 pkgname=lapce
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Lightning-fast and Powerful Code Editor"
 arch=('x86_64')
@@ -8,17 +8,18 @@ url="https://github.com/lapce/lapce"
 license=('Apache')
 depends=('gcc-libs' 'libxcb' 'expat' 'freetype2' 'libxkbcommon')
 makedepends=('rust' 'python' 'cmake')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" 'Cargo.lock')
-sha512sums=('844fc8f8405b63b2b7de3480892e462ce9e8dc6f3a83523b3d893353cde68e45c4ce03198448b7a40c5b5286c45c8b2d427e8810f59d84e3165e1d6b79d04561'
+sha512sums=('9c794aa5034a4790fc6391f0a07540666c139d79d8739445825391d3c91645706a8bf0b92062b8c553741597ba3aafeb9e0b4e88c51af3eee3508d3e2199ee0b'
             'cd32fca8d46bfe47c7352b10dd58c3007110704b083ea21544b5bd93a56678fbf1b362d614e7da357303bf9034daf6a4fbee3cf8181ff22751eb222072163bc6')
-b2sums=('a2838a3e00f0daea61e2239adda92952d306bf8e3aab79a37f59492d77366ee840dd7f305062314dbc5969951436571a4a805c6e5f04df0b5be0ef511b84eba3'
+b2sums=('43d20d57074608b50869f22ba9a4c1e118ef68fec0d3815c85f3e99116a7bbd8768d88283123dcb11bffd5767c2a3a2e295df3e85f7da316cf96573fea0255f2'
         'ef2927f07edb0dea4b476941be329c567e072b3fc8e0e731cab14c9120cb4ae42d3f03b2be8c922f4c440bbcec89f751165ac8117235ef8309a6cab975c82d26')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   # upstream's Cargo.lock is out of sync, use pre-generated one
-  cp -vf ../Cargo.lock .
+  #cp -vf ../Cargo.lock .
 
   # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
