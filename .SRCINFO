@@ -1,6 +1,6 @@
 pkgbase = go-chromecast-git
 	pkgdesc = Implements a basic number of the google chromecast commands.
-	pkgver = 20210502
+	pkgver = 20211230
 	pkgrel = 1
 	url = https://github.com/vishen/go-chromecast
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = go-chromecast-git
 	sha256sums = SKIP
 
 pkgname = go-chromecast-git
-
