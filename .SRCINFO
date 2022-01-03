@@ -1,6 +1,6 @@
 pkgbase = lifxlan-git
 	pkgdesc = Python library for accessing LIFX devices locally using the official LIFX LAN protocol
-	pkgver = 386.ba51118
+	pkgver = 411.0db5772
 	pkgrel = 1
 	url = https://github.com/mclarkk/lifxlan
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = lifxlan-git
 	depends = python-setuptools
 	depends = python-bitstring
 	depends = python-netifaces
+	depends = python-ifaddr
 	provides = lifxlan
 	source = lifxlan::git+https://github.com/mclarkk/lifxlan.git
 	md5sums = SKIP
 
 pkgname = lifxlan-git
-
