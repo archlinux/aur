@@ -8,8 +8,8 @@ pkgbase = emacs-screencast-mode-git
 	makedepends = git
 	depends = emacs
 	depends = recordmydesktop
+	depends = wmctrl
 	source = git+https://github.com/esbena/screencast-mode
 	md5sums = SKIP
 
 pkgname = emacs-screencast-mode-git
-

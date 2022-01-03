@@ -1,4 +1,4 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-screencast-mode-git
 pkgver=7.9f342c9
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="screencasting from within emacs"
 arch=('any')
 url="https://github.com/esbena/screencast-mode"
 license=('GPL')
-depends=('emacs' 'recordmydesktop')
+depends=('emacs' 'recordmydesktop' 'wmctrl')
 makedepends=('git')
 source=("git+https://github.com/esbena/screencast-mode")
 md5sums=('SKIP')
