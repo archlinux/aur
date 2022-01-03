@@ -5,9 +5,9 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-pipewire
-_tag='v0.34.0' # git rev-parse v${pkgver}
-pkgver=0.34.0
-pkgrel=3
+_tag='v0.34.1' # git rev-parse v${pkgver}
+pkgver=0.34.1
+pkgrel=1
 pkgdesc='a free, open source, and cross-platform media player including an experimental PipeWire audio backend'
 arch=('x86_64')
 # We link against libraries that are licensed GPLv3 explicitly, so our
@@ -22,7 +22,7 @@ depends=('alsa-lib' 'libasound.so' 'desktop-file-utils' 'ffmpeg' 'libavcodec.so'
          'libjpeg' 'libjpeg.so' 'libplacebo' 'libplacebo.so>=120-64' 'libpulse' 'libpulse.so'
          'libva' 'libva.so' 'libva-drm.so' 'libva-wayland.so' 'libva-x11.so' 'libvdpau' 'libx11'
          'libxext' 'libxinerama' 'libxkbcommon' 'libxkbcommon.so' 'libxrandr' 'libxss'
-         'libxv' 'lua52' 'mesa' 'mujs' 'pipewire' 'rubberband' 'librubberband.so' 'shaderc'
+         'libxv' 'luajit' 'mesa' 'mujs' 'pipewire' 'rubberband' 'librubberband.so' 'shaderc'
          'libshaderc_shared.so' 'uchardet' 'vulkan-icd-loader' 'wayland' 'xdg-utils'
          'zlib')
 makedepends=('git' 'python-docutils' 'ladspa' 'wayland-protocols'
