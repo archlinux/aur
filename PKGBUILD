@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=gasmeter
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Analog gasmeter readout with an IR dongle"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,9 +9,9 @@ url="https://github.com/ahpohl/gasmeter"
 license=('MIT')
 groups=()
 depends=('mosquitto')
-makedepends=()
+makedepends=('avr-gcc' 'avr-libc')
 checkdepends=()
-optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin')
+optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin' 'avrdude')
 provides=()
 conflicts=()
 replaces=()
@@ -24,12 +24,14 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/gasmeter.git#tag=v${pkg
         "gasmeter.service")
 noextract=()
 sha256sums=('SKIP'
-            '8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b'
-            '2135d760f07b40935a77b010446209cffc14cf3883f292cbed1e98c0094c1bbb')
+            '48f1ce02fdc6b8aa46ac4bcd3d782642e69f0b717a0b8121748329ae02ff831e'
+            '44f540463b14715c23db71186c3686e9354403406a14bf3ac6d923daafd2a14d')
 validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
+  make
+  cd resources/firmware
   make
 }
 
@@ -43,8 +45,12 @@ package() {
   install -Dm644 "$srcdir"/gasmeter.service "$pkgdir"/usr/lib/systemd/system/gasmeter.service
   install -Dm644 resources/config/gasmeter_example.conf "$pkgdir"/etc/gasmeter.conf
   install -Dm644 resources/config/gasmeter_example.conf "$pkgdir"/usr/share/gasmeter/config/gasmeter_example.conf
+  
   install -d "$pkgdir"/usr/share/gasmeter/postgres
   install -Dm644 resources/postgres/*.sql "$pkgdir"/usr/share/gasmeter/postgres
   install -Dm644 resources/nodejs/node-red-flow.json "$pkgdir"/usr/share/gasmeter/nodejs/node-red-flow.json
   install -Dm644 resources/grafana/grafana-dashboard.json "$pkgdir"/usr/share/gasmeter/grafana/grafana-dashboard.json
+  install -d "$pkgdir"/usr/share/gasmeter/firmware
+  install -Dm644 resources/firmware/bootloader/optiboot_atmega328.hex "$pkgdir"/usr/share/gasmeter/firmware/optiboot_atmega328.hex
+  install -Dm644 resources/firmware/build/gasmeter.hex "$pkgdir"/usr/share/gasmeter/firmware/gasmeter.hex
 }

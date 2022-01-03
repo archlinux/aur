@@ -1,25 +1,28 @@
 pkgbase = gasmeter
 	pkgdesc = Analog gasmeter readout with an IR dongle
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahpohl/gasmeter
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = avr-gcc
+	makedepends = avr-libc
 	depends = mosquitto
 	optdepends = nodejs-node-red
 	optdepends = postgresql
 	optdepends = timescaledb
 	optdepends = pg_cron
 	optdepends = grafana-bin
+	optdepends = avrdude
 	backup = etc/gasmeter.conf
 	source = gasmeter-0.4.3::git+https://github.com/ahpohl/gasmeter.git#tag=v0.4.3
 	source = sysusers_gasmeter.conf
 	source = gasmeter.service
 	sha256sums = SKIP
-	sha256sums = 8c96a8c940a94b8b86312873ad93a2f2a01a2e1e9dbc52b074b04375189dc26b
-	sha256sums = 2135d760f07b40935a77b010446209cffc14cf3883f292cbed1e98c0094c1bbb
+	sha256sums = 48f1ce02fdc6b8aa46ac4bcd3d782642e69f0b717a0b8121748329ae02ff831e
+	sha256sums = 44f540463b14715c23db71186c3686e9354403406a14bf3ac6d923daafd2a14d
 
 pkgname = gasmeter
