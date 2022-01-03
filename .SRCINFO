@@ -1,0 +1,15 @@
+pkgbase = nazuna
+	pkgdesc = Download Twitter videos using your terminal!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Sazzo/nazuna
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	source = nazuna-1.0.0.tar.gz::https://github.com/Sazzo/nazuna/archive/1.0.0.tar.gz
+	sha256sums = 39b1ad785b01661ac3cd9b6269d860c9198cf6915d034ba2b43506e48a6a3b49
+
+pkgname = nazuna
