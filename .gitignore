@@ -1,0 +1,6 @@
+pkg/
+src/
+*.tar*
+LICENSE
+# tree binary executable
+tree
