@@ -1,27 +1,21 @@
 # Maintainer : Ng Oon-Ee <ngoonee.talk@gmail.com>
 
 pkgname=opensong
-pkgver=2.1.2
+pkgver=3.4.8
 pkgrel=1
 pkgdesc="Free software application for managing chords/lyrics and presenting lyrics. Great for worship leaders and musicians." 
 arch=('i686' 'x86_64') 
 url="http://www.opensong.org/" 
 license=('custom')
-depends=()
-source=("http://downloads.sourceforge.net/project/opensong/OpenSong/V${pkgver}/${pkgname}_${pkgver}-1_i386.deb") 
-md5sums=('8928ee4656903bc38ee9cae6d0677fa1')
-
-if [[ $CARCH == i686 ]]; then
-  depends+=(gtk2)
-else
-  depends+=(lib32-gtk2)
-fi
+depends=(gtk2)
+source=("https://jaist.dl.sourceforge.net/project/opensong/OpenSong/V${pkgver}%20Beta/${pkgname}_${pkgver}-1_amd64.deb") 
+md5sums=('3d3542362ea79c863389b8e1cc567950')
 
 package()
 {
   cd ${srcdir}
-  ar x ${pkgname}_${pkgver}-1_i386.deb
-  tar -xf data.tar.gz
+  ar x ${pkgname}_${pkgver}-1_amd64.deb
+  tar -xf data.tar.xz
  
   install -dv -m755 ${pkgdir}/opt
   cp -a ${srcdir}/opt/OpenSong ${pkgdir}/opt/
