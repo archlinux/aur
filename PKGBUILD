@@ -2,8 +2,8 @@
 pkgname=v2ray-rules-dat-autoupdate
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
-pkgver=1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 tag=$(git ls-remote --tags --refs --sort="version:refname" "$url".git | awk -F/ 'END{print$NF}')
