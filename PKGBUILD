@@ -2,7 +2,7 @@
 pkgname=libredwg-git
 _pkgname=libredwg
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A free C library to handle DWG files"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/libredwg/"

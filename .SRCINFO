@@ -1,7 +1,7 @@
 pkgbase = libredwg-git
 	pkgdesc = A free C library to handle DWG files
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libredwg/
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = libredwg-git
 	md5sums = SKIP
 
 pkgname = libredwg-git
-
