@@ -9,7 +9,7 @@ pkgdesc="Vendor and game agnostic latency reduction middleware"
 arch=('x86_64')
 url="https://github.com/ishitatsuyuki/LatencyFleX"
 license=('Apache')
-makedepends=('cmake' 'meson' 'vulkan-headers' 'vulkan-validation-layers' 'wine')
+makedepends=('git' 'cmake' 'meson' 'vulkan-headers' 'vulkan-validation-layers' 'wine')
 source=("git+https://github.com/ishitatsuyuki/LatencyFleX.git"
         "git+https://github.com/kubo/funchook.git"
         "git+https://github.com/gdabah/distorm.git"
