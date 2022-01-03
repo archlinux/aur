@@ -1,14 +1,14 @@
 pkgbase = kubeswitch-bin
 	pkgdesc = The kubectx for operators.
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/danielfoehrKn/kubeswitch
 	arch = x86_64
 	license = Apache
 	options = !strip
-	source = https://github.com/danielfoehrKn/kubeswitch/releases/download/0.5.0/switcher_linux_amd64
-	source = https://github.com/danielfoehrKn/kubeswitch/releases/download/0.5.0/switch.sh
-	sha256sums = dc0c487b270755dc7fddf1b2dcceb54642067da42f4b0f25022d3ce1318b26b8
-	sha256sums = 3a629c2d1065adccbf636eb1c9f86884bad336d4d7ad06424801f461c16c6c4e
+	source = https://github.com/danielfoehrKn/kubeswitch/releases/download/0.6.1/switcher_linux_amd64
+	source = https://github.com/danielfoehrKn/kubeswitch/releases/download/0.6.1/switch.sh
+	sha256sums = 17759a0e43d342716567f6ca602f3168efc8d1d036dbab79dfba2054d14b318c
+	sha256sums = 93c131f9b8103604bd840d62cd2c5086be63da5454e73789e49bddf9f238088f
 
 pkgname = kubeswitch-bin
