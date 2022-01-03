@@ -1,6 +1,6 @@
 pkgbase = uxplay
 	pkgdesc = AirPlay Unix mirroring server
-	pkgver = 1.43
+	pkgver = 1.44f
 	pkgrel = 1
 	url = https://github.com/FDH2/UxPlay
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = uxplay
 	depends = libplist
 	provides = uxplay
 	conflicts = uxplay
-	source = UxPlay-1.43.tar.gz::https://github.com/FDH2/UxPlay/archive/refs/tags/v1.43.tar.gz
+	source = UxPlay-1.44f.tar.gz::https://github.com/FDH2/UxPlay/archive/refs/tags/v1.44f.tar.gz
 	source = uxplay.desktop
-	sha256sums = fcd1a51b58ff70e8b250d03bba7f2e1401f12d3f5fcf8ccc31e74d54f7287b82
+	sha256sums = bcd5181b44ed2f4cbfe8cde83b5a9ae2278ddc43824541a5d4baf7ff786fcc46
 	sha256sums = 6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3
 
 pkgname = uxplay
