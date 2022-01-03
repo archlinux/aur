@@ -39,12 +39,12 @@ prepare() {
 
 build() {
     cd "$srcdir/$_vcsname/layer"
-	arch-meson build
-	meson compile -C build
-	cd "$srcdir/$_vcsname/layer/wine"
-	export LIBRARY_PATH="$PWD/../build/"
-	arch-meson build -D b_lto=false --cross cross-wine64.txt
-	meson compile -C build
+    arch-meson build
+    meson compile -C build
+    cd "$srcdir/$_vcsname/layer/wine"
+    export LIBRARY_PATH="$PWD/../build/"
+    arch-meson build -D b_lto=false --cross cross-wine64.txt
+    meson compile -C build
 }
 
 package_latencyflex-git() {
@@ -52,7 +52,7 @@ package_latencyflex-git() {
     provides=('latencyflex')
     conflicts=('latencyflex')
     cd "$srcdir/$_vcsname/layer"
-	DESTDIR="$pkgdir" meson install -C build --skip-subprojects
+    DESTDIR="$pkgdir" meson install -C build --skip-subprojects
 }
 
 package_latencyflex-wine-git() {
@@ -61,5 +61,5 @@ package_latencyflex-wine-git() {
     conflicts=('latencyflex-wine')
     install='latencyflex-wine.install'
     cd "$srcdir/$_vcsname/layer/wine"
-	DESTDIR="$pkgdir" meson install -C build --skip-subprojects
+    DESTDIR="$pkgdir" meson install -C build --skip-subprojects
 }
