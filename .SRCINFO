@@ -1,0 +1,12 @@
+pkgbase = gobbl
+	pkgdesc = A simple Go utility to get and display connected bluetooth device battery levels via the Bluez D-Bus interface
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/seabassapologist/gobbl
+	arch = x86_64
+	license = BSD
+	makedepends = go>=1.17
+	source = gobbl-0.2.0.tar.gz::https://github.com/seabassapologist/gobbl/archive/v0.2.0.tar.gz
+	sha256sums = 296baab44b11647200c9245520970c0bbe685d4d38da683e7adaa71fc6111c71
+
+pkgname = gobbl
