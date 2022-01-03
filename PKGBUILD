@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 
 pkgname=yesplaymusic
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A third party music application for Netease Music"
 arch=("x86_64")
@@ -28,7 +28,7 @@ optdepends=(
 source=(
     "YesPlayMusic-${pkgver}.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.pacman"
 )
-sha256sums=('66eadbfd9427efc6e017773e1b8a85d82f9e847309af353e21045d5960703c89')
+sha256sums=('e844a02582925771201556e04622b941c8f4cf1c402794ecc8657500f1f8e014')
 
 package() {
     cd ${srcdir}
