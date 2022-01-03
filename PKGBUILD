@@ -2,8 +2,8 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-server
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
@@ -22,26 +22,27 @@ optdepends=('libssh: for ssh protocol support'
 install=$pkgname.install
 
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
-        "https://github.com/apache/guacamole-server/commit/b2ae2fdf003a6854ac42877ce0fce8e88ceb038a.patch")
- 
-md5sums=('5203866c9de4e8c064b19a56a95599c6'
-         '166e637d961e691f29b298c211ee2fd5')
+        "guacd.conf")
 
-prepare() {
-    cd "$srcdir"/$pkgname-$pkgver
-    patch -Np1 -i ../b2ae2fdf003a6854ac42877ce0fce8e88ceb038a.patch
-}
+backup=('etc/guacamole/guacd.conf')
+
+md5sums=('b17c6152e96af0488ca4c0608e5ec3ae'
+         'ab0ac97ad76d16be73768f89abb6ee7e')
+
+#prepare() {
+#}
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
-
     # guacenc doesn't work since ffmpeg 4.4 (av_init_packet() is deprecated) that's why we have to build it with --disable-guacenc
     # Reference: https://issues.apache.org/jira/browse/GUACAMOLE-1330
-	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system --disable-guacenc CPPFLAGS="-Wno-error=pedantic"
+	./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system --disable-guacenc CPPFLAGS="-Wno-error=pedantic"
 	make
 }
  
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
 	make DESTDIR="$pkgdir" install
+	mkdir -p "$pkgdir"/etc/guacamole
+	cp -f ../guacd.conf "$pkgdir"/etc/guacamole/
 }
