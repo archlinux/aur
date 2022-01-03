@@ -29,6 +29,8 @@ pkgver() {
 }
 
 prepare() {
+    mkdir -p build
+
     cd "$_gitname"
 
     git submodule init
@@ -41,8 +43,6 @@ prepare() {
     sed -i 's/find_package(Threads REQUIRED)/\0\nfind_package(GSL REQUIRED)/' ./CMakeLists.txt
     sed -i 's/find_package(LATEX)//' ./CMakeLists.txt
     sed -i 's/#include <array>/\0\n#include <stdexcept>\n#include <limits>/' ./third-party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
-
-    mkdir -p build
 }
 
 build() {
