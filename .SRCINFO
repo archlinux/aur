@@ -1,0 +1,23 @@
+pkgbase = antpatt
+	pkgdesc = Antenna pattern plotting and analysis software.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kkonradpl/xdr-gtk
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gtk2
+	makedepends = json-c
+	makedepends = zlib
+	makedepends = gsl
+	depends = gtk2
+	provides = antpatt
+	conflicts = antpatt
+	source = https://github.com/kkonradpl/antpatt/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 8743c496bf3d97f78bbdc31048bbf657113ba25c46c25cbdebf9acc0958348eb
+
+pkgname = antpatt
