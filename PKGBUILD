@@ -2,14 +2,19 @@
 
 pkgname=system-config-users
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical interface for administering users and groups'
 arch=('any')
 url='https://than.fedorapeople.org/system-config-users'
 license=('GPL')
-depends=('libselinux-python2' 'libuser' 'python2' 'python2-rpm' 'selinux-python2'
-         'rpm-tools' 'xdg-utils')
-makedepends=()
+depends=('libselinux-python2'
+         'libuser'
+         'python2'
+         'python2-rpm'
+         'rpm-tools'
+         'selinux-python2'
+         'xdg-utils')
+makedepends=('intltool')
 source=('system-config-users::git+https://gitlab.com/tallero/system-config-users.git#commit=dabb1f8b')
 sha256sums=('SKIP')
 

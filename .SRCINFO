@@ -1,19 +1,19 @@
 pkgbase = system-config-users
 	pkgdesc = A graphical interface for administering users and groups
 	pkgver = 1.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://than.fedorapeople.org/system-config-users
 	arch = any
 	license = GPL
+	makedepends = intltool
 	depends = libselinux-python2
 	depends = libuser
 	depends = python2
 	depends = python2-rpm
-	depends = selinux-python2
 	depends = rpm-tools
+	depends = selinux-python2
 	depends = xdg-utils
 	source = system-config-users::git+https://gitlab.com/tallero/system-config-users.git#commit=dabb1f8b
 	sha256sums = SKIP
 
 pkgname = system-config-users
-
