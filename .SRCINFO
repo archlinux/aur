@@ -1,14 +1,21 @@
 pkgbase = dry-bin
-	pkgdesc = dry is a terminal application to manage Docker containers and images
-	pkgver = 0.10
+	pkgdesc = dry: a terminal application to manage Docker containers and images
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = http://moncho.github.io/dry/
 	arch = x86_64
 	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	depends = docker
-	source = dry_v0.10-beta.1::https://github.com/moncho/dry/releases/download/v0.10-beta.1/dry-linux-amd64
-	sha256sums = e2865e54d5ff825b2a2b5f52b8271d86fd51eff868dd8a7cf3a7b81fa854a660
+	source_x86_64 = dry_0.11.1-x86_64::https://github.com/moncho/dry/releases/download/v0.11.1/dry-linux-amd64
+	sha256sums_x86_64 = 91c1a91a031fec9fdc223a75321ef3b085904ee47d0523406d0c76596376f82a
+	source_i686 = dry_0.11.1-i686::https://github.com/moncho/dry/releases/download/v0.11.1/dry-linux-386
+	sha256sums_i686 = 9a25401a1d73be0483236301cad0dfa976c1b248fabbe0762637011d314acf39
+	source_armv7h = dry_0.11.1-armv7h::https://github.com/moncho/dry/releases/download/v0.11.1/dry-linux-arm
+	sha256sums_armv7h = 31bc97d3ffc123ed4369a62ad58cf59ad9fed9e0968f90b4b4f28cbb63821cdc
+	source_aarch64 = dry_0.11.1-aarch64::https://github.com/moncho/dry/releases/download/v0.11.1/dry-linux-arm64
+	sha256sums_aarch64 = 7a08ea3fc03871d09e5b6c9c216ff25279c65f55af22915dc81ab6387893618f
 
 pkgname = dry-bin
-
