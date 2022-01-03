@@ -1,0 +1,14 @@
+pkgbase = log4jscanner
+	pkgdesc = log4j vulnerability filesystem scanner for analyzing JAR files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/google/log4jscanner
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = log4jscanner-0.1.0.tar.gz::https://github.com/google/log4jscanner/archive/v0.1.0.tar.gz
+	sha256sums = d85250a191347e31d0ad19750b5cfac47e70be88e061db1aaa7d5a6b297de5ec
+
+pkgname = log4jscanner
