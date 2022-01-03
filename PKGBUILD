@@ -1,7 +1,7 @@
-# Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
+# Contributor: Steven Honeyman <stevenhoneyman at gmail com>
  
 pkgname=obkey-git
-pkgver=1.0.11.gf599e29
+pkgver=1.0.47.gcf99076
 pkgrel=1
 pkgdesc="Openbox Key Editor - converted to PyGObject."
 arch=('i686' 'x86_64' 'armv7h')
