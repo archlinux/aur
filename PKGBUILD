@@ -3,7 +3,7 @@
 _gitname=ton
 pkgname=ton-git
 pkgver=r205.9875f02
-pkgrel=1
+pkgrel=2
 pkgdesc='The next gen network to unite all blockchains and the existing Internet'
 arch=('any')
 url='https://github.com/newton-blockchain/ton'
