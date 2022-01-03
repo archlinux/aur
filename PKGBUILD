@@ -31,6 +31,10 @@ source=(
     # I wrote my own systemd file (kind of overkill huh)
     "dis4irc.service"
 )
+noextract=(
+    # Jar is just a zip file, and we do *NOT* want it extracted
+    "Dis4IRC-${pkgver}.jar"
+)
 sha256sums=('48edcc18204b4528f23c44cb5cd2008a0dce36103422b619a95492e1a11f7ee6'
             'c32266a724ab7bf258627950a7f66563aebef1a0e1aa9ea9296b95cc900a823e'
             'd8c07815db79c8e9e6d9dec5fe2bca2fe3d1ed11470f4eb232c0bce7c87e2a4d'
