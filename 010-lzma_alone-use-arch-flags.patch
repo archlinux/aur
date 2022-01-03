@@ -1,24 +1,38 @@
-diff -Naurp a/CPP/7zip/Bundles/LzmaCon/makefile.gcc b/CPP/7zip/Bundles/LzmaCon/makefile.gcc
---- a/CPP/7zip/Bundles/LzmaCon/makefile.gcc	2015-11-14 10:44:09.000000000 +0000
-+++ b/CPP/7zip/Bundles/LzmaCon/makefile.gcc	2019-03-05 12:59:28.084067241 +0000
-@@ -10,9 +10,9 @@ endif
- ifdef IS_MINGW
+--- a/CPP/7zip/7zip_gcc.mak
++++ b/CPP/7zip/7zip_gcc.mak
+@@ -18,7 +18,7 @@ PROGPATH_STATIC = $(O)/$(PROG)s
  
- RM = del
--CFLAGS = -c
-+CFLAGS += $(CPPFLAGS) -c
- LIB2 = -loleaut32 -luuid
--LDFLAGS = -s
-+LDFLAGS += -s
  
- FILE_IO =FileIO
- FILE_IO_2 =Windows/$(FILE_IO)
-@@ -24,7 +24,7 @@ MT_FILES = \
+ ifneq ($(CC), xlc)
+-CFLAGS_WARN_WALL = -Wall -Werror -Wextra
++CFLAGS_WARN_WALL = -Wall -Wextra
+ endif
+ 
+ # for object file
+@@ -77,7 +77,7 @@ endif
+ 
  else
  
- RM = rm -f
--CFLAGS = -c -D_7ZIP_ST
-+CFLAGS += $(CPPFLAGS) -c -D_7ZIP_ST
+-LDFLAGS = $(LDFLAGS_STATIC)
++LDFLAGS += $(LDFLAGS_STATIC)
+ # -s is not required for clang, do we need it for GGC ???
+ # -s
  
- FILE_IO =C_FileIO
- FILE_IO_2 =Common/$(FILE_IO)
+@@ -126,7 +126,7 @@ endif
+ 
+ 
+ 
+-CFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(CC_SHARED) -o $@
++CFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(CC_SHARED) -o $@
+ 
+ 
+ ifdef IS_MINGW
+@@ -154,7 +154,7 @@ CXX_WARN_FLAGS =
+ #-Wno-invalid-offsetof
+ #-Wno-reorder
+ 
+-CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(CXXFLAGS_EXTRA) $(CC_SHARED) -o $@ $(CXX_WARN_FLAGS)
++CXXFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(CXXFLAGS_EXTRA) $(CC_SHARED) -o $@ $(CXX_WARN_FLAGS)
+ 
+ STATIC_TARGET=
+ ifdef COMPL_STATIC

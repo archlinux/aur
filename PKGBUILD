@@ -1,27 +1,24 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lzma_alone
-pkgver=19.00
-pkgrel=2
+pkgver=21.07
+pkgrel=1
 pkgdesc='An algorithm used to perform lossless data compression'
 arch=('x86_64')
 url='https://www.7-zip.org/sdk.html'
 license=('custom')
 depends=('gcc-libs')
 source=("https://www.7-zip.org/a/lzma${pkgver/./}.7z"
-        '010-lzma_alone-use-arch-flags.patch'
-        '020-lzma_alone-remove-werror.patch')
+        '010-lzma_alone-use-arch-flags.patch')
 noextract=("lzma${pkgver/./}.7z")
-sha256sums=('00f569e624b3d9ed89cf8d40136662c4c5207eaceb92a70b1044c77f84234bad'
-            '33e256857f435e9e69bb2e2bd24e75cc3d693ebdcdfd980002e2ed2ffed85a6e'
-            '99d654a3bd69b7a24191e11dbbe0d8f0c2c4d15781bdb4dbba98c43f8d769b67')
+sha256sums=('833888f03c6628c8a062ce5844bb8012056e7ab7ba294c7ea232e20ddadf0d75'
+            '0ea0d1678babb6a55f04ee7ba1d6d04e35d66b67e4ef14223dbeb17f30eea2d7')
 
 prepare() {
     mkdir -p "lzma-sdk-${pkgver}"
     bsdtar -x -f "${srcdir}/lzma${pkgver/./}.7z" -C "lzma-sdk-${pkgver}"
-    chmod 644 "lzma-sdk-${pkgver}/CPP/7zip/Bundles/LzmaCon/makefile.gcc"
-    patch -d "lzma-sdk-${pkgver}" -Np1 -i "${srcdir}/010-lzma_alone-use-arch-flags.patch"
-    patch -d "lzma-sdk-${pkgver}" -Np1 -i "${srcdir}/020-lzma_alone-remove-werror.patch"
+    chmod 644 "lzma-sdk-${pkgver}/CPP/7zip/7zip_gcc.mak"
+    patch -d "lzma-sdk-${pkgver}" --binary -Np1 -i "${srcdir}/010-lzma_alone-use-arch-flags.patch"
 }
 
 build() {
@@ -32,6 +29,6 @@ build() {
 }
 
 package() {
-    install -D -m755 "lzma-sdk-${pkgver}/CPP/7zip/Bundles/LzmaCon/lzma" "${pkgdir}/usr/bin/lzma_alone"
+    install -D -m755 "lzma-sdk-${pkgver}/CPP/7zip/Bundles/LzmaCon/_o/lzma" "${pkgdir}/usr/bin/lzma_alone"
     install -D -m644 "lzma-sdk-${pkgver}/DOC/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
