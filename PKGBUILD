@@ -2,7 +2,7 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc='zsh abbreviations, ported from fish and enhanced'
 arch=('any')
