@@ -1,0 +1,4 @@
+pkg/
+src/
+nomad-driver-podman-git/
+nomad-driver-podman-git-*pkg.tar.*

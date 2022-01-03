@@ -1,0 +1,17 @@
+pkgbase = nomad-driver-podman-git
+	pkgdesc = A nomad taskdriver for podman containers
+	pkgver = v0.3.0.r13.g7e3d018
+	pkgrel = 1
+	url = https://github.com/hashicorp/nomad-driver-podman
+	arch = x86_64
+	license = MPL2
+	makedepends = go
+	makedepends = git
+	depends = nomad
+	depends = podman
+	provides = nomad-driver-podman
+	conflicts = nomad-driver-podman
+	source = nomad-driver-podman-git::git+https://github.com/hashicorp/nomad-driver-podman
+	md5sums = SKIP
+
+pkgname = nomad-driver-podman-git
