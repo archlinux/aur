@@ -25,7 +25,7 @@ md5sums=()
 validpgpkeys=()
 
 package() {
-	cd "TKPEmu-$pkgver"
+	cd "TKPEmu"
 	cd TKPEmu
 	cmake -B build
 	cmake --build build
@@ -33,4 +33,6 @@ package() {
 	mv ./build/TKPEmu $pkgdir/usr/bin/TKPEmu
 }
 
+
+sha256sums=('64fea5a091d1974e03d6f650706397c0532eaa86125274d9bf373ce8c226ec88')
 sha256sums=('64fea5a091d1974e03d6f650706397c0532eaa86125274d9bf373ce8c226ec88')
