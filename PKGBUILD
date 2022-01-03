@@ -1,6 +1,6 @@
 # Maintainer: Luke Street <luke.street@encounterpc.com>
 pkgname=flvmeta
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A command-line utility aimed at manipulating Adobe(tm) Flash Video files (FLV)."
 arch=('i386' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://flvmeta.com/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4b48afc2db8b0ff1c86861bc09a58481bc241d93b879b6f915fbf695fc4bff51')
+sha256sums=('a51a2f18d97dfa1d09729546ce9ac690569b4ce6f738a75363113d990c0e5118')
 
 build() {
     cd "$pkgname-$pkgver"
