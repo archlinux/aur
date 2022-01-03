@@ -1,0 +1,15 @@
+pkgbase = atbswp
+	pkgdesc = A minimalist macro recorder (X11 and Wayland)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/RMPR/atbswp
+	arch = x86_64
+	license = GPL
+	source = https://github.com/RMPR/atbswp/releases/download/0.3.0/atbswpv0.3.0-linux
+	source = atbswp.desktop
+	source = atbswp.png
+	sha256sums = todo
+	sha256sums = todo
+	sha256sums = todo
+
+pkgname = atbswp

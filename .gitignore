@@ -1,0 +1,5 @@
+pkg/
+src/
+*.tar*
+# atbswp binary executable
+atbswpv*

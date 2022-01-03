@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=atbswp
+GenericName=atbswp
+Comment=A minimalist macro recorder
+Exec=atbswp
+Icon=atbswp
+Terminal=false
+Type=Application
+Categories=Utility;
