@@ -31,6 +31,10 @@ build () {
     ./install.sh
 }
 
+clean() {
+    rm -f "${srcdir}/${pkgname}"
+}
+
 package () {
     cd "${srcdir}/${pkgname}"
     install -Dm755 "${srcdir}/bin/ls-x" "${pkgdir}/usr/bin/ls-x"
