@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libparser
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Context-free grammar parsing library"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=(libparser-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(308b2fbfbb5755d715bda5d4b20469f2b3dfc81bbc990adeae493fa3a043ff9c)
+sha256sums=(76b3a146be70ba1e413bcfef1cbcbfa0a4f4731aea349e86a266c2e9d8f32106)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
