@@ -13,6 +13,7 @@ pkgbase = r-httpuv
 	depends = r-r6
 	depends = r-promises
 	depends = r-later>=0.8.0
+	depends = zlib
 	optdepends = r-testthat
 	optdepends = r-callr
 	optdepends = r-curl
