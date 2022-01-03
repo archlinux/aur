@@ -4,10 +4,10 @@ pkgname=paspio-git
 _pkgname=paspio
 pkgver=0.3.1.49a335f
 pkgrel=1
-pkgdesc="A (naive) password entropy calculator."
+pkgdesc="A password entropy calculator and library."
 
 arch=('x86_64')
-url="https://github.com/grtcdr/paspio"
+url="https://git.sr.ht/~grtcdr/paspio"
 license=('MIT')
 
 depends=('gcc-libs' 'glibc')
