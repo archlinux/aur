@@ -18,6 +18,7 @@
       "matchStrings": [
         "pkgver=(?<currentValue>.*?)\n"
       ],
+      "extractVersionTemplate": "^v(?<version>.*)$",
       "depNameTemplate": "tkem/uritools",
       "datasourceTemplate": "github-tags"
     }
