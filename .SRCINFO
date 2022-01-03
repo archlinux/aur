@@ -1,24 +1,26 @@
 pkgbase = beamerpresenter
 	pkgdesc = Modular multi-screen pdf presenter
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.2.2_beta2
+	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
-	install = beamerpresenter.install
 	arch = x86_64
 	license = AGPL3
+	makedepends = cmake
+	makedepends = qt6-tools
 	makedepends = libmupdf
+	depends = qt6-multimedia
 	depends = jbig2dec
 	depends = openjpeg2
 	depends = gumbo-parser
-	depends = qt5-multimedia
 	optdepends = gst-libav: show videos
 	optdepends = gst-plugins-good: show videos
 	optdepends = hicolor-icon-theme: action button icons
-	optdepends = qt5-svg: tool button icons
-	conflicts = beamerpresenter-git
+	optdepends = qt6-svg: tool button icons
+	provides = beamerpresenter=0.2.2_beta2
+	conflicts = beamerpresenter
 	backup = etc/xdg/beamerpresenter/beamerpresenter.conf
 	backup = etc/xdg/beamerpresenter/gui.json
-	source = beamerpresenter-0.2.1.tar.gz::https://github.com/stiglers-eponym/BeamerPresenter/archive/v0.2.1.tar.gz
-	sha256sums = 3876bea71907aa64766cff6f7da6fd3bb50a89325e8dba64618a594e1749ed42
+	source = beamerpresenter-0.2.2_beta2.tar.gz::https://github.com/stiglers-eponym/BeamerPresenter/archive/v0.2.2_beta2.tar.gz
+	sha256sums = cf8904563e9b1a9a1ed0cecb65e27ae1ba99e173d9b69cf1e53275294abb9811
 
 pkgname = beamerpresenter

@@ -1,47 +1,61 @@
 # Maintainer: Valentin Bruch <software@vbruch.eu>
-# The default configuration installs the MuPDF version with Qt 5.
-_renderer=mupdf
+# Select the PDF engine
+_use_mupdf=ON  # ON or OFF
+_use_poppler=OFF  # ON or OFF
+# Select the Qt version
+_qt_version_major=6  # 5 or 6
+
 pkgname=beamerpresenter
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2_beta2
+pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3')
+# depends and makedepends will be filled based on the PDF engine.
+depends=("qt${_qt_version_major}-multimedia")
+optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
+makedepends=('cmake' "qt${_qt_version_major}-tools")
 
-# Dependencies when using MuPDF:
-depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt5-multimedia')
-# For Qt 6:
-#depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt6-multimedia>=6.2.0' 'hicolor-icon-theme')
-makedepends=('libmupdf')
-
-optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' 'qt5-svg: tool button icons')
-# For Qt 6:
-#optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' 'qt6-svg: tool button icons')
-
-conflicts=('beamerpresenter-git')
-backup=("etc/xdg/${pkgname}/${pkgname}.conf" "etc/xdg/${pkgname}/gui.json")
-install=beamerpresenter.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3876bea71907aa64766cff6f7da6fd3bb50a89325e8dba64618a594e1749ed42')
-
-# Change depends and makedepends if poppler is used as renderer.
-if [ "${_renderer}" == "poppler" ]; then
-    # Dependencies when using poppler:
-    depends=('poppler-qt5' 'qt5-multimedia' 'hicolor-icon-theme')
-    # For Qt 6:
-    #depends=('poppler-qt6' 'qt6-multimedia>=6.2.0' 'hicolor-icon-theme')
-    makedepends=()
+if [ ${_use_mupdf} == 'ON' ]
+then
+    depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser')
+    makedepends+=('libmupdf')
+elif [ ${_use_mupdf} == 'OFF' ]
+then
+    license=('GPL3')
 fi
 
+if [ ${_use_poppler} == 'ON' ]
+then
+    depends+=("poppler-qt${_qt_version_major}")
+fi
+
+backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('cf8904563e9b1a9a1ed0cecb65e27ae1ba99e173d9b69cf1e53275294abb9811')
+conflicts=('beamerpresenter')
+provides=("beamerpresenter=${pkgver}")
+
 build() {
-  cd "${srcdir}/BeamerPresenter-${pkgver}"
-  qmake -config release RENDERER="${_renderer}" && make
-  # For Qt 6:
-  #qmake6 -config release RENDERER="${_renderer}" && make
+    mkdir -p "${pkgname}-${pkgver}/build"
+    cmake \
+        -B "${pkgname}-${pkgver}/build" \
+        -S "${srcdir}/BeamerPresenter-${pkgver}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DGIT_VERSION=ON \
+        -DUSE_POPPLER="${_use_poppler}" \
+        -DUSE_MUPDF="${_use_mupdf}" \
+        -DUSE_MUJS=OFF \
+        -DUSE_GUMBO=ON \
+        -DUSE_TRANSLATIONS=ON \
+        -DQT_VERSION_MAJOR="${_qt_version_major}" \
+        -DCREATE_SHARED_LIBRARIES=OFF \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_SYSCONFDIR='/etc'
+    cmake --build "${pkgname}-${pkgver}/build"
 }
 
 package() {
-  cd "${srcdir}/BeamerPresenter-${pkgver}"
-  make install INSTALL_ROOT="${pkgdir}"
+    DESTDIR="${pkgdir}" cmake --install "${pkgname}-${pkgver}/build"
 }
