@@ -1,6 +1,6 @@
 # Maintainer: Felipe Garcia <hello@sazz.space>
 pkgname="nazuna"
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Download Twitter videos using your terminal!"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ makedepends=("rust" "cargo")
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=("39b1ad785b01661ac3cd9b6269d860c9198cf6915d034ba2b43506e48a6a3b49")
+sha256sums=("1659aa533ae05f941f5426474a40e2756d0e4a3de50785fbf7c119e4f6d5d3ce")
 
 build() {
     cd "$pkgname-$pkgver"
