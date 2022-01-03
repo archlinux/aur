@@ -1,6 +1,6 @@
 pkgbase = torchvision
 	pkgdesc = datasets, transforms, and models specific to computer vision (C++ library only)
-	pkgver = 0.10.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/pytorch/vision
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = torchvision
 	makedepends = cmake
 	depends = python
 	depends = python-pytorch
-	source = torchvision-0.10.1.tar.gz::https://github.com/pytorch/vision/archive/v0.10.1.tar.gz
-	sha512sums = ad254d855259ff6ca9140f8dc85061e7223c21fbdf383483b16ee73576c22bb35bd558de4cfb048926d31b74a71dcfe806805d2f8c48757f1fdb6bedd8237cf9
+	source = torchvision-0.11.2.tar.gz::https://github.com/pytorch/vision/archive/v0.11.2.tar.gz
+	sha512sums = 11891d19c1a17d27fbcc95b576a7bba7d2d2b96673661bc8488505aded9c70e7ee09229732d42eac4a590e11fb8f0066fb5a2d9f5b7fa95265f54d533ffc1359
 
 pkgname = torchvision
