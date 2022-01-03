@@ -22,7 +22,7 @@ pkgver() {
 }
 
 prepare () {
-  mkdir -p "${srcdir}/src/${_repo_prefix}"
+  mkdir -p "${srcdir}/src/${_repo_prefix}/${_repo_name}"
   ln -snf "${srcdir}/${_repo_name}" "${srcdir}/src/${_repo_prefix}/${_repo_name}"
 }
 
