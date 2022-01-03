@@ -1,0 +1,19 @@
+pkgbase = vim-256noir-git
+	pkgdesc = Dark, minimal 256-color colorscheme
+	pkgver = r15.e8668a1
+	pkgrel = 1
+	url = https://github.com/andreasvc/vim-256noir
+	arch = any
+	groups = vim-plugins
+	license = custom:unknown
+	makedepends = git
+	makedepends = python
+	makedepends = python-docutils
+	makedepends = python-pygments
+	depends = vim-plugin-runtime
+	provides = vim-256noir-git
+	conflicts = vim-256noir-git
+	source = vim-256noir-git::git+https://github.com/andreasvc/vim-256noir
+	md5sums = SKIP
+
+pkgname = vim-256noir-git
