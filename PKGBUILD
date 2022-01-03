@@ -2,8 +2,8 @@
 
 _pkgbase='rapiddisk'
 pkgname="$_pkgbase-dkms"
-_vermajor=7
-_verminor=2
+_vermajor=8
+_verminor=0
 _verrevision=1
 pkgver=${_vermajor}.${_verminor}.${_verrevision}
 pkgrel=1
@@ -16,7 +16,7 @@ depends=('dkms'
          'cryptsetup')
 makedeps=('jansson')
 install=${pkgname}.install
-_gitcommit=3a44e02
+_gitcommit=ed071a6
 source=("git+https://github.com/pkoutoupis/rapiddisk#commit=${_gitcommit}")
 
 md5sums=('SKIP')
