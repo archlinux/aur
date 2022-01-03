@@ -11,6 +11,7 @@ pkgbase = python-rocker
 	depends = python-empy
 	depends = python-packaging
 	depends = python-pexpect
+	depends = docker
 	noextract = rocker-0.2.7-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
 	source = https://files.pythonhosted.org/packages/fe/9e/8ee072b29ca2ce517f195ba44ef077e046ec3ef86d517e0cc5eec0875d39/rocker-0.2.7-py3-none-any.whl
