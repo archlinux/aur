@@ -1,0 +1,15 @@
+pkgbase = cosmos-lens-git
+	pkgdesc = Lens for Cosmos ecosystem
+	pkgver = 8c65bf5
+	pkgrel = 1
+	url = https://github.com/strangelove-ventures/lens
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = make
+	provides = cosmos-lens
+	conflicts = cosmos-lens
+	source = cosmos-lens::git+https://github.com/strangelove-ventures/lens
+	sha256sums = SKIP
+
+pkgname = cosmos-lens-git
