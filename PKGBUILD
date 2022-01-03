@@ -1,21 +1,24 @@
-# Maintainer: stiglers-eponym
+# Maintainer: Valentin Bruch <software@vbruch.eu>
 # The default configuration installs the MuPDF version with Qt 5.
 _renderer=mupdf
 pkgname=beamerpresenter
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular multi-screen pdf presenter"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3')
 
 # Dependencies when using MuPDF:
-depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt5-multimedia' 'hicolor-icon-theme')
+depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt5-multimedia')
 # For Qt 6:
 #depends=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'qt6-multimedia>=6.2.0' 'hicolor-icon-theme')
 makedepends=('libmupdf')
 
-optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos')
+optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' 'qt5-svg: tool button icons')
+# For Qt 6:
+#optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' 'qt6-svg: tool button icons')
+
 conflicts=('beamerpresenter-git')
 backup=("etc/xdg/${pkgname}/${pkgname}.conf" "etc/xdg/${pkgname}/gui.json")
 install=beamerpresenter.install
