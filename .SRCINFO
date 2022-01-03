@@ -1,0 +1,21 @@
+pkgbase = mqtt-system-monitor
+	pkgdesc = MQTT System Monitor, compatible with Home Assistant
+	pkgver = 0.0.1alpha
+	pkgrel = 1
+	url = https://github.com/cmargiotta/MQTT-System-Monitor
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = paho-mqtt-c
+	depends = openssl
+	depends = lua
+	provides = msm
+	conflicts = msm
+	backup = etc/msm/sensors/*
+	backup = usr/lib/systemd/system/msm.service
+	source = https://github.com/cmargiotta/mqtt-system-monitor/archive/refs/tags/0.0.1alpha.tar.gz
+	sha256sums = 44dc17a0c5bbef68f0d12489375ae3aa8fea210c2367cc8e2623795ea0e03447
+
+pkgname = mqtt-system-monitor
