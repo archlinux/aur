@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-matplotlib-scalebar
 pkgshort=matplotlib-scalebar
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Provides a new artist for matplotlib to display a scale bar, aka micron bar."
 arch=('any')
@@ -24,4 +24,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('f2bd08321cc1b1d9dfe99392a18a42fb')
+md5sums=('65a34f180864a28183f35e9ec1fe8876')
