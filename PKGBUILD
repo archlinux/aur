@@ -1,14 +1,15 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.2.1.r2091.0d4a358
+pkgver=0.3.0.r2334.13f9240c
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('fontconfig')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'qt5-base' 'harfbuzz' 'fontconfig')
+depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt5-base')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja'
+             'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
 provides=('contour')
@@ -28,6 +29,8 @@ build() {
   CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
+  PREPARE_ONLY_EMBEDS=ON ${pkgname}/scripts/install-deps.sh
+
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
@@ -39,10 +42,10 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/build"
-  ./src/contour/contour version
-  ./src/crispy/crispy_test
-  ./src/terminal/terminal_test
+  cd "${pkgname}"
+  ../build/src/contour/contour version
+  ../build/src/crispy/crispy_test
+  ../build/src/terminal/terminal_test
 }
 
 package() {
