@@ -1,11 +1,11 @@
-# Maintainer: Tully Foote <tfoote@osrfoundation.org>
+# Maintainer: Unknown Packager
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-rocker-git
 epoch=
-pkgver=0.2.6.r0.g37a60a0
+pkgver=0.2.7.r0.g2e1f154
 pkgrel=1
 pkgdesc='A tool to run docker containers with customized extras'
 arch=(any)

@@ -1,6 +1,6 @@
 pkgbase = python-rocker-git
 	pkgdesc = A tool to run docker containers with customized extras
-	pkgver = 0.2.6.r0.g37a60a0
+	pkgver = 0.2.7.r0.g2e1f154
 	pkgrel = 1
 	url = https://github.com/osrf/rocker
 	arch = any
