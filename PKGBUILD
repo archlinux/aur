@@ -1,7 +1,7 @@
 pkgname='sprunge'
 release='0.7'
 pkgver="${release}.0"
-pkgrel=2
+pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
 url='https://github.com/kevr/sprunge'
