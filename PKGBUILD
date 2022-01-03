@@ -8,7 +8,7 @@ license=('CCPL')
 depends=()
 makedepends=('imagemagick')
 source=(
-    "${pkgname}.xml"
+    'wiki-loves-earth-wallpapers.xml'
     'image-32652128.jpg::https://upload.wikimedia.org/wikipedia/commons/2/28/%D0%9A%D0%B0%D1%80%D0%BF%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_05.jpg'
     'image-33032133.jpg::https://upload.wikimedia.org/wikipedia/commons/8/87/Amanhecer_no_Hercules_--.jpg'
     'image-33097376.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e6/Hommik_Mukri_rabas.jpg'
@@ -216,12 +216,6 @@ sha1sums=(
     '675aad1e2d232dd65ea062934c9531d9605bc74a'
 )
 
-# Use --remote-time to retain image timestamps
-DLAGENTS=(
-    'http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --remote-time -o %o %u'
-    'https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --remote-time -o %o %u'
-)
-
 prepare() {
     local count image images=("${source[@]:1}") i=0
     install -d "$srcdir/$pkgname"
@@ -238,7 +232,6 @@ prepare() {
             -quality 80 \
             -sampling-factor 4:2:0 \
             "$file"
-        touch -r "$srcdir/$image" "$file"
     done
 }
 
@@ -250,7 +243,7 @@ package() {
         file=$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \
             "$pkgdir" "$pkgname" "$i" "${image#image-}")
         image=$srcdir/$pkgname/$image
-        install -p "$image" "$file"
+        install "$image" "$file"
     done
     install -D "$srcdir/$pkgname.xml" \
         "$pkgdir/usr/share/gnome-background-properties/$pkgname.xml"
