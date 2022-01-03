@@ -1,12 +1,13 @@
 pkgbase = punes
 	pkgdesc = Nintendo Entertaiment System emulator
-	pkgver = 0.107
+	pkgver = 0.108
 	pkgrel = 1
 	url = https://github.com/punesemu/puNES
 	install = punes.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = cmake
 	makedepends = glu
 	makedepends = qt5-tools
 	depends = alsa-lib
@@ -14,10 +15,15 @@ pkgbase = punes
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = nvidia-cg-toolkit
+	depends = libxrandr
 	depends = qt5-base
 	depends = qt5-svg
-	source = https://github.com/punesemu/puNES/archive/v0.107.tar.gz
-	md5sums = ffff6f29af7a6d8c08a272ad29ed37e5
+	provides = punes
+	conflicts = punes-git
+	options = !buildflags
+	source = https://github.com/punesemu/puNES/archive/v0.108.tar.gz
+	source = punes-0.108-Fixed-make-install.patch
+	md5sums = 1845c9106b619883a84d9089ac917ed7
+	md5sums = 24c9169a69413dca7cd35d3c655297ad
 
 pkgname = punes
-
