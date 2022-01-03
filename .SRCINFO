@@ -7,7 +7,6 @@ pkgbase = python-rocker-git
 	license = Apache
 	makedepends = python-pip
 	makedepends = python-wheel
-	makedepends = git
 	depends = python
 	depends = python-docker
 	depends = python-empy
