@@ -1,0 +1,13 @@
+pkgbase = python-spectate
+	pkgdesc = Observe the evolution of mutable data types like lists, dicts, and sets.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/rmorshea/spectate
+	arch = any
+	license = MIT
+	depends = python
+	noextract = spectate-1.0.1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/s/spectate/spectate-1.0.1-py2.py3-none-any.whl
+	sha256sums = c4585194c238979f953fbf2ecf9f94c84d9d0a929432c7104e39984f52c9e718
+
+pkgname = python-spectate
