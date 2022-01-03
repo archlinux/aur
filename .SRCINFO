@@ -1,8 +1,8 @@
 pkgbase = obfs4proxy
 	pkgdesc = The obfourscator - a pluggable transport proxy written in Go
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
-	url = https://gitweb.torproject.org/pluggable-transports/obfs4.git/
+	url = https://gitlab.com/yawning/obfs4
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -12,7 +12,7 @@ pkgbase = obfs4proxy
 	makedepends = git
 	makedepends = go
 	optdepends = tor: you need tor to use this package
-	source = https://people.torproject.org/~yawning/releases/obfs4proxy/obfs4proxy-0.0.11.tar.xz
-	sha512sums = 7d7fef951bcebd4433dfb638896d4be15dc090d38a3b54c9a9d34ea264b006cff75a42da1b97b6af998cfbc3b44919770cd8cb519ada351486a247faf47c656f
+	source = https://gitlab.com/yawning/obfs4/-/archive/obfs4proxy-0.0.12/obfs4-obfs4proxy-0.0.12.tar.bz2
+	sha512sums = 9243470d5b96be5ffd9e942f54b57624c3aa0f5a3a3287ccb9bcb2d399d1612114b2fb7fb28f8fb4cb15e8e282cffd2db616f40d82ee0e8f79fb9d8eadaeafbd
 
 pkgname = obfs4proxy
