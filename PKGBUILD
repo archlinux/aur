@@ -4,7 +4,7 @@
 
 pkgname=emercoin
 pkgver=0.7.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://emercoin.com/"
@@ -29,7 +29,7 @@ prepare() {
 build() {
 	cd "${pkgname}-${pkgver}emc"
 	./autogen.sh
-	./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no
+  ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no --disable-dependency-tracking --disable-tests --disable-util-tx --disable-gui-tests --enable-bip70 --disable-hardening --disable-debug
 	make
 }
 

@@ -6,7 +6,7 @@ pkgname=emercoin
 _pkgname=${pkgname}
 pkgver=0.7.11
 _pkgver=${pkgver}
-pkgrel=3
+pkgrel=4
 _pkgrel=${pkgrel}
 pkgdesc="Digital currency and blockchain service platform - debian package"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
@@ -35,7 +35,7 @@ prepare() {
 build() {
 	cd "${pkgname}-${pkgver}emc"
 	./autogen.sh
-	./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no
+	./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no --disable-dependency-tracking --disable-tests --disable-util-tx --disable-gui-tests --enable-bip70 --disable-hardening --disable-debug
 	make
   ### CONTROL FILES CREATION ###
   #create control file for the debian package
