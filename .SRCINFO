@@ -1,7 +1,7 @@
 pkgbase = deadbeef
 	pkgdesc = Modular GTK audio player for GNU/Linux
 	pkgver = 1.8.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://deadbeef.sourceforge.io/
 	arch = x86_64
 	arch = i686
@@ -33,6 +33,8 @@ pkgbase = deadbeef
 	makedepends = yasm
 	makedepends = ffmpeg
 	makedepends = clang
+	makedepends = opusfile
+	makedepends = mpg123
 	depends = gtk3
 	depends = alsa-lib
 	depends = jansson

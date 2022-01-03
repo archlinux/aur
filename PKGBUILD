@@ -4,7 +4,7 @@
 
 pkgname=deadbeef
 pkgver=1.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
@@ -12,7 +12,7 @@ license=(GPL2 LGPL2.1 ZLIB)
 depends=(gtk3 alsa-lib jansson libdispatch)
 makedepends=(libvorbis libmad flac curl imlib2 wavpack libsndfile libcdio libcddb
              libx11 faad2 zlib intltool pkgconfig libpulse libzip libsamplerate
-             yasm ffmpeg clang)
+             yasm ffmpeg clang opusfile mpg123)
 optdepends=('alsa-oss: for OSS output plugin'
             'cdparanoia: for cd audio plugin'
             'curl: for last.fm, vfs_curl (shoutcast/icecast), artwork plugins'
@@ -52,4 +52,5 @@ build () {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  install -D COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
