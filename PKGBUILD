@@ -2,7 +2,7 @@
 
 pkgname=redpanda-cpp-bin
 pkgver=0.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A light-weight C/C++ IDE based on Qt"
 arch=('x86_64')
 url="https://github.com/royqh1979/RedPanda-CPP"
@@ -14,7 +14,7 @@ optdepends=('gcc' 'gdb' 'make' 'astyle')
 provides=('redpanda-cpp')
 conflicts=('redpanda-cpp')
 source=(
-  "${url}/releases/download/${pkgver}.linux/redpanda-${pkgver}.linux.tgz"
+  "https://downloads.sourceforge.net/dev-cpp-2020/${pkgver}.linux/redpanda-${pkgver}.linux.tgz"
   "redpanda-cpp-${pkgver}.svg"::"${url}/raw/${pkgver}.linux/RedPandaIDE/images/devcpp.svg"
   redpanda-cpp.desktop
 )
