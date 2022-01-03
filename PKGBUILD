@@ -26,7 +26,7 @@ source=("rules-${tag}.zip"::"${url}/releases/download/${tag}/rules.zip"
         "${pkgname}.timer")
   
 sha256sums=($(curl -sL "${url}/releases/download/${tag}/rules.zip.sha256sum" | awk '{print $1}')
-            '1fd7c4f89bb0b89520b1615a5d6e1372a90a3b13ecb1c6669825c44cc52169b4'
+            'fed8eef3df1799a7e7919396eb3f2f1da6c03d3b950c8601e723ddb27db8d7f7'
             'd5deeb9e02b2cf6e233da4369bb7d74e06054bd54ee9e62875f3342d7c931dbd'
             '5d0fac85c93516f45281f3e45071f4f98c4a9eadfbd72602129c888c823b79ef'
             'ea8090be783d0d60f441d25ddad9686b75e5b8405311cc21d29235e80b1671b7'
