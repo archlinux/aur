@@ -4,7 +4,7 @@
 pkgname=munt-git
 _pkgname=munt
 pkgdesc="Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32"
-pkgver=1995.1ea0469
+pkgver=2226.e720deb
 pkgrel=1
 arch=(i686 x86_64)
 url="http://munt.sourceforge.net"
@@ -44,4 +44,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="$pkgdir" install
 }
+
 

@@ -1,6 +1,6 @@
 pkgbase = munt-git
 	pkgdesc = Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32
-	pkgver = 1995.1ea0469
+	pkgver = 2226.e720deb
 	pkgrel = 1
 	url = http://munt.sourceforge.net
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = munt-git
 	md5sums = SKIP
 
 pkgname = munt-git
-
