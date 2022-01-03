@@ -34,9 +34,6 @@ build() {
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DYAML_BUILD_SHARED_LIBS=OFF -DYAML_CPP_BUILD_CONTRIB=OFF \
-        -DYAML_CPP_BUILD_TESTS=OFF -DYAML_CPP_BUILD_TOOLS=OFF \
-        -DYAML_CPP_INSTALL=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build --parallel $_cpuCount
 }
