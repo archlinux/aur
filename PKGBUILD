@@ -2,13 +2,13 @@
 
 pkgname=bubbles-git
 pkgver=gitrev
-pkgrel=1
+pkgrel=2
 pkgdesc="bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X."
 arch=('i686' 'x86_64')
 url="https://git.263.nu/f/bubbles/tree/README.md"
 license=('GPL')
 depends=('libx11' 'libxft')
-optdepends=('libxrandr 'libxfixes')
+optdepends=('libxrandr' 'libxfixes')
 makedepends=('git')
 provides=("${pkgname%-*}")
 source=('git+https://git.263.nu/f/bubbles')

@@ -1,7 +1,7 @@
 pkgbase = bubbles-git
 	pkgdesc = bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X.
 	pkgver = gitrev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.263.nu/f/bubbles/tree/README.md
 	arch = i686
 	arch = x86_64
