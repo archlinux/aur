@@ -1,6 +1,6 @@
 pkgbase = overdrive2opus-git
 	pkgdesc = convert overdrive audiobooks into opus files with chapters and thumbnails
-	pkgver = r9.bc78ad2
+	pkgver = r17.7136280
 	pkgrel = 1
 	url = https://github.com/vcalv/overdrive2opus
 	arch = any
