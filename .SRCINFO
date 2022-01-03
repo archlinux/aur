@@ -1,0 +1,20 @@
+pkgbase = patreon-downloader
+	pkgdesc = downloads content posted by creators on patreon.com
+	pkgver = 0.10.1.2
+	pkgrel = 1
+	url = https://github.com/AlexCSDev/patreon-downloader
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=5.0.0
+	makedepends = git
+	depends = zlib
+	depends = krb5
+	options = !strip
+	source = patreon-downloader-0.10.1.2::git+https://github.com/AlexCSDev/PatreonDownloader#tag=0.10.1.2
+	source = universal-downloader-platform::git+https://github.com/AlexCSDev/UniversalDownloaderPlatform.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = patreon-downloader

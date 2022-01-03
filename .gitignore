@@ -1,0 +1,6 @@
+patreon-downloader-*
+universal-downloader-platform
+src
+pkg
+*.log
+*.bak
