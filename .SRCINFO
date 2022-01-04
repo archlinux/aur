@@ -1,7 +1,7 @@
 pkgbase = pinephone-compass-git
 	pkgdesc = A simple GTK3 compass app for the Pine64 Pinephone.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/lgtrombetta/pinephone-compass
 	arch = any
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = pinephone-compass-git
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-pandas
+	depends = python-pyxdg
 	provides = pinephone-compass
 	conflicts = pinephone-compass
 	source = git+https://gitlab.com/lgtrombetta/pinephone-compass.git
