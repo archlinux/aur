@@ -2,7 +2,7 @@
 
 pkgname=python2-txaio
 pkgver=21.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Compatibility API between asyncio/Twisted/Trollius'
 arch=('any')
 url="https://github.com/crossbario/txaio"
@@ -26,5 +26,4 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('7e80b80ed7797245a5eef803043bdede'
-         '862ac257bb05a8064b6e2814686dcb3c')
+md5sums=('7e80b80ed7797245a5eef803043bdede')

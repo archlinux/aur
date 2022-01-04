@@ -1,7 +1,7 @@
 pkgbase = python2-txaio
 	pkgdesc = Compatibility API between asyncio/Twisted/Trollius
 	pkgver = 21.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crossbario/txaio
 	arch = any
 	license = MIT
@@ -12,6 +12,5 @@ pkgbase = python2-txaio
 	depends = python2-six
 	source = https://pypi.io/packages/source/t/txaio/txaio-21.2.1.tar.gz
 	md5sums = 7e80b80ed7797245a5eef803043bdede
-	md5sums = 862ac257bb05a8064b6e2814686dcb3c
 
 pkgname = python2-txaio
