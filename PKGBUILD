@@ -1,4 +1,5 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Brian Biduock <bidulock@openss7.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=rarian
 pkgver=0.8.1
