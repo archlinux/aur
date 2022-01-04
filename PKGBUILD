@@ -41,5 +41,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make INSTALL_ROOT="$pkgdir" install
+  make INSTALL_ROOT="$pkgdir/usr" install
 }
