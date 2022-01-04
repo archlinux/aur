@@ -5,7 +5,7 @@
 pkgname=whalebird-bin
 _name="${pkgname%-bin}"
 
-pkgver=4.4.6
+pkgver=4.5.0
 pkgrel=1
 
 pkgdesc='Electron based multi-platform client for Mastodon, Misskey & Pleroma'
@@ -18,8 +18,9 @@ conflicts=("$_name")
 
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 
-source=("https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/${_name^}-$pkgver-linux-x64.rpm")
-sha256sums=($(curl -sL https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/sha256sum.txt | grep ${_name^}-$pkgver-linux-x64.rpm | cut -d\  -f1))
+_url="https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/${_name^}-$pkgver-linux-x64.rpm"
+source=("$_url")
+sha256sums=("$(curl -sL "$_url.shasum" | grep "${_name^}-$pkgver-linux-x64.rpm" | cut -d\  -f1)")
 
 
 package() {
