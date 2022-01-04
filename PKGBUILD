@@ -2,7 +2,7 @@
 
 pkgname=('php-memcache' 'php7-memcache')
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Memcache module for PHP"
 arch=('x86_64')
 url="https://pecl.php.net/package/memcache"
@@ -13,6 +13,8 @@ source=(https://pecl.php.net/get/memcache-$pkgver.tgz)
 sha256sums=('defe33e6f7831d82b7283b95e14a531070531acbf21278f3f0d7050505cf3395')
 
 prepare() {
+  # Fix test: https://github.com/websupport-sk/pecl-memcache/issues/91
+  sed -i 's/memcache_connect(\$domainsocket, null)/memcache_connect(\$domainsocket, 0)/' memcache-$pkgver/tests/035.phpt
   cp -a memcache-$pkgver{,-php7}
 }
 
