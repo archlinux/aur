@@ -3,7 +3,7 @@
 pkgname=yabridge-bin
 _pkgname=yabridge
 pkgver=3.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux (includes yabridgectl)"
 epoch=
 arch=('x86_64')

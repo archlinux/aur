@@ -1,7 +1,6 @@
 post_upgrade() {
   cat <<EOF
-If you are upgrading from a previous version of yabridge and you are using the
-copy-based installation method, then don't forget to run 'yabridgectl sync' to
-update those copies.
+If you are upgrading from a previous version of yabridge, then don't forget to
+run 'yabridgectl sync' after this upgrade.
 EOF
 }
