@@ -1,16 +1,16 @@
 pkgbase = encrypted-dns
 	pkgdesc = A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)
-	pkgver = 0.9.1.r1.7b39ea4554
-	pkgrel = 2
+	pkgver = 0.9.1.r2.025c3b99c3
+	pkgrel = 1
 	url = https://github.com/DNSCrypt/encrypted-dns-server
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	backup = etc/encrypted-dns/encrypted-dns.toml
-	source = encrypted-dns-0.9.1.r1.7b39ea4554.tar.gz::https://github.com/DNSCrypt/encrypted-dns-server/archive/7b39ea4554b18bce4381ff3a17769bc7baca55d6.tar.gz
+	source = encrypted-dns-0.9.1.r2.025c3b99c3.tar.gz::https://github.com/DNSCrypt/encrypted-dns-server/archive/025c3b99c3ea2f814185e421598ddc0a3404d9df.tar.gz
 	source = encrypted-dns.service
-	sha256sums = 472053d16f07d23ca436b847b6875b8c0137fa55ac2d1352471796660ab32574
+	sha256sums = fd69a42bf567bef02c99b65d28c089c39a86deb4c754ea4b7a285783c6319100
 	sha256sums = 6de2ead853fc3de465ebcb3bd9e26edbb361c9dcc1afa3703eb0c8ce05d28676
 
 pkgname = encrypted-dns
