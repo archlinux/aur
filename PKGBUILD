@@ -1,8 +1,8 @@
 # Maintainer: Thibaut Sautereau (thithib) <thibaut at sautereau dot fr>
 
 pkgname=hardened_malloc
-pkgver=8
-pkgrel=2
+pkgver=9
+pkgrel=1
 pkgdesc="Hardened allocator designed for modern systems"
 arch=('x86_64')
 url="https://github.com/GrapheneOS/hardened_malloc"
@@ -11,15 +11,9 @@ depends=('gcc-libs')
 makedepends=('git')
 checkdepends=('python')
 provides=('libhardened_malloc.so')
-source=("git+https://github.com/GrapheneOS/$pkgname#tag=$pkgver?signed"
-        '0001-Fix-CPPFLAGS-in-test-Makefile.patch')
-sha256sums=('SKIP'
-            '118692a4096a70401773def95be713f535ae04477e2eb73e59b03169d54ea635')
+source=("git+https://github.com/GrapheneOS/$pkgname#tag=$pkgver?signed")
+sha256sums=('SKIP')
 validpgpkeys=('65EEFE022108E2B708CBFCF7F9E712E59AF5F22A') # Daniel Micay <danielmicay@gmail.com>
-
-prepare() {
-  patch --directory="$pkgname" --input="$srcdir/0001-Fix-CPPFLAGS-in-test-Makefile.patch" --strip=1
-}
 
 build() {
   cd "$pkgname"

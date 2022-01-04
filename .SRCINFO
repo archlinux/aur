@@ -1,7 +1,7 @@
 pkgbase = hardened_malloc
 	pkgdesc = Hardened allocator designed for modern systems
-	pkgver = 8
-	pkgrel = 2
+	pkgver = 9
+	pkgrel = 1
 	url = https://github.com/GrapheneOS/hardened_malloc
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,8 @@ pkgbase = hardened_malloc
 	makedepends = git
 	depends = gcc-libs
 	provides = libhardened_malloc.so
-	source = git+https://github.com/GrapheneOS/hardened_malloc#tag=8?signed
-	source = 0001-Fix-CPPFLAGS-in-test-Makefile.patch
+	source = git+https://github.com/GrapheneOS/hardened_malloc#tag=9?signed
 	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A
 	sha256sums = SKIP
-	sha256sums = 118692a4096a70401773def95be713f535ae04477e2eb73e59b03169d54ea635
 
 pkgname = hardened_malloc
