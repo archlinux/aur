@@ -1,22 +1,25 @@
+# Maintainer: Osman Karagöz <osmank3[at]gmail[dot]com>
 # Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
+
 pkgname=akia
-pkgver=1.6
+pkgver=6.2.1
 pkgrel=1
-pkgdesc="View and modify files,folders and objects in an AKIS smartcard"
-arch=('i686' 'x86_64')
+pkgdesc="PKCS#11 library and utility tools for Akis Smartcard"
+arch=('x86_64')
 url="http://www.akiskart.com.tr"
 license=('custom')
+makedepends=('unrar')
 depends=('pcsclite' 'ccid' 'java-environment')
-source=(akia)
-md5sums=('9a7bf17f1f36f0d936b23b72786e0282')
+install=akia.install
+source=(akia
+        https://akiskart.bilgem.tubitak.gov.tr/dosyalar/akis_${pkgver}_amd64.rar)  
+sha256sums=('cd71c80eda1674ca8b0cc8f86fdf7404b89edfc910c4460cf62ed8d706cfe609'
+            '2e1fb8f8b176e3e674ec72e3f0394abc1de95a5d044e610ddf8255709c13f20a')
 
-if test "$CARCH" == x86_64; then
-    source+=(http://www.akiskart.com.tr/dosyalar/akis_1.6_amd64.deb)
-    md5sums+=('782c6eb75e20857d0f8eb5520ad90654')
-elif test "$CARCH" == x86_64; then
-    source+=(http://www.akiskart.com.tr/dosyalar/akis_1.5_i386.deb)
-    md5sums+=('f59fe9a741b22639d5c53e598e92cb02')
-fi
+prepare() {
+  unrar x akis_${pkgver}_amd64.rar
+  ar x akis_${pkgver}_amd64.deb
+}
 
 package() {
 

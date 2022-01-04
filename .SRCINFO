@@ -1,16 +1,18 @@
 pkgbase = akia
-	pkgdesc = View and modify files,folders and objects in an AKIS smartcard
-	pkgver = 1.6
+	pkgdesc = PKCS#11 library and utility tools for Akis Smartcard
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = http://www.akiskart.com.tr
-	arch = i686
+	install = akia.install
 	arch = x86_64
 	license = custom
+	makedepends = unrar
 	depends = pcsclite
 	depends = ccid
 	depends = java-environment
 	source = akia
-	md5sums = 9a7bf17f1f36f0d936b23b72786e0282
+	source = https://akiskart.bilgem.tubitak.gov.tr/dosyalar/akis_6.2.1_amd64.rar
+	sha256sums = cd71c80eda1674ca8b0cc8f86fdf7404b89edfc910c4460cf62ed8d706cfe609
+	sha256sums = 2e1fb8f8b176e3e674ec72e3f0394abc1de95a5d044e610ddf8255709c13f20a
 
 pkgname = akia
-
