@@ -5,13 +5,13 @@ branch= # This variable can be set to any development branch
 pkgname=asbru-cm-${branch}${branch:+-}git
 _pkgname=asbru
 _fpkgname=asbru-cm
-pkgver=6.3.2.r5.gdacd5d9
+pkgver=6.3.2.r24.gbd961ea
 pkgrel=1
 arch=('any')
 license=('GPL3')
 pkgdesc="A free and open-source connection manager. ${branch:-master} branch"
 url="https://github.com/asbru-cm/asbru-cm"
-depends=('perl' 'vte3' 'cairo-perl' 'glib-perl' 'pango-perl' 'perl-socket6' 'perl-expect' 'perl-yaml' 'perl-crypt-cbc<3' 'perl-crypt-blowfish' 'perl-gtk3' 'perl-net-arp'
+depends=('perl' 'vte3' 'cairo-perl' 'glib-perl' 'pango-perl' 'perl-socket6' 'perl-expect' 'perl-yaml' 'perl-crypt-cbc' 'perl-crypt-blowfish' 'perl-gtk3' 'perl-net-arp'
          'uuid' 'openssh' 'inetutils' 'perl-crypt-rijndael' 'perl-xml-parser' 'libcanberra' 'perl-gtk3-simplelist' 'libwnck3' 'perl-io-stty' 'perl-io-tty')
 optdepends=('uucp: Unix-to-Unix Copy' 'rdesktop: RDP connections' 'freerdp: RDP connections' 'openssh: SSH connections' 'mosh: Mobile shell' 'tigervnc: for VNC connections'
             'perl-x11-guitest: To fit perfectly RDP tabs' 'keepassxc: Better support to automatically fill users and passwords' 'nmap: ncat is required if using proxy user/password')

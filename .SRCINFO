@@ -1,6 +1,6 @@
 pkgbase = asbru-cm-git
 	pkgdesc = A free and open-source connection manager. master branch
-	pkgver = 6.3.2.r5.gdacd5d9
+	pkgver = 6.3.2.r24.gbd961ea
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = asbru-cm-git
 	depends = perl-socket6
 	depends = perl-expect
 	depends = perl-yaml
-	depends = perl-crypt-cbc<3
+	depends = perl-crypt-cbc
 	depends = perl-crypt-blowfish
 	depends = perl-gtk3
 	depends = perl-net-arp
