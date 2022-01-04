@@ -1,7 +1,7 @@
 pkgbase = ruby-rails
 	pkgdesc = Full-stack web application framework.
 	pkgver = 6.1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rubyonrails.org
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = ruby-rails
 	depends = ruby-railties
 	depends = ruby-bundler
 	depends = ruby-sprockets-rails
+	depends = ruby-actioncable
 	noextract = rails-6.1.4.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/rails-6.1.4.1.gem
