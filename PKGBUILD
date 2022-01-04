@@ -1,12 +1,12 @@
 basename=libsurvive
 pkgname=$basename-git
-pkgver=2021.35f40ce
+pkgver=2023.feca145
 pkgrel=1
 pkgdesc="Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index."
 arch=(x86_64 i686)
 url="https://github.com/cntools/libsurvive"
 license=(MIT)
-depends=("hidapi" "xr-hardware" "libpcap" "lapacke" "cblas" "zlib" "libusb")
+depends=("hidapi" "xr-hardware" "libpcap" "zlib" "libusb" "eigen") # "lapacke" "cblas" "blas"
 conflicts=($basename)
 provides=($basename)
 makedepends=("git" "cmake" "ninja")
@@ -31,9 +31,19 @@ prepare() {
 }
 
 build() {
+  # HACK: possible issue with -O flags and second index controller not being detected, seems to be better with only survive's own cflags
+  unset CFLAGS CXXFLAG
+
   cd $basename
   rm -rf build
-  cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+
+  # there is an openblas issue that causes high cpu usage unless OPENBLAS_NUM_THREADS=0 is set.
+  # works with lapack reference blas but its use is discouraged as it's not tuned.
+  # -DUSE_EIGEN=ON disables the use of blas in favor of libsurvive's own single threaded matrix math using eigen.
+  # This will probably require slightly more cpu power than a tuned blas implementation.
+  # If running on a weak CPU, consider installing a blas implementation and using -DUSE_EIGEN=OFF.
+
+  cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_EIGEN=ON
   ninja -C build
 }
 
