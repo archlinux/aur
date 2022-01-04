@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-vt-py
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Official Python client library for VirusTotal's REST API"
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('python-pytest-httpserver' 'python-pytest-asyncio')
 provides=('python-virustotal')
 replaces=('python-virustotal-api')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0c74c51bdfa4a49a7d3224dc3120ab4ca33537c344ad85b5f119d16909591c76')
+sha256sums=('7f72a6816038b59105da6935f8ceffc82161d227d764d79f2f68bb7cf71476d0')
 
 build() {
 	cd "vt-py-$pkgver"
