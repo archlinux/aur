@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=211203.r16.gee56e06d
+pkgver=220104.r0.g0625e415
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -18,10 +18,11 @@ optdepends=('python-svgwrite: blender bim addon svg support'
 			'python-pyparsing: ifcexpressparser support'
 			'python-requests: blender bim addon covetool support'
 			'python-lark-parser: util, ifccsv, ifcclash support'
-			'python-odfpy: ifccobie support'
+			'python-odfpy: blender bim addon and ifccobie support'
 			'python-behave: python-bimtester'
 			'python-isodate: blender bim addon'
-			'python-olca-ipc: blender bim addon life cycle analysis support')
+			'python-olca-ipc: blender bim addon life cycle analysis support'
+			'python-toposort: ifcpatch')
 makedepends=('cmake' 'boost>=1.58.0' 'swig' 'python-babel')
 provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
 conflicts=()
@@ -30,8 +31,8 @@ backup=()
 source=("git+https://github.com/IfcOpenShell/IfcOpenShell.git"
         "git+https://github.com/IfcOpenShell/svgfill.git"
         "git+https://github.com/svgpp/svgpp.git")
-_blender_ver=$(blender --version | grep -Po 'Blender \K[0-9]\...')
-_python_ver=$(python --version | grep -Po 'Python \K[0-9]\..')
+_blender_ver=$(blender --version | grep -Po 'Blender \K[0-9].[0-9]+')
+_python_ver=$(python --version | grep -Po 'Python \K[0-9].[0-9]+')
 
 prepare() {
   cd "${srcdir}/IfcOpenShell"
