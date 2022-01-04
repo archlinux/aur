@@ -3,13 +3,13 @@
 
 pkgname=guacamole-server
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
 license=('GPL3')
 replaces=('guacd' 'libguac' 'libguac-client-ssh' 'libguac-client-vnc' 'libguac-client-rdp')
-depends=('pango' 'openssl' 'libvorbis' 'uuid' 'libwebp')
+depends=('pango' 'openssl' 'libvorbis' 'libwebp')
 makedepends=('libpulse' 'libvorbis' 'openssl' 'libssh' 'libvncserver' 'pango' 'libtelnet')
 optdepends=('libssh: for ssh protocol support'
 'libvncserver: for vnc protocol support'
