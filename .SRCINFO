@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-avisynthplus
 	pkgdesc = An improved version of the AviSynth frameserver (mingw-w64)
-	pkgver = 3.7.0
+	pkgver = 3.7.1.a
 	pkgrel = 1
 	url = https://avs-plus.net/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = mingw-w64-avisynthplus
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/AviSynth/AviSynthPlus/archive/v3.7.0/avisynthplus-3.7.0.tar.gz
+	source = https://github.com/AviSynth/AviSynthPlus/archive/v3.7.1a/avisynthplus-3.7.1a.tar.gz
 	source = mingw.patch
 	source = staticlib.patch
-	sha256sums = 8906d9e46dc90a194413d69b710e3106c0aafddc0c5c62004885d0c3beb79862
-	sha256sums = eb5fd290367a4714707ff5c219c0fb6838378c838f7b76ce19ace64d2e1eb460
+	sha256sums = e4347d8d62bf702abdbd93a98d02838a5089592908626883b8c17a82c8fb2a41
+	sha256sums = 155f398626bf3e07edb14ee84b569367af97079ed8ed77cd9fba59581af6f406
 	sha256sums = a0838ef2cf66b89e8588703dfb1cd33c281dbc73a2d7af260668b958a3a5e304
 
 pkgname = mingw-w64-avisynthplus

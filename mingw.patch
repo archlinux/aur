@@ -1,18 +1,45 @@
-diff -ruN AviSynthPlus-3.7.0/avs_core/CMakeLists.txt patched/avs_core/CMakeLists.txt
---- AviSynthPlus-3.7.0/avs_core/CMakeLists.txt	2021-01-11 22:19:08.000000000 +0100
-+++ patched/avs_core/CMakeLists.txt	2021-11-22 22:36:35.263330535 +0100
-@@ -112,7 +112,7 @@
- 
- # Per-OS link dependencies
- if (MSVC OR MINGW)
--  target_link_libraries("AvsCore" "uuid" "winmm" "vfw32" "msacm32" "gdi32" "user32" "advapi32" "ole32" "imagehlp")
-+  target_link_libraries("AvsCore" "uuid" "winmm" "vfw32" "msacm32" "gdi32" "user32" "advapi32" "ole32" "imagehlp" "ssp")
+diff -ruN AviSynthPlus-3.7.1/avs_core/CMakeLists.txt patched/avs_core/CMakeLists.txt
+--- AviSynthPlus-3.7.1/avs_core/CMakeLists.txt	2021-12-28 13:00:08.000000000 +0100
++++ patched/avs_core/CMakeLists.txt	2022-01-04 18:40:22.879994562 +0100
+@@ -126,7 +126,7 @@
+ if (MSVC)
+   target_link_libraries("AvsCore" "uuid" "winmm" "vfw32" "msacm32" "gdi32" "user32" "advapi32" "ole32" "imagehlp")
+ elseif (MINGW)
+-  target_link_libraries("AvsCore" "uuid" "winmm" "msacm32" "gdi32" "ole32" "vfw32" "imagehlp" "${SYSLIB}" "${FSLIB}" -static)
++  target_link_libraries("AvsCore" "uuid" "winmm" "msacm32" "gdi32" "ole32" "vfw32" "imagehlp" "${SYSLIB}" "${FSLIB}" "ssp" -static)
  else()
    target_link_libraries("AvsCore" "${SYSLIB}" "${FSLIB}")
  endif()
-diff -ruN AviSynthPlus-3.7.0/avs_core/core/internal.h patched/avs_core/core/internal.h
---- AviSynthPlus-3.7.0/avs_core/core/internal.h	2021-01-11 22:19:08.000000000 +0100
-+++ patched/avs_core/core/internal.h	2021-11-22 22:36:35.266663869 +0100
+diff -ruN AviSynthPlus-3.7.1/avs_core/core/BufferPool.h patched/avs_core/core/BufferPool.h
+--- AviSynthPlus-3.7.1/avs_core/core/BufferPool.h	2021-12-28 13:00:08.000000000 +0100
++++ patched/avs_core/core/BufferPool.h	2022-01-04 18:40:04.139994555 +0100
+@@ -11,12 +11,12 @@
+ private:
+ 
+   struct BufferDesc;
+-  typedef std::multimap<size_t, BufferDesc*> MapType;
++  typedef std::multimap<std::size_t, BufferDesc*> MapType;
+ 
+   InternalEnvironment* Env;
+   MapType Map;
+ 
+-  void* PrivateAlloc(size_t nBytes, size_t alignment, void* user);
++  void* PrivateAlloc(std::size_t nBytes, std::size_t alignment, void* user);
+   void PrivateFree(void* buffer);
+ 
+ public:
+@@ -24,7 +24,7 @@
+   BufferPool(InternalEnvironment* env);
+   ~BufferPool();
+ 
+-  void* Allocate(size_t nBytes, size_t alignment, bool pool);
++  void* Allocate(std::size_t nBytes, std::size_t alignment, bool pool);
+   void Free(void* ptr);
+ 
+ };
+diff -ruN AviSynthPlus-3.7.1/avs_core/core/internal.h patched/avs_core/core/internal.h
+--- AviSynthPlus-3.7.1/avs_core/core/internal.h	2021-12-28 13:00:08.000000000 +0100
++++ patched/avs_core/core/internal.h	2022-01-04 18:40:04.139994555 +0100
 @@ -47,7 +47,7 @@
  #include <limits.h>
  #endif
@@ -22,9 +49,21 @@ diff -ruN AviSynthPlus-3.7.0/avs_core/core/internal.h patched/avs_core/core/inte
  #ifdef AVS_WINDOWS
  #include <intrin.h>
  #else
-diff -ruN AviSynthPlus-3.7.0/avs_core/filters/AviSource/avi_source.cpp patched/avs_core/filters/AviSource/avi_source.cpp
---- AviSynthPlus-3.7.0/avs_core/filters/AviSource/avi_source.cpp	2021-01-11 22:19:08.000000000 +0100
-+++ patched/avs_core/filters/AviSource/avi_source.cpp	2021-11-22 22:36:35.266663869 +0100
+diff -ruN AviSynthPlus-3.7.1/avs_core/core/ThreadPool.h patched/avs_core/core/ThreadPool.h
+--- AviSynthPlus-3.7.1/avs_core/core/ThreadPool.h	2021-12-28 13:00:08.000000000 +0100
++++ patched/avs_core/core/ThreadPool.h	2022-01-04 18:40:04.143327888 +0100
+@@ -42,7 +42,7 @@
+     return ret;
+   }
+ 
+-  virtual ~JobCompletion()
++  virtual __stdcall ~JobCompletion()
+   {
+     Wait();
+     delete [] pairs;
+diff -ruN AviSynthPlus-3.7.1/avs_core/filters/AviSource/avi_source.cpp patched/avs_core/filters/AviSource/avi_source.cpp
+--- AviSynthPlus-3.7.1/avs_core/filters/AviSource/avi_source.cpp	2021-12-28 13:00:08.000000000 +0100
++++ patched/avs_core/filters/AviSource/avi_source.cpp	2022-01-04 18:40:04.143327888 +0100
 @@ -294,7 +294,7 @@
      return result;
  }
@@ -34,10 +73,10 @@ diff -ruN AviSynthPlus-3.7.0/avs_core/filters/AviSource/avi_source.cpp patched/a
  static __inline LRESULT
  ICDecompressEx(HIC hic,DWORD dwFlags,LPBITMAPINFOHEADER lpbiSrc,LPVOID lpSrc,INT xSrc,INT ySrc,INT dxSrc,INT dySrc,LPBITMAPINFOHEADER lpbiDst,LPVOID lpDst,INT xDst,INT yDst,INT dxDst,INT dyDst)
  {
-diff -ruN AviSynthPlus-3.7.0/avs_core/include/avisynth.h patched/avs_core/include/avisynth.h
---- AviSynthPlus-3.7.0/avs_core/include/avisynth.h	2021-01-11 22:19:08.000000000 +0100
-+++ patched/avs_core/include/avisynth.h	2021-11-22 22:36:35.269997202 +0100
-@@ -1624,7 +1624,7 @@
+diff -ruN AviSynthPlus-3.7.1/avs_core/include/avisynth.h patched/avs_core/include/avisynth.h
+--- AviSynthPlus-3.7.1/avs_core/include/avisynth.h	2021-12-28 13:00:08.000000000 +0100
++++ patched/avs_core/include/avisynth.h	2022-01-04 18:40:04.143327888 +0100
+@@ -1635,7 +1635,7 @@
  {
  public:
  
@@ -46,10 +85,10 @@ diff -ruN AviSynthPlus-3.7.0/avs_core/include/avisynth.h patched/avs_core/includ
    virtual void __stdcall Wait() = 0;
    virtual AVSValue __stdcall Get(size_t i) = 0;
    virtual size_t __stdcall Size() const = 0;
-diff -ruN AviSynthPlus-3.7.0/plugins/ImageSeq/CMakeLists.txt patched/plugins/ImageSeq/CMakeLists.txt
---- AviSynthPlus-3.7.0/plugins/ImageSeq/CMakeLists.txt	2021-01-11 22:19:08.000000000 +0100
-+++ patched/plugins/ImageSeq/CMakeLists.txt	2021-11-22 22:41:54.376663876 +0100
-@@ -35,14 +35,14 @@
+diff -ruN AviSynthPlus-3.7.1/plugins/ImageSeq/CMakeLists.txt patched/plugins/ImageSeq/CMakeLists.txt
+--- AviSynthPlus-3.7.1/plugins/ImageSeq/CMakeLists.txt	2021-12-28 13:00:08.000000000 +0100
++++ patched/plugins/ImageSeq/CMakeLists.txt	2022-01-04 18:40:04.146661222 +0100
+@@ -43,14 +43,14 @@
      # Specify include directories
      target_include_directories(${ProjectName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/DevIL_x86 ${AvsCore_SOURCE_DIR})
      # Windows DLL dependencies
@@ -66,49 +105,10 @@ diff -ruN AviSynthPlus-3.7.0/plugins/ImageSeq/CMakeLists.txt patched/plugins/Ima
      # Copy binary dependencies to a common folder for easy deployment
      configure_file("${PROJECT_SOURCE_DIR}/lib/DevIL_x64/DevIL.dll" "${CMAKE_BINARY_DIR}/Output/system/DevIL.dll" COPYONLY)
    endif()
-diff -ruN AviSynthPlus-3.7.0/avs_core/core/BufferPool.h patched/avs_core/core/BufferPool.h
---- AviSynthPlus-3.7.0/avs_core/core/BufferPool.h	2021-01-11 22:19:08.000000000 +0100
-+++ patched/avs_core/core/BufferPool.h	2021-11-22 23:06:53.226663878 +0100
-@@ -10,12 +10,12 @@
- private:
- 
-   struct BufferDesc;
--  typedef std::multimap<size_t, BufferDesc*> MapType;
-+  typedef std::multimap<std::size_t, BufferDesc*> MapType;
- 
-   InternalEnvironment* Env;
-   MapType Map;
- 
--  void* PrivateAlloc(size_t nBytes, size_t alignment, void* user);
-+  void* PrivateAlloc(std::size_t nBytes, std::size_t alignment, void* user);
-   void PrivateFree(void* buffer);
- 
- public:
-@@ -23,7 +23,7 @@
-   BufferPool(InternalEnvironment* env);
-   ~BufferPool();
- 
--  void* Allocate(size_t nBytes, size_t alignment, bool pool);
-+  void* Allocate(std::size_t nBytes, std::size_t alignment, bool pool);
-   void Free(void* ptr);
- 
- };
-diff -ruN AviSynthPlus-3.7.0/avs_core/core/ThreadPool.h patched/avs_core/core/ThreadPool.h
---- AviSynthPlus-3.7.0/avs_core/core/ThreadPool.h	2021-01-11 22:19:08.000000000 +0100
-+++ patched/avs_core/core/ThreadPool.h	2021-11-22 23:06:53.226663878 +0100
-@@ -42,7 +42,7 @@
-     return ret;
-   }
- 
--  virtual ~JobCompletion()
-+  virtual __stdcall ~JobCompletion()
-   {
-     Wait();
-     delete [] pairs;
-diff -ruN AviSynthPlus-3.7.0/plugins/VDubFilter/CMakeLists.txt patched/plugins/VDubFilter/CMakeLists.txt
---- AviSynthPlus-3.7.0/plugins/VDubFilter/CMakeLists.txt	2021-11-22 23:07:09.063330549 +0100
-+++ patched/plugins/VDubFilter/CMakeLists.txt	2021-11-22 23:06:53.559997217 +0100
-@@ -24,7 +24,7 @@
+diff -ruN AviSynthPlus-3.7.1/plugins/VDubFilter/CMakeLists.txt patched/plugins/VDubFilter/CMakeLists.txt
+--- AviSynthPlus-3.7.1/plugins/VDubFilter/CMakeLists.txt	2021-12-28 13:00:08.000000000 +0100
++++ patched/plugins/VDubFilter/CMakeLists.txt	2022-01-04 18:40:04.146661222 +0100
+@@ -22,7 +22,7 @@
  endif()
  
  # Library dependencies
