@@ -13,9 +13,9 @@ pkgbase = kopano-webapp-nginx-git
 	source = nginx-ssl.example.conf
 	source = php-fpm.example.conf
 	source = kopano-webapp.conf
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = acb8acb6cef3b129d16c689fd87d488f
+	md5sums = bf914a706e3926b617a95cbe99e18a10
+	md5sums = cacf375cabab0eaf7792d2d3a1a6b11a
+	md5sums = c86f282632dd24812d1d639246f79889
 
 pkgname = kopano-webapp-nginx-git

@@ -16,12 +16,10 @@ source=(
     'php-fpm.example.conf'
     'kopano-webapp.conf'
     )
-md5sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-)
+md5sums=('acb8acb6cef3b129d16c689fd87d488f'
+         'bf914a706e3926b617a95cbe99e18a10'
+         'cacf375cabab0eaf7792d2d3a1a6b11a'
+         'c86f282632dd24812d1d639246f79889')
 depends=(
     'kopano-webapp'
     'nginx'
