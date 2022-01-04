@@ -1,7 +1,6 @@
 # Maintainer: Dan Ginovker <danielginovker@gmail.com>
 
-pkgbase=tree-game-bin
-pkgname=tree-game
+pkgname=tree-game-bin
 pkgver=0.09
 pkgrel=1
 pkgdesc="Powder toy like sandbox game focused on nature"
@@ -13,7 +12,7 @@ source=("https://github.com/segfaultdev/tree/releases/download/v0.09/tree"
     tree-game.desktop
     "https://raw.githubusercontent.com/segfaultdev/tree/master/LICENSE")
 sha256sums=('84dd3f206b4eefaf01c6571b8a165569907cb845326ebd69a48bfc6728ec33d7'
-    '9c6638d0971105517fbb244d7c00220fb34786597d6107fb6172b11008a1a018'
+    'e1f0028d51d2a80f45fef0e552c07e09457512ecc005b669633b3536b868aebe'
     '78f3201cff6e5a760db10ce3d7456f0f0a9c130fe132095d90f3eb16cb6296ea')
 
 package() {
@@ -26,7 +25,7 @@ package() {
     # Desktop Environment integration
     install -D -m644 \
         "${srcdir}/tree-game.desktop" \
-        "${pkgdir}/usr/share/applications/tree-game.desktop"
+        "${pkgdir}/usr/share/applications/tree-game-bin.desktop"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
