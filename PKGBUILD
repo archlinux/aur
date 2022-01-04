@@ -13,7 +13,6 @@ makedepends=(glibc qt5-base git autoconf automake gcc bc)
 optdepends=(texlive-core rcs texlive-latexextra)
 provides=('lyx')
 conflicts=('lyx')
-replaces=('')
 source=("${_pkgname}::git://git.lyx.org/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
 
