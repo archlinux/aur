@@ -1,0 +1,12 @@
+diff --color -aur src.orig/Py3DG200-1.6/Py3DG200.py src/Py3DG200-1.6/Py3DG200.py
+--- src.orig/Py3DG200-1.6/Py3DG200.py	2018-05-03 20:47:16.000000000 +0200
++++ src/Py3DG200-1.6/Py3DG200.py	2022-01-04 10:25:16.942575197 +0100
+@@ -32,6 +32,8 @@
+ import os
+ import time
+ from serial import Serial
++import gi
++gi.require_version('Gtk', '3.0')
+ from gi.repository import Gtk
+ 
+ isDebug = False
