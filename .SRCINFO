@@ -1,0 +1,15 @@
+pkgbase = python-pygitguardian
+	pkgdesc = GitGuardian API Client.
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/GitGuardian/py-gitguardian
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-marshmallow
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/pygitguardian/pygitguardian-1.3.3.tar.gz
+	sha256sums = 0d14675e32a6d148c87bc997431078872ee477a8e84df5b2bfd592e5467ce37b
+
+pkgname = python-pygitguardian
