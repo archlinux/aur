@@ -2,7 +2,7 @@
 
 pkgname=ytsubconverter-bin
 _reponame=YTSubConverter
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A tool for creating styled YouTube subtitles"
 arch=('x86_64')
