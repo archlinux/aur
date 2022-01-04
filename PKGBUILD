@@ -4,7 +4,7 @@
 ## Must use git to pull sources because of python-setuptools-scm
 
 pkgname=python-pyscaffold
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
