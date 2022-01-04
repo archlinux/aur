@@ -1,0 +1,16 @@
+pkgbase = mintotp
+	pkgdesc = Minimal TOTP generator
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/susam/mintotp
+	changelog = CHANGES.md
+	arch = any
+	license = MIT
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	depends = python
+	provides = python-mintotp
+	source = mintotp-0.3.0.tar.gz::https://github.com/susam/mintotp/archive/0.3.0.tar.gz
+	sha256sums = 38bfac7187eaa61dd557773dc9fe1bd465ce5d5e4587b9b91652085860ddaefd
+
+pkgname = mintotp
