@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=gloCOM
+Comment=Global Communications Tool for PBXware
+Exec=/opt/gloCOM/bin/glocom %u
+Icon=/usr/share/gloCOM/logo.png
+Terminal=false
+StartupNotify=false
+Categories=Application;Network;

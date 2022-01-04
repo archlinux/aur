@@ -1,0 +1,16 @@
+pkgbase = glocom
+	pkgdesc = PBXware Global Communications Tool including Audio, IM, SMS, Fax and Meeting
+	pkgver = 6.4.1
+	pkgrel = 1
+	url = https://www.bicomsystems.com
+	arch = x86_64
+	license = custom
+	depends = libxss
+	depends = libx11
+	provides = glocom
+	conflicts = glocom
+	options = !strip
+	source = https://downloads.bicomsystems.com/desktop/glocom/public/6.4.1/glocom/gloCOM-6.4.1.deb
+	sha256sums = b457737c0054adbd56c3e0a9dec08c2b686a6c68a3cd41c2c939e030913d09b6
+
+pkgname = glocom
