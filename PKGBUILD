@@ -520,3 +520,4 @@ _setConfig() {
     sed -i -e "s|\(${_configAttribute}', \)\(.*\)\();$\)|\1${_configValue}\3|" ${_configFile}
 }
 # template end;
+md5sums=('SKIP')
