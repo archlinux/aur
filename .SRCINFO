@@ -1,0 +1,19 @@
+pkgbase = scroll-git
+	pkgdesc = A simple virtual terminal emulator for X.
+	pkgver = 0.1.r2.g51ee387
+	pkgrel = 1
+	url = https://git.suckless.org/scroll/file/README.html
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = scroll
+	conflicts = scroll
+	source = git://git.suckless.org/scroll
+	sha256sums = SKIP
+
+pkgname = scroll-git
