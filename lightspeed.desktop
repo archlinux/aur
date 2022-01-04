@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Light Speed!
+Comment=Interactively illustrates the effects of special relativity on the appearance of moving objects 
+Exec=/usr/bin/lightspeed
+Icon=lightspeed.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Education;
