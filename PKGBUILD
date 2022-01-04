@@ -2,13 +2,13 @@
 # Maintainer: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mindforger
-pkgver=1.52.0
+pkgver=1.53.0
 pkgrel=1
 pkgdesc="Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.mindforger.com/"
 license=(GPL2)
-depends=(qt5-base qt5-webkit zlib)
+depends=(qt5-base qt5-webkit zlib hunspell)
 makedepends=(git cmake)
 source=("git+https://github.com/dvorka/mindforger.git#tag=$pkgver"
         "git+https://github.com/dvorka/mindforger-repository.git"
