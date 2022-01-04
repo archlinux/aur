@@ -1,0 +1,18 @@
+pkgbase = ggshield
+	pkgdesc = Protect your secrets with GitGuardian.
+	pkgver = 1.10.7
+	pkgrel = 1
+	url = https://github.com/GitGuardian/ggshield
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-pygitguardian
+	depends = python-pyaml
+	depends = python-dotenv
+	depends = python-yaspin
+	source = https://files.pythonhosted.org/packages/source/g/ggshield/ggshield-1.10.7.tar.gz
+	sha256sums = e002577bf434be85baef737970d387efd95ea094b08b93399be577d2bb5a7f0e
+
+pkgname = ggshield
