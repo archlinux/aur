@@ -15,6 +15,6 @@ pkgbase = kopano-webapp-spellchecker-git
 	source = kopano-webapp-spellchecker-git::git+https://stash.kopano.io/scm/kwa/spellchecker.git#branch=master
 	source = kopano-webapp-spellchecker.ini
 	md5sums = SKIP
-	md5sums = cb4f55c46dc7f678e7fb73e195d01d85
+	md5sums = cb4f55c46dc7f678e7fb73e195d01d85 kopano-webapp-spellchecker.ini
 
 pkgname = kopano-webapp-spellchecker-git

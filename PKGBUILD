@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-spellchecker-git'
 pkgver='2.0.1'
 
@@ -520,5 +521,3 @@ _setConfig() {
     sed -i -e "s|\(${_configAttribute}', \)\(.*\)\();$\)|\1${_configValue}\3|" ${_configFile}
 }
 # template end;
-md5sums=('SKIP'
-         'cb4f55c46dc7f678e7fb73e195d01d85')
