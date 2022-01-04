@@ -1,4 +1,5 @@
-# Maintainer: anon at sansorgan.es
+# Maintainer: Konzertheld <aur at konzertheld dot de>
+# Contributor: anon at sansorgan.es
 _hkgname=arbtt
 pkgname=arbtt
 pkgver=0.11.1

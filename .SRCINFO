@@ -1,7 +1,7 @@
 pkgbase = arbtt
 	pkgdesc = Automatic Rule-Based Time Tracker
-	pkgver = 0.10.2
-	pkgrel = 6
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://hackage.haskell.org/package/arbtt
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = arbtt
 	makedepends = ghc
 	makedepends = cabal-install
 	makedepends = haskell-aeson>=0.1
-	makedepends = haskell-aeson<1.5
+	makedepends = haskell-aeson<1.6
 	makedepends = haskell-base<5
 	makedepends = haskell-base>=4.7
 	makedepends = haskell-binary>=0.5
@@ -38,8 +38,9 @@ pkgbase = arbtt
 	makedepends = haskell-unix
 	makedepends = haskell-x11
 	depends = ghc
-	depends = haskell-aeson<=1.5
+	depends = haskell-aeson<1.6
 	depends = haskell-aeson>=0.1
+	depends = haskell-attoparsec>=0.13
 	depends = haskell-bytestring-progress
 	depends = haskell-conduit
 	depends = haskell-pcre-light
@@ -52,8 +53,9 @@ pkgbase = arbtt
 	provides = haskell-arbtt
 	conflicts = haskell-arbtt
 	options = strip
-	source = https://hackage.haskell.org/packages/archive/arbtt/0.10.2/arbtt-0.10.2.tar.gz
-	md5sums = 1b2fe0992719512d8e7b0c47ec0cc16c
+	source = https://hackage.haskell.org/packages/archive/arbtt/0.11.1/arbtt-0.11.1.tar.gz
+	source = attoparsec-dep.patch
+	md5sums = c3ff2bda3fc53d8ce7b880749317d013
+	md5sums = b22d1f4a3b55ff11217c4dbe7f5f6db4
 
 pkgname = arbtt
-
