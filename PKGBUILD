@@ -5,7 +5,10 @@ pkgrel=1
 pkgdesc="Bidirectional port-forwarding for docker and kubernetes"
 url="https://github.com/ruoshan/autoportforward"
 arch=('any')
-makedepends=('git' 'go')
+makedepends=(
+  'git'
+  'go'
+  'sed')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase::git+https://github.com/ruoshan/autoportforward.git")
@@ -14,6 +17,12 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgbase"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  # Strictly here to remove build path from binary
+  # and eliminate the makepkg message "WARNING: Package contains reference to $srcdir"
+  sed -E -i 's/go build/go build -trimpath/g' "$srcdir/$_pkgbase/build.sh"
 }
 
 build() {
