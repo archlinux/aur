@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-libvmime-git'
 pkgver=0.9.2k4
 pkgrel=1
@@ -158,7 +159,9 @@ conflicts=(
 source=(
     "${pkgname}::git+https://github.com/Kopano-dev/vmime.git${_sourceBranch}"
 	)
-md5sums=('SKIP')
+md5sums=(
+    'SKIP'
+	)
 
 makedepends=(
     'cmake'
