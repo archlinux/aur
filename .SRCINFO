@@ -1,0 +1,8 @@
+pkgbase = deb-pkgbuild
+	pkgdesc = create a debian package with makepkg
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	makedepends = dpkg
+
+pkgname = deb-pkgbuild
