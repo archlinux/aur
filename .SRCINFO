@@ -1,0 +1,13 @@
+pkgbase = dedsec-grub2-theme
+	pkgdesc = Beautiful dedsec grub2 themes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vandalsoul/dedsec-grub2-theme
+	install = dedsec-grub2-theme.install
+	arch = any
+	license = GPL3
+	depends = grub
+	source = git+https://github.com/vandalsoul/dedsec-grub2-theme.git
+	sha256sums = SKIP
+
+pkgname = dedsec-grub2-theme
