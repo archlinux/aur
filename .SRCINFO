@@ -4,6 +4,7 @@ pkgbase = cgminer
 	pkgrel = 1
 	url = http://ck.kolivas.org/apps/cgminer/
 	arch = x86_64
+  arch = i386
 	license = GPL3
 	makedepends = git
 	depends = curl
