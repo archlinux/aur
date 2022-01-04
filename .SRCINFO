@@ -1,8 +1,8 @@
 pkgbase = linux-show-player
-	pkgdesc = Sound cue playback software designed for live musical shows and theatre plays
-	pkgver = 0.5.2
+	pkgdesc = Cue player designed for stage productions
+	pkgver = 0.5.3
 	pkgrel = 1
-	url = http://linux-show-player.sourceforge.net/
+	url = https://www.linux-show-player.org/
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
@@ -10,14 +10,16 @@ pkgbase = linux-show-player
 	depends = python-gobject
 	depends = gst-plugins-good
 	depends = python-mido
+	depends = python-rtmidi
 	depends = python-sortedcontainers
 	depends = qt5-svg
 	optdepends = gst-libav: for larger format support
+	optdepends = ola: for Art-Net timecode support
+	optdepends = python-protobuf: for Art-Net timecode support
 	optdepends = portmidi: for portmidi support
 	optdepends = python-jack-client: for JACK output support
 	options = !emptydirs
-	source = https://github.com/FrancescoCeruti/linux-show-player/archive/v0.5.2.tar.gz
-	sha256sums = b78689e5c8f5cdf1600fd8e58e30264e677ab0d8c77538aaaeb571f56185c9bb
+	source = linux-show-player-0.5.3.tar.gz::https://github.com/FrancescoCeruti/linux-show-player/archive/v0.5.3.tar.gz
+	sha256sums = e5b70def979984053bae1023210f4c568f989f7714d712506911de6ea3837d0b
 
 pkgname = linux-show-player
-

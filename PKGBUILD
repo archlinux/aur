@@ -2,37 +2,33 @@
 # Contributor: Christopher Arndt <chris at chrisarndt.de>
 
 pkgname=linux-show-player
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
-pkgdesc="Sound cue playback software designed for live musical shows and theatre plays"
-url="http://linux-show-player.sourceforge.net/"
+pkgdesc="Cue player designed for stage productions"
+url="https://www.linux-show-player.org/"
 arch=('any')
 license=('GPL3')
 depends=('python-pyqt5' 'python-gobject' 'gst-plugins-good' 'python-mido'
-         'python-sortedcontainers' 'qt5-svg')
+         'python-rtmidi' 'python-sortedcontainers' 'qt5-svg')
 makedepends=('python-setuptools')
 optdepends=('gst-libav: for larger format support'
+            'ola: for Art-Net timecode support'
+            'python-protobuf: for Art-Net timecode support'
             'portmidi: for portmidi support'
             'python-jack-client: for JACK output support')
 options=('!emptydirs')
-source=("https://github.com/FrancescoCeruti/${pkgname}/archive/v${pkgver/_/-}.tar.gz")
-sha256sums=('b78689e5c8f5cdf1600fd8e58e30264e677ab0d8c77538aaaeb571f56185c9bb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FrancescoCeruti/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('e5b70def979984053bae1023210f4c568f989f7714d712506911de6ea3837d0b')
 
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
-
-  sed -i -e 's|0\.5\.1|0.5.2|' lisp/__init__.py
-}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   python setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1 --skip-build
   install -Dm644 dist/linuxshowplayer.desktop -t "${pkgdir}/usr/share/applications"
