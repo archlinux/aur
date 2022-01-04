@@ -1,4 +1,5 @@
 # Maintainer: Bart Libert <aur at bart dot libert dot email>
+# Maintainer: harshadgavali
 
 pkgname=tabsearchproviderconnector
 pkgver=0.1.0
