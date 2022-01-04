@@ -2,16 +2,18 @@
 
 _pkgname=linux-show-player
 pkgname="${_pkgname}-git"
-pkgver=0.5.1.r267.88156278
+pkgver=0.5.3.r278.39aba467
 pkgrel=1
-pkgdesc="Sound cue playback software designed for live musical shows and theatre plays (git version)"
-url="http://linux-show-player.sourceforge.net/"
+pkgdesc="Cue player designed for stage productions (git version)"
+url="https://www.linux-show-player.org/"
 arch=('any')
 license=('GPL3')
 depends=('python-pyqt5' 'python-gobject' 'gst-plugins-good' 'python-mido'
-         'python-sortedcontainers' 'qt5-svg')
+         'python-rtmidi' 'python-sortedcontainers' 'qt5-svg')
 makedepends=('git' 'python-setuptools')
 optdepends=('gst-libav: for larger format support'
+            'ola: for Art-Net timecode support'
+            'python-protobuf: for Art-Net timecode support'
             'portmidi: for portmidi support'
             'python-jack-client: for JACK output support')
 options=('!emptydirs')

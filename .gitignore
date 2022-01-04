@@ -3,4 +3,5 @@ src/
 .AURINFO
 linux-show-player/
 linux-show-player-*.tar.xz
+linux-show-player-*.tar.zst
 linux-show-player-*.src.tar.gz
