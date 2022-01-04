@@ -14,6 +14,6 @@ pkgbase = kopano-webapp-smime-git
 	source = kopano-webapp-smime-git::git+https://stash.kopano.io/scm/kwa/smime.git#branch=master
 	source = kopano-webapp-smime.ini
 	md5sums = SKIP
-	md5sums = f49fb2db0167e943ce26f1db7e4055c8
+	md5sums = f49fb2db0167e943ce26f1db7e4055c8 kopano-webapp-smime.ini
 
 pkgname = kopano-webapp-smime-git

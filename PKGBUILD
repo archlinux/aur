@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-smime-git'
 pkgver='2.2.4'
 
@@ -521,5 +522,3 @@ prepare() {
     cd ${srcdir}/${pkgname}
     _setConfig "PLUGIN_SMIME_CIPHER" "OPENSSL_CIPHER_AES_256_CBC" config.php
 }
-md5sums=('SKIP'
-         'f49fb2db0167e943ce26f1db7e4055c8')
