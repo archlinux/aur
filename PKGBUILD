@@ -1,19 +1,45 @@
+# Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
+
 _gemname=gemoji
-pkgname=ruby-gemoji
-pkgver=4.0.0.rc2
+pkgname=ruby-$_gemname
+pkgver=4.0.0.rc3
 pkgrel=1
-pkgdesc="Image assets and character information for emoji"
-arch=('any')
-url="https://github.com/github/gemoji"
-license=('custom:MIT')
-depends=('ruby')
-source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('0cfb4101e11b8d091a9e26c2899789102b4151da467e5a6257d5058abb4663f7')
-noextract=("${pkgname#*-}-${pkgver}.gem")
+pkgdesc="Character information and metadata for Unicode emoji"
+arch=(any)
+url=https://github.com/github/gemoji
+license=(MIT)
+depends=(ruby)
+checkdepends=(ruby-bundler ruby-rake ruby-i18n ruby-minitest)
+makedepends=(rubygems ruby-rdoc)
+source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('81d86b6889eb3c9831f9a4be3931dcd957fe289eeee5132848aa6749fcb01c7a')
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname-$pkgver
+  rake
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --no-document --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
