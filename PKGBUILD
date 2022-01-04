@@ -6,7 +6,7 @@
 _pkgname=pdm
 pkgname=python-pdm
 pkgver=1.12.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern Python package manager with PEP 582 support."
 arch=("any")
 url="https://pdm.fming.dev/"
@@ -15,15 +15,17 @@ depends=(
   "python>=3.8"
   "python-appdirs"
   "python-atoml>=1.0.3"
-  "python-click>7"
+  "python-blinker"
+  "python-click>=7"
   "python-dotenv"
   "python-installer"
   "python-pep517"
   "python-pdm-pep517>=0.8"
   "python-pythonfinder"
   "python-resolvelib"
-  "python-shellingham"
+  "python-shellingham>=1.3.2"
   "python-tomli>=1.1.0"
+  "python-tomlkit>=0.8.0"
 )
 makedepends=("python-pip>=20.1")
 _pkgname_prefix="${_pkgname:0:1}"
