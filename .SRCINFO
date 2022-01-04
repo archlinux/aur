@@ -1,17 +1,17 @@
 pkgbase = uyap
-	pkgdesc = Uyap Belge Düzenleyici
-	pkgver = 4.1.10
-	pkgrel = 2
-	url = http://www.uyap.gov.tr/
+	pkgdesc = UYAP Dokuman Editor, UYAP Sablon Editor
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = https://uyap.gov.tr/UYAP-Editor
 	arch = x86_64
-	license = GPL2
-	makedepends = innoextract
-	source = http://www.uyap.gov.tr/destek/uyap.zip
-	source = uyap-editor.png
-	source = product_logo_32.xpm
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	license = custom
+	depends = pcsclite
+	depends = java-environment
+	optdepends = akia: sign UYAP documents
+	optdepends = jre8: sign UYAP documents
+	source = https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus-5-4-0-amd6420-12-20219-21-am.zip
+	source = desktop-files.patch
+	sha256sums = 2394f9b712ca2e2d905901642992fd736e0c972b0e5f72303e06cf9cebd7b2f1
+	sha256sums = 19f36882522f236b3e48049c810079cf0ddfb21b76ad2da84e9b70550df4ac19
 
 pkgname = uyap
-

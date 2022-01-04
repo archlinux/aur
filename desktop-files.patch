@@ -1,0 +1,24 @@
+diff --unified --recursive --text package.orig/usr/share/applications/dokuman.desktop package.new/usr/share/applications/dokuman.desktop
+--- package.orig/usr/share/applications/dokuman.desktop	2021-02-12 22:23:32.000000000 +0300
++++ package.new/usr/share/applications/dokuman.desktop	2022-01-04 22:16:56.008811348 +0300
+@@ -2,7 +2,7 @@
+ [Desktop Entry]
+ Comment[tr]=
+ Comment=
+-Exec=/usr/share/UYAPEditor/dokuman.sh
++Exec=uyapeditor
+ Icon=uyap-editor
+ GenericName[tr]=UYAP DOKUMAN EDITOR
+ GenericName=UYAP DOKUMAN EDITOR
+diff --unified --recursive --text package.orig/usr/share/applications/sablon.desktop package.new/usr/share/applications/sablon.desktop
+--- package.orig/usr/share/applications/sablon.desktop	2021-02-12 22:23:32.000000000 +0300
++++ package.new/usr/share/applications/sablon.desktop	2022-01-04 22:17:29.293052895 +0300
+@@ -2,7 +2,7 @@
+ [Desktop Entry]
+ Comment[tr]=
+ Comment=
+-Exec=/usr/share/UYAPEditor/sablon.sh
++Exec=uyapsablon
+ Icon=uyap-editor
+ GenericName[tr]=UYAP SABLON EDITOR
+ GenericName=UYAP SABLON EDITOR 
