@@ -8,17 +8,17 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.4.1717.r350.g0c2d46e04b
+pkgver=2021.09.0+351.r1191.gbcb324f6f5
 _gwtver=2.8.2
 _ginver=2.1.2
-_nodever=10.19.0
+_nodever=14.17.5
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
 depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang' 'postgresql-libs' 'sqlite3' 'soci' 'yaml-cpp' 'hunspell-en_US')
-makedepends=('git' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget' 'yarn')
+makedepends=('git' 'quarto-cli-bin' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget' 'yarn')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git+https://github.com/rstudio/rstudio.git'
@@ -31,7 +31,7 @@ md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          'e2617189fe5c138945b8cc95f26bd476'
          'c295406d68c5ef364e445068599aa6d4'
-         '441a8e19ab9cd9884cbd24f85840c7a6')
+         '3cd3b18e1412067aabd2e1b23b93106e')
          
 
 pkgver() {
@@ -59,6 +59,7 @@ prepare () {
 
 	    ln -sfT "/usr/share/myspell/dicts" dictionaries
 	    ln -sfT "/usr/share/mathjax2" mathjax-27
+   	    ln -sfT /opt/quarto quarto
 	    ln -sfT "/usr/bin/pandoc" pandoc/${_pandocver}/pandoc
 	    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/${_pandocvec}/pandoc-citeproc
 
@@ -72,6 +73,7 @@ prepare () {
 	    # Fix links for src/cpp/session/CMakeLists.txt
 	    cd "${srcdir}/${_gitname}/dependencies"
 	    ln -sfT common/dictionaries dictionaries
+   	    ln -sfT common/quarto quarto
 	    ln -sfT common/mathjax-27 mathjax-27
 	    ln -sfT common/pandoc pandoc
 

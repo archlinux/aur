@@ -1,0 +1,7 @@
+*.zip
+*.gz
+*.pkg*
+src/
+pkg/
+rstudio/
+

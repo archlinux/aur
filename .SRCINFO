@@ -1,6 +1,6 @@
 pkgbase = rstudio-server-git
 	pkgdesc = A new integrated development environment (IDE) for R programming language
-	pkgver = v1.4.1717.r350.g0c2d46e04b
+	pkgver = 2021.09.0+351.r1191.gbcb324f6f5
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-server-git.install
@@ -8,6 +8,7 @@ pkgbase = rstudio-server-git
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
+	makedepends = quarto-cli-bin
 	makedepends = cmake>=3.4.3
 	makedepends = boost>=1.69
 	makedepends = jdk8-openjdk
@@ -35,11 +36,11 @@ pkgbase = rstudio-server-git
 	source = rstudio-server.service
 	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-2.1.2.zip
 	source = https://storage.googleapis.com/gwt-releases/gwt-2.8.2.zip
-	source = https://nodejs.org/dist/v10.19.0/node-v10.19.0-linux-x64.tar.gz
+	source = https://nodejs.org/dist/v14.17.5/node-v14.17.5-linux-x64.tar.gz
 	md5sums = SKIP
 	md5sums = eea28f7865720f6c8d5de12f3f631880
 	md5sums = e2617189fe5c138945b8cc95f26bd476
 	md5sums = c295406d68c5ef364e445068599aa6d4
-	md5sums = 441a8e19ab9cd9884cbd24f85840c7a6
+	md5sums = 3cd3b18e1412067aabd2e1b23b93106e
 
 pkgname = rstudio-server-git
