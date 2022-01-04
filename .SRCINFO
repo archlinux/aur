@@ -1,6 +1,6 @@
 pkgbase = r-dtplyr
 	pkgdesc = Provides a data.table backend for 'dplyr'
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dtplyr
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-dtplyr
 	license = custom
 	depends = r>=3.3
 	depends = r-crayon
-	depends = r-data.table>=1.12.4
+	depends = r-data.table>=1.13.0
 	depends = r-dplyr>=1.0.3
 	depends = r-ellipsis
 	depends = r-glue
@@ -21,10 +21,9 @@ pkgbase = r-dtplyr
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-testthat
-	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/dtplyr_1.1.0.tar.gz
-	sha256sums = 99681b7285d7d5086e5595ca6bbeebf7f4e2ee358a32b694cd9d35916cdfc732
+	optdepends = r-testthat>=3.0.0
+	optdepends = r-tidyr>=1.1.0
+	source = https://cran.r-project.org/src/contrib/dtplyr_1.2.0.tar.gz
+	sha256sums = a6dedfb6dd80dfc1d29d005ab634c060b7bfda8cb49835ece84d3b7d12077414
 
 pkgname = r-dtplyr
-
