@@ -524,3 +524,4 @@ prepare() {
     sed -i 's|config.php.dist|config.php|g' build.xml
     mv config.php.dist config.php
 }
+md5sums=('SKIP')
