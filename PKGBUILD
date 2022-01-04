@@ -7,7 +7,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
 pkgver=2.3.2.r10607.78a95e54e
-pkgrel=1
+pkgrel=2
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
 url="https://github.com/persmule/amule-dlp"
@@ -20,10 +20,12 @@ install=amule.install
 provides=('amule' 'amule-dlp')
 source=("git+https://github.com/persmule/amule-dlp.git"
         'amuled.systemd'
-		'amuleweb.systemd')
+		'amuleweb.systemd'
+		'0001-allow-to-build-with-autoconf-2.70-and-later.patch')
 sha256sums=('SKIP'
             '6dbdd1ad1c3c3d8637b8f4cbd5416f39c8e4277a2f8498577b08bf6cda8dbca9'
-            'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2')
+            'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2'
+            '78b0021d878a8985d87c5f00caa7a1165b9bdf92880a2e3a197db429a7eb6dd8')
 
 pkgver() {
   cd "${srcdir}/amule-dlp"
@@ -33,6 +35,7 @@ pkgver() {
 prepare(){
   cd "${srcdir}/amule-dlp"
   cp src/aMule.xpm amule.xpm
+  patch -p1 < ../0001-allow-to-build-with-autoconf-2.70-and-later.patch
 }
 
 build() {
