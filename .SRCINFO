@@ -1,11 +1,10 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 1.2.0.140
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gov.dingtalk.com
 	arch = x86_64
 	license = custom
-	makedepends = icoutils
 	depends = glu
 	provides = com.alibabainc.dingtalk
 	provides = dingtalk
@@ -15,9 +14,11 @@ pkgbase = dingtalk-bin
 	source = service-terms-zh
 	source = com.alibabainc.dingtalk.desktop
 	source = dingtalk.sh
+	source = com.alibabainc.dingtalk.svg
 	sha512sums = d3c7b9c776c18059a8786153b6dd0936eb632b25a5e358a3b2cb0cf35bc5a1ed740d86f4e833be3c3e6a0819b7d772c5e36e4470468d56628e91490b2fead2f6
 	sha512sums = b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64
 	sha512sums = c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f
 	sha512sums = 50437762c47843fa9040bfb5a723da246d1496e4dc0937028c0f2cb92e0286dc47b7c2a5a0485a4b667cfb30d7c4d23664a2ccb08c5bd3059aad265532c1140e
+	sha512sums = 5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775
 
 pkgname = dingtalk-bin
