@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk-git
-pkgver=Qt5.r203.g96d38e8
+pkgver=Qt5.r213.g3ae9994
 pkgrel=1
 provides=('libff7tk')
 conflicts=('libff7tk')
@@ -22,11 +22,11 @@ pkgver() {
 
 build() {
   cd "ff7tk"
-  cmake -DDOCS=ON -DCMAKE_INSTALL_PREFIX=/usr -DQT_DEFAULT_MAJOR_VERSION=6 CMakeLists.txt
-  make
+  cmake -S. -Bbuild -DDOCS=ON -DCMAKE_INSTALL_PREFIX=/usr -DQT_DEFAULT_MAJOR_VERSION=6
+  cmake --build build
 }
 
 package(){
   cd "ff7tk"
-  make DESTDIR="$pkgdir" install
+  cmake --install build --prefix "$pkgdir" --strip
 }
