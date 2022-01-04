@@ -168,15 +168,15 @@ source=("${pkgname}::git+${_remoteGit}${_sourceBranch}"
 	"z-push-admin"
 	"z-push-top")
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         '32a459bd61135b6c5e99e82e3a6b0007'
+         '1091aa1ba272ef05bf628f73b05c527a'
+         '34bc547b5277d4ac40d8baac7ea84efb'
+         'aa7f92cdf5b363fce5a389c8a25ecd52'
+         '9637d4164f85cb3fb9a886654645a46c'
+         'bf914a706e3926b617a95cbe99e18a10'
+         'cacf375cabab0eaf7792d2d3a1a6b11a'
+         '626a81889bebd6184d8f90deb00f6119'
+         'dfa0d3eceef2433ded6229b6611c5e02')
 
 package() {
     # according to https://wiki.archlinux.org/index.php/Web_application_package_guidelines
