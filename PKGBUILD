@@ -2,11 +2,11 @@
 
 pkgname=tabsearchproviderconnector
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Browser tab search provider for GNOME"
 url="https://github.com/harshadgavali/searchprovider-for-browser-tabs"
 depends=('gnome-shell')
-makedepends=('meson' 'rust')
+makedepends=('meson' 'cargo')
 license=('MIT')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/harshadgavali/searchprovider-for-browser-tabs/archive/refs/tags/connector-v$pkgver.tar.gz")

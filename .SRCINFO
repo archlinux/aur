@@ -1,12 +1,12 @@
 pkgbase = tabsearchproviderconnector
 	pkgdesc = Browser tab search provider for GNOME
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/harshadgavali/searchprovider-for-browser-tabs
 	arch = x86_64
 	license = MIT
 	makedepends = meson
-	makedepends = rust
+	makedepends = cargo
 	depends = gnome-shell
 	optdepends = firefox: search firefox tabs from gnome shell
 	optdepends = chromium: search chromium tabs from gnome shell
