@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-meet-git'
 pkgver='0.2.1'
 
@@ -525,4 +526,3 @@ prepare() {
     sed -i 's|cp -avR dist ../deploy/plugins/meet|cp -avRT dist/${PACKAGE_NAME}-${VERSION} ../../deploy/plugins/meet|g' Makefile
     mkdir -p ${srcdir}/kopano-webapp/deploy/plugins/meet
 }
-md5sums=('SKIP')
