@@ -1,7 +1,7 @@
 pkgbase = eggs
 	pkgdesc = A terminal utility, in active development, which allows you to remaster your system and redistribute it as an ISO image, on a USB stick or through the network via PXE remote boot
 	pkgver = 9.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://penguins-eggs.net
 	arch = x86_64
 	license = GPL2
