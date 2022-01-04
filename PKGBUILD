@@ -3,7 +3,7 @@
 
 pkgname=ddnet
 pkgver=15.8.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
@@ -16,7 +16,7 @@ optdepends=('ddnet-skins: A collection with more than 500 custom tee skins.'
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz"
         "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf")
-sha256sums=('0b53222937a0192b40ae5cf056bd7fc70f2005f4d52df6bf143986ea8a2bba90'
+sha256sums=('bc354c2db9b0dee094ac3ce1ca95e5399d8282c91cfb878ebd3060345aa0c76d'
             '9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
             '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369')
