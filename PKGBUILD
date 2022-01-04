@@ -1,6 +1,6 @@
 pkgname=nvidia-vaapi-driver-git
 _pkgname=nvidia-vaapi-driver
-pkgver=v0.0.1.r0.g6d285a0
+pkgver=0.0.1.r0.g6d285a0
 pkgrel=1
 pkgdesc="A VA-API implemention using NVIDIA's NVDEC"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
