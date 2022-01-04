@@ -1,7 +1,7 @@
 pkgbase = python-pyiot-git
 	pkgdesc = Python library for IOT devices
 	pkgver = v0.1.r147.g42a6f5d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/angrysoft/pyiot
 	arch = any
 	license = Apache 2.0
