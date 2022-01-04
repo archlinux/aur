@@ -521,3 +521,5 @@ prepare() {
     cd ${srcdir}/${pkgname}
     _setConfig "PLUGIN_SMIME_CIPHER" "OPENSSL_CIPHER_AES_256_CBC" config.php
 }
+md5sums=('SKIP'
+         'f49fb2db0167e943ce26f1db7e4055c8')
