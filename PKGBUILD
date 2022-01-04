@@ -1,14 +1,15 @@
 # Maintainer: Mario Blättermann <mario.blaettermann@gmail.com>
 pkgname=glabels-qt-git
 pkgver=r564.2da9b2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Development version of the next major version of gLabels (4.0)."
 arch=('x86_64')
 url="https://github.com/jimevins/glabels-qt"
 license=('GPL3')
 groups=()
-depends=('qt5-base' 'qt5-svg' 'qt5-translations' 'zint')
+depends=('qt5-base' 'qt5-svg' 'qt5-translations')
 makedepends=('qt5-tools' 'git' 'cmake')
+optdepends=('zint')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()

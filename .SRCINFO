@@ -1,7 +1,7 @@
 pkgbase = glabels-qt-git
 	pkgdesc = Development version of the next major version of gLabels (4.0).
 	pkgver = r564.2da9b2d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jimevins/glabels-qt
 	arch = x86_64
 	license = GPL3
@@ -11,11 +11,10 @@ pkgbase = glabels-qt-git
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-translations
-	depends = zint
+	optdepends = zint
 	provides = glabels-qt
 	conflicts = glabels-qt
 	source = git+https://github.com/jimevins/glabels-qt.git
 	md5sums = SKIP
 
 pkgname = glabels-qt-git
-
