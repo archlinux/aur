@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-spellchecker-languagepack-italian-it-git'
 pkgver='1.0.0'
 
@@ -520,4 +521,3 @@ _setConfig() {
     sed -i -e "s|\(${_configAttribute}', \)\(.*\)\();$\)|\1${_configValue}\3|" ${_configFile}
 }
 # template end;
-md5sums=('SKIP')
