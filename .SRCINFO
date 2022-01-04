@@ -13,4 +13,3 @@ pkgbase = cx-bin
 pkgname = cx-bin
 	options = !strip
 	options = staticlibs
-
