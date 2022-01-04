@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 # Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 # Contributor: MartiMcFly <martimcfly [at] autorisation.de>
 
@@ -160,7 +161,9 @@ _sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else
 source=(
     "${pkgname}::git+https://stash.kopano.io/scm/kc/kopanocore.git${_sourceBranch}"
 	)
-md5sums=('SKIP')
+md5sums=(
+    'SKIP'
+	)
 	
 makedepends=(
     # CORE: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/install.txt
