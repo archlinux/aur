@@ -40,3 +40,13 @@
 
 [2021-03-10]
 * added patch fallbacks
+
+[2021-08-22]
+* added php7* restriction
+
+[2021-08-23]
+* added php7* restriction, php-config path
+* make php74 the default for the build. Please build in Docker.
+
+[2022-01-03]
+* Update PKGBUILD

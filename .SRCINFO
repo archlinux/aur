@@ -32,8 +32,7 @@ pkgbase = kopano-core-git
 	makedepends = krb5
 	makedepends = curl>=7
 	makedepends = pam>=1
-	makedepends = openldap>=2.4
-	makedepends = php>=7
+	makedepends = php<8
 	makedepends = python>=3
 	makedepends = swig>=2.0
 	makedepends = libhx>=1.10

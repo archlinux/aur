@@ -163,7 +163,7 @@ source=(
 md5sums=(
     'SKIP'
 	)
-
+	
 makedepends=(
     # CORE: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/install.txt
     # Mandatory build-time dependencies
@@ -190,8 +190,8 @@ makedepends=(
     'krb5'
     'curl>=7' # libcurl
     'pam>=1'
-    'openldap>=2.4'
-    'php>=7'
+    # 'openldap>=2.4' # Not working with openldap 2.6
+    'php<8'
     'python>=3'
     'swig>=2.0'
     #
