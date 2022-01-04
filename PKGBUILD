@@ -1,7 +1,7 @@
 # Maintainer: osiixy <osiixy at gmail dot com>
 
 pkgname=eggs
-pkgver=8.1.3
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="A terminal utility, in active development, which allows you to remaster your system and redistribute it as an ISO image, on a USB stick or through the network via PXE remote boot"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('python'
 options=('!strip')
 makedepends=('tar')
 source=("${pkgname}-${pkgver}.deb::https://sourceforge.net/projects/penguins-eggs/files/packages-deb/eggs_${pkgver}-1_amd64.deb/download")
-sha1sums=('da72c05b0790622f963b1754d9aa99438982e456')
+sha1sums=('129043116e87922355b52c52b932cc21f4c23334')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
