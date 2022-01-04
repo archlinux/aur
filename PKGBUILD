@@ -1,34 +1,43 @@
-# Maintainer: Ulrik Boll Djurtoft <ullebe1@gmail.com>
-pkgname=appeditor-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r65.4c7144a
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Ulrik Boll Djurtoft <ullebe1@gmail.com>
+pkgname=appeditor-git
+_app_id=com.github.donadigo.appeditor
+pkgver=1.1.3.r4.gaeb0b13
 pkgrel=1
-pkgdesc="AppEditor allows you to edit application entries in the application menu."
-arch=('i686' 'x86_64')
+pkgdesc="Allows you to edit application entries in the application menu."
+arch=('x86_64')
 url="https://github.com/donadigo/appeditor"
-license=('GPL')
-depends=('granite')
-makedepends=('ninja' 'git' 'meson' 'vala')
-provides=('appeditor')
-conflicts=('appeditor')
-source=("git://github.com/donadigo/appeditor.git")
-md5sums=('SKIP')
+license=('GPL3')
+depends=('gtk3' 'granite')
+makedepends=('git' 'meson' 'vala')
+checkdepends=('appstream')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/donadigo/appeditor.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	meson build
-	cd build
-	meson configure -Dprefix=/usr
-	ninja
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
+}
+
+check() {
+
+#  No tests defined
+#  meson test -C build --print-errorlogs
+
+  desktop-file-validate build/data/${_app_id}.desktop
+  appstreamcli validate build/data/${_app_id}.appdata.xml
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-	DESTDIR="${pkgdir}/" ninja install
-	cd ..
-	install -D -m644 "data/com.github.donadigo.appeditor.desktop.in" "${pkgdir}/usr/share/applications/com.github.donadigo.appeditor.desktop.in"
+  meson install -C build --destdir "$pkgdir"
+
+  ln -s /usr/bin/${_app_id} "$pkgdir/usr/bin/${pkgname%-git}"
 }
