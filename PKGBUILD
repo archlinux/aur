@@ -1,54 +1,31 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
-
-_name=numdifftools
-pkgbase=python-numdifftools
-pkgname=('python2-numdifftools' 'python-numdifftools')
-pkgver=0.9.39
-pkgrel=2
-pkgdesc='suite of tools written in _Python to solve automatic numerical differentiation problems in one or more variables'
-url='https://github.com/pbrod/numdifftools/'
-license=("LGPL")
-arch=('i686' 'x86_64')
-makedepends=('python-setuptools' 'python-numpy' 'python-scipy' 'python-algopy' 'python-statsmodels')
-makedepends+=('python2-setuptools' 'python2-numpy' 'python2-scipy' 'python2-algopy' 'python2-statsmodels')
-options=('!libtool')
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha1sums=('336c470027eb0730e6cfec0db7710f690311b129')
-
-
-prepare() {
-  cp -a ${_name}-${pkgver} ${_name}-py2-${pkgver}
-}
+_base=numdifftools
+pkgname=python-${_base}
+pkgver=0.9.40
+pkgrel=1
+pkgdesc="Solve automatic numerical differentiation problems in one or more variables"
+url="https://github.com/pbrod/${_base}"
+license=('custom:BSD-3-clause')
+arch=('x86_64')
+depends=(python-algopy python-statsmodels)
+makedepends=(python-setuptools python-pytest-runner)
+checkdepends=(python-pytest python-hypothesis python-matplotlib)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('241a9031e6852587a496f0eb9bb3f5d30c00d2d0f55c211e3b4454e0e1eff72d933e5d0013669ac70111b9422f816c3ea636d486d93c55b239a75360c9e21426')
 
 build() {
-  cd "${_name}-py2-${pkgver}"
-  python2 setup.py build
-
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${_base}-${pkgver}"
   python setup.py build
 }
 
-package_python-numdifftools() {
-  depends=('python-numpy' 'python-scipy' 'python-algopy' 'python-statsmodels')
+check() {
+  cd "${_base}-${pkgver}"
+  python -m pytest "src/${_base}/tests"
+}
 
-  cd "${_name}-${pkgver}"
+package() {
+  cd "${_base}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-
-  # Remove left over directories from distribute utils.
-  find ${pkgdir} -type d -name "__pycache__" -exec rm -r {} \; -prune
 }
-
-package_python2-numdifftools() {
-  depends=('python2-numpy' 'python2-scipy' 'python2-algopy' 'python2-statsmodels')
-
-  cd "${_name}-py2-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-
-  # Remove duplicated documentation
-  rm -rf ${pkgdir}/usr/share
-
-  # Remove left over directories from distribute utils.
-  find ${pkgdir} -type d -name "__pycache__" -exec rm -r {} \; -prune
-}
-
