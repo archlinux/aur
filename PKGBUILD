@@ -2,7 +2,7 @@
 
 pkgname=opengnb
 pkgver=1.2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=('any')
 url="https://github.com/gnbdev/opengnb"
@@ -27,7 +27,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make -f Makefile.linux install
-    install -dm7550 "${pkgdir}/usr"
+    install -dm0755 "${pkgdir}/usr"
     cp -rv bin "${pkgdir}/usr"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
