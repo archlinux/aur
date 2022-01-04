@@ -1,7 +1,7 @@
 pkgbase = scroll-git
-	pkgdesc = A simple virtual terminal emulator for X.
+	pkgdesc = A scrollback buffer for a terminals like st
 	pkgver = 0.1.r2.g51ee387
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.suckless.org/scroll/file/README.html
 	arch = i686
 	arch = x86_64

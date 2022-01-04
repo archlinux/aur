@@ -2,8 +2,8 @@
 
 pkgname=scroll-git
 pkgver=0.1.r2.g51ee387
-pkgrel=1
-pkgdesc='A simple virtual terminal emulator for X.'
+pkgrel=2
+pkgdesc='A scrollback buffer for a terminals like st'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
@@ -15,8 +15,8 @@ source=(git://git.suckless.org/scroll)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname%-git}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
