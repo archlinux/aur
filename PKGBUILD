@@ -1,11 +1,11 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: MattWoelk
-# Contributor: xsmile <sascha_r gmx de>
+# Contributor: xsmile
 
 pkgname=nessus
 pkgver=10.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
 depends=('gnupg')

@@ -1,7 +1,7 @@
 pkgbase = nessus
 	pkgdesc = Nessus vulnerability scanner
 	pkgver = 10.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tenable.com/downloads/nessus
 	install = nessus.install
 	arch = x86_64
