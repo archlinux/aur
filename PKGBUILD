@@ -3,7 +3,7 @@
 pkgname=ytsubconverter-bin
 _reponame=YTSubConverter
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for creating styled YouTube subtitles"
 arch=('x86_64')
 url="https://github.com/arcusmaximus/YTSubConverter"
@@ -14,7 +14,7 @@ source=("ytsubconverter.desktop"
         "ytsubconverter.sh"
         "ytsc-bin-${pkgver}.tar.xz::https://github.com/arcusmaximus/${_reponame}/releases/download/${pkgver}/${_reponame}-Linux.tar.xz")
 sha256sums=('8d28386263f039bf3e7db1ff7db97039a23aa8f1eb345c769a8e8da388fccb5a'
-            '0cdf73042379c36062878b3ff0eabc54756222b047b0721cca560d541fbe92e5'
+            'e42a5a178c01515e9db901038562c7e220d3088cfb49abaf8d0a3c80e5e36637'
             'ac7c7e859b962f000b21f794dc65c6a3d54ab7b8e24db7659ad2dc1a703c2d43')
 
 package() {
