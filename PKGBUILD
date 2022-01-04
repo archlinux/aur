@@ -522,3 +522,4 @@ prepare() {
     cd ${srcdir}/${pkgname}
     sed -i 's|Name|name|g' manifest.xml
 }
+md5sums=('SKIP')
