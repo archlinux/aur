@@ -1,0 +1,26 @@
+pkgbase = python-wxpython41
+	pkgdesc = Cross-platform GUI toolkit
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://www.wxpython.org
+	arch = x86_64
+	license = custom:wxWindows
+	checkdepends = xorg-server-xvfb
+	checkdepends = python-pytest-forked
+	checkdepends = python-numpy
+	makedepends = mesa
+	makedepends = glu
+	makedepends = webkit2gtk
+	makedepends = python-requests
+	makedepends = python-setuptools
+	depends = wxgtk3-dev
+	depends = python-six
+	optdepends = python-pypubsub: Alternative to the deprecated wx.lib.pubsub API
+	provides = python-wxpython
+	conflicts = python-wxpython
+	source = https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-4.1.1.tar.gz
+	source = Fix-wxGridEvent-GetRow-GetCol.patch
+	sha512sums = 00924008b97bbecb824c3fffd46fc76a5a3115d9346eb95baccc6cca99c080aa80b586af42fece8a3b4d234f2d07ffa8b66b50a164c41cbd95abc9b139c32809
+	sha512sums = 42523eeb28773538b07fe56346397ac7e26af554bd493bbffcde61b4a5557655b0f930447d3927c324ef674c7c1f0ae5b8b040d2324352388ed6ffc844d221e3
+
+pkgname = python-wxpython41

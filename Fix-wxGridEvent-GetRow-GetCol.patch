@@ -1,0 +1,117 @@
+diff --git a/sip/cpp/sip_gridwxGridEvent.cpp b/sip/cpp/sip_gridwxGridEvent.cpp
+index 0830b67..9aca2c4 100644
+--- a/sip/cpp/sip_gridwxGridEvent.cpp
++++ b/sip/cpp/sip_gridwxGridEvent.cpp
+@@ -32,8 +32,6 @@ public:
+      * this class.
+      */
+ protected:
+-    int GetRow() SIP_OVERRIDE;
+-    int GetCol() SIP_OVERRIDE;
+      ::wxEvent* Clone() const SIP_OVERRIDE;
+      ::wxEventCategory GetEventCategory() const SIP_OVERRIDE;
+ 
+@@ -44,7 +42,7 @@ private:
+     sipwxGridEvent(const sipwxGridEvent &);
+     sipwxGridEvent &operator = (const sipwxGridEvent &);
+ 
+-    char sipPyMethods[4];
++    char sipPyMethods[2];
+ };
+ 
+ sipwxGridEvent::sipwxGridEvent():  ::wxGridEvent(), sipPySelf(SIP_NULLPTR)
+@@ -67,42 +65,12 @@ sipwxGridEvent::~sipwxGridEvent()
+     sipInstanceDestroyedEx(&sipPySelf);
+ }
+ 
+-int sipwxGridEvent::GetRow()
+-{
+-    sip_gilstate_t sipGILState;
+-    PyObject *sipMeth;
+-
+-    sipMeth = sipIsPyMethod(&sipGILState,&sipPyMethods[0],sipPySelf,SIP_NULLPTR,sipName_GetRow);
+-
+-    if (!sipMeth)
+-        return  ::wxGridEvent::GetRow();
+-
+-    extern int sipVH__grid_41(sip_gilstate_t, sipVirtErrorHandlerFunc, sipSimpleWrapper *, PyObject *);
+-
+-    return sipVH__grid_41(sipGILState, 0, sipPySelf, sipMeth);
+-}
+-
+-int sipwxGridEvent::GetCol()
+-{
+-    sip_gilstate_t sipGILState;
+-    PyObject *sipMeth;
+-
+-    sipMeth = sipIsPyMethod(&sipGILState,&sipPyMethods[1],sipPySelf,SIP_NULLPTR,sipName_GetCol);
+-
+-    if (!sipMeth)
+-        return  ::wxGridEvent::GetCol();
+-
+-    extern int sipVH__grid_41(sip_gilstate_t, sipVirtErrorHandlerFunc, sipSimpleWrapper *, PyObject *);
+-
+-    return sipVH__grid_41(sipGILState, 0, sipPySelf, sipMeth);
+-}
+-
+  ::wxEvent* sipwxGridEvent::Clone() const
+ {
+     sip_gilstate_t sipGILState;
+     PyObject *sipMeth;
+ 
+-    sipMeth = sipIsPyMethod(&sipGILState,const_cast<char *>(&sipPyMethods[2]),sipPySelf,SIP_NULLPTR,sipName_Clone);
++    sipMeth = sipIsPyMethod(&sipGILState,const_cast<char *>(&sipPyMethods[0]),sipPySelf,SIP_NULLPTR,sipName_Clone);
+ 
+     if (!sipMeth)
+         return  ::wxGridEvent::Clone();
+@@ -117,7 +85,7 @@ int sipwxGridEvent::GetCol()
+     sip_gilstate_t sipGILState;
+     PyObject *sipMeth;
+ 
+-    sipMeth = sipIsPyMethod(&sipGILState,const_cast<char *>(&sipPyMethods[3]),sipPySelf,SIP_NULLPTR,sipName_GetEventCategory);
++    sipMeth = sipIsPyMethod(&sipGILState,const_cast<char *>(&sipPyMethods[1]),sipPySelf,SIP_NULLPTR,sipName_GetEventCategory);
+ 
+     if (!sipMeth)
+         return  ::wxGridEvent::GetEventCategory();
+@@ -206,10 +174,9 @@ extern "C" {static PyObject *meth_wxGridEvent_GetCol(PyObject *, PyObject *);}
+ static PyObject *meth_wxGridEvent_GetCol(PyObject *sipSelf, PyObject *sipArgs)
+ {
+     PyObject *sipParseErr = SIP_NULLPTR;
+-    bool sipSelfWasArg = (!sipSelf || sipIsDerivedClass((sipSimpleWrapper *)sipSelf));
+ 
+     {
+-         ::wxGridEvent *sipCpp;
++        const  ::wxGridEvent *sipCpp;
+ 
+         if (sipParseArgs(&sipParseErr, sipArgs, "B", &sipSelf, sipType_wxGridEvent, &sipCpp))
+         {
+@@ -218,7 +185,7 @@ static PyObject *meth_wxGridEvent_GetCol(PyObject *sipSelf, PyObject *sipArgs)
+             PyErr_Clear();
+ 
+             Py_BEGIN_ALLOW_THREADS
+-            sipRes = (sipSelfWasArg ? sipCpp-> ::wxGridEvent::GetCol() : sipCpp->GetCol());
++            sipRes = sipCpp->GetCol();
+             Py_END_ALLOW_THREADS
+ 
+             if (PyErr_Occurred())
+@@ -277,10 +244,9 @@ extern "C" {static PyObject *meth_wxGridEvent_GetRow(PyObject *, PyObject *);}
+ static PyObject *meth_wxGridEvent_GetRow(PyObject *sipSelf, PyObject *sipArgs)
+ {
+     PyObject *sipParseErr = SIP_NULLPTR;
+-    bool sipSelfWasArg = (!sipSelf || sipIsDerivedClass((sipSimpleWrapper *)sipSelf));
+ 
+     {
+-         ::wxGridEvent *sipCpp;
++        const  ::wxGridEvent *sipCpp;
+ 
+         if (sipParseArgs(&sipParseErr, sipArgs, "B", &sipSelf, sipType_wxGridEvent, &sipCpp))
+         {
+@@ -289,7 +255,7 @@ static PyObject *meth_wxGridEvent_GetRow(PyObject *sipSelf, PyObject *sipArgs)
+             PyErr_Clear();
+ 
+             Py_BEGIN_ALLOW_THREADS
+-            sipRes = (sipSelfWasArg ? sipCpp-> ::wxGridEvent::GetRow() : sipCpp->GetRow());
++            sipRes = sipCpp->GetRow();
+             Py_END_ALLOW_THREADS
+ 
+             if (PyErr_Occurred())
