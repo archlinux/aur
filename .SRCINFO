@@ -1,0 +1,23 @@
+pkgbase = pycharm-community-jre-aarch64
+	pkgdesc = PyCharm Community Edition IDE for Python with bundled JRE with aarch64 support
+	pkgver = 2021.3.1
+	pkgrel = 1
+	url = https://www.jetbrains.com/pycharm/
+	arch = x86_64
+	arch = aarch64
+	license = APACHE
+	conflicts = pycharm-community-eap
+	conflicts = pycharm-community-edition
+	conflicts = pycharm-community-jre
+	source = https://download.jetbrains.com/python/pycharm-community-2021.3.1.tar.gz
+	source = pycharm.desktop
+	source = pycharm.sh
+	sha256sums = f5dd6e642ee65fa96d0ea8447d4a75589ce4258434222c4d9df00d1e5a46a8f5
+	sha256sums = f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21
+	sha256sums = b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc
+	source_aarch64 = https://cache-redirector.jetbrains.com/intellij-jbr/jbr-11_0_13-linux-aarch64-b1751.21.tar.gz
+	source_aarch64 = fsnotifier-aarch64
+	sha256sums_aarch64 = 56309fcb763c5cc7a52fa2565866a1fcc2cddd9b515a7bce7401f7f8a8c9d2fe
+	sha256sums_aarch64 = 8e8aecc0770fe6d7fdc78753c4ac8acc5fe28f94fc28d196fadc01a4aede348f
+
+pkgname = pycharm-community-jre-aarch64
