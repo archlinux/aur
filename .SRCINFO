@@ -1,7 +1,7 @@
 pkgbase = cgminer
 	pkgdesc = Multi-threaded multi-pool GPU, FPGA and ASIC miner for bitcoin
-	pkgver = 4.10.0
-	pkgrel = 4
+	pkgver = 4.11.1
+	pkgrel = 1
 	url = http://ck.kolivas.org/apps/cgminer/
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = cgminer
 	depends = jansson
 	backup = etc/conf.d/cgminer
 	backup = etc/cgminer.conf
-	source = git+https://github.com/ckolivas/cgminer.git#tag=v4.10.0
+	source = git+https://github.com/ckolivas/cgminer.git#tag=v4.11.1
 	source = cgminer.conf.d
 	source = cgminer.service
 	sha512sums = SKIP
