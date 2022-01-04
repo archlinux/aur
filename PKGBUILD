@@ -19,13 +19,12 @@ build() {
   python setup.py build
 }
 
- check() {
-   cd "knack-${pkgver}"
-   pytest
- }
+check() {
+  cd "knack-${pkgver}"
+  pytest
+}
 
 package() {
   cd "knack-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
-
