@@ -1,7 +1,7 @@
 # Maintainer: zhullyb <5435486@qq.com>
 
 pkgname=purewriter-desktop-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Never loss content editor & Markdown"
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('Custom')
 depends=('jre11-openjdk')
 conflicts=('purewriter-desktop')
 replaces=('purewriter-desktop')
-source=("https://github.com/PureWriter/desktop/releases/download/$pkgver/PureWriter-$pkgver-Linux-amd64.deb"
+source=("https://github.com/PureWriter/desktop/releases/download/1.5.0/PureWriter-$pkgver-Linux-amd64.deb"
         'purewriter'
         'purewriter.png'
         'purewriter.desktop')
   
-md5sums=('5297b0a37e425448d5603049e9e98085'
+md5sums=('6208a305c07e080be7af8324e65f5fd5'
          '41f0e2a47a315ff6905b8456eb204f7b'
          'd24432d9cbba30b03c9f372405166ed9'
          '43d078956e3f3a981329e6233747a078')
