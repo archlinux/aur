@@ -1,0 +1,12 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+
+@@ -85,7 +85,7 @@
+ IF( NOT ${NO_MESSING_WITH_FLAGS} )
+    IF( CMAKE_COMPILER_IS_GNUCXX )
+       SET( CMAKE_CXX_FLAGS_RELEASE "-Wall -ansi -pedantic -Wno-long-long -O2" )
+-      SET( CMAKE_CXX_FLAGS_DEBUG "-Wall -g3" )
++      SET( CMAKE_CXX_FLAGS_DEBUG "-Wall -g3 -ffile-prefix-map=${CMAKE_SOURCE_DIR}-build/=./ -ffile-prefix-map=${CMAKE_SOURCE_DIR}/=./" )
+    ENDIF()
+ 
+    # Speed up compilation if using gcc.

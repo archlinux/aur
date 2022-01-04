@@ -5,24 +5,38 @@
 
 _pkgname=brewtarget
 pkgname=brewtarget-git
-pkgver=2.3.1.r422.g596acfc
+pkgver=2.3.1.r928.gff96feba
 pkgrel=1
-pkgdesc="Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer."
+pkgdesc="Brewing recipe designer and calculator"
 url="http://www.brewtarget.org/"
 arch=('x86_64')
 license=('GPL3' 'custom:WTFPL-2')
-depends=('qt5-tools' 'qt5-multimedia' 'qt5-webkit' 'qt5-svg')
-optdepends=()
-makedepends=('cmake' 'git')
+depends=('qt5-tools' 'qt5-multimedia' 'qt5-webkit' 'qt5-svg' 'xerces-c' 'xalan-c')
+optdepends=(
+  'postgresql-libs: PostgreSQL database support'
+)
+makedepends=('cmake' 'git' 'boost')
+checkdepends=('xorg-server-xvfb')
 conflicts=(brewtarget)
 provides=(brewtarget)
 backup=()
-source=("git+https://github.com/Brewtarget/brewtarget.git")
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/Brewtarget/brewtarget.git'
+  'prevent_srcdir_references.patch'
+)
+sha256sums=(
+  'SKIP'
+  'f32aaaf2036dff8ce75329a3e166a70999ae17bd770c29ab07fa635f2297ec24'
+)
 
 pkgver() {
   cd "$_pkgname"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  patch -p0 -i "$srcdir/prevent_srcdir_references.patch"
 }
 
 build() {
@@ -34,7 +48,9 @@ build() {
 
 check() {
   cd "${_pkgname}-build"
-  make test
+  export QT_QPA_PLATFORM=offscreen
+  ctest --output-on-failure
+  unset -v QT_QPA_PLATFORM
 }
 
 package() {

@@ -1,4 +1,5 @@
 brewtarget/
 pkg/
 src/
-*.tar.xz
+brewtarget-git-*.pkg.tar*
+*.log

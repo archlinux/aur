@@ -1,21 +1,27 @@
 pkgbase = brewtarget-git
-	pkgdesc = Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer.
-	pkgver = 2.3.1.r422.g596acfc
+	pkgdesc = Brewing recipe designer and calculator
+	pkgver = 2.3.1.r928.gff96feba
 	pkgrel = 1
 	url = http://www.brewtarget.org/
 	arch = x86_64
 	license = GPL3
 	license = custom:WTFPL-2
+	checkdepends = xorg-server-xvfb
 	makedepends = cmake
 	makedepends = git
+	makedepends = boost
 	depends = qt5-tools
 	depends = qt5-multimedia
 	depends = qt5-webkit
 	depends = qt5-svg
+	depends = xerces-c
+	depends = xalan-c
+	optdepends = postgresql-libs: PostgreSQL database support
 	provides = brewtarget
 	conflicts = brewtarget
 	source = git+https://github.com/Brewtarget/brewtarget.git
-	md5sums = SKIP
+	source = prevent_srcdir_references.patch
+	sha256sums = SKIP
+	sha256sums = f32aaaf2036dff8ce75329a3e166a70999ae17bd770c29ab07fa635f2297ec24
 
 pkgname = brewtarget-git
-
