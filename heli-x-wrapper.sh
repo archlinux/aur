@@ -1,11 +1,11 @@
 #!/bin/sh
 APP_LOCAL_DIR=$HOME/.heli-x
-APP_EXECUTABLE=/usr/share/heli-x/runHELI-X.sh
+APP_EXECUTABLE=/opt/heli-x/runHELI-X.sh
 APP_VERSION=$(pacman -Qi heli-x | grep 'Version' | awk '{print $3}')
 
 # function to copy all resources to the local config directory and create a file which holds the current package version
 copy_resources () {
-  cp -R --preserve=timestamps /usr/share/heli-x/resources $APP_LOCAL_DIR/
+  cp -R --preserve=timestamps /opt/heli-x/resources $APP_LOCAL_DIR/
   touch $APP_LOCAL_DIR/resources/$APP_VERSION
 }
 
