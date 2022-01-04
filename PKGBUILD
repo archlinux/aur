@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-webmeetings-git'
 pkgver='3.0.6'
 
@@ -524,4 +525,3 @@ prepare() {
     sed -i 's|config.php.dist|config.php|g' build.xml
     mv config.php.dist config.php
 }
-md5sums=('SKIP')
