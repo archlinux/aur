@@ -5,7 +5,7 @@
 
 set -u
 pkgname='zoiper'
-pkgver='5.5.8'
+pkgver='5.5.9'
 pkgrel='1'
 pkgdesc='a SIP and IAX2 VoIP softphone'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=(
 source+=('zoipdl.sh')
 noextract=("${_srcfil}")
 
-md5sums=('9b28cb06e092a25317bfa553e6d23438'
+md5sums=('519848bc10c4de9893913a440ea4ac3d'
          'af44d50f7be21acccbb3f70e831b57b9'
          '1c77ec64b25899d3b027153da9a0a598'
          'c11462ef768e78964c9771ef8ba9490f'
@@ -31,7 +31,7 @@ md5sums=('9b28cb06e092a25317bfa553e6d23438'
          'a2b638b39dd25ae029ec80ade53cd48b'
          'b03e6d65d8b5e22566c20b9a34eb5b95'
          '5ab0d7bbefdfc83470dedff4f5c51182')
-sha256sums=('ff81c5295b17329548ef7992513ce8650180fbdd17ac2cd90d7aebd023f3f3da'
+sha256sums=('7d8709d95897aff2812f5841c92da9728e016c1af4696d7144b28c3f1d5f38a4'
             '4ed406e6786163514ff0714af7417e680c56cbe1edcb297196d6dbee2ffa798b'
             '8d449a3f15d0a1f6307106bcb5f62ec8f921ba2279d5d42042bd0d2beb08f103'
             'b3dd0f8bb4314444177b122d032142459cba606b8f7812a8489d3cbbf83f2b3b'
