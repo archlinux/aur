@@ -42,7 +42,7 @@ package() {
 
 	cp -r "$srcdir/invidious/"{invidious,locales,config,assets} \
 		 "$pkgdir/usr/lib/invidious/"
-	install -Dm 644 "$srcdir/invidious/invidious.service" "$pkgdir/etc/systemd/system/invidious.service"
+	install -Dm 644 "$srcdir/invidious/invidious.service" "$pkgdir/usr/lib/systemd/system/invidious.service"
 	install -Dm 644 "$srcdir/invidious.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	mv "$pkgdir/usr/lib/invidious/config/config.example.yml" "$pkgdir/etc/invidious.yml"
 
