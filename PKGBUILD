@@ -1,8 +1,8 @@
 # Maintainer: Michael Asher < michael at we solve everything dot com> 
 
 pkgname=crowdsec
-pkgver=1.2.1
-pkgrel=9
+pkgver=1.2.2
+pkgrel=8
 pkgdesc="The open-source and collaborative IPS"
 arch=('any')
 url="https://crowdsec.net"
@@ -36,15 +36,15 @@ build(){
 	# Patching makefile to include version
 	# Perhaps this would be cleaner with sed
 	#
-	# patch Makefile < ${srcdir}/Makefile.patch
+	patch Makefile < ${srcdir}/Makefile.patch
 	make -s build
 	make -s package
 }
 
 package() {
 	mkdir -p ${pkgdir}/var/lib/crowdsec/installers/crowdsec
-	cp -R ${srcdir}/${pkgname}-${pkgver}/crowdsec-/* ${pkgdir}/var/lib/crowdsec/installers/crowdsec
+	cp -R ${srcdir}/${pkgname}-${pkgver}/crowdsec-v${pkgver}/* ${pkgdir}/var/lib/crowdsec/installers/crowdsec
 }
-sha256sums=('e3a9bbb70b1995a83c5001d06dbbcb5f59d43e4d7c18b60548f305a62d2dd6a3'
-            '6fd95ddc9e5bdb1abdfa1731e472f534789c5db6983dcdc5e1c41852592ce94c'
-            '50235c78db3959e1ea97f12e1c8be13f75dfaeb0706b0a5c82fa856bb31f229d')
+sha256sums=('b815ac4fafa25f0e657b56baaba9a093ef64fbe7336e4bc29208eb47ed1af5e6'
+            'f32e5b3f15dc0edf96623e08000e98073c97ed97e7af80a929ce8285d6e447f3'
+            '32b940e09846711d99553b27403b19771bee71f2900b8c036c3e079af22819bd')

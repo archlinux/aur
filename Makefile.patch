@@ -1,8 +1,9 @@
-41c41
+41c41,42
 < BUILD_VERSION?="$(shell git describe --tags `git rev-list --tags --max-count=1`)"
 ---
-> BUILD_VERSION?="1.2.1"
-179c179
+> #BUILD_VERSION?="$(shell git describe --tags `git rev-list --tags --max-count=1`)"
+> BUILD_VERSION?="v1.2.2"
+179c180
 < release_static: check_release static package_static
 \ No newline at end of file
 ---
