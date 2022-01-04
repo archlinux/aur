@@ -1,0 +1,21 @@
+pkgbase = sunloginremote
+	pkgdesc = Proprietary software that remotely controls mobile devices, Windows, Mac, Linux and other systems. Enterprise edition.
+	pkgver = 5.1.0.36963
+	pkgrel = 1
+	url = https://sunlogin.oray.com/product/support
+	install = sunloginremote.install
+	arch = x86_64
+	license = custom
+	depends = libappindicator-gtk3
+	depends = sh
+	depends = wqy-zenhei
+	source = https://down.oray.com/sunlogin/linux/sunloginremote-5.1.0.36963-amd64.deb
+	source = shim.sh
+	source = tmpfiles.conf
+	source = license.html
+	b2sums = 26d65d8ca66ab6bb78c5c9d5715dda668293e469c9feb9ddacc74f1d73d3025b60c3e137a45dc45f098b6bcefe3b87538b3397825de5553f41d4201e12b7befe
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = sunloginremote

@@ -1,0 +1,15 @@
+post_install() {
+  echo "
+* Set UI language with environment variable SUNLOGINREMOTE_LANG:
+    SUNLOGINREMOTE_LANG=en_US /usr/bin/sunloginremote
+"
+}
+
+post_remove() {
+  echo "
+* There are leftover files created by sunloginremote.
+  You might want to manually remove them:
+  - ~/controlconfig.conf (for each user)
+  - /var/log/sunloginremote/*
+"
+}
