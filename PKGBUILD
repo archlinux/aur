@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-files-git'
 pkgver='4.0.1'
 
@@ -528,5 +529,3 @@ prepare() {
     _setConfig "PLUGIN_FILESBROWSER_LOGLEVEL" "'ERROR'" config.php
     _setConfig "PLUGIN_FILES_CACHE_DIR" "'${_stateDir}'" config.php
 }
-md5sums=('SKIP'
-         '9b59cd12f7afb490e26c6aabeb5b0b4b')
