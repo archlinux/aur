@@ -16,7 +16,7 @@ conflicts=("${_name}-desktop")
 source=("https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
         'slack-wayland.sh')
 sha256sums=('3a823be14d9aaea2ef565ac6c3fc62580a10775bcc1eadcc62c3256999ea59f3'
-            '9a6efa826134234744ab83b2a0ff67d99ceb55e5e3efdb776029b3e7d4914ed2')
+            '788ce7958372c868be560934e4e715b2d7084e8eb2752b0bc74f1c64a22a8042')
 
 prepare() {
   bsdtar -xf data.tar.xz
