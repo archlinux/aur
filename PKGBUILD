@@ -6,7 +6,7 @@ _name="${pkgname%-git}"
 
 epoch=1
 pkgver() { git -C "$_name" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=0.4.2.r38.33d3019
+pkgver=0.4.2.r42.87ac665
 pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
