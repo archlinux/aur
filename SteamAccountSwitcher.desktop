@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.2.0
+Name=SteamAccountSwitcher
+Comment=Qt Steam account switcher
+Icon=steam
+Path=
+Exec=/usr/bin/steamswitcher
+Terminal=false
+Categories=Application;
