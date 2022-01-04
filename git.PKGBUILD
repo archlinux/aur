@@ -1,34 +1,43 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
+# Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
+# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skycoin
 _pkgname=${pkgname}
 _githuborg=${_pkgname}
 pkgdesc="Skycoin Cryptocurrency Wallet. skycoin.com"
-pkgver=0.27.1
+pkgver=20211109.9463_9ca7016bd
 #pkgver=0.27.1
-pkgrel=2
+pkgrel=1
 #pkgrel=1
 arch=('x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
 makedepends=('go' 'musl' 'kernel-headers-musl')
-source=("${url}/archive/v${pkgver}.tar.gz"
-"${_pkgname}-scripts.tar.gz"
-) #"PKGBUILD.sig")
-sha256sums=('4ede6a23e62bf50f097a647519b5b714a5581065bf71c9778e0965a7c84b112b'
+source=("git+${url}.git"
+"${_pkgname}-scripts.tar.gz")
+sha256sums=('SKIP'
             '5e147befaf68e30efa7a15e8b292e52cacb94846de4ac03158275a357c8b7dbc')
 
-#tar -czvf skycoin-scripts.tar.gz skycoin-scripts
-#updpkgsums
+            #tar -czvf skycoin-scripts.tar.gz skycoin-scripts
+            #updpkgsums
+pkgver() {
+cd "${srcdir}/${_pkgname}"
+git checkout develop
+local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
+local count=$(git rev-list --count HEAD)
+local commit=$(git rev-parse --short HEAD)
+echo "${date}.${count}_${commit}"
+}
 
 	prepare() {
-		#verify PKGBUILD signature
-		#gpg --verify ${srcdir}/PKGBUILD.sig ../PKGBUILD
 		mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin
-		ln -rTsf ${srcdir}/${_pkgname}-${pkgver} ${srcdir}/go/src/${_pkggopath}
+		ln -rTsf ${srcdir}/${_pkgname} ${srcdir}/go/src/${_pkggopath}
 	}
 
 build() {
+  cd "${srcdir}/${_pkgname}"
+  git checkout develop
 	export GOPATH=${srcdir}/go
 	export GOBIN=${GOPATH}/bin
   export CC=musl-gcc
@@ -48,19 +57,15 @@ build() {
 }
 
 _buildbins() {
-
 _binname=$1
 _msg2 "building ${_binname} binary"
-#SPEED UP TESTING OF BUILDS
-if [[ ! -f ${GOBIN}/${_binname} ]] ; then
 	cd ${_cmddir}/${_binname}
   go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
-fi
 }
 
 package() {
 	#create directory trees
-	_skysrcdir=${srcdir}/${_pkgname}-${pkgver}
+	_skysrcdir=${srcdir}/${_pkgname}
 	_skypath=${pkgdir}/opt/${_pkgname}
 	_skygobin=${_skypath}/bin
 	_skyguidir=${_skypath}/src/gui

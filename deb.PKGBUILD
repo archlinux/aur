@@ -5,10 +5,11 @@ _pkgname=${pkgname}
 _githuborg=${_pkgname}
 pkgdesc="Skycoin Cryptocurrency Wallet. skycoin.com"
 pkgver=0.27.1
-#pkgver=0.27.1
+_pkgver=${pkgver}
 pkgrel=2
-#pkgrel=1
+_pkgrel=${pkgrel}
 arch=('x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
+_pkgarch=$(dpkg --print-architecture)
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
 makedepends=('go' 'musl' 'kernel-headers-musl')
@@ -45,6 +46,17 @@ build() {
 	cd $GOBIN
 	_msg2 'binary sha256sums'
 	sha256sum $(ls)
+
+  ### CONTROL FILES CREATION ###
+  #create control file for the debian package
+  echo "Package: ${_pkgname}" > ${srcdir}/control
+  echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/control
+  echo "Priority: optional" >> ${srcdir}/control
+  echo "Section: web" >> ${srcdir}/control
+  echo "Architecture: ${_pkgarch}" >> ${srcdir}/control
+  echo "Depends: ${_debdeps}" >> ${srcdir}/control
+  echo "Maintainer: Moses Narrow" >> ${srcdir}/control
+  echo "Description: ${pkgdesc}" >> ${srcdir}/control
 }
 
 _buildbins() {
@@ -59,12 +71,16 @@ fi
 }
 
 package() {
+  _debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
+  echo "${_debpkgdir}"
+  _pkgdir="${pkgdir}/${_debpkgdir}"
+  mkdir -p ${_pkgdir}/
 	#create directory trees
-	_skysrcdir=${srcdir}/${_pkgname}-${pkgver}
-	_skypath=${pkgdir}/opt/${_pkgname}
+	_skysrcdir=${srcdir}/${_pkgname}
+	_skypath=${_pkgdir}/opt/${_pkgname}
 	_skygobin=${_skypath}/bin
 	_skyguidir=${_skypath}/src/gui
-	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${_pkgdir}/usr/bin
 	mkdir -p ${_skygobin}
 	mkdir -p ${_skyguidir}
 	#install binaries & symlink to /usr/bin
@@ -75,8 +91,8 @@ package() {
 	_skybins=$( ls "$_skybin")
 	for i in $_skybins; do
 		install -Dm755 ${srcdir}/go/bin/${i} ${_skygobin}/${i}
-		ln -rTsf ${_skygobin}/$i ${pkgdir}/usr/bin/${i}
-		chmod 755 ${pkgdir}/usr/bin/${i}
+		ln -rTsf ${_skygobin}/$i ${_pkgdir}/usr/bin/${i}
+		chmod 755 ${_pkgdir}/usr/bin/${i}
 	done
   _msg2 'installing gui sources'
 	#install the web dir (UI)
@@ -86,19 +102,30 @@ package() {
 	_skycoinscripts=$( ls --ignore=*.service ${srcdir}/${_pkgname}-scripts/ )
 	for i in $_skycoinscripts; do
 		install -Dm755 ${srcdir}/${_pkgname}-scripts/${i} ${_skygobin}/${i}
-		ln -rTsf ${_skygobin}/${i} ${pkgdir}/usr/bin/${i}
-		chmod 755 ${pkgdir}/usr/bin/${i}
+		ln -rTsf ${_skygobin}/${i} ${_pkgdir}/usr/bin/${i}
+		chmod 755 ${_pkgdir}/usr/bin/${i}
 	done
   _msg2 'installing systemd services'
   #install the system.d service
-    install -Dm644 ${srcdir}/${_pkgname}-scripts/skycoin-node.service ${pkgdir}/usr/lib/systemd/system/skycoin-node.service
+    install -Dm644 ${srcdir}/${_pkgname}-scripts/skycoin-node.service ${_pkgdir}/usr/lib/systemd/system/skycoin-node.service
   _msg2 'correcting symlink names'
 	#correct symlink names
-	cd ${pkgdir}/usr/bin/
+	cd ${_pkgdir}/usr/bin/
 	_namechange=$(ls --ignore='skycoin*')
 	for i in $_namechange; do
-		mv ${pkgdir}/usr/bin/${i} ${pkgdir}/usr/bin/${_pkgname}-${i}
+		mv ${_pkgdir}/usr/bin/${i} ${_pkgdir}/usr/bin/${_pkgname}-${i}
 	done
+
+  _msg2 'installing control file'
+  install -Dm755 ${srcdir}/control ${_pkgdir}/DEBIAN/control
+
+  _msg2 'creating the debian package'
+  #create the debian package
+  cd $pkgdir
+  dpkg-deb --build -z9 ${_debpkgdir}
+  mv *.deb ../../
+  #exit so the arch package doesn't get built
+  exit
 }
 
 _msg2() {
