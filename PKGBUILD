@@ -37,7 +37,7 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 -t "$pkgdir"/usr/share/doc/xandikos README.rst
   install -Dm644 -t "$pkgdir"/usr/share/doc/xandikos/examples examples/*
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 xandikos.1
+  install -Dm644 -t "$pkgdir"/usr/share/man/man8 man/xandikos.8
 }
 
 # vim:set ts=2 sw=2 et:
