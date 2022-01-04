@@ -2,7 +2,7 @@
 # Contributor: Kelsey Maes <kelseymaes at outlook dot com>
 
 pkgname=python-knack
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A Python command line interface framework"
 arch=('any')
