@@ -4,9 +4,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-pkgver=5.15.2+kde+r268
+pkgver=5.15.2+kde+r274
 pkgrel=1
-_commit=edb0f568ca1380623325cb18365b0af81cbf65bf
+_commit=98aa64af7e1e677bd107bfb0c432cabf7c3a5e32
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -64,7 +64,7 @@ build() {
     -journald \
     -no-mimetype-database \
     -no-use-gold-linker \
-    -reduce-relocations \
+    -no-reduce-relocations \
     \
     -no-gui \
     -no-widgets \
@@ -77,6 +77,7 @@ build() {
     -no-linuxfb \
     -no-xcb \
     -no-evdev \
+    \
     -no-strip \
     -ltcg
 # No configure flag for fat static libs with lto
