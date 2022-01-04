@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=green-tunnel
-pkgver=1.7.6
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='An anti-censorship utility designed to bypass the DPI system that is put in place by various ISPs to block access to certain websites (CLI)'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('tar' 'jq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SadeghHayeri/GreenTunnel/archive/v${pkgver}.tar.gz")
-sha256sums=('0f3a1113d0351f37e77cfa203894a49444fabe36822771a1f3d29ab91dc9e282')
+sha256sums=('a543e48e5421e7a5e0a078bb339413d50ceae3dd393ef9bb3046b6bfb35715f5')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"

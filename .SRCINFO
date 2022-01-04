@@ -1,6 +1,6 @@
 pkgbase = green-tunnel
 	pkgdesc = An anti-censorship utility designed to bypass the DPI system that is put in place by various ISPs to block access to certain websites (CLI)
-	pkgver = 1.7.6
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/SadeghHayeri/GreenTunnel
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = green-tunnel
 	makedepends = tar
 	makedepends = jq
 	depends = nodejs
-	source = green-tunnel-1.7.6.tar.gz::https://github.com/SadeghHayeri/GreenTunnel/archive/v1.7.6.tar.gz
-	sha256sums = 0f3a1113d0351f37e77cfa203894a49444fabe36822771a1f3d29ab91dc9e282
+	source = green-tunnel-1.8.3.tar.gz::https://github.com/SadeghHayeri/GreenTunnel/archive/v1.8.3.tar.gz
+	sha256sums = a543e48e5421e7a5e0a078bb339413d50ceae3dd393ef9bb3046b6bfb35715f5
 
 pkgname = green-tunnel
-
