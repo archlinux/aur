@@ -31,10 +31,10 @@ md5sums=(
 
 package() {
     tar -xf data.tar.xz -C ${pkgdir}
-    mkdir -p ${pkgdir}/usr/share/applications
     # install icon and desktop file
+    mkdir -p ${pkgdir}/usr/share/
     cp -r ${pkgdir}/opt/apps/${pkgname}/entries/icons/ ${pkgdir}/usr/share/
-    cp ${pkgdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    cp -r ${pkgdir}/opt/apps/${pkgname}/entries/applications/ ${pkgdir}/usr/share/
     sed -i 's/WeChat.exe/wechat.exe/' ${pkgdir}/usr/share/applications/${pkgname}.desktop
     # fix WeChatWin.dll error
     mv libldap24 ${pkgdir}/opt/apps/${pkgname}/lib
