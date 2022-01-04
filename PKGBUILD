@@ -1,7 +1,7 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=python-minecraft-launcher-lib
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc="A Python library for creating a custom minecraft launcher"
 arch=("any")
@@ -10,7 +10,7 @@ license=("BSD")
 depends=("python" "python-requests")
 makedepends=("python-setuptools" "python-sphinx")
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/minecraft-launcher-lib/-/archive/${pkgver}/minecraft-launcher-lib-${pkgver}.tar.gz")
-sha256sums=("668f416dd98f9195ae3d5823fcc4f7c5aa3b53875c276d4b6628ccfc99413fa1")
+sha256sums=("8be570991226dc314afb2c67403b6bf3daaa94f852e22597ec79381ee5a71cc0")
 
 build() {
       cd "minecraft-launcher-lib-${pkgver}/doc"
