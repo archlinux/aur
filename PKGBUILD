@@ -5,13 +5,13 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_wine_commit=2f5f8b4bd4cb5771223d1ee96a55002d18ad01eb
-_stag_commit=8f579c4eed5fa8114f277f93b915cf455d7837c9
+_wine_commit=240f2f39632a08d81e8133dde20b441d8378ed0f
+_stag_commit=93e94fcbc077db4243eec763ed91d6e8312add29
 
 pkgname=wine-ge-custom
 _srctag=7.0rc2-GE-1
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=1
 
 #_winever=${pkgver%.*}
 _winever=$pkgver
@@ -165,8 +165,8 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
-  export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+  export CFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+  export CXXFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
   # Disable AVX instead of using 02, same as dxvk, the rest are from Proton
