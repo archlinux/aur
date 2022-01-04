@@ -10,7 +10,7 @@ pkgbase = eggs
 	depends = xdg-utils
 	depends = nodejs
 	options = !strip
-	source = eggs_8.1.3-1_amd64.deb::https://sourceforge.net/projects/penguins-eggs/files/packages-deb/eggs_9.0.0_amd64.deb/download
+	source = eggs_9.0.0_amd64.deb::https://sourceforge.net/projects/penguins-eggs/files/packages-deb/eggs_9.0.0_amd64.deb/download
 	sha1sums = 129043116e87922355b52c52b932cc21f4c23334
 
 pkgname = eggs

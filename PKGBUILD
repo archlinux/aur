@@ -12,7 +12,7 @@ depends=('python'
          'nodejs')
 options=('!strip')
 makedepends=('tar')
-source=("${pkgname}-${pkgver}.deb::https://sourceforge.net/projects/penguins-eggs/files/packages-deb/eggs_${pkgver}-1_amd64.deb/download")
+source=("${pkgname}-${pkgver}.deb::https://sourceforge.net/projects/penguins-eggs/files/packages-deb/eggs_${pkgver}_amd64.deb/download")
 sha1sums=('129043116e87922355b52c52b932cc21f4c23334')
 
 package() {
