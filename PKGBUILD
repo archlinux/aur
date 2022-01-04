@@ -12,14 +12,13 @@ pkgdesc="An educational software that teaches students computer programming in a
 arch=('i686' 'x86_64')
 url="https://www.alice.org"
 license=('custom')
-depends=('java-environment=8'
+depends=('java-runtime>=8'
          'xdg-utils'
          'lib32-glu'
          'lib32-libxrandr'
          'lib32-libxcursor')
 options=('!strip')
 provides=('alice3')
-install=$pkgname.install
 source=("$pkgname-$pkgver.sh::https://github.com/TheAliceProject/alice3/releases/download/$pkgver/alice3_unix_installer_${pkgver//./_}+build_$_build.sh")
 noextract=("$pkgname-$pkgver.sh")
 sha512sums=('6ed9536bb69219e09b7ecb45bfcb163aac6e76260b275fae536dbaeaeb46e3b4c4b71fc0d0ce335da592566322b3131fcf8238c78e9e0661915a084662c6f59d')
@@ -43,4 +42,5 @@ package() {
   install -Dm644 "$pkgdir/opt/alice/.install4j/alice3.png" "$pkgdir/usr/share/pixmaps/alice3.png"
   install -Dm644 "$pkgdir/opt/alice/application/EULA_Alice3.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
 # vim:set ts=2 sw=2 et:

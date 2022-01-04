@@ -1,4 +1,0 @@
-post_install() {
-  echo -e "You need to manually set java-environment=8 by running '\e[32marchlinux-java set java-8-openjdk\e[37m' as root."
-  echo "If you have a different package providing Java 8, you can replace the above package with the one you have installed."
-}
