@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r10325
+pkgver=r10329
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
