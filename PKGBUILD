@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-fetchmail-git'
 pkgver='1.0.2'
 
@@ -526,4 +527,3 @@ prepare() {
 
     sed -i 's|<arg value="${tools-folder}"/>|<arg value="${root-folder}/server"/>|' build.xml
 }
-md5sums=('SKIP')
