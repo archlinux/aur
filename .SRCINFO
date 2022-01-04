@@ -1,6 +1,6 @@
 pkgbase = python-websharecli
 	pkgdesc = CLI utility to download from webshare.cz
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/tomaskrizek/websharecli
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-websharecli
 	depends = python-setuptools
 	depends = python-xmltodict
 	depends = python-yaml
-	source = https://github.com/tomaskrizek/websharecli/archive/v2.2.0/websharecli-2.2.0.tar.gz
+	source = https://github.com/tomaskrizek/websharecli/archive/v2.2.1/websharecli-2.2.1.tar.gz
 	sha256sums = acf1f7a7f1c2744f3606c37fba88a6966dfca91565e02ec2d108a413034a6061
 
 pkgname = python-websharecli
