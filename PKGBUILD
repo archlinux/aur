@@ -1,7 +1,7 @@
 # Maintainer: gborzi <gborzi@ieee.org>
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=('gmsh' 'gmsh-docs')
-pkgver=4.9.2
+pkgver=4.9.3
 pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-core' 'voro++'
              'glu')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
-sha256sums=('dba281e033584f5da07e2d98d7ae7a3dc481723cb26c2c727b65fc20b301618c'
+sha256sums=('9e06751e9fef59ba5ba8e6feded164d725d7e9bc63e1cb327b083cbc7a993adb'
             '43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae'
             '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef')
 
@@ -21,11 +21,11 @@ prepare() {
 
    # Help links to local doc (package gmsh-docs)
    sed -e "s|https://gmsh.info/doc/texinfo/|file:///usr/share/doc/gmsh/|" \
-       -i Fltk/graphicWindow.cpp
+       -i src/fltk/graphicWindow.cpp
    sed -e "s|https://gmsh.info/dev/doc/texinfo/|file:///usr/share/doc/gmsh/|" \
-       -i Fltk/graphicWindow.cpp
+       -i src/fltk/graphicWindow.cpp
    sed -e "s|https://gmsh.info/|file:///usr/share/licenses/gmsh/|" \
-       -i Fltk/helpWindow.cpp
+       -i src/fltk/helpWindow.cpp
 
 }
 
