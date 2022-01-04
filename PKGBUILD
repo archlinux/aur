@@ -7,7 +7,7 @@
 pkgname=cgminer
 pkgver=4.11.1
 _pkgver=$pkgver
-pkgrel=4
+kgrel=1
 pkgdesc="Multi-threaded multi-pool GPU, FPGA and ASIC miner for bitcoin"
 url='http://ck.kolivas.org/apps/cgminer/'
 license=('GPL3')
