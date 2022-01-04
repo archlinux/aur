@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Adam Tazul (SimPilotAdamT) <adam_tazul@outlook.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: monson <holymonson@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: David Manouchehri <david@davidmanouchehri.com>
 
 pkgname=cgminer
-pkgver=4.10.0
+pkgver=4.11.1
 _pkgver=$pkgver
 pkgrel=4
 pkgdesc="Multi-threaded multi-pool GPU, FPGA and ASIC miner for bitcoin"
