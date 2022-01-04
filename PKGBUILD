@@ -3,7 +3,7 @@
 
 pkgname=python-knack
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python command line interface framework"
 arch=('any')
 url="https://github.com/Microsoft/knack"
@@ -12,7 +12,7 @@ depends=('python-argcomplete' 'python-colorama' 'python-jmespath' 'python-six' '
 makedepends=('python-setuptools')
 checkdepends=('python-mock' 'python-pytest')
 source=("https://github.com/Microsoft/knack/archive/v${pkgver}.tar.gz")
-sha256sums=('1daaf44c6e526addc60906a68b9cac2d32415ffc24a4dbe8a640f12ba477eacd')
+sha256sums=('520f7ac0aeeca85b9b33c2612482e7b6d5da898c1e2f32c00408ce32976fad21')
 
 build() {
   cd "knack-${pkgver}"
