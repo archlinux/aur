@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 # Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 # Contributor: Archist archist@die-optimisten.net
 
@@ -154,8 +155,10 @@ source=(
     "${pkgname}::git+https://stash.kopano.io/scm/kw/kopano-webapp.git${_sourceBranch}"
     "${_phpIni}"
 	)
-md5sums=('SKIP'
-         '111bc4484c9e5d45a05f64dfa7a464da')
+md5sums=(
+    'SKIP'
+    'SKIP'
+	)
 
 makedepends=(
     # WEBAPP: https://stash.kopano.io/projects/KW/repos/kopano-webapp/browse/README.md

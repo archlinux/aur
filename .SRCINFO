@@ -23,6 +23,6 @@ pkgbase = kopano-webapp-git
 	source = kopano-webapp-git::git+https://stash.kopano.io/scm/kw/kopano-webapp.git#branch=master
 	source = kopano-webapp.ini
 	md5sums = SKIP
-	md5sums = 111bc4484c9e5d45a05f64dfa7a464da
+	md5sums = SKIP
 
 pkgname = kopano-webapp-git
