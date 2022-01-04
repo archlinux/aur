@@ -40,6 +40,18 @@ pkgver() {
 }
 
 prepare () {
+    if test "`archlinux-java get`" != "java-8-openjdk";then
+        cat<<EOT
+    Your default Java version is set to `archlinux-java get`, not java-8-openjdk!
+
+    Fix it with:
+
+        archlinux-java set java-8-openjdk
+
+EOT
+        exit 1
+    fi
+
 	cd ${srcdir}/$_gitname
 	# Patching SOCI
 	# patch -p1 < ${srcdir}/soci.patch
