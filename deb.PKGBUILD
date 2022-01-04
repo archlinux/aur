@@ -8,7 +8,8 @@ pkgdesc="CX Blockchain Programming Language; latest binary release. skycoin.com/
 pkgver=0.7.1
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgrel=7
-arch=('x86_64')
+arch=('any')
+_pkgarch="amd64"
 url="https://${_pkggopath}"
 license=()
 makedepends=('unzip')
@@ -51,9 +52,9 @@ package() {
   mkdir -p ${_pkgdir}/
   mkdir -p ${_pkgdir}/usr/bin
   mkdir -p ${_pkgdir}/opt/${_pkgname}/bin
-  install -Dm755 ${srcdir}/home/amherag/go/bin/${_pkgname} ${pkgdir}/opt/${_pkgname}/bin/${_pkgname}
+  install -Dm755 ${srcdir}/home/amherag/go/bin/${_pkgname} ${_pkgdir}/opt/${_pkgname}/bin/${_pkgname}
   ln -rTsf ${_pkgdir}/opt/${_pkgname}/bin/${_pkgname} ${_pkgdir}/usr/bin/${_pkgname}
-  chmod 755 ${_pkgdir}/usr/bin/${_pkgname}
+  #chmod 755 ${_pkgdir}/usr/bin/${_pkgname}
 
 
   _msg2 'installing control file'
