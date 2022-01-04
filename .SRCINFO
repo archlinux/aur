@@ -1,13 +1,13 @@
 pkgbase = crystalline
 	pkgdesc = A Language Server Protocol implementation for Crystal.
 	pkgver = 0.4.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/elbywan/crystalline/
 	arch = x86_64
 	license = MIT
 	makedepends = make
-	makedepends = crystal>=0.36.1
-	makedepends = shards>=0.13.0
+	makedepends = crystal>=1.2.2
+	makedepends = shards>=0.16.0
 	makedepends = llvm>=13.0.0
 	makedepends = llvm-libs>=13.0.0
 	depends = gc
