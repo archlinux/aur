@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
-	pkgver = 7.0rc2.GE.1
+	pkgver = 7.0rc3.GE.1
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	install = wine.install
@@ -150,13 +150,13 @@ pkgbase = wine-ge-custom
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=7.0rc2
-	provides = wine-wow64=7.0rc2
+	provides = wine=7.0rc3
+	provides = wine-wow64=7.0rc3
 	conflicts = wine
 	conflicts = wine-wow64
 	options = !staticlibs
 	options = !lto
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=7.0rc2-GE-1
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=7.0rc3-GE-1
 	source = wine::git+https://github.com/wine-mirror/wine.git#commit=240f2f39632a08d81e8133dde20b441d8378ed0f
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=93e94fcbc077db4243eec763ed91d6e8312add29
 	source = wine-more_8x5_res.patch

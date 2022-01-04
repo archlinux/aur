@@ -9,7 +9,7 @@ _wine_commit=240f2f39632a08d81e8133dde20b441d8378ed0f
 _stag_commit=93e94fcbc077db4243eec763ed91d6e8312add29
 
 pkgname=wine-ge-custom
-_srctag=7.0rc2-GE-1
+_srctag=7.0rc3-GE-1
 pkgver=${_srctag//-/.}
 pkgrel=1
 
