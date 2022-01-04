@@ -5,7 +5,7 @@
 
 _name=oct2py
 pkgname=python-oct2py
-pkgver=5.3.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Python to GNU Octave bridge."
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('90bcfa9aafd16ba4da214e311c878eb864bc13310db1c4135258029e35f6adf0dfd241d8d6ec5f51a3a0a07c104d2eb7baed8cb87144a130f595677a24da4b90')
+b2sums=('da2a509c4b987ea526d4087bfc9556d1ddce328b4e677306a992a9b2cbcb645741d9b9ace46e4232759c11e6f9577612f543632aa8f09232b1f70a932e5310aa')
 
 build() {
     cd "$srcdir/$_name-$pkgver" || exit
