@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r9837.e97b664
+pkgver=r13641.c1835f442
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -14,16 +14,19 @@ url="http://pointclouds.org/"
 license=('BSD')
 depends=(
 	boost
+	cuda
 	eigen
 	flann
-	vtk
+	glew
+	glu
+	libxcursor
+	openmpi
+	qhull
 	qt5-base
 	qt5-webkit
-	qhull
-	glu
-	python2
-	libxt
-	openmpi
+	vtk
+	pugixml
+	fmt
 )
 makedepends=(cmake git)
 source=(git+https://github.com/PointCloudLibrary/pcl)
@@ -44,7 +47,10 @@ prepare() {
 
 	cmake "${srcdir}/pcl" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
+		-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
+		-DCMAKE_CUDA_ARCHITECTURES="52;60;60;62;70;72;75;80;86;86-virtual" \
 		-DBUILD_apps=ON \
 		-DBUILD_apps_cloud_composer=ON \
 		-DBUILD_apps_in_hand_scanner=ON \
@@ -57,9 +63,10 @@ prepare() {
 		-DBUILD_cuda_io=ON \
 		-DBUILD_cuda_apps=ON \
 		-DBUILD_GPU=ON \
+		-DBUILD_gpu_kinfu=OFF \
+		-DBUILD_gpu_kinfu_large_scale=OFF \
 		-DBUILD_gpu_surface=ON \
 		-DBUILD_gpu_tracking=ON \
-		-DBUILD_app_3d_rec_framework=ON \
 		-DBUILD_simulation=ON
 }
 
