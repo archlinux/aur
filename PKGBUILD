@@ -1,7 +1,7 @@
-# Maintainer: Charles Vejnar <ce@vejnar.org>
+# Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-momoko
-pkgver=2.2.4
+pkgver=2.2.5.1
 pkgrel=1
 pkgdesc="Asynchronous Psycopg wrapper for Tornado."
 arch=("any")
@@ -10,14 +10,14 @@ license=("MIT")
 depends=("python" "python-tornado" "python-psycopg2")
 makedepends=("python-setuptools")
 source=("https://github.com/FSX/momoko/archive/v$pkgver.tar.gz")
-sha1sums=("89de0eef8e23006e39f24db86b470b35c8eba97b")
+sha1sums=("65156ce1054126a75a1b34d923f251ca997e44f2")
 
 build() {
-    cd $srcdir/momoko-$pkgver
+    cd "$srcdir/momoko-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd $srcdir/momoko-$pkgver
+    cd "$srcdir/momoko-$pkgver"
     python setup.py install --root="$pkgdir"
 }
