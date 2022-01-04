@@ -1,14 +1,13 @@
 pkgbase = write-good
 	pkgdesc = Naive linter for English prose
-	pkgver = 1.0.3
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/btford/write-good
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/write-good/-/write-good-1.0.3.tgz
-	sha256sums = 0c3e857846696947ae253bf776a46d4f0192636d667a8131adeae97bd9ad14e2
+	source = https://registry.npmjs.org/write-good/-/write-good-1.0.8.tgz
+	sha256sums = f54db3db8db0076fd1c05411c7f3923f055176632c51dc4046ab216e51130221
 
 pkgname = write-good
-
