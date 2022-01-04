@@ -1,11 +1,12 @@
 pkgbase = autoportforward-git
 	pkgdesc = Bidirectional port-forwarding for docker and kubernetes
-	pkgver = r15.38558a1
+	pkgver = v0.0.5.r0.gb8059ea
 	pkgrel = 1
 	url = https://github.com/ruoshan/autoportforward
 	arch = any
 	makedepends = git
 	makedepends = go
+	makedepends = sed
 	provides = autoportforward
 	conflicts = autoportforward
 	source = autoportforward::git+https://github.com/ruoshan/autoportforward.git
