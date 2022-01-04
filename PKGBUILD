@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/llathasa-veleth/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ac6a8bcd902b5222571f2f143cfbf0c7fbd21e3df25904b727191afcd7d1c1a4')
+sha256sums=('9e2fe200fd2301b97dc17c816723f51ca760b253627325634d2331767c38d8eb')
 
 package() {
   cd "$pkgname-$pkgver"
