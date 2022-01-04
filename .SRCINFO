@@ -2,14 +2,14 @@ pkgbase = zap-aur-git
 	pkgdesc = A lightning fast AUR searcher
 	pkgver = r22.af87462
 	pkgrel = 1
-	url = https://github.com/Bowuigi/Zap
+	url = https://codeberg.org/Bowuigi/Zap
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = lua>=5.1
 	provides = zap-aur
 	conflicts = zap-aur
-	source = zap-aur::git+https://github.com/Bowuigi/Zap.git
+	source = zap-aur::git+https://codeberg.org/Bowuigi/Zap.git
 	sha256sums = SKIP
 
 pkgname = zap-aur-git
