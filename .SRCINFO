@@ -1,6 +1,6 @@
 pkgbase = code-wayland
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor, with ozone enabled for wayland support
-	pkgver = 1.62.2
+	pkgver = 1.63.2
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = code-wayland
 	makedepends = npm
 	makedepends = python
 	makedepends = yarn
-	makedepends = nodejs>=14.0.0
-	makedepends = nodejs<15.0.0
+	makedepends = nodejs-lts-fermium
+	makedepends = imagemagick
 	depends = electron13
 	depends = libsecret
 	depends = libx11
@@ -22,13 +22,13 @@ pkgbase = code-wayland
 	optdepends = x11-ssh-askpass: SSH authentication
 	provides = vscode
 	conflicts = code
-	source = code-wayland::git+https://github.com/microsoft/vscode.git#tag=1.62.2
+	source = code-wayland::git+https://github.com/microsoft/vscode.git#tag=1.63.2
 	source = code.js
 	source = code.sh
 	source = 0001-patch-product.json-to-enable-all-extensions.patch
 	sha512sums = SKIP
 	sha512sums = 6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade
 	sha512sums = 84c4f14bfa79210721f18b46e2d672f3816638b526721475445ad437b373a7574d96b808e5a16eb1026ea60d5b50e30aa5eef7f69d4bd64019291ee195b2ec89
-	sha512sums = 2796e4fe6f743f2c8a475e602ea686bdbe693d81309b19a5aad0c409b9b10353a59586da219aa12b649f11d3c4f029cab006212a7db4e3996aa9044b74c8c3ec
+	sha512sums = 74294327d0776bc13a92789b45b4835819a23c10626f46e2f29cebbca71dc27630cb31d1c1b3ab92476fb227dbaa4229cad3442d94907226c967aa291009cd9f
 
 pkgname = code-wayland

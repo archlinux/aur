@@ -1,4 +1,4 @@
-From a07792fcdf2ca859cceb95834ddcf5dab0195c2a Mon Sep 17 00:00:00 2001
+From 7234b8333af72c56fa8ba3f272aafc8d1fa5e0e4 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <dcal@atlassian.com>
 Date: Tue, 16 Nov 2021 17:55:14 +1100
 Subject: [PATCH] patch product.json to enable all extensions
@@ -8,7 +8,7 @@ Subject: [PATCH] patch product.json to enable all extensions
  1 file changed, 23 insertions(+), 7 deletions(-)
 
 diff --git a/product.json b/product.json
-index 14ef10628d3..1f30944ab93 100644
+index 22e93d4b7c3..058c35ad4a6 100644
 --- a/product.json
 +++ b/product.json
 @@ -1,8 +1,21 @@
@@ -37,7 +37,7 @@ index 14ef10628d3..1f30944ab93 100644
  	"win32MutexName": "vscodeoss",
  	"licenseName": "MIT",
  	"licenseUrl": "https://github.com/microsoft/vscode/blob/main/LICENSE.txt",
-@@ -19,10 +32,10 @@
+@@ -21,16 +34,19 @@
  	"win32AppUserModelId": "Microsoft.CodeOSS",
  	"win32ShellNameShort": "C&ode - OSS",
  	"darwinBundleIdentifier": "com.visualstudio.code.oss",
@@ -47,12 +47,10 @@ index 14ef10628d3..1f30944ab93 100644
  	"reportIssueUrl": "https://github.com/microsoft/vscode/issues/new",
 -	"urlProtocol": "code-oss",
 +	"urlProtocol": "code-wayland",
- 	"webviewContentExternalBaseUrlTemplate": "https://{{uuid}}.vscode-webview.net/insider/dc1a6699060423b8c4d2ced736ad70195378fddf/out/vs/workbench/contrib/webview/browser/pre/",
+ 	"webviewContentExternalBaseUrlTemplate": "https://{{uuid}}.vscode-webview.net/insider/c42793d0357ff9c6589cce79a847177fd42852ee/out/vs/workbench/contrib/webview/browser/pre/",
  	"extensionAllowedProposedApi": [
  		"ms-vscode.vscode-js-profile-flame",
-@@ -30,7 +43,10 @@
- 		"ms-vscode.remotehub",
- 		"ms-vscode.remotehub-insiders",
+ 		"ms-vscode.vscode-js-profile-table",
  		"GitHub.remotehub",
 -		"GitHub.remotehub-insiders"
 +		"GitHub.remotehub-insiders",
@@ -63,5 +61,5 @@ index 14ef10628d3..1f30944ab93 100644
  	"builtInExtensions": [
  		{
 -- 
-2.33.1
+2.34.1
 
