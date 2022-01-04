@@ -1,8 +1,8 @@
 # Maintainer: anon at sansorgan.es
 _hkgname=arbtt
 pkgname=arbtt
-pkgver=0.10.2
-pkgrel=6
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Automatic Rule-Based Time Tracker"
 url="https://hackage.haskell.org/package/arbtt"
 license=('GPL2')
@@ -10,8 +10,9 @@ arch=('i686' 'x86_64')
 provides=('haskell-arbtt')
 conflicts=('haskell-arbtt')
 depends=('ghc'
-'haskell-aeson<=1.5'
+'haskell-aeson<1.6'
 'haskell-aeson>=0.1'
+'haskell-attoparsec>=0.13'
 'haskell-bytestring-progress'
 'haskell-conduit'
 'haskell-pcre-light'
@@ -25,7 +26,7 @@ depends=('ghc'
 makedepends=('ghc'
 		'cabal-install'
 		'haskell-aeson>=0.1'
-		'haskell-aeson<1.5'
+		'haskell-aeson<1.6'
 		'haskell-base<5'
 		'haskell-base>=4.7'
 		'haskell-binary>=0.5'
@@ -55,8 +56,12 @@ makedepends=('ghc'
 		'haskell-x11'
 )
 options=('strip')
-source=(https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
+source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz" "attoparsec-dep.patch")
 
+prepare() {
+	cd ${srcdir}/${_hkgname}-${pkgver}
+	patch arbtt.cabal ${srcdir}/attoparsec-dep.patch
+}
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
@@ -76,4 +81,4 @@ package() {
 	install -Dm 644 categorize.cfg "${pkgdir}/usr/share/${pkgname}/categorize.cfg"
 	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/arbtt"
 }
-md5sums=('1b2fe0992719512d8e7b0c47ec0cc16c')
+md5sums=('c3ff2bda3fc53d8ce7b880749317d013' 'b22d1f4a3b55ff11217c4dbe7f5f6db4')

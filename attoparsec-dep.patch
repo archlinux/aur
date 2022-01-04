@@ -1,0 +1,4 @@
+197c197
+<         attoparsec == 0.13.*,
+---
+>         attoparsec >= 0.13,
