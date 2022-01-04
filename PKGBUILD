@@ -158,9 +158,7 @@ conflicts=(
 source=(
     "${pkgname}::git+https://github.com/Kopano-dev/vmime.git${_sourceBranch}"
 	)
-md5sums=(
-    'SKIP'
-	)
+md5sums=('SKIP')
 
 makedepends=(
     'cmake'
