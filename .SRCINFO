@@ -8,6 +8,8 @@ pkgbase = dedsec-grub2-theme
 	license = GPL3
 	depends = grub
 	source = git+https://github.com/vandalsoul/dedsec-grub2-theme.git
+	source = dedsec-grub2-theme.install
 	sha256sums = SKIP
+	sha256sums = 36b026b2b42385bf13d27e29625698836fa623ec923f0262a47f5141619b1328
 
 pkgname = dedsec-grub2-theme

@@ -4,16 +4,15 @@ post_install() {
     echo -e 'You Grub themes install to PATH\033[1;35m /usr/share/grub/themes\033[0m'
     echo -e 'Please configure manually you /etc/default/grub'
     echo -e 'Add \033[1;35mGRUB_THEME="usr/share/grub/themes/dedsec-grub2-theme-XXXX/theme.txt"\033[0m'
-    echo -e 'And do not forget execute \033[1;31mmgrub-mkconfig -o /boot/grub/grub.cfg\033[0m'
+    echo -e 'And do not forget execute \033[1;31mgrub-mkconfig -o /boot/grub/grub.cfg\033[0m'
     echo -e '\033[1;36m==============================================================\033[0m'
 }
 
 post_remove() {
     echo -e '\033[1;36m==============================================================\033[0m'
     echo -e 'You uninstalled dedsec grub2 theme'
-    #echo -e 'Please update manually \033[31mgrub.cfg\033[0m'
     echo -e 'Please Revise\033[1;31m /etc/default/grub\033[0m'
     echo -e 'Delete \033[31mGRUB_THEME="usr/share/grub/themes/dedsec-grub2-theme-XXXX/theme.txt"\033[0m'
-    echo -e 'And execute \033[1;31mmgrub-mkconfig -o /boot/grub/grub.cfg\033[0m'
+    echo -e 'And execute \033[1;31mgrub-mkconfig -o /boot/grub/grub.cfg\033[0m'
     echo -e '\033[1;36m==============================================================\033[0m'
 }

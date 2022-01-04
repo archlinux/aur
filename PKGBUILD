@@ -11,8 +11,12 @@ install="${pkgname}".install
 
 depends=('grub')
 
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git"
+        "${pkgname}.install"
+)
+sha256sums=('SKIP'
+            '36b026b2b42385bf13d27e29625698836fa623ec923f0262a47f5141619b1328'
+)
 
 package() {
     msg 'DedSec GRUB2 Theme'
