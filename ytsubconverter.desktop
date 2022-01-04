@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=YTSubConverter
+Comment=A tool for creating styled YouTube subtitles
+Exec=/usr/bin/mono /opt/YTSubConverter/YTSubConverter.exe %u
+Terminal=false
+Type=Application
