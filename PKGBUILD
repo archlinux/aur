@@ -2,15 +2,15 @@
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux
 
 pkgname=azure-cli
-pkgver=2.31.0
-pkgrel=3
+pkgver=2.32.0
+pkgrel=1
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
 license=('MIT')
 depends=("python")
 conflicts=("python-azure-cli")
-source=("install.py"
+source=("install-$pkgver.py::https://azurecliprod.blob.core.windows.net/install.py"
         "install.response"
         "az")
 sha256sums=("7869d3c46992852525b8f9e4c63e34edd2d29cafed9e16fd94d5356665eefdfd"
@@ -20,7 +20,7 @@ options=(!strip)
 
 prepare() {
   rm -rf "$srcdir/azure-cli"
-  grep -v -E '^===>|^$' install.response | python "$srcdir/install.py"
+  grep -v -E '^===>|^$' install.response | python "$srcdir/install-$pkgver.py"
   find "$srcdir/azure-cli/bin" -type f -print0 | xargs -0 sed -i -e "s|$srcdir|/opt|g"
 }
 
