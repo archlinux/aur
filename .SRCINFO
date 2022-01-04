@@ -1,7 +1,7 @@
 pkgbase = libva-vdpau-driver-vp9-git
 	pkgdesc = VDPAU backend for VA API. (Version with VP9 codec support)
 	pkgver = r57.509d3b2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xuanruiqi/vdpau-va-driver-vp9
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = libva-vdpau-driver-vp9-git
 	depends = libgl
 	provides = libva-vdpau-driver
 	conflicts = libva-vdpau-driver
+	conflicts = nvidia-vaapi-driver
 	replaces = vdpau-video
 	source = libva-vdpau-driver-vp9-git::git+https://github.com/xuanruiqi/vdpau-va-driver-vp9.git
 	sha256sums = SKIP
