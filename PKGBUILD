@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron13
-pkgver=13.6.3
-_commit=aa9d2dbef7f485c06d82001597a8374291e92c81
+pkgver=13.6.6
+_commit=776ee483306730531aa22dcdc67d6e08bd6571ce
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
 pkgrel=1
@@ -45,7 +45,7 @@ sha256sums=('SKIP'
             '693c0d5d79d57ac8d8195ec21f9896f6f2c9ec7b3f2deb2b849aa7966f9e0ced'
             'c128612dcdff9d5edf488775db1cd2b5b00e06811c88bf622703cce4787fcc51'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
-            'f16103daf05713dea632b5f01e45db20ff12d1770a6539b4e8d3957a0242dd54'
+            '7cb11fb44aaf4d15f36caca3c0d1b082a723c30d43cd44db147248db5683a2a9'
             '50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460'
             '940346d3599d09366068d88b65dfcbcab187ceb5d14dc7c7f9b6ae5e6f25ec7d'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
@@ -186,6 +186,9 @@ build() {
   export CXX=clang++
   export AR=ar
   export NM=nm
+
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'

@@ -1,6 +1,6 @@
 pkgbase = electron13
 	pkgdesc = Build cross platform desktop apps with web technologies
-	pkgver = 13.6.3
+	pkgver = 13.6.6
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -62,7 +62,7 @@ pkgbase = electron13
 	sha256sums = 693c0d5d79d57ac8d8195ec21f9896f6f2c9ec7b3f2deb2b849aa7966f9e0ced
 	sha256sums = c128612dcdff9d5edf488775db1cd2b5b00e06811c88bf622703cce4787fcc51
 	sha256sums = dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4
-	sha256sums = f16103daf05713dea632b5f01e45db20ff12d1770a6539b4e8d3957a0242dd54
+	sha256sums = 7cb11fb44aaf4d15f36caca3c0d1b082a723c30d43cd44db147248db5683a2a9
 	sha256sums = 50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460
 	sha256sums = 940346d3599d09366068d88b65dfcbcab187ceb5d14dc7c7f9b6ae5e6f25ec7d
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b

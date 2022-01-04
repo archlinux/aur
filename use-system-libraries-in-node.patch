@@ -19,7 +19,7 @@
  assert(!node_use_dtrace, "node_use_dtrace not supported in GN")
  assert(!node_use_etw, "node_use_etw not supported in GN")
  
-@@ -190,10 +202,8 @@
+@@ -182,10 +194,8 @@
  component("node_lib") {
    deps = [
      ":node_js2c",
@@ -30,7 +30,7 @@
      "deps/uvwasi",
      "//third_party/zlib",
      "//third_party/brotli:dec",
-@@ -209,6 +219,19 @@
+@@ -201,6 +211,19 @@
    public_configs = [ ":node_lib_config" ]
    include_dirs = [ "src" ]
    libs = []
