@@ -1,0 +1,16 @@
+pkgbase = statik
+	pkgdesc = Embed files into a Go executable
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/rakyll/statik
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	depends = glibc
+	provides = statik
+	conflicts = statik
+	source = statik-0.1.7.tar.gz::https://github.com/rakyll/statik/archive/v0.1.7.tar.gz
+	b2sums = 0fc7f0476b98ce25d2ad5fbfe1127ef5d0bd85007c77ed933853a6ac9d3dc10f989489a58e7def2cd01df6528294bf47273aaa4f6c0ac4cbcdf182f263f5a555
+
+pkgname = statik
