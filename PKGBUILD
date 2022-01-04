@@ -3,7 +3,7 @@
 
 pkgname=ddnet
 pkgver=15.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
@@ -32,6 +32,7 @@ build() {
         -DVIDEORECORDER=ON          \
         -DUPNP=ON                   \
         -DMYSQL=ON                  \
+        -DTEST_MYSQL=OFF            \
         -GNinja
     ninja
 }
