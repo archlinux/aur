@@ -1,7 +1,7 @@
 #Maintainer: Illia Shestakov <illia@ishestakov.com>
 
 pkgname=ncdu2
-pkgver=2.0beta2
+pkgver=2.0.1
 _pkgver=${pkgver/beta/-beta}
 pkgrel=1
 pkgdesc="Disk usage analyzer with an ncurses interface. Rewrite in Zig."
@@ -11,7 +11,7 @@ license=('MIT')
 depends=("ncurses")
 makedepends=("zig" "make")
 source=("https://dev.yorhel.nl/download/ncdu-${_pkgver}.tar.gz")
-sha512sums=("4e69d792b281b27bbd99f2426d0f48765f7a6096f618efddf5362bc3303a807544a4f7149e0ca6e2bcb3527e928d26466b3558094ab1ae6595fa06e810910c24")
+sha512sums=("853bb74fe7d896ef3d3ff02366f4e7f98e3833ef5f7fe0239a5e8225052592e210974e7b4a8feb4c41783c05bf2c0c0ac448ef1fcde7b7d0a7092386ebadbad4")
 
 build() {
     cd "${srcdir}/ncdu-${_pkgver}"
