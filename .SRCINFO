@@ -1,6 +1,6 @@
 pkgbase = aegisub-wangqr-git
 	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (wangqr fork)
-	pkgver = 3.3.2.r6.8e4ca0dd9
+	pkgver = 3.3.2.r50.d771fb21a
 	pkgrel = 1
 	url = http://www.aegisub.org
 	arch = x86_64
@@ -34,4 +34,3 @@ pkgbase = aegisub-wangqr-git
 	sha256sums = SKIP
 
 pkgname = aegisub-wangqr-git
-

@@ -4,7 +4,7 @@
 
 pkgname=aegisub-wangqr-git
 _pkgtag='v3.3.2'
-pkgver=3.3.2.r6.8e4ca0dd9
+pkgver=3.3.2.r50.d771fb21a
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (wangqr fork)'
 arch=(x86_64)
