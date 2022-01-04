@@ -526,3 +526,4 @@ prepare() {
 
     sed -i 's|<arg value="${tools-folder}"/>|<arg value="${root-folder}/server"/>|' build.xml
 }
+md5sums=('SKIP')
