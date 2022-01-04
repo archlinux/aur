@@ -3,7 +3,7 @@
 
 pkgname=ddnet
 pkgver=15.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
@@ -37,10 +37,10 @@ build() {
     ninja
 }
 
-check() {
-    # disabled until sqlite tests are fixed upstream.
-    # ninja run_tests -C build
-}
+# disabled until sqlite tests are fixed upstream.
+#check() {
+    #ninja run_tests -C build
+#}
 
 package() {
     DESTDIR="$pkgdir" ninja install -C build
