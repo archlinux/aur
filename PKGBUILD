@@ -401,7 +401,7 @@ build() {
     cd ${srcdir}/${pkgname}
 
     # The Only Way To Execute PHP With Right Settings Before Installation
-    (cat /etc/php/php.ini ; echo ; cat ${srcdir}/${_phpIni} ; echo ; echo "open_basedir=\${open_basedir}:$(pwd)") > make-php.ini
+    (cat $(php-config --ini-path)/php.ini ; echo ; cat ${srcdir}/${_phpIni} ; echo ; echo "open_basedir=\${open_basedir}:$(pwd)") > make-php.ini
     make server client \
 	PHP="$(which php) -c $(realpath make-php.ini)"
 
