@@ -1,11 +1,10 @@
 pkgbase = skyimager
 	pkgdesc = Skywire Node microSD / TFcard setup utility. skycoin.com
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/skycoin/skybian
 	arch = x86_64
-	source = https://github.com/skycoin/skybian/releases/download/v0.3.0/skyimager-linux-amd64-v0.3.0.tar.gz
-	sha256sums = a62c8dac151a400ef357c4d2acdb287333e7d3b8890ffa86dfc3a093d04e5f9d
+	source = https://github.com/skycoin/skybian/releases/download/v0.4.0/skyimager-linux-amd64-v0.4.0.tar.gz
+	sha256sums = 9fea28c31508edffba69912c5e91950a078c83b58e0a18e45a56fc84eddb0446
 
 pkgname = skyimager
-
