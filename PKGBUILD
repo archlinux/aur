@@ -1,16 +1,21 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=ksubdomain
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="无状态子域名爆破工具"
 arch=("x86_64" "i686")
 url="https://github.com/knownsec/ksubdomain"
 license=("MIT")
 depends=("libpcap")
-makedepends=("go")
+makedepends=("go" "statik")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bdeb5c21c36773487d462d2335b9e29466a6d0be7428f97315a8d34fc1684262')
+b2sums=('fe6f793e028c346d23c55d1231e622efe615890c45f12f35f231c762a1f282a8f5289d02bf12688694098989ae5e3ab9ac0e0c63d30adbe5e28fe9e08b4d0e83')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  statik -src=resources
+}
 
 build() {
   cd ${pkgname}-${pkgver}/cmd
