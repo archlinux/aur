@@ -1,6 +1,6 @@
 _pkgbase=autoportforward
 pkgname=$_pkgbase-git
-pkgver=r15.38558a1
+pkgver=v0.0.5.r0.gb8059ea
 pkgrel=1
 pkgdesc="Bidirectional port-forwarding for docker and kubernetes"
 url="https://github.com/ruoshan/autoportforward"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
