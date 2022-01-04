@@ -1,6 +1,6 @@
 pkgbase = releng-tool
 	pkgdesc = Tool to assist in the release engineering of a project
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://releng.io/
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = releng-tool
 	optdepends = patch: support for patching package sources
 	optdepends = subversion: supporting for Subversion checkouts
 	optdepends = zsh-completions: shell completion for zsh
-	source = releng-tool-0.9.0::git+https://github.com/releng-tool/releng-tool.git#tag=v0.9
+	source = releng-tool-0.10.0::git+https://github.com/releng-tool/releng-tool.git#tag=v0.10
 	sha512sums = SKIP
 
 pkgname = releng-tool
