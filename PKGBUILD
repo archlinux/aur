@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-mdm-git'
 pkgver='3.3.0'
 
@@ -523,5 +524,3 @@ prepare() {
    _setConfig "PLUGIN_MDM_SERVER" "'127.0.0.1:81'" config.php
    _setConfig "PLUGIN_MDM_SERVER_SSL" "false" config.php
 }
-md5sums=('SKIP'
-         '30bd89417f7089d30db62fb4c1f09996')
