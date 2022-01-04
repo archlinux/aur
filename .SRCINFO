@@ -1,7 +1,7 @@
 pkgbase = tabsearchproviderconnector
 	pkgdesc = Browser tab search provider for GNOME
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/harshadgavali/searchprovider-for-browser-tabs
 	arch = x86_64
 	license = MIT
