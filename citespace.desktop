@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=citespace
+Comment=A widely used tool for visual exploration of scientific literature.
+Type=Application
+Exec=citespace
+Icon=citespace
+Terminal=false
+StartupWMClass=citespace
+Categories=Science
