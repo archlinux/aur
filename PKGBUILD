@@ -1,0 +1,37 @@
+pkgname=nvidia-vaapi-driver-git
+_pkgname=nvidia-vaapi-driver
+pkgver=v0.0.1.r0.g6d285a0
+pkgrel=1
+pkgdesc="A VA-API implemention using NVIDIA's NVDEC"
+arch=('x86_64')
+url="https://github.com/elFarto/nvidia-vaapi-driver"
+license=('unknown')
+depends=('nvidia-utils' 'gst-plugins-bad-libs')
+makedepends=('meson' 'cuda' 'git' 'gst-plugins-bad')
+provides=('nvidia-vaapi-driver')
+conflicts=('nvidia-vaapi-driver')
+source=("${_pkgname}::git+$url.git")
+sha1sums=('SKIP')
+
+
+pkgver() {
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+    sed -i "s|usr/include/cuda|opt/cuda/include|" meson.build
+    sed -i "s|drm/drm|libdrm/drm|" src/vabackend.c
+    meson setup build
+}
+
+build() {
+    cd "$_pkgname"
+    meson compile -C build
+}
+
+package() {
+    cd "$_pkgname"
+    DESTDIR="${pkgdir}" meson install -C build
+}

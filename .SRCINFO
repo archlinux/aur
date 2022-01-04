@@ -1,0 +1,19 @@
+pkgbase = nvidia-vaapi-driver-git
+	pkgdesc = A VA-API implemention using NVIDIA's NVDEC
+	pkgver = v0.0.1.r0.g6d285a0
+	pkgrel = 1
+	url = https://github.com/elFarto/nvidia-vaapi-driver
+	arch = x86_64
+	license = unknown
+	makedepends = meson
+	makedepends = cuda
+	makedepends = git
+	makedepends = gst-plugins-bad
+	depends = nvidia-utils
+	depends = gst-plugins-bad-libs
+	provides = nvidia-vaapi-driver
+	conflicts = nvidia-vaapi-driver
+	source = nvidia-vaapi-driver::git+https://github.com/elFarto/nvidia-vaapi-driver.git
+	sha1sums = SKIP
+
+pkgname = nvidia-vaapi-driver-git
