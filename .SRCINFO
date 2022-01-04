@@ -1,0 +1,24 @@
+pkgbase = kast
+	pkgdesc = Video casting program
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://bitbucket.org/massultidev/kast
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-av
+	depends = python-bottle
+	depends = python-dataclasses-json
+	depends = python-mpris_server
+	depends = python-psutil
+	depends = python-pycaption
+	depends = python-pychromecast
+	depends = python-pyqt5
+	depends = python-pysubs2
+	depends = python-setproctitle
+	depends = python-tendo
+	depends = python-zeroconf
+	source = kast-1.1.1.tar.bz2::https://bitbucket.org/massultidev/kast/get/1.1.1.tar.bz2
+	sha256sums = c6b068f0ed6313052ee53d760ba8e73a361a17eb28e391852ce73b95d52c14b7
+
+pkgname = kast
