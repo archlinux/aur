@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-webapp-passwd-git'
 pkgver='1.1'
 
@@ -522,4 +523,3 @@ prepare() {
     cd ${srcdir}/${pkgname}
     sed -i 's|Name|name|g' manifest.xml
 }
-md5sums=('SKIP')
