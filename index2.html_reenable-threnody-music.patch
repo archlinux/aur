@@ -1,0 +1,11 @@
+--- index2.noexternalcontent.html	2022-01-04 23:11:31.949843880 +0100
++++ index2.noexternalcontent.withthrenodymusic.html	2022-01-04 23:14:01.879839190 +0100
+@@ -20,6 +20,6 @@
+         
+-<!--     <audio id="threnody1">
++    <audio id="threnody1">
+         <source src="test.mp3" type="audio/mpeg">
+         
+-    </audio>   -->  
++    </audio>
+ 

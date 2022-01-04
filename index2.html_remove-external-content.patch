@@ -1,0 +1,27 @@
+--- index2.html	2018-02-03 23:00:23.000000000 +0100
++++ index2.noexternalcontent.html	2022-01-04 23:11:31.949843880 +0100
+@@ -1 +1,3 @@
++<!-- NOTE: External content and links that use internet commented out for this standalone version. -->
++
+ <html>
+@@ -5,3 +7,3 @@
+         <!-- Global Site Tag (gtag.js) - Google Analytics -->
+-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107491380-1"></script>
++        <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107491380-1"></script> -->
+         <script>
+@@ -33,2 +35,3 @@
+             </div>
++            <!--
+             <div id="mobile-badges">
+@@ -37,2 +40,3 @@
+             </div>
++            -->
+         </div> <!-- END mobile-content -->
+@@ -52,2 +56,3 @@
+             
++            <!--
+             <div id="giftShopDiv" class = "shop">
+@@ -59,2 +64,3 @@
+             </div>
++            -->
+ 
