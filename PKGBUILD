@@ -6,8 +6,7 @@ pkgdesc='balena.io command line interface'
 pkgver=12.44.29
 pkgrel=1
 arch=('x86_64')
-url='https://balena.io/'
-_github_url="https://github.com/balena-io/balena-cli"
+url='https://github.com/balena-io/balena-cli'
 license=('APACHE')
 depends=('nodejs>=10.20.0' 'nodejs<14.0.0' 'gawk' 'sed' 'make')
 makedepends=('npm<7.0.0' 'python2' 'jq' 'coffeescript' 'git' 'node-gyp')
