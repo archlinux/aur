@@ -1,0 +1,15 @@
+pkgbase = python-aiohttp-openmetrics
+	pkgdesc = OpenMetrics provider for aiohttp
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/jelmer/aiohttp-openmetrics
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-prometheus_client
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp-openmetrics/aiohttp-openmetrics-0.0.3.tar.gz
+	sha256sums = 84f3ce52591cd84aa7fbd7d79f14d935e23948836d9aaf51c59807a4208d0b06
+	b2sums = aa2f903ace455feff726140bfda460e11bd9b64ed343125d7ea5bf66c20fe62d5f3996d36c08ebe1011fbf24e492dcc9665c09040f1c7cd1fd48baeacd362b3a
+
+pkgname = python-aiohttp-openmetrics
