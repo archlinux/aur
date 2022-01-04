@@ -1,0 +1,15 @@
+pkgbase = tabsearchproviderconnector
+	pkgdesc = Browser tab search provider for GNOME
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/harshadgavali/searchprovider-for-browser-tabs
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = rust
+	depends = firefox
+	depends = gnome-shell
+	source = tabsearchproviderconnector-0.1.0.tar.gz::https://github.com/harshadgavali/searchprovider-for-browser-tabs/archive/refs/tags/connector-v0.1.0.tar.gz
+	sha256sums = 8d759df2e9b0c2e62a7fd799321d41426af861e15dcaa8037edfcbeaf0072bc5
+
+pkgname = tabsearchproviderconnector
