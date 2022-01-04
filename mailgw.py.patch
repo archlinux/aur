@@ -1,0 +1,20 @@
+--- a/roundup/mailgw.py	2021-07-13 20:49:10.798830970 +0000
++++ b/roundup/mailgw.py	2021-07-13 20:50:23.525212393 +0000
+@@ -1373,7 +1373,7 @@
+             else:
+                 self.logger.debug('Trying server %r without ssl' % server)
+                 server = imaplib.IMAP4(server)
+-        except (imaplib.IMAP4.error, socket.error, socket.sslerror):
++        except (imaplib.IMAP4.error, socket.error):
+             self.logger.exception('IMAP server error')
+             return 1
+ 
+@@ -1415,7 +1415,7 @@
+         finally:
+             try:
+                 server.expunge()
+-            except (imaplib.IMAP4.error, socket.error, socket.sslerror):
++            except (imaplib.IMAP4.error, socket.error):
+                 pass
+             server.logout()
+ 
