@@ -22,21 +22,25 @@ optdepends=('libssh: for ssh protocol support'
 install=$pkgname.install
 
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
-        "guacd.conf")
+        "guacd.conf"
+        "https://github.com/apache/guacamole-server/commit/bc6b5cef25cb2c66cb4e0e96df6d2639a61a197a.patch")
 
 backup=('etc/guacamole/guacd.conf')
 
 md5sums=('b17c6152e96af0488ca4c0608e5ec3ae'
-         'ab0ac97ad76d16be73768f89abb6ee7e')
+         'ab0ac97ad76d16be73768f89abb6ee7e'
+         'bd58fffb01f7f6ab9bae306bdbea61ea')
 
-#prepare() {
-#}
+prepare() {
+	cd "$srcdir"/$pkgname-$pkgver
+	# guacenc doesn't work since ffmpeg 4.4 (av_init_packet() is deprecated) so, we apply this patch
+	# Reference: https://github.com/apache/guacamole-server/pull/352/commits/bc6b5cef25cb2c66cb4e0e96df6d2639a61a197a
+	patch -Np1 -i ../bc6b5cef25cb2c66cb4e0e96df6d2639a61a197a.patch
+}
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
-    # guacenc doesn't work since ffmpeg 4.4 (av_init_packet() is deprecated) that's why we have to build it with --disable-guacenc
-    # Reference: https://issues.apache.org/jira/browse/GUACAMOLE-1330
-	./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system --disable-guacenc CPPFLAGS="-Wno-error=pedantic"
+	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system CPPFLAGS="-Wno-error=pedantic"
 	make
 }
  

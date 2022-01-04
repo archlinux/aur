@@ -35,7 +35,9 @@ pkgbase = guacamole-server
 	backup = etc/guacamole/guacd.conf
 	source = http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.4.0/source/guacamole-server-1.4.0.tar.gz
 	source = guacd.conf
+	source = https://github.com/apache/guacamole-server/commit/bc6b5cef25cb2c66cb4e0e96df6d2639a61a197a.patch
 	md5sums = b17c6152e96af0488ca4c0608e5ec3ae
 	md5sums = ab0ac97ad76d16be73768f89abb6ee7e
+	md5sums = bd58fffb01f7f6ab9bae306bdbea61ea
 
 pkgname = guacamole-server
