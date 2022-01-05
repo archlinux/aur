@@ -1,15 +1,15 @@
 pkgbase = coffeetch-git
 	pkgdesc = Minimal command line system information tool written in C
 	pkgver = 1.0.r10.bd76287
-	pkgrel = 3
-	url = https://git.dockside.org.uk/coffeetch.git
+	pkgrel = 4
+	url = git://git.dockside.org.uk/coffeetch.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = gcc
 	provides = coffeetch
 	conflicts = coffeetch
-	source = git+https://git.dockside.org.uk/coffeetch.git
+	source = git+git://git.dockside.org.uk/coffeetch.git
 	sha512sums = SKIP
 
 pkgname = coffeetch-git
