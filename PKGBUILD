@@ -3,7 +3,7 @@
 pkgname=python-pylibscrypt
 _pkgname=pylibscrypt
 
-pkgver=1.8.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="scrypt for python"
 
@@ -14,7 +14,7 @@ license=('ISC')
 depends=('python')
 
 source=("https://github.com/jvarho/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('a229e92bd3e84407bfbaf6f815ce43dde0d24a3c4b57b34193c48671d8326749aa68ee82c359c78d29d49be65021763229df53583c6fccf0bae6cc6d0814cb4e')
+sha512sums=('b233f343dae78f0c330962eaa2311ba7ccd41d4b3a707ce37a24ad02d79f31ad2774da69b3117d7f6da95073743a8670f95b2c374d21c4c39d6df651d2bd8767')
 
 package() {
     cd "$_pkgname-$pkgver"
