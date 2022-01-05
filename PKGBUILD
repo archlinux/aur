@@ -16,9 +16,9 @@ optdepends=(
     'gvfs: enable links'
     'libnotify: native tray notifications')
 makedepends=()
-source=("https://github.com/runelite/launcher/releases/download/${pkgver}/RuneLite.jar"
-    "RuneLite.LICENSE::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/LICENSE"
-    "https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
+source=("${pkgver}_RuneLite.jar::https://github.com/runelite/launcher/releases/download/${pkgver}/RuneLite.jar"
+    "${pkgver}_RuneLite.LICENSE::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/LICENSE"
+    "${pkgver}_runelite.png::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
     runelite.desktop)
 noextract=('RuneLite.jar')
 sha256sums=('758e71ef44e67f09b143af953f1cf2a38578a9ec181ed8de52c4a6a5d32ebde8'
@@ -28,7 +28,7 @@ sha256sums=('758e71ef44e67f09b143af953f1cf2a38578a9ec181ed8de52c4a6a5d32ebde8'
 
 package() {
     install -D -m644 \
-        "${srcdir}/RuneLite.jar" \
+        "${srcdir}/${pkgver}_RuneLite.jar" \
         "${pkgdir}/usr/share/java/runelite/RuneLite.jar"
 
     install -D -m644 \
@@ -36,11 +36,11 @@ package() {
         "${pkgdir}/usr/share/applications/runelite.desktop"
 
     install -D -m644 \
-        "${srcdir}/runelite.png" \
+        "${srcdir}/${pkgver}_runelite.png" \
         "${pkgdir}/usr/share/pixmaps/runelite.png"
 
     install -D -m644 \
-        "${srcdir}/RuneLite.LICENSE" \
+        "${srcdir}/${pkgver}_RuneLite.LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D -m755 \
