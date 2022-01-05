@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=14.2.2
-_commit=dbe8546e1b7f7219e92df18ed5f284f8218aa623
+pkgver=14.2.3
+_commit=582eb5c9bdcd8cbd23f9ad4005ff9f82571b3b66
 _chromiumver=93.0.4577.82
 _gcc_patchset=6
 # shellcheck disable=SC2034
@@ -48,6 +48,7 @@ source=('git+https://github.com/electron/electron.git'
         "electron-launcher.sh"
         "electron.desktop"
         'default_app-icon.patch'
+        'jinja-python-3.10.patch'
         'use-system-libraries-in-node.patch'
         'linux-sandbox-syscall-broker-use-struct-kernel_stat.patch'
         'linux-sandbox-fix-fstatat-crash.patch'
@@ -69,6 +70,7 @@ sha256sums=('SKIP'
             '3953f532a3ea5fce19ee33600c6ead89dcd066df6a01d3c3ab4c24f96e46fca2'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '75bac9c4ad32ff9329399b8587f9772e208c009fd822cdfce61b2bd1ee9ac828'
+            '09de0ebb4002be7fb4ede63d3977e4f1235637750169c9e71bfdbd75bf750f7a'
             '7cb11fb44aaf4d15f36caca3c0d1b082a723c30d43cd44db147248db5683a2a9'
             '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
             '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
@@ -181,6 +183,7 @@ prepare() {
   patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
   patch -Np1 -i ../chromium-93-pdfium-include.patch
   patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
+  patch -d third_party/jinja2 -Np1 -i ../../../jinja-python-3.10.patch
   patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
   patch -Np1 -i ../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
   patch -Np1 -i ../linux-sandbox-fix-fstatat-crash.patch
@@ -190,6 +193,8 @@ prepare() {
   patch -Np1 -i ../gn-visibility-webrtc.patch
   patch -Rp1 -i ../replace-blacklist-with-ignorelist.patch
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
+  patch -d third_party/electron_node/tools/inspector_protocol/jinja2 \
+      -Np1 -i ../../../../../../jinja-python-3.10.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 
@@ -218,6 +223,9 @@ build() {
   export CXX=clang++
   export AR=ar
   export NM=nm
+
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
