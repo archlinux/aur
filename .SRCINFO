@@ -1,7 +1,7 @@
 pkgbase = python-wikitextparser-git
 	pkgdesc = A simple to use WikiText parsing library for MediaWiki.
 	pkgver = 0.48.0.r4.g6e3f6f0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/5j9/wikitextparser
 	arch = any
 	license = GPLv3

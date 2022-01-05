@@ -2,7 +2,7 @@
 
 pkgname=python-wikitextparser-git
 pkgver=0.48.0.r4.g6e3f6f0
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple to use WikiText parsing library for MediaWiki."
 arch=(any)
 url=https://github.com/5j9/wikitextparser
