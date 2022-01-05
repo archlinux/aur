@@ -4,10 +4,10 @@ pkgver=2.5
 pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
-url="https://apps.gnome.org/app/org.gnome.gitlab.somas.Apostrophe"
+url="https://world.pages.gitlab.gnome.org/apostrophe"
 license=('GPL3')
 depends=('gspell' 'libhandy' 'otf-fira-mono' 'python-cairo' 'python-gobject'
-         'python-levenshtein' 'python-pyenchant' 'python-pypandoc''python-regex'
+         'python-levenshtein' 'python-pyenchant' 'python-pypandoc' 'python-regex'
          'webkit2gtk')
 makedepends=('meson' 'gobject-introspection' 'sassc')
 optdepends=('texlive-latexextra: for the pdftex module'
