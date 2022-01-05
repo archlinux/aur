@@ -2,7 +2,7 @@
 pkgname=pygmy-legacy
 provides=(pygmy-legacy)
 pkgver=0.9.11
-pkgrel=5
+pkgrel=1
 pkgdesc="Amazee.io's local docker development tool"
 arch=('x86_64')
 url="https://github.com/amazeeio/pygmy"
