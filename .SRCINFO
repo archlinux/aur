@@ -20,6 +20,7 @@ pkgbase = photoqt
 	depends = libarchive
 	depends = kimageformats
 	depends = pugixml
+	depends = python-pychromecast
 	optdepends = libqpsd-git: PSB/PSD support
 	optdepends = xcftools: XCF support
 	source = https://photoqt.org/downloads/source/photoqt-2.5.tar.gz
