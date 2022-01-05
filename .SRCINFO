@@ -1,21 +1,22 @@
 pkgbase = python-asn1
-	pkgdesc = Python-ASN1 is a simple ASN.1 encoder and decoder for Python 2.6+ and 3.3+.
-	pkgver = 2.3.0
+	pkgdesc = ASN.1 encoder/decoder
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/andrivet/python-asn1
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/andrivet/python-asn1/archive/v2.3.0.tar.gz
-	sha256sums = 31a9597108e57a2d2341dfb3ee326d23db25cf0a932dc565dfa715c224cc9641
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	source = python-asn1-2.4.2.tar.gz::https://github.com/andrivet/python-asn1/archive/v2.4.2.tar.gz
+	sha256sums = a4bd0172f87d4161d649d0e924145a99de00bb1985ab4488ce58098893bc25c3
 
 pkgname = python-asn1
-	depends = python
 	depends = python-future
 
 pkgname = python2-asn1
-	depends = python2
 	depends = python2-future
-	depends = python-enum34
-
+	depends = python2-enum34
