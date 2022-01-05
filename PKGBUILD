@@ -1,12 +1,12 @@
 # Maintainer: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge"
 arch=('any')
 url="https://github.com/tulir/mautrix-signal"
 license=('AGPLv3')
-depends=('python-aiohttp>=3' 'python-asyncpg>=0.20' 'python-attrs>=19.1' 'python-commonmark>=0.8' 'python-mautrix' 'python-magic>=0.4' 'python-ruamel-yaml>=0.15.35' 'signald>=0.13.1' 'python-yarl>=1' )
+depends=('python-aiohttp>=3' 'python-asyncpg>=0.20' 'python-attrs>=19.1' 'python-commonmark>=0.8' 'python-mautrix' 'python-magic>=0.4' 'python-ruamel-yaml>=0.15.35' 'signald>=0.15' 'python-yarl>=1' )
 makedepends=('python-setuptools')
 #checkdepends
 optdepends=(
@@ -21,11 +21,13 @@ optdepends=(
 backup=("etc/${pkgname}/config.yaml")
 install="${pkgname}.install"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('92b85eab45d9d2d165298b114a5ee47bb89f93a2c6bfa7a30a3d6a1bac4870b3'
-            'd916d5fbe521416bd5a52e1f27da87e45a0f4206801173f2b86e6d63f62c3b34'
-            '807da72f363ce3850e1bf98b3d3a7a00bf174a1035c91a853861fcc6b5f499fc'
-            'b515feb2b6fd37f2b0e9e3a16d64c73b22fa12b4a8af8b13f212f1da02817f81')
+sha256sums=('68ea168db3d7a99b52f84a9d1d6f96bf914e31a5787b6d4d97923974156a09c4'
+            '87a479c5216fa79dbe20ff776f67f5ab70ad0f9705da4b274cc662003545c4be'
+            '3203dcff48579a2420eff4289a03ea1b3a9f47031c39f514e8c9a2d119625725'
+            '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
+
 prepare() {
+    mv "${srcdir}/signal-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     touch registration.yaml
 }

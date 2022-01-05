@@ -1,8 +1,17 @@
 post_install() {
 	cat <<- 'EOF'
+		##################################
+		#    Installation instructions   #
+		##################################
 		See: https://docs.mau.fi/bridges/python/setup/index.html?bridge=signal
-		after editing /etc/mautrix-signal/config.yaml, generate a registration file using:
+		## config.yaml
+		Make sure to set 
+		- avatar_dir: /var/lib/signald/avatars
+        - data_dir: /var/lib/signald/data
+		After editing /etc/mautrix-signal/config.yaml, generate a registration file using:
 		# python -m mautrix_signal -b /usr/share/mautrix-signal/example-config.yaml -c /etc/mautrix-signal/config.yaml -r /etc/mautrix-signal/registration.yaml -g
-		Add the path to the registration file (registration.yaml by default) to your Synapse's homeserver.yaml under app_service_config_files. Restart Synapse to apply changes.
+		Add the path to the registration file ("/etc/mautrix-signal/registration.yaml" by default) to your Synapse's homeserver.yaml under app_service_config_files. Restart Synapse to apply changes.
+		If you encounter an error like "cannot write tmp file, start the bridge once manually as root and check the file permissions on the config files afterwards:
+		# sudo -u mautrix-signal python -m mautrix_signal -b /usr/share/mautrix-signal/example-config.yaml -c /etc/mautrix-signal/config.yaml -r /etc/mautrix-signal/registration.yaml
 	EOF
 }

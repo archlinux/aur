@@ -1,2 +1,3 @@
-# Type Name      ID  GECOS                              Home                    Shell
-u mautrix-signal -   "A Matrix-Signal puppeting bridge" /var/lib/mautrix-signal -
+# Type Name      ID      GECOS                              Home                    Shell
+u mautrix-signal -       "A Matrix-Signal puppeting bridge" /var/lib/mautrix-signal -
+m mautrix-signal signald

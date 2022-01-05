@@ -8,7 +8,6 @@ User=mautrix-signal
 WorkingDirectory=~
 ExecStart=python -m mautrix_signal -b /usr/share/mautrix-signal/example-config.yaml -c /etc/mautrix-signal/config.yaml -r /etc/mautrix-signal/registration.yaml
 
-
 Restart=on-failure
 RestartSec=30s
 
