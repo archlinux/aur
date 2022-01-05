@@ -2,7 +2,7 @@
 
 pkgname=paperback-cli-git
 _pkgname=paperback-cli
-pkgver=r128.429f365
+pkgver=r129.59968f9
 pkgrel=1
 pkgdesc="Relatively high density file backups on paper (git version)"
 url="https://github.com/Wikinaut/paperback-cli"
@@ -10,7 +10,8 @@ depends=('glibc')
 makedepends=('git')
 license=('GPL')
 arch=('x86_64' 'i686')
-source=("${_pkgname}"::'git+https://github.com/Wikinaut/paperback-cli.git')
+# source=("${_pkgname}"::'git+https://github.com/Wikinaut/paperback-cli.git')
+source=("${_pkgname}"::'git+https://github.com/98WuG/paperback-cli.git')
 md5sums=('SKIP')
 
 pkgver() {
