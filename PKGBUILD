@@ -5,7 +5,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=13
+pkgrel=14
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible. Patched version which loads a colour highlight UI mod if that is installed, and which does not load content from google and with removed external links.'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -81,8 +81,12 @@ prepare() {
   mkdir -p "${srcdir}/patched"
   cp "${srcdir}/index.html"       "${srcdir}/patched/index.html"
   cp "${srcdir}/index2.html"      "${srcdir}/patched/index2.html"
-  cp "${srcdir}/mobile-title.png" "${srcdir}/patched/mobile-title.png"
-  cp "${srcdir}/title.png"        "${srcdir}/patched/title.png"
+  if [ ! -e "${srcdir}/patched/mobile-title.png" ]; then # Copy only if it not already exists, in order to not overwrite already-optimised files from a previous build().
+    cp "${srcdir}/mobile-title.png" "${srcdir}/patched/mobile-title.png"
+  fi
+  if [ ! -e "${srcdir}/patched/title.png" ]; then # Copy only if it not already exists, in order to not overwrite already-optimised files from a previous build().
+    cp "${srcdir}/title.png"        "${srcdir}/patched/title.png"
+  fi
 
   cd "${srcdir}/patched"
 

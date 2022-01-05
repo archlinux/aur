@@ -1,7 +1,7 @@
 pkgbase = universalpaperclips
 	pkgdesc = Clicker game where you control an AI whose aim is to create as many paperclips as possible. Patched version which loads a colour highlight UI mod if that is installed, and which does not load content from google and with removed external links.
 	pkgver = 3
-	pkgrel = 13
+	pkgrel = 14
 	url = https://decisionproblem.com/paperclips/
 	arch = any
 	license = custom:unknown
