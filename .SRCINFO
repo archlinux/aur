@@ -1,16 +1,23 @@
 pkgbase = r-commonmark
 	pkgdesc = High Performance CommonMark and Github Markdown Rendering in R
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=commonmark
 	arch = i686
 	arch = x86_64
-	license = BSD2
+	license = BSD
+	checkdepends = r-testthat
+	checkdepends = r-xml2
+	depends = cmark-gfm
 	depends = r
 	optdepends = r-curl
 	optdepends = r-testthat
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/commonmark_1.7.tar.gz
+	source = system-cmark-gfm.patch
+	source = R-BSD_2_clause-TEMPLATE::https://cran.r-project.org/web/licenses/BSD_2_clause
 	sha256sums = d14a767a3ea9778d6165f44f980dd257423ca6043926e3cd8f664f7171f89108
+	sha256sums = 42f29d26c067e84859c90bee49613043e4425d086f430a95da6077dfc41be1b4
+	sha256sums = 19a23bcfa6515217ca3bd3b99c27fe425f41817a034e3279b570a60fed27c499
 
 pkgname = r-commonmark

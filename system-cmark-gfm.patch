@@ -1,0 +1,36 @@
+diff --git a/src/Makevars b/src/Makevars
+index cad9d54..e07d4ab 100644
+--- a/src/Makevars
++++ b/src/Makevars
+@@ -12,16 +12,10 @@ LIBCMARK = cmark/cmark.o cmark/node.o cmark/iterator.o cmark/blocks.o cmark/inli
+ 	extensions/autolink.o extensions/core-extensions.o extensions/ext_scanners.o \
+ 	extensions/strikethrough.o extensions/table.o extensions/tagfilter.o
+ 
+-PKG_LIBS = -Lcmark -lstatcmark
++PKG_LIBS = -lcmark-gfm -lcmark-gfm-extensions
+ STATLIB = cmark/libstatcmark.a
+ 
+-# For development only
+-all: clean
+-
+-$(SHLIB): $(STATLIB)
+-
+-$(STATLIB): $(LIBCMARK)
+-	$(AR) rcs $(STATLIB) $(LIBCMARK)
++$(SHLIB):
+ 
+ clean:
+ 	rm -f $(LIBCMARK) $(OBJECTS) $(SHLIB) $(STATLIB)
+diff --git a/tests/testthat/test-extensions.R b/tests/testthat/test-extensions.R
+index d0eb354..fa922fe 100644
+--- a/tests/testthat/test-extensions.R
++++ b/tests/testthat/test-extensions.R
+@@ -1,7 +1,7 @@
+ context("test-extensions")
+ 
+ test_that("list extensions", {
+-  expect_equal(list_extensions(), c("table", "strikethrough", "autolink", "tagfilter"))
++  expect_equal(list_extensions(), c("table", "strikethrough", "autolink", "tagfilter", "tasklist"))
+ })
+ 
+ test_that("strikethrough", {
