@@ -5,13 +5,20 @@
 pkgbase=gconfmm
 pkgname=('gconfmm' 'gconfmm-docs')
 pkgver=2.28.3
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="http://gconfmm.sourceforge.net/"
 license=('LGPL')
 makedepends=('pkgconfig' 'gtkmm' 'glibmm-docs' 'gconf' 'glibmm')
-source=(https://download.gnome.org/sources/${pkgname}/2.28/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('d7bd2d29c1a87b85329547fb29a0eca52d944e60699982152775002e24c09228')
+source=(https://download.gnome.org/sources/${pkgname}/2.28/${pkgname}-${pkgver}.tar.xz
+        gconf.patch)
+sha256sums=('d7bd2d29c1a87b85329547fb29a0eca52d944e60699982152775002e24c09228'
+            '78e87628f7cd227ee3f118dec9d1ec0a43e84f8ccd05ebfc1871a76ca665dbcf')
+
+prepare() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  patch -Np1 -i "${srcdir}/gconf.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"

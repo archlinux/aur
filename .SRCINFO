@@ -1,6 +1,6 @@
 pkgbase = gconfmm
 	pkgver = 2.28.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://gconfmm.sourceforge.net/
 	arch = x86_64
 	license = LGPL
@@ -10,7 +10,9 @@ pkgbase = gconfmm
 	makedepends = gconf
 	makedepends = glibmm
 	source = https://download.gnome.org/sources/gconfmm/2.28/gconfmm-2.28.3.tar.xz
+	source = gconf.patch
 	sha256sums = d7bd2d29c1a87b85329547fb29a0eca52d944e60699982152775002e24c09228
+	sha256sums = 78e87628f7cd227ee3f118dec9d1ec0a43e84f8ccd05ebfc1871a76ca665dbcf
 
 pkgname = gconfmm
 	pkgdesc = C++ bindings for GConf
@@ -19,4 +21,3 @@ pkgname = gconfmm
 
 pkgname = gconfmm-docs
 	pkgdesc = Developer documentation for gconfmm
-

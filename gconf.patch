@@ -1,0 +1,13 @@
+--- a/gconf/gconfmm/callback.h	2022-01-05 18:33:28.274876533 -0500
++++ b/gconf/gconfmm/callback.h	2022-01-05 18:34:44.326083989 -0500
+@@ -22,10 +22,7 @@
+ #ifndef GCONFMM_CALLBACK_H
+ #define GCONFMM_CALLBACK_H
+ 
+-extern "C"
+-{
+ #include <gconf/gconf-client.h>
+-}
+ 
+ #include <glibmm/object.h>
+ #include <gconfmm/entry.h>
