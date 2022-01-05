@@ -3,7 +3,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=vcpkg-git
-pkgver=2021.05.12.r1018.g973a7d517c
+pkgver=2021.12.01.r239.gb934807c79
 pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=('curl' 'zip' 'unzip')
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 build() {
-    "$srcdir/$pkgname/bootstrap-vcpkg.sh" -useSystemBinaries -disableMetrics
+    "$srcdir/$pkgname/bootstrap-vcpkg.sh" -disableMetrics
 }
 
 package() {
