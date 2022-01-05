@@ -1,7 +1,7 @@
 pkgbase = powershell-bin
 	pkgdesc = A cross-platform automation and configuration tool/framework (binary package)
 	pkgver = 7.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Powershell/Powershell
 	install = powershell.install
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = powershell-bin
 	depends = glibc
 	depends = lttng-ust
 	depends = zlib
-	depends = openssl-1.0
 	depends = icu
 	provides = powershell
 	conflicts = powershell
