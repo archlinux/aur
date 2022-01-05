@@ -1,15 +1,12 @@
 # Maintainer: dreieck
 
-_use_upc_uimod=false # Set this to true in order to install a mod to the user interface which colour-highlights some values depending on their state.
-# _use_upc_uimod=true
-
 _pkgname='universalpaperclips'
 pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=12
-pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible. (To enable mods, edit flags in `PKGBUILD`.)'
+pkgrel=13
+pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible. Patched version which loads a colour highlight UI mod if that is installed, and which does not load content from google and with removed external links.'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
 _downloadbase='https://decisionproblem.com/paperclips'
@@ -17,7 +14,11 @@ license=('custom:unknown')
 makedepends=()
 depends=('electron')
 optdepends=(
+  'universalpaperclips-colouruimod: For colourised highlight of several status values.'
   'optipng: [Only applicable at build time] shrink PNG images by lossless optimisation.'
+)
+provides=(
+  "${_pkgname}-colouruimodready=${pkgver}"
 )
 source=(
   "index2.html::${_downloadbase}/index2.html"
@@ -37,6 +38,7 @@ source=(
   "patch2notes.html::${_downloadbase}/patch2notes.html"
   'index2.01.html_remove-external-content.patch'
   'index2.02.html_reenable-threnody-music.patch'
+  'index2.03.html_add-uimod-by-timophy.patch'
   'index.01.html_remove-external-content.patch'
   'universalpaperclips.sh'
   'universalpaperclips.desktop'
@@ -64,6 +66,7 @@ sha256sums=(
   'd678bf3318fd8c34d60a3657729ba0ae670ebea913cac1acaa3be722bb96cbb3' # patch2notes.html
   '4352425ef44c7c9f282c5d3919e2b320568dce1fb9d6744a6e561b4cc27aedcd' # index2.01.html_remove-external-content.patch
   '20ff4b35331294364354b35319795cc85c2266bfce991adcac8f72e17b8184e6' # index2.02.html_reenable-threnody-music.patch
+  'fcb518acc415c5d05d54dd8afb75e4be7727161f026a37e6c92b4b18a700fcd1' # index2.03.html_add-uimod-by-timophy.patch
   '55f7c5853e59a704361e5145aa25430427d4ab8ffabfff3637f2553b26e8f84c' # index.01.html_remove-external-content.patch
   'a8855bbb7c292c69df530ce7385064c457152dc264b22d157b08798fb9370480' # universalpaperclips.sh
   '2b73b90be3611eade8da7067fc9f563fab9fe5d85d03cf7201cdc224afd379e3' # universalpaperclips.desktop
@@ -73,20 +76,6 @@ sha256sums=(
   'd95a022889ad1dbbf9175fc739c7a7e83b9396a83a28743d3904541e5f7376b7' # fandom.url
   '87a7e62b6e08f2491657fc8b0a0fe380a7dec3811e8d5ca36fe54d21f3548552' # license-dummy.txt
 )
-
-if "${_use_upc_uimod}"; then
-  license+=('custom:MIT')
-  source+=(
-    'upc_uimod.js::https://timophy.github.io/scripts/upc_uimod.js'
-    'upc_uimod_LICENSE.txt::https://raw.githubusercontent.com/timophy/UniversalPaperclipsUIMod/master/LICENSE'
-    'index2.03.html_add-uimod-by-timophy.patch'
-  )
-  sha256sums+=(
-    'd87e511826e9b94d5736686b7f22dc4e5032eb93e654abb5d7f584dc1e056cd9' # upc_uimod.js
-    'ec17322d46d099285dcc157fcd53827df46f045f53c6ea0bc1574ac8426baccc' # upc_uimod_LICENSE.txt
-    'fcb518acc415c5d05d54dd8afb75e4be7727161f026a37e6c92b4b18a700fcd1' # index2.03.html_add-uimod-by-timophy.patch
-  )
-fi
 
 prepare() {
   mkdir -p "${srcdir}/patched"
@@ -104,10 +93,8 @@ prepare() {
   msg2 "Applying patch to re-enable threnody music ..."
   patch -N -i "${srcdir}/index2.02.html_reenable-threnody-music.patch" "index2.html"
 
-  if "${_use_upc_uimod}"; then
-    msg2 "Applying patch to mod the UI to colour-highlight some status ..."
-    patch -N -i "${srcdir}/index2.03.html_add-uimod-by-timophy.patch" "index2.html"
-  fi
+  msg2 "Applying patch to load a colour-highlight UI mod if present ..."
+  patch -N -i "${srcdir}/index2.03.html_add-uimod-by-timophy.patch" "index2.html"
 }
 
 build() {
@@ -130,10 +117,6 @@ package() {
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/index.html"  "${pkgdir}/usr/lib/${_pkgname}/start.html"
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/mobile-title.png" "${pkgdir}/usr/lib/${_pkgname}/universalpaperclips.png"
 
-  if "${_use_upc_uimod}"; then
-    install -D -v -m644 'upc_uimod.js' "${pkgdir}/usr/lib/${_pkgname}/upc_uimod.js"
-  fi
-
   install -D -v -m755 'universalpaperclips.sh' "${pkgdir}/usr/bin/universalpaperclips"
 
   install -d -v -m755 "${pkgdir}/usr/share/pixmaps"
@@ -149,8 +132,5 @@ package() {
   done
 
   install -D -v -m644 'license-dummy.txt' "${pkgdir}/usr/share/licenses/${pkgname}/license-dummy.txt"
-  if "${_use_upc_uimod}"; then
-    install -D -v -m644 'upc_uimod_LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/upc_uimod_LICENSE.MIT.txt"
-  fi
 }
 
