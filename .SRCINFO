@@ -1,6 +1,6 @@
 pkgbase = python-defopt
 	pkgdesc = Effortless argument parser
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/anntzer/defopt
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-defopt
 	makedepends = python-wheel
 	depends = python
 	depends = python-sphinxcontrib-napoleon
-	source = https://files.pythonhosted.org/packages/source/d/defopt/defopt-6.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/defopt/defopt-6.2.0.tar.gz
 	sha256sums = cfe6ecfb54b1368a5cc45d9d58fb3c125e4b4b789e08fd29b5722404b57e137d
 
 pkgname = python-defopt

@@ -1,7 +1,7 @@
 # Maintainer: Maciej Dems <macdems@gmail.com>
 pkgname='python-defopt'
 _module='defopt'
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Effortless argument parser"
 url="https://github.com/anntzer/defopt"
