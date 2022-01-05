@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=/usr/bin
+libdir=/usr/lib
+includedir=/usr/include/godot
+
+Name: Godot Headers
+Description: Headers for the Godot API supplied by the GDNative module.
+Version: @VERSION@
+Libs:
+Cflags: -I${includedir}
