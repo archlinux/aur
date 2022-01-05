@@ -6,8 +6,9 @@ pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://apps.gnome.org/app/org.gnome.gitlab.somas.Apostrophe"
 license=('GPL3')
-depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
-         'python-pyenchant' 'python-gobject' 'python-cairo' 'otf-fira-mono' 'libhandy')
+depends=('gspell' 'libhandy' 'otf-fira-mono' 'python-cairo' 'python-gobject'
+         'python-levenshtein' 'python-pyenchant' 'python-pypandoc''python-regex'
+         'webkit2gtk')
 makedepends=('meson' 'gobject-introspection' 'sassc')
 optdepends=('texlive-latexextra: for the pdftex module'
             'mathjax: for formula preview')
@@ -25,5 +26,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
