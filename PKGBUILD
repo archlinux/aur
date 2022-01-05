@@ -2,7 +2,7 @@
 
 pkgname=gnome-cowsay
 _pkgname=cowsay
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="A simple GNOME UI implementation of Cowsay"
 arch=('x86_64')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 conflicts=('cowsay')
 replaces=('cowsay')
 source=($url/-/archive/$pkgver/${_pkgname%-git}-$pkgver.tar.gz)
-sha512sums=('f03d77e8ec972538139c25d8ac38bec49ce02b40b6c6601bc06cb251da6d8be8acbd7a596a26d140042c699634317fcd89af791758dbbe391ec97e84d74d4330')
+b2sums=('aca38465e1662fbc6776283551e5262d0c1ae75e02cf6dc1665f7e2da013a21f48542389f938a059feeca1106811ee0aae2b13dcc32dc4a9ecc7bdd9a15f7557')
 
 build() {
   arch-meson "${_pkgname%-git}-$pkgver" build
@@ -22,9 +22,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
