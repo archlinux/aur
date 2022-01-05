@@ -1,4 +1,4 @@
-From 72edf8c167268bb68d701f46006ccfdfa5490db8 Mon Sep 17 00:00:00 2001
+From 9633e4af545533b6738180955a059af8f2bd904f Mon Sep 17 00:00:00 2001
 From: Matan Ziv-Av <matan@svgalib.org>
 Date: Tue, 23 Nov 2021 22:14:55 +0200
 Subject: [PATCH 6/7] lg-laptop: Recognize more models
