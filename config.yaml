@@ -33,20 +33,20 @@ plugin:
             - query_is_ad_domain # 已知的广告域名
           exec:
             - _block_with_nxdomain # 用 NXDOMAIN 屏蔽
-            - _end
+            - _return
 
         - if:
             - query_is_local_domain # 已知的本地域名
             - "!_query_is_common" # 和不常见的请求类型
           exec:
             - forward_local # 用本地服务器
-            - _end
+            - _return
 
         - if:
             - query_is_non_local_domain # 已知的非本地域名
           exec:
             - forward_remote # 用远程服务器
-            - _end
+            - _return
 
         # 剩下的未知域名用 IP 分流。以下是"顺序 IP 分流"方案。先转发至本地服务器，然后
         # 判断应答 IP 再决定是否转发至远程服务器。没有竞争，很稳定，不易出错。
@@ -57,7 +57,7 @@ plugin:
         - if:
             - response_has_local_ip # 如果(本地)应答包含本地 IP
           exec:
-            - _end # 就直接采用结果
+            - _return # 就直接采用结果
         - forward_remote # 否则去请求远程服务器的结果
 
   # 转发请求至本地服务器的插件
