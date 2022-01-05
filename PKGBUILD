@@ -46,7 +46,7 @@ build() {
   cd "${srcdir}/${pkgname}-v${pkgver}/src"
  
   # avoid SIGABRT in dgord, https://stackoverflow.com/questions/38269659
-  sed -i "s/-DSCOTCH_PTHREAD/-DSCOTCH_PTHREAD_MPI/" Makefile.inc
+  sed -i "s/-DSCOTCH_PTHREAD/-DSCOTCH_PTHREAD -DSCOTCH_PTHREAD_MPI/" Makefile.inc
 
   make scotch
   make -j1 esmumps
