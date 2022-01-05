@@ -1,7 +1,7 @@
 pkgbase = osqp
 	pkgdesc = The Operator Splitting QP Solver
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/osqp/osqp
 	arch = i686
 	arch = x86_64
