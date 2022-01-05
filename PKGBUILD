@@ -4,7 +4,7 @@
 # https://github.com/alfredopalhares/arch-pkgbuilds
 
 pkgname=gof5
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Open Source F5 VPN client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('')
 url="https://github.com/kayrus/gof5"
 license=('Apache')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kayrus/gof5/archive/v${pkgver}.tar.gz")
-sha256sums=('a89191a4d33fb0b89baf658639708cc47f1d1c2b39e0febec1ac333e0eee4318')
+sha256sums=('2a0e8695660b04c7d0def347978e33360be9d54fbcdf26c2cf9e5f4eb83a7d98')
 
 
 build() {
