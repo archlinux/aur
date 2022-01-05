@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=smooth-git
 pkgver=0.9.8.r17.g4d48e854
-pkgrel=1
+pkgrel=2
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
 url="http://www.smooth-project.org"
@@ -31,4 +31,6 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir/" install
+
+  ln -s "/usr/lib/libsmooth-${pkgver%.*}.so" "${pkgdir}/usr/lib/libsmooth.so"
 }
