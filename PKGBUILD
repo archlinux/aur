@@ -5,7 +5,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=5
+pkgrel=6
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible.'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -100,7 +100,6 @@ package() {
   install -d -v -m755 "${pkgdir}/usr/share/pixmaps"
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/mobile-title.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
-  #desktop-file-install -m644 --dir="${pkgdir}/usr/share/applications/universalpaperclips.desktop" 'universalpaperclips.desktop'
   install -D -v -m644 'universalpaperclips.desktop' "${pkgdir}/usr/share/applications/universalpaperclips.desktop"
 
   install -D -v -m644 'game.url' "${pkgdir}/usr/share/doc/${_pkgname}/game.url"
