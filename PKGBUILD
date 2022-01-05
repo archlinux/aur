@@ -1,7 +1,7 @@
-# Maintainer: Eldeberen <eldeberen.aur@middleearth.fr>
+# Maintainer: Eldeberen <eldeberen@middleearth.fr>
 pkgname=gint
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='Alternative library and kernel for add-in development on fx-9860G and fx-CG50 under Linux'
 arch=('i686' 'x86_64')
 url="https://gitea.planet-casio.com/Lephenixnoir/gint"
@@ -11,7 +11,7 @@ makedepends=('fxlibc' 'fxsdk' 'openlibm-casio')
 conflicts=('gint-git')
 options=('!buildflags' '!strip')
 source=("$pkgname-$pkgver.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7120a74bca179dd439e6b5478765c5988787cf3c7e7b1058d95f96d070807430')
+sha256sums=('fba31a2a4edd1d1cd12e11165255eac12e36af1aa2923605ab8b96790b328152')
 
 prepare() {
   cd "${srcdir}/${pkgname}"

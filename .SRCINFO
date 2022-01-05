@@ -1,20 +1,21 @@
 pkgbase = gint
 	pkgdesc = Alternative library and kernel for add-in development on fx-9860G and fx-CG50 under Linux
-	pkgver = 2.5.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://gitea.planet-casio.com/Lephenixnoir/gint
 	arch = i686
 	arch = x86_64
+	makedepends = fxlibc
 	makedepends = fxsdk
 	makedepends = openlibm-casio
+	depends = fxlibc
 	depends = fxsdk
 	depends = isl
 	depends = openlibm-casio
 	conflicts = gint-git
 	options = !buildflags
 	options = !strip
-	source = gint-2.5.0.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/gint/archive/2.5.0.tar.gz
-	sha256sums = 7120a74bca179dd439e6b5478765c5988787cf3c7e7b1058d95f96d070807430
+	source = gint-2.7.0.tar.gz::https://gitea.planet-casio.com/Lephenixnoir/gint/archive/2.7.0.tar.gz
+	sha256sums = fba31a2a4edd1d1cd12e11165255eac12e36af1aa2923605ab8b96790b328152
 
 pkgname = gint
-
