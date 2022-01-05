@@ -11,7 +11,7 @@ pkgrel=1
 url='http://www.mozilla.com/'
 arch=('any')
 license=('MPL' 'GPL')
-depends=("thunderbird>=$pkgver")
+depends=("thunderbird>={{ min_pkgver }}")
 
 pkgname=({% for lang_iso639 in languages.keys() %}
   'thunderbird-beta-i18n-{{ lang_iso639.lower() }}'{% end %}
