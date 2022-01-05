@@ -1,0 +1,11 @@
+--- a/pip/pyqt5/defs.bzl        2021-10-26 02:53:24.000000000 +0200
++++ b/pip/pyqt5/defs.bzl        2022-01-05 14:53:12.504712977 +0100
+@@ -6,7 +6,7 @@
+     pip_vendor = str(repository_ctx.path(pip_vendor_label).dirname)
+     return repository_ctx.execute(arguments, environment = {
+         "PYTHONPATH": pip_vendor,
+-    }, quiet = quiet)
++    }, quiet = quiet, timeout = 6000)
+
+ def _install_pyqt5_impl(repository_ctx):
+     python_interpreter = repository_ctx.attr.python_interpreter
