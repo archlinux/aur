@@ -1,7 +1,7 @@
 pkgbase = testssl.sh-git
 	pkgdesc = Testing TLS/SSL encryption (git version)
-	pkgver = 3.0rc1.r73.gde68488
-	pkgrel = 1
+	pkgver = v3.0.r711.ge35f0e8
+	pkgrel = 2
 	url = https://github.com/drwetter/testssl.sh
 	install = testssl.sh.install
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = testssl.sh-git
 	depends = coreutils
 	depends = util-linux
 	depends = openssl
-	depends = inetutils
 	depends = bind-tools
 	depends = procps-ng
 	provides = testssl.sh
@@ -23,7 +22,6 @@ pkgbase = testssl.sh-git
 	source = testssl.sh-git::git+https://github.com/drwetter/testssl.sh.git
 	source = set-install-dir.patch
 	sha256sums = SKIP
-	sha256sums = 722a6538b8cbdf18d4b52f7e5216b56ebefb7fff100e5152de97fc5f57f05158
+	sha256sums = ed81981de5d8f41de3a36f30fca283d2f668d62da1eda71d3799aa10bd49b617
 
 pkgname = testssl.sh-git
-
