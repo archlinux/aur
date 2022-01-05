@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Universal Paperclips
+Comment=Clicker game where you control an AI whose aim is to create as many paperclips as possible.
+Exec=/usr/bin/universalpaperclips
+Icon=/usr/lib/universalpaperclips/universalpaperclips.png
+Terminal=false
+Categories=Game;Simulation;StrategyGame;

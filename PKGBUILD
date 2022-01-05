@@ -5,7 +5,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible.'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -34,6 +34,7 @@ source=(
   'index2.html_reenable-threnody-music.patch'
   'index.html_remove-external-content.patch'
   'universalpaperclips.sh'
+  'universalpaperclips.desktop'
   'game.url'
   'license-dummy.txt'
 )
@@ -55,6 +56,7 @@ sha256sums=(
   '20ff4b35331294364354b35319795cc85c2266bfce991adcac8f72e17b8184e6' # index2.html_reenable-threnody-music.patch
   '55f7c5853e59a704361e5145aa25430427d4ab8ffabfff3637f2553b26e8f84c' # index.html_remove-external-content.patch
   'a8855bbb7c292c69df530ce7385064c457152dc264b22d157b08798fb9370480' # universalpaperclips.sh
+  '2b73b90be3611eade8da7067fc9f563fab9fe5d85d03cf7201cdc224afd379e3' # universalpaperclips.desktop
   'dff62c22c922d977afedf53fe2a16cc766e5c3778608ac05897100e4baa5dc0e' # game.url
   '87a7e62b6e08f2491657fc8b0a0fe380a7dec3811e8d5ca36fe54d21f3548552' # license-dummy.txt
 )
@@ -101,6 +103,9 @@ package() {
 
   install -d -v -m755 "${pkgdir}/usr/share/pixmaps"
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/mobile-title.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+
+  #desktop-file-install -m644 --dir="${pkgdir}/usr/share/applications/universalpaperclips.desktop" 'universalpaperclips.desktop'
+  install -D -v -m644 'universalpaperclips.desktop' "${pkgdir}/usr/share/applications/universalpaperclips.desktop"
 
   install -D -v -m644 'game.url' "${pkgdir}/usr/share/doc/${_pkgname}/game.url"
   install -D -v -m644 'license-dummy.txt' "${pkgdir}/usr/share/licenses/${pkgname}/license-dummy.txt"
