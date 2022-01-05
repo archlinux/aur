@@ -3,7 +3,7 @@
 pkgname=linthesia-git
 _pkgname=linthesia
 epoch=1
-pkgver=r124.2ff4310
+pkgver=r147.427de90
 pkgrel=1
 pkgdesc="A game of playing music. A fork of Synthesia (git)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,9 @@ license=('GPL2')
 depends=('gtkmm' 'gconfmm' 'gtkglextmm' 'alsa-lib' 'fluidsynth')
 makedepends=('git')
 conflicts=('linthesia')
-source=("linthesia::git+https://github.com/mans17/linthesia.git")
+options=(debug !strip)
+#source=("linthesia::git+https://github.com/mans17/linthesia.git")
+source=("linthesia::git+https://github.com/rikmg/linthesia.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -31,7 +33,7 @@ package () {
 	cd "$srcdir/${_pkgname}"
 	make DESTDIR="$pkgdir" install
 	# Install desktop file
-	mkdir "$pkgdir/usr/share/applications"
+	#mkdir "$pkgdir/usr/share/applications"
 	install -Tm644 extra/linthesia.desktop $pkgdir/usr/share/applications/linthesia.desktop 
 	# Install pixmap
 	mkdir "$pkgdir/usr/share/pixmaps"
