@@ -50,3 +50,44 @@
  	 kunmap(skb_frag_page(frag));
  
  	 if (err) {
+# Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~janjust/vmnet/
+@@ -985,6 +996,9 @@
+    userIf = (VNetUserIF *)port->jack.private;
+    hubJack = port->jack.peer;
+ 
++   /* never send link down events */
++   if (!linkUp) return 0;
++
+    if (port->jack.state == FALSE || hubJack == NULL) {
+       return -EINVAL;
+    }
+From 4232f780eb114f22498f3274eaeef81d8c63f2ab Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Tue, 9 Nov 2021 09:01:57 +0100
+Subject: [PATCH] modules: fix stddef.h include
+
+After mainline commit 04e85bbf71c9 ("isystem: delete global -isystem
+compile option") in 5.16-rc1, vm_basic_types.h in both vmmon and vmnet
+does not find (userspace) stddef.h any more. As it should not include this
+header anyway, fix the include directives to include stddef.h from kernel.
+
+Kernel version of stddef.h has been available since the beginning of git so
+that it is safe to include it regardless of kernel version.
+---
+ vmmon-only/include/vm_basic_defs.h | 2 +-
+ vmnet-only/vm_basic_defs.h         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/vmnet-only/vm_basic_defs.h b/vmnet-only/vm_basic_defs.h
+index 0ec30b3..b920e2d 100644
+--- a/vmnet-only/vm_basic_defs.h
++++ b/vmnet-only/vm_basic_defs.h
+@@ -51,7 +51,7 @@
+  *   C90 7.17, C99 7.19, C11 7.19
+  */
+ #if !defined(VMKERNEL)
+-#  include <stddef.h>
++#  include <linux/stddef.h>
+ #else
+    /*
+     * Vmkernel's bogus __FreeBSD__ value causes gcc <stddef.h> to break.
