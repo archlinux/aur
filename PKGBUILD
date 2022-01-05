@@ -1,13 +1,13 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Simon 'ALSimon' Gilliot <simon@gilliot.fr>
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 # Contributor: Dobroslaw Kijowski
 
-pkgname=mitmproxy
+pkgname=mitmproxy6
 pkgver=6.0.2
 pkgrel=1
-pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
+pkgdesc='SSL-capable man-in-the-middle HTTP proxy (version 6)'
 arch=('any')
 url='https://mitmproxy.org'
 license=('MIT')
@@ -19,14 +19,14 @@ depends=('python-asgiref' 'python-blinker' 'python-brotli' 'python-click' 'pytho
          'python-publicsuffix2' 'python-zstandard')
 checkdepends=('python-asynctest' 'python-parver' 'python-pytest-runner' 'python-pytest-asyncio'
               'python-requests' 'python-hypothesis')
-provides=('pathod')
-conflicts=('pathod')
+provides=('pathod' "mitmproxy=${pkgver}")
+conflicts=('pathod' 'mitmproxy')
 replaces=('pathod')
-source=("https://github.com/mitmproxy/mitmproxy/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/mitmproxy/mitmproxy/archive/v$pkgver/mitmproxy-$pkgver.tar.gz")
 sha512sums=('27eb5e9736891148b5ebec963a2d18de6a69b44428538d2ed1cf9a1dcdd7cbcdeeed662edb2d25521098374e2f9a29b5bb8fba8da4f77ac0d32bf7881ac70d61')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd mitmproxy-$pkgver
 
   # Let's remove all the upper bounds and use system ca-certificatescate store
   # We have an old protobuf, but this should not be an issue
@@ -40,17 +40,17 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd mitmproxy-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd mitmproxy-$pkgver
   python setup.py pytest --addopts "--deselect test/mitmproxy/test_version.py::test_get_version"
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd mitmproxy-$pkgver
   python setup.py install --root="$pkgdir" -O1
 
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
