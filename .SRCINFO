@@ -1,13 +1,12 @@
 pkgbase = python-pylibscrypt
 	pkgdesc = scrypt for python
-	pkgver = 1.8.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/jvarho/pylibscrypt
 	arch = any
 	license = ISC
 	depends = python
-	source = https://github.com/jvarho/pylibscrypt/archive/v1.8.0.tar.gz
-	sha512sums = a229e92bd3e84407bfbaf6f815ce43dde0d24a3c4b57b34193c48671d8326749aa68ee82c359c78d29d49be65021763229df53583c6fccf0bae6cc6d0814cb4e
+	source = https://github.com/jvarho/pylibscrypt/archive/v2.0.0.tar.gz
+	sha512sums = b233f343dae78f0c330962eaa2311ba7ccd41d4b3a707ce37a24ad02d79f31ad2774da69b3117d7f6da95073743a8670f95b2c374d21c4c39d6df651d2bd8767
 
 pkgname = python-pylibscrypt
-
