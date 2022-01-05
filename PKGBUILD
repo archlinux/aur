@@ -2,7 +2,7 @@
 
 pkgname=silkaj
 
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Powerfull, lightweight, and multi-platform command line client written with Python for Duniter’s currencies"
 
@@ -14,7 +14,7 @@ depends=('python' 'python-setuptools' 'python-dephell' 'python-click' 'python-ip
 'python-duniterpy' 'python-pypeg2' 'python-pylibscrypt')
 
 source=("https://git.duniter.org/clients/python/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('68a30f03aa8420dbec89fee3aa52bb8d061ef05291516f5873a8d50f5dd7c78dbe5827e41ee710854ebd08a7ddaea572adceaff0a3040134295cb24f6c545b99')
+sha512sums=('0ced0aa81da2b56f5178de13c2bbd10923acaf2765b5924493b9169ec5080c9dbf1ae419bcb8837955fbfc86c7f4b22d8365b36351101622b196d4009e6231e5')
 
 prepare() {
     cd "$pkgname-v$pkgver"
