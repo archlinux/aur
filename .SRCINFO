@@ -19,6 +19,6 @@ pkgbase = postsrsd
 	md5sums = 5585ff7685ad5f0331ac6dde6304ca4b
 	md5sums = 4b12fbf341433767850a571128199bad
 	md5sums = cee1be46359eb9b6a44d1fac3cbc718b
-	md5sums = f5f42125b253b5a6c680a628ee39a274
+	md5sums = bb1644c030c69054a9d083a6f1245d50
 
 pkgname = postsrsd

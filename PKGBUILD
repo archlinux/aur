@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/postsrsd/archi
 md5sums=('5585ff7685ad5f0331ac6dde6304ca4b'
          '4b12fbf341433767850a571128199bad'
          'cee1be46359eb9b6a44d1fac3cbc718b'
-         'f5f42125b253b5a6c680a628ee39a274')
+         'bb1644c030c69054a9d083a6f1245d50')
 
 check() {
   cd "$srcdir/postsrsd-$pkgver/build"
