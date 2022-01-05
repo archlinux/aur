@@ -2,7 +2,6 @@ pkgbase = autokey
 	pkgver = 0.95.10
 	pkgrel = 4
 	url = https://github.com/autokey/autokey
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
@@ -45,4 +44,3 @@ pkgname = autokey-qt
 	depends = kdialog
 	optdepends = qt-at-spi
 	conflicts = autokey-gtk
-
