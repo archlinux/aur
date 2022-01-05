@@ -25,17 +25,17 @@ changelog=
 ## Sources
 _license_base="https://raw.githubusercontent.com/blurgyy/dt/v$pkgver/LICENSE"
 source_x86_64=(
-    "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-x86_64"
+    "dt-cli::https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-x86_64"
     "${_license_base}-APACHE"
     "${_license_base}-MIT"
 )
 source_aarch64=(
-    "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-aarch64"
+    "dt-cli::https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-aarch64"
     "${_license_base}-APACHE"
     "${_license_base}-MIT"
 )
 source_armv7=(
-    "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-armv7"
+    "dt-cli::https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-armv7"
     "${_license_base}-APACHE"
     "${_license_base}-MIT"
 )
@@ -68,22 +68,7 @@ validpgpkeys=()
 
 ## Packaging
 package_x86_64() {
-    install -Dm755 "dt-cli-v$pkgver-x86_64" "$pkgdir/usr/bin/dt-cli"
-    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
-    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
-}
-package_aarch64() {
-    install -Dm755 "dt-cli-v$pkgver-aarch64" "$pkgdir/usr/bin/dt-cli"
-    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
-    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
-}
-package_armv7h() {
-    install -Dm755 "dt-cli-v$pkgver-armv7" "$pkgdir/usr/bin/dt-cli"
-    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
-    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
-}
-package_armv7l() {
-    install -Dm755 "dt-cli-v$pkgver-armv7" "$pkgdir/usr/bin/dt-cli"
+    install -Dm755 dt-cli "$pkgdir/usr/bin/dt-cli"
     install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
     install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
 }
