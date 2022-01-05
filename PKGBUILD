@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=4664.r1.4888f07873
+pkgver=4692.r0.31722577db
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -81,12 +81,9 @@ prepare() {
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
   
-  # Create fake gclient_args.gni file to satisfy include list for build/config/compiler/compiler.gni
-  touch "$srcdir/build/config/gclient_args.gni"
-  
-  # Fix visibilty for gmock
-  cd "$srcdir/pdfium/third_party/googletest"
-  sed -i 's/\":\*\"/&, "\/\/testing\/gmock\:gmock", /' BUILD.gn
+  # Exclude test fonts from build
+  cd "$srcdir/pdfium/testing/"
+  sed -i '/public_deps += \[ "\/\/third_party\/test_fonts" ]/s/^/#/g' BUILD.gn
   
 } 
 
@@ -109,7 +106,7 @@ build() {
       'use_system_lcms2=true'
       'use_system_libpng=true'
       'use_custom_libcxx=false'
-      'pdf_is_standalone = false'
+      'pdf_is_standalone = true'
       'use_system_libopenjpeg2 = true'
       'is_component_build = true'
       'use_gold = false' 
