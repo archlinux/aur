@@ -3,15 +3,15 @@
 
 pkgname='ptouch-print'
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to print labels on Brother P-Touch printers"
 arch=('x86_64')
-url='https://mockmoon-cybernetics.ch/computer/p-touch2430pc/'
+url='https://familie-radermacher.ch/dominic/projekte/ptouch-print/'
 license=('GPL3')
 depends=('gd' 'libusb')
 makedepends=('git')
 provides=("${pkgname}")
-source=("git+https://mockmoon-cybernetics.ch/cgi/cgit/linux/${pkgname}.git#tag=v${pkgver}")
+source=("git+https://familie-radermacher.ch/cgi/cgit/linux/${pkgname}.git#commit=32c0d3be29f9eebb5d0e48f4f998da83b0c2ff3c")
 # NB: updpkgsums --> SKIP
 sha256sums=('SKIP')
 
