@@ -1,7 +1,7 @@
 pkgbase = cli-pride-flags
 	pkgdesc = Displays pride flags in your terminal~
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ExperiBass/cli-pride-flags
 	arch = any
 	license = GPL3
