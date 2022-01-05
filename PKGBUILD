@@ -1,18 +1,18 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=fastiv-git
-_pkgname=fastiv
-pkgver=r241.b35590a
+_pkgname=fiv
+pkgver=r273.685defa
 pkgrel=1
-pkgdesc="Fast image viewer"
-url="https://git.janouch.name/p/fastiv"
+pkgdesc="Image browser and viewer"
+url="https://git.janouch.name/p/fiv"
 arch=('i686' 'x86_64')
 license=('custom:0BSD')
 conflicts=('fastiv')
 provides=('fastiv')
 makedepends=('meson' 'pkg-config' 'git')
-depends=('gtk3' 'pixman' 'libjpeg-turbo')
+depends=('gtk3' 'pixman' 'libjpeg-turbo' 'libwebp')
 optdepends=('libraw' 'librsvg' 'gdk-pixbuf2' 'libxcursor' 'libtiff' 'libheif'
-  'libwebp' 'perl-image-exiftool')
+  'perl-image-exiftool')
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
