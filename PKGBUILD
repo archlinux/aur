@@ -2,7 +2,7 @@
 _phpbase="81"
 _suffix=""
 pkgver="8.1.1"
-pkgrel="2"
+pkgrel="3"
 pkgbase="php${_phpbase}${_suffix}"
 pkgdesc="PHP ${pkgver} compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -222,7 +222,7 @@ makedepends=(
     'libxslt'  'libzip' 'freetds' 'apache' 'aspell' 'c-client' 'db' 'enchant' 'readline'
     'gmp' 'icu' 'net-snmp' 'postgresql-libs' 'sqlite' 'systemd-libs' 'unixodbc' 'curl' 'ncurses'
     'freetds' 'pcre' 'tidy' 'libfbclient' 'oniguruma' 'gd'  'recode' 'bzip2' 'gdbm' 'zlib'
-    'systemd' 'systemd-libs'
+    'systemd' 'systemd-libs' 'smtp-forwarder'
 )
 arch=('i686' 'x86_64')
 checkdepends=('procps-ng')
