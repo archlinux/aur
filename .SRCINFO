@@ -1,6 +1,6 @@
 pkgbase = gwm
 	pkgdesc = A modern tiling windows manager for X11
-	pkgver = 0.9.12
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = https://sourceforge.net/projects/gsmwm/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gwm
 	depends = bash
 	depends = libx11
 	depends = ctags
-	source = https://sourceforge.net/projects/gsmwm/files/gwm-0.9.12.tar.gz
-	sha256sums = fbb61846f9e584ba21e20b62fba3079d86b615e5d1f57854f72235cd6597be91
+	source = https://sourceforge.net/projects/gsmwm/files/gwm-0.9.14.tar.gz
+	sha256sums = 3d920481a8d42435c6a56f127840e421c4f22f1dfe60f8d39dc8374bcbb611c7
 
 pkgname = gwm
