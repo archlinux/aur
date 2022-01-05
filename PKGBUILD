@@ -8,7 +8,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=10
+pkgrel=12
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible. (To enable mods, edit flags in `PKGBUILD`.)'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -33,6 +33,8 @@ source=(
   "index.html::${_downloadbase}/index.html"
   "titlescreen.css::${_downloadbase}/titlescreen.css?v${_cssver}"
   "title.png::${_downloadbase}/title.png"
+  "patch1notes.html::${_downloadbase}/patch1notes.html"
+  "patch2notes.html::${_downloadbase}/patch2notes.html"
   'index2.01.html_remove-external-content.patch'
   'index2.02.html_reenable-threnody-music.patch'
   'index.01.html_remove-external-content.patch'
@@ -58,6 +60,8 @@ sha256sums=(
   '9c46561e47be72a88198247ce7f87e9739b0fe62955129c7541db082b48de2e1' # index.html
   '2bb9efb691f5608575ee6859b73e02daa92aa3427b02f852279c2f586bf587b4' # titlescreen.css
   'd2e6e499ffd04d1a5f9cdaf8742f251534f7d778fe6b730705d3cc00ab7bb419' # title.png
+  '609a0df9258d0c8c13cc7e03653d2f63c1c26906697083d93f5f26a25545f0a1' # patch1notes.html
+  'd678bf3318fd8c34d60a3657729ba0ae670ebea913cac1acaa3be722bb96cbb3' # patch2notes.html
   '4352425ef44c7c9f282c5d3919e2b320568dce1fb9d6744a6e561b4cc27aedcd' # index2.01.html_remove-external-content.patch
   '20ff4b35331294364354b35319795cc85c2266bfce991adcac8f72e17b8184e6' # index2.02.html_reenable-threnody-music.patch
   '55f7c5853e59a704361e5145aa25430427d4ab8ffabfff3637f2553b26e8f84c' # index.01.html_remove-external-content.patch
@@ -104,6 +108,10 @@ prepare() {
     msg2 "Applying patch to mod the UI to colour-highlight some status ..."
     patch -N -i "${srcdir}/index2.03.html_add-uimod-by-timophy.patch" "index2.html"
   fi
+}
+
+build() {
+  cd "${srcdir}/patched"
 
   if which optipng > /dev/null 2>&1; then
     msg2 'Optimising PNG files for size ...'
@@ -111,7 +119,6 @@ prepare() {
     optipng -o7 'title.png'
   fi
 }
-
 
 package() {
   cd "${srcdir}"
@@ -137,6 +144,10 @@ package() {
   for _docfile in 'game.url' 'wikipedia.url' 'reddit.url' 'fandom.url'; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+  for _changelog in 'patch1notes.html' 'patch2notes.html'; do
+    install -D -v -m644 "${_changelog}" "${pkgdir}/usr/share/doc/${_pkgname}/changelog/${_changelog}"
+  done
+
   install -D -v -m644 'license-dummy.txt' "${pkgdir}/usr/share/licenses/${pkgname}/license-dummy.txt"
   if "${_use_upc_uimod}"; then
     install -D -v -m644 'upc_uimod_LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/upc_uimod_LICENSE.MIT.txt"
