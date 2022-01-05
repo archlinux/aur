@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ncurses-git
-pkgver=6.2.20200919.r0.gfceb2b7d
+pkgver=6.3.20220101.r0.g4ec2068c
 pkgrel=1
 pkgdesc="Screen handling and optimization package"
 arch=('i686' 'x86_64')
 url="https://invisible-island.net/ncurses/ncurses.html"
 license=('MIT')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('git')
 provides=('ncurses' 'libncurses++w.so' 'libformw.so' 'libmenuw.so' 'libpanelw.so' 'libncursesw.so')
 conflicts=('ncurses')
@@ -33,6 +33,7 @@ build() {
     --with-cxx-shared \
     --with-pkg-config-libdir="/usr/lib/pkgconfig" \
     --with-shared \
+    --with-versioned-syms \
     --without-ada \
     --without-debug
   make
@@ -46,17 +47,19 @@ package() {
 
   # fool packages looking to link to non-wide-character ncurses libraries
   for lib in ncurses ncurses++ form panel menu; do
-    echo "INPUT(-l${lib}w)" > "$pkgdir/usr/lib/lib${lib}.so"
-    ln -s "${lib}w.pc" "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
-  done
-
-  for lib in tic tinfo; do
-    echo "INPUT(libncursesw.so.${pkgver:0:1})" > "$pkgdir/usr/lib/lib${lib}.so"
-    ln -s "libncursesw.so.${pkgver:0:1}" "$pkgdir/usr/lib/lib${lib}.so.${pkgver:0:1}"
-    ln -s "ncursesw.pc" "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
+    printf "INPUT(-l%sw)\n" "${lib}" > "$pkgdir/usr/lib/lib${lib}.so"
+    ln -sv ${lib}w.pc "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
   done
 
   # some packages look for -lcurses during build
-  echo 'INPUT(-lncursesw)' > "$pkgdir/usr/lib/libcursesw.so"
-  ln -s "libncurses.so" "$pkgdir/usr/lib/libcurses.so"
+  printf 'INPUT(-lncursesw)\n' > "$pkgdir/usr/lib/libcursesw.so"
+  ln -sv libncurses.so "$pkgdir/usr/lib/libcurses.so"
+
+  # tic and ticinfo functionality is built in by default
+  # make sure that anything linking against it links against libncursesw.so instead
+  for lib in tic tinfo; do
+    printf "INPUT(libncursesw.so.%s)\n" "${pkgver:0:1}" > "$pkgdir/usr/lib/lib${lib}.so"
+    ln -sv libncursesw.so.${pkgver:0:1} "$pkgdir/usr/lib/lib${lib}.so.${pkgver:0:1}"
+    ln -sv ncursesw.pc "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
+  done
 }
