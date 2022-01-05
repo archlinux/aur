@@ -1,7 +1,7 @@
 pkgbase = universalpaperclips
 	pkgdesc = Clicker game where you control an AI whose aim is to create as many paperclips as possible. Patched version which loads a colour highlight UI mod if that is installed, and which does not load content from google and with removed external links.
 	pkgver = 3
-	pkgrel = 16
+	pkgrel = 17
 	url = https://decisionproblem.com/paperclips/
 	arch = any
 	license = custom:unknown
@@ -54,7 +54,7 @@ pkgbase = universalpaperclips
 	sha256sums = a8855bbb7c292c69df530ce7385064c457152dc264b22d157b08798fb9370480
 	sha256sums = 2b73b90be3611eade8da7067fc9f563fab9fe5d85d03cf7201cdc224afd379e3
 	sha256sums = dff62c22c922d977afedf53fe2a16cc766e5c3778608ac05897100e4baa5dc0e
-	sha256sums = 20d997e2021d44eca93123f02db1b4d9c4b097e3a7e47e4198d70a5d7e314479
+	sha256sums = e78bd0bc379d1dd3bbf401904d9559ebe9c34f66d14370faf1577eeb2d3678fb
 	sha256sums = 634e2a7d24697532904a1ec52a5d87b486f1f8055406c274394d7f220a64e9e7
 	sha256sums = 1c7a15533d5c5d97a541de91eaa8b33e014ea70fcd512b662fd8b70ba9ebf74a
 	sha256sums = d95a022889ad1dbbf9175fc739c7a7e83b9396a83a28743d3904541e5f7376b7
