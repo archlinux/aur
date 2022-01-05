@@ -1,11 +1,11 @@
 pkgname="md-git"
 pkgver="1.9"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Simple MarkDown Reader"
 
 arch=("x86_64" "i686")
 
-makedepends=("git")
+makedepends=("git" "strip")
 depends=("gcc" "make")
 
 license=("MIT")
@@ -40,6 +40,8 @@ build () {
 package() {
 	cd "md"
 	mkdir -p "${pkgdir}/usr/bin/"
+
+	strip -s ${srcdir}/md/bin/md	
 
 	chown root:root ${srcdir}/md/bin/md
 	chmod a+x ${srcdir}/md/bin/md
