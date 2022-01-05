@@ -1,9 +1,10 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-sphinx-jinja
-pkgver=1.2.1
+# https://github.com/tardyp/sphinx-jinja/blob/master/ChangeLog
+pkgver=1.4.0
 # curl https://api.github.com/repos/tardyp/sphinx-jinja/git/ref/tags/$pkgver | jq -r .object.sha
-_tag=8ac1d0a217e768ce944ad68fcce3d9d65b9dc781
+_tag=c142a2d05089a56fef4b2fd0701ee0b45c7d5f24
 pkgrel=1
 pkgdesc='A sphinx extension to include jinja based templates based documentation into a sphinx doc'
 arch=(any)
