@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr/bin
+libdir=/usr/lib
+includedir=/usr/include/godot
+
+Name: Godot C++ Bindings
+Description: C++ bindings for the Godot script API.
+Version: @VERSION@
+Requires: godot
+Libs: -lgodot-cpp
+Cflags: -I${includedir}/core -I${includedir}/gen
