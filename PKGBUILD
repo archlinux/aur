@@ -28,7 +28,7 @@ GOLD=             # Use the gold linker.
 
 LTO=              # Enable link-time optimization. Still experimental.
 
-JIT=              # Enable native just-in-time compilation. libgccjit is in AUR.
+JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   # This compiles only performance critical elisp files.
                   #
                   # To compile all elisp on demand, add
@@ -41,7 +41,7 @@ AOT=              # Precompile all included elisp. It takes a long time.
 
 CLI=              # CLI only binary.
 
-GPM=              # Mouse support in Linux console using gmpd.
+GPM=              # Mouse support in Linux console using gpmd.
 
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
                   # Bitmap fonts only, 1337!
@@ -80,7 +80,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.153039
+pkgver=29.0.50.153388
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')

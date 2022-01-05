@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 29.0.50.153039
+	pkgver = 29.0.50.153388
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -13,6 +13,7 @@ pkgbase = emacs-git
 	depends = libxml2
 	depends = jansson
 	depends = harfbuzz
+	depends = libgccjit
 	depends = libxi
 	depends = gtk3
 	depends = libjpeg-turbo
