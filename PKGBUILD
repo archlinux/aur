@@ -3,7 +3,7 @@
 pkgname=auracle-git
 _pkgname="${pkgname%-git}"
 pkgver=r366.8739929
-pkgrel=2
+pkgrel=3
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
 url="https://github.com/falconindy/auracle.git"
@@ -14,10 +14,10 @@ checkdepends=('python' 'fakechroot' 'gtest')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/falconindy/auracle.git"
-        "abseil-fix.patch::https://github.com/inglor/auracle/commit/9075aabcd3eac5a058d97b871e786e9fb65bfbce.patch"
+        "abseil-fix.patch::https://github.com/inglor/auracle/commit/587880dce84f47b9a01e3d53ccaeee11ba580d64.patch"
         "static-fmt.patch::https://github.com/inglor/auracle/commit/18ab2549a8a656a670bdc17233abd5a7708c50ee.patch")
 b2sums=('SKIP'
-        '077bd9e13c7dd2ab08ea23aabc958bdba8f8cc1dd1570b358264b8f5eda3eb54c8195456fc7d2f659899a856daf90ebf084e33355d7844b722143b680fb900ff'
+        '060a16cb5e3f8c244cfb12203ae0b356596fe255e0a56aee2fc6a140ac6ba7a28ed4da5e16fa43eb248ecedd577c29ab19b9455b657c3a039cbdd276c78aaec9'
         'f735c89485d8682b9dee25c1b96152d44005b8bf78f683015c65dd93cc3802177fbf8a4fa94587958157ec175260417da101a1436f7e1c4106bc2e4c21974a70')
 
 pkgver() {
