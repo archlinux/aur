@@ -8,7 +8,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=8
+pkgrel=9
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible. (To enable mods, edit flags in `PKGBUILD`.)'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -65,6 +65,7 @@ sha256sums=(
 )
 
 if "${_use_upc_uimod}"; then
+  license+=('custom:MIT')
   source+=(
     'upc_uimod.js::https://timophy.github.io/scripts/upc_uimod.js'
     'upc_uimod_LICENSE.txt::https://raw.githubusercontent.com/timophy/UniversalPaperclipsUIMod/master/LICENSE'
