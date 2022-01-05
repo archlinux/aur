@@ -1,8 +1,9 @@
 pkgbase = agisoft-viewer
 	pkgdesc = A free stand-alone software to visualize 3D data
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.agisoft.com/
+	install = agisoft-viewer.install
 	arch = x86_64
 	license = custom:Agisoft EULA
 	license = custom

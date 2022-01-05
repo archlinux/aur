@@ -1,0 +1,17 @@
+post_install() {
+    # Display the name of executable
+    echo
+    echo "The launcher is called agisoft-viewer"
+    echo
+}
+
+post_remove() {
+    rm -rf /opt/agisoft/viewer
+    rm -d /opt/agisoft 2>/dev/null
+    echo
+    echo "The users data were kept at the below locations"
+    echo "\$HOME/.agisoft"
+    echo "\$HOME/.config/Agisoft"
+    echo "\$HOME/.local/share/Agisoft"
+    echo
+}
