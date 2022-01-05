@@ -9,7 +9,7 @@ arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
 license=('GPL3')
 depends=('gspell' 'libhandy' 'otf-fira-mono' 'python-cairo' 'python-gobject'
-         'python-levenshtein' 'python-pyenchant' 'python-pypandoc''python-regex'
+         'python-levenshtein' 'python-pyenchant' 'python-pypandoc' 'python-regex'
          'webkit2gtk')
 makedepends=('git' 'meson' 'gobject-introspection' 'sassc')
 checkdepends=('appstream-glib')
