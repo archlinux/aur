@@ -1,20 +1,21 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-pynamodb
-pkgver=5.1.0
-pkgrel=3
+# https://pynamodb.readthedocs.io/en/latest/release_notes.html
+pkgver=5.2.0
+pkgrel=1
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
 url='https://pynamodb.readthedocs.io/'
 license=(MIT)
 makedepends=(python-setuptools)
 depends=(python-botocore)
-checkdepends=(python-blinker python-pytest-mock)
+checkdepends=(python-blinker python-pytest-env python-pytest-mock)
 optdepends=(
   'python-blinker: for signals'
 )
 source=("https://github.com/pynamodb/PynamoDB/archive/$pkgver/PynamoDB-$pkgver.tar.gz")
-sha256sums=('8735197edec9f0163d2c398506aa79ef113d5ac917b492e8dc8dbe3f80cdfa91')
+sha256sums=('077bfa2915354048c6eb84cbc819dc25b8b468afb83454ad3a78a61e8acfed1a')
 
 build() {
   cd PynamoDB-$pkgver
@@ -23,11 +24,6 @@ build() {
 
 check() {
   cd PynamoDB-$pkgver
-
-  # Copied from upstream pytest.ini as pytest-env is not yet packaged
-  export AWS_ACCESS_KEY_ID=1
-  export AWS_SECRET_ACCESS_KEY=2
-
   pytest -m 'not ddblocal' tests
 }
 
