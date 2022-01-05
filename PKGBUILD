@@ -6,7 +6,7 @@
 pkgname=wechat-uos
 _pkgname=wechat
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64')
@@ -28,9 +28,10 @@ prepare() {
     cp -rf $srcdir/opt/apps/com.tencent.weixin/files/weixin $srcdir/opt
     rm -rf usr/lib
     cd ${srcdir}/usr/share/applications/
-    sed -i "3c Exec=wechat %U" weixin.desktop
-    echo "Keywords=wechat;weixin;" >> weixin.desktop
-    mv weixin.desktop ${pkgname}.deskop
+    sed -i "3c Exec=wechat-uos %U" weixin.desktop
+    echo "Keywords=wechat;weixin;wechat-uos;" >> weixin.desktop
+    mv weixin.desktop ${pkgname}.desktop
+    chmod a-x ${pkgname}.desktop
 }
 
 package(){

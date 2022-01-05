@@ -1,7 +1,7 @@
 pkgbase = wechat-uos
 	pkgdesc = 微信官方原生桌面版 WeChat desktop
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 2
 	url = https://weixin.qq.com/
 	arch = x86_64
