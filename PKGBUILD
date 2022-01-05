@@ -3,7 +3,7 @@
 # Maintainer: Zhuo FENG <fenprace.i@gmail.com>
 
 pkgname=mosdns-cn-bin
-pkgver=1.1.5
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="A DNS forwarder"
 license=("GPL3")
@@ -23,6 +23,6 @@ package() {
   install -Dm755 mosdns-cn "$pkgdir/usr/bin/mosdns-cn"
 }
 
-sha256sums_x86_64=('afefe9ea5663e33f8181ed6e122ecd12713c78b9d487ae45d08b6a79836ea539')
-sha256sums_armv7h=('d6f622d35d018736836e2d2e7b6ad382e0d232395b7960b4677b91515e91dced') 
-sha256sums_aarch64=('10b05f2908a483a153643e1705a161b694553049c5f37b8dbd92f2614c035905')
+sha256sums_x86_64=('cb443874193644033b8604e07802b0952b442d2e675e5a34d4143ef8b0d0d8a1')
+sha256sums_armv7h=('877518cf8f08e1340ed409fbef4713f59d45a534a55ef63665fb6d91623c81f1') 
+sha256sums_aarch64=('2c621a3fcce0355ab004b88c9294d572eccdc0cd4df2ba56c93c02fca4dfc200')
