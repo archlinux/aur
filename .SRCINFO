@@ -1,7 +1,7 @@
 pkgbase = linthesia-git
 	pkgdesc = A game of playing music. A fork of Synthesia (git)
 	pkgver = r147.427de90
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mans17/linthesia
 	arch = i686
@@ -14,8 +14,6 @@ pkgbase = linthesia-git
 	depends = alsa-lib
 	depends = fluidsynth
 	conflicts = linthesia
-	options = debug
-	options = !strip
 	source = linthesia::git+https://github.com/rikmg/linthesia.git
 	sha256sums = SKIP
 
