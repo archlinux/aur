@@ -3,7 +3,7 @@
 _pkgname=flake8-executable
 pkgname=python-$_pkgname
 
-pkgver=2.0.4
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A Flake8 plugin for checking executable permissions and shebangs."
 
@@ -14,10 +14,10 @@ license=('GPLv3')
 depends=('python')
 
 source=("https://github.com/xuhdev/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('0ab872cac5f6c6cf197486d45f6d996996d5387949bafdc765c16971a4ad19ff0eaa7b8702ab8d63a0289846066cc3d4747ac212a288abee7ec2bb6831fd1a09')
+sha512sums=('ad3ae85fbfeb1b24e1709a8108a855934c4135986bcca4c444947660697f948b7767fabc074473b2dd74374c58cbc1f633b443f20e4676f6a9c6857b7328a0c1')
 
 package() {
     cd "$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py install --root="$pkgdir" --optimize=1
 }
 
