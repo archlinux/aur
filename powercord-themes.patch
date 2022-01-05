@@ -17,18 +17,19 @@ index 65b97b7f..ab4ac64c 100644
  
      if (!window.__SPLASH__) {
 diff --git a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
-index 8aa39d1e..c126c58a 100644
+index fd5134cf..c08c3820 100644
 --- a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
 +++ b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
-@@ -5,6 +5,7 @@ const { Button, Tooltip, ContextMenu, Divider, Icons: { Overflow } } = require('
+@@ -4,6 +4,8 @@ const { React, getModule, contextMenu, i18n: { Messages } } = require('powercord
+ const { Button, Tooltip, ContextMenu, Divider, Icons: { Overflow } } = require('powercord/components');
  const { TextInput } = require('powercord/components/settings');
  
- const { emptyStateImage } = getModule([ 'emptyStateImage', 'emptyStateSubtext' ], false);
 +const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
- 
++
  class Base extends React.Component {
    constructor () {
-@@ -93,7 +94,7 @@ class Base extends React.Component {
+     super();
+@@ -91,7 +93,7 @@ class Base extends React.Component {
            {
              type: 'button',
              name: Messages[`POWERCORD_${this.state.key}_OPEN_FOLDER`],
