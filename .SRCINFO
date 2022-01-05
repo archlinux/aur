@@ -8,6 +8,7 @@ pkgbase = giara-git
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = blueprint-compiler
 	depends = gtk4
 	depends = gtksourceview5
 	depends = libadwaita

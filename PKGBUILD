@@ -20,7 +20,7 @@ depends=(
 	'python-pillow'
 	'python-praw'
 )
-makedepends=('meson' 'git' 'gobject-introspection')
+makedepends=('meson' 'git' 'gobject-introspection' 'blueprint-compiler')
 checkdepends=()
 optdepends=('ffmpeg: For video')
 provides=("${pkgname%-git}")
