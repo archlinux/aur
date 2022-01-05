@@ -7,8 +7,7 @@ _githuborg=$_projectname
 pkgdesc="CX Blockchain Programming Language. skycoin.com/cx"
 pkgver=0.8.0
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-_pkggopath1="github.com/SkycoinProject/${_pkgname}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://${_pkggopath}"
 license=()
@@ -21,8 +20,8 @@ prepare() {
 	#verify PKGBUILD signature
 	#gpg --verify ${srcdir}/PKGBUILD.sig ../PKGBUILD
   # https://wiki.archlinux.org/index.php/Go_package_guidelines
-  mkdir -p ${srcdir}/go/src/${_pkggopath1//${_pkgname}/} ${srcdir}/go/bin
-  ln -rTsf ${srcdir}/${_pkgname}-${pkgver} ${srcdir}/go/src/${_pkggopath1}
+  mkdir -p ${srcdir}/go/src/${_pkggopath//${_pkgname}/} ${srcdir}/go/bin
+  ln -rTsf ${srcdir}/${_pkgname}-${pkgver} ${srcdir}/go/src/${_pkggopath}
   #cd ${srcdir}/go/src/${_pkggopath}/
 	}
 
@@ -31,11 +30,12 @@ build() {
   export GOBIN=${GOPATH}/bin
   export CC=musl-gcc
 	#  cp -b Makefile ${srcdir}/go/src/${_pkggopath}/Makefile
-  cd ${srcdir}/go/src/${_pkggopath1}
-	_cmddir=${srcdir}/go/src/${_pkggopath1}/cmd
+  cd ${srcdir}/go/src/${_pkggopath}
+	_cmddir=${srcdir}/go/src/${_pkggopath}/cmd
   #static compilation
   _msg2 'building cx binary'
-  cd ${srcdir}/go/src/${_pkggopath1}/cmd/cx
+  #make build
+  cd ${srcdir}/go/src/${_pkggopath}/cmd/cx
   go build -tags="ptr32 cipher cxfx cxos http regexp" -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
   cd $GOBIN
   msg2 'binary sha256sums'
