@@ -34,17 +34,14 @@ source_aarch64=(
     "${_license_base}-APACHE"
     "${_license_base}-MIT"
 )
+source_armv7=(
+    "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-armv7"
+    "${_license_base}-APACHE"
+    "${_license_base}-MIT"
+)
 # Sources are the same for armv7l and armv7h
-source_armv7l=(
-    "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-armv7"
-    "${_license_base}-APACHE"
-    "${_license_base}-MIT"
-)
-source_armv7h=(
-    "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-armv7"
-    "${_license_base}-APACHE"
-    "${_license_base}-MIT"
-)
+source_armv7l=("${source_armv7[@]}")
+source_armv7h=("${source_armv7[@]}")
 
 ## Checksums
 sha256sums_x86_64=(
@@ -57,12 +54,14 @@ sha256sums_aarch64=(
     "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
     "1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322"
 )
-sha256sums_armv7l=(
+sha256sums_armv7=(
     "2b320f34582683763eaada33b105b47168dcc6c3ef91fb0158e2a50b21d2ff8a"
     "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
     "1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322"
 )
-sha256sums_armv7h=("${sha256sums_armv7l[@]}")
+# Checksums are the same for armv7l and armv7h
+sha256sums_armv7l=("${sha256sums_armv7[@]}")
+sha256sums_armv7h=("${sha256sums_armv7[@]}")
 
 noextract=()
 validpgpkeys=()
