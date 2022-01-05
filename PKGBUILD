@@ -1,7 +1,7 @@
 # Maintainer: Pavel Dvorak <dvorapa~seznam~cz>
 
 pkgname=python-wikitextparser-git
-pkgver=0.47.5.r0.gd61e791
+pkgver=0.48.0.r4.g6e3f6f0
 pkgrel=2
 pkgdesc="A simple to use WikiText parsing library for MediaWiki."
 arch=(any)
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  python setup.py build
+  python -c "from setuptools import setup; setup()" build
 }
 
 package_python-wikitextparser-git() {
@@ -27,6 +27,6 @@ package_python-wikitextparser-git() {
   conflicts=(python-wikitextparser)
 
   cd "$srcdir/$pkgname"
-  python setup.py install --optimize=1 --root="$pkgdir/" --skip-build
+  python -c "from setuptools import setup; setup()" install --optimize=1 --root="$pkgdir/" --skip-build
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
