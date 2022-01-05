@@ -1,7 +1,7 @@
 # Maintainer: meister1593 <leruop@gmail.com>
 pkgname=tcgui-git
 _pkgname=tcgui
-pkgver=f2cb26a
+pkgver=4cde123
 pkgrel=1
 pkgdesc="A lightweight Python-based Web-GUI for Linux traffic control (tc) to set, view and delete traffic shaping rules."
 arch=('any')
