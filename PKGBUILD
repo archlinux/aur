@@ -67,7 +67,7 @@ noextract=()
 validpgpkeys=()
 
 ## Packaging
-package_x86_64() {
+package() {
     install -Dm755 dt-cli "$pkgdir/usr/bin/dt-cli"
     install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
     install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
