@@ -6,7 +6,7 @@ _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 #pkgrel=1
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
@@ -15,11 +15,10 @@ license=()
 makedepends=('git' 'go' 'musl' 'kernel-headers-musl') #disable signature check pending fixes#  'skycoin-keyring')
 install=skywire.install
 _scripts=${_pkgname}-scripts
-source=(
-"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "${_scripts}.tar.gz"
 )
-sha256sums=('477a42634b2f979fb9e13448a08dfd5aa325d4d0b72cf787dd7cb86d9f30d64f'
+sha256sums=('f76bba50525c2057a9aba5d3a1fe95d1913890a19bc7ad2ff9113b278bf8d489'
             'fad6c525f267271c94650559bab89a78b6a05419ed7682a143c95b0eb51de658')
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
@@ -38,7 +37,7 @@ export CGO_ENABLED=1  #default anyways
 export CC=musl-gcc
 
 cd "${srcdir}/${pkgname}-${pkgver}"
-local _version="v0.4.2"
+local _version="v${pkgver}"
 
 DMSG_BASE="github.com/skycoin/dmsg"
 BUILDINFO_PATH="${DMSG_BASE}/buildinfo"
@@ -122,15 +121,6 @@ _skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
 for i in ${_skywirescripts}; do
   _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
 done
-#the main scripts get installed above, the following are satellite-package or haveto do with the tls config - WIP
-install -Dm755  ${srcdir}/${_scripts}/skywire-save/${_pkgname}-save.PKGBUILD  ${pkgdir}/${_skydir}/${_pkgname}-save/PKGBUILD
-install -Dm755 ${srcdir}/${_scripts}/skywire-save/${_pkgname}-save.install ${pkgdir}/${_skydir}/${_pkgname}-save/${_pkgname}-save.install
-install -Dm644 ${srcdir}/${_scripts}/skywire-save/${_pkgname}-save.txt ${pkgdir}/${_skydir}/${_pkgname}-save/${_pkgname}-save.install
-
-#install the satellite PKGBUILD for distributing the hypervisor key and it's script - works with skycache to share the packages
-install -Dm755  ${srcdir}/${_scripts}/hypervisorkey/hypervisorkey.PKGBUILD  ${pkgdir}/${_skydir}/hypervisorkey/PKGBUILD
-install -Dm755 ${srcdir}/${_scripts}/hypervisorkey/hypervisorkey.install ${pkgdir}/${_skydir}/hypervisorkey/hypervisorkey.install
-install -Dm755 ${srcdir}/${_scripts}/hypervisorkey/hypervisorkey-autoconfig.sh ${pkgdir}/${_skydir}/hypervisorkey/hypervisorkey-autoconfig.sh
 
 #rename visor to skywire - matche the skycoin / skycoin-cli of the skycoin wallet
 [[ -f ${pkgdir}/usr/bin/${_pkgname}-visor ]] && mv ${pkgdir}/usr/bin/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
@@ -138,9 +128,6 @@ install -Dm755 ${srcdir}/${_scripts}/hypervisorkey/hypervisorkey-autoconfig.sh $
 #install the patched system.d services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
-
-#install the skycache systemd service
-install -Dm644 ${srcdir}/${_scripts}/skycache/skycache.service ${pkgdir}/${_systemddir}/skycache.service
 
 #tls key and certificate generation
 install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
