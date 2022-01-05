@@ -1,0 +1,20 @@
+pkgbase = libva-nvidia-driver
+	pkgdesc = VA-API implementation that uses NVDEC as a backend
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/elFarto/nvidia-vaapi-driver/
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = meson
+	makedepends = cuda
+	makedepends = libva
+	depends = gst-plugins-bad-libs
+	depends = nvidia-utils
+	conflicts = libva-vdpau-driver
+	source = https://github.com/elFarto/nvidia-vaapi-driver/archive/v0.0.1/libva-nvidia-driver-0.0.1.tar.gz
+	source = 010-libva-nvidia-driver-fix-paths.patch
+	sha256sums = 2943835ebb958c736b4b513c07811ee26442517103fcd77089676dc22353d6b4
+	sha256sums = 69879dc917e8da5b45bb8294f0bbcded5f04e657231c9531c2035d789952a18d
+
+pkgname = libva-nvidia-driver
