@@ -6,8 +6,8 @@
 
 pkgname='python-jira'
 pkgdesc='Python library to work with Jira APIs'
-pkgver='3.0.1'
-pkgrel=2
+pkgver='3.1.1'
+pkgrel=1
 url='https://github.com/pycontribs/jira'
 license=('BSD')
 arch=('any')
@@ -20,8 +20,8 @@ optdepends=("ipython")
 makedepends=('python-setuptools')
 source=("https://github.com/pycontribs/jira/archive/refs/tags/$pkgver.tar.gz"
         "version.patch")
-sha256sums=('feb5f77431728aee7c99bca65f00c9f39682720369c7f24c0cf932049a72ec5f'
-            '1526a7899a67fd8388c4b3fc878de85da3d7589810e911680cd2d2adb15c1021')
+sha256sums=('09751e025ed8cb69dcee3fd71cd8b6870b97a5eba3b3a4af405bf27530e8d049'
+            'd77b1bbc6b27a1d100bf4362ada5ef6bf887cc2b25f8fd72d8d169a354cdf9a4')
 
 
 prepare() {
