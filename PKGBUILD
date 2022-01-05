@@ -1,20 +1,19 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=6.0.3
+pkgver=6.0.5
 pkgrel=1
 pkgdesc="A system information fetcher, with an (unhealthy) emphasis on performance."
-
-arch=('x86_64')
-url="https://github.com/Macchina-CLI/macchina"
-license=('MIT')
 
 depends=('gcc-libs' 'glibc')
 optdepends=('wmctrl: window manager support')
 makedepends=('rust' 'cargo' 'libgit2' 'git')
 
+arch=('x86_64')
+url="https://github.com/Macchina-CLI/macchina"
+license=('MIT')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eb7bf657813a8b1cd6da2751744b4ec38bf4ebd4c11bf9deece84dd6ba8d97ab')
+sha256sums=('88de2c9718e071dcd9486cf1e7d87d46533100e589d99cd7b18ff43c21a8a053')
 
 build() {
 	cd "$pkgname-$pkgver"
