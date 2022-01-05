@@ -3,7 +3,7 @@
 pkgname=wepush
 pkgdesc="专注批量推送的小而美的工具"
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url="https://rememberber.github.io/WePush/"
 license=('MIT')
@@ -69,6 +69,6 @@ package() {
 	_iconpath="${srcdir}/${_appname}-${pkgver}/src/main/resources/icon/logo-1024.png"
 	for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"; do
     	install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
-    	convert "${_iconpath}" -resize "${_size}" -flatten "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
+    	convert "${_iconpath}" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
   	done
 }

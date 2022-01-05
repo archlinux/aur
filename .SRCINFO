@@ -1,7 +1,7 @@
 pkgbase = wepush
 	pkgdesc = 专注批量推送的小而美的工具
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rememberber.github.io/WePush/
 	arch = x86_64
 	arch = i686
