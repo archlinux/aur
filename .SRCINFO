@@ -1,0 +1,19 @@
+pkgbase = sharmavid-git
+	pkgdesc = Invidio.us client using Gtk and Rust
+	pkgver = r33.35f0334
+	pkgrel = 1
+	url = https://gitlab.gnome.org/ranfdev/sharmavid
+	arch = x86_64
+	license = 
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = rust
+	depends = gtk4
+	depends = glib2
+	depends = libadwaita
+	provides = sharmavid
+	conflicts = sharmavid
+	source = git+https://gitlab.gnome.org/ranfdev/sharmavid.git
+	b2sums = SKIP
+
+pkgname = sharmavid-git
