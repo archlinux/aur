@@ -76,7 +76,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-mainline wireguard-maineline)
+  replaces=(virtualbox-guest-modules-mainline wireguard-mainline)
 
   cd $_srcname
   local kernver="$(<version)"
