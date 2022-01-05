@@ -1,7 +1,7 @@
 pkgbase = grapejuice-git
 	pkgdesc = A Wine+Roblox management tool
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.8.2
+	pkgrel = 1
 	url = https://gitlab.com/brinkervii/grapejuice.git
 	arch = x86_64
 	license = GPL3
@@ -23,6 +23,7 @@ pkgbase = grapejuice-git
 	depends = shared-mime-info
 	depends = lib32-gnutls
 	depends = lib32-openssl
+	depends = lib32-libpulse
 	depends = mesa-utils
 	optdepends = wine: Required to run Roblox, but left out of depends to let the user decide on custom builds
 	optdepends = xorg-xrandr: Required for PRIME systems running XOrg, where XRandR based profiling is desired

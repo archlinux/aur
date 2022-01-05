@@ -3,8 +3,8 @@
 pkgname=grapejuice-git
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.8.2
+pkgrel=1
 pkgdesc='A Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
@@ -27,6 +27,7 @@ depends=(
     'shared-mime-info'
     'lib32-gnutls'
     'lib32-openssl'
+    'lib32-libpulse'
     'mesa-utils'
 )
 optdepends=(
