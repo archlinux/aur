@@ -6,8 +6,8 @@
 # Contributor: Dario 'Dax' Vilardi <dax [at] deelab [dot] org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
-pkgver=2.3.2.r10607.78a95e54e
-pkgrel=2
+pkgver=2.3.3.r10607.78a95e54e
+pkgrel=1
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
 url="https://github.com/persmule/amule-dlp"
@@ -29,7 +29,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/amule-dlp"
-  printf "2.3.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep -Po '(?<=set \(PACKAGE_VERSION ").+(?="\))' ./CMakeLists.txt)" \
+					"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
