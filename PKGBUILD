@@ -32,59 +32,59 @@ sha256sums=('SKIP'
             '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 prepare() {
-	cd "$srcdir/$pkgname"
-	git submodule init
-	git config submodule.lib/AppImageUpdate.url "$srcdir/AppImageUpdate"
-	git config submodule.lib/libappimage.url "$srcdir/libappimage"
-	git submodule update
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.lib/AppImageUpdate.url "$srcdir/AppImageUpdate"
+  git config submodule.lib/libappimage.url "$srcdir/libappimage"
+  git submodule update
 
-	cd "$srcdir/$pkgname/lib/AppImageUpdate"
-	git submodule init
-	git config submodule.lib/zsync2.url "$srcdir/zsync2"
-	git config submodule.lib/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-	git config submodule.lib/libappimage.url "$srcdir/libappimage"
-	git submodule update
+  cd "$srcdir/$pkgname/lib/AppImageUpdate"
+  git submodule init
+  git config submodule.lib/zsync2.url "$srcdir/zsync2"
+  git config submodule.lib/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+  git config submodule.lib/libappimage.url "$srcdir/libappimage"
+  git submodule update
 
-	cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/libappimage"
-	git submodule init
-	git config submodule.lib/gtest.url "$srcdir/googletest"
-	git submodule update
+  cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/libappimage"
+  git submodule init
+  git config submodule.lib/gtest.url "$srcdir/googletest"
+  git submodule update
 
-	cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/zsync2"
-	git submodule init
-	git config submodule.lib/cpr.url "$srcdir/cpr"
-	git config submodule.lib/args.url "$srcdir/args"
-	git config submodule.lib/gtest.url "$srcdir/googletest"
-	git submodule update
+  cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/zsync2"
+  git submodule init
+  git config submodule.lib/cpr.url "$srcdir/cpr"
+  git config submodule.lib/args.url "$srcdir/args"
+  git config submodule.lib/gtest.url "$srcdir/googletest"
+  git submodule update
 
-	cd "$srcdir/$pkgname/lib/libappimage"
-	git submodule init
-	git config submodule.lib/gtest.url "$srcdir/googletest"
-	git submodule update
+  cd "$srcdir/$pkgname/lib/libappimage"
+  git submodule init
+  git config submodule.lib/gtest.url "$srcdir/googletest"
+  git submodule update
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	cmake . \
-		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
-		-DUSE_SYSTEM_GTEST=ON \
-		-DUSE_SYSTEM_XZ=ON \
-		-DUSE_SYSTEM_LIBARCHIVE=ON \
-		-DUSE_SYSTEM_LIBAPPIMAGE=ON \
-		-DBUILD_TESTING=OFF \
-		-Wno-dev
+  cd "$srcdir/$pkgname"
+  cmake . \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+    -DUSE_SYSTEM_GTEST=ON \
+    -DUSE_SYSTEM_XZ=ON \
+    -DUSE_SYSTEM_LIBARCHIVE=ON \
+    -DUSE_SYSTEM_LIBAPPIMAGE=ON \
+    -DBUILD_TESTING=OFF \
+    -Wno-dev
 
-	# See https://github.com/TheAssassin/AppImageLauncher/issues/251
-	make libappimageupdate libappimageupdate-qt
-	cmake .
-	make
+  # See https://github.com/TheAssassin/AppImageLauncher/issues/251
+  make libappimageupdate libappimageupdate-qt
+  cmake .
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir" install
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" install
 
-	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 "$srcdir"/*.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$srcdir"/*.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
