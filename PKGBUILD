@@ -4,7 +4,7 @@
 # Please contribute to:
 # https://github.com/alfredopalhares/arch-pkgbuilds
 pkgname=kcadm
-pkgver=11.0.2
+pkgver=15.0.2
 pkgrel=1
 pkgdesc="A command line Admin tool for Keycloak"
 arch=('any')
@@ -13,9 +13,9 @@ license=('GPL')
 depends=("java-environment")
 install=
 changelog=
-source=("https://downloads.jboss.org/keycloak/${pkgver}/keycloak-${pkgver}.tar.gz"
+source=("https://github.com/keycloak/keycloak/releases/download/${pkgver}/keycloak-${pkgver}.tar.gz"
         "kcadm.sh")
-sha256sums=('b1b3f7df63a6ff804adb9d8592df300aa7889765c02c65948960b4af96a88365'
+sha256sums=('1915e33b3789eb426fda06676e39b9ddf3a7b563e1e2381a92a02da814dad047'
             'c181c022e595ed7410d24f999ff46e202d1b33130df5806047483ca4997f5342')
 
 package() {

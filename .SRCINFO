@@ -1,15 +1,14 @@
 pkgbase = kcadm
 	pkgdesc = A command line Admin tool for Keycloak
-	pkgver = 11.0.2
+	pkgver = 15.0.2
 	pkgrel = 1
 	url = https://www.keycloak.org/
 	arch = any
 	license = GPL
 	depends = java-environment
-	source = https://downloads.jboss.org/keycloak/11.0.2/keycloak-11.0.2.tar.gz
+	source = https://github.com/keycloak/keycloak/releases/download/15.0.2/keycloak-15.0.2.tar.gz
 	source = kcadm.sh
-	sha256sums = b1b3f7df63a6ff804adb9d8592df300aa7889765c02c65948960b4af96a88365
+	sha256sums = 1915e33b3789eb426fda06676e39b9ddf3a7b563e1e2381a92a02da814dad047
 	sha256sums = c181c022e595ed7410d24f999ff46e202d1b33130df5806047483ca4997f5342
 
 pkgname = kcadm
-
