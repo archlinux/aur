@@ -1,0 +1,12 @@
+pkgbase = libosc++
+	pkgdesc = Library for handling OSC in C++
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/duncanthrax/scream
+	arch = x86_64
+	license = LGPL
+	conflicts = libosc++-git
+	source = http://www.rumori.de/do/libosc++/dl/libOSC++-0.10.2.tar.gz
+	sha256sums = e594c68a11bff1d53b340443615d03e89557dcfbe5d57ff4402d34d7ffa4af3c
+
+pkgname = libosc++
