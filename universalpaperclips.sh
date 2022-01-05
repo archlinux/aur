@@ -8,7 +8,7 @@ _usage() {
 }
 
 _cheat_info() {
-  printf '%s\n' "For cheating, open the JavaScript-console (press <CTRL>+<SHIFT>+<I> in the window of the 'electron' app and then click on the 'console' tab)." "" "For cheat codes, see e.g." "* http://reddit.com/r/pAIperclip/comments/8bspa8," "* http://reddit.com/r/pAIperclip/comments/779bj8," "* http://universalpaperclips.fandom.com/wiki/Cheats," "* http://universalpaperclips.fandom.com/wiki/Automation_(cheat)."
+  printf '%s\n' "For cheating, open the JavaScript-console (press <CTRL>+<SHIFT>+<I> in the window of the 'electron' app and then click on the 'console' tab)." "" "For cheats, see e.g." "* http://reddit.com/r/pAIperclip/comments/8bspa8," "* http://reddit.com/r/pAIperclip/comments/779bj8," "* http://universalpaperclips.fandom.com/wiki/Cheats," "* http://universalpaperclips.fandom.com/wiki/Automation_(cheat)."
 }
 
 _electron_help() {

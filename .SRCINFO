@@ -1,7 +1,7 @@
 pkgbase = universalpaperclips
 	pkgdesc = Clicker game where you control an AI whose aim is to create as many paperclips as possible.
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://decisionproblem.com/paperclips/
 	arch = any
 	license = custom:unknown
@@ -38,7 +38,7 @@ pkgbase = universalpaperclips
 	sha256sums = 4352425ef44c7c9f282c5d3919e2b320568dce1fb9d6744a6e561b4cc27aedcd
 	sha256sums = 20ff4b35331294364354b35319795cc85c2266bfce991adcac8f72e17b8184e6
 	sha256sums = 55f7c5853e59a704361e5145aa25430427d4ab8ffabfff3637f2553b26e8f84c
-	sha256sums = 44045a1c2616924f16c00295bf5a61e5100a41fee3a5e2bbae48e97efa789270
+	sha256sums = a8855bbb7c292c69df530ce7385064c457152dc264b22d157b08798fb9370480
 	sha256sums = dff62c22c922d977afedf53fe2a16cc766e5c3778608ac05897100e4baa5dc0e
 	sha256sums = 87a7e62b6e08f2491657fc8b0a0fe380a7dec3811e8d5ca36fe54d21f3548552
 
