@@ -38,7 +38,7 @@ pkgname = linux-mainline
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	replaces = virtualbox-guest-modules-mainline
-	replaces = wireguard-maineline
+	replaces = wireguard-mainline
 
 pkgname = linux-mainline-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
