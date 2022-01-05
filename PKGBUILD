@@ -5,7 +5,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible.'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -77,17 +77,13 @@ prepare() {
   msg2 "Applying patch to re-enable threnody music ..."
   patch -N -i "${srcdir}/index2.html_reenable-threnody-music.patch" "index2.html"
 
-}
-
-build() {
-  cd "${srcdir}/patched"
-
   if which optipng > /dev/null 2>&1; then
     msg2 'Optimising PNG files for size ...'
     optipng -o7 'mobile-title.png'
     optipng -o7 'title.png'
   fi
 }
+
 
 package() {
   cd "${srcdir}"

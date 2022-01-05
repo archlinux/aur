@@ -1,7 +1,7 @@
 pkgbase = universalpaperclips
 	pkgdesc = Clicker game where you control an AI whose aim is to create as many paperclips as possible.
 	pkgver = 3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://decisionproblem.com/paperclips/
 	arch = any
 	license = custom:unknown
