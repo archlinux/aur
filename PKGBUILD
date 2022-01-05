@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-lspconfig-git
-pkgver=0.1.0.r0.g428f785
+pkgver=0.1.0.r27.g9a122f64
 pkgrel=1
 pkgdesc="Quickstart configurations for the Neovim LSP client"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find autoload lua plugin \
+	find lua plugin \
 		-type f \
 		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm644 doc/lspconfig.txt -t "$pkgdir/usr/share/nvim/runtime/doc/"
