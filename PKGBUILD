@@ -2,16 +2,16 @@
 pkgbase=python-parfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A HTTP and FTP parallel file downloader"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://parfive.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-aiohttp' 'python-tqdm' 'graphviz' 'python-sunpy-sphinx-theme')
-checkdepends=('python-pytest-localserver' 'python-pytest-asyncio' 'python-pytest-socket' 'python-aioftp')
+checkdepends=('python-pytest-localserver' 'python-pytest-asyncio' 'python-pytest-socket' 'python-aioftp' 'python-aiofiles')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0ec5dcbcda6ca3ddc0057d675ed70947')
+md5sums=('cb6861020bd3cd22c6f9a70cf85c47c1')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -24,7 +24,9 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    # deselect tests that may take long time
+    pytest \
+    --deselect=parfive/tests/test_downloader.py::test_ftp || warning "Tests failed"
 }
 
 package_python-parfive() {
