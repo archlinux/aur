@@ -1,8 +1,3 @@
-_config_message() {
-	echo "The ethernet daemon must be configured using /etc/ueye/ueyeethd.conf"
-	echo "You also need to make sure /usr/bin/ueyeethdnotify or /usr/bin/ueyenotify is called when an interface comes up or down."
-}
-
 post_install() {
-	_config_message
+	echo "The ethernet daemon must be configured using /etc/ueye/ueyeethd.conf"
 }
