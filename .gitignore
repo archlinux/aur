@@ -1,5 +1,4 @@
-/*.pkg.tar.zst
-/*.tar.gz
-/pkg
-/src
-/*-MIT-LICENSE
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

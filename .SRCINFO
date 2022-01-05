@@ -1,22 +1,23 @@
 pkgbase = r-shinyjs
 	pkgdesc = Easily Improve the User Experience of Your Shiny Apps in Seconds
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shinyjs
 	arch = any
 	license = MIT
-	depends = r>=3.1.0
-	depends = r-digest>=0.6.8
+	checkdepends = r-testthat
+	depends = r-digest
 	depends = r-jsonlite
-	depends = r-shiny>=1.0.0
-	optdepends = r-htmltools>=0.2.9
-	optdepends = r-knitr>=1.7
+	depends = r-shiny
+	optdepends = r-htmltools
+	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-testthat>=0.9.1
-	source = https://cran.r-project.org/src/contrib/shinyjs_2.0.0.tar.gz
-	source = shinyjs_2.0.0-MIT-LICENSE::https://cran.r-project.org/web/licenses/MIT
-	sha512sums = f81abe6d305cfde17a46f1975d4accecf5f2e6dad39b10e04badd16859e490b02f705db474350f1ecfbc62f9e2258e5d2056c30cb7f3273de3c36e156c4820c1
-	sha512sums = 20e82bfce7b50a3adfccad5f56e13c82449da19a8dfb92f8395210dd6cf69a1962aaa114743faae02388132431d855361880b2bb26e2e30da9630a05360f42f5
+	optdepends = r-shinyace
+	optdepends = r-shinydisconnect
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/shinyjs_2.1.0.tar.gz
+	source = R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	sha256sums = 7ec20cbf1b1fd7a32d85a56dfc0df8b5f67c828d241da400a21d893cb37ea9c5
+	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-shinyjs
-
