@@ -1,7 +1,7 @@
 # Maintainer: Nikita Almakov <nikita.almakov@gmail.com>
 
 pkgname=rate-mirrors-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool - pre-built with musl"
 url="https://github.com/westandskif/rate-mirrors"
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=()
 makedepends=()
 conflicts=('rate-mirrors')
-sha512sums=('e5010d12b343e75287ead1a29eccc7f6fcb0da58602efa174e7f9e0b020485d35ed87eb8c5fedbc5d990a9e0b4ed582f30885c08c974d2a17d1fcaf1438df605')
+sha512sums=('23a8a6b132dca76cff398a390b6bb9d9f1d07446664e5e74ccff8c4c63f777ef6f6bdfc4a8b13b49c8173dd887f62d5de9c0f0af599aa7e2897d50912abc146f')
 
 build() {
   tar xzf "${pkgname}-${pkgver}.tar.gz"
