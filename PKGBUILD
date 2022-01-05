@@ -1,7 +1,7 @@
 pkgname=nanocurrency
 pkgver=22.1
 _tag="V$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
 url="https://nano.org/"
@@ -19,7 +19,7 @@ source=(nanowallet.desktop
   fix-build-for-boost-1.76.patch
   "git+https://github.com/nanocurrency/nano-node.git#tag=${_tag}"
   git+https://github.com/weidai11/cryptopp.git
-  "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_25"
+  git+https://github.com/nanocurrency/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
   git+https://github.com/nanocurrency/phc-winner-argon2.git
   git+https://github.com/google/flatbuffers.git
@@ -45,7 +45,7 @@ sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             'SKIP'
             'SKIP')
 
-_submodule_init() {
+_submodule_config() {
   submodule_name=$1
   submodule_path=$2
   if [[ -z "$submodule_path" ]]; then
@@ -60,15 +60,15 @@ _submodule_init() {
 prepare() {
   cd "$srcdir/nano-node"
 
-  _submodule_init crypto/cryptopp cryptopp
-  _submodule_init lmdb
-  _submodule_init miniupnp
-  _submodule_init crypto/phc-winner-argon2 phc-winner-argon2
-  _submodule_init flatbuffers
-  _submodule_init rocksdb
-  _submodule_init cpptoml
-  _submodule_init googletest
-  _submodule_init nano-pow-server
+  _submodule_config crypto/cryptopp cryptopp
+  _submodule_config lmdb
+  _submodule_config miniupnp
+  _submodule_config crypto/phc-winner-argon2 phc-winner-argon2
+  _submodule_config flatbuffers
+  _submodule_config rocksdb
+  _submodule_config cpptoml
+  _submodule_config googletest
+  _submodule_config nano-pow-server
   
   git submodule init
   git submodule update --recursive
@@ -107,25 +107,24 @@ build() {
   _cores=$(grep processor /proc/cpuinfo | wc -l)
   #_cores=1
   PATH=$PATH cmake $_flags ./
-  echo make VERBOSE=1 -j${_cores} nano_wallet
-  make VERBOSE=1 -j${_cores} nano_wallet
-  make VERBOSE=1 -j${_cores} nano_node
+  make -j${_cores} nano_wallet
+  make -j${_cores} nano_node
 }
 
 package() {
   cd "$srcdir/nano-node"
 
   install -Dm755 nano_wallet "$pkgdir"/usr/bin/nano_wallet
-  ln -s /usr/bin/nano_wallet "$pkgdir"/usr/bin/rai_wallet
+  #ln -s /usr/bin/nano_wallet "$pkgdir"/usr/bin/rai_wallet
   install -Dm755 nano_node "$pkgdir"/usr/bin/nano_node
-  ln -s /usr/bin/nano_node "$pkgdir"/usr/bin/rai_node
+  #ln -s /usr/bin/nano_node "$pkgdir"/usr/bin/rai_node
 
   install -Dm644 "$srcdir"/nanowallet128.png "$pkgdir"/usr/share/pixmaps/nanowallet128.png
   install -Dm644 "$srcdir"/nanowallet.desktop "$pkgdir"/usr/share/applications/nanowallet.desktop
   #ln -s /usr/share/applications/nanowallet.desktop "$pkgdir"/usr/lib/systemd/system/raiblocks.service
 
   install -Dm644 "$srcdir"/nano-node.service "$pkgdir"/usr/lib/systemd/system/nano-node.service
-  ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
+  #ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
 }
 
 # vim:set ts=2 sw=2 et:
