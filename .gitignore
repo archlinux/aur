@@ -1,0 +1,4 @@
+pkg/
+src/
+tera-cli-*.tar.gz
+tera-cli-*.pkg.tar.zst
