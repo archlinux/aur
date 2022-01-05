@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://godotengine.org'
 license=('MIT')
 depends=(godot-headers)
-makedepends=(scons)
+makedepends=(scons clang llvm)
 source=(
   https://github.com/godotengine/$pkgname/archive/refs/tags/godot-$pkgver-stable.tar.gz
   godot-cpp.pc.in
