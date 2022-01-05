@@ -1,0 +1,97 @@
+diff --unified --recursive --text package.orig/usr/bin/akia package.new/usr/bin/akia
+--- package.orig/usr/bin/akia	2021-09-15 16:49:13.000000000 +0300
++++ package.new/usr/bin/akia	2022-01-05 09:21:51.762935000 +0300
+@@ -1,91 +1,2 @@
+-#!/bin/bash
+-
+-
+-# returns the JDK version.
+-# 8 for 1.8.0_nn, 9 for 9-ea etc, and "no_java" for undetected
+-jdk_version() {
+-  local result
+-  local java_cmd
+-  if [[ -n $(type -p java) ]]
+-  then
+-    java_cmd=java
+-  elif [[ (-n "$JAVA_HOME") && (-x "$JAVA_HOME/bin/java") ]]
+-  then
+-    java_cmd="$JAVA_HOME/bin/java"
+-  fi
+-  local IFS=$'\n'
+-  # remove \r for Cygwin
+-  local lines=$("$java_cmd" -Xms32M -Xmx32M -version 2>&1 | tr '\r' '\n')
+-  if [[ -z $java_cmd ]]
+-  then
+-    result=no_java
+-  else
+-    for line in $lines; do
+-      if [[ (-z $result) && ($line = *"version \""*) ]]
+-      then
+-        local ver=$(echo $line | sed -e 's/.*version "\(.*\)"\(.*\)/\1/; 1q')
+-        # on macOS, sed doesn't support '?'
+-        if [[ $ver = "1."* ]]
+-        then
+-          result=$(echo $ver | sed -e 's/1\.\([0-9]*\)\(.*\)/\1/; 1q')
+-        else
+-          result=$(echo $ver | sed -e 's/\([0-9]*\)\(.*\)/\1/; 1q')
+-        fi
+-      fi
+-    done
+-  fi
+-  echo "$result"
+-}
+-
+-Status=1
+-echo
+-echo "[EN] Checking for dependencies..."
+-echo "[TR] Bagimliliklar kontrol ediliyor..."
+-echo 
+-
+-java_ver="$(jdk_version)"
+-if [[ $java_ver -lt "7" ]]
+-then
+-	echo "(x) Java version: $java_ver < 7"
+-	Status=0
+-else
+-	echo "(.) Java version: $java_ver"
+-fi
+-
+-
+-
+-
+-set libpcsclite1 pcscd libccid
+-for A; do
+-    dpkg -s "$A" >/dev/null 2>&1 && {
+-        echo "(.) $A"
+-    } || {
+-        echo "(x) $A"
+-        Status=0
+-    }
+-done
+-
+-echo 
+-
+-if [ "$Status" -eq "1" ]
+-then
+-    echo "[EN] Dependencies are OK"
+-    echo "[TR] Bagimliliklar TAMAM"
+-    echo
+-
+-
+-    java -jar /usr/share/akis/akia.jar
+-	
+-else
+-    echo "[EN] WARNING : Some dependencies not found !"
+-    echo "[TR] UYARI : Bazi bagimliliklar bulunamadi !"
+-
+-fi
+-
+-echo
+-
+-
+-
+-
+-
+-
++#!/bin/sh
++java -jar /usr/share/akis/akia.jar
