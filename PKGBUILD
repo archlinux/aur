@@ -3,7 +3,7 @@
 _pkgname=flake8-annotations-complexity
 pkgname=python-$_pkgname
 
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="flake8 plugin to validate annotations complexity"
 
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python')
 
 source=("https://github.com/best-doctor/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('47f3b86e713f6d9e07a93fcb4faac2b371d6b1bf65a709468d3c7e96e764a893b22c7a5321736f40ff827c94bb964677f662de873abb8ac63c1e2361206ef87c')
+sha512sums=('41a441d669f7db9fd329f5d537b079e882a61df0f6761861f99bebd6d68a0e93a1247201d29df34dee5563cd6aba735d87387424d81675c28dadd7b9813b0926')
 
 package() {
     cd "$_pkgname-$pkgver"
