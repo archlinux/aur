@@ -20,7 +20,7 @@ source=(git+https://github.com/lubosz/radiotray.git#commit=0303ad6017a9a81caa71d
         radiotray-gi.patch::https://github.com/lubosz/radiotray/pull/16.patch)
 
 b2sums=('SKIP'
-        'b710bcc453a41c09b74a827209b9931932d57efadfa7d4bb17cd01dcce6d41e4859b338d8a981830fcdbac0162206ee11c4866ff409e47b58234fb13e2b0294b')
+        'e1944018119584495d480b74e745fb1ddd8d2e6c33d72b8f185bda406b680331e71549259ae7c2f3dd5c93631c2f3156df75d95376d00c07c4f40cfe6d48b81e')
 
 prepare() {
     cd $pkgname
