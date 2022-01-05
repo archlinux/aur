@@ -5,7 +5,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible.'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -95,6 +95,7 @@ package() {
   done
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/index2.html" "${pkgdir}/usr/lib/${_pkgname}/universalpaperclips.html"
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/index.html"  "${pkgdir}/usr/lib/${_pkgname}/start.html"
+  ln -srv "${pkgdir}/usr/lib/${_pkgname}/mobile-title.png" "${pkgdir}/usr/lib/${_pkgname}/universalpaperclips.png"
 
   install -D -v -m755 'universalpaperclips.sh' "${pkgdir}/usr/bin/universalpaperclips"
 
