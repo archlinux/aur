@@ -1,28 +1,23 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Maintainer: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=nodejs-chalk
-_pkgname=${pkgname#*-}
-pkgver=4.1.0
+_pkgname=chalk
+pkgver=5.0.0
 pkgrel=2
 pkgdesc='Terminal string styling done right.'
 arch=('any')
 url='https://github.com/chalk/chalk'
 license=('MIT')
-depends=('nodejs' 'nodejs-ansi-styles' 'nodejs-supports-color')
+depends=('nodejs')
 makedepends=('npm')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/chalk/$_pkgname/archive/v$pkgver.tar.gz")
-noextract=("$_pkgname-$pkgver.tar.gz")
-sha256sums=('3ce085943ea0bdaa5829c43c85e224004c36dd11f8823f2828a1f869493b5168')
+source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
+noextract=("${_pkgname}-${pkgver}.tgz")
+sha256sums=('adf72284973550f25f782e73034a26dd6026dd52c542555db82e2c25b249b269')
 
 package() {
-    cd "$srcdir"
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
 
-    npm install --user root --global --prefix "$pkgdir/usr" \
-        "$_pkgname-$pkgver.tar.gz"
-
-    install -Dm644 \
-        "$pkgdir/usr/lib/node_modules/$_pkgname/license" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "${pkgdir}"
 }
-
