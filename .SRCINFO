@@ -1,13 +1,13 @@
 pkgbase = pcem-git
 	pkgdesc = Emulator for various IBM PC computers and clones - development version
-	pkgver = r1785.78d0618
+	pkgver = r1790.30ca71f
 	pkgrel = 1
 	url = http://pcem-emulator.co.uk/
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	makedepends = git
-	makedepends = automake
+	makedepends = cmake
 	depends = wxgtk2
 	depends = openal
 	depends = sdl2
