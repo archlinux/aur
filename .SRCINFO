@@ -1,5 +1,6 @@
 pkgbase = scrap_engine-git
-	pkgver = 1.0.0
+	pkgdesc = Python scrap_engine module
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/scrap_engine
 	arch = any
@@ -8,16 +9,8 @@ pkgbase = scrap_engine-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	provides = python-scrap_engine
 	source = scrap_engine-git::git+https://github.com/lxgr-linux/scrap_engine
 	md5sums = SKIP
 
 pkgname = python-scrap_engine-git
-	pkgdesc = Python scrap_engine module
-	depends = python
-	provides = python-scrap_engine
-
-pkgname = lil_t-git
-	pkgdesc = Experimantal jump and run game written in python3
-	depends = python
-	depends = python-scrap_engine-git
-	provides = lil_t
