@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2180.93836301
+pkgver=r2241.924b92f6
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -23,6 +23,9 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}/"
+    
+    # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/156
+    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
 
     # Fetch submodules by default (such as Crunch and Daemonmap, they are compiled if present)
     git submodule update --init --recursive
