@@ -66,8 +66,24 @@ sha256sums_armv7h=("${sha256sums_armv7[@]}")
 noextract=()
 validpgpkeys=()
 
-package() {
-    install -Dm755 "dt-cli-v$pkgver-$arch" "$pkgdir/usr/bin/dt-cli"
+## Packaging
+package_x86_64() {
+    install -Dm755 "dt-cli-v$pkgver-x86_64" "$pkgdir/usr/bin/dt-cli"
+    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
+    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
+}
+package_aarch64() {
+    install -Dm755 "dt-cli-v$pkgver-aarch64" "$pkgdir/usr/bin/dt-cli"
+    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
+    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
+}
+package_armv7h() {
+    install -Dm755 "dt-cli-v$pkgver-armv7" "$pkgdir/usr/bin/dt-cli"
+    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
+    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
+}
+package_armv7l() {
+    install -Dm755 "dt-cli-v$pkgver-armv7" "$pkgdir/usr/bin/dt-cli"
     install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/dt/LICENSE-APACHE"
     install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/dt/LICENSE-MIT"
 }
