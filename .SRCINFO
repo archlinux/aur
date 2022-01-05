@@ -1,0 +1,19 @@
+pkgbase = chaosblade-bin
+	pkgdesc = Chaosblade: An Easy to Use and Powerful Chaos Engineering Toolkit
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/chaosblade-io/chaosblade
+	arch = any
+	license = Apache-2.0
+	makedepends = libarchive
+	depends = go
+	depends = docker
+	provides = chaosblade-bin
+	conflicts = chaosblade
+	conflicts = chaosblade-git
+	noextract = chaosblade-1.5.0.tar.gz
+	options = !strip
+	source = chaosblade-1.5.0.tar.gz::https://ghproxy.com/https://github.com/chaosblade-io/chaosblade/releases/download/v1.5.0/chaosblade-1.5.0-linux-amd64.tar.gz
+	sha256sums = b5ad725289ee8919d30a0afe03182ef16f45f7dc756ea24887721f735c4e1e99
+
+pkgname = chaosblade-bin
