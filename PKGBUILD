@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 # Contributor: Samuel Williams <samuel.williams@oriontransfer.co.nz>
 pkgname=scotch
-pkgver=6.1.2
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
@@ -12,7 +12,7 @@ provides=('ptscotch' 'ptscotch-openmpi' 'scotch_esmumps' 'scotch_ptesmumps')
 conflicts=('ptscotch-openmpi' 'scotch_esmumps' 'scotch_esmumps5')
 arch=('i686' 'x86_64')
 source=("https://gitlab.inria.fr/scotch/scotch/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('9c2c75c75f716914a2bd1c15dffac0e29a2f8069b2df1ad2b6207c984b699450')
+sha256sums=('ef231bfd66778c27716db571c9f24449ee7fc2710e59cee224c94592cd956040')
 
 options=(!emptydirs)
 
@@ -45,11 +45,11 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}/src"
  
+  # avoid SIGABRT in dgord, https://stackoverflow.com/questions/38269659
+  sed -i "s/-DSCOTCH_PTHREAD/-DSCOTCH_PTHREAD_MPI/" Makefile.inc
+
   make scotch
   make -j1 esmumps
-
-  # MPI implementation is not thread-safe: compile the parallel versions without SCOTCH_PTHREAD
-  sed -i "s/-DSCOTCH_PTHREAD//" Makefile.inc
 
   make ptscotch
   make -j1 ptesmumps
@@ -58,6 +58,9 @@ build() {
 check() {
   cd "${srcdir}/${pkgname}-v${pkgver}/src"
  
+  if [ -z $(ldconfig -p | grep libcuda.so.1) ]; then
+    export OMPI_MCA_opal_warn_on_missing_libcuda=0
+  fi
   make check FC=gfortran LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
   make ptcheck FC=gfortran LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
 }
