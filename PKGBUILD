@@ -1,9 +1,9 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer
-pkgver=2.3.57.8
+pkgver=2.3.57.9
 _pkgtag=$pkgver
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
@@ -19,7 +19,7 @@ source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
         "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch"
         "tbb-2021.patch"
         "FindTBB.cmake")
-sha512sums=('b5d6b59308bc5ed70ccbfe6c4414b43cf9a081aa7591055ebf568842cb44dcaa0fe17e1e7a908dea99695067d569060961bee31d9f30993449bcc7175764f26d'
+sha512sums=('bf421afa55ad7d1c3eafa8dc15efb20ab463e21b78f5e03d188f68d018a7b32cd24c2163974d90eff80e1ebb39a669b3e877a614e1040bc31c7160cca7ffc554'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98'
             'b8425f6d0402042f73891d21d1be370d0afc3a156f8366da5d1cd73aeb197347dbe59a544b95b1aa40b2a3e28c520ac410fa4f92aa99822c0cb8b41b595d6519'
