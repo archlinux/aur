@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=wk
-_cranver=0.5.0
+_cranver=0.6.0
 pkgname=r-${_cranname,,}
 pkgdesc="Lightweight Well-Known Geometry Parsing"
 url="https://cran.r-project.org/package=wk"
@@ -15,7 +15,7 @@ optdepends=("r-testthat" "r-vctrs" "r-sf" "r-tibble")
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=("cace3cbcc515f9df709bb57233a83541")
+md5sums=("51cf1c60f384c57b7b90cc46d3bb182e")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
