@@ -2,7 +2,7 @@
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
 pkgname=python-readchar
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to read characters and key strokes"
 arch=("any")
 url="https://github.com/magmax/python-readchar"

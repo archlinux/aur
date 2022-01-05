@@ -1,7 +1,7 @@
 pkgbase = python-readchar
 	pkgdesc = Python library to read characters and key strokes
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magmax/python-readchar
 	arch = any
 	license = MIT
