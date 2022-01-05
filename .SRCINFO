@@ -1,0 +1,15 @@
+pkgbase = cli-pride-flags
+	pkgdesc = Displays pride flags in your terminal~
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ExperiBass/cli-pride-flags
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs-chalk
+	depends = nodejs
+	noextract = cli-pride-flags-1.0.2.tgz
+	source = https://registry.npmjs.org/cli-pride-flags/-/cli-pride-flags-1.0.2.tgz
+	sha256sums = cf5950447e57760ec0375eac3f98afd96258e0b48f6ffff043239351d97c1c35
+
+pkgname = cli-pride-flags
