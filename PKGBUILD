@@ -2,7 +2,7 @@
 
 pkgname=libpdfium-nojs
 pkgver=4692.r0.31722577db
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -80,6 +80,9 @@ prepare() {
   curl https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT \
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
+  
+  # Create fake gclient_args.gni file to satisfy include list for build/config/compiler/compiler.gni
+  # touch "$srcdir/build/config/gclient_args.gni"
   
   # Exclude test fonts from build
   cd "$srcdir/pdfium/testing/"
