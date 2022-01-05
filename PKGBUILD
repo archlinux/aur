@@ -1,17 +1,19 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 _pkgname=httpx
-pkgname=python-httpx
+pkgname=python-httpx0.13
 pkgver=0.13.3
-pkgrel=5
-pkgdesc="A next generation HTTP client for Python"
+pkgrel=1
+pkgdesc="A next generation HTTP client for Python (version 0.13)"
 arch=('any')
 url="https://github.com/encode/${_pkgname}"
 license=('BSD')
-depends=('python-chardet' 'python-hstspreload' 'python-httpcore' 'python-idna' 'python-rfc3986' 'python-sniffio')
+depends=('python-chardet' 'python-hstspreload' 'python-httpcore<0.11' 'python-idna' 'python-rfc3986' 'python-sniffio')
 optdepends=('python-brotli: for brotli response decompression')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-asyncio' 'python-pytest-trio' 'python-brotli' 'python-trustme' 'uvicorn')
+provides=("python-httpx=${pkgver}")
+conflicts=('python-httpx')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "0001-Do-not-override-the-system-SSL-certificates-with-the.patch")
 sha512sums=('54cdee16e8253c221c3298817ccf63a4a0d6755a86feea2aa5a2efe9af44eb1eb0a578b21f593fe28fceace17b0a0badb52a66965c35bf456ea57dd3b905ebbe'
