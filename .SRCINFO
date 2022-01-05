@@ -1,22 +1,21 @@
 pkgbase = python-sphinxcontrib-napoleon
 	pkgdesc = Sphinx "napoleon" extension.
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sphinxcontrib-napoleon.readthedocs.io
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-napoleon/sphinxcontrib-napoleon-0.7.tar.gz
+	source = python310.patch
 	sha256sums = 407382beed396e9f2d7f3043fad6afda95719204a1e1a231ac865f40abcbfcf8
+	sha256sums = dd51ef321c6a19c774c9c3683847e30991a2fb9d69e12ca7b223e4a188022923
 
 pkgname = python-sphinxcontrib-napoleon
 	depends = python
-	depends = python-sphinx
 	depends = python-pockets
 
 pkgname = python2-sphinxcontrib-napoleon
 	depends = python2
-	depends = python2-sphinx
 	depends = python2-pockets
-
