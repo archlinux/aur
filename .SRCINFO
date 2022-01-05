@@ -1,0 +1,16 @@
+pkgbase = python-pykerberos-git
+	pkgdesc = High-level interface to Kerberos
+	pkgver = 1.2.1.r7.g293be8f
+	pkgrel = 1
+	url = https://github.com/02strich/pykerberos
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = krb5
+	provides = python-pykerberos
+	conflicts = python-pykerberos
+	source = python-pykerberos::git+https://github.com/02strich/pykerberos.git
+	md5sums = SKIP
+
+pkgname = python-pykerberos-git
