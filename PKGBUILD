@@ -4,12 +4,12 @@
 
 pkgname=powershell-bin
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
 arch=('x86_64')
 url='https://github.com/Powershell/Powershell'
 license=('MIT')
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
+depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'icu')
 provides=('powershell')
 conflicts=('powershell')
 options=(staticlibs !strip)
