@@ -1,15 +1,16 @@
 pkgbase = ptouch-print
 	pkgdesc = Command line tool to print labels on Brother P-Touch printers
-	pkgver = 1.4.3
-	pkgrel = 2
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://familie-radermacher.ch/dominic/projekte/ptouch-print/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	depends = gd
 	depends = libusb
 	provides = ptouch-print
-	source = git+https://familie-radermacher.ch/cgi/cgit/linux/ptouch-print.git#commit=32c0d3be29f9eebb5d0e48f4f998da83b0c2ff3c
+	source = git+https://familie-radermacher.ch/cgi/cgit/linux/ptouch-print.git#tag=v1.5
 	sha256sums = SKIP
 
 pkgname = ptouch-print
