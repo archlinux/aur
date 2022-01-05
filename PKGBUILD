@@ -10,7 +10,7 @@ pkgver=0.9.0.r48.g970a0b414
 pkgrel=1
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 makedepends=("go>=2:1.14.4-1" git)
 optdepends=('fuse2: for mounting/advanced use'
