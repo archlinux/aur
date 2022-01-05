@@ -2,17 +2,17 @@
 
 pkgname='python-defopt-git'
 _module='defopt'
-pkgver=6.2.0.post3+g7564ecf
+pkgver=6.2.0.post4+g18e7057
 pkgrel=1
 pkgdesc="Effortless argument parser"
 arch=('any')
 url="https://github.com/anntzer/defopt"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-sphinxcontrib-napoleon')
 makedepends=('python-setuptools' 'python-wheel' 'git')
 provides=('python-defopt')
 conflicts=('python-defopt')
-source=("git+https://github.com/anntzer/defopt.git#branch=vendor-napoleon")
+source=("git+https://github.com/anntzer/defopt.git")
 sha256sums=('SKIP')
 
 pkgver() {

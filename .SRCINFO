@@ -1,6 +1,6 @@
 pkgbase = python-defopt-git
 	pkgdesc = Effortless argument parser
-	pkgver = 6.2.0.post3+g7564ecf
+	pkgver = 6.2.0.post4+g18e7057
 	pkgrel = 1
 	url = https://github.com/anntzer/defopt
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = python-defopt-git
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
+	depends = python-sphinxcontrib-napoleon
 	provides = python-defopt
 	conflicts = python-defopt
-	source = git+https://github.com/anntzer/defopt.git#branch=vendor-napoleon
+	source = git+https://github.com/anntzer/defopt.git
 	sha256sums = SKIP
 
 pkgname = python-defopt-git
