@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/magmax/python-readchar"
 license=("MIT")
 depends=("python")
-makedepends=("python-setuptools" "flake8")
+makedepends=("python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/magmax/python-readchar/archive/v$pkgver.tar.gz"
         "LICENSE")
 md5sums=('827709aca051803b086f2b5d966fe61d'
@@ -17,6 +17,8 @@ md5sums=('827709aca051803b086f2b5d966fe61d'
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"
 
+    # Flake8 only required for tests
+    sed -i '/flake8/d' setup.py
     # Fix the tests getting included in the package
     sed -i' ' -e's/"tests"/"tests*"/' setup.py
 }

@@ -6,7 +6,6 @@ pkgbase = python-readchar
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = flake8
 	depends = python
 	source = python-readchar-3.0.5.tar.gz::https://github.com/magmax/python-readchar/archive/v3.0.5.tar.gz
 	source = LICENSE
