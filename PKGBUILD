@@ -37,13 +37,13 @@ source_aarch64=(
 # Sources are the same for armv7l and armv7h
 source_armv7l=(
     "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-armv7"
-    "${source_x86_64[1]}"
-    "${source_x86_64[2]}"
+    "${_license_base}-APACHE"
+    "${_license_base}-MIT"
 )
 source_armv7h=(
     "https://github.com/blurgyy/dt/releases/download/v$pkgver/dt-cli-v$pkgver-armv7"
-    "${source_x86_64[1]}"
-    "${source_x86_64[2]}"
+    "${_license_base}-APACHE"
+    "${_license_base}-MIT"
 )
 
 ## Checksums
