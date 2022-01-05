@@ -1,6 +1,6 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
 pkgname=smartreboot
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Reboot a machine without interrupting ongoing work."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("GPL3")
 depends=("glibc")
 makedepends=("go")
 source=("smartreboot-$pkgver.tar.gz"::"https://github.com/BrenekH/smartreboot/archive/$pkgver.tar.gz")
-sha256sums=('f10d40e34e68acec372b1674e5568cde6c5f925b8421d3a67ce6ffbc4b93c8ac')
+sha256sums=('820ab9754eaf5bf94f4dfa7051e9fb3994e7b4b09737ae4e043b77ea155e02e7')
 
 build() {
 	cd "smartreboot-$pkgver"
