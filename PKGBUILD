@@ -1,8 +1,8 @@
 # Maintainer: Gerald Wu <gerald at geraldwu dot com>
 
 pkgname=cdktf-cli
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc="Cloud Development Kit for Terraform"
 arch=('any')
 url="https://github.com/hashicorp/terraform-cdk"
@@ -12,7 +12,7 @@ makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
         "https://raw.githubusercontent.com/hashicorp/terraform-cdk/master/LICENSE")
-sha256sums=('4cc0d24a24c5c1ded68a8325dcdd3b57fd0af34531292d5ba2a794ae898ad1eb'
+sha256sums=('17d01467753f23a458139789bbfac11eb14a5456748482af506de34b887a085f'
             'a830016911a348a54e89bd54f2f8b0d8fffdeac20aecfba8e36ebbf38a03f5ff')
 
 package() {
