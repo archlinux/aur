@@ -2,7 +2,7 @@
 
 pkgname=porth-gitlab
 pkgver=0.01
-pkgrel=2
+pkgrel=3
 pkgdesc="[Unstable/W.I.P] It's like Forth but in Python."
 arch=('x86_64')
 url="https://gitlab.com/tsoding/porth.git"
