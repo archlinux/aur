@@ -8,7 +8,7 @@ pkgname="${_pkgname}"
 pkgver=3
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=9
+pkgrel=10
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible. (To enable mods, edit flags in `PKGBUILD`.)'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
@@ -39,6 +39,9 @@ source=(
   'universalpaperclips.sh'
   'universalpaperclips.desktop'
   'game.url'
+  'wikipedia.url'
+  'reddit.url'
+  'fandom.url'
   'license-dummy.txt'
 )
 sha256sums=(
@@ -61,6 +64,9 @@ sha256sums=(
   'a8855bbb7c292c69df530ce7385064c457152dc264b22d157b08798fb9370480' # universalpaperclips.sh
   '2b73b90be3611eade8da7067fc9f563fab9fe5d85d03cf7201cdc224afd379e3' # universalpaperclips.desktop
   'dff62c22c922d977afedf53fe2a16cc766e5c3778608ac05897100e4baa5dc0e' # game.url
+  '634e2a7d24697532904a1ec52a5d87b486f1f8055406c274394d7f220a64e9e7' # wikipedia.url
+  '1c7a15533d5c5d97a541de91eaa8b33e014ea70fcd512b662fd8b70ba9ebf74a' # reddit.url
+  'd95a022889ad1dbbf9175fc739c7a7e83b9396a83a28743d3904541e5f7376b7' # fandom.url
   '87a7e62b6e08f2491657fc8b0a0fe380a7dec3811e8d5ca36fe54d21f3548552' # license-dummy.txt
 )
 
@@ -128,7 +134,9 @@ package() {
 
   install -D -v -m644 'universalpaperclips.desktop' "${pkgdir}/usr/share/applications/universalpaperclips.desktop"
 
-  install -D -v -m644 'game.url' "${pkgdir}/usr/share/doc/${_pkgname}/game.url"
+  for _docfile in 'game.url' 'wikipedia.url' 'reddit.url' 'fandom.url'; do
+    install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
+  done
   install -D -v -m644 'license-dummy.txt' "${pkgdir}/usr/share/licenses/${pkgname}/license-dummy.txt"
   if "${_use_upc_uimod}"; then
     install -D -v -m644 'upc_uimod_LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/upc_uimod_LICENSE.MIT.txt"
