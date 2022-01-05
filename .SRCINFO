@@ -1,7 +1,7 @@
 pkgbase = ctpg-git
 	pkgdesc = Compile Time Parser Generator is a C++ single header library which takes a language description as a C++ code and turns it into a LR1 table parser with a deterministic finite automaton lexical analyzer, all in compile time.
-	pkgver = v1.3.6.r6.g383729d
-	pkgrel = 1
+	pkgver = v1.3.6.r7.gc9b9b44
+	pkgrel = 2
 	url = https://github.com/peter-winter/ctpg
 	arch = any
 	license = MIT
