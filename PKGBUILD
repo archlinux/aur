@@ -14,19 +14,19 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('5afb742beff8546c2773735fa2e5c592452b91afe3a4712dd230273cd83d7b94')
 
 prepare() {
-	cd "$_pkgname-$pkgver"
-	find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
+  cd "$_pkgname-$pkgver"
+  find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
 
-	sed -i 's/FOLDERS += coreaudioconnect/#FOLDERS += coreaudioconnect/g' \
-		components/encoder/Makefile
+  sed -i 's/FOLDERS += coreaudioconnect/#FOLDERS += coreaudioconnect/g' \
+    components/encoder/Makefile
 }
 
 build() {
-	cd "$_pkgname-$pkgver"
-	make
+  cd "$_pkgname-$pkgver"
+  make
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$_pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
