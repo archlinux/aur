@@ -1,0 +1,12 @@
+diff -ruN cmoc-0.1.73/src/stdlib/dskcon-standalone.c cmoc-0.1.73.new/src/stdlib/dskcon-standalone.c
+--- cmoc-0.1.73/src/stdlib/dskcon-standalone.c	2021-12-12 16:50:47.000000000 -0500
++++ cmoc-0.1.73.new/src/stdlib/dskcon-standalone.c	2022-01-04 18:07:29.528227777 -0500
+@@ -155,7 +155,7 @@
+ ;
+ ;
+ ; WAIT FOR THE 1793 TO BECOME UNBUSY. IF IT DOES NOT BECOME UNBUSY,
+-; FORCE AN INTERRUPT AND ISSUE A ‘DRIVE NOT READY’ 1793 ERROR.
++; FORCE AN INTERRUPT AND ISSUE A 'DRIVE NOT READY' 1793 ERROR.
+ LD7D1   LDX     #0      /* GET ZERO TO X REGISTER - LONG WAIT */
+ LD7D3   LEAX    -1,X    /* DECREMENT LONG WAIT COUNTER */
+         BEQ     LD7DF   /* IF NOT READY BY NOW, FORCE INTERRUPT */
