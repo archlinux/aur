@@ -1,30 +1,35 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=python-grandalf
+_pkgname=${pkgname#python-}
 pkgver=0.7
-pkgrel=2
-pkgdesc="Python package made for experimentations with graphs drawing algorithms.."
-arch=('any')
-license=('custom:MIT')
-url="https://github.com/bdcht/grandalf"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+pkgrel=3
+pkgdesc='graph and drawing algorithms framework'
+arch=(any)
+url="https://github.com/bdcht/$_pkgname"
+license=(MIT)
+depends=(python
+         python-ply)
+makedepends=(python-setuptools)
+checkdepends=(python-pytest
+              python-pytest-runner)
+_archive="$_pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('b3112299fe0a9123c088a16bf2f1b541d0d91199b77170a9739b569bd16a828e')
-makedepends=('python-setuptools')
-depends=('python-ply' 'python')
-checkdepends=('python-pytest')
 
 build() {
-  cd ${pkgname#python-}-$pkgver
-  python setup.py build
+	cd "$_archive"
+	python setup.py build
 }
 
 check() {
-  cd ${pkgname#python-}-$pkgver
-  python setup.py check
+	cd "$_archive"
+	python setup.py pytest
 }
 
 package() {
-  cd ${pkgname#python-}-$pkgver
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }

@@ -1,15 +1,16 @@
 pkgbase = python-grandalf
-	pkgdesc = Python package made for experimentations with graphs drawing algorithms..
+	pkgdesc = graph and drawing algorithms framework
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bdcht/grandalf
 	arch = any
-	license = custom:MIT
+	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
-	depends = python-ply
 	depends = python
-	source = python-grandalf-0.7.tar.gz::https://github.com/bdcht/grandalf/archive/v0.7.tar.gz
+	depends = python-ply
+	source = https://github.com/bdcht/grandalf/archive/v0.7/grandalf-0.7.tar.gz
 	sha256sums = b3112299fe0a9123c088a16bf2f1b541d0d91199b77170a9739b569bd16a828e
 
 pkgname = python-grandalf
