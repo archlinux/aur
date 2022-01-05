@@ -1,7 +1,7 @@
 #Maintainer: solisinvictum https://github.com/solisinvictum/borgrestore
 pkgname="borgrestore"
-pkgver="0.1"
-pkgrel="0.1"
+pkgver="0.2"
+pkgrel="0.2"
 pkgdesc="Puts the system in exactly the same state as it is in a Borg snapshot."
 arch=("any")
 source=("git+https://github.com/solisinvictum/borgrestore.git")

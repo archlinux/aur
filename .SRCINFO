@@ -1,7 +1,7 @@
 pkgbase = borgrestore
 	pkgdesc = Puts the system in exactly the same state as it is in a Borg snapshot.
-	pkgver = 0.1
-	pkgrel = 0.1
+	pkgver = 0.2
+	pkgrel = 0.2
 	arch = any
 	depends = git
 	depends = borg
