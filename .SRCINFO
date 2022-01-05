@@ -1,21 +1,18 @@
 pkgbase = nanogui-git
-	pkgdesc = NanoGUI is a minimalistic cross-platform widget library for OpenGL 3.x or higher.
+	pkgdesc = A minimalistic cross-platform widget library for OpenGL 3+, GLES 2/3, and Metal
 	pkgver = r344.f9c3b7a
 	pkgrel = 1
-	url = https://github.com/wjakob/nanogui
+	url = https://github.com/mitsuba-renderer/nanogui
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
-	depends = eigen
 	depends = glfw
-	depends = nanovg
-	depends = pybind11
+	depends = python
 	provides = nanogui
 	conflicts = nanogui
-	source = nanogui::git+https://github.com/wjakob/nanogui
+	source = nanogui::git+https://github.com/mitsuba-renderer/nanogui
 	md5sums = SKIP
 
 pkgname = nanogui-git
-
