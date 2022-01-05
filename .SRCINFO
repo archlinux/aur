@@ -1,0 +1,13 @@
+pkgbase = borgrestore
+	pkgdesc = Puts the system in exactly the same state as it is in a Borg snapshot.
+	pkgver = 0.1
+	pkgrel = 0.1
+	arch = any
+	depends = git
+	depends = borg
+	depends = python-llfuse
+	optdepends = vorta: a nice Borg GUI
+	source = git+https://github.com/solisinvictum/borgrestore.git
+	sha512sums = SKIP
+
+pkgname = borgrestore
