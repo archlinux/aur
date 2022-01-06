@@ -1,6 +1,6 @@
 pkgbase = melvor-mod-manager
 	pkgdesc = Melvor Mod Manager (M3) allows you to quickly add userscripts and browser extensions as mods to the Steam edition of Melvor Idle.
-	pkgver = 0.3.8
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/CherryMace/melvor-mod-manager
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = melvor-mod-manager
 	makedepends = nodejs
 	source = melvor-mod-manager.desktop
 	source = melvor-mod-manager.png
-	source = git+https://github.com/CherryMace/melvor-mod-manager#tag=v0.3.8
+	source = git+https://github.com/CherryMace/melvor-mod-manager#tag=v0.4.0
 	sha256sums = 5384e70639166be6834632e66b0f45dddb1421cb1ec25be4b0706a482f047c75
 	sha256sums = 793cbb7b7f09e82d04fffe6fd23a4089d712d8d5aec2be71b183e9c1a4e18310
 	sha256sums = SKIP

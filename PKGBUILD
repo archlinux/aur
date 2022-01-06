@@ -1,7 +1,7 @@
 # Maintainer: Erin Allison <erin@eallison.us>
 
 pkgname=melvor-mod-manager
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Melvor Mod Manager (M3) allows you to quickly add userscripts and browser extensions as mods to the Steam edition of Melvor Idle.'
 arch=('x86_64')
