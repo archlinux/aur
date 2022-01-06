@@ -1,0 +1,23 @@
+pkgbase = neovim-substrata-git
+	pkgdesc = Cold, dark theme ported to Lua
+	pkgver = r40.e1362be
+	pkgrel = 1
+	url = https://github.com/kvrohit/substrata.nvim
+	arch = any
+	license = unknown
+	makedepends = git
+	source = neovim-substrata-git::git+https://github.com/kvrohit/substrata.nvim
+	md5sums = SKIP
+
+pkgname = neovim-substrata-git
+	install = substrata.install
+	groups = neovim-plugins
+	depends = neovim
+	provides = neovim-substrata
+	conflicts = neovim-substrata
+	conflicts = vim-substrata
+
+pkgname = neovim-substrata-extras-git
+	pkgdesc = extras theme templates for substrata
+	provides = neovim-substrata-extras
+	conflicts = neovim-substrata-extras
