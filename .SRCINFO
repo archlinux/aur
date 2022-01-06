@@ -1,7 +1,7 @@
 pkgbase = likwid
 	pkgdesc = Lightweight performance tools
-	pkgver = 5.0.1
-	pkgrel = 2
+	pkgver = 5.2.1
+	pkgrel = 1
 	url = https://github.com/RRZE-HPC/likwid
 	arch = x86_64
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = likwid
 	optdepends = perl: for likwid-mpirun and likwid-perfscope
 	optdepends = openmpi: for likwid-mpirun
 	optdepends = gnuplot: for likwid-perfscope
-	source = https://github.com/RRZE-HPC/likwid/archive/v5.0.1.tar.gz
-	md5sums = c40419aa18b92f50ca4b5403ef4d8f26
+	source = https://github.com/RRZE-HPC/likwid/archive/v5.2.1.tar.gz
+	md5sums = 26f246d6372b332ced4dc2995003c00e
 
 pkgname = likwid
-

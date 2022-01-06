@@ -1,7 +1,7 @@
-# Maintainer: Steven Vancoillie <steven<dot>vancoillie[at]gmail[dot]com>
+# Maintainer: Holger Obermaier <holgerob[at]gmx[dot]de>
 pkgname=likwid
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.2.1
+pkgrel=1
 pkgdesc="Lightweight performance tools"
 url="https://github.com/RRZE-HPC/likwid"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('perl: for likwid-mpirun and likwid-perfscope'
             'gnuplot: for likwid-perfscope')
 conflicts=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('c40419aa18b92f50ca4b5403ef4d8f26')
+md5sums=('26f246d6372b332ced4dc2995003c00e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
