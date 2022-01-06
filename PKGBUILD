@@ -3,7 +3,7 @@ _srcname=ArknightsAutoHelper
 _pkgname=akhelper
 pkgname=$_pkgname-git
 pkgver=r911.fcf089e
-pkgrel=4
+pkgrel=5
 pkgdesc='Arknights Auto Helper based on ADB and Python | 基于python的明日方舟护肝助手'
 arch=(x86_64)
 url=https://github.com/ninthDevilHAUNSTER/ArknightsAutoHelper
@@ -24,7 +24,7 @@ source=(git+https://github.com/ninthDevilHAUNSTER/ArknightsAutoHelper
 sha512sums=(SKIP
   6712dd3bf83ff90f521effc671fb607f035cebf1b9dc7b31f3edaa013459a51e23c5aee869313b5352fcf14e72ce20b55c025c3338aa4a7937d6125aff72f1d0
   2afe415a28cf8bc795bd395b45878eeab7341e64347b915850d155fdf68e09066fe443fe15a8c840649d15f6c2d491a96813508ea366f023292af555c4345f26
-  74ce993b144dd81e2b47275104565f2b0af5b3cc8478b3f29367ddf6a34303a4ae38971a5bc983ff6ddc78d172083e3fe105e65d5c23450054288aa77aa3d3ec
+  f13d60c6e05785e5f18f6b3e37843ed457e8da628ad294bec9e34e83856a6b1fc2b5d69632be4e55b4ef988cbfe43c08cabc13213cb8ecb035fb8bdcc86ed29a
 )
 pkgver() {
   cd $_srcname
