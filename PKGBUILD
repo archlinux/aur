@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.15.0.r9.g9988eb33
+pkgver=0.16.0.r35.49c9a5f
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
@@ -34,21 +34,24 @@ makedepends=(
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
-
-build () {
+prepare () {
 	arch-meson \
 		--buildtype=debug \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
+}
+
+pkgver () {
+	(
+		set -o pipefail
+		meson introspect --projectinfo build \
+			| awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
+		printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
+build () {
 	meson compile -C build
 }
 
