@@ -16,18 +16,18 @@ source=("git+https://github.com/PizzaLovingNerd/ice.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	git describe --tags | sed 's/^v//;s/-/+/g'
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-	cd "$srcdir/$pkgname"
-	sed -i 's/brave-browser/brave/g' "usr/bin/$pkgname"
-	sed -i 's/google-chrome/google-chrome-stable/g' "usr/bin/$pkgname"
-	sed -i 's/chromium-browser/chromium/g' "usr/bin/$pkgname"
+  cd "$srcdir/$pkgname"
+  sed -i 's/brave-browser/brave/g' "usr/bin/$pkgname"
+  sed -i 's/google-chrome/google-chrome-stable/g' "usr/bin/$pkgname"
+  sed -i 's/chromium-browser/chromium/g' "usr/bin/$pkgname"
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	cp -r usr "$pkgdir"
+  cd "$srcdir/$pkgname"
+  cp -r usr "$pkgdir"
 }
