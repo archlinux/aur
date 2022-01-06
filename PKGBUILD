@@ -1,35 +1,50 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=doctave
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A batteries-included developer documentation site generator"
 arch=('x86_64')
 url="https://www.doctave.com"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Doctave/doctave/archive/$pkgver.tar.gz")
-sha512sums=('061535f623dd7780589b7837dfc8d6bbdae8fb961baa4a6a0a1a4f1a7cf6be85c089852d8bf04433b485567d7e90ee9045dccb35dffcb729df5dda0d05295532')
-b2sums=('2d9d2fdb738f768e2b25b27c94b4510a0c86bf0bcd3b5d08f6fa9b90af6889e9f91efd7e27a844ccc25603ea74d59495d5d5681cc9f5c86461a6de80cbcba5ea')
+makedepends=('git' 'rust')
+_commit='bde7764bdbc66acc0db726126332db440959a492'
+source=(
+  "$pkgname::git+https://github.com/Doctave/doctave.git#commit=$_commit"
+  'Cargo.lock'
+)
+sha512sums=('SKIP'
+            'cad78f16b0d1b05f03b1e3ef3cf2bfa2ba5095d0850ca424e4bc7e946a0fa8656c835224101c05b5a13bf23767351699f6988a9e53ebd6ab1a16a1228c23950d')
+b2sums=('SKIP'
+        '5a981b59020045aff81ab12c396478546dbada470e09ecf908f046cbd9792e9ac26d59f273768ea46a5bb36db136860ac756e956916822143da8ca246e375a79')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags
+}
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
+
+  cp -vf ../Cargo.lock .
+
+  # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  cargo build --frozen --release --all-features
+  cd "$pkgname"
+  cargo build --frozen --release 
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  cargo test --frozen --all-features
+  cd "$pkgname"
+  cargo test --frozen 
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" target/release/doctave

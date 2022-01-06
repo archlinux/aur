@@ -1,14 +1,18 @@
 pkgbase = doctave
 	pkgdesc = A batteries-included developer documentation site generator
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://www.doctave.com
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	source = doctave-0.4.0.tar.gz::https://github.com/Doctave/doctave/archive/0.4.0.tar.gz
-	sha512sums = 061535f623dd7780589b7837dfc8d6bbdae8fb961baa4a6a0a1a4f1a7cf6be85c089852d8bf04433b485567d7e90ee9045dccb35dffcb729df5dda0d05295532
-	b2sums = 2d9d2fdb738f768e2b25b27c94b4510a0c86bf0bcd3b5d08f6fa9b90af6889e9f91efd7e27a844ccc25603ea74d59495d5d5681cc9f5c86461a6de80cbcba5ea
+	source = doctave::git+https://github.com/Doctave/doctave.git#commit=bde7764bdbc66acc0db726126332db440959a492
+	source = Cargo.lock
+	sha512sums = SKIP
+	sha512sums = cad78f16b0d1b05f03b1e3ef3cf2bfa2ba5095d0850ca424e4bc7e946a0fa8656c835224101c05b5a13bf23767351699f6988a9e53ebd6ab1a16a1228c23950d
+	b2sums = SKIP
+	b2sums = 5a981b59020045aff81ab12c396478546dbada470e09ecf908f046cbd9792e9ac26d59f273768ea46a5bb36db136860ac756e956916822143da8ca246e375a79
 
 pkgname = doctave
