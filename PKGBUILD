@@ -11,6 +11,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('fa214c3b7e2ea9f211de801c625daa91f9fad7e53b949c1cb75f8cfdd628205d')
 
 package() {
-	cd "$pkgname-$pkgver"
-	cp -r usr "$pkgdir"
+  cd "$pkgname-$pkgver"
+  cp -r usr "$pkgdir"
 }
