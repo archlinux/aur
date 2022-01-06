@@ -5,6 +5,7 @@ pkgbase = lswt
 	url = https://sr.ht/~leon_plickat/lswt
 	arch = x86_64
 	license = GPL3
+	depends = wayland
 	conflicts = lswt-git
 	source = https://git.sr.ht/~leon_plickat/lswt/archive/v1.0.2.tar.gz
 	sha256sums = 28810c124c0d017ffe41e4b91461a07692aa12a3cd49261c3297dfb0dcf2f4cf
