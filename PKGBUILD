@@ -42,6 +42,5 @@ package() {
   export USE_ENV_PYTHON=1
   export GIT_COLA_NO_PRIVATE_LIBS=1
   export GIT_COLA_NO_VENDOR_LIBS=1
-  export PYTHONHASHSEED=0
   make prefix=/usr DESTDIR="$pkgdir" install{,-doc,-man}
 }
