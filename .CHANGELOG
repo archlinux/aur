@@ -1,6 +1,27 @@
 Version history
 ===============
 
+0.9.41
+------
+
+2022-01-06
+
+Support tags in level files to help organize the multiplayer levels. Levels
+can contain zero or more tags, one per line. Edit tags with a text editor; we
+can work towards better editing support in Lix itself in the future. Example:
+$TAG mytag
+
+The editor loads and saves tags, but doesn't yet display them anywhere and
+doesn't offer to edit them. The level browsers don't print tags anywhere
+either yet.
+
+The level search (in the singleplayer or multiplayer browser) will find
+tags, but you have to enter the exact tag completely. Half-words that
+appear inside tags do not find that tag. (I'm not yet sure if this behavior
+is best; we can change it.)
+
+
+
 0.9.40
 ------
 

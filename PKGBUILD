@@ -1,13 +1,14 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor: Carl Reinke <mindless2112 gmail com>
-# shellcheck disable=SC2034,2154,2148
+# shellcheck shell=bash
+# shellcheck disable=2034,2154
 
 pkgname=lix
-pkgver=0.9.40
+pkgver=0.9.41
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
-sha512sums=('26312fa3e1e2578f848769a446a4b0d59fdbd566cef87c8889a5f6ffb67192a60fb2f9285d03d7bd502e39b7882e87210e24a71ab07a6d9ede891bccce458cb1')
+sha512sums=('bfe3eff094a88a03f64ff10bdc24ecfce99201273ebe54c022131290aa5814b477602d1eb3dabc3e730353808031a687f276a8c5a4aaaaff0ecaeccec76b512e')
 
 _gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
