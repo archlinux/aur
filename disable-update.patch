@@ -1,0 +1,10 @@
+--- appSettings.json	2021-12-16 15:24:06.000000000 +0100
++++ appSettingsUpdated.json	2022-01-06 18:16:40.873765943 +0100
+@@ -15,6 +15,6 @@
+         "UseDeferredRendering": null
+     },
+     "Updates": {
+-        "Disable": false
++        "Disable": true
+     }
+ }
