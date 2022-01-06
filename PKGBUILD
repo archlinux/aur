@@ -13,14 +13,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ImEditor/ImEditor/archive/$
 sha256sums=('d067c356493bd36d88d4074498399bb42a1a49d819f0699c886c8a8e2e125921')
 
 build() {
-	arch-meson ImEditor-$pkgver build
-	meson compile -C build
+  arch-meson ImEditor-$pkgver build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
