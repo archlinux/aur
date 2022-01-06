@@ -15,7 +15,8 @@ url='http://www.aseprite.org/'
 license=('BSD' 'custom')
 depends=('curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'libxcursor' 'fontconfig' 'hicolor-icon-theme')
 makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libglvnd' 'harfbuzz-icu' 'pixman' 'libxi')
-conflicts=("${_pkgname}" "${_pkgname}-gpl" "${_pkgname}-skia-bin")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-skia-bin")
 source=(
         "git+https://github.com/${_pkgname}/laf.git"
         "git+https://github.com/${_pkgname}/clip.git"

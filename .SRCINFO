@@ -23,8 +23,9 @@ pkgbase = aseprite-git
 	depends = libxcursor
 	depends = fontconfig
 	depends = hicolor-icon-theme
+	provides = aseprite
 	conflicts = aseprite
-	conflicts = aseprite-gpl
+	conflicts = aseprite-bin
 	conflicts = aseprite-skia-bin
 	source = git+https://github.com/aseprite/laf.git
 	source = git+https://github.com/aseprite/clip.git
@@ -49,7 +50,7 @@ pkgbase = aseprite-git
 	source = git+https://github.com/aseprite/zlib.git
 	source = git+https://github.com/aseprite/stringencoders
 	source = git+https://github.com/aseprite/googletest
-	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m81
+	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m96
 	source = git+https://github.com/aseprite/aseprite.git
 	source = desktop.patch
 	sha256sums = SKIP
@@ -80,4 +81,3 @@ pkgbase = aseprite-git
 	sha256sums = 8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9
 
 pkgname = aseprite-git
-
