@@ -1,5 +1,5 @@
 diff --git a/config/__init__.py b/config/__init__.py
-index 3f2d1b2..df3849a 100644
+index 3f2d1b2..4446f71 100644
 --- a/config/__init__.py
 +++ b/config/__init__.py
 @@ -16,7 +16,7 @@ import ruamel.yaml
@@ -37,18 +37,21 @@ index 3f2d1b2..df3849a 100644
  logs = os.path.join(writable_root, 'log')
  use_archived_resources = not os.path.isdir(os.path.join(root, 'resources'))
  if use_archived_resources:
-@@ -62,8 +70,8 @@ else:
+@@ -62,8 +70,11 @@ else:
      resource_archive = None
      resource_root = os.path.join(root, 'resources')
  
 -if not os.path.exists(logs):
 -    os.mkdir(logs)
++os.makedirs(SCREEN_SHOOT_SAVE_PATH, exist_ok=True)
 +os.makedirs(CONFIG_PATH, exist_ok=True)
++os.makedirs(cache_path, exist_ok=True)
++os.makedirs(extra_items_path, exist_ok=True)
 +os.makedirs(logs, exist_ok=True)
  
  dirty = False
  
-@@ -242,6 +250,8 @@ def enable_logging():
+@@ -242,6 +253,8 @@ def enable_logging():
          return
      get_instance_id()
      old_handlers = logging.root.handlers[:]
