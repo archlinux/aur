@@ -2,7 +2,7 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.alpha.26.0.13.r77.g7f64601af
+pkgver=1.0.0.alpha.26.0.13.r202.g2fa57d645
 pkgrel=1
 epoch=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    meson build --prefix=/usr -Dmanpage=true -Dcarla=enabled -Dforce_fallback_for=libadwaita
+    meson build --prefix=/usr -Dmanpage=true -Dcarla=enabled
     ninja -C build
 }
 
