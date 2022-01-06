@@ -12,9 +12,9 @@ pkgbase = sysfetch-git
 	depends = sed
 	depends = psmisc
 	depends = grep
-	depends = pacman
 	optdepends = xorg-xprop: X session info (fallback)
 	optdepends = pciutils: detect gpu
+	optdepends = wmctrl: better theme detection
 	source = git+https://github.com/wick3dr0se/sysfetch
 	sha256sums = SKIP
 

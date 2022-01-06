@@ -8,9 +8,10 @@ pkgdesc="A super tiny system information fetch script written in BASH"
 arch=(any)
 url="https://github.com/wick3dr0se/sysfetch"
 license=(GPL3)
-depends=('coreutils' 'bash' 'awk' 'sed' 'psmisc' 'grep' 'pacman')
+depends=('coreutils' 'bash' 'awk' 'sed' 'psmisc' 'grep')
 optdepends=('xorg-xprop: X session info (fallback)'
-'pciutils: detect gpu')
+'pciutils: detect gpu'
+'wmctrl: better theme detection')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
@@ -23,8 +24,6 @@ git describe --long --tags | cut -d'-' -f1
 package() {
 cd $srcdir/$pkg
 install -dm 755 $pkgdir/usr/share/$pkg/sys
-install -dm 755 $pkgdir/usr/share/$pkg/assets
 install -m 755 sys/*.sh $pkgdir/usr/share/$pkg/sys
-install -m 755 assets/*.sh $pkgdir/usr/share/$pkg/assets
 install -Dm 755 $pkg $pkgdir/usr/bin/$pkg
 }
