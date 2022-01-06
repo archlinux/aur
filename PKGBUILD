@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/tsoding/porth.git"
 license=('MIT')
 depends=('nasm' 'binutils' 'fasm')
-makedepends=('git' 'python' 'fasm')
+makedepends=('git' 'fasm')
 source=("git+https://gitlab.com/tsoding/porth.git")
 sha256sums=('SKIP')
 
