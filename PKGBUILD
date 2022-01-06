@@ -1,18 +1,19 @@
 # Maintainer: Holger Obermaier <holgerob[at]gmx[dot]de>
+# Contributor: Steven Vancoillie <steven<dot>vancoillie[at]gmail[dot]com>
 pkgname=likwid
 pkgver=5.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Lightweight performance tools"
-url="https://github.com/RRZE-HPC/likwid"
+url="https://hpc.fau.de/research/tools/likwid/"
 arch=('x86_64' 'i686')
-license=('GPLv3')
+license=('GPL3')
 depends=()
 makedepends=()
 optdepends=('perl: for likwid-mpirun and likwid-perfscope'
             'openmpi: for likwid-mpirun'
             'gnuplot: for likwid-perfscope')
 conflicts=()
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RRZE-HPC/likwid/archive/v${pkgver}.tar.gz")
 sha256sums=('1b8e668da117f24302a344596336eca2c69d2bc2f49fa228ca41ea0688f6cbc2')
 
 _prefix="/usr"
