@@ -2,7 +2,7 @@
 
 pkgname=osqp
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The Operator Splitting QP Solver"
 arch=('i686' 'x86_64')
 url="https://github.com/osqp/$pkgname"
@@ -19,7 +19,7 @@ build() {
     cd "$pkgname"
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib . \
-        -DUNITTESTS=ON -DENABLE_MKL_PARDISO=OFF -DDLONG=OFF
+        -DUNITTESTS=ON -DENABLE_MKL_PARDISO=OFF -DDLONG=OFF -DPRINTING=OFF
     make
 }
 
