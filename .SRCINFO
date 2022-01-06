@@ -1,6 +1,6 @@
 pkgbase = lynx-dock
-	pkgdesc = Lynx Dock - Dock Oficial de LynxOS
-	pkgver = 0.0.2
+	pkgdesc = Lynx Dock - Official Dock for LynxOS
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://gitlab.com/LynxOS/lynx-dock
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = lynx-dock
 	depends = gnome-menus
 	depends = python-dbus
 	depends = python-gobject
-	source = https://gitlab.com/LynxOS/lynx-dock/-/archive/0.0.2/lynx-dock-0.0.2.tar.gz
-	md5sums = c0abfd90d2e7b61f134ae1132e4e4840
+	depends = python-xlib
+	source = https://gitlab.com/LynxOS/lynx-dock/-/archive/0.0.3/lynx-dock-0.0.3.tar.gz
+	md5sums = 8a524e95db0d46bdbf5b3547c80bf858
 
 pkgname = lynx-dock
