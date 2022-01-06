@@ -6,13 +6,13 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=15
+pkgrel=16
 arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
 depends=(python-six)
 makedepends=(python-build python-install python-poetry)
-checkdepends=(python-pytest-cov python-pytest-flakes python-pytest-socket)
+checkdepends=(python-pytest-socket)
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('46eaa1753b37e89d56cb19818144a7cf5b38653811720eb506732c35bb3732ef0c556420b22a9ee2c08e70e5b408aab7f44cea5e15d1ebe3d717c0c77706bfb8')
 
@@ -26,7 +26,8 @@ build() {
 
 check() {
   cd "${_base}-${pkgver}"
-  pytest tests
+  # https://github.com/niksite/url-normalize/blob/master/tox.ini#L17
+  pytest -o addopts=--disable-socket tests
 }
 
 package() {
