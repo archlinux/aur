@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 cd "$HOME/.config" || exit
 
-if ls | grep betterww 1>/dev/null
+if test -e betterww
 then
-	echo File Already Exists 1>/dev/null
+	:
 else
 	mkdir betterww
 fi
