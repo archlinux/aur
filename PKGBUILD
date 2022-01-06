@@ -1,9 +1,9 @@
-# Maintainer: Rachel Mant <aur@dragonmux.network>
+# Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgbase=kicad-library-nightly
 pkgname=('kicad-library-nightly' 'kicad-library-3d-nightly')
-pkgver=6.99.0_222_g367431f825
+pkgver=6.99.0_282_gfd9d923bb7
 pkgrel=1
 pkgdesc='KiCAD component and footprint libraries'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'make')
 options=('!strip')
 source=(
 	'git+https://gitlab.com/kicad/libraries/kicad-symbols.git'#commit=e3b198d8
-	'git+https://gitlab.com/kicad/libraries/kicad-footprints.git'#commit=fe8748b8d
+	'git+https://gitlab.com/kicad/libraries/kicad-footprints.git'#commit=ee227da2a
 	'git+https://gitlab.com/kicad/libraries/kicad-packages3D.git'#commit=1080b6e5
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
