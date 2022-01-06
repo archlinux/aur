@@ -13,7 +13,7 @@ depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libical')
 makedepends=('gcc-objc' 'gnustep-make')
 optdepends=('addresses.app')
 source=("https://github.com/poroussel/simpleagenda/archive/v$pkgver.tar.gz")
-sha256sums=('8c23bc54861ff374277335ef36a55dea9ded0cd99cd90795edb7bdde473b9228')
+sha256sums=('SKIP')
 
 build() {
   cd "simpleagenda-$pkgver"
