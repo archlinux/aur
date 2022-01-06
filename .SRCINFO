@@ -1,7 +1,7 @@
 pkgbase = nrfconnect-appimage
 	pkgdesc = Cross-platform development software for Bluetooth Low Energy and cIoT
 	pkgver = 3.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop/
 	arch = x86_64
 	license = Commercial

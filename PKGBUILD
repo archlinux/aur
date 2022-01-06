@@ -1,7 +1,7 @@
 # Maintainer: kumen
 pkgname="nrfconnect-appimage"
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform development software for Bluetooth Low Energy and cIoT"
 arch=("x86_64")
 depends=('jlink-software-and-documentation')
@@ -26,6 +26,7 @@ prepare(){
 
 package() {
 	# install the main files.
+        msg2 'Installing application'
 	install -d -m755 "${pkgdir}/opt/${pkgname}"
 	cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
 
@@ -33,17 +34,21 @@ package() {
 	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=nRF Connect
-Comment=nRF Connect for PC
+Comment=nRF Connect for Desktop
 GenericName=nRF Connect
-Exec=/opt/nrfconnect-appimage/nrfconnect %F
-Icon=/opt/nrfconnect-appimage/usr/share/icons/hicolor/0x0/apps/nrfconnect.png
+Exec=nrfconnect %F
+Icon=nrfconnect
 Path=/opt/nrfconnect-appimage/
 Terminal=false
 Type=Application
-StartupWMClass=nRF Connect
+StartupWMClass=nRF Connect for Desktop
 StartupNotify=true
 Categories=Development
 END
+	
+	# move icon files to /usr
+        msg2 'Installing icons'
+	mv "${pkgdir}/opt/${pkgname}/usr/share/icons" "${pkgdir}/usr/share/"
 	
 	# fix file permissions - all files as 644 - directories as 755
 	find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
