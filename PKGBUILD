@@ -1,33 +1,32 @@
-# Maintainer: Rich Li <rich@dranek.com>
-pkgname=python-cmocean
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Rich Li <rich@dranek.com>
+_base=cmocean
+pkgname=python-${_base}
 pkgver=2.0
-pkgrel=1
-pkgdesc="Beautiful colormaps for oceanography"
-url="https://matplotlib.org/cmocean/"
-depends=('python-matplotlib')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
-license=('MIT')
+pkgrel=2
+pkgdesc="Colormap setup for standardizing commonly-plotting oceanographic variables"
+url="https://github.com/matplotlib/${_base}"
+depends=(python-matplotlib)
+makedepends=(python-setuptools)
+checkdepends=(python-pytest)
+license=(MIT)
 arch=('any')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/matplotlib/cmocean/archive/${pkgver}.tar.gz")
-md5sums=('37203d30c9a791974bfb4be06c0356ed')
-sha1sums=('ce9849b7423effc099ad646f76d8bc788a6eb411')
-sha256sums=('bab61cbcd6a17d55f3351e210299ed7ad2117b47952d22fdddfbdd055c2ca75d')
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('e9b26a42581575d657275fefe060bbacf598b6b0ef18ef463e7bde2234777e95d27d7e1d8dd590e7df7d771afeeea8ae37c3386a0db61afcbaa458e5a82d52f2')
 
 build() {
-    cd "$srcdir/cmocean-${pkgver}"
-    python setup.py build
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
 check() {
-    cd "$srcdir/cmocean-${pkgver}"
-    PYTHONPATH="$PWD/build/lib" pytest -v
-    # Don't keep around the bytecode files pytest generated
-    rm -rf "$PWD/build/lib/cmocean/__pycache__"
+  cd "${_base}-${pkgver}"
+  python -m pytest
 }
 
 package() {
-    cd "$srcdir/cmocean-${pkgver}"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
