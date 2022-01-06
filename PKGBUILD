@@ -4,7 +4,7 @@
 
 pkgname=librm
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Router Manager library"
 arch=('x86_64')
 url="https://www.tabos.org/"

@@ -1,7 +1,7 @@
 pkgbase = librm
 	pkgdesc = Router Manager library
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tabos.org/
 	arch = x86_64
 	license = GPL2
@@ -27,4 +27,3 @@ pkgbase = librm
 	sha512sums = db7232be83d9a6d98e8d995950c0fdb21557b2e93218823ab9afa39c475a443dd18d5741b9e681cdbe0de8f5cd323419f5ce1ed42c2e8d23752f5574684fd85f
 
 pkgname = librm
-
