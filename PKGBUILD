@@ -14,17 +14,16 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('e8894b7e0c6df3144abc07babf08d5ba4321895c8f85a52932aaf8adc06c9829')
 
 build() {
-	cd "$pkgname-$pkgver"
-	python setup.py build
+  cd "$pkgname-$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
-	# Fix LIBC issue
-	ln -sf /usr/lib/libc.a "$pkgdir/usr/lib/liblibc.a"
+  # Fix LIBC issue
+  ln -sf /usr/lib/libc.a "$pkgdir/usr/lib/liblibc.a"
 }
