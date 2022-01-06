@@ -1,6 +1,6 @@
 pkgname=nvidia-vaapi-driver-git
 _pkgname=nvidia-vaapi-driver
-pkgver=0.0.1.r0.g6d285a0
+pkgver=0.0.1.r6.g7e12678
 pkgrel=1
 pkgdesc="A VA-API implemention using NVIDIA's NVDEC"
 arch=('x86_64')
@@ -23,15 +23,15 @@ prepare() {
     cd "$_pkgname"
     sed -i "s|usr/include/cuda|opt/cuda/include|" meson.build
     sed -i "s|drm/drm|libdrm/drm|" src/vabackend.c
-    meson setup build
+    arch-meson . build
 }
 
 build() {
     cd "$_pkgname"
-    meson compile -C build
+    ninja -C build
 }
 
 package() {
     cd "$_pkgname"
-    DESTDIR="${pkgdir}" meson install -C build
+    DESTDIR="${pkgdir}" ninja -C build install
 }
