@@ -2,7 +2,7 @@
 # Contributor of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=write-good
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Naive linter for English prose"
 arch=('any')
 url="https://github.com/btford/write-good"
@@ -14,7 +14,6 @@ sha256sums=('f54db3db8db0076fd1c05411c7f3923f055176632c51dc4046ab216e51130221')
 
 package() {
 	npm install -g \
-		--user root \
 		--prefix "$pkgdir"/usr \
 		"$srcdir"/$pkgname-$pkgver.tgz
 
