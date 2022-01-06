@@ -5,8 +5,8 @@ pkgdesc="Simple MarkDown Reader"
 
 arch=("x86_64" "i686")
 
-makedepends=("git" "binutils")
-depends=("gcc" "make")
+makedepends=("git" "binutils" "make" "gcc")
+depends=()
 
 license=("MIT")
 
@@ -40,11 +40,13 @@ build () {
 package() {
 	cd "md"
 	mkdir -p "${pkgdir}/usr/bin/"
+	mkdir -p "${pkgdir}/usr/doc/md/"
 
 	strip -s ${srcdir}/md/bin/md	
 
 	chown root:root ${srcdir}/md/bin/md
 	chmod a+x ${srcdir}/md/bin/md
 
+	cp "${srcdir}/md/doc/CommandLine.md" "${pkgdir}/usr/doc/md/CommandLine.md"
 	mv "${srcdir}/md/bin/md" "${pkgdir}/usr/bin"
 }
