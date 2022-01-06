@@ -21,6 +21,6 @@ build() {
 }
 
 package() {
-  cd "libs-sqlclient-sqlclient-1_7_3"
+  cd "SQLClient-$pkgver"
   make DESTDIR="$pkgdir" install
 }

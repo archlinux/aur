@@ -16,4 +16,3 @@ pkgbase = sqlclient
 	sha256sums = c6cb9d0033b496b52b698f1f80007b6acd215441683cf1a1c22f67a96198074f
 
 pkgname = sqlclient
-
