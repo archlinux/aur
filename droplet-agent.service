@@ -1,0 +1,19 @@
+[Unit]
+Description=The DigitalOcean Droplet Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=root
+Environment=TERM=xterm-256color
+ExecStart=/usr/bin/droplet-agent -syslog
+Restart=always
+RestartSec=10
+TimeoutStopSec=90
+KillMode=process
+
+OOMScoreAdjust=-900
+SyslogIdentifier=DropletAgent
+
+[Install]
+WantedBy=multi-user.target
