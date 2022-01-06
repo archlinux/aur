@@ -1,11 +1,13 @@
 pkgbase = cplex
 	pkgdesc = A commercial solver for mathematical optimization problems.
 	pkgver = 20.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ibm.com/software/products/de/ibmilogcpleoptistud
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
+	optdepends = python37: for Python 3.7 bindings
+	optdepends = python38: for Python 3.8 bindings
 	options = !strip
 	source = local://ILOG_COS_20.10_LINUX_X86_64.bin
 	source = installer.properties.template
@@ -13,4 +15,3 @@ pkgbase = cplex
 	md5sums = f295f6c4ecd0f3a6d2fdca21788efd0f
 
 pkgname = cplex
-

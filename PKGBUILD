@@ -4,20 +4,22 @@
 # You need to manually download the IBM ILOG CPLEX Optimization Studio installer
 # and place it into the same directory as this PKGBUILD, before you proceed.
 
-# Yes, CPLEX consistently refuses to run with latest Python. Remove the comment
-# characters at 'makedepends' and around the 'python3' line in package() to
-# install Python bindings given that you still run Python 3.7 or Python 3.8.
+# Note that CPLEX consistently refuses to run with recent Python versions and
+# currently supports only versions 3.7 and 3.8. If you have one of those
+# installed from the AUR, then the appropriate bindings will be installed.
 
 pkgname='cplex'
 pkgdesc="A commercial solver for mathematical optimization problems."
 pkgver=20.10
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.ibm.com/software/products/de/ibmilogcpleoptistud'
 license=('custom')
-#makedepends=('python>=3.7' 'python<3.9' 'python-setuptools')
 depends=('gcc-libs')
-#optdepends=('python: for Python bindings')
+optdepends=(
+	'python37: for Python 3.7 bindings'
+	'python38: for Python 3.8 bindings'
+)
 options=('!strip')
 
 _arch_upper=${arch^}
@@ -83,9 +85,16 @@ package() {
 	install -m644 "./cpoptimizer/include/ilcp/"*.h "${pkgdir}/usr/include/ilcp"
 
 	# Install Python bindings.
-	#cd "./cplex/python/${_pythonver}/${_archdir}/"
-	#python3 setup.py install --root="${pkgdir}/" --optimize=1
-	#cd "../../../../"
+	if pacman -Qq python37 >/dev/null 2>&1; then
+		cd "./cplex/python/3.7/${_archdir}/"
+		python3.7 setup.py install --root="${pkgdir}/" --optimize=1
+		cd "../../../../"
+	fi
+	if pacman -Qq python38 >/dev/null 2>&1; then
+		cd "./cplex/python/3.8/${_archdir}/"
+		python3.8 setup.py install --root="${pkgdir}/" --optimize=1
+		cd "../../../../"
+	fi
 
 	# Install license.
 	install -dm755 "${pkgdir}/usr/share/licenses/cplex"
