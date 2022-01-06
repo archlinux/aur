@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-lowlatency
-pkgver=5.23.4
+pkgver=5.23.5
 pkgrel=1
 pkgdesc='the compositor, with X11 unredirection and some other things'
 arch=(x86_64)
