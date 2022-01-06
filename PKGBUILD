@@ -13,7 +13,7 @@ sha256sums=(
 	'f537094840e21bd9585760faa64d92f872774043aab8678fe4f02f6ff93f807e')
 
 package() {
-	mkdir -p "${pkgdir}/opt/manyverse/"
+	mkdir -p "${pkgdir}/opt/"
 	cp -r "manyverse-${pkgver}-beta/" "${pkgdir}/opt/manyverse"
 	install -D -m755 "manyverse.desktop" "${pkgdir}/usr/share/applications/manyverse.desktop"
 }
