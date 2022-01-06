@@ -1,0 +1,15 @@
+pkgbase = seiscomp-maps
+	pkgdesc = SeisComp map files.
+	pkgver = 4.8.2
+	pkgrel = 1
+	url = https://www.seiscomp.de
+	install = seiscomp-maps.install
+	arch = any
+	license = AGPL3
+	depends = seiscomp
+	source = https://www.seiscomp.de/downloader/seiscomp-maps.tar.gz
+	source = seiscomp-maps-tmpfiles.conf
+	sha256sums = e0488c4905260ab160b7ee2508ad5b70467665632b8f15428864cccb444e4cca
+	sha256sums = d322747672e4261c5aad058391b5c9d3e6dde34c05133edb9a9ef5c67aead1de
+
+pkgname = seiscomp-maps
