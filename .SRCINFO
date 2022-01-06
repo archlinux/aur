@@ -1,8 +1,8 @@
 pkgbase = linux-yoga9
 	pkgdesc = Linux for Lenovo Yoga9
-	pkgver = 5.15.11.arch2
-	pkgrel = 2
-	url = https://github.com/archlinux/linux/commits/v5.15.11-arch2
+	pkgver = 5.15.12.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v5.15.12-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-yoga9
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.11-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.12-arch1
 	source = config
 	source = 0001-ucsi.patch
 	source = 0002-ucsi.patch

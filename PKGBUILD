@@ -4,8 +4,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-yoga9
-pkgver=5.15.11.arch2
-pkgrel=2
+pkgver=5.15.12.arch1
+pkgrel=1
 pkgdesc='Linux for Lenovo Yoga9'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
