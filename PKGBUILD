@@ -1,8 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=python-dhall
-pkgver=0.1.11
-pkgrel=2
+pkgver=0.1.12
+pkgrel=1
 pkgdesc="Python bindings for dhall, a functional configuration language"
 arch=('x86_64' 'i686')
 url="https://pypi.org/project/dhall"
@@ -10,8 +10,8 @@ license=('Apache' 'MIT')
 depends=('python' 'openssl')
 makedepends=('python-pip' 'cargo' 'maturin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/s-zeng/dhall-python/archive/v${pkgver}.tar.gz")
-sha256sums=('c5859b0e8fe6216dfb50dd0f5dc750404e3ef873e76859b7e32f893aecd613f6')
-b2sums=('6b98c0fa1769a0067b29ba56459de8130fa5070171ee7b03f9f5322e10e460b66c18a816a16114bc8c7bb78d54de002b9926cc369ecfab92d86afbfb99942896')
+sha256sums=('21b111c5b9f239a78868513632d283ea0df84da93e4446a0c5cde4f6d493589c')
+b2sums=('8166254cb422c847386f3bb40484cf5af3f31000074eef4592caa03156899bf9c94fb9fd973922f52686ae592a8c9f586589cb402a2b9a0452aad871b5e101ce')
 
 build() {
   cd "dhall-python-${pkgver}"
@@ -28,3 +28,5 @@ package() {
 
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-*
 }
+
+export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
