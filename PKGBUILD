@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('firmware-manager-git' 'libfirmware-manager-git')
 pkgbase=firmware-manager-git
-pkgver=0.1.2.r32.g0bbeb12
-pkgrel=1
+pkgver=0.1.2.r37.g96a107f
+pkgrel=2
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
 depends=('dbus' 'gtk3' 'libgudev' 'openssl')
 makedepends=('cargo' 'git')
+options=('!lto')
 source=('git+https://github.com/pop-os/firmware-manager.git'
         'com.system76.FirmwareManager.policy'
         "${pkgbase%-git}.sh")
@@ -23,7 +24,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgbase%-git}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
