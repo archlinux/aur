@@ -1,5 +1,5 @@
 # Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
-# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 # Please note you must have a Vulkan-capable GPU
 
@@ -14,7 +14,7 @@ url="https://github.com/Novum/vkquake"
 license=('GPL2')
 depends=('flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 
 	 'libvorbis' 'libx11' 'opusfile' 'sdl2')
-makedepends=('vulkan-validation-layers' 'gcc' 'make')
+makedepends=('vulkan-validation-layers')
 install=$pkgname.install
 source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.desktop'
