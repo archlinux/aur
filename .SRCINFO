@@ -1,0 +1,11 @@
+pkgbase = panindex
+	pkgdesc = Simple network-disk directory listing program
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = https://github.com/libsgh/PanIndex
+	arch = x86_64
+	license = AGPL-3.0
+	source = https://github.com/libsgh/PanIndex/releases/download/v2.0.9/PanIndex-v2.0.9-linux-amd64.tar.gz
+	sha256sums = f755c30b3a0b5b2537eb28a553edc83deb3d2cb97a9cb6ec5a8fef9c7bbe2209
+
+pkgname = panindex
