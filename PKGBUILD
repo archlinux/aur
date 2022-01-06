@@ -2,7 +2,7 @@
 # Contributor: Samuel Williams <samuel.williams@oriontransfer.co.nz>
 pkgname=scotch
 pkgver=7.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
 license=("custom:CeCILL-C")
@@ -26,7 +26,7 @@ prepare() {
   sed -i 's/$(AR) $(ARFLAGS) $(@) $(?)/$(AR) $(ARFLAGS) $(@) $(?) $(LDFLAGS)/g' libscotch/Makefile
 
   # Use the CFLAGS defined /etc/makepkg.conf
-  sed -i "s/-O3/${CFLAGS} -fPIC/g" Makefile.inc
+  sed -i "s/-O3/${CFLAGS}/g" Makefile.inc
  
   # Fix C compiler
   sed -i "s/CCD\t.*=.*gcc/CCD = mpicc/" Makefile.inc
@@ -36,7 +36,7 @@ prepare() {
   sed -i "s/-lz/-lz -lbz2/" Makefile.inc
 
   # avoid SIGABRT in dgord, https://stackoverflow.com/questions/38269659
-  sed -i "s/-DSCOTCH_PTHREAD/-DSCOTCH_PTHREAD -g/" Makefile.inc
+  sed -i "s/-DSCOTCH_PTHREAD/-DSCOTCH_PTHREAD -DSCOTCH_PTHREAD_MPI/" Makefile.inc
 
   # Fix the creation of directories
   sed -i "s/mkdir/mkdir\ -p/" Makefile.inc
@@ -62,7 +62,7 @@ check() {
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
   make check FC=gfortran LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
-  make ptcheck FC=gfortran LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
+  make ptcheck FC=mpifort LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:../../lib"
 }
  
 package() {
