@@ -9,7 +9,7 @@
 
 pkgname=anki
 pkgver=2.1.49
-pkgrel=2
+pkgrel=3
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -81,6 +81,10 @@ prepare(){
 
 build() {
     cd "anki-$pkgver"
+    #fixes linker for clang users
+    if [ $CC = clang ] && [ $CXX = 'clang++' ]; then
+        export LDSHARED="/usr/bin/clang -shared"
+    fi
     # build requires java 11 to work, does not compile with java 17
     env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build -c opt dist
 }
