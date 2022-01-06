@@ -11,7 +11,8 @@ url="https://uyap.gov.tr/UYAP-Editor"
 license=("custom")
 depends=("pcsclite" "java-environment")
 optdepends=("akia: sign UYAP documents"
-	    "jre8: sign UYAP documents")
+	    "jre8: sign UYAP documents"
+	    "cups: print documents")
 source=("https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus-5-4-0-amd6420-12-20219-21-am.zip"
         desktop-files.patch)
 sha256sums=("2394f9b712ca2e2d905901642992fd736e0c972b0e5f72303e06cf9cebd7b2f1"
