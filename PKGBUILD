@@ -2,7 +2,7 @@
 # Contributor: Feufochmar <feufochmar dot gd at gmail dot com>
 
 pkgname=python-libtcod
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Python Roguelike graphics/utility library.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python' 'libtcod')
 makedepends=('python-setuptools')
 source=("https://github.com/libtcod/libtcod/archive/${pkgver}.tar.gz")
-md5sums=('1bfd4b96ef016ad35989d0ec311c4fb8')
+md5sums=('df1c2d8bca75a64aebe18194bb7e48f3')
 
 package() {
 	_pymajver="$(python -V | awk '{print $2}' | awk -F. '{print $1"."$2}')"
