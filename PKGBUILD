@@ -19,5 +19,4 @@ package() {
   # i know this is absolutely not to the correct way to create a symlink / a binary in /usr/bin with pkgbuild.
   # it will always fail if you just want to test the package and not install it but i have no idea how to force a symlink to "follow" the original file if it gets copied (if it is even possible)
   ln -sf /usr/share/openseeface-gd/OpenSeeFaceGD.x86_64 $pkgdir/usr/bin/openseeface-gd
-  chmod 755 $pkgdir/usr/bin/openseeface-gd
 }
