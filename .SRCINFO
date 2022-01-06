@@ -1,0 +1,19 @@
+pkgbase = neovim-twilight-git
+	pkgdesc = Dims inactive portions of code during editing
+	pkgver = r17.8ab43c0
+	pkgrel = 1
+	url = https://github.com/folke/twilight.nvim
+	install = twilight.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim
+	optdepends = tree-sitter
+	provides = neovim-twilight
+	conflicts = neovim-twilight
+	source = neovim-twilight-git::git+https://github.com/folke/twilight.nvim?signed
+	validpgpkeys = 97ADEDA7F079E45EF2AD1004707FE6FEB82F7984
+	md5sums = SKIP
+
+pkgname = neovim-twilight-git
