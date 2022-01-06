@@ -1,0 +1,13 @@
+src
+pkg
+bin2hex
+*.deb
+*.rpm
+*.bz2
+*.gz
+*.zip
+*.tgz
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.log
+*.png
