@@ -7,11 +7,11 @@
 pkgname=cgminer
 pkgver=4.11.1
 _pkgver=$pkgver
-kgrel=1
+kgrel=6
 pkgdesc="Multi-threaded multi-pool GPU, FPGA and ASIC miner for bitcoin"
 url='http://ck.kolivas.org/apps/cgminer/'
 license=('GPL3')
-arch=('x86_64','i386')
+arch=('x86_64''i386''armv7h')
 depends=('curl' 'libusb' 'jansson')
 makedepends=('git')
 source=("git+https://github.com/ckolivas/${pkgname}.git#tag=v$_pkgver"
