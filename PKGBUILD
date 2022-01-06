@@ -1,8 +1,8 @@
 # Maintainer: Mitchell Augustin <mitchell@mitchellaugustin.com>
 # Maintainer: Levi Pinkard <levipinkard@gmail.com>
 pkgname=spiral-notebook-bin
-pkgver=1.5
-pkgrel=3
+pkgver=1.6
+pkgrel=1
 epoch=
 pkgdesc="Free-form notebook software with 'click anywhere to type' functionality, rich-text and image support, and a notebook-based file structure"
 arch=('x86_64')
@@ -20,21 +20,21 @@ backup=()
 options=()
 install=
 changelog=
-source=("${url}versions/spiral-aur-${pkgver}.tar.gz")
+source=("${url}versions/spiral-linux-${pkgver}.tar.gz")
 noextract=()
 md5sums=(SKIP)
 validpgpkeys=()
 
 prepare() {
-	cd "spiral-aur-${pkgver}"
+	cd "spiral-linux-${pkgver}"
 }
 
 check() {
-	cd "spiral-aur-${pkgver}"
+	cd "spiral-linux-${pkgver}"
 }
 
 package() {
-	cd "spiral-aur-${pkgver}"
+	cd "spiral-linux-${pkgver}"
 	install -Dm 755 Spiral.desktop "$pkgdir"/usr/share/applications/Spiral.desktop
 	install -Dm 755 spiral "$pkgdir"/usr/bin/spiral
 	install -Dm 755 spiral.png "$pkgdir"/usr/share/pixmaps/spiral.png
