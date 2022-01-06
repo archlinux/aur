@@ -2,7 +2,7 @@
 # Contributor: Juan Pablo Gonzalez Tognarelli <lord_jotape@yahoo.com.ar>
 
 pkgname=uriparser
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='uriparser is a strictly RFC 3986 compliant URI parsing library. uriparser is cross-platform, fast, supports Unicode'
 url='https://github.com/uriparser/uriparser'
@@ -10,7 +10,7 @@ makedepends=('cmake')
 arch=('x86_64')
 license=('custom')
 source=("https://github.com/uriparser/uriparser/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('9af8f87ed762ebac333fd42b6c38b62d217be8ba290d050f40aef43b9267651e')
+sha256sums=('a288a06668528c19e85e38c508335938e1de6fdd4b8f2072401b4533fcebf644')
 
 build() {
   mkdir "$srcdir"/build
