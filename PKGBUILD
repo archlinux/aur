@@ -3,7 +3,7 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 
 pkgname=keepass2-plugin-tray-icon
-pkgver=0.6.0
+pkgver=0.8.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Functional tray icon for KeePass2"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('keepass' 'dbus-sharp-glib' 'gtk-sharp-2')
 makedepends=('git')
 url="https://github.com/dlech/Keebuntu"
-source=('repo::git+https://github.com/dlech/Keebuntu.git#tag=debian/0.6.0')
+source=("repo::git+https://github.com/dlech/Keebuntu.git#tag=debian/${pkgver}")
 md5sums=('SKIP')
 sha512sums=('SKIP')
 
