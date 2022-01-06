@@ -1,4 +1,5 @@
 # Maintainer: Rachel Mant <aur@dragonmux.network>
+# Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
 pkgver=6.99.0_222_g367431f825
