@@ -1,6 +1,6 @@
 pkgbase = rofi-cuff-git
 	pkgdesc = Rofi wrapper for cuff, Use the Jackett search API to find torrents.
-	pkgver = r25.85e5f8a
+	pkgver = r32.d4f0110
 	pkgrel = 1
 	url = https://github.com/loiccoyle/rofi-cuff
 	arch = any
