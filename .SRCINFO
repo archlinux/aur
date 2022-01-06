@@ -1,13 +1,13 @@
 pkgbase = tubeup
 	pkgdesc = Youtube (and other video site) to Internet Archive Uploader
 	pkgver = 0.0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/tubeup
 	arch = any
 	license = GPL 3
 	makedepends = python3
 	depends = python
-	depends = youtube-dl
+	depends = yt-dlp
 	depends = python-jsonpatch
 	depends = python-docopt
 	depends = python-internetarchive

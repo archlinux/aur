@@ -1,10 +1,10 @@
 #Maintainer: Lucy <deepnavy at waifu dot club>
 pkgname=tubeup
 pkgver=0.0.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Youtube (and other video site) to Internet Archive Uploader"
 url="https://pypi.org/project/tubeup"
-depends=('python' 'youtube-dl' 'python-jsonpatch' 'python-docopt' 'python-internetarchive' 'python-backports.csv')
+depends=('python' 'yt-dlp' 'python-jsonpatch' 'python-docopt' 'python-internetarchive' 'python-backports.csv')
 makedepends=('python3' )
 license=('GPL 3')
 arch=('any')
