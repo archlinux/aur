@@ -1,6 +1,6 @@
 pkgbase = python-pagegen
 	pkgdesc = Python static site generator with reStructuredText markup
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = http://pagegen.phnd.net/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-pagegen
 	depends = python-jsmin
 	depends = python-lxml
 	depends = python-rcssmin
-	source = https://files.pythonhosted.org/packages/py3/p/pagegen/pagegen-3.3.2-py3-none-any.whl
-	sha256sums = 6558ce3413e81f1db3312b9684db408f65c1ca5da154f355e26fc39d6f96101a
-	sha512sums = 8d3f511d321c06ed95bc5669abe443bd8f9d84f07af2cefa58eb47e13844eae3e0b1065e3016a18d1d83ab1b0739c23d735d10b0aa7effc284e45bdcd4ed4578
-	b2sums = b0d5b17bd05bf2ffde72616c7c24fadc300db19de55c1ff2a93880ef090281b01bdf3febbf7ce5761c04b0d8e01bfcb3d700aa3a75a9b769250454b9a9565470
+	source = https://files.pythonhosted.org/packages/py3/p/pagegen/pagegen-3.3.3-py3-none-any.whl
+	sha256sums = 8bbc526582409bb8f63b8b1b8ff917a22ad64e70586552b348495269bc891be3
+	sha512sums = e318669efc533b83b67402a1f9064bad9f6111a536f9c073776855f208476baf791962a4ead6712cd7bad5c0095e5859ddf11b4e86cb82d4788179997773030e
+	b2sums = 3fd58cb396478a40b561a99b6d573c929bda17d58d205a3c5e9ba33ea12b8d2b81358c47ec5ba0e3e5ded8fd1bfbfa34e09a07c42edffb1b5c43eff605c08c54
 
 pkgname = python-pagegen
