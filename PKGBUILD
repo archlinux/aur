@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-workspaces-bar-git
 _pkgname=workspaces-bar
-pkgver=r9.47a4e9d
+pkgver=r15.5983c75
 pkgrel=1
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
@@ -15,15 +15,15 @@ source=('git+https://github.com/fthx/workspaces-bar.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	_uuid='workspaces-bar@fthx'
+  cd "$srcdir/$_pkgname"
+  _uuid='workspaces-bar@fthx'
 
-	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-	cp -r $(ls -A | grep -vE '.git') \
-		"$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  cp -r $(ls -A | grep -vE '.git') \
+    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 }
