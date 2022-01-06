@@ -3,7 +3,7 @@
 _pkgname=SimpleAgenda
 pkgname=simpleagenda.app
 pkgrel=1
-pkgver=0.44
+pkgver=0.46
 pkgdesc='Simple calendar and agenda application using GNUstep'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://wiki.gnustep.org/index.php/SimpleAgenda.app'
@@ -12,7 +12,7 @@ groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libical')
 makedepends=('gcc-objc' 'gnustep-make')
 optdepends=('addresses.app')
-source=("https://github.com/poroussel/simpleagenda/archive/v0.44.tar.gz")
+source=("https://github.com/poroussel/simpleagenda/archive/v$pkgver.tar.gz")
 sha256sums=('8c23bc54861ff374277335ef36a55dea9ded0cd99cd90795edb7bdde473b9228')
 
 build() {
