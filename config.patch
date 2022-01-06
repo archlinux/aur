@@ -23,13 +23,13 @@ index 93526b4..c11e819 100644
  # you receive tons of requests per second
  
  [Config]
--hmacKey = "secretkey" # random key for cryptographic signing of video urls
--base64Media = false # use base64 encoding for proxied media urls
-+hmacKey = "43179cf305cda132874f7a4d3fa4831a01528e516780157bebd564b0ca0297c2" # Regenerate e.g. `head -c 25 </dev/urandom | sha256sum`
-+base64Media = true # use base64 encoding for proxied media urls
+-hmacKey = "secretkey"  # random key for cryptographic signing of video urls
+-base64Media = false  # use base64 encoding for proxied media urls
++hmacKey = "43179cf305cda132874f7a4d3fa4831a01528e516780157bebd564b0ca0297c2"  # Regenerate e.g. `head -c 25 </dev/urandom | sha256sum`
++base64Media = true  # use base64 encoding for proxied media urls
  enableRSS = true  # set this to false to disable RSS feeds
+ enableDebug = false # enable request logs and debug endpoints
  proxy = "" # proxy type http/https
- proxyAuth = ""
 @@ -34,10 +34,10 @@ tokenCount = 10
  
  # Change default preferences here, see src/prefs_impl.nim for a complete list
