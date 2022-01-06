@@ -1,4 +1,4 @@
-# Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
+# Maintainer: Rachel Mant <aur@dragonmux.network>
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
@@ -38,7 +38,6 @@ build()
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-nightly/lib \
 		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
-		-DKICAD_USE_OCE=OFF \
 		-DKICAD_USE_OCC=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
 		-DKICAD_DATA=/usr/share/kicad-nightly \
