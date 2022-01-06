@@ -17,4 +17,3 @@ pkgbase = grub-reboot-picker
 	sha256sums = 53697a6925981cf83c3c67fed1646fff9a3800ce43994f7da94526151b285bb2
 
 pkgname = grub-reboot-picker
-
