@@ -1,0 +1,5 @@
+export SEISCOMP_ROOT="/opt/seiscomp"
+export PATH="${PATH}:${SEISCOMP_ROOT}/bin"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${SEISCOMP_ROOT}/lib"
+export PYTHONPATH="${PYTHONPATH}:${SEISCOMP_ROOT}/lib/python"
+export MANPATH="${MANPATH}:${SEISCOMP_ROOT}/share/man"
