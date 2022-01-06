@@ -1,0 +1,45 @@
+[Unit]
+Description=Sonic Search Index
+Documentation=https://github.com/valeriansaliou/sonic
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=sonic
+Group=sonic
+ExecStart=/bin/sonic -c /etc/sonic.cfg
+Restart=on-failure
+RestartSec=5
+
+# Hardening
+ReadWritePaths=/var/lib/sonic
+UMask=0027
+NoNewPrivileges=true
+LimitNOFILE=1048576
+ProtectSystem=strict
+ProtectHome=true
+PrivateUsers=yes
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

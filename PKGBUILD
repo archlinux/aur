@@ -1,42 +1,60 @@
 # Maintainer: Bruce Zhang
+
 pkgname=sonic
-pkgver=1.2.3
+pkgver=1.3.2
 pkgrel=1
-pkgdesc="Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM"
-arch=('i686' 'x86_64')
+pkgdesc="Fast, lightweight & schema-less search backend"
+arch=('x86_64')
 url="https://github.com/valeriansaliou/sonic"
 license=('MPL2')
-depends=()
-makedepends=('clang' 'llvm' 'rustup')
+depends=('gcc-libs')
+makedepends=('clang' 'llvm' 'rust')
+backup=('etc/sonic.cfg')
+options=('!lto')
 source=(
-	"$pkgname-$pkgver.src.tar.gz::https://github.com/valeriansaliou/sonic/archive/v$pkgver.tar.gz"
-	'sonic.sysusers'
+  "$pkgname-$pkgver.src.tar.gz::https://github.com/valeriansaliou/sonic/archive/v$pkgver.tar.gz"
+  'systemd.service'
+  'sysusers.conf'
+  'tmpfiles.conf'
 )
-sha256sums=('d47e031135d101d52f8d6998ddeb092df9ddfac36b8051efd004249bdb43fda5'
-            '1bec735cc0560927eb8ca43494bc0f1b2ec34296357fe1a861ce10ed3828a704')
+sha512sums=('991f8d9f094db76cdc77a563594b996aa780d1b7959eb5019c2291a31b8a835fa0cf1b9cc75da90fe7ef6485b722e7e14236a5f0e36da566b038ee178e82e2e0'
+            '896b4eccf771efdb9dac4bf037be37bc53d72b6b94cb433b36f78dcf2c71ba465d28a27730e12c14dc72cedc31cddf44101d52e3be73e8df30f6ae5e3d404ecf'
+            '0fd64f7959024ecab487924d277679b81c78d1ba7d57d2dc63f654409f23bb0cbb0109ac513b25f1b1785115c3a9916f8c4e230fe94963f0bbe84f2784ec76e4'
+            '62b0bb63ba2eda59d530b38aeaf581f5b5fc5187c4615694be9e4a7e38dcb5ed55367b461ac483ab3d6c931d1754b980c8e48b5518388b8476437d988956883b')
+b2sums=('45f2ead3a66db1e85f147edf87aac53b31bf7305fe4ad28b358a42bcf1357ac34b84abd2f2de4f2fb19f7864f67c761891ac7f1fb904ddc14365bf13f992cadf'
+        '43331cf95c8203315024f8c98d81162fb313d48600e45ea4044d06c2d7d9deda7279b8ed4e5c5d96061cf9b3d5d200d9048d95df757906b63aaa82d907c72f78'
+        '5e75e9b670baded2f3956849d2b7b0a90f5a573629f5812d8332b26d203425f14e131eabb2bb485cddf533c27a67ebdb4e87671324d316fa083d7ecdbeba6221'
+        'ea9795c42003660522d89156eced726bc7db686ef8545bc57504e55341982be2e2336e9d872ce17d5c1607e0cd98e9a2f28f5836bd60b56e510ec5fd59c77143')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # download dependencies
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	nightly_installed=$(rustup toolchain list | grep nightly | wc -l)
+  cd "$pkgname-$pkgver"
+  cargo build --frozen --release
+}
 
-	if [ $nightly_installed == '0' ]; then
-		rustup toolchain install nightly
-	fi
-
-	cargo +nightly build --release
-
-	if [ $nightly_installed == '0' ]; then
-		rustup toolchain uninstall nightly
-	fi
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --frozen
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/target/release"
-	install -Dm755 sonic "$pkgdir/usr/bin/sonic"
+  cd "$pkgname-$pkgver"
 
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm644 examples/config/systemd.service "$pkgdir/usr/lib/systemd/system/sonic.service"
+  # binary
+  install -vDm755 -t "$pkgdir/usr/bin" target/release/sonic
 
-	install -Dm644 config.cfg "$pkgdir/etc/sonic.cfg"
-	install -Dm644 "$srcdir/sonic.sysusers" "$pkgdir/usr/lib/sysusers.d/sonic.conf"
+  # systemd integration
+  install -vDm644 ../systemd.service "$pkgdir/usr/lib/systemd/system/sonic.service"
+  install -vDm644 ../sysusers.conf "$pkgdir/usr/lib/sysusers.d/sonic.conf"
+  install -vDm644 ../tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/sonic.conf"
+
+  # configuration
+  install -vd "$pkgdir/etc"
+  sed -e "s:./data:/var/lib/sonic:" config.cfg > "$pkgdir/etc/sonic.cfg"
 }

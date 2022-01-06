@@ -1,18 +1,27 @@
 pkgbase = sonic
-	pkgdesc = Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM
-	pkgver = 1.2.3
+	pkgdesc = Fast, lightweight & schema-less search backend
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/valeriansaliou/sonic
-	arch = i686
 	arch = x86_64
 	license = MPL2
 	makedepends = clang
 	makedepends = llvm
-	makedepends = rustup
-	source = sonic-1.2.3.src.tar.gz::https://github.com/valeriansaliou/sonic/archive/v1.2.3.tar.gz
-	source = sonic.sysusers
-	sha256sums = d47e031135d101d52f8d6998ddeb092df9ddfac36b8051efd004249bdb43fda5
-	sha256sums = 1bec735cc0560927eb8ca43494bc0f1b2ec34296357fe1a861ce10ed3828a704
+	makedepends = rust
+	depends = gcc-libs
+	options = !lto
+	backup = etc/sonic.cfg
+	source = sonic-1.3.2.src.tar.gz::https://github.com/valeriansaliou/sonic/archive/v1.3.2.tar.gz
+	source = systemd.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha512sums = 991f8d9f094db76cdc77a563594b996aa780d1b7959eb5019c2291a31b8a835fa0cf1b9cc75da90fe7ef6485b722e7e14236a5f0e36da566b038ee178e82e2e0
+	sha512sums = 896b4eccf771efdb9dac4bf037be37bc53d72b6b94cb433b36f78dcf2c71ba465d28a27730e12c14dc72cedc31cddf44101d52e3be73e8df30f6ae5e3d404ecf
+	sha512sums = 0fd64f7959024ecab487924d277679b81c78d1ba7d57d2dc63f654409f23bb0cbb0109ac513b25f1b1785115c3a9916f8c4e230fe94963f0bbe84f2784ec76e4
+	sha512sums = 62b0bb63ba2eda59d530b38aeaf581f5b5fc5187c4615694be9e4a7e38dcb5ed55367b461ac483ab3d6c931d1754b980c8e48b5518388b8476437d988956883b
+	b2sums = 45f2ead3a66db1e85f147edf87aac53b31bf7305fe4ad28b358a42bcf1357ac34b84abd2f2de4f2fb19f7864f67c761891ac7f1fb904ddc14365bf13f992cadf
+	b2sums = 43331cf95c8203315024f8c98d81162fb313d48600e45ea4044d06c2d7d9deda7279b8ed4e5c5d96061cf9b3d5d200d9048d95df757906b63aaa82d907c72f78
+	b2sums = 5e75e9b670baded2f3956849d2b7b0a90f5a573629f5812d8332b26d203425f14e131eabb2bb485cddf533c27a67ebdb4e87671324d316fa083d7ecdbeba6221
+	b2sums = ea9795c42003660522d89156eced726bc7db686ef8545bc57504e55341982be2e2336e9d872ce17d5c1607e0cd98e9a2f28f5836bd60b56e510ec5fd59c77143
 
 pkgname = sonic
-
