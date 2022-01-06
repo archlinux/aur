@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('colloid-gtk-theme-git' 'colloid-icon-theme-git')
 pkgbase=colloid-gtk-theme-git
-pkgver=2021.12.09.r14.g58a4763
+pkgver=2021.12.09.r41.g6c1fa0c
 pkgrel=1
 pkgdesc="Modern and clean theme for linux"
 arch=('any')
@@ -18,7 +18,7 @@ pkgver() {
 
 package_colloid-gtk-theme-git() {
   pkgdesc="Modern and clean Gtk theme for linux"
-  url="https://www.gnome-look.org/p/1661959"
+  url="https://www.pling.com/p/1661959"
   optdepends=('gtk-engine-murrine: GTK2 theme support'
               'colloid-icon-theme: Matching icon theme')
   provides=("${pkgname%-git}")
@@ -29,14 +29,14 @@ package_colloid-gtk-theme-git() {
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact -d "$pkgdir/usr/share/themes"
 
-  # Nord version - currently missing assets
+  # Nord version - currently missing assets: src/assets/gtk/assets-grey-nord
 #  ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
 #  ./install.sh -t all -s compact --tweaks nord -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-icon-theme-git() {
   pkgdesc="Modern and clean icon theme for linux"
-  url="https://www.gnome-look.org/p/1661983"
+  url="https://www.pling.com/p/1661983"
   depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
