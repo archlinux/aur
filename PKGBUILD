@@ -4,7 +4,7 @@ pkgname=naiveproxy-bin
 _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
 pkgver=97.0.4692.71
-pkgrel="${_pkgrel:-1}"
+pkgrel="${_pkgrel:-2}"
 arch=('x86_64' 'i386' 'i686' 'pentium4' 'aarch64' 'arm' 'armv7h')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
@@ -13,27 +13,27 @@ _arch=""
 case "$CARCH" in
   x86_64|amd64)
     _arch="x64"
-    sha512sums=('9898de42dfda9c97e04ed01ab605f2c7e1c6a68e08fe810b25d406c5683fe6185c5fbfe58a14ad5e9e565a3eff3015326f5cd67bc70a7bf668b544389fd162a5')
-    b2sums=('806ed40c31a9883a870d500d04bd3a8a7d132ec953e410f929e04be98ac39af63a0207991137be57d5dd0cc2fbb696c79b841f05c59707b5c91591b54e2d21a8')
-    b3sums=('1263c5326b04b7d3856ea248be0c48c08dd7092cf027402197edcddbe67b081a')
+    sha512sums=('55b6da702ecb5d5ec2963509e7874f08379a5562ec60e41b7f7e7b0417e5074eff7f159c52fabdc0257aed7c410d929a7608be7d1bc40f6c29da99220d6b2edf')
+    b2sums=('744317fca4f7fe2ad4d20e3a3b02e0765e1ed3f71f8ffde4309ede132a123bc52ea1d42a6f078fbb94cd25e5a98c523305a0fb0b8e2c56ea9b3fcfe825ca6505')
+    b3sums=('590f66223f8c69c659c84f002fc5ee538ae131350863eaa84cfa594400ba12a0')
   ;;
   i686|i386|pentium4)
     _arch="x86"
-    sha512sums=('a60380128f8f51c5114878c0eb96ef5f11a14f98fe644a98745e2870af21f702a8c59b872520ce8c018d0d1ce91bd995ce1ba0daa5d6c3497a5ddc9ec92fab91')
-    b2sums=('06f00bea7aa2128c7f5db5f3f8d462462b94a457511411295f4a0fb2b89d9217d7634f0de3911562df5364671faf5cedf16e618e2bcf7e4d55124e5b57a2b480')
-    b3sums=('ec90bd48b966a03f20573946ac0c7c935509e6653bb675b39337b097f2a76038')
+    sha512sums=('0145f99b2e4549c76e09b52896411d5a0d23665af5ed7fcecf47969a77e9c192f40535b3adee4206f6b82d3afe06614725bfb22aefc4fc2c63891079c68f0865')
+    b2sums=('2f1a5e19414afc9be901414f5dbee0d955c70b8486315df2f328a1f4fa2d5e7629f576192f8f577b7c72bcfc20c761f2c3a828712d6d220faa3dc0b8d3a6f204')
+    b3sums=('798b7d63325720f37caa06ef9f39768c44abbc740efd7869a9580b14500edcbf')
   ;;
   arm|armv7*)
     _arch="arm"
-    sha512sums=('81f3c1f6d617bde905ca9a16cc47822beec79253d542a96972223ef9121dea6cd410c4f8b9daa3dfc6d47ffa5570f9d1533df80686babc370dc1eaa6f835cea9')
-    b2sums=('27816ad647deef65ccdbe2b17dbb074d8a0e23e9f85effc79c529cb6fc2455f01bd6355ebeabc56fe3e43538e9b34d3f31b45d69ff7fe8f82f3e6d4a9dc689de')
-    b3sums=('49766ea36a3b17bc5e2e8a948b4b059ecaf7f2b746b0f7b0e914a9f4f2cc07b5')
+    sha512sums=('620d5ebf29ed1c31be9aa6ee84197f9e3356f0ad72e56ae045c5db42646c1324787fb2e4ed998c98d63fac91aca541b99ddaf9ee87d80786926de19785ccc63d')
+    b2sums=('59bfc73d948aae05d93794cd5a65e5fa5874613cc544d0610345e5c0b0df434891b4be36a1efe7b1ec82f40a030d53101ec3f2e0f122a46f2e204bc15bee3f1e')
+    b3sums=('eaf75feffa59feae5b0e69d4f03e500e4788ee1f20401fae22339365c9f8af56')
   ;;
   aarch64*|armv8*)
     _arch="arm64"
-    sha512sums=('fa5b63cf8ab8d68ad3a10271c9945183e7d9324f14c548801c3d90abf07e2fec250830900c90959b60964b11234a97f9a08ab091a63e047c1c12019340f03e96')
-    b2sums=('a8b0a0a2b58d60b2fc8dbf4187f285a54551f9e1bd163dc02ad5daf665a175d9ab2b446f63db9a93d428792c766ac0455642be86b3e8f30f4eea0db194fea355')
-    b3sums=('d31dab7f13e9be8cddea3a5fb83e402bb2d29e8afb4032ce96ed8d18ce7df827')
+    sha512sums=('9de7238803e64d0ed13b8b3975509b6ed922ad3a966bb42755d27106acd5b9debb44e17e651a56912cadc80c86d25bfd8e3cc3e4bbe27e9c432d5820ecee1e56')
+    b2sums=('194572ab14b2da49ee3255709e148654479d8e90e2951be495ca2b7ccad068ebe8a6b2d6024c5b6a855a2ee7d03779f4ba422503b577cc13f221b6c68c1c4b97')
+    b3sums=('8357f806b3efba0f8f35b17e2c00c7f8a0865cc6e0361cb157273416bff0af3d')
   ;;
 esac
 source=( ${_pkgname}-${pkgver}-${pkgrel}-${_arch}.tar.gz::https://github.com/klzgrad/naiveproxy/releases/download/v${pkgver}-${pkgrel}/naiveproxy-v${pkgver}-${pkgrel}-linux-${_arch}.tar.xz)
