@@ -1,7 +1,7 @@
 # Maintainer: Holger Obermaier <holgerob[at]gmx[dot]de>
 pkgname=likwid
 pkgver=5.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Lightweight performance tools"
 url="https://github.com/RRZE-HPC/likwid"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ optdepends=('perl: for likwid-mpirun and likwid-perfscope'
             'openmpi: for likwid-mpirun'
             'gnuplot: for likwid-perfscope')
 conflicts=()
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1b8e668da117f24302a344596336eca2c69d2bc2f49fa228ca41ea0688f6cbc2')
 
 _prefix="/usr"
