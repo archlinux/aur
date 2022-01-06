@@ -14,16 +14,16 @@ source=('git+https://github.com/dbeniamine/clevo-indicator.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	sed -i 's/sudo install -m 4750 -g adm $(TARGET)/install -Dm 4750 -g adm $(TARGET) -t/g' Makefile
+  cd "$srcdir/${pkgname%-git}"
+  sed -i 's/sudo install -m 4750 -g adm $(TARGET)/install -Dm 4750 -g adm $(TARGET) -t/g' Makefile
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DSTDIR="$pkgdir/usr" install
+  cd "$srcdir/${pkgname%-git}"
+  make DSTDIR="$pkgdir/usr" install
 }
