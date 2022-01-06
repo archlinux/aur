@@ -3,7 +3,7 @@
 # Contributor: condy <condy0919[at]gmail[dot]com>
 
 pkgname=psysh
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A runtime developer console, interactive debugger and REPL for PHP."
 url="https://psysh.org/"
@@ -16,7 +16,7 @@ source=(
 	"LICENSE::https://raw.githubusercontent.com/bobthecow/psysh/v${pkgver}/LICENSE"
 )
 sha256sums=(
-	'50801e3956ca59c7cd5776d76818642b4eb07b386d8a0f1a0597c1dbbba6c055'
+	'3a211723b015702e6e74849f278d76f393812fcda649dd576f9aa156d1b8a7d2'
 	'SKIP'
 )
 
