@@ -1,6 +1,6 @@
 pkgbase = naiveproxy-bin
 	pkgdesc = Make a fortune quietly
-	pkgver = 96.0.4664.45
+	pkgver = 97.0.4692.71
 	pkgrel = 1
 	url = https://github.com/klzgrad/naiveproxy
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = naiveproxy-bin
 	conflicts = naiveproxy
 	conflicts = naiveproxy-git
 	backup = etc/naiveproxy/config.json
-	source = naiveproxy-96.0.4664.45-1-x64.tar.gz::https://github.com/klzgrad/naiveproxy/releases/download/v96.0.4664.45-1/naiveproxy-v96.0.4664.45-1-linux-x64.tar.xz
-	sha512sums = da2310f64f55470d1025a76fcf6a191ee94e295990aac1db93766d56e011f06777a345def065ad332746bb99aaf32470b6dae6a9eefc95432413f0e0e43f240f
-	b2sums = 725292b8936346d1ac920d2bf245b87e89e32513b0c677c3832f303f004e9e74b21e0cb2d42b06bc6707fb2f263c44e99b03375316324e711ce758ea2cf49232
+	source = naiveproxy-97.0.4692.71-1-x64.tar.gz::https://github.com/klzgrad/naiveproxy/releases/download/v97.0.4692.71-1/naiveproxy-v97.0.4692.71-1-linux-x64.tar.xz
+	sha512sums = 9898de42dfda9c97e04ed01ab605f2c7e1c6a68e08fe810b25d406c5683fe6185c5fbfe58a14ad5e9e565a3eff3015326f5cd67bc70a7bf668b544389fd162a5
+	b2sums = 806ed40c31a9883a870d500d04bd3a8a7d132ec953e410f929e04be98ac39af63a0207991137be57d5dd0cc2fbb696c79b841f05c59707b5c91591b54e2d21a8
 
 pkgname = naiveproxy-bin
