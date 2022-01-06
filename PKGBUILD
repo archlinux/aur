@@ -3,12 +3,14 @@
 
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
-pkgver=97.0.4692.71
-pkgrel=1
+pkgver=97.0.4692.71_1
+pkgrel=2
+_pkgver=97.0.4692.71
+_pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
-depends=('nspr' 'nss')
+depends=("gcc-libs" "glibc" "nss")
 makedepends=("ninja" "python" "unzip")
 optdepends=("ccache: Speed up compilation")
 
@@ -28,7 +30,7 @@ sha256sums=(
 )
 
 source=(
-  "${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz"
+  "${pkgname}-${_pkgver}-${_pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${_pkgver}-${_pkgrel}.tar.gz"
   "naiveproxy.service"
   "naiveproxy@.service"
   "naiveproxy.sysusers"
@@ -46,7 +48,7 @@ provides=('naiveproxy')
 conflicts=('naiveproxy-git' 'naiveproxy-bin')
 
 prepare() {
-  SRC_DIR="${srcdir}/${pkgname}-${pkgver}-${pkgrel}/src"
+  SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}/src"
 
   mkdir -p ${SRC_DIR}/third_party/llvm-build/Release+Asserts
   tar xzf ${_clang_path} -C ${SRC_DIR}/third_party/llvm-build/Release+Asserts
@@ -59,7 +61,7 @@ prepare() {
 }
 
 build(){
-  SRC_DIR="${srcdir}/${pkgname}-${pkgver}-${pkgrel}/src"
+  SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}/src"
   pushd ${SRC_DIR}
   ./build.sh
   popd
@@ -72,7 +74,7 @@ package(){
   install -Dm644 naiveproxy.sysusers ${pkgdir}/usr/lib/sysusers.d/naiveproxy.conf
   popd
 
-  pushd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}
+  pushd ${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}
   install -d -m750 -o 0 -g 287 ${pkgdir}/etc/naiveproxy
   install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
   install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
