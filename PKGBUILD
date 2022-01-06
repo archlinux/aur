@@ -5,14 +5,14 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
-_IA32_EFI_IN_ARCH_X64="1"
+_IA32_EFI_IN_ARCH_X64="0"
 
 ## "1" to enable EMU build, "0" to disable
 _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 _GNULIB_COMMIT="be584c56eb1311606e5ea1a36363b97bddb6eed3"
-_UNIFONT_VER="13.0.05"
+_UNIFONT_VER="13.0.06"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -23,8 +23,8 @@ _UNIFONT_VER="13.0.05"
 pkgname='grub-luks-keyfile-git'
 pkgdesc='GNU GRand Unified Bootloader (2)'
 epoch=2
-pkgver=2.06rc1
-pkgrel=2
+pkgver=2.06
+pkgrel=3
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL3')
@@ -56,32 +56,20 @@ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' S
               'BE5C23209ACDDACEB20DB0A28C8189F1988C2166'  # Daniel Kiper <dkiper@net-space.pl>
               '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
 
-source=("git+https://git.savannah.gnu.org/git/grub.git"
+source=("git+https://github.com/mxfm/grub.git"
         "git+https://git.savannah.gnu.org/git/grub-extras.git#commit=${_GRUB_EXTRAS_COMMIT}"
         "git+https://git.savannah.gnu.org/git/gnulib.git#commit=${_GNULIB_COMMIT}"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
         '0001-00_header-add-GRUB_COLOR_-variables.patch'
-        '0002-10_linux-detect-archlinux-initramfs.patch'
-        '0001-Cryptomount-support-LUKS-detached-header.patch'
-        '0002-Cryptomount-support-key-files.patch'
-        '0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
-        '0004-Cryptomount-support-plain-dm-crypt.patch'
-        '0005-Cryptomount-support-for-hyphens-in-UUID.patch'
-        '0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch')
+        '0002-10_linux-detect-archlinux-initramfs.patch')
 
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'c4e61e9336d8d024479ea72616722c6c47c93f76dc173e8ad3edf9f9e07c3115'
+            'b7668a5d498972dc4981250c49f83601babce797be19b4fdd0f2f1c6cfbd0fc5'
             'SKIP'
             'ef87b27e4cef6f83c41c8a1a0401f41e22a89a130baaef8c5a832a6c99bb2683'
-            'ce7e24acec78989169a136e989e07369def3dd7c727788d5038a255409ec3c35'
-            'b9d737d1b403b540a00a8e9c25240a06bb371da7588d3e665af8543397724698'
-            '5d7060fbe9738764d2f8ebc96b43cc0bb8939c2e4e4e78b7a82a1a149ea6e837'
-            '3e373bcb7847326ae14365e7443f900559f35f4f9ba2e5e69d034f4423fc45bb'
-            '9ff4aba657d3826a510c57ce44d7582c4e4c72eb32a59ffd2b09e923202750ed'
-            '6f58b01eb9adcc6864e09a4ecaa728f19ee2c9a7ecf4cf20fd17fc5ec327f19c'
-            '4739a472c609df2528ac30e502a9f1b77fd1517af551c6bcbd35ba57b81da827')
+            'ce7e24acec78989169a136e989e07369def3dd7c727788d5038a255409ec3c35')
 
 _backports=(
 	# grub-mkconfig: Use portable "command -v" to detect installed programs
@@ -127,24 +115,6 @@ prepare() {
 	echo "Patch to enable GRUB_COLOR_* variables in grub-mkconfig..."
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
 	patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
-	
-	echo "Patch to enable LUKS detached header support..."
-	patch -Np1 -i "${srcdir}/0001-Cryptomount-support-LUKS-detached-header.patch"
-	
-	echo "Patch to enable LUKS key files support ..."
-	patch -Np1 -i "${srcdir}/0002-Cryptomount-support-key-files.patch"
-	
-	echo "Patch to enable multiple passphrase attempts support..."
-	patch -Np1 -i "${srcdir}/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch"
-	
-	echo "Patch to enable plain dm-crypt mode support..."
-	patch -Np1 -i "${srcdir}/0004-Cryptomount-support-plain-dm-crypt.patch"
-	
-	echo "Patch to enable hyphens in UUID support..."
-	patch -Np1 -i "${srcdir}/0005-Cryptomount-support-for-hyphens-in-UUID.patch"
-	
-	echo "Patch to enable whole device as keyfile support ..."
-	patch -Np1 -i "${srcdir}/0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch"
 
 	echo "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme..."
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"

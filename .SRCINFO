@@ -1,7 +1,7 @@
 pkgbase = grub-luks-keyfile-git
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.06rc1
-	pkgrel = 2
+	pkgver = 2.06
+	pkgrel = 3
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	arch = x86_64
@@ -44,35 +44,22 @@ pkgbase = grub-luks-keyfile-git
 	replaces = grub-efi-x86_64
 	options = !makeflags
 	backup = etc/grub.d/40_custom
-	source = git+https://git.savannah.gnu.org/git/grub.git
+	source = git+https://github.com/mxfm/grub.git
 	source = git+https://git.savannah.gnu.org/git/grub-extras.git#commit=8a245d5c1800627af4cefa99162a89c7a46d8842
 	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=be584c56eb1311606e5ea1a36363b97bddb6eed3
-	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.05/unifont-13.0.05.bdf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.05/unifont-13.0.05.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.06/unifont-13.0.06.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.06/unifont-13.0.06.bdf.gz.sig
 	source = 0001-00_header-add-GRUB_COLOR_-variables.patch
 	source = 0002-10_linux-detect-archlinux-initramfs.patch
-	source = 0001-Cryptomount-support-LUKS-detached-header.patch
-	source = 0002-Cryptomount-support-key-files.patch
-	source = 0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch
-	source = 0004-Cryptomount-support-plain-dm-crypt.patch
-	source = 0005-Cryptomount-support-for-hyphens-in-UUID.patch
-	source = 0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch
 	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
 	validpgpkeys = BE5C23209ACDDACEB20DB0A28C8189F1988C2166
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c4e61e9336d8d024479ea72616722c6c47c93f76dc173e8ad3edf9f9e07c3115
+	sha256sums = b7668a5d498972dc4981250c49f83601babce797be19b4fdd0f2f1c6cfbd0fc5
 	sha256sums = SKIP
 	sha256sums = ef87b27e4cef6f83c41c8a1a0401f41e22a89a130baaef8c5a832a6c99bb2683
 	sha256sums = ce7e24acec78989169a136e989e07369def3dd7c727788d5038a255409ec3c35
-	sha256sums = b9d737d1b403b540a00a8e9c25240a06bb371da7588d3e665af8543397724698
-	sha256sums = 5d7060fbe9738764d2f8ebc96b43cc0bb8939c2e4e4e78b7a82a1a149ea6e837
-	sha256sums = 3e373bcb7847326ae14365e7443f900559f35f4f9ba2e5e69d034f4423fc45bb
-	sha256sums = 9ff4aba657d3826a510c57ce44d7582c4e4c72eb32a59ffd2b09e923202750ed
-	sha256sums = 6f58b01eb9adcc6864e09a4ecaa728f19ee2c9a7ecf4cf20fd17fc5ec327f19c
-	sha256sums = 4739a472c609df2528ac30e502a9f1b77fd1517af551c6bcbd35ba57b81da827
 
 pkgname = grub-luks-keyfile-git
-
