@@ -1,8 +1,8 @@
 # Maintainer: necklace <ns@nsz.no>
 
 pkgname=iridium-rpm
-pkgver=95.0
-pkgrel=6
+pkgver=96.0
+pkgrel=1
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
@@ -12,9 +12,9 @@ conflicts=('iridium' 'chromium')
 depends=('ffmpeg' 'pipewire' 're2' 'snappy' 'minizip')
 options=('!emptydirs' '!strip')
 
-source=('https://downloads.iridiumbrowser.de/openSUSE_Leap_15.3/x86_64/iridium-browser-2021.10.95.1-lp153.1.1.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/openSUSE_Leap_15.3/iridium-browser-2021.12.96.0-bp153.1636.1.x86_64.rpm')
 
-sha256sums=('8b87d189313607ad26f9a2a44e98859016afae6c0da5ee76809aeca2d55478c3')
+sha256sums=('d288a2b650fc35d649720948bc875650dc8c43e06a196602be9c8a375b4fd07a')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
