@@ -1,12 +1,13 @@
 pkgbase = ipython-ipyparallel
 	pkgdesc = Interactive Parallel Computing in Python
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ipyparallel/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python>3.6
+	depends = python-setuptools
 	depends = python-entrypoints
 	depends = python-decorator
 	depends = python-pyzmq>=18
