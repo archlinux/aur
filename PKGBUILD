@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=plom
-pkgver=0.7.9
+pkgver=0.7.11
 pkgrel=1
 pkgdesc='Paperless open marking'
 arch=(any)
@@ -37,7 +37,7 @@ makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('fd0668a4b6cff39c0144a08938475f22c3bba25f02c087fcf3960bb9c986f516')
+sha256sums=('3bcf2032ddd7a90e9a031cabbf5df2096e02599324f83edff46916a156971607')
 
 build() {
 	cd "$_archive"
