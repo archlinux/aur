@@ -3,14 +3,18 @@ _srcname=ArknightsAutoHelper
 _pkgname=akhelper
 pkgname=$_pkgname-git
 pkgver=r911.fcf089e
-pkgrel=3
+pkgrel=4
 pkgdesc='Arknights Auto Helper based on ADB and Python | 基于python的明日方舟护肝助手'
 arch=(x86_64)
 url=https://github.com/ninthDevilHAUNSTER/ArknightsAutoHelper
 provides=($_pkgname $_srcname)
 conflicts=($_pkgname $_srcname)
 license=(MIT)
-depends=(python-coloredlogs python-numpy python-opencv python-pillow python-requests python-ruamel-yaml python-colorama python-bottle-websocket python-pywebview python-textdistance python-gevent-websocket)
+depends=(python-coloredlogs python-numpy python-opencv 
+  python-pillow python-requests python-ruamel-yaml 
+  python-colorama python-bottle-websocket 
+  python-pywebview python-textdistance python-gevent-websocket 
+  tesseract-data-chi_sim)
 makedepends=()
 source=(git+https://github.com/ninthDevilHAUNSTER/ArknightsAutoHelper
   akhelper

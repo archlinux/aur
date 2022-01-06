@@ -1,7 +1,7 @@
 pkgbase = akhelper-git
 	pkgdesc = Arknights Auto Helper based on ADB and Python | 基于python的明日方舟护肝助手
 	pkgver = r911.fcf089e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ninthDevilHAUNSTER/ArknightsAutoHelper
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = akhelper-git
 	depends = python-pywebview
 	depends = python-textdistance
 	depends = python-gevent-websocket
+	depends = tesseract-data-chi_sim
 	provides = akhelper
 	provides = ArknightsAutoHelper
 	conflicts = akhelper
