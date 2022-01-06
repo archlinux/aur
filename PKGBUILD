@@ -3,7 +3,7 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=21.12.0
+pkgver=21.12.1
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules kdoctools)
 optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration' 'qt5-tools: for some runcommand plugin actions')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig}
         kdeconnect-openssh-8.8.patch)
-sha256sums=('519e1d03cef6c8b68902be7907fada4988b34c20816a977077576bf168369d4a'
+sha256sums=('4c70baecf581b1d4aa0569ebe2161b95f1973d6421b321b8ae87ace461b481d7'
             'SKIP'
             'e1b43f8b3e0b2a521277d70d4fdeb8dff714f6855f33ae1c3c7d8f03fe69dbb9')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
