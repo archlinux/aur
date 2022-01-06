@@ -14,22 +14,22 @@ sha256sums=('b3dc0f4babd34f8eb6d6e2b6528f916151c82e6a8fa01dba41c6c3a2b42d94ed'
             '8b96a361c39351cde45d73947f55ad1d64b98c43617dad5a3c901c6c668ba1ed')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-	# fix gcc11 compilation error
-	patch -Np1 -i $srcdir/119.patch
+  # fix gcc11 compilation error
+  patch -Np1 -i $srcdir/119.patch
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	qmake \
-		QMAKE_CFLAGS="$CFLAGS" \
-		QMAKE_CXXFLAGS="$CXXFLAGS" \
-		QMAKE_LFLAGS="$LDFLAGS"
-	make
+  cd "$pkgname-$pkgver"
+  qmake \
+    QMAKE_CFLAGS="$CFLAGS" \
+    QMAKE_CXXFLAGS="$CXXFLAGS" \
+    QMAKE_LFLAGS="$LDFLAGS"
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make INSTALL_ROOT="$pkgdir" install
+  cd "$pkgname-$pkgver"
+  make INSTALL_ROOT="$pkgdir" install
 }
