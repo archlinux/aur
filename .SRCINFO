@@ -1,6 +1,6 @@
 pkgbase = smf-dsp-git
 	pkgdesc = Advanced MIDI file player, including various chip music synths
-	pkgver = 0.0.0.r283.gf080e27
+	pkgver = 0.10.0.r21.ga0c9a5a
 	pkgrel = 1
 	url = https://github.com/jpcima/smf-dsp
 	arch = x86_64
@@ -21,6 +21,14 @@ pkgbase = smf-dsp-git
 	source = git+https://github.com/jpcima/scc.git
 	source = git+https://github.com/munt/munt.git
 	source = git+https://github.com/divideconcept/FluidLite.git
+	source = git+https://github.com/jpcima/timidityplus.git
+	source = git+https://github.com/martinmoene/span-lite.git
+	source = git+https://github.com/martinmoene/scope-lite.git
+	source = git+https://github.com/martinmoene/string-view-lite.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -29,4 +37,3 @@ pkgbase = smf-dsp-git
 	md5sums = SKIP
 
 pkgname = smf-dsp-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Jean Pierre Cimalando <jp-dev@inbox.ru>
 pkgname=smf-dsp-git
 _pkgname=smf-dsp
-pkgver=0.0.0.r283.gf080e27
+pkgver=0.10.0.r21.ga0c9a5a
 pkgrel=1
 epoch=
 pkgdesc="Advanced MIDI file player, including various chip music synths"
@@ -25,9 +25,17 @@ source=("git+https://github.com/jpcima/smf-dsp.git"
         "git+https://github.com/Wohlstand/libOPNMIDI.git"
         "git+https://github.com/jpcima/scc.git"
         "git+https://github.com/munt/munt.git"
-        "git+https://github.com/divideconcept/FluidLite.git")
+        "git+https://github.com/divideconcept/FluidLite.git"
+        "git+https://github.com/jpcima/timidityplus.git"
+        "git+https://github.com/martinmoene/span-lite.git"
+        "git+https://github.com/martinmoene/scope-lite.git"
+        "git+https://github.com/martinmoene/string-view-lite.git")
 noextract=()
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -48,6 +56,10 @@ prepare() {
   git config submodule.thirdparty/scc.url "$srcdir"/scc
   git config submodule.thirdparty/munt.url "$srcdir"/munt
   git config submodule.thirdparty/FluidLite.url "$srcdir"/FluidLite
+  git config submodule.thirdparty/timidityplus.url "$srcdir"/timidityplus
+  git config submodule.thirdparty/span-lite.url "$srcdir"/span-lite
+  git config submodule.thirdparty/scope-lite.url "$srcdir"/scope-lite
+  git config submodule.thirdparty/string-view-lite.url "$srcdir"/string-view-lite
   git submodule update
 }
 
