@@ -11,7 +11,7 @@ url='https://github.com/terrencepreilly/darglint'
 arch=('any')
 license=('MIT')
 
-depends=('python')
+depends=('python' 'python-setuptools')
 
 source=("https://github.com/terrencepreilly/$_pkgname/archive/v$pkgver.tar.gz")
 sha512sums=('320f52fa366472358f1d10c06d92f8a26eada014efa94d43c37645d6003c4c65e38ad91c60b031555649a36351f73bac9feaa005274f498dab9b16a4235e34d4')
