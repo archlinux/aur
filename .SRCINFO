@@ -19,4 +19,3 @@ pkgbase = gst-plugin-viper4linux-git
 	sha256sums = SKIP
 
 pkgname = gst-plugin-viper4linux-git
-
