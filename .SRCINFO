@@ -1,0 +1,13 @@
+pkgbase = netspy
+	pkgdesc = 一款快速探测内网可达网段工具
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = https://github.com/shmilylty/netspy
+	arch = x86_64
+	license = custom
+	makedepends = go
+	depends = glibc
+	source = netspy-0.0.2.tar.gz::https://github.com/shmilylty/netspy/archive/v0.0.2.tar.gz
+	sha256sums = 1afdb7a00b7a1b82a64cc860eb5e11056f90c4bb829559a0984ed2b0d52f867c
+
+pkgname = netspy
