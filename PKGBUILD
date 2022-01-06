@@ -2,14 +2,14 @@
 
 pkgname=sdl12-compat-git
 _pkgbase=sdl12-compat
-pkgver=r474.16305a1
-pkgrel=1
+pkgver=r520.d05899f
+pkgrel=2
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64")
 url="https://github.com/libsdl-org/sdl12-compat"
 license=('custom')
 depends=('sdl-compat_image' 'sdl2' 'glibc')
-makedepends=('sdl2' 'gcc' 'cmake' 'git')
+makedepends=('gcc' 'cmake' 'git')
 conflicts=('sdl')
 provides=('sdl')
 source=("git+https://github.com/libsdl-org/sdl12-compat.git")
