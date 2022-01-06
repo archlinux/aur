@@ -1,5 +1,3 @@
-# Placeholder until packages merged
-
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 pkgname=('canta-gtk-theme' 'canta-icon-theme')
