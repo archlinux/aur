@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=termscp
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A feature rich terminal UI file transfer and explorer"
 url="https://github.com/veeso/termscp"
@@ -11,7 +11,7 @@ arch=("any")
 depends=('gcc-libs' 'glibc' 'zlib' 'openssl' 'dbus')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cc382bf397d8dbcbe0b3a3c83edae5d976e268a199f6a4c66be31d9f1db0785c')
+sha256sums=('2d5f810c8908601c38804348b91d13195d433b87f85365c5043a4162f03f8aba')
 
 prepare() {
    cd "$pkgname-$pkgver"
