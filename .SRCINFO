@@ -1,0 +1,16 @@
+pkgbase = tfmigrate
+	pkgdesc = A Terraform state migration tool for GitOps
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/minamijoyo/tfmigrate
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = tfmigrate-0.3.0.tar.gz::https://github.com/minamijoyo/tfmigrate/archive/v0.3.0.tar.gz
+	sha256sums = 9baa141c2ba36e1190bbf92a70f7a58db2f9b009db5c645a50f9e23a89d5903c
+
+pkgname = tfmigrate
