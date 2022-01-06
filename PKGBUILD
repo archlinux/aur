@@ -2,7 +2,7 @@
 
 _gemname=dry-system
 pkgname=ruby-$_gemname
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Organize your code into reusable components"
 arch=('any')
@@ -22,8 +22,8 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('9ada1d5322ea4b0e07e34a98942c2114223571f837d4b4a353c8bd91231e05184a8fc45e35c4466ffd102b7a2084a0fdefccc8408bb6a4a22abf0911d6d62efb')
-b2sums=('fe11d3c6f9fd4174b7bef667220a65f6bd296f3303eeff89dc3446489a394583fda830dee144b66ebd9d6f68501194bf093fabcf4be952dc974104e5dfa74d68')
+sha512sums=('48511d8e96f8d6fb30eda5f727a47b6958802e3f2dd0e709882047f9819cdd736cc3519ad87aa8bf701b1ba83385305599b5e3f7fdd5cbd10652f29dd7993abd')
+b2sums=('a4ec8722647cfedb59d53e7fa98b1b2803b5fba1fe269130ba737548428da18fdfa91ab27c3edce8e54d093ca366c03358ca08706a412e5572ff49325fb8ebb7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
