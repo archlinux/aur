@@ -4,12 +4,12 @@
 # Contributor: Christian METZLER <neroth@xeked.com>
 pkgname=gnome-shell-extension-openweather-git
 pkgver=1.0.r259.gd714eb1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome shell extension for displaying weather information"
 arch=(any)
 url="https://gitlab.com/jenslody/gnome-shell-extension-openweather"
 license=(GPL3)
-depends=(glib2 gettext pkg-config gnome-shell)
+depends=(glib2 gettext pkg-config gnome-shell gnome-icon-theme)
 makedepends=(git gnome-common autoconf automake intltool)
 provides=(gnome-shell-extension-weather-git)
 conflicts=(gnome-shell-extension-weather-git)

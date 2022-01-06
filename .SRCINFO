@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-openweather-git
 	pkgdesc = Gnome shell extension for displaying weather information
 	pkgver = 1.0.r259.gd714eb1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/jenslody/gnome-shell-extension-openweather
 	install = gschemas.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = gnome-shell-extension-openweather-git
 	depends = gettext
 	depends = pkg-config
 	depends = gnome-shell
+	depends = gnome-icon-theme
 	provides = gnome-shell-extension-weather-git
 	conflicts = gnome-shell-extension-weather-git
 	source = gnome-shell-extension-openweather-git::git+https://gitlab.com/jenslody/gnome-shell-extension-openweather.git
