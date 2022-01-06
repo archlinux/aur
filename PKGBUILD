@@ -1,7 +1,7 @@
 # Maintainer: Shusui Moyatani <syusui.s at gmail dot com>
 
 pkgname=azcomicv
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A simple comic viewer for Linux"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://azsky2.html.xdomain.jp/soft/azcomicv.html"
 license=('GPL3')
 depends=('libx11' 'libxext' 'libxcursor' 'hicolor-icon-theme' 'freetype2' 'fontconfig' 'zlib' 'libpng' 'libtiff' 'libjpeg-turbo')
 source=("https://gitlab.com/azelpg/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('1129791cf1338c27c6d2d26e238bc99608e4fe86cfd1af8710116ceb24a0b0ac')
+sha256sums=('8a7bd329667b2a3a8fc288cf54839f87a7a739a92cc476dd742b189d1a46d3e4')
 
 build() {
 	cd "${srcdir}/${pkgname}-v${pkgver}"
