@@ -13,4 +13,3 @@ pkgbase = cdir-git
 	sha256sums = SKIP
 
 pkgname = cdir-git
-
