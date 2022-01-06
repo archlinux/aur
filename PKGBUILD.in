@@ -1,4 +1,5 @@
 # Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
+# Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgbase=kicad-library-nightly
 pkgname=('kicad-library-nightly' 'kicad-library-3d-nightly')
