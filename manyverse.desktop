@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Manyverse
+Comment=A social network off the grid
+Exec=/opt/manyverse/manyverse
+
