@@ -7,7 +7,7 @@
 # Contributor: Philipp Fent <philipp@fent.de>
 
 pkgname=monetdb
-pkgver=11.41.11
+pkgver=11.41.13
 pkgrel=1
 pkgdesc="MonetDB: an open source database system"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('cmake' 'ninja')
 depends=('r' 'python' 'libatomic_ops' 'snappy' 'unixodbc' 'libxml2')
 install=monetdb.install
 source=("https://dev.monetdb.org/downloads/sources/archive/MonetDB-$pkgver.tar.xz")
-sha256sums=('2e81a98e06820dfaf56770af027e8da4a8dcc533d3599b9cc2b5a2e1efdc07af')
+sha256sums=('7738e106ac3a39bfb37feb8efa9a050a412fb332ab58c29a8aad23c01ba42197')
 
 prepare() {
     cd "$srcdir/MonetDB-$pkgver"
