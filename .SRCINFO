@@ -10,8 +10,8 @@ pkgbase = edenmath.app
 	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
+	depends = gnustep-back
 	source = https://www.eskimo.com/~pburns/EdenMath/files/EdenMath_GNUstep-1.1.1.tar.gz
 	sha256sums = fb149a898bae0f08cb86efa388f2847c1ddfe6a6738f4ee6de7eeaa2c9cc444f
 
 pkgname = edenmath.app
-
