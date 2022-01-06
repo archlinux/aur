@@ -1,10 +1,10 @@
 pkgbase = git-nautilus-icons-git
 	pkgdesc = A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories
-	pkgver = 2.0.0.r1.g6d60312
+	pkgver = 2.0.2.r1.gf2e765d
 	pkgrel = 1
 	url = https://github.com/chrisjbillington/git-nautilus-icons
 	arch = any
-	license = BSD 2-Clause "Simplified"
+	license = BSD
 	makedepends = python-setuptools-scm
 	depends = python-gobject
 	optdepends = python-nautilus: Nautilus support
@@ -22,4 +22,3 @@ pkgbase = git-nautilus-icons-git
 	sha256sums = SKIP
 
 pkgname = git-nautilus-icons-git
-

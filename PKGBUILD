@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=git-nautilus-icons-git
-pkgver=2.0.0.r1.g6d60312
+pkgver=2.0.2.r1.gf2e765d
 pkgrel=1
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/git-nautilus-icons"
-license=('BSD 2-Clause "Simplified"')
+license=('BSD')
 depends=('python-gobject')
 makedepends=('python-setuptools-scm')
 optdepends=('python-nautilus: Nautilus support'
@@ -21,23 +21,22 @@ source=("git+https://github.com/chrisjbillington/git-nautilus-icons.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py build
+  cd "$srcdir/${pkgname%-git}"
+  python setup.py build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-	# compile Python bytecode for modules outside of site-packages:
-	python -m compileall -d / "$pkgdir"/usr/share
-	python -O -m compileall -d / "$pkgdir"/usr/share
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+
+  # compile Python bytecode for modules outside of site-packages:
+  python -m compileall -d / "$pkgdir"/usr/share
+  python -O -m compileall -d / "$pkgdir"/usr/share
 }
