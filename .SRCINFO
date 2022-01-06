@@ -1,14 +1,14 @@
 pkgbase = git-warp-time
 	pkgdesc = reset file timestamps to repo state
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.4.4
+	pkgrel = 1
 	url = https://github.com/alerque/git-warp-time
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
 	makedepends = jq
-	source = https://github.com/alerque/git-warp-time/releases/download/v0.4.3/git-warp-time-0.4.3.tar.xz
-	sha256sums = 5e7824c40241463503beb2236755bf84d97a0af0ad2358fa49ea6d3f3a8ce63a
+	source = https://github.com/alerque/git-warp-time/releases/download/v0.4.4/git-warp-time-0.4.4.tar.xz
+	sha256sums = 4e285a584756eb75703ac0dfdc5d27759d41cb8575ff0b0a66454429a1c4c021
 
 pkgname = git-warp-time
