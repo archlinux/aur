@@ -8,7 +8,7 @@ pkgdesc='An explosive arcade-style party game'
 arch=('x86_64')
 url='http://www.froemling.net/apps/bombsquad'
 license=('unknown')
-depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python38')
+depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python39')
 source=(
   "https://files.ballistica.net/bombsquad/builds/BombSquad_Linux_${pkgver}.tar.gz"
   "https://files.ballistica.net/bombsquad/promo/BombSquadIcon.png"
