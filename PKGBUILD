@@ -12,7 +12,7 @@ conflicts=('gmni-git' 'cgmnlm-git')
 optdepends=('xdg-utils')
 depends=('bearssl')
 makedepends=('scdoc')
-sha256sums=('57c1937cfce2634a198618074487670b928df73f94323b4355ead2480acc542a')
+sha256sums=('372da27dc5b9ebbf752d95b14f1746e2614ed1dc4a0ce55ed866dda4da27b276')
 
 build() {
     cd "${srcdir}/${pkgname}"
