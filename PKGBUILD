@@ -2,7 +2,7 @@
 
 pkgname=libpdfium-nojs
 pkgver=4692.r0.31722577db
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -82,7 +82,7 @@ prepare() {
   echo "Done."
   
   # Create fake gclient_args.gni file to satisfy include list for build/config/compiler/compiler.gni
-  # touch "$srcdir/build/config/gclient_args.gni"
+  touch "$srcdir/build/config/gclient_args.gni"
   
   # Exclude test fonts from build
   cd "$srcdir/pdfium/testing/"
