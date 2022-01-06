@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=waynergy
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Synergy client for wayland compositors"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('wayland' 'libxkbcommon' 'libretls')
 makedepends=(git meson ninja)
 optdepends=('wl-clipboard: Clipboard synchronization support')
 source=("https://github.com/r-c-f/waynergy/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('8b1142c95ae61373086a9abb6f5c23a9')
+md5sums=('ad99f812f975c5467ffb0afabe03a5c8')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
