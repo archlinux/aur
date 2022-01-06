@@ -2,7 +2,7 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.30.0-beta.3'
+_pkgver='1.30.0-beta.4'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
@@ -20,7 +20,7 @@ source=(
 	'browserslist.diff'
 
 )
-sha512sums=('484569f88e429a6ba5672e94382baa7cd26287a90214eb512072ce87b8da27682d99c60fdd28ae28412496ba4af5b683cbc5b338810302e769ec0da26b894a19'
+sha512sums=('b5586f1d090b5f31b35046ec5074293dc23b635ae5191517ad62e2d989df1e2956757cabbfdf58fd1abe536611c0e7ca525258fe30441c9aa584f1dde253da31'
             '03b766834ce0c85abca10fe98ab4aa12a20d1110a4afb11b85c06e7e34ceec1163933be51d7a1881fd576d2cef01118319c856e9bcac92aaefb95084dc2a97f9'
             'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
 
