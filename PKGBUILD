@@ -1,7 +1,7 @@
 # Maintainer: Holger Obermaier <holgerob[at]gmx[dot]de>
 pkgname=likwid
 pkgver=5.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Lightweight performance tools"
 url="https://github.com/RRZE-HPC/likwid"
 arch=('x86_64' 'i686')
@@ -26,7 +26,7 @@ _freqdaemon="${_sbindir}/likwid-setFreq"
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   # Replace hard coded sbin in Makefile
-  sed -i 's@/sbin/@/bin/@g' Makefile
+  sed -i 's@/sbin@/bin@g' Makefile
   make -j "$(nproc)" \
     PREFIX="${_prefix}" \
     MANPREFIX="${_mandir}" \
