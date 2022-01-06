@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 250.rc2.r55.g17cfd6f96f
+	pkgver = 250.r192.gcd933f14bd
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -44,7 +44,6 @@ pkgbase = systemd-git
 	options = !ccache
 	source = git+https://github.com/systemd/systemd
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
-	source = 0003-PARTIAL-REVERT-commit-tree-wide-replace-strverscmp-and-str_verscmp-with-strverscmp_improved.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -63,8 +62,7 @@ pkgbase = systemd-git
 	source = 30-systemd-udev-reload.hook
 	source = 30-systemd-update.hook
 	sha512sums = SKIP
-	sha512sums = 10f3b477527ec263cc6465c84d94416e356435930edc9e26844a0fd4f71e87a27fa0f91ce24b43a22cacdd2ead5e760e9d607369bc537a8da8d34021302a89a1
-	sha512sums = 34541f1967536524329867f9f341f8d9250d9d771c60dc3e6a22ccb82fc01f103cfd3f9903329777591ccbecd2446622a5d6b3804fa0411482b85c70593ee8ad
+	sha512sums = cc0c2ffb5f7c3a7176cd68f3dddd85ca000dcc4cdf3044746a20147234adb6811800fd28a4713faa6a59bf8c02be9fd43c2d6aa6695fd1dbf03ae773a91d090c
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
 	sha512sums = 5479c8ef963ff247381392907c13308b4ae3a9383c867bd4c8a318b159f23acdb4be5f4ddae0dab4665f4927d3f30166077b1d3aaa2cde6bf53d023b7abb939c
 	sha512sums = a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6
@@ -128,10 +126,10 @@ pkgname = systemd-git
 	optdepends = curl: machinectl pull-tar and pull-raw
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
-	provides = systemd=250.rc2.r55.g17cfd6f96f
+	provides = systemd=250.r192.gcd933f14bd
 	provides = nss-myhostname
-	provides = systemd-tools=250.rc2.r55.g17cfd6f96f
-	provides = udev=250.rc2.r55.g17cfd6f96f
+	provides = systemd-tools=250.r192.gcd933f14bd
+	provides = udev=250.r192.gcd933f14bd
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -166,7 +164,7 @@ pkgname = systemd-libs-git
 	depends = lz4
 	depends = xz
 	depends = zstd
-	provides = systemd-libs=250.rc2.r55.g17cfd6f96f
+	provides = systemd-libs=250.r192.gcd933f14bd
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
@@ -178,7 +176,7 @@ pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-git
-	provides = systemd-resolvconf=250.rc2.r55.g17cfd6f96f
+	provides = systemd-resolvconf=250.r192.gcd933f14bd
 	provides = openresolv
 	provides = resolvconf
 	conflicts = systemd-resolvconf
@@ -188,6 +186,6 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=250.rc2.r55.g17cfd6f96f
+	provides = systemd-sysvcompat=250.r192.gcd933f14bd
 	conflicts = systemd-sysvcompat
 	conflicts = sysvinit
