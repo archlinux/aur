@@ -1,15 +1,14 @@
 pkgbase = scas
 	pkgdesc = SirCmpwn's assembler and linker
-	pkgver = 1.0.0_rc4
-	pkgrel = 2
+	pkgver = 0.5.5
+	pkgrel = 1
 	url = https://github.com/KnightOS/scas
 	arch = x86_64
 	groups = knightos
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc
-	source = scas-1.0.0_rc4.tar.gz::https://github.com/KnightOS/scas/archive/1.0.0_rc4.tar.gz
-	sha256sums = 506dea290a03fc297afc340ac547a1b4c6a5a4d351113428887cc4b9cf13c9e2
+	source = scas-0.5.5.tar.gz::https://github.com/KnightOS/scas/archive/0.5.5.tar.gz
+	sha256sums = afba54cb80e8be955e28017c08d4aaf322f512287c22e552ba066257fa12d4bc
 
 pkgname = scas
-
