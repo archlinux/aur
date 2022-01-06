@@ -3,7 +3,7 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize-mold
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
@@ -25,10 +25,10 @@ source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]})
 sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
-          '8a29f5b36fd191f5ca061625f006dfe822148281'
+          'befd8d13ef5c2ec92f4bc9f3981af8d32e8a6223'
           'd7a3801037333c582dba976db27cf8896bc1b401'
           '3a356f52131e39f59d360c54a572d678c7208b42'
-          '9ea51e4cade43db60a43ebc7f41bdb19f881c94b'
+          '83fb4e2bc0a75e91d7db317d221f45a6dc525e8a'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
@@ -41,7 +41,7 @@ sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           'f17b1a8ccbd807fd59fbc716cc695be32e261e38'
           '3c61762a183a2f76cc2ff2e55cfffb68b6a8320c'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '02b26a3abf1102fb9d1c746575b570265b10f11d'
+          '62ffed4ae52c9b828115633f4d7ccc57b45caed2'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'

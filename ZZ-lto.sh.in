@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 #
-#   ZZ-lto.sh - Compile with link-time optimization
+#   ZZ-lto.sh - Compile with link-time optimization # Changed lto to lto-gcc because arch already provides the options with lto
+#
 #
 
 [[ -n "$LIBMAKEPKG_BUILDENV_LTO_SH" ]] && return
@@ -10,18 +11,18 @@ LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
 
 source "$LIBRARY/util/option.sh"
 
-build_options+=('lto' 'lto-thin' 'lto-clang' 'lto-thin-clang')
+build_options+=('lto-gcc' 'lto-thin' 'lto-clang' 'lto-thin-clang')
 buildenv_functions+=('buildenv_lto')
 
 buildenv_lto() {
-  if check_buildoption "lto" "y" || check_buildoption "lto-thin" "y" || \
+  if check_buildoption "lto-gcc" "y" || check_buildoption "lto-thin" "y" || \
     check_buildoption "lto-clang" "y" || check_buildoption "lto-thin-clang" "y"; then
     ltoflags=" -flto"
     check_buildoption "lto-thin-clang" "y" && ltoflags+="=thin"
-    check_buildoption "lto-thin" "y" || check_buildoption "lto" "y" && \
+    check_buildoption "lto-thin" "y" || check_buildoption "lto-gcc" "y" && \
       [[ -f "$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')" ]] && \
       ltoflags+="=auto -fno-fat-lto-objects"
-    check_buildoption "lto" "y" && ltoflags+=" -flto-partition=none"
+    check_buildoption "lto-gcc" "y" && ltoflags+=" -flto-partition=none"
 
     CFLAGS+="$ltoflags"
     CXXFLAGS+="$ltoflags"
