@@ -1,7 +1,7 @@
 pkgbase = shibboleth-sp
 	pkgdesc = Shibboleth SAML2 Service Provider (including Apache mod_shib)
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.shibboleth.net/confluence/display/SP3/Home
 	install = shibboleth-sp.install
 	arch = x86_64
