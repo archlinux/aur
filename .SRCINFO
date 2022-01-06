@@ -1,7 +1,7 @@
 pkgbase = betterww-git
 	pkgdesc = Wind Waker Modding Tool for Game Cube
 	pkgver = 1.5pre.r0.g640a2a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WideBoner/betterww
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = betterww-git
 	source = betterww.png
 	source = LICENSE
 	sha512sums = SKIP
-	sha512sums = 1fd5f9e9442b1f40ced0c866567763c65173ac06ea41f96ba99bb2d54521d36476f4b01cc89980d086142f246c97b0f1ee8fb054de59d85eccaf430f79af2c32
+	sha512sums = bf8d8d3bcd7c27e9da80b38a4bb91799ab0d0230cf3eab84c7caedc0e07b2be936371c83722ce12a206b8a44f3da4116025160a68862b94245e9c5366955eb54
 	sha512sums = c5d63dc5a391c28eec09181c684af882898e9c37a29615fe086ce59ac267e1e1b22af19461277b4ca9f81049288307e3d9ba806d6dc395fc4b98d61234f25d63
 	sha512sums = f4f5ec0ed0c72ab640188d802d81daf2a14c1eab3fedb0e3d6b85068cc5c2164bd1fddb1db6a4d53ae1cbe4a439ab244f96fed3a1e05c6e09893d366904f9d9d
 	sha512sums = cde29735b23877e3c1dafd07bb1e86ddb84f48e836db5872bbce67ff83d15f06097c9f54313742cfbf34d0302de13447581dd976f0f22178726a2a49f5baf19b
