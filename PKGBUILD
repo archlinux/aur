@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=getextensions-git
-pkgver=1.0.r2.g544653d
+pkgver=1.0.r4.g01fe032
 pkgrel=1
 pkgdesc="Python GTK app to install extensions from extensions.gnome.org"
 arch=('any')
@@ -28,7 +28,6 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
