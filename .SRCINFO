@@ -1,6 +1,6 @@
 pkgbase = easywifi-git
 	pkgdesc = The easiest way to add wifi networks on Linux
-	pkgver = r7.a124e4a
+	pkgver = r9.04a9c12
 	pkgrel = 1
 	url = https://github.com/NoahCristino/easywifi
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = easywifi-git
 	sha256sums = SKIP
 
 pkgname = easywifi-git
-
