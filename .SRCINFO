@@ -1,23 +1,20 @@
 pkgbase = dbus-cpp
 	pkgdesc = A header-only dbus-binding leveraging C++-11
-	pkgver = 5.0.0
-	pkgrel = 5
-	url = https://code.launchpad.net/dbus-cpp
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://gitlab.com/ubports/core/lib-cpp/dbus-cpp
 	arch = x86_64
+	arch = i686
+	groups = lib-cpp
 	license = LGPL3
 	makedepends = cmake
-	makedepends = gmock
-	makedepends = properties-cpp
 	makedepends = boost
-	makedepends = lcov
-	makedepends = gcovr
-	depends = process-cpp
 	depends = dbus
 	depends = libxml2
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/dbus-cpp_5.0.0+18.04.20171031.orig.tar.gz
-	source = boost-asio-1-66.patch
-	sha256sums = e0d426027acd65f7e568c53e974ae3e666f0af2e75b2d2afed3dae721a6e9e38
-	sha256sums = 7e7b83516ddbcad675ed63dc950ecdd35cecf73efad63fac675931e4b3795269
+	depends = process-cpp
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dbus-cpp/5.0.1-4/dbus-cpp_5.0.1.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dbus-cpp/5.0.1-4/dbus-cpp_5.0.1-4.debian.tar.xz
+	sha256sums = 37f0391cad90f419db37c7c93c2726d832ef6bf29c420a57d6d42cb1f9d42e22
+	sha256sums = 96067d7efe657bab84eb127f05a89d700e218583ea4982d9d021d1ea6baea141
 
 pkgname = dbus-cpp
-
