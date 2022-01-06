@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-weather-in-the-clock-git
 	pkgdesc = Display the current Weather in the Clock.
-	pkgver = r19.ca9682b
+	pkgver = r23.b36cc55
 	pkgrel = 1
 	url = https://github.com/JasonLG1979/gnome-shell-extension-weather-in-the-clock
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = gnome-shell-extension-weather-in-the-clock-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-weather-in-the-clock-git
-

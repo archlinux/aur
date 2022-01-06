@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-weather-in-the-clock-git
-pkgver=r19.ca9682b
+pkgver=r23.b36cc55
 pkgrel=1
 pkgdesc="Display the current Weather in the Clock."
 arch=('any')
@@ -14,14 +14,14 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	_uuid='weatherintheclock@JasonLG1979.github.io'
+  _uuid='weatherintheclock@JasonLG1979.github.io'
 
-	cd "$srcdir/${pkgname%-git}"
-	install -d "$pkgdir/usr/share/gnome-shell/extensions"
-	cp -a $_uuid "$pkgdir/usr/share/gnome-shell/extensions"
+  cd "$srcdir/${pkgname%-git}"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions"
+  cp -a $_uuid "$pkgdir/usr/share/gnome-shell/extensions"
 }
