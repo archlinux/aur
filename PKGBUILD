@@ -25,6 +25,5 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
