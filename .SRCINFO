@@ -1,0 +1,12 @@
+pkgbase = pyfrx
+	pkgdesc = Forex Rates and Conversions.
+	pkgver = 0.0
+	pkgrel = 2
+	url = https://www.techtum.dev/work-pyfrx-220105.html
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = https://github.com/siphr/pyfrx.git
+	md5sums = SKIP
+
+pkgname = pyfrx
