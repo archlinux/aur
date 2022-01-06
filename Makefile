@@ -8,8 +8,11 @@ azpainterb-*.pkg.tar.zst: .SRCINFO PKGBUILD
 .SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
-updpkgsums:
-	updpkgsums
+install:
+	makepkg -si
+
+update:
+	sh ./update.sh
 
 clean:
 	rm -rf ./src
