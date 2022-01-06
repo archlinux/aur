@@ -1,22 +1,22 @@
 # Maintainer: Will Marler <will@wmarler.com>
 pkgname=kodi-addon-pvr-nextpvr
-pkgver=8.2.1
+pkgver=19.0.3
 pkgrel=1
 pkgdesc='NextPVR PVR client addon for Kodi'
 _koditarget=Matrix
 _gitname=pvr.nextpvr
-_kodiver=19.0
+_kodiver=19.3
 arch=('x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL2')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
-        "kodi-${_kodiver}_${_koditarget}.tar.gz::https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-pvr/${_gitname}/archive/refs/tags/${pkgver}-${_koditarget}.tar.gz"
+        "kodi-${_kodiver}_${_koditarget}.tar.gz::https://github.com/xbmc/xbmc/archive/refs/tags/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('ebe2b1f96b49c08c5960a6f75da6cb3cfc0cc30d6fafe43b77d2f2249915b752'
-            'f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2')
+sha256sums=('f9a03f7e61ae69096b149184a1ababa2d98cf2486688022e7b63823047c04496'
+            '440f47e475dd8a48e0a6d41349e83b74890f3fbe8275d3e401d3c50f5b9ea09b')
 
 build() {
     mkdir -p "${_gitname}-${pkgver}-${_koditarget}/build"
