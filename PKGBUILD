@@ -2,7 +2,7 @@
 # Contributor: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=3.15.0
+pkgver=3.15.2
 pkgrel=1
 pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz)
-sha512sums=('fdacce85ab0048f0110e2755f87b3b845421816794239f313eaf9084e9e732f4585637dafc97a46b482a55941f66872bb3be06f5fc9aeb2c22240eb649c16145')
+sha512sums=('900da69cfadef483989d82621edae656784697421d4e0ea04fb7d21c8b572d08507bae9d0221b2decf431ae0ff359b66aa9fe3cab4e3b1f361f767e000917562')
 
 build() {
   cd "Amass-$pkgver"
