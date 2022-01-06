@@ -2,7 +2,7 @@
 # Contributor: Samuel Williams <samuel.williams@oriontransfer.co.nz>
 pkgname=scotch
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
 license=("custom:CeCILL-C")
@@ -35,6 +35,9 @@ prepare() {
   sed -i "s/-DCOMMON_FILE_COMPRESS_GZ/-DCOMMON_FILE_COMPRESS_GZ -DCOMMON_FILE_COMPRESS_BZ2/" Makefile.inc
   sed -i "s/-lz/-lz -lbz2/" Makefile.inc
 
+  # avoid SIGABRT in dgord, https://stackoverflow.com/questions/38269659
+  sed -i "s/-DSCOTCH_PTHREAD/-DSCOTCH_PTHREAD -g/" Makefile.inc
+
   # Fix the creation of directories
   sed -i "s/mkdir/mkdir\ -p/" Makefile.inc
 
@@ -45,9 +48,6 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}/src"
  
-  # avoid SIGABRT in dgord, https://stackoverflow.com/questions/38269659
-  sed -i "s/-DSCOTCH_PTHREAD/-DSCOTCH_PTHREAD -DSCOTCH_PTHREAD_MPI/" Makefile.inc
-
   make scotch
   make -j1 esmumps
 
