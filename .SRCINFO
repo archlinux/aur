@@ -1,0 +1,18 @@
+pkgbase = neovim-zen-mode-git
+	pkgdesc = Full-screen code editing
+	pkgver = r26.f1cc53d
+	pkgrel = 1
+	url = https://github.com/folke/zen-mode.nvim
+	install = zen-mode.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim
+	optdepends = neovim-twilight
+	provides = neovim-zen-mode
+	conflicts = neovim-zen-mode
+	source = neovim-zen-mode-git::git+https://github.com/folke/zen-mode.nvim
+	md5sums = SKIP
+
+pkgname = neovim-zen-mode-git
