@@ -81,6 +81,10 @@ prepare(){
 
 build() {
     cd "anki-$pkgver"
+    #fixes linker for clang users
+    if [ $CC = clang ] && [ $CXX = 'clang++' ]; then
+        export LDSHARED="/usr/bin/clang -shared"
+    fi
     # build requires java 11 to work, does not compile with java 17
     env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build -c opt dist
 }
