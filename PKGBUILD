@@ -14,16 +14,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/enzo1982/freac/archive/v$pk
 sha256sums=('54d0abd99d1351c6c489eaa65f5c9d5de8f244ddd8c3d9b500526bf20ff23163')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
+  cd "$pkgname-$pkgver"
+  find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+  cd "$pkgname-$pkgver"
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
