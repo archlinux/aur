@@ -82,7 +82,7 @@ prepare(){
 build() {
     cd "anki-$pkgver"
     #fixes linker for clang users
-    if [ $CC = clang ] && [ $CXX = 'clang++' ]; then
+    if [ "$CC" = clang ] && [ "$CXX" = 'clang++' ]; then
         export LDSHARED="/usr/bin/clang -shared"
     fi
     # build requires java 11 to work, does not compile with java 17
