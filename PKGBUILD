@@ -1,7 +1,7 @@
 # Maintainer: Holger Obermaier <holgerob[at]gmx[dot]de>
 pkgname=likwid
 pkgver=5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight performance tools"
 url="https://github.com/RRZE-HPC/likwid"
 arch=('x86_64' 'i686')
@@ -15,14 +15,31 @@ conflicts=()
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1b8e668da117f24302a344596336eca2c69d2bc2f49fa228ca41ea0688f6cbc2')
 
+_prefix=/usr
+_mandir=/usr/share/man
+_bindir=/usr/bin
+_libdir=/usr/lib
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i "14s:/usr/local:/usr:; 46s:/man:/share/man:; 65s:/sbin:/bin:; 66s:/sbin:/bin:; 72s:/sbin:/bin:; 73s:/sbin:/bin:" config.mk 
-  sed -i "s:/sbin:/bin:" Makefile
-  make
+  make -j "$(nproc)" \
+    PREFIX="${_prefix}" \
+    MANPREFIX="${_mandir}" \
+    BINPREFIX="${_bindir}" \
+    LIBPREFIX="${_libdir}" \
+    INSTALLED_PREFIX="${_prefix}" \
+    INSTALLED_BINPREFIX="${_bindir}" \
+    INSTALLED_LIBPREFIX="${_libdir}"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make PREFIX="${pkgdir}/usr" install 
+  make install \
+    PREFIX="${pkgdir}/${_prefix}" \
+    MANPREFIX="${pkgdir}/${_mandir}" \
+    BINPREFIX="${pkgdir}/${_bindir}" \
+    LIBPREFIX="${pkgdir}/${_libdir}" \
+    INSTALLED_PREFIX="${_prefix}" \
+    INSTALLED_BINPREFIX="${_bindir}" \
+    INSTALLED_LIBPREFIX="${_libdir}"
 }
