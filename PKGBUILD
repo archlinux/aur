@@ -1,6 +1,6 @@
 pkgname=shibboleth-sp
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
 url="https://wiki.shibboleth.net/confluence/display/SP3/Home"
 license=(Apache)
