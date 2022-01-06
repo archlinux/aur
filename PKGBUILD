@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clight-git
-pkgver=4.4.r4.g05e27e7
+pkgver=4.7.r29.gc12a073
 pkgrel=1
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display
          gamma temperature, dim your screen and set your dpms."
@@ -23,19 +23,19 @@ source=("${pkgname%-git}::git+https://github.com/FedeDP/Clight.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cmake -B build -S "${pkgname%-git}" \
-		-G "Unix Makefiles" \
-		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-Wno-dev
-	make -C build
+  cmake -B build -S "${pkgname%-git}" \
+    -G "Unix Makefiles" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
 }
