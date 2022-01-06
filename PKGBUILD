@@ -6,7 +6,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=250.rc2.r55.g17cfd6f96f
+pkgver=250.r192.gcd933f14bd
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -20,12 +20,11 @@ makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson' 'python-jinja')
-options=('!ccache')
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgbasename}"
+  cd "$_pkgbasename"
 
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -131,7 +130,7 @@ build() {
     -Dsysvrcnd-path=
   )
 
-  arch-meson "${_pkgbasename}" build "${_meson_options[@]}"
+  arch-meson "$_pkgbasename" build "${_meson_options[@]}"
 
   ninja -C build
 }
