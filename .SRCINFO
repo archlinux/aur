@@ -1,0 +1,23 @@
+pkgbase = sunflower-nightly-git
+	pkgdesc = Small and highly customizable twin-panel file manager for Linux with support for plugins
+	pkgver = 0.4.62.r184.g1024bbdd
+	pkgrel = 1
+	url = https://github.com/MeanEYE/Sunflower
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = python-gobject
+	depends = desktop-file-utils
+	depends = python-chardet
+	depends = librsvg
+	optdepends = vte: integrated vte-based terminal
+	optdepends = python-mutagen: audio-metadata support
+	optdepends = gvfs: mount-management
+	conflicts = sunflower
+	options = !strip
+	options = !zipman
+	source = git://github.com/MeanEYE/Sunflower.git
+	md5sums = SKIP
+
+pkgname = sunflower-nightly-git
