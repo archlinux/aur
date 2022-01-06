@@ -1,7 +1,7 @@
 # Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
 pkgname=libjuice
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="UDP Interactive Connectivity Establishment (ICE) library"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
