@@ -1,36 +1,39 @@
 # Maintainer: Apoorv <apoorvs569@gmail.com>
 
 pkgname=monique-monosynth-git
-_pkgname=monique-monosynth
-pkgver=Nightly.r25.g53ebe655
-pkgrel=1
+pkgver=1
+pkgrel=5
 pkgdesc="Monique is a monophonic synth from Thomas Arndt"
 arch=('x86_64')
 url="https://github.com/surge-synthesizer/monique-monosynth"
-license=('GPLv3 or MIT')
+license=('GPL3' 'MIT')
 makedepends=('git' 'cmake')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
   git submodule update --init --recursive
   git -C libs/JUCE checkout 6.1.2
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
   cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1
   make -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  sudo cp -r build/MoniqueMonosynth_artefacts/Release/VST3/MoniqueMonosynth.vst3/ /usr/lib/vst3/
-  sudo cp -r build/MoniqueMonosynth_artefacts/Release/Standalone/MoniqueMonosynth /usr/bin/
+  cd "$srcdir/${pkgname%-git}"
+  mkdir -p "${pkgdir}/usr/bin/"
+  mkdir -p "${pkgdir}/usr/lib/vst3/"
+  cp -r build/MoniqueMonosynth_artefacts/Release/VST3/MoniqueMonosynth.vst3/ "${pkgdir}/usr/lib/vst3/"
+  cp -r build/MoniqueMonosynth_artefacts/Release/Standalone/MoniqueMonosynth "${pkgdir}/usr/bin/"
 }
