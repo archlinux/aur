@@ -4,7 +4,7 @@
 
 pkgname=libbass
 pkgver=2.4.16
-pkgrel=4
+pkgrel=5
 pkgdesc='BASS audio library'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url='https://www.un4seen.com/'
@@ -14,10 +14,10 @@ source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bass24-linux.zip")
 source_armv6h=("$pkgname-$pkgver-arm.zip::http://www.un4seen.com/files/bass24-linux-arm.zip")
 source_armv7h=("$pkgname-$pkgver-arm.zip::http://www.un4seen.com/files/bass24-linux-arm.zip")
 source_aarch64=("$pkgname-$pkgver-arm.zip::http://www.un4seen.com/files/bass24-linux-arm.zip")
-sha256sums=('08820155d3941fa0c6e8a9ad8bfe1d92e0419dc384cb3086d6ac487d5152ab80')
-sha256sums_armv6h=('ddf3593d064ac67bb7c836db35a6cc693b2ec37b98f86d90af0c8f27f533f26e')
-sha256sums_armv7h=('ddf3593d064ac67bb7c836db35a6cc693b2ec37b98f86d90af0c8f27f533f26e')
-sha256sums_aarch64=('ddf3593d064ac67bb7c836db35a6cc693b2ec37b98f86d90af0c8f27f533f26e')
+sha256sums=('77f387762a9ee4b72da3c6581c22e50456ab7aeb7c9a7154564530a9468db655')
+sha256sums_armv6h=('7300ac8c112551bea6dc691b2ef3102fd208c07628c2cc822476465c077b20ba')
+sha256sums_armv7h=('7300ac8c112551bea6dc691b2ef3102fd208c07628c2cc822476465c077b20ba')
+sha256sums_aarch64=('7300ac8c112551bea6dc691b2ef3102fd208c07628c2cc822476465c077b20ba')
 
 prepare() {
   grep Lic "$srcdir/bass.txt" -A62 > LICENSE
