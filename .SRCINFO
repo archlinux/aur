@@ -1,0 +1,15 @@
+pkgbase = xmega65-git
+	pkgdesc = Mega65 target of the X-Emulators
+	pkgver = r4503d53e
+	pkgrel = 1
+	url = https://github.com/lgblgblgb/xemu/wiki/targets-mega65
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl2
+	depends = gtk3
+	provides = xmega65
+	source = git+https://github.com/lgblgblgb/xemu.git
+	md5sums = SKIP
+
+pkgname = xmega65-git
