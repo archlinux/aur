@@ -1,8 +1,9 @@
-# Maintainer: Samuel Walladge <samuel at swalladge dot net>
+# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Contributor: Samuel Walladge <samuel at swalladge dot net>
 
 pkgname=tagspaces-bin
 _pkgname=tagspaces
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform."
 arch=("x86_64")
@@ -10,7 +11,7 @@ url="http://tagspaces.org"
 license=("AGPL")
 provides=("tagspaces")
 conflicts=("tagspaces")
-sha256sums=('0342fdad452572b3d1a5cf514ccf135f313c36009eee3e81cbdfb0a9c9738479')
+sha256sums=('009abe292cccaf5d6f4c55dd82cba3dcd390083e74edf600a49d80ad931a4ddb')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 
 package() {
