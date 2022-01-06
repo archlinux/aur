@@ -1,12 +1,12 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-polyglot
 pkgver=16.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A natural language pipeline that supports massive multilingual applications"
 url="https://github.com/aboSamoor/polyglot"
 arch=('any')
 provides=('python-polyglot')
-depends=('python')
+depends=('python' 'python-pyicu' 'python-pycld2' 'python-morfessor' 'python-six' 'python-numpy')
 makedepends=('python-setuptools')
 _name="${pkgname#python-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
