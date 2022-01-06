@@ -16,6 +16,7 @@ license=('AGPL3')
 arch=('x86_64')
 provides=('anki')
 conflicts=('anki-bin' 'anki-git' 'anki-official-binary-bundle')
+options=('!ccache')
 depends=(
     # anki and aqt
     'python-beautifulsoup4'
