@@ -1,7 +1,7 @@
 # Maintainer: Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=rathole
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A reverse proxy for NAT traversal"
 arch=('x86_64')
@@ -9,14 +9,11 @@ url="https://github.com/rapiz1/rathole"
 license=('Apache')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust' 'libgit2')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver-vergen.patch::$url/commit/bb26e2cd36bf63dd6b49000bb57a94761e0e82b1.patch")
-sha256sums=('48ddabbceb1e98113ab3b7cf75c9e6b2e1b0e49265192da442b43ad91f97af4f'
-            'f93263bae8b782fabc1d730f564e3455d35d14c960c39f23d73b1f6f24249f6e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3b83f02a0443e15a87caf3f8dba81155d0040d40b1a5e17568a71139e827b3aa')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -Np1 -i "../$pkgname-$pkgver-vergen.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
