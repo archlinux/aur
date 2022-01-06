@@ -1,11 +1,11 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.14.0.r339.ge326b769
+pkgver=0.16.0.r52.2a58490
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
-url=https://gitlab.freedesktop.org/wlroots/wlroots.git
+url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
 provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
 conflicts=(wlroots wlroots-git)
@@ -23,6 +23,7 @@ depends=(
 	xcb-util-wm
 	seatd
 	vulkan-icd-loader
+	vulkan-validation-layers
 	xorg-xwayland)
 makedepends=(
 	git
@@ -31,7 +32,7 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 # https://gitlab.freedesktop.org/MisterDA/wlroots/-/tree/xwayland_hidpi
-source=("${pkgname}::git+${url}"
+source=("${pkgname}::git+${url}.git"
         "0001-xwayland-add-support-for-global-scale-factor.patch"
         "0002-xwayland-add-support-for-changing-global-scale-facto.patch"
        )
@@ -39,27 +40,30 @@ sha256sums=('SKIP'
             '68f1c7c550a317d8175311325b6c4809b0ec761b0badba7926eca7475d1bc27f'
             '9004f727c18129c667804fa987938c8d4a1a27ec8fed6bb2668f03284a884dcc')
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
-
 prepare () {
-	cd "${pkgname}"
-	patch -Np1 < "${srcdir}/0001-xwayland-add-support-for-global-scale-factor.patch"
-        patch -Np1 < "${srcdir}/0002-xwayland-add-support-for-changing-global-scale-facto.patch"
-}
+	(
+		cd "${pkgname}"
+		patch -Np1 < "${srcdir}/0001-xwayland-add-support-for-global-scale-factor.patch"
+		patch -Np1 < "${srcdir}/0002-xwayland-add-support-for-changing-global-scale-facto.patch"
+	)
 
-build () {
 	arch-meson \
 		--buildtype=debug \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
+}
+
+pkgver () {
+	(
+		set -o pipefail
+		meson introspect --projectinfo build \
+			| awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
+		printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
+build () {
 	meson compile -C build
 }
 
