@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.15
-_minor=10
-_rtver=24
+_minor=12
+_rtver=25
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -342,9 +342,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('cd57fcb1e10ab380d3e9f99b46f3bd38bd4a05e00f53655f5a1a644da2612c9ec2dbc87fa3f87f06f1ef334f6e669025e8f144a11e9a4d64184f60e922b269f9'
+sha512sums=('8b79f30c26a865578d771b0c1a8273ecbf19135e4844210cb31c81784311601b8f7adfe1b3a9bc75c6bed99dcad9a5ff5e1976494b64f0de45be3a6570336890'
             'SKIP'
-            '4a7894c2774a472984a6ad1b76c17ce60d811e96f86284d70eb7442a50fc4a37cb7cf9cb9fca2db98831c2771f877ab283791c14c7bfc54fcd57a107ef42c607'
+            'b8bf4e921fa5e3f0e560210573e8c485d7e34beb794ddbb139a836f3e294c320bfc87a2828e55dc2568014d8a67c4e6346d07c9476f770c1e0c6395ab244bfe9'
             'SKIP'
             'ff4843aa1b983d6ff57b587d7d219a5fa510466059be65a9e7dd8f5650dbb67700d6fe02ccf60f2d9ff586f8d1a154ab3dc6062fd96472a44354827fd35cb92a'
             '53fa9b8a6fa451a7d57846d261f9af2de24e6442d2f318dfef899580d85e9cc54fa17267803a4f064eecab8ba3739062bfdf185de0afe119a1c86fe71cf3c711'
@@ -354,7 +354,7 @@ sha512sums=('cd57fcb1e10ab380d3e9f99b46f3bd38bd4a05e00f53655f5a1a644da2612c9ec2d
             '9b14bede21e9979f843b624d0aaca389df93f388fdff9f1361d132aebca31e19b2e47dd1b4e83af0bbaae3a1884ac09a3605d3373cfd48eab0c49a8b11d0165a'
             '8f2f6e1e3ee9cd58217daf6bf5385865732f2521bd084925d923d5477a294cbadfa60f3955b745c0a33bb97bb7fb0f3b829724930601354551caafbc76544fab'
             'da2a99e0c6bc593e4e873c9ec7ce99cf31f12100efa6375805d935b2f0e7618d8a22d46929a7f5ff5cc86ed89309b292e698a28a7d288f95448f264f80bb7012'
-            '37f326824e35359b699de9c8263c4427fbb71efd59cce8a61d23ce1d9035c8be5c7d85f3c9ea0821dc0a027ae05d429f3b838ef3ec58137baa911cd859f6d760')
+            '5f8c796bfd7d5c3dc7e86d3fe372241f3d21fed7d2f7545d3855ac7b344d696eba0c6e0204094d9e99f121b15eba51cae4b3242d64b1e88a7e0902d7dfc60ed3')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
