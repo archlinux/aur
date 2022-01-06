@@ -14,14 +14,14 @@ source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('1a36cb33735fc8ec50ebdb4b31a507ad870dc2ff4905be5170128f17a9f74172')
 
 build() {
-	arch-meson "$pkgname-v$pkgver" build
-	meson compile -C build
+  arch-meson "$pkgname-v$pkgver" build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
