@@ -24,6 +24,7 @@ git describe --long --tags | cut -d'-' -f1
 package() {
 cd $srcdir/$pkg
 install -dm 755 $pkgdir/usr/share/$pkg/sys
+install -m 755 *.sh $pkgdir/usr/share/$pkg
 install -m 755 sys/*.sh $pkgdir/usr/share/$pkg/sys
 install -Dm 755 $pkg $pkgdir/usr/bin/$pkg
 }
