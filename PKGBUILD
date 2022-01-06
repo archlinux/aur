@@ -7,6 +7,7 @@ pkgdesc="List Wayland toplevels"
 arch=('x86_64')
 url="https://git.sr.ht/~leon_plickat/lswt"
 license=('GPL3')
+depends=("wayland")
 conflicts=("lswt")
 source=("git+$url")
 sha256sums=('SKIP')
