@@ -2,7 +2,7 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-murmurhash
 _origpkgname=murmurhash
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Cython bindings for MurmurHash2"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python" "cython" "python-pytest")
 makedepends=("python-setuptools" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/murmurhash/archive/v$pkgver.tar.gz")
-md5sums=('ea6f02a18d0624be81e1d857b71509be')
+md5sums=('e058fc66933ac3e4f973187291cc4809')
 
 package() {
     cd "$_origpkgname-$pkgver"
