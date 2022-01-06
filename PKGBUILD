@@ -3,13 +3,14 @@
 pkgname=('firmware-manager' 'libfirmware-manager')
 pkgbase=firmware-manager
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
 depends=('dbus' 'gtk3' 'openssl' 'libgudev')
-makedepends=('cargo')
+makedepends=('cargo' 'rustup')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'com.system76.FirmwareManager.policy'
         "$pkgname.sh")
@@ -20,12 +21,15 @@ sha256sums=('5bde56704ef8542f84ab9a8d6739cbfbcfcaaa26e089421fe0a527c5c9013f8d'
 prepare() {
   cd "$pkgbase-$pkgver"
   make toml-gen
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+
+  rustup override set 1.41.0
+#  export RUSTUP_TOOLCHAIN=stable
+#  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgbase-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
+#  export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
 
