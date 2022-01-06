@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gap/zipper/index.html"
 license=('GPL')
 groups=('gnustep-apps')
-depends=('gnustep-base' 'gnustep-gui')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
 optdepends=('arj'
             'bzip2'
             'gzip'

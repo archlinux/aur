@@ -11,6 +11,7 @@ pkgbase = zipper.app
 	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
+	depends = gnustep-back
 	optdepends = arj
 	optdepends = bzip2
 	optdepends = gzip
@@ -25,4 +26,3 @@ pkgbase = zipper.app
 	sha256sums = 3ecf9cd7e2242c62e38a4933ce4f3da35e90f52ca94ac030a1f2a717e6561392
 
 pkgname = zipper.app
-
