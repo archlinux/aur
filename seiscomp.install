@@ -1,5 +1,8 @@
 post_install() {
-	find opt/seiscomp -type d -exec setfacl -d -m g::rwX "{}" \;
+	find opt/seiscomp -type d \
+		-exec setfacl -d -m g::rwX '{}' \; \
+		-exec chmod g+s '{}' \;
+
 	echo "  ->----------------------------------------------------------------<-"
 	echo "  -> Before using seiscomp for first time you need to do following:"
 	echo "  -> - Add your user to 'seiscomp' group:"
@@ -9,6 +12,7 @@ post_install() {
 }
 
 post_upgrade() {
-	find opt/seiscomp -type d -exec setfacl -d -m g::rwX "{}" \;
+	find opt/seiscomp -type d \
+		-exec setfacl -d -m g::rwX '{}' \; \
+		-exec chmod g+s '{}' \;
 }
-
