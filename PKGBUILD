@@ -2,7 +2,7 @@
 # Credit: desbma
 
 pkgname=zoxide-git
-pkgver=0.7.4.r9.g9ff8993
+pkgver=0.8.0.r6.gb6b024c
 pkgrel=1
 pkgdesc='A fast cd command that learns your habits'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -34,10 +34,10 @@ build() {
 
 package() {
 	cd "$pkgname"
-	install -Dm 755 -t "$pkgdir/usr/bin" target/release/zoxide
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 man/*.1 -t "$pkgdir/usr/share/man/man1/"
-	install -Dm 644 contrib/completions/zoxide.bash "$pkgdir/usr/share/bash-completion/completions/zoxide"
-	install -Dm 644 contrib/completions/_zoxide -t "$pkgdir/usr/share/zsh/site-completions/"
-	install -Dm 644 contrib/completions/zoxide.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -D -t "$pkgdir/usr/bin" target/release/zoxide
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 man/man1/*.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 contrib/completions/zoxide.bash "$pkgdir/usr/share/bash-completion/completions/zoxide"
+	install -Dm644 contrib/completions/_zoxide -t "$pkgdir/usr/share/zsh/site-completions/"
+	install -Dm644 contrib/completions/zoxide.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 }
