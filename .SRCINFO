@@ -1,6 +1,6 @@
 pkgbase = serve-d
 	pkgdesc = Microsoft language server protocol implementation for D using workspace-d
-	pkgver = 0.7.1
+	pkgver = 0.7.3
 	pkgrel = 2
 	url = https://github.com/Pure-D/serve-d
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = serve-d
 	makedepends = dtools
 	depends = liblphobos
 	depends = dcd
-	source = https://github.com/Pure-D/serve-d/archive/v0.7.1.tar.gz
-	sha256sums = 09feed12756fa06984c88e045d24016628993891a01c1e6db397614233c1964b
+	source = https://github.com/Pure-D/serve-d/archive/v0.7.3.tar.gz
+	sha256sums = ed46c405797b00d3715cea04bbfe7f2277412189ac58206803032f3835d38934
 
 pkgname = serve-d
