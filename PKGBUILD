@@ -48,5 +48,7 @@ package() {
 	chmod a+x ${srcdir}/md/bin/md
 
 	cp "${srcdir}/md/doc/CommandLine.md" "${pkgdir}/usr/doc/md/CommandLine.md"
+	cp "${srcdir}/md/face" "${pkgdir}/usr/doc/md/face"
+	
 	mv "${srcdir}/md/bin/md" "${pkgdir}/usr/bin"
 }
