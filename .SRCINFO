@@ -1,6 +1,6 @@
 pkgbase = keepass2-plugin-tray-icon
 	pkgdesc = Functional tray icon for KeePass2
-	pkgver = 0.6.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/dlech/Keebuntu
 	arch = i686
@@ -10,9 +10,8 @@ pkgbase = keepass2-plugin-tray-icon
 	depends = keepass
 	depends = dbus-sharp-glib
 	depends = gtk-sharp-2
-	source = repo::git+https://github.com/dlech/Keebuntu.git#tag=debian/0.6.0
+	source = repo::git+https://github.com/dlech/Keebuntu.git#tag=debian/0.8.2
 	md5sums = SKIP
 	sha512sums = SKIP
 
 pkgname = keepass2-plugin-tray-icon
-
