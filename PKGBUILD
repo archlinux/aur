@@ -1,7 +1,7 @@
 # Maintainer: Naomi Calabretta <me@arytonex.pw>
 
 pkgname=sunamu
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way!"
 url="https://github.com/NyaomiDEV/Sunamu"
@@ -14,7 +14,7 @@ depends=("electron")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NyaomiDEV/Sunamu/archive/v$pkgver.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=("9e1c77107327d2801cdb3b102769a3036e6291a112a1648e993cbfe1054e2325"
+sha256sums=("ef01046448988d21f230f02033f87c327e7317e40b976b6d2c44f824148c1200"
             "61e7326922b6f1a58d894488df27264ed307e1c1e8a0bb3aea61f0fcaa9c2bd4"
             "3ec100c03e6653aeed2400109501c3209295d58e74e4dbc71dadcfad86ef910c")
 
