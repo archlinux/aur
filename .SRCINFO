@@ -1,6 +1,6 @@
 pkgbase = ytfe
 	pkgdesc = YouTube frontend
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = http://oscomp.hu
 	install = ytfe.install
@@ -20,9 +20,9 @@ pkgbase = ytfe
 	sha256sums = 1538efd4ad69915c36a12e48b2fb67606983d8dd38811726640952d6a3c03149
 	sha256sums = 44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae
 	sha256sums = bf8e1295602992c618eacbc43a36c201293c8a159f49dd42a724c72f5e8a5267
-	source_x86_64 = http://oscomp.hu/depot/ytfe_direct/1.12.0/ytfe_linux_x86_64.xz
-	sha256sums_x86_64 = bdc1e0292dea8bf672dd9b093c7c714884a7ce192e0095e912f5280b062671ae
-	source_i686 = http://oscomp.hu/depot/ytfe_direct/1.12.0/ytfe_linux_i686.xz
-	sha256sums_i686 = 04cd119e8b9db1f5744cad3b4e77b6ed383ce5e494147b03fbc32511983da9a0
+	source_x86_64 = http://oscomp.hu/depot/ytfe_direct/1.12.1/ytfe_linux_x86_64.xz
+	sha256sums_x86_64 = b958c07a575e05cd96d2db9ff8acf717dd217e2afd78e654a8ac3b9a094eadef
+	source_i686 = http://oscomp.hu/depot/ytfe_direct/1.12.1/ytfe_linux_i686.xz
+	sha256sums_i686 = 3d1b062b95a47f8def28ce361bedfaa1782e4d9b767c5bb92b7c9b50a0f99095
 
 pkgname = ytfe
