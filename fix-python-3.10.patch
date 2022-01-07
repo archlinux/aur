@@ -1,0 +1,12 @@
+diff --git a/fah/util/OrderedDict.py b/fah/util/OrderedDict.py
+index d19a916..edb9cbc 100644
+--- a/fah/util/OrderedDict.py
++++ b/fah/util/OrderedDict.py
+@@ -20,7 +20,7 @@
+ ################################################################################
+
+ from collections import UserDict
+-from collections import MutableMapping as DictMixin
++from collections.abc import MutableMapping as DictMixin
+
+ class OrderedDict(dict, DictMixin):
