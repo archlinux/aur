@@ -1,10 +1,10 @@
 pkgbase = nvidia-vaapi-driver-git
 	pkgdesc = A VA-API implemention using NVIDIA's NVDEC
-	pkgver = 0.0.1.r6.g7e12678
+	pkgver = 0.0.1.r10.gb34a23c
 	pkgrel = 1
 	url = https://github.com/elFarto/nvidia-vaapi-driver
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = meson
 	makedepends = cuda
 	makedepends = git
