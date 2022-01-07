@@ -3,7 +3,7 @@
 pkgname=animdl-git
 _pkgname=${pkgname%-git}
 pkgver=1.4.35
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly efficient anime downloader and streamer"
 arch=('any')
 url="https://github.com/justfoolingaround/animdl"
