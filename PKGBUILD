@@ -3,8 +3,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=amberfish-git
-pkgver=2.3.0.r3
+pkgver=2.3.0.r1.ga5bdd6c.r4
 pkgrel=1
+epoch=1
 pkgdesc="A general purpose text retrieval software"
 arch=('i686' 'x86_64')
 url="https://github.com/nassibnassar/amberfish.git"
@@ -18,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf %s.r%s $(git describe --tags|tr -d v) $(git rev-list --count HEAD)
+  printf %s.r%s $(git describe --tags|tr -d v|sed 's+-+.r+'|tr - .) $(git rev-list --count HEAD)
 }
 
 build() {
