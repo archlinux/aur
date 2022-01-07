@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=6.3-20211221
+_srctag=6.3-20220103
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -138,12 +138,13 @@ noextract=(
 )
 
 _make_wrappers () {
-    local _i686=(i686 "-m32" "-melf_i386")
-    local _x86_64=(x86_64 "" "")
+    #     _arch     prefix   gcc    ld             as
+    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32")
+    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64")
     local _opts=(_i686 _x86_64)
     declare -n _opt
     for _opt in "${_opts[@]}"; do
-        for l in ar as ranlib nm; do
+        for l in ar ranlib nm; do
             ln -s /usr/bin/$l wrappers/${_opt[0]}-pc-linux-gnu-$l
         done
         for t in gcc g++; do
@@ -155,6 +156,10 @@ EOF
         install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-ld <<EOF
 #!/usr/bin/bash
 /usr/bin/ld ${_opt[2]} "\$@"
+EOF
+        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-as <<EOF
+#!/usr/bin/bash
+/usr/bin/as ${_opt[3]} "\$@"
 EOF
     done
 }
