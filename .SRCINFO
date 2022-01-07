@@ -15,4 +15,3 @@ pkgbase = python-privy-git
 	sha256sums = SKIP
 
 pkgname = python-privy-git
-
