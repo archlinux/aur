@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.4
+Type=Application
+Terminal=false
+Exec=wine /opt/cate-gms2/cate-gms2.exe
+Name=cate-gms2
+Categories=Game;
+Icon=/opt/cate-gms2/icon.ico
