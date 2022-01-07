@@ -22,6 +22,7 @@ prepare() {
   # Disable update-desktop-database & gtk-update-icon-cache
   patch --strip=1 data/meson.build $srcdir/remove-install_script.patch
 
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -38,5 +39,5 @@ build() {
 #}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
