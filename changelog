@@ -1,3 +1,16 @@
+2021-01-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.1.5-1:
+    Plugins breaking: All interface methods now return a Task instead of void, this will require from you slight code changes and a recompilation to work with this release. See my commit for rationale behind this change and more info. This was required to fix a race condition in STD (below), and I wouldn't be surprised if some of your plugins had exactly the same problem, just harder to trigger (@JustArchi).
+    Added IUpdateAware plugin interface (@JustArchi).
+    Added Steam Winter Sale 2021 with 1797760 identifier to SalesBlacklist (@JustArchi).
+    Added MinFarmingDelayAfterBlock global config property (@JustArchi).
+    Improved logic for rate-limiting that could cause going over specified limits in some scenarios (@JustArchi #2472).
+    Improved logic for calculating time remaining for idling on HoursUntilCardDrops > 0 accounts (@JustArchi).
+    Fixed a possible race condition in STD plugin which resulted in ASF crash when GlobalCache couldn't get initialized fast enough (@JustArchi).
+    Added additional safeguards against cache corruption to our STD plugin (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2021-12-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.0.10-1:
     I've reverted the breaking change of refusing to run as root, as apparently a lot of Windows setups are configured like that, and I do not really expect from every second user to override it with a cmdline arg. ASF will still display a warning though (@JustArchi).
