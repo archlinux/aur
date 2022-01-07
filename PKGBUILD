@@ -38,7 +38,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 
 pkgname=vim-tabnine-git
 pkgver=r2905.e4c180a5
-pkgrel=2
+pkgrel=3
 pkgdesc='A code-completion engine for Vim with tabnine'
 arch=('x86_64')
 url='https://www.tabnine.com/'
@@ -61,15 +61,20 @@ optdepends=(
 replaces=('vim-youcompleteme-git')
 if [[ ${_use_system_clang} == "ON" ]]; then
   source=(git+https://github.com/tabnine/YouCompleteMe.git
-          git+https://github.com/tabnine/ycmd.git)
+          git+https://github.com/tabnine/ycmd.git
+          TabNine.zip::https://update.tabnine.com/bundles/$(curl -sS https://update.tabnine.com/bundles/version)/x86_64-unknown-linux-musl/TabNine.zip
+      )
   sha256sums=('SKIP'
+              'SKIP'
               'SKIP')
 else
   source=(git+https://github.com/tabnine/YouCompleteMe.git
           git+https://github.com/tabnine/ycmd.git
+          TabNine.zip::https://update.tabnine.com/bundles/$(curl -sS https://update.tabnine.com/bundles/version)/x86_64-unknown-linux-musl/TabNine.zip
           clangd-13.0.0.tar.bz2::https://github.com/tabnine/llvm/releases/download/13.0.0/clangd-13.0.0-x86_64-unknown-linux-gnu.tar.bz2
           libclang-13.0.0.tar.bz2::https://github.com/tabnine/llvm/releases/download/13.0.0/libclang-13.0.0-x86_64-unknown-linux-gnu.tar.bz2)
   sha256sums=('SKIP'
+              'SKIP'
               'SKIP'
               '10a64c468d1dd2a384e0e5fd4eb2582fd9f1dfa706b6d2d2bb88fb0fbfc2718d'
               '9a5bee818a4995bc52e91588059bef42728d046808206bfb93977f4e3109e50c')
@@ -175,6 +180,10 @@ package() {
   install -Ddm755 "${pkg_ycmd_dir}/third_party/tabnine/" 
   install -Ddm755 "${pkg_ycmd_dir}/third_party/tabnine/binaries" 
   cp -dr --no-preserve=ownership "$srcdir"/ycmd/third_party/tabnine/__init__.py "${pkg_ycmd_dir}/third_party/tabnine/"
+  install -Dm755 ${srcdir}/TabNine "${pkg_ycmd_dir}/third_party/tabnine/binaries/TabNine"
+  install -Dm755 ${srcdir}/TabNine-deep-cloud "${pkg_ycmd_dir}/third_party/tabnine/binaries/TabNine-deep-cloud"
+  install -Dm755 ${srcdir}/TabNine-deep-local "${pkg_ycmd_dir}/third_party/tabnine/binaries/TabNine-deep-local"
+  install -Dm755 ${srcdir}/WD-TabNine "${pkg_ycmd_dir}/third_party/tabnine/binaries/WD-TabNine"
 
   find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' \) -exec rm -fr {} +
 

@@ -1,7 +1,7 @@
 pkgbase = vim-tabnine-git
 	pkgdesc = A code-completion engine for Vim with tabnine
 	pkgver = r2905.e4c180a5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tabnine.com/
 	arch = x86_64
 	groups = vim-plugins
@@ -28,6 +28,8 @@ pkgbase = vim-tabnine-git
 	replaces = vim-youcompleteme-git
 	source = git+https://github.com/tabnine/YouCompleteMe.git
 	source = git+https://github.com/tabnine/ycmd.git
+	source = TabNine.zip::https://update.tabnine.com/bundles/4.0.44/x86_64-unknown-linux-musl/TabNine.zip
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
