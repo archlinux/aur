@@ -14,4 +14,3 @@ pkgbase = python-rarfile
 	sha256sums = 67548769229c5bda0827c1663dce3f54644f9dbfba4ae86d4da2b2afd3e602a1
 
 pkgname = python-rarfile
-
