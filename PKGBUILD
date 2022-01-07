@@ -3,7 +3,7 @@
 
 pkgname=dracula-gtk-theme
 pkgver=v3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dark theme for GTK"
 arch=("any")
 url="https://github.com/dracula/gtk"
@@ -20,5 +20,5 @@ package() {
 	cd "$srcdir/Dracula"
 
 	mkdir -p "$pkgdir/usr/share/themes/Dracula"
-	cp -a "$srcdir/Dracula"* "$pkgdir/usr/share/themes/Dracula/"
+	cp -a "$srcdir/Dracula/"* "$pkgdir/usr/share/themes/Dracula/"
 }
