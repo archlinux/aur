@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Build desktop iso images, create bootable usb drives, install on usb drives."
 arch=('any')
@@ -18,9 +18,9 @@ optdepends=('devtools: for building ZFS packages'
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('9f172f33d11b720d87391f1a97929ff05f637e38157471d01cca5869234a3fc3'
+sha256sums=('66eda0568b80942fae3476dbdca8a96649b530fe00c757ff07904668caa07acc'
             'SKIP')
-b2sums=('4bf4e3f472767be1917c433564873a169157eec0eab608f828d90f584ae178305e9bee69ce9e4522c1f0a78d3b245d990049165d75d1ff360d90a1e66c2a60ab'
+b2sums=('2ae31499204a588343fe3ee71651cc15f7bf36ee922d972b712f48229972a7b71425dc4799a1e6c4d2337df4fc1fa20350a185a337021763eec04f658291089d'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
