@@ -1,13 +1,12 @@
 pkgbase = sedsed
-	pkgdesc = Sedsed can debug, indent, tokenize and HTMLize your SED scripts
-	pkgver = 1.0
-	pkgrel = 3
-	url = http://sedsed.sourceforge.net/
+	pkgdesc = Debugger and code formatter for sed scripts
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/aureliojargas/sedsed
 	arch = any
 	license = GPL
-	depends = python2
-	source = http://sedsed.sourceforge.net/sedsed-1.0
-	sha256sums = 38da1ef5234157da8e8f4fe8faf960c8f71ccce3d650b34f33f4df12ecda41d8
+	depends = python
+	source = sedsed-2.0.0.tar.gz::https://github.com/aureliojargas/sedsed/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = a18cae4348adb955641912fd854a5f17d9767646d1f6721e664c4ad5e9476a85
 
 pkgname = sedsed
-

@@ -1,21 +1,17 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=sedsed
-pkgver=1.0
-pkgrel=3
-pkgdesc='Sedsed can debug, indent, tokenize and HTMLize your SED scripts'
+pkgver=2.0.0
+pkgrel=1
+pkgdesc='Debugger and code formatter for sed scripts'
 arch=('any')
-depends=('python2')
-url='http://sedsed.sourceforge.net/'
+depends=('python')
+url='https://github.com/aureliojargas/sedsed'
 license=('GPL')
-source=("http://sedsed.sourceforge.net/sedsed-${pkgver}")
-sha256sums=('38da1ef5234157da8e8f4fe8faf960c8f71ccce3d650b34f33f4df12ecda41d8')
-
-prepare() {
-	sed -i 's/python/python2/1' ${srcdir}/sedsed-${pkgver}
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aureliojargas/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a18cae4348adb955641912fd854a5f17d9767646d1f6721e664c4ad5e9476a85')
 
 package() {
-	install -D -m 0755 ${srcdir}/sedsed-${pkgver} ${pkgdir}/usr/bin/sedsed
+	install -D -m0755 ${srcdir}/sedsed-${pkgver}/sedsed.py ${pkgdir}/usr/bin/sedsed
 }
 
