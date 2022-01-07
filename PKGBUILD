@@ -2,22 +2,25 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=perl-text-vcard
-pkgver=3.07
-pkgrel=2
+pkgver=3.09
+pkgrel=1
 pkgdesc='Text-vCard for Perl'
 arch=('any')
-url="http://search.cpan.org/~llap/Text-vCard/"
+url='https://metacpan.org/release/Text-vCard/'
 license=('PerlArtistic' 'GPL')
 depends=('perl'
-	'perl-file-slurp'
-	'perl-io-stringy'
-	'perl-moo'
-	'perl-path-tiny'
-	'perl-text-vfile-asdata'
-	'perl-unicode-linebreak')
+         'perl-directory-scratch'
+         'perl-file-slurp'
+         'perl-io-stringy'
+         'perl-moo'
+         'perl-path-tiny'
+         'perl-test-most'
+         'perl-text-vfile-asdata'
+         'perl-unicode-linebreak'
+         'perl-uri')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/L/LL/LLAP/Text-vCard-${pkgver}.tar.gz")
-sha256sums=('e722e014a9886ae0c9d54357b1d4ce95290ecfd6fbde13bef96a13232b0624aa')
+sha256sums=('c1ff3b0b14a86d8146808bdc59d8d207f220120309ccf16decfb0dc236c144b0')
 
 build() {
 	cd "${srcdir}/Text-vCard-${pkgver}"

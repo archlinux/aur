@@ -1,21 +1,23 @@
 pkgbase = perl-text-vcard
 	pkgdesc = Text-vCard for Perl
-	pkgver = 3.07
-	pkgrel = 2
-	url = http://search.cpan.org/~llap/Text-vCard/
+	pkgver = 3.09
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-vCard/
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
+	depends = perl-directory-scratch
 	depends = perl-file-slurp
 	depends = perl-io-stringy
 	depends = perl-moo
 	depends = perl-path-tiny
+	depends = perl-test-most
 	depends = perl-text-vfile-asdata
 	depends = perl-unicode-linebreak
+	depends = perl-uri
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LL/LLAP/Text-vCard-3.07.tar.gz
-	sha256sums = e722e014a9886ae0c9d54357b1d4ce95290ecfd6fbde13bef96a13232b0624aa
+	source = http://search.cpan.org/CPAN/authors/id/L/LL/LLAP/Text-vCard-3.09.tar.gz
+	sha256sums = c1ff3b0b14a86d8146808bdc59d8d207f220120309ccf16decfb0dc236c144b0
 
 pkgname = perl-text-vcard
-
