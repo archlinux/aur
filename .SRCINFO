@@ -15,4 +15,3 @@ pkgbase = nemo-meld-compare
 	sha256sums = 0ce8c27b9003008e6d371f9cddad8a343088f0f2e095830b168cb74d4dd7b439
 
 pkgname = nemo-meld-compare
-
