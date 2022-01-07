@@ -1,6 +1,6 @@
 pkgbase = dracut-git
 	pkgdesc = An event driven initramfs infrastructure
-	pkgver = 050.r213.3a12309c
+	pkgver = 055.r106.813577e2
 	pkgrel = 1
 	url = https://dracut.wiki.kernel.org
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = dracut-git
 	depends = util-linux
 	depends = xz
 	optdepends = binutils: --uefi option support
+	optdepends = tpm2-tools: tpm2-tss module support
 	optdepends = elfutils: strip binaries to reduce initramfs size
 	optdepends = hardlink: --hardlink option support
 	optdepends = memstrack: memstrack module support

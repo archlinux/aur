@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=050.r213.3a12309c
+pkgver=055.r106.813577e2
 pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=('bash' 'coreutils' 'cpio' 'filesystem' 'findutils' 'grep' 'gzip'
          'kmod' 'pkgconf' 'procps-ng' 'sed' 'systemd' 'util-linux' 'xz')
 makedepends=('git' 'asciidoc')
 optdepends=('binutils: --uefi option support'
+            'tpm2-tools: tpm2-tss module support'
             'elfutils: strip binaries to reduce initramfs size'
             'hardlink: --hardlink option support'
             'memstrack: memstrack module support'
