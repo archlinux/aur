@@ -1,10 +1,11 @@
 pkgbase = sedparse
 	pkgdesc = parser for sed scripts
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aureliojargas/sedparse
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python
 	source = sedparse-0.1.2.tar.gz::https://github.com/aureliojargas/sedparse/archive/refs/tags/0.1.2.tar.gz
 	sha256sums = 81b5c55da8104e54dfdd9ff43b06bfea040f9dabd9453ba44f10cc211389495d
