@@ -3,7 +3,7 @@
 
 pkgname=libaacplus
 pkgver=2.0.2
-pkgrel=11
+pkgrel=12
 pkgdesc="3GPP AAC+ High Efficiency Advanced Audio Codec v2 (HE-AAC+) Encoder Shared Library"
 arch=('i686' 'x86_64')
 url="http://tipok.org.ua/node/17"
@@ -22,6 +22,7 @@ md5sums=('3fc15d5aa91d0e8b8f94acb6555103da'
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 -i ${srcdir}/au.patch
+  autoupdate
   for i in $(find . -name 'Makefile.am');do sed 's|INCLUDES|AM_CPPFLAGS|g' -i $i; done
   sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
   ./autogen.sh
