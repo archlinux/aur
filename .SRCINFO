@@ -1,0 +1,15 @@
+pkgbase = litemdview
+	pkgdesc = Suckless markdown viewer
+	pkgver = 0.0.26
+	pkgrel = 1
+	url = https://notabug.org/g0tsu/litemdview
+	arch = x86_64
+	license = GPL2
+	makedepends = fontconfig
+	depends = gtkmm3
+	provides = litemdview
+	conflicts = litemdview
+	source = https://notabug.org/g0tsu/litemdview/archive/litemdview-0.0.26.tar.gz
+	sha256sums = 0aa98ed1e5769c925f10c916d69f5b11a2b7c8791813fff1d226cfedf78cb625
+
+pkgname = litemdview
