@@ -33,5 +33,5 @@ validpgpkeys=()
 package() {
     tar -xJv -C "${pkgdir}" -f "${srcdir}/${__filename__}" usr opt
     mkdir "$pkgdir/usr/bin"
-    ln -s /opt/vnStat-client/vnstat-client "$pkgdir"/usr/bin/vnstat-client
+    ln -s /opt/vnstat-client/vnstat-client "$pkgdir"/usr/bin/vnstat-client
 }
