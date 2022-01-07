@@ -2,7 +2,7 @@
 
 _pkgname='histoprint'
 pkgname="python-${_pkgname}"
-pkgver='2.2.0'
+pkgver='2.2.1'
 pkgrel=1
 pkgdesc="Pretty print Numpy (and other) histograms to the console."
 arch=('any')
