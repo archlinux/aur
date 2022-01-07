@@ -14,15 +14,14 @@ source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar
 sha256sums=('54d2af8c7949aa9c5db87fb11ef0a478a5d3e7ac6d2d2ac8dd1711e3a516fc82')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-	install -d "$pkgdir/usr/share/licenses/$pkgname"
-	mv "$pkgdir/usr/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  mv "$pkgdir/usr/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
