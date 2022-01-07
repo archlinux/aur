@@ -1,7 +1,7 @@
 pkgbase = tailwindcss-intellisense
 	pkgdesc = Intelligent Tailwind CSS tooling
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tailwindlabs/tailwindcss-intellisense
 	arch = any
 	license = MIT

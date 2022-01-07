@@ -5,7 +5,7 @@ pkgname=('tailwindcss-language-server')
 pkgbase=tailwindcss-intellisense
 pkgver=0.7.3
 _serverver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Intelligent Tailwind CSS tooling'
 url=https://github.com/tailwindlabs/tailwindcss-intellisense
 arch=('any')
@@ -29,6 +29,7 @@ package_tailwindcss-language-server() {
   conflicts=("$pkgbase")
   cd $pkgbase-$pkgver/packages/"${pkgname[0]}"
   install -Dt "$pkgdir"/usr/bin bin/"${pkgname[0]}"
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/"${pkgname[0]}" LICENSE
 }
 
 #package_vscode-tailwindcss() {
