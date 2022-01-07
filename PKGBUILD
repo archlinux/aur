@@ -1,5 +1,5 @@
 pkgname=openmm
-pkgver=7.6.0
+pkgver=7.7.0
 pkgrel=1
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('fftw')
 optdepends=('cuda: prrovides cuda support')
 makedepends=('cmake' 'swig' 'doxygen' 'cython')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-sha256sums=('5a99c491ded9ba83ecc3fb1d8d22fca550f45da92e14f64f25378fda0048a89d')
+sha256sums=('51970779b8dc639ea192e9c61c67f70189aa294575acb915e14be1670a586c25')
 
 #export CC=gcc-10
 #export CXX=g++-10
