@@ -6,15 +6,17 @@
 
 pkgname=wine-stable
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/6.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
-        wine-binfmt.conf)
+        wine-binfmt.conf
+        0001-ldap-rename-ldap_connect-to-oldap_connect.patch)
 b2sums=('176614736055892b7203313edc52e2926807c93b0bb97d59f65fbf284fd9cb138e4555fb7cd5a6c7c867367fdc50c89f12d7360ca0db947a7f04594f35f14775'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
+        'b3ca0a31ee21f765a526729560a77a62f9e6a10a8a280d7cc6b5f8950542e99116ad26fcceeeb193bc0db92b85ab7d40da3777875f56b9370309993df1dc9a3e')
 validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
 pkgdesc="A compatibility layer for running Windows programs"

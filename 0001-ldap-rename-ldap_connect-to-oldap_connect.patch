@@ -1,0 +1,112 @@
+From 1e396aa28d74467107fd319b00ab96e75a4759e3 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Fri, 7 Jan 2022 14:59:22 -0800
+Subject: [PATCH] =?UTF-8?q?ldap:=20rename=20=E2=80=9Cldap=5Fconnect?=
+ =?UTF-8?q?=E2=80=9D=20to=20=E2=80=9Coldap=5Fconnect=E2=80=9D?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Avoids a symbol conflict introduced with OpenLDAP 2.6
+
+It’s a bit of a brute-force solution compared to cherry-picking
+upstream Wine fixes, but the latter do not apply cleanly and 7.0 is
+around the corner. This’ll work for now unless 6.0.3 somehow happens
+before 7.0.
+
+Thanks to lilac on the AUR for wine-valve for the patch, 739f2caa0c
+for reporting it to me.
+---
+ dlls/adsldp/adsldp.c           | 2 +-
+ dlls/wldap32/init.c            | 4 ++--
+ dlls/wldap32/tests/parse.c     | 4 ++--
+ dlls/wldap32/winldap_private.h | 2 +-
+ dlls/wldap32/wldap32.spec      | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/dlls/adsldp/adsldp.c b/dlls/adsldp/adsldp.c
+index 13bd73c1296..b3b0afb989c 100644
+--- a/dlls/adsldp/adsldp.c
++++ b/dlls/adsldp/adsldp.c
+@@ -1021,7 +1021,7 @@ static HRESULT WINAPI openobj_OpenDSObject(IADsOpenDSObject *iface, BSTR path, B
+             goto fail;
+         }
+ 
+-        err = ldap_connect(ld, NULL);
++        err = oldap_connect(ld, NULL);
+         if (err != LDAP_SUCCESS)
+         {
+             hr = HRESULT_FROM_WIN32(map_ldap_error(err));
+diff --git a/dlls/wldap32/init.c b/dlls/wldap32/init.c
+index afaef3b52f2..854c76f0d7c 100644
+--- a/dlls/wldap32/init.c
++++ b/dlls/wldap32/init.c
+@@ -305,7 +305,7 @@ exit:
+ }
+ 
+ /***********************************************************************
+- *      ldap_connect     (WLDAP32.@)
++ *      oldap_connect     (WLDAP32.@)
+  *
+  * Connect to an LDAP server. 
+  *
+@@ -322,7 +322,7 @@ exit:
+  *  The timeout parameter may be NULL in which case a default timeout
+  *  value will be used.
+  */
+-ULONG CDECL ldap_connect( WLDAP32_LDAP *ld, struct l_timeval *timeout )
++ULONG CDECL oldap_connect( WLDAP32_LDAP *ld, struct l_timeval *timeout )
+ {
+     TRACE( "(%p, %p)\n", ld, timeout );
+ 
+diff --git a/dlls/wldap32/tests/parse.c b/dlls/wldap32/tests/parse.c
+index 9fdd4db03ad..78e041771ae 100644
+--- a/dlls/wldap32/tests/parse.c
++++ b/dlls/wldap32/tests/parse.c
+@@ -159,7 +159,7 @@ static void test_ldap_bind_sA( void )
+         return;
+     }
+ 
+-    ret = ldap_connect( ld, NULL );
++    ret = oldap_connect( ld, NULL );
+     ok( !ret, "ldap_connect failed 0x%08x\n", ret );
+ 
+     ret = ldap_bind_sA( ld, (char *)"CN=read-only-admin,DC=example,DC=com", (char *)"password", LDAP_AUTH_SIMPLE );
+@@ -190,7 +190,7 @@ static void test_ldap_server_control( void )
+         return;
+     }
+ 
+-    ret = ldap_connect( ld, NULL );
++    ret = oldap_connect( ld, NULL );
+     ok( !ret, "ldap_connect failed 0x%08x\n", ret );
+ 
+     /* test setting a not supported server control */
+diff --git a/dlls/wldap32/winldap_private.h b/dlls/wldap32/winldap_private.h
+index 69035050961..ba3400b9cd3 100644
+--- a/dlls/wldap32/winldap_private.h
++++ b/dlls/wldap32/winldap_private.h
+@@ -320,7 +320,7 @@ ULONG CDECL ldap_compare_ext_sA(WLDAP32_LDAP*,PCHAR,PCHAR,PCHAR,struct WLDAP32_b
+ ULONG CDECL ldap_compare_ext_sW(WLDAP32_LDAP*,PWCHAR,PWCHAR,PWCHAR,struct WLDAP32_berval*,PLDAPControlW*,PLDAPControlW*);
+ ULONG CDECL ldap_compare_sA(WLDAP32_LDAP*,PCHAR,PCHAR,PCHAR);
+ ULONG CDECL ldap_compare_sW(WLDAP32_LDAP*,PWCHAR,PWCHAR,PWCHAR);
+-ULONG CDECL ldap_connect(WLDAP32_LDAP*,LDAP_TIMEVAL*);
++ULONG CDECL oldap_connect(WLDAP32_LDAP*,LDAP_TIMEVAL*);
+ WLDAP32_LDAP * CDECL ldap_conn_from_msg(WLDAP32_LDAP*,WLDAP32_LDAPMessage*);
+ ULONG CDECL ldap_control_freeA(LDAPControlA*);
+ ULONG CDECL ldap_control_freeW(LDAPControlW*);
+diff --git a/dlls/wldap32/wldap32.spec b/dlls/wldap32/wldap32.spec
+index 8a8e29fc198..5598b134b11 100644
+--- a/dlls/wldap32/wldap32.spec
++++ b/dlls/wldap32/wldap32.spec
+@@ -75,7 +75,7 @@
+  85 cdecl ldap_compare_ext_sW(ptr wstr wstr wstr ptr ptr ptr)
+  86 cdecl ldap_compare_sA(ptr str str str)
+  87 cdecl ldap_compare_sW(ptr wstr wstr wstr)
+- 88 cdecl ldap_connect(ptr ptr)
++ 88 cdecl oldap_connect(ptr ptr)
+  89 cdecl ldap_control_free(ptr) ldap_control_freeA
+  90 cdecl ldap_control_freeA(ptr)
+  91 cdecl ldap_control_freeW(ptr)
+-- 
+2.34.1
+
