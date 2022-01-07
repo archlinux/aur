@@ -12,4 +12,3 @@ pkgbase = python-single-version
 	sha256sums = d0dee097581a4a9cdf1576075219369abedb67583449c6a0ae2c3f8100b9e903
 
 pkgname = python-single-version
-
