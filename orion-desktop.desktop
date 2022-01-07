@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+GenericName=BitTorrent client & Streamer
+Name[en_US]=Orion
+Comment=Download Discover and share files over BitTorrent
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+Name=Orion
+Type=Application
+Icon=orion-desktop
+Keywords=bittorrent;stream;torrent;magnet;download;p2p
+Exec=orion-desktop %F
+Categories=Network;FileTransfer;P2P;Qt;
+Terminal=false
+StartupNotify=false
