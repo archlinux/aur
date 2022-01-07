@@ -1,18 +1,25 @@
 pkgbase = mjpg-streamer
 	pkgdesc = Stream mjpeg frames from a webcam via http
-	pkgver = r67
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/jacksonliam/mjpg-streamer
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
 	arch = armv6h
 	arch = armv7h
-	license = GPL
-	makedepends = gcc
+	arch = aarch64
+	license = GPL2
 	makedepends = cmake
-	depends = libjpeg
-	source = https://github.com/jacksonliam/mjpg-streamer/archive/f387bb44e6c087271b763b27da998bf2e06c4f5d.tar.gz
-	sha1sums = 298ad7adebe3876b87d4e19f76e4d2425fd0c9ff
+	makedepends = protobuf-c
+	makedepends = zeromq
+	makedepends = sdl
+	makedepends = libgphoto2
+	makedepends = v4l-utils
+	makedepends = python-numpy
+	depends = libjpeg-turbo
+	depends = imagemagick
+	source = mjpg-streamer-1.0.0.tar.gz::https://github.com/jacksonliam/mjpg-streamer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 31850cd533b0290640cbdf4da44f7a774bfba050647cb0a0c84a435e90b08598
 
 pkgname = mjpg-streamer
-

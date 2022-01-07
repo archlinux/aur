@@ -1,42 +1,36 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
-# Contributor: Ross Melin <rdmelin@gmail.com>
-# Contributor: Tri Le <trile7@gmail.com>
-# Contributor: libc <primehunter326@gmail.com>
-# Contributor: Albert Nguyen <albertbmnguyen@yahoo.com>
-# Contributor: Maxim Devaev <mdevaev@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=mjpg-streamer
-pkgver=r67
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Stream mjpeg frames from a webcam via http"
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/jacksonliam/mjpg-streamer"
-license=(GPL)
-arch=(i686 x86_64 armv6h armv7h)
-depends=(libjpeg)
-makedepends=(gcc cmake)
+license=(GPL2)
+depends=(libjpeg-turbo imagemagick)
+makedepends=(cmake protobuf-c zeromq sdl libgphoto2 v4l-utils python-numpy)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jacksonliam/mjpg-streamer/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('31850cd533b0290640cbdf4da44f7a774bfba050647cb0a0c84a435e90b08598')
 
-_commit="f387bb44e6c087271b763b27da998bf2e06c4f5d"
-source=("https://github.com/jacksonliam/mjpg-streamer/archive/$_commit.tar.gz")
-sha1sums=("298ad7adebe3876b87d4e19f76e4d2425fd0c9ff")
+export LDFLAGS="-Wl,-O1,--sort-common,--no-as-needed,-z,relro,-z,now"
+export CFLAGS="-fcommon"
 
+prepare() {
+  cd "${pkgname}-${pkgver}/mjpg-streamer-experimental"
+  install -d _build
+}
 
 build() {
-	cd "$srcdir/mjpg-streamer-$_commit/mjpg-streamer-experimental"
-
-	unset CPPFLAGS
-	unset LDFLAGS
-	unset CXXFLAGS
-	unset CHOST
-	unset CFLAGS
-
-	[ -d _build ] || mkdir _build
-	[ -f _build/Makefile ] || (cd _build && cmake -DPLUGIN_INPUT_OPENCV=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) ..)
-	make -C _build
-	cp _build/mjpg_streamer .
-	find _build -name "*.so" -type f -exec cp {} . \;
+  cd "${pkgname}-${pkgver}/mjpg-streamer-experimental/_build"
+  cmake .. -Wno-dev \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPLUGIN_INPUT_OPENCV=OFF \
+    -DENABLE_HTTP_MANAGEMENT=ON \
+    -DWXP_COMPAT=ON \
+    -DCMAKE_BUILD_TYPE=release
 }
 
 package() {
-	cd "$srcdir/mjpg-streamer-$_commit/mjpg-streamer-experimental"
-	make DESTDIR="$pkgdir" install
+  cd "${pkgname}-${pkgver}/mjpg-streamer-experimental"
+  make DESTDIR="${pkgdir}" install
 }
