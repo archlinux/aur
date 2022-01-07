@@ -1,0 +1,33 @@
+pkgbase = nogil-python
+	pkgdesc = Python Multithreading without GIL
+	pkgver = 3.9.9+1+766afea
+	pkgrel = 1
+	url = https://github.com/colesbury/nogil
+	arch = x86_64
+	license = custom
+	makedepends = bluez-libs
+	makedepends = gdb
+	makedepends = make
+	makedepends = mpdecimal
+	makedepends = llvm
+	makedepends = sqlite
+	makedepends = tk
+	depends = bzip2
+	depends = expat
+	depends = gdbm
+	depends = libffi
+	depends = libnsl
+	depends = libxcrypt
+	depends = openssl
+	depends = zlib
+	optdepends = mpdecimal: for decimal
+	optdepends = sqlite
+	optdepends = tk: for tkinter
+	optdepends = xz: for lzma
+	provides = python=3.9
+	conflicts = python=3.9
+	conflicts = python39
+	source = nogil-766afeaec8f8ed8e875db59c781cbdf785e5a3ed.zip::https://github.com/colesbury/nogil/archive/766afeaec8f8ed8e875db59c781cbdf785e5a3ed.zip
+	sha256sums = aa8d86237f014a6a181ee4cbe2f909e51b23d35c147141927dfefa809d3397b8
+
+pkgname = nogil-python
