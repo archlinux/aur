@@ -17,20 +17,19 @@ sha256sums=('SKIP'
             'cc538ea1e439738db3fedf55ef0ab825e27669b8501f99ac58be7245f974bc7e')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}/src"
-	python setup.py build
+  cd "$srcdir/${pkgname%-git}/src"
+  python setup.py build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/src"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$srcdir/${pkgname%-git}/src"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
-		"$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
+    "$pkgdir/usr/share/applications"
 }

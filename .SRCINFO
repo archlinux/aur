@@ -19,4 +19,3 @@ pkgbase = sysmon-git
 	sha256sums = cc538ea1e439738db3fedf55ef0ab825e27669b8501f99ac58be7245f974bc7e
 
 pkgname = sysmon-git
-
