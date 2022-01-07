@@ -3,8 +3,8 @@
 # Contributor: lf <packages at lfcode dot ca>
 pkgname=klipper-py3-git
 _pkgname=klipper
-pkgver=r4325.bea20278
-pkgrel=3
+pkgver=r4374.7c0559c6
+pkgrel=1
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.klipper3d.org/"
@@ -45,13 +45,13 @@ source=("${_pkgname}::git+https://github.com/Klipper3d/klipper"
         'sysusers.conf'
         'tmpfiles.conf'
         # data dictionary from https://github.com/Klipper3d/klipper/issues/1438
-        'klipper-dict.tar.gz::https://github.com/Klipper3d/klipper/files/7491378/klipper-dict-20211106.tar.gz')
+        'klipper-dict.tar.gz::https://github.com/Klipper3d/klipper/files/7774870/klipper-dict-20211224.tar.gz')
 noextract=()
 md5sums=('SKIP'
          '4ccfb9669d304b99146b92a4912ae1fd'
          'cf3715af9f53cc1660e412abe3697342'
          '4c058f09014cf6a3995b761ef81672b1'
-         '9d0fde55e3e8240bc26b476519018195')
+         '36d6f571293886cb37eb8919baa307c0')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
