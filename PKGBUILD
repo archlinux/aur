@@ -8,9 +8,9 @@
 pkgname=lf-xdg
 _pkgname_upstream=lf
 pkgver=26
-pkgrel=1
+pkgrel=2
 license=('MIT')
-pkgdesc="A terminal file manager inspred by ranger written in Go, witch patch to use XDG locations for runtime files"
+pkgdesc="A terminal file manager inspred by ranger written in Go, with patch to use XDG locations for runtime files"
 depends=('glibc')
 makedepends=('go')
 provides=('lf')

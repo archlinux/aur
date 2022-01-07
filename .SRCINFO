@@ -1,7 +1,7 @@
 pkgbase = lf-xdg
-	pkgdesc = A terminal file manager inspred by ranger written in Go, witch patch to use XDG locations for runtime files
+	pkgdesc = A terminal file manager inspred by ranger written in Go, with patch to use XDG locations for runtime files
 	pkgver = 26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gokcehan/lf
 	arch = aarch64
 	arch = armv7h
