@@ -3,7 +3,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau gmail com>
 
 pkgname=chroma
-pkgver=1.18
+pkgver=1.20
 pkgrel=1
 pkgdesc="Abstract puzzle game."
 arch=('i686' 'x86_64')
@@ -34,5 +34,5 @@ package() {
         ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
-md5sums=('adff0bca563ebec02bbe2b08ed95058a'
+md5sums=('d0f1e770e49ae10070a78e50cec8a723'
          '90932d9a42f1545c3ba59ae38afb7732')
