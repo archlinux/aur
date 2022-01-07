@@ -1,7 +1,7 @@
 pkgbase = alda-bin
 	pkgdesc = A music programming language for musicians. 🎶
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alda-lang/alda
 	arch = x86_64
 	license = custom:EPL2
@@ -17,6 +17,6 @@ pkgbase = alda-bin
 	source = https://github.com/alda-lang/alda/blob/release-2.1.0/LICENSE
 	sha512sums = e411d512a90cdd9579e958c6ed75e858c9868271af9566bcd81b6ecf76d18ec87062de01dac6989f86f4152c2fc01a1ed145f4655a990052182952ffd6ccb468
 	sha512sums = 1280cfda27b7c5de58829a8a5ff824a3c35a5e2f16a49df28f04e7eef1ad488b574b717b074d28d2b35a4e482563884aea57ddd592f7a6c2a4d1f937cd651cdf
-	sha512sums = 7facf8a504cc74fc7a355b1e3ed732cfc9d96ffd1a231de45708479ee33c786a75b9c8dcba86d355e317d487ab09ba23822a5fe49859ff42bca3657f7c3d26b9
+	sha512sums = 8b0fe9fe6e7faba5a0c0221197a219842e66285c7df437e2f74ed4d60e715ae38a17023b3d010b144242a68b377bf47fc9b0e3adf685d1062f9f2d426942df08
 
 pkgname = alda-bin
