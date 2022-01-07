@@ -8,7 +8,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -16,6 +16,7 @@ license=('Apache')
 depends=(
     'ros2-arch-deps'
     'ros2-pyqt5-sip-compat'
+    'assimp'
     'gmock'
     'sip4'
 )
