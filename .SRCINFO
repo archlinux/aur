@@ -1,13 +1,13 @@
 pkgbase = pygmy-legacy
 	pkgdesc = Amazee.io's local docker development tool
 	pkgver = 0.9.11
-	pkgrel = 1
-	url = https://github.com/amazeeio/pygmy
+	pkgrel = 2
+	url = https://github.com/amazeeio/pygmy-legacy
 	arch = x86_64
 	license = MIT
 	depends = ruby2.6
 	provides = pygmy-legacy
-	source = pygmy-legacy-0.9.11.tar.gz::https://github.com/amazeeio/pygmy/archive/refs/tags/0.9.11.tar.gz
-	sha512sums = 47f5a8783c592e2c5b680482108eb6172a3962d4f7b7cfde77d23d24c1396c0a812f6ce895beec6e0f7c4701fdf14252ee0e2b0ee0e156c58fd6175337e5a07f
+	source = pygmy-legacy-0.9.11.tar.gz::https://github.com/amazeeio/pygmy-legacy/archive/refs/tags/0.9.11.tar.gz
+	sha512sums = c06567ac2fa7b6e21a905d8e9d6d46efe476e654b285f0baaaa1459a867bd889c5f2852931d724d3e50f2f48f17252ccc730ef0734e343114b4e872a525097d6
 
 pkgname = pygmy-legacy
