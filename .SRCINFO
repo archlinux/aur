@@ -8,7 +8,6 @@ pkgbase = libvtflib-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = extra-cmake-modules
-	makedepends = gcc
 	depends = libtxc_dxtn
 	source = git+https://github.com/panzi/VTFLib.git
 	md5sums = SKIP

@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/panzi/VTFLib"
 license=('GPL')
 depends=('libtxc_dxtn')
-makedepends=('cmake' 'git' 'extra-cmake-modules' 'gcc')
+makedepends=('cmake' 'git' 'extra-cmake-modules')
 source=("git+https://github.com/panzi/VTFLib.git")
 md5sums=('SKIP')
 
