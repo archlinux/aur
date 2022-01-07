@@ -1,0 +1,357 @@
+# v1.9.0-beta.2
+
+### Overview
+
+-   The layout changed significantly:
+    -   The app is now organized into "views", and it has a "viewbar" for switching between them.
+    -   The app is now divided into 3 main sections, from left to right: viewbar, sidebar and mainbar.
+    -   The middlebar got deleted, the search section of the app got moved to its own view.
+    -   Most things that were previously implemented as modal windows got moved to their own views: graph, changelogs, help pages, settings, custom CSS/JS editor etc.
+    -   The main benefits of this new layout are: space is used more efficiently, it can work nicely on mobile, and in the future extensions could be written to implement new views or new sections for the various sidebars, which would be really powerful.
+-   Search has been completely rewritten:
+    -   In-editor search is now supported, for every editor the app provides, with many VS Code-like features supported out of the box.
+    -   In-preview search is implemented too, for things like help pages and changelogs too, but it can only search into contiguous characters having the same formatting style, for now.
+    -   Global search is crazy powerful now, a full-blown query language is supported, which is documented in the [search help page](https://github.com/notable/notable-insiders/blob/v1.9.0-beta.2/@command/help.search).
+    -   As a quick summary the query language supports things like: regular expressions, boolean expressions, grouping, filters, searching into any metadata field etc.
+    -   As a bare minimum every search field the app provides now supports regular expressions, which on its own makes them already super powerful.
+    -   Palettes and autocomplete providers are also searched into, highlighted and ranked smartly using the new search engine.
+-   Tabs received many important improvements:
+    -   They are always visible, even if you have a single one open.
+    -   Tabs have a history, and back/forward buttons have been added to the toolbar for browsing it.
+    -   Links now work similarly to how they work in a browser, if you left-click something it will be opened in the same tab, if you middle-click something it will be opened in a new tab.
+    -   Tabs can be restored after being closed with a `Cmd/Ctrl+Shift+T`.
+    -   Tabs can be pinned, either from the context menu or the command palette.
+-   Proper inline autocomplete is implemented:
+    -   The following things can be autocompleted while editing notes: emojis, footnote links, syntax highlighting grammars, katex functions, reference links, scheme links, regular links, reference links, quick links, and spelling mistakes.
+    -   The following things can be autocompleted while editing settings and shortcuts: properties, values.
+    -   There's also an autocomplete provider for tags inputs.
+-   The new syntax highlighter is IDE-level:
+    -   Every language that GitHub can syntax highlight the app can now syntax highlight too, that's _hundreds_ of them.
+    -   Every language is syntax highlighted using an advanced TextMate grammar, which is what every proper editor uses.
+    -   Pikchr and AsciiMath can be syntax highlighted too, no other app can do this, custom grammars have been written to support them too.
+-   The new graph is completely custom:
+    -   It lives in its own view and it's therefor much more immersive.
+    -   When the graph is animating or being interacted with it's ~50% faster compared to the old one.
+    -   When the graph is not animating nor being interacted with it's exactly 100% faster compared to the old one.
+    -   A pagerank algorithm is being run over the whole graph, so the visual size of each node gives you a hint regarding its importance in the network.
+    -   The graph can be downloaded in PNG or SVG.
+    -   The 3D graph got temporarily deleted, it will eventually be reimplemented with reasonable performance characteristics.
+-   The new spell checker is completely custom:
+    -   It has some seemingly impossible performance characteristics, the following numbers work out for all supported languages, even those that previously required 10s+ to be ready and 100MB+ of memory.
+    -   Startup time decreased by ~100%, because dictionaries are parsed at build-time.
+    -   Memory usage decreased for ~95%.
+    -   Word look-up time decreased by ~95%.
+    -   The quality of the provided suggestions is slightly higher too!
+-   The new scrollbars are completely custom:
+    -   They are used consistently throughout the app.
+    -   They are slim and modern-looking, this makes a big difference especially under Windows.
+    -   They are visible only when a scrollable section is being hovered or scrolled.
+    -   Everything can now be scrolled at 5x the speed by pressing `Alt` while scrolling.
+-   The multi-note editor now lives in its own view:
+    -   You can now interact with it without losing the ability to interact with notes while it's open.
+    -   You can add notes to it just by dragging them to the viewbar button for the multi-node editor view, which will be always displayed while dragging potential targets for it.
+-   This release ships with many many many performance improvements, the app should be noticeably faster, and even if it was already plenty fast for you before now it will at least require less battery power.
+-   This release supports opening multiple windows of the app, and switching between them, right from within the app.
+-   Universal builds for macOS are now available, they run natively on Intel and Apple Silicon.
+-   Universal builds for Windows are now available, they run natively on IA32, X64 and ARM64.
+-   Electron is updated from v11 to v16.
+
+### New Features
+
+-   Rewritten themes: brighter dark theme, made themes more contrasty, refined and easier to tweak
+-   Notes are always sanitized, as an important defense layer against malicious notes containing XSS exploits
+-   Creating a new note automatically when clicking on a link to a non-existing note
+-   Preferences editors: matching their contents against schemas, so that errors are highlighted in the editors themselves
+-   Palette: remembering the last 5 picked items in the "command" and "emoji" palettes
+-   Added support for toggling the sidebar by clicking on the currently active viewbar button
+-   Added support for creating a new note from the quick pick opened by clicking the plus button in the tabbar
+-   Scheme URLs: added a confirmation dialog inside the app for potentially dangerous URLs, for extra safety
+-   Split mode: added support for changing the split direction with an `Alt+Click` on the icon, or from the command palette
+-   Palette: added an "Open an external folder..." dynamic item, for convenience, especially for new users
+-   Data directory context menu: added a "Open in New Window" item
+-   Editor: added support for rendering control characters
+-   Editor: making headings in the editor bold for better legibility
+-   Editor context menu: added items for toggling scroll sync/spell checking
+-   Editor context menu: added items for inserting special things like a Table of Contents
+-   Emoji: updated database
+-   Markdown: added support for automatically formatting tables when they are edited (after some delay)
+-   Markdown: ensuring ordered lists indented with 2 spaces work as expected
+-   Markdown: inserting a matching closing quotation mark automatically when writing one
+-   Heading palette: added support for help pages and changelogs too
+-   Heading statusbar item: added support for both edit-mode and split-mode
+-   Scroll synchronization: added support for the preview -> editor direction
+-   Scroll synchronization: added support for huge notes rendered using virtualization
+-   Scroll synchronization: added support for synchronizing previews and editors even outside of split-mode
+-   Tag context menu: added items for making a child tag or a child note
+-   Tag context menus: added items for opening all their notes
+-   Viewbar: making the whole app draggable from non-button/empty areas
+-   Window context menu: added a "New Window" item
+-   Window context menu: added a "Switch Window..." item
+-   Added support for back/forward mouse buttons (although my mouse doesn't work with that for some reason)
+-   Added support for dropping a tab over the multi-note editor button in the viewbar to add it to the selection
+-   Added support for dropping shortcuts over note editors to link to them
+-   Added support for opening multiple notes in a single tab (with history) when dropping them over the tabbar while pressing `Shift`
+-   Added support for rendering Pikchr diagrams
+-   Using a custom server for telemetry, pinged at `telemetry.notable.app`, rather than a third-party thing.
+-   New context menu: "notes", it can be opened by clicking the button in the viewbar for the multi-note editor
+-   Debug view: added a telemetry explorer, listing the last 100 telemetry events sent to the server
+-   Graph: added a forces editor
+-   Graph view: new toolbar buttons: reheat, restart
+-   Process explorer view: added new toolbar buttons: devtools, fps, highlights, tracer, reload
+-   New help page: views
+-   New command: help.views
+-   New help page: Custom Code
+-   New help pages (placeholders for now): Privacy Policy, Terms of Service, Licenses
+-   Help pages: most pages are fully written now
+-   Themes help page: added a button for resetting overridden colors
+-   Help view: added a button to the toolbar that opens the help palette when the sidebar is hidden
+-   Changelog view: added a button to the toolbar that opens the changelog palette when the sidebar is hidden
+-   New command: clipboard.set
+-   New command: contextKey.log
+-   New command: debug.search.query.explain
+-   New command: editor.cursor.reveal
+-   New command: editor.mode.split.order.reversed.toggle
+-   New command: editor.selection.line
+-   New command: editor.sort.randomly
+-   New command: editor.sort.reverse
+-   New command: editor.transform.kebabcase
+-   New command: editor.transform.snakecase
+-   New command: editor.write
+-   New command: help.customCode
+-   New command: palette.history
+-   New command: tab.history.reset
+-   New command: theme.resetColor
+-   New command: tutorial.import
+-   New command: window.new, for opening a new window of the app
+-   New command: window.switch, for switching to another window
+-   New commands: autocomplete.close, autocomplete.open, autocomplete.item.first, autocomplete.item.last, autocomplete.item.next, autocomplete.item.previous, autocomplete.item.index, autocomplete.item.pick, autocomplete.item.pickIndex, palette.debug, palette.grammar, palette.window, cwd.copy, cwd.new, debug.section.first, debug.section.last, debug.section.next, debug.section.previous, editor.comment.line.toggle, editor.comment.block.toggle, graph.download.png, graph.download.svg, graph.fixed.reset, help.licenses, help.privacyPolicy, help.termsOfService, notes.close, notes.openTab, notes.selection.note.add, notes.selection.note.remove, notes.selection.tag.add, notes.selection.tag.remove, notes.selection.clear, preferences.set, preferences.setActive, preferences.first, preferences.last, preferences.next, preferences.previous, quickEditor.close, quickEditor.first, quickEditor.last, quickEditor.next, quickEditor.previous, quickEditor.activate, scheme.handle, search.open, search.close, search.toggle, search.copy, search.copyLink, search.copyMarkdownLink, search.results.refresh, search.result.go.first, search.result.go.last, search.result.go.next, search.result.go.previous, search.result.go.index, tag.new.childNote, tag.openInTab, tag.openInTabs, tag.reveal, tab.pin, tab.unpin, tab.togglePinned, tab.restore, tab.history.first, tab.history.last, tab.history.previous, tab.history.next, tab.history.index, tagbox.autocomplete, view.changelog, view.cwd, view.debug, view.explorer, view.graph, view.help, view.multiEditor, view.preferences, view.search, window.ping
+-   New commands: debugger.fps.open, debugger.fps.close, debugger.fps.toggle, debugger.highlights.open, debugger.highlights.close, debugger.highlights.toggle
+-   New commands: editor.formatting.superscript.add, editor.formatting.superscript.remove, editor.formatting.superscript.toggle
+-   New commands: editor.mode.split.direction.horizontal, editor.mode.split.direction.vertical, editor.mode.split.direction.toggle
+-   New commands: editor.search.open, editor.search.close, editor.search.toggle, editor.search.find.focus, editor.search.find.flags.matchCase.toggle, editor.search.find.flags.matchWord.toggle, editor.search.find.flags.regex.toggle, editor.search.find.query.clear, editor.search.find.query.get, editor.search.find.query.set, editor.search.replace.open, editor.search.replace.close, editor.search.replace.toggle, editor.search.replace.focus, editor.search.replace.flags.preserveCase.toggle, editor.search.replace.query.clear, editor.search.replace.query.get, editor.search.replace.query.set, editor.search.replace.substitute.one, editor.search.replace.substitute.all, editor.search.results.refresh, editor.search.result.go.first, editor.search.result.go.last, editor.search.result.go.next, editor.search.result.go.previous, editor.search.result.go.index
+-   New commands: editor.setting.controlCharacters.enable, editor.setting.controlCharacters.disable, editor.setting.controlCharacters.toggle
+-   New commands: graph.reheat, graph.restart, graph.forces.editor.open, graph.forces.editor.close, graph.forces.editor.toggle, graph.forces.center.set, graph.forces.collision.set, graph.forces.link.set, graph.forces.repulsion.set
+-   New commands: placeholder.clipboard, placeholder.eval, placeholder.selection
+-   New commands: preview.search.open, preview.search.close, preview.search.toggle, preview.search.find.focus, preview.search.find.flags.matchCase.toggle, preview.search.find.flags.matchWord.toggle, preview.search.find.flags.regex.toggle, preview.search.find.query.clear, preview.search.find.query.get, preview.search.find.query.set, preview.search.results.refresh, preview.search.result.go.first, preview.search.result.go.last, preview.search.result.go.next, preview.search.result.go.previous, preview.search.result.go.index
+-   New commands: screencast.enable, screencast.disable, screencast.toggle
+-   New commands: search.find.focus, search.find.flags.matchCase.toggle, search.find.flags.matchWord.toggle, search.find.flags.regex.toggle, search.find.query.clear, search.find.query.get, search.find.query.set, search.replace.open, search.replace.close, search.replace.toggle, search.replace.focus, search.replace.flags.preserveCase.toggle, search.replace.query.clear, search.replace.query.get, search.replace.query.set, search.replace.substitute.all, search.results.refresh
+-   New commands: tags.collapse, tags.expand
+-   New commands: telemetry.enable, telemetry.disable, for enabling/disabling the telemetry quickly
+-   New commands: telemetry.id.log, telemetry.id.randomize
+-   New commands: view.set, view.setDefault
+-   New commands: view.viewbar.enable, view.viewbar.disable, view.viewbar.toggle
+-   New context key: hasWindows
+-   New context key: isScreencastOpen
+-   New context keys: hasTabHistory, hasTabsTrashed
+-   New context keys: isAutocompleteOpen, hasAutocompleteResult, hasAutocompleteResults, isCommandsScreencastOpen, draggable, hasEditor, hasEditorSearchResult, hasEditorSearchResults, isEditorSearchFocused, isEditorSearchOpen, isEditorSearchReplaceOpen, hasGraphFixedNode, preferences, hasPreviewSearchResult, hasPreviewSearchResults, isPreviewSearchFocused, isPreviewSearchOpen, isQuickEditorOpen, hasSearchResult, hasSearchResults, isSearchOpen, isSearchReplaceOpen, isTagboxFocused, isViewChangelog, isViewCWD, isViewDebug, isViewExplorer, isViewGraph, isViewHelp, isViewMain, isViewMultiEditor, isViewPreferences, isViewSearch, hasWindows
+-   New context keys: isDebuggerFPSOpen, isDebuggerHighlightsOpen
+-   New context keys: view, hasViewbar
+-   New palette: "window", for switching quickly to other another window
+-   New palette: "history", for browsing the history of the current tab
+-   New palette: "view", for switching quickly to another view
+-   New setting: editor.controlCharacters.render
+-   New setting: editor.mode.split.direction
+-   New setting: markdown.tables.autoformat.enabled
+-   New setting: markdown.tables.autoformat.interval
+-   New setting: view.viewbar.enabled
+-   New settings: editor.mode.split.order.reversed.horizontal, editor.mode.split.order.reversed.vertical
+-   New shortcut: `Cmd/Ctrl+Shift+T`, for restoring a closed tab
+-   New shortcut: `CtrlOrCmd+K CtrlOrCmd+A` -> `view.viewbar.toggle`
+-   New shortcut: `Esc` -> `view.setDefault`
+-   New shortcut: `F2` -> `note.rename`
+-   New theming colors: `editor:search:highlight:background`, `preview:search:highlight:background`
+-   New theming colors: `statusbar:button:background`, `statusbar:button:backgroundHover`, `statusbar:button:backgroundActive`, `statusbar:button:foreground`
+-   New theming colors: `viewbar:background`, `viewbar:foreground`, `viewbar:button:background`, `viewbar:button:backgroundHover`, `viewbar:button:backgroundActive`, `viewbar:button:border`, `viewbar:button:borderActive`, `viewbar:button:foreground`, `viewbar:button:foregroundActive`
+-   New theming colors: `color:secondary:background`, `color:secondary:backgroundHover`, `color:secondary:backgroundActive`, `color:secondary:border`, `color:secondary:foreground`
+-   New theming colors: `editor:link:underline:background`, `editor:link:underline:backgroundHover`
+-   New theming colors: `floating:background`, `floating:border`, `floating:foreground`
+-   New theming colors: `list:item:counter:background`, `list:item:counter:foreground`
+-   New theming colors: `preview:blockcode:background`, `preview:blockcode:border`, `preview:blockcode:foreground`
+-   New theming colors: `preview:pdf:background`, `preview:pdf:border`, `preview:pdf:navigation:background`, `preview:pdf:navigation:foreground`
+-   New theming colors: `viewbar:badge:background`, `viewbar:badge:foreground`, `viewbar:button:foregroundHover`
+
+### Removed Features
+
+-   Removed focus mode
+-   Removed command: help.scheme
+-   Removed command: quickModal.close
+-   Removed commands: changelog.open, changelog.close, changelog.toggle, palette.searchWithCurrent, configurationEditor.close, configurationEditor.first, configurationEditor.last, configurationEditor.next, configurationEditor.previous, customCode.editor.close, customCode.editor.toggle, editor.autocomplete.emoji, editor.autocomplete.language, editor.autocomplete.quickLink, editor.comment.toggle, graph.open, graph.close, graph.toggle, graph.3d.enable, graph.3d.disable, graph.3d.toggle, graph.filters.editor.open, graph.filters.editor.close, graph.filters.editor.toggle, graph.forces.editor.open, graph.forces.editor.close, graph.forces.editor.toggle, help.open, help.close, help.toggle, notes.selection.all, notes.selection.clear, notes.selection.invert, processExplorer.open, processExplorer.close, processExplorer.toggle, processExplorer.statusbar.enable, processExplorer.statusbar.disable, processExplorer.statusbar.toggle, protocol.handle, search.results.refresh, settings.editor.close, settings.editor.toggle, shortcuts.editor.close, shortcuts.editor.toggle, standaloneEditor.close, standaloneEditor.first, standaloneEditor.last, standaloneEditor.next, standaloneEditor.previous, tag.toggle, tag.first, tag.last, tag.previous, tag.next, tab.persist, tab.unpersist, tab.togglePersist, view.middlebar.enable, view.middlebar.disable, view.middlebar.toggle, view.mode.focus.enable, view.mode.focus.disable, view.mode.focus.toggle, window.beforeClose
+-   Removed context keys: isChangelogOpen, isCommandsScreencastOpen, isConfigurationEditorOpen, isCustomCodeEditorFocused, isCustomCSSEditorFocused, isCustomJavaScriptEditorFocused, isCustomCodeEditorOpen, isGraphOpen, isHelpOpen, isNoteMetadataEditorFocused, hasProcessExplorerStatusbar, isProcessExplorerOpen, isQuickPickEmpty, isQuickPickFocused, isSearchEmpty, isSettingsEditorOpen, isShortcutsEditorOpen, isStandaloneEditorOpen, isTabPersistent, hasTag, hasTagChildren, isTagCollapsed, isTagNotebook, isTagSpecial, isTagTemplate, hasTags, hasMiddlebar, hasTabbar, isFocusMode
+-   Removed settings: tabs.alwaysPersistent, tabs.alwaysVisible, updater.download
+-   Removed theming colors: `scrollbar:background`, `scrollbar:track:piece:background`, `scrollbar:corner:background`
+-   Removed theming colors: `highlighter:*`, as now TextMate themes are used for syntax highlighting
+-   Removed theming colors: `list:header:background`, `list:header:border`, `list:header:foreground`
+-   Removed theming colors: `middlebar:background`, `middlebar:foreground`
+-   Removed theming colors: `viewbar:button:border`, `viewbar:button:borderActive`, `titlebar:border`, `toolbar:border`, `statusbar:border`, `scrollbar:corner:background`, `graph:tooltip:border`, `graph:tooltip:borderActive`
+
+### Renamed Features
+
+-   Renamed command: help.palette -> help.palettes
+-   Renamed context keys: editorLanguage -> grammar, isMultiNoteEditorOpen -> isMultiEditorActive, isManualUpdateAvailable -> isUpdateAvailableManually, isFloating -> isWindowFloating, isFocused -> isWindowFocused, isFullscreen -> isWindowFullscreen, isMaximized -> isWindowMaximized, isMinimized -> isWindowMinimized
+-   Renamed palette: `language` -> `grammar`
+-   Renamed theming colors: `colors:*` -> `color:*`
+-   Renamed theming colors: `colors:secondary:*` -> `colors:accent:*`
+
+### Improvements
+
+-   About window: reimplemented as a modal, for simplicity and better cross platform support
+-   Autocomplete: added descriptions as "title" attributes for each item
+-   Autocomplete: always selecting the first item when the search query is updated
+-   Autocomplete: decreased animations durations by 50%
+-   AsciiMath: moved renderer to a dedicated thread
+-   AsciiMath: parallelizing rendering across 3 dedicated threads
+-   Changelog palette: removed "v" prefix from versions
+-   Creating new notes with a couple of empty lines from the start, for convenience
+-   Command palette: ensuring commands that target an editor are only visible when there's an editor open
+-   Database: reading many files in a significantly more performant way
+-   Database: improved filesystem watching, avoiding scanning the directory a second time
+-   Data directory palette: listing the current data directory also
+-   Updated command: tutorial.open -> always opening the help page without prompting the user
+-   Editor: detecting notes with "Untitled" as their title more reliably
+-   Editor: ensuring grammars are initialized lazily, so that the editor can be loaded lazily as well
+-   Editor: ensuring cutting/copy without a selection cuts/copies the whole line
+-   Editor: reimplemented sort commands to be slightly more sophisticated when dealing with numbers, accents and emojis
+-   Editor: increased reserved gutter width for line numbers
+-   Editor: moved link detection to a dedicated thread
+-   Editor: made link detection ~5x faster
+-   Editor search: moving to the next result when substituting one match, if the current selection doesn't already select a full match
+-   Editor search: ensuring replacing has reasonable performance characteristics
+-   Electron: forced app to use the integrated graphics whenever possible, for better battery usage (macOS)
+-   Emoji: pre-sorting them at build-time, speeding up some things
+-   Emoji: using a more bundle-efficient database
+-   Emoji and Language palettes: avoiding copying the selected value to the clipboard if that can be directly inserted in the editor
+-   Emoji palette/autocomplete: moved emoji keywords from the description to the title, for better highlighting and reverse search support (search an emoji to get its name)
+-   FileSystem Watcher: disabled native recursive watcher, as the custom one will lead to better performance for our use case
+-   Front matter: optimized parsing significantly
+-   Front matter: avoiding running YAML in a dedicated thread, significantly improving performance
+-   Front matter: switching to the JSON schema, for simplicity and performance
+-   Hashing: moved digest method to a dedicated thread for performance
+-   Hashing: ensuring that when computing the same hash for the same thing more than one time in a row only the first time the cost is paid
+-   Natural sorting: massively improved performance for strings that don’t contain emojis
+-   Note: ensuring selecting a word from the words frequency quick pick works also when in preview
+-   Graph: reloading automatically when the database changes
+-   Graphviz: rendering locally, with support for dark themes
+-   Help pages: automatically refreshing contextKeys/settings/shortcuts/themes pages when their content is detected to be out of date
+-   Help pages: rendering them grouped by section
+-   Increased large note threshold to 384000 characters
+-   Input Autocomplete: opening the autocomplete on click
+-   KaTeX: moved renderer to a dedicated thread
+-   Language: moved inferring to a dedicated thread
+-   Markdown: caching computed segments when possible
+-   Markdown: dramatically faster link normalization
+-   Markdown: ensuring the headings ranges provider has more predictable performance
+-   Markdown: using large caches for automatic link detection
+-   Markdown: skipping incremental tokenization if the diff to try to retokenize is more than 20% of the total
+-   Markdown compiler: added support for concurrent execution of a single transform over all matching ranges
+-   Nested lists: significantly reduced indentation width
+-   Nested lists: significantly improved re-rendering performance
+-   Note: added a "(Template)" suffix for template notes
+-   Note metadata: slightly optimized attachments and tags sanitization
+-   Notification: added a 1px border for consistency with the rest of the UI
+-   Popover: allowing popovers to be much taller if necessary
+-   Popovers: rounded tips slightly to align them better with the rest of the design
+-   Quick pick: always selecting the first item when the search query is updated
+-   Quick pick: removed index-based shortcut hints
+-   Search icon: flipped horizontally, for better alignment with the rest of the icons
+-   Spell checker: improved handling of simple self-closing HTML tags
+-   Spell checker: moved to a dedicated thread
+-   Spell checker statusbar item: rendering it only in notes/search/cwd views
+-   Scroll sync statusbar item: rendering it only in notes/search/cwd views
+-   String: optimized lines detection, which is now even 100x faster in some cases
+-   String: made width detection ~3x faster when there are no emojis in the string
+-   String: optimized newline detection in some cases
+-   PDF viewer: ensuring numbers in the navigation box has monospaced, minimizing layout shifts
+-   PlantUML: optimized encoding logic
+-   Pointer screencaster: increased the life of the visual indicators by 40%
+-   Preview: rendering much more efficiently, bypassing Preact entirely
+-   Preferences: ensuring each editor has a dedicated help page
+-   Preferences: moved there the custom CSS/JS editor
+-   Raised most LRU caches significantly, traiding some potential extra memory usage for extra performance
+-   Scheme urls: automatically detecting safe notable:// urls
+-   Scheme: treating URLs from help pages and changelog pages as safe
+-   Sharing: added a minimum time-to-live of 5 minutes
+-   Shortcuts screencaster: outputting shortcuts textually, rather than with symbols, for better clarity
+-   Settings: ensuring invalid settings are always preserved as comments rather than deleted when new settings must be applied
+-   Syntax highlighter: registering grammars ~50x faster
+-   Split editors: setting a minimum width of 200px per section
+-   Table: optimized ranges detection
+-   Table formatter: preserving cursor positions better when possible
+-   Table formatter: made it ~50% faster
+-   Table formatter: detecting the required column length ~50% faster when the whole table doesn't contain any emojis
+-   Table formatter: optimized cell detection
+-   Table detection: ensuring the tokenization of the document is cached whenever possible
+-   Tag: significantly improved performance for reserved tag detection
+-   Tags: updating the tree more efficiently when a note changes, without recreating tags
+-   TOC: extracting lines more efficiently
+-   Toolbar: removed favorite and pin buttons, for extra cleanliness, since those buttons aren’t used often anyway
+-   UUID: optimized detection
+-   UUID: significantly improved performance, removed nanoid dependency
+-   View: displaying the statusbar by default
+-   Viewbar: showing shortcut hints for each item
+-   Updated setting: increased the value of "sharing.ttl" to 259200 (3 days)
+-   Updated setting: sharing.ttl, using milliseconds rather than seconds for consistency with other settings
+-   Words: moved counting to a dedicated thread
+-   Words statusbar item: showing the exact count whenever possible
+-   Words statusbar item: added support for selections made in note previews too
+-   Window: accounting for the viewbar when setting the minimum allowed dimensions
+-   Window: updating traffic lights dynamically depending on whether the activity bar is visible or not (macOS)
+-   Window: added the title of the current data directory to the title
+-   Window: avoiding using the name of the data directory in the title if there's just one window open
+-   Multiple windows: opening non-first windows at a slight offset, for better clarity
+
+### Bug Fixes
+
+-   AsciiMath: ignoring strings that look like AsciiMath expressions if they contain a backtick, as those conflict with too many other things and backticks are not part of the supported set of characters anyway
+-   AsciiMath/KaTeX/Highlighter: ensuring subsequent concurrent requests to render the same thing still hit the cache
+-   Autocomplete: ensuring items are not ranked if they are not searched
+-   Changelog palette: ensuring the sort order is stable
+-   Context menus: ensuring that actions are executed for the right target more reliably
+-   Editor: accounting for the search bar when detecting keypresses on read-only editors
+-   Editor: ensuring it accounts for the potential titlebar on macOS when drawing the top spacer
+-   Editor: ensuring decorations are updated automatically as soon as the content of the editor is updated
+-   Editor context menu: disabled Cut and Paste actions for read-only editors
+-   Editor: ensuring the cursor is always in the viewport after pasting something
+-   Ensuring unflushed telemetry events can't leak a boundless amount of memory
+-   Electron: ensuring loading wasm modules doesn’t crash the app on the M1
+-   Emoji autocomplete: ensuring it's not triggered when writing table alignment characters
+-   Ensuring middle-click pasting in the editor is prevented if the click happens outside of the editor, this could have caused data loss in some case
+-   Ensuring RegExp special replacement sequences aren’t used improperly
+-   Explorer sidebar: ensuring pinned notes are listed before unpinned notes
+-   Export: ensuring the light syntax highlighting theme is always used when exporting
+-   Filesystem Watcher: ensuring it watches recursively
+-   Fixed a memory leak in the state management library
+-   KaTeX: ensuring errors happening in cached renderings are still caught
+-   KaTeX: ignoring strings that look like inline KaTeX expressions if they contain a backtick, as those conflict with too many other things
+-   Line palette: ensuring it works with non-note editors too
+-   Markdown: invalidating caches when the theme changes
+-   Markdown: keeping tokens in memory in a way that doesn't leak memory
+-   Markdown: keeping segments in memory in a way that doesn't leak memory
+-   Palette: ensuring recent items are always remembered by their id, i.e. reliably
+-   Preview: fixed a memory leak when windowing is used
+-   Preview: refreshing automatically when Markdown caches are invalidated
+-   QuickPick: better handling of concurrency issues when toggling the quickpick twice in a short amount of time
+-   QuickPick: ensuring dynamic items are ranked separately from static ones
+-   Refined logic delimiting window dragging regions
+-   Settings: setting editor rulers more reliably
+-   Shortcuts: ensuring Shift+Backspace does a regular deletion under Windows and Linux
+-   Slider: ensuring there are no layout shifts while loading it
+-   Spell checker: ensuring some custom always-included words work with the new spell checker
+-   Spell checker statusbar item: eliminated layout shifts when updating the state and displaying the language
+-   String: estimating the width of emojis and fullwidth characters more accurately
+-   String: ensuring newline detection works with all possible kinds of newlines
+-   Security: fixed a vulnerability related to using Electron's `shell.openExternal` function in an unsafe manner
+-   Tab: ensuring the first position in the history is detected properly
+-   Table formatter: ensuring edits are aborted if the editor got changed while computing them
+-   Tag: ensuring its notes are being sorted before being opened in a tab or multiple tabs
+-   Tag: revealing in the sidebar more reliably
+-   Tags: ensuring which tags are expanded is preserved across restarts
+-   Telemetry: ensuring anonymized IPs are actually included in payloads
+-   Titlebar: ensuring double-clicking the title still counts as a titlebar double click
+-   View: ensuring a collapsed sidebar is preserved across restarts
+-   View: ensuring when resetting the view the statusbar is displayed
+-   Window: remembering traffic lights position across restarts (macOS)
+-   Window: ensuring it's always configured as fullscreenable
+-   Window: ensuring it refreshes the "isDeveloperToolsOpen" context key when the window reloads
+-   Words counter: fixed an obscure memory leak
+
+
