@@ -12,4 +12,3 @@ pkgbase = python-pylyrics
 	sha256sums = c5f36e8ef0ed3b487a9242ce34c19f9684e418a5bbffd5d367dc1d1604b4cd0b
 
 pkgname = python-pylyrics
-
