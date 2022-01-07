@@ -14,4 +14,3 @@ pkgbase = python-clickgen
 	sha256sums = 2567bae2c08a45e4381954eb5bb76252519ed208ebe6f3d43cca83c11a854b9d
 
 pkgname = python-clickgen
-
