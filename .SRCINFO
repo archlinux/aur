@@ -1,6 +1,6 @@
 pkgbase = nut-monitor-git
 	pkgdesc = GUI to manage devices connected a NUT server
-	pkgver = 2.7.4.r2146.gfbe7806e
+	pkgver = 2.7.4.r3723.g92ecace7f
 	pkgrel = 1
 	url = http://www.networkupstools.org/
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = nut-monitor-git
 	sha256sums = SKIP
 
 pkgname = nut-monitor-git
-
