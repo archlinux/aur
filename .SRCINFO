@@ -1,0 +1,15 @@
+pkgbase = monitoring.js
+	pkgdesc = Run commands on local/remote servers and send messages when they fail
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/lucaspape/monitoring.js
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	depends = openssh
+	source = monitoring.js-1.0.5.tgz::https://registry.npmjs.org/monitoring.js/-/monitoring.js-1.0.5.tgz
+	sha512sums = SKIP
+
+pkgname = monitoring.js
