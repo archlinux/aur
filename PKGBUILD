@@ -1,6 +1,6 @@
 # Maintainer: Lucas Steinmann <lucas@steinm.net>
 pkgname=archive-mount-nautilus-git
-pkgver=r3.d9d71b3
+pkgver=r7.9b3e27a
 pkgrel=1
 pkgdesc="Nautilus extension for mounting archives via context menu."
 arch=('any')
