@@ -7,6 +7,7 @@ pkgdesc="Amazee.io's local docker development tool"
 arch=('x86_64')
 url="https://github.com/pygmystack/pygmy"
 license=('MIT')
+conflicts=('pygmy-git')
 makedepends=('tar')
 source=("${pkgname}_${pkgver}::${url}/releases/download/v${pkgver}/${pkgname}-go_${pkgver}_linux_amd64.tar.gz")
 sha512sums=('d545682bb940a5616bb62af69d3a2bb3bce17afc3da23e1b00b6f3803e6c66d16990a07d4293f41f44ebfb0b0cc508879e63072733fe86fb296a6c37a54e2d94')
