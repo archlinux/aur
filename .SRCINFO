@@ -1,0 +1,13 @@
+pkgbase = python-captionstransformer
+	pkgdesc = A set of tools (API + script) to read, write and transform captions from/to many formats
+	pkgver = 1.2.1
+	pkgrel = 0
+	url = https://pypi.org/project/captionstransformer
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/captionstransformer/captionstransformer-1.2.1.zip
+	sha256sums = 6f5e0eb7ba49f0286dd183cbc082c5f2bffe790996ef3e749dbac5d28f8d86d8
+
+pkgname = python-captionstransformer
