@@ -1,5 +1,5 @@
 pkgbase = pygmy-legacy
-	pkgdesc = Amazee.io's local docker development tool
+	pkgdesc = The Legacy version of Amazee.io's local docker development tool 'Pygmy' written in Ruby.
 	pkgver = 0.9.11
 	pkgrel = 2
 	url = https://github.com/amazeeio/pygmy-legacy
