@@ -1,6 +1,6 @@
 pkgbase = tempus-themes-xfce4-terminal-git
 	pkgdesc = Tempus themes for Xfce4 Terminal
-	pkgver = r28.be237ad
+	pkgver = r29.c58c907
 	pkgrel = 1
 	url = https://protesilaos.com/tempus-themes
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = tempus-themes-xfce4-terminal-git
 	sha256sums = SKIP
 
 pkgname = tempus-themes-xfce4-terminal-git
-
