@@ -112,9 +112,6 @@ prepare() {
   # https://crbug.com/1207478
   patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
 
-  # Upstream fixes
-  patch -Np1 -i ../unbundle-fix-visibility-of-build-config-freetype.patch
-
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
 
