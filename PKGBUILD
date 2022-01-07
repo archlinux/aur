@@ -1,8 +1,8 @@
-# Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
+# Maintainer: Rachel Mant <aur@dragonmux.network>
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
-pkgver=6.99.0_282_gfd9d923bb7
+pkgver=6.99.0_286_g5fde992ed4
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=fd9d923bb7
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=5fde992ed4
 	'kicad-nightly.env'
 )
 sha256sums=(
@@ -38,9 +38,9 @@ build()
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-nightly/lib \
 		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
-		-DKICAD_USE_OCE=OFF \
 		-DKICAD_USE_OCC=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
+		-DKICAD_BUILD_I18N=ON \
 		-DKICAD_DATA=/usr/share/kicad-nightly \
 		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
 		-Wno-dev
