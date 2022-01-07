@@ -1,0 +1,15 @@
+pkgbase = gtk-led-askpass
+	pkgdesc = GTK+2-based ssh-askpass
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/vaygr/gtk-led-askpass
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	source = gtk-led-askpass-0.10.tar.gz::https://github.com/vaygr/gtk-led-askpass/archive/refs/tags/v0.10.tar.gz
+	source = dialog.patch
+	sha256sums = 793bc992f8abf819c3de851eb68d310146788a7c0963814ea045b43a9f11aaa7
+	sha256sums = 85057c09bdc0f0df06f8aa9978070ed901cd673f0dadbda37d4959c7dd08b94a
+
+pkgname = gtk-led-askpass

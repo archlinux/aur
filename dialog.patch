@@ -1,0 +1,20 @@
+--- gtk-led-askpass.c.orig
++++ gtk-led-askpass.c
+@@ -82,7 +82,7 @@
+ void fail(gchar *message)
+ {
+ 	GtkWidget *dialog = gtk_message_dialog_new(NULL, 0, GTK_MESSAGE_ERROR,
+-		GTK_BUTTONS_CLOSE, message);
++		GTK_BUTTONS_CLOSE, "%s", message);
+ 
+ 	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
+ 	gtk_dialog_run(GTK_DIALOG(dialog));
+@@ -242,7 +242,7 @@
+ 
+ 	/* Question dialog with no parent; OK and Cancel buttons. */
+ 	dialog = gtk_message_dialog_new(NULL, 0, GTK_MESSAGE_QUESTION,
+-		GTK_BUTTONS_OK_CANCEL, message);
++		GTK_BUTTONS_OK_CANCEL, "%s", message);
+ 	gtk_window_set_title(GTK_WINDOW(dialog), TITLE);
+ 	/* Place the dialog in the middle of the screen. */
+ 	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
