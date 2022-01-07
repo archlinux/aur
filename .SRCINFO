@@ -1,0 +1,20 @@
+pkgbase = cie-middleware-deb
+	pkgdesc = CIE Middleware extracted from official debian package.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.cartaidentita.interno.gov.it/fornitori-di-servizi/documentazione-middleware-cie/
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = BSD
+	depends = ccid
+	depends = gcc-libs
+	depends = glibc
+	depends = pcsclite
+	depends = riscv64-linux-gnu-glibc>=2.3.2.ds1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/italia/cie-middleware-linux/releases/download/1.4.1/cie-middleware_1.4.1.deb
+	sha512sums_x86_64 = ebd3eb7366f96018b0e293b583d34be944a1e5e82789d91f5488ac6eb968517032d05ce8a0e4a8d8d565cd6f42a91905f983aa4c5e900cecf4c8e9aa0ea04545
+
+pkgname = cie-middleware-deb
