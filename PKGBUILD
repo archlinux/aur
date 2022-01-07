@@ -15,24 +15,23 @@ source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar
 sha256sums=('19e2065a140a64abb53d8553b6faa15db89a851e9909225786cb6997e56c03c7')
 
 prepare() {
-	cd "$_name-$pkgver"
+  cd "$_name-$pkgver"
 
-	# Correct version
-	sed -i "s/V1.1.9a1/V$pkgver/g" "$pkgname/$pkgname.py"
+  # Correct version
+  sed -i "s/V1.1.9a1/V$pkgver/g" "$pkgname/$pkgname.py"
 }
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 #check() {
-#	cd "$_name-$pkgver"
-#	pytest
+#  cd "$_name-$pkgver"
+#  pytest
 #}
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
