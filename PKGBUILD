@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 
 pkgname=qtcreator-xmake-project-manager
-pkgver=6.0.1.r39.f9f731b
+pkgver=6.0.1.r41.949685a
 pkgrel=1
 pkgdesc='QtCreator XMake project support plugin'
 arch=(x86_64)
