@@ -2,8 +2,8 @@
 # Contributor: Erik Johnson (palehose at gmail dot com)
 
 pkgname=perl-string-random
-pkgver=0.26
-pkgrel=3
+pkgver=0.32
+pkgrel=1
 pkgdesc='Perl module to generate random strings based on a pattern'
 arch=('any')
 url='https://metacpan.org/pod/String::Random'
@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-module-build')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/String-Random-${pkgver}.tar.gz")
-sha256sums=('d2fca6c3a54002b9a41d1888672db5a00c9e63deae041d992473544a3364b7f7')
+sha256sums=('9d93c679a34ffa26d3b4fa0837caed1cd2e67d76572818b91e97dea734705246')
 
 build() {
 	cd "${srcdir}/String-Random-${pkgver}"
