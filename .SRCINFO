@@ -1,7 +1,7 @@
 pkgbase = mbedtls-git
 	pkgdesc = An open source, portable, easy to use, readable and flexible SSL library
-	pkgver = 3.0.0.r18.gac6cc9fbc
-	pkgrel = 2
+	pkgver = 3.1.0.r31.gd1d0b41fc
+	pkgrel = 1
 	url = https://tls.mbed.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = mbedtls-git
 	checkdepends = python
 	makedepends = git
 	makedepends = perl
+	makedepends = python-jinja
 	depends = glibc
 	provides = mbedtls
 	provides = polarssl
