@@ -3,10 +3,10 @@
 
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
-pkgver=97.0.4692.71_1
-pkgrel=2
+pkgver=97.0.4692.71_2
+pkgrel=1
 _pkgver=97.0.4692.71
-_pkgrel=1
+_pkgrel=2
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
@@ -14,13 +14,14 @@ depends=("gcc-libs" "glibc" "nss")
 makedepends=("ninja" "python" "unzip")
 optdepends=("ccache: Speed up compilation")
 
+
 _clang_path='clang-llvmorg-14-init-8033-gabb2a91b-2.tgz'
 _PGO_PATH='chrome-linux-4692-1640701189-f21838a98aa9a4bd13520a4261d2d77cbab9c3f3.profdata'
 _gn_version='git_revision:90294ccdcf9334ed25a76ac9b67689468e506342'
 _gn_revision='39a87c0b36310bdf06b692c098f199a0d97fc810'
 
 sha256sums=(
-  "10535dac472243ac55d709a185434c72cde976143809c9bac213b6a4a5f521a1"
+  "6c7c3880523593ae6e18bdf67c8305f79ed070f1964710d9e0ab9351abc1a902"
   "c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f"
   "daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440"
   "5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb"
@@ -28,6 +29,7 @@ sha256sums=(
   "8830cc810cdd1c4812a3cd009206bbf52f7c33a67b3280f62dd60cb684300e0f"
   "9cbfd56953d415a88dfae616191c0c37612a41f7fb09830d2952b8b5a59c7dec"
 )
+
 
 source=(
   "${pkgname}-${_pkgver}-${_pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${_pkgver}-${_pkgrel}.tar.gz"
