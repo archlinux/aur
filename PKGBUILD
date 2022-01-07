@@ -1,9 +1,9 @@
-# Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
+# Maintainer: Rachel Mant <aur@dragonmux.network>
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgbase=kicad-library-nightly
 pkgname=('kicad-library-nightly' 'kicad-library-3d-nightly')
-pkgver=6.99.0_282_gfd9d923bb7
+pkgver=6.99.0_286_g5fde992ed4
 pkgrel=1
 pkgdesc='KiCAD component and footprint libraries'
 arch=('any')
