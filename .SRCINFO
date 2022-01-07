@@ -1,7 +1,7 @@
 pkgbase = juliaup
 	pkgdesc = An experimental Julia version manager
 	pkgver = 1.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JuliaLang/juliaup
 	arch = x86_64
 	arch = x86
