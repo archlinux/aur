@@ -13,13 +13,13 @@ source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkg
 sha256sums=('63eaf719c71adc98abbc5c4adb538a196fab783f0417cdfd863c6b4b27334189')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+  cd "$pkgname-$pkgver"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
