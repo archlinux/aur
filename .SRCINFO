@@ -1,17 +1,18 @@
 pkgbase = provola
 	pkgdesc = A tool for quick development/test cycle in any language
-	pkgver = 0.1.8
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/alepez/provola
 	arch = x86_64
 	license = APACHE
 	license = MIT
+	makedepends = cargo
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = rust
 	makedepends = libxcb
-	source = git+https://github.com/alepez/provola#commit=dd7f67fe7dbef94c2a439453ec23000b102cddad
-	b2sums = SKIP
+	source = provola-0.2.0.tar.gz::https://static.crates.io/crates/provola/provola-0.2.0.crate
+	sha256sums = f78a4fccd25b7723cc8900b1bf2de44003853f47cb0c5eae53caf8d23fecd337
 
 pkgname = provola
