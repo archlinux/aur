@@ -1,22 +1,22 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="veracrypt-console-bin"
-_pkgver=1.24
-_updatever=7
-pkgver="${_pkgver}.update${_updatever}"
+pkgver=1.25.4
 pkgrel=1
-pkgdesc="Disk encryption with strong security based on TrueCrypt. amd64 and armv7h headless versions only"
+pkgdesc="Disk encryption with strong security based on TrueCrypt - headless console only"
 url="https://www.veracrypt.fr/"
-arch=("x86_64" "armv7h") # no other architectures are available from the official download page
-license=("custom:TrueCrypt")
+arch=("x86_64" "armv7h" "aarch64")
+license=("Apache 2.0" "TrueCrypt 3.0")
 provides=("veracrypt")
-conflicts=("veracrypt" "veracrypt-git")
+conflicts=("veracrypt" "veracrypt-git" "veracrypt-git-no-gost" "veracrypt-trans")
 depends=("fuse2>=2.8.0" "libsm" "device-mapper")
 optdepends=("sudo: mounting encrypted volumes as nonroot users")
-source_x86_64=("$pkgname-$pkgver.deb::https://launchpad.net/veracrypt/trunk/$_pkgver-update$_updatever/+download/${pkgname/-bin/}-$_pkgver-Update$_updatever-Debian-10-amd64.deb")
-source_armv7h=("$pkgname-$pkgver.deb::https://launchpad.net/veracrypt/trunk/$_pkgver-update$_updatever/+download/${pkgname/-bin/}-$_pkgver-Update$_updatever-Debian-10-armhf.deb")
-sha256sums_x86_64=("c76e1017c8c1d1a904be10a3594c7a8144acc4391977b1dce5d4481f596112da")
-sha256sums_armv7h=("99a3b5f170804aa0f80d9c5129db80e55da94976bf8fd3af7c68c14089fbc00a")
+source_x86_64=("$pkgname-$pkgver-amd64.deb::https://launchpad.net/veracrypt/trunk/$pkgver/+download/${pkgname/-bin/}-$pkgver-Debian-11-amd64.deb")
+source_aarch64=("$pkgname-$pkgver-arm64.deb::https://launchpad.net/veracrypt/trunk/$pkgver/+download/${pkgname/-bin/}-$pkgver-Debian-11-arm64.deb")
+source_armv7h=("$pkgname-$pkgver-armv7.deb::https://launchpad.net/veracrypt/trunk/$pkgver/+download/${pkgname/-bin/}-$pkgver-Debian-11-armhf.deb")
+sha256sums_x86_64=('a8827cbe806c6d572fe325b6a15c70b4a39b9b48024d59806139d9abfa2d4337')
+sha256sums_aarch64=('f483cdd5d5da0f4f5dbe664a289aaf85610047fbcd735e81920044b2df91ac63')
+sha256sums_armv7h=('f942dfbb5d241555d2ffc18a0fda9f9741d9152661c8cd48c19a510f096a5974')
 install="veracrypt.install"
 
 prepare(){
@@ -25,6 +25,7 @@ prepare(){
 
 package(){
  cp -r "usr" "$pkgdir"
- rm "$pkgdir/usr/bin/veracrypt-uninstall.sh"
+ mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin/"
+ rm -r "$pkgdir/usr/sbin/" "$pkgdir/usr/bin/veracrypt-uninstall.sh"
  install -D -m 644 "$pkgdir/usr/share/doc/veracrypt/License.txt" -t "$pkgdir/usr/share/licenses/veracrypt/LICENSE"
 }

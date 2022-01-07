@@ -1,12 +1,14 @@
 pkgbase = veracrypt-console-bin
-	pkgdesc = Disk encryption with strong security based on TrueCrypt. amd64 and armv7h headless versions only
-	pkgver = 1.24.update7
+	pkgdesc = Disk encryption with strong security based on TrueCrypt - headless console only
+	pkgver = 1.25.4
 	pkgrel = 1
 	url = https://www.veracrypt.fr/
 	install = veracrypt.install
 	arch = x86_64
 	arch = armv7h
-	license = custom:TrueCrypt
+	arch = aarch64
+	license = Apache 2.0
+	license = TrueCrypt 3.0
 	depends = fuse2>=2.8.0
 	depends = libsm
 	depends = device-mapper
@@ -14,9 +16,13 @@ pkgbase = veracrypt-console-bin
 	provides = veracrypt
 	conflicts = veracrypt
 	conflicts = veracrypt-git
-	source_x86_64 = veracrypt-console-bin-1.24.update7.deb::https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Debian-10-amd64.deb
-	sha256sums_x86_64 = c76e1017c8c1d1a904be10a3594c7a8144acc4391977b1dce5d4481f596112da
-	source_armv7h = veracrypt-console-bin-1.24.update7.deb::https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Debian-10-armhf.deb
-	sha256sums_armv7h = 99a3b5f170804aa0f80d9c5129db80e55da94976bf8fd3af7c68c14089fbc00a
+	conflicts = veracrypt-git-no-gost
+	conflicts = veracrypt-trans
+	source_x86_64 = veracrypt-console-bin-1.25.4-amd64.deb::https://launchpad.net/veracrypt/trunk/1.25.4/+download/veracrypt-console-1.25.4-Debian-11-amd64.deb
+	sha256sums_x86_64 = a8827cbe806c6d572fe325b6a15c70b4a39b9b48024d59806139d9abfa2d4337
+	source_armv7h = veracrypt-console-bin-1.25.4-armv7.deb::https://launchpad.net/veracrypt/trunk/1.25.4/+download/veracrypt-console-1.25.4-Debian-11-armhf.deb
+	sha256sums_armv7h = f942dfbb5d241555d2ffc18a0fda9f9741d9152661c8cd48c19a510f096a5974
+	source_aarch64 = veracrypt-console-bin-1.25.4-arm64.deb::https://launchpad.net/veracrypt/trunk/1.25.4/+download/veracrypt-console-1.25.4-Debian-11-arm64.deb
+	sha256sums_aarch64 = f483cdd5d5da0f4f5dbe664a289aaf85610047fbcd735e81920044b2df91ac63
 
 pkgname = veracrypt-console-bin
