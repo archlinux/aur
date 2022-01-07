@@ -1,6 +1,6 @@
 pkgbase = gitleaks
 	pkgdesc = Audit Git repos for secrets and keys
-	pkgver = 8.2.5
+	pkgver = 8.2.7
 	pkgrel = 1
 	url = https://github.com/zricethezav/gitleaks
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gitleaks
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gitleaks-8.2.5.tar.gz::https://github.com/zricethezav/gitleaks/archive/refs/tags/v8.2.5.tar.gz
-	b2sums = 4cf8369e51cacb3e2261318451032f6f75e64069441d1693ccd4b8a7a21522703248eb9871dd099c254132e7c15fc49f03d8b60744f6447a4a938a0db00d52cb
+	source = gitleaks-8.2.7.tar.gz::https://github.com/zricethezav/gitleaks/archive/refs/tags/v8.2.7.tar.gz
+	b2sums = afcbf30a79c8d77032bc8f081e10cab5501da93aeb634a085a5306a5fef2719bbb5f2339660cf7e33c4d28c08a9e08b887bdf5d3e0994130c224ac6357f9939a
 
 pkgname = gitleaks
