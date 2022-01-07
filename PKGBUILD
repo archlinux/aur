@@ -15,21 +15,21 @@ source=("git+https://gitlab.gnome.org/aviwad/organizer.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
- 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	arch-meson "${pkgname%-git}" build
-	meson compile -C build
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
 }
 
 check() {
 
-	# Validate appstream file fails, only validate desktop & schema files
-	meson test 'Validate desktop file' 'Validate schema file' -C build --print-errorlogs
+  # Validate appstream file fails, only validate desktop & schema files
+  meson test 'Validate desktop file' 'Validate schema file' -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
