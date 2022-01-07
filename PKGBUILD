@@ -1,6 +1,6 @@
 # Maintainer: Miepee <janbidler00 at tutanota dot com>
 pkgname=am2rlauncher
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=2
 pkgdesc="Application for installing the latest Community Updates, APKs and Mods for AM2R."
 arch=(x86_64)
