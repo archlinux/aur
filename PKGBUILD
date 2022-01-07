@@ -12,8 +12,8 @@ source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles
 sha256sums=('845c5937adfd4dbe32589a154c7ee33f4b59b4fa3297f2f16d19b4c59f8fb4c4')
 
 package() {
-	_commit='52abc1e8996891210beb66ae75796f5986bfea82_hirsute'
+  _commit='52abc1e8996891210beb66ae75796f5986bfea82_hirsute'
 
-	install -Dm644 "$_commit/backgrounds/"* -t "$pkgdir/usr/share/backgrounds"
-	install -Dm644 "$_commit/$pkgname.xml" -t "$pkgdir/usr/share/gnome-background-properties"
+  install -Dm644 "$_commit/backgrounds/"* -t "$pkgdir/usr/share/backgrounds"
+  install -Dm644 "$_commit/$pkgname.xml" -t "$pkgdir/usr/share/gnome-background-properties"
 }
