@@ -51,7 +51,7 @@ noextract=()
 md5sums=('SKIP'
          '4ccfb9669d304b99146b92a4912ae1fd'
          'cf3715af9f53cc1660e412abe3697342'
-         'c14e8240e6a3fc1a229ea00309e6bb7d'
+         'd707e8986ed6cf189461f03bdaf365aa'
          '36d6f571293886cb37eb8919baa307c0')
 
 pkgver() {
@@ -85,7 +85,7 @@ package() {
 	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/scripts"
 	install -m2775 -d "$pkgdir/etc/${_pkgname}"
 	install -m2775 -d "$pkgdir/usr/lib/${_pkgname}/out"
-	install -m2755 -d "$pkgdir/var/lib/${_pkgname}"
+	install -m2775 -d "$pkgdir/var/lib/${_pkgname}"
 
 	cp -ra "$srcdir/${_pkgname}/docs"/* "$pkgdir/usr/share/doc/${_pkgname}"/
 	cp -ra "$srcdir/${_pkgname}/config/"* "$pkgdir/usr/share/${_pkgname}/examples"/
