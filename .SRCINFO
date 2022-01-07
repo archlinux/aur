@@ -1,0 +1,16 @@
+pkgbase = tym-git
+	pkgdesc = Lua-configurable terminal emulator
+	pkgver = 3.1.3.r4.g4adea4c
+	pkgrel = 1
+	url = https://github.com/endaaman/tym
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = vte3
+	depends = lua
+	provides = tym
+	conflicts = tym
+	source = tym::git+https://github.com/endaaman/tym#branch=master
+	md5sums = SKIP
+
+pkgname = tym-git

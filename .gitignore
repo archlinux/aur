@@ -1,0 +1,8 @@
+tym/
+src/
+pkg/
+*.tar.xz
+*.tar.gz
+*.zst
+*.log
+.psci_modules
