@@ -2,7 +2,7 @@
 
 pkgname=anitopy-git
 _pkgname=${pkgname%-git}
-pkgver=2.0.1.r1.fc3686e
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Anime video filename parser in Python, based on Anitomy"
 arch=('any')
