@@ -1,6 +1,6 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 6.17.6
+	pkgver = 6.17.7
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = sdrangel-bin
 	optdepends = qt5-serialport: Required for GS-232 controller
 	provides = sdrangel
 	conflicts = sdrangel-git
-	source = https://github.com/f4exb/sdrangel/releases/download/v6.17.6/sdrangel-1220-master.tar.gz
-	sha256sums = 9ad5cf83219bc2cb3d33d79598b5a41af3ffd63d1399f116403493c31e30cf43
+	source = https://github.com/f4exb/sdrangel/releases/download/v6.17.7/sdrangel-1229-master.tar.gz
+	sha256sums = c881a6e5c2d66a25f953b21efc2394966401b7603823c676501745e66fe69cb7
 
 pkgname = sdrangel-bin
