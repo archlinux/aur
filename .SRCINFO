@@ -1,0 +1,17 @@
+pkgbase = rtl8192fu-dkms-git
+	pkgdesc = Driver for Realtek RTL8192FU chipset wireless cards
+	pkgver = 5.8.6.2.r51.gb4e939d
+	pkgrel = 1
+	url = https://github.com/kelebek333/rtl8192fu-dkms
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = bc
+	conflicts = rtl8192fu
+	source = git+https://github.com/kelebek333/rtl8192fu-dkms.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 3a8a7441712f958647185a12888c897f06dd8587bcacd85514937a413abc3628
+
+pkgname = rtl8192fu-dkms-git
