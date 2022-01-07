@@ -5,24 +5,24 @@ pkgrel=1
 epoch=1
 pkgdesc="Preview of Pangolin Desktop UI shell, designed for dahliaOS, written in Flutter."
 arch=('x86_64')
-url="https://github.com/dahlia-os/pangolin-desktop"
+url="https://github.com/dahliaOS/pangolin_desktop"
 license=('Apache')
 depends=('gtk3')
 makedepends=('git' 'flutter-git' 'cmake' 'ninja' 'imagemagick')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/dahlia-os/pangolin-desktop.git'
+source=('git+https://github.com/dahliaOS/pangolin_desktop.git'
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
             'f9b790200ac34e3dc038b0bc3366d91c08239762466ccc383fc2eb8f03ad2c02')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/pangolin_desktop"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/pangolin_desktop"
   flutter channel master
   flutter upgrade
   flutter config --enable-linux-desktop
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}/build/linux/release/bundle"
+  cd "$srcdir/pangolin_desktop/build/linux/release/bundle"
   install -d "$pkgdir/opt/${pkgname%-git}"
   cp -r * "$pkgdir/opt/${pkgname%-git}"
 
