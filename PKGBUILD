@@ -3,21 +3,20 @@
 
 pkgname=perl-text-vcard
 pkgver=3.09
-pkgrel=1
+pkgrel=2
 pkgdesc='Text-vCard for Perl'
 arch=('any')
 url='https://metacpan.org/release/Text-vCard/'
 license=('PerlArtistic' 'GPL')
 depends=('perl'
-         'perl-directory-scratch'
-         'perl-file-slurp'
-         'perl-io-stringy'
-         'perl-moo'
-         'perl-path-tiny'
-         'perl-test-most'
-         'perl-text-vfile-asdata'
-         'perl-unicode-linebreak'
-         'perl-uri')
+        'perl-file-slurp'
+        'perl-moo'
+        'perl-path-tiny'
+        'perl-text-vfile-asdata'
+        'perl-unicode-linebreak'
+        'perl-uri')
+checkdepends=('perl-directory-scratch'
+         'perl-test-most')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/L/LL/LLAP/Text-vCard-${pkgver}.tar.gz")
 sha256sums=('c1ff3b0b14a86d8146808bdc59d8d207f220120309ccf16decfb0dc236c144b0')
