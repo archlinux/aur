@@ -1,6 +1,6 @@
 pkgbase = tempus-themes-konsole-git
 	pkgdesc = Tempus themes for Konsole
-	pkgver = r15.7f154ba
+	pkgver = r16.475b7bf
 	pkgrel = 1
 	url = https://protesilaos.com/tempus-themes
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = tempus-themes-konsole-git
 	sha256sums = SKIP
 
 pkgname = tempus-themes-konsole-git
-
