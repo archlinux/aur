@@ -2,7 +2,7 @@
 
 _gemname=git
 pkgname=ruby-$_gemname
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Ruby library to manipulate git repositories by wrapping system calls to the git binary"
 arch=(any)
