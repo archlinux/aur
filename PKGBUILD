@@ -14,12 +14,12 @@ source=("git+https://github.com/erickj/nemo-actions.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/nemo-actions"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/nemo-actions"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/nemo-actions"
-	install -Dm755 deja-dup_restore-missing.nemo_action -t "$pkgdir/usr/share/nemo/actions"
-	install -Dm755 deja-dup_revert.nemo_action -t "$pkgdir/usr/share/nemo/actions"
+  cd "$srcdir/nemo-actions"
+  install -Dm755 deja-dup_restore-missing.nemo_action -t "$pkgdir/usr/share/nemo/actions"
+  install -Dm755 deja-dup_revert.nemo_action -t "$pkgdir/usr/share/nemo/actions"
 }
