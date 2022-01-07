@@ -7,7 +7,10 @@ pkgbase = pygmy-bin
 	license = MIT
 	makedepends = tar
 	provides = pygmy
+	conflicts = pygmy
 	conflicts = pygmy-git
+	conflicts = pygmy-go-bin
+	conflicts = pygmy-go-git
 	source = pygmy_0.8.0::https://github.com/pygmystack/pygmy/releases/download/v0.8.0/pygmy-go_0.8.0_linux_amd64.tar.gz
 	sha512sums = d545682bb940a5616bb62af69d3a2bb3bce17afc3da23e1b00b6f3803e6c66d16990a07d4293f41f44ebfb0b0cc508879e63072733fe86fb296a6c37a54e2d94
 
