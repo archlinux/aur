@@ -1,16 +1,13 @@
 pkgbase = nosefart
-	pkgdesc = NES sound format player
-	pkgver = 2.9
-	pkgrel = 3
+	pkgdesc = NES sound format (nsf) player
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://nosefart.sourceforge.net/
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	depends = libpulse
-	source = https://downloads.sourceforge.net/nosefart/nosefart-2.9-mls.tar.bz2
-	source = nosefart-2.9-pulseaudio-mls.patch
-	sha256sums = 43fa05190cc6a62f30662dcb65768413a77a73962961e520ccd9245cd3e35a39
-	sha256sums = 67518573195c11b0826b2c6a3243a136fb128902bdabf13e77687d917ba9f97d
+	depends = sdl2
+	source = https://github.com/misterhat/nosefart/archive/388cb9602214ac9e28b064f4ebca31b47c096d4a.zip
+	sha256sums = 82fd126cd10f432035ed920f2a2ed4b38b6b00533b7793ea2ce3253979031070
 
 pkgname = nosefart
-
