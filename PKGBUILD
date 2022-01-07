@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit-git
 pkgver=VERSION
-pkgrel=5
+pkgrel=6
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -25,9 +25,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-
-	# Replace relative submodule path with absolute location.
-	sed -i 's,[.][.]/tpkg,git://github.com/toitlang/tpkg,' .gitmodules
 
 	# Initial the top-level modules but not nested ones.
 	git submodule update --init .
