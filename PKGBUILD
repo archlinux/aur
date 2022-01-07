@@ -7,7 +7,7 @@
 
 pkgname=mutter-rounded
 pkgver=41.2
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols)
-checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
+checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 provides=(libmutter-9.so mutter)
 conflicts=(mutter)
 groups=(gnome)
@@ -88,7 +88,7 @@ _check() (
   pipewire &
   _p1=$!
 
-  pipewire-media-session &
+  wireplumber &
   _p2=$!
 
   trap "kill $_p1 $_p2; wait" EXIT
