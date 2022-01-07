@@ -3,7 +3,7 @@
 
 pkgname=libmcl
 pkgver=1.52
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable and fast pairing-based cryptography library'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url='https://github.com/herumi/mcl'
@@ -19,9 +19,15 @@ build() {
 		-B build \
 		-S "mcl-$pkgver" \
 		-Wno-dev \
+		-DBUILD_TESTING=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
 	make -C build
+}
+
+check() {
+	cd build
+	ctest --output-on-failure
 }
 
 package() {
