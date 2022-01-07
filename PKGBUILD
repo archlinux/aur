@@ -38,7 +38,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 
 pkgname=vim-tabnine-git
 pkgver=r2905.e4c180a5
-pkgrel=1
+pkgrel=2
 pkgdesc='A code-completion engine for Vim with tabnine'
 arch=('x86_64')
 url='https://www.tabnine.com/'
@@ -173,6 +173,7 @@ package() {
   fi
 
   install -Ddm755 "${pkg_ycmd_dir}/third_party/tabnine/" 
+  install -Ddm755 "${pkg_ycmd_dir}/third_party/tabnine/binaries" 
   cp -dr --no-preserve=ownership "$srcdir"/ycmd/third_party/tabnine/__init__.py "${pkg_ycmd_dir}/third_party/tabnine/"
 
   find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' \) -exec rm -fr {} +

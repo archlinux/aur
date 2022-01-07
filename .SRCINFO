@@ -1,7 +1,7 @@
 pkgbase = vim-tabnine-git
 	pkgdesc = A code-completion engine for Vim with tabnine
 	pkgver = r2905.e4c180a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tabnine.com/
 	arch = x86_64
 	groups = vim-plugins
