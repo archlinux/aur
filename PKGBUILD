@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=astrofox
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A motion graphics program that lets turn audio into amazing videos"
 arch=('any')
 url="https://astrofox.io"
@@ -10,21 +10,21 @@ license=('MIT')
 depends=(electron ffmpeg)
 makedepends=(yarn asar sed)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/astrofox-io/astrofox/archive/refs/tags/v${pkgver}.tar.gz"
-"${pkgname}.patch"
 )
-sha512sums=('51c8dfe5c8922484ffba1f64bcbe383388cc9989d8ea9e03500ae41340525820538b40dcfde7e7961ed5704e3d89bc67ea146ac15cbe033bc5a9e63804cdf44e'
-            '1f163238d4f3a72b7d4364ab7532a551164320f73e8562f248f0dff280007ceb0bdde8dc04eabd885157611ccf6c708a03b0f22181ec1cd82c0f7be76aa7c1cc')
+sha512sums=('551624455f2fc16ef579f10024424a52e3297128eaeef1138b6939cfe52fca401e11d5df3c7f1e53c141ff7a19cd0f27ac8153b1647047a7a83eddb73d66ba76')
 
 prepare() {
      # patch for system ffmpeg
     cd $srcdir/${pkgname}-${pkgver}
-    patch --strip=1 <../astrofox.patch 
     
+    sed -i "s#^export const FFMPEG_BINARY.*#export const FFMPEG_BINARY = '/usr/bin/ffmpeg';#g" \
+        src/main/environment.js
     
     cd $srcdir/${pkgname}-${pkgver}
     
     # delete electron & electron-builder to install deps fast
-    sed -i "141,142d" package.json 
+    sed -i '/"electron"/d' package.json
+    sed -i '/"electron-builder"/d' package.json
     yarn install
     yarn run  build-main  && yarn run build-prod
     
