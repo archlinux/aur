@@ -1,13 +1,13 @@
 pkgbase = wxmacmolplt
 	pkgdesc = An open-source gui for preparing, submitting and visualizing input and output for the GAMESS quantum chemistry package.
-	pkgver = 7.7.1
+	pkgver = 7.7.2
 	pkgrel = 1
 	url = https://brettbode.github.io/wxmacmolplt/
 	arch = x86_64
 	license = GPL2
-	depends = wxgtk2
+	depends = wxgtk3
 	depends = glew
-	source = https://uofi.box.com/shared/static/k9n011zbgato5ravmpozq9xekh8udmcn.gz
-	sha256sums = 827d96a105f4faa78c9f99ad9d996e2d01077208f1db0d098ffcefefccb5808d
+	source = https://uofi.box.com/shared/static/ezm1jd56hlb8s2vsf9ou28vrctjqqa9o.gz
+	sha256sums = eef23c27c664616c740f8805a61db7efc055ed8db5d69bafcec69eafafe297e4
 
 pkgname = wxmacmolplt
