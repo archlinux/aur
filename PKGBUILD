@@ -4,7 +4,7 @@
 
 pkgname=mjpg-streamer-git
 epoch=1
-pkgver=r355.85f89a8
+pkgver=1.0.0.r1.g310b29f
 pkgrel=1
 pkgdesc="Stream mjpeg frames from a webcam via http"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -18,12 +18,11 @@ source=("git+https://github.com/jacksonliam/mjpg-streamer.git")
 sha256sums=(SKIP)
 
 export LDFLAGS="-Wl,-O1,--sort-common,--no-as-needed,-z,relro,-z,now"
-
 export CFLAGS="-fcommon"
 
 pkgver() {
   cd "${pkgname/-git/}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

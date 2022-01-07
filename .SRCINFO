@@ -1,6 +1,6 @@
 pkgbase = mjpg-streamer-git
 	pkgdesc = Stream mjpeg frames from a webcam via http
-	pkgver = r355.85f89a8
+	pkgver = 1.0.0.r1.g310b29f
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jacksonliam/mjpg-streamer
@@ -27,4 +27,3 @@ pkgbase = mjpg-streamer-git
 	sha256sums = SKIP
 
 pkgname = mjpg-streamer-git
-
