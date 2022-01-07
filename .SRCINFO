@@ -1,6 +1,6 @@
 pkgbase = zelcore
 	pkgdesc = Zelcore Platform
-	pkgver = 5.9.0
+	pkgver = 5.10.0
 	pkgrel = 0
 	url = https://zelcore.io/
 	install = zelcore.install
@@ -20,6 +20,6 @@ pkgbase = zelcore
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://zelcore.io/downloads/zelcore.deb
-	sha512sums_x86_64 = e3c1981d92750a5213caf83a77abb59f0e52af1e9f9f1a713f3f0eb134d092e1f9b431d974ef3eedd50c321ff7ad8ee988971a1390d241e0198b51f98788d707
+	sha512sums_x86_64 = 8afd9412a896c82cc74c0752354d211c04376cfee4386441a006f437893903b47455cd44c5a8dcb0e95655400d9ef8ef659ecf07b70b8e822c77a916cff12f95
 
 pkgname = zelcore
