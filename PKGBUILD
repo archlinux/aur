@@ -9,8 +9,7 @@
 
 ## "1" to enable EMU build, "0" to disable
 # _grub_emu_build="0"
-
-[[ "${CARCH}" == "x86_64" ]] && _target_arch="x86_64" || (echo "Only amd64 with efi is supported." 1>&2; exit 1)
+_build_platforms="x86_64-efi"
 # [[ "${CARCH}" == "i686" ]] && _target_arch="i386"
 
 # _build_platforms="i386-pc ${_target_arch}-efi"
@@ -20,7 +19,7 @@
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
 pkgver=2.06.r92.g246d69b7e
-pkgrel=5
+pkgrel=6
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
 url="https://www.gnu.org/software/grub/"
@@ -33,12 +32,6 @@ optdepends=('dosfstools: For grub-mkrescue FAT FS and EFI support'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
             'mtools: For grub-mkrescue FAT FS support'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems')
-
-if [[ "${_grub_emu_build}" == "1" ]]; then
-    depends+=('sdl')
-    makedepends+=('libusb')
-    optdepends+=('libusb: For grub-emu USB support')
-fi
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
