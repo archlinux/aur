@@ -14,18 +14,18 @@ source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('48420486f89e087bff2164bd61fd3165a85755f87cfe3e5924a42fd0dd574bbd')
 
 build() {
-	arch-meson "$pkgname-v$pkgver" build
-	meson compile -C build
+  arch-meson "$pkgname-v$pkgver" build
+  meson compile -C build
 }
 
 # No tests defined
 #check() {
-#	meson test -C build --print-errorlogs
+#  meson test -C build --print-errorlogs
 #}
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
-	cd "$pkgname-v$pkgver"
-	install -Dm644 NEWS.md README -t "$pkgdir/usr/share/doc/$pkgname"
+  cd "$pkgname-v$pkgver"
+  install -Dm644 NEWS.md README -t "$pkgdir/usr/share/doc/$pkgname"
 }
