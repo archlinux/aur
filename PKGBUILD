@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'nodejs-lts-gallium' 'npm')
 options=('!strip')
-_commit='a00b9fb69247a5312c92fec3aa6cf069059037ca'
+_commit='8e0ccda1a158e3d2164c5cea778f0761ec8a0eaf'
 source=("$pkgname::git+https://github.com/tailwindlabs/tailwindcss.git#commit=$_commit")
 md5sums=('SKIP')
 
