@@ -11,4 +11,3 @@ pkgbase = python-sphinxcontrib-programoutput
 	sha256sums = 300ee9b8caee8355d25cc74b4d1c7efd12e608d2ad165e3141d31e6fbc152b7f
 
 pkgname = python-sphinxcontrib-programoutput
-
