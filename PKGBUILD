@@ -1,15 +1,15 @@
 # Maintainer: b1f6c1c4 <b1f6c1c4@gmail.com>
 pkgname=ajnin
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='A Beautiful Ninja generator'
 arch=('any')
 url='https://github.com/b1f6c1c4/ajnin'
 license=('AGPL3')
 depends=('boost>=1.75.0' 'ninja')
-makedepends=('antlr4>=4.9.2' 'cmake>=3.17' 'git' 'pandoc')
+makedepends=('antlr4>=4.9.3' 'cmake>=3.17' 'git' 'pandoc')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5c39fcba840f92c8d0794e238487a769883249e16b6c294ab465085cc78f2d73')
+sha256sums=('b4a4507cadc20bb89c538871b7dc6e2ce245b183343b982a441133e068972d9d')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B "$pkgname-$pkgver/build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
