@@ -1,18 +1,17 @@
 pkgbase = perl-svg
 	pkgdesc = Perl extension for generating Scalable Vector Graphics (SVG) documents
-	pkgver = 2.84
+	pkgver = 2.86
 	pkgrel = 1
 	url = http://search.cpan.org/dist/SVG/
 	arch = any
 	license = perl
 	makedepends = perl-extutils-makemaker
-	provides = perl-svg-dom=2.84
-	provides = perl-svg-element=2.84
-	provides = perl-svg-extension=2.84
-	provides = perl-svg-xml=2.84
+	provides = perl-svg-dom=2.86
+	provides = perl-svg-element=2.86
+	provides = perl-svg-extension=2.86
+	provides = perl-svg-xml=2.86
 	options = !emptydirs
-	source = perl-svg-2.84.tar.gz::http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/SVG-2.84.tar.gz
-	sha256sums = ec3d6ddde7a46fa507eaa616b94d217296fdc0d8fbf88741367a9821206f28af
+	source = perl-svg-2.86.tar.gz::http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/SVG-2.86.tar.gz
+	sha256sums = 72c6eb6f86bb2c330280f9f3d342bb2673ad5da22d1f44fba3e04cfb5d30a67b
 
 pkgname = perl-svg
-

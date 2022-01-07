@@ -2,7 +2,7 @@
 # Contributor: John Gerritse <reaphsharc@gmail.com>
 
 pkgname=perl-svg
-pkgver=2.84
+pkgver=2.86
 pkgrel=1
 pkgdesc='Perl extension for generating Scalable Vector Graphics (SVG) documents'
 arch=('any')
@@ -15,7 +15,7 @@ provides=("perl-svg-dom=${pkgver}"
 	"perl-svg-xml=${pkgver}")
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/SVG-${pkgver}.tar.gz")
-sha256sums=('ec3d6ddde7a46fa507eaa616b94d217296fdc0d8fbf88741367a9821206f28af')
+sha256sums=('72c6eb6f86bb2c330280f9f3d342bb2673ad5da22d1f44fba3e04cfb5d30a67b')
 
 build() {
 	cd SVG-${pkgver}/
