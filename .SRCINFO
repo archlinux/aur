@@ -8,6 +8,7 @@ pkgbase = k3s-bin
 	arch = aarch64
 	license = Apache
 	conflicts = k3s-git
+	backup = etc/systemd/system/k3s.service.env
 	source = k3s.service
 	source = k3s.service.env
 	sha256sums = f4ae496b69b3dd376a28298df50297728a47761b041be522adf2537aa8a8c3d8
