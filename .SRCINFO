@@ -1,6 +1,6 @@
 pkgbase = lean-community-bin
 	pkgdesc = Lean Theorem Prover, maintained by the Lean community
-	pkgver = 3.36.0
+	pkgver = 3.37.0
 	pkgrel = 1
 	url = https://github.com/leanprover-community/lean
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lean-community-bin
 	conflicts = lean3-bin
 	conflicts = lean2-git
 	conflicts = lean-community
-	source = https://github.com/leanprover-community/lean/releases/download/v3.36.0/lean-3.36.0-linux.tar.gz
-	sha256sums = 2e19e133ffb4fc230e7ebb4e800acdf81187caa3f37ac97bbfe65e2ae20c0047
+	source = https://github.com/leanprover-community/lean/releases/download/v3.37.0/lean-3.37.0-linux.tar.gz
+	sha256sums = 479f69e1f9e35c0c3cd5e2addcd194187faa0436fd1942a15152aa7108068b65
 
 pkgname = lean-community-bin
