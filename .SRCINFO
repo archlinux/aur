@@ -1,6 +1,6 @@
 pkgbase = tempus-themes-tilix-git
 	pkgdesc = Tempus themes for the Tilix terminal emulator
-	pkgver = r25.b961ab1
+	pkgver = r26.794b0c4
 	pkgrel = 1
 	url = https://protesilaos.com/tempus-themes
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = tempus-themes-tilix-git
 	sha256sums = SKIP
 
 pkgname = tempus-themes-tilix-git
-
