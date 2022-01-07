@@ -1,33 +1,10 @@
 post_install() {
-  . /etc/profile.d/wildfly.sh
-
-  getent group $JBOSS_USER >/dev/null 2>&1 || groupadd -r $JBOSS_USER
-  getent passwd $JBOSS_USER >/dev/null 2>&1 || useradd -g $JBOSS_USER -d $JBOSS_HOME -s /bin/bash -r $JBOSS_USER
-  chown -R $JBOSS_USER:$JBOSS_USER $JBOSS_HOME
-
-  JBOSS_PIDFILE_DIR=`dirname $JBOSS_PIDFILE`
-  mkdir -p $JBOSS_PIDFILE_DIR
-  chown $JBOSS_USER:$JBOSS_USER $JBOSS_PIDFILE_DIR  
-  
-  JBOSS_CONSOLE_LOG_DIR=`dirname $JBOSS_CONSOLE_LOG`
-  mkdir -p $JBOSS_CONSOLE_LOG_DIR
-  chown $JBOSS_USER:$JBOSS_USER $JBOSS_CONSOLE_LOG_DIR
-
-  echo 'Environment/configuration variables are placed in /etc/profile.d/wildfly.sh'
-  echo 'This package contains only Final versions of AS. If you are looking for Alpha/Beta/CR... versions, please get wildfly-devel package instead'
+    echo "    Wildfly is installed as a systemd service."
+    echo "    You should run the add-user script (/opt/wildfly/bin/add-user.sh) in order to add a management user"
+    echo "        if you want to access the management console, which listens locally on port 9990."
+    echo "    The main server listens on all networks at port 8080."
 }
 
 post_upgrade() {
-  post_install $1
-}
-
-pre_remove() {
-  . /etc/profile.d/wildfly.sh
-
-  if getent passwd $JBOSS_USER >/dev/null 2>&1; then
-    userdel $JBOSS_USER
-  fi
-  if getent group $JBOSS_USER >/dev/null 2>&1; then
-    groupdel $JBOSS_USER
-  fi
+    post_install "$1"
 }

@@ -1,13 +1,15 @@
 pkgbase = wildfly
-	pkgdesc = Wildfly Application Server
-	pkgver = 22.0.1.Final
+	pkgdesc = Wildfly Application Server.
+	pkgver = 26.0.0
 	pkgrel = 1
 	url = http://www.wildfly.org/
 	install = wildfly.install
 	arch = any
 	license = LGPL
 	depends = java-runtime>=8
-	backup = etc/profile.d/wildfly.sh
+	optdepends = libaio: ActiveMQ Artemis
+	optdepends = lib32-glibc: native OpenSSL support
+	conflicts = wildfly-devel
 	backup = opt/wildfly/domain/configuration/application-roles.properties
 	backup = opt/wildfly/domain/configuration/application-users.properties
 	backup = opt/wildfly/domain/configuration/logging.properties
@@ -27,16 +29,12 @@ pkgbase = wildfly
 	backup = opt/wildfly/bin/jboss-cli-logging.properties
 	backup = opt/wildfly/bin/jboss-cli.xml
 	backup = opt/wildfly/bin/standalone.conf
-	source = http://download.jboss.org/wildfly/22.0.1.Final/wildfly-22.0.1.Final.tar.gz
-	source = wildfly.service
-	source = wildfly.sh
-	source = wildfly.install
-	source = systemd-wrapper.sh
-	sha256sums = 08d1e420331d0b6ad6c36a4dd782a110152cabfa23439e6ecd9a7c4d50bffd01
-	sha256sums = 65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412
-	sha256sums = 3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a
-	sha256sums = a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330
-	sha256sums = 922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1
+	backup = etc/wildfly/wildfly.conf
+	source = https://github.com/wildfly/wildfly/releases/download/26.0.0.Final/wildfly-26.0.0.Final.tar.gz
+	source = wildfly-sysusers.conf
+	source = wildfly-tmpfiles.conf
+	sha256sums = f6ff4dcd5312f83e37b663e2e16ce6474f09324c11dc1712b79320aabfcd096f
+	sha256sums = d2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac
+	sha256sums = 796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540
 
 pkgname = wildfly
-

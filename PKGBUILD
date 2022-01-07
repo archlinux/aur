@@ -1,67 +1,68 @@
-# Wildfly Application Server package
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Co-Maintainer: Stick <stick at stma dot is>
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
-# Contributor: Stick <stick at stma dot is>
-# Maintainer: Zdenek Obst <zdenek dot obst at gmail dot com>
-
+# Contributor: Zdenek Obst <zdenek dot obst at gmail dot com>
 pkgname=wildfly
-pkgver=22.0.1.Final
+pkgver=26.0.0
 pkgrel=1
-
-pkgdesc='Wildfly Application Server'
+pkgdesc='Wildfly Application Server.'
 arch=('any')
 url='http://www.wildfly.org/'
 license=('LGPL')
 depends=('java-runtime>=8')
-conficts=('wildfly-devel')
+optdepends=('libaio: ActiveMQ Artemis'
+            'lib32-glibc: native OpenSSL support')
+conflicts=("${pkgname}-devel")
 
 _pkgloc=opt
-backup=(etc/profile.d/${pkgname}.sh
-	${_pkgloc}/${pkgname}/domain/configuration/application-roles.properties
-	${_pkgloc}/${pkgname}/domain/configuration/application-users.properties
-	${_pkgloc}/${pkgname}/domain/configuration/logging.properties
-	${_pkgloc}/${pkgname}/domain/configuration/mgmt-groups.properties
-	${_pkgloc}/${pkgname}/domain/configuration/mgmt-users.properties
-	${_pkgloc}/${pkgname}/domain/configuration/domain.xml
-	${_pkgloc}/${pkgname}/domain/configuration/host.xml
-	${_pkgloc}/${pkgname}/standalone/configuration/application-roles.properties
-	${_pkgloc}/${pkgname}/standalone/configuration/application-users.properties
-	${_pkgloc}/${pkgname}/standalone/configuration/logging.properties
-	${_pkgloc}/${pkgname}/standalone/configuration/mgmt-groups.properties
-	${_pkgloc}/${pkgname}/standalone/configuration/mgmt-users.properties
-	${_pkgloc}/${pkgname}/standalone/configuration/standalone.xml
-	${_pkgloc}/${pkgname}/bin/add-user.properties
-	${_pkgloc}/${pkgname}/bin/appclient.conf
-	${_pkgloc}/${pkgname}/bin/domain.conf
-	${_pkgloc}/${pkgname}/bin/jboss-cli-logging.properties
-	${_pkgloc}/${pkgname}/bin/jboss-cli.xml
-	${_pkgloc}/${pkgname}/bin/standalone.conf)
+_cfgloc=etc
+_sysdloc=usr/lib/systemd/system
+backup=("${_pkgloc}/${pkgname}/domain/configuration/application-roles.properties"
+        "${_pkgloc}/${pkgname}/domain/configuration/application-users.properties"
+        "${_pkgloc}/${pkgname}/domain/configuration/logging.properties"
+        "${_pkgloc}/${pkgname}/domain/configuration/mgmt-groups.properties"
+        "${_pkgloc}/${pkgname}/domain/configuration/mgmt-users.properties"
+        "${_pkgloc}/${pkgname}/domain/configuration/domain.xml"
+        "${_pkgloc}/${pkgname}/domain/configuration/host.xml"
+        "${_pkgloc}/${pkgname}/standalone/configuration/application-roles.properties"
+        "${_pkgloc}/${pkgname}/standalone/configuration/application-users.properties"
+        "${_pkgloc}/${pkgname}/standalone/configuration/logging.properties"
+        "${_pkgloc}/${pkgname}/standalone/configuration/mgmt-groups.properties"
+        "${_pkgloc}/${pkgname}/standalone/configuration/mgmt-users.properties"
+        "${_pkgloc}/${pkgname}/standalone/configuration/standalone.xml"
+        "${_pkgloc}/${pkgname}/bin/add-user.properties"
+        "${_pkgloc}/${pkgname}/bin/appclient.conf"
+        "${_pkgloc}/${pkgname}/bin/domain.conf"
+        "${_pkgloc}/${pkgname}/bin/jboss-cli-logging.properties"
+        "${_pkgloc}/${pkgname}/bin/jboss-cli.xml"
+        "${_pkgloc}/${pkgname}/bin/standalone.conf"
+        "${_cfgloc}/${pkgname}/${pkgname}.conf")
 
-install=${pkgname}.install
+install="${pkgname}.install"
 
-source=(http://download.jboss.org/wildfly/${pkgver}/wildfly-${pkgver}.tar.gz
-	${pkgname}.service
-	${pkgname}.sh
-	${pkgname}.install
-	systemd-wrapper.sh)
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}.Final/${pkgname}-${pkgver}.Final.tar.gz"
+        "${pkgname}-sysusers.conf"
+        "${pkgname}-tmpfiles.conf")
 
-sha256sums=('08d1e420331d0b6ad6c36a4dd782a110152cabfa23439e6ecd9a7c4d50bffd01'
-	'65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412'
-	'3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a'
-	'a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330'
-	'922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1')
+sha256sums=('f6ff4dcd5312f83e37b663e2e16ce6474f09324c11dc1712b79320aabfcd096f'
+            'd2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac'
+            '796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	rm -f bin/*.{bat,exe}
-	install -dm755 ${pkgdir}/${_pkgloc}
-	cp -R ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/${_pkgloc}/${pkgname}
-
-	# Prepare systemd service file
-	install -Dm755 ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
-
-	# Prepare file for environment variables to profile.d
-	install -Dm755 ${srcdir}/${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
-
-	# Include wrapper script for systemd startup
-	install -Dm755 ${srcdir}/systemd-wrapper.sh ${pkgdir}/${_pkgloc}/${pkgname}/bin/systemd-wrapper.sh
+    echo "   -> Removing unneeded .bat and .ps1 files..."
+    rm -f "${pkgname}-${pkgver}.Final/bin/"*.{bat,ps1}
+    echo "   -> Unpacking the package files..."
+    install -d -m 755 "${pkgdir}/${_pkgloc}"
+    cp -R "${pkgname}-${pkgver}.Final" "${pkgdir}/${_pkgloc}/${pkgname}"
+    install -D -m 644 "${pkgname}-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -D -m 644 "${pkgname}-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    cd "${pkgname}-${pkgver}.Final/docs/contrib/scripts/systemd"
+    echo "   -> Creating wildfly.conf (environment settings)..."
+    install -D -t "${pkgdir}/${_cfgloc}/${pkgname}" -m 644 wildfly.conf
+    echo "   -> Placing wildfly.service in /$_sysdloc..."
+    install -D -t "${pkgdir}/${_sysdloc}" -m 644 wildfly.service
+    echo "   -> Copying launch.sh to the bin directory..."
+    install -D -t "${pkgdir}/${_pkgloc}/${pkgname}/bin" -m 755 launch.sh
+    chmod -R u=rwX,g=rwX,o=rX "${pkgdir}/${_pkgloc}/${pkgname}"
 }
+# vim:set ts=4 sw=4 et:
