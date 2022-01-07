@@ -1,12 +1,12 @@
 pkgbase = qqmusic-appimage
 	pkgdesc = A music player from Tencent
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://y.qq.com
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = http://dldir1.qq.com/music/clntupate/linux/AppImage/QQmusic-1.1.1.AppImage
+	source = http://dldir1.qq.com/music/clntupate/linux/AppImage/qqmusic-1.1.1.AppImage
 	sha512sums = 20b5227c77297490e886dd3081eb476063e4961d683b3f84e9072c1e90c88774830b41acce1c7b07d639feda1e7e1a5e26ab04142f89db398afe9ea595435d5e
 
 pkgname = qqmusic-appimage
