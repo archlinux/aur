@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tela-circle-icon-theme-git
-pkgver=2020.11.29.r9.g2936aa2
+pkgver=2020.11.29.r102.gaa1f1446
 pkgrel=1
 pkgdesc="A flat colorful design icon theme"
 arch=('any')
@@ -15,12 +15,12 @@ source=("${pkgname%-git}::git+https://github.com/vinceliuice/Tela-circle-icon-th
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -dm755 "$pkgdir/usr/share/icons"
-	./install.sh -a -d "$pkgdir/usr/share/icons"
+  cd "$srcdir/${pkgname%-git}"
+  install -dm755 "$pkgdir/usr/share/icons"
+  ./install.sh -a -d "$pkgdir/usr/share/icons"
 }

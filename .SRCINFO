@@ -1,6 +1,6 @@
 pkgbase = tela-circle-icon-theme-git
 	pkgdesc = A flat colorful design icon theme
-	pkgver = 2020.11.29.r9.g2936aa2
+	pkgver = 2020.11.29.r102.gaa1f1446
 	pkgrel = 1
 	url = https://www.pling.com/p/1359276
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = tela-circle-icon-theme-git
 	sha256sums = SKIP
 
 pkgname = tela-circle-icon-theme-git
-
