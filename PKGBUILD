@@ -23,7 +23,8 @@ depends=("python-base45"
          "pyzbar"
         )
 makedepends=("python-setuptools")
-optdepends=("antigen: 24h base green pass"
+optdepends=("antigen: 48h base green pass"
+            "molecule: 72h base green pass"
             "covid: 6m super green pass"
             "vaccine-git: 6m super green pass"
            )
