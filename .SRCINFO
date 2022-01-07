@@ -5,7 +5,6 @@ pkgbase = lib32-sdl12-compat-git
 	url = https://github.com/libsdl-org/sdl12-compat
 	arch = x86_64
 	license = custom
-	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
 	depends = lib32-sdl2
