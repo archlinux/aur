@@ -6,13 +6,13 @@
 
 pkgname=kibana-xpack
 relpkgname=kibana
-pkgver=7.15.2
-pkgrel=2
+pkgver=7.16.2
+pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
 arch=('x86_64')
 license=('custom:Elastic2')
-depends=('nodejs-lts-fermium')
+depends=('nodejs-lts-gallium')
 optdepends=('elasticsearch')
 provides=("kibana=$pkgver")
 conflicts=('kibana')
@@ -22,7 +22,7 @@ source=(https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-${pkgver}
         kibana.service
         tmpfile.conf
         user.conf)
-sha512sums=('68b75ff727c15a581b6cd86ccc68712b8a2322feee5ca16acf2fe1d7d06e0cb645a58eb6455bcdd494c3e1a8bbc9bfdd458191aedebf8b076f2e15816862c61e'
+sha512sums=('4c82f338b7e818db6e9e03c522d354286bc654e4dbe97529a3308ae27e510c5b4fcfa120371428867c49ed76dee06bf1386c47c8ceb7118bbddf09eed6e131ba'
             'SKIP'
             'be50713d4e4db3a8b2d0d02ec68b56ce1636ffa9a41738b0abf276c562c36ef6118f440f25b220f39302ba23b2351b5a38f961c8693ad03ea19424e4d40409e6'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
