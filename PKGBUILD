@@ -10,7 +10,7 @@
 
 pkgname=aseprite
 pkgver=1.2.30
-pkgrel=4
+pkgrel=5
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -43,7 +43,6 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         # Only pulling what we need, though
         "git+https://chromium.googlesource.com/chromium/buildtools.git#commit=505de88083136eefd056e5ee4ca0f01fe9b33de8"
         "git+https://skia.googlesource.com/common.git#commit=9737551d7a52c3db3262db5856e6bcd62c462b92"
-        "$pkgname.desktop"
         # Python 3-compliant version of the script
         is_clang.py
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -57,7 +56,6 @@ sha256sums=('9f4b098fe2327f2e9d73eb9f2aeebecad63e87ff2cf6fb6eeeee3c0778bb8874'
             'c8c2d617f1a33d6eb27f25ebcc30bd8ba1e6a0aa980cada21dda2ad1401fa4a2'
             'SKIP'
             'SKIP'
-            'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'cb901aaf479bcf1a2406ce21eb31e43d3581712a9ea245672ffd8fbcd9190441'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
             '9a85e9b1b52c1d33d128cb87c12395d9a245049cfc10e148659ae2acd4cab3e6'
@@ -123,7 +121,7 @@ package() {
 
 	# Install the binary and its `.desktop` file
 	install -vDm 755 staging/bin/aseprite "$pkgdir/usr/bin/aseprite"
-	install -vDm 644 aseprite.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -vDm 644 aseprite/src/desktop/linux/aseprite.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 	# Install the icons in the correct directory (which is not the default)
 	local _size
 	for _size in 16 32 48 64 128 256; do

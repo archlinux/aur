@@ -1,7 +1,7 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
 	pkgver = 1.2.30
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.aseprite.org/
 	arch = x86_64
 	license = custom
@@ -36,7 +36,6 @@ pkgbase = aseprite
 	source = gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74
 	source = git+https://chromium.googlesource.com/chromium/buildtools.git#commit=505de88083136eefd056e5ee4ca0f01fe9b33de8
 	source = git+https://skia.googlesource.com/common.git#commit=9737551d7a52c3db3262db5856e6bcd62c462b92
-	source = aseprite.desktop
 	source = is_clang.py
 	source = shared-libarchive.patch
 	source = shared-libwebp.patch
@@ -46,7 +45,6 @@ pkgbase = aseprite
 	sha256sums = c8c2d617f1a33d6eb27f25ebcc30bd8ba1e6a0aa980cada21dda2ad1401fa4a2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25
 	sha256sums = cb901aaf479bcf1a2406ce21eb31e43d3581712a9ea245672ffd8fbcd9190441
 	sha256sums = e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7
 	sha256sums = 9a85e9b1b52c1d33d128cb87c12395d9a245049cfc10e148659ae2acd4cab3e6
