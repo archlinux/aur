@@ -1,18 +1,21 @@
 pkgbase = r-rappdirs
 	pkgdesc = Application Directories: Determine Where to Save Data, Caches, and Logs
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rappdirs
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.2
+	checkdepends = r-testthat
+	checkdepends = r-withr
+	depends = r
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-covr
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/rappdirs_0.3.3.tar.gz
+	source = R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
 	sha256sums = 49959f65b45b0b189a2792d6c1339bef59674ecae92f8c2ed9f26ff9e488c184
+	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-rappdirs
-
