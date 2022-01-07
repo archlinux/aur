@@ -9,7 +9,6 @@ pkgbase = imgbrd-grabber
 	makedepends = cmake
 	makedepends = qt5-tools
 	makedepends = npm
-	makedepends = gcc
 	depends = qt5-multimedia
 	depends = qt5-declarative
 	depends = nodejs
