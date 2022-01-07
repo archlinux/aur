@@ -2,7 +2,7 @@
 # Contributor: Chao Wang <chaowang@redhat.com>
 
 pkgname=koji
-pkgver=1.24.0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='shared libraries and the command-line interface for building and tracking RPMS'
 arch=('any')
@@ -25,7 +25,7 @@ backup=('etc/httpd/conf.d/kojihub.conf'
         'etc/kojivmd/kojivmd.conf'
         'etc/kojiweb/web.conf')
 source=("https://releases.pagure.org/koji/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('032876f9fb0381318ea1a77ed165f64bec8141563ff09f4f96307a7b555ce1c9')
+sha256sums=('b67d8dafbb2ece75c323d1bc2f106f240dfd4fe708e58a89608d9072095d1baf')
 
 prepare() {
   cd "$pkgname-$pkgver"
