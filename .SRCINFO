@@ -1,6 +1,6 @@
 pkgbase = tailwindcss
 	pkgdesc = Standalone version of Tailwind CLI
-	pkgver = 3.0.11
+	pkgver = 3.0.12
 	pkgrel = 1
 	url = https://tailwindcss.com
 	arch = x86_64

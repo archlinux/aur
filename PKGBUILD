@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tailwindcss
-pkgver=3.0.11
+pkgver=3.0.12
 pkgrel=1
 pkgdesc="Standalone version of Tailwind CLI"
 arch=('x86_64')
@@ -14,9 +14,9 @@ _commit='8e0ccda1a158e3d2164c5cea778f0761ec8a0eaf'
 source=("$pkgname::git+https://github.com/tailwindlabs/tailwindcss.git#commit=$_commit")
 md5sums=('SKIP')
 
-pkgdesc() {
+pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/^[vV]//;s/-/+/g'
+  git describe --tags | sed 's/^[vV]//'
 }
 
 build() {
