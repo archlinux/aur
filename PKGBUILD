@@ -27,6 +27,7 @@ optdepends=(
 	'avr-libc: for AVR MCU firmware compilation'
 	'python-numpy: for resonance measurement'
 	'python-matplotlib: for resonance measurement'
+	'dfu-util: for flashing firmware on STM32 MCUs'
 )
 optdepends_x86_64=(
 	'arm-none-eabi-newlib: for ARM MCU firmware compilation'
@@ -50,7 +51,7 @@ noextract=()
 md5sums=('SKIP'
          '4ccfb9669d304b99146b92a4912ae1fd'
          'cf3715af9f53cc1660e412abe3697342'
-         '4c058f09014cf6a3995b761ef81672b1'
+         'c14e8240e6a3fc1a229ea00309e6bb7d'
          '36d6f571293886cb37eb8919baa307c0')
 
 pkgver() {
