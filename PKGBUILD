@@ -13,12 +13,11 @@ source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar
 sha256sums=('37dab1d94d8e0d8c1eec225458c9bdbdfff72f35c49d92ae6457b6a06c867e33')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
