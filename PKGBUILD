@@ -2,7 +2,7 @@
 # Contributor: Ansuransax <ansuransax at hotmail dot com>
 
 pkgname=sec
-pkgver=2.8.3
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='A logfile monitoring tool with support for event correlation, written in perl'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('perl')
 source=("https://github.com/simple-evcorr/sec/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	'sec.service')
-sha256sums=('b376b64ed5be19b28101d974ac4d60c06a1f52cc3d8ba63829a18a6f903dfd29'
+sha256sums=('741154d25db69706e2200e119b5cd32d65ae0b803d9c0faefcccfbcfe1c97503'
             'd69d000433162aa82a1d184df823185d739e2ab8a2d631b6adb2189f9e1839c4')
 
 package() {
