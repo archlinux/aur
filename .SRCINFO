@@ -1,7 +1,7 @@
 pkgbase = mautrix-signal
 	pkgdesc = A Matrix-Signal puppeting bridge
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/tulir/mautrix-signal
 	install = mautrix-signal.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mautrix-signal
 	depends = python-mautrix
 	depends = python-magic>=0.4
 	depends = python-ruamel-yaml>=0.15.35
-	depends = signald>=0.13.1
+	depends = signald>=0.15
 	depends = python-yarl>=1
 	optdepends = python-phonenumbers>=8
 	optdepends = python-pillow>=4: webp conversion and qr code login
@@ -25,14 +25,13 @@ pkgbase = mautrix-signal
 	optdepends = python-signalstickers-client>=3
 	optdepends = python-unpaddedbase64: end-to-bridge encryption support
 	backup = etc/mautrix-signal/config.yaml
-	source = https://github.com/tulir/mautrix-signal/archive/refs/tags/v0.1.1.tar.gz
+	source = https://github.com/tulir/mautrix-signal/archive/refs/tags/v0.2.1.tar.gz
 	source = mautrix-signal.service
 	source = mautrix-signal.sysusers
 	source = mautrix-signal.tmpfiles
-	sha256sums = 92b85eab45d9d2d165298b114a5ee47bb89f93a2c6bfa7a30a3d6a1bac4870b3
-	sha256sums = d916d5fbe521416bd5a52e1f27da87e45a0f4206801173f2b86e6d63f62c3b34
-	sha256sums = 807da72f363ce3850e1bf98b3d3a7a00bf174a1035c91a853861fcc6b5f499fc
-	sha256sums = b515feb2b6fd37f2b0e9e3a16d64c73b22fa12b4a8af8b13f212f1da02817f81
+	sha256sums = 68ea168db3d7a99b52f84a9d1d6f96bf914e31a5787b6d4d97923974156a09c4
+	sha256sums = 87a479c5216fa79dbe20ff776f67f5ab70ad0f9705da4b274cc662003545c4be
+	sha256sums = 3203dcff48579a2420eff4289a03ea1b3a9f47031c39f514e8c9a2d119625725
+	sha256sums = 5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5
 
 pkgname = mautrix-signal
-
