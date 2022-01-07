@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-_pkgver=0.3.2-beta1
-pkgver=${_pkgver//-/.}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="System performance and usage monitoring tool"
 arch=('any')
@@ -10,15 +9,15 @@ license=('GPL3')
 depends=('bash' 'dmidecode' 'gtk3' 'hwids' 'libwnck3' 'mesa-utils'
          'python-cairo' 'python-gobject' 'python-opengl' 'systemd' 'util-linux')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('c081f0297d826895a426ec10da308326831bd824f9f8551fd090924a9be245a7')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('7d50432d338b983ad29e074cd4b5bc22031a56c982ff3e40882052e8dd92a6bc')
 
 build() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
