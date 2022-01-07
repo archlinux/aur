@@ -29,4 +29,3 @@ pkgbase = qomui-git
 	sha256sums = SKIP
 
 pkgname = qomui-git
-

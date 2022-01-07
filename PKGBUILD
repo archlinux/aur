@@ -21,21 +21,21 @@ source=('git+https://github.com/corrad1nho/qomui.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$srcdir/${pkgname%-git}"
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py build
+  cd "$srcdir/${pkgname%-git}"
+  python setup.py build
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py test
+  cd "$srcdir/${pkgname%-git}"
+  python setup.py test
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$srcdir/${pkgname%-git}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
