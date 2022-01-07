@@ -1,0 +1,17 @@
+pkgbase = pygmy
+	pkgdesc = Amazee.io's local docker development tool
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/pygmystack/pygmy
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	provides = pygmy
+	conflicts = pygmy-bin
+	conflicts = pygmy-git
+	conflicts = pygmy-go-bin
+	conflicts = pygmy-go-git
+	source = pygmy-0.8.0.tar.gz::https://github.com/pygmystack/pygmy/archive/v0.8.0.tar.gz
+	sha512sums = 0eef378c5b7829a73680a682f26dbb45b49e7d2d552f5f2e525ed2ef952dcc7a85f2815097928d10f00b98161ca1301a84ef7ddc9d52649fa8b09348451a1871
+
+pkgname = pygmy
