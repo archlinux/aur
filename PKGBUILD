@@ -5,7 +5,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-mono-git
-pkgver=4.0.r1.a5015b6
+pkgver=4.0.r1.897afb6
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine. (C#/Mono integration)"
 url="http://www.godotengine.org"
@@ -56,10 +56,10 @@ pkgver() {
 build() {
     cd "${srcdir}"/${_pkgname}
     sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
-    scons platform=linuxbsd werror=no tools=yes module_mono_enabled=yes mono_glue=no -j$((`nproc`+1))
+    scons platform=linuxbsd werror=no tools=yes module_mono_enabled=yes mono_glue=no $MAKEFLAGS
     ./bin/godot.linuxbsd.tools.${_arch}.mono --generate-mono-glue modules/mono/glue
-    scons platform=linuxbsd target=release_debug werror=no tools=yes module_mono_enabled=yes mono_glue=yes -j$((`nproc`+1))
-    scons platform=linuxbsd target=release_debug werror=no tools=no module_mono_enabled=yes mono_glue=yes -j$((`nproc`+1))
+    scons platform=linuxbsd target=release_debug werror=no tools=yes module_mono_enabled=yes mono_glue=yes $MAKEFLAGS
+    scons platform=linuxbsd target=release_debug werror=no tools=no module_mono_enabled=yes mono_glue=yes $MAKEFLAGS
 }
 
 package() {
@@ -76,7 +76,7 @@ package() {
     mkdir "${pkgdir}"/usr/bin
     cp -R bin/ "${pkgdir}"/opt/godot-mono
     chmod -R 755 "${pkgdir}"/opt/godot-mono
-    ln -s "${pkgdir}"/opt/godot-mono/godot.linuxbsd.opt.tools.${_arch}.mono "${pkgdir}"/usr/bin/godot-mono 
+    ln -s /opt/godot-mono/godot.linuxbsd.opt.tools.${_arch}.mono "${pkgdir}"/usr/bin/godot-mono 
     install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot-mono-git/LICENSE
 }
 
