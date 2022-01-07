@@ -10,7 +10,7 @@
 ## "1" to enable EMU build, "0" to disable
 # _grub_emu_build="0"
 
-[[ "${CARCH}" == "x86_64" ]] && _target_arch="x86_64" || echo "Only amd64 with efi is supported."
+[[ "${CARCH}" == "x86_64" ]] && _target_arch="x86_64" || (echo "Only amd64 with efi is supported." 1>&2; exit 1)
 # [[ "${CARCH}" == "i686" ]] && _target_arch="i386"
 
 # _build_platforms="i386-pc ${_target_arch}-efi"
@@ -20,7 +20,7 @@
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
 pkgver=2.06.r92.g246d69b7e
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
 url="https://www.gnu.org/software/grub/"
