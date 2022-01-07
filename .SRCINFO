@@ -1,11 +1,12 @@
 pkgbase = sedsed
 	pkgdesc = Debugger and code formatter for sed scripts
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aureliojargas/sedsed
 	arch = any
 	license = GPL
 	depends = python
+	depends = sedparse
 	source = sedsed-2.0.0.tar.gz::https://github.com/aureliojargas/sedsed/archive/refs/tags/v2.0.0.tar.gz
 	sha256sums = a18cae4348adb955641912fd854a5f17d9767646d1f6721e664c4ad5e9476a85
 

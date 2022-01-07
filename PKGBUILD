@@ -2,10 +2,10 @@
 
 pkgname=sedsed
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Debugger and code formatter for sed scripts'
 arch=('any')
-depends=('python')
+depends=('python' 'sedparse')
 url='https://github.com/aureliojargas/sedsed'
 license=('GPL')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aureliojargas/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
