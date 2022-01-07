@@ -1,7 +1,7 @@
 pkgbase = durdraw
 	pkgdesc = Frame based ASCII and ANSI drawing and playback program
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cmang.org/durdraw/
 	arch = any
 	license = custom

@@ -2,7 +2,7 @@
 # Adapted from durdraw-git by: Kyle Keen <keenerd@gmail.com>
 pkgname=durdraw
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Frame based ASCII and ANSI drawing and playback program"
 url="http://cmang.org/durdraw/"
 license=("custom")
@@ -13,11 +13,6 @@ optdepends=('ansilove: png export, animated gif export'
             'images2gif: animated gif export')
 source=("durdraw.tar.gz::https://github.com/cmang/durdraw/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('42f8b072efec1778743233a164edb8c3')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  sed -n '/### LEGAL:/,$p' readme.md > LICENSE
-}
 
 package() {
   cd ${pkgname}-${pkgver}
