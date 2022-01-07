@@ -41,18 +41,16 @@ depends=(
 )
 source=('zotero-absolute-path-fix.patch'
         'zotero-disable-update.patch'
-        'zotero-desktop-mimetype-fix.patch')
+        )
 source_x86_64=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
 source_i686=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
 sha256sums=('7b23d5238430701c1f5cc6f81dfd9b9f67cc643d506e42aa0e62aba5a58191fa'
-            '94211568bbd206d10f1c1e0a2565905fcd27c8586835b7aef6458e657caa8213'
-            '09752d833320d195ce5f8a65ef900edcda85816c3de210a572871fdfbb92e97a')
+            '94211568bbd206d10f1c1e0a2565905fcd27c8586835b7aef6458e657caa8213')
 sha256sums_x86_64=('53d5f07b1104ab1951e2812aad0f7d75602a91bb76ca06a1bfad0eaf8f9240d2')
 sha256sums_i686=('53d5f07b1104ab1951e2812aad0f7d75602a91bb76ca06a1bfad0eaf8f9240d2')
 
 prepare() {
   patch --directory="Zotero_linux-$CARCH" --forward --strip=1 --input="${srcdir}/zotero-absolute-path-fix.patch"
-  patch --directory="Zotero_linux-$CARCH" --forward --strip=1 --input="${srcdir}/zotero-desktop-mimetype-fix.patch"
   patch --directory="Zotero_linux-$CARCH" --forward --strip=1 --input="${srcdir}/zotero-disable-update.patch"
 }
 

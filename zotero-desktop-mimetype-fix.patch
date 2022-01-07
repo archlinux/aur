@@ -1,9 +1,0 @@
-diff --unified --recursive --text Zotero_linux-x86_64.orig/zotero.desktop Zotero_linux-x86_64.new/zotero.desktop
---- Zotero_linux-x86_64.orig/zotero.desktop	2021-08-23 00:21:55.657909907 -0500
-+++ Zotero_linux-x86_64.new/zotero.desktop	2021-08-23 00:22:21.654980255 -0500
-@@ -5,4 +5,4 @@
- Type=Application
- Terminal=false
- Categories=Office;
--MimeType=text/plain
-+MimeType=x-scheme-handler/zotero
