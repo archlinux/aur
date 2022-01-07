@@ -2,13 +2,14 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 pkgver=0.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
 license=('MIT')
 depends=('gcc-libs' 'libxcb' 'fontconfig')
 makedepends=('cargo' 'git' 'libx11' 'python')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.txt"
         "$pkgname.desktop")
@@ -18,6 +19,7 @@ sha256sums=('e525ea9f3545d30b0c81dc4e7cf3c677d7340e3045ef18a9239aa3c44069882b'
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
