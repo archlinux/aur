@@ -1,14 +1,16 @@
 pkgbase = appflowy-bin
-	pkgdesc = an open-source alternative to Notion
+	pkgdesc = An Open Source Alternative to Notion
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.appflowy.io/
 	arch = x86_64
 	license = AGPL
+	depends = xdg-user-dirs
+	depends = gtk3
 	provides = appflowy
 	conflicts = appflowy
 	conflicts = appflowy-git
-	source = https://github.com/AppFlowy-IO/appflowy/releases/download/0.0.2/AppFlowy-Linux-arm64.zip
-	sha256sums = ea24fa5359a8c184b2e99d377c7d7600130bbd63672b88507e2e721726bb37e4
+	source = appflowy-bin-0.0.2.tar.gz::https://github.com/AppFlowy-IO/appflowy/releases/download/0.0.2/AppFlowy-linux-x86.tar.gz
+	sha256sums = b0dbe669bb9f34a65171adecaf61b02578bab5214d18a54009f0e4ec10665711
 
 pkgname = appflowy-bin
