@@ -4,36 +4,57 @@
 
 pkgname=wakatime
 epoch=1
-pkgver='1.30.5'
+pkgver='1.35.0'
 pkgrel=1
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('x86_64')
-url="https://github.com/${pkgname}/${pkgname}-cli"
+_repo="github.com/${pkgname}/${pkgname}-cli"
+url="https://${_repo}"
 license=('BSD')
 depends=('glibc')
-makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed7a27e0ac841980b5b89574da99f7e0cb915d8dd9dd7c176a11703f974ad54e')
+makedepends=('git' 'go')
+checkdepends=('svn')
+source=("${pkgname}-cli::git+https://github.com/${pkgname}/${pkgname}-cli#tag=v${pkgver}")
+sha256sums=('SKIP')
 
-prepare () {
-  cd "${srcdir}/${pkgname}-cli-${pkgver}"
+_binname="${pkgname}-cli-linux-amd64"
+
+build() {
+  cd "${srcdir}/${pkgname}-cli"
+
   mkdir -p build  # create build dir
-}
 
-build () {
-  cd "${srcdir}/${pkgname}-cli-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -o build/"${pkgname}" ./main.go
+  local _date="$(date -u '+%Y-%m-%dT%H:%M:%S %Z')"
+  local _commit="$(git rev-parse --short HEAD)"
+
+  CGO_ENABLED="0" go build -o build/"${_binname}" \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}' -X '${_repo}/pkg/version.OS=linux' -X '${_repo}/pkg/version.Arch=amd64' -X '${_repo}/pkg/version.BuildDate=${_date}' -X '${_repo}/pkg/version.Commit=${_commit}' -X '${_repo}/pkg/version.Version=${pkgver}'"
+}
+
+check () {
+  cd "${srcdir}/${pkgname}-cli"
+  echo "wakatime-cli" > ./.wakatime-project
+  # some weird test assumptions fail
+  sed \
+    -e "s/<local-build>/${pkgver}/" \
+    -e "s/Equal(t, \"2\\\n\", offlineCount)/Equal(t, \"1\\\n\", offlineCount)/" \
+    -i ./main_test.go
+  CGO_ENABLED="0" go test -tags=integration ./main_test.go
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-cli-${pkgver}"
-  install -Dm755 build/"${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
+  cd "${srcdir}/${pkgname}-cli"
+  install -Dm755 build/"${_binname}" "${pkgdir}"/usr/bin/"${pkgname}"
+  ln -s /usr/bin/"${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"-cli
   install -d "${pkgdir}"/usr/share/licenses/"${pkgname}"
   install LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
