@@ -1,0 +1,15 @@
+pkgbase = aarch64-linux-musl-cross-bin
+	pkgdesc = Static musl-based cross-compilation toolchain provided by musl.cc
+	pkgver = 11.2.1
+	pkgrel = 1
+	url = https://musl.cc/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	options = !strip
+	source_x86_64 = https://more.musl.cc/11.2.1/x86_64-linux-musl/aarch64-linux-musl-cross.tgz
+	sha256sums_x86_64 = ef7257105c568e0e52e7f0bbcdd3819d9372774252483618d5066e47252431e5
+	source_i686 = https://more.musl.cc/11.2.1/i686-linux-musl/aarch64-linux-musl-cross.tgz
+	sha256sums_i686 = c909817856d6ceda86aa510894fa3527eac7989f0ef6e87b5721c58737a06c38
+
+pkgname = aarch64-linux-musl-cross-bin
