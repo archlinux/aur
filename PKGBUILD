@@ -1,7 +1,7 @@
 # Maintainer: Dan Yeomans <dan@dyeo.net>
 
 pkgname=rxargs-git
-pkgver=0.2.0.r1.673a18b
+pkgver=0.3.0.r0.b636432
 pkgrel=1
 pkgdesc="Regex argument substitution for command-line wizardry"
 arch=('x86_64')
