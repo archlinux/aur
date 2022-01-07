@@ -5,12 +5,12 @@
 
 pkgname=anbox-image-nocsd
 pkgver=r8.bc49df8d
-pkgrel=2
+pkgrel=3
 pkgdesc="Android image for running in Anbox, with no-csd patch and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
 license=('custom')
-makedepends=('curl' 'lzip' 'squashfs-tools' 'unzip')
+makedepends=('curl' 'lzip' 'squashfs-tools' 'unzip' 'awk' 'findutils' 'grep')
 provides=('anbox-image')
 conflicts=('anbox-image')
 
@@ -125,6 +125,10 @@ build () {
   cp media_codec*.xml ./squashfs-root/system/etc/
   rm -rv ./squashfs-root/system/app/webview/*
   cp BromiteSystemWebview.apk ./squashfs-root/system/app/webview/webview.apk
+  unzip -l BromiteSystemWebview.apk \
+    | grep 'so$' \
+    | awk '{print $4}' \
+    | xargs unzip -d ./squashfs-root/system/app/webview BromiteSystemWebview.apk
 }
 
 package() {
