@@ -2,8 +2,7 @@
 
 pkgbase=python-meh
 pkgname=(python-meh python2-meh)
-pkgver=0.45
-_realver="r${pkgver}-1"
+pkgver=0.50.1
 pkgrel=1
 pkgdesc='Python module for handling exceptions'
 arch=('i686' 'x86_64')
@@ -11,7 +10,7 @@ url='https://github.com/rhinstaller/python-meh/'
 license=('GPL')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/rhinstaller/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('94a8a2e4441ae357408b78b681d7d9f91d2375ab65ec19a5285c36a1fc6e3aba')
+sha256sums=('7bc68fffa3c0eaa1e913d80712204db3dddd8156951704b142b8993ba95ef9fd')
 
 package_python-meh() {
 	pkgdesc='Python module for handling exceptions - python 3.x pkg'
