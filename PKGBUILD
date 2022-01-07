@@ -1,30 +1,30 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=bsd-mailx-git
-pkgver=162.ge08053c
+pkgver=174.g1dc80bd
 pkgrel=1
 pkgdesc='bsd-mailx from Debian'
 arch=('x86_64' 'i686')
-url='http://anonscm.debian.org/gitweb/?p=users/robert/bsd-mailx.git'
+url='https://salsa.debian.org/debian/bsd-mailx'
 license=('GPL')
 depends=('libbsd' 'liblockfile')
 makedepends=('git')
 provides=('bsd-mailx')
 conflicts=('bsd-mailx')
 backup=('etc/bsd-mailx.rc')
-source=('git://anonscm.debian.org/users/robert/bsd-mailx.git')
+source=("${pkgname}::git+https://salsa.debian.org/debian/bsd-mailx.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd bsd-mailx/
+	cd "${srcdir}/${pkgname}"
 
 	printf '%s.g%s' \
 		"$(git rev-list --count master)" \
-		"$(git log -1 --format='%h')"
+		"$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd bsd-mailx/
+	cd "${srcdir}/${pkgname}"
 
 	for PATCH in $(< debian/patches/series); do
 		patch -Np1 < debian/patches/${PATCH}
@@ -34,13 +34,13 @@ prepare() {
 }
 
 build() {
-	cd bsd-mailx/
+	cd "${srcdir}/${pkgname}"
 
 	make
 }
 
 package() {
-	cd bsd-mailx/
+	cd "${srcdir}/${pkgname}"
 
 	install -D -m0755 mail "${pkgdir}"/usr/bin/bsd-mailx
 	install -D -m0644 mail.1 "${pkgdir}"/usr/share/man/man1/bsd-mailx.1
