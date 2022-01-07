@@ -2,7 +2,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 pkgname=python-liblarch-git
 _name=liblarch
-pkgver=3.1.0.r0.gb0840da
+pkgver=3.1.0.r9.gab053ac
 pkgrel=1
 pkgdesc="Python library to easily handle data structure, with a GTK binding"
 arch=('any')
@@ -17,22 +17,21 @@ source=("git+https://github.com/getting-things-gnome/liblarch.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_name"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_name"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_name"
-	python setup.py build
+  cd "$srcdir/$_name"
+  python setup.py build
 }
 
 check() {
-	cd "$srcdir/$_name"
-	python run-tests
+  cd "$srcdir/$_name"
+  python run-tests
 }
 
 package() {
-	cd "$srcdir/$_name"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$srcdir/$_name"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

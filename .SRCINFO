@@ -1,6 +1,6 @@
 pkgbase = python-liblarch-git
 	pkgdesc = Python library to easily handle data structure, with a GTK binding
-	pkgver = 3.1.0.r0.gb0840da
+	pkgver = 3.1.0.r9.gab053ac
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/liblarch
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = python-liblarch-git
 	sha256sums = SKIP
 
 pkgname = python-liblarch-git
-
