@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=lpc55
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NXP LPC55 host-side utilities'
 arch=('x86_64')
 url="https://github.com/lpc55/lpc55-host"
