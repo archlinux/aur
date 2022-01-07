@@ -1,6 +1,6 @@
 # Maintainer: Omar Emara <mail@OmarEmara.dev>
 pkgname=halide
-pkgver=13.0.2
+pkgver=13.0.3
 pkgrel=1
 pkgdesc="A language for fast and portable data-parallel computation."
 arch=('x86_64')
