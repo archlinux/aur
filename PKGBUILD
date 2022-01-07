@@ -1,47 +1,182 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
+# Cintributor: Will Handley <wh260@cam.ac.uk>
+# Contributor: Leonidas Spyropoulos <artafinde at gmail dot com>
+# Contributor: staletic
+# Contributor: James Brink <brink.james@gmail.com>
+# Contributor: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Contributor: p <parimal@beyond8labs.com>
+# Contributor: Victor <victor@xirion.net>
+# Contributor: Jan-Tarek Butt <tarek AT ring0 DOT de>
+# Contributor: Erik Beran <eberan AT gmail DOT com>
+# Contributor: Thor K. H. <thor at roht dot no>
+# Contributor: Babken Vardanyan <483ken 4tgma1l
+# Contributor: mikezackles
+# Contributor: z33ky
+# Contributor: stykr
+# Contributor: Svenstaro
+# Contributor: KaiSforza
+# Contributor: Simon Gomizelj <simongmzlj@gmail.com>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
+# Contributor: shmilee
+# Contributor: foobster
+# Contributor: archdria
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: edacval
+# Contributor: MarcelPa
+# Contributor: Trent
+# Contributor: urxvtcd-256
+
+_gocode="y"
+_typescript="y" # If you enable both typescript and tern it will defaul to typescript.
+_tern="n"       # Tern seems abandoned - consider moving to TSserver above (see project page)
+_java="y"
+
+_use_system_clang="ON"
+_use_system_abseil="OFF"
+_neovim="$NEOVIM_YOUCOMPLETEME"
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
+
 pkgname=vim-tabnine-git
-pkgdesc="TabNine is the all-language autocompleter. It uses machine learning to provide responsive, reliable, and relevant suggestions."
-pkgver=3.6.8
+pkgver=r2905.e4c180a5
 pkgrel=1
-arch=('any')
-url="https://github.com/zxqfl/tabnine-vim"
-license=('https://tabnine.com/eula')
+pkgdesc='A code-completion engine for Vim with tabnine'
+arch=('x86_64')
+url='https://www.tabnine.com/'
+license=('GPL3')
 groups=('vim-plugins')
-depends=('vim' 'python-lsp-server')
-makedepends=('git' 'python-setuptools')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=('vim-youcompleteme' 'vim-tabnine')
-backup=()
-options=()
-install=
-source=("${pkgname%-git}::git+$url.git")
-noextract=()
-md5sums=('SKIP')
+depends=('vim' 'python>=3.6' 'python-watchdog' 'python-bottle' 'clang>=11.0')
+makedepends=('git' 'cmake' 'pybind11')
+optdepends=(
+  'gopls: Go semantic completion'
+  'nodejs-tern: JavaScript semantic completion'
+  'rust-analyzer: Rust semantic completion'
+  'typescript: Typescript semantic completion'
+  'python-jedi: Python semantic completion'
+  'python-numpydoc: Python semantic completion'
+  'python-regex: Better Unicode support'
+  'omnisharp-roslyn: C# semantic completion'
+  'java-environment>=11: Java semantic completion'
+  'jdtls: Java semantic completion'
+  'abseil-cpp: if setting _use_system_abseil ON')
+replaces=('vim-youcompleteme-git')
+if [[ ${_use_system_clang} == "ON" ]]; then
+  source=(git+https://github.com/tabnine/YouCompleteMe.git
+          git+https://github.com/tabnine/ycmd.git)
+  sha256sums=('SKIP'
+              'SKIP')
+else
+  source=(git+https://github.com/tabnine/YouCompleteMe.git
+          git+https://github.com/tabnine/ycmd.git
+          clangd-13.0.0.tar.bz2::https://github.com/tabnine/llvm/releases/download/13.0.0/clangd-13.0.0-x86_64-unknown-linux-gnu.tar.bz2
+          libclang-13.0.0.tar.bz2::https://github.com/tabnine/llvm/releases/download/13.0.0/libclang-13.0.0-x86_64-unknown-linux-gnu.tar.bz2)
+  sha256sums=('SKIP'
+              'SKIP'
+              '10a64c468d1dd2a384e0e5fd4eb2582fd9f1dfa706b6d2d2bb88fb0fbfc2718d'
+              '9a5bee818a4995bc52e91588059bef42728d046808206bfb93977f4e3109e50c')
+fi
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}/binaries"
-	printf "%s" "$(ls)" 
+  cd "${srcdir}"/YouCompleteMe || exit
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}"/YouCompleteMe || exit
+  git submodule init third_party/ycmd
+  git config submodule.ycmd.url "$srcdir"/ycmd
+  git submodule update third_party/ycmd
+
+  rm -rf "${srcdir}"/YouCompleteMe/third_party/ycmd/cpp/pybind11 || exit
+  if [[ ${_use_system_clang} == "ON" ]]; then
+    rm -rf "${srcdir}"/YouCompleteMe/third_party/ycmd/cpp/llvm || exit
+  fi
+
+  if [[ "$_gocode" == "y" ]]; then
+    sed -e 's|\(gopls_binary_path":\).*$|\1 "/usr/bin/gopls",|' \
+        -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+  fi
+
+  if [[ "$_typescript" == "y" ]]; then
+    rm -rf "${srcdir}/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
+    sed -e 's|\(tsserver_binary_path":\).*$|\1 "/usr/bin/tsserver",|' \
+        -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+  fi
+  if [[ "$_java" == "y" ]]; then
+    sed -e 's|\(java_jdtls_workspace_root_path":\).*$|\1 "/tmp",|' \
+        -e 's|\(java_binary_path":\).*$|\1 "/usr/bin/java"|' \
+        -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+    # The 'java_jdtls_workspace_root_path' option is overriden from the vim plugin
+    # so just make sure this is also done there.
+    sed -e "s|\(ycm_java_jdtls_workspace_root_path',\).*\$|\1 '/tmp' )|" \
+        -i "${srcdir}"/YouCompleteMe/plugin/youcompleteme.vim
+  fi
+
+  if [[ ${_use_system_clang} == "ON" ]]; then
+    sed -e 's|\(clangd_binary_path":\).*$|\1 "/usr/bin/clangd",|' \
+      -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+    # The 'ycm_clangd_binary_path' option is overriden from the vim plugin
+    # so just make sure this is also done there.
+    sed -e "s|\(ycm_clangd_binary_path',\).*\$|\1 '/usr/bin/clangd' )|" \
+      -i "${srcdir}"/YouCompleteMe/plugin/youcompleteme.vim
+  fi
+
+  sed -e 's|\(rust_toolchain_root":\).*$|\1 "/usr",|' \
+      -e 's|\(roslyn_binary_path":\).*$|\1 "/opt/omnisharp-roslyn/OmniSharp.exe",|' \
+      -e 's|\(mono_binary_path":\).*$|\1 "/usr/bin/mono",|' \
+      -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+}
+
+build() {
+  mkdir -p "${srcdir}"/ycmd_build
+  cd "${srcdir}"/ycmd_build || exit
+
+  cmake \
+    -DUSE_CLANG_COMPLETER=${_use_system_clang} \
+    -DUSE_SYSTEM_LIBCLANG=${_use_system_clang} \
+    -DUSE_SYSTEM_ABSEIL=${_use_system_abseil} \
+    ../YouCompleteMe/third_party/ycmd/cpp
+
+  make ycm_core
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  installpath="${pkgdir}/usr/share/vim/vimfiles"
+  pkg_ycmd_dir="${pkgdir}/usr/share/vim/vimfiles/third_party/ycmd"
 
-  binary_dir=$(echo binaries/*/x86_64*linux*)
-  
-  mkdir -p $installpath
-  mkdir -p $installpath/binaries/${pkgver}  
-  cp -r plugin doc autoload python third_party $installpath
-  cp -r ${binary_dir}  $installpath/${binary_dir}
+  cd "${srcdir}"/YouCompleteMe || exit
+  install -Ddm755 "${pkg_ycmd_dir}"
 
-  # Remove all the unnecessary git repositories
-  find "$pkgdir" -name .git -exec rm -fr {} +
+  cp -dr --no-preserve=ownership autoload doc plugin python "${pkgdir}/usr/share/vim/vimfiles"
+  cp -dr --no-preserve=ownership third_party/ycmd/{ycmd,ycm_core.*.so,CORE_VERSION} "${pkg_ycmd_dir}"
 
-  # Remove tests files
-  find "$pkgdir" -name tests -exec rm -fr {} +
+  if [[ ${_use_system_clang} == "ON" ]]; then
+    install -Ddm755 "${pkg_ycmd_dir}/third_party/clang/lib/"
+    ln -s /usr/lib/libclang.so "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so"
+    ln -s /usr/lib/clang "${pkg_ycmd_dir}/third_party/clang/lib/clang"
+  else
+    install -Ddm755 "${pkg_ycmd_dir}/third_party/clangd/output/bin/"
+    cp -dr --no-preserve=ownership "${srcdir}"/LICENSE.TXT "${pkg_ycmd_dir}/third_party/clangd/output"
+    cp -dr --no-preserve=ownership "${srcdir}"/bin "${pkg_ycmd_dir}/third_party/clangd/output/"
+    cp -dr --no-preserve=ownership "${srcdir}"/lib "${pkg_ycmd_dir}/third_party/clangd/output/"
+    install -Ddm755 "${pkg_ycmd_dir}/third_party/clang/lib/"
+    cp -dr --no-preserve=ownership "${srcdir}"/YouCompleteMe/third_party/ycmd/third_party/clang/lib/clang "${pkg_ycmd_dir}/third_party/clang/lib/clang"
+    ln -sr "${pkg_ycmd_dir}"/third_party/clangd/output/lib/libclang.so "${pkg_ycmd_dir}/third_party/clang/lib/libclang.so"
+  fi
 
-  # Remove unneeded docs
-  find "$pkgdir" -name docs -exec rm -fr {} +
+  if [[ "$_java" == "y" ]]; then
+    install -Ddm755 "${pkg_ycmd_dir}/third_party/eclipse.jdt.ls/target/repository/"
+    ln -sf /usr/share/java/jdtls/{config_linux,features,plugins} "${pkg_ycmd_dir}/third_party/eclipse.jdt.ls/target/repository/"
+  fi
 
+  if [[ ${_tern} == "ON" ]]; then
+    install -Ddm755 "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
+    ln -s /usr/lib/node_modules/tern "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
+  fi
+
+  install -Ddm755 "${pkg_ycmd_dir}/third_party/tabnine/" 
+  cp -dr --no-preserve=ownership "$srcdir"/ycmd/third_party/tabnine/__init__.py "${pkg_ycmd_dir}/third_party/tabnine/"
+
+  find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' \) -exec rm -fr {} +
+
+  python -m compileall -d /usr/share/vim/vimfiles "${pkgdir}/usr/share/vim/vimfiles"
+  python -O -m compileall -d /usr/share/vim/vimfiles "${pkgdir}/usr/share/vim/vimfiles"
 }

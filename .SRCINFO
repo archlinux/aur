@@ -1,20 +1,34 @@
 pkgbase = vim-tabnine-git
-	pkgdesc = TabNine is the all-language autocompleter. It uses machine learning to provide responsive, reliable, and relevant suggestions.
-	pkgver = 3.6.8
+	pkgdesc = A code-completion engine for Vim with tabnine
+	pkgver = r2905.e4c180a5
 	pkgrel = 1
-	url = https://github.com/zxqfl/tabnine-vim
-	arch = any
+	url = https://www.tabnine.com/
+	arch = x86_64
 	groups = vim-plugins
-	license = https://tabnine.com/eula
+	license = GPL3
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = pybind11
 	depends = vim
-	depends = python-lsp-server
-	provides = vim-tabnine
-	conflicts = vim-tabnine
-	replaces = vim-youcompleteme
-	replaces = vim-tabnine
-	source = vim-tabnine::git+https://github.com/zxqfl/tabnine-vim.git
-	md5sums = SKIP
+	depends = python>=3.6
+	depends = python-watchdog
+	depends = python-bottle
+	depends = clang>=11.0
+	optdepends = gopls: Go semantic completion
+	optdepends = nodejs-tern: JavaScript semantic completion
+	optdepends = rust-analyzer: Rust semantic completion
+	optdepends = typescript: Typescript semantic completion
+	optdepends = python-jedi: Python semantic completion
+	optdepends = python-numpydoc: Python semantic completion
+	optdepends = python-regex: Better Unicode support
+	optdepends = omnisharp-roslyn: C# semantic completion
+	optdepends = java-environment>=11: Java semantic completion
+	optdepends = jdtls: Java semantic completion
+	optdepends = abseil-cpp: if setting _use_system_abseil ON
+	replaces = vim-youcompleteme-git
+	source = git+https://github.com/tabnine/YouCompleteMe.git
+	source = git+https://github.com/tabnine/ycmd.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vim-tabnine-git
