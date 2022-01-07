@@ -1,0 +1,33 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+red="${bold}$(tput setaf 1)"
+green="${bold}$(tput setaf 2)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+
+post_install() {
+    note "1.2.0 New Feature #10 Maximum Preferred Refresh"
+    note ""
+    note "Optional cfg.yaml additions:"
+    note ""
+    note "${all_off}# Use the maximum refresh rate for resolution of the preferred mode."
+    note "${all_off}# Warning: this may result in an unusable display."
+    note "${red}MAX_PREFERRED_REFRESH${all_off}:"
+    note "${yellow}  - ${green}'HDMI-1'${all_off}"
+    note ""
+    note "For full details see https://github.com/alex-courtis/way-displays and /etc/way-displays/cfg.yaml"
+}
+
+post_upgrade() {
+    post_install
+}
+
