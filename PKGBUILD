@@ -1,9 +1,9 @@
 # Maintainer: Lucas Pape <development@lucaspape.de>
 
 _npmname=monitoring.js
-_npmver=1.0.7
+_npmver=1.0.8
 pkgname=monitoring.js
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Run commands on local/remote servers and send messages when they fail"
 arch=('i686' 'x86_64')
@@ -22,13 +22,16 @@ package() {
   npm install -g --prefix "${pkgdir}/usr" ${_npmname}@${_npmver}
 
   mkdir "${pkgdir}/usr/bin/"
-  mkdir -p "${pkgdir}/etc/monitoring.js/"
+  mkdir -p "${pkgdir}/etc/monitoring.js/hosts/"
   mkdir -p "${pkgdir}/etc/systemd/system/"
 
   cp "${srcdir}/package/scripts/monitoring.js" "${pkgdir}/usr/bin/"
   cp "${srcdir}/package/scripts/monitoring.js-setup" "${pkgdir}/usr/bin/"
   cp "${srcdir}/package/scripts/monitoring-js.service" "${pkgdir}/etc/systemd/system/"
+  cp -r "${srcdir}/package/commands/" "${pkgdir}/etc/commands/"
 
   chmod -R +x ${pkgdir}/usr/bin/
   chmod -R 755 ${pkgdir}/usr/lib/node_modules/
+
+  install -Dm644 "${srcdir}/package/scripts/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
