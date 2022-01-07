@@ -1,30 +1,31 @@
-# Maintainer: Daurnimator <quae@daurnimator.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Daurnimator <quae@daurnimator.com>
 
 pkgname=libmcl
-pkgver=1.03
+pkgver=1.52
 pkgrel=1
-pkgdesc='A portable and fast pairing-based cryptography library'
-arch=('x86_64')
+pkgdesc='Portable and fast pairing-based cryptography library'
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url='https://github.com/herumi/mcl'
 license=('BSD')
-makedepends=('cmake')
 depends=('gmp')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/herumi/mcl/archive/v$pkgver.tar.gz")
-sha256sums=('dc935c6aa41b7e2d53965ecf6ac985237775c3d09a37d7d8417f0d46607a8ed5')
+makedepends=('cmake')
+provides=('libmclbn384_256.so' 'libmclbn384.so' 'libmclbn256.so' 'libmcl.so')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('a9ef34e0fc035c43698caa877ce7fb4d101865563f81b818e923eb5b5b2f7105')
 
 build() {
-  cd "mcl-$pkgver"
-
-  mkdir -p build
-  env -C build cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    ..
-  make -C build
+	cmake \
+		-B build \
+		-S "mcl-$pkgver" \
+		-Wno-dev \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release
+	make -C build
 }
 
 package() {
-  cd "mcl-$pkgver"
-
-  make -C build DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+	make -C build DESTDIR="$pkgdir" install
+	cd "mcl-$pkgver"
+	install -Dm644 COPYRIGHT -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
