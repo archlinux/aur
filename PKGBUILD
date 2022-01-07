@@ -5,22 +5,22 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
-_ia32_efi_in_arch_x64="1"
+# _ia32_efi_in_arch_x64="1"
 
 ## "1" to enable EMU build, "0" to disable
-_grub_emu_build="0"
+# _grub_emu_build="0"
 
-[[ "${CARCH}" == "x86_64" ]] && _target_arch="x86_64"
-[[ "${CARCH}" == "i686" ]] && _target_arch="i386"
+[[ "${CARCH}" == "x86_64" ]] && _target_arch="x86_64" || echo "Only amd64 with efi is supported."
+# [[ "${CARCH}" == "i686" ]] && _target_arch="i386"
 
-_build_platforms="i386-pc ${_target_arch}-efi"
-[[ "${CARCH}" == "x86_64" ]] && [[ "${_ia32_efi_in_arch_x64}" == "1" ]] && _build_platforms+=" i386-efi"
-[[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
+# _build_platforms="i386-pc ${_target_arch}-efi"
+# [[ "${CARCH}" == "x86_64" ]] && [[ "${_ia32_efi_in_arch_x64}" == "1" ]] && _build_platforms+=" i386-efi"
+# [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
 pkgver=2.06.r92.g246d69b7e
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
 url="https://www.gnu.org/software/grub/"
