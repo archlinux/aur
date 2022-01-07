@@ -4,7 +4,7 @@ _npmname=monitoring.js
 _npmver=1.0.5
 pkgname=monitoring.js
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Run commands on local/remote servers and send messages when they fail"
 arch=('i686' 'x86_64')
 depends=('nodejs' 'openssh')
@@ -23,6 +23,7 @@ package() {
 
   mkdir "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/etc/monitoring.js/"
+  mkdir -p "${pkgdir}/etc/systemd/system/"
 
   cp "${srcdir}/package/scripts/monitoring.js" "${pkgdir}/usr/bin/"
   cp "${srcdir}/package/scripts/monitoring.js-setup" "${pkgdir}/usr/bin/"
