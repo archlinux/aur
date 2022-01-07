@@ -1,6 +1,6 @@
 pkgbase = archive-mount-nautilus-git
 	pkgdesc = Nautilus extension for mounting archives via context menu.
-	pkgver = r3.d9d71b3
+	pkgver = r7.9b3e27a-1
 	pkgrel = 1
 	url = https://github.com/Lucas-Steinmann/archive-mount-nautilus
 	install = nautilus-reminder.install
