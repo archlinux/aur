@@ -1,18 +1,17 @@
 pkgbase = python-requirements-parser
 	pkgdesc = A Pip requirements file parser.
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/davidfischer/requirements-parser
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	depends = python
-	source = https://pypi.org/packages/source/r/requirements-parser/requirements-parser-0.2.0.tar.gz
-	source = https://pypi.org/packages/source/r/requirements-parser/requirements-parser-0.2.0.tar.gz.asc
+	depends = python-future
+	depends = python-setuptools
+	depends = python-types-setuptools
+	source = https://pypi.org/packages/source/r/requirements-parser/requirements-parser-0.3.1.tar.gz
+	source = https://pypi.org/packages/source/r/requirements-parser/requirements-parser-0.3.1.tar.gz.asc
 	source = 0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch
-	validpgpkeys = 301078D634936CEB7FCDF13BF0C9B0ADA737AB60
-	sha256sums = 5963ee895c2d05ae9f58d3fc641082fb38021618979d6a152b6b1398bd7d4ed4
-	sha256sums = SKIP
+	sha256sums = 3852277618e653dd1d8fa4129e59b4338358dffafeb3d5106e9f88504db9c460
 	sha256sums = 961a1aa1c720fdbe8fe8bbecdbcfcaf9b0faa52718868c4b19b9b332d2a41c6b
 
 pkgname = python-requirements-parser
