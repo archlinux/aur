@@ -1,0 +1,14 @@
+pkgbase = crtview
+	pkgdesc = View any image with CRT filter applied
+	pkgver = 20220107.6e8cb5c
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = None
+	depends = sdl2
+	depends = glew
+	source = git+https://github.com/mattiasgustavsson/crtview.git
+	sha256sums = SKIP
+
+pkgname = crtview
