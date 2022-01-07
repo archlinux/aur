@@ -1,6 +1,6 @@
 pkgbase = slippi-launcher
 	pkgdesc = The way to play Slippi Online and watch replays.
-	pkgver = 2.1.9
+	pkgver = 2.1.10
 	pkgrel = 1
 	url = https://slippi.gg/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = slippi-launcher
 	depends = zlib
 	optdepends = pulseaudio: PulseAudio backend
 	options = !strip
-	source = Slippi-Launcher-2.1.9-x86_64.AppImage::https://github.com/project-slippi/slippi-launcher/releases/download/v2.1.9/Slippi-Launcher-2.1.9-x86_64.AppImage
-	md5sums = c4a82375f24513cbc1e9b4fbb72a6ca8
+	source = Slippi-Launcher-2.1.10-x86_64.AppImage::https://github.com/project-slippi/slippi-launcher/releases/download/v2.1.10/Slippi-Launcher-2.1.10-x86_64.AppImage
+	md5sums = ee89b4726636bc5ea973369e7a1421e1
 
 pkgname = slippi-launcher
