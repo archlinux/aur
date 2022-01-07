@@ -1,0 +1,16 @@
+[Unit]
+Description=Journalbeat OSS ships systemd journal entries to Logstash or directly to Elasticsearch OSS or OpenSearch.
+Documentation=https://www.elastic.co/guide/en/beats/journalbeat/7.12/index.html
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+
+Environment="BEAT_LOG_OPTS=-e"
+Environment="BEAT_CONFIG_OPTS=-c /etc/journalbeat-oss/journalbeat.yml"
+Environment="BEAT_PATH_OPTS=-path.home /usr/share/journalbeat-oss -path.config /etc/journalbeat-oss -path.data /var/lib/journalbeat-oss -path.logs /var/log/journalbeat-oss"
+ExecStart=/usr/bin/journalbeat-oss $BEAT_LOG_OPTS $BEAT_CONFIG_OPTS $BEAT_PATH_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

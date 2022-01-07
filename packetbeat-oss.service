@@ -1,0 +1,11 @@
+[Unit]
+Description=Real-Time Packet Analyzer
+Documentation=https://www.elastic.co/guide/en/beats/packetbeat/7.12/index.html
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/packetbeat-oss -c /etc/packetbeat-oss/packetbeat.yml -path.home /usr/share/packetbeat-oss -path.config /etc/packetbeat-oss -path.data /var/lib/packetbeat-oss -path.logs /var/log/packetbeat-oss
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
