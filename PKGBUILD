@@ -39,23 +39,19 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/CPP/7zip/Bundles"
+    cd "${BUILD_DIR}"
 
     local lib="/usr/lib/${pkgname}"
     local plib="${pkgdir}${lib}"
     local pbin=$(install -dm755 "${pkgdir}/usr/bin" && echo "$_")
 
-    install -Dm755 -t "${plib}" "${BUILD_DIR}/7za"
-    ln -s "${lib}/7za" "${pbin}/7za"
+    install -Dm755 -t "${plib}" "7za" "7zz" "7zr"
+    install -Dm644 -t "${plib}" "7z.so"
 
-    install -Dm755 -t "${plib}" "${BUILD_DIR}/7zz"
+    ln -s "${lib}/7za" "${pbin}/7za"
     ln -s "${lib}/7zz" "${pbin}/7z"
     ln -s "${lib}/7zz" "${pbin}/7zz"
-
-    install -Dm755 -t "${plib}" "${BUILD_DIR}/7zr"
     ln -s "${lib}/7zr" "${pbin}/7zr"
-
-    install -Dm644 -t "${plib}" "${BUILD_DIR}/7z.so"
 
     cd "${srcdir}/DOC"
 
