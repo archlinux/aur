@@ -1,6 +1,6 @@
 pkgbase = touchpad-indicator-git
 	pkgdesc = An indicator for the touchpad
-	pkgver = 2.2.3.ubuntu20.04.0.r126.0fdca1a
+	pkgver = 2.2.3.ubuntu20.04.0.r128.97cdae5
 	pkgrel = 1
 	url = https://github.com/atareao/Touchpad-Indicator
 	arch = any
