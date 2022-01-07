@@ -1,19 +1,26 @@
-# Maintainer: Andrew Rabert <ar@nullsum.net>
+# Maintainer: desbma
+# Contributor: Andrew Rabert <ar@nullsum.net>
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 # Contributor: Ian Beringer <ian@ianberinger.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# shellcheck disable=SC2034,SC2148,SC2154,SC2164
 
-pkgname=lf
+pkgname=lf-xdg
+_pkgname_upstream=lf
 pkgver=26
 pkgrel=1
 license=('MIT')
-pkgdesc="A terminal file manager inspred by ranger written in Go"
+pkgdesc="A terminal file manager inspred by ranger written in Go, witch patch to use XDG locations for runtime files"
 depends=('glibc')
 makedepends=('go')
+provides=('lf')
+conflicts=('lf')
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/gokcehan/lf"
-source=("$pkgname-r$pkgver.tar.gz::https://github.com/gokcehan/$pkgname/archive/r$pkgver.tar.gz")
-sha256sums=('dccd1ad67d2639e47fe0cbc93d74f202d6d6f0c3759fb0237affb7b1a2b1379e')
+source=("$_pkgname_upstream-r$pkgver.tar.gz::https://github.com/gokcehan/$_pkgname_upstream/archive/r$pkgver.tar.gz"
+        "https://patch-diff.githubusercontent.com/raw/gokcehan/$_pkgname_upstream/pull/726.patch")
+sha256sums=('dccd1ad67d2639e47fe0cbc93d74f202d6d6f0c3759fb0237affb7b1a2b1379e'
+            'abf786eab3baa606bd064d9108761b537177189946a014e41512fe99e94287a1')
 
 prepare() {
   # prevent creation of a `go` directory in one's home.
@@ -21,10 +28,12 @@ prepare() {
   # or changes the write permissions.
   export GOPATH="${srcdir}/gopath"
   go clean -modcache
+
+  patch  --directory="${_pkgname_upstream}-r${pkgver}" --forward --strip=1 --input="${srcdir}/726.patch"
 }
 
 build() {
-  cd "${pkgname}-r${pkgver}"
+  cd "${_pkgname_upstream}-r${pkgver}"
   go mod vendor
   version=r$pkgver ./gen/build.sh \
       -buildmode=pie \
@@ -36,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-r${pkgver}"
+  cd "${_pkgname_upstream}-r${pkgver}"
   install -Dm755 -t "${pkgdir}/usr/bin" \
       ./lf
 

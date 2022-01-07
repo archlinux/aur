@@ -1,5 +1,5 @@
-pkgbase = lf
-	pkgdesc = A terminal file manager inspred by ranger written in Go
+pkgbase = lf-xdg
+	pkgdesc = A terminal file manager inspred by ranger written in Go, witch patch to use XDG locations for runtime files
 	pkgver = 26
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
@@ -10,7 +10,11 @@ pkgbase = lf
 	license = MIT
 	makedepends = go
 	depends = glibc
+	provides = lf
+	conflicts = lf
 	source = lf-r26.tar.gz::https://github.com/gokcehan/lf/archive/r26.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/gokcehan/lf/pull/726.patch
 	sha256sums = dccd1ad67d2639e47fe0cbc93d74f202d6d6f0c3759fb0237affb7b1a2b1379e
+	sha256sums = abf786eab3baa606bd064d9108761b537177189946a014e41512fe99e94287a1
 
-pkgname = lf
+pkgname = lf-xdg
