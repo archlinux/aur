@@ -1,0 +1,17 @@
+# Maintainer: fubarhouse
+pkgname=pygmy
+provides=(pygmy)
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="Amazee.io's local docker development tool"
+arch=('x86_64')
+url="https://github.com/pygmystack/pygmy"
+license=('MIT')
+makedepends=('tar')
+source=("${pkgname}_${pkgver}::${url}/releases/download/v${pkgver}/${pkgname}-go_${pkgver}_linux_amd64.tar.gz")
+sha512sums=('d545682bb940a5616bb62af69d3a2bb3bce17afc3da23e1b00b6f3803e6c66d16990a07d4293f41f44ebfb0b0cc508879e63072733fe86fb296a6c37a54e2d94')
+
+package() {
+  mkdir -p $pkgdir/usr/local/bin
+  install -Dm755 ${pkgname}-go "$srcdir/usr/local/bin/pygmy"
+}
