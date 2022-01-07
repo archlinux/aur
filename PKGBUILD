@@ -19,9 +19,9 @@ sha256sums=('017f093a0b899e0cf4328764cd44d161c54e3ae6a873fe5768ba71b81fdb5108'
             'cb37362c7e630b02643ffa03f26cee8d9ac5193f69cb3b0a22460e079c9b0bfa')
 
 package() {
-	cd TVRenamer-$pkgver
-	install -Dm644 "${pkgname%-bin}.jar" -t "$pkgdir/usr/share/java/${pkgname%-bin}"
-	install -Dm644 "$srcdir/${pkgname%-bin}.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 "$srcdir/${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
-	install -Dm755 "$srcdir/${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
+  cd TVRenamer-$pkgver
+  install -Dm644 "${pkgname%-bin}.jar" -t "$pkgdir/usr/share/java/${pkgname%-bin}"
+  install -Dm644 "$srcdir/${pkgname%-bin}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
+  install -Dm755 "$srcdir/${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
