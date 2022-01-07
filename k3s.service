@@ -11,7 +11,10 @@ ExecStartPre=-/sbin/modprobe overlay
 ExecStart=/usr/bin/k3s server
 KillMode=process
 Delegate=yes
-LimitNOFILE=infinity
+# Having non-zero Limits causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+# See https://github.com/k3s-io/k3s/commit/b4335630b78b5cf927e79724067803a6c0d7c04f
+LimitNOFILE=1048576
 LimitNPROC=infinity
 LimitCORE=infinity
 TasksMax=infinity
