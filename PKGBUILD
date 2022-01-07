@@ -2,7 +2,7 @@
 
 pkgname="k3s-bin"
 pkgver="1.22.5+k3s1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=("Apache")

@@ -1,7 +1,7 @@
 pkgbase = k3s-bin
 	pkgdesc = Lightweight Kubernetes
 	pkgver = 1.22.5+k3s1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://k3s.io
 	arch = x86_64
 	arch = armv7h
@@ -11,7 +11,7 @@ pkgbase = k3s-bin
 	backup = etc/systemd/system/k3s.service.env
 	source = k3s.service
 	source = k3s.service.env
-	sha256sums = f4ae496b69b3dd376a28298df50297728a47761b041be522adf2537aa8a8c3d8
+	sha256sums = 6dae4b76712fc5ad7e515ad8a14fee0b961bfb0cd624d998ac954c233aa90ff5
 	sha256sums = 667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0
 	source_x86_64 = k3s-1.22.5+k3s1-x86_64::https://github.com/rancher/k3s/releases/download/v1.22.5+k3s1/k3s
 	sha256sums_x86_64 = f18e0e17f11d3052f00ca4428bd548b6bf936bcfb71d8ad49a91154a6b5e460f
