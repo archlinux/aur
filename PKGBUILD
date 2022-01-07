@@ -1,7 +1,7 @@
 # Maintainer: Tom Tsagk <tomtsagk@darkdimension.org>
 pkgname=rue 
 pkgdesc="A card game about deduction, love and regret"
-pkgver=0.0.6
+pkgver=0.1.1
 pkgrel=1
 arch=('x86_64')
 url="https://darkdimension.org/games/rue.html"
@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('avdl')
 depends=('sdl2' 'sdl2_mixer' 'glew')
 source=($pkgname-$pkgver.tar.gz::https://github.com/tomtsagk/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-md5sums=('2a0e3813f885398dff70cb1566ce2516')
+md5sums=('dab8da06ee43588cb3545873834488b9')
 
 build() {
 	cd "$pkgname-$pkgver"
