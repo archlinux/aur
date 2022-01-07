@@ -1,19 +1,22 @@
 pkgbase = alda-bin
-	pkgdesc = A music programming language for musicians.
-	pkgver = 2.0.6
+	pkgdesc = A music programming language for musicians. 🎶
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/alda-lang/alda
 	arch = x86_64
-	license = EPL
+	license = custom:EPL2
 	depends = java-environment>=8
 	provides = alda
 	conflicts = alda
 	noextract = alda
 	noextract = alda-player
+	noextract = LICENSE
 	options = !strip
-	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.0.6/client/linux-amd64/alda
-	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.0.6/player/non-windows/alda-player
+	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.1.0/client/linux-amd64/alda
+	source = https://alda-releases.nyc3.digitaloceanspaces.com/2.1.0/player/non-windows/alda-player
+	source = https://github.com/alda-lang/alda/blob/release-2.1.0/LICENSE
 	sha512sums = 6c895ec60fd3044a2f710684f85aeace749fdda4aea0942128ffca24425009846c2cd034079e1824de479f6f0f80634b12e6a202f57b0ece9497997ad6bb2171
 	sha512sums = a46470e39108e0e97229da1f72895f8b8217dce70e042e432eaadf0cc51fce1055efafcde6d8447432d51c11279c44fbdb2efe642370116b647da824134c1768
+	sha512sums = fc870637796c26b2a8add7e07bb6699e9b53ff1bbb6c43e6393a116b3d81ecce08408919c132696113b4e3424a04f1b82b8c2e50bb182f2607e39acb60855215
 
 pkgname = alda-bin
