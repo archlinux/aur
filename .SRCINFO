@@ -1,0 +1,13 @@
+pkgbase = python-autosub1
+	pkgdesc = An open-source python package to clean raw text data
+	pkgver = 0.4.7
+	pkgrel = 0
+	url = https://pypi.org/project/autosub1
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/autosub1/autosub1-0.4.7.tar.gz
+	sha256sums = 7fe8a351de227ec46b768b2b92ff0fa01cedbfe83a9fe1800fa183ff9356e3e0
+
+pkgname = python-autosub1
