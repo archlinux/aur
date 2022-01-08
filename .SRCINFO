@@ -1,0 +1,13 @@
+pkgbase = paperback-git
+	pkgdesc = Paper backup generator suitable for long-term storage.
+	pkgver = 0.0.0.8512e5f
+	pkgrel = 1
+	url = https://github.com/cyphar/paperback
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/cyphar/paperback#commit=8512e5fb74939e176a46cda9b0d38f0ee47bfa78
+	sha512sums = SKIP
+
+pkgname = paperback-git
