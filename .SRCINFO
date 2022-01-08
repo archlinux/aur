@@ -1,6 +1,6 @@
 pkgbase = dm-zoned-tools
 	pkgdesc = User space utility for managing zoned block devices used with the dm-zoned device mapper
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/westerndigitalcorporation/dm-zoned-tools
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dm-zoned-tools
 	depends = util-linux-libs
 	depends = kmod
 	depends = device-mapper
-	source = dm-zoned-tools-2.2.0.tar.gz::https://github.com/westerndigitalcorporation/dm-zoned-tools/archive/refs/tags/v2.2.0.tar.gz
-	md5sums = 801c38767332efb7c040545e8b7f813a
+	source = dm-zoned-tools-2.2.1.tar.gz::https://github.com/westerndigitalcorporation/dm-zoned-tools/archive/refs/tags/v2.2.1.tar.gz
+	md5sums = 754e90a604f52644101bc22074694c5e
 
 pkgname = dm-zoned-tools
