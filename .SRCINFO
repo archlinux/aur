@@ -1,6 +1,6 @@
 pkgbase = python-mojimoji
 	pkgdesc = A fast converter between Japanese hankaku and zenkaku characters
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://github.com/studio-ousia/mojimoji
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = python-mojimoji
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python
-	source = https://github.com/studio-ousia/mojimoji/archive/0.0.11.tar.gz
-	sha512sums = 4601716e8b60812e62b0b222d287a67e64f260d18673eb17c6fc024ee52a5dd60696ae8f8fb75c4adb8902bd5affa364f9ae06de7e4bdb8b181621de67a9b352
+	source = https://github.com/studio-ousia/mojimoji/archive/0.0.12.tar.gz
+	sha512sums = d0547589ec1858f63e05c037e296a497b4b0f9db6cea1a7fec426d8a2b109473b4a97622cc8d4262ca9a7e31f89211ca7bae660b2d121d28f070ddf1627b0f1c
 
 pkgname = python-mojimoji
-
