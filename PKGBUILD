@@ -10,7 +10,7 @@ license=("Apache")
 options=("staticlibs" "libtool" "!strip")
 depends=("java-environment" "ncurses5-compat-libs")
 provides=("kotlin-native")
-conflicts("kotlin-native-bin" "kotlin-native-git")
+conflicts=("kotlin-native-bin" "kotlin-native-git")
 source=(
     "https://github.com/JetBrains/kotlin/archive/refs/tags/v${pkgver}.tar.gz"
     "local.properties"

@@ -1,17 +1,21 @@
 pkgbase = kotlin-native
-	pkgdesc = A LLVM backend for the Kotlin compiler
-	pkgver = 1.4.0dev8404
+	pkgdesc = An LLVM based backend for the Kotlin compiler and native implementation of the Kotlin standard library
+	pkgver = 1.6.10
 	pkgrel = 1
-	url = https://github.com/JetBrains/kotlin-native
+	url = https://github.com/JetBrains/kotlin
 	arch = x86_64
 	license = Apache
 	depends = java-environment
 	depends = ncurses5-compat-libs
+	provides = kotlin-native
+	conflicts = kotlin-native-bin
+	conflicts = kotlin-native-git
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = https://github.com/JetBrains/kotlin-native/archive/build-1.4.0-dev-8404.tar.gz
-	sha512sums = 88eca274f6800029453505ce185bf5068cca69536c6de7b51a8219934b3be76fbfb1f44e812dc78a4c58958d33b47fceb0fac1f3abf17f856d444868d723f33d
+	source = https://github.com/JetBrains/kotlin/archive/refs/tags/v1.6.10.tar.gz
+	source = local.properties
+	sha512sums = 9157871c53a7c78a0cdd512c984f385cbcb6e9a930faa279623902dff1dfc8e788d6e20a940d2c19d3ffc3519f632e0e87605c38b5f5fe24eea921ca74672611
+	sha512sums = 88cae75baaacdbe35fb421a00fae0994fc0728f1b8ee1af3c111fbd0fc135db2c03965ac1ae19580eea1400805852cd04b3da0d7c379b0add90c85b05ee34f26
 
 pkgname = kotlin-native
-
