@@ -1,0 +1,13 @@
+pkgbase = makehuman-plugin-mhx
+	pkgdesc = MHX (blender/makehuman interchange format) exporter for makehuman
+	pkgver = latest
+	pkgrel = 3
+	url = http://www.makehumancommunity.org/
+	arch = any
+	license = GPLv2
+	depends = makehuman
+	conflicts = makehuman-community-plugins
+	source = https://download.tuxfamily.org/makehuman/plugins/mhx-mh-latest.zip
+	sha512sums = SKIP
+
+pkgname = makehuman-plugin-mhx
