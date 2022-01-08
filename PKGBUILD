@@ -1,5 +1,5 @@
 # Maintainer: JustKidding <jk@vin.ovh>
-# Contributor: Yurii Kolesnykov <root@yurikoles.com>
+# Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
@@ -13,21 +13,20 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.0.99.1.r42.gf6f2f203b
+pkgver=21.0.99.1.r112.gc97397dc4
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
-makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
+makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'xtrans' 'libxcvt'
              'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
-_srcurl="git+https://gitlab.freedesktop.org/xorg/xserver.git"
-source=($_srcurl
-        xvfb-run
+source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
+        xvfb-run # with updates from FC master
         xvfb-run.1)
 sha512sums=('SKIP'
             '4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514'
@@ -47,16 +46,15 @@ build() {
   export CXXFLAGS="${CXXFLAGS/-fno-plt -fno-lto}"
   export LDFLAGS="${LDFLAGS/,-z,now,-fno-lto}"
 
-  arch-meson ${_pkgbase} build \
-    -D os_vendor="Archlinux" \
+  arch-meson "${_pkgbase}" build \
+    -D vendor_name="Archlinux" \
+    -D vendor_web="https://aur.archlinux.org/xorg-server-git.git" \
     -D ipv6=true \
     -D xvfb=true \
     -D xnest=true \
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=false \
-    -D xwayland_eglstream=false \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -80,7 +78,9 @@ _install() {
     f="${src#fakeinstall/}"
     dir="${pkgdir}/${f%/*}"
     install -m755 -d "${dir}"
-    mv -v "${src}" "${dir}/"
+    # use copy so a new file is created and fakeroot can track properties such as setuid
+    cp -av "${src}" "${dir}/"
+    rm -rf "${src}"
   done
 }
 
@@ -97,7 +97,7 @@ package_xorg-server-common-git() {
 
   install -m644 -Dt "${pkgdir}/var/lib/xkb/" "${_pkgbase}"/xkb/README.compiled
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-git() {
@@ -105,7 +105,7 @@ package_xorg-server-git() {
   _pkgname='xorg-server'
   depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind
            dbus libgl xf86-input-libinput nettle
-           libpciaccess libdrm libxshmfence) # FS#52949
+           libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
@@ -114,20 +114,20 @@ package_xorg-server-git() {
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
 
-  _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
+  _install fakeinstall/usr/bin/{Xorg,gtf}
   ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
   _install fakeinstall/usr/lib/Xorg{,.wrap}
   _install fakeinstall/usr/lib/xorg/modules/*
   _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
-  _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,cvt,gtf}.1
-  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting,inputtestdrv}.4
+  _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,gtf}.1
+  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
   _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xephyr-git() {
@@ -137,13 +137,13 @@ package_xorg-server-xephyr-git() {
   conflicts=('xorg-server-xephyr')
   depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
-           nettle libtirpc systemd-libs)
+           nettle libtirpc)
 
   _install fakeinstall/usr/bin/Xephyr
   _install fakeinstall/usr/share/man/man1/Xephyr.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xvfb-git() {
@@ -161,7 +161,7 @@ package_xorg-server-xvfb-git() {
   install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xnest-git() {
@@ -175,7 +175,7 @@ package_xorg-server-xnest-git() {
   _install fakeinstall/usr/share/man/man1/Xnest.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-devel-git() {
@@ -193,9 +193,9 @@ package_xorg-server-devel-git() {
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
-  # rm fakeinstall/usr/bin/Xwayland
+  # rm -rf fakeinstall/usr/bin/cvt fakeinstall/usr/share/man/man1/cvt.1
   # find fakeinstall -depth -print0 | xargs -0 rmdir
 }
