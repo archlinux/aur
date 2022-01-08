@@ -1,11 +1,12 @@
 pkgbase = joplin-appimage
 	pkgdesc = The latest stable AppImage of Joplin - a cross-platform note taking and to-do app
 	pkgver = 2.6.10
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/laurent22/joplin
 	arch = x86_64
 	license = MIT
 	depends = fuse2
+	conflicts = joplin-desktop
 	options = !strip
 	source = https://github.com/laurent22/joplin/releases/download/v2.6.10/Joplin-2.6.10.AppImage
 	source = https://github.com/laurent22/joplin/raw/v2.6.10/LICENSE
