@@ -11,9 +11,9 @@ license=(unknown)
 groups=()
 depends=( lsof net-tools )
 makedepends=()
-provides=()
-conflicts=()
-replaces=()
+provides=(speedify)
+conflicts=(speedify)
+replaces=(speedify)
 backup=()
 options=()
 install=
@@ -22,9 +22,9 @@ source_x86_64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pk
 source_aarch64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_arm64.deb)
 source_armv7h=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_armhf.deb)
 # TODO: i386 is also supported
-md5sums_x86_64=('3c3178d7eee99e641de9d41fc7b95dca')
-md5sums_aarch64=('35ccf06e835a10350fe70671a6439ca2')
-md5sums_armv7h=('21498b3c58a5fab3344dca2a42b3e228')
+md5sums_x86_64=('SKIP')
+md5sums_aarch64=('SKIP')
+md5sums_armv7h=('SKIP')
 
 prepare() {
 	cd "$srcdir"

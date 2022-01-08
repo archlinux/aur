@@ -9,12 +9,15 @@ pkgbase = speedify
 	license = unknown
 	depends = lsof
 	depends = net-tools
+	provides = speedify
+	conflicts = speedify
+	replaces = speedify
 	source_x86_64 = http://apt.connectify.me/pool/main/s/speedify/speedify_11.8.0-10224_amd64.deb
-	md5sums_x86_64 = 3c3178d7eee99e641de9d41fc7b95dca
+	md5sums_x86_64 = SKIP
 	source_aarch64 = http://apt.connectify.me/pool/main/s/speedify/speedify_11.8.0-10224_arm64.deb
-	md5sums_aarch64 = 35ccf06e835a10350fe70671a6439ca2
+	md5sums_aarch64 = SKIP
 	source_armv7h = http://apt.connectify.me/pool/main/s/speedify/speedify_11.8.0-10224_armhf.deb
-	md5sums_armv7h = 21498b3c58a5fab3344dca2a42b3e228
+	md5sums_armv7h = SKIP
 
 pkgname = speedify
 
