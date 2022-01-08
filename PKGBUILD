@@ -3,7 +3,7 @@
 
 pkgname=xdg-environment
 pkgver=1.0.0
-pkgrel=1
+pkgrel=3
 arch=(any)
 pkgdesc='Provides default values for XDG environment variables.'
 url='https://wiki.archlinux.org/title/XDG_Base_Directory'
