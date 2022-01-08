@@ -1,6 +1,6 @@
 pkgbase = metronomek
 	pkgdesc = Metronome that works and sounds similar to mechanical devices but with all goods of computer program.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://metronomek.sourceforge.io/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = metronomek
 	depends = shared-mime-info
 	optdepends = libpulse: for PulseAudio
 	optdepends = alsa-lib: for ALSA
-	source = https://sourceforge.net/projects/metronomek/files/Metronomek-0.5.1/metronomek-0.5.1-source.tar.bz2
-	sha256sums = 65df968435b340df26923bc90255be8193791ba03b39a63f21e8da021aefcb12
+	source = https://sourceforge.net/projects/metronomek/files/Metronomek-0.6.0/metronomek-0.6.0-source.tar.bz2
+	sha256sums = ed0b0a2846aa2d6c4cfff294ac8e82148fce6d44a6363af7ca63d32557edfc98
 
 pkgname = metronomek
