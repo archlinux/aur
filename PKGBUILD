@@ -2,7 +2,7 @@
 
 _npmname=neon-cli
 pkgname=nodejs-$_npmname
-pkgver=0.3.1
+pkgver=0.9.1
 pkgrel=0
 pkgdesc="The Neon Command-Line Tool: Build native Node.js plugins with Rust."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('be82c0b57a024080f712abb648abcd2f680f9636')
+sha1sums=('e62527be988e5854d6e342d28365d2eb6dbb28db')
 
 package() {
   cd "$srcdir"
