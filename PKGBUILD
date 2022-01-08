@@ -2,12 +2,12 @@
 
 pkgname=alda-git
 _pkgname=alda
-pkgver=2.0.1.r4.g2b1cb38
+pkgver=2.1.0.r1.ge0fc6be
 pkgrel=1
 pkgdesc='A music programming language for musicians. 🎶'
 arch=('x86_64')
 url='https://github.com/alda-lang/alda'
-license=('EPL')
+license=('custom:EPL2')
 provides=('alda')
 conflicts=('alda')
 depends=('java-environment>=8')
@@ -39,9 +39,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname/bin"
-  install -Dm755 alda \
-    "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm755 alda-player \
-    "${pkgdir}/usr/bin/${_pkgname}-player"
+  cd "${srcdir}/${_pkgname}/bin"
+  install -Dm755 alda "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 alda-player "${pkgdir}/usr/bin/${_pkgname}-player"
+  cd "${srcdir}/${_pkgname}"
+  install -Dm444 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
