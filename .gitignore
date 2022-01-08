@@ -1,0 +1,9 @@
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!assistant6.desktop
+!designer6.desktop
+!linguist6.desktop
+!qdbusviewer6.desktop
