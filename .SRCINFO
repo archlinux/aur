@@ -1,14 +1,14 @@
 pkgbase = minetest-build-n-buy
 	pkgdesc = A game inspired by Minecraft Championship's Build Mart, where you have to replicate mini build and to get the materials for them, you have to go 'shopping'.
-	pkgver = 1.2.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://content.minetest.net/packages/j45/build_n_buy/
 	arch = any
 	license = MIT
 	depends = minetest-common
-	noextract = build_n_buy-1.2.1.zip
+	noextract = build_n_buy-1.2.3.zip
 	options = !strip
-	source = build_n_buy-1.2.1.zip::https://content.minetest.net/packages/j45/build_n_buy/releases/10386/download/
-	sha256sums = ead35d430278c08f288dc936194a6f58949fffc72a75f76569d4d468d7c0bf88
+	source = build_n_buy-1.2.3.zip::https://content.minetest.net/packages/j45/build_n_buy/releases/10444/download/
+	sha256sums = 470dc134d7b68ee3f7d11ddacb256edfe0ae9310ee454f0e25c91831279d8e23
 
 pkgname = minetest-build-n-buy
