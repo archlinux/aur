@@ -1,0 +1,13 @@
+pkgbase = karbowanecwallet-bin
+	pkgdesc = Karbowanec Wallet - wallet for Karbo (Karbovanets) cryptocurrency
+	pkgver = 1.7.6
+	pkgrel = 1
+	url = https://karbo.io
+	arch = x86_64
+	license = custom
+	depends = qt5-networkauth
+	depends = openssl
+	source = karbowanecwallet-bin-1.7.6.deb::https://github.com/seredat/karbowanecwallet/releases/download/v.1.7.6/Karbo-wallet-ubuntu-20.04-v.1.7.6.tar.gz
+	sha256sums = FBBE12856B56A25DE3AD710DD22449FDDBACA88209408BE67B11F26A5C43E0CD
+
+pkgname = karbowanecwallet-bin
