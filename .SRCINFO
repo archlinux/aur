@@ -1,16 +1,14 @@
 pkgbase = epy-git
 	pkgdesc = CLI Ebook Reader
-	pkgver = r203.fcbfeab
+	pkgver = 2022.1.8.r204.c1f9b4e
 	pkgrel = 1
 	url = https://github.com/wustho/epy
 	arch = any
 	license = GPL3
-	makedepends = git
 	makedepends = python-setuptools
-	depends = python
 	provides = epy
 	conflicts = epy
 	source = git+https://github.com/wustho/epy.git
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = epy-git
