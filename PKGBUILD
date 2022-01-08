@@ -16,7 +16,7 @@ source_x86_64=(
 )
 sha256sums_x86_64=(
 	'679830454f9d84d1e6f77dbbc11b9c1acedbaba9a9d889aa83b32a1e82e46a78'
-	SKIP
+	'f88a0de961dddc3410a201b6174c54190fdd912310df24ea8292c675981a39cd'
 )
 
 package() {
