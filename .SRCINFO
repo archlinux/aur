@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-dock-from-dash-git
 	pkgdesc = A simple dock for the GNOME Shell that uses its native dash.
-	pkgver = r24.14e139f
+	pkgver = r27.52aeb23
 	pkgrel = 1
 	url = https://github.com/fthx/dock-from-dash
 	arch = any
