@@ -28,16 +28,17 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   _builddate=$(date -u +%m/%d/%Y)
   go build -o build -trimpath -buildmode=pie -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" -X main.version=v${pkgver} -X main.build=${_builddate} -X main.usageMode=prod -s -w" -modcacherw ./cmd/glab/main.go
+
+  "./build/main" completion -s bash | install -Dm644 /dev/stdin "share/bash-completion/completions/${_realpkgname}"
+  "./build/main" completion -s zsh | install -Dm644 /dev/stdin "share/zsh/site-functions/_${_realpkgname}"
+  "./build/main" completion -s fish | install -Dm644 /dev/stdin "share/fish/vendor_completions.d/${_realpkgname}.fish"
 }
 
 package() {
   cd "${_realpkgname}-$pkgver"
   install -Dm755 build/main "$pkgdir"/usr/bin/${_realpkgname}
   install -Dm644 $srcdir/${_realpkgname}-$pkgver/LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -dm 755 "${pkgdir}/usr/share/bash-completion/completions" \
-                  "${pkgdir}/usr/share/zsh/site-functions" \
-                 "${pkgdir}/usr/share/fish/vendor_completions.d"
-  "${pkgdir}/usr/bin/${_realpkgname}" completion -s bash > "${pkgdir}/usr/share/bash-completion/completions/${_realpkgname}"
-  "${pkgdir}/usr/bin/${_realpkgname}" completion -s zsh > "${pkgdir}/usr/share/zsh/site-functions/_${_realpkgname}"
-  "${pkgdir}/usr/bin/${_realpkgname}" completion -s fish > "${pkgdir}/usr/share/fish/vendor_completions.d/${_realpkgname}.fish"
+
+  mkdir -p "${pkgdir}/usr"
+  cp -r share/ "${pkgdir}/usr"
 }
