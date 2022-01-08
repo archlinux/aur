@@ -1,0 +1,13 @@
+pkgbase = python2-ply
+	pkgdesc = Implementation of lex and yacc parsing tools
+	pkgver = 3.11
+	pkgrel = 1
+	url = https://www.dabeaz.com/ply/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.io/packages/source/p/ply/ply-3.11.tar.gz
+	sha512sums = 37e39a4f930874933223be58a3da7f259e155b75135f1edd47069b3b40e5e96af883ebf1c8a1bbd32f914a9e92cfc12e29fec05cf61b518f46c1d37421b20008
+
+pkgname = python2-ply
