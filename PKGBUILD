@@ -3,7 +3,7 @@
 pkgname='alacritty-xwayland'
 pkgdesc='run alacritty with xwayland (#4739)'
 pkgver='1.0.0'
-pkgrel='0'
+pkgrel='1'
 arch=('any')
 url='https://github.com/alacritty/alacritty/issues/4739'
 depends=('alacritty' 'sed')

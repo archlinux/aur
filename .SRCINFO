@@ -1,8 +1,9 @@
 pkgbase = alacritty-xwayland
 	pkgdesc = run alacritty with xwayland (#4739)
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/alacritty/alacritty/issues/4739
+	install = alacritty-xwayland.install
 	arch = any
 	depends = alacritty
 	depends = sed
