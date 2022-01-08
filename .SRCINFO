@@ -1,0 +1,14 @@
+pkgbase = prometheus-nextcloud-exporter
+	pkgdesc = Prometheus exporter for Nextcloud metrics
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/xperimental/nextcloud-exporter
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = prometheus-nextcloud-exporter-0.4.0.tar.gz::https://github.com/xperimental/nextcloud-exporter/archive/v0.4.0.tar.gz
+	sha512sums = dc81034bc0bc61b267abdf216f51db86b8f0e215c259bea8dfed3d65774e175f46d27f4b044ce2eed20faca1f39a2fe6945c2cf2029d1cc78131e23ebd0fbb7a
+	b2sums = f15b03c7de45c5c31438d9dd31e1556a9b381822b5a4de03beaebaa20f11d6ee62c9ee662624c07d54518f775188a084afbe6c16a20e9ef635fe3b7e6d7fa1b4
+
+pkgname = prometheus-nextcloud-exporter
