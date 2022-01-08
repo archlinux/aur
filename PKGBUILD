@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-speex
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="OCaml bindings to libspeex"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('7cc69b5e549781cca2f4c7ec30faba313390f6dd5e3d056fd55f29ea71b9133f')
+sha256sums=('396b48f6b7178a76c1bc64655d13609db26e545c7674e5063faba7866c57a57e')
