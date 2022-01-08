@@ -3,8 +3,8 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.5.0.r28.7e5d809
-pkgrel=1
+pkgver=1.5.0.r29.d264bb0
+pkgrel=2
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -14,7 +14,9 @@ makedepends=('git' 'go' 'python-setuptools'
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
          'python-pyinotify' 'python-slugify' 'python-pyqt5')
 optdepends=('logrotate: for logfile rotation support'
-            'opensnitch-ebpf-module-git: eBPF process monitor method (non-hardened kernel only)')
+            'opensnitch-ebpf-module-git: eBPF process monitor method (non-hardened kernel only)'
+            'python-notify2: desktop notifications'
+            'python-pyasn: display network names')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}d/default-config.json")
@@ -33,6 +35,8 @@ prepare() {
 
   cd "$srcdir/${pkgname%-git}"
   sed -i 's|local/bin|bin|g' "daemon/${pkgname%-git}d.service"
+  sed -i 's|/usr/lib/python3/dist-packages/data/|/usr/lib/python3.10/site-packages/pyasn/data/|g' ui/opensnitch/utils.py
+  sed -i 's|/usr/lib/python3/dist-packages/|/usr/lib/python3.10/site-packages/|g' ui/bin/opensnitch-ui
 }
 
 build() {
