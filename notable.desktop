@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Notable
+Exec=notable
+Terminal=false
+Type=Application
+Icon=notable
+StartupWMClass=Notable
+Comment=The Markdown-based note-taking app that doesn’t suck.
+MimeType=x-scheme-handler/notable;
+Categories=Utility;
