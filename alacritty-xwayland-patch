@@ -1,0 +1,5 @@
+#!/bin/sh
+
+path="/usr/share/applications/Alacritty.desktop"
+sed -i "s|^Exec=|Exec=env WAYLAND_DISPLAY= |" $path
+

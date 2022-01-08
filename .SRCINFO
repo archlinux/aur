@@ -1,0 +1,14 @@
+pkgbase = alacritty-xwayland
+	pkgdesc = run alacritty with xwayland (#4739)
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/alacritty/alacritty/issues/4739
+	arch = any
+	depends = alacritty
+	depends = sed
+	source = alacritty-xwayland.hook
+	source = alacritty-xwayland-patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = alacritty-xwayland

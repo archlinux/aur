@@ -1,0 +1,18 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Target = /usr/share/applications/alacritty.desktop
+Type = Path
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Target = alacritty
+Type = Package
+
+[Action]
+Description = [alacritty-xwayland] Patching alacritty.desktop...
+Exec = /usr/share/libalpm/scripts/alacritty-xwayland-patch
+When = PostTransaction
+NeedsTargets
+
