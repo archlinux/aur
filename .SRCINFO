@@ -1,7 +1,7 @@
 pkgbase = sirula-git
 	pkgdesc = An app launcher for wayland
 	pkgver = r59.bf216d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DorianRudolph/sirula
 	arch = x86_64
 	license = GPL3

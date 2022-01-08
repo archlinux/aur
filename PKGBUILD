@@ -3,7 +3,7 @@
 pkgname=sirula-git
 _pkgname=sirula
 pkgver=r59.bf216d7
-pkgrel=1
+pkgrel=2
 pkgdesc='An app launcher for wayland'
 url='https://github.com/DorianRudolph/sirula'
 arch=('x86_64')
@@ -22,6 +22,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
