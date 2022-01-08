@@ -5,6 +5,7 @@
 4. `makepkg --install --syncdeps --force` # --clean deletes src/ and pkg/ after build
 5. Generate .SRCINFO (mandatory) with `makepkg --printsrcinfo > .SRCINFO`
 6. `git add --all; git commit -m "Update to version <version>"; git push`
+7. `git push aur main:master`
 
 
 ## Rationale of DEB instead of RPM
