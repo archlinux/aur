@@ -1,0 +1,27 @@
+pkgbase = swaync
+	pkgdesc = A simple notificaion daemon with a GTK panel for checking previous notifications like other DE's
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ErikReider/SwayNotificationCenter
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = meson
+	makedepends = git
+	depends = gtk3>=3.22
+	depends = gtk-layer-shell>=0.1
+	depends = dbus
+	depends = glib2>=2.50
+	depends = vala-dbus-binding-tool-git>=1.0
+	depends = gobject-introspection>=1.68
+	depends = libgee>=0.20
+	depends = json-glib>=1.0
+	depends = libhandy>=1.4.0
+	provides = swaync
+	provides = swaync-client
+	conflicts = swaync
+	conflicts = swaync-client
+	source = SwayNotificationCenter-0.3.tar.gz::https://github.com/ErikReider/SwayNotificationCenter/archive/v0.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = swaync
