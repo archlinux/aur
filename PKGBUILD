@@ -7,6 +7,7 @@ pkgrel='0'
 arch=('any')
 url='https://github.com/alacritty/alacritty/issues/4739'
 depends=('alacritty' 'sed')
+install="${pkgname}.install"
 source=("${pkgname}.hook" "${pkgname}-patch")
 md5sums=('SKIP' 'SKIP')
 
