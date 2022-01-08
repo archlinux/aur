@@ -1,6 +1,6 @@
 pkgbase = reaper-bin
 	pkgdesc = A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset
-	pkgver = 6.43
+	pkgver = 6.44
 	pkgrel = 1
 	url = https://reaper.fm
 	arch = x86_64
@@ -14,17 +14,17 @@ pkgbase = reaper-bin
 	depends = aribb24
 	optdepends = jack
 	optdepends = pulseaudio
-	provides = reaper=6.43
+	provides = reaper=6.44
 	provides = lv2-host
 	provides = vst-host
 	provides = vst3-host
-	source_x86_64 = https://reaper.fm/files/6.x/reaper643_linux_x86_64.tar.xz
-	sha256sums_x86_64 = 550f75a71f586566ebc37d5f150c52f87ffa7ec8e42c3ad853a16d23c792aba1
-	source_i686 = https://reaper.fm/files/6.x/reaper643_linux_i686.tar.xz
-	sha256sums_i686 = 8888cae82cd3aee21463497b34eab8d197e155edfa711bdc5835078f15562397
-	source_aarch64 = https://reaper.fm/files/6.x/reaper643_linux_aarch64.tar.xz
-	sha256sums_aarch64 = c7acf9f87ec04968ae34bd2668d18ad39566269b477451918857fa0e0c25643c
-	source_armv7l = https://reaper.fm/files/6.x/reaper643_linux_armv7l.tar.xz
-	sha256sums_armv7l = 42d94365875b0eafe59c82733c9313019032db05db175a144d56a55b9d416413
+	source_x86_64 = https://reaper.fm/files/6.x/reaper644_linux_x86_64.tar.xz
+	sha256sums_x86_64 = 729e3b5f8d9fd3d54316881641a06fa5dc381bb495adb2b1e0ff999d56cd53c7
+	source_i686 = https://reaper.fm/files/6.x/reaper644_linux_i686.tar.xz
+	sha256sums_i686 = ea28242b69496259eec3a1272cedd96342bdf61a729888ab2039d1f8924820f6
+	source_aarch64 = https://reaper.fm/files/6.x/reaper644_linux_aarch64.tar.xz
+	sha256sums_aarch64 = 102f1314173a6504b72a906e3f0f151a59cc0a0cf28f5a22f26cda450696e864
+	source_armv7l = https://reaper.fm/files/6.x/reaper644_linux_armv7l.tar.xz
+	sha256sums_armv7l = 356c14fed1304e26293d888acceafa0c3ff3551a8e587934eaf25b4f003bfd45
 
 pkgname = reaper-bin
