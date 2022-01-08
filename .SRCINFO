@@ -1,12 +1,12 @@
 pkgbase = roomeqwizard
 	pkgdesc = A room acoustics analysis software for measuring and analysing room and loudspeaker responses
-	pkgver = 5.19
+	pkgver = 5.20.4
 	pkgrel = 1
 	url = https://www.roomeqwizard.com
 	arch = any
 	license = custom
 	depends = jre-openjdk
-	source = https://www.roomeqwizard.com/installers/REW_linux_5_19.sh
-	sha512sums = 9fa847163d89916585953a454ada58f2c940298fa6fedd7a5fc0290215691662f5ccd49d52205765e77e5a867a34050d71f82023498b646a6a329d1ed052b12f
+	source = https://www.roomeqwizard.com/installers/REW_linux_5_20_4.sh
+	sha512sums = 6e130a77e7adc8ff13a2d99e5aadad19868b38ff08ed1d29e9f35223a712c1fe73fa7345a5fdf6b510d451688f685ab5c7aa12537dabc182a110b68bcc3b430b
 
 pkgname = roomeqwizard

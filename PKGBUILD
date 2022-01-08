@@ -3,8 +3,8 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard
-pkgver=5.19
-_pkgver=5_19
+pkgver=5.20.4
+_pkgver=5_20_4
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://www.roomeqwizard.com"
 license=('custom')
 depends=('jre-openjdk')
 source=("https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
-sha512sums=('9fa847163d89916585953a454ada58f2c940298fa6fedd7a5fc0290215691662f5ccd49d52205765e77e5a867a34050d71f82023498b646a6a329d1ed052b12f')
+sha512sums=('6e130a77e7adc8ff13a2d99e5aadad19868b38ff08ed1d29e9f35223a712c1fe73fa7345a5fdf6b510d451688f685ab5c7aa12537dabc182a110b68bcc3b430b')
 
 package() {
   sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/opt/$pkgname"
@@ -24,7 +24,8 @@ package() {
 
   ln -s "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   mv "$pkgdir/opt/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/"
-  mv "$pkgdir/opt/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+  cp -L "$pkgdir/opt/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+  rm "$pkgdir/opt/$pkgname/REW.desktop"
 
   # repair
   sed "s%$pkgdir%%g" -i "$pkgdir/opt/$pkgname/.install4j/response.varfile"
