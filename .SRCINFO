@@ -1,6 +1,6 @@
 pkgbase = paspio-git
 	pkgdesc = A password entropy calculator and library.
-	pkgver = 0.3.1.49a335f
+	pkgver = 0.3.1.68d621e
 	pkgrel = 1
 	url = https://git.sr.ht/~grtcdr/paspio
 	arch = x86_64
