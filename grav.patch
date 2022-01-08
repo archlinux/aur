@@ -26,8 +26,8 @@
          if (!class_exists(ZipArchive::class)) {
              $io->title('GPM Self Upgrade');
              $io->error('php-zip extension needs to be enabled!');
---- a/webserver-configs/nginx.conf	2021-05-26 21:06:53.532804914 +0200
-+++ b/webserver-configs/nginx.conf	2021-05-27 10:25:14.985023880 +0200
+--- a/webserver-configs/nginx.conf	2022-01-04 19:02:30.000000000 +0100
++++ b/webserver-configs/nginx.conf	2022-01-04 22:30:17.079302244 +0100
 @@ -1,10 +1,61 @@
  server {
 -    #listen 80;
@@ -108,7 +108,7 @@
      location ~* /(\.git|cache|bin|logs|backup|tests)/.*$ { return 403; }
      # deny running scripts inside core system folders
 @@ -25,20 +83,32 @@
-     location ~* /user/.*\.(txt|md|yaml|yml|php|pl|py|cgi|twig|sh|bat)$ { return 403; }
+     location ~* /user/.*\.(txt|md|json|yaml|yml|php|pl|py|cgi|twig|sh|bat)$ { return 403; }
      # deny access to specific files in the root folder
      location ~ /(LICENSE\.txt|composer\.lock|composer\.json|nginx\.conf|web\.config|htaccess\.txt|\.htaccess) { return 403; }
 +    # deny all files and folder beginning with a dot (hidden files & folders)
