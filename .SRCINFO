@@ -1,6 +1,6 @@
 pkgbase = wine-wl-git
 	pkgdesc = A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland branch)
-	pkgver = wine.6.0.rc1.r9223.gbbb26438eb5
+	pkgver = 6.0rc1.r9396.g95f0154c96a
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
@@ -143,8 +143,8 @@ pkgbase = wine-wl-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=wine.6.0.rc1.r9223.gbbb26438eb5
-	provides = wine64=wine.6.0.rc1.r9223.gbbb26438eb5
+	provides = wine=6.0rc1.r9396.g95f0154c96a
+	provides = wine64=6.0rc1.r9396.g95f0154c96a
 	conflicts = wine
 	conflicts = wine64
 	options = staticlibs
