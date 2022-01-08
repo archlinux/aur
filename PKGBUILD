@@ -1,22 +1,21 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=difftastic
-pkgver=0.11.0
-_pkgver="0.11.0"
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="An experimental structured diff tool that compares files based on their syntax"
 arch=("x86_64")
 url="https://github.com/Wilfred/difftastic"
 license=("MIT")
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha256sums=('d59179e6279dffe7b2aebc003db409a7adfc5c6acfa0576157c47e3e5536808a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('a27a9bce377df95b764f70c05f475fd70b35bfccf45b60b997e9439da65e3725')
 
 build() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
   cargo build --release --locked
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$_pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/$pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/difft" "$pkgdir/usr/bin/difft"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

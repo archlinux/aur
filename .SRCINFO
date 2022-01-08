@@ -1,12 +1,12 @@
 pkgbase = difftastic
 	pkgdesc = An experimental structured diff tool that compares files based on their syntax
-	pkgver = 0.11.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/Wilfred/difftastic
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = difftastic-0.11.0.tar.gz::https://github.com/Wilfred/difftastic/archive/0.11.0.tar.gz
-	sha256sums = d59179e6279dffe7b2aebc003db409a7adfc5c6acfa0576157c47e3e5536808a
+	source = difftastic-0.15.0.tar.gz::https://github.com/Wilfred/difftastic/archive/0.15.0.tar.gz
+	sha256sums = a27a9bce377df95b764f70c05f475fd70b35bfccf45b60b997e9439da65e3725
 
 pkgname = difftastic
