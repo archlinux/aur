@@ -1,8 +1,0 @@
---- .gitmodules	2021-10-28 19:35:47.742081378 +0200
-+++ .gitmodules.patch	2021-10-28 19:35:38.349979076 +0200
-@@ -3,4 +3,4 @@
- 	url = https://github.com/nemomobile/qtdbusextended.git
- [submodule "lib/qtmpris"]
- 	path = lib/qtmpris
--	url = https://git.merproject.org/mer-core/qtmpris
-+	url = https://git.sailfishos.org/mer-core/qtmpris

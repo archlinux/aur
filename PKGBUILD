@@ -3,8 +3,8 @@
 
 pkgname=qtwebflix-git
 _gitname=qtwebflix
-pkgver=0.1.r181.g5fc1e15
-pkgrel=2
+pkgver=0.1.r184.g3741139
+pkgrel=1
 pkgdesc='Standalone HD Netflix Browser using qt5-webengine (also supports Amazon prime, HBO Go, Hulu, Crunchy Roll)'
 arch=('any')
 url='https://github.com/gort818/qtwebflix'
@@ -13,26 +13,21 @@ depends=('xdg-utils' 'qt5-webengine' 'chromium-widevine')
 optdepends=('pepper-flash: Needed for some streaming services')
 makedepends=('git')
 source=("git+${url}.git"
-        "${_gitname}.desktop"
-        "gitmodules.patch")
+        "${_gitname}.desktop")
        
 sha256sums=('SKIP'
-            '7b15975f63818493b965926c336e37b8716f9550d23058fc9057004d3f7ffb2f'
-            '84bf20e7bea6f5b0b33f0b04516bcf2d8833ce6b17bd131eaeb7b941d3bd5705')
+            '7b15975f63818493b965926c336e37b8716f9550d23058fc9057004d3f7ffb2f')
        
 pkgver() {
    cd ${srcdir}/${_gitname}
    
-   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
    
 prepare() {
    cd ${srcdir}/${_gitname}
-
-   patch --strip=1 .gitmodules < ${srcdir}/gitmodules.patch
-   
+     
    git submodule init
    git submodule update
    
