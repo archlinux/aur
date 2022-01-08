@@ -1,0 +1,13 @@
+pkgbase = python-cherche
+	pkgdesc = Neural Search for middle sized corpus
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://raphaelsty.github.io/cherche/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/raphaelsty/cherche/archive/refs/tags/0.0.1.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-cherche
