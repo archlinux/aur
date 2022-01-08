@@ -1,7 +1,7 @@
 pkgbase = tau-editor
 	pkgdesc = GTK frontend for the Xi text editor, written in Rust
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Tau
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tau-editor
 	depends = libhandy0
 	depends = vte3
 	depends = xi-core
-	source = https://gitlab.gnome.org/World/Tau/uploads/b5f24cd692ec0c2a2c2be460fffaf505/tau-0.12.0.tar.xz
+	source = https://gitlab.gnome.org/World/Tau/uploads/14037a7f98f475d2497b74bd74a0430e/tau-0.12.0.tar.xz
 	sha256sums = a14e4c3511fa51cc051c33ad04a3989b93c6aa2405e8b0f5ac05970fe5d95449
 
 pkgname = tau-editor

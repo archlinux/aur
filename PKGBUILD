@@ -4,7 +4,7 @@
 _pkgname=Tau
 pkgname=tau-editor
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK frontend for the Xi text editor, written in Rust'
 arch=(x86_64 i686 armv7h aarch64)
 url="https://gitlab.gnome.org/World/$_pkgname"
@@ -15,7 +15,8 @@ depends=(libhandy0
 makedepends=(meson
              rust)
 _archive="${_pkgname,,}-$pkgver"
-source=("$url/uploads/b5f24cd692ec0c2a2c2be460fffaf505/$_archive.tar.xz")
+_uploadhash=14037a7f98f475d2497b74bd74a0430e
+source=("$url/uploads/$_uploadhash/$_archive.tar.xz")
 sha256sums=('a14e4c3511fa51cc051c33ad04a3989b93c6aa2405e8b0f5ac05970fe5d95449')
 
 prepare() {
@@ -24,10 +25,10 @@ prepare() {
 }
 
 build() {
+		# -Dxi-core=system \
+		# -Dlibhandy=enabled \
 	arch-meson \
-        -Dxi-core=system \
-        -Dlibhandy=enabled \
-        "$_archive" build
+		"$_archive" build
 	meson compile -C build
 }
 
