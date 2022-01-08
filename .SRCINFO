@@ -1,7 +1,7 @@
 pkgbase = ocaml-ao
 	pkgdesc = OCaml libao bindings
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/savonet/ocaml-ao
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = ocaml-ao
 	depends = ocaml
 	depends = libao
 	options = !strip
-	source = https://github.com/savonet/ocaml-ao/archive/v0.2.3.tar.gz
-	sha256sums = 188f781ef31497444475ced4632ebe44e3d80ddc5717f1f6cd8e1080a43c0851
+	source = https://github.com/savonet/ocaml-ao/archive/v0.2.4.tar.gz
+	sha256sums = 0b845e7c04440de3efda9e0cd1e2b115fe069be3fb3ddba5bfd8fed73901a66e
 
 pkgname = ocaml-ao
-

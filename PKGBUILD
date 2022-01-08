@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ao
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="OCaml libao bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ao"
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('188f781ef31497444475ced4632ebe44e3d80ddc5717f1f6cd8e1080a43c0851')
+sha256sums=('0b845e7c04440de3efda9e0cd1e2b115fe069be3fb3ddba5bfd8fed73901a66e')
