@@ -1,7 +1,7 @@
 pkgbase = wayfire-git
 	pkgdesc = 3D wayland compositor
 	pkgver = 0.7.2.r20220103.0a921f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WayfireWM/wayfire
 	arch = x86_64
 	license = MIT
