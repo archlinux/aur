@@ -1,7 +1,7 @@
 # Maintainer: TeaHouseLab(aka. Tsingkwai) <tsingkwai at ruzh dot top>
 pkgname="ctpkg"
-pkgver="31"
-pkgrel="31"
+pkgver="49"
+pkgrel="1"
 pkgdesc="A bridge for different package managers , and a userland package manager included , written in progynosh(fish)"
 arch=("x86_64")
 url="https://ruzhtw.top/pages/projects/CenterLinux/CTPM"
