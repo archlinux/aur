@@ -1,8 +1,8 @@
 pkgbase = rum
 	pkgdesc = Game library management
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
-	url = https://notabug.org/johncena141/rum
+	url = https://johncena141.eu.org:8141/johncena141/rum
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
@@ -19,7 +19,7 @@ pkgbase = rum
 	depends = libappindicator-gtk3
 	depends = libvips
 	depends = udev
-	source = rum-0.6.0.tar.gz::https://notabug.org/johncena141/rum/archive/v0.6.0.tar.gz
-	md5sums = 58e3d7436d335f161920b97e0074694c
+	source = rum-0.7.0.tar.gz::https://johncena141.eu.org:8141/johncena141/rum/archive/v0.7.0.tar.gz
+	md5sums = 2240ce03f07e8a8001fc17c498914216
 
 pkgname = rum

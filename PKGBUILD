@@ -1,14 +1,14 @@
 pkgname='rum'
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Game library management'
 arch=('x86_64')
-url='https://notabug.org/johncena141/rum'
+url='https://johncena141.eu.org:8141/johncena141/rum'
 license=('GPL3')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips udev)
 makedepends=(cargo npm git squashfs-tools patchelf)
-source=("$pkgname-$pkgver.tar.gz::https://notabug.org/johncena141/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('58e3d7436d335f161920b97e0074694c')
+source=("$pkgname-$pkgver.tar.gz::https://johncena141.eu.org:8141/johncena141/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('2240ce03f07e8a8001fc17c498914216')
 
 build() {
     cd "$srcdir/$pkgname"
