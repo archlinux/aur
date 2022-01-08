@@ -5,10 +5,10 @@ pkgver=0.9.11
 pkgrel=2
 pkgdesc="The Legacy version of Amazee.io's local docker development tool 'Pygmy' written in Ruby."
 arch=('x86_64')
-url="https://github.com/amazeeio/pygmy-legacy"
+url="https://github.com/pygmystack/pygmy-legacy"
 license=('MIT')
 depends=('ruby2.6')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amazeeio/pygmy-legacy/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pygmystack/pygmy-legacy/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('c06567ac2fa7b6e21a905d8e9d6d46efe476e654b285f0baaaa1459a867bd889c5f2852931d724d3e50f2f48f17252ccc730ef0734e343114b4e872a525097d6')
 
 build() {
