@@ -1,13 +1,13 @@
 pkgbase = googleplay
 	pkgdesc = Download APK from Google Play or send API requests
-	pkgver = 1.5.2
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/89z/googleplay
 	arch = i686
 	arch = x86_64
 	license = OSL
 	makedepends = go
-	source = googleplay-1.5.2.tar.gz::https://github.com/89z/googleplay/archive/refs/tags/v1.5.2.tar.gz
-	md5sums = 3ca82b02557c01208a613ec03911d82f
+	source = googleplay-1.5.4.tar.gz::https://github.com/89z/googleplay/archive/refs/tags/v1.5.4.tar.gz
+	md5sums = ccd84c8aa9256651a5ccc3c029aa0601
 
 pkgname = googleplay
