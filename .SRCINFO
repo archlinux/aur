@@ -1,6 +1,6 @@
 pkgbase = netease-musicbox-git
 	pkgdesc = A sexy command line interface musicbox for NetEase based on Python
-	pkgver = 0.3.1.r2.g60deb52
+	pkgver = 0.3.1.r3.ga0a6969
 	pkgrel = 3
 	url = https://github.com/darknessomi/musicbox
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = netease-musicbox-git
 	depends = python-requests-cache
 	depends = python-importlib-metadata
 	depends = python-url-normalize
+	depends = python-cattrs
+	depends = python-levenshtein
 	optdepends = aria2: music caching
 	optdepends = libnotify: notifications
 	optdepends = qt5-base: lyrics support
