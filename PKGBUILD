@@ -1,6 +1,6 @@
 # Maintainer: Elijah Lynn <elijah@elijahlynn.net>
 pkgname=ultraworking-headquarters-bin
-pkgver=0.19.2
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Ultraworking Headquarters app"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('curl')
 options=('!strip' '!emptydirs')
 # This file is download to the git root directory and symlinked to a relative ./src/ directory.
 source=("https://github.com/Ultraworking/headquarters/releases/download/v${pkgver}/headquarters_${pkgver}_amd64.deb")
-sha512sums=('a0a5afa74af7b2b14fccbe7a1507af9d873970ccef2c07383b1419020d5f2bfe2d9187095c66822784b961b82c6d7dc3d4df68e9918b2cd235b99469c4a3373b')
+sha512sums=('658712bb067139ee71f38d4526f43ff2e03e600e14e59faed34c1f38b384115c6eea24ebf357ae6c1c3f18fec696a686ca935ac22d97e2cf165f1e41f467f113')
 
 # pkgdir = /home/elijah/Projects/aur-ultraworking-headquarters-bin/pkg/ultraworking-headquarters-bin
 # CWD = /home/elijah/Projects/aur-ultraworking-headquarters-bin/src
