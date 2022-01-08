@@ -1,0 +1,13 @@
+pkgbase = python2-asn1crypto
+	pkgdesc = Python ASN.1 library with a focus on performance and a python2ic API
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/wbond/asn1crypto
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-asn1crypto-1.4.0.tar.gz::https://github.com/wbond/asn1crypto/archive/1.4.0.tar.gz
+	sha512sums = 989e4e0650252c29477d71263549b99f2c51c87f0768c20264b3de65f32edd8e7922e8af23bb1a7e29567a4ad8c4c5d596cdf7db3c766352c7f19d4f93361cd0
+
+pkgname = python2-asn1crypto
