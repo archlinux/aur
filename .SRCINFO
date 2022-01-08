@@ -1,14 +1,14 @@
 pkgbase = fortune-mod-zh
 	pkgdesc = Chinese poems for fortune-mod
-	pkgver = 2.8
+	pkgver = 2.98
 	pkgrel = 1
 	url = https://salsa.debian.org/chinese-team/fortunes-zh
 	arch = any
 	groups = fortune-mods
 	license = GPL
 	depends = fortune-mod
-	source = https://salsa.debian.org/chinese-team/fortunes-zh/-/archive/2.8/fortunes-zh-2.8.tar.gz
-	md5sums = 3fff0e8cb73285ce76febdbafc7dee4a
+	source = https://salsa.debian.org/chinese-team/fortunes-zh/-/archive/debian/2.98/fortunes-zh-debian-2.98.tar.gz
+	md5sums = ce11ddc5ff37020b75544d3b518d743b
 
 pkgname = fortune-mod-zh
 
