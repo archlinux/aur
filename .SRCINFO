@@ -5,9 +5,8 @@ pkgbase = roomeqwizard
 	url = https://www.roomeqwizard.com
 	arch = any
 	license = custom
-	depends = java-environment
+	depends = jre-openjdk
 	source = https://www.roomeqwizard.com/installers/REW_linux_5_19.sh
 	sha512sums = 9fa847163d89916585953a454ada58f2c940298fa6fedd7a5fc0290215691662f5ccd49d52205765e77e5a867a34050d71f82023498b646a6a329d1ed052b12f
 
 pkgname = roomeqwizard
-

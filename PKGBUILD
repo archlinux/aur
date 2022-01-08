@@ -10,7 +10,7 @@ pkgdesc="A room acoustics analysis software for measuring and analysing room and
 arch=('any')
 url="https://www.roomeqwizard.com"
 license=('custom')
-depends=('java-environment')
+depends=('jre-openjdk')
 source=("https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
 sha512sums=('9fa847163d89916585953a454ada58f2c940298fa6fedd7a5fc0290215691662f5ccd49d52205765e77e5a867a34050d71f82023498b646a6a329d1ed052b12f')
 
