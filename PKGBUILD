@@ -1,32 +1,29 @@
 # Maintainer: taotieren <admin@taotieren.com>
+# Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname=rustdesk-bin
 pkgver=1.1.8
-pkgrel=2
-pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk! "
+pkgrel=3
+pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('x86_64')
 url="https://github.com/rustdesk/rustdesk"
-license=('GPLv3')
-provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname%-bin} ${pkgname/bin/git} )
-#replaces=(${pkgname})
+license=('GPL3')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname}" "${pkgname%-bin}" "${pkgname/bin/git}")
+# TODO: add dep on libsciter-gtk, remove libsciter-gtk.so from this package
 depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
-# 'libsciter-gtk-bin'
-makedepends=('unzip' 'zip' 'pkg-config' 'make' 'git' 'cmake' 'gcc' 'curl' 'wget' 'rust' 'yasm' 'nasm' 'clang')
-backup=()
 options=('!strip')
-install=${pkgname}.install
-source=("https://ghproxy.com/https://github.com/rustdesk/rustdesk/releases/download/${pkgver}/rustdesk-${pkgver}-manjaro-arch.pkg.tar.zst"
-        "${pkgname}.install")
-sha256sums=('8fe8f3179ebdc8660ffdf70c39386894dc25780183101ef464d99fc97eb881d3'
-            'b6cf25e231687a6caf178a87113b74482354aea2f8a3f6b8b5800169ce55fb10')
-
-noextract=("rustdesk-${pkgver}-manjaro-arch.pkg.tar.zst")
+source=("$url/releases/download/${pkgver}/rustdesk-${pkgver}-manjaro-arch.pkg.tar.zst")
+sha256sums=('8fe8f3179ebdc8660ffdf70c39386894dc25780183101ef464d99fc97eb881d3')
 
 prepare() {
-    bsdtar -xf "${srcdir}/rustdesk-${pkgver}-manjaro-arch.pkg.tar.zst"
+    sed -i "s/^\(Icon=\).*$/\1rustdesk/" "$srcdir/usr/share/rustdesk/files/rustdesk.desktop"
 }
 
 package() {
-     cp -r "${srcdir}/usr" "${pkgdir}/"
+    install -Dm755 "$srcdir/usr/bin/rustdesk" "$pkgdir/usr/bin/rustdesk"
+    install -Dm755 "$srcdir/usr/lib/rustdesk/libsciter-gtk.so" "$pkgdir/usr/lib/rustdesk/libsciter-gtk.so"
+    install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rustdesk.png"
+    install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.desktop" "$pkgdir/usr/share/applications/rustdesk.desktop"
+    install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.service" "$pkgdir/usr/lib/systemd/system/rustdesk.service"
 }
