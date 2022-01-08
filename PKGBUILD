@@ -1,16 +1,16 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=qbittorrent-enhanced-nox
-pkgver=4.3.9.10
+pkgver=4.4.0.10
 pkgrel=1
 epoch=
-pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
+pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
 url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
 license=('GPL' 'custom')
 groups=()
-depends=('libtorrent-rasterbar>=1:1.2.12' 'qt5-base')
-makedepends=('boost' 'qt5-tools')
+depends=('libtorrent-rasterbar>=1:1.2.14' 'qt6-base')
+makedepends=('cmake' 'boost>1.65.0' 'qt6-tools' 'qt6-svg')
 checkdepends=()
 optdepends=('python: needed for torrent search tab')
 provides=('qbittorrent-nox')
@@ -33,17 +33,18 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 build() {
 	cd qBittorrent*$pkgver
 
-	# tell qmake not ot break makepkg's debug/!strip options
-	export QBT_ADD_CONFIG='nostrip'
-
-	./configure --prefix=/usr --disable-gui CXXFLAGS="-std=c++17"
-	make
+	cmake -B build -S . \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DQT6=ON \
+		-DSYSTEMD=ON \
+		-DGUI=OFF
+	cmake --build build
 }
 
 package() {
 	cd qBittorrent*$pkgver
 
-	make INSTALL_ROOT="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 
 	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 	install -Dm644 "$srcdir"/qbittorrent-nox.service "$pkgdir"/usr/lib/systemd/system/qbittorrent-nox.service
