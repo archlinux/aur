@@ -2,7 +2,7 @@
 
 pkgname=iridium-rpm
 pkgver=96.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
@@ -14,7 +14,7 @@ options=('!emptydirs' '!strip')
 
 source=('https://downloads.iridiumbrowser.de/openSUSE_Leap_15.3/iridium-browser-2021.12.96.0-bp153.1636.1.x86_64.rpm')
 
-sha256sums=('d288a2b650fc35d649720948bc875650dc8c43e06a196602be9c8a375b4fd07a')
+sha256sums=('41a7256fefa04f0fec0f80ea4839bc4478aa285a643609aa65c5b38617f610fd')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
