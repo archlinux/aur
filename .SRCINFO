@@ -1,7 +1,7 @@
 pkgbase = cowrie
 	pkgdesc = Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/micheloosterhof/cowrie
 	install = cowrie.install
 	arch = any
@@ -20,9 +20,9 @@ pkgbase = cowrie
 	depends = python-treq
 	depends = python-twisted
 	backup = etc/cowrie/cowrie.cfg
-	source = cowrie-c5e9a6b21c8908e892c2169b33f560ccd1fd98ff.tar.gz::https://github.com/micheloosterhof/cowrie/archive/c5e9a6b21c8908e892c2169b33f560ccd1fd98ff.tar.gz
+	source = cowrie-2.3.0.tar.gz::https://github.com/cowrie/cowrie/archive/v2.3.0.tar.gz
 	source = 0001-patch-service.patch
-	sha512sums = 8b65b90cc8667408b2aa32b46c3c8f351e8061ae00e78cc05e35ece4539cc6ffdeb641bd6a1818c98cbf44d921c9ac378fd1b07b13e9b3ec2336eca0897277fe
+	sha512sums = e49ac55731aa2a0a9e7c996c12da2155893a2eb7956a3ce40e917f828935a4000fc7d1008b78357995758e299d2c31d1f1244550958bd9f6062019b26a4717f9
 	sha512sums = a79904d764829b246fce7691f90d1de7a478985217eb458d441a2fad0aed4558d70eb2d38208d2bfb393bc42f662dba129678fc14765392959d1316c0d1a8dd1
 
 pkgname = cowrie
