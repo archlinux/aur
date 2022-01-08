@@ -2,8 +2,8 @@
 
 _appname=imgbrd-grabber
 pkgname="${_appname}-bin"
-pkgver=7.7.0
-pkgrel=4
+pkgver=7.7.1
+pkgrel=1
 pkgdesc="Unofficial binary installer for ImgBrd Grabber"
 arch=("x86_64")
 depends=('qt5-multimedia' 'qt5-declarative' 'nodejs' 'qt5-networkauth' 'qt5-base' 'krb5')
@@ -12,7 +12,7 @@ license=("Apache-2.0 License")
 options=('!strip')
 conflicts=('imgbrd-grabber-git')
 
-source=("${_appname}.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v${pkgver}/Grabber_v${pkgver}.tar.gz")
+source=("${pkgver}.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v${pkgver}/Grabber_v${pkgver}.tar.gz")
 sha256sums=("SKIP")
 
 package(){
