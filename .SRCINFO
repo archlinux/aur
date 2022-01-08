@@ -1,0 +1,21 @@
+pkgbase = pademelon
+	pkgdesc = A desktop manager for modular Linux desktop setups
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jzbor/pademelon
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	depends = arandr
+	depends = imlib2
+	depends = libinih
+	depends = libx11
+	depends = libxrandr
+	depends = python-gobject
+	depends = xorg-setxkbmap
+	optdepends = moonwm: a good default wm
+	optdepends = pademelon-desktop: applications to make a desktop environment out of pademelon
+	source = pademelon-0.1.0.tar.gz::https://github.com/jzbor/pademelon/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 0d1b88739f40f9849d7ae936fb91cb020cbde2d4e9b9aa29c90173eb8a3e6282
+
+pkgname = pademelon
