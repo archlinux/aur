@@ -4,7 +4,7 @@
 pkgname=gitlab-glab
 _realpkgname=glab
 pkgver=1.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Gitlab Cli tool to help work seamlessly with Gitlab from the command line'
 arch=('x86_64')
 url="https://github.com/profclems/glab"
