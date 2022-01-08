@@ -1,7 +1,7 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
-pkgver=1.29.15.00
+pkgver=1.30.01.00
 pkgrel=1
 pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
@@ -13,13 +13,13 @@ optdepends=(
   'bash-completion: tab completion support'
   'ccache: for Wine native host support'
 )
-source_i686=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable.zip")
-source_x86_64=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-x64.zip")
-sha256sums_i686=('0c38ba3d7832bc72089b9e33c54f7a0550d41858530c29d75e5b1a2e79b77e11')
-sha256sums_x86_64=('766d0b4f15d4e87d0ff498d85812054798776c183e17a31266ed4c66cf098f4c')
+source_i686=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-x86.zip")
+source_x86_64=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-amd64.zip")
+sha256sums_i686=('bc798ed66eff93666dd02466c3e00bcfe557d89c853294b4c1a0ae6476c5d5e5')
+sha256sums_x86_64=('577506ead7a4d1532649f50e7b9a863fc16a54a78f49e87a58350dd24b811977')
 
 prepare(){
-  convert "$srcdir/OpenMPT-$pkgver/mpt.ico" "$srcdir/icon.png"
+  convert "$srcdir/OpenMPT File Icon.ico" "$srcdir/icon.png"
   gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
     --name='OpenMPT' \
     --mimetype='audio/x-mod;audio/x-s3m;audio/x-xm;audio/x-it;audio/x-mptm' \
@@ -30,7 +30,7 @@ package(){
   mkdir -p $pkgdir/usr/share
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/share/bash-completion/completions
-  cp -R $srcdir/OpenMPT-$pkgver $pkgdir/usr/share/openmpt
+  cp -R $srcdir $pkgdir/usr/share/openmpt
   # Since OpenMPT 1.29, portable installations are identified by the presence of the "OpenMPT.portable" file.
   # That file is removed here to keep existing installations configured properly.
   rm $pkgdir/usr/share/openmpt/OpenMPT.portable
