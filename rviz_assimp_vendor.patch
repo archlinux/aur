@@ -1,0 +1,14 @@
+Credit: https://github.com/ros2/ros2/issues/1222#issuecomment-994207211
+diff --git a/rviz_assimp_vendor/rviz_assimp_vendor-extras.cmake.in b/rviz_assimp_vendor/rviz_assimp_vendor-extras.cmake.in
+index 8e41fe66..929f659c 100644
+--- a/rviz_assimp_vendor/rviz_assimp_vendor-extras.cmake.in
++++ b/rviz_assimp_vendor/rviz_assimp_vendor-extras.cmake.in
+@@ -25,7 +25,7 @@ foreach(library IN LISTS ASSIMP_LIBRARIES)
+   if(IS_ABSOLUTE "${library}")
+     list(APPEND rviz_assimp_vendor_LIBRARIES "${library}")
+   else()
+-    find_library(library_abs ${library} PATHS "${ASSIMP_LIBRARY_DIRS}" NO_DEFAULT_PATH)
++    find_library(library_abs assimp)
+     list(APPEND rviz_assimp_vendor_LIBRARIES "${library_abs}")
+   endif()
+ endforeach()

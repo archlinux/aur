@@ -1,20 +1,19 @@
 pkgbase = ros2-git
 	pkgdesc = A set of software libraries and tools for building robot applications (Rolling Distro)
-	pkgver = r224.3d98527
-	pkgrel = 2
+	pkgver = r230.4a36f31
+	pkgrel = 1
 	url = https://docs.ros.org/en/rolling/
 	install = ros2-git.install
 	arch = any
 	license = Apache
 	depends = ros2-arch-deps
+	depends = ros2-pyqt5-sip-compat
+	depends = assimp
 	depends = gmock
 	depends = sip4
-	depends = foonathan_memory
 	source = ros2::git+https://github.com/ros2/ros2#branch=master
-	source = mimick_vendor.patch
-	source = yaml_cpp_vendor.patch
+	source = rviz_assimp_vendor.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 1c097a78a023956fcf877e53ca35e2949a7956045deaf5f7b049a2b237fb391c
 
 pkgname = ros2-git
