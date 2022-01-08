@@ -3,7 +3,7 @@
 _pipname=pySmartDL
 pkgbase=python-pysmartdl
 pkgname=('python-pysmartdl')
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A Smart Download Manager for Python"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/iTaybb/pySmartDL/"
 license=('Public Domain')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('8d3cb06f071f47b10a5f35e3b9d1c1fd')
+sha256sums=('35275d1694f3474d33bdca93b27d3608265ffd42f5aeb28e56f38b906c0c35f4')
 
 package_python-pysmartdl() {
     cd $_pipname-$pkgver 
