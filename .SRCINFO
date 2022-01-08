@@ -1,6 +1,6 @@
 pkgbase = baikal
 	pkgdesc = Lightweight CalDAV+CardDAV server
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = http://sabre.io/baikal/
 	install = baikal.install
@@ -11,10 +11,9 @@ pkgbase = baikal
 	optdepends = mariadb: Alternate database
 	optdepends = php-sqlite: To use the sqlite backend
 	options = !strip
-	source = https://github.com/fruux/Baikal/releases/download/0.8.0/baikal-0.8.0.zip
+	source = https://github.com/fruux/Baikal/releases/download/0.9.0/baikal-0.9.0.zip
 	source = baikal.install
-	sha1sums = a3a9975e809f301e856b037ae56e21c77a9e99e3
+	sha1sums = c7fe67cf81190ee3ea0b480f481f44fff5dd1bac
 	sha1sums = deb948e61c3cd8d6ad560321f78c0b288f7a6210
 
 pkgname = baikal
-
