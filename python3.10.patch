@@ -1,0 +1,30 @@
+--- a/python/midicontrols.py
++++ b/python/midicontrols.py
+@@ -20,9 +20,9 @@
+ import re
+ import os.path
+ import time
+-import collections
+ import gettext
+ import functools
++from collections.abc import MutableSet
+ 
+ import gi
+ from gi.repository import GObject
+@@ -496,7 +496,7 @@
+ # Controls ___________________________________________________________________
+ 
+ 
+-class RepeatCache(collections.MutableSet):
++class RepeatCache(MutableSet):
+     """A smart keyboard repeat cache -- implements time to live.
+ 
+     Downstrokes are logged along with the time. Additional downstrokes
+@@ -2173,7 +2173,7 @@
+         it = Gtk.TreeIter()
+         self.set_user_data(it, user_data)
+         return it
+-        
++
+     def do_get_flags(self):
+         return Gtk.TreeModelFlags.LIST_ONLY | Gtk.TreeModelFlags.ITERS_PERSIST
