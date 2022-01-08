@@ -3,7 +3,7 @@
 _pkgname=appimagepool
 pkgname=${_pkgname}-appimage
 pkgdesc='A simple, modern AppImageHub Client, powered by flutter.'
-pkgver=4.9.0
+pkgver=4.9.9
 pkgrel=1
 
 provides=('appimagepool')
@@ -13,8 +13,8 @@ url='https://github.com/prateekmedia/appimagepool/'
 arch=('x86_64')
 license=('GPL3')
 
-source=("https://github.com/prateekmedia/appimagepool/releases/download/4.9.0/appimagepool-x86_64.AppImage")
-sha256sums=('0194d852af5e2807f7ddd55a5778d1a2c5cf0a07e8f8feb5ad82b435932bdc97')
+source=("https://github.com/prateekmedia/appimagepool/releases/download/4.9.9/appimagepool-x86_64.AppImage")
+sha256sums=('bbd5aad2acfc45a4f49a81d2a785ec21114f5aea22f0ff865e5e7ba5d0904a3b')
 
 _filename=("$_pkgname-x86_64.AppImage")
 noextract=("$_pkgname-x86_64.AppImage")
