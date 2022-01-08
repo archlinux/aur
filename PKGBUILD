@@ -2,7 +2,7 @@
 
 pkgname=keyd
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/keyd"
@@ -27,12 +27,7 @@ package() {
 		MatchName=keyd virtual keyboard
 		AttrKeyboardIntegration=internal
 	EOF
-	_config_suffix=cfg
-	for _example in examples/*; do
-		_example="${_example##*/}"
-		_example="${_example%.*}"
-		install -Dm644 "examples/$_example.$_config_suffix" "${pkgdir}/usr/share/doc/${pkgname%-git}/${_example}.example.$_config_suffix"
-	done
+	install -Dm644 examples/* -t "${pkgdir}/usr/share/doc/${pkgname%-git}/examples/"
 	install -Dm644 man.md CHANGELOG.md README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
 }

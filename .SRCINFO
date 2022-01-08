@@ -1,7 +1,7 @@
 pkgbase = keyd
 	pkgdesc = A key remapping daemon for linux.
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rvaiya/keyd
 	install = keyd.install
 	arch = x86_64
