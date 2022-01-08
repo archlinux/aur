@@ -8,6 +8,8 @@ pkgbase = sirula-git
 	makedepends = cargo
 	makedepends = git
 	depends = gtk-layer-shell
+	provides = sirula
+	conflicts = sirula
 	source = sirula::git+https://github.com/DorianRudolph/sirula.git
 	sha256sums = SKIP
 
