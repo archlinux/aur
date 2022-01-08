@@ -3,7 +3,7 @@
 
 _pkgname=hypseus-singe
 pkgname=$_pkgname-git
-pkgver=v2.6.21.r1.g3ba391a
+pkgver=v2.6.21.r2.ge621413
 pkgrel=1
 pkgdesc="A drop-in replacement to daphne, to play laserdisc arcade games on a PC."
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
-pkgver() { 
+pkgver() {
 	cd "$_pkgname"
 	git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
@@ -24,7 +24,7 @@ pkgver() {
 build()
 {
 	cd $_pkgname/src
-	cmake ../src 
+	cmake ../src
 	make
 }
 
@@ -35,7 +35,6 @@ package() {
 	install -Dm755 $_pkgname/src/hypseus "$pkgdir"/usr/local/bin/hypseus.bin
 	install -d "$pkgdir"/usr/local/$_pkgname/{pics,pics/obsolete,sound,fonts,roms/cputest,screenshots}
 	install -m644 $_pkgname/pics/*.* "$pkgdir"/usr/local/$_pkgname/pics/
-	install -m644 $_pkgname/pics/obsolete/*.* "$pkgdir"/usr/local/$_pkgname/pics/obsolete/
 	install -m644 $_pkgname/roms/cputest/* "$pkgdir"/usr/local/$_pkgname/roms/cputest/
 	install -m644 $_pkgname/sound/* "$pkgdir"/usr/local/$_pkgname/sound/
 	install -m644 $_pkgname/fonts/* "$pkgdir"/usr/local/$_pkgname/fonts/
