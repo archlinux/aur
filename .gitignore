@@ -1,0 +1,6 @@
+.idea/*
+pkg/*
+src/*
+pygmy-*
+pygmy_*
+pygmy/*
