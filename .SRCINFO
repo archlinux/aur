@@ -1,6 +1,6 @@
 pkgbase = veloren-nightly-bin
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
-	pkgver = 0.11.0.20211116
+	pkgver = 0.11.0.20220106
 	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
