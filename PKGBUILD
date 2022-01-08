@@ -5,13 +5,16 @@ _pkgname=openssl
 _ver=1.1.1m
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('glibc')
 conflicts=('openssl<3')
+provides=("openssl=$pkgver")
+# used to create the bootstrap build for OpenSSL 3.0
+# replaces=('openssl<3')
 makedepends=('perl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
