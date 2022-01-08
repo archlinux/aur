@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Mark Wagie <mark.wagie@tutanota.com>
 # Contributor: Marcos Heredia <chelqo@gmail.com>
 # Contributor: Filip Kemuel Dam Bartholdy <filip_kemuel@yahoo.dk>
 

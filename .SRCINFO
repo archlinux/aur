@@ -1,12 +1,11 @@
 pkgbase = typecatcher
 	pkgdesc = Download Google webfonts for off-line use
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andrewsomething/typecatcher
 	arch = any
 	license = GPL3
 	makedepends = python-distutils-extra
-	depends = gobject-introspection
 	depends = gtk3
 	depends = python
 	depends = python-gobject
