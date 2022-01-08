@@ -4,19 +4,24 @@
 _plugin_uri="http://code.google.com/p/amsynth/amsynth"
 pkgname=amsynth-git
 _pkgname=amsynth
-pkgver=1.11.0.r1205.4de4165
+pkgver=1.12.4.r1310.88e87b7
 pkgrel=1
 pkgdesc="An analog modelling (a.k.a. virtual analog) synthesizer (git version)"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://amsynth.github.io/"
-license=('GPL2')
-groups=('dssi-plugins' 'lv2-plugins' 'pro-audio' 'vst-plugins')
-depends=('gtk2')
-makedepends=('alsa-lib' 'dssi' 'git' 'intltool' 'jack' 'ladspa' 'liblo' 'lv2' 'pandoc')
+license=(GPL2)
+groups=(dssi-plugins lv2-plugins pro-audio vst-plugins)
+depends=(cairo gcc-libs glibc)
+makedepends=(alsa-lib autoconf-archive dssi git fontconfig freetype2 gdk-pixbuf2 glib2
+gtk2 harfbuzz intltool jack ladspa liblo lv2 pandoc)
+checkdepends=(lv2lint)
 optdepends=('alsa-lib: for standalone application'
+            'dssi-host: for DSSI plugin'
             'jack: for standalone application'
             'liblo: for DSSI plugin and standalone application'
-            'non-session-manager: for session management with the standalone application')
+            'new-session-manager: for session management with the standalone application'
+            'lv2-host: for LV2 plugin'
+            'vst-host: for VST plugin')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/amsynth/amsynth.git")
@@ -50,6 +55,11 @@ check() {
 }
 
 package() {
+  depends+=(libatk-1.0.so libfontconfig.so libfreetype.so libgdk_pixbuf-2.0.so
+  libgdk-x11-2.0.so libgio-2.0.so libglib-2.0.so libgobject-2.0.so
+  libgtk-x11-2.0.so libharfbuzz.so libpangocairo-1.0.so libpangoft2-1.0.so
+  libpango-1.0.so)
+
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
   install -vDm 644 {AUTHORS,NEWS,README} -t "${pkgdir}/usr/share/doc/${pkgname}/"
