@@ -4,4 +4,4 @@ StopWhenUnneeded=true
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/xboxdrv --type xbox360 --device-by-id 31e3:%I --silent --quiet --detach-kernel-driver --mimic-xpad
+ExecStart=/usr/bin/xboxdrv --type xbox360 --device-by-id %I --silent --quiet --detach-kernel-driver --mimic-xpad
