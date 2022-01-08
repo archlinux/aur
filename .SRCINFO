@@ -1,0 +1,16 @@
+pkgbase = wrash-git
+	pkgdesc = A minimalistic command wrapper shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/joshmeranda/wrash
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = wrash
+	conflicts = wrash
+	source = wrash::git+https://github.com/joshmeranda/wrash.git
+	md5sums = SKIP
+
+pkgname = wrash-git
