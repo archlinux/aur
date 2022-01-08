@@ -1,6 +1,6 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
-	pkgver = 0.16.0.alpha.1.r24.g44efce831
+	pkgver = 0.16.0.alpha.5.r5.g5b9d8a931
 	pkgrel = 1
 	url = http://gnunet.org
 	install = gnunet.install
@@ -15,6 +15,7 @@ pkgbase = gnunet-git
 	makedepends = opus
 	makedepends = pkgconfig
 	makedepends = python
+	makedepends = recutils
 	depends = brotli
 	depends = gettext
 	depends = gnurl

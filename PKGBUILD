@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.16.0.alpha.1.r24.g44efce831
+pkgver=0.16.0.alpha.5.r5.g5b9d8a931
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
          'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
          'libtool' 'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
-             'pkgconfig' 'python')
+             'pkgconfig' 'python' 'recutils')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'libgabe: for Attribute-Based Encryption'
