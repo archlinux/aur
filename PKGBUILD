@@ -2,12 +2,12 @@
 pkgname=minetest-moontest
 _pkgname=moontest
 _pkgauthor=Droog71
-pkgver=2021.12.22
-_cdbrel=10180
+pkgver=1.0.3
+_cdbrel=10501
 pkgrel=1
 pkgdesc="Moon Habitat Simulator"
 license=("AGPLv3")
-sha256sums=('6a161f1683790d9ba3baa154b380baf45647f77475cf53f715fe46b7e61335fc')
+sha256sums=('89b45cb9b705cf3c336ec499432d4e228761b7499e2064639e0c423d2a7e55e9')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
