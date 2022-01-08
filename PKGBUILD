@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('glibc')
-conflicts('openssl<3')
+conflicts=('openssl<3')
 makedepends=('perl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
