@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-coinutils
-pkgver=2.11.4
+pkgver=2.11.5
 pkgrel=1
 pkgdesc="COIN-OR collection of utility classes (mingw-w64)"
 arch=(any)
@@ -9,13 +9,13 @@ depends=(mingw-w64-zlib mingw-w64-bzip2 mingw-w64-glpk mingw-w64-lapack)
 makedepends=(mingw-w64-configure)
 options=('!buildflags' '!strip' 'staticlibs')
 groups=(mingw-w64-coin-or)
-source=("https://www.coin-or.org/download/source/CoinUtils/CoinUtils-$pkgver.tgz")
-sha256sums=('1b24f8f6057661b3225d24f4e671527f53bf13aff66e06cbbbd4f20cc7d31dce')
+source=("https://github.com/coin-or/CoinUtils/archive/refs/tags/releases/${pkgver}.tar.gz")
+sha256sums=('9a6d03b2c9bf6232b05e053c32e6f0b49bc418ed537cc1915bdd72361111d609')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd CoinUtils-$pkgver
+  cd CoinUtils-releases-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
@@ -28,7 +28,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/CoinUtils-$pkgver/build-${_arch}
+    cd "$srcdir"/CoinUtils-releases-$pkgver/build-${_arch}
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir"/usr/${_arch}/share
