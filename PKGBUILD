@@ -1,12 +1,12 @@
 # Maintainer: Jerry Reinoehl <jerryreinoehl@gmail.com>
 pkgname=aarch64-linux-musl-cross-bin
 pkgver=11.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Static musl-based cross-compilation toolchain provided by musl.cc"
 arch=("x86_64" "i686")
 url="https://musl.cc/"
 license=("MIT")
-options=(!strip)
+options=(!strip staticlibs)
 source_x86_64=(
   "https://more.musl.cc/$pkgver/x86_64-linux-musl/aarch64-linux-musl-cross.tgz"
 )
