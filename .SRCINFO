@@ -10,6 +10,8 @@ pkgbase = mshr-git
 	depends = dolfin
 	depends = mpfr
 	depends = tetgen
+	provides = mshr=20200924
+	conflicts = mshr
 	source = git+https://bitbucket.org/fenics-project/mshr.git#branch=master
 	sha512sums = SKIP
 

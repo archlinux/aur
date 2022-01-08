@@ -10,6 +10,8 @@ url="https://bitbucket.org/fenics-project/${_base}"
 license=(GPL3)
 depends=(dolfin mpfr tetgen) # cgal
 makedepends=(cmake git)
+provides=("${_base}=${pkgver}")
+conflicts=("${_base}")
 # options=(!emptydirs)
 source=(git+${url}.git#branch=master)
 sha512sums=('SKIP')
