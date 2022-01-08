@@ -1,6 +1,7 @@
+# Maintainer: LoupZeur <loup@loupzeur.net>
 # Maintainer: Semyon Maryasin <simeon@maryasin.name>
 pkgname=speedify
-_pkgver=9.8.0-8512
+_pkgver=11.8.0-10224
 pkgver=${_pkgver/-/.}
 pkgrel=3
 pkgdesc="Use multiple internet connections in parallel"
