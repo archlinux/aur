@@ -7,7 +7,8 @@ pkgbase = gitlab-glab
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gitlab-glab-1.21.1.tar.gz::https://github.com/profclems/glab/archive/v1.21.1.tar.gz
+	options = !lto
+	source = https://github.com/profclems/glab/archive/v1.21.1/glab-1.21.1.tar.gz
 	sha256sums = 878c13d064ca6010437de90ca3711962fd87441fcae39bf01cb0af5aa5efd79e
 
 pkgname = gitlab-glab

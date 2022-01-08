@@ -1,47 +1,49 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Abdo Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=gitlab-glab
-_realpkgname=glab
+_pkgname=${pkgname#gitlab-}
 pkgver=1.21.1
 pkgrel=2
 pkgdesc='Gitlab Cli tool to help work seamlessly with Gitlab from the command line'
-arch=('x86_64')
-url="https://github.com/profclems/glab"
-license=('MIT')
-makedepends=('go')
-depends=('glibc')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+arch=(x86_64)
+url="https://github.com/profclems/$_pkgname"
+license=(MIT)
+depends=(glibc)
+makedepends=(go)
+options=(!lto)
+_archive="$_pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('878c13d064ca6010437de90ca3711962fd87441fcae39bf01cb0af5aa5efd79e')
 
-prepare(){
-  cd "${_realpkgname}-${pkgver}"
-  mkdir -p build/
-}
-
 build() {
-  cd "${_realpkgname}-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  _builddate=$(date -u +%m/%d/%Y)
-
-  go build -o build -trimpath -buildmode=pie -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" -X main.version=v${pkgver} -X main.build=${_builddate} -X main.usageMode=prod -s -w" -mod=readonly -modcacherw ./cmd/glab/main.go
-
-  mkdir -p share/man
-  make GLAB_VERSION="v${pkgver}" manpage
-
-  "./build/main" completion -s bash | install -Dm644 /dev/stdin "share/bash-completion/completions/${_realpkgname}"
-  "./build/main" completion -s zsh | install -Dm644 /dev/stdin "share/zsh/site-functions/_${_realpkgname}"
-  "./build/main" completion -s fish | install -Dm644 /dev/stdin "share/fish/vendor_completions.d/${_realpkgname}.fish"
+	cd "$_archive"
+	export CGO_CPPFLAGS="$CPPFLAGS"
+	export CGO_CFLAGS="$CFLAGS"
+	export CGO_CXXFLAGS="$CXXFLAGS"
+	export CGO_LDFLAGS="$LDFLAGS"
+	_builddate=${SOURCE_DATE_EPOCH=:$(date -u +%m/%d/%Y)}
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-ldflags "-linkmode=external -extldflags \"$LDFLAGS\" -X main.version=v$pkgver -X main.build=$_builddate -X main.usageMode=prod -s -w" \
+		-mod=readonly \
+		-modcacherw \
+		-o "$_pkgname" \
+		./cmd/glab/main.go
+	go run ./cmd/gen-docs/docs.go --manpage --path ./
+	for s in bash fish zsh; do
+		./$_pkgname completion -s $s > $s.completions
+	done
 }
 
 package() {
-  cd "${_realpkgname}-$pkgver"
-  install -Dm755 build/main "$pkgdir"/usr/bin/${_realpkgname}
-  install -Dm644 $srcdir/${_realpkgname}-$pkgver/LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-
-  mkdir -p "${pkgdir}/usr"
-  cp -r share/ "${pkgdir}/usr"
+	cd "$_archive"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/man/man1/" "$_pkgname.1"
+	install -Dm0644 bash.completions "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+	install -Dm0644 fish.completions "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+	install -Dm0644  zsh.completions "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
