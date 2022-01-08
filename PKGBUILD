@@ -3,12 +3,13 @@
 pkgname=epy-git
 _name=epy
 provides=('epy')
-pkgver=r79.45c1cde
+pkgver=r203.fcbfeab
 pkgrel=1
-pkgdesc="CLI Ebook Reader, fork of epr with minor improvements"
+pkgdesc="CLI Ebook Reader"
 arch=('any')
 url='https://github.com/wustho/epy'
-license=('MIT')
+license=("GPL3")
+conflicts=("epy")
 depends=(
   'python'
 )
