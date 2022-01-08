@@ -1,17 +1,17 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 _pkgname=neovim-gtk
 pkgname=neovim-gtk-git
-pkgver=695
+pkgver=809
 pkgrel=1
 pkgdesc='GTK UI for Neovim written in Rust'
 arch=('i686' 'x86_64')
-url="https://github.com/daa84/neovim-gtk"
+url="https://github.com/Lyude/neovim-gtk"
 license=('GPL3')
 depends=('neovim' 'gtk3' 'vte3')
 conflicts=('neovim-gtk')
 provides=('neovim-gtk')
 makedepends=('cargo' 'git')
-source=("git+https://github.com/daa84/neovim-gtk.git")
+source=("git+https://github.com/Lyude/neovim-gtk.git")
 md5sums=('SKIP')
 
 pkgver() {

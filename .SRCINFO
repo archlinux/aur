@@ -1,8 +1,8 @@
 pkgbase = neovim-gtk-git
 	pkgdesc = GTK UI for Neovim written in Rust
-	pkgver = 695
+	pkgver = 809
 	pkgrel = 1
-	url = https://github.com/daa84/neovim-gtk
+	url = https://github.com/Lyude/neovim-gtk
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,8 +13,7 @@ pkgbase = neovim-gtk-git
 	depends = vte3
 	provides = neovim-gtk
 	conflicts = neovim-gtk
-	source = git+https://github.com/daa84/neovim-gtk.git
+	source = git+https://github.com/Lyude/neovim-gtk.git
 	md5sums = SKIP
 
 pkgname = neovim-gtk-git
-
