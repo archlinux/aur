@@ -1,8 +1,8 @@
 # Maintainer: DevHyperCoder <arduinoleo88 at gmail dot com>
 
 pkgname=rbmenu
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=3
 pkgdesc="Rust Bookmark (d)Menu"
 arch=('x86_64')
 url="https://github.com/DevHyperCoder/rbmenu"
