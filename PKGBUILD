@@ -2,13 +2,12 @@
 
 pkgname=keyd
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/keyd"
 license=('MIT')
 depends=('libudev.so')
-makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 install=keyd.install
 sha256sums=('9b2195e69f407f08b9aa377d0bca2cd877c5aa9d67a606b81194941ff4ee8b11')
