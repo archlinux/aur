@@ -12,7 +12,8 @@ makedepends=('git' 'go')
 optdepends=(
 	"yt-dlp: A youtube-dl fork with additional features and fixes"
 	"mpv: a free, open source, and cross-platform media player"
-	"imv: Image viewer for Wayland and X11"
+	"imv: Image viewer for Wayland and X11",
+	"w3m: Text-based Web browser as well as pager"
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -50,5 +51,5 @@ package() {
 	cd "$pkgname"
 	install -Dm 755 photon -t "$pkgdir/usr/bin/"
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	#install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
