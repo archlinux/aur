@@ -1,6 +1,6 @@
 ## Update steps
 1. Update `pkgver=` line in PKGBUILD with new version 
-2. Download latest DEB release from https://github.com/Ultraworking/headquarters/releases e.g. `curl --remote-name https://github.com/Ultraworking/headquarters/releases/download/v0.19.2/headquarters_0.19.2_amd64.deb`
+2. Download latest DEB release from https://github.com/Ultraworking/headquarters/releases e.g. `curl --location --remote-name https://github.com/Ultraworking/headquarters/releases/download/v0.19.2/headquarters_0.19.2_amd64.deb`
 3. Update PKGBUILD with SHA512 e.g. `sha512sum headquarters_0.19.2_amd64.deb | awk '{ print $1 }' | tr --delete '\n' | xsel --clipboard`   
 4. `makepkg --install --syncdeps --force` # --clean deletes src/ and pkg/ after build
 5. Generate .SRCINFO (mandatory) with `makepkg --printsrcinfo > .SRCINFO`

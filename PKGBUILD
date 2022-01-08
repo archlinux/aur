@@ -13,7 +13,7 @@ makedepends=('curl')
 options=('!strip' '!emptydirs')
 # This file is download to the git root directory and symlinked to a relative ./src/ directory.
 source=("https://github.com/Ultraworking/headquarters/releases/download/v${pkgver}/headquarters_${pkgver}_amd64.deb")
-sha512sums=('658712bb067139ee71f38d4526f43ff2e03e600e14e59faed34c1f38b384115c6eea24ebf357ae6c1c3f18fec696a686ca935ac22d97e2cf165f1e41f467f113')
+sha512sums=('533fafc5fa348f71c6193274966bd4458c87744a78ef347390ae9980119b570a920af7af59716804eb86bb3b9b7cb7f7a45cd3ec57189d64705fd7512c08ecf1')
 
 # pkgdir = /home/elijah/Projects/aur-ultraworking-headquarters-bin/pkg/ultraworking-headquarters-bin
 # CWD = /home/elijah/Projects/aur-ultraworking-headquarters-bin/src
