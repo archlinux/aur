@@ -1,17 +1,17 @@
 pkgname='rum-git'
 _pkgname=${pkgname%-git}
-pkgver=r312.49c274b
+pkgver=r326.19e2433
 pkgrel=1
 pkgdesc='Game library management - master branch'
 arch=('x86_64')
-url='https://notabug.org/johncena141/rum'
+url='https://johncena141.eu.org:8141/johncena141/rum'
 license=('GPL3')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips udev)
 makedepends=(cargo npm git squashfs-tools patchelf)
 provides=('rum')
 conflicts=('rum')
 replaces=('chad-launcher-git')
-source=("git+https://notabug.org/johncena141/${_pkgname}.git#branch=master")
+source=("git+https://johncena141.eu.org:8141/johncena141/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {

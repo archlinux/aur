@@ -1,8 +1,8 @@
 pkgbase = rum-git
 	pkgdesc = Game library management - master branch
-	pkgver = r312.49c274b
+	pkgver = r326.19e2433
 	pkgrel = 1
-	url = https://notabug.org/johncena141/rum
+	url = https://johncena141.eu.org:8141/johncena141/rum
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
@@ -22,7 +22,7 @@ pkgbase = rum-git
 	provides = rum
 	conflicts = rum
 	replaces = chad-launcher-git
-	source = git+https://notabug.org/johncena141/rum.git#branch=master
+	source = git+https://johncena141.eu.org:8141/johncena141/rum.git#branch=master
 	md5sums = SKIP
 
 pkgname = rum-git
