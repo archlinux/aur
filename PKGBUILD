@@ -1,8 +1,8 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
 # Contributor: Peter Vasil <mail at petervasil dot net>
 pkgname=h2
-pkgver=2.0.204
-_releasever=2021-12-21
+pkgver=2.0.206
+_releasever=2022-01-04
 pkgrel=1
 pkgdesc="Java SQL database engine."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://www.h2database.com"
 license=(MPL EPL)
 depends=('java-runtime>=7' 'bash')
 source=("https://github.com/h2database/h2database/releases/download/version-${pkgver}/h2-${_releasever}.zip")
-sha256sums=('db56ce651133856ff471bae8d1eeb93937d50b4b8d78d70dc4a4eb8c8fcf5e04')
+sha256sums=('3306748f1ba3e00b415bb6b50a9d61fd0026d6e55396940eb60c1d7c49947b6f')
 
 build() {
 	cd "$srcdir"
