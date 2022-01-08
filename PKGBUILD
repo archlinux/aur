@@ -1,6 +1,6 @@
 # Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgname=esp8266-rtos-sdk
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="ESP8266 RTOS SDK"
 arch=('x86_64')
