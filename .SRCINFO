@@ -1,6 +1,6 @@
 pkgbase = ocaml-dssi
 	pkgdesc = OCaml bindings for dssi plugins
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-dssi
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = ocaml-dssi
 	depends = ocaml
 	depends = ocaml-ladspa
 	options = !strip
-	source = https://github.com/savonet/ocaml-dssi/archive/v0.1.3.tar.gz
-	sha256sums = 536d0a01388a0ffb7ee014e639da43ce718e0f1ed44b284cce202c77fdd94201
+	source = https://github.com/savonet/ocaml-dssi/archive/v0.1.4.tar.gz
+	sha256sums = 5b017c5fb139f9ef90b23c6c9661ec28948e540664e68ca70649f58994b9aca9
 
 pkgname = ocaml-dssi
-
