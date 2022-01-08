@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.4.0.r20.9ef64da
+pkgver=1.5.0.r28.7e5d809
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -45,8 +45,8 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
   export PATH=${PATH}:${GOPATH}/bin
-  go install github.com/golang/protobuf/protoc-gen-go@latest
-  go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+  go install github.com/golang/protobuf/protoc-gen-go
+  go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
   pushd proto
   make
   popd
@@ -73,7 +73,7 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   pushd ui
-  export PYTHONHASHSEED=0
+  export PYTHONHASHSEED=0 # to hopefully avoid annoying keychain popups
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   popd
 
