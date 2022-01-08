@@ -1,6 +1,6 @@
 pkgbase = libcwtch-go
 	pkgdesc = C bindings for the Go Cwtch library
-	pkgver = 1.5.2
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://cwtch.im
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libcwtch-go
 	makedepends = go
 	depends = tor
 	conflicts = libcwtch-go-git
-	source = libcwtch-go-v1.5.2.tar.gz::https://git.openprivacy.ca/cwtch.im/libcwtch-go/archive/v1.5.2.tar.gz
-	sha512sums = 5f7f7b7470ed0f282cdf74fbe5ad1bfebc43d50e6cce90c619aca15d2cd693d6c52259f3a2866ee607565a4a2fd426b5e439f8633a3a4c8014a35a878946c89e
+	source = libcwtch-go-v1.5.4.tar.gz::https://git.openprivacy.ca/cwtch.im/libcwtch-go/archive/v1.5.4.tar.gz
+	sha512sums = 325639dbc7c7af0a63e9b699b3b6524d2bb4c4c72d5d1985e5d020df6ed35ec84fe0dad98502c297122b2e50e8cbebec29d045e96c056aeaecba32d8dd18305c
 
 pkgname = libcwtch-go
