@@ -2,8 +2,8 @@
 # Maintainer: CrunchBite <crunchbite@teamxlink.com>
 
 pkgname=xlinkkai
-pkgver=7.4.41
-_commit=539601694
+pkgver=7.4.42
+_commit=594048352
 pkgrel=1
 pkgdesc='XLink Kai is a global gaming network - that allows you to play system-link/LAN enabled games online for free.'
 
@@ -91,6 +91,5 @@ package() {
     
   install -Dm666 "${srcdir}/etc/kaiengine.conf" "${pkgdir}/etc/kaiengine.conf"
 
-  # Unfortunately on Arch sbin is just a symlink
-  install -Dm775 "${srcdir}/usr/sbin/kaiengine" "${pkgdir}/usr/bin/kaiengine"
+  install -Dm775 "${srcdir}/usr/bin/kaiengine" "${pkgdir}/usr/bin/kaiengine"
 }

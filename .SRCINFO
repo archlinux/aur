@@ -1,6 +1,6 @@
 pkgbase = xlinkkai
 	pkgdesc = XLink Kai is a global gaming network - that allows you to play system-link/LAN enabled games online for free.
-	pkgver = 7.4.41
+	pkgver = 7.4.42
 	pkgrel = 1
 	url = https://www.teamxlink.co.uk/
 	install = post.install
@@ -24,12 +24,12 @@ pkgbase = xlinkkai
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	source_x86_64 = https://repo.teamxlink.co.uk/debian/amd64/xlinkkai_7.4.41-539601694_amd64.deb
+	source_x86_64 = https://repo.teamxlink.co.uk/debian/amd64/xlinkkai_7.4.42-594048352_amd64.deb
 	sha512sums_x86_64 = SKIP
-	source_i486 = https://repo.teamxlink.co.uk/debian/i386/xlinkkai_7.4.41-539601694_i386.deb
-	source_aarch64 = https://repo.teamxlink.co.uk/debian/aarch64/xlinkkai_7.4.41-539601694_aarch64.deb
+	source_i486 = https://repo.teamxlink.co.uk/debian/i386/xlinkkai_7.4.42-594048352_i386.deb
+	source_aarch64 = https://repo.teamxlink.co.uk/debian/aarch64/xlinkkai_7.4.42-594048352_aarch64.deb
 	sha512sums_aarch64 = SKIP
-	source_armv7h = https://repo.teamxlink.co.uk/debian/armv7h/xlinkkai_7.4.41-539601694_armv7h.deb
+	source_armv7h = https://repo.teamxlink.co.uk/debian/armv7h/xlinkkai_7.4.42-594048352_armv7h.deb
 	sha512sums_armv7h = SKIP
 
 pkgname = xlinkkai
