@@ -1,12 +1,16 @@
 [Unit]
 Description=Kibana - dashboard for Elasticsearch
-After=elasticsearch.service
+After=network.target elasticsearch.service
 
 [Service]
-User=nobody
-Group=elasticsearch
+User=kibana
+Group=kibana
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/node --max-old-space-size=512 /usr/share/kibana/src/cli --quiet --config=/etc/elasticsearch/kibana/kibana.yml
+Environment="NODE_OPTIONS=--max-old-space-size=512 --no-warnings --max-http-header-size=65536"
+ExecStart=/usr/bin/node /usr/share/kibana/src/cli/dist --config=/etc/kibana/kibana.yml
+PrivateTmp=true
+NoNewPrivileges=true
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

@@ -1,46 +1,54 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Spider.007 <archlinux AT spider007 DOT net>
-pkgbase=kibana
-pkgname=(kibana kibana-bin)
-pkgver=5.5.0
+
+pkgname=kibana
+pkgver=7.10.2
 pkgrel=1
-pkgdesc="browser based analytics and search dashboard for Elasticsearch"
+pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
+url='https://www.elastic.co/products/kibana'
 arch=('any')
-url="https://www.elastic.co/products/kibana"
-license=('apache')
-optdepends=('elasticsearch>=2.4')
-backup=('etc/elasticsearch/kibana/kibana.yml')
-options=('!strip')
-source=(
-	"https://artifacts.elastic.co/downloads/$pkgname/$pkgname-$pkgver-linux-x86_64.tar.gz"
-	kibana.service)
-sha256sums=('8aa30bf3a4a453bdbcfad4e96fabf518b4bff7532a67b8001d3e293fcd625cd2'
-            '610c50d38ff0d4cff308b2ff2f38ce3012bf70e396aa25a9b85b821ad3675e3b')
+license=('Apache')
+depends=('nodejs')
+optdepends=('elasticsearch')
+backup=('etc/kibana/kibana.yml')
+options=('!strip' 'emptydirs')
+source=(https://artifacts.elastic.co/downloads/${pkgname}/${pkgname}-oss-${pkgver}-linux-x86_64.tar.gz
+        kibana.service
+        tmpfile.conf
+        user.conf)
+sha512sums=('77ebb247d5326f3f9ab97d57ecc00c7f70deae0e1857d8b5d8f9a5d05d6713e27514cca342df666be79ab85a580e9dc5c7fa9676d67e95db64a0d69546d8d699'
+            '3002f529c0960f1a0c233f7589819ed9c06c8ec6539ef416529d212bd1657d61bf0662b954b2b2dbff8a33cea2d545ea34e06df9088590156564e08bfc20216b'
+            'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
+            '9085884430c656cc68b855c3d6740e5fd0854a8785930341b29e15e201deacc1870d8223255d9ebe096cb111319bea9bf4faa03d0760d5819976ebf912221c7d')
 
-_package() {
-	cd "$pkgdir"
+prepare() {
+  cd ${pkgbase}-${pkgver}-linux-x86_64
 
-	install -dm755 usr/share/kibana
-	install -Dm644 "$srcdir/kibana.service" usr/lib/systemd/system/kibana.service
-	install -Dm644 "$srcdir"/$pkgbase-$pkgver-linux-x86_64/config/kibana.yml etc/elasticsearch/kibana/kibana.yml
+  # remove nodejs strict version requirements
+  sed "s@^var isVersionValid = .*@var isVersionValid = true;@" -i src/setup_node_env/node_version_validator.js
 
-	cp -Rp "$srcdir"/$pkgbase-$pkgver-linux-x86_64/* usr/share/kibana
-
-	chmod -R g+w,o+w usr/share/kibana/{optimize,data}/
+  # set default quiet mode for systemd, cli option forces specified values
+  sed -r 's|#(logging.quiet:) false|\1 true|' -i config/kibana.yml
 }
 
-package_kibana() {
-	_package
+package() {
+  cd ${pkgbase}-${pkgver}-linux-x86_64
 
-	pkgdesc="$pkgdesc. Please note; this package replaces the distributed precompiled binary 'node'"
-	depends=('nodejs<7')
+  install -dm 755 "${pkgdir}/usr/share/kibana"
+  cp -a * "${pkgdir}/usr/share/kibana"
 
-	rm -R "$pkgdir"/usr/share/kibana/node/
+  install -dm 750 "${pkgdir}/etc/kibana"
+  install -Dm 640 config/kibana.yml -t "${pkgdir}/etc/kibana"
+  install -Dm 644 "${srcdir}/kibana.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 "${srcdir}/user.conf" "${pkgdir}/usr/lib/sysusers.d/kibana.conf"
+  install -Dm 644 "${srcdir}/tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/kibana.conf"
+
+  rm -r "${pkgdir}/usr/share/kibana/node"
+  find "${pkgdir}/usr/share/kibana/node_modules" -type d -empty -delete
+
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
-package_kibana-bin() {
-	_package
-
-	pkgdesc="$pkgdesc. This package uses the precompiled binary 'node'"
-
-	sed -i 's~ExecStart=.*~ExecStart=/usr/share/kibana/bin/kibana --config=/etc/elasticsearch/kibana/kibana.yml~' "$pkgdir"/usr/lib/systemd/system/kibana.service
-}
+# vim: ts=2 sw=2 et:
