@@ -1,0 +1,16 @@
+pkgbase = blender-plugin-facebuilder
+	pkgdesc = wrap human faces from images (keentools.io)
+	pkgver = 4.0
+	pkgrel = 0
+	url = https://keentools.io/products/face-builder-for-blender
+	install = facebuilder.install
+	arch = any
+	license = GPLv3
+	license = custom
+	makedepends = git
+	source = git+https://github.com/keentools/keentools-blender.git
+	source = https://d28thnhqld34mt.cloudfront.net/pykeentools_releases/2021.4.0/keentools-core-2021.4.0-linux.zip
+	sha512sums = SKIP
+	sha512sums = 346b5dd3bd52e47c47731d395b0000e9c37cdcd75a2e844d28657b87976bf68249b161b3716d8ac687383986de71cbcb50f551b8b54eeaddb07491b1177c9949
+
+pkgname = blender-plugin-facebuilder

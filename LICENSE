@@ -1,0 +1,109 @@
+KEENTOOLS END USER LICENSE AGREEMENT
+
+Last updated: August 04, 2021
+
+PLEASE READ CAREFULLY BEFORE YOU DOWNLOAD OR USE KEENTOOLS SOFTWARE
+
+By clicking on the "I agree" button or by accessing, executing or otherwise using the KeenTools Software, You acknowledge that you have read this Agreement, understand it and agree to be bound by its terms and conditions. If You do not have the authority to enter into this EULA or You do not agree to its terms, do not use KeenTools Software.
+
+KEENTOOLS EULA SUMMARY
+
+	- Licenses are annual, except the Free license which is perpetual, Free Beta which is active during the beta stage, and Trial license which is active for a short limited time.
+
+	- There are 7 types of licenses available:
+		- Commercial. This is the standard licensing option for organizations and business entities. Licenses are purchased by the company and can be used by any person within this organization;
+		- Floating. Similar to commercial license but can also be used with the floating license server.
+		- Personal. An option for private individuals who purchase a license with their own funds, and solely for their own use. Personal licenses are not to be purchased by companies;
+		- Educational. It can only be used for educational non-commercial purposes.
+		- Trial. The license which is built-in in all nodes that require a Commercial, Floating, Personal or Educational license. It allows using the plugins for the first 15 days without installing a purchased license.
+		- Free. Used with free nodes and covers all types of users: commercial, personal, educational. The license is built-in into the plugin.
+		- Free Beta. Used with nodes that are in the beta stage, when a node is out of the beta stage the Free Beta license cannot be used with it any more. While applicable, it can be used by all types of users: commercial, personal and educational. The license is built-in into the plugin.
+
+	- Commercial use allowed for Commercial, Floating, Personal, Trial, Free and Free Beta licenses without any royalties.
+
+	- Users cannot modify the source code of plugins for any purpose as well as use it to create derivative works.
+
+	- Parts of the software are provided under separate licenses, as follows:
+		- Assimp under the terms of a 3-clause BSD license
+			http://www.assimp.org/main_license.html
+		- Boost under the Boost Software License
+			http://www.boost.org/LICENSE_1_0.txt
+		- OpenCV under the terms of a 3-clause BSD license
+			http://opencv.org/license.html
+		- GLM under the Happy Bunny License and the MIT License
+			https://glm.g-truc.net/copying.txt
+		- NLopt with the LGPL portions removed under the MIT License
+			https://github.com/stevengj/nlopt/blob/master/COPYRIGHT
+		- Catch under the Boost Software License
+			https://github.com/philsquared/Catch/blob/master/LICENSE.txt
+		- Crypto++ under the Boost Software License
+			https://www.cryptopp.com/License.txt
+		- Eigen under Mozilla Public License Version 2.0
+			https://www.mozilla.org/en-US/MPL/2.0/
+		- ZFP under a BSD license
+			https://github.com/LLNL/zfp/blob/master/LICENSE
+		- Plog under Mozilla Public License Version 2.0
+			https://github.com/SergiusTheBest/plog/blob/master/LICENSE
+		- Miniz released into the public domain
+			http://unlicense.org
+
+
+KEENTOOLS END USER LICENSE AGREEMENT
+
+
+	1. Preamble: This Agreement governs the relationship between You (a legal entity for Commercial license, a private individual for Personal license or an individual student or an instructor for Educational license, as well as a legal entity, a private individual or an individual student or an instructor for Trial, Free and Free Beta licenses), (hereinafter: Licensee) and KeenTools Ltd, Kantemirovskaya street, building 2, liter A, office 60/303, 194100 Saint-Petersburg, Russian Federation (hereinafter: Licensor). This Agreement sets the terms, rights, restrictions and obligations on using a node from KeenTools bundle (hereinafter: The Software) created and owned by Licensor, as detailed herein.
+
+	2. License Grant: Licensor hereby grants Licensee a Non-assignable & non-transferable, Annual (for Commercial, Floating, Personal and Educational licenses), Perpetual (for Free licenses), Temporary (for Free Beta and Trial licenses), Commercial (for Commercial, Floating, Personal, Trial, Free and Free Beta licenses), Without rights to create derivative works, Non-exclusive license, all with accordance with the terms set forth and other legal restrictions set forth in third party software used while running Software.
+		2.1. Limited: Licensee may use Software for the purpose of:
+			2.1.1. Installing and running Software on Licensee's computer device and on any operating system supported by the Product;
+			2.1.2. Publishing the output of the Software to Licensee and 3rd Parties;
+		2.2. Period:
+			2.2.1. Commercial, Floating, Personal and Educational licenses allow the Licensee to use The Software for one year, and entitle the Licensee to download all updates to The Software.
+			2.2.2. Trial license is active for the first 15 days of using a plugin.
+			2.2.3. Free license is perpetual.
+			2.2.4. Free Beta license is active during the beta stage and sometimes requires to be updated when a new version is released.
+		2.3. Non Assignable & Non-Transferable: Licensee may not assign or transfer their rights and duties under this license.
+
+		2.4. Licensee may not: rent, lease, reproduce, modify, adapt, use The Software for any commercial purposes (for Educational license), use licenses longer than they are limited to, create derivative works of, distribute, sell, sublicense or transfer The Software, or provide access to The Software to a third party as well as reverse-engineer, decompile, disassemble, modify, or translate The Software, or make any attempt to discover the source code of The Software; use The Software to create competitive software, use The Software to help a third party to create competitive software;
+		2.5. Cross-border license use: Commercial and Floating licenses cannot be used outside of the country the Licensee legal address belongs to.
+		2.6. Commercial, Royalty Free: Licensee may use The Software under Commercial, Floating, Personal, Free and Free Beta licenses for any purpose, including paid-services, without any royalties;
+		2.7. License is available:
+			2.7.1. To individual students and instructors in case of Educational license;
+			2.7.2. To private individuals purchasing with their own funds in case of Personal license;
+			2.7.3. To any legal entity (companies and organizations, including non-profit and government) in case of Commercial and Floating licenses;
+			2.7.4. To anyone in case of Trial, Free and Free Beta licenses.
+
+	3. Term & Termination: The Term of this license shall be until terminated. Licensor may terminate this Agreement, including Licensee's license in the case where Licensee:
+		3.1. Became insolvent or otherwise entered into any liquidation process; or
+		3.2. Exported The Software to any jurisdiction where licensor may not enforce their rights under these agreements in; or
+		3.3. Licensee was in breach of any of these terms and conditions and such breach was not cured, immediately upon notification; or
+		3.4. Licensee in breach of any of the terms of clause 2 to this license; or
+		3.5. Licensee otherwise entered into any arrangement which caused Licensor to be unable to enforce their rights under this License.
+
+	4. Payment: In consideration of the License granted under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other mean which Licensor may deem adequate. Failure to perform payment shall construe as material breach of this Agreement. License can only be billed to a legal entity for Commercial and Floating licenses and to a private individual for a personal license. Personal licenses cannot be purchased or reimbursed by companies; Free and Free Beta licenses come free of charge to anyone. The order process is conducted by online reseller Paddle.com. Paddle.com is the Merchant of Record for all orders. Paddle.com provides all customer service inquiries and handles returns.
+
+	5. Upgrades, Updates, and Fixes: Licensor may provide Licensee, from time to time, with Upgrades, Updates or Fixes, as detailed herein and according to their sole discretion. Licensee hereby warrants to keep The Software up-to-date and install all relevant Updates and Fixes. Licensor shall provide any Upgrade, Update or Fix free of charge; however, nothing in this Agreement shall require Licensor to provide Upgrades, Updates or Fixes.
+		5.1. Upgrades: for the purpose of this license, an Upgrade shall be a material amendment in The Software, which contains new features and or major performance improvements and shall be marked as a new version number. For example, should Licensee purchase The Software under version 1.X.X, an upgrade shall commence under number 2.0.0.
+		5.2. Updates: for the purpose of this license, an update shall be a minor amendment in The Software, which may contain new features or minor improvements and shall be marked as a new sub-version number. For example, should Licensee purchase The Software under version 1.1.X, an update shall commence under number 1.2.0.
+		5.3. Fixes: for the purpose of this license, a fix shall be a minor amendment in The Software, intended to remove bugs or alter minor features which impair The Software's functionality. A fix shall be marked as a new sub-sub-version number. For example, should Licensee purchase Software under version 1.1.1, a fix shall commence under number 1.1.2.
+
+	6. Support: Software is provided on an AS-IS basis and without any support, updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with support or fixes to any bug, failure, mis-performance or other defects in The Software.
+		6.1. Bug Notification: Licensee may provide Licensor of details regarding any bug, defect or failure in The Software promptly and with no delay from such event; Licensee shall comply with Licensor's request for information regarding bugs, defects or failures and furnish him with information, screenshots and try to reproduce such bugs, defects or failures.
+		6.2. Feature Request: Licensee may request additional features in Software, provided, however, that (i) Licensee shall waive any claim or right in such feature should feature be developed by Licensor; (ii) Licensee shall be prohibited from developing the feature, or disclose such feature request, or feature, to any 3rd party directly competing with Licensor or any 3rd party which may be, following the development of such feature, in direct competition with Licensor; (iii) Licensee warrants that feature does not infringe any 3rd party patent, trademark, trade secret or any other intellectual property right; and (iv) Licensee developed, envisioned or created the feature solely by himself.
+
+	7. Liability: To the extent permitted under Law, The Software is provided under an AS-IS basis. Licensor shall never, and without any limit, be liable for any damage, cost, expense or any other payment incurred by Licensee as a result of Software's actions, failure, bugs and/or any other interaction between The Software and Licensee's end-equipment, computers, other software or any 3rd party, end-equipment, computer or services. Moreover, Licensor shall never be liable for any defect in source code written by Licensee when relying on The Software or using The Software's source code.
+
+	8. Warranty:
+		8.1. Intellectual Property: Licensor hereby warrants that The Software does not violate or infringe any third party claims in regards to intellectual property, patents and/or trademarks and that to the best of its knowledge no legal action has been taken against it for any infringement or violation of any 3rd party intellectual property rights.
+		8.2. No-Warranty: The Software is provided without any warranty; Licensor hereby disclaims any warranty that The Software shall be error-free, without defects or code which may cause damage to Licensee's computers or to Licensee, and that Software shall be functional. Licensee shall be solely liable to any damage, defect or loss incurred as a result of operating software and undertake the risks contained in running The Software on Licensee's computer device[s].
+		8.3. Prior Inspection: Licensee hereby states that they inspected The Software thoroughly and found it satisfactory and adequate to their needs, that it does not interfere with their regular operation and that it does meet the standards and scope of their computer systems and architecture. Licensee found that The Software interacts with their development, website and server environment and that it does not infringe any of End User License Agreement of any software Licensee may use in performing their services. Licensee hereby waives any claims regarding The Software's incompatibility, performance, results and features, and warrants that they inspected The Software.
+
+	9. No Refunds: Licensee warrants that they inspected The Software according to clause 7(c) and that it is adequate to their needs. Accordingly, as The Software is intangible goods, Licensee shall not be, ever, entitled to any refund, rebate, compensation or restitution for any reason whatsoever, even if The Software contains material flaws.
+
+	10. Indemnification: Licensee hereby warrants to hold Licensor harmless and indemnify Licensor for any lawsuit brought against it in regards to Licensee's use of The Software in means that violate, breach or otherwise circumvent this license, Licensor's intellectual property rights or Licensor's title in The Software. Licensor shall promptly notify Licensee in case of such legal action and request Licensee's consent prior to any settlement in relation to such lawsuit or claim.
+
+	11. Governing Law, Jurisdiction: Licensee hereby agrees not to initiate class-action lawsuits against Licensor in relation to this license and to compensate Licensor for any legal fees, cost or attorney fees should any claim brought by Licensee against Licensor be denied, in part or in full.
+
+	12. Reservation of Rights: Licensor reserves the right at any time to cease the support of the Software and to alter prices, features, specifications, capabilities, functions, terms of use, privacy policy, end-user license agreement, license types, release dates, general availability or other characteristics of the Software.
+
+For exceptions or modifications to this Agreement, please contact KeenTools using the email address team@keentools.io or the website keentools.io.

@@ -1,0 +1,10 @@
+post_install(){
+	echo -e  "    By installing this package you agree to the"
+	echo -e  "    EULA found at https://link.keentools.io/eula"
+        echo -e  "    or /usr/share/licenses/keentools-facebuilder/LICENSE"
+}
+post_upgrade(){
+	echo -e "     By installing this package you agree to the"
+	echo -e "     EULA found at https://link.keentools.io/eula"
+        echo -e "     or /usr/share/licenses/keentools-facebuilder/LICENSE"
+}
