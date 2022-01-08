@@ -1,6 +1,6 @@
 # Maintainer: igo95862
 pkgname='python-typeshed-git'
-pkgver=r4969.7c3c9d1a1
+pkgver=r5417.950cff21f
 pkgrel=1
 pkgdesc="Python typing stubs"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/python/typeshed/"
 license=('Apache')
 depends=('python')
 makedepends=('git')
-provides=("python-typeshed")
-conflicts=("python-typeshed")
+provides=("python-typeshed" "python-types-setuptools")
+conflicts=("python-typeshed" "python-types-setuptools")
 source=(
     "${pkgname}::git+https://github.com/python/typeshed.git"
     'install_typeshed.py'

@@ -1,6 +1,6 @@
 pkgbase = python-typeshed-git
 	pkgdesc = Python typing stubs
-	pkgver = r4969.7c3c9d1a1
+	pkgver = r5417.950cff21f
 	pkgrel = 1
 	url = https://github.com/python/typeshed/
 	arch = any
@@ -9,7 +9,9 @@ pkgbase = python-typeshed-git
 	depends = python
 	optdepends = mypy: Python type checker
 	provides = python-typeshed
+	provides = python-types-setuptools
 	conflicts = python-typeshed
+	conflicts = python-types-setuptools
 	source = python-typeshed-git::git+https://github.com/python/typeshed.git
 	source = install_typeshed.py
 	sha512sums = SKIP
