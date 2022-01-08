@@ -9,6 +9,7 @@ pkgbase = pygmy-bin
 	provides = pygmy
 	conflicts = pygmy
 	conflicts = pygmy-git
+	conflicts = pygmy-go
 	conflicts = pygmy-go-bin
 	conflicts = pygmy-go-git
 	source = pygmy_0.8.0::https://github.com/pygmystack/pygmy/releases/download/v0.8.0/pygmy-go_0.8.0_linux_amd64.tar.gz
