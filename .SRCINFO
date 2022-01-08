@@ -1,6 +1,6 @@
 pkgbase = gnome-text-editor-git
 	pkgdesc = Simple text editor that focuses on session management
-	pkgver = 42.alpha1.r50.g25a284f
+	pkgver = 42.alpha2.r15.g751caeb
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-text-editor
 	arch = x86_64
