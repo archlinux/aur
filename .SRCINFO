@@ -1,0 +1,21 @@
+pkgbase = pademelon-desktop
+	pkgdesc = Providing a modular desktop environment with pademelon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jzbor/pademelon
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	depends = pademelon
+	depends = moonwm
+	depends = picom
+	depends = xfce4-notifyd
+	depends = polkit-gnome
+	depends = xfce4-power-manager
+	depends = network-manager-applet
+	depends = firefox
+	depends = arandr
+	depends = pavucontrol
+	optdepends = sxhkd: Hotkey Daemon
+
+pkgname = pademelon-desktop
