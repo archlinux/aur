@@ -20,7 +20,7 @@
 ((DISABLE_CUDA)) && optdepends+=("cuda: CUDA support in Cycles") || { makedepends+=("cuda") ; ((DISABLE_OPTIX)) || makedepends+=("optix>=7.0"); }
 
 pkgname=upbge-git
-pkgver=115993.5c005d01c07
+pkgver=116473.8aa389aed4f
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -28,7 +28,7 @@ url="https://upbge.org/"
 depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu" "potrace" "openxr"
          "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio"
          "openvdb" "opencollada" "opensubdiv" "openshadinglanguage" "libtiff" "libpng" "openimagedenoise")
-makedepends=("git" "cmake" "boost" "mesa" "llvm" "ninja")
+makedepends=("git" "cmake" "clang" "boost" "mesa" "llvm" wayland{,-protocols} "libxkbcommon")
 provides=("blender")
 conflicts=("blender")
 license=("GPL")
@@ -47,6 +47,7 @@ source=(
   "blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git"
   upbge.desktop
   usd_python.patch
+  SelectCudaComputeArch.patch
   embree.patch
   openexr3.patch)
 sha256sums=(
@@ -57,6 +58,7 @@ sha256sums=(
   "SKIP"
   "b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a"
   "333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703"
+  "87c5ee85032bab83510db426ab28f7acfba893aefea2b523f2fd78f3b62c5348"
   "ab353b7a9fdb5e9a87fefdade6915f44660299b67446735a9720833aa45f6be8"
   "5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b")
 
@@ -68,6 +70,9 @@ pkgver() {
 prepare() {
   # update the submodules
   git -C "$srcdir/upbge" submodule update --init --recursive --remote
+  if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
+    git -C "$srcdir/upbge" apply -v "${srcdir}"/SelectCudaComputeArch.patch
+  fi
   ((DISABLE_USD)) || git -C "$srcdir/upbge" apply -v "${srcdir}"/usd_python.patch
   git -C "$srcdir/upbge" apply -v "${srcdir}"/{embree,openexr3}.patch
 }
