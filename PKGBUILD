@@ -3,7 +3,7 @@
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
@@ -12,7 +12,7 @@ license=('MIT' 'custom')
 url="https://github.com/ManimCommunity/manim"
 
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('9f4586ca312ce9082887714cd668f25a64fa68cb117144b581925cf7b38d7639a1ba8ec795887df5dc414b2c78c2d765f23ba90e17deb49633525fc848881f5e')
+sha512sums=('e11ea6b8799f000845368945878fcafa84f80c06c5ee394b6532bec90d1f465e95d887b1e642302bba6f9dd424e359fe1551ba1f022667147b842295e173bf2f')
 
 conflicts=('python-manimlib')
 
@@ -65,6 +65,7 @@ prepare ()
 	sed -i 's/mapbox-earcut>=0.12.10,<0.13.0/mapbox-earcut/g' setup.py
 	sed -i 's/screeninfo>=0.6.7,<0.7.0/screeninfo/g' setup.py
 	sed -i 's/srt>=3.5.0,<4.0.0/srt/g' setup.py
+	sed -i 's/manimpango>=0.3.0,<0.4.0/manimpango/g' setup.py
 }
 
 build ()
