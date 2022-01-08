@@ -11,7 +11,6 @@ pkgbase = whatsapp-for-linux
 	makedepends = cmake
 	depends = gtkmm3
 	depends = webkit2gtk
-	depends = cmake-extras-git
 	depends = libayatana-appindicator
 	depends = gst-plugins-base
 	depends = gst-plugins-good
