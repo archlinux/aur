@@ -5,10 +5,12 @@ pkgbase = epy-git
 	url = https://github.com/wustho/epy
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
+	depends = python
 	provides = epy
 	conflicts = epy
 	source = git+https://github.com/wustho/epy.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = epy-git
