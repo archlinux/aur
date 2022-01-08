@@ -1,0 +1,14 @@
+pkgbase = akash-bin
+	pkgdesc = A secure, transparent, and peer-to-peer cloud computing network
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/ovrclk/akash
+	arch = x86_64
+	license = Apache
+	provides = akash
+	source_x86_64 = https://github.com/ovrclk/akash/releases/download/v0.14.1/akash_0.14.1_linux_amd64.zip
+	source_x86_64 = https://raw.githubusercontent.com/ovrclk/akash/v0.14.1/LICENSE
+	sha256sums_x86_64 = 679830454f9d84d1e6f77dbbc11b9c1acedbaba9a9d889aa83b32a1e82e46a78
+	sha256sums_x86_64 = SKIP
+
+pkgname = akash-bin
