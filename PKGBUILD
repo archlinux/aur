@@ -1,7 +1,7 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-ctl
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="Control any music player that follows the MPRIS specification from the command line"
 arch=('x86' 'x86_64')
 url="https://github.com/mariusor/mpris-ctl"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('dbus' 'scdoc')
 depends=('dbus')
 source=("https://github.com/mariusor/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bbdfc0e5b1e863d30afaa5a592b2f5eb7baf27f6c3a22373451756234518b2a9')
+sha256sums=('9194f45656637eb9a6b578f81cc192bbd06f288e3e161ad347348fecae066ce2')
 validpgpkeys=('2AEC637FA54CA7A0EBB1F2F170BC3F8784FBD057')
 
 build() {
