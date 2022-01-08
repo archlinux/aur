@@ -1,0 +1,59 @@
+pkgbase = beats
+	pkgdesc = Data shippers for Elasticsearch
+	pkgver = 7.10.2
+	pkgrel = 1
+	url = https://www.elastic.co/products/beats
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	makedepends = libpcap
+	makedepends = rsync
+	makedepends = python-virtualenv
+	makedepends = audit
+	makedepends = systemd
+	depends = glibc
+	optdepends = elasticsearch: for standalone installation
+	optdepends = python: for migration script
+	options = !makeflags
+	source = https://github.com/elastic/beats/archive/v7.10.2/beats-7.10.2.tar.gz
+	source = filebeat.service
+	source = packetbeat.service
+	source = metricbeat.service
+	source = heartbeat.service
+	source = auditbeat.service
+	source = journalbeat.service
+	source = tmpfile.conf
+	sha512sums = eba0cda8521068f4d15dfb39808695a8de47a568e4d11949746a8f698aaff6825848d5e524bd16b0e555786e277512014dfe33d4daee8c3acef9a9867653c1c3
+	sha512sums = 4d8b160482ba27bdc63c79592f310f2c9bcd2e8e5d3aec5ba9d953f37916bffef57c0f21e3776f4712f87e9a1b90e42dba6058f72bbc4c75380a959276183a59
+	sha512sums = f1e6fe6b677db31326433f4e3eef72356573c6947d653dbe6bc2151581444f80e09343fbf8544952aae82a061b87705e39c8741ea8e402ad53ac3552f532cfea
+	sha512sums = 7e4081b5173d1b58a783f1808f1a9ba4548498de87bdfc1960538d6df4f4da8f900f0e027aeff83ebfe0d81e6aa91db77c520bda76441e6bcaa6fd8a79fbb57a
+	sha512sums = 5f20f160fea1d517d98cf220dc15ca7fa883fbbb3fde78255bbdd6f70ae556b4d750462af49599e27fefdc435761eedcc8bd06f4870211bc35bffa246e1e9dd3
+	sha512sums = f9e015a0789946ff78a62839c9d0af40e557774e14df6de9008d5fa7786377131c74111332496ec7e6303467eb4151b185a2a4cfaa8a1e77c894be50fc22d69b
+	sha512sums = 45c986c3bca6fed329ff9c8f1f9c3f7de7d2a072227bed618b20cd03eb045f321995b97fa5a10a93cdbb699bfb4739d7e8256c6a99e985477532fa2dcfb58082
+	sha512sums = b6bf266c04395c6733f0e57c5acf1d8f385a2b898c36f0af201c0702ac8c8c77cbad925c01670d799a1f173e85745a17baa13fda48119b2e022f9c47f9ce4fc9
+
+pkgname = metricbeat
+	pkgdesc = Server monitoring agent that sends metrics to Elasticsearch
+	conflicts = topbeat
+	replaces = topbeat
+
+pkgname = filebeat
+	pkgdesc = Sends log files to Logstash or directly to Elasticsearch
+
+pkgname = packetbeat
+	pkgdesc = Analyzes network traffic and sends the data to Elasticsearch
+	depends = libpcap
+
+pkgname = heartbeat-elastic
+	pkgdesc = Ping remote services for availability and log results to Elasticsearch or send to Logstash
+	conflicts = heartbeat
+	replaces = heartbeat
+
+pkgname = auditbeat
+	pkgdesc = Audit the activities of users and processes on your system
+	install = auditbeat.install
+	depends = audit
+
+pkgname = journalbeat
+	pkgdesc = Data collector to ship systemd journal entries to Elasticsearch or Logstash

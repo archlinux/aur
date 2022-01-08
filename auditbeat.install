@@ -1,0 +1,6 @@
+post_install() {
+    echo "CONFIG_AUDIT is disabled in the Arch kernel packages so a custom kernel"
+    echo "is required for the Auditbeat auditd module to work. However, some features"
+    echo "like the the file integrity module will work fine without kernel audit support."
+    echo "The package linux-hardened has full support for audit."
+}
