@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-opus
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="OCaml bindings for Opus audio codec"
 arch=('i686' 'x86_64')
@@ -29,6 +29,6 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('5d70a87816062d5c9fe56888df11beebafd6342de7cbe68bcbbd9c00ec84b9ab')
+sha256sums=('5c1149e46ac9e67ca160d740937d1cb2a1f05ee142bdc7a186b39198e7b88b30')
 
 
