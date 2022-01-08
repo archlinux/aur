@@ -1,0 +1,13 @@
+pkgbase = python2-pycparser
+	pkgdesc = C parser and AST generator written in Python
+	pkgver = 2.21
+	pkgrel = 1
+	url = https://github.com/eliben/pycparser
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-ply
+	source = python2-pycparser-2.21.tar.gz::https://github.com/eliben/pycparser/archive/release_v2.21.tar.gz
+	sha512sums = b141e14040774ddaae6cd1726b0b2a61bfa76e8bcb5dc25dd99a303c48c7257dd7214cc7704234b0045ccc6a47354f6a7639647d875e1266846659217cc6ea78
+
+pkgname = python2-pycparser
