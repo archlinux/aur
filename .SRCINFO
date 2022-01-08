@@ -1,0 +1,19 @@
+pkgbase = python-cherche-git
+	pkgdesc = Neural Search for middle sized corpus
+	pkgver = 0.0.1.r1.g12031b4
+	pkgrel = 1
+	url = https://raphaelsty.github.io/cherche/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-elasticsearch
+	depends = python-numpy
+	depends = python-river
+	depends = python-tqdm
+	provides = python-cherche-git
+	conflicts = python-cherche
+	source = git://github.com/raphaelsty/cherche.git
+	sha512sums = SKIP
+
+pkgname = python-cherche-git
