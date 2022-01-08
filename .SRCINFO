@@ -1,0 +1,11 @@
+pkgbase = blender-plugin-mhx
+	pkgdesc = MHX (blender/makehuman interchange format) importer for blender
+	pkgver = 2
+	pkgrel = 3
+	url = http://www.makehumancommunity.org/
+	arch = any
+	license = GPLv2
+	source = https://download.tuxfamily.org/makehuman/plugins/mhx-blender-latest.zip
+	sha512sums = SKIP
+
+pkgname = blender-plugin-mhx
