@@ -1,6 +1,6 @@
 pkgbase = ocaml-portaudio
 	pkgdesc = OCaml bindings for portaudio
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-portaudio
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = ocaml-portaudio
 	depends = ocaml
 	depends = portaudio
 	options = !strip
-	source = https://github.com/savonet/ocaml-portaudio/archive/v0.2.2.tar.gz
-	sha256sums = 8968c3749c9a1f1d09bd7ceb970c068ded0eb8f6b77d9002227182c97a4a044e
+	source = https://github.com/savonet/ocaml-portaudio/archive/v0.2.3.tar.gz
+	sha256sums = 06510aa5c9930ddf5fd677d74a6cde10844e3a14ea4dca73db08bfedfb005839
 
 pkgname = ocaml-portaudio
-

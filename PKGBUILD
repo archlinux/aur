@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-portaudio
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="OCaml bindings for portaudio"
 arch=('i686' 'x86_64')
@@ -27,4 +27,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('8968c3749c9a1f1d09bd7ceb970c068ded0eb8f6b77d9002227182c97a4a044e')
+sha256sums=('06510aa5c9930ddf5fd677d74a6cde10844e3a14ea4dca73db08bfedfb005839')
