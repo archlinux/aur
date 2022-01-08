@@ -1,6 +1,6 @@
 pkgbase = timg
 	pkgdesc = Terminal Image and Video Viewer
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/hzeller/timg
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = timg
 	depends = graphicsmagick
 	depends = ffmpeg
 	depends = openslide
-	source = timg-1.4.2.tar.gz::https://github.com/hzeller/timg/archive/v1.4.2.tar.gz
-	sha256sums = 7607efaffbed0b65b3c824956de421b155a4f14243e7a752b19454f88bf9d563
+	source = timg-1.4.3.tar.gz::https://github.com/hzeller/timg/archive/v1.4.3.tar.gz
+	sha256sums = 46eac8d5434b281afa6d64ced5f46c732c1c4d0699e16a22175b7df179221e2c
 
 pkgname = timg
-
