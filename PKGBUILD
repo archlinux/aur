@@ -2,7 +2,7 @@
 
 pkgname=tftpff
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Firewall-friendly TFTP server'
 url='https://github.com/tiqwab/tftpff'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo')
 backup=('etc/conf.d/tftpff')
 source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/tiqwab/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('3c14cade2b6a5e2ff30d9f4cd5680997bfff43cacdef6cc67fcd235291bcf547')
+sha256sums=('776494ba3a6f948ef951afd697b153e47234453ea5585d8da4916f659f1fa96e')
 
 build() {
     cd "${pkgname}-${pkgver}"
