@@ -1,12 +1,11 @@
 pkgbase = jojodiff
 	pkgdesc = Diff utility for binary files
-	pkgver = 0.8.1
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = http://jojodiff.sourceforge.net/
 	arch = x86_64
 	license = GPL3
-	source = https://downloads.sourceforge.net/project/jojodiff/jojodiff/jojodiff08/jdiff081.tgz
-	sha256sums = 8681e503c1d9658a89788d7e4c34c08adce5a0114610cfaaefa32f2bbe613058
+	source = https://downloads.sourceforge.net/project/jojodiff/jojodiff/jojodiff08/jdiff085.tgz
+	sha256sums = fd10ef977e94b8a4321fb70e2717e448bfa9859a5258a8d0e2bab4430b8aabe8
 
 pkgname = jojodiff
-
