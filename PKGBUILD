@@ -2,7 +2,7 @@
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=11.15
+pkgver=11.16
 pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "1b22ef0c4683c3f1955ad3c9dc8e532daa51f8a8f9d6e7623cc62c66230a98d7"
+    "10475dad2f9f7266428ad713c0e4a1b54339a785a0deb97d4e3f266dcd5d5501"
     "cf4fc81793572cc3e757e8ac26ce20807ce9c731eef0e96c046038075e2e3ecf"
     "810403667792b732768e7be442f43244c4297df6c4b5decb6d07e04ef13f545a"
     "30d938d1f385ea5c660fc4080d36391267a6e9c01939bd1eb535c5857af256f8"
