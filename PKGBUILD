@@ -1,4 +1,4 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Danny Holman <dholman@gymli.org>
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=apache-opennlp
