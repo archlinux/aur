@@ -12,6 +12,7 @@ pkgbase = apalache-bin
 	depends = coreutils
 	depends = util-linux
 	provides = apalache
+	conflicts = apalache
 	source = https://github.com/informalsystems/apalache/releases/download/v0.19.0/apalache-v0.19.0.tgz
 	source = sys-install.patch
 	sha256sums = 3f36e19b868c872a1cdd48f2d793e98c4df55eee55516d9c16a74dae513f2690
