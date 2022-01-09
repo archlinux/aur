@@ -1,12 +1,12 @@
 pkgbase = rum-git
 	pkgdesc = Game library management - master branch
-	pkgver = r326.19e2433
-	pkgrel = 1
+	pkgver = r327.d9da55f
+	pkgrel = 2
 	url = https://johncena141.eu.org:8141/johncena141/rum
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	makedepends = npm
+	makedepends = pnpm
 	makedepends = git
 	makedepends = squashfs-tools
 	makedepends = patchelf

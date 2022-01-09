@@ -1,13 +1,13 @@
 pkgname='rum-git'
 _pkgname=${pkgname%-git}
-pkgver=r326.19e2433
-pkgrel=1
+pkgver=r327.d9da55f
+pkgrel=2
 pkgdesc='Game library management - master branch'
 arch=('x86_64')
 url='https://johncena141.eu.org:8141/johncena141/rum'
 license=('GPL3')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips udev)
-makedepends=(cargo npm git squashfs-tools patchelf)
+makedepends=(cargo pnpm git squashfs-tools patchelf)
 provides=('rum')
 conflicts=('rum')
 replaces=('chad-launcher-git')
@@ -22,9 +22,9 @@ pkgver() {
 build() {
     cd "$srcdir/$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    npm install
-    npm run build
-    npm run tauri build
+    pnpm install
+    pnpm run build
+    pnpm run tauri build
 }
 
 package() {
