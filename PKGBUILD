@@ -3,7 +3,7 @@
 
 pkgname=vimpc-git
 pkgver=0.09.2.r8.gc518610
-pkgrel=1
+pkgrel=2
 pkgdesc="Vi/vim inspired client for Music Player Daemon (MPD)"
 arch=('x86_64')
 url="https://github.com/boysetsfrog/vimpc"
@@ -21,11 +21,13 @@ pkgver() {
 }
 
 build() {
+  cd $pkgname
+
+  ./autogen.sh
+
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  cd $pkgname
-  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
