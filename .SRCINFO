@@ -1,0 +1,14 @@
+pkgbase = python-vbml
+	pkgdesc = Sofisticated object oriented regex-based text parser
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/tesseradecade/vbml
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/v/vbml/vbml-1.1.tar.gz
+	sha256sums = 6926402c79793147daf70ce2c866b086f482eaf6e54369f17d3754b4b414d2f5
+
+pkgname = python-vbml
