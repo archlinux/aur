@@ -1,5 +1,10 @@
 #!/bin/sh
 
 path="/usr/share/applications/Alacritty.desktop"
-sed -i "s|^Exec=|Exec=env WAYLAND_DISPLAY= |" $path
+
+if [[ "$1" = "remove" ]]; then
+	sed -i "s|^Exec=env WAYLAND_DISPLAY= |Exec=|" $path
+else
+	sed -i "s|^Exec=|Exec=env WAYLAND_DISPLAY= |" $path
+fi
 
