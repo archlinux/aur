@@ -1,0 +1,32 @@
+# Maintainer: selpast <selpast@pm.me>
+
+pkgname=qbittorrent-qt5
+pkgver=4.4.0
+pkgrel=1
+pkgdesc='A bittorrent client powered by C++, Qt5 and the good libtorrent library'
+arch=(x86_64)
+url='https://www.qbittorrent.org/'
+license=(custom GPL)
+depends=(hicolor-icon-theme libtorrent-rasterbar qt5-base qt5-svg)
+makedepends=(boost cmake qt5-tools)
+optdepends=('python: needed for torrent search tab')
+conflicts=('qbittorrent')
+provides=('qbittorrent')
+source=(https://downloads.sourceforge.net/sourceforge/qbittorrent/${pkgname%-*}-${pkgver}.tar.xz)
+sha256sums=('6b783a88c7bd567e48cd9f20c67b788776ee2a6d474fe3df4af216acbdfe501b')
+build() {
+  cd ${pkgname%-*}-${pkgver}
+
+  # tell qmake not to break makepkg's debug/!strip options
+  export QBT_ADD_CONFIG='nostrip'
+
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd ${pkgname%-*}-${pkgver}
+
+  make INSTALL_ROOT="${pkgdir}" install
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+}

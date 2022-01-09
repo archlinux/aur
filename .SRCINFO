@@ -1,0 +1,22 @@
+pkgbase = qbittorrent-qt5
+	pkgdesc = A bittorrent client powered by C++, Qt5 and the good libtorrent library
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://www.qbittorrent.org/
+	arch = x86_64
+	license = custom
+	license = GPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = libtorrent-rasterbar
+	depends = qt5-base
+	depends = qt5-svg
+	optdepends = python: needed for torrent search tab
+	provides = qbittorrent
+	conflicts = qbittorrent
+	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.4.0.tar.xz
+	sha256sums = 6b783a88c7bd567e48cd9f20c67b788776ee2a6d474fe3df4af216acbdfe501b
+
+pkgname = qbittorrent-qt5
