@@ -6,7 +6,6 @@ pkgbase = mingw-w64-python-pip
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-python-setuptools
-	makedepends = mingw-w64-python2-setuptools
 	makedepends = fakeroot
 	makedepends = lib32-fakeroot
 	depends = wine
@@ -16,8 +15,3 @@ pkgbase = mingw-w64-python-pip
 pkgname = mingw-w64-python-pip
 	depends = mingw-w64-python
 	optdepends = mingw-w64-python-keyring: for pip.signatures
-
-pkgname = mingw-w64-python2-pip
-	depends = mingw-w64-python2
-	optdepends = mingw-w64-python2-keyring: for pip.signatures
-
