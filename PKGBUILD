@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=megabasterd-git
-pkgver=v7.49.r0.03e1824dd
+pkgver=7.49.r0.03e1824dd
 pkgrel=1
 pkgdesc="MEGA.nz downloader/uploader/streaming suite"
 arch=("any")
@@ -26,12 +26,12 @@ prepare() {
 
 pkgver() {
     cd "$srcdir/${pkgname}"
-    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --tags --long | sed 's/v\([^\.]\)/\1/g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
     cd "$srcdir/${pkgname}"
-    mvn package -Dmaven.repo.local="$srcdir/maven-cache"
+    mvn clean package -Dmaven.repo.local="$srcdir/maven-cache"
 }
 
 package() {

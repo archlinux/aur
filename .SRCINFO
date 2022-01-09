@@ -1,6 +1,6 @@
 pkgbase = megabasterd-git
 	pkgdesc = MEGA.nz downloader/uploader/streaming suite
-	pkgver = v7.49.r0.03e1824dd
+	pkgver = 7.49.r0.03e1824dd
 	pkgrel = 1
 	url = https://github.com/tonikelope/megabasterd
 	arch = any
