@@ -1,8 +1,8 @@
 pkgbase = jspeak
 	pkgdesc = A Text to Speech Reader Front-end that Reads from the Clipboard and with Exceptionable Features
-	pkgver = 2021.12.06
-	pkgrel = 4
-	url = https://github.com/BullShark/JSpeak
+	pkgver = 2021.12.22
+	pkgrel = 1
+	url = https://github.com/BullShark/jspeak
 	arch = any
 	license = GPL3
 	depends = espeak
@@ -82,7 +82,7 @@ pkgbase = jspeak
 	optdepends = mbrola-voices-tr1
 	optdepends = mbrola-voices-tr2
 	optdepends = mbrola-voices-vz1
-	source = https://github.com/BullShark/JSpeak/releases/download/2021.12.22/JSpeak.tbz
+	source = jspeak-2021.12.22.tar.gz::https://github.com/BullShark/jspeak/archive/2021.12.22.tar.gz
 	sha256sums = 320a9cb9cee15179091d7bf92537480bac7f5759b7381e7599a12f8b6ff830a7
 
 pkgname = jspeak
