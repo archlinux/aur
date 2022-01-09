@@ -1,0 +1,16 @@
+pkgbase = cosmos-lens-bin
+	pkgdesc = Lens for Cosmos ecosystem
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/strangelove-ventures/lens
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	provides = cosmos-lens
+	conflicts = cosmos-lens
+	source_x86_64 = https://github.com/strangelove-ventures/lens/releases/download/v0.1.2/lens_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = cfa57ccf860dffc292af2740a4e6d10fe838f3906a0540e9099be8c0b90999ff
+	source_aarch64 = https://github.com/strangelove-ventures/lens/releases/download/v0.1.2/lens_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3c17bec6c1acf134f09c45db3d088e6dfa2dab982707d9e0ec6e10950dbda6ae
+
+pkgname = cosmos-lens-bin
