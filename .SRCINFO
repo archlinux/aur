@@ -15,7 +15,7 @@ pkgbase = squawk
 	depends = qxmpp
 	depends = boost
 	optdepends = kwallet: secure password storage (requires rebuild)
-	source = squawk-0.2.0.tar.gz
-	sha256sums = 8e93d3dbe1fc35cfecb7783af409c6a264244d11609b2241d4fe77d43d068419
+	source = squawk-0.2.0.tar.gz::https://git.macaw.me/attachments/6264b2e6-ed0f-4346-a545-54f337284778
+	sha256sums = 057d6c4e4a05f29d35727fc045dbec74ccda78382316bd6e124da0614f314901
 
 pkgname = squawk
