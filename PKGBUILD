@@ -1,42 +1,36 @@
-# Maintainer: Charles Vejnar
+# Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=phast
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Phylogenetic analysis with space/time models"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://compgen.bscb.cornell.edu/phast"
 license=("BSD")
-makedepends=("cmake")
-source=("http://www.netlib.org/clapack/clapack-3.2.1-CMAKE.tgz" "http://compgen.cshl.edu/phast/downloads/phast.v${pkgver//./_}.tgz")
-sha1sums=("5ea1bcc4314e392bca8b9e5f61d44355cf9f4cc1" "064f409e8e3698484a18731d247e0576213b423b")
+source=("http://www.netlib.org/clapack/clapack.tgz"
+        "https://github.com/CshlSiepelLab/phast/archive/refs/tags/v${pkgver}.tar.gz")
+sha1sums=("8b284658999d1eb71adb6ad521c6118e2db57a99"
+          "bd489a547e40fbaab3b7785b7435f8cf720dc613")
 
 build() {
     # Build CLAPACK
-    cd "$srcdir/clapack-3.2.1-CMAKE"
-    mkdir build
-    cd build
-    cmake ..
-    make
-
-    # Add symbolic links
-    ln -s ./BLAS/SRC/libblas.a blas.a
-    ln -s ./SRC/liblapack.a lapack.a
-    ln -s ./TESTING/MATGEN/libtmglib.a tmglib.a
-    ln -s ./libf2c/libf2c.a F2CLIBS/libf2c.a
-    cp -r ../INCLUDE .
+    cd "$srcdir/CLAPACK-3.2.1"
+    cp make.inc.example make.inc
+    make f2clib
+    make blaslib
+    make lib
 
     # Build Phast
-    cd "$srcdir/phast/src"
-    make CLAPACKPATH=$srcdir/clapack-3.2.1-CMAKE/build
+    cd "$srcdir/phast-${pkgver}/src"
+    make CLAPACKPATH="$srcdir/CLAPACK-3.2.1"
 }
 
 package() {
-    cd "$srcdir/phast/bin"
+    cd "$srcdir/phast-${pkgver}/bin"
     for fname in $(ls -1); do
         install -Dm755 $fname "$pkgdir/usr/bin/$fname"
     done
-    cd "$srcdir/phast/doc/man"
+    cd "$srcdir/phast-${pkgver}/doc/man"
     for fname in $(ls -1); do
         install -Dm644 $fname "$pkgdir/usr/share/man/man1/$fname"
     done
