@@ -1,0 +1,12 @@
+pkgbase = desktop-like-mobile-config-firefox
+	pkgdesc = Mobile configuration for Firefox - minimal changes from desktop
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/kj7rrv/desktop-like-mobile-config-firefox/
+	arch = any
+	license = GPL3
+	depends = firefox
+	source = https://github.com/kj7rrv/desktop-like-mobile-config-firefox/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = 4563f05a07f0d17cc60bac49ec25a0a1499e2a2012727c820878f0dca83d9ddd
+
+pkgname = desktop-like-mobile-config-firefox
