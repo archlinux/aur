@@ -1,7 +1,7 @@
 pkgbase = apache-opennlp
 	pkgdesc = A machine learning-based toolkit for the processing of natural language text
-	pkgver = 1.9.2
-	pkgrel = 2
+	pkgver = 1.9.4
+	pkgrel = 1
 	url = http://opennlp.apache.org/
 	arch = any
 	license = Apache
