@@ -1,8 +1,8 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=funkwhale
-pkgver=1.1.4
-pkgrel=5
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -15,57 +15,57 @@ depends=('ffmpeg'
         'libjpeg'
         'postgresql'
         'python'
-        'python-setuptools'  # >=49
-        'python-django'  # ~= 3.0.8
+        'python-setuptools'  # >=57.4
+        'python-django'  # ~= 3.2.3
         'python-django-environ'  # ~= 0.4.0
-        'python-pillow'  # ~= 7.0.0
+        'python-pillow'  # ~= 8.3.0
         'python-django-allauth'  # ~= 0.42.0
-        'python-psycopg2'  # ~= 2.8.0
-        'python-pytz'  # ~= 2020.1
-        'python-django-redis'  # ~= 4.12.0
+        'python-psycopg2'  # ~= 2.9.1
+        'python-pytz'  # ~= 2021.1
+        'python-django-redis'  # ~= 5.0.0
         'python-redis'  # ~= 3.5.0
-        'python-kombu'  # ~= 4.6.0
-        'python-celery>=5.2'  # ~= 4.4.0
-        'python-django-cors-headers'  # ~= 3.4.0
+        'python-kombu'  # ~= 5.1.0
+        'python-celery>=5.2'  # ~= 5.1.2
+        'python-django-cors-headers'  # ~= 3.8.0
         'python-musicbrainzngs'  # ~= 0.7.1
-        'python-django-rest-framework'  # ~= 3.11.0
-        'python-django-rest-framework-jwt'  # ~= 1.11.0
-        'python-arrow'  # ~= 0.15.5
+        'python-django-rest-framework'  # ~= 3.12.2
+#        'python-django-rest-framework-jwt'  # ~= 1.11.0
+        'python-arrow'  # ~= 1.1.0
         'python-persisting-theory'  # ~= 0.2.0
-        'python-django-versatile-imagefield'  # ~= 2.0.0
-        'python-django-filter'  # ~= 2.3.0
+        'python-django-versatile-imagefield'  # ~= 2.2.0
+        'python-django-filter'  # ~= 2.4.0
         'python-django-rest-auth'  # ~= 0.9.0
-        'ipython'  # ~= 7.10.0
+        'ipython'  # ~= 7.27.0
         'python-mutagen'  # ~= 1.45.0
         'python-pymemoize'  # ~= 1.0.0
         'python-django-dynamic-preferences'  # ~= 1.10
-        'python-raven'  # ~= 6.10.0
+#        'python-raven'  # ~= 6.10.0
         'python-magic-git'  # ~= 0.4.0
-        'python-django-channels'  # ~= 2.4.0
-        'python-django-channels-redis>=3'  # ~= 3.0.0
-        'uvicorn'  # ~= 0.12.0
-        'gunicorn'  # ~= 20.0.0
-        'python-cryptography'  # ~= 2.9.0
+        'python-django-channels'  # ~= 3.0.3
+        'python-django-channels-redis>=3'  # ~= 3.3.0
+        'uvicorn'  # ~= 0.14.0
+        'gunicorn'  # ~= 20.1.0
+        'python-cryptography'  # ~= 3.3.2
         'python-requests-http-signature'  # == 0.0.3
-        'python-django-cleanup'  # ~= 5.0.0
-        'python-requests'  # ~= 2.25.1
-        'python-pyopenssl'  # ~= 19.1.0
+        'python-django-cleanup'  # ~= 5.2.0
+        'python-requests'  # ~= 2.26.0
+        'python-pyopenssl'  # ~= 20.0.1
         'python-ldap'  # ~= 3.3.0
-        'python-django-auth-ldap'  # ~= 2.2.0
-        'python-pydub'  # ~= 0.24.0
-        'python-pyld'  # ~= 1.0.0
+        'python-django-auth-ldap'  # ~= 3.0.0
+        'python-pydub'  # ~= 0.25.1
+        'python-pyld'  # ~= 2.0.3
         'python-aiohttp'  # ~= 3.7.4
-        'python-django-oauth-toolkit'  # ~= 1.3.0
-        'python-django-storages'  # ~= 1.9.0
-        'python-boto3'  # ~= 1.14.0
+        'python-django-oauth-toolkit'  # ~= 1.5.0
+        'python-django-storages'  # ~= 1.11.1
+        'python-boto3'  # ~= 1.17.59
         'python-unicode-slugify-git'  # ~= 0.1.0
-        'python-django-cacheops'  # ~= 5.0.0
+        'python-django-cacheops'  # ~= 6.0.0
+        'python-service-identity'  # ~= 21.1.0
         'python-click'  # ~= 7.1.0
-        'python-service-identity'  # ~= 18.1.0
-        'python-markdown'  # ~= 3.2.0
-        'python-bleach'  # ~= 3.1.0
+        'python-markdown'  # ~= 3.3.4
+        'python-bleach'  # ~= 3.3.0
         'python-feedparser>=6'  # ~= 6.0.0
-        'python-watchdog'  # ~= 1.0.2
+        'python-watchdog'  # ~= 2.1.2
         'python-asgiref_patch'  # ~= 3.4.1 patched
 )
 makedepends=(git)
@@ -82,8 +82,8 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "apache-funkwhale.conf"
         "env-template"
 )
-sha256sums=('c3ea7013ffcbeb4e2832cc596cdccb2e2034b4250a25130aa4dc0d648fe03463'
-            '83e11273159dd617d16483168300768583b14ffb93cbceec5c4dccdfe2d3fb44'
+sha256sums=('d370dd548102be5477a8d6632ea58e6de42d18bce58078e007c471cb8bb4753f'
+            '3725d2aa8563dd8989042a1ee4a57cac2d396b5ad20820815775ae724aa8ff0c'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             'db334d0ac62bc5cbf9b70ee5350ae0364e19253e51fa17c337487778f02d96af'
             '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349'
@@ -97,9 +97,9 @@ install=${pkgname}.install
 prepare() {
   cd "$srcdir"
   ## change path of proxy parameters
-  sed -id 's#/etc/nginx/funkwhale_proxy.conf#/etc/webapps/funkwhale/funkwhale_proxy.conf#' nginx.template
+  sed 's#/etc/nginx/funkwhale_proxy.conf#/etc/webapps/funkwhale/funkwhale_proxy.conf#' nginx.template > nginx.template.patched
   ## remove http2, as it is not always working
-  sed -id 's#443 ssl http2;#443 ssl;#' nginx.template
+  sed -id 's#443 ssl http2;#443 ssl;#' nginx.template.patched
 }
 
 build() {
@@ -121,7 +121,7 @@ package() {
 
   install -d "$pkgdir"/etc/webapps/${pkgname}/config
   install -Dm644 funkwhale_proxy.conf "$pkgdir"/etc/webapps/${pkgname}/.
-  install -Dm644 nginx.template "$pkgdir"/etc/webapps/${pkgname}/.
+  install -Dm644 nginx.template.patched "$pkgdir"/etc/webapps/${pkgname}/nginx.template
   install -Dm644 apache-funkwhale.conf "$pkgdir"/etc/webapps/${pkgname}/.
   install -Dm644 env-template "$pkgdir"/etc/webapps/${pkgname}/env.template
 

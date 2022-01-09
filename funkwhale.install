@@ -5,5 +5,10 @@ post_install() {
 
 post_upgrade() {
   echo "Follow instructions on the upstream page or on the Arch Wiki for updating"
+  #echo "Type the password for the funkwhale user, then environment variables are loaded, static files are collected and the database is migrated."
+  #sudo -u funkwhale -H bash
+  #export $(cat /srv/funkwhale/config/env | grep -v ^# | xargs)
+  #funkwhale_manage collectstatic --no-input
+  #funkwhale_manage migrate
 }
 

@@ -1,7 +1,7 @@
 pkgbase = funkwhale
 	pkgdesc = A community-driven project that lets you listen and share music and audio within a decentralized, open network.
-	pkgver = 1.1.4
-	pkgrel = 5
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://funkwhale.audio/
 	install = funkwhale.install
 	arch = any
@@ -25,7 +25,6 @@ pkgbase = funkwhale
 	depends = python-django-cors-headers
 	depends = python-musicbrainzngs
 	depends = python-django-rest-framework
-	depends = python-django-rest-framework-jwt
 	depends = python-arrow
 	depends = python-persisting-theory
 	depends = python-django-versatile-imagefield
@@ -35,7 +34,6 @@ pkgbase = funkwhale
 	depends = python-mutagen
 	depends = python-pymemoize
 	depends = python-django-dynamic-preferences
-	depends = python-raven
 	depends = python-magic-git
 	depends = python-django-channels
 	depends = python-django-channels-redis>=3
@@ -56,8 +54,8 @@ pkgbase = funkwhale
 	depends = python-boto3
 	depends = python-unicode-slugify-git
 	depends = python-django-cacheops
-	depends = python-click
 	depends = python-service-identity
+	depends = python-click
 	depends = python-markdown
 	depends = python-bleach
 	depends = python-feedparser>=6
@@ -67,18 +65,18 @@ pkgbase = funkwhale
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = mod_xsendfile: needed if Apache server is used
 	optdepends = nginx: to use nginx web server
-	source = funkwhale-1.1.4-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.1.4/download?job=build_api
-	source = funkwhale-1.1.4-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.1.4/download?job=build_front
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.1.4/deploy/funkwhale_proxy.conf
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.1.4/deploy/nginx.template
+	source = funkwhale-1.2.1-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.2.1/download?job=build_api
+	source = funkwhale-1.2.1-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.2.1/download?job=build_front
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.2.1/deploy/funkwhale_proxy.conf
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.2.1/deploy/nginx.template
 	source = funkwhale.service
 	source = funkwhale-beat.service
 	source = funkwhale-server.service
 	source = funkwhale-worker.service
 	source = apache-funkwhale.conf
 	source = env-template
-	sha256sums = c3ea7013ffcbeb4e2832cc596cdccb2e2034b4250a25130aa4dc0d648fe03463
-	sha256sums = 83e11273159dd617d16483168300768583b14ffb93cbceec5c4dccdfe2d3fb44
+	sha256sums = d370dd548102be5477a8d6632ea58e6de42d18bce58078e007c471cb8bb4753f
+	sha256sums = 3725d2aa8563dd8989042a1ee4a57cac2d396b5ad20820815775ae724aa8ff0c
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
 	sha256sums = db334d0ac62bc5cbf9b70ee5350ae0364e19253e51fa17c337487778f02d96af
 	sha256sums = 01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349
