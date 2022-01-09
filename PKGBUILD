@@ -3,7 +3,7 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize-mold
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=("upx: Compress executables"
             "openmp: Parallelize loops"
             "mold: a modern fast linker")
 backup=(etc/makepkg-optimize.conf)
-_buildenv=({pgo,ZZ-lto,graphite,rice,mold}.sh.in)
+_buildenv=({pgo,graphite,rice,mold}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
 _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-param}}_ext,compress-param_max}.conf)
@@ -25,10 +25,10 @@ source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]})
 sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
-          'befd8d13ef5c2ec92f4bc9f3981af8d32e8a6223'
+          '33a314e0c1f965c265cced8548c7d2235052f79d'
           'd7a3801037333c582dba976db27cf8896bc1b401'
           '3a356f52131e39f59d360c54a572d678c7208b42'
-          '83fb4e2bc0a75e91d7db317d221f45a6dc525e8a'
+          '77b84f9ab5ecce37af2f4dce3b94bcfe54a87b00'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
@@ -36,12 +36,12 @@ sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           '2efb74a7743764205d20e0dd74fb5f948673f825'
           '0dbba257ec59dc55583a74da0319d6c210cf717a'
           '1a4f26170da04998f9cba088a63a95fd75c1113e'
-          '386cb4a2c52247bdd1b4a2cd2f804fa8bc8b0b4e'
+          '4cd8012f8946761d7288a198af7edb3ebaf0ece0'
           '9cb1a46ca7c3c6fab8a44ca5355528e9eb9e0650'
           'f17b1a8ccbd807fd59fbc716cc695be32e261e38'
           '3c61762a183a2f76cc2ff2e55cfffb68b6a8320c'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '62ffed4ae52c9b828115633f4d7ccc57b45caed2'
+          '5842bf236a709a2f7aa73bffd8f3dec60e4fbdff'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'

@@ -6,7 +6,7 @@
 [[ -n "$LIBMAKEPKG_BUILDENV_MOLD_SH" ]] && return
 LIBMAKEPKG_BUILDENV_MOLD_SH=1
 
-LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
 
 source "$LIBRARY/util/option.sh"
 
@@ -16,10 +16,8 @@ buildenv_functions+=('buildenv_mold')
 buildenv_mold() {
   if
   check_buildoption "mold" "y"; then
-    moldflags=" -fuse-ld=mold"
-    CFLAGS+="$moldflags"
-    CXXFLAGS+="$moldflags"
-    LDFLAGS+="$moldflags"
-
+    CFLAGS+=" -fuse-ld=mold"
+    CXXFLAGS+=" -fuse-ld=mold"
+    LDFLAGS+=" -fuse-ld=mold"
   fi
 }
