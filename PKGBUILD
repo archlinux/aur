@@ -2,7 +2,7 @@
 
 pkgname=tftpff
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Firewall-friendly TFTP server'
 url='https://github.com/tiqwab/tftpff'
 arch=('x86_64')
@@ -25,7 +25,7 @@ check() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm 644 "pkg/archlinux/tftpff.service" "${pkgdir}/usr/lib/systemd/system"
+    install -Dm 644 "pkg/archlinux/tftpff.service" "${pkgdir}/usr/lib/systemd/system/tftpff.service"
     install -Dm 644 "pkg/archlinux/tftpff.conf" "${pkgdir}/etc/conf.d/tftpff"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
