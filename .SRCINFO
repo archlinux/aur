@@ -1,7 +1,7 @@
 pkgbase = python-findpeaks
 	pkgdesc = Detection of peaks and valleys in vectors and images
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://erdogant.github.io/findpeaks/
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = python-findpeaks
 	depends = python-requests
 	depends = python-scipy
 	depends = python-tqdm
+	depends = python-caerus
 	optdepends = python-opencv: for loading example images
 	source = https://files.pythonhosted.org/packages/source/f/findpeaks/findpeaks-2.4.0.tar.gz
 	source = https://erdogant.github.io/datasets/2dpeaks.zip

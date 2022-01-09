@@ -2,14 +2,14 @@
 
 pkgname=python-findpeaks
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Detection of peaks and valleys in vectors and images"
 url='https://erdogant.github.io/findpeaks/'
 arch=('any')
 license=('MIT' 'LGPL')
 depends=(
   'python-matplotlib' 'python-numpy' 'python-pandas' 'python-peakdetect'
-  'python-requests' 'python-scipy' 'python-tqdm'
+  'python-requests' 'python-scipy' 'python-tqdm' 'python-caerus'
 )
 optdepends=(
   'python-opencv: for loading example images'
