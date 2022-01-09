@@ -2,8 +2,8 @@
 # Maintainer: Egidio Caprino <egidio.caprino@gmail.com>
 
 pkgname=dataloader
-pkgver=53.0.2
-pkgrel=2
+pkgver=54.0.0
+pkgrel=1
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
 url="https://developer.salesforce.com/page/Data_Loader"
@@ -17,7 +17,7 @@ source_x86_64=(git+https://github.com/forcedotcom/dataloader.git)
 md5sums=('b519f96b515793fa80cd820e25d70d68'
          '94f2b99bb9af44899cd4d2ded981fd54'
          '0b9294d4865f364681a79fbbc73dd88a'
-         'b5ee3f35fe3e8475520e76cc58e2f674')
+         'ebb31a3cebd05829384f1fc1dcdb352e')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 
@@ -49,7 +49,7 @@ package() {
   cp "$srcdir/dataloader.svg" "$pkgdir/usr/share/icons/hicolor/48x48/apps/dataloader.svg"
   cp "${swt_jar}" "${pkgdir}/opt/${pkgname}/swt.jar"
 
-  chmod +x "/opt/$pkgname/dataloader.sh"
+  chmod +x "${pkgdir}/opt/$pkgname/dataloader.sh"
   chmod g+x "${pkgdir}/opt/${pkgname}/swt.jar"
   chmod o+x "${pkgdir}/opt/${pkgname}/swt.jar"
 
