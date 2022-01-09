@@ -1,0 +1,14 @@
+pkgbase = razer-nari-pipewire-profile
+	pkgdesc = Razer Nari headsets pipewire profile
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mrquantumoff/razer-nari-pipewire-profile
+	arch = any
+	license = UNKNOWN
+	depends = pipewire-pulse
+	depends = bash
+	conflicts = razer-nari-pulseaudio-profile
+	source = https://github.com/mrquantumoff/razer-nari-pipewire-profile/archive/refs/tags/1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = razer-nari-pipewire-profile
