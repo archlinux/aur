@@ -13,6 +13,17 @@ pkgbase = japokwm-git
 	makedepends = libnotify
 	makedepends = scdoc
 	depends = lua
+	provides = japokwm
+	conflicts = japokwm
+	backup = etc/japokwm/init.lua
+	backup = etc/japokwm/layouts/master/init.lua
+	backup = etc/japokwm/layouts/resize_test/init.lua
+	backup = etc/japokwm/layouts/two_pane/init.lua
+	backup = etc/japokwm/layouts/three_columns/init.lua
+	backup = etc/japokwm/layouts/monocle/init.lua
+	backup = etc/japokwm/layouts/tile/init.lua
+	backup = etc/japokwm/layouts/spiral/init.lua
+	backup = etc/japokwm/layouts/tmp/init.lua
 	source = japokwm::git+https://github.com/werererer/japokwm
 	sha512sums = SKIP
 

@@ -19,6 +19,19 @@ makedepends=(
     "libnotify"
     "scdoc"
         )
+provides=('japokwm')
+conflicts=('japokwm')
+backup=(
+    'etc/japokwm/init.lua'
+    'etc/japokwm/layouts/master/init.lua'
+    'etc/japokwm/layouts/resize_test/init.lua'
+    'etc/japokwm/layouts/two_pane/init.lua'
+    'etc/japokwm/layouts/three_columns/init.lua'
+    'etc/japokwm/layouts/monocle/init.lua'
+    'etc/japokwm/layouts/tile/init.lua'
+    'etc/japokwm/layouts/spiral/init.lua'
+    'etc/japokwm/layouts/tmp/init.lua'
+)
 
 arch=("x86_64")
 source=("$_pkgname::git+https://github.com/werererer/japokwm")
