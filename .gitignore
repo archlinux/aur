@@ -1,7 +1,9 @@
+findpeaks-*.tar.gz
+2dpeaks.zip
+2dpeaks_image.png
 src
 pkg
 *.pkg.tar.xz
 *.pkg.tar.zst
 *.log
-findpeaks
 replace-wget.patch

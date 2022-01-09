@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-findpeaks
-pkgver=2.1.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Detection of peaks and valleys in vectors and images"
 url='https://erdogant.github.io/findpeaks/'
@@ -9,53 +9,56 @@ arch=('any')
 license=('MIT' 'LGPL')
 depends=(
   'python-matplotlib' 'python-numpy' 'python-pandas' 'python-peakdetect'
-  'python-scipy' 'python-tqdm' 'python-requests'
+  'python-requests' 'python-scipy' 'python-tqdm'
 )
 optdepends=(
-  'opencv: for loading example images'
+  'python-opencv: for loading example images'
 )
-makedepends=('git' 'python-setuptools')
-checkdepends=('hdf5' 'opencv' 'qt5-base')
+makedepends=('python-setuptools')
+checkdepends=('python-opencv' 'python-pytest')
+
+_pypi=findpeaks
 source=(
-  "git+https://github.com/erdogant/findpeaks#tag=$pkgver"
-  "replace-wget.patch::https://patch-diff.githubusercontent.com/raw/erdogant/findpeaks/pull/1.patch"
-  'change-opencv-message.patch'
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  'https://erdogant.github.io/datasets/2dpeaks.zip'
+  'https://erdogant.github.io/datasets/2dpeaks_image.png'
+  'change_opencv_message.patch'
+  'include_example_datasets.patch'
 )
 sha256sums=(
-  'SKIP'
-  '4a852ea713017a5292db8963a5a56c373351776e2e9584d2cd5bb1b0b6613f50'
-  'e5285b156bcbe898453fe64f5cb525e59b15c2e2508f363dec091e429a0d6d24'
+  '853ef1816ed37330080d20b777ab38c97ac159e75e65b0238b28addf368f6a4f'
+  'cde41d4a434c2c8d0f7273283796e9d5ed621f6877556cc2504b271e6fe6b329'
+  'ea0f10f39f73363fe5e41b6bac51b33b13213fc1770d510ac29d3dbac661e474'
+  'ba5e571d1d53ad80395aba42d0312a5b681fff02a2a40571fdf773b39f75da61'
+  '5e7ddb7918f98c559c0bc1833250b9194abe9e7b061c96ebe758e642d0a25d50'
 )
 
 prepare() {
-  cd "findpeaks"
-  git apply "$srcdir/replace-wget.patch"
-  patch -p0 -i "$srcdir/change-opencv-message.patch"
+  cd "$_pypi-$pkgver"
+
+  # Don't tell the user to install with pip, just raise the original exception
+  # and let them handle it.
+  patch -p0 -i "$srcdir/change_opencv_message.patch"
+
+  # Move the example datasets into the library source and modify the setup.py
+  # to include them in the built package.
+  cp "$srcdir/2dpeaks_image.png" findpeaks/data
+  cp "$srcdir/2dpeaks.zip" findpeaks/data
+  patch -p0 -i "$srcdir/include_example_datasets.patch"
 }
 
 build() {
-  cd "findpeaks"
+  cd "$_pypi-$pkgver"
   python setup.py build
 }
 
 check() {
-  cd "findpeaks/tests"
-
-  # Run the test function with Matplotlib forced to be non-interactive.
-  PYTHONPATH="../build/lib" PYTHONDONTWRITEBYTECODE=1 python - << EOF
-from test_findpeaks import test_fit
-import matplotlib
-matplotlib.use("Agg")
-test_fit()
-EOF
-
-  # Remove example data downloaded for the tests.
-  cd ../build/lib/findpeaks/data
-  rm 2dpeaks.zip 2dpeaks_image.png
+  cd "$_pypi-$pkgver"
+  pytest -v
 }
 
 package() {
-  cd "findpeaks"
+  cd "$_pypi-$pkgver"
   python setup.py install --root="$pkgdir" --prefix=/usr --skip-build --optimize=1
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
 

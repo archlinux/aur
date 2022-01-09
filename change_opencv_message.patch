@@ -1,0 +1,11 @@
+--- findpeaks/stats.py
++++ findpeaks/stats.py
+@@ -28,7 +28,7 @@  Do not suggest how to install, let the user decide.
+         import cv2
+         return cv2
+     except:
+-        raise ImportError('cv2 must be installed manually. Try to: <pip install opencv-python>')
++        raise
+ 
+ 
+ # %% Scaling
