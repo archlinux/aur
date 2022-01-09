@@ -1,47 +1,45 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgbase='python-anyconfig-git'
-pkgname=('python-anyconfig-git' 'python2-anyconfig-git')
-pkgver=0.9.11.r0.ga24c2c2
+_base=python-anyconfig
+pkgname=${_base}-git
+pkgver=0.12.0.r0.g09af1950
 pkgrel=1
-pkgdesc='Generic access to configuration files in any formats (to be in the future)'
-url='https://github.com/ssato/python-anyconfig'
+pkgdesc="Generic access to configuration files in any formats (to be in the future)"
+url="https://github.com/ssato/${_base}"
 arch=('any')
-license=('MIT')
-provides=('python-anyconfig' 'python2-anyconfig')
-conflicts=('python-anyconfig' 'python2-anyconfig')
-makedepends=('python'
-             'python-setuptools'
-             'python2'
-             'python2-setuptools')
-checkdepends=('python-tox')
-source=("${pkgname%-git}::git+https://github.com/ssato/python-anyconfig")
+license=(MIT)
+provides=("${_base}")
+conflicts=("${_base}")
+depends=(python-toml python-ruamel-yaml python-jinja python-jmespath python-jsonschema)
+makedepends=(python-setuptools git)
+optdepends=(
+  'python-simplejson: Replace standard json backend'
+  'python-yaml: YAML support if ruamel.yaml is not aviliable'
+  'python-anyconfig-bson-backend: BSON support using pymongo'
+  'python-anyconfig-ion-backend: Amazon ion load and dump support'
+  'python-anyconfig-cbor-backend: CBOR support using cbor'
+  'python-anyconfig-cbor2-backend: CBOR support using cbor2'
+  'python-anyconfig-configobj-backend: ConfigObj load and dump support'
+  'python-anyconfig-msgpack-backend: MessagePack load and dump support'
+  'python-anyconfig-json5-backend: Json5 load and dump support'
+  'python-anyconfig-fortios-backend: Fortios load and parse support'
+)
+source=(${_base}::git+${url})
 sha256sums=('SKIP')
 
 pkgver() {
-  cd python-anyconfig
+  cd ${_base}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/RELEASE_//'
 }
 
 build() {
-  cd python-anyconfig
+  cd ${_base}
   python setup.py build
-  python2 setup.py build
 }
 
-package_python-anyconfig-git() {
-  depends=('python')
-  cd python-anyconfig
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE.MIT "${pkgdir}/usr/share/licenses/python-anyconfig-git/LICENSE"
+package() {
+  cd ${_base}
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-package_python2-anyconfig-git() {
-  depends=('python2')
-  cd python-anyconfig
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  mv "${pkgdir}/usr/bin/anyconfig_cli" "${pkgdir}/usr/bin/anyconfig_cli2"
-  mv "${pkgdir}/usr/share/man/man1/anyconfig_cli.1" "${pkgdir}/usr/share/man/man1/anyconfig_cli2.1"
-  install -Dm644 LICENSE.MIT "${pkgdir}/usr/share/licenses/python2-anyconfig-git/LICENSE"
-}
-# vim:set ft=sh ts=2 sw=2 et:

@@ -1,25 +1,30 @@
 pkgbase = python-anyconfig-git
 	pkgdesc = Generic access to configuration files in any formats (to be in the future)
-	pkgver = 0.9.11.r0.ga24c2c2
+	pkgver = 0.12.0.r0.g09af1950
 	pkgrel = 1
 	url = https://github.com/ssato/python-anyconfig
 	arch = any
 	license = MIT
-	checkdepends = python-tox
-	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
+	makedepends = git
+	depends = python-toml
+	depends = python-ruamel-yaml
+	depends = python-jinja
+	depends = python-jmespath
+	depends = python-jsonschema
+	optdepends = python-simplejson: Replace standard json backend
+	optdepends = python-yaml: YAML support if ruamel.yaml is not aviliable
+	optdepends = python-anyconfig-bson-backend: BSON support using pymongo
+	optdepends = python-anyconfig-ion-backend: Amazon ion load and dump support
+	optdepends = python-anyconfig-cbor-backend: CBOR support using cbor
+	optdepends = python-anyconfig-cbor2-backend: CBOR support using cbor2
+	optdepends = python-anyconfig-configobj-backend: ConfigObj load and dump support
+	optdepends = python-anyconfig-msgpack-backend: MessagePack load and dump support
+	optdepends = python-anyconfig-json5-backend: Json5 load and dump support
+	optdepends = python-anyconfig-fortios-backend: Fortios load and parse support
 	provides = python-anyconfig
-	provides = python2-anyconfig
 	conflicts = python-anyconfig
-	conflicts = python2-anyconfig
 	source = python-anyconfig::git+https://github.com/ssato/python-anyconfig
 	sha256sums = SKIP
 
 pkgname = python-anyconfig-git
-	depends = python
-
-pkgname = python2-anyconfig-git
-	depends = python2
-
