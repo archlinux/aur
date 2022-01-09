@@ -3,7 +3,7 @@
 
 pkgname=pmus-git
 pkgver=0.42.r401.g318d75a
-pkgrel=1
+pkgrel=2
 pkgdesc="Practical Music Search is a highly configurable, ncurses-based client for MPD"
 arch=('x86_64')
 url="https://ambientsound.github.io/pms"
@@ -23,6 +23,9 @@ pkgver() {
 build() {
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
+  CFLAGS=${CFLAGS/-Werror=format-truncation/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-truncation/}
 
   cmake -B build -S $pkgname -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
   make -C build

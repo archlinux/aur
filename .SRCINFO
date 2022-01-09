@@ -1,7 +1,7 @@
 pkgbase = pmus-git
 	pkgdesc = Practical Music Search is a highly configurable, ncurses-based client for MPD
 	pkgver = 0.42.r401.g318d75a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ambientsound.github.io/pms
 	arch = x86_64
 	license = GPL
