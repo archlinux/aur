@@ -1,10 +1,10 @@
 pkgbase = python-vkbottle-types
 	pkgdesc = Types for vkbottle
 	pkgver = 5.131.131.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/vkbottle/types
 	arch = any
-	license = MIT
+	license = unknown
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pydantic
