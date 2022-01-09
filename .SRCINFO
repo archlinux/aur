@@ -1,12 +1,11 @@
 pkgbase = local-php-security-checker
 	pkgdesc = PHP security vulnerabilities checker.
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/fabpot/local-php-security-checker
 	arch = x86_64
 	license = AGPL3
-	source = local-php-security-checker-1.0.0::https://github.com/fabpot/local-php-security-checker/releases/download/v1.0.0/local-php-security-checker_1.0.0_linux_amd64
-	sha256sums = e5b12488ca78bc07c149e9352278bf10667b88a8461caac10154f9a6f5476369
+	source = local-php-security-checker-1.2.0::https://github.com/fabpot/local-php-security-checker/releases/download/v1.2.0/local-php-security-checker_1.2.0_linux_amd64
+	sha256sums = c42cf656f21626d22c380b3c503c362b428352e0448137be4708197153473d12
 
 pkgname = local-php-security-checker
-
