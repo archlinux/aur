@@ -1,81 +1,37 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
-
-_name=pybedtools
-pkgbase='python-pybedtools-git'
-pkgname=('python-pybedtools-git' 'python2-pybedtools-git')
-pkgver=0.7.10.r25.g9ab3ff6
-pkgrel=2
-pkgdesc="Python wrapper for the bioinformatics genomic arithmetic tool bedtools"
+_base=pybedtools
+pkgname=python-${_base}-git
+pkgver=0.8.0.r138.gffe0d4b
+pkgrel=1
+pkgdesc="Wrapper around BEDTools for bioinformatics work"
 arch=('any')
-url="https://pypi.python.org/pypi/pybedtools"
-license=('GPL2')
-makedepends=(
-  'python' 'python-setuptools' 'cython'
-  'python2' 'python2-setuptools' 'cython2')
-options=(!emptydirs)
-source=("${_name}"-"${pkgver}"::git+https://github.com/daler/"${_name}".git)
+url="https://github.com/daler/${_base}"
+license=(GPL2)
+depends=(bedtools python-pandas python-pysam)
+makedepends=(cython git)
+optdepends=(
+  'htslib: for working with SAM/BAM/CRAM files'
+  'python-matplotlib: for plotting genomic intervals'
+  'ucsc-kent-genome-tools: for bedgraph to bigwig conversions')
+provides=('python-pyvcf')
+conflicts=('python-pyvcf')
+# options=(!emptydirs)
+source=(git+${url}.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_name}"-"${pkgver}"
+  cd "${_base}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed s'/v//'
 }
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+build() {
+  cd "${_base}"
   python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
 }
 
-package_python2-pybedtools-git() {
-  depends=(
-    'bedtools'
-    'python2'
-    'python2-numpy'
-    'python2-pandas'
-    'python2-pysam'
-    'python2-six')
-  optdepends=(
-    'htslib: for working with SAM/BAM/CRAM files'
-    'python2-matplotlib: for plotting genomic intervals'
-    'ucsc-kent-genome-tools: for bedgraph to bigwig conversions')
-  provides=('python2-pyvcf')
-  conflicts=('python2-pyvcf')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
-
-  sed 's/python/python2/g' "${pkgdir}"/usr/bin/pybedtools
-  mv "${pkgdir}"/usr/bin/pybedtools "${pkgdir}"/usr/bin/pybedtools2
-
-  for script in "${pkgdir}"/usr/bin/*.py;do
-    mv "${script}" "${pkgdir}"/usr/bin/$(basename "${script%.*py}")2.py
-  done
-}
-
-package_python-pybedtools-git() {
-  depends=(
-    'bedtools'
-    'python'
-    'python-numpy'
-    'python-pandas'
-    'python-pysam'
-    'python-six')
-  optdepends=(
-    'htslib: for working with SAM/BAM/CRAM files'
-    'python-matplotlib: for plotting genomic intervals'
-    'ucsc-kent-genome-tools: for bedgraph to bigwig conversions')
-  provides=('python-pyvcf')
-  conflicts=('python-pyvcf')
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+package() {
+  cd "${_base}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
