@@ -1,0 +1,48 @@
+--- caerus/caerus.py
++++ caerus/caerus.py.modified
+@@ -15,7 +15,6 @@   Remove unneeded import.
+ # Custom helpers
+ from caerus.utils.ones2idx import region2idx
+ from caerus.utils.risk_performance_metrics import risk_performance_metrics
+-import wget
+ import os
+ import matplotlib.pyplot as plt
+ pd.options.mode.chained_assignment = None  # default='warn'
+@@ -270,23 +268,15 @@  Load datasets from install directory.
+ 
+         """
+         if name=='facebook':
+-            url='https://erdogant.github.io/datasets/facebook_stocks.zip'
++            PATH_TO_DATA="/usr/share/python-caerus/fb.csv"
+             getfeat='close'
+         else:
+-            url='https://erdogant.github.io/datasets/BTCUSDT.zip'
++            PATH_TO_DATA="/usr/share/python-caerus/BTCUSDT.csv"
+             getfeat='Close'
+ 
+-        curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
+-        PATH_TO_DATA = os.path.join(curpath, wget.filename_from_url(url))
+-
+-        # Create dir
+-        if not os.path.isdir(curpath):
+-            os.makedirs(curpath, exist_ok=True)
+-
+         # Check file exists.
+         if not os.path.isfile(PATH_TO_DATA):
+-            if verbose>=3: print('[caerus] Downloading example dataset..')
+-            wget.download(url, curpath)
++            raise FileNotFoundError(f"Example dataset {name} not available")
+ 
+         # Import local dataset
+         if verbose>=3: print('[caerus] Import dataset..')
+--- setup.py
++++ setup.py
+@@ -13,7 +13,7 @@  wget library is no longer needed.
+ with open("README.md", "r") as fh:
+     long_description = fh.read()
+ setuptools.setup(
+-     install_requires=['wget','matplotlib','numpy','pandas','tqdm'],
++     install_requires=['matplotlib','numpy','pandas','tqdm'],
+      python_requires='>=3',
+      name='caerus',
+      version=new_version,
