@@ -2,8 +2,8 @@
 # https://aur.archlinux.org/packages/port-bin/
 
 pkgname=port
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="A ship runner and manager for Urbit OS"
 arch=("x86_64")
 url="https://github.com/urbit/port"
