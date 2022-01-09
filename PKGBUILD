@@ -3,13 +3,13 @@
 pkgname=python-vkbottle-types
 _pkgname=vkbottle-types
 pkgver=5.131.131.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Types for vkbottle'
 url=https://github.com/vkbottle/types
 arch=(any)
 license=(MIT)
 makedepends=(python-setuptools)
-depends=(python python-pydantic python-vkbottle)
+depends=(python python-pydantic)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('9bebc09bbbf167777bf7c60b0ddee817e5eb63c2d32636dbed2fbe738a1c21f6')
 
