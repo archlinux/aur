@@ -1,12 +1,13 @@
 pkgbase=cgal-swig-bindings
 pkgname=('python-cgal' 'java-cgal')
-pkgver=r621.a04a496
+pkgver=r765.2479e35
 pkgrel=1
 pkgdesc='CGAL bindings using SWIG '
 arch=('i686' 'x86_64')
 license=('custom: Boost')
 url="https://github.com/CGAL/cgal-swig-bindings"
-makedepends=('cgal' 'cmake' 'swig3' 'eigen' 'python' 'java-runtime' 'git')
+makedepends=('cgal-headers' 'cmake' 'swig' 'eigen' 'python' 'java-runtime' 'git')
+depends=('tbb' 'boost')
 source=("git+https://github.com/CGAL/cgal-swig-bindings.git")
 md5sums=('SKIP')
 
@@ -20,7 +21,7 @@ build()
   cd "$srcdir"/cgal-swig-bindings
   mkdir -p build && pushd build
   cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DSWIG_EXECUTABLE=/usr/bin/swig-3 ..
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
   ctest -j2 -R python -E polyline_simplification_2 --output-on-failure
 }
