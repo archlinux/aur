@@ -21,5 +21,5 @@ package() {
     cd "$srcdir"/dock-from-dash/
     mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/dock-from-dash@fthx"
     unzip dock-from-dash@fthx.zip -d "$pkgdir/usr/share/gnome-shell/extensions/dock-from-dash@fthx"
-    chmod 644 -R "$pkgdir/usr/share/gnome-shell/extensions/dock-from-dash@fthx"
+    chmod 755 -R "$pkgdir/usr/share/gnome-shell/extensions/dock-from-dash@fthx"
 }
