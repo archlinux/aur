@@ -1,6 +1,6 @@
 pkgbase = lxi-tools-git
 	pkgdesc = LXI Tools is a collection of software tools for controlling LXI instruments
-	pkgver = r386.7479cad
+	pkgver = r469.f400e5c
 	pkgrel = 1
 	url = https://github.com/lxi/lxi-tools
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = lxi-tools-git
 	makedepends = git
 	makedepends = meson
 	depends = liblxi-git
-	depends = lua52
-	depends = gtk4
+	depends = lua53
+	depends = gtk4>=4.5.0
+	depends = gtksourceview5
 	provides = lxi-tools
 	conflicts = lxi-tools
 	source = lxi-tools-git::git+https://github.com/lxi/lxi-tools
