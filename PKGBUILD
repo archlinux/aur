@@ -1,8 +1,8 @@
 # Maintainer: Que Quotion ( quequotion@bugmenot.com )
-# Contributor: bartus ( aur\at\bartus.33mail.com )
+
 
 pkgname=makepkg-optimize
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
@@ -42,7 +42,7 @@ sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
-          '67801619b39ea4542829a4b715034a9f7ac7cf2c')
+          '5be1195c15c33c477910bca83b29ade3b10a2b10')
 
 prepare() {
   # Use the current makepkg config as a base
