@@ -1,6 +1,6 @@
-# Maintainer: Nico Ramlow <nico@nycode.de>
+# Maintainer: Marie Ramlow <me@nycode.dev>
 pkgname=mcserv
-pkgver=0.0.3
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="CLI utility to manage MC server installations."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/DRSchlaubi/mcserv"
 license=('GPL3')
 options=(!strip)
 source=("https://github.com/DRSchlaubi/mcserv/releases/download/v$pkgver/$pkgname-$pkgver-linux.tar.gz")
-sha256sums=("e47c35472baa84e36878aaadb4c8a9387b23c2395c12004c0e23620890ca7025")
+sha256sums=("4c2f574decd8457e20ae9c990575de2a8091f00c88e3732bc2175b55594a399c")
 
 package() {
 	cd "$srcdir"
