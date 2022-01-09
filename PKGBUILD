@@ -1,33 +1,18 @@
-
-_pipname=wdb.server
-pkgbase=python-wdb.server
-pkgname=('python2-wdb.server' 'python-wdb.server')
-pkgver=3.0.7
+_base=wdb.server
+pkgname=python-${_base}
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="improbable web debugger through WebSockets (server)"
+pkgdesc="An improbable web debugger through WebSockets (server)"
 arch=('any')
-url="http://github.com/Kozea/wdb"
-license=('LGPL3')
-makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://pypi.io/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('816cebeca064e717d5a249d8993c5b47')
+url="http://github.com/Kozea/${_base/.server/}"
+license=(GPL3)
+depends=(python-tornado tornado_systemd python-psutil)
+makedepends=(python-setuptools)
+source=("https://pypi.io/packages/source/${_base:0:1}/${_base}/${_base}-${pkgver}.tar.gz")
+sha512sums=('0792bb50bcf2859878b0f585876e9e35bbfd50dc25e01eb6f1680891543ecc5e836eee38aed1f1dcab90f7ef9723e104310dabd626e167df410fca1609dd320e')
 
-prepare() {
-    cp -R $_pipname-$pkgver python2-$_pipname-$pkgver
-}
-
-package_python2-wdb.server() {
-depends=('python2' 'python2-tornado' 'tornado_systemd' 'python2-psutil')
-
-    cd python2-$_pipname-$pkgver
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-
-}
-
-package_python-wdb.server() {
-depends=('python' 'python-tornado' 'tornado_systemd' 'python-psutil')
-
-    cd $_pipname-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1
-
+package() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
