@@ -1,7 +1,7 @@
 pkgbase = libunity
 	pkgdesc = Library for instrumenting and integrating with all aspects of the Unity shell
 	pkgver = 7.1.4
-	pkgrel = 12
+	pkgrel = 13
 	url = https://launchpad.net/libunity
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = libunity
 	makedepends = gobject-introspection
 	makedepends = intltool
 	makedepends = vala0.44
+	makedepends = icu69-bin
 	depends = dee
 	depends = gtk3
 	depends = libdbusmenu-glib
