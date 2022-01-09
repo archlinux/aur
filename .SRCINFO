@@ -1,17 +1,17 @@
 pkgbase = python-django-oauth-toolkit
 	pkgdesc = OAuth2 Provider for Django
-	pkgver = 1.3.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/jazzband/django-oauth-toolkit
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-django>=2.1
+	depends = python-django
 	depends = python-requests
 	depends = python-oauthlib
+	depends = python-jwcrypto
 	options = !emptydirs
-	source = https://github.com/jazzband/django-oauth-toolkit/archive/1.3.3.zip
-	sha256sums = 89fe1067ee79096037fef29eae5fab4aa083c0c38c53a530448eb9ad4156a289
+	source = https://github.com/jazzband/django-oauth-toolkit/archive/1.5.0.zip
+	sha256sums = 82347e1486a1d665638bc3c662e6810b6239152d9c4a3aafa31b16a3305fcde4
 
 pkgname = python-django-oauth-toolkit
-
