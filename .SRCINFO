@@ -1,7 +1,7 @@
 pkgbase = ds9
 	pkgdesc = SAOImage DS9: Astronomical Data Visualization Application
 	pkgver = 8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hea-www.harvard.edu/RD/ds9/
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,7 @@ pkgbase = ds9
 	makedepends = zip
 	provides = ds9
 	options = !strip
+	options = !lto
 	source = https://github.com/SAOImageDS9/SAOImageDS9/archive/v8.3.tar.gz
 	source = ds9.desktop
 	source = ds9.png
