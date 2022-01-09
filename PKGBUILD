@@ -1,12 +1,13 @@
 pkgname=cfetch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A shitty fetch written in C99"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ItzAfroBoy/cfetch"
 license=('GPL3')
+depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('4e97c99a6ee8c840c3833fd52655b37b')
+md5sums=('cd2350d30efb404c96e765ea002ee9c7')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -15,8 +16,5 @@ build() {
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	mkdir -p "${pkgdir}/usr/bin"
-	make BIN="${pkgdir}/usr/bin" install
+	install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin/"
 }
