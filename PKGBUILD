@@ -2,8 +2,8 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize
-pkgver=18
-pkgrel=4
+pkgver=19
+pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -14,7 +14,7 @@ optdepends=("upx: Compress executables"
             "svgo: Optimize SVG files"
             "openmp: Parallelize loops")
 backup=(etc/makepkg-optimize.conf)
-_buildenv=({pgo,ZZ-lto,graphite,rice}.sh.in)
+_buildenv=({pgo,graphite,rice}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
 _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-param}}_ext,compress-param_max}.conf)
@@ -23,9 +23,8 @@ source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]})
 sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
-          '61c765080f3d41dbae15be9212667f9e6364550b'
           'd7a3801037333c582dba976db27cf8896bc1b401'
-          'c99d9cb49dd31924a1cb298bcfe142cef31a9fd3'
+          'c40dd9d5e60a939861de6f17a94aca965d3f57f3'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
@@ -38,7 +37,7 @@ sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           'eef21d80145bf64133206beba26fd7fab5a8f5bc'
           '2e2cd8c680a86518652543fda9092bf2ab594660'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '540ce964ef6f3bdda1d7b7fd6297866b1ee895b1'
+          'bce04a9513419bc70ae9b61bb70aa40528334eca'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
