@@ -5,7 +5,7 @@
 # See .contrib for older/other contributors
 
 pkgname=eric
-pkgver=21.9
+pkgver=21.11
 pkgrel=1
 pkgdesc="A full-featured Python and Ruby IDE in PyQt"
 arch=('any')
@@ -26,4 +26,4 @@ package_eric() {
 	find "${pkgdir}" -name '*.desktop' -exec sed -i "s|${pkgdir}||g" {} \;
 }
 
-sha256sums=('d510d36805e7de8a79d8da1ba6b6cf64a8bbc98ba92ad12c494e5e2617af60b7')
+sha256sums=('fdc62c8360b704d4ad38aba56898917f4d5ad1f5a01adc4d1a67648b23c28418')
