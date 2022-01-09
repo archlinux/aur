@@ -9,7 +9,7 @@ _pkgver='0.5.1'
 _tag_ver="v${_pkgver}"
 pkgver=${_pkgver//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=9
+pkgrel=10
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 makedepends=()
@@ -20,7 +20,7 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 # "PKGBUILD.sig")
-sha256sums=('15e37576af97ea8426b430a59c17b19505e747876581ffbc894d4ba8ec98ff7c')
+sha256sums=('47ae1cd9e5f5ce848a6af23283480c9b8febcb8ae7b77127673d7edb1000d40a')
 sha256sums_i686=('6c600e33593e2b4053c5d08fdeb5cedcde425f019e4fc7b2d0b3b3adb7f322f6')
 sha256sums_x86_64=('c661fb78caa9dae961800069b188f8035b36cc151fe5665c8eb59c16da7c5781')
 sha256sums_aarch64=('bc5c2227de16bc71d16c73cafcdf071c9f6c40f715d9c5416bea66dcc5659eed')
@@ -39,8 +39,9 @@ source_armv7l=( ${source_arm[@]} )
 source_armv7h=( ${source_arm[@]} )
 source_i686=("${_release_url}-386.tar.gz")
 
-#tar -czvf skywire-scripts.tar.gz skywire-scripts
-#updpkgsums
+## compress scripts archive & update checksums
+#  tar -czvf skywire-scripts.tar.gz skywire-scripts && updpkgsums
+#  updpkgsums
 
 package() {
 _msg2 'creating dirs'
