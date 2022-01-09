@@ -1,33 +1,18 @@
-
-_pipname=wdb
-pkgbase=python-wdb
-depends=('python' 'python-log_colorizer' 'python-jedi')
-pkgname=('python2-wdb' 'python-wdb')
-pkgver=2.1.3
+_base=wdb
+pkgname=python-${_base}
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="An improbable web debugger through WebSockets (client only)"
 arch=('any')
-url="http://github.com/Kozea/wdb"
-license=('LGPL3')
-makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('440d0d88210c06d52da11f89959a70ec')
+url="http://github.com/Kozea/${_base}"
+license=(GPL3)
+depends=(python-log_colorizer python-jedi)
+makedepends=(python-setuptools)
+source=("https://pypi.io/packages/source/${_base:0:1}/${_base}/${_base}-${pkgver}.tar.gz")
+sha512sums=('0792bb50bcf2859878b0f585876e9e35bbfd50dc25e01eb6f1680891543ecc5e836eee38aed1f1dcab90f7ef9723e104310dabd626e167df410fca1609dd320e')
 
-prepare() {
-    cp -R $_pipname-$pkgver python2-$_pipname-$pkgver
+package() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
-
-package_python2-wdb() {
-depends=('python2' 'python2-log_colorizer' 'python2-jedi')
-
-    cd python2-$_pipname-$pkgver
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-}
-
-package_python-wdb() {
-depends=('python' 'python-log_colorizer' 'python-jedi')
-
-    cd $_pipname-$pkgver 
-    python setup.py install --root="$pkgdir/" --optimize=1
-}
-

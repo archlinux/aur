@@ -1,25 +1,14 @@
 pkgbase = python-wdb
 	pkgdesc = An improbable web debugger through WebSockets (client only)
-	pkgver = 2.1.3
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://github.com/Kozea/wdb
 	arch = any
-	license = LGPL3
-	makedepends = python2-setuptools
+	license = GPL3
 	makedepends = python-setuptools
-	depends = python
 	depends = python-log_colorizer
 	depends = python-jedi
-	source = https://pypi.python.org/packages/source/w/wdb/wdb-2.1.3.tar.gz
-	md5sums = 440d0d88210c06d52da11f89959a70ec
-
-pkgname = python2-wdb
-	depends = python2
-	depends = python2-log_colorizer
-	depends = python2-jedi
+	source = https://pypi.io/packages/source/w/wdb/wdb-3.3.0.tar.gz
+	sha512sums = 0792bb50bcf2859878b0f585876e9e35bbfd50dc25e01eb6f1680891543ecc5e836eee38aed1f1dcab90f7ef9723e104310dabd626e167df410fca1609dd320e
 
 pkgname = python-wdb
-	depends = python
-	depends = python-log_colorizer
-	depends = python-jedi
-
