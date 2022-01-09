@@ -1,7 +1,7 @@
 pkgbase = yutto
 	pkgdesc = 一个可爱且任性的 B 站视频下载器
 	pkgver = 2.0.0b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SigureMo/yutto
 	arch = any
 	license = GPL3
