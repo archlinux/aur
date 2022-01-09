@@ -4,14 +4,14 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
 ## Major kernel version
 _major=5.15
 ## Minor kernel version
-_minor=12
+_minor=13
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -39,7 +39,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('7de919772b62647591527e904e3b3583783381a29d812404f58a222484e751a0'
+sha256sums=('0a131b6a2f9f5ee37ecb332b5459ab35a87f0bf2d4ec923988d0663646cf156a'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -112,10 +112,6 @@ prepare() {
   msg2 "Disable NUMA..."
   scripts/config --disable CONFIG_NUMA
 
-  ### Protect Operations Under Memory Pressure
-  msg2 "Setting memory pressure to a higher value..."
-  scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 524288
-
   ### Set performance as default governor
   msg2 "Setting performance governor..."
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
@@ -139,16 +135,6 @@ prepare() {
   ### Enable Futex 2 (Fsync 2) Support
   msg2 "Enable Futex2 support..."
   scripts/config --enable CONFIG_FUTEX2
-  
-  ### Enable The New NTFS3 Kernel Driver
-  msg2 "Enabling The New NTFS3 Kernel Driver"
-  scripts/config --module CONFIG_NTFS_FS
-  scripts/config --disable CONFIG_NTFS_DEBUG
-  scripts/config --enable CONFIG_NTFS_RW
-  scripts/config --module CONFIG_NTFS3_FS
-  scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
-  scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
-  scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
   
   ### Enable Full Tickless Timer
   msg2 "Enabling Full Tickless..."
