@@ -1,7 +1,7 @@
 # Maintainer Willy Reinhardt <dev@kurdy.ch>
 
 pkgname=r-sha3sum
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="sha3 cli (build using Rust): Print or check SHA3 digests. Commands and options are similar to the GNU Linux command shaXXXsum."
 url="https://gitlab.com/kurdy/sha3sum"
