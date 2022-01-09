@@ -1,0 +1,16 @@
+pkgbase = stuffit-bin
+	pkgdesc = Decompress .SIT archives for System 7 era Macintoshes, by Aladdin Systems, Inc., from 2001
+	pkgver = 5.2.0.611
+	pkgrel = 1
+	url = http://www.aladdinsys.com
+	arch = any
+	license = unknown
+	provides = stuff
+	provides = unstuff
+	conflicts = stuff
+	conflicts = unstuff
+	options = !strip
+	source = http://web.archive.org/web/20060205025441/http://www.stuffit.com/downloads/files/stuffit520.611linux-i386.tar.gz
+	sha256sums = c53ff401a98dab1c262d672f2214dfea2c16bc300f0eaa719ff3d46b66256223
+
+pkgname = stuffit-bin
