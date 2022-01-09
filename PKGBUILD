@@ -15,5 +15,3 @@ package(){
     PIP_CONFIG_FILE=/dev/null 
     pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
-
-
