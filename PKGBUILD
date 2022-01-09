@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=dolphin-megasync-git
-pkgver=v4.0.2.0.1.g2dec1949
+pkgver=4.6.2.0.6.g29453fdca
 pkgrel=1
 pkgdesc="Upload your files to your Mega account from Dolphin file manager. (GIT Version)"
 arch=('x86_64')
@@ -15,6 +15,8 @@ makedepends=('extra-cmake-modules'
              'qt5-tools'
              'git'
              )
+provides=('dolphin-megasync')
+conflicts=('dolphin-megasync')
 source=('git+https://github.com/meganz/MEGAsync.git'
         'kf5.patch'
         )
@@ -24,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd MEGAsync
-  echo "$(git describe --long --tags | tr - . | tr _ . | sed 's|OSX\.||' | sed 's|Win\.||' | sed 's|Linux\.||' | sed 's|Ubuntu\.18\.10build\.||g' )"
+  echo "$(git describe --long --tags | tr - . | tr _ . | sed 's|OSX\.||' | sed 's|Win\.||' | sed 's|Linux\.||' | sed 's|\.Ubuntu\.18\.10build||g' | sed 's|CentOS7\.||g' | tr -d v)"
 }
 
 prepare() {
