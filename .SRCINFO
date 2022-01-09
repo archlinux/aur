@@ -1,0 +1,18 @@
+pkgbase = docker-machine-gitlab-bin
+	pkgdesc = Docker Machine (GitLab's fork)
+	pkgver = 0.16.2.13
+	pkgrel = 1
+	url = https://gitlab.com/gitlab-org/ci-cd/docker-machine
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	provides = docker-machine
+	conflicts = docker-machine
+	source = docker-machine-gitlab-bin-0.16.2.13-LICENSE::https://gitlab.com/gitlab-org/ci-cd/docker-machine/-/raw/v0.16.2-gitlab.13/LICENSE
+	sha256sums = 552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243
+	source_x86_64 = docker-machine-gitlab-bin-0.16.2.13-x86_64::https://gitlab-docker-machine-downloads.s3.amazonaws.com/v0.16.2-gitlab.13/docker-machine-Linux-x86_64
+	sha256sums_x86_64 = a955ac607034303e400c51b73bbb5665700d583a259a76aae72d0140543b9793
+	source_aarch64 = docker-machine-gitlab-bin-0.16.2.13-aarch64::https://gitlab-docker-machine-downloads.s3.amazonaws.com/v0.16.2-gitlab.13/docker-machine-Linux-aarch64
+	sha256sums_aarch64 = 5d7127da56b3092f166863071d79104088ca5fcac78fea54555448ce90c85078
+
+pkgname = docker-machine-gitlab-bin
