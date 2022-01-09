@@ -4,7 +4,7 @@
 
 _pkgname='wormhole-william'
 pkgname="${_pkgname}-bin"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Securely transfer files between devices. Go implementation of magic wormhole.'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -19,11 +19,11 @@ source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pk
 source_armv7h=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm7")
 source_aarch64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 
-sha256sums=('51077e6798e4c8aa8444b77c0981601344d64d4f3537a84f49e743ab295f3c58'
+sha256sums=('038dd1af9f5ff03d5c0d8d4f0afc975d18d4559f46abe95c56e17023ad912157'
             'ee47201dec4798fed875d8768ebfd04f186a74f1bbffe315a0c96b423331f462')
-sha256sums_x86_64=('11c8f74102fc03c843c1f290606086a5be53803e804ad21e3722fe86feda6127')
-sha256sums_armv7h=('3734b45a495092bbf0eda3a069facfaa509a6add7448e82d3bed71a8f9a4e37d')
-sha256sums_aarch64=('14fde996713a92481c7f45c0ec378ebf8d09f8517ef546f28d1da2d08c53a0d7')
+sha256sums_x86_64=('68bd9d4e94a01f237bd65d79c81db054269cc4acf034b8ea52bcd220f08d0d47')
+sha256sums_armv7h=('de9d68d47f9743f6d9653aad5fdbcc329e85c5aa470172603285bbee00f5e2d9')
+sha256sums_aarch64=('f725f669f6a0261fe542af037f0b4346b2c6bfb99b527dac4ca5f100c67a1ca1')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
