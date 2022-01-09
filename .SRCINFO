@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-qt5
 	pkgdesc = An advanced BitTorrent client programmed in C++, based on Qt5 toolkit and libtorrent-rasterbar
 	pkgver = 4.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.qbittorrent.org
 	arch = x86_64
 	license = custom
@@ -17,6 +17,8 @@ pkgbase = qbittorrent-qt5
 	provides = qbittorrent
 	conflicts = qbittorrent
 	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.4.0.tar.xz
-	sha256sums = 6b783a88c7bd567e48cd9f20c67b788776ee2a6d474fe3df4af216acbdfe501b
+	validpgpkeys = D8F3DA77AAC6741053599C136E4A2D025B7CC9A2
+	sha256sums = 6b783a88c7bd567e48cd9f20c67b788776ee2a6d474fe3df4af216acbdfe501b,
+	sha256sums = SKIP
 
 pkgname = qbittorrent-qt5
