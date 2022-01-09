@@ -2,7 +2,7 @@
 # Maintainer: monosans
 # Based on wlroots-git PKGBUILD
 pkgname=wlroots-eglstreams-git
-pkgver=0.14.1.r5292.7660c545
+pkgver=0.16.0.r5319.f4578db2
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library with EGLStreams support (git version)'
@@ -32,19 +32,27 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+md5sums=('SKIP')
 
-pkgver () {
-	cd "${pkgname}"
-	echo ${pkgver%%.r*}.r"$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
-}
-
-build () {
+prepare () {
 	arch-meson \
 		--buildtype=release \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
+}
+
+pkgver () {
+	(
+		set -o pipefail
+		meson introspect --projectinfo build \
+		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
+		cd "${pkgname}"
+		printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
+build () {
 	meson compile -C build
 }
 

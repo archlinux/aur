@@ -1,6 +1,6 @@
 pkgbase = wlroots-eglstreams-git
 	pkgdesc = Modular Wayland compositor library with EGLStreams support (git version)
-	pkgver = 0.14.1.r5292.7660c545
+	pkgver = 0.16.0.r5319.f4578db2
 	pkgrel = 1
 	url = https://github.com/danvd/wlroots-eglstreams
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = wlroots-eglstreams-git
 	depends = vulkan-validation-layers
 	depends = xorg-xwayland
 	provides = libwlroots.so
-	provides = wlroots=0.14.1
+	provides = wlroots=0.16.0
 	provides = wlroots-git
 	conflicts = wlroots
 	conflicts = wlroots-git
 	source = wlroots-eglstreams-git::git+https://github.com/danvd/wlroots-eglstreams
-	sha512sums = SKIP
+	md5sums = SKIP
 
 pkgname = wlroots-eglstreams-git
