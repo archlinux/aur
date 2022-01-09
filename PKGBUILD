@@ -12,7 +12,7 @@ makedepends=(boost cmake qt5-tools)
 optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent')
 provides=('qbittorrent')
-source=(https://downloads.sourceforge.net/sourceforge/qbittorrent/${pkgname%-*}-${pkgver}.tar.xz)
+source=(https://downloads.sourceforge.net/sourceforge/qbittorrent/${pkgname%-*}-${pkgver}.tar.xz{,.asc})
 sha256sums=('6b783a88c7bd567e48cd9f20c67b788776ee2a6d474fe3df4af216acbdfe501b',
             'SKIP')
 validpgpkeys=('D8F3DA77AAC6741053599C136E4A2D025B7CC9A2')

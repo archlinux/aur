@@ -17,6 +17,7 @@ pkgbase = qbittorrent-qt5
 	provides = qbittorrent
 	conflicts = qbittorrent
 	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.4.0.tar.xz
+	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.4.0.tar.xz.asc
 	validpgpkeys = D8F3DA77AAC6741053599C136E4A2D025B7CC9A2
 	sha256sums = 6b783a88c7bd567e48cd9f20c67b788776ee2a6d474fe3df4af216acbdfe501b,
 	sha256sums = SKIP
