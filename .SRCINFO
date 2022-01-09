@@ -6,6 +6,7 @@ pkgbase = hermes-bin
 	arch = x86_64
 	license = Apache
 	provides = hermes
+	conflicts = hermes
 	source = https://github.com/informalsystems/ibc-rs/releases/download/v0.9.0/hermes-v0.9.0-x86_64-unknown-linux-gnu.tar.gz
 	source = https://raw.githubusercontent.com/informalsystems/ibc-rs/v0.9.0/LICENSE
 	sha256sums = 31785abb8c2ab2bee68ff3003080d049ea9b702a43ce8f8a937bf8df5370c3e6

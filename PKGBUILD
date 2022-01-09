@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://${_pkgname}.informal.systems/"
 license=('Apache')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=(
     "https://github.com/informalsystems/${_reponame}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch}-unknown-linux-gnu.tar.gz"
     "https://raw.githubusercontent.com/informalsystems/${_reponame}/v${pkgver}/LICENSE"
