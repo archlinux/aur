@@ -1,13 +1,13 @@
 pkgbase = vnstat-client
 	pkgdesc = GUI Client for vnStat Network Monitor for Linux or GNU/Linux
-	pkgver = 22.1.6
+	pkgver = 22.1.9
 	pkgrel = 1
 	url = https://github.com/Hulxv/vnstat-client
 	arch = x86_64
 	license = MIT
 	depends = vnstat
 	depends = electron>=15.0.0
-	source = https://github.com/Hulxv/vnstat-client/releases/download/v22.1.6/vnstat-client-22.1.6.pacman
+	source = https://github.com/Hulxv/vnstat-client/releases/download/v22.1.9/vnstat-client-22.1.9.pacman
 	md5sums = SKIP
 
 pkgname = vnstat-client
