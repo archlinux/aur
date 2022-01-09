@@ -6,7 +6,6 @@ pkgbase = notmuch-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = python2
 	makedepends = python
 	makedepends = python-sphinx
 	makedepends = emacs
@@ -48,14 +47,6 @@ pkgname = notmuch-python-git
 	provides = notmuch-python
 	conflicts = notmuch-python
 
-pkgname = notmuch-python2-git
-	pkgdesc = Python2 bindings for notmuch
-	arch = any
-	depends = notmuch-runtime
-	optdepends = python2: for using the python2 bindings
-	provides = notmuch-python2
-	conflicts = notmuch-python2
-
 pkgname = notmuch-ruby-git
 	pkgdesc = Ruby bindings for notmuch
 	arch = i686
@@ -84,4 +75,3 @@ pkgname = notmuch-mutt-git
 	depends = perl-file-which
 	provides = notmuch-mutt
 	conflicts = notmuch-mutt
-
