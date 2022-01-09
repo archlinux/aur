@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.5.beta9.r0.gc5af19568c
+pkgver=9.5.rc0.r0.g38323507f6
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -55,18 +55,14 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         latte-count.patch
         test-optional.patch
         sagemath-lrcalc2.patch
-        sagemath-singular-4.2.1.p1.patch
         sagemath-linbox-1.7.patch
-        sagemath-python3.10.patch
         sagemath-bliss-0.77.patch)
 sha256sums=('SKIP'
             'eee5fa15d8c7be7e009166dbde3ea24bb10d7793dc12880516f278f86b1a6694'
             '2f310081357996b7d3bf813e63d07c0fc04d6724adbfbd1beeb554e9476e2e4c'
             'd1310321bf07491658e83087a6ddb0011738fa17a1dc3275d6d5c6907eaf3df8'
-            '8534700f78690a9f1b07df25b281138ed870fdfb70ab4df3818df79d5468ec9f'
-            '1f0c44a4998ed239a3d77e3028b98b6f2c28a95e9bb4b8557523cc8f12ffba34'
+            'c8a1fb98f454dfd52101373e478e396d83a7d55c2c658b1d246a86603cbb15e8'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
-            'b9ca4fb0e3083e73560df5f0aca7e87d7aa8c05eca3eea49c704bcee102919c7'
             '49ede468b8e1e7b8d7a390aab9ff1a6e899a0c5e487632cbf76902d80c637505')
 
 pkgver() {
@@ -80,12 +76,8 @@ prepare(){
 # Upstream patches
 # Replace lrcalc.pyx with a wrapper over lrcalc's python bindings https://trac.sagemath.org/ticket/31355
   patch -p1 -i ../sagemath-lrcalc2.patch
-# Fix build with singular 4.2.1.p1 https://trac.sagemath.org/ticket/32907
-  patch -p1 -i ../sagemath-singular-4.2.1.p1.patch
 # Fix build with linbox 1.7 https://trac.sagemath.org/ticket/32959
   patch -p1 -i ../sagemath-linbox-1.7.patch
-# Fix tests with Python 3.10 https://trac.sagemath.org/ticket/30766
-  patch -p1 -i ../sagemath-python3.10.patch
 # Fix build with bliss 0.77 https://trac.sagemath.org/ticket/33010
   patch -p1 -i ../sagemath-bliss-0.77.patch
 

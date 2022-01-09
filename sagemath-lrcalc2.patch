@@ -227,12 +227,12 @@ index 0000000000..a6a7b9cd72
 @@ -0,0 +1 @@
 +standard
 diff --git a/build/pkgs/sagelib/dependencies b/build/pkgs/sagelib/dependencies
-index 1ba845c8f2..cb57fe3859 100644
+index 9c7797b1f4..3369d4d905 100644
 --- a/build/pkgs/sagelib/dependencies
 +++ b/build/pkgs/sagelib/dependencies
 @@ -1,4 +1,4 @@
--FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount primecountpy pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
-+FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc_python libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount primecountpy pycygwin $(PYTHON) ratpoints rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
+-FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount primecountpy pycygwin $(PYTHON) ratpoints requests rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
++FORCE $(SCRIPTS) arb boost_cropped $(BLAS) brial cliquer cypari cysignals cython ecl eclib ecm flint libgd gap giac givaro glpk gmpy2 gsl iml jinja2 jupyter_core lcalc lrcalc_python libbraiding libhomfly libpng linbox m4ri m4rie memory_allocator mpc mpfi mpfr $(MP_LIBRARY) ntl numpy pari pip pkgconfig planarity ppl pplpy primesieve primecount primecountpy pycygwin $(PYTHON) ratpoints requests rw sage_conf singular symmetrica zn_poly $(PCFILES) | $(PYTHON_TOOLCHAIN) sage_setup
  
  ----------
  All lines of this file are ignored except the first.
