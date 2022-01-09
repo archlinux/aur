@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://github.com/${_orgname}/${_pkgname}"
 license=('Apache')
 provides=(${_pkgname})
+conflicts=(${_pkgname})
 source_x86_64=(
 	"https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip"
 	"https://raw.githubusercontent.com/${_orgname}/${_pkgname}/v${pkgver}/LICENSE"
