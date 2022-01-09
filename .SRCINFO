@@ -5,6 +5,7 @@ pkgbase = python-gspread-git
 	url = https://github.com/burnash/gspread
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python-requests
 	depends = python-google-auth-oauthlib
 	provides = python-gspread
