@@ -1,21 +1,14 @@
 pkgbase = python-log_colorizer
 	pkgdesc = Python logging formatter and handler
-	pkgver = 1.8.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Kozea/log_colorizer
 	arch = any
 	license = BSD
-	checkdepends = python-pytest-runner
-	checkdepends = python2-pytest-runner
+	checkdepends = python-pytest
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-log_colorizer-1.8.5.tar.gz::https://github.com/Kozea/log_colorizer/archive/1.8.5.tar.gz
-	source = LICENSE
-	sha256sums = abc32c3832cde0a45b80af503c7e4a592747565cb520c7c6e374fdd21173407e
-	sha256sums = f2dd41cf835899bee66416c983c98c1057658d113fd5364549f41affe4e200be
+	depends = python
+	source = python-log_colorizer-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/l/log_colorizer/log_colorizer-2.0.0.tar.gz
+	sha256sums = 8659944cf14b0d46c0c702a3379989bd836b02abbc4150cdf031b8ed5c96c605
 
 pkgname = python-log_colorizer
-	depends = python
-
-pkgname = python2-log_colorizer
-	depends = python2
