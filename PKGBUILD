@@ -21,5 +21,5 @@ sha256sums=(
 
 package() {
 	install -D "${_pkgname}d-v${pkgver}-linux-amd64" "$pkgdir/usr/bin/${_pkgname}d"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -m644 -Dt "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
