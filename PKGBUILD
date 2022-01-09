@@ -19,5 +19,5 @@ sha256sums=(
 
 package() {
 	install -Dt "$pkgdir/usr/local/bin" "$_pkgname"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -m644 -Dt "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
