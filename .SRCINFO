@@ -1,0 +1,24 @@
+pkgbase = datcord-bin
+	pkgdesc = open-source discord client.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/gamingdoom/datcord
+	arch = x86_64
+	license = MPL
+	depends = gtk3
+	depends = mime-types
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = nss
+	depends = ttf-font
+	depends = libpulse
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	optdepends = xdg-desktop-portal: Screensharing with Wayland
+	source = https://github.com/gamingdoom/datcord/releases/latest/download/datcord-x86_64-linux.tar.bz2
+	sha256sums = SKIP
+
+pkgname = datcord-bin

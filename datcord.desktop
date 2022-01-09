@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Datcord
+Exec=datcord
+Icon=/usr/share/icons/hicolor/256x256/apps/datcord.png
+Type=Application
+Categories=Chat
