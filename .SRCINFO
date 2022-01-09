@@ -1,7 +1,7 @@
 pkgbase = mythtv-indicator-bzr
 	pkgdesc = MythTV panel indicator
 	pkgver = r9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mythtv.org/wiki/MythTV-indicator
 	arch = any
 	license = GPL3
@@ -15,10 +15,9 @@ pkgbase = mythtv-indicator-bzr
 	depends = python2-lxml
 	depends = python2-pillow
 	depends = python2-simplejson
-	provides = mythtv-indicator-bzr
-	conflicts = mythtv-indicator-bzr
+	provides = mythtv-indicator
+	conflicts = mythtv-indicator
 	source = mythtv-indicator-bzr::bzr+http://bazaar.launchpad.net/~r-d-vaughan/mythtv-indicator/trunk/
 	md5sums = SKIP
 
 pkgname = mythtv-indicator-bzr
-

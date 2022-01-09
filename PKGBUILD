@@ -2,15 +2,15 @@
 
 pkgname=mythtv-indicator-bzr
 pkgver=r9
-pkgrel=3
+pkgrel=4
 pkgdesc="MythTV panel indicator"
 url="http://www.mythtv.org/wiki/MythTV-indicator"
 license=('GPL3')
 arch=('any')
 depends=('gtk3' 'libappindicator-gtk3' 'libnotify' 'python2-dateutil' 'python2-gobject' 'python2-lxml' 'python2-pillow' 'python2-simplejson')
 makedepends=('bzr' 'python-dulwich')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-bzr}")
+conflicts=("${pkgname%-bzr}")
 source=($pkgname::bzr+http://bazaar.launchpad.net/~r-d-vaughan/mythtv-indicator/trunk/)
 md5sums=('SKIP')
 
