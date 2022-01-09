@@ -5,8 +5,8 @@ pkgname=${_pkgname}-git
 pkgver=2.4.1+47+g536586c
 pkgrel=1
 pkgdesc="Display indicators in the Xfce4 panel"
-arch=('i686' 'x86_64')
-url="http://goodies.xfce.org/projects/panel-plugins/$_pkgname"
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
+url="https://goodies.xfce.org/projects/panel-plugins/${_pkgname}"
 license=('GPL')
 depends=('hicolor-icon-theme'
          'libindicator-gtk2'
@@ -37,5 +37,5 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }
