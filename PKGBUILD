@@ -5,7 +5,7 @@
 pkgname=wiki-js
 _pkgname=wiki-js
 pkgver=2.5.268
-pkgrel=1
+pkgrel=2
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
 arch=('any')
@@ -28,7 +28,7 @@ sha256sums=('11ce2daeb5444db80ab38d5a21ce0d7b4d9cf7af50738e10b6805ff2dca4e3e2'
 
 prepare() {
 	cd "$srcdir"
-	patch config.sample.yml ../config.sample.yml.patch
+	patch config.sample.yml config.sample.yml.patch
 }
 
 package() {
