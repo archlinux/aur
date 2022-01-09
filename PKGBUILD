@@ -10,6 +10,7 @@ pkgdesc="Haskell implementation of the Bech32 address format (BIP 0173)"
 arch=('x86_64')
 url="https://github.com/${_organization}/${_reponame}"
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=(
     "https://github.com/${_organization}/${_reponame}/releases/download/v${pkgver}/${_reponame}-v${pkgver}-linux64.tar.gz"
 )
