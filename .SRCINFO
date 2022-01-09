@@ -1,0 +1,14 @@
+pkgbase = firefoxext
+	pkgdesc = Install firefox extensions with the commandline
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/Interfiber/firefoxext
+	arch = x86_64
+	license = GPL3
+	depends = firefox
+	depends = gcc
+	depends = make
+	source = git+https://github.com/Interfiber/firefoxext.git
+	sha256sums = SKIP
+
+pkgname = firefoxext
