@@ -12,6 +12,7 @@ depends=(
     'python-aiofiles'
     'python-biliass'
     'python-dicttoxml'
+    'ffmpeg'
 )
 makedepends=('python-setuptools' 'python-wheel')
 optdepends=('python-uvloop: fast asyncio event loop')

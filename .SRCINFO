@@ -11,6 +11,7 @@ pkgbase = yutto
 	depends = python-aiofiles
 	depends = python-biliass
 	depends = python-dicttoxml
+	depends = ffmpeg
 	optdepends = python-uvloop: fast asyncio event loop
 	source = https://pypi.io/packages/source/y/yutto/yutto-2.0.0b7.tar.gz
 	sha256sums = cba634d200a6a6ff5a9151f6eb8b116539d96162589eb77f77809f9adc939cab
