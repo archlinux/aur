@@ -1,7 +1,7 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=ulist
 pkgver=0.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A mailing list service that keeps it simple."
 arch=('x86_64')
 url="https://github.com/wansing/$pkgname"
@@ -19,10 +19,10 @@ source=(
 
 validpgpkeys=('F433936B030F7FB97F4084E4C7C21DFFE932EF9D')
 sha256sums=('3e191d29019a3279443b3c2bf66768ffa6596bda1f7dd336fc529acc28ec6b79'
-            '208f682e3993c209877010a9f523e99b10db75667541f6078effc1300ea458cf'
-            '9e3cac76882bb19cf9c2ae5d4daa69c8a5be5ffe688bd39133322d3c6b94b09a'
-            '09f0ca7367d7b4a8200a6cab1a58da576ebc8d49277808fa4a4ec9a0f93760d8'
-            'a52d0c60ea491cbcf31949fb1f0874a1e9442e466b588527dcf7a509a570de37')
+            'efdf22898f12125f1ddfee0f0a55910d0d7372852e6275eec38c2f794f7a8e46'
+            '358fdea45f6764941d14dd09cdfa520428dde2d7b341175cf7c2b9092924420d'
+            'd2c1ade5e945be634ac132d72c922e21876595471f86f26372904938a063c93b'
+            '8527c97aa40255bd4541e044ca4f2e47793a1c07db6034c66a657ec6e5c4542f')
 
 prepare(){
   cd "$pkgname-$pkgver"
