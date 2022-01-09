@@ -26,5 +26,9 @@ package() {
   mkdir -p "$pkgdir/usr/"
   cd "$srcdir/$name/"
   rm -rf share/man/man7 share/locale/ share/gcc-$pkgver/ usr
+
+  # fix broken absolute link to /lib/libc.so
+  ln -sfT ../lib/libc.so aarch64-linux-musl/lib/ld-musl-aarch64.so.1
+
   cp -r "./" "$pkgdir/usr/"
 }
