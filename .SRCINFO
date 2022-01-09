@@ -1,6 +1,6 @@
 pkgbase = neovim-lspconfig
 	pkgdesc = Quickstart configurations for the Neovim LSP client
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/neovim/nvim-lspconfig
 	install = lspconfig.install
@@ -8,7 +8,7 @@ pkgbase = neovim-lspconfig
 	groups = neovim-plugins
 	license = Apache
 	depends = neovim
-	source = neovim-lspconfig-0.1.0.tar.gz::https://github.com/neovim/nvim-lspconfig/archive/v0.1.0.tar.gz
-	sha256sums = e4c0719c2bf13a3842deb10af3136c64903466bbbc3df9af1ef3e338b8898aae
+	source = neovim-lspconfig-0.1.1.tar.gz::https://github.com/neovim/nvim-lspconfig/archive/v0.1.1.tar.gz
+	sha256sums = 17c2dcc90027695de07a84254031f7d929930fe5d9c41d04692c09a8b8d669de
 
 pkgname = neovim-lspconfig
