@@ -84,7 +84,7 @@ _makenconfig=
 pkgbase=linux-xanmod-tt-uksm-cjktty
 replaces=("linux-xanmod-cacule-uksm-cjktty")
 _major=5.15
-pkgver=${_major}.12
+pkgver=${_major}.13
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -129,7 +129,7 @@ done
 
 b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
         'SKIP'
-        '33a41b0fa0fc1049890d8428ed54adc8e986f448d436768e4be9a263ae8b48b08f249de3c9e22ea1eb39cb43e2c40d55f7e2db02720e39ea28df5048ecc1954e'
+        '48e34a5e6359671163f909b629365abe8dfecc02397fb709c551f49749d9d62d95ea7ca4d8639313134467bcdf02c1b0ce30e793de68df5bd10dd1dc2f6509ed'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         '2b765bd1aad8086a94ec9285e4d789eacdff05fcc71013286384a51de6f6cc153cecffd4430cfc08daae4692583577b5eb07f971eb00bcd1ca796063865c20f7'
         '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260'
@@ -166,9 +166,9 @@ prepare() {
 
   # enable LTO_CLANG_THIN
   if [ "${_compiler}" = "clang" ]; then
-    msg2 "Enable LTO_CLANG_THIN"
-    scripts/config --disable LTO_CLANG_FULL
-    scripts/config --enable LTO_CLANG_THIN
+    msg2 "Enable LTO_CLANG_FULL"
+    scripts/config --disable LTO_CLANG_THIN
+    scripts/config --enable LTO_CLANG_FULL
     _LLVM=1
   fi
 
