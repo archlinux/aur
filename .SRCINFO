@@ -1,20 +1,13 @@
 pkgbase = python-flask-wdb
 	pkgdesc = Integrate Wdb instead of Werkzeug debugger for Flask applications
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/techniq/flask-wdb
 	arch = any
-	license = BSD
-	makedepends = python2-setuptools
+	license = custom
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/F/Flask-Wdb/Flask-Wdb-0.0.2.tar.gz
-	md5sums = 950c16fa1e3e0d16fb3bbb923fb70037
-
-pkgname = python2-flask-wdb
-	depends = python2
-	depends = python2-wdb
+	depends = python-wdb
+	source = https://pypi.io/packages/source/F/Flask-Wdb/Flask-Wdb-0.0.2.tar.gz
+	sha512sums = c3077ce9c6379f5412b308a07e3e106ed010dab437cbb63c61673ec925a94499bd47848ada2f2c891c4cca443c4e382585ee751c8736ee86073245e4bca49e54
 
 pkgname = python-flask-wdb
-	depends = python
-	depends = python-wdb
-
