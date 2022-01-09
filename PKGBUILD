@@ -28,7 +28,7 @@ build() {
 
 	mkdir -p go/
 	mkdir -p go/src/github.com/Psiphon-Labs/
-	ln -sf "../../../../$pkgbase-$pkgver/" go/src/github.com/Psiphon-Labs/psiphon-tunnel-core
+	ln -srf "$srcdir/$pkgbase-$pkgver/" go/src/github.com/Psiphon-Labs/psiphon-tunnel-core
 
 	export GOPATH="$srcdir/go/"
 
@@ -72,7 +72,7 @@ package_psiphon-server() {
 	conflicts=('psiphond')
 	provides=('psiphond')
 	install -Dm755 "$srcdir/bin/psiphon-server" -t "$pkgdir/usr/bin/"
-	ln -sf psiphon-server "$pkgdir/usr/bin/psiphond"
+	ln -srf "$pkgdir/usr/bin/psiphon-server" "$pkgdir/usr/bin/psiphond"
 	install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/psiphon-server.service" <<-'EOF'
 		[Unit]
 		Description=Psiphon Proxy Server Service
