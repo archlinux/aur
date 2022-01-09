@@ -1,13 +1,14 @@
 pkgbase = picpgm
 	pkgdesc = The PICPgm Development Programmer Software is a free and simple In-System-Development Programmer Software for the Microchip PIC microcontrollers.
-	pkgver = 2.9.2.3
-	pkgrel = 1
-	url = picpgm.picprojects.net
+	pkgver = 2.9.3.1
+	pkgrel = 2
+	url = http://picpgm.picprojects.net
 	arch = i686
 	arch = x86_64
-	license = GPL
-	source = http://picpgm.picprojects.net/download/picpgm-2.9.2.3-linux-i386.tar.gz
-	md5sums = 5a54cb6b3a146409e19d5b4039bcb804
+	license = custom
+	source_i686 = http://picpgm.picprojects.net/download/picpgm-2.9.3.1-linux-i386.tar.gz
+	sha256sums_i686 = cf7c21e6e51d8d6ac6ca717e706f902a21089dad2533cecda5d3671d83ca6f5a
+	source_x86_64 = http://picpgm.picprojects.net/download/picpgm-2.9.3.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a986e9c8c7768ae550b6c6d5f21d20e5dc6d006d3608dd7cc37b5e40183e0b47
 
 pkgname = picpgm
-

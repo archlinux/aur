@@ -7,12 +7,12 @@
 # Contributor: Mehmet Akif <makiftasova@gmail.com>
 # picpgm author: Christian Stadler
 pkgname=picpgm
-pkgver=2.9.2.5
+pkgver=2.9.3.1
 pkgrel=2
 epoch=
 pkgdesc="The PICPgm Development Programmer Software is a free and simple In-System-Development Programmer Software for the Microchip PIC microcontrollers."
 arch=( "i686" "x86_64" )
-url="http://picpgm.picprojects.net http://members.aon.at/electronics/pic/picpgm/index.html"
+url="http://picpgm.picprojects.net"
 license=('custom')
 groups=()
 depends=()
@@ -29,16 +29,16 @@ changelog=
 source_i686=("http://picpgm.picprojects.net/download/${pkgname}-${pkgver}-linux-i386.tar.gz")
 source_x86_64=("http://picpgm.picprojects.net/download/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
 noextract=()
-sha256sums_i686=(  "43343ff6a71249c30dd8b785fd8234f337d32e4d00755a15f36c53d600a8d3f9")
-sha256sums_x86_64=("7cba11a55ed42b3432df4e5df8faaee0ddb69a764a29fd428e07081b051a6443")
+sha256sums_i686=('cf7c21e6e51d8d6ac6ca717e706f902a21089dad2533cecda5d3671d83ca6f5a')
+sha256sums_x86_64=('a986e9c8c7768ae550b6c6d5f21d20e5dc6d006d3608dd7cc37b5e40183e0b47')
 validpgpkeys=()
 
 package() {
-	install -d $pkgdir/opt/picpgm
-	install -d $pkgdir/usr/bin
-	install -m 755 -o root -g root ./picpgm $pkgdir/opt/picpgm
-	install -m 666 -o root -g root ./pgmifcfg.xml $pkgdir/opt/picpgm
-	install -m 666 -o root -g root ./disclaimer.txt $pkgdir/opt/picpgm
-	ln -s /opt/picpgm/picpgm  $pkgdir/usr/bin/picpgm
+	install -d "$pkgdir"/opt/picpgm
+	install -d "$pkgdir"/usr/bin
+	install -m 755 -o root -g root ./picpgm         "$pkgdir"/opt/picpgm
+	install -m 666 -o root -g root ./pgmifcfg.xml   "$pkgdir"/opt/picpgm
+	install -m 666 -o root -g root ./disclaimer.txt "$pkgdir"/opt/picpgm
+	ln -s /opt/picpgm/picpgm  "$pkgdir"/usr/bin/picpgm
 }
 
