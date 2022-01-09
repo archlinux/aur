@@ -4,7 +4,7 @@ pkgname=hqplayer-embedded
 _debpkgver=4.28.3-106
 _debpkgverarm=4.28.3-106
 pkgver=4.28.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ sha256sums=('d46242c40660ddf877eff89e2459a76fe5fbecb5621fd727aad742d69cbf96d1'
             '911b813c6d6b4b88daab7c28566136112f1217dce7f890902fd0f46a519c50fc'
             '353eb19a099092f1ee3b34b46a68e684b221003f221dc92e2c6e929311d0ff83')
 sha256sums_x86_64=('40b1daf1b0326461814c1d023ffe36cb7dce4edc7965c613d1132587a214973b')
-sha256sums_aarch64=('6900b72e1a51f4bfa3024eb865312735e1a426fb1f4cee29b21cf92a8e76b441')
+sha256sums_aarch64=('2148a89ad6c039958d2c1e17db7635567a7fc8a2ec15765f0b648a7438af9033')
 install=${pkgname}.install
 
 package() {
