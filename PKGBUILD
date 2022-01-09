@@ -36,7 +36,7 @@ prepare() {
 package() {
 	install -Dt "$pkgdir/usr/bin" "bin/$_pkgname-mc"
 	install -Dt "$pkgdir/opt/$_pkgname" "mod-distribution/target/$_pkgname-pkg-$pkgver-full.jar"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -m644 -Dt "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 
 	ln -s "/usr/bin/$_pkgname-mc" "$pkgdir/usr/bin/$_pkgname"
 }
