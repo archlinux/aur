@@ -12,7 +12,7 @@ arch=('any')
 #manually version for now
 pkgver='0.5.1'
 _pkgver=${_pkgver}
-pkgrel=1
+pkgrel=2
 _pkgrel=${_pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
@@ -26,7 +26,7 @@ _scripts="skywire-deb-scripts"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "${_scripts}.tar.gz"  )
 sha256sums=('f76bba50525c2057a9aba5d3a1fe95d1913890a19bc7ad2ff9113b278bf8d489'
-            'f993e28400f72a05500f0b091d6d308c5a4a1299a2490ff0ecb5b59b0805e5b1')
+            'a295b4b732eac7a5883e1988eaa4c158c10be3e4df4c9cd5cc05b725c0d993bd')
 
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
