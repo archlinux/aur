@@ -2,20 +2,20 @@
 license=('GPL' 'custom:Brother')
 arch=('i686' 'x86_64')
 pkgname=brscan4
-pkgver=0.4.10_1
+pkgver=0.4.11_1
 pkgrel=5
-pkgdesc="SANE drivers from Brother for brscan4 compatible models"
-depends=('sane' 'libusb-compat')
+pkgdesc="SANE drivers from Brother for compatible models"
+depends=('sane' 'gtk2')
 url="http://support.brother.com"
 install=brscan4.install
 
-[ "$CARCH" = "x86_64" ] && pkg="dlf006648/${pkgname}-${pkgver/_/-}.x86_64.rpm" || pkg="dlf006647/${pkgname}-${pkgver/_/-}.i386.rpm"
-[ "$CARCH" = "x86_64" ] && pkg_md5sum="f4c4d1f214d4c42a6d40f5451fc40312" || pkg_md5sum="365f1b82ac3b7de73950be76a621bb93"
+[ "$CARCH" = "x86_64" ] && _pkg="dlf105203/${pkgname}-${pkgver/_/-}.x86_64.rpm" || _pkg="dlf105202/${pkgname}-${pkgver/_/-}.i386.rpm"
+[ "$CARCH" = "x86_64" ] && _pkg_md5sum="54dec75887de091fde5fcd511d9a57c3" || _pkg_md5sum="dc87c907c9a2f086dcc56eb2e8fafbbc"
 
-source=("https://download.brother.com/welcome/$pkg"
+source=("https://download.brother.com/welcome/$_pkg"
 	"agree.html"
 	mk-udev-hwdb)
-md5sums=($pkg_md5sum
+md5sums=($_pkg_md5sum
 	 'ccffb9a6f6d436b21be25b0241068981'
 	 '8966d38375d535028a63a6ef5f6104eb')
 
