@@ -1,0 +1,11 @@
+[Unit]
+Description=Terra Money Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+#DynamicUser=yes
+ExecStart=/usr/bin/terrad start
+
+[Install]
+WantedBy=multi-user.target
