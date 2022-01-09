@@ -1,6 +1,6 @@
 pkgbase = epiphany-git
 	pkgdesc = A GNOME web browser based on the WebKit rendering engine.
-	pkgver = 41.0+27+g140afc27c
+	pkgver = 42.alpha+3+g0310962f1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Web
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = epiphany-git
 	depends = gcr
 	depends = icu
 	depends = libdazzle
-	depends = libhandy
+	depends = libhandy-git
 	depends = libportal
 	depends = libarchive
 	provides = epiphany
