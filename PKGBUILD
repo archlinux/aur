@@ -3,7 +3,7 @@
 pkgname=epsonscan2
 pkgver=6.6.40.0
 _pkgver="${pkgver}-1"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="http://support.epson.net/linux/en/epsonscan2.php"
@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('boost-libs' 'libharu' 'qt5-singlecoreapplication' 'rapidjson' 'sane')
 makedepends=('boost' 'cmake')
 optdepends=('epsonscan2-non-free-plugin: OCR support and wireless scanning')
+options=('!buildflags')
 source=("http://support.epson.net/linux/src/scanner/${pkgname}/${pkgname}-${_pkgver}.src.tar.gz")
 sha512sums=('004dcda54ab55f7370cfb86089b71c33155bc83e862fafd93204c1b43581c00fb078911abd9d1730fbb29e29bd679721aa31bbb165ffa7d0a5d5d39c003e385e')
 
