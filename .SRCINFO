@@ -1,6 +1,6 @@
 pkgbase = gnome-builder-git
 	pkgdesc = An IDE for writing GNOME-based software
-	pkgver = 41.1+39+g725c6e135
+	pkgver = 42.alpha1+10+gc550764ec
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Builder
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = gnome-builder-git
 	depends = python-gobject
 	depends = clang
 	depends = desktop-file-utils
+	depends = libhandy-git
 	depends = ctags
 	depends = libpeas
 	depends = vte3

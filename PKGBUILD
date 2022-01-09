@@ -4,7 +4,7 @@
 
 _pkgname=gnome-builder
 pkgname=gnome-builder-git
-pkgver=41.1+39+g725c6e135
+pkgver=42.alpha1+10+gc550764ec
 pkgrel=1
 pkgdesc='An IDE for writing GNOME-based software'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ url='https://wiki.gnome.org/Apps/Builder'
 license=(GPL3)
 conflicts=(gnome-builder)
 provides=(gnome-builder)
-depends=(gtksourceview4 devhelp libgit2-glib gjs python-gobject clang desktop-file-utils
+depends=(gtksourceview4 devhelp libgit2-glib gjs python-gobject clang desktop-file-utils libhandy-git
          ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle
          template-glib jsonrpc-glib python-sphinx webkit2gtk glade sysprof libportal cmark)
 makedepends=(intltool llvm gobject-introspection gtk-doc yelp-tools appstream-glib vala git
@@ -31,11 +31,9 @@ pkgver() {
 build() {
   arch-meson $_pkgname build \
     --buildtype debugoptimized \
-    -D with_docs=true \
-    -D with_help=true \
-    -D with_editorconfig=true \
-    -D with_webkit=true \
-    -D with_vapi=true
+    -D docs=true \
+    -D help=true \
+    -D plugin_editorconfig=true
   ninja -C build
 }
 
