@@ -31,7 +31,9 @@ build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/_build"
   cd "${srcdir}/${pkgname}-${pkgver}/_build"
 
-  cmake .. -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname}" -DCMAKE_BUILD_TYPE=Release
+  cmake -DDBUS_CPP_VERSION_MAJOR='5' -DDBUS_CPP_VERSION_MINOR='0' \
+        -DDBUS_CPP_VERSION_PATCH='1' -DCMAKE_BUILD_TYPE=Release   \
+        -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname}" ..
   cmake --build .
 }
 
