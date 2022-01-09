@@ -13,17 +13,17 @@ install=install
 depends=('glibc')
 makedepends=('go' 'git' 'ruby')
 source=("git+$url#tag=v$pkgver"
-        "PKGNAME.service.erb"
-        "PKGNAME.sysusers.erb"
-        "path.patch.erb"
-        "PKGNAME.tmpfiles.erb"
-        "compile-templates")
+    "PKGNAME.service.erb"
+    "PKGNAME.sysusers.erb"
+    "path.patch.erb"
+    "PKGNAME.tmpfiles.erb"
+    "compile-templates")
 sha256sums=('SKIP'
-            '5df46fc5cb324fa362f30baf550d06e3b9d80056c047e9fe7b3db698eddb7c24'
-            'db0d2e965a2afb352afdc6062db83b657ee61c30f90df37aaf1982426e985d08'
-            'ffd050bdecfd0b010d5b8e9cfc27f775eff3a672451e0d938f1fdea507b74fa1'
-            '7e490cb211b013449041ac345175c7e540108c8149c196462f1c4bcf965d138a'
-            '8cc173f3c9693edb3575fdf648bd671bbf13f7611ed8b11addaff50145051677')
+    '5df46fc5cb324fa362f30baf550d06e3b9d80056c047e9fe7b3db698eddb7c24'
+    'db0d2e965a2afb352afdc6062db83b657ee61c30f90df37aaf1982426e985d08'
+    'ffd050bdecfd0b010d5b8e9cfc27f775eff3a672451e0d938f1fdea507b74fa1'
+    '7e490cb211b013449041ac345175c7e540108c8149c196462f1c4bcf965d138a'
+    '8cc173f3c9693edb3575fdf648bd671bbf13f7611ed8b11addaff50145051677')
 backup=("etc/oragono.conf" "etc/$pkgname.conf")
 replaces=("oragono")
 conflicts=("oragono")
@@ -33,14 +33,14 @@ prepare() {
     cd "${srcdir}" || exit
     ./compile-templates --pkgname="$pkgname" --pkgdesc="$pkgdesc" ../install.erb PKGNAME.service.erb PKGNAME.sysusers.erb PKGNAME.tmpfiles.erb path.patch.erb
     cd "${srcdir}/$_upstream_pkgname" || exit
-    patch < ../path.patch
+    patch <../path.patch
 }
 
 build() {
     export GOPATH=$(pwd)/..
     cd "${srcdir}/$_upstream_pkgname" || exit
 
-    GIT_COMMIT="$(git rev-parse HEAD 2> /dev/null)"
+    GIT_COMMIT="$(git rev-parse HEAD 2>/dev/null)"
 
     # flags from https://wiki.archlinux.org/index.php/Go_package_guidelines
     # to address issues namcap warns about:
