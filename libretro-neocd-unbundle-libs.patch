@@ -1,9 +1,9 @@
 --- a/Makefile.common
 +++ b/Makefile.common
-@@ -10,14 +10,10 @@ LIBRETRO_COMMON_DIR  = $(LIBRETRO_DEPS_DIR)/libretro-common
+@@ -10,14 +10,11 @@ LIBRETRO_COMM_DIR    = $(LIBRETRO_DEPS_DIR)/libretro-common
  INCFLAGS :=  \
  	-I$(CORE_DIR)/src \
- 	-I$(LIBRETRO_COMMON_DIR)/include \
+ 	-I$(LIBRETRO_COMM_DIR)/include \
 -	-I$(LIBRETRO_DEPS_DIR)/ \
 -	-I$(LIBCHDR_DIR)/include \
 -	-I$(LZMA_DIR)/include \
@@ -13,13 +13,14 @@
 -	-I$(ZLIB_DIR) \
 -	-I$(MINIZIP_DIR)
 +	-I$(LIBCHDR_DIR)/include/dr_libs \
-+	$(shell pkg-config --cflags libchdr minizip vorbisfile)
++	-I$(MINIZIP_DIR) \
++	$(shell pkg-config --cflags libchdr vorbisfile zlib)
 +
-+LIBS += $(shell pkg-config --libs libchdr minizip vorbisfile)
++LIBS += $(shell pkg-config --libs libchdr vorbisfile zlib)
  
  SOURCES_CXX :=\
  	$(CORE_DIR)/src/archive.cpp \
-@@ -66,13 +62,6 @@ SOURCES_C := \
+@@ -66,13 +63,6 @@ SOURCES_C := \
  	$(CORE_DIR)/src/3rdparty/musashi/m68kopnz.c \
  	$(CORE_DIR)/src/3rdparty/musashi/m68kops.c
  
@@ -31,11 +32,11 @@
 -	$(LIBCHDR_DIR)/src/libchdr_huffman.c
 -
  SOURCES_C += \
- 	$(LIBRETRO_COMMON_DIR)/compat/compat_posix_string.c \
- 	$(LIBRETRO_COMMON_DIR)/compat/compat_strcasestr.c \
-@@ -94,59 +83,6 @@ SOURCES_C += \
- 	$(LIBRETRO_COMMON_DIR)/string/stdstring.c \
- 	$(LIBRETRO_COMMON_DIR)/vfs/vfs_implementation.c
+ 	$(LIBRETRO_COMM_DIR)/compat/compat_posix_string.c \
+ 	$(LIBRETRO_COMM_DIR)/compat/compat_strcasestr.c \
+@@ -95,55 +85,6 @@ SOURCES_C += \
+ 	$(LIBRETRO_COMM_DIR)/string/stdstring.c \
+ 	$(LIBRETRO_COMM_DIR)/vfs/vfs_implementation.c
  
 -SOURCES_C += \
 -	$(LZMA_DIR)/src/Alloc.c \
@@ -86,13 +87,9 @@
 -	$(ZLIB_DIR)/trees.c \
 -	$(ZLIB_DIR)/zutil.c
 -
--SOURCES_C += \
--	$(MINIZIP_DIR)/ioapi.c \
--	$(MINIZIP_DIR)/unzip.c
--
- ifneq ($(STATIC_LINKING),1)
- SOURCES_C +=	$(SRC_LIBRETRO_COMMON)
- endif
+ SOURCES_C += \
+ 	$(MINIZIP_DIR)/ioapi.c \
+ 	$(MINIZIP_DIR)/unzip.c
 --- a/src/flacfile.cpp
 +++ b/src/flacfile.cpp
 @@ -1,6 +1,6 @@
