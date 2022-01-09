@@ -1,6 +1,7 @@
 /src
 /pkg
 /mutter-rounded
+/mutter-settings
 mutter-settings.tar
 mutter_setting
 *pkg.tar.zst
