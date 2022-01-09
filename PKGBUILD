@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/cosmos/${_pkgname}"
 license=('Apache')
 provides=("${_pkgname}d")
+conflicts=("${_pkgname}d")
 source=(
 	"https://github.com/cosmos/${_pkgname}/releases/download/v${pkgver}/${_pkgname}d-v${pkgver}-linux-amd64"
 	"https://raw.githubusercontent.com/cosmos/${_pkgname}/v${pkgver}/LICENSE"
