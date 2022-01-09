@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gtk-layer-shell dbus light alsa-utils)
 makedepends=(vala meson git)
-_commit=7b3874e5ee25c80800b3c61c8ea30612aaa6e8d1
+_commit=9326b1e33e05502df7e8fdf5cf323fc2c32484cb
 source=("git+https://github.com/misterdanb/avizo")
 sha256sums=('SKIP')
 
