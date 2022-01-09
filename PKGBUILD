@@ -6,7 +6,7 @@ pkgdesc="An XMPP desktop messenger, written on pure c++ (qt)"
 arch=('i686' 'x86_64')
 url="https://git.macaw.me/blue/squawk"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'desktop-file-utils' 'lmdb' 'qxmpp>=1.1.0')
+depends=('hicolor-icon-theme' 'desktop-file-utils' 'lmdb' 'qxmpp' 'boost')
 makedepends=('cmake>=3.3' 'imagemagick' 'qt5-tools')
 optdepends=('kwallet: secure password storage (requires rebuild)')
 

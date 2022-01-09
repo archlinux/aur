@@ -12,7 +12,8 @@ pkgbase = squawk
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = lmdb
-	depends = qxmpp>=1.1.0
+	depends = qxmpp
+	depends = boost
 	optdepends = kwallet: secure password storage (requires rebuild)
 	source = squawk-0.2.0.tar.gz
 	sha256sums = 8e93d3dbe1fc35cfecb7783af409c6a264244d11609b2241d4fe77d43d068419
