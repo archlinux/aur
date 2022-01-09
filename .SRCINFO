@@ -1,11 +1,12 @@
 pkgbase = hatari-enhanced-git
 	pkgdesc = An Atari ST and STE emulator. This build uses capsimage for using IPF and STX disk images.
-	pkgver = 2.3.1
+	pkgver = v2.3.1.268.g38accc16
 	pkgrel = 1
 	url = http://hatari.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = git
 	makedepends = systemd
 	depends = sdl2
 	depends = libpng
@@ -14,7 +15,7 @@ pkgbase = hatari-enhanced-git
 	depends = hicolor-icon-theme
 	depends = capsimage
 	conflicts = hatari
-	source = https://download.tuxfamily.org/hatari/2.3.1/hatari-2.3.1.tar.bz2
-	sha256sums = 44a2f62ca995e38d9e0874806956f0b9c3cc84ea89e0169a63849b63cd3b64bd
+	source = git://git.tuxfamily.org/gitroot/hatari/hatari.git
+	sha256sums = SKIP
 
 pkgname = hatari-enhanced-git
