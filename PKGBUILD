@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=rotki-bin
-pkgver=1.22.2
+pkgver=1.23.0
 pkgrel=1
 pkgdesc='A portfolio tracking, analytics, accounting and tax reporting application that respects your privacy'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.xz::https://github.com/rotki/rotki/releases/download/v${pkgver}/rotki-linux_x64-v${pkgver}.tar.xz"
         "rotki.png::https://github.com/rotki/rotki/raw/develop/frontend/app/src/assets/images/rotki_1024x1024.png"
         "LICENSE::https://github.com/rotki/rotki/raw/develop/LICENSE.md")
-sha256sums=('d9860fe0d19580e05c4d0b370fb2987ab9b7481cf0119a602a9263cd9fac6ab3'
+sha256sums=('c3f9e261358bc035df864beef37e1a5bb2d9363f39b01854c9936eb74aee9c1f'
             '78032738ae55b065b3f786be0482809149f474a2294a6a2dfd26a079e9154383'
             '35135be6af418b326bdd426d3f4a268d181bea4e93aa49d51bde3f0b70c9d3ee')
 
