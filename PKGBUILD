@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.31.5.r28376.g0448d3b931
+pkgver=1.33.1.r29152.g1d019308
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -57,18 +57,14 @@ pkgver() {
 build() {
     local meson_args=(
         -D more_logging=false \
-        -D more_warnings=false \
         -D more_asserts=no \
         -D bluez5_dun=false \
         -D ebpf=true \
-        -D ibft=true \
         -D docs=true \
         -D introspection=true \
-        -D json_validation=true \
         -D ld_gc=true \
         -D modify_system=true \
         -D polkit=true \
-        -D polkit_agent=true \
         -D teamdctl=true \
         -D wifi=true \
         -D config_dhcp_default=internal \
