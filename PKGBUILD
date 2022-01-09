@@ -1,7 +1,7 @@
 pkgname=netflix-git
 _pkgname=Netflix-git
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial Netflix desktop app."
 arch=('x86_64')
 url="https://gitlab.com/netflix-desktop"
@@ -10,7 +10,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
 conflicts=("Netflix-bin")
-source=(git+https://gitlab.com/netflix-desktop/application)
+source=(git+https://gitlab.com/netflix-desktop/application.git)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -33,7 +33,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/Netflix" "$pkgdir/usr/bin/Netflix"
+    ln -s "/opt/Netflix/netflix" "$pkgdir/usr/bin/netflix"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application/Netflix.desktop" \
