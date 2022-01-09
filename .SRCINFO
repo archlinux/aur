@@ -1,6 +1,6 @@
 pkgbase = python-django-cleanup
 	pkgdesc = Automatically deletes old file for FileField and ImageField. It also deletes files on models instance deletion
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/un1t/django-cleanup
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-django-cleanup
 	makedepends = python-setuptools
 	depends = python-django
 	options = !emptydirs
-	source = python-django-cleanup-5.1.0.tar.gz::https://github.com/un1t/django-cleanup/archive/5.1.0.tar.gz
-	sha256sums = 63d06d99bda34a77beb5af5f4157f1417ed3468c00f5fdf03f5cc870862a2553
+	source = python-django-cleanup-5.2.0.tar.gz::https://github.com/un1t/django-cleanup/archive/5.2.0.tar.gz
+	sha256sums = 3511db57067dc53fa61b3b415a87df1b1414971e9678d79c9af512c1976aff02
 
 pkgname = python-django-cleanup
-
