@@ -1,26 +1,32 @@
-# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
+#Contributor: Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer:  John "Beelzebud" Bilbrey <beelzebud> at Geemail dot com
 
 pkgname=hatari-enhanced-git
-realpkgname=${pkgname%-*-*}
-pkgver=2.3.1
+realpkgname=hatari
+pkgver=v2.3.1.268.g38accc16
 pkgrel=1
 pkgdesc='An Atari ST and STE emulator. This build uses capsimage for using IPF and STX disk images.'
 arch=('x86_64')
 url='http://hatari.sourceforge.net/'
 license=('GPL')
 depends=('sdl2' 'libpng' 'portaudio' 'systemd-libs' 'hicolor-icon-theme' 'capsimage')
-makedepends=('cmake' 'systemd')
+makedepends=('cmake' 'git' 'systemd')
 conflicts=('hatari')
-source=("https://download.tuxfamily.org/${realpkgname}/${pkgver}/${realpkgname}-${pkgver}.tar.bz2")
-sha256sums=('44a2f62ca995e38d9e0874806956f0b9c3cc84ea89e0169a63849b63cd3b64bd')
+source=("git://git.tuxfamily.org/gitroot/hatari/hatari.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$realpkgname"
+	git describe --long | sed "s/\([^-]*-g\) /r\1/;s/-/./g"
+}
 
 build() {
-  cd ${realpkgname}-${pkgver}
+  cd ${realpkgname}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${realpkgname}-${pkgver}
+  cd ${realpkgname}
   make DESTDIR="${pkgdir}" install
 }
