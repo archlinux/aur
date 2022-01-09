@@ -1,13 +1,13 @@
 pkgbase = xfce4-terminal-base16-colors-git
 	pkgdesc = base16 themes for XFCE terminal
-	pkgver = 2020.06.02
+	pkgver = 2021.09.03
 	pkgrel = 1
 	url = https://github.com/afq984/base16-xfce4-terminal
 	arch = any
 	license = UNLICENSE
+	makedepends = git
 	depends = xfce4-terminal
-	source = xfce4-terminal-base16-colors-git::git://github.com/afg984/base16-xfce4-terminal
+	source = xfce4-terminal-base16-colors-git::git+https://github.com/afg984/base16-xfce4-terminal
 	sha256sums = SKIP
 
 pkgname = xfce4-terminal-base16-colors-git
-
