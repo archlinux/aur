@@ -69,7 +69,10 @@ build() {
 package() {
   install -Dm755 MEGAsync/src/MEGASync/megasync "${pkgdir}/usr/bin/megasync"
   install -Dm644 MEGAsync/src/MEGASync/platform/linux/data/megasync.desktop "${pkgdir}/usr/share/applications/megasync.desktop"
-  sed 's|System;||g' -i "${pkgdir}/usr/share/applications/megasync.desktop"
+  # not works in wayland, so launch in xwayland
+  sed -e 's|System;||g' \
+      -e 's|Exec=megasync|Exec=env QT_QPA_PLATFORM=xcb megasync|g' \
+      -i "${pkgdir}/usr/share/applications/megasync.desktop"
   install -Dm644 "${srcdir}/mega.svg" "${pkgdir}/usr/share/pixmaps/mega.svg"
 
   install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
