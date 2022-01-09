@@ -1,7 +1,7 @@
 pkgname=youtubemusic-bin
 _pkgname=YoutubeMusicMusic-bin
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -31,7 +31,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/YoutubeMusic" "$pkgdir/usr/bin/YoutubeMusic"
+    ln -s "/opt/YoutubeMusic/YoutubeMusic" "$pkgdir/usr/bin/youtubemusic"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/resources/app/YoutubeMusic.desktop" \
