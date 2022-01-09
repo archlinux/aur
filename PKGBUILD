@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://${_pkgname}.com"
 license=('Apache')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=(
 	"https://github.com/tendermint/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz"
 )
