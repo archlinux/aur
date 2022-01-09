@@ -1,6 +1,6 @@
 pkgbase = avizo
 	pkgdesc = A neat notification daemon
-	pkgver = 1.0+10+g7b3874e
+	pkgver = 1.0+10+9326b1e
 	pkgrel = 1
 	url = https://github.com/misterdanb/avizo
 	arch = x86_64

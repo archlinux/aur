@@ -1,7 +1,7 @@
 # Maintainer: danb (danb) <danb (at) hasi.it>
 
 pkgname=avizo
-pkgver=1.0+10+g7b3874e
+pkgver=1.0+10+9326b1e
 pkgrel=1
 pkgdesc="A neat notification daemon"
 url="https://github.com/misterdanb/avizo"
