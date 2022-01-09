@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk-git
-pkgver=Qt5.r213.g3ae9994
+pkgver=Qt5.r213.g6df1e1f
 pkgrel=1
 provides=('libff7tk')
 conflicts=('libff7tk')
@@ -28,5 +28,5 @@ build() {
 
 package(){
   cd "ff7tk"
-  cmake --install build --prefix "$pkgdir" --strip
+  DESTDIR="$pkgdir" cmake --install build --strip
 }
