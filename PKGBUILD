@@ -3,7 +3,7 @@
 
 pkgname=python-vk_api-git
 _pkgname=vk_api
-pkgver=11.9.7
+pkgver=11.9.7.r1.1ef8259
 pkgrel=1
 pkgdesc='vk.com API wrapper'
 url=https://github.com/python273/vk_api
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')".r"$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
+	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = python-vk_api-git
 	pkgdesc = vk.com API wrapper
-	pkgver = 11.9.7
+	pkgver = 11.9.7.r1.1ef8259
 	pkgrel = 1
 	url = https://github.com/python273/vk_api
 	arch = any
