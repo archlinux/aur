@@ -3,7 +3,7 @@
 
 pkgname=tcmu-runner
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon that handles the userspace side of the LIO TCM-User backstore."
 arch=('x86_64')
 url="https://github.com/open-iscsi/tcmu-runner"
@@ -19,7 +19,7 @@ prepare() {
 	cmake ./ \
 		-Dwith-glfs=false \
 		-Dwith-rbd=false \
-		-Dwith-zbc=false \
+		-Dwith-zbc=true \
 		-Dwith-tcmalloc=false \
 		-DSUPPORT_SYSTEMD=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr/ \

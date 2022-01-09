@@ -1,7 +1,7 @@
 pkgbase = tcmu-runner
 	pkgdesc = A daemon that handles the userspace side of the LIO TCM-User backstore.
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-iscsi/tcmu-runner
 	arch = x86_64
 	license = LGPL2.1
