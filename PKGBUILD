@@ -2,10 +2,10 @@
 
 pkgname=qbittorrent-qt5
 pkgver=4.4.0
-pkgrel=1
-pkgdesc='A bittorrent client powered by C++, Qt5 and the good libtorrent library'
+pkgrel=2
+pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt5 toolkit and libtorrent-rasterbar'
 arch=(x86_64)
-url='https://www.qbittorrent.org/'
+url='https://www.qbittorrent.org'
 license=(custom GPL)
 depends=(hicolor-icon-theme libtorrent-rasterbar qt5-base qt5-svg)
 makedepends=(boost cmake qt5-tools)
