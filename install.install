@@ -1,0 +1,14 @@
+post_install() {
+# Link to the binary
+ln -sf '/opt/XMind/xmind' '/usr/bin/xmind'
+
+# SUID chrome-sandbox for Electron 5+
+chmod 4755 '/opt/XMind/chrome-sandbox' || true
+
+update-mime-database /usr/share/mime || true
+update-desktop-database /usr/share/applications || true
+}
+
+post_remove() {
+rm -f '/usr/bin/xmind'
+}
