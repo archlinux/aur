@@ -1,0 +1,18 @@
+sudo: required
+
+services:
+  - docker
+
+archlinux:
+  packages:
+    - namcap
+  script:
+    - "PKGEXT='.pkg.tar' makepkg -si --noconfirm"
+    - "namcap PKGBUILD"
+    - "namcap scyther*.pkg*"
+
+script:
+  - "curl -s https://raw.githubusercontent.com/fsquillace/arch-travis/master/arch-travis.sh | bash"
+
+notifications:
+  email: false
