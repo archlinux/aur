@@ -2,14 +2,14 @@
 
 pkgbase=wraith-master
 pkgname=("wraith-master-common" "wraith-master-cli" "wraith-master-gtk")
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A Wraith Prism RGB control application built with Kotlin/Native"
 arch=("x86_64")
 url="https://gitlab.com/serebit/${pkgbase}"
 license=("Apache-2.0")
 depends=()
-makedepends=("gradle" "ncurses5-compat-libs" "scdoc")
+makedepends=("gradle" "scdoc")
 source=("${pkgbase}-v${pkgver}::git+https://gitlab.com/serebit/${pkgbase}#tag=v${pkgver}")
 sha256sums=("SKIP")
 
