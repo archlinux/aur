@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-musl-cross-bin
 	pkgdesc = Static musl-based cross-compilation toolchain provided by musl.cc
 	pkgver = 11.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://musl.cc/
 	arch = x86_64
 	arch = i686
