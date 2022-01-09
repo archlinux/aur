@@ -4,7 +4,7 @@
 
 pkgname=netdata-cloud
 _pkgbasename=netdata
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 _libmosquitto_version="v.1.6.8_Netdata-5"
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web. Cloud enabled edition"
@@ -29,10 +29,10 @@ optdepends=('nodejs: for monitoring named and SNMP devices'
 provides=('netdata')
 conflicts=('netdata' 'netdata-git')
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/netdata/netdata/releases/download/v${pkgver}/netdata-v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/netdata/netdata/releases/download/${pkgver}/netdata-v${pkgver}.tar.gz"
 	"https://github.com/netdata/mosquitto/archive/refs/tags/${_libmosquitto_version}.tar.gz"
         "$pkgname.sysusers")
-sha512sums=('b90e61b76aae8eb4922ff920434b4c454314fe11438c21565ec186a2ccd116161e6830b5093108625517bbce567e9ab87428044e610bc5c9cd4c9d3d4b59c3fa'
+sha512sums=('869829eadcec4dd9c05cc6b6279830691b6cf9345cdcc0834e90d71f3bbee508c658d16bd379c51ce470c4e735e7c8d607dc045f45a60da2aa3dac36f37b5757'
             '5661c7219517ed9a804f1b6fbac6f18f840aa1855d0acae2edf609c869eea826239ce57e604e77a9f1e95b8aca18564066c56ce71f7022a0017211b77a1d6c30'
             'a910809a823ba58ca7bdaa72e8d68427b48f452c1fbb2343fa182ecb0a091a7640e73af24b8ba2fdd90e00aed8ef53b7fccd25cb8f04ca9b9fa6c8e52223ca66')
 build() {
