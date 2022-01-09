@@ -1,6 +1,6 @@
 pkgbase = hlint-bin
 	pkgdesc = Haskell source code suggestions. Packaged from upstream binary release.
-	pkgver = 3.3
+	pkgver = 3.3.6
 	pkgrel = 1
 	url = https://github.com/ndmitchell/hlint
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = hlint-bin
 	depends = gmp
 	depends = ncurses5-compat-libs
 	conflicts = hlint
-	source = https://github.com/ndmitchell/hlint/releases/download/v3.3/hlint-3.3-x86_64-linux.tar.gz
-	sha256sums = 6013a1ea4f61e2046028c3709e4682877a7c054485eeb8ed2479f447856732a5
+	source = https://github.com/ndmitchell/hlint/releases/download/v3.3.6/hlint-3.3.6-x86_64-linux.tar.gz
+	sha256sums = d9e106841bc4d6efd546adb71b2149f9467724c271ce739454816da210a1a101
 
 pkgname = hlint-bin
-

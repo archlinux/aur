@@ -2,7 +2,7 @@
 
 pkgname=hlint-bin
 _githubname=hlint
-pkgver=3.3
+pkgver=3.3.6
 pkgrel=1
 pkgdesc='Haskell source code suggestions. Packaged from upstream binary release.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gmp' 'ncurses5-compat-libs')
 conflicts=('hlint')
 source=("${url}/releases/download/v${pkgver}/${_githubname}-${pkgver}-${arch}-linux.tar.gz")
 
-sha256sums=('6013a1ea4f61e2046028c3709e4682877a7c054485eeb8ed2479f447856732a5')
+sha256sums=('d9e106841bc4d6efd546adb71b2149f9467724c271ce739454816da210a1a101')
 
 
 # PKGBUILD functions
