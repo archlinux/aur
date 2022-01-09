@@ -1,10 +1,11 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Giacomo Vercesi <mrjackv@hotmail.it>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
 
 _pkgname='tcconfig'
 pkgname="python-${_pkgname}"
-pkgver=0.26.0
-pkgrel=2
+pkgver=0.27.1
+pkgrel=1
 pkgdesc='tc command wrapper'
 arch=('any')
 url='https://github.com/thombashi/tcconfig'
@@ -24,7 +25,7 @@ depends=('python-dataproperty'
         'python-voluptuous')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b4b064f96c28f7a171552e2854c04849585fd47aba6df46539a0de776a4eebbc')
+sha256sums=('fbe63201df10b718781001dd0428edc81f0c9319de7719e57d184495f66e82f8')
 
 build() {
   cd "${_pkgname}-${pkgver}"
