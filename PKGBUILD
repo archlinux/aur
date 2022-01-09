@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=qtscrcpy
 _pkgname=QtScrcpy
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'path-fix.patch'
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('ab8218cb642d99e432a141b20e1977e2c7017e6ed91445bdc771031d26cc10f0'
-            '19a9dae14c041715ee96cb6357c9f46ff7a9c5342f7e0d798bb17d6244347bfe'
+sha256sums=('1afdc592cac608e785327891d47092a91886a9d539aaf213a9015cd6ed04aa66'
+            'e3ed3f795ec088f766f9c41cbd422224b1f3bfa31f76115028017719f55dcc97'
             '0dc5b08698162c8a0172a9c2e92b18fa7cd9df4b295bd350329b1e4dbd892a6e'
             '26335d1e208c47ddfc4abaabce3f32734788a80a6663577b3ff462346d8dec6f')
 
@@ -27,20 +27,22 @@ prepare() {
   # Use system packages instead of static bundled tools
   rm -rf third_party/{adb,ffmpeg}
 
-  cd "$_pkgname"
-  patch < "$srcdir/path-fix.patch"
+  patch --strip=1 "$_pkgname/main.cpp" < "$srcdir/path-fix.patch"
+
+  sed -i '/-Wno-c++17-extensions/d' "$_pkgname/CMakeLists.txt"
+  sed -i 's/-Wall -Wextra -pedantic -Werror/-Wall -Wextra -pedantic/g' "$_pkgname/CMakeLists.txt"
 }
 
 build() {
   cmake -B build -S "$_pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE='None' \
     -Wno-dev
-  make -C build
+  cmake --build build
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  install -Dm755 output/linux/release/QtScrcpy -t "$pkgdir/opt/$pkgname"
+  install -Dm755 "output/x64/None/$_pkgname" -t "$pkgdir/opt/$pkgname"
   install -Dm644 backup/logo.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 config/config.ini -t "$pkgdir/etc/$pkgname"
   install -Dm644 third_party/scrcpy-server -t "$pkgdir/opt/$pkgname"
