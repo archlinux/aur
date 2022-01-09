@@ -4,7 +4,7 @@
 # Contributor: jzombi <jzombi at gmail.com>
 
 pkgname=opensmile
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A fast, real-time (audio) feature extraction utility for automatic speech, music and paralinguistic recognition research"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('custom')
 depends=('portaudio' 'ffmpeg')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/audeering/opensmile/archive/v$pkgver.tar.gz")
-sha256sums=('0f7a91276a647c4558211b7a635b8aa41f2418f84b603e76c9b363f848cbbb73')
+sha256sums=('b8e5d69d6c3d729eb6e7825e2bd913c819e61315524a739b245069dcaed0d8c3')
 
 build() {
   cmake -B build \
