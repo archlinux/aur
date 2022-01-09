@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-wheel
-pkgver=2.5.1
+pkgver=2.7
 pkgrel=1
 pkgdesc="Quick navigation framework for Vim and Neovim"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "LICENSE")
-sha256sums=('a11901684a78cb8fe2c1903d1cce442f6542ce2d95b7109dbf52f7c2e9624378'
+sha256sums=('8bc5e18624128f888fbd82aab067d2da498e670768440083ba797468810c95f4'
             'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353')
 
 package() {
