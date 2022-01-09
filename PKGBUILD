@@ -2,17 +2,17 @@
 
 pkgname=animdl-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.35
-pkgrel=2
+pkgver=1.4.42.r1.7fcd823
+pkgrel=1
 pkgdesc="A highly efficient anime downloader and streamer"
 arch=('any')
 url="https://github.com/justfoolingaround/animdl"
-license=('custom:Unlicensed')
+license=('GPL3')
 depends=('anitopy' 'python' 'python-click' 'python-cssselect' 'python-httpx' 'python-lxml' 'python-pycryptodomex' 'python-regex' 'python-requests' 'python-setuptools' 'python-tqdm' 'python-yaml' 'python-yarl')
 makedepends=('git')
 optdepends=(
-	'mpv: stream anime'
-	'vlc: stream anime'
+	'mpv: support for streaming anime'
+	'vlc: support for streaming anime'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
