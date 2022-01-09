@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xrock-git
-pkgver=v1.0.2.r0.g478eb88
+pkgver=1.0.2.r4.g5458355
 pkgrel=1
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
