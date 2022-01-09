@@ -1,5 +1,5 @@
 pkgbase = starport-bin
-	pkgdesc = Starport is the all-in-one platform to build, launch and maintain any crypto application on a sovereign and secured blockchain
+	pkgdesc = The all-in-one platform to build, launch and maintain any crypto application on a sovereign and secured blockchain
 	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://starport.com
