@@ -9,6 +9,7 @@ pkgbase = bilili
 	makedepends = python-wheel
 	depends = python-requests
 	depends = python-biliass
+	depends = ffmpeg
 	source = https://pypi.io/packages/source/b/bilili/bilili-1.4.10.tar.gz
 	sha256sums = 21b02a51833dc4d618a4d48fba35d5d692bb71ac52005e8156d5a8c3db9be666
 
