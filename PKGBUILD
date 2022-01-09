@@ -3,16 +3,12 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=v4.0.2.0.1.g2dec1949
+pkgver=4.6.2.0.6.g29453fdca
 pkgrel=1
 pkgdesc="MEGASync Desktop App. (GIT Version)"
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
-source=('git+https://github.com/meganz/MEGAsync.git'
-        'git+https://github.com/meganz/sdk.git'
-        'mega.svg'
-        )
 conflicts=('megasync'
            'megatools'
            )
@@ -23,13 +19,18 @@ depends=('qt5-svg'
          'libuv'
          'crypto++'
          'libsodium'
-         'ffmpeg'
+#          'ffmpeg'
+         'freeimage'
          'libmediainfo'
          'libraw'
          )
 makedepends=('git'
              'qt5-tools'
              )
+source=('git+https://github.com/meganz/MEGAsync.git'
+        'git+https://github.com/meganz/sdk.git'
+        'mega.svg'
+        )
 sha256sums=('SKIP'
             'SKIP'
             'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
@@ -37,7 +38,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd MEGAsync
-  echo "$(git describe --long --tags | tr - . | tr _ . | sed 's|OSX\.||' | sed 's|Win\.||' | sed 's|Linux\.||' | sed 's|\.Ubuntu\.18\.10build||g')"
+  echo "$(git describe --long --tags | tr - . | tr _ . | sed 's|OSX\.||' | sed 's|Win\.||' | sed 's|Linux\.||' | sed 's|\.Ubuntu\.18\.10build||g' | sed 's|CentOS7\.||g' | tr -d v)"
 }
 
 prepare() {
@@ -45,16 +46,18 @@ prepare() {
   git config submodule.src/MEGASync/mega.url "${srcdir}/sdk"
   git submodule update --init
 
-  cd src/MEGASync/mega
- ./autogen.sh
+  # disabled until sdk#2576 is fixed (-ffmpeg dep)
+  sed -e '85s|^|&#|g' -e '100s|^|&#|g' -e '104s|^|&#|g' -e '205s|^|&#|g' -i src/MEGASync/MEGASync.pro
 }
 
 build() {
   cd "${srcdir}/MEGAsync/src/MEGASync/mega"
+  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --without-freeimage \
-    --disable-examples
+    --disable-examples \
+    --without-ffmpeg # disabled until sdk#2576 is fixed (-ffmpeg dep)
 
   cd "${srcdir}/MEGAsync/src/MEGASync"
   lrelease-qt5 MEGASync.pro

@@ -1,6 +1,6 @@
 pkgbase = megasync-git
 	pkgdesc = MEGASync Desktop App. (GIT Version)
-	pkgver = v4.0.2.0.1.g2dec1949
+	pkgver = 4.6.2.0.6.g29453fdca
 	pkgrel = 1
 	url = https://mega.co.nz/#sync
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = megasync-git
 	depends = libuv
 	depends = crypto++
 	depends = libsodium
-	depends = ffmpeg
+	depends = freeimage
 	depends = libmediainfo
 	depends = libraw
 	provides = megasync
@@ -27,4 +27,3 @@ pkgbase = megasync-git
 	sha256sums = c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403
 
 pkgname = megasync-git
-
