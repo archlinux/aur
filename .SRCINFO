@@ -1,0 +1,13 @@
+pkgbase = python-types-requests
+	pkgdesc = Typing stubs for requests
+	pkgver = 2.27.3
+	pkgrel = 1
+	url = https://pypi.org/project/types-requests/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/types-requests/types-requests-2.27.3.tar.gz
+	sha256sums = 9fe61821910eb5b33bc774165d0c8fbdf933902ef57b0d5040f96b59bc428efa
+
+pkgname = python-types-requests
