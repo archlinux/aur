@@ -4,7 +4,7 @@
 _ARCHS=('generic' 'ice40' 'ecp5' 'nexus' 'gowin')
 
 pkgname=nextpnr-git
-pkgver=r3957.fdeb8680
+pkgver=r3962.3266c51d
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
@@ -60,9 +60,10 @@ build() {
     -DARCH=$(IFS=\;; echo "${_ARCHS[*]}") \
     "${_CONFIG[@]}" \
     -DBUILD_TESTS=ON \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_OPENMP=ON \
+    -DUSE_IPO=OFF \
     -DBUILD_GUI=ON \
     ..
   make
@@ -78,3 +79,5 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
+# vim: set et ts=2:
