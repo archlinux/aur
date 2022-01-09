@@ -12,7 +12,7 @@ fi
 _pluginname=tuna
 pkgname=obs-$_pluginname
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
 url="https://obsproject.com/forum/resources/tuna.843/"
@@ -21,9 +21,9 @@ depends=("obs-studio")
 makedepends=("cmake" "git")
 conflicts=("obs-plugin-tuna-bin" "obs-plugin-tuna-git")
 source=(
-  "$_pluginname::git+https://git.vrsal.de/alex/tuna.git#tag=v$pkgver"
-  "git+https://github.com/taglib/taglib"
-  "git+https://github.com/MusicPlayerDaemon/libmpdclient")
+  "$_pluginname::git+https://github.com/univrsal/tuna.git#tag=v$pkgver"
+  "taglib::git+https://github.com/taglib/taglib"
+  "libmpdclient::git+https://github.com/MusicPlayerDaemon/libmpdclient")
 sha256sums=(
   "SKIP"
   "SKIP"

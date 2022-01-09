@@ -1,7 +1,7 @@
 pkgbase = obs-tuna
 	pkgdesc = Get song info from right within obs
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/tuna.843/
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = obs-tuna
 	depends = obs-studio
 	conflicts = obs-plugin-tuna-bin
 	conflicts = obs-plugin-tuna-git
-	source = tuna::git+https://git.vrsal.de/alex/tuna.git#tag=v1.6.1
-	source = git+https://github.com/taglib/taglib
-	source = git+https://github.com/MusicPlayerDaemon/libmpdclient
+	source = tuna::git+https://github.com/univrsal/tuna.git#tag=v1.6.1
+	source = taglib::git+https://github.com/taglib/taglib
+	source = libmpdclient::git+https://github.com/MusicPlayerDaemon/libmpdclient
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
