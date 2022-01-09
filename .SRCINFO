@@ -1,10 +1,10 @@
 pkgbase = meld-git
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.21.0.218.g631ef272
+	pkgver = 3.21.1.16.g7d285ecc
 	pkgrel = 1
 	url = http://meldmerge.org/
-	license = GPL
 	arch = any
+	license = GPL
 	makedepends = git
 	makedepends = intltool
 	makedepends = meson
@@ -18,9 +18,10 @@ pkgbase = meld-git
 	depends = python-gobject
 	optdepends = python-dbus: open a new tab in an already running instance
 	provides = meld
-	conflicts = meld meld-dev
+	conflicts = meld
+	conflicts = meld-dev
 	options = !emptydirs
-	source = git+https://github.com/GNOME/meld.git
+	source = git+https://gitlab.gnome.org/GNOME/meld.git
 	sha256sums = SKIP
 
 pkgname = meld-git
