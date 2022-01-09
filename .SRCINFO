@@ -1,14 +1,13 @@
 pkgbase = pyxis-parcel
 	pkgdesc = Utilities to manipulate parcel archives for the pyxis package manager
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/chordtoll/pyxis-parcel
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = fuse3
 	depends = gcc-libs
-	source = pyxis-parcel-0.3.0.tar.gz::https://static.crates.io/crates/pyxis-parcel/pyxis-parcel-0.3.0.crate
-	sha256sums = a02dd6fac8c7d992c6969005277b7a6c48fb31ff1037d1608ac989175ae74889
+	source = pyxis-parcel-0.4.0.tar.gz::https://static.crates.io/crates/pyxis-parcel/pyxis-parcel-0.4.0.crate
+	sha256sums = 8931ded3afeda8eb2f67d1812d468df7afe778e8383441669ad4ee4215662d7d
 
 pkgname = pyxis-parcel
