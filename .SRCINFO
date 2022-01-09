@@ -1,0 +1,19 @@
+pkgbase = python-vkbottle
+	pkgdesc = Customizable asynchronous VK API framework
+	pkgver = 4.1.10
+	pkgrel = 1
+	url = https://github.com/vkbottle/vkbottle
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-choicelib
+	depends = python-pydantic
+	depends = python-vbml
+	depends = python-vkbottle-types
+	depends = python-watchdog
+	source = https://files.pythonhosted.org/packages/source/v/vkbottle/vkbottle-4.1.10.tar.gz
+	sha256sums = 1ca32e07799604b5dee548abefd956a9bebc3591720bd98b08963bbcf42e99af
+
+pkgname = python-vkbottle
