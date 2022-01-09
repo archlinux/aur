@@ -6,15 +6,19 @@
 
 pidfile="/var/run/ananicy-cpp.pid"
 command="/usr/bin/ananicy-cpp"
-start_stop_daemon_args="--wait 30"
-command_args=""
+logfile="/var/log/ananicy-cpp.log"
+command_background="true"
+command_args="start"
+
+start_pre() {
+	/sbin/sysctl -e kernel.sched_autogroup_enabled=0
+}
+
+stop_post() {
+	/usr/sbin/sysctl -e kernel.sched_autogroup_enabled=1
+}
 
 stop() {
-	ebegin "Stopping ananicy-cpp"
-	local KILLOPT="-k"
-	while [ -f "${pidfile}" ] && kill -0 $(cat ${pidfile}) ; do
-		${command} ${KILLOPT}
-		sleep 1
-	done
-	eend $?
+	start-stop-daemon --stop --pidfile "$pidfile"
 }
+
