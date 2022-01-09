@@ -1,9 +1,0 @@
-post_install() {
-  systemd-sysusers logstash.conf
-  chown -R logstash:logstash usr/share/logstash var/lib/logstash var/log/logstash
-}
-
-post_upgrade() {
-  systemd-sysusers logstash.conf
-  chown -R logstash:logstash usr/share/logstash var/log/logstash
-}

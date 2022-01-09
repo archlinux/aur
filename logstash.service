@@ -11,7 +11,7 @@ Environment=LS_LOG_DIR=/var/log/logstash
 Environment=LS_SETTINGS_DIR=/etc/logstash
 User=logstash
 Group=logstash
-ExecStart=/usr/share/logstash/bin/logstash -f $LS_CONF_DIR  --path.logs $LS_LOG_DIR --path.data $LS_HOME
+ExecStart=/usr/share/logstash/bin/logstash -f $LS_CONF_DIR  --path.logs $LS_LOG_DIR --path.data $LS_HOME --path.settings $LS_SETTINGS_DIR
 StandardOutput=null
 StandardError=journal
 SuccessExitStatus=143
