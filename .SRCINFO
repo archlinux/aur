@@ -18,6 +18,8 @@ pkgbase = datcord-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
+	provides = datcord
+	conflicts = datcord
 	source = https://github.com/gamingdoom/datcord/releases/latest/download/datcord-x86_64-linux.tar.bz2
 	sha256sums = SKIP
 

@@ -14,7 +14,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=(datcord)
-conflicts=()
+conflicts=(datcord)
 replaces=()
 source=(https://github.com/gamingdoom/datcord/releases/latest/download/datcord-$CARCH-linux.tar.bz2)
 noextract=()
