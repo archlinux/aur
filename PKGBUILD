@@ -5,7 +5,7 @@
 
 pkgname=anbox-git
 pkgver=r1358.84f0268
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
@@ -61,9 +61,20 @@ prepare() {
   truncate -s 0 cmake/FindGMock.cmake
   truncate -s 0 tests/CMakeLists.txt
   sed -i '1i\#include <cstdint>' "$srcdir/anbox/src/anbox/input/manager.cpp"
-  for each in lxc sdbus delayed-start desktop-dir;do
-    patch -p1 < "$srcdir/$each.patch"
-  done
+
+  # Thanks to @bartus <arch-user-repo@bartus.33mail.com> for suggesting the patch
+  # checking before applying it.
+  # Original patch: http://ix.io/3Clr
+  printf '%s\n' "${source[@]%%::*}" \
+    | awk -F . '/\.patch/{print $1}' \
+    | while read -r patch;do
+        if patch --dry-run -Np1 -Rsf < "$srcdir/$patch.patch" &> /dev/null; then
+          warning "Patch already applied, please remove $patch.patch from source[]!"
+          read -t5 -p 'press enter to continue...' || true
+        else
+          patch -Np1 < "$srcdir/$patch.patch"
+        fi
+      done
 
   git submodule init
   git config submodule.external/cpu_features.url $srcdir/cpu_features
