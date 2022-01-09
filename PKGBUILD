@@ -3,11 +3,10 @@ pkgname=('python-cgal' 'java-cgal')
 pkgver=r765.2479e35
 pkgrel=1
 pkgdesc='CGAL bindings using SWIG '
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom: Boost')
 url="https://github.com/CGAL/cgal-swig-bindings"
-makedepends=('cgal-headers' 'cmake' 'swig' 'eigen' 'python' 'java-runtime' 'git')
-depends=('tbb' 'boost')
+makedepends=('cgal-headers' 'cmake' 'swig' 'eigen' 'python' 'java-runtime' 'git' 'tbb' 'boost')
 source=("git+https://github.com/CGAL/cgal-swig-bindings.git")
 md5sums=('SKIP')
 
@@ -28,7 +27,7 @@ build()
 
 package_python-cgal()
 {
-  depends=('python' 'cgal')
+  depends=('python' 'boost' 'tbb')
 
   cd "$srcdir"/cgal-swig-bindings/build
   python_dir=`python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())"`
@@ -40,7 +39,7 @@ package_python-cgal()
 
 package_java-cgal()
 {
-  depends=('java-runtime' 'cgal')
+  depends=('java-runtime' 'boost' 'tbb')
 
   cd "$srcdir"/cgal-swig-bindings/build
   install -d "$pkgdir"/usr/share/java/
