@@ -3,7 +3,7 @@
 
 pkgname=openbooks-bin
 binaryname=openbooks
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 # license=('Apache')
 pkgdesc="Openbooks allows you to download ebooks from irc.irchighway.net quickly and easily."
@@ -21,9 +21,9 @@ source_x86_64=(
   "https://raw.githubusercontent.com/evan-buss/openbooks/master/README.md"
 )
 
-sha256sums_aarch64=('1755db0cf3640aecfb3b9d6467292405f8de6889cc4fa3fecb43acbb3bdab87f'
+sha256sums_aarch64=('b4ff6fe2036c04fbe8a394929a278b6e683ba89f7094cc88c5b14f6f0c50e18b'
                     'ef5364358d24f7104d053825ecc92deeeb0b60692745036fec9f5eff3f9a65cb')
-sha256sums_x86_64=('1755db0cf3640aecfb3b9d6467292405f8de6889cc4fa3fecb43acbb3bdab87f'
+sha256sums_x86_64=('51d1e0bba4539498ef81a062e93013ab3298c114d93a1de8aa08f4abf3b94b47'
                    'ef5364358d24f7104d053825ecc92deeeb0b60692745036fec9f5eff3f9a65cb')
 
 package() {
