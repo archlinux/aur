@@ -19,8 +19,8 @@ makedepends=(
     "libnotify"
     "scdoc"
         )
-provides=('japokwm')
-conflicts=('japokwm')
+provides=('japokwm' "$_pkgname")
+conflicts=('japokwm' "$_pkgname")
 backup=(
     'etc/japokwm/init.lua'
     'etc/japokwm/layouts/master/init.lua'
