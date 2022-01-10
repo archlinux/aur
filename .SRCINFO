@@ -13,8 +13,8 @@ pkgbase = glassfish
 	source = glassfish-sysusers.conf
 	source = glassfish-tmpfiles.conf
 	sha256sums = 3baa27b0f1aca2b18a615810ab916d3c25e90057809d4ab9a6b0cdb9a2e0d710
-	sha256sums = bd96191309d3b82bc59d6dc8e23c0a5878ce7dd8a0d4e1c34760ac83a847789e
-	sha256sums = ab2d76ceb7be06efcd2ddb1d0a2bd29007658282f4d75c5d742bd76c898381d6
+	sha256sums = 85aaee79cf5624aec9de63662d9b37c2b95ea136472e0b47027ce71c93d069c3
+	sha256sums = 04aae18a2d4d66ae687a9cf144bc8775c8b903e63eea22ad0d8fb61086bcd2de
 	sha256sums = 44f7d2a8c63758053ee01326525cbac1ab3c04d581091d6b7b3bca4412acc10a
 
 pkgname = glassfish

@@ -1,3 +1,18 @@
+pre_upgrade() {
+	echo "  -> Stoping glassfish.service ..."
+	systemctl stop glassfish.service
+	wait
+}
+
 post_upgrade() {
+	echo "  -> Updating installation directory permissions ..."
 	chmod -R u=rwX,g=rwX,o=rX opt/glassfish
+}
+
+pre_remove() {
+	echo "  -> Stoping glassfish.service ..."
+	systemctl stop glassfish.service
+	wait
+	echo "  -> Disabling glassfish.service ..."
+	systemctl disable glassfish.service
 }
