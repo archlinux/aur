@@ -1,7 +1,7 @@
 # Maintainer: James Hendrie <hendrie.james@gmail.com>
 pkgname=bin2dec
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Converts binary numbers to decimal integers or ASCII text"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://www.someplacedumb.net/content/progs/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/jahendrie/bin2dec/releases/download/v1.6/$pkgname-$pkgver.tar.gz")
 noextract=()
 md5sums=('69994b8ebaa65903ce249db371b9817c')
 validpgpkeys=()
