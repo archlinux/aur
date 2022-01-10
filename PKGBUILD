@@ -1,7 +1,7 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v7.6.2.r128.46db5730
-pkgrel=1
+pkgver=v7.7.1.r3.ce5dbf58
+pkgrel=2
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -11,8 +11,8 @@ makedepends=('git' 'cmake' 'qt5-tools' 'npm')
 optdepends=('openssl: used for HTTPS sources')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/Bionus/imgbrd-grabber.git#branch=develop' 'Grabber.desktop')
-md5sums=('SKIP' 'SKIP')
+source=('git+https://github.com/Bionus/imgbrd-grabber.git#branch=develop' 'Grabber.desktop' 'git+https://github.com/catchorg/Catch2.git' 'git+https://github.com/sakra/cotire.git' 'git+https://github.com/LaurentGomila/qt-android-cmake.git')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
 pkgver() {
@@ -22,7 +22,11 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
-    git submodule update --init --recursive
+    git submodule init
+    git config submodule.catch.url "$srcdir/Catch2"
+    git config submodule.qt-android-cmake.url "$srcdir/qt-android-cmake"
+    git config submodule.cotire.url "$srcdir/cotire"
+    git submodule update
 }
 
 build() {

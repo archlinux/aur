@@ -1,7 +1,7 @@
 pkgbase = imgbrd-grabber-git
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
-	pkgver = v7.6.2.r128.46db5730
-	pkgrel = 1
+	pkgver = v7.7.1.r3.ce5dbf58
+	pkgrel = 2
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,12 @@ pkgbase = imgbrd-grabber-git
 	conflicts = imgbrd-grabber
 	source = git+https://github.com/Bionus/imgbrd-grabber.git#branch=develop
 	source = Grabber.desktop
+	source = git+https://github.com/catchorg/Catch2.git
+	source = git+https://github.com/sakra/cotire.git
+	source = git+https://github.com/LaurentGomila/qt-android-cmake.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
