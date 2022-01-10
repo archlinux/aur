@@ -1,0 +1,18 @@
+pkgbase = proxsign-bin
+	pkgdesc = SETCCE proXSign® is a set of components for PKI based digital signing. Package based on the official binary build.
+	pkgver = 2.2.7
+	pkgrel = 1
+	url = https://www.setcce.com/products/electronic-signature-technologies/pki
+	arch = x86_64
+	license = custom: SETCCE
+	depends = cairo
+	depends = libjpeg6-turbo
+	depends = libldap24
+	depends = nss
+	depends = xalan-c
+	depends = xerces-c
+	depends = zlib
+	source = https://proxsign.setcce.si/proxsign/repo/Fedora_34/x86_64/proxsign-2.2.7-10.2.x86_64.rpm
+	sha256sums = af09f57241ebfb98454426908046eadbef479a6c34a2d4cdab12da0675e0cfac
+
+pkgname = proxsign-bin
