@@ -5,7 +5,7 @@
 
 pkgname=okular-vim-colemak
 _pkgname=okular
-pkgver=21.12.0
+pkgver=21.12.1
 pkgrel=1
 pkgdesc="Document Viewer with colemak vim-binding"
 arch=(x86_64)
@@ -20,7 +20,7 @@ optdepends=('ebook-tools: mobi and epub support'
             'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
 conflicts=('okular')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz)
-sha256sums=('c8d487e5f86cd951ae0f8d0b057393c3a1d4136c8d2f99e04a0e2ec0e85d7e23')
+sha256sums=('04bd61cec2b794cce0f6381cf7c4db7778a8cefc5716d8a4bfd3efaafd212ba1')
 
 options=(!zipman)
 

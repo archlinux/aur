@@ -1,6 +1,6 @@
 #!/bin/zsh
 pkgbuild_file='PKGBUILD'
-#curl -O https://raw.githubusercontent.com/archlinux/svntogit-packages/master/okular/trunk/PKGBUILD
+curl -O https://raw.githubusercontent.com/archlinux/svntogit-packages/master/okular/trunk/PKGBUILD
 
 sed -i '1 i # Maintainer: Ben Song <bensongsyz@gmail.com>' $pkgbuild_file
 sed -i 's/pkgname=okular/pkgname=okular-vim-colemak\n_pkgname=okular/g' $pkgbuild_file
