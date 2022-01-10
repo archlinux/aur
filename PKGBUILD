@@ -1,26 +1,28 @@
-# Maintainer: Jörg Horchler <joerg@horchler.xyz>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Jörg Horchler <joerg@horchler.xyz>
 
 pkgname=gotask-taskfile-bin
 _pkgname=gotask-taskfile
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="A task runner / simpler Make alternative written in Go (official binary version). Installs as gtask to allow coexistance with taskwarrior."
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="https://taskfile.dev/"
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+url="https://github.com/go-task/task"
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("https://github.com/go-task/task/releases/download/v${pkgver}/task_linux_amd64.tar.gz")
-source_i686=("https://github.com/go-task/task/releases/download/v${pkgver}/task_linux_386.tar.gz")
-source_aarch64=("https://github.com/go-task/task/releases/download/v${pkgver}/task_linux_arm64.tar.gz")
-source_armv7h=("https://github.com/go-task/task/releases/download/v${pkgver}/task_linux_arm.tar.gz")
-sha256sums_x86_64=('80f0018f46bbf430d230bb049500219838e1fd08363c11514a2eff5988f9f0e3')
-sha256sums_i686=('07b26059121fd637ff60add734ff4f9bb493b97330e1050c62faca0f0768fd19')
-sha256sums_aarch64=('834b75622d325b853b2896dd3b916b97a0ef007780b93513c6cf1d687d99c5cb')
-sha256sums_armv7h=('ae5c5544111ffd0e439e42cff9c9147b5d23b24bea10a374e5bc4840e5d015a6')
+
+source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_amd64.tar.gz")
+source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_386.tar.gz")
+source_armv7h=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_arm.tar.gz")
+source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_arm64.tar.gz")
+
+sha256sums_x86_64=('f78c861e6c772a3263e478da7ae3223e10c2bc6b7b0728717d30db35d463f4b9')
+sha256sums_i686=('90bb2d757f5bf621cf0e7fa24a5da8723025b8a862e3939ce74a888ad8ce1722')
+sha256sums_armv7h=('d26b27e16450deca4b0b3614d0af81c3682e05bb1039d829e70868d6123132d5')
+sha256sums_aarch64=('619cf2c3070b77f96475731f98b79ee8dabf248ccc8deb759c2c87b45a54fa4d')
 
 package() {
-    install -Dm755 "${srcdir}/task" "${pkgdir}/usr/bin/gtask"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm755 "${srcdir}/task" "${pkgdir}/usr/bin/gtask"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
