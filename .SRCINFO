@@ -1,6 +1,6 @@
 pkgbase = azote
 	pkgdesc = Wallpaper & color manager for Sway, i3 and other WMs
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 2
 	url = https://github.com/nwg-piotr/azote
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = azote
 	optdepends = feh: for setting background on X11-based WMs
 	optdepends = xorg-xrandr: for checking outputs on X11-based WMs
 	optdepends = wlr-randr-git: for checking outputs on wlroots-based compositors other than sway
-	source = azote-1.9.2.tar.gz::https://github.com/nwg-piotr/azote/archive/v1.9.2.tar.gz
-	md5sums = 78aac22c9377308e641e23c38b5e20b1
+	source = azote-1.9.3.tar.gz::https://github.com/nwg-piotr/azote/archive/v1.9.3.tar.gz
+	md5sums = f668f8e7b481176596b86f6442eaac22
 
 pkgname = azote
