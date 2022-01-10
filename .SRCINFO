@@ -1,15 +1,15 @@
 pkgbase = fluminurs-bin
 	pkgdesc = Sync tool for LumiNUS
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/fluminurs/fluminurs
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = openssl
-	source = https://github.com/fluminurs/fluminurs/releases/download/1.3.1/fluminurs-cli.ubuntu
+	source = https://github.com/fluminurs/fluminurs/releases/download/1.4.0/fluminurs-cli.ubuntu
 	source = https://raw.githubusercontent.com/fluminurs/fluminurs/master/LICENSE
-	sha256sums = f480e115a724de79c0eb9e9be0ec597fdb6055f557f8491cfd636a67f5d695ae
+	sha256sums = e95d063ec13eb682abaf6db5333572d0afa9e60823fb128e83bfc517eab709a9
 	sha256sums = SKIP
 
 pkgname = fluminurs-bin
