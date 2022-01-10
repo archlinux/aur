@@ -1,6 +1,6 @@
 pkgname='rum-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Game library management'
 arch=('x86_64')
@@ -11,11 +11,11 @@ replaces=('chad-launcher-bin')
 depends=(webkit2gtk curl wget openssl appmenu-gtk-module gtk3 libappindicator-gtk3 libvips udev)
 makedepends=()
 source=(
-    "$_pkgname-$pkgver::https://johncena141.eu.org:8141/attachments/5166347b-6241-4203-9312-f16594d72e79"
+    "$_pkgname-$pkgver::https://johncena141.eu.org:8141/attachments/3e9bd772-1749-49f6-a2ac-7571780e2665"
     "${_pkgname}.desktop::https://johncena141.eu.org:8141/johncena141/${_pkgname}/raw/v${pkgver}/${_pkgname}.desktop"
     "${_pkgname}.svg::https://johncena141.eu.org:8141/johncena141/${_pkgname}/raw/v${pkgver}/icon.svg"
 )
-md5sums=('d7aa41ff6dc9251ca2be7a47256db692'
+md5sums=('6fecb42a7bf8d6748ed1df25bc822b67'
          'cf6b34f87f20f6d7cb9385c2024e359a'
          '2026d2262f6f8c02881dcb53c6363064')
 
