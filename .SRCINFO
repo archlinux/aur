@@ -1,0 +1,16 @@
+pkgbase = terraform-docs
+	pkgdesc = Generate documentation from Terraform modules in various output formats
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/terraform-docs/terraform-docs
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = terraform-docs-0.16.0.tar.gz::https://github.com/terraform-docs/terraform-docs/archive/v0.16.0.tar.gz
+	sha256sums = e370fd106ca74caebc8632834cc28412a3a6a160952392da71f213515bba2085
+
+pkgname = terraform-docs
