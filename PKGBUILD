@@ -8,27 +8,24 @@ arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
 license=('Apache 2.0')
 makedepends=('python-setuptools')
-depends=(
-        'python-flask'
-        'python-eventlet'
-        'python-validators'
-        'python-timeago'
-        # inscriptis
-        'python-feedgen'
-        'python-flask-login'
-        'python-pytz'
-        'python-requests'
-        'python-urllib3'
-        'python-chardet'
-        'python-wtforms'
-        # jsonpath-ng
-        # apprise
-        # these for apprise
-          'python-oauthlib'
-          'python-requests-oauthlib'
-        'python-cryptography'
-        'python-beautifulsoup4'
-        'python-selenium')
+depends=(# see https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
+         'python-flask'
+         'python-eventlet'
+         'python-validators'
+         'python-timeago'
+         # inscriptis
+         'python-feedgen'
+         'python-flask-login'
+         'python-pytz'
+         'python-requests'
+         'python-urllib3'
+         'python-chardet'
+         'python-wtforms'
+         'python-jsonpath-ng'
+         'python-apprise'
+         'python-cryptography'
+         'python-beautifulsoup4'
+         'python-selenium')
 source=("https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgver.tar.gz"
         'sysusers'
         'tmpfiles'
@@ -41,7 +38,7 @@ sha512sums=('d1408292e479f2bde9b468f109d87c39fe2090ee12091d835f0beee1faed88dec79
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps inscriptis jsonpath-ng apprise
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps inscriptis
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"
