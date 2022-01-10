@@ -2,9 +2,9 @@
 
 _pkgname=lynx-menu
 pkgname=${_pkgname,}
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="Lynx Menu - Menu Oficial de LynxOS"
+pkgdesc="Lynx Menu - Oficial Menu for LynxOS"
 url="https://gitlab.com/LynxOS/$pkgname"
 depends=(
         'lynx-nw'
@@ -14,10 +14,12 @@ depends=(
         'gnome-menus'
         'python-dbus'
         'python-gobject'
+        'gtk3'
+        'pyside2'
         )
 license=('GPL')
 arch=('any')
-md5sums=('f888666d798203d680e91e9b9defb0f7')
+md5sums=('a0aa1772be6717326f21547131e79402')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 
 package() {

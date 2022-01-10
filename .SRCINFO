@@ -1,6 +1,6 @@
 pkgbase = lynx-menu
-	pkgdesc = Lynx Menu - Menu Oficial de LynxOS
-	pkgver = 0.0.1
+	pkgdesc = Lynx Menu - Oficial Menu for LynxOS
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://gitlab.com/LynxOS/lynx-menu
 	arch = any
@@ -12,7 +12,9 @@ pkgbase = lynx-menu
 	depends = gnome-menus
 	depends = python-dbus
 	depends = python-gobject
-	source = https://gitlab.com/LynxOS/lynx-menu/-/archive/0.0.1/lynx-menu-0.0.1.tar.gz
-	md5sums = f888666d798203d680e91e9b9defb0f7
+	depends = gtk3
+	depends = pyside2
+	source = https://gitlab.com/LynxOS/lynx-menu/-/archive/0.0.2/lynx-menu-0.0.2.tar.gz
+	md5sums = a0aa1772be6717326f21547131e79402
 
 pkgname = lynx-menu
