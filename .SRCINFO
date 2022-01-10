@@ -1,14 +1,12 @@
 pkgbase = python-logfury
 	pkgdesc = Responsible, low-boilerplate logging of method calls for python libraries
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reef-technologies/logfury
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python-pip
-	makedepends = python-nox
-	makedepends = python-coverage
 	depends = python
 	source = logfury-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/l/logfury/logfury-1.0.1.tar.gz
 	sha512sums = e62ba75293f93bfe2ea8dfaa20a478d8977800546e55bf511f409f5d89727c505297dbd84adbef1c47f8916b7551801fe4bbb3ae8dd22c6613b8942f25e80e9a
