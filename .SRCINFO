@@ -1,6 +1,6 @@
 pkgbase = rnote
 	pkgdesc = A simple note taking application written in Rust and GTK4
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/flxzt/rnote
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rnote
 	depends = glib2
 	depends = libadwaita
 	depends = poppler-glib
-	source = https://github.com/flxzt/rnote/archive/v0.2.3.tar.gz
-	b2sums = e390e3e37e923face5138b0ad258c863b7ea45ec304168602d363be70082699623b6a8ca8d3205338a60c4c3a2e25183857d47e7760b0d02df8eab5a7c74897d
+	source = https://github.com/flxzt/rnote/archive/v0.2.4.tar.gz
+	b2sums = f5ab0afe481873193c710a55cdacb5e02ce454e455512839c1570a847723fa069b9ab65fe46ee51d3b2e854f974b1ba46dca1acf1c2167901cffeb60235fd0fe
 
 pkgname = rnote
