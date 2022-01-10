@@ -2,7 +2,7 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=python-caldav
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="a caldav client library"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python' 'python-lxml' 'python-vobject' 'python-dateutil' 'python-distribute' 'python-six' 'python-requests')
 options=(!emptydirs)
 source=("https://github.com/python-caldav/caldav/archive/v${pkgver}.tar.gz")
-sha256sums=('b252c3d818b6d69362f2b1bb2c6891e267e790e7e224b53869b3e574480ca402')
+sha256sums=('cb6b913330f9f608102e707284f429c83a1121bda33829d6c935c0c42404372e')
 
 package() {
   cd "$srcdir/caldav-$pkgver"
