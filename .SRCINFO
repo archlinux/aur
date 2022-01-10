@@ -1,6 +1,6 @@
 pkgbase = jmstoolbox
 	pkgdesc = A "Universal" JMS Client able to interact with a lot of Queue Managers/Providers on the market in a consistent manner.
-	pkgver = 5.10.0
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://github.com/jmstoolbox/jmstoolbox
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = jmstoolbox
 	makedepends = java-environment=11
 	depends = java-runtime>=11
 	depends = gtk3
-	source = jmstoolbox-5.10.0.tar.gz::https://github.com/jmstoolbox/jmstoolbox/archive/v5.10.0.tar.gz
+	source = jmstoolbox-5.12.0.tar.gz::https://github.com/jmstoolbox/jmstoolbox/archive/v5.12.0.tar.gz
 	source = jmstoolbox.sh
 	source = jmstoolbox.desktop
-	sha256sums = a86e4a74f67706637d03cadaecad708c79e26b31ba1a8c071e8cb2ad6c3ea2f2
+	sha256sums = 9eb76700e56f3a05fb532c7691ce3965e88ecfff936e5114f4c68d5fd1ce680f
 	sha256sums = adf3cdcc56f9c58c960bc753dcf887969d701edcfd2087bf7584255046ca5f47
 	sha256sums = 59b5fe00935cfc109b9832475de40a631088c7d92217ac9bc0cafb6b090984e9
 
 pkgname = jmstoolbox
-
