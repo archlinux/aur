@@ -1,45 +1,57 @@
-# Maintainer: Lukas Böger <dev  AT  lboeger  DOT  de>
-# Contributor:  Francesco Turco <fturco  AT  fastmail  DOT  fm>
-# Contributor:  Marcin Wieczorek <marcin  AT  marcin  DOT  co>
+# Maintainer: Ivan Zenin <i.zenin@gmx.com>
+# Maintainer: Lukas Böger <dev AT lboeger DOT de>
+# Maintainer: Marcin Wieczorek <marcin@marcin.co>
+# Contributor: Tomáš Mládek <tmladek{at}inventati{dt}org>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=tmsu-git
-pkgver=0.7.4
-pkgrel=1
-
-pkgdesc='Tag your files and access them through a virtual filesystem'
+pkgver=latest
+pkgrel=2
+pkgdesc="A tool for tagging your files and accessing them through a virtual filesystem. (development version)"
 arch=('i686' 'x86_64')
-url="http://tmsu.org/"
+url="https://tmsu.org/"
 license=('GPL3')
-
+depends=('fuse' 'sqlite>=3')
 makedepends=('git' 'go')
-conflicts=("${pkgname%-git}")
-
-source=("git+https://github.com/oniony/${pkgname/-/.}")
+provides=('tmsu')
+conflicts=('tmsu' 'tmsu-bin')
+source=("git+git://github.com/oniony/tmsu.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
-
-    printf '%s+g%s' $(git tag -l 'v*' | tail -n 1 | cut -c 2-) $(git describe --always)
+  cd "${srcdir}"/tmsu
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
   export GOPATH=/tmp
 
+  echo "Now getting blake2b..."
   go get -u golang.org/x/crypto/blake2b
+
+  echo "Now getting go-sqlite3..."
   go get -u github.com/mattn/go-sqlite3
+
+  echo "Now getting go-fuse..."
   go get -u github.com/hanwen/go-fuse/fuse
 
-  cd "${srcdir}/${pkgname%-git}"
-  make dist
-}
-
-check() {
-  cd "${srcdir}/${pkgname%-git}"
-  make test
+  cd "${srcdir}"/tmsu
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
-  make install DESTDIR="${pkgdir}" MOUNT_INSTALL_DIR="${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/bin" \
+           "${pkgdir}/usr/bin" \
+           "${pkgdir}/usr/share/man/man1" \
+           "${pkgdir}/usr/share/zsh/site-functions"
+
+  cd "${srcdir}"/tmsu
+  make INSTALL_DIR="${pkgdir}/usr/bin" \
+  MOUNT_INSTALL_DIR="${pkgdir}/usr/bin" \
+  MAN_INSTALL_DIR="${pkgdir}/usr/share/man/man1" \
+  ZSH_COMP_INSTALL_DIR="${pkgdir}/usr/share/zsh/site-functions" \
+  install
 }

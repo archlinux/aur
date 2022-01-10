@@ -1,16 +1,19 @@
 pkgbase = tmsu-git
-	pkgdesc = Tag your files and access them through a virtual filesystem
-	pkgver = 0.7.4
-	pkgrel = 1
-	url = http://tmsu.org/
+	pkgdesc = A tool for tagging your files and accessing them through a virtual filesystem. (development version)
+	pkgver = latest
+	pkgrel = 2
+	url = https://tmsu.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	depends = fuse
+	depends = sqlite>=3
+	provides = tmsu
 	conflicts = tmsu
-	source = git+https://github.com/oniony/tmsu.git
+	conflicts = tmsu-bin
+	source = git+git://github.com/oniony/tmsu.git
 	sha256sums = SKIP
 
 pkgname = tmsu-git
-
