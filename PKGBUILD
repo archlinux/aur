@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   export GOPATH=/tmp
+  go env -w GO111MODULE=auto
 
   echo "Now getting blake2b..."
   go get -u golang.org/x/crypto/blake2b
