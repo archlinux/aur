@@ -1,6 +1,6 @@
 post_install() {
     printf "$(tput setaf 4)Run the RenderMan Installer by executing the following binary as root:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)/opt/pixar/RenderMan-Installer-ncr-24.2/bin/RenderManInstaller$(tput sgr0)\n\n"
+    printf "$(tput setaf 2)/opt/pixar/RenderMan-Installer-ncr-24.3/bin/RenderManInstaller$(tput sgr0)\n\n"
     printf "$(tput setaf 4)The installer will download files to your ~/Download directory.$(tput sgr0)\n"
 }
 
