@@ -3,19 +3,18 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=rstudio-desktop
-#2021.09.1+372
 _vermajor="2021"
 _verminor="09"
-_verpatch="1"
-_versuffix="+372"
-_gitcommit=e1c360e
+_verpatch="2"
+_versuffix="+382"
+_gitcommit=fc9e217
 _gitname=rstudio-rstudio-${_gitcommit}
-pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
+pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=14.17.5
-pkgrel=2
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -35,7 +34,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "cran_multithread.patch"
         "node_version.patch::https://github.com/rstudio/rstudio/commit/8188a86b226b45ae7ff35d5afa4ee5b3fa84fd76.patch")
 
-sha256sums=('acd45115066e3755b74d275f2d44e321f82c42cf8f68ead8390fea75c1965203'
+sha256sums=('824173fcef6380e1d3c4fce7ae56a6e0a6f3c75b601327a70ec15182581ccd81'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
