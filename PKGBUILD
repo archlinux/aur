@@ -1,14 +1,15 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=twitch-dl-git
-pkgver=1.16.1.r5.gdd1f4e0
-pkgrel=2
+pkgver=1.17.0.r0.g2f977be
+pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
 url="https://github.com/ihabunek/twitch-dl"
 license=('GPL3')
 depends=('python' 'python-m3u8' 'python-requests' 'ffmpeg')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel')
+optdepends=('twine')
 checkdepends=('python-pytest')
 provides=('twitch-dl' 'twitch-dl-bin')
 conflicts=('twitch-dl' 'twitch-dl-bin')
