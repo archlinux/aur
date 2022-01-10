@@ -98,9 +98,4 @@ if [ -f "/usr/lib/libml.so" ]; then
 	CONFOPTS="${CONFOPTS} --with-boost=1"
 fi
 
-# Add valgrind support
-if [[ "$(valgrind --version)" ]]; then
-	CONFOPTS="${CONFOPTS} --with-valgrind=1"
-fi
-
 echo "${CONFOPTS}"
