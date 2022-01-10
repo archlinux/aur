@@ -1,3 +1,6 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Mark Oteiza <mvoteiza@udel.edu>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 _base=colorspacious
 pkgname=python-${_base}
 pkgdesc="A powerful, accurate, and easy-to-use Python library for doing colorspace conversions"
