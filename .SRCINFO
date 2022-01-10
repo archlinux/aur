@@ -1,6 +1,6 @@
 pkgbase = python-jsonpath-ng
 	pkgdesc = JSONPath for Python that aims to be standard compliant
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/h2non/jsonpath-ng
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-jsonpath-ng
 	depends = python-ply
 	depends = python-decorator
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/c5/d0/c4b2fa7e00e69670a92b103761b4e10a4bdaca109818d44753219c20b7be/jsonpath-ng-1.5.2.tar.gz
-	sha256sums = 144d91379be14d9019f51973bd647719c877bfc07dc6f3f5068895765950c69d
+	source = https://files.pythonhosted.org/packages/source/j/jsonpath-ng/jsonpath-ng-1.5.3.tar.gz
+	sha256sums = a273b182a82c1256daab86a313b937059261b5c5f8c4fa3fc38b882b344dd567
 
 pkgname = python-jsonpath-ng
-
