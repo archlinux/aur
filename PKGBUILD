@@ -5,7 +5,7 @@
 
 pkgname=mynotex
 pkgver=1.4.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A free note-taking, document file and activity manager for GNU/Linux"
 url="https://sites.google.com/site/mynotex"
 license=('GPL')
@@ -17,18 +17,18 @@ gdrive_download() {
   gUrl=https://drive.google.com/uc?export=download
   curl -sc gc "${gUrl}&id=${1}" >/dev/null
   gc="$(awk '/_warning_/ {print $NF}' gc)"
-  curl -k -C - -LOJb gc "${gUrl}&confirm=${gc}&id=${1}"
+  curl -k -C - -Lb gc "${gUrl}&confirm=${gc}&id=${1}" -o $2
 }
 
 prepare() {
   if [ "$(uname -m | grep '64')" = "x86_64" ]; then
     file=mynotex_1.4.1.0_amd64.deb
     sha256=0026f7182fd0f9c38b6c220a3ea82642d93241f78ba33360f0d66270bf9f8673
-    gdrive_download 1emkXcCopQJkgpI2ehYpF1smz4vlsLz7L
+    gdrive_download 1emkXcCopQJkgpI2ehYpF1smz4vlsLz7L $file
   else
     file=mynotex_1.4.1.0_i386.deb
     sha256=7a2b049d166609bec364e34ddf9899ff218c2fea410014f0af78472ee0fb4b90
-    gdrive_download 1qlwYZ2rLrvbzMp1ap6NfPzZGpbwqZk6K
+    gdrive_download 1qlwYZ2rLrvbzMp1ap6NfPzZGpbwqZk6K $file
   fi
 
   echo "$sha256 $file"|sha256sum -c
