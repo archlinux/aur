@@ -9,8 +9,8 @@
 
 _npmname=winston
 pkgname=nodejs-winston
-pkgver=3.3.3
-pkgrel=2
+pkgver=3.3.4
+pkgrel=1
 pkgdesc="A logger for just about everything."
 arch=(any)
 url="https://github.com/flatiron/winston"
@@ -19,7 +19,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('b0f210ced402354740f66f294406d652ccc6db9e21a0a7f72f2922270a742274')
+sha256sums=('f9764197c28ff456a3c02bfcdc0b65da0b4d33626762042357994a6cfc928720')
 
 package() {
     cd "$srcdir"
