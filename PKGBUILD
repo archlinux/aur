@@ -1,14 +1,15 @@
 #Maintainer: Skykey <zcxzxlc@163.com>
+#Contributer: NN777 <NN777@NN777.com>
 
 pkgname=('kingstvis')
-pkgver=3.5.0
+pkgver=3.5.4
 pkgrel=1
-pkgdesc="KingstVIS软件可以采集记录多路数字信号，可测量信号脉宽、周期、频率、占空比等，可依据多种标准协议解析出通信数据，具备演示模式可让你购买之前体验全部功能。"
+pkgdesc="Kingst Virtual Instruments - Logic Analyzer"
 provides=("kingstvis")
-url='http://www.qdkingst.com/cn'
+url='http://www.qdkingst.com'
 arch=('x86_64')
 depends=('qt5-base' 'qt5-svg')
-source=("${pkgname}.tar.gz::http://www.qdkingst.com/kfs/KingstVIS_v${pkgver}.tar.gz"
+source=("${pkgname}.tar.gz::http://res.kingst.site/kfs/KingstVIS_v${pkgver}.tar.gz"
 kingstvis.desktop
 logo-0.png
 logo-1.png
@@ -16,7 +17,7 @@ logo-2.png
 logo-3.png
 logo-4.png
 )
-md5sums=('812bbd37a16d315a489ca33ea2868a36'
+md5sums=('182ce951f4a5535d7011dfb4357c6a5b'
 SKIP
 SKIP
 SKIP
