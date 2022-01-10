@@ -1,6 +1,6 @@
 pkgbase = system76-driver
 	pkgdesc = Universal driver for System76 computers
-	pkgver = 20.04.46
+	pkgver = 20.04.47
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver.install
@@ -39,11 +39,11 @@ pkgbase = system76-driver
 	optdepends = system76-power: System76 Power Management
 	optdepends = xorg-xhost: To enable GUI applications on Wayland
 	optdepends = xorg-xbacklight: To use the backlight service
-	source = git+https://github.com/pop-os/system76-driver.git#commit=5c74e32a24d1b67b71406e3bda02b46ca115b598?signed
+	source = git+https://github.com/pop-os/system76-driver.git#commit=12f1c0f07ff9d4fde77cfd2b0d524788cb34b381?signed
 	source = cli.patch
 	source = wayland.patch
 	source = actions.patch
-	validpgpkeys = DA0878FCF806089ED4FDDF58E988B49EE78A7FB1
+	validpgpkeys = D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE
 	sha256sums = SKIP
 	sha256sums = ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3
 	sha256sums = 2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3
