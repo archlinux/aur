@@ -7,7 +7,7 @@ pkgbase = eis-bin
 	license = MIT
 	provides = eis
 	noextract = eis
-	source = https://git.hering.sh/finn/eis/-/jobs/487/artifacts/raw/bin/eis
+	source = eis-bin-1.0.0::https://git.hering.sh/finn/eis/-/jobs/487/artifacts/raw/bin/eis
 	sha256sums = 0c531b6e30bc375249fb8c0e2d76909283f77d886eb60a47298d7d8fe7cd2ddf
 
 pkgname = eis-bin

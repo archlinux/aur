@@ -8,10 +8,10 @@ arch=('x86_64')
 url="https://vccourses.cs.ovgu.de/bjoern.gehrke/eis"
 license=('MIT')
 provides=(eis)
-source=("https://git.hering.sh/finn/eis/-/jobs/487/artifacts/raw/bin/eis")
+source=("$pkgname-$pkgver::https://git.hering.sh/finn/eis/-/jobs/487/artifacts/raw/bin/eis")
 noextract=('eis')
 sha256sums=('0c531b6e30bc375249fb8c0e2d76909283f77d886eb60a47298d7d8fe7cd2ddf')
 
 package() {
-    install -Dm755 "eis" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${_pkgname}"
 }
