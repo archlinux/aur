@@ -1,36 +1,23 @@
-_name=CodeIntel
-_pkg=$(tr '[:upper:]' '[:lower:]' <<< $_name)
-
-pkgname=("python-${_pkg}" "python2-${_pkg}")
-pkgver=2.0.0b33
+# Contributor: minj4ever <minj4ever@inbox.lt>
+_base=CodeIntel
+pkgname=python-${_base,,}
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Komodo Edit CodeIntel"
-url="https://github.com/Kronuz/CodeIntel"
-#url="https://github.com/Komodo/KomodoEdit/wiki/290-CodeIntel-OOP-Protocol#set-environment"
-makedepends=('python-setuptools' 'python2-setuptools')
-license=('MPL 1.1')
+pkgdesc="Full-featured code intelligence and smart autocomplete engine"
+url="https://github.com/SublimeCodeIntel/${_base}"
+makedepends=(python-setuptools)
+license=('custom')
 arch=('any')
-source=('https://pypi.python.org/packages/cc/7c/ace9843f71374185b62b2910410a5777e4e0de5d6651a705339c877091c2/CodeIntel-2.0.0b33.tar.gz')
-md5sums=('347d80fd0f859fe58f8d49391a60e530')
-
-prepare() {
-#   mv "${srcdir}/${_name}-${pkgver}/"{SilverCity,silvercity}
-    cp -a "${srcdir}/${_name}-${pkgver}"{,-python2}
-}
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('109b56b1dd5abd965813a4f3ae5951333a822c76af7f7650ff8b621b52500473df3c846f14d278e4cf263186e0e71b158030a7f87456978bdf3069a6929547d3')
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py build
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py build
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
 package_python-codeintel() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1
-}
-
-package_python2-codeintel() {
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }

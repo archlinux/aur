@@ -1,16 +1,12 @@
 pkgbase = python-codeintel
-	pkgdesc = Komodo Edit CodeIntel
-	pkgver = 2.0.0b33
+	pkgdesc = Full-featured code intelligence and smart autocomplete engine
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/Kronuz/CodeIntel
+	url = https://github.com/SublimeCodeIntel/CodeIntel
 	arch = any
-	license = MPL 1.1
+	license = custom
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/cc/7c/ace9843f71374185b62b2910410a5777e4e0de5d6651a705339c877091c2/CodeIntel-2.0.0b33.tar.gz
-	md5sums = 347d80fd0f859fe58f8d49391a60e530
+	source = https://github.com/SublimeCodeIntel/CodeIntel/archive/v2.0.0.tar.gz
+	sha512sums = 109b56b1dd5abd965813a4f3ae5951333a822c76af7f7650ff8b621b52500473df3c846f14d278e4cf263186e0e71b158030a7f87456978bdf3069a6929547d3
 
 pkgname = python-codeintel
-
-pkgname = python2-codeintel
-
