@@ -1,12 +1,11 @@
 pkgbase = gotask-taskfile
 	pkgdesc = A task runner / simpler Make alternative written in Go. Installs as gtask to allow coexistance with taskwarrior.
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/go-task/task
 	arch = any
 	license = MIT
 	makedepends = go
-	makedepends = git
 	provides = gotask-taskfile
 	conflicts = gotask-taskfile
 	source = gotask-taskfile-3.10.0.tar.gz::https://github.com/go-task/task/archive/refs/tags/v3.10.0.tar.gz

@@ -4,14 +4,14 @@
 pkgname=gotask-taskfile
 _pkgname=task
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A task runner / simpler Make alternative written in Go. Installs as gtask to allow coexistance with taskwarrior."
 arch=('any')
 url="https://github.com/go-task/task"
 license=('MIT')
 provides=("$pkgname")
 conflicts=("$pkgname")
-makedepends=('go' 'git')
+makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
@@ -29,6 +29,12 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
 
   go build -v -o build ./...
+}
+
+check() {
+  cd "$_pkgname-$pkgver"
+
+  go test ./...
 }
 
 package() {
