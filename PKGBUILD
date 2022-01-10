@@ -1,7 +1,7 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=youtube-search-python
 
-pkgver=1.4.6
+pkgver=1.5.3
 pkgrel=0
 
 pkgdesc="Search for YouTube videos, channels & playlists & get video information using link WITHOUT YouTube Data API v3"
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/00/7f/d5d14a68b94888e31b2101adf7b6f26ac365867fdb89fec4d7c2962e4968/youtube-search-python-1.4.6.tar.gz")
+source=("https://files.pythonhosted.org/packages/7c/d9/68a29590a1912109315bc7951e402a4e5b964273a6ad2221700c32ccaa68/youtube-search-python-1.5.3.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
