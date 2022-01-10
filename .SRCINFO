@@ -1,0 +1,13 @@
+pkgbase = shellfirm
+	pkgdesc = Intercept any risky patterns (default or defined by you) and prompt you a small challenge for double verification
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/kaplanelad/shellfirm
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	source = shellfirm-0.1.3.tar.gz::https://github.com/kaplanelad/shellfirm/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = d97efc1f1f5bd01c46e9e5005327ca4979ee82855f4295ae5ce425c8bd8c0d62
+
+pkgname = shellfirm
