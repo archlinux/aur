@@ -2,13 +2,13 @@
 
 pkgname=polymc-curseforge
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds support for Curseforge's Install button to PolyMC"
 arch=('i686' 'x86_64')
 url="https://github.com/ShayBox/$pkgname"
 license=('MIT')
 source=($url/releases/download/$pkgver/linux.tar.gz)
-sha512sums=('bca58aa31798a44d518b669d3c8bb4d4d15dbe285652daa692db11693eee552750622d4a47ae7bd20fba5642b26479523eff5ca9897a1d9165f791ecb213c0f9')
+sha512sums=('610278a21bec79ff892329803918e356deae87fbdea5209f18fa7d9bd74ce364ee15a447b02e410f77925c1e6b9aa9113ee78506df2888eff706c18662bbd205')
 optdepends=('polymc')
 
 package() {
