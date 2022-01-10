@@ -1,7 +1,7 @@
 pkgbase = udisks
 	pkgdesc = Disk Management Service
 	pkgver = 1.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.freedesktop.org/wiki/Software/udisks
 	arch = i686
 	arch = x86_64
@@ -22,9 +22,8 @@ pkgbase = udisks
 	source = http://hal.freedesktop.org/releases/udisks-1.0.5.tar.gz
 	source = drop-pci-db.patch
 	source = fix-glibc-2.27.patch
-	md5sums = 70d48dcfe523a74cd7c7fbbc2847fcdd
-	md5sums = 773cccd70afd18ace4332037feff67ec
-	md5sums = 3efc5e125fa96b1e1d83764917fc254f
+	sha256sums = f2ec82eb0ea7e01dc299b5b29b3c18cdf861236ec43dcff66b3552b4b31c6f71
+	sha256sums = 329921064156846a6ca94ca38072a601368f1a71afe614f071a49e902d91340b
+	sha256sums = 5db57404465df87f17552c44f4a904ec2fe1e488fd1b37fc3f1e011244cc7b64
 
 pkgname = udisks
-
