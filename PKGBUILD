@@ -32,7 +32,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/GoogleKeep" "$pkgdir/usr/bin/GoogleKeep"
+    ln -s "/opt/$_pkgname/GoogleKeep/GoogleKeep" "$pkgdir/usr/bin/googlekeep"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application/GoogleKeep.desktop" \
