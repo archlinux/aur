@@ -1,13 +1,12 @@
-diff --no-dereference --ignore-all-space --unified --recursive --text emacspeak.orig/lisp/emacspeak-preamble.el emacspeak.new/lisp/emacspeak-preamble.el
---- emacspeak.orig/lisp/emacspeak-preamble.el	2021-07-12 18:44:02.181914496 +0300
-+++ emacspeak.new/lisp/emacspeak-preamble.el	2021-07-12 19:45:10.610814289 +0300
+--- emacspeak-55.0/lisp/emacspeak-preamble.el	2021-10-22 19:11:58.000000000 +0300
++++ emacspeak-55.0/lisp/emacspeak-preamble.el	2022-01-10 16:12:47.935076751 +0300
 @@ -54,7 +54,7 @@
  
  ;;;###autoload
  (defvar emacspeak-directory
 -  (expand-file-name "../" (file-name-directory load-file-name))
 +  (file-name-as-directory "/usr/share/emacs/site-lisp/emacspeak/")
-   "emacspeak installation directory")
+   "emacspeak directory")
  
  ;;;###autoload
 @@ -64,7 +64,7 @@
@@ -19,6 +18,7 @@ diff --no-dereference --ignore-all-space --unified --recursive --text emacspeak.
    "Auditory icons directory.")
  
  ;;;###autoload
+
 diff --no-dereference --ignore-all-space --unified --recursive --text emacspeak.orig/servers/espeak emacspeak.new/servers/espeak
 --- emacspeak.orig/servers/espeak	2021-07-12 18:44:02.147914519 +0300
 +++ emacspeak.new/servers/espeak	2021-07-12 19:22:34.098431019 +0300
