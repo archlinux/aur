@@ -1,7 +1,7 @@
 # Maintainer: James Hendrie <hendrie.james@gmail.com>
 pkgname=muzz
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Calculates muzzle energy given a mass and a velocity (or does the reverse)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://www.someplacedumb.net/content/progs/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/jahendrie/muzz/releases/download/v1.01/$pkgname-$pkgver.tar.gz")
 noextract=()
 md5sums=('b29c807f095772ca9e42caa2e6efa1a9')
 validpgpkeys=()

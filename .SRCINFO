@@ -1,17 +1,16 @@
 pkgbase = muzz
 	pkgdesc = Calculates muzzle energy given a mass and a velocity (or does the reverse)
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jahendrie/muzz
 	arch = i686
 	arch = x86_64
 	license = zlib
 	makedepends = gcc
 	makedepends = make
-	source = http://www.someplacedumb.net/content/progs/muzz/muzz-1.01.tar.gz
+	source = https://github.com/jahendrie/muzz/releases/download/v1.01/muzz-1.01.tar.gz
 	md5sums = b29c807f095772ca9e42caa2e6efa1a9
 	depends_i686 = lib32-glibc
 	depends_x86_64 = glibc
 
 pkgname = muzz
-
