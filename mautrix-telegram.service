@@ -3,7 +3,6 @@ Description=A Matrix-Telegram hybrid puppeting/relaybot bridge
 
 [Service]
 Environment=FFMPEG_BINARY=/usr/bin/ffmpeg
-ExecStartPre=/usr/bin/alembic -c /usr/share/mautrix-telegram/alembic.ini -x config=/etc/mautrix-telegram/config.yaml upgrade head
 ExecStart=/usr/bin/python -m mautrix_telegram -b /etc/mautrix-telegram/config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml
 WorkingDirectory=/var/lib/mautrix-telegram/
 ConfigurationDirectory=mautrix-telegram

@@ -1,7 +1,7 @@
 # Maintainer: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=matrix-appservice-telegram
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/mautrix/telegram"
@@ -31,7 +31,7 @@ source=("${pkgname}-${pkgver/_rc/-rc}.tar.gz"::"https://github.com/mautrix/teleg
         'mautrix-telegram.service'
         'mautrix-telegram.sysusers'
         'mautrix-telegram.tmpfiles')
-sha256sums=('ad3e3a83e0eec0acb2a4f7af54fa7ba2ff0b89a9112fd34d7a40e02def43caad'
+sha256sums=('5b2a44408b27562da6e2b78dbfc04186a2bc8296adf4531553b7deccd3d55798'
             'd77c91154204ba5a5297c87c8b8a25209e125024aeee7c49f37416ccb7bd556a'
             'e069958db276309d00864ee3dded5700b78806c82663346aa2ef6878e2c0566b'
             'edbde9814355756b624fdc58326a5830f82156802166a9f6001b67cf21d5f6f8')
