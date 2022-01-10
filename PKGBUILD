@@ -1,7 +1,7 @@
 # Maintainer: TF <mail | at | sedi [DOT] one>
 pkgname=('kesl' 'kesl-gui')
 pkgver=11.2.0.4528
-pkgver_gui=11.2.1.4528
+_pkgver_gui=11.2.1.4528
 _pkgverbuild=$(echo ${pkgver} | cut -d "." -f 4)
 _pkgver=$(echo ${pkgver} | cut -d "." -f 1-3)
 pkgrel=1
@@ -11,7 +11,6 @@ url='https://www.kaspersky.de/small-to-medium-business-security/endpoint-linux'
 license=('custom')
 noextract=("kesl_${_pkgver}-${_pkgverbuild}_amd64.deb" "kesl-gui_${_pkgver}-${_pkgverbuild}_amd64.deb")
 depends=('perl')
-# stripping binaries and libs will break hash verify of the integrity check!
 options=("!strip")
 conflicts=( 'eea'
             'esets'
@@ -21,13 +20,14 @@ install=${pkgname}.install
 changelog=${pkgname}.changelog
 # https://www.kaspersky.com/small-to-medium-business-security/downloads/endpoint?ignoreredirects=true
 source=( "https://products.s.kaspersky-labs.com/endpoints/keslinux10/${pkgver}/multilanguage-${pkgver}/3437313131347c44454c7c31/kesl_${_pkgver}-${_pkgverbuild}_amd64.deb"
-         "https://products.s.kaspersky-labs.com/endpoints/keslinux10/${pkgver}/multilanguage-${pkgver_gui}/3437373638347c44454c7c4e554c4c/kesl-gui_${_pkgver}-${_pkgverbuild}_amd64.deb"
+         "https://products.s.kaspersky-labs.com/endpoints/keslinux10/${pkgver}/multilanguage-${_pkgver_gui}/3437373638347c44454c7c4e554c4c/kesl-gui_${_pkgver}-${_pkgverbuild}_amd64.deb"
          "${pkgname}.install"
          "kesl.ini")
 sha256sums=('44aef3025d9c440a87effa684169057d4a50d31dca9cc1e2e1d91a2cd42f6160'
             'dc2c5c82cac25ba6ebf02220deb5c40fd2035bd24e74a62fb6d0bf3933e7db31'
             'cb38324aa6740235b47a10d992a25d73d40676aa35b9e49cdb5822fa0d3228f5'
-            '8c69e0f55258d08ffaa1a9bed483ad4ff248b2fd2b73f47f00a231a01f791c07')
+            '1997d99905f033e18721244909fafa62a398e39bd8552ef20a1c007781e5e484')
+validpgpkeys=('6AFE173577C4CBD621DF217FD093435AA3ED2C4A')
 
 package_kesl() {
     # prepare dirs
@@ -68,7 +68,7 @@ package_kesl() {
 
 package_kesl-gui(){
     pkgdesc='Kaspersky Endpoint Security 11.2.0 for Linux (GUI)'
-    depends=('kesl')
+    depends=('kesl' 'freetype2' 'qt5-svg')
     install=${pkgname}.install
 
     KESLIDIR=${pkgdir}/var/opt/kaspersky/kesl/install
@@ -94,3 +94,5 @@ package_kesl-gui(){
 
     chmod 500 ${pkgdir}/var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/shared/init/
 }
+
+
