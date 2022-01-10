@@ -67,7 +67,9 @@ post_install(){
 
     # execute the kesl installer with preconfigured settings
     echo -e "\e[32m\e[1m ... starting '/opt/kaspersky/kesl/bin/kesl-setup.pl' now\e[0m\n(no need to execute it again after installation has finished)."
-    /opt/kaspersky/kesl/bin/kesl-setup.pl --autoinstall=/var/opt/kaspersky/kesl/pkgscripts/kesl.ini
+    cp /var/opt/kaspersky/kesl/pkgscripts/kesl.ini $KTMP/
+    sed -i "s/@YOU@/$SUDO_USER/g" $KTMP/kesl.ini 
+    /opt/kaspersky/kesl/bin/kesl-setup.pl --autoinstall=$KTMP/kesl.ini
 
     kesl-control -L --query
 
