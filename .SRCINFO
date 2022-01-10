@@ -7,7 +7,7 @@ pkgbase = starport-bin
 	license = Apache
 	provides = starport
 	conflicts = starport
-	source = https://github.com/tendermint/starport/releases/download/v0.19.1/starport_0.19.1_linux_amd64.tar.gz
-	sha256sums = 056a953ea7e9be2194ba32262df3eea90b96a47dea0d4ce2b75cd7b0c1180e67
+	source_x86_64 = https://github.com/tendermint/starport/releases/download/v0.19.1/starport_0.19.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 056a953ea7e9be2194ba32262df3eea90b96a47dea0d4ce2b75cd7b0c1180e67
 
 pkgname = starport-bin
