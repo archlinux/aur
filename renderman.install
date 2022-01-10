@@ -1,7 +1,9 @@
 post_install() {
     printf "$(tput setaf 4)Run the RenderMan Installer by executing the following binary as root:$(tput sgr0)\n\n"
     printf "$(tput setaf 2)/opt/pixar/RenderMan-Installer-ncr-24.3/bin/RenderManInstaller$(tput sgr0)\n\n"
-    printf "$(tput setaf 4)The installer will download files to your ~/Download directory.$(tput sgr0)\n"
+    printf "$(tput setaf 4)The installer will download files to your ~/Downloads directory.$(tput sgr0)\n"
+    printf "$(tput setaf 4)You can then use the downloads to install the component packages$(tput sgr0)\n"
+    printf "$(tput setaf 4)such as renderman-pro-server or renderman-for-maya.$(tput sgr0)\n"
 }
 
 post_upgrade() {
