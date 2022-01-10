@@ -1,19 +1,8 @@
-From 59d406377474990b43356132a7157eb23ccdcef4 Mon Sep 17 00:00:00 2001
-From: Jan Cholasta <jan@cholasta.net>
-Date: Thu, 6 Feb 2020 07:59:18 +0100
-Subject: [PATCH] Fix file paths
-
----
- source/common/platform/posix/sdl/i_main.cpp | 14 +-------------
- source/core/gameconfigfile.cpp              | 15 ++-------------
- source/core/gamecontrol.cpp                 |  2 +-
- 3 files changed, 4 insertions(+), 27 deletions(-)
-
 diff --git a/source/common/platform/posix/sdl/i_main.cpp b/source/common/platform/posix/sdl/i_main.cpp
-index a984721fc..ddc209e34 100644
+index a28b90f01..3bd907336 100644
 --- a/source/common/platform/posix/sdl/i_main.cpp
 +++ b/source/common/platform/posix/sdl/i_main.cpp
-@@ -129,19 +129,7 @@ int main (int argc, char **argv)
+@@ -175,19 +175,7 @@ int main (int argc, char **argv)
  	Args = new FArgs(argc, argv);
  
  	// Should we even be doing anything with progdir on Unix systems?
@@ -31,16 +20,18 @@ index a984721fc..ddc209e34 100644
 -		progdir = "./";
 -	}
 +	progdir = "/usr/lib/raze/";
- 	
+ 
  	I_StartupJoysticks();
  
 diff --git a/source/core/gameconfigfile.cpp b/source/core/gameconfigfile.cpp
-index 115c737be..c83ce70ed 100644
+index 68e63b9c9..9ece4fe78 100644
 --- a/source/core/gameconfigfile.cpp
 +++ b/source/core/gameconfigfile.cpp
-@@ -100,15 +100,10 @@ FGameConfigFile::FGameConfigFile ()
- 		// Debian likes them in /usr/share/games/doom
+@@ -103,17 +103,11 @@ FGameConfigFile::FGameConfigFile ()
  		// I assume other distributions don't do anything radically different
+ 		SetValueForKey ("Path", "/opt/raze", true);
+ 		SetValueForKey ("Path", "/usr/share/games/raze", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/raze", true);
  		SetValueForKey ("Path", "/usr/share/games/jfduke3d", true);
 -		SetValueForKey ("Path", "/usr/local/share/games/jfduke3d", true);
  		SetValueForKey ("Path", "/usr/share/games/eduke32", true);
@@ -54,7 +45,7 @@ index 115c737be..c83ce70ed 100644
  
  #endif
  		SetValueForKey ("Path", "$STEAM", true); // also covers GOG.
-@@ -128,13 +123,10 @@ FGameConfigFile::FGameConfigFile ()
+@@ -133,13 +127,10 @@ FGameConfigFile::FGameConfigFile ()
  		SetValueForKey ("Path", "$GAMEDIR", true);
  #else
  		SetValueForKey ("Path", "$HOME/" GAME_DIR, true);
@@ -69,7 +60,7 @@ index 115c737be..c83ce70ed 100644
  #endif
  	}
  
-@@ -151,10 +143,7 @@ FGameConfigFile::FGameConfigFile ()
+@@ -156,10 +147,7 @@ FGameConfigFile::FGameConfigFile ()
  		SetValueForKey("Path", "$PROGDIR/soundfonts", true);
  #else
  		SetValueForKey("Path", "$HOME/" GAME_DIR "/soundfonts", true);
@@ -82,10 +73,10 @@ index 115c737be..c83ce70ed 100644
  	}
  
 diff --git a/source/core/gamecontrol.cpp b/source/core/gamecontrol.cpp
-index c034ff152..1ba99a14b 100644
+index d70e20584..0c5322464 100644
 --- a/source/core/gamecontrol.cpp
 +++ b/source/core/gamecontrol.cpp
-@@ -823,7 +823,7 @@ int RunGame()
+@@ -929,7 +929,7 @@ int RunGame()
  	FString logfile = Args->TakeValue("+logfile");
  
  	// As long as this engine is still in prerelease mode let's always write a log file.
@@ -94,6 +85,3 @@ index c034ff152..1ba99a14b 100644
  
  	if (logfile.IsNotEmpty())
  	{
--- 
-2.30.0
-
