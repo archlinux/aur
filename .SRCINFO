@@ -1,7 +1,7 @@
 pkgbase = todome-git
 	pkgdesc = Language agnostic tool that collects TODOs, FIXMEs and BUGs in the source code.
-	pkgver = 77__2022.01.06
-	pkgrel = 1
+	pkgver = 77__2022.01.10
+	pkgrel = 2
 	url = https://www.github.com/BishrGhalil/todome.git
 	arch = x86_64
 	arch = i686
