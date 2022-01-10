@@ -10,7 +10,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
 conflicts=("Netflix-bin")
-source=(git+https://gitlab.com/netflix-desktop/application.git)
+source=(git+https://gitlab.com/netflix-desktop/application)
 sha256sums=('SKIP')
 
 pkgver() {

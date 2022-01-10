@@ -13,7 +13,7 @@ pkgbase = netflix-git
 	depends = libxss
 	provides = netflix-git
 	conflicts = Netflix-bin
-	source = git+https://gitlab.com/netflix-desktop/application.git
+	source = git+https://gitlab.com/netflix-desktop/application
 	sha256sums = SKIP
 
 pkgname = netflix-git
