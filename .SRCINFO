@@ -1,19 +1,18 @@
 pkgbase = renderman-for-maya
 	pkgdesc = RenderMan plugin for Maya
-	pkgver = 24.2.2199188
+	pkgver = 24.3.2208291
 	pkgrel = 1
 	url = https://renderman.pixar.com/
 	install = renderman-for-maya.install
 	arch = x86_64
 	license = custom
-	depends = renderman=24.2.2199188
-	depends = renderman-pro-server=24.2.2199188
+	depends = renderman-pro-server=24.3.2208291
 	depends = maya>=2019
 	depends = maya<2023
 	depends = libffi6
-	source = manual://RenderManForMaya-24.2_2199188-linuxRHEL7_gcc63icc190.x86_64.rpm
-	source = RenderMan_for_Maya_24.2.module
-	sha256sums = 7436ef13e86e99198c46b236a897ab42d9e349234153fc4fd8edf1a7ec90ff55
-	sha256sums = f140edf06e7c4708b774185bd581b5d06f35cf5b1e8808331b291bae9045d45d
+	source = manual://RenderManForMaya-24.3_2208291-linuxRHEL7_gcc63icc190.x86_64.rpm
+	source = RenderMan_for_Maya_24.3.module
+	sha256sums = 340f4ea3c79ec94cec59c940d90ee43b887d322bd21a72cd13173aa872f1ccfc
+	sha256sums = d1dfca29b10576b20f8d49d8837f9fe3c308e0db14d55bf4f3a13caefd4282f8
 
 pkgname = renderman-for-maya
