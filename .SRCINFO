@@ -1,19 +1,21 @@
 pkgbase = hgview
-	pkgdesc = A fast Mercurial log navigator
-	pkgver = 1.10.7
+	pkgdesc = Mercurial interactive Qt based history viewer
+	pkgver = 1.14.0
 	pkgrel = 1
-	url = https://www.logilab.org/project/hgview/
+	url = https://www.logilab.org/project/hgview
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
+	makedepends = mercurial
 	makedepends = asciidoc
 	makedepends = xmlto
-	depends = mercurial>=1.6
-	depends = python2-urwid
-	depends = python2-pyinotify
-	depends = python2-pygments
-	depends = python2-pyqt4
-	source = http://download.logilab.org/pub/hgview/hgview-1.10.7.tar.gz
-	sha256sums = 49f009d3b04f5e0aade7bf9bb3a70345e688467a84a78d202d24fd98781cac5b
+	depends = python-urwid
+	depends = python-pyinotify
+	depends = python-pygments
+	depends = python-pyqt5
+	depends = python-qscintilla-qt5
+	depends = python-docutils
+	source = http://download.logilab.org/pub/hgview/hgview-1.14.0.tar.gz
+	sha512sums = 711689c35f47b3126d996dd7550a8446875065964e7dd6cb9e287ca70847b2d5fe9c1643a3ddcb4b6b17918f2dbeb91f794e1d2f0fdded0dfd3c6ba5522d12e1
 
 pkgname = hgview
-
