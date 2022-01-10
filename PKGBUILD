@@ -2,7 +2,7 @@
 
 pkgname='python-guizero'
 _module='guizero'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Python module to allow learners to easily create GUIs"
 url="https://github.com/lawsie/guizero"
@@ -12,7 +12,7 @@ license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz"
         'https://raw.githubusercontent.com/lawsie/guizero/master/license.txt')
-md5sums=('e6df902d7c29c87c9340657974d47b15'
+md5sums=('cb99d284c41da99f1f0ec75201eb8933'
          '9670acd16790b84f21178f2b940a96e2')
 
 

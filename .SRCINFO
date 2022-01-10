@@ -1,6 +1,6 @@
 pkgbase = python-guizero
 	pkgdesc = Python module to allow learners to easily create GUIs
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/lawsie/guizero
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = python-guizero
 	makedepends = python-setuptools
 	depends = python-pillow
 	depends = tk
-	source = https://files.pythonhosted.org/packages/source/g/guizero/guizero-1.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/g/guizero/guizero-1.3.0.tar.gz
 	source = https://raw.githubusercontent.com/lawsie/guizero/master/license.txt
-	md5sums = e6df902d7c29c87c9340657974d47b15
+	md5sums = cb99d284c41da99f1f0ec75201eb8933
 	md5sums = 9670acd16790b84f21178f2b940a96e2
 
 pkgname = python-guizero
-
