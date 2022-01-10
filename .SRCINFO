@@ -20,7 +20,7 @@ pkgbase = flipper-bin
 	source = LICENSE::https://raw.githubusercontent.com/facebook/flipper/master/LICENSE
 	source = icon.png::https://camo.githubusercontent.com/673adcb9028e5675877b9682e437869e36b5687a/68747470733a2f2f6662666c69707065722e636f6d2f696d672f69636f6e2e706e67
 	sha256sums = f2a0bbf1b81a5a4ff4ae73e3ae380e66eaaa64da9679dc89eb3fae1854823303
-	sha256sums = 52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85
+	sha256sums = da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93
 	sha256sums = 336377e7d4fd4340f3c6ad8b7c6e4dcfe36c27b667bf82c2aa18526a6ced3834
 
 pkgname = flipper-bin
