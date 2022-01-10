@@ -7,9 +7,9 @@ pkgbase = gaiad-bin
 	license = Apache
 	provides = gaiad
 	conflicts = gaiad
+	source = https://raw.githubusercontent.com/cosmos/gaia/v6.0.0/LICENSE
+	sha256sums = 98bf5ef31e3c439d9d721a2b919fa285ad6a1ee607d71fb062a8b1849ae1e1fc
 	source_x86_64 = https://github.com/cosmos/gaia/releases/download/v6.0.0/gaiad-v6.0.0-linux-amd64
-	source_x86_64 = https://raw.githubusercontent.com/cosmos/gaia/v6.0.0/LICENSE
 	sha256sums_x86_64 = d9b4391065a338107ca240f29539d62572fe1e85a6c455576afc5e93dba7f402
-	sha256sums_x86_64 = 98bf5ef31e3c439d9d721a2b919fa285ad6a1ee607d71fb062a8b1849ae1e1fc
 
 pkgname = gaiad-bin
