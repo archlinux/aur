@@ -1,6 +1,6 @@
 pkgbase = r-v8
 	pkgdesc = Embedded JavaScript and WebAssembly Engine for R
-	pkgver = 3.6.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=V8
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = r-v8
 	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/V8_3.6.0.tar.gz
-	sha256sums = a3969898bf4a7c13d3130fae0d385cd048d46372ff4a412917b914b159261377
+	source = https://cran.r-project.org/src/contrib/V8_4.0.0.tar.gz
+	sha256sums = 146a4cb671264f865ac2f2e35bfdfb37e2df70e4f6784354fb6e8a80a19dbbc8
 
 pkgname = r-v8
