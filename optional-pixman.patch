@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f16f09660d..40065905d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -271,16 +271,18 @@
+ include_directories(${TINYXML_INCLUDE_DIR})
+ 
+ # pixman
++if(NOT LAF_BACKEND STREQUAL "skia")
+ if(USE_SHARED_PIXMAN)
+   find_library(PIXMAN_LIBRARY NAMES pixman pixman-1)
+   find_path(PIXMAN_INCLUDE_DIR NAMES pixman.h PATH_SUFFIXES pixman-1)
+ else()
+   set(PIXMAN_LIBRARY pixman)
+   set(PIXMAN_INCLUDE_DIR
+     ${PIXMAN_DIR}/pixman
+     ${CMAKE_BINARY_DIR}) # For pixman-version.h
+ endif()
+ include_directories(${PIXMAN_INCLUDE_DIR})
++endif()
+
+ # freetype
+ if(USE_SHARED_FREETYPE)

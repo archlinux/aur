@@ -1,5 +1,5 @@
 *
-!.gitignore
-!.SRCINFO
-!aseprite.desktop
-!PKGBUILD
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/*.patch
