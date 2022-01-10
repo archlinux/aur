@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pyetrade
-pkgver=1.3.4
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Python E-Trade API wrapper"
 arch=('any')
@@ -14,10 +14,16 @@ depends=(
 	'python-xmltodict'
 	'python-jxmlease')
 makedepends=('python-setuptools' 'python-sphinx')
-checkdepends=('python-pytest' 'python-pytest-mock')
+checkdepends=('python-pytest-runner' 'python-pytest-mock')
 changelog=
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('634b3d8248decf73f872c5bbe7bbf35fe75edfbe83b508e0f8c02c01fa8d4460')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "__init__.py.patch::$url/commit/26f33ca6.diff")
+sha256sums=('d13c785c76ffd13658d6a459bd81008167fb2222a4c24b92b27499b588d1fb80'
+            '62e7f7370ac8f306fc6d729c9a83f3134df212533918b7dcffa94eaddac5883d')
+
+prepare() {
+	patch -p1 -d "pyetrade-$pkgver" < __init__.py.patch
+}
 
 build() {
 	cd "pyetrade-$pkgver"
@@ -28,7 +34,7 @@ build() {
 
 check() {
 	cd "pyetrade-$pkgver"
-	pytest -x
+	python setup.py pytest
 }
 
 package() {

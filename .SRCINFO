@@ -1,11 +1,11 @@
 pkgbase = python-pyetrade
 	pkgdesc = Python E-Trade API wrapper
-	pkgver = 1.3.4
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/jessecooper/pyetrade
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
 	checkdepends = python-pytest-mock
 	makedepends = python-setuptools
 	makedepends = python-sphinx
@@ -14,7 +14,9 @@ pkgbase = python-pyetrade
 	depends = python-requests-oauthlib
 	depends = python-xmltodict
 	depends = python-jxmlease
-	source = python-pyetrade-1.3.4.tar.gz::https://github.com/jessecooper/pyetrade/archive/v1.3.4.tar.gz
-	sha256sums = 634b3d8248decf73f872c5bbe7bbf35fe75edfbe83b508e0f8c02c01fa8d4460
+	source = python-pyetrade-1.3.6.tar.gz::https://github.com/jessecooper/pyetrade/archive/v1.3.6.tar.gz
+	source = __init__.py.patch::https://github.com/jessecooper/pyetrade/commit/26f33ca6.diff
+	sha256sums = d13c785c76ffd13658d6a459bd81008167fb2222a4c24b92b27499b588d1fb80
+	sha256sums = 62e7f7370ac8f306fc6d729c9a83f3134df212533918b7dcffa94eaddac5883d
 
 pkgname = python-pyetrade
