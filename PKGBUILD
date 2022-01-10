@@ -9,7 +9,8 @@ pkgdesc="Nonlinear Root Finding, Equilibrium and Steady-State Analysis of Ordina
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=('r>=2.01')
+depends=('r>=2.01' gcc-fortran)
+makedepends=(gcc-fortran)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('b5b3d1641642a3fd1279dbd1245f968d2331ac9588d77f872b113f7dc4594ba0')
 

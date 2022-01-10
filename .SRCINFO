@@ -7,7 +7,9 @@ pkgbase = r-rootsolve
 	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = gcc-fortran
 	depends = r>=2.01
+	depends = gcc-fortran
 	source = https://cran.r-project.org/src/contrib/rootSolve_1.8.2.3.tar.gz
 	sha256sums = b5b3d1641642a3fd1279dbd1245f968d2331ac9588d77f872b113f7dc4594ba0
 
