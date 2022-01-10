@@ -6,6 +6,7 @@ pkgbase = r-rootsolve
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	license = GPL3
 	depends = r>=2.01
 	source = https://cran.r-project.org/src/contrib/rootSolve_1.8.2.3.tar.gz
 	sha256sums = b5b3d1641642a3fd1279dbd1245f968d2331ac9588d77f872b113f7dc4594ba0
