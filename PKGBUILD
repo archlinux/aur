@@ -2,10 +2,10 @@
 # Contributor: Nabil Freij <nabil.freij@gmail.com>
 
 pkgbase=python-glymur
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
+#_pyname=${pkgbase#python-}
+_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.9.7
+pkgver=0.9.7.post1
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 makedepends=('python-dephell' 'python-numpydoc' 'python-sphinx_rtd_theme')
 checkdepends=('python-pytest' 'openjpeg2' 'python-numpy' 'python-lxml' 'python-scikit-image' 'python-gdal')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a9cc0e9891d7c8193ebebe8e6d292f4c')
+md5sums=('e943a27df4ee3a40b106e1bcb6a83642')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
