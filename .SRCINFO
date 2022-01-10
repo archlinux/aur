@@ -1,0 +1,17 @@
+pkgbase = storecards
+	pkgdesc = Keep all your store cards on your linux phone
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/fdservices/storecards
+	arch = any
+	license = GPL
+	depends = tcl
+	depends = tk
+	depends = zint
+	optdepends = sane: for scanning Store Cards
+	optdepends = imagemagick: for converting scanned images
+	optdepends = pinephone-toolkit: to raise the backlight for barcode scanning
+	source = http://github.com/fdservices/storecards/archive/0.1.tar.gz
+	md5sums = e5d7a545dbde1144602f06ca5329c4e4
+
+pkgname = storecards
