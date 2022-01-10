@@ -1,0 +1,26 @@
+pkgbase = arctimepro
+	pkgdesc = A Simple, powerful and efficient cross-platform subtitle production software
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://arctime.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ffmpeg
+	depends = java-runtime=8
+	depends = vlc
+	conflicts = arctime
+	source = ARCTIME_PRO_3.1_LINUX.7z::https://t.arctime.cn/ap2x
+	source = 16x16.png
+	source = 24x24.png
+	source = 32x32.png
+	source = 48x48.png
+	source = arctimepro.desktop
+	sha256sums = 5a556ac8349b8844c4a52e118f6334a0b685030b6167a42114703ad0fd04f8cb
+	sha256sums = 9f490a4fc4d4f15e31b15e84717e11ce794e908055484f22d02aa0a166093677
+	sha256sums = 406a3953b7b5d54814f6613f23badc0eff04909688d67295371aeeead862ae85
+	sha256sums = fcd6ecf0a786658968d0c8747b860b5238c0df73c873642dd7ce5fca186d2122
+	sha256sums = c9bc9ac2ffdc703b672c1f918ea4d48479693bdc69dfd346a077547de47ce7d1
+	sha256sums = 346fa1d54c67f48406688eade0a0032af83410a1ff0d846f4388ac7f7fcdcef3
+
+pkgname = arctimepro

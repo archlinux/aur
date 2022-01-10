@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=3.1
+Name=Arctime subtitle Pro
+GenericName=subtitle
+Comment=Run Arctime, Make subtitling a pleasure
+Name[zh_CN]=Arctime 字幕制作
+GenericName[zh_CN]=字幕制作
+Comment[zh_CN]=启动 Arctime,让做字幕变成一种享受
+Name[zh_TW]=Arctime 字幕製作
+GenericName[zh_TW]=字幕製作
+Comment[zh_TW]=啓動 Arctime,讓做字幕變成一種享受
+Exec=/opt/arctimepro/run.sh
+Type=Application
+StartupNotify=true
+Icon=arctimepro
+Categories=AudioVideo;Player;Recorder;
