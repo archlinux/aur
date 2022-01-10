@@ -1,6 +1,6 @@
 pkgbase = obs-streamfx-git
 	pkgdesc = Bring your stream back to life with modern effects!
-	pkgver = 0.10.0.r0.g5888c7d
+	pkgver = 0.11.0.r0.g31d56703
 	pkgrel = 1
 	url = https://github.com/Xaymar/obs-StreamFX
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = obs-streamfx-git
 	depends = curl
 	depends = gtk-update-icon-cache
 	depends = obs-studio>=25
+	depends = nlohmann-json
 	provides = obs-streamfx
 	conflicts = obs-streamfx
 	source = obs-streamfx-git::git+https://github.com/Xaymar/obs-StreamFX.git#branch=master
 	md5sums = SKIP
 
 pkgname = obs-streamfx-git
-
