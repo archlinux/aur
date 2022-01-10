@@ -1,6 +1,14 @@
-export TMPDIR=/tmp
-# avoid re-creating tmp dir when already exists
-[ -d "$KTMP" ] || KTMP=$(mktemp -d -t kesl.XXXXX)
+create_tmp(){
+    export TMPDIR=/tmp
+    # avoid re-creating tmp dir when already exists
+    [ ! -d "$KTMP" ] && KTMP=$(mktemp -d -t kesl.XXXXX)
+    echo "$KTMP"
+}
+
+remove_tmp(){
+    KTMP="$1"
+    [ -d "$KTMP" ] && rm -rf "$KTMP"
+}
 
 # man pages are special here:
 # 1) usr/local/share is protected (owned by filesystem package)
@@ -45,7 +53,7 @@ pre_install(){
 }
 
 post_install(){
-    echo $FUNCNAME
+    #echo $FUNCNAME
 
     # load preconfiguration variables and export them
     source /var/opt/kaspersky/kesl/pkgscripts/kesl.ini
@@ -53,7 +61,7 @@ post_install(){
         key=${k/=*}; kkey="KESL_${key}"; v="${k/*=}"
         export ${key}=$v ${kkey}=$v
     done
-
+    KTMP=$(create_tmp)
     kesl_symlinks
 
     # manually add the link to /opt (really wondering why this is not covered
@@ -72,25 +80,30 @@ post_install(){
     /opt/kaspersky/kesl/bin/kesl-setup.pl --autoinstall=$KTMP/kesl.ini
 
     kesl-control -L --query
-
     kesl_updatedb
+
+    remove_tmp "$KTMP"
 }
 
 pre_upgrade(){
-    echo $FUNCNAME
+    #echo $FUNCNAME
     for k in $(egrep -v "^#" /var/opt/kaspersky/kesl/pkgscripts/kesl.ini);do
         key=${k/=*}; kkey="KESL_${key}"; v="${k/*=}"
         export ${key}=$v ${kkey}=$v
     done
 
+    KTMP=$(create_tmp)
+
     # exec the debian package preinst
     man_pre
     /var/opt/kaspersky/kesl/pkgscripts/preinst upgrade
     man_post
+
+    remove_tmp "$KTMP"
 }
 
 post_upgrade(){
-    echo $FUNCNAME
+    #echo $FUNCNAME
 
     # load preconfiguration variables and export them
     source /var/opt/kaspersky/kesl/pkgscripts/kesl.ini
@@ -98,6 +111,7 @@ post_upgrade(){
         key=${k/=*}; kkey="KESL_${key}"; v="${k/*=}"
         export ${key}=$v ${kkey}=$v
     done
+    KTMP=$(create_tmp)
     kesl_symlinks
 
     # exec the debian package postinst
@@ -105,18 +119,18 @@ post_upgrade(){
     man_post
 
     kesl_updatedb
+    remove_tmp "$KTMP"
 }
 
 pre_remove(){
-    echo $FUNCNAME
+    #echo $FUNCNAME
     # exec the debian package rm scripts (post_remove is too late)
     /var/opt/kaspersky/kesl/pkgscripts/prerm remove
     /var/opt/kaspersky/kesl/pkgscripts/postrm remove
 }
 
 post_remove(){
-    echo $FUNCNAME
+    #echo $FUNCNAME
     rm -rf /etc/opt/kaspersky/ /opt/kaspersky/ /usr/share/licenses/kesl /var/opt/kaspersky
 }
 
-#rm -rf $KTMP/

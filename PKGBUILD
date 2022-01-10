@@ -25,7 +25,7 @@ source=( "https://products.s.kaspersky-labs.com/endpoints/keslinux10/${pkgver}/m
          "kesl.ini")
 sha256sums=('44aef3025d9c440a87effa684169057d4a50d31dca9cc1e2e1d91a2cd42f6160'
             'dc2c5c82cac25ba6ebf02220deb5c40fd2035bd24e74a62fb6d0bf3933e7db31'
-            'f7419403daa6534f654dc87f42cb8dc69f298b48e6bcc363bb3edc127aa4743c'
+            '9197933d41946de933f75f121baa593a8dcb3d17f839b7fc9ec2cae43facb833'
             'a662eefe3761c2816e96905e2efd4f3b36574ccc0a10e843390329affd222ebf')
 validpgpkeys=('6AFE173577C4CBD621DF217FD093435AA3ED2C4A')
 
