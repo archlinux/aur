@@ -3,7 +3,7 @@
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 pkgname=payara
 pkgver=5.2021.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments."
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")

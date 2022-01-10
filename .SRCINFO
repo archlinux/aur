@@ -1,7 +1,7 @@
 pkgbase = payara
 	pkgdesc = Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments.
 	pkgver = 5.2021.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.payara.fish/
 	install = payara.install
 	arch = any
