@@ -2,13 +2,14 @@
 
 pkgname=twitch-dl
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
 url="https://github.com/ihabunek/twitch-dl"
 license=('GPL3')
 depends=('python' 'python-m3u8' 'python-requests' 'ffmpeg')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel')
+optdepends=('twine')
 checkdepends=('python-pytest')
 provides=('twitch-dl-bin')
 conflicts=('twitch-dl-bin')
