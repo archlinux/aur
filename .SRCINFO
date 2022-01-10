@@ -1,6 +1,6 @@
 pkgbase = scnlib-git
 	pkgdesc = A formatted input library, think {fmt} but in the other direction. 'scanf' for modern C++
-	pkgver = r361.815782b
+	pkgver = r379.e82a3af
 	pkgrel = 1
 	url = https://github.com/eliaskosunen/scnlib
 	arch = x86_64

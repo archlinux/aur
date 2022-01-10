@@ -1,6 +1,6 @@
 # Maintainer: Onur Kader <onurorkunkader1999@gmail.com>
 pkgname=scnlib-git
-pkgver=r361.815782b
+pkgver=r379.e82a3af
 pkgrel=1
 pkgdesc="A formatted input library, think {fmt} but in the other direction. 'scanf' for modern C++"
 arch=("x86_64")
@@ -32,6 +32,6 @@ check() {
 
 package() {
 	cd "$srcdir/$pkgname/build"
-	DESTDIR="$pkgdir/" cmake --build . --target install
+	DESTDIR="$pkgdir/" cmake --install .
 }
 
