@@ -1,15 +1,15 @@
 pkgbase = python-niapy
 	pkgdesc = Python microframework for building nature-inspired algorithms
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://niapy.org
+	pkgrel = 2
+	url = https://NiaPy.org
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	depends = python-pandas
 	depends = python-matplotlib
 	depends = python-openpyxl
-	source = https://github.com/niaorg/niapy/archive/2.0.0.tar.gz
+	source = https://github.com/NiaOrg/NiaPy/archive/2.0.0.tar.gz
 	sha512sums = 77e8d16fd02671154605b21e4d32225ded0d53bd8e809d4f99d6449db33a915d669bb7c864935251c7842bfd8d0c20d30d77f2a8b538e03d104691f90553f034
 
 pkgname = python-niapy
