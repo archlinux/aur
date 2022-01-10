@@ -15,7 +15,8 @@ pkgbase = xdmf-git
 	provides = xdmf
 	conflicts = xdmf
 	source = git+https://gitlab.kitware.com/xdmf/xdmf.git
+	source = hid_t_int64.patch
 	sha256sums = SKIP
+	sha256sums = 41d8707c40e6e5fe3828f0427791e61bf0aee4582cf1e985884edb86cb713f01
 
 pkgname = xdmf-git
-
