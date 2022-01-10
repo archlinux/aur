@@ -1,4 +1,4 @@
-# Maintainer: RdB <rubendibattista at gmail dot com>
+# Maintainer: TiD91 <tidusuper91 at gmail dot com>
 
 pkgname='xdmf-git'
 pkgver=3.0.r2461.04a84bab
