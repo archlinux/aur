@@ -1,12 +1,13 @@
 pkgbase = tetgen
 	pkgdesc = A Quality Tetrahedral Mesh Generator and a 3D Delaunay Triangulator
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wias-berlin.de/software/index.jsp?id=TetGen&lang=1
 	arch = x86_64
 	license = AGPL3
+	makedepends = cmake
 	options = staticlibs
-	source = http://wias-berlin.de/software/tetgen/1.5/src/tetgen1.6.0.tar.gz
+	source = http://wias-berlin.de/software/tetgen/1.6/src/tetgen1.6.0.tar.gz
 	sha256sums = 87b5e61ebd3a471fc4f2cdd7124c2b11dd6639f4feb1f941a5d2f5110d05ce39
 
 pkgname = tetgen
