@@ -1,0 +1,16 @@
+pkgbase = gig
+	pkgdesc = Generate .gitignore files from your terminal (mostly) offline!
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/shihanng/gig
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = gig.tar.gz::https://github.com/shihanng/gig/archive/refs/tags/v0.8.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = gig
