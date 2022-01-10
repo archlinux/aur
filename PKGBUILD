@@ -3,7 +3,7 @@
 pkgname=memocast-bin
 _pkgname=${pkgname%-bin}
 _filename=Memocast
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Yet another elegant Wiz Note Client, which was built with Quasar UI Framework and based on Electron."
 arch=('x86_64')
@@ -18,7 +18,7 @@ replaces=("neeto-vue")
 source=("${_pkgname}-${pkgver}.deb::https://github.com/TankNee/Memocast/releases/download/v${pkgver}/${_filename}-${pkgver}-amd64-linux.deb"
         "https://raw.githubusercontent.com/TankNee/Memocast/master/LICENSE"
         "${_pkgname}.sh")
-sha256sums=('57384b85cefd8eb133c28366daf23f6e0ef25080f4ed2f3d88feb5b1101f978c'
+sha256sums=('135e4bed22a730004370d991b851c60d5102473f62f97eec99dfbc3e6c09d95e'
             '09141f28d3723a64b16c54cbecd3b239301c879fc2f229dd70528cf75878b812'
             '907104b1a2cb10f13def27a871147399c6d06ecaa81505d533ab5b2388e13569')
 
