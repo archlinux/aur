@@ -1,0 +1,3 @@
+post_upgrade() {
+	chmod -R u=rwX,g=rwX,o=rX opt/glassfish
+}
