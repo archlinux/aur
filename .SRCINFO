@@ -17,11 +17,6 @@ pkgbase = libadwaita-git-pkgs
 	source = git+https://gitlab.gnome.org/GNOME/libadwaita.git
 	sha256sums = SKIP
 
-pkgname = libadwaita-git
-	depends = gtk4
-	depends = libgtk-4.so
-	provides = libadwaita-1.so
-
 pkgname = libadwaita-docs-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications (documentation)
 	depends = 

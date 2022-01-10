@@ -2,7 +2,7 @@
 
 pkgbase=libadwaita-git-pkgs
 _pkgname=libadwaita
-pkgname=(libadwaita-git libadwaita-docs-git libadwaita-demos-git)
+pkgname=(libadwaita-docs-git libadwaita-demos-git)
 pkgver=1.0.1.3.gfddc56f7
 pkgrel=1
 epoch=1
@@ -50,22 +50,6 @@ _pick() {
     mv "$f" "$d"
     rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
   done
-}
-
-package_libadwaita-git() {
-  depends+=(libgtk-4.so)
-  provides+=(libadwaita-1.so)
-
-  meson install -C build --destdir "$pkgdir"
-
-  cd "$pkgdir"
-
-  _pick docs usr/share/doc
-
-  _pick demo usr/bin/adwaita-1-demo
-  _pick demo usr/share/applications/org.gnome.Adwaita1.Demo.desktop
-  _pick demo usr/share/icons/hicolor/*/apps/org.gnome.Adwaita1.Demo[-.]*
-  _pick demo usr/share/metainfo/org.gnome.Adwaita1.Demo.metainfo.xml
 }
 
 package_libadwaita-docs-git() {
