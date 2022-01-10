@@ -5,7 +5,7 @@
 # Maintainer: pika02 <pikakolendo02 ät gmail döt com>
 
 pkgname=pulseaudio-dlna-python3
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Python 3 edition'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=('faac: AAC transcoding support'
             'sox: WAV transcoding support'
             'vorbis-tools: OGG transcoding support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/${pkgver}.tar.gz")
-sha256sums=('9c61f64e7262ce91e55058fc9474db6fbd5a029e94826c749b48d42c423ec98b')
+sha256sums=('34ba8add00ac1433ba674a7c60b15b0be335f0f3572a2b4fb38998a6f9c0cbe5')
 
 prepare() {
   mv "pulseaudio-dlna-${pkgver}" "${pkgname}-${pkgver}"
