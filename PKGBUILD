@@ -13,8 +13,8 @@ pkgname=(
   qemu-pinning-guest-agent
 )
 pkgdesc="A generic and open source machine emulator and virtualizer, with the qemu-pinning patch from 64kramsystem (formerly saveriomiroddi) applied."
-pkgver=6.1.0
-pkgrel=5
+pkgver=6.2.0
+pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="https://wiki.qemu.org/"
@@ -80,14 +80,12 @@ makedepends=(
   zstd
 )
 source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
-        fix_unix_sockets.diff::https://gitlab.com/qemu-project/qemu/-/commit/118d527f2e4baec5fe8060b22a6212468b8e4d3f.diff
-        qemu-pinning-$pkgver.patch::https://github.com/64kramsystem/qemu-pinning/commit/a9120ed261d2417ce61d0b78da5aa04c65f03e1e.patch
+        qemu-pinning-$pkgver.patch
         qemu-guest-agent.service
         65-kvm.rules)
-sha512sums=('3378ae21c75b77ee6a759827f1fcf7b2a50a0fef07e3b0e89117108022a8d8655fa977e4d65596f4f24f7c735c6594d44b0c6f69732ea4465e88a7406b1d5d3c'
+sha512sums=('e9f8231c9e1cfcc41cb47f10a55d63f6b8aee307af00cf6acf64acb7aa4f49fa7e9d6330703a2abea15d8b7bbaba7d3cb08c83edd98d82642367b527df730817'
             'SKIP'
-            'a87b0da1d49b4d17e9128544c2b0f00f1ac5242adc7fd9e8c9efd24ab6791ed702b2a0866383d31c1bff3259c281c95a60a96453ad998256a8b133cfd7107a59'
-            '1e1bafbbb9cbaa39dd99da920d0fe896c84c3f9e97bf3128f06b9050fbefc96461f0a0fe7815ed0741850464af90c8556740d0242efbce781b35946c755d6a4c'
+            '5dd369f4d9b2e86fa8de811ee0fa239a69a95c6702aaba2b662efc4327d29c146c1c41a827fd0b99d1ca00e4b57a8bdb72f7f9d4bdeb9b3b8f4f3ff66cbd8cc7'
             '269c0f0bacbd06a3d817fde02dce26c99d9f55c9e3b74bb710bd7e5cdde7a66b904d2eb794c8a605bf9305e4e3dee261a6e7d4ec9d9134144754914039f176e4'
             'bdf05f99407491e27a03aaf845b7cc8acfa2e0e59968236f10ffc905e5e3d5e8569df496fd71c887da2b5b8d1902494520c7da2d3a8258f7fd93a881dd610c99')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584') # Michael Roth <flukshun@gmail.com>
@@ -103,12 +101,10 @@ prepare() {
 
   cd ${_pkgname}-${pkgver}
   patch -p1 < ../qemu-pinning-$pkgver.patch
-  patch -p1 < ../fix_unix_sockets.diff  # FS#72115
 }
 
 build() {
-  _build full \
-    --audio-drv-list="pa alsa sdl"
+  _build full 
 
   _build headless \
     --audio-drv-list= \
@@ -117,7 +113,12 @@ build() {
     --disable-vte \
     --disable-brlapi \
     --disable-opengl \
-    --disable-virglrenderer
+    --disable-virglrenderer \
+    --disable-alsa \
+    --disable-jack \
+    --disable-oss \
+    --disable-pa \
+    --disable-sdl
 }
 
 _build() (
