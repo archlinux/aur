@@ -1,6 +1,6 @@
 pkgbase = drbd-utils
 	pkgdesc = Userland tools for Distributed Replicated Block Device
-	pkgver = 9.16.0
+	pkgver = 9.19.1
 	pkgrel = 1
 	url = https://www.linbit.com/en/drbd-community/drbd-download/
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = drbd-utils
 	replaces = drbd
 	backup = etc/drbd.conf
 	backup = etc/drbd.d/global_common.conf
-	source = http://www.linbit.com/downloads/drbd/utils/drbd-utils-9.16.0.tar.gz
-	md5sums = b0b7a94b7f3e4127f1e31405ecf01932
+	source = https://pkg.linbit.com//downloads/drbd/utils/drbd-utils-9.19.1.tar.gz
+	md5sums = fe7119b497c617d05cd8f7b9c703b034
 
 pkgname = drbd-utils
-
