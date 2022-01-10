@@ -1,7 +1,7 @@
 pkgname=googlekeep-bin
 _pkgname=GoogleKeep-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -23,12 +23,14 @@ package() {
     for dir in GoogleKeep-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
     cd $_pkgname
     install -dm755 "$pkgdir/opt/GoogleKeep"
+    install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/GoogleKeep"
+    cp -r "$pkgdir/opt/Youtube/resources/app/googlekeep.svg" "$pkgdir/usr/share/pixmaps" 
 
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    ln -s "/opt/GoogleKeep/GoogleKeep" "$pkgdir/usr/bin/googlekeep"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/resources/app/GoogleKeep.desktop" \

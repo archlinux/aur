@@ -1,7 +1,7 @@
 pkgbase = googlekeep-bin
 	pkgdesc = Unofficial Google Keep desktop application.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/googlekeep-desktop/application
 	arch = x86_64
 	arch = arm7h
@@ -12,9 +12,9 @@ pkgbase = googlekeep-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = googlekeep-git
-	source_x86_64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.2-1/-/raw/main/GoogleKeep-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.2-2/-/raw/main/GoogleKeep-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.2-1/-/raw/main/GoogleKeep-linux-arm64.tar.gz
+	source_aarch64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.2-2/-/raw/main/GoogleKeep-linux-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = googlekeep-bin
