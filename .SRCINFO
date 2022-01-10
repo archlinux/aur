@@ -1,0 +1,13 @@
+pkgbase = python-flatten-dict
+	pkgdesc = A flexible utility for flattening and unflattening dict-like objects in Python
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/anlini/flatten-dict
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/flatten-dict/flatten-dict-0.4.2.tar.gz
+	sha256sums = 506a96b6e6f805b81ae46a0f9f31290beb5fa79ded9d80dbe1b7fa236ab43076
+
+pkgname = python-flatten-dict
