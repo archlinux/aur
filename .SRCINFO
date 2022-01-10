@@ -1,7 +1,7 @@
 pkgbase = jtdx
 	pkgdesc = For amateur radio communication using very weak signals. Forked from WSJT-X.
 	pkgver = 2.2.156
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jtdx-project/jtdx
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = jtdx
 	makedepends = gcc-fortran
 	makedepends = qt5-tools
 	makedepends = asciidoc
+	makedepends = boost
 	depends = fftw
 	depends = portaudio
 	depends = hamlib
