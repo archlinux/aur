@@ -3,7 +3,7 @@
 pkgname=ryzen-stabilizator-git
 _pkgname=ryzen-stabilizator
 pkgver=r19.90a2f7a
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Go program to enable/disable C6 C-state, processor boosting, address space layout
 randomization (ASLR) and the Power Supply Idle Control workaround on an AMD Ryzen processor, in
 order to help with the infamous 'MCE-random-reboots-while-idle' issue."
@@ -36,6 +36,7 @@ prepare() {
 build() {
   export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/${_pkgname}"
+  go mod init
   go get
   go build -ldflags "-X main.version=${pkgver}-${pkgrel}"
 }
