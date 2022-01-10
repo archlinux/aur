@@ -9,7 +9,8 @@ pkgdesc="L-Moments"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(CPL1)
-depends=('r>=3.0.0')
+depends=('r>=3.0.0' gcc-fortran)
+makedepends=(gcc-fortran)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('cae2a925c39429d8e9f91bdb2682ea0d1343e9b2e5c9e8752c5929eb5f20d2d2')
 

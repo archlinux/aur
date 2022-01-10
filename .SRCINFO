@@ -6,7 +6,9 @@ pkgbase = r-lmom
 	arch = i686
 	arch = x86_64
 	license = CPL1
+	makedepends = gcc-fortran
 	depends = r>=3.0.0
+	depends = gcc-fortran
 	source = https://cran.r-project.org/src/contrib/lmom_2.8.tar.gz
 	sha256sums = cae2a925c39429d8e9f91bdb2682ea0d1343e9b2e5c9e8752c5929eb5f20d2d2
 
