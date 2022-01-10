@@ -1,15 +1,14 @@
 pkgbase = python-colorspacious
 	pkgdesc = A powerful, accurate, and easy-to-use Python library for doing colorspace conversions
 	pkgver = 1.1.2
-	pkgrel = 1
-	url = http://colorspacious.readthedocs.org/en/latest/
+	pkgrel = 2
+	url = https://github.com/njsmith/colorspacious
 	arch = any
 	license = MIT
+	checkdepends = python-nose
+	makedepends = python-setuptools
 	depends = python-numpy
 	source = https://github.com/njsmith/colorspacious/archive/v1.1.2.tar.gz
-	source = LICENSE
-	md5sums = 6736faaad92c6c75931fb34d86767d11
-	md5sums = 032f6276b1a63e4062c163daae656d61
+	sha512sums = c633ba1ee051eab055d74752b3efd02fdff9acd641f245d80339d698bf4f5a28701158a50ddd2c372730d7e5cbb1e29858c4acd1f3594e07fe7bdfaa2fed87f6
 
 pkgname = python-colorspacious
-

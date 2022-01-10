@@ -1,25 +1,29 @@
-# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
-
-pkgname=python-colorspacious
+_base=colorspacious
+pkgname=python-${_base}
+pkgdesc="A powerful, accurate, and easy-to-use Python library for doing colorspace conversions"
 pkgver=1.1.2
-pkgrel=1
-pkgdesc='A powerful, accurate, and easy-to-use Python library for doing colorspace conversions'
-url='http://colorspacious.readthedocs.org/en/latest/'
-depends=('python-numpy')
-license=('MIT')
+pkgrel=2
 arch=('any')
-source=("https://github.com/njsmith/colorspacious/archive/v$pkgver.tar.gz"
-        'LICENSE')
-md5sums=('6736faaad92c6c75931fb34d86767d11'
-         '032f6276b1a63e4062c163daae656d61')
+url="https://github.com/njsmith/${_base}"
+license=(MIT)
+depends=(python-numpy)
+makedepends=(python-setuptools)
+checkdepends=(python-nose)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c633ba1ee051eab055d74752b3efd02fdff9acd641f245d80339d698bf4f5a28701158a50ddd2c372730d7e5cbb1e29858c4acd1f3594e07fe7bdfaa2fed87f6')
 
 build() {
-  cd colorspacious-"$pkgver"
+  cd "${_base}-${pkgver}"
   python setup.py build
 }
 
+check() {
+  nosetests --all-modules "${_base}-${pkgver}"
+}
+
 package() {
-  cd colorspacious-"$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 
-  install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
