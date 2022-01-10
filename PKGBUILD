@@ -3,8 +3,8 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r736.b2c1024
-pkgrel=4
+pkgver=r897.16856ac
+pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
 url="https://github.com/Raymo111/i3lock-color"
@@ -38,4 +38,6 @@ package() {
     cd "${srcdir}/${_gitname}"
     make DESTDIR="$pkgdir" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 i3lock-bash "${pkgdir}/usr/share/bash-completion/completions/i3lock"
+    install -Dm644 i3lock-zsh "${pkgdir}/usr/share/zsh/vendor-completions/_i3lock"
 }
