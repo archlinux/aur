@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -20,6 +20,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-httpx: Httpx integration
 	optdepends = python-pyramid: adds support for the Pyramid Web Framework
 	optdepends = python-pyspark: adds support for the Python API for Apache Spark
+	optdepends = python-quart: adds support for the Quart Web Framework
 	optdepends = python-rq: adds support for the RQ Job Queue System
 	optdepends = python-sanic: adds support for the Sanic Web Framework
 	optdepends = python-tornado: adds support for the Tornado Web Framework
@@ -27,7 +28,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-sqlalchemy: captures queries from SQLAlchemy as breadcrumbs
 	optdepends = python-pure_eval: for richer stacktraces & additional variables
 	optdepends = python-executing: for richer stacktraces & better function names
-	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-1.5.1.tar.gz
-	sha256sums = 2a1757d6611e4bec7d672c2b7ef45afef79fed201d064f53994753303944f5a8
+	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-1.5.2.tar.gz
+	sha256sums = 7bbaa32bba806ec629962f207b597e86831c7ee2c1f287c21ba7de7fea9a9c46
 
 pkgname = python-sentry_sdk
