@@ -1,7 +1,7 @@
 pkgbase = raze-git
 	pkgdesc = Build engine port backed by GZDoom tech (git version)
-	pkgver = 1.1.0pre+380+g24b567313
-	pkgrel = 1
+	pkgver = 1.4pre+1256+g3c54495c5
+	pkgrel = 2
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
 	license = custom:BUILD
@@ -26,8 +26,7 @@ pkgbase = raze-git
 	source = 0001-Fix-file-paths.patch
 	source = raze.desktop
 	sha256sums = SKIP
-	sha256sums = 5655c8685ebebf8ac7491dda3b4c8efd3b06f979111315df3fd87674dacfa963
+	sha256sums = d8960cba3a0596a6e52072b9bd8f38e92d51be0315fcb53f3cb9c72da4e87081
 	sha256sums = ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8
 
 pkgname = raze-git
-
