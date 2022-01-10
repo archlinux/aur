@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=distrobox
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
@@ -19,4 +19,4 @@ package() {
   ./install -p "${pkgdir}/usr/bin"
 }
 
-sha256sums=('643c3e91a8e687d2887b4d3ab7d061165eb1f690434abbde4150840e37b2b194')
+sha256sums=('34487398bc89fc141ba5fcae4d9136598e4c3df5584fbe1ec67d4c9a45040748')

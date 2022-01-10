@@ -1,13 +1,13 @@
 pkgbase = distrobox
 	pkgdesc = Use any linux distribution inside your terminal.
-	pkgver = 1.2.9
+	pkgver = 1.2.10
 	pkgrel = 1
 	url = https://github.com/89luca89/distrobox
 	arch = any
 	license = GPL3
 	optdepends = docker: enable docker usage
 	optdepends = podman: enable podman usage
-	source = distrobox-1.2.9.tar.gz::https://github.com/89luca89/distrobox/archive/1.2.9.tar.gz
-	sha256sums = 643c3e91a8e687d2887b4d3ab7d061165eb1f690434abbde4150840e37b2b194
+	source = distrobox-1.2.10.tar.gz::https://github.com/89luca89/distrobox/archive/1.2.10.tar.gz
+	sha256sums = 34487398bc89fc141ba5fcae4d9136598e4c3df5584fbe1ec67d4c9a45040748
 
 pkgname = distrobox
