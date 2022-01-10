@@ -3,13 +3,13 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.5.r127.ga523934a
-pkgrel=1
+pkgver=0.5.r143.g7ce950c6
+pkgrel=2
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 url="https://wiki.gnome.org/Apps/GTG"
 arch=('x86_64')
 license=('GPL')
-depends=('gtksourceview4' 'python-liblarch-git' 'python-lxml' 'libgnome-keyring')
+depends=('gtk3' 'gtksourceview4' 'libsecret' 'python-caldav' 'python-liblarch-git' 'python-lxml')
 makedepends=('git' 'meson')
 optdepends=('python-cheetah3: for the Export and print plugin'
             'texlive-bin: pdflatex, for the Export and print plugin'
@@ -17,7 +17,7 @@ optdepends=('python-cheetah3: for the Export and print plugin'
             'pdftk: for the Export and print plugin'
             'hamster-time-tracker: send a task to the Hamster time tracking applet'
             'yelp: view user manual')
-#checkdepends=('python-nose' 'python-mock')
+checkdepends=('python-nose' 'python-mock')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/getting-things-gnome/gtg.git')
@@ -33,10 +33,10 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  cd "$srcdir/${pkgname%-git}"
-#  python run-tests
-#}
+check() {
+  cd "$srcdir/${pkgname%-git}"
+  python run-tests
+}
 
 package() {
   meson install -C build --destdir "$pkgdir"
