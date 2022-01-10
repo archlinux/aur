@@ -10,7 +10,7 @@ pkgbase = r-v8
 	depends = r-rcpp>=0.12.12
 	depends = r-jsonlite>=1.0
 	depends = r-curl>=1.0
-	depends = v8>=6
+	depends = v8
 	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
