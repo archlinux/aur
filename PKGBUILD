@@ -1,6 +1,6 @@
 # Maintainer: Riccardo Sacchetto <rsacchetto@nexxontech.it>
 pkgname=antares-sql
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Open source and cross platform SQL client made to be simple and complete"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('nvm' 'yarn' 'python')
 source=("https://github.com/Fabio286/antares/archive/refs/tags/v${pkgver}.tar.gz"
         "antares-sql.desktop"
         "antares-sql.sh")
-sha512sums=("0468fb2e32007c785fffdb75e6a5be2773bd77c12fdc460f1c7909eb6c17115c02791878dbc0a2e1cec92162e95a5a640fe95297309c416677c956eaba20436b"
+sha512sums=("7261853d40cff3dfe65727c664d571c5b14c8d7808a949188bb1056b570a96bf06a22e96ccbc457e536492e7e72bf32c160ae5c4b42645f14fcf616b33c85689"
             "4dc1837ee4a8e9e4c610a9fc8b8724a903ebaea1aeed32f30c4ee469d2e12198549bfc760327c413534053f54ffe8248905a925fc5d63d2c6e31d75a413da4dc"
             "376ca0474b4bb295c7791f73d84ab1058127adc57e5c4a59944ccb6932a0c06b118ec16b84198b987edd380850704f6451c3ea6d8d6d031737e9c7d7542425ad")
 
@@ -31,23 +31,23 @@ prepare() {
     nvm install 16
 
     # Enter the Antares source folder downloaded from GitHub
-	cd "${srcdir}/antares-${pkgver}"
+    cd "${srcdir}/antares-${pkgver}"
     # Install JS dependencies
     yarn install
 }
 
 build() {
     # Enter the Antares source folder downloaded from GitHub
-	cd "${srcdir}/antares-${pkgver}"
+    cd "${srcdir}/antares-${pkgver}"
     # Build (WebPack) the application
-	yarn build
+    yarn build
     # Run Electron Builder
     yarn run electron-builder --linux --"x64" --dir -c.npmRebuild=false -c.electronDist=/usr/lib/electron -c.electronVersion=$(</usr/lib/electron/version)
 }
 
 package() {
     # Enter the source directory
-	cd "${srcdir}"
+    cd "${srcdir}"
     # Install the desktop file
     install -Dm644 ./antares-sql.desktop "${pkgdir}/usr/share/applications/antares-sql.desktop"
     # Install the startup script
