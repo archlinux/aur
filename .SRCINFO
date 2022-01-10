@@ -1,0 +1,15 @@
+pkgbase = cantara
+	pkgdesc = Song Presentation Software
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/reckel-jm/cantara
+	arch = x86_64
+	license = GPL
+	makedepends = fpc
+	makedepends = lazarus
+	depends = gtk2
+	provides = cantara
+	source = https://github.com/reckel-jm/cantara/archive/refs/tags/2.0.1.zip
+	md5sums = SKIP
+
+pkgname = cantara
