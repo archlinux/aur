@@ -1,9 +1,10 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Knut Ahlers <knut at ahlers dot me>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgbase=beats
-pkgname=(metricbeat filebeat packetbeat heartbeat-elastic auditbeat journalbeat)
-pkgver=7.10.2
+pkgname=(metricbeat filebeat packetbeat heartbeat-elastic auditbeat)
+pkgver=7.16.2
 pkgrel=1
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
@@ -20,9 +21,8 @@ source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "metricbeat.service"
         "heartbeat.service"
         "auditbeat.service"
-        "journalbeat.service"
         "tmpfile.conf")
-sha512sums=('eba0cda8521068f4d15dfb39808695a8de47a568e4d11949746a8f698aaff6825848d5e524bd16b0e555786e277512014dfe33d4daee8c3acef9a9867653c1c3'
+sha512sums=('0e0545bc41efc31b4c94cd9db6d50488e0f8540138506a7ff8015a3128c0e8e47f22fd85d2abedc6240c0b729f914e7dc855f377bfe486cc8ae2c39e583efa38'
             '4d8b160482ba27bdc63c79592f310f2c9bcd2e8e5d3aec5ba9d953f37916bffef57c0f21e3776f4712f87e9a1b90e42dba6058f72bbc4c75380a959276183a59'
             'f1e6fe6b677db31326433f4e3eef72356573c6947d653dbe6bc2151581444f80e09343fbf8544952aae82a061b87705e39c8741ea8e402ad53ac3552f532cfea'
             '7e4081b5173d1b58a783f1808f1a9ba4548498de87bdfc1960538d6df4f4da8f900f0e027aeff83ebfe0d81e6aa91db77c520bda76441e6bcaa6fd8a79fbb57a'
@@ -150,12 +150,6 @@ package_auditbeat() {
 
     _do_package_beat
     install -D module/auditd/_meta/audit.rules.d/sample-rules-linux-64bit.conf "$pkgdir"/etc/$_pkgname/audit.rules.d/sample-rules.conf.disabled
-}
-
-package_journalbeat() {
-    pkgdesc='Data collector to ship systemd journal entries to Elasticsearch or Logstash'
-
-    _do_package_beat
 }
 
 # vim: ts=4 sw=4 et:
