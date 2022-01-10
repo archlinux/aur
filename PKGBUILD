@@ -2,7 +2,7 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20211018
+pkgver=20211129
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
