@@ -1,8 +1,8 @@
 pkgbase = safesignidentityclient
 	pkgdesc = Smart card PKCS#11 provider and token manager
-	pkgver = 3.6.0.0
-	pkgrel = 2
-	url = https://www.uziregister.nl/uzi-pas/documenten/publicaties/2020/09/02/safesign-version-3.5.6.1-for-linux
+	pkgver = 3.7.0.0
+	pkgrel = 1
+	url = https://safesign.gdamericadosul.com.br/download
 	arch = x86_64
 	license = custom:copyright
 	depends = pcsclite
@@ -13,7 +13,7 @@ pkgbase = safesignidentityclient
 	depends = ccid
 	optdepends = acsccid: ACS CCID PC/SC driver,
 	optdepends = scmccid: binary driver for the SCM Smart Card Readers
-	source_x86_64 = https://certificaat.kpn.com/files/drivers/SafeSign/SafeSign%20IC%20Standard%20Linux%203.6.0.0-AET.000%20ub2004%20x86_64.deb
-	sha256sums_x86_64 = c8933b1dacd0f919241cc94084babb070eed04bbcb4bc405128b143bd1afefad
+	source_x86_64 = https://safesign.gdamericadosul.com.br/content/SafeSign_IC_Standard_Linux_3.7.0.0_AET.000_ub2004_x86_64.rar
+	sha256sums_x86_64 = cc250d03260d5d2af551c86f8e392452d55a8603426114bd7aabcaef04a3c85c
 
 pkgname = safesignidentityclient
