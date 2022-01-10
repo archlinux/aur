@@ -9,7 +9,7 @@ url="https://gitlab.com/LynxOS/$pkgname"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('c682b67b9bf979548b59671a56c17e47d')
+md5sums=('682b67b9bf979548b59671a56c17e47d')
 depends=(
         'dex'
         'qt5-styleplugins'

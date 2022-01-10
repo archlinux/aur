@@ -16,6 +16,6 @@ pkgbase = lynx-desktop-settings
 	depends = compiz
 	depends = python-yaml
 	source = https://gitlab.com/LynxOS/lynx-desktop-settings/-/archive/0.0.9/lynx-desktop-settings-0.0.9.tar.gz
-	md5sums = c682b67b9bf979548b59671a56c17e47d
+	md5sums = 682b67b9bf979548b59671a56c17e47d
 
 pkgname = lynx-desktop-settings
