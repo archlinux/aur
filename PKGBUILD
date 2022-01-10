@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-beacon
-pkgver=5.13.12.arch1
+pkgver=5.15.13.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,7 +27,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'c8f26962e51fb2ef7628cb90c93f93d53ff5a8874d16322783152cf89007887c'
+            '6ab7a66895804f832f1b9594b682be0e2e6982455a8fc3f7e87111e1c7dff866'
             'f9aff9e30c5468d37a1434c59ac550bf0afeeee54707aca50bc49343efca40a6')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -54,6 +54,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
