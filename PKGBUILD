@@ -1,15 +1,15 @@
 # Maintainer: Joaquin (Pato) Decima <https://patojad.com.ar/>
 
 pkgname=lynx-desktop-settings
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
-pkgdesc="Lynx Desktop Settings - Configuracion basica del Escritorio"
+pkgdesc="Lynx Desktop Settings - Basic Configuration"
 arch=('any')
 url="https://gitlab.com/LynxOS/$pkgname"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('c91e4f0d0f668922eea3e883c92c3ed1')
+md5sums=('c682b67b9bf979548b59671a56c17e47d')
 depends=(
         'dex'
         'qt5-styleplugins'
@@ -19,6 +19,7 @@ depends=(
         'lynx-menu-data'
         'lynx-gtk-theme'
         'compiz'
+        'python-yaml'
         )
 
 package() {

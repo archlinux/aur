@@ -1,6 +1,6 @@
 pkgbase = lynx-desktop-settings
-	pkgdesc = Lynx Desktop Settings - Configuracion basica del Escritorio
-	pkgver = 0.0.8
+	pkgdesc = Lynx Desktop Settings - Basic Configuration
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://gitlab.com/LynxOS/lynx-desktop-settings
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = lynx-desktop-settings
 	depends = lynx-menu-data
 	depends = lynx-gtk-theme
 	depends = compiz
-	source = https://gitlab.com/LynxOS/lynx-desktop-settings/-/archive/0.0.8/lynx-desktop-settings-0.0.8.tar.gz
-	md5sums = c91e4f0d0f668922eea3e883c92c3ed1
+	depends = python-yaml
+	source = https://gitlab.com/LynxOS/lynx-desktop-settings/-/archive/0.0.9/lynx-desktop-settings-0.0.9.tar.gz
+	md5sums = c682b67b9bf979548b59671a56c17e47d
 
 pkgname = lynx-desktop-settings
