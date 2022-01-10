@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=epr-git
-pkgver=2.4.8.r130.81a75bd
+pkgver=2.4.12.r139.e45a347
 pkgrel=1
 pkgdesc="CLI Epub Reader"
 arch=(any)
