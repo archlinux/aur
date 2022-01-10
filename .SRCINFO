@@ -1,17 +1,16 @@
 pkgbase = dec2bin
 	pkgdesc = Converts binary numbers to decimal integers or ASCII text
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jahendrie/dec2bin
 	arch = i686
 	arch = x86_64
 	license = FreeBSD
 	makedepends = gcc
 	makedepends = make
-	source = http://www.someplacedumb.net/content/progs/dec2bin/dec2bin-1.5.tar.gz
+	source = https://github.com/jahendrie/dec2bin/releases/download/v1.5/dec2bin-1.5.tar.gz
 	md5sums = 962d93b30956edf56dd8ad3411228b9f
 	depends_i686 = lib32-glibc
 	depends_x86_64 = glibc
 
 pkgname = dec2bin
-
